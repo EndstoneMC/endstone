@@ -89,7 +89,23 @@ _PYBIND_SIG_RE = re.compile(
 )
 
 
+# An enum-member default in a pybind11 signature: "<annotation> = <Enum.MEMBER: N>".
+_ENUM_DEFAULT_RE = re.compile(r"(?P<ann>[\w.]+)(?P<eq> = )<(?P<enum>\w+(?:\.\w+)+): -?\d+>")
+
+
+def _elevate_enum_default(m: "re.Match[str]") -> str:
+    # Rebind a bare enum default to its parameter's fully-qualified type, so
+    # simplify() shortens it like any other in-package name (nanobind arrives
+    # here via type_str, which fully-qualifies the default before simplifying).
+    ann, enum = m.group("ann"), m.group("enum")
+    cls, _, member = enum.rpartition(".")
+    if ann.rpartition(".")[2] == cls:
+        return f"{ann}{m.group('eq')}{ann}.{member}"
+    return f"{ann}{m.group('eq')}{enum}"
+
+
 def _clean_sig_args(name: Optional[str], args: str) -> str:
+    args = _ENUM_DEFAULT_RE.sub(_elevate_enum_default, args)
     args = _ENUM_RE.sub(r"\g<enum>", args)
     if name is None:
         return re.sub(r"^arg0:\s*[\w.]+", "self", args)
