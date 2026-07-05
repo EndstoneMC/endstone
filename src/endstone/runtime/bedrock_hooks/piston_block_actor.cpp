@@ -92,5 +92,9 @@ void PistonBlockActor::tick(BlockSource &region)
             }
         }
     }
+#ifdef _WIN32
     ENDSTONE_HOOK_CALL_ORIGINAL(&IVanillaTickBlockActorComponent::tick, this, region);
+#else
+    ENDSTONE_HOOK_CALL_ORIGINAL(&PistonBlockActor::tick, this, region);
+#endif
 }
