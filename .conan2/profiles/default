@@ -25,3 +25,6 @@ sentry-native/*:tools.build:compiler_executables={"c": "cl", "cpp": "cl"}
 tools.system.package_manager:mode=install
 tools.build:compiler_executables={"c": "/usr/bin/clang", "cpp": "/usr/bin/clang++"}
 {% endif %}
+
+[replace_requires]
+fmt/11.2.0: fmt/12.1.0
