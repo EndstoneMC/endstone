@@ -35,7 +35,7 @@ class EndstoneRecipe(ConanFile):
 
     @property
     def _with_devtools(self):
-        return self.settings.os == "Windows"
+        return True
 
     def config_options(self):
         if self.settings.os == "Windows":
@@ -77,7 +77,7 @@ class EndstoneRecipe(ConanFile):
 
         if self._with_devtools:
             self.requires("glfw/3.4")
-            self.requires("imgui/1.91.8-docking")
+            self.requires("imgui/1.92.8-docking")
 
     def build_requirements(self):
         self.test_requires("gtest/1.16.0")

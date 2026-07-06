@@ -21,4 +21,10 @@ tools.cmake.cmaketoolchain:generator=Ninja
 {% if platform.system() == "Windows" %}
 tools.build:compiler_executables={"c": "clang-cl", "cpp": "clang-cl"}
 sentry-native/*:tools.build:compiler_executables={"c": "cl", "cpp": "cl"}
+{% else %}
+tools.system.package_manager:mode=install
+tools.build:compiler_executables={"c": "/usr/bin/clang", "cpp": "/usr/bin/clang++"}
 {% endif %}
+
+[replace_requires]
+fmt/11.2.0: fmt/12.1.0

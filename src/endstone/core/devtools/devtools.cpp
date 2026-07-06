@@ -234,8 +234,8 @@ void render()
             io.Fonts->Clear();
             io.Fonts->AddFontFromFileTTF(font_path.string().c_str(), std::round(15 * x_scale));
             io.Fonts->Build();
-            ImGui_ImplOpenGL3_DestroyFontsTexture();
-            ImGui_ImplOpenGL3_CreateFontsTexture();
+            //ImGui_ImplOpenGL3_DestroyFontsTexture();
+            //ImGui_ImplOpenGL3_CreateFontsTexture();
             auto style = ImGuiStyle();
             style.ScaleAllSizes(x_scale);
         }
