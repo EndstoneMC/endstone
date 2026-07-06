@@ -1,9 +1,7 @@
-extensions/*
+extensions/plugins/*
 migrations/*
 p/*
-profiles/default
 *.db
 global.conf
-remotes.json
 settings.yml
 version.txt

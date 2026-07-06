@@ -1,12 +1,10 @@
 #include "bedrock/world/level/block/actor/campfire_block_actor.h"
 
 #include "bedrock/world/events/gameevents/game_event.h"
-#include "bedrock/world/level/block/bedrock_block_names.h"
 #include "bedrock/world/level/block/furnace_types.h"
 #include "bedrock/world/level/block/vanilla_block_type_ids.h"
 #include "bedrock/world/level/block_source.h"
 #include "bedrock/world/level/level.h"
-#include "bedrock/world/level/spawner.h"
 #include "endstone/core/block/block.h"
 #include "endstone/core/inventory/item_stack.h"
 #include "endstone/core/server.h"
@@ -14,7 +12,7 @@
 
 void CampfireBlockActor::_finishCooking(::BlockSource &region, int slot)
 {
-    if (region.canDoBlockDrops()) {
+    if (region.canDoBlockDrops(nullptr)) {
         const auto &block = region.getBlock(this->position_);
         auto tag = CAMPFIRE_TAG;
         if (block.getName() == VanillaBlockTypeIds::SoulCampfire) {
@@ -43,6 +41,6 @@ void CampfireBlockActor::_finishCooking(::BlockSource &region, int slot)
         region.postGameEvent(nullptr, GameEventRegistry::blockChange, position_, nullptr);
         cooking_item_[slot].setNull(std::nullopt);
         cooking_time_[slot] = 0;
-        setChanged();
+        VanillaBlockActor::setChanged();
     }
 }

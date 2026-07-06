@@ -29,10 +29,19 @@
 class Item;
 class ItemRegistryRef;
 
+struct ItemLoaderTraits {
+    struct Loader {};
+};
+
 enum class ItemVersion : int {
     Legacy = 0,
     DataDriven = 1,
     None = 2,
+};
+
+enum class ItemRegistrationOrder : std::uint8_t {
+    SplitByVersion = 0,
+    Unified = 1,
 };
 
 class ItemRegistry : public std::enable_shared_from_this<ItemRegistry> {
@@ -60,7 +69,8 @@ private:
 
     gsl::not_null<std::unique_ptr<cereal::ReflectionCtx>> cereal_context_;
     Bedrock::NonOwnerPointer<LinkedAssetValidator> validator_;
-    ItemRegistryMap item_registry_;  // +48
+    gsl::not_null<std::unique_ptr<ItemLoaderTraits::Loader>> document_loader_;  // +48
+    ItemRegistryMap item_registry_;  // +56
     std::unordered_map<int, WeakPtr<Item>> id_to_item_map_;
     std::unordered_map<HashedString, WeakPtr<Item>> name_to_item_map_;
     std::unordered_map<HashedString, WeakPtr<Item>> tile_namespace_to_item_map_;
@@ -81,6 +91,9 @@ private:
         finished_init_server_publisher_;
     std::shared_ptr<std::atomic<int>> can_update_tags_;
     ItemRegistryMap dead_item_registry_;
+    bool add_to_pre_registry_;                                            // +936
+    std::unordered_map<HashedString, SharedPtr<Item>> hardcoded_vanilla_item_pre_registry_;  // +944
+    ItemRegistrationOrder item_registration_order_;
     BaseGameVersion world_base_game_version_;
     bool check_for_item_world_compatibility_;
     std::shared_ptr<std::mutex> compatibility_check_mutex_;

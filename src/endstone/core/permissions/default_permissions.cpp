@@ -156,6 +156,12 @@ Permission &MinecraftCommandPermissions::registerPermissions(Permission &parent)
     const auto &registry = server.getServer().getMinecraft()->getCommands().getRegistry();
     for (const auto &[name, signature] : registry.signatures_) {
         auto command = server.getCommandMap().getCommand(name);
+        if (!command) {
+            server.getLogger().error("Unable to register permissions for command '{}' as it could not be found in the "
+                                     "command map.",
+                                     name);
+            continue;
+        }
         auto permissions = command->getPermissions();
         auto perm = PREFIX + signature.name;
         if (permissions.size() != 1 || permissions.at(0) != perm) {

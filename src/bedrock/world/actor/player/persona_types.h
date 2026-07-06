@@ -14,10 +14,12 @@
 
 #pragma once
 
+#include <cstdint>
+
 namespace persona {
 class ArmSize {
 public:
-    enum class Type : size_t {
+    enum class Type : std::uint8_t {
         Slim = 0,
         Wide = 1,
         Count = 2,

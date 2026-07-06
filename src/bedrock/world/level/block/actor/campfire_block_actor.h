@@ -15,9 +15,9 @@
 #pragma once
 
 #include "bedrock/world/item/item_instance.h"
-#include "bedrock/world/level/block/actor/block_actor.h"
+#include "bedrock/world/level/block/actor/vanilla_block_actor.h"
 
-class CampfireBlockActor : public BlockActor {
+class CampfireBlockActor : public VanillaBlockActor {
 public:
     static constexpr int MAX_COOKING_ITEMS = 4;
     CampfireBlockActor(const BlockPos &);

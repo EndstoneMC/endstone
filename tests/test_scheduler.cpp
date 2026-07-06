@@ -71,6 +71,25 @@ TEST_F(SchedulerTest, RunTaskLater)
     EXPECT_TRUE(executed);
 }
 
+// Regression test for #317: a delayed task registered before the first heartbeat (e.g. in
+// Plugin::onEnable / ServerLoadEvent) must honour its delay even when the world's persisted server
+// tick is already large. The scheduler normalises ticks to a zero-based, session-relative clock.
+TEST_F(SchedulerTest, RunTaskLaterWhenFirstTickIsLarge)
+{
+    bool executed = false;
+    auto task = scheduler_->runTaskLater(plugin_, [&]() { executed = true; }, 5);
+    ASSERT_TRUE(task != nullptr);
+
+    // Simulate a played-in world: the level's first server tick is already far past the delay.
+    constexpr std::uint64_t big = 5'000'000;
+    scheduler_->mainThreadHeartbeat(big);  // first heartbeat anchors the base
+    EXPECT_FALSE(executed);                // must NOT run immediately (the #317 bug)
+    for (std::uint64_t i = 1; i < 5; ++i) {
+        scheduler_->mainThreadHeartbeat(big + i);
+        EXPECT_EQ(executed, i == 4);  // fires on the 5th heartbeat (delay of 5 elapsed), not before
+    }
+}
+
 // Test for a repeating task
 TEST_F(SchedulerTest, RunTaskTimer)
 {
@@ -105,6 +124,19 @@ TEST_F(SchedulerTest, CancelTasks)
     EXPECT_FALSE(scheduler_->isQueued(task1->getTaskId()));
     EXPECT_FALSE(scheduler_->isQueued(task2->getTaskId()));
     EXPECT_FALSE(scheduler_->isQueued(task3->getTaskId()));
+}
+
+// Regression test for #351: cancelling an idle async task via cancelTasks() used to re-lock
+// tasks_mtx_ recursively (doCancel() -> removeTask()), throwing "resource deadlock would occur".
+TEST_F(SchedulerTest, CancelAsyncTasksDoesNotDeadlock)
+{
+    auto task1 = scheduler_->runTaskLaterAsync(plugin_, []() {}, 100000000);
+    auto task2 = scheduler_->runTaskTimerAsync(plugin_, []() {}, 1, 1);
+    ASSERT_TRUE(task1 != nullptr);
+    ASSERT_TRUE(task2 != nullptr);
+    scheduler_->cancelTasks(plugin_);
+    EXPECT_FALSE(scheduler_->isQueued(task1->getTaskId()));
+    EXPECT_FALSE(scheduler_->isQueued(task2->getTaskId()));
 }
 
 // Test to check if a task is running

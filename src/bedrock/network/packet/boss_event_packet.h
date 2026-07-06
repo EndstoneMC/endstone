@@ -15,6 +15,7 @@
 #pragma once
 
 #include "bedrock/network/packet.h"
+#include "bedrock/network/packet/cerealize/core/serialization_mode.h"
 #include "bedrock/network/packet/types/world/actor/ai/util/boss_event_data.h"
 #include "bedrock/safety/redactable_string.h"
 #include "bedrock/world/actor/actor_unique_id.h"
@@ -30,6 +31,6 @@ public:
     float health_percent;
     BossBarColor color;
     BossBarOverlay overlay;
-    bool darken_screen;
-    bool create_world_fog;
+    SerializationMode serialization_mode{SerializationMode::CerealOnly};
 };
+BEDROCK_STATIC_ASSERT_SIZE(BossEventPacket, 168, 152);

@@ -139,10 +139,6 @@ if (UNIX)
     target_link_options(endstone_core PRIVATE -g)
     target_compile_options(endstone_core PRIVATE -O2 -DNDEBUG -g)
 endif ()
-if (DEFINED SKBUILD_PROJECT_VERSION_FULL)
-    target_compile_definitions(endstone_core PUBLIC ENDSTONE_VERSION="${SKBUILD_PROJECT_VERSION_FULL}")
-endif ()
-
 
 include(GNUInstallDirs)
 install(TARGETS endstone_core

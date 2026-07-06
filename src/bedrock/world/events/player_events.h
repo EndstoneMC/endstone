@@ -61,8 +61,9 @@ struct PlayerDestroyBlockEvent {
     gsl::not_null<const Block *> block;
 };
 struct PlayerSayCommandEvent {
-    WeakRef<EntityContext> player;
+    std::string sender;
     std::string message;
+    std::optional<std::string> filtered_message;
 };
 struct PlayerUseNameTagEvent {
     WeakRef<EntityContext> player;
@@ -268,19 +269,25 @@ struct PlayerGameplayEvent<void>
           PlayerDestroyBlockEvent, PlayerUseNameTagEvent, PlayerDropItemEvent, PlayerEatFoodEvent, PlayerDamageEvent,
           PlayerDisconnectEvent, PlayerFormCloseEvent, PlayerFormResponseEvent, PlayerDataDrivenScreenClosedEvent,
           PlayerInputModeChangeEvent, PlayerInitialSpawnEvent, PlayerOpenContainerEvent, PlayerOpenedContainerEvent,
-          PlayerCloseContainerEvent, PlayerClosedContainerEvent, PlayerHasInvalidContainerEvent,
-          PlayerShootArrowEvent, PlayerSwingStartEvent, PlayerRespawnEvent,
-          PlayerSleepStateChangeEvent, PlayerStopLoadingEvent, PlayerUpdateInteractionEvent,
-          PlayerSelectedItemChangedEvent, PlayerDimensionChangeBeforeEvent, PlayerDimensionChangeAfterEvent,
-          PlayerInteractWithEntityAfterEvent, PlayerInteractWithBlockAfterEvent, PlayerEmoteEvent,
-          PlayerScriptInputEvent, PlayerInventoryItemChangeEvent, PlayerHotbarSelectedSlotChangeEvent,
+          PlayerCloseContainerEvent, PlayerClosedContainerEvent, PlayerHasInvalidContainerEvent, PlayerShootArrowEvent,
+          PlayerSwingStartEvent, PlayerRespawnEvent, PlayerSleepStateChangeEvent, PlayerStopLoadingEvent,
+          PlayerUpdateInteractionEvent, PlayerSelectedItemChangedEvent, PlayerDimensionChangeBeforeEvent,
+          PlayerDimensionChangeAfterEvent, PlayerInteractWithEntityAfterEvent, PlayerInteractWithBlockAfterEvent,
+          PlayerEmoteEvent, PlayerScriptInputEvent, PlayerInventoryItemChangeEvent, PlayerHotbarSelectedSlotChangeEvent,
           PlayerInputPermissionCategoryChangeEvent> {};
 static_assert(sizeof(PlayerGameplayEvent<void>) == 384);
 
+struct PlayerTellCommandEvent {};
+struct PlayerTellRawCommandEvent {};
+struct PlayerTitleCommandEvent {};
+struct PlayerTitleRawCommandEvent {};
+
 template <>
 struct PlayerGameplayEvent<CoordinatorResult>
-    : ConstEventVariant<PlayerSayCommandEvent, PlayerGetExperienceOrbEvent, PlayerInteractEvent,
-                        PlayerInteractWithEntityBeforeEvent, PlayerInteractWithBlockBeforeEvent> {};
+    : ConstEventVariant<PlayerSayCommandEvent, PlayerTellCommandEvent, PlayerTellRawCommandEvent,
+                        PlayerTitleCommandEvent, PlayerTitleRawCommandEvent, PlayerGetExperienceOrbEvent,
+                        PlayerInteractEvent, PlayerInteractWithEntityBeforeEvent,
+                        PlayerInteractWithBlockBeforeEvent> {};
 BEDROCK_STATIC_ASSERT_SIZE(PlayerGameplayEvent<CoordinatorResult>, 232, 232);
 
 template <typename Return>

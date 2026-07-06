@@ -6,7 +6,6 @@
 #include "endstone/core/block/block.h"
 #include "endstone/core/block/block_face.h"
 #include "endstone/core/server.h"
-#include "endstone/event/block/block_piston_event.h"
 #include "endstone/event/block/block_piston_extend_event.h"
 #include "endstone/event/block/block_piston_retract_event.h"
 #include "endstone/runtime/hook.h"
@@ -93,5 +92,9 @@ void PistonBlockActor::tick(BlockSource &region)
             }
         }
     }
+#ifdef _WIN32
+    ENDSTONE_HOOK_CALL_ORIGINAL(&IVanillaTickBlockActorComponent::tick, this, region);
+#else
     ENDSTONE_HOOK_CALL_ORIGINAL(&PistonBlockActor::tick, this, region);
+#endif
 }

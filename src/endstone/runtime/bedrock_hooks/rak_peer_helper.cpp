@@ -14,15 +14,19 @@
 
 #include "bedrock/network/rak_peer_helper.h"
 
+#include <BitStream.h>
+#include <MessageIdentifiers.h>
+#include <PluginInterface2.h>
+#include <RakPeer.h>
+
+#include <memory>
 #include <ranges>
+#include <stdexcept>
 #include <string>
 #include <vector>
 
 #include <magic_enum/magic_enum.hpp>
 
-#include "bedrock/deps/raknet/bit_stream.h"
-#include "bedrock/deps/raknet/message_identifiers.h"
-#include "bedrock/deps/raknet/plugin_interface.h"
 #include "endstone/core/server.h"
 #include "endstone/core/util/socket_address.h"
 #include "endstone/event/server/server_list_ping_event.h"
@@ -61,7 +65,7 @@ static endstone::ServerListPingEvent callServerListPingEvent(endstone::SocketAdd
     return event;
 }
 
-RakNet::RakPeerInterface *gRakPeer = nullptr;
+RakNet::RakPeer *gRakPeer = nullptr;
 
 bool handleIncomingDatagram(RakNet::RNS2RecvStruct *recv)
 {
@@ -77,12 +81,12 @@ bool handleIncomingDatagram(RakNet::RNS2RecvStruct *recv)
         else {  // ipv6
             expected_size += sizeof(sockaddr_in6);
         }
-        if (recv->bytes_read < expected_size) {
+        if (recv->bytesRead < expected_size) {
             return false;
         }
     }
     if (recv->data[0] == ID_UNCONNECTED_PING &&
-        recv->bytes_read >= sizeof(unsigned char) + sizeof(RakNet::Time) + sizeof(OFFLINE_MESSAGE_DATA_ID)) {
+        recv->bytesRead >= sizeof(unsigned char) + sizeof(RakNet::Time) + sizeof(OFFLINE_MESSAGE_DATA_ID)) {
         char *ping_data;
         std::uint32_t ping_size;
         gRakPeer->GetOfflinePingResponse(&ping_data, &ping_size);
@@ -91,14 +95,14 @@ bool handleIncomingDatagram(RakNet::RNS2RecvStruct *recv)
         }
 
         // call ServerListPingEvent with the default offline ping response
-        auto address = endstone::core::EndstoneSocketAddress::fromSystemAddress(recv->system_address);
+        auto address = endstone::core::EndstoneSocketAddress::fromSystemAddress(recv->systemAddress);
         auto event = callServerListPingEvent(address, std::string_view(ping_data + 2, ping_size - 2));
         if (event.isCancelled()) {
             return false;
         }
 
         // parse ping request
-        RakNet::BitStream is((unsigned char *)recv->data, recv->bytes_read, false);
+        RakNet::BitStream is((unsigned char *)recv->data, recv->bytesRead, false);
         is.IgnoreBits(8);
         RakNet::Time sendPingTime;
         is.Read(sendPingTime);
@@ -124,7 +128,7 @@ bool handleIncomingDatagram(RakNet::RNS2RecvStruct *recv)
         RakNet::RNS2_SendParameters bsp;
         bsp.data = reinterpret_cast<char *>(os.GetData());
         bsp.length = os.GetNumberOfBytesUsed();
-        bsp.system_address = recv->system_address;
+        bsp.systemAddress = recv->systemAddress;
         recv->socket->Send(&bsp, _FILE_AND_LINE_);
         return false;
     }
@@ -137,9 +141,47 @@ RakNet::StartupResult RakPeerHelper::peerStartup(RakNet::RakPeerInterface *peer,
     ConnectionDefinition new_def = def;
     if (peer && purpose == PeerPurpose::Gameplay) {
         new_def.max_num_connections = SharedConstants::NetworkDefaultMaxConnections;
-        peer->SetLimitIPConnectionFrequency(true);  // limit connections from the same ip in 100 milliseconds.
+        // peer->SetLimitIPConnectionFrequency(true);  // limit connections from the same ip in 100 milliseconds.
         peer->SetIncomingDatagramEventHandler(handleIncomingDatagram);
-        gRakPeer = peer;
+        gRakPeer = static_cast<RakNet::RakPeer *>(peer);
     }
     return ENDSTONE_HOOK_CALL_ORIGINAL(&RakPeerHelper::peerStartup, this, peer, new_def, purpose);
+}
+
+namespace RakNet {
+struct ShadowBanList {};
+}  // namespace RakNet
+
+[[noreturn]] static void rakPeerLinkStub(const char *name)
+{
+    throw std::runtime_error(std::string("RakNet::RakPeer::") + name + " is a link stub and must never be called");
+}
+
+void RakNet::RakPeer::InitializeConfiguration(std::unique_ptr<RakNet::ShadowBanList>)
+{
+    rakPeerLinkStub("InitializeConfiguration");
+}
+bool RakNet::RakPeer::SetApplicationHandshakeCompleted(RakNet::AddressOrGUID)
+{
+    rakPeerLinkStub("SetApplicationHandshakeCompleted");
+}
+void RakNet::RakPeer::SetAllowUnconnectedPings(bool)
+{
+    rakPeerLinkStub("SetAllowUnconnectedPings");
+}
+bool RakNet::RakPeer::GetAllowUnconnectedPings() const
+{
+    rakPeerLinkStub("GetAllowUnconnectedPings");
+}
+void RakNet::RakPeer::resetMyGUID()
+{
+    rakPeerLinkStub("resetMyGUID");
+}
+unsigned int RakNet::RakPeer::GetNumberOfAdapters()
+{
+    rakPeerLinkStub("GetNumberOfAdapters");
+}
+RakNet::NetworkAdapter &RakNet::RakPeer::GetLocalAdapter(unsigned int)
+{
+    rakPeerLinkStub("GetLocalAdapter");
 }

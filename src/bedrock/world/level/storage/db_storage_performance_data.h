@@ -17,7 +17,7 @@
 #include <cstdint>
 
 namespace DBHelpers {
-enum class Category : std::uint8_t {
+enum class Category : std::uint32_t {
     Uncategorized = 0,
     Actor = 1,
     Biome = 2,

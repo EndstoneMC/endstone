@@ -58,6 +58,7 @@ public:
     [[nodiscard]] virtual BlockSource &getBlockSourceFromMainChunkSource() const = 0;
     virtual void buildPlayersForPositionPacket(const BlockPos &, const Player *,
                                                std::vector<NetworkIdentifierWithSubId> &) const = 0;
+    virtual void updatePoiBlockStateChange(const BlockPos &, const Block &, const Block &) const = 0;
 };
 
 class Dimension : public IDimension,

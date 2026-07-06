@@ -3,94 +3,61 @@ name: Docker
 on:
   workflow_dispatch:
   schedule:
-    - cron: '0 0 * * *'
-  push:
-    branches:
-      - main
-    tags:
-      - 'v*'
+    - cron: '0 0 * * *'  # 00:00 UTC nightly
 
 permissions: read-all
 
 concurrency:
-  group: docker-${{ github.ref }}
-  cancel-in-progress: ${{ !startsWith(github.ref, 'refs/tags/') }}
+  group: docker-dev-${{ github.ref }}
+  cancel-in-progress: true
 
 jobs:
-  build_and_publish:
-    name: Publish to ${{ matrix.registry_name }}
+  publish:
+    name: Build & Push (GHCR nightly)
+    if: github.repository == 'EndstoneMC/endstone'
     runs-on: ubuntu-latest
     permissions:
       packages: write
-    strategy:
-      fail-fast: false
-      matrix:
-        include:
-          - registry_name: GHCR
-            registry: ghcr.io
-            image: ghcr.io/endstonemc/endstone
-            username_secret: github_actor
-            password_secret: GITHUB_TOKEN
-          - registry_name: Docker Hub
-            registry: docker.io
-            image: endstone/endstone
-            username_secret: DOCKERHUB_USERNAME
-            password_secret: DOCKERHUB_TOKEN
-            tags_only: true
 
     steps:
-      - name: Check if job should run
-        id: guard
-        shell: bash
-        run: |
-          if [ "${{ matrix.tags_only }}" = "true" ] && ! [[ "${{ github.ref }}" == refs/tags/* ]]; then
-            echo "skip=true" >> $GITHUB_OUTPUT
-          else
-            echo "skip=false" >> $GITHUB_OUTPUT
-          fi
-
       - name: Checkout Code
-        if: steps.guard.outputs.skip != 'true'
         uses: actions/checkout@v6
         with:
           fetch-depth: 0
           submodules: true
 
+      - name: Check for new commits
+        id: check
+        run: |
+          if [ "${{ github.event_name }}" = "workflow_dispatch" ] \
+             || [ "$(git rev-list --count --since='24 hours ago' HEAD)" -gt 0 ]; then
+            echo "build=true" >> "$GITHUB_OUTPUT"
+          else
+            echo "No new commits in the last 24h; skipping nightly build."
+          fi
+
       - name: Set up Docker Buildx
-        if: steps.guard.outputs.skip != 'true'
-        uses: docker/setup-buildx-action@v3
+        if: steps.check.outputs.build == 'true'
+        uses: docker/setup-buildx-action@v4
 
-      - name: Login to ${{ matrix.registry_name }}
-        if: steps.guard.outputs.skip != 'true'
-        uses: docker/login-action@v3
+      - name: Login to GHCR
+        if: steps.check.outputs.build == 'true'
+        uses: docker/login-action@v4
         with:
-          registry: ${{ matrix.registry }}
-          username: ${{ matrix.username_secret == 'github_actor' && github.actor || secrets[matrix.username_secret] }}
-          password: ${{ secrets[matrix.password_secret] }}
-
-      - name: Extract Metadata
-        if: steps.guard.outputs.skip != 'true'
-        id: meta
-        uses: docker/metadata-action@v5
-        with:
-          images: ${{ matrix.image }}
-          tags: |
-            type=raw,value=latest,enable={{ is_default_branch }}
-            type=pep440,pattern={{version}}
+          registry: ghcr.io
+          username: ${{ github.actor }}
+          password: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Build and Push
-        if: steps.guard.outputs.skip != 'true'
-        uses: docker/build-push-action@v6
+        if: steps.check.outputs.build == 'true'
+        uses: docker/build-push-action@v7
         with:
           context: .
+          file: Dockerfile
           platforms: linux/amd64
-          # workflow_dispatch is build-only validation - the metadata-action
-          # rules only emit tags for default-branch or git-tag refs, so
-          # pushing on a dispatch would fail with "tag is needed".
-          push: ${{ github.event_name == 'push' || github.event_name == 'schedule' }}
-          tags: ${{ steps.meta.outputs.tags }}
-          labels: ${{ steps.meta.outputs.labels }}
+          push: true
+          tags: ghcr.io/endstonemc/endstone:nightly
           cache-from: type=gha
-          cache-to: type=gha,mode=max
+          cache-to: type=gha,mode=min
           secrets: |
             sentry-auth-token=${{ secrets.SENTRY_AUTH_TOKEN }}

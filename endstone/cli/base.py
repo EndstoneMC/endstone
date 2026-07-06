@@ -1,4 +1,5 @@
 import errno
+import filecmp
 import fnmatch
 import hashlib
 import logging
@@ -15,7 +16,6 @@ from typing import Union
 import click
 import importlib_resources
 import requests
-import sentry_crashpad
 import tomlkit
 from packaging.version import Version
 from rich.progress import BarColumn, DownloadColumn, Progress, TextColumn, TimeRemainingColumn
@@ -163,21 +163,21 @@ class Bootstrap:
         # ensure the plugin folder exists
         self.plugin_path.mkdir(parents=True, exist_ok=True)
 
-        # prepare the crashpad handler
-        src_dir, dst_dir = Path(sentry_crashpad._get_executable("crashpad_handler")).parent, self.server_path
-        for s in src_dir.rglob("*"):
-            if s.is_dir():
-                continue
-            rel = s.relative_to(src_dir)
-            d = dst_dir / rel
-            if d.exists() and d.is_dir():
-                raise RuntimeError(f"Destination path is a directory: {d}")
-            d.parent.mkdir(parents=True, exist_ok=True)
-            if not d.exists():
-                try:
-                    shutil.copy2(s, d)
-                except Exception as e:
-                    raise RuntimeError(f"Failed to copy {s} -> {d}: {e}")
+        # prepare the crashpad handler (bundled into the endstone package via conan)
+        endstone_dir = Path(str(importlib_resources.files("endstone")))
+        if platform.system() == "Windows":
+            handler_files = ["crashpad_handler.exe", "crashpad_wer.dll"]
+        else:
+            handler_files = ["crashpad_handler"]
+        for name in handler_files:
+            src = endstone_dir / name
+            dst = self.server_path / name
+            try:
+                if dst.exists() and filecmp.cmp(src, dst, shallow=False):
+                    continue
+                shutil.copy2(src, dst)
+            except Exception as e:
+                self._logger.warning(f"Failed to update crash handler '{name}': {e}")
 
         # create or update the config file
         ref = importlib_resources.files("endstone") / "config" / "endstone.default.toml"

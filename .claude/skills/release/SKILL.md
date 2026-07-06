@@ -1,6 +1,6 @@
 ---
 name: release
-description: Cut a new Endstone release end-to-end - run prereq checks, curate CHANGELOG, stamp it, commit, tag, push, then watch the three downstream workflows publish. Use when the user asks to release/ship a new patch or minor version (e.g. "prepare release v0.11.4", "ship v0.12.0", "cut a release").
+description: Cut a new Endstone release end-to-end - run prereq checks, curate CHANGELOG, stamp it, commit, tag, push, then watch the Build workflow publish. Use when the user asks to release/ship a new patch or minor version (e.g. "prepare release v0.11.4", "ship v0.12.0", "cut a release").
 ---
 
 # Release Endstone
@@ -11,19 +11,40 @@ points flagged "**STOP**".
 
 ## Pipeline (what happens after the tag is pushed)
 
+The repo splits its CI across three workflows:
+
+- **`ci.yml`** - Release builds on Linux + Windows, Debug+coverage on
+  Linux. Runs on PR + push + dispatch. **Does NOT trigger on tags.**
+- **`docker.yml`** - Publishes `ghcr.io/endstonemc/endstone:nightly`
+  from the from-source root `Dockerfile`. Develop branch only.
+- **`build.yml`** - Wheels matrix, bundle, docker image (short-path),
+  PyPI publish, GitHub Release. **The only workflow that fires on tag
+  push** - because ci.yml's triggers exclude tags and docker.yml is
+  develop-only.
+
 ```
 git push --follow-tags origin <branch>
                 |
-                v  (one push event, three workflows in parallel)
-       +--------+--------+--------+
-       v                 v        v
-   release.yml      wheel.yml   docker.yml
-   (GH release)     (PyPI)      (GHCR + Hub)
+                v
+        build.yml (DAG of jobs on tag push)
+        +-----------------------------------+
+        |   wheels    (cp310-14 x 2 OS)     |
+        |       |                           |
+        |       +-- bundle  (zip per OS)    |
+        |       +-- docker  (GHCR/Hub push) |
+        |       +-- release (PyPI + GH)     |
+        +-----------------------------------+
 ```
 
-All three workflows are tag-triggered. Because the push is authored by the
-user (not `GITHUB_TOKEN`), the cascade fires - that's why this skill does
-the tag push from the local checkout instead of from a workflow.
+`release` is a job inside `build.yml` that fires only on tag pushes; it
+needs `wheels` + `bundle`, publishes wheels to PyPI via OIDC, and
+creates the GitHub release with body extracted from `CHANGELOG.md`.
+`docker` builds the short-path image from the cp313 manylinux wheel
+artifact and pushes versioned + `:latest` to GHCR and Docker Hub.
+
+Because the tag push is authored by the user (not `GITHUB_TOKEN`),
+`build.yml` actually triggers - that's why this skill does the tag push
+from the local checkout instead of from a workflow.
 
 The package version comes from `setuptools_scm` (the tag IS the version).
 There is no `version = ...` field to edit.
@@ -45,27 +66,31 @@ from `main`. Compute the next version:
 - Default = previous tag's patch + 1 (e.g. `v0.11.3` -> `0.11.4`).
 - For a minor/major bump (`0.12.0`, `1.0.0`), the user must have said so.
 
-Verify all version-touching files match. The `bump-bds` flow updates
-`include/endstone/detail.h` but typically misses other surfaces - check
-each one and edit it inline if it's stale.
+Verify all version-touching files match. The `bump-bds` flow updates the BDS
+version constants in `src/bedrock/shared_constants.h` but typically misses other
+surfaces - check each one and edit it inline if it's stale.
 
 ```shell
-grep -E 'ENDSTONE_VERSION_(MAJOR|MINOR|PATCH)|MINECRAFT_VERSION_(MAJOR|MINOR|PATCH)|NETWORK_PROTOCOL_VERSION' include/endstone/detail.h
+grep -E 'project\(endstone VERSION' include/CMakeLists.txt
+grep -E 'MajorVersion|MinorVersion|PatchVersion|NetworkProtocolVersion' src/bedrock/shared_constants.h
 grep -E 'minecraft-v[0-9]+\.[0-9]+_\(Bedrock\)' README.md
 ```
 
 Checklist:
 
-1. **`include/endstone/detail.h`** must have:
-   - `ENDSTONE_VERSION_PATCH` = the patch number being released
-   - `MINECRAFT_VERSION_MAJOR/MINOR/PATCH` = the supported BDS version
-   - `NETWORK_PROTOCOL_VERSION` = the BDS network protocol version
-   If any are stale, edit the macros directly.
-2. **`README.md` Minecraft badge**
+1. **`include/CMakeLists.txt`** `project(endstone VERSION x.y.z ...)` = the
+   version being released. This is the fallback; the wheel build overrides
+   `ENDSTONE_VERSION` with the exact setuptools_scm version, but the numeric
+   major/minor/patch and `ENDSTONE_API_VERSION` come from here.
+2. **`src/bedrock/shared_constants.h`** `SharedConstants` must have:
+   - `MajorVersion`/`MinorVersion`/`PatchVersion` = the supported BDS version
+   - `NetworkProtocolVersion` = the BDS network protocol version
+   If any are stale, edit the constants directly.
+3. **`README.md` Minecraft badge**
    (`https://img.shields.io/badge/minecraft-vNN.NN_(Bedrock)-black`) must
-   match `MINECRAFT_VERSION_MINOR.MINECRAFT_VERSION_PATCH` from
-   `detail.h`. Update with `Edit` if stale - the badge URL is the only
-   spot users see the supported BDS version on the project landing page.
+   match `MinorVersion.PatchVersion` from `shared_constants.h`. Update with
+   `Edit` if stale - the badge URL is the only spot users see the supported
+   BDS version on the project landing page.
 
 If any update is needed and the user hasn't already confirmed the target
 version, **STOP** to confirm before editing.
@@ -77,24 +102,28 @@ version, **STOP** to confirm before editing.
 Run in parallel:
 
 ```shell
-git status --porcelain                                          # must be empty
-git rev-list --left-right --count @{u}...HEAD                   # must be "0 0"
-gh run list --branch $(git rev-parse --abbrev-ref HEAD) --limit 5
+git status --porcelain                                                                       # must be empty
+git rev-list --left-right --count @{u}...HEAD                                                # must be "0 0"
+gh run list --branch $(git rev-parse --abbrev-ref HEAD) --workflow=build.yml --limit 3
+gh run list --branch $(git rev-parse --abbrev-ref HEAD) --workflow=ci.yml --limit 3
 ```
 
 Pass conditions:
 
 1. **Working tree clean.** `git status --porcelain` returns nothing.
 2. **In sync with origin.** Left-right count is `0  0`.
-3. **CI green on HEAD.** The latest `CI` and `Wheel` runs on this branch
-   conclude `success`. **Every** wheel job must pass - one failed
-   `manylinux_x86_64` or `win_amd64` job means PyPI publish fails after
-   the tag push, leaving an orphan tag.
+3. **Build green on HEAD.** Latest `Build` run on this branch concludes
+   `success`. **Every** wheel matrix job must pass - one failed
+   `manylinux_x86_64` or `win_amd64` job means the release job's PyPI
+   publish fails after the tag push, leaving an orphan tag.
+4. **CI green on HEAD.** Latest `CI` run (Release + Coverage) concludes
+   `success`. Less critical than Build (CI doesn't gate the release
+   path), but a red CI on the tag commit is a smell - investigate.
 
 If any check fails: surface the exact failure to the user and **STOP**.
-Do not proceed with a dirty tree, an out-of-sync branch, or failing CI.
+Do not proceed with a dirty tree, an out-of-sync branch, or failing Build.
 
-For a failed wheel job, fetch the log to diagnose:
+For a failed matrix job, fetch the log to diagnose:
 
 ```shell
 gh api repos/EndstoneMC/endstone/actions/jobs/<job_id>/logs 2>&1 | tail -100
@@ -141,8 +170,7 @@ point.
 
 ## Step 3 - stamp `CHANGELOG.md`
 
-This is the bookkeeping the old `release.yml` used to do via sed. Do it
-with the `Edit` tool now.
+Do this with the `Edit` tool.
 
 Get the previous tag and today's date:
 
@@ -180,8 +208,8 @@ was under `[Unreleased]` into the new `[X.Y.Z]` block.
 ```
 
 Verify the section header `## [X.Y.Z]` is unique and the section is
-non-empty - the `release.yml` workflow greps for it on the runner and
-fails the build if missing.
+non-empty - `build.yml`'s release job greps for it on the runner and fails
+the publish if missing.
 
 ---
 
@@ -197,7 +225,7 @@ git push --follow-tags origin $(git rev-parse --abbrev-ref HEAD)
 ```
 
 `--follow-tags` pushes the commit and the annotated tag in one go. As soon
-as it returns, three workflows start.
+as it returns, `build.yml` triggers on the tag push.
 
 If the push is rejected (someone else pushed first):
 
@@ -212,52 +240,60 @@ tag (rare; happens if the tag was pushed in a separate hook), explicitly
 
 ---
 
-## Step 5 - watch the fan-out
+## Step 5 - watch the Build run
 
-Confirm all three workflows started:
+Tag pushes trigger only `build.yml` (ci.yml's `push.branches` filter
+excludes tags, docker.yml is develop-only). Confirm the Build run
+started:
 
 ```shell
-gh run list --limit 10
+gh run list --workflow=build.yml --limit 3
 ```
 
-You should see new runs of `Release`, `Wheel`, `Docker` against
-`vX.Y.Z` (or the tag's commit SHA). If any are missing, the trigger
-didn't fire - investigate before declaring success.
+You should see a new `Build` run against `vX.Y.Z` (or the tag's commit
+SHA). If it's missing, the trigger didn't fire - investigate before
+declaring success.
 
 Watch progress:
 
 ```shell
-gh run list --workflow=release.yml --limit 1   # ~30 s
-gh run list --workflow=wheel.yml --limit 1     # ~20 min
-gh run list --workflow=docker.yml --limit 1    # ~10 min
+gh run watch <run_id>            # blocks until the run finishes
+gh run view <run_id> --json jobs --jq '.jobs[] | {name, conclusion}'
 ```
 
 For long-running watches, use `run_in_background: true` on the Bash tool
 with `gh run watch <run_id>` and check back later instead of polling.
 
-Expected outputs:
+Expected job outcomes on a tag push:
 
-- **release.yml**: re-extracts the `## [X.Y.Z]` section, creates the GH
-  release. Idempotent - if `wheel.yml`'s `softprops/action-gh-release@v2`
-  beat it to creating the release (while uploading the portable zip), it
-  updates instead of erroring.
-- **wheel.yml**: builds 10 wheels (cp310-cp314 × manylinux_x86_64/win_amd64)
-  + the Windows portable bundle, then publishes to PyPI via OIDC and
-  uploads the portable zip to the GH release. PyPI publish is gated by
-  `startsWith(github.ref, 'refs/tags/')`.
-- **docker.yml**: publishes `ghcr.io/endstonemc/endstone:X.Y.Z` and
-  `endstone/endstone:X.Y.Z`.
+- **wheels** (~15-20 min, parallel matrix): 10 wheels (cp310-cp314 ×
+  manylinux_x86_64/win_amd64). Linux wheels build inside the
+  `manylinux_2_31` container; deps come from the `Linux-conan-Release-*`
+  cache populated by prior develop/main pushes. Artifacts uploaded with
+  `archive: false`, so artifact names are the wheel filenames.
+- **bundle** (~1 min, needs wheels): produces
+  `endstone-X.Y.Z-windows-x86_64.zip` and `endstone-X.Y.Z-linux-x86_64.zip`
+  (cp313 wheel + `start.cmd`/`start.sh` + LICENSE + CHANGELOG).
+- **docker** (~5 min, needs wheels): builds the short-path image at
+  `.github/docker/Dockerfile` from the cp313 manylinux wheel artifact,
+  pushes `ghcr.io/endstonemc/endstone:X.Y.Z,:latest` and
+  `endstone/endstone:X.Y.Z,:latest`.
+- **release** (~3 min, needs wheels + bundle, tag-only): publishes wheels
+  to PyPI via OIDC, extracts the `## [X.Y.Z]` CHANGELOG section, creates
+  the GH release with body + uploaded bundle archives.
+
+Total wall time ~25 min (bounded by `wheels`).
 
 ---
 
 ## Step 6 - verify the artifacts
 
-Run in parallel after all three workflows succeed:
+Run in parallel after the Build run succeeds:
 
 ```shell
-gh release view vX.Y.Z                                                                    # release exists, has body, has portable zip
-pip index versions endstone                                                               # PyPI lists X.Y.Z
-gh api /orgs/EndstoneMC/packages/container/endstone/versions --jq '.[0].metadata.container.tags'   # GHCR has X.Y.Z
+gh release view vX.Y.Z                                                                              # release exists, has body, has bundle zips
+pip index versions endstone                                                                         # PyPI lists X.Y.Z
+gh api /orgs/EndstoneMC/packages/container/endstone/versions --jq '.[0].metadata.container.tags'    # GHCR has X.Y.Z
 curl -s https://hub.docker.com/v2/repositories/endstone/endstone/tags?page_size=5 | jq '.results[].name'   # Docker Hub has X.Y.Z
 ```
 
@@ -268,9 +304,8 @@ Report the verified artifact list back to the user.
 ## Step 7 - fast-forward `main` to the release commit
 
 Convention in this repo: `main` tracks the latest release branch's HEAD,
-so docker's nightly `main`-push build stays current and downstream consumers
-of `main` get the release. The release branch is normally ahead of `main`;
-fast-forward `main` to it.
+so downstream consumers of `main` get the release. The release branch is
+normally ahead of `main`; fast-forward `main` to it.
 
 Safety check first:
 
@@ -312,14 +347,16 @@ Release is done.
 
 ## Recovery cookbook
 
-- **`release.yml` failed (missing section).** Push a follow-up commit
-  fixing the `## [X.Y.Z]` header in `CHANGELOG.md`, then re-run
-  `release.yml` from the Actions UI.
-- **One wheel job failed.** Rerun just that job from the Actions UI.
-  Artifacts are kept; PyPI publish will retry. Do NOT re-tag.
-- **All wheels built but PyPI publish failed.** Rerun the `release` job
-  in `wheel.yml`; the wheels are already in artifacts.
-- **`docker.yml` failed.** Rerun from the Actions UI.
+- **release job failed (missing CHANGELOG section).** Push a follow-up
+  commit fixing the `## [X.Y.Z]` header in `CHANGELOG.md`, then rerun
+  the `release` job from the Actions UI.
+- **One wheel matrix job failed.** Rerun just that job from the Actions
+  UI. Other jobs' artifacts are kept; the `release` job will pick them up
+  on retry. Do NOT re-tag.
+- **All wheels built but PyPI publish failed.** Rerun the `release` job;
+  wheels are already in artifacts.
+- **docker job failed.** Rerun from the Actions UI. The image build is
+  independent of `release`, so PyPI publish proceeds regardless.
 - **CHANGELOG typo, tag already pushed.** Fix in a follow-up commit on
   the branch, then `gh release edit vX.Y.Z --notes-file <new-body>`.
 - **Wrong commit got tagged.** Avoid. If you must: delete the tag
@@ -344,7 +381,10 @@ Release is done.
   to `[X.Y.Z]` - copy contents into a new `[X.Y.Z]` stanza and leave
   `[Unreleased]` empty. Otherwise the next release loses its scratchpad
   and the `[Unreleased]:` ref link points to a missing anchor.
-- **Conan cache poisoning.** If CI uses a cached Conan package built
-  against a wrong profile/toolchain, evict it by bumping the cache key
-  in `.github/actions/setup-conan/action.yml` (currently
-  `hashFiles('conanfile.py')`) to also hash the profile files.
+- **Conan cache poisoning.** Cache writers are split: `build.yml`'s
+  `wheels` job saves Release binaries built inside `manylinux_2_31`;
+  `ci.yml`'s `coverage` job saves Debug binaries built on the host.
+  They live under different `${{ runner.os }}-conan-<type>` keys so they
+  don't collide. If a poisoned cache slips through (e.g. glibc symbol
+  mismatch like `_dl_find_object` from a host-built cpptrace), purge
+  with `gh cache list --json id,key | jq ... | xargs gh cache delete`.

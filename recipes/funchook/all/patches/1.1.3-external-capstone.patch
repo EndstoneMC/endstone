@@ -1,0 +1,35 @@
+Prefer find_package(capstone) over the bundled download.
+
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -86,6 +86,11 @@
+ # capstone
+ #
+ if (DISASM_CAPSTONE)
++  find_package(capstone CONFIG QUIET)
++endif ()
++if (DISASM_CAPSTONE AND TARGET capstone::capstone)
++  add_library(capstone-static ALIAS capstone::capstone)
++elseif (DISASM_CAPSTONE)
+   configure_file(cmake/capstone.cmake.in capstone-download/CMakeLists.txt)
+   execute_process(COMMAND "${CMAKE_COMMAND}" -G "${CMAKE_GENERATOR}" .
+       WORKING_DIRECTORY "${CMAKE_CURRENT_BINARY_DIR}/capstone-download"
+@@ -103,7 +108,8 @@
+   set(CAPSTONE_ARCHITECTURE_DEFAULT OFF CACHE BOOL "")
+   set(CAPSTONE_${FUNCHOOK_CPU_UPPER}_SUPPORT ON CACHE BOOL "")
+   add_subdirectory_pic(${CMAKE_CURRENT_BINARY_DIR}/capstone-src ${CMAKE_CURRENT_BINARY_DIR}/capstone-build)
+-
++endif ()
++if (DISASM_CAPSTONE)
+   list(APPEND FUNCHOOK_DEPS capstone-static)
+   set(DISASM capstone)
+ endif ()
+@@ -186,7 +192,7 @@
+   set_target_properties(${target_name} PROPERTIES ${FUNCHOOK_PROPERTIES})
+   target_include_directories(${target_name} PUBLIC include)
+   target_include_directories(${target_name} PRIVATE ${CMAKE_CURRENT_BINARY_DIR}) # to include config.h
+-  if (DISASM_CAPSTONE)
++  if (DISASM_CAPSTONE AND NOT TARGET capstone::capstone)
+     target_include_directories(${target_name} PRIVATE ${CMAKE_CURRENT_BINARY_DIR}/capstone-src/include)
+   endif()
+   target_link_libraries(${target_name} PRIVATE ${FUNCHOOK_DEPS})

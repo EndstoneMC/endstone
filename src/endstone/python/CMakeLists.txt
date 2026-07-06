@@ -30,11 +30,13 @@ pybind11_add_module(_python MODULE
         util.cpp
 )
 target_link_libraries(_python PRIVATE endstone::endstone pybind11::module)
+target_include_directories(_python PRIVATE ${CMAKE_SOURCE_DIR}/src)
 target_compile_definitions(_python PUBLIC PYBIND11_DETAILED_ERROR_MESSAGES)
 
 if (WIN32)
+    find_package(detours CONFIG REQUIRED)
     pybind11_add_module(_detours MODULE _detours.cpp)
-    target_link_libraries(_detours PRIVATE detours)
+    target_link_libraries(_detours PRIVATE detours::detours)
 endif ()
 
 if (MSVC)
@@ -60,6 +62,14 @@ include(GNUInstallDirs)
 install(TARGETS _python DESTINATION "endstone" COMPONENT endstone_wheel OPTIONAL)
 if (WIN32)
     install(TARGETS _detours DESTINATION "endstone" COMPONENT endstone_wheel OPTIONAL)
+    install(PROGRAMS
+            "${SENTRY_NATIVE_BIN_DIR}/crashpad_handler.exe"
+            "${SENTRY_NATIVE_BIN_DIR}/crashpad_wer.dll"
+            DESTINATION "endstone" COMPONENT endstone_wheel)
+else ()
+    install(PROGRAMS
+            "${SENTRY_NATIVE_BIN_DIR}/crashpad_handler"
+            DESTINATION "endstone" COMPONENT endstone_wheel)
 endif ()
 if (MSVC)
     install(FILES $<TARGET_PDB_FILE:_python> DESTINATION "endstone" COMPONENT endstone_wheel OPTIONAL)

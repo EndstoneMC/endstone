@@ -79,8 +79,8 @@ private:
     Bedrock::Threading::Thread server_instance_thread_;
     Bedrock::Threading::Mutex resume_mutex_;
     Bedrock::Threading::ConditionVariable resume_signal_;
-    std::unique_ptr<ServerScriptManager> server_script_manager_;
     std::unique_ptr<Scripting::RegistryManager> script_registry_manager_;
+    std::unique_ptr<ServerScriptManager> server_script_manager_;
     std::function<void(const char *)> script_watchdog_critical_error_callback_;
     std::function<void(Connection::DisconnectFailReason, const char *)> unrecoverable_error_callback_;
     bool handled_level_corruption_;

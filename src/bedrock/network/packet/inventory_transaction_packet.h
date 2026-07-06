@@ -16,14 +16,27 @@
 
 #include <memory>
 #include <utility>
+#include <variant>
 #include <vector>
 
 #include "bedrock/forward.h"
 #include "bedrock/network/packet.h"
+#include "bedrock/network/packet/cerealize/core/serialization_mode.h"
 #include "bedrock/world/containers/container_enum.h"
 #include "bedrock/world/inventory/network/item_stack_net_id_variant.h"
+#include "bedrock/world/inventory/transaction/item_release_inventory_transaction.h"
+#include "bedrock/world/inventory/transaction/item_use_inventory_transaction.h"
+#include "bedrock/world/inventory/transaction/item_use_on_actor_inventory_transaction.h"
 
 using ItemStackLegacyRequestId = TypedClientNetId<ItemStackLegacyRequestIdTag>;
+
+struct NormalTransactionData {
+    InventoryTransaction transaction;
+};
+
+struct InventoryMismatchData {
+    InventoryTransaction transaction;
+};
 
 class InventoryTransactionPacket : public Packet {
 public:
@@ -35,8 +48,12 @@ public:
 
     ItemStackLegacyRequestId legacy_request_id;
     std::vector<std::pair<ContainerEnumName, std::vector<unsigned char>>> legacy_set_item_slots;
+    std::variant<NormalTransactionData, InventoryMismatchData, ItemUseInventoryTransaction,
+                 ItemUseOnActorInventoryTransaction, ItemReleaseInventoryTransaction>
+        variant_transaction;
     std::unique_ptr<ComplexInventoryTransaction> transaction;
     bool is_client_side;
+    SerializationMode serialization_mode{SerializationMode::CerealOnly};
 
 private:
     Bedrock::Result<void> _read(ReadOnlyBinaryStream &stream) override;

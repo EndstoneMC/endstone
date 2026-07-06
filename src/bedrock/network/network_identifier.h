@@ -14,13 +14,23 @@
 
 #pragma once
 
+#ifdef _WIN32
+#ifndef WIN32_LEAN_AND_MEAN
+#define WIN32_LEAN_AND_MEAN
+#endif
+#ifndef NOMINMAX
+#define NOMINMAX
+#endif
+#endif
+
+#include <RakNetTypes.h>
+
 #include <cstdint>
 #include <string>
 
 #include "bedrock/bedrock.h"
 #include "bedrock/common_types.h"
 #include "bedrock/deps/nethernet/network_id.h"
-#include "bedrock/deps/raknet/raknet_types.h"
 
 class NetworkIdentifier {
 public:

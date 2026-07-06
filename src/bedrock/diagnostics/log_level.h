@@ -14,11 +14,44 @@
 
 #pragma once
 
+#include <cstdint>
+
 namespace Bedrock {
-enum LogLevel : int {
-    Verbose = 1,
-    Info = 2,
-    Warning = 4,
-    Error = 8,
+class LogLevel {
+public:
+    enum class Type : std::uint8_t {
+        Verbose = 1,
+        Info = 2,
+        Warning = 4,
+        Error = 8,
+    };
+
+    struct InPublishT {};
+
+    static const LogLevel Verbose;
+    static const LogLevel Info;
+    static const LogLevel Warning;
+    static const LogLevel Error;
+    static const InPublishT InPublish;
+
+    constexpr LogLevel(Type type) : type_(type) {}
+    [[nodiscard]] constexpr Type getType() const { return type_; }
+
+    LogLevel operator|(const InPublishT &) const
+    {
+        LogLevel result = *this;
+        result.log_in_publish_ = true;
+        return result;
+    }
+
+private:
+    Type type_;
+    bool log_in_publish_{false};
 };
+
+inline const LogLevel LogLevel::Verbose{LogLevel::Type::Verbose};
+inline const LogLevel LogLevel::Info{LogLevel::Type::Info};
+inline const LogLevel LogLevel::Warning{LogLevel::Type::Warning};
+inline const LogLevel LogLevel::Error{LogLevel::Type::Error};
+inline const LogLevel::InPublishT LogLevel::InPublish{};
 }  // namespace Bedrock

@@ -14,9 +14,9 @@
 
 #pragma once
 
-#include "bedrock/world/level/block/actor/block_actor.h"
+#include "bedrock/world/level/block/actor/vanilla_block_actor.h"
 
-class BeehiveBlockActor : public BlockActor {
+class BeehiveBlockActor : public VanillaBlockActor {
 public:
     static constexpr BlockActorType TypeId = BlockActorType::Beehive;
     BeehiveBlockActor(const BlockPos &);

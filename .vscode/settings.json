@@ -1,0 +1,6 @@
+{
+    "cmake.configureSettings": {
+        "CMAKE_EXPORT_COMPILE_COMMANDS": "ON"
+    },
+    "C_Cpp.intelliSenseEngine": "disabled"
+}

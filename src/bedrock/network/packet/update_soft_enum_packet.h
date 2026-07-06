@@ -15,6 +15,7 @@
 #pragma once
 
 #include "bedrock/network/packet.h"
+#include "bedrock/network/packet/cerealize/core/serialization_mode.h"
 
 enum class SoftEnumUpdateType : uint8_t {
     Add = 0,
@@ -24,7 +25,8 @@ enum class SoftEnumUpdateType : uint8_t {
 
 class UpdateSoftEnumPacket : public Packet {
 public:
+    SoftEnumUpdateType type;
     std::string enum_name;
     std::vector<std::string> values;
-    SoftEnumUpdateType type;
+    SerializationMode serialization_mode{SerializationMode::CerealOnly};
 };

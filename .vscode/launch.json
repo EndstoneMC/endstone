@@ -1,0 +1,24 @@
+{
+  "version": "0.2.0",
+  "configurations": [
+    {
+      "name": "Endstone: Run",
+      "type": "debugpy",
+      "request": "launch",
+      "module": "endstone",
+      "args": [
+        "--server-folder",
+        ".",
+        "--interactive",
+      ],
+      "cwd": "${workspaceFolder}/bedrock_server",
+      "justMyCode": false,
+    },
+    {
+      "name": "LLDB: Attach to process",
+      "type": "lldb",
+      "request": "attach",
+      "pid": "${command:pickProcess}"
+    },
+  ]
+}

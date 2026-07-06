@@ -14,8 +14,10 @@
 
 #include "endstone_python.h"
 
+#include <format>
 #include <utility>
 
+#include "bedrock/shared_constants.h"
 #include "endstone/detail.h"
 #include "endstone/endstone.hpp"
 #include "registry.h"
@@ -180,7 +182,8 @@ PYBIND11_MODULE(_python, m)  // NOLINT(*-use-anonymous-namespace)
     init_server(server);
     init_event(m_event, event);
 
-    m.attr("__minecraft_version__") = MINECRAFT_VERSION;
+    m.attr("__minecraft_version__") =
+        std::format("{}.{}", SharedConstants::MinorVersion, SharedConstants::PatchVersion);
 }
 
 void init_color_format(py::module_ &m)

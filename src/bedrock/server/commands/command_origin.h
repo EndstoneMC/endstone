@@ -72,9 +72,10 @@ public:
     [[nodiscard]] virtual Vec3 getExecutePosition(int, const CommandPositionFloat &) const = 0;  // 28
     [[nodiscard]] virtual CompoundTag serialize() const = 0;                                     // 29
     [[nodiscard]] virtual bool isValid() const = 0;                                              // 30
+    [[nodiscard]] virtual bool requiresValidLevel() const = 0;                                   // 31
 
 protected:
-    virtual void _setUUID(const mce::UUID &uuid) = 0;  // 31
+    virtual void _setUUID(const mce::UUID &uuid) = 0;  // 32
 
 public:
     [[nodiscard]] std::shared_ptr<endstone::CommandSender> getEndstoneSender(CommandOutput &output) const;  // Endstone

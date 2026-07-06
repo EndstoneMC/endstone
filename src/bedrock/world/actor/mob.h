@@ -121,7 +121,6 @@ protected:
 
 private:
     bool has_bound_origin_;
-    std::optional<bool> actually_do_knockback_or_not_really_bad_hack_do_not_use_;
     MobSpawnMethod spawn_method_;
     bool create_ai_on_reload_;
     ActorUniqueID caravan_head_;

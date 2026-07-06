@@ -8,11 +8,27 @@ on:
       - synchronize
       - reopened
       - ready_for_review
+    paths: &code-paths
+      - 'src/**'
+      - 'include/**'
+      - 'endstone/**'
+      - 'tests/**'
+      - 'recipes/**'
+      - 'scripts/**'
+      - 'CMakeLists.txt'
+      - 'conanfile.py'
+      - 'pyproject.toml'
+      - 'codecov.yml'
+      - '.conan2/**'
+      - '.conanrc'
+      - '.github/workflows/ci.yml'
+      - '.github/actions/**'
   push:
     branches:
       - main
-      - stable
+      - develop
       - v*
+    paths: *code-paths
 
 permissions: read-all
 
@@ -22,18 +38,12 @@ concurrency:
 
 jobs:
   build:
+    name: Build on ${{ matrix.os }}
+    runs-on: ${{ matrix.os }}
     strategy:
       fail-fast: false
       matrix:
-        build_type: [ Release ]
         os: [ ubuntu-22.04, windows-2022 ]
-        include:
-          - os: ubuntu-22.04
-            build_type: Debug
-            coverage: true
-
-    name: Build on ${{ matrix.os }} (${{ matrix.build_type }})
-    runs-on: ${{ matrix.os }}
 
     steps:
       - name: Checkout Code
@@ -55,28 +65,62 @@ jobs:
       - name: Set up CMake and Ninja
         uses: lukka/get-cmake@latest
 
+      - name: Restore Conan cache
+        uses: ./.github/actions/conan-cache/restore
+
       - name: Set up Conan
         uses: ./.github/actions/setup-conan
-        with:
-          build-type: ${{ matrix.build_type }}
 
       - name: Build with CMake
         run: |
-          cd build/${{ matrix.build_type }}
-          cmake ../.. -G Ninja -DCMAKE_TOOLCHAIN_FILE="generators/conan_toolchain.cmake" -DCMAKE_BUILD_TYPE=${{ matrix.build_type }} ${{ matrix.coverage && '-DCODE_COVERAGE=ON' || '' }}
-          cmake --build .
+          cmake --preset conan-relwithdebinfo
+          cmake --build --preset conan-relwithdebinfo
 
       - name: Run Tests
-        run: ctest --test-dir build/${{ matrix.build_type }}
+        run: ctest --preset conan-relwithdebinfo
+
+  coverage:
+    name: Coverage
+    runs-on: ubuntu-22.04
+
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v6
+        with:
+          fetch-depth: 0
+          submodules: true
+
+      - name: Set up Clang (Linux)
+        uses: ./.github/actions/setup-clang
+
+      - name: Set up CMake and Ninja
+        uses: lukka/get-cmake@latest
+
+      - name: Restore Conan cache
+        uses: ./.github/actions/conan-cache/restore
+
+      - name: Set up Conan
+        uses: ./.github/actions/setup-conan
+        with:
+          install-dependencies: 'false'
+
+      - name: Install dependencies (Endstone=Debug, deps=Release)
+        run: conan install . --build=missing -s "&:build_type=Debug"
+
+      - name: Build with CMake
+        run: |
+          cmake --preset conan-debug -DCODE_COVERAGE=ON
+          cmake --build --preset conan-debug
+
+      - name: Run Tests
+        run: ctest --preset conan-debug
 
       - name: Generate Coverage Report
-        if: matrix.coverage
         run: |
           pip install gcovr
-          gcovr -r . --filter src/endstone_core/ --gcov-executable "llvm-cov gcov" --xml coverage.xml build/${{ matrix.build_type }}
+          gcovr -r . --filter src/endstone_core/ --gcov-executable "llvm-cov gcov" --xml coverage.xml build/Debug
 
       - name: Upload Coverage to Codecov
-        if: matrix.coverage
-        uses: codecov/codecov-action@v5
+        uses: codecov/codecov-action@v6
         env:
           CODECOV_TOKEN: ${{ secrets.CODECOV_TOKEN }}

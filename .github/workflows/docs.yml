@@ -3,7 +3,7 @@ on:
   workflow_dispatch:
   push:
     branches:
-      - main
+      - develop
     tags:
       - 'v*'
     paths:
@@ -43,7 +43,10 @@ jobs:
           restore-keys: |
             mkdocs-material-
       - run: pip install -r docs/requirements.txt
-      - if: github.ref == 'refs/heads/main'
+      - if: github.ref == 'refs/heads/develop'
         run: mike deploy --push latest
       - if: startsWith(github.ref, 'refs/tags/')
-        run: mike deploy --push --update-aliases ${{ github.ref_name }} stable
+        run: |
+          minor=$(echo "${{ github.ref_name }}" | sed -E 's/^(v[0-9]+\.[0-9]+).*/\1/')
+          mike deploy --push --update-aliases "$minor" stable
+          mike set-default --push stable

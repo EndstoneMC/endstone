@@ -78,7 +78,7 @@ public:
     bool getSecondPart(const BlockSource &region, const BlockPos &pos, BlockPos &out) const;
     void destroy(BlockSource &region, const BlockPos &pos, Actor *entity_source) const;
     void spawnResources(BlockSource &region, const BlockPos &pos, IRandom &random,
-                        const ResourceDropsContext &resource_drops_context) const;
+                        const ResourceDropsContext &resource_drops_context, const Actor *actor_context) const;
     [[nodiscard]] const Material &getMaterial() const;
     [[nodiscard]] float getFriction() const;
     [[nodiscard]] float getDestroySpeed() const;

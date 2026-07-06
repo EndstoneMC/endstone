@@ -15,10 +15,12 @@
 #pragma once
 
 #include <memory>
+#include <optional>
 #include <string>
 
 #include "bedrock/bedrock.h"
 #include "bedrock/certificates/identity/game_server_token.h"
+#include "bedrock/world/actor/player/player_party_info.h"
 #include "bedrock/core/utility/callback_token.h"
 #include "bedrock/network/server_network_system.h"
 #include "bedrock/world/actor/player/player.h"
@@ -55,6 +57,7 @@ private:
     uint32_t client_view_radius_;
     uint32_t client_requested_radius_;
     bool is_compatible_with_client_side_chunk_gen_;
+    std::optional<PlayerPartyInfo> party_info_;
     int remaining_structure_refresh_ticks_;
     StructureFeatureType current_structure_feature_;
     // ...

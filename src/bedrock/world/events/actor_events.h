@@ -236,7 +236,7 @@ template <>
 struct ActorGameplayEvent<void>
     : ConstEventVariant<ActorAcquiredItemEvent, ActorAnimationChangedEvent, ActorAttackEvent,
                         ActorCarriedItemChangedEvent, ActorDefinitionTriggeredEvent, ActorDefinitionEndedEvent,
-                        ActorDiedEvent, ActorDroppedItemEvent, ActorEquippedArmorEvent, ActorHurtEvent, ActorHealEvent,
+                        ActorDiedEvent, ActorDroppedItemEvent, ActorEquippedArmorEvent, ActorHealEvent, ActorHurtEvent,
                         ActorHealthChangedEvent, ActorKilledEvent, ActorPlacedItemEvent, ActorRemovedEvent,
                         ActorRemoveEffectEvent, ActorStartRidingEvent, ActorUpgradeTriggeredEvent,
                         ActorUpgradeEndedEvent, ActorUseItemEvent, KnockBackEvent, MountTamingEvent,

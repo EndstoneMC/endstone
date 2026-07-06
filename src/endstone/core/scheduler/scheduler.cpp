@@ -78,29 +78,35 @@ std::shared_ptr<Task> EndstoneScheduler::runTaskTimerAsync(Plugin &plugin, std::
 
 void EndstoneScheduler::cancelTask(TaskId id)
 {
-    std::lock_guard lock{tasks_mtx_};
-    auto it = tasks_.find(id);
-    if (it == tasks_.end()) {
-        return;
+    std::shared_ptr<EndstoneTask> task;
+    {
+        std::lock_guard lock{tasks_mtx_};
+        auto it = tasks_.find(id);
+        if (it == tasks_.end()) {
+            return;
+        }
+        task = it->second;
+        if (task->isSync()) {
+            tasks_.erase(it);
+        }
     }
-    auto task = it->second;
+    // Cancel outside the lock: an async task's doCancel() may call back into removeTask(),
+    // which re-locks tasks_mtx_ and would deadlock if we still held it here.
     task->doCancel();
-    if (task->isSync()) {
-        tasks_.erase(it);
-    }
 }
 
 void EndstoneScheduler::cancelTasks(Plugin &plugin)
 {
-    std::lock_guard lock{tasks_mtx_};
-    for (auto it = tasks_.begin(); it != tasks_.end();) {
-        if (it->second->getOwner() != &plugin) {
-            ++it;
-        }
-        else {
-            auto task = it->second;
-            task->doCancel();
-            if (task->isSync()) {
+    std::vector<std::shared_ptr<EndstoneTask>> cancelling;
+    {
+        std::lock_guard lock{tasks_mtx_};
+        for (auto it = tasks_.begin(); it != tasks_.end();) {
+            if (it->second->getOwner() != &plugin) {
+                ++it;
+                continue;
+            }
+            cancelling.push_back(it->second);
+            if (it->second->isSync()) {
                 it = tasks_.erase(it);
             }
             else {
@@ -108,19 +114,29 @@ void EndstoneScheduler::cancelTasks(Plugin &plugin)
             }
         }
     }
+    // Cancel outside the lock: an async task's doCancel() may call back into removeTask(),
+    // which re-locks tasks_mtx_ and would deadlock if we still held it here.
+    for (const auto &task : cancelling) {
+        task->doCancel();
+    }
 }
 
 bool EndstoneScheduler::isRunning(TaskId id)
 {
-    std::lock_guard lock{tasks_mtx_};
-    auto it = tasks_.find(id);
-    if (it == tasks_.end()) {
-        return false;
+    std::shared_ptr<EndstoneTask> task;
+    {
+        std::lock_guard lock{tasks_mtx_};
+        auto it = tasks_.find(id);
+        if (it == tasks_.end()) {
+            return false;
+        }
+        task = it->second;
+        if (task->isSync()) {
+            return current_task_ == id;
+        }
     }
-    auto &task = it->second;
-    if (task->isSync()) {
-        return current_task_ == id;
-    }
+    // Query the workers outside the lock: getWorkers() takes the task's own mutex, which must
+    // never be held together with tasks_mtx_ (see run()/doCancel()).
     return std::static_pointer_cast<EndstoneAsyncTask>(task)->getWorkers().empty();
 }
 
@@ -163,6 +179,19 @@ void EndstoneScheduler::addTask(std::shared_ptr<EndstoneTask> task)
 
 void EndstoneScheduler::mainThreadHeartbeat(std::uint64_t current_tick)
 {
+    // The tick we receive is the level's persisted, ever-increasing server tick, not a zero-based
+    // session counter (BDS has no equivalent of Bukkit's MinecraftServer.tickCount). Anchor a base
+    // on the first heartbeat and work in session-relative ticks from here on, so that delays
+    // registered before the first heartbeat (e.g. in Plugin::onEnable or ServerLoadEvent) are
+    // measured from "now" instead of from tick 0 -- which on a played-in world is already far in
+    // the past, causing those tasks to fire immediately. (#317)
+    if (!base_tick_) {
+        base_tick_ = current_tick;
+    }
+    // +1 so the first heartbeat is tick 1: the counter advances 0 -> 1 on the first tick, matching
+    // the contract that a task registered with delay N runs on the Nth tick.
+    current_tick = current_tick - *base_tick_ + 1;
+
     // Consume the tasks in the pending queue
     std::shared_ptr<EndstoneTask> pending_task;
     while (pending_.try_dequeue(pending_task)) {

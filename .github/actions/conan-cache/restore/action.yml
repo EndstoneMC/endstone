@@ -1,0 +1,24 @@
+name: 'Restore Conan cache'
+description: 'Restore .conan2/p from the Actions cache for the given build type.'
+
+inputs:
+  build-type:
+    description: 'CMake build type that the cached binaries were built for.'
+    required: false
+    default: 'Release'
+
+outputs:
+  cache-hit:
+    description: 'Whether an exact cache key match was found.'
+    value: ${{ steps.restore.outputs.cache-hit }}
+
+runs:
+  using: 'composite'
+  steps:
+    - id: restore
+      uses: actions/cache/restore@v5
+      with:
+        path: .conan2/p
+        key: ${{ runner.os }}-conan-${{ inputs.build-type }}-${{ hashFiles('conanfile.py', '.conan2/profiles/*') }}
+        restore-keys: |
+          ${{ runner.os }}-conan-${{ inputs.build-type }}-

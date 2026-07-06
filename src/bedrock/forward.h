@@ -33,6 +33,7 @@ class EndstoneServerNetworkEventHandler;
 using AttributeMessageType = int64_t;
 
 // Classes
+class _TickPtr;  // NOLINT
 class ActionQueue;
 class ActorAnimationControllerGroup;
 class ActorAnimationGroup;
@@ -44,6 +45,7 @@ class ActorDefinitionDiffList;
 class ActorDefinitionGroup;
 class ActorEvent;
 class ActorInteraction;
+class ActorRotationComponent;
 class ActorSpawnRuleGroup;
 class ActorUnloadedChunkTransferEntry;
 class AllowList;
@@ -51,13 +53,15 @@ class AnimationComponent;
 class AppConfigs;
 class AppPlatform;
 class AsyncJoinTaskManager {};
+class AutoCompleteInformation;
 class AutomationBehaviorTreeGroup;
 class BaseLightTextureImageBuilder;
+class BasicTimer {};
 class BehaviorFactory;
 class BiomeComponentFactory;
 class BiomeManager;
 class BlendingDataProvider;
-class BlockClimberDefinition;
+class BlockActorDynamicPropertiesComponent {};
 class BlockComponentFactory;
 class BlockDefinitionGroup;
 class BlockEventDispatcher;
@@ -82,7 +86,6 @@ class CompactionStatus;
 class ComplexInventoryTransaction;
 class ContainerManagerModel;
 class ContainerModel;
-class ContainerRemovedListener;
 class ContentCatalogPackSource;
 class CopperBehavior;
 class CraftingContainer;
@@ -105,6 +108,7 @@ class FrameUpdateContextBase;
 class GameEventDispatcher {};
 class GameMode;
 class GameModuleServer;
+class GameTestLevelListener {};
 class GetCollisionShapeInterface;
 class HudContainerManagerModel;
 class I18nObserver;
@@ -123,20 +127,19 @@ class ILevelRandom;
 class ILevelStorageManagerConnector;
 class IMinecraftEventing;
 class INpcDialogueData;
-class IUnknownBlockTypeRegistry;
 class InternalComponentRegistry;
 class InvalidPacks {};
 class IOptionsReader;
 class IServerNetworkController;
 class ISubChunkLighter {};
 class ItemComponent;
-class ItemComponentPacket;
 struct ItemComprehensiveLoadResult;
 class ItemData;
 struct ItemIconInfoFactory;
 class ItemStackNetManagerBase;
 class ItemStackRequestData {};
 class ITickingSystem;
+class IUnknownBlockTypeRegistry;
 class IWorldRegistriesProvider;
 class JigsawStructureRegistry;
 class LevelChunkBuilderData;
@@ -150,8 +153,7 @@ class LevelStorageWriteBatch;
 class LinkedAssetValidator {};
 class LocalConnector;
 class LootTables;
-class MaterialTypeHelper;
-class MinecraftGameTest;
+class MinecraftGameTest {};
 class MinecraftServiceKeyManager;
 class MobAnimationComponent;
 class MobHurtTimeComponent;
@@ -162,12 +164,11 @@ class NavigationComponent;
 class NetworkChunkPublisher;
 class NetworkSessionOwner;
 class NetworkStatistics {};
-class NonceWithTTL;
 class Options;
+class PackedItemUseLegacyInventoryTransaction {};
+class PackLoadContext;
 class PackManifestFactory;
 class PackMetadata;
-class ScriptPackSettingsCache;
-class PackLoadContext;
 class PackSettingsFactory;
 class Particle;
 class Path;
@@ -176,24 +177,22 @@ class PermissionsFile;
 class PhotoStorage;
 class PlayerAbilitiesManager;
 class PlayerContainerRefresher;
-class PackedItemUseLegacyInventoryTransaction {};
-class PlayerPermissionsManager;
-class PlayerPermissionsSynchroniser;
 class PlayerDestroyProgressCacheComponent;
 class PlayerLimboActorManager;
 class PlayerListener;
+class PlayerListEntries;
 class PlayerListEntry;
 class PlayerLocationReceiver;
 class PlayerMovementSettings;
+class PlayerPermissionsManager;
+class PlayerPermissionsSynchroniser;
 class PortalForcer;
 class PositionTrackingDBClient;
 class PositionTrackingDBServer;
 class PostprocessingManager;
 class PrivateKeyManager;
-class ProfilingManager;
-class PropertyGroupManager;
-class PropertiesSettings;
 class ProjectileFactory;
+class PropertyGroupManager;
 class RenderParams;
 class RepositoryPacks;
 class ResolvedItemIconInfo;
@@ -208,6 +207,8 @@ class SavedDataStorage;
 class Scheduler;
 class ScreenSetupCleanupHelper;
 class ScreenshotOptions;
+class ScriptDeferredFlushTracker;
+class ScriptPackSettingsCache;
 class SearchQuery;
 class Seasons {};
 class ServerConnectionAuthValidator;
@@ -224,32 +225,26 @@ class StructureManager;
 class SubChunkInterlocker;
 class SubChunkPacket;
 class SubChunkPos;
-class SurfaceBuilderRegistry;
 class SubpackInfoCollection;
-class TextFilteringProcessor;
-class TestPackSource;
+class SurfaceBuilderRegistry;
+struct SyncedClientOptionsComponent;
 class TaskGroup {};
+class TextFilteringProcessor;
 class TickingAreaList;
 class TickingAreasManager;
 class TickTimeManager;
 class TintMapColor;
-class TrackedPacketDataContainer;
 class TrackedUniqueChunkPtr;
 class TrimMaterialRegistry;
 class TrimPatternRegistry;
-class UpdateEntityAfterFallOnInterface;
 class VolumeEntityManagerServer;
 class WorldClockRegistry;
 class WorldGenerator;
 class WorldHistoryPackSource;
 class WorldSessionEndPoint {};
-class _TickPtr;  // NOLINT
-
-struct SyncedClientOptionsComponent;
 
 // Enums
 enum class ArmorMaterialType;
-enum class ArmorTextureType;
 enum class BehaviorStatus;
 enum BlockActorRendererId : std::uint8_t;
 enum class BlockRenderLayer : std::uint8_t;
@@ -299,12 +294,12 @@ namespace cg {
 class ImageBuffer;
 }
 namespace Core {
-class FileSystem;
 class FilePathManager;
 class FileStorageArea;
+class FileSystem;
 class LevelStorageResult;
-class StorageAreaState;
 class Random {};
+class StorageAreaState;
 }  // namespace Core
 namespace ClientBlobCache {
 namespace Server {
@@ -321,6 +316,7 @@ namespace Social {
 class GameConnectionInfo;
 class GamePublishSetting;
 class MultiplayerServiceManager;
+struct Nonce;
 }  // namespace Social
 namespace Scripting {
 class LifetimeRegistryReference;
@@ -343,8 +339,8 @@ class VoxelShapeRegistry;
 
 namespace br::spawn {
 class EntityTypeCache;
-struct State;
 class SpawnPlacements;
+struct State;
 }  // namespace br::spawn
 
 namespace MovementDataExtractionUtility {
@@ -361,8 +357,8 @@ public:
 
 // Template Classes
 template <typename Type, typename... Args>
-class OwnerPtrFactory;
-template <typename Type, typename... Args>
 class Factory;
+template <typename Type, typename... Args>
+class OwnerPtrFactory;
 template <typename T>
 class ServiceReference;

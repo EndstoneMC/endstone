@@ -3,6 +3,7 @@ project(endstone_runtime LANGUAGES CXX)
 
 set(PYBIND11_FINDPYTHON ON)
 find_package(pybind11 CONFIG REQUIRED)
+find_package(funchook CONFIG REQUIRED)
 
 add_library(endstone_runtime SHARED
         bedrock_hooks/actor.cpp
@@ -39,7 +40,6 @@ add_library(endstone_runtime SHARED
         bedrock_hooks/server_instance.cpp
         bedrock_hooks/server_network_handler.cpp
         bedrock_hooks/server_player.cpp
-        bedrock_hooks/server_player_movement_correction_system.cpp
         bedrock_hooks/weather_manager.cpp
         main.cpp
         hook.cpp

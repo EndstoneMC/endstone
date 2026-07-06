@@ -14,9 +14,11 @@
 
 #pragma once
 
+#include <memory>
 #include <string>
 
 #include "bedrock/core/container/enum_set.h"
+#include "bedrock/forward.h"
 #include "bedrock/safety/redactable_string.h"
 #include "bedrock/world/actor/actor_terrain_interlock_data.h"
 #include "bedrock/world/item/save_context.h"
@@ -39,36 +41,12 @@ public:
 
     BlockActor(BlockActorType, const BlockPos &, const std::string &);
     virtual ~BlockActor() = default;
-    virtual void load(ILevel &, const CompoundTag &, DataLoadHelper &) = 0;
-    virtual bool save(CompoundTag &, const SaveContext &) const = 0;
-    virtual bool saveItemInstanceData(CompoundTag &, const SaveContext &) const = 0;
-    virtual void saveBlockData(CompoundTag &, BlockSource &) const = 0;
-    virtual void loadBlockData(const CompoundTag &, BlockSource &, DataLoadHelper &) = 0;
-    virtual void onCustomTagLoadDone(BlockSource &) = 0;
-    [[nodiscard]] virtual bool isPermanentlyRendered() const = 0;
-    [[nodiscard]] virtual bool isWithinRenderDistance(const Vec3 &) const = 0;
-    virtual void tick(BlockSource &) = 0;
-
-    void setChanged() { properties_.insert(Property::Changed); }
-
-    [[nodiscard]] bool isChanged() const { return properties_.contains(Property::Changed); }
 
     [[nodiscard]] BlockActorType getType() const { return type_; }
 
-    int tick_count;
-
 protected:
-    int repair_cost_;
-    BlockPos position_;
-    AABB bb_;
-    BlockActorRendererId renderer_id_;
-    const BlockActorType type_;
-    Properties properties_;
-    Bedrock::Safety::RedactableString custom_name_;
-    std::string filtered_custom_name_;
-    ActorTerrainInterlockData terrain_interlock_data_;
-
-    // private:
-    //     bool changed_;
+    BlockPos position_;          // +8
+    const BlockActorType type_;  // +20
+    std::unique_ptr<BlockActorDynamicPropertiesComponent> dynamic_properties_;  // +24
 };
-BEDROCK_STATIC_ASSERT_SIZE(BlockActor, 184, 160);
+BEDROCK_STATIC_ASSERT_SIZE(BlockActor, 32, 32);

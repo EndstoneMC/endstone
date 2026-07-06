@@ -15,6 +15,7 @@
 #include "endstone/core/server.h"
 
 #include <filesystem>
+#include <format>
 #include <iostream>
 #include <memory>
 
@@ -289,12 +290,12 @@ std::string EndstoneServer::getVersion() const
 
 std::string EndstoneServer::getMinecraftVersion() const
 {
-    return MINECRAFT_VERSION;
+    return std::format("{}.{}", SharedConstants::MinorVersion, SharedConstants::PatchVersion);
 }
 
 int EndstoneServer::getProtocolVersion() const
 {
-    return NETWORK_PROTOCOL_VERSION;
+    return SharedConstants::NetworkProtocolVersion;
 }
 
 Logger &EndstoneServer::getLogger() const

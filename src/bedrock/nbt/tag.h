@@ -42,8 +42,8 @@ public:
     [[nodiscard]] virtual std::string toString() const = 0;
     [[nodiscard]] virtual Type getId() const = 0;
     [[nodiscard]] virtual bool equals(Tag const &other) const;
-    virtual void print(std::string const &, PrintStream &stream) const;
     virtual void print(PrintStream &stream) const;
+    virtual void print(std::string const &, PrintStream &stream) const;
     [[nodiscard]] virtual std::unique_ptr<Tag> copy() const = 0;
     [[nodiscard]] virtual std::size_t hash() const = 0;
 

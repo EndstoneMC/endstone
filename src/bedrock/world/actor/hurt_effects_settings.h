@@ -14,21 +14,14 @@
 
 #pragma once
 
-struct HurtEffectsSettings {
-    enum class ApplyKnockback : int {
-        Yes = 0,
-        No = 1,
-    };
-    enum class Ignite : int {
-        Yes = 0,
-        No = 1,
-    };
-    enum class ReceiveDamage : int {
-        Yes = 0,
-        No = 1,
-    };
+#include <optional>
 
-    ApplyKnockback knockback;
-    Ignite ignition;
-    ReceiveDamage receive_damage;
+#include "bedrock/core/math/vec3.h"
+
+struct HurtEffectsSettings {
+    bool knockback;
+    bool ignition;
+    bool receive_damage;
+    std::optional<Vec3> aim_direction;
+    float extra_knockback_power;
 };

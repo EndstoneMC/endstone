@@ -1,0 +1,7 @@
+{
+    "recommendations": [
+        "ms-vscode.cmake-tools",
+        "vadimcn.vscode-lldb",
+        "ms-python.python"
+    ]
+}
