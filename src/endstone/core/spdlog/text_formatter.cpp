@@ -14,6 +14,8 @@
 
 #include "endstone/core/spdlog/text_formatter.h"
 
+#include <format>
+
 #include <spdlog/details/fmt_helper.h>
 
 namespace endstone::core {
@@ -35,14 +37,14 @@ void TextFormatter::format(const spdlog::details::log_msg &msg, const tm &, spdl
                         spdlog::details::fmt_helper::append_string_view(it->second, dest);
                     }
                     else {
-                        fmt::format_to(std::back_inserter(dest), "{}", input[i]);
+                        std::format_to(std::back_inserter(dest), "{}", input[i]);
                     }
                 }
             }
         }
         else {
             // Append the current character to the result if it's not part of a color code
-            fmt::format_to(std::back_inserter(dest), "{}", input[i]);
+            std::format_to(std::back_inserter(dest), "{}", input[i]);
         }
     }
 }

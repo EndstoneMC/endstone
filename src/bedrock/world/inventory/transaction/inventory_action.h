@@ -14,7 +14,7 @@
 
 #pragma once
 
-#include <fmt/format.h>
+#include <format>
 
 #include "bedrock/world/inventory/transaction/inventory_source.h"
 #include "bedrock/world/item/network_item_stack_descriptor.h"
@@ -66,11 +66,11 @@ private:
 };
 
 template <>
-struct fmt::formatter<InventoryAction> : formatter<string_view> {
+struct std::formatter<InventoryAction> : std::formatter<std::string_view> {
     template <typename FormatContext>
     auto format(const InventoryAction &action, FormatContext &ctx) const -> format_context::iterator
     {
-        return fmt::format_to(ctx.out(), "InventoryAction(source={}, slot={}, from={}, to={})", action.getSource(),
+        return std::format_to(ctx.out(), "InventoryAction(source={}, slot={}, from={}, to={})", action.getSource(),
                               action.getSlot(), action.getFromItem().toString(), action.getToItem().toString());
     }
 };

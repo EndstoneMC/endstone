@@ -20,7 +20,7 @@
 #include <vector>
 
 #include <boost/functional/hash.hpp>
-#include <fmt/format.h>
+#include <format>
 
 #include "bedrock/bedrock.h"
 #include "bedrock/nbt/tag.h"
@@ -57,7 +57,7 @@ public:
 
     [[nodiscard]] std::string toString() const override
     {
-        return fmt::format("[{} bytes]", data.size());
+        return std::format("[{} bytes]", data.size());
     }
 
     [[nodiscard]] Type getId() const override

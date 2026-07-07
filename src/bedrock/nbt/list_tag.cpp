@@ -12,6 +12,8 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
+#include <format>
+
 #include "bedrock/nbt/list_tag.h"
 
 #include "bedrock/nbt/byte_tag.h"
@@ -79,7 +81,7 @@ Bedrock::Result<void> ListTag::load(IDataInput &input)
 
 std::string ListTag::toString() const
 {
-    return fmt::format("{} entries of type {}", list_.size(), Tag::getTagName(type_));
+    return std::format("{} entries of type {}", list_.size(), Tag::getTagName(type_));
 }
 
 Tag::Type ListTag::getId() const

@@ -14,6 +14,7 @@
 
 #include "endstone/core/plugin/cpp_plugin_loader.h"
 
+#include <format>
 #include <filesystem>
 #include <regex>
 namespace fs = std::filesystem;
@@ -73,7 +74,7 @@ Plugin *CppPluginLoader::loadPlugin(std::string file)
 
     // Make a shadow copy
     auto hash = std::hash<std::string>{}(path.string());
-    fs::path temp_path = prefix_ / (fmt::format("{}-{:016x}", path.stem(), hash) + path.extension().string());
+    fs::path temp_path = prefix_ / (std::format("{}-{:016x}", path.stem().string(), hash) + path.extension().string());
     try {
         copy_file(path, temp_path, fs::copy_options::overwrite_existing);
     }

@@ -12,6 +12,8 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
+#include <format>
+
 #include "endstone/core/registry.h"
 
 #include "bedrock/world/item/enchanting/enchant.h"
@@ -86,7 +88,7 @@ std::vector<Identifier<BlockType>> EndstoneRegistry<BlockType, ::BlockType>::ide
 template <>
 const ::BlockType *EndstoneRegistry<BlockType, ::BlockType>::getMinecraft(Identifier<BlockType> id) const
 {
-    throw std::logic_error(fmt::format("EndstoneRegistry<BlockType>: cache is pre-populated, getMinecraft should not "
+    throw std::logic_error(std::format("EndstoneRegistry<BlockType>: cache is pre-populated, getMinecraft should not "
                                        "be called (id: {})",
                                        id));
 }

@@ -25,6 +25,7 @@ class EndstoneRecipe(ConanFile):
         "boost/*:header_only": True,
         "date/*:header_only": True,
         "raknet/*:minecraft_version": "r26u3",
+        "spdlog/*:use_std_fmt": True,
     }
 
     exports_sources = "CMakeLists.txt", "src/*", "include/*", "tests/*"
@@ -50,22 +51,22 @@ class EndstoneRecipe(ConanFile):
 
     def requirements(self):
         self.requires("base64/0.5.2")
-        self.requires("boost/1.86.0")
+        self.requires("boost/1.91.0")
         self.requires("concurrentqueue/1.0.4")
         self.requires("cpptrace/1.0.4")
         self.requires("date/3.0.4")
-        self.requires("entt/3.15.0")
-        self.requires("expected-lite/0.8.0")
+        self.requires("entt/3.16.0")
+        self.requires("expected-lite/0.9.0")
         self.requires("funchook/1.1.3")
-        self.requires("glm/1.0.1")
+        self.requires("glm/1.0.3")
         self.requires("magic_enum/0.9.7")
-        self.requires("ms-gsl/4.2.0")
+        self.requires("ms-gsl/4.2.2")
         self.requires("nlohmann_json/3.12.0")
         self.requires("pybind11/3.0.1")
         self.requires("raknet/4.081-mojang")
         self.requires("replxx/0.0.4")
-        self.requires("sentry-native/0.14.0")
-        self.requires("spdlog/1.15.3")
+        self.requires("sentry-native/0.14.2")
+        self.requires("spdlog/1.17.0")
         self.requires("tomlplusplus/3.3.0")
         self.requires("zstr/1.0.7")
 

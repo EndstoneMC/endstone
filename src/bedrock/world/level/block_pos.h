@@ -15,8 +15,7 @@
 #pragma once
 
 #include <cmath>
-
-#include <fmt/format.h>
+#include <format>
 
 #include "bedrock/core/math/vec3.h"
 #include "bedrock/util/mirror.h"
@@ -259,12 +258,12 @@ struct std::hash<BlockPos> {
 };
 
 template <>
-struct fmt::formatter<BlockPos> : formatter<string_view> {
+struct std::formatter<BlockPos> : std::formatter<std::string_view> {
     using Type = BlockPos;
 
     template <typename FormatContext>
     auto format(const Type &val, FormatContext &ctx) const -> format_context::iterator
     {
-        return format_to(ctx.out(), "BlockPos(x={}, y={}, z={})", val.x, val.y, val.z);
+        return std::format_to(ctx.out(), "BlockPos(x={}, y={}, z={})", val.x, val.y, val.z);
     }
 };

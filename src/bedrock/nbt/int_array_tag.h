@@ -14,6 +14,7 @@
 
 #pragma once
 
+#include <format>
 #include <cstdint>
 #include <vector>
 
@@ -56,7 +57,7 @@ public:
 
     [[nodiscard]] std::string toString() const override
     {
-        return fmt::format("[{} ints]", data.size());
+        return std::format("[{} ints]", data.size());
     }
 
     [[nodiscard]] Type getId() const override

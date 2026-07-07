@@ -12,6 +12,8 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
+#include <format>
+
 #include "endstone/core/permissions/default_permissions.h"
 
 namespace endstone::core {
@@ -169,7 +171,7 @@ Permission &MinecraftCommandPermissions::registerPermissions(Permission &parent)
         }
         CommandPermissions::registerPermission(
             perm, signature.name,
-            fmt::format("Allows the user to use the /{} command provided by mojang.", signature.name), commands);
+            std::format("Allows the user to use the /{} command provided by mojang.", signature.name), commands);
     }
     commands.recalculatePermissibles();
     return commands;

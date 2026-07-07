@@ -22,7 +22,6 @@
 #include <utility>
 
 #include <entt/entt.hpp>
-#include <fmt/format.h>
 
 #include "endstone/detail.h"
 

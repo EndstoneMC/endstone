@@ -14,6 +14,7 @@
 
 #include "endstone/core/command/command_map.h"
 
+#include <format>
 #include <algorithm>
 #include <cctype>
 #include <string>
@@ -322,7 +323,7 @@ bool EndstoneCommandMap::registerCommand(std::shared_ptr<Command> command)
                     if (registry.enums_.at(enum_index).values.empty()) {
                         break;
                     }
-                    enum_name_final = fmt::format("{}_{}", enum_name, ++i);
+                    enum_name_final = std::format("{}_{}", enum_name, ++i);
                 }
                 if (enum_name_final != enum_name) {
                     server_.getLogger().warning("Enum '{}' already exists, '{}' will be registered instead.", enum_name,

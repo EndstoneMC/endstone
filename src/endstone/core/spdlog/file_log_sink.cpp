@@ -14,14 +14,14 @@
 
 #include "endstone/core/spdlog/file_log_sink.h"
 
+#include <format>
 #include <fstream>
-#include <zstr.hpp>
+#include <iostream>
 
-#include <fmt/chrono.h>
-#include <fmt/color.h>
-#include <fmt/format.h>
+#include <date/date.h>
 #include <spdlog/details/os.h>
 #include <spdlog/pattern_formatter.h>
+#include <zstr.hpp>
 
 #include "endstone/core/spdlog/level_formatter.h"
 #include "endstone/core/spdlog/text_formatter.h"
@@ -65,8 +65,9 @@ spdlog::filename_t FileLogSink::calcFilename(const spdlog::filename_t &base_file
         return base_filename;
     }
 
-    const auto now_tp = spdlog::log_clock::now();
-    return format(fmt::runtime(file_pattern), localtime(now_tp), index);
+    const std::tm tm = localtime(spdlog::log_clock::now());
+    const auto today = date::local_days{date::year{tm.tm_year + 1900} / (tm.tm_mon + 1) / tm.tm_mday};
+    return date::format(std::vformat(file_pattern, std::make_format_args(index)), today);
 }
 
 void FileLogSink::sink_it_(const spdlog::details::log_msg &msg)
@@ -104,8 +105,8 @@ void FileLogSink::rotate()
             // if failed try again after a small delay.
             spdlog::details::os::sleep_for_millis(100);
             if (!func(src, target)) {
-                fmt::print(fmt::fg(fmt::color::red), "FileLogSink: failed rotating {} to {}\n", filename_to_str(src),
-                           filename_to_str(target));
+                std::cout << std::format("\033[31mFileLogSink: failed rotating {} to {}\033[0m\n",
+                                         filename_to_str(src), filename_to_str(target));
                 break;
             }
         }

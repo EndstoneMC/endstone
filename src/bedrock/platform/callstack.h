@@ -15,11 +15,11 @@
 #pragma once
 
 #include <cstdint>
+#include <format>
 #include <optional>
+#include <string>
 #include <string_view>
-
-#include <fmt/format.h>
-#include <fmt/ranges.h>
+#include <vector>
 
 #include "bedrock/diagnostics/log_area.h"
 #include "bedrock/diagnostics/log_fmt.h"
@@ -69,56 +69,58 @@ struct CallStack {
 
 }  // namespace Bedrock
 
-namespace fmt {
 template <>
-struct formatter<Bedrock::CallStack::Context> : formatter<string_view> {
+struct std::formatter<Bedrock::CallStack::Context> : std::formatter<std::string_view> {
     template <typename FormatContext>
     auto format(const Bedrock::CallStack::Context &val, FormatContext &ctx) const -> format_context::iterator
     {
-        auto out = fmt::format_to(ctx.out(), "{}", val.value);
+        auto out = std::format_to(ctx.out(), "{}", val.value);
         if (val.log_level.has_value()) {
-            out = fmt::format_to(out, ", {}", val.log_level.value());
+            out = std::format_to(out, ", {}", val.log_level.value());
         }
         if (val.log_area.has_value()) {
-            out = fmt::format_to(out, ", {}", val.log_area.value());
+            out = std::format_to(out, ", {}", val.log_area.value());
         }
         return out;
     }
 };
 
 template <>
-struct formatter<Bedrock::CallStack::Frame> : formatter<string_view> {
+struct std::formatter<Bedrock::CallStack::Frame> : std::formatter<std::string_view> {
     template <typename FormatContext>
     auto format(const Bedrock::CallStack::Frame &val, FormatContext &ctx) const -> format_context::iterator
     {
-        return fmt::format_to(ctx.out(), "{{ {}, {}, {} }}", val.filename_hash, val.filename, val.line);
+        return std::format_to(ctx.out(), "{{ {}, {}, {} }}", val.filename_hash, val.filename, val.line);
     }
 };
 
 template <>
-struct formatter<Bedrock::CallStack::FrameWithContext> : formatter<string_view> {
+struct std::formatter<Bedrock::CallStack::FrameWithContext> : std::formatter<std::string_view> {
     template <typename FormatContext>
     auto format(const Bedrock::CallStack::FrameWithContext &val, FormatContext &ctx) const -> format_context::iterator
     {
-        auto out = fmt::format_to(ctx.out(), "{{ {}", val.frame);
+        auto out = std::format_to(ctx.out(), "{{ {}", val.frame);
         if (val.context.has_value()) {
-            out = fmt::format_to(out, ", {}", val.context.value());
+            out = std::format_to(out, ", {}", val.context.value());
         }
-        return fmt::format_to(out, " }}");
+        return std::format_to(out, " }}");
     }
 };
 
 template <>
-struct formatter<Bedrock::CallStack> : formatter<string_view> {
+struct std::formatter<Bedrock::CallStack> : std::formatter<std::string_view> {
     template <typename FormatContext>
     auto format(const Bedrock::CallStack &val, FormatContext &ctx) const -> format_context::iterator
     {
-        return fmt::format_to(
-            ctx.out(), "[\n{}\n]",
-            fmt::join(val.frames | std::views::transform([](const Bedrock::CallStack::FrameWithContext &frame) {
-                          return fmt::format("{}", frame);
-                      }),
-                      "\n"));
+        auto out = std::format_to(ctx.out(), "[\n");
+        bool first = true;
+        for (const auto &frame : val.frames) {
+            if (!first) {
+                out = std::format_to(out, "\n");
+            }
+            first = false;
+            out = std::format_to(out, "{}", frame);
+        }
+        return std::format_to(out, "\n]");
     }
 };
-}  // namespace fmt

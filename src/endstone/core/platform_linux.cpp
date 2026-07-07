@@ -16,7 +16,7 @@
 
 #include <fstream>
 
-#include <fmt/format.h>
+#include <format>
 
 #include "endstone/core/platform.h"
 
@@ -40,7 +40,7 @@ std::size_t get_proc_status(std::string_view key)
         }
     }
 
-    throw std::runtime_error(fmt::format("Key {} not found in {}", key, "/proc/self/status"));
+    throw std::runtime_error(std::format("Key {} not found in {}", key, "/proc/self/status"));
 }
 
 std::size_t get_thread_count()

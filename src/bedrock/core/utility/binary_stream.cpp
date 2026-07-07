@@ -14,7 +14,7 @@
 
 #include "bedrock/core/utility/binary_stream.h"
 
-#include <fmt/core.h>
+#include <format>
 
 #include "bedrock/core/utility/serialize_simple_types.h"
 
@@ -44,7 +44,7 @@ Bedrock::Result<void> ReadOnlyBinaryStream::read(void *target, std::uint64_t num
         has_overflowed_ = true;
         return BEDROCK_NEW_ERROR_MESSAGE(
             std::errc::invalid_seek,
-            fmt::format(
+            std::format(
                 "BinaryStream read() overflow checkedNumber = {}, mReadPointer = {}, buffer Length is = {} bytes",
                 checked_number, read_pointer_, view_.size()));
     }

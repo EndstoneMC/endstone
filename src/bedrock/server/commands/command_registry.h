@@ -25,7 +25,7 @@
 #include <utility>
 #include <vector>
 
-#include <fmt/format.h>
+#include <format>
 
 #include "bedrock/bedrock.h"
 #include "bedrock/forward.h"
@@ -483,29 +483,29 @@ const CommandRegistry::Overload *CommandRegistry::registerOverload(const char *n
 }
 
 template <>
-struct fmt::formatter<CommandRegistry::ParseToken> : formatter<string_view> {
+struct std::formatter<CommandRegistry::ParseToken> : std::formatter<std::string_view> {
     auto format(const CommandRegistry::ParseToken &token, format_context &ctx) const -> format_context::iterator
     {
-        auto out = fmt::format_to(ctx.out(), "[");
+        auto out = std::format_to(ctx.out(), "[");
         for (const auto *it = &token; it; it = it->next.get()) {
             if (it != &token) {
-                out = fmt::format_to(out, ", ");
+                out = std::format_to(out, ", ");
             }
-            out = fmt::format_to(out, R"({{"type": "{}")", it->type.value());
+            out = std::format_to(out, R"({{"type": "{}")", it->type.value());
             if (it->text != nullptr && it->length > 0) {
                 std::string_view text(it->text, it->length);
                 if (it->type == CommandRegistry::HardNonTerminal::Id && text.size() >= 2 && text.front() == '"' &&
                     text.back() == '"') {
                     text = text.substr(1, text.size() - 2);
                 }
-                out = fmt::format_to(out, R"(, "text": "{}")", text);
+                out = std::format_to(out, R"(, "text": "{}")", text);
             }
             if (it->child != nullptr) {
-                out = fmt::format_to(out, R"(, "children": {})", *it->child);
+                out = std::format_to(out, R"(, "children": {})", *it->child);
             }
-            out = fmt::format_to(out, "}}");
+            out = std::format_to(out, "}}");
         }
-        out = fmt::format_to(ctx.out(), "]");
+        out = std::format_to(ctx.out(), "]");
         return out;
     }
-};  // namespace fmt
+};

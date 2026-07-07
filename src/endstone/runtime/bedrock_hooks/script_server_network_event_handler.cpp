@@ -14,6 +14,8 @@
 
 #include "bedrock/scripting/event_handlers/script_server_network_event_handler.h"
 
+#include <format>
+
 #include "bedrock/network/packet/text_packet.h"
 #include "endstone/core/player.h"
 #include "endstone/core/server.h"
@@ -68,7 +70,9 @@ GameplayHandlerResult<CoordinatorResult> handleEvent(ChatEvent &event,
     // check if the format is valid
     std::string message;
     try {
-        message = fmt::format(fmt::runtime(e.getFormat()), e.getPlayer().getName(), e.getMessage());
+        const auto name = e.getPlayer().getName();
+        const auto content = e.getMessage();
+        message = std::vformat(e.getFormat(), std::make_format_args(name, content));
     }
     catch (const std::exception & /*e*/) {
         server.getLogger().error("Invalid format string encountered in PlayerChatEvent.");

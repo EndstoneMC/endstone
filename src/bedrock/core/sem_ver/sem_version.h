@@ -16,7 +16,7 @@
 
 #include <string>
 
-#include <fmt/format.h>
+#include <format>
 
 #include "bedrock/core/string/static_optimized_string.h"
 
@@ -156,7 +156,7 @@ public:
             return "*";
         }
 
-        auto full_version_string = fmt::format("{}.{}.{}", major_, minor_, patch_);
+        auto full_version_string = std::format("{}.{}.{}", major_, minor_, patch_);
         if (pre_release_.length() > 0) {
             full_version_string += "-";
             full_version_string += pre_release_;
