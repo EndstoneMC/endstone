@@ -22,6 +22,7 @@ add_library(bedrock STATIC
         core/utility/binary_stream.cpp
         core/utility/serialize_simple_types.cpp
         crypto/encoding/base64.cpp
+        diagnostics/log_fmt.cpp
         deps/json/value.cpp
         entity/gamerefs_entity/entity_context.cpp
         entity/gamerefs_entity/entity_registry.cpp

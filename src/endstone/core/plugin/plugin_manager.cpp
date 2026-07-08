@@ -70,6 +70,8 @@ EndstonePluginManager::EndstonePluginManager(Server &server) : server_(server)
     default_perms_[PermissionLevel::Console] = {};
 }
 
+EndstonePluginManager::~EndstonePluginManager() = default;
+
 void EndstonePluginManager::registerLoader(std::unique_ptr<PluginLoader> loader)
 {
     plugin_loaders_.push_back(std::move(loader));

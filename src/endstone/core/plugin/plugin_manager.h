@@ -28,15 +28,18 @@
 #include "endstone/event/handler_list.h"
 #include "endstone/permissions/permission.h"
 #include "endstone/permissions/permission_level.h"
-#include "endstone/plugin/plugin_loader.h"
 #include "endstone/plugin/plugin_manager.h"
 #include "endstone/server.h"
 
-namespace endstone::core {
+namespace endstone {
+class PluginLoader;
+
+namespace core {
 
 class EndstonePluginManager : public PluginManager {
 public:
     explicit EndstonePluginManager(Server &server);
+    ~EndstonePluginManager() override;
 
     /** Plugin loading */
     void registerLoader(std::unique_ptr<PluginLoader> loader) override;
@@ -98,4 +101,5 @@ private:
     std::unordered_map<PermissionLevel, std::unordered_map<Permissible *, bool>> def_subs_;
 };
 
-}  // namespace endstone::core
+}  // namespace core
+}  // namespace endstone

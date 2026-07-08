@@ -15,26 +15,19 @@
 #pragma once
 
 #include <format>
-
-#include <magic_enum/magic_enum.hpp>
+#include <string_view>
 
 #include "bedrock/diagnostics/log_area.h"
 #include "bedrock/diagnostics/log_level.h"
 
+// format() is defined out-of-line in log_fmt.cpp so magic_enum::enum_name is
+// instantiated once there, not in every translation unit that includes this header.
 template <>
 struct std::formatter<LogAreaID> : std::formatter<std::string_view> {
-    template <typename FormatContext>
-    auto format(const LogAreaID &val, FormatContext &ctx) const -> format_context::iterator
-    {
-        return std::format_to(ctx.out(), "{}", magic_enum::enum_name(val));
-    }
+    std::format_context::iterator format(LogAreaID val, std::format_context &ctx) const;
 };
 
 template <>
 struct std::formatter<Bedrock::LogLevel> : std::formatter<std::string_view> {
-    template <typename FormatContext>
-    auto format(const Bedrock::LogLevel &val, FormatContext &ctx) const -> format_context::iterator
-    {
-        return std::format_to(ctx.out(), "{}", magic_enum::enum_name(val.getType()));
-    }
+    std::format_context::iterator format(Bedrock::LogLevel val, std::format_context &ctx) const;
 };
