@@ -14,10 +14,10 @@
 
 #include "endstone/core/command/command_usage_parser.h"
 
+#include <format>
 #include <utility>
 
 #include <boost/algorithm/string/join.hpp>
-#include <format>
 
 namespace {
 void generateNameAndType(std::string_view command_name, endstone::core::CommandUsageParser::Parameter &parameter)

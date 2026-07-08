@@ -17,10 +17,7 @@
 #include "bedrock/world/actor/actor_unique_id.h"
 
 struct PlayerScoreboardId {
-    bool operator==(const PlayerScoreboardId &other) const
-    {
-        return actor_unique_id == other.actor_unique_id;
-    }
+    bool operator==(const PlayerScoreboardId &other) const { return actor_unique_id == other.actor_unique_id; }
     ActorUniqueID actor_unique_id;
 };
 

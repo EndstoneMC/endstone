@@ -78,10 +78,7 @@ public:
         _set(str, N - 1, (N - 1) >= MAX_STATIC_STRING_LENGTH ? StorageType::Dynamic : StorageType::Static);
     }
 
-    StaticOptimizedString(std::string_view sv, StorageType storage_type)
-    {
-        _set(sv.data(), sv.length(), storage_type);
-    }
+    StaticOptimizedString(std::string_view sv, StorageType storage_type) { _set(sv.data(), sv.length(), storage_type); }
 
     StaticOptimizedString(const StaticOptimizedString &other)
     {
@@ -113,25 +110,13 @@ public:
         return *this;
     }
 
-    [[nodiscard]] const char *get() const
-    {
-        return data_.getPointer();
-    }
+    [[nodiscard]] const char *get() const { return data_.getPointer(); }
 
-    [[nodiscard]] std::string_view view() const
-    {
-        return {get(), length()};
-    }
+    [[nodiscard]] std::string_view view() const { return {get(), length()}; }
 
-    operator const char *() const
-    {
-        return get();
-    }
+    operator const char *() const { return get(); }
 
-    operator std::string_view() const
-    {
-        return view();
-    }
+    operator std::string_view() const { return view(); }
 
     [[nodiscard]] size_t length() const
     {
@@ -144,10 +129,7 @@ public:
         return data_.getData8();
     }
 
-    void reset()
-    {
-        data_.reset();
-    }
+    void reset() { data_.reset(); }
 
 private:
     void _set(const char *data, size_t length, StorageType storage_type)

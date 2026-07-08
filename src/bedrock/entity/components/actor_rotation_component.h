@@ -16,7 +16,6 @@
 
 #include "bedrock/core/math/vec2.h"
 
-
 struct ActorRotationComponent {
     Vec2 rotation_degree;
     Vec2 rotation_degree_previous;

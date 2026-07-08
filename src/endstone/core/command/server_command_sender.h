@@ -35,75 +35,39 @@ protected:
     }
 
 public:
-    [[nodiscard]] Server &getServer() const override
-    {
-        return EndstoneServer::getInstance();
-    }
+    [[nodiscard]] Server &getServer() const override { return EndstoneServer::getInstance(); }
 
-    [[nodiscard]] bool isPermissionSet(std::string name) const override
-    {
-        return perm_->isPermissionSet(name);
-    }
+    [[nodiscard]] bool isPermissionSet(std::string name) const override { return perm_->isPermissionSet(name); }
 
-    [[nodiscard]] bool isPermissionSet(const Permission &perm) const override
-    {
-        return perm_->isPermissionSet(perm);
-    }
+    [[nodiscard]] bool isPermissionSet(const Permission &perm) const override { return perm_->isPermissionSet(perm); }
 
-    [[nodiscard]] bool hasPermission(std::string name) const override
-    {
-        return perm_->hasPermission(name);
-    }
+    [[nodiscard]] bool hasPermission(std::string name) const override { return perm_->hasPermission(name); }
 
-    [[nodiscard]] bool hasPermission(const Permission &perm) const override
-    {
-        return perm_->hasPermission(perm);
-    }
+    [[nodiscard]] bool hasPermission(const Permission &perm) const override { return perm_->hasPermission(perm); }
 
     PermissionAttachment *addAttachment(Plugin &plugin, const std::string &name, bool value) override
     {
         return perm_->addAttachment(plugin, name, value);
     }
 
-    PermissionAttachment *addAttachment(Plugin &plugin) override
-    {
-        return perm_->addAttachment(plugin);
-    }
+    PermissionAttachment *addAttachment(Plugin &plugin) override { return perm_->addAttachment(plugin); }
 
-    bool removeAttachment(PermissionAttachment &attachment) override
-    {
-        return perm_->removeAttachment(attachment);
-    }
+    bool removeAttachment(PermissionAttachment &attachment) override { return perm_->removeAttachment(attachment); }
 
-    void recalculatePermissions() override
-    {
-        perm_->recalculatePermissions();
-    }
+    void recalculatePermissions() override { perm_->recalculatePermissions(); }
 
     [[nodiscard]] std::unordered_set<PermissionAttachmentInfo *> getEffectivePermissions() const override
     {
         return perm_->getEffectivePermissions();
     }
 
-    [[nodiscard]] ConsoleCommandSender *asConsole() const override
-    {
-        return nullptr;
-    }
+    [[nodiscard]] ConsoleCommandSender *asConsole() const override { return nullptr; }
 
-    [[nodiscard]] BlockCommandSender *asBlock() const override
-    {
-        return nullptr;
-    }
+    [[nodiscard]] BlockCommandSender *asBlock() const override { return nullptr; }
 
-    [[nodiscard]] Actor *asActor() const override
-    {
-        return nullptr;
-    }
+    [[nodiscard]] Actor *asActor() const override { return nullptr; }
 
-    [[nodiscard]] Player *asPlayer() const override
-    {
-        return nullptr;
-    }
+    [[nodiscard]] Player *asPlayer() const override { return nullptr; }
 
 private:
     mutable std::shared_ptr<PermissibleBase> perm_;

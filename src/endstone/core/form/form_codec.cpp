@@ -190,9 +190,9 @@ nlohmann::json FormCodec::toJson(const ActionForm &form)
     json["elements"] = nlohmann::json::array();
     for (const auto &control : form.getControls()) {
         json["elements"].push_back(std::visit(overloaded{[](auto &&arg) {
-                                                 return toJson(arg);
-                                             }},
-                                             control));
+                                                  return toJson(arg);
+                                              }},
+                                              control));
     }
     return json;
 }

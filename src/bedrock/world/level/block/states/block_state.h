@@ -106,6 +106,7 @@ public:
     [[nodiscard]] std::uint32_t getNumBits() const;
     [[nodiscard]] bool isValidData(std::uint32_t id) const;
     [[nodiscard]] const BlockState &getState() const;
+
 private:
     static constexpr std::uint32_t MAX_STATE_BITS = 16;
 

@@ -14,7 +14,6 @@
 
 #include "endstone/core/command/defaults/reload_command.h"
 
-
 #include "endstone/color_format.h"
 #include "endstone/core/server.h"
 

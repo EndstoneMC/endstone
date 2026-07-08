@@ -16,7 +16,6 @@
 
 #include "endstone/core/message.h"
 
-
 namespace endstone::core {
 
 CommandOriginWrapper::CommandOriginWrapper(const CommandOrigin &origin, CommandOutput &output)

@@ -125,8 +125,7 @@ void init_event(py::module_ &m, py::class_<Event> &event)
                                                           "Called when a block is broken by a player.")
         .def_property_readonly("player", &BlockBreakEvent::getPlayer, py::return_value_policy::reference,
                                "Gets the Player that is breaking the block involved in this event.");
-    py::class_<BlockExplodeEvent, BlockEvent, ICancellable>(m, "BlockExplodeEvent",
-                                                             "Called when a block explodes.")
+    py::class_<BlockExplodeEvent, BlockEvent, ICancellable>(m, "BlockExplodeEvent", "Called when a block explodes.")
         .def_property(
             "block_list",
             [](const BlockExplodeEvent &self) {

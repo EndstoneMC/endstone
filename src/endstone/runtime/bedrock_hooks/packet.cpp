@@ -15,9 +15,8 @@
 // limitations under the License.
 
 #include "bedrock/network/packet.h"
-#include "bedrock/server/server_instance.h"
-
 #include "bedrock/network/packet/login_packet.h"
+#include "bedrock/server/server_instance.h"
 #include "endstone/core/player.h"
 #include "endstone/core/server.h"
 #include "endstone/core/util/socket_address.h"

@@ -15,7 +15,6 @@
 // limitations under the License.
 
 #include "endstone/core/inventory/inventory.h"
-
 #include "endstone/core/inventory/item_stack.h"
 
 namespace endstone::core {

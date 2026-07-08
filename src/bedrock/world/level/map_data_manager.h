@@ -14,13 +14,13 @@
 
 #pragma once
 
+#include <unordered_map>
+
 #include "bedrock/bedrock.h"
 #include "bedrock/world/level/dimension_manager.h"
 #include "bedrock/world/level/gameplay_user_manager_connector.h"
 #include "bedrock/world/level/map_data_manager_options.h"
 #include "bedrock/world/level/saveddata/map_item_saved_data.h"
-
-#include <unordered_map>
 
 class MapDataManager {
 public:

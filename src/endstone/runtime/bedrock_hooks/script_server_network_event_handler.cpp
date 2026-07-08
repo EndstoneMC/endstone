@@ -101,10 +101,10 @@ GameplayHandlerResult<CoordinatorResult> handleEvent(ChatEvent &event,
         for (const auto &recipient : e.getRecipients()) {
             auto packet = MinecraftPackets::createPacket(MinecraftPacketIds::Text);
             auto &pk = static_cast<TextPacket &>(*packet);
-            pk.payload = {.xuid = player->getXuid(),
-                          .platform_id = player->getPlatformOnlineId(),
-                          .body = TextPacketPayload::AuthorAndMessage{
-                              TextPacketType::Chat, player->getName(), e.getMessage()}};
+            pk.payload = {
+                .xuid = player->getXuid(),
+                .platform_id = player->getPlatformOnlineId(),
+                .body = TextPacketPayload::AuthorAndMessage{TextPacketType::Chat, player->getName(), e.getMessage()}};
             static_cast<endstone::core::EndstonePlayer *>(recipient)->getHandle().sendNetworkPacket(*packet);
         }
         return CANCEL;

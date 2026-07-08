@@ -87,10 +87,7 @@ protected:
 class VirtualCommandOrigin : public CommandOrigin {
 public:
     VirtualCommandOrigin(const CommandOrigin &, const CommandOrigin &, const CommandPositionFloat &, int);
-    [[nodiscard]] CommandOrigin *getOrigin() const
-    {
-        return origin_.get();
-    }
+    [[nodiscard]] CommandOrigin *getOrigin() const { return origin_.get(); }
 
 private:
     Vec3 pos_;                                        // +24

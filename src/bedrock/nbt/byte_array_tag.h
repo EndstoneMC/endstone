@@ -15,12 +15,12 @@
 #pragma once
 
 #include <cstdint>
+#include <format>
 #include <system_error>
 #include <utility>
 #include <vector>
 
 #include <boost/functional/hash.hpp>
-#include <format>
 
 #include "bedrock/bedrock.h"
 #include "bedrock/nbt/tag.h"
@@ -55,30 +55,18 @@ public:
         return {};
     }
 
-    [[nodiscard]] std::string toString() const override
-    {
-        return std::format("[{} bytes]", data.size());
-    }
+    [[nodiscard]] std::string toString() const override { return std::format("[{} bytes]", data.size()); }
 
-    [[nodiscard]] Type getId() const override
-    {
-        return Type::ByteArray;
-    }
+    [[nodiscard]] Type getId() const override { return Type::ByteArray; }
 
     [[nodiscard]] bool equals(const Tag &other) const override
     {
         return Tag::equals(other) && data == static_cast<const ByteArrayTag &>(other).data;
     }
 
-    [[nodiscard]] std::unique_ptr<Tag> copy() const override
-    {
-        return std::make_unique<ByteArrayTag>(data);
-    }
+    [[nodiscard]] std::unique_ptr<Tag> copy() const override { return std::make_unique<ByteArrayTag>(data); }
 
-    [[nodiscard]] std::size_t hash() const override
-    {
-        return boost::hash_range(data.begin(), data.end());
-    }
+    [[nodiscard]] std::size_t hash() const override { return boost::hash_range(data.begin(), data.end()); }
 
     ArrayData data;
 };

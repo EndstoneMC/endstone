@@ -40,9 +40,9 @@ class EntityId {
     friend class entt::basic_entt_traits;
     friend class EntityContext;
 
-    using underlying_type = EntityIdTraits::entity_type;             // NOLINT(*-identifier-naming)
-    constexpr EntityId(underlying_type raw_id) : raw_id_(raw_id){};  // NOLINT(*-explicit-constructor)
-    using entity_type = underlying_type;                             // NOLINT(*-identifier-naming)
+    using underlying_type = EntityIdTraits::entity_type;              // NOLINT(*-identifier-naming)
+    constexpr EntityId(underlying_type raw_id) : raw_id_(raw_id) {};  // NOLINT(*-explicit-constructor)
+    using entity_type = underlying_type;                              // NOLINT(*-identifier-naming)
 
 public:
     EntityId() = default;

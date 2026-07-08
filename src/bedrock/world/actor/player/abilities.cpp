@@ -16,7 +16,6 @@
 
 #include "bedrock/world/actor/player/abilities.h"
 
-
 Ability::Type Ability::getType() const
 {
     return type_;

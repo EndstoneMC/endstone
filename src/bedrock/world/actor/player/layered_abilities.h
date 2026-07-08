@@ -57,15 +57,9 @@ public:
         return *ability;
     }
 
-    [[nodiscard]] bool getBool(AbilitiesIndex index) const
-    {
-        return getAbility(index).getBool();
-    }
+    [[nodiscard]] bool getBool(AbilitiesIndex index) const { return getAbility(index).getBool(); }
 
-    [[nodiscard]] float getFloat(AbilitiesIndex index) const
-    {
-        return getAbility(index).getFloat();
-    }
+    [[nodiscard]] float getFloat(AbilitiesIndex index) const { return getAbility(index).getFloat(); }
 
     void setAbility(AbilitiesIndex index, bool value)
     {
@@ -77,30 +71,15 @@ public:
         layers_.at(static_cast<int>(AbilitiesLayer::Base)).setAbility(index, value);
     }
 
-    PermissionsHandler &getPermissionHandler()
-    {
-        return permissions_;
-    }
+    PermissionsHandler &getPermissionHandler() { return permissions_; }
 
-    [[nodiscard]] const PermissionsHandler &getPermissionHandler() const
-    {
-        return permissions_;
-    }
+    [[nodiscard]] const PermissionsHandler &getPermissionHandler() const { return permissions_; }
 
-    [[nodiscard]] CommandPermissionLevel getCommandPermissions() const
-    {
-        return permissions_.command_permissions;
-    }
+    [[nodiscard]] CommandPermissionLevel getCommandPermissions() const { return permissions_.command_permissions; }
 
-    void setCommandPermissions(CommandPermissionLevel permission)
-    {
-        permissions_.command_permissions = permission;
-    }
+    void setCommandPermissions(CommandPermissionLevel permission) { permissions_.command_permissions = permission; }
 
-    [[nodiscard]] PlayerPermissionLevel getPlayerPermissions() const
-    {
-        return permissions_.player_permissions;
-    }
+    [[nodiscard]] PlayerPermissionLevel getPlayerPermissions() const { return permissions_.player_permissions; }
 
     void forEachLayer(const std::function<void(AbilitiesLayer, Abilities &)> &callback)
     {

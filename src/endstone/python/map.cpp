@@ -22,10 +22,7 @@ class PyMapRenderer : public MapRenderer, public py::trampoline_self_life_suppor
 public:
     using MapRenderer::MapRenderer;
 
-    void initialize(MapView &map) override
-    {
-        PYBIND11_OVERRIDE(void, MapRenderer, initialize, std::ref(map));
-    }
+    void initialize(MapView &map) override { PYBIND11_OVERRIDE(void, MapRenderer, initialize, std::ref(map)); }
 
     void render(MapView &map, MapCanvas &canvas, Player &player) override
     {

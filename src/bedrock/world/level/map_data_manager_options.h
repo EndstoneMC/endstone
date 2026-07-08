@@ -20,5 +20,5 @@ public:
     virtual bool isPremiumWorldTemplate() = 0;
     virtual bool isLegacyLevel() = 0;
     virtual bool hasMapsCenteredToOrigin() = 0;
-    virtual const BlockPos & getWorldCenter() = 0;
+    virtual const BlockPos &getWorldCenter() = 0;
 };

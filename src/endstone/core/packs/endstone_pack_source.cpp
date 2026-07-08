@@ -12,14 +12,14 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-#include <entt/locator/locator.hpp>
-#include <fstream>
 #include "endstone/core/packs/endstone_pack_source.h"
 
+#include <fstream>
 #include <unordered_map>
 #include <utility>
 
 #include <boost/algorithm/string/trim.hpp>
+#include <entt/locator/locator.hpp>
 #include <magic_enum/magic_enum.hpp>
 
 #include "endstone/core/server.h"

@@ -106,7 +106,8 @@ public:
     [[nodiscard]] virtual LevelSeed64 getLevelSeed64() const = 0;
     [[nodiscard]] virtual Height getAboveTopSolidBlock(int, int, bool, bool) const = 0;
     [[nodiscard]] virtual Height getAboveTopSolidBlock(const BlockPos &, bool, bool, bool) const = 0;
-    [[nodiscard]] virtual Height getHeight(brstd::function_ref<bool(const Block &)> const &, BlockPos const &) const = 0;
+    [[nodiscard]] virtual Height getHeight(brstd::function_ref<bool(const Block &)> const &,
+                                           BlockPos const &) const = 0;
     [[nodiscard]] virtual Height getHeight(brstd::function_ref<bool(const Block &)> const &, int, int) const = 0;
     virtual std::vector<AABB> &fetchAABBs(AABB const &, bool) = 0;
     virtual std::vector<AABB> &fetchCollisionShapes(AABB const &, bool, std::optional<EntityContext const>,

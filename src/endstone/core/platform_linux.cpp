@@ -14,9 +14,8 @@
 
 #ifdef __linux__
 
-#include <fstream>
-
 #include <format>
+#include <fstream>
 
 #include "endstone/core/platform.h"
 

@@ -34,8 +34,12 @@ public:
         {
             ItemMetaDetails details;
             if constexpr (std::is_same_v<T, void>) {
-                details.from_item_stack_ = [](const ::ItemStackBase &) -> std::unique_ptr<ItemMeta> { return nullptr; };
-                details.from_item_meta_ = [](ItemTypeId, const ItemMeta *) -> std::unique_ptr<ItemMeta> { return nullptr; };
+                details.from_item_stack_ = [](const ::ItemStackBase &) -> std::unique_ptr<ItemMeta> {
+                    return nullptr;
+                };
+                details.from_item_meta_ = [](ItemTypeId, const ItemMeta *) -> std::unique_ptr<ItemMeta> {
+                    return nullptr;
+                };
             }
             else {
                 details.from_item_stack_ = [](const ::ItemStackBase &stack) -> std::unique_ptr<ItemMeta> {

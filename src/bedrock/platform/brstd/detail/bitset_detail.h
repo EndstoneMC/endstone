@@ -33,10 +33,7 @@ public:
         return ((container_[idx] >> offset) & underlying_type(1)) != 0;
     }
 
-    constexpr Derived &set(size_type pos)
-    {
-        return set(pos, true);
-    }
+    constexpr Derived &set(size_type pos) { return set(pos, true); }
 
     constexpr Derived &set(size_type pos, bool value)
     {

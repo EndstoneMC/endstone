@@ -22,10 +22,7 @@ struct SingleThreaded {
     class NullMutex {
     public:
         void lock() const {}
-        [[nodiscard]] bool try_lock() const
-        {
-            return true;
-        };
+        [[nodiscard]] bool try_lock() const { return true; };
         void unlock() const {}
     };
     using MutexType = NullMutex;

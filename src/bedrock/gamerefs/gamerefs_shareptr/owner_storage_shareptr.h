@@ -21,15 +21,9 @@ class OwnerStorageSharePtr {
 protected:
     OwnerStorageSharePtr() = default;
 
-    [[nodiscard]] bool _hasValue() const
-    {
-        return value_ != nullptr;
-    }
+    [[nodiscard]] bool _hasValue() const { return value_ != nullptr; }
 
-    T &_getStackRef() const
-    {
-        return *value_;
-    }
+    T &_getStackRef() const { return *value_; }
 
 private:
     std::shared_ptr<T> value_;

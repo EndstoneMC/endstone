@@ -38,10 +38,7 @@ protected:
     virtual void assignBlockNetworkId(const Block &, BlockRuntimeId) const = 0;
 
 public:
-    [[nodiscard]] std::size_t getNumBlockNetworkIds() const
-    {
-        return block_from_network_id_.size();
-    }
+    [[nodiscard]] std::size_t getNumBlockNetworkIds() const { return block_from_network_id_.size(); }
 
 private:
     Bedrock::Threading::Mutex legacy_block_states_conversion_warning_mutex_;    // +8

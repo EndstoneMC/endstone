@@ -37,9 +37,9 @@ public:
 
 private:
     SharedTypes::CreativeItemCategory category_;  // +24
-    CreativeItemRegistryPtr registry_;        // +32
-    HashedString name_;                       // +40
-    ItemInstance icon_;                       // +80
-    std::uint32_t index_;                     // +208
-    std::vector<unsigned int> item_indexes_;  // +216
+    CreativeItemRegistryPtr registry_;            // +32
+    HashedString name_;                           // +40
+    ItemInstance icon_;                           // +80
+    std::uint32_t index_;                         // +208
+    std::vector<unsigned int> item_indexes_;      // +216
 };

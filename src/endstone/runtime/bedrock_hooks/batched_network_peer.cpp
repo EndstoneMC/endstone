@@ -13,7 +13,6 @@
 // limitations under the License.
 
 #include "bedrock/network/batched_network_peer.h"
-#include "bedrock/server/server_instance.h"
 
 #include "bedrock/network/packet.h"
 #include "bedrock/network/packet/clientbound_map_item_data_packet.h"
@@ -22,6 +21,7 @@
 #include "bedrock/network/packet/start_game_packet.h"
 #include "bedrock/network/raknet_connector.h"
 #include "bedrock/network/server_network_system.h"
+#include "bedrock/server/server_instance.h"
 #include "endstone/core/level/level.h"
 #include "endstone/core/map/map_view.h"
 #include "endstone/core/player.h"

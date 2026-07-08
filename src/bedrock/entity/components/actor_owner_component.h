@@ -18,15 +18,9 @@
 
 class ActorOwnerComponent {
 public:
-    Actor &getActor()
-    {
-        return *actor;
-    }
+    Actor &getActor() { return *actor; }
 
-    Actor &getActor() const
-    {
-        return *actor;
-    }
+    Actor &getActor() const { return *actor; }
 
 private:
     std::unique_ptr<Actor> actor;

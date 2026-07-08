@@ -15,9 +15,9 @@
 #include "endstone/core/spdlog/text_formatter.h"
 
 #include <format>
+#include <unordered_map>
 
 #include <spdlog/details/fmt_helper.h>
-#include <unordered_map>
 
 namespace endstone::core {
 

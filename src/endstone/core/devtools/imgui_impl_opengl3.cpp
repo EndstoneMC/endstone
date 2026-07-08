@@ -251,10 +251,7 @@ struct ImGui_ImplOpenGL3_Data {
     bool HasClipOrigin;
     bool UseBufferSubData;
 
-    ImGui_ImplOpenGL3_Data()
-    {
-        memset((void *)this, 0, sizeof(*this));
-    }
+    ImGui_ImplOpenGL3_Data() { memset((void *)this, 0, sizeof(*this)); }
 };
 
 // Backend data stored in io.BackendRendererUserData to allow support for multiple Dear ImGui contexts

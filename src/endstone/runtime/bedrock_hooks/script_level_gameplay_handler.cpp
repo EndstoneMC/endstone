@@ -14,7 +14,6 @@
 
 #include "bedrock/scripting/event_handlers/script_level_gameplay_handler.h"
 
-
 #include "bedrock/gameplayhandlers/gameplay_handler_result.h"
 #include "bedrock/world/actor/player/player.h"
 #include "bedrock/world/events/level_events.h"

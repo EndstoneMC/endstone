@@ -16,11 +16,10 @@
 
 #include <algorithm>
 #include <filesystem>
+#include <format>
 #include <fstream>
 #include <sstream>
 #include <utility>
-
-#include <format>
 
 #include <date/date.h>
 #include <nlohmann/json.hpp>

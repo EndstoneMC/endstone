@@ -110,8 +110,7 @@ public:
     [[nodiscard]] std::unique_ptr<BossBar> createBossBar(std::string title, BarColor color, BarStyle style,
                                                          std::vector<BarFlag> flags) const override;
     [[nodiscard]] std::unique_ptr<BlockData> createBlockData(std::string type) const override;
-    [[nodiscard]] std::unique_ptr<BlockData> createBlockData(std::string type,
-                                                                     BlockStates block_states) const override;
+    [[nodiscard]] std::unique_ptr<BlockData> createBlockData(std::string type, BlockStates block_states) const override;
     [[nodiscard]] PlayerBanList &getBanList() const override;
     [[nodiscard]] IpBanList &getIpBanList() const override;
     [[nodiscard]] ServiceManager &getServiceManager() const override;

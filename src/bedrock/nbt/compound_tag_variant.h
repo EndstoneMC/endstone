@@ -59,15 +59,9 @@ public:
         }
     }
 
-    const Tag *operator->() const
-    {
-        return get();
-    }
+    const Tag *operator->() const { return get(); }
 
-    Tag *operator->()
-    {
-        return get();
-    }
+    Tag *operator->() { return get(); }
 
     [[nodiscard]] const Tag *get() const
     {
@@ -79,15 +73,9 @@ public:
         return std::visit([](auto &&arg) -> Tag * { return &arg; }, tag_storage);
     }
 
-    const Tag &operator*() const
-    {
-        return *get();
-    }
+    const Tag &operator*() const { return *get(); }
 
-    Tag &operator*()
-    {
-        return *get();
-    }
+    Tag &operator*() { return *get(); }
 
     Variant tag_storage;
 };

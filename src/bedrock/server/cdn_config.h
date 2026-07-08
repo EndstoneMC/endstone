@@ -20,10 +20,7 @@
 class CDNConfig : public Bedrock::EnableNonOwnerReferences {
 public:
     CDNConfig(const Core::Path &);
-    std::vector<std::pair<std::string, std::string>> getCDNUrls()
-    {
-        return pack_cdn_urls_;
-    }
+    std::vector<std::pair<std::string, std::string>> getCDNUrls() { return pack_cdn_urls_; }
 
 private:
     void _readConfigFile(const Core::Path &);

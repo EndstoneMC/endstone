@@ -14,9 +14,9 @@
 
 #include "bedrock/world/level/block/block_descriptor.h"
 
-#include "bedrock/symbol.h"
-
 #include <unordered_map>
+
+#include "bedrock/symbol.h"
 
 void BlockDescriptor::ResolveHelper::resolve(bool log_invalid_blocks)
 {

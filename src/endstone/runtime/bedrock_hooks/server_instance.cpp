@@ -12,8 +12,9 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-#include <entt/locator/locator.hpp>
 #include "bedrock/server/server_instance.h"
+
+#include <entt/locator/locator.hpp>
 
 #include "bedrock/scripting/event_handlers/script_actor_gameplay_handler.h"
 #include "bedrock/scripting/event_handlers/script_block_gameplay_handler.h"

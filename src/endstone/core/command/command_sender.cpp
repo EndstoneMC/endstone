@@ -14,7 +14,6 @@
 
 #include "endstone/command/command_sender.h"
 
-
 #include "bedrock/server/commands/command_origin.h"
 #include "bedrock/server/commands/command_origin_loader.h"
 #include "bedrock/world/actor/actor.h"

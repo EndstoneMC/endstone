@@ -14,8 +14,8 @@
 
 #include "endstone/core/plugin/cpp_plugin_loader.h"
 
-#include <format>
 #include <filesystem>
+#include <format>
 #include <regex>
 namespace fs = std::filesystem;
 

@@ -14,9 +14,9 @@
 
 #include "endstone/runtime/hook.h"
 
-#include <format>
 #include <funchook.h>
 
+#include <format>
 #include <string>
 #include <system_error>
 #include <unordered_map>
@@ -71,10 +71,7 @@ const std::error_category &error_category()
 {
     static const class HookErrorCategory : public std::error_category {
     public:
-        [[nodiscard]] const char *name() const noexcept override
-        {
-            return "HookError";
-        }
+        [[nodiscard]] const char *name() const noexcept override { return "HookError"; }
 
         [[nodiscard]] std::string message(int err_val) const override
         {

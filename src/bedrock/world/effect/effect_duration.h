@@ -16,7 +16,7 @@
 
 struct EffectDuration {
     EffectDuration() = default;
-    explicit EffectDuration(const int value) : value_(value){};
+    explicit EffectDuration(const int value) : value_(value) {};
 
 private:
     int value_{INFINITE_DURATION_VALUE};

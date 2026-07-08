@@ -12,13 +12,14 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-#include <entt/locator/locator.hpp>
 #include "endstone/core/permissions/permissible_base.h"
 
 #include <memory>
 #include <ranges>
 #include <unordered_map>
 #include <unordered_set>
+
+#include <entt/locator/locator.hpp>
 
 #include "endstone/core/server.h"
 #include "endstone/permissions/permission.h"

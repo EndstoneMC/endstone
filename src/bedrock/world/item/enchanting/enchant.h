@@ -146,7 +146,7 @@ public:
     [[nodiscard]] virtual float getAfterBreachArmorFraction(int, float) const = 0;
     [[nodiscard]] virtual float getDamageBonus(int, const Actor &, const Actor &) const = 0;
     virtual void doPostAttack(Actor &, Actor &, int) const = 0;
-    virtual void doPostPiercingAttack(Actor &, int) const=0;
+    virtual void doPostPiercingAttack(Actor &, int) const = 0;
     virtual void doPostItemHurtActor(Actor &, Actor &, int) const = 0;
     virtual void doPostHurt(ItemInstance &, Actor &, Actor &, int) const = 0;
     [[nodiscard]] virtual bool isMeleeDamageEnchant() const = 0;

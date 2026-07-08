@@ -14,9 +14,8 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-#include "endstone/core/damage/damage_source.h"
-
 #include "endstone/core/actor/actor.h"
+#include "endstone/core/damage/damage_source.h"
 #include "endstone/core/server.h"
 
 namespace endstone::core {

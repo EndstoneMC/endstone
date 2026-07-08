@@ -14,9 +14,10 @@
 
 #pragma once
 
+#include <unordered_map>
+
 #include <spdlog/pattern_formatter.h>
 #include <spdlog/spdlog.h>
-#include <unordered_map>
 
 #include "endstone/color_format.h"
 
@@ -24,7 +25,7 @@ namespace endstone::core {
 
 class TextFormatter : public spdlog::custom_flag_formatter {
 public:
-    explicit TextFormatter(bool should_do_colors) : should_do_colors_(should_do_colors){};
+    explicit TextFormatter(bool should_do_colors) : should_do_colors_(should_do_colors) {};
     void format(const spdlog::details::log_msg &msg, const std::tm &, spdlog::memory_buf_t &dest) override;
     [[nodiscard]] std::unique_ptr<custom_flag_formatter> clone() const override;
 

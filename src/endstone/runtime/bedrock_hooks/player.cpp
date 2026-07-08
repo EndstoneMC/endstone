@@ -16,7 +16,6 @@
 
 #include <iostream>
 
-
 #include "bedrock/world/actor/item/item_actor.h"
 #include "bedrock/world/level/block/bed_block.h"
 #include "endstone/core/actor/item.h"

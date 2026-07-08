@@ -261,8 +261,8 @@ private:
         tag.forEachCompoundTag([&](const ::CompoundTag &enchant_tag) {
             auto type = enchant_tag.getShort("id");
             auto lvl = enchant_tag.getShort("lvl") & 0xffff;
-            if (const auto *ench = Enchantment::get(
-                    EnchantmentId::minecraft(Enchant::getEnchant(static_cast<Enchant::Type>(type))->getStringId().getString()))) {
+            if (const auto *ench = Enchantment::get(EnchantmentId::minecraft(
+                    Enchant::getEnchant(static_cast<Enchant::Type>(type))->getStringId().getString()))) {
                 enchantments[std::string(ench->getId())] = lvl;
             }
         });

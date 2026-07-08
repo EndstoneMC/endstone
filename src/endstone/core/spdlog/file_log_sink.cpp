@@ -17,11 +17,11 @@
 #include <format>
 #include <fstream>
 #include <iostream>
+#include <zstr.hpp>
 
 #include <date/date.h>
 #include <spdlog/details/os.h>
 #include <spdlog/pattern_formatter.h>
-#include <zstr.hpp>
 
 #include "endstone/core/spdlog/level_formatter.h"
 #include "endstone/core/spdlog/text_formatter.h"
@@ -105,8 +105,8 @@ void FileLogSink::rotate()
             // if failed try again after a small delay.
             spdlog::details::os::sleep_for_millis(100);
             if (!func(src, target)) {
-                std::cout << std::format("\033[31mFileLogSink: failed rotating {} to {}\033[0m\n",
-                                         filename_to_str(src), filename_to_str(target));
+                std::cout << std::format("\033[31mFileLogSink: failed rotating {} to {}\033[0m\n", filename_to_str(src),
+                                         filename_to_str(target));
                 break;
             }
         }

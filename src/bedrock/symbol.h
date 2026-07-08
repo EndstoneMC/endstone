@@ -21,7 +21,6 @@
 #include <string_view>
 #include <utility>
 
-
 #include "endstone/detail.h"
 
 #ifdef _WIN32

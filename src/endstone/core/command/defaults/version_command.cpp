@@ -14,11 +14,9 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-#include "endstone/core/command/defaults/version_command.h"
-
-
 #include "endstone/color_format.h"
 #include "endstone/core/command/command_map.h"
+#include "endstone/core/command/defaults/version_command.h"
 #include "endstone/core/server.h"
 
 namespace endstone::core {

@@ -33,7 +33,7 @@ class BlockDescriptor {
 
     class ResolveHelper {
     public:
-        ResolveHelper(BlockDescriptor &block_descriptor) : block_descriptor_(block_descriptor){};
+        ResolveHelper(BlockDescriptor &block_descriptor) : block_descriptor_(block_descriptor) {};
         void resolve(bool log_invalid_blocks);
 
     private:

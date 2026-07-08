@@ -12,9 +12,9 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-#include <format>
-
 #include "bedrock/network/packet.h"
+
+#include <format>
 
 #include "bedrock/network/net_event_callback.h"
 #include "bedrock/symbol.h"

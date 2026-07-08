@@ -22,13 +22,7 @@ class WeakRef : public GameRefs<T>::WeakStorage {
 public:
     using GameRefs<T>::WeakStorage::WeakStorage;
 
-    [[nodiscard]] bool isSet() const
-    {
-        return GameRefs<T>::WeakStorage::_isSet();
-    }
+    [[nodiscard]] bool isSet() const { return GameRefs<T>::WeakStorage::_isSet(); }
 
-    StackRefResult<T> unwrap() const
-    {
-        return StackRefResult<T>(*this);
-    }
+    StackRefResult<T> unwrap() const { return StackRefResult<T>(*this); }
 };

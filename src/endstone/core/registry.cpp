@@ -12,10 +12,10 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
+#include "endstone/core/registry.h"
+
 #include <format>
 #include <ranges>
-
-#include "endstone/core/registry.h"
 
 #include "bedrock/world/item/enchanting/enchant.h"
 #include "bedrock/world/item/item.h"

@@ -66,6 +66,6 @@ private:
             float current_max_value_;
             float current_value_;
         };
-    } ;
+    };
 };
 static_assert(sizeof(AttributeInstance) == 128);

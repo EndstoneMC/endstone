@@ -20,17 +20,13 @@
 ResourceDropsContext::ResourceDropsContext(ResourceDropsCause cause, float explosion_radius, const ItemStack &used_item,
                                            const IBlockSource &block_source, const BlockPos &block_pos,
                                            DimensionType dimension_type)
-    : cause(cause),
-      explosion_radius(explosion_radius),
-      used_item(used_item),
-      block_pos(block_pos),
-      dimension_type(dimension_type),
-      block_source_(block_source)
+    : cause(cause), explosion_radius(explosion_radius), used_item(used_item), block_pos(block_pos),
+      dimension_type(dimension_type), block_source_(block_source)
 {
 }
 
 ResourceDropsContext ResourceDropsContext::fromOtherCause(const IBlockSource &block_source, const BlockPos &position)
 {
-    return {ResourceDropsCause::Other, 1.0, ItemStack::EMPTY_ITEM, block_source, position,
+    return {ResourceDropsCause::Other,    1.0, ItemStack::EMPTY_ITEM, block_source, position,
             block_source.getDimensionId()};
 }

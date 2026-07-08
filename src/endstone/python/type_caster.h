@@ -130,7 +130,7 @@ public:
     bool load(handle src, bool)
     {
         // Ensure the object is a NumPy array of uint8
-        auto array = pybind11::array_t < uint8_t, pybind11::array::c_style | pybind11::array::forcecast > ::ensure(src);
+        auto array = pybind11::array_t<uint8_t, pybind11::array::c_style | pybind11::array::forcecast>::ensure(src);
         if (!array) {
             PyErr_SetString(PyExc_TypeError, "TypeError: expected a numpy.ndarray of uint8");
             return false;

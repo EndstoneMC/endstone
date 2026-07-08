@@ -26,10 +26,7 @@ class EndstoneMobBase : public EndstoneActorBase<Interface, Handle> {
 
 public:
     using Base::Base;
-    [[nodiscard]] Mob *asMob() const override
-    {
-        return const_cast<EndstoneMobBase *>(this);
-    }
+    [[nodiscard]] Mob *asMob() const override { return const_cast<EndstoneMobBase *>(this); }
 
     void setRotation(float yaw, float pitch) override
     {
@@ -45,15 +42,9 @@ public:
         return Base::teleport(location);
     }
 
-    [[nodiscard]] bool isGliding() const override
-    {
-        return Base::getHandle().isGliding();
-    }
+    [[nodiscard]] bool isGliding() const override { return Base::getHandle().isGliding(); }
 
-    [[nodiscard]] int getHealth() const override
-    {
-        return Base::getHandle().getHealth();
-    }
+    [[nodiscard]] int getHealth() const override { return Base::getHandle().getHealth(); }
 
     void setHealth(int health) const override
     {
@@ -63,10 +54,7 @@ public:
         mutable_attr->setCurrentValue(static_cast<float>(health));
     }
 
-    [[nodiscard]] int getMaxHealth() const override
-    {
-        return Base::getHandle().getMaxHealth();
-    }
+    [[nodiscard]] int getMaxHealth() const override { return Base::getHandle().getMaxHealth(); }
 
     void setMaxHealth(int health) const override
     {

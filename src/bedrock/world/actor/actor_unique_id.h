@@ -21,21 +21,12 @@
 struct ActorUniqueID {
     std::int64_t raw_id{-1};
     ActorUniqueID() = default;
-    explicit ActorUniqueID(std::int64_t id) : raw_id(id){};
-    bool operator==(const ActorUniqueID &other) const
-    {
-        return raw_id == other.raw_id;
-    }
+    explicit ActorUniqueID(std::int64_t id) : raw_id(id) {};
+    bool operator==(const ActorUniqueID &other) const { return raw_id == other.raw_id; }
 
-    bool operator!=(const ActorUniqueID &other) const
-    {
-        return !(*this == other);
-    }
+    bool operator!=(const ActorUniqueID &other) const { return !(*this == other); }
 
-    [[nodiscard]] bool isValid() const
-    {
-        return *this != INVALID_ID;
-    }
+    [[nodiscard]] bool isValid() const { return *this != INVALID_ID; }
     static const ActorUniqueID INVALID_ID;
 };
 inline const ActorUniqueID ActorUniqueID::INVALID_ID{};

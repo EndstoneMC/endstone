@@ -60,20 +60,11 @@ public:
         return std::move(*this);
     }
 
-    bool ignoreError()
-    {
-        return nonstd::expected<T, ErrorInfo<E>>::has_value();
-    }
+    bool ignoreError() { return nonstd::expected<T, ErrorInfo<E>>::has_value(); }
 
-    nonstd::expected<T, ErrorInfo<E>> &&discardError()
-    {
-        return std::move(*this);
-    }
+    nonstd::expected<T, ErrorInfo<E>> &&discardError() { return std::move(*this); }
 
-    [[nodiscard]] const nonstd::expected<T, ErrorInfo<E>> &asExpected() const
-    {
-        return *this;
-    }
+    [[nodiscard]] const nonstd::expected<T, ErrorInfo<E>> &asExpected() const { return *this; }
 };
 BEDROCK_STATIC_ASSERT_SIZE(Result<unsigned char>, 72, 72);
 

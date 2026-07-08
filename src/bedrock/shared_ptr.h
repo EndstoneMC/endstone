@@ -47,30 +47,15 @@ public:
         pc_ = other.pc_;
     }
 
-    ~SharedPtr() noexcept
-    {
-        reset();
-    }
+    ~SharedPtr() noexcept { reset(); }
 
-    T *get() const noexcept
-    {
-        return pc_ ? pc_->ptr : nullptr;
-    }
+    T *get() const noexcept { return pc_ ? pc_->ptr : nullptr; }
 
-    operator T *() const
-    {
-        return get();
-    }
+    operator T *() const { return get(); }
 
-    T &operator*() const noexcept
-    {
-        return *get();
-    }
+    T &operator*() const noexcept { return *get(); }
 
-    T *operator->() const noexcept
-    {
-        return get();
-    }
+    T *operator->() const noexcept { return get(); }
 
     void reset() noexcept
     {
@@ -127,10 +112,7 @@ public:
         pc_ = other.pc_;
     }
 
-    ~WeakPtr()
-    {
-        reset();
-    }
+    ~WeakPtr() { reset(); }
 
     WeakPtr &operator=(const WeakPtr &other) noexcept
     {
@@ -144,25 +126,13 @@ public:
         return *this;
     }
 
-    [[nodiscard]] bool isNull() const noexcept
-    {
-        return get() == nullptr;
-    }
+    [[nodiscard]] bool isNull() const noexcept { return get() == nullptr; }
 
-    T *get() const noexcept
-    {
-        return pc_ ? pc_->ptr : nullptr;
-    }
+    T *get() const noexcept { return pc_ ? pc_->ptr : nullptr; }
 
-    operator T *() const
-    {
-        return get();
-    }
+    operator T *() const { return get(); }
 
-    gsl::not_null<T *> operator->() const noexcept
-    {
-        return get();
-    }
+    gsl::not_null<T *> operator->() const noexcept { return get(); }
 
     void reset() noexcept
     {

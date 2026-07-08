@@ -37,8 +37,9 @@
 */
 
 InventoryTransactionError InventoryTransaction::executeWorldInteraction(void *, Player &player,
-                                                                        const InventoryAction & action)
-{  auto result = InventoryTransactionError::Unknown;
+                                                                        const InventoryAction &action)
+{
+    auto result = InventoryTransactionError::Unknown;
     // Slot 0: Drop
     if (action.getSlot() == 0 && !action.getFromItem() && action.getToItem()) {
         auto randomly = (action.getSource().getFlags() & InventorySource::WorldInteraction_Random) != 0;

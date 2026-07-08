@@ -44,15 +44,9 @@ public:
 
     virtual ~MinecraftCommands() = default;
 
-    [[nodiscard]] CommandOutputSender &getOutputSender() const
-    {
-        return *output_sender_;
-    }
+    [[nodiscard]] CommandOutputSender &getOutputSender() const { return *output_sender_; }
 
-    [[nodiscard]] CommandRegistry &getRegistry() const
-    {
-        return *registry_;
-    }
+    [[nodiscard]] CommandRegistry &getRegistry() const { return *registry_; }
 
     ENDSTONE_HOOK MCRESULT executeCommand(CommandContext &ctx, bool suppress_output) const;
     Command *compileCommand(HashedString const &command_str, CommandOrigin &origin, CurrentCmdVersion command_version,

@@ -77,19 +77,13 @@ public:
     bool SetCurrentDirectory(const std::filesystem::path &dir = std::filesystem::current_path());
 
     // legacy interface. use SetCurrentDirectory instead.
-    bool SetPwd(const std::filesystem::path &dir = std::filesystem::current_path())
-    {
-        return SetCurrentDirectory(dir);
-    }
+    bool SetPwd(const std::filesystem::path &dir = std::filesystem::current_path()) { return SetCurrentDirectory(dir); }
 
     // get current browsing directory
     const std::filesystem::path &GetCurrentDirectory() const noexcept;
 
     // legacy interface. use GetCurrentDirectory instead.
-    const std::filesystem::path &GetPwd() const noexcept
-    {
-        return GetCurrentDirectory();
-    }
+    const std::filesystem::path &GetPwd() const noexcept { return GetCurrentDirectory(); }
 
     // returns selected filename. make sense only when HasSelected returns true
     // when ImGuiFileBrowserFlags_MultipleSelection is enabled, only one of
@@ -124,10 +118,7 @@ private:
     struct ScopeGuard {
         ScopeGuard(Functor &&t) : func(std::move(t)) {}
 
-        ~ScopeGuard()
-        {
-            func();
-        }
+        ~ScopeGuard() { func(); }
 
     private:
         Functor func;

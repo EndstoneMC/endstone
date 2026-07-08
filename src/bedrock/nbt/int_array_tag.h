@@ -14,8 +14,8 @@
 
 #pragma once
 
-#include <format>
 #include <cstdint>
+#include <format>
 #include <vector>
 
 #include "bedrock/bedrock.h"
@@ -55,30 +55,18 @@ public:
         return {};
     }
 
-    [[nodiscard]] std::string toString() const override
-    {
-        return std::format("[{} ints]", data.size());
-    }
+    [[nodiscard]] std::string toString() const override { return std::format("[{} ints]", data.size()); }
 
-    [[nodiscard]] Type getId() const override
-    {
-        return Type::IntArray;
-    }
+    [[nodiscard]] Type getId() const override { return Type::IntArray; }
 
     [[nodiscard]] bool equals(const Tag &other) const override
     {
         return Tag::equals(other) && data == static_cast<const IntArrayTag &>(other).data;
     }
 
-    [[nodiscard]] std::unique_ptr<Tag> copy() const override
-    {
-        return std::make_unique<IntArrayTag>(data);
-    }
+    [[nodiscard]] std::unique_ptr<Tag> copy() const override { return std::make_unique<IntArrayTag>(data); }
 
-    [[nodiscard]] std::size_t hash() const override
-    {
-        return boost::hash_range(data.begin(), data.end());
-    }
+    [[nodiscard]] std::size_t hash() const override { return boost::hash_range(data.begin(), data.end()); }
 
     ArrayData data;
 };

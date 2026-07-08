@@ -26,35 +26,17 @@ public:
                     const NetworkItemStackDescriptor &);
     ~InventoryAction();
 
-    [[nodiscard]] const InventorySource &getSource() const
-    {
-        return source_;
-    }
+    [[nodiscard]] const InventorySource &getSource() const { return source_; }
 
-    [[nodiscard]] std::uint32_t getSlot() const
-    {
-        return slot_;
-    }
+    [[nodiscard]] std::uint32_t getSlot() const { return slot_; }
 
-    [[nodiscard]] const ItemStack &getFromItem() const
-    {
-        return from_item_;
-    }
+    [[nodiscard]] const ItemStack &getFromItem() const { return from_item_; }
 
-    [[nodiscard]] const ItemStack &getToItem() const
-    {
-        return to_item_;
-    }
+    [[nodiscard]] const ItemStack &getToItem() const { return to_item_; }
 
-    [[nodiscard]] const NetworkItemStackDescriptor &getToItemDescriptor() const
-    {
-        return from_item_descriptor_;
-    }
+    [[nodiscard]] const NetworkItemStackDescriptor &getToItemDescriptor() const { return from_item_descriptor_; }
 
-    [[nodiscard]] const NetworkItemStackDescriptor &getFromItemDescriptor() const
-    {
-        return to_item_descriptor_;
-    }
+    [[nodiscard]] const NetworkItemStackDescriptor &getFromItemDescriptor() const { return to_item_descriptor_; }
 
 private:
     InventorySource source_;

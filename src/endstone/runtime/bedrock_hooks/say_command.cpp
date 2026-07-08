@@ -14,7 +14,6 @@
 
 #include "bedrock/server/commands/standard/say_command.h"
 
-
 #include "bedrock/locale/i18n.h"
 #include "endstone/core/server.h"
 #include "endstone/runtime/hook.h"

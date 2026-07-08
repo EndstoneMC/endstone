@@ -18,7 +18,7 @@
 
 class StringByteOutput : public BytesDataOutput {
 public:
-    StringByteOutput(std::string &buffer) : buffer_(buffer){};
+    StringByteOutput(std::string &buffer) : buffer_(buffer) {};
     ~StringByteOutput() override = default;
     void writeBytes(const void *data, std::uint64_t bytes) override;
 

@@ -27,20 +27,11 @@ public:
         PYBIND11_OVERRIDE_PURE_NAME(const PluginDescription &, Plugin, "_get_description", getDescription);
     }
 
-    void onLoad() override
-    {
-        PYBIND11_OVERRIDE_NAME(void, Plugin, "on_load", onLoad);
-    }
+    void onLoad() override { PYBIND11_OVERRIDE_NAME(void, Plugin, "on_load", onLoad); }
 
-    void onEnable() override
-    {
-        PYBIND11_OVERRIDE_NAME(void, Plugin, "on_enable", onEnable);
-    }
+    void onEnable() override { PYBIND11_OVERRIDE_NAME(void, Plugin, "on_enable", onEnable); }
 
-    void onDisable() override
-    {
-        PYBIND11_OVERRIDE_NAME(void, Plugin, "on_disable", onDisable);
-    }
+    void onDisable() override { PYBIND11_OVERRIDE_NAME(void, Plugin, "on_disable", onDisable); }
 
     bool onCommand(CommandSender &sender, const Command &command, const std::vector<std::string> &args) override
     {
@@ -75,10 +66,7 @@ public:
         }
     }
 
-    [[nodiscard]] std::vector<std::string> getPluginFileFilters() const override
-    {
-        return {"\\.whl"};
-    }
+    [[nodiscard]] std::vector<std::string> getPluginFileFilters() const override { return {"\\.whl"}; }
 
     void enablePlugin(Plugin &plugin) const override
     {

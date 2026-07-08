@@ -35,18 +35,12 @@ public:
     };
 
     virtual ~ComplexInventoryTransaction() = default;
-    virtual Bedrock::Result<void> read(ReadOnlyBinaryStream &)
-    {
-        return {};
-    }
+    virtual Bedrock::Result<void> read(ReadOnlyBinaryStream &) { return {}; }
     virtual void write(BinaryStream &) const {}
     virtual void postLoadItems(BlockPalette &, bool) {}
-    virtual InventoryTransactionError handle(Player &, bool) const
-    {
-        return {};
-    }
+    virtual InventoryTransactionError handle(Player &, bool) const { return {}; }
     virtual void onTransactionError(Player &, InventoryTransactionError) const {}
 
-    Type type_;                        // +8
+    Type type_;                         // +8
     InventoryTransaction transaction_;  // +16
 };

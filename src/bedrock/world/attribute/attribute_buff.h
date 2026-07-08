@@ -48,10 +48,7 @@ public:
     [[nodiscard]] float getAmount() const;
     [[nodiscard]] AttributeBuffType getType() const;
     [[nodiscard]] ActorDamageCause getCause() const;
-    [[nodiscard]] const ActorDamageSource &getSource() const
-    {
-        return *source_;
-    }
+    [[nodiscard]] const ActorDamageSource &getSource() const { return *source_; }
     [[nodiscard]] const std::optional<HurtEffectsSettings> &getHurtEffectsSettings() const
     {
         return hurt_effects_settings_;

@@ -14,10 +14,9 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-#include "endstone/core/inventory/player_inventory.h"
-
 #include "bedrock/network/packet/inventory_slot_packet.h"
 #include "endstone/core/inventory/item_stack.h"
+#include "endstone/core/inventory/player_inventory.h"
 
 namespace endstone::core {
 

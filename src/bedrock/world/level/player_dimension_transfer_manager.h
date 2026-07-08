@@ -26,10 +26,7 @@ public:
                                    const gsl::not_null<StackRefResult<EntityRegistry>> &,
                                    std::unique_ptr<ILevelCrashDumpManager>);
 
-    IPlayerDimensionTransferConnector &getPlayerDimensionTransferConnector()
-    {
-        return *player_dimension_transferer_;
-    }
+    IPlayerDimensionTransferConnector &getPlayerDimensionTransferConnector() { return *player_dimension_transferer_; }
 
 private:
     const std::unique_ptr<PlayerLimboActorManager> player_limbo_actor_manager_;

@@ -21,6 +21,6 @@ public:
     NetworkBlockPosition() = default;
     NetworkBlockPosition(int x, int y, int z) : BlockPos(x * 8.0, y * 8.0, z * 8.0) {}
     NetworkBlockPosition(const BlockPos &block_pos)
-        : BlockPos(block_pos.x * 8.0, block_pos.y * 8.0, block_pos.z * 8.0){};
+        : BlockPos(block_pos.x * 8.0, block_pos.y * 8.0, block_pos.z * 8.0) {};
     NetworkBlockPosition(const NetworkBlockPosition &) = default;
 };

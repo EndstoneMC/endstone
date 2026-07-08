@@ -24,10 +24,7 @@ protected:
     OwnerStorageEntity() = default;
     OwnerStorageEntity(EntityRegistry &registry);
     OwnerStorageEntity(const OwnerStorageEntity &) = delete;
-    OwnerStorageEntity(OwnerStorageEntity &&other) noexcept : context_(other.context_)
-    {
-        other.context_.reset();
-    }
+    OwnerStorageEntity(OwnerStorageEntity &&other) noexcept : context_(other.context_) { other.context_.reset(); }
     ~OwnerStorageEntity()
     {
         if (context_.has_value()) {
@@ -51,15 +48,9 @@ protected:
         return *this;
     }
 
-    [[nodiscard]] bool _hasValue() const
-    {
-        return context_.has_value();
-    }
+    [[nodiscard]] bool _hasValue() const { return context_.has_value(); }
 
-    [[nodiscard]] EntityContext &_getStackRef() const
-    {
-        return const_cast<EntityContext &>(context_.value());
-    }
+    [[nodiscard]] EntityContext &_getStackRef() const { return const_cast<EntityContext &>(context_.value()); }
 
 private:
     friend class StackResultStorageEntity;

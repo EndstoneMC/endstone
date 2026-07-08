@@ -14,8 +14,9 @@
 
 #include "endstone/core/level/level.h"
 
-#include <boost/algorithm/string.hpp>
 #include <ranges>
+
+#include <boost/algorithm/string.hpp>
 
 #include "bedrock/entity/gamerefs_entity/gamerefs_entity.h"
 #include "bedrock/world/level/dimension/dimension.h"

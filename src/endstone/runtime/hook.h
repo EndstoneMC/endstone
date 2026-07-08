@@ -17,7 +17,6 @@
 #include <system_error>
 #include <unordered_map>
 
-
 #include "bedrock/symbol.h"
 #include "endstone/detail.h"
 

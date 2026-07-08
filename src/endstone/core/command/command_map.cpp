@@ -14,9 +14,9 @@
 
 #include "endstone/core/command/command_map.h"
 
-#include <format>
 #include <algorithm>
 #include <cctype>
+#include <format>
 #include <ranges>
 #include <string>
 #include <unordered_map>
@@ -25,8 +25,8 @@
 #include <boost/algorithm/string.hpp>
 
 #include "bedrock/locale/i18n.h"
-#include "bedrock/server/server_instance.h"
 #include "bedrock/server/commands/command_registry.h"
+#include "bedrock/server/server_instance.h"
 #include "endstone/command/plugin_command.h"
 #include "endstone/core/command/command_usage_parser.h"
 #include "endstone/core/command/defaults/ban_command.h"

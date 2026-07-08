@@ -23,10 +23,7 @@ class IntTag : public Tag {
 public:
     explicit IntTag(std::int32_t data = 0) : data(data) {}
 
-    void write(IDataOutput &output) const override
-    {
-        output.writeInt(data);
-    }
+    void write(IDataOutput &output) const override { output.writeInt(data); }
 
     Bedrock::Result<void> load(IDataInput &input) override
     {
@@ -38,30 +35,18 @@ public:
         return BEDROCK_RETHROW(result);
     }
 
-    [[nodiscard]] std::string toString() const override
-    {
-        return std::to_string(data);
-    }
+    [[nodiscard]] std::string toString() const override { return std::to_string(data); }
 
-    [[nodiscard]] Type getId() const override
-    {
-        return Type::Int;
-    }
+    [[nodiscard]] Type getId() const override { return Type::Int; }
 
     [[nodiscard]] bool equals(const Tag &other) const override
     {
         return Tag::equals(other) && data == static_cast<const IntTag &>(other).data;
     }
 
-    [[nodiscard]] std::unique_ptr<Tag> copy() const override
-    {
-        return std::make_unique<IntTag>(data);
-    }
+    [[nodiscard]] std::unique_ptr<Tag> copy() const override { return std::make_unique<IntTag>(data); }
 
-    [[nodiscard]] std::size_t hash() const override
-    {
-        return data;
-    }
+    [[nodiscard]] std::size_t hash() const override { return data; }
 
     std::int32_t data;
 };

@@ -17,7 +17,6 @@
 #include "bedrock/util/id_type.h"
 #include "bedrock/util/tag_registry.h"
 
-
 using LevelTagID = IDType<struct LevelTagIDType>;
 using LevelTagSetID = IDType<struct LevelTagSetIDType>;
 

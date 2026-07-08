@@ -45,8 +45,8 @@ public:
     [[nodiscard]] BlockActorType getType() const { return type_; }
 
 protected:
-    BlockPos position_;          // +8
-    const BlockActorType type_;  // +20
+    BlockPos position_;                                                         // +8
+    const BlockActorType type_;                                                 // +20
     std::unique_ptr<BlockActorDynamicPropertiesComponent> dynamic_properties_;  // +24
 };
 BEDROCK_STATIC_ASSERT_SIZE(BlockActor, 32, 32);

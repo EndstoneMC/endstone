@@ -25,4 +25,3 @@ enum class ScriptingInputButtonState : unsigned int {
     Released = 0,
     Pressed = 1,
 };
-

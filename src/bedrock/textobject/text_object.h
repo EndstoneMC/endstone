@@ -50,10 +50,7 @@ public:
         addChild(std::make_unique<T>(std::forward<Args>(args)...));
     }
 
-    void addChild(std::unique_ptr<ITextObject> child)
-    {
-        children_.push_back(std::move(child));
-    }
+    void addChild(std::unique_ptr<ITextObject> child) { children_.push_back(std::move(child)); }
 
     [[nodiscard]] std::string asString() const override;
     [[nodiscard]] Json::Value asJsonValue() const override;

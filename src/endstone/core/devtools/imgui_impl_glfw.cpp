@@ -192,10 +192,7 @@ struct ImGui_ImplGlfw_Data {
     WNDPROC PrevWndProc;
 #endif
 
-    ImGui_ImplGlfw_Data()
-    {
-        memset((void *)this, 0, sizeof(*this));
-    }
+    ImGui_ImplGlfw_Data() { memset((void *)this, 0, sizeof(*this)); }
 };
 
 // Backend data stored in io.BackendPlatformUserData to allow support for multiple Dear ImGui contexts
@@ -1221,10 +1218,7 @@ struct ImGui_ImplGlfw_ViewportData {
         memset(this, 0, sizeof(*this));
         IgnoreWindowSizeEventFrame = IgnoreWindowPosEventFrame = -1;
     }
-    ~ImGui_ImplGlfw_ViewportData()
-    {
-        IM_ASSERT(Window == nullptr);
-    }
+    ~ImGui_ImplGlfw_ViewportData() { IM_ASSERT(Window == nullptr); }
 };
 
 static void ImGui_ImplGlfw_WindowCloseCallback(GLFWwindow *window)

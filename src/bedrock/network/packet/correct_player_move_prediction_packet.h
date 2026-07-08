@@ -39,18 +39,9 @@ public:
     {
         return MinecraftPacketIds::CorrectPlayerMovePredictionPacket;
     }
-    [[nodiscard]] std::string_view getName() const override
-    {
-        return "CorrectPlayerMovePredictionPacket";
-    }
-    void write(BinaryStream &stream) const override
-    {
-        throw std::logic_error("Not implemented");
-    }
-    Bedrock::Result<void> _read(ReadOnlyBinaryStream &stream) override
-    {
-        throw std::logic_error("Not implemented");
-    }
+    [[nodiscard]] std::string_view getName() const override { return "CorrectPlayerMovePredictionPacket"; }
+    void write(BinaryStream &stream) const override { throw std::logic_error("Not implemented"); }
+    Bedrock::Result<void> _read(ReadOnlyBinaryStream &stream) override { throw std::logic_error("Not implemented"); }
 
     CorrectPlayerMovePredictionPacketPayload payload;
     SerializationMode serialization_mode;

@@ -15,6 +15,7 @@
 #pragma once
 
 #include <vector>
+
 #include "bedrock/core/resource/pack_type.h"
 
 struct InvalidPacksFilterGroup {

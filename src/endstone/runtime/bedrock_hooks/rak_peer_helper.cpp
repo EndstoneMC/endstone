@@ -14,12 +14,12 @@
 
 #include "bedrock/network/rak_peer_helper.h"
 
-#include <format>
 #include <BitStream.h>
 #include <MessageIdentifiers.h>
 #include <PluginInterface2.h>
 #include <RakPeer.h>
 
+#include <format>
 #include <memory>
 #include <ranges>
 #include <stdexcept>

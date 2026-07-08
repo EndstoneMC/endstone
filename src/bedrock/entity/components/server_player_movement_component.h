@@ -35,10 +35,7 @@ struct IPlayerTickPolicy {
 static_assert(sizeof(IPlayerTickPolicy) == 8);
 
 struct ServerPlayerMovementComponent {
-    [[nodiscard]] const std::unique_ptr<IPlayerTickPolicy> &getPolicy() const
-    {
-        return policy_;
-    }
+    [[nodiscard]] const std::unique_ptr<IPlayerTickPolicy> &getPolicy() const { return policy_; }
 
     std::bitset<3UL> server_has_movement_authority;
     bool server_has_inventory_authority;

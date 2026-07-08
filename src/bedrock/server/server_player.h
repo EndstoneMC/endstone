@@ -20,10 +20,10 @@
 
 #include "bedrock/bedrock.h"
 #include "bedrock/certificates/identity/game_server_token.h"
-#include "bedrock/world/actor/player/player_party_info.h"
 #include "bedrock/core/utility/callback_token.h"
 #include "bedrock/network/server_network_system.h"
 #include "bedrock/world/actor/player/player.h"
+#include "bedrock/world/actor/player/player_party_info.h"
 #include "bedrock/world/inventory/inventory_menu.h"
 
 class ServerPlayer : public Player {
@@ -36,7 +36,7 @@ public:
                  const PlayerAuthenticationInfo &, int, bool, EntityContext &, PlatformType, InputMode,
                  SyncedClientOptionsComponent);
     ~ServerPlayer() override = 0;
-    ENDSTONE_HOOK void changeDimension(DimensionType toId) override; // TODO(fixme): enable the hook
+    ENDSTONE_HOOK void changeDimension(DimensionType toId) override;  // TODO(fixme): enable the hook
 
 protected:
     PlatformType platform_type_;

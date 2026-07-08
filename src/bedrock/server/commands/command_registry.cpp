@@ -69,7 +69,8 @@ CommandRegistry::Terminal CommandRegistry::findEnumValue(const std::string &name
 //     return BEDROCK_CALL(fp, this, param);
 // }
 
-// std::string CommandRegistry::describe(const Signature & /*command*/, const std::string &alias, const Overload &overload,
+// std::string CommandRegistry::describe(const Signature & /*command*/, const std::string &alias, const Overload
+// &overload,
 //                                       unsigned int highlight, unsigned int *start, unsigned int *length) const
 // {
 //     std::stringstream ss;

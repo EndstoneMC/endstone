@@ -12,9 +12,10 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
+#include "endstone/core/permissions/default_permissions.h"
+
 #include <format>
 
-#include "endstone/core/permissions/default_permissions.h"
 #include "bedrock/server/server_instance.h"
 
 namespace endstone::core {

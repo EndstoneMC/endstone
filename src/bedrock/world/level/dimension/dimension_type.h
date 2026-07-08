@@ -17,13 +17,7 @@
 struct DimensionType {
     int value;
 
-    bool operator==(const DimensionType &other) const
-    {
-        return value == other.value;
-    }
+    bool operator==(const DimensionType &other) const { return value == other.value; }
 
-    bool operator!=(const DimensionType &other) const
-    {
-        return !(*this == other);
-    }
+    bool operator!=(const DimensionType &other) const { return !(*this == other); }
 };

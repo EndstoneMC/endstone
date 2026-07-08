@@ -31,15 +31,9 @@ enum class DerivedType : int {
 template <DerivedType Type, typename Return, bool Noexcept, typename... Xs>
 class function_base_impl {
 public:
-    explicit operator bool() const
-    {
-        return storage_.vfptr != nullptr;
-    }
+    explicit operator bool() const { return storage_.vfptr != nullptr; }
 
-    Return call(Xs &&...args) const
-    {
-        return storage_.vfptr->invoke(storage_, std::forward<Xs>(args)...);
-    }
+    Return call(Xs &&...args) const { return storage_.vfptr->invoke(storage_, std::forward<Xs>(args)...); }
 
 private:
     struct vtable;

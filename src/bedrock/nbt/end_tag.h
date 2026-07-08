@@ -21,34 +21,16 @@ class EndTag : public Tag {
 public:
     void write(IDataOutput &output) const override {}
 
-    Bedrock::Result<void> load(IDataInput &input) override
-    {
-        return {};
-    }
+    Bedrock::Result<void> load(IDataInput &input) override { return {}; }
 
-    [[nodiscard]] std::string toString() const override
-    {
-        return "END";
-    }
+    [[nodiscard]] std::string toString() const override { return "END"; }
 
-    [[nodiscard]] Type getId() const override
-    {
-        return Type::End;
-    }
+    [[nodiscard]] Type getId() const override { return Type::End; }
 
-    [[nodiscard]] bool equals(const Tag &other) const override
-    {
-        return Tag::equals(other);
-    }
+    [[nodiscard]] bool equals(const Tag &other) const override { return Tag::equals(other); }
 
-    [[nodiscard]] std::unique_ptr<Tag> copy() const override
-    {
-        return std::make_unique<EndTag>();
-    }
+    [[nodiscard]] std::unique_ptr<Tag> copy() const override { return std::make_unique<EndTag>(); }
 
-    [[nodiscard]] std::size_t hash() const override
-    {
-        return 0;
-    }
+    [[nodiscard]] std::size_t hash() const override { return 0; }
 };
 BEDROCK_STATIC_ASSERT_SIZE(EndTag, 8, 8);

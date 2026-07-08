@@ -70,10 +70,7 @@ BEDROCK_STATIC_ASSERT_SIZE(GameRule, 280, 240);
 
 struct GameRuleId : NewType<int> {
     GameRuleId() = default;
-    explicit GameRuleId(const int id)
-    {
-        value = id;
-    }
+    explicit GameRuleId(const int id) { value = id; }
 };
 
 class GameRules : public Bedrock::EnableNonOwnerReferences {

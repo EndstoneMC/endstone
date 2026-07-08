@@ -16,12 +16,12 @@
 
 #ifdef __linux__
 
-#include <format>
 #include <fcntl.h>
 #include <gelf.h>
 #include <libelf.h>
 #include <unistd.h>
 
+#include <format>
 #include <fstream>
 #include <iostream>
 #include <string>

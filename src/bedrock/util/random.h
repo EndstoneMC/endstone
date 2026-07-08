@@ -37,7 +37,7 @@ static_assert(sizeof(IPositionalRandomFactory) == 8);
 
 class IRandom {
 public:
-   virtual ~IRandom() =default ;
+    virtual ~IRandom() = default;
     virtual int nextInt() = 0;
     virtual int nextInt(int) = 0;
     virtual int64_t nextLong() = 0;

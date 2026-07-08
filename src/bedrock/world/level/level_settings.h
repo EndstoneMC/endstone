@@ -19,15 +19,9 @@
 
 class LevelSettings {
 public:
-    [[nodiscard]] LevelSeed64 getSeed() const
-    {
-        return seed_;
-    }
+    [[nodiscard]] LevelSeed64 getSeed() const { return seed_; }
 
-    void setRandomSeed(LevelSeed64 seed)
-    {
-        seed_ = seed;
-    }
+    void setRandomSeed(LevelSeed64 seed) { seed_ = seed; }
 
 private:
     LevelSeed64 seed_;

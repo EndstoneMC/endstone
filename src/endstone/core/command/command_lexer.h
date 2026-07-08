@@ -54,15 +54,9 @@ public:
         TokenType type;
         std::string_view value;
 
-        [[nodiscard]] bool is(TokenType t) const
-        {
-            return type == t;
-        }
+        [[nodiscard]] bool is(TokenType t) const { return type == t; }
 
-        bool operator==(const Token &other) const
-        {
-            return type == other.type && value == other.value;
-        }
+        bool operator==(const Token &other) const { return type == other.type && value == other.value; }
 
         friend std::ostream &operator<<(std::ostream &os, const Token &token)
         {
@@ -76,15 +70,9 @@ public:
     Token next();
     Token peek();
 
-    void reset()
-    {
-        position_ = 0;
-    }
+    void reset() { position_ = 0; }
 
-    [[nodiscard]] std::size_t getPosition() const
-    {
-        return position_;
-    }
+    [[nodiscard]] std::size_t getPosition() const { return position_; }
 
 private:
     [[nodiscard]] char peekChar() const
@@ -107,15 +95,9 @@ private:
     Token nextIdentifier();
     Token nextNumber();
 
-    static bool isSpace(char c)
-    {
-        return c == ' ' || c == '\t' || c == '\r' || c == '\n';
-    }
+    static bool isSpace(char c) { return c == ' ' || c == '\t' || c == '\r' || c == '\n'; }
 
-    static bool isDigit(char c)
-    {
-        return c >= '0' && c <= '9';
-    }
+    static bool isDigit(char c) { return c >= '0' && c <= '9'; }
 
     static bool isIdentifierCharacter(char c)
     {

@@ -36,10 +36,7 @@ public:
     void addCrackBlock(const BlockPos &, int);
     void addPredictDestroyBlock(const BlockPos &, int);
     void addContinueDestroyBlock(const BlockPos &, int);
-    [[nodiscard]] gsl::span<const PlayerBlockActionData> get() const
-    {
-        return actions_;
-    }
+    [[nodiscard]] gsl::span<const PlayerBlockActionData> get() const { return actions_; }
     [[nodiscard]] const PlayerBlockActionData *findFirstOfType(PlayerActionType) const;
     [[nodiscard]] std::string toString() const;
     bool operator==(const PlayerBlockActions &) const;

@@ -54,8 +54,7 @@ void init_block(py::module_ &m, py::class_<Block> &block)
         .def_property_readonly("runtime_id", &BlockData::getRuntimeId, "Gets the runtime id for this block.")
         .def("__str__", [](const BlockData &self) { return std::format("{}", self); });
 
-    block_state
-        .def_property_readonly("block", &BlockState::getBlock, "Gets the block represented by this block state.")
+    block_state.def_property_readonly("block", &BlockState::getBlock, "Gets the block represented by this block state.")
         .def_property("type", &BlockState::getType, &BlockState::setType, "Gets or sets the type of this block state.")
         .def_property("data", &BlockState::getData, &BlockState::setData, "Gets or sets the data for this block state.")
         .def_property_readonly("dimension", &BlockState::getDimension, py::return_value_policy::reference,

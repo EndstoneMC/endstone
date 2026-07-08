@@ -12,11 +12,12 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-#include <entt/locator/locator.hpp>
 #include "endstone/core/devtools/vanilla_data.h"
 
-#include <magic_enum/magic_enum.hpp>
 #include <unordered_map>
+
+#include <entt/locator/locator.hpp>
+#include <magic_enum/magic_enum.hpp>
 
 #include "bedrock/nbt/nbt_io.h"
 #include "bedrock/network/packet/crafting_data_packet.h"

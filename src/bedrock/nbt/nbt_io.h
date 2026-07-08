@@ -21,7 +21,7 @@
 
 namespace NbtIo {
 Bedrock::Result<std::unique_ptr<Tag>> readNamedTag(IDataInput &dis, std::string &name);
-Bedrock::Result<std::unique_ptr<CompoundTag>> readNamedCompoundTag(IDataInput & dis, std::string & name);
+Bedrock::Result<std::unique_ptr<CompoundTag>> readNamedCompoundTag(IDataInput &dis, std::string &name);
 void writeNamedTag(const std::string &name, const Tag &tag, IDataOutput &output);
 std::unique_ptr<CompoundTag> readOrGetEmpty(IDataInput &dis);
 }  // namespace NbtIo

@@ -18,7 +18,6 @@
 #include <string>
 #include <vector>
 
-
 #include "endstone/core/command/command_origin_wrapper.h"
 
 namespace endstone::core {

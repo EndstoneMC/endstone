@@ -12,10 +12,10 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
+#include "bedrock/nbt/list_tag.h"
+
 #include <format>
 #include <ranges>
-
-#include "bedrock/nbt/list_tag.h"
 
 #include "bedrock/nbt/byte_tag.h"
 #include "bedrock/nbt/compound_tag.h"

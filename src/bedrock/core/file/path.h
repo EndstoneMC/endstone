@@ -65,10 +65,7 @@ public:
     explicit PathBuffer(const char *c_str) : container_(c_str) {}
     explicit PathBuffer(Path const &path) : container_(path.getUtf8StdString()) {}
 
-    T const &getContainer() const
-    {
-        return container_;
-    };
+    T const &getContainer() const { return container_; };
 
 private:
     T container_;

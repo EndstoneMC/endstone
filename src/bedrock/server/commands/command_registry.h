@@ -15,6 +15,7 @@
 #pragma once
 
 #include <cstdint>
+#include <format>
 #include <functional>
 #include <map>
 #include <memory>
@@ -25,11 +26,9 @@
 #include <utility>
 #include <vector>
 
-#include <format>
-
 #include "bedrock/bedrock.h"
-#include "bedrock/forward.h"
 #include "bedrock/core/utility/type_id.h"
+#include "bedrock/forward.h"
 #include "bedrock/network/packet/available_commands_packet.h"
 #include "bedrock/platform/brstd/copyable_function.h"
 #include "bedrock/server/commands/command_flag.h"
@@ -289,10 +288,10 @@ public:
         ParseFunction parse;
         Symbol symbol;
     };
-    template<typename T>
+    template <typename T>
     struct ParseRuleFor {
         static const ParamParseRule instance;
-    }; 
+    };
     struct Enum {
         std::string name;
         Bedrock::typeid_t<CommandRegistry> type;

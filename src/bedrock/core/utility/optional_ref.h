@@ -19,20 +19,11 @@ class optional_ref {
 public:
     optional_ref(nullptr_t) : ptr_(nullptr) {}
 
-    [[nodiscard]] T &unwrap() const
-    {
-        return *ptr_;
-    }
+    [[nodiscard]] T &unwrap() const { return *ptr_; }
 
-    [[nodiscard]] bool is_some() const
-    {
-        return ptr_ != nullptr;
-    }
+    [[nodiscard]] bool is_some() const { return ptr_ != nullptr; }
 
-    [[nodiscard]] bool is_none() const
-    {
-        return ptr_ == nullptr;
-    }
+    [[nodiscard]] bool is_none() const { return ptr_ == nullptr; }
 
 protected:
     T *ptr_;

@@ -21,6 +21,6 @@
 
 class SayCommand {
     // NOLINTNEXTLINE(*-identifier-naming)
-    ENDSTONE_HOOK static void _sendMessage(std::string const &, std::optional<std::string> const &,
-                                           std::string const &, struct CommandOriginIdentity const &, class Level &);
+    ENDSTONE_HOOK static void _sendMessage(std::string const &, std::optional<std::string> const &, std::string const &,
+                                           struct CommandOriginIdentity const &, class Level &);
 };

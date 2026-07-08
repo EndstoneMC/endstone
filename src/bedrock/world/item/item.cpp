@@ -15,7 +15,6 @@
 // limitations under the License.
 
 #include "bedrock/world/item/item.h"
-
 #include "bedrock/world/level/block/block.h"
 
 const std::string Item::TAG_DAMAGE = "Damage";

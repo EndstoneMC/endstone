@@ -71,25 +71,13 @@ private:
 
 class DisplayObjective {
 public:
-    [[nodiscard]] bool isDisplaying(const Objective &objective) const
-    {
-        return objective_ == &objective;
-    }
+    [[nodiscard]] bool isDisplaying(const Objective &objective) const { return objective_ == &objective; }
 
-    [[nodiscard]] bool isValid() const
-    {
-        return objective_ != nullptr;
-    }
+    [[nodiscard]] bool isValid() const { return objective_ != nullptr; }
 
-    [[nodiscard]] const Objective &getObjective() const
-    {
-        return *objective_;
-    }
+    [[nodiscard]] const Objective &getObjective() const { return *objective_; }
 
-    [[nodiscard]] ObjectiveSortOrder getSortOrder() const
-    {
-        return sort_order_;
-    }
+    [[nodiscard]] ObjectiveSortOrder getSortOrder() const { return sort_order_; }
 
 private:
     const Objective *objective_;

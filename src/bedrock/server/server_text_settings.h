@@ -35,10 +35,7 @@ public:
     ServerTextSettings(const ServerTextSettingsBitset &enabled_text_events) : enabled_text_events_{enabled_text_events}
     {
     }
-    [[nodiscard]] const ServerTextSettingsBitset &getEnabledServerTextEvents() const
-    {
-        return enabled_text_events_;
-    }
+    [[nodiscard]] const ServerTextSettingsBitset &getEnabledServerTextEvents() const { return enabled_text_events_; }
 
 private:
     ServerTextSettingsBitset enabled_text_events_;

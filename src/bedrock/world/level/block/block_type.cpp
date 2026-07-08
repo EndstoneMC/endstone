@@ -14,12 +14,11 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-#include "bedrock/world/level/block/block_type.h"
-
 #include "bedrock/symbol.h"
 #include "bedrock/world/actor/item/experience_orb.h"
 #include "bedrock/world/item/item_stack.h"
 #include "bedrock/world/item/registry/item_registry.h"
+#include "bedrock/world/level/block/block_type.h"
 #include "bedrock/world/level/level.h"
 
 bool BlockType::hasProperty(BlockProperty property) const

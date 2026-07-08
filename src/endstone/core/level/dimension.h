@@ -22,7 +22,7 @@
 namespace endstone::core {
 class EndstoneDimension : public Dimension {
 public:
-    explicit EndstoneDimension( WeakRef<::Dimension> dimension, EndstoneLevel &level);
+    explicit EndstoneDimension(WeakRef<::Dimension> dimension, EndstoneLevel &level);
     ~EndstoneDimension() override = default;
     [[nodiscard]] std::string getName() const override;
     [[nodiscard]] Type getType() const override;

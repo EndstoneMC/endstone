@@ -14,8 +14,8 @@
 
 #include "bedrock/nbt/compound_tag.h"
 
-#include <format>
 #include <algorithm>
+#include <format>
 #include <ranges>
 #include <utility>
 

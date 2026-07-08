@@ -14,4 +14,4 @@
 
 #pragma once
 
-struct PlayerComponent{};
+struct PlayerComponent {};

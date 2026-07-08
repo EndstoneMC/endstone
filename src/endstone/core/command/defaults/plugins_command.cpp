@@ -18,7 +18,6 @@
 #include <string>
 #include <vector>
 
-
 #include "endstone/color_format.h"
 #include "endstone/core/server.h"
 
