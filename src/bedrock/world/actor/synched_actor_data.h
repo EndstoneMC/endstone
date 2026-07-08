@@ -20,7 +20,7 @@
 #include "bedrock/entity/components/actor_data_dirty_flags_component.h"
 #include "bedrock/entity/components/actor_data_flag_component.h"
 #include "bedrock/entity/gamerefs_entity/gamerefs_entity.h"
-#include "bedrock/nbt/compound_tag.h"
+class CompoundTag;
 #include "bedrock/world/level/block_pos.h"
 
 enum class DataItemType : std::uint8_t {

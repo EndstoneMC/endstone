@@ -17,7 +17,7 @@
 #include <memory>
 
 #include "bedrock/bedrock.h"
-#include "bedrock/nbt/compound_tag.h"
+class CompoundTag;
 #include "bedrock/server/commands/command_origin.h"
 #include "bedrock/server/server_level.h"
 

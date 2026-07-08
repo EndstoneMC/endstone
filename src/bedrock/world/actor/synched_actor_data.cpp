@@ -13,6 +13,7 @@
 // limitations under the License.
 
 #include "bedrock/world/actor/synched_actor_data.h"
+#include "bedrock/nbt/compound_tag.h"
 
 #include "bedrock/entity/components/synched_actor_data_component.h"
 #include "bedrock/world/level/block_pos.h"

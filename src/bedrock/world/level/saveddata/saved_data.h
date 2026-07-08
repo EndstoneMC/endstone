@@ -16,7 +16,7 @@
 
 #include <string>
 
-#include "bedrock/nbt/compound_tag.h"
+class CompoundTag;
 
 class SavedData {
 public:

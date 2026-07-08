@@ -13,6 +13,7 @@
 // limitations under the License.
 
 #include "bedrock/world/scores/scoreboard.h"
+#include "bedrock/nbt/compound_tag.h"
 
 #include <charconv>
 

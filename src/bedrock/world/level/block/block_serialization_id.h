@@ -14,6 +14,6 @@
 
 #pragma once
 
-#include "bedrock/nbt/compound_tag.h"
+class CompoundTag;
 
 using BlockSerializationId = CompoundTag;

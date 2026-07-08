@@ -22,7 +22,7 @@
 #include "bedrock/core/file/path.h"
 #include "bedrock/core/threading/async.h"
 #include "bedrock/forward.h"
-#include "bedrock/nbt/compound_tag.h"
+class CompoundTag;
 #include "bedrock/world/level/chunk/chunk_source.h"
 #include "bedrock/world/level/storage/db_storage_performance_data.h"
 

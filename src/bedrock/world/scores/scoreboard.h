@@ -18,7 +18,7 @@
 #include <unordered_map>
 
 #include "bedrock/core/hash/hash_types.h"
-#include "bedrock/nbt/compound_tag.h"
+class CompoundTag;
 #include "bedrock/network/packet_sender.h"
 #include "bedrock/server/commands/command_soft_enum_registry.h"
 #include "bedrock/world/events/player_scoreboard_event_listener.h"

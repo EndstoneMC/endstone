@@ -13,6 +13,7 @@
 // limitations under the License.
 
 #include "bedrock/server/commands/command_origin_loader.h"
+#include "bedrock/nbt/compound_tag.h"
 
 #include "bedrock/symbol.h"
 

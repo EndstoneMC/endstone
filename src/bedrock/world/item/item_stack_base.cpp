@@ -16,6 +16,8 @@
 
 #include "bedrock/world/item/item_stack_base.h"
 
+#include "bedrock/nbt/compound_tag.h"
+
 #include "bedrock/symbol.h"
 #include "bedrock/world/item/item_instance.h"
 #include "bedrock/world/item/registry/item_registry_manager.h"
