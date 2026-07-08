@@ -19,6 +19,7 @@
 #include <utility>
 
 #include <boost/algorithm/string/trim.hpp>
+#include <magic_enum/magic_enum.hpp>
 
 #include "endstone/core/server.h"
 

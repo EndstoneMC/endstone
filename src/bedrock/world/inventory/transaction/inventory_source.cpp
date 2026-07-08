@@ -12,20 +12,14 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-#pragma once
+#include "bedrock/world/inventory/transaction/inventory_source.h"
 
-#include <format>
-#include <string_view>
+#include <magic_enum/magic_enum.hpp>
 
-#include "bedrock/diagnostics/log_area.h"
-#include "bedrock/diagnostics/log_level.h"
-
-template <>
-struct std::formatter<LogAreaID> : std::formatter<std::string_view> {
-    std::format_context::iterator format(LogAreaID val, std::format_context &ctx) const;
-};
-
-template <>
-struct std::formatter<Bedrock::LogLevel> : std::formatter<std::string_view> {
-    std::format_context::iterator format(Bedrock::LogLevel val, std::format_context &ctx) const;
-};
+std::format_context::iterator std::formatter<InventorySource>::format(const InventorySource &source,
+                                                                      std::format_context &ctx) const
+{
+    return std::format_to(ctx.out(), "InventorySource(type={}, container_id={}, flags={})",
+                          magic_enum::enum_name(source.getType()), magic_enum::enum_name(source.getContainerId()),
+                          source.getFlags());
+}
