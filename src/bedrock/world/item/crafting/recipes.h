@@ -15,7 +15,9 @@
 #pragma once
 
 #include <functional>
+#include <map>
 #include <memory>
+#include <unordered_map>
 #include <unordered_set>
 
 #include "bedrock/core/string/string_hash.h"

@@ -17,6 +17,7 @@
 #include <format>
 
 #include <spdlog/details/fmt_helper.h>
+#include <unordered_map>
 
 namespace endstone::core {
 

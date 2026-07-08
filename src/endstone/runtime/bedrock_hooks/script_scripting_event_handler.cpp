@@ -26,7 +26,7 @@
 namespace {
 bool handleEvent(const ScriptCommandMessageEvent &event)
 {
-    const auto &server = entt::locator<endstone::core::EndstoneServer>::value();
+    const auto &server = endstone::core::EndstoneServer::getInstance();
     const endstone::CommandSender *sender = nullptr;
     if (event.source_actor.has_value()) {
         if (const auto *actor = event.level.fetchEntity(event.source_actor.value(), false); actor) {

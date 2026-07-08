@@ -48,7 +48,7 @@ bool handleEvent(const BlockTryPlaceByPlayerEvent &event)
         return true;
     }
 
-    const auto &server = entt::locator<endstone::core::EndstoneServer>::value();
+    const auto &server = endstone::core::EndstoneServer::getInstance();
     auto &endstone_player = player->getEndstoneActor<endstone::core::EndstonePlayer>();
     auto &dimension = endstone_player.getDimension();
     auto &block_source = player->getDimension().getBlockSourceFromMainChunkSource();
@@ -71,7 +71,7 @@ bool handleEvent(const BlockTryPlaceByPlayerEvent &event)
 bool handleEvent(ExplosionStartedEvent &event)
 {
     const auto *source = WeakEntityRef(event.source).tryUnwrap<::Actor>();
-    const auto &server = entt::locator<endstone::core::EndstoneServer>::value();
+    const auto &server = endstone::core::EndstoneServer::getInstance();
 
     std::vector<std::unique_ptr<endstone::Block>> block_list;
     for (const auto &pos : event.blocks) {
@@ -119,7 +119,7 @@ bool handleEvent(ExplosionStartedEvent &event)
 bool handleEvent(BlockTryDestroyByPlayerEvent &event)
 {
     if (const auto *player = WeakEntityRef(event.player).tryUnwrap<::Player>(); player) {
-        const auto &server = entt::locator<endstone::core::EndstoneServer>::value();
+        const auto &server = endstone::core::EndstoneServer::getInstance();
         auto &block_source = player->getDimension().getBlockSourceFromMainChunkSource();
         if (player->getPlayerGameType() == GameType::Creative) {
             if (!event.item_used.isNull() && !event.item_used.getItem()->canDestroyInCreative()) {

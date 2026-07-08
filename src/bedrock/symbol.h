@@ -21,7 +21,6 @@
 #include <string_view>
 #include <utility>
 
-#include <entt/entt.hpp>
 
 #include "endstone/detail.h"
 

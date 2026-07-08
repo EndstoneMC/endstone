@@ -18,7 +18,6 @@
 #include <string>
 #include <vector>
 
-#include <entt/entt.hpp>
 
 #include "endstone/core/command/command_origin_wrapper.h"
 
@@ -26,7 +25,7 @@ namespace endstone::core {
 
 void MinecraftCommandAdapter::execute(const CommandOrigin &origin, CommandOutput &output) const
 {
-    const auto &server = entt::locator<EndstoneServer>::value();
+    const auto &server = EndstoneServer::getInstance();
     const auto &command_map = server.getCommandMap();
     const auto command_name = getCommandName();
     const auto command = command_map.getCommand(command_name);

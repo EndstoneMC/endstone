@@ -12,9 +12,11 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
+#include <entt/locator/locator.hpp>
 #include "endstone/core/devtools/vanilla_data.h"
 
 #include <magic_enum/magic_enum.hpp>
+#include <unordered_map>
 
 #include "bedrock/nbt/nbt_io.h"
 #include "bedrock/network/packet/crafting_data_packet.h"
@@ -377,7 +379,7 @@ VanillaData *VanillaData::get()
     }
 
     if (entt::locator<EndstoneServer>::has_value()) {
-        auto &server = entt::locator<EndstoneServer>::value();
+        auto &server = EndstoneServer::getInstance();
         if (auto *server_level = server.getLevel(); server_level) {
             auto &level = static_cast<EndstoneLevel *>(server_level)->getHandle();
             auto &scheduler = static_cast<EndstoneScheduler &>(server.getScheduler());

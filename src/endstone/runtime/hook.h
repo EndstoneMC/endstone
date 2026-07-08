@@ -15,8 +15,8 @@
 #pragma once
 
 #include <system_error>
+#include <unordered_map>
 
-#include <entt/entt.hpp>
 
 #include "bedrock/symbol.h"
 #include "endstone/detail.h"

@@ -14,6 +14,7 @@
 
 #pragma once
 
+#include <ranges>
 #include <string>
 
 #include <format>

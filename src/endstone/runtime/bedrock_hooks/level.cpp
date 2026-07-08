@@ -29,14 +29,14 @@ using endstone::core::EndstoneServer;
 void Level::tick()
 {
     constexpr auto symbol = __FUNCDNAME__;
-    auto &server = entt::locator<EndstoneServer>::value();
+    auto &server = EndstoneServer::getInstance();
     server.tick(getCurrentServerTick().tick_id,
                 [&]() { ENDSTONE_HOOK_CALL_ORIGINAL_NAME(&Level::tick, symbol, this); });
 }
 
 // void Level::onChunkDiscarded(LevelChunk &lc)
 // {
-//     auto &server = entt::locator<EndstoneServer>::value();
+//     auto &server = EndstoneServer::getInstance();
 //     auto es_chunk = endstone::core::EndstoneChunk::fromMinecraft(lc);
 //     endstone::ChunkUnloadEvent e{*es_chunk};
 //     server.getPluginManager().callEvent(e);
@@ -45,7 +45,7 @@ void Level::tick()
 //
 // void Level::onChunkLoaded(ChunkSource &source, LevelChunk &lc)
 // {
-//     auto &server = entt::locator<EndstoneServer>::value();
+//     auto &server = EndstoneServer::getInstance();
 //     auto es_chunk = endstone::core::EndstoneChunk::fromMinecraft(lc);
 //     endstone::ChunkLoadEvent e{*es_chunk};
 //     server.getPluginManager().callEvent(e);

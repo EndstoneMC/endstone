@@ -14,6 +14,8 @@
 
 #pragma once
 
+#include <unordered_map>
+
 #include "endstone/registry.h"
 #include "endstone/server.h"
 

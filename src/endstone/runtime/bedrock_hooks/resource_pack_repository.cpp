@@ -12,6 +12,7 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
+#include <entt/locator/locator.hpp>
 #include "bedrock/resources/resource_pack_repository.h"
 
 #include "endstone/core/packs/endstone_pack_source.h"

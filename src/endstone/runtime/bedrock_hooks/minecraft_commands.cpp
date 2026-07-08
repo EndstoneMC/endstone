@@ -14,7 +14,6 @@
 
 #include "bedrock/server/commands/minecraft_commands.h"
 
-#include <entt/entt.hpp>
 
 #include "bedrock/world/actor/actor.h"
 #include "bedrock/world/actor/player/player.h"

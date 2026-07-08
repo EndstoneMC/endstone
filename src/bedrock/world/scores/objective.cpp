@@ -15,6 +15,7 @@
 #include "bedrock/world/scores/objective.h"
 
 #include <stdexcept>
+#include <unordered_map>
 
 Objective::Objective(const std::string &name, const ObjectiveCriteria &criteria)
     : name_(name), criteria_(criteria), display_name_(name)

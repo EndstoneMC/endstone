@@ -16,6 +16,7 @@
 
 #include <format>
 #include <algorithm>
+#include <ranges>
 #include <utility>
 
 #include "bedrock/nbt/compound_tag_variant.h"

@@ -16,6 +16,7 @@
 
 #include <endstone/core/actor/item.h>
 #include <endstone/core/inventory/item_stack.h>
+#include <ranges>
 
 #include "bedrock/entity/components/actor_owner_component.h"
 #include "bedrock/world/level/block/bedrock_block_names.h"

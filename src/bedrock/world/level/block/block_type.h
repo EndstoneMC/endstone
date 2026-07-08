@@ -14,8 +14,11 @@
 
 #pragma once
 
+#include <map>
 #include <optional>
+#include <unordered_map>
 
+#include <entt/core/enum.hpp>
 #include <gsl/span>
 
 #include "bedrock/common_types.h"

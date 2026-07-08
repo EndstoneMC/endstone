@@ -15,6 +15,7 @@
 #pragma once
 
 #include <functional>
+#include <ranges>
 #include <thread>
 #include <vector>
 

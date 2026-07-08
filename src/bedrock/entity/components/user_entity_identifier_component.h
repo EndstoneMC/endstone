@@ -14,7 +14,7 @@
 
 #pragma once
 
-#include <entt/entt.hpp>
+#include <entt/core/type_info.hpp>
 
 #include "bedrock/certificates/identity/player_authentication_info.h"
 #include "bedrock/common_types.h"

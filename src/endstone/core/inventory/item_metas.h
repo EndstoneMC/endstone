@@ -17,6 +17,7 @@
 #include <functional>
 #include <memory>
 #include <string>
+#include <unordered_map>
 #include <utility>
 
 #include "bedrock/world/item/item_stack.h"

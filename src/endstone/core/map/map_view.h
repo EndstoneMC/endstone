@@ -14,6 +14,8 @@
 
 #pragma once
 
+#include <unordered_map>
+
 #include "bedrock/world/item/map_constants.h"
 #include "bedrock/world/level/saveddata/map_item_saved_data.h"
 #include "endstone/core/map/map_canvas.h"

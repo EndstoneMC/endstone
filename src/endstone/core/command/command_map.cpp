@@ -17,6 +17,7 @@
 #include <format>
 #include <algorithm>
 #include <cctype>
+#include <ranges>
 #include <string>
 #include <unordered_map>
 #include <vector>

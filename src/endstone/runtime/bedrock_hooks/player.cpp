@@ -16,7 +16,6 @@
 
 #include <iostream>
 
-#include <entt/entt.hpp>
 
 #include "bedrock/world/actor/item/item_actor.h"
 #include "bedrock/world/level/block/bed_block.h"
@@ -61,7 +60,7 @@ void Player::teleportTo(const Vec3 &pos, bool should_stop_riding, int cause, int
 
 void Player::completeUsingItem()
 {
-    const auto &server = entt::locator<endstone::core::EndstoneServer>::value();
+    const auto &server = endstone::core::EndstoneServer::getInstance();
     const auto item = endstone::core::EndstoneItemStack::fromMinecraft(item_in_use_.getItemInUse());
     const auto hand = inventory_->getSelectedSlot().container_id == CONTAINER_ID_INVENTORY
                         ? endstone::EquipmentSlot::Hand
@@ -79,7 +78,7 @@ void Player::completeUsingItem()
 
 bool Player::drop(const ItemStack &item, bool randomly)
 {
-    const auto &server = entt::locator<endstone::core::EndstoneServer>::value();
+    const auto &server = endstone::core::EndstoneServer::getInstance();
     auto &player = getEndstoneActor<endstone::core::EndstonePlayer>();
     if (isAlive()) {
         const auto drop = endstone::core::EndstoneItemStack::fromMinecraft(item);

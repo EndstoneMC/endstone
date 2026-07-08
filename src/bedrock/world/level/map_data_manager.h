@@ -20,6 +20,8 @@
 #include "bedrock/world/level/map_data_manager_options.h"
 #include "bedrock/world/level/saveddata/map_item_saved_data.h"
 
+#include <unordered_map>
+
 class MapDataManager {
 public:
     MapDataManager(DimensionManager &dimension_manager, LevelStorage *level_storage,

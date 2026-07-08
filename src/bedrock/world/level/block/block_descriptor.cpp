@@ -16,6 +16,8 @@
 
 #include "bedrock/symbol.h"
 
+#include <unordered_map>
+
 void BlockDescriptor::ResolveHelper::resolve(bool log_invalid_blocks)
 {
     BEDROCK_CALL(&BlockDescriptor::ResolveHelper::resolve, this, log_invalid_blocks);

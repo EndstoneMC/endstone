@@ -16,6 +16,7 @@
 
 #include <functional>
 #include <shared_mutex>
+#include <unordered_map>
 
 #include "bedrock/core/resource/resource_helper.h"
 #include "bedrock/core/threading/lockbox.h"

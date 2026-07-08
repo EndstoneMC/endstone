@@ -15,6 +15,7 @@
 #include "endstone/core/ban/player_ban_list.h"
 
 #include <boost/algorithm/string.hpp>
+#include <ranges>
 
 namespace endstone::core {
 bool PlayerBanEntryMatcher::operator()(const PlayerBanEntry &entry, const std::string &name,

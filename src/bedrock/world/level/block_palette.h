@@ -15,6 +15,7 @@
 #pragma once
 
 #include <map>
+#include <set>
 #include <string>
 
 #include "bedrock/platform/threading/mutex_details.h"

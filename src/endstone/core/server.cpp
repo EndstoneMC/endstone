@@ -12,6 +12,8 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
+#include <algorithm>
+#include <entt/locator/locator.hpp>
 #include "endstone/core/server.h"
 
 #include <filesystem>
@@ -21,7 +23,10 @@
 
 #include <boost/algorithm/string.hpp>
 #include <pybind11/pybind11.h>
+#include <ranges>
 #include <toml++/toml.h>
+#include <unordered_map>
+#include <unordered_set>
 
 #include "bedrock/network/server_network_handler.h"
 #include "bedrock/platform/threading/assigned_thread.h"

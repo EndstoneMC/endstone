@@ -17,6 +17,8 @@
 #include "bedrock/forward.h"
 #include "bedrock/util/index_set.h"
 
+#include <unordered_map>
+
 template <typename TagID, typename TagSetID>
 class TagRegistry {
 public:

@@ -17,6 +17,8 @@
 #include "bedrock/world/events/scoreboard_event_listener.h"
 #include "bedrock/world/scores/scoreboard_id.h"
 
+#include <unordered_map>
+
 class PlayerScoreboardEventListener : public ScoreboardEventListener {
 public:
 private:

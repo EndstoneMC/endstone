@@ -17,6 +17,8 @@
 #include <array>
 #include <functional>
 
+#include <entt/core/enum.hpp>
+
 #include "bedrock/bedrock.h"
 
 enum class AbilitiesIndex : std::int8_t {

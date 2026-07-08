@@ -13,6 +13,7 @@
 // limitations under the License.
 
 #include <format>
+#include <ranges>
 
 #include "bedrock/nbt/list_tag.h"
 

@@ -16,6 +16,7 @@
 
 #include <filesystem>
 #include <regex>
+#include <unordered_map>
 
 #include "bedrock/resources/pack.h"
 #include "bedrock/resources/pack_source.h"

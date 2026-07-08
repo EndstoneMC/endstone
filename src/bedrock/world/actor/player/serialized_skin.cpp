@@ -18,6 +18,8 @@
 #include "bedrock/forward.h"
 #include "bedrock/world/actor/player/persona_types.h"
 
+#include <unordered_map>
+
 class SerializedSkinImpl {
 public:
     SerializedSkinImpl();

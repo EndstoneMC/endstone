@@ -17,6 +17,7 @@
 #include <chrono>
 #include <memory>
 #include <string>
+#include <unordered_map>
 
 #include "bedrock/resources/resource_pack_repository_interface.h"
 #include "bedrock/server/server_instance.h"

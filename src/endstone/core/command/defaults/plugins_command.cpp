@@ -18,7 +18,6 @@
 #include <string>
 #include <vector>
 
-#include <entt/entt.hpp>
 
 #include "endstone/color_format.h"
 #include "endstone/core/server.h"
@@ -45,7 +44,7 @@ bool PluginsCommand::execute(CommandSender &sender, const std::vector<std::strin
 std::string PluginsCommand::getPluginList() const
 {
     std::stringstream ss;
-    auto &server = entt::locator<EndstoneServer>::value();
+    auto &server = EndstoneServer::getInstance();
     auto plugins = server.getPluginManager().getPlugins();
 
     int i = 0;

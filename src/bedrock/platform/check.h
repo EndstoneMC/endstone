@@ -20,7 +20,7 @@
 #include <system_error>
 #include <vector>
 
-#include <entt/entt.hpp>
+#include <entt/core/hashed_string.hpp>
 
 #include "bedrock/bedrock.h"
 #include "bedrock/platform/callstack.h"

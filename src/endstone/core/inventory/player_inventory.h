@@ -14,6 +14,8 @@
 
 #pragma once
 
+#include <unordered_map>
+
 #include "bedrock/world/actor/player/player.h"
 #include "endstone/core/inventory/inventory.h"
 #include "endstone/inventory/player_inventory.h"

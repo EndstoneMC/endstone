@@ -1,3 +1,5 @@
+
+#include <algorithm>
 // Copyright (c) 2024, The Endstone Project. (https://endstone.dev) All Rights Reserved.
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
@@ -14,7 +16,6 @@
 
 #include "endstone/core/command/defaults/version_command.h"
 
-#include <entt/entt.hpp>
 
 #include "endstone/color_format.h"
 #include "endstone/core/command/command_map.h"
@@ -36,7 +37,7 @@ bool VersionCommand::execute(CommandSender &sender, const std::vector<std::strin
         return true;
     }
 
-    auto &server = entt::locator<EndstoneServer>::value();
+    auto &server = EndstoneServer::getInstance();
     if (args.empty()) {
         sender.sendMessage("{}This server is running {} version: {} (Minecraft: {})", ColorFormat::Gold,
                            server.getName(), server.getVersion(), server.getMinecraftVersion());

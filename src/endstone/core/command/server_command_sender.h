@@ -14,6 +14,7 @@
 
 #pragma once
 
+#include <unordered_set>
 #include <utility>
 
 #include "endstone/core/permissions/permissible_base.h"

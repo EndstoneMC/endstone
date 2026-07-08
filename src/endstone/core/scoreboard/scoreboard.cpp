@@ -15,6 +15,7 @@
 #include "endstone/core/scoreboard/scoreboard.h"
 
 #include <stdexcept>
+#include <unordered_map>
 
 #include "bedrock/world/actor/actor.h"
 #include "bedrock/world/actor/player/player.h"
@@ -128,7 +129,7 @@ void EndstoneScoreboard::resetScores(ScoreEntry entry)
 std::vector<ScoreEntry> EndstoneScoreboard::getEntries() const
 {
     std::vector<ScoreEntry> result;
-    auto &server = entt::locator<EndstoneServer>::value();
+    auto &server = EndstoneServer::getInstance();
     board_.forEachIdentityRef([&](auto &id_ref) {
         switch (id_ref.getIdentityType()) {
         case IdentityDefinition::Type::Player: {

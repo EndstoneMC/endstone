@@ -16,6 +16,7 @@
 
 #include <spdlog/pattern_formatter.h>
 #include <spdlog/spdlog.h>
+#include <unordered_map>
 
 #include "endstone/color_format.h"
 

@@ -16,6 +16,8 @@
 
 #include "bedrock/world/level/block/registry/block_type_registry.h"
 
+#include <unordered_map>
+
 class BlockStateRegistry {
     BlockStateRegistry() = default;
 

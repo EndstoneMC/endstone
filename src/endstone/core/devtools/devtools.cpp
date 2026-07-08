@@ -25,7 +25,6 @@
 #include <zstr.hpp>
 
 #include <GLFW/glfw3.h>
-#include <entt/entt.hpp>
 
 #include "endstone/detail.h"
 #include "bedrock/nbt/nbt_io.h"

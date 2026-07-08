@@ -14,6 +14,7 @@
 
 #pragma once
 
+#include <map>
 #include <unordered_map>
 
 #include "bedrock/world/level/dimension/dimension.h"

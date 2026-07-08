@@ -16,6 +16,8 @@
 
 #include <functional>
 #include <memory>
+#include <unordered_map>
+#include <unordered_set>
 #include <variant>
 
 #include <nlohmann/json.hpp>

@@ -18,6 +18,8 @@
 #include "bedrock/world/item/item.h"
 #include "bedrock/world/item/registry/item_registry_manager.h"
 
+#include <map>
+
 struct InternalItemDescriptor : ItemDescriptor::BaseDescriptor {
     InternalItemDescriptor(WeakPtr<Item> &&item, std::int16_t aux_value);
     [[nodiscard]] std::unique_ptr<BaseDescriptor> clone() const override;

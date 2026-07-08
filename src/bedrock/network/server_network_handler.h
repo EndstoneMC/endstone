@@ -17,6 +17,8 @@
 #include <cstdint>
 #include <optional>
 #include <string>
+#include <unordered_map>
+#include <unordered_set>
 
 #include "bedrock/bedrock.h"
 #include "bedrock/core/resource/pack_id_version.h"

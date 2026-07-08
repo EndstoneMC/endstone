@@ -45,7 +45,7 @@ std::shared_ptr<endstone::Actor> Actor::getEndstoneActorPtr0() const
         return component.actor;
     }
 
-    auto &server = entt::locator<endstone::core::EndstoneServer>::value();
+    auto &server = endstone::core::EndstoneServer::getInstance();
     if (auto *player = Player::tryGetFromEntity(self->entity_context_); player) {
         component.actor = std::make_shared<endstone::core::EndstonePlayer>(server, *player);
         component.actor->recalculatePermissions();

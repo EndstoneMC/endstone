@@ -14,7 +14,6 @@
 
 #include "bedrock/network/server_network_handler.h"
 
-#include <entt/entt.hpp>
 #include <magic_enum/magic_enum.hpp>
 
 #include "bedrock/locale/i18n.h"

@@ -14,6 +14,8 @@
 
 #pragma once
 
+#include <unordered_map>
+
 #include "bedrock/world/container.h"
 #include "endstone/inventory/inventory.h"
 

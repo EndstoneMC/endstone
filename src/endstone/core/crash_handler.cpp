@@ -15,6 +15,7 @@
 #include "endstone/core/crash_handler.h"
 
 #include <algorithm>
+#include <ranges>
 #include <unordered_set>
 
 #ifdef _WIN32

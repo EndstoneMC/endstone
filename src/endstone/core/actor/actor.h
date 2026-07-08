@@ -14,6 +14,8 @@
 
 #pragma once
 
+#include <unordered_set>
+
 #include "bedrock/entity/components/post_tick_position_delta_component.h"
 #include "bedrock/entity/weak_entity_ref.h"
 #include "bedrock/server/commands/command_utils.h"

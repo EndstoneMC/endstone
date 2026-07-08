@@ -14,6 +14,8 @@
 
 #pragma once
 
+#include <algorithm>
+
 namespace brstd {
 
 #ifdef _MSC_VER

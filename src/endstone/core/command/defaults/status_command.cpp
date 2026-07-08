@@ -35,7 +35,7 @@ bool StatusCommand::execute(CommandSender &sender, const std::vector<std::string
 
     sender.sendMessage("{}---- {}Server status{} ----", ColorFormat::Green, ColorFormat::Reset, ColorFormat::Green);
 
-    auto &server = entt::locator<EndstoneServer>::value();
+    auto &server = EndstoneServer::getInstance();
     auto time =
         std::chrono::duration_cast<std::chrono::seconds>(std::chrono::system_clock::now() - server.getStartTime())
             .count();

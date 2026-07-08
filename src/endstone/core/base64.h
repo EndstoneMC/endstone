@@ -14,6 +14,7 @@
 
 #pragma once
 
+#include <algorithm>
 #include <libbase64.h>
 
 #include <string>

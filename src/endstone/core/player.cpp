@@ -18,6 +18,8 @@
 
 #include <magic_enum/magic_enum.hpp>
 #include <nlohmann/json.hpp>
+#include <unordered_map>
+#include <unordered_set>
 
 #include "bedrock/entity/components/user_entity_identifier_component.h"
 #include "bedrock/network/packet.h"
