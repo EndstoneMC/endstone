@@ -15,6 +15,7 @@
 #include <format>
 
 #include "endstone/core/permissions/default_permissions.h"
+#include "bedrock/server/server_instance.h"
 
 namespace endstone::core {
 Permission &DefaultPermissions::registerPermission(std::unique_ptr<Permission> perm)

@@ -19,11 +19,10 @@
 #include <string>
 #include <unordered_map>
 
+#include "bedrock/core/utility/pub_sub/subscription.h"
 #include "bedrock/resources/resource_pack_repository_interface.h"
-#include "bedrock/server/server_instance.h"
+#include "bedrock/server/server_text_settings.h"
 #include "bedrock/shared_constants.h"
-#include "endstone/core/ban/ip_ban_list.h"
-#include "endstone/core/ban/player_ban_list.h"
 #include "endstone/core/command/command_map.h"
 #include "endstone/core/crash_handler.h"
 #include "endstone/core/lang/language.h"
@@ -36,10 +35,15 @@
 #include "endstone/core/signal_handler.h"
 #include "endstone/server.h"
 
+class RakNetConnector;
+class ServerInstance;
+
 namespace endstone::core {
 class EndstoneConsoleCommandSender;
+class EndstoneIpBanList;
 class EndstoneMetrics;
 class EndstonePlayer;
+class EndstonePlayerBanList;
 class EndstoneServer : public Server {
 public:
     explicit EndstoneServer();

@@ -22,6 +22,7 @@
 #include <unordered_set>
 
 #include "bedrock/entity/components/user_entity_identifier_component.h"
+#include "bedrock/server/server_instance.h"
 #include "bedrock/network/packet.h"
 #include "bedrock/network/packet/clientbound_map_item_data_packet.h"
 #include "bedrock/network/packet/correct_player_move_prediction_packet.h"

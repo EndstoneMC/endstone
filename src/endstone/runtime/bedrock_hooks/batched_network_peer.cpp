@@ -13,6 +13,7 @@
 // limitations under the License.
 
 #include "bedrock/network/batched_network_peer.h"
+#include "bedrock/server/server_instance.h"
 
 #include "bedrock/network/packet.h"
 #include "bedrock/network/packet/clientbound_map_item_data_packet.h"

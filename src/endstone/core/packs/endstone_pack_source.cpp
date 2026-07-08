@@ -13,6 +13,7 @@
 // limitations under the License.
 
 #include <entt/locator/locator.hpp>
+#include <fstream>
 #include "endstone/core/packs/endstone_pack_source.h"
 
 #include <unordered_map>

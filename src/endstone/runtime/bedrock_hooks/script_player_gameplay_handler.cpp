@@ -13,6 +13,7 @@
 // limitations under the License.
 
 #include "bedrock/scripting/event_handlers/script_player_gameplay_handler.h"
+#include "bedrock/server/server_instance.h"
 
 #include <string_view>
 

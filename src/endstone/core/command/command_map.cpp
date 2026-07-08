@@ -25,6 +25,7 @@
 #include <boost/algorithm/string.hpp>
 
 #include "bedrock/locale/i18n.h"
+#include "bedrock/server/server_instance.h"
 #include "bedrock/server/commands/command_registry.h"
 #include "endstone/command/plugin_command.h"
 #include "endstone/core/command/command_usage_parser.h"

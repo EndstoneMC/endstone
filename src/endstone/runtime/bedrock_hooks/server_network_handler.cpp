@@ -13,6 +13,7 @@
 // limitations under the License.
 
 #include "bedrock/network/server_network_handler.h"
+#include "bedrock/server/server_instance.h"
 
 #include <magic_enum/magic_enum.hpp>
 

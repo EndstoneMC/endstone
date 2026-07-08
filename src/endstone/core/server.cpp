@@ -15,6 +15,8 @@
 #include <algorithm>
 #include <entt/locator/locator.hpp>
 #include "endstone/core/server.h"
+#include "endstone/core/ban/ip_ban_list.h"
+#include "endstone/core/ban/player_ban_list.h"
 
 #include <filesystem>
 #include <format>
@@ -29,6 +31,7 @@
 #include <unordered_set>
 
 #include "bedrock/network/server_network_handler.h"
+#include "bedrock/server/server_instance.h"
 #include "bedrock/platform/threading/assigned_thread.h"
 #include "bedrock/server/dedicated_server.h"
 #include "bedrock/server/server_map_data_manager.h"
