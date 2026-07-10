@@ -69,8 +69,8 @@ def catch_exceptions(func):
 @click.option(
     "-i",
     "--interactive/--no-interactive",
-    default=platform.system().lower() == "windows",
-    help="Enable interactive console (default on Windows, disabled on Linux).",
+    default=True,
+    help="Enable the interactive console (default: enabled). Use --no-interactive to disable.",
 )
 @click.version_option(__version__)
 @click.pass_context

@@ -36,6 +36,8 @@ EndstoneConsole::EndstoneConsole()
     const char *value = std::getenv("ENDSTONE_USE_INTERACTIVE_CONSOLE");
     if (is_true(value)) {
         rx_ = replxx::Replxx{};
+        // commit on LF too, so LF-terminated piped consoles (e.g. Pterodactyl) submit commands
+        rx_->bind_key_internal(replxx::Replxx::KEY::control('J'), "commit_line");
         rx_->history_load(".console_history");
     }
 }
