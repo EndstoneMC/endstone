@@ -40,7 +40,7 @@ public:
 
 class TeleportCommand {
 public:
-     static TeleportTarget computeTarget(Actor &, Vec3, Vec3 *, DimensionType,
-                                                      std::optional<RotationCommandUtils::RotationData> const &, int);
-     static void applyTarget(Actor &, TeleportTarget, bool);
+    static TeleportTarget computeTarget(Actor &, Vec3, Vec3 *, DimensionType,
+                                        std::optional<RotationCommandUtils::RotationData> const &, int);
+    static void applyTarget(Actor &, TeleportTarget, bool);
 };

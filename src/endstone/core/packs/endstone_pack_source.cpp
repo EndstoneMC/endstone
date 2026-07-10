@@ -14,9 +14,13 @@
 
 #include "endstone/core/packs/endstone_pack_source.h"
 
+#include <fstream>
+#include <unordered_map>
 #include <utility>
 
 #include <boost/algorithm/string/trim.hpp>
+#include <entt/locator/locator.hpp>
+#include <magic_enum/magic_enum.hpp>
 
 #include "endstone/core/server.h"
 

@@ -1,3 +1,5 @@
+
+#include <ranges>
 // Copyright (c) 2024, The Endstone Project. (https://endstone.dev) All Rights Reserved.
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
@@ -12,10 +14,10 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-#include "bedrock/world/item/item_stack_base.h"
-
+#include "bedrock/nbt/compound_tag.h"
 #include "bedrock/symbol.h"
 #include "bedrock/world/item/item_instance.h"
+#include "bedrock/world/item/item_stack_base.h"
 #include "bedrock/world/item/registry/item_registry_manager.h"
 #include "bedrock/world/level/block/bedrock_block_names.h"
 

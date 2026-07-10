@@ -27,20 +27,11 @@ public:
         PYBIND11_OVERRIDE_PURE_NAME(const PluginDescription &, Plugin, "_get_description", getDescription);
     }
 
-    void onLoad() override
-    {
-        PYBIND11_OVERRIDE_NAME(void, Plugin, "on_load", onLoad);
-    }
+    void onLoad() override { PYBIND11_OVERRIDE_NAME(void, Plugin, "on_load", onLoad); }
 
-    void onEnable() override
-    {
-        PYBIND11_OVERRIDE_NAME(void, Plugin, "on_enable", onEnable);
-    }
+    void onEnable() override { PYBIND11_OVERRIDE_NAME(void, Plugin, "on_enable", onEnable); }
 
-    void onDisable() override
-    {
-        PYBIND11_OVERRIDE_NAME(void, Plugin, "on_disable", onDisable);
-    }
+    void onDisable() override { PYBIND11_OVERRIDE_NAME(void, Plugin, "on_disable", onDisable); }
 
     bool onCommand(CommandSender &sender, const Command &command, const std::vector<std::string> &args) override
     {
@@ -75,10 +66,7 @@ public:
         }
     }
 
-    [[nodiscard]] std::vector<std::string> getPluginFileFilters() const override
-    {
-        return {"\\.whl"};
-    }
+    [[nodiscard]] std::vector<std::string> getPluginFileFilters() const override { return {"\\.whl"}; }
 
     void enablePlugin(Plugin &plugin) const override
     {
@@ -155,8 +143,7 @@ void init_plugin(py::module &m)
         .def_property_readonly("authors", &PluginDescription::getAuthors, "The list of authors for the plugin.")
         .def_property_readonly("contributors", &PluginDescription::getContributors,
                                "The list of contributors for the plugin.")
-        .def_property_readonly("website", &PluginDescription::getWebsite,
-                               "The plugin's or plugin's author's website.")
+        .def_property_readonly("website", &PluginDescription::getWebsite, "The plugin's or plugin's author's website.")
         .def_property_readonly("prefix", &PluginDescription::getPrefix,
                                "The token to prefix plugin-specific logging messages with.")
         .def_property_readonly("provides", &PluginDescription::getProvides,
@@ -469,8 +456,7 @@ void init_plugin(py::module &m)
     Returns:
         Set containing all subscribed permissions.
 )doc")
-        .def_property_readonly("permissions", &PluginManager::getPermissions,
-                               "Set of all registered permissions.");
+        .def_property_readonly("permissions", &PluginManager::getPermissions, "Set of all registered permissions.");
 
     plugin_command
         .def_property("executor", &PluginCommand::getExecutor,

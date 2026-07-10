@@ -14,6 +14,8 @@
 
 #include "endstone/core/spdlog/level_formatter.h"
 
+#include <unordered_map>
+
 #include <spdlog/details/fmt_helper.h>
 
 namespace endstone::core {

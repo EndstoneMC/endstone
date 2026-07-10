@@ -26,15 +26,9 @@ public:
     {
     }
 
-    [[nodiscard]] std::uint16_t getStackSize() const
-    {
-        return stack_size_;
-    }
+    [[nodiscard]] std::uint16_t getStackSize() const { return stack_size_; }
 
-    void setStackSize(std::uint16_t stack_size)
-    {
-        stack_size_ = stack_size;
-    }
+    void setStackSize(std::uint16_t stack_size) { stack_size_ = stack_size; }
 
     explicit operator bool() const
     {

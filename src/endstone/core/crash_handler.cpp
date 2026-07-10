@@ -15,6 +15,7 @@
 #include "endstone/core/crash_handler.h"
 
 #include <algorithm>
+#include <ranges>
 #include <unordered_set>
 
 #ifdef _WIN32
@@ -34,6 +35,7 @@
 #include <sentry.h>
 
 #include <filesystem>
+#include <format>
 #include <fstream>
 #include <iostream>
 #include <string>
@@ -41,9 +43,6 @@
 #include <cpptrace/cpptrace.hpp>
 #include <cpptrace/formatting.hpp>
 #include <date/date.h>
-#include <fmt/color.h>
-#include <fmt/format.h>
-#include <fmt/std.h>
 #include <spdlog/spdlog.h>
 
 #include "endstone/core/platform.h"
@@ -148,14 +147,14 @@ const signal_slot SIGNAL_DEFINITIONS[] = {SIGNAL_DEF(SIGILL, "IllegalInstruction
 
 bool should_print(const sentry_ucontext_t *ctx)
 {
-// #ifdef _WIN32
-//     const auto *record = ctx->exception_ptrs.ExceptionRecord;
-//     if (record->ExceptionCode == STATUS_FATAL_APP_EXIT) {
-//         // Skip printing when the app crashes during intentional shutdown
-//         // (e.g., via std::exit or ExitProcess).
-//         return false;
-//     }
-// #endif
+    // #ifdef _WIN32
+    //     const auto *record = ctx->exception_ptrs.ExceptionRecord;
+    //     if (record->ExceptionCode == STATUS_FATAL_APP_EXIT) {
+    //         // Skip printing when the app crashes during intentional shutdown
+    //         // (e.g., via std::exit or ExitProcess).
+    //         return false;
+    //     }
+    // #endif
     return true;
 }
 
@@ -203,14 +202,14 @@ sentry_value_t on_crash(const sentry_ucontext_t *ctx, const sentry_value_t event
     try {
         fs::path path = "./crash_reports/";
         fs::create_directories(path);
-        path = path / fmt::format("crash-{}-server.txt", get_filename_formatted_date_time());
+        path = path / std::format("crash-{}-server.txt", get_filename_formatted_date_time());
         std::ofstream out(path, std::ios::out | std::ios::trunc);
         print_crash_message(out, ctx);
         print_stacktrace(out, stacktrace);
-        fmt::print(fmt::fg(fmt::terminal_color::red), "This crash report has been saved to: {}\n", absolute(path));
+        std::cout << std::format("\033[31mThis crash report has been saved to: {}\033[0m\n", absolute(path).string());
     }
     catch (...) {
-        fmt::print(fmt::fg(fmt::terminal_color::red), "We were unable to save this crash report to disk.\n");
+        std::cout << "\033[31mWe were unable to save this crash report to disk.\033[0m\n";
     }
     return event;
 }

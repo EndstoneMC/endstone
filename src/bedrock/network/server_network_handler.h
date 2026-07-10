@@ -17,6 +17,8 @@
 #include <cstdint>
 #include <optional>
 #include <string>
+#include <unordered_map>
+#include <unordered_set>
 
 #include "bedrock/bedrock.h"
 #include "bedrock/core/resource/pack_id_version.h"
@@ -108,7 +110,7 @@ private:
     GameCallbacks &callbacks_;  // +144
     Bedrock::NonOwnerPointer<ILevel> level_;
     ServerPlayerLoader player_loader_;  // +176
-    ServerNetworkSystem &network_;                  // +200
+    ServerNetworkSystem &network_;      // +200
     PrivateKeyManager &server_keys_;
     ServerLocator &server_locator_;
     gsl::not_null<PacketSender *> packet_sender_;  // +200

@@ -76,7 +76,7 @@ const std::vector<std::reference_wrapper<const HashedString>> LogAndStrippedLogB
     VanillaBlockTypeIds::PaleOakLog,  VanillaBlockTypeIds::StrippedPaleOakLog,
 };
 const std::vector<std::reference_wrapper<const HashedString>> TntIds = {VanillaBlockTypeIds::Tnt,
-                                                                               VanillaBlockTypeIds::UnderwaterTnt};
+                                                                        VanillaBlockTypeIds::UnderwaterTnt};
 const std::vector<std::reference_wrapper<const HashedString>> WoodAndStrippedWoodBlockIds = {
     VanillaBlockTypeIds::OakWood,      VanillaBlockTypeIds::StrippedOakWood,
     VanillaBlockTypeIds::SpruceWood,   VanillaBlockTypeIds::StrippedSpruceWood,

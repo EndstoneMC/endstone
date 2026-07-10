@@ -13,6 +13,8 @@
 // limitations under the License.
 
 #include <windows.h>
+
+#include <map>
 // detours.h must be included after windows.h
 #include <detours.h>
 

@@ -16,6 +16,8 @@
 
 #include <algorithm>
 #include <cctype>
+#include <format>
+#include <ranges>
 #include <string>
 #include <unordered_map>
 #include <vector>
@@ -24,6 +26,7 @@
 
 #include "bedrock/locale/i18n.h"
 #include "bedrock/server/commands/command_registry.h"
+#include "bedrock/server/server_instance.h"
 #include "endstone/command/plugin_command.h"
 #include "endstone/core/command/command_usage_parser.h"
 #include "endstone/core/command/defaults/ban_command.h"
@@ -324,7 +327,7 @@ bool EndstoneCommandMap::registerCommand(std::shared_ptr<Command> command)
                     if (registry.enums_.at(enum_index).values.empty()) {
                         break;
                     }
-                    enum_name_final = fmt::format("{}_{}", enum_name, ++i);
+                    enum_name_final = std::format("{}_{}", enum_name, ++i);
                 }
                 if (enum_name_final != enum_name) {
                     server_.getLogger().warning("Enum '{}' already exists, '{}' will be registered instead.", enum_name,

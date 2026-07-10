@@ -20,7 +20,7 @@
 
 #include "bedrock/bedrock.h"
 #include "bedrock/core/string/string_hash.h"
-#include "bedrock/nbt/compound_tag.h"
+class CompoundTag;
 #include "bedrock/world/level/block/block_serialization_id.h"
 #include "bedrock/world/level/block/block_type.h"
 #include "bedrock/world/level/block/components/block_component_direct_data.h"

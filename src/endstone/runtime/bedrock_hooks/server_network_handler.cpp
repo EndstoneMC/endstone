@@ -14,11 +14,11 @@
 
 #include "bedrock/network/server_network_handler.h"
 
-#include <entt/entt.hpp>
 #include <magic_enum/magic_enum.hpp>
 
 #include "bedrock/locale/i18n.h"
 #include "bedrock/network/packet/disconnect_packet.h"
+#include "bedrock/server/server_instance.h"
 #include "endstone/core/entity/components/flag_components.h"
 #include "endstone/core/player.h"
 #include "endstone/core/server.h"
@@ -156,8 +156,7 @@ std::optional<PlayerAuthenticationInfo> ServerNetworkHandler::_validateLoginPack
     }
 
     const auto &info = *auth_info;
-    const auto &name =
-        info.xuid.empty() ? packet.payload.connection_request->getThirdPartyName() : info.xbox_live_name;
+    const auto &name = info.xuid.empty() ? packet.payload.connection_request->getThirdPartyName() : info.xbox_live_name;
     const auto uuid = endstone::core::EndstoneUUID::fromMinecraft(info.authenticated_uuid);
     const auto &xuid = info.xuid;
     if (server.getBanList().isBanned(name, uuid, xuid)) {
@@ -175,4 +174,3 @@ std::optional<PlayerAuthenticationInfo> ServerNetworkHandler::_validateLoginPack
     // TODO(event): PlayerPreLoginEvent
     return auth_info;
 }
-

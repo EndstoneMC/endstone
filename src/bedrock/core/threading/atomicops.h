@@ -68,10 +68,7 @@ public:
     WeakAtomic(WeakAtomic const &other) : value(other.load()) {}
     WeakAtomic(WeakAtomic &&other) noexcept : value(std::move(other.load())) {}
 
-    operator T() const
-    {
-        return load();
-    }
+    operator T() const { return load(); }
 
     template <typename U>
     WeakAtomic const &operator=(U &&x)
@@ -86,20 +83,11 @@ public:
         return *this;
     }
 
-    T load() const
-    {
-        return value.load(std::memory_order_relaxed);
-    }
+    T load() const { return value.load(std::memory_order_relaxed); }
 
-    T fetch_add_acquire(T increment)
-    {
-        return value.fetch_add(increment, std::memory_order_acquire);
-    }
+    T fetch_add_acquire(T increment) { return value.fetch_add(increment, std::memory_order_acquire); }
 
-    T fetch_add_release(T increment)
-    {
-        return value.fetch_add(increment, std::memory_order_release);
-    }
+    T fetch_add_release(T increment) { return value.fetch_add(increment, std::memory_order_release); }
 
 private:
     std::atomic<T> value;

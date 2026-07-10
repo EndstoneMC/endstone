@@ -14,6 +14,7 @@
 
 #pragma once
 
+#include <array>
 #include <functional>
 #include <string>
 #include <unordered_set>

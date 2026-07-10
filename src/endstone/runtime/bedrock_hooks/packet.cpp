@@ -1,3 +1,5 @@
+
+#include <unordered_map>
 // Copyright (c) 2024, The Endstone Project. (https://endstone.dev) All Rights Reserved.
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
@@ -13,8 +15,8 @@
 // limitations under the License.
 
 #include "bedrock/network/packet.h"
-
 #include "bedrock/network/packet/login_packet.h"
+#include "bedrock/server/server_instance.h"
 #include "endstone/core/player.h"
 #include "endstone/core/server.h"
 #include "endstone/core/util/socket_address.h"

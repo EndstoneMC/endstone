@@ -16,4 +16,4 @@
 
 #include "bedrock/world/events/player_event_coordinator.h"
 
-class ServerPlayerEventCoordinator : public PlayerEventCoordinator{};
+class ServerPlayerEventCoordinator : public PlayerEventCoordinator {};

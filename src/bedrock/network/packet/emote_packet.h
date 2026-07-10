@@ -28,15 +28,9 @@ public:
     EmotePacket();
     EmotePacket(ActorRuntimeID, const std::string &, uint32_t, const std::string &, const std::string &);
     void setServerSide();
-    [[nodiscard]] bool isServerSide() const
-    {
-        return (flags & static_cast<uint8_t>(Flags::SERVER_SIDE)) != 0;
-    }
+    [[nodiscard]] bool isServerSide() const { return (flags & static_cast<uint8_t>(Flags::SERVER_SIDE)) != 0; }
     void setEmoteChatMute();
-    [[nodiscard]] bool isEmoteChatMuted() const
-    {
-        return (flags & static_cast<uint8_t>(Flags::MUTE_EMOTE_CHAT)) != 0;
-    }
+    [[nodiscard]] bool isEmoteChatMuted() const { return (flags & static_cast<uint8_t>(Flags::MUTE_EMOTE_CHAT)) != 0; }
     ActorRuntimeID runtime_id;
     std::string piece_id;
     uint32_t emote_ticks;

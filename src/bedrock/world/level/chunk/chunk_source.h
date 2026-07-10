@@ -14,6 +14,8 @@
 
 #pragma once
 
+#include <unordered_set>
+
 #include "bedrock/core/utility/enable_non_owner_references.h"
 #include "bedrock/core/utility/pub_sub/subscription.h"
 #include "bedrock/world/level/block_source.h"

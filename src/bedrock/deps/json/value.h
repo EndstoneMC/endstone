@@ -29,7 +29,7 @@ enum ValueType : char {  // NOLINTBEGIN
     booleanValue = 5,    ///< bool value
     arrayValue = 6,      ///< array value (ordered list)
     objectValue = 7,     ///< object value (collection of name/value pairs).
-};                       // NOLINTEND
+};  // NOLINTEND
 
 class Value {
     static const Value &null;

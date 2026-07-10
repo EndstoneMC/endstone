@@ -14,28 +14,18 @@
 
 #pragma once
 
-#include <fmt/format.h>
-#include <magic_enum/magic_enum.hpp>
+#include <format>
+#include <string_view>
 
 #include "bedrock/diagnostics/log_area.h"
 #include "bedrock/diagnostics/log_level.h"
 
-namespace fmt {
 template <>
-struct formatter<LogAreaID> : formatter<string_view> {
-    template <typename FormatContext>
-    auto format(const LogAreaID &val, FormatContext &ctx) const -> format_context::iterator
-    {
-        return fmt::format_to(ctx.out(), "{}", std::string(magic_enum::enum_name(val)));
-    }
+struct std::formatter<LogAreaID> : std::formatter<std::string_view> {
+    std::format_context::iterator format(LogAreaID val, std::format_context &ctx) const;
 };
 
 template <>
-struct formatter<Bedrock::LogLevel> : formatter<string_view> {
-    template <typename FormatContext>
-    auto format(const Bedrock::LogLevel &val, FormatContext &ctx) const -> format_context::iterator
-    {
-        return fmt::format_to(ctx.out(), "{}", std::string(magic_enum::enum_name(val.getType())));
-    }
+struct std::formatter<Bedrock::LogLevel> : std::formatter<std::string_view> {
+    std::format_context::iterator format(Bedrock::LogLevel val, std::format_context &ctx) const;
 };
-}  // namespace fmt

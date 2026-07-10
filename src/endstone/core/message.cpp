@@ -30,9 +30,7 @@ std::string EndstoneMessage::toString(Message message)
 
 Translatable EndstoneMessage::toTranslatable(Message message)
 {
-    return std::visit(overloaded{[](const std::string &string) {
-                                     return Translatable{string, {}};
-                                 },
+    return std::visit(overloaded{[](const std::string &string) { return Translatable{string, {}}; },
                                  [](const Translatable &tr) {
                                      return tr;
                                  }},

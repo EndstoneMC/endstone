@@ -112,4 +112,4 @@ private:
 namespace GameEventRegistry {
 static const GameEvent blockChange(GameEventConfig::GameEventType::BlockChange, GameEventConfig::VibrationsCategory);
 static const GameEvent entityDamage(GameEventConfig::GameEventType::EntityDamage, GameEventConfig::VibrationsCategory);
-}
+}  // namespace GameEventRegistry

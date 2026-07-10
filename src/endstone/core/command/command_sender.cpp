@@ -14,8 +14,6 @@
 
 #include "endstone/command/command_sender.h"
 
-#include <entt/entt.hpp>
-
 #include "bedrock/server/commands/command_origin.h"
 #include "bedrock/server/commands/command_origin_loader.h"
 #include "bedrock/world/actor/actor.h"
@@ -27,7 +25,7 @@
 
 std::shared_ptr<endstone::CommandSender> CommandOrigin::getEndstoneSender(CommandOutput &output) const
 {
-    auto &server = entt::locator<endstone::core::EndstoneServer>::value();
+    auto &server = endstone::core::EndstoneServer::getInstance();
     switch (getOriginType()) {
     case CommandOriginType::DedicatedServer: {
         return server.getCommandSenderPtr();

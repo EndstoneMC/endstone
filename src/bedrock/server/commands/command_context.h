@@ -27,15 +27,9 @@ public:
     {
     }
 
-    [[nodiscard]] std::string getCommand() const
-    {
-        return command_;
-    }
+    [[nodiscard]] std::string getCommand() const { return command_; }
 
-    [[nodiscard]] CommandOrigin &getOrigin() const
-    {
-        return *origin_;
-    }
+    [[nodiscard]] CommandOrigin &getOrigin() const { return *origin_; }
 
 private:
     std::string command_;                    // +0

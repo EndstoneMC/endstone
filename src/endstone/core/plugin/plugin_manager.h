@@ -17,6 +17,7 @@
 #include <memory>
 #include <string>
 #include <unordered_map>
+#include <unordered_set>
 #include <vector>
 
 #include <boost/multi_index/hashed_index.hpp>
@@ -27,11 +28,13 @@
 #include "endstone/event/handler_list.h"
 #include "endstone/permissions/permission.h"
 #include "endstone/permissions/permission_level.h"
-#include "endstone/plugin/plugin_loader.h"
 #include "endstone/plugin/plugin_manager.h"
 #include "endstone/server.h"
 
-namespace endstone::core {
+namespace endstone {
+class PluginLoader;
+
+namespace core {
 
 class EndstonePluginManager : public PluginManager {
 public:
@@ -98,4 +101,5 @@ private:
     std::unordered_map<PermissionLevel, std::unordered_map<Permissible *, bool>> def_subs_;
 };
 
-}  // namespace endstone::core
+}  // namespace core
+}  // namespace endstone

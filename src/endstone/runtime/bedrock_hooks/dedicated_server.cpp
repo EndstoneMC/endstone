@@ -16,6 +16,7 @@
 
 #include <iostream>
 
+#include <entt/locator/locator.hpp>
 #include <pybind11/embed.h>
 
 #include "endstone/core/devtools/devtools.h"
@@ -26,7 +27,7 @@
 namespace py = pybind11;
 
 DedicatedServer::ServerExitCode DedicatedServer::start(const std::string &session_id,
-                                                    const Bedrock::ActivationArguments &args)
+                                                       const Bedrock::ActivationArguments &args)
 {
     // Save the current stdin, as it will be altered after the initialisation of python interpreter
     endstone::runtime::stdin_save();

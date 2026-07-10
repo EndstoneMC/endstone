@@ -14,6 +14,8 @@
 
 #pragma once
 
+#include <unordered_map>
+
 #include "bedrock/world/events/scoreboard_event_listener.h"
 #include "bedrock/world/scores/scoreboard_id.h"
 

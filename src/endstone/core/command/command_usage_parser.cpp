@@ -14,10 +14,10 @@
 
 #include "endstone/core/command/command_usage_parser.h"
 
+#include <format>
 #include <utility>
 
 #include <boost/algorithm/string/join.hpp>
-#include <fmt/format.h>
 
 namespace {
 void generateNameAndType(std::string_view command_name, endstone::core::CommandUsageParser::Parameter &parameter)
@@ -87,7 +87,7 @@ nonstd::expected<CommandUsageParser::Result, std::string> CommandUsageParser::pa
         case CommandLexer::TokenType::End:
             return result;
         default:
-            return nonstd::make_unexpected(fmt::format("Syntax Error: expect '(', '<' or '[', got '{}' at position {}.",
+            return nonstd::make_unexpected(std::format("Syntax Error: expect '(', '<' or '[', got '{}' at position {}.",
                                                        token.value, lexer_.getPosition()));
         }
     }
@@ -98,7 +98,7 @@ nonstd::expected<std::string_view, std::string> CommandUsageParser::parseToken(C
 {
     auto token = lexer_.next();
     if (token.type != type) {
-        return nonstd::make_unexpected(fmt::format("Syntax Error: expect '{}', got '{}' at position {}.", what,
+        return nonstd::make_unexpected(std::format("Syntax Error: expect '{}', got '{}' at position {}.", what,
                                                    token.value, lexer_.getPosition()));
     }
     return token.value;
@@ -121,7 +121,7 @@ nonstd::expected<CommandUsageParser::Parameter, std::string> CommandUsageParser:
         param.optional = false;
         break;
     default:
-        return nonstd::make_unexpected(fmt::format("Syntax Error: expect '<' or '[', got '{}' at position {}.",
+        return nonstd::make_unexpected(std::format("Syntax Error: expect '<' or '[', got '{}' at position {}.",
                                                    token.value, lexer_.getPosition()));
     }
 
@@ -181,7 +181,7 @@ nonstd::expected<CommandUsageParser::Parameter, std::string> CommandUsageParser:
         break;
     }
     default:
-        return nonstd::make_unexpected(fmt::format(
+        return nonstd::make_unexpected(std::format(
             "Syntax Error: expect ':', '|', '>' or ']', got '{}' at position {}.", token.value, lexer_.getPosition()));
     }
 
@@ -231,14 +231,14 @@ nonstd::expected<CommandUsageParser::Parameter, std::string> CommandUsageParser:
             case CommandLexer::TokenType::Pipe:
                 break;
             default:
-                return nonstd::make_unexpected(fmt::format("Syntax Error: expect ')' or '|', got '{}' at position {}.",
+                return nonstd::make_unexpected(std::format("Syntax Error: expect ')' or '|', got '{}' at position {}.",
                                                            token.value, lexer_.getPosition()));
             }
         }
         break;
     }
     default:
-        return nonstd::make_unexpected(fmt::format(
+        return nonstd::make_unexpected(std::format(
             "Syntax Error: expect ')' or 'enum values', got '{}' at position {}.", token.value, lexer_.getPosition()));
     }
 

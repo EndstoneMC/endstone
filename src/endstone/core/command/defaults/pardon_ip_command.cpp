@@ -51,7 +51,7 @@ bool PardonIpCommand::execute(CommandSender &sender, const std::vector<std::stri
         return false;
     }
 
-    const auto &server = entt::locator<EndstoneServer>::value();
+    const auto &server = EndstoneServer::getInstance();
     auto &ban_list = server.getIpBanList();
     const auto &address = args.front();
 

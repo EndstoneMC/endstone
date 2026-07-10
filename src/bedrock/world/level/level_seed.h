@@ -20,10 +20,7 @@ class LevelSeed64 {
 public:
     LevelSeed64();
     LevelSeed64(ValueType value) : value_(value) {}
-    operator ValueType() const
-    {
-        return value_;
-    }
+    operator ValueType() const { return value_; }
 
 private:
     ValueType value_;

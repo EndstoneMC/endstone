@@ -36,10 +36,7 @@ public:
         Results(const ResultList &);
         Results(const UnloadedItemInstanceResultList &);
 
-        [[nodiscard]] const ResultList &getItems() const
-        {
-            return results_;
-        }
+        [[nodiscard]] const ResultList &getItems() const { return results_; }
 
     private:
         bool results_are_loaded_;            // +0
@@ -63,45 +60,21 @@ public:
     virtual bool itemsMatch(ItemDescriptor const &, ItemDescriptor const &, CompoundTag const *) const = 0;
     virtual std::size_t getIngredientsHash() const = 0;
 
-    [[nodiscard]] const std::string &getRecipeId() const
-    {
-        return recipe_id_;
-    }
+    [[nodiscard]] const std::string &getRecipeId() const { return recipe_id_; }
 
-    [[nodiscard]] int getWidth() const
-    {
-        return width_;
-    }
+    [[nodiscard]] int getWidth() const { return width_; }
 
-    [[nodiscard]] int getHeight() const
-    {
-        return height_;
-    }
+    [[nodiscard]] int getHeight() const { return height_; }
 
-    [[nodiscard]] int getPriority() const
-    {
-        return priority_;
-    }
+    [[nodiscard]] int getPriority() const { return priority_; }
 
-    [[nodiscard]] const RecipeNetId &getNetId() const
-    {
-        return recipe_net_id_;
-    }
+    [[nodiscard]] const RecipeNetId &getNetId() const { return recipe_net_id_; }
 
-    [[nodiscard]] const std::vector<RecipeIngredient> &getIngredients() const
-    {
-        return my_ingredients_;
-    }
+    [[nodiscard]] const std::vector<RecipeIngredient> &getIngredients() const { return my_ingredients_; }
 
-    [[nodiscard]] const RecipeUnlockingRequirement &getUnlockingRequirement() const
-    {
-        return unlocking_requirement_;
-    }
+    [[nodiscard]] const RecipeUnlockingRequirement &getUnlockingRequirement() const { return unlocking_requirement_; }
 
-    [[nodiscard]] const HashedString &getTag() const
-    {
-        return tag_;
-    }
+    [[nodiscard]] const HashedString &getTag() const { return tag_; }
 
 protected:
     Recipe();

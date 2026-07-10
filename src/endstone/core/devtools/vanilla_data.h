@@ -50,4 +50,4 @@ struct VanillaData {
     static VanillaData *get();
 };
 
-}  // namespace endstone::devtools
+}  // namespace endstone::core::devtools

@@ -14,14 +14,14 @@
 
 #pragma once
 
+#include <algorithm>
 #include <filesystem>
+#include <format>
 #include <fstream>
 #include <sstream>
 #include <utility>
 
 #include <date/date.h>
-#include <fmt/format.h>
-#include <fmt/std.h>
 #include <nlohmann/json.hpp>
 
 #include "endstone/ban/ip_ban_list.h"
@@ -114,7 +114,7 @@ public:
 
         std::ofstream file(file_);
         if (!file) {
-            return nonstd::make_unexpected(fmt::format("Unable to open file '{}'.", file_));
+            return nonstd::make_unexpected(std::format("Unable to open file '{}'.", file_.string()));
         }
 
         try {
@@ -122,7 +122,7 @@ public:
             return {};
         }
         catch (const std::exception &e) {
-            return nonstd::make_unexpected(fmt::format("Unable to write file '{}': {}", file_, e.what()));
+            return nonstd::make_unexpected(std::format("Unable to write file '{}': {}", file_.string(), e.what()));
         }
     }
 
@@ -136,7 +136,7 @@ public:
 
         std::ifstream file(file_);
         if (!file) {
-            return nonstd::make_unexpected(fmt::format("Unable to open file '{}'.", file_));
+            return nonstd::make_unexpected(std::format("Unable to open file '{}'.", file_.string()));
         }
 
         try {
@@ -172,7 +172,7 @@ public:
             return {};
         }
         catch (const std::exception &e) {
-            return nonstd::make_unexpected(fmt::format("Unable to read file '{}': {}", file_, e.what()));
+            return nonstd::make_unexpected(std::format("Unable to read file '{}': {}", file_.string(), e.what()));
         }
     }
 

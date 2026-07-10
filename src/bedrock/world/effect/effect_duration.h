@@ -18,12 +18,9 @@
 
 struct EffectDuration {
     EffectDuration() = default;
-    explicit EffectDuration(const int value) : value_(value){};
+    explicit EffectDuration(const int value) : value_(value) {};
 
-    [[nodiscard]] bool isInfinite() const
-    {
-        return value_ == INFINITE_DURATION_VALUE;
-    }
+    [[nodiscard]] bool isInfinite() const { return value_ == INFINITE_DURATION_VALUE; }
 
     [[nodiscard]] std::optional<int> getValue() const
     {

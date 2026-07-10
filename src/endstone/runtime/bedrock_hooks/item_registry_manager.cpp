@@ -21,7 +21,7 @@ ItemRegistryRef ItemRegistryManager::getItemRegistry()
     // NOTE: This is Endstone's implementation of ItemRegistryManager::getItemRegistry,
     // which is different to the original implementation.
     const static ItemRegistryRef invalid;
-    const auto &server = entt::locator<endstone::core::EndstoneServer>::value();
+    const auto &server = endstone::core::EndstoneServer::getInstance();
     if (!server.isPrimaryThread()) {
         server.getLogger().error("ItemRegistryManager::getItemRegistry must be called from the server thread.");
         return invalid;

@@ -14,6 +14,8 @@
 
 #include "bedrock/server/server_instance.h"
 
+#include <entt/locator/locator.hpp>
+
 #include "bedrock/scripting/event_handlers/script_actor_gameplay_handler.h"
 #include "bedrock/scripting/event_handlers/script_block_gameplay_handler.h"
 #include "bedrock/scripting/event_handlers/script_item_gameplay_handler.h"

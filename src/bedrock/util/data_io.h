@@ -65,14 +65,14 @@ public:
 class BytesDataInput : public IDataInput {
 public:
     Bedrock::Result<std::string> readStringResult() override;
-     Bedrock::Result<std::string> readLongStringResult() override;
-     Bedrock::Result<float> readFloatResult() override;
-     Bedrock::Result<double> readDoubleResult() override;
-     Bedrock::Result<std::uint8_t> readByteResult() override;
-     Bedrock::Result<std::int16_t> readShortResult() override;
-     Bedrock::Result<std::int32_t> readIntResult() override;
-     Bedrock::Result<std::int64_t> readLongLongResult() override;
-     Bedrock::Result<void> readBytesResult(void *, size_t) override = 0;
+    Bedrock::Result<std::string> readLongStringResult() override;
+    Bedrock::Result<float> readFloatResult() override;
+    Bedrock::Result<double> readDoubleResult() override;
+    Bedrock::Result<std::uint8_t> readByteResult() override;
+    Bedrock::Result<std::int16_t> readShortResult() override;
+    Bedrock::Result<std::int32_t> readIntResult() override;
+    Bedrock::Result<std::int64_t> readLongLongResult() override;
+    Bedrock::Result<void> readBytesResult(void *, size_t) override = 0;
 };
 
 class PrintStream {

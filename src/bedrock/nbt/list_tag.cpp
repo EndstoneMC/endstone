@@ -14,6 +14,9 @@
 
 #include "bedrock/nbt/list_tag.h"
 
+#include <format>
+#include <ranges>
+
 #include "bedrock/nbt/byte_tag.h"
 #include "bedrock/nbt/compound_tag.h"
 #include "bedrock/nbt/double_tag.h"
@@ -79,7 +82,7 @@ Bedrock::Result<void> ListTag::load(IDataInput &input)
 
 std::string ListTag::toString() const
 {
-    return fmt::format("{} entries of type {}", list_.size(), Tag::getTagName(type_));
+    return std::format("{} entries of type {}", list_.size(), Tag::getTagName(type_));
 }
 
 Tag::Type ListTag::getId() const

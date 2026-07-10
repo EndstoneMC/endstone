@@ -14,7 +14,7 @@
 
 #include "endstone/core/actor/actor_type.h"
 
-#include <fmt/format.h>
+#include <format>
 
 namespace endstone::core {
 
@@ -27,7 +27,7 @@ ActorTypeId EndstoneActorType::getId() const
 
 std::string EndstoneActorType::getTranslationKey() const
 {
-    return fmt::format("entity.{}.name", getId().getKey());
+    return std::format("entity.{}.name", getId().getKey());
 }
 
 }  // namespace endstone::core

@@ -15,6 +15,8 @@
 #include "bedrock/nbt/compound_tag.h"
 
 #include <algorithm>
+#include <format>
+#include <ranges>
 #include <utility>
 
 #include "bedrock/nbt/compound_tag_variant.h"
@@ -48,7 +50,7 @@ Bedrock::Result<void> CompoundTag::load(IDataInput &input)
 
 std::string CompoundTag::toString() const
 {
-    return fmt::format("{} entries", tags_.size());
+    return std::format("{} entries", tags_.size());
 }
 
 Tag::Type CompoundTag::getId() const

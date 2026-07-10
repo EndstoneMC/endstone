@@ -19,6 +19,7 @@
 #include <PluginInterface2.h>
 #include <RakPeer.h>
 
+#include <format>
 #include <memory>
 #include <ranges>
 #include <stdexcept>
@@ -112,7 +113,7 @@ bool handleIncomingDatagram(RakNet::RNS2RecvStruct *recv)
 
         // prepare ping response
         auto response =
-            fmt::format("MCPE;{};{};{};{};{};{};{};{};1;{};{};0;", event.getMotd(), event.getNetworkProtocolVersion(),
+            std::format("MCPE;{};{};{};{};{};{};{};{};1;{};{};0;", event.getMotd(), event.getNetworkProtocolVersion(),
                         event.getMinecraftVersionNetwork(), event.getNumPlayers(), event.getMaxPlayers(),
                         event.getServerGuid(), event.getLevelName(), magic_enum::enum_name(event.getGameMode()),
                         event.getLocalPort(), event.getLocalPortV6());

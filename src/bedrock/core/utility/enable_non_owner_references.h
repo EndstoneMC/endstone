@@ -31,10 +31,7 @@ public:
         control_block_->is_valid = true;
     }
 
-    virtual ~EnableNonOwnerReferences()
-    {
-        control_block_->is_valid = false;
-    }
+    virtual ~EnableNonOwnerReferences() { control_block_->is_valid = false; }
 
 private:
     template <typename T>

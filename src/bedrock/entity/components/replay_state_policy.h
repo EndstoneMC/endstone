@@ -27,7 +27,7 @@ enum class CorrectionMethod : uint8_t {
 
 struct MovementCorrection {
     MovementCorrection(CorrectionMethod method, const Vec3 &accept_position)
-        : method(method), accept_position(accept_position){};
+        : method(method), accept_position(accept_position) {};
     CorrectionMethod method = CorrectionMethod::None;
     Vec3 accept_position = Vec3::ZERO;
     uint8_t new_divergence_counter = 0;

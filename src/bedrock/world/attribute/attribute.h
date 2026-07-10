@@ -33,25 +33,13 @@ enum class RedefinitionMode : std::int8_t {
 
 class Attribute {
 public:
-    [[nodiscard]] RedefinitionMode getRedefinitionMode() const
-    {
-        return redefinition_mode_;
-    }
+    [[nodiscard]] RedefinitionMode getRedefinitionMode() const { return redefinition_mode_; }
 
-    [[nodiscard]] bool isClientSyncable() const
-    {
-        return syncable_;
-    }
+    [[nodiscard]] bool isClientSyncable() const { return syncable_; }
 
-    [[nodiscard]] std::uint32_t getIDValue() const
-    {
-        return id_value_;
-    }
+    [[nodiscard]] std::uint32_t getIDValue() const { return id_value_; }
 
-    [[nodiscard]] const HashedString &getName() const
-    {
-        return name_;
-    }
+    [[nodiscard]] const HashedString &getName() const { return name_; }
 
 private:
     RedefinitionMode redefinition_mode_;  // +0

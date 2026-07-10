@@ -14,6 +14,8 @@
 
 #include "bedrock/network/packet.h"
 
+#include <format>
+
 #include "bedrock/network/net_event_callback.h"
 #include "bedrock/symbol.h"
 
@@ -26,7 +28,7 @@ Bedrock::Result<void> Packet::checkSize(std::uint64_t packet_size, bool is_recei
 {
     if (is_receiver_server && packet_size > getMaxSize()) {
         return BEDROCK_NEW_ERROR_MESSAGE(std::errc::message_size,
-                                         fmt::format("Server-bound packet too large! Type={} Size={}",
+                                         std::format("Server-bound packet too large! Type={} Size={}",
                                                      static_cast<std::underlying_type_t<MinecraftPacketIds>>(getId()),
                                                      packet_size));
     }

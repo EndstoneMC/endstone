@@ -126,18 +126,12 @@ public:
     // Enqueues a copy of element if there is room in the queue.
     // Returns true if the element was enqueued, false otherwise.
     // Does not allocate memory.
-    bool try_enqueue(T const &element)
-    {
-        return inner_enqueue<CannotAlloc>(element);
-    }
+    bool try_enqueue(T const &element) { return inner_enqueue<CannotAlloc>(element); }
 
     // Enqueues a moved copy of element if there is room in the queue.
     // Returns true if the element was enqueued, false otherwise.
     // Does not allocate memory.
-    bool try_enqueue(T &&element)
-    {
-        return inner_enqueue<CannotAlloc>(std::forward<T>(element));
-    }
+    bool try_enqueue(T &&element) { return inner_enqueue<CannotAlloc>(std::forward<T>(element)); }
 
     // Like try_enqueue() but with emplace semantics (i.e. construct-in-place).
     template <typename... Args>
@@ -149,18 +143,12 @@ public:
     // Enqueues a copy of element on the queue.
     // Allocates an additional block of memory if needed.
     // Only fails (returns false) if memory allocation fails.
-    bool enqueue(T const &element)
-    {
-        return inner_enqueue<CanAlloc>(element);
-    }
+    bool enqueue(T const &element) { return inner_enqueue<CanAlloc>(element); }
 
     // Enqueues a moved copy of element on the queue.
     // Allocates an additional block of memory if needed.
     // Only fails (returns false) if memory allocation fails.
-    bool enqueue(T &&element)
-    {
-        return inner_enqueue<CanAlloc>(std::forward<T>(element));
-    }
+    bool enqueue(T &&element) { return inner_enqueue<CanAlloc>(std::forward<T>(element)); }
 
     // Like enqueue() but with emplace semantics (i.e. construct-in-place).
     template <typename... Args>
@@ -243,7 +231,8 @@ public:
             AE_UNUSED(nextBlockTail);
 
             // We're done with this block, let the producer use it if it needs
-            Lockless::fence(Lockless::MemoryOrder::Release);  // Expose possibly pending changes to frontBlock->front from last dequeue
+            Lockless::fence(Lockless::MemoryOrder::Release);  // Expose possibly pending changes to frontBlock->front
+                                                              // from last dequeue
             frontBlock = frontBlock_ = nextBlock;
 
             Lockless::fence(Lockless::MemoryOrder::Release);  // Not strictly needed
@@ -448,7 +437,8 @@ private:
                 // instead of advancing to the next full block (whose values were enqueued first and so should be
                 // consumed first).
 
-                Lockless::fence(Lockless::MemoryOrder::Acquire);  // Ensure we get latest writes if we got the latest frontBlock
+                Lockless::fence(
+                    Lockless::MemoryOrder::Acquire);  // Ensure we get latest writes if we got the latest frontBlock
 
                 // tailBlock is full, but there's a free block ahead, use it
                 Block *tailBlockNext = tailBlock_->next.load();

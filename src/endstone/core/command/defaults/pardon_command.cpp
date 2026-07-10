@@ -39,7 +39,7 @@ bool PardonCommand::execute(CommandSender &sender, const std::vector<std::string
         return false;
     }
 
-    const auto &server = entt::locator<EndstoneServer>::value();
+    const auto &server = EndstoneServer::getInstance();
     auto &ban_list = server.getBanList();
     const auto &name = args.front();
 

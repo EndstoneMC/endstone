@@ -1,3 +1,5 @@
+
+#include <algorithm>
 // Copyright (c) 2024, The Endstone Project. (https://endstone.dev) All Rights Reserved.
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
@@ -13,8 +15,6 @@
 // limitations under the License.
 
 #include "bedrock/world/actor/player/abilities.h"
-
-#include <entt/entt.hpp>
 
 Ability::Type Ability::getType() const
 {

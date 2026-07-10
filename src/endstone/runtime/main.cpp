@@ -79,5 +79,5 @@ __attribute__((constructor)) int main()
 
 extern "C" [[maybe_unused]] ENDSTONE_EXPORT void *endstone_get_server()
 {
-    return &entt::locator<endstone::core::EndstoneServer>::value();
+    return &endstone::core::EndstoneServer::getInstance();
 }

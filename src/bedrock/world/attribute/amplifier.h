@@ -18,19 +18,10 @@ class Amplifier {
 public:
     virtual ~Amplifier() = default;
 
-    [[nodiscard]] virtual float getAmount(int, float) const
-    {
-        return 0.0;
-    }
+    [[nodiscard]] virtual float getAmount(int, float) const { return 0.0; }
 
-    [[nodiscard]] virtual bool shouldBuff(int, int) const
-    {
-        return true;
-    }
+    [[nodiscard]] virtual bool shouldBuff(int, int) const { return true; }
 
-    [[nodiscard]] virtual int getTickInterval(int) const
-    {
-        return 1;
-    }
+    [[nodiscard]] virtual int getTickInterval(int) const { return 1; }
 };
 static_assert(sizeof(Amplifier) == 8);

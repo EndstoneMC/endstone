@@ -56,23 +56,11 @@ public:
     const_iterator cbegin() const;
     const_iterator cend() const;
     void swap(Blob &);
-    size_type size() const
-    {
-        return size_;
-    }
+    size_type size() const { return size_; }
     size_type max_size() const;
-    bool empty() const
-    {
-        return size() == 0;
-    }
-    value_type *data()
-    {
-        return blob_.get();
-    }
-    const value_type *data() const
-    {
-        return blob_.get();
-    }
+    bool empty() const { return size() == 0; }
+    value_type *data() { return blob_.get(); }
+    const value_type *data() const { return blob_.get(); }
     value_type *get();
     const value_type *get() const;
     gsl::span<unsigned char> getSpan();

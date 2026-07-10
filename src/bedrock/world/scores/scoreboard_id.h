@@ -40,9 +40,6 @@ inline const ScoreboardId ScoreboardId::INVALID;
 namespace std {
 template <>
 struct hash<ScoreboardId> {  // NOLINT
-    std::size_t operator()(const ScoreboardId &value) const noexcept
-    {
-        return value.getHash();
-    }
+    std::size_t operator()(const ScoreboardId &value) const noexcept { return value.getHash(); }
 };
 }  // namespace std

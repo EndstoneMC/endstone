@@ -14,10 +14,9 @@
 
 #pragma once
 
+#include <format>
 #include <string>
 #include <utility>
-
-#include <format>
 
 #include "endstone/message.h"
 #include "endstone/permissions/permissible.h"

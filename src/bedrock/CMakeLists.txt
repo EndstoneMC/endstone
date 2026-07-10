@@ -4,7 +4,6 @@ project(bedrock LANGUAGES CXX)
 find_package(base64 REQUIRED)
 find_package(Boost REQUIRED)
 find_package(expected-lite QUIET)
-find_package(fmt REQUIRED)
 find_package(EnTT REQUIRED)
 find_package(glm REQUIRED)
 find_package(magic_enum REQUIRED)
@@ -23,6 +22,7 @@ add_library(bedrock STATIC
         core/utility/binary_stream.cpp
         core/utility/serialize_simple_types.cpp
         crypto/encoding/base64.cpp
+        diagnostics/log_fmt.cpp
         deps/json/value.cpp
         entity/gamerefs_entity/entity_context.cpp
         entity/gamerefs_entity/entity_registry.cpp
@@ -88,6 +88,7 @@ add_library(bedrock STATIC
         world/attribute/attribute_modifier.cpp
         world/effect/mob_effect.cpp
         world/inventory/network/item_stack_net_id_variant.cpp
+        world/inventory/transaction/inventory_source.cpp
         world/item/item.cpp
         world/item/item_descriptor.cpp
         world/item/item_instance.cpp
@@ -138,7 +139,7 @@ target_include_directories(bedrock PUBLIC ${CMAKE_CURRENT_SOURCE_DIR}/../)
 target_compile_definitions(bedrock PUBLIC ENTT_SPARSE_PAGE=2048)
 target_compile_definitions(bedrock PUBLIC ENTT_PACKED_PAGE=128)
 target_compile_definitions(bedrock PUBLIC ENTT_NO_MIXIN)
-target_link_libraries(bedrock PUBLIC endstone::endstone aklomp::base64 boost::boost fmt::fmt EnTT::EnTT glm::glm magic_enum::magic_enum Microsoft.GSL::GSL nonstd::expected-lite raknet::raknet)
+target_link_libraries(bedrock PUBLIC endstone::endstone aklomp::base64 boost::boost EnTT::EnTT glm::glm magic_enum::magic_enum Microsoft.GSL::GSL nonstd::expected-lite raknet::raknet)
 if (MSVC)
     target_link_options(bedrock PRIVATE /DEBUG /INCREMENTAL:NO /OPT:REF /OPT:ICF)
     target_compile_options(bedrock PRIVATE /O2 /DNDEBUG /Zi /Gy)

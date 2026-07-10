@@ -37,10 +37,7 @@ protected:
 template <typename T, ThreadOwnerBehavior WrongThreadBehavior = ThreadOwnerBehavior::Assert>
 class ThreadOwner : public ThreadOwnerBase {
 public:
-    T &get(brstd::source_location /*location*/ = brstd::source_location::current())
-    {
-        return object_;
-    }
+    T &get(brstd::source_location /*location*/ = brstd::source_location::current()) { return object_; }
 
     [[nodiscard]] const T &get(brstd::source_location /*location*/ = brstd::source_location::current()) const
     {

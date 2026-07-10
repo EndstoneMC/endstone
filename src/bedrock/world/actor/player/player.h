@@ -14,7 +14,9 @@
 
 #pragma once
 
+#include <array>
 #include <memory>
+#include <unordered_map>
 
 #include "bedrock/bedrock.h"
 #include "bedrock/core/sound/sound_system_types.h"

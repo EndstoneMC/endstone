@@ -27,40 +27,19 @@ public:
         return hasValue();
     }
 
-    [[nodiscard]] bool hasValue() const
-    {
-        return GameRefs<Type>::StackResultStorage::_hasValue();
-    }
+    [[nodiscard]] bool hasValue() const { return GameRefs<Type>::StackResultStorage::_hasValue(); }
 
-    StackRef &operator*() const
-    {
-        return value();
-    }
+    StackRef &operator*() const { return value(); }
 
-    StackRef &operator*()
-    {
-        return value();
-    }
+    StackRef &operator*() { return value(); }
 
-    StackRef *operator->() const
-    {
-        return &value();
-    }
+    StackRef *operator->() const { return &value(); }
 
-    StackRef *operator->()
-    {
-        return &value();
-    }
+    StackRef *operator->() { return &value(); }
 
-    StackRef &value() const
-    {
-        return GameRefs<Type>::StackResultStorage::_getStackRef();
-    }
+    StackRef &value() const { return GameRefs<Type>::StackResultStorage::_getStackRef(); }
 
-    StackRef &value()
-    {
-        return GameRefs<Type>::StackResultStorage::_getStackRef();
-    }
+    StackRef &value() { return GameRefs<Type>::StackResultStorage::_getStackRef(); }
 
     WeakRef<Type> getWeakRef() const;
     bool operator==(nullptr_t) const;

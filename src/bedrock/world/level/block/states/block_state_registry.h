@@ -14,21 +14,17 @@
 
 #pragma once
 
+#include <unordered_map>
+
 #include "bedrock/world/level/block/registry/block_type_registry.h"
 
 class BlockStateRegistry {
     BlockStateRegistry() = default;
 
 public:
-    void registerBlockState(const BlockState &state)
-    {
-        block_state_map_[state.getName()] = &state;
-    }
+    void registerBlockState(const BlockState &state) { block_state_map_[state.getName()] = &state; }
 
-    void unregisterBlockStates()
-    {
-        block_state_map_.clear();
-    }
+    void unregisterBlockStates() { block_state_map_.clear(); }
 
     static BlockStateRegistry &get()
     {
@@ -45,10 +41,7 @@ public:
         return it->second;
     }
 
-    [[nodiscard]] size_t getNumStates() const
-    {
-        return block_state_map_.size();
-    }
+    [[nodiscard]] size_t getNumStates() const { return block_state_map_.size(); }
 
 private:
     std::unordered_map<HashedString, const BlockState *> block_state_map_;

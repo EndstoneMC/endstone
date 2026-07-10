@@ -18,9 +18,9 @@
 
 #include "bedrock/core/container/intrusive_list.h"
 #include "bedrock/core/utility/pub_sub/detail/return_policy.h"
-#include "bedrock/platform/brstd/move_only_function.h"
 #include "bedrock/core/utility/pub_sub/publisher_config.h"
 #include "bedrock/core/utility/pub_sub/return_policy_type.h"
+#include "bedrock/platform/brstd/move_only_function.h"
 
 namespace Bedrock::PubSub::Detail {
 

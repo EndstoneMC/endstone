@@ -14,7 +14,7 @@
 
 #pragma once
 
-#include <entt/entt.hpp>
+#include <entt/core/type_info.hpp>
 
 #include "bedrock/certificates/identity/player_authentication_info.h"
 #include "bedrock/common_types.h"
@@ -32,24 +32,12 @@ public:
 
     [[nodiscard]] bool isPrimaryClient() const;
     [[nodiscard]] bool isLoggedIntoXboxLive() const;
-    [[nodiscard]] const NetworkIdentifier &getNetworkId() const
-    {
-        return network_id_;
-    }
-    [[nodiscard]] SubClientId getSubClientId() const
-    {
-        return client_sub_id_;
-    }
+    [[nodiscard]] const NetworkIdentifier &getNetworkId() const { return network_id_; }
+    [[nodiscard]] SubClientId getSubClientId() const { return client_sub_id_; }
     [[nodiscard]] std::string getUnverifiedPlayFabId() const;
-    [[nodiscard]] mce::UUID getClientUUID() const
-    {
-        return client_uuid_;
-    }
+    [[nodiscard]] mce::UUID getClientUUID() const { return client_uuid_; }
     [[nodiscard]] std::string getIdentityName() const;
-    [[nodiscard]] std::string getXuid() const
-    {
-        return trusted_player_info_.xuid;
-    }
+    [[nodiscard]] std::string getXuid() const { return trusted_player_info_.xuid; }
 
 private:
     NetworkIdentifier network_id_;

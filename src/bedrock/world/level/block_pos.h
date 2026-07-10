@@ -15,8 +15,7 @@
 #pragma once
 
 #include <cmath>
-
-#include <fmt/format.h>
+#include <format>
 
 #include "bedrock/core/math/vec3.h"
 #include "bedrock/util/mirror.h"
@@ -35,10 +34,7 @@ public:
           z(static_cast<int>(std::floorf(vec.z))) {};
     BlockPos(double x, double y, double z) : x(std::floor(x)), y(std::floor(y)), z(std::floor(z)) {}
 
-    BlockPos operator*(int scalar) const
-    {
-        return {x * scalar, y * scalar, z * scalar};
-    }
+    BlockPos operator*(int scalar) const { return {x * scalar, y * scalar, z * scalar}; }
 
     const BlockPos &operator*=(int scalar)
     {
@@ -48,30 +44,15 @@ public:
         return *this;
     }
 
-    BlockPos operator/(int divisor) const
-    {
-        return {x / divisor, y / divisor, z / divisor};
-    }
+    BlockPos operator/(int divisor) const { return {x / divisor, y / divisor, z / divisor}; }
 
-    BlockPos operator+(const BlockPos &rhs) const
-    {
-        return {x + rhs.x, y + rhs.y, z + rhs.z};
-    }
+    BlockPos operator+(const BlockPos &rhs) const { return {x + rhs.x, y + rhs.y, z + rhs.z}; }
 
-    BlockPos operator-(const BlockPos &rhs) const
-    {
-        return {x - rhs.x, y - rhs.y, z - rhs.z};
-    }
+    BlockPos operator-(const BlockPos &rhs) const { return {x - rhs.x, y - rhs.y, z - rhs.z}; }
 
-    BlockPos operator+(int delta) const
-    {
-        return {x + delta, y + delta, z + delta};
-    }
+    BlockPos operator+(int delta) const { return {x + delta, y + delta, z + delta}; }
 
-    BlockPos operator-(int delta) const
-    {
-        return {x - delta, y - delta, z - delta};
-    }
+    BlockPos operator-(int delta) const { return {x - delta, y - delta, z - delta}; }
 
     const BlockPos &operator+=(const Vec3 &vec)
     {
@@ -97,95 +78,41 @@ public:
         return *this;
     }
 
-    BlockPos operator-() const
-    {
-        return {-x, -y, -z};
-    }
+    BlockPos operator-() const { return {-x, -y, -z}; }
 
-    bool operator==(const BlockPos &rhs) const
-    {
-        return x == rhs.x && y == rhs.y && z == rhs.z;
-    }
+    bool operator==(const BlockPos &rhs) const { return x == rhs.x && y == rhs.y && z == rhs.z; }
 
-    bool operator!=(const BlockPos &rhs) const
-    {
-        return !(*this == rhs);
-    }
+    bool operator!=(const BlockPos &rhs) const { return !(*this == rhs); }
 
-    operator Vec3() const
-    {
-        return Vec3(x, y, z);
-    }
+    operator Vec3() const { return Vec3(x, y, z); }
 
-    [[nodiscard]] BlockPos offset(int dx, int dy, int dz) const
-    {
-        return {x + dx, y + dy, z + dz};
-    }
+    [[nodiscard]] BlockPos offset(int dx, int dy, int dz) const { return {x + dx, y + dy, z + dz}; }
 
-    [[nodiscard]] BlockPos offset(const BlockPos &other) const
-    {
-        return offset(other.x, other.y, other.z);
-    }
+    [[nodiscard]] BlockPos offset(const BlockPos &other) const { return offset(other.x, other.y, other.z); }
 
-    [[nodiscard]] BlockPos above() const
-    {
-        return above(1);
-    }
+    [[nodiscard]] BlockPos above() const { return above(1); }
 
-    [[nodiscard]] BlockPos above(int n) const
-    {
-        return offset(0, n, 0);
-    }
+    [[nodiscard]] BlockPos above(int n) const { return offset(0, n, 0); }
 
-    [[nodiscard]] BlockPos below() const
-    {
-        return below(1);
-    }
+    [[nodiscard]] BlockPos below() const { return below(1); }
 
-    [[nodiscard]] BlockPos below(int n) const
-    {
-        return offset(0, -n, 0);
-    }
+    [[nodiscard]] BlockPos below(int n) const { return offset(0, -n, 0); }
 
-    [[nodiscard]] BlockPos north() const
-    {
-        return north(1);
-    }
+    [[nodiscard]] BlockPos north() const { return north(1); }
 
-    [[nodiscard]] BlockPos north(int n) const
-    {
-        return offset(0, 0, -n);
-    }
+    [[nodiscard]] BlockPos north(int n) const { return offset(0, 0, -n); }
 
-    [[nodiscard]] BlockPos south() const
-    {
-        return south(1);
-    }
+    [[nodiscard]] BlockPos south() const { return south(1); }
 
-    [[nodiscard]] BlockPos south(int n) const
-    {
-        return offset(0, 0, n);
-    }
+    [[nodiscard]] BlockPos south(int n) const { return offset(0, 0, n); }
 
-    [[nodiscard]] BlockPos west() const
-    {
-        return west(1);
-    }
+    [[nodiscard]] BlockPos west() const { return west(1); }
 
-    [[nodiscard]] BlockPos west(int n) const
-    {
-        return offset(-n, 0, 0);
-    }
+    [[nodiscard]] BlockPos west(int n) const { return offset(-n, 0, 0); }
 
-    [[nodiscard]] BlockPos east() const
-    {
-        return east(1);
-    }
+    [[nodiscard]] BlockPos east() const { return east(1); }
 
-    [[nodiscard]] BlockPos east(int n) const
-    {
-        return offset(n, 0, 0);
-    }
+    [[nodiscard]] BlockPos east(int n) const { return offset(n, 0, 0); }
 
     [[nodiscard]] BlockPos transform(Rotation rotation, Mirror mirror, const Vec3 &pivot) const
     {
@@ -259,12 +186,12 @@ struct std::hash<BlockPos> {
 };
 
 template <>
-struct fmt::formatter<BlockPos> : formatter<string_view> {
+struct std::formatter<BlockPos> : std::formatter<std::string_view> {
     using Type = BlockPos;
 
     template <typename FormatContext>
     auto format(const Type &val, FormatContext &ctx) const -> format_context::iterator
     {
-        return format_to(ctx.out(), "BlockPos(x={}, y={}, z={})", val.x, val.y, val.z);
+        return std::format_to(ctx.out(), "BlockPos(x={}, y={}, z={})", val.x, val.y, val.z);
     }
 };

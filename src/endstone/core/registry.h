@@ -14,6 +14,8 @@
 
 #pragma once
 
+#include <unordered_map>
+
 #include "endstone/registry.h"
 #include "endstone/server.h"
 
@@ -80,10 +82,7 @@ public:
         return *result;
     }
 
-    [[nodiscard]] std::size_t size() const override
-    {
-        return identifiers().size();
-    }
+    [[nodiscard]] std::size_t size() const override { return identifiers().size(); }
 
     void forEach(std::function<bool(const E &)> func) const override
     {

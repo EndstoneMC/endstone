@@ -22,10 +22,7 @@ class PyMapRenderer : public MapRenderer, public py::trampoline_self_life_suppor
 public:
     using MapRenderer::MapRenderer;
 
-    void initialize(MapView &map) override
-    {
-        PYBIND11_OVERRIDE(void, MapRenderer, initialize, std::ref(map));
-    }
+    void initialize(MapView &map) override { PYBIND11_OVERRIDE(void, MapRenderer, initialize, std::ref(map)); }
 
     void render(MapView &map, MapCanvas &canvas, Player &player) override
     {
@@ -71,8 +68,7 @@ void init_map(py::module_ &m)
         .def_property("y", &MapCursor::getY, &MapCursor::setY, "The Y position of this cursor.")
         .def_property("direction", &MapCursor::getDirection, &MapCursor::setDirection,
                       "The facing of the cursor, from 0 to 15.")
-        .def_property("type", &MapCursor::getType, &MapCursor::setType,
-                      "The type (color/style) of this map cursor.")
+        .def_property("type", &MapCursor::getType, &MapCursor::setType, "The type (color/style) of this map cursor.")
         .def_property("is_visible", &MapCursor::isVisible, &MapCursor::setVisible,
                       "The visibility status of this cursor.")
         .def_property("caption", &MapCursor::getCaption, &MapCursor::setCaption, "The caption on this cursor.");

@@ -37,7 +37,7 @@ bool BanListCommand::execute(CommandSender &sender, const std::vector<std::strin
     const bool show_players = args.empty() || args[0] == "players";
     const bool show_ips = args.empty() || args[0] == "ips";
 
-    const auto &server = entt::locator<EndstoneServer>::value();
+    const auto &server = EndstoneServer::getInstance();
 
     if (show_players) {
         const auto entries = server.getBanList().getEntries();

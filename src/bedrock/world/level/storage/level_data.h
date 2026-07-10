@@ -33,10 +33,7 @@ public:
     explicit LevelData(const bool);
     LevelData(const CompoundTag &);
 
-    [[nodiscard]] int getNetworkVersion() const
-    {
-        return network_version_;
-    }
+    [[nodiscard]] int getNetworkVersion() const { return network_version_; }
 
 private:
     AdventureSettings adventure_settings_;

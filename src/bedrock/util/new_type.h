@@ -21,10 +21,7 @@ struct NewType {
 
     NewType() = default;
 
-    operator const Raw &() const
-    {
-        return value;
-    }
+    operator const Raw &() const { return value; }
 
     NewType &operator=(const Raw &rhs)
     {
@@ -32,13 +29,7 @@ struct NewType {
         return *this;
     }
 
-    bool operator==(const Raw &rhs) const
-    {
-        return value == rhs;
-    }
+    bool operator==(const Raw &rhs) const { return value == rhs; }
 
-    bool operator!=(const Raw &rhs) const
-    {
-        return !(*this == rhs);
-    }
+    bool operator!=(const Raw &rhs) const { return !(*this == rhs); }
 };

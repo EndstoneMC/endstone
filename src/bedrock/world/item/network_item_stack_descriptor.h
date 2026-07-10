@@ -51,10 +51,7 @@ public:
                            "length, write that length, THEN write the data.");
     }
 
-    void setIncludeNetIds(bool include_net_ids) const
-    {
-        include_net_ids_ = include_net_ids;
-    }
+    void setIncludeNetIds(bool include_net_ids) const { include_net_ids_ = include_net_ids; }
 
 private:
     mutable bool include_net_ids_{false};

@@ -17,8 +17,11 @@
 #include <algorithm>
 #include <filesystem>
 #include <memory>
+#include <ranges>
 #include <regex>
 #include <string>
+#include <unordered_map>
+#include <unordered_set>
 #include <utility>
 #include <vector>
 
@@ -66,7 +69,8 @@ EndstonePluginManager::EndstonePluginManager(Server &server) : server_(server)
     default_perms_[PermissionLevel::Operator] = {};
     default_perms_[PermissionLevel::Console] = {};
 }
-EndstonePluginManager::~EndstonePluginManager() {
+EndstonePluginManager::~EndstonePluginManager()
+{
     while (!plugin_loaders_.empty()) {
         plugin_loaders_.pop_back();
     }

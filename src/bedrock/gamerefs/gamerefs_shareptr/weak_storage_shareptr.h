@@ -20,11 +20,8 @@ template <typename T>
 class WeakStorageSharePtr {
 protected:
     WeakStorageSharePtr() = default;
-    explicit WeakStorageSharePtr(std::weak_ptr<T> const &handle) : handle_(handle){};
-    [[nodiscard]] bool _isSet() const
-    {
-        return !handle_.expired();
-    }
+    explicit WeakStorageSharePtr(std::weak_ptr<T> const &handle) : handle_(handle) {};
+    [[nodiscard]] bool _isSet() const { return !handle_.expired(); }
 
 private:
     friend T;

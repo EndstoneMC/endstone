@@ -14,6 +14,8 @@
 
 #include "bedrock/world/item/item_descriptor.h"
 
+#include <map>
+
 #include "bedrock/bedrock.h"
 #include "bedrock/world/item/item.h"
 #include "bedrock/world/item/registry/item_registry_manager.h"

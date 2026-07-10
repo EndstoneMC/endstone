@@ -28,35 +28,17 @@ public:
         FakePlayer
     };
 
-    [[nodiscard]] const ScoreboardId &getScoreboardId() const
-    {
-        return scoreboard_id_;
-    }
+    [[nodiscard]] const ScoreboardId &getScoreboardId() const { return scoreboard_id_; }
 
-    [[nodiscard]] bool isHiddenFakePlayer() const
-    {
-        return is_hidden_fake_player_;
-    }
+    [[nodiscard]] bool isHiddenFakePlayer() const { return is_hidden_fake_player_; }
 
-    [[nodiscard]] const PlayerScoreboardId &getPlayerId() const
-    {
-        return player_id_;
-    }
+    [[nodiscard]] const PlayerScoreboardId &getPlayerId() const { return player_id_; }
 
-    [[nodiscard]] const ActorUniqueID &getEntityId() const
-    {
-        return entity_id_;
-    }
+    [[nodiscard]] const ActorUniqueID &getEntityId() const { return entity_id_; }
 
-    [[nodiscard]] const std::string &getFakePlayerName() const
-    {
-        return player_name_;
-    }
+    [[nodiscard]] const std::string &getFakePlayerName() const { return player_name_; }
 
-    [[nodiscard]] Type getIdentityType() const
-    {
-        return identity_type_;
-    }
+    [[nodiscard]] Type getIdentityType() const { return identity_type_; }
 
     static IdentityDefinition Invalid;
 

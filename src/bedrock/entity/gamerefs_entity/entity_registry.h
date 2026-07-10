@@ -16,8 +16,6 @@
 
 #include <string>
 
-#include <entt/entt.hpp>
-
 #include "bedrock/entity/entity_id.h"
 #include "bedrock/gamerefs/enable_get_weak_ref.h"
 

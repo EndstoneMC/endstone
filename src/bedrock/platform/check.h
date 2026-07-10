@@ -14,15 +14,25 @@
 
 #pragma once
 
+#include <format>
+#include <iterator>
+#include <string>
 #include <system_error>
+#include <vector>
 
-#include <entt/entt.hpp>
-#include <fmt/format.h>
-#include <fmt/os.h>
-#include <fmt/std.h>
+#include <entt/core/hashed_string.hpp>
 
 #include "bedrock/bedrock.h"
 #include "bedrock/platform/callstack.h"
+
+template <>
+struct std::formatter<std::error_code> : std::formatter<std::string_view> {
+    template <typename FormatContext>
+    auto format(const std::error_code &ec, FormatContext &ctx) const -> format_context::iterator
+    {
+        return std::format_to(ctx.out(), "{}:{}", ec.category().name(), ec.value());
+    }
+};
 
 namespace Bedrock {
 
@@ -93,7 +103,7 @@ inline std::back_insert_iterator<std::string> formatCallStackContexts(std::back_
     auto out = back_it;
     for (const auto &frame : call_stack.frames) {
         if (const auto &context = frame.context; context.has_value()) {
-            out = fmt::format_to(out, "\n{}", context.value().value);
+            out = std::format_to(out, "\n{}", context.value().value);
         }
     }
     return out;
@@ -104,31 +114,31 @@ inline std::back_insert_iterator<std::string> formatCallStackContexts(std::back_
 template <typename ErrorType>
 std::string ErrorInfo<ErrorType>::message() const
 {
-    std::string result = fmt::format("Error: {}", error);
+    std::string result = std::format("Error: {}", error);
     auto out = Detail::formatCallStackContexts(std::back_inserter(result), call_stack);
     for (auto &branch : branches) {
-        out = fmt::format_to(out, "\n{}", branch.message());
+        out = std::format_to(out, "\n{}", branch.message());
     }
     return result;
 }
 }  // namespace Bedrock
 
 #define BEDROCK_NEW_ERROR(ERROR)                                                                            \
-    Bedrock::Detail::addFrameToError(Bedrock::Detail::createError(ERROR), [&]() {                            \
+    Bedrock::Detail::addFrameToError(Bedrock::Detail::createError(ERROR), [&]() {                           \
         constexpr static Bedrock::CallStack::Frame frame{                                                   \
             .filename_hash = entt::hashed_string::value(__FILE__), .filename = __FILE__, .line = __LINE__}; \
         return Bedrock::Detail::createFrame(std::make_pair(frame, Bedrock::Detail::createContext()));       \
     })
 
-#define BEDROCK_NEW_ERROR_MESSAGE(ERROR, MESSAGE)                                                              \
-    Bedrock::Detail::addFrameToError(Bedrock::Detail::createError(ERROR), [&]() {                               \
-        constexpr static Bedrock::CallStack::Frame frame{                                                      \
-            .filename_hash = entt::hashed_string::value(__FILE__), .filename = __FILE__, .line = __LINE__};    \
+#define BEDROCK_NEW_ERROR_MESSAGE(ERROR, MESSAGE)                                                            \
+    Bedrock::Detail::addFrameToError(Bedrock::Detail::createError(ERROR), [&]() {                            \
+        constexpr static Bedrock::CallStack::Frame frame{                                                    \
+            .filename_hash = entt::hashed_string::value(__FILE__), .filename = __FILE__, .line = __LINE__};  \
         return Bedrock::Detail::createFrame(std::make_pair(frame, Bedrock::Detail::createContext(MESSAGE))); \
     })
 
 #define BEDROCK_RETHROW(RESULT)                                                                             \
-    Bedrock::Detail::addFrameToError(std::move(RESULT.discardError().error()), [&]() {                       \
+    Bedrock::Detail::addFrameToError(std::move(RESULT.discardError().error()), [&]() {                      \
         constexpr static Bedrock::CallStack::Frame frame{                                                   \
             .filename_hash = entt::hashed_string::value(__FILE__), .filename = __FILE__, .line = __LINE__}; \
         return Bedrock::Detail::createFrame(std::make_pair(frame, Bedrock::Detail::createContext()));       \

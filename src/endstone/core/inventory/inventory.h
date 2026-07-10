@@ -14,6 +14,8 @@
 
 #pragma once
 
+#include <unordered_map>
+
 #include "bedrock/world/container.h"
 #include "endstone/core/inventory/item_stack.h"
 #include "endstone/inventory/inventory.h"
@@ -26,15 +28,9 @@ class EndstoneInventoryBase : public Interface {
 public:
     explicit EndstoneInventoryBase(::Container &container) : container_(container) {}
 
-    [[nodiscard]] int getSize() const override
-    {
-        return container_.getContainerSize();
-    }
+    [[nodiscard]] int getSize() const override { return container_.getContainerSize(); }
 
-    [[nodiscard]] int getMaxStackSize() const override
-    {
-        return container_.getMaxStackSize();
-    }
+    [[nodiscard]] int getMaxStackSize() const override { return container_.getMaxStackSize(); }
 
     [[nodiscard]] std::optional<ItemStack> getItem(int index) const override
     {
@@ -272,10 +268,7 @@ public:
         return -1;
     }
 
-    [[nodiscard]] int first(const ItemStack &item) const override
-    {
-        return first(item, true);
-    }
+    [[nodiscard]] int first(const ItemStack &item) const override { return first(item, true); }
 
     [[nodiscard]] int firstEmpty() const override
     {
@@ -288,10 +281,7 @@ public:
         return -1;
     }
 
-    [[nodiscard]] bool isEmpty() const override
-    {
-        return container_.isEmpty();
-    }
+    [[nodiscard]] bool isEmpty() const override { return container_.isEmpty(); }
 
     void remove(ItemTypeId type) override
     {
@@ -315,10 +305,7 @@ public:
         }
     }
 
-    void clear(int index) override
-    {
-        setItem(index, std::nullopt);
-    }
+    void clear(int index) override { setItem(index, std::nullopt); }
 
     void clear() override
     {

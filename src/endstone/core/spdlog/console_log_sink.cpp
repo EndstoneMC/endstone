@@ -97,7 +97,7 @@ void ConsoleLogSink::sink_it_(const spdlog::details::log_msg &msg)
     msg.color_range_start = 0;
     msg.color_range_end = 0;
     spdlog::memory_buf_t formatted;
-    auto& formatter = msg.logger_name.size() > 0 ? formatters_[0] : formatters_[1];
+    auto &formatter = msg.logger_name.size() > 0 ? formatters_[0] : formatters_[1];
     formatter.format(msg, formatted);
     if (should_do_colors_ && msg.color_range_end > msg.color_range_start) {
         std::string out;

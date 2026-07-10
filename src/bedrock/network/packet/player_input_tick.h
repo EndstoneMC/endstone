@@ -16,10 +16,7 @@
 
 struct PlayerInputTick {
     PlayerInputTick() = default;
-    PlayerInputTick(uint64_t value) : value(value){};
-    operator std::uint64_t() const
-    {
-        return value;
-    }
+    PlayerInputTick(uint64_t value) : value(value) {};
+    operator std::uint64_t() const { return value; }
     std::uint64_t value{0};
 };

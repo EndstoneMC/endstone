@@ -14,7 +14,8 @@
 
 #include "endstone/core/scheduler/async_task.h"
 
-#include <fmt/std.h>
+#include <format>
+#include <sstream>
 
 #include "endstone/core/scheduler/scheduler.h"
 
@@ -61,10 +62,12 @@ void EndstoneAsyncTask::run()
         }
 
         if (!removed) {
-            getOwner()->getLogger().error(fmt::format("Unable to remove worker {} on task {} for {}", thread_id,
+            std::ostringstream tid;
+            tid << thread_id;
+            getOwner()->getLogger().error(std::format("Unable to remove worker {} on task {} for {}", tid.str(),
                                                       getTaskId(), getOwner()->getDescription().getFullName()));
             if (exception.has_value()) {
-                getOwner()->getLogger().error(fmt::format("{}", exception));
+                getOwner()->getLogger().error(exception->what());
             }
         }
 

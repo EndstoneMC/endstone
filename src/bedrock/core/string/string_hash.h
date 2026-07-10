@@ -85,9 +85,6 @@ private:
 namespace std {
 template <>
 struct hash<HashedString> {
-    HashType64 operator()(const HashedString &value) const noexcept
-    {
-        return value.getHash();
-    }
+    HashType64 operator()(const HashedString &value) const noexcept { return value.getHash(); }
 };
 }  // namespace std

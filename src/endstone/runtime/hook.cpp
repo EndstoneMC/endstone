@@ -16,6 +16,7 @@
 
 #include <funchook.h>
 
+#include <format>
 #include <string>
 #include <system_error>
 #include <unordered_map>
@@ -70,10 +71,7 @@ const std::error_category &error_category()
 {
     static const class HookErrorCategory : public std::error_category {
     public:
-        [[nodiscard]] const char *name() const noexcept override
-        {
-            return "HookError";
-        }
+        [[nodiscard]] const char *name() const noexcept override { return "HookError"; }
 
         [[nodiscard]] std::string message(int err_val) const override
         {
@@ -126,19 +124,19 @@ void install()
             funchook_t *hook = funchook_create();
             int status = funchook_prepare(hook, &original, detour);
             if (status != 0) {
-                throw std::system_error(status, details::error_category(), fmt::format("Unable to hook {}", name));
+                throw std::system_error(status, details::error_category(), std::format("Unable to hook {}", name));
             }
 
             status = funchook_install(hook, 0);
             if (status != 0) {
-                throw std::system_error(status, details::error_category(), fmt::format("Unable to hook {}", name));
+                throw std::system_error(status, details::error_category(), std::format("Unable to hook {}", name));
             }
 
             SPDLOG_DEBUG("{}: {} -> {} -> {}", name, target, detour, original);
             details::originals().emplace(target, original);
         }
         else {
-            throw std::runtime_error(fmt::format("Unable to find target function for detour: {}.", name));
+            throw std::runtime_error(std::format("Unable to find target function for detour: {}.", name));
         }
     }
 }

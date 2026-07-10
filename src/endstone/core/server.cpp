@@ -14,27 +14,34 @@
 
 #include "endstone/core/server.h"
 
+#include <algorithm>
 #include <filesystem>
 #include <format>
-
-#include "endstone/core/type.h"
 #include <iostream>
 #include <memory>
+#include <ranges>
+#include <unordered_map>
+#include <unordered_set>
 
 #include <boost/algorithm/string.hpp>
+#include <entt/locator/locator.hpp>
 #include <pybind11/pybind11.h>
 #include <toml++/toml.h>
 
 #include "bedrock/network/server_network_handler.h"
 #include "bedrock/platform/threading/assigned_thread.h"
 #include "bedrock/server/dedicated_server.h"
+#include "bedrock/server/server_instance.h"
 #include "bedrock/server/server_map_data_manager.h"
 #include "bedrock/shared_constants.h"
 #include "bedrock/world/item/enchanting/enchant.h"
 #include "bedrock/world/level/block/block_descriptor.h"
 #include "bedrock/world/scores/server_scoreboard.h"
+#include "endstone/actor/actor_type.h"
 #include "endstone/color_format.h"
 #include "endstone/command/plugin_command.h"
+#include "endstone/core/ban/ip_ban_list.h"
+#include "endstone/core/ban/player_ban_list.h"
 #include "endstone/core/block/biome.h"
 #include "endstone/core/block/block_data.h"
 #include "endstone/core/block/block_type.h"
@@ -55,9 +62,9 @@
 #include "endstone/core/player.h"
 #include "endstone/core/plugin/cpp_plugin_loader.h"
 #include "endstone/core/plugin/python_plugin_loader.h"
-#include "endstone/actor/actor_type.h"
 #include "endstone/core/registry.h"
 #include "endstone/core/signal_handler.h"
+#include "endstone/core/type.h"
 #include "endstone/core/util/uuid.h"
 #include "endstone/event/chunk/chunk_load_event.h"
 #include "endstone/event/chunk/chunk_unload_event.h"

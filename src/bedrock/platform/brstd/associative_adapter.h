@@ -14,6 +14,8 @@
 
 #pragma once
 
+#include <algorithm>
+
 namespace brstd {
 
 #ifndef NO_UNIQUE_ADDRESS

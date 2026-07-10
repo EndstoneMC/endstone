@@ -14,7 +14,6 @@
 
 #pragma once
 
-
 struct SynchedActorDataComponent {
     SynchedActorData data;
 };

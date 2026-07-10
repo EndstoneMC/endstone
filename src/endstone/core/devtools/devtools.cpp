@@ -18,15 +18,14 @@
 #include <imgui_internal.h>
 
 #include <filesystem>
+#include <format>
 #include <fstream>
 #include <mutex>
 #include <utility>
 #include <zstr.hpp>
 
 #include <GLFW/glfw3.h>
-#include <entt/entt.hpp>
 
-#include "endstone/detail.h"
 #include "bedrock/nbt/nbt_io.h"
 #include "bedrock/util/string_byte_output.h"
 #include "endstone/color_format.h"
@@ -36,6 +35,7 @@
 #include "endstone/core/devtools/imgui_json.h"
 #include "endstone/core/devtools/vanilla_data.h"
 #include "endstone/core/logger_factory.h"
+#include "endstone/detail.h"
 #include "endstone/runtime/runtime.h"
 #include "endstone/variant.h"
 
@@ -136,7 +136,7 @@ ImGui::FileBrowser *gFileBrowser = nullptr;
 
 void onError(int error, const char *description)
 {
-    gErrors.push_back(fmt::format("GLFW Error {}: {}", error, description));
+    gErrors.push_back(std::format("GLFW Error {}: {}", error, description));
 }
 
 void onWindowClose(GLFWwindow *window)
@@ -468,15 +468,15 @@ void showBlockWindow(bool *open)
         return;
     }
 
-    if (ImGui::CollapsingHeader(fmt::format("{} Block Types", data->block_types.size()).c_str())) {
+    if (ImGui::CollapsingHeader(std::format("{} Block Types", data->block_types.size()).c_str())) {
         ImGui::Json(data->block_types);
     }
 
-    if (ImGui::CollapsingHeader(fmt::format("{} Block States", data->block_states.size()).c_str())) {
+    if (ImGui::CollapsingHeader(std::format("{} Block States", data->block_states.size()).c_str())) {
         ImGui::Json(data->block_states);
     }
 
-    if (ImGui::CollapsingHeader(fmt::format("{} Block Tags", data->block_tags.size()).c_str())) {
+    if (ImGui::CollapsingHeader(std::format("{} Block Tags", data->block_tags.size()).c_str())) {
         ImGui::Json(data->block_tags);
     }
 
@@ -502,23 +502,23 @@ void showItemWindow(bool *open)
         return;
     }
 
-    if (ImGui::CollapsingHeader(fmt::format("{} Items", data->items.size()).c_str())) {
+    if (ImGui::CollapsingHeader(std::format("{} Items", data->items.size()).c_str())) {
         ImGui::Json(data->items);
     }
 
-    if (ImGui::CollapsingHeader(fmt::format("{} Creative Items", data->creative_items.size()).c_str())) {
+    if (ImGui::CollapsingHeader(std::format("{} Creative Items", data->creative_items.size()).c_str())) {
         ImGui::Json(data->creative_items);
     }
 
-    if (ImGui::CollapsingHeader(fmt::format("{} Creative Groups", data->creative_groups.size()).c_str())) {
+    if (ImGui::CollapsingHeader(std::format("{} Creative Groups", data->creative_groups.size()).c_str())) {
         ImGui::Json(data->creative_groups);
     }
 
-    if (ImGui::CollapsingHeader(fmt::format("{} Item Tags", data->item_tags.size()).c_str())) {
+    if (ImGui::CollapsingHeader(std::format("{} Item Tags", data->item_tags.size()).c_str())) {
         ImGui::Json(data->item_tags);
     }
 
-    if (ImGui::CollapsingHeader(fmt::format("{} Item Components", data->item_components.size()).c_str())) {
+    if (ImGui::CollapsingHeader(std::format("{} Item Components", data->item_components.size()).c_str())) {
         ImGui::Json(data->item_components);
     }
     ImGui::End();
@@ -538,49 +538,49 @@ void showRecipeWindow(bool *open)
         return;
     }
 
-    if (ImGui::CollapsingHeader(fmt::format("{} Shapeless Recipes", data->recipes.shapeless.size()).c_str())) {
+    if (ImGui::CollapsingHeader(std::format("{} Shapeless Recipes", data->recipes.shapeless.size()).c_str())) {
         ImGui::Json(data->recipes.shapeless);
     }
-    if (ImGui::CollapsingHeader(fmt::format("{} Shaped Recipes", data->recipes.shaped.size()).c_str())) {
+    if (ImGui::CollapsingHeader(std::format("{} Shaped Recipes", data->recipes.shaped.size()).c_str())) {
         ImGui::Json(data->recipes.shaped);
     }
-    if (ImGui::CollapsingHeader(fmt::format("{} Furnace Recipes", data->recipes.furnace.size()).c_str())) {
+    if (ImGui::CollapsingHeader(std::format("{} Furnace Recipes", data->recipes.furnace.size()).c_str())) {
         ImGui::Json(data->recipes.furnace);
     }
-    if (ImGui::CollapsingHeader(fmt::format("{} Furnace Aux Recipes", data->recipes.furnace_aux.size()).c_str())) {
+    if (ImGui::CollapsingHeader(std::format("{} Furnace Aux Recipes", data->recipes.furnace_aux.size()).c_str())) {
         ImGui::Json(data->recipes.furnace_aux);
     }
-    if (ImGui::CollapsingHeader(fmt::format("{} Multi Recipes", data->recipes.multi.size()).c_str())) {
+    if (ImGui::CollapsingHeader(std::format("{} Multi Recipes", data->recipes.multi.size()).c_str())) {
         ImGui::Json(data->recipes.multi);
     }
     if (ImGui::CollapsingHeader(
-            fmt::format("{} User Data Shapeless Recipes", data->recipes.user_data_shapeless.size()).c_str())) {
+            std::format("{} User Data Shapeless Recipes", data->recipes.user_data_shapeless.size()).c_str())) {
         ImGui::Json(data->recipes.user_data_shapeless);
     }
     if (ImGui::CollapsingHeader(
-            fmt::format("{} Shapeless Chemistry Recipes", data->recipes.shapeless_chemistry.size()).c_str())) {
+            std::format("{} Shapeless Chemistry Recipes", data->recipes.shapeless_chemistry.size()).c_str())) {
         ImGui::Json(data->recipes.shapeless_chemistry);
     }
     if (ImGui::CollapsingHeader(
-            fmt::format("{} Shaped Chemistry Recipes", data->recipes.shaped_chemistry.size()).c_str())) {
+            std::format("{} Shaped Chemistry Recipes", data->recipes.shaped_chemistry.size()).c_str())) {
         ImGui::Json(data->recipes.shaped_chemistry);
     }
     if (ImGui::CollapsingHeader(
-            fmt::format("{} Smithing Transform Recipes", data->recipes.smithing_transform.size()).c_str())) {
+            std::format("{} Smithing Transform Recipes", data->recipes.smithing_transform.size()).c_str())) {
         ImGui::Json(data->recipes.smithing_transform);
     }
-    if (ImGui::CollapsingHeader(fmt::format("{} Smithing Trim Recipes", data->recipes.smithing_trim.size()).c_str())) {
+    if (ImGui::CollapsingHeader(std::format("{} Smithing Trim Recipes", data->recipes.smithing_trim.size()).c_str())) {
         ImGui::Json(data->recipes.smithing_trim);
     }
-    if (ImGui::CollapsingHeader(fmt::format("{} Potion Mix Recipes", data->recipes.potion_mixes.size()).c_str())) {
+    if (ImGui::CollapsingHeader(std::format("{} Potion Mix Recipes", data->recipes.potion_mixes.size()).c_str())) {
         ImGui::Json(data->recipes.potion_mixes);
     }
     if (ImGui::CollapsingHeader(
-            fmt::format("{} Container Mix Recipes", data->recipes.container_mixes.size()).c_str())) {
+            std::format("{} Container Mix Recipes", data->recipes.container_mixes.size()).c_str())) {
         ImGui::Json(data->recipes.container_mixes);
     }
     if (ImGui::CollapsingHeader(
-            fmt::format("{} Material Reducer Recipes", data->recipes.material_reducer.size()).c_str())) {
+            std::format("{} Material Reducer Recipes", data->recipes.material_reducer.size()).c_str())) {
         ImGui::Json(data->recipes.material_reducer);
     }
 
@@ -601,7 +601,7 @@ void showBiomeWindow(bool *open)
         return;
     }
 
-    if (ImGui::CollapsingHeader(fmt::format("{} Biomes", data->biomes.size()).c_str())) {
+    if (ImGui::CollapsingHeader(std::format("{} Biomes", data->biomes.size()).c_str())) {
         ImGui::Json(data->biomes);
     }
 

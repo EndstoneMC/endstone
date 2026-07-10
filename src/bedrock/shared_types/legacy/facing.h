@@ -14,6 +14,8 @@
 
 #pragma once
 
+#include <array>
+
 namespace SharedTypes {
 enum class Facing : short {
     DOWN,

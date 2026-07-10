@@ -23,7 +23,7 @@ public:
         : registry_(registry), entt_registry_(registry.registry_), entity_(entity_id)
     {
     }
-    EntityContext(const EntityContext & other) = default;
+    EntityContext(const EntityContext &other) = default;
     EntityContext(EntityContext &&) = default;
     EntityContext &operator=(const EntityContext &) = delete;
     EntityContext &operator=(EntityContext &&) = delete;
@@ -67,15 +67,9 @@ protected:
     friend class EntityRegistry;
     friend class WeakStorageEntity;
 
-    [[nodiscard]] EntityId _getEntityId() const
-    {
-        return entity_;
-    }
+    [[nodiscard]] EntityId _getEntityId() const { return entity_; }
 
-    [[nodiscard]] std::uint32_t _getRegistryId() const
-    {
-        return entity_;
-    }
+    [[nodiscard]] std::uint32_t _getRegistryId() const { return entity_; }
 
     EntityRegistry &registry_;     // +0
     EnTTRegistry &entt_registry_;  // +8

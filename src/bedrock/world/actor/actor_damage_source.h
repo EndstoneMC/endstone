@@ -56,8 +56,8 @@ public:
     [[nodiscard]] virtual ActorType getDamagingEntityType() const;
     [[nodiscard]] virtual ActorCategory getDamagingEntityCategories() const;
     [[nodiscard]] virtual std::unique_ptr<ActorDamageSource> clone() const;
-    [[nodiscard]] virtual std::pair<std::string, std::vector<std::string>> _getDeathMessageInternal(
-        const std::string &, Actor *) const;
+    [[nodiscard]] virtual std::pair<std::string, std::vector<std::string>> _getDeathMessageInternal(const std::string &,
+                                                                                                    Actor *) const;
 
 private:
     ActorDamageCause cause_;

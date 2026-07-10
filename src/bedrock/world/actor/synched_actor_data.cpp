@@ -15,6 +15,7 @@
 #include "bedrock/world/actor/synched_actor_data.h"
 
 #include "bedrock/entity/components/synched_actor_data_component.h"
+#include "bedrock/nbt/compound_tag.h"
 #include "bedrock/world/level/block_pos.h"
 
 SynchedActorData::TypeInt8 SynchedActorData::getInt8(ID id) const
@@ -112,7 +113,7 @@ void SynchedActorDataEntityWrapper::set<SynchedActorData::TypeInt8>(SynchedActor
 
 template <>
 void SynchedActorDataEntityWrapper::set<SynchedActorData::TypeInt64>(SynchedActorData::ID id,
-                                                                    const SynchedActorData::TypeInt64 &value)
+                                                                     const SynchedActorData::TypeInt64 &value)
 {
     auto data = _get();
     auto &item = data->_get(id);

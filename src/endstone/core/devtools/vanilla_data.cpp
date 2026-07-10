@@ -14,6 +14,9 @@
 
 #include "endstone/core/devtools/vanilla_data.h"
 
+#include <unordered_map>
+
+#include <entt/locator/locator.hpp>
 #include <magic_enum/magic_enum.hpp>
 
 #include "bedrock/nbt/nbt_io.h"
@@ -88,32 +91,31 @@ void dumpBlockData(VanillaData &data, const ::Level &level)
             ui_shape = block.getUIShape(ui_shape);
             block.getLiquidClipVolume(region, {0, 0, 0}, liquid_clip_shape);
             auto map_color = block.getBlockType().getMapColor(region, {0, 10, 0}, block);
-            data.block_states.push_back({
-                {"name", name},
-                {"blockStateHash", block.getRuntimeId()},
-                {"burnOdds", block.getBurnOdds()},
-                {"flameOdds", block.getFlameOdds()},
-                {"thickness", truncate(block.getThickness())},
-                {"lightDampening", block.getLight()},
-                {"lightEmission", block.getLightEmission()},
-                {"explosionResistance", truncate(block.getExplosionResistance())},
-                {"friction", truncate(block.getFriction())},
-                {"hardness", truncate(block.getDestroySpeed())},
-                {"canContainLiquidSource", block.getDirectData().water_detection_rule.can_contain_liquid},
-                {"liquidReactionOnTouch",
-                 magic_enum::enum_name(block.getDirectData().water_detection_rule.on_liquid_touches)},
-                {"requiresCorrectToolForDrops", block.requiresCorrectToolForDrops()},
-                {"isSolid", block.isSolid()},
-                {"translucency", block.getTranslucency()},
-                {"mapColor", map_color.toHexString()},
-                {"tintMethod", magic_enum::enum_name(block.getBlockType().getTintMethod())},
-                {"collisionShape", collision_shape},
-                {"outlineShape", outline_shape},
-                {"visualShape", visual_shape},
-                {"uiShape", ui_shape},
-                {"liquidClipShape", liquid_clip_shape},
-                {"translationKey", block.getBlockType().buildDescriptionId(block)}
-            });
+            data.block_states.push_back(
+                {{"name", name},
+                 {"blockStateHash", block.getRuntimeId()},
+                 {"burnOdds", block.getBurnOdds()},
+                 {"flameOdds", block.getFlameOdds()},
+                 {"thickness", truncate(block.getThickness())},
+                 {"lightDampening", block.getLight()},
+                 {"lightEmission", block.getLightEmission()},
+                 {"explosionResistance", truncate(block.getExplosionResistance())},
+                 {"friction", truncate(block.getFriction())},
+                 {"hardness", truncate(block.getDestroySpeed())},
+                 {"canContainLiquidSource", block.getDirectData().water_detection_rule.can_contain_liquid},
+                 {"liquidReactionOnTouch",
+                  magic_enum::enum_name(block.getDirectData().water_detection_rule.on_liquid_touches)},
+                 {"requiresCorrectToolForDrops", block.requiresCorrectToolForDrops()},
+                 {"isSolid", block.isSolid()},
+                 {"translucency", block.getTranslucency()},
+                 {"mapColor", map_color.toHexString()},
+                 {"tintMethod", magic_enum::enum_name(block.getBlockType().getTintMethod())},
+                 {"collisionShape", collision_shape},
+                 {"outlineShape", outline_shape},
+                 {"visualShape", visual_shape},
+                 {"uiShape", ui_shape},
+                 {"liquidClipShape", liquid_clip_shape},
+                 {"translationKey", block.getBlockType().buildDescriptionId(block)}});
             data.block_palette.add(block.getSerializationId().copy());
             return true;
         });

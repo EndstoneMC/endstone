@@ -16,8 +16,9 @@
 
 #include <type_traits>
 
+#include <entt/core/type_traits.hpp>
+
 #include "bedrock/world/events/event_variant.h"
-#include <entt/entt.hpp>
 
 namespace Details {
 template <typename EventHandlerInterface>

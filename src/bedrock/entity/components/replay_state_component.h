@@ -27,15 +27,9 @@ public:
         return policy->shouldCorrectMovement(entity, packet, current_tick, divergence_counter, is_strict_movement);
     }
 
-    [[nodiscard]] std::uint64_t getCurrentTick() const
-    {
-        return current_tick;
-    }
+    [[nodiscard]] std::uint64_t getCurrentTick() const { return current_tick; }
 
-    [[nodiscard]] std::uint8_t getDivergenceCounter() const
-    {
-        return divergence_counter;
-    }
+    [[nodiscard]] std::uint8_t getDivergenceCounter() const { return divergence_counter; }
 
     void clearHistory()
     {
@@ -44,10 +38,7 @@ public:
         }
     }
 
-    void setDivergenceCounter(std::uint8_t counter)
-    {
-        divergence_counter = counter;
-    }
+    void setDivergenceCounter(std::uint8_t counter) { divergence_counter = counter; }
 
     bool force_correction;
     bool should_report_next_correction_telemetry;

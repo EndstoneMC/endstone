@@ -15,6 +15,7 @@
 #include "endstone/core/plugin/service_manager.h"
 
 #include <algorithm>
+#include <ranges>
 
 namespace endstone::core {
 

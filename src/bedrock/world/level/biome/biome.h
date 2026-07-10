@@ -40,17 +40,11 @@ public:
 
     virtual ~Biome() = 0;
 
-    [[nodiscard]] const std::string &getFullName() const
-    {
-        return hash.getString();
-    }
+    [[nodiscard]] const std::string &getFullName() const { return hash.getString(); }
 
     [[nodiscard]] const std::string getNameWithoutNamespace() const;
 
-    [[nodiscard]] BiomeIdType getId() const
-    {
-        return id_;
-    }
+    [[nodiscard]] BiomeIdType getId() const { return id_; }
 
     float temperature;
     float downfall;

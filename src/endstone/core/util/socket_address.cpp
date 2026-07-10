@@ -14,6 +14,7 @@
 
 #include "endstone/core/util/socket_address.h"
 
+#include "bedrock/server/server_instance.h"
 #include "endstone/core/server.h"
 
 namespace endstone::core {

@@ -14,6 +14,8 @@
 
 #pragma once
 
+#include <unordered_set>
+
 #include "bedrock/entity/components/post_tick_position_delta_component.h"
 #include "bedrock/entity/weak_entity_ref.h"
 #include "bedrock/server/commands/command_utils.h"
@@ -155,10 +157,7 @@ public:
 
     [[nodiscard]] bool isInLava() const override { return getHandle().isInLava(); }
 
-    [[nodiscard]] Level &getLevel() const override
-    {
-        return server_.getLevel();
-    }
+    [[nodiscard]] Level &getLevel() const override { return server_.getLevel(); }
 
     [[nodiscard]] Dimension &getDimension() const override
     {

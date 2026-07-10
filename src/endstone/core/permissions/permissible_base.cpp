@@ -15,6 +15,11 @@
 #include "endstone/core/permissions/permissible_base.h"
 
 #include <memory>
+#include <ranges>
+#include <unordered_map>
+#include <unordered_set>
+
+#include <entt/locator/locator.hpp>
 
 #include "endstone/core/server.h"
 #include "endstone/core/type.h"
@@ -212,7 +217,7 @@ void PermissibleBase::clearPermissions()
 PluginManager *PermissibleBase::getPluginManager()
 {
     if (entt::locator<EndstoneServer>::has_value()) {
-        return &entt::locator<EndstoneServer>::value().getPluginManager();
+        return &EndstoneServer::getInstance().getPluginManager();
     }
     return nullptr;
 }

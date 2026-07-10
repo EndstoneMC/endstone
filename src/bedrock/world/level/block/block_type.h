@@ -14,8 +14,11 @@
 
 #pragma once
 
+#include <map>
 #include <optional>
+#include <unordered_map>
 
+#include <entt/core/enum.hpp>
 #include <gsl/span>
 
 #include "bedrock/common_types.h"
@@ -359,16 +362,16 @@ public:
     std::string description_id;  // +8
 
 private:
-    const Material &material_;          // +40
-    BlockComponentStorage components_;  // +48
-    NameInfo name_info_;                // +144
-    BlockProperty properties_;          // +304
-    std::string creative_group_;        // +312
-    float thickness_;                   // +344
-    float translucency_;                // +348
+    const Material &material_;                             // +40
+    BlockComponentStorage components_;                     // +48
+    NameInfo name_info_;                                   // +144
+    BlockProperty properties_;                             // +304
+    std::string creative_group_;                           // +312
+    float thickness_;                                      // +344
+    float translucency_;                                   // +348
     SharedTypes::CreativeItemCategory creative_category_;  // +352
-    BlockActorType block_entity_type_;  // +353
-    BlockRenderLayer render_layer_;     // +354
+    BlockActorType block_entity_type_;                     // +353
+    BlockRenderLayer render_layer_;                        // +354
     bool fancy_ : 1;
     bool render_layer_can_render_as_opaque_ : 1;
     bool can_slide_ : 1;

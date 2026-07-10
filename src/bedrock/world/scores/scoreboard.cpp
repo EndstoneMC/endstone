@@ -16,6 +16,7 @@
 
 #include <charconv>
 
+#include "bedrock/nbt/compound_tag.h"
 #include "bedrock/world/actor/player/player.h"
 
 const std::string Scoreboard::DISPLAY_SLOT_LIST = "list";

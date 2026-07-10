@@ -20,6 +20,7 @@
 #include "bedrock/locale/i18n.h"
 #include "bedrock/network/packet/death_info_packet.h"
 #include "bedrock/network/packet/update_player_game_type_packet.h"
+#include "bedrock/server/server_instance.h"
 #include "bedrock/world/actor/actor.h"
 #include "bedrock/world/actor/item/item_actor.h"
 #include "endstone/color_format.h"
@@ -41,7 +42,6 @@
 #include "endstone/event/player/player_quit_event.h"
 #include "endstone/event/player/player_respawn_event.h"
 #include "endstone/runtime/vtable_hook.h"
-
 
 namespace {
 bool handleEvent(const PlayerDamageEvent &event)

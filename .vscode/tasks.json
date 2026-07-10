@@ -18,31 +18,12 @@
             "problemMatcher": []
         },
         {
-            "label": "CMake: Configure",
+            "label": "Project: Configure",
             "type": "cmake",
             "command": "configure",
             "preset": "conan-relwithdebinfo",
-            "problemMatcher": []
-        },
-        {
-            "label": "CMake: Copy compile_commands.json",
-            "type": "shell",
-            "command": "cp -f \"${workspaceFolder}/build/conan_out/build/RelWithDebInfo/compile_commands.json\" \"${workspaceFolder}/compile_commands.json\"",
-            "windows": {
-                "command": "Copy-Item -LiteralPath \"${workspaceFolder}/build/conan_out/build/RelWithDebInfo/compile_commands.json\" -Destination \"${workspaceFolder}/compile_commands.json\" -Force"
-            },
-            "options": {
-                "cwd": "${workspaceFolder}"
-            },
-            "problemMatcher": []
-        },
-        {
-            "label": "Project: configure",
-            "dependsOrder": "sequence",
             "dependsOn": [
-                "Conan: Install",
-                "CMake: Configure",
-                "CMake: Copy compile_commands.json"
+                "Conan: Install"
             ],
             "problemMatcher": []
         },

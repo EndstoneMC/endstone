@@ -14,9 +14,9 @@
 
 #pragma once
 
+#include <format>
+#include <ranges>
 #include <string>
-
-#include <fmt/format.h>
 
 #include "bedrock/core/string/static_optimized_string.h"
 
@@ -156,7 +156,7 @@ public:
             return "*";
         }
 
-        auto full_version_string = fmt::format("{}.{}.{}", major_, minor_, patch_);
+        auto full_version_string = std::format("{}.{}.{}", major_, minor_, patch_);
         if (pre_release_.length() > 0) {
             full_version_string += "-";
             full_version_string += pre_release_;
@@ -168,40 +168,19 @@ public:
         return full_version_string;
     }
 
-    [[nodiscard]] bool isValid() const
-    {
-        return valid_version_;
-    }
+    [[nodiscard]] bool isValid() const { return valid_version_; }
 
-    [[nodiscard]] bool isAnyVersion() const
-    {
-        return any_version_;
-    }
+    [[nodiscard]] bool isAnyVersion() const { return any_version_; }
 
-    [[nodiscard]] std::uint16_t getMajor() const
-    {
-        return major_;
-    }
+    [[nodiscard]] std::uint16_t getMajor() const { return major_; }
 
-    [[nodiscard]] std::uint16_t getMinor() const
-    {
-        return minor_;
-    }
+    [[nodiscard]] std::uint16_t getMinor() const { return minor_; }
 
-    [[nodiscard]] std::uint16_t getPatch() const
-    {
-        return patch_;
-    }
+    [[nodiscard]] std::uint16_t getPatch() const { return patch_; }
 
-    [[nodiscard]] StringType getPreRelease() const
-    {
-        return pre_release_;
-    }
+    [[nodiscard]] StringType getPreRelease() const { return pre_release_; }
 
-    [[nodiscard]] StringType getBuildMeta() const
-    {
-        return build_meta_;
-    }
+    [[nodiscard]] StringType getBuildMeta() const { return build_meta_; }
 
 private:
     std::uint16_t major_{0};  // +0

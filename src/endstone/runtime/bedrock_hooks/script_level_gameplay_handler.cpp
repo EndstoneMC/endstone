@@ -14,8 +14,6 @@
 
 #include "bedrock/scripting/event_handlers/script_level_gameplay_handler.h"
 
-#include <entt/entt.hpp>
-
 #include "bedrock/gameplayhandlers/gameplay_handler_result.h"
 #include "bedrock/world/actor/player/player.h"
 #include "bedrock/world/events/level_events.h"
@@ -44,7 +42,7 @@ bool handleEvent(const LevelAddedActorEvent &event)
 
 bool handleEvent(LevelWeatherChangedEvent &event)
 {
-    const auto &server = entt::locator<endstone::core::EndstoneServer>::value();
+    const auto &server = endstone::core::EndstoneServer::getInstance();
     auto &level = server.getLevel();
     if (event.is_raining != event.will_be_raining) {
         endstone::WeatherChangeEvent e(level, event.will_be_raining);

@@ -76,18 +76,9 @@ public:
 };
 
 class AvailableCommandsPacket : public Packet {
-    [[nodiscard]] MinecraftPacketIds getId() const override
-    {
-        return MinecraftPacketIds::AvailableCommands;
-    }
-    [[nodiscard]] std::string_view getName() const override
-    {
-        return "AvailableCommandsPacket";
-    }
-    void write(BinaryStream & /*unused*/) const override
-    {
-        throw std::logic_error("Not implemented");
-    }
+    [[nodiscard]] MinecraftPacketIds getId() const override { return MinecraftPacketIds::AvailableCommands; }
+    [[nodiscard]] std::string_view getName() const override { return "AvailableCommandsPacket"; }
+    void write(BinaryStream & /*unused*/) const override { throw std::logic_error("Not implemented"); }
 
 protected:
     Bedrock::Result<void> _read(ReadOnlyBinaryStream & /*unused*/) override

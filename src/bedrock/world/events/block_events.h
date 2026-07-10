@@ -16,6 +16,7 @@
 
 #include <memory>
 #include <string>
+#include <unordered_set>
 
 #include "bedrock/core/math/vec3.h"
 #include "bedrock/entity/gamerefs_entity/gamerefs_entity.h"

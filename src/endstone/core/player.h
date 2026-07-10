@@ -16,6 +16,8 @@
 
 #include <functional>
 #include <memory>
+#include <unordered_map>
+#include <unordered_set>
 #include <variant>
 
 #include <nlohmann/json.hpp>
@@ -126,10 +128,9 @@ public:
     void onFormClose(std::uint32_t form_id, PlayerFormCloseReason reason);
     void onFormResponse(std::uint32_t form_id, const nlohmann::json &json);
     void doFirstSpawn();
-    void initFromConnectionRequest(
-        std::variant<std::reference_wrapper<const ::ConnectionRequest>,
-                     std::reference_wrapper<const ::SubClientConnectionRequest>>
-            request);
+    void initFromConnectionRequest(std::variant<std::reference_wrapper<const ::ConnectionRequest>,
+                                                std::reference_wrapper<const ::SubClientConnectionRequest>>
+                                       request);
     void disconnect();
     void updateAbilities() const;
     void checkOpStatus();

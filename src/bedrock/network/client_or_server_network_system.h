@@ -35,23 +35,11 @@ public:
     {
     }
 
-    ClientNetworkSystem &toClientNetworkSystem()
-    {
-        return std::get<ClientRefT>(*this);
-    }
+    ClientNetworkSystem &toClientNetworkSystem() { return std::get<ClientRefT>(*this); }
 
-    [[nodiscard]] const ClientNetworkSystem &toClientNetworkSystem() const
-    {
-        return std::get<ClientRefT>(*this);
-    }
+    [[nodiscard]] const ClientNetworkSystem &toClientNetworkSystem() const { return std::get<ClientRefT>(*this); }
 
-    ServerNetworkSystem &toServerNetworkSystem()
-    {
-        return std::get<ServerRefT>(*this);
-    }
+    ServerNetworkSystem &toServerNetworkSystem() { return std::get<ServerRefT>(*this); }
 
-    [[nodiscard]] const ServerNetworkSystem &toServerNetworkSystem() const
-    {
-        return std::get<ServerRefT>(*this);
-    }
+    [[nodiscard]] const ServerNetworkSystem &toServerNetworkSystem() const { return std::get<ServerRefT>(*this); }
 };

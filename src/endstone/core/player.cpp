@@ -16,6 +16,9 @@
 
 #include <RakPeerInterface.h>
 
+#include <unordered_map>
+#include <unordered_set>
+
 #include <magic_enum/magic_enum.hpp>
 #include <nlohmann/json.hpp>
 
@@ -37,6 +40,7 @@
 #include "bedrock/network/packet/update_abilities_packet.h"
 #include "bedrock/network/server_network_handler.h"
 #include "bedrock/platform/build_platform.h"
+#include "bedrock/server/server_instance.h"
 #include "bedrock/world/actor/player/player.h"
 #include "bedrock/world/actor/provider/actor_offset.h"
 #include "bedrock/world/level/level.h"
@@ -604,7 +608,11 @@ void EndstonePlayer::sendForm(FormVariant form)
     auto packet = MinecraftPackets::createPacket(MinecraftPacketIds::ShowModalForm);
     std::shared_ptr<ModalFormRequestPacket> pk = std::static_pointer_cast<ModalFormRequestPacket>(packet);
     pk->payload.form_id = ++form_ids_;
-    pk->payload.form_json = std::visit(overloaded{[](auto &&arg) { return FormCodec::toJson(arg); }}, form).dump();
+    pk->payload.form_json = std::visit(overloaded{[](auto &&arg) {
+                                           return FormCodec::toJson(arg);
+                                       }},
+                                       form)
+                                .dump();
     forms_.emplace(pk->payload.form_id, std::move(form));
     getHandle().sendNetworkPacket(*packet);
 }

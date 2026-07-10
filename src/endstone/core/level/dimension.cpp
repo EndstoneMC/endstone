@@ -14,7 +14,8 @@
 
 #include "endstone/core/level/dimension.h"
 
-#include <fmt/format.h>
+#include <format>
+#include <ranges>
 
 #include "bedrock/entity/components/actor_owner_component.h"
 #include "bedrock/world/level/block/bedrock_block_names.h"
@@ -31,7 +32,7 @@ namespace {
 // Deterministic, namespaced name for the plugin-owned ticking area that backs loadChunk/unloadChunk for a chunk.
 std::string getChunkTicketName(int x, int z)
 {
-    return fmt::format("endstone_{}_{}", x, z);
+    return std::format("endstone_{}_{}", x, z);
 }
 }  // namespace
 
@@ -110,12 +111,12 @@ bool EndstoneDimension::isChunkLoaded(int x, int z) const
 bool EndstoneDimension::loadChunk(int x, int z)
 {
     auto &level = level_.getHandle();
-    // Pin the chunk with a non-persistent, plugin-owned ticking area (radius 0 == this chunk only). AreaLimitCheck::None
-    // skips the vanilla standalone-area cap. Processed on the next level update, so the chunk is not ready immediately.
-    const auto status = level.getTickingAreasMgr().addArea(getHandle().getDimensionId(), getChunkTicketName(x, z),
-                                                           BlockPos(x * 16, 0, z * 16), 0,
-                                                           TickingAreasManager::AreaLimitCheck::None, false,
-                                                           TickingAreaLoadMode::Default, level.getLevelStorage());
+    // Pin the chunk with a non-persistent, plugin-owned ticking area (radius 0 == this chunk only).
+    // AreaLimitCheck::None skips the vanilla standalone-area cap. Processed on the next level update, so the chunk is
+    // not ready immediately.
+    const auto status = level.getTickingAreasMgr().addArea(
+        getHandle().getDimensionId(), getChunkTicketName(x, z), BlockPos(x * 16, 0, z * 16), 0,
+        TickingAreasManager::AreaLimitCheck::None, false, TickingAreaLoadMode::Default, level.getLevelStorage());
     return status == AddTickingAreaStatus::Success || status == AddTickingAreaStatus::ConflictingName;
 }
 

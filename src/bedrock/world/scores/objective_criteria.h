@@ -23,20 +23,11 @@ enum class ObjectiveRenderType : std::uint8_t {
 
 class ObjectiveCriteria {
 public:
-    [[nodiscard]] const std::string &getName() const
-    {
-        return name_;
-    }
+    [[nodiscard]] const std::string &getName() const { return name_; }
 
-    [[nodiscard]] bool isReadOnly() const
-    {
-        return is_read_only_;
-    }
+    [[nodiscard]] bool isReadOnly() const { return is_read_only_; }
 
-    [[nodiscard]] ObjectiveRenderType getRenderType() const
-    {
-        return render_type_;
-    }
+    [[nodiscard]] ObjectiveRenderType getRenderType() const { return render_type_; }
 
 private:
     std::string name_;

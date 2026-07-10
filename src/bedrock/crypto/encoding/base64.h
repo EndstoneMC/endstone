@@ -17,5 +17,5 @@
 #include <string>
 
 namespace Util {
-std::string base64_decode(const std::string & input);
+std::string base64_decode(const std::string &input);
 }  // namespace Util

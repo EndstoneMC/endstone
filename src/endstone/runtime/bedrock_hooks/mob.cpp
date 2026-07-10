@@ -35,7 +35,7 @@ void Mob::knockback(Actor *source, int damage, float dx, float dz, const Knockba
     const auto after = getPosDelta();
     auto diff = after - before;
 
-    const auto &server = entt::locator<endstone::core::EndstoneServer>::value();
+    const auto &server = endstone::core::EndstoneServer::getInstance();
     endstone::ActorKnockbackEvent e{getEndstoneActor<endstone::core::EndstoneMob>(),
                                     source == nullptr ? nullptr : &source->getEndstoneActor(),
                                     {diff.x, diff.y, diff.z}};

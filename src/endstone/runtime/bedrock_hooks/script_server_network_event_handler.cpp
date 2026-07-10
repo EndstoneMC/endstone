@@ -14,6 +14,8 @@
 
 #include "bedrock/scripting/event_handlers/script_server_network_event_handler.h"
 
+#include <format>
+
 #include "bedrock/network/packet/text_packet.h"
 #include "endstone/core/player.h"
 #include "endstone/core/server.h"
@@ -43,7 +45,7 @@ GameplayHandlerResult<CoordinatorResult> handleEvent(ChatEvent &event,
 
     static constexpr GameplayHandlerResult CANCEL{HandlerResult::BypassListeners, CoordinatorResult::Cancel};
 
-    const auto &server = entt::locator<endstone::core::EndstoneServer>::value();
+    const auto &server = endstone::core::EndstoneServer::getInstance();
     // populate recipient list
     std::optional<std::vector<endstone::Player *>> recipients = std::nullopt;
     if (event.targets.has_value()) {
@@ -68,7 +70,9 @@ GameplayHandlerResult<CoordinatorResult> handleEvent(ChatEvent &event,
     // check if the format is valid
     std::string message;
     try {
-        message = fmt::format(fmt::runtime(e.getFormat()), e.getPlayer().getName(), e.getMessage());
+        const auto name = e.getPlayer().getName();
+        const auto content = e.getMessage();
+        message = std::vformat(e.getFormat(), std::make_format_args(name, content));
     }
     catch (const std::exception & /*e*/) {
         server.getLogger().error("Invalid format string encountered in PlayerChatEvent.");
@@ -97,10 +101,10 @@ GameplayHandlerResult<CoordinatorResult> handleEvent(ChatEvent &event,
         for (const auto &recipient : e.getRecipients()) {
             auto packet = MinecraftPackets::createPacket(MinecraftPacketIds::Text);
             auto &pk = static_cast<TextPacket &>(*packet);
-            pk.payload = {.xuid = player->getXuid(),
-                          .platform_id = player->getPlatformOnlineId(),
-                          .body = TextPacketPayload::AuthorAndMessage{
-                              TextPacketType::Chat, player->getName(), e.getMessage()}};
+            pk.payload = {
+                .xuid = player->getXuid(),
+                .platform_id = player->getPlatformOnlineId(),
+                .body = TextPacketPayload::AuthorAndMessage{TextPacketType::Chat, player->getName(), e.getMessage()}};
             static_cast<endstone::core::EndstonePlayer *>(recipient)->getHandle().sendNetworkPacket(*packet);
         }
         return CANCEL;

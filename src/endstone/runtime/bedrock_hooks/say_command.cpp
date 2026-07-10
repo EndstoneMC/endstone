@@ -14,8 +14,6 @@
 
 #include "bedrock/server/commands/standard/say_command.h"
 
-#include <entt/entt.hpp>
-
 #include "bedrock/locale/i18n.h"
 #include "endstone/core/server.h"
 #include "endstone/runtime/hook.h"
@@ -28,6 +26,6 @@ void SayCommand::_sendMessage(const std::string &message, const std::optional<st
 {
     ENDSTONE_HOOK_CALL_ORIGINAL(&SayCommand::_sendMessage, message, filtered_message, sender_name, origin_identity,
                                 level);
-    auto &server = entt::locator<EndstoneServer>::value();
+    auto &server = EndstoneServer::getInstance();
     server.getLogger().info(getI18n().get("chat.type.announcement", {sender_name, message}, nullptr));
 }

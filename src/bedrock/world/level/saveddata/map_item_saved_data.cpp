@@ -14,6 +14,9 @@
 
 #include "bedrock/world/level/saveddata/map_item_saved_data.h"
 
+#include <ranges>
+#include <unordered_map>
+
 #include <endstone/core/map/map_view.h>
 
 void MapItemSavedData::setScale(int scale)

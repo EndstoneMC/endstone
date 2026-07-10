@@ -14,6 +14,9 @@
 
 #include "endstone/core/registry.h"
 
+#include <format>
+#include <ranges>
+
 #include "bedrock/world/actor/actor_factory.h"
 #include "bedrock/world/item/enchanting/enchant.h"
 #include "bedrock/world/item/item.h"

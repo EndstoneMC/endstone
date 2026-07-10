@@ -17,10 +17,7 @@
 class BlockSourceComponent {
 public:
     BlockSourceComponent(WeakRef<BlockSource>);
-    [[nodiscard]] StackRefResult<BlockSource> tryGetBlockSource() const
-    {
-        return block_source_.unwrap();
-    }
+    [[nodiscard]] StackRefResult<BlockSource> tryGetBlockSource() const { return block_source_.unwrap(); }
 
 private:
     WeakRef<BlockSource> block_source_;

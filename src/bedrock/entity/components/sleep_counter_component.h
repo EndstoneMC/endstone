@@ -17,7 +17,7 @@
 struct SleepCounterComponent {
     static const short SLEEP_DURATION = 100;
     static const short WAKE_UP_DURATION = 10;
-    short sleep_counter;      // +0
+    short sleep_counter;       // +0
     short prev_sleep_counter;  // +2
 };
 static_assert(sizeof(SleepCounterComponent) == 4);

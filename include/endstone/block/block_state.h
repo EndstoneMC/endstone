@@ -14,10 +14,9 @@
 
 #pragma once
 
+#include <format>
 #include <memory>
 #include <string>
-
-#include <format>
 
 #include "endstone/block/block.h"
 #include "endstone/block/block_type.h"
@@ -130,10 +129,10 @@ public:
 
     /**
      * Attempts to update the block represented by this state, setting it to the new values as defined by this
-     * state. <p> Unless force is `true`, this will not modify the state of a block if it is no longer the same type as it
-     * was when this state was taken. It will return `false` in this eventuality. <p> If force is `true`, it will set the
-     * type of the block to match the new state, set the state data and then return `true`. <p> If apply_physics is `true`,
-     * it will trigger a physics update on surrounding blocks which could cause them to update or disappear.
+     * state. <p> Unless force is `true`, this will not modify the state of a block if it is no longer the same type as
+     * it was when this state was taken. It will return `false` in this eventuality. <p> If force is `true`, it will set
+     * the type of the block to match the new state, set the state data and then return `true`. <p> If apply_physics is
+     * `true`, it will trigger a physics update on surrounding blocks which could cause them to update or disappear.
      *
      * @param force `true` to forcefully set the state
      * @param apply_physics `false` to cancel updating physics on surrounding blocks

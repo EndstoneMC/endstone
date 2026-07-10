@@ -14,6 +14,7 @@
 
 #pragma once
 
+#include <format>
 #include <iostream>
 #include <system_error>
 
@@ -31,7 +32,7 @@ class ResultLogger {
     static void log(std::optional<LogLevel> log_level, std::optional<LogAreaID> log_area, const std::string &error,
                     const CallStack &call_stack)
     {
-        const auto message = fmt::format("Error: {}\nCall stack:{}", error, call_stack);
+        const auto message = std::format("Error: {}\nCall stack:{}", error, call_stack);
         std::cerr << message << std::endl;
     }
 };
@@ -54,25 +55,16 @@ public:
     {
         if (!nonstd::expected<T, ErrorInfo<E>>::has_value()) {
             ErrorInfo<E> &error_info = nonstd::expected<T, ErrorInfo<E>>::error();
-            ResultLogger::log(log_level, log_area, fmt::format("{}", error_info.error), error_info.call_stack);
+            ResultLogger::log(log_level, log_area, std::format("{}", error_info.error), error_info.call_stack);
         }
         return std::move(*this);
     }
 
-    bool ignoreError()
-    {
-        return nonstd::expected<T, ErrorInfo<E>>::has_value();
-    }
+    bool ignoreError() { return nonstd::expected<T, ErrorInfo<E>>::has_value(); }
 
-    nonstd::expected<T, ErrorInfo<E>> &&discardError()
-    {
-        return std::move(*this);
-    }
+    nonstd::expected<T, ErrorInfo<E>> &&discardError() { return std::move(*this); }
 
-    [[nodiscard]] const nonstd::expected<T, ErrorInfo<E>> &asExpected() const
-    {
-        return *this;
-    }
+    [[nodiscard]] const nonstd::expected<T, ErrorInfo<E>> &asExpected() const { return *this; }
 };
 BEDROCK_STATIC_ASSERT_SIZE(Result<unsigned char>, 72, 72);
 

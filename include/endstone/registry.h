@@ -15,11 +15,10 @@
 #pragma once
 
 #include <concepts>
+#include <format>
 #include <functional>
 #include <stdexcept>
 #include <string>
-
-#include <format>
 
 #include "detail.h"
 #include "identifier.h"
@@ -99,10 +98,7 @@ public:
          * @param id Identifier to look up.
          * @return Pointer to the entry, or nullptr if not found.
          */
-        static const T *get(Id id)
-        {
-            return detail::getServer().getRegistry<T>().get(id);
-        }
+        static const T *get(Id id) { return detail::getServer().getRegistry<T>().get(id); }
 
         bool operator==(const Id &other) const { return getId() == other; }
         bool operator!=(const Id &other) const { return !(*this == other); }
@@ -176,10 +172,7 @@ public:
     [[nodiscard]] std::size_t size() const override = 0;
 
 private:
-    [[nodiscard]] const void *get0(std::string_view id) const noexcept override
-    {
-        return get(Identifier<T>(id));
-    }
+    [[nodiscard]] const void *get0(std::string_view id) const noexcept override { return get(Identifier<T>(id)); }
 
     void forEach0(std::function<bool(const void *)> func) const override
     {
@@ -191,7 +184,9 @@ private:
 }  // namespace endstone
 
 template <typename T>
-    requires requires(const T &t) { { t.getId() } -> std::convertible_to<endstone::Identifier<T>>; }
+    requires requires(const T &t) {
+        { t.getId() } -> std::convertible_to<endstone::Identifier<T>>;
+    }
 struct std::formatter<T> : std::formatter<std::string_view> {
     template <typename FormatContext>
     auto format(const T &val, FormatContext &ctx) const -> format_context::iterator

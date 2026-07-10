@@ -14,6 +14,8 @@
 
 #include "bedrock/world/level/dimension/dimension.h"
 
+#include <format>
+
 bool Dimension::isBrightOutside() const
 {
     return isNaturalDimension() && sky_darken_.value < 4;
@@ -21,7 +23,7 @@ bool Dimension::isBrightOutside() const
 
 std::string Dimension::getLocalizationKey() const
 {
-    return fmt::format("dimension.dimensionName{}", id_.value);
+    return std::format("dimension.dimensionName{}", id_.value);
 }
 
 Level &Dimension::getLevel() const

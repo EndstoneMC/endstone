@@ -14,10 +14,8 @@
 
 #pragma once
 
+#include <format>
 #include <functional>
-
-#include <fmt/format.h>
-#include <magic_enum/magic_enum.hpp>
 
 #include "bedrock/world/container_id.h"
 
@@ -59,12 +57,6 @@ struct std::hash<InventorySource> {
 };
 
 template <>
-struct fmt::formatter<InventorySource> : formatter<string_view> {
-    template <typename FormatContext>
-    auto format(const InventorySource &source, FormatContext &ctx) const -> format_context::iterator
-    {
-        return fmt::format_to(ctx.out(), "InventorySource(type={}, container_id={}, flags={})",
-                              magic_enum::enum_name(source.getType()), magic_enum::enum_name(source.getContainerId()),
-                              source.getFlags());
-    }
+struct std::formatter<InventorySource> : std::formatter<std::string_view> {
+    std::format_context::iterator format(const InventorySource &source, std::format_context &ctx) const;
 };

@@ -34,20 +34,11 @@ public:
             return tmp;
         }
 
-        bool operator!=(const iterator &other) const
-        {
-            return ptr_ != other.ptr_;
-        }
+        bool operator!=(const iterator &other) const { return ptr_ != other.ptr_; }
 
-        bool operator==(const iterator &other) const
-        {
-            return ptr_ == other.ptr_;
-        }
+        bool operator==(const iterator &other) const { return ptr_ == other.ptr_; }
 
-        const T &operator*() const
-        {
-            return *ptr_;
-        }
+        const T &operator*() const { return *ptr_; }
 
     private:
         const T *ptr_;
@@ -57,55 +48,28 @@ public:
 
     buffer_span(const std::vector<T> &vector) : begin_(vector.data()), end_(vector.data() + vector.size()) {}
 
-    [[nodiscard]] std::size_t byte_size() const
-    {
-        return size() * sizeof(T);
-    }
+    [[nodiscard]] std::size_t byte_size() const { return size() * sizeof(T); }
 
-    [[nodiscard]] std::size_t size() const
-    {
-        return static_cast<std::size_t>(end_ - begin_);
-    }
+    [[nodiscard]] std::size_t size() const { return static_cast<std::size_t>(end_ - begin_); }
 
-    [[nodiscard]] bool empty() const
-    {
-        return (begin_ == end_);
-    }
+    [[nodiscard]] bool empty() const { return (begin_ == end_); }
 
-    [[nodiscard]] const T &operator[](std::size_t idx) const
-    {
-        return begin_[idx];
-    }
+    [[nodiscard]] const T &operator[](std::size_t idx) const { return begin_[idx]; }
 
     [[nodiscard]] buffer_span subspan(std::size_t offset, std::size_t count) const
     {
         return buffer_span<T>(begin_ + offset, begin_ + offset + count);
     }
 
-    [[nodiscard]] buffer_span tail(std::size_t offset) const
-    {
-        return subspan(offset, size() - offset);
-    }
+    [[nodiscard]] buffer_span tail(std::size_t offset) const { return subspan(offset, size() - offset); }
 
-    [[nodiscard]] const T *data() const
-    {
-        return begin_;
-    }
+    [[nodiscard]] const T *data() const { return begin_; }
 
-    [[nodiscard]] iterator begin() const
-    {
-        return iterator(begin_);
-    }
+    [[nodiscard]] iterator begin() const { return iterator(begin_); }
 
-    [[nodiscard]] iterator end() const
-    {
-        return iterator(end_);
-    }
+    [[nodiscard]] iterator end() const { return iterator(end_); }
 
-    [[nodiscard]] std::vector<T> copy() const
-    {
-        return std::vector<T>(begin_, end_);
-    }
+    [[nodiscard]] std::vector<T> copy() const { return std::vector<T>(begin_, end_); }
 
 private:
     const T *begin_;

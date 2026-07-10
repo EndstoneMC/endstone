@@ -27,22 +27,10 @@ public:
     SerializedPayloadPacket(ConstructionArgsT &&...args);
     SerializedPayloadPacket(PacketPayload_T);
 
-    [[nodiscard]] virtual MinecraftPacketIds getId() const
-    {
-        return PacketInfo_T::PACKET_ID;
-    }
-    [[nodiscard]] virtual std::string_view getName() const
-    {
-        return PacketInfo_T::PACKET_NAME;
-    }
-    [[nodiscard]] virtual SerializationMode getSerializationMode() const
-    {
-        return serialization_mode;
-    }
-    virtual void setSerializationMode(SerializationMode mode)
-    {
-        serialization_mode = mode;
-    }
+    [[nodiscard]] virtual MinecraftPacketIds getId() const { return PacketInfo_T::PACKET_ID; }
+    [[nodiscard]] virtual std::string_view getName() const { return PacketInfo_T::PACKET_NAME; }
+    [[nodiscard]] virtual SerializationMode getSerializationMode() const { return serialization_mode; }
+    virtual void setSerializationMode(SerializationMode mode) { serialization_mode = mode; }
     virtual void writeWithSerializationMode(BinaryStream &, const cereal::ReflectionCtx &,
                                             std::optional<SerializationMode>) const;
     virtual void write(BinaryStream &, const cereal::ReflectionCtx &) const;

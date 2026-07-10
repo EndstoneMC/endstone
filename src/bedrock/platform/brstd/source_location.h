@@ -29,35 +29,17 @@ struct source_location {
     {
     }
 
-    [[nodiscard]] const char *file_name() const
-    {
-        return source_location_.file_name();
-    }
+    [[nodiscard]] const char *file_name() const { return source_location_.file_name(); }
 
-    [[nodiscard]] const char *function_name() const
-    {
-        return source_location_.function_name();
-    }
+    [[nodiscard]] const char *function_name() const { return source_location_.function_name(); }
 
-    [[nodiscard]] std::uint_least32_t line() const
-    {
-        return source_location_.line();
-    }
+    [[nodiscard]] std::uint_least32_t line() const { return source_location_.line(); }
 
-    [[nodiscard]] std::uint_least32_t column() const
-    {
-        return source_location_.column();
-    }
+    [[nodiscard]] std::uint_least32_t column() const { return source_location_.column(); }
 
-    [[nodiscard]] std::string_view file_name_view() const
-    {
-        return {file_name(), file_name_size_};
-    }
+    [[nodiscard]] std::string_view file_name_view() const { return {file_name(), file_name_size_}; }
 
-    [[nodiscard]] std::string_view function_name_view() const
-    {
-        return {function_name(), file_name_size_};
-    }
+    [[nodiscard]] std::string_view function_name_view() const { return {function_name(), file_name_size_}; }
 
 private:
     std::source_location source_location_;

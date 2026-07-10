@@ -14,6 +14,7 @@
 
 #include "bedrock/world/level/block/block.h"
 
+#include "bedrock/nbt/compound_tag.h"
 #include "bedrock/world/level/block_source.h"
 #include "bedrock/world/level/level.h"
 

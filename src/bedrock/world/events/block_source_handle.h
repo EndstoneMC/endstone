@@ -25,20 +25,11 @@ public:
     ~BlockSourceHandle() override = 0;
     void onSourceDestroyed(BlockSource &) override = 0;
 
-    explicit operator bool() const
-    {
-        return source_ != nullptr;
-    }
+    explicit operator bool() const { return source_ != nullptr; }
 
-    BlockSource &operator*()
-    {
-        return *source_;
-    }
+    BlockSource &operator*() { return *source_; }
 
-    BlockSource *operator->()
-    {
-        return source_;
-    }
+    BlockSource *operator->() { return source_; }
 
 private:
     BlockSource *source_;  // +8

@@ -56,15 +56,9 @@ private:
 public:
     Packed(StorageType storage) : storage_(storage) {}
 
-    [[nodiscard]] StorageType getStorage() const
-    {
-        return storage_;
-    }
+    [[nodiscard]] StorageType getStorage() const { return storage_; }
 
-    [[nodiscard]] T *getPointer() const
-    {
-        return reinterpret_cast<T *>(storage_ & Config::POINTER_MASK);
-    }
+    [[nodiscard]] T *getPointer() const { return reinterpret_cast<T *>(storage_ & Config::POINTER_MASK); }
 
     [[nodiscard]] PackedFieldType getData8() const
     {
@@ -83,10 +77,7 @@ public:
         storage_ |= (static_cast<StorageType>(field8) << Config::FIELD8_SHIFT) & Config::FIELD8_MASK;
     }
 
-    void reset()
-    {
-        storage_ = 0;
-    }
+    void reset() { storage_ = 0; }
 
 private:
     StorageType storage_;  // +0

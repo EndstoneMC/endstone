@@ -14,6 +14,9 @@
 
 #include "bedrock/resources/pack_source.h"
 
+#include <algorithm>
+#include <unordered_map>
+
 void PackSourceReport::addReport(PackIdVersion const &pack_id, PackReport &&report)
 {
     reports_[pack_id] = std::move(report);

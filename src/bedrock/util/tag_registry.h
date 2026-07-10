@@ -14,6 +14,8 @@
 
 #pragma once
 
+#include <unordered_map>
+
 #include "bedrock/forward.h"
 #include "bedrock/util/index_set.h"
 
@@ -93,10 +95,7 @@ public:
     }
 
 private:
-    IndexSet const &_getSet(TagSetID set_id) const
-    {
-        return sets_[set_id.id.value()];
-    }
+    IndexSet const &_getSet(TagSetID set_id) const { return sets_[set_id.id.value()]; }
 
     std::unordered_map<HashedString, std::uint64_t> tag_index_map_;  // +0
     std::vector<std::string> tags_;                                  // +64

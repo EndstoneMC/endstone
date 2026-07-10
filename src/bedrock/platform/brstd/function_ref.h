@@ -73,10 +73,7 @@ public:
         };
     }
 
-    Return operator()(Args... args) const
-    {
-        return func_(storage_, std::forward<Args>(args)...);
-    }
+    Return operator()(Args... args) const { return func_(storage_, std::forward<Args>(args)...); }
 
 private:
     using function_t = Return(function_ref_storage, std::add_rvalue_reference_t<Args>...);

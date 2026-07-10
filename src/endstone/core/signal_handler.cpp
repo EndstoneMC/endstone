@@ -16,7 +16,7 @@
 
 #include <csignal>
 
-#include <entt/entt.hpp>
+#include <entt/locator/locator.hpp>
 
 #include "endstone/core/server.h"
 
@@ -29,7 +29,7 @@ namespace {
 void request_server_shutdown()
 {
     if (entt::locator<EndstoneServer>::has_value()) {
-        auto &server = entt::locator<EndstoneServer>::value();
+        auto &server = EndstoneServer::getInstance();
         server.shutdown();
     }
 }

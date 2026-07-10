@@ -15,10 +15,10 @@
 #pragma once
 
 #include <map>
+#include <optional>
 #include <string>
 #include <unordered_map>
 #include <vector>
-#include <optional>
 
 #include "bedrock/bedrock.h"
 #include "bedrock/core/threading/async.h"

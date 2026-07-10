@@ -1,3 +1,5 @@
+
+#include <unordered_map>
 // Copyright (c) 2024, The Endstone Project. (https://endstone.dev) All Rights Reserved.
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
@@ -12,10 +14,9 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-#include "endstone/core/inventory/player_inventory.h"
-
 #include "bedrock/network/packet/inventory_slot_packet.h"
 #include "endstone/core/inventory/item_stack.h"
+#include "endstone/core/inventory/player_inventory.h"
 
 namespace endstone::core {
 

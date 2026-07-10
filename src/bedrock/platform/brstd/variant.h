@@ -24,4 +24,4 @@ struct overloaded : Func... {
 template <typename... Func>
 overloaded(Func...) -> overloaded<Func...>;
 
-};
+};  // namespace brstd

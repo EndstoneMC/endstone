@@ -14,6 +14,8 @@
 
 #include "bedrock/world/item/registry/item_registry_ref.h"
 
+#include <unordered_map>
+
 ItemRegistryRef::LockGuard::LockGuard(std::shared_ptr<std::mutex> mutex) : mutex_(mutex)
 {
     if (mutex_) {

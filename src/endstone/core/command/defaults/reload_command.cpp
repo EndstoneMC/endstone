@@ -14,8 +14,6 @@
 
 #include "endstone/core/command/defaults/reload_command.h"
 
-#include <entt/entt.hpp>
-
 #include "endstone/color_format.h"
 #include "endstone/core/server.h"
 
@@ -35,7 +33,7 @@ bool ReloadCommand::execute(CommandSender &sender, const std::vector<std::string
         return true;
     }
 
-    auto &server = entt::locator<EndstoneServer>::value();
+    auto &server = EndstoneServer::getInstance();
     server.reload();
     server.broadcast(ColorFormat::Green + "Reload complete.", Server::BroadcastChannelAdmin);
     return true;

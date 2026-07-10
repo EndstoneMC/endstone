@@ -21,6 +21,7 @@
 #include <libelf.h>
 #include <unistd.h>
 
+#include <format>
 #include <fstream>
 #include <iostream>
 #include <string>
@@ -155,7 +156,7 @@ ModuleInfo get_module_info(const char *module_name)
         }
     }
 
-    throw std::runtime_error(fmt::format("Module {} not found in {}", module_name, "/proc/self/maps"));
+    throw std::runtime_error(std::format("Module {} not found in {}", module_name, "/proc/self/maps"));
 }
 }  // namespace
 

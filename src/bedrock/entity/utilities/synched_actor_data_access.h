@@ -20,4 +20,4 @@
 namespace SynchedActorDataAccess {
 bool getActorFlag(const EntityContext &, ActorFlags);
 void setActorFlag(EntityContext &, ActorFlags, bool);
-}
+}  // namespace SynchedActorDataAccess

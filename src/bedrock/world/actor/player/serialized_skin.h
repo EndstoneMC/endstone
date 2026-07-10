@@ -67,10 +67,10 @@ public:
     SerializedSkinRef(bool);
     SerializedSkinRef(const ConnectionRequest &);
     SerializedSkinRef(const SubClientConnectionRequest &);
-    SerializedSkinRef(const std::string &, const std::string &, const std::string &, const mce::Image &, const uint16_t &,
-                   const uint16_t &, const mce::Image &, const uint16_t &, const uint16_t &, Json::Value &&,
-                   const MinEngineVersion &, const std::string &, const std::string &, bool, bool, bool, bool,
-                   const bool, bool);
+    SerializedSkinRef(const std::string &, const std::string &, const std::string &, const mce::Image &,
+                      const uint16_t &, const uint16_t &, const mce::Image &, const uint16_t &, const uint16_t &,
+                      Json::Value &&, const MinEngineVersion &, const std::string &, const std::string &, bool, bool,
+                      bool, bool, const bool, bool);
 
     [[nodiscard]] const mce::Image &getImageData() const;
     [[nodiscard]] const mce::Image &getCapeImageData() const;

@@ -26,7 +26,7 @@ public:
     bool setStack(std::unique_ptr<ResourcePackStack> stack, ResourcePackStackType stack_type, bool compose);
 
 private:
-    std::unordered_set<gsl::not_null<ResourcePackListener *>> listeners_set_;      // +88
+    std::unordered_set<gsl::not_null<ResourcePackListener *>> listeners_set_;  // +88
     // std::unique_ptr<ResourcePackStack> addon_stack_;                               // +152
     std::unique_ptr<ResourcePackStack> level_stack_;                               // +160
     std::unique_ptr<ResourcePackStack> global_stack_;                              // +168

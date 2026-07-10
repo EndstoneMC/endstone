@@ -91,15 +91,9 @@ struct CommandFlag {
         return CommandFlag{static_cast<CommandFlagSize>(flag & other.flag)};
     }
 
-    bool operator==(const CommandFlag &other) const
-    {
-        return flag == other.flag;
-    }
+    bool operator==(const CommandFlag &other) const { return flag == other.flag; }
 
-    [[nodiscard]] bool hasFlags(CommandFlag other) const
-    {
-        return (flag & other.flag) == other.flag;
-    }
+    [[nodiscard]] bool hasFlags(CommandFlag other) const { return (flag & other.flag) == other.flag; }
 
     CommandFlagSize flag;
 };

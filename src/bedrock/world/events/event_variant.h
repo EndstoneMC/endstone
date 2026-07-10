@@ -38,15 +38,9 @@ public:
     {
     }
 
-    T &value() noexcept
-    {
-        return is_pointer_ ? *variant_.pointer : variant_.value;
-    }
+    T &value() noexcept { return is_pointer_ ? *variant_.pointer : variant_.value; }
 
-    const T &value() const noexcept
-    {
-        return is_pointer_ ? *variant_.pointer : variant_.value;
-    }
+    const T &value() const noexcept { return is_pointer_ ? *variant_.pointer : variant_.value; }
 
 private:
     ValueOrRef(T value) : is_pointer_(false), variant_(std::move(value)) {}
@@ -130,15 +124,9 @@ public:
 
     EventRef(const EventRef &other) = default;
 
-    EventVariant &get()
-    {
-        return variant_;
-    }
+    EventVariant &get() { return variant_; }
 
-    EventVariant const &get() const
-    {
-        return variant_;
-    }
+    EventVariant const &get() const { return variant_; }
 
 private:
     EventVariant variant_;

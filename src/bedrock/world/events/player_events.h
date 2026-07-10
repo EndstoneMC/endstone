@@ -286,8 +286,8 @@ template <>
 struct PlayerGameplayEvent<CoordinatorResult>
     : ConstEventVariant<PlayerSayCommandEvent, PlayerTellCommandEvent, PlayerTellRawCommandEvent,
                         PlayerTitleCommandEvent, PlayerTitleRawCommandEvent, PlayerGetExperienceOrbEvent,
-                        PlayerInteractEvent, PlayerInteractWithEntityBeforeEvent,
-                        PlayerInteractWithBlockBeforeEvent> {};
+                        PlayerInteractEvent, PlayerInteractWithEntityBeforeEvent, PlayerInteractWithBlockBeforeEvent> {
+};
 BEDROCK_STATIC_ASSERT_SIZE(PlayerGameplayEvent<CoordinatorResult>, 232, 232);
 
 template <typename Return>

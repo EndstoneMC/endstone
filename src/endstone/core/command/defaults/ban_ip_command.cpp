@@ -51,7 +51,7 @@ bool BanIpCommand::execute(CommandSender &sender, const std::vector<std::string>
         return false;
     }
 
-    const auto &server = entt::locator<EndstoneServer>::value();
+    const auto &server = EndstoneServer::getInstance();
     auto &ban_list = server.getIpBanList();
     const auto &name_or_address = args.front();
     std::string address;

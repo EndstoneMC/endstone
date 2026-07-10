@@ -14,6 +14,8 @@
 
 #include "endstone/core/ban/player_ban_list.h"
 
+#include <ranges>
+
 #include <boost/algorithm/string.hpp>
 
 namespace endstone::core {

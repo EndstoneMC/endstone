@@ -43,14 +43,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
   `block_placed_state`/`block_replaced` renamed to `block_placed`/`block_replaced_state` to match Bukkit.
 - **BREAKING**: The Docker image now stores server data in `/data` instead of `/home/endstone/bedrock_server`.
   Update your volume mount accordingly (e.g. `-v ./data:/data`).
-- **BREAKING**: Standalone bundles now ship for both Windows (`endstone-<version>-windows-x86_64.zip`) and Linux (`endstone-<version>-linux-x86_64.zip`), and use [uv](https://docs.astral.sh/uv/) to provision Python on demand instead of shipping a Python interpreter. The included `start.cmd` / `start.sh` installs uv on first run if it isn't already on `PATH`, then launches the server via `uv run` against the bundled wheel. The old `bin/python/` directory is gone; the server folder (`./bedrock_server/`) is unchanged.
 - `str()` on `BlockType`, `Enchantment`, and `ItemType` now returns a plain `"namespace:key"` string instead of the underlying `Identifier` repr.
 - `Block.set_type`, `BlockState.type`, `Server.create_block_data`, and `Inventory.contains`/`contains_at_least`/`all`/`first`/`remove` now take an `Identifier` (e.g. `BlockType.AIR`, `ItemType.AIR`) instead of a plain string, matching `ItemStack.type` and `Dimension.spawn_actor`. Plain `"namespace:key"` strings are still accepted.
 - **BREAKING**: `Block.type`, `BlockState.type`, and `BlockData.type` now return a `BlockType` object instead of a string, matching `ItemStack.type`. The returned object still compares equal to its `"namespace:key"` string and stringifies to it, but is no longer a `str`.
-
-### Removed
-
-- **BREAKING**: Removed `scripts/autoinstall.sh`. The Linux bundle's `start.sh` now provisions Python via uv on any distro without sudo, superseding the script's apt/dnf/pacman bootstrap.
 
 ### Fixed
 
@@ -58,8 +53,6 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Fixed `Player.send_message` accepting empty messages.
 - Fixed command argument parsing dropping optional message parameters with empty tokens.
 - Fixed plugin manager destruction order causing access violations on shutdown.
-- Fixed a crash (`resource deadlock would occur`) when reloading the server or cancelling tasks while an asynchronous task scheduled with `run_task_timer_async`/`run_task_later_async` was pending. The plugin no longer fails to re-enable after `/reload` (#351).
-- Fixed scheduled tasks ignoring their delay when registered during plugin enable or `ServerLoadEvent` on a world that has already been played for a while — they now correctly wait for the requested delay instead of running immediately on the first tick (#317).
 
 ## [0.11.5] - 2026-07-05
 

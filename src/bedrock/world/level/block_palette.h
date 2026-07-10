@@ -15,6 +15,7 @@
 #pragma once
 
 #include <map>
+#include <set>
 #include <string>
 
 #include "bedrock/platform/threading/mutex_details.h"
@@ -37,10 +38,7 @@ protected:
     virtual void assignBlockNetworkId(const Block &, BlockRuntimeId) const = 0;
 
 public:
-    [[nodiscard]] std::size_t getNumBlockNetworkIds() const
-    {
-        return block_from_network_id_.size();
-    }
+    [[nodiscard]] std::size_t getNumBlockNetworkIds() const { return block_from_network_id_.size(); }
 
 private:
     Bedrock::Threading::Mutex legacy_block_states_conversion_warning_mutex_;    // +8

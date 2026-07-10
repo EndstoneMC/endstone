@@ -28,10 +28,7 @@ struct MCRESULT {
     {
     }
 
-    [[nodiscard]] bool isSuccess() const
-    {
-        return success_;
-    }
+    [[nodiscard]] bool isSuccess() const { return success_; }
 
 private:
     bool success_;

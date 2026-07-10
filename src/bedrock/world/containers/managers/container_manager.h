@@ -16,6 +16,6 @@
 
 class IContainerManager {
 public:
-    virtual ~IContainerManager()=default;
+    virtual ~IContainerManager() = default;
 };
 static_assert(sizeof(IContainerManager) == 8);

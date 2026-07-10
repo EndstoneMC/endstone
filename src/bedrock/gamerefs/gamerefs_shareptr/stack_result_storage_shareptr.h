@@ -35,15 +35,9 @@ protected:
     StackResultStorageSharePtr &operator=(const StackResultStorageSharePtr &) = delete;
     StackResultStorageSharePtr &operator=(StackResultStorageSharePtr &&) = delete;
 
-    bool _hasValue() const
-    {
-        return value_ != nullptr;
-    }
+    bool _hasValue() const { return value_ != nullptr; }
 
-    T &_getStackRef() const
-    {
-        return *value_;
-    }
+    T &_getStackRef() const { return *value_; }
 
 private:
     std::shared_ptr<T> value_;

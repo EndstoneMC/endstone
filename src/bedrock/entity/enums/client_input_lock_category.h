@@ -16,7 +16,7 @@
 
 #include <cstdint>
 
-enum class ClientInputLockCategory :std:: uint8_t {
+enum class ClientInputLockCategory : std::uint8_t {
     Undefined = 0,
     Camera = 1,
     Movement = 2,

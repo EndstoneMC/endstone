@@ -27,28 +27,13 @@ public:
     OwnerPtr &operator=(const OwnerPtr &) = delete;
     OwnerPtr &operator=(OwnerPtr &&) = default;
 
-    explicit operator bool() const
-    {
-        return hasValue();
-    }
+    explicit operator bool() const { return hasValue(); }
 
-    [[nodiscard]] bool hasValue() const
-    {
-        return GameRefs<Type>::OwnerStorage::_hasValue();
-    }
+    [[nodiscard]] bool hasValue() const { return GameRefs<Type>::OwnerStorage::_hasValue(); }
 
-    StackRef &operator*() const
-    {
-        return value();
-    }
+    StackRef &operator*() const { return value(); }
 
-    StackRef *operator->() const
-    {
-        return &value();
-    }
+    StackRef *operator->() const { return &value(); }
 
-    StackRef &value() const
-    {
-        return GameRefs<Type>::OwnerStorage::_getStackRef();
-    }
+    StackRef &value() const { return GameRefs<Type>::OwnerStorage::_getStackRef(); }
 };

@@ -14,6 +14,10 @@
 
 #include "endstone/core/permissions/default_permissions.h"
 
+#include <format>
+
+#include "bedrock/server/server_instance.h"
+
 namespace endstone::core {
 Permission &DefaultPermissions::registerPermission(std::unique_ptr<Permission> perm)
 {
@@ -171,7 +175,7 @@ Permission &MinecraftCommandPermissions::registerPermissions(Permission &parent)
         }
         CommandPermissions::registerPermission(
             perm, signature.name,
-            fmt::format("Allows the user to use the /{} command provided by mojang.", signature.name), commands);
+            std::format("Allows the user to use the /{} command provided by mojang.", signature.name), commands);
     }
     commands.recalculatePermissibles();
     return commands;

@@ -14,6 +14,8 @@
 
 #pragma once
 
+#include <unordered_map>
+
 #include "bedrock/bedrock.h"
 #include "bedrock/world/level/dimension_manager.h"
 #include "bedrock/world/level/gameplay_user_manager_connector.h"

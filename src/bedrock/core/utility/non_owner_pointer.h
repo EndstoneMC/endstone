@@ -40,10 +40,7 @@ public:
     NonOwnerPointer(T &ptr) : NonOwnerPointer(&ptr) {}  // NOLINT(*-explicit-constructor)
     NonOwnerPointer(const NonOwnerPointer &) = default;
     NonOwnerPointer(NonOwnerPointer &&) = default;
-    ~NonOwnerPointer()
-    {
-        reset();
-    }
+    ~NonOwnerPointer() { reset(); }
     NonOwnerPointer &operator=(const NonOwnerPointer &) = default;
     NonOwnerPointer &operator=(NonOwnerPointer &&) = default;
 
@@ -53,50 +50,23 @@ public:
         pointer_ = nullptr;
     }
 
-    T *operator->() noexcept
-    {
-        return _get();
-    }
+    T *operator->() noexcept { return _get(); }
 
-    T &operator*() noexcept
-    {
-        return *_get();
-    }
+    T &operator*() noexcept { return *_get(); }
 
-    T *operator->() const noexcept
-    {
-        return _get();
-    }
+    T *operator->() const noexcept { return _get(); }
 
-    T &operator*() const noexcept
-    {
-        return *_get();
-    }
+    T &operator*() const noexcept { return *_get(); }
 
-    [[nodiscard]] T *access() const
-    {
-        return _get();
-    }
+    [[nodiscard]] T *access() const { return _get(); }
 
-    [[nodiscard]] explicit operator bool() const noexcept
-    {
-        return isValid();
-    }
+    [[nodiscard]] explicit operator bool() const noexcept { return isValid(); }
 
-    [[nodiscard]] bool isValid() const noexcept
-    {
-        return control_block_ && control_block_->is_valid;
-    }
+    [[nodiscard]] bool isValid() const noexcept { return control_block_ && control_block_->is_valid; }
 
-    [[nodiscard]] bool operator==(nullptr_t) const noexcept
-    {
-        return !isValid();
-    }
+    [[nodiscard]] bool operator==(nullptr_t) const noexcept { return !isValid(); }
 
-    [[nodiscard]] bool operator!=(nullptr_t) const noexcept
-    {
-        return isValid();
-    }
+    [[nodiscard]] bool operator!=(nullptr_t) const noexcept { return isValid(); }
 
 private:
     void _setControlBlock(const EnableNonOwnerReferences *ptr)

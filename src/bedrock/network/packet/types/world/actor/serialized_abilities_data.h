@@ -14,6 +14,7 @@
 
 #pragma once
 
+#include <array>
 #include <vector>
 
 #include "bedrock/world/actor/actor_unique_id.h"

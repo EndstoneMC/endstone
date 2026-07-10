@@ -26,10 +26,7 @@ class BlockPermissionBase final : public PermissibleBase {
 public:
     BlockPermissionBase() : PermissibleBase(nullptr) {}
 
-    [[nodiscard]] PermissionLevel getPermissionLevel() const override
-    {
-        return PermissionLevel::Operator;
-    }
+    [[nodiscard]] PermissionLevel getPermissionLevel() const override { return PermissionLevel::Operator; }
 
     static std::shared_ptr<BlockPermissionBase> instance()
     {

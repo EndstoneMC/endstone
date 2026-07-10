@@ -16,7 +16,6 @@
 #include <optional>
 
 #include <date/date.h>
-#include <fmt/format.h>
 #include <gtest/gtest.h>
 #include <nlohmann/json.hpp>
 

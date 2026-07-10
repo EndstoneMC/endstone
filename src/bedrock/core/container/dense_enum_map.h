@@ -14,6 +14,8 @@
 
 #pragma once
 
+#include <array>
+
 namespace Bedrock {
 template <typename TWrappedPtr, typename TEnum>
 class DenseEnumMapIterator {

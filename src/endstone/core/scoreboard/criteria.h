@@ -27,7 +27,7 @@ public:
     [[nodiscard]] RenderType getDefaultRenderType() const override;
 
 private:
-    const  ObjectiveCriteria &criteria_;
+    const ObjectiveCriteria &criteria_;
 };
 
 }  // namespace endstone::core

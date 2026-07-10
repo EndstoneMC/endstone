@@ -21,6 +21,7 @@
 #include "bedrock/network/packet/start_game_packet.h"
 #include "bedrock/network/raknet_connector.h"
 #include "bedrock/network/server_network_system.h"
+#include "bedrock/server/server_instance.h"
 #include "endstone/core/level/level.h"
 #include "endstone/core/map/map_view.h"
 #include "endstone/core/player.h"

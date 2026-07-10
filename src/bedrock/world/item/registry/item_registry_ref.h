@@ -15,6 +15,7 @@
 #pragma once
 
 #include <memory>
+#include <unordered_map>
 
 #include "bedrock/core/string/string_hash.h"
 #include "bedrock/core/utility/non_owner_pointer.h"

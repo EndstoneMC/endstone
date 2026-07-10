@@ -14,6 +14,8 @@
 
 #include "bedrock/world/actor/player/serialized_skin.h"
 
+#include <unordered_map>
+
 #include "bedrock/core/image/image.h"
 #include "bedrock/forward.h"
 #include "bedrock/world/actor/player/persona_types.h"
@@ -25,31 +27,16 @@ public:
     SerializedSkinImpl(const ConnectionRequest &);
     SerializedSkinImpl(const SubClientConnectionRequest &);
 
-    [[nodiscard]] const mce::Image &getImageData() const
-    {
-        return skin_image_;
-    }
+    [[nodiscard]] const mce::Image &getImageData() const { return skin_image_; }
 
-    [[nodiscard]] const mce::Image &getCapeImageData() const
-    {
-        return cape_image_;
-    }
+    [[nodiscard]] const mce::Image &getCapeImageData() const { return cape_image_; }
 
-    [[nodiscard]] bool getIsPersona() const
-    {
-        return is_persona_;
-    }
+    [[nodiscard]] bool getIsPersona() const { return is_persona_; }
 
     // Endstone begin
-    [[nodiscard]] const std::string &getId() const
-    {
-        return id_;
-    }
+    [[nodiscard]] const std::string &getId() const { return id_; }
 
-    [[nodiscard]] const std::string &getCapeId() const
-    {
-        return cape_id_;
-    }
+    [[nodiscard]] const std::string &getCapeId() const { return cape_id_; }
     // Endstone end
 
 private:

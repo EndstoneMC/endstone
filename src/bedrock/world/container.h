@@ -16,6 +16,7 @@
 
 #include <cstdint>
 #include <functional>
+#include <unordered_set>
 
 #include "bedrock/core/math/vec3.h"
 #include "bedrock/core/utility/pub_sub/connector.h"
