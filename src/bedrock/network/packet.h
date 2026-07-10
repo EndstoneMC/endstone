@@ -272,7 +272,12 @@ enum class MinecraftPacketIds : int {
     ServerboundDataDrivenScreenClosed = 343,
     SyncWorldClocks = 344,
     ClientboundAttributeLayerSyncPacket = 345,
-    EndId = 346,
+    ServerStoreInfo = 346,
+    ServerPresenceInfo = 347,
+    ClientboundUpdateSoundData = 348,
+    SendPartyDestinationCookie = 349,
+    PartyDestinationCookieResponse = 350,
+    EndId = 351,
 };
 
 class NetEventCallback;
