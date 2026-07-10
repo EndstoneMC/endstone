@@ -25,11 +25,16 @@ namespace endstone::core {
 
 class PlayerBanListTest : public ::testing::Test {
 protected:
-    std::string file_ = "test_banned_players.json";
+    std::string file_;
     UUID uuid_{0x0b, 0xd2, 0xc9, 0xc5, 0xc0, 0x18, 0x4f, 0x3c, 0x98, 0x13, 0x82, 0xe1, 0x75, 0x16, 0x2e, 0x37};
     std::string xuid_ = "2535472663854546";
 
-    void SetUp() override {}
+    void SetUp() override
+    {
+        // Unique file per test so parallel ctest runs don't race on a shared path.
+        const auto *info = ::testing::UnitTest::GetInstance()->current_test_info();
+        file_ = std::string("test_banned_players_") + info->name() + ".json";
+    }
 
     void TearDown() override { std::remove(file_.c_str()); }
 };

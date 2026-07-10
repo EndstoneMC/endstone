@@ -32,4 +32,10 @@ add_executable(endstone_test
 )
 add_dependencies(endstone_test test_plugin)
 target_link_libraries(endstone_test PRIVATE endstone::core GTest::gtest_main GTest::gmock_main)
-gtest_discover_tests(endstone_test)
+# CppPluginLoaderTest cases share the plugins/.local shadow-copy dir, whose
+# cleanup races when ctest runs them in parallel; serialize just those.
+gtest_discover_tests(endstone_test
+        TEST_FILTER "CppPluginLoaderTest.*"
+        PROPERTIES RESOURCE_LOCK cpp_plugin_loader_local)
+gtest_discover_tests(endstone_test
+        TEST_FILTER "-CppPluginLoaderTest.*")
