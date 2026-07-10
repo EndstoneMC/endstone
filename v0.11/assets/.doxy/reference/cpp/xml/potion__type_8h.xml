@@ -22,16 +22,16 @@
         <childnode refid="2" relation="include">
         </childnode>
       </node>
-      <node id="6">
-        <label>fmt/format.h</label>
-      </node>
       <node id="3">
-        <label>functional</label>
+        <label>format</label>
       </node>
       <node id="4">
-        <label>string</label>
+        <label>functional</label>
       </node>
       <node id="5">
+        <label>string</label>
+      </node>
+      <node id="6">
         <label>string_view</label>
       </node>
     </incdepgraph>

@@ -25,6 +25,7 @@
 #pragma once
 
 #include <cmath>
+#include <format>
 #include <memory>
 #include <numbers>
 
@@ -222,11 +223,11 @@ private:
 }  // namespace endstone
 
 template <>
-struct fmt::formatter<endstone::Location> : formatter<string_view> {
+struct std::formatter<endstone::Location> : std::formatter<std::string_view> {
     template <typename FormatContext>
     auto format(const endstone::Location &self, FormatContext &ctx) const -> format_context::iterator
     {
-        return fmt::format_to(ctx.out(), "Location(dimension={},x={},y={},z={},pitch={},yaw={})", self.getDimension(),
+        return std::format_to(ctx.out(), "Location(dimension={},x={},y={},z={},pitch={},yaw={})", self.getDimension(),
                               self.getX(), self.getY(), self.getZ(), self.getPitch(), self.getYaw());
     }
 };

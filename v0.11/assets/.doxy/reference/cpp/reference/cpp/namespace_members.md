@@ -60,6 +60,11 @@
 * **ItemTypeId** ([**endstone**](namespaceendstone.md))
 
 
+## j
+
+* **join** ([**endstone::detail**](namespaceendstone_1_1detail.md))
+
+
 ## l
 
 * **LongTag** ([**endstone**](namespaceendstone.md))
@@ -89,6 +94,11 @@
 * **PermissionRemovedExecutor** ([**endstone**](namespaceendstone.md))
 * **PluginLoadOrder** ([**endstone**](namespaceendstone.md))
 * **PotionId** ([**endstone**](namespaceendstone.md))
+
+
+## q
+
+* **quoted** ([**endstone::detail**](namespaceendstone_1_1detail.md))
 
 
 ## r

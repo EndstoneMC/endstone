@@ -69,9 +69,9 @@
         <link refid="check_8h_source"/>
         <childnode refid="13" relation="include">
         </childnode>
-        <childnode refid="8" relation="include">
-        </childnode>
         <childnode refid="14" relation="include">
+        </childnode>
+        <childnode refid="8" relation="include">
         </childnode>
       </node>
       <node id="9">
@@ -92,8 +92,8 @@
       <node id="10">
         <label>cstddef</label>
       </node>
-      <node id="14">
-        <label>fmt/format.h</label>
+      <node id="13">
+        <label>format</label>
       </node>
       <node id="11">
         <label>memory</label>
@@ -101,7 +101,7 @@
       <node id="3">
         <label>optional</label>
       </node>
-      <node id="13">
+      <node id="14">
         <label>stdexcept</label>
       </node>
       <node id="4">

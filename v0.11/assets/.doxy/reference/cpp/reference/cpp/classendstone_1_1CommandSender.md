@@ -82,9 +82,9 @@ Inherited by the following classes: [endstone::Actor](classendstone_1_1Actor.md)
 | virtual std::string | [**getName**](#function-getname) () const = 0<br>_Gets the name of this command sender._  |
 | virtual [**Server**](classendstone_1_1Server.md) & | [**getServer**](#function-getserver) () const = 0<br>_Returns the server instance that this command is running on._  |
 | virtual [**void**](classendstone_1_1Identifier.md) | [**sendErrorMessage**](#function-senderrormessage-12) ([**const**](classendstone_1_1Identifier.md) Message & message) const = 0<br>_Sends this sender a error message._  |
-|  [**void**](classendstone_1_1Identifier.md) | [**sendErrorMessage**](#function-senderrormessage-22) ([**const**](classendstone_1_1Identifier.md) fmt::format\_string&lt; Args... &gt; format, [**Args**](classendstone_1_1Identifier.md) &&... args) const<br> |
+|  [**void**](classendstone_1_1Identifier.md) | [**sendErrorMessage**](#function-senderrormessage-22) ([**const**](classendstone_1_1Identifier.md) std::format\_string&lt; Args... &gt; format, [**Args**](classendstone_1_1Identifier.md) &&... args) const<br> |
 | virtual [**void**](classendstone_1_1Identifier.md) | [**sendMessage**](#function-sendmessage-12) ([**const**](classendstone_1_1Identifier.md) Message & message) const = 0<br>_Sends this sender a message._  |
-|  [**void**](classendstone_1_1Identifier.md) | [**sendMessage**](#function-sendmessage-22) ([**const**](classendstone_1_1Identifier.md) fmt::format\_string&lt; Args... &gt; format, [**Args**](classendstone_1_1Identifier.md) &&... args) const<br> |
+|  [**void**](classendstone_1_1Identifier.md) | [**sendMessage**](#function-sendmessage-22) ([**const**](classendstone_1_1Identifier.md) std::format\_string&lt; Args... &gt; format, [**Args**](classendstone_1_1Identifier.md) &&... args) const<br> |
 
 
 ## Public Functions inherited from endstone::Permissible
@@ -373,7 +373,7 @@ virtual void endstone::CommandSender::sendErrorMessage (
 ```C++
 template<typename... Args>
 inline void endstone::CommandSender::sendErrorMessage (
-    const fmt::format_string< Args... > format,
+    const std::format_string< Args... > format,
     Args &&... args
 ) const
 ```
@@ -417,7 +417,7 @@ virtual void endstone::CommandSender::sendMessage (
 ```C++
 template<typename... Args>
 inline void endstone::CommandSender::sendMessage (
-    const fmt::format_string< Args... > format,
+    const std::format_string< Args... > format,
     Args &&... args
 ) const
 ```

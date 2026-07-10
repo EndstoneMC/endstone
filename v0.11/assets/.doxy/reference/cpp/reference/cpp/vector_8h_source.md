@@ -27,8 +27,7 @@
 #include <algorithm>
 #include <cmath>
 #include <concepts>
-
-#include <fmt/format.h>
+#include <format>
 
 namespace endstone {
 
@@ -355,12 +354,11 @@ protected:
 }  // namespace endstone
 
 template <>
-struct fmt::formatter<endstone::Vector> : formatter<string_view> {
+struct std::formatter<endstone::Vector> : std::formatter<std::string_view> {
     template <typename FormatContext>
-    auto format(const endstone::Vector &self, FormatContext &ctx) const -> format_context::iterator
+    auto format(const endstone::Vector &self, FormatContext &ctx) const
     {
-        auto out = ctx.out();
-        return fmt::format_to(out, "{},{},{},", self.getX(), self.getY(), self.getZ());
+        return std::format_to(ctx.out(), "{},{},{},", self.getX(), self.getY(), self.getZ());
     }
 };
 ```

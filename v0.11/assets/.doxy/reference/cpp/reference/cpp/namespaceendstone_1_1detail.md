@@ -25,6 +25,11 @@
 
 
 
+## Classes
+
+| Type | Name |
+| ---: | :--- |
+| struct | [**JoinView**](structendstone_1_1detail_1_1JoinView.md) &lt;[**typename**](classendstone_1_1Identifier.md) [**It**](classendstone_1_1Identifier.md), [**typename**](classendstone_1_1Identifier.md) [**Sentinel**](classendstone_1_1Identifier.md)&gt;<br> |
 
 
 
@@ -60,6 +65,9 @@
 |  [**void**](classendstone_1_1Identifier.md) \* | [**fp\_cast**](#function-fp_cast) ([**Return**](classendstone_1_1Identifier.md)(Class::\*)(Args...) fp) <br>_Cast a member function pointer to void pointer._  |
 |  [**auto**](classendstone_1_1Identifier.md) | [**fp\_cast**](#function-fp_cast) ([**Return**](classendstone_1_1Identifier.md)(Class::\*)(Arg...), [**void**](classendstone_1_1Identifier.md) \* address) <br>_Gets the original member function pointer from a detour member function pointer (const, no ref-qualifier)_  |
 |  [**Server**](classendstone_1_1Server.md) & | [**getServer**](#function-getserver) () <br> |
+|  [**JoinView**](structendstone_1_1detail_1_1JoinView.md)&lt; [**It**](classendstone_1_1Identifier.md), [**Sentinel**](classendstone_1_1Identifier.md) &gt; | [**join**](#function-join) ([**It**](classendstone_1_1Identifier.md) begin, [**Sentinel**](classendstone_1_1Identifier.md) end, std::string\_view sep) <br> |
+|  [**auto**](classendstone_1_1Identifier.md) | [**join**](#function-join) ([**const**](classendstone_1_1Identifier.md) [**Range**](classendstone_1_1Identifier.md) & range, std::string\_view sep) <br> |
+|  std::string | [**quoted**](#function-quoted) (std::string\_view value) <br> |
 
 
 
@@ -258,6 +266,63 @@ Gets the current [**Server**](classendstone_1_1Server.md) singleton
 
 
 
+
+
+        
+
+<hr>
+
+
+
+### function join 
+
+```C++
+template<typename It, typename Sentinel>
+JoinView < It , Sentinel > endstone::detail::join (
+    It begin,
+    Sentinel end,
+    std::string_view sep
+) 
+```
+
+
+
+
+<hr>
+
+
+
+### function join 
+
+```C++
+template<typename Range>
+auto endstone::detail::join (
+    const  Range & range,
+    std::string_view sep
+) 
+```
+
+
+
+
+<hr>
+
+
+
+### function quoted 
+
+```C++
+inline std::string endstone::detail::quoted (
+    std::string_view value
+) 
+```
+
+
+
+Quotes and escapes a string the way the `{:?}` debug presentation does.
+
+
+`std::format` only gained the `?` (debug) specifier in C++23, so this provides equivalent behaviour under C++20. 
 
 
         

@@ -24,28 +24,27 @@
 
 #pragma once
 
+#include <format>
 #include <stdexcept>
 #include <utility>
-
-#include <fmt/format.h>
 
 namespace endstone {
 class Preconditions {
 public:
     template <typename... Args>
-    static void checkArgument(bool condition, fmt::format_string<Args...> format, Args &&...args)
+    static void checkArgument(bool condition, std::format_string<Args...> format, Args &&...args)
     {
         if (!condition) {
-            auto message = fmt::format(format, std::forward<Args>(args)...);
+            auto message = std::format(format, std::forward<Args>(args)...);
             throw std::invalid_argument(message);
         }
     }
 
     template <typename... Args>
-    static void checkState(bool condition, fmt::format_string<Args...> format, Args &&...args)
+    static void checkState(bool condition, std::format_string<Args...> format, Args &&...args)
     {
         if (!condition) {
-            auto message = fmt::format(format, std::forward<Args>(args)...);
+            auto message = std::format(format, std::forward<Args>(args)...);
             throw std::runtime_error(message);
         }
     }

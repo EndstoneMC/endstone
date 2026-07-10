@@ -24,9 +24,9 @@
 
 #pragma once
 
+#include <format>
 #include <string>
 
-#include <fmt/format.h>
 #include <nonstd/expected.hpp>
 
 namespace endstone {
@@ -40,7 +40,7 @@ using Result = nonstd::expected<T, std::string>;
 
 #define ENDSTONE_CHECKF(EXPRESSION, ERROR_MSG, ...) \
     if (!(EXPRESSION))                              \
-        return nonstd::make_unexpected(fmt::format(ERROR_MSG, ##__VA_ARGS__));
+        return nonstd::make_unexpected(std::format(ERROR_MSG, ##__VA_ARGS__));
 
 #define ENDSTONE_CHECK_RESULT(RESULT) \
     if (!(RESULT))                    \

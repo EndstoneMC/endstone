@@ -297,9 +297,9 @@
       <member refid="classendstone_1_1Permissible_1abcc26358591f3aef6007d815e8265c47" prot="public" virt="pure-virtual"><scope>endstone::Item</scope><name>removeAttachment</name></member>
       <member refid="classendstone_1_1Actor_1a6f068c4612aa487ba76d3a4c3e3b1033" prot="public" virt="pure-virtual"><scope>endstone::Item</scope><name>removeScoreboardTag</name></member>
       <member refid="classendstone_1_1CommandSender_1a25f6e7b7397652fd14cb57bc994b00eb" prot="public" virt="pure-virtual"><scope>endstone::Item</scope><name>sendErrorMessage</name></member>
-      <member refid="classendstone_1_1CommandSender_1a9ef7b0d45dc7ba12073ce93187c54b87" prot="public" virt="non-virtual"><scope>endstone::Item</scope><name>sendErrorMessage</name></member>
+      <member refid="classendstone_1_1CommandSender_1ab61032bb4ef9bb659a21c69616e2567c" prot="public" virt="non-virtual"><scope>endstone::Item</scope><name>sendErrorMessage</name></member>
       <member refid="classendstone_1_1CommandSender_1a000782a076576822ea70b640f5f230ea" prot="public" virt="pure-virtual"><scope>endstone::Item</scope><name>sendMessage</name></member>
-      <member refid="classendstone_1_1CommandSender_1a991e541b0e30e75ab7f508d6fdb141ad" prot="public" virt="non-virtual"><scope>endstone::Item</scope><name>sendMessage</name></member>
+      <member refid="classendstone_1_1CommandSender_1a5b5362b6c8db65d78676386397ad9f6c" prot="public" virt="non-virtual"><scope>endstone::Item</scope><name>sendMessage</name></member>
       <member refid="classendstone_1_1Item_1af161f37341629c74503408f7ebfeb0e1" prot="public" virt="pure-virtual"><scope>endstone::Item</scope><name>setItemStack</name></member>
       <member refid="classendstone_1_1Actor_1afa33b47ae91605841f0c4ef5ec127ac7" prot="public" virt="pure-virtual"><scope>endstone::Item</scope><name>setNameTag</name></member>
       <member refid="classendstone_1_1Actor_1a6c7dc2e5a9b99db8b000e84e4eba5822" prot="public" virt="pure-virtual"><scope>endstone::Item</scope><name>setNameTagAlwaysVisible</name></member>

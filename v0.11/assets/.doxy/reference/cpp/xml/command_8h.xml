@@ -43,11 +43,11 @@
       <node id="8">
         <label>endstone/command/command_sender.h</label>
         <link refid="command__sender_8h_source"/>
+        <childnode refid="9" relation="include">
+        </childnode>
         <childnode refid="3" relation="include">
         </childnode>
         <childnode refid="4" relation="include">
-        </childnode>
-        <childnode refid="9" relation="include">
         </childnode>
         <childnode refid="10" relation="include">
         </childnode>
@@ -107,9 +107,9 @@
       <node id="17">
         <label>endstone/util/result.h</label>
         <link refid="result_8h_source"/>
-        <childnode refid="3" relation="include">
-        </childnode>
         <childnode refid="9" relation="include">
+        </childnode>
+        <childnode refid="3" relation="include">
         </childnode>
         <childnode refid="18" relation="include">
         </childnode>
@@ -118,7 +118,7 @@
         <label>algorithm</label>
       </node>
       <node id="9">
-        <label>fmt/format.h</label>
+        <label>format</label>
       </node>
       <node id="7">
         <label>memory</label>
@@ -351,47 +351,48 @@
 <codeline lineno="194"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">true</highlight><highlight class="normal">;</highlight></codeline>
 <codeline lineno="195"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
 <codeline lineno="196"><highlight class="normal"></highlight></codeline>
-<codeline lineno="197"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>std::any_of(permissions_.begin(),<sp/>permissions_.end(),<sp/>[&amp;<ref refid="classendstone_1_1Identifier" kindref="compound">target</ref>](</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/>&amp;<ref refid="classendstone_1_1Identifier" kindref="compound">p</ref>)<sp/>{<sp/>return<sp/>target.hasPermission(p);<sp/>});</highlight></codeline>
-<codeline lineno="198"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
-<codeline lineno="199"><highlight class="normal"></highlight></codeline>
-<codeline lineno="206" refid="classendstone_1_1Command_1a694f2bdd19a6381000fad63fbc3d6ad0" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="classendstone_1_1Command_1a694f2bdd19a6381000fad63fbc3d6ad0" kindref="member">registerTo</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classendstone_1_1CommandMap" kindref="compound">CommandMap</ref><sp/>&amp;<ref refid="classendstone_1_1Identifier" kindref="compound">command_map</ref>)</highlight></codeline>
-<codeline lineno="207"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
-<codeline lineno="208"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(allowChangesFrom(<ref refid="classendstone_1_1Identifier" kindref="compound">command_map</ref>))<sp/>{</highlight></codeline>
-<codeline lineno="209"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>command_map_<sp/>=<sp/>&amp;<ref refid="classendstone_1_1Identifier" kindref="compound">command_map</ref>;</highlight></codeline>
-<codeline lineno="210"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">true</highlight><highlight class="normal">;</highlight></codeline>
-<codeline lineno="211"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
-<codeline lineno="212"><highlight class="normal"></highlight></codeline>
-<codeline lineno="213"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">false</highlight><highlight class="normal">;</highlight></codeline>
-<codeline lineno="214"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
-<codeline lineno="215"><highlight class="normal"></highlight></codeline>
-<codeline lineno="222" refid="classendstone_1_1Command_1af0220a368428afc83b15d638e40426fd" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="classendstone_1_1Command_1af0220a368428afc83b15d638e40426fd" kindref="member">unregisterFrom</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classendstone_1_1CommandMap" kindref="compound">CommandMap</ref><sp/>&amp;<ref refid="classendstone_1_1Identifier" kindref="compound">command_map</ref>)</highlight></codeline>
-<codeline lineno="223"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
-<codeline lineno="224"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(allowChangesFrom(<ref refid="classendstone_1_1Identifier" kindref="compound">command_map</ref>))<sp/>{</highlight></codeline>
-<codeline lineno="225"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>command_map_<sp/>=<sp/></highlight><highlight class="keyword">nullptr</highlight><highlight class="normal">;</highlight></codeline>
-<codeline lineno="226"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">true</highlight><highlight class="normal">;</highlight></codeline>
-<codeline lineno="227"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
-<codeline lineno="228"><highlight class="normal"></highlight></codeline>
-<codeline lineno="229"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">false</highlight><highlight class="normal">;</highlight></codeline>
-<codeline lineno="230"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
-<codeline lineno="231"><highlight class="normal"></highlight></codeline>
-<codeline lineno="237" refid="classendstone_1_1Command_1a4b4bfe6350f3deae258fc5fd8e344fbf" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>[[<ref refid="classendstone_1_1Identifier" kindref="compound">nodiscard</ref>]]<sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="classendstone_1_1Command_1a4b4bfe6350f3deae258fc5fd8e344fbf" kindref="member">isRegistered</ref>()</highlight><highlight class="keyword"><sp/>const<sp/></highlight><highlight class="normal">{<sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>command_map_<sp/>!=<sp/></highlight><highlight class="keyword">nullptr</highlight><highlight class="normal">;<sp/>}</highlight></codeline>
-<codeline lineno="238"><highlight class="normal"></highlight></codeline>
-<codeline lineno="239"><highlight class="normal"><sp/><sp/><sp/><sp/>[[<ref refid="classendstone_1_1Identifier" kindref="compound">nodiscard</ref>]]<sp/></highlight><highlight class="keyword">virtual</highlight><highlight class="normal"><sp/><ref refid="classendstone_1_1PluginCommand" kindref="compound">PluginCommand</ref><sp/>*asPluginCommand()</highlight><highlight class="keyword"><sp/>const<sp/></highlight><highlight class="normal">{<sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">nullptr</highlight><highlight class="normal">;<sp/>}</highlight></codeline>
-<codeline lineno="240"><highlight class="normal"></highlight></codeline>
-<codeline lineno="241"><highlight class="normal"></highlight><highlight class="keyword">private</highlight><highlight class="normal">:</highlight></codeline>
-<codeline lineno="242"><highlight class="normal"><sp/><sp/><sp/><sp/>[[nodiscard]]<sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/>allowChangesFrom(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>CommandMap<sp/>&amp;command_map)</highlight><highlight class="keyword"><sp/>const</highlight></codeline>
-<codeline lineno="243"><highlight class="keyword"><sp/><sp/><sp/><sp/></highlight><highlight class="normal">{</highlight></codeline>
-<codeline lineno="244"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>(!<ref refid="classendstone_1_1Command_1a4b4bfe6350f3deae258fc5fd8e344fbf" kindref="member">isRegistered</ref>()<sp/>||<sp/>command_map_<sp/>==<sp/>&amp;command_map);</highlight></codeline>
-<codeline lineno="245"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
-<codeline lineno="246"><highlight class="normal"></highlight></codeline>
-<codeline lineno="247"><highlight class="normal"><sp/><sp/><sp/><sp/>std::string<sp/>name_;</highlight></codeline>
-<codeline lineno="248"><highlight class="normal"><sp/><sp/><sp/><sp/>std::string<sp/>description_;</highlight></codeline>
-<codeline lineno="249"><highlight class="normal"><sp/><sp/><sp/><sp/>std::vector&lt;std::string&gt;<sp/>aliases_;</highlight></codeline>
-<codeline lineno="250"><highlight class="normal"><sp/><sp/><sp/><sp/>std::vector&lt;std::string&gt;<sp/>usages_;</highlight></codeline>
-<codeline lineno="251"><highlight class="normal"><sp/><sp/><sp/><sp/>std::vector&lt;std::string&gt;<sp/>permissions_;</highlight></codeline>
-<codeline lineno="252"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>CommandMap<sp/>*command_map_<sp/>=<sp/></highlight><highlight class="keyword">nullptr</highlight><highlight class="normal">;</highlight></codeline>
-<codeline lineno="253"><highlight class="normal">};</highlight></codeline>
-<codeline lineno="254"><highlight class="normal">}<sp/><sp/></highlight><highlight class="comment">//<sp/>namespace<sp/>endstone</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="197"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>std::any_of(permissions_.begin(),<sp/>permissions_.end(),</highlight></codeline>
+<codeline lineno="198"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>[&amp;<ref refid="classendstone_1_1Identifier" kindref="compound">target</ref>](</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/>&amp;<ref refid="classendstone_1_1Identifier" kindref="compound">p</ref>)<sp/>{<sp/>return<sp/>target.hasPermission(p);<sp/>});</highlight></codeline>
+<codeline lineno="199"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="200"><highlight class="normal"></highlight></codeline>
+<codeline lineno="207" refid="classendstone_1_1Command_1a694f2bdd19a6381000fad63fbc3d6ad0" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="classendstone_1_1Command_1a694f2bdd19a6381000fad63fbc3d6ad0" kindref="member">registerTo</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classendstone_1_1CommandMap" kindref="compound">CommandMap</ref><sp/>&amp;<ref refid="classendstone_1_1Identifier" kindref="compound">command_map</ref>)</highlight></codeline>
+<codeline lineno="208"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="209"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(allowChangesFrom(<ref refid="classendstone_1_1Identifier" kindref="compound">command_map</ref>))<sp/>{</highlight></codeline>
+<codeline lineno="210"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>command_map_<sp/>=<sp/>&amp;<ref refid="classendstone_1_1Identifier" kindref="compound">command_map</ref>;</highlight></codeline>
+<codeline lineno="211"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">true</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="212"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="213"><highlight class="normal"></highlight></codeline>
+<codeline lineno="214"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">false</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="215"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="216"><highlight class="normal"></highlight></codeline>
+<codeline lineno="223" refid="classendstone_1_1Command_1af0220a368428afc83b15d638e40426fd" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="classendstone_1_1Command_1af0220a368428afc83b15d638e40426fd" kindref="member">unregisterFrom</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classendstone_1_1CommandMap" kindref="compound">CommandMap</ref><sp/>&amp;<ref refid="classendstone_1_1Identifier" kindref="compound">command_map</ref>)</highlight></codeline>
+<codeline lineno="224"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="225"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(allowChangesFrom(<ref refid="classendstone_1_1Identifier" kindref="compound">command_map</ref>))<sp/>{</highlight></codeline>
+<codeline lineno="226"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>command_map_<sp/>=<sp/></highlight><highlight class="keyword">nullptr</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="227"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">true</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="228"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="229"><highlight class="normal"></highlight></codeline>
+<codeline lineno="230"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">false</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="231"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="232"><highlight class="normal"></highlight></codeline>
+<codeline lineno="238" refid="classendstone_1_1Command_1a4b4bfe6350f3deae258fc5fd8e344fbf" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>[[<ref refid="classendstone_1_1Identifier" kindref="compound">nodiscard</ref>]]<sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="classendstone_1_1Command_1a4b4bfe6350f3deae258fc5fd8e344fbf" kindref="member">isRegistered</ref>()</highlight><highlight class="keyword"><sp/>const<sp/></highlight><highlight class="normal">{<sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>command_map_<sp/>!=<sp/></highlight><highlight class="keyword">nullptr</highlight><highlight class="normal">;<sp/>}</highlight></codeline>
+<codeline lineno="239"><highlight class="normal"></highlight></codeline>
+<codeline lineno="240"><highlight class="normal"><sp/><sp/><sp/><sp/>[[<ref refid="classendstone_1_1Identifier" kindref="compound">nodiscard</ref>]]<sp/></highlight><highlight class="keyword">virtual</highlight><highlight class="normal"><sp/><ref refid="classendstone_1_1PluginCommand" kindref="compound">PluginCommand</ref><sp/>*asPluginCommand()</highlight><highlight class="keyword"><sp/>const<sp/></highlight><highlight class="normal">{<sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">nullptr</highlight><highlight class="normal">;<sp/>}</highlight></codeline>
+<codeline lineno="241"><highlight class="normal"></highlight></codeline>
+<codeline lineno="242"><highlight class="normal"></highlight><highlight class="keyword">private</highlight><highlight class="normal">:</highlight></codeline>
+<codeline lineno="243"><highlight class="normal"><sp/><sp/><sp/><sp/>[[nodiscard]]<sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/>allowChangesFrom(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>CommandMap<sp/>&amp;command_map)</highlight><highlight class="keyword"><sp/>const</highlight></codeline>
+<codeline lineno="244"><highlight class="keyword"><sp/><sp/><sp/><sp/></highlight><highlight class="normal">{</highlight></codeline>
+<codeline lineno="245"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>(!<ref refid="classendstone_1_1Command_1a4b4bfe6350f3deae258fc5fd8e344fbf" kindref="member">isRegistered</ref>()<sp/>||<sp/>command_map_<sp/>==<sp/>&amp;command_map);</highlight></codeline>
+<codeline lineno="246"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="247"><highlight class="normal"></highlight></codeline>
+<codeline lineno="248"><highlight class="normal"><sp/><sp/><sp/><sp/>std::string<sp/>name_;</highlight></codeline>
+<codeline lineno="249"><highlight class="normal"><sp/><sp/><sp/><sp/>std::string<sp/>description_;</highlight></codeline>
+<codeline lineno="250"><highlight class="normal"><sp/><sp/><sp/><sp/>std::vector&lt;std::string&gt;<sp/>aliases_;</highlight></codeline>
+<codeline lineno="251"><highlight class="normal"><sp/><sp/><sp/><sp/>std::vector&lt;std::string&gt;<sp/>usages_;</highlight></codeline>
+<codeline lineno="252"><highlight class="normal"><sp/><sp/><sp/><sp/>std::vector&lt;std::string&gt;<sp/>permissions_;</highlight></codeline>
+<codeline lineno="253"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>CommandMap<sp/>*command_map_<sp/>=<sp/></highlight><highlight class="keyword">nullptr</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="254"><highlight class="normal">};</highlight></codeline>
+<codeline lineno="255"><highlight class="normal">}<sp/><sp/></highlight><highlight class="comment">//<sp/>namespace<sp/>endstone</highlight><highlight class="normal"></highlight></codeline>
     </programlisting>
     <location file="include/endstone/command/command.h"/>
   </compounddef>

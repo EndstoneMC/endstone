@@ -1,0 +1,68 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.8" xml:lang="en-US">
+  <compounddef id="structstd_1_1formatter_3_01endstone_1_1nbt_1_1Tag_01_4" kind="struct" language="C++" prot="public">
+    <compoundname>std::formatter&lt; endstone::nbt::Tag &gt;</compoundname>
+    <basecompoundref prot="public" virt="non-virtual">std::formatter&lt; std::string_view &gt;</basecompoundref>
+    <templateparamlist>
+    </templateparamlist>
+    <sectiondef kind="public-func">
+      <memberdef kind="function" id="structstd_1_1formatter_3_01endstone_1_1nbt_1_1Tag_01_4_1afd1aa8a8da2d47a9e3b841356f2cd2a8" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>typename FormatContext</type>
+          </param>
+        </templateparamlist>
+        <type>auto</type>
+        <definition>auto std::formatter&lt; endstone::nbt::Tag &gt;::format</definition>
+        <argsstring>(const endstone::nbt::Tag &amp;tag, FormatContext &amp;ctx) const -&gt; format_context::iterator</argsstring>
+        <name>format</name>
+        <qualifiedname>std::formatter&lt; endstone::nbt::Tag &gt;::format</qualifiedname>
+        <param>
+          <type>const <ref refid="classendstone_1_1nbt_1_1Tag" kindref="compound">endstone::nbt::Tag</ref> &amp;</type>
+          <declname>tag</declname>
+        </param>
+        <param>
+          <type>FormatContext &amp;</type>
+          <declname>ctx</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/nbt/tag.h" line="572" column="10" bodyfile="include/endstone/nbt/tag.h" bodystart="572" bodyend="583"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="1">
+        <label>std::formatter&lt; endstone::nbt::Tag &gt;</label>
+        <link refid="structstd_1_1formatter_3_01endstone_1_1nbt_1_1Tag_01_4"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>std::formatter&lt; std::string_view &gt;</label>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="1">
+        <label>std::formatter&lt; endstone::nbt::Tag &gt;</label>
+        <link refid="structstd_1_1formatter_3_01endstone_1_1nbt_1_1Tag_01_4"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>std::formatter&lt; std::string_view &gt;</label>
+      </node>
+    </collaborationgraph>
+    <location file="include/endstone/nbt/tag.h" line="570" column="1" bodyfile="include/endstone/nbt/tag.h" bodystart="570" bodyend="584"/>
+    <listofallmembers>
+      <member refid="structstd_1_1formatter_3_01endstone_1_1nbt_1_1Tag_01_4_1afd1aa8a8da2d47a9e3b841356f2cd2a8" prot="public" virt="non-virtual"><scope>std::formatter&lt; endstone::nbt::Tag &gt;</scope><name>format</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

@@ -104,9 +104,9 @@
       <node id="11">
         <label>endstone/util/result.h</label>
         <link refid="result_8h_source"/>
-        <childnode refid="4" relation="include">
-        </childnode>
         <childnode refid="12" relation="include">
+        </childnode>
+        <childnode refid="4" relation="include">
         </childnode>
         <childnode refid="13" relation="include">
         </childnode>
@@ -115,7 +115,7 @@
         <label>algorithm</label>
       </node>
       <node id="12">
-        <label>fmt/format.h</label>
+        <label>format</label>
       </node>
       <node id="16">
         <label>functional</label>

@@ -63,7 +63,7 @@ _Represents a server implementation._
 | virtual [**IRegistry**](classendstone_1_1IRegistry.md) \* | [**\_getRegistry**](#function-_getregistry) ([**const**](classendstone_1_1Identifier.md) std::string & type) const = 0<br>_Returns the registry for the given type._  |
 | virtual [**void**](classendstone_1_1Identifier.md) | [**broadcast**](#function-broadcast) ([**const**](classendstone_1_1Identifier.md) Message & message, [**const**](classendstone_1_1Identifier.md) std::string & permission) const = 0<br>_Broadcasts the specified message to every user with the given permission name._  |
 | virtual [**void**](classendstone_1_1Identifier.md) | [**broadcastMessage**](#function-broadcastmessage-12) ([**const**](classendstone_1_1Identifier.md) Message & message) const = 0<br>_Broadcasts the specified message to every user with permission endstone.broadcast.user._  |
-|  [**void**](classendstone_1_1Identifier.md) | [**broadcastMessage**](#function-broadcastmessage-22) ([**const**](classendstone_1_1Identifier.md) fmt::format\_string&lt; Args... &gt; format, [**Args**](classendstone_1_1Identifier.md) &&... args) const<br> |
+|  [**void**](classendstone_1_1Identifier.md) | [**broadcastMessage**](#function-broadcastmessage-22) ([**const**](classendstone_1_1Identifier.md) std::format\_string&lt; Args... &gt; format, [**Args**](classendstone_1_1Identifier.md) &&... args) const<br> |
 | virtual std::unique\_ptr&lt; [**BlockData**](classendstone_1_1BlockData.md) &gt; | [**createBlockData**](#function-createblockdata-12) (std::string type) const = 0<br>_Creates a new_ [_**BlockData**_](classendstone_1_1BlockData.md) _instance for the specified block type, with all properties initialized to defaults._ |
 | virtual std::unique\_ptr&lt; [**BlockData**](classendstone_1_1BlockData.md) &gt; | [**createBlockData**](#function-createblockdata-22) (std::string type, BlockStates block\_states) const = 0<br>_Creates a new_ [_**BlockData**_](classendstone_1_1BlockData.md) _instance for the specified block type, with all properties initialized to defaults, except for those provided in data._ |
 | virtual std::unique\_ptr&lt; [**BossBar**](classendstone_1_1BossBar.md) &gt; | [**createBossBar**](#function-createbossbar-12) (std::string title, BarColor color, [**BarStyle**](namespaceendstone.md#enum-barstyle) style) const = 0<br>_Creates a boss bar instance to display to players. The progress defaults to 1.0._  |
@@ -299,7 +299,7 @@ virtual void endstone::Server::broadcastMessage (
 ```C++
 template<typename... Args>
 inline void endstone::Server::broadcastMessage (
-    const fmt::format_string< Args... > format,
+    const std::format_string< Args... > format,
     Args &&... args
 ) const
 ```

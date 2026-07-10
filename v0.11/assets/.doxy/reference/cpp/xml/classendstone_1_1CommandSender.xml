@@ -26,7 +26,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/command/command_sender.h" line="40" column="20" bodyfile="include/endstone/command/command_sender.h" bodystart="40" bodyend="40"/>
+        <location file="include/endstone/command/command_sender.h" line="39" column="20" bodyfile="include/endstone/command/command_sender.h" bodystart="39" bodyend="39"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1CommandSender_1a635ff0815f93ba402b40486e5b3a4fdb" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
         <type><ref refid="classendstone_1_1ConsoleCommandSender" kindref="compound">ConsoleCommandSender</ref> *</type>
@@ -45,7 +45,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/command/command_sender.h" line="47" column="35"/>
+        <location file="include/endstone/command/command_sender.h" line="46" column="35"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1CommandSender_1ad60565f649ada2e97dd8f62c8d791027" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
         <type><ref refid="classendstone_1_1BlockCommandSender" kindref="compound">BlockCommandSender</ref> *</type>
@@ -64,7 +64,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/command/command_sender.h" line="54" column="33"/>
+        <location file="include/endstone/command/command_sender.h" line="53" column="33"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1CommandSender_1aa3ff3e9752f3a3a7a84bc9058d7abbdc" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
         <type><ref refid="classendstone_1_1Actor" kindref="compound">Actor</ref> *</type>
@@ -83,7 +83,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/command/command_sender.h" line="61" column="20"/>
+        <location file="include/endstone/command/command_sender.h" line="60" column="20"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1CommandSender_1a13a510a2f1e21138d8dfa9f9c898e136" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
         <type><ref refid="classendstone_1_1Player" kindref="compound">Player</ref> *</type>
@@ -102,7 +102,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/command/command_sender.h" line="68" column="21"/>
+        <location file="include/endstone/command/command_sender.h" line="67" column="21"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1CommandSender_1a000782a076576822ea70b640f5f230ea" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
         <type><ref refid="classendstone_1_1Identifier" kindref="compound">void</ref></type>
@@ -132,9 +132,9 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/command/command_sender.h" line="75" column="18"/>
+        <location file="include/endstone/command/command_sender.h" line="74" column="18"/>
       </memberdef>
-      <memberdef kind="function" id="classendstone_1_1CommandSender_1a991e541b0e30e75ab7f508d6fdb141ad" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+      <memberdef kind="function" id="classendstone_1_1CommandSender_1a5b5362b6c8db65d78676386397ad9f6c" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
         <templateparamlist>
           <param>
             <type>typename...</type>
@@ -144,11 +144,11 @@
         </templateparamlist>
         <type><ref refid="classendstone_1_1Identifier" kindref="compound">void</ref></type>
         <definition>void endstone::CommandSender::sendMessage</definition>
-        <argsstring>(const fmt::format_string&lt; Args... &gt; format, Args &amp;&amp;...args) const</argsstring>
+        <argsstring>(const std::format_string&lt; Args... &gt; format, Args &amp;&amp;...args) const</argsstring>
         <name>sendMessage</name>
         <qualifiedname>endstone::CommandSender::sendMessage</qualifiedname>
         <param>
-          <type><ref refid="classendstone_1_1Identifier" kindref="compound">const</ref> fmt::format_string&lt; Args... &gt;</type>
+          <type><ref refid="classendstone_1_1Identifier" kindref="compound">const</ref> std::format_string&lt; Args... &gt;</type>
           <declname>format</declname>
         </param>
         <param>
@@ -161,7 +161,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/command/command_sender.h" line="78" column="10" bodyfile="include/endstone/command/command_sender.h" bodystart="78" bodyend="86"/>
+        <location file="include/endstone/command/command_sender.h" line="77" column="10" bodyfile="include/endstone/command/command_sender.h" bodystart="77" bodyend="85"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1CommandSender_1a25f6e7b7397652fd14cb57bc994b00eb" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
         <type><ref refid="classendstone_1_1Identifier" kindref="compound">void</ref></type>
@@ -191,9 +191,9 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/command/command_sender.h" line="93" column="18"/>
+        <location file="include/endstone/command/command_sender.h" line="92" column="18"/>
       </memberdef>
-      <memberdef kind="function" id="classendstone_1_1CommandSender_1a9ef7b0d45dc7ba12073ce93187c54b87" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+      <memberdef kind="function" id="classendstone_1_1CommandSender_1ab61032bb4ef9bb659a21c69616e2567c" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
         <templateparamlist>
           <param>
             <type>typename...</type>
@@ -203,11 +203,11 @@
         </templateparamlist>
         <type><ref refid="classendstone_1_1Identifier" kindref="compound">void</ref></type>
         <definition>void endstone::CommandSender::sendErrorMessage</definition>
-        <argsstring>(const fmt::format_string&lt; Args... &gt; format, Args &amp;&amp;...args) const</argsstring>
+        <argsstring>(const std::format_string&lt; Args... &gt; format, Args &amp;&amp;...args) const</argsstring>
         <name>sendErrorMessage</name>
         <qualifiedname>endstone::CommandSender::sendErrorMessage</qualifiedname>
         <param>
-          <type><ref refid="classendstone_1_1Identifier" kindref="compound">const</ref> fmt::format_string&lt; Args... &gt;</type>
+          <type><ref refid="classendstone_1_1Identifier" kindref="compound">const</ref> std::format_string&lt; Args... &gt;</type>
           <declname>format</declname>
         </param>
         <param>
@@ -220,7 +220,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/command/command_sender.h" line="96" column="10" bodyfile="include/endstone/command/command_sender.h" bodystart="96" bodyend="99"/>
+        <location file="include/endstone/command/command_sender.h" line="95" column="10" bodyfile="include/endstone/command/command_sender.h" bodystart="95" bodyend="98"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1CommandSender_1aecd5cad85026861938379fa283d626cf" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
         <type><ref refid="classendstone_1_1Server" kindref="compound">Server</ref> &amp;</type>
@@ -239,7 +239,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/command/command_sender.h" line="106" column="21"/>
+        <location file="include/endstone/command/command_sender.h" line="105" column="21"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1CommandSender_1acf20807a70561a571e20d4ee3791d69e" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
         <type>std::string</type>
@@ -259,7 +259,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/command/command_sender.h" line="113" column="26"/>
+        <location file="include/endstone/command/command_sender.h" line="112" column="26"/>
       </memberdef>
     </sectiondef>
     <briefdescription>
@@ -333,7 +333,7 @@
         <link refid="classendstone_1_1Permissible"/>
       </node>
     </collaborationgraph>
-    <location file="include/endstone/command/command_sender.h" line="37" column="1" bodyfile="include/endstone/command/command_sender.h" bodystart="37" bodyend="114"/>
+    <location file="include/endstone/command/command_sender.h" line="36" column="1" bodyfile="include/endstone/command/command_sender.h" bodystart="36" bodyend="113"/>
     <listofallmembers>
       <member refid="classendstone_1_1Permissible_1a08be02debf01b55544c4566931ed98fc" prot="public" virt="pure-virtual"><scope>endstone::CommandSender</scope><name>addAttachment</name></member>
       <member refid="classendstone_1_1Permissible_1ab1adef2b8d0494a9bfcd9c9ffb995f2b" prot="public" virt="pure-virtual"><scope>endstone::CommandSender</scope><name>addAttachment</name></member>
@@ -353,9 +353,9 @@
       <member refid="classendstone_1_1Permissible_1acbd0e4c4815db28b66ef14976f110af5" prot="public" virt="pure-virtual"><scope>endstone::CommandSender</scope><name>recalculatePermissions</name></member>
       <member refid="classendstone_1_1Permissible_1abcc26358591f3aef6007d815e8265c47" prot="public" virt="pure-virtual"><scope>endstone::CommandSender</scope><name>removeAttachment</name></member>
       <member refid="classendstone_1_1CommandSender_1a25f6e7b7397652fd14cb57bc994b00eb" prot="public" virt="pure-virtual"><scope>endstone::CommandSender</scope><name>sendErrorMessage</name></member>
-      <member refid="classendstone_1_1CommandSender_1a9ef7b0d45dc7ba12073ce93187c54b87" prot="public" virt="non-virtual"><scope>endstone::CommandSender</scope><name>sendErrorMessage</name></member>
+      <member refid="classendstone_1_1CommandSender_1ab61032bb4ef9bb659a21c69616e2567c" prot="public" virt="non-virtual"><scope>endstone::CommandSender</scope><name>sendErrorMessage</name></member>
       <member refid="classendstone_1_1CommandSender_1a000782a076576822ea70b640f5f230ea" prot="public" virt="pure-virtual"><scope>endstone::CommandSender</scope><name>sendMessage</name></member>
-      <member refid="classendstone_1_1CommandSender_1a991e541b0e30e75ab7f508d6fdb141ad" prot="public" virt="non-virtual"><scope>endstone::CommandSender</scope><name>sendMessage</name></member>
+      <member refid="classendstone_1_1CommandSender_1a5b5362b6c8db65d78676386397ad9f6c" prot="public" virt="non-virtual"><scope>endstone::CommandSender</scope><name>sendMessage</name></member>
       <member refid="classendstone_1_1Permissible_1afd630275e217c42932d29208712fe438" prot="public" virt="virtual"><scope>endstone::CommandSender</scope><name>~Permissible</name></member>
     </listofallmembers>
   </compounddef>

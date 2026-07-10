@@ -25,11 +25,10 @@
 #pragma once
 
 #include <algorithm>
+#include <format>
 #include <string>
 #include <utility>
 #include <vector>
-
-#include <fmt/format.h>
 
 #include "endstone/command/command.h"
 #include "endstone/detail.h"
@@ -56,7 +55,7 @@ public:
         name_ = std::move(name);
         std::replace(name_.begin(), name_.end(), ' ', '_');
         version_ = std::move(version);
-        full_name_ = fmt::format("{} v{}", name_, version_);
+        full_name_ = std::format("{} v{}", name_, version_);
         api_version_ = ENDSTONE_API_VERSION;
     }
 

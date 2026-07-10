@@ -24,6 +24,7 @@
 
 #pragma once
 
+#include <format>
 #include <memory>
 #include <string>
 
@@ -77,28 +78,26 @@ public:
 
 }  // namespace endstone
 
-namespace fmt {
 template <>
-struct formatter<endstone::Block> : formatter<string_view> {
+struct std::formatter<endstone::Block> : std::formatter<std::string_view> {
     using Type = endstone::Block;
 
     template <typename FormatContext>
     auto format(const Type &val, FormatContext &ctx) const -> format_context::iterator
     {
         auto it = ctx.out();
-        it = fmt::format_to(it, "Block(pos=BlockPos(x={}, y={}, z={}), type={}", val.getX(), val.getY(), val.getZ(),
+        it = std::format_to(it, "Block(pos=BlockPos(x={}, y={}, z={}), type={}", val.getX(), val.getY(), val.getZ(),
                             val.getType());
         if (const auto data = val.getData()) {
-            it = fmt::format_to(it, ", data={}", *data);
+            it = std::format_to(it, ", data={}", *data);
         }
         else {
-            it = fmt::format_to(it, ", data=INVALID");
+            it = std::format_to(it, ", data=INVALID");
         }
-        it = fmt::format_to(it, ")");
+        it = std::format_to(it, ")");
         return it;
     }
 };
-}  // namespace fmt
 ```
 
 

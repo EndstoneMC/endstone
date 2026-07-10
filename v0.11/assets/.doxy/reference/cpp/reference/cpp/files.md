@@ -210,6 +210,7 @@ Here is a list of all files with brief descriptions:
             * **file** [**scoreboard.h**](scoreboard_8h.md)     
         * **dir** [**util**](dir_89b85071337bf933dea6c29b4c6a4410.md)     
             * **file** [**color.h**](color_8h.md)     
+            * **file** [**format.h**](format_8h.md)     
             * **file** [**image.h**](image_8h.md)     
             * **file** [**pointers.h**](pointers_8h.md)     
             * **file** [**result.h**](result_8h.md)     

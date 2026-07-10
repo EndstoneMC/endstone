@@ -3,6 +3,7 @@
   <compounddef id="namespaceendstone_1_1detail" kind="namespace" language="C++">
     <compoundname>endstone::detail</compoundname>
     <innerclass refid="classendstone_1_1detail_1_1CommandBuilder" prot="private">endstone::detail::CommandBuilder</innerclass>
+    <innerclass refid="structendstone_1_1detail_1_1JoinView" prot="public">endstone::detail::JoinView</innerclass>
     <innerclass refid="classendstone_1_1detail_1_1PermissionBuilder" prot="private">endstone::detail::PermissionBuilder</innerclass>
     <innerclass refid="structendstone_1_1detail_1_1PluginDescriptionBuilder" prot="private">endstone::detail::PluginDescriptionBuilder</innerclass>
     <sectiondef kind="var">
@@ -248,6 +249,87 @@
         <inbodydescription>
         </inbodydescription>
         <location file="include/endstone/detail.h" line="130" column="15" bodyfile="include/endstone/detail.h" bodystart="130" bodyend="159"/>
+      </memberdef>
+      <memberdef kind="function" id="format_8h_1a2b4e26cb3a0bd4ab7f195af6db0356ec" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>std::string</type>
+        <definition>std::string endstone::detail::quoted</definition>
+        <argsstring>(std::string_view value)</argsstring>
+        <name>quoted</name>
+        <qualifiedname>endstone::detail::quoted</qualifiedname>
+        <param>
+          <type>std::string_view</type>
+          <declname>value</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Quotes and escapes a string the way the <computeroutput>{:?}</computeroutput> debug presentation does.</para>
+<para><computeroutput>std::format</computeroutput> only gained the <computeroutput>?</computeroutput> (debug) specifier in C++23, so this provides equivalent behaviour under C++20. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/util/format.h" line="29" column="20" bodyfile="include/endstone/util/format.h" bodystart="29" bodyend="58"/>
+      </memberdef>
+      <memberdef kind="function" id="format_8h_1a0fd5d820edbc381835bfa26afc697ad4" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>typename It</type>
+          </param>
+          <param>
+            <type>typename Sentinel</type>
+          </param>
+        </templateparamlist>
+        <type><ref refid="structendstone_1_1detail_1_1JoinView" kindref="compound">JoinView</ref>&lt; <ref refid="classendstone_1_1Identifier" kindref="compound">It</ref>, <ref refid="classendstone_1_1Identifier" kindref="compound">Sentinel</ref> &gt;</type>
+        <definition>JoinView&lt; It, Sentinel &gt; endstone::detail::join</definition>
+        <argsstring>(It begin, Sentinel end, std::string_view sep)</argsstring>
+        <name>join</name>
+        <qualifiedname>endstone::detail::join</qualifiedname>
+        <param>
+          <type><ref refid="classendstone_1_1Identifier" kindref="compound">It</ref></type>
+          <declname>begin</declname>
+        </param>
+        <param>
+          <type><ref refid="classendstone_1_1Identifier" kindref="compound">Sentinel</ref></type>
+          <declname>end</declname>
+        </param>
+        <param>
+          <type>std::string_view</type>
+          <declname>sep</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/util/format.h" line="74" column="10" bodyfile="include/endstone/util/format.h" bodystart="74" bodyend="77"/>
+      </memberdef>
+      <memberdef kind="function" id="format_8h_1ab25d3bd650bb9cb12773ae3b185a5546" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>typename Range</type>
+          </param>
+        </templateparamlist>
+        <type><ref refid="classendstone_1_1Identifier" kindref="compound">auto</ref></type>
+        <definition>auto endstone::detail::join</definition>
+        <argsstring>(const Range &amp;range, std::string_view sep)</argsstring>
+        <name>join</name>
+        <qualifiedname>endstone::detail::join</qualifiedname>
+        <param>
+          <type><ref refid="classendstone_1_1Identifier" kindref="compound">const</ref> <ref refid="classendstone_1_1Identifier" kindref="compound">Range</ref> &amp;</type>
+          <declname>range</declname>
+        </param>
+        <param>
+          <type>std::string_view</type>
+          <declname>sep</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/util/format.h" line="80" column="6" bodyfile="include/endstone/util/format.h" bodystart="80" bodyend="83"/>
       </memberdef>
     </sectiondef>
     <briefdescription>

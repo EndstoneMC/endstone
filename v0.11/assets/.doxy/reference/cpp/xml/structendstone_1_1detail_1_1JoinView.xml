@@ -1,0 +1,71 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.8" xml:lang="en-US">
+  <compounddef id="structendstone_1_1detail_1_1JoinView" kind="struct" language="C++" prot="public">
+    <compoundname>endstone::detail::JoinView</compoundname>
+    <includes refid="format_8h" local="no">endstone/util/format.h</includes>
+    <templateparamlist>
+      <param>
+        <type><ref refid="classendstone_1_1Identifier" kindref="compound">typename</ref> <ref refid="classendstone_1_1Identifier" kindref="compound">It</ref></type>
+      </param>
+      <param>
+        <type><ref refid="classendstone_1_1Identifier" kindref="compound">typename</ref> <ref refid="classendstone_1_1Identifier" kindref="compound">Sentinel</ref></type>
+      </param>
+    </templateparamlist>
+    <sectiondef kind="public-attrib">
+      <memberdef kind="variable" id="structendstone_1_1detail_1_1JoinView_1a8905b05b2d04a6a70ac384c8d2ddd41b" prot="public" static="no" mutable="no">
+        <type><ref refid="classendstone_1_1Identifier" kindref="compound">It</ref></type>
+        <definition>It endstone::detail::JoinView&lt; It, Sentinel &gt;::begin</definition>
+        <argsstring></argsstring>
+        <name>begin</name>
+        <qualifiedname>endstone::detail::JoinView::begin</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/util/format.h" line="68" column="8" bodyfile="include/endstone/util/format.h" bodystart="68" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structendstone_1_1detail_1_1JoinView_1a4dab50b1c337c7bf01b2a5640ddbd3a2" prot="public" static="no" mutable="no">
+        <type><ref refid="classendstone_1_1Identifier" kindref="compound">Sentinel</ref></type>
+        <definition>Sentinel endstone::detail::JoinView&lt; It, Sentinel &gt;::end</definition>
+        <argsstring></argsstring>
+        <name>end</name>
+        <qualifiedname>endstone::detail::JoinView::end</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/util/format.h" line="69" column="14" bodyfile="include/endstone/util/format.h" bodystart="69" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structendstone_1_1detail_1_1JoinView_1aec042b40c2eaa388710d2813a6fc5a27" prot="public" static="no" mutable="no">
+        <type>std::string_view</type>
+        <definition>std::string_view endstone::detail::JoinView&lt; It, Sentinel &gt;::sep</definition>
+        <argsstring></argsstring>
+        <name>sep</name>
+        <qualifiedname>endstone::detail::JoinView::sep</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/util/format.h" line="70" column="22" bodyfile="include/endstone/util/format.h" bodystart="70" bodyend="-1"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+<para>A lightweight, formattable view over a range that renders its elements separated by a delimiter.</para>
+<para>This is a drop-in replacement for <computeroutput>fmt::join</computeroutput>, which has no equivalent in <computeroutput>std::format</computeroutput> (C++20). It allocates nothing of its own: elements are written straight to the output iterator. </para>
+    </detaileddescription>
+    <location file="include/endstone/util/format.h" line="67" column="1" bodyfile="include/endstone/util/format.h" bodystart="67" bodyend="71"/>
+    <listofallmembers>
+      <member refid="structendstone_1_1detail_1_1JoinView_1a8905b05b2d04a6a70ac384c8d2ddd41b" prot="public" virt="non-virtual"><scope>endstone::detail::JoinView</scope><name>begin</name></member>
+      <member refid="structendstone_1_1detail_1_1JoinView_1a4dab50b1c337c7bf01b2a5640ddbd3a2" prot="public" virt="non-virtual"><scope>endstone::detail::JoinView</scope><name>end</name></member>
+      <member refid="structendstone_1_1detail_1_1JoinView_1aec042b40c2eaa388710d2813a6fc5a27" prot="public" virt="non-virtual"><scope>endstone::detail::JoinView</scope><name>sep</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

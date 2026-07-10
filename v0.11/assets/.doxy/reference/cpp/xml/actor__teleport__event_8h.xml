@@ -18,17 +18,19 @@
         </childnode>
         <childnode refid="8" relation="include">
         </childnode>
+        <childnode refid="9" relation="include">
+        </childnode>
         <childnode refid="20" relation="include">
         </childnode>
       </node>
-      <node id="8">
+      <node id="9">
         <label>endstone/command/command_sender.h</label>
         <link refid="command__sender_8h_source"/>
         <childnode refid="6" relation="include">
         </childnode>
-        <childnode refid="2" relation="include">
+        <childnode refid="7" relation="include">
         </childnode>
-        <childnode refid="9" relation="include">
+        <childnode refid="2" relation="include">
         </childnode>
         <childnode refid="10" relation="include">
         </childnode>
@@ -64,23 +66,25 @@
         <link refid="event_8h_source"/>
         <childnode refid="27" relation="include">
         </childnode>
-        <childnode refid="6" relation="include">
+        <childnode refid="7" relation="include">
         </childnode>
       </node>
       <node id="12">
         <label>endstone/lang/translatable.h</label>
         <link refid="translatable_8h_source"/>
-        <childnode refid="6" relation="include">
+        <childnode refid="7" relation="include">
         </childnode>
         <childnode refid="2" relation="include">
         </childnode>
-        <childnode refid="7" relation="include">
+        <childnode refid="8" relation="include">
         </childnode>
       </node>
       <node id="20">
         <label>endstone/level/location.h</label>
         <link refid="location_8h_source"/>
         <childnode refid="21" relation="include">
+        </childnode>
+        <childnode refid="6" relation="include">
         </childnode>
         <childnode refid="14" relation="include">
         </childnode>
@@ -94,7 +98,7 @@
       <node id="10">
         <label>endstone/message.h</label>
         <link refid="message_8h_source"/>
-        <childnode refid="6" relation="include">
+        <childnode refid="7" relation="include">
         </childnode>
         <childnode refid="2" relation="include">
         </childnode>
@@ -108,7 +112,7 @@
         <link refid="permissible_8h_source"/>
         <childnode refid="14" relation="include">
         </childnode>
-        <childnode refid="6" relation="include">
+        <childnode refid="7" relation="include">
         </childnode>
         <childnode refid="15" relation="include">
         </childnode>
@@ -122,7 +126,7 @@
       <node id="16">
         <label>endstone/permissions/permission_attachment_info.h</label>
         <link refid="permission__attachment__info_8h_source"/>
-        <childnode refid="6" relation="include">
+        <childnode refid="7" relation="include">
         </childnode>
         <childnode refid="2" relation="include">
         </childnode>
@@ -136,7 +140,7 @@
         <link refid="result_8h_source"/>
         <childnode refid="6" relation="include">
         </childnode>
-        <childnode refid="9" relation="include">
+        <childnode refid="7" relation="include">
         </childnode>
         <childnode refid="19" relation="include">
         </childnode>
@@ -150,7 +154,7 @@
         </childnode>
         <childnode refid="25" relation="include">
         </childnode>
-        <childnode refid="9" relation="include">
+        <childnode refid="6" relation="include">
         </childnode>
       </node>
       <node id="24">
@@ -165,8 +169,8 @@
       <node id="5">
         <label>cstdint</label>
       </node>
-      <node id="9">
-        <label>fmt/format.h</label>
+      <node id="6">
+        <label>format</label>
       </node>
       <node id="14">
         <label>memory</label>
@@ -180,7 +184,7 @@
       <node id="27">
         <label>stdexcept</label>
       </node>
-      <node id="6">
+      <node id="7">
         <label>string</label>
       </node>
       <node id="15">
@@ -192,7 +196,7 @@
       <node id="11">
         <label>variant</label>
       </node>
-      <node id="7">
+      <node id="8">
         <label>vector</label>
       </node>
     </incdepgraph>

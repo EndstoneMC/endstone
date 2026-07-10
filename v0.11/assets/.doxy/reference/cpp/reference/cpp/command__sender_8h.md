@@ -10,9 +10,9 @@
 
 
 
+* `#include <format>`
 * `#include <string>`
 * `#include <utility>`
-* `#include <fmt/format.h>`
 * `#include "endstone/message.h"`
 * `#include "endstone/permissions/permissible.h"`
 

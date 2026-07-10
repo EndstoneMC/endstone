@@ -11,6 +11,7 @@
 
 
 * `#include <cmath>`
+* `#include <format>`
 * `#include <memory>`
 * `#include <numbers>`
 * `#include "endstone/util/result.h"`
@@ -40,7 +41,7 @@
 | Type | Name |
 | ---: | :--- |
 | class | [**Location**](classendstone_1_1Location.md) <br>_Represents a 3-dimensional location in a dimension within a level._  |
-| struct | [**formatter&lt; endstone::Location &gt;**](structfmt_1_1formatter_3_01endstone_1_1Location_01_4.md) &lt;&gt;<br> |
+| struct | [**formatter&lt; endstone::Location &gt;**](structstd_1_1formatter_3_01endstone_1_1Location_01_4.md) &lt;&gt;<br> |
 
 
 

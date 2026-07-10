@@ -25,11 +25,10 @@
 #pragma once
 
 #include <concepts>
+#include <format>
 #include <functional>
 #include <stdexcept>
 #include <string>
-
-#include <fmt/format.h>
 
 #include "detail.h"
 #include "identifier.h"
@@ -54,10 +53,7 @@ public:
 
         [[nodiscard]] virtual std::string getTranslationKey() const = 0;
 
-        static const T *get(Id id)
-        {
-            return detail::getServer().getRegistry<T>().get(id);
-        }
+        static const T *get(Id id) { return detail::getServer().getRegistry<T>().get(id); }
 
         bool operator==(const Id &other) const { return getId() == other; }
         bool operator!=(const Id &other) const { return !(*this == other); }
@@ -75,7 +71,7 @@ public:
         if (auto *p = get(id)) {
             return *p;
         }
-        throw std::invalid_argument(fmt::format("No registry entry found for identifier: {}", id));
+        throw std::invalid_argument(std::format("No registry entry found for identifier: {}", id));
     }
 
     virtual const T &getOrThrow(Identifier<T> id) const
@@ -83,7 +79,7 @@ public:
         if (auto *p = get(id)) {
             return *p;
         }
-        throw std::invalid_argument(fmt::format("No registry entry found for identifier: {}", id));
+        throw std::invalid_argument(std::format("No registry entry found for identifier: {}", id));
     }
 
     virtual void forEach(std::function<bool(const T &)> func) const = 0;
@@ -94,12 +90,14 @@ public:
 }  // namespace endstone
 
 template <typename T>
-    requires requires(const T &t) { { t.getId() } -> std::convertible_to<endstone::Identifier<T>>; }
-struct fmt::formatter<T> : formatter<string_view> {
+    requires requires(const T &t) {
+        { t.getId() } -> std::convertible_to<endstone::Identifier<T>>;
+    }
+struct std::formatter<T> : std::formatter<std::string_view> {
     template <typename FormatContext>
     auto format(const T &val, FormatContext &ctx) const -> format_context::iterator
     {
-        return fmt::format_to(ctx.out(), "{}", val.getId());
+        return std::format_to(ctx.out(), "{}", val.getId());
     }
 };
 ```
