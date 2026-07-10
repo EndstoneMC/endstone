@@ -13,6 +13,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Fixed
 
+- Fixed the Windows standalone bundle's `start.cmd` potentially launching the Microsoft Store Python stub. Both `start.cmd` and `start.sh` now provision a uv-managed Python (`--managed-python`, downloaded on demand) into a reusable `.venv` in the server folder instead of picking up whatever interpreter happens to be on `PATH`, which also makes subsequent startups faster.
 - Fixed the interactive console (`-i`) not submitting commands under panels such as Pterodactyl. The console only accepted a line on carriage return, but web consoles send a line feed, so typed commands piled up without ever running. It now accepts either.
 - Fixed the crash reporter failing to start with `error while loading shared libraries: libc++-*.so` on Linux (e.g. under the Pterodactyl egg). The crash handler is now loaded from its bundled location instead of being copied into the server folder, so it can find its vendored `libc++` (#429).
 - Fixed custom map renderers not being called when the map had no decorations, leaving the map blank instead of showing the rendered image (#426).

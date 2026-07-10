@@ -34,7 +34,26 @@ if errorlevel 1 (
     )
 )
 
-uv run --no-project --python 3.13 --with "%WHEEL%" endstone -i %* || pause
+if not exist ".venv\Scripts\python.exe" (
+    echo Creating virtual environment...
+    uv venv --managed-python --python 3.13 .venv
+    if errorlevel 1 (
+        echo Failed to create the virtual environment.
+        pause
+        popd
+        exit /b 1
+    )
+)
+
+uv pip install --python .venv "%WHEEL%"
+if errorlevel 1 (
+    echo Failed to install "%WHEEL%".
+    pause
+    popd
+    exit /b 1
+)
+
+".venv\Scripts\python.exe" -m endstone -i %* || pause
 
 popd
 endlocal

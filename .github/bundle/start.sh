@@ -28,4 +28,11 @@ if ! command -v uv >/dev/null 2>&1; then
     fi
 fi
 
-exec uv run --no-project --python 3.13 --with "./$WHEEL" endstone -i "$@"
+if [[ ! -x ".venv/bin/python" ]]; then
+    echo "Creating virtual environment..."
+    uv venv --managed-python --python 3.13 .venv
+fi
+
+uv pip install --python .venv "./$WHEEL"
+
+exec .venv/bin/python -m endstone -i "$@"
