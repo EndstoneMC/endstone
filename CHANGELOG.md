@@ -7,6 +7,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+### Added
+
+- Added support for BDS version 1.26.33.
+
 ### Changed
 
 - The interactive console is now enabled by default on all platforms, including Linux (previously Windows-only). Pass `--no-interactive` to disable it, for example when running under a process manager that captures stdin.
