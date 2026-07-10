@@ -13,7 +13,7 @@ FROM python:${PYTHON_VERSION}-slim-bullseye AS builder
 ARG LLVM_VERSION=20
 RUN apt-get update -y -qq \
     && apt-get install -y -qq --no-install-recommends \
-        autoconf automake build-essential ca-certificates git gnupg libtool m4 \
+        autoconf automake build-essential ca-certificates git gnupg libtool \
         lsb-release software-properties-common wget \
     && wget -q https://apt.llvm.org/llvm.sh \
     && chmod +x llvm.sh \
@@ -41,8 +41,8 @@ COPY .conan2/remotes.json .conan2/remotes.json
 COPY .conan2/profiles/default .conan2/profiles/default
 COPY conanfile.py conanfile.py
 RUN python -m pip install --upgrade pip \
-    && pip install conan \
-    && conan install . --build=missing --build=m4/*
+    && pip install conan cmake ninja \
+    && conan install . --build=missing
 
 # Copy the rest of the project files.
 COPY . .
