@@ -4,7 +4,6 @@ import glob
 import importlib
 import os
 import os.path
-import shutil
 import site
 import subprocess
 import sys
@@ -27,6 +26,17 @@ warnings.simplefilter(action="always", category=FutureWarning)
 
 
 def find_python() -> Path:
+    """Finds the Python executable path.
+
+    Checks ``ENDSTONE_PYTHON_EXECUTABLE`` environment variable first, then
+    falls back to platform-specific default locations under ``sys.base_prefix``.
+
+    Returns:
+        The resolved path to the Python executable.
+
+    Raises:
+        RuntimeError: If no valid Python executable is found.
+    """
     paths = []
     if os.environ.get("ENDSTONE_PYTHON_EXECUTABLE", None) is not None:
         paths.append(os.environ["ENDSTONE_PYTHON_EXECUTABLE"])
@@ -57,6 +67,14 @@ def find_python() -> Path:
 
 
 def _build_commands(commands: dict[str, Any]) -> list[Command]:
+    """Converts a plugin's command metadata dict into a list of Command objects.
+
+    Args:
+        commands: Mapping of command name to keyword arguments for ``Command``.
+
+    Returns:
+        A list of constructed Command instances.
+    """
     results = []
     for name, command in commands.items():
         command = Command(name, **command)
@@ -65,6 +83,20 @@ def _build_commands(commands: dict[str, Any]) -> list[Command]:
 
 
 def _build_permissions(permissions: dict[str, Any]) -> list[Permission]:
+    """Converts a plugin's permission metadata dict into a list of Permission objects.
+
+    The ``"default"`` key in each permission entry is coerced from ``bool`` or
+    ``str`` to a ``PermissionDefault`` enum value.
+
+    Args:
+        permissions: Mapping of permission name to keyword arguments for ``Permission``.
+
+    Returns:
+        A list of constructed Permission instances.
+
+    Raises:
+        TypeError: If a ``"default"`` value is not a bool, str, or PermissionDefault.
+    """
     results = []
     for name, permission in permissions.items():
         if "default" in permission:
@@ -86,14 +118,46 @@ sys._base_executable = sys.executable  # type: ignore[attr-defined]
 
 
 class PythonPluginLoader(PluginLoader):
+    """Plugin loader for Python plugins distributed as wheel packages.
+
+    Discovers plugins via ``endstone`` entry points and installs wheel files
+    using pip into a local prefix (``plugins/.local``). On destruction (e.g.
+    server reload), previously installed plugin packages are uninstalled via
+    pip to ensure a clean state.
+    """
+
     SUPPORTED_API = ["0.5", "0.6", "0.7", "0.8", "0.9", "0.10", "0.11", "0.12"]
 
     def __init__(self, server: Server):
         PluginLoader.__init__(self, server)
-        self._invalidate_caches()
         self._plugins: list[Plugin] = []
+        self._uninstall_plugins()
+        self._invalidate_caches()
+
+    def __del__(self) -> None:
+        self._uninstall_plugins()
+
+    @staticmethod
+    def _uninstall_plugins() -> None:
+        """Uninstalls all currently installed endstone plugin distributions via pip."""
+        dists = [ep.dist.name for ep in entry_points(group="endstone")]  # type: ignore[union-attr]
+        if not dists:
+            return
+        subprocess.run(
+            [
+                sys.executable,
+                "-m",
+                "pip",
+                "uninstall",
+                *dists,
+                "-y",
+                "--quiet",
+                "--disable-pip-version-check",
+            ],
+        )
 
     def _invalidate_caches(self) -> None:
+        """Clears Python import caches and registers the local prefix as a site directory."""
         importlib.invalidate_caches()
         for module in list(sys.modules.keys()):
             if module.startswith("endstone_"):
@@ -102,21 +166,19 @@ class PythonPluginLoader(PluginLoader):
         self._prefix = os.path.join("plugins", ".local")
         for site_dir in site.getsitepackages(prefixes=[self._prefix]):
             site.addsitedir(site_dir)
-            if (
-                os.path.exists(site_dir)
-                and os.path.commonpath([site_dir, self._prefix]) == self._prefix
-                and site_dir != self._prefix
-            ):
-                for directory in os.listdir(site_dir):
-                    if not os.path.isdir(os.path.join(site_dir, directory)):
-                        continue
-                    if directory.startswith("endstone_") or directory.startswith("~"):
-                        shutil.rmtree(os.path.join(site_dir, directory))
 
     def load_plugin(self, file: str) -> Plugin | None:  # type: ignore[override]
-        env = os.environ.copy()
-        env.pop("LD_PRELOAD", "")
+        """Installs a wheel file via pip and loads the plugin from it.
 
+        Args:
+            file: Path to a ``.whl`` file.
+
+        Returns:
+            The loaded Plugin instance, or None if no valid entry point was found.
+
+        Raises:
+            ValueError: If the package name cannot be determined from the wheel.
+        """
         dist_name: str | None = pkginfo.Wheel(file).name
         if dist_name is None:
             raise ValueError(f"Could not determine package name from {file}")
@@ -133,7 +195,6 @@ class PythonPluginLoader(PluginLoader):
                 "--no-warn-script-location",
                 "--disable-pip-version-check",
             ],
-            env=env,
         )
 
         eps = distribution(dist_name).entry_points.select(group="endstone")
@@ -145,11 +206,18 @@ class PythonPluginLoader(PluginLoader):
         return None
 
     def load_plugins(self, directory: str) -> list[Plugin]:
+        """Loads all plugins from registered entry points and wheel files in the given directory.
+
+        Args:
+            directory: Path to the directory containing ``.whl`` files.
+
+        Returns:
+            A list of successfully loaded Plugin instances.
+        """
         loaded_plugins = []
 
         if not self._plugins:
-            eps = entry_points(group="endstone")
-            for ep in eps:
+            for ep in entry_points(group="endstone"):
                 plugin = self._load_plugin_from_ep(ep)
                 if plugin:
                     loaded_plugins.append(plugin)
@@ -162,7 +230,18 @@ class PythonPluginLoader(PluginLoader):
         return loaded_plugins
 
     def _load_plugin_from_ep(self, ep: EntryPoint) -> Plugin | None:
-        # enforce naming convention
+        """Loads a single plugin from an entry point.
+
+        Validates the distribution naming convention, checks API version
+        compatibility, reads distribution metadata, and instantiates the
+        plugin class.
+
+        Args:
+            ep: An ``endstone`` group entry point.
+
+        Returns:
+            The loaded Plugin instance, or None if loading fails.
+        """
         if ep.dist is None:
             return None
         if not ep.dist.name.replace("_", "-").startswith("endstone-"):
