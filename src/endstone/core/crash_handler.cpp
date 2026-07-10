@@ -47,6 +47,7 @@
 
 #include "endstone/core/platform.h"
 #include "endstone/detail.h"
+#include "endstone/runtime/runtime.h"
 
 namespace fs = std::filesystem;
 
@@ -211,6 +212,16 @@ CrashHandler::CrashHandler()
 
     sentry_options_t *options = sentry_options_new();
     sentry_options_set_dsn(options, dsn);
+
+    // use the handler bundled next to the runtime library so its RPATH finds the vendored libc++
+#ifdef _WIN32
+    constexpr auto handler_name = "crashpad_handler.exe";
+#else
+    constexpr auto handler_name = "crashpad_handler";
+#endif
+    const auto handler_path = fs::path{runtime::get_module_pathname()}.parent_path() / handler_name;
+    sentry_options_set_handler_path(options, handler_path.string().c_str());
+
     sentry_options_set_database_path(options, ".sentry-native");
     sentry_options_set_release(options, std::string(release).c_str());
     sentry_options_set_on_crash(options, on_crash, nullptr);

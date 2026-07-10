@@ -68,20 +68,23 @@ void patchPacket(const ClientboundMapItemDataPacket &packet, endstone::core::End
     }
 
     auto &pk = const_cast<ClientboundMapItemDataPacket &>(packet);
-    if (pk.map_pixels_.empty() || pk.decorations_.empty()) {
+    if (pk.map_pixels_.empty() && pk.decorations_.empty()) {
         return;  // Map creation, no data to be patched
     }
 
-    if (pk.start_x_ < 0 || pk.start_y_ < 0 || pk.width_ <= 0 || pk.height_ <= 0 ||
-        pk.start_x_ + pk.width_ > MapConstants::MAP_SIZE || pk.start_y_ + pk.height_ > MapConstants::MAP_SIZE) {
-        return;  // Out of bounds
-    }
-
     const auto &render = map->render(player);
-    for (auto x = 0; x < pk.width_; ++x) {
-        for (auto y = 0; y < pk.height_; ++y) {
-            pk.map_pixels_[x + (y * pk.width_)] =
-                render.buffer[(pk.start_x_ + x) + ((pk.start_y_ + y) * MapConstants::MAP_SIZE)];
+
+    // Patch pixels only when this packet carries a texture update
+    if (!pk.map_pixels_.empty()) {
+        if (pk.start_x_ < 0 || pk.start_y_ < 0 || pk.width_ <= 0 || pk.height_ <= 0 ||
+            pk.start_x_ + pk.width_ > MapConstants::MAP_SIZE || pk.start_y_ + pk.height_ > MapConstants::MAP_SIZE) {
+            return;  // Out of bounds
+        }
+        for (auto x = 0; x < pk.width_; ++x) {
+            for (auto y = 0; y < pk.height_; ++y) {
+                pk.map_pixels_[x + (y * pk.width_)] =
+                    render.buffer[(pk.start_x_ + x) + ((pk.start_y_ + y) * MapConstants::MAP_SIZE)];
+            }
         }
     }
 

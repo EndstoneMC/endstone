@@ -7,6 +7,11 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+### Fixed
+
+- Fixed the crash reporter failing to start with `error while loading shared libraries: libc++-*.so` on Linux (e.g. under the Pterodactyl egg). The crash handler is now loaded from its bundled location instead of being copied into the server folder, so it can find its vendored `libc++` (#429).
+- Fixed custom map renderers not being called when the map had no decorations, leaving the map blank instead of showing the rendered image (#426).
+
 ## [0.11.5] - 2026-07-05
 
 ### Added

@@ -34,7 +34,6 @@ class LinuxBootstrap(Bootstrap):
         super()._prepare()
         st = os.stat(self.executable_path)
         os.chmod(self.executable_path, st.st_mode | stat.S_IEXEC)
-        os.chmod(self.server_path / "crashpad_handler", st.st_mode | stat.S_IEXEC)
 
     def _run(self, *args, **kwargs) -> int:
         process = subprocess.Popen(

@@ -1,5 +1,4 @@
 import errno
-import filecmp
 import fnmatch
 import hashlib
 import logging
@@ -162,22 +161,6 @@ class Bootstrap:
     def _prepare(self) -> None:
         # ensure the plugin folder exists
         self.plugin_path.mkdir(parents=True, exist_ok=True)
-
-        # prepare the crashpad handler (bundled into the endstone package via conan)
-        endstone_dir = Path(str(importlib_resources.files("endstone")))
-        if platform.system() == "Windows":
-            handler_files = ["crashpad_handler.exe", "crashpad_wer.dll"]
-        else:
-            handler_files = ["crashpad_handler"]
-        for name in handler_files:
-            src = endstone_dir / name
-            dst = self.server_path / name
-            try:
-                if dst.exists() and filecmp.cmp(src, dst, shallow=False):
-                    continue
-                shutil.copy2(src, dst)
-            except Exception as e:
-                self._logger.warning(f"Failed to update crash handler '{name}': {e}")
 
         # create or update the config file
         ref = importlib_resources.files("endstone") / "config" / "endstone.default.toml"
