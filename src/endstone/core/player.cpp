@@ -768,7 +768,8 @@ bool EndstonePlayer::handlePacket(Packet &packet)
 
         const Location from = getLocation();
         const auto height_offset = ActorOffset::getHeightOffset(actor.getEntity());
-        const Location to{getDimension(), pk.pos.x, pk.pos.y - height_offset, pk.pos.z, pk.rot.x, pk.rot.y};
+        const Location to{
+            getDimension().shared_from_this(), pk.pos.x, pk.pos.y - height_offset, pk.pos.z, pk.rot.x, pk.rot.y};
 
         if (pk.getInput(PlayerAuthInputPacket::InputData::Jumping) && on_ground && delta.y > 0.0F) {
             PlayerJumpEvent e{*this, from, to};
