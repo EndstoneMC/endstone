@@ -25,11 +25,10 @@
 #pragma once
 
 #include <algorithm>
+#include <format>
 #include <string>
 #include <utility>
 #include <vector>
-
-#include <format>
 
 #include "endstone/command/command.h"
 #include "endstone/detail.h"

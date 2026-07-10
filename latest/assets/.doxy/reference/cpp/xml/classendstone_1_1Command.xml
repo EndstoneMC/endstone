@@ -18,7 +18,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/command/command.h" line="250" column="17" bodyfile="include/endstone/command/command.h" bodystart="250" bodyend="-1"/>
+        <location file="include/endstone/command/command.h" line="251" column="17" bodyfile="include/endstone/command/command.h" bodystart="251" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="classendstone_1_1Command_1a402ad7e2575662204296a8a7c8a02c46" prot="private" static="no" mutable="no">
         <type>std::string</type>
@@ -32,7 +32,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/command/command.h" line="251" column="17" bodyfile="include/endstone/command/command.h" bodystart="251" bodyend="-1"/>
+        <location file="include/endstone/command/command.h" line="252" column="17" bodyfile="include/endstone/command/command.h" bodystart="252" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="classendstone_1_1Command_1abe0ff7e4cf40cad6b6dcb7e1a9c4bef2" prot="private" static="no" mutable="no">
         <type>std::vector&lt; std::string &gt;</type>
@@ -46,7 +46,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/command/command.h" line="252" column="17" bodyfile="include/endstone/command/command.h" bodystart="252" bodyend="-1"/>
+        <location file="include/endstone/command/command.h" line="253" column="17" bodyfile="include/endstone/command/command.h" bodystart="253" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="classendstone_1_1Command_1a1cb2033591a7c1015ad86df7418059c7" prot="private" static="no" mutable="no">
         <type>std::vector&lt; std::string &gt;</type>
@@ -60,7 +60,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/command/command.h" line="253" column="17" bodyfile="include/endstone/command/command.h" bodystart="253" bodyend="-1"/>
+        <location file="include/endstone/command/command.h" line="254" column="17" bodyfile="include/endstone/command/command.h" bodystart="254" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="classendstone_1_1Command_1a787227a863a60818990e90ccf2a898f7" prot="private" static="no" mutable="no">
         <type>std::vector&lt; std::string &gt;</type>
@@ -74,7 +74,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/command/command.h" line="254" column="17" bodyfile="include/endstone/command/command.h" bodystart="254" bodyend="-1"/>
+        <location file="include/endstone/command/command.h" line="255" column="17" bodyfile="include/endstone/command/command.h" bodystart="255" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="classendstone_1_1Command_1a5a849b3fce28dcd10f8f0944e54c3580" prot="private" static="no" mutable="no">
         <type><ref refid="classendstone_1_1Identifier" kindref="compound">const</ref> <ref refid="classendstone_1_1CommandMap" kindref="compound">CommandMap</ref> *</type>
@@ -89,7 +89,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/command/command.h" line="255" column="22" bodyfile="include/endstone/command/command.h" bodystart="255" bodyend="-1"/>
+        <location file="include/endstone/command/command.h" line="256" column="22" bodyfile="include/endstone/command/command.h" bodystart="256" bodyend="-1"/>
       </memberdef>
     </sectiondef>
     <sectiondef kind="public-func">
@@ -508,7 +508,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/command/command.h" line="190" column="11" bodyfile="include/endstone/command/command.h" bodystart="190" bodyend="197"/>
+        <location file="include/endstone/command/command.h" line="190" column="11" bodyfile="include/endstone/command/command.h" bodystart="190" bodyend="198"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1Command_1a694f2bdd19a6381000fad63fbc3d6ad0" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type><ref refid="classendstone_1_1Identifier" kindref="compound">bool</ref></type>
@@ -539,7 +539,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/command/command.h" line="205" column="10" bodyfile="include/endstone/command/command.h" bodystart="205" bodyend="213"/>
+        <location file="include/endstone/command/command.h" line="206" column="10" bodyfile="include/endstone/command/command.h" bodystart="206" bodyend="214"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1Command_1af0220a368428afc83b15d638e40426fd" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type><ref refid="classendstone_1_1Identifier" kindref="compound">bool</ref></type>
@@ -570,7 +570,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/command/command.h" line="221" column="10" bodyfile="include/endstone/command/command.h" bodystart="221" bodyend="229"/>
+        <location file="include/endstone/command/command.h" line="222" column="10" bodyfile="include/endstone/command/command.h" bodystart="222" bodyend="230"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1Command_1a4b4bfe6350f3deae258fc5fd8e344fbf" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
         <type><ref refid="classendstone_1_1Identifier" kindref="compound">bool</ref></type>
@@ -588,7 +588,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/command/command.h" line="236" column="11" bodyfile="include/endstone/command/command.h" bodystart="236" bodyend="236"/>
+        <location file="include/endstone/command/command.h" line="237" column="11" bodyfile="include/endstone/command/command.h" bodystart="237" bodyend="237"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1Command_1a8fd3804b8c6367eaeda19f1f09dd6a4b" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="virtual">
         <type><ref refid="classendstone_1_1Identifier" kindref="compound">const</ref> std::type_info &amp;</type>
@@ -604,7 +604,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/command/command.h" line="238" column="27" bodyfile="include/endstone/command/command.h" bodystart="238" bodyend="238"/>
+        <location file="include/endstone/command/command.h" line="239" column="27" bodyfile="include/endstone/command/command.h" bodystart="239" bodyend="239"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1Command_1a6c7a9cb698506b75ebd7190d63d2d449" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="virtual">
         <type><ref refid="classendstone_1_1Identifier" kindref="compound">bool</ref></type>
@@ -624,7 +624,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/command/command.h" line="239" column="11" bodyfile="include/endstone/command/command.h" bodystart="239" bodyend="242"/>
+        <location file="include/endstone/command/command.h" line="240" column="11" bodyfile="include/endstone/command/command.h" bodystart="240" bodyend="243"/>
       </memberdef>
     </sectiondef>
     <sectiondef kind="private-func">
@@ -644,7 +644,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/command/command.h" line="245" column="11" bodyfile="include/endstone/command/command.h" bodystart="245" bodyend="248"/>
+        <location file="include/endstone/command/command.h" line="246" column="11" bodyfile="include/endstone/command/command.h" bodystart="246" bodyend="249"/>
       </memberdef>
     </sectiondef>
     <briefdescription>
@@ -682,7 +682,7 @@
         <link refid="classendstone_1_1Object"/>
       </node>
     </collaborationgraph>
-    <location file="include/endstone/command/command.h" line="31" column="1" bodyfile="include/endstone/command/command.h" bodystart="31" bodyend="256"/>
+    <location file="include/endstone/command/command.h" line="31" column="1" bodyfile="include/endstone/command/command.h" bodystart="31" bodyend="257"/>
     <listofallmembers>
       <member refid="classendstone_1_1Command_1abe0ff7e4cf40cad6b6dcb7e1a9c4bef2" prot="private" virt="non-virtual"><scope>endstone::Command</scope><name>aliases_</name></member>
       <member refid="classendstone_1_1Command_1adac361e9cc0668151e63edebe173a8af" prot="private" virt="non-virtual"><scope>endstone::Command</scope><name>allowChangesFrom</name></member>

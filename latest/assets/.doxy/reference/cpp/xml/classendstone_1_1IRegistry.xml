@@ -20,7 +20,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/registry.h" line="51" column="18" bodyfile="include/endstone/registry.h" bodystart="51" bodyend="-1"/>
+        <location file="include/endstone/registry.h" line="50" column="18" bodyfile="include/endstone/registry.h" bodystart="50" bodyend="-1"/>
       </memberdef>
     </sectiondef>
     <sectiondef kind="public-func">
@@ -36,7 +36,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/registry.h" line="41" column="13"/>
+        <location file="include/endstone/registry.h" line="40" column="13"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1IRegistry_1af9fcd05fdd3d73506763e7cc923cf4cb" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
         <type>std::size_t</type>
@@ -55,7 +55,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/registry.h" line="48" column="26"/>
+        <location file="include/endstone/registry.h" line="47" column="26"/>
       </memberdef>
     </sectiondef>
     <sectiondef kind="protected-func">
@@ -76,7 +76,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/registry.h" line="52" column="25"/>
+        <location file="include/endstone/registry.h" line="51" column="25"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1IRegistry_1acc8156c0ec4f22dee71f290fc030eb25" prot="protected" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
         <type><ref refid="classendstone_1_1Identifier" kindref="compound">void</ref></type>
@@ -95,7 +95,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/registry.h" line="53" column="18"/>
+        <location file="include/endstone/registry.h" line="52" column="18"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1IRegistry_1a4d46fa889687149d8c026b1c91261543" prot="protected" static="no" const="yes" explicit="no" inline="no" noexcept="yes" virt="pure-virtual">
         <type><ref refid="classendstone_1_1Identifier" kindref="compound">const</ref> std::type_info &amp;</type>
@@ -110,7 +110,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/registry.h" line="54" column="35"/>
+        <location file="include/endstone/registry.h" line="53" column="35"/>
       </memberdef>
     </sectiondef>
     <briefdescription>
@@ -131,7 +131,7 @@
         </childnode>
       </node>
     </inheritancegraph>
-    <location file="include/endstone/registry.h" line="39" column="1" bodyfile="include/endstone/registry.h" bodystart="39" bodyend="55"/>
+    <location file="include/endstone/registry.h" line="38" column="1" bodyfile="include/endstone/registry.h" bodystart="38" bodyend="54"/>
     <listofallmembers>
       <member refid="classendstone_1_1IRegistry_1acc8156c0ec4f22dee71f290fc030eb25" prot="protected" virt="pure-virtual"><scope>endstone::IRegistry</scope><name>forEach0</name></member>
       <member refid="classendstone_1_1IRegistry_1a25e5e92882a43fd4da14e6922d75007a" prot="protected" virt="pure-virtual"><scope>endstone::IRegistry</scope><name>get0</name></member>

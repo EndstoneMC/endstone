@@ -151,9 +151,9 @@
         <link refid="block__data_8h_source"/>
         <childnode refid="8" relation="include">
         </childnode>
-        <childnode refid="2" relation="include">
-        </childnode>
         <childnode refid="12" relation="include">
+        </childnode>
+        <childnode refid="2" relation="include">
         </childnode>
         <childnode refid="41" relation="include">
         </childnode>
@@ -205,21 +205,21 @@
       <node id="34">
         <label>endstone/check.h</label>
         <link refid="check_8h_source"/>
+        <childnode refid="12" relation="include">
+        </childnode>
         <childnode refid="6" relation="include">
         </childnode>
         <childnode refid="27" relation="include">
-        </childnode>
-        <childnode refid="12" relation="include">
         </childnode>
       </node>
       <node id="50">
         <label>endstone/command/command_sender.h</label>
         <link refid="command__sender_8h_source"/>
+        <childnode refid="12" relation="include">
+        </childnode>
         <childnode refid="2" relation="include">
         </childnode>
         <childnode refid="27" relation="include">
-        </childnode>
-        <childnode refid="12" relation="include">
         </childnode>
         <childnode refid="51" relation="include">
         </childnode>
@@ -279,13 +279,13 @@
       <node id="22">
         <label>identifier.h</label>
         <link refid="identifier_8h_source"/>
+        <childnode refid="12" relation="include">
+        </childnode>
         <childnode refid="16" relation="include">
         </childnode>
         <childnode refid="2" relation="include">
         </childnode>
         <childnode refid="23" relation="include">
-        </childnode>
-        <childnode refid="12" relation="include">
         </childnode>
       </node>
       <node id="85">
@@ -433,6 +433,8 @@
         <link refid="logger_8h_source"/>
         <childnode refid="8" relation="include">
         </childnode>
+        <childnode refid="12" relation="include">
+        </childnode>
         <childnode refid="6" relation="include">
         </childnode>
         <childnode refid="2" relation="include">
@@ -442,8 +444,6 @@
         <childnode refid="33" relation="include">
         </childnode>
         <childnode refid="27" relation="include">
-        </childnode>
-        <childnode refid="12" relation="include">
         </childnode>
       </node>
       <node id="64">
@@ -597,8 +597,6 @@
         </childnode>
         <childnode refid="42" relation="include">
         </childnode>
-        <childnode refid="43" relation="include">
-        </childnode>
         <childnode refid="17" relation="include">
         </childnode>
         <childnode refid="92" relation="include">
@@ -610,6 +608,8 @@
         <childnode refid="93" relation="include">
         </childnode>
         <childnode refid="97" relation="include">
+        </childnode>
+        <childnode refid="43" relation="include">
         </childnode>
         <childnode refid="98" relation="include">
         </childnode>
@@ -697,13 +697,13 @@
         <link refid="registry_8h_source"/>
         <childnode refid="15" relation="include">
         </childnode>
+        <childnode refid="12" relation="include">
+        </childnode>
         <childnode refid="16" relation="include">
         </childnode>
         <childnode refid="6" relation="include">
         </childnode>
         <childnode refid="2" relation="include">
-        </childnode>
-        <childnode refid="12" relation="include">
         </childnode>
         <childnode refid="17" relation="include">
         </childnode>
@@ -895,9 +895,9 @@
       <node id="58">
         <label>endstone/util/result.h</label>
         <link refid="result_8h_source"/>
-        <childnode refid="2" relation="include">
-        </childnode>
         <childnode refid="12" relation="include">
+        </childnode>
+        <childnode refid="2" relation="include">
         </childnode>
         <childnode refid="59" relation="include">
         </childnode>

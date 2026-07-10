@@ -24,9 +24,9 @@
 
 #pragma once
 
+#include <format>
 #include <string>
 
-#include <format>
 #include <nonstd/expected.hpp>
 
 namespace endstone {

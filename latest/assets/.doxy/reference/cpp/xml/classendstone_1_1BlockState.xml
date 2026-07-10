@@ -18,7 +18,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/block/block_state.h" line="39" column="5"/>
+        <location file="include/endstone/block/block_state.h" line="38" column="5"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1BlockState_1af4b36588a23e8df26ea57425c206265f" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
         <type>std::unique_ptr&lt; <ref refid="classendstone_1_1Block" kindref="compound">Block</ref> &gt;</type>
@@ -36,7 +36,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/block/block_state.h" line="46" column="30"/>
+        <location file="include/endstone/block/block_state.h" line="45" column="30"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1BlockState_1aae3431979452c2b71ba615ecaa110615" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
         <type><ref refid="classendstone_1_1Identifier" kindref="compound">const</ref> <ref refid="classendstone_1_1BlockType" kindref="compound">BlockType</ref> &amp;</type>
@@ -54,7 +54,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/block/block_state.h" line="53" column="30"/>
+        <location file="include/endstone/block/block_state.h" line="52" column="30"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1BlockState_1adf633410dbefd527bd7a7e423223de02" prot="public" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
         <type><ref refid="classendstone_1_1Identifier" kindref="compound">void</ref></type>
@@ -83,7 +83,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/block/block_state.h" line="60" column="18"/>
+        <location file="include/endstone/block/block_state.h" line="59" column="18"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1BlockState_1a18ebe2b1c527ebb7b915157bb2d0c557" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
         <type>std::unique_ptr&lt; <ref refid="classendstone_1_1BlockData" kindref="compound">BlockData</ref> &gt;</type>
@@ -101,7 +101,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/block/block_state.h" line="67" column="30"/>
+        <location file="include/endstone/block/block_state.h" line="66" column="30"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1BlockState_1ac85e292da7159b3835cc3919e68c08c7" prot="public" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
         <type><ref refid="classendstone_1_1Identifier" kindref="compound">void</ref></type>
@@ -130,7 +130,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/block/block_state.h" line="74" column="18"/>
+        <location file="include/endstone/block/block_state.h" line="73" column="18"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1BlockState_1a0d30c01fe70f8e5b591a23fe36490738" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
         <type><ref refid="classendstone_1_1Dimension" kindref="compound">Dimension</ref> &amp;</type>
@@ -148,7 +148,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/block/block_state.h" line="81" column="24"/>
+        <location file="include/endstone/block/block_state.h" line="80" column="24"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1BlockState_1a465f89196adeb9f1cb76b1425f8b1856" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
         <type><ref refid="classendstone_1_1Identifier" kindref="compound">int</ref></type>
@@ -166,7 +166,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/block/block_state.h" line="88" column="18"/>
+        <location file="include/endstone/block/block_state.h" line="87" column="18"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1BlockState_1a26cb455d3bb6d9ab6f703d1df14c9232" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
         <type><ref refid="classendstone_1_1Identifier" kindref="compound">int</ref></type>
@@ -184,7 +184,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/block/block_state.h" line="95" column="18"/>
+        <location file="include/endstone/block/block_state.h" line="94" column="18"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1BlockState_1a1d4ccdc3539f2d549ef3d98393bb89af" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
         <type><ref refid="classendstone_1_1Identifier" kindref="compound">int</ref></type>
@@ -202,7 +202,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/block/block_state.h" line="102" column="18"/>
+        <location file="include/endstone/block/block_state.h" line="101" column="18"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1BlockState_1a6f8f4a475c2c955b1a883877d9b4baf5" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
         <type><ref refid="classendstone_1_1Location" kindref="compound">Location</ref></type>
@@ -220,7 +220,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/block/block_state.h" line="109" column="23"/>
+        <location file="include/endstone/block/block_state.h" line="108" column="23"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1BlockState_1aeaca92e63b3fa7bf37eb82e59bb9a45d" prot="public" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
         <type><ref refid="classendstone_1_1Identifier" kindref="compound">bool</ref></type>
@@ -239,7 +239,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/block/block_state.h" line="119" column="18"/>
+        <location file="include/endstone/block/block_state.h" line="118" column="18"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1BlockState_1a4d603b37f4b38df4151ced22c7f78331" prot="public" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
         <type><ref refid="classendstone_1_1Identifier" kindref="compound">bool</ref></type>
@@ -271,7 +271,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/block/block_state.h" line="129" column="18"/>
+        <location file="include/endstone/block/block_state.h" line="128" column="18"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1BlockState_1a6bb9b025f0e02b8ec732e6a74c27b599" prot="public" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
         <type><ref refid="classendstone_1_1Identifier" kindref="compound">bool</ref></type>
@@ -317,7 +317,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/block/block_state.h" line="142" column="18"/>
+        <location file="include/endstone/block/block_state.h" line="141" column="18"/>
       </memberdef>
     </sectiondef>
     <briefdescription>
@@ -356,7 +356,7 @@
         <link refid="classendstone_1_1Object"/>
       </node>
     </collaborationgraph>
-    <location file="include/endstone/block/block_state.h" line="37" column="1" bodyfile="include/endstone/block/block_state.h" bodystart="37" bodyend="143"/>
+    <location file="include/endstone/block/block_state.h" line="36" column="1" bodyfile="include/endstone/block/block_state.h" bodystart="36" bodyend="142"/>
     <listofallmembers>
       <member refid="classendstone_1_1Object_1a798b5128ce018bbbe8ca949ba78c3db1" prot="public" virt="non-virtual"><scope>endstone::BlockState</scope><name>as</name></member>
       <member refid="classendstone_1_1Object_1ae0f38a62da4c186fce272145e2590cc1" prot="public" virt="non-virtual"><scope>endstone::BlockState</scope><name>as</name></member>

@@ -160,9 +160,9 @@
         <link refid="block__data_8h_source"/>
         <childnode refid="7" relation="include">
         </childnode>
-        <childnode refid="4" relation="include">
-        </childnode>
         <childnode refid="2" relation="include">
+        </childnode>
+        <childnode refid="4" relation="include">
         </childnode>
         <childnode refid="37" relation="include">
         </childnode>
@@ -214,21 +214,21 @@
       <node id="30">
         <label>endstone/check.h</label>
         <link refid="check_8h_source"/>
+        <childnode refid="2" relation="include">
+        </childnode>
         <childnode refid="12" relation="include">
         </childnode>
         <childnode refid="23" relation="include">
-        </childnode>
-        <childnode refid="2" relation="include">
         </childnode>
       </node>
       <node id="46">
         <label>endstone/command/command_sender.h</label>
         <link refid="command__sender_8h_source"/>
+        <childnode refid="2" relation="include">
+        </childnode>
         <childnode refid="4" relation="include">
         </childnode>
         <childnode refid="23" relation="include">
-        </childnode>
-        <childnode refid="2" relation="include">
         </childnode>
         <childnode refid="47" relation="include">
         </childnode>
@@ -258,13 +258,13 @@
       <node id="18">
         <label>identifier.h</label>
         <link refid="identifier_8h_source"/>
+        <childnode refid="2" relation="include">
+        </childnode>
         <childnode refid="11" relation="include">
         </childnode>
         <childnode refid="4" relation="include">
         </childnode>
         <childnode refid="19" relation="include">
-        </childnode>
-        <childnode refid="2" relation="include">
         </childnode>
       </node>
       <node id="80">
@@ -386,6 +386,8 @@
         <link refid="logger_8h_source"/>
         <childnode refid="7" relation="include">
         </childnode>
+        <childnode refid="2" relation="include">
+        </childnode>
         <childnode refid="12" relation="include">
         </childnode>
         <childnode refid="4" relation="include">
@@ -395,8 +397,6 @@
         <childnode refid="29" relation="include">
         </childnode>
         <childnode refid="23" relation="include">
-        </childnode>
-        <childnode refid="2" relation="include">
         </childnode>
       </node>
       <node id="60">
@@ -550,8 +550,6 @@
         </childnode>
         <childnode refid="38" relation="include">
         </childnode>
-        <childnode refid="39" relation="include">
-        </childnode>
         <childnode refid="13" relation="include">
         </childnode>
         <childnode refid="87" relation="include">
@@ -563,6 +561,8 @@
         <childnode refid="88" relation="include">
         </childnode>
         <childnode refid="92" relation="include">
+        </childnode>
+        <childnode refid="39" relation="include">
         </childnode>
         <childnode refid="93" relation="include">
         </childnode>
@@ -650,13 +650,13 @@
         <link refid="registry_8h_source"/>
         <childnode refid="10" relation="include">
         </childnode>
+        <childnode refid="2" relation="include">
+        </childnode>
         <childnode refid="11" relation="include">
         </childnode>
         <childnode refid="12" relation="include">
         </childnode>
         <childnode refid="4" relation="include">
-        </childnode>
-        <childnode refid="2" relation="include">
         </childnode>
         <childnode refid="13" relation="include">
         </childnode>
@@ -848,9 +848,9 @@
       <node id="54">
         <label>endstone/util/result.h</label>
         <link refid="result_8h_source"/>
-        <childnode refid="4" relation="include">
-        </childnode>
         <childnode refid="2" relation="include">
+        </childnode>
+        <childnode refid="4" relation="include">
         </childnode>
         <childnode refid="55" relation="include">
         </childnode>

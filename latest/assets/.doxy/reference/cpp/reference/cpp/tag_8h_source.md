@@ -36,13 +36,13 @@
 #include <utility>
 #include <variant>
 
-#include "endstone/util/format.h"
 #include "endstone/detail.h"
 #include "endstone/nbt/array.h"
 #include "endstone/nbt/compound.h"
 #include "endstone/nbt/list.h"
 #include "endstone/nbt/type.h"
 #include "endstone/nbt/value.h"
+#include "endstone/util/format.h"
 
 namespace endstone {
 using ByteTag = nbt::ValueTag<std::uint8_t>;
@@ -710,8 +710,8 @@ struct std::formatter<endstone::ListTag> : std::formatter<std::string_view> {
 template <>
 struct std::formatter<endstone::CompoundTag::map_type::value_type> : std::formatter<std::string_view> {
     template <typename FormatContext>
-    auto format(const endstone::CompoundTag::map_type::value_type &pair, FormatContext &ctx) const
-        -> format_context::iterator
+    auto format(const endstone::CompoundTag::map_type::value_type &pair,
+                FormatContext &ctx) const -> format_context::iterator
     {
         return std::format_to(ctx.out(), "{}:{}", endstone::nbt::escaped(pair.first), pair.second);
     }

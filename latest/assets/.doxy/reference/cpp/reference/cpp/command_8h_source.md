@@ -127,7 +127,8 @@ public:
             return true;
         }
 
-        return std::any_of(permissions_.begin(), permissions_.end(), [&target](const auto &p) { return target.hasPermission(p); });
+        return std::any_of(permissions_.begin(), permissions_.end(),
+                           [&target](const auto &p) { return target.hasPermission(p); });
     }
 
     bool registerTo(const CommandMap &command_map)

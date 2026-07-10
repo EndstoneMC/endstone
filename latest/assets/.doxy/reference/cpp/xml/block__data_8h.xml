@@ -3,8 +3,8 @@
   <compounddef id="block__data_8h" kind="file" language="C++">
     <compoundname>block_data.h</compoundname>
     <includes local="no">cstdint</includes>
-    <includes local="no">string</includes>
     <includes local="no">format</includes>
+    <includes local="no">string</includes>
     <includes local="no">unordered_map</includes>
     <includes local="no">variant</includes>
     <includes refid="format_8h" local="yes">endstone/util/format.h</includes>
@@ -33,11 +33,11 @@
       <node id="7">
         <label>endstone/util/format.h</label>
         <link refid="format_8h_source"/>
-        <childnode refid="4" relation="include">
+        <childnode refid="3" relation="include">
         </childnode>
         <childnode refid="8" relation="include">
         </childnode>
-        <childnode refid="3" relation="include">
+        <childnode refid="4" relation="include">
         </childnode>
         <childnode refid="9" relation="include">
         </childnode>
@@ -49,13 +49,13 @@
       <node id="2">
         <label>cstdint</label>
       </node>
-      <node id="4">
+      <node id="3">
         <label>format</label>
       </node>
       <node id="8">
         <label>iterator</label>
       </node>
-      <node id="3">
+      <node id="4">
         <label>string</label>
       </node>
       <node id="9">
@@ -772,8 +772,8 @@
 <codeline lineno="15"><highlight class="normal"></highlight><highlight class="preprocessor">#pragma<sp/>once</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="16"><highlight class="normal"></highlight></codeline>
 <codeline lineno="17"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;cstdint&gt;</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="18"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;string&gt;</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="19"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;format&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="18"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;format&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="19"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;string&gt;</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="20"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;unordered_map&gt;</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="21"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;variant&gt;</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="22"><highlight class="normal"></highlight></codeline>

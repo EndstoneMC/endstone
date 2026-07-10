@@ -164,9 +164,9 @@
         <link refid="block__data_8h_source"/>
         <childnode refid="8" relation="include">
         </childnode>
-        <childnode refid="10" relation="include">
-        </childnode>
         <childnode refid="9" relation="include">
+        </childnode>
+        <childnode refid="10" relation="include">
         </childnode>
         <childnode refid="38" relation="include">
         </childnode>
@@ -206,21 +206,21 @@
       <node id="31">
         <label>endstone/check.h</label>
         <link refid="check_8h_source"/>
+        <childnode refid="9" relation="include">
+        </childnode>
         <childnode refid="15" relation="include">
         </childnode>
         <childnode refid="3" relation="include">
-        </childnode>
-        <childnode refid="9" relation="include">
         </childnode>
       </node>
       <node id="47">
         <label>endstone/command/command_sender.h</label>
         <link refid="command__sender_8h_source"/>
+        <childnode refid="9" relation="include">
+        </childnode>
         <childnode refid="10" relation="include">
         </childnode>
         <childnode refid="3" relation="include">
-        </childnode>
-        <childnode refid="9" relation="include">
         </childnode>
         <childnode refid="48" relation="include">
         </childnode>
@@ -288,13 +288,13 @@
       <node id="21">
         <label>identifier.h</label>
         <link refid="identifier_8h_source"/>
+        <childnode refid="9" relation="include">
+        </childnode>
         <childnode refid="14" relation="include">
         </childnode>
         <childnode refid="10" relation="include">
         </childnode>
         <childnode refid="22" relation="include">
-        </childnode>
-        <childnode refid="9" relation="include">
         </childnode>
       </node>
       <node id="57">
@@ -340,6 +340,8 @@
         <link refid="logger_8h_source"/>
         <childnode refid="8" relation="include">
         </childnode>
+        <childnode refid="9" relation="include">
+        </childnode>
         <childnode refid="15" relation="include">
         </childnode>
         <childnode refid="10" relation="include">
@@ -349,8 +351,6 @@
         <childnode refid="30" relation="include">
         </childnode>
         <childnode refid="3" relation="include">
-        </childnode>
-        <childnode refid="9" relation="include">
         </childnode>
       </node>
       <node id="61">
@@ -492,13 +492,13 @@
         <link refid="registry_8h_source"/>
         <childnode refid="13" relation="include">
         </childnode>
+        <childnode refid="9" relation="include">
+        </childnode>
         <childnode refid="14" relation="include">
         </childnode>
         <childnode refid="15" relation="include">
         </childnode>
         <childnode refid="10" relation="include">
-        </childnode>
-        <childnode refid="9" relation="include">
         </childnode>
         <childnode refid="16" relation="include">
         </childnode>
@@ -690,9 +690,9 @@
       <node id="55">
         <label>endstone/util/result.h</label>
         <link refid="result_8h_source"/>
-        <childnode refid="10" relation="include">
-        </childnode>
         <childnode refid="9" relation="include">
+        </childnode>
+        <childnode refid="10" relation="include">
         </childnode>
         <childnode refid="56" relation="include">
         </childnode>

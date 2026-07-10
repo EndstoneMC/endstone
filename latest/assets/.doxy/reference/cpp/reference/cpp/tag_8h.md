@@ -21,13 +21,13 @@
 * `#include <type_traits>`
 * `#include <utility>`
 * `#include <variant>`
-* `#include "endstone/util/format.h"`
 * `#include "endstone/detail.h"`
 * `#include "endstone/nbt/array.h"`
 * `#include "endstone/nbt/compound.h"`
 * `#include "endstone/nbt/list.h"`
 * `#include "endstone/nbt/type.h"`
 * `#include "endstone/nbt/value.h"`
+* `#include "endstone/util/format.h"`
 * `#include "endstone/nbt/io.h"`
 
 

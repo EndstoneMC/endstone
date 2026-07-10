@@ -73,9 +73,9 @@
         <link refid="check_8h_source"/>
         <childnode refid="15" relation="include">
         </childnode>
-        <childnode refid="8" relation="include">
-        </childnode>
         <childnode refid="16" relation="include">
+        </childnode>
+        <childnode refid="8" relation="include">
         </childnode>
       </node>
       <node id="9">
@@ -125,7 +125,7 @@
       <node id="21">
         <label>cstring</label>
       </node>
-      <node id="16">
+      <node id="15">
         <label>format</label>
       </node>
       <node id="11">
@@ -137,7 +137,7 @@
       <node id="3">
         <label>optional</label>
       </node>
-      <node id="15">
+      <node id="16">
         <label>stdexcept</label>
       </node>
       <node id="4">

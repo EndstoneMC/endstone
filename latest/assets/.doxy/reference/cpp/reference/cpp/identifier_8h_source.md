@@ -24,11 +24,10 @@
 
 #pragma once
 
+#include <format>
 #include <functional>
 #include <string>
 #include <string_view>
-
-#include <format>
 
 namespace endstone {
 template <typename T>

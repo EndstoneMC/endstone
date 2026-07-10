@@ -116,9 +116,9 @@
         <link refid="block__data_8h_source"/>
         <childnode refid="9" relation="include">
         </childnode>
-        <childnode refid="7" relation="include">
-        </childnode>
         <childnode refid="6" relation="include">
+        </childnode>
+        <childnode refid="7" relation="include">
         </childnode>
         <childnode refid="10" relation="include">
         </childnode>
@@ -170,21 +170,21 @@
       <node id="38">
         <label>endstone/check.h</label>
         <link refid="check_8h_source"/>
+        <childnode refid="6" relation="include">
+        </childnode>
         <childnode refid="21" relation="include">
         </childnode>
         <childnode refid="2" relation="include">
-        </childnode>
-        <childnode refid="6" relation="include">
         </childnode>
       </node>
       <node id="48">
         <label>endstone/command/command_sender.h</label>
         <link refid="command__sender_8h_source"/>
+        <childnode refid="6" relation="include">
+        </childnode>
         <childnode refid="7" relation="include">
         </childnode>
         <childnode refid="2" relation="include">
-        </childnode>
-        <childnode refid="6" relation="include">
         </childnode>
         <childnode refid="49" relation="include">
         </childnode>
@@ -250,13 +250,13 @@
       <node id="27">
         <label>identifier.h</label>
         <link refid="identifier_8h_source"/>
+        <childnode refid="6" relation="include">
+        </childnode>
         <childnode refid="20" relation="include">
         </childnode>
         <childnode refid="7" relation="include">
         </childnode>
         <childnode refid="14" relation="include">
-        </childnode>
-        <childnode refid="6" relation="include">
         </childnode>
       </node>
       <node id="83">
@@ -346,6 +346,8 @@
         <link refid="logger_8h_source"/>
         <childnode refid="9" relation="include">
         </childnode>
+        <childnode refid="6" relation="include">
+        </childnode>
         <childnode refid="21" relation="include">
         </childnode>
         <childnode refid="7" relation="include">
@@ -355,8 +357,6 @@
         <childnode refid="37" relation="include">
         </childnode>
         <childnode refid="2" relation="include">
-        </childnode>
-        <childnode refid="6" relation="include">
         </childnode>
       </node>
       <node id="62">
@@ -510,8 +510,6 @@
         </childnode>
         <childnode refid="11" relation="include">
         </childnode>
-        <childnode refid="12" relation="include">
-        </childnode>
         <childnode refid="22" relation="include">
         </childnode>
         <childnode refid="90" relation="include">
@@ -523,6 +521,8 @@
         <childnode refid="91" relation="include">
         </childnode>
         <childnode refid="95" relation="include">
+        </childnode>
+        <childnode refid="12" relation="include">
         </childnode>
         <childnode refid="96" relation="include">
         </childnode>
@@ -610,13 +610,13 @@
         <link refid="registry_8h_source"/>
         <childnode refid="19" relation="include">
         </childnode>
+        <childnode refid="6" relation="include">
+        </childnode>
         <childnode refid="20" relation="include">
         </childnode>
         <childnode refid="21" relation="include">
         </childnode>
         <childnode refid="7" relation="include">
-        </childnode>
-        <childnode refid="6" relation="include">
         </childnode>
         <childnode refid="22" relation="include">
         </childnode>
@@ -808,9 +808,9 @@
       <node id="56">
         <label>endstone/util/result.h</label>
         <link refid="result_8h_source"/>
-        <childnode refid="7" relation="include">
-        </childnode>
         <childnode refid="6" relation="include">
+        </childnode>
+        <childnode refid="7" relation="include">
         </childnode>
         <childnode refid="57" relation="include">
         </childnode>

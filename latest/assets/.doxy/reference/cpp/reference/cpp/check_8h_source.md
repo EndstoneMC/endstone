@@ -24,10 +24,9 @@
 
 #pragma once
 
+#include <format>
 #include <stdexcept>
 #include <utility>
-
-#include <format>
 
 namespace endstone {
 class Preconditions {

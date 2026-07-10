@@ -13,35 +13,35 @@
     <includes local="no">type_traits</includes>
     <includes local="no">utility</includes>
     <includes local="no">variant</includes>
-    <includes refid="format_8h" local="yes">endstone/util/format.h</includes>
     <includes refid="detail_8h" local="yes">endstone/detail.h</includes>
     <includes refid="array_8h" local="yes">endstone/nbt/array.h</includes>
     <includes refid="compound_8h" local="yes">endstone/nbt/compound.h</includes>
     <includes refid="list_8h" local="yes">endstone/nbt/list.h</includes>
     <includes refid="type_8h" local="yes">endstone/nbt/type.h</includes>
     <includes refid="value_8h" local="yes">endstone/nbt/value.h</includes>
+    <includes refid="format_8h" local="yes">endstone/util/format.h</includes>
     <includes refid="io_8h" local="yes">endstone/nbt/io.h</includes>
     <includedby refid="item__stack_8h" local="yes">include/endstone/inventory/item_stack.h</includedby>
     <includedby refid="io_8h" local="yes">include/endstone/nbt/io.h</includedby>
     <incdepgraph>
-      <node id="15">
+      <node id="13">
         <label>endstone/detail.h</label>
         <link refid="detail_8h_source"/>
-        <childnode refid="16" relation="include">
+        <childnode refid="14" relation="include">
         </childnode>
         <childnode refid="7" relation="include">
         </childnode>
-        <childnode refid="17" relation="include">
+        <childnode refid="15" relation="include">
         </childnode>
         <childnode refid="3" relation="include">
         </childnode>
-        <childnode refid="18" relation="include">
+        <childnode refid="16" relation="include">
         </childnode>
       </node>
-      <node id="19">
+      <node id="17">
         <label>endstone/nbt/array.h</label>
         <link refid="array_8h_source"/>
-        <childnode refid="20" relation="include">
+        <childnode refid="18" relation="include">
         </childnode>
         <childnode refid="3" relation="include">
         </childnode>
@@ -49,19 +49,19 @@
         </childnode>
         <childnode refid="11" relation="include">
         </childnode>
-        <childnode refid="21" relation="include">
+        <childnode refid="19" relation="include">
         </childnode>
-        <childnode refid="22" relation="include">
+        <childnode refid="20" relation="include">
         </childnode>
       </node>
-      <node id="23">
+      <node id="21">
         <label>endstone/nbt/compound.h</label>
         <link refid="compound_8h_source"/>
-        <childnode refid="20" relation="include">
+        <childnode refid="18" relation="include">
         </childnode>
         <childnode refid="3" relation="include">
         </childnode>
-        <childnode refid="24" relation="include">
+        <childnode refid="22" relation="include">
         </childnode>
         <childnode refid="7" relation="include">
         </childnode>
@@ -69,7 +69,7 @@
         </childnode>
         <childnode refid="11" relation="include">
         </childnode>
-        <childnode refid="22" relation="include">
+        <childnode refid="20" relation="include">
         </childnode>
       </node>
       <node id="27">
@@ -90,10 +90,10 @@
         <childnode refid="1" relation="include">
         </childnode>
       </node>
-      <node id="25">
+      <node id="23">
         <label>endstone/nbt/list.h</label>
         <link refid="list_8h_source"/>
-        <childnode refid="20" relation="include">
+        <childnode refid="18" relation="include">
         </childnode>
         <childnode refid="3" relation="include">
         </childnode>
@@ -103,9 +103,9 @@
         </childnode>
         <childnode refid="11" relation="include">
         </childnode>
-        <childnode refid="21" relation="include">
+        <childnode refid="19" relation="include">
         </childnode>
-        <childnode refid="22" relation="include">
+        <childnode refid="20" relation="include">
         </childnode>
       </node>
       <node id="1">
@@ -135,50 +135,50 @@
         </childnode>
         <childnode refid="13" relation="include">
         </childnode>
-        <childnode refid="15" relation="include">
+        <childnode refid="17" relation="include">
         </childnode>
-        <childnode refid="19" relation="include">
+        <childnode refid="21" relation="include">
         </childnode>
         <childnode refid="23" relation="include">
         </childnode>
+        <childnode refid="20" relation="include">
+        </childnode>
+        <childnode refid="24" relation="include">
+        </childnode>
         <childnode refid="25" relation="include">
-        </childnode>
-        <childnode refid="22" relation="include">
-        </childnode>
-        <childnode refid="26" relation="include">
         </childnode>
         <childnode refid="27" relation="include">
         </childnode>
       </node>
-      <node id="22">
+      <node id="20">
         <label>endstone/nbt/type.h</label>
         <link refid="type_8h_source"/>
         <childnode refid="4" relation="include">
         </childnode>
       </node>
-      <node id="26">
+      <node id="24">
         <label>endstone/nbt/value.h</label>
         <link refid="value_8h_source"/>
-        <childnode refid="20" relation="include">
+        <childnode refid="18" relation="include">
         </childnode>
         <childnode refid="11" relation="include">
         </childnode>
-        <childnode refid="22" relation="include">
+        <childnode refid="20" relation="include">
         </childnode>
       </node>
-      <node id="13">
+      <node id="25">
         <label>endstone/util/format.h</label>
         <link refid="format_8h_source"/>
         <childnode refid="5" relation="include">
         </childnode>
-        <childnode refid="14" relation="include">
+        <childnode refid="26" relation="include">
         </childnode>
         <childnode refid="8" relation="include">
         </childnode>
         <childnode refid="9" relation="include">
         </childnode>
       </node>
-      <node id="20">
+      <node id="18">
         <label>algorithm</label>
       </node>
       <node id="2">
@@ -190,22 +190,22 @@
       <node id="4">
         <label>cstdint</label>
       </node>
-      <node id="16">
+      <node id="14">
         <label>cstring</label>
       </node>
-      <node id="17">
+      <node id="15">
         <label>dlfcn.h</label>
       </node>
-      <node id="18">
+      <node id="16">
         <label>endstone/version.h</label>
       </node>
       <node id="5">
         <label>format</label>
       </node>
-      <node id="14">
+      <node id="26">
         <label>iterator</label>
       </node>
-      <node id="24">
+      <node id="22">
         <label>map</label>
       </node>
       <node id="6">
@@ -229,7 +229,7 @@
       <node id="12">
         <label>variant</label>
       </node>
-      <node id="21">
+      <node id="19">
         <label>vector</label>
       </node>
     </incdepgraph>
@@ -410,13 +410,13 @@
 <codeline lineno="26"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;utility&gt;</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="27"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;variant&gt;</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="28"><highlight class="normal"></highlight></codeline>
-<codeline lineno="29"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;endstone/util/format.h&quot;</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="30"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;endstone/detail.h&quot;</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="31"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;endstone/nbt/array.h&quot;</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="32"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;endstone/nbt/compound.h&quot;</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="33"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;endstone/nbt/list.h&quot;</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="34"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;endstone/nbt/type.h&quot;</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="35"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;endstone/nbt/value.h&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="29"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;endstone/detail.h&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="30"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;endstone/nbt/array.h&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="31"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;endstone/nbt/compound.h&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="32"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;endstone/nbt/list.h&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="33"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;endstone/nbt/type.h&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="34"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;endstone/nbt/value.h&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="35"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;endstone/util/format.h&quot;</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="36"><highlight class="normal"></highlight></codeline>
 <codeline lineno="37"><highlight class="normal"></highlight><highlight class="keyword">namespace<sp/></highlight><highlight class="normal"><ref refid="namespaceendstone" kindref="compound">endstone</ref><sp/>{</highlight></codeline>
 <codeline lineno="38"><highlight class="normal"></highlight><highlight class="keyword">using<sp/></highlight><highlight class="normal">ByteTag<sp/>=<sp/>nbt::ValueTag&lt;std::uint8_t&gt;;</highlight></codeline>
@@ -1084,8 +1084,8 @@
 <codeline lineno="860"><highlight class="normal"></highlight><highlight class="keyword">template</highlight><highlight class="normal"><sp/>&lt;&gt;</highlight></codeline>
 <codeline lineno="861" refid="structstd_1_1formatter_3_01endstone_1_1CompoundTag_1_1map__type_1_1value__type_01_4" refkind="compound"><highlight class="normal"></highlight><highlight class="keyword">struct<sp/></highlight><highlight class="normal">std::formatter&lt;<ref refid="namespaceendstone" kindref="compound">endstone</ref>::CompoundTag::map_type::value_type&gt;<sp/>:<sp/>std::formatter&lt;std::string_view&gt;<sp/>{</highlight></codeline>
 <codeline lineno="862"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">template</highlight><highlight class="normal"><sp/>&lt;</highlight><highlight class="keyword">typename</highlight><highlight class="normal"><sp/>FormatContext&gt;</highlight></codeline>
-<codeline lineno="863"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/>format(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>endstone::CompoundTag::map_type::value_type<sp/>&amp;pair,<sp/>FormatContext<sp/>&amp;ctx)<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="864"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>-&gt;<sp/>format_context::iterator</highlight></codeline>
+<codeline lineno="863"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/>format(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>endstone::CompoundTag::map_type::value_type<sp/>&amp;pair,</highlight></codeline>
+<codeline lineno="864"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>FormatContext<sp/>&amp;ctx)<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>-&gt;<sp/>format_context::iterator</highlight></codeline>
 <codeline lineno="865"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
 <codeline lineno="866"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>std::format_to(ctx.out(),<sp/></highlight><highlight class="stringliteral">&quot;{}:{}&quot;</highlight><highlight class="normal">,<sp/>endstone::nbt::escaped(pair.first),<sp/>pair.second);</highlight></codeline>
 <codeline lineno="867"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>

@@ -11,8 +11,8 @@
 
 
 * `#include <cstdint>`
-* `#include <string>`
 * `#include <format>`
+* `#include <string>`
 * `#include <unordered_map>`
 * `#include <variant>`
 * `#include "endstone/util/format.h"`

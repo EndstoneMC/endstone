@@ -29,7 +29,7 @@
       <node id="10">
         <label>endstone/attribute/attribute_modifier.h</label>
         <link refid="attribute__modifier_8h_source"/>
-        <childnode refid="7" relation="include">
+        <childnode refid="8" relation="include">
         </childnode>
         <childnode refid="5" relation="include">
         </childnode>
@@ -46,19 +46,19 @@
         <childnode refid="9" relation="include">
         </childnode>
       </node>
-      <node id="9">
+      <node id="6">
         <label>format</label>
       </node>
-      <node id="6">
+      <node id="7">
         <label>functional</label>
       </node>
       <node id="2">
         <label>optional</label>
       </node>
-      <node id="7">
+      <node id="8">
         <label>string</label>
       </node>
-      <node id="8">
+      <node id="9">
         <label>string_view</label>
       </node>
       <node id="3">

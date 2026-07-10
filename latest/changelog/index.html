@@ -2619,8 +2619,6 @@ For latest updates join the chat on
             
                 
             
-                
-            
         </ul>
     </nav>
     
@@ -3985,8 +3983,6 @@ For latest updates join the chat on
     
     <nav class="md-nav" aria-label="Unreleased">
         <ul class="md-nav__list">
-            
-                
             
                 
             
@@ -5387,14 +5383,9 @@ and this project adheres to <a href="https://semver.org/spec/v2.0.0.html">Semant
   <code>block_placed_state</code>/<code>block_replaced</code> renamed to <code>block_placed</code>/<code>block_replaced_state</code> to match Bukkit.</li>
 <li><strong>BREAKING</strong>: The Docker image now stores server data in <code>/data</code> instead of <code>/home/endstone/bedrock_server</code>.
   Update your volume mount accordingly (e.g. <code>-v ./data:/data</code>).</li>
-<li><strong>BREAKING</strong>: Standalone bundles now ship for both Windows (<code>endstone-&lt;version&gt;-windows-x86_64.zip</code>) and Linux (<code>endstone-&lt;version&gt;-linux-x86_64.zip</code>), and use <a href="https://docs.astral.sh/uv/">uv</a> to provision Python on demand instead of shipping a Python interpreter. The included <code>start.cmd</code> / <code>start.sh</code> installs uv on first run if it isn't already on <code>PATH</code>, then launches the server via <code>uv run</code> against the bundled wheel. The old <code>bin/python/</code> directory is gone; the server folder (<code>./bedrock_server/</code>) is unchanged.</li>
 <li><code>str()</code> on <code>BlockType</code>, <code>Enchantment</code>, and <code>ItemType</code> now returns a plain <code>"namespace:key"</code> string instead of the underlying <code>Identifier</code> repr.</li>
 <li><code>Block.set_type</code>, <code>BlockState.type</code>, <code>Server.create_block_data</code>, and <code>Inventory.contains</code>/<code>contains_at_least</code>/<code>all</code>/<code>first</code>/<code>remove</code> now take an <code>Identifier</code> (e.g. <code>BlockType.AIR</code>, <code>ItemType.AIR</code>) instead of a plain string, matching <code>ItemStack.type</code> and <code>Dimension.spawn_actor</code>. Plain <code>"namespace:key"</code> strings are still accepted.</li>
 <li><strong>BREAKING</strong>: <code>Block.type</code>, <code>BlockState.type</code>, and <code>BlockData.type</code> now return a <code>BlockType</code> object instead of a string, matching <code>ItemStack.type</code>. The returned object still compares equal to its <code>"namespace:key"</code> string and stringifies to it, but is no longer a <code>str</code>.</li>
-</ul>
-<h3 id="removed">Removed<a class="headerlink" href="#removed" title="Permanent link">&para;</a></h3>
-<ul>
-<li><strong>BREAKING</strong>: Removed <code>scripts/autoinstall.sh</code>. The Linux bundle's <code>start.sh</code> now provisions Python via uv on any distro without sudo, superseding the script's apt/dnf/pacman bootstrap.</li>
 </ul>
 <h3 id="fixed">Fixed<a class="headerlink" href="#fixed" title="Permanent link">&para;</a></h3>
 <ul>
@@ -5402,8 +5393,6 @@ and this project adheres to <a href="https://semver.org/spec/v2.0.0.html">Semant
 <li>Fixed <code>Player.send_message</code> accepting empty messages.</li>
 <li>Fixed command argument parsing dropping optional message parameters with empty tokens.</li>
 <li>Fixed plugin manager destruction order causing access violations on shutdown.</li>
-<li>Fixed a crash (<code>resource deadlock would occur</code>) when reloading the server or cancelling tasks while an asynchronous task scheduled with <code>run_task_timer_async</code>/<code>run_task_later_async</code> was pending. The plugin no longer fails to re-enable after <code>/reload</code> (<a class="magiclink magiclink-github magiclink-issue" href="https://github.com/squidfunk/mkdocs-material/issues/351" title="GitHub Issue: squidfunk/mkdocs-material #351">#351</a>).</li>
-<li>Fixed scheduled tasks ignoring their delay when registered during plugin enable or <code>ServerLoadEvent</code> on a world that has already been played for a while — they now correctly wait for the requested delay instead of running immediately on the first tick (<a class="magiclink magiclink-github magiclink-issue" href="https://github.com/squidfunk/mkdocs-material/issues/317" title="GitHub Issue: squidfunk/mkdocs-material #317">#317</a>).</li>
 </ul>
 <h2 id="0115-2026-07-05"><a href="https://github.com/EndstoneMC/endstone/compare/v0.11.4...v0.11.5">0.11.5</a> - 2026-07-05<a class="headerlink" href="#0115-2026-07-05" title="Permanent link">&para;</a></h2>
 <h3 id="added_1">Added<a class="headerlink" href="#added_1" title="Permanent link">&para;</a></h3>

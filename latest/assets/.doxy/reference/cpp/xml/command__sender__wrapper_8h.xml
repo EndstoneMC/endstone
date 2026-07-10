@@ -11,11 +11,11 @@
       <node id="6">
         <label>endstone/command/command_sender.h</label>
         <link refid="command__sender_8h_source"/>
+        <childnode refid="7" relation="include">
+        </childnode>
         <childnode refid="3" relation="include">
         </childnode>
         <childnode refid="5" relation="include">
-        </childnode>
-        <childnode refid="7" relation="include">
         </childnode>
         <childnode refid="8" relation="include">
         </childnode>
@@ -99,9 +99,9 @@
       <node id="19">
         <label>endstone/util/result.h</label>
         <link refid="result_8h_source"/>
-        <childnode refid="3" relation="include">
-        </childnode>
         <childnode refid="7" relation="include">
+        </childnode>
+        <childnode refid="3" relation="include">
         </childnode>
         <childnode refid="20" relation="include">
         </childnode>
