@@ -14,6 +14,7 @@
 
 #include "bedrock/nbt/list_tag.h"
 
+#include <algorithm>
 #include <format>
 #include <ranges>
 

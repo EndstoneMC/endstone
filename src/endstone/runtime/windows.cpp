@@ -26,6 +26,7 @@
 #include <share.h>
 
 #include <chrono>
+#include <functional>
 #include <iostream>
 #include <string>
 #include <system_error>

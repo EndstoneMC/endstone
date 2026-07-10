@@ -14,6 +14,10 @@
 
 #pragma once
 
+#include <deque>
+#include <memory>
+#include <vector>
+
 #include "bedrock/entity/gamerefs_entity/gamerefs_entity.h"
 #include "bedrock/entity/utilities/movement_correction_interface.h"
 #include "bedrock/forward.h"
