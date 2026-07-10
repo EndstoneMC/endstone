@@ -7,6 +7,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [0.11.6] - 2026-07-10
+
 ### Added
 
 - Added support for BDS version 1.26.33.
@@ -22,6 +24,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Fixed the crash reporter failing to start with `error while loading shared libraries: libc++-*.so` on Linux (e.g. under the Pterodactyl egg). The crash handler is now loaded from its bundled location instead of being copied into the server folder, so it can find its vendored `libc++` (#429).
 - Fixed custom map renderers not being called when the map had no decorations, leaving the map blank instead of showing the rendered image (#426).
 - Fixed death messages no longer showing in chat. A new vanilla game rule shifted the internal game-rule indices, so Endstone was reading the wrong rule when deciding whether to broadcast death messages (#424).
+- Fixed an access-violation crash on server shutdown when plugins were loaded, caused by plugin loaders being destroyed in the wrong order (#339).
 
 ## [0.11.5] - 2026-07-05
 
@@ -1081,7 +1084,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Basic plugin loader for C++ and Python plugins.
 - Basic command system that allows plugins to register custom commands.
 
-[Unreleased]: https://github.com/EndstoneMC/endstone/compare/v0.11.5...HEAD
+[Unreleased]: https://github.com/EndstoneMC/endstone/compare/v0.11.6...HEAD
+[0.11.6]: https://github.com/EndstoneMC/endstone/compare/v0.11.5...v0.11.6
 [0.11.5]: https://github.com/EndstoneMC/endstone/compare/v0.11.4...v0.11.5
 [0.11.4]: https://github.com/EndstoneMC/endstone/compare/v0.11.3...v0.11.4
 [0.11.3]: https://github.com/EndstoneMC/endstone/compare/v0.11.2...v0.11.3

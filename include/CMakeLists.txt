@@ -1,5 +1,5 @@
 cmake_minimum_required(VERSION 3.15)
-project(endstone VERSION 0.11.5 LANGUAGES CXX)
+project(endstone VERSION 0.11.6 LANGUAGES CXX)
 
 include(FetchContent)
 
