@@ -233,7 +233,7 @@ void EndstoneScheduler::mainThreadHeartbeat(std::uint64_t current_tick)
                 current_task_ = 0;
             }
             else {
-                executor_.submit([&task]() { task->run(); });
+                executor_.submit([task]() { task->run(); });
             }
 
             if (task->getPeriod() > 0) {  // repeating task
