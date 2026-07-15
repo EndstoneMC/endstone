@@ -819,11 +819,13 @@ struct std::formatter<endstone::ByteArrayTag> : std::formatter<std::string_view>
         auto out = ctx.out();
         out = std::format_to(out, "[B;");
         auto it = tag.begin();
-        out = std::format_to(out, "{}b", *it);
-        ++it;
-        while (it != tag.end()) {
-            std::format_to(out, ",{}b", *it);
+        if (it != tag.end()) {
+            out = std::format_to(out, "{}b", static_cast<int>(*it));
             ++it;
+            while (it != tag.end()) {
+                out = std::format_to(out, ",{}b", static_cast<int>(*it));
+                ++it;
+            }
         }
         out = std::format_to(out, "]");
         return out;
