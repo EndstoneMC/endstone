@@ -221,6 +221,7 @@ void EndstoneScheduler::mainThreadHeartbeat(std::uint64_t current_tick)
     // +1 so the first heartbeat is tick 1: the counter advances 0 -> 1 on the first tick, matching
     // the contract that a task registered with delay N runs on the Nth tick.
     current_tick = current_tick - *base_tick_ + 1;
+    current_tick_ = current_tick;
 
     // Consume the tasks in the pending queue
     std::shared_ptr<EndstoneTask> pending_task;
@@ -279,7 +280,6 @@ void EndstoneScheduler::mainThreadHeartbeat(std::uint64_t current_tick)
 
         it = queue_.erase(it);
     }
-    current_tick_ = current_tick;
 }
 
 void EndstoneScheduler::removeTask(TaskId id)
