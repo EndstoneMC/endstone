@@ -140,6 +140,24 @@ TEST_F(SchedulerTest, CancelTasks)
     EXPECT_FALSE(scheduler_->isQueued(task3->getTaskId()));
 }
 
+TEST_F(SchedulerTest, CancelTasksKeepsInternalTasks)
+{
+    bool internal_executed = false;
+    bool plugin_executed = false;
+    auto internal_task = scheduler_->runTask([&]() { internal_executed = true; });
+    auto plugin_task = scheduler_->runTask(plugin_, [&]() { plugin_executed = true; });
+    ASSERT_TRUE(internal_task != nullptr);
+    ASSERT_TRUE(plugin_task != nullptr);
+
+    scheduler_->cancelTasks(plugin_);
+
+    EXPECT_TRUE(scheduler_->isQueued(internal_task->getTaskId()));
+    EXPECT_FALSE(scheduler_->isQueued(plugin_task->getTaskId()));
+    scheduler_->mainThreadHeartbeat(++tick_count_);
+    EXPECT_TRUE(internal_executed);
+    EXPECT_FALSE(plugin_executed);
+}
+
 // Regression test for #351: cancelling an idle async task via cancelTasks() used to re-lock
 // tasks_mtx_ recursively (doCancel() -> removeTask()), throwing "resource deadlock would occur".
 TEST_F(SchedulerTest, CancelAsyncTasksDoesNotDeadlock)
