@@ -106,6 +106,8 @@ TEST_F(SchedulerTest, SyncTaskRecoversFromUnknownException)
 
 TEST_F(SchedulerTest, AsyncTaskRecoversFromUnknownException)
 {
+    EXPECT_CALL(server_, getLogger())
+        .WillOnce(testing::ReturnRef(endstone::core::LoggerFactory::getLogger("SchedulerTest")));
     std::promise<void> started;
     auto started_future = started.get_future();
     auto task = scheduler_->runTaskAsync(plugin_, [&]() {
