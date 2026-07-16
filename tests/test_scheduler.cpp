@@ -85,6 +85,19 @@ TEST_F(SchedulerTest, RunTaskLater)
     EXPECT_TRUE(executed);
 }
 
+TEST_F(SchedulerTest, RunTaskLaterFromCallback)
+{
+    bool executed = false;
+    scheduler_->runTask(plugin_, [&]() { scheduler_->runTaskLater(plugin_, [&]() { executed = true; }, 2); });
+
+    scheduler_->mainThreadHeartbeat(++tick_count_);
+    EXPECT_FALSE(executed);
+    scheduler_->mainThreadHeartbeat(++tick_count_);
+    EXPECT_FALSE(executed);
+    scheduler_->mainThreadHeartbeat(++tick_count_);
+    EXPECT_TRUE(executed);
+}
+
 // Regression test for #317: a delayed task registered before the first heartbeat (e.g. in
 // Plugin::onEnable / ServerLoadEvent) must honour its delay even when the world's persisted server
 // tick is already large. The scheduler normalises ticks to a zero-based, session-relative clock.
