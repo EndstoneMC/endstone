@@ -50,6 +50,7 @@ public:
     void addTask(std::shared_ptr<EndstoneTask> task);
     void mainThreadHeartbeat(std::uint64_t current_tick);
     void removeTask(TaskId id);
+    void waitForAsyncTasks(Plugin &plugin);
 
 private:
     TaskId nextId();
