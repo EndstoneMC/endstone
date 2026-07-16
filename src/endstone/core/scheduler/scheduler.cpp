@@ -31,6 +31,11 @@ Result<void> validate(const Plugin &plugin, const std::function<void()> &task)
 
 EndstoneScheduler::EndstoneScheduler(Server &server) : server_(server) {}
 
+Logger &EndstoneScheduler::getLogger() const
+{
+    return server_.getLogger();
+}
+
 std::shared_ptr<Task> EndstoneScheduler::runTask(Plugin &plugin, std::function<void()> task)
 {
     return runTaskLater(plugin, task, 0);
@@ -270,7 +275,19 @@ void EndstoneScheduler::mainThreadHeartbeat(std::uint64_t current_tick)
                 current_task_ = 0;
             }
             else {
-                executor_.submit([task]() { task->run(); });
+                try {
+                    executor_.submit([task]() { task->run(); });
+                }
+                catch (std::exception &e) {
+                    task->doCancel();
+                    server_.getLogger().error("Could not submit task with id {}: {}", task->getTaskId(), e.what());
+                    continue;
+                }
+                catch (...) {
+                    task->doCancel();
+                    server_.getLogger().error("Could not submit task with id {}: unknown exception", task->getTaskId());
+                    continue;
+                }
             }
 
             if (task->getPeriod() > 0) {  // repeating task

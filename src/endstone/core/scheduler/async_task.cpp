@@ -47,6 +47,7 @@ void EndstoneAsyncTask::run()
                                         getOwner()->getName(), getTaskId(), e.what());
     }
     catch (...) {
+        getScheduler().getLogger().warning("Plugin task {} generated an unknown exception", getTaskId());
     }
 
     bool finished = false;
