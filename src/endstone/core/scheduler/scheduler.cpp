@@ -14,6 +14,8 @@
 
 #include "endstone/core/scheduler/scheduler.h"
 
+#include <algorithm>
+
 #include "endstone/core/scheduler/async_task.h"
 
 namespace endstone::core {
@@ -118,6 +120,34 @@ void EndstoneScheduler::cancelTasks(Plugin &plugin)
     // which re-locks tasks_mtx_ and would deadlock if we still held it here.
     for (const auto &task : cancelling) {
         task->doCancel();
+    }
+
+    // Remove scheduler-owned references to cancelled plugin tasks from the
+    // pending and scheduled queues so their callbacks can be released promptly.
+    std::vector<std::shared_ptr<EndstoneTask>> pending;
+    std::shared_ptr<EndstoneTask> task;
+    while (pending_.try_dequeue(task)) {
+        if (task->getOwner() == &plugin) {
+            task.reset();
+        }
+        else {
+            pending.push_back(std::move(task));
+        }
+    }
+    for (auto &pending_task : pending) {
+        pending_.enqueue(std::move(pending_task));
+    }
+
+    for (auto it = queue_.begin(); it != queue_.end();) {
+        auto &tasks = it->second;
+        std::erase_if(tasks, [&plugin](const auto &queued) { return queued->getOwner() == &plugin; });
+        if (tasks.empty()) {
+            it = queue_.erase(it);
+        }
+        else {
+            std::make_heap(tasks.begin(), tasks.end(), cmp_);
+            ++it;
+        }
     }
 }
 
