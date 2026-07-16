@@ -19,6 +19,7 @@
 #include <atomic>
 #include <functional>
 #include <future>
+#include <stdexcept>
 #include <thread>
 #include <vector>
 
@@ -42,8 +43,19 @@ public:
         auto result = task->get_future();
         {
             std::lock_guard lock{mutex};
-            tasks.enqueue([task]() { (*task)(); });
             ++pending_tasks;
+            try {
+                if (!tasks.enqueue([task]() { (*task)(); })) {
+                    throw std::runtime_error("Failed to enqueue task");
+                }
+            }
+            catch (...) {
+                --pending_tasks;
+                if (pending_tasks == 0) {
+                    condition.notify_all();
+                }
+                throw;
+            }
         }
 
         condition.notify_one();
