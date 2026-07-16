@@ -49,7 +49,7 @@ std::shared_ptr<Task> EndstoneScheduler::runTaskTimer(Plugin &plugin, std::funct
     }
 
     auto t = std::make_shared<EndstoneTask>(*this, plugin, task, nextId(), period);
-    t->setNextRun(current_tick_ + delay);
+    t->setNextRun(current_tick_.load(std::memory_order_relaxed) + delay);
     addTask(t);
     return t;
 }
@@ -73,7 +73,7 @@ std::shared_ptr<Task> EndstoneScheduler::runTaskTimerAsync(Plugin &plugin, std::
     }
 
     auto t = std::make_shared<EndstoneAsyncTask>(*this, plugin, task, nextId(), period);
-    t->setNextRun(current_tick_ + delay);
+    t->setNextRun(current_tick_.load(std::memory_order_relaxed) + delay);
     addTask(t);
     return t;
 }
@@ -195,16 +195,18 @@ std::shared_ptr<Task> EndstoneScheduler::runTask(std::function<void()> task)
         return nullptr;
     }
     auto t = std::make_shared<EndstoneTask>(*this, task, nextId(), 0);
-    t->setNextRun(current_tick_);
+    t->setNextRun(current_tick_.load(std::memory_order_relaxed));
     addTask(t);
     return t;
 }
 
 void EndstoneScheduler::addTask(std::shared_ptr<EndstoneTask> task)
 {
+    {
+        std::lock_guard lock{tasks_mtx_};
+        tasks_[task->getTaskId()] = task;
+    }
     pending_.enqueue(task);
-    std::lock_guard lock{tasks_mtx_};
-    tasks_[task->getTaskId()] = task;
 }
 
 void EndstoneScheduler::mainThreadHeartbeat(std::uint64_t current_tick)
@@ -221,7 +223,7 @@ void EndstoneScheduler::mainThreadHeartbeat(std::uint64_t current_tick)
     // +1 so the first heartbeat is tick 1: the counter advances 0 -> 1 on the first tick, matching
     // the contract that a task registered with delay N runs on the Nth tick.
     current_tick = current_tick - *base_tick_ + 1;
-    current_tick_ = current_tick;
+    current_tick_.store(current_tick, std::memory_order_relaxed);
 
     // Consume the tasks in the pending queue
     std::shared_ptr<EndstoneTask> pending_task;

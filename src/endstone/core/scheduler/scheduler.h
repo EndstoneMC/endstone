@@ -66,7 +66,7 @@ private:
     std::mutex tasks_mtx_{};
     std::map<std::uint64_t, std::vector<std::shared_ptr<EndstoneTask>>> queue_{};
     std::optional<std::uint64_t> base_tick_{};
-    std::uint64_t current_tick_{0};
+    std::atomic<std::uint64_t> current_tick_{0};
     std::atomic<TaskId> current_task_{0};
     TaskComparator cmp_{};
     ThreadPoolExecutor executor_;
