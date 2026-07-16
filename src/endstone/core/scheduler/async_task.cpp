@@ -46,6 +46,8 @@ void EndstoneAsyncTask::run()
         getOwner()->getLogger().warning("Plugin {} generated an exception while executing task {}: {}",
                                         getOwner()->getName(), getTaskId(), e.what());
     }
+    catch (...) {
+    }
 
     bool finished = false;
     {

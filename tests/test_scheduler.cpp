@@ -20,6 +20,7 @@
 #include <gmock/gmock.h>
 #include <gtest/gtest.h>
 
+#include "endstone/core/logger_factory.h"
 #include "endstone/core/scheduler/scheduler.h"
 #include "mocks.h"
 
@@ -69,6 +70,42 @@ TEST_F(SchedulerTest, RunTaskAsync)
     scheduler_->mainThreadHeartbeat(++tick_count_);
 
     EXPECT_EQ(future.wait_for(std::chrono::seconds(5)), std::future_status::ready);
+}
+
+TEST_F(SchedulerTest, SyncTaskRecoversFromUnknownException)
+{
+    EXPECT_CALL(server_, getLogger())
+        .WillOnce(testing::ReturnRef(endstone::core::LoggerFactory::getLogger("SchedulerTest")));
+    bool next_executed = false;
+    auto task = scheduler_->runTask(plugin_, []() { throw 42; });
+    scheduler_->runTask(plugin_, [&]() { next_executed = true; });
+    ASSERT_TRUE(task != nullptr);
+
+    EXPECT_NO_THROW(scheduler_->mainThreadHeartbeat(++tick_count_));
+
+    EXPECT_FALSE(scheduler_->isRunning(task->getTaskId()));
+    EXPECT_TRUE(next_executed);
+}
+
+TEST_F(SchedulerTest, AsyncTaskRecoversFromUnknownException)
+{
+    std::promise<void> started;
+    auto started_future = started.get_future();
+    auto task = scheduler_->runTaskAsync(plugin_, [&]() {
+        started.set_value();
+        throw 42;
+    });
+    ASSERT_TRUE(task != nullptr);
+
+    scheduler_->mainThreadHeartbeat(++tick_count_);
+    ASSERT_EQ(started_future.wait_for(std::chrono::seconds(5)), std::future_status::ready);
+
+    auto deadline = std::chrono::steady_clock::now() + std::chrono::seconds(5);
+    while (scheduler_->isRunning(task->getTaskId()) && std::chrono::steady_clock::now() < deadline) {
+        std::this_thread::yield();
+    }
+    EXPECT_FALSE(scheduler_->isRunning(task->getTaskId()));
+    EXPECT_FALSE(scheduler_->isQueued(task->getTaskId()));
 }
 
 // Test running a task later
