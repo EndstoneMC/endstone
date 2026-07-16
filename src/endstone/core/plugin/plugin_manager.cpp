@@ -28,6 +28,7 @@
 #include <boost/algorithm/string/predicate.hpp>
 
 #include "endstone/core/logger_factory.h"
+#include "endstone/core/scheduler/scheduler.h"
 #include "endstone/event/event.h"
 #include "endstone/event/event_handler.h"
 #include "endstone/event/handler_list.h"
@@ -491,6 +492,11 @@ void EndstonePluginManager::disablePlugins()
 void EndstonePluginManager::clearPlugins()
 {
     disablePlugins();
+    if (auto *scheduler = dynamic_cast<EndstoneScheduler *>(&server_.getScheduler())) {
+        for (auto *plugin : plugins_) {
+            scheduler->waitForAsyncTasks(*plugin);
+        }
+    }
     plugins_.clear();
     lookup_names_.clear();
     // TODO: recreate dependency graph

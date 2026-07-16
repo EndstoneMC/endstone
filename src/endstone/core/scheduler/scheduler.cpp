@@ -292,6 +292,23 @@ void EndstoneScheduler::removeTask(TaskId id)
     tasks_.erase(it);
 }
 
+void EndstoneScheduler::waitForAsyncTasks(Plugin &plugin)
+{
+    std::vector<std::shared_ptr<EndstoneAsyncTask>> tasks;
+    {
+        std::lock_guard lock{tasks_mtx_};
+        for (const auto &entry : tasks_) {
+            const auto &task = entry.second;
+            if (!task->isSync() && task->getOwner() == &plugin) {
+                tasks.push_back(std::static_pointer_cast<EndstoneAsyncTask>(task));
+            }
+        }
+    }
+    for (const auto &task : tasks) {
+        task->wait();
+    }
+}
+
 TaskId EndstoneScheduler::nextId()
 {
     TaskId id;

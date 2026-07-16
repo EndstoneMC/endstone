@@ -252,6 +252,39 @@ TEST_F(SchedulerTest, CancelledAsyncTaskDoesNotStart)
     EXPECT_FALSE(cancelled_task_started);
 }
 
+TEST_F(SchedulerTest, WaitForAsyncTasks)
+{
+    std::promise<void> started;
+    std::promise<void> release;
+    std::promise<void> allow_release;
+    auto started_future = started.get_future();
+    auto release_future = release.get_future().share();
+    auto allow_release_future = allow_release.get_future();
+    auto task = scheduler_->runTaskAsync(plugin_, [&]() {
+        started.set_value();
+        release_future.wait();
+    });
+    ASSERT_TRUE(task != nullptr);
+
+    scheduler_->mainThreadHeartbeat(++tick_count_);
+    if (started_future.wait_for(std::chrono::seconds(5)) != std::future_status::ready) {
+        release.set_value();
+        FAIL() << "Async task did not start";
+    }
+
+    scheduler_->cancelTasks(plugin_);
+    EXPECT_TRUE(scheduler_->isRunning(task->getTaskId()));
+    std::jthread releaser([&]() {
+        allow_release_future.wait();
+        release.set_value();
+    });
+
+    allow_release.set_value();
+    scheduler_->waitForAsyncTasks(plugin_);
+
+    EXPECT_FALSE(scheduler_->isRunning(task->getTaskId()));
+}
+
 // Test to check if a task is running
 TEST_F(SchedulerTest, TaskIsRunning)
 {
