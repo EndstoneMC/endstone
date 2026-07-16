@@ -14,10 +14,13 @@
 
 #include "endstone/core/scheduler/thread_pool_executor.h"
 
+#include <algorithm>
+
 namespace endstone::core {
 
 ThreadPoolExecutor::ThreadPoolExecutor(size_t thread_count) : done(false)
 {
+    thread_count = std::max<std::size_t>(thread_count, 1);
     for (size_t i = 0; i < thread_count; ++i) {
         threads.emplace_back(&ThreadPoolExecutor::worker, this);
     }

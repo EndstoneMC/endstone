@@ -28,6 +28,15 @@ TEST(ThreadPoolExecutorTest, ExecuteTasks)
     EXPECT_EQ(future2.get(), 5);
 }
 
+TEST(ThreadPoolExecutorTest, ZeroThreads)
+{
+    ThreadPoolExecutor executor(0);
+    auto future = executor.submit([]() { return 1; });
+
+    ASSERT_EQ(future.wait_for(std::chrono::seconds(5)), std::future_status::ready);
+    EXPECT_EQ(future.get(), 1);
+}
+
 // Test if tasks are executed in parallel
 TEST(ThreadPoolExecutorTest, ParallelExecution)
 {
