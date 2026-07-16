@@ -185,6 +185,38 @@ TEST_F(SchedulerTest, TaskIsRunning)
     EXPECT_FALSE(scheduler_->isRunning(task->getTaskId()));
 }
 
+TEST_F(SchedulerTest, AsyncTaskIsRunning)
+{
+    std::promise<void> started;
+    std::promise<void> release;
+    std::promise<void> finished;
+    auto started_future = started.get_future();
+    auto release_future = release.get_future().share();
+    auto finished_future = finished.get_future();
+    auto task = scheduler_->runTaskAsync(plugin_, [&]() {
+        started.set_value();
+        release_future.wait();
+        finished.set_value();
+    });
+    ASSERT_TRUE(task != nullptr);
+
+    scheduler_->mainThreadHeartbeat(++tick_count_);
+
+    if (started_future.wait_for(std::chrono::seconds(5)) != std::future_status::ready) {
+        release.set_value();
+        FAIL() << "Async task did not start";
+    }
+    EXPECT_TRUE(scheduler_->isRunning(task->getTaskId()));
+    release.set_value();
+    ASSERT_EQ(finished_future.wait_for(std::chrono::seconds(5)), std::future_status::ready);
+
+    auto deadline = std::chrono::steady_clock::now() + std::chrono::seconds(5);
+    while (scheduler_->isRunning(task->getTaskId()) && std::chrono::steady_clock::now() < deadline) {
+        std::this_thread::yield();
+    }
+    EXPECT_FALSE(scheduler_->isRunning(task->getTaskId()));
+}
+
 // Test to check if a task is queued
 TEST_F(SchedulerTest, TaskIsQueued)
 {

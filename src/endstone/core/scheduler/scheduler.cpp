@@ -167,7 +167,7 @@ bool EndstoneScheduler::isRunning(TaskId id)
     }
     // Query the workers outside the lock: getWorkers() takes the task's own mutex, which must
     // never be held together with tasks_mtx_ (see run()/doCancel()).
-    return std::static_pointer_cast<EndstoneAsyncTask>(task)->getWorkers().empty();
+    return !std::static_pointer_cast<EndstoneAsyncTask>(task)->getWorkers().empty();
 }
 
 bool EndstoneScheduler::isQueued(TaskId id)
