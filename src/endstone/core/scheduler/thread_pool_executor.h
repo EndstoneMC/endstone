@@ -40,11 +40,17 @@ public:
             std::bind(std::forward<Func>(func), std::forward<Args>(args)...));
 
         auto result = task->get_future();
-        tasks.enqueue([task]() { (*task)(); });
+        {
+            std::lock_guard lock{mutex};
+            tasks.enqueue([task]() { (*task)(); });
+            ++pending_tasks;
+        }
 
         condition.notify_one();
         return result;
     }
+
+    void wait();
 
 private:
     void worker();
@@ -54,6 +60,7 @@ private:
     std::atomic<bool> done;
     std::mutex mutex;
     std::condition_variable condition;
+    std::size_t pending_tasks{0};
 };
 
 }  // namespace endstone::core

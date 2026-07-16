@@ -293,12 +293,7 @@ TEST_F(SchedulerTest, CancelledAsyncTaskDoesNotStart)
     scheduler_->cancelTasks(plugin_);
     release.set_value();
     ASSERT_EQ(all_finished_future.wait_for(std::chrono::seconds(5)), std::future_status::ready);
-
-    std::promise<void> drained;
-    auto drained_future = drained.get_future();
-    scheduler_->runTaskAsync(plugin_, [&]() { drained.set_value(); });
-    scheduler_->mainThreadHeartbeat(++tick_count_);
-    ASSERT_EQ(drained_future.wait_for(std::chrono::seconds(5)), std::future_status::ready);
+    scheduler_->waitForAsyncTasks(plugin_);
     EXPECT_FALSE(cancelled_task_started);
 }
 
