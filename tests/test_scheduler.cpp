@@ -171,6 +171,87 @@ TEST_F(SchedulerTest, CancelAsyncTasksDoesNotDeadlock)
     EXPECT_FALSE(scheduler_->isQueued(task2->getTaskId()));
 }
 
+TEST_F(SchedulerTest, CancelRunningAsyncTask)
+{
+    std::promise<void> started;
+    std::promise<void> release;
+    std::promise<void> finished;
+    auto started_future = started.get_future();
+    auto release_future = release.get_future().share();
+    auto finished_future = finished.get_future();
+    auto task = scheduler_->runTaskAsync(plugin_, [&]() {
+        started.set_value();
+        release_future.wait();
+        finished.set_value();
+    });
+    ASSERT_TRUE(task != nullptr);
+
+    scheduler_->mainThreadHeartbeat(++tick_count_);
+    if (started_future.wait_for(std::chrono::seconds(5)) != std::future_status::ready) {
+        release.set_value();
+        FAIL() << "Async task did not start";
+    }
+
+    scheduler_->cancelTasks(plugin_);
+
+    EXPECT_TRUE(scheduler_->isRunning(task->getTaskId()));
+    release.set_value();
+    ASSERT_EQ(finished_future.wait_for(std::chrono::seconds(5)), std::future_status::ready);
+
+    auto deadline = std::chrono::steady_clock::now() + std::chrono::seconds(5);
+    while (scheduler_->isRunning(task->getTaskId()) && std::chrono::steady_clock::now() < deadline) {
+        std::this_thread::yield();
+    }
+    EXPECT_FALSE(scheduler_->isRunning(task->getTaskId()));
+}
+
+TEST_F(SchedulerTest, CancelledAsyncTaskDoesNotStart)
+{
+    const auto thread_count = std::thread::hardware_concurrency();
+    if (thread_count == 0) {
+        GTEST_SKIP() << "No executor threads available";
+    }
+
+    std::atomic<unsigned int> started_count{0};
+    std::atomic<unsigned int> finished_count{0};
+    std::promise<void> all_started;
+    std::promise<void> all_finished;
+    std::promise<void> release;
+    auto all_started_future = all_started.get_future();
+    auto all_finished_future = all_finished.get_future();
+    auto release_future = release.get_future().share();
+    for (unsigned int i = 0; i < thread_count; ++i) {
+        scheduler_->runTaskAsync(plugin_, [&]() {
+            if (started_count.fetch_add(1) + 1 == thread_count) {
+                all_started.set_value();
+            }
+            release_future.wait();
+            if (finished_count.fetch_add(1) + 1 == thread_count) {
+                all_finished.set_value();
+            }
+        });
+    }
+
+    std::atomic<bool> cancelled_task_started{false};
+    scheduler_->runTaskAsync(plugin_, [&]() { cancelled_task_started = true; });
+    scheduler_->mainThreadHeartbeat(++tick_count_);
+    if (all_started_future.wait_for(std::chrono::seconds(5)) != std::future_status::ready) {
+        release.set_value();
+        FAIL() << "Executor workers did not start";
+    }
+
+    scheduler_->cancelTasks(plugin_);
+    release.set_value();
+    ASSERT_EQ(all_finished_future.wait_for(std::chrono::seconds(5)), std::future_status::ready);
+
+    std::promise<void> drained;
+    auto drained_future = drained.get_future();
+    scheduler_->runTaskAsync(plugin_, [&]() { drained.set_value(); });
+    scheduler_->mainThreadHeartbeat(++tick_count_);
+    ASSERT_EQ(drained_future.wait_for(std::chrono::seconds(5)), std::future_status::ready);
+    EXPECT_FALSE(cancelled_task_started);
+}
+
 // Test to check if a task is running
 TEST_F(SchedulerTest, TaskIsRunning)
 {

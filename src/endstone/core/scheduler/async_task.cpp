@@ -28,13 +28,12 @@ bool EndstoneAsyncTask::isSync() const
 
 void EndstoneAsyncTask::run()
 {
-    if (isCancelled()) {
-        return;
-    }
-
     auto thread_id = std::this_thread::get_id();
     {
         std::lock_guard lock{mutex_};
+        if (isCancelled()) {
+            return;
+        }
         workers_.push_back({thread_id, getTaskId(), getOwner()});
     }
 
@@ -85,11 +84,11 @@ void EndstoneAsyncTask::run()
 
 void EndstoneAsyncTask::doCancel()
 {
-    // Set cancelled flag to true to not accept new runs
-    EndstoneTask::doCancel();
     bool idle;
     {
         std::lock_guard lock{mutex_};
+        // Set cancelled flag to true to not accept new runs
+        EndstoneTask::doCancel();
         // Do not remove the task unless we are idle; a running worker will remove it when it finishes.
         idle = workers_.empty();
     }
