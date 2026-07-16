@@ -15,6 +15,7 @@
 #include "endstone/core/scheduler/thread_pool_executor.h"
 
 #include <algorithm>
+#include <chrono>
 
 namespace endstone::core {
 

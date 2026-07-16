@@ -17,8 +17,10 @@
 #pragma once
 
 #include <atomic>
+#include <condition_variable>
 #include <functional>
 #include <future>
+#include <mutex>
 #include <stdexcept>
 #include <thread>
 #include <vector>
