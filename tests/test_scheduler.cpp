@@ -12,6 +12,7 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
+#include <future>
 #include <memory>
 #include <string>
 #include <vector>
@@ -55,6 +56,19 @@ TEST_F(SchedulerTest, RunTask)
     EXPECT_FALSE(executed);
     scheduler_->mainThreadHeartbeat(++tick_count_);
     EXPECT_TRUE(executed);
+}
+
+TEST_F(SchedulerTest, RunTaskAsync)
+{
+    std::promise<void> executed;
+    auto future = executed.get_future();
+    auto task = scheduler_->runTaskAsync(plugin_, [&]() { executed.set_value(); });
+    ASSERT_TRUE(task != nullptr);
+    task.reset();
+
+    scheduler_->mainThreadHeartbeat(++tick_count_);
+
+    EXPECT_EQ(future.wait_for(std::chrono::seconds(5)), std::future_status::ready);
 }
 
 // Test running a task later
