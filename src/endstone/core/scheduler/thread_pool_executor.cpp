@@ -14,10 +14,14 @@
 
 #include "endstone/core/scheduler/thread_pool_executor.h"
 
+#include <algorithm>
+#include <chrono>
+
 namespace endstone::core {
 
 ThreadPoolExecutor::ThreadPoolExecutor(size_t thread_count) : done(false)
 {
+    thread_count = std::max<std::size_t>(thread_count, 1);
     for (size_t i = 0; i < thread_count; ++i) {
         threads.emplace_back(&ThreadPoolExecutor::worker, this);
     }
@@ -34,12 +38,24 @@ ThreadPoolExecutor::~ThreadPoolExecutor()
     }
 }
 
+void ThreadPoolExecutor::wait()
+{
+    std::unique_lock lock{mutex};
+    condition.wait(lock, [this]() { return pending_tasks == 0; });
+}
+
 void ThreadPoolExecutor::worker()
 {
     while (!done) {
         std::function<void()> task;
         if (tasks.try_dequeue(task)) {
             task();
+            task = {};
+            {
+                std::lock_guard lock{mutex};
+                --pending_tasks;
+            }
+            condition.notify_all();
         }
         else {
             std::unique_lock<std::mutex> lock(mutex);
@@ -51,6 +67,12 @@ void ThreadPoolExecutor::worker()
     std::function<void()> task;
     while (tasks.try_dequeue(task)) {
         task();
+        task = {};
+        {
+            std::lock_guard lock{mutex};
+            --pending_tasks;
+        }
+        condition.notify_all();
     }
 }
 }  // namespace endstone::core

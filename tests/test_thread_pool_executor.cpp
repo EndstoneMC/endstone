@@ -28,6 +28,37 @@ TEST(ThreadPoolExecutorTest, ExecuteTasks)
     EXPECT_EQ(future2.get(), 5);
 }
 
+TEST(ThreadPoolExecutorTest, ZeroThreads)
+{
+    ThreadPoolExecutor executor(0);
+    auto future = executor.submit([]() { return 1; });
+
+    ASSERT_EQ(future.wait_for(std::chrono::seconds(5)), std::future_status::ready);
+    EXPECT_EQ(future.get(), 1);
+}
+
+TEST(ThreadPoolExecutorTest, WaitForTasks)
+{
+    ThreadPoolExecutor executor(1);
+    std::promise<void> started;
+    std::promise<void> release;
+    auto started_future = started.get_future();
+    auto release_future = release.get_future().share();
+    auto future = executor.submit([&]() {
+        started.set_value();
+        release_future.wait();
+    });
+    if (started_future.wait_for(std::chrono::seconds(5)) != std::future_status::ready) {
+        release.set_value();
+        FAIL() << "Executor task did not start";
+    }
+
+    std::jthread releaser([&]() { release.set_value(); });
+    executor.wait();
+
+    EXPECT_EQ(future.wait_for(std::chrono::seconds(0)), std::future_status::ready);
+}
+
 // Test if tasks are executed in parallel
 TEST(ThreadPoolExecutorTest, ParallelExecution)
 {

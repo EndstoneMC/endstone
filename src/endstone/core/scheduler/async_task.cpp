@@ -28,13 +28,12 @@ bool EndstoneAsyncTask::isSync() const
 
 void EndstoneAsyncTask::run()
 {
-    if (isCancelled()) {
-        return;
-    }
-
     auto thread_id = std::this_thread::get_id();
     {
         std::lock_guard lock{mutex_};
+        if (isCancelled()) {
+            return;
+        }
         workers_.push_back({thread_id, getTaskId(), getOwner()});
     }
 
@@ -46,6 +45,9 @@ void EndstoneAsyncTask::run()
         exception = e;
         getOwner()->getLogger().warning("Plugin {} generated an exception while executing task {}: {}",
                                         getOwner()->getName(), getTaskId(), e.what());
+    }
+    catch (...) {
+        getScheduler().getLogger().warning("Plugin task {} generated an unknown exception", getTaskId());
     }
 
     bool finished = false;
@@ -75,6 +77,7 @@ void EndstoneAsyncTask::run()
         // task is done (one-shot) or has been cancelled while still running.
         finished = workers_.empty() && (getPeriod() == 0 || isCancelled());
     }
+    condition_.notify_all();
 
     // Remove ourselves outside the lock: removeTask() takes the scheduler's tasks_mtx_, which must
     // never be held together with our own mutex_ (the cancel path takes them in the opposite order).
@@ -85,11 +88,11 @@ void EndstoneAsyncTask::run()
 
 void EndstoneAsyncTask::doCancel()
 {
-    // Set cancelled flag to true to not accept new runs
-    EndstoneTask::doCancel();
     bool idle;
     {
         std::lock_guard lock{mutex_};
+        // Set cancelled flag to true to not accept new runs
+        EndstoneTask::doCancel();
         // Do not remove the task unless we are idle; a running worker will remove it when it finishes.
         idle = workers_.empty();
     }
@@ -104,6 +107,12 @@ std::vector<EndstoneAsyncTask::Worker> EndstoneAsyncTask::getWorkers() const
 {
     std::lock_guard lock{mutex_};
     return workers_;
+}
+
+void EndstoneAsyncTask::wait()
+{
+    std::unique_lock lock{mutex_};
+    condition_.wait(lock, [this]() { return workers_.empty(); });
 }
 
 }  // namespace endstone::core

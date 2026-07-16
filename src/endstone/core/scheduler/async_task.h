@@ -14,6 +14,7 @@
 
 #pragma once
 
+#include <condition_variable>
 #include <mutex>
 #include <thread>
 
@@ -36,9 +37,11 @@ public:
     void doCancel() override;
 
     std::vector<Worker> getWorkers() const;
+    void wait();
 
 private:
     mutable std::mutex mutex_;
+    std::condition_variable condition_;
     std::vector<Worker> workers_;
 };
 

@@ -14,6 +14,8 @@
 
 #include "endstone/core/scheduler/scheduler.h"
 
+#include <algorithm>
+
 #include "endstone/core/scheduler/async_task.h"
 
 namespace endstone::core {
@@ -28,6 +30,11 @@ Result<void> validate(const Plugin &plugin, const std::function<void()> &task)
 }  // namespace
 
 EndstoneScheduler::EndstoneScheduler(Server &server) : server_(server) {}
+
+Logger &EndstoneScheduler::getLogger() const
+{
+    return server_.getLogger();
+}
 
 std::shared_ptr<Task> EndstoneScheduler::runTask(Plugin &plugin, std::function<void()> task)
 {
@@ -47,7 +54,7 @@ std::shared_ptr<Task> EndstoneScheduler::runTaskTimer(Plugin &plugin, std::funct
     }
 
     auto t = std::make_shared<EndstoneTask>(*this, plugin, task, nextId(), period);
-    t->setNextRun(current_tick_ + delay);
+    t->setNextRun(current_tick_.load(std::memory_order_relaxed) + delay);
     addTask(t);
     return t;
 }
@@ -71,7 +78,7 @@ std::shared_ptr<Task> EndstoneScheduler::runTaskTimerAsync(Plugin &plugin, std::
     }
 
     auto t = std::make_shared<EndstoneAsyncTask>(*this, plugin, task, nextId(), period);
-    t->setNextRun(current_tick_ + delay);
+    t->setNextRun(current_tick_.load(std::memory_order_relaxed) + delay);
     addTask(t);
     return t;
 }
@@ -119,6 +126,34 @@ void EndstoneScheduler::cancelTasks(Plugin &plugin)
     for (const auto &task : cancelling) {
         task->doCancel();
     }
+
+    // Remove scheduler-owned references to cancelled plugin tasks from the
+    // pending and scheduled queues so their callbacks can be released promptly.
+    std::vector<std::shared_ptr<EndstoneTask>> pending;
+    std::shared_ptr<EndstoneTask> task;
+    while (pending_.try_dequeue(task)) {
+        if (task->getOwner() == &plugin) {
+            task.reset();
+        }
+        else {
+            pending.push_back(std::move(task));
+        }
+    }
+    for (auto &pending_task : pending) {
+        pending_.enqueue(std::move(pending_task));
+    }
+
+    for (auto it = queue_.begin(); it != queue_.end();) {
+        auto &tasks = it->second;
+        std::erase_if(tasks, [&plugin](const auto &queued) { return queued->getOwner() == &plugin; });
+        if (tasks.empty()) {
+            it = queue_.erase(it);
+        }
+        else {
+            std::make_heap(tasks.begin(), tasks.end(), cmp_);
+            ++it;
+        }
+    }
 }
 
 bool EndstoneScheduler::isRunning(TaskId id)
@@ -137,7 +172,7 @@ bool EndstoneScheduler::isRunning(TaskId id)
     }
     // Query the workers outside the lock: getWorkers() takes the task's own mutex, which must
     // never be held together with tasks_mtx_ (see run()/doCancel()).
-    return std::static_pointer_cast<EndstoneAsyncTask>(task)->getWorkers().empty();
+    return !std::static_pointer_cast<EndstoneAsyncTask>(task)->getWorkers().empty();
 }
 
 bool EndstoneScheduler::isQueued(TaskId id)
@@ -165,16 +200,18 @@ std::shared_ptr<Task> EndstoneScheduler::runTask(std::function<void()> task)
         return nullptr;
     }
     auto t = std::make_shared<EndstoneTask>(*this, task, nextId(), 0);
-    t->setNextRun(current_tick_);
+    t->setNextRun(current_tick_.load(std::memory_order_relaxed));
     addTask(t);
     return t;
 }
 
 void EndstoneScheduler::addTask(std::shared_ptr<EndstoneTask> task)
 {
+    {
+        std::lock_guard lock{tasks_mtx_};
+        tasks_[task->getTaskId()] = task;
+    }
     pending_.enqueue(task);
-    std::lock_guard lock{tasks_mtx_};
-    tasks_[task->getTaskId()] = task;
 }
 
 void EndstoneScheduler::mainThreadHeartbeat(std::uint64_t current_tick)
@@ -191,6 +228,7 @@ void EndstoneScheduler::mainThreadHeartbeat(std::uint64_t current_tick)
     // +1 so the first heartbeat is tick 1: the counter advances 0 -> 1 on the first tick, matching
     // the contract that a task registered with delay N runs on the Nth tick.
     current_tick = current_tick - *base_tick_ + 1;
+    current_tick_.store(current_tick, std::memory_order_relaxed);
 
     // Consume the tasks in the pending queue
     std::shared_ptr<EndstoneTask> pending_task;
@@ -230,10 +268,26 @@ void EndstoneScheduler::mainThreadHeartbeat(std::uint64_t current_tick)
                 catch (std::exception &e) {
                     server_.getLogger().error("Could not execute task with id {}: {}", task->getTaskId(), e.what());
                 }
+                catch (...) {
+                    server_.getLogger().error("Could not execute task with id {}: unknown exception",
+                                              task->getTaskId());
+                }
                 current_task_ = 0;
             }
             else {
-                executor_.submit([&task]() { task->run(); });
+                try {
+                    executor_.submit([task]() { task->run(); });
+                }
+                catch (std::exception &e) {
+                    task->doCancel();
+                    server_.getLogger().error("Could not submit task with id {}: {}", task->getTaskId(), e.what());
+                    continue;
+                }
+                catch (...) {
+                    task->doCancel();
+                    server_.getLogger().error("Could not submit task with id {}: unknown exception", task->getTaskId());
+                    continue;
+                }
             }
 
             if (task->getPeriod() > 0) {  // repeating task
@@ -249,7 +303,6 @@ void EndstoneScheduler::mainThreadHeartbeat(std::uint64_t current_tick)
 
         it = queue_.erase(it);
     }
-    current_tick_ = current_tick;
 }
 
 void EndstoneScheduler::removeTask(TaskId id)
@@ -260,6 +313,24 @@ void EndstoneScheduler::removeTask(TaskId id)
         return;
     }
     tasks_.erase(it);
+}
+
+void EndstoneScheduler::waitForAsyncTasks(Plugin &plugin)
+{
+    std::vector<std::shared_ptr<EndstoneAsyncTask>> tasks;
+    {
+        std::lock_guard lock{tasks_mtx_};
+        for (const auto &entry : tasks_) {
+            const auto &task = entry.second;
+            if (!task->isSync() && task->getOwner() == &plugin) {
+                tasks.push_back(std::static_pointer_cast<EndstoneAsyncTask>(task));
+            }
+        }
+    }
+    for (const auto &task : tasks) {
+        task->wait();
+    }
+    executor_.wait();
 }
 
 TaskId EndstoneScheduler::nextId()
