@@ -311,6 +311,7 @@ void EndstoneScheduler::waitForAsyncTasks(Plugin &plugin)
     for (const auto &task : tasks) {
         task->wait();
     }
+    executor_.wait();
 }
 
 TaskId EndstoneScheduler::nextId()

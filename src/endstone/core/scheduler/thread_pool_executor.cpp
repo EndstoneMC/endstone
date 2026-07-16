@@ -37,12 +37,24 @@ ThreadPoolExecutor::~ThreadPoolExecutor()
     }
 }
 
+void ThreadPoolExecutor::wait()
+{
+    std::unique_lock lock{mutex};
+    condition.wait(lock, [this]() { return pending_tasks == 0; });
+}
+
 void ThreadPoolExecutor::worker()
 {
     while (!done) {
         std::function<void()> task;
         if (tasks.try_dequeue(task)) {
             task();
+            task = {};
+            {
+                std::lock_guard lock{mutex};
+                --pending_tasks;
+            }
+            condition.notify_all();
         }
         else {
             std::unique_lock<std::mutex> lock(mutex);
@@ -54,6 +66,12 @@ void ThreadPoolExecutor::worker()
     std::function<void()> task;
     while (tasks.try_dequeue(task)) {
         task();
+        task = {};
+        {
+            std::lock_guard lock{mutex};
+            --pending_tasks;
+        }
+        condition.notify_all();
     }
 }
 }  // namespace endstone::core
