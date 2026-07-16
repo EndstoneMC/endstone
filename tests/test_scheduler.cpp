@@ -59,6 +59,23 @@ TEST_F(SchedulerTest, RunTask)
     EXPECT_TRUE(executed);
 }
 
+TEST_F(SchedulerTest, RunInternalTaskFromAnotherThread)
+{
+    bool executed = false;
+    std::promise<std::shared_ptr<endstone::Task>> registered;
+    auto registered_future = registered.get_future();
+    std::jthread thread([&]() { registered.set_value(scheduler_->runTask([&]() { executed = true; })); });
+    auto task = registered_future.get();
+    thread.join();
+    ASSERT_TRUE(task != nullptr);
+    EXPECT_TRUE(scheduler_->isQueued(task->getTaskId()));
+
+    scheduler_->mainThreadHeartbeat(++tick_count_);
+
+    EXPECT_TRUE(executed);
+    EXPECT_FALSE(scheduler_->isQueued(task->getTaskId()));
+}
+
 TEST_F(SchedulerTest, RunTaskAsync)
 {
     std::promise<void> executed;
