@@ -65,6 +65,9 @@ extra-arguments = [
 [tool.conan-py-build.wheel]
 packages = ["endstone"]
 
+[tool.conan-py-build.sdist]
+include = ["endstone"]
+
 [tool.conan-py-build.version]
 provider = "setuptools_scm"
 
