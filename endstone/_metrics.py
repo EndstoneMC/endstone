@@ -1,3 +1,4 @@
+import os
 import platform
 from pathlib import Path
 from typing import Any, Dict
@@ -7,6 +8,49 @@ import psutil
 from endstone import Server, __minecraft_version__
 
 from .metrics import AdvancedPie, DrilldownPie, MetricsBase, MetricsConfig, SimplePie, SingleLineChart
+
+_ELF_MACHINES = {
+    0x03: "i386",
+    0x28: "arm",
+    0x3E: "amd64",
+    0xB7: "aarch64",
+    0xF3: "riscv64",
+}
+
+
+def _normalise_arch(arch: str) -> str:
+    arch = arch.lower()
+    return "amd64" if arch == "x86_64" else arch
+
+
+def _detect_host_arch() -> str | None:
+    """Real host arch, seen through any emulation layer. None if it can't be determined."""
+    if platform.system() == "Windows":
+        # Only set when the process is emulated (e.g. x64 on an ARM64 host).
+        arch = os.environ.get("PROCESSOR_ARCHITEW6432")
+        return _normalise_arch(arch) if arch else None
+
+    # qemu-user fakes /proc/self/exe to point at the guest binary, but never touches /proc/thread-self.
+    try:
+        with open("/proc/thread-self/exe", "rb") as f:
+            header = f.read(20)
+        if header[:4] == b"\x7fELF":
+            byteorder = "little" if header[5] == 1 else "big"
+            machine = _ELF_MACHINES.get(int.from_bytes(header[18:20], byteorder))
+            if machine is not None:
+                return machine
+    except OSError:
+        pass
+
+    # Rosetta fakes uname and /proc/cpuinfo, but leaves /sys alone.
+    try:
+        with open("/sys/firmware/devicetree/base/cpus/cpu@0/compatible", "rb") as f:
+            if f.read().startswith(b"arm,arm-v8"):
+                return "aarch64"
+    except OSError:
+        pass
+
+    return None
 
 
 class EndstoneMetrics(MetricsBase):
@@ -52,10 +96,7 @@ class EndstoneMetrics(MetricsBase):
             platform_data["osName"] = "Linux"
             platform_data["osVersion"] = platform.release()
 
-        os_arch = platform.machine().lower()
-        if os_arch == "x86_64":
-            os_arch = "amd64"
-        platform_data["osArch"] = os_arch
+        platform_data["osArch"] = _detect_host_arch() or _normalise_arch(platform.machine())
         platform_data["coreCount"] = psutil.cpu_count(logical=False)
 
     def log_info(self, message: str) -> None:

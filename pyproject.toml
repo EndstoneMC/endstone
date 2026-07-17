@@ -1,5 +1,5 @@
 [build-system]
-requires = ["conan-py-build>=0.6.0", "cmake", "ninja"]
+requires = ["conan-py-build>=0.6.0", "cmake", "ninja", "setuptools-scm"]
 build-backend = "conan_py_build.build"
 
 [project]
