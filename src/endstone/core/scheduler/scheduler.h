@@ -22,6 +22,7 @@
 
 #include <moodycamel/concurrentqueue.h>
 
+#include "endstone/core/scheduler/async_task.h"
 #include "endstone/core/scheduler/task.h"
 #include "endstone/core/scheduler/thread_pool_executor.h"
 #include "endstone/scheduler/scheduler.h"
@@ -48,10 +49,10 @@ public:
 
     std::shared_ptr<Task> runTask(std::function<void()> task);
     void addTask(std::shared_ptr<EndstoneTask> task);
-    Logger &getLogger() const;
     void mainThreadHeartbeat(std::uint64_t current_tick);
     void removeTask(TaskId id);
-    void waitForAsyncTasks(Plugin &plugin);
+    void purgeCancelledTasks();
+    std::vector<EndstoneAsyncTask::Worker> getActiveWorkers();
 
 private:
     TaskId nextId();
@@ -69,6 +70,7 @@ private:
     std::optional<std::uint64_t> base_tick_{};
     std::atomic<std::uint64_t> current_tick_{0};
     std::atomic<TaskId> current_task_{0};
+    std::atomic<bool> purge_requested_{false};
     TaskComparator cmp_{};
     ThreadPoolExecutor executor_;
 };

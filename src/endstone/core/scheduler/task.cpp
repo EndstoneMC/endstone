@@ -49,7 +49,7 @@ bool EndstoneTask::isSync() const
 
 bool EndstoneTask::isCancelled() const
 {
-    return cancelled_;
+    return cancelled_.load(std::memory_order_acquire);
 }
 
 void EndstoneTask::cancel()
@@ -66,7 +66,7 @@ void EndstoneTask::run()
 
 void EndstoneTask::doCancel()
 {
-    cancelled_ = true;
+    cancelled_.store(true, std::memory_order_release);
 }
 
 EndstoneScheduler &EndstoneTask::getScheduler() const

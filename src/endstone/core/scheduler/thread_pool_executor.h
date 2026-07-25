@@ -43,28 +43,13 @@ public:
             std::bind(std::forward<Func>(func), std::forward<Args>(args)...));
 
         auto result = task->get_future();
-        {
-            std::lock_guard lock{mutex};
-            ++pending_tasks;
-            try {
-                if (!tasks.enqueue([task]() { (*task)(); })) {
-                    throw std::runtime_error("Failed to enqueue task");
-                }
-            }
-            catch (...) {
-                --pending_tasks;
-                if (pending_tasks == 0) {
-                    condition.notify_all();
-                }
-                throw;
-            }
+        if (!tasks.enqueue([task]() { (*task)(); })) {
+            throw std::runtime_error("Failed to enqueue task");
         }
 
         condition.notify_one();
         return result;
     }
-
-    void wait();
 
 private:
     void worker();
@@ -74,7 +59,6 @@ private:
     std::atomic<bool> done;
     std::mutex mutex;
     std::condition_variable condition;
-    std::size_t pending_tasks{0};
 };
 
 }  // namespace endstone::core
