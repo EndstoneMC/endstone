@@ -37,12 +37,12 @@ void EndstoneAsyncTask::run()
         workers_.push_back({thread_id, getTaskId(), getOwner()});
     }
 
-    std::optional<std::exception> exception;
+    std::optional<std::string> exception;
     try {
         EndstoneTask::run();
     }
     catch (std::exception &e) {
-        exception = e;
+        exception = e.what();
         getOwner()->getLogger().warning("Plugin {} generated an exception while executing task {}: {}",
                                         getOwner()->getName(), getTaskId(), e.what());
     }
@@ -66,7 +66,7 @@ void EndstoneAsyncTask::run()
             getOwner()->getLogger().error(std::format("Unable to remove worker {} on task {} for {}", tid.str(),
                                                       getTaskId(), getOwner()->getDescription().getFullName()));
             if (exception.has_value()) {
-                getOwner()->getLogger().error(exception->what());
+                getOwner()->getLogger().error(*exception);
             }
         }
 
