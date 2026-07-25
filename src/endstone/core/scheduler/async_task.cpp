@@ -84,11 +84,10 @@ void EndstoneAsyncTask::run()
 
 void EndstoneAsyncTask::doCancel()
 {
+    EndstoneTask::doCancel();
     bool idle;
     {
         std::lock_guard lock{mutex_};
-        // Set cancelled flag to true to not accept new runs
-        EndstoneTask::doCancel();
         // Do not remove the task unless we are idle; a running worker will remove it when it finishes.
         idle = workers_.empty();
     }
