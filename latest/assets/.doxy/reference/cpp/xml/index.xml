@@ -1825,6 +1825,7 @@
     <member refid="classendstone_1_1Player_1ae06900ef1cc1453b40f6af3c8c22a28f" kind="function"><name>setWalkSpeed</name></member>
     <member refid="classendstone_1_1Player_1ae04868c49c3dc7236adea90083ab7351" kind="function"><name>getScoreboard</name></member>
     <member refid="classendstone_1_1Player_1a90d8066d7e5715f245ab270bac8cb3ce" kind="function"><name>setScoreboard</name></member>
+    <member refid="classendstone_1_1Player_1a774461c162938a1c9658944f8a3b7a77" kind="function"><name>sendActionBar</name></member>
     <member refid="classendstone_1_1Player_1a57b35a3e8772c746590f3331bd41fab2" kind="function"><name>sendPopup</name></member>
     <member refid="classendstone_1_1Player_1ace6a01c98934469d0d7a1d3c61f444be" kind="function"><name>sendTip</name></member>
     <member refid="classendstone_1_1Player_1a2558a7cac1d76547e05eee61db8cc1ea" kind="function"><name>sendToast</name></member>

@@ -1265,6 +1265,7 @@
 * **setDefault** ([**endstone::Permission**](classendstone_1_1Permission.md))
 * **setPermission** ([**endstone::PermissionAttachment**](classendstone_1_1PermissionAttachment.md))
 * **setRemovalCallback** ([**endstone::PermissionAttachment**](classendstone_1_1PermissionAttachment.md))
+* **sendActionBar** ([**endstone::Player**](classendstone_1_1Player.md))
 * **sendForm** ([**endstone::Player**](classendstone_1_1Player.md))
 * **sendMap** ([**endstone::Player**](classendstone_1_1Player.md))
 * **sendPacket** ([**endstone::Player**](classendstone_1_1Player.md))
