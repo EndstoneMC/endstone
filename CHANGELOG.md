@@ -7,8 +7,15 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+### Changed
+
+- `/reload` now waits up to 2.5 seconds for running async tasks to finish, then logs a warning naming the plugin ("Nag author(s) ...") and proceeds, matching CraftBukkit. Previously the reload tore plugins down immediately, so a still-running async task could crash the server.
+
 ### Fixed
 
+- Fixed `Scheduler.is_running()` returning the opposite of the truth for async tasks: `True` while the task was idle and `False` while it was actually executing.
+- Fixed a class of scheduler crashes and leaks around async tasks: a task submitted to the thread pool could be destroyed while still queued, a task cancelled at the wrong moment could still run, and tasks scheduled from another thread or from inside a task callback could leak or fire one tick early (#436).
+- Fixed cancelled tasks holding on to their callbacks until their scheduled tick; they are now released on the next tick, and before plugin libraries are unloaded on `/reload`.
 - Fixed `PluginLoader.disable_plugin` in Python enabling the plugin instead of disabling it.
 - Fixed an access-violation crash when converting NBT data containing an empty byte array to a string, for example the item NBT of a firework star (#443).
 - Fixed death messages for entity and projectile kills always showing the generic "Player died" instead of the detailed vanilla message, such as "Player was slain by Zombie". Death message overrides set on the damage source are now honored as well (#438).
