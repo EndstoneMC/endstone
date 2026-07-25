@@ -25,6 +25,7 @@
 #include "endstone/core/scheduler/async_task.h"
 #include "endstone/core/scheduler/task.h"
 #include "endstone/core/scheduler/thread_pool_executor.h"
+#include "endstone/core/scheduler/worker.h"
 #include "endstone/scheduler/scheduler.h"
 
 namespace endstone::core {
@@ -52,7 +53,7 @@ public:
     void mainThreadHeartbeat(std::uint64_t current_tick);
     void removeTask(TaskId id);
     void purgeCancelledTasks();
-    std::vector<EndstoneAsyncTask::Worker> getActiveWorkers();
+    std::vector<EndstoneWorker> getActiveWorkers();
 
 private:
     TaskId nextId();

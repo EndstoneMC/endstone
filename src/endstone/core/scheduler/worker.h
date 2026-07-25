@@ -14,27 +14,16 @@
 
 #pragma once
 
-#include <mutex>
-#include <vector>
+#include <thread>
 
-#include "endstone/core/scheduler/task.h"
-#include "endstone/core/scheduler/worker.h"
+#include "endstone/scheduler/task.h"
 
 namespace endstone::core {
 
-class EndstoneAsyncTask : public EndstoneTask {
-public:
-    using EndstoneTask::EndstoneTask;
-    [[nodiscard]] bool isSync() const override;
-
-    void run() override;
-    void doCancel() override;
-
-    std::vector<EndstoneWorker> getWorkers() const;
-
-private:
-    mutable std::mutex mutex_;
-    std::vector<EndstoneWorker> workers_;
+struct EndstoneWorker {
+    std::thread::id thread_id;
+    TaskId task_id;
+    Plugin *owner_;
 };
 
 }  // namespace endstone::core

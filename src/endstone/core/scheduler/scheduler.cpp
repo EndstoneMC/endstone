@@ -308,7 +308,7 @@ void EndstoneScheduler::removeTask(TaskId id)
     tasks_.erase(it);
 }
 
-std::vector<EndstoneAsyncTask::Worker> EndstoneScheduler::getActiveWorkers()
+std::vector<EndstoneWorker> EndstoneScheduler::getActiveWorkers()
 {
     std::vector<std::shared_ptr<EndstoneAsyncTask>> tasks;
     {
@@ -321,7 +321,7 @@ std::vector<EndstoneAsyncTask::Worker> EndstoneScheduler::getActiveWorkers()
     }
     // Query the workers outside the lock: getWorkers() takes the task's own mutex, which must
     // never be held together with tasks_mtx_ (see run()/doCancel()).
-    std::vector<EndstoneAsyncTask::Worker> workers;
+    std::vector<EndstoneWorker> workers;
     for (const auto &task : tasks) {
         auto task_workers = task->getWorkers();
         workers.insert(workers.end(), task_workers.begin(), task_workers.end());

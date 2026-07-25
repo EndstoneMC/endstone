@@ -98,7 +98,7 @@ void EndstoneAsyncTask::doCancel()
     }
 }
 
-std::vector<EndstoneAsyncTask::Worker> EndstoneAsyncTask::getWorkers() const
+std::vector<EndstoneWorker> EndstoneAsyncTask::getWorkers() const
 {
     std::lock_guard lock{mutex_};
     return workers_;
