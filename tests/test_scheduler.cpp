@@ -180,7 +180,7 @@ TEST_F(SchedulerTest, CancelTasksKeepsInternalTasks)
 }
 
 // Regression test for #436: a cancelled task's callback is released by the next heartbeat's
-// main-thread purge (the CraftBukkit pending/temp purge), not kept until its scheduled tick.
+// main-thread cleanup (the CraftBukkit pending/temp removal), not kept until its scheduled tick.
 TEST_F(SchedulerTest, CancelTaskReleasesQueuedCallback)
 {
     auto sentinel = std::make_shared<bool>(false);
@@ -201,7 +201,7 @@ TEST_F(SchedulerTest, CancelTaskReleasesQueuedCallback)
     scheduler_->cancelTask(cancelled_id);
     EXPECT_FALSE(sentinel_ref.expired());
 
-    scheduler_->mainThreadHeartbeat(++tick_count_);  // purge drops the cancelled task
+    scheduler_->mainThreadHeartbeat(++tick_count_);  // removes the cancelled task
     EXPECT_TRUE(sentinel_ref.expired());
     EXPECT_TRUE(scheduler_->isQueued(kept_id));
 

@@ -14,14 +14,11 @@
 
 #pragma once
 
-#pragma once
-
 #include <atomic>
 #include <condition_variable>
 #include <functional>
 #include <future>
 #include <mutex>
-#include <stdexcept>
 #include <thread>
 #include <vector>
 
@@ -43,10 +40,7 @@ public:
             std::bind(std::forward<Func>(func), std::forward<Args>(args)...));
 
         auto result = task->get_future();
-        if (!tasks.enqueue([task]() { (*task)(); })) {
-            throw std::runtime_error("Failed to enqueue task");
-        }
-
+        tasks.enqueue([task]() { (*task)(); });
         condition.notify_one();
         return result;
     }

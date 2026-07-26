@@ -72,6 +72,7 @@
 #include "endstone/event/server/server_load_event.h"
 #include "endstone/plugin/plugin.h"
 #include "endstone/runtime/runtime.h"
+#include "endstone/util/format.h"
 
 namespace fs = std::filesystem;
 namespace py = pybind11;
@@ -498,15 +499,12 @@ void EndstoneServer::reload()
     }
     for (const auto &worker : scheduler.getActiveWorkers()) {
         const auto &description = worker.owner_->getDescription();
-        std::string authors;
-        for (const auto &author : description.getAuthors()) {
-            authors += authors.empty() ? author : ", " + author;
-        }
-        getLogger().error("Nag author(s): '{}' of '{}' about the following: {}", authors, description.getFullName(),
+        getLogger().error("Nag author(s): '{}' of '{}' about the following: {}",
+                          detail::join(description.getAuthors(), ", "), description.getFullName(),
                           "This plugin is not properly shutting down its async tasks when it is being reloaded. This "
                           "may cause conflicts with the newly loaded version of the plugin");
     }
-    scheduler.purgeCancelledTasks();
+    scheduler.removeCancelledTasks();
 
     plugin_manager_->clearPlugins();
     reloadData();
