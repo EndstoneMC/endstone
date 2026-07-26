@@ -3034,7 +3034,7 @@ For latest updates join the chat on
 </tr>
 <tr>
 <td style="text-align: right;">virtual <a href="../classendstone_1_1Identifier/"><strong>bool</strong></a></td>
-<td style="text-align: left;"><a href="#function-unloadchunk"><strong>unloadChunk</strong></a> (<a href="../classendstone_1_1Identifier/"><strong>int</strong></a> x, <a href="../classendstone_1_1Identifier/"><strong>int</strong></a> z) = 0<br><em>Releases the plugin-owned ticket that</em> <code>loadChunk()</code> <em>placed on the</em><a href="../classendstone_1_1Chunk/"><em><strong>Chunk</strong></em></a> <em>at the given coordinates.</em></td>
+<td style="text-align: left;"><a href="#function-unloadchunk"><strong>unloadChunk</strong></a> (<a href="../classendstone_1_1Identifier/"><strong>int</strong></a> x, <a href="../classendstone_1_1Identifier/"><strong>int</strong></a> z) = 0<br><em>Releases the hold that</em> <code>loadChunk()</code> <em>placed on the</em><a href="../classendstone_1_1Chunk/"><em><strong>Chunk</strong></em></a> <em>at the given coordinates.</em></td>
 </tr>
 <tr>
 <td style="text-align: right;">virtual</td>
@@ -3224,14 +3224,14 @@ For latest updates join the chat on
 </span><span id="__span-16-3"><a id="__codelineno-16-3" name="__codelineno-16-3" href="#__codelineno-16-3"></a><span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="n">z</span>
 </span><span id="__span-16-4"><a id="__codelineno-16-4" name="__codelineno-16-4" href="#__codelineno-16-4"></a><span class="p">)</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span>
 </span></code></pre></div></p>
-<p>Unlike Java Edition, Bedrock has no synchronous chunk load: this registers a plugin-owned ticking ticket for the chunk, which is honoured on the next server tick (so the chunk may not be available within this call). The chunk is then kept loaded and ticking until removed with <code>unloadChunk()</code>, the server restarts, or the ticket limit is reached. Intended for keeping a handful of chunks resident; it is not suited to loading large regions.</p>
+<p>The chunk is loaded and then held resident by Endstone until removed with <code>unloadChunk()</code> or the server restarts. Intended for keeping a handful of chunks resident; it is not suited to loading large regions.</p>
 <p><strong>Parameters:</strong></p>
 <ul>
 <li><code>x</code> X-coordinate of the chunk </li>
 <li><code>z</code> Z-coordinate of the chunk </li>
 </ul>
 <p><strong>Returns:</strong></p>
-<p><code>true</code> if the ticket was registered (or already present), otherwise <code>false</code> </p>
+<p><code>true</code> if the chunk was loaded (or already resident), otherwise <code>false</code> </p>
 <hr>
 
 <h3 id="function-spawnactor">function spawnActor<a class="headerlink" href="#function-spawnactor" title="Permanent link">&para;</a></h3>
@@ -3251,20 +3251,20 @@ For latest updates join the chat on
 <hr>
 
 <h3 id="function-unloadchunk">function unloadChunk<a class="headerlink" href="#function-unloadchunk" title="Permanent link">&para;</a></h3>
-<p><em>Releases the plugin-owned ticket that</em> <code>loadChunk()</code> <em>placed on the</em><a href="../classendstone_1_1Chunk/"><em><strong>Chunk</strong></em></a> <em>at the given coordinates.</em>
+<p><em>Releases the hold that</em> <code>loadChunk()</code> <em>placed on the</em><a href="../classendstone_1_1Chunk/"><em><strong>Chunk</strong></em></a> <em>at the given coordinates.</em>
 <div class="language-C++ highlight"><pre><span></span><code><span id="__span-18-1"><a id="__codelineno-18-1" name="__codelineno-18-1" href="#__codelineno-18-1"></a><span class="k">virtual</span><span class="w"> </span><span class="kt">bool</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">Dimension</span><span class="o">::</span><span class="n">unloadChunk</span><span class="w"> </span><span class="p">(</span>
 </span><span id="__span-18-2"><a id="__codelineno-18-2" name="__codelineno-18-2" href="#__codelineno-18-2"></a><span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="n">x</span><span class="p">,</span>
 </span><span id="__span-18-3"><a id="__codelineno-18-3" name="__codelineno-18-3" href="#__codelineno-18-3"></a><span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="n">z</span>
 </span><span id="__span-18-4"><a id="__codelineno-18-4" name="__codelineno-18-4" href="#__codelineno-18-4"></a><span class="p">)</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span>
 </span></code></pre></div></p>
-<p>This only removes Endstone's own ticket; it never affects <code>/tickingarea</code>s or other holders. The chunk is unloaded once nothing else keeps it loaded (a nearby player, the spawn area, etc.), so this is a no-op in effect while the chunk is still in use.</p>
+<p>This only drops Endstone's own reference; it never affects <code>/tickingarea</code>s or other holders. The chunk is unloaded once nothing else keeps it loaded (a nearby player, the spawn area, etc.), so this is a no-op in effect while the chunk is still in use.</p>
 <p><strong>Parameters:</strong></p>
 <ul>
 <li><code>x</code> X-coordinate of the chunk </li>
 <li><code>z</code> Z-coordinate of the chunk </li>
 </ul>
 <p><strong>Returns:</strong></p>
-<p><code>true</code> once the ticket has been released </p>
+<p><code>true</code> once the hold has been released </p>
 <hr>
 
 <h3 id="function-dimension">function ~Dimension<a class="headerlink" href="#function-dimension" title="Permanent link">&para;</a></h3>

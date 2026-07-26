@@ -48,7 +48,7 @@ public:
 template <>
 struct std::formatter<endstone::Chunk> : std::formatter<std::string_view> {
     template <typename FormatContext>
-    auto format(const endstone::Chunk &self, FormatContext &ctx) const -> format_context::iterator
+    auto format(const endstone::Chunk &self, FormatContext &ctx) const
     {
         return std::format_to(ctx.out(), "Chunk(x={}, z={})", self.getX(), self.getZ());
     }

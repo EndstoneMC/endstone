@@ -9,7 +9,7 @@
       </param>
     </templateparamlist>
     <sectiondef kind="public-func">
-      <memberdef kind="function" id="structstd_1_1formatter_3_01T_01_4_1a6b85600bb4badb8e36b91ccbd22510c8" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+      <memberdef kind="function" id="structstd_1_1formatter_3_01T_01_4_1afe00bc1288dc59e2b4bac098d5e697e1" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
         <templateparamlist>
           <param>
             <type>typename FormatContext</type>
@@ -17,7 +17,7 @@
         </templateparamlist>
         <type>auto</type>
         <definition>auto std::formatter&lt; T &gt;::format</definition>
-        <argsstring>(const T &amp;val, FormatContext &amp;ctx) const -&gt; format_context::iterator</argsstring>
+        <argsstring>(const T &amp;val, FormatContext &amp;ctx) const</argsstring>
         <name>format</name>
         <qualifiedname>std::formatter&lt; T &gt;::format</qualifiedname>
         <param>
@@ -66,7 +66,7 @@
     </collaborationgraph>
     <location file="include/endstone/registry.h" line="190" column="1" bodyfile="include/endstone/registry.h" bodystart="190" bodyend="196"/>
     <listofallmembers>
-      <member refid="structstd_1_1formatter_3_01T_01_4_1a6b85600bb4badb8e36b91ccbd22510c8" prot="public" virt="non-virtual"><scope>std::formatter&lt; T &gt;</scope><name>format</name></member>
+      <member refid="structstd_1_1formatter_3_01T_01_4_1afe00bc1288dc59e2b4bac098d5e697e1" prot="public" virt="non-virtual"><scope>std::formatter&lt; T &gt;</scope><name>format</name></member>
     </listofallmembers>
   </compounddef>
 </doxygen>

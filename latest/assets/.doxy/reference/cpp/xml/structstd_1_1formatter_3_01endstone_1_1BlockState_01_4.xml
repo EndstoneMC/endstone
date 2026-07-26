@@ -22,7 +22,7 @@
       </memberdef>
     </sectiondef>
     <sectiondef kind="public-func">
-      <memberdef kind="function" id="structstd_1_1formatter_3_01endstone_1_1BlockState_01_4_1ac2cb57b9233533d769a0c7816e49d364" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+      <memberdef kind="function" id="structstd_1_1formatter_3_01endstone_1_1BlockState_01_4_1a29a4bcde312565c01d4ed3c3a655c63f" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
         <templateparamlist>
           <param>
             <type>typename FormatContext</type>
@@ -30,7 +30,7 @@
         </templateparamlist>
         <type>auto</type>
         <definition>auto std::formatter&lt; endstone::BlockState &gt;::format</definition>
-        <argsstring>(const Type &amp;val, FormatContext &amp;ctx) const -&gt; format_context::iterator</argsstring>
+        <argsstring>(const Type &amp;val, FormatContext &amp;ctx) const</argsstring>
         <name>format</name>
         <qualifiedname>std::formatter&lt; endstone::BlockState &gt;::format</qualifiedname>
         <param>
@@ -78,7 +78,7 @@
     </collaborationgraph>
     <location file="include/endstone/block/block_state.h" line="146" column="1" bodyfile="include/endstone/block/block_state.h" bodystart="146" bodyend="155"/>
     <listofallmembers>
-      <member refid="structstd_1_1formatter_3_01endstone_1_1BlockState_01_4_1ac2cb57b9233533d769a0c7816e49d364" prot="public" virt="non-virtual"><scope>std::formatter&lt; endstone::BlockState &gt;</scope><name>format</name></member>
+      <member refid="structstd_1_1formatter_3_01endstone_1_1BlockState_01_4_1a29a4bcde312565c01d4ed3c3a655c63f" prot="public" virt="non-virtual"><scope>std::formatter&lt; endstone::BlockState &gt;</scope><name>format</name></member>
       <member refid="structstd_1_1formatter_3_01endstone_1_1BlockState_01_4_1a3630c35a1602be54633c367ac58c6ae9" prot="public" virt="non-virtual"><scope>std::formatter&lt; endstone::BlockState &gt;</scope><name>Type</name></member>
     </listofallmembers>
   </compounddef>

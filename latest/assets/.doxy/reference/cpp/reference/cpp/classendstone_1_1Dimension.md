@@ -75,7 +75,7 @@ Inherits the following classes: std::enable_shared_from_this< Dimension >
 | virtual [**bool**](classendstone_1_1Identifier.md) | [**isValid**](#function-isvalid) () const = 0<br>_Checks whether this dimension is still valid (loaded)._  |
 | virtual [**bool**](classendstone_1_1Identifier.md) | [**loadChunk**](#function-loadchunk) ([**int**](classendstone_1_1Identifier.md) x, [**int**](classendstone_1_1Identifier.md) z) = 0<br>_Requests the_ [_**Chunk**_](classendstone_1_1Chunk.md) _at the given coordinates to be loaded, and keeps it loaded until it is unloaded again._ |
 | virtual [**Actor**](classendstone_1_1Actor.md) \* | [**spawnActor**](#function-spawnactor) ([**Location**](classendstone_1_1Location.md) location, [**ActorTypeId**](classendstone_1_1Identifier.md) type) = 0<br>_Creates an actor at the given_ [_**Location**_](classendstone_1_1Location.md) _._ |
-| virtual [**bool**](classendstone_1_1Identifier.md) | [**unloadChunk**](#function-unloadchunk) ([**int**](classendstone_1_1Identifier.md) x, [**int**](classendstone_1_1Identifier.md) z) = 0<br>_Releases the plugin-owned ticket that_ `loadChunk()` _placed on the_[_**Chunk**_](classendstone_1_1Chunk.md) _at the given coordinates._ |
+| virtual [**bool**](classendstone_1_1Identifier.md) | [**unloadChunk**](#function-unloadchunk) ([**int**](classendstone_1_1Identifier.md) x, [**int**](classendstone_1_1Identifier.md) z) = 0<br>_Releases the hold that_ `loadChunk()` _placed on the_[_**Chunk**_](classendstone_1_1Chunk.md) _at the given coordinates._ |
 | virtual  | [**~Dimension**](#function-dimension) () = default<br> |
 
 
@@ -566,7 +566,7 @@ virtual bool endstone::Dimension::loadChunk (
 
 
 
-Unlike Java Edition, Bedrock has no synchronous chunk load: this registers a plugin-owned ticking ticket for the chunk, which is honoured on the next server tick (so the chunk may not be available within this call). The chunk is then kept loaded and ticking until removed with `unloadChunk()`, the server restarts, or the ticket limit is reached. Intended for keeping a handful of chunks resident; it is not suited to loading large regions.
+The chunk is loaded and then held resident by Endstone until removed with `unloadChunk()` or the server restarts. Intended for keeping a handful of chunks resident; it is not suited to loading large regions.
 
 
 
@@ -581,7 +581,7 @@ Unlike Java Edition, Bedrock has no synchronous chunk load: this registers a plu
 
 **Returns:**
 
-`true` if the ticket was registered (or already present), otherwise `false` 
+`true` if the chunk was loaded (or already resident), otherwise `false` 
 
 
 
@@ -631,7 +631,7 @@ Resulting [**Actor**](classendstone_1_1Actor.md) of this method
 
 ### function unloadChunk 
 
-_Releases the plugin-owned ticket that_ `loadChunk()` _placed on the_[_**Chunk**_](classendstone_1_1Chunk.md) _at the given coordinates._
+_Releases the hold that_ `loadChunk()` _placed on the_[_**Chunk**_](classendstone_1_1Chunk.md) _at the given coordinates._
 ```C++
 virtual bool endstone::Dimension::unloadChunk (
     int x,
@@ -641,7 +641,7 @@ virtual bool endstone::Dimension::unloadChunk (
 
 
 
-This only removes Endstone's own ticket; it never affects `/tickingarea`s or other holders. The chunk is unloaded once nothing else keeps it loaded (a nearby player, the spawn area, etc.), so this is a no-op in effect while the chunk is still in use.
+This only drops Endstone's own reference; it never affects `/tickingarea`s or other holders. The chunk is unloaded once nothing else keeps it loaded (a nearby player, the spawn area, etc.), so this is a no-op in effect while the chunk is still in use.
 
 
 
@@ -656,7 +656,7 @@ This only removes Endstone's own ticket; it never affects `/tickingarea`s or oth
 
 **Returns:**
 
-`true` once the ticket has been released 
+`true` once the hold has been released 
 
 
 

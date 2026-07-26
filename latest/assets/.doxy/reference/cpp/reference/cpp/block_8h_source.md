@@ -88,7 +88,7 @@ struct std::formatter<endstone::Block> : std::formatter<std::string_view> {
     using Type = endstone::Block;
 
     template <typename FormatContext>
-    auto format(const Type &val, FormatContext &ctx) const -> format_context::iterator
+    auto format(const Type &val, FormatContext &ctx) const
     {
         auto it = ctx.out();
         it = std::format_to(it, "Block(pos=BlockPos(x={}, y={}, z={}), type={}", val.getX(), val.getY(), val.getZ(),
