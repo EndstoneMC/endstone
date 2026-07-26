@@ -71,7 +71,11 @@ private:
     std::optional<std::uint64_t> base_tick_{};
     std::atomic<std::uint64_t> current_tick_{0};
     std::atomic<TaskId> current_task_{0};
-    std::atomic<bool> purge_requested_{false};
+    // Set by cancelTask/cancelTasks on any thread, consumed by the main thread each heartbeat. The
+    // boolean stand-in for CraftScheduler queuing a -1 task to purge cancelled tasks from queue_; a
+    // flag suffices because the heartbeat is our one main-thread entry point. atomic (Bukkit's
+    // volatile) carries the cross-thread visibility, like current_tick_/current_task_.
+    std::atomic<bool> needs_purge_{false};
     TaskComparator cmp_{};
     ThreadPoolExecutor executor_;
 };

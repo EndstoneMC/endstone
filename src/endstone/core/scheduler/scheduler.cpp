@@ -95,7 +95,8 @@ void EndstoneScheduler::cancelTask(TaskId id)
     // Cancel outside the lock: an async task's doCancel() may call back into removeTask(),
     // which re-locks tasks_mtx_ and would deadlock if we still held it here.
     task->doCancel();
-    purge_requested_.store(true, std::memory_order_release);
+    // CraftScheduler#cancelTask queues a -1 task to purge queue_; we ask the main thread with a flag.
+    needs_purge_.store(true, std::memory_order_release);
 }
 
 void EndstoneScheduler::cancelTasks(Plugin &plugin)
@@ -122,7 +123,8 @@ void EndstoneScheduler::cancelTasks(Plugin &plugin)
     for (const auto &task : cancelling) {
         task->doCancel();
     }
-    purge_requested_.store(true, std::memory_order_release);
+    // CraftScheduler#cancelTasks queues a -1 task to purge queue_; we ask the main thread with a flag.
+    needs_purge_.store(true, std::memory_order_release);
 }
 
 bool EndstoneScheduler::isRunning(TaskId id)
@@ -199,7 +201,8 @@ void EndstoneScheduler::mainThreadHeartbeat(std::uint64_t current_tick)
     current_tick = current_tick - *base_tick_ + 1;
     current_tick_.store(current_tick, std::memory_order_release);
 
-    if (purge_requested_.exchange(false, std::memory_order_acquire)) {
+    // CraftScheduler#parsePending runs the queued -1 purge tasks here; we coalesce them to one flag.
+    if (needs_purge_.exchange(false, std::memory_order_acquire)) {
         purgeCancelledTasks();
     }
 
@@ -271,8 +274,9 @@ void EndstoneScheduler::mainThreadHeartbeat(std::uint64_t current_tick)
 
 void EndstoneScheduler::purgeCancelledTasks()
 {
-    // Main thread only: drop cancelled tasks from the pending and scheduled queues so their
-    // callbacks are released promptly.
+    // The needs_purge_ action, shared by the heartbeat and reload(): drop cancelled tasks from the
+    // pending and scheduled queues so their callbacks release promptly (before reload unloads the
+    // owning plugins). Main thread only, like everything that touches queue_.
     std::vector<std::shared_ptr<EndstoneTask>> pending;
     std::shared_ptr<EndstoneTask> task;
     while (pending_.try_dequeue(task)) {
