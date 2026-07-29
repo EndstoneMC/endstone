@@ -286,6 +286,14 @@ void init_event(py::module_ &m, py::class_<Event> &event)
         .def_property_readonly("new_slot", &PlayerItemHeldEvent::getNewSlot, "Gets the new held slot index")
         .def_property_readonly("previous_slot", &PlayerItemHeldEvent::getPreviousSlot,
                                "Gets the previous held slot index.");
+    py::class_<PlayerToggleSneakEvent, PlayerEvent>(m, "PlayerToggleSneakEvent",
+                                                    "Called when a player starts or stops sneaking.")
+        .def_property_readonly("is_sneaking", &PlayerToggleSneakEvent::isSneaking,
+                               "Whether the player is attempting to sneak.");
+    py::class_<PlayerToggleSprintEvent, PlayerEvent>(m, "PlayerToggleSprintEvent",
+                                                     "Called when a player starts or stops sprinting.")
+        .def_property_readonly("is_sprinting", &PlayerToggleSprintEvent::isSprinting,
+                               "Whether the player is attempting to sprint.");
     py::class_<PlayerJoinEvent, PlayerEvent>(m, "PlayerJoinEvent", "Called when a player joins a server")
         .def_property("join_message", &PlayerJoinEvent::getJoinMessage, &PlayerJoinEvent::setJoinMessage,
                       "Gets or sets the join message to send to all online players.");

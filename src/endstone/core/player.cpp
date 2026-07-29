@@ -67,6 +67,8 @@
 #include "endstone/event/player/player_jump_event.h"
 #include "endstone/event/player/player_move_event.h"
 #include "endstone/event/player/player_skin_change_event.h"
+#include "endstone/event/player/player_toggle_sneak_event.h"
+#include "endstone/event/player/player_toggle_sprint_event.h"
 #include "endstone/form/action_form.h"
 #include "endstone/form/message_form.h"
 
@@ -749,6 +751,23 @@ bool EndstonePlayer::handlePacket(Packet &packet)
     }
     case MinecraftPacketIds::PlayerAuthInputPacket: {
         auto &pk = static_cast<PlayerAuthInputPacket &>(packet);
+        if (pk.getInput(PlayerAuthInputPacket::StartSprinting) && !getHandle().isSprinting()) {
+            PlayerToggleSprintEvent e(*this, true);
+            getServer().getPluginManager().callEvent(e);
+        }
+        if (pk.getInput(PlayerAuthInputPacket::StopSprinting) && getHandle().isSprinting()) {
+            PlayerToggleSprintEvent e(*this, false);
+            getServer().getPluginManager().callEvent(e);
+        }
+        if (pk.getInput(PlayerAuthInputPacket::StartSneaking) && !getHandle().isSneaking()) {
+            PlayerToggleSneakEvent e(*this, true);
+            getServer().getPluginManager().callEvent(e);
+        }
+        if (pk.getInput(PlayerAuthInputPacket::StopSneaking) && getHandle().isSneaking()) {
+            PlayerToggleSneakEvent e(*this, false);
+            getServer().getPluginManager().callEvent(e);
+        }
+
         auto &actions = pk.player_block_actions.actions_;
         for (auto it = actions.begin(); it != actions.end();) {
             const auto &action = *it;
