@@ -14,6 +14,7 @@
 
 #include "endstone/core/console/console.h"
 
+#include <cstdlib>
 #include <iostream>
 
 namespace endstone::core {
@@ -29,12 +30,27 @@ bool is_true(const char *v)
     }
     return (s == "1" || s == "true" || s == "yes" || s == "on");
 }
+
+bool use_interactive_console()
+{
+#if defined(_WIN32)
+    char *value = nullptr;
+    size_t value_length = 0;
+    if (_dupenv_s(&value, &value_length, "ENDSTONE_USE_INTERACTIVE_CONSOLE") != 0) {
+        return false;
+    }
+    const bool result = is_true(value);
+    std::free(value);
+    return result;
+#else
+    return is_true(std::getenv("ENDSTONE_USE_INTERACTIVE_CONSOLE"));
+#endif
+}
 }  // namespace
 
 EndstoneConsole::EndstoneConsole()
 {
-    const char *value = std::getenv("ENDSTONE_USE_INTERACTIVE_CONSOLE");
-    if (is_true(value)) {
+    if (use_interactive_console()) {
         rx_ = replxx::Replxx{};
         // commit on LF too, so LF-terminated piped consoles (e.g. Pterodactyl) submit commands
         rx_->bind_key_internal(replxx::Replxx::KEY::control('J'), "commit_line");
