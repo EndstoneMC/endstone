@@ -17,7 +17,7 @@ _Represents a player related event._
 Inherits the following classes: [endstone::Event](classendstone_1_1Event.md)
 
 
-Inherited by the following classes: [endstone::Cancellable](classendstone_1_1Cancellable.md),  [endstone::PlayerBedLeaveEvent](classendstone_1_1PlayerBedLeaveEvent.md),  [endstone::PlayerDimensionChangeEvent](classendstone_1_1PlayerDimensionChangeEvent.md),  [endstone::PlayerJoinEvent](classendstone_1_1PlayerJoinEvent.md),  [endstone::PlayerQuitEvent](classendstone_1_1PlayerQuitEvent.md),  [endstone::PlayerRespawnEvent](classendstone_1_1PlayerRespawnEvent.md)
+Inherited by the following classes: [endstone::Cancellable](classendstone_1_1Cancellable.md),  [endstone::PlayerBedLeaveEvent](classendstone_1_1PlayerBedLeaveEvent.md),  [endstone::PlayerDimensionChangeEvent](classendstone_1_1PlayerDimensionChangeEvent.md),  [endstone::PlayerJoinEvent](classendstone_1_1PlayerJoinEvent.md),  [endstone::PlayerQuitEvent](classendstone_1_1PlayerQuitEvent.md),  [endstone::PlayerRespawnEvent](classendstone_1_1PlayerRespawnEvent.md),  [endstone::PlayerSneakEvent](classendstone_1_1PlayerSneakEvent.md),  [endstone::PlayerSprintEvent](classendstone_1_1PlayerSprintEvent.md)
 
 
 

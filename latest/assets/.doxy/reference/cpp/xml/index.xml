@@ -2079,6 +2079,16 @@
     <member refid="classendstone_1_1PlayerSkinChangeEvent_1a243027ad8b931684bf1c0d0aa6bdac30" kind="function"><name>getSkinChangeMessage</name></member>
     <member refid="classendstone_1_1PlayerSkinChangeEvent_1a1c36f45cb1c6f64c234efedefa12f834" kind="function"><name>setSkinChangeMessage</name></member>
   </compound>
+  <compound refid="classendstone_1_1PlayerSneakEvent" kind="class"><name>endstone::PlayerSneakEvent</name>
+    <member refid="classendstone_1_1PlayerSneakEvent_1a2234a5baef2b6fe71bf8c4dac1f0708f" kind="variable"><name>sneaking_</name></member>
+    <member refid="classendstone_1_1PlayerSneakEvent_1aeabbd09d9e83d0e6e208a54669ff9ba9" kind="function"><name>PlayerSneakEvent</name></member>
+    <member refid="classendstone_1_1PlayerSneakEvent_1ace6a070e6ace5ac8251665b8385e4b28" kind="function"><name>isSneaking</name></member>
+  </compound>
+  <compound refid="classendstone_1_1PlayerSprintEvent" kind="class"><name>endstone::PlayerSprintEvent</name>
+    <member refid="classendstone_1_1PlayerSprintEvent_1af568d3ce0de4f232a1fdbfbbbc49ec6b" kind="variable"><name>sprinting_</name></member>
+    <member refid="classendstone_1_1PlayerSprintEvent_1ab55c13ed87d7cf9866b6d247624231d5" kind="function"><name>PlayerSprintEvent</name></member>
+    <member refid="classendstone_1_1PlayerSprintEvent_1a9366b814842ad372fd2bd4aba8d81003" kind="function"><name>isSprinting</name></member>
+  </compound>
   <compound refid="classendstone_1_1PlayerTeleportEvent" kind="class"><name>endstone::PlayerTeleportEvent</name>
     <member refid="classendstone_1_1PlayerTeleportEvent_1a43539d2448ad4540de9a2be61bbe47e8" kind="function"><name>ENDSTONE_EVENT</name></member>
     <member refid="classendstone_1_1PlayerTeleportEvent_1a8a1cf3638b2074e1d7845129adbbfed5" kind="function"><name>PlayerMoveEvent</name></member>
@@ -3101,6 +3111,10 @@
   <compound refid="player__respawn__event_8h" kind="file"><name>player_respawn_event.h</name>
   </compound>
   <compound refid="player__skin__change__event_8h" kind="file"><name>player_skin_change_event.h</name>
+  </compound>
+  <compound refid="player__sneak__event_8h" kind="file"><name>player_sneak_event.h</name>
+  </compound>
+  <compound refid="player__sprint__event_8h" kind="file"><name>player_sprint_event.h</name>
   </compound>
   <compound refid="player__teleport__event_8h" kind="file"><name>player_teleport_event.h</name>
   </compound>

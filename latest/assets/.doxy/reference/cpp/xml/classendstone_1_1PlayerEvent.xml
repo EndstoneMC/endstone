@@ -9,6 +9,8 @@
     <derivedcompoundref refid="classendstone_1_1PlayerJoinEvent" prot="public" virt="non-virtual">endstone::PlayerJoinEvent</derivedcompoundref>
     <derivedcompoundref refid="classendstone_1_1PlayerQuitEvent" prot="public" virt="non-virtual">endstone::PlayerQuitEvent</derivedcompoundref>
     <derivedcompoundref refid="classendstone_1_1PlayerRespawnEvent" prot="public" virt="non-virtual">endstone::PlayerRespawnEvent</derivedcompoundref>
+    <derivedcompoundref refid="classendstone_1_1PlayerSneakEvent" prot="public" virt="non-virtual">endstone::PlayerSneakEvent</derivedcompoundref>
+    <derivedcompoundref refid="classendstone_1_1PlayerSprintEvent" prot="public" virt="non-virtual">endstone::PlayerSprintEvent</derivedcompoundref>
     <includes refid="player__event_8h" local="no">endstone/event/player/player_event.h</includes>
     <sectiondef kind="protected-attrib">
       <memberdef kind="variable" id="classendstone_1_1PlayerEvent_1a263609667f42005d6cfe9f3a128477bd" prot="protected" static="no" mutable="no">
@@ -230,6 +232,18 @@
         <label>endstone::PlayerSkinChangeEvent</label>
         <link refid="classendstone_1_1PlayerSkinChangeEvent"/>
         <childnode refid="3" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="27">
+        <label>endstone::PlayerSneakEvent</label>
+        <link refid="classendstone_1_1PlayerSneakEvent"/>
+        <childnode refid="1" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="28">
+        <label>endstone::PlayerSprintEvent</label>
+        <link refid="classendstone_1_1PlayerSprintEvent"/>
+        <childnode refid="1" relation="public-inheritance">
         </childnode>
       </node>
       <node id="18">

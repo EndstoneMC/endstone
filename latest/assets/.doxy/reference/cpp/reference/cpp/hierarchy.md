@@ -50,6 +50,8 @@ This inheritance list is sorted roughly, but not completely, alphabetically:
         * **class** [**endstone::PlayerJoinEvent**](classendstone_1_1PlayerJoinEvent.md) _Called when a player joins a server._ 
         * **class** [**endstone::PlayerQuitEvent**](classendstone_1_1PlayerQuitEvent.md) _Called when a player leaves a server._ 
         * **class** [**endstone::PlayerRespawnEvent**](classendstone_1_1PlayerRespawnEvent.md) _Called when a player respawns._ 
+        * **class** [**endstone::PlayerSneakEvent**](classendstone_1_1PlayerSneakEvent.md) _Called when a player starts or stops sneaking._ 
+        * **class** [**endstone::PlayerSprintEvent**](classendstone_1_1PlayerSprintEvent.md) _Called when a player starts or stops sprinting._ 
     * **class** [**endstone::ServerEvent**](classendstone_1_1ServerEvent.md) _Represents a Server-related event._     
         * **class** [**endstone::Cancellable**](classendstone_1_1Cancellable.md) _A type characterizing events that may be cancelled by a plugin or the server._ 
         * **class** [**endstone::MapInitializeEvent**](classendstone_1_1MapInitializeEvent.md) _Called when a map is initialized._ 
