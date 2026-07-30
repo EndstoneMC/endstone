@@ -45,6 +45,8 @@
 #include "bedrock/world/level/level_interface.h"
 #include "bedrock/world/level/level_listener.h"
 
+class PlayerActionPacket;
+
 class ServerNetworkHandler : public Bedrock::Threading::EnableQueueForMainThread,
                              public NetEventCallback,
                              public LevelListener,
@@ -65,6 +67,7 @@ public:
                                                    Connection::DisconnectFailReason disconnect_reason,
                                                    const std::string &message,
                                                    std::optional<std::string> filtered_message);
+    ENDSTONE_HOOK virtual void handle(const NetworkIdentifier &source, const PlayerActionPacket &packet);
     [[nodiscard]] int getMaxNumPlayers() const;
     int setMaxNumPlayers(int max_players);
     void updateServerAnnouncement();

@@ -18,6 +18,7 @@
 
 #include "bedrock/locale/i18n.h"
 #include "bedrock/network/packet/disconnect_packet.h"
+#include "bedrock/network/packet/player_action_packet.h"
 #include "bedrock/server/server_instance.h"
 #include "endstone/core/entity/components/flag_components.h"
 #include "endstone/core/player.h"
@@ -26,7 +27,43 @@
 #include "endstone/core/util/uuid.h"
 #include "endstone/event/player/player_kick_event.h"
 #include "endstone/event/player/player_login_event.h"
+#include "endstone/event/player/player_sneak_event.h"
+#include "endstone/event/player/player_sprint_event.h"
 #include "endstone/runtime/hook.h"
+void ServerNetworkHandler::handle(const NetworkIdentifier &source, const PlayerActionPacket &packet)
+{
+    const auto &server = endstone::core::EndstoneServer::getInstance();
+    const auto network_handler = server.getServer().getMinecraft()->getServerNetworkHandler();
+    if (auto *player = network_handler->getServerPlayer(source, packet.getSenderSubId())) {
+        auto &endstone_player = player->getEndstoneActor<endstone::core::EndstonePlayer>();
+        switch (packet.payload.action) {
+        case PlayerActionType::StartSprinting: {
+            endstone::PlayerSprintEvent event(endstone_player, true);
+            server.getPluginManager().callEvent(event);
+            break;
+        }
+        case PlayerActionType::StopSprinting: {
+            endstone::PlayerSprintEvent event(endstone_player, false);
+            server.getPluginManager().callEvent(event);
+            break;
+        }
+        case PlayerActionType::StartSneaking: {
+            endstone::PlayerSneakEvent event(endstone_player, true);
+            server.getPluginManager().callEvent(event);
+            break;
+        }
+        case PlayerActionType::StopSneaking: {
+            endstone::PlayerSneakEvent event(endstone_player, false);
+            server.getPluginManager().callEvent(event);
+            break;
+        }
+        default:
+            break;
+        }
+    }
+
+    ENDSTONE_HOOK_CALL_ORIGINAL(&ServerNetworkHandler::handle, this, source, packet);
+}
 
 void ServerNetworkHandler::disconnectClientWithMessage(const NetworkIdentifier &id, const SubClientId sub_id,
                                                        const Connection::DisconnectFailReason reason,

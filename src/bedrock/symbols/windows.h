@@ -11,7 +11,7 @@
 
 namespace endstone::runtime {
 
-static constexpr std::array<std::pair<std::string_view, std::size_t>, 66> symbols = {{
+static constexpr std::array<std::pair<std::string_view, std::size_t>, 67> symbols = {{
     {"BlockState::StateListNode::mHead", 199508112},
     {"Enchant::mEnchants", 199688464},
     {"MobEffect::mMobEffects", 199633056},
@@ -113,6 +113,7 @@ static constexpr std::array<std::pair<std::string_view, std::size_t>, 66> symbol
     // ServerNetworkHandler
     {"?_validateLoginPacket@ServerNetworkHandler@@EEAA?AV?$optional@UPlayerAuthenticationInfo@@@std@@AEBVNetworkIdentifier@@AEBVLoginPacket@@@Z", 7645264},
     {"?disconnectClientWithMessage@ServerNetworkHandler@@QEAAXAEBVNetworkIdentifier@@W4SubClientId@@W4DisconnectFailReason@Connection@@AEBV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@V?$optional@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@7@@Z", 7557648},
+    {"?handle@ServerNetworkHandler@@UEAAXAEBVNetworkIdentifier@@AEBVPlayerActionPacket@@@Z", 7751328},
     {"?tryToLoadPlayer@ServerNetworkHandler@@QEAA_NAEAVServerPlayer@@AEBVConnectionRequest@@AEBUPlayerAuthenticationInfo@@@Z", 7739040},
     {"?updateServerAnnouncement@ServerNetworkHandler@@QEAAXXZ", 7627552},
     // ServerPlayer
