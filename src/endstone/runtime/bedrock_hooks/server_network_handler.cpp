@@ -29,7 +29,9 @@
 #include "endstone/event/player/player_login_event.h"
 #include "endstone/event/player/player_sneak_event.h"
 #include "endstone/event/player/player_sprint_event.h"
+#include "endstone/event/player/player_swim_event.h"
 #include "endstone/runtime/hook.h"
+
 void ServerNetworkHandler::handle(const NetworkIdentifier &source, const PlayerActionPacket &packet)
 {
     const auto &server = endstone::core::EndstoneServer::getInstance();
@@ -54,6 +56,16 @@ void ServerNetworkHandler::handle(const NetworkIdentifier &source, const PlayerA
         }
         case PlayerActionType::StopSneaking: {
             endstone::PlayerSneakEvent event(endstone_player, false);
+            server.getPluginManager().callEvent(event);
+            break;
+        }
+        case PlayerActionType::StartSwimming: {
+            endstone::PlayerSwimEvent event(endstone_player, true);
+            server.getPluginManager().callEvent(event);
+            break;
+        }
+        case PlayerActionType::StopSwimming: {
+            endstone::PlayerSwimEvent event(endstone_player, false);
             server.getPluginManager().callEvent(event);
             break;
         }
