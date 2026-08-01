@@ -4,20 +4,6 @@ executable = "bedrock_server.exe"
 filename = "bedrock_server"
 
 [[signatures]]
-name = "?handle@ServerNetworkHandler@@UEAAXAEBVNetworkIdentifier@@AEBVPlayerActionPacket@@@Z"
-relative = false
-extra = 0
-# 1. find bytes "63 68 61 74 2E 74 79 70 65 2E 73 6C 65 65 70 69 6E 67 00"
-#    = "chat.type.sleeping\0" (unique); its lone code xref is in the StartSleeping branch of the
-#    PlayerActionPacket action dispatcher
-# 2. follow the code xref to the `chat.type.sleeping` message construction, then walk backward to the
-#    enclosing large switch function's prologue
-# 3. confirm vs the old named DB: the candidate is the ServerNetworkHandler virtual taking
-#    NetworkIdentifier const& and PlayerActionPacket const&; it resolves the sender/sub-client, dispatches
-#    `payload.action`, and contains the Start/StopSleeping cases, not a packet constructor or sibling handler
-pattern = "55 41 57 41 56 41 55 41 54 56 57 53 48 81 EC ? ? ? ? 48 8D AC 24 ? ? ? ? 0F 29 B5 ? ? ? ? 48 C7 85 ? ? ? ? FE FF FF FF 4C 89 C3 49 89 D7 48 89 CE 48 83 C1 F0 45 0F B6 40 10 48 8B 46 F0 48 8B 40 28 FF 15 ? ? ? ? 48 85 C0 0F 84 ? ? ? ? 48 89 C7 48 8D 95 10 01 00 00 48 89 C1 E8 ? ? ? ? 48 8B 85 10 01 00 00 48 3B 43 50 0F 85 ? ? ? ? 8B 43 4C 48 83 F8 22 0F 87"
-
-[[signatures]]
 name = "BlockState::StateListNode::mHead"
 relative = false
 extra = 0
@@ -802,6 +788,17 @@ rip_relative = true
 rip_offset = 1
 
 [[signatures]]
+name = "?initializeServer@ServerInstance@@QEAA_N$$QEAUServerInstanceInitArguments@@@Z"
+relative = false
+extra = 0
+# 1. find bytes "53 65 72 76 65 72 49 6E 73 74 61 6E 63 65 20 54 68 72 65 61 64 00" = "ServerInstance Thread\0"
+#    (unique; prefer this message over the "ServerInstance::initializeServer" label, which byte-matches 5
+#    strings/lambda names and is only unique with its trailing 00)
+# 2. its lone data xref is a `lea` inside this function
+# 3. walk up to the prologue
+pattern = "55 41 57 41 56 41 55 41 54 56 57 53 B8 ? ? ? ? E8 ? ? ? ? 48 29 C4 48 8D AC 24 80 00 00 00 0F 29 B5 ? ? ? ? 48 C7 85 ? ? ? ? FE FF FF FF 48 89 95 ? ? ? ? 48 8D 9A 30 05 00 00"
+
+[[signatures]]
 name = "?_validateLoginPacket@ServerNetworkHandler@@EEAA?AV?$optional@UPlayerAuthenticationInfo@@@std@@AEBVNetworkIdentifier@@AEBVLoginPacket@@@Z"
 relative = false
 extra = 0
@@ -827,15 +824,18 @@ rip_relative = true
 rip_offset = 17
 
 [[signatures]]
-name = "?initializeServer@ServerInstance@@QEAA_N$$QEAUServerInstanceInitArguments@@@Z"
+name = "?handle@ServerNetworkHandler@@UEAAXAEBVNetworkIdentifier@@AEBVPlayerActionPacket@@@Z"
 relative = false
 extra = 0
-# 1. find bytes "53 65 72 76 65 72 49 6E 73 74 61 6E 63 65 20 54 68 72 65 61 64 00" = "ServerInstance Thread\0"
-#    (unique; prefer this message over the "ServerInstance::initializeServer" label, which byte-matches 5
-#    strings/lambda names and is only unique with its trailing 00)
-# 2. its lone data xref is a `lea` inside this function
-# 3. walk up to the prologue
-pattern = "55 41 57 41 56 41 55 41 54 56 57 53 B8 ? ? ? ? E8 ? ? ? ? 48 29 C4 48 8D AC 24 80 00 00 00 0F 29 B5 ? ? ? ? 48 C7 85 ? ? ? ? FE FF FF FF 48 89 95 ? ? ? ? 48 8D 9A 30 05 00 00"
+# 1. find bytes "63 68 61 74 2E 74 79 70 65 2E 73 6C 65 65 70 69 6E 67 00"
+#    = "chat.type.sleeping\0" (unique); its lone code xref is in the StartSleeping branch of the
+#    PlayerActionPacket action dispatcher
+# 2. follow the code xref to the `chat.type.sleeping` message construction, then walk backward to the
+#    enclosing large switch function's prologue
+# 3. confirm vs the old named DB: the candidate is the ServerNetworkHandler virtual taking
+#    NetworkIdentifier const& and PlayerActionPacket const&; it resolves the sender/sub-client, dispatches
+#    `payload.action`, and contains the Start/StopSleeping cases, not a packet constructor or sibling handler
+pattern = "55 41 57 41 56 41 55 41 54 56 57 53 48 81 EC ? ? ? ? 48 8D AC 24 ? ? ? ? 0F 29 B5 ? ? ? ? 48 C7 85 ? ? ? ? FE FF FF FF 4C 89 C3 49 89 D7 48 89 CE 48 83 C1 F0 45 0F B6 40 10 48 8B 46 F0 48 8B 40 28 FF 15 ? ? ? ? 48 85 C0 0F 84 ? ? ? ? 48 89 C7 48 8D 95 10 01 00 00 48 89 C1 E8 ? ? ? ? 48 8B 85 10 01 00 00 48 3B 43 50 0F 85 ? ? ? ? 8B 43 4C 48 83 F8 22 0F 87"
 
 [[signatures]]
 name = "?tryToLoadPlayer@ServerNetworkHandler@@QEAA_NAEAVServerPlayer@@AEBVConnectionRequest@@AEBUPlayerAuthenticationInfo@@@Z"

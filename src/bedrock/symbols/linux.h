@@ -11,7 +11,7 @@
 
 namespace endstone::runtime {
 
-static constexpr std::array<std::pair<std::string_view, std::size_t>, 66> symbols = {{
+static constexpr std::array<std::pair<std::string_view, std::size_t>, 67> symbols = {{
     {"BlockState::StateListNode::mHead", 234491136},
     {"Enchant::mEnchants", 234331600},
     {"MobEffect::mMobEffects", 234317024},
@@ -112,6 +112,7 @@ static constexpr std::array<std::pair<std::string_view, std::size_t>, 66> symbol
     // ServerInstance
     {"_ZN14ServerInstance16initializeServerEO27ServerInstanceInitArguments", 144647264},
     // ServerNetworkHandler
+    {"_ZN20ServerNetworkHandler6handleERK17NetworkIdentifierRK18PlayerActionPacket", 123703504},
     {"_ZN20ServerNetworkHandler15tryToLoadPlayerER12ServerPlayerRK17ConnectionRequestRK24PlayerAuthenticationInfo", 123686224},
     {"_ZN20ServerNetworkHandler20_validateLoginPacketERK17NetworkIdentifierRK11LoginPacket", 123608848},
     {"_ZN20ServerNetworkHandler24updateServerAnnouncementEv", 123593536},

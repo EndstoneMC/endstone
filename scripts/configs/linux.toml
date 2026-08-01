@@ -685,6 +685,15 @@ extra = 0
 pattern = "55 41 57 41 56 41 55 41 54 53 48 81 EC ? ? ? ? 49 89 FE 48 89 74 24 ? 48 8D 9E"
 
 [[signatures]]
+name = "_ZN20ServerNetworkHandler6handleERK17NetworkIdentifierRK18PlayerActionPacket"
+relative = false
+extra = 0
+# 1. locate PacketHandlerDispatcherInstance<PlayerActionPacket,false>::handle
+# 2. follow its ServerNetworkHandler vtable call at +0x248 to the callback wrapper
+# 3. confirm the wrapper forwards to the PlayerActionPacket action dispatcher
+pattern = "41 57 41 56 53 48 89 D3 49 89 F6 49 89 FF 0F B6 52 10 48 8B 47 F0 49 83 C7 F0"
+
+[[signatures]]
 name = "_ZN20ServerNetworkHandler15tryToLoadPlayerER12ServerPlayerRK17ConnectionRequestRK24PlayerAuthenticationInfo"
 relative = false
 extra = 0
