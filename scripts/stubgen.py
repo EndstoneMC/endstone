@@ -55,6 +55,14 @@ def main() -> None:
         text = text.replace("collections.abc.Sequence", "list")
         text = text.replace("typing.SupportsFloat", "float")
         text = text.replace("typing.SupportsInt", "int")
+        text = text.replace(
+            "def get_player(self, name: str) -> Player:",
+            "def get_player(self, name: str) -> Player | None:",
+        )
+        text = text.replace(
+            "def get_player(self, unique_id: uuid.UUID) -> Player:",
+            "def get_player(self, unique_id: uuid.UUID) -> Player | None:",
+        )
         if relative_path == Path(".") / "__init__.pyi":
             text = text.replace("from endstone._version import __version__", "from ._version import __version__")
 
