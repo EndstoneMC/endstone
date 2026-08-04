@@ -30,7 +30,7 @@ public:
 private:
     void _tryFixupStickyPistonArm(BlockSource &region);
 
-    bool sticky_;  // +224
+    bool sticky_;  // +232
     float progress_;
     float last_progress_;
     bool was_pushed_backward_by_a_non_sticky_piston_;
