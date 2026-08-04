@@ -74,7 +74,7 @@ extra = 0
 # 1. use BatchedNetworkPeer's RTTI vtable `_ZTV18BatchedNetworkPeer` (see sendPacket)
 # 2. read _receivePacket's slot index in it in the old named DB (a few past sendPacket) and take the same slot
 #    in the new vtable
-pattern = "41 56 53 48 81 EC ? ? ? ? 49 89 F6 48 89 FB 48 8B 8F ? ? ? ?"
+pattern = "41 57 41 56 53 48 81 EC ? ? ? ? 49 89 F6 48 89 FB 48 8B 8F ? ? ? ?"
 
 [[signatures]]
 name = "_ZN10BedrockLog10LogDetails7_log_vaE9LogAreaIDjPKciiS3_P13__va_list_tag"
