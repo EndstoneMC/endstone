@@ -52,7 +52,7 @@ private:
     // AllowList &allow_list_;
     PermissionsFile *permissions_file_;
     std::unique_ptr<PrivateKeyManager> server_keys_;
-    std::unique_ptr<MinecraftServiceKeyManager> minecraft_service_keys_;
+    std::shared_ptr<MinecraftServiceKeyManager> minecraft_service_keys_;
     std::string save_game_path_;
     // Bedrock::NonOwnerPointer<Core::FilePathManager> file_path_manager_;
     ServerMetrics *server_metrics_;
@@ -72,6 +72,8 @@ private:
     ClientOrServerNetworkSystemRef network_;
     PacketSender *packet_sender_;
     SubClientId client_sub_id_;
+    // TODO(fixme): check the name
+    void *unknown_264_;  // win +264, linux +256; a unique_ptr to a 1-byte trivially-destructible object
     OwnerPtr<EntityRegistry> entity_registry_;
     std::unique_ptr<ITickingSystem> add_movement_tick_for_catchup_;
     Bedrock::PubSub::PublisherPtr<void(Level *), Bedrock::PubSub::ThreadModel::SingleThreaded> level_subscribers_;
