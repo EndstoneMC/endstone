@@ -45,6 +45,7 @@ static_assert(sizeof(PacksInfoData) == 80);
 
 class ResourcePacksInfoPacket : public Packet {
 public:
-    PacksInfoData data;
+    PacksInfoData data;                                                   // +48
+    SerializationMode serialization_mode{SerializationMode::CerealOnly};  // +128
 };
-static_assert(sizeof(ResourcePacksInfoPacket) == 128);
+BEDROCK_STATIC_ASSERT_SIZE(ResourcePacksInfoPacket, 136, 136);

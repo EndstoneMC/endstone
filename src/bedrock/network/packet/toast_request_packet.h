@@ -52,3 +52,4 @@ public:
     ToastRequestPacketPayload payload;
     SerializationMode serialization_mode;
 };
+BEDROCK_STATIC_ASSERT_SIZE(ToastRequestPacket, 120, 104);

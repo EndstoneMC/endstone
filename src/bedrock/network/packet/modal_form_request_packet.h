@@ -52,3 +52,4 @@ public:
     ModalFormRequestPacketPayload payload;
     SerializationMode serialization_mode;
 };
+BEDROCK_STATIC_ASSERT_SIZE(ModalFormRequestPacket, 96, 88);

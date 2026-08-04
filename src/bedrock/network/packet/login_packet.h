@@ -27,3 +27,4 @@ public:
     LoginPacketPayload payload;
     SerializationMode serialization_mode;
 };
+BEDROCK_STATIC_ASSERT_SIZE(LoginPacket, 72, 72);

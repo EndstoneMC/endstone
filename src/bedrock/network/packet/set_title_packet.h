@@ -58,3 +58,4 @@ class SetTitlePacket : public SerializedPayloadPacket<SetTitlePacketInfo, SetTit
 public:
     static constexpr bool SHARE_WITH_HANDLER = false;
 };
+BEDROCK_STATIC_ASSERT_SIZE(SetTitlePacket, 208, 176);

@@ -58,3 +58,4 @@ public:
 private:
     Bedrock::Result<void> _read(ReadOnlyBinaryStream &stream) override;
 };
+BEDROCK_STATIC_ASSERT_SIZE(InventoryTransactionPacket, 384, 344);

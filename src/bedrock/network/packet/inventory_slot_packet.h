@@ -44,3 +44,4 @@ public:
     InventorySlotPacket();
     InventorySlotPacket(InventorySlotPacketPayload payload);
 };
+BEDROCK_STATIC_ASSERT_SIZE(InventorySlotPacket, 280, 248);

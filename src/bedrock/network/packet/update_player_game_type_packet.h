@@ -38,3 +38,4 @@ class UpdatePlayerGameTypePacket
 public:
     static constexpr bool SHARE_WITH_HANDLER = false;
 };
+BEDROCK_STATIC_ASSERT_SIZE(UpdatePlayerGameTypePacket, 80, 80);

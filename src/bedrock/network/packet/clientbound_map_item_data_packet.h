@@ -56,8 +56,9 @@ public:
     Type type_;
     std::vector<unsigned int> map_pixels_;
     bool locked_;
+    SerializationMode serialization_mode{SerializationMode::CerealOnly};  // +200
 };
-static_assert(sizeof(ClientboundMapItemDataPacket) == 200);
+BEDROCK_STATIC_ASSERT_SIZE(ClientboundMapItemDataPacket, 208, 208);
 
 inline ClientboundMapItemDataPacket::Type operator|(ClientboundMapItemDataPacket::Type a,
                                                     ClientboundMapItemDataPacket::Type b)

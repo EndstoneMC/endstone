@@ -90,3 +90,4 @@ public:
     AvailableCommandsPacketPayload payload;
     SerializationMode serialization_mode;
 };
+BEDROCK_STATIC_ASSERT_SIZE(AvailableCommandsPacket, 248, 248);

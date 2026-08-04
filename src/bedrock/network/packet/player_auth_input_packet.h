@@ -120,4 +120,6 @@ public:
     std::unique_ptr<ItemStackRequestData> item_stack_request;
     PlayerBlockActions player_block_actions;
     ActorUniqueID client_predicted_vehicle;
+    SerializationMode serialization_mode{SerializationMode::CerealOnly};  // +224
 };
+BEDROCK_STATIC_ASSERT_SIZE(PlayerAuthInputPacket, 232, 232);

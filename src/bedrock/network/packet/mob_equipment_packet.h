@@ -46,3 +46,4 @@ public:
     MobEquipmentPacketPayload payload;
     SerializationMode serialization_mode;
 };
+BEDROCK_STATIC_ASSERT_SIZE(MobEquipmentPacket, 176, 160);

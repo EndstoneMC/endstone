@@ -46,3 +46,4 @@ public:
     CorrectPlayerMovePredictionPacketPayload payload;
     SerializationMode serialization_mode;
 };
+BEDROCK_STATIC_ASSERT_SIZE(CorrectPlayerMovePredictionPacket, 112, 112);

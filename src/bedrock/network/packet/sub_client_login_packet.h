@@ -19,5 +19,8 @@
 
 class SubClientLoginPacket : public Packet {
 public:
-    std::unique_ptr<SubClientConnectionRequest> connection_request;
+    std::unique_ptr<SubClientConnectionRequest> connection_request;  // +48
+    // TODO(fixme): check the name
+    int unknown_56_{1};  // added in 1.26.40, 4 bytes initialised to 1
 };
+BEDROCK_STATIC_ASSERT_SIZE(SubClientLoginPacket, 64, 64);

@@ -44,3 +44,4 @@ public:
     PlaySoundPacketPayload payload;
     SerializationMode serialization_mode;
 };
+BEDROCK_STATIC_ASSERT_SIZE(PlaySoundPacket, 128, 120);

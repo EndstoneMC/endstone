@@ -23,3 +23,4 @@ public:
     SerializedAbilitiesData data;
     SerializationMode serialization_mode{SerializationMode::CerealOnly};
 };
+BEDROCK_STATIC_ASSERT_SIZE(UpdateAbilitiesPacket, 96, 96);

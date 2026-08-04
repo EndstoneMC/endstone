@@ -14,9 +14,11 @@
 
 #pragma once
 
+#include <optional>
 #include <string>
 
 #include "bedrock/network/packet.h"
+#include "bedrock/platform/uuid.h"
 
 struct TransferPacketInfo {
     static constexpr auto PACKET_NAME = "TransferPacket";
@@ -25,18 +27,34 @@ struct TransferPacketInfo {
     static constexpr auto COMPRESSIBILITY = Compressibility::Compressible;
 };
 
+// TODO(fixme): check the name
+struct GatheringsConfigurationJoinInfo {  // added in 1.26.40, names from bedrock-protocol v2168
+    mce::UUID experience_id;                           // +0
+    std::string experience_name;                       // +16
+    std::optional<mce::UUID> experience_world_id;      // +48
+    std::optional<std::string> experience_world_name;  // +72
+    std::string creator_id;                            // +112
+    std::optional<mce::UUID> target_id;                // +144
+    std::optional<std::string> scenario_id;            // +168
+    std::optional<std::string> server_id;              // +208
+};
+BEDROCK_STATIC_ASSERT_SIZE(GatheringsConfigurationJoinInfo, 248, 208);
+
 struct TransferPacketPayload {
     TransferPacketPayload();
     TransferPacketPayload(const std::string &, int);
     TransferPacketPayload(const NetherNet::NetworkID &);
     TransferPacketPayload(bool);
 
-    std::string destination;
-    uint16_t destination_port;
-    bool reload_world;
+    std::string destination;                                                 // +0
+    uint16_t destination_port;                                               // +32
+    bool reload_world;                                                       // +34
+    std::optional<GatheringsConfigurationJoinInfo> gatherings_configuration;  // +40
 };
+BEDROCK_STATIC_ASSERT_SIZE(TransferPacketPayload, 296, 248);
 
 class TransferPacket : public SerializedPayloadPacket<TransferPacketInfo, TransferPacketPayload> {
 public:
     static constexpr bool SHARE_WITH_HANDLER = false;
 };
+BEDROCK_STATIC_ASSERT_SIZE(TransferPacket, 352, 304);

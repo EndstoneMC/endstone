@@ -35,3 +35,4 @@ public:
     DeathInfoPacket();
     DeathInfoPacket(DeathInfoPacketPayload payload);
 };
+BEDROCK_STATIC_ASSERT_SIZE(DeathInfoPacket, 112, 104);

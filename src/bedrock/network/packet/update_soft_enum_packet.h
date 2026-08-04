@@ -30,3 +30,4 @@ public:
     std::vector<std::string> values;
     SerializationMode serialization_mode{SerializationMode::CerealOnly};
 };
+BEDROCK_STATIC_ASSERT_SIZE(UpdateSoftEnumPacket, 120, 112);

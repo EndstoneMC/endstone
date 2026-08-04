@@ -70,3 +70,4 @@ public:
     TextPacketPayload payload;
     SerializationMode serialization_mode;
 };
+BEDROCK_STATIC_ASSERT_SIZE(TextPacket, 248, 208);

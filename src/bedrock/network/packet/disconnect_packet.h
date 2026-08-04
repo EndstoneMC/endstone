@@ -46,3 +46,4 @@ public:
     DisconnectPacket();
     DisconnectPacket(DisconnectPacketPayload payload);
 };
+BEDROCK_STATIC_ASSERT_SIZE(DisconnectPacket, 136, 120);

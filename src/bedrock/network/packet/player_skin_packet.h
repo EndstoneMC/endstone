@@ -29,3 +29,4 @@ public:
     std::string localized_old_skin_name;
     SerializationMode serialization_mode{SerializationMode::CerealOnly};
 };
+BEDROCK_STATIC_ASSERT_SIZE(PlayerSkinPacket, 152, 136);
