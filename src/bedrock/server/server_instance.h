@@ -23,6 +23,7 @@
 #include "bedrock/platform/threading/thread.h"
 #include "bedrock/scripting/server_script_manager.h"
 #include "bedrock/server/cdn_config.h"
+#include "bedrock/server/server_initialization.h"
 #include "bedrock/server/server_text_settings.h"
 #include "bedrock/util/timer.h"
 #include "bedrock/world/events/server_instance_event_coordinator.h"
@@ -37,7 +38,7 @@ class ServerInstance : public Bedrock::EnableNonOwnerReferences,
                        public GameCallbacks,
                        public Core::StorageAreaStateListener {
 public:
-    ENDSTONE_HOOK bool initializeServer(ServerInstanceInitArguments &&args);
+    ENDSTONE_HOOK ServerInitialization::ServerInitResult initializeServer(ServerInstanceInitArguments &&args);
     ServerInstance(IMinecraftApp &, const Bedrock::NotNullNonOwnerPtr<ServerInstanceEventCoordinator> &);
     enum InstanceState : unsigned int {
         Running = 0,

@@ -754,7 +754,7 @@ rip_relative = true
 rip_offset = 17
 
 [[signatures]]
-name = "?initializeServer@ServerInstance@@QEAA_N$$QEAUServerInstanceInitArguments@@@Z"
+name = "?initializeServer@ServerInstance@@QEAA?AUServerInitResult@ServerInitialization@@$$QEAUServerInstanceInitArguments@@@Z"
 relative = false
 extra = 0
 # 1. find bytes "53 65 72 76 65 72 49 6E 73 74 61 6E 63 65 20 54 68 72 65 61 64 00" = "ServerInstance Thread\0"

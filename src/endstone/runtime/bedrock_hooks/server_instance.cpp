@@ -150,7 +150,7 @@ public:
     }
 };
 
-bool ServerInstance::initializeServer(ServerInstanceInitArguments &&args)
+ServerInitialization::ServerInitResult ServerInstance::initializeServer(ServerInstanceInitArguments &&args)
 {
     auto result = ENDSTONE_HOOK_CALL_ORIGINAL(&ServerInstance::initializeServer, this,
                                               std::forward<ServerInstanceInitArguments>(args));
