@@ -190,16 +190,16 @@ void dumpItemData(VanillaData &data, const ::Level &level)
     }
 }
 
-void dumpShapedRecipe(const Recipe &recipe, nlohmann::json &json)
+void dumpShapedRecipe(int width, int height, nlohmann::json &json)
 {
     auto input = json["input"];
     json.erase("input");
     char next_key = 'A';
     std::unordered_map<std::string, char> ingredient_key;
-    for (int i = 0; i < recipe.getHeight(); i++) {
+    for (int i = 0; i < height; i++) {
         std::string pattern;
-        for (int j = 0; j < recipe.getWidth(); j++) {
-            const auto &ingredient = input[j + i * recipe.getWidth()];
+        for (int j = 0; j < width; j++) {
+            const auto &ingredient = input[j + i * width];
             if (ingredient["count"] == 0) {
                 pattern.push_back(' ');
                 continue;
@@ -213,124 +213,130 @@ void dumpShapedRecipe(const Recipe &recipe, nlohmann::json &json)
         }
         json["pattern"].push_back(pattern);
     }
-    json["width"] = recipe.getWidth();
-    json["height"] = recipe.getHeight();
+    json["width"] = width;
+    json["height"] = height;
 }
 
 void dumpRecipes(VanillaData &data, ::Level &level)
 {
-    auto packet = CraftingDataPacket::prepareFromRecipes(level.getRecipes(), false);
+    auto payload = CraftingDataPacket::prepareFromRecipes(level.getRecipes(), false);
     auto id_to_name = [&level](int id) {
         return level.getItemRegistry().getItem(id)->getFullItemName();
     };
 
-    for (const auto &entry : packet->crafting_entries) {
-        nlohmann::json recipe;
-        if (entry.recipe) {
-            recipe["id"] = entry.recipe->getRecipeId();
-            recipe["netId"] = entry.recipe->getNetId().raw_id;
-            recipe["uuid"] = core::EndstoneUUID::fromMinecraft(entry.recipe->getId()).str();
-            recipe["tag"] = entry.recipe->getTag().getString();
-            recipe["priority"] = entry.recipe->getPriority();
-
-            for (const auto &ingredient : entry.recipe->getIngredients()) {
-                recipe["input"].push_back({{"count", ingredient.getStackSize()}});
-                Json::Value json_value;
-                ingredient.serialize(json_value);
-                if (nlohmann::json json = json_value; json.is_object()) {
-                    recipe["input"].back()["tag"] = json.at("item_tag").get<std::string>();
-                }
-                else {
-                    recipe["input"].back()["item"] = ingredient.getFullName();
-                }
-                if (ingredient.getAuxValue() != 0 && ingredient.getAuxValue() != ItemDescriptor::ANY_AUX_VALUE) {
-                    recipe["input"].back()["data"] = ingredient.getAuxValue();
-                }
-            }
-
-            for (const auto &result_item : entry.recipe->getResultItems()) {
-                recipe["output"].push_back({
-                    {"item", result_item.getItem()->getFullItemName()},
-                    {"count", result_item.getCount()},
-                });
-                if (result_item.getAuxValue() != 0 && result_item.getAuxValue() != ItemDescriptor::ANY_AUX_VALUE) {
-                    recipe["output"].back()["data"] = result_item.getAuxValue();
-                }
-                if (result_item.hasUserData()) {
-                    std::string buffer;
-                    BigEndianStringByteOutput output(buffer);
-                    NbtIo::writeNamedTag("", *result_item.getUserData(), output);
-                    recipe["output"].back()["nbt"] = core::base64_encode(buffer);
-                }
-            }
+    auto dump_ingredient = [](const RecipeIngredient &ingredient, nlohmann::json &json) {
+        json.push_back({{"count", ingredient.getStackSize()}});
+        Json::Value json_value;
+        ingredient.serialize(json_value);
+        if (nlohmann::json value = json_value; value.is_object()) {
+            json.back()["tag"] = value.at("item_tag").get<std::string>();
         }
         else {
-            recipe["tag"] = entry.tag.getString();
-            recipe["input"] = {
-                {"item", id_to_name(entry.item_data)},
-            };
-            if (entry.item_aux != 0 && entry.item_aux != ItemDescriptor::ANY_AUX_VALUE) {
-                recipe["input"]["data"] = entry.item_aux;
-            }
-            recipe["output"] = {
-                {"item", entry.item_result.getFullName()},
-                {"count", entry.item_result.getStackSize()},
-            };
-            if (entry.item_result.getAuxValue() != 0 &&
-                entry.item_result.getAuxValue() != ItemDescriptor::ANY_AUX_VALUE) {
-                recipe["output"]["data"] = entry.item_result.getAuxValue();
-            }
+            json.back()["item"] = ingredient.getFullName();
         }
+        if (ingredient.getAuxValue() != 0 && ingredient.getAuxValue() != ItemDescriptor::ANY_AUX_VALUE) {
+            json.back()["data"] = ingredient.getAuxValue();
+        }
+    };
 
-        switch (entry.entry_type) {
-        case CraftingDataEntryType::ShapelessRecipe: {
-            data.recipes.shapeless.push_back(recipe);
-            break;
+    // The wire form carries only a numeric item id, so the name is resolved through the registry.
+    auto dump_result = [&id_to_name](const NetworkItemInstanceDescriptorData &result, nlohmann::json &json) {
+        json.push_back({
+            {"item", id_to_name(result.id)},
+            {"count", result.stack_size},
+        });
+        if (result.aux_value != 0 && result.aux_value != ItemDescriptor::ANY_AUX_VALUE) {
+            json.back()["data"] = result.aux_value;
         }
-        case CraftingDataEntryType::ShapedRecipe: {
-            dumpShapedRecipe(*entry.recipe, recipe);
-            data.recipes.shaped.push_back(recipe);
-            break;
+        if (!result.user_data_buffer.empty()) {
+            json.back()["nbt"] = core::base64_encode(result.user_data_buffer);
         }
-        case CraftingDataEntryType::MultiRecipe: {
-            data.recipes.multi.push_back(recipe);
-            break;
+    };
+
+    auto dump_shapeless = [&](const ShapelessRecipePayload &entry) {
+        nlohmann::json recipe;
+        recipe["id"] = entry.recipe_id;
+        recipe["netId"] = entry.net_id.raw_id;
+        recipe["uuid"] = core::EndstoneUUID::fromMinecraft(entry.uuid).str();
+        recipe["tag"] = entry.tag;
+        recipe["priority"] = entry.priority;
+        for (const auto &ingredient : entry.ingredients) {
+            dump_ingredient(ingredient, recipe["input"]);
         }
-        case CraftingDataEntryType::UserDataShapelessRecipe: {
-            data.recipes.user_data_shapeless.push_back(recipe);
-            break;
+        for (const auto &result : entry.results) {
+            dump_result(result, recipe["output"]);
         }
-        case CraftingDataEntryType::ShapelessChemistryRecipe: {
-            data.recipes.shapeless_chemistry.push_back(recipe);
-            break;
+        return recipe;
+    };
+
+    auto dump_shaped = [&](const ShapedRecipePayload &entry) {
+        nlohmann::json recipe;
+        recipe["id"] = entry.recipe_id;
+        recipe["netId"] = entry.net_id.raw_id;
+        recipe["uuid"] = core::EndstoneUUID::fromMinecraft(entry.uuid).str();
+        recipe["tag"] = entry.tag;
+        recipe["priority"] = entry.priority;
+        for (const auto &ingredient : entry.ingredients) {
+            dump_ingredient(ingredient, recipe["input"]);
         }
-        case CraftingDataEntryType::ShapedChemistryRecipe: {
-            dumpShapedRecipe(*entry.recipe, recipe);
-            data.recipes.shaped_chemistry.push_back(recipe);
-            break;
+        for (const auto &result : entry.results) {
+            dump_result(result, recipe["output"]);
         }
-        case CraftingDataEntryType::SmithingTransformRecipe: {
-            recipe["template"] = recipe["input"][0];
-            recipe["base"] = recipe["input"][1];
-            recipe["addition"] = recipe["input"][2];
-            recipe.erase("input");
-            data.recipes.smithing_transform.push_back(recipe);
-            break;
+        dumpShapedRecipe(entry.width, entry.height, recipe);
+        return recipe;
+    };
+
+    // Smithing recipes carry three fixed ingredient slots and no uuid or priority.
+    auto dump_smithing = [&](const std::string &recipe_id, RecipeNetId net_id, const std::string &tag,
+                             std::initializer_list<const RecipeIngredient *> ingredients) {
+        nlohmann::json recipe;
+        recipe["id"] = recipe_id;
+        recipe["netId"] = net_id.raw_id;
+        recipe["tag"] = tag;
+        nlohmann::json input;
+        for (const auto *ingredient : ingredients) {
+            dump_ingredient(*ingredient, input);
         }
-        case CraftingDataEntryType::SmithingTrimRecipe: {
-            recipe["template"] = recipe["input"][0];
-            recipe["base"] = recipe["input"][1];
-            recipe["addition"] = recipe["input"][2];
-            recipe.erase("input");
-            data.recipes.smithing_trim.push_back(recipe);
-            break;
-        }
-        default:
-            throw std::runtime_error("Unknown craft data type");
-        }
+        recipe["template"] = input[0];
+        recipe["base"] = input[1];
+        recipe["addition"] = input[2];
+        return recipe;
+    };
+
+    for (const auto &entry : payload.shapeless_recipes) {
+        data.recipes.shapeless.push_back(dump_shapeless(entry));
+    }
+    for (const auto &entry : payload.user_data_shapeless_recipes) {
+        data.recipes.user_data_shapeless.push_back(dump_shapeless(entry));
+    }
+    for (const auto &entry : payload.shapeless_chemistry_recipes) {
+        data.recipes.shapeless_chemistry.push_back(dump_shapeless(entry));
+    }
+    for (const auto &entry : payload.shaped_recipes) {
+        data.recipes.shaped.push_back(dump_shaped(entry));
+    }
+    for (const auto &entry : payload.shaped_chemistry_recipes) {
+        data.recipes.shaped_chemistry.push_back(dump_shaped(entry));
+    }
+    for (const auto &entry : payload.multi_recipes) {
+        data.recipes.multi.push_back({
+            {"netId", entry.net_id.raw_id},
+            {"uuid", core::EndstoneUUID::fromMinecraft(entry.uuid).str()},
+        });
+    }
+    for (const auto &entry : payload.smithing_transform_recipes) {
+        auto recipe = dump_smithing(entry.recipe_id, entry.net_id, entry.tag,
+                                    {&entry.template_ingredient, &entry.base_ingredient, &entry.addition_ingredient});
+        dump_result(entry.result, recipe["output"]);
+        data.recipes.smithing_transform.push_back(recipe);
+    }
+    for (const auto &entry : payload.smithing_trim_recipes) {
+        data.recipes.smithing_trim.push_back(
+            dump_smithing(entry.recipe_id, entry.net_id, entry.tag,
+                          {&entry.template_ingredient, &entry.base_ingredient, &entry.addition_ingredient}));
     }
 
-    for (const auto &entry : packet->potion_mix_entries) {
+    for (const auto &entry : payload.potion_mixes) {
         data.recipes.potion_mixes.push_back({
             {"input", {{"item", id_to_name(entry.from_item_id)}, {"data", entry.from_item_aux}}},
             {"reagent", {{"item", id_to_name(entry.reagent_item_id)}, {"data", entry.reagent_item_aux}}},
@@ -338,7 +344,7 @@ void dumpRecipes(VanillaData &data, ::Level &level)
         });
     }
 
-    for (const auto &entry : packet->container_mix_entries) {
+    for (const auto &entry : payload.container_mixes) {
         data.recipes.container_mixes.push_back({
             {"input", id_to_name(entry.from_item_id)},
             {"reagent", id_to_name(entry.reagent_item_id)},
@@ -346,7 +352,7 @@ void dumpRecipes(VanillaData &data, ::Level &level)
         });
     }
 
-    for (const auto &entry : packet->material_reducer_entries) {
+    for (const auto &entry : payload.material_reducers) {
         nlohmann::json json = {
             {"input", entry.from_item_key},
             {"outputs", {}},

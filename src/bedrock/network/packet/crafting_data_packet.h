@@ -14,6 +14,7 @@
 
 #pragma once
 
+#include <optional>
 #include <string>
 #include <vector>
 
@@ -21,28 +22,72 @@
 #include "bedrock/network/packet.h"
 #include "bedrock/world/item/crafting/recipe.h"
 #include "bedrock/world/item/crafting/recipes.h"
-#include "bedrock/world/item/network_item_instance_descriptor.h"
+#include "bedrock/platform/uuid.h"
+#include "bedrock/world/item/crafting/recipe_ingredient.h"
+#include "bedrock/world/item/network_item_instance_descriptor_data.h"
 
-enum class CraftingDataEntryType {
-    ShapelessRecipe = 0,
-    ShapedRecipe = 1,
-    MultiRecipe = 4,
-    UserDataShapelessRecipe = 5,
-    ShapelessChemistryRecipe = 6,
-    ShapedChemistryRecipe = 7,
-    SmithingTransformRecipe = 8,
-    SmithingTrimRecipe = 9,
-    COUNT = 10,
-};
+struct RecipeUnlockingRequirement {
+    // TODO(fixme): check the name
+    enum class UnlockingContext : int {};  // values not recovered
 
-struct CraftingDataEntry {
-    std::unique_ptr<Recipe> recipe;
-    int item_data;
-    int item_aux;
-    HashedString tag;
-    NetworkItemInstanceDescriptor item_result;
-    CraftingDataEntryType entry_type;
+    UnlockingContext context;                                   // +0
+    std::optional<std::vector<RecipeIngredient>> ingredients;    // +8
 };
+BEDROCK_STATIC_ASSERT_SIZE(RecipeUnlockingRequirement, 40, 40);
+
+struct ShapelessRecipePayload {
+    std::string recipe_id;                                          // +0
+    std::vector<RecipeIngredient> ingredients;                      // +32
+    std::vector<NetworkItemInstanceDescriptorData> results;         // +56
+    mce::UUID uuid;                                                 // +80
+    std::string tag;                                                // +96
+    int priority;                                                   // +128
+    std::optional<RecipeUnlockingRequirement> unlocking_requirement;  // +136
+    RecipeNetId net_id;                                             // +184
+};
+BEDROCK_STATIC_ASSERT_SIZE(ShapelessRecipePayload, 192, 176);
+
+struct ShapedRecipePayload {
+    std::string recipe_id;                                          // +0
+    int width;                                                      // +32
+    int height;                                                     // +36
+    std::vector<RecipeIngredient> ingredients;                      // +40, width * height, row-major
+    std::vector<NetworkItemInstanceDescriptorData> results;         // +64
+    mce::UUID uuid;                                                 // +88
+    std::string tag;                                                // +104
+    int priority;                                                   // +136
+    bool assume_symmetry;                                           // +140
+    std::optional<RecipeUnlockingRequirement> unlocking_requirement;  // +144
+    RecipeNetId net_id;                                             // +192
+};
+BEDROCK_STATIC_ASSERT_SIZE(ShapedRecipePayload, 200, 184);
+
+struct MultiRecipePayload {
+    mce::UUID uuid;    // +0
+    RecipeNetId net_id;  // +16
+};
+BEDROCK_STATIC_ASSERT_SIZE(MultiRecipePayload, 24, 24);
+
+struct SmithingTransformRecipePayload {
+    std::string recipe_id;                        // +0
+    RecipeIngredient template_ingredient;         // +32
+    RecipeIngredient base_ingredient;             // +56
+    RecipeIngredient addition_ingredient;         // +80
+    NetworkItemInstanceDescriptorData result;     // +104
+    std::string tag;                              // +152
+    RecipeNetId net_id;                           // +184
+};
+BEDROCK_STATIC_ASSERT_SIZE(SmithingTransformRecipePayload, 192, 168);
+
+struct SmithingTrimRecipePayload {
+    std::string recipe_id;                 // +0
+    RecipeIngredient template_ingredient;  // +32
+    RecipeIngredient base_ingredient;      // +56
+    RecipeIngredient addition_ingredient;  // +80
+    std::string tag;                       // +104
+    RecipeNetId net_id;                    // +136
+};
+BEDROCK_STATIC_ASSERT_SIZE(SmithingTrimRecipePayload, 144, 128);
 
 struct PotionMixDataEntry {
     int from_item_id;
@@ -69,15 +114,29 @@ struct MaterialReducerDataEntry {
     std::vector<MaterialReducerEntryOutput> to_item_ids_and_counts;
 };
 
+struct CraftingDataPacketPayload {
+    std::vector<ShapedRecipePayload> shaped_recipes;                        // +0
+    std::vector<ShapelessRecipePayload> shapeless_recipes;                  // +24
+    std::vector<MultiRecipePayload> multi_recipes;                          // +48
+    std::vector<ShapelessRecipePayload> user_data_shapeless_recipes;        // +72
+    std::vector<ShapelessRecipePayload> shapeless_chemistry_recipes;        // +96
+    std::vector<ShapedRecipePayload> shaped_chemistry_recipes;              // +120
+    std::vector<SmithingTransformRecipePayload> smithing_transform_recipes;  // +144
+    std::vector<SmithingTrimRecipePayload> smithing_trim_recipes;           // +168
+    std::vector<PotionMixDataEntry> potion_mixes;                           // +192
+    std::vector<ContainerMixDataEntry> container_mixes;                     // +216
+    std::vector<MaterialReducerDataEntry> material_reducers;                // +240, not filled by prepareFromRecipes
+    bool clear_recipes;                                                     // +264
+};
+BEDROCK_STATIC_ASSERT_SIZE(CraftingDataPacketPayload, 272, 272);
+
 class CraftingDataPacket : public Packet {
 public:
     ~CraftingDataPacket() override = default;
 
-    static std::unique_ptr<CraftingDataPacket> prepareFromRecipes(Recipes const &, bool);
+    static CraftingDataPacketPayload prepareFromRecipes(Recipes const &, bool);
 
-    std::vector<CraftingDataEntry> crafting_entries;                 // +48
-    std::vector<PotionMixDataEntry> potion_mix_entries;              // +72
-    std::vector<ContainerMixDataEntry> container_mix_entries;        // +96
-    std::vector<MaterialReducerDataEntry> material_reducer_entries;  // +120
-    bool clear_recipes;                                              // +144
+    CraftingDataPacketPayload payload;                                      // +48
+    SerializationMode serialization_mode{SerializationMode::CerealOnly};    // +320
 };
+BEDROCK_STATIC_ASSERT_SIZE(CraftingDataPacket, 328, 328);

@@ -46,7 +46,7 @@ static constexpr std::array<std::pair<std::string_view, std::size_t>, 61> symbol
     // CommandUtils
     {"?getActorName@CommandUtils@@YA?AV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@AEBVActor@@@Z", 3711472},
     // CraftingDataPacket
-    {"?prepareFromRecipes@CraftingDataPacket@@SA?AV?$unique_ptr@VCraftingDataPacket@@U?$default_delete@VCraftingDataPacket@@@std@@@std@@AEBVRecipes@@_N@Z", 39607088},
+    {"?prepareFromRecipes@CraftingDataPacket@@SA?AUCraftingDataPacketPayload@@AEBVRecipes@@_N@Z", 39607088},
     // DedicatedServer
     {"?start@DedicatedServer@@QEAA?AW4ServerExitCode@1@AEBV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@AEBVActivationArguments@Bedrock@@@Z", 501600},
     // Explosion

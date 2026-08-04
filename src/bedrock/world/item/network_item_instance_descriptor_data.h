@@ -12,11 +12,20 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-#include "bedrock/network/packet/crafting_data_packet.h"
+#pragma once
 
-#include "bedrock/symbol.h"
+#include <cstdint>
+#include <string>
 
-CraftingDataPacketPayload CraftingDataPacket::prepareFromRecipes(const Recipes &recipe, bool only_crafting_recipes)
-{
-    return BEDROCK_CALL(&CraftingDataPacket::prepareFromRecipes, recipe, only_crafting_recipes);
-}
+#include "bedrock/bedrock.h"
+
+// TODO(fixme): check the name - the cereal scope name is read from the binary, but its identity with
+// this element could not be proven; only the layout is confirmed.
+struct NetworkItemInstanceDescriptorData {
+    int id;                       // +0
+    std::int16_t stack_size;      // +4
+    int aux_value;                // +8
+    int block_runtime_id;         // +12
+    std::string user_data_buffer;  // +16, an already-serialized NBT blob
+};
+BEDROCK_STATIC_ASSERT_SIZE(NetworkItemInstanceDescriptorData, 48, 40);
