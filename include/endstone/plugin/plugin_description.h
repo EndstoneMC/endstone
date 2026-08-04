@@ -21,9 +21,9 @@
 #include <vector>
 
 #include "endstone/command/command.h"
-#include "endstone/detail.h"
 #include "endstone/permissions/permission.h"
 #include "endstone/plugin/plugin_load_order.h"
+#include "endstone/version.h"
 
 namespace endstone {
 

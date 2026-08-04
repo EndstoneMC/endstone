@@ -18,13 +18,14 @@
 #include <stdexcept>
 
 #if defined(_WIN32) || defined(_WIN64)
-#ifndef NOMINMAX
-#define NOMINMAX
-#endif
-#ifndef WIN32_LEAN_AND_MEAN
-#define WIN32_LEAN_AND_MEAN
-#endif
-#include <Windows.h>
+#include <cstdint>
+
+// Declared by hand, matching the SDK: including <Windows.h> here would leak its macros into every plugin.
+// NOLINTNEXTLINE(bugprone-reserved-identifier,cert-dcl37-c,cert-dcl51-cpp)
+struct HINSTANCE__;
+extern "C" __declspec(dllimport) HINSTANCE__ *__stdcall GetModuleHandleA(const char *module_name);
+extern "C" __declspec(dllimport) std::intptr_t(__stdcall *__stdcall GetProcAddress(HINSTANCE__ *module,
+                                                                                   const char *proc_name))();
 #else
 #include <dlfcn.h>
 
@@ -132,7 +133,7 @@ inline Server &getServer()
     static Server *server;
     if (server == nullptr) {
 #ifdef _WIN32
-        auto handle = GetModuleHandle("endstone_runtime.dll");
+        auto handle = GetModuleHandleA("endstone_runtime.dll");
 #else
         auto handle = dlopen("libendstone_runtime.so", RTLD_LAZY);
 #endif
