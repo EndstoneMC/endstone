@@ -268,7 +268,7 @@ extra = 0
 #    large builder that constructs the packet inline and returns a unique_ptr<CraftingDataPacket>
 # 3. take the large non-ctor/dtor one
 # 4. confirm vs the old named DB
-pattern = "55 41 57 41 56 41 55 41 54 53 48 81 EC ? ? ? ? 89 94 24 ? ? ? ? 48 89 F3"
+pattern = "55 41 57 41 56 41 55 41 54 53 48 81 EC ? ? ? ? 89 94 24 ? ? ? ? 49 89 F6"
 
 [[signatures]]
 name = "_ZN15DedicatedServer5startERKNSt3__112basic_stringIcNS0_11char_traitsIcEENS0_9allocatorIcEEEERKN7Bedrock19ActivationArgumentsE"
@@ -469,7 +469,7 @@ extra = 0
 #    (Mob's own vtable is `_ZTV3Mob`)
 # 2. read knockback's slot index in `_ZTV6Player` in the old named DB and take the same slot in the new vtable
 # 3. confirm vs the old named DB (damps motion + applies knockback rules)
-pattern = "55 41 57 41 56 41 55 41 54 53 48 81 EC ? ? ? ? 49 89 CF 0F 29 4C 24 ?"
+pattern = "55 41 57 41 56 41 55 41 54 53 48 81 EC ? ? ? ? 49 89 D7 0F 29 54 24 ? 0F 29 4C 24"
 
 [[signatures]]
 name = "_ZN13NetworkSystem4sendERK17NetworkIdentifierRK6Packet11SubClientId"
@@ -503,7 +503,7 @@ extra = 0
 # 1. find bytes "33 20 50 6C 61 79 65 72 20 74 65 6C 65 70 6F 72 74 54 6F 00" = "3 Player teleportTo\0" (unique)
 # 2. its lone data xref (a validateVec3Position label arg) is a `lea` inside this function
 # 3. walk up to the prologue
-pattern = "55 41 57 41 56 41 55 41 54 53 48 81 EC ? ? ? ? 45 89 CC 44 89 C5 41 89 CE"
+pattern = "55 41 57 41 56 41 55 41 54 53 48 81 EC ? ? ? ? 45 89 CC 45 89 C6 89 CD 41 89 D5"
 
 [[signatures]]
 name = "_ZN6Player14stopSleepInBedEbb"
@@ -523,7 +523,7 @@ extra = 0
 # 1. find bytes "31 20 73 74 61 72 74 53 6C 65 65 70 49 6E 42 65 64 00" = "1 startSleepInBed\0" (unique)
 # 2. its lone data xref (a validateBlockPos label arg) is a `lea` inside this function
 # 3. walk up to the prologue
-pattern = "55 41 57 41 56 41 55 41 54 53 48 83 EC ? 49 89 F6 48 89 FB 41 BD ? ? ? ? 48 8D 35"
+pattern = "55 41 57 41 56 41 55 41 54 53 48 81 EC ? ? ? ? 0F 29 84 24 ? ? ? ? 89 D5 49 89 F6"
 
 [[signatures]]
 name = "_ZN6Player17completeUsingItemEv"
@@ -624,7 +624,7 @@ extra = 0
 # 1. find "Experiment(s) active: " + a 00 (unique; logged by initializeServer when experiments are on)
 # 2. its data xref is a `lea` inside ServerInstance::initializeServer
 # 3. walk up to the prologue (it calls ResourcePackStack::deserialize)
-pattern = "55 41 57 41 56 41 55 41 54 53 48 81 EC ? ? ? ? 49 89 FE 48 89 74 24 ? 48 8D 9E"
+pattern = "55 41 57 41 56 41 55 41 54 53 48 81 EC ? ? ? ? 48 89 14 24 48 89 74 24 ? 48 89 BC 24"
 
 [[signatures]]
 name = "_ZN20ServerNetworkHandler15tryToLoadPlayerER12ServerPlayerRK17ConnectionRequestRK24PlayerAuthenticationInfo"
@@ -633,9 +633,7 @@ extra = 0
 # 1. find bytes "6D 69 6E 65 63 72 61 66 74 3A 70 6C 61 79 65 72 2E 30 00" = "minecraft:player.0\0" (unique)
 # 2. its data xrefs are `lea`s inside this function
 # 3. walk up to the prologue
-pattern = "E8 ? ? ? ? 89 C5 84 C0 75 ? 49 8B 84 24"
-rip_relative = true
-rip_offset = 1
+pattern = "55 41 57 41 56 41 55 41 54 53 48 83 EC ? 49 89 CC 49 89 D7 49 89 F6 49 89 FD 48 81 C7"
 
 [[signatures]]
 name = "_ZN20ServerNetworkHandler20_validateLoginPacketERK17NetworkIdentifierRK11LoginPacket"
