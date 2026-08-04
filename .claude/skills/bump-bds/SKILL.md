@@ -438,6 +438,35 @@ the platform Endstone actually hooks.
    const/non-const overload pair - ICF folds them to one address, so they show up
    as two adjacent slots sharing a target, which is unmistakable.
 
+## Tracing a Bedrock::PubSub notification path
+
+When an Endstone event fed by a `Connector`/`Publisher` stops firing, clear or
+convict the BDS side before touching `src/bedrock/`. Four checks settle it.
+
+1. **Resolve a slot-numbered lead to a NAME first.** Itanium spends 2 slots on
+   the dtor, MSVC 1, so the same virtual is Itanium slot N and MSVC slot N-1 -
+   an off-by-two between platforms. Name the slots from the last PDB-bearing
+   release (the proxy/manager virtuals are usually public even when the vftable
+   is not) and confirm by `.text` address order, which follows declaration
+   order. Acting on "slot 5 was restructured" without this reads a `void`
+   helper as the notification gate.
+2. **A `dispatch<...>` instantiation is per-signature and normally has exactly
+   ONE caller.** Xref it in both binaries: equal caller sets prove there is a
+   single publish site and it did not move. This is far stronger than diffing
+   the publisher, and it is two `E8` rel32 scans.
+3. **Read the notifier itself, not the publisher.** `Level::onChunkLoaded`-style
+   notifiers are thin: a chain of proxy vcalls (a read-only early-out, a
+   fire-once latch returning `bool`, some side effects, an argument getter) then
+   the dispatch. Diff it instruction-by-instruction across versions - a stable
+   one stays byte-identical apart from relocated displacements.
+4. **Ordering against a state field needs the notifier's caller, not the
+   notifier.** Find it by the *literal* argument pair at the state-transition
+   call (`tryChangeState(expected, desired)`); that pair is version-stable and
+   usually unique. Beware: BDS discards the CAS result and often publishes
+   *outside* the lock, so an Endstone-side `state >= X` gate is unsound by
+   construction even when the ordering is unchanged. Prefer the guarantees BDS
+   already provides (the fire-once latch) over re-deriving them from a field.
+
 ## Detecting data-member layout changes (ctor/dtor RE)
 
 A struct's member layout - a member inserted, removed, resized, or moved - is
@@ -559,6 +588,58 @@ check can ever detect.
 - **RTTI `offset_to_top` doubles as a size oracle for a base subobject.** A
   secondary base's `offset_to_top` moving -32 -> -40 says the primary subobject
   grew 8 bytes, without decompiling anything.
+- **`make_shared`'s allocation size is a whole-object oracle - subtract the right
+  control block.** Its `operator new` immediate is `control block + sizeof(T)`:
+  **16** on MSVC (`_Ref_count_obj2` = vptr + two `uint32`; the `add reg, 0x10`
+  that derives the object confirms it) and **24** on libc++ (its counters are
+  `long`, not `int`). Subtract the wrong one and every size is 8 bytes out. This
+  is the only size oracle Windows has, `/GR-` leaving no typeinfo. For a packet
+  the route needs no symbols beyond one the table already holds:
+  `MinecraftPackets::createPacket` is a jump table indexed *directly* by
+  `MinecraftPacketIds`, so `table[id]` -> `make_packet<T>` -> `operator new` is
+  two hops. Cross-check on Linux, where the D0 dtor's sized
+  `operator delete(this, N)` gives `sizeof` independently.
+- **When no `operator new` site exists, MSVC's scalar deleting destructor has
+  the size.** A class that is only ever stack-constructed (most packets -
+  `StartGamePacket` has no `operator new` immediate anywhere in the image) still
+  gets `operator delete(this, sizeof(T))` emitted in **vftable slot 0**, so one
+  `mov edx, N` settles it. Reach slot 0 name-free: a string literal the class
+  owns -> the stub referencing it -> the `.rdata` qword holding that stub ->
+  walk back while the qwords are `.text`. The walk over-runs into the *previous*
+  vftable (MSVC packs them back to back), so take slot 0 to be the
+  scalar-deleting-dtor body (`mov [rcx], vftable` ... `test edx,edx` ->
+  `operator delete`), not the start of the run.
+- **Sweep every Linux `sizeof` at once off the Itanium D0.** `_ZTS<len><Class>`
+  -> typeinfo -> address point -> the deleting dtor's `mov esi, N; jmp <sized
+  operator delete>` is `sizeof`, name-anchored, and runs over a list of classes
+  in seconds with `lief` alone. Two filters make it trustworthy: the address
+  point's `offset_to_top` slot must be **0 and not relocated** (a derived class's
+  `__si_class_type_info` base-pointer field otherwise reads as a fake address
+  point and hands back the derived class's size - that is how `Connector` reads
+  200 instead of 16), and the D0 must be a <=26-instruction body that calls the
+  slot before it. The dtor pair is not always slots 0/1 - `Actor`/`Mob`/
+  `ServerPlayer` carry it at slots 8/9 - so scan the first ~20 slots.
+- **BDS's Windows build is clang-cl, so `__PRETTY_FUNCTION__` literals bridge the
+  platforms.** `T *Bedrock::NonOwnerPointer<X>::_get() const [T = X]` and the
+  assert expressions are byte-identical in both binaries; only the source-path
+  literal differs (`/mnt/vss/_work/1/s/...` vs `D:\a\_work\1\s\...`). Take the
+  string out of the Linux D1 you just found by RTTI, locate it in the Windows
+  `.rdata`, scan `.text` for the `lea rip` that references it, and the enclosing
+  function is the Windows destructor - its deleting-dtor caller carries the
+  Windows `sizeof`. This is what settles a class with no vftable anchor; it fails
+  only for destructors that reference no distinctive literal.
+- **A size delta is a NET.** 1.26.40's `StartGamePacket` reads -8 on Linux and
+  -24 on Windows: a cereal migration appending 8 at the tail *on top of* a member
+  that shrank 16/32. Decompose before reading anything into the sign or the
+  magnitude - one component can be string-free (equal deltas) while another is
+  not.
+- **The Windows-minus-Linux delta counts the strings.** A change adding N
+  `std::string`s shows `delta_win - delta_linux == 8 * N` (32 vs 24); equal
+  deltas mean no string moved. Decompose a size jump with it before trusting the
+  decomposition - and never assume the sweep's Linux delta is the Windows one.
+- **`std::optional<T>` is self-measuring.** The engaged-flag offset read by a
+  writer or dtor *is* `sizeof(T)` past the value, so one `cmp byte [this+K], 1`
+  pins both the member's start and the payload's size in one instruction.
 
 ### Traps that cost real time here
 
@@ -597,6 +678,21 @@ would catch it is asserting the offset of the last member Endstone reads
 is only conditionally-supported and warns. Decide it once as a convention rather
 than per class. For any class that is *not* truncated, add the size assert - it
 turns this whole failure mode into a compile error.
+
+Two things that make the guard weaker than it looks:
+
+- **A size assert never checks BDS.** `static_assert(sizeof(X) == N)` compares
+  Endstone's declaration against a hard-coded literal, so once `N` is stale it
+  passes forever and reads as verified. Re-derive every asserted number from the
+  new binaries each bump - a green build says nothing (1.26.40:
+  `ResourcePacksInfoPacket` asserted 128 against a 136-byte object,
+  `ClientboundMapItemDataPacket` 200 against 208; both packets are read and
+  mutated by hooks).
+- **No `// ...` marker does not mean the class is complete.** `ServerInstance`
+  carries no marker yet declares 936 of 1080 bytes. So "add asserts to every
+  unmarked class" is not a mechanical sweep: derive the real size first, and
+  where the declaration is short either finish it or add the marker - never both
+  a silent prefix and an assert.
 
 ## Detecting cereal-packet layout changes (the cereal manager)
 
@@ -639,13 +735,31 @@ the `SerializationMode` accessors.
    them: the vtable slots become `mov eax,[this+OFF]` / `mov [this+OFF],reg`, and
    `OFF` is a **new 4-byte `SerializationMode` member** (init `CerealOnly`=5).
    Find the slot via the PDB-anchored `_read` slot (Windows) / RTTI (Linux) and
-   confirm `OFF` equals the copy's last store.
-5. **Cross-check the wire with protocol-docs.** The cereal field set == the
+   confirm `OFF` equals the copy's last store. With no PDB, skip the vtable
+   entirely: `getId` / `getName` / `get`+`setSerializationMode` are emitted as one
+   contiguous aligned stub cluster in the packet's own TU on both platforms, so
+   the single `.text` rip-`lea` to the `"<Name>Packet"` literal lands on
+   `getName` and the next two stubs give the packet id and the `SerializationMode`
+   offset for free. On Windows those stubs are leaves with **no `.pdata` record**,
+   so a function-range filter silently drops them.
+5. **A packet still in a side-by-side mode keeps its hand-written `write` - and
+   that is the best member oracle there is.** Only a `CerealOnly` packet's
+   `write` is the thin wrapper point 1 warns about; a
+   `SideBySide_*`/`SemanticSideBySide_*` one reads every member at its real
+   offset with the field's cereal name string in the adjacent argument register.
+   It names offsets *and* covers the PODs and raw pointers a destructor never
+   touches, so it settles the mid-struct-insertion question a dtor walk cannot.
+   The `<Name>Payload` type name and its member display names also appear
+   verbatim in the entt/cereal registration function - one `lea` per name with
+   the length in `ecx`, in declaration order.
+6. **Cross-check the wire with protocol-docs.** The cereal field set == the
    serialized fields; `EndstoneMC/protocol-docs` (`<branch>/packets/<Name>.json`)
    lists them in order, mapping the copy's offsets to names and flagging
    added/removed wire fields. A field can leave the wire *and* the struct together
    (dropped bools), or appear (a second `FilteredName` once a `RedactableString`
-   serialises both halves).
+   serialises both halves). The sibling `bedrock-protocol` DSL often already
+   models the target protocol; a wire model that matches the binary field for
+   field, optional for optional, is a second independent derivation.
 
 Worked example: **BossEventPacket @ 1.26.32** - migrated to cereal-only;
 `color`/`overlay` narrowed 4B->1B, both `darken`/`fog` bools removed, a
@@ -857,6 +971,11 @@ Endstone deliberately models only a subset. Rule these out before editing:
   internal changes need no action.
 - **New free functions or non-virtual methods** Endstone does not declare - no
   layout or vtable impact.
+- **A newly added `std::lock_guard`.** New `MSVCP140!_Mtx_lock`/`_Mtx_unlock`
+  calls bracketing existing code, with the `INT_MAX` -> `INT_MAX - 1` recursion
+  sentinel and `std::_Throw_Cpp_error(5)`/`(6)`, is MSVC's inlined
+  `std::mutex::lock()`. Threading hardening around unchanged logic - it shifts
+  the stack frame and nothing else.
 
 ### Tooling
 
