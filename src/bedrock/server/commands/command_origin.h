@@ -59,23 +59,24 @@ public:
     [[nodiscard]] virtual bool canUseAbility(AbilitiesIndex ability) const = 0;                  // 15
     [[nodiscard]] virtual bool isWorldBuilder() const = 0;                                       // 16
     [[nodiscard]] virtual bool canUseCommandsWithoutCheatsEnabled() const = 0;                   // 17
-    [[nodiscard]] virtual bool isSelectorExpansionAllowed() const = 0;                           // 18
-    [[nodiscard]] virtual const NetworkIdentifier &getSourceId() const = 0;                      // 19
-    [[nodiscard]] virtual SubClientId getSourceSubId() const = 0;                                // 20
-    [[nodiscard]] virtual CommandOrigin &getOutputReceiver() const = 0;                          // 21
-    [[nodiscard]] virtual CommandOriginIdentity getIdentity() const = 0;                         // 22
-    [[nodiscard]] virtual CommandOriginType getOriginType() const = 0;                           // 23
-    [[nodiscard]] virtual CommandOriginData toCommandOriginData() const = 0;                     // 24
-    [[nodiscard]] virtual const mce::UUID &getUUID() const = 0;                                  // 25
-    virtual void handleCommandOutputCallback(int, std::string &&, Json::Value &&) const = 0;     // 26
-    virtual void updateValues() = 0;                                                             // 27
-    [[nodiscard]] virtual Vec3 getExecutePosition(int, const CommandPositionFloat &) const = 0;  // 28
-    [[nodiscard]] virtual CompoundTag serialize() const = 0;                                     // 29
-    [[nodiscard]] virtual bool isValid() const = 0;                                              // 30
-    [[nodiscard]] virtual bool requiresValidLevel() const = 0;                                   // 31
+    virtual void unknown18() = 0;                                                                // 18
+    [[nodiscard]] virtual bool isSelectorExpansionAllowed() const = 0;                           // 19
+    [[nodiscard]] virtual const NetworkIdentifier &getSourceId() const = 0;                      // 20
+    [[nodiscard]] virtual SubClientId getSourceSubId() const = 0;                                // 21
+    [[nodiscard]] virtual CommandOrigin &getOutputReceiver() const = 0;                          // 22
+    [[nodiscard]] virtual CommandOriginIdentity getIdentity() const = 0;                         // 23
+    [[nodiscard]] virtual CommandOriginType getOriginType() const = 0;                           // 24
+    [[nodiscard]] virtual CommandOriginData toCommandOriginData() const = 0;                     // 25
+    [[nodiscard]] virtual const mce::UUID &getUUID() const = 0;                                  // 26
+    virtual void handleCommandOutputCallback(int, std::string &&, Json::Value &&) const = 0;     // 27
+    virtual void updateValues() = 0;                                                             // 28
+    [[nodiscard]] virtual Vec3 getExecutePosition(int, const CommandPositionFloat &) const = 0;  // 29
+    [[nodiscard]] virtual CompoundTag serialize() const = 0;                                     // 30
+    [[nodiscard]] virtual bool isValid() const = 0;                                              // 31
+    [[nodiscard]] virtual bool requiresValidLevel() const = 0;                                   // 32
 
 protected:
-    virtual void _setUUID(const mce::UUID &uuid) = 0;  // 32
+    virtual void _setUUID(const mce::UUID &uuid) = 0;  // 33
 
 public:
     [[nodiscard]] std::shared_ptr<endstone::CommandSender> getEndstoneSender(CommandOutput &output) const;  // Endstone
