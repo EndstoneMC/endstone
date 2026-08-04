@@ -459,6 +459,101 @@ Usually crash-driven.
      ([[feedback_decompile_to_confirm]]); the tightest confirmation is a shifted
      neighbour whose new offset equals the old member's offset.
 
+### Start from the crash, not from a sweep
+
+A layout bug almost always surfaces as an **access violation inside a trivial
+accessor that just returns a member** - `getX() { return x_; }` - or inside
+`NonOwnerPointer::_setControlBlock` / a `shared_ptr` copy, because those touch a
+control block and fault on garbage. When that happens:
+
+- **Read the displacement out of BDS's own accessor in both versions. That one
+  number is the whole answer** and takes minutes; a full ctor/dtor walk takes
+  hours. Do it first and only escalate if the accessor cannot be located.
+- **Fix, rebuild, re-run.** Each fix moves the crash one step further in, and the
+  next trace names the next class for free. Iterating the crash is dramatically
+  faster than trying to statically clear every class up front.
+- **Rule out your own recent edits before blaming BDS.** If a hook's declared
+  return type or parameters changed, a corrupted `this` produces the identical
+  symptom. Discriminate by *where* it survives: if the hook already called the
+  real function through `ENDSTONE_HOOK_CALL_ORIGINAL` with that `this` and got
+  back, `this` is fine and it is a member offset.
+- Beware the accessor that appears to work: a `shared_ptr`'s pointer is its
+  first 8 bytes, so a getter returning `.get()` keeps working while every member
+  *after* it is 8 bytes out. Silent, and it hides the real breakage.
+
+### The change BDS actually makes most often
+
+**A member changing KIND at an unchanged offset**, growing 8 -> 16 and shifting
+everything after it - overwhelmingly `std::unique_ptr` -> `std::shared_ptr`, and
+it tends to arrive in clusters across ownership-holding classes in one release.
+When you find one, **go looking for its siblings** in related classes before the
+next crash finds them for you.
+
+Judge it by **kind, not size**: a `shared_ptr` teardown is an atomic refcount
+decrement plus a virtual `__on_zero` call; a `unique_ptr` reset is an inline
+delete. Same 8-byte delta, completely different fingerprint. Other shapes seen:
+a `unique_ptr<T>` replaced by an inline `std::optional<T>` (the destructor stops
+running a deleter and starts testing an engaged flag over the value's own body),
+and a member relocated within the struct with `sizeof` unchanged - which no size
+check can ever detect.
+
+### Proof techniques that settle it quickly
+
+- **A single instruction changing WIDTH at an unchanged offset proves an
+  append.** A ctor's `mov qword [this+N], 0` becoming `movups xmmword` means a
+  new 8-byte member now sits at `N+8` and is zero-initialised with its
+  neighbour. Identical on both platforms, and hard to misread.
+- **Uniform-delta check over the whole object.** If *every* store from the first
+  divergence to the end moved by exactly the same delta, there is exactly ONE
+  change and nothing before it moved. A mixed band (some +8, some 0, some +16)
+  means multiple changes - keep going.
+- **Base-class removal is visible in the typeinfo kind.** Itanium
+  `__vmi_class_type_info` (multiple bases, with the secondary vtable groups) ->
+  `__si_class_type_info` (single base) is a removed base, and the removed base's
+  own `_ZTS` name disappears from the whole binary. Every member then shifts by
+  that base's size.
+- **RTTI `offset_to_top` doubles as a size oracle for a base subobject.** A
+  secondary base's `offset_to_top` moving -32 -> -40 says the primary subobject
+  grew 8 bytes, without decompiling anything.
+
+### Traps that cost real time here
+
+- **The destructor only sees OWNED members.** Deriving layout or `sizeof` from
+  the D1/D0 dtor is blind to raw pointers, references and PODs, so an inserted
+  non-owning member is invisible and the method will happily report "growth is
+  all at the tail" when a mid-struct insertion actually moved everything. Treat a
+  dtor-only verdict as a lower bound and cross-check the ctor store list.
+- **A `this`-tracker must follow stack spills.** Any function big enough to
+  matter spills `this` immediately; a register-only tracker finds one or two
+  offsets in a 30 KB function and looks like it worked.
+- **Per-platform deltas are NOT transferable.** `std::string` is 32 on MSVC and
+  24 on libc++, `unordered_map` 64 vs 40, and mutexes differ too. A *changed*
+  verdict transfers across platforms - the same source change - but the byte
+  delta and every resulting offset must be derived per platform.
+- **The typeinfo name string is not guaranteed NUL-preceded.** Linker string
+  packing can place another string's tail immediately before it, so a scanner
+  anchored on a leading NUL silently misses classes - and looks like the class
+  simply is not there. Search on the trailing NUL and validate by finding the
+  typeinfo object that points at the candidate.
+- **PIE `.data.rel.ro` is mostly zero on disk.** The real pointers live in the
+  `R_X86_64_RELATIVE` addends; reconstruct the section as raw bytes overwritten
+  by addends. `offset_to_top` is *not* relocated, which is exactly what delimits
+  sub-vtables - so using addends alone silently loses the sub-table boundaries.
+- **Windows sret is RDX, not RCX.** For a member function returning a large
+  aggregate the convention is `rcx = this`, `rdx = return buffer`, `r8` onward =
+  arguments.
+
+### Guarding against the next one
+
+`BEDROCK_STATIC_ASSERT_SIZE` cannot protect a class Endstone **truncates** with
+`// ...` - its `sizeof` is the declared prefix, not the real object - and those
+are exactly the classes that fail this way, silently, at runtime. The guard that
+would catch it is asserting the offset of the last member Endstone reads
+(`offsetof`), but on a non-standard-layout class (multiple bases, virtuals) that
+is only conditionally-supported and warns. Decide it once as a convention rather
+than per class. For any class that is *not* truncated, add the size assert - it
+turns this whole failure mode into a compile error.
+
 ## Detecting cereal-packet layout changes (the cereal manager)
 
 Once a packet is migrated to **cereal** serialization, its `write(BinaryStream&)`
