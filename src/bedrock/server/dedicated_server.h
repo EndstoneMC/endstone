@@ -26,7 +26,7 @@ namespace endstone::core {
 class EndstoneServer;
 }
 
-class DedicatedServer : public IMinecraftApp, public Bedrock::AppIsland {
+class DedicatedServer : public IMinecraftApp {
 public:
     enum class ServerExitCode : int {
         Success = 0,
@@ -38,7 +38,6 @@ public:
     DedicatedServer();
     ~DedicatedServer() override;
     ENDSTONE_HOOK ServerExitCode start(const std::string &session_id, const Bedrock::ActivationArguments &args);
-    bool stop() override;
     [[nodiscard]] virtual Bedrock::NotNullNonOwnerPtr<FileArchiver> getFileArchiver() const;
 
 private:

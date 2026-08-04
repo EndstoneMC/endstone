@@ -283,6 +283,9 @@ public:
 namespace Automation {
 class AutomationClient;
 }
+namespace Bedrock {
+class ActivationArguments;
+}
 namespace br::worldgen {
 struct SpawnerData;
 class StructureSetRegistry;
