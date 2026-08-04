@@ -73,30 +73,31 @@ void patchPacket(const ClientboundMapItemDataPacket &packet, endstone::core::End
     }
 
     auto &pk = const_cast<ClientboundMapItemDataPacket &>(packet);
-    if (pk.map_pixels_.empty() && pk.decorations_.empty()) {
+    if (pk.payload.map_pixels.empty() && pk.payload.decorations.empty()) {
         return;  // Map creation, no data to be patched
     }
 
     const auto &render = map->render(player);
 
     // Patch pixels only when this packet carries a texture update
-    if (!pk.map_pixels_.empty()) {
-        if (pk.start_x_ < 0 || pk.start_y_ < 0 || pk.width_ <= 0 || pk.height_ <= 0 ||
-            pk.start_x_ + pk.width_ > MapConstants::MAP_SIZE || pk.start_y_ + pk.height_ > MapConstants::MAP_SIZE) {
+    if (!pk.payload.map_pixels.empty()) {
+        if (pk.payload.start_x < 0 || pk.payload.start_y < 0 || pk.payload.width <= 0 || pk.payload.height <= 0 ||
+            pk.payload.start_x + pk.payload.width > MapConstants::MAP_SIZE ||
+            pk.payload.start_y + pk.payload.height > MapConstants::MAP_SIZE) {
             return;  // Out of bounds
         }
-        for (auto x = 0; x < pk.width_; ++x) {
-            for (auto y = 0; y < pk.height_; ++y) {
-                pk.map_pixels_[x + (y * pk.width_)] =
-                    render.buffer[(pk.start_x_ + x) + ((pk.start_y_ + y) * MapConstants::MAP_SIZE)];
+        for (auto x = 0; x < pk.payload.width; ++x) {
+            for (auto y = 0; y < pk.payload.height; ++y) {
+                pk.payload.map_pixels[x + (y * pk.payload.width)] =
+                    render.buffer[(pk.payload.start_x + x) + ((pk.payload.start_y + y) * MapConstants::MAP_SIZE)];
             }
         }
     }
 
-    pk.decorations_.clear();
+    pk.payload.decorations.clear();
     for (const auto &cursor : render.cursors) {
         if (cursor.isVisible()) {
-            pk.decorations_.emplace_back(
+            pk.payload.decorations.emplace_back(
                 std::make_shared<MapDecoration>(static_cast<MapDecoration::Type>(cursor.getType()), cursor.getX(),
                                                 cursor.getY(), cursor.getDirection(), cursor.getCaption(),
                                                 mce::Color::WHITE  // TODO(map): support different colors

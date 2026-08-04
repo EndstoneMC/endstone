@@ -640,22 +640,23 @@ void EndstonePlayer::sendMap(MapView &map)
     auto &view = static_cast<EndstoneMapView &>(map);
     auto packet = MinecraftPackets::createPacket(MinecraftPacketIds::MapData);
     auto &pk = static_cast<ClientboundMapItemDataPacket &>(*packet);
-    pk.map_id_ = view.map_.getMapId();
-    pk.scale_ = view.map_.getScale();
-    pk.start_x_ = 0;
-    pk.start_y_ = 0;
-    pk.map_origin_ = view.map_.getOrigin();
-    pk.dimension_ = view.map_.getDimensionId().value;
-    pk.width_ = MapConstants::MAP_SIZE;
-    pk.height_ = MapConstants::MAP_SIZE;
-    pk.type_ = ClientboundMapItemDataPacket::Type::TextureUpdate | ClientboundMapItemDataPacket::Type::DecorationUpdate;
-    pk.locked_ = view.map_.isLocked();
+    pk.payload.map_id = view.map_.getMapId();
+    pk.payload.scale = view.map_.getScale();
+    pk.payload.start_x = 0;
+    pk.payload.start_y = 0;
+    pk.payload.map_origin = view.map_.getOrigin();
+    pk.payload.dimension = view.map_.getDimensionId().value;
+    pk.payload.width = MapConstants::MAP_SIZE;
+    pk.payload.height = MapConstants::MAP_SIZE;
+    pk.payload.type =
+        ClientboundMapItemDataPacket::Type::TextureUpdate | ClientboundMapItemDataPacket::Type::DecorationUpdate;
+    pk.payload.locked = view.map_.isLocked();
 
     for (const auto &[unique_id, decoration] : view.map_.getDecorations()) {
-        pk.unique_ids_.emplace_back(unique_id);
-        pk.decorations_.emplace_back(decoration);
+        pk.payload.unique_ids.emplace_back(unique_id);
+        pk.payload.decorations.emplace_back(decoration);
     }
-    pk.map_pixels_.resize(pk.width_ * pk.height_);
+    pk.payload.map_pixels.resize(pk.payload.width * pk.payload.height);
     getHandle().sendNetworkPacket(*packet);
 }
 
