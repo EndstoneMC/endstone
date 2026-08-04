@@ -30,7 +30,7 @@ public:
     ClientboundMapItemDataPacket(ActorUniqueID, int8_t, const MapItemSavedData::DecorationCollection &,
                                  buffer_span<unsigned int>, int, int, int, int, DimensionType, bool, const BlockPos &);
     ClientboundMapItemDataPacket(gsl::not_null<MapItemSavedData *>, Level &);
-    ActorUniqueID getMapId() const { return map_ids_.front(); }
+    ActorUniqueID getMapId() const { return map_id_; }
     const std::vector<ActorUniqueID> &getMapIds() const;
     DimensionType getDimensionId() const { return DimensionType(dimension_); }
     int8_t getScale() const;
@@ -43,21 +43,24 @@ public:
     bool hasEmptyOrBlackPixels() const;
 
     // protected: ENDSTONE: protected -> public
-    std::vector<ActorUniqueID> map_ids_;
-    int8_t scale_;
-    std::vector<std::shared_ptr<MapDecoration>> decorations_;
-    std::vector<MapItemTrackedActor::UniqueId> unique_ids_;
-    int start_x_;
-    int start_y_;
-    BlockPos map_origin_;
-    uint8_t dimension_;
-    int width_;
-    int height_;
-    Type type_;
-    std::vector<unsigned int> map_pixels_;
-    bool locked_;
-    // ...
+    // ClientboundMapItemDataPacketPayload, inlined at +48
+    ActorUniqueID map_id_;                                    // +48
+    Type type_;                                               // +56
+    uint8_t dimension_;                                       // +60
+    bool locked_;                                             // +61
+    BlockPos map_origin_;                                     // +64
+    std::vector<ActorUniqueID> map_ids_;                      // +80, only filled on the creation path
+    int8_t scale_;                                            // +104
+    std::vector<MapItemTrackedActor::UniqueId> unique_ids_;   // +112
+    std::vector<std::shared_ptr<MapDecoration>> decorations_;  // +136
+    int width_;                                               // +160
+    int height_;                                              // +164
+    int start_x_;                                             // +168
+    int start_y_;                                             // +172
+    std::vector<unsigned int> map_pixels_;                    // +176
+    SerializationMode serialization_mode{SerializationMode::CerealOnly};  // +200
 };
+BEDROCK_STATIC_ASSERT_SIZE(ClientboundMapItemDataPacket, 208, 208);
 
 inline ClientboundMapItemDataPacket::Type operator|(ClientboundMapItemDataPacket::Type a,
                                                     ClientboundMapItemDataPacket::Type b)

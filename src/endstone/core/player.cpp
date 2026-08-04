@@ -640,8 +640,7 @@ void EndstonePlayer::sendMap(MapView &map)
     auto &view = static_cast<EndstoneMapView &>(map);
     auto packet = MinecraftPackets::createPacket(MinecraftPacketIds::MapData);
     auto &pk = static_cast<ClientboundMapItemDataPacket &>(*packet);
-    pk.map_ids_.clear();
-    pk.map_ids_.emplace_back(view.map_.getMapId());
+    pk.map_id_ = view.map_.getMapId();
     pk.scale_ = view.map_.getScale();
     pk.start_x_ = 0;
     pk.start_y_ = 0;

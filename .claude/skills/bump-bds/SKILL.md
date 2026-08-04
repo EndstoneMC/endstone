@@ -760,6 +760,31 @@ the `SerializationMode` accessors.
    serialises both halves). The sibling `bedrock-protocol` DSL often already
    models the target protocol; a wire model that matches the binary field for
    field, optional for optional, is a second independent derivation.
+7. **Date the migration with a raw `grep`, before opening any database.** A
+   packet that migrated carries a `<Name>Payload` type-name string and *loses*
+   the field-label literals its hand-written `write` passed to the stream
+   (`"DecorationUpdate Bit Field"`). Grepping both strings across the shipped
+   binaries of the old and new release pins the migration to the exact version
+   in seconds, and tells you up front which oracle applies (point 5 vs point 1).
+8. **The payload's own constructors are the oracle when there is no
+   hand-written `write`.** Reach them from the `operator new(sizeof)` site
+   (which also hands you `sizeof`): the ctor stores every member, PODs
+   included, and *names* each one by the argument it comes from - a full
+   member map with semantics, not just offsets. Different ctors light up
+   different halves (an update-path ctor sets the scalars, a
+   savedData-path ctor fills the containers), so read more than one.
+9. **A tail append does NOT mean nothing before it moved.** A migration wraps
+   the members in a payload sub-object and is free to *reorder them into wire
+   order* at the same time; the `SerializationMode` at the tail then accounts
+   for the whole size delta and the arithmetic looks like a pure append while
+   every member has actually shifted. `ClientboundMapItemDataPacket @ 1.26.40`
+   is exactly this: 200 -> 208, all 8 bytes explained by the tail member, yet
+   every one of its 13 members moved.
+10. **Watch for a scalar hoisted out of a container.** The same migration split
+   `mMapIds.front()` into a new standalone `ActorUniqueID` at the head of the
+   payload plus a vector that is now **empty on every non-creation path**. An
+   Endstone accessor written as `vec.front()` stops being merely wrong and
+   becomes UB. The empty container is not an error to guard - the value moved.
 
 Worked example: **BossEventPacket @ 1.26.32** - migrated to cereal-only;
 `color`/`overlay` narrowed 4B->1B, both `darken`/`fog` bools removed, a
