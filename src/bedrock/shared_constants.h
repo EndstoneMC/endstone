@@ -31,5 +31,5 @@ constexpr int NetworkDefaultMaxConnections = 200;  // Endstone: 40 -> 200
 constexpr int MajorVersion = 1;
 constexpr int MinorVersion = 26;
 constexpr int PatchVersion = 40;
-constexpr int NetworkProtocolVersion = 1001;
+constexpr int NetworkProtocolVersion = 2168;
 }  // namespace SharedConstants
