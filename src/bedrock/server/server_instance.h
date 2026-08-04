@@ -64,7 +64,7 @@ private:
     std::unique_ptr<Minecraft> minecraft_;
     // std::unique_ptr<ProfilingManager> profiling_manager;
     // ServiceRegistrationToken<ProfilingManager> profiling_manager_service_registration_token_;
-    std::unique_ptr<ServerNetworkSystem> network_;
+    std::shared_ptr<ServerNetworkSystem> network_;
     std::unique_ptr<LoopbackPacketSender> packet_sender_;
     std::unique_ptr<Timer> sim_timer_;
     std::unique_ptr<Timer> real_timer_;
