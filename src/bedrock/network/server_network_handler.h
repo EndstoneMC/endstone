@@ -149,5 +149,5 @@ private:
     std::unique_ptr<TaskGroup> io_task_group_;
     bool is_trial_;
     std::unordered_map<PackIdVersion, std::string> pack_id_to_content_key_;
+    // ...
 };
-BEDROCK_STATIC_ASSERT_SIZE(ServerNetworkHandler, 2168, 1808);

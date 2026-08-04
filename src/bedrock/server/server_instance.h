@@ -104,4 +104,5 @@ private:
     Bedrock::NonOwnerPointer<ServerTextSettings> server_text_settings_;
     Bedrock::NotNullNonOwnerPtr<cereal::ReflectionCtx> cereal_context_;
     std::unique_ptr<LinkedAssetValidator> linked_asset_validator_;
+    // ...
 };
