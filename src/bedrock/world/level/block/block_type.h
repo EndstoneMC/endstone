@@ -157,9 +157,9 @@ public:
     [[nodiscard]] virtual bool liquidCanFlowIntoFromDirection(FacingID,
                                                               std::function<Block const &(BlockPos const &)> const &,
                                                               BlockPos const &) const = 0;
-    [[nodiscard]] virtual bool hasVariableLighting() const = 0;
-    [[nodiscard]] virtual bool isStrippable(Block const &) const = 0;
-    [[nodiscard]] virtual Block const &getStrippedBlock(Block const &) const = 0;
+    // [[nodiscard]] virtual bool hasVariableLighting() const = 0;
+    // [[nodiscard]] virtual bool isStrippable(Block const &) const = 0;
+    // [[nodiscard]] virtual Block const &getStrippedBlock(Block const &) const = 0;
     [[nodiscard]] virtual bool canProvideSupport(Block const &, FacingID, BlockSupportType type) const = 0;
     [[nodiscard]] virtual bool canProvideMultifaceSupport(Block const &, FacingID) const = 0;
     // [[nodiscard]] virtual bool canConnect(Block const &, FacingID, Block const &) const = 0;
@@ -170,15 +170,15 @@ public:
     [[nodiscard]] virtual bool isCraftingBlock() const = 0;
     [[nodiscard]] virtual bool isLavaBlocking() const = 0;
     [[nodiscard]] virtual bool isFenceBlock() const = 0;
-    [[nodiscard]] virtual bool isFenceGateBlock() const = 0;
+    // [[nodiscard]] virtual bool isFenceGateBlock() const = 0;
     [[nodiscard]] virtual bool isThinFenceBlock() const = 0;
     [[nodiscard]] virtual bool isWallBlock() const = 0;
-    [[nodiscard]] virtual bool isStairBlock() const = 0;
+    // [[nodiscard]] virtual bool isStairBlock() const = 0;
     [[nodiscard]] virtual bool isSlabBlock() const = 0;
-    [[nodiscard]] virtual bool isDoorBlock() const = 0;
+    // [[nodiscard]] virtual bool isDoorBlock() const = 0;
     [[nodiscard]] virtual bool isChestBlock() const = 0;
     [[nodiscard]] virtual bool isRailBlock() const = 0;
-    [[nodiscard]] virtual bool isButtonBlock() const = 0;
+    // [[nodiscard]] virtual bool isButtonBlock() const = 0;
     [[nodiscard]] virtual bool isLeverBlock() const = 0;
     [[nodiscard]] virtual bool isCandleCakeBlock() const = 0;
     [[nodiscard]] virtual bool isMultifaceBlock() const = 0;
@@ -232,7 +232,7 @@ public:
                                  ResourceDropsContext const &) const = 0;
     [[nodiscard]] virtual Block const &getPlacementBlock(Actor const &, BlockPos const &, FacingID, Vec3 const &,
                                                          int) const = 0;
-    [[nodiscard]] virtual int calcVariant(BlockSource &, BlockPos const &, mce::Color const &) const = 0;
+    // [[nodiscard]] virtual int calcVariant(BlockSource &, BlockPos const &, mce::Color const &) const = 0;
     [[nodiscard]] virtual bool isAttachedTo(BlockSource &, BlockPos const &, BlockPos &) const = 0;
     [[nodiscard]] virtual bool attack(Player *player, BlockPos const &) const = 0;
     [[nodiscard]] virtual bool shouldTriggerEntityInside(BlockSource &, BlockPos const &, Actor &) const = 0;
@@ -255,7 +255,7 @@ public:
     virtual void notifySpawnedAt(BlockSource &, BlockPos const &) const = 0;
     [[nodiscard]] virtual bool causesFreezeEffect() const = 0;
     [[nodiscard]] virtual std::string buildDescriptionId(Block const &) const = 0;
-    [[nodiscard]] virtual bool isAuxValueRelevantForPicking() const = 0;
+    // [[nodiscard]] virtual bool isAuxValueRelevantForPicking() const = 0;
     [[nodiscard]] virtual bool isSeasonTinted(Block const &, BlockSource &, BlockPos const &) const = 0;
     virtual void onGraphicsModeChanged(BlockGraphicsModeChangeContext const &) = 0;
     [[nodiscard]] virtual float getShadeBrightness(Block const &) const = 0;
@@ -267,7 +267,7 @@ public:
     [[nodiscard]] virtual Flip getFaceFlip(FacingID, Block const &) const = 0;
     virtual void animateTickBedrockLegacy(BlockSource &, BlockPos const &, Random &) const = 0;
     virtual void animateTick(BlockSource &, BlockPos const &, Random &) const = 0;
-    [[nodiscard]] virtual BlockType &init() = 0;
+    // [[nodiscard]] virtual BlockType &init() = 0;
     [[nodiscard]] virtual Block const *tryLegacyUpgrade(DataID) const = 0;
     [[nodiscard]] virtual bool dealsContactDamage(Actor const &, Block const &, bool) const = 0;
     [[nodiscard]] virtual Block const *tryGetInfested(Block const &) const = 0;
@@ -292,6 +292,7 @@ public:
     [[nodiscard]] virtual Brightness getLightEmission(Block const &) const = 0;
     [[nodiscard]] virtual Brightness getEmissiveBrightness(Block const &) const = 0;
     [[nodiscard]] virtual mce::Color getMapColor(BlockSource &, BlockPos const &, Block const &) const = 0;
+    virtual void unknown130() = 0;  // unidentified, added in 1.26.40
     virtual void _onHitByActivatingAttack(BlockSource &, BlockPos const &, Actor *) const = 0;
     virtual void entityInside(BlockSource &, BlockPos const &, Actor &) const = 0;
 
