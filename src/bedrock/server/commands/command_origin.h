@@ -59,6 +59,7 @@ public:
     [[nodiscard]] virtual bool canUseAbility(AbilitiesIndex ability) const = 0;                  // 15
     [[nodiscard]] virtual bool isWorldBuilder() const = 0;                                       // 16
     [[nodiscard]] virtual bool canUseCommandsWithoutCheatsEnabled() const = 0;                   // 17
+    // TODO(fixme): check the name
     virtual void unknown18() = 0;                                                                // 18
     [[nodiscard]] virtual bool isSelectorExpansionAllowed() const = 0;                           // 19
     [[nodiscard]] virtual const NetworkIdentifier &getSourceId() const = 0;                      // 20

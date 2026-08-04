@@ -292,7 +292,8 @@ public:
     [[nodiscard]] virtual Brightness getLightEmission(Block const &) const = 0;
     [[nodiscard]] virtual Brightness getEmissiveBrightness(Block const &) const = 0;
     [[nodiscard]] virtual mce::Color getMapColor(BlockSource &, BlockPos const &, Block const &) const = 0;
-    virtual void unknown130() = 0;  // unidentified, added in 1.26.40
+    // TODO(fixme): check the name
+    virtual void unknown130() = 0;  // added in 1.26.40
     virtual void _onHitByActivatingAttack(BlockSource &, BlockPos const &, Actor *) const = 0;
     virtual void entityInside(BlockSource &, BlockPos const &, Actor &) const = 0;
 

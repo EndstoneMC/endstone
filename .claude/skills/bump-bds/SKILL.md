@@ -613,7 +613,15 @@ When you cannot name a type/signature precisely, placeholder it - but keep the
   `NonOwnerPointer<?>` use `Bedrock::NonOwnerPointer<void *>` - use `void*` not
   `void` as `T` (`NonOwnerPointer<void>` fails to compile via `void& operator*()`;
   `void*&` is fine). A 64-byte unknown map is any real `std::unordered_map<K,V>`.
-- A vtable slot you can't name: one `virtual void <placeholder>() = 0;`.
+- A vtable slot you can't name: one `virtual void unknown<slot>() = 0;`.
+- **Mark every made-up name with `// TODO(fixme): check the name` on the line
+  above it.** Without it a plausible-looking invented name is indistinguishable
+  from a verified one, and the person holding the real headers has no way to know
+  which to check. Grep the marker to get the full back-fill list.
+- **Never carry an inferred name as if it were read from a symbol.** A shape -
+  "returns a nested optional", "returns a null unique_ptr" - proves the slot and
+  the return kind, never the identity. Name it `unknown<slot>` and put the shape
+  in the comment; do not promote a guess into the header.
 - Comment every placeholder with offset + fingerprint for later identification,
   and keep Endstone's `lower_case_` naming. When headers later arrive (Scenario
   A), back-fill the real types and cross-validate.

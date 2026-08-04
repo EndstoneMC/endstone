@@ -98,7 +98,9 @@ public:
     virtual void forEachDimension(std::function<bool(Dimension const &)>) const = 0;
     virtual DimensionManager &getDimensionManager() = 0;
     [[nodiscard]] virtual DimensionManager const &getDimensionManager() const = 0;
+    // TODO(fixme): check the name
     virtual void unknown13() = 0;  // added in 1.26.40; returns a 24-byte NonOwnerPointer built from this+0x2F0
+    // TODO(fixme): check the name
     virtual void unknown14() = 0;  // added in 1.26.40; const overload of the above
     [[nodiscard]] virtual std::uint32_t getChunkTickRange() const = 0;
     [[nodiscard]] virtual ChunkTickRangeManager const &getChunkTickRangeManager() const = 0;
