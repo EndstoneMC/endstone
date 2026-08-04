@@ -229,6 +229,13 @@ struct ActorItemEventAfterDroppedItem {
     std::vector<WeakRef<EntityContext>> item_actors;
 };
 
+// TODO(fixme): check the name
+struct UnknownActorEvent22 {};  // added in 1.26.40; 48 bytes, two WeakRef<EntityContext>, index 21 or 22
+// TODO(fixme): check the name
+struct UnknownActorBeforeEvent5 {};  // added in 1.26.40 at index 5; 16 bytes
+// TODO(fixme): check the name
+struct UnknownActorBeforeEvent6 {};  // added in 1.26.40 at index 6; 16 bytes
+
 template <typename Result>
 struct ActorGameplayEvent;
 
@@ -240,7 +247,7 @@ struct ActorGameplayEvent<void>
                         ActorHealthChangedEvent, ActorKilledEvent, ActorPlacedItemEvent, ActorRemovedEvent,
                         ActorRemoveEffectEvent, ActorStartRidingEvent, ActorUpgradeTriggeredEvent,
                         ActorUpgradeEndedEvent, ActorUseItemEvent, KnockBackEvent, MountTamingEvent,
-                        ActorItemEventAfterDroppedItem> {};
+                        UnknownActorEvent22, ActorItemEventAfterDroppedItem> {};
 
 template <>
 struct ActorGameplayEvent<CoordinatorResult>
@@ -255,4 +262,5 @@ struct MutableActorGameplayEvent<void> : MutableEventVariant<ActorItemEventBefor
 template <>
 struct MutableActorGameplayEvent<CoordinatorResult>
     : MutableEventVariant<ActorDefinitionStartedEvent, ActorAddEffectEvent, ActorBeforeAcquireItemEvent,
-                          ActorBeforeHealEvent, ActorBeforeHurtEvent, ActorUpgradeStartedEvent> {};
+                          ActorBeforeHealEvent, ActorBeforeHurtEvent, UnknownActorBeforeEvent5,
+                          UnknownActorBeforeEvent6, ActorUpgradeStartedEvent> {};

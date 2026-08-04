@@ -282,9 +282,12 @@ struct PlayerTellRawCommandEvent {};
 struct PlayerTitleCommandEvent {};
 struct PlayerTitleRawCommandEvent {};
 
+// TODO(fixme): check the name
+struct UnknownPlayerEvent0 {};  // added in 1.26.40 at index 0; 104 bytes, same shape as PlayerSayCommandEvent
+
 template <>
 struct PlayerGameplayEvent<CoordinatorResult>
-    : ConstEventVariant<PlayerSayCommandEvent, PlayerTellCommandEvent, PlayerTellRawCommandEvent,
+    : ConstEventVariant<UnknownPlayerEvent0, PlayerSayCommandEvent, PlayerTellCommandEvent, PlayerTellRawCommandEvent,
                         PlayerTitleCommandEvent, PlayerTitleRawCommandEvent, PlayerGetExperienceOrbEvent,
                         PlayerInteractEvent, PlayerInteractWithEntityBeforeEvent, PlayerInteractWithBlockBeforeEvent> {
 };
