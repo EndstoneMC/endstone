@@ -676,11 +676,22 @@ any pattern-only table however the version was resolved.
 4. **Protocol version, statically.** `SharedConstants::NetworkProtocolVersion`
    is compared directly inside
    `ServerNetworkHandler::_validateLoginPacket`, whose offset the table already
-   holds. Disassemble it (capstone) and collect `cmp` immediates in ~900-3000;
-   the protocol version is in that set. Run it against the *previous* version
-   first to confirm the method reproduces the known-good value, then the new
-   one. Counting raw dwords of a candidate value across `.text` does **not**
-   work - the value collides with thousands of unrelated constants.
+   holds. Disassemble it (capstone) and collect `cmp` immediates; the protocol
+   version is in that set. Run it against the *previous* version first to
+   confirm the method reproduces the known-good value, then the new one.
+   Counting raw dwords of a candidate value across `.text` does **not** work -
+   the value collides with thousands of unrelated constants.
+   - **Do not filter candidates by "plausible successor".** Mojang re-bases the
+     numbering, it does not only increment: 1.26.36 -> 1.26.40 went 1001 ->
+     2168. Bound the `cmp` scan loosely and let the structure pick the answer,
+     not the magnitude. Anything downstream assuming small monotonic steps
+     (version-gate tables, DSL `since=` boundaries) needs review after a bump.
+   - Two symbol-free corroborations, worth running when the jump looks odd:
+     scan executable segments for the compare idiom itself
+     (`cmp [reg+0x30], imm32` + `jge` + the disconnect-reason store, immediate
+     wildcarded), and read the RakNet MOTD builder (xref `"MCPE;"`, then the
+     `operator<<` that stringifies the protocol field). Both land on the same
+     constant from completely different code.
 
 Do not skip the source-side bump because the offsets moved uniformly:
 `shared_constants.h` (`PatchVersion`, and `NetworkProtocolVersion` if it moved)
