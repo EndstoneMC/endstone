@@ -39,13 +39,28 @@ rip_offset = 3
 name = "?getI18n@@YAAEAVI18n@@XZ"
 relative = false
 extra = 0
-# 1. find bytes "70 61 63 6B 2E 64 65 73 63 72 69 70 74 69 6F 6E 00" = "pack.description\0" (unique); its
-#    lone data xref is inside I18nImpl::I18nImpl, which seeds the default manifest-localization keys
-# 2. I18nImpl::I18nImpl has two callers; getI18n is the tiny one (~0x86) that thread-safe-initializes a
-#    static I18nImpl (Init_thread_header/footer + atexit) and returns its fixed address - the I18n
-#    singleton accessor (the other caller, Localization::_replaceUTCDateTimeIdentifier, is large)
-# 3. confirm the target vs the old named DB (returns I18n&, i.e. the static I18nImpl)
-pattern = "55 48 83 EC ? 48 8D 6C 24 ? 48 C7 45 ? ? ? ? ? 8B 05 ? ? ? ? 8B 0D ? ? ? ? 65 48 8B 14 25 ? ? ? ? 48 8B 0C CA 3B 81 ? ? ? ? 7F ? 48 8D 05 ? ? ? ? 48 83 C4 ? 5D C3"
+# WARNING: getI18n is one of a whole FAMILY of byte-identical thread-safe-static singleton accessors -
+# MSVC emits the same `if (guard > tls_epoch) { header; ctor; footer; atexit } return &obj` shape for
+# every one of them, and the only difference is which globals they touch, i.e. rip displacements a
+# pattern must wildcard. 18 of them matched the old prologue pattern in 1.26.40 and find_signature takes
+# the LOWEST .text hit, which was right in 1.26.32/1.26.36 by luck and wrong in 1.26.40. so this entry is
+# anchored on a CALL SITE, and any candidate MUST be confirmed by its call-closure marker strings
+# ("pack.description", "pack.name", the locale table "da_DK de_DE el_GR es_ES ...") - never by pattern
+# shape, size or alignment, which all silently agreed with the wrong address.
+# 1. find bytes "63 6F 6D 6D 61 6E 64 73 2E 67 69 76 65 2E 73 75 63 63 65 73 73 00"
+#    = "commands.give.success\0" (unique); its lone data xref is inside GiveCommand::execute (~0x1754)
+# 2. inside it find bytes "48 B9 69 74 65 6D 2E 61 69 72" = `mov rcx, 'item.air'` (unique binary-wide,
+#    as is the `mov rcx, 'air.name'` right after it) - that pair is the SSO literal "item.air.name" being
+#    built for getI18n().get("item.air.name", ...); the `call getI18n` sits 0x2d bytes above it, and the
+#    pattern below spans call -> literal, resolving through the E8 rel32
+# 3. confirm the decoded target: a ~0x7b fn that thread-safe-initializes a static and returns its fixed
+#    address (Init_thread_header/footer + atexit), whose lone non-CRT callee is I18nImpl::I18nImpl (~0x42a)
+# 4. confirm THAT ctor holds "pack.description" and "pack.name" directly, and reaches the locale table
+#    ("da_DK de_DE el_GR es_ES ...") deeper in its closure - the sibling accessors reach none of these
+# 5. confirm vs the old named DB (returns I18n&, i.e. the static I18nImpl)
+pattern = "E8 ? ? ? ? 0F 57 C0 0F 29 45 ? 48 C7 85 ? ? ? ? 00 00 00 00 48 C7 85 ? ? ? ? 0D 00 00 00 48 C7 85 ? ? ? ? 0F 00 00 00 48 B9 69 74 65 6D 2E 61 69 72"
+rip_relative = true
+rip_offset = 1
 
 [[signatures]]
 name = "?teleportTo@Actor@@UEAAXAEBVVec3@@_NHH1@Z"
