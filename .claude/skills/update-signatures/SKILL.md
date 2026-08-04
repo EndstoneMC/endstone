@@ -115,6 +115,17 @@ Sanity-check the tool, not just the patterns: pick a known-good entry that
 returns 0 and confirm with `get_bytes(VA,16)` that the bytes *genuinely* changed
 vs the old pattern, before trusting a near-universal "stale" verdict.
 
+Doing this without IDA (raw binary + a scanner of your own)? Two rules:
+- **Reimplement `find_signature` exactly, don't approximate it.** It regexes over
+  the `.text` section content ONLY and takes the **first** match. A candidate with
+  2 matches still "passes" a naive check if the right one happens to come first -
+  that is luck, not a passing test. Report the match COUNT, and require the single
+  match to land exactly on the function start.
+- **Validate the scanner against the OLD binary before trusting it on the new
+  one:** re-run every *existing* pattern against the previous version - each must
+  return exactly 1 hit at its known-good RVA. If they all do, the scanner
+  reproduces the dumper and the new results can be trusted.
+
 ## Step 2 - regenerate DIRECT entries (no `rip_relative`)
 
 `make_signature_for_function(name, format:"ida")`. It returns `addr` (the entry
@@ -181,7 +192,11 @@ larger offsets (5/6/7/8/10/12/15/29) only because their pattern began at the
 match in `.text` and computes the target from the call displacement there. So a
 call-site pattern does **not** need to be unique - the bar is just **"the first
 match resolves to the target function."** False positives at *higher* addresses
-are harmless (never reached). This unlocks several techniques, in rough order of
+are harmless (never reached). **This licence is call-site-only**: a call-site
+pattern's extra matches are other *callers of the same target*, so they all
+decode to it. A **direct** pattern's extra matches are other *functions*, and the
+lowest one is right only by luck - see *Byte-identical singleton-accessor
+families* below. This unlocks several techniques, in rough order of
 preference. The tool for all of them is `make_signature_for_range(start, end,
 wildcard_operands:true)` - it encodes a fixed byte range operand-wildcarded with
 **no uniqueness requirement** (unlike `make_signature`, which gives up when not
@@ -274,6 +289,55 @@ to direct form by deleting the `rip_relative`/`rip_offset` lines; leaving
 bytes into a silently-wrong address - worse than a miss. Flag every form change
 in the summary.
 
+### Byte-identical singleton-accessor families - never cut a prologue
+
+A thread-safe function-local static accessor (`I18n& getI18n()`, service
+locators, registries, default instances) has **no identity of its own**. MSVC
+emits the same body for every one of them - `if (guard > tls_epoch) {
+_Init_thread_header(&guard); if (guard == -1) { ctor(&obj);
+_Init_thread_footer(&guard); atexit(dtor); } } return &obj;` - and the only thing
+that differs between siblings is *which* globals they touch, which are rip
+displacements a pattern must wildcard. The family therefore collapses onto one
+pattern **by construction**, and their sizes match too (~0x79-0x7b), so
+size/extent heuristics don't separate them either. `getI18n`'s committed prologue
+pattern matched **18** distinct function starts; re-cutting it over the whole body
+with every stable immediate kept concrete still matched 3.
+
+Because `find_signature` takes `matches[0]` - the **lowest `.text` offset** - it
+then emits a plausible, 8-aligned, non-zero address for the wrong function.
+Nothing fails; every virtual call through the returned reference corrupts or
+crashes. `getI18n` happened to be lowest in two consecutive releases and stopped
+being lowest in the third when link order reshuffled. dump_symbols does log an
+`Ambiguous pattern` warning when the matches resolve to >1 distinct address -
+don't let it scroll past; treat any such entry as **unresolved**.
+
+So for this family:
+
+- **Anchor on a call site**, never on the body - that identifies the function by
+  *who calls it*, the only real information available.
+- **Prefer a caller whose neighbouring bytes are a string materialized as
+  immediates.** Short localization keys get built in the SSO buffer as
+  `mov rcx, <8 ASCII bytes>` pairs; those bytes *are* the key, are usually unique
+  binary-wide, and a human can spot them again by eye next bump. `getI18n` is cut
+  from `GiveCommand::execute`'s `getI18n().get("item.air.name", …)`, whose
+  `48 B9 'item.air'` tail is unique across the whole binary in every version
+  checked. Carrying the uniqueness in the *tail* means drift in the bytes between
+  the `E8` and the literal can only cause a **no-match** (loud), never a wrong
+  match.
+- **Confirm the candidate by call-closure marker strings, never by shape.** Walk
+  the target's callees for strings only the real function can reach (`getI18n` →
+  its lone non-CRT callee is the `I18nImpl` ctor, which holds `pack.description`
+  and `pack.name`, with the locale table `da_DK de_DE el_GR es_ES …` deeper in the
+  closure). Shape, size and alignment all silently agreed with the wrong address;
+  only the markers disagreed.
+- **Cross-check the anchor on the previous two releases.** If the same pattern
+  resolves to the already-known-good address there too, the anchor is structural
+  rather than an accident of this build.
+
+Write all of that into the entry's numbered locate recipe, family warning first -
+otherwise the next person re-cuts a prologue and gets a silently wrong address
+again.
+
 ## Step 4 - data globals (`BlockState::StateListNode::mHead`, `Enchant::mEnchants`)
 
 Their pretty names don't resolve in idalib, but you already have their VAs from
@@ -312,6 +376,33 @@ found (the user wants this on every entry you touch). Place it right before
 The numbered-step comment block above an entry is the from-scratch locate recipe -
 keep it; it is authored/followed via the **locate-function** skill, not
 regenerated here.
+
+## Cutting a pattern without IDA (`lief` + `capstone`)
+
+When no DB is available, `make_signature_for_function` has a direct equivalent:
+
+- Cut from the function's `.pdata` **BeginAddress** - never from a guessed
+  prologue. On Linux the equivalent authority is the `.eh_frame_hdr` FDE start
+  (`initial_location`); everything below applies unchanged. Disassemble forward and
+  use capstone's `insn.encoding` (`disp_offset`/`disp_size`,
+  `imm_offset`/`imm_size`) to wildcard exactly the displacement and immediate bytes,
+  keeping every opcode/ModRM byte.
+- Grow one instruction at a time until a whole-binary scan returns exactly one
+  match, then strip trailing wildcards and re-scan. ~40-70 bytes is typical; on
+  Linux the 6-push/`sub rsp` prologues go unique in ~20-27 bytes. Add **one**
+  instruction past the minimal-unique point so the pattern ends on fixed bytes -
+  that is the house style in the existing configs.
+- **Verify on BOTH axes: match count == 1 AND the match RVA == the `.pdata`
+  BeginAddress** (Linux: == the FDE start). Count alone is not enough - a pattern
+  that is unique but lands a couple of bytes inside the function resolves silently
+  wrong (a new `push` in the prologue is all it takes).
+- **Diff the old vs new prologue's argument marshalling while you are there.** It is
+  free and it catches a silent ABI change behind an unchanged mangled name: an added
+  sret (`this` shifts rdi -> rsi), an extra `xmm` spill (a new float parameter), a
+  reference parameter moving register. Report it with the offset.
+- Prologue register-save order is *not* stable across bumps (registers get added,
+  `rbp` moves to the front, xmm saves appear/disappear). Always re-cut from the
+  relocated function; never nudge the old pattern.
 
 ## Finish - verify and summarize
 
@@ -394,6 +485,13 @@ refresh-time notes on top:
   hazard): `_sendMessage` and `forEachBlockType` each got one; `registerCommand`
   only a first-match (100+ near-identical setup callers), so it stays tagged as
   such - if a build later inserts a lower-address same-idiom call, revisit it.
+- **Some entries CANNOT be converted to a prologue: byte-identical twins.** A
+  template-instantiated helper can be emitted twice, the two copies differing
+  *only* in their rel32 call/jump displacements - so no prologue pattern can ever
+  separate them and the best cut still returns 2 matches. Diff the two candidates'
+  bytes; if every difference falls inside a rel32, stop and keep the call-site
+  form. Tell the right twin apart by caller count (the real one has many callers,
+  the dead copy one), never by which address comes first.
 - **Verify the resolve TARGET, not just uniqueness** - a unique pattern at the
   WRONG call still yields a wrong offset. Compute `target = (E8_addr + 5) +
   sign_extend(rel32)` and confirm it equals the function's entry VA; for a

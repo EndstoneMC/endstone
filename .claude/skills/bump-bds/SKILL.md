@@ -767,10 +767,116 @@ A "Linux only" miss is a stale byte `pattern`; the function still exists.
   table: deltas should be positive (the binary grows) and rise broadly
   monotonically with RVA. A negative delta, a wild outlier, or a flipped
   relative order flags a pattern that matched the wrong location. Sub-MB local
-  non-monotonic wiggles are normal linker noise.
+  non-monotonic wiggles are normal linker noise. **This only holds while the
+  linker keeps its layout.** When a release reshuffles link order, correct
+  entries move megabytes *backwards* and swap relative order wholesale - see
+  *Verifying a pattern-only table*. Treat deltas as a weak hint, never an arbiter.
 - A stale pattern can match the **wrong function** entirely (not just miss) -
   see *Scenario B - Finding a new symbol / offset* for the two-way verification
   (function start + decompile-confirm) and the stale-PDB interaction.
+
+### Verifying a pattern-only table (no PDB)
+
+When a release ships **no PDB**, every Windows entry is resolved by byte pattern,
+so *none* is name-verified. A stale pattern does not only miss - it can match a
+different function with a similar prologue and yield a plausible, wrong offset.
+Verify the whole table against the previous version's table plus both binaries.
+
+- **Check pattern uniqueness first.** `find_signature` uses `re.search`, so it
+  takes the **first** match and never checks for a second. Re-run each pattern
+  with `re.finditer` and count both matches *and distinct resolved addresses*.
+  Many matches collapsing to one address is harmless; n matches resolving to n
+  addresses means the answer was decided by `.text` ordering alone - that is
+  where wrong offsets come from. Also run the new patterns against the *previous*
+  binary and assert each lands on the old known-good offset; that validates the
+  pattern, though not the first-match choice in the new binary.
+- **`.pdata` is the decisive function-start check on Windows - run it on every
+  entry first.** Parse the exception directory (data dir 3) as 12-byte
+  RUNTIME_FUNCTION records and exact-match the RVA against a `BeginAddress`.
+  If it is not a `BeginAddress`, the offset is not a function start. Follow
+  chained continuation records (`UNW_FLAG_CHAININFO`, `flags = byte0 >> 3`,
+  next.Begin == cur.End) to get the true extent for the later checks.
+- **Referenced-string sets are the strongest cheap identity signal** - strings
+  are version-stable while code is not. Resolve every RIP-relative reference in
+  the extent into `.rdata`/`.data` and read ASCII/UTF-16. A genuine match gives a
+  near-identical or superset string set; large disjointness is a false match.
+  Filter the ubiquitous allocator strings (`void *operator new(size_t)`,
+  `We failed to allocate %zu bytes.`, `pointer || size == 0`, the
+  `MemoryOperators.cpp` path) - they appear in almost every function.
+- **For string-less functions, walk the call closure 2-4 deep and compare that
+  string set.** This is what catches the hard cases; a body with zero strings
+  clears nothing on its own.
+- **A normalized instruction signature beats raw byte equality** - mnemonic plus
+  operand *register class*, with all immediates and displacements dropped.
+  It survives relocation and re-register-allocation, unlike raw bytes.
+- **But structural similarity measures the pattern's function *class*, not
+  identity.** A pattern that selects a family (e.g. thread-safe-static singleton
+  accessors) makes every candidate score ~0.96 against the old function. Always
+  pair a high ratio with a semantic discriminator - the marker string named in
+  the pattern's own locate recipe (the numbered comment block above its
+  `[[signatures]]` entry) is exactly the right one.
+- **Judge by behaviour, not size.** Extent length and instruction count drift
+  legitimately with inlining; do not flag on size alone.
+- **Some tiny tail-call thunks legitimately have no `.pdata` entry** (e.g. an
+  argument shuffle plus `jmp`). Before calling it a defect, check whether the
+  previous known-good version also lacked one; if so, verify by following the
+  `jmp` and comparing the target instead.
+- **Data symbols are not functions.** Globals have no `.pdata`, no prologue, no
+  strings, and need not be 16-byte aligned. Verify by section membership plus
+  reference population: scan `.text` for every 4-byte window where
+  `R + 4 + disp == target`, group hits by containing `.pdata` function, and check
+  that the dominant referencer carries the locate recipe's marker string and that
+  the referencer count is stable across versions. Random hits are negligible over
+  a ~170 MB `.text`, so the scan is essentially noise-free.
+
+The Linux side needs the same audit - the shipped ELF is stripped (no `.symtab`,
+only a tiny `.dynsym`), so every Linux entry is pattern-resolved too.
+
+- **The FDE table is the Linux `.pdata` - and it is exact.** `.eh_frame_hdr`
+  holds a sorted binary-search table of one `<i4 initial_location, i4 fde_ptr>`
+  pair per function, datarel to the hdr vaddr; the FDE then gives the exact
+  length (`pc_begin` pcrel at fde+8, `pc_range` at fde+12). Exact-match the
+  offset against an `initial_location`, and validate the decode by asserting
+  `pc_begin` equals the table value. Exact extents also remove the tail-call
+  problem, so no flow-following heuristic is needed.
+- **The dangerous miss is a match *inside* the right function.** When a prologue
+  gains one instruction (an extra `push`), a stale pattern matches a few bytes
+  late and the bytes there still decode as a plausible prologue - only the
+  FDE/`.pdata` exact-match catches it. Alignment is a useful secondary hint.
+- **RTTI vtable slots are the only name-anchored check on Linux.** Rebuild
+  `.data.rel.ro` from its `R_X86_64_RELATIVE` addends, key vtables by their
+  Itanium typeinfo name, and confirm the offset sits at the same slot of the same
+  class in both binaries. Covers roughly a quarter of a table for free.
+- **A vtable slot that *moved* is not automatically wrong.** Prove it: the
+  class's primary vtable must have grown by exactly the shift, and the
+  neighbouring slots must align old-to-new (difflib over per-slot function
+  fingerprints) with old slot N mapping to new slot N+k.
+- **Expand strings caller-side, not just callee-side.** Index every `E8` rel32 in
+  `.text` with numpy for an exact caller map (millions of calls in seconds), then
+  compare the *callers'* string sets. This is what decides entries that have no
+  strings of their own and no callee strings either.
+- **Weight strings by distinctiveness rather than maintaining a filter list.**
+  Sample a few thousand random functions, count string frequency, and treat
+  anything appearing in >0.2% of them as generic. Matching only on boilerplate is
+  nearly no evidence.
+- **Report `old - new` and `new - old` separately.** A release adding strings or
+  callees is routine; a genuine match *losing* its old anchors is not. Collapsing
+  to one Jaccard hides the direction that matters.
+- **Cross-platform agreement separates "wrong offset" from "changed body".** A
+  stale-pattern collision is a per-platform accident. A symbol that scores low
+  structurally on Windows *and* Linux independently means the code changed; low
+  on one platform only points at that platform's offset.
+- **`.bss` data symbols have no file content** (`SHT_NOBITS`) - nothing to
+  byte-verify, no prologue, no FDE, no vtable. Use the reference scan, with the
+  ELF wrinkle that the displacement is not always last: run the
+  `u32(p) + p == (T - text_lo - 4 - imm_len) mod 2^32` comparison for `imm_len`
+  in 0/1/2/4, then re-decode each hit to confirm. Compare the reference *count*
+  and per-function distribution rather than strings - the static-init blobs that
+  reference such globals legitimately change content between releases.
+- **A function reachable only through thunks looks unreachable.** Zero direct
+  callers plus zero vtable slots can just mean an adjustor thunk (small FDE, call
+  site at +3) or a 5-byte `jmp` island just before the entry. Index `E9` rel32
+  too; the thunk topology itself should mirror 1:1 across versions.
 
 ### BDS itself
 

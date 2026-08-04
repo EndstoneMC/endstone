@@ -81,6 +81,83 @@ it (a tail-call thunk reads as `48 89 D1 E9 ... CC`). Plus `find_bytes` (string 
 byte search), `xrefs_to(VA, limit:6)` (bounded), `disasm` / `get_bytes` (decode a
 prologue or call site by hand), `rename`.
 
+## No IDA? Windows relocates fine with `lief` + `capstone` alone
+
+When the databases are still building (or there is no PDB for *either* version),
+every tactic below still works from the raw PE - no IDA required:
+
+- **The PE `.pdata` exception directory is the AUTHORITY for function start and
+  extent.** Each `RUNTIME_FUNCTION` gives BeginAddress/EndAddress; index it once
+  per binary and cache it. An RVA that is not a BeginAddress is conclusively not
+  a function start - this is the single most decisive check available on Windows
+  and it replaces every prologue-sniffing guess. Caveat: some tiny tail-call
+  thunks and leaf accessors legitimately have **no** `.pdata` entry, so absence
+  alone is not proof of a bad offset.
+- **Reverse the search - do not index ~680k functions.** Find the string in the
+  NEW binary, scan executable sections for RIP-relative refs to it, then map each
+  referencing address back to its containing function via `.pdata`. That yields a
+  candidate set of a handful, cheaply.
+- One linear identity finds all rip refs in a single pass: for a disp32 that ends
+  an instruction, `disp + offset_of_disp == target_rva - section_va - 4` (check
+  `- 8` too for a trailing imm32). Direct `call rel32` falls out of the same
+  identity. Absolute 8-byte scans of `.rdata`/`.data` find vtable slots; walk back
+  while the preceding qword still points into an executable section to reach the
+  vtable start.
+- **Exhaustive constant-intersection is the strongest name-free proof.** Take 2-3
+  distinctive immediates from the old body, scan the whole new `.text` for each as
+  raw little-endian bytes, map hits to functions, intersect. When the intersection
+  has the same cardinality in both binaries and one member is independently
+  anchored, the other is proven rather than guessed - this rescues a target whose
+  anchor string was deleted in the new build.
+- **Callee *sizes* fingerprint a call graph without names.** Compare the multiset
+  of `.pdata` extents of the distinct call targets; shared helpers keep their
+  sizes, and when one drifts it drifts identically for every caller.
+- **Follow `UNW_FLAG_CHAININFO` to the primary `RUNTIME_FUNCTION`.** A `.pdata`
+  entry whose unwind-info flags nibble has `0x4` set is a cold/outlined *chunk*,
+  and its trailing `RUNTIME_FUNCTION` names the real owner. Without that hop a
+  chunk resolves as its own "function" and the containing-function lookup lies.
+- **Build a direct-call index the same way as the rip index, then filter by
+  `.pdata`.** Scan for `E8`, compute `pos + 5 + rel32`, and keep only targets that
+  are BeginAddresses. That filter removes essentially every false `E8` byte and
+  gives a usable caller/callee graph in a nameless binary.
+- **Caller-set intersection relocates a string-poor target.** Map each OLD caller
+  to its NEW counterpart via a string unique in *both* binaries, then intersect the
+  counterparts' callee sets. Two independently-anchored callers agreeing on one
+  callee is proof. Matching caller *counts* then corroborate (a mismatch still
+  refutes nothing - see "Caller COUNT is not identity").
+- **A caller that maps byte-for-byte pins the call exactly.** When the counterpart
+  has the same size and identical structure, the call to the target sits at the
+  *same relative offset* inside it - read the callee off that offset instead of
+  guessing which `call` it is.
+- **Prologue drift is not symmetric across platforms.** The same function can gain
+  a saved register on Linux and lose one on Windows in a single bump. Re-derive per
+  platform; never port the other platform's fix.
+
+### Linux: `.eh_frame` is the `.pdata` equivalent
+
+- **`.eh_frame_hdr`'s binary-search table is the AUTHORITY for function start.** It
+  is a sorted `(initial_location, fde_ptr)` array (`datarel|sdata4`); one
+  `struct.iter_unpack` yields every function start (~500k) in seconds, and decoding
+  the FDE at `fde_ptr` gives `pc_range` = the EXTENT. Never prologue-sniff.
+- **Reverse the search identically**: find the string in the new `.rodata`, find
+  RIP-relative refs to it in `.text`, map each back to its containing function via
+  the FDE index. One good string usually yields exactly one candidate.
+- One linear identity finds the rip refs without disassembling: a disp32 at position
+  `p` targets `p + 4 + sext(v32)`, so `(v32 + p) mod 2^32 == (target - 4) mod 2^32`.
+  Compute it over the section with numpy in chunks. Filter on a preceding `E8` byte
+  and the same pass gives you the direct callers.
+- **The binary is PIE - vtable slots live in the `R_X86_64_RELATIVE` addends**, not
+  in the file bytes. Rebuild `.data.rel.ro` from `.rela.dyn` before reading any slot.
+- **Itanium RTTI hands you any class vtable by name**: find the mangled name
+  (`6Player`) in `.rodata`, find the `.data.rel.ro` qword pointing at it (its
+  predecessor is the `type_info`), then each vtable is the run of code pointers
+  following a slot equal to that `type_info` address. Do **not** require the name to
+  be preceded by a `00` - one was packed straight after a float constant and that
+  filter silently lost the whole class.
+- **Self-naming assert strings state the return type** (`"<ret> Class::method(args)"`
+  from the pretty-function macro). Grep them to confirm - or to catch - a signature
+  change that the mangled name cannot show.
+
 ## Locator tactics (anchor -> target), in order of preference
 
 ### 1. Direct string
@@ -100,6 +177,14 @@ match landing in the right function is enough. Judge the string first:
   `NonOwnerPointer` asserts (`"Accessing a null NonOwnerPointer"`, the
   `D:\a\_work\1\s\...` source paths), `"%s"` / `"\n"`, `BinaryStream::writeString`
   field labels (`"Data"`). A high `string_ref_count` is often *all* boilerplate.
+- **One exception worth knowing:** the *templated* `__PRETTY_FUNCTION__` variant
+  `T *Bedrock::NonOwnerPointer<X>::_get() const [T = X]` names its template
+  argument, so a rare `X` makes it near-unique and it identifies the function
+  by what the function *touches*. BDS is clang everywhere, so these appear
+  verbatim on Linux too - use one to cross-validate a Windows candidate against a
+  Linux address that still resolves. A `__PRETTY_FUNCTION__` that CHANGED
+  (`bool F(...)` -> `SomeResult F(...)`) both confirms identity and flags that the
+  mangled name in the config is now stale.
 
 ### 2. Indirect via a string-locatable neighbour (no string of its own)
 
@@ -163,6 +248,21 @@ itself reorders/inserts/removes between builds, so a fixed "+0xNN above the
 anchor" lands on the wrong slot (often a shared stub). Re-align by **neighbour
 identity**, not by the stored offset:
 
+- **Measure the drift instead of assuming it: pin TWO string-locatable virtuals**,
+  as far apart in the vtable as you can. If both land on the same slot indices in
+  old and new, there is zero net slot drift across that span and every index in
+  between transfers directly - which turns "virtual order barely drifts" from a
+  hope into a fact. A virtual sitting one slot from an independently-proven one is
+  itself near-proven (declaration order).
+- **Prove the span with a diagonal scan when no second string anchor exists.** Score
+  `old[i]` vs `new[i]` and `old[i]` vs `new[i+1]` across the slot range and read off
+  where the changeover happens; that locates the inserted/removed virtual exactly,
+  instead of assuming it fell outside your target. Skip the 1-3 byte stub slots -
+  they score 0 either way and carry no information.
+- **A derived class's slot may hold a tiny forwarder that tail-calls the base body**,
+  so `base_vtable[n] != derived_vtable[n]` is NOT evidence of misalignment. That
+  forwarder is itself a strong cross-check: it should be the target's ONLY direct
+  caller in both builds.
 - Read the **WHOLE** primary vtable (`get_bytes` the region, decode the 8-byte
   slots). Base-class slots repeat **one shared stub address**; the class's **own
   overrides** point into the class's code cluster (same neighbourhood as your
@@ -241,6 +341,18 @@ recipe ends with "confirm vs the old named DB."
   (as stack temporaries) and never reaches the target - prefer the vtable scan.
   (Registration does bake the **FNV id hashes** inline (`mov rax, <hash>`), which
   are invariant anchors if a chain leads through it.)
+- **An anchor string can be DELETED between builds.** A `validate*` label vanished
+  entirely one bump while its sibling label survived, and the function was alive
+  and well. Before concluding "the function is gone", sweep `.rdata`/`.data` for
+  near-miss ASCII, then switch tactic (vtable slot, constant intersection).
+  Rewrite the recipe when this happens - it is now permanently wrong.
+- **RVA-delta banding is worthless when the linker reshuffles link order.** One
+  bump moved seven correct answers by -18 MB to +5.8 MB, with functions of the
+  same class moving in opposite directions. Deltas and address proximity are not
+  evidence; body/behaviour is the only arbiter.
+- **A "perfect size match" is a trap.** A candidate sized right next to the old
+  target turned out to be the old target's *caller*, proven by its string set.
+  Never accept a size-based pick without a string/constant check.
 - **A string mapping to >1 function** must be disambiguated by **name-independent**
   tells only - never by a named callee (it's `sub_` in the unnamed DB):
   unreferenced copies drop out (only matches with a code xref are candidates); a
