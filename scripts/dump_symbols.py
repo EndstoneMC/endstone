@@ -91,6 +91,9 @@ DEFAULT_CONFIGS = (CONFIGS_DIR / "windows.toml", CONFIGS_DIR / "linux.toml")
 
 # Raw file root of the EndstoneMC/bedrock-server-data repo.
 BASE_RAW_URL = "https://raw.githubusercontent.com/EndstoneMC/bedrock-server-data/v2"
+# Mojang's official download links, used when bedrock-server-data has no metadata yet.
+MOJANG_LINKS_URL = "https://net-secondary.web.minecraft-services.net/api/v1.0/download/links"
+MOJANG_DOWNLOAD_TYPES = {"windows": "serverBedrockWindows", "linux": "serverBedrockLinux"}
 # Cached server zips live here, keyed by SHA256.
 CACHE_DIR = Path.home() / ".bedrock_server"
 HEADERS = {
@@ -165,6 +168,8 @@ def download_server(version: str, platform: str) -> Path:
     """
     url = f"{BASE_RAW_URL}/release/{version}/metadata.json"
     resp = requests.get(url, headers=HEADERS)
+    if resp.status_code == 404:
+        return download_server_from_mojang(version, platform)
     resp.raise_for_status()
     info = resp.json().get("binary", {}).get(platform)
     if not info or "url" not in info or "sha256" not in info:
@@ -175,6 +180,34 @@ def download_server(version: str, platform: str) -> Path:
     dest_path = CACHE_DIR / platform / os.path.basename(download_url)
 
     if dest_path.exists() and compute_sha256(dest_path).lower() == expected_hash.lower():
+        logger.info(f"Using cached {platform} binary: {dest_path}")
+        return dest_path
+
+    return download_file(download_url, dest_path)
+
+
+def download_server_from_mojang(version: str, platform: str) -> Path:
+    """
+    Resolve a release straight from Mojang's download links, for a version
+    bedrock-server-data has not published metadata for yet. There is no
+    published SHA256 to check against, so a cached copy is reused as-is.
+    """
+    resp = requests.get(MOJANG_LINKS_URL, headers=HEADERS)
+    resp.raise_for_status()
+    links = resp.json().get("result", {}).get("links", [])
+    wanted = MOJANG_DOWNLOAD_TYPES[platform]
+    download_url = next((link["downloadUrl"] for link in links if link.get("downloadType") == wanted), None)
+    if not download_url:
+        raise KeyError(f"No {platform} download link for version {version}")
+
+    # Mojang's link is the 4-component build of whatever is current; only take it for the version asked for.
+    name = os.path.basename(download_url)
+    if not name.startswith(f"bedrock-server-{version}."):
+        raise KeyError(f"Mojang's current {platform} release is {name}, not version {version}")
+
+    logger.warning(f"bedrock-server-data has no metadata for {version}; falling back to {download_url} (unverified)")
+    dest_path = CACHE_DIR / platform / name
+    if dest_path.exists():
         logger.info(f"Using cached {platform} binary: {dest_path}")
         return dest_path
 

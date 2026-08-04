@@ -36,6 +36,9 @@ import requests
 import tomlkit
 
 BASE_RAW_URL = "https://raw.githubusercontent.com/EndstoneMC/bedrock-server-data/v2"
+# Mojang's official download links, used when bedrock-server-data has no metadata yet.
+MOJANG_LINKS_URL = "https://net-secondary.web.minecraft-services.net/api/v1.0/download/links"
+MOJANG_DOWNLOAD_TYPES = {"windows": "serverBedrockWindows", "linux": "serverBedrockLinux"}
 CACHE_DIR = Path.home() / ".bedrock_server"
 HEADERS = {
     "User-Agent": (
@@ -75,20 +78,42 @@ def compute_sha256(path: Path) -> str:
     return h.hexdigest()
 
 
+def resolve_mojang_url(version: str, platform: str) -> str:
+    """Resolve a release straight from Mojang, for a version bedrock-server-data has no metadata for yet."""
+    resp = requests.get(MOJANG_LINKS_URL, headers=HEADERS)
+    resp.raise_for_status()
+    links = resp.json().get("result", {}).get("links", [])
+    wanted = MOJANG_DOWNLOAD_TYPES[platform]
+    download_url = next((link["downloadUrl"] for link in links if link.get("downloadType") == wanted), None)
+    if not download_url:
+        raise KeyError(f"No {platform} download link for version {version}")
+
+    # Mojang's link is the 4-component build of whatever is current; only take it for the version asked for.
+    if not os.path.basename(download_url).startswith(f"bedrock-server-{version}."):
+        raise KeyError(f"Mojang's current {platform} release is not version {version}")
+
+    return download_url
+
+
 def download_server(version: str, platform: str) -> Path:
     """Download (or reuse a cached, hash-verified copy of) the BDS zip."""
     url = f"{BASE_RAW_URL}/release/{version}/metadata.json"
     resp = requests.get(url, headers=HEADERS)
-    resp.raise_for_status()
-    info = resp.json().get("binary", {}).get(platform)
-    if not info or "url" not in info or "sha256" not in info:
-        raise KeyError(f"No {platform} binary info for version {version}")
+    if resp.status_code == 404:
+        download_url = resolve_mojang_url(version, platform)
+        expected = None
+        echo(f"bedrock-server-data has no metadata for {version}; falling back to {download_url} (unverified)")
+    else:
+        resp.raise_for_status()
+        info = resp.json().get("binary", {}).get(platform)
+        if not info or "url" not in info or "sha256" not in info:
+            raise KeyError(f"No {platform} binary info for version {version}")
+        download_url = info["url"]
+        expected = info["sha256"].lower()
 
-    download_url = info["url"]
-    expected = info["sha256"].lower()
     dest = CACHE_DIR / platform / os.path.basename(download_url)
 
-    if dest.exists() and compute_sha256(dest).lower() == expected:
+    if dest.exists() and (expected is None or compute_sha256(dest).lower() == expected):
         echo(f"Using cached {platform} zip: {dest}")
         return dest
 
