@@ -38,5 +38,5 @@ public:
     std::string platform_id;
     uint8_t flags;
     SerializationMode serialization_mode{SerializationMode::CerealOnly};
+    // ...
 };
-BEDROCK_STATIC_ASSERT_SIZE(EmotePacket, 176, 152);

@@ -26,5 +26,5 @@ public:
     bool stop_all;
     bool stop_music_legacy;
     SerializationMode serialization_mode{SerializationMode::CerealOnly};
+    // ...
 };
-BEDROCK_STATIC_ASSERT_SIZE(StopSoundPacket, 96, 88);
