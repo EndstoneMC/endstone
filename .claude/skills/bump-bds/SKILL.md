@@ -394,6 +394,50 @@ not the virtuals), so you diff layout without any virtual-function names.
    confirm the change is on *both* platforms, match the existing `#ifdef __linux__`
    pattern rather than risk shifting the Windows vtable.
 
+For one class you do not need IDA at all: `lief` + `capstone` on the shipped
+binaries resolve `_ZTS<len><Class>` -> typeinfo -> vtable -> per-slot disassembly
+in seconds, on both the previous and the new ELF. (`lief`'s `Binary.relocations`
+comes back empty on the stripped BDS ELF - parse `.rela.dyn` yourself as 24-byte
+`(offset, info, addend)` records and keep `info & 0xffffffff == 8`.)
+
+## Locating a vtable on Windows (no RTTI)
+
+`/GR-` leaves no type descriptors, but a small interface is still findable
+name-free - and this is the only way to confirm a Linux-derived vtable verdict on
+the platform Endstone actually hooks.
+
+1. **Scan `.rdata` for a run of consecutive pointers to `lea rax, [rcx+d]; ret`
+   stubs.** Trivial base-subobject getters are ICF-folded to **one stub per
+   displacement** binary-wide (~100 in a 160 MB `.text`), so a class with N of
+   them is a run of N adjacent stubs with distinct increasing displacements, and
+   the displacements read off the member layout directly. These stubs are 16-byte
+   aligned and `cc`-padded but have **no `.pdata` record** (leaf, no unwind) - a
+   `.pdata` function-start filter silently drops every one of them and the scan
+   returns nothing.
+2. **Identify the class from the dtor slot, not a name.** The slot before the run
+   is the scalar deleting dtor; its teardown pins both the class and its `sizeof`
+   (a virtual-deleting `unique_ptr` at `+N` = the last member). Comparing that
+   body against the last release that shipped a PDB is the identification.
+3. **Never read the table's END from "the next qword is not code".** MSVC packs
+   vftables back to back in `.rdata`, so the next table's slot 0 is a code
+   pointer - the same class reads as 4 slots in one release and 8 in the next
+   purely by what the linker put after it. The terminator is: the next qword's own
+   *address* is the target of a `lea` + `mov [reg], rax` vfptr store.
+4. **A displacement proves the slot order, never the semantics.** Which member a
+   getter returns comes from the last PDB-bearing release (`??_7<Class>@@6B@` plus
+   the named getters); carry that mapping forward version by version and diff
+   displacements. Equal displacements at equal slots across the chain is what
+   makes an "unchanged" verdict conclusive rather than merely shape-compatible.
+5. **To check ONE virtual's slot index in a 400-slot table**, don't walk the
+   table - find the function (byte fingerprint of its body, member displacement
+   wildcarded), locate the `.rdata` qword holding it, and walk *backwards* while
+   the qwords are `.text` pointers; the distance is the index. Do it in the
+   PDB-bearing release first to learn the constant offset between the binary index
+   and Endstone's declaration count (a base contributing only a virtual dtor is
+   `+1`), then apply the same offset to the new release. Cross-anchor on a
+   const/non-const overload pair - ICF folds them to one address, so they show up
+   as two adjacent slots sharing a target, which is unmistakable.
+
 ## Detecting data-member layout changes (ctor/dtor RE)
 
 A struct's member layout - a member inserted, removed, resized, or moved - is
