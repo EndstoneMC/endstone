@@ -78,7 +78,7 @@ static constexpr std::array<std::pair<std::string_view, std::size_t>, 61> symbol
     // MinecraftPackets
     {"?createPacket@MinecraftPackets@@SA?AV?$shared_ptr@VPacket@@@std@@W4MinecraftPacketIds@@@Z", 12530432},
     // Mob
-    {"?knockback@Mob@@UEAAXPEAVActor@@HMMAEBUKnockbackParameters@@@Z", 37732912},
+    {"?knockback@Mob@@UEAAXPEAVActor@@MMMAEBUKnockbackParameters@@@Z", 37732912},
     // NetworkSystem
     {"?send@NetworkSystem@@QEAAXAEBVNetworkIdentifier@@AEBVPacket@@W4SubClientId@@@Z", 12576928},
     // PistonBlockActor
@@ -86,7 +86,7 @@ static constexpr std::array<std::pair<std::string_view, std::size_t>, 61> symbol
     // Player
     {"?completeUsingItem@Player@@QEAAXXZ", 2206272},
     {"?drop@Player@@UEAA_NAEBVItemStack@@_N@Z", 2302400},
-    {"?startSleepInBed@Player@@UEAA?AW4BedSleepingResult@@AEBVBlockPos@@@Z", 2182176},
+    {"?startSleepInBed@Player@@UEAA?AW4BedSleepingResult@@AEBVBlockPos@@_NM@Z", 2182176},
     {"?stopSleepInBed@Player@@UEAAX_N0@Z", 2187632},
     {"?take@Player@@QEAA_NAEAVActor@@HH@Z", 2251552},
     {"?teleportTo@Player@@UEAAXAEBVVec3@@_NHH1@Z", 2176288},

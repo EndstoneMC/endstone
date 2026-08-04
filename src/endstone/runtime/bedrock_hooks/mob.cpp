@@ -28,7 +28,7 @@
 #include "endstone/event/actor/actor_knockback_event.h"
 #include "endstone/runtime/hook.h"
 
-void Mob::knockback(Actor *source, int damage, float dx, float dz, const KnockbackParameters &parameters)
+void Mob::knockback(Actor *source, float damage, float dx, float dz, const KnockbackParameters &parameters)
 {
     const auto before = getPosDelta();
     ENDSTONE_HOOK_CALL_ORIGINAL(&Mob::knockback, this, source, damage, dx, dz, parameters);

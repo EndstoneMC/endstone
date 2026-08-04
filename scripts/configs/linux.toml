@@ -462,7 +462,7 @@ extra = 0
 pattern = "53 48 89 FB 81 FE ? ? ? ? 77 ?"
 
 [[signatures]]
-name = "_ZN3Mob9knockbackEP5ActoriffRK19KnockbackParameters"
+name = "_ZN3Mob9knockbackEP5ActorfffRK19KnockbackParameters"
 relative = false
 extra = 0
 # 1. Player's vtable is RTTI-named `_ZTV6Player`; knockback is a Mob virtual inherited into Player's vtable
@@ -517,7 +517,7 @@ rip_relative = true
 rip_offset = 7
 
 [[signatures]]
-name = "_ZN6Player15startSleepInBedERK8BlockPos"
+name = "_ZN6Player15startSleepInBedERK8BlockPosbf"
 relative = false
 extra = 0
 # 1. find bytes "31 20 73 74 61 72 74 53 6C 65 65 70 49 6E 42 65 64 00" = "1 startSleepInBed\0" (unique)

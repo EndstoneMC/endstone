@@ -79,7 +79,7 @@ static constexpr std::array<std::pair<std::string_view, std::size_t>, 61> symbol
     // MinecraftPackets
     {"_ZN16MinecraftPackets12createPacketE18MinecraftPacketIds", 140088240},
     // Mob
-    {"_ZN3Mob9knockbackEP5ActoriffRK19KnockbackParameters", 191262256},
+    {"_ZN3Mob9knockbackEP5ActorfffRK19KnockbackParameters", 191262256},
     // NetworkSystem
     {"_ZN13NetworkSystem4sendERK17NetworkIdentifierRK6Packet11SubClientId", 140083776},
     // PistonBlockActor
@@ -87,7 +87,7 @@ static constexpr std::array<std::pair<std::string_view, std::size_t>, 61> symbol
     // Player
     {"_ZN6Player10teleportToERK4Vec3biib", 188049776},
     {"_ZN6Player14stopSleepInBedEbb", 188060864},
-    {"_ZN6Player15startSleepInBedERK8BlockPos", 188056592},
+    {"_ZN6Player15startSleepInBedERK8BlockPosbf", 188056592},
     {"_ZN6Player17completeUsingItemEv", 188080240},
     {"_ZN6Player4dropERK9ItemStackb", 188192432},
     {"_ZN6Player4takeER5Actorii", 188139696},

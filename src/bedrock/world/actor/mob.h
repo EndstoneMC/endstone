@@ -43,7 +43,7 @@ public:
     Mob(Level &, EntityContext &);
 
     ~Mob() override = 0;
-    ENDSTONE_HOOK virtual void knockback(Actor *, int damage, float xd, float zd,
+    ENDSTONE_HOOK virtual void knockback(Actor *, float damage, float xd, float zd,
                                          const KnockbackParameters &parameters);
     virtual void spawnAnim() = 0;
     virtual void setSprinting(bool) = 0;

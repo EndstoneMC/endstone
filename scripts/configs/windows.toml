@@ -543,7 +543,7 @@ extra = 0
 pattern = "56 48 83 EC ? 48 89 CE 81 FA ? ? ? ? 77 ? 89 D0 48 8D 0D ? ? ? ? 48 63 04 81 48 01 C8 FF E0 0F 57 C0 0F 11 06 48 89 F0 48 83 C4 ? 5E C3 48 89 F1 E8 ? ? ? ? EB ? 48 89 F1 E8"
 
 [[signatures]]
-name = "?knockback@Mob@@UEAAXPEAVActor@@HMMAEBUKnockbackParameters@@@Z"
+name = "?knockback@Mob@@UEAAXPEAVActor@@MMMAEBUKnockbackParameters@@@Z"
 relative = false
 extra = 0
 # 1. knockback is a Mob virtual (UEAA). Player derives from Mob, so Player's vtable carries Mob's slots -
@@ -619,7 +619,7 @@ extra = 0
 pattern = "55 41 57 41 56 41 54 56 57 53 48 81 EC ? ? ? ? 48 8D AC 24 ? ? ? ? 48 C7 85 ? ? ? ? ? ? ? ? 48 89 CE 48 8B 89 ? ? ? ? 48 85 C9"
 
 [[signatures]]
-name = "?startSleepInBed@Player@@UEAA?AW4BedSleepingResult@@AEBVBlockPos@@@Z"
+name = "?startSleepInBed@Player@@UEAA?AW4BedSleepingResult@@AEBVBlockPos@@_NM@Z"
 relative = false
 extra = 0
 # 1. find bytes "31 20 73 74 61 72 74 53 6C 65 65 70 49 6E 42 65 64 00" = "1 startSleepInBed\0" (unique)

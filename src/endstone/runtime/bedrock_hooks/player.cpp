@@ -151,7 +151,7 @@ BedSleepingResult Player::getBedResult(const BlockPos &bed_pos)
     return BedSleepingResult::OTHER_PROBLEM;
 }
 
-BedSleepingResult Player::startSleepInBed(BlockPos const &bed_block_pos)
+BedSleepingResult Player::startSleepInBed(BlockPos const &bed_block_pos, bool a2, float a3)
 {
     auto bed_result = getBedResult(bed_block_pos);
     if (bed_result == BedSleepingResult::OK) {
@@ -166,5 +166,5 @@ BedSleepingResult Player::startSleepInBed(BlockPos const &bed_block_pos)
         }
     }
 
-    return ENDSTONE_HOOK_CALL_ORIGINAL(&Player::startSleepInBed, this, bed_block_pos);
+    return ENDSTONE_HOOK_CALL_ORIGINAL(&Player::startSleepInBed, this, bed_block_pos, a2, a3);
 }
