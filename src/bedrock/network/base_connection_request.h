@@ -15,6 +15,7 @@
 #pragma once
 
 #include <memory>
+#include <optional>
 #include <string>
 #include <unordered_map>
 #include <vector>
@@ -77,7 +78,7 @@ protected:
     virtual bool _isAuthTypeWellFormed() const = 0;
     [[nodiscard]] Json::Value getData(const std::string &key) const;
 
-    std::unique_ptr<WebToken> raw_token_;
+    std::optional<WebToken> raw_token_;
     RawGameServerToken unverified_game_server_token_;
     PlayerAuthenticationType authentication_type_;
 };

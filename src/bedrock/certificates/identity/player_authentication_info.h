@@ -36,10 +36,10 @@ struct PlayerAuthenticationInfo {
     std::string xbox_live_name;
     std::string nintendo_name;
     std::string play_station_name;
+    std::string best_display_name;
     MinecraftAccountPermissions permissions;
     std::string public_key;
     mce::UUID authenticated_uuid;
     bool is_host;
     bool is_local;
-    std::string best_display_name;
 };

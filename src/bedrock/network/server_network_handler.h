@@ -117,6 +117,8 @@ private:
     // bool use_allow_list_;
     AllowList &allow_list_;
     PermissionsFile *permissions_file_;
+    // TODO(fixme): check the name
+    void *unknown_240_;  // win +240, linux +224; added in 1.26.40
     DenyList server_deny_list_;
     NetworkServerConfig network_server_config_;
     std::shared_ptr<ScriptPackSettingsCache> pack_settings_cache_;
