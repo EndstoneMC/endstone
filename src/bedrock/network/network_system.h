@@ -47,7 +47,7 @@ protected:
     Bedrock::NotNullNonOwnerPtr<NetworkSessionOwner> network_session_owner_;
     Bedrock::Threading::RecursiveMutex connections_mutex_;
     std::vector<std::unique_ptr<NetworkConnection>> connections_;
-    std::unique_ptr<LocalConnector> local_connector_;
+    std::shared_ptr<LocalConnector> local_connector_;
     std::shared_ptr<PacketGroupDefinition::PacketGroupBuilder> packet_group_builder_;
 
 public:

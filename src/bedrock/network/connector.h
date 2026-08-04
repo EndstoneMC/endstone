@@ -32,6 +32,8 @@ public:
     virtual std::string getLocalIp();
     [[nodiscard]] virtual uint16_t getPort() const;
     [[nodiscard]] virtual const Social::GameConnectionInfo &getConnectedGameInfo() const;
+    // TODO(fixme): check the name
+    virtual void unknown5() = 0;  // added in 1.26.40; a bare ret in LocalConnector
     [[nodiscard]] virtual bool isIPv4Supported() const;
     [[nodiscard]] virtual bool isIPv6Supported() const;
     [[nodiscard]] virtual uint16_t getIPv4Port() const;
