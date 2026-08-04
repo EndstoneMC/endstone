@@ -339,35 +339,49 @@ def find_signature(section: lief.Section, sig: Signature) -> int:
     mem = section.content
     base_addr = section.virtual_address
 
-    match = re.search(byte_pattern, mem.tobytes(), re.DOTALL)
-    if not match:
+    matches = [m.start() for m in re.finditer(byte_pattern, mem.tobytes(), re.DOTALL)]
+    if not matches:
         raise NameError(f"Pattern not found: {sig.pattern} for {sig.name}")
-    addr = match.start()
 
-    logger.debug(f"Pattern found at: 0x{addr:x} (+ base = 0x{(addr + base_addr):x})")
+    def resolve(addr: int) -> int:
+        for i, o in enumerate(sig.offsets or []):
+            logger.debug(f"Offset {i}: ptr: 0x{addr:x} offset: 0x{o:x}")
+            pos = addr + o
+            addr = struct.unpack_from("<I", mem, pos)[0]
+            logger.debug(f"Offset {i}: => 0x{addr:x}")
 
-    for i, o in enumerate(sig.offsets or []):
-        logger.debug(f"Offset {i}: ptr: 0x{addr:x} offset: 0x{o:x}")
-        pos = addr + o
-        addr = struct.unpack_from("<I", mem, pos)[0]
-        logger.debug(f"Offset {i}: => 0x{addr:x}")
+        if sig.rip_relative:
+            logger.debug(f"rip_relative: addr 0x{addr:x} + rip_offset 0x{sig.rip_offset:x}")
+            addr = addr + sig.rip_offset
+            rip = struct.unpack_from("<i", mem, addr)[0]
+            logger.debug(f"rip_relative: addr 0x{addr:x} + rip 0x{rip:x} + 4")
+            addr = addr + rip + 4
+            logger.debug(f"rip_relative: addr => 0x{addr:x}")
 
-    if sig.rip_relative:
-        logger.debug(f"rip_relative: addr 0x{addr:x} + rip_offset 0x{sig.rip_offset:x}")
-        addr = addr + sig.rip_offset
-        rip = struct.unpack_from("<i", mem, addr)[0]
-        logger.debug(f"rip_relative: addr 0x{addr:x} + rip 0x{rip:x} + 4")
-        addr = addr + rip + 4
-        logger.debug(f"rip_relative: addr => 0x{addr:x}")
+        logger.debug(f"Adding extra: 0x{sig.extra:x}")
+        addr = addr + sig.extra
 
-    logger.debug(f"Adding extra: 0x{sig.extra:x}")
-    addr = addr + sig.extra
+        if not sig.relative:
+            logger.debug(f"Not relative, addr 0x{addr:x} + base 0x{base_addr:x}")
+            addr = addr + base_addr
 
-    if not sig.relative:
-        logger.debug(f"Not relative, addr 0x{addr:x} + base 0x{base_addr:x}")
-        addr = addr + base_addr
+        return addr
 
-    return addr
+    logger.debug(f"Pattern found at: 0x{matches[0]:x} (+ base = 0x{(matches[0] + base_addr):x})")
+
+    # A pattern matching several places resolves to whichever comes first in the section, which is only
+    # right by luck - say so rather than picking one silently.
+    chosen = resolve(matches[0])
+    candidates = {resolve(m) for m in matches}
+    if len(candidates) > 1:
+        others = ", ".join(f"0x{c:x}" for c in sorted(candidates - {chosen})[:8])
+        logger.warning(
+            f"Ambiguous pattern for {sig.name}: {len(matches)} matches resolving to {len(candidates)} "
+            f"distinct addresses; taking 0x{chosen:x}, rejecting {others}"
+            f"{', ...' if len(candidates) > 9 else ''}. Tighten the pattern or anchor it on a call site."
+        )
+
+    return chosen
 
 
 def scan_signatures(section: lief.Section, config: dict) -> dict[str, int]:
