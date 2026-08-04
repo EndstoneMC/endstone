@@ -24,16 +24,8 @@
 #include "bedrock/world/item/crafting/recipes.h"
 #include "bedrock/platform/uuid.h"
 #include "bedrock/world/item/crafting/recipe_ingredient.h"
+#include "bedrock/world/item/crafting/recipe_unlocking_requirement.h"
 #include "bedrock/world/item/network_item_instance_descriptor_data.h"
-
-struct RecipeUnlockingRequirement {
-    // TODO(fixme): check the name
-    enum class UnlockingContext : int {};  // values not recovered
-
-    UnlockingContext context;                                   // +0
-    std::optional<std::vector<RecipeIngredient>> ingredients;    // +8
-};
-BEDROCK_STATIC_ASSERT_SIZE(RecipeUnlockingRequirement, 40, 40);
 
 struct ShapelessRecipePayload {
     std::string recipe_id;                                          // +0

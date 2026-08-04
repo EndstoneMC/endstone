@@ -14,8 +14,10 @@
 
 #pragma once
 
+#include <optional>
 #include <vector>
 
+#include "bedrock/bedrock.h"
 #include "bedrock/world/item/crafting/recipe_ingredient.h"
 
 class RecipeUnlockingRequirement {
@@ -28,6 +30,7 @@ public:
     };
 
 private:
-    UnlockingContext context_;
-    std::vector<RecipeIngredient> ingredients_;
+    UnlockingContext context_;                                 // +0
+    std::optional<std::vector<RecipeIngredient>> ingredients_;  // +8
 };
+BEDROCK_STATIC_ASSERT_SIZE(RecipeUnlockingRequirement, 40, 40);
