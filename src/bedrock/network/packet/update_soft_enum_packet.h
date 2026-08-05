@@ -25,6 +25,11 @@ enum class SoftEnumUpdateType : uint8_t {
 
 class UpdateSoftEnumPacket : public Packet {
 public:
+#ifdef __linux__
+    // Reserve Packet's tail-padding slot for BDS-compatible field offsets.
+    std::uint32_t packet_tail_padding;
+#endif
+
     SoftEnumUpdateType type;
     std::string enum_name;
     std::vector<std::string> values;
