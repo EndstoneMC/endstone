@@ -76,6 +76,7 @@ __all__ = [
     "PlayerQuitEvent",
     "PlayerRespawnEvent",
     "PlayerSkinChangeEvent",
+    "PlayerRiptideEvent",
     "PlayerTeleportEvent",
     "PlayerToggleCrawlEvent",
     "PlayerToggleFlightEvent",
@@ -777,6 +778,16 @@ class PlayerToggleSneakEvent(PlayerEvent):
     def is_sneaking(self) -> bool:
         """
         Whether the player is now sneaking or not.
+        """
+
+class PlayerRiptideEvent(PlayerEvent):
+    """
+    Called when a player starts or stops a riptide attack.
+    """
+    @property
+    def is_riptiding(self) -> bool:
+        """
+        Whether the player is riptiding.
         """
 
 class PlayerToggleSprintEvent(PlayerEvent):

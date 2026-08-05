@@ -822,6 +822,14 @@ bool EndstonePlayer::handlePacket(Packet &packet)
             PlayerToggleCrawlEvent e(*this, false);
             getServer().getPluginManager().callEvent(e);
         }
+        if (pk.getInput(PlayerAuthInputPacket::InputData::StartSpinAttack)) {
+            PlayerRiptideEvent e(*this, true);
+            getServer().getPluginManager().callEvent(e);
+        }
+        else if (pk.getInput(PlayerAuthInputPacket::InputData::StopSpinAttack)) {
+            PlayerRiptideEvent e(*this, false);
+            getServer().getPluginManager().callEvent(e);
+        }
 
         auto &actions = pk.payload.player_block_actions.actions_;
         for (auto it = actions.begin(); it != actions.end();) {
