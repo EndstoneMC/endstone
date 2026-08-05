@@ -248,6 +248,7 @@ void init_event(py::module_ &m, py::class_<Event, PyEvent> &event)
     py::class_<PlayerEvent, Event>(m, "PlayerEvent", "Represents a player related event.")
         .def_property_readonly("player", &PlayerEvent::getPlayer,
                                "The `Player` who is involved in this event.");
+    py::class_<PlayerArmSwingEvent, PlayerEvent>(m, "PlayerArmSwingEvent", "Called when a player swings their arm.");
     auto player_bed_enter_event = py::class_<PlayerBedEnterEvent, PlayerEvent, ICancellable>(
         m, "PlayerBedEnterEvent", "Called when a player is almost about to enter the bed.");
     player_bed_enter_event.def_property_readonly("bed", &PlayerBedEnterEvent::getBed,

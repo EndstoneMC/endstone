@@ -52,6 +52,7 @@ __all__ = [
     "MobEvent",
     "PacketReceiveEvent",
     "PacketSendEvent",
+    "PlayerArmSwingEvent",
     "PlayerBedEnterEvent",
     "PlayerBedLeaveEvent",
     "PlayerChatEvent",
@@ -527,6 +528,11 @@ class PlayerEvent(Event):
         """
         The `Player` who is involved in this event.
         """
+
+class PlayerArmSwingEvent(PlayerEvent):
+    """
+    Called when a player swings their arm.
+    """
 
 class PlayerBedEnterEvent(PlayerEvent, Cancellable):
     """
