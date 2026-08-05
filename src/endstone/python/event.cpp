@@ -350,6 +350,10 @@ void init_event(py::module_ &m, py::class_<Event, PyEvent> &event)
                                                      "Called when a player toggles their sprinting state.")
         .def_property_readonly("is_sprinting", &PlayerToggleSprintEvent::isSprinting,
                                "Whether the player is now sprinting or not.");
+    py::class_<PlayerToggleCrawlEvent, PlayerEvent>(m, "PlayerToggleCrawlEvent",
+                                                    "Called when a player toggles their crawling state.")
+        .def_property_readonly("is_crawling", &PlayerToggleCrawlEvent::isCrawling,
+                               "Whether the player is now crawling or not.");
     py::class_<PlayerToggleGlideEvent, PlayerEvent>(m, "PlayerToggleGlideEvent",
                                                     "Called when a player toggles their gliding state.")
         .def_property_readonly("is_gliding", &PlayerToggleGlideEvent::isGliding,
