@@ -10,7 +10,7 @@ from endstone.actor import Actor, Item, Mob
 from endstone.block import Block, BlockFace, BlockState
 from endstone.command import CommandSender
 from endstone.damage import DamageSource
-from endstone.inventory import EquipmentSlot, ItemStack
+from endstone.inventory import BookMeta, EquipmentSlot, ItemStack
 from endstone.lang import Translatable
 from endstone.level import Chunk, Dimension, Level, Location
 from endstone.map import MapView
@@ -64,6 +64,7 @@ __all__ = [
     "PlayerDeathEvent",
     "PlayerDimensionChangeEvent",
     "PlayerDropItemEvent",
+    "PlayerEditBookEvent",
     "PlayerEmoteEvent",
     "PlayerEvent",
     "PlayerGameModeChangeEvent",
@@ -654,6 +655,35 @@ class PlayerDropItemEvent(PlayerEvent, Cancellable):
         """
         The `ItemStack` dropped by the player.
         """
+
+class PlayerEditBookEvent(PlayerEvent, Cancellable):
+    """
+    Called when a player edits or signs a book.
+    """
+    @property
+    def slot(self) -> int:
+        """
+        The inventory slot containing the book.
+        """
+    @property
+    def previous_book_meta(self) -> BookMeta:
+        """
+        The book metadata before the edit.
+        """
+    @property
+    def new_book_meta(self) -> BookMeta:
+        """
+        The book metadata after the edit.
+        """
+    @new_book_meta.setter
+    def new_book_meta(self, arg1: BookMeta) -> None: ...
+    @property
+    def is_signing(self) -> bool:
+        """
+        Whether the player is signing the book.
+        """
+    @is_signing.setter
+    def is_signing(self, arg1: bool) -> None: ...
 
 class PlayerEmoteEvent(PlayerEvent, Cancellable):
     """

@@ -75,11 +75,12 @@ add_library(endstone_core
         damage/damage_source.cpp
         enchantments/enchantment.cpp
         form/form_codec.cpp
-        inventory/meta/item_meta.cpp
         inventory/meta/book_meta.cpp
+        inventory/meta/item_meta.cpp
         inventory/meta/crossbow_meta.cpp
         inventory/meta/map_meta.cpp
         inventory/meta/writable_book_meta.cpp
+        inventory/book_edit.cpp
         inventory/item_factory.cpp
         inventory/item_metas.cpp
         inventory/item_stack.cpp

@@ -25,6 +25,7 @@
 #include "bedrock/entity/components/user_entity_identifier_component.h"
 #include "bedrock/network/packet.h"
 #include "bedrock/network/packet/animate_packet.h"
+#include "bedrock/network/packet/book_edit_packet.h"
 #include "bedrock/network/packet/clientbound_map_item_data_packet.h"
 #include "bedrock/network/packet/correct_player_move_prediction_packet.h"
 #include "bedrock/network/packet/emote_packet.h"
@@ -52,6 +53,8 @@
 #include "endstone/core/entity/components/flag_components.h"
 #include "endstone/core/form/form_codec.h"
 #include "endstone/core/game_mode.h"
+#include "endstone/core/inventory/book_edit.h"
+#include "endstone/core/inventory/item_factory.h"
 #include "endstone/core/inventory/item_stack.h"
 #include "endstone/core/inventory/player_inventory.h"
 #include "endstone/core/map/map_view.h"
@@ -64,6 +67,7 @@
 #include "endstone/event/player/player_animation_event.h"
 #include "endstone/event/player/player_bed_leave_event.h"
 #include "endstone/event/player/player_block_damage_event.h"
+#include "endstone/event/player/player_edit_book_event.h"
 #include "endstone/event/player/player_emote_event.h"
 #include "endstone/event/player/player_interact_event.h"
 #include "endstone/event/player/player_item_held_event.h"
@@ -690,6 +694,51 @@ bool EndstonePlayer::handlePacket(Packet &packet)
         }
         return true;
     }
+    case MinecraftPacketIds::BookEdit: {
+        pending_book_meta_.reset();
+        pending_book_slot_ = -1;
+
+        auto &pk = static_cast<BookEditPacket &>(packet);
+        const auto slot = pk.payload.book_slot;
+        if (slot < 0 || slot >= getInventory().getSize()) {
+            return true;
+        }
+
+        const auto item = getInventory().getItem(slot);
+        if (!item || !book_edit::isBook(*item)) {
+            return true;
+        }
+
+        auto previous_book_meta = book_edit::createBookMeta(*item);
+        auto new_book_meta = book_edit::createBookMeta(*item);
+        book_edit::applyBookEditOperation(*new_book_meta, pk.payload.operation);
+        const auto is_signing = std::holds_alternative<BookEditAction::Finalize>(pk.payload.operation);
+
+        PlayerEditBookEvent event{*this, slot, *previous_book_meta, *new_book_meta, is_signing};
+        getServer().getPluginManager().callEvent(event);
+        if (event.isCancelled()) {
+            return false;
+        }
+
+        if (event.isSigning() != is_signing) {
+            auto edited_item = *item;
+            edited_item.setType(event.isSigning() ? book_edit::WRITTEN_BOOK : book_edit::WRITABLE_BOOK);
+            auto item_meta = book_edit::createBookItemMeta(
+                event.getNewBookMeta(),
+                event.isSigning() ? book_edit::WRITTEN_BOOK : book_edit::WRITABLE_BOOK);
+            if (item_meta && edited_item.setItemMeta(item_meta.get())) {
+                getInventory().setItem(slot, std::move(edited_item));
+            }
+            return false;
+        }
+
+        if (!EndstoneItemFactory::instance().equals(&event.getNewBookMeta(), new_book_meta.get())) {
+            auto new_meta = event.getNewBookMeta().clone();
+            pending_book_meta_.reset(static_cast<BookMeta *>(new_meta.release()));
+            pending_book_slot_ = slot;
+        }
+        return true;
+    }
     case MinecraftPacketIds::PlayerAction: {
         auto &pk = static_cast<PlayerActionPacket &>(packet);
         switch (pk.payload.action) {
@@ -1015,6 +1064,31 @@ bool EndstonePlayer::handlePacket(Packet &packet)
     }
     default:
         return true;
+    }
+}
+
+void EndstonePlayer::handlePacketPost()
+{
+    if (pending_book_meta_ == nullptr) {
+        return;
+    }
+
+    auto new_book_meta = std::move(pending_book_meta_);
+    const auto slot = pending_book_slot_;
+    pending_book_slot_ = -1;
+    if (slot < 0 || slot >= getInventory().getSize()) {
+        return;
+    }
+
+    auto item = getInventory().getItem(slot);
+    if (!item) {
+        return;
+    }
+
+    const auto type = item->getType().getId();
+    auto item_meta = book_edit::createBookItemMeta(*new_book_meta, type);
+    if (item_meta && item->setItemMeta(item_meta.get())) {
+        getInventory().setItem(slot, std::move(item));
     }
 }
 

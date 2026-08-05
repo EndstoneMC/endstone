@@ -30,6 +30,7 @@
 #include "endstone/block/block_face.h"
 #include "endstone/core/actor/mob.h"
 #include "endstone/core/inventory/player_inventory.h"
+#include "endstone/inventory/meta/book_meta.h"
 #include "endstone/player.h"
 #include "permissions/permissible_base.h"
 
@@ -129,6 +130,7 @@ public:
     void sendMap(MapView &map) override;
 
     bool handlePacket(Packet &packet);
+    void handlePacketPost();
     void onFormClose(std::uint32_t form_id, PlayerFormCloseReason reason);
     void onFormResponse(std::uint32_t form_id, const nlohmann::json &json);
     void doFirstSpawn();
@@ -154,6 +156,8 @@ private:
     std::unordered_map<std::uint32_t, FormVariant> forms_;
     std::optional<BlockPos> block_damage_position_;
     std::optional<BlockFace> block_damage_face_;
+    std::unique_ptr<BookMeta> pending_book_meta_;
+    int pending_book_slot_ = -1;
     bool spawned_ = false;
     bool last_op_status_ = false;
 };
