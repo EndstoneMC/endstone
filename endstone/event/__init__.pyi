@@ -77,6 +77,7 @@ __all__ = [
     "PlayerRespawnEvent",
     "PlayerSkinChangeEvent",
     "PlayerTeleportEvent",
+    "PlayerToggleGlideEvent",
     "PlayerToggleSprintEvent",
     "PlayerToggleSneakEvent",
     "PlayerToggleSwimEvent",
@@ -794,6 +795,16 @@ class PlayerToggleSwimEvent(PlayerEvent):
     def is_swimming(self) -> bool:
         """
         Whether the player is now swimming or not.
+        """
+
+class PlayerToggleGlideEvent(PlayerEvent):
+    """
+    Called when a player toggles their gliding state.
+    """
+    @property
+    def is_gliding(self) -> bool:
+        """
+        Whether the player is now gliding or not.
         """
 
 class PlayerJoinEvent(PlayerEvent):

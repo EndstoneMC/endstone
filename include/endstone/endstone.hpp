@@ -121,6 +121,7 @@ static_assert(_ITERATOR_DEBUG_LEVEL == 0,
 #include "event/player/player_respawn_event.h"
 #include "event/player/player_skin_change_event.h"
 #include "event/player/player_teleport_event.h"
+#include "event/player/player_toggle_glide_event.h"
 #include "event/player/player_toggle_sprint_event.h"
 #include "event/player/player_toggle_sneak_event.h"
 #include "event/player/player_toggle_swim_event.h"
