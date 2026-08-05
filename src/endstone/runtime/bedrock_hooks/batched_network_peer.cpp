@@ -94,9 +94,13 @@ void patchPacket(const ClientboundMapItemDataPacket &packet, endstone::core::End
         }
     }
 
+    // Decorations and tracked actor IDs are serialized in parallel.
     pk.payload.decorations.clear();
+    pk.payload.unique_ids.clear();
+
     for (const auto &cursor : render.cursors) {
         if (cursor.isVisible()) {
+            pk.payload.unique_ids.emplace_back(ActorUniqueID::INVALID_ID);
             pk.payload.decorations.emplace_back(
                 std::make_shared<MapDecoration>(static_cast<MapDecoration::Type>(cursor.getType()), cursor.getX(),
                                                 cursor.getY(), cursor.getDirection(), cursor.getCaption(),
