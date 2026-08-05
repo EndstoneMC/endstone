@@ -98,6 +98,7 @@ __getattr__, __dir__, __all__ = lazy.attach(
             "OFF_ARM_SWING",
             "PlayerBedEnterEvent",
             "PlayerBedLeaveEvent",
+            "PlayerLevelChangeEvent",
             "PlayerBlockDamageEvent",
             "PlayerChatEvent",
             "PlayerCommandEvent",
