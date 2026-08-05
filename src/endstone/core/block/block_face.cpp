@@ -16,7 +16,30 @@
 
 #include <stdexcept>
 
+#include "bedrock/common_types.h"
+#include "bedrock/shared_types/legacy/facing.h"
+
 namespace endstone::core {
+
+std::optional<BlockFace> EndstoneBlockFace::fromBedrockFacing(int facing)
+{
+    switch (facing) {
+    case Facing::DOWN:
+        return BlockFace::Down;
+    case Facing::UP:
+        return BlockFace::Up;
+    case Facing::NORTH:
+        return BlockFace::North;
+    case Facing::SOUTH:
+        return BlockFace::South;
+    case Facing::WEST:
+        return BlockFace::West;
+    case Facing::EAST:
+        return BlockFace::East;
+    default:
+        return std::nullopt;
+    }
+}
 
 int EndstoneBlockFace::getOffsetX(BlockFace face)
 {
