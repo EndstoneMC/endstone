@@ -68,6 +68,7 @@
 #include "endstone/event/player/player_move_event.h"
 #include "endstone/event/player/player_skin_change_event.h"
 #include "endstone/event/player/player_toggle_crawl_event.h"
+#include "endstone/event/player/player_toggle_flight_event.h"
 #include "endstone/event/player/player_toggle_glide_event.h"
 #include "endstone/event/player/player_toggle_sprint_event.h"
 #include "endstone/event/player/player_toggle_sneak_event.h"
@@ -808,6 +809,14 @@ bool EndstonePlayer::handlePacket(Packet &packet)
         }
         else if (pk.getInput(PlayerAuthInputPacket::InputData::StopGliding) && getHandle().isGliding()) {
             PlayerToggleGlideEvent e(getSelf(), false);
+            getServer().getPluginManager().callEvent(e);
+        }
+        if (pk.getInput(PlayerAuthInputPacket::InputData::StartFlying) && !getHandle().isFlying()) {
+            PlayerToggleFlightEvent e(getSelf(), true);
+            getServer().getPluginManager().callEvent(e);
+        }
+        else if (pk.getInput(PlayerAuthInputPacket::InputData::StopFlying) && getHandle().isFlying()) {
+            PlayerToggleFlightEvent e(getSelf(), false);
             getServer().getPluginManager().callEvent(e);
         }
         if (pk.getInput(PlayerAuthInputPacket::InputData::StartCrawling) && !getHandle().isCrawling()) {
