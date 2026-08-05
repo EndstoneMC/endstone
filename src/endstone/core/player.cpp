@@ -32,6 +32,7 @@
 #include "bedrock/network/packet/play_sound_packet.h"
 #include "bedrock/network/packet/player_auth_input_packet.h"
 #include "bedrock/network/packet/player_skin_packet.h"
+#include "bedrock/network/packet/set_player_inventory_options_packet.h"
 #include "bedrock/network/packet/set_title_packet.h"
 #include "bedrock/network/packet/stop_sound_packet.h"
 #include "bedrock/network/packet/text_packet.h"
@@ -66,6 +67,7 @@
 #include "endstone/event/player/player_join_event.h"
 #include "endstone/event/player/player_jump_event.h"
 #include "endstone/event/player/player_move_event.h"
+#include "endstone/event/player/player_recipe_book_settings_change_event.h"
 #include "endstone/event/player/player_skin_change_event.h"
 #include "endstone/event/player/player_toggle_sneak_event.h"
 #include "endstone/event/player/player_toggle_sprint_event.h"
@@ -754,6 +756,29 @@ bool EndstonePlayer::handlePacket(Packet &packet)
         else {
             pk.payload.flags &= ~static_cast<uint8_t>(EmotePacket::Flags::MUTE_EMOTE_CHAT);
         }
+        return true;
+    }
+    case MinecraftPacketIds::SetPlayerInventoryOptions: {
+        auto &pk = static_cast<SetPlayerInventoryOptionsPacket &>(packet);
+        const auto &options = pk.payload.inventory_options;
+        const RecipeBookSettings settings{
+            options.filtering,
+            static_cast<int>(options.layout_inv),
+            static_cast<int>(options.layout_craft),
+        };
+        const auto settings_changed = !last_recipe_book_settings_ || *last_recipe_book_settings_ != settings;
+        last_recipe_book_settings_ = settings;
+        if (!settings_changed) {
+            return true;
+        }
+
+        PlayerRecipeBookSettingsChangeEvent e{
+            getSelf(),
+            PlayerRecipeBookSettingsChangeEvent::RecipeBookType::Crafting,
+            options.layout_inv != InventoryLayout::InventoryOnly,
+            options.filtering,
+        };
+        getServer().getPluginManager().callEvent(e);
         return true;
     }
     case MinecraftPacketIds::PlayerAuthInputPacket: {

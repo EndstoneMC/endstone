@@ -257,6 +257,23 @@ void init_event(py::module_ &m, py::class_<Event, PyEvent> &event)
     py::class_<PlayerBedLeaveEvent, PlayerEvent>(m, "PlayerBedLeaveEvent", "Called when a player is leaving a bed.")
         .def_property_readonly("bed", &PlayerBedLeaveEvent::getBed, py::return_value_policy::reference,
                                "The bed block involved in this event.");
+    auto player_recipe_book_settings_change_event = py::class_<PlayerRecipeBookSettingsChangeEvent, PlayerEvent>(
+        m, "PlayerRecipeBookSettingsChangeEvent", "Called when a player changes recipe book settings.");
+    py::native_enum<PlayerRecipeBookSettingsChangeEvent::RecipeBookType>(
+        player_recipe_book_settings_change_event, "RecipeBookType", "enum.Enum", "The recipe book type.")
+        .value("CRAFTING", PlayerRecipeBookSettingsChangeEvent::RecipeBookType::Crafting)
+        .value("FURNACE", PlayerRecipeBookSettingsChangeEvent::RecipeBookType::Furnace)
+        .value("BLAST_FURNACE", PlayerRecipeBookSettingsChangeEvent::RecipeBookType::BlastFurnace)
+        .value("SMOKER", PlayerRecipeBookSettingsChangeEvent::RecipeBookType::Smoker)
+        .export_values()
+        .finalize();
+    player_recipe_book_settings_change_event
+        .def_property_readonly("recipe_book_type", &PlayerRecipeBookSettingsChangeEvent::getRecipeBookType,
+                               "The type of recipe book whose settings changed.")
+        .def_property_readonly("is_filtering", &PlayerRecipeBookSettingsChangeEvent::isFiltering,
+                               "Whether recipe filtering is enabled.")
+        .def_property_readonly("is_open", &PlayerRecipeBookSettingsChangeEvent::isOpen,
+                               "Whether the recipe book is open.");
     py::class_<PlayerChatEvent, PlayerEvent, ICancellable>(m, "PlayerChatEvent",
                                                            "Called when a player sends a chat message.")
         .def_property("message", &PlayerChatEvent::getMessage, &PlayerChatEvent::setMessage,
