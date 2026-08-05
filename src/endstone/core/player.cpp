@@ -24,6 +24,7 @@
 
 #include "bedrock/entity/components/user_entity_identifier_component.h"
 #include "bedrock/network/packet.h"
+#include "bedrock/network/packet/animate_packet.h"
 #include "bedrock/network/packet/clientbound_map_item_data_packet.h"
 #include "bedrock/network/packet/correct_player_move_prediction_packet.h"
 #include "bedrock/network/packet/emote_packet.h"
@@ -60,6 +61,7 @@
 #include "endstone/core/skin.h"
 #include "endstone/core/util/socket_address.h"
 #include "endstone/core/util/uuid.h"
+#include "endstone/event/player/player_animation_event.h"
 #include "endstone/event/player/player_bed_leave_event.h"
 #include "endstone/event/player/player_block_damage_event.h"
 #include "endstone/event/player/player_emote_event.h"
@@ -759,6 +761,15 @@ bool EndstonePlayer::handlePacket(Packet &packet)
     }
     case MinecraftPacketIds::SetLocalPlayerAsInit: {
         doFirstSpawn();
+        return true;
+    }
+    case MinecraftPacketIds::Animate: {
+        auto &pk = static_cast<AnimatePacket &>(packet);
+        if (pk.payload.runtime_id.raw_id == getHandle().getRuntimeID().raw_id &&
+            pk.payload.action == AnimatePacketPayload::Action::Swing) {
+            PlayerAnimationEvent e(*this, PlayerAnimationType::ArmSwing);
+            getServer().getPluginManager().callEvent(e);
+        }
         return true;
     }
     case MinecraftPacketIds::Emote: {

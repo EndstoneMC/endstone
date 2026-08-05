@@ -52,6 +52,10 @@ __all__ = [
     "MobEvent",
     "PacketReceiveEvent",
     "PacketSendEvent",
+    "PlayerAnimationEvent",
+    "PlayerAnimationType",
+    "ARM_SWING",
+    "OFF_ARM_SWING",
     "PlayerBedEnterEvent",
     "PlayerBedLeaveEvent",
     "PlayerBlockDamageEvent",
@@ -532,6 +536,27 @@ class PlayerEvent(Event):
     def player(self) -> Player:
         """
         The `Player` who is involved in this event.
+        """
+
+class PlayerAnimationType(enum.Enum):
+    """
+    Represents the type of a player animation.
+    """
+
+    ARM_SWING = 0
+    OFF_ARM_SWING = 1
+
+ARM_SWING = PlayerAnimationType.ARM_SWING
+OFF_ARM_SWING = PlayerAnimationType.OFF_ARM_SWING
+
+class PlayerAnimationEvent(PlayerEvent):
+    """
+    Called when a player performs an animation.
+    """
+    @property
+    def animation_type(self) -> PlayerAnimationType:
+        """
+        The type of this animation event.
         """
 
 class PlayerBedEnterEvent(PlayerEvent, Cancellable):

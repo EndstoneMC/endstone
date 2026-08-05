@@ -248,6 +248,17 @@ void init_event(py::module_ &m, py::class_<Event, PyEvent> &event)
     py::class_<PlayerEvent, Event>(m, "PlayerEvent", "Represents a player related event.")
         .def_property_readonly("player", &PlayerEvent::getPlayer,
                                "The `Player` who is involved in this event.");
+    py::native_enum<PlayerAnimationType>(m, "PlayerAnimationType", "enum.Enum",
+                                         "Represents the type of a player animation.")
+        .value("ARM_SWING", PlayerAnimationType::ArmSwing)
+        .value("OFF_ARM_SWING", PlayerAnimationType::OffArmSwing)
+        .export_values()
+        .finalize();
+    auto player_animation_event =
+        py::class_<PlayerAnimationEvent, PlayerEvent>(m, "PlayerAnimationEvent",
+                                                       "Called when a player performs an animation.");
+    player_animation_event.def_property_readonly("animation_type", &PlayerAnimationEvent::getAnimationType,
+                                                 "The type of this animation event.");
     auto player_bed_enter_event = py::class_<PlayerBedEnterEvent, PlayerEvent, ICancellable>(
         m, "PlayerBedEnterEvent", "Called when a player is almost about to enter the bed.");
     player_bed_enter_event.def_property_readonly("bed", &PlayerBedEnterEvent::getBed,
