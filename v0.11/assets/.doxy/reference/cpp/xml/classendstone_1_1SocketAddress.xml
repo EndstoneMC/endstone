@@ -16,7 +16,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/util/socket_address.h" line="45" column="17" bodyfile="include/endstone/util/socket_address.h" bodystart="45" bodyend="-1"/>
+        <location file="include/endstone/util/socket_address.h" line="50" column="17" bodyfile="include/endstone/util/socket_address.h" bodystart="50" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="classendstone_1_1SocketAddress_1af8cb55476a46c083d6656eb0b8f9b22c" prot="private" static="no" mutable="no">
         <type>std::uint32_t</type>
@@ -30,7 +30,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/util/socket_address.h" line="46" column="19" bodyfile="include/endstone/util/socket_address.h" bodystart="46" bodyend="-1"/>
+        <location file="include/endstone/util/socket_address.h" line="51" column="19" bodyfile="include/endstone/util/socket_address.h" bodystart="51" bodyend="-1"/>
       </memberdef>
     </sectiondef>
     <sectiondef kind="public-func">
@@ -46,7 +46,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/util/socket_address.h" line="27" column="5"/>
+        <location file="include/endstone/util/socket_address.h" line="30" column="5"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1SocketAddress_1a68d8ef8f335c853e7b56c3c90d648301" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type></type>
@@ -68,7 +68,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/util/socket_address.h" line="28" column="5" bodyfile="include/endstone/util/socket_address.h" bodystart="28" bodyend="28"/>
+        <location file="include/endstone/util/socket_address.h" line="31" column="5" bodyfile="include/endstone/util/socket_address.h" bodystart="31" bodyend="31"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1SocketAddress_1ae29c126b04d9d5094323ae495c32f6dd" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
         <type><ref refid="classendstone_1_1Identifier" kindref="compound">const</ref> std::string &amp;</type>
@@ -86,7 +86,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/util/socket_address.h" line="35" column="24" bodyfile="include/endstone/util/socket_address.h" bodystart="35" bodyend="35"/>
+        <location file="include/endstone/util/socket_address.h" line="38" column="24" bodyfile="include/endstone/util/socket_address.h" bodystart="38" bodyend="38"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1SocketAddress_1aab52350c83757435fe655b07f9cb8496" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
         <type>std::uint32_t</type>
@@ -104,7 +104,25 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/util/socket_address.h" line="42" column="20" bodyfile="include/endstone/util/socket_address.h" bodystart="42" bodyend="42"/>
+        <location file="include/endstone/util/socket_address.h" line="45" column="20" bodyfile="include/endstone/util/socket_address.h" bodystart="45" bodyend="45"/>
+      </memberdef>
+      <memberdef kind="function" id="classendstone_1_1SocketAddress_1a3377d3f8a9c97b60c58bbfed0ec6bb72" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="classendstone_1_1Identifier" kindref="compound">bool</ref></type>
+        <definition>bool endstone::SocketAddress::operator==</definition>
+        <argsstring>(const SocketAddress &amp;other) const =default</argsstring>
+        <name>operator==</name>
+        <qualifiedname>endstone::SocketAddress::operator==</qualifiedname>
+        <param>
+          <type><ref refid="classendstone_1_1Identifier" kindref="compound">const</ref> <ref refid="classendstone_1_1SocketAddress" kindref="compound">SocketAddress</ref> &amp;</type>
+          <declname>other</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/util/socket_address.h" line="47" column="10"/>
       </memberdef>
     </sectiondef>
     <briefdescription>
@@ -112,11 +130,12 @@
     </briefdescription>
     <detaileddescription>
     </detaileddescription>
-    <location file="include/endstone/util/socket_address.h" line="25" column="1" bodyfile="include/endstone/util/socket_address.h" bodystart="25" bodyend="47"/>
+    <location file="include/endstone/util/socket_address.h" line="28" column="1" bodyfile="include/endstone/util/socket_address.h" bodystart="28" bodyend="52"/>
     <listofallmembers>
       <member refid="classendstone_1_1SocketAddress_1ae29c126b04d9d5094323ae495c32f6dd" prot="public" virt="non-virtual"><scope>endstone::SocketAddress</scope><name>getHostname</name></member>
       <member refid="classendstone_1_1SocketAddress_1aab52350c83757435fe655b07f9cb8496" prot="public" virt="non-virtual"><scope>endstone::SocketAddress</scope><name>getPort</name></member>
       <member refid="classendstone_1_1SocketAddress_1a4fe90c360d5406ed2edd091f1f707b57" prot="private" virt="non-virtual"><scope>endstone::SocketAddress</scope><name>hostname_</name></member>
+      <member refid="classendstone_1_1SocketAddress_1a3377d3f8a9c97b60c58bbfed0ec6bb72" prot="public" virt="non-virtual"><scope>endstone::SocketAddress</scope><name>operator==</name></member>
       <member refid="classendstone_1_1SocketAddress_1af8cb55476a46c083d6656eb0b8f9b22c" prot="private" virt="non-virtual"><scope>endstone::SocketAddress</scope><name>port_</name></member>
       <member refid="classendstone_1_1SocketAddress_1a737ca1e9fbf491286e5c99d43eb4ac70" prot="public" virt="non-virtual"><scope>endstone::SocketAddress</scope><name>SocketAddress</name></member>
       <member refid="classendstone_1_1SocketAddress_1a68d8ef8f335c853e7b56c3c90d648301" prot="public" virt="non-virtual"><scope>endstone::SocketAddress</scope><name>SocketAddress</name></member>

@@ -225,7 +225,7 @@ private:
 template <>
 struct std::formatter<endstone::Location> : std::formatter<std::string_view> {
     template <typename FormatContext>
-    auto format(const endstone::Location &self, FormatContext &ctx) const -> format_context::iterator
+    auto format(const endstone::Location &self, FormatContext &ctx) const
     {
         return std::format_to(ctx.out(), "Location(dimension={},x={},y={},z={},pitch={},yaw={})", self.getDimension(),
                               self.getX(), self.getY(), self.getZ(), self.getPitch(), self.getYaw());

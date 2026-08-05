@@ -104,7 +104,7 @@ struct std::formatter<endstone::Actor> : std::formatter<std::string_view> {
     using Type = endstone::Actor;
 
     template <typename FormatContext>
-    auto format(const Type &val, FormatContext &ctx) const -> format_context::iterator
+    auto format(const Type &val, FormatContext &ctx) const
     {
         return std::format_to(ctx.out(), "{}", val.getName());
     }

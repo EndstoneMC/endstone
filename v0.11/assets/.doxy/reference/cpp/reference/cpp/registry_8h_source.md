@@ -95,7 +95,7 @@ template <typename T>
     }
 struct std::formatter<T> : std::formatter<std::string_view> {
     template <typename FormatContext>
-    auto format(const T &val, FormatContext &ctx) const -> format_context::iterator
+    auto format(const T &val, FormatContext &ctx) const
     {
         return std::format_to(ctx.out(), "{}", val.getId());
     }

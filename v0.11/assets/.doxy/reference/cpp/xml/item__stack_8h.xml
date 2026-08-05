@@ -683,8 +683,6 @@
         </childnode>
         <childnode refid="35" relation="include">
         </childnode>
-        <childnode refid="11" relation="include">
-        </childnode>
         <childnode refid="103" relation="include">
         </childnode>
         <childnode refid="105" relation="include">
@@ -1029,7 +1027,13 @@
       <node id="95">
         <label>endstone/util/socket_address.h</label>
         <link refid="socket__address_8h_source"/>
+        <childnode refid="14" relation="include">
+        </childnode>
         <childnode refid="20" relation="include">
+        </childnode>
+        <childnode refid="2" relation="include">
+        </childnode>
+        <childnode refid="10" relation="include">
         </childnode>
         <childnode refid="5" relation="include">
         </childnode>
@@ -1370,8 +1374,8 @@
 <codeline lineno="212"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">using<sp/></highlight><highlight class="normal"><ref refid="classendstone_1_1ItemStack" kindref="compound">Type</ref><sp/>=<sp/><ref refid="classendstone_1_1ItemStack" kindref="compound">endstone::ItemStack</ref>;</highlight></codeline>
 <codeline lineno="213"><highlight class="normal"></highlight></codeline>
 <codeline lineno="214"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">template</highlight><highlight class="normal"><sp/>&lt;</highlight><highlight class="keyword">typename</highlight><highlight class="normal"><sp/>FormatContext&gt;</highlight></codeline>
-<codeline lineno="215"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/>format(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classendstone_1_1ItemStack" kindref="compound">Type</ref><sp/>&amp;val,<sp/>FormatContext<sp/>&amp;ctx)<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>-&gt;<sp/>format_context::iterator</highlight></codeline>
-<codeline lineno="216"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="215"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/>format(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classendstone_1_1ItemStack" kindref="compound">Type</ref><sp/>&amp;val,<sp/>FormatContext<sp/>&amp;ctx)</highlight><highlight class="keyword"><sp/>const</highlight></codeline>
+<codeline lineno="216"><highlight class="keyword"><sp/><sp/><sp/><sp/></highlight><highlight class="normal">{</highlight></codeline>
 <codeline lineno="217"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>std::format_to(ctx.out(),<sp/></highlight><highlight class="stringliteral">&quot;ItemStack({}<sp/>x<sp/>{})&quot;</highlight><highlight class="normal">,<sp/>val.<ref refid="classendstone_1_1ItemStack_1a2681d8a56cdb2f020631a0930a2248c8" kindref="member">getType</ref>(),<sp/>val.<ref refid="classendstone_1_1ItemStack_1ae8df0edfce4bb47a5ba4a8433f292361" kindref="member">getAmount</ref>());</highlight></codeline>
 <codeline lineno="218"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
 <codeline lineno="219"><highlight class="normal">};</highlight></codeline>

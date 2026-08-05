@@ -22,7 +22,7 @@
       </memberdef>
     </sectiondef>
     <sectiondef kind="public-func">
-      <memberdef kind="function" id="structstd_1_1formatter_3_01endstone_1_1DamageSource_01_4_1ac0ef98ded719763985f88aa676a73250" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+      <memberdef kind="function" id="structstd_1_1formatter_3_01endstone_1_1DamageSource_01_4_1ac36303a06188b4aa9c8fa0c14cf3a7e0" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
         <templateparamlist>
           <param>
             <type>typename FormatContext</type>
@@ -30,7 +30,7 @@
         </templateparamlist>
         <type>auto</type>
         <definition>auto std::formatter&lt; endstone::DamageSource &gt;::format</definition>
-        <argsstring>(const Type &amp;val, FormatContext &amp;ctx) const -&gt; format_context::iterator</argsstring>
+        <argsstring>(const Type &amp;val, FormatContext &amp;ctx) const</argsstring>
         <name>format</name>
         <qualifiedname>std::formatter&lt; endstone::DamageSource &gt;::format</qualifiedname>
         <param>
@@ -78,7 +78,7 @@
     </collaborationgraph>
     <location file="include/endstone/damage/damage_source.h" line="74" column="1" bodyfile="include/endstone/damage/damage_source.h" bodystart="74" bodyend="97"/>
     <listofallmembers>
-      <member refid="structstd_1_1formatter_3_01endstone_1_1DamageSource_01_4_1ac0ef98ded719763985f88aa676a73250" prot="public" virt="non-virtual"><scope>std::formatter&lt; endstone::DamageSource &gt;</scope><name>format</name></member>
+      <member refid="structstd_1_1formatter_3_01endstone_1_1DamageSource_01_4_1ac36303a06188b4aa9c8fa0c14cf3a7e0" prot="public" virt="non-virtual"><scope>std::formatter&lt; endstone::DamageSource &gt;</scope><name>format</name></member>
       <member refid="structstd_1_1formatter_3_01endstone_1_1DamageSource_01_4_1ad079bb7bc7eb46e37687d7621abac811" prot="public" virt="non-virtual"><scope>std::formatter&lt; endstone::DamageSource &gt;</scope><name>Type</name></member>
     </listofallmembers>
   </compounddef>

@@ -52,7 +52,7 @@ struct std::formatter<endstone::DamageSource> : std::formatter<std::string_view>
     using Type = endstone::DamageSource;
 
     template <typename FormatContext>
-    auto format(const Type &val, FormatContext &ctx) const -> format_context::iterator
+    auto format(const Type &val, FormatContext &ctx) const
     {
         auto it = ctx.out();
         it = std::format_to(it, "DamageSource(type={}", val.getType());

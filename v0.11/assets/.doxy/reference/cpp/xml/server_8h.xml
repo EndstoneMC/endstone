@@ -837,7 +837,13 @@
       <node id="88">
         <label>endstone/util/socket_address.h</label>
         <link refid="socket__address_8h_source"/>
+        <childnode refid="16" relation="include">
+        </childnode>
         <childnode refid="3" relation="include">
+        </childnode>
+        <childnode refid="4" relation="include">
+        </childnode>
+        <childnode refid="24" relation="include">
         </childnode>
         <childnode refid="7" relation="include">
         </childnode>

@@ -22,7 +22,7 @@
       </memberdef>
     </sectiondef>
     <sectiondef kind="public-func">
-      <memberdef kind="function" id="structstd_1_1formatter_3_01endstone_1_1Actor_01_4_1acb9423d20bf83a9dc81ac861dc5f1cc4" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+      <memberdef kind="function" id="structstd_1_1formatter_3_01endstone_1_1Actor_01_4_1ac229a6f5276f1a19f41688548dade255" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
         <templateparamlist>
           <param>
             <type>typename FormatContext</type>
@@ -30,7 +30,7 @@
         </templateparamlist>
         <type>auto</type>
         <definition>auto std::formatter&lt; endstone::Actor &gt;::format</definition>
-        <argsstring>(const Type &amp;val, FormatContext &amp;ctx) const -&gt; format_context::iterator</argsstring>
+        <argsstring>(const Type &amp;val, FormatContext &amp;ctx) const</argsstring>
         <name>format</name>
         <qualifiedname>std::formatter&lt; endstone::Actor &gt;::format</qualifiedname>
         <param>
@@ -78,7 +78,7 @@
     </collaborationgraph>
     <location file="include/endstone/actor/actor.h" line="248" column="1" bodyfile="include/endstone/actor/actor.h" bodystart="248" bodyend="256"/>
     <listofallmembers>
-      <member refid="structstd_1_1formatter_3_01endstone_1_1Actor_01_4_1acb9423d20bf83a9dc81ac861dc5f1cc4" prot="public" virt="non-virtual"><scope>std::formatter&lt; endstone::Actor &gt;</scope><name>format</name></member>
+      <member refid="structstd_1_1formatter_3_01endstone_1_1Actor_01_4_1ac229a6f5276f1a19f41688548dade255" prot="public" virt="non-virtual"><scope>std::formatter&lt; endstone::Actor &gt;</scope><name>format</name></member>
       <member refid="structstd_1_1formatter_3_01endstone_1_1Actor_01_4_1a83110efaf734efc11af0b442c3eb75ac" prot="public" virt="non-virtual"><scope>std::formatter&lt; endstone::Actor &gt;</scope><name>Type</name></member>
     </listofallmembers>
   </compounddef>

@@ -89,7 +89,7 @@ inline float Location::distanceSquared(const Location &other) const
 template <>
 struct std::formatter<endstone::Dimension> : std::formatter<std::string_view> {
     template <typename FormatContext>
-    auto format(const endstone::Dimension &self, FormatContext &ctx) const -> format_context::iterator
+    auto format(const endstone::Dimension &self, FormatContext &ctx) const
     {
         return std::format_to(ctx.out(), "Dimension(name={})", self.getName());
     }

@@ -6,7 +6,7 @@
     <templateparamlist>
     </templateparamlist>
     <sectiondef kind="public-func">
-      <memberdef kind="function" id="structstd_1_1formatter_3_01endstone_1_1ByteArrayTag_01_4_1a2a63efc5a69d889fff632efb058f2788" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+      <memberdef kind="function" id="structstd_1_1formatter_3_01endstone_1_1ByteArrayTag_01_4_1a97be6e4275fb1e7b80cda85887728a15" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
         <templateparamlist>
           <param>
             <type>typename FormatContext</type>
@@ -14,7 +14,7 @@
         </templateparamlist>
         <type>auto</type>
         <definition>auto std::formatter&lt; endstone::ByteArrayTag &gt;::format</definition>
-        <argsstring>(const endstone::ByteArrayTag &amp;tag, FormatContext &amp;ctx) const -&gt; format_context::iterator</argsstring>
+        <argsstring>(const endstone::ByteArrayTag &amp;tag, FormatContext &amp;ctx) const</argsstring>
         <name>format</name>
         <qualifiedname>std::formatter&lt; endstone::ByteArrayTag &gt;::format</qualifiedname>
         <param>
@@ -31,7 +31,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/nbt/tag.h" line="651" column="10" bodyfile="include/endstone/nbt/tag.h" bodystart="651" bodyend="664"/>
+        <location file="include/endstone/nbt/tag.h" line="650" column="10" bodyfile="include/endstone/nbt/tag.h" bodystart="650" bodyend="660"/>
       </memberdef>
     </sectiondef>
     <briefdescription>
@@ -60,9 +60,9 @@
         <label>std::formatter&lt; std::string_view &gt;</label>
       </node>
     </collaborationgraph>
-    <location file="include/endstone/nbt/tag.h" line="649" column="1" bodyfile="include/endstone/nbt/tag.h" bodystart="649" bodyend="665"/>
+    <location file="include/endstone/nbt/tag.h" line="648" column="1" bodyfile="include/endstone/nbt/tag.h" bodystart="648" bodyend="661"/>
     <listofallmembers>
-      <member refid="structstd_1_1formatter_3_01endstone_1_1ByteArrayTag_01_4_1a2a63efc5a69d889fff632efb058f2788" prot="public" virt="non-virtual"><scope>std::formatter&lt; endstone::ByteArrayTag &gt;</scope><name>format</name></member>
+      <member refid="structstd_1_1formatter_3_01endstone_1_1ByteArrayTag_01_4_1a97be6e4275fb1e7b80cda85887728a15" prot="public" virt="non-virtual"><scope>std::formatter&lt; endstone::ByteArrayTag &gt;</scope><name>format</name></member>
     </listofallmembers>
   </compounddef>
 </doxygen>

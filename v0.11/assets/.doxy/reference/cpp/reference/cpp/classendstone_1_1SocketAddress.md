@@ -56,6 +56,7 @@ _Represents an IP Socket Address (hostname + port number)._
 |   | [**SocketAddress**](#function-socketaddress-22) (std::string hostname, std::uint32\_t port) <br> |
 |  [**const**](classendstone_1_1Identifier.md) std::string & | [**getHostname**](#function-gethostname) () const<br> |
 |  std::uint32\_t | [**getPort**](#function-getport) () const<br> |
+|  [**bool**](classendstone_1_1Identifier.md) | [**operator==**](#function-operator) ([**const**](classendstone_1_1Identifier.md) [**SocketAddress**](classendstone_1_1SocketAddress.md) & other) const<br> |
 
 
 
@@ -167,6 +168,21 @@ The port number of this socket address
 
 
         
+
+<hr>
+
+
+
+### function operator== 
+
+```C++
+bool endstone::SocketAddress::operator== (
+    const  SocketAddress & other
+) const
+```
+
+
+
 
 <hr>
 

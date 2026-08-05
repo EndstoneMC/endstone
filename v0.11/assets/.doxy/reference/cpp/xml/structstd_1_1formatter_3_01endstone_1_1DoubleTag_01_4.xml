@@ -6,7 +6,7 @@
     <templateparamlist>
     </templateparamlist>
     <sectiondef kind="public-func">
-      <memberdef kind="function" id="structstd_1_1formatter_3_01endstone_1_1DoubleTag_01_4_1a015842cd9a6c1424c9b868d08a38c70b" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+      <memberdef kind="function" id="structstd_1_1formatter_3_01endstone_1_1DoubleTag_01_4_1ab3643b9ddf14b00aecaa52b08f089101" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
         <templateparamlist>
           <param>
             <type>typename FormatContext</type>
@@ -14,7 +14,7 @@
         </templateparamlist>
         <type>auto</type>
         <definition>auto std::formatter&lt; endstone::DoubleTag &gt;::format</definition>
-        <argsstring>(const endstone::DoubleTag &amp;tag, FormatContext &amp;ctx) const -&gt; format_context::iterator</argsstring>
+        <argsstring>(const endstone::DoubleTag &amp;tag, FormatContext &amp;ctx) const</argsstring>
         <name>format</name>
         <qualifiedname>std::formatter&lt; endstone::DoubleTag &gt;::format</qualifiedname>
         <param>
@@ -31,7 +31,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/nbt/tag.h" line="638" column="10" bodyfile="include/endstone/nbt/tag.h" bodystart="638" bodyend="645"/>
+        <location file="include/endstone/nbt/tag.h" line="637" column="10" bodyfile="include/endstone/nbt/tag.h" bodystart="637" bodyend="644"/>
       </memberdef>
     </sectiondef>
     <briefdescription>
@@ -60,9 +60,9 @@
         <label>std::formatter&lt; std::string_view &gt;</label>
       </node>
     </collaborationgraph>
-    <location file="include/endstone/nbt/tag.h" line="636" column="1" bodyfile="include/endstone/nbt/tag.h" bodystart="636" bodyend="646"/>
+    <location file="include/endstone/nbt/tag.h" line="635" column="1" bodyfile="include/endstone/nbt/tag.h" bodystart="635" bodyend="645"/>
     <listofallmembers>
-      <member refid="structstd_1_1formatter_3_01endstone_1_1DoubleTag_01_4_1a015842cd9a6c1424c9b868d08a38c70b" prot="public" virt="non-virtual"><scope>std::formatter&lt; endstone::DoubleTag &gt;</scope><name>format</name></member>
+      <member refid="structstd_1_1formatter_3_01endstone_1_1DoubleTag_01_4_1ab3643b9ddf14b00aecaa52b08f089101" prot="public" virt="non-virtual"><scope>std::formatter&lt; endstone::DoubleTag &gt;</scope><name>format</name></member>
     </listofallmembers>
   </compounddef>
 </doxygen>

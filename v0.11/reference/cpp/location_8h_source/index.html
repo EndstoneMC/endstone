@@ -19,7 +19,7 @@
       
       
       <link rel="icon" href="../../../assets/logo.png">
-      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.6">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.7">
     
     
       
@@ -27,7 +27,7 @@
       
     
     
-      <link rel="stylesheet" href="../../../assets/stylesheets/main.484c7ddc.min.css">
+      <link rel="stylesheet" href="../../../assets/stylesheets/main.ec1eaa64.min.css">
       
         
         <link rel="stylesheet" href="../../../assets/stylesheets/palette.ab4e12ef.min.css">
@@ -2799,7 +2799,7 @@ For latest updates join the chat on
 </span><span id="__span-0-215"><a id="__codelineno-0-215" name="__codelineno-0-215" href="#__codelineno-0-215"></a><span class="k">template</span><span class="w"> </span><span class="o">&lt;&gt;</span>
 </span><span id="__span-0-216"><a id="__codelineno-0-216" name="__codelineno-0-216" href="#__codelineno-0-216"></a><span class="k">struct</span><span class="w"> </span><span class="nc">std</span><span class="o">::</span><span class="n">formatter</span><span class="o">&lt;</span><span class="n">endstone</span><span class="o">::</span><span class="n">Location</span><span class="o">&gt;</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">formatter</span><span class="o">&lt;</span><span class="n">std</span><span class="o">::</span><span class="n">string_view</span><span class="o">&gt;</span><span class="w"> </span><span class="p">{</span>
 </span><span id="__span-0-217"><a id="__codelineno-0-217" name="__codelineno-0-217" href="#__codelineno-0-217"></a><span class="w">    </span><span class="k">template</span><span class="w"> </span><span class="o">&lt;</span><span class="k">typename</span><span class="w"> </span><span class="nc">FormatContext</span><span class="o">&gt;</span>
-</span><span id="__span-0-218"><a id="__codelineno-0-218" name="__codelineno-0-218" href="#__codelineno-0-218"></a><span class="w">    </span><span class="k">auto</span><span class="w"> </span><span class="n">format</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">Location</span><span class="w"> </span><span class="o">&amp;</span><span class="n">self</span><span class="p">,</span><span class="w"> </span><span class="n">FormatContext</span><span class="w"> </span><span class="o">&amp;</span><span class="n">ctx</span><span class="p">)</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="n">format_context</span><span class="o">::</span><span class="n">iterator</span>
+</span><span id="__span-0-218"><a id="__codelineno-0-218" name="__codelineno-0-218" href="#__codelineno-0-218"></a><span class="w">    </span><span class="k">auto</span><span class="w"> </span><span class="n">format</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">Location</span><span class="w"> </span><span class="o">&amp;</span><span class="n">self</span><span class="p">,</span><span class="w"> </span><span class="n">FormatContext</span><span class="w"> </span><span class="o">&amp;</span><span class="n">ctx</span><span class="p">)</span><span class="w"> </span><span class="k">const</span>
 </span><span id="__span-0-219"><a id="__codelineno-0-219" name="__codelineno-0-219" href="#__codelineno-0-219"></a><span class="w">    </span><span class="p">{</span>
 </span><span id="__span-0-220"><a id="__codelineno-0-220" name="__codelineno-0-220" href="#__codelineno-0-220"></a><span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">format_to</span><span class="p">(</span><span class="n">ctx</span><span class="p">.</span><span class="n">out</span><span class="p">(),</span><span class="w"> </span><span class="s">&quot;Location(dimension={},x={},y={},z={},pitch={},yaw={})&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">self</span><span class="p">.</span><span class="n">getDimension</span><span class="p">(),</span>
 </span><span id="__span-0-221"><a id="__codelineno-0-221" name="__codelineno-0-221" href="#__codelineno-0-221"></a><span class="w">                              </span><span class="n">self</span><span class="p">.</span><span class="n">getX</span><span class="p">(),</span><span class="w"> </span><span class="n">self</span><span class="p">.</span><span class="n">getY</span><span class="p">(),</span><span class="w"> </span><span class="n">self</span><span class="p">.</span><span class="n">getZ</span><span class="p">(),</span><span class="w"> </span><span class="n">self</span><span class="p">.</span><span class="n">getPitch</span><span class="p">(),</span><span class="w"> </span><span class="n">self</span><span class="p">.</span><span class="n">getYaw</span><span class="p">());</span>
@@ -2932,7 +2932,7 @@ For latest updates join the chat on
       <script id="__config" type="application/json">{"annotate": null, "base": "../../..", "features": ["announce.dismiss", "content.action.edit", "content.action.view", "content.code.annotate", "content.code.copy", "content.tabs.link", "navigation.footer", "navigation.indexes", "navigation.sections", "navigation.tabs", "navigation.top", "navigation.tracking", "search.highlight", "search.share", "search.suggest", "toc.follow"], "search": "../../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": {"alias": true, "default": "stable", "provider": "mike"}}</script>
     
     
-      <script src="../../../assets/javascripts/bundle.79ae519e.min.js"></script>
+      <script src="../../../assets/javascripts/bundle.d7400e89.min.js"></script>
       
     
   </body>

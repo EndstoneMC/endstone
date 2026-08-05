@@ -757,8 +757,6 @@
         </childnode>
         <childnode refid="17" relation="include">
         </childnode>
-        <childnode refid="44" relation="include">
-        </childnode>
         <childnode refid="111" relation="include">
         </childnode>
         <childnode refid="113" relation="include">
@@ -1103,7 +1101,13 @@
       <node id="103">
         <label>endstone/util/socket_address.h</label>
         <link refid="socket__address_8h_source"/>
+        <childnode refid="47" relation="include">
+        </childnode>
         <childnode refid="9" relation="include">
+        </childnode>
+        <childnode refid="13" relation="include">
+        </childnode>
+        <childnode refid="43" relation="include">
         </childnode>
         <childnode refid="7" relation="include">
         </childnode>

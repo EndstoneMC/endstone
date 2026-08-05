@@ -97,7 +97,7 @@ struct std::hash<endstone::Identifier<T>> {
 template <typename T>
 struct std::formatter<endstone::Identifier<T>> : std::formatter<std::string_view> {
     template <typename FormatContext>
-    auto format(const endstone::Identifier<T> &id, FormatContext &ctx) const -> format_context::iterator
+    auto format(const endstone::Identifier<T> &id, FormatContext &ctx) const
     {
         return std::format_to(ctx.out(), "{}:{}", id.getNamespace(), id.getKey());
     }

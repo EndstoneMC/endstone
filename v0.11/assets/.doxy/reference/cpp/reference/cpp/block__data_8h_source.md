@@ -55,7 +55,7 @@ struct std::formatter<endstone::BlockStates::mapped_type> : std::formatter<std::
     using Type = endstone::BlockStates::mapped_type;
 
     template <typename FormatContext>
-    auto format(const Type &val, FormatContext &ctx) const -> format_context::iterator
+    auto format(const Type &val, FormatContext &ctx) const
     {
         return std::visit(endstone::overloaded{
                               [&ctx](const std::string &arg) {
@@ -72,7 +72,7 @@ struct std::formatter<endstone::BlockStates::value_type> : std::formatter<std::s
     using Type = endstone::BlockStates::value_type;
 
     template <typename FormatContext>
-    auto format(const Type &val, FormatContext &ctx) const -> format_context::iterator
+    auto format(const Type &val, FormatContext &ctx) const
     {
         return std::format_to(ctx.out(), "{}={}", endstone::detail::quoted(val.first), val.second);
     }
@@ -83,7 +83,7 @@ struct std::formatter<endstone::BlockStates> : std::formatter<std::string_view> 
     using Type = endstone::BlockStates;
 
     template <typename FormatContext>
-    auto format(const Type &val, FormatContext &ctx) const -> format_context::iterator
+    auto format(const Type &val, FormatContext &ctx) const
     {
         return std::format_to(ctx.out(), "[{}]", endstone::detail::join(val.begin(), val.end(), ","));
     }
@@ -94,7 +94,7 @@ struct std::formatter<endstone::BlockData> : std::formatter<std::string_view> {
     using Type = endstone::BlockData;
 
     template <typename FormatContext>
-    auto format(const Type &val, FormatContext &ctx) const -> format_context::iterator
+    auto format(const Type &val, FormatContext &ctx) const
     {
         return std::format_to(ctx.out(), "BlockData(type={}, block_states={})", val.getType(), val.getBlockStates());
     }

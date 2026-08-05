@@ -22,7 +22,7 @@
       </memberdef>
     </sectiondef>
     <sectiondef kind="public-func">
-      <memberdef kind="function" id="structstd_1_1formatter_3_01endstone_1_1BlockStates_1_1mapped__type_01_4_1adc6a6fd7b99f948a36b597493a4e3cc6" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+      <memberdef kind="function" id="structstd_1_1formatter_3_01endstone_1_1BlockStates_1_1mapped__type_01_4_1ac6755c850a66bf131eb45d0cfd51032a" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
         <templateparamlist>
           <param>
             <type>typename FormatContext</type>
@@ -30,7 +30,7 @@
         </templateparamlist>
         <type>auto</type>
         <definition>auto std::formatter&lt; endstone::BlockStates::mapped_type &gt;::format</definition>
-        <argsstring>(const Type &amp;val, FormatContext &amp;ctx) const -&gt; format_context::iterator</argsstring>
+        <argsstring>(const Type &amp;val, FormatContext &amp;ctx) const</argsstring>
         <name>format</name>
         <qualifiedname>std::formatter&lt; endstone::BlockStates::mapped_type &gt;::format</qualifiedname>
         <param>
@@ -78,7 +78,7 @@
     </collaborationgraph>
     <location file="include/endstone/block/block_data.h" line="63" column="1" bodyfile="include/endstone/block/block_data.h" bodystart="63" bodyend="77"/>
     <listofallmembers>
-      <member refid="structstd_1_1formatter_3_01endstone_1_1BlockStates_1_1mapped__type_01_4_1adc6a6fd7b99f948a36b597493a4e3cc6" prot="public" virt="non-virtual"><scope>std::formatter&lt; endstone::BlockStates::mapped_type &gt;</scope><name>format</name></member>
+      <member refid="structstd_1_1formatter_3_01endstone_1_1BlockStates_1_1mapped__type_01_4_1ac6755c850a66bf131eb45d0cfd51032a" prot="public" virt="non-virtual"><scope>std::formatter&lt; endstone::BlockStates::mapped_type &gt;</scope><name>format</name></member>
       <member refid="structstd_1_1formatter_3_01endstone_1_1BlockStates_1_1mapped__type_01_4_1a8633ab6441e7cf6cf59d80817cb94b47" prot="public" virt="non-virtual"><scope>std::formatter&lt; endstone::BlockStates::mapped_type &gt;</scope><name>Type</name></member>
     </listofallmembers>
   </compounddef>
