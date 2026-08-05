@@ -450,6 +450,15 @@ void init_event(py::module_ &m, py::class_<Event, PyEvent> &event)
         .def_property_readonly("item", &PlayerPickupItemEvent::getItem,
                                "The Item picked up by the entity.");
 
+    py::class_<PlayerVelocityEvent, PlayerEvent>(m, "PlayerVelocityEvent",
+                                                 "Called when the velocity of a player changes.")
+        .def_property("velocity", &PlayerVelocityEvent::getVelocity, &PlayerVelocityEvent::setVelocity,
+                      R"doc(
+    The velocity vector that will be sent to the player.
+
+    The getter returns a copy; assign the modified vector back to this property.
+)doc");
+
     // Server events
     py::class_<ServerEvent, Event>(m, "ServerEvent", "Represents a Server-related event.");
     py::class_<BroadcastMessageEvent, ServerEvent, ICancellable>(m, "BroadcastMessageEvent", R"doc(
