@@ -96,6 +96,7 @@ public:
 
     [[nodiscard]] bool isGliding() const;
     [[nodiscard]] bool isSprinting() const;
+    [[nodiscard]] bool isSwimming() const;
     void setYBodyRotation(float rotation);
     int getNoActionTime() const;
     void resetNoActionTime();

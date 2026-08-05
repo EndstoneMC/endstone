@@ -350,6 +350,10 @@ void init_event(py::module_ &m, py::class_<Event, PyEvent> &event)
                                                      "Called when a player toggles their sprinting state.")
         .def_property_readonly("is_sprinting", &PlayerToggleSprintEvent::isSprinting,
                                "Whether the player is now sprinting or not.");
+    py::class_<PlayerToggleSwimEvent, PlayerEvent>(m, "PlayerToggleSwimEvent",
+                                                   "Called when a player toggles their swimming state.")
+        .def_property_readonly("is_swimming", &PlayerToggleSwimEvent::isSwimming,
+                               "Whether the player is now swimming or not.");
     py::class_<PlayerJoinEvent, PlayerEvent>(m, "PlayerJoinEvent", "Called when a player joins a server.")
         .def_property("join_message", &PlayerJoinEvent::getJoinMessage, &PlayerJoinEvent::setJoinMessage,
                       "The join message to send to all online players.");

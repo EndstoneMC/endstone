@@ -67,8 +67,9 @@
 #include "endstone/event/player/player_jump_event.h"
 #include "endstone/event/player/player_move_event.h"
 #include "endstone/event/player/player_skin_change_event.h"
-#include "endstone/event/player/player_toggle_sneak_event.h"
 #include "endstone/event/player/player_toggle_sprint_event.h"
+#include "endstone/event/player/player_toggle_sneak_event.h"
+#include "endstone/event/player/player_toggle_swim_event.h"
 #include "endstone/form/action_form.h"
 #include "endstone/form/message_form.h"
 
@@ -758,11 +759,13 @@ bool EndstonePlayer::handlePacket(Packet &packet)
     }
     case MinecraftPacketIds::PlayerAuthInputPacket: {
         auto &pk = static_cast<PlayerAuthInputPacket &>(packet);
-        if (pk.getInput(PlayerAuthInputPacket::InputData::StartSprinting) && !getHandle().isSprinting()) {
+        if (pk.getInput(PlayerAuthInputPacket::InputData::StartSprinting) && !getHandle().isSprinting() &&
+            !getHandle().isInWater()) {
             PlayerToggleSprintEvent e(getSelf(), true);
             getServer().getPluginManager().callEvent(e);
         }
-        if (pk.getInput(PlayerAuthInputPacket::InputData::StopSprinting) && getHandle().isSprinting()) {
+        if (pk.getInput(PlayerAuthInputPacket::InputData::StopSprinting) && getHandle().isSprinting() &&
+            !getHandle().isInWater()) {
             PlayerToggleSprintEvent e(getSelf(), false);
             getServer().getPluginManager().callEvent(e);
         }
@@ -772,6 +775,14 @@ bool EndstonePlayer::handlePacket(Packet &packet)
         }
         if (pk.getInput(PlayerAuthInputPacket::InputData::StopSneaking) && getHandle().isSneaking()) {
             PlayerToggleSneakEvent e(getSelf(), false);
+            getServer().getPluginManager().callEvent(e);
+        }
+        if (pk.getInput(PlayerAuthInputPacket::InputData::StartSwimming) && !getHandle().isSwimming()) {
+            PlayerToggleSwimEvent e(getSelf(), true);
+            getServer().getPluginManager().callEvent(e);
+        }
+        else if (pk.getInput(PlayerAuthInputPacket::InputData::StopSwimming) && getHandle().isSwimming()) {
+            PlayerToggleSwimEvent e(getSelf(), false);
             getServer().getPluginManager().callEvent(e);
         }
         if (pk.getInput(PlayerAuthInputPacket::InputData::MissedSwing)) {

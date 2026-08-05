@@ -79,6 +79,7 @@ __all__ = [
     "PlayerTeleportEvent",
     "PlayerToggleSneakEvent",
     "PlayerToggleSprintEvent",
+    "PlayerToggleSwimEvent",
     "PluginDisableEvent",
     "PluginEnableEvent",
     "ScriptMessageEvent",
@@ -783,6 +784,16 @@ class PlayerToggleSprintEvent(PlayerEvent):
     def is_sprinting(self) -> bool:
         """
         Whether the player is now sprinting or not.
+        """
+
+class PlayerToggleSwimEvent(PlayerEvent):
+    """
+    Called when a player toggles their swimming state.
+    """
+    @property
+    def is_swimming(self) -> bool:
+        """
+        Whether the player is now swimming or not.
         """
 
 class PlayerJoinEvent(PlayerEvent):

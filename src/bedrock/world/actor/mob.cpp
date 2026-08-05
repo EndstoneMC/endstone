@@ -41,6 +41,11 @@ bool Mob::isSprinting() const
     return getStatusFlag(ActorFlags::SPRINTING);
 }
 
+bool Mob::isSwimming() const
+{
+    return getStatusFlag(ActorFlags::SWIMMING);
+}
+
 void Mob::setYBodyRotation(float rotation)
 {
     getPersistentComponent<MobBodyRotationComponent>()->y_body_rot = rotation;

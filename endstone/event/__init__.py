@@ -119,6 +119,7 @@ __getattr__, __dir__, __all__ = lazy.attach(
             "PlayerTeleportEvent",
             "PlayerToggleSneakEvent",
             "PlayerToggleSprintEvent",
+            "PlayerToggleSwimEvent",
             "PluginDisableEvent",
             "PluginEnableEvent",
             "ScriptMessageEvent",
