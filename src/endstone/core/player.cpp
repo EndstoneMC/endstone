@@ -67,6 +67,7 @@
 #include "endstone/event/player/player_jump_event.h"
 #include "endstone/event/player/player_move_event.h"
 #include "endstone/event/player/player_skin_change_event.h"
+#include "endstone/event/player/player_toggle_glide_event.h"
 #include "endstone/event/player/player_toggle_sprint_event.h"
 #include "endstone/event/player/player_toggle_sneak_event.h"
 #include "endstone/event/player/player_toggle_swim_event.h"
@@ -798,6 +799,15 @@ bool EndstonePlayer::handlePacket(Packet &packet)
             if (e.isCancelled()) {
                 pk.setInput(PlayerAuthInputPacket::InputData::MissedSwing, false);
             }
+        }
+        if (pk.getInput(PlayerAuthInputPacket::InputData::StartGliding) && !getHandle().isGliding() &&
+            !getHandle().isInWater()) {
+            PlayerToggleGlideEvent e(getSelf(), true);
+            getServer().getPluginManager().callEvent(e);
+        }
+        else if (pk.getInput(PlayerAuthInputPacket::InputData::StopGliding) && getHandle().isGliding()) {
+            PlayerToggleGlideEvent e(getSelf(), false);
+            getServer().getPluginManager().callEvent(e);
         }
 
         auto &actions = pk.payload.player_block_actions.actions_;
