@@ -16,6 +16,7 @@
 
 #include <RakPeerInterface.h>
 
+#include <cmath>
 #include <unordered_map>
 #include <unordered_set>
 
@@ -776,12 +777,20 @@ bool EndstonePlayer::handlePacket(Packet &packet)
         const auto pos = actor.getPosition();
         const auto rot = actor.getRotation();
         const auto delta = pk.pos - pos;
-        const auto delta_angle = pk.rot - rot;
+
+        // Keep non-finite packet rotations out of movement events.
+        const Vec2 event_rot{
+            std::isfinite(pk.rot.x) ? pk.rot.x : rot.x,
+            std::isfinite(pk.rot.y) ? pk.rot.y : rot.y,
+        };
+        const auto delta_angle = event_rot - rot;
         const auto on_ground = actor.isOnGround();
 
         const Location from = getLocation();
         const auto height_offset = ActorOffset::getHeightOffset(actor.getEntity());
-        const Location to{getDimension(), pk.pos.x, pk.pos.y - height_offset, pk.pos.z, pk.rot.x, pk.rot.y};
+        const Location to{
+            getDimension(), pk.pos.x, pk.pos.y - height_offset, pk.pos.z, event_rot.x, event_rot.y,
+        };
 
         if (pk.getInput(PlayerAuthInputPacket::InputData::Jumping) && on_ground && delta.y > 0.0F) {
             PlayerJumpEvent e{*this, from, to};
