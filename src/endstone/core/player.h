@@ -145,6 +145,14 @@ public:
 private:
     friend class ::ServerNetworkHandler;
 
+    struct RecipeBookSettings {
+        bool filtering;
+        int inventory_layout;
+        int crafting_layout;
+
+        bool operator==(const RecipeBookSettings &) const = default;
+    };
+
     std::shared_ptr<PermissibleBase> perm_;
     std::unique_ptr<EndstonePlayerInventory> inventory_;
     std::unique_ptr<EndstoneInventory> ender_chest_;
@@ -160,6 +168,7 @@ private:
     std::unique_ptr<BookMeta> pending_book_meta_;
     int pending_book_slot_ = -1;
     std::optional<Input> last_input_;
+    std::optional<RecipeBookSettings> last_recipe_book_settings_;
     bool spawned_ = false;
     bool last_op_status_ = false;
 };

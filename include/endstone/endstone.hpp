@@ -102,6 +102,7 @@ static_assert(_ITERATOR_DEBUG_LEVEL == 0,
 #include "event/player/player_bed_leave_event.h"
 #include "event/player/player_level_change_event.h"
 #include "event/player/player_pickup_arrow_event.h"
+#include "event/player/player_recipe_book_settings_change_event.h"
 #include "event/player/player_block_damage_event.h"
 #include "event/player/player_chat_event.h"
 #include "event/player/player_command_event.h"
