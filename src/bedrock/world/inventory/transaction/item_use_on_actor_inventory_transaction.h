@@ -16,6 +16,7 @@
 
 #include <cstdint>
 
+#include "bedrock/bedrock.h"
 #include "bedrock/core/math/vec3.h"
 #include "bedrock/world/actor/actor_runtime_id.h"
 #include "bedrock/world/inventory/transaction/complex_inventory_transaction.h"
@@ -35,4 +36,7 @@ public:
     NetworkItemStackDescriptor item_;
     Vec3 from_pos_;
     Vec3 hit_pos_;
+
+    // The target function is the interaction callback created by handle().
+    ENDSTONE_HOOK static void executeInteraction(void *context);
 };

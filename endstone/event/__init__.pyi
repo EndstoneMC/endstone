@@ -52,6 +52,7 @@ __all__ = [
     "MobEvent",
     "PacketReceiveEvent",
     "PacketSendEvent",
+    "PlayerArmorStandManipulateEvent",
     "PlayerBedEnterEvent",
     "PlayerBedLeaveEvent",
     "PlayerChatEvent",
@@ -725,6 +726,28 @@ class PlayerInteractActorEvent(PlayerEvent, Cancellable):
     def actor(self) -> Actor:
         """
         The actor that was right-clicked by the player.
+        """
+
+class PlayerArmorStandManipulateEvent(PlayerInteractActorEvent):
+    """
+    Called when a player interacts with an armor stand.
+    """
+    @property
+    def armor_stand_item(self) -> ItemStack:
+        """
+        The item held by the armor stand.
+        """
+
+    @property
+    def player_item(self) -> ItemStack:
+        """
+        The item held by the player.
+        """
+
+    @property
+    def slot(self) -> EquipmentSlot:
+        """
+        The armor stand slot involved in the interaction.
         """
 
 class PlayerItemConsumeEvent(PlayerEvent, Cancellable):

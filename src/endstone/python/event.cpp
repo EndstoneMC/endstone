@@ -325,6 +325,14 @@ void init_event(py::module_ &m, py::class_<Event, PyEvent> &event)
         m, "PlayerInteractActorEvent", "Represents an event that is called when a player right-clicks an actor.")
         .def_property_readonly("actor", &PlayerInteractActorEvent::getActor,
                                "The actor that was right-clicked by the player.");
+    py::class_<PlayerArmorStandManipulateEvent, PlayerInteractActorEvent>(
+        m, "PlayerArmorStandManipulateEvent", "Called when a player interacts with an armor stand.")
+        .def_property_readonly("armor_stand_item", &PlayerArmorStandManipulateEvent::getArmorStandItem,
+                               "The item held by the armor stand.")
+        .def_property_readonly("player_item", &PlayerArmorStandManipulateEvent::getPlayerItem,
+                               "The item held by the player.")
+        .def_property_readonly("slot", &PlayerArmorStandManipulateEvent::getSlot,
+                               "The armor stand slot involved in the interaction.");
     py::class_<PlayerItemConsumeEvent, PlayerEvent, ICancellable>(m, "PlayerItemConsumeEvent", R"doc(
     Called when a player is finishing consuming an item (food, potion, milk bucket).
 

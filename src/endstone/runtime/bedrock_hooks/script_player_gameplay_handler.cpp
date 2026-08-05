@@ -41,6 +41,7 @@
 #include "endstone/event/player/player_interact_event.h"
 #include "endstone/event/player/player_quit_event.h"
 #include "endstone/event/player/player_respawn_event.h"
+#include "endstone/runtime/bedrock_hooks/armor_stand.h"
 #include "endstone/runtime/vtable_hook.h"
 
 namespace {
@@ -176,6 +177,7 @@ bool handleEvent(const PlayerInteractWithEntityBeforeEvent &event)
 {
     const auto *player = WeakEntityRef(event.player).tryUnwrap<::Player>();
     const auto *target = WeakEntityRef(event.target_entity).tryUnwrap<::Actor>();
+    endstone::runtime::prepareArmorStandInteraction(player, target, event.item);
 
     if (player && target) {
         const auto &server = endstone::core::EndstoneServer::getInstance();
@@ -183,6 +185,9 @@ bool handleEvent(const PlayerInteractWithEntityBeforeEvent &event)
                                              target->getEndstoneActor()};
         server.getPluginManager().callEvent(e);
         if (e.isCancelled()) {
+            return false;
+        }
+        if (!endstone::runtime::fireArmorStandManipulateEvent()) {
             return false;
         }
     }
