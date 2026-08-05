@@ -806,6 +806,23 @@ the `SerializationMode` accessors.
    modelling error at once. Grep-date the `<Name>Payload` string (point 7)
    *before* attributing anything to the new release - `UpdateSoftEnumPacket`
    was identical in 1.26.32/36/40 and only the new assert was new.
+14. **A member absent from the registration can still be a WRITE GATE.** A
+   migration drops the old bit-field from the wire but keeps it as the member
+   that decides which optionals are engaged: each per-member getter tests
+   `payload->type & <bit>` and each setter ORs the bit back in on read. So the
+   registered name list is the wire, not the live member set. The two
+   packet-specific accessor thunks - the 3rd and 4th `lea rax, sub_...` of a
+   member's registration block - carry the member offset, the element stride
+   and the presence condition in one decompile; read them before concluding a
+   member is dead. (`ClientboundMapItemDataPacket @ 1.26.40`: 13 registered
+   members, `type` not among them, every one of them gated by it.)
+15. **Two vectors serialized as separate cereal members can still be parallel
+   arrays.** Independent length prefixes are not independent semantics - check
+   the *producer*. BDS's own constructor filling both in one loop over a
+   `vector<pair<K,V>>` is the proof that the receiver pairs them by index, and
+   any Endstone code that rewrites one must rewrite the other. The reader never
+   validates the lengths, so a mismatch is a well-formed packet that breaks the
+   client instead of erroring.
 
 Worked example: **BossEventPacket @ 1.26.32** - migrated to cereal-only;
 `color`/`overlay` narrowed 4B->1B, both `darken`/`fog` bools removed, a

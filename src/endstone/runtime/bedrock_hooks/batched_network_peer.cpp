@@ -94,9 +94,12 @@ void patchPacket(const ClientboundMapItemDataPacket &packet, endstone::core::End
         }
     }
 
+    // Tracked actor ids and decorations go on the wire as parallel arrays
+    pk.payload.unique_ids.clear();
     pk.payload.decorations.clear();
     for (const auto &cursor : render.cursors) {
         if (cursor.isVisible()) {
+            pk.payload.unique_ids.emplace_back(ActorUniqueID::INVALID_ID);
             pk.payload.decorations.emplace_back(
                 std::make_shared<MapDecoration>(static_cast<MapDecoration::Type>(cursor.getType()), cursor.getX(),
                                                 cursor.getY(), cursor.getDirection(), cursor.getCaption(),
