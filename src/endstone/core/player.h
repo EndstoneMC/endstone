@@ -31,6 +31,7 @@
 #include "endstone/core/actor/mob.h"
 #include "endstone/core/inventory/player_inventory.h"
 #include "endstone/inventory/meta/book_meta.h"
+#include "endstone/input.h"
 #include "endstone/player.h"
 #include "permissions/permissible_base.h"
 
@@ -158,6 +159,7 @@ private:
     std::optional<BlockFace> block_damage_face_;
     std::unique_ptr<BookMeta> pending_book_meta_;
     int pending_book_slot_ = -1;
+    std::optional<Input> last_input_;
     bool spawned_ = false;
     bool last_op_status_ = false;
 };

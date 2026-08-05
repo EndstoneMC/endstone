@@ -38,6 +38,7 @@ void init_event(py::module_ &, py::class_<Event, PyEvent> &event);
 void init_form(py::module_ &);
 void init_game_mode(py::module_ &);
 void init_game_rule(py::module_ &);
+void init_input(py::module_ &);
 void init_inventory(py::module_ &, py::class_<ItemStack> &item_stack);
 void init_lang(py::module_ &);
 void init_level(py::module_ &, py::classh<Level> &level, py::classh<Dimension> &dimension,
@@ -201,6 +202,7 @@ PYBIND11_MODULE(_python, m)  // NOLINT(*-use-anonymous-namespace)
     init_game_mode(m);
     init_game_rule(m);
     init_rotation(m);
+    init_input(m);
     init_logger(m);
     init_lang(m_lang);
     init_form(m_form);
@@ -303,6 +305,18 @@ void init_rotation(py::module_ &m)
         .value("COUNTER_CLOCKWISE", Rotation::CounterClockwise)
         .value("COUNTER_CLOCKWISE_45", Rotation::CounterClockwise45)
         .finalize();
+}
+
+void init_input(py::module_ &m)
+{
+    py::class_<Input>(m, "Input", "Represents a movement input applied to a player.")
+        .def_property_readonly("is_forward", &Input::isForward, "Whether a forward input is applied.")
+        .def_property_readonly("is_backward", &Input::isBackward, "Whether a backward input is applied.")
+        .def_property_readonly("is_left", &Input::isLeft, "Whether a left input is applied.")
+        .def_property_readonly("is_right", &Input::isRight, "Whether a right input is applied.")
+        .def_property_readonly("is_jump", &Input::isJump, "Whether a jump input is applied.")
+        .def_property_readonly("is_sneak", &Input::isSneak, "Whether a sneak input is applied.")
+        .def_property_readonly("is_sprint", &Input::isSprint, "Whether a sprint input is applied.");
 }
 
 void init_logger(py::module &m)

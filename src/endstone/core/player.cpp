@@ -70,6 +70,7 @@
 #include "endstone/event/player/player_edit_book_event.h"
 #include "endstone/event/player/player_emote_event.h"
 #include "endstone/event/player/player_interact_event.h"
+#include "endstone/event/player/player_input_event.h"
 #include "endstone/event/player/player_item_held_event.h"
 #include "endstone/event/player/player_join_event.h"
 #include "endstone/event/player/player_jump_event.h"
@@ -841,6 +842,18 @@ bool EndstonePlayer::handlePacket(Packet &packet)
     }
     case MinecraftPacketIds::PlayerAuthInputPacket: {
         auto &pk = static_cast<PlayerAuthInputPacket &>(packet);
+        const Input input{
+            pk.getInput(PlayerAuthInputPacket::InputData::Up),
+            pk.getInput(PlayerAuthInputPacket::InputData::Down),
+            pk.getInput(PlayerAuthInputPacket::InputData::Left),
+            pk.getInput(PlayerAuthInputPacket::InputData::Right),
+            pk.getInput(PlayerAuthInputPacket::InputData::Jumping),
+            pk.getInput(PlayerAuthInputPacket::InputData::Sneaking),
+            pk.getInput(PlayerAuthInputPacket::InputData::Sprinting),
+        };
+        const bool input_changed = !last_input_ || *last_input_ != input;
+        last_input_ = input;
+
         if (pk.getInput(PlayerAuthInputPacket::InputData::StartSprinting) && !getHandle().isSprinting() &&
             !getHandle().isInWater()) {
             PlayerToggleSprintEvent e(getSelf(), true);
@@ -912,6 +925,10 @@ bool EndstonePlayer::handlePacket(Packet &packet)
         }
         else if (pk.getInput(PlayerAuthInputPacket::InputData::StopSpinAttack)) {
             PlayerRiptideEvent e(*this, false);
+            getServer().getPluginManager().callEvent(e);
+        }
+        if (input_changed) {
+            PlayerInputEvent e(*this, input);
             getServer().getPluginManager().callEvent(e);
         }
 
@@ -1006,19 +1023,19 @@ bool EndstonePlayer::handlePacket(Packet &packet)
         auto &actor = getHandle();
         const auto pos = actor.getPosition();
         const auto rot = actor.getRotation();
-        const auto &input = pk.payload;
-        const auto delta = input.pos - pos;
-        const auto delta_angle = input.rot - rot;
+        const auto &auth_input = pk.payload;
+        const auto delta = auth_input.pos - pos;
+        const auto delta_angle = auth_input.rot - rot;
         const auto on_ground = actor.isOnGround();
 
         const Location from = getLocation();
         const auto height_offset = ActorOffset::getHeightOffset(actor.getEntity());
         const Location to{getDimension(),
-                          input.pos.x,
-                          input.pos.y - height_offset,
-                          input.pos.z,
-                          input.rot.x,
-                          input.rot.y};
+                          auth_input.pos.x,
+                          auth_input.pos.y - height_offset,
+                          auth_input.pos.z,
+                          auth_input.rot.x,
+                          auth_input.rot.y};
 
         if (pk.getInput(PlayerAuthInputPacket::InputData::Jumping) && on_ground && delta.y > 0.0F) {
             PlayerJumpEvent e{getSelf(), from, to};
@@ -1047,7 +1064,7 @@ bool EndstonePlayer::handlePacket(Packet &packet)
                     payload.pos_delta = Vec3::ZERO;
                     payload.vehicle_rotation = Vec2::ZERO;
                     payload.vehicle_angular_velocity = std::nullopt;
-                    payload.tick = input.client_tick;
+                    payload.tick = auth_input.client_tick;
                     payload.on_ground = on_ground;
                     payload.prediction_type = RewindType::Player;
                     actor.sendNetworkPacket(*correction);

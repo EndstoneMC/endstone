@@ -373,6 +373,10 @@ void init_event(py::module_ &m, py::class_<Event, PyEvent> &event)
         m, "PlayerInteractActorEvent", "Represents an event that is called when a player right-clicks an actor.")
         .def_property_readonly("actor", &PlayerInteractActorEvent::getActor,
                                "The actor that was right-clicked by the player.");
+    py::class_<PlayerInputEvent, PlayerEvent>(m, "PlayerInputEvent",
+                                              "Called when a player sends updated input to the server.")
+        .def_property_readonly("input", &PlayerInputEvent::getInput,
+                               "The new input received from this player.");
     py::class_<PlayerItemConsumeEvent, PlayerEvent, ICancellable>(m, "PlayerItemConsumeEvent", R"doc(
     Called when a player is finishing consuming an item (food, potion, milk bucket).
 
