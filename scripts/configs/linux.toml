@@ -417,6 +417,16 @@ extra = 0
 pattern = "41 57 41 56 53 8B 42"
 
 [[signatures]]
+# 1. locate the compiler-generated interaction callback in ItemUseOnActorInventoryTransaction::handle: it loads
+#    the transaction from closure +0x08, Player +0x10, target Actor +0x20, action +0x58, and hit position +0xBC
+# 2. confirm against the BDS 1.26.40.8 ELF (unique match at RVA 0xBC89160); this is the
+#    platform-mangled BDS callback symbol, and the pattern resolves its direct RVA when symbols are unavailable
+name = "_ZN34ItemUseOnActorInventoryTransaction18executeInteractionEPv"
+relative = false
+extra = 0
+pattern = "48 8B 57 08 8B 42 58 83 F8 02 74 ? 83 F8 01 74 ? 85 C0 75 ? 48 8B 47 10 48 8B 77 20 48 8B B8 E8 09 00 00 48 81 C2 BC 00 00 00"
+
+[[signatures]]
 name = "_ZN11LeavesBlock10randomTickERN11BlockEvents20BlockRandomTickEventE"
 relative = false
 extra = 0

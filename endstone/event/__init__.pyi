@@ -52,15 +52,13 @@ __all__ = [
     "MobEvent",
     "PacketReceiveEvent",
     "PacketSendEvent",
+    "PlayerArmorStandManipulateEvent",
     "PlayerAnimationEvent",
     "PlayerAnimationType",
     "ARM_SWING",
     "OFF_ARM_SWING",
     "PlayerBedEnterEvent",
     "PlayerBedLeaveEvent",
-    "PlayerLevelChangeEvent",
-    "PlayerPickupArrowEvent",
-    "PlayerRecipeBookSettingsChangeEvent",
     "PlayerBlockDamageEvent",
     "PlayerChatEvent",
     "PlayerCommandEvent",
@@ -79,14 +77,17 @@ __all__ = [
     "PlayerJoinEvent",
     "PlayerJumpEvent",
     "PlayerKickEvent",
+    "PlayerLevelChangeEvent",
     "PlayerLoginEvent",
     "PlayerMoveEvent",
+    "PlayerPickupArrowEvent",
     "PlayerPickupItemEvent",
     "PlayerPortalEvent",
     "PlayerQuitEvent",
+    "PlayerRecipeBookSettingsChangeEvent",
     "PlayerRespawnEvent",
-    "PlayerSkinChangeEvent",
     "PlayerRiptideEvent",
+    "PlayerSkinChangeEvent",
     "PlayerTeleportEvent",
     "PlayerToggleCrawlEvent",
     "PlayerToggleFlightEvent",
@@ -555,16 +556,6 @@ class PlayerAnimationType(enum.Enum):
 ARM_SWING = PlayerAnimationType.ARM_SWING
 OFF_ARM_SWING = PlayerAnimationType.OFF_ARM_SWING
 
-class PlayerAnimationEvent(PlayerEvent):
-    """
-    Called when a player performs an animation.
-    """
-    @property
-    def animation_type(self) -> PlayerAnimationType:
-        """
-        The type of this animation event.
-        """
-
 class PlayerBedEnterEvent(PlayerEvent, Cancellable):
     """
     Called when a player is almost about to enter the bed.
@@ -898,6 +889,30 @@ class PlayerInputEvent(PlayerEvent):
     def input(self) -> Input:
         """
         The new input received from this player.
+        """
+class PlayerArmorStandManipulateEvent(PlayerInteractActorEvent):
+    """Called when a player interacts with an armor stand."""
+    @property
+    def armor_stand_item(self) -> ItemStack:
+        """The item held by the armor stand."""
+    @property
+    def player_item(self) -> ItemStack:
+        """The item held by the player."""
+    @property
+    def hand(self) -> EquipmentSlot:
+        """The hand used for this interaction."""
+    @property
+    def slot(self) -> EquipmentSlot:
+        """The armor stand slot involved in the interaction."""
+
+class PlayerAnimationEvent(PlayerEvent):
+    """
+    Called when a player performs an animation.
+    """
+    @property
+    def animation_type(self) -> PlayerAnimationType:
+        """
+        The type of this animation event.
         """
 
 class PlayerItemConsumeEvent(PlayerEvent, Cancellable):

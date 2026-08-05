@@ -390,6 +390,16 @@ extra = 0
 pattern = "56 57 53 48 83 EC ? 41 8B 40"
 
 [[signatures]]
+# 1. locate the compiler-generated interaction callback in ItemUseOnActorInventoryTransaction::handle: it loads
+#    the transaction from closure +0x08, Player +0x10, target Actor +0x20, action +0x70, and hit position +0xE4
+# 2. confirm against the BDS 1.26.33 IDA database (unique match at RVA 0x3CDEE00); this is the
+#    platform-mangled BDS callback symbol, and the pattern resolves its direct RVA when symbols are unavailable
+name = "?executeInteraction@ItemUseOnActorInventoryTransaction@@SAXPEAX@Z"
+relative = false
+extra = 0
+pattern = "4C 8B 41 08 41 8B 40 70 83 F8 02 74 ? 83 F8 01 74 ? 85 C0 75 ?"
+
+[[signatures]]
 name = "?readUserData@Item@@UEBAXAEAVItemStackBase@@AEAVIDataInput@@AEAVReadOnlyBinaryStream@@@Z"
 relative = false
 extra = 0

@@ -11,7 +11,7 @@
 
 namespace endstone::runtime {
 
-static constexpr std::array<std::pair<std::string_view, std::size_t>, 61> symbols = {{
+static constexpr std::array<std::pair<std::string_view, std::size_t>, 62> symbols = {{
     {"BlockState::StateListNode::mHead", 211163888},
     {"Enchant::mEnchants", 211010840},
     {"MobEffect::mMobEffects", 211293808},
@@ -68,6 +68,8 @@ static constexpr std::array<std::pair<std::string_view, std::size_t>, 61> symbol
     // ItemStackBase
     {"?_loadBlocksForCanPlaceOnCanDestroy@ItemStackBase@@CA_NAEAV?$vector@PEBVBlockType@@V?$allocator@PEBVBlockType@@@std@@@std@@AEBV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@3@@Z", 29144736},
     {"?_setItem@ItemStackBase@@AEAA_NH_N@Z", 29106032},
+    // ItemUseOnActorInventoryTransaction
+    {"?executeInteraction@ItemUseOnActorInventoryTransaction@@SAXPEAX@Z", 39511152},
     // LeavesBlock
     {"?randomTick@LeavesBlock@@QEBAXAEAVBlockRandomTickEvent@BlockEvents@@@Z", 48264352},
     // Level
