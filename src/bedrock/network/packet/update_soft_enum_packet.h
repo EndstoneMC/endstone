@@ -23,11 +23,16 @@ enum class SoftEnumUpdateType : uint8_t {
     Replace = 2,
 };
 
+struct UpdateSoftEnumPacketPayload {
+    SoftEnumUpdateType type;          // +0
+    std::string enum_name;            // +8
+    std::vector<std::string> values;  // +40
+};
+BEDROCK_STATIC_ASSERT_SIZE(UpdateSoftEnumPacketPayload, 64, 56);
+
 class UpdateSoftEnumPacket : public Packet {
 public:
-    SoftEnumUpdateType type;
-    std::string enum_name;
-    std::vector<std::string> values;
-    SerializationMode serialization_mode{SerializationMode::CerealOnly};
+    UpdateSoftEnumPacketPayload payload;                                               // +48
+    SerializationMode serialization_mode{SerializationMode::SideBySide_LogOnMismatch};  // +112
 };
 BEDROCK_STATIC_ASSERT_SIZE(UpdateSoftEnumPacket, 120, 112);

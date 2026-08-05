@@ -785,6 +785,27 @@ the `SerializationMode` accessors.
    payload plus a vector that is now **empty on every non-creation path**. An
    Endstone accessor written as `vec.front()` stops being merely wrong and
    becomes UB. The empty container is not an error to guard - the value moved.
+11. **`writeWithSerializationMode`'s cereal early-out hands you the payload
+   offset as one `lea`.** Every cerealized packet tests its mode and, on the
+   cereal branch, tail-calls `serialize(ctx, this + N, stream)` - `N` *is* where
+   the payload sub-object starts, on both platforms, with no size arithmetic.
+   It sits above the manual branch in the same function, so one decompile gives
+   the payload base and (point 5) every member offset and cereal name.
+12. **A payload sub-object and the same members declared flat differ on Linux
+   only, and by exactly the base's tail padding.** Itanium allocates derived
+   members from `dsize(base)` (44 for `Packet`), so a flat leading `uint8_t`
+   lands at 44 while a payload sub-object - alignment 8 - is forced to 48;
+   every later member and `sizeof` shift 8. MSVC never reuses base tail
+   padding, so **Windows measures the same either way and its size assert
+   passes on a wrong model**. A packet whose assert holds on Windows but is 8
+   short on Linux is a missing payload wrapper: model the payload, never an
+   `#ifdef __linux__` filler member. `UpdateSoftEnumPacket` is the worked case
+   (120/112 real, 120/104 flat).
+13. **A Linux-only assert failure at bump time can be a pre-existing
+   mis-model.** Adding size asserts during a bump surfaces every historic
+   modelling error at once. Grep-date the `<Name>Payload` string (point 7)
+   *before* attributing anything to the new release - `UpdateSoftEnumPacket`
+   was identical in 1.26.32/36/40 and only the new assert was new.
 
 Worked example: **BossEventPacket @ 1.26.32** - migrated to cereal-only;
 `color`/`overlay` narrowed 4B->1B, both `darken`/`fog` bools removed, a

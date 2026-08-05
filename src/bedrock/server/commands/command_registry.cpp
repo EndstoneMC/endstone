@@ -115,9 +115,9 @@ void CommandRegistry::setSoftEnumValues(const std::string &enum_name, std::vecto
 
     const auto packet = MinecraftPackets::createPacket(MinecraftPacketIds::UpdateSoftEnum);
     const auto pk = std::static_pointer_cast<UpdateSoftEnumPacket>(packet);
-    pk->enum_name = enum_name;
-    pk->values = values;
-    pk->type = SoftEnumUpdateType::Replace;
+    pk->payload.enum_name = enum_name;
+    pk->payload.values = values;
+    pk->payload.type = SoftEnumUpdateType::Replace;
     network_update_callback_(*pk);
 }
 
@@ -133,9 +133,9 @@ void CommandRegistry::addSoftEnumValues(const std::string &enum_name, std::vecto
 
     const auto packet = MinecraftPackets::createPacket(MinecraftPacketIds::UpdateSoftEnum);
     const auto pk = std::static_pointer_cast<UpdateSoftEnumPacket>(packet);
-    pk->enum_name = enum_name;
-    pk->values = values;
-    pk->type = SoftEnumUpdateType::Add;
+    pk->payload.enum_name = enum_name;
+    pk->payload.values = values;
+    pk->payload.type = SoftEnumUpdateType::Add;
     network_update_callback_(*pk);
 }
 
