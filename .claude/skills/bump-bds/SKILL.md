@@ -136,6 +136,13 @@ iteratively; never batch many unverified ABI edits.**
   stay Endstone's own (`lower_case_`), never Mojang's. Width-ambiguous integers:
   bedrock-headers/Linux build `unsigned long` is 64-bit, Windows (LLP64) 32-bit -
   port `unsigned long` as `std::uint64_t` (64-bit on both targets).
+- **The first member after a base is per-ABI.** Itanium allocates derived
+  members from `dsize(base)`, MSVC from `sizeof(base)`, so a first member with
+  alignment < 8 lands at 44 on Linux and 48 on Windows under `Packet` (48/44).
+  Mirror whatever BDS's own class starts with - an inline scalar shifts the same
+  way, an 8-aligned sub-object does not. `clang++ --target=x86_64-pc-linux-gnu
+  -Xclang -fdump-record-layouts` on a self-contained repro prints `dsize` and
+  every offset; run it for both targets rather than reasoning about it.
 - **Template arguments** - a class template's *default* arguments are part of
   its declaration: copy them verbatim, never guess (e.g. `brstd::bitset`'s
   word-type defaults to `unsigned int`). Never drop an *explicit* argument to
@@ -800,7 +807,13 @@ the `SerializationMode` accessors.
    passes on a wrong model**. A packet whose assert holds on Windows but is 8
    short on Linux is a missing payload wrapper: model the payload, never an
    `#ifdef __linux__` filler member. `UpdateSoftEnumPacket` is the worked case
-   (120/112 real, 120/104 flat).
+   (120/112 real, 120/104 flat). **`sizeof` only shifts when nothing re-aligns
+   it**: a later 8-aligned member (a `std::bitset`, a pointer) absorbs the 4
+   bytes and both size asserts pass while every member before it is 4 bytes low
+   on Linux - and the flat model's first member then reads `Packet`'s
+   **uninitialised** tail padding, which is where "the client sends NaN
+   rotations" reports come from (`PlayerAuthInputPacket @ 1.26.40`, 232/232
+   either way).
 13. **A Linux-only assert failure at bump time can be a pre-existing
    mis-model.** Adding size asserts during a bump surfaces every historic
    modelling error at once. Grep-date the `<Name>Payload` string (point 7)

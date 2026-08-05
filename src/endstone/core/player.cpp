@@ -749,7 +749,7 @@ bool EndstonePlayer::handlePacket(Packet &packet)
     }
     case MinecraftPacketIds::PlayerAuthInputPacket: {
         auto &pk = static_cast<PlayerAuthInputPacket &>(packet);
-        auto &actions = pk.player_block_actions.actions_;
+        auto &actions = pk.payload.player_block_actions.actions_;
         for (auto it = actions.begin(); it != actions.end();) {
             const auto &action = *it;
             if (action.player_action_type == PlayerActionType::StartDestroyBlock) {
@@ -775,13 +775,15 @@ bool EndstonePlayer::handlePacket(Packet &packet)
         auto &actor = getHandle();
         const auto pos = actor.getPosition();
         const auto rot = actor.getRotation();
-        const auto delta = pk.pos - pos;
-        const auto delta_angle = pk.rot - rot;
+        const auto &input = pk.payload;
+        const auto delta = input.pos - pos;
+        const auto delta_angle = input.rot - rot;
         const auto on_ground = actor.isOnGround();
 
         const Location from = getLocation();
         const auto height_offset = ActorOffset::getHeightOffset(actor.getEntity());
-        const Location to{getDimension(), pk.pos.x, pk.pos.y - height_offset, pk.pos.z, pk.rot.x, pk.rot.y};
+        const Location to{getDimension(), input.pos.x, input.pos.y - height_offset,
+                          input.pos.z,    input.rot.x, input.rot.y};
 
         if (pk.getInput(PlayerAuthInputPacket::InputData::Jumping) && on_ground && delta.y > 0.0F) {
             PlayerJumpEvent e{*this, from, to};
@@ -810,7 +812,7 @@ bool EndstonePlayer::handlePacket(Packet &packet)
                     payload.pos_delta = Vec3::ZERO;
                     payload.vehicle_rotation = Vec2::ZERO;
                     payload.vehicle_angular_velocity = std::nullopt;
-                    payload.tick = pk.client_tick;
+                    payload.tick = input.client_tick;
                     payload.on_ground = on_ground;
                     payload.prediction_type = RewindType::Player;
                     actor.sendNetworkPacket(*correction);

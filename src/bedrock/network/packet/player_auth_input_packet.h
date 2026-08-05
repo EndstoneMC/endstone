@@ -22,8 +22,7 @@
 #include "bedrock/network/packet/player_input_tick.h"
 #include "bedrock/world/actor/actor_unique_id.h"
 
-class PlayerAuthInputPacket : public Packet {
-public:
+struct PlayerAuthInputPacketPayload {
     enum InputData : unsigned int {
         Ascend = 0,
         Descend = 1,
@@ -90,8 +89,35 @@ public:
         SneakReleasedRaw = 62,
         SneakPressedRaw = 63,
         SneakCurrentRaw = 64,
-        INPUT_NUM = 65,
+        InternalUpdate = 65,
+        INPUT_NUM = 66,
     };
+
+    Vec2 rot;                                                                      // +0
+    Vec3 pos;                                                                      // +8
+    float y_head_rot;                                                              // +20
+    Vec3 pos_delta;                                                                // +24
+    Vec2 vehicle_rot;                                                              // +36
+    Vec2 analog_move_vector;                                                       // +44
+    Vec2 move;                                                                     // +52
+    Vec2 interact_rotation;                                                        // +60
+    Vec3 camera_orientation;                                                       // +68
+    Vec2 raw_move_vector;                                                          // +80
+    std::bitset<INPUT_NUM> input_data;                                             // +88
+    InputMode input_mode;                                                          // +104
+    ClientPlayMode player_mode;                                                    // +108
+    NewInteractionModel new_interaction_model;                                     // +112
+    PlayerInputTick client_tick;                                                   // +120
+    std::unique_ptr<PackedItemUseLegacyInventoryTransaction> item_use_transaction; // +128
+    std::unique_ptr<ItemStackRequestData> item_stack_request;                      // +136
+    PlayerBlockActions player_block_actions;                                       // +144
+    ActorUniqueID client_predicted_vehicle;                                        // +168
+};
+BEDROCK_STATIC_ASSERT_SIZE(PlayerAuthInputPacketPayload, 176, 176);
+
+class PlayerAuthInputPacket : public Packet {
+public:
+    using InputData = PlayerAuthInputPacketPayload::InputData;
 
     PlayerAuthInputPacket() = default;
     [[nodiscard]] MinecraftPacketIds getId() const override { return MinecraftPacketIds::PlayerAuthInputPacket; }
@@ -99,27 +125,9 @@ public:
     void write(BinaryStream &stream) const override { throw std::logic_error("Not implemented"); }
     Bedrock::Result<void> _read(ReadOnlyBinaryStream &stream) override { throw std::logic_error("Not implemented"); }
 
-    [[nodiscard]] bool getInput(InputData input) const { return input_data.test(input); }
+    [[nodiscard]] bool getInput(InputData input) const { return payload.input_data.test(input); }
 
-    Vec2 rot;
-    Vec3 pos;
-    float y_head_rot;
-    Vec3 pos_delta;
-    Vec2 vehicle_rot;
-    Vec2 analog_move_vector;
-    Vec2 move;
-    Vec2 interact_rotation;
-    Vec3 camera_orientation;
-    Vec2 raw_move_vector;
-    std::bitset<INPUT_NUM> input_data;
-    InputMode input_mode;
-    ClientPlayMode player_mode;
-    NewInteractionModel new_interaction_model;
-    PlayerInputTick client_tick;
-    std::unique_ptr<PackedItemUseLegacyInventoryTransaction> item_use_transaction;
-    std::unique_ptr<ItemStackRequestData> item_stack_request;
-    PlayerBlockActions player_block_actions;
-    ActorUniqueID client_predicted_vehicle;
+    PlayerAuthInputPacketPayload payload;                                 // +48
     SerializationMode serialization_mode{SerializationMode::CerealOnly};  // +224
 };
 BEDROCK_STATIC_ASSERT_SIZE(PlayerAuthInputPacket, 232, 232);
