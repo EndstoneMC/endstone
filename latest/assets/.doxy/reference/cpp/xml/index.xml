@@ -1079,6 +1079,9 @@
   <compound refid="structstd_1_1formatter_3_01endstone_1_1ShortTag_01_4" kind="struct"><name>std::formatter&lt; endstone::ShortTag &gt;</name>
     <member refid="structstd_1_1formatter_3_01endstone_1_1ShortTag_01_4_1a67758c68d162600cdc734911deec9d26" kind="function"><name>format</name></member>
   </compound>
+  <compound refid="structstd_1_1formatter_3_01endstone_1_1SocketAddress_01_4" kind="struct"><name>std::formatter&lt; endstone::SocketAddress &gt;</name>
+    <member refid="structstd_1_1formatter_3_01endstone_1_1SocketAddress_01_4_1a59d1c095dece09c5103664ec0d395a63" kind="function"><name>format</name></member>
+  </compound>
   <compound refid="structstd_1_1formatter_3_01endstone_1_1StringTag_01_4" kind="struct"><name>std::formatter&lt; endstone::StringTag &gt;</name>
     <member refid="structstd_1_1formatter_3_01endstone_1_1StringTag_01_4_1a11d4b79cf0390c5d5d0827c544a767af" kind="function"><name>format</name></member>
   </compound>
@@ -1109,6 +1112,9 @@
   </compound>
   <compound refid="structstd_1_1hash_3_01endstone_1_1Nullable_3_01T_01_4_01_4" kind="struct"><name>std::hash&lt; endstone::Nullable&lt; T &gt; &gt;</name>
     <member refid="structstd_1_1hash_3_01endstone_1_1Nullable_3_01T_01_4_01_4_1a5025746436a52bef683a409b783be90b" kind="function"><name>operator()</name></member>
+  </compound>
+  <compound refid="structstd_1_1hash_3_01endstone_1_1SocketAddress_01_4" kind="struct"><name>std::hash&lt; endstone::SocketAddress &gt;</name>
+    <member refid="structstd_1_1hash_3_01endstone_1_1SocketAddress_01_4_1a567233e20d5795c8c4b83920c01afd96" kind="function"><name>operator()</name></member>
   </compound>
   <compound refid="structstd_1_1hash_3_01endstone_1_1UUID_01_4" kind="struct"><name>std::hash&lt; endstone::UUID &gt;</name>
     <member refid="structstd_1_1hash_3_01endstone_1_1UUID_01_4_1aba2e224d81006d5f09afad62be9dfd1c" kind="function"><name>operator()</name></member>
@@ -2526,6 +2532,7 @@
     <member refid="classendstone_1_1SocketAddress_1a68d8ef8f335c853e7b56c3c90d648301" kind="function"><name>SocketAddress</name></member>
     <member refid="classendstone_1_1SocketAddress_1ae29c126b04d9d5094323ae495c32f6dd" kind="function"><name>getHostname</name></member>
     <member refid="classendstone_1_1SocketAddress_1aab52350c83757435fe655b07f9cb8496" kind="function"><name>getPort</name></member>
+    <member refid="classendstone_1_1SocketAddress_1a3377d3f8a9c97b60c58bbfed0ec6bb72" kind="function"><name>operator==</name></member>
   </compound>
   <compound refid="classendstone_1_1StepSlider" kind="class"><name>endstone::StepSlider</name>
     <member refid="classendstone_1_1StepSlider_1ad095868e59dd8f5cac7ce788c7038977" kind="function"><name>Dropdown</name></member>

@@ -407,7 +407,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/nbt/tag.h" line="728" column="20" bodyfile="include/endstone/nbt/tag.h" bodystart="728" bodyend="731"/>
+        <location file="include/endstone/nbt/tag.h" line="727" column="20" bodyfile="include/endstone/nbt/tag.h" bodystart="727" bodyend="730"/>
       </memberdef>
     </sectiondef>
     <briefdescription>

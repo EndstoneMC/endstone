@@ -31,7 +31,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/nbt/tag.h" line="782" column="10" bodyfile="include/endstone/nbt/tag.h" bodystart="782" bodyend="785"/>
+        <location file="include/endstone/nbt/tag.h" line="781" column="10" bodyfile="include/endstone/nbt/tag.h" bodystart="781" bodyend="784"/>
       </memberdef>
     </sectiondef>
     <briefdescription>
@@ -60,7 +60,7 @@
         <label>std::formatter&lt; std::string_view &gt;</label>
       </node>
     </collaborationgraph>
-    <location file="include/endstone/nbt/tag.h" line="780" column="1" bodyfile="include/endstone/nbt/tag.h" bodystart="780" bodyend="786"/>
+    <location file="include/endstone/nbt/tag.h" line="779" column="1" bodyfile="include/endstone/nbt/tag.h" bodystart="779" bodyend="785"/>
     <listofallmembers>
       <member refid="structstd_1_1formatter_3_01endstone_1_1LongTag_01_4_1ac9f8872759fe220fc5cb5fdd8127b484" prot="public" virt="non-virtual"><scope>std::formatter&lt; endstone::LongTag &gt;</scope><name>format</name></member>
     </listofallmembers>

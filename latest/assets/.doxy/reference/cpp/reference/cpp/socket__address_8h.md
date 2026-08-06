@@ -10,7 +10,10 @@
 
 
 
+* `#include <cstddef>`
 * `#include <cstdint>`
+* `#include <format>`
+* `#include <functional>`
 * `#include <string>`
 * `#include <utility>`
 
@@ -38,6 +41,8 @@
 | Type | Name |
 | ---: | :--- |
 | class | [**SocketAddress**](classendstone_1_1SocketAddress.md) <br>_Represents an IP Socket Address (hostname + port number)._  |
+| struct | [**formatter&lt; endstone::SocketAddress &gt;**](structstd_1_1formatter_3_01endstone_1_1SocketAddress_01_4.md) &lt;&gt;<br> |
+| struct | [**hash&lt; endstone::SocketAddress &gt;**](structstd_1_1hash_3_01endstone_1_1SocketAddress_01_4.md) &lt;&gt;<br> |
 
 
 

@@ -153,6 +153,7 @@ This inheritance list is sorted roughly, but not completely, alphabetically:
 * **struct** [**std::hash&lt; endstone::Identifier&lt; T &gt; &gt;**](structstd_1_1hash_3_01endstone_1_1Identifier_3_01T_01_4_01_4.md) 
 * **struct** [**std::hash&lt; endstone::NotNull&lt; T &gt; &gt;**](structstd_1_1hash_3_01endstone_1_1NotNull_3_01T_01_4_01_4.md) 
 * **struct** [**std::hash&lt; endstone::Nullable&lt; T &gt; &gt;**](structstd_1_1hash_3_01endstone_1_1Nullable_3_01T_01_4_01_4.md) 
+* **struct** [**std::hash&lt; endstone::SocketAddress &gt;**](structstd_1_1hash_3_01endstone_1_1SocketAddress_01_4.md) 
 * **struct** [**std::hash&lt; endstone::UUID &gt;**](structstd_1_1hash_3_01endstone_1_1UUID_01_4.md) 
 * **class** **std::enable_shared_from_this< Permissible >**    
     * **class** [**endstone::Permissible**](classendstone_1_1Permissible.md) _Represents an object that may become a server operator and can be assigned permissions._     
@@ -314,6 +315,7 @@ This inheritance list is sorted roughly, but not completely, alphabetically:
     * **struct** [**std::formatter&lt; endstone::Location &gt;**](structstd_1_1formatter_3_01endstone_1_1Location_01_4.md) 
     * **struct** [**std::formatter&lt; endstone::LongTag &gt;**](structstd_1_1formatter_3_01endstone_1_1LongTag_01_4.md) 
     * **struct** [**std::formatter&lt; endstone::ShortTag &gt;**](structstd_1_1formatter_3_01endstone_1_1ShortTag_01_4.md) 
+    * **struct** [**std::formatter&lt; endstone::SocketAddress &gt;**](structstd_1_1formatter_3_01endstone_1_1SocketAddress_01_4.md) 
     * **struct** [**std::formatter&lt; endstone::StringTag &gt;**](structstd_1_1formatter_3_01endstone_1_1StringTag_01_4.md) 
     * **struct** [**std::formatter&lt; endstone::Vector &gt;**](structstd_1_1formatter_3_01endstone_1_1Vector_01_4.md) 
     * **struct** [**std::formatter&lt; endstone::detail::JoinView&lt; It, Sentinel &gt; &gt;**](structstd_1_1formatter_3_01endstone_1_1detail_1_1JoinView_3_01It_00_01Sentinel_01_4_01_4.md) 
