@@ -75,6 +75,7 @@ __all__ = [
     "PlayerPortalEvent",
     "PlayerQuitEvent",
     "PlayerRespawnEvent",
+    "PlayerShearActorEvent",
     "PlayerSkinChangeEvent",
     "PlayerTeleportEvent",
     "PlayerToggleSneakEvent",
@@ -547,6 +548,37 @@ class PlayerBedLeaveEvent(PlayerEvent):
         """
         The bed block involved in this event.
         """
+
+class PlayerShearActorEvent(PlayerEvent, Cancellable):
+    """
+    Called when a player shears an actor.
+    """
+    @property
+    def actor(self) -> Actor:
+        """
+        The actor that was sheared.
+        """
+
+    @property
+    def hand(self) -> EquipmentSlot:
+        """
+        The hand used to shear the actor.
+        """
+
+    @property
+    def item(self) -> ItemStack:
+        """
+        The item used to shear the actor.
+        """
+
+    @property
+    def drops(self) -> list[ItemStack]:
+        """
+        The items dropped when the actor is sheared.
+        """
+
+    @drops.setter
+    def drops(self, arg1: list[ItemStack]) -> None: ...
 
 class PlayerChatEvent(PlayerEvent, Cancellable):
     """

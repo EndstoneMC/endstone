@@ -20,8 +20,17 @@ namespace brstd {
 template <class Signature>
 class move_only_function
     : public detail::function::function_invoke<detail::function::DerivedType::MoveOnly, Signature, false> {
+    using base = detail::function::function_invoke<detail::function::DerivedType::MoveOnly, Signature, false>;
+
 public:
-    using detail::function::function_invoke<detail::function::DerivedType::MoveOnly, Signature, false>::operator();
+    using base::operator bool;
+    using base::operator=;
+    using base::operator();
+
+    move_only_function() noexcept = default;
+    move_only_function(move_only_function &&) noexcept = default;
+    move_only_function &operator=(move_only_function &&) noexcept = default;
+
     template <typename F>
     move_only_function(F &&f)
         requires(!std::is_same_v<move_only_function, std::remove_cvref_t<F>>)
