@@ -10,6 +10,12 @@
   可扩展的 Python 和 C++ 插件
 </p>
 
+---
+
+[English](README.md)
+
+---
+
 [![Build](https://github.com/EndstoneMC/endstone/actions/workflows/build.yml/badge.svg)](https://github.com/EndstoneMC/endstone/actions/workflows/build.yml)
 [![Minecraft](https://img.shields.io/badge/minecraft-v26.40_(Bedrock)-black)](https://feedback.minecraft.net/hc/en-us/sections/360001186971-Release-Changelogs)
 [![PyPI - Version](https://img.shields.io/pypi/v/endstone)](https://pypi.org/project/endstone)
