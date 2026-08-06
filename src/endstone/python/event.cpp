@@ -290,6 +290,15 @@ void init_event(py::module_ &m, py::class_<Event, PyEvent> &event)
                                "Whether recipe filtering is enabled.")
         .def_property_readonly("is_open", &PlayerRecipeBookSettingsChangeEvent::isOpen,
                                "Whether the recipe book is open.");
+
+    py::class_<PlayerShearEntityEvent, PlayerEvent, ICancellable>(
+        m, "PlayerShearEntityEvent", "Called when a player shears an entity.")
+        .def_property_readonly("entity", &PlayerShearEntityEvent::getEntity, py::return_value_policy::reference,
+                               "The entity that was sheared.")
+        .def_property_readonly("hand", &PlayerShearEntityEvent::getHand, "The hand used to shear the entity.")
+        .def_property_readonly("item", &PlayerShearEntityEvent::getItem, "The item used to shear the entity.")
+        .def_property("drops", &PlayerShearEntityEvent::getDrops, &PlayerShearEntityEvent::setDrops,
+                      "The items dropped when the entity is sheared.");
     py::class_<PlayerChatEvent, PlayerEvent, ICancellable>(m, "PlayerChatEvent",
                                                            "Called when a player sends a chat message.")
         .def_property("message", &PlayerChatEvent::getMessage, &PlayerChatEvent::setMessage,

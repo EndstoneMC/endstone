@@ -15,12 +15,10 @@
 #pragma once
 
 class Actor;
-class ItemStack;
 class Player;
 
 namespace endstone::runtime {
 
-[[nodiscard]] bool fireArmorStandManipulateEvent(const ::Player &player, const ::Actor &target,
-                                                 const ::ItemStack &item);
+void installShearHooks(::Actor &target, ::Player &player);
 
 }  // namespace endstone::runtime

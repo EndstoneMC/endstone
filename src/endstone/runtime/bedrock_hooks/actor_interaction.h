@@ -14,13 +14,22 @@
 
 #pragma once
 
+#include "endstone/inventory/equipment_slot.h"
+
 class Actor;
 class ItemStack;
+class ItemUseOnActorInventoryTransaction;
 class Player;
 
 namespace endstone::runtime {
 
-[[nodiscard]] bool fireArmorStandManipulateEvent(const ::Player &player, const ::Actor &target,
-                                                 const ::ItemStack &item);
+struct ActorInteractionContext {
+    const ::ItemUseOnActorInventoryTransaction *transaction;
+    const ::Player *player;
+    const ::Actor *target;
+};
+
+[[nodiscard]] const ActorInteractionContext *getActorInteractionContext();
+[[nodiscard]] endstone::EquipmentSlot getInteractionHand(const ::Player &, const ::ItemStack &);
 
 }  // namespace endstone::runtime

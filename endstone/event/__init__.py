@@ -127,6 +127,7 @@ __getattr__, __dir__, __all__ = lazy.attach(
             "PlayerRecipeBookSettingsChangeEvent",
             "PlayerRespawnEvent",
             "PlayerRiptideEvent",
+            "PlayerShearEntityEvent",
             "PlayerSkinChangeEvent",
             "PlayerTeleportEvent",
             "PlayerToggleCrawlEvent",

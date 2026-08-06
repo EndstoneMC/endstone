@@ -189,7 +189,6 @@ bool handleEvent(const PlayerInteractWithEntityBeforeEvent &event)
 {
     const auto *player = WeakEntityRef(event.player).tryUnwrap<::Player>();
     const auto *target = WeakEntityRef(event.target_entity).tryUnwrap<::Actor>();
-    endstone::runtime::prepareArmorStandInteraction(player, target, event.item);
 
     if (player && target) {
         const auto &server = endstone::core::EndstoneServer::getInstance();
@@ -199,7 +198,7 @@ bool handleEvent(const PlayerInteractWithEntityBeforeEvent &event)
         if (e.isCancelled()) {
             return false;
         }
-        if (!endstone::runtime::fireArmorStandManipulateEvent()) {
+        if (!endstone::runtime::fireArmorStandManipulateEvent(*player, *target, event.item)) {
             return false;
         }
     }

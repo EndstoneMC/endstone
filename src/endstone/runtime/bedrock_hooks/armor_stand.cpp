@@ -16,7 +16,6 @@
 
 #include <cstddef>
 #include <optional>
-#include <utility>
 
 #include "bedrock/world/actor/actor.h"
 #include "bedrock/world/actor/armor_slot.h"
@@ -28,7 +27,7 @@
 #include "endstone/core/player.h"
 #include "endstone/core/server.h"
 #include "endstone/event/player/player_armor_stand_manipulate_event.h"
-#include "endstone/runtime/hook.h"
+#include "endstone/runtime/bedrock_hooks/actor_interaction.h"
 
 namespace {
 struct ArmorStandSlot {
@@ -36,35 +35,10 @@ struct ArmorStandSlot {
     endstone::EquipmentSlot endstone_slot;
 };
 
-struct ArmorStandInteractionContext {
-    const ::Player *player;
-    const ::Actor *target;
-    ::ItemStack item;
-    std::optional<Vec3> location;
-    std::optional<ArmorStandSlot> slot;
-    std::optional<::ItemStack> armor_stand_item;
-};
-
-struct InteractionCallbackContext {
-    void *vtable;  // std::__function::__func vtable
-    const ItemUseOnActorInventoryTransaction *transaction;  // +0x08
-    ::Player *player;  // +0x10
-    void *result;  // +0x18
-    ::Actor *target;  // +0x20
-};
-
-static_assert(offsetof(InteractionCallbackContext, transaction) == 0x8);
-static_assert(offsetof(InteractionCallbackContext, player) == 0x10);
-static_assert(offsetof(InteractionCallbackContext, result) == 0x18);
-static_assert(offsetof(InteractionCallbackContext, target) == 0x20);
-
 struct HumanoidArmorItemView {
     std::byte item[sizeof(::Item)];
     ArmorSlot slot;
 };
-
-// Bedrock's HumanoidArmorItem stores its armor slot immediately after Item.
-thread_local std::optional<ArmorStandInteractionContext> armor_stand_interaction_context;
 
 bool isArmorStand(const ::Actor &actor)
 {
@@ -98,41 +72,36 @@ ArmorStandSlot getHeldItemSlot(const ::ItemStack &item)
 }
 
 std::optional<ArmorStandSlot> getArmorStandSlot(const ::Actor &armor_stand, const Vec3 &location,
-                                                const ::ItemStack *player_item = nullptr)
+                                                const ::ItemStack &player_item)
 {
     // ItemUseOnActorInventoryTransaction::hit_pos_ is a world position.
     const auto y = location.y - armor_stand.getPosition().y;
 
     // Match ArmorStand::getInteraction's vertical hit ranges before selecting the
     // equipment slot from the held item.
+    std::optional<ArmorStandSlot> slot;
     if (y >= 0.1F && y < 0.55F) {
-        if (player_item && !player_item->isNull()) {
-            return getHeldItemSlot(*player_item);
-        }
-        return ArmorStandSlot{ArmorSlot::Feet, endstone::EquipmentSlot::Feet};
+        slot = ArmorStandSlot{ArmorSlot::Feet, endstone::EquipmentSlot::Feet};
     }
-    if (y >= 0.9F && y < 1.6F) {
-        if (player_item && !player_item->isNull()) {
-            return getHeldItemSlot(*player_item);
-        }
+    else if (y >= 0.9F && y < 1.6F) {
         if (!armor_stand.getCarriedItem().isNull()) {
-            return ArmorStandSlot{std::nullopt, endstone::EquipmentSlot::Hand};
+            slot = ArmorStandSlot{std::nullopt, endstone::EquipmentSlot::Hand};
         }
-        return ArmorStandSlot{ArmorSlot::Torso, endstone::EquipmentSlot::Chest};
-    }
-    if (y >= 0.4F && y < 1.2F) {
-        if (player_item && !player_item->isNull()) {
-            return getHeldItemSlot(*player_item);
+        else {
+            slot = ArmorStandSlot{ArmorSlot::Torso, endstone::EquipmentSlot::Chest};
         }
-        return ArmorStandSlot{ArmorSlot::Legs, endstone::EquipmentSlot::Legs};
     }
-    if (y >= 1.6F) {
-        if (player_item && !player_item->isNull()) {
-            return getHeldItemSlot(*player_item);
-        }
-        return ArmorStandSlot{ArmorSlot::Head, endstone::EquipmentSlot::Head};
+    else if (y >= 0.4F && y < 1.2F) {
+        slot = ArmorStandSlot{ArmorSlot::Legs, endstone::EquipmentSlot::Legs};
     }
-    return std::nullopt;
+    else if (y >= 1.6F) {
+        slot = ArmorStandSlot{ArmorSlot::Head, endstone::EquipmentSlot::Head};
+    }
+
+    if (slot && !player_item.isNull()) {
+        return getHeldItemSlot(player_item);
+    }
+    return slot;
 }
 
 const ::ItemStack &getArmorStandItem(const ::Actor &armor_stand, const ArmorStandSlot &slot)
@@ -143,89 +112,32 @@ const ::ItemStack &getArmorStandItem(const ::Actor &armor_stand, const ArmorStan
     return armor_stand.getArmor(*slot.minecraft_slot);
 }
 
-endstone::EquipmentSlot getInteractionHand(const ::Player &player, const ::ItemStack &item)
-{
-    const auto matches_main_hand = item == player.getCarriedItem();
-    const auto matches_off_hand = item == player.getOffhandSlot();
-    return matches_off_hand && !matches_main_hand ? endstone::EquipmentSlot::OffHand
-                                                  : endstone::EquipmentSlot::Hand;
-}
-
 }  // namespace
-
-void ItemUseOnActorInventoryTransaction::executeInteraction(void *context)
-{
-    const auto *callback = static_cast<const InteractionCallbackContext *>(context);
-    auto previous_context = std::move(armor_stand_interaction_context);
-    armor_stand_interaction_context.reset();
-
-    if (callback->transaction && callback->player && callback->target &&
-        callback->transaction->action_type_ == ActionType::Interact && isArmorStand(*callback->target)) {
-        const auto location = callback->transaction->hit_pos_;
-        auto slot = getArmorStandSlot(*callback->target, location);
-        std::optional<::ItemStack> armor_stand_item;
-        if (slot) {
-            armor_stand_item = getArmorStandItem(*callback->target, *slot);
-        }
-        armor_stand_interaction_context = ArmorStandInteractionContext{
-            callback->player,
-            callback->target,
-            {},
-            location,
-            std::move(slot),
-            std::move(armor_stand_item),
-        };
-    }
-
-    ENDSTONE_HOOK_CALL_ORIGINAL(&ItemUseOnActorInventoryTransaction::executeInteraction, context);
-    armor_stand_interaction_context = std::move(previous_context);
-}
 
 namespace endstone::runtime {
 
-void prepareArmorStandInteraction(const ::Player *player, const ::Actor *target, const ::ItemStack &item)
+bool fireArmorStandManipulateEvent(const ::Player &player, const ::Actor &target, const ::ItemStack &item)
 {
-    if (!player || !target || !isArmorStand(*target)) {
-        armor_stand_interaction_context.reset();
-        return;
-    }
-
-    if (armor_stand_interaction_context && armor_stand_interaction_context->player == player &&
-        armor_stand_interaction_context->target == target) {
-        armor_stand_interaction_context->item = item;
-        armor_stand_interaction_context->slot =
-            armor_stand_interaction_context->location
-                ? getArmorStandSlot(*target, *armor_stand_interaction_context->location, &item)
-                : std::nullopt;
-        armor_stand_interaction_context->armor_stand_item =
-            armor_stand_interaction_context->slot
-                ? std::optional<::ItemStack>{getArmorStandItem(*target, *armor_stand_interaction_context->slot)}
-                : std::nullopt;
-        return;
-    }
-
-    armor_stand_interaction_context =
-        ArmorStandInteractionContext{player, target, item, std::nullopt, std::nullopt, std::nullopt};
-}
-
-bool fireArmorStandManipulateEvent()
-{
-    if (!armor_stand_interaction_context || !armor_stand_interaction_context->location ||
-        !armor_stand_interaction_context->slot || !armor_stand_interaction_context->armor_stand_item) {
+    const auto *interaction = getActorInteractionContext();
+    if (!interaction || !isArmorStand(target) || interaction->player != &player || interaction->target != &target) {
         return true;
     }
 
-    const auto &context = *armor_stand_interaction_context;
-    const auto &slot = *context.slot;
+    const auto location = interaction->transaction->hit_pos_;
+    const auto slot = getArmorStandSlot(target, location, item);
+    if (!slot) {
+        return true;
+    }
+    const auto &armor_stand_item = getArmorStandItem(target, *slot);
 
     const auto &server = endstone::core::EndstoneServer::getInstance();
     endstone::PlayerArmorStandManipulateEvent event{
-        context.player->getEndstoneActor<endstone::core::EndstonePlayer>(),
-        context.target->getEndstoneActor(),
-        endstone::core::EndstoneItemStack::fromMinecraft(*context.armor_stand_item),
-        endstone::core::EndstoneItemStack::fromMinecraft(context.item),
-        getInteractionHand(*context.player, context.item),
-        slot.endstone_slot,
+        player.getEndstoneActor<endstone::core::EndstonePlayer>(),
+        target.getEndstoneActor(),
+        endstone::core::EndstoneItemStack::fromMinecraft(armor_stand_item),
+        endstone::core::EndstoneItemStack::fromMinecraft(item),
+        getInteractionHand(player, item),
+        slot->endstone_slot,
     };
     server.getPluginManager().callEvent(event);
     return !event.isCancelled();

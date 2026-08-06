@@ -14,13 +14,18 @@
 
 #pragma once
 
-class Actor;
-class ItemStack;
-class Player;
+#include <string>
 
-namespace endstone::runtime {
+#include "bedrock/bedrock.h"
+#include "bedrock/platform/brstd/move_only_function.h"
 
-[[nodiscard]] bool fireArmorStandManipulateEvent(const ::Player &player, const ::Actor &target,
-                                                 const ::ItemStack &item);
+class ActorInteraction {
+public:
+    using OnInteraction = brstd::move_only_function<void()>;
 
-}  // namespace endstone::runtime
+    std::string interact_text;
+    OnInteraction interaction;
+    bool no_capture;
+};
+
+BEDROCK_STATIC_ASSERT_SIZE(ActorInteraction, 104, 112);
