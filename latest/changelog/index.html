@@ -5483,6 +5483,7 @@ and this project adheres to <a href="https://semver.org/spec/v2.0.0.html">Semant
 <h3 id="fixed">Fixed<a class="headerlink" href="#fixed" title="Permanent link">&para;</a></h3>
 <ul>
 <li>Fixed type annotations for <code>Plugin</code> and <code>event_handler</code>.</li>
+<li>Fixed a crash on Windows when reading the item charged into a crossbow, for example through its item meta. The server called into an invalid address instead of the item's loader. Introduced in 0.11.7 along with BDS 1.26.40 support.</li>
 </ul>
 <h2 id="0117-2026-08-05"><a href="https://github.com/EndstoneMC/endstone/compare/v0.11.6...v0.11.7">0.11.7</a> - 2026-08-05<a class="headerlink" href="#0117-2026-08-05" title="Permanent link">&para;</a></h2>
 <h3 id="added_1">Added<a class="headerlink" href="#added_1" title="Permanent link">&para;</a></h3>
