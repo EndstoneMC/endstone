@@ -74,6 +74,7 @@ __all__ = [
     "PlayerPickupItemEvent",
     "PlayerPortalEvent",
     "PlayerQuitEvent",
+    "PlayerRecipeBookClickEvent",
     "PlayerRespawnEvent",
     "PlayerSkinChangeEvent",
     "PlayerTeleportEvent",
@@ -547,6 +548,25 @@ class PlayerBedLeaveEvent(PlayerEvent):
         """
         The bed block involved in this event.
         """
+
+class PlayerRecipeBookClickEvent(PlayerEvent, Cancellable):
+    """
+    Called when a player clicks a recipe in the recipe book.
+    """
+    @property
+    def recipe(self) -> str:
+        """
+        The recipe identifier clicked by the player.
+        """
+
+    @property
+    def make_all(self) -> bool:
+        """
+        Whether the player requested crafting as many copies as possible.
+        """
+
+    @make_all.setter
+    def make_all(self, arg1: bool) -> None: ...
 
 class PlayerChatEvent(PlayerEvent, Cancellable):
     """

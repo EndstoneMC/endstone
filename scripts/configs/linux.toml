@@ -34,6 +34,28 @@ rip_relative = true
 rip_offset = 11
 
 [[signatures]]
+name = "_ZN34ItemStackRequestActionCraftHandler17handleCraftActionERK31ItemStackRequestActionCraftBase"
+relative = false
+extra = 0
+# 1. locate ItemStackRequestActionCraftHandler::handleCraftAction, the common
+#    recipe handler for action types 12 (CraftingRecipe) and 13 (CraftingRecipeAuto)
+# 2. confirm its action-type dispatch and recipe-handler call against the current BDS database
+# 3. use the platform-decorated BDS member name so the hook can resolve its original function
+pattern = "55 41 57 41 56 41 55 41 54 53 48 81 EC C8 00 00 00 48 89 F3 48 89 FD 48 8B 47 08 48 8B 80 F8 00 00 00 48 85 C0 74 ? 48 8B B8 B0 00 00 00 48 8B 07 FF 50 18"
+
+[[signatures]]
+name = "_ZTV37ItemStackRequestActionCraftRecipeAuto"
+relative = false
+extra = 0
+# 1. locate the CraftingRecipeAuto construction path, identified by writing action type 13
+# 2. confirm the first-field store targets ItemStackRequestActionCraftRecipeAuto's vtable group
+#    (`_ZTV37ItemStackRequestActionCraftRecipeAuto`) in the current BDS database
+# 3. resolve the RIP-relative vtable address point stored in the action's first field
+pattern = "41 56 53 50 49 89 CE 48 89 FB C6 47 08 0D 88 57 09 8B 06 89 47 0C 48 8D 05 ? ? ? ? 48 89 07 48 83 C7 10 0F 57 C0 0F 11 43 10 48 C7 43 20"
+rip_relative = true
+rip_offset = 25
+
+[[signatures]]
 name = "MobEffect::mMobEffects"
 relative = false
 extra = 0
