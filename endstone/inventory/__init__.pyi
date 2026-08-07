@@ -22,8 +22,19 @@ __all__ = [
     "ItemType",
     "MapMeta",
     "PlayerInventory",
+    "Recipe",
     "WritableBookMeta",
 ]
+
+class Recipe:
+    """
+    Represents a crafting recipe.
+    """
+    @property
+    def result(self) -> ItemStack:
+        """
+        The result of this recipe.
+        """
 
 class ItemStack:
     """

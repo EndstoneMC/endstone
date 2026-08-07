@@ -63,6 +63,28 @@ rip_relative = true
 rip_offset = 1
 
 [[signatures]]
+name = "handleCraftAction"
+relative = false
+extra = 0
+# 1. locate ItemStackRequestActionCraftHandler::handleCraftAction, the common
+#    recipe handler for action types 12 (CraftingRecipe) and 13 (CraftingRecipeAuto)
+# 2. confirm its action-type dispatch and recipe-handler call against the current BDS database
+# 3. this is an Endstone alias; resolve the address from the pattern, not a BDS symbol
+pattern = "55 41 57 41 56 41 55 41 54 56 57 53 48 81 EC 08 01 00 00 48 8D AC 24 ? ? ? ? 48 C7 85 ? ? ? ? FE FF FF FF 48 89 D3 48 89 CE 48 8B 41"
+
+[[signatures]]
+name = "??_7ItemStackRequestActionCraftRecipeAuto@@6B@"
+relative = false
+extra = 0
+# 1. locate the CraftingRecipeAuto construction path, identified by writing action type 13
+# 2. confirm the first-field store targets ItemStackRequestActionCraftRecipeAuto::`vftable` in the
+#    current BDS database; this is the compiler-generated MSVC data symbol
+# 3. resolve the RIP-relative vtable address stored in the action's first field
+pattern = "41 57 41 56 56 57 53 48 83 EC 30 89 D7 48 89 CE 48 8D 05 ? ? ? ? 48 89 01 48 8B 59 20 48 85 DB 74 ? 4C 8D 76 20 4C 8B 7E 28 4C 39 FB 74 ? 48 8B 03 48 8B 00 48 89 D9 31 D2 FF 15 ? ? ? ? 48 83 C3 18"
+rip_relative = true
+rip_offset = 19
+
+[[signatures]]
 name = "MobEffect::mMobEffects"
 relative = false
 extra = 0

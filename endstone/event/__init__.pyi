@@ -5,12 +5,12 @@ Classes relating to handling triggered code executions.
 import enum
 import typing
 
-from endstone import GameMode, Input, Player, Skin
+from endstone import GameMode, Identifier, Input, Player, Skin
 from endstone.actor import Actor, Item, Mob
 from endstone.block import Block, BlockFace, BlockState
 from endstone.command import CommandSender
 from endstone.damage import DamageSource
-from endstone.inventory import BookMeta, EquipmentSlot, ItemStack
+from endstone.inventory import BookMeta, EquipmentSlot, ItemStack, Recipe
 from endstone.lang import Translatable
 from endstone.level import Chunk, Dimension, Level, Location
 from endstone.map import MapView
@@ -84,6 +84,7 @@ __all__ = [
     "PlayerPickupItemEvent",
     "PlayerPortalEvent",
     "PlayerQuitEvent",
+    "PlayerRecipeBookClickEvent",
     "PlayerRecipeBookSettingsChangeEvent",
     "PlayerRespawnEvent",
     "PlayerRiptideEvent",
@@ -576,6 +577,23 @@ class PlayerBedLeaveEvent(PlayerEvent):
         """
         The bed block involved in this event.
         """
+
+class PlayerRecipeBookClickEvent(PlayerEvent, Cancellable):
+    """
+    Called when a player clicks a recipe in the recipe book.
+    """
+    @property
+    def recipe(self) -> Identifier[Recipe]:
+        """
+        The recipe identifier clicked by the player.
+        """
+    @property
+    def make_all(self) -> bool:
+        """
+        Whether the player requested crafting as many copies as possible.
+        """
+    @make_all.setter
+    def make_all(self, value: bool) -> None: ...
 
 class PlayerLevelChangeEvent(PlayerEvent):
     """Called when a player's level changes."""

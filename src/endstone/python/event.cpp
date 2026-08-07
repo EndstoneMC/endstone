@@ -263,6 +263,12 @@ void init_event(py::module_ &m, py::class_<Event, PyEvent> &event)
     py::class_<PlayerBedLeaveEvent, PlayerEvent>(m, "PlayerBedLeaveEvent", "Called when a player is leaving a bed.")
         .def_property_readonly("bed", &PlayerBedLeaveEvent::getBed, py::return_value_policy::reference,
                                "The bed block involved in this event.");
+    py::class_<PlayerRecipeBookClickEvent, PlayerEvent, ICancellable>(
+        m, "PlayerRecipeBookClickEvent", "Called when a player clicks a recipe in the recipe book.")
+        .def_property_readonly("recipe", &PlayerRecipeBookClickEvent::getRecipe,
+                               "The recipe identifier clicked by the player.")
+        .def_property("make_all", &PlayerRecipeBookClickEvent::isMakeAll, &PlayerRecipeBookClickEvent::setMakeAll,
+                      "Whether the player requested crafting as many copies as possible.");
     py::class_<PlayerLevelChangeEvent, PlayerEvent>(m, "PlayerLevelChangeEvent",
                                                     "Called when a player's level changes.")
         .def_property_readonly("old_level", &PlayerLevelChangeEvent::getOldLevel,

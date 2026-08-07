@@ -11,11 +11,13 @@
 
 namespace endstone::runtime {
 
-static constexpr std::array<std::pair<std::string_view, std::size_t>, 62> symbols = {{
+static constexpr std::array<std::pair<std::string_view, std::size_t>, 64> symbols = {{
     {"BlockState::StateListNode::mHead", 245336464},
     {"Enchant::mEnchants", 245162480},
     {"MobEffect::mMobEffects", 245142824},
+    {"_ZTV37ItemStackRequestActionCraftRecipeAuto", 241845976},
     {"getI18n::result", 243978864},
+    {"handleCraftAction", 197796752},
     // Actor
     {"_ZN5Actor10teleportToERK4Vec3biib", 180156976},
     {"_ZN5Actor9addEffectERK17MobEffectInstance", 180296992},
@@ -48,7 +50,7 @@ static constexpr std::array<std::pair<std::string_view, std::size_t>, 62> symbol
     {"_ZNK15CommandRegistry26serializeAvailableCommandsEv", 159952080},
     // CommandUtils
     {"_ZN12CommandUtils12getActorNameERK5Actor", 159687440},
-    // CraftingDataPacket
+    // CraftingDataPacketPayload
     {"_ZN25CraftingDataPacketPayload11fromRecipesERK7Recipesb", 134707376},
     // DedicatedServer
     {"_ZN15DedicatedServer5startERKNSt3__112basic_stringIcNS0_11char_traitsIcEENS0_9allocatorIcEEEERKN7Bedrock19ActivationArgumentsE", 71542176},
@@ -70,7 +72,7 @@ static constexpr std::array<std::pair<std::string_view, std::size_t>, 62> symbol
     {"_ZN13ItemStackBase34_loadBlocksForCanPlaceOnCanDestroyERNSt3__16vectorIPK9BlockTypeNS0_9allocatorIS4_EEEERKNS0_12basic_stringIcNS0_11char_traitsIcEENS5_IcEEEE", 196768992},
     {"_ZN13ItemStackBase8_setItemEib", 196728288},
     // ItemUseOnActorInventoryTransaction
-    {"_ZN34ItemUseOnActorInventoryTransaction18executeInteractionEPv", 197681504},
+    {"_ZN34ItemUseOnActorInventoryTransaction18executeInteractionEPv", 197693792},
     // LeavesBlock
     {"_ZN11LeavesBlock10randomTickERN11BlockEvents20BlockRandomTickEventE", 198919072},
     // Level

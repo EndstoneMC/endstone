@@ -20,6 +20,9 @@ namespace endstone::python {
 
 void init_inventory(py::module_ &m, py::class_<ItemStack> &item_stack)
 {
+    py::class_<Recipe>(m, "Recipe", "Represents a crafting recipe.")
+        .def_property_readonly("result", &Recipe::getResult, "The result of this recipe.");
+
     py::native_enum<EquipmentSlot>(m, "EquipmentSlot", "enum.Enum")
         .value("HAND", EquipmentSlot::Hand)
         .value("OFF_HAND", EquipmentSlot::OffHand)

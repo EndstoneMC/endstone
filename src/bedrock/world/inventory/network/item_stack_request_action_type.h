@@ -14,24 +14,26 @@
 
 #pragma once
 
-#include "endstone/identifier.h"
-#include "endstone/inventory/item_stack.h"
+#include <cstdint>
 
-namespace endstone {
-using RecipeId = Identifier<class Recipe>;
-
-/**
- * Represents a crafting recipe.
- */
-class Recipe {
-public:
-    virtual ~Recipe() = default;
-
-    /**
-     * Get the result of this recipe.
-     *
-     * @return The result stack
-     */
-    [[nodiscard]] virtual ItemStack getResult() const = 0;
+/** Identifies an action in an ItemStackRequest. */
+enum class ItemStackRequestActionType : std::uint8_t {
+    Take = 0,
+    Place = 1,
+    Swap = 2,
+    Drop = 3,
+    Destroy = 4,
+    CraftingConsumeInput = 5,
+    CraftingCreateSpecificResult = 6,
+    LabTableCombine = 9,
+    BeaconPayment = 10,
+    MineBlock = 11,
+    CraftingRecipe = 12,
+    CraftingRecipeAuto = 13,
+    CreativeCreate = 14,
+    CraftingRecipeOptional = 15,
+    CraftingGrindstone = 16,
+    CraftingLoom = 17,
+    CraftingNonImplementedDeprecated = 18,
+    CraftingResultsDeprecated = 19,
 };
-}  // namespace endstone
