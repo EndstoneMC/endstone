@@ -18,10 +18,12 @@
 #include <vector>
 
 #include "bedrock/bedrock.h"
+#include "bedrock/world/inventory/network/item_stack_net_result.h"
 #include "bedrock/world/inventory/network/item_stack_request_action_type.h"
 #include "bedrock/world/item/crafting/recipe.h"
 
 class Player;
+class ItemStackRequestActionHandler;
 class ItemStackRequestActionHandlerContext;
 
 class ItemStackRequestAction {
@@ -56,6 +58,21 @@ public:
     std::uint8_t ingredient_count_;
 };
 BEDROCK_STATIC_ASSERT_SIZE(ItemStackRequestActionCraftRecipeAuto, 64, 48);
+
+class ItemStackRequestActionCraftHandler {
+public:
+    virtual ~ItemStackRequestActionCraftHandler() = default;
+
+    ENDSTONE_HOOK ItemStackNetResult handleCraftAction(const ItemStackRequestActionCraftBase &);
+
+    // Endstone
+    [[nodiscard]] Player *getPlayer() const { return player_; }
+
+private:
+    ItemStackRequestActionHandler *action_handler_;
+    Player *player_;
+};
+BEDROCK_STATIC_ASSERT_SIZE(ItemStackRequestActionCraftHandler, 24, 24);
 
 class ItemStackRequestActionHandler {
 public:

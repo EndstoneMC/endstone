@@ -26,9 +26,6 @@
 #include "endstone/event/player/player_recipe_book_click_event.h"
 #include "endstone/runtime/hook.h"
 
-extern "C" ENDSTONE_HOOK ItemStackNetResult handleCraftAction(
-    void *handler, const ItemStackRequestActionCraftBase &request_action);
-
 namespace {
 template <typename T>
 [[nodiscard]] void *getVtable(const T &object)
@@ -89,19 +86,15 @@ ItemStackRequestActionCraftRecipeAuto makeCraftRecipeAutoAction(std::uint8_t cra
     return action;
 }
 
-ItemStackNetResult callOriginal(ItemStackRequestActionHandler &handler,
-                                const ItemStackRequestActionCraftBase &action)
-{
-    return ENDSTONE_HOOK_CALL_ORIGINAL_NAME(&handleCraftAction, "handleCraftAction", &handler, action);
-}
-
-ItemStackNetResult dispatchCraftAction(ItemStackRequestActionHandler &handler,
-                                       const ItemStackRequestActionCraftBase &action)
+template <typename Original>
+ItemStackNetResult dispatchCraftAction(ItemStackRequestActionCraftHandler &handler,
+                                       const ItemStackRequestActionCraftBase &action,
+                                       Original &&call_original)
 {
     const auto action_type = action.type_;
     if (action_type != ItemStackRequestActionType::CraftingRecipe &&
         action_type != ItemStackRequestActionType::CraftingRecipeAuto) {
-        return callOriginal(handler, action);
+        return call_original(action);
     }
 
     const auto &recipe_action = static_cast<const ItemStackRequestActionCraftRecipe &>(action);
@@ -111,7 +104,7 @@ ItemStackNetResult dispatchCraftAction(ItemStackRequestActionHandler &handler,
     auto &recipes = player->getLevel().getRecipes();
     const auto *native_recipe = recipes.getRecipeByNetId(recipe_action.recipe_net_id_);
     if (native_recipe == nullptr) {
-        return callOriginal(handler, action);
+        return call_original(action);
     }
 
     auto &server = endstone::core::EndstoneServer::getInstance();
@@ -124,7 +117,7 @@ ItemStackNetResult dispatchCraftAction(ItemStackRequestActionHandler &handler,
     }
 
     if (event.isMakeAll() == make_all) {
-        return callOriginal(handler, action);
+        return call_original(action);
     }
 
     if (event.isMakeAll()) {
@@ -135,17 +128,21 @@ ItemStackNetResult dispatchCraftAction(ItemStackRequestActionHandler &handler,
         const auto auto_action_vtable = BEDROCK_VAR(void *, "_ZTV37ItemStackRequestActionCraftRecipeAuto");
 #endif
         ScopedBdsVtable vtable{auto_action, auto_action_vtable};
-        return callOriginal(handler, auto_action);
+        return call_original(auto_action);
     }
 
     auto normal_action = makeCraftRecipeAction(recipe_action);
     ScopedBdsVtable vtable{normal_action, getVtable(action)};
-    return callOriginal(handler, normal_action);
+    return call_original(normal_action);
 }
 }  // namespace
 
-extern "C" ENDSTONE_HOOK ItemStackNetResult handleCraftAction(
-    void *handler, const ItemStackRequestActionCraftBase &request_action)
+ItemStackNetResult ItemStackRequestActionCraftHandler::handleCraftAction(
+    const ItemStackRequestActionCraftBase &request_action)
 {
-    return dispatchCraftAction(*static_cast<ItemStackRequestActionHandler *>(handler), request_action);
+    constexpr auto symbol = __FUNCDNAME__;
+    return dispatchCraftAction(*this, request_action, [&](const ItemStackRequestActionCraftBase &action) {
+        return ENDSTONE_HOOK_CALL_ORIGINAL_NAME(&ItemStackRequestActionCraftHandler::handleCraftAction, symbol, this,
+                                                action);
+    });
 }

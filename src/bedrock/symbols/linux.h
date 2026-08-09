@@ -17,7 +17,6 @@ static constexpr std::array<std::pair<std::string_view, std::size_t>, 65> symbol
     {"MobEffect::mMobEffects", 245142824},
     {"_ZTV37ItemStackRequestActionCraftRecipeAuto", 241845976},
     {"getI18n::result", 243978864},
-    {"handleCraftAction", 197796752},
     // Actor
     {"_ZN5Actor10teleportToERK4Vec3biib", 180156976},
     {"_ZN5Actor9addEffectERK17MobEffectInstance", 180296992},
@@ -71,6 +70,8 @@ static constexpr std::array<std::pair<std::string_view, std::size_t>, 65> symbol
     // ItemStackBase
     {"_ZN13ItemStackBase34_loadBlocksForCanPlaceOnCanDestroyERNSt3__16vectorIPK9BlockTypeNS0_9allocatorIS4_EEEERKNS0_12basic_stringIcNS0_11char_traitsIcEENS5_IcEEEE", 196768992},
     {"_ZN13ItemStackBase8_setItemEib", 196728288},
+    // ItemStackRequestActionCraftHandler
+    {"_ZN34ItemStackRequestActionCraftHandler17handleCraftActionERK31ItemStackRequestActionCraftBase", 197796752},
     // ItemUseOnActorInventoryTransaction
     {"_ZN34ItemUseOnActorInventoryTransaction18executeInteractionEPv", 197693792},
     {"_ZN34ItemUseOnActorInventoryTransaction22executeBucketEntityUseEPvP5ActoriiicS0_x", 196712688},
