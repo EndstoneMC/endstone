@@ -252,7 +252,6 @@ void init_event(py::module_ &m, py::class_<Event, PyEvent> &event)
                                          "Represents the type of a player animation.")
         .value("ARM_SWING", PlayerAnimationType::ArmSwing)
         .value("OFF_ARM_SWING", PlayerAnimationType::OffArmSwing)
-        .export_values()
         .finalize();
     auto player_bed_enter_event = py::class_<PlayerBedEnterEvent, PlayerEvent, ICancellable>(
         m, "PlayerBedEnterEvent", "Called when a player is almost about to enter the bed.");
@@ -367,9 +366,11 @@ void init_event(py::module_ &m, py::class_<Event, PyEvent> &event)
         .def_property_readonly("new_game_mode", &PlayerGameModeChangeEvent::getNewGameMode,
                                "The `GameMode` the player is switched to.");
     auto player_block_damage_event = py::class_<PlayerBlockDamageEvent, PlayerEvent, ICancellable>(
-        m, "PlayerBlockDamageEvent",
-        "Called when a player starts, continues, aborts, predicts, stops, or creatively destroys a block. "
-        "Cancellation is honored for START and CONTINUE actions only.");
+        m, "PlayerBlockDamageEvent", R"doc(
+    Called when a player starts, continues, aborts, predicts, stops, or creatively destroys a block.
+
+    Cancellation is honored for `START` and `CONTINUE` actions only.
+)doc");
     py::native_enum<PlayerBlockDamageEvent::Action>(player_block_damage_event, "Action", "enum.Enum",
                                                     "The block damage action that triggered this event.")
         .value("START", PlayerBlockDamageEvent::Action::Start)
