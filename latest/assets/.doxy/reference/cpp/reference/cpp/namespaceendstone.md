@@ -174,9 +174,9 @@ _Represents a button with text and an optional icon._
 | class | [**PlayerQuitEvent**](classendstone_1_1PlayerQuitEvent.md) <br>_Called when a player leaves a server._  |
 | class | [**PlayerRespawnEvent**](classendstone_1_1PlayerRespawnEvent.md) <br>_Called when a player respawns._  |
 | class | [**PlayerSkinChangeEvent**](classendstone_1_1PlayerSkinChangeEvent.md) <br>_Called when a player changes their skin._  |
-| class | [**PlayerSneakEvent**](classendstone_1_1PlayerSneakEvent.md) <br>_Called when a player starts or stops sneaking._  |
-| class | [**PlayerSprintEvent**](classendstone_1_1PlayerSprintEvent.md) <br>_Called when a player starts or stops sprinting._  |
 | class | [**PlayerTeleportEvent**](classendstone_1_1PlayerTeleportEvent.md) <br>_Called when a player is teleported from one location to another._  |
+| class | [**PlayerToggleSneakEvent**](classendstone_1_1PlayerToggleSneakEvent.md) <br>_Called when a player toggles their sneaking state._  |
+| class | [**PlayerToggleSprintEvent**](classendstone_1_1PlayerToggleSprintEvent.md) <br>_Called when a player toggles their sprinting state._  |
 | class | [**Plugin**](classendstone_1_1Plugin.md) <br>_Represents a_ [_**Plugin**_](classendstone_1_1Plugin.md) _._ |
 | class | [**PluginCommand**](classendstone_1_1PluginCommand.md) <br>_Represents a_ [_**Command**_](classendstone_1_1Command.md) _belonging to a_[_**Plugin**_](classendstone_1_1Plugin.md) _._ |
 | class | [**PluginDescription**](classendstone_1_1PluginDescription.md) <br>_Represents the basic information about a plugin that the plugin loader needs to know._  |

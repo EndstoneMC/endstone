@@ -1,7 +1,7 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.8" xml:lang="en-US">
-  <compounddef id="player__sneak__event_8h" kind="file" language="C++">
-    <compoundname>player_sneak_event.h</compoundname>
+  <compounddef id="player__toggle__sneak__event_8h" kind="file" language="C++">
+    <compoundname>player_toggle_sneak_event.h</compoundname>
     <includes refid="player__event_8h" local="yes">endstone/event/player/player_event.h</includes>
     <incdepgraph>
       <node id="15">
@@ -255,8 +255,8 @@
         </childnode>
       </node>
       <node id="1">
-        <label>include/endstone/event/player/player_sneak_event.h</label>
-        <link refid="player__sneak__event_8h"/>
+        <label>include/endstone/event/player/player_toggle_sneak_event.h</label>
+        <link refid="player__toggle__sneak__event_8h"/>
         <childnode refid="2" relation="include">
         </childnode>
       </node>
@@ -1073,7 +1073,7 @@
         <label>vector</label>
       </node>
     </incdepgraph>
-    <innerclass refid="classendstone_1_1PlayerSneakEvent" prot="public">endstone::PlayerSneakEvent</innerclass>
+    <innerclass refid="classendstone_1_1PlayerToggleSneakEvent" prot="public">endstone::PlayerToggleSneakEvent</innerclass>
     <innernamespace refid="namespaceendstone">endstone</innernamespace>
     <briefdescription>
     </briefdescription>
@@ -1100,13 +1100,13 @@
 <codeline lineno="18"><highlight class="normal"></highlight></codeline>
 <codeline lineno="19"><highlight class="normal"></highlight><highlight class="keyword">namespace<sp/></highlight><highlight class="normal"><ref refid="namespaceendstone" kindref="compound">endstone</ref><sp/>{</highlight></codeline>
 <codeline lineno="20"><highlight class="normal"></highlight></codeline>
-<codeline lineno="24" refid="classendstone_1_1PlayerSneakEvent" refkind="compound"><highlight class="normal"></highlight><highlight class="keyword">class<sp/></highlight><highlight class="normal"><ref refid="classendstone_1_1PlayerSneakEvent" kindref="compound">PlayerSneakEvent</ref><sp/><ref refid="classendstone_1_1Identifier" kindref="compound">final</ref><sp/>:<sp/></highlight><highlight class="keyword">public</highlight><highlight class="normal"><sp/><ref refid="classendstone_1_1PlayerEvent" kindref="compound">PlayerEvent</ref><sp/>{</highlight></codeline>
+<codeline lineno="24" refid="classendstone_1_1PlayerToggleSneakEvent" refkind="compound"><highlight class="normal"></highlight><highlight class="keyword">class<sp/></highlight><highlight class="normal"><ref refid="classendstone_1_1PlayerToggleSneakEvent" kindref="compound">PlayerToggleSneakEvent</ref><sp/><ref refid="classendstone_1_1Identifier" kindref="compound">final</ref><sp/>:<sp/></highlight><highlight class="keyword">public</highlight><highlight class="normal"><sp/><ref refid="classendstone_1_1PlayerEvent" kindref="compound">PlayerEvent</ref><sp/>{</highlight></codeline>
 <codeline lineno="25"><highlight class="normal"></highlight><highlight class="keyword">public</highlight><highlight class="normal">:</highlight></codeline>
-<codeline lineno="26"><highlight class="normal"><sp/><sp/><sp/><sp/>ENDSTONE_EVENT(<ref refid="classendstone_1_1PlayerSneakEvent" kindref="compound">PlayerSneakEvent</ref>)</highlight></codeline>
+<codeline lineno="26"><highlight class="normal"><sp/><sp/><sp/><sp/>ENDSTONE_EVENT(<ref refid="classendstone_1_1PlayerToggleSneakEvent" kindref="compound">PlayerToggleSneakEvent</ref>)</highlight></codeline>
 <codeline lineno="27"><highlight class="normal"></highlight></codeline>
-<codeline lineno="28"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">explicit</highlight><highlight class="normal"><sp/><ref refid="classendstone_1_1PlayerSneakEvent" kindref="compound">PlayerSneakEvent</ref>(<ref refid="classendstone_1_1Player" kindref="compound">Player</ref><sp/>&amp;<ref refid="classendstone_1_1Identifier" kindref="compound">player</ref>,<sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="classendstone_1_1Identifier" kindref="compound">sneaking</ref>)<sp/>:<sp/><ref refid="classendstone_1_1PlayerEvent" kindref="compound">PlayerEvent</ref>(<ref refid="classendstone_1_1Identifier" kindref="compound">player</ref>),<sp/>sneaking_(<ref refid="classendstone_1_1Identifier" kindref="compound">sneaking</ref>)<sp/>{}</highlight></codeline>
+<codeline lineno="28"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">explicit</highlight><highlight class="normal"><sp/><ref refid="classendstone_1_1PlayerToggleSneakEvent" kindref="compound">PlayerToggleSneakEvent</ref>(<ref refid="classendstone_1_1Player" kindref="compound">Player</ref><sp/>&amp;<ref refid="classendstone_1_1Identifier" kindref="compound">player</ref>,<sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="classendstone_1_1Identifier" kindref="compound">sneaking</ref>)<sp/>:<sp/><ref refid="classendstone_1_1PlayerEvent" kindref="compound">PlayerEvent</ref>(<ref refid="classendstone_1_1Identifier" kindref="compound">player</ref>),<sp/>sneaking_(<ref refid="classendstone_1_1Identifier" kindref="compound">sneaking</ref>)<sp/>{}</highlight></codeline>
 <codeline lineno="29"><highlight class="normal"></highlight></codeline>
-<codeline lineno="35" refid="classendstone_1_1PlayerSneakEvent_1ace6a070e6ace5ac8251665b8385e4b28" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>[[<ref refid="classendstone_1_1Identifier" kindref="compound">nodiscard</ref>]]<sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="classendstone_1_1PlayerSneakEvent_1ace6a070e6ace5ac8251665b8385e4b28" kindref="member">isSneaking</ref>()</highlight><highlight class="keyword"><sp/>const<sp/></highlight><highlight class="normal">{<sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>sneaking_;<sp/>}</highlight></codeline>
+<codeline lineno="35" refid="classendstone_1_1PlayerToggleSneakEvent_1ae261eda7c39cc66a11b3477582c7a045" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>[[<ref refid="classendstone_1_1Identifier" kindref="compound">nodiscard</ref>]]<sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="classendstone_1_1PlayerToggleSneakEvent_1ae261eda7c39cc66a11b3477582c7a045" kindref="member">isSneaking</ref>()</highlight><highlight class="keyword"><sp/>const<sp/></highlight><highlight class="normal">{<sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>sneaking_;<sp/>}</highlight></codeline>
 <codeline lineno="36"><highlight class="normal"></highlight></codeline>
 <codeline lineno="37"><highlight class="normal"></highlight><highlight class="keyword">private</highlight><highlight class="normal">:</highlight></codeline>
 <codeline lineno="38"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/>sneaking_;</highlight></codeline>
@@ -1114,6 +1114,6 @@
 <codeline lineno="40"><highlight class="normal"></highlight></codeline>
 <codeline lineno="41"><highlight class="normal">}<sp/><sp/></highlight><highlight class="comment">//<sp/>namespace<sp/>endstone</highlight><highlight class="normal"></highlight></codeline>
     </programlisting>
-    <location file="include/endstone/event/player/player_sneak_event.h"/>
+    <location file="include/endstone/event/player/player_toggle_sneak_event.h"/>
   </compounddef>
 </doxygen>

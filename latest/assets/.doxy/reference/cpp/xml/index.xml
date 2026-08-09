@@ -2085,19 +2085,19 @@
     <member refid="classendstone_1_1PlayerSkinChangeEvent_1a243027ad8b931684bf1c0d0aa6bdac30" kind="function"><name>getSkinChangeMessage</name></member>
     <member refid="classendstone_1_1PlayerSkinChangeEvent_1a1c36f45cb1c6f64c234efedefa12f834" kind="function"><name>setSkinChangeMessage</name></member>
   </compound>
-  <compound refid="classendstone_1_1PlayerSneakEvent" kind="class"><name>endstone::PlayerSneakEvent</name>
-    <member refid="classendstone_1_1PlayerSneakEvent_1a2234a5baef2b6fe71bf8c4dac1f0708f" kind="variable"><name>sneaking_</name></member>
-    <member refid="classendstone_1_1PlayerSneakEvent_1aeabbd09d9e83d0e6e208a54669ff9ba9" kind="function"><name>PlayerSneakEvent</name></member>
-    <member refid="classendstone_1_1PlayerSneakEvent_1ace6a070e6ace5ac8251665b8385e4b28" kind="function"><name>isSneaking</name></member>
-  </compound>
-  <compound refid="classendstone_1_1PlayerSprintEvent" kind="class"><name>endstone::PlayerSprintEvent</name>
-    <member refid="classendstone_1_1PlayerSprintEvent_1af568d3ce0de4f232a1fdbfbbbc49ec6b" kind="variable"><name>sprinting_</name></member>
-    <member refid="classendstone_1_1PlayerSprintEvent_1ab55c13ed87d7cf9866b6d247624231d5" kind="function"><name>PlayerSprintEvent</name></member>
-    <member refid="classendstone_1_1PlayerSprintEvent_1a9366b814842ad372fd2bd4aba8d81003" kind="function"><name>isSprinting</name></member>
-  </compound>
   <compound refid="classendstone_1_1PlayerTeleportEvent" kind="class"><name>endstone::PlayerTeleportEvent</name>
     <member refid="classendstone_1_1PlayerTeleportEvent_1a43539d2448ad4540de9a2be61bbe47e8" kind="function"><name>ENDSTONE_EVENT</name></member>
     <member refid="classendstone_1_1PlayerTeleportEvent_1a8a1cf3638b2074e1d7845129adbbfed5" kind="function"><name>PlayerMoveEvent</name></member>
+  </compound>
+  <compound refid="classendstone_1_1PlayerToggleSneakEvent" kind="class"><name>endstone::PlayerToggleSneakEvent</name>
+    <member refid="classendstone_1_1PlayerToggleSneakEvent_1acbe1a330786ae5b4c9a8a2e1c14be434" kind="variable"><name>sneaking_</name></member>
+    <member refid="classendstone_1_1PlayerToggleSneakEvent_1aa857559d4ec19ae9fd1260a8dc6945e0" kind="function"><name>PlayerToggleSneakEvent</name></member>
+    <member refid="classendstone_1_1PlayerToggleSneakEvent_1ae261eda7c39cc66a11b3477582c7a045" kind="function"><name>isSneaking</name></member>
+  </compound>
+  <compound refid="classendstone_1_1PlayerToggleSprintEvent" kind="class"><name>endstone::PlayerToggleSprintEvent</name>
+    <member refid="classendstone_1_1PlayerToggleSprintEvent_1a86538cb125c63750640c5004f698a04b" kind="variable"><name>sprinting_</name></member>
+    <member refid="classendstone_1_1PlayerToggleSprintEvent_1a6da8c1346b145c9ba3449264b928d832" kind="function"><name>PlayerToggleSprintEvent</name></member>
+    <member refid="classendstone_1_1PlayerToggleSprintEvent_1aa958106f33ef770d01c637864779e056" kind="function"><name>isSprinting</name></member>
   </compound>
   <compound refid="classendstone_1_1Plugin" kind="class"><name>endstone::Plugin</name>
     <member refid="classendstone_1_1Plugin_1a7935fed495dc747e3ee24e005a4439eb" kind="friend"><name>PluginLoader</name></member>
@@ -3119,11 +3119,11 @@
   </compound>
   <compound refid="player__skin__change__event_8h" kind="file"><name>player_skin_change_event.h</name>
   </compound>
-  <compound refid="player__sneak__event_8h" kind="file"><name>player_sneak_event.h</name>
-  </compound>
-  <compound refid="player__sprint__event_8h" kind="file"><name>player_sprint_event.h</name>
-  </compound>
   <compound refid="player__teleport__event_8h" kind="file"><name>player_teleport_event.h</name>
+  </compound>
+  <compound refid="player__toggle__sneak__event_8h" kind="file"><name>player_toggle_sneak_event.h</name>
+  </compound>
+  <compound refid="player__toggle__sprint__event_8h" kind="file"><name>player_toggle_sprint_event.h</name>
   </compound>
   <compound refid="broadcast__message__event_8h" kind="file"><name>broadcast_message_event.h</name>
   </compound>

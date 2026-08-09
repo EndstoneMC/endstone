@@ -1,10 +1,10 @@
 
 
-# File player\_sneak\_event.h
+# File player\_toggle\_sprint\_event.h
 
-[**File List**](files.md) **>** [**endstone**](dir_6cf277b678674f97c7a2b6b3b2447b33.md) **>** [**event**](dir_f1d783c0ad83ee143d16e768ebca51c8.md) **>** [**player**](dir_7c05c37b25e9c9eccd9c63c2d313ba28.md) **>** [**player\_sneak\_event.h**](player__sneak__event_8h.md)
+[**File List**](files.md) **>** [**endstone**](dir_6cf277b678674f97c7a2b6b3b2447b33.md) **>** [**event**](dir_f1d783c0ad83ee143d16e768ebca51c8.md) **>** [**player**](dir_7c05c37b25e9c9eccd9c63c2d313ba28.md) **>** [**player\_toggle\_sprint\_event.h**](player__toggle__sprint__event_8h.md)
 
-[Go to the documentation of this file](player__sneak__event_8h.md)
+[Go to the documentation of this file](player__toggle__sprint__event_8h.md)
 
 
 ```C++
@@ -28,16 +28,16 @@
 
 namespace endstone {
 
-class PlayerSneakEvent final : public PlayerEvent {
+class PlayerToggleSprintEvent final : public PlayerEvent {
 public:
-    ENDSTONE_EVENT(PlayerSneakEvent)
+    ENDSTONE_EVENT(PlayerToggleSprintEvent)
 
-    explicit PlayerSneakEvent(Player &player, bool sneaking) : PlayerEvent(player), sneaking_(sneaking) {}
+    explicit PlayerToggleSprintEvent(Player &player, bool sprinting) : PlayerEvent(player), sprinting_(sprinting) {}
 
-    [[nodiscard]] bool isSneaking() const { return sneaking_; }
+    [[nodiscard]] bool isSprinting() const { return sprinting_; }
 
 private:
-    bool sneaking_;
+    bool sprinting_;
 };
 
 }  // namespace endstone

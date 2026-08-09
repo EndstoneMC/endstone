@@ -26,8 +26,8 @@
     <includedby refid="player__quit__event_8h" local="yes">include/endstone/event/player/player_quit_event.h</includedby>
     <includedby refid="player__respawn__event_8h" local="yes">include/endstone/event/player/player_respawn_event.h</includedby>
     <includedby refid="player__skin__change__event_8h" local="yes">include/endstone/event/player/player_skin_change_event.h</includedby>
-    <includedby refid="player__sneak__event_8h" local="yes">include/endstone/event/player/player_sneak_event.h</includedby>
-    <includedby refid="player__sprint__event_8h" local="yes">include/endstone/event/player/player_sprint_event.h</includedby>
+    <includedby refid="player__toggle__sneak__event_8h" local="yes">include/endstone/event/player/player_toggle_sneak_event.h</includedby>
+    <includedby refid="player__toggle__sprint__event_8h" local="yes">include/endstone/event/player/player_toggle_sprint_event.h</includedby>
     <incdepgraph>
       <node id="14">
         <label>endstone/actor/actor.h</label>
@@ -1239,19 +1239,19 @@
         <label>include/endstone/event/player/player_skin_change_event.h</label>
         <link refid="player__skin__change__event_8h_source"/>
       </node>
-      <node id="26">
-        <label>include/endstone/event/player/player_sneak_event.h</label>
-        <link refid="player__sneak__event_8h_source"/>
-      </node>
-      <node id="27">
-        <label>include/endstone/event/player/player_sprint_event.h</label>
-        <link refid="player__sprint__event_8h_source"/>
-      </node>
       <node id="20">
         <label>include/endstone/event/player/player_teleport_event.h</label>
         <link refid="player__teleport__event_8h_source"/>
         <childnode refid="21" relation="include">
         </childnode>
+      </node>
+      <node id="26">
+        <label>include/endstone/event/player/player_toggle_sneak_event.h</label>
+        <link refid="player__toggle__sneak__event_8h_source"/>
+      </node>
+      <node id="27">
+        <label>include/endstone/event/player/player_toggle_sprint_event.h</label>
+        <link refid="player__toggle__sprint__event_8h_source"/>
       </node>
     </invincdepgraph>
     <innerclass refid="classendstone_1_1PlayerEvent" prot="public">endstone::PlayerEvent</innerclass>

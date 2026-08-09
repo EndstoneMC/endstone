@@ -1,16 +1,16 @@
 
 
-# Class endstone::PlayerSneakEvent
+# Class endstone::PlayerToggleSprintEvent
 
 
 
-[**ClassList**](annotated.md) **>** [**endstone**](namespaceendstone.md) **>** [**PlayerSneakEvent**](classendstone_1_1PlayerSneakEvent.md)
+[**ClassList**](annotated.md) **>** [**endstone**](namespaceendstone.md) **>** [**PlayerToggleSprintEvent**](classendstone_1_1PlayerToggleSprintEvent.md)
 
 
 
-_Called when a player starts or stops sneaking._ 
+_Called when a player toggles their sprinting state._ 
 
-* `#include <endstone/event/player/player_sneak_event.h>`
+* `#include <endstone/event/player/player_toggle_sprint_event.h>`
 
 
 
@@ -93,8 +93,8 @@ Inherits the following classes: [endstone::PlayerEvent](classendstone_1_1PlayerE
 
 | Type | Name |
 | ---: | :--- |
-|   | [**PlayerSneakEvent**](#function-playersneakevent) ([**Player**](classendstone_1_1Player.md) & player, [**bool**](classendstone_1_1Identifier.md) sneaking) <br> |
-|  [**bool**](classendstone_1_1Identifier.md) | [**isSneaking**](#function-issneaking) () const<br>_Gets whether the player is attempting to sneak._  |
+|   | [**PlayerToggleSprintEvent**](#function-playertogglesprintevent) ([**Player**](classendstone_1_1Player.md) & player, [**bool**](classendstone_1_1Identifier.md) sprinting) <br> |
+|  [**bool**](classendstone_1_1Identifier.md) | [**isSprinting**](#function-issprinting) () const<br>_Returns whether the player is now sprinting or not._  |
 
 
 ## Public Functions inherited from endstone::PlayerEvent
@@ -214,12 +214,12 @@ See [endstone::PlayerEvent](classendstone_1_1PlayerEvent.md)
 
 
 
-### function PlayerSneakEvent 
+### function PlayerToggleSprintEvent 
 
 ```C++
-inline explicit endstone::PlayerSneakEvent::PlayerSneakEvent (
+inline explicit endstone::PlayerToggleSprintEvent::PlayerToggleSprintEvent (
     Player & player,
-    bool sneaking
+    bool sprinting
 ) 
 ```
 
@@ -230,11 +230,11 @@ inline explicit endstone::PlayerSneakEvent::PlayerSneakEvent (
 
 
 
-### function isSneaking 
+### function isSprinting 
 
-_Gets whether the player is attempting to sneak._ 
+_Returns whether the player is now sprinting or not._ 
 ```C++
-inline bool endstone::PlayerSneakEvent::isSneaking () const
+inline bool endstone::PlayerToggleSprintEvent::isSprinting () const
 ```
 
 
@@ -243,7 +243,7 @@ inline bool endstone::PlayerSneakEvent::isSneaking () const
 
 **Returns:**
 
-true when starting to sneak, false when stopping 
+the new sprinting state 
 
 
 
@@ -254,5 +254,5 @@ true when starting to sneak, false when stopping
 <hr>
 
 ------------------------------
-The documentation for this class was generated from the following file `include/endstone/event/player/player_sneak_event.h`
+The documentation for this class was generated from the following file `include/endstone/event/player/player_toggle_sprint_event.h`
 

@@ -210,19 +210,19 @@
         <label>include/endstone/event/player/player_skin_change_event.h</label>
         <link refid="player__skin__change__event_8h_source"/>
       </node>
-      <node id="30">
-        <label>include/endstone/event/player/player_sneak_event.h</label>
-        <link refid="player__sneak__event_8h_source"/>
-      </node>
-      <node id="31">
-        <label>include/endstone/event/player/player_sprint_event.h</label>
-        <link refid="player__sprint__event_8h_source"/>
-      </node>
       <node id="24">
         <label>include/endstone/event/player/player_teleport_event.h</label>
         <link refid="player__teleport__event_8h_source"/>
         <childnode refid="25" relation="include">
         </childnode>
+      </node>
+      <node id="30">
+        <label>include/endstone/event/player/player_toggle_sneak_event.h</label>
+        <link refid="player__toggle__sneak__event_8h_source"/>
+      </node>
+      <node id="31">
+        <label>include/endstone/event/player/player_toggle_sprint_event.h</label>
+        <link refid="player__toggle__sprint__event_8h_source"/>
       </node>
       <node id="2">
         <label>include/endstone/form/action_form.h</label>
