@@ -36,6 +36,11 @@
 * **FloatTag** ([**endstone**](namespaceendstone.md))
 
 
+## g
+
+* **GameRuleValue** ([**endstone**](namespaceendstone.md))
+
+
 ## i
 
 * **IntArrayTag** ([**endstone**](namespaceendstone.md))

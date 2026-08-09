@@ -15,6 +15,7 @@
 * `#include <string>`
 * `#include <vector>`
 * `#include "endstone/actor/actor.h"`
+* `#include "endstone/game_rule.h"`
 * `#include "endstone/level/dimension.h"`
 * `#include "endstone/level/dimension_creator.h"`
 

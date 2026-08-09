@@ -226,6 +226,14 @@
 ([**std**](namespacestd.md))
 
 
+## g
+
+* [**GameRule**](classendstone_1_1GameRule.md)
+([**endstone**](namespaceendstone.md))
+* [**GameRuleId**](classendstone_1_1GameRuleId.md)
+([**endstone**](namespaceendstone.md))
+
+
 ## h
 
 * [**HandlerList**](classendstone_1_1HandlerList.md)

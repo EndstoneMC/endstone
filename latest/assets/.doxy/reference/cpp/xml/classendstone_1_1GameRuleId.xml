@@ -1,0 +1,209 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.8" xml:lang="en-US">
+  <compounddef id="classendstone_1_1GameRuleId" kind="class" language="C++" prot="public">
+    <compoundname>endstone::GameRuleId</compoundname>
+    <basecompoundref refid="classendstone_1_1Identifier" prot="public" virt="non-virtual">endstone::Identifier&lt; GameRule &gt;</basecompoundref>
+    <includes refid="game__rule_8h" local="no">endstone/game_rule.h</includes>
+    <templateparamlist>
+      <param>
+        <type><ref refid="classendstone_1_1Identifier" kindref="compound">typename</ref> <ref refid="classendstone_1_1Identifier" kindref="compound">T</ref></type>
+      </param>
+    </templateparamlist>
+    <sectiondef kind="public-static-func">
+      <memberdef kind="function" id="classendstone_1_1GameRuleId_1affe20c956e2e3a8e90db0c40ee35bf63" prot="public" static="yes" constexpr="yes" const="no" explicit="no" inline="yes" noexcept="yes" virt="non-virtual">
+        <type><ref refid="classendstone_1_1Identifier" kindref="compound">constexpr</ref> <ref refid="classendstone_1_1GameRuleId" kindref="compound">GameRuleId</ref></type>
+        <definition>static constexpr GameRuleId endstone::GameRuleId&lt; T &gt;::minecraft</definition>
+        <argsstring>(const std::string_view key) noexcept</argsstring>
+        <name>minecraft</name>
+        <qualifiedname>endstone::GameRuleId::minecraft</qualifiedname>
+        <param>
+          <type><ref refid="classendstone_1_1Identifier" kindref="compound">const</ref> std::string_view</type>
+          <declname>key</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/game_rule.h" line="36" column="33" bodyfile="include/endstone/game_rule.h" bodystart="36" bodyend="36"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="public-func">
+      <memberdef kind="function" id="classendstone_1_1GameRuleId_1a8fb79d1d92931c86800559f3cb1dc442" prot="public" static="no" constexpr="yes" const="no" explicit="no" inline="yes" noexcept="yes" virt="non-virtual">
+        <type><ref refid="classendstone_1_1Identifier" kindref="compound">constexpr</ref></type>
+        <definition>constexpr endstone::Identifier&lt; T &gt;::Identifier</definition>
+        <argsstring>(const char *s) noexcept</argsstring>
+        <name>Identifier</name>
+        <qualifiedname>endstone::GameRuleId::Identifier</qualifiedname>
+        <param>
+          <type><ref refid="classendstone_1_1Identifier" kindref="compound">const</ref> <ref refid="classendstone_1_1Identifier" kindref="compound">char</ref> *</type>
+          <declname>s</declname>
+        </param>
+        <briefdescription>
+<para>Constructs an identifier by parsing a string. </para>
+        </briefdescription>
+        <detaileddescription>
+<para>See the string_view overload for the parsing rules.</para>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>s</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The identifier string. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/game_rule.h" line="34" column="5" bodyfile="include/endstone/identifier.h" bodystart="39" bodyend="39"/>
+      </memberdef>
+      <memberdef kind="function" id="classendstone_1_1GameRuleId_1a188a3d0cc50fa80ea6176183740fe007" prot="public" static="no" constexpr="yes" const="no" explicit="no" inline="yes" noexcept="yes" virt="non-virtual">
+        <type><ref refid="classendstone_1_1Identifier" kindref="compound">constexpr</ref></type>
+        <definition>constexpr endstone::Identifier&lt; T &gt;::Identifier</definition>
+        <argsstring>(const std::string &amp;s) noexcept</argsstring>
+        <name>Identifier</name>
+        <qualifiedname>endstone::GameRuleId::Identifier</qualifiedname>
+        <param>
+          <type><ref refid="classendstone_1_1Identifier" kindref="compound">const</ref> std::string &amp;</type>
+          <declname>s</declname>
+        </param>
+        <briefdescription>
+<para>Constructs an identifier by parsing a string. </para>
+        </briefdescription>
+        <detaileddescription>
+<para>See the string_view overload for the parsing rules.</para>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>s</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The identifier string. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/game_rule.h" line="34" column="5" bodyfile="include/endstone/identifier.h" bodystart="46" bodyend="46"/>
+      </memberdef>
+      <memberdef kind="function" id="classendstone_1_1GameRuleId_1a1433ff65a2a925be18f2537224160137" prot="public" static="no" constexpr="yes" const="no" explicit="no" inline="yes" noexcept="yes" virt="non-virtual">
+        <type><ref refid="classendstone_1_1Identifier" kindref="compound">constexpr</ref></type>
+        <definition>constexpr endstone::Identifier&lt; T &gt;::Identifier</definition>
+        <argsstring>(const std::string_view &amp;identifier) noexcept</argsstring>
+        <name>Identifier</name>
+        <qualifiedname>endstone::GameRuleId::Identifier</qualifiedname>
+        <param>
+          <type><ref refid="classendstone_1_1Identifier" kindref="compound">const</ref> std::string_view &amp;</type>
+          <declname>identifier</declname>
+        </param>
+        <briefdescription>
+<para>Constructs an identifier by parsing a string. </para>
+        </briefdescription>
+        <detaileddescription>
+<para>If the string contains a colon, the part before the last colon is taken as the namespace and the remainder as the key. Otherwise the whole string is the key and the namespace defaults to <computeroutput>minecraft</computeroutput>.</para>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>identifier</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The identifier string. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/game_rule.h" line="34" column="5" bodyfile="include/endstone/identifier.h" bodystart="56" bodyend="67"/>
+      </memberdef>
+      <memberdef kind="function" id="classendstone_1_1GameRuleId_1ad7a0a327a55eed2cae97237160b022a4" prot="public" static="no" constexpr="yes" const="no" explicit="no" inline="yes" noexcept="yes" virt="non-virtual">
+        <type><ref refid="classendstone_1_1Identifier" kindref="compound">constexpr</ref></type>
+        <definition>constexpr endstone::Identifier&lt; T &gt;::Identifier</definition>
+        <argsstring>(const std::string_view &amp;namespace_, const std::string_view &amp;key) noexcept</argsstring>
+        <name>Identifier</name>
+        <qualifiedname>endstone::GameRuleId::Identifier</qualifiedname>
+        <param>
+          <type><ref refid="classendstone_1_1Identifier" kindref="compound">const</ref> std::string_view &amp;</type>
+          <declname>namespace_</declname>
+        </param>
+        <param>
+          <type><ref refid="classendstone_1_1Identifier" kindref="compound">const</ref> std::string_view &amp;</type>
+          <declname>key</declname>
+        </param>
+        <briefdescription>
+<para>Constructs an identifier from a separate namespace and key. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>namespace_</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The namespace component. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>key</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The key component. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/game_rule.h" line="34" column="5" bodyfile="include/endstone/identifier.h" bodystart="75" bodyend="78"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+<para>Represents the identifier of a game rule, carrying the type of the rule&apos;s value. </para>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="2">
+        <label>endstone::Identifier&lt; GameRule &gt;</label>
+        <link refid="classendstone_1_1Identifier"/>
+      </node>
+      <node id="1">
+        <label>endstone::GameRuleId&lt; T &gt;</label>
+        <link refid="classendstone_1_1GameRuleId"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="2">
+        <label>endstone::Identifier&lt; GameRule &gt;</label>
+        <link refid="classendstone_1_1Identifier"/>
+      </node>
+      <node id="1">
+        <label>endstone::GameRuleId&lt; T &gt;</label>
+        <link refid="classendstone_1_1GameRuleId"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+    </collaborationgraph>
+    <location file="include/endstone/game_rule.h" line="32" column="1" bodyfile="include/endstone/game_rule.h" bodystart="32" bodyend="37"/>
+    <listofallmembers>
+      <member refid="classendstone_1_1Identifier_1a43556ba00f67a5ff4e92555e86eda788" prot="public" virt="non-virtual"><scope>endstone::GameRuleId</scope><name>getKey</name></member>
+      <member refid="classendstone_1_1Identifier_1af3574ba3a17f608f124f2d0315c3f21b" prot="public" virt="non-virtual"><scope>endstone::GameRuleId</scope><name>getNamespace</name></member>
+      <member refid="classendstone_1_1GameRuleId_1a8fb79d1d92931c86800559f3cb1dc442" prot="public" virt="non-virtual"><scope>endstone::GameRuleId</scope><name>Identifier</name></member>
+      <member refid="classendstone_1_1GameRuleId_1a188a3d0cc50fa80ea6176183740fe007" prot="public" virt="non-virtual"><scope>endstone::GameRuleId</scope><name>Identifier</name></member>
+      <member refid="classendstone_1_1GameRuleId_1a1433ff65a2a925be18f2537224160137" prot="public" virt="non-virtual"><scope>endstone::GameRuleId</scope><name>Identifier</name></member>
+      <member refid="classendstone_1_1GameRuleId_1ad7a0a327a55eed2cae97237160b022a4" prot="public" virt="non-virtual"><scope>endstone::GameRuleId</scope><name>Identifier</name></member>
+      <member refid="classendstone_1_1GameRuleId_1affe20c956e2e3a8e90db0c40ee35bf63" prot="public" virt="non-virtual"><scope>endstone::GameRuleId</scope><name>minecraft</name></member>
+      <member refid="classendstone_1_1Identifier_1a1d08ebf05277cab89f84c39867903da5" prot="public" virt="non-virtual"><scope>endstone::GameRuleId</scope><name>Minecraft</name></member>
+      <member refid="classendstone_1_1Identifier_1af1a4a37a0a78e947b786cd6a39d7417a" prot="public" virt="non-virtual"><scope>endstone::GameRuleId</scope><name>operator std::string</name></member>
+      <member refid="classendstone_1_1Identifier_1ae5dbb768ecac7d06848cde156e55f304" prot="public" virt="non-virtual"><scope>endstone::GameRuleId</scope><name>operator!=</name></member>
+      <member refid="classendstone_1_1Identifier_1abf2ac66c2abfc0dcfcedd8fe17fefcca" prot="public" virt="non-virtual"><scope>endstone::GameRuleId</scope><name>operator==</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

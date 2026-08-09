@@ -65,6 +65,7 @@ This inheritance list is sorted roughly, but not completely, alphabetically:
     * **class** [**endstone::Biome**](classendstone_1_1Biome.md) 
     * **class** [**endstone::BlockType**](classendstone_1_1BlockType.md) 
     * **class** [**endstone::Enchantment**](classendstone_1_1Enchantment.md) _Represents an enchantment that may be added to armor, weapons, tools or other items._ 
+    * **class** [**endstone::GameRule**](classendstone_1_1GameRule.md) _Represents a game rule._ 
     * **class** [**endstone::ItemType**](classendstone_1_1ItemType.md) _Represents an item type._ 
 * **class** [**endstone::Attribute**](classendstone_1_1Attribute.md) _All attribute types._ 
 * **class** [**endstone::AttributeInstance**](classendstone_1_1AttributeInstance.md) _Represents a mutable instance of an attribute and its associated modifiers and values._ 
@@ -98,11 +99,11 @@ This inheritance list is sorted roughly, but not completely, alphabetically:
 * **class** [**endstone::Effect**](classendstone_1_1Effect.md) _Represents an effect that can be added to a_ [_**Mob**_](classendstone_1_1Mob.md) _._
 * **class** [**endstone::EffectType**](classendstone_1_1EffectType.md) _All effect types._ 
 * **class** [**endstone::EventHandler**](classendstone_1_1EventHandler.md) _Represents a registered_ [_**EventHandler**_](classendstone_1_1EventHandler.md) _which associates with a_[_**Plugin**_](classendstone_1_1Plugin.md) _._
+* **class** [**endstone::Identifier**](classendstone_1_1Identifier.md) _Represents a identifier consisting of two components: a namespace and a key._ 
 * **class** [**endstone::HandlerList**](classendstone_1_1HandlerList.md) _A list of event handlers._ 
 * **class** [**endstone::Header**](classendstone_1_1Header.md) _Represents a header with a label._ 
 * **class** [**endstone::IRegistry**](classendstone_1_1IRegistry.md) _Type-erased base interface for registries._     
     * **class** [**endstone::Registry**](classendstone_1_1Registry.md) _Abstract registry interface for objects with identifiers._ 
-* **class** [**endstone::Identifier**](classendstone_1_1Identifier.md) _Represents a identifier consisting of two components: a namespace and a key._ 
 * **class** [**endstone::Image**](classendstone_1_1Image.md) _Represents an RGBA image._ 
 * **class** [**endstone::Inventory**](classendstone_1_1Inventory.md) _Interface to the various inventories._     
     * **class** [**endstone::PlayerInventory**](classendstone_1_1PlayerInventory.md) _Interface to the inventory of a_ [_**Player**_](classendstone_1_1Player.md) _, including the four armor slots and any extra slots._

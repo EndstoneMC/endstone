@@ -1090,6 +1090,54 @@
   <compound refid="structstd_1_1formatter_3_01T_01_4" kind="struct"><name>std::formatter&lt; T &gt;</name>
     <member refid="structstd_1_1formatter_3_01T_01_4_1afe00bc1288dc59e2b4bac098d5e697e1" kind="function"><name>format</name></member>
   </compound>
+  <compound refid="classendstone_1_1GameRule" kind="class"><name>endstone::GameRule</name>
+    <member refid="classendstone_1_1GameRule_1a826159553a9d4f87d4fae744ad622494" kind="variable"><name>CommandBlockOutput</name></member>
+    <member refid="classendstone_1_1GameRule_1aab94062b9aa342455a81716ff3ee8460" kind="variable"><name>CommandBlocksEnabled</name></member>
+    <member refid="classendstone_1_1GameRule_1ad672baaebb89b9488e481cf82fcee82a" kind="variable"><name>DoDayLightCycle</name></member>
+    <member refid="classendstone_1_1GameRule_1a4a91e7a683fe77324a879f9c5f42c720" kind="variable"><name>DoEntityDrops</name></member>
+    <member refid="classendstone_1_1GameRule_1a7bf9a65e6b9ff42265d98df63ef1c303" kind="variable"><name>DoFireTick</name></member>
+    <member refid="classendstone_1_1GameRule_1a649dd3f02d9c77394ef23306ad33f66d" kind="variable"><name>DoImmediateRespawn</name></member>
+    <member refid="classendstone_1_1GameRule_1a940568fac77b7a3aa631d39b47a45bd0" kind="variable"><name>DoInsomnia</name></member>
+    <member refid="classendstone_1_1GameRule_1ad24082a86cc8be4321404f310fb6d6f6" kind="variable"><name>DoLimitedCrafting</name></member>
+    <member refid="classendstone_1_1GameRule_1a16700847c74129d210e6abb42e3a2a63" kind="variable"><name>DoMobLoot</name></member>
+    <member refid="classendstone_1_1GameRule_1ad814a63d7ce1fc2cc736edff0dd7730c" kind="variable"><name>DoMobSpawning</name></member>
+    <member refid="classendstone_1_1GameRule_1af16c3d4ebd1f77cb7ec324c4728001c6" kind="variable"><name>DoTileDrops</name></member>
+    <member refid="classendstone_1_1GameRule_1a4c0ff9ffd3c8954a4d5dec7739c44d3b" kind="variable"><name>DoWeatherCycle</name></member>
+    <member refid="classendstone_1_1GameRule_1af1e11337a1eca61b9dabde53d30eb7bd" kind="variable"><name>DrowningDamage</name></member>
+    <member refid="classendstone_1_1GameRule_1a8e82bbb00c2fc2f2cb2e94c93d0b4e50" kind="variable"><name>FallDamage</name></member>
+    <member refid="classendstone_1_1GameRule_1a7a9c92def4f3098fbcbeda76e33577ef" kind="variable"><name>FireDamage</name></member>
+    <member refid="classendstone_1_1GameRule_1afbdc69b4e5668be5e567a0d95057089b" kind="variable"><name>FreezeDamage</name></member>
+    <member refid="classendstone_1_1GameRule_1a791c033fc9c09094e4c4d685823e0fca" kind="variable"><name>FunctionCommandLimit</name></member>
+    <member refid="classendstone_1_1GameRule_1a6588970450cc49b8f60823661408050d" kind="variable"><name>KeepInventory</name></member>
+    <member refid="classendstone_1_1GameRule_1aaf906922837fdcc6be481958b5c107f1" kind="variable"><name>LocatorBar</name></member>
+    <member refid="classendstone_1_1GameRule_1a76b59918573e66bb9c9e3dc443784d35" kind="variable"><name>MaxCommandChainLength</name></member>
+    <member refid="classendstone_1_1GameRule_1a0fbcb527c076e9cfd904fcbd0bd2a441" kind="variable"><name>MobGriefing</name></member>
+    <member refid="classendstone_1_1GameRule_1a4d381b44b8c5584ca501293c01e11e89" kind="variable"><name>NaturalRegeneration</name></member>
+    <member refid="classendstone_1_1GameRule_1aadb47c5689699f46b836a2a0f6783554" kind="variable"><name>PlayersSleepingPercentage</name></member>
+    <member refid="classendstone_1_1GameRule_1a1e6bca268e7ed3b6876dc78912d23fb9" kind="variable"><name>PlayerWaypoints</name></member>
+    <member refid="classendstone_1_1GameRule_1a6d8ca5a8c336d1496881cfd2c3975f4d" kind="variable"><name>ProjectilesCanBreakBlocks</name></member>
+    <member refid="classendstone_1_1GameRule_1af21c404eab42cc54a9cbb317d763d623" kind="variable"><name>Pvp</name></member>
+    <member refid="classendstone_1_1GameRule_1ad3bf421a48e0c6e5ab78813b79ec89c9" kind="variable"><name>RandomTickSpeed</name></member>
+    <member refid="classendstone_1_1GameRule_1aa7a9353c379f602cc75f63f2cca2f7d5" kind="variable"><name>RecipesUnlock</name></member>
+    <member refid="classendstone_1_1GameRule_1ad2ac0cd0bc43a2eb942e84fd2e2f3b0b" kind="variable"><name>RespawnBlocksExplode</name></member>
+    <member refid="classendstone_1_1GameRule_1a061a4173d6e9626f5094d878a909d502" kind="variable"><name>SendCommandFeedback</name></member>
+    <member refid="classendstone_1_1GameRule_1aa19784d46ad5e2fe28b4ac868488e4fb" kind="variable"><name>ShowBorderEffect</name></member>
+    <member refid="classendstone_1_1GameRule_1a102c5a4aa1af723b214dee6497683b3b" kind="variable"><name>ShowCoordinates</name></member>
+    <member refid="classendstone_1_1GameRule_1a9ee2339c0b2cf4ac126044a647af60ac" kind="variable"><name>ShowDaysPlayed</name></member>
+    <member refid="classendstone_1_1GameRule_1a14a3bd5c5c82e776f23be99b9d976f96" kind="variable"><name>ShowDeathMessages</name></member>
+    <member refid="classendstone_1_1GameRule_1aa085c113fd6794c014e41327fc566869" kind="variable"><name>ShowRecipeMessages</name></member>
+    <member refid="classendstone_1_1GameRule_1af0e15a25cb884eef4263ca728723854a" kind="variable"><name>ShowTags</name></member>
+    <member refid="classendstone_1_1GameRule_1a52947b9c381999d47657d6513efe6d65" kind="variable"><name>SpawnRadius</name></member>
+    <member refid="classendstone_1_1GameRule_1ae34ffa04b391e784e5de57f76d69a032" kind="variable"><name>TntExplodes</name></member>
+    <member refid="classendstone_1_1GameRule_1a5dfe17f656cf655f9beef45f860a7416" kind="variable"><name>TntExplosionDropDecay</name></member>
+  </compound>
+  <compound refid="classendstone_1_1GameRuleId" kind="class"><name>endstone::GameRuleId</name>
+    <member refid="classendstone_1_1GameRuleId_1affe20c956e2e3a8e90db0c40ee35bf63" kind="function"><name>minecraft</name></member>
+    <member refid="classendstone_1_1GameRuleId_1a8fb79d1d92931c86800559f3cb1dc442" kind="function"><name>Identifier</name></member>
+    <member refid="classendstone_1_1GameRuleId_1a188a3d0cc50fa80ea6176183740fe007" kind="function"><name>Identifier</name></member>
+    <member refid="classendstone_1_1GameRuleId_1a1433ff65a2a925be18f2537224160137" kind="function"><name>Identifier</name></member>
+    <member refid="classendstone_1_1GameRuleId_1ad7a0a327a55eed2cae97237160b022a4" kind="function"><name>Identifier</name></member>
+  </compound>
   <compound refid="classendstone_1_1HandlerList" kind="class"><name>endstone::HandlerList</name>
     <member refid="classendstone_1_1HandlerList_1ab763f006b235b0de384c00307a837f67" kind="variable"><name>mtx_</name></member>
     <member refid="classendstone_1_1HandlerList_1aeb44cef7cd2c841d804cd2a42f266660" kind="variable"><name>handlers_</name></member>
@@ -1348,6 +1396,12 @@
     <member refid="classendstone_1_1Level_1a3d35cfe99af2aed185b3486aadf71a0b" kind="function"><name>getDimension</name></member>
     <member refid="classendstone_1_1Level_1a8a66de9c04235951ccf4e86175337a27" kind="function"><name>createDimension</name></member>
     <member refid="classendstone_1_1Level_1a353a8752c7825d35373287ede5e4019a" kind="function"><name>getSeed</name></member>
+    <member refid="classendstone_1_1Level_1aff277661394a71d0c53c83db5b92b89a" kind="function"><name>_hasGameRule</name></member>
+    <member refid="classendstone_1_1Level_1a1b4fe9813f45062bfe7b1e6c02573db4" kind="function"><name>hasGameRule</name></member>
+    <member refid="classendstone_1_1Level_1a7b1335b90c0d28d1626e9316deeb58b0" kind="function"><name>_getGameRule</name></member>
+    <member refid="classendstone_1_1Level_1a6916cd92f074cd26f9a933dcef0bbc00" kind="function"><name>getGameRule</name></member>
+    <member refid="classendstone_1_1Level_1ac710e81ac716a26ee47acb71f660abf4" kind="function"><name>_setGameRule</name></member>
+    <member refid="classendstone_1_1Level_1abe694748cb651cd8a2158e3d59c4fa7c" kind="function"><name>setGameRule</name></member>
   </compound>
   <compound refid="classendstone_1_1LevelEvent" kind="class"><name>endstone::LevelEvent</name>
     <member refid="classendstone_1_1LevelEvent_1ab3a3f5c2858709f045ea2195567b7892" kind="variable"><name>level_</name></member>
@@ -2844,6 +2898,7 @@
     <member refid="namespaceendstone_1a688abbe501a61374454a55553d25e08f" kind="typedef"><name>BlockStates</name></member>
     <member refid="namespaceendstone_1a42f3cb333492510ff60b8097153fa66a" kind="typedef"><name>BlockTypeId</name></member>
     <member refid="namespaceendstone_1a996c90f609bfd792a8245bb60fd3e4ea" kind="typedef"><name>EnchantmentId</name></member>
+    <member refid="namespaceendstone_1a1acf0c454d9792da7d550a4537077508" kind="typedef"><name>GameRuleValue</name></member>
     <member refid="namespaceendstone_1a38ff2441d6476b407a46c5868fd25cd3" kind="typedef"><name>ItemTypeId</name></member>
     <member refid="namespaceendstone_1a50a151fb732635e869fd9c0a4ef78c2c" kind="typedef"><name>DimensionId</name></member>
     <member refid="namespaceendstone_1ab1be61859bf80a227cf5d0b12a26ef78" kind="typedef"><name>Message</name></member>
@@ -3180,6 +3235,8 @@
   <compound refid="modal__form_8h" kind="file"><name>modal_form.h</name>
   </compound>
   <compound refid="game__mode_8h" kind="file"><name>game_mode.h</name>
+  </compound>
+  <compound refid="game__rule_8h" kind="file"><name>game_rule.h</name>
   </compound>
   <compound refid="identifier_8h" kind="file"><name>identifier.h</name>
   </compound>

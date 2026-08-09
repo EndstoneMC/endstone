@@ -300,6 +300,7 @@
 * **getMaxDurability** ([**endstone::ItemType**](classendstone_1_1ItemType.md))
 * **getLocale** ([**endstone::Language**](classendstone_1_1Language.md), [**endstone::Player**](classendstone_1_1Player.md))
 * **getDimensions** ([**endstone::Level**](classendstone_1_1Level.md))
+* **getGameRule** ([**endstone::Level**](classendstone_1_1Level.md))
 * **getSeed** ([**endstone::Level**](classendstone_1_1Level.md))
 * **getTime** ([**endstone::Level**](classendstone_1_1Level.md))
 * **getBlockX** ([**endstone::Location**](classendstone_1_1Location.md), [**endstone::Vector**](classendstone_1_1Vector.md))
@@ -492,6 +493,7 @@
 * **hasLore** ([**endstone::ItemMeta**](classendstone_1_1ItemMeta.md))
 * **hasRepairCost** ([**endstone::ItemMeta**](classendstone_1_1ItemMeta.md))
 * **hasItemMeta** ([**endstone::ItemStack**](classendstone_1_1ItemStack.md), [**endstone::ItemStack::Impl**](classendstone_1_1ItemStack_1_1Impl.md))
+* **hasGameRule** ([**endstone::Level**](classendstone_1_1Level.md))
 * **hasMapId** ([**endstone::MapMeta**](classendstone_1_1MapMeta.md))
 * **hasMapView** ([**endstone::MapMeta**](classendstone_1_1MapMeta.md))
 * **hasAttribute** ([**endstone::Mob**](classendstone_1_1Mob.md))
@@ -527,7 +529,7 @@
 * **isInfinite** ([**endstone::Effect**](classendstone_1_1Effect.md))
 * **isAsynchronous** ([**endstone::Event**](classendstone_1_1Event.md))
 * **isIgnoreCancelled** ([**endstone::EventHandler**](classendstone_1_1EventHandler.md))
-* **Identifier** ([**endstone::Identifier**](classendstone_1_1Identifier.md))
+* **Identifier** ([**endstone::GameRuleId**](classendstone_1_1GameRuleId.md), [**endstone::Identifier**](classendstone_1_1Identifier.md))
 * **Image** ([**endstone::Image**](classendstone_1_1Image.md))
 * **isEmpty** ([**endstone::Inventory**](classendstone_1_1Inventory.md))
 * **IpBanEntry** ([**endstone::IpBanEntry**](classendstone_1_1IpBanEntry.md))
@@ -593,7 +595,7 @@
 ## m
 
 * **merge** ([**endstone::CompoundTag**](classendstone_1_1CompoundTag.md))
-* **minecraft** ([**endstone::Identifier**](classendstone_1_1Identifier.md))
+* **minecraft** ([**endstone::GameRuleId**](classendstone_1_1GameRuleId.md), [**endstone::Identifier**](classendstone_1_1Identifier.md))
 * **MapCursor** ([**endstone::MapCursor**](classendstone_1_1MapCursor.md))
 * **MapInitializeEvent** ([**endstone::MapInitializeEvent**](classendstone_1_1MapInitializeEvent.md))
 * **MapRenderer** ([**endstone::MapRenderer**](classendstone_1_1MapRenderer.md))
@@ -797,6 +799,7 @@
 * **setAmount** ([**endstone::ItemStack**](classendstone_1_1ItemStack.md), [**endstone::ItemStack::Impl**](classendstone_1_1ItemStack_1_1Impl.md))
 * **setItemMeta** ([**endstone::ItemStack**](classendstone_1_1ItemStack.md), [**endstone::ItemStack::Impl**](classendstone_1_1ItemStack_1_1Impl.md))
 * **setNbt** ([**endstone::ItemStack**](classendstone_1_1ItemStack.md), [**endstone::ItemStack::Impl**](classendstone_1_1ItemStack_1_1Impl.md))
+* **setGameRule** ([**endstone::Level**](classendstone_1_1Level.md))
 * **setTime** ([**endstone::Level**](classendstone_1_1Level.md))
 * **setDimension** ([**endstone::Location**](classendstone_1_1Location.md), [**endstone::MapView**](classendstone_1_1MapView.md))
 * **setDirection** ([**endstone::Location**](classendstone_1_1Location.md), [**endstone::MapCursor**](classendstone_1_1MapCursor.md))
@@ -1021,6 +1024,9 @@
 
 ## _
 
+* **\_getGameRule** ([**endstone::Level**](classendstone_1_1Level.md))
+* **\_hasGameRule** ([**endstone::Level**](classendstone_1_1Level.md))
+* **\_setGameRule** ([**endstone::Level**](classendstone_1_1Level.md))
 * **\_getRegistry** ([**endstone::Server**](classendstone_1_1Server.md))
 
 

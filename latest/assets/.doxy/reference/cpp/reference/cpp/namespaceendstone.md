@@ -104,6 +104,8 @@ _Represents a button with text and an optional icon._
 | class | [**Event**](classendstone_1_1Event.md) <br>_Represents an event._  |
 | class | [**EventHandler**](classendstone_1_1EventHandler.md) <br>_Represents a registered_ [_**EventHandler**_](classendstone_1_1EventHandler.md) _which associates with a_[_**Plugin**_](classendstone_1_1Plugin.md) _._ |
 | class | [**Form**](classendstone_1_1Form.md) &lt;[**typename**](classendstone_1_1Identifier.md) [**T**](classendstone_1_1Identifier.md)&gt;<br>_Represents a generic form._  |
+| class | [**GameRule**](classendstone_1_1GameRule.md) <br>_Represents a game rule._  |
+| class | [**GameRuleId**](classendstone_1_1GameRuleId.md) &lt;[**typename**](classendstone_1_1Identifier.md) [**T**](classendstone_1_1Identifier.md)&gt;<br>_Represents the identifier of a game rule, carrying the type of the rule's value._  |
 | class | [**HandlerList**](classendstone_1_1HandlerList.md) <br>_A list of event handlers._  |
 | class | [**Header**](classendstone_1_1Header.md) <br>_Represents a header with a label._  |
 | class | [**ICancellable**](classendstone_1_1ICancellable.md) <br>_Interface for events that may be cancelled by a plugin or the server._  |
@@ -242,6 +244,7 @@ _Represents a button with text and an optional icon._
 | enum  | [**EventResult**](#enum-eventresult)  <br>_Represents the result a plugin can apply to an event whose default behaviour can be allowed, denied, or left to the server._  |
 | typedef [**nbt::ValueTag**](classendstone_1_1nbt_1_1ValueTag.md)&lt; [**float**](classendstone_1_1Identifier.md) &gt; | [**FloatTag**](#typedef-floattag)  <br> |
 | enum  | [**GameMode**](#enum-gamemode)  <br>_Represents the various type of game modes that Players may have._  |
+| typedef std::variant&lt; [**bool**](classendstone_1_1Identifier.md), [**int**](classendstone_1_1Identifier.md), [**float**](classendstone_1_1Identifier.md) &gt; | [**GameRuleValue**](#typedef-gamerulevalue)  <br> |
 | typedef [**nbt::ArrayTag**](classendstone_1_1nbt_1_1ArrayTag.md)&lt; std::int32\_t &gt; | [**IntArrayTag**](#typedef-intarraytag)  <br> |
 | typedef [**nbt::ValueTag**](classendstone_1_1nbt_1_1ValueTag.md)&lt; std::int32\_t &gt; | [**IntTag**](#typedef-inttag)  <br> |
 | typedef [**Identifier**](classendstone_1_1Identifier.md)&lt; [**ItemType**](classendstone_1_1ItemType.md) &gt; | [**ItemTypeId**](#typedef-itemtypeid)  <br>_Represents an item type._  |
@@ -673,6 +676,19 @@ enum endstone::GameMode {
     Adventure = 2,
     Spectator = 3
 };
+```
+
+
+
+
+<hr>
+
+
+
+### typedef GameRuleValue 
+
+```C++
+using endstone::GameRuleValue = typedef std::variant<bool, int, float>;
 ```
 
 

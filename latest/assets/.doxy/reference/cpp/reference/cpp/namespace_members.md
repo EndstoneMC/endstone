@@ -50,6 +50,7 @@
 ## g
 
 * **GameMode** ([**endstone**](namespaceendstone.md))
+* **GameRuleValue** ([**endstone**](namespaceendstone.md))
 * **getServer** ([**endstone::detail**](namespaceendstone_1_1detail.md))
 
 

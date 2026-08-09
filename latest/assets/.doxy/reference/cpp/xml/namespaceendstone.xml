@@ -69,6 +69,8 @@
     <innerclass refid="classendstone_1_1Event" prot="public">endstone::Event</innerclass>
     <innerclass refid="classendstone_1_1EventHandler" prot="public">endstone::EventHandler</innerclass>
     <innerclass refid="classendstone_1_1Form" prot="public">endstone::Form</innerclass>
+    <innerclass refid="classendstone_1_1GameRule" prot="public">endstone::GameRule</innerclass>
+    <innerclass refid="classendstone_1_1GameRuleId" prot="public">endstone::GameRuleId</innerclass>
     <innerclass refid="classendstone_1_1HandlerList" prot="public">endstone::HandlerList</innerclass>
     <innerclass refid="classendstone_1_1Header" prot="public">endstone::Header</innerclass>
     <innerclass refid="classendstone_1_1ICancellable" prot="public">endstone::ICancellable</innerclass>
@@ -991,6 +993,20 @@
         <inbodydescription>
         </inbodydescription>
         <location file="include/endstone/enchantments/enchantment.h" line="21" column="1" bodyfile="include/endstone/enchantments/enchantment.h" bodystart="21" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="namespaceendstone_1a1acf0c454d9792da7d550a4537077508" prot="public" static="no">
+        <type>std::variant&lt; <ref refid="classendstone_1_1Identifier" kindref="compound">bool</ref>, <ref refid="classendstone_1_1Identifier" kindref="compound">int</ref>, <ref refid="classendstone_1_1Identifier" kindref="compound">float</ref> &gt;</type>
+        <definition>using endstone::GameRuleValue = typedef std::variant&lt;bool, int, float&gt;</definition>
+        <argsstring></argsstring>
+        <name>GameRuleValue</name>
+        <qualifiedname>endstone::GameRuleValue</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/game_rule.h" line="24" column="1" bodyfile="include/endstone/game_rule.h" bodystart="24" bodyend="-1"/>
       </memberdef>
       <memberdef kind="typedef" id="namespaceendstone_1a38ff2441d6476b407a46c5868fd25cd3" prot="public" static="no">
         <type><ref refid="classendstone_1_1Identifier" kindref="compound">Identifier</ref>&lt; <ref refid="classendstone_1_1ItemType" kindref="compound">ItemType</ref> &gt;</type>

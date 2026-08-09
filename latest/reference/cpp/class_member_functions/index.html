@@ -3505,6 +3505,7 @@ For latest updates join the chat on
 <li><strong>getMaxDurability</strong> (<a href="../classendstone_1_1ItemType/"><strong>endstone::ItemType</strong></a>)</li>
 <li><strong>getLocale</strong> (<a href="../classendstone_1_1Language/"><strong>endstone::Language</strong></a>, <a href="../classendstone_1_1Player/"><strong>endstone::Player</strong></a>)</li>
 <li><strong>getDimensions</strong> (<a href="../classendstone_1_1Level/"><strong>endstone::Level</strong></a>)</li>
+<li><strong>getGameRule</strong> (<a href="../classendstone_1_1Level/"><strong>endstone::Level</strong></a>)</li>
 <li><strong>getSeed</strong> (<a href="../classendstone_1_1Level/"><strong>endstone::Level</strong></a>)</li>
 <li><strong>getTime</strong> (<a href="../classendstone_1_1Level/"><strong>endstone::Level</strong></a>)</li>
 <li><strong>getBlockX</strong> (<a href="../classendstone_1_1Location/"><strong>endstone::Location</strong></a>, <a href="../classendstone_1_1Vector/"><strong>endstone::Vector</strong></a>)</li>
@@ -3696,6 +3697,7 @@ For latest updates join the chat on
 <li><strong>hasLore</strong> (<a href="../classendstone_1_1ItemMeta/"><strong>endstone::ItemMeta</strong></a>)</li>
 <li><strong>hasRepairCost</strong> (<a href="../classendstone_1_1ItemMeta/"><strong>endstone::ItemMeta</strong></a>)</li>
 <li><strong>hasItemMeta</strong> (<a href="../classendstone_1_1ItemStack/"><strong>endstone::ItemStack</strong></a>, <a href="../classendstone_1_1ItemStack_1_1Impl/"><strong>endstone::ItemStack::Impl</strong></a>)</li>
+<li><strong>hasGameRule</strong> (<a href="../classendstone_1_1Level/"><strong>endstone::Level</strong></a>)</li>
 <li><strong>hasMapId</strong> (<a href="../classendstone_1_1MapMeta/"><strong>endstone::MapMeta</strong></a>)</li>
 <li><strong>hasMapView</strong> (<a href="../classendstone_1_1MapMeta/"><strong>endstone::MapMeta</strong></a>)</li>
 <li><strong>hasAttribute</strong> (<a href="../classendstone_1_1Mob/"><strong>endstone::Mob</strong></a>)</li>
@@ -3730,7 +3732,7 @@ For latest updates join the chat on
 <li><strong>isInfinite</strong> (<a href="../classendstone_1_1Effect/"><strong>endstone::Effect</strong></a>)</li>
 <li><strong>isAsynchronous</strong> (<a href="../classendstone_1_1Event/"><strong>endstone::Event</strong></a>)</li>
 <li><strong>isIgnoreCancelled</strong> (<a href="../classendstone_1_1EventHandler/"><strong>endstone::EventHandler</strong></a>)</li>
-<li><strong>Identifier</strong> (<a href="../classendstone_1_1Identifier/"><strong>endstone::Identifier</strong></a>)</li>
+<li><strong>Identifier</strong> (<a href="../classendstone_1_1GameRuleId/"><strong>endstone::GameRuleId</strong></a>, <a href="../classendstone_1_1Identifier/"><strong>endstone::Identifier</strong></a>)</li>
 <li><strong>Image</strong> (<a href="../classendstone_1_1Image/"><strong>endstone::Image</strong></a>)</li>
 <li><strong>isEmpty</strong> (<a href="../classendstone_1_1Inventory/"><strong>endstone::Inventory</strong></a>)</li>
 <li><strong>IpBanEntry</strong> (<a href="../classendstone_1_1IpBanEntry/"><strong>endstone::IpBanEntry</strong></a>)</li>
@@ -3793,7 +3795,7 @@ For latest updates join the chat on
 <h2 id="m">m<a class="headerlink" href="#m" title="Permanent link">&para;</a></h2>
 <ul>
 <li><strong>merge</strong> (<a href="../classendstone_1_1CompoundTag/"><strong>endstone::CompoundTag</strong></a>)</li>
-<li><strong>minecraft</strong> (<a href="../classendstone_1_1Identifier/"><strong>endstone::Identifier</strong></a>)</li>
+<li><strong>minecraft</strong> (<a href="../classendstone_1_1GameRuleId/"><strong>endstone::GameRuleId</strong></a>, <a href="../classendstone_1_1Identifier/"><strong>endstone::Identifier</strong></a>)</li>
 <li><strong>MapCursor</strong> (<a href="../classendstone_1_1MapCursor/"><strong>endstone::MapCursor</strong></a>)</li>
 <li><strong>MapInitializeEvent</strong> (<a href="../classendstone_1_1MapInitializeEvent/"><strong>endstone::MapInitializeEvent</strong></a>)</li>
 <li><strong>MapRenderer</strong> (<a href="../classendstone_1_1MapRenderer/"><strong>endstone::MapRenderer</strong></a>)</li>
@@ -3992,6 +3994,7 @@ For latest updates join the chat on
 <li><strong>setAmount</strong> (<a href="../classendstone_1_1ItemStack/"><strong>endstone::ItemStack</strong></a>, <a href="../classendstone_1_1ItemStack_1_1Impl/"><strong>endstone::ItemStack::Impl</strong></a>)</li>
 <li><strong>setItemMeta</strong> (<a href="../classendstone_1_1ItemStack/"><strong>endstone::ItemStack</strong></a>, <a href="../classendstone_1_1ItemStack_1_1Impl/"><strong>endstone::ItemStack::Impl</strong></a>)</li>
 <li><strong>setNbt</strong> (<a href="../classendstone_1_1ItemStack/"><strong>endstone::ItemStack</strong></a>, <a href="../classendstone_1_1ItemStack_1_1Impl/"><strong>endstone::ItemStack::Impl</strong></a>)</li>
+<li><strong>setGameRule</strong> (<a href="../classendstone_1_1Level/"><strong>endstone::Level</strong></a>)</li>
 <li><strong>setTime</strong> (<a href="../classendstone_1_1Level/"><strong>endstone::Level</strong></a>)</li>
 <li><strong>setDimension</strong> (<a href="../classendstone_1_1Location/"><strong>endstone::Location</strong></a>, <a href="../classendstone_1_1MapView/"><strong>endstone::MapView</strong></a>)</li>
 <li><strong>setDirection</strong> (<a href="../classendstone_1_1Location/"><strong>endstone::Location</strong></a>, <a href="../classendstone_1_1MapCursor/"><strong>endstone::MapCursor</strong></a>)</li>
@@ -4209,6 +4212,9 @@ For latest updates join the chat on
 </ul>
 <h2 id="_">_<a class="headerlink" href="#_" title="Permanent link">&para;</a></h2>
 <ul>
+<li><strong>_getGameRule</strong> (<a href="../classendstone_1_1Level/"><strong>endstone::Level</strong></a>)</li>
+<li><strong>_hasGameRule</strong> (<a href="../classendstone_1_1Level/"><strong>endstone::Level</strong></a>)</li>
+<li><strong>_setGameRule</strong> (<a href="../classendstone_1_1Level/"><strong>endstone::Level</strong></a>)</li>
 <li><strong>_getRegistry</strong> (<a href="../classendstone_1_1Server/"><strong>endstone::Server</strong></a>)</li>
 </ul>
 

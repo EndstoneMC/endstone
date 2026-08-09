@@ -553,12 +553,18 @@
         <childnode refid="31" relation="include">
         </childnode>
       </node>
-      <node id="103">
+      <node id="102">
+        <label>include/endstone/game_rule.h</label>
+        <link refid="game__rule_8h_source"/>
+        <childnode refid="27" relation="include">
+        </childnode>
+      </node>
+      <node id="104">
         <label>include/endstone/inventory/inventory.h</label>
         <link refid="inventory_8h_source"/>
         <childnode refid="5" relation="include">
         </childnode>
-        <childnode refid="104" relation="include">
+        <childnode refid="105" relation="include">
         </childnode>
       </node>
       <node id="95">
@@ -583,10 +589,10 @@
         <childnode refid="22" relation="include">
         </childnode>
       </node>
-      <node id="102">
+      <node id="103">
         <label>include/endstone/inventory/item_type.h</label>
         <link refid="item__type_8h_source"/>
-        <childnode refid="103" relation="include">
+        <childnode refid="104" relation="include">
         </childnode>
         <childnode refid="95" relation="include">
         </childnode>
@@ -625,7 +631,7 @@
         <childnode refid="101" relation="include">
         </childnode>
       </node>
-      <node id="104">
+      <node id="105">
         <label>include/endstone/inventory/player_inventory.h</label>
         <link refid="player__inventory_8h_source"/>
         <childnode refid="51" relation="include">
@@ -659,18 +665,18 @@
         <childnode refid="29" relation="include">
         </childnode>
       </node>
-      <node id="106">
+      <node id="107">
         <label>include/endstone/nbt/io.h</label>
         <link refid="io_8h_source"/>
-        <childnode refid="105" relation="include">
+        <childnode refid="106" relation="include">
         </childnode>
       </node>
-      <node id="105">
+      <node id="106">
         <label>include/endstone/nbt/tag.h</label>
         <link refid="tag_8h_source"/>
         <childnode refid="96" relation="include">
         </childnode>
-        <childnode refid="106" relation="include">
+        <childnode refid="107" relation="include">
         </childnode>
       </node>
       <node id="51">
@@ -714,6 +720,8 @@
         </childnode>
         <childnode refid="102" relation="include">
         </childnode>
+        <childnode refid="103" relation="include">
+        </childnode>
       </node>
       <node id="41">
         <label>include/endstone/scheduler/scheduler.h</label>
@@ -740,7 +748,7 @@
         <link refid="format_8h"/>
         <childnode refid="2" relation="include">
         </childnode>
-        <childnode refid="105" relation="include">
+        <childnode refid="106" relation="include">
         </childnode>
       </node>
     </invincdepgraph>

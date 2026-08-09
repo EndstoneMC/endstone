@@ -2609,6 +2609,45 @@ For latest updates join the chat on
             
                 
                     <li class="md-nav__item">
+    <a href="#function-_getgamerule" class="md-nav__link">
+      <span class="md-ellipsis">
+        function _getGameRule
+      </span>
+    </a>
+
+    <!-- Table of contents list -->
+    
+</li>
+                
+            
+                
+                    <li class="md-nav__item">
+    <a href="#function-_hasgamerule" class="md-nav__link">
+      <span class="md-ellipsis">
+        function _hasGameRule
+      </span>
+    </a>
+
+    <!-- Table of contents list -->
+    
+</li>
+                
+            
+                
+                    <li class="md-nav__item">
+    <a href="#function-_setgamerule" class="md-nav__link">
+      <span class="md-ellipsis">
+        function _setGameRule
+      </span>
+    </a>
+
+    <!-- Table of contents list -->
+    
+</li>
+                
+            
+                
+                    <li class="md-nav__item">
     <a href="#function-createdimension" class="md-nav__link">
       <span class="md-ellipsis">
         function createDimension
@@ -2661,6 +2700,19 @@ For latest updates join the chat on
             
                 
                     <li class="md-nav__item">
+    <a href="#function-getgamerule" class="md-nav__link">
+      <span class="md-ellipsis">
+        function getGameRule
+      </span>
+    </a>
+
+    <!-- Table of contents list -->
+    
+</li>
+                
+            
+                
+                    <li class="md-nav__item">
     <a href="#function-getname" class="md-nav__link">
       <span class="md-ellipsis">
         function getName
@@ -2690,6 +2742,32 @@ For latest updates join the chat on
     <a href="#function-gettime" class="md-nav__link">
       <span class="md-ellipsis">
         function getTime
+      </span>
+    </a>
+
+    <!-- Table of contents list -->
+    
+</li>
+                
+            
+                
+                    <li class="md-nav__item">
+    <a href="#function-hasgamerule" class="md-nav__link">
+      <span class="md-ellipsis">
+        function hasGameRule
+      </span>
+    </a>
+
+    <!-- Table of contents list -->
+    
+</li>
+                
+            
+                
+                    <li class="md-nav__item">
+    <a href="#function-setgamerule" class="md-nav__link">
+      <span class="md-ellipsis">
+        function setGameRule
       </span>
     </a>
 
@@ -2778,6 +2856,18 @@ For latest updates join the chat on
 </thead>
 <tbody>
 <tr>
+<td style="text-align: right;">virtual GameRuleValue</td>
+<td style="text-align: left;"><a href="#function-_getgamerule"><strong>_getGameRule</strong></a> (<a href="../classendstone_1_1Identifier/"><strong>Identifier</strong></a>&lt; <a href="../classendstone_1_1GameRule/"><strong>GameRule</strong></a> &gt; rule) const = 0<br><em>Gets the value of a game rule.</em></td>
+</tr>
+<tr>
+<td style="text-align: right;">virtual <a href="../classendstone_1_1Identifier/"><strong>bool</strong></a></td>
+<td style="text-align: left;"><a href="#function-_hasgamerule"><strong>_hasGameRule</strong></a> (<a href="../classendstone_1_1Identifier/"><strong>Identifier</strong></a>&lt; <a href="../classendstone_1_1GameRule/"><strong>GameRule</strong></a> &gt; rule) const = 0<br><em>Checks if a game rule exists.</em></td>
+</tr>
+<tr>
+<td style="text-align: right;">virtual <a href="../classendstone_1_1Identifier/"><strong>bool</strong></a></td>
+<td style="text-align: left;"><a href="#function-_setgamerule"><strong>_setGameRule</strong></a> (<a href="../classendstone_1_1Identifier/"><strong>Identifier</strong></a>&lt; <a href="../classendstone_1_1GameRule/"><strong>GameRule</strong></a> &gt; rule, GameRuleValue value) = 0<br><em>Sets the value of a game rule.</em></td>
+</tr>
+<tr>
 <td style="text-align: right;">virtual <a href="../classendstone_1_1Nullable/"><strong>Nullable</strong></a>&lt; <a href="../classendstone_1_1Dimension/"><strong>Dimension</strong></a> &gt;</td>
 <td style="text-align: left;"><a href="#function-createdimension"><strong>createDimension</strong></a> (<a href="../classendstone_1_1Identifier/"><strong>const</strong></a> <a href="../classendstone_1_1DimensionCreator/"><strong>DimensionCreator</strong></a> &amp; creator) = 0<br><em>Creates a new custom dimension within this level.</em></td>
 </tr>
@@ -2794,6 +2884,10 @@ For latest updates join the chat on
 <td style="text-align: left;"><a href="#function-getdimensions"><strong>getDimensions</strong></a> () const = 0<br><em>Gets a list of all dimensions within this level.</em></td>
 </tr>
 <tr>
+<td style="text-align: right;"><a href="../classendstone_1_1Identifier/"><strong>T</strong></a></td>
+<td style="text-align: left;"><a href="#function-getgamerule"><strong>getGameRule</strong></a> (<a href="../classendstone_1_1GameRuleId/"><strong>GameRuleId</strong></a>&lt; <a href="../classendstone_1_1Identifier/"><strong>T</strong></a> &gt; rule) const<br><em>Gets the value of a game rule.</em></td>
+</tr>
+<tr>
 <td style="text-align: right;">virtual std::string</td>
 <td style="text-align: left;"><a href="#function-getname"><strong>getName</strong></a> () const = 0<br><em>Gets the unique name of this level.</em></td>
 </tr>
@@ -2806,6 +2900,14 @@ For latest updates join the chat on
 <td style="text-align: left;"><a href="#function-gettime"><strong>getTime</strong></a> () const = 0<br><em>Gets the relative in-game time of this level.</em></td>
 </tr>
 <tr>
+<td style="text-align: right;"><a href="../classendstone_1_1Identifier/"><strong>bool</strong></a></td>
+<td style="text-align: left;"><a href="#function-hasgamerule"><strong>hasGameRule</strong></a> (<a href="../classendstone_1_1GameRuleId/"><strong>GameRuleId</strong></a>&lt; <a href="../classendstone_1_1Identifier/"><strong>T</strong></a> &gt; rule) const<br><em>Checks if a game rule exists.</em></td>
+</tr>
+<tr>
+<td style="text-align: right;"><a href="../classendstone_1_1Identifier/"><strong>bool</strong></a></td>
+<td style="text-align: left;"><a href="#function-setgamerule"><strong>setGameRule</strong></a> (<a href="../classendstone_1_1GameRuleId/"><strong>GameRuleId</strong></a>&lt; <a href="../classendstone_1_1Identifier/"><strong>T</strong></a> &gt; rule, <a href="../classendstone_1_1Identifier/"><strong>T</strong></a> value) <br><em>Sets the value of a game rule.</em></td>
+</tr>
+<tr>
 <td style="text-align: right;">virtual <a href="../classendstone_1_1Identifier/"><strong>void</strong></a></td>
 <td style="text-align: left;"><a href="#function-settime"><strong>setTime</strong></a> (<a href="../classendstone_1_1Identifier/"><strong>int</strong></a> time) = 0<br><em>Sets the relative in-game time on the server.</em></td>
 </tr>
@@ -2816,11 +2918,55 @@ For latest updates join the chat on
 </tbody>
 </table>
 <h2 id="public-functions-documentation">Public Functions Documentation<a class="headerlink" href="#public-functions-documentation" title="Permanent link">&para;</a></h2>
+<h3 id="function-_getgamerule">function _getGameRule<a class="headerlink" href="#function-_getgamerule" title="Permanent link">&para;</a></h3>
+<p><em>Gets the value of a game rule.</em> 
+<div class="language-C++ highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="k">virtual</span><span class="w"> </span><span class="n">GameRuleValue</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">Level</span><span class="o">::</span><span class="n">_getGameRule</span><span class="w"> </span><span class="p">(</span>
+</span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a><span class="w">    </span><span class="n">Identifier</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">GameRule</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="n">rule</span>
+</span><span id="__span-0-3"><a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a><span class="p">)</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span>
+</span></code></pre></div></p>
+<p><strong>Parameters:</strong></p>
+<ul>
+<li><code>rule</code> The Minecraft game rule to get </li>
+</ul>
+<p><strong>Returns:</strong></p>
+<p>The current game rule value </p>
+<hr>
+
+<h3 id="function-_hasgamerule">function _hasGameRule<a class="headerlink" href="#function-_hasgamerule" title="Permanent link">&para;</a></h3>
+<p><em>Checks if a game rule exists.</em> 
+<div class="language-C++ highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="k">virtual</span><span class="w"> </span><span class="kt">bool</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">Level</span><span class="o">::</span><span class="n">_hasGameRule</span><span class="w"> </span><span class="p">(</span>
+</span><span id="__span-1-2"><a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a><span class="w">    </span><span class="n">Identifier</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">GameRule</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="n">rule</span>
+</span><span id="__span-1-3"><a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a><span class="p">)</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span>
+</span></code></pre></div></p>
+<p><strong>Parameters:</strong></p>
+<ul>
+<li><code>rule</code> The Minecraft game rule to check </li>
+</ul>
+<p><strong>Returns:</strong></p>
+<p>True if the game rule exists </p>
+<hr>
+
+<h3 id="function-_setgamerule">function _setGameRule<a class="headerlink" href="#function-_setgamerule" title="Permanent link">&para;</a></h3>
+<p><em>Sets the value of a game rule.</em> 
+<div class="language-C++ highlight"><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="k">virtual</span><span class="w"> </span><span class="kt">bool</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">Level</span><span class="o">::</span><span class="n">_setGameRule</span><span class="w"> </span><span class="p">(</span>
+</span><span id="__span-2-2"><a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a><span class="w">    </span><span class="n">Identifier</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">GameRule</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="n">rule</span><span class="p">,</span>
+</span><span id="__span-2-3"><a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a><span class="w">    </span><span class="n">GameRuleValue</span><span class="w"> </span><span class="n">value</span>
+</span><span id="__span-2-4"><a id="__codelineno-2-4" name="__codelineno-2-4" href="#__codelineno-2-4"></a><span class="p">)</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span>
+</span></code></pre></div></p>
+<p><strong>Parameters:</strong></p>
+<ul>
+<li><code>rule</code> The Minecraft game rule to set </li>
+<li><code>value</code> The new value </li>
+</ul>
+<p><strong>Returns:</strong></p>
+<p>True if the value was accepted </p>
+<hr>
+
 <h3 id="function-createdimension">function createDimension<a class="headerlink" href="#function-createdimension" title="Permanent link">&para;</a></h3>
 <p><em>Creates a new custom dimension within this level.</em> 
-<div class="language-C++ highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="k">virtual</span><span class="w"> </span><span class="n">Nullable</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">Dimension</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">Level</span><span class="o">::</span><span class="n">createDimension</span><span class="w"> </span><span class="p">(</span>
-</span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a><span class="w">    </span><span class="k">const</span><span class="w">  </span><span class="n">DimensionCreator</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">creator</span>
-</span><span id="__span-0-3"><a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a><span class="p">)</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span>
+<div class="language-C++ highlight"><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="k">virtual</span><span class="w"> </span><span class="n">Nullable</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">Dimension</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">Level</span><span class="o">::</span><span class="n">createDimension</span><span class="w"> </span><span class="p">(</span>
+</span><span id="__span-3-2"><a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a><span class="w">    </span><span class="k">const</span><span class="w">  </span><span class="n">DimensionCreator</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">creator</span>
+</span><span id="__span-3-3"><a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a><span class="p">)</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span>
 </span></code></pre></div></p>
 <p>The dimension is created from the options described by the given <a href="../classendstone_1_1DimensionCreator/"><strong>DimensionCreator</strong></a>. Custom dimensions are empty (void) dimensions identified by a namespaced id, e.g. <code>myplugin:void_realm</code>; populate them with blocks, structures or actors afterward. Custom dimensions persist across server restarts. </p>
 <p>If a dimension with the requested name already exists, that existing dimension is returned instead.</p>
@@ -2834,7 +2980,7 @@ For latest updates join the chat on
 
 <h3 id="function-getactors">function getActors<a class="headerlink" href="#function-getactors" title="Permanent link">&para;</a></h3>
 <p><em>Get a list of all actors in this level.</em> 
-<div class="language-C++ highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="k">virtual</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="w"> </span><span class="n">NotNull</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">Actor</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">Level</span><span class="o">::</span><span class="n">getActors</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span>
+<div class="language-C++ highlight"><pre><span></span><code><span id="__span-4-1"><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a><span class="k">virtual</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="w"> </span><span class="n">NotNull</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">Actor</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">Level</span><span class="o">::</span><span class="n">getActors</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span>
 </span></code></pre></div></p>
 <p><strong>Returns:</strong></p>
 <p>A List of all actors currently residing in this level </p>
@@ -2842,9 +2988,9 @@ For latest updates join the chat on
 
 <h3 id="function-getdimension">function getDimension<a class="headerlink" href="#function-getdimension" title="Permanent link">&para;</a></h3>
 <p><em>Gets the dimension with the given id.</em> 
-<div class="language-C++ highlight"><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="k">virtual</span><span class="w"> </span><span class="n">Nullable</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">Dimension</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">Level</span><span class="o">::</span><span class="n">getDimension</span><span class="w"> </span><span class="p">(</span>
-</span><span id="__span-2-2"><a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a><span class="w">    </span><span class="n">DimensionId</span><span class="w"> </span><span class="n">id</span>
-</span><span id="__span-2-3"><a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a><span class="p">)</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span>
+<div class="language-C++ highlight"><pre><span></span><code><span id="__span-5-1"><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a><span class="k">virtual</span><span class="w"> </span><span class="n">Nullable</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">Dimension</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">Level</span><span class="o">::</span><span class="n">getDimension</span><span class="w"> </span><span class="p">(</span>
+</span><span id="__span-5-2"><a id="__codelineno-5-2" name="__codelineno-5-2" href="#__codelineno-5-2"></a><span class="w">    </span><span class="n">DimensionId</span><span class="w"> </span><span class="n">id</span>
+</span><span id="__span-5-3"><a id="__codelineno-5-3" name="__codelineno-5-3" href="#__codelineno-5-3"></a><span class="p">)</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span>
 </span></code></pre></div></p>
 <p><strong>Parameters:</strong></p>
 <ul>
@@ -2856,15 +3002,34 @@ For latest updates join the chat on
 
 <h3 id="function-getdimensions">function getDimensions<a class="headerlink" href="#function-getdimensions" title="Permanent link">&para;</a></h3>
 <p><em>Gets a list of all dimensions within this level.</em> 
-<div class="language-C++ highlight"><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="k">virtual</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="w"> </span><span class="n">NotNull</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">Dimension</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">Level</span><span class="o">::</span><span class="n">getDimensions</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span>
+<div class="language-C++ highlight"><pre><span></span><code><span id="__span-6-1"><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a><span class="k">virtual</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="w"> </span><span class="n">NotNull</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">Dimension</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">Level</span><span class="o">::</span><span class="n">getDimensions</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span>
 </span></code></pre></div></p>
 <p><strong>Returns:</strong></p>
 <p>a list of dimensions </p>
 <hr>
 
+<h3 id="function-getgamerule">function getGameRule<a class="headerlink" href="#function-getgamerule" title="Permanent link">&para;</a></h3>
+<p><em>Gets the value of a game rule.</em> 
+<div class="language-C++ highlight"><pre><span></span><code><span id="__span-7-1"><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a><span class="k">template</span><span class="o">&lt;</span><span class="k">typename</span><span class="w">  </span><span class="nc">T</span><span class="o">&gt;</span>
+</span><span id="__span-7-2"><a id="__codelineno-7-2" name="__codelineno-7-2" href="#__codelineno-7-2"></a><span class="kr">inline</span><span class="w"> </span><span class="n">T</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">Level</span><span class="o">::</span><span class="n">getGameRule</span><span class="w"> </span><span class="p">(</span>
+</span><span id="__span-7-3"><a id="__codelineno-7-3" name="__codelineno-7-3" href="#__codelineno-7-3"></a><span class="w">    </span><span class="n">GameRuleId</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">T</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="n">rule</span>
+</span><span id="__span-7-4"><a id="__codelineno-7-4" name="__codelineno-7-4" href="#__codelineno-7-4"></a><span class="p">)</span><span class="w"> </span><span class="k">const</span>
+</span></code></pre></div></p>
+<p><strong>Template parameters:</strong></p>
+<ul>
+<li><code>T</code> The type of the game rule's value. </li>
+</ul>
+<p><strong>Parameters:</strong></p>
+<ul>
+<li><code>rule</code> The Minecraft game rule to get </li>
+</ul>
+<p><strong>Returns:</strong></p>
+<p>The current game rule value </p>
+<hr>
+
 <h3 id="function-getname">function getName<a class="headerlink" href="#function-getname" title="Permanent link">&para;</a></h3>
 <p><em>Gets the unique name of this level.</em> 
-<div class="language-C++ highlight"><pre><span></span><code><span id="__span-4-1"><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a><span class="k">virtual</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">Level</span><span class="o">::</span><span class="n">getName</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span>
+<div class="language-C++ highlight"><pre><span></span><code><span id="__span-8-1"><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a><span class="k">virtual</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">Level</span><span class="o">::</span><span class="n">getName</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span>
 </span></code></pre></div></p>
 <p><strong>Returns:</strong></p>
 <p>Name of this level </p>
@@ -2872,7 +3037,7 @@ For latest updates join the chat on
 
 <h3 id="function-getseed">function getSeed<a class="headerlink" href="#function-getseed" title="Permanent link">&para;</a></h3>
 <p><em>Gets the Seed for this level.</em> 
-<div class="language-C++ highlight"><pre><span></span><code><span id="__span-5-1"><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a><span class="k">virtual</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="kt">int64_t</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">Level</span><span class="o">::</span><span class="n">getSeed</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span>
+<div class="language-C++ highlight"><pre><span></span><code><span id="__span-9-1"><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a><span class="k">virtual</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="kt">int64_t</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">Level</span><span class="o">::</span><span class="n">getSeed</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span>
 </span></code></pre></div></p>
 <p><strong>Returns:</strong></p>
 <p>This level's Seed </p>
@@ -2880,17 +3045,57 @@ For latest updates join the chat on
 
 <h3 id="function-gettime">function getTime<a class="headerlink" href="#function-gettime" title="Permanent link">&para;</a></h3>
 <p><em>Gets the relative in-game time of this level.</em> 
-<div class="language-C++ highlight"><pre><span></span><code><span id="__span-6-1"><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a><span class="k">virtual</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">Level</span><span class="o">::</span><span class="n">getTime</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span>
+<div class="language-C++ highlight"><pre><span></span><code><span id="__span-10-1"><a id="__codelineno-10-1" name="__codelineno-10-1" href="#__codelineno-10-1"></a><span class="k">virtual</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">Level</span><span class="o">::</span><span class="n">getTime</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span>
 </span></code></pre></div></p>
 <p><strong>Returns:</strong></p>
 <p>The current relative time </p>
 <hr>
 
+<h3 id="function-hasgamerule">function hasGameRule<a class="headerlink" href="#function-hasgamerule" title="Permanent link">&para;</a></h3>
+<p><em>Checks if a game rule exists.</em> 
+<div class="language-C++ highlight"><pre><span></span><code><span id="__span-11-1"><a id="__codelineno-11-1" name="__codelineno-11-1" href="#__codelineno-11-1"></a><span class="k">template</span><span class="o">&lt;</span><span class="k">typename</span><span class="w">  </span><span class="nc">T</span><span class="o">&gt;</span>
+</span><span id="__span-11-2"><a id="__codelineno-11-2" name="__codelineno-11-2" href="#__codelineno-11-2"></a><span class="kr">inline</span><span class="w"> </span><span class="kt">bool</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">Level</span><span class="o">::</span><span class="n">hasGameRule</span><span class="w"> </span><span class="p">(</span>
+</span><span id="__span-11-3"><a id="__codelineno-11-3" name="__codelineno-11-3" href="#__codelineno-11-3"></a><span class="w">    </span><span class="n">GameRuleId</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">T</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="n">rule</span>
+</span><span id="__span-11-4"><a id="__codelineno-11-4" name="__codelineno-11-4" href="#__codelineno-11-4"></a><span class="p">)</span><span class="w"> </span><span class="k">const</span>
+</span></code></pre></div></p>
+<p><strong>Template parameters:</strong></p>
+<ul>
+<li><code>T</code> The type of the game rule's value. </li>
+</ul>
+<p><strong>Parameters:</strong></p>
+<ul>
+<li><code>rule</code> The Minecraft game rule to check </li>
+</ul>
+<p><strong>Returns:</strong></p>
+<p>True if the game rule exists </p>
+<hr>
+
+<h3 id="function-setgamerule">function setGameRule<a class="headerlink" href="#function-setgamerule" title="Permanent link">&para;</a></h3>
+<p><em>Sets the value of a game rule.</em> 
+<div class="language-C++ highlight"><pre><span></span><code><span id="__span-12-1"><a id="__codelineno-12-1" name="__codelineno-12-1" href="#__codelineno-12-1"></a><span class="k">template</span><span class="o">&lt;</span><span class="k">typename</span><span class="w">  </span><span class="nc">T</span><span class="o">&gt;</span>
+</span><span id="__span-12-2"><a id="__codelineno-12-2" name="__codelineno-12-2" href="#__codelineno-12-2"></a><span class="kr">inline</span><span class="w"> </span><span class="kt">bool</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">Level</span><span class="o">::</span><span class="n">setGameRule</span><span class="w"> </span><span class="p">(</span>
+</span><span id="__span-12-3"><a id="__codelineno-12-3" name="__codelineno-12-3" href="#__codelineno-12-3"></a><span class="w">    </span><span class="n">GameRuleId</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">T</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="n">rule</span><span class="p">,</span>
+</span><span id="__span-12-4"><a id="__codelineno-12-4" name="__codelineno-12-4" href="#__codelineno-12-4"></a><span class="w">    </span><span class="n">T</span><span class="w"> </span><span class="n">value</span>
+</span><span id="__span-12-5"><a id="__codelineno-12-5" name="__codelineno-12-5" href="#__codelineno-12-5"></a><span class="p">)</span><span class="w"> </span>
+</span></code></pre></div></p>
+<p><strong>Template parameters:</strong></p>
+<ul>
+<li><code>T</code> The type of the game rule's value. </li>
+</ul>
+<p><strong>Parameters:</strong></p>
+<ul>
+<li><code>rule</code> The Minecraft game rule to set </li>
+<li><code>value</code> The new value </li>
+</ul>
+<p><strong>Returns:</strong></p>
+<p>True if the value was accepted </p>
+<hr>
+
 <h3 id="function-settime">function setTime<a class="headerlink" href="#function-settime" title="Permanent link">&para;</a></h3>
 <p><em>Sets the relative in-game time on the server.</em> 
-<div class="language-C++ highlight"><pre><span></span><code><span id="__span-7-1"><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a><span class="k">virtual</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">Level</span><span class="o">::</span><span class="n">setTime</span><span class="w"> </span><span class="p">(</span>
-</span><span id="__span-7-2"><a id="__codelineno-7-2" name="__codelineno-7-2" href="#__codelineno-7-2"></a><span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="n">time</span>
-</span><span id="__span-7-3"><a id="__codelineno-7-3" name="__codelineno-7-3" href="#__codelineno-7-3"></a><span class="p">)</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span>
+<div class="language-C++ highlight"><pre><span></span><code><span id="__span-13-1"><a id="__codelineno-13-1" name="__codelineno-13-1" href="#__codelineno-13-1"></a><span class="k">virtual</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">Level</span><span class="o">::</span><span class="n">setTime</span><span class="w"> </span><span class="p">(</span>
+</span><span id="__span-13-2"><a id="__codelineno-13-2" name="__codelineno-13-2" href="#__codelineno-13-2"></a><span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="n">time</span>
+</span><span id="__span-13-3"><a id="__codelineno-13-3" name="__codelineno-13-3" href="#__codelineno-13-3"></a><span class="p">)</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span>
 </span></code></pre></div></p>
 <p><strong>Parameters:</strong></p>
 <ul>
@@ -2899,7 +3104,7 @@ For latest updates join the chat on
 <hr>
 
 <h3 id="function-level">function ~Level<a class="headerlink" href="#function-level" title="Permanent link">&para;</a></h3>
-<div class="language-C++ highlight"><pre><span></span><code><span id="__span-8-1"><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a><span class="k">virtual</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">Level</span><span class="o">::~</span><span class="n">Level</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">default</span>
+<div class="language-C++ highlight"><pre><span></span><code><span id="__span-14-1"><a id="__codelineno-14-1" name="__codelineno-14-1" href="#__codelineno-14-1"></a><span class="k">virtual</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">Level</span><span class="o">::~</span><span class="n">Level</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">default</span>
 </span></code></pre></div>
 <hr>
 

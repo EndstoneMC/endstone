@@ -6,6 +6,7 @@
     <derivedcompoundref refid="classendstone_1_1Biome" prot="public" virt="non-virtual">endstone::Biome</derivedcompoundref>
     <derivedcompoundref refid="classendstone_1_1BlockType" prot="public" virt="non-virtual">endstone::BlockType</derivedcompoundref>
     <derivedcompoundref refid="classendstone_1_1Enchantment" prot="public" virt="non-virtual">endstone::Enchantment</derivedcompoundref>
+    <derivedcompoundref refid="classendstone_1_1GameRule" prot="public" virt="non-virtual">endstone::GameRule</derivedcompoundref>
     <derivedcompoundref refid="classendstone_1_1ItemType" prot="public" virt="non-virtual">endstone::ItemType</derivedcompoundref>
     <includes refid="registry_8h" local="no">endstone/registry.h</includes>
     <sectiondef kind="public-type">
@@ -229,6 +230,12 @@
         </childnode>
       </node>
       <node id="6">
+        <label>endstone::GameRule</label>
+        <link refid="classendstone_1_1GameRule"/>
+        <childnode refid="1" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="7">
         <label>endstone::ItemType</label>
         <link refid="classendstone_1_1ItemType"/>
         <childnode refid="1" relation="public-inheritance">

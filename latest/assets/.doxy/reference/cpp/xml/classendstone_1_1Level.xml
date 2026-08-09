@@ -16,7 +16,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/level/level.h" line="33" column="13"/>
+        <location file="include/endstone/level/level.h" line="34" column="13"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1Level_1aa55eace2debac6499fd261db27a260bf" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
         <type>std::string</type>
@@ -34,7 +34,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/level/level.h" line="40" column="26"/>
+        <location file="include/endstone/level/level.h" line="41" column="26"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1Level_1a33c947d2c585a9f56b73481f3fe35d5b" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
         <type>std::vector&lt; <ref refid="classendstone_1_1NotNull" kindref="compound">NotNull</ref>&lt; <ref refid="classendstone_1_1Actor" kindref="compound">Actor</ref> &gt; &gt;</type>
@@ -52,7 +52,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/level/level.h" line="47" column="26"/>
+        <location file="include/endstone/level/level.h" line="48" column="26"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1Level_1a2a0a6904b53c1d0952c6bdcfce91d0cd" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
         <type><ref refid="classendstone_1_1Identifier" kindref="compound">int</ref></type>
@@ -70,7 +70,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/level/level.h" line="54" column="18"/>
+        <location file="include/endstone/level/level.h" line="55" column="18"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1Level_1a52d11546e286762d10b7c2a523fd2dd7" prot="public" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
         <type><ref refid="classendstone_1_1Identifier" kindref="compound">void</ref></type>
@@ -99,7 +99,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/level/level.h" line="61" column="18"/>
+        <location file="include/endstone/level/level.h" line="62" column="18"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1Level_1aad771f893a562f8af11262b48f14b1b5" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
         <type>std::vector&lt; <ref refid="classendstone_1_1NotNull" kindref="compound">NotNull</ref>&lt; <ref refid="classendstone_1_1Dimension" kindref="compound">Dimension</ref> &gt; &gt;</type>
@@ -117,7 +117,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/level/level.h" line="68" column="26"/>
+        <location file="include/endstone/level/level.h" line="69" column="26"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1Level_1a3d35cfe99af2aed185b3486aadf71a0b" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
         <type><ref refid="classendstone_1_1Nullable" kindref="compound">Nullable</ref>&lt; <ref refid="classendstone_1_1Dimension" kindref="compound">Dimension</ref> &gt;</type>
@@ -148,7 +148,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/level/level.h" line="77" column="23"/>
+        <location file="include/endstone/level/level.h" line="78" column="23"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1Level_1a8a66de9c04235951ccf4e86175337a27" prot="public" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
         <type><ref refid="classendstone_1_1Nullable" kindref="compound">Nullable</ref>&lt; <ref refid="classendstone_1_1Dimension" kindref="compound">Dimension</ref> &gt;</type>
@@ -181,7 +181,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/level/level.h" line="91" column="23"/>
+        <location file="include/endstone/level/level.h" line="92" column="23"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1Level_1a353a8752c7825d35373287ede5e4019a" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
         <type>std::int64_t</type>
@@ -199,7 +199,259 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/level/level.h" line="98" column="27"/>
+        <location file="include/endstone/level/level.h" line="99" column="27"/>
+      </memberdef>
+      <memberdef kind="function" id="classendstone_1_1Level_1aff277661394a71d0c53c83db5b92b89a" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
+        <type><ref refid="classendstone_1_1Identifier" kindref="compound">bool</ref></type>
+        <definition>virtual bool endstone::Level::_hasGameRule</definition>
+        <argsstring>(Identifier&lt; GameRule &gt; rule) const =0</argsstring>
+        <name>_hasGameRule</name>
+        <qualifiedname>endstone::Level::_hasGameRule</qualifiedname>
+        <param>
+          <type><ref refid="classendstone_1_1Identifier" kindref="compound">Identifier</ref>&lt; <ref refid="classendstone_1_1GameRule" kindref="compound">GameRule</ref> &gt;</type>
+          <declname>rule</declname>
+        </param>
+        <briefdescription>
+<para>Checks if a game rule exists. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>rule</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The Minecraft game rule to check </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>True if the game rule exists </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/level/level.h" line="107" column="19"/>
+      </memberdef>
+      <memberdef kind="function" id="classendstone_1_1Level_1a1b4fe9813f45062bfe7b1e6c02573db4" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type><ref refid="classendstone_1_1Identifier" kindref="compound">typename</ref> <ref refid="classendstone_1_1Identifier" kindref="compound">T</ref></type>
+          </param>
+        </templateparamlist>
+        <type><ref refid="classendstone_1_1Identifier" kindref="compound">bool</ref></type>
+        <definition>bool endstone::Level::hasGameRule</definition>
+        <argsstring>(GameRuleId&lt; T &gt; rule) const</argsstring>
+        <name>hasGameRule</name>
+        <qualifiedname>endstone::Level::hasGameRule</qualifiedname>
+        <param>
+          <type><ref refid="classendstone_1_1GameRuleId" kindref="compound">GameRuleId</ref>&lt; <ref refid="classendstone_1_1Identifier" kindref="compound">T</ref> &gt;</type>
+          <declname>rule</declname>
+        </param>
+        <briefdescription>
+<para>Checks if a game rule exists. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="templateparam"><parameteritem>
+<parameternamelist>
+<parametername>T</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The type of the game rule&apos;s value. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>rule</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The Minecraft game rule to check </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>True if the game rule exists </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/level/level.h" line="117" column="11" bodyfile="include/endstone/level/level.h" bodystart="117" bodyend="120"/>
+      </memberdef>
+      <memberdef kind="function" id="classendstone_1_1Level_1a7b1335b90c0d28d1626e9316deeb58b0" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
+        <type>GameRuleValue</type>
+        <definition>virtual GameRuleValue endstone::Level::_getGameRule</definition>
+        <argsstring>(Identifier&lt; GameRule &gt; rule) const =0</argsstring>
+        <name>_getGameRule</name>
+        <qualifiedname>endstone::Level::_getGameRule</qualifiedname>
+        <param>
+          <type><ref refid="classendstone_1_1Identifier" kindref="compound">Identifier</ref>&lt; <ref refid="classendstone_1_1GameRule" kindref="compound">GameRule</ref> &gt;</type>
+          <declname>rule</declname>
+        </param>
+        <briefdescription>
+<para>Gets the value of a game rule. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>rule</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The Minecraft game rule to get </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>The current game rule value </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/level/level.h" line="128" column="28"/>
+      </memberdef>
+      <memberdef kind="function" id="classendstone_1_1Level_1a6916cd92f074cd26f9a933dcef0bbc00" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type><ref refid="classendstone_1_1Identifier" kindref="compound">typename</ref> <ref refid="classendstone_1_1Identifier" kindref="compound">T</ref></type>
+          </param>
+        </templateparamlist>
+        <type><ref refid="classendstone_1_1Identifier" kindref="compound">T</ref></type>
+        <definition>T endstone::Level::getGameRule</definition>
+        <argsstring>(GameRuleId&lt; T &gt; rule) const</argsstring>
+        <name>getGameRule</name>
+        <qualifiedname>endstone::Level::getGameRule</qualifiedname>
+        <param>
+          <type><ref refid="classendstone_1_1GameRuleId" kindref="compound">GameRuleId</ref>&lt; <ref refid="classendstone_1_1Identifier" kindref="compound">T</ref> &gt;</type>
+          <declname>rule</declname>
+        </param>
+        <briefdescription>
+<para>Gets the value of a game rule. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="templateparam"><parameteritem>
+<parameternamelist>
+<parametername>T</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The type of the game rule&apos;s value. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>rule</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The Minecraft game rule to get </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>The current game rule value </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/level/level.h" line="138" column="8" bodyfile="include/endstone/level/level.h" bodystart="138" bodyend="141"/>
+      </memberdef>
+      <memberdef kind="function" id="classendstone_1_1Level_1ac710e81ac716a26ee47acb71f660abf4" prot="public" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
+        <type><ref refid="classendstone_1_1Identifier" kindref="compound">bool</ref></type>
+        <definition>virtual bool endstone::Level::_setGameRule</definition>
+        <argsstring>(Identifier&lt; GameRule &gt; rule, GameRuleValue value)=0</argsstring>
+        <name>_setGameRule</name>
+        <qualifiedname>endstone::Level::_setGameRule</qualifiedname>
+        <param>
+          <type><ref refid="classendstone_1_1Identifier" kindref="compound">Identifier</ref>&lt; <ref refid="classendstone_1_1GameRule" kindref="compound">GameRule</ref> &gt;</type>
+          <declname>rule</declname>
+        </param>
+        <param>
+          <type>GameRuleValue</type>
+          <declname>value</declname>
+        </param>
+        <briefdescription>
+<para>Sets the value of a game rule. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>rule</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The Minecraft game rule to set </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>value</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The new value </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>True if the value was accepted </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/level/level.h" line="150" column="18"/>
+      </memberdef>
+      <memberdef kind="function" id="classendstone_1_1Level_1abe694748cb651cd8a2158e3d59c4fa7c" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type><ref refid="classendstone_1_1Identifier" kindref="compound">typename</ref> <ref refid="classendstone_1_1Identifier" kindref="compound">T</ref></type>
+          </param>
+        </templateparamlist>
+        <type><ref refid="classendstone_1_1Identifier" kindref="compound">bool</ref></type>
+        <definition>bool endstone::Level::setGameRule</definition>
+        <argsstring>(GameRuleId&lt; T &gt; rule, T value)</argsstring>
+        <name>setGameRule</name>
+        <qualifiedname>endstone::Level::setGameRule</qualifiedname>
+        <param>
+          <type><ref refid="classendstone_1_1GameRuleId" kindref="compound">GameRuleId</ref>&lt; <ref refid="classendstone_1_1Identifier" kindref="compound">T</ref> &gt;</type>
+          <declname>rule</declname>
+        </param>
+        <param>
+          <type><ref refid="classendstone_1_1Identifier" kindref="compound">T</ref></type>
+          <declname>value</declname>
+        </param>
+        <briefdescription>
+<para>Sets the value of a game rule. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="templateparam"><parameteritem>
+<parameternamelist>
+<parametername>T</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The type of the game rule&apos;s value. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>rule</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The Minecraft game rule to set </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>value</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The new value </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>True if the value was accepted </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/level/level.h" line="161" column="10" bodyfile="include/endstone/level/level.h" bodystart="161" bodyend="164"/>
       </memberdef>
     </sectiondef>
     <briefdescription>
@@ -207,15 +459,21 @@
     </briefdescription>
     <detaileddescription>
     </detaileddescription>
-    <location file="include/endstone/level/level.h" line="31" column="1" bodyfile="include/endstone/level/level.h" bodystart="31" bodyend="99"/>
+    <location file="include/endstone/level/level.h" line="32" column="1" bodyfile="include/endstone/level/level.h" bodystart="32" bodyend="165"/>
     <listofallmembers>
+      <member refid="classendstone_1_1Level_1a7b1335b90c0d28d1626e9316deeb58b0" prot="public" virt="pure-virtual"><scope>endstone::Level</scope><name>_getGameRule</name></member>
+      <member refid="classendstone_1_1Level_1aff277661394a71d0c53c83db5b92b89a" prot="public" virt="pure-virtual"><scope>endstone::Level</scope><name>_hasGameRule</name></member>
+      <member refid="classendstone_1_1Level_1ac710e81ac716a26ee47acb71f660abf4" prot="public" virt="pure-virtual"><scope>endstone::Level</scope><name>_setGameRule</name></member>
       <member refid="classendstone_1_1Level_1a8a66de9c04235951ccf4e86175337a27" prot="public" virt="pure-virtual"><scope>endstone::Level</scope><name>createDimension</name></member>
       <member refid="classendstone_1_1Level_1a33c947d2c585a9f56b73481f3fe35d5b" prot="public" virt="pure-virtual"><scope>endstone::Level</scope><name>getActors</name></member>
       <member refid="classendstone_1_1Level_1a3d35cfe99af2aed185b3486aadf71a0b" prot="public" virt="pure-virtual"><scope>endstone::Level</scope><name>getDimension</name></member>
       <member refid="classendstone_1_1Level_1aad771f893a562f8af11262b48f14b1b5" prot="public" virt="pure-virtual"><scope>endstone::Level</scope><name>getDimensions</name></member>
+      <member refid="classendstone_1_1Level_1a6916cd92f074cd26f9a933dcef0bbc00" prot="public" virt="non-virtual"><scope>endstone::Level</scope><name>getGameRule</name></member>
       <member refid="classendstone_1_1Level_1aa55eace2debac6499fd261db27a260bf" prot="public" virt="pure-virtual"><scope>endstone::Level</scope><name>getName</name></member>
       <member refid="classendstone_1_1Level_1a353a8752c7825d35373287ede5e4019a" prot="public" virt="pure-virtual"><scope>endstone::Level</scope><name>getSeed</name></member>
       <member refid="classendstone_1_1Level_1a2a0a6904b53c1d0952c6bdcfce91d0cd" prot="public" virt="pure-virtual"><scope>endstone::Level</scope><name>getTime</name></member>
+      <member refid="classendstone_1_1Level_1a1b4fe9813f45062bfe7b1e6c02573db4" prot="public" virt="non-virtual"><scope>endstone::Level</scope><name>hasGameRule</name></member>
+      <member refid="classendstone_1_1Level_1abe694748cb651cd8a2158e3d59c4fa7c" prot="public" virt="non-virtual"><scope>endstone::Level</scope><name>setGameRule</name></member>
       <member refid="classendstone_1_1Level_1a52d11546e286762d10b7c2a523fd2dd7" prot="public" virt="pure-virtual"><scope>endstone::Level</scope><name>setTime</name></member>
       <member refid="classendstone_1_1Level_1ac053439dfd214fde2596aecbd158cb97" prot="public" virt="virtual"><scope>endstone::Level</scope><name>~Level</name></member>
     </listofallmembers>

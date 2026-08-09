@@ -10,6 +10,7 @@ Here is a list of all files with brief descriptions:
         * **file** [**color\_format.h**](color__format_8h.md)     
         * **file** [**detail.h**](detail_8h.md)     
         * **file** [**game\_mode.h**](game__mode_8h.md)     
+        * **file** [**game\_rule.h**](game__rule_8h.md)     
         * **file** [**identifier.h**](identifier_8h.md)     
         * **dir** [**actor**](dir_dd7779a583e02d88c9a89a2c881c3946.md)     
             * **file** [**actor.h**](actor_8h.md)     

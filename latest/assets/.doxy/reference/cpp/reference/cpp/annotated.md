@@ -72,6 +72,8 @@ Here are the classes, structs, unions and interfaces with brief descriptions:
     * **class** [**Event**](classendstone_1_1Event.md) _Represents an event._     
     * **class** [**EventHandler**](classendstone_1_1EventHandler.md) _Represents a registered_ [_**EventHandler**_](classendstone_1_1EventHandler.md) _which associates with a_[_**Plugin**_](classendstone_1_1Plugin.md) _._    
     * **class** [**Form**](classendstone_1_1Form.md) _Represents a generic form._     
+    * **class** [**GameRule**](classendstone_1_1GameRule.md) _Represents a game rule._     
+    * **class** [**GameRuleId**](classendstone_1_1GameRuleId.md) _Represents the identifier of a game rule, carrying the type of the rule's value._     
     * **class** [**HandlerList**](classendstone_1_1HandlerList.md) _A list of event handlers._     
     * **class** [**Header**](classendstone_1_1Header.md) _Represents a header with a label._     
     * **class** [**ICancellable**](classendstone_1_1ICancellable.md) _Interface for events that may be cancelled by a plugin or the server._     
