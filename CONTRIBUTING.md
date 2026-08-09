@@ -105,7 +105,7 @@ pip install -U . -C build-dir=./build
 ### C++ Tests (GTest)
 
 ```bash
-ctest --test-dir build/Release
+ctest --preset conan-relwithdebinfo
 ```
 
 ### Python Tests
