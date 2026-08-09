@@ -5,7 +5,7 @@ Classes relating to handling triggered code executions.
 import enum
 import typing
 
-from endstone import GameMode, Identifier, Input, Player, Skin
+from endstone import GameMode, Input, Player, Skin
 from endstone.actor import Actor, Item, Mob
 from endstone.block import Block, BlockFace, BlockState
 from endstone.command import CommandSender

@@ -963,31 +963,37 @@ class Input:
         """
         Whether a forward input is applied.
         """
+
     @property
     def is_backward(self) -> bool:
         """
         Whether a backward input is applied.
         """
+
     @property
     def is_left(self) -> bool:
         """
         Whether a left input is applied.
         """
+
     @property
     def is_right(self) -> bool:
         """
         Whether a right input is applied.
         """
+
     @property
     def is_jump(self) -> bool:
         """
         Whether a jump input is applied.
         """
+
     @property
     def is_sneak(self) -> bool:
         """
         Whether a sneak input is applied.
         """
+
     @property
     def is_sprint(self) -> bool:
         """
