@@ -3,16 +3,6 @@ project(endstone VERSION 0.11.8 LANGUAGES CXX)
 
 include(FetchContent)
 
-find_package(expected-lite QUIET)
-if (NOT expected-lite_FOUND)
-    FetchContent_Declare(
-            expected-lite
-            GIT_REPOSITORY https://github.com/martinmoene/expected-lite.git
-            GIT_TAG v0.8.0
-    )
-    FetchContent_MakeAvailable(expected-lite)
-endif ()
-
 # A git version (passed by conanfile.py) overrides the project() fallback at build time.
 if (NOT DEFINED ENDSTONE_VERSION_FULL)
     set(ENDSTONE_VERSION_FULL "${PROJECT_VERSION}")

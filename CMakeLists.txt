@@ -45,6 +45,8 @@ option(CODE_COVERAGE "Enable code coverage reporting" OFF)
 option(ENDSTONE_ENABLE_DEVTOOLS "Build Endstone with DevTools enabled." OFF)
 option(ENDSTONE_SEPARATE_DEBUG_INFO "Separate debug info into .dbg files on Linux using objcopy" OFF)
 
+find_package(expected-lite REQUIRED)
+
 # Endstone header-only API
 add_subdirectory(include)
 if (NOT CMAKE_SOURCE_DIR STREQUAL PROJECT_SOURCE_DIR)
