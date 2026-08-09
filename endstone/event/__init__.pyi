@@ -10,7 +10,7 @@ from endstone.actor import Actor, Item, Mob
 from endstone.block import Block, BlockFace, BlockState
 from endstone.command import CommandSender
 from endstone.damage import DamageSource
-from endstone.inventory import BookMeta, EquipmentSlot, ItemStack, Recipe
+from endstone.inventory import BookMeta, EquipmentSlot, ItemStack
 from endstone.lang import Translatable
 from endstone.level import Chunk, Dimension, Level, Location
 from endstone.map import MapView
@@ -52,11 +52,9 @@ __all__ = [
     "MobEvent",
     "PacketReceiveEvent",
     "PacketSendEvent",
-    "PlayerArmorStandManipulateEvent",
     "PlayerAnimationEvent",
     "PlayerAnimationType",
-    "ARM_SWING",
-    "OFF_ARM_SWING",
+    "PlayerArmorStandManipulateEvent",
     "PlayerBedEnterEvent",
     "PlayerBedLeaveEvent",
     "PlayerBlockDamageEvent",
@@ -70,9 +68,9 @@ __all__ = [
     "PlayerEmoteEvent",
     "PlayerEvent",
     "PlayerGameModeChangeEvent",
+    "PlayerInputEvent",
     "PlayerInteractActorEvent",
     "PlayerInteractEvent",
-    "PlayerInputEvent",
     "PlayerItemConsumeEvent",
     "PlayerItemHeldEvent",
     "PlayerJoinEvent",
@@ -95,8 +93,8 @@ __all__ = [
     "PlayerToggleCrawlEvent",
     "PlayerToggleFlightEvent",
     "PlayerToggleGlideEvent",
-    "PlayerToggleSprintEvent",
     "PlayerToggleSneakEvent",
+    "PlayerToggleSprintEvent",
     "PlayerToggleSwimEvent",
     "PlayerVelocityEvent",
     "PluginDisableEvent",
@@ -556,9 +554,6 @@ class PlayerAnimationType(enum.Enum):
     ARM_SWING = 0
     OFF_ARM_SWING = 1
 
-ARM_SWING = PlayerAnimationType.ARM_SWING
-OFF_ARM_SWING = PlayerAnimationType.OFF_ARM_SWING
-
 class PlayerBedEnterEvent(PlayerEvent, Cancellable):
     """
     Called when a player is almost about to enter the bed.
@@ -588,11 +583,13 @@ class PlayerBucketEntityEvent(PlayerEvent, Cancellable):
         """
         The entity being captured.
         """
+
     @property
     def entity_bucket(self) -> ItemStack:
         """
         The bucket item that will contain the captured entity.
         """
+
     @entity_bucket.setter
     def entity_bucket(self, arg1: ItemStack) -> None: ...
     @property
@@ -600,6 +597,7 @@ class PlayerBucketEntityEvent(PlayerEvent, Cancellable):
         """
         The hand used to capture the entity.
         """
+
     @property
     def original_bucket(self) -> ItemStack:
         """
@@ -611,25 +609,30 @@ class PlayerRecipeBookClickEvent(PlayerEvent, Cancellable):
     Called when a player clicks a recipe in the recipe book.
     """
     @property
-    def recipe(self) -> Identifier[Recipe]:
+    def recipe(self) -> str:
         """
         The recipe identifier clicked by the player.
         """
+
     @property
     def make_all(self) -> bool:
         """
         Whether the player requested crafting as many copies as possible.
         """
+
     @make_all.setter
-    def make_all(self, value: bool) -> None: ...
+    def make_all(self, arg1: bool) -> None: ...
 
 class PlayerLevelChangeEvent(PlayerEvent):
-    """Called when a player's level changes."""
+    """
+    Called when a player's level changes.
+    """
     @property
     def old_level(self) -> int:
         """
         The player's level before the change.
         """
+
     @property
     def new_level(self) -> int:
         """
@@ -637,7 +640,9 @@ class PlayerLevelChangeEvent(PlayerEvent):
         """
 
 class PlayerPickupArrowEvent(PlayerEvent, Cancellable):
-    """Called when a player picks up an arrow from the ground."""
+    """
+    Called when a player picks up an arrow from the ground.
+    """
     @property
     def arrow(self) -> Actor:
         """
@@ -645,12 +650,19 @@ class PlayerPickupArrowEvent(PlayerEvent, Cancellable):
         """
 
 class PlayerRecipeBookSettingsChangeEvent(PlayerEvent):
-    """Called when a player changes recipe book settings."""
+    """
+    Called when a player changes recipe book settings.
+    """
     class RecipeBookType(enum.Enum):
+        """
+        The recipe book type.
+        """
+
         CRAFTING = 0
         FURNACE = 1
         BLAST_FURNACE = 2
         SMOKER = 3
+
     CRAFTING = RecipeBookType.CRAFTING
     FURNACE = RecipeBookType.FURNACE
     BLAST_FURNACE = RecipeBookType.BLAST_FURNACE
@@ -660,11 +672,13 @@ class PlayerRecipeBookSettingsChangeEvent(PlayerEvent):
         """
         The type of recipe book whose settings changed.
         """
+
     @property
     def is_filtering(self) -> bool:
         """
         Whether recipe filtering is enabled.
         """
+
     @property
     def is_open(self) -> bool:
         """
@@ -672,17 +686,21 @@ class PlayerRecipeBookSettingsChangeEvent(PlayerEvent):
         """
 
 class PlayerShearEntityEvent(PlayerEvent, Cancellable):
-    """Called when a player shears an entity."""
+    """
+    Called when a player shears an entity.
+    """
     @property
     def entity(self) -> Actor:
         """
         The entity that was sheared.
         """
+
     @property
     def hand(self) -> EquipmentSlot:
         """
         The hand used to shear the entity.
         """
+
     @property
     def item(self) -> ItemStack:
         """
@@ -782,16 +800,19 @@ class PlayerEditBookEvent(PlayerEvent, Cancellable):
         """
         The inventory slot containing the book.
         """
+
     @property
     def previous_book_meta(self) -> BookMeta:
         """
         The book metadata before the edit.
         """
+
     @property
     def new_book_meta(self) -> BookMeta:
         """
         The book metadata after the edit.
         """
+
     @new_book_meta.setter
     def new_book_meta(self, arg1: BookMeta) -> None: ...
     @property
@@ -799,6 +820,7 @@ class PlayerEditBookEvent(PlayerEvent, Cancellable):
         """
         Whether the player is signing the book.
         """
+
     @is_signing.setter
     def is_signing(self, arg1: bool) -> None: ...
 
@@ -836,6 +858,7 @@ class PlayerGameModeChangeEvent(PlayerEvent, Cancellable):
 class PlayerBlockDamageEvent(PlayerEvent, Cancellable):
     """
     Called when a player starts, continues, aborts, predicts, stops, or creatively destroys a block.
+
     Cancellation is honored for `START` and `CONTINUE` actions only.
     """
     class Action(enum.Enum):
@@ -861,21 +884,25 @@ class PlayerBlockDamageEvent(PlayerEvent, Cancellable):
         """
         The block damage action that triggered this event.
         """
+
     @property
     def item(self) -> ItemStack | None:
         """
         The item used to damage the block, or `None` if unavailable.
         """
+
     @property
-    def block(self) -> Block | None:
+    def block(self) -> Block:
         """
         The block being damaged, or `None` if unavailable.
         """
+
     @property
     def block_face(self) -> BlockFace | None:
         """
         The face being damaged, or `None` if unavailable.
         """
+
     @property
     def position(self) -> Vector:
         """
@@ -945,6 +972,16 @@ class PlayerInteractEvent(PlayerEvent, Cancellable):
         1.0 inclusive.
         """
 
+class PlayerInputEvent(PlayerEvent):
+    """
+    Called when a player sends updated input to the server.
+    """
+    @property
+    def input(self) -> Input:
+        """
+        The new input received from this player.
+        """
+
 class PlayerInteractActorEvent(PlayerEvent, Cancellable):
     """
     Represents an event that is called when a player right-clicks an actor.
@@ -955,29 +992,33 @@ class PlayerInteractActorEvent(PlayerEvent, Cancellable):
         The actor that was right-clicked by the player.
         """
 
-class PlayerInputEvent(PlayerEvent):
-    """
-    Called when a player sends updated input to the server.
-    """
-    @property
-    def input(self) -> Input:
-        """
-        The new input received from this player.
-        """
 class PlayerArmorStandManipulateEvent(PlayerInteractActorEvent):
-    """Called when a player interacts with an armor stand."""
+    """
+    Called when a player interacts with an armor stand.
+    """
     @property
     def armor_stand_item(self) -> ItemStack:
-        """The item held by the armor stand."""
+        """
+        The item held by the armor stand.
+        """
+
     @property
     def player_item(self) -> ItemStack:
-        """The item held by the player."""
+        """
+        The item held by the player.
+        """
+
     @property
     def hand(self) -> EquipmentSlot:
-        """The hand used for this interaction."""
+        """
+        The hand used for this interaction.
+        """
+
     @property
     def slot(self) -> EquipmentSlot:
-        """The armor stand slot involved in the interaction."""
+        """
+        The armor stand slot involved in the interaction.
+        """
 
 class PlayerAnimationEvent(PlayerEvent):
     """
@@ -1037,16 +1078,6 @@ class PlayerToggleSneakEvent(PlayerEvent):
         Whether the player is now sneaking or not.
         """
 
-class PlayerRiptideEvent(PlayerEvent):
-    """
-    Called when a player starts or stops a riptide attack.
-    """
-    @property
-    def is_riptiding(self) -> bool:
-        """
-        Whether the player is riptiding.
-        """
-
 class PlayerToggleSprintEvent(PlayerEvent):
     """
     Called when a player toggles their sprinting state.
@@ -1057,24 +1088,14 @@ class PlayerToggleSprintEvent(PlayerEvent):
         Whether the player is now sprinting or not.
         """
 
-class PlayerToggleSwimEvent(PlayerEvent):
+class PlayerToggleCrawlEvent(PlayerEvent):
     """
-    Called when a player toggles their swimming state.
-    """
-    @property
-    def is_swimming(self) -> bool:
-        """
-        Whether the player is now swimming or not.
-        """
-
-class PlayerToggleGlideEvent(PlayerEvent):
-    """
-    Called when a player toggles their gliding state.
+    Called when a player toggles their crawling state.
     """
     @property
-    def is_gliding(self) -> bool:
+    def is_crawling(self) -> bool:
         """
-        Whether the player is now gliding or not.
+        Whether the player is now crawling or not.
         """
 
 class PlayerToggleFlightEvent(PlayerEvent):
@@ -1087,14 +1108,34 @@ class PlayerToggleFlightEvent(PlayerEvent):
         Whether the player is now flying or not.
         """
 
-class PlayerToggleCrawlEvent(PlayerEvent):
+class PlayerToggleGlideEvent(PlayerEvent):
     """
-    Called when a player toggles their crawling state.
+    Called when a player toggles their gliding state.
     """
     @property
-    def is_crawling(self) -> bool:
+    def is_gliding(self) -> bool:
         """
-        Whether the player is now crawling or not.
+        Whether the player is now gliding or not.
+        """
+
+class PlayerToggleSwimEvent(PlayerEvent):
+    """
+    Called when a player toggles their swimming state.
+    """
+    @property
+    def is_swimming(self) -> bool:
+        """
+        Whether the player is now swimming or not.
+        """
+
+class PlayerRiptideEvent(PlayerEvent):
+    """
+    Called when a player starts or stops a riptide attack.
+    """
+    @property
+    def is_riptiding(self) -> bool:
+        """
+        Whether the player is riptiding.
         """
 
 class PlayerJoinEvent(PlayerEvent):
@@ -1219,17 +1260,6 @@ class PlayerTeleportEvent(PlayerMoveEvent):
     Called when a player is teleported from one location to another.
     """
 
-class PlayerVelocityEvent(PlayerEvent):
-    """Called when the velocity of a player changes."""
-    @property
-    def velocity(self) -> Vector:
-        """The velocity vector that will be sent to the player.
-
-        The getter returns a copy; assign the modified vector back to this property.
-        """
-    @velocity.setter
-    def velocity(self, value: Vector) -> None: ...
-
 class PlayerPortalEvent(PlayerTeleportEvent):
     """
     Called when a player is about to teleport because it is in contact with a portal.
@@ -1244,6 +1274,21 @@ class PlayerPickupItemEvent(PlayerEvent, Cancellable):
         """
         The Item picked up by the entity.
         """
+
+class PlayerVelocityEvent(PlayerEvent):
+    """
+    Called when the velocity of a player changes.
+    """
+    @property
+    def velocity(self) -> Vector:
+        """
+        The velocity vector that will be sent to the player.
+
+        The getter returns a copy; assign the modified vector back to this property.
+        """
+
+    @velocity.setter
+    def velocity(self, arg1: Vector) -> None: ...
 
 class ServerEvent(Event):
     """

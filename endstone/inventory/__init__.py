@@ -15,7 +15,6 @@ __getattr__, __dir__, __all__ = lazy.attach(
             "ItemType",
             "MapMeta",
             "PlayerInventory",
-            "Recipe",
             "WritableBookMeta",
         ],
     },

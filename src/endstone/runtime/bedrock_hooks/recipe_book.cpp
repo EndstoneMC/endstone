@@ -116,8 +116,7 @@ ItemStackNetResult dispatchCraftAction(ItemStackRequestActionHandler &handler,
 
     auto &server = endstone::core::EndstoneServer::getInstance();
     endstone::PlayerRecipeBookClickEvent event{
-        player->getEndstoneActor<endstone::core::EndstonePlayer>(), endstone::RecipeId{native_recipe->getRecipeId()},
-        make_all};
+        player->getEndstoneActor<endstone::core::EndstonePlayer>(), native_recipe->getRecipeId(), make_all};
     server.getPluginManager().callEvent(event);
 
     if (event.isCancelled()) {
