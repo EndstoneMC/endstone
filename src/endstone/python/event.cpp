@@ -263,6 +263,16 @@ void init_event(py::module_ &m, py::class_<Event, PyEvent> &event)
     py::class_<PlayerBedLeaveEvent, PlayerEvent>(m, "PlayerBedLeaveEvent", "Called when a player is leaving a bed.")
         .def_property_readonly("bed", &PlayerBedLeaveEvent::getBed, py::return_value_policy::reference,
                                "The bed block involved in this event.");
+    py::class_<PlayerBucketEntityEvent, PlayerEvent, ICancellable>(
+        m, "PlayerBucketEntityEvent", "Called when a player captures an entity with a bucket.")
+        .def_property_readonly("entity", &PlayerBucketEntityEvent::getEntity, py::return_value_policy::reference,
+                               "The entity being captured.")
+        .def_property("entity_bucket", &PlayerBucketEntityEvent::getEntityBucket,
+                      &PlayerBucketEntityEvent::setEntityBucket,
+                      "The bucket item that will contain the captured entity.")
+        .def_property_readonly("hand", &PlayerBucketEntityEvent::getHand, "The hand used to capture the entity.")
+        .def_property_readonly("original_bucket", &PlayerBucketEntityEvent::getOriginalBucket,
+                               "The bucket used to capture the entity.");
     py::class_<PlayerRecipeBookClickEvent, PlayerEvent, ICancellable>(
         m, "PlayerRecipeBookClickEvent", "Called when a player clicks a recipe in the recipe book.")
         .def_property_readonly("recipe", &PlayerRecipeBookClickEvent::getRecipe,

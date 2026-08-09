@@ -60,6 +60,7 @@ __all__ = [
     "PlayerBedEnterEvent",
     "PlayerBedLeaveEvent",
     "PlayerBlockDamageEvent",
+    "PlayerBucketEntityEvent",
     "PlayerChatEvent",
     "PlayerCommandEvent",
     "PlayerDeathEvent",
@@ -576,6 +577,33 @@ class PlayerBedLeaveEvent(PlayerEvent):
     def bed(self) -> Block:
         """
         The bed block involved in this event.
+        """
+
+class PlayerBucketEntityEvent(PlayerEvent, Cancellable):
+    """
+    Called when a player captures an entity with a bucket.
+    """
+    @property
+    def entity(self) -> Actor:
+        """
+        The entity being captured.
+        """
+    @property
+    def entity_bucket(self) -> ItemStack:
+        """
+        The bucket item that will contain the captured entity.
+        """
+    @entity_bucket.setter
+    def entity_bucket(self, arg1: ItemStack) -> None: ...
+    @property
+    def hand(self) -> EquipmentSlot:
+        """
+        The hand used to capture the entity.
+        """
+    @property
+    def original_bucket(self) -> ItemStack:
+        """
+        The bucket used to capture the entity.
         """
 
 class PlayerRecipeBookClickEvent(PlayerEvent, Cancellable):
