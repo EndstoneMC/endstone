@@ -60,19 +60,19 @@ Only needed for the manual `cmake --preset` path below; `pip install`-based buil
 **Windows (cmd):**
 
 ```shell
-.\build\Release\generators\conanbuild.bat
+build\RelWithDebInfo\generators\conanbuild.bat
 ```
 
 **Windows (PowerShell):**
 
 ```shell
-.\build\Release\generators\conanbuild.ps1
+build\RelWithDebInfo\generators\conanbuild.ps1
 ```
 
 **Linux:**
 
 ```bash
-source ./build/Release/generators/conanbuild.sh
+source build/RelWithDebInfo/generators/conanbuild.sh
 ```
 
 ## Building
@@ -80,8 +80,8 @@ source ./build/Release/generators/conanbuild.sh
 ### Build with CMake
 
 ```bash
-cmake --preset conan-release
-cmake --build --preset conan-release
+cmake --preset conan-relwithdebinfo
+cmake --build --preset conan-relwithdebinfo
 ```
 
 ### Install from Source (builds Python wheel)
