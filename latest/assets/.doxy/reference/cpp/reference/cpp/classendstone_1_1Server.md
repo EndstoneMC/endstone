@@ -89,7 +89,7 @@ _Represents a server implementation._
 | virtual std::string | [**getMinecraftVersion**](#function-getminecraftversion) () const = 0<br>_Gets the Minecraft version that this server is running._  |
 | virtual std::string | [**getName**](#function-getname) () const = 0<br>_Gets the name of this server implementation._  |
 | virtual [**bool**](classendstone_1_1Identifier.md) | [**getOnlineMode**](#function-getonlinemode) () const = 0<br>_Gets whether the_ [_**Server**_](classendstone_1_1Server.md) _is in online mode or not._ |
-| virtual std::vector&lt; [**Player**](classendstone_1_1Player.md) \* &gt; | [**getOnlinePlayers**](#function-getonlineplayers) () const = 0<br>_Gets a list of all currently online players._  |
+| virtual std::vector&lt; [**NotNull**](classendstone_1_1NotNull.md)&lt; [**Player**](classendstone_1_1Player.md) &gt; &gt; | [**getOnlinePlayers**](#function-getonlineplayers) () const = 0<br>_Gets a list of all currently online players._  |
 | virtual [**Nullable**](classendstone_1_1Nullable.md)&lt; [**Player**](classendstone_1_1Player.md) &gt; | [**getPlayer**](#function-getplayer-12) ([**endstone::UUID**](classendstone_1_1UUID.md) id) const = 0<br>_Gets the player with the given_ [_**UUID**_](classendstone_1_1UUID.md) _._ |
 | virtual [**Nullable**](classendstone_1_1Nullable.md)&lt; [**Player**](classendstone_1_1Player.md) &gt; | [**getPlayer**](#function-getplayer-22) (std::string name) const = 0<br>_Gets the player with the exact given name, case-insensitive._  |
 | virtual [**Nullable**](classendstone_1_1Nullable.md)&lt; [**PluginCommand**](classendstone_1_1PluginCommand.md) &gt; | [**getPluginCommand**](#function-getplugincommand) (std::string name) const = 0<br>_Gets a_ [_**PluginCommand**_](classendstone_1_1PluginCommand.md) _with the given name or alias._ |
@@ -1052,7 +1052,7 @@ virtual bool endstone::Server::getOnlineMode () const = 0
 
 _Gets a list of all currently online players._ 
 ```C++
-virtual std::vector< Player * > endstone::Server::getOnlinePlayers () const = 0
+virtual std::vector< NotNull < Player > > endstone::Server::getOnlinePlayers () const = 0
 ```
 
 

@@ -36,7 +36,7 @@ namespace endstone {
 class ActorDeathEvent : public ActorEvent<Mob> {
 public:
     ENDSTONE_EVENT(ActorDeathEvent);
-    ActorDeathEvent(Mob &actor, std::unique_ptr<DamageSource> damage_source)
+    ActorDeathEvent(const NotNull<Mob> &actor, std::unique_ptr<DamageSource> damage_source)
         : ActorEvent(actor), damage_source_(std::move(damage_source))
     {
     }

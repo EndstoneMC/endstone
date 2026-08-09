@@ -24,14 +24,14 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/util/pointers.h" line="182" column="17" bodyfile="include/endstone/util/pointers.h" bodystart="182" bodyend="185"/>
+        <location file="include/endstone/util/pointers.h" line="187" column="17" bodyfile="include/endstone/util/pointers.h" bodystart="187" bodyend="190"/>
       </memberdef>
     </sectiondef>
     <briefdescription>
     </briefdescription>
     <detaileddescription>
     </detaileddescription>
-    <location file="include/endstone/util/pointers.h" line="181" column="1" bodyfile="include/endstone/util/pointers.h" bodystart="181" bodyend="186"/>
+    <location file="include/endstone/util/pointers.h" line="186" column="1" bodyfile="include/endstone/util/pointers.h" bodystart="186" bodyend="191"/>
     <listofallmembers>
       <member refid="structstd_1_1hash_3_01endstone_1_1NotNull_3_01T_01_4_01_4_1adba05141b86521536cdd3d42693514d3" prot="public" virt="non-virtual"><scope>std::hash&lt; endstone::NotNull&lt; T &gt; &gt;</scope><name>operator()</name></member>
     </listofallmembers>

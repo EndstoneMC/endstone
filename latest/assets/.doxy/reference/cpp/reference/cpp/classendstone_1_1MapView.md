@@ -60,7 +60,7 @@ _Represents a map item._
 | virtual [**void**](classendstone_1_1Identifier.md) | [**addRenderer**](#function-addrenderer) (std::shared\_ptr&lt; [**MapRenderer**](classendstone_1_1MapRenderer.md) &gt; renderer) = 0<br>_Add a renderer to this map._  |
 | virtual [**int**](classendstone_1_1Identifier.md) | [**getCenterX**](#function-getcenterx) () const = 0<br>_Get the center X position of this map._  |
 | virtual [**int**](classendstone_1_1Identifier.md) | [**getCenterZ**](#function-getcenterz) () const = 0<br>_Get the center Z position of this map._  |
-| virtual [**Dimension**](classendstone_1_1Dimension.md) \* | [**getDimension**](#function-getdimension) () const = 0<br>_Get the dimension that this map is associated with._  |
+| virtual [**Nullable**](classendstone_1_1Nullable.md)&lt; [**Dimension**](classendstone_1_1Dimension.md) &gt; | [**getDimension**](#function-getdimension) () const = 0<br>_Get the dimension that this map is associated with._  |
 | virtual std::int64\_t | [**getId**](#function-getid) () const = 0<br>_Get the ID of this map item for use with_ [_**MapMeta**_](classendstone_1_1MapMeta.md) _._ |
 | virtual std::vector&lt; std::shared\_ptr&lt; [**MapRenderer**](classendstone_1_1MapRenderer.md) &gt; &gt; | [**getRenderers**](#function-getrenderers) () const = 0<br>_Get a list of MapRenderers currently in effect._  |
 | virtual [**Scale**](classendstone_1_1MapView.md#enum-scale) | [**getScale**](#function-getscale) () const = 0<br>_Get the scale of this map._  |
@@ -211,7 +211,7 @@ The center Z position.
 
 _Get the dimension that this map is associated with._ 
 ```C++
-virtual Dimension * endstone::MapView::getDimension () const = 0
+virtual Nullable < Dimension > endstone::MapView::getDimension () const = 0
 ```
 
 
@@ -220,7 +220,7 @@ virtual Dimension * endstone::MapView::getDimension () const = 0
 
 **Returns:**
 
-Pointer to the [**Dimension**](classendstone_1_1Dimension.md) this map is associated with, or nullptr. 
+The [**Dimension**](classendstone_1_1Dimension.md) this map is associated with, or null. 
 
 
 

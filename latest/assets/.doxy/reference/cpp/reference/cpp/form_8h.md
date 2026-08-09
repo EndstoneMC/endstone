@@ -13,6 +13,7 @@
 * `#include <functional>`
 * `#include <utility>`
 * `#include "endstone/message.h"`
+* `#include "endstone/util/pointers.h"`
 
 
 

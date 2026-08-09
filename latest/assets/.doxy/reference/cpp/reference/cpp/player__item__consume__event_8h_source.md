@@ -36,7 +36,7 @@ class PlayerItemConsumeEvent final : public Cancellable<PlayerEvent> {
 public:
     ENDSTONE_EVENT(PlayerItemConsumeEvent)
 
-    explicit PlayerItemConsumeEvent(Player &player, ItemStack item, EquipmentSlot hand)
+    explicit PlayerItemConsumeEvent(const NotNull<Player> &player, ItemStack item, EquipmentSlot hand)
         : Cancellable(player), item_(std::move(item)), hand_(hand)
     {
     }

@@ -56,7 +56,7 @@ _Represents a block._ [More...](#detailed-description)
 | virtual std::unique\_ptr&lt; [**Block**](classendstone_1_1Block.md) &gt; | [**clone**](#function-clone) () const = 0<br>_Creates a copy of the current block._  |
 | virtual [**const**](classendstone_1_1Identifier.md) [**Biome**](classendstone_1_1Biome.md) & | [**getBiome**](#function-getbiome) () const = 0<br>_Gets the biome that this block resides in._  |
 | virtual std::unique\_ptr&lt; [**BlockData**](classendstone_1_1BlockData.md) &gt; | [**getData**](#function-getdata) () const = 0<br>_Gets the complete block data for this block._  |
-| virtual [**Dimension**](classendstone_1_1Dimension.md) & | [**getDimension**](#function-getdimension) () const = 0<br>_Gets the dimension which contains this_ [_**Block**_](classendstone_1_1Block.md) _._ |
+| virtual [**NotNull**](classendstone_1_1NotNull.md)&lt; [**Dimension**](classendstone_1_1Dimension.md) &gt; | [**getDimension**](#function-getdimension) () const = 0<br>_Gets the dimension which contains this_ [_**Block**_](classendstone_1_1Block.md) _._ |
 | virtual [**Location**](classendstone_1_1Location.md) | [**getLocation**](#function-getlocation) () const = 0<br>_Gets the_ [_**Location**_](classendstone_1_1Location.md) _of the block._ |
 | virtual std::unique\_ptr&lt; [**Block**](classendstone_1_1Block.md) &gt; | [**getRelative**](#function-getrelative-13) ([**int**](classendstone_1_1Identifier.md) offset\_x, [**int**](classendstone_1_1Identifier.md) offset\_y, [**int**](classendstone_1_1Identifier.md) offset\_z) = 0<br>_Gets the block at the given offsets._  |
 | virtual std::unique\_ptr&lt; [**Block**](classendstone_1_1Block.md) &gt; | [**getRelative**](#function-getrelative-23) ([**BlockFace**](namespaceendstone.md#enum-blockface) face) = 0<br>_Gets the block at the given face._  |
@@ -217,7 +217,7 @@ block specific data
 
 _Gets the dimension which contains this_ [_**Block**_](classendstone_1_1Block.md) _._
 ```C++
-virtual Dimension & endstone::Block::getDimension () const = 0
+virtual NotNull < Dimension > endstone::Block::getDimension () const = 0
 ```
 
 

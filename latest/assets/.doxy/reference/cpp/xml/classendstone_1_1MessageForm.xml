@@ -5,9 +5,9 @@
     <basecompoundref refid="classendstone_1_1Form" prot="public" virt="non-virtual">endstone::Form&lt; MessageForm &gt;</basecompoundref>
     <includes refid="message__form_8h" local="no">endstone/form/message_form.h</includes>
     <sectiondef kind="public-type">
-      <memberdef kind="typedef" id="classendstone_1_1MessageForm_1ae80b40d9e184bdb006df4227c18bc7a0" prot="public" static="no">
-        <type>std::function&lt; <ref refid="classendstone_1_1Identifier" kindref="compound">void</ref>(<ref refid="classendstone_1_1Player" kindref="compound">Player</ref> *, <ref refid="classendstone_1_1Identifier" kindref="compound">int</ref>)&gt;</type>
-        <definition>using endstone::MessageForm::OnSubmitCallback =  std::function&lt;void(Player *, int)&gt;</definition>
+      <memberdef kind="typedef" id="classendstone_1_1MessageForm_1a086b249a29dfabb248054a9afacc161a" prot="public" static="no">
+        <type>std::function&lt; <ref refid="classendstone_1_1Identifier" kindref="compound">void</ref>(<ref refid="classendstone_1_1Identifier" kindref="compound">const</ref> <ref refid="classendstone_1_1NotNull" kindref="compound">NotNull</ref>&lt; <ref refid="classendstone_1_1Player" kindref="compound">Player</ref> &gt; &amp;, <ref refid="classendstone_1_1Identifier" kindref="compound">int</ref>)&gt;</type>
+        <definition>using endstone::MessageForm::OnSubmitCallback =  std::function&lt;void(const NotNull&lt;Player&gt; &amp;, int)&gt;</definition>
         <argsstring></argsstring>
         <name>OnSubmitCallback</name>
         <qualifiedname>endstone::MessageForm::OnSubmitCallback</qualifiedname>
@@ -17,7 +17,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/form/message_form.h" line="29" column="5" bodyfile="include/endstone/form/message_form.h" bodystart="29" bodyend="-1"/>
+        <location file="include/endstone/form/message_form.h" line="30" column="5" bodyfile="include/endstone/form/message_form.h" bodystart="30" bodyend="-1"/>
       </memberdef>
     </sectiondef>
     <sectiondef kind="private-attrib">
@@ -33,7 +33,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/form/message_form.h" line="108" column="13" bodyfile="include/endstone/form/message_form.h" bodystart="108" bodyend="-1"/>
+        <location file="include/endstone/form/message_form.h" line="109" column="13" bodyfile="include/endstone/form/message_form.h" bodystart="109" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="classendstone_1_1MessageForm_1ad837135cec90cf369d35feaa1f598344" prot="private" static="no" mutable="no">
         <type><ref refid="namespaceendstone_1ab1be61859bf80a227cf5d0b12a26ef78" kindref="member">Message</ref></type>
@@ -47,7 +47,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/form/message_form.h" line="109" column="13" bodyfile="include/endstone/form/message_form.h" bodystart="109" bodyend="-1"/>
+        <location file="include/endstone/form/message_form.h" line="110" column="13" bodyfile="include/endstone/form/message_form.h" bodystart="110" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="classendstone_1_1MessageForm_1a9daa7ae62d33ecc513163c78f912de8a" prot="private" static="no" mutable="no">
         <type><ref refid="namespaceendstone_1ab1be61859bf80a227cf5d0b12a26ef78" kindref="member">Message</ref></type>
@@ -61,7 +61,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/form/message_form.h" line="110" column="13" bodyfile="include/endstone/form/message_form.h" bodystart="110" bodyend="-1"/>
+        <location file="include/endstone/form/message_form.h" line="111" column="13" bodyfile="include/endstone/form/message_form.h" bodystart="111" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="classendstone_1_1MessageForm_1ac2490b18c4126983a6aede9ec8dbfe04" prot="private" static="no" mutable="no">
         <type>OnSubmitCallback</type>
@@ -75,7 +75,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/form/message_form.h" line="111" column="22" bodyfile="include/endstone/form/message_form.h" bodystart="111" bodyend="-1"/>
+        <location file="include/endstone/form/message_form.h" line="112" column="22" bodyfile="include/endstone/form/message_form.h" bodystart="112" bodyend="-1"/>
       </memberdef>
     </sectiondef>
     <sectiondef kind="public-func">
@@ -95,7 +95,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/form/message_form.h" line="36" column="14" bodyfile="include/endstone/form/message_form.h" bodystart="36" bodyend="36"/>
+        <location file="include/endstone/form/message_form.h" line="37" column="14" bodyfile="include/endstone/form/message_form.h" bodystart="37" bodyend="37"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1MessageForm_1a12684fb2175d884fdd98b85f085c71e1" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type><ref refid="classendstone_1_1MessageForm" kindref="compound">MessageForm</ref> &amp;</type>
@@ -126,7 +126,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/form/message_form.h" line="44" column="17" bodyfile="include/endstone/form/message_form.h" bodystart="44" bodyend="48"/>
+        <location file="include/endstone/form/message_form.h" line="45" column="17" bodyfile="include/endstone/form/message_form.h" bodystart="45" bodyend="49"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1MessageForm_1ab6620076abada4c6e93bbc1bc24ce62f" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
         <type><ref refid="namespaceendstone_1ab1be61859bf80a227cf5d0b12a26ef78" kindref="member">Message</ref></type>
@@ -144,7 +144,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/form/message_form.h" line="55" column="14" bodyfile="include/endstone/form/message_form.h" bodystart="55" bodyend="55"/>
+        <location file="include/endstone/form/message_form.h" line="56" column="14" bodyfile="include/endstone/form/message_form.h" bodystart="56" bodyend="56"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1MessageForm_1a664b192faeebdf01185ac6e2d9a7573a" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type><ref refid="classendstone_1_1MessageForm" kindref="compound">MessageForm</ref> &amp;</type>
@@ -175,7 +175,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/form/message_form.h" line="63" column="17" bodyfile="include/endstone/form/message_form.h" bodystart="63" bodyend="67"/>
+        <location file="include/endstone/form/message_form.h" line="64" column="17" bodyfile="include/endstone/form/message_form.h" bodystart="64" bodyend="68"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1MessageForm_1ac7b3d87630849182d65b4ae83ab6b0f8" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
         <type><ref refid="namespaceendstone_1ab1be61859bf80a227cf5d0b12a26ef78" kindref="member">Message</ref></type>
@@ -193,7 +193,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/form/message_form.h" line="74" column="14" bodyfile="include/endstone/form/message_form.h" bodystart="74" bodyend="74"/>
+        <location file="include/endstone/form/message_form.h" line="75" column="14" bodyfile="include/endstone/form/message_form.h" bodystart="75" bodyend="75"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1MessageForm_1a99a1ad7984440fd680b036a1ea32e246" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type><ref refid="classendstone_1_1MessageForm" kindref="compound">MessageForm</ref> &amp;</type>
@@ -224,7 +224,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/form/message_form.h" line="82" column="17" bodyfile="include/endstone/form/message_form.h" bodystart="82" bodyend="86"/>
+        <location file="include/endstone/form/message_form.h" line="83" column="17" bodyfile="include/endstone/form/message_form.h" bodystart="83" bodyend="87"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1MessageForm_1a4d5cabc83f65da661374a2699e56e8a4" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
         <type>OnSubmitCallback</type>
@@ -242,7 +242,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/form/message_form.h" line="93" column="23" bodyfile="include/endstone/form/message_form.h" bodystart="93" bodyend="93"/>
+        <location file="include/endstone/form/message_form.h" line="94" column="23" bodyfile="include/endstone/form/message_form.h" bodystart="94" bodyend="94"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1MessageForm_1a32ad03e1b55f5a98009d34d5f442c248" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type><ref refid="classendstone_1_1MessageForm" kindref="compound">MessageForm</ref> &amp;</type>
@@ -273,7 +273,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/form/message_form.h" line="101" column="17" bodyfile="include/endstone/form/message_form.h" bodystart="101" bodyend="105"/>
+        <location file="include/endstone/form/message_form.h" line="102" column="17" bodyfile="include/endstone/form/message_form.h" bodystart="102" bodyend="106"/>
       </memberdef>
     </sectiondef>
     <briefdescription>
@@ -305,7 +305,7 @@
         </childnode>
       </node>
     </collaborationgraph>
-    <location file="include/endstone/form/message_form.h" line="27" column="1" bodyfile="include/endstone/form/message_form.h" bodystart="27" bodyend="112"/>
+    <location file="include/endstone/form/message_form.h" line="28" column="1" bodyfile="include/endstone/form/message_form.h" bodystart="28" bodyend="113"/>
     <listofallmembers>
       <member refid="classendstone_1_1MessageForm_1ad837135cec90cf369d35feaa1f598344" prot="private" virt="non-virtual"><scope>endstone::MessageForm</scope><name>button1_text_</name></member>
       <member refid="classendstone_1_1MessageForm_1a9daa7ae62d33ecc513163c78f912de8a" prot="private" virt="non-virtual"><scope>endstone::MessageForm</scope><name>button2_text_</name></member>
@@ -319,8 +319,8 @@
       <member refid="classendstone_1_1Form_1a08c5096cfa0a1fb79c160d3bd0890679" prot="public" virt="non-virtual"><scope>endstone::MessageForm</scope><name>getTitle</name></member>
       <member refid="classendstone_1_1Form_1a2e7d8ad1b41e12cf0d4f1e8522bf3e46" prot="protected" virt="non-virtual"><scope>endstone::MessageForm</scope><name>on_close_</name></member>
       <member refid="classendstone_1_1MessageForm_1ac2490b18c4126983a6aede9ec8dbfe04" prot="private" virt="non-virtual"><scope>endstone::MessageForm</scope><name>on_submit_</name></member>
-      <member refid="classendstone_1_1Form_1a2aa24725e41a18e53dc651e46e279e28" prot="public" virt="non-virtual"><scope>endstone::MessageForm</scope><name>OnCloseCallback</name></member>
-      <member refid="classendstone_1_1MessageForm_1ae80b40d9e184bdb006df4227c18bc7a0" prot="public" virt="non-virtual"><scope>endstone::MessageForm</scope><name>OnSubmitCallback</name></member>
+      <member refid="classendstone_1_1Form_1a325e7cdc52fbbf536cc9fe8a32ba06c8" prot="public" virt="non-virtual"><scope>endstone::MessageForm</scope><name>OnCloseCallback</name></member>
+      <member refid="classendstone_1_1MessageForm_1a086b249a29dfabb248054a9afacc161a" prot="public" virt="non-virtual"><scope>endstone::MessageForm</scope><name>OnSubmitCallback</name></member>
       <member refid="classendstone_1_1MessageForm_1a664b192faeebdf01185ac6e2d9a7573a" prot="public" virt="non-virtual"><scope>endstone::MessageForm</scope><name>setButton1</name></member>
       <member refid="classendstone_1_1MessageForm_1a99a1ad7984440fd680b036a1ea32e246" prot="public" virt="non-virtual"><scope>endstone::MessageForm</scope><name>setButton2</name></member>
       <member refid="classendstone_1_1MessageForm_1a12684fb2175d884fdd98b85f085c71e1" prot="public" virt="non-virtual"><scope>endstone::MessageForm</scope><name>setContent</name></member>

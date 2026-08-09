@@ -34,12 +34,12 @@ class PlayerPickupItemEvent : public Cancellable<PlayerEvent> {
 public:
     ENDSTONE_EVENT(PlayerPickupItemEvent);
 
-    explicit PlayerPickupItemEvent(Player &player, Item &item) : Cancellable(player), item_(item) {};
+    explicit PlayerPickupItemEvent(const NotNull<Player> &player, const NotNull<Item> &item) : Cancellable(player), item_(item) {};
 
-    Item &getItem() const { return item_; }
+    const NotNull<Item> &getItem() const { return item_; }
 
 private:
-    Item &item_;
+    NotNull<Item> item_;
 };
 
 }  // namespace endstone

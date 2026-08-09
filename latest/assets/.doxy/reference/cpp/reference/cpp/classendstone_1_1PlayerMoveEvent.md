@@ -101,7 +101,7 @@ Inherited by the following classes: [endstone::PlayerJumpEvent](classendstone_1_
 | Type | Name |
 | ---: | :--- |
 |   | [**ENDSTONE\_EVENT**](#function-endstone_event) ([**PlayerMoveEvent**](classendstone_1_1PlayerMoveEvent.md)) <br> |
-|   | [**PlayerMoveEvent**](#function-playermoveevent) ([**Player**](classendstone_1_1Player.md) & player, [**Location**](classendstone_1_1Location.md) from, [**Location**](classendstone_1_1Location.md) to) <br> |
+|   | [**PlayerMoveEvent**](#function-playermoveevent) ([**const**](classendstone_1_1Identifier.md) [**NotNull**](classendstone_1_1NotNull.md)&lt; [**Player**](classendstone_1_1Player.md) &gt; & player, [**Location**](classendstone_1_1Location.md) from, [**Location**](classendstone_1_1Location.md) to) <br> |
 |  [**const**](classendstone_1_1Identifier.md) [**Location**](classendstone_1_1Location.md) & | [**getFrom**](#function-getfrom) () const<br>_Gets the location this player moved from._  |
 |  [**const**](classendstone_1_1Identifier.md) [**Location**](classendstone_1_1Location.md) & | [**getTo**](#function-getto) () const<br>_Gets the location this player moved to._  |
 |  [**void**](classendstone_1_1Identifier.md) | [**setFrom**](#function-setfrom) ([**const**](classendstone_1_1Identifier.md) [**Location**](classendstone_1_1Location.md) & from) <br>_Sets the location to mark as where the player moved from._  |
@@ -261,7 +261,7 @@ endstone::PlayerMoveEvent::ENDSTONE_EVENT (
 
 ```C++
 inline explicit endstone::PlayerMoveEvent::PlayerMoveEvent (
-    Player & player,
+    const  NotNull < Player > & player,
     Location from,
     Location to
 ) 

@@ -36,7 +36,7 @@ class PlayerDropItemEvent final : public Cancellable<PlayerEvent> {
 public:
     ENDSTONE_EVENT(PlayerDropItemEvent)
 
-    explicit PlayerDropItemEvent(Player &player, ItemStack drop) : Cancellable(player), drop_(std::move(drop)) {}
+    explicit PlayerDropItemEvent(const NotNull<Player> &player, ItemStack drop) : Cancellable(player), drop_(std::move(drop)) {}
 
     [[nodiscard]] const ItemStack &getItem() const { return drop_; }
 

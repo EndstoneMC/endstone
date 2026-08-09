@@ -15,6 +15,7 @@
 * `#include <utility>`
 * `#include "endstone/plugin/service.h"`
 * `#include "endstone/plugin/service_priority.h"`
+* `#include "endstone/util/pointers.h"`
 
 
 

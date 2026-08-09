@@ -41,7 +41,7 @@ namespace endstone {
 class Dimension;
 using DimensionId = Identifier<Dimension>;
 
-class Dimension : public std::enable_shared_from_this<Dimension> {
+class Dimension {
 public:
     static constexpr auto Overworld = DimensionId::minecraft("overworld");
     static constexpr auto Nether = DimensionId::minecraft("nether");
@@ -77,9 +77,9 @@ public:
 
     [[nodiscard]] virtual Item &dropItem(Location location, const ItemStack &item) = 0;
 
-    [[nodiscard]] virtual Actor *spawnActor(Location location, ActorTypeId type) = 0;
+    [[nodiscard]] virtual Nullable<Actor> spawnActor(Location location, ActorTypeId type) = 0;
 
-    [[nodiscard]] virtual std::vector<Actor *> getActors() const = 0;
+    [[nodiscard]] virtual std::vector<NotNull<Actor>> getActors() const = 0;
 };
 
 inline Nullable<Dimension> Location::getDimension() const

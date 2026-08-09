@@ -94,7 +94,7 @@ Inherits the following classes: [endstone::Cancellable](classendstone_1_1Cancell
 | Type | Name |
 | ---: | :--- |
 |   | [**ENDSTONE\_EVENT**](#function-endstone_event) ([**PlayerKickEvent**](classendstone_1_1PlayerKickEvent.md)) <br> |
-|   | [**PlayerKickEvent**](#function-playerkickevent) ([**Player**](classendstone_1_1Player.md) & player, std::string reason) <br> |
+|   | [**PlayerKickEvent**](#function-playerkickevent) ([**const**](classendstone_1_1Identifier.md) [**NotNull**](classendstone_1_1NotNull.md)&lt; [**Player**](classendstone_1_1Player.md) &gt; & player, std::string reason) <br> |
 |  std::string | [**getReason**](#function-getreason) () const<br>_Gets the reason why the player is getting kicked._  |
 |  [**void**](classendstone_1_1Identifier.md) | [**setReason**](#function-setreason) (std::string reason) <br>_Sets the reason why the player is getting kicked._  |
 
@@ -224,7 +224,7 @@ endstone::PlayerKickEvent::ENDSTONE_EVENT (
 
 ```C++
 inline explicit endstone::PlayerKickEvent::PlayerKickEvent (
-    Player & player,
+    const  NotNull < Player > & player,
     std::string reason
 ) 
 ```

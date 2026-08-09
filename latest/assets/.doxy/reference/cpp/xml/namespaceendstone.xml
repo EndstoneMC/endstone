@@ -1218,9 +1218,9 @@
         </inbodydescription>
         <location file="include/endstone/scheduler/task.h" line="23" column="1" bodyfile="include/endstone/scheduler/task.h" bodystart="23" bodyend="-1"/>
       </memberdef>
-      <memberdef kind="typedef" id="namespaceendstone_1a6d9b2d7c129a48a5e7dea2125d37e94d" prot="public" static="no">
-        <type>std::variant&lt; <ref refid="classendstone_1_1Player" kindref="compound">Player</ref> *, <ref refid="classendstone_1_1Actor" kindref="compound">Actor</ref> *, std::string &gt;</type>
-        <definition>using endstone::ScoreEntry = typedef std::variant&lt;Player *, Actor *, std::string&gt;</definition>
+      <memberdef kind="typedef" id="namespaceendstone_1ac9f61b8d814486634ef53948c2804a7a" prot="public" static="no">
+        <type>std::variant&lt; std::string, <ref refid="classendstone_1_1NotNull" kindref="compound">NotNull</ref>&lt; <ref refid="classendstone_1_1Player" kindref="compound">Player</ref> &gt;, <ref refid="classendstone_1_1NotNull" kindref="compound">NotNull</ref>&lt; <ref refid="classendstone_1_1Actor" kindref="compound">Actor</ref> &gt; &gt;</type>
+        <definition>using endstone::ScoreEntry = typedef std::variant&lt;std::string, NotNull&lt;Player&gt;, NotNull&lt;Actor&gt; &gt;</definition>
         <argsstring></argsstring>
         <name>ScoreEntry</name>
         <qualifiedname>endstone::ScoreEntry</qualifiedname>
@@ -1231,7 +1231,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/scoreboard/score_entry.h" line="29" column="1" bodyfile="include/endstone/scoreboard/score_entry.h" bodystart="29" bodyend="-1"/>
+        <location file="include/endstone/scoreboard/score_entry.h" line="31" column="1" bodyfile="include/endstone/scoreboard/score_entry.h" bodystart="31" bodyend="-1"/>
       </memberdef>
       <memberdef kind="typedef" id="namespaceendstone_1abc54c88a21352cadabe5992bea8976d6" prot="public" static="no">
         <templateparamlist>

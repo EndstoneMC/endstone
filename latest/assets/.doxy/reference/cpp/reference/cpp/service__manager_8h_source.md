@@ -30,6 +30,7 @@
 
 #include "endstone/plugin/service.h"
 #include "endstone/plugin/service_priority.h"
+#include "endstone/util/pointers.h"
 
 namespace endstone {
 
@@ -39,7 +40,7 @@ class ServiceManager {
 public:
     virtual ~ServiceManager() = default;
 
-    virtual void registerService(std::string name, std::shared_ptr<Service> provider, const Plugin &plugin,
+    virtual void registerService(std::string name, NotNull<Service> provider, const Plugin &plugin,
                                  ServicePriority priority) = 0;
 
     virtual void unregisterAll(const Plugin &plugin) = 0;
@@ -48,12 +49,12 @@ public:
 
     virtual void unregister(const Service &provider) = 0;
 
-    virtual std::shared_ptr<Service> get(std::string name) const = 0;
+    virtual Nullable<Service> get(std::string name) const = 0;
 
     template <typename T>
-    std::shared_ptr<T> load(std::string name) const
+    Nullable<T> load(std::string name) const
     {
-        return std::static_pointer_cast<T>(get(std::move(name)));
+        return std::static_pointer_cast<T>(get(std::move(name)).get());
     }
 };
 }  // namespace endstone

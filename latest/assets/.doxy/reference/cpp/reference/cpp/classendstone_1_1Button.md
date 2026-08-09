@@ -32,7 +32,7 @@ _Represents a button with text and an optional icon._
 
 | Type | Name |
 | ---: | :--- |
-| typedef std::function&lt; [**void**](classendstone_1_1Identifier.md)([**Player**](classendstone_1_1Player.md) \*)&gt; | [**OnClickCallback**](#typedef-onclickcallback)  <br> |
+| typedef std::function&lt; [**void**](classendstone_1_1Identifier.md)([**const**](classendstone_1_1Identifier.md) [**NotNull**](classendstone_1_1NotNull.md)&lt; [**Player**](classendstone_1_1Player.md) &gt; &)&gt; | [**OnClickCallback**](#typedef-onclickcallback)  <br> |
 
 
 
@@ -101,7 +101,7 @@ _Represents a button with text and an optional icon._
 ### typedef OnClickCallback 
 
 ```C++
-using endstone::Button::OnClickCallback =  std::function<void(Player *)>;
+using endstone::Button::OnClickCallback =  std::function<void(const NotNull<Player> &)>;
 ```
 
 

@@ -55,7 +55,7 @@ _Represents a boss bar that is displayed to players._
 | virtual [**void**](classendstone_1_1Identifier.md) | [**addFlag**](#function-addflag) ([**BarFlag**](namespaceendstone.md#enum-barflag) flag) = 0<br>_Add an optional flag to this boss bar._  |
 | virtual [**void**](classendstone_1_1Identifier.md) | [**addPlayer**](#function-addplayer) ([**Player**](classendstone_1_1Player.md) & player) = 0<br>_Adds the player to this boss bar causing it to display on their screen._  |
 | virtual [**BarColor**](namespaceendstone.md#enum-barcolor) | [**getColor**](#function-getcolor) () const = 0<br>_Returns the color of this boss bar._  |
-| virtual std::vector&lt; [**Player**](classendstone_1_1Player.md) \* &gt; | [**getPlayers**](#function-getplayers) () const = 0<br>_Returns all players viewing this boss bar._  |
+| virtual std::vector&lt; [**NotNull**](classendstone_1_1NotNull.md)&lt; [**Player**](classendstone_1_1Player.md) &gt; &gt; | [**getPlayers**](#function-getplayers) () const = 0<br>_Returns all players viewing this boss bar._  |
 | virtual [**float**](classendstone_1_1Identifier.md) | [**getProgress**](#function-getprogress) () const = 0<br>_Returns the progress of the bar between 0.0 and 1.0._  |
 | virtual [**BarStyle**](namespaceendstone.md#enum-barstyle) | [**getStyle**](#function-getstyle) () const = 0<br>_Returns the style of this boss bar._  |
 | virtual std::string | [**getTitle**](#function-gettitle) () const = 0<br>_Returns the title of this boss bar._  |
@@ -186,7 +186,7 @@ the color of the bar
 
 _Returns all players viewing this boss bar._ 
 ```C++
-virtual std::vector< Player * > endstone::BossBar::getPlayers () const = 0
+virtual std::vector< NotNull < Player > > endstone::BossBar::getPlayers () const = 0
 ```
 
 

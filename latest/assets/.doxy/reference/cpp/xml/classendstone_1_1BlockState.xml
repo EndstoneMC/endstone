@@ -132,9 +132,9 @@
         </inbodydescription>
         <location file="include/endstone/block/block_state.h" line="73" column="18"/>
       </memberdef>
-      <memberdef kind="function" id="classendstone_1_1BlockState_1a0d30c01fe70f8e5b591a23fe36490738" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
-        <type><ref refid="classendstone_1_1Dimension" kindref="compound">Dimension</ref> &amp;</type>
-        <definition>virtual Dimension &amp; endstone::BlockState::getDimension</definition>
+      <memberdef kind="function" id="classendstone_1_1BlockState_1a761183a7cef8831563b40ca0da0081ed" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
+        <type><ref refid="classendstone_1_1NotNull" kindref="compound">NotNull</ref>&lt; <ref refid="classendstone_1_1Dimension" kindref="compound">Dimension</ref> &gt;</type>
+        <definition>virtual NotNull&lt; Dimension &gt; endstone::BlockState::getDimension</definition>
         <argsstring>() const =0</argsstring>
         <name>getDimension</name>
         <qualifiedname>endstone::BlockState::getDimension</qualifiedname>
@@ -148,7 +148,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/block/block_state.h" line="80" column="24"/>
+        <location file="include/endstone/block/block_state.h" line="80" column="22"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1BlockState_1a465f89196adeb9f1cb76b1425f8b1856" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
         <type><ref refid="classendstone_1_1Identifier" kindref="compound">int</ref></type>
@@ -363,7 +363,7 @@
       <member refid="classendstone_1_1BlockState_1af4b36588a23e8df26ea57425c206265f" prot="public" virt="pure-virtual"><scope>endstone::BlockState</scope><name>getBlock</name></member>
       <member refid="classendstone_1_1Object_1aaaeb27e8e442e5adb772ae0d1af1c33f" prot="public" virt="pure-virtual"><scope>endstone::BlockState</scope><name>getClassTypeId</name></member>
       <member refid="classendstone_1_1BlockState_1a18ebe2b1c527ebb7b915157bb2d0c557" prot="public" virt="pure-virtual"><scope>endstone::BlockState</scope><name>getData</name></member>
-      <member refid="classendstone_1_1BlockState_1a0d30c01fe70f8e5b591a23fe36490738" prot="public" virt="pure-virtual"><scope>endstone::BlockState</scope><name>getDimension</name></member>
+      <member refid="classendstone_1_1BlockState_1a761183a7cef8831563b40ca0da0081ed" prot="public" virt="pure-virtual"><scope>endstone::BlockState</scope><name>getDimension</name></member>
       <member refid="classendstone_1_1BlockState_1a6f8f4a475c2c955b1a883877d9b4baf5" prot="public" virt="pure-virtual"><scope>endstone::BlockState</scope><name>getLocation</name></member>
       <member refid="classendstone_1_1BlockState_1aae3431979452c2b71ba615ecaa110615" prot="public" virt="pure-virtual"><scope>endstone::BlockState</scope><name>getType</name></member>
       <member refid="classendstone_1_1BlockState_1a465f89196adeb9f1cb76b1425f8b1856" prot="public" virt="pure-virtual"><scope>endstone::BlockState</scope><name>getX</name></member>

@@ -52,10 +52,10 @@ _Represents a level, which may contain actors, chunks and blocks._
 
 | Type | Name |
 | ---: | :--- |
-| virtual [**Dimension**](classendstone_1_1Dimension.md) \* | [**createDimension**](#function-createdimension) ([**const**](classendstone_1_1Identifier.md) [**DimensionCreator**](classendstone_1_1DimensionCreator.md) & creator) = 0<br>_Creates a new custom dimension within this level._  |
-| virtual std::vector&lt; [**Actor**](classendstone_1_1Actor.md) \* &gt; | [**getActors**](#function-getactors) () const = 0<br>_Get a list of all actors in this level._  |
-| virtual [**Dimension**](classendstone_1_1Dimension.md) \* | [**getDimension**](#function-getdimension) ([**DimensionId**](classendstone_1_1Identifier.md) id) const = 0<br>_Gets the dimension with the given id._  |
-| virtual std::vector&lt; [**Dimension**](classendstone_1_1Dimension.md) \* &gt; | [**getDimensions**](#function-getdimensions) () const = 0<br>_Gets a list of all dimensions within this level._  |
+| virtual [**Nullable**](classendstone_1_1Nullable.md)&lt; [**Dimension**](classendstone_1_1Dimension.md) &gt; | [**createDimension**](#function-createdimension) ([**const**](classendstone_1_1Identifier.md) [**DimensionCreator**](classendstone_1_1DimensionCreator.md) & creator) = 0<br>_Creates a new custom dimension within this level._  |
+| virtual std::vector&lt; [**NotNull**](classendstone_1_1NotNull.md)&lt; [**Actor**](classendstone_1_1Actor.md) &gt; &gt; | [**getActors**](#function-getactors) () const = 0<br>_Get a list of all actors in this level._  |
+| virtual [**Nullable**](classendstone_1_1Nullable.md)&lt; [**Dimension**](classendstone_1_1Dimension.md) &gt; | [**getDimension**](#function-getdimension) ([**DimensionId**](classendstone_1_1Identifier.md) id) const = 0<br>_Gets the dimension with the given id._  |
+| virtual std::vector&lt; [**NotNull**](classendstone_1_1NotNull.md)&lt; [**Dimension**](classendstone_1_1Dimension.md) &gt; &gt; | [**getDimensions**](#function-getdimensions) () const = 0<br>_Gets a list of all dimensions within this level._  |
 | virtual std::string | [**getName**](#function-getname) () const = 0<br>_Gets the unique name of this level._  |
 | virtual std::int64\_t | [**getSeed**](#function-getseed) () const = 0<br>_Gets the Seed for this level._  |
 | virtual [**int**](classendstone_1_1Identifier.md) | [**getTime**](#function-gettime) () const = 0<br>_Gets the relative in-game time of this level._  |
@@ -98,7 +98,7 @@ _Represents a level, which may contain actors, chunks and blocks._
 
 _Creates a new custom dimension within this level._ 
 ```C++
-virtual Dimension * endstone::Level::createDimension (
+virtual Nullable < Dimension > endstone::Level::createDimension (
     const  DimensionCreator & creator
 ) = 0
 ```
@@ -122,7 +122,7 @@ If a dimension with the requested name already exists, that existing dimension i
 
 **Returns:**
 
-the newly created (or existing) [**Dimension**](classendstone_1_1Dimension.md), or nullptr if it could not be created 
+the newly created (or existing) [**Dimension**](classendstone_1_1Dimension.md), or null if it could not be created 
 
 
 
@@ -138,7 +138,7 @@ the newly created (or existing) [**Dimension**](classendstone_1_1Dimension.md), 
 
 _Get a list of all actors in this level._ 
 ```C++
-virtual std::vector< Actor * > endstone::Level::getActors () const = 0
+virtual std::vector< NotNull < Actor > > endstone::Level::getActors () const = 0
 ```
 
 
@@ -163,7 +163,7 @@ A List of all actors currently residing in this level
 
 _Gets the dimension with the given id._ 
 ```C++
-virtual Dimension * endstone::Level::getDimension (
+virtual Nullable < Dimension > endstone::Level::getDimension (
     DimensionId id
 ) const = 0
 ```
@@ -181,7 +181,7 @@ virtual Dimension * endstone::Level::getDimension (
 
 **Returns:**
 
-The [**Dimension**](classendstone_1_1Dimension.md) with the given id, or nullptr if none exists 
+The [**Dimension**](classendstone_1_1Dimension.md) with the given id, or null if none exists 
 
 
 
@@ -197,7 +197,7 @@ The [**Dimension**](classendstone_1_1Dimension.md) with the given id, or nullptr
 
 _Gets a list of all dimensions within this level._ 
 ```C++
-virtual std::vector< Dimension * > endstone::Level::getDimensions () const = 0
+virtual std::vector< NotNull < Dimension > > endstone::Level::getDimensions () const = 0
 ```
 
 

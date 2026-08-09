@@ -2,7 +2,6 @@
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.8" xml:lang="en-US">
   <compounddef id="classendstone_1_1Scoreboard" kind="class" language="C++" prot="public" abstract="yes">
     <compoundname>endstone::Scoreboard</compoundname>
-    <basecompoundref prot="public" virt="non-virtual">std::enable_shared_from_this&lt; Scoreboard &gt;</basecompoundref>
     <includes refid="scoreboard_8h" local="no">endstone/scoreboard/scoreboard.h</includes>
     <sectiondef kind="public-func">
       <memberdef kind="function" id="classendstone_1_1Scoreboard_1a3353d465636fad59aab0c4656f80ff37" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
@@ -302,7 +301,7 @@
         <name>getScores</name>
         <qualifiedname>endstone::Scoreboard::getScores</qualifiedname>
         <param>
-          <type><ref refid="namespaceendstone_1a6d9b2d7c129a48a5e7dea2125d37e94d" kindref="member">ScoreEntry</ref></type>
+          <type><ref refid="namespaceendstone_1ac9f61b8d814486634ef53948c2804a7a" kindref="member">ScoreEntry</ref></type>
           <declname>entry</declname>
         </param>
         <briefdescription>
@@ -333,7 +332,7 @@
         <name>resetScores</name>
         <qualifiedname>endstone::Scoreboard::resetScores</qualifiedname>
         <param>
-          <type><ref refid="namespaceendstone_1a6d9b2d7c129a48a5e7dea2125d37e94d" kindref="member">ScoreEntry</ref></type>
+          <type><ref refid="namespaceendstone_1ac9f61b8d814486634ef53948c2804a7a" kindref="member">ScoreEntry</ref></type>
           <declname>entry</declname>
         </param>
         <briefdescription>
@@ -356,7 +355,7 @@
         <location file="include/endstone/scoreboard/scoreboard.h" line="113" column="18"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1Scoreboard_1a22601ed4eb51f01df4d0548a0c4f872a" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
-        <type>std::vector&lt; <ref refid="namespaceendstone_1a6d9b2d7c129a48a5e7dea2125d37e94d" kindref="member">ScoreEntry</ref> &gt;</type>
+        <type>std::vector&lt; <ref refid="namespaceendstone_1ac9f61b8d814486634ef53948c2804a7a" kindref="member">ScoreEntry</ref> &gt;</type>
         <definition>virtual std::vector&lt; ScoreEntry &gt; endstone::Scoreboard::getEntries</definition>
         <argsstring>() const =0</argsstring>
         <name>getEntries</name>
@@ -408,28 +407,6 @@
     </briefdescription>
     <detaileddescription>
     </detaileddescription>
-    <inheritancegraph>
-      <node id="1">
-        <label>endstone::Scoreboard</label>
-        <link refid="classendstone_1_1Scoreboard"/>
-        <childnode refid="2" relation="public-inheritance">
-        </childnode>
-      </node>
-      <node id="2">
-        <label>std::enable_shared_from_this&lt; Scoreboard &gt;</label>
-      </node>
-    </inheritancegraph>
-    <collaborationgraph>
-      <node id="1">
-        <label>endstone::Scoreboard</label>
-        <link refid="classendstone_1_1Scoreboard"/>
-        <childnode refid="2" relation="public-inheritance">
-        </childnode>
-      </node>
-      <node id="2">
-        <label>std::enable_shared_from_this&lt; Scoreboard &gt;</label>
-      </node>
-    </collaborationgraph>
     <location file="include/endstone/scoreboard/scoreboard.h" line="32" column="1" bodyfile="include/endstone/scoreboard/scoreboard.h" bodystart="32" bodyend="128"/>
     <listofallmembers>
       <member refid="classendstone_1_1Scoreboard_1ae2be847c936676d3e44864f906cb4a4a" prot="public" virt="pure-virtual"><scope>endstone::Scoreboard</scope><name>addObjective</name></member>

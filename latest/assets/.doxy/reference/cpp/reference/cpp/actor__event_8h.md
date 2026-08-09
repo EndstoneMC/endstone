@@ -12,6 +12,7 @@
 
 * `#include "endstone/actor/actor.h"`
 * `#include "endstone/event/event.h"`
+* `#include "endstone/util/pointers.h"`
 
 
 

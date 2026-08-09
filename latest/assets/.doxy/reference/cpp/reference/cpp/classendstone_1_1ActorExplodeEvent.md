@@ -93,7 +93,7 @@ Inherits the following classes: [endstone::Cancellable](classendstone_1_1Cancell
 
 | Type | Name |
 | ---: | :--- |
-|   | [**ActorExplodeEvent**](#function-actorexplodeevent) ([**Actor**](classendstone_1_1Actor.md) & actor, [**Location**](classendstone_1_1Location.md) location, BlockList blocks) <br> |
+|   | [**ActorExplodeEvent**](#function-actorexplodeevent) ([**const**](classendstone_1_1Identifier.md) [**NotNull**](classendstone_1_1NotNull.md)&lt; [**Actor**](classendstone_1_1Actor.md) &gt; & actor, [**Location**](classendstone_1_1Location.md) location, BlockList blocks) <br> |
 |   | [**ENDSTONE\_EVENT**](#function-endstone_event) ([**ActorExplodeEvent**](classendstone_1_1ActorExplodeEvent.md)) <br> |
 |  [**const**](classendstone_1_1Identifier.md) BlockList & | [**getBlockList**](#function-getblocklist-12) () const<br>_Returns the list of blocks that would have been removed or were removed from the explosion event._  |
 |  BlockList & | [**getBlockList**](#function-getblocklist-22) () <br>_Returns the list of blocks that would have been removed or were removed from the explosion event._  |
@@ -211,7 +211,7 @@ See [endstone::ICancellable](classendstone_1_1ICancellable.md)
 
 ```C++
 inline explicit endstone::ActorExplodeEvent::ActorExplodeEvent (
-    Actor & actor,
+    const  NotNull < Actor > & actor,
     Location location,
     BlockList blocks
 ) 

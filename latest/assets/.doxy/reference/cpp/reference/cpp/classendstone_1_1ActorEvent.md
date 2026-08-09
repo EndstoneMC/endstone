@@ -75,8 +75,8 @@ Inherits the following classes: [endstone::Event](classendstone_1_1Event.md)
 
 | Type | Name |
 | ---: | :--- |
-|   | [**ActorEvent**](#function-actorevent) ([**ActorType**](classendstone_1_1ActorType.md) & actor) <br> |
-|  [**ActorType**](classendstone_1_1ActorType.md) & | [**getActor**](#function-getactor) () const<br>_Returns the_ [_**Actor**_](classendstone_1_1Actor.md) _involved in this event._ |
+|   | [**ActorEvent**](#function-actorevent) ([**const**](classendstone_1_1Identifier.md) [**NotNull**](classendstone_1_1NotNull.md)&lt; [**ActorType**](classendstone_1_1ActorType.md) &gt; & actor) <br> |
+|  [**const**](classendstone_1_1Identifier.md) [**NotNull**](classendstone_1_1NotNull.md)&lt; [**ActorType**](classendstone_1_1ActorType.md) &gt; & | [**getActor**](#function-getactor) () const<br>_Returns the_ [_**Actor**_](classendstone_1_1Actor.md) _involved in this event._ |
 |  [**const**](classendstone_1_1Identifier.md) [**endstone::ActorType**](classendstone_1_1ActorType.md) & | [**getActorType**](#function-getactortype) () const<br>_Returns the type of the_ [_**Actor**_](classendstone_1_1Actor.md) _involved in this event._ |
 |   | [**~ActorEvent**](#function-actorevent) () override<br> |
 
@@ -158,7 +158,7 @@ See [endstone::Event](classendstone_1_1Event.md)
 
 ```C++
 inline explicit endstone::ActorEvent::ActorEvent (
-    ActorType & actor
+    const  NotNull < ActorType > & actor
 ) 
 ```
 
@@ -173,7 +173,7 @@ inline explicit endstone::ActorEvent::ActorEvent (
 
 _Returns the_ [_**Actor**_](classendstone_1_1Actor.md) _involved in this event._
 ```C++
-inline ActorType & endstone::ActorEvent::getActor () const
+inline const  NotNull < ActorType > & endstone::ActorEvent::getActor () const
 ```
 
 

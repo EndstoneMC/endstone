@@ -26,20 +26,21 @@
 
 #include "endstone/actor/actor.h"
 #include "endstone/event/event.h"
+#include "endstone/util/pointers.h"
 
 namespace endstone {
 template <typename ActorType>
 class ActorEvent : public Event {
 public:
-    explicit ActorEvent(ActorType &actor) : actor_(actor) {};
+    explicit ActorEvent(const NotNull<ActorType> &actor) : actor_(actor) {};
     ~ActorEvent() override = default;
 
-    [[nodiscard]] ActorType &getActor() const { return actor_; }
+    [[nodiscard]] const NotNull<ActorType> &getActor() const { return actor_; }
 
-    [[nodiscard]] const endstone::ActorType &getActorType() const { return actor_.getType(); }
+    [[nodiscard]] const endstone::ActorType &getActorType() const { return actor_->getType(); }
 
 private:
-    ActorType &actor_;
+    NotNull<ActorType> actor_;
 };
 }  // namespace endstone
 ```

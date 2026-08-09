@@ -10,9 +10,9 @@
 
 
 
-* `#include <functional>`
 * `#include "endstone/event/event.h"`
 * `#include "endstone/player.h"`
+* `#include "endstone/util/pointers.h"`
 
 
 

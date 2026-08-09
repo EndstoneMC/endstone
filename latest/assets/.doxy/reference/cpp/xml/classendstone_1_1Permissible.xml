@@ -3,7 +3,6 @@
   <compounddef id="classendstone_1_1Permissible" kind="class" language="C++" prot="public" abstract="yes">
     <compoundname>endstone::Permissible</compoundname>
     <basecompoundref refid="classendstone_1_1Object" prot="public" virt="non-virtual">endstone::Object</basecompoundref>
-    <basecompoundref prot="public" virt="non-virtual">std::enable_shared_from_this&lt; Permissible &gt;</basecompoundref>
     <derivedcompoundref refid="classendstone_1_1CommandSender" prot="public" virt="non-virtual">endstone::CommandSender</derivedcompoundref>
     <includes refid="permissible_8h" local="no">endstone/permissions/permissible.h</includes>
     <sectiondef kind="public-func">
@@ -319,46 +318,46 @@
     <detaileddescription>
     </detaileddescription>
     <inheritancegraph>
-      <node id="5">
+      <node id="4">
         <label>endstone::Actor</label>
         <link refid="classendstone_1_1Actor"/>
-        <childnode refid="4" relation="public-inheritance">
+        <childnode refid="3" relation="public-inheritance">
         </childnode>
       </node>
-      <node id="9">
+      <node id="8">
         <label>endstone::BlockCommandSender</label>
         <link refid="classendstone_1_1BlockCommandSender"/>
-        <childnode refid="4" relation="public-inheritance">
+        <childnode refid="3" relation="public-inheritance">
         </childnode>
       </node>
-      <node id="4">
+      <node id="3">
         <label>endstone::CommandSender</label>
         <link refid="classendstone_1_1CommandSender"/>
         <childnode refid="1" relation="public-inheritance">
         </childnode>
       </node>
-      <node id="10">
+      <node id="9">
         <label>endstone::CommandSenderWrapper</label>
         <link refid="classendstone_1_1CommandSenderWrapper"/>
-        <childnode refid="4" relation="public-inheritance">
+        <childnode refid="3" relation="public-inheritance">
         </childnode>
       </node>
-      <node id="11">
+      <node id="10">
         <label>endstone::ConsoleCommandSender</label>
         <link refid="classendstone_1_1ConsoleCommandSender"/>
+        <childnode refid="3" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="5">
+        <label>endstone::Item</label>
+        <link refid="classendstone_1_1Item"/>
         <childnode refid="4" relation="public-inheritance">
         </childnode>
       </node>
       <node id="6">
-        <label>endstone::Item</label>
-        <link refid="classendstone_1_1Item"/>
-        <childnode refid="5" relation="public-inheritance">
-        </childnode>
-      </node>
-      <node id="7">
         <label>endstone::Mob</label>
         <link refid="classendstone_1_1Mob"/>
-        <childnode refid="5" relation="public-inheritance">
+        <childnode refid="4" relation="public-inheritance">
         </childnode>
       </node>
       <node id="2">
@@ -370,17 +369,12 @@
         <link refid="classendstone_1_1Permissible"/>
         <childnode refid="2" relation="public-inheritance">
         </childnode>
-        <childnode refid="3" relation="public-inheritance">
-        </childnode>
       </node>
-      <node id="8">
+      <node id="7">
         <label>endstone::Player</label>
         <link refid="classendstone_1_1Player"/>
-        <childnode refid="7" relation="public-inheritance">
+        <childnode refid="6" relation="public-inheritance">
         </childnode>
-      </node>
-      <node id="3">
-        <label>std::enable_shared_from_this&lt; Permissible &gt;</label>
       </node>
     </inheritancegraph>
     <collaborationgraph>
@@ -393,11 +387,6 @@
         <link refid="classendstone_1_1Permissible"/>
         <childnode refid="2" relation="public-inheritance">
         </childnode>
-        <childnode refid="3" relation="public-inheritance">
-        </childnode>
-      </node>
-      <node id="3">
-        <label>std::enable_shared_from_this&lt; Permissible &gt;</label>
       </node>
     </collaborationgraph>
     <location file="include/endstone/permissions/permissible.h" line="36" column="1" bodyfile="include/endstone/permissions/permissible.h" bodystart="36" bodyend="117"/>

@@ -35,7 +35,7 @@ class PlayerJoinEvent : public PlayerEvent {
 public:
     ENDSTONE_EVENT(PlayerJoinEvent);
 
-    explicit PlayerJoinEvent(Player &player, std::optional<Message> join_message)
+    explicit PlayerJoinEvent(const NotNull<Player> &player, std::optional<Message> join_message)
         : PlayerEvent(player), join_message_(std::move(join_message))
     {
     }

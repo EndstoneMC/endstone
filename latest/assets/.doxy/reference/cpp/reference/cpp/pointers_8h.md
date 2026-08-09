@@ -97,7 +97,7 @@
 
 | Type | Name |
 | ---: | :--- |
-| define  | [**ENDSTONE\_DEFINE\_PTR\_COMPARISONS**](pointers_8h.md#define-endstone_define_ptr_comparisons) (Wrapper) `/* multi line expression */`<br> |
+| define  | [**ENDSTONE\_DEFINE\_PTR\_COMPARISONS**](pointers_8h.md#define-endstone_define_ptr_comparisons) (Wrapper) <br> |
 
 ## Macro Definition Documentation
 
@@ -110,7 +110,7 @@
 ```C++
 #define ENDSTONE_DEFINE_PTR_COMPARISONS (
     Wrapper
-) `/* multi line expression */`
+) 
 ```
 
 

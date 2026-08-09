@@ -157,6 +157,8 @@
         </childnode>
         <childnode refid="36" relation="include">
         </childnode>
+        <childnode refid="16" relation="include">
+        </childnode>
       </node>
       <node id="20">
         <label>endstone/check.h</label>
@@ -275,6 +277,8 @@
         </childnode>
         <childnode refid="51" relation="include">
         </childnode>
+        <childnode refid="16" relation="include">
+        </childnode>
       </node>
       <node id="38">
         <label>endstone/message.h</label>
@@ -329,8 +333,6 @@
       <node id="57">
         <label>endstone/plugin/service.h</label>
         <link refid="service_8h_source"/>
-        <childnode refid="5" relation="include">
-        </childnode>
       </node>
       <node id="56">
         <label>endstone/plugin/service_manager.h</label>
@@ -344,6 +346,8 @@
         <childnode refid="57" relation="include">
         </childnode>
         <childnode refid="58" relation="include">
+        </childnode>
+        <childnode refid="16" relation="include">
         </childnode>
       </node>
       <node id="58">
@@ -404,6 +408,8 @@
         <childnode refid="29" relation="include">
         </childnode>
         <childnode refid="11" relation="include">
+        </childnode>
+        <childnode refid="16" relation="include">
         </childnode>
       </node>
       <node id="59">
@@ -1406,7 +1412,7 @@
 <codeline lineno="154"><highlight class="normal"></highlight></codeline>
 <codeline lineno="161" refid="classendstone_1_1Server_1a2ff58d67a9e4bbfa0ee59696f441875a" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>[[<ref refid="classendstone_1_1Identifier" kindref="compound">nodiscard</ref>]]<sp/></highlight><highlight class="keyword">virtual</highlight><highlight class="normal"><sp/><ref refid="classendstone_1_1Level" kindref="compound">Level</ref><sp/>&amp;<ref refid="classendstone_1_1Server_1a2ff58d67a9e4bbfa0ee59696f441875a" kindref="member">getLevel</ref>()<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>=<sp/>0;</highlight></codeline>
 <codeline lineno="162"><highlight class="normal"></highlight></codeline>
-<codeline lineno="168" refid="classendstone_1_1Server_1a6d63beaa8eac5c79ccb387447e977214" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>[[<ref refid="classendstone_1_1Identifier" kindref="compound">nodiscard</ref>]]<sp/></highlight><highlight class="keyword">virtual</highlight><highlight class="normal"><sp/>std::vector&lt;Player<sp/>*&gt;<sp/><ref refid="classendstone_1_1Server_1a6d63beaa8eac5c79ccb387447e977214" kindref="member">getOnlinePlayers</ref>()<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>=<sp/>0;</highlight></codeline>
+<codeline lineno="168" refid="classendstone_1_1Server_1ad89ab22253893ab047263ce351313f34" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>[[<ref refid="classendstone_1_1Identifier" kindref="compound">nodiscard</ref>]]<sp/></highlight><highlight class="keyword">virtual</highlight><highlight class="normal"><sp/>std::vector&lt;NotNull&lt;Player&gt;&gt;<sp/><ref refid="classendstone_1_1Server_1ad89ab22253893ab047263ce351313f34" kindref="member">getOnlinePlayers</ref>()<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>=<sp/>0;</highlight></codeline>
 <codeline lineno="169"><highlight class="normal"></highlight></codeline>
 <codeline lineno="175" refid="classendstone_1_1Server_1acac268b65787dd0261790dab8c4f110d" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>[[<ref refid="classendstone_1_1Identifier" kindref="compound">nodiscard</ref>]]<sp/></highlight><highlight class="keyword">virtual</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="classendstone_1_1Server_1acac268b65787dd0261790dab8c4f110d" kindref="member">getMaxPlayers</ref>()<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>=<sp/>0;</highlight></codeline>
 <codeline lineno="176"><highlight class="normal"></highlight></codeline>

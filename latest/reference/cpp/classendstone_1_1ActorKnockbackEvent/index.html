@@ -2750,7 +2750,7 @@ For latest updates join the chat on
 <tbody>
 <tr>
 <td style="text-align: right;"></td>
-<td style="text-align: left;"><a href="#function-actorknockbackevent"><strong>ActorKnockbackEvent</strong></a> (<a href="../classendstone_1_1Mob/"><strong>Mob</strong></a> &amp; mob, <a href="../classendstone_1_1Actor/"><strong>Actor</strong></a> * source, <a href="../classendstone_1_1Vector/"><strong>Vector</strong></a> knockback) <br></td>
+<td style="text-align: left;"><a href="#function-actorknockbackevent"><strong>ActorKnockbackEvent</strong></a> (<a href="../classendstone_1_1Identifier/"><strong>const</strong></a> <a href="../classendstone_1_1NotNull/"><strong>NotNull</strong></a>&lt; <a href="../classendstone_1_1Mob/"><strong>Mob</strong></a> &gt; &amp; mob, <a href="../classendstone_1_1Identifier/"><strong>const</strong></a> <a href="../classendstone_1_1Nullable/"><strong>Nullable</strong></a>&lt; <a href="../classendstone_1_1Actor/"><strong>Actor</strong></a> &gt; &amp; source, <a href="../classendstone_1_1Vector/"><strong>Vector</strong></a> knockback) <br></td>
 </tr>
 <tr>
 <td style="text-align: right;"></td>
@@ -2761,7 +2761,7 @@ For latest updates join the chat on
 <td style="text-align: left;"><a href="#function-getknockback"><strong>getKnockback</strong></a> () const<br><em>Gets the knockback that will be applied to the entity.</em></td>
 </tr>
 <tr>
-<td style="text-align: right;"><a href="../classendstone_1_1Actor/"><strong>Actor</strong></a> *</td>
+<td style="text-align: right;"><a href="../classendstone_1_1Identifier/"><strong>const</strong></a> <a href="../classendstone_1_1Nullable/"><strong>Nullable</strong></a>&lt; <a href="../classendstone_1_1Actor/"><strong>Actor</strong></a> &gt; &amp;</td>
 <td style="text-align: left;"><a href="#function-getsource"><strong>getSource</strong></a> () const<br><em>Get the source actor that has caused knockback to the defender, if exists.</em></td>
 </tr>
 <tr>
@@ -2825,8 +2825,8 @@ For latest updates join the chat on
 <h2 id="public-functions-documentation">Public Functions Documentation<a class="headerlink" href="#public-functions-documentation" title="Permanent link">&para;</a></h2>
 <h3 id="function-actorknockbackevent">function ActorKnockbackEvent<a class="headerlink" href="#function-actorknockbackevent" title="Permanent link">&para;</a></h3>
 <div class="language-C++ highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="kr">inline</span><span class="w"> </span><span class="k">explicit</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">ActorKnockbackEvent</span><span class="o">::</span><span class="n">ActorKnockbackEvent</span><span class="w"> </span><span class="p">(</span>
-</span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a><span class="w">    </span><span class="n">Mob</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">mob</span><span class="p">,</span>
-</span><span id="__span-0-3"><a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a><span class="w">    </span><span class="n">Actor</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">source</span><span class="p">,</span>
+</span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a><span class="w">    </span><span class="k">const</span><span class="w">  </span><span class="n">NotNull</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">Mob</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">mob</span><span class="p">,</span>
+</span><span id="__span-0-3"><a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a><span class="w">    </span><span class="k">const</span><span class="w">  </span><span class="n">Nullable</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">Actor</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">source</span><span class="p">,</span>
 </span><span id="__span-0-4"><a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a><span class="w">    </span><span class="n">Vector</span><span class="w"> </span><span class="n">knockback</span>
 </span><span id="__span-0-5"><a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a><span class="p">)</span><span class="w"> </span>
 </span></code></pre></div>
@@ -2850,10 +2850,10 @@ For latest updates join the chat on
 
 <h3 id="function-getsource">function getSource<a class="headerlink" href="#function-getsource" title="Permanent link">&para;</a></h3>
 <p><em>Get the source actor that has caused knockback to the defender, if exists.</em> 
-<div class="language-C++ highlight"><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="kr">inline</span><span class="w"> </span><span class="n">Actor</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">ActorKnockbackEvent</span><span class="o">::</span><span class="n">getSource</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="k">const</span>
+<div class="language-C++ highlight"><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="kr">inline</span><span class="w"> </span><span class="k">const</span><span class="w">  </span><span class="n">Nullable</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">Actor</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">ActorKnockbackEvent</span><span class="o">::</span><span class="n">getSource</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="k">const</span>
 </span></code></pre></div></p>
 <p><strong>Returns:</strong></p>
-<p>actor that caused knockback, or <code>nullptr</code> if the knockback is not caused by an actor. </p>
+<p>actor that caused knockback, or null if the knockback is not caused by an actor. </p>
 <hr>
 
 <h3 id="function-setknockback">function setKnockback<a class="headerlink" href="#function-setknockback" title="Permanent link">&para;</a></h3>

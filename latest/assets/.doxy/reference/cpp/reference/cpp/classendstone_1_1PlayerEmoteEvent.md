@@ -94,7 +94,7 @@ Inherits the following classes: [endstone::Cancellable](classendstone_1_1Cancell
 | Type | Name |
 | ---: | :--- |
 |   | [**ENDSTONE\_EVENT**](#function-endstone_event) ([**PlayerEmoteEvent**](classendstone_1_1PlayerEmoteEvent.md)) <br> |
-|   | [**PlayerEmoteEvent**](#function-playeremoteevent) ([**Player**](classendstone_1_1Player.md) & player, std::string emote\_id, [**bool**](classendstone_1_1Identifier.md) muted) <br> |
+|   | [**PlayerEmoteEvent**](#function-playeremoteevent) ([**const**](classendstone_1_1Identifier.md) [**NotNull**](classendstone_1_1NotNull.md)&lt; [**Player**](classendstone_1_1Player.md) &gt; & player, std::string emote\_id, [**bool**](classendstone_1_1Identifier.md) muted) <br> |
 |  std::string | [**getEmoteId**](#function-getemoteid) () const<br>_Gets the emote piece ID._  |
 |  [**bool**](classendstone_1_1Identifier.md) | [**isMuted**](#function-ismuted) () const<br>_Gets the muted state for the emote._  |
 |  [**void**](classendstone_1_1Identifier.md) | [**setMuted**](#function-setmuted) ([**bool**](classendstone_1_1Identifier.md) muted) <br>_Sets the muted state for the emote._  |
@@ -226,7 +226,7 @@ endstone::PlayerEmoteEvent::ENDSTONE_EVENT (
 
 ```C++
 inline explicit endstone::PlayerEmoteEvent::PlayerEmoteEvent (
-    Player & player,
+    const  NotNull < Player > & player,
     std::string emote_id,
     bool muted
 ) 

@@ -29,6 +29,7 @@
 #include <vector>
 
 #include "endstone/map/map_renderer.h"
+#include "endstone/util/pointers.h"
 
 namespace endstone {
 
@@ -62,7 +63,7 @@ public:
 
     virtual void setCenterZ(int z) = 0;
 
-    [[nodiscard]] virtual Dimension *getDimension() const = 0;
+    [[nodiscard]] virtual Nullable<Dimension> getDimension() const = 0;
 
     virtual void setDimension(const Dimension &dimension) = 0;
 

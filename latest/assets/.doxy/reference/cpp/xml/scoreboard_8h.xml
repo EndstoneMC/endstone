@@ -13,6 +13,16 @@
     <includedby refid="player_8h" local="yes">include/endstone/player.h</includedby>
     <includedby refid="server_8h" local="yes">include/endstone/server.h</includedby>
     <incdepgraph>
+      <node id="20">
+        <label>endstone/check.h</label>
+        <link refid="check_8h_source"/>
+        <childnode refid="21" relation="include">
+        </childnode>
+        <childnode refid="22" relation="include">
+        </childnode>
+        <childnode refid="19" relation="include">
+        </childnode>
+      </node>
       <node id="5">
         <label>endstone/scoreboard/criteria.h</label>
         <link refid="criteria_8h_source"/>
@@ -38,7 +48,7 @@
         </childnode>
         <childnode refid="12" relation="include">
         </childnode>
-        <childnode refid="15" relation="include">
+        <childnode refid="23" relation="include">
         </childnode>
       </node>
       <node id="11">
@@ -56,7 +66,7 @@
         <link refid="score_8h_source"/>
         <childnode refid="13" relation="include">
         </childnode>
-        <childnode refid="15" relation="include">
+        <childnode refid="23" relation="include">
         </childnode>
       </node>
       <node id="13">
@@ -67,6 +77,8 @@
         <childnode refid="14" relation="include">
         </childnode>
         <childnode refid="4" relation="include">
+        </childnode>
+        <childnode refid="15" relation="include">
         </childnode>
       </node>
       <node id="1">
@@ -86,36 +98,67 @@
         </childnode>
         <childnode refid="13" relation="include">
         </childnode>
-        <childnode refid="15" relation="include">
+        <childnode refid="23" relation="include">
         </childnode>
       </node>
       <node id="15">
-        <label>endstone/util/result.h</label>
-        <link refid="result_8h_source"/>
+        <label>endstone/util/pointers.h</label>
+        <link refid="pointers_8h_source"/>
         <childnode refid="16" relation="include">
-        </childnode>
-        <childnode refid="3" relation="include">
         </childnode>
         <childnode refid="17" relation="include">
         </childnode>
+        <childnode refid="2" relation="include">
+        </childnode>
+        <childnode refid="18" relation="include">
+        </childnode>
+        <childnode refid="19" relation="include">
+        </childnode>
+        <childnode refid="20" relation="include">
+        </childnode>
+      </node>
+      <node id="23">
+        <label>endstone/util/result.h</label>
+        <link refid="result_8h_source"/>
+        <childnode refid="21" relation="include">
+        </childnode>
+        <childnode refid="3" relation="include">
+        </childnode>
+        <childnode refid="24" relation="include">
+        </childnode>
+      </node>
+      <node id="16">
+        <label>cstddef</label>
       </node>
       <node id="7">
         <label>cstdint</label>
       </node>
-      <node id="16">
+      <node id="21">
         <label>format</label>
+      </node>
+      <node id="17">
+        <label>functional</label>
       </node>
       <node id="2">
         <label>memory</label>
       </node>
-      <node id="17">
+      <node id="24">
         <label>nonstd/expected.hpp</label>
       </node>
       <node id="10">
         <label>optional</label>
       </node>
+      <node id="22">
+        <label>stdexcept</label>
+      </node>
       <node id="3">
         <label>string</label>
+      </node>
+      <node id="18">
+        <label>type_traits</label>
+      </node>
+      <node id="19">
+        <label>utility</label>
       </node>
       <node id="14">
         <label>variant</label>
@@ -847,7 +890,7 @@
 <codeline lineno="26"><highlight class="normal"></highlight></codeline>
 <codeline lineno="27"><highlight class="normal"></highlight><highlight class="keyword">namespace<sp/></highlight><highlight class="normal"><ref refid="namespaceendstone" kindref="compound">endstone</ref><sp/>{</highlight></codeline>
 <codeline lineno="28"><highlight class="normal"></highlight></codeline>
-<codeline lineno="32" refid="classendstone_1_1Scoreboard" refkind="compound"><highlight class="normal"></highlight><highlight class="keyword">class<sp/></highlight><highlight class="normal"><ref refid="classendstone_1_1Scoreboard" kindref="compound">Scoreboard</ref><sp/>:<sp/></highlight><highlight class="keyword">public</highlight><highlight class="normal"><sp/>std::enable_shared_from_this&lt;Scoreboard&gt;<sp/>{</highlight></codeline>
+<codeline lineno="32" refid="classendstone_1_1Scoreboard" refkind="compound"><highlight class="normal"></highlight><highlight class="keyword">class<sp/></highlight><highlight class="normal"><ref refid="classendstone_1_1Scoreboard" kindref="compound">Scoreboard</ref><sp/>{</highlight></codeline>
 <codeline lineno="33"><highlight class="normal"></highlight><highlight class="keyword">public</highlight><highlight class="normal">:</highlight></codeline>
 <codeline lineno="34"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">virtual</highlight><highlight class="normal"><sp/><ref refid="classendstone_1_1Scoreboard" kindref="compound">~Scoreboard</ref>()<sp/>=<sp/></highlight><highlight class="keywordflow">default</highlight><highlight class="normal">;</highlight></codeline>
 <codeline lineno="35"><highlight class="normal"></highlight></codeline>
@@ -868,9 +911,9 @@
 <codeline lineno="97" refid="classendstone_1_1Scoreboard_1a02db6d0230c7c663d03a8ce7272319a9" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>[[<ref refid="classendstone_1_1Identifier" kindref="compound">nodiscard</ref>]]<sp/></highlight><highlight class="keyword">virtual</highlight><highlight class="normal"><sp/>std::vector&lt;std::unique_ptr&lt;Objective&gt;&gt;<sp/><ref refid="classendstone_1_1Scoreboard_1a02db6d0230c7c663d03a8ce7272319a9" kindref="member">getObjectivesByCriteria</ref>(</highlight></codeline>
 <codeline lineno="98"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classendstone_1_1Criteria_1a31b8a6a25a4c37fa964fc34563a882d1" kindref="member">Criteria::Type</ref><sp/><ref refid="classendstone_1_1Identifier" kindref="compound">criteria</ref>)<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>=<sp/>0;</highlight></codeline>
 <codeline lineno="99"><highlight class="normal"></highlight></codeline>
-<codeline lineno="106" refid="classendstone_1_1Scoreboard_1ac07821df6300c8f2ef9a986cabd1e00f" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>[[<ref refid="classendstone_1_1Identifier" kindref="compound">nodiscard</ref>]]<sp/></highlight><highlight class="keyword">virtual</highlight><highlight class="normal"><sp/>std::vector&lt;std::unique_ptr&lt;Score&gt;&gt;<sp/><ref refid="classendstone_1_1Scoreboard_1ac07821df6300c8f2ef9a986cabd1e00f" kindref="member">getScores</ref>(<ref refid="namespaceendstone_1a6d9b2d7c129a48a5e7dea2125d37e94d" kindref="member">ScoreEntry</ref><sp/><ref refid="classendstone_1_1Identifier" kindref="compound">entry</ref>)<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>=<sp/>0;</highlight></codeline>
+<codeline lineno="106" refid="classendstone_1_1Scoreboard_1ac07821df6300c8f2ef9a986cabd1e00f" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>[[<ref refid="classendstone_1_1Identifier" kindref="compound">nodiscard</ref>]]<sp/></highlight><highlight class="keyword">virtual</highlight><highlight class="normal"><sp/>std::vector&lt;std::unique_ptr&lt;Score&gt;&gt;<sp/><ref refid="classendstone_1_1Scoreboard_1ac07821df6300c8f2ef9a986cabd1e00f" kindref="member">getScores</ref>(<ref refid="namespaceendstone_1ac9f61b8d814486634ef53948c2804a7a" kindref="member">ScoreEntry</ref><sp/><ref refid="classendstone_1_1Identifier" kindref="compound">entry</ref>)<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>=<sp/>0;</highlight></codeline>
 <codeline lineno="107"><highlight class="normal"></highlight></codeline>
-<codeline lineno="113" refid="classendstone_1_1Scoreboard_1a4fccb1898db7abf83738d9c2ffce27ba" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">virtual</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classendstone_1_1Scoreboard_1a4fccb1898db7abf83738d9c2ffce27ba" kindref="member">resetScores</ref>(<ref refid="namespaceendstone_1a6d9b2d7c129a48a5e7dea2125d37e94d" kindref="member">ScoreEntry</ref><sp/><ref refid="classendstone_1_1Identifier" kindref="compound">entry</ref>)<sp/>=<sp/>0;</highlight></codeline>
+<codeline lineno="113" refid="classendstone_1_1Scoreboard_1a4fccb1898db7abf83738d9c2ffce27ba" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">virtual</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classendstone_1_1Scoreboard_1a4fccb1898db7abf83738d9c2ffce27ba" kindref="member">resetScores</ref>(<ref refid="namespaceendstone_1ac9f61b8d814486634ef53948c2804a7a" kindref="member">ScoreEntry</ref><sp/><ref refid="classendstone_1_1Identifier" kindref="compound">entry</ref>)<sp/>=<sp/>0;</highlight></codeline>
 <codeline lineno="114"><highlight class="normal"></highlight></codeline>
 <codeline lineno="120" refid="classendstone_1_1Scoreboard_1a22601ed4eb51f01df4d0548a0c4f872a" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>[[<ref refid="classendstone_1_1Identifier" kindref="compound">nodiscard</ref>]]<sp/></highlight><highlight class="keyword">virtual</highlight><highlight class="normal"><sp/>std::vector&lt;ScoreEntry&gt;<sp/><ref refid="classendstone_1_1Scoreboard_1a22601ed4eb51f01df4d0548a0c4f872a" kindref="member">getEntries</ref>()<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>=<sp/>0;</highlight></codeline>
 <codeline lineno="121"><highlight class="normal"></highlight></codeline>

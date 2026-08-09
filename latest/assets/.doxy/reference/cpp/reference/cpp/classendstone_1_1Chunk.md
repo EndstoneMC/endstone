@@ -52,7 +52,7 @@ _Represents a chunk of blocks._
 
 | Type | Name |
 | ---: | :--- |
-| virtual [**Dimension**](classendstone_1_1Dimension.md) & | [**getDimension**](#function-getdimension) () const = 0<br>_Gets the dimension containing this chunk._  |
+| virtual [**NotNull**](classendstone_1_1NotNull.md)&lt; [**Dimension**](classendstone_1_1Dimension.md) &gt; | [**getDimension**](#function-getdimension) () const = 0<br>_Gets the dimension containing this chunk._  |
 | virtual [**Level**](classendstone_1_1Level.md) & | [**getLevel**](#function-getlevel) () const = 0<br>_Gets the level containing this chunk._  |
 | virtual [**int**](classendstone_1_1Identifier.md) | [**getX**](#function-getx) () const = 0<br>_Gets the X-coordinate of this chunk._  |
 | virtual [**int**](classendstone_1_1Identifier.md) | [**getZ**](#function-getz) () const = 0<br>_Gets the Z-coordinate of this chunk._  |
@@ -94,7 +94,7 @@ _Represents a chunk of blocks._
 
 _Gets the dimension containing this chunk._ 
 ```C++
-virtual Dimension & endstone::Chunk::getDimension () const = 0
+virtual NotNull < Dimension > endstone::Chunk::getDimension () const = 0
 ```
 
 

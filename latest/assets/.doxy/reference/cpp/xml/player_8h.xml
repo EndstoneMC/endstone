@@ -215,6 +215,8 @@
         </childnode>
         <childnode refid="46" relation="include">
         </childnode>
+        <childnode refid="30" relation="include">
+        </childnode>
       </node>
       <node id="32">
         <label>endstone/check.h</label>
@@ -279,6 +281,8 @@
         </childnode>
         <childnode refid="90" relation="include">
         </childnode>
+        <childnode refid="30" relation="include">
+        </childnode>
       </node>
       <node id="86">
         <label>endstone/form/controls/button.h</label>
@@ -292,6 +296,8 @@
         <childnode refid="26" relation="include">
         </childnode>
         <childnode refid="48" relation="include">
+        </childnode>
+        <childnode refid="30" relation="include">
         </childnode>
       </node>
       <node id="87">
@@ -395,6 +401,8 @@
         </childnode>
         <childnode refid="48" relation="include">
         </childnode>
+        <childnode refid="30" relation="include">
+        </childnode>
       </node>
       <node id="91">
         <label>endstone/form/message_form.h</label>
@@ -404,6 +412,8 @@
         <childnode refid="26" relation="include">
         </childnode>
         <childnode refid="90" relation="include">
+        </childnode>
+        <childnode refid="30" relation="include">
         </childnode>
       </node>
       <node id="92">
@@ -438,6 +448,8 @@
         <childnode refid="97" relation="include">
         </childnode>
         <childnode refid="90" relation="include">
+        </childnode>
+        <childnode refid="30" relation="include">
         </childnode>
       </node>
       <node id="98">
@@ -589,6 +601,8 @@
         </childnode>
         <childnode refid="60" relation="include">
         </childnode>
+        <childnode refid="30" relation="include">
+        </childnode>
       </node>
       <node id="48">
         <label>endstone/message.h</label>
@@ -681,8 +695,6 @@
       <node id="66">
         <label>endstone/plugin/service.h</label>
         <link refid="service_8h_source"/>
-        <childnode refid="8" relation="include">
-        </childnode>
       </node>
       <node id="65">
         <label>endstone/plugin/service_manager.h</label>
@@ -696,6 +708,8 @@
         <childnode refid="66" relation="include">
         </childnode>
         <childnode refid="67" relation="include">
+        </childnode>
+        <childnode refid="30" relation="include">
         </childnode>
       </node>
       <node id="67">
@@ -792,6 +806,8 @@
         <childnode refid="6" relation="include">
         </childnode>
         <childnode refid="9" relation="include">
+        </childnode>
+        <childnode refid="30" relation="include">
         </childnode>
       </node>
       <node id="68">
@@ -1358,9 +1374,9 @@
 <codeline lineno="271"><highlight class="normal"></highlight></codeline>
 <codeline lineno="277" refid="classendstone_1_1Player_1ae06900ef1cc1453b40f6af3c8c22a28f" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">virtual</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classendstone_1_1Player_1ae06900ef1cc1453b40f6af3c8c22a28f" kindref="member">setWalkSpeed</ref>(</highlight><highlight class="keywordtype">float</highlight><highlight class="normal"><sp/>value)<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>=<sp/>0;</highlight></codeline>
 <codeline lineno="278"><highlight class="normal"></highlight></codeline>
-<codeline lineno="284" refid="classendstone_1_1Player_1ae04868c49c3dc7236adea90083ab7351" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>[[<ref refid="classendstone_1_1Identifier" kindref="compound">nodiscard</ref>]]<sp/></highlight><highlight class="keyword">virtual</highlight><highlight class="normal"><sp/><ref refid="classendstone_1_1Scoreboard" kindref="compound">Scoreboard</ref><sp/>&amp;<ref refid="classendstone_1_1Player_1ae04868c49c3dc7236adea90083ab7351" kindref="member">getScoreboard</ref>()<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>=<sp/>0;</highlight></codeline>
+<codeline lineno="284" refid="classendstone_1_1Player_1ab1f6c949d1ddb348d2159002982e6e2a" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>[[<ref refid="classendstone_1_1Identifier" kindref="compound">nodiscard</ref>]]<sp/></highlight><highlight class="keyword">virtual</highlight><highlight class="normal"><sp/><ref refid="classendstone_1_1Identifier" kindref="compound">NotNull&lt;Scoreboard&gt;</ref><sp/><ref refid="classendstone_1_1Player_1ab1f6c949d1ddb348d2159002982e6e2a" kindref="member">getScoreboard</ref>()<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>=<sp/>0;</highlight></codeline>
 <codeline lineno="285"><highlight class="normal"></highlight></codeline>
-<codeline lineno="291" refid="classendstone_1_1Player_1a90d8066d7e5715f245ab270bac8cb3ce" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">virtual</highlight><highlight class="normal"><sp/><ref refid="classendstone_1_1Player_1a90d8066d7e5715f245ab270bac8cb3ce" kindref="member">setScoreboard</ref>(<ref refid="classendstone_1_1Scoreboard" kindref="compound">Scoreboard</ref><sp/>&amp;<ref refid="classendstone_1_1Identifier" kindref="compound">scoreboard</ref>)<sp/>=<sp/>0;</highlight></codeline>
+<codeline lineno="291" refid="classendstone_1_1Player_1a0e11414af8984201ab200e635ac03711" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">virtual</highlight><highlight class="normal"><sp/><ref refid="classendstone_1_1Player_1a0e11414af8984201ab200e635ac03711" kindref="member">setScoreboard</ref>(<ref refid="classendstone_1_1Identifier" kindref="compound">NotNull&lt;Scoreboard&gt;</ref><sp/><ref refid="classendstone_1_1Identifier" kindref="compound">scoreboard</ref>)<sp/>=<sp/>0;</highlight></codeline>
 <codeline lineno="292"><highlight class="normal"></highlight></codeline>
 <codeline lineno="298" refid="classendstone_1_1Player_1a774461c162938a1c9658944f8a3b7a77" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">virtual</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classendstone_1_1Player_1a774461c162938a1c9658944f8a3b7a77" kindref="member">sendActionBar</ref>(std::string<sp/><ref refid="classendstone_1_1Identifier" kindref="compound">message</ref>)<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>=<sp/>0;</highlight></codeline>
 <codeline lineno="299"><highlight class="normal"></highlight></codeline>

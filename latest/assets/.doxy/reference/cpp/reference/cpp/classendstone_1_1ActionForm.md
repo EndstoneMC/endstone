@@ -34,7 +34,7 @@ Inherits the following classes: [endstone::Form](classendstone_1_1Form.md)
 | Type | Name |
 | ---: | :--- |
 | typedef std::variant&lt; [**Button**](classendstone_1_1Button.md), [**Divider**](classendstone_1_1Divider.md), [**Header**](classendstone_1_1Header.md), [**Label**](classendstone_1_1Label.md) &gt; | [**Control**](#typedef-control)  <br> |
-| typedef std::function&lt; [**void**](classendstone_1_1Identifier.md)([**Player**](classendstone_1_1Player.md) \*, [**int**](classendstone_1_1Identifier.md))&gt; | [**OnSubmitCallback**](#typedef-onsubmitcallback)  <br> |
+| typedef std::function&lt; [**void**](classendstone_1_1Identifier.md)([**const**](classendstone_1_1Identifier.md) [**NotNull**](classendstone_1_1NotNull.md)&lt; [**Player**](classendstone_1_1Player.md) &gt; &, [**int**](classendstone_1_1Identifier.md))&gt; | [**OnSubmitCallback**](#typedef-onsubmitcallback)  <br> |
 
 
 ## Public Types inherited from endstone::Form
@@ -43,7 +43,7 @@ See [endstone::Form](classendstone_1_1Form.md)
 
 | Type | Name |
 | ---: | :--- |
-| typedef std::function&lt; [**void**](classendstone_1_1Identifier.md)([**Player**](classendstone_1_1Player.md) \*)&gt; | [**OnCloseCallback**](classendstone_1_1Form.md#typedef-onclosecallback)  <br> |
+| typedef std::function&lt; [**void**](classendstone_1_1Identifier.md)([**const**](classendstone_1_1Identifier.md) [**NotNull**](classendstone_1_1NotNull.md)&lt; [**Player**](classendstone_1_1Player.md) &gt; &)&gt; | [**OnCloseCallback**](classendstone_1_1Form.md#typedef-onclosecallback)  <br> |
 
 
 
@@ -193,7 +193,7 @@ using endstone::ActionForm::Control =  std::variant<Button, Divider, Header, Lab
 ### typedef OnSubmitCallback 
 
 ```C++
-using endstone::ActionForm::OnSubmitCallback =  std::function<void(Player *, int)>;
+using endstone::ActionForm::OnSubmitCallback =  std::function<void(const NotNull<Player> &, int)>;
 ```
 
 

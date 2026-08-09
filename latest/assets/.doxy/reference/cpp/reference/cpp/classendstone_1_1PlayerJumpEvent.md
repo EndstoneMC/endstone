@@ -122,7 +122,7 @@ See [endstone::PlayerMoveEvent](classendstone_1_1PlayerMoveEvent.md)
 | Type | Name |
 | ---: | :--- |
 |   | [**ENDSTONE\_EVENT**](#function-endstone_event) ([**PlayerJumpEvent**](classendstone_1_1PlayerJumpEvent.md)) <br> |
-|   | [**PlayerMoveEvent**](#function-playermoveevent) ([**Player**](classendstone_1_1Player.md) & player, [**Location**](classendstone_1_1Location.md) from, [**Location**](classendstone_1_1Location.md) to) <br> |
+|   | [**PlayerMoveEvent**](#function-playermoveevent) ([**const**](classendstone_1_1Identifier.md) [**NotNull**](classendstone_1_1NotNull.md)&lt; [**Player**](classendstone_1_1Player.md) &gt; & player, [**Location**](classendstone_1_1Location.md) from, [**Location**](classendstone_1_1Location.md) to) <br> |
 
 
 ## Public Functions inherited from endstone::PlayerMoveEvent
@@ -132,7 +132,7 @@ See [endstone::PlayerMoveEvent](classendstone_1_1PlayerMoveEvent.md)
 | Type | Name |
 | ---: | :--- |
 |   | [**ENDSTONE\_EVENT**](classendstone_1_1PlayerMoveEvent.md#function-endstone_event) ([**PlayerMoveEvent**](classendstone_1_1PlayerMoveEvent.md)) <br> |
-|   | [**PlayerMoveEvent**](classendstone_1_1PlayerMoveEvent.md#function-playermoveevent) ([**Player**](classendstone_1_1Player.md) & player, [**Location**](classendstone_1_1Location.md) from, [**Location**](classendstone_1_1Location.md) to) <br> |
+|   | [**PlayerMoveEvent**](classendstone_1_1PlayerMoveEvent.md#function-playermoveevent) ([**const**](classendstone_1_1Identifier.md) [**NotNull**](classendstone_1_1NotNull.md)&lt; [**Player**](classendstone_1_1Player.md) &gt; & player, [**Location**](classendstone_1_1Location.md) from, [**Location**](classendstone_1_1Location.md) to) <br> |
 |  [**const**](classendstone_1_1Identifier.md) [**Location**](classendstone_1_1Location.md) & | [**getFrom**](classendstone_1_1PlayerMoveEvent.md#function-getfrom) () const<br>_Gets the location this player moved from._  |
 |  [**const**](classendstone_1_1Identifier.md) [**Location**](classendstone_1_1Location.md) & | [**getTo**](classendstone_1_1PlayerMoveEvent.md#function-getto) () const<br>_Gets the location this player moved to._  |
 |  [**void**](classendstone_1_1Identifier.md) | [**setFrom**](classendstone_1_1PlayerMoveEvent.md#function-setfrom) ([**const**](classendstone_1_1Identifier.md) [**Location**](classendstone_1_1Location.md) & from) <br>_Sets the location to mark as where the player moved from._  |
@@ -290,7 +290,7 @@ endstone::PlayerJumpEvent::ENDSTONE_EVENT (
 
 ```C++
 inline explicit endstone::PlayerJumpEvent::PlayerMoveEvent (
-    Player & player,
+    const  NotNull < Player > & player,
     Location from,
     Location to
 ) 

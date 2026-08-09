@@ -36,7 +36,7 @@
 
 namespace endstone {
 
-class Scoreboard : public std::enable_shared_from_this<Scoreboard> {
+class Scoreboard {
 public:
     virtual ~Scoreboard() = default;
 

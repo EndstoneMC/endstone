@@ -37,7 +37,7 @@ class PlayerMoveEvent : public Cancellable<PlayerEvent> {
 public:
     ENDSTONE_EVENT(PlayerMoveEvent);
 
-    explicit PlayerMoveEvent(Player &player, Location from, Location to)
+    explicit PlayerMoveEvent(const NotNull<Player> &player, Location from, Location to)
         : Cancellable(player), from_(std::move(from)), to_(std::move(to))
     {
     }

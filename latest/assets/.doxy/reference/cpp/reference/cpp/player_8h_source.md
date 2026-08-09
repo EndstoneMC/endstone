@@ -118,9 +118,9 @@ public:
 
     virtual void setWalkSpeed(float value) const = 0;
 
-    [[nodiscard]] virtual Scoreboard &getScoreboard() const = 0;
+    [[nodiscard]] virtual NotNull<Scoreboard> getScoreboard() const = 0;
 
-    void virtual setScoreboard(Scoreboard &scoreboard) = 0;
+    void virtual setScoreboard(NotNull<Scoreboard> scoreboard) = 0;
 
     virtual void sendActionBar(std::string message) const = 0;
 

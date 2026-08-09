@@ -161,6 +161,11 @@ private:
     bool operator>=(const Wrapper<T> &lhs, const Wrapper<U> &rhs) noexcept                         \
     {                                                                                              \
         return lhs.get() >= rhs.get();                                                            \
+    }                                                                                              \
+    template <class T, class U>                                                                    \
+    bool operator==(const Wrapper<T> &lhs, const std::shared_ptr<U> &rhs) noexcept                 \
+    {                                                                                              \
+        return lhs.get() == rhs;                                                                   \
     }
 
 ENDSTONE_DEFINE_PTR_COMPARISONS(NotNull)

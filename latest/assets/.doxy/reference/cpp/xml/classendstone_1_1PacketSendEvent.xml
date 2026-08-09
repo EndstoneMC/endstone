@@ -5,9 +5,9 @@
     <basecompoundref refid="classendstone_1_1Cancellable" prot="public" virt="non-virtual">endstone::Cancellable&lt; ServerEvent &gt;</basecompoundref>
     <includes refid="packet__send__event_8h" local="no">endstone/event/server/packet_send_event.h</includes>
     <sectiondef kind="private-attrib">
-      <memberdef kind="variable" id="classendstone_1_1PacketSendEvent_1a46315b667af5c6f3ec3763c082451502" prot="private" static="no" mutable="no">
-        <type><ref refid="classendstone_1_1Player" kindref="compound">Player</ref> *</type>
-        <definition>Player* endstone::PacketSendEvent::player_</definition>
+      <memberdef kind="variable" id="classendstone_1_1PacketSendEvent_1a7c7aa8a35f9fb82d23847689afd0e435" prot="private" static="no" mutable="no">
+        <type><ref refid="classendstone_1_1Nullable" kindref="compound">Nullable</ref>&lt; <ref refid="classendstone_1_1Player" kindref="compound">Player</ref> &gt;</type>
+        <definition>Nullable&lt;Player&gt; endstone::PacketSendEvent::player_</definition>
         <argsstring></argsstring>
         <name>player_</name>
         <qualifiedname>endstone::PacketSendEvent::player_</qualifiedname>
@@ -17,7 +17,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/event/server/packet_send_event.h" line="91" column="12" bodyfile="include/endstone/event/server/packet_send_event.h" bodystart="91" bodyend="-1"/>
+        <location file="include/endstone/event/server/packet_send_event.h" line="91" column="14" bodyfile="include/endstone/event/server/packet_send_event.h" bodystart="91" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="classendstone_1_1PacketSendEvent_1af46ca7e7e55a4df812ca6cc38466d991" prot="private" static="no" mutable="no">
         <type><ref refid="classendstone_1_1Identifier" kindref="compound">int</ref></type>
@@ -108,14 +108,14 @@
         </inbodydescription>
         <location file="include/endstone/event/server/packet_send_event.h" line="31" column="5"/>
       </memberdef>
-      <memberdef kind="function" id="classendstone_1_1PacketSendEvent_1a5d4752bfb59aa606b2a92c577f1ca251" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+      <memberdef kind="function" id="classendstone_1_1PacketSendEvent_1a96594e98c8b0cdce787943ebcc216384" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type></type>
         <definition>endstone::PacketSendEvent::PacketSendEvent</definition>
-        <argsstring>(Player *player, const int packet_id, std::string_view payload, SocketAddress address, const int sub_client_id)</argsstring>
+        <argsstring>(const Nullable&lt; Player &gt; &amp;player, const int packet_id, std::string_view payload, SocketAddress address, const int sub_client_id)</argsstring>
         <name>PacketSendEvent</name>
         <qualifiedname>endstone::PacketSendEvent::PacketSendEvent</qualifiedname>
         <param>
-          <type><ref refid="classendstone_1_1Player" kindref="compound">Player</ref> *</type>
+          <type><ref refid="classendstone_1_1Identifier" kindref="compound">const</ref> <ref refid="classendstone_1_1Nullable" kindref="compound">Nullable</ref>&lt; <ref refid="classendstone_1_1Player" kindref="compound">Player</ref> &gt; &amp;</type>
           <declname>player</declname>
         </param>
         <param>
@@ -207,9 +207,9 @@
         </inbodydescription>
         <location file="include/endstone/event/server/packet_send_event.h" line="59" column="10" bodyfile="include/endstone/event/server/packet_send_event.h" bodystart="59" bodyend="63"/>
       </memberdef>
-      <memberdef kind="function" id="classendstone_1_1PacketSendEvent_1ae40aec395d824f1d5759d9aff77ea4d2" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
-        <type><ref refid="classendstone_1_1Player" kindref="compound">Player</ref> *</type>
-        <definition>Player * endstone::PacketSendEvent::getPlayer</definition>
+      <memberdef kind="function" id="classendstone_1_1PacketSendEvent_1aea926d70c0fa5ed71d5e5a094780beb5" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type><ref refid="classendstone_1_1Identifier" kindref="compound">const</ref> <ref refid="classendstone_1_1Nullable" kindref="compound">Nullable</ref>&lt; <ref refid="classendstone_1_1Player" kindref="compound">Player</ref> &gt; &amp;</type>
+        <definition>const Nullable&lt; Player &gt; &amp; endstone::PacketSendEvent::getPlayer</definition>
         <argsstring>() const</argsstring>
         <name>getPlayer</name>
         <qualifiedname>endstone::PacketSendEvent::getPlayer</qualifiedname>
@@ -225,7 +225,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/event/server/packet_send_event.h" line="72" column="13" bodyfile="include/endstone/event/server/packet_send_event.h" bodystart="72" bodyend="72"/>
+        <location file="include/endstone/event/server/packet_send_event.h" line="72" column="21" bodyfile="include/endstone/event/server/packet_send_event.h" bodystart="72" bodyend="72"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1PacketSendEvent_1ada748078e0707514545961d6bd837060" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
         <type><ref refid="classendstone_1_1SocketAddress" kindref="compound">SocketAddress</ref></type>
@@ -343,7 +343,7 @@
       <member refid="classendstone_1_1Event_1a826fe74f9c4195a36a364b9aeeb321bb" prot="public" virt="pure-virtual"><scope>endstone::PacketSendEvent</scope><name>getEventName</name></member>
       <member refid="classendstone_1_1PacketSendEvent_1a09a905e5a99059f865bcdb931bf7f230" prot="public" virt="non-virtual"><scope>endstone::PacketSendEvent</scope><name>getPacketId</name></member>
       <member refid="classendstone_1_1PacketSendEvent_1a5742091cbd6fd1a5883567f4509693a8" prot="public" virt="non-virtual"><scope>endstone::PacketSendEvent</scope><name>getPayload</name></member>
-      <member refid="classendstone_1_1PacketSendEvent_1ae40aec395d824f1d5759d9aff77ea4d2" prot="public" virt="non-virtual"><scope>endstone::PacketSendEvent</scope><name>getPlayer</name></member>
+      <member refid="classendstone_1_1PacketSendEvent_1aea926d70c0fa5ed71d5e5a094780beb5" prot="public" virt="non-virtual"><scope>endstone::PacketSendEvent</scope><name>getPlayer</name></member>
       <member refid="classendstone_1_1PacketSendEvent_1a7521c9aa7ee4395b01ae312d7a14b65b" prot="public" virt="non-virtual"><scope>endstone::PacketSendEvent</scope><name>getSubClientId</name></member>
       <member refid="classendstone_1_1Event_1ae89b54f63dc32b0c8797a59db69b6931" prot="public" virt="non-virtual"><scope>endstone::PacketSendEvent</scope><name>isAsynchronous</name></member>
       <member refid="classendstone_1_1Cancellable_1a268b73cc5bda0fa5923336d031814faa" prot="public" virt="virtual"><scope>endstone::PacketSendEvent</scope><name>isCancelled</name></member>
@@ -351,9 +351,9 @@
       <member refid="classendstone_1_1Event_1a1d7fc5400782d20be99a3636aa7f53b9" prot="public" virt="non-virtual"><scope>endstone::PacketSendEvent</scope><name>operator=</name></member>
       <member refid="classendstone_1_1PacketSendEvent_1adfcb982eecf45e887068559173faf47e" prot="private" virt="non-virtual"><scope>endstone::PacketSendEvent</scope><name>owned_payload_</name></member>
       <member refid="classendstone_1_1PacketSendEvent_1af46ca7e7e55a4df812ca6cc38466d991" prot="private" virt="non-virtual"><scope>endstone::PacketSendEvent</scope><name>packet_id_</name></member>
-      <member refid="classendstone_1_1PacketSendEvent_1a5d4752bfb59aa606b2a92c577f1ca251" prot="public" virt="non-virtual"><scope>endstone::PacketSendEvent</scope><name>PacketSendEvent</name></member>
+      <member refid="classendstone_1_1PacketSendEvent_1a96594e98c8b0cdce787943ebcc216384" prot="public" virt="non-virtual"><scope>endstone::PacketSendEvent</scope><name>PacketSendEvent</name></member>
       <member refid="classendstone_1_1PacketSendEvent_1a4c99fc98acca93b96d3bc9730e5e83ab" prot="private" virt="non-virtual"><scope>endstone::PacketSendEvent</scope><name>payload_</name></member>
-      <member refid="classendstone_1_1PacketSendEvent_1a46315b667af5c6f3ec3763c082451502" prot="private" virt="non-virtual"><scope>endstone::PacketSendEvent</scope><name>player_</name></member>
+      <member refid="classendstone_1_1PacketSendEvent_1a7c7aa8a35f9fb82d23847689afd0e435" prot="private" virt="non-virtual"><scope>endstone::PacketSendEvent</scope><name>player_</name></member>
       <member refid="classendstone_1_1Cancellable_1aa12df44bcb66924d06a689d0dd07865e" prot="public" virt="virtual"><scope>endstone::PacketSendEvent</scope><name>setCancelled</name></member>
       <member refid="classendstone_1_1PacketSendEvent_1a7388ad0e80c62aaf7a5d01a4e0974345" prot="public" virt="non-virtual"><scope>endstone::PacketSendEvent</scope><name>setPayload</name></member>
       <member refid="classendstone_1_1PacketSendEvent_1ab71556ab20b8c96135c756337ffa1a78" prot="private" virt="non-virtual"><scope>endstone::PacketSendEvent</scope><name>sub_client_id_</name></member>

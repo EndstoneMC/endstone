@@ -93,7 +93,7 @@ Inherits the following classes: [endstone::Cancellable](classendstone_1_1Cancell
 
 | Type | Name |
 | ---: | :--- |
-|   | [**PlayerBedEnterEvent**](#function-playerbedenterevent) ([**Player**](classendstone_1_1Player.md) & player, [**Block**](classendstone_1_1Block.md) & bed) <br> |
+|   | [**PlayerBedEnterEvent**](#function-playerbedenterevent) ([**const**](classendstone_1_1Identifier.md) [**NotNull**](classendstone_1_1NotNull.md)&lt; [**Player**](classendstone_1_1Player.md) &gt; & player, [**Block**](classendstone_1_1Block.md) & bed) <br> |
 |  [**Block**](classendstone_1_1Block.md) & | [**getBed**](#function-getbed) () const<br>_Returns the bed block involved in this event._  |
 
 
@@ -207,7 +207,7 @@ See [endstone::ICancellable](classendstone_1_1ICancellable.md)
 
 ```C++
 inline explicit endstone::PlayerBedEnterEvent::PlayerBedEnterEvent (
-    Player & player,
+    const  NotNull < Player > & player,
     Block & bed
 ) 
 ```

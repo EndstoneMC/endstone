@@ -35,7 +35,7 @@ class PlayerQuitEvent : public PlayerEvent {
 public:
     ENDSTONE_EVENT(PlayerQuitEvent);
 
-    explicit PlayerQuitEvent(Player &player, std::optional<Message> quit_message)
+    explicit PlayerQuitEvent(const NotNull<Player> &player, std::optional<Message> quit_message)
         : PlayerEvent(player), quit_message_(std::move(quit_message))
     {
     }

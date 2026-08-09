@@ -94,7 +94,7 @@ Inherits the following classes: [endstone::Cancellable](classendstone_1_1Cancell
 | Type | Name |
 | ---: | :--- |
 |   | [**ENDSTONE\_EVENT**](#function-endstone_event) ([**PlayerLoginEvent**](classendstone_1_1PlayerLoginEvent.md)) <br> |
-|   | [**PlayerLoginEvent**](#function-playerloginevent) ([**Player**](classendstone_1_1Player.md) & player, std::string message="") <br> |
+|   | [**PlayerLoginEvent**](#function-playerloginevent) ([**const**](classendstone_1_1Identifier.md) [**NotNull**](classendstone_1_1NotNull.md)&lt; [**Player**](classendstone_1_1Player.md) &gt; & player, std::string message="") <br> |
 |  [**const**](classendstone_1_1Identifier.md) std::string & | [**getKickMessage**](#function-getkickmessage) () const<br>_Gets the current kick message that will be used if event is cancelled._  |
 |  [**void**](classendstone_1_1Identifier.md) | [**setKickMessage**](#function-setkickmessage) ([**const**](classendstone_1_1Identifier.md) std::string & message) <br>_Sets the kick message to display if event is cancelled._  |
 |   | [**~PlayerLoginEvent**](#function-playerloginevent) () override<br> |
@@ -225,7 +225,7 @@ endstone::PlayerLoginEvent::ENDSTONE_EVENT (
 
 ```C++
 inline explicit endstone::PlayerLoginEvent::PlayerLoginEvent (
-    Player & player,
+    const  NotNull < Player > & player,
     std::string message=""
 ) 
 ```

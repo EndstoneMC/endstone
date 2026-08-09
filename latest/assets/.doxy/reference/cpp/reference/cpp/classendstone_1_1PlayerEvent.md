@@ -74,8 +74,8 @@ Inherited by the following classes: [endstone::Cancellable](classendstone_1_1Can
 
 | Type | Name |
 | ---: | :--- |
-|   | [**PlayerEvent**](#function-playerevent) ([**Player**](classendstone_1_1Player.md) & player) <br> |
-|  [**Player**](classendstone_1_1Player.md) & | [**getPlayer**](#function-getplayer) () const<br>_Returns the player involved in this event._  |
+|   | [**PlayerEvent**](#function-playerevent) ([**const**](classendstone_1_1Identifier.md) [**NotNull**](classendstone_1_1NotNull.md)&lt; [**Player**](classendstone_1_1Player.md) &gt; & player) <br> |
+|  [**const**](classendstone_1_1Identifier.md) [**NotNull**](classendstone_1_1NotNull.md)&lt; [**Player**](classendstone_1_1Player.md) &gt; & | [**getPlayer**](#function-getplayer) () const<br>_Returns the player involved in this event._  |
 |   | [**~PlayerEvent**](#function-playerevent) () override<br> |
 
 
@@ -111,7 +111,7 @@ See [endstone::Event](classendstone_1_1Event.md)
 
 | Type | Name |
 | ---: | :--- |
-|  std::reference\_wrapper&lt; [**Player**](classendstone_1_1Player.md) &gt; | [**player\_**](#variable-player_)  <br> |
+|  [**NotNull**](classendstone_1_1NotNull.md)&lt; [**Player**](classendstone_1_1Player.md) &gt; | [**player\_**](#variable-player_)  <br> |
 
 
 
@@ -161,7 +161,7 @@ See [endstone::Event](classendstone_1_1Event.md)
 
 ```C++
 inline explicit endstone::PlayerEvent::PlayerEvent (
-    Player & player
+    const  NotNull < Player > & player
 ) 
 ```
 
@@ -176,7 +176,7 @@ inline explicit endstone::PlayerEvent::PlayerEvent (
 
 _Returns the player involved in this event._ 
 ```C++
-inline Player & endstone::PlayerEvent::getPlayer () const
+inline const  NotNull < Player > & endstone::PlayerEvent::getPlayer () const
 ```
 
 
@@ -215,7 +215,7 @@ endstone::PlayerEvent::~PlayerEvent () override
 ### variable player\_ 
 
 ```C++
-std::reference_wrapper<Player> endstone::PlayerEvent::player_;
+NotNull<Player> endstone::PlayerEvent::player_;
 ```
 
 

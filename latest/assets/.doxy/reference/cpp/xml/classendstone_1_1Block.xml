@@ -324,9 +324,9 @@
         </inbodydescription>
         <location file="include/endstone/block/block.h" line="116" column="29"/>
       </memberdef>
-      <memberdef kind="function" id="classendstone_1_1Block_1a8d18ed25f0fc34c51152ec0a1dd09854" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
-        <type><ref refid="classendstone_1_1Dimension" kindref="compound">Dimension</ref> &amp;</type>
-        <definition>virtual Dimension &amp; endstone::Block::getDimension</definition>
+      <memberdef kind="function" id="classendstone_1_1Block_1aff694d5f821d3db6a861e19e02d7c01a" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
+        <type><ref refid="classendstone_1_1NotNull" kindref="compound">NotNull</ref>&lt; <ref refid="classendstone_1_1Dimension" kindref="compound">Dimension</ref> &gt;</type>
+        <definition>virtual NotNull&lt; Dimension &gt; endstone::Block::getDimension</definition>
         <argsstring>() const =0</argsstring>
         <name>getDimension</name>
         <qualifiedname>endstone::Block::getDimension</qualifiedname>
@@ -340,7 +340,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/block/block.h" line="123" column="24"/>
+        <location file="include/endstone/block/block.h" line="123" column="22"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1Block_1ac5f09887cfba8b183dcc71af4f21ce41" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
         <type><ref refid="classendstone_1_1Identifier" kindref="compound">const</ref> <ref refid="classendstone_1_1Biome" kindref="compound">Biome</ref> &amp;</type>
@@ -482,7 +482,7 @@
       <member refid="classendstone_1_1Block_1acf80e005f3032354d7cd7ed0057be6e7" prot="public" virt="pure-virtual"><scope>endstone::Block</scope><name>clone</name></member>
       <member refid="classendstone_1_1Block_1ac5f09887cfba8b183dcc71af4f21ce41" prot="public" virt="pure-virtual"><scope>endstone::Block</scope><name>getBiome</name></member>
       <member refid="classendstone_1_1Block_1a5293fd07d6c423a5a7132944eec13282" prot="public" virt="pure-virtual"><scope>endstone::Block</scope><name>getData</name></member>
-      <member refid="classendstone_1_1Block_1a8d18ed25f0fc34c51152ec0a1dd09854" prot="public" virt="pure-virtual"><scope>endstone::Block</scope><name>getDimension</name></member>
+      <member refid="classendstone_1_1Block_1aff694d5f821d3db6a861e19e02d7c01a" prot="public" virt="pure-virtual"><scope>endstone::Block</scope><name>getDimension</name></member>
       <member refid="classendstone_1_1Block_1a19e164bc3cf23481d01886dfeda41c85" prot="public" virt="pure-virtual"><scope>endstone::Block</scope><name>getLocation</name></member>
       <member refid="classendstone_1_1Block_1ade7ede2f68266c797efbb8b5a237304b" prot="public" virt="pure-virtual"><scope>endstone::Block</scope><name>getRelative</name></member>
       <member refid="classendstone_1_1Block_1ae60ad017cb35887e0cad09c2d76b354b" prot="public" virt="pure-virtual"><scope>endstone::Block</scope><name>getRelative</name></member>

@@ -40,7 +40,7 @@ class ActorExplodeEvent : public Cancellable<ActorEvent<Actor>> {
 
 public:
     ENDSTONE_EVENT(ActorExplodeEvent);
-    explicit ActorExplodeEvent(Actor &actor, Location location, BlockList blocks)
+    explicit ActorExplodeEvent(const NotNull<Actor> &actor, Location location, BlockList blocks)
         : Cancellable(actor), location_(location), blocks_(std::move(blocks))
     {
     }

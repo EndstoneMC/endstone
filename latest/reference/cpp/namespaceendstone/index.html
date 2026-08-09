@@ -4283,7 +4283,7 @@ For latest updates join the chat on
 <td style="text-align: left;"><a href="#typedef-result"><strong>Result</strong></a>  <br><em>Holds either a value of type T on success or an error message on failure.</em></td>
 </tr>
 <tr>
-<td style="text-align: right;">typedef std::variant&lt; <a href="../classendstone_1_1Player/"><strong>Player</strong></a> *, <a href="../classendstone_1_1Actor/"><strong>Actor</strong></a> *, std::string &gt;</td>
+<td style="text-align: right;">typedef std::variant&lt; std::string, <a href="../classendstone_1_1NotNull/"><strong>NotNull</strong></a>&lt; <a href="../classendstone_1_1Player/"><strong>Player</strong></a> &gt;, <a href="../classendstone_1_1NotNull/"><strong>NotNull</strong></a>&lt; <a href="../classendstone_1_1Actor/"><strong>Actor</strong></a> &gt; &gt;</td>
 <td style="text-align: left;"><a href="#typedef-scoreentry"><strong>ScoreEntry</strong></a>  <br><em>An entry for a score.</em></td>
 </tr>
 <tr>
@@ -4635,7 +4635,7 @@ For latest updates join the chat on
 
 <h3 id="typedef-scoreentry">typedef ScoreEntry<a class="headerlink" href="#typedef-scoreentry" title="Permanent link">&para;</a></h3>
 <p><em>An entry for a score.</em> 
-<div class="language-C++ highlight"><pre><span></span><code><span id="__span-35-1"><a id="__codelineno-35-1" name="__codelineno-35-1" href="#__codelineno-35-1"></a><span class="k">using</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">ScoreEntry</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">typedef</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">variant</span><span class="o">&lt;</span><span class="n">Player</span><span class="w"> </span><span class="o">*</span><span class="p">,</span><span class="w"> </span><span class="n">Actor</span><span class="w"> </span><span class="o">*</span><span class="p">,</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="o">&gt;</span><span class="p">;</span>
+<div class="language-C++ highlight"><pre><span></span><code><span id="__span-35-1"><a id="__codelineno-35-1" name="__codelineno-35-1" href="#__codelineno-35-1"></a><span class="k">using</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">ScoreEntry</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">typedef</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">variant</span><span class="o">&lt;</span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="p">,</span><span class="w"> </span><span class="n">NotNull</span><span class="o">&lt;</span><span class="n">Player</span><span class="o">&gt;</span><span class="p">,</span><span class="w"> </span><span class="n">NotNull</span><span class="o">&lt;</span><span class="n">Actor</span><span class="o">&gt;</span><span class="w"> </span><span class="o">&gt;</span><span class="p">;</span>
 </span></code></pre></div></p>
 <hr>
 

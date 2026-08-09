@@ -99,7 +99,7 @@ Inherits the following classes: [endstone::Cancellable](classendstone_1_1Cancell
 | Type | Name |
 | ---: | :--- |
 |   | [**ENDSTONE\_EVENT**](#function-endstone_event) ([**PlayerInteractEvent**](classendstone_1_1PlayerInteractEvent.md)) <br> |
-|   | [**PlayerInteractEvent**](#function-playerinteractevent) ([**Player**](classendstone_1_1Player.md) & player, [**Action**](classendstone_1_1PlayerInteractEvent.md#enum-action) action, std::optional&lt; [**ItemStack**](classendstone_1_1ItemStack.md) &gt; item, [**Block**](classendstone_1_1Block.md) \* block\_clicked, [**BlockFace**](namespaceendstone.md#enum-blockface) block\_face, std::optional&lt; [**Vector**](classendstone_1_1Vector.md) &gt; clicked\_position) <br> |
+|   | [**PlayerInteractEvent**](#function-playerinteractevent) ([**const**](classendstone_1_1Identifier.md) [**NotNull**](classendstone_1_1NotNull.md)&lt; [**Player**](classendstone_1_1Player.md) &gt; & player, [**Action**](classendstone_1_1PlayerInteractEvent.md#enum-action) action, std::optional&lt; [**ItemStack**](classendstone_1_1ItemStack.md) &gt; item, [**Block**](classendstone_1_1Block.md) \* block\_clicked, [**BlockFace**](namespaceendstone.md#enum-blockface) block\_face, std::optional&lt; [**Vector**](classendstone_1_1Vector.md) &gt; clicked\_position) <br> |
 |  [**Action**](classendstone_1_1PlayerInteractEvent.md#enum-action) | [**getAction**](#function-getaction) () const<br>_Returns the action type._  |
 |  [**Block**](classendstone_1_1Block.md) \* | [**getBlock**](#function-getblock) () const<br>_Returns the clicked block._  |
 |  [**BlockFace**](namespaceendstone.md#enum-blockface) | [**getBlockFace**](#function-getblockface) () const<br>_Returns the face of the block that was clicked._  |
@@ -255,7 +255,7 @@ endstone::PlayerInteractEvent::ENDSTONE_EVENT (
 
 ```C++
 inline endstone::PlayerInteractEvent::PlayerInteractEvent (
-    Player & player,
+    const  NotNull < Player > & player,
     Action action,
     std::optional< ItemStack > item,
     Block * block_clicked,

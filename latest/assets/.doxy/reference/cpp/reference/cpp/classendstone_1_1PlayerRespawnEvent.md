@@ -99,7 +99,7 @@ Inherits the following classes: [endstone::PlayerEvent](classendstone_1_1PlayerE
 | Type | Name |
 | ---: | :--- |
 |   | [**ENDSTONE\_EVENT**](#function-endstone_event) ([**PlayerRespawnEvent**](classendstone_1_1PlayerRespawnEvent.md)) <br> |
-|   | [**PlayerRespawnEvent**](#function-playerrespawnevent) ([**Player**](classendstone_1_1Player.md) & player, [**RespawnReason**](classendstone_1_1PlayerRespawnEvent.md#enum-respawnreason) reason) <br> |
+|   | [**PlayerRespawnEvent**](#function-playerrespawnevent) ([**const**](classendstone_1_1Identifier.md) [**NotNull**](classendstone_1_1NotNull.md)&lt; [**Player**](classendstone_1_1Player.md) &gt; & player, [**RespawnReason**](classendstone_1_1PlayerRespawnEvent.md#enum-respawnreason) reason) <br> |
 |  [**RespawnReason**](classendstone_1_1PlayerRespawnEvent.md#enum-respawnreason) | [**getRespawnReason**](#function-getrespawnreason) () const<br>_Gets the reason this respawn occurred._  |
 |   | [**~PlayerRespawnEvent**](#function-playerrespawnevent) () override<br> |
 
@@ -110,8 +110,8 @@ See [endstone::PlayerEvent](classendstone_1_1PlayerEvent.md)
 
 | Type | Name |
 | ---: | :--- |
-|   | [**PlayerEvent**](classendstone_1_1PlayerEvent.md#function-playerevent) ([**Player**](classendstone_1_1Player.md) & player) <br> |
-|  [**Player**](classendstone_1_1Player.md) & | [**getPlayer**](classendstone_1_1PlayerEvent.md#function-getplayer) () const<br>_Returns the player involved in this event._  |
+|   | [**PlayerEvent**](classendstone_1_1PlayerEvent.md#function-playerevent) ([**const**](classendstone_1_1Identifier.md) [**NotNull**](classendstone_1_1NotNull.md)&lt; [**Player**](classendstone_1_1Player.md) &gt; & player) <br> |
+|  [**const**](classendstone_1_1Identifier.md) [**NotNull**](classendstone_1_1NotNull.md)&lt; [**Player**](classendstone_1_1Player.md) &gt; & | [**getPlayer**](classendstone_1_1PlayerEvent.md#function-getplayer) () const<br>_Returns the player involved in this event._  |
 |   | [**~PlayerEvent**](classendstone_1_1PlayerEvent.md#function-playerevent) () override<br> |
 
 
@@ -157,7 +157,7 @@ See [endstone::PlayerEvent](classendstone_1_1PlayerEvent.md)
 
 | Type | Name |
 | ---: | :--- |
-|  std::reference\_wrapper&lt; [**Player**](classendstone_1_1Player.md) &gt; | [**player\_**](classendstone_1_1PlayerEvent.md#variable-player_)  <br> |
+|  [**NotNull**](classendstone_1_1NotNull.md)&lt; [**Player**](classendstone_1_1Player.md) &gt; | [**player\_**](classendstone_1_1PlayerEvent.md#variable-player_)  <br> |
 
 
 
@@ -259,7 +259,7 @@ endstone::PlayerRespawnEvent::ENDSTONE_EVENT (
 
 ```C++
 inline endstone::PlayerRespawnEvent::PlayerRespawnEvent (
-    Player & player,
+    const  NotNull < Player > & player,
     RespawnReason reason
 ) 
 ```

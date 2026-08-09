@@ -93,7 +93,7 @@ Inherits the following classes: [endstone::Cancellable](classendstone_1_1Cancell
 
 | Type | Name |
 | ---: | :--- |
-|   | [**ActorSpawnEvent**](#function-actorspawnevent) ([**Actor**](classendstone_1_1Actor.md) & actor) <br> |
+|   | [**ActorSpawnEvent**](#function-actorspawnevent) ([**const**](classendstone_1_1Identifier.md) [**NotNull**](classendstone_1_1NotNull.md)&lt; [**Actor**](classendstone_1_1Actor.md) &gt; & actor) <br> |
 |   | [**ENDSTONE\_EVENT**](#function-endstone_event) ([**ActorSpawnEvent**](classendstone_1_1ActorSpawnEvent.md)) <br> |
 |   | [**~ActorSpawnEvent**](#function-actorspawnevent) () override<br> |
 
@@ -215,7 +215,7 @@ If an [**Actor**](classendstone_1_1Actor.md) Spawn event is cancelled, the actor
 
 ```C++
 inline explicit endstone::ActorSpawnEvent::ActorSpawnEvent (
-    Actor & actor
+    const  NotNull < Actor > & actor
 ) 
 ```
 

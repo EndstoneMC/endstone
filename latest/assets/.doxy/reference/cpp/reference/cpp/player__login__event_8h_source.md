@@ -35,7 +35,7 @@ namespace endstone {
 class PlayerLoginEvent : public Cancellable<PlayerEvent> {
 public:
     ENDSTONE_EVENT(PlayerLoginEvent);
-    explicit PlayerLoginEvent(Player &player, std::string message = "")
+    explicit PlayerLoginEvent(const NotNull<Player> &player, std::string message = "")
         : Cancellable(player), message_(std::move(message))
     {
     }

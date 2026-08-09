@@ -32,7 +32,7 @@ namespace endstone {
 class ActorSpawnEvent : public Cancellable<ActorEvent<Actor>> {
 public:
     ENDSTONE_EVENT(ActorSpawnEvent);
-    explicit ActorSpawnEvent(Actor &actor) : Cancellable(actor) {}
+    explicit ActorSpawnEvent(const NotNull<Actor> &actor) : Cancellable(actor) {}
     ~ActorSpawnEvent() override = default;
 
     // TODO(event): add spawn cause

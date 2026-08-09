@@ -5,9 +5,9 @@
     <basecompoundref refid="classendstone_1_1Cancellable" prot="public" virt="non-virtual">endstone::Cancellable&lt; PlayerEvent &gt;</basecompoundref>
     <includes refid="player__pickup__item__event_8h" local="no">endstone/event/player/player_pickup_item_event.h</includes>
     <sectiondef kind="private-attrib">
-      <memberdef kind="variable" id="classendstone_1_1PlayerPickupItemEvent_1ad4b4af1a9ca78f0f02b27dabfc88eafd" prot="private" static="no" mutable="no">
-        <type><ref refid="classendstone_1_1Item" kindref="compound">Item</ref> &amp;</type>
-        <definition>Item&amp; endstone::PlayerPickupItemEvent::item_</definition>
+      <memberdef kind="variable" id="classendstone_1_1PlayerPickupItemEvent_1a4f3fc142ea17ae48dbf8e336d7a4b875" prot="private" static="no" mutable="no">
+        <type><ref refid="classendstone_1_1NotNull" kindref="compound">NotNull</ref>&lt; <ref refid="classendstone_1_1Item" kindref="compound">Item</ref> &gt;</type>
+        <definition>NotNull&lt;Item&gt; endstone::PlayerPickupItemEvent::item_</definition>
         <argsstring></argsstring>
         <name>item_</name>
         <qualifiedname>endstone::PlayerPickupItemEvent::item_</qualifiedname>
@@ -17,7 +17,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/event/player/player_pickup_item_event.h" line="40" column="10" bodyfile="include/endstone/event/player/player_pickup_item_event.h" bodystart="40" bodyend="-1"/>
+        <location file="include/endstone/event/player/player_pickup_item_event.h" line="40" column="13" bodyfile="include/endstone/event/player/player_pickup_item_event.h" bodystart="40" bodyend="-1"/>
       </memberdef>
     </sectiondef>
     <sectiondef kind="public-func">
@@ -38,18 +38,18 @@
         </inbodydescription>
         <location file="include/endstone/event/player/player_pickup_item_event.h" line="28" column="5"/>
       </memberdef>
-      <memberdef kind="function" id="classendstone_1_1PlayerPickupItemEvent_1a2ffe5a51d8b0c22799ba4db466fc6f91" prot="public" static="no" const="no" explicit="yes" inline="yes" virt="non-virtual">
+      <memberdef kind="function" id="classendstone_1_1PlayerPickupItemEvent_1abf1730c3e06613a5b3410dbde7837537" prot="public" static="no" const="no" explicit="yes" inline="yes" virt="non-virtual">
         <type></type>
         <definition>endstone::PlayerPickupItemEvent::PlayerPickupItemEvent</definition>
-        <argsstring>(Player &amp;player, Item &amp;item)</argsstring>
+        <argsstring>(const NotNull&lt; Player &gt; &amp;player, const NotNull&lt; Item &gt; &amp;item)</argsstring>
         <name>PlayerPickupItemEvent</name>
         <qualifiedname>endstone::PlayerPickupItemEvent::PlayerPickupItemEvent</qualifiedname>
         <param>
-          <type><ref refid="classendstone_1_1Player" kindref="compound">Player</ref> &amp;</type>
+          <type><ref refid="classendstone_1_1Identifier" kindref="compound">const</ref> <ref refid="classendstone_1_1NotNull" kindref="compound">NotNull</ref>&lt; <ref refid="classendstone_1_1Player" kindref="compound">Player</ref> &gt; &amp;</type>
           <declname>player</declname>
         </param>
         <param>
-          <type><ref refid="classendstone_1_1Item" kindref="compound">Item</ref> &amp;</type>
+          <type><ref refid="classendstone_1_1Identifier" kindref="compound">const</ref> <ref refid="classendstone_1_1NotNull" kindref="compound">NotNull</ref>&lt; <ref refid="classendstone_1_1Item" kindref="compound">Item</ref> &gt; &amp;</type>
           <declname>item</declname>
         </param>
         <briefdescription>
@@ -60,9 +60,9 @@
         </inbodydescription>
         <location file="include/endstone/event/player/player_pickup_item_event.h" line="30" column="14" bodyfile="include/endstone/event/player/player_pickup_item_event.h" bodystart="30" bodyend="30"/>
       </memberdef>
-      <memberdef kind="function" id="classendstone_1_1PlayerPickupItemEvent_1af2e2a3c35dde44219709a5303569979c" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
-        <type><ref refid="classendstone_1_1Item" kindref="compound">Item</ref> &amp;</type>
-        <definition>Item &amp; endstone::PlayerPickupItemEvent::getItem</definition>
+      <memberdef kind="function" id="classendstone_1_1PlayerPickupItemEvent_1a27344f0b80f75d85822d4af73390100b" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type><ref refid="classendstone_1_1Identifier" kindref="compound">const</ref> <ref refid="classendstone_1_1NotNull" kindref="compound">NotNull</ref>&lt; <ref refid="classendstone_1_1Item" kindref="compound">Item</ref> &gt; &amp;</type>
+        <definition>const NotNull&lt; Item &gt; &amp; endstone::PlayerPickupItemEvent::getItem</definition>
         <argsstring>() const</argsstring>
         <name>getItem</name>
         <qualifiedname>endstone::PlayerPickupItemEvent::getItem</qualifiedname>
@@ -76,7 +76,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/event/player/player_pickup_item_event.h" line="37" column="10" bodyfile="include/endstone/event/player/player_pickup_item_event.h" bodystart="37" bodyend="37"/>
+        <location file="include/endstone/event/player/player_pickup_item_event.h" line="37" column="19" bodyfile="include/endstone/event/player/player_pickup_item_event.h" bodystart="37" bodyend="37"/>
       </memberdef>
     </sectiondef>
     <briefdescription>
@@ -120,14 +120,18 @@
         <link refid="classendstone_1_1Cancellable"/>
         <childnode refid="3" relation="public-inheritance">
         </childnode>
-        <childnode refid="5" relation="public-inheritance">
+        <childnode refid="6" relation="public-inheritance">
         </childnode>
+      </node>
+      <node id="5">
+        <label>endstone::NotNull&lt; endstone::Player &gt;</label>
+        <link refid="classendstone_1_1NotNull"/>
       </node>
       <node id="4">
         <label>endstone::Event</label>
         <link refid="classendstone_1_1Event"/>
       </node>
-      <node id="5">
+      <node id="6">
         <label>endstone::ICancellable</label>
         <link refid="classendstone_1_1ICancellable"/>
       </node>
@@ -135,6 +139,9 @@
         <label>endstone::PlayerEvent</label>
         <link refid="classendstone_1_1PlayerEvent"/>
         <childnode refid="4" relation="public-inheritance">
+        </childnode>
+        <childnode refid="5" relation="usage">
+          <edgelabel>player_</edgelabel>
         </childnode>
       </node>
       <node id="1">
@@ -152,16 +159,16 @@
       <member refid="classendstone_1_1Event_1a7199136ebb40e1441bc61e29f83c3cad" prot="public" virt="non-virtual"><scope>endstone::PlayerPickupItemEvent</scope><name>Event</name></member>
       <member refid="classendstone_1_1Event_1ad20bafd16e0671578e37390b95e5104c" prot="public" virt="non-virtual"><scope>endstone::PlayerPickupItemEvent</scope><name>Event</name></member>
       <member refid="classendstone_1_1Event_1a826fe74f9c4195a36a364b9aeeb321bb" prot="public" virt="pure-virtual"><scope>endstone::PlayerPickupItemEvent</scope><name>getEventName</name></member>
-      <member refid="classendstone_1_1PlayerPickupItemEvent_1af2e2a3c35dde44219709a5303569979c" prot="public" virt="non-virtual"><scope>endstone::PlayerPickupItemEvent</scope><name>getItem</name></member>
-      <member refid="classendstone_1_1PlayerEvent_1a3ad904b05886ce30c7299500d9a57fdb" prot="public" virt="non-virtual"><scope>endstone::PlayerPickupItemEvent</scope><name>getPlayer</name></member>
+      <member refid="classendstone_1_1PlayerPickupItemEvent_1a27344f0b80f75d85822d4af73390100b" prot="public" virt="non-virtual"><scope>endstone::PlayerPickupItemEvent</scope><name>getItem</name></member>
+      <member refid="classendstone_1_1PlayerEvent_1abad8f8bca3e2be851c4b37075adf2cbc" prot="public" virt="non-virtual"><scope>endstone::PlayerPickupItemEvent</scope><name>getPlayer</name></member>
       <member refid="classendstone_1_1Event_1ae89b54f63dc32b0c8797a59db69b6931" prot="public" virt="non-virtual"><scope>endstone::PlayerPickupItemEvent</scope><name>isAsynchronous</name></member>
       <member refid="classendstone_1_1Cancellable_1a268b73cc5bda0fa5923336d031814faa" prot="public" virt="virtual"><scope>endstone::PlayerPickupItemEvent</scope><name>isCancelled</name></member>
-      <member refid="classendstone_1_1PlayerPickupItemEvent_1ad4b4af1a9ca78f0f02b27dabfc88eafd" prot="private" virt="non-virtual"><scope>endstone::PlayerPickupItemEvent</scope><name>item_</name></member>
+      <member refid="classendstone_1_1PlayerPickupItemEvent_1a4f3fc142ea17ae48dbf8e336d7a4b875" prot="private" virt="non-virtual"><scope>endstone::PlayerPickupItemEvent</scope><name>item_</name></member>
       <member refid="classendstone_1_1Event_1a44a4ff424a8b690c01a2afe10ae68d8f" prot="public" virt="non-virtual"><scope>endstone::PlayerPickupItemEvent</scope><name>operator=</name></member>
       <member refid="classendstone_1_1Event_1a1d7fc5400782d20be99a3636aa7f53b9" prot="public" virt="non-virtual"><scope>endstone::PlayerPickupItemEvent</scope><name>operator=</name></member>
-      <member refid="classendstone_1_1PlayerEvent_1a263609667f42005d6cfe9f3a128477bd" prot="protected" virt="non-virtual"><scope>endstone::PlayerPickupItemEvent</scope><name>player_</name></member>
-      <member refid="classendstone_1_1PlayerEvent_1a244b2be43274af72138b157f63455419" prot="public" virt="non-virtual"><scope>endstone::PlayerPickupItemEvent</scope><name>PlayerEvent</name></member>
-      <member refid="classendstone_1_1PlayerPickupItemEvent_1a2ffe5a51d8b0c22799ba4db466fc6f91" prot="public" virt="non-virtual"><scope>endstone::PlayerPickupItemEvent</scope><name>PlayerPickupItemEvent</name></member>
+      <member refid="classendstone_1_1PlayerEvent_1ae0f8240e8c7c3a66281295c43b1d522a" prot="protected" virt="non-virtual"><scope>endstone::PlayerPickupItemEvent</scope><name>player_</name></member>
+      <member refid="classendstone_1_1PlayerEvent_1afee42449de6752241c5472a38f7d94a9" prot="public" virt="non-virtual"><scope>endstone::PlayerPickupItemEvent</scope><name>PlayerEvent</name></member>
+      <member refid="classendstone_1_1PlayerPickupItemEvent_1abf1730c3e06613a5b3410dbde7837537" prot="public" virt="non-virtual"><scope>endstone::PlayerPickupItemEvent</scope><name>PlayerPickupItemEvent</name></member>
       <member refid="classendstone_1_1Cancellable_1aa12df44bcb66924d06a689d0dd07865e" prot="public" virt="virtual"><scope>endstone::PlayerPickupItemEvent</scope><name>setCancelled</name></member>
       <member refid="classendstone_1_1Event_1a6aeaa8096baba90f8ace94106e0e05f3" prot="public" virt="virtual"><scope>endstone::PlayerPickupItemEvent</scope><name>~Event</name></member>
       <member refid="classendstone_1_1ICancellable_1ab6d311fcaa18971f69a1b23f5a856301" prot="public" virt="virtual"><scope>endstone::PlayerPickupItemEvent</scope><name>~ICancellable</name></member>

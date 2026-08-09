@@ -52,9 +52,9 @@ _Represent a service manager that manages services and service providers._ [More
 
 | Type | Name |
 | ---: | :--- |
-| virtual std::shared\_ptr&lt; [**Service**](classendstone_1_1Service.md) &gt; | [**get**](#function-get) (std::string name) const = 0<br>_Queries for a provider._  |
-|  std::shared\_ptr&lt; [**T**](classendstone_1_1Identifier.md) &gt; | [**load**](#function-load) (std::string name) const<br>_Queries for a provider and casts it to the requested service type._  |
-| virtual [**void**](classendstone_1_1Identifier.md) | [**registerService**](#function-registerservice) (std::string name, std::shared\_ptr&lt; [**Service**](classendstone_1_1Service.md) &gt; provider, [**const**](classendstone_1_1Identifier.md) [**Plugin**](classendstone_1_1Plugin.md) & plugin, [**ServicePriority**](namespaceendstone.md#enum-servicepriority) priority) = 0<br>_Register a provider of a service._  |
+| virtual [**Nullable**](classendstone_1_1Nullable.md)&lt; [**Service**](classendstone_1_1Service.md) &gt; | [**get**](#function-get) (std::string name) const = 0<br>_Queries for a provider._  |
+|  [**Nullable**](classendstone_1_1Nullable.md)&lt; [**T**](classendstone_1_1Identifier.md) &gt; | [**load**](#function-load) (std::string name) const<br>_Queries for a provider and casts it to the requested service type._  |
+| virtual [**void**](classendstone_1_1Identifier.md) | [**registerService**](#function-registerservice) (std::string name, [**NotNull**](classendstone_1_1NotNull.md)&lt; [**Service**](classendstone_1_1Service.md) &gt; provider, [**const**](classendstone_1_1Identifier.md) [**Plugin**](classendstone_1_1Plugin.md) & plugin, [**ServicePriority**](namespaceendstone.md#enum-servicepriority) priority) = 0<br>_Register a provider of a service._  |
 | virtual [**void**](classendstone_1_1Identifier.md) | [**unregister**](#function-unregister-12) (std::string name, [**const**](classendstone_1_1Identifier.md) [**Service**](classendstone_1_1Service.md) & provider) = 0<br>_Unregister a particular provider for a particular service._  |
 | virtual [**void**](classendstone_1_1Identifier.md) | [**unregister**](#function-unregister-22) ([**const**](classendstone_1_1Identifier.md) [**Service**](classendstone_1_1Service.md) & provider) = 0<br>_Unregister a particular provider._  |
 | virtual [**void**](classendstone_1_1Identifier.md) | [**unregisterAll**](#function-unregisterall) ([**const**](classendstone_1_1Identifier.md) [**Plugin**](classendstone_1_1Plugin.md) & plugin) = 0<br>_Unregister all the services registered by a particular plugin._  |
@@ -103,14 +103,14 @@ Services are an interface specifying a list of methods that a provider must impl
 
 _Queries for a provider._ 
 ```C++
-virtual std::shared_ptr< Service > endstone::ServiceManager::get (
+virtual Nullable < Service > endstone::ServiceManager::get (
     std::string name
 ) const = 0
 ```
 
 
 
-This may return an empty shared\_ptr if no provider has been registered for the service. The highest priority provider is returned.
+This may return null if no provider has been registered for the service. The highest priority provider is returned.
 
 
 
@@ -124,7 +124,7 @@ This may return an empty shared\_ptr if no provider has been registered for the 
 
 **Returns:**
 
-The highest priority provider, or an empty shared\_ptr if none is registered. 
+The highest priority provider, or null if none is registered. 
 
 
 
@@ -141,7 +141,7 @@ The highest priority provider, or an empty shared\_ptr if none is registered.
 _Queries for a provider and casts it to the requested service type._ 
 ```C++
 template<typename  T>
-inline std::shared_ptr< T > endstone::ServiceManager::load (
+inline Nullable < T > endstone::ServiceManager::load (
     std::string name
 ) const
 ```
@@ -169,7 +169,7 @@ The highest priority provider is returned.
 
 **Returns:**
 
-The highest priority provider cast to T, or an empty shared\_ptr if none is registered. 
+The highest priority provider cast to T, or null if none is registered. 
 
 
 
@@ -187,7 +187,7 @@ _Register a provider of a service._
 ```C++
 virtual void endstone::ServiceManager::registerService (
     std::string name,
-    std::shared_ptr< Service > provider,
+    NotNull < Service > provider,
     const  Plugin & plugin,
     ServicePriority priority
 ) = 0

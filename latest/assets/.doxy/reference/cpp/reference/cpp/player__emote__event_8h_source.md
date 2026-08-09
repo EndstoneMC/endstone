@@ -35,7 +35,7 @@ namespace endstone {
 class PlayerEmoteEvent : public Cancellable<PlayerEvent> {
 public:
     ENDSTONE_EVENT(PlayerEmoteEvent);
-    explicit PlayerEmoteEvent(Player &player, std::string emote_id, bool muted)
+    explicit PlayerEmoteEvent(const NotNull<Player> &player, std::string emote_id, bool muted)
         : Cancellable(player), emote_id_(std::move(emote_id)), muted_(muted)
     {
     }

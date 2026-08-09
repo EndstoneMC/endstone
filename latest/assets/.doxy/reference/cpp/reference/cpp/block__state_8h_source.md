@@ -49,7 +49,7 @@ public:
 
     virtual void setData(const BlockData &data) = 0;
 
-    [[nodiscard]] virtual Dimension &getDimension() const = 0;
+    [[nodiscard]] virtual NotNull<Dimension> getDimension() const = 0;
 
     [[nodiscard]] virtual int getX() const = 0;
 

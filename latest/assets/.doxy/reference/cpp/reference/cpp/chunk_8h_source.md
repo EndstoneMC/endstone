@@ -40,7 +40,7 @@ public:
 
     [[nodiscard]] virtual Level &getLevel() const = 0;
 
-    [[nodiscard]] virtual Dimension &getDimension() const = 0;
+    [[nodiscard]] virtual NotNull<Dimension> getDimension() const = 0;
 };
 
 }  // namespace endstone

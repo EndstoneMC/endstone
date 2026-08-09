@@ -94,7 +94,7 @@ Inherits the following classes: [endstone::Cancellable](classendstone_1_1Cancell
 | Type | Name |
 | ---: | :--- |
 |   | [**ENDSTONE\_EVENT**](#function-endstone_event) ([**PlayerCommandEvent**](classendstone_1_1PlayerCommandEvent.md)) <br> |
-|   | [**PlayerCommandEvent**](#function-playercommandevent) ([**Player**](classendstone_1_1Player.md) & player, std::string command) <br> |
+|   | [**PlayerCommandEvent**](#function-playercommandevent) ([**const**](classendstone_1_1Identifier.md) [**NotNull**](classendstone_1_1NotNull.md)&lt; [**Player**](classendstone_1_1Player.md) &gt; & player, std::string command) <br> |
 |  std::string | [**getCommand**](#function-getcommand) () const<br>_Gets the command that the player is attempting to send._  |
 |  [**void**](classendstone_1_1Identifier.md) | [**setCommand**](#function-setcommand) (std::string command) <br>_Sets the command that the player will send._  |
 |   | [**~PlayerCommandEvent**](#function-playercommandevent) () override<br> |
@@ -225,7 +225,7 @@ endstone::PlayerCommandEvent::ENDSTONE_EVENT (
 
 ```C++
 inline explicit endstone::PlayerCommandEvent::PlayerCommandEvent (
-    Player & player,
+    const  NotNull < Player > & player,
     std::string command
 ) 
 ```

@@ -35,7 +35,7 @@ namespace endstone {
 class ActorTeleportEvent : public Cancellable<ActorEvent<Actor>> {
 public:
     ENDSTONE_EVENT(ActorTeleportEvent);
-    explicit ActorTeleportEvent(Actor &actor, Location from, Location to)
+    explicit ActorTeleportEvent(const NotNull<Actor> &actor, Location from, Location to)
         : Cancellable(actor), from_(std::move(from)), to_(std::move(to))
     {
     }

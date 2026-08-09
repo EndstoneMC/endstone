@@ -9,9 +9,9 @@
       </param>
     </templateparamlist>
     <sectiondef kind="public-type">
-      <memberdef kind="typedef" id="classendstone_1_1Form_1a2aa24725e41a18e53dc651e46e279e28" prot="public" static="no">
-        <type>std::function&lt; <ref refid="classendstone_1_1Identifier" kindref="compound">void</ref>(<ref refid="classendstone_1_1Player" kindref="compound">Player</ref> *)&gt;</type>
-        <definition>using endstone::Form&lt; T &gt;::OnCloseCallback =  std::function&lt;void(Player *)&gt;</definition>
+      <memberdef kind="typedef" id="classendstone_1_1Form_1a325e7cdc52fbbf536cc9fe8a32ba06c8" prot="public" static="no">
+        <type>std::function&lt; <ref refid="classendstone_1_1Identifier" kindref="compound">void</ref>(<ref refid="classendstone_1_1Identifier" kindref="compound">const</ref> <ref refid="classendstone_1_1NotNull" kindref="compound">NotNull</ref>&lt; <ref refid="classendstone_1_1Player" kindref="compound">Player</ref> &gt; &amp;)&gt;</type>
+        <definition>using endstone::Form&lt; T &gt;::OnCloseCallback =  std::function&lt;void(const NotNull&lt;Player&gt; &amp;)&gt;</definition>
         <argsstring></argsstring>
         <name>OnCloseCallback</name>
         <qualifiedname>endstone::Form::OnCloseCallback</qualifiedname>
@@ -21,7 +21,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/form/form.h" line="36" column="5" bodyfile="include/endstone/form/form.h" bodystart="36" bodyend="-1"/>
+        <location file="include/endstone/form/form.h" line="37" column="5" bodyfile="include/endstone/form/form.h" bodystart="37" bodyend="-1"/>
       </memberdef>
     </sectiondef>
     <sectiondef kind="protected-attrib">
@@ -37,7 +37,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/form/form.h" line="78" column="13" bodyfile="include/endstone/form/form.h" bodystart="78" bodyend="-1"/>
+        <location file="include/endstone/form/form.h" line="79" column="13" bodyfile="include/endstone/form/form.h" bodystart="79" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="classendstone_1_1Form_1a2e7d8ad1b41e12cf0d4f1e8522bf3e46" prot="protected" static="no" mutable="no">
         <type>OnCloseCallback</type>
@@ -51,7 +51,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/form/form.h" line="79" column="21" bodyfile="include/endstone/form/form.h" bodystart="79" bodyend="-1"/>
+        <location file="include/endstone/form/form.h" line="80" column="21" bodyfile="include/endstone/form/form.h" bodystart="80" bodyend="-1"/>
       </memberdef>
     </sectiondef>
     <sectiondef kind="public-func">
@@ -67,7 +67,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/form/form.h" line="37" column="14"/>
+        <location file="include/endstone/form/form.h" line="38" column="14"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1Form_1a08c5096cfa0a1fb79c160d3bd0890679" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
         <type><ref refid="namespaceendstone_1ab1be61859bf80a227cf5d0b12a26ef78" kindref="member">Message</ref></type>
@@ -85,7 +85,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/form/form.h" line="44" column="14" bodyfile="include/endstone/form/form.h" bodystart="44" bodyend="44"/>
+        <location file="include/endstone/form/form.h" line="45" column="14" bodyfile="include/endstone/form/form.h" bodystart="45" bodyend="45"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1Form_1a85daf37f20cdd2ce9e5eff9a2179a7e0" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type><ref refid="classendstone_1_1Identifier" kindref="compound">T</ref> &amp;</type>
@@ -116,7 +116,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/form/form.h" line="52" column="7" bodyfile="include/endstone/form/form.h" bodystart="52" bodyend="56"/>
+        <location file="include/endstone/form/form.h" line="53" column="7" bodyfile="include/endstone/form/form.h" bodystart="53" bodyend="57"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1Form_1aff78b36d4798b8185ea1ff93f6260f63" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type><ref refid="classendstone_1_1Identifier" kindref="compound">T</ref> &amp;</type>
@@ -147,7 +147,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/form/form.h" line="64" column="7" bodyfile="include/endstone/form/form.h" bodystart="64" bodyend="68"/>
+        <location file="include/endstone/form/form.h" line="65" column="7" bodyfile="include/endstone/form/form.h" bodystart="65" bodyend="69"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1Form_1ad0a5721b99d2d9bd30eec414d9c218b6" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
         <type>OnCloseCallback</type>
@@ -165,7 +165,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/form/form.h" line="75" column="22" bodyfile="include/endstone/form/form.h" bodystart="75" bodyend="75"/>
+        <location file="include/endstone/form/form.h" line="76" column="22" bodyfile="include/endstone/form/form.h" bodystart="76" bodyend="76"/>
       </memberdef>
     </sectiondef>
     <briefdescription>
@@ -174,13 +174,13 @@
     <detaileddescription>
 <para>The <ref refid="classendstone_1_1Form" kindref="compound">Form</ref> class provides a base abstraction for different types of forms. It supports three types of forms: Action, Message, and Modal. Each form has a title, which can be a string or a translatable object. </para>
     </detaileddescription>
-    <location file="include/endstone/form/form.h" line="34" column="1" bodyfile="include/endstone/form/form.h" bodystart="34" bodyend="80"/>
+    <location file="include/endstone/form/form.h" line="35" column="1" bodyfile="include/endstone/form/form.h" bodystart="35" bodyend="81"/>
     <listofallmembers>
       <member refid="classendstone_1_1Form_1a77028f5b2f946a921e9e118da00dbe3a" prot="public" virt="non-virtual"><scope>endstone::Form</scope><name>Form</name></member>
       <member refid="classendstone_1_1Form_1ad0a5721b99d2d9bd30eec414d9c218b6" prot="public" virt="non-virtual"><scope>endstone::Form</scope><name>getOnClose</name></member>
       <member refid="classendstone_1_1Form_1a08c5096cfa0a1fb79c160d3bd0890679" prot="public" virt="non-virtual"><scope>endstone::Form</scope><name>getTitle</name></member>
       <member refid="classendstone_1_1Form_1a2e7d8ad1b41e12cf0d4f1e8522bf3e46" prot="protected" virt="non-virtual"><scope>endstone::Form</scope><name>on_close_</name></member>
-      <member refid="classendstone_1_1Form_1a2aa24725e41a18e53dc651e46e279e28" prot="public" virt="non-virtual"><scope>endstone::Form</scope><name>OnCloseCallback</name></member>
+      <member refid="classendstone_1_1Form_1a325e7cdc52fbbf536cc9fe8a32ba06c8" prot="public" virt="non-virtual"><scope>endstone::Form</scope><name>OnCloseCallback</name></member>
       <member refid="classendstone_1_1Form_1aff78b36d4798b8185ea1ff93f6260f63" prot="public" virt="non-virtual"><scope>endstone::Form</scope><name>setOnClose</name></member>
       <member refid="classendstone_1_1Form_1a85daf37f20cdd2ce9e5eff9a2179a7e0" prot="public" virt="non-virtual"><scope>endstone::Form</scope><name>setTitle</name></member>
       <member refid="classendstone_1_1Form_1af2a1436a2dd61dc1d76898e5078ef9ff" prot="protected" virt="non-virtual"><scope>endstone::Form</scope><name>title_</name></member>

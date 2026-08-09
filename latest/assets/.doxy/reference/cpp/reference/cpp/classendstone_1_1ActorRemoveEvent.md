@@ -93,7 +93,7 @@ Inherits the following classes: [endstone::ActorEvent](classendstone_1_1ActorEve
 
 | Type | Name |
 | ---: | :--- |
-|   | [**ActorEvent**](#function-actorevent) ([**ActorType**](classendstone_1_1ActorType.md) & actor) <br> |
+|   | [**ActorEvent**](#function-actorevent) ([**const**](classendstone_1_1Identifier.md) [**NotNull**](classendstone_1_1NotNull.md)&lt; [**ActorType**](classendstone_1_1ActorType.md) &gt; & actor) <br> |
 |   | [**ENDSTONE\_EVENT**](#function-endstone_event) ([**ActorRemoveEvent**](classendstone_1_1ActorRemoveEvent.md)) <br> |
 
 
@@ -103,8 +103,8 @@ See [endstone::ActorEvent](classendstone_1_1ActorEvent.md)
 
 | Type | Name |
 | ---: | :--- |
-|   | [**ActorEvent**](classendstone_1_1ActorEvent.md#function-actorevent) ([**ActorType**](classendstone_1_1ActorType.md) & actor) <br> |
-|  [**ActorType**](classendstone_1_1ActorType.md) & | [**getActor**](classendstone_1_1ActorEvent.md#function-getactor) () const<br>_Returns the_ [_**Actor**_](classendstone_1_1Actor.md) _involved in this event._ |
+|   | [**ActorEvent**](classendstone_1_1ActorEvent.md#function-actorevent) ([**const**](classendstone_1_1Identifier.md) [**NotNull**](classendstone_1_1NotNull.md)&lt; [**ActorType**](classendstone_1_1ActorType.md) &gt; & actor) <br> |
+|  [**const**](classendstone_1_1Identifier.md) [**NotNull**](classendstone_1_1NotNull.md)&lt; [**ActorType**](classendstone_1_1ActorType.md) &gt; & | [**getActor**](classendstone_1_1ActorEvent.md#function-getactor) () const<br>_Returns the_ [_**Actor**_](classendstone_1_1Actor.md) _involved in this event._ |
 |  [**const**](classendstone_1_1Identifier.md) [**endstone::ActorType**](classendstone_1_1ActorType.md) & | [**getActorType**](classendstone_1_1ActorEvent.md#function-getactortype) () const<br>_Returns the type of the_ [_**Actor**_](classendstone_1_1Actor.md) _involved in this event._ |
 |   | [**~ActorEvent**](classendstone_1_1ActorEvent.md#function-actorevent) () override<br> |
 
@@ -219,7 +219,7 @@ This event should only be used for monitoring. Modifying the actor during or aft
 
 ```C++
 inline explicit endstone::ActorRemoveEvent::ActorEvent (
-    ActorType & actor
+    const  NotNull < ActorType > & actor
 ) 
 ```
 

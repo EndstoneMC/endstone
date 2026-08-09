@@ -35,7 +35,7 @@ namespace endstone {
 class PlayerCommandEvent : public Cancellable<PlayerEvent> {
 public:
     ENDSTONE_EVENT(PlayerCommandEvent);
-    explicit PlayerCommandEvent(Player &player, std::string command) : Cancellable(player), command_(std::move(command))
+    explicit PlayerCommandEvent(const NotNull<Player> &player, std::string command) : Cancellable(player), command_(std::move(command))
     {
     }
     ~PlayerCommandEvent() override = default;

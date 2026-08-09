@@ -32,7 +32,7 @@ class PlayerToggleSprintEvent final : public PlayerEvent {
 public:
     ENDSTONE_EVENT(PlayerToggleSprintEvent)
 
-    explicit PlayerToggleSprintEvent(Player &player, bool sprinting) : PlayerEvent(player), sprinting_(sprinting) {}
+    explicit PlayerToggleSprintEvent(const NotNull<Player> &player, bool sprinting) : PlayerEvent(player), sprinting_(sprinting) {}
 
     [[nodiscard]] bool isSprinting() const { return sprinting_; }
 

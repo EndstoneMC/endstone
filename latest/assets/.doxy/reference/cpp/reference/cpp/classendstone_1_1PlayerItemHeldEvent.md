@@ -93,7 +93,7 @@ Inherits the following classes: [endstone::Cancellable](classendstone_1_1Cancell
 
 | Type | Name |
 | ---: | :--- |
-|   | [**PlayerItemHeldEvent**](#function-playeritemheldevent) ([**Player**](classendstone_1_1Player.md) & player, [**const**](classendstone_1_1Identifier.md) [**int**](classendstone_1_1Identifier.md) previous, [**const**](classendstone_1_1Identifier.md) [**int**](classendstone_1_1Identifier.md) current) <br> |
+|   | [**PlayerItemHeldEvent**](#function-playeritemheldevent) ([**const**](classendstone_1_1Identifier.md) [**NotNull**](classendstone_1_1NotNull.md)&lt; [**Player**](classendstone_1_1Player.md) &gt; & player, [**const**](classendstone_1_1Identifier.md) [**int**](classendstone_1_1Identifier.md) previous, [**const**](classendstone_1_1Identifier.md) [**int**](classendstone_1_1Identifier.md) current) <br> |
 |  [**int**](classendstone_1_1Identifier.md) | [**getNewSlot**](#function-getnewslot) () const<br>_Gets the new held slot index._  |
 |  [**int**](classendstone_1_1Identifier.md) | [**getPreviousSlot**](#function-getpreviousslot) () const<br>_Gets the previous held slot index._  |
 
@@ -208,7 +208,7 @@ See [endstone::ICancellable](classendstone_1_1ICancellable.md)
 
 ```C++
 inline explicit endstone::PlayerItemHeldEvent::PlayerItemHeldEvent (
-    Player & player,
+    const  NotNull < Player > & player,
     const  int previous,
     const  int current
 ) 

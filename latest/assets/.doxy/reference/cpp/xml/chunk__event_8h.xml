@@ -202,6 +202,8 @@
         </childnode>
         <childnode refid="49" relation="include">
         </childnode>
+        <childnode refid="32" relation="include">
+        </childnode>
       </node>
       <node id="34">
         <label>endstone/check.h</label>
@@ -492,6 +494,8 @@
         </childnode>
         <childnode refid="63" relation="include">
         </childnode>
+        <childnode refid="32" relation="include">
+        </childnode>
       </node>
       <node id="51">
         <label>endstone/message.h</label>
@@ -672,8 +676,6 @@
       <node id="69">
         <label>endstone/plugin/service.h</label>
         <link refid="service_8h_source"/>
-        <childnode refid="9" relation="include">
-        </childnode>
       </node>
       <node id="68">
         <label>endstone/plugin/service_manager.h</label>
@@ -687,6 +689,8 @@
         <childnode refid="69" relation="include">
         </childnode>
         <childnode refid="70" relation="include">
+        </childnode>
+        <childnode refid="32" relation="include">
         </childnode>
       </node>
       <node id="70">
@@ -767,6 +771,8 @@
         <childnode refid="42" relation="include">
         </childnode>
         <childnode refid="10" relation="include">
+        </childnode>
+        <childnode refid="32" relation="include">
         </childnode>
       </node>
       <node id="71">
@@ -1071,7 +1077,7 @@
 <codeline lineno="21"><highlight class="normal"></highlight></codeline>
 <codeline lineno="25" refid="classendstone_1_1ChunkEvent" refkind="compound"><highlight class="normal"></highlight><highlight class="keyword">class<sp/></highlight><highlight class="normal"><ref refid="classendstone_1_1ChunkEvent" kindref="compound">ChunkEvent</ref><sp/>:<sp/></highlight><highlight class="keyword">public</highlight><highlight class="normal"><sp/><ref refid="classendstone_1_1DimensionEvent" kindref="compound">DimensionEvent</ref><sp/>{</highlight></codeline>
 <codeline lineno="26"><highlight class="normal"></highlight><highlight class="keyword">public</highlight><highlight class="normal">:</highlight></codeline>
-<codeline lineno="27"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">explicit</highlight><highlight class="normal"><sp/><ref refid="classendstone_1_1ChunkEvent" kindref="compound">ChunkEvent</ref>(<ref refid="classendstone_1_1Chunk" kindref="compound">Chunk</ref><sp/>&amp;<ref refid="classendstone_1_1Identifier" kindref="compound">chunk</ref>)<sp/>:<sp/><ref refid="classendstone_1_1DimensionEvent" kindref="compound">DimensionEvent</ref>(<ref refid="classendstone_1_1Identifier" kindref="compound">chunk</ref>.getDimension()),<sp/>chunk_(<ref refid="classendstone_1_1Identifier" kindref="compound">chunk</ref>)<sp/>{};</highlight></codeline>
+<codeline lineno="27"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">explicit</highlight><highlight class="normal"><sp/><ref refid="classendstone_1_1ChunkEvent" kindref="compound">ChunkEvent</ref>(<ref refid="classendstone_1_1Chunk" kindref="compound">Chunk</ref><sp/>&amp;<ref refid="classendstone_1_1Identifier" kindref="compound">chunk</ref>)<sp/>:<sp/><ref refid="classendstone_1_1DimensionEvent" kindref="compound">DimensionEvent</ref>(*<ref refid="classendstone_1_1Identifier" kindref="compound">chunk</ref>.getDimension()),<sp/>chunk_(<ref refid="classendstone_1_1Identifier" kindref="compound">chunk</ref>)<sp/>{};</highlight></codeline>
 <codeline lineno="28"><highlight class="normal"></highlight></codeline>
 <codeline lineno="34" refid="classendstone_1_1ChunkEvent_1aa78f307af69ce820f4a75b74a4485f0c" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>[[<ref refid="classendstone_1_1Identifier" kindref="compound">nodiscard</ref>]]<sp/><ref refid="classendstone_1_1Chunk" kindref="compound">Chunk</ref><sp/>&amp;<ref refid="classendstone_1_1ChunkEvent_1aa78f307af69ce820f4a75b74a4485f0c" kindref="member">getChunk</ref>()</highlight><highlight class="keyword"><sp/>const<sp/></highlight><highlight class="normal">{<sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>chunk_;<sp/>}</highlight></codeline>
 <codeline lineno="35"><highlight class="normal"></highlight></codeline>

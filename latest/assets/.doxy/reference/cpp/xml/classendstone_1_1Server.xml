@@ -363,9 +363,9 @@
         </inbodydescription>
         <location file="include/endstone/server.h" line="161" column="20"/>
       </memberdef>
-      <memberdef kind="function" id="classendstone_1_1Server_1a6d63beaa8eac5c79ccb387447e977214" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
-        <type>std::vector&lt; <ref refid="classendstone_1_1Player" kindref="compound">Player</ref> * &gt;</type>
-        <definition>virtual std::vector&lt; Player * &gt; endstone::Server::getOnlinePlayers</definition>
+      <memberdef kind="function" id="classendstone_1_1Server_1ad89ab22253893ab047263ce351313f34" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
+        <type>std::vector&lt; <ref refid="classendstone_1_1NotNull" kindref="compound">NotNull</ref>&lt; <ref refid="classendstone_1_1Player" kindref="compound">Player</ref> &gt; &gt;</type>
+        <definition>virtual std::vector&lt; NotNull&lt; Player &gt; &gt; endstone::Server::getOnlinePlayers</definition>
         <argsstring>() const =0</argsstring>
         <name>getOnlinePlayers</name>
         <qualifiedname>endstone::Server::getOnlinePlayers</qualifiedname>
@@ -1328,7 +1328,7 @@
       <member refid="classendstone_1_1Server_1a849bb8c24789cc5130abd4d4bbb5dddb" prot="public" virt="pure-virtual"><scope>endstone::Server</scope><name>getMinecraftVersion</name></member>
       <member refid="classendstone_1_1Server_1a2478b382f6098c157032048b0f6f64ad" prot="public" virt="pure-virtual"><scope>endstone::Server</scope><name>getName</name></member>
       <member refid="classendstone_1_1Server_1ae3fa91a411498dc3b3bdecfeaffac19e" prot="public" virt="pure-virtual"><scope>endstone::Server</scope><name>getOnlineMode</name></member>
-      <member refid="classendstone_1_1Server_1a6d63beaa8eac5c79ccb387447e977214" prot="public" virt="pure-virtual"><scope>endstone::Server</scope><name>getOnlinePlayers</name></member>
+      <member refid="classendstone_1_1Server_1ad89ab22253893ab047263ce351313f34" prot="public" virt="pure-virtual"><scope>endstone::Server</scope><name>getOnlinePlayers</name></member>
       <member refid="classendstone_1_1Server_1a1811aab4be6529d7fabdf912d8b14f6d" prot="public" virt="pure-virtual"><scope>endstone::Server</scope><name>getPlayer</name></member>
       <member refid="classendstone_1_1Server_1aa38f7706ba5b65103c7bc8bc71149485" prot="public" virt="pure-virtual"><scope>endstone::Server</scope><name>getPlayer</name></member>
       <member refid="classendstone_1_1Server_1ac3484a4420ca5eaa86056e0dfbce54f1" prot="public" virt="pure-virtual"><scope>endstone::Server</scope><name>getPluginCommand</name></member>

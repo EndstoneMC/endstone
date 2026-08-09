@@ -41,17 +41,17 @@ public:
 
     [[nodiscard]] virtual std::string getName() const = 0;
 
-    [[nodiscard]] virtual std::vector<Actor *> getActors() const = 0;
+    [[nodiscard]] virtual std::vector<NotNull<Actor>> getActors() const = 0;
 
     [[nodiscard]] virtual int getTime() const = 0;
 
     virtual void setTime(int time) = 0;
 
-    [[nodiscard]] virtual std::vector<Dimension *> getDimensions() const = 0;
+    [[nodiscard]] virtual std::vector<NotNull<Dimension>> getDimensions() const = 0;
 
-    [[nodiscard]] virtual Dimension *getDimension(DimensionId id) const = 0;
+    [[nodiscard]] virtual Nullable<Dimension> getDimension(DimensionId id) const = 0;
 
-    [[nodiscard]] virtual Dimension *createDimension(const DimensionCreator &creator) = 0;
+    [[nodiscard]] virtual Nullable<Dimension> createDimension(const DimensionCreator &creator) = 0;
 
     [[nodiscard]] virtual std::int64_t getSeed() const = 0;
 };

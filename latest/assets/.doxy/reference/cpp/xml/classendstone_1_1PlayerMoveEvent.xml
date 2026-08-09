@@ -54,14 +54,14 @@
         </inbodydescription>
         <location file="include/endstone/event/player/player_move_event.h" line="31" column="5"/>
       </memberdef>
-      <memberdef kind="function" id="classendstone_1_1PlayerMoveEvent_1a8a1cf3638b2074e1d7845129adbbfed5" prot="public" static="no" const="no" explicit="yes" inline="yes" virt="non-virtual">
+      <memberdef kind="function" id="classendstone_1_1PlayerMoveEvent_1a1fd1b36dcd6aee12938bc6946f3ffb0d" prot="public" static="no" const="no" explicit="yes" inline="yes" virt="non-virtual">
         <type></type>
         <definition>endstone::PlayerMoveEvent::PlayerMoveEvent</definition>
-        <argsstring>(Player &amp;player, Location from, Location to)</argsstring>
+        <argsstring>(const NotNull&lt; Player &gt; &amp;player, Location from, Location to)</argsstring>
         <name>PlayerMoveEvent</name>
         <qualifiedname>endstone::PlayerMoveEvent::PlayerMoveEvent</qualifiedname>
         <param>
-          <type><ref refid="classendstone_1_1Player" kindref="compound">Player</ref> &amp;</type>
+          <type><ref refid="classendstone_1_1Identifier" kindref="compound">const</ref> <ref refid="classendstone_1_1NotNull" kindref="compound">NotNull</ref>&lt; <ref refid="classendstone_1_1Player" kindref="compound">Player</ref> &gt; &amp;</type>
           <declname>player</declname>
         </param>
         <param>
@@ -234,18 +234,22 @@
         <link refid="classendstone_1_1Cancellable"/>
         <childnode refid="3" relation="public-inheritance">
         </childnode>
-        <childnode refid="5" relation="public-inheritance">
+        <childnode refid="6" relation="public-inheritance">
         </childnode>
+      </node>
+      <node id="5">
+        <label>endstone::NotNull&lt; endstone::Player &gt;</label>
+        <link refid="classendstone_1_1NotNull"/>
       </node>
       <node id="4">
         <label>endstone::Event</label>
         <link refid="classendstone_1_1Event"/>
       </node>
-      <node id="5">
+      <node id="6">
         <label>endstone::ICancellable</label>
         <link refid="classendstone_1_1ICancellable"/>
       </node>
-      <node id="6">
+      <node id="7">
         <label>endstone::Location</label>
         <link refid="classendstone_1_1Location"/>
       </node>
@@ -254,13 +258,16 @@
         <link refid="classendstone_1_1PlayerEvent"/>
         <childnode refid="4" relation="public-inheritance">
         </childnode>
+        <childnode refid="5" relation="usage">
+          <edgelabel>player_</edgelabel>
+        </childnode>
       </node>
       <node id="1">
         <label>endstone::PlayerMoveEvent</label>
         <link refid="classendstone_1_1PlayerMoveEvent"/>
         <childnode refid="2" relation="public-inheritance">
         </childnode>
-        <childnode refid="6" relation="usage">
+        <childnode refid="7" relation="usage">
           <edgelabel>from_</edgelabel>
           <edgelabel>to_</edgelabel>
         </childnode>
@@ -276,15 +283,15 @@
       <member refid="classendstone_1_1PlayerMoveEvent_1ab13ad4f9c7456bf710fcb329233cf4c7" prot="public" virt="non-virtual"><scope>endstone::PlayerMoveEvent</scope><name>from_</name></member>
       <member refid="classendstone_1_1Event_1a826fe74f9c4195a36a364b9aeeb321bb" prot="public" virt="pure-virtual"><scope>endstone::PlayerMoveEvent</scope><name>getEventName</name></member>
       <member refid="classendstone_1_1PlayerMoveEvent_1a107f307825941d5cfb6b128ddfce7afa" prot="public" virt="non-virtual"><scope>endstone::PlayerMoveEvent</scope><name>getFrom</name></member>
-      <member refid="classendstone_1_1PlayerEvent_1a3ad904b05886ce30c7299500d9a57fdb" prot="public" virt="non-virtual"><scope>endstone::PlayerMoveEvent</scope><name>getPlayer</name></member>
+      <member refid="classendstone_1_1PlayerEvent_1abad8f8bca3e2be851c4b37075adf2cbc" prot="public" virt="non-virtual"><scope>endstone::PlayerMoveEvent</scope><name>getPlayer</name></member>
       <member refid="classendstone_1_1PlayerMoveEvent_1a4b864f9dd1062d0f2ab64af81b20513e" prot="public" virt="non-virtual"><scope>endstone::PlayerMoveEvent</scope><name>getTo</name></member>
       <member refid="classendstone_1_1Event_1ae89b54f63dc32b0c8797a59db69b6931" prot="public" virt="non-virtual"><scope>endstone::PlayerMoveEvent</scope><name>isAsynchronous</name></member>
       <member refid="classendstone_1_1Cancellable_1a268b73cc5bda0fa5923336d031814faa" prot="public" virt="virtual"><scope>endstone::PlayerMoveEvent</scope><name>isCancelled</name></member>
       <member refid="classendstone_1_1Event_1a44a4ff424a8b690c01a2afe10ae68d8f" prot="public" virt="non-virtual"><scope>endstone::PlayerMoveEvent</scope><name>operator=</name></member>
       <member refid="classendstone_1_1Event_1a1d7fc5400782d20be99a3636aa7f53b9" prot="public" virt="non-virtual"><scope>endstone::PlayerMoveEvent</scope><name>operator=</name></member>
-      <member refid="classendstone_1_1PlayerEvent_1a263609667f42005d6cfe9f3a128477bd" prot="protected" virt="non-virtual"><scope>endstone::PlayerMoveEvent</scope><name>player_</name></member>
-      <member refid="classendstone_1_1PlayerEvent_1a244b2be43274af72138b157f63455419" prot="public" virt="non-virtual"><scope>endstone::PlayerMoveEvent</scope><name>PlayerEvent</name></member>
-      <member refid="classendstone_1_1PlayerMoveEvent_1a8a1cf3638b2074e1d7845129adbbfed5" prot="public" virt="non-virtual"><scope>endstone::PlayerMoveEvent</scope><name>PlayerMoveEvent</name></member>
+      <member refid="classendstone_1_1PlayerEvent_1ae0f8240e8c7c3a66281295c43b1d522a" prot="protected" virt="non-virtual"><scope>endstone::PlayerMoveEvent</scope><name>player_</name></member>
+      <member refid="classendstone_1_1PlayerEvent_1afee42449de6752241c5472a38f7d94a9" prot="public" virt="non-virtual"><scope>endstone::PlayerMoveEvent</scope><name>PlayerEvent</name></member>
+      <member refid="classendstone_1_1PlayerMoveEvent_1a1fd1b36dcd6aee12938bc6946f3ffb0d" prot="public" virt="non-virtual"><scope>endstone::PlayerMoveEvent</scope><name>PlayerMoveEvent</name></member>
       <member refid="classendstone_1_1Cancellable_1aa12df44bcb66924d06a689d0dd07865e" prot="public" virt="virtual"><scope>endstone::PlayerMoveEvent</scope><name>setCancelled</name></member>
       <member refid="classendstone_1_1PlayerMoveEvent_1a58170572971794cd9e8fff214a2cd0cc" prot="public" virt="non-virtual"><scope>endstone::PlayerMoveEvent</scope><name>setFrom</name></member>
       <member refid="classendstone_1_1PlayerMoveEvent_1a98f462d71a7ea0f3f0fc42203fb91a2d" prot="public" virt="non-virtual"><scope>endstone::PlayerMoveEvent</scope><name>setTo</name></member>

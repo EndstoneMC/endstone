@@ -94,7 +94,7 @@ Inherits the following classes: [endstone::Cancellable](classendstone_1_1Cancell
 | Type | Name |
 | ---: | :--- |
 |   | [**ENDSTONE\_EVENT**](#function-endstone_event) ([**PlayerSkinChangeEvent**](classendstone_1_1PlayerSkinChangeEvent.md)) <br> |
-|   | [**PlayerSkinChangeEvent**](#function-playerskinchangeevent) ([**Player**](classendstone_1_1Player.md) & player, [**Skin**](classendstone_1_1Skin.md) new\_skin, std::optional&lt; [**Message**](namespaceendstone.md#typedef-message) &gt; message) <br> |
+|   | [**PlayerSkinChangeEvent**](#function-playerskinchangeevent) ([**const**](classendstone_1_1Identifier.md) [**NotNull**](classendstone_1_1NotNull.md)&lt; [**Player**](classendstone_1_1Player.md) &gt; & player, [**Skin**](classendstone_1_1Skin.md) new\_skin, std::optional&lt; [**Message**](namespaceendstone.md#typedef-message) &gt; message) <br> |
 |  [**Skin**](classendstone_1_1Skin.md) | [**getNewSkin**](#function-getnewskin) () const<br>_Gets the player's new skin._  |
 |  std::optional&lt; [**Message**](namespaceendstone.md#typedef-message) &gt; | [**getSkinChangeMessage**](#function-getskinchangemessage) () const<br>_Gets the message to send to all online players for this skin change._  |
 |  [**void**](classendstone_1_1Identifier.md) | [**setSkinChangeMessage**](#function-setskinchangemessage) (std::optional&lt; [**Message**](namespaceendstone.md#typedef-message) &gt; message) <br>_Sets the message to send to all online players for this skin change._  |
@@ -225,7 +225,7 @@ endstone::PlayerSkinChangeEvent::ENDSTONE_EVENT (
 
 ```C++
 inline explicit endstone::PlayerSkinChangeEvent::PlayerSkinChangeEvent (
-    Player & player,
+    const  NotNull < Player > & player,
     Skin new_skin,
     std::optional< Message > message
 ) 

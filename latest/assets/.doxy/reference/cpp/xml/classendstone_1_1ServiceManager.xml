@@ -16,12 +16,12 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/plugin/service_manager.h" line="36" column="13"/>
+        <location file="include/endstone/plugin/service_manager.h" line="37" column="13"/>
       </memberdef>
-      <memberdef kind="function" id="classendstone_1_1ServiceManager_1a8fbe97b8dcbc297e6386f0e6c1c6e3f6" prot="public" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
+      <memberdef kind="function" id="classendstone_1_1ServiceManager_1a1b48aa5ba8026c6f8a84b4b39b1b0eb7" prot="public" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
         <type><ref refid="classendstone_1_1Identifier" kindref="compound">void</ref></type>
         <definition>virtual void endstone::ServiceManager::registerService</definition>
-        <argsstring>(std::string name, std::shared_ptr&lt; Service &gt; provider, const Plugin &amp;plugin, ServicePriority priority)=0</argsstring>
+        <argsstring>(std::string name, NotNull&lt; Service &gt; provider, const Plugin &amp;plugin, ServicePriority priority)=0</argsstring>
         <name>registerService</name>
         <qualifiedname>endstone::ServiceManager::registerService</qualifiedname>
         <param>
@@ -29,7 +29,7 @@
           <declname>name</declname>
         </param>
         <param>
-          <type>std::shared_ptr&lt; <ref refid="classendstone_1_1Service" kindref="compound">Service</ref> &gt;</type>
+          <type><ref refid="classendstone_1_1NotNull" kindref="compound">NotNull</ref>&lt; <ref refid="classendstone_1_1Service" kindref="compound">Service</ref> &gt;</type>
           <declname>provider</declname>
         </param>
         <param>
@@ -81,7 +81,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/plugin/service_manager.h" line="46" column="18"/>
+        <location file="include/endstone/plugin/service_manager.h" line="47" column="18"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1ServiceManager_1af62f98b2abdd3fa261d372dd10b5d831" prot="public" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
         <type><ref refid="classendstone_1_1Identifier" kindref="compound">void</ref></type>
@@ -110,7 +110,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/plugin/service_manager.h" line="54" column="18"/>
+        <location file="include/endstone/plugin/service_manager.h" line="55" column="18"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1ServiceManager_1ad6e9b9f07037a0fa971697bf9de486ec" prot="public" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
         <type><ref refid="classendstone_1_1Identifier" kindref="compound">void</ref></type>
@@ -151,7 +151,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/plugin/service_manager.h" line="62" column="18"/>
+        <location file="include/endstone/plugin/service_manager.h" line="63" column="18"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1ServiceManager_1aa8f39bf20330d57e8d3d242645ef5109" prot="public" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
         <type><ref refid="classendstone_1_1Identifier" kindref="compound">void</ref></type>
@@ -180,11 +180,11 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/plugin/service_manager.h" line="69" column="18"/>
+        <location file="include/endstone/plugin/service_manager.h" line="70" column="18"/>
       </memberdef>
-      <memberdef kind="function" id="classendstone_1_1ServiceManager_1a329a71e32b64af8ed4df189f3976739f" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
-        <type>std::shared_ptr&lt; <ref refid="classendstone_1_1Service" kindref="compound">Service</ref> &gt;</type>
-        <definition>virtual std::shared_ptr&lt; Service &gt; endstone::ServiceManager::get</definition>
+      <memberdef kind="function" id="classendstone_1_1ServiceManager_1a0fdf2bb43656c95b59cda365f188adb8" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
+        <type><ref refid="classendstone_1_1Nullable" kindref="compound">Nullable</ref>&lt; <ref refid="classendstone_1_1Service" kindref="compound">Service</ref> &gt;</type>
+        <definition>virtual Nullable&lt; Service &gt; endstone::ServiceManager::get</definition>
         <argsstring>(std::string name) const =0</argsstring>
         <name>get</name>
         <qualifiedname>endstone::ServiceManager::get</qualifiedname>
@@ -196,7 +196,7 @@
 <para>Queries for a provider. </para>
         </briefdescription>
         <detaileddescription>
-<para>This may return an empty shared_ptr if no provider has been registered for the service. The highest priority provider is returned.</para>
+<para>This may return null if no provider has been registered for the service. The highest priority provider is returned.</para>
 <para><parameterlist kind="param"><parameteritem>
 <parameternamelist>
 <parametername>name</parametername>
@@ -206,22 +206,22 @@
 </parameterdescription>
 </parameteritem>
 </parameterlist>
-<simplesect kind="return"><para>The highest priority provider, or an empty shared_ptr if none is registered. </para>
+<simplesect kind="return"><para>The highest priority provider, or null if none is registered. </para>
 </simplesect>
 </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/plugin/service_manager.h" line="78" column="29"/>
+        <location file="include/endstone/plugin/service_manager.h" line="79" column="22"/>
       </memberdef>
-      <memberdef kind="function" id="classendstone_1_1ServiceManager_1ac2fcb33a1d0fc89902100b7244fa55b0" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+      <memberdef kind="function" id="classendstone_1_1ServiceManager_1a6bbf7c90809c4b037f810cca50c4d17c" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
         <templateparamlist>
           <param>
             <type><ref refid="classendstone_1_1Identifier" kindref="compound">typename</ref> <ref refid="classendstone_1_1Identifier" kindref="compound">T</ref></type>
           </param>
         </templateparamlist>
-        <type>std::shared_ptr&lt; <ref refid="classendstone_1_1Identifier" kindref="compound">T</ref> &gt;</type>
-        <definition>std::shared_ptr&lt; T &gt; endstone::ServiceManager::load</definition>
+        <type><ref refid="classendstone_1_1Nullable" kindref="compound">Nullable</ref>&lt; <ref refid="classendstone_1_1Identifier" kindref="compound">T</ref> &gt;</type>
+        <definition>Nullable&lt; T &gt; endstone::ServiceManager::load</definition>
         <argsstring>(std::string name) const</argsstring>
         <name>load</name>
         <qualifiedname>endstone::ServiceManager::load</qualifiedname>
@@ -252,13 +252,13 @@
 </parameterdescription>
 </parameteritem>
 </parameterlist>
-<simplesect kind="return"><para>The highest priority provider cast to T, or an empty shared_ptr if none is registered. </para>
+<simplesect kind="return"><para>The highest priority provider cast to T, or null if none is registered. </para>
 </simplesect>
 </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/plugin/service_manager.h" line="90" column="21" bodyfile="include/endstone/plugin/service_manager.h" bodystart="90" bodyend="93"/>
+        <location file="include/endstone/plugin/service_manager.h" line="91" column="14" bodyfile="include/endstone/plugin/service_manager.h" bodystart="91" bodyend="94"/>
       </memberdef>
     </sectiondef>
     <briefdescription>
@@ -267,11 +267,11 @@
     <detaileddescription>
 <para>Services are an interface specifying a list of methods that a provider must implement. Providers are implementations of these services. </para>
     </detaileddescription>
-    <location file="include/endstone/plugin/service_manager.h" line="34" column="1" bodyfile="include/endstone/plugin/service_manager.h" bodystart="34" bodyend="94"/>
+    <location file="include/endstone/plugin/service_manager.h" line="35" column="1" bodyfile="include/endstone/plugin/service_manager.h" bodystart="35" bodyend="95"/>
     <listofallmembers>
-      <member refid="classendstone_1_1ServiceManager_1a329a71e32b64af8ed4df189f3976739f" prot="public" virt="pure-virtual"><scope>endstone::ServiceManager</scope><name>get</name></member>
-      <member refid="classendstone_1_1ServiceManager_1ac2fcb33a1d0fc89902100b7244fa55b0" prot="public" virt="non-virtual"><scope>endstone::ServiceManager</scope><name>load</name></member>
-      <member refid="classendstone_1_1ServiceManager_1a8fbe97b8dcbc297e6386f0e6c1c6e3f6" prot="public" virt="pure-virtual"><scope>endstone::ServiceManager</scope><name>registerService</name></member>
+      <member refid="classendstone_1_1ServiceManager_1a0fdf2bb43656c95b59cda365f188adb8" prot="public" virt="pure-virtual"><scope>endstone::ServiceManager</scope><name>get</name></member>
+      <member refid="classendstone_1_1ServiceManager_1a6bbf7c90809c4b037f810cca50c4d17c" prot="public" virt="non-virtual"><scope>endstone::ServiceManager</scope><name>load</name></member>
+      <member refid="classendstone_1_1ServiceManager_1a1b48aa5ba8026c6f8a84b4b39b1b0eb7" prot="public" virt="pure-virtual"><scope>endstone::ServiceManager</scope><name>registerService</name></member>
       <member refid="classendstone_1_1ServiceManager_1ad6e9b9f07037a0fa971697bf9de486ec" prot="public" virt="pure-virtual"><scope>endstone::ServiceManager</scope><name>unregister</name></member>
       <member refid="classendstone_1_1ServiceManager_1aa8f39bf20330d57e8d3d242645ef5109" prot="public" virt="pure-virtual"><scope>endstone::ServiceManager</scope><name>unregister</name></member>
       <member refid="classendstone_1_1ServiceManager_1af62f98b2abdd3fa261d372dd10b5d831" prot="public" virt="pure-virtual"><scope>endstone::ServiceManager</scope><name>unregisterAll</name></member>

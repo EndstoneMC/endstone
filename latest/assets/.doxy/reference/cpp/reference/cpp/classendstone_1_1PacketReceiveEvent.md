@@ -94,11 +94,11 @@ Inherits the following classes: [endstone::Cancellable](classendstone_1_1Cancell
 | Type | Name |
 | ---: | :--- |
 |   | [**ENDSTONE\_EVENT**](#function-endstone_event) ([**PacketReceiveEvent**](classendstone_1_1PacketReceiveEvent.md)) <br> |
-|   | [**PacketReceiveEvent**](#function-packetreceiveevent) ([**Player**](classendstone_1_1Player.md) \* player, [**const**](classendstone_1_1Identifier.md) [**int**](classendstone_1_1Identifier.md) packet\_id, std::string\_view payload, [**SocketAddress**](classendstone_1_1SocketAddress.md) address, [**const**](classendstone_1_1Identifier.md) [**int**](classendstone_1_1Identifier.md) sub\_client\_id) <br> |
+|   | [**PacketReceiveEvent**](#function-packetreceiveevent) ([**const**](classendstone_1_1Identifier.md) [**Nullable**](classendstone_1_1Nullable.md)&lt; [**Player**](classendstone_1_1Player.md) &gt; & player, [**const**](classendstone_1_1Identifier.md) [**int**](classendstone_1_1Identifier.md) packet\_id, std::string\_view payload, [**SocketAddress**](classendstone_1_1SocketAddress.md) address, [**const**](classendstone_1_1Identifier.md) [**int**](classendstone_1_1Identifier.md) sub\_client\_id) <br> |
 |  [**SocketAddress**](classendstone_1_1SocketAddress.md) | [**getAddress**](#function-getaddress) () const<br>_Gets the network address of the client that sent this packet._  |
 |  [**int**](classendstone_1_1Identifier.md) | [**getPacketId**](#function-getpacketid) () const<br>_Gets the ID of the packet._  |
 |  std::string\_view | [**getPayload**](#function-getpayload) () const<br>_Gets the raw packet data_ **excluding** _the header._ |
-|  [**Player**](classendstone_1_1Player.md) \* | [**getPlayer**](#function-getplayer) () const<br>_Returns the player involved in this event._  |
+|  [**const**](classendstone_1_1Identifier.md) [**Nullable**](classendstone_1_1Nullable.md)&lt; [**Player**](classendstone_1_1Player.md) &gt; & | [**getPlayer**](#function-getplayer) () const<br>_Returns the player involved in this event._  |
 |  [**int**](classendstone_1_1Identifier.md) | [**getSubClientId**](#function-getsubclientid) () const<br>_Gets the SubClient ID._  |
 |  [**void**](classendstone_1_1Identifier.md) | [**setPayload**](#function-setpayload) (std::string\_view payload) <br>_Sets the raw packet data_ **excluding** _the header._ |
 
@@ -228,7 +228,7 @@ endstone::PacketReceiveEvent::ENDSTONE_EVENT (
 
 ```C++
 inline endstone::PacketReceiveEvent::PacketReceiveEvent (
-    Player * player,
+    const  Nullable < Player > & player,
     const  int packet_id,
     std::string_view payload,
     SocketAddress address,
@@ -322,7 +322,7 @@ The packet payload data.
 
 _Returns the player involved in this event._ 
 ```C++
-inline Player * endstone::PacketReceiveEvent::getPlayer () const
+inline const  Nullable < Player > & endstone::PacketReceiveEvent::getPlayer () const
 ```
 
 

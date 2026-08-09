@@ -34,7 +34,7 @@ _Represents a generic form._ [More...](#detailed-description)
 
 | Type | Name |
 | ---: | :--- |
-| typedef std::function&lt; [**void**](classendstone_1_1Identifier.md)([**Player**](classendstone_1_1Player.md) \*)&gt; | [**OnCloseCallback**](#typedef-onclosecallback)  <br> |
+| typedef std::function&lt; [**void**](classendstone_1_1Identifier.md)([**const**](classendstone_1_1Identifier.md) [**NotNull**](classendstone_1_1NotNull.md)&lt; [**Player**](classendstone_1_1Player.md) &gt; &)&gt; | [**OnCloseCallback**](#typedef-onclosecallback)  <br> |
 
 
 
@@ -113,7 +113,7 @@ The [**Form**](classendstone_1_1Form.md) class provides a base abstraction for d
 ### typedef OnCloseCallback 
 
 ```C++
-using endstone::Form< T >::OnCloseCallback =  std::function<void(Player *)>;
+using endstone::Form< T >::OnCloseCallback =  std::function<void(const NotNull<Player> &)>;
 ```
 
 

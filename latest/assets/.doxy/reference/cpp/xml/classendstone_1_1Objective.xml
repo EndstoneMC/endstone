@@ -332,7 +332,7 @@
         <name>getScore</name>
         <qualifiedname>endstone::Objective::getScore</qualifiedname>
         <param>
-          <type><ref refid="namespaceendstone_1a6d9b2d7c129a48a5e7dea2125d37e94d" kindref="member">ScoreEntry</ref></type>
+          <type><ref refid="namespaceendstone_1ac9f61b8d814486634ef53948c2804a7a" kindref="member">ScoreEntry</ref></type>
           <declname>entry</declname>
         </param>
         <briefdescription>

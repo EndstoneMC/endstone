@@ -93,7 +93,7 @@ Inherits the following classes: [endstone::Cancellable](classendstone_1_1Cancell
 
 | Type | Name |
 | ---: | :--- |
-|   | [**ActorTeleportEvent**](#function-actorteleportevent) ([**Actor**](classendstone_1_1Actor.md) & actor, [**Location**](classendstone_1_1Location.md) from, [**Location**](classendstone_1_1Location.md) to) <br> |
+|   | [**ActorTeleportEvent**](#function-actorteleportevent) ([**const**](classendstone_1_1Identifier.md) [**NotNull**](classendstone_1_1NotNull.md)&lt; [**Actor**](classendstone_1_1Actor.md) &gt; & actor, [**Location**](classendstone_1_1Location.md) from, [**Location**](classendstone_1_1Location.md) to) <br> |
 |   | [**ENDSTONE\_EVENT**](#function-endstone_event) ([**ActorTeleportEvent**](classendstone_1_1ActorTeleportEvent.md)) <br> |
 |  [**const**](classendstone_1_1Identifier.md) [**Location**](classendstone_1_1Location.md) & | [**getFrom**](#function-getfrom) () const<br>_Gets the location that this actor moved from._  |
 |  [**const**](classendstone_1_1Identifier.md) [**Location**](classendstone_1_1Location.md) & | [**getTo**](#function-getto) () const<br>_Gets the location that this actor moved to._  |
@@ -219,7 +219,7 @@ This may be as a result of natural causes (Enderman, Shulker), pathfinding (Wolf
 
 ```C++
 inline explicit endstone::ActorTeleportEvent::ActorTeleportEvent (
-    Actor & actor,
+    const  NotNull < Actor > & actor,
     Location from,
     Location to
 ) 

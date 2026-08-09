@@ -135,6 +135,8 @@
         </childnode>
         <childnode refid="64" relation="include">
         </childnode>
+        <childnode refid="49" relation="include">
+        </childnode>
       </node>
       <node id="51">
         <label>endstone/check.h</label>
@@ -309,6 +311,8 @@
         </childnode>
         <childnode refid="68" relation="include">
         </childnode>
+        <childnode refid="49" relation="include">
+        </childnode>
       </node>
       <node id="20">
         <label>endstone/message.h</label>
@@ -465,8 +469,6 @@
       <node id="74">
         <label>endstone/plugin/service.h</label>
         <link refid="service_8h_source"/>
-        <childnode refid="4" relation="include">
-        </childnode>
       </node>
       <node id="73">
         <label>endstone/plugin/service_manager.h</label>
@@ -480,6 +482,8 @@
         <childnode refid="74" relation="include">
         </childnode>
         <childnode refid="75" relation="include">
+        </childnode>
+        <childnode refid="49" relation="include">
         </childnode>
       </node>
       <node id="75">
@@ -562,6 +566,8 @@
         <childnode refid="21" relation="include">
         </childnode>
         <childnode refid="5" relation="include">
+        </childnode>
+        <childnode refid="49" relation="include">
         </childnode>
       </node>
       <node id="76">

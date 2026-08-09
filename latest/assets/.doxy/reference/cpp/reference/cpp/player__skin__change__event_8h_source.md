@@ -36,7 +36,7 @@ class PlayerSkinChangeEvent : public Cancellable<PlayerEvent> {
 public:
     ENDSTONE_EVENT(PlayerSkinChangeEvent);
 
-    explicit PlayerSkinChangeEvent(Player &player, Skin new_skin, std::optional<Message> message)
+    explicit PlayerSkinChangeEvent(const NotNull<Player> &player, Skin new_skin, std::optional<Message> message)
         : Cancellable(player), new_skin_(std::move(new_skin)), message_(std::move(message))
     {
     }

@@ -36,13 +36,14 @@
 #include "endstone/form/controls/header.h"
 #include "endstone/form/controls/label.h"
 #include "endstone/form/form.h"
+#include "endstone/util/pointers.h"
 
 namespace endstone {
 
 class ActionForm : public Form<ActionForm> {
 public:
     using Control = std::variant<Button, Divider, Header, Label>;
-    using OnSubmitCallback = std::function<void(Player *, int)>;
+    using OnSubmitCallback = std::function<void(const NotNull<Player> &, int)>;
 
     explicit ActionForm() = default;
 

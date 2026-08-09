@@ -36,7 +36,7 @@ namespace endstone {
 class ActorDamageEvent : public Cancellable<ActorEvent<Mob>> {
 public:
     ENDSTONE_EVENT(ActorDamageEvent);
-    ActorDamageEvent(Mob &actor, std::unique_ptr<DamageSource> damage_source, const float damage)
+    ActorDamageEvent(const NotNull<Mob> &actor, std::unique_ptr<DamageSource> damage_source, const float damage)
         : Cancellable(actor), damage_source_(std::move(damage_source)), damage_(damage)
     {
     }

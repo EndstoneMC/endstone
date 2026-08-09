@@ -25,6 +25,7 @@
 * `#include "endstone/form/controls/text_input.h"`
 * `#include "endstone/form/controls/toggle.h"`
 * `#include "endstone/form/form.h"`
+* `#include "endstone/util/pointers.h"`
 
 
 

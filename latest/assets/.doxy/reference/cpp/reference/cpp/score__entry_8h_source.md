@@ -28,12 +28,14 @@
 #include <variant>
 #include <vector>
 
+#include "endstone/util/pointers.h"
+
 namespace endstone {
 
 class Player;
 class Actor;
 
-using ScoreEntry = std::variant<Player *, Actor *, std::string>;
+using ScoreEntry = std::variant<std::string, NotNull<Player>, NotNull<Actor>>;
 
 }  // namespace endstone
 ```

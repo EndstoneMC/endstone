@@ -28,12 +28,13 @@
 #include <utility>
 
 #include "endstone/form/form.h"
+#include "endstone/util/pointers.h"
 
 namespace endstone {
 
 class MessageForm : public Form<MessageForm> {
 public:
-    using OnSubmitCallback = std::function<void(Player *, int)>;
+    using OnSubmitCallback = std::function<void(const NotNull<Player> &, int)>;
 
     [[nodiscard]] Message getContent() const { return content_; }
 

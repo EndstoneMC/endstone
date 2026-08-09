@@ -93,10 +93,10 @@ Inherits the following classes: [endstone::Cancellable](classendstone_1_1Cancell
 
 | Type | Name |
 | ---: | :--- |
-|   | [**ActorKnockbackEvent**](#function-actorknockbackevent) ([**Mob**](classendstone_1_1Mob.md) & mob, [**Actor**](classendstone_1_1Actor.md) \* source, [**Vector**](classendstone_1_1Vector.md) knockback) <br> |
+|   | [**ActorKnockbackEvent**](#function-actorknockbackevent) ([**const**](classendstone_1_1Identifier.md) [**NotNull**](classendstone_1_1NotNull.md)&lt; [**Mob**](classendstone_1_1Mob.md) &gt; & mob, [**const**](classendstone_1_1Identifier.md) [**Nullable**](classendstone_1_1Nullable.md)&lt; [**Actor**](classendstone_1_1Actor.md) &gt; & source, [**Vector**](classendstone_1_1Vector.md) knockback) <br> |
 |   | [**ENDSTONE\_EVENT**](#function-endstone_event) ([**ActorKnockbackEvent**](classendstone_1_1ActorKnockbackEvent.md)) <br> |
 |  [**Vector**](classendstone_1_1Vector.md) | [**getKnockback**](#function-getknockback) () const<br>_Gets the knockback that will be applied to the entity._  |
-|  [**Actor**](classendstone_1_1Actor.md) \* | [**getSource**](#function-getsource) () const<br>_Get the source actor that has caused knockback to the defender, if exists._  |
+|  [**const**](classendstone_1_1Identifier.md) [**Nullable**](classendstone_1_1Nullable.md)&lt; [**Actor**](classendstone_1_1Actor.md) &gt; & | [**getSource**](#function-getsource) () const<br>_Get the source actor that has caused knockback to the defender, if exists._  |
 |  [**void**](classendstone_1_1Identifier.md) | [**setKnockback**](#function-setknockback) ([**Vector**](classendstone_1_1Vector.md) knockback) <br>_Sets the knockback that will be applied to the entity._  |
 
 
@@ -210,8 +210,8 @@ See [endstone::ICancellable](classendstone_1_1ICancellable.md)
 
 ```C++
 inline explicit endstone::ActorKnockbackEvent::ActorKnockbackEvent (
-    Mob & mob,
-    Actor * source,
+    const  NotNull < Mob > & mob,
+    const  Nullable < Actor > & source,
     Vector knockback
 ) 
 ```
@@ -270,7 +270,7 @@ the knockback
 
 _Get the source actor that has caused knockback to the defender, if exists._ 
 ```C++
-inline Actor * endstone::ActorKnockbackEvent::getSource () const
+inline const  Nullable < Actor > & endstone::ActorKnockbackEvent::getSource () const
 ```
 
 
@@ -279,7 +279,7 @@ inline Actor * endstone::ActorKnockbackEvent::getSource () const
 
 **Returns:**
 
-actor that caused knockback, or `nullptr` if the knockback is not caused by an actor. 
+actor that caused knockback, or null if the knockback is not caused by an actor. 
 
 
 

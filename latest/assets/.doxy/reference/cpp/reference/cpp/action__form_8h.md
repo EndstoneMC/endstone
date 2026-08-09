@@ -21,6 +21,7 @@
 * `#include "endstone/form/controls/header.h"`
 * `#include "endstone/form/controls/label.h"`
 * `#include "endstone/form/form.h"`
+* `#include "endstone/util/pointers.h"`
 
 
 

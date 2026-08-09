@@ -5349,7 +5349,7 @@ loading large regions.</p>
 <a href="#endstone.level.Dimension.spawn_actor" class="headerlink" title="Permanent link">&para;</a></h4>
 <div class="language-python doc-signature highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="nf">spawn_actor</span><span class="p">(</span>
 </span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>    <span class="n">location</span><span class="p">:</span> <span class="n"><a class="autorefs autorefs-internal" title="            Location (endstone.level.Location)" href="#endstone.level.Location">Location</a></span><span class="p">,</span> <span class="nb">type</span><span class="p">:</span> <span class="n"><span title="endstone.Identifier">Identifier</span></span><span class="p">[</span><span class="n"><a class="autorefs autorefs-internal" title="            ActorType (endstone.actor.ActorType)" href="../actor/#endstone.actor.ActorType">ActorType</a></span><span class="p">]</span> <span class="o">|</span> <span class="n"><a class="autorefs autorefs-external" href="https://docs.python.org/3/library/stdtypes.html#str">str</a></span>
-</span><span id="__span-0-3"><a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a><span class="p">)</span> <span class="o">-&gt;</span> <span class="n"><a class="autorefs autorefs-internal" title="            Actor (endstone.actor.Actor)" href="../actor/#endstone.actor.Actor">Actor</a></span>
+</span><span id="__span-0-3"><a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a><span class="p">)</span> <span class="o">-&gt;</span> <span class="n"><a class="autorefs autorefs-internal" title="            Actor (endstone.actor.Actor)" href="../actor/#endstone.actor.Actor">Actor</a></span> <span class="o">|</span> <span class="kc">None</span>
 </span></code></pre></div>
 
     <div class="doc doc-contents ">
@@ -5415,7 +5415,7 @@ loading large regions.</p>
       <tbody>
           <tr class="doc-section-item">
             <td>
-                  <code><a class="autorefs autorefs-internal" title="            Actor (endstone.actor.Actor)" href="../actor/#endstone.actor.Actor">Actor</a></code>
+                  <code><a class="autorefs autorefs-internal" title="            Actor (endstone.actor.Actor)" href="../actor/#endstone.actor.Actor">Actor</a> | None</code>
             </td>
             <td>
               <div class="doc-md-description">
@@ -5966,7 +5966,9 @@ the spawn area, etc.), so it is a no-op in effect while the chunk is still in us
 
 
 <a href="#endstone.level.Level.create_dimension" class="headerlink" title="Permanent link">&para;</a></h4>
-<div class="language-python doc-signature highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="nf">create_dimension</span><span class="p">(</span><span class="n">creator</span><span class="p">:</span> <span class="n"><a class="autorefs autorefs-internal" title="            DimensionCreator (endstone.level.DimensionCreator)" href="#endstone.level.DimensionCreator">DimensionCreator</a></span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n"><a class="autorefs autorefs-internal" title="            Dimension (endstone.level.Dimension)" href="#endstone.level.Dimension">Dimension</a></span>
+<div class="language-python doc-signature highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="nf">create_dimension</span><span class="p">(</span>
+</span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>    <span class="n">creator</span><span class="p">:</span> <span class="n"><a class="autorefs autorefs-internal" title="            DimensionCreator (endstone.level.DimensionCreator)" href="#endstone.level.DimensionCreator">DimensionCreator</a></span><span class="p">,</span>
+</span><span id="__span-0-3"><a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a><span class="p">)</span> <span class="o">-&gt;</span> <span class="n"><a class="autorefs autorefs-internal" title="            Dimension (endstone.level.Dimension)" href="#endstone.level.Dimension">Dimension</a></span> <span class="o">|</span> <span class="kc">None</span>
 </span></code></pre></div>
 
     <div class="doc doc-contents ">
@@ -6019,7 +6021,7 @@ If a dimension with the requested name already exists, that existing dimension i
       <tbody>
           <tr class="doc-section-item">
             <td>
-                  <code><a class="autorefs autorefs-internal" title="            Dimension (endstone.level.Dimension)" href="#endstone.level.Dimension">Dimension</a></code>
+                  <code><a class="autorefs autorefs-internal" title="            Dimension (endstone.level.Dimension)" href="#endstone.level.Dimension">Dimension</a> | None</code>
             </td>
             <td>
               <div class="doc-md-description">
@@ -6043,7 +6045,9 @@ If a dimension with the requested name already exists, that existing dimension i
 
 
 <a href="#endstone.level.Level.get_dimension" class="headerlink" title="Permanent link">&para;</a></h4>
-<div class="language-python doc-signature highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="nf">get_dimension</span><span class="p">(</span><span class="nb">id</span><span class="p">:</span> <span class="n"><span title="endstone.Identifier">Identifier</span></span><span class="p">[</span><span class="n"><a class="autorefs autorefs-internal" title="            Dimension (endstone.level.Dimension)" href="#endstone.level.Dimension">Dimension</a></span><span class="p">]</span> <span class="o">|</span> <span class="n"><a class="autorefs autorefs-external" href="https://docs.python.org/3/library/stdtypes.html#str">str</a></span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n"><a class="autorefs autorefs-internal" title="            Dimension (endstone.level.Dimension)" href="#endstone.level.Dimension">Dimension</a></span>
+<div class="language-python doc-signature highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="nf">get_dimension</span><span class="p">(</span>
+</span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>    <span class="nb">id</span><span class="p">:</span> <span class="n"><span title="endstone.Identifier">Identifier</span></span><span class="p">[</span><span class="n"><a class="autorefs autorefs-internal" title="            Dimension (endstone.level.Dimension)" href="#endstone.level.Dimension">Dimension</a></span><span class="p">]</span> <span class="o">|</span> <span class="n"><a class="autorefs autorefs-external" href="https://docs.python.org/3/library/stdtypes.html#str">str</a></span><span class="p">,</span>
+</span><span id="__span-0-3"><a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a><span class="p">)</span> <span class="o">-&gt;</span> <span class="n"><a class="autorefs autorefs-internal" title="            Dimension (endstone.level.Dimension)" href="#endstone.level.Dimension">Dimension</a></span> <span class="o">|</span> <span class="kc">None</span>
 </span></code></pre></div>
 
     <div class="doc doc-contents ">
@@ -6093,7 +6097,7 @@ If a dimension with the requested name already exists, that existing dimension i
       <tbody>
           <tr class="doc-section-item">
             <td>
-                  <code><a class="autorefs autorefs-internal" title="            Dimension (endstone.level.Dimension)" href="#endstone.level.Dimension">Dimension</a></code>
+                  <code><a class="autorefs autorefs-internal" title="            Dimension (endstone.level.Dimension)" href="#endstone.level.Dimension">Dimension</a> | None</code>
             </td>
             <td>
               <div class="doc-md-description">

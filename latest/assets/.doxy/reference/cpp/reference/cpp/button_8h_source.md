@@ -30,6 +30,7 @@
 #include <utility>
 
 #include "endstone/message.h"
+#include "endstone/util/pointers.h"
 
 namespace endstone {
 
@@ -37,7 +38,7 @@ class Player;
 
 class Button {
 public:
-    using OnClickCallback = std::function<void(Player *)>;
+    using OnClickCallback = std::function<void(const NotNull<Player> &)>;
 
     Button() = default;
     explicit Button(Message text, std::optional<std::string> icon = std::nullopt, OnClickCallback on_click = {})

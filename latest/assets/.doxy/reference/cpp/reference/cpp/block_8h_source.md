@@ -64,7 +64,7 @@ public:
 
     virtual std::unique_ptr<Block> getRelative(BlockFace face, int distance) = 0;
 
-    [[nodiscard]] virtual Dimension &getDimension() const = 0;
+    [[nodiscard]] virtual NotNull<Dimension> getDimension() const = 0;
 
     [[nodiscard]] virtual const Biome &getBiome() const = 0;
 

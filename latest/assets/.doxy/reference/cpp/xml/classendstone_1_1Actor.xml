@@ -151,9 +151,9 @@
         </inbodydescription>
         <location file="include/endstone/actor/actor.h" line="87" column="20"/>
       </memberdef>
-      <memberdef kind="function" id="classendstone_1_1Actor_1ab4562c41d071b945338d742ac8d1e639" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
-        <type><ref refid="classendstone_1_1Dimension" kindref="compound">Dimension</ref> &amp;</type>
-        <definition>virtual Dimension &amp; endstone::Actor::getDimension</definition>
+      <memberdef kind="function" id="classendstone_1_1Actor_1a408807220ded9a0004de3e6d7aac214e" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
+        <type><ref refid="classendstone_1_1NotNull" kindref="compound">NotNull</ref>&lt; <ref refid="classendstone_1_1Dimension" kindref="compound">Dimension</ref> &gt;</type>
+        <definition>virtual NotNull&lt; Dimension &gt; endstone::Actor::getDimension</definition>
         <argsstring>() const =0</argsstring>
         <name>getDimension</name>
         <qualifiedname>endstone::Actor::getDimension</qualifiedname>
@@ -167,7 +167,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/actor/actor.h" line="94" column="24"/>
+        <location file="include/endstone/actor/actor.h" line="94" column="22"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1Actor_1a857512cc626e30cb57d03cacae88dd9f" prot="public" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
         <type><ref refid="classendstone_1_1Identifier" kindref="compound">void</ref></type>
@@ -630,13 +630,13 @@
         <childnode refid="3" relation="public-inheritance">
         </childnode>
       </node>
-      <node id="6">
+      <node id="5">
         <label>endstone::Item</label>
         <link refid="classendstone_1_1Item"/>
         <childnode refid="1" relation="public-inheritance">
         </childnode>
       </node>
-      <node id="7">
+      <node id="6">
         <label>endstone::Mob</label>
         <link refid="classendstone_1_1Mob"/>
         <childnode refid="1" relation="public-inheritance">
@@ -651,17 +651,12 @@
         <link refid="classendstone_1_1Permissible"/>
         <childnode refid="4" relation="public-inheritance">
         </childnode>
-        <childnode refid="5" relation="public-inheritance">
-        </childnode>
       </node>
-      <node id="8">
+      <node id="7">
         <label>endstone::Player</label>
         <link refid="classendstone_1_1Player"/>
-        <childnode refid="7" relation="public-inheritance">
+        <childnode refid="6" relation="public-inheritance">
         </childnode>
-      </node>
-      <node id="5">
-        <label>std::enable_shared_from_this&lt; Permissible &gt;</label>
       </node>
     </inheritancegraph>
     <collaborationgraph>
@@ -686,11 +681,6 @@
         <link refid="classendstone_1_1Permissible"/>
         <childnode refid="4" relation="public-inheritance">
         </childnode>
-        <childnode refid="5" relation="public-inheritance">
-        </childnode>
-      </node>
-      <node id="5">
-        <label>std::enable_shared_from_this&lt; Permissible &gt;</label>
       </node>
     </collaborationgraph>
     <location file="include/endstone/actor/actor.h" line="31" column="1" bodyfile="include/endstone/actor/actor.h" bodystart="31" bodyend="228"/>
@@ -701,7 +691,7 @@
       <member refid="classendstone_1_1Object_1a798b5128ce018bbbe8ca949ba78c3db1" prot="public" virt="non-virtual"><scope>endstone::Actor</scope><name>as</name></member>
       <member refid="classendstone_1_1Object_1ae0f38a62da4c186fce272145e2590cc1" prot="public" virt="non-virtual"><scope>endstone::Actor</scope><name>as</name></member>
       <member refid="classendstone_1_1Object_1aaaeb27e8e442e5adb772ae0d1af1c33f" prot="public" virt="pure-virtual"><scope>endstone::Actor</scope><name>getClassTypeId</name></member>
-      <member refid="classendstone_1_1Actor_1ab4562c41d071b945338d742ac8d1e639" prot="public" virt="pure-virtual"><scope>endstone::Actor</scope><name>getDimension</name></member>
+      <member refid="classendstone_1_1Actor_1a408807220ded9a0004de3e6d7aac214e" prot="public" virt="pure-virtual"><scope>endstone::Actor</scope><name>getDimension</name></member>
       <member refid="classendstone_1_1Permissible_1ad9307f3eef07e6e03a55b4fe9aab9be6" prot="public" virt="pure-virtual"><scope>endstone::Actor</scope><name>getEffectivePermissions</name></member>
       <member refid="classendstone_1_1Actor_1a78059bed5b1a6b23bfb2be9ac6ae81a3" prot="public" virt="pure-virtual"><scope>endstone::Actor</scope><name>getId</name></member>
       <member refid="classendstone_1_1Actor_1aff1ed8218696acc7009bf7ce5a5069a2" prot="public" virt="pure-virtual"><scope>endstone::Actor</scope><name>getLevel</name></member>

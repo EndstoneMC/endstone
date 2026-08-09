@@ -94,13 +94,13 @@ Inherits the following classes: [endstone::Cancellable](classendstone_1_1Cancell
 | Type | Name |
 | ---: | :--- |
 |   | [**ENDSTONE\_EVENT**](#function-endstone_event) ([**PlayerChatEvent**](classendstone_1_1PlayerChatEvent.md)) <br> |
-|   | [**PlayerChatEvent**](#function-playerchatevent) ([**Player**](classendstone_1_1Player.md) & player, std::string message, std::optional&lt; std::vector&lt; [**Player**](classendstone_1_1Player.md) \* &gt; &gt; recipients, std::string format="&lt;{0}&gt; {1}") <br> |
+|   | [**PlayerChatEvent**](#function-playerchatevent) ([**const**](classendstone_1_1Identifier.md) [**NotNull**](classendstone_1_1NotNull.md)&lt; [**Player**](classendstone_1_1Player.md) &gt; & player, std::string message, std::optional&lt; std::vector&lt; [**NotNull**](classendstone_1_1NotNull.md)&lt; [**Player**](classendstone_1_1Player.md) &gt; &gt; &gt; recipients, std::string format="&lt;{0}&gt; {1}") <br> |
 |  std::string | [**getFormat**](#function-getformat) () const<br>_Gets the format to use to display this chat message._  |
 |  std::string | [**getMessage**](#function-getmessage) () const<br>_Gets the message that the player is attempting to send._  |
-|  std::vector&lt; [**Player**](classendstone_1_1Player.md) \* &gt; | [**getRecipients**](#function-getrecipients) () const<br>_Gets a set of recipients that this chat message will be displayed to._  |
+|  std::vector&lt; [**NotNull**](classendstone_1_1NotNull.md)&lt; [**Player**](classendstone_1_1Player.md) &gt; &gt; | [**getRecipients**](#function-getrecipients) () const<br>_Gets a set of recipients that this chat message will be displayed to._  |
 |  [**void**](classendstone_1_1Identifier.md) | [**setFormat**](#function-setformat) (std::string format) <br>_Sets the format to use to display this chat message._  |
 |  [**void**](classendstone_1_1Identifier.md) | [**setMessage**](#function-setmessage) (std::string message) <br>_Sets the message that the player will send._  |
-|  [**void**](classendstone_1_1Identifier.md) | [**setPlayer**](#function-setplayer) ([**Player**](classendstone_1_1Player.md) & player) <br>_Sets the player that this message will be displayed as being sent by._  |
+|  [**void**](classendstone_1_1Identifier.md) | [**setPlayer**](#function-setplayer) ([**const**](classendstone_1_1Identifier.md) [**NotNull**](classendstone_1_1NotNull.md)&lt; [**Player**](classendstone_1_1Player.md) &gt; & player) <br>_Sets the player that this message will be displayed as being sent by._  |
 
 
 ## Public Functions inherited from endstone::Cancellable
@@ -228,9 +228,9 @@ endstone::PlayerChatEvent::ENDSTONE_EVENT (
 
 ```C++
 inline explicit endstone::PlayerChatEvent::PlayerChatEvent (
-    Player & player,
+    const  NotNull < Player > & player,
     std::string message,
-    std::optional< std::vector< Player * > > recipients,
+    std::optional< std::vector< NotNull < Player > > > recipients,
     std::string format="<{0}> {1}"
 ) 
 ```
@@ -299,7 +299,7 @@ Message the player is attempting to send
 
 _Gets a set of recipients that this chat message will be displayed to._ 
 ```C++
-inline std::vector< Player * > endstone::PlayerChatEvent::getRecipients () const
+inline std::vector< NotNull < Player > > endstone::PlayerChatEvent::getRecipients () const
 ```
 
 
@@ -379,7 +379,7 @@ inline void endstone::PlayerChatEvent::setMessage (
 _Sets the player that this message will be displayed as being sent by._ 
 ```C++
 inline void endstone::PlayerChatEvent::setPlayer (
-    Player & player
+    const  NotNull < Player > & player
 ) 
 ```
 

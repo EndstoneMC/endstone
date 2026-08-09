@@ -33,7 +33,7 @@ class PlayerDimensionChangeEvent : public PlayerEvent {
 public:
     ENDSTONE_EVENT(PlayerDimensionChangeEvent);
 
-    explicit PlayerDimensionChangeEvent(Player &player, Dimension &from, Dimension &to)
+    explicit PlayerDimensionChangeEvent(const NotNull<Player> &player, Dimension &from, Dimension &to)
         : PlayerEvent(player), from_(from), to_(to)
     {
     }

@@ -30,6 +30,7 @@
 #include "endstone/boss/bar_color.h"
 #include "endstone/boss/bar_flag.h"
 #include "endstone/boss/bar_style.h"
+#include "endstone/util/pointers.h"
 
 namespace endstone {
 class Player;
@@ -69,7 +70,7 @@ public:
 
     virtual void removeAll() = 0;
 
-    [[nodiscard]] virtual std::vector<Player *> getPlayers() const = 0;
+    [[nodiscard]] virtual std::vector<NotNull<Player>> getPlayers() const = 0;
 };
 
 }  // namespace endstone

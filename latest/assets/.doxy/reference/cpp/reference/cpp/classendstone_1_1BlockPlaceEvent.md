@@ -93,12 +93,12 @@ Inherits the following classes: [endstone::Cancellable](classendstone_1_1Cancell
 
 | Type | Name |
 | ---: | :--- |
-|   | [**BlockPlaceEvent**](#function-blockplaceevent) (std::unique\_ptr&lt; [**Block**](classendstone_1_1Block.md) &gt; placed\_block, std::unique\_ptr&lt; [**BlockState**](classendstone_1_1BlockState.md) &gt; replaced\_state, std::unique\_ptr&lt; [**Block**](classendstone_1_1Block.md) &gt; placed\_against, [**Player**](classendstone_1_1Player.md) & player) <br> |
+|   | [**BlockPlaceEvent**](#function-blockplaceevent) (std::unique\_ptr&lt; [**Block**](classendstone_1_1Block.md) &gt; placed\_block, std::unique\_ptr&lt; [**BlockState**](classendstone_1_1BlockState.md) &gt; replaced\_state, std::unique\_ptr&lt; [**Block**](classendstone_1_1Block.md) &gt; placed\_against, [**const**](classendstone_1_1Identifier.md) [**NotNull**](classendstone_1_1NotNull.md)&lt; [**Player**](classendstone_1_1Player.md) &gt; & player) <br> |
 |   | [**ENDSTONE\_EVENT**](#function-endstone_event) ([**BlockPlaceEvent**](classendstone_1_1BlockPlaceEvent.md)) <br> |
 |  [**Block**](classendstone_1_1Block.md) & | [**getBlockAgainst**](#function-getblockagainst) () const<br>_Gets the block that this block was placed against._  |
 |  [**Block**](classendstone_1_1Block.md) & | [**getBlockPlaced**](#function-getblockplaced) () const<br>_Gets the block placed._  |
 |  [**BlockState**](classendstone_1_1BlockState.md) & | [**getBlockReplacedState**](#function-getblockreplacedstate) () const<br>_Gets the_ [_**BlockState**_](classendstone_1_1BlockState.md) _for the block which was replaced._ |
-|  [**Player**](classendstone_1_1Player.md) & | [**getPlayer**](#function-getplayer) () const<br>_Gets the player who placed the block involved in this event._  |
+|  [**const**](classendstone_1_1Identifier.md) [**NotNull**](classendstone_1_1NotNull.md)&lt; [**Player**](classendstone_1_1Player.md) &gt; & | [**getPlayer**](#function-getplayer) () const<br>_Gets the player who placed the block involved in this event._  |
 |   | [**~BlockPlaceEvent**](#function-blockplaceevent) () override<br> |
 
 
@@ -222,7 +222,7 @@ inline explicit endstone::BlockPlaceEvent::BlockPlaceEvent (
     std::unique_ptr< Block > placed_block,
     std::unique_ptr< BlockState > replaced_state,
     std::unique_ptr< Block > placed_against,
-    Player & player
+    const  NotNull < Player > & player
 ) 
 ```
 
@@ -327,7 +327,7 @@ The [**BlockState**](classendstone_1_1BlockState.md) of the block that was repla
 
 _Gets the player who placed the block involved in this event._ 
 ```C++
-inline Player & endstone::BlockPlaceEvent::getPlayer () const
+inline const  NotNull < Player > & endstone::BlockPlaceEvent::getPlayer () const
 ```
 
 

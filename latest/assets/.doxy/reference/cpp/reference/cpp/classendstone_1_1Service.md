@@ -14,7 +14,6 @@ _Services represent a list of methods._
 
 
 
-Inherits the following classes: std::enable_shared_from_this< Service >
 
 
 

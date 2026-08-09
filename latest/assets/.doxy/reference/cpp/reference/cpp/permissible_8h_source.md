@@ -40,7 +40,7 @@ class Plugin;
 class Permission;
 class PermissionAttachment;
 
-class Permissible : public Object, public std::enable_shared_from_this<Permissible> {
+class Permissible : public Object {
 public:
     [[nodiscard]] virtual PermissionLevel getPermissionLevel() const = 0;
 
