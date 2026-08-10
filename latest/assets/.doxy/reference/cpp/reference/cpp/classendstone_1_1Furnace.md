@@ -1,23 +1,42 @@
 
 
-# Class endstone::Container
+# Class endstone::Furnace
 
 
 
-[**ClassList**](annotated.md) **>** [**endstone**](namespaceendstone.md) **>** [**Container**](classendstone_1_1Container.md)
+[**ClassList**](annotated.md) **>** [**endstone**](namespaceendstone.md) **>** [**Furnace**](classendstone_1_1Furnace.md)
 
 
 
-_Represents a captured state of a container block, such as a chest._ 
+_Represents a captured state of a furnace._ 
 
-* `#include <endstone/block/container.h>`
-
-
-
-Inherits the following classes: [endstone::BlockState](classendstone_1_1BlockState.md)
+* `#include <endstone/block/furnace.h>`
 
 
-Inherited by the following classes: [endstone::Furnace](classendstone_1_1Furnace.md)
+
+Inherits the following classes: [endstone::Container](classendstone_1_1Container.md)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -94,7 +113,19 @@ Inherited by the following classes: [endstone::Furnace](classendstone_1_1Furnace
 
 | Type | Name |
 | ---: | :--- |
-| virtual [**Inventory**](classendstone_1_1Inventory.md) & | [**getInventory**](#function-getinventory) () const = 0<br>_Gets the inventory of the block represented by this block state._  |
+| virtual [**int**](classendstone_1_1Identifier.md) | [**getBurnTime**](#function-getburntime) () const = 0<br>_Gets the burn time._  |
+| virtual [**int**](classendstone_1_1Identifier.md) | [**getCookTime**](#function-getcooktime) () const = 0<br>_Gets the cook time._  |
+| virtual [**void**](classendstone_1_1Identifier.md) | [**setBurnTime**](#function-setburntime) ([**int**](classendstone_1_1Identifier.md) burn\_time) = 0<br>_Sets the burn time._  |
+| virtual [**void**](classendstone_1_1Identifier.md) | [**setCookTime**](#function-setcooktime) ([**int**](classendstone_1_1Identifier.md) cook\_time) = 0<br>_Sets the cook time._  |
+
+
+## Public Functions inherited from endstone::Container
+
+See [endstone::Container](classendstone_1_1Container.md)
+
+| Type | Name |
+| ---: | :--- |
+| virtual [**Inventory**](classendstone_1_1Inventory.md) & | [**getInventory**](classendstone_1_1Container.md#function-getinventory) () const = 0<br>_Gets the inventory of the block represented by this block state._  |
 
 
 ## Public Functions inherited from endstone::BlockState
@@ -211,28 +242,54 @@ See [endstone::Object](classendstone_1_1Object.md)
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 ## Public Functions Documentation
 
 
 
 
-### function getInventory 
+### function getBurnTime 
 
-_Gets the inventory of the block represented by this block state._ 
+_Gets the burn time._ 
 ```C++
-virtual Inventory & endstone::Container::getInventory () const = 0
+virtual int endstone::Furnace::getBurnTime () const = 0
 ```
 
 
 
-If the block was changed to a different type in the meantime, the returned inventory might no longer be valid.
+This is the number of ticks the current fuel keeps the furnace lit for.
 
 
 
 
 **Returns:**
 
-the inventory of the block 
+the burn time 
 
 
 
@@ -242,6 +299,94 @@ the inventory of the block
 
 <hr>
 
+
+
+### function getCookTime 
+
+_Gets the cook time._ 
+```C++
+virtual int endstone::Furnace::getCookTime () const = 0
+```
+
+
+
+This is the amount of time the item has been cooking for.
+
+
+
+
+**Returns:**
+
+the cook time 
+
+
+
+
+
+        
+
+<hr>
+
+
+
+### function setBurnTime 
+
+_Sets the burn time._ 
+```C++
+virtual void endstone::Furnace::setBurnTime (
+    int burn_time
+) = 0
+```
+
+
+
+A burn time greater than 0 will cause this block to be lit, whilst a time less than 0 will extinguish it.
+
+
+
+
+**Parameters:**
+
+
+* `burn_time` the burn time 
+
+
+
+
+        
+
+<hr>
+
+
+
+### function setCookTime 
+
+_Sets the cook time._ 
+```C++
+virtual void endstone::Furnace::setCookTime (
+    int cook_time
+) = 0
+```
+
+
+
+This is the amount of time the item has been cooking for.
+
+
+
+
+**Parameters:**
+
+
+* `cook_time` the cook time 
+
+
+
+
+        
+
+<hr>
+
 ------------------------------
-The documentation for this class was generated from the following file `include/endstone/block/container.h`
+The documentation for this class was generated from the following file `include/endstone/block/furnace.h`
 

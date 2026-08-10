@@ -69,6 +69,7 @@
     <innerclass refid="classendstone_1_1Event" prot="public">endstone::Event</innerclass>
     <innerclass refid="classendstone_1_1EventHandler" prot="public">endstone::EventHandler</innerclass>
     <innerclass refid="classendstone_1_1Form" prot="public">endstone::Form</innerclass>
+    <innerclass refid="classendstone_1_1Furnace" prot="public">endstone::Furnace</innerclass>
     <innerclass refid="classendstone_1_1GameRule" prot="public">endstone::GameRule</innerclass>
     <innerclass refid="classendstone_1_1GameRuleId" prot="public">endstone::GameRuleId</innerclass>
     <innerclass refid="classendstone_1_1HandlerList" prot="public">endstone::HandlerList</innerclass>

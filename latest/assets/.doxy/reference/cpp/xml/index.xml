@@ -1090,6 +1090,12 @@
   <compound refid="structstd_1_1formatter_3_01T_01_4" kind="struct"><name>std::formatter&lt; T &gt;</name>
     <member refid="structstd_1_1formatter_3_01T_01_4_1afe00bc1288dc59e2b4bac098d5e697e1" kind="function"><name>format</name></member>
   </compound>
+  <compound refid="classendstone_1_1Furnace" kind="class"><name>endstone::Furnace</name>
+    <member refid="classendstone_1_1Furnace_1a2c0a45b71d0dff71e2cfb5fcfa97ce96" kind="function"><name>getBurnTime</name></member>
+    <member refid="classendstone_1_1Furnace_1ae92fbdb9ff61675211b5100015081588" kind="function"><name>setBurnTime</name></member>
+    <member refid="classendstone_1_1Furnace_1a69f2637aff4d3baaa34e59744f4233e6" kind="function"><name>getCookTime</name></member>
+    <member refid="classendstone_1_1Furnace_1a5cd7654d9be4bc543ef80e92bce8aacc" kind="function"><name>setCookTime</name></member>
+  </compound>
   <compound refid="classendstone_1_1GameRule" kind="class"><name>endstone::GameRule</name>
     <member refid="classendstone_1_1GameRule_1a826159553a9d4f87d4fae744ad622494" kind="variable"><name>CommandBlockOutput</name></member>
     <member refid="classendstone_1_1GameRule_1aab94062b9aa342455a81716ff3ee8460" kind="variable"><name>CommandBlocksEnabled</name></member>
@@ -3065,6 +3071,8 @@
   <compound refid="block__type_8h" kind="file"><name>block_type.h</name>
   </compound>
   <compound refid="container_8h" kind="file"><name>container.h</name>
+  </compound>
+  <compound refid="furnace_8h" kind="file"><name>furnace.h</name>
   </compound>
   <compound refid="item__frame_8h" kind="file"><name>item_frame.h</name>
   </compound>

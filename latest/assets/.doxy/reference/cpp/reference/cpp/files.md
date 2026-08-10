@@ -36,6 +36,7 @@ Here is a list of all files with brief descriptions:
             * **file** [**block\_state.h**](block__state_8h.md)     
             * **file** [**block\_type.h**](block__type_8h.md)     
             * **file** [**container.h**](container_8h.md)     
+            * **file** [**furnace.h**](furnace_8h.md)     
             * **dir** [**sign**](dir_a49b0d7cd186ac75e821684211f814e0.md)     
                 * **file** [**sign\_side.h**](sign__side_8h.md)     
             * **file** [**item\_frame.h**](item__frame_8h.md)     

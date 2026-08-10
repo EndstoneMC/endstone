@@ -224,6 +224,8 @@
 ([**std**](namespacestd.md))
 * [**formatter&lt; T &gt;**](structstd_1_1formatter_3_01T_01_4.md)
 ([**std**](namespacestd.md))
+* [**Furnace**](classendstone_1_1Furnace.md)
+([**endstone**](namespaceendstone.md))
 
 
 ## g

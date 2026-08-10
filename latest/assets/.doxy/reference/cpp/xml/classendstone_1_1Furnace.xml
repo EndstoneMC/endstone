@@ -1,0 +1,189 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.8" xml:lang="en-US">
+  <compounddef id="classendstone_1_1Furnace" kind="class" language="C++" prot="public" abstract="yes">
+    <compoundname>endstone::Furnace</compoundname>
+    <basecompoundref refid="classendstone_1_1Container" prot="public" virt="non-virtual">endstone::Container</basecompoundref>
+    <includes refid="furnace_8h" local="no">endstone/block/furnace.h</includes>
+    <sectiondef kind="public-func">
+      <memberdef kind="function" id="classendstone_1_1Furnace_1a2c0a45b71d0dff71e2cfb5fcfa97ce96" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
+        <type><ref refid="classendstone_1_1Identifier" kindref="compound">int</ref></type>
+        <definition>virtual int endstone::Furnace::getBurnTime</definition>
+        <argsstring>() const =0</argsstring>
+        <name>getBurnTime</name>
+        <qualifiedname>endstone::Furnace::getBurnTime</qualifiedname>
+        <briefdescription>
+<para>Gets the burn time. </para>
+        </briefdescription>
+        <detaileddescription>
+<para>This is the number of ticks the current fuel keeps the furnace lit for.</para>
+<para><simplesect kind="return"><para>the burn time </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/block/furnace.h" line="34" column="18"/>
+      </memberdef>
+      <memberdef kind="function" id="classendstone_1_1Furnace_1ae92fbdb9ff61675211b5100015081588" prot="public" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
+        <type><ref refid="classendstone_1_1Identifier" kindref="compound">void</ref></type>
+        <definition>virtual void endstone::Furnace::setBurnTime</definition>
+        <argsstring>(int burn_time)=0</argsstring>
+        <name>setBurnTime</name>
+        <qualifiedname>endstone::Furnace::setBurnTime</qualifiedname>
+        <param>
+          <type><ref refid="classendstone_1_1Identifier" kindref="compound">int</ref></type>
+          <declname>burn_time</declname>
+        </param>
+        <briefdescription>
+<para>Sets the burn time. </para>
+        </briefdescription>
+        <detaileddescription>
+<para>A burn time greater than 0 will cause this block to be lit, whilst a time less than 0 will extinguish it.</para>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>burn_time</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>the burn time </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/block/furnace.h" line="44" column="18"/>
+      </memberdef>
+      <memberdef kind="function" id="classendstone_1_1Furnace_1a69f2637aff4d3baaa34e59744f4233e6" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
+        <type><ref refid="classendstone_1_1Identifier" kindref="compound">int</ref></type>
+        <definition>virtual int endstone::Furnace::getCookTime</definition>
+        <argsstring>() const =0</argsstring>
+        <name>getCookTime</name>
+        <qualifiedname>endstone::Furnace::getCookTime</qualifiedname>
+        <briefdescription>
+<para>Gets the cook time. </para>
+        </briefdescription>
+        <detaileddescription>
+<para>This is the amount of time the item has been cooking for.</para>
+<para><simplesect kind="return"><para>the cook time </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/block/furnace.h" line="54" column="18"/>
+      </memberdef>
+      <memberdef kind="function" id="classendstone_1_1Furnace_1a5cd7654d9be4bc543ef80e92bce8aacc" prot="public" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
+        <type><ref refid="classendstone_1_1Identifier" kindref="compound">void</ref></type>
+        <definition>virtual void endstone::Furnace::setCookTime</definition>
+        <argsstring>(int cook_time)=0</argsstring>
+        <name>setCookTime</name>
+        <qualifiedname>endstone::Furnace::setCookTime</qualifiedname>
+        <param>
+          <type><ref refid="classendstone_1_1Identifier" kindref="compound">int</ref></type>
+          <declname>cook_time</declname>
+        </param>
+        <briefdescription>
+<para>Sets the cook time. </para>
+        </briefdescription>
+        <detaileddescription>
+<para>This is the amount of time the item has been cooking for.</para>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>cook_time</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>the cook time </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/block/furnace.h" line="64" column="18"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+<para>Represents a captured state of a furnace. </para>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="3">
+        <label>endstone::BlockState</label>
+        <link refid="classendstone_1_1BlockState"/>
+        <childnode refid="4" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>endstone::Container</label>
+        <link refid="classendstone_1_1Container"/>
+        <childnode refid="3" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="1">
+        <label>endstone::Furnace</label>
+        <link refid="classendstone_1_1Furnace"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="4">
+        <label>endstone::Object</label>
+        <link refid="classendstone_1_1Object"/>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="3">
+        <label>endstone::BlockState</label>
+        <link refid="classendstone_1_1BlockState"/>
+        <childnode refid="4" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>endstone::Container</label>
+        <link refid="classendstone_1_1Container"/>
+        <childnode refid="3" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="1">
+        <label>endstone::Furnace</label>
+        <link refid="classendstone_1_1Furnace"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="4">
+        <label>endstone::Object</label>
+        <link refid="classendstone_1_1Object"/>
+      </node>
+    </collaborationgraph>
+    <location file="include/endstone/block/furnace.h" line="24" column="1" bodyfile="include/endstone/block/furnace.h" bodystart="24" bodyend="65"/>
+    <listofallmembers>
+      <member refid="classendstone_1_1Object_1a798b5128ce018bbbe8ca949ba78c3db1" prot="public" virt="non-virtual"><scope>endstone::Furnace</scope><name>as</name></member>
+      <member refid="classendstone_1_1Object_1ae0f38a62da4c186fce272145e2590cc1" prot="public" virt="non-virtual"><scope>endstone::Furnace</scope><name>as</name></member>
+      <member refid="classendstone_1_1BlockState_1af4b36588a23e8df26ea57425c206265f" prot="public" virt="pure-virtual"><scope>endstone::Furnace</scope><name>getBlock</name></member>
+      <member refid="classendstone_1_1Furnace_1a2c0a45b71d0dff71e2cfb5fcfa97ce96" prot="public" virt="pure-virtual"><scope>endstone::Furnace</scope><name>getBurnTime</name></member>
+      <member refid="classendstone_1_1Object_1aaaeb27e8e442e5adb772ae0d1af1c33f" prot="public" virt="pure-virtual"><scope>endstone::Furnace</scope><name>getClassTypeId</name></member>
+      <member refid="classendstone_1_1Furnace_1a69f2637aff4d3baaa34e59744f4233e6" prot="public" virt="pure-virtual"><scope>endstone::Furnace</scope><name>getCookTime</name></member>
+      <member refid="classendstone_1_1BlockState_1a18ebe2b1c527ebb7b915157bb2d0c557" prot="public" virt="pure-virtual"><scope>endstone::Furnace</scope><name>getData</name></member>
+      <member refid="classendstone_1_1BlockState_1a761183a7cef8831563b40ca0da0081ed" prot="public" virt="pure-virtual"><scope>endstone::Furnace</scope><name>getDimension</name></member>
+      <member refid="classendstone_1_1Container_1a9d0b9daf34f014c3e79fffeff6043758" prot="public" virt="pure-virtual"><scope>endstone::Furnace</scope><name>getInventory</name></member>
+      <member refid="classendstone_1_1BlockState_1a6f8f4a475c2c955b1a883877d9b4baf5" prot="public" virt="pure-virtual"><scope>endstone::Furnace</scope><name>getLocation</name></member>
+      <member refid="classendstone_1_1BlockState_1aae3431979452c2b71ba615ecaa110615" prot="public" virt="pure-virtual"><scope>endstone::Furnace</scope><name>getType</name></member>
+      <member refid="classendstone_1_1BlockState_1a465f89196adeb9f1cb76b1425f8b1856" prot="public" virt="pure-virtual"><scope>endstone::Furnace</scope><name>getX</name></member>
+      <member refid="classendstone_1_1BlockState_1a26cb455d3bb6d9ab6f703d1df14c9232" prot="public" virt="pure-virtual"><scope>endstone::Furnace</scope><name>getY</name></member>
+      <member refid="classendstone_1_1BlockState_1a1d4ccdc3539f2d549ef3d98393bb89af" prot="public" virt="pure-virtual"><scope>endstone::Furnace</scope><name>getZ</name></member>
+      <member refid="classendstone_1_1Object_1ae8213ae15ad1b14e4631399c6b18960a" prot="public" virt="non-virtual"><scope>endstone::Furnace</scope><name>is</name></member>
+      <member refid="classendstone_1_1Object_1a20376536a5f64ef02b2569af132171d4" prot="public" virt="pure-virtual"><scope>endstone::Furnace</scope><name>isInstanceOf</name></member>
+      <member refid="classendstone_1_1Furnace_1ae92fbdb9ff61675211b5100015081588" prot="public" virt="pure-virtual"><scope>endstone::Furnace</scope><name>setBurnTime</name></member>
+      <member refid="classendstone_1_1Furnace_1a5cd7654d9be4bc543ef80e92bce8aacc" prot="public" virt="pure-virtual"><scope>endstone::Furnace</scope><name>setCookTime</name></member>
+      <member refid="classendstone_1_1BlockState_1ac85e292da7159b3835cc3919e68c08c7" prot="public" virt="pure-virtual"><scope>endstone::Furnace</scope><name>setData</name></member>
+      <member refid="classendstone_1_1BlockState_1adf633410dbefd527bd7a7e423223de02" prot="public" virt="pure-virtual"><scope>endstone::Furnace</scope><name>setType</name></member>
+      <member refid="classendstone_1_1BlockState_1aeaca92e63b3fa7bf37eb82e59bb9a45d" prot="public" virt="pure-virtual"><scope>endstone::Furnace</scope><name>update</name></member>
+      <member refid="classendstone_1_1BlockState_1a4d603b37f4b38df4151ced22c7f78331" prot="public" virt="pure-virtual"><scope>endstone::Furnace</scope><name>update</name></member>
+      <member refid="classendstone_1_1BlockState_1a6bb9b025f0e02b8ec732e6a74c27b599" prot="public" virt="pure-virtual"><scope>endstone::Furnace</scope><name>update</name></member>
+      <member refid="classendstone_1_1BlockState_1a0f5a2bfe6eb4e93737f1cb9f47b54154" prot="public" virt="non-virtual"><scope>endstone::Furnace</scope><name>~BlockState</name></member>
+      <member refid="classendstone_1_1Object_1adfddc886af4b1d0e09ddac7d0391b4d2" prot="public" virt="virtual"><scope>endstone::Furnace</scope><name>~Object</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>
