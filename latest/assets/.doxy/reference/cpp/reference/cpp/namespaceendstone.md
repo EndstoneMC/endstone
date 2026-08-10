@@ -202,6 +202,8 @@ _Represents a button with text and an optional icon._
 | class | [**ServerLoadEvent**](classendstone_1_1ServerLoadEvent.md) <br>_Called when either the server startup or reload has completed._  |
 | class | [**Service**](classendstone_1_1Service.md) <br>_Services represent a list of methods._  |
 | class | [**ServiceManager**](classendstone_1_1ServiceManager.md) <br>_Represent a service manager that manages services and service providers._  |
+| class | [**Sign**](classendstone_1_1Sign.md) <br>_Represents a captured state of a sign._  |
+| class | [**SignSide**](classendstone_1_1SignSide.md) <br>_Represents a side of a sign._  |
 | class | [**Skin**](classendstone_1_1Skin.md) <br>_Represents a player skin._  |
 | class | [**Slider**](classendstone_1_1Slider.md) <br>_Represents a slider with a label._  |
 | class | [**SocketAddress**](classendstone_1_1SocketAddress.md) <br>_Represents an IP Socket Address (hostname + port number)._  |

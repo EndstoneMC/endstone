@@ -29,8 +29,14 @@
 | file | [**block\_type.h**](block__type_8h.md) <br> |
 | file | [**container.h**](container_8h.md) <br> |
 | file | [**item\_frame.h**](item__frame_8h.md) <br> |
+| file | [**sign.h**](sign_8h.md) <br> |
 
 
+## Directories
+
+| Type | Name |
+| ---: | :--- |
+| dir | [**sign**](dir_a49b0d7cd186ac75e821684211f814e0.md) <br> |
 
 
 

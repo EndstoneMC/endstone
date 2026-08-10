@@ -1,0 +1,226 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.8" xml:lang="en-US">
+  <compounddef id="classendstone_1_1SignSide" kind="class" language="C++" prot="public" abstract="yes">
+    <compoundname>endstone::SignSide</compoundname>
+    <includes refid="sign__side_8h" local="no">endstone/block/sign/sign_side.h</includes>
+    <sectiondef kind="public-func">
+      <memberdef kind="function" id="classendstone_1_1SignSide_1ab03c0f47f66de6f3b09ddb5dacb7e6ce" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type></type>
+        <definition>virtual endstone::SignSide::~SignSide</definition>
+        <argsstring>()=default</argsstring>
+        <name>~SignSide</name>
+        <qualifiedname>endstone::SignSide::~SignSide</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/block/sign/sign_side.h" line="29" column="13"/>
+      </memberdef>
+      <memberdef kind="function" id="classendstone_1_1SignSide_1adf5c530af38543fffdb9015ce87b9d81" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
+        <type>std::vector&lt; std::string &gt;</type>
+        <definition>virtual std::vector&lt; std::string &gt; endstone::SignSide::getLines</definition>
+        <argsstring>() const =0</argsstring>
+        <name>getLines</name>
+        <qualifiedname>endstone::SignSide::getLines</qualifiedname>
+        <briefdescription>
+<para>Gets all the lines of text currently on this side of the sign. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="return"><para>the lines of text </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/block/sign/sign_side.h" line="36" column="26"/>
+      </memberdef>
+      <memberdef kind="function" id="classendstone_1_1SignSide_1a221f0fdfd71ce7d4e2c1e359c9f47fd1" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
+        <type>std::string</type>
+        <definition>virtual std::string endstone::SignSide::getLine</definition>
+        <argsstring>(int index) const =0</argsstring>
+        <name>getLine</name>
+        <qualifiedname>endstone::SignSide::getLine</qualifiedname>
+        <param>
+          <type><ref refid="classendstone_1_1Identifier" kindref="compound">int</ref></type>
+          <declname>index</declname>
+        </param>
+        <briefdescription>
+<para>Gets the line of text at the specified index on this side of the sign. </para>
+        </briefdescription>
+        <detaileddescription>
+<para>For example, <computeroutput>getLine(0)</computeroutput> will return the first line of text.</para>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>index</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>the index of the line to get, between 0 and 3 </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>the text of the line, empty if the line is blank </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/block/sign/sign_side.h" line="47" column="26"/>
+      </memberdef>
+      <memberdef kind="function" id="classendstone_1_1SignSide_1a3defe6437800cdc457d8813b71724b12" prot="public" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
+        <type><ref refid="classendstone_1_1Identifier" kindref="compound">void</ref></type>
+        <definition>virtual void endstone::SignSide::setLine</definition>
+        <argsstring>(int index, std::string line)=0</argsstring>
+        <name>setLine</name>
+        <qualifiedname>endstone::SignSide::setLine</qualifiedname>
+        <param>
+          <type><ref refid="classendstone_1_1Identifier" kindref="compound">int</ref></type>
+          <declname>index</declname>
+        </param>
+        <param>
+          <type>std::string</type>
+          <declname>line</declname>
+        </param>
+        <briefdescription>
+<para>Sets the line of text at the specified index on this side of the sign. </para>
+        </briefdescription>
+        <detaileddescription>
+<para>For example, <computeroutput>setLine(0, &quot;Line One&quot;)</computeroutput> will set the first line to &quot;Line One&quot;.</para>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>index</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>the index of the line to set, between 0 and 3 </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>line</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>the new text to set </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/block/sign/sign_side.h" line="58" column="18"/>
+      </memberdef>
+      <memberdef kind="function" id="classendstone_1_1SignSide_1a7726f4525d09dab32da964b3de55dfd3" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
+        <type><ref refid="classendstone_1_1Identifier" kindref="compound">bool</ref></type>
+        <definition>virtual bool endstone::SignSide::isGlowingText</definition>
+        <argsstring>() const =0</argsstring>
+        <name>isGlowingText</name>
+        <qualifiedname>endstone::SignSide::isGlowingText</qualifiedname>
+        <briefdescription>
+<para>Gets whether this side of the sign has glowing text. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="return"><para><computeroutput>true</computeroutput> if this side of the sign has glowing text </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/block/sign/sign_side.h" line="65" column="19"/>
+      </memberdef>
+      <memberdef kind="function" id="classendstone_1_1SignSide_1a081c1207346ee74727683bf9073941f2" prot="public" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
+        <type><ref refid="classendstone_1_1Identifier" kindref="compound">void</ref></type>
+        <definition>virtual void endstone::SignSide::setGlowingText</definition>
+        <argsstring>(bool glowing)=0</argsstring>
+        <name>setGlowingText</name>
+        <qualifiedname>endstone::SignSide::setGlowingText</qualifiedname>
+        <param>
+          <type><ref refid="classendstone_1_1Identifier" kindref="compound">bool</ref></type>
+          <declname>glowing</declname>
+        </param>
+        <briefdescription>
+<para>Sets whether this side of the sign has glowing text. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>glowing</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>whether this side of the sign has glowing text </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/block/sign/sign_side.h" line="72" column="18"/>
+      </memberdef>
+      <memberdef kind="function" id="classendstone_1_1SignSide_1ae66b22298044a0b4dca7eb06580fe375" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
+        <type><ref refid="classendstone_1_1Color" kindref="compound">Color</ref></type>
+        <definition>virtual Color endstone::SignSide::getColor</definition>
+        <argsstring>() const =0</argsstring>
+        <name>getColor</name>
+        <qualifiedname>endstone::SignSide::getColor</qualifiedname>
+        <briefdescription>
+<para>Gets the color of this side of the sign. </para>
+        </briefdescription>
+        <detaileddescription>
+<para>Bedrock stores the text color of a sign as a color rather than as one of the dyes, so this returns a <ref refid="classendstone_1_1Color" kindref="compound">Color</ref> where Bukkit returns a DyeColor.</para>
+<para><simplesect kind="return"><para>the color </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/block/sign/sign_side.h" line="83" column="20"/>
+      </memberdef>
+      <memberdef kind="function" id="classendstone_1_1SignSide_1a0344a80b56855c753927d452f65e1ab4" prot="public" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
+        <type><ref refid="classendstone_1_1Identifier" kindref="compound">void</ref></type>
+        <definition>virtual void endstone::SignSide::setColor</definition>
+        <argsstring>(Color color)=0</argsstring>
+        <name>setColor</name>
+        <qualifiedname>endstone::SignSide::setColor</qualifiedname>
+        <param>
+          <type><ref refid="classendstone_1_1Color" kindref="compound">Color</ref></type>
+          <declname>color</declname>
+        </param>
+        <briefdescription>
+<para>Sets the color of this side of the sign. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>color</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>the color to set </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/block/sign/sign_side.h" line="90" column="18"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+<para>Represents a side of a sign. </para>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="include/endstone/block/sign/sign_side.h" line="27" column="1" bodyfile="include/endstone/block/sign/sign_side.h" bodystart="27" bodyend="91"/>
+    <listofallmembers>
+      <member refid="classendstone_1_1SignSide_1ae66b22298044a0b4dca7eb06580fe375" prot="public" virt="pure-virtual"><scope>endstone::SignSide</scope><name>getColor</name></member>
+      <member refid="classendstone_1_1SignSide_1a221f0fdfd71ce7d4e2c1e359c9f47fd1" prot="public" virt="pure-virtual"><scope>endstone::SignSide</scope><name>getLine</name></member>
+      <member refid="classendstone_1_1SignSide_1adf5c530af38543fffdb9015ce87b9d81" prot="public" virt="pure-virtual"><scope>endstone::SignSide</scope><name>getLines</name></member>
+      <member refid="classendstone_1_1SignSide_1a7726f4525d09dab32da964b3de55dfd3" prot="public" virt="pure-virtual"><scope>endstone::SignSide</scope><name>isGlowingText</name></member>
+      <member refid="classendstone_1_1SignSide_1a0344a80b56855c753927d452f65e1ab4" prot="public" virt="pure-virtual"><scope>endstone::SignSide</scope><name>setColor</name></member>
+      <member refid="classendstone_1_1SignSide_1a081c1207346ee74727683bf9073941f2" prot="public" virt="pure-virtual"><scope>endstone::SignSide</scope><name>setGlowingText</name></member>
+      <member refid="classendstone_1_1SignSide_1a3defe6437800cdc457d8813b71724b12" prot="public" virt="pure-virtual"><scope>endstone::SignSide</scope><name>setLine</name></member>
+      <member refid="classendstone_1_1SignSide_1ab03c0f47f66de6f3b09ddb5dacb7e6ce" prot="public" virt="virtual"><scope>endstone::SignSide</scope><name>~SignSide</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

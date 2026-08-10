@@ -2557,6 +2557,24 @@
     <member refid="classendstone_1_1ServiceManager_1a0fdf2bb43656c95b59cda365f188adb8" kind="function"><name>get</name></member>
     <member refid="classendstone_1_1ServiceManager_1a6bbf7c90809c4b037f810cca50c4d17c" kind="function"><name>load</name></member>
   </compound>
+  <compound refid="classendstone_1_1Sign" kind="class"><name>endstone::Sign</name>
+    <member refid="classendstone_1_1Sign_1a929cbf8d4588c069d839517313ed3afa" kind="enum"><name>Side</name></member>
+    <member refid="classendstone_1_1Sign_1a929cbf8d4588c069d839517313ed3afaa5835bab1ade0060909e31a06af2e2cde" kind="enumvalue"><name>Front</name></member>
+    <member refid="classendstone_1_1Sign_1a929cbf8d4588c069d839517313ed3afaa0557fa923dcee4d0f86b1409f5c2167f" kind="enumvalue"><name>Back</name></member>
+    <member refid="classendstone_1_1Sign_1ae1ecbbb918043d73f2d201a4d889e96c" kind="function"><name>getSide</name></member>
+    <member refid="classendstone_1_1Sign_1ac454bca51b3afe8b1080cf72511f4044" kind="function"><name>isWaxed</name></member>
+    <member refid="classendstone_1_1Sign_1a1773b7ad2067719b35fb92b9c398c428" kind="function"><name>setWaxed</name></member>
+  </compound>
+  <compound refid="classendstone_1_1SignSide" kind="class"><name>endstone::SignSide</name>
+    <member refid="classendstone_1_1SignSide_1ab03c0f47f66de6f3b09ddb5dacb7e6ce" kind="function"><name>~SignSide</name></member>
+    <member refid="classendstone_1_1SignSide_1adf5c530af38543fffdb9015ce87b9d81" kind="function"><name>getLines</name></member>
+    <member refid="classendstone_1_1SignSide_1a221f0fdfd71ce7d4e2c1e359c9f47fd1" kind="function"><name>getLine</name></member>
+    <member refid="classendstone_1_1SignSide_1a3defe6437800cdc457d8813b71724b12" kind="function"><name>setLine</name></member>
+    <member refid="classendstone_1_1SignSide_1a7726f4525d09dab32da964b3de55dfd3" kind="function"><name>isGlowingText</name></member>
+    <member refid="classendstone_1_1SignSide_1a081c1207346ee74727683bf9073941f2" kind="function"><name>setGlowingText</name></member>
+    <member refid="classendstone_1_1SignSide_1ae66b22298044a0b4dca7eb06580fe375" kind="function"><name>getColor</name></member>
+    <member refid="classendstone_1_1SignSide_1a0344a80b56855c753927d452f65e1ab4" kind="function"><name>setColor</name></member>
+  </compound>
   <compound refid="classendstone_1_1Skin" kind="class"><name>endstone::Skin</name>
     <member refid="classendstone_1_1Skin_1a273ae02704f5c5092c71515347ced54a" kind="variable"><name>id_</name></member>
     <member refid="classendstone_1_1Skin_1aa836b4be3c7a31992075e8e0bb889524" kind="variable"><name>image_</name></member>
@@ -3050,6 +3068,10 @@
   </compound>
   <compound refid="item__frame_8h" kind="file"><name>item_frame.h</name>
   </compound>
+  <compound refid="sign_8h" kind="file"><name>sign.h</name>
+  </compound>
+  <compound refid="sign__side_8h" kind="file"><name>sign_side.h</name>
+  </compound>
   <compound refid="bar__color_8h" kind="file"><name>bar_color.h</name>
   </compound>
   <compound refid="bar__flag_8h" kind="file"><name>bar_flag.h</name>
@@ -3474,6 +3496,8 @@
   <compound refid="dir_19c52f9ea81a2cf7449c80dcee80d6f0" kind="dir"><name>include/endstone/scoreboard</name>
   </compound>
   <compound refid="dir_77022909323d5ad872c4820a738a5429" kind="dir"><name>include/endstone/event/server</name>
+  </compound>
+  <compound refid="dir_a49b0d7cd186ac75e821684211f814e0" kind="dir"><name>include/endstone/block/sign</name>
   </compound>
   <compound refid="dir_89b85071337bf933dea6c29b4c6a4410" kind="dir"><name>include/endstone/util</name>
   </compound>

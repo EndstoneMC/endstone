@@ -2,6 +2,7 @@
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.8" xml:lang="en-US">
   <compounddef id="dir_faca67fc60a7463eb1bd30eabe023cf1" kind="dir">
     <compoundname>include/endstone/block</compoundname>
+    <innerdir refid="dir_a49b0d7cd186ac75e821684211f814e0">include/endstone/block/sign</innerdir>
     <innerfile refid="biome_8h">biome.h</innerfile>
     <innerfile refid="block_8h">block.h</innerfile>
     <innerfile refid="block__data_8h">block_data.h</innerfile>
@@ -10,6 +11,7 @@
     <innerfile refid="block__type_8h">block_type.h</innerfile>
     <innerfile refid="container_8h">container.h</innerfile>
     <innerfile refid="item__frame_8h">item_frame.h</innerfile>
+    <innerfile refid="sign_8h">sign.h</innerfile>
     <briefdescription>
     </briefdescription>
     <detaileddescription>

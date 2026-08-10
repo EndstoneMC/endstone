@@ -32,6 +32,7 @@
 ## s
 
 * **Scale** ([**endstone::MapView**](classendstone_1_1MapView.md))
+* **Side** ([**endstone::Sign**](classendstone_1_1Sign.md))
 
 
 ## t

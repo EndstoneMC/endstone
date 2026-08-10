@@ -171,6 +171,8 @@ Here are the classes, structs, unions and interfaces with brief descriptions:
     * **class** [**ServerLoadEvent**](classendstone_1_1ServerLoadEvent.md) _Called when either the server startup or reload has completed._     
     * **class** [**Service**](classendstone_1_1Service.md) _Services represent a list of methods._     
     * **class** [**ServiceManager**](classendstone_1_1ServiceManager.md) _Represent a service manager that manages services and service providers._     
+    * **class** [**Sign**](classendstone_1_1Sign.md) _Represents a captured state of a sign._     
+    * **class** [**SignSide**](classendstone_1_1SignSide.md) _Represents a side of a sign._     
     * **class** [**Skin**](classendstone_1_1Skin.md) _Represents a player skin._     
     * **class** [**Slider**](classendstone_1_1Slider.md) _Represents a slider with a label._     
     * **class** [**SocketAddress**](classendstone_1_1SocketAddress.md) _Represents an IP Socket Address (hostname + port number)._     

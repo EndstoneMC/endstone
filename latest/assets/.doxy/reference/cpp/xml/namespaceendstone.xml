@@ -168,6 +168,8 @@
     <innerclass refid="classendstone_1_1ServerLoadEvent" prot="public">endstone::ServerLoadEvent</innerclass>
     <innerclass refid="classendstone_1_1Service" prot="public">endstone::Service</innerclass>
     <innerclass refid="classendstone_1_1ServiceManager" prot="public">endstone::ServiceManager</innerclass>
+    <innerclass refid="classendstone_1_1Sign" prot="public">endstone::Sign</innerclass>
+    <innerclass refid="classendstone_1_1SignSide" prot="public">endstone::SignSide</innerclass>
     <innerclass refid="classendstone_1_1Skin" prot="public">endstone::Skin</innerclass>
     <innerclass refid="classendstone_1_1Slider" prot="public">endstone::Slider</innerclass>
     <innerclass refid="classendstone_1_1SocketAddress" prot="public">endstone::SocketAddress</innerclass>

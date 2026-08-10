@@ -9,6 +9,7 @@ This inheritance list is sorted roughly, but not completely, alphabetically:
     * **class** [**endstone::BlockState**](classendstone_1_1BlockState.md) _Represents a captured state of a block, which will not update automatically._     
         * **class** [**endstone::Container**](classendstone_1_1Container.md) _Represents a captured state of a container block, such as a chest._ 
         * **class** [**endstone::ItemFrame**](classendstone_1_1ItemFrame.md) _Represents a captured state of an item frame._ 
+        * **class** [**endstone::Sign**](classendstone_1_1Sign.md) _Represents a captured state of a sign._ 
     * **class** [**endstone::Command**](classendstone_1_1Command.md) _Represents a_ [_**Command**_](classendstone_1_1Command.md) _, which executes various tasks upon user input._    
         * **class** [**endstone::PluginCommand**](classendstone_1_1PluginCommand.md) _Represents a_ [_**Command**_](classendstone_1_1Command.md) _belonging to a_[_**Plugin**_](classendstone_1_1Plugin.md) _._
     * **class** [**endstone::ItemMeta**](classendstone_1_1ItemMeta.md) _Represents the metadata of a generic item._     
@@ -138,6 +139,7 @@ This inheritance list is sorted roughly, but not completely, alphabetically:
 * **class** [**endstone::Server**](classendstone_1_1Server.md) _Represents a server implementation._ 
 * **class** [**endstone::Service**](classendstone_1_1Service.md) _Services represent a list of methods._ 
 * **class** [**endstone::ServiceManager**](classendstone_1_1ServiceManager.md) _Represent a service manager that manages services and service providers._ 
+* **class** [**endstone::SignSide**](classendstone_1_1SignSide.md) _Represents a side of a sign._ 
 * **class** [**endstone::Skin**](classendstone_1_1Skin.md) _Represents a player skin._ 
 * **class** [**endstone::Slider**](classendstone_1_1Slider.md) _Represents a slider with a label._ 
 * **class** [**endstone::SocketAddress**](classendstone_1_1SocketAddress.md) _Represents an IP Socket Address (hostname + port number)._ 

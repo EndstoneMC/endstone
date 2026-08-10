@@ -829,6 +829,14 @@
          <lastmod>2026-08-10</lastmod>
     </url>
     <url>
+         <loc>https://endstone.dev/latest/reference/cpp/classendstone_1_1Sign/</loc>
+         <lastmod>2026-08-10</lastmod>
+    </url>
+    <url>
+         <loc>https://endstone.dev/latest/reference/cpp/classendstone_1_1SignSide/</loc>
+         <lastmod>2026-08-10</lastmod>
+    </url>
+    <url>
          <loc>https://endstone.dev/latest/reference/cpp/classendstone_1_1Skin/</loc>
          <lastmod>2026-08-10</lastmod>
     </url>
@@ -1329,11 +1337,31 @@
          <lastmod>2026-08-10</lastmod>
     </url>
     <url>
+         <loc>https://endstone.dev/latest/reference/cpp/dir_a49b0d7cd186ac75e821684211f814e0/</loc>
+         <lastmod>2026-08-10</lastmod>
+    </url>
+    <url>
+         <loc>https://endstone.dev/latest/reference/cpp/sign__side_8h/</loc>
+         <lastmod>2026-08-10</lastmod>
+    </url>
+    <url>
+         <loc>https://endstone.dev/latest/reference/cpp/sign__side_8h_source/</loc>
+         <lastmod>2026-08-10</lastmod>
+    </url>
+    <url>
          <loc>https://endstone.dev/latest/reference/cpp/item__frame_8h/</loc>
          <lastmod>2026-08-10</lastmod>
     </url>
     <url>
          <loc>https://endstone.dev/latest/reference/cpp/item__frame_8h_source/</loc>
+         <lastmod>2026-08-10</lastmod>
+    </url>
+    <url>
+         <loc>https://endstone.dev/latest/reference/cpp/sign_8h/</loc>
+         <lastmod>2026-08-10</lastmod>
+    </url>
+    <url>
+         <loc>https://endstone.dev/latest/reference/cpp/sign_8h_source/</loc>
          <lastmod>2026-08-10</lastmod>
     </url>
     <url>
