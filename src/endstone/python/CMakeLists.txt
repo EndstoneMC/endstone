@@ -66,6 +66,8 @@ if (ENDSTONE_GENERATE_STUBS)
 
     # griffe imports the extension, so it must run under the very interpreter
     # pybind11 built against.
+    unset(UV_EXECUTABLE)
+    unset(UV_EXECUTABLE CACHE)
     find_program(UV_EXECUTABLE uv)
     if (UV_EXECUTABLE)
         set(STUBGEN_COMMAND "${UV_EXECUTABLE}" run --python "${Python_EXECUTABLE}" --script "${STUBGEN_DRIVER}")
