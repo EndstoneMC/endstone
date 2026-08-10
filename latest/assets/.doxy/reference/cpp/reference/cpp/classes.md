@@ -88,6 +88,8 @@
 
 ## c
 
+* [**Campfire**](classendstone_1_1Campfire.md)
+([**endstone**](namespaceendstone.md))
 * [**Cancellable**](classendstone_1_1Cancellable.md)
 ([**endstone**](namespaceendstone.md))
 * [**Chunk**](classendstone_1_1Chunk.md)
@@ -120,6 +122,8 @@
 * [**ConsoleCommandSender**](classendstone_1_1ConsoleCommandSender.md)
 ([**endstone**](namespaceendstone.md))
 * [**Container**](classendstone_1_1Container.md)
+([**endstone**](namespaceendstone.md))
+* [**CreatureSpawner**](classendstone_1_1CreatureSpawner.md)
 ([**endstone**](namespaceendstone.md))
 * [**Criteria**](classendstone_1_1Criteria.md)
 ([**endstone**](namespaceendstone.md))
@@ -298,6 +302,8 @@
 * [**Language**](classendstone_1_1Language.md)
 ([**endstone**](namespaceendstone.md))
 * [**LeavesDecayEvent**](classendstone_1_1LeavesDecayEvent.md)
+([**endstone**](namespaceendstone.md))
+* [**Lectern**](classendstone_1_1Lectern.md)
 ([**endstone**](namespaceendstone.md))
 * [**Level**](classendstone_1_1Level.md)
 ([**endstone**](namespaceendstone.md))

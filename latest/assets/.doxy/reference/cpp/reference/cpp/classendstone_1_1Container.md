@@ -17,7 +17,7 @@ _Represents a captured state of a container block, such as a chest._
 Inherits the following classes: [endstone::BlockState](classendstone_1_1BlockState.md)
 
 
-Inherited by the following classes: [endstone::Furnace](classendstone_1_1Furnace.md)
+Inherited by the following classes: [endstone::Furnace](classendstone_1_1Furnace.md),  [endstone::Lectern](classendstone_1_1Lectern.md)
 
 
 

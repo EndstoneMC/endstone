@@ -3,7 +3,9 @@
   <compounddef id="classendstone_1_1BlockState" kind="class" language="C++" prot="public" abstract="yes">
     <compoundname>endstone::BlockState</compoundname>
     <basecompoundref refid="classendstone_1_1Object" prot="public" virt="non-virtual">endstone::Object</basecompoundref>
+    <derivedcompoundref refid="classendstone_1_1Campfire" prot="public" virt="non-virtual">endstone::Campfire</derivedcompoundref>
     <derivedcompoundref refid="classendstone_1_1Container" prot="public" virt="non-virtual">endstone::Container</derivedcompoundref>
+    <derivedcompoundref refid="classendstone_1_1CreatureSpawner" prot="public" virt="non-virtual">endstone::CreatureSpawner</derivedcompoundref>
     <derivedcompoundref refid="classendstone_1_1ItemFrame" prot="public" virt="non-virtual">endstone::ItemFrame</derivedcompoundref>
     <derivedcompoundref refid="classendstone_1_1Sign" prot="public" virt="non-virtual">endstone::Sign</derivedcompoundref>
     <includes refid="block__state_8h" local="no">endstone/block/block_state.h</includes>
@@ -336,28 +338,46 @@
         </childnode>
       </node>
       <node id="3">
+        <label>endstone::Campfire</label>
+        <link refid="classendstone_1_1Campfire"/>
+        <childnode refid="1" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="4">
         <label>endstone::Container</label>
         <link refid="classendstone_1_1Container"/>
         <childnode refid="1" relation="public-inheritance">
         </childnode>
       </node>
-      <node id="4">
-        <label>endstone::Furnace</label>
-        <link refid="classendstone_1_1Furnace"/>
-        <childnode refid="3" relation="public-inheritance">
+      <node id="7">
+        <label>endstone::CreatureSpawner</label>
+        <link refid="classendstone_1_1CreatureSpawner"/>
+        <childnode refid="1" relation="public-inheritance">
         </childnode>
       </node>
       <node id="5">
+        <label>endstone::Furnace</label>
+        <link refid="classendstone_1_1Furnace"/>
+        <childnode refid="4" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="8">
         <label>endstone::ItemFrame</label>
         <link refid="classendstone_1_1ItemFrame"/>
         <childnode refid="1" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="6">
+        <label>endstone::Lectern</label>
+        <link refid="classendstone_1_1Lectern"/>
+        <childnode refid="4" relation="public-inheritance">
         </childnode>
       </node>
       <node id="2">
         <label>endstone::Object</label>
         <link refid="classendstone_1_1Object"/>
       </node>
-      <node id="6">
+      <node id="9">
         <label>endstone::Sign</label>
         <link refid="classendstone_1_1Sign"/>
         <childnode refid="1" relation="public-inheritance">

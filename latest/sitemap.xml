@@ -313,6 +313,10 @@
          <lastmod>2026-08-10</lastmod>
     </url>
     <url>
+         <loc>https://endstone.dev/latest/reference/cpp/classendstone_1_1Campfire/</loc>
+         <lastmod>2026-08-10</lastmod>
+    </url>
+    <url>
          <loc>https://endstone.dev/latest/reference/cpp/classendstone_1_1Cancellable/</loc>
          <lastmod>2026-08-10</lastmod>
     </url>
@@ -374,6 +378,10 @@
     </url>
     <url>
          <loc>https://endstone.dev/latest/reference/cpp/classendstone_1_1Container/</loc>
+         <lastmod>2026-08-10</lastmod>
+    </url>
+    <url>
+         <loc>https://endstone.dev/latest/reference/cpp/classendstone_1_1CreatureSpawner/</loc>
          <lastmod>2026-08-10</lastmod>
     </url>
     <url>
@@ -514,6 +522,10 @@
     </url>
     <url>
          <loc>https://endstone.dev/latest/reference/cpp/classendstone_1_1LeavesDecayEvent/</loc>
+         <lastmod>2026-08-10</lastmod>
+    </url>
+    <url>
+         <loc>https://endstone.dev/latest/reference/cpp/classendstone_1_1Lectern/</loc>
          <lastmod>2026-08-10</lastmod>
     </url>
     <url>
@@ -1333,11 +1345,27 @@
          <lastmod>2026-08-10</lastmod>
     </url>
     <url>
+         <loc>https://endstone.dev/latest/reference/cpp/campfire_8h/</loc>
+         <lastmod>2026-08-10</lastmod>
+    </url>
+    <url>
+         <loc>https://endstone.dev/latest/reference/cpp/campfire_8h_source/</loc>
+         <lastmod>2026-08-10</lastmod>
+    </url>
+    <url>
          <loc>https://endstone.dev/latest/reference/cpp/container_8h/</loc>
          <lastmod>2026-08-10</lastmod>
     </url>
     <url>
          <loc>https://endstone.dev/latest/reference/cpp/container_8h_source/</loc>
+         <lastmod>2026-08-10</lastmod>
+    </url>
+    <url>
+         <loc>https://endstone.dev/latest/reference/cpp/creature__spawner_8h/</loc>
+         <lastmod>2026-08-10</lastmod>
+    </url>
+    <url>
+         <loc>https://endstone.dev/latest/reference/cpp/creature__spawner_8h_source/</loc>
          <lastmod>2026-08-10</lastmod>
     </url>
     <url>
@@ -1366,6 +1394,14 @@
     </url>
     <url>
          <loc>https://endstone.dev/latest/reference/cpp/item__frame_8h_source/</loc>
+         <lastmod>2026-08-10</lastmod>
+    </url>
+    <url>
+         <loc>https://endstone.dev/latest/reference/cpp/lectern_8h/</loc>
+         <lastmod>2026-08-10</lastmod>
+    </url>
+    <url>
+         <loc>https://endstone.dev/latest/reference/cpp/lectern_8h_source/</loc>
          <lastmod>2026-08-10</lastmod>
     </url>
     <url>

@@ -1,0 +1,466 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.8" xml:lang="en-US">
+  <compounddef id="classendstone_1_1CreatureSpawner" kind="class" language="C++" prot="public" abstract="yes">
+    <compoundname>endstone::CreatureSpawner</compoundname>
+    <basecompoundref refid="classendstone_1_1BlockState" prot="public" virt="non-virtual">endstone::BlockState</basecompoundref>
+    <includes refid="creature__spawner_8h" local="no">endstone/block/creature_spawner.h</includes>
+    <sectiondef kind="public-func">
+      <memberdef kind="function" id="classendstone_1_1CreatureSpawner_1a955b85a4b4427806286ebefb7ec4b103" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
+        <type><ref refid="classendstone_1_1Identifier" kindref="compound">const</ref> <ref refid="classendstone_1_1ActorType" kindref="compound">ActorType</ref> &amp;</type>
+        <definition>virtual const ActorType &amp; endstone::CreatureSpawner::getSpawnedType</definition>
+        <argsstring>() const =0</argsstring>
+        <name>getSpawnedType</name>
+        <qualifiedname>endstone::CreatureSpawner::getSpawnedType</qualifiedname>
+        <briefdescription>
+<para>Gets the type of actor this spawner will spawn. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="return"><para>the type of actor </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/block/creature_spawner.h" line="32" column="30"/>
+      </memberdef>
+      <memberdef kind="function" id="classendstone_1_1CreatureSpawner_1a85b9e84f8eb3416bd832befc737cce20" prot="public" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
+        <type><ref refid="classendstone_1_1Identifier" kindref="compound">void</ref></type>
+        <definition>virtual void endstone::CreatureSpawner::setSpawnedType</definition>
+        <argsstring>(ActorTypeId type)=0</argsstring>
+        <name>setSpawnedType</name>
+        <qualifiedname>endstone::CreatureSpawner::setSpawnedType</qualifiedname>
+        <param>
+          <type><ref refid="classendstone_1_1Identifier" kindref="compound">ActorTypeId</ref></type>
+          <declname>type</declname>
+        </param>
+        <briefdescription>
+<para>Sets the type of actor this spawner will spawn. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>type</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>the type of actor (e.g. <computeroutput>minecraft:zombie</computeroutput>) </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/block/creature_spawner.h" line="39" column="18"/>
+      </memberdef>
+      <memberdef kind="function" id="classendstone_1_1CreatureSpawner_1aff1b13549b24c312ac2b0671f3e0796f" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
+        <type><ref refid="classendstone_1_1Identifier" kindref="compound">int</ref></type>
+        <definition>virtual int endstone::CreatureSpawner::getDelay</definition>
+        <argsstring>() const =0</argsstring>
+        <name>getDelay</name>
+        <qualifiedname>endstone::CreatureSpawner::getDelay</qualifiedname>
+        <briefdescription>
+<para>Gets the delay until the spawner spawns the next batch of actors. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="return"><para>the delay, in ticks </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/block/creature_spawner.h" line="46" column="18"/>
+      </memberdef>
+      <memberdef kind="function" id="classendstone_1_1CreatureSpawner_1abe1c50824642bb4d357040df56fc4047" prot="public" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
+        <type><ref refid="classendstone_1_1Identifier" kindref="compound">void</ref></type>
+        <definition>virtual void endstone::CreatureSpawner::setDelay</definition>
+        <argsstring>(int delay)=0</argsstring>
+        <name>setDelay</name>
+        <qualifiedname>endstone::CreatureSpawner::setDelay</qualifiedname>
+        <param>
+          <type><ref refid="classendstone_1_1Identifier" kindref="compound">int</ref></type>
+          <declname>delay</declname>
+        </param>
+        <briefdescription>
+<para>Sets the delay until the spawner spawns the next batch of actors. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>delay</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>the delay, in ticks </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/block/creature_spawner.h" line="53" column="18"/>
+      </memberdef>
+      <memberdef kind="function" id="classendstone_1_1CreatureSpawner_1ad120354ef26ed6e00a5ec43e44c74f9f" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
+        <type><ref refid="classendstone_1_1Identifier" kindref="compound">int</ref></type>
+        <definition>virtual int endstone::CreatureSpawner::getMinSpawnDelay</definition>
+        <argsstring>() const =0</argsstring>
+        <name>getMinSpawnDelay</name>
+        <qualifiedname>endstone::CreatureSpawner::getMinSpawnDelay</qualifiedname>
+        <briefdescription>
+<para>Gets the minimum delay the spawner will wait between spawns. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="return"><para>the minimum delay, in ticks </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/block/creature_spawner.h" line="60" column="18"/>
+      </memberdef>
+      <memberdef kind="function" id="classendstone_1_1CreatureSpawner_1a97c000991ae9363b126142b2195d169a" prot="public" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
+        <type><ref refid="classendstone_1_1Identifier" kindref="compound">void</ref></type>
+        <definition>virtual void endstone::CreatureSpawner::setMinSpawnDelay</definition>
+        <argsstring>(int delay)=0</argsstring>
+        <name>setMinSpawnDelay</name>
+        <qualifiedname>endstone::CreatureSpawner::setMinSpawnDelay</qualifiedname>
+        <param>
+          <type><ref refid="classendstone_1_1Identifier" kindref="compound">int</ref></type>
+          <declname>delay</declname>
+        </param>
+        <briefdescription>
+<para>Sets the minimum delay the spawner will wait between spawns. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>delay</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>the minimum delay, in ticks </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/block/creature_spawner.h" line="67" column="18"/>
+      </memberdef>
+      <memberdef kind="function" id="classendstone_1_1CreatureSpawner_1a12935148358957b8f20edfee484613b7" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
+        <type><ref refid="classendstone_1_1Identifier" kindref="compound">int</ref></type>
+        <definition>virtual int endstone::CreatureSpawner::getMaxSpawnDelay</definition>
+        <argsstring>() const =0</argsstring>
+        <name>getMaxSpawnDelay</name>
+        <qualifiedname>endstone::CreatureSpawner::getMaxSpawnDelay</qualifiedname>
+        <briefdescription>
+<para>Gets the maximum delay the spawner will wait between spawns. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="return"><para>the maximum delay, in ticks </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/block/creature_spawner.h" line="74" column="18"/>
+      </memberdef>
+      <memberdef kind="function" id="classendstone_1_1CreatureSpawner_1ab060979340b6fa93da383376fc0a2761" prot="public" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
+        <type><ref refid="classendstone_1_1Identifier" kindref="compound">void</ref></type>
+        <definition>virtual void endstone::CreatureSpawner::setMaxSpawnDelay</definition>
+        <argsstring>(int delay)=0</argsstring>
+        <name>setMaxSpawnDelay</name>
+        <qualifiedname>endstone::CreatureSpawner::setMaxSpawnDelay</qualifiedname>
+        <param>
+          <type><ref refid="classendstone_1_1Identifier" kindref="compound">int</ref></type>
+          <declname>delay</declname>
+        </param>
+        <briefdescription>
+<para>Sets the maximum delay the spawner will wait between spawns. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>delay</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>the maximum delay, in ticks </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/block/creature_spawner.h" line="81" column="18"/>
+      </memberdef>
+      <memberdef kind="function" id="classendstone_1_1CreatureSpawner_1aba7548d670dc0aae186991cdb379a69c" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
+        <type><ref refid="classendstone_1_1Identifier" kindref="compound">int</ref></type>
+        <definition>virtual int endstone::CreatureSpawner::getSpawnCount</definition>
+        <argsstring>() const =0</argsstring>
+        <name>getSpawnCount</name>
+        <qualifiedname>endstone::CreatureSpawner::getSpawnCount</qualifiedname>
+        <briefdescription>
+<para>Gets how many actors the spawner attempts to spawn at a time. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="return"><para>the number of actors </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/block/creature_spawner.h" line="88" column="18"/>
+      </memberdef>
+      <memberdef kind="function" id="classendstone_1_1CreatureSpawner_1a162f389cdf0b4255421465adcb18f15b" prot="public" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
+        <type><ref refid="classendstone_1_1Identifier" kindref="compound">void</ref></type>
+        <definition>virtual void endstone::CreatureSpawner::setSpawnCount</definition>
+        <argsstring>(int count)=0</argsstring>
+        <name>setSpawnCount</name>
+        <qualifiedname>endstone::CreatureSpawner::setSpawnCount</qualifiedname>
+        <param>
+          <type><ref refid="classendstone_1_1Identifier" kindref="compound">int</ref></type>
+          <declname>count</declname>
+        </param>
+        <briefdescription>
+<para>Sets how many actors the spawner attempts to spawn at a time. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>count</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>the number of actors </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/block/creature_spawner.h" line="95" column="18"/>
+      </memberdef>
+      <memberdef kind="function" id="classendstone_1_1CreatureSpawner_1aa958ea1812d1d341ac369cb1f96ba92c" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
+        <type><ref refid="classendstone_1_1Identifier" kindref="compound">int</ref></type>
+        <definition>virtual int endstone::CreatureSpawner::getMaxNearbyEntities</definition>
+        <argsstring>() const =0</argsstring>
+        <name>getMaxNearbyEntities</name>
+        <qualifiedname>endstone::CreatureSpawner::getMaxNearbyEntities</qualifiedname>
+        <briefdescription>
+<para>Gets the maximum number of similar actors allowed nearby before the spawner stops spawning. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="return"><para>the maximum number of similar actors </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/block/creature_spawner.h" line="102" column="18"/>
+      </memberdef>
+      <memberdef kind="function" id="classendstone_1_1CreatureSpawner_1a457464b53d1d59971ceaafc5e6a00f4c" prot="public" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
+        <type><ref refid="classendstone_1_1Identifier" kindref="compound">void</ref></type>
+        <definition>virtual void endstone::CreatureSpawner::setMaxNearbyEntities</definition>
+        <argsstring>(int count)=0</argsstring>
+        <name>setMaxNearbyEntities</name>
+        <qualifiedname>endstone::CreatureSpawner::setMaxNearbyEntities</qualifiedname>
+        <param>
+          <type><ref refid="classendstone_1_1Identifier" kindref="compound">int</ref></type>
+          <declname>count</declname>
+        </param>
+        <briefdescription>
+<para>Sets the maximum number of similar actors allowed nearby before the spawner stops spawning. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>count</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>the maximum number of similar actors </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/block/creature_spawner.h" line="109" column="18"/>
+      </memberdef>
+      <memberdef kind="function" id="classendstone_1_1CreatureSpawner_1a24aa50f83dad9986506a9772c5a6f1a7" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
+        <type><ref refid="classendstone_1_1Identifier" kindref="compound">int</ref></type>
+        <definition>virtual int endstone::CreatureSpawner::getRequiredPlayerRange</definition>
+        <argsstring>() const =0</argsstring>
+        <name>getRequiredPlayerRange</name>
+        <qualifiedname>endstone::CreatureSpawner::getRequiredPlayerRange</qualifiedname>
+        <briefdescription>
+<para>Gets how far away a player must be for the spawner to be active. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="return"><para>the required player range, in blocks </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/block/creature_spawner.h" line="116" column="18"/>
+      </memberdef>
+      <memberdef kind="function" id="classendstone_1_1CreatureSpawner_1a0e4fbc8991cd5637df7f2ca06f943d30" prot="public" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
+        <type><ref refid="classendstone_1_1Identifier" kindref="compound">void</ref></type>
+        <definition>virtual void endstone::CreatureSpawner::setRequiredPlayerRange</definition>
+        <argsstring>(int range)=0</argsstring>
+        <name>setRequiredPlayerRange</name>
+        <qualifiedname>endstone::CreatureSpawner::setRequiredPlayerRange</qualifiedname>
+        <param>
+          <type><ref refid="classendstone_1_1Identifier" kindref="compound">int</ref></type>
+          <declname>range</declname>
+        </param>
+        <briefdescription>
+<para>Sets how far away a player must be for the spawner to be active. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>range</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>the required player range, in blocks </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/block/creature_spawner.h" line="123" column="18"/>
+      </memberdef>
+      <memberdef kind="function" id="classendstone_1_1CreatureSpawner_1ae96ebb1226c8863d658e3f759900c71f" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
+        <type><ref refid="classendstone_1_1Identifier" kindref="compound">int</ref></type>
+        <definition>virtual int endstone::CreatureSpawner::getSpawnRange</definition>
+        <argsstring>() const =0</argsstring>
+        <name>getSpawnRange</name>
+        <qualifiedname>endstone::CreatureSpawner::getSpawnRange</qualifiedname>
+        <briefdescription>
+<para>Gets the radius around the spawner in which actors are spawned. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="return"><para>the spawn range, in blocks </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/block/creature_spawner.h" line="130" column="18"/>
+      </memberdef>
+      <memberdef kind="function" id="classendstone_1_1CreatureSpawner_1a9edf19b3e4c5acba6b153bafe38cacfb" prot="public" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
+        <type><ref refid="classendstone_1_1Identifier" kindref="compound">void</ref></type>
+        <definition>virtual void endstone::CreatureSpawner::setSpawnRange</definition>
+        <argsstring>(int range)=0</argsstring>
+        <name>setSpawnRange</name>
+        <qualifiedname>endstone::CreatureSpawner::setSpawnRange</qualifiedname>
+        <param>
+          <type><ref refid="classendstone_1_1Identifier" kindref="compound">int</ref></type>
+          <declname>range</declname>
+        </param>
+        <briefdescription>
+<para>Sets the radius around the spawner in which actors are spawned. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>range</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>the spawn range, in blocks </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/block/creature_spawner.h" line="137" column="18"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+<para>Represents a captured state of a creature spawner. </para>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="2">
+        <label>endstone::BlockState</label>
+        <link refid="classendstone_1_1BlockState"/>
+        <childnode refid="3" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="1">
+        <label>endstone::CreatureSpawner</label>
+        <link refid="classendstone_1_1CreatureSpawner"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="3">
+        <label>endstone::Object</label>
+        <link refid="classendstone_1_1Object"/>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="2">
+        <label>endstone::BlockState</label>
+        <link refid="classendstone_1_1BlockState"/>
+        <childnode refid="3" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="1">
+        <label>endstone::CreatureSpawner</label>
+        <link refid="classendstone_1_1CreatureSpawner"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="3">
+        <label>endstone::Object</label>
+        <link refid="classendstone_1_1Object"/>
+      </node>
+    </collaborationgraph>
+    <location file="include/endstone/block/creature_spawner.h" line="25" column="1" bodyfile="include/endstone/block/creature_spawner.h" bodystart="25" bodyend="138"/>
+    <listofallmembers>
+      <member refid="classendstone_1_1Object_1a798b5128ce018bbbe8ca949ba78c3db1" prot="public" virt="non-virtual"><scope>endstone::CreatureSpawner</scope><name>as</name></member>
+      <member refid="classendstone_1_1Object_1ae0f38a62da4c186fce272145e2590cc1" prot="public" virt="non-virtual"><scope>endstone::CreatureSpawner</scope><name>as</name></member>
+      <member refid="classendstone_1_1BlockState_1af4b36588a23e8df26ea57425c206265f" prot="public" virt="pure-virtual"><scope>endstone::CreatureSpawner</scope><name>getBlock</name></member>
+      <member refid="classendstone_1_1Object_1aaaeb27e8e442e5adb772ae0d1af1c33f" prot="public" virt="pure-virtual"><scope>endstone::CreatureSpawner</scope><name>getClassTypeId</name></member>
+      <member refid="classendstone_1_1BlockState_1a18ebe2b1c527ebb7b915157bb2d0c557" prot="public" virt="pure-virtual"><scope>endstone::CreatureSpawner</scope><name>getData</name></member>
+      <member refid="classendstone_1_1CreatureSpawner_1aff1b13549b24c312ac2b0671f3e0796f" prot="public" virt="pure-virtual"><scope>endstone::CreatureSpawner</scope><name>getDelay</name></member>
+      <member refid="classendstone_1_1BlockState_1a761183a7cef8831563b40ca0da0081ed" prot="public" virt="pure-virtual"><scope>endstone::CreatureSpawner</scope><name>getDimension</name></member>
+      <member refid="classendstone_1_1BlockState_1a6f8f4a475c2c955b1a883877d9b4baf5" prot="public" virt="pure-virtual"><scope>endstone::CreatureSpawner</scope><name>getLocation</name></member>
+      <member refid="classendstone_1_1CreatureSpawner_1aa958ea1812d1d341ac369cb1f96ba92c" prot="public" virt="pure-virtual"><scope>endstone::CreatureSpawner</scope><name>getMaxNearbyEntities</name></member>
+      <member refid="classendstone_1_1CreatureSpawner_1a12935148358957b8f20edfee484613b7" prot="public" virt="pure-virtual"><scope>endstone::CreatureSpawner</scope><name>getMaxSpawnDelay</name></member>
+      <member refid="classendstone_1_1CreatureSpawner_1ad120354ef26ed6e00a5ec43e44c74f9f" prot="public" virt="pure-virtual"><scope>endstone::CreatureSpawner</scope><name>getMinSpawnDelay</name></member>
+      <member refid="classendstone_1_1CreatureSpawner_1a24aa50f83dad9986506a9772c5a6f1a7" prot="public" virt="pure-virtual"><scope>endstone::CreatureSpawner</scope><name>getRequiredPlayerRange</name></member>
+      <member refid="classendstone_1_1CreatureSpawner_1aba7548d670dc0aae186991cdb379a69c" prot="public" virt="pure-virtual"><scope>endstone::CreatureSpawner</scope><name>getSpawnCount</name></member>
+      <member refid="classendstone_1_1CreatureSpawner_1a955b85a4b4427806286ebefb7ec4b103" prot="public" virt="pure-virtual"><scope>endstone::CreatureSpawner</scope><name>getSpawnedType</name></member>
+      <member refid="classendstone_1_1CreatureSpawner_1ae96ebb1226c8863d658e3f759900c71f" prot="public" virt="pure-virtual"><scope>endstone::CreatureSpawner</scope><name>getSpawnRange</name></member>
+      <member refid="classendstone_1_1BlockState_1aae3431979452c2b71ba615ecaa110615" prot="public" virt="pure-virtual"><scope>endstone::CreatureSpawner</scope><name>getType</name></member>
+      <member refid="classendstone_1_1BlockState_1a465f89196adeb9f1cb76b1425f8b1856" prot="public" virt="pure-virtual"><scope>endstone::CreatureSpawner</scope><name>getX</name></member>
+      <member refid="classendstone_1_1BlockState_1a26cb455d3bb6d9ab6f703d1df14c9232" prot="public" virt="pure-virtual"><scope>endstone::CreatureSpawner</scope><name>getY</name></member>
+      <member refid="classendstone_1_1BlockState_1a1d4ccdc3539f2d549ef3d98393bb89af" prot="public" virt="pure-virtual"><scope>endstone::CreatureSpawner</scope><name>getZ</name></member>
+      <member refid="classendstone_1_1Object_1ae8213ae15ad1b14e4631399c6b18960a" prot="public" virt="non-virtual"><scope>endstone::CreatureSpawner</scope><name>is</name></member>
+      <member refid="classendstone_1_1Object_1a20376536a5f64ef02b2569af132171d4" prot="public" virt="pure-virtual"><scope>endstone::CreatureSpawner</scope><name>isInstanceOf</name></member>
+      <member refid="classendstone_1_1BlockState_1ac85e292da7159b3835cc3919e68c08c7" prot="public" virt="pure-virtual"><scope>endstone::CreatureSpawner</scope><name>setData</name></member>
+      <member refid="classendstone_1_1CreatureSpawner_1abe1c50824642bb4d357040df56fc4047" prot="public" virt="pure-virtual"><scope>endstone::CreatureSpawner</scope><name>setDelay</name></member>
+      <member refid="classendstone_1_1CreatureSpawner_1a457464b53d1d59971ceaafc5e6a00f4c" prot="public" virt="pure-virtual"><scope>endstone::CreatureSpawner</scope><name>setMaxNearbyEntities</name></member>
+      <member refid="classendstone_1_1CreatureSpawner_1ab060979340b6fa93da383376fc0a2761" prot="public" virt="pure-virtual"><scope>endstone::CreatureSpawner</scope><name>setMaxSpawnDelay</name></member>
+      <member refid="classendstone_1_1CreatureSpawner_1a97c000991ae9363b126142b2195d169a" prot="public" virt="pure-virtual"><scope>endstone::CreatureSpawner</scope><name>setMinSpawnDelay</name></member>
+      <member refid="classendstone_1_1CreatureSpawner_1a0e4fbc8991cd5637df7f2ca06f943d30" prot="public" virt="pure-virtual"><scope>endstone::CreatureSpawner</scope><name>setRequiredPlayerRange</name></member>
+      <member refid="classendstone_1_1CreatureSpawner_1a162f389cdf0b4255421465adcb18f15b" prot="public" virt="pure-virtual"><scope>endstone::CreatureSpawner</scope><name>setSpawnCount</name></member>
+      <member refid="classendstone_1_1CreatureSpawner_1a85b9e84f8eb3416bd832befc737cce20" prot="public" virt="pure-virtual"><scope>endstone::CreatureSpawner</scope><name>setSpawnedType</name></member>
+      <member refid="classendstone_1_1CreatureSpawner_1a9edf19b3e4c5acba6b153bafe38cacfb" prot="public" virt="pure-virtual"><scope>endstone::CreatureSpawner</scope><name>setSpawnRange</name></member>
+      <member refid="classendstone_1_1BlockState_1adf633410dbefd527bd7a7e423223de02" prot="public" virt="pure-virtual"><scope>endstone::CreatureSpawner</scope><name>setType</name></member>
+      <member refid="classendstone_1_1BlockState_1aeaca92e63b3fa7bf37eb82e59bb9a45d" prot="public" virt="pure-virtual"><scope>endstone::CreatureSpawner</scope><name>update</name></member>
+      <member refid="classendstone_1_1BlockState_1a4d603b37f4b38df4151ced22c7f78331" prot="public" virt="pure-virtual"><scope>endstone::CreatureSpawner</scope><name>update</name></member>
+      <member refid="classendstone_1_1BlockState_1a6bb9b025f0e02b8ec732e6a74c27b599" prot="public" virt="pure-virtual"><scope>endstone::CreatureSpawner</scope><name>update</name></member>
+      <member refid="classendstone_1_1BlockState_1a0f5a2bfe6eb4e93737f1cb9f47b54154" prot="public" virt="non-virtual"><scope>endstone::CreatureSpawner</scope><name>~BlockState</name></member>
+      <member refid="classendstone_1_1Object_1adfddc886af4b1d0e09ddac7d0391b4d2" prot="public" virt="virtual"><scope>endstone::CreatureSpawner</scope><name>~Object</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

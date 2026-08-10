@@ -5,6 +5,7 @@
     <includes refid="block__state_8h" local="yes">endstone/block/block_state.h</includes>
     <includes refid="inventory_8h" local="yes">endstone/inventory/inventory.h</includes>
     <includedby refid="furnace_8h" local="yes">include/endstone/block/furnace.h</includedby>
+    <includedby refid="lectern_8h" local="yes">include/endstone/block/lectern.h</includedby>
     <incdepgraph>
       <node id="35">
         <label>endstone/ban/ban_entry.h</label>
@@ -775,10 +776,16 @@
         <link refid="container_8h"/>
         <childnode refid="2" relation="include">
         </childnode>
+        <childnode refid="3" relation="include">
+        </childnode>
       </node>
       <node id="2">
         <label>include/endstone/block/furnace.h</label>
         <link refid="furnace_8h_source"/>
+      </node>
+      <node id="3">
+        <label>include/endstone/block/lectern.h</label>
+        <link refid="lectern_8h_source"/>
       </node>
     </invincdepgraph>
     <innerclass refid="classendstone_1_1Container" prot="public">endstone::Container</innerclass>

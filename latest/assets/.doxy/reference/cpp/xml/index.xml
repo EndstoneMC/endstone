@@ -542,6 +542,13 @@
     <member refid="classendstone_1_1Button_1a60036ee46a14e1782aa4a9ae1623a823" kind="function"><name>getOnClick</name></member>
     <member refid="classendstone_1_1Button_1a06e11b2cc8acd773c5fd6e1d482255c0" kind="function"><name>setOnClick</name></member>
   </compound>
+  <compound refid="classendstone_1_1Campfire" kind="class"><name>endstone::Campfire</name>
+    <member refid="classendstone_1_1Campfire_1a6f1f50f5198d2f16b2228ad209652672" kind="function"><name>getSize</name></member>
+    <member refid="classendstone_1_1Campfire_1a92b04e0b1d4e97e85de029b094e4b003" kind="function"><name>getItem</name></member>
+    <member refid="classendstone_1_1Campfire_1a3aba685870ee28dd84891167535fd574" kind="function"><name>setItem</name></member>
+    <member refid="classendstone_1_1Campfire_1ab206115a9d2284df9cdf6b39c7548458" kind="function"><name>getCookTime</name></member>
+    <member refid="classendstone_1_1Campfire_1a052534c362511e2d990cb5cbd79a1eaf" kind="function"><name>setCookTime</name></member>
+  </compound>
   <compound refid="classendstone_1_1Cancellable" kind="class"><name>endstone::Cancellable</name>
     <member refid="classendstone_1_1Cancellable_1a268b73cc5bda0fa5923336d031814faa" kind="function"><name>isCancelled</name></member>
     <member refid="classendstone_1_1Cancellable_1aa12df44bcb66924d06a689d0dd07865e" kind="function"><name>setCancelled</name></member>
@@ -770,6 +777,24 @@
   </compound>
   <compound refid="classendstone_1_1Container" kind="class"><name>endstone::Container</name>
     <member refid="classendstone_1_1Container_1a9d0b9daf34f014c3e79fffeff6043758" kind="function"><name>getInventory</name></member>
+  </compound>
+  <compound refid="classendstone_1_1CreatureSpawner" kind="class"><name>endstone::CreatureSpawner</name>
+    <member refid="classendstone_1_1CreatureSpawner_1a955b85a4b4427806286ebefb7ec4b103" kind="function"><name>getSpawnedType</name></member>
+    <member refid="classendstone_1_1CreatureSpawner_1a85b9e84f8eb3416bd832befc737cce20" kind="function"><name>setSpawnedType</name></member>
+    <member refid="classendstone_1_1CreatureSpawner_1aff1b13549b24c312ac2b0671f3e0796f" kind="function"><name>getDelay</name></member>
+    <member refid="classendstone_1_1CreatureSpawner_1abe1c50824642bb4d357040df56fc4047" kind="function"><name>setDelay</name></member>
+    <member refid="classendstone_1_1CreatureSpawner_1ad120354ef26ed6e00a5ec43e44c74f9f" kind="function"><name>getMinSpawnDelay</name></member>
+    <member refid="classendstone_1_1CreatureSpawner_1a97c000991ae9363b126142b2195d169a" kind="function"><name>setMinSpawnDelay</name></member>
+    <member refid="classendstone_1_1CreatureSpawner_1a12935148358957b8f20edfee484613b7" kind="function"><name>getMaxSpawnDelay</name></member>
+    <member refid="classendstone_1_1CreatureSpawner_1ab060979340b6fa93da383376fc0a2761" kind="function"><name>setMaxSpawnDelay</name></member>
+    <member refid="classendstone_1_1CreatureSpawner_1aba7548d670dc0aae186991cdb379a69c" kind="function"><name>getSpawnCount</name></member>
+    <member refid="classendstone_1_1CreatureSpawner_1a162f389cdf0b4255421465adcb18f15b" kind="function"><name>setSpawnCount</name></member>
+    <member refid="classendstone_1_1CreatureSpawner_1aa958ea1812d1d341ac369cb1f96ba92c" kind="function"><name>getMaxNearbyEntities</name></member>
+    <member refid="classendstone_1_1CreatureSpawner_1a457464b53d1d59971ceaafc5e6a00f4c" kind="function"><name>setMaxNearbyEntities</name></member>
+    <member refid="classendstone_1_1CreatureSpawner_1a24aa50f83dad9986506a9772c5a6f1a7" kind="function"><name>getRequiredPlayerRange</name></member>
+    <member refid="classendstone_1_1CreatureSpawner_1a0e4fbc8991cd5637df7f2ca06f943d30" kind="function"><name>setRequiredPlayerRange</name></member>
+    <member refid="classendstone_1_1CreatureSpawner_1ae96ebb1226c8863d658e3f759900c71f" kind="function"><name>getSpawnRange</name></member>
+    <member refid="classendstone_1_1CreatureSpawner_1a9edf19b3e4c5acba6b153bafe38cacfb" kind="function"><name>setSpawnRange</name></member>
   </compound>
   <compound refid="classendstone_1_1Criteria" kind="class"><name>endstone::Criteria</name>
     <member refid="classendstone_1_1Criteria_1a31b8a6a25a4c37fa964fc34563a882d1" kind="enum"><name>Type</name></member>
@@ -1399,6 +1424,10 @@
   </compound>
   <compound refid="classendstone_1_1LeavesDecayEvent" kind="class"><name>endstone::LeavesDecayEvent</name>
     <member refid="classendstone_1_1LeavesDecayEvent_1a23c36eb8a563622f3aa57814e8f807a4" kind="function"><name>ENDSTONE_EVENT</name></member>
+  </compound>
+  <compound refid="classendstone_1_1Lectern" kind="class"><name>endstone::Lectern</name>
+    <member refid="classendstone_1_1Lectern_1ab4ed80eb12a64b4042c610b80d35aa28" kind="function"><name>getPage</name></member>
+    <member refid="classendstone_1_1Lectern_1aae72972a0c33053c339e4eb9f486044a" kind="function"><name>setPage</name></member>
   </compound>
   <compound refid="classendstone_1_1Level" kind="class"><name>endstone::Level</name>
     <member refid="classendstone_1_1Level_1ac053439dfd214fde2596aecbd158cb97" kind="function"><name>~Level</name></member>
@@ -3070,11 +3099,17 @@
   </compound>
   <compound refid="block__type_8h" kind="file"><name>block_type.h</name>
   </compound>
+  <compound refid="campfire_8h" kind="file"><name>campfire.h</name>
+  </compound>
   <compound refid="container_8h" kind="file"><name>container.h</name>
+  </compound>
+  <compound refid="creature__spawner_8h" kind="file"><name>creature_spawner.h</name>
   </compound>
   <compound refid="furnace_8h" kind="file"><name>furnace.h</name>
   </compound>
   <compound refid="item__frame_8h" kind="file"><name>item_frame.h</name>
+  </compound>
+  <compound refid="lectern_8h" kind="file"><name>lectern.h</name>
   </compound>
   <compound refid="sign_8h" kind="file"><name>sign.h</name>
   </compound>

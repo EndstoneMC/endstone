@@ -27,9 +27,12 @@
 | file | [**block\_face.h**](block__face_8h.md) <br> |
 | file | [**block\_state.h**](block__state_8h.md) <br> |
 | file | [**block\_type.h**](block__type_8h.md) <br> |
+| file | [**campfire.h**](campfire_8h.md) <br> |
 | file | [**container.h**](container_8h.md) <br> |
+| file | [**creature\_spawner.h**](creature__spawner_8h.md) <br> |
 | file | [**furnace.h**](furnace_8h.md) <br> |
 | file | [**item\_frame.h**](item__frame_8h.md) <br> |
+| file | [**lectern.h**](lectern_8h.md) <br> |
 | file | [**sign.h**](sign_8h.md) <br> |
 
 

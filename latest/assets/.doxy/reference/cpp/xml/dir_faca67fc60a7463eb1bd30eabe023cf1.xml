@@ -9,9 +9,12 @@
     <innerfile refid="block__face_8h">block_face.h</innerfile>
     <innerfile refid="block__state_8h">block_state.h</innerfile>
     <innerfile refid="block__type_8h">block_type.h</innerfile>
+    <innerfile refid="campfire_8h">campfire.h</innerfile>
     <innerfile refid="container_8h">container.h</innerfile>
+    <innerfile refid="creature__spawner_8h">creature_spawner.h</innerfile>
     <innerfile refid="furnace_8h">furnace.h</innerfile>
     <innerfile refid="item__frame_8h">item_frame.h</innerfile>
+    <innerfile refid="lectern_8h">lectern.h</innerfile>
     <innerfile refid="sign_8h">sign.h</innerfile>
     <briefdescription>
     </briefdescription>

@@ -4,6 +4,7 @@
     <compoundname>endstone::Container</compoundname>
     <basecompoundref refid="classendstone_1_1BlockState" prot="public" virt="non-virtual">endstone::BlockState</basecompoundref>
     <derivedcompoundref refid="classendstone_1_1Furnace" prot="public" virt="non-virtual">endstone::Furnace</derivedcompoundref>
+    <derivedcompoundref refid="classendstone_1_1Lectern" prot="public" virt="non-virtual">endstone::Lectern</derivedcompoundref>
     <includes refid="container_8h" local="no">endstone/block/container.h</includes>
     <sectiondef kind="public-func">
       <memberdef kind="function" id="classendstone_1_1Container_1a9d0b9daf34f014c3e79fffeff6043758" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
@@ -47,6 +48,12 @@
       <node id="4">
         <label>endstone::Furnace</label>
         <link refid="classendstone_1_1Furnace"/>
+        <childnode refid="1" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="5">
+        <label>endstone::Lectern</label>
+        <link refid="classendstone_1_1Lectern"/>
         <childnode refid="1" relation="public-inheritance">
         </childnode>
       </node>

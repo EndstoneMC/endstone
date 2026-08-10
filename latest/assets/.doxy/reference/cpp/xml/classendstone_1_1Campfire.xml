@@ -1,0 +1,241 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.8" xml:lang="en-US">
+  <compounddef id="classendstone_1_1Campfire" kind="class" language="C++" prot="public" abstract="yes">
+    <compoundname>endstone::Campfire</compoundname>
+    <basecompoundref refid="classendstone_1_1BlockState" prot="public" virt="non-virtual">endstone::BlockState</basecompoundref>
+    <includes refid="campfire_8h" local="no">endstone/block/campfire.h</includes>
+    <sectiondef kind="public-func">
+      <memberdef kind="function" id="classendstone_1_1Campfire_1a6f1f50f5198d2f16b2228ad209652672" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
+        <type><ref refid="classendstone_1_1Identifier" kindref="compound">int</ref></type>
+        <definition>virtual int endstone::Campfire::getSize</definition>
+        <argsstring>() const =0</argsstring>
+        <name>getSize</name>
+        <qualifiedname>endstone::Campfire::getSize</qualifiedname>
+        <briefdescription>
+<para>Gets the number of items this campfire can cook at once. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="return"><para>the number of slots </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/block/campfire.h" line="34" column="18"/>
+      </memberdef>
+      <memberdef kind="function" id="classendstone_1_1Campfire_1a92b04e0b1d4e97e85de029b094e4b003" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
+        <type>std::optional&lt; <ref refid="classendstone_1_1ItemStack" kindref="compound">ItemStack</ref> &gt;</type>
+        <definition>virtual std::optional&lt; ItemStack &gt; endstone::Campfire::getItem</definition>
+        <argsstring>(int index) const =0</argsstring>
+        <name>getItem</name>
+        <qualifiedname>endstone::Campfire::getItem</qualifiedname>
+        <param>
+          <type><ref refid="classendstone_1_1Identifier" kindref="compound">int</ref></type>
+          <declname>index</declname>
+        </param>
+        <briefdescription>
+<para>Gets the item currently cooking in the given slot. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>index</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>the slot, between 0 and <computeroutput><ref refid="classendstone_1_1Campfire_1a6f1f50f5198d2f16b2228ad209652672" kindref="member">getSize()</ref></computeroutput> - 1 </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>the item, or <computeroutput>std::nullopt</computeroutput> if the slot is empty </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/block/campfire.h" line="42" column="28"/>
+      </memberdef>
+      <memberdef kind="function" id="classendstone_1_1Campfire_1a3aba685870ee28dd84891167535fd574" prot="public" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
+        <type><ref refid="classendstone_1_1Identifier" kindref="compound">void</ref></type>
+        <definition>virtual void endstone::Campfire::setItem</definition>
+        <argsstring>(int index, const std::optional&lt; ItemStack &gt; &amp;item)=0</argsstring>
+        <name>setItem</name>
+        <qualifiedname>endstone::Campfire::setItem</qualifiedname>
+        <param>
+          <type><ref refid="classendstone_1_1Identifier" kindref="compound">int</ref></type>
+          <declname>index</declname>
+        </param>
+        <param>
+          <type><ref refid="classendstone_1_1Identifier" kindref="compound">const</ref> std::optional&lt; <ref refid="classendstone_1_1ItemStack" kindref="compound">ItemStack</ref> &gt; &amp;</type>
+          <declname>item</declname>
+        </param>
+        <briefdescription>
+<para>Sets the item currently cooking in the given slot. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>index</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>the slot, between 0 and <computeroutput><ref refid="classendstone_1_1Campfire_1a6f1f50f5198d2f16b2228ad209652672" kindref="member">getSize()</ref></computeroutput> - 1 </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>item</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>the item, or <computeroutput>std::nullopt</computeroutput> to empty the slot </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/block/campfire.h" line="50" column="18"/>
+      </memberdef>
+      <memberdef kind="function" id="classendstone_1_1Campfire_1ab206115a9d2284df9cdf6b39c7548458" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
+        <type><ref refid="classendstone_1_1Identifier" kindref="compound">int</ref></type>
+        <definition>virtual int endstone::Campfire::getCookTime</definition>
+        <argsstring>(int index) const =0</argsstring>
+        <name>getCookTime</name>
+        <qualifiedname>endstone::Campfire::getCookTime</qualifiedname>
+        <param>
+          <type><ref refid="classendstone_1_1Identifier" kindref="compound">int</ref></type>
+          <declname>index</declname>
+        </param>
+        <briefdescription>
+<para>Gets how long the item in the given slot has been cooking for. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>index</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>the slot, between 0 and <computeroutput><ref refid="classendstone_1_1Campfire_1a6f1f50f5198d2f16b2228ad209652672" kindref="member">getSize()</ref></computeroutput> - 1 </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>the cook time, in ticks </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/block/campfire.h" line="58" column="18"/>
+      </memberdef>
+      <memberdef kind="function" id="classendstone_1_1Campfire_1a052534c362511e2d990cb5cbd79a1eaf" prot="public" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
+        <type><ref refid="classendstone_1_1Identifier" kindref="compound">void</ref></type>
+        <definition>virtual void endstone::Campfire::setCookTime</definition>
+        <argsstring>(int index, int cook_time)=0</argsstring>
+        <name>setCookTime</name>
+        <qualifiedname>endstone::Campfire::setCookTime</qualifiedname>
+        <param>
+          <type><ref refid="classendstone_1_1Identifier" kindref="compound">int</ref></type>
+          <declname>index</declname>
+        </param>
+        <param>
+          <type><ref refid="classendstone_1_1Identifier" kindref="compound">int</ref></type>
+          <declname>cook_time</declname>
+        </param>
+        <briefdescription>
+<para>Sets how long the item in the given slot has been cooking for. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>index</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>the slot, between 0 and <computeroutput><ref refid="classendstone_1_1Campfire_1a6f1f50f5198d2f16b2228ad209652672" kindref="member">getSize()</ref></computeroutput> - 1 </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>cook_time</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>the cook time, in ticks </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/block/campfire.h" line="66" column="18"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+<para>Represents a captured state of a campfire. </para>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="2">
+        <label>endstone::BlockState</label>
+        <link refid="classendstone_1_1BlockState"/>
+        <childnode refid="3" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="1">
+        <label>endstone::Campfire</label>
+        <link refid="classendstone_1_1Campfire"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="3">
+        <label>endstone::Object</label>
+        <link refid="classendstone_1_1Object"/>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="2">
+        <label>endstone::BlockState</label>
+        <link refid="classendstone_1_1BlockState"/>
+        <childnode refid="3" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="1">
+        <label>endstone::Campfire</label>
+        <link refid="classendstone_1_1Campfire"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="3">
+        <label>endstone::Object</label>
+        <link refid="classendstone_1_1Object"/>
+      </node>
+    </collaborationgraph>
+    <location file="include/endstone/block/campfire.h" line="27" column="1" bodyfile="include/endstone/block/campfire.h" bodystart="27" bodyend="67"/>
+    <listofallmembers>
+      <member refid="classendstone_1_1Object_1a798b5128ce018bbbe8ca949ba78c3db1" prot="public" virt="non-virtual"><scope>endstone::Campfire</scope><name>as</name></member>
+      <member refid="classendstone_1_1Object_1ae0f38a62da4c186fce272145e2590cc1" prot="public" virt="non-virtual"><scope>endstone::Campfire</scope><name>as</name></member>
+      <member refid="classendstone_1_1BlockState_1af4b36588a23e8df26ea57425c206265f" prot="public" virt="pure-virtual"><scope>endstone::Campfire</scope><name>getBlock</name></member>
+      <member refid="classendstone_1_1Object_1aaaeb27e8e442e5adb772ae0d1af1c33f" prot="public" virt="pure-virtual"><scope>endstone::Campfire</scope><name>getClassTypeId</name></member>
+      <member refid="classendstone_1_1Campfire_1ab206115a9d2284df9cdf6b39c7548458" prot="public" virt="pure-virtual"><scope>endstone::Campfire</scope><name>getCookTime</name></member>
+      <member refid="classendstone_1_1BlockState_1a18ebe2b1c527ebb7b915157bb2d0c557" prot="public" virt="pure-virtual"><scope>endstone::Campfire</scope><name>getData</name></member>
+      <member refid="classendstone_1_1BlockState_1a761183a7cef8831563b40ca0da0081ed" prot="public" virt="pure-virtual"><scope>endstone::Campfire</scope><name>getDimension</name></member>
+      <member refid="classendstone_1_1Campfire_1a92b04e0b1d4e97e85de029b094e4b003" prot="public" virt="pure-virtual"><scope>endstone::Campfire</scope><name>getItem</name></member>
+      <member refid="classendstone_1_1BlockState_1a6f8f4a475c2c955b1a883877d9b4baf5" prot="public" virt="pure-virtual"><scope>endstone::Campfire</scope><name>getLocation</name></member>
+      <member refid="classendstone_1_1Campfire_1a6f1f50f5198d2f16b2228ad209652672" prot="public" virt="pure-virtual"><scope>endstone::Campfire</scope><name>getSize</name></member>
+      <member refid="classendstone_1_1BlockState_1aae3431979452c2b71ba615ecaa110615" prot="public" virt="pure-virtual"><scope>endstone::Campfire</scope><name>getType</name></member>
+      <member refid="classendstone_1_1BlockState_1a465f89196adeb9f1cb76b1425f8b1856" prot="public" virt="pure-virtual"><scope>endstone::Campfire</scope><name>getX</name></member>
+      <member refid="classendstone_1_1BlockState_1a26cb455d3bb6d9ab6f703d1df14c9232" prot="public" virt="pure-virtual"><scope>endstone::Campfire</scope><name>getY</name></member>
+      <member refid="classendstone_1_1BlockState_1a1d4ccdc3539f2d549ef3d98393bb89af" prot="public" virt="pure-virtual"><scope>endstone::Campfire</scope><name>getZ</name></member>
+      <member refid="classendstone_1_1Object_1ae8213ae15ad1b14e4631399c6b18960a" prot="public" virt="non-virtual"><scope>endstone::Campfire</scope><name>is</name></member>
+      <member refid="classendstone_1_1Object_1a20376536a5f64ef02b2569af132171d4" prot="public" virt="pure-virtual"><scope>endstone::Campfire</scope><name>isInstanceOf</name></member>
+      <member refid="classendstone_1_1Campfire_1a052534c362511e2d990cb5cbd79a1eaf" prot="public" virt="pure-virtual"><scope>endstone::Campfire</scope><name>setCookTime</name></member>
+      <member refid="classendstone_1_1BlockState_1ac85e292da7159b3835cc3919e68c08c7" prot="public" virt="pure-virtual"><scope>endstone::Campfire</scope><name>setData</name></member>
+      <member refid="classendstone_1_1Campfire_1a3aba685870ee28dd84891167535fd574" prot="public" virt="pure-virtual"><scope>endstone::Campfire</scope><name>setItem</name></member>
+      <member refid="classendstone_1_1BlockState_1adf633410dbefd527bd7a7e423223de02" prot="public" virt="pure-virtual"><scope>endstone::Campfire</scope><name>setType</name></member>
+      <member refid="classendstone_1_1BlockState_1aeaca92e63b3fa7bf37eb82e59bb9a45d" prot="public" virt="pure-virtual"><scope>endstone::Campfire</scope><name>update</name></member>
+      <member refid="classendstone_1_1BlockState_1a4d603b37f4b38df4151ced22c7f78331" prot="public" virt="pure-virtual"><scope>endstone::Campfire</scope><name>update</name></member>
+      <member refid="classendstone_1_1BlockState_1a6bb9b025f0e02b8ec732e6a74c27b599" prot="public" virt="pure-virtual"><scope>endstone::Campfire</scope><name>update</name></member>
+      <member refid="classendstone_1_1BlockState_1a0f5a2bfe6eb4e93737f1cb9f47b54154" prot="public" virt="non-virtual"><scope>endstone::Campfire</scope><name>~BlockState</name></member>
+      <member refid="classendstone_1_1Object_1adfddc886af4b1d0e09ddac7d0391b4d2" prot="public" virt="virtual"><scope>endstone::Campfire</scope><name>~Object</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>
