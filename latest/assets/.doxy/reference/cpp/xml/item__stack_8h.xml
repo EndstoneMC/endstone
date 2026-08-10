@@ -11,6 +11,7 @@
     <includes refid="item__meta_8h" local="yes">endstone/inventory/meta/item_meta.h</includes>
     <includes refid="tag_8h" local="yes">endstone/nbt/tag.h</includes>
     <includedby refid="item_8h" local="yes">include/endstone/actor/item.h</includedby>
+    <includedby refid="item__frame_8h" local="yes">include/endstone/block/item_frame.h</includedby>
     <includedby refid="block__cook__event_8h" local="yes">include/endstone/event/block/block_cook_event.h</includedby>
     <includedby refid="player__drop__item__event_8h" local="yes">include/endstone/event/player/player_drop_item_event.h</includedby>
     <includedby refid="player__interact__event_8h" local="yes">include/endstone/event/player/player_interact_event.h</includedby>
@@ -856,6 +857,10 @@
         </childnode>
       </node>
       <node id="14">
+        <label>include/endstone/block/item_frame.h</label>
+        <link refid="item__frame_8h_source"/>
+      </node>
+      <node id="15">
         <label>include/endstone/event/block/block_cook_event.h</label>
         <link refid="block__cook__event_8h_source"/>
       </node>
@@ -887,15 +892,15 @@
         <childnode refid="5" relation="include">
         </childnode>
       </node>
-      <node id="15">
+      <node id="16">
         <label>include/endstone/event/player/player_drop_item_event.h</label>
         <link refid="player__drop__item__event_8h_source"/>
       </node>
-      <node id="16">
+      <node id="17">
         <label>include/endstone/event/player/player_interact_event.h</label>
         <link refid="player__interact__event_8h_source"/>
       </node>
-      <node id="17">
+      <node id="18">
         <label>include/endstone/event/player/player_item_consume_event.h</label>
         <link refid="player__item__consume__event_8h_source"/>
       </node>
@@ -934,10 +939,12 @@
         </childnode>
         <childnode refid="18" relation="include">
         </childnode>
+        <childnode refid="19" relation="include">
+        </childnode>
         <childnode refid="4" relation="include">
         </childnode>
       </node>
-      <node id="18">
+      <node id="19">
         <label>include/endstone/inventory/recipe.h</label>
         <link refid="recipe_8h_source"/>
       </node>

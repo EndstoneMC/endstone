@@ -117,6 +117,7 @@ _Represents a button with text and an optional icon._
 | class | [**IpBanList**](classendstone_1_1IpBanList.md) <br>_Represents a ban list, containing banned IP addresses._  |
 | class | [**Item**](classendstone_1_1Item.md) <br>_Represents a dropped item that can be picked up by players._  |
 | class | [**ItemFactory**](classendstone_1_1ItemFactory.md) <br>_An interface to the methods used to create item metadata._  |
+| class | [**ItemFrame**](classendstone_1_1ItemFrame.md) <br>_Represents a captured state of an item frame._  |
 | class | [**ItemMeta**](classendstone_1_1ItemMeta.md) <br>_Represents the metadata of a generic item._  |
 | class | [**ItemStack**](classendstone_1_1ItemStack.md) <br>_Represents a stack of items._  |
 | class | [**ItemType**](classendstone_1_1ItemType.md) <br>_Represents an item type._  |
@@ -258,6 +259,7 @@ _Represents a button with text and an optional icon._
 | typedef [**Identifier**](classendstone_1_1Identifier.md)&lt; [**class**](classendstone_1_1Identifier.md) [**PotionType**](classendstone_1_1PotionType.md) &gt; | [**PotionId**](#typedef-potionid)  <br> |
 | enum std::uint8\_t | [**RenderType**](#enum-rendertype)  <br>_Controls the way in which an_ [_**Objective**_](classendstone_1_1Objective.md) _is rendered on the client side._ |
 | typedef nonstd::expected&lt; [**T**](classendstone_1_1Identifier.md), std::string &gt; | [**Result**](#typedef-result)  <br>_Holds either a value of type T on success or an error message on failure._  |
+| enum  | [**Rotation**](#enum-rotation)  <br>_Represents a rotation based orientation, like that on a clock._  |
 | typedef std::variant&lt; std::string, [**NotNull**](classendstone_1_1NotNull.md)&lt; [**Player**](classendstone_1_1Player.md) &gt;, [**NotNull**](classendstone_1_1NotNull.md)&lt; [**Actor**](classendstone_1_1Actor.md) &gt; &gt; | [**ScoreEntry**](#typedef-scoreentry)  <br>_An entry for a score._  |
 | enum  | [**ServicePriority**](#enum-servicepriority)  <br>_Represents various priorities of a provider._  |
 | typedef [**nbt::ValueTag**](classendstone_1_1nbt_1_1ValueTag.md)&lt; std::int16\_t &gt; | [**ShortTag**](#typedef-shorttag)  <br> |
@@ -889,6 +891,33 @@ using endstone::Result = typedef nonstd::expected<T, std::string>;
 
 
 
+
+<hr>
+
+
+
+### enum Rotation 
+
+_Represents a rotation based orientation, like that on a clock._ 
+```C++
+enum endstone::Rotation {
+    None = 0,
+    Clockwise45 = 1,
+    Clockwise = 2,
+    Clockwise135 = 3,
+    Flipped = 4,
+    Flipped45 = 5,
+    CounterClockwise = 6,
+    CounterClockwise45 = 7
+};
+```
+
+
+
+It represents how something is viewed, as opposed to cardinal directions. 
+
+
+        
 
 <hr>
 

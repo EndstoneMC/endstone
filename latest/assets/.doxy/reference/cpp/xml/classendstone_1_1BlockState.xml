@@ -4,6 +4,7 @@
     <compoundname>endstone::BlockState</compoundname>
     <basecompoundref refid="classendstone_1_1Object" prot="public" virt="non-virtual">endstone::Object</basecompoundref>
     <derivedcompoundref refid="classendstone_1_1Container" prot="public" virt="non-virtual">endstone::Container</derivedcompoundref>
+    <derivedcompoundref refid="classendstone_1_1ItemFrame" prot="public" virt="non-virtual">endstone::ItemFrame</derivedcompoundref>
     <includes refid="block__state_8h" local="no">endstone/block/block_state.h</includes>
     <sectiondef kind="public-func">
       <memberdef kind="function" id="classendstone_1_1BlockState_1a0f5a2bfe6eb4e93737f1cb9f47b54154" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
@@ -336,6 +337,12 @@
       <node id="3">
         <label>endstone::Container</label>
         <link refid="classendstone_1_1Container"/>
+        <childnode refid="1" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="4">
+        <label>endstone::ItemFrame</label>
+        <link refid="classendstone_1_1ItemFrame"/>
         <childnode refid="1" relation="public-inheritance">
         </childnode>
       </node>

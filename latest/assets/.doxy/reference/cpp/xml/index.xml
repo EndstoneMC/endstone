@@ -1299,6 +1299,14 @@
     <member refid="classendstone_1_1ItemFactory_1a3addbbc69664b64ec93e2a0ceb8b7217" kind="function"><name>equals</name></member>
     <member refid="classendstone_1_1ItemFactory_1a084aacc2614dd8e9cc3b29ff499fddd3" kind="function"><name>asMetaFor</name></member>
   </compound>
+  <compound refid="classendstone_1_1ItemFrame" kind="class"><name>endstone::ItemFrame</name>
+    <member refid="classendstone_1_1ItemFrame_1a028e5c9152a2f02b01dac98921116abf" kind="function"><name>getItem</name></member>
+    <member refid="classendstone_1_1ItemFrame_1abb68493efbfa0c6a2776e245fa24b6c7" kind="function"><name>setItem</name></member>
+    <member refid="classendstone_1_1ItemFrame_1ac3da3a6a48bf9ac4ce8a5e865192a0d0" kind="function"><name>getItemDropChance</name></member>
+    <member refid="classendstone_1_1ItemFrame_1a4e27ad5cceeb0e412adf8a532482823d" kind="function"><name>setItemDropChance</name></member>
+    <member refid="classendstone_1_1ItemFrame_1adbeb01a5390440bca12a5e48e390abea" kind="function"><name>getRotation</name></member>
+    <member refid="classendstone_1_1ItemFrame_1a3e8fda58898b06ee15a117b67d59c229" kind="function"><name>setRotation</name></member>
+  </compound>
   <compound refid="classendstone_1_1ItemMeta" kind="class"><name>endstone::ItemMeta</name>
     <member refid="classendstone_1_1ItemMeta_1a0a8bf5690f51d5e1438308d1858a1df4" kind="function"><name>hasDisplayName</name></member>
     <member refid="classendstone_1_1ItemMeta_1a612f7b82c6ece41678ed8881acab96ee" kind="function"><name>getDisplayName</name></member>
@@ -2881,6 +2889,15 @@
     <member refid="namespaceendstone_1a5e726f9a35fad2caa785b6225c768ca5a960b44c579bc2f6818d2daaf9e4c16f0" kind="enumvalue"><name>Normal</name></member>
     <member refid="namespaceendstone_1a5e726f9a35fad2caa785b6225c768ca5a655d20c1ca69519ca647684edbb2db35" kind="enumvalue"><name>High</name></member>
     <member refid="namespaceendstone_1a5e726f9a35fad2caa785b6225c768ca5a582996407922dab08d5cf2b3d2a7c1c9" kind="enumvalue"><name>Highest</name></member>
+    <member refid="namespaceendstone_1a24bd99aeca0c8507f6a37d0cede11930" kind="enum"><name>Rotation</name></member>
+    <member refid="namespaceendstone_1a24bd99aeca0c8507f6a37d0cede11930a6adf97f83acf6453d4a6a4b1070f3754" kind="enumvalue"><name>None</name></member>
+    <member refid="namespaceendstone_1a24bd99aeca0c8507f6a37d0cede11930a50174897113a205bfffe7320e55f2fe5" kind="enumvalue"><name>Clockwise45</name></member>
+    <member refid="namespaceendstone_1a24bd99aeca0c8507f6a37d0cede11930aba360a794737bcc8657a5b6e870d7ba8" kind="enumvalue"><name>Clockwise</name></member>
+    <member refid="namespaceendstone_1a24bd99aeca0c8507f6a37d0cede11930af1d06a4b891feb741ea29373cdfb1e88" kind="enumvalue"><name>Clockwise135</name></member>
+    <member refid="namespaceendstone_1a24bd99aeca0c8507f6a37d0cede11930accb65b05d2c3c5929771956b1a840cbd" kind="enumvalue"><name>Flipped</name></member>
+    <member refid="namespaceendstone_1a24bd99aeca0c8507f6a37d0cede11930a6a5e970554b67006a8470058044232c1" kind="enumvalue"><name>Flipped45</name></member>
+    <member refid="namespaceendstone_1a24bd99aeca0c8507f6a37d0cede11930a8f23635f9ec49db2161fc5cddf033a79" kind="enumvalue"><name>CounterClockwise</name></member>
+    <member refid="namespaceendstone_1a24bd99aeca0c8507f6a37d0cede11930ad65dca21990ac1bd52ecbd45a9fb7118" kind="enumvalue"><name>CounterClockwise45</name></member>
     <member refid="namespaceendstone_1a5a0414cc6da27c764e22b6cb9b64aaa4" kind="enum"><name>DisplaySlot</name></member>
     <member refid="namespaceendstone_1a5a0414cc6da27c764e22b6cb9b64aaa4a5b9ffa92c0234ccbdc123d9adc2ee438" kind="enumvalue"><name>BelowName</name></member>
     <member refid="namespaceendstone_1a5a0414cc6da27c764e22b6cb9b64aaa4aec90d7579b8e9e4c97501a75500e109a" kind="enumvalue"><name>PlayerList</name></member>
@@ -3030,6 +3047,8 @@
   <compound refid="block__type_8h" kind="file"><name>block_type.h</name>
   </compound>
   <compound refid="container_8h" kind="file"><name>container.h</name>
+  </compound>
+  <compound refid="item__frame_8h" kind="file"><name>item_frame.h</name>
   </compound>
   <compound refid="bar__color_8h" kind="file"><name>bar_color.h</name>
   </compound>
@@ -3347,6 +3366,8 @@
   <compound refid="potion__type_8h" kind="file"><name>potion_type.h</name>
   </compound>
   <compound refid="registry_8h" kind="file"><name>registry.h</name>
+  </compound>
+  <compound refid="rotation_8h" kind="file"><name>rotation.h</name>
   </compound>
   <compound refid="scheduler_8h" kind="file"><name>scheduler.h</name>
   </compound>

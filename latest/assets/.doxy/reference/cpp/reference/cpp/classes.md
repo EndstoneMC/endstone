@@ -273,6 +273,8 @@
 ([**endstone**](namespaceendstone.md))
 * [**ItemFactory**](classendstone_1_1ItemFactory.md)
 ([**endstone**](namespaceendstone.md))
+* [**ItemFrame**](classendstone_1_1ItemFrame.md)
+([**endstone**](namespaceendstone.md))
 * [**ItemMeta**](classendstone_1_1ItemMeta.md)
 ([**endstone**](namespaceendstone.md))
 * [**ItemStack**](classendstone_1_1ItemStack.md)

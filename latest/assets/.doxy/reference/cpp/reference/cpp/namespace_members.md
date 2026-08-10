@@ -112,6 +112,7 @@
 
 * **RenderType** ([**endstone**](namespaceendstone.md))
 * **Result** ([**endstone**](namespaceendstone.md))
+* **Rotation** ([**endstone**](namespaceendstone.md))
 * **read\_bytes** ([**endstone::nbt::detail**](namespaceendstone_1_1nbt_1_1detail.md))
 * **read\_length** ([**endstone::nbt::detail**](namespaceendstone_1_1nbt_1_1detail.md))
 * **read\_string** ([**endstone::nbt::detail**](namespaceendstone_1_1nbt_1_1detail.md))

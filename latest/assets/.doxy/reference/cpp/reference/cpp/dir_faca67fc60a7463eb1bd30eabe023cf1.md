@@ -28,6 +28,7 @@
 | file | [**block\_state.h**](block__state_8h.md) <br> |
 | file | [**block\_type.h**](block__type_8h.md) <br> |
 | file | [**container.h**](container_8h.md) <br> |
+| file | [**item\_frame.h**](item__frame_8h.md) <br> |
 
 
 

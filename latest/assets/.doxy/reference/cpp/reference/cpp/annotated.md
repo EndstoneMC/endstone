@@ -85,6 +85,7 @@ Here are the classes, structs, unions and interfaces with brief descriptions:
     * **class** [**IpBanList**](classendstone_1_1IpBanList.md) _Represents a ban list, containing banned IP addresses._     
     * **class** [**Item**](classendstone_1_1Item.md) _Represents a dropped item that can be picked up by players._     
     * **class** [**ItemFactory**](classendstone_1_1ItemFactory.md) _An interface to the methods used to create item metadata._     
+    * **class** [**ItemFrame**](classendstone_1_1ItemFrame.md) _Represents a captured state of an item frame._     
     * **class** [**ItemMeta**](classendstone_1_1ItemMeta.md) _Represents the metadata of a generic item._     
     * **class** [**ItemStack**](classendstone_1_1ItemStack.md) _Represents a stack of items._     
     * **class** [**ItemType**](classendstone_1_1ItemType.md) _Represents an item type._     

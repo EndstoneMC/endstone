@@ -17,7 +17,7 @@ _Represents a captured state of a block, which will not update automatically._ [
 Inherits the following classes: [endstone::Object](classendstone_1_1Object.md)
 
 
-Inherited by the following classes: [endstone::Container](classendstone_1_1Container.md)
+Inherited by the following classes: [endstone::Container](classendstone_1_1Container.md),  [endstone::ItemFrame](classendstone_1_1ItemFrame.md)
 
 
 
