@@ -455,6 +455,19 @@ extra = 0
 pattern = "55 41 57 41 56 41 55 41 54 53 50 48 8B 47 08 48 85 C0 0F 84 ? ? ? ? 48 83 38 00 0F 84 ? ? ? ? 45 89 CF 44 89 C3 89 CD 41 89 D6 49 89 F4 49 89 FD 48 8B BE D0 01 00 00"
 
 [[signatures]]
+[[signatures]]
+name = "_ZNK13CauldronBlock3useERN11BlockEvents24BlockPlayerInteractEventE"
+relative = false
+extra = 0
+# 1. find CauldronBlock's constructor and follow its third event subscription, which registers the
+#    BlockPlayerInteract callback
+# 2. confirm the callback body against the old named DB: it reads Player& at +0x18 and the optional
+#    interaction result at +0x20, then performs cauldron item interaction
+# 3. the callback has no recoverable BDS name; use the compiler-generated ABI name for the verified
+#    const CauldronBlock::use declaration
+pattern = "55 41 57 41 56 41 55 41 54 53 48 81 EC A8 02 00 00 48 89 F3 4C 8B 76"
+
+[[signatures]]
 name = "_ZN11LeavesBlock10randomTickERN11BlockEvents20BlockRandomTickEventE"
 relative = false
 extra = 0

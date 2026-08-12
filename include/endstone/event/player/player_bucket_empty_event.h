@@ -14,14 +14,17 @@
 
 #pragma once
 
-class Actor;
-class BlockPos;
-class InteractionResult;
-class ItemStack;
+#include "endstone/event/player/player_bucket_event.h"
 
-namespace endstone::runtime {
+namespace endstone {
 
-void handleBucketFillResult(const ::InteractionResult &result, ::ItemStack &item_stack, ::Actor &actor,
-                            const ::BlockPos &position);
+/**
+ * Called when a player empties a bucket.
+ */
+class PlayerBucketEmptyEvent : public PlayerBucketEvent {
+public:
+    ENDSTONE_EVENT(PlayerBucketEmptyEvent);
+    using PlayerBucketEvent::PlayerBucketEvent;
+};
 
-}  // namespace endstone::runtime
+}  // namespace endstone

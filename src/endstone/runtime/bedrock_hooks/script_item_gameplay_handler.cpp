@@ -23,7 +23,6 @@
 #include "bedrock/world/actor/player/player.h"
 #include "bedrock/world/item/item.h"
 #include "bedrock/world/item/item_stack.h"
-#include "bedrock/world/item/registry/item_registry_manager.h"
 #include "bedrock/world/level/block/block.h"
 #include "bedrock/world/level/block_pos.h"
 #include "bedrock/world/level/game_type.h"
@@ -90,23 +89,23 @@ struct PendingBucketFill {
 
 thread_local std::optional<PendingBucketFill> pending_bucket_fill;
 
-InteractionResult bucketUseOn(
-    [[maybe_unused]] const ::Item *item,
-    ::ItemStack &item_stack,
-    ::Actor &actor,
-    BlockPos position,
-    [[maybe_unused]] FacingID face,
-    [[maybe_unused]] const Vec3 &click_pos)
+}  // namespace
+
+void endstone::runtime::handleBucketFillResult(const ::InteractionResult &result, ::ItemStack &item_stack,
+                                                ::Actor &actor, const ::BlockPos &position)
 {
-    const auto result = ENDSTONE_VHOOK_CALL_ORIGINAL(&bucketUseOn, item, item_stack, actor, position, face, click_pos);
-    if (!pending_bucket_fill || !actor.isPlayer()) {
-        return result;
+    if (!pending_bucket_fill) {
+        return;
+    }
+    if (!actor.isPlayer()) {
+        pending_bucket_fill.reset();
+        return;
     }
 
     auto *player = static_cast<::Player *>(&actor);
     if (pending_bucket_fill->player != player || pending_bucket_fill->position != position) {
         pending_bucket_fill.reset();
-        return result;
+        return;
     }
 
     if (result.isSuccessful() && pending_bucket_fill->write_item_stack) {
@@ -116,32 +115,6 @@ InteractionResult bucketUseOn(
                          : ::ItemStack::EMPTY_ITEM;
     }
     pending_bucket_fill.reset();
-    return result;
-}
-
-}  // namespace
-
-void endstone::runtime::installBucketFillHook()
-{
-    static bool installed = false;
-    if (installed) {
-        return;
-    }
-
-    const auto registry = ItemRegistryManager::getItemRegistry();
-    if (!registry.isValid()) {
-        return;
-    }
-
-    int aux_value = 0;
-    const auto bucket = registry.lookupByName(aux_value, "minecraft:bucket");
-    if (bucket.isNull()) {
-        return;
-    }
-
-    // Item::_useOn is the last virtual declared by the version-matched Item ABI.
-    endstone::runtime::vhook::create<129>(bucket.get(), &bucketUseOn);
-    installed = true;
 }
 
 bool handleEvent(ItemUseEvent &event)

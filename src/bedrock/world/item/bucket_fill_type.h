@@ -14,14 +14,20 @@
 
 #pragma once
 
-class Actor;
-class BlockPos;
-class InteractionResult;
-class ItemStack;
+enum class BucketFillType : short {
+    Unknown = -1,
+    Empty = 0,
+    Milk = 1,
+    Fish = 2,
+    Salmon = 3,
+    Tropicalfish = 4,
+    Pufferfish = 5,
+    Water = 8,
+    Lava = 10,
+    PowderSnow = 11,
+    Axolotl = 12,
+    Tadpole = 13,
+    SulfurCube = 14,
+};
 
-namespace endstone::runtime {
-
-void handleBucketFillResult(const ::InteractionResult &result, ::ItemStack &item_stack, ::Actor &actor,
-                            const ::BlockPos &position);
-
-}  // namespace endstone::runtime
+static_assert(sizeof(BucketFillType) == 2);

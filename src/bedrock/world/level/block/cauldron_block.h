@@ -14,14 +14,11 @@
 
 #pragma once
 
-class Actor;
-class BlockPos;
-class InteractionResult;
-class ItemStack;
+#include "bedrock/bedrock.h"
+#include "bedrock/world/level/block/actor_block.h"
+#include "bedrock/world/level/block/block_event.h"
 
-namespace endstone::runtime {
-
-void handleBucketFillResult(const ::InteractionResult &result, ::ItemStack &item_stack, ::Actor &actor,
-                            const ::BlockPos &position);
-
-}  // namespace endstone::runtime
+class CauldronBlock : public ActorBlock {
+public:
+    ENDSTONE_HOOK void use(BlockEvents::BlockPlayerInteractEvent &event_data) const;
+};

@@ -16,6 +16,7 @@
 
 #include <string>
 
+#include "bedrock/bedrock.h"
 #include "bedrock/deps/json/value.h"
 #include "bedrock/forward.h"
 #include "bedrock/resources/base_game_version.h"
@@ -26,6 +27,7 @@
 #include "bedrock/world/actor/actor_location.h"
 #include "bedrock/world/gamemode/interaction_result.h"
 #include "bedrock/world/interactions/mining/mine_block_item_effect_type.h"
+#include "bedrock/world/item/bucket_fill_type.h"
 #include "bedrock/world/item/item_descriptor.h"
 #include "bedrock/world/item/item_helper.h"
 #include "bedrock/world/item/rarity.h"
@@ -266,4 +268,17 @@ protected:
     std::unique_ptr<class CameraItemComponentLegacy> camera_component_legacy_;
     std::vector<std::function<void()>> on_reset_bai_callbacks_;
     std::vector<ItemTag> tags_;
+};
+
+BEDROCK_STATIC_ASSERT_SIZE(Item, 528, 456);
+
+class BucketItem : public Item {
+public:
+    [[nodiscard]] BucketFillType getFillType() const { return fill_type_; }
+
+    // Keep the detour non-virtual so it uses Item::_useOn's member-function ABI.
+    ENDSTONE_VHOOK InteractionResult useOn(ItemStack &, Actor &, BlockPos, FacingID, Vec3 const &) const;
+
+private:
+    BucketFillType fill_type_;
 };

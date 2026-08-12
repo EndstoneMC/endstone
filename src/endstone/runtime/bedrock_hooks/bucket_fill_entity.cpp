@@ -32,6 +32,7 @@
 #include "endstone/core/server.h"
 #include "endstone/event/player/player_bucket_fill_event.h"
 #include "endstone/runtime/bedrock_hooks/actor_interaction.h"
+#include "endstone/runtime/bedrock_hooks/bucket.h"
 
 namespace {
 
@@ -52,12 +53,14 @@ bool hasComponent(const ::Actor &actor, const char *name)
 
 bool isEmptyBucket(const ::ItemStack &item)
 {
-    return !item.isNull() && item.getItem() && item.getItem()->getFullItemName() == "minecraft:bucket";
+    return !item.isNull() && item.getItem() &&
+           endstone::runtime::getBucketFillType(*item.getItem()) == BucketFillType::Empty;
 }
 
 bool isMilkBucket(const ::ItemStack &item)
 {
-    return !item.isNull() && item.getItem() && item.getItem()->getFullItemName() == "minecraft:milk_bucket";
+    return !item.isNull() && item.getItem() &&
+           endstone::runtime::getBucketFillType(*item.getItem()) == BucketFillType::Milk;
 }
 
 bool isMilkable(const ::Actor &target)

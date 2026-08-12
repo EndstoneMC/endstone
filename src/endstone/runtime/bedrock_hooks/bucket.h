@@ -14,14 +14,14 @@
 
 #pragma once
 
-class Actor;
-class BlockPos;
-class InteractionResult;
-class ItemStack;
+#include "bedrock/world/item/bucket_fill_type.h"
+
+class Item;
 
 namespace endstone::runtime {
 
-void handleBucketFillResult(const ::InteractionResult &result, ::ItemStack &item_stack, ::Actor &actor,
-                            const ::BlockPos &position);
+BucketFillType getBucketFillType(const ::Item &item);
+bool isWaterContentBucket(const ::Item &item);
+void installBucketHook();
 
 }  // namespace endstone::runtime

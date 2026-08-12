@@ -57,6 +57,7 @@ __all__ = [
     "PlayerArmorStandManipulateEvent",
     "PlayerBedEnterEvent",
     "PlayerBedLeaveEvent",
+    "PlayerBucketEmptyEvent",
     "PlayerBucketEntityEvent",
     "PlayerBucketEvent",
     "PlayerBucketFillEvent",
@@ -622,6 +623,11 @@ class PlayerBucketEvent(PlayerEvent, Cancellable):
 class PlayerBucketFillEvent(PlayerBucketEvent):
     """
     Called when a player fills a bucket.
+    """
+
+class PlayerBucketEmptyEvent(PlayerBucketEvent):
+    """
+    Called when a player empties a bucket.
     """
 
 class PlayerBucketEntityEvent(PlayerEvent, Cancellable):

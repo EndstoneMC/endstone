@@ -15,6 +15,7 @@
 // limitations under the License.
 
 #include "bedrock/world/item/item.h"
+#include "bedrock/world/item/vanilla_item_tags.h"
 #include "bedrock/world/level/block/block.h"
 
 const std::string Item::TAG_DAMAGE = "Damage";
@@ -65,12 +66,21 @@ const WeakPtr<BlockType> &Item::getBlockType() const
 
 bool Item::hasTag(const ItemTag &tag) const
 {
+#ifdef _WIN32
     return std::ranges::any_of(tags_, [&tag](const auto &t) { return t == tag; });
+#else
+    return getFullItemName() == "minecraft:trident" && tag == VanillaItemTags::Trident;
+#endif
 }
 
 const std::vector<ItemTag> &Item::getTags() const
 {
+#ifdef _WIN32
     return tags_;
+#else
+    static const std::vector<ItemTag> empty_tags;
+    return empty_tags;
+#endif
 }
 
 Item &Item::setMinRequiredBaseGameVersion(const BaseGameVersion &base_game_version)
