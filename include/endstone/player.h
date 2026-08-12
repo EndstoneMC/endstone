@@ -21,6 +21,7 @@
 #include <variant>
 
 #include "endstone/actor/mob.h"
+#include "endstone/block/sign.h"
 #include "endstone/form/action_form.h"
 #include "endstone/form/message_form.h"
 #include "endstone/form/modal_form.h"
@@ -125,6 +126,32 @@ public:
      * @note Clearing via std::nullopt fires PlayerSetSpawnEvent with Cause::Plugin on supported native paths.
      */
     virtual void setRespawnLocation(std::optional<Location> location) = 0;
+
+    /**
+     * Opens a sign editor for this player.
+     *
+     * The sign must be placed in the same dimension as this player.
+     *
+     * @param sign the sign to open
+     * @param side the side of the sign to edit
+     * @throws std::invalid_argument if the sign is not placed or is in another dimension
+     */
+    virtual void openSign(const Sign &sign, Sign::Side side) = 0;
+
+    /**
+     * Opens a sign editor for this player at the given location.
+     *
+     * The sign must only be placed locally for this player before calling this method. Use sendBlockChange() to send
+     * the sign block to the player's client; this method does not create it automatically. No sign is required to be
+     * placed in the dimension.
+     * The dimension component of `location` is ignored; only its block coordinates are used.
+     * The client may enforce distance limits to the opened position.
+     * This does not trigger PlayerOpenSignEvent.
+     *
+     * @param location the block location of the sign
+     * @param side the side of the sign to edit
+     */
+    virtual void openVirtualSign(const Location &location, Sign::Side side) = 0;
 
     /**
      * Returns if the player is in sneak mode.

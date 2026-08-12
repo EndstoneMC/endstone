@@ -26,6 +26,7 @@
 #include "endstone/core/server.h"
 #include "endstone/detail.h"
 #include "endstone/runtime/bedrock_hooks/bucket.h"
+#include "endstone/runtime/bedrock_hooks/sign_item.h"
 #include "endstone/runtime/hook.h"
 #include "endstone/runtime/vtable_hook.h"
 
@@ -132,6 +133,7 @@ public:
         hookEventHandler(*level.getServerNetworkEventCoordinator().server_network_event_handler);
         server.setLevel(level);
         endstone::runtime::installBucketHook();
+        endstone::runtime::installSignItemHook();
         return ::EventResult::KeepGoing;
     }
 

@@ -31,6 +31,7 @@
 #include "bedrock/network/packet/emote_packet.h"
 #include "bedrock/network/packet/mob_equipment_packet.h"
 #include "bedrock/network/packet/modal_form_request_packet.h"
+#include "bedrock/network/packet/open_sign_packet.h"
 #include "bedrock/network/packet/play_sound_packet.h"
 #include "bedrock/network/packet/player_auth_input_packet.h"
 #include "bedrock/network/packet/player_skin_packet.h"
@@ -47,6 +48,7 @@
 #include "bedrock/world/actor/player/player.h"
 #include "bedrock/world/actor/provider/actor_offset.h"
 #include "bedrock/world/level/dimension/vanilla_dimensions.h"
+#include "bedrock/world/level/block/actor/block_actor.h"
 #include "bedrock/world/level/level.h"
 #include "endstone/block/block.h"
 #include "endstone/color_format.h"
@@ -63,6 +65,7 @@
 #include "endstone/core/message.h"
 #include "endstone/core/network/data_packet.h"
 #include "endstone/core/player_spawn_context.h"
+#include "endstone/core/player_open_sign.h"
 #include "endstone/core/server.h"
 #include "endstone/core/skin.h"
 #include "endstone/core/util/socket_address.h"
@@ -308,6 +311,32 @@ void EndstonePlayer::setRespawnLocation(std::optional<Location> location)
     const auto dimension_id = static_cast<const EndstoneDimension &>(dimension.value()).getHandle().getDimensionId();
     PlayerSpawnContextScope scope(PlayerSpawnContext{&getHandle(), PlayerSetSpawnEvent::Cause::Plugin});
     getHandle().setRespawnPosition(BlockPos(location->getX(), location->getY(), location->getZ()), dimension_id);
+}
+
+void EndstonePlayer::openSign(const Sign &sign, Sign::Side side)
+{
+    Preconditions::checkArgument(&*sign.getDimension() == &*getDimension(),
+                                 "Sign must be in the same dimension as the player.");
+
+    const BlockPos position{sign.getX(), sign.getY(), sign.getZ()};
+    auto &block_source = getHandle().getDimensionBlockSource();
+    const auto *block_entity = block_source.getBlockEntity(position);
+    Preconditions::checkArgument(block_entity != nullptr &&
+                                     (block_entity->getType() == BlockActorType::Sign ||
+                                      block_entity->getType() == BlockActorType::HangingSign),
+                                 "Sign must be placed.");
+
+    endstone::core::OpenSignCauseScope scope(getHandle(), position, endstone::core::OpenSignCause::Plugin);
+    getHandle().openSign(position, side == Sign::Side::Front);
+}
+
+void EndstonePlayer::openVirtualSign(const Location &location, Sign::Side side)
+{
+    const auto packet = MinecraftPackets::createPacket(MinecraftPacketIds::OpenSign);
+    const auto open_sign = std::static_pointer_cast<OpenSignPacket>(packet);
+    open_sign->payload.pos = {location.getBlockX(), location.getBlockY(), location.getBlockZ()};
+    open_sign->payload.is_front_side = side == Sign::Side::Front;
+    getHandle().sendNetworkPacket(*open_sign);
 }
 
 bool EndstonePlayer::isSneaking() const

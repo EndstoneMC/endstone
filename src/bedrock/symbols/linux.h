@@ -121,6 +121,7 @@ static constexpr std::array<std::pair<std::string_view, std::size_t>, 72> symbol
     {"_ZN20ServerNetworkHandler27disconnectClientWithMessageERK17NetworkIdentifier11SubClientIdN10Connection20DisconnectFailReasonERKNSt3__112basic_stringIcNS6_11char_traitsIcEENS6_9allocatorIcEEEENS6_8optionalISC_EE", 139214848},
     // ServerPlayer
     {"_ZN12ServerPlayer15changeDimensionE13DimensionType", 160278224},
+    {"_ZN12ServerPlayer8openSignERK8BlockPosb", 160268320},
     // ServerScoreboard
     {"_ZN16ServerScoreboardC2E23CommandSoftEnumRegistryP12LevelStorageN3gsl8not_nullIN7Bedrock15NonOwnerPointerI19GameplayUserManagerEEEE", 208972080},
     // ServerStandInCauldronSystem::SystemImpl

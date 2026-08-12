@@ -120,6 +120,7 @@ static constexpr std::array<std::pair<std::string_view, std::size_t>, 72> symbol
     {"?updateServerAnnouncement@ServerNetworkHandler@@QEAAXXZ", 10946368},
     // ServerPlayer
     {"?changeDimension@ServerPlayer@@UEAAXUDimensionType@@@Z", 6905168},
+    {"?openSign@ServerPlayer@@UEAAXAEBVBlockPos@@_N@Z", 6894784},
     // ServerScoreboard
     {"??0ServerScoreboard@@QEAA@VCommandSoftEnumRegistry@@PEAVLevelStorage@@V?$not_null@V?$NonOwnerPointer@VGameplayUserManager@@@Bedrock@@@gsl@@@Z", 1277104},
     // ServerStandInCauldronSystem::SystemImpl

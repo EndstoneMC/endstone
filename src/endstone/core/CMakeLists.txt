@@ -28,6 +28,7 @@ add_library(endstone_core
         platform_linux.cpp
         platform_windows.cpp
         player.cpp
+        player_open_sign.cpp
         registry.cpp
         server.cpp
         type.cpp

@@ -14,29 +14,8 @@
 
 #pragma once
 
-#include "bedrock/common_types.h"
-
-class Actor;
-class BlockPos;
-class InteractionResult;
-class Item;
-class ItemStack;
-class Player;
-
 namespace endstone::runtime {
 
-enum class BucketEmptyAction {
-    Continue,
-    Cancel,
-    Consume,
-};
-
-bool isWaterContentBucket(const ::Item &item);
-void cancelBucketEmptyResult();
-void handleCauldronBucketEmptyResult(::Player &player, const ::BlockPos &position, bool successful);
-BucketEmptyAction handleBucketEmptyEvent(::Actor &actor, const ::BlockPos &position, FacingID face,
-                                         const ::ItemStack &item_stack);
-void handleBucketEmptyResult(const ::InteractionResult &result, ::ItemStack &item_stack, ::Actor &actor,
-                             const ::BlockPos &position);
+void installSignItemHook();
 
 }  // namespace endstone::runtime

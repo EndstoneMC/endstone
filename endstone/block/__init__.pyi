@@ -601,6 +601,8 @@ class SignSide:
 class Sign(BlockState):
     """
     Represents a captured state of a sign.
+
+    Changes are kept in the captured state until `update()` is called.
     """
     class Side(enum.Enum):
         """

@@ -275,7 +275,11 @@ void init_block(py::module_ &m, py::classh<Block> &block)
     `Color` where Bukkit has a `DyeColor`.
 )doc");
 
-    auto sign = py::classh<Sign, BlockState>(m, "Sign", "Represents a captured state of a sign.");
+    auto sign = py::classh<Sign, BlockState>(m, "Sign", R"doc(
+    Represents a captured state of a sign.
+
+    Changes are kept in the captured state until `update()` is called.
+)doc");
 
     py::native_enum<Sign::Side>(sign, "Side", "enum.Enum", "Represents a side of a sign.")
         .value("FRONT", Sign::Side::Front)

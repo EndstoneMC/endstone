@@ -9,7 +9,7 @@ import numpy.typing
 
 from endstone.actor import Mob
 from endstone.ban import IpBanList, PlayerBanList
-from endstone.block import BlockData, BlockType
+from endstone.block import BlockData, BlockType, Sign
 from endstone.boss import BarColor, BarFlag, BarStyle, BossBar
 from endstone.command import CommandSender, ConsoleCommandSender
 from endstone.form import ActionForm, MessageForm, ModalForm
@@ -537,6 +537,36 @@ class Player(Mob):
 
         Note:
             Bedrock does not persist respawn yaw/pitch.
+        """
+
+    def open_sign(self, sign: Sign, side: Sign.Side) -> None:
+        """
+        Opens a sign editor for this player.
+
+        The sign must be placed in the same dimension as this player.
+
+        Args:
+            sign: The sign to open.
+            side: The side of the sign to edit.
+
+        Raises:
+            ValueError: If the sign is not placed or is in another dimension.
+        """
+
+    def open_virtual_sign(self, location: Location, side: Sign.Side) -> None:
+        """
+        Opens a sign editor for this player at the given location.
+
+        The sign must only be placed locally for this player before calling this method. Use `send_block_change()` to send
+        the sign block to the player's client; this method does not create it automatically. No sign is required to be
+        placed in the dimension.
+        The dimension component of `location` is ignored; only its block coordinates are used.
+        The client may enforce distance limits to the opened position.
+        This does not trigger `PlayerOpenSignEvent`.
+
+        Args:
+            location: The block location of the sign.
+            side: The side of the sign to edit.
         """
 
     @property

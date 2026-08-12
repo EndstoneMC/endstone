@@ -18,11 +18,13 @@
 
 #include "bedrock/core/math/vec3.h"
 #include "bedrock/world/actor/actor.h"
+#include "bedrock/world/level/block/block.h"
 #include "endstone/block/block_face.h"
 #include "endstone/core/block/block_face.h"
 #include "endstone/core/block/block_snapshot.h"
 #include "endstone/core/block/block_state.h"
 #include "endstone/core/player.h"
+#include "endstone/core/player_open_sign.h"
 #include "endstone/event/actor/actor_explode_event.h"
 #include "endstone/event/block/block_break_event.h"
 #include "endstone/event/block/block_explode_event.h"
@@ -49,6 +51,7 @@ bool handleEvent(const BlockTryPlaceByPlayerEvent &event)
         return true;
     }
 
+    endstone::core::clearPendingOpenSignCause(*player);
     const auto &server = endstone::core::EndstoneServer::getInstance();
     auto endstone_player = player->getEndstoneActor<endstone::core::EndstonePlayer>();
     auto &block_source = player->getDimension().getBlockSourceFromMainChunkSource();
@@ -153,8 +156,22 @@ GameplayHandlerResult<CoordinatorResult> ScriptBlockGameplayHandler::handleEvent
 {
     auto visitor = [&](auto &&arg) -> GameplayHandlerResult<CoordinatorResult> {
         using T = std::decay_t<decltype(arg)>;
-        if constexpr (std::is_same_v<T, Details::ValueOrRef<const BlockTryPlaceByPlayerEvent>> ||
-                      std::is_same_v<T, Details::ValueOrRef<const PistonActionEvent>>) {
+        if constexpr (std::is_same_v<T, Details::ValueOrRef<const BlockTryPlaceByPlayerEvent>>) {
+            if (!handleEvent(arg.value())) {
+                return {HandlerResult::BypassListeners, CoordinatorResult::Cancel};
+            }
+
+            auto result = ENDSTONE_VHOOK_CALL_ORIGINAL(&ScriptBlockGameplayHandler::handleEvent2, this, event);
+            if (result.return_value == CoordinatorResult::Continue &&
+                arg.value().permutation_to_place.hasProperty(BlockProperty::Sign)) {
+                if (const auto *player = WeakEntityRef(arg.value().player).tryUnwrap<::Player>(); player) {
+                    endstone::core::setPendingOpenSignCause(*player, arg.value().pos,
+                                                            endstone::core::OpenSignCause::Place);
+                }
+            }
+            return result;
+        }
+        else if constexpr (std::is_same_v<T, Details::ValueOrRef<const PistonActionEvent>>) {
             if (!handleEvent(arg.value())) {
                 return {HandlerResult::BypassListeners, CoordinatorResult::Cancel};
             }

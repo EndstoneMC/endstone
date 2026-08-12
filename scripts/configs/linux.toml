@@ -455,7 +455,6 @@ extra = 0
 pattern = "55 41 57 41 56 41 55 41 54 53 50 48 8B 47 08 48 85 C0 0F 84 ? ? ? ? 48 83 38 00 0F 84 ? ? ? ? 45 89 CF 44 89 C3 89 CD 41 89 D6 49 89 F4 49 89 FD 48 8B BE D0 01 00 00"
 
 [[signatures]]
-[[signatures]]
 name = "_ZN27ServerStandInCauldronSystem10SystemImpl20_checkInsideCauldronER19ActorOwnerComponent"
 relative = false
 extra = 0
@@ -629,6 +628,15 @@ relative = false
 extra = 0
 # Player::setRespawnPosition(BlockPos const&, DimensionType), confirmed in the 1.26.40 IDA database.
 pattern = "55 41 57 41 56 41 54 53 48 83 EC 50 48 89 FB 8B 06"
+
+[[signatures]]
+name = "_ZN12ServerPlayer8openSignERK8BlockPosb"
+relative = false
+extra = 0
+# 1. anchor ServerPlayer's vtable with Player::startSleepInBed and take the openSign slot after the sleep methods
+# 2. confirm the target takes a BlockPos and bool, resolves the sign block entity, and sends the edit request
+# 3. confirm vs the old named DB
+pattern = "55 41 57 41 56 41 54 53 48 83 EC 40 89 D5 48 89 F3 49 89 FE 48 8B BF"
 
 [[signatures]]
 name = "_ZN6Player17completeUsingItemEv"

@@ -385,6 +385,26 @@ void init_event(py::module_ &m, py::class_<Event, PyEvent> &event)
         .def_property_readonly("cause", &PlayerSetSpawnEvent::getCause, "The cause of the spawn change.")
         .def_property("location", &PlayerSetSpawnEvent::getLocation, &PlayerSetSpawnEvent::setLocation,
                       "The spawn location, or `None` to remove the spawn location.");
+    auto player_open_sign_event = py::class_<PlayerOpenSignEvent, PlayerEvent, ICancellable>(m, "PlayerOpenSignEvent",
+                                                                                                R"doc(
+    Called when a player begins editing a sign's text.
+
+    Cancelling this event stops the sign editing menu from opening.
+)doc");
+    py::native_enum<PlayerOpenSignEvent::Cause>(player_open_sign_event, "Cause", "enum.Enum",
+                                                "The cause of the sign opening.")
+        .value("PLACE", PlayerOpenSignEvent::Cause::Place)
+        .value("INTERACT", PlayerOpenSignEvent::Cause::Interact)
+        .value("PLUGIN", PlayerOpenSignEvent::Cause::Plugin)
+        .value("UNKNOWN", PlayerOpenSignEvent::Cause::Unknown)
+        .export_values()
+        .finalize();
+    player_open_sign_event
+        .def_property_readonly("sign", &PlayerOpenSignEvent::getSign, py::return_value_policy::reference,
+                               "A captured state of the sign involved in this event. Changes are kept in the captured "
+                               "state until `Sign.update()` is called.")
+        .def_property_readonly("side", &PlayerOpenSignEvent::getSide, "The side of the sign being opened.")
+        .def_property_readonly("cause", &PlayerOpenSignEvent::getCause, "The cause of the sign opening.");
     py::class_<PlayerChatEvent, PlayerEvent, ICancellable>(m, "PlayerChatEvent",
                                                            "Called when a player sends a chat message.")
         .def_property("message", &PlayerChatEvent::getMessage, &PlayerChatEvent::setMessage,

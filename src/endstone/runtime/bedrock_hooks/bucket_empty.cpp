@@ -230,13 +230,6 @@ void endstone::runtime::cancelBucketEmptyResult()
     pending_bucket_empty.reset();
 }
 
-endstone::runtime::BucketEmptyAction endstone::runtime::handleBucketEmptyEvent(
-    ::Actor &actor, const ::BlockPos &position, FacingID face, const ::ItemStack &item_stack)
-{
-    pending_bucket_empty.reset();
-    return callBucketEmptyEvent(actor.getDimensionBlockSource(), &actor, position, face, item_stack);
-}
-
 void endstone::runtime::handleCauldronBucketEmptyResult(::Player &player, const ::BlockPos &position, bool successful)
 {
     if (!pending_bucket_empty) {
@@ -256,6 +249,13 @@ void endstone::runtime::handleCauldronBucketEmptyResult(::Player &player, const 
                       : ::ItemStack::EMPTY_ITEM);
     }
     pending_bucket_empty.reset();
+}
+
+endstone::runtime::BucketEmptyAction endstone::runtime::handleBucketEmptyEvent(
+    ::Actor &actor, const ::BlockPos &position, FacingID face, const ::ItemStack &item_stack)
+{
+    pending_bucket_empty.reset();
+    return callBucketEmptyEvent(actor.getDimensionBlockSource(), &actor, position, face, item_stack);
 }
 
 void endstone::runtime::handleBucketEmptyResult(const ::InteractionResult &result, ::ItemStack &item_stack,
