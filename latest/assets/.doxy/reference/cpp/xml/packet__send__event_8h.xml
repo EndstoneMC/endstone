@@ -333,6 +333,8 @@
         <link refid="map__renderer_8h_source"/>
         <childnode refid="62" relation="include">
         </childnode>
+        <childnode refid="30" relation="include">
+        </childnode>
       </node>
       <node id="60">
         <label>endstone/map/map_view.h</label>
@@ -467,6 +469,8 @@
         </childnode>
         <childnode refid="75" relation="include">
         </childnode>
+        <childnode refid="30" relation="include">
+        </childnode>
         <childnode refid="56" relation="include">
         </childnode>
       </node>
@@ -484,6 +488,8 @@
         <label>endstone/scoreboard/score.h</label>
         <link refid="score_8h_source"/>
         <childnode refid="76" relation="include">
+        </childnode>
+        <childnode refid="30" relation="include">
         </childnode>
         <childnode refid="56" relation="include">
         </childnode>
@@ -781,8 +787,8 @@
 <codeline lineno="30"><highlight class="normal"></highlight><highlight class="keyword">public</highlight><highlight class="normal">:</highlight></codeline>
 <codeline lineno="31"><highlight class="normal"><sp/><sp/><sp/><sp/>ENDSTONE_EVENT(<ref refid="classendstone_1_1PacketSendEvent" kindref="compound">PacketSendEvent</ref>);</highlight></codeline>
 <codeline lineno="32"><highlight class="normal"></highlight></codeline>
-<codeline lineno="33"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classendstone_1_1PacketSendEvent" kindref="compound">PacketSendEvent</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classendstone_1_1Identifier" kindref="compound">Nullable&lt;Player&gt;</ref><sp/>&amp;<ref refid="classendstone_1_1Identifier" kindref="compound">player</ref>,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="classendstone_1_1Identifier" kindref="compound">packet_id</ref>,<sp/>std::string_view<sp/><ref refid="classendstone_1_1Identifier" kindref="compound">payload</ref>,<sp/><ref refid="classendstone_1_1SocketAddress" kindref="compound">SocketAddress</ref><sp/><ref refid="classendstone_1_1Identifier" kindref="compound">address</ref>,</highlight></codeline>
-<codeline lineno="34"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="classendstone_1_1Identifier" kindref="compound">sub_client_id</ref>)</highlight></codeline>
+<codeline lineno="33"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classendstone_1_1PacketSendEvent" kindref="compound">PacketSendEvent</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classendstone_1_1Identifier" kindref="compound">Nullable&lt;Player&gt;</ref><sp/>&amp;<ref refid="classendstone_1_1Identifier" kindref="compound">player</ref>,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="classendstone_1_1Identifier" kindref="compound">packet_id</ref>,<sp/>std::string_view<sp/><ref refid="classendstone_1_1Identifier" kindref="compound">payload</ref>,</highlight></codeline>
+<codeline lineno="34"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classendstone_1_1SocketAddress" kindref="compound">SocketAddress</ref><sp/><ref refid="classendstone_1_1Identifier" kindref="compound">address</ref>,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="classendstone_1_1Identifier" kindref="compound">sub_client_id</ref>)</highlight></codeline>
 <codeline lineno="35"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>:<sp/>player_(<ref refid="classendstone_1_1Identifier" kindref="compound">player</ref>),<sp/>packet_id_(<ref refid="classendstone_1_1Identifier" kindref="compound">packet_id</ref>),<sp/>payload_(<ref refid="classendstone_1_1Identifier" kindref="compound">payload</ref>),<sp/>address_(std::move(<ref refid="classendstone_1_1Identifier" kindref="compound">address</ref>)),</highlight></codeline>
 <codeline lineno="36"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>sub_client_id_(<ref refid="classendstone_1_1Identifier" kindref="compound">sub_client_id</ref>)</highlight></codeline>
 <codeline lineno="37"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
@@ -800,7 +806,7 @@
 <codeline lineno="64"><highlight class="normal"></highlight></codeline>
 <codeline lineno="72" refid="classendstone_1_1PacketSendEvent_1aea926d70c0fa5ed71d5e5a094780beb5" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>[[<ref refid="classendstone_1_1Identifier" kindref="compound">nodiscard</ref>]]<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classendstone_1_1Identifier" kindref="compound">Nullable&lt;Player&gt;</ref><sp/>&amp;<ref refid="classendstone_1_1PacketSendEvent_1aea926d70c0fa5ed71d5e5a094780beb5" kindref="member">getPlayer</ref>()</highlight><highlight class="keyword"><sp/>const<sp/></highlight><highlight class="normal">{<sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>player_;<sp/>}</highlight></codeline>
 <codeline lineno="73"><highlight class="normal"></highlight></codeline>
-<codeline lineno="79" refid="classendstone_1_1PacketSendEvent_1ada748078e0707514545961d6bd837060" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>[[<ref refid="classendstone_1_1Identifier" kindref="compound">nodiscard</ref>]]<sp/><ref refid="classendstone_1_1SocketAddress" kindref="compound">SocketAddress</ref><sp/><ref refid="classendstone_1_1PacketSendEvent_1ada748078e0707514545961d6bd837060" kindref="member">getAddress</ref>()</highlight><highlight class="keyword"><sp/>const<sp/></highlight><highlight class="normal">{<sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>address_;<sp/>}</highlight></codeline>
+<codeline lineno="79" refid="classendstone_1_1PacketSendEvent_1a2a790544d89c53b49e1caea4da2a932b" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>[[<ref refid="classendstone_1_1Identifier" kindref="compound">nodiscard</ref>]]<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classendstone_1_1SocketAddress" kindref="compound">SocketAddress</ref><sp/>&amp;<ref refid="classendstone_1_1PacketSendEvent_1a2a790544d89c53b49e1caea4da2a932b" kindref="member">getAddress</ref>()</highlight><highlight class="keyword"><sp/>const<sp/></highlight><highlight class="normal">{<sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>address_;<sp/>}</highlight></codeline>
 <codeline lineno="80"><highlight class="normal"></highlight></codeline>
 <codeline lineno="88" refid="classendstone_1_1PacketSendEvent_1a7521c9aa7ee4395b01ae312d7a14b65b" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>[[<ref refid="classendstone_1_1Identifier" kindref="compound">nodiscard</ref>]]<sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="classendstone_1_1PacketSendEvent_1a7521c9aa7ee4395b01ae312d7a14b65b" kindref="member">getSubClientId</ref>()</highlight><highlight class="keyword"><sp/>const<sp/></highlight><highlight class="normal">{<sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>sub_client_id_;<sp/>}</highlight></codeline>
 <codeline lineno="89"><highlight class="normal"></highlight></codeline>

@@ -320,7 +320,7 @@
       <member refid="classendstone_1_1Item_1a76a67449432660c8c549c9e578fbf549" prot="public" virt="pure-virtual"><scope>endstone::Item</scope><name>setThrower</name></member>
       <member refid="classendstone_1_1Item_1aa75743e9275be2335852f72f8e77a879" prot="public" virt="pure-virtual"><scope>endstone::Item</scope><name>setUnlimitedLifetime</name></member>
       <member refid="classendstone_1_1Actor_1aecfec6af43ddcb9ab2dfa1d23e2b0b82" prot="public" virt="pure-virtual"><scope>endstone::Item</scope><name>teleport</name></member>
-      <member refid="classendstone_1_1Actor_1a4be9f8132bce43f6aa06660cb2439e66" prot="public" virt="pure-virtual"><scope>endstone::Item</scope><name>teleport</name></member>
+      <member refid="classendstone_1_1Actor_1a07309f1d71b407099c722dcd44f281cb" prot="public" virt="pure-virtual"><scope>endstone::Item</scope><name>teleport</name></member>
       <member refid="classendstone_1_1Object_1adfddc886af4b1d0e09ddac7d0391b4d2" prot="public" virt="virtual"><scope>endstone::Item</scope><name>~Object</name></member>
     </listofallmembers>
   </compounddef>

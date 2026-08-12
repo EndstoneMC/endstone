@@ -140,7 +140,7 @@ Inherited by the following classes: [endstone::Item](classendstone_1_1Item.md), 
 | virtual [**void**](classendstone_1_1Identifier.md) | [**setRotation**](#function-setrotation) ([**float**](classendstone_1_1Identifier.md) yaw, [**float**](classendstone_1_1Identifier.md) pitch) = 0<br>_Sets the actor's rotation._  |
 | virtual [**void**](classendstone_1_1Identifier.md) | [**setScoreTag**](#function-setscoretag) (std::string score) = 0<br>_Sets the score tag for the actor._  |
 | virtual [**bool**](classendstone_1_1Identifier.md) | [**teleport**](#function-teleport-12) ([**const**](classendstone_1_1Identifier.md) [**Location**](classendstone_1_1Location.md) & location) = 0<br>_Teleports this actor to the given location._  |
-| virtual [**bool**](classendstone_1_1Identifier.md) | [**teleport**](#function-teleport-22) ([**const**](classendstone_1_1Identifier.md) [**Actor**](classendstone_1_1Actor.md) & target) = 0<br>_Teleports this actor to the target_ [_**Actor**_](classendstone_1_1Actor.md) _._ |
+| virtual [**bool**](classendstone_1_1Identifier.md) | [**teleport**](#function-teleport-22) ([**const**](classendstone_1_1Identifier.md) [**NotNull**](classendstone_1_1NotNull.md)&lt; [**Actor**](classendstone_1_1Actor.md) &gt; & target) = 0<br>_Teleports this actor to the target_ [_**Actor**_](classendstone_1_1Actor.md) _._ |
 
 
 ## Public Functions inherited from endstone::CommandSender
@@ -988,7 +988,7 @@ virtual bool endstone::Actor::teleport (
 _Teleports this actor to the target_ [_**Actor**_](classendstone_1_1Actor.md) _._
 ```C++
 virtual bool endstone::Actor::teleport (
-    const  Actor & target
+    const  NotNull < Actor > & target
 ) = 0
 ```
 

@@ -1452,6 +1452,66 @@
         </inbodydescription>
         <location file="include/endstone/nbt/tag.h" line="718" column="13" bodyfile="include/endstone/nbt/tag.h" bodystart="718" bodyend="721"/>
       </memberdef>
+      <memberdef kind="function" id="namespaceendstone_1a4f429d5c676fe4046cfdf25dfb8954d1" prot="public" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>class T</type>
+          </param>
+          <param>
+            <type>class U</type>
+          </param>
+        </templateparamlist>
+        <type><ref refid="classendstone_1_1Identifier" kindref="compound">bool</ref></type>
+        <definition>bool endstone::operator==</definition>
+        <argsstring>(const NotNull&lt; T &gt; &amp;lhs, const Nullable&lt; U &gt; &amp;rhs) noexcept</argsstring>
+        <name>operator==</name>
+        <qualifiedname>endstone::operator==</qualifiedname>
+        <param>
+          <type><ref refid="classendstone_1_1Identifier" kindref="compound">const</ref> <ref refid="classendstone_1_1NotNull" kindref="compound">NotNull</ref>&lt; <ref refid="classendstone_1_1Identifier" kindref="compound">T</ref> &gt; &amp;</type>
+          <declname>lhs</declname>
+        </param>
+        <param>
+          <type><ref refid="classendstone_1_1Identifier" kindref="compound">const</ref> <ref refid="classendstone_1_1Nullable" kindref="compound">Nullable</ref>&lt; <ref refid="classendstone_1_1Identifier" kindref="compound">U</ref> &gt; &amp;</type>
+          <declname>rhs</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/util/pointers.h" line="208" column="6" bodyfile="include/endstone/util/pointers.h" bodystart="208" bodyend="211"/>
+      </memberdef>
+      <memberdef kind="function" id="namespaceendstone_1a3c5ee19f3b24cf5bec78edae534f6090" prot="public" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>class T</type>
+          </param>
+          <param>
+            <type>class U</type>
+          </param>
+        </templateparamlist>
+        <type><ref refid="classendstone_1_1Identifier" kindref="compound">bool</ref></type>
+        <definition>bool endstone::operator==</definition>
+        <argsstring>(const Nullable&lt; T &gt; &amp;lhs, const NotNull&lt; U &gt; &amp;rhs) noexcept</argsstring>
+        <name>operator==</name>
+        <qualifiedname>endstone::operator==</qualifiedname>
+        <param>
+          <type><ref refid="classendstone_1_1Identifier" kindref="compound">const</ref> <ref refid="classendstone_1_1Nullable" kindref="compound">Nullable</ref>&lt; <ref refid="classendstone_1_1Identifier" kindref="compound">T</ref> &gt; &amp;</type>
+          <declname>lhs</declname>
+        </param>
+        <param>
+          <type><ref refid="classendstone_1_1Identifier" kindref="compound">const</ref> <ref refid="classendstone_1_1NotNull" kindref="compound">NotNull</ref>&lt; <ref refid="classendstone_1_1Identifier" kindref="compound">U</ref> &gt; &amp;</type>
+          <declname>rhs</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/util/pointers.h" line="214" column="6" bodyfile="include/endstone/util/pointers.h" bodystart="214" bodyend="217"/>
+      </memberdef>
       <memberdef kind="function" id="namespaceendstone_1ad7d0fbae7e1dd31cae1c84965a2f65a8" prot="public" static="no" const="no" explicit="no" inline="yes" noexcept="yes" virt="non-virtual">
         <type><ref refid="classendstone_1_1Identifier" kindref="compound">bool</ref></type>
         <definition>bool endstone::operator==</definition>

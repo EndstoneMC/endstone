@@ -70,7 +70,7 @@ _Represents a map item._
 | virtual [**bool**](classendstone_1_1Identifier.md) | [**removeRenderer**](#function-removerenderer) ([**const**](classendstone_1_1Identifier.md) std::shared\_ptr&lt; [**MapRenderer**](classendstone_1_1MapRenderer.md) &gt; & renderer) = 0<br>_Remove a renderer from this map._  |
 | virtual [**void**](classendstone_1_1Identifier.md) | [**setCenterX**](#function-setcenterx) ([**int**](classendstone_1_1Identifier.md) x) = 0<br>_Set the center X position of this map._  |
 | virtual [**void**](classendstone_1_1Identifier.md) | [**setCenterZ**](#function-setcenterz) ([**int**](classendstone_1_1Identifier.md) z) = 0<br>_Set the center Z position of this map._  |
-| virtual [**void**](classendstone_1_1Identifier.md) | [**setDimension**](#function-setdimension) ([**const**](classendstone_1_1Identifier.md) [**Dimension**](classendstone_1_1Dimension.md) & dimension) = 0<br>_Set the dimension that this map is associated with._  |
+| virtual [**void**](classendstone_1_1Identifier.md) | [**setDimension**](#function-setdimension) ([**const**](classendstone_1_1Identifier.md) [**NotNull**](classendstone_1_1NotNull.md)&lt; [**Dimension**](classendstone_1_1Dimension.md) &gt; & dimension) = 0<br>_Set the dimension that this map is associated with._  |
 | virtual [**void**](classendstone_1_1Identifier.md) | [**setLocked**](#function-setlocked) ([**bool**](classendstone_1_1Identifier.md) locked) = 0<br>_Sets whether the map is locked or not._  |
 | virtual [**void**](classendstone_1_1Identifier.md) | [**setScale**](#function-setscale) ([**Scale**](classendstone_1_1MapView.md#enum-scale) scale) = 0<br>_Set the scale of this map._  |
 | virtual [**void**](classendstone_1_1Identifier.md) | [**setUnlimitedTracking**](#function-setunlimitedtracking) ([**bool**](classendstone_1_1Identifier.md) unlimited) = 0<br>_Whether the map will show a smaller position cursor (_ `true` _), or no position cursor (_`false` _) when cursor is outside of map's range._ |
@@ -481,7 +481,7 @@ virtual void endstone::MapView::setCenterZ (
 _Set the dimension that this map is associated with._ 
 ```C++
 virtual void endstone::MapView::setDimension (
-    const  Dimension & dimension
+    const  NotNull < Dimension > & dimension
 ) = 0
 ```
 

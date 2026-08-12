@@ -3451,15 +3451,15 @@ For latest updates join the chat on
 </tr>
 <tr>
 <td style="text-align: right;">virtual <a href="../classendstone_1_1MapView/"><strong>MapView</strong></a> &amp;</td>
-<td style="text-align: left;"><a href="#function-createmap"><strong>createMap</strong></a> (<a href="../classendstone_1_1Identifier/"><strong>const</strong></a> <a href="../classendstone_1_1Dimension/"><strong>Dimension</strong></a> &amp; dimension) const = 0<br><em>Create a new map with an automatically assigned ID.</em></td>
+<td style="text-align: left;"><a href="#function-createmap"><strong>createMap</strong></a> (<a href="../classendstone_1_1Identifier/"><strong>const</strong></a> <a href="../classendstone_1_1NotNull/"><strong>NotNull</strong></a>&lt; <a href="../classendstone_1_1Dimension/"><strong>Dimension</strong></a> &gt; &amp; dimension) const = 0<br><em>Create a new map with an automatically assigned ID.</em></td>
 </tr>
 <tr>
-<td style="text-align: right;">virtual std::shared_ptr&lt; <a href="../classendstone_1_1Scoreboard/"><strong>Scoreboard</strong></a> &gt;</td>
+<td style="text-align: right;">virtual <a href="../classendstone_1_1NotNull/"><strong>NotNull</strong></a>&lt; <a href="../classendstone_1_1Scoreboard/"><strong>Scoreboard</strong></a> &gt;</td>
 <td style="text-align: left;"><a href="#function-createscoreboard"><strong>createScoreboard</strong></a> () = 0<br><em>Creates a new</em> <a href="../classendstone_1_1Scoreboard/"><em><strong>Scoreboard</strong></em></a> <em>to be tracked by the server.</em></td>
 </tr>
 <tr>
 <td style="text-align: right;">virtual <a href="../classendstone_1_1Identifier/"><strong>bool</strong></a></td>
-<td style="text-align: left;"><a href="#function-dispatchcommand"><strong>dispatchCommand</strong></a> (<a href="../classendstone_1_1CommandSender/"><strong>CommandSender</strong></a> &amp; sender, std::string command_line) const = 0<br><em>Dispatches a command on this server, and executes it if found.</em></td>
+<td style="text-align: left;"><a href="#function-dispatchcommand"><strong>dispatchCommand</strong></a> (<a href="../classendstone_1_1Identifier/"><strong>const</strong></a> <a href="../classendstone_1_1NotNull/"><strong>NotNull</strong></a>&lt; <a href="../classendstone_1_1CommandSender/"><strong>CommandSender</strong></a> &gt; &amp; sender, std::string command_line) const = 0<br><em>Dispatches a command on this server, and executes it if found.</em></td>
 </tr>
 <tr>
 <td style="text-align: right;">virtual <a href="../classendstone_1_1Identifier/"><strong>float</strong></a></td>
@@ -3478,7 +3478,7 @@ For latest updates join the chat on
 <td style="text-align: left;"><a href="#function-getbanlist"><strong>getBanList</strong></a> () const = 0<br><em>Gets the player ban list.</em></td>
 </tr>
 <tr>
-<td style="text-align: right;">virtual <a href="../classendstone_1_1ConsoleCommandSender/"><strong>ConsoleCommandSender</strong></a> &amp;</td>
+<td style="text-align: right;">virtual <a href="../classendstone_1_1NotNull/"><strong>NotNull</strong></a>&lt; <a href="../classendstone_1_1ConsoleCommandSender/"><strong>ConsoleCommandSender</strong></a> &gt;</td>
 <td style="text-align: left;"><a href="#function-getcommandsender"><strong>getCommandSender</strong></a> () const = 0<br><em>Gets a</em> <a href="../classendstone_1_1CommandSender/"><em><strong>CommandSender</strong></em></a> <em>for this server.</em></td>
 </tr>
 <tr>
@@ -3774,7 +3774,7 @@ For latest updates join the chat on
 <h3 id="function-createmap">function createMap<a class="headerlink" href="#function-createmap" title="Permanent link">&para;</a></h3>
 <p><em>Create a new map with an automatically assigned ID.</em> 
 <div class="language-C++ highlight"><pre><span></span><code><span id="__span-12-1"><a id="__codelineno-12-1" name="__codelineno-12-1" href="#__codelineno-12-1"></a><span class="k">virtual</span><span class="w"> </span><span class="n">MapView</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">Server</span><span class="o">::</span><span class="n">createMap</span><span class="w"> </span><span class="p">(</span>
-</span><span id="__span-12-2"><a id="__codelineno-12-2" name="__codelineno-12-2" href="#__codelineno-12-2"></a><span class="w">    </span><span class="k">const</span><span class="w">  </span><span class="n">Dimension</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">dimension</span>
+</span><span id="__span-12-2"><a id="__codelineno-12-2" name="__codelineno-12-2" href="#__codelineno-12-2"></a><span class="w">    </span><span class="k">const</span><span class="w">  </span><span class="n">NotNull</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">Dimension</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">dimension</span>
 </span><span id="__span-12-3"><a id="__codelineno-12-3" name="__codelineno-12-3" href="#__codelineno-12-3"></a><span class="p">)</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span>
 </span></code></pre></div></p>
 <p><strong>Parameters:</strong></p>
@@ -3787,7 +3787,7 @@ For latest updates join the chat on
 
 <h3 id="function-createscoreboard">function createScoreboard<a class="headerlink" href="#function-createscoreboard" title="Permanent link">&para;</a></h3>
 <p><em>Creates a new</em> <a href="../classendstone_1_1Scoreboard/"><em><strong>Scoreboard</strong></em></a> <em>to be tracked by the server.</em>
-<div class="language-C++ highlight"><pre><span></span><code><span id="__span-13-1"><a id="__codelineno-13-1" name="__codelineno-13-1" href="#__codelineno-13-1"></a><span class="k">virtual</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">shared_ptr</span><span class="o">&lt;</span><span class="w"> </span><span class="n">Scoreboard</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">Server</span><span class="o">::</span><span class="n">createScoreboard</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span>
+<div class="language-C++ highlight"><pre><span></span><code><span id="__span-13-1"><a id="__codelineno-13-1" name="__codelineno-13-1" href="#__codelineno-13-1"></a><span class="k">virtual</span><span class="w"> </span><span class="n">NotNull</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">Scoreboard</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">Server</span><span class="o">::</span><span class="n">createScoreboard</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span>
 </span></code></pre></div></p>
 <p>This will not be saved by the server and is not affected by the <code>/scoreboard</code> command.</p>
 <p><strong>Returns:</strong></p>
@@ -3797,7 +3797,7 @@ For latest updates join the chat on
 <h3 id="function-dispatchcommand">function dispatchCommand<a class="headerlink" href="#function-dispatchcommand" title="Permanent link">&para;</a></h3>
 <p><em>Dispatches a command on this server, and executes it if found.</em> 
 <div class="language-C++ highlight"><pre><span></span><code><span id="__span-14-1"><a id="__codelineno-14-1" name="__codelineno-14-1" href="#__codelineno-14-1"></a><span class="k">virtual</span><span class="w"> </span><span class="kt">bool</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">Server</span><span class="o">::</span><span class="n">dispatchCommand</span><span class="w"> </span><span class="p">(</span>
-</span><span id="__span-14-2"><a id="__codelineno-14-2" name="__codelineno-14-2" href="#__codelineno-14-2"></a><span class="w">    </span><span class="n">CommandSender</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">sender</span><span class="p">,</span>
+</span><span id="__span-14-2"><a id="__codelineno-14-2" name="__codelineno-14-2" href="#__codelineno-14-2"></a><span class="w">    </span><span class="k">const</span><span class="w">  </span><span class="n">NotNull</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">CommandSender</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">sender</span><span class="p">,</span>
 </span><span id="__span-14-3"><a id="__codelineno-14-3" name="__codelineno-14-3" href="#__codelineno-14-3"></a><span class="w">    </span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="w"> </span><span class="n">command_line</span>
 </span><span id="__span-14-4"><a id="__codelineno-14-4" name="__codelineno-14-4" href="#__codelineno-14-4"></a><span class="p">)</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span>
 </span></code></pre></div></p>
@@ -3844,7 +3844,7 @@ For latest updates join the chat on
 
 <h3 id="function-getcommandsender">function getCommandSender<a class="headerlink" href="#function-getcommandsender" title="Permanent link">&para;</a></h3>
 <p><em>Gets a</em> <a href="../classendstone_1_1CommandSender/"><em><strong>CommandSender</strong></em></a> <em>for this server.</em>
-<div class="language-C++ highlight"><pre><span></span><code><span id="__span-19-1"><a id="__codelineno-19-1" name="__codelineno-19-1" href="#__codelineno-19-1"></a><span class="k">virtual</span><span class="w"> </span><span class="n">ConsoleCommandSender</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">Server</span><span class="o">::</span><span class="n">getCommandSender</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span>
+<div class="language-C++ highlight"><pre><span></span><code><span id="__span-19-1"><a id="__codelineno-19-1" name="__codelineno-19-1" href="#__codelineno-19-1"></a><span class="k">virtual</span><span class="w"> </span><span class="n">NotNull</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">ConsoleCommandSender</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">Server</span><span class="o">::</span><span class="n">getCommandSender</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span>
 </span></code></pre></div></p>
 <p><strong>Returns:</strong></p>
 <p>a console command sender </p>

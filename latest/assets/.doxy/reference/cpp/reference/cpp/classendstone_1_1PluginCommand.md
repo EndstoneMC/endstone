@@ -94,7 +94,7 @@ Inherits the following classes: [endstone::Command](classendstone_1_1Command.md)
 | Type | Name |
 | ---: | :--- |
 |   | [**PluginCommand**](#function-plugincommand) ([**const**](classendstone_1_1Identifier.md) [**Command**](classendstone_1_1Command.md) & command, [**Plugin**](classendstone_1_1Plugin.md) & owner) <br> |
-| virtual [**bool**](classendstone_1_1Identifier.md) | [**execute**](#function-execute) ([**CommandSender**](classendstone_1_1CommandSender.md) & sender, [**const**](classendstone_1_1Identifier.md) std::vector&lt; std::string &gt; & args) override const<br>_Executes the command, returning its success._  |
+| virtual [**bool**](classendstone_1_1Identifier.md) | [**execute**](#function-execute) ([**const**](classendstone_1_1Identifier.md) [**NotNull**](classendstone_1_1NotNull.md)&lt; [**CommandSender**](classendstone_1_1CommandSender.md) &gt; & sender, [**const**](classendstone_1_1Identifier.md) std::vector&lt; std::string &gt; & args) override const<br>_Executes the command, returning its success._  |
 | virtual [**const**](classendstone_1_1Identifier.md) std::type\_info & | [**getClassTypeId**](#function-getclasstypeid) () override const<br> |
 | virtual [**CommandExecutor**](classendstone_1_1CommandExecutor.md) & | [**getExecutor**](#function-getexecutor) () const<br>_Gets the_ [_**CommandExecutor**_](classendstone_1_1CommandExecutor.md) _associated with this command._ |
 |  [**Plugin**](classendstone_1_1Plugin.md) & | [**getPlugin**](#function-getplugin) () const<br>_Gets the owner of this_ [_**PluginCommand**_](classendstone_1_1PluginCommand.md) _._ |
@@ -109,7 +109,7 @@ See [endstone::Command](classendstone_1_1Command.md)
 | Type | Name |
 | ---: | :--- |
 |   | [**Command**](classendstone_1_1Command.md#function-command) (std::string name, std::string description="", std::vector&lt; std::string &gt; usages={}, std::vector&lt; std::string &gt; aliases={}, std::vector&lt; std::string &gt; permissions={}) <br> |
-| virtual [**bool**](classendstone_1_1Identifier.md) | [**execute**](classendstone_1_1Command.md#function-execute) ([**CommandSender**](classendstone_1_1CommandSender.md) & sender, [**const**](classendstone_1_1Identifier.md) std::vector&lt; std::string &gt; & args) const<br>_Executes the command, returning its success._  |
+| virtual [**bool**](classendstone_1_1Identifier.md) | [**execute**](classendstone_1_1Command.md#function-execute) ([**const**](classendstone_1_1Identifier.md) [**NotNull**](classendstone_1_1NotNull.md)&lt; [**CommandSender**](classendstone_1_1CommandSender.md) &gt; & sender, [**const**](classendstone_1_1Identifier.md) std::vector&lt; std::string &gt; & args) const<br>_Executes the command, returning its success._  |
 |  std::vector&lt; std::string &gt; | [**getAliases**](classendstone_1_1Command.md#function-getaliases) () const<br>_Returns a list of aliases of this command._  |
 | virtual [**const**](classendstone_1_1Identifier.md) std::type\_info & | [**getClassTypeId**](classendstone_1_1Command.md#function-getclasstypeid) () override const<br> |
 |  std::string | [**getDescription**](classendstone_1_1Command.md#function-getdescription) () const<br>_Gets a brief description of this command._  |
@@ -124,8 +124,8 @@ See [endstone::Command](classendstone_1_1Command.md)
 |  [**void**](classendstone_1_1Identifier.md) | [**setName**](classendstone_1_1Command.md#function-setname) (std::string name) <br>_Sets the name of this command._  |
 |  [**void**](classendstone_1_1Identifier.md) | [**setPermissions**](classendstone_1_1Command.md#function-setpermissions) (Permission... permissions) <br>_Sets the permissions required by users to be able to perform this command._  |
 |  [**void**](classendstone_1_1Identifier.md) | [**setUsages**](classendstone_1_1Command.md#function-setusages) (Usage... usages) <br>_Sets the usages of this command._  |
-|  [**bool**](classendstone_1_1Identifier.md) | [**testPermission**](classendstone_1_1Command.md#function-testpermission) ([**const**](classendstone_1_1Identifier.md) [**CommandSender**](classendstone_1_1CommandSender.md) & target) const<br>_Tests the given_ [_**CommandSender**_](classendstone_1_1CommandSender.md) _to see if they can perform this command._ |
-|  [**bool**](classendstone_1_1Identifier.md) | [**testPermissionSilently**](classendstone_1_1Command.md#function-testpermissionsilently) ([**const**](classendstone_1_1Identifier.md) [**CommandSender**](classendstone_1_1CommandSender.md) & target) const<br>_Tests the given_ [_**CommandSender**_](classendstone_1_1CommandSender.md) _to see if they can perform this command._ |
+|  [**bool**](classendstone_1_1Identifier.md) | [**testPermission**](classendstone_1_1Command.md#function-testpermission) ([**const**](classendstone_1_1Identifier.md) [**NotNull**](classendstone_1_1NotNull.md)&lt; [**CommandSender**](classendstone_1_1CommandSender.md) &gt; & target) const<br>_Tests the given_ [_**CommandSender**_](classendstone_1_1CommandSender.md) _to see if they can perform this command._ |
+|  [**bool**](classendstone_1_1Identifier.md) | [**testPermissionSilently**](classendstone_1_1Command.md#function-testpermissionsilently) ([**const**](classendstone_1_1Identifier.md) [**NotNull**](classendstone_1_1NotNull.md)&lt; [**CommandSender**](classendstone_1_1CommandSender.md) &gt; & target) const<br>_Tests the given_ [_**CommandSender**_](classendstone_1_1CommandSender.md) _to see if they can perform this command._ |
 |  [**bool**](classendstone_1_1Identifier.md) | [**unregisterFrom**](classendstone_1_1Command.md#function-unregisterfrom) ([**const**](classendstone_1_1Identifier.md) [**CommandMap**](classendstone_1_1CommandMap.md) & command\_map) <br>_Unregisters this command from a_ [_**CommandMap**_](classendstone_1_1CommandMap.md) _._ |
 | virtual  | [**~Command**](classendstone_1_1Command.md#function-command) () = default<br> |
 
@@ -248,7 +248,7 @@ inline endstone::PluginCommand::PluginCommand (
 _Executes the command, returning its success._ 
 ```C++
 inline virtual bool endstone::PluginCommand::execute (
-    CommandSender & sender,
+    const  NotNull < CommandSender > & sender,
     const std::vector< std::string > & args
 ) override const
 ```

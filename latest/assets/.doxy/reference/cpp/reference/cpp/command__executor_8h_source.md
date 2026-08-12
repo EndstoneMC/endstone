@@ -36,7 +36,8 @@ class CommandExecutor {
 public:
     virtual ~CommandExecutor() = default;
 
-    virtual bool onCommand(CommandSender &sender, const Command &command, const std::vector<std::string> &args)
+    virtual bool onCommand(const NotNull<CommandSender> &sender, const Command &command,
+                           const std::vector<std::string> &args)
     {
         return false;
     }

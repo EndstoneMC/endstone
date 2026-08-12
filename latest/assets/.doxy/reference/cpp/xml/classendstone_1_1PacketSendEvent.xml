@@ -227,9 +227,9 @@
         </inbodydescription>
         <location file="include/endstone/event/server/packet_send_event.h" line="72" column="21" bodyfile="include/endstone/event/server/packet_send_event.h" bodystart="72" bodyend="72"/>
       </memberdef>
-      <memberdef kind="function" id="classendstone_1_1PacketSendEvent_1ada748078e0707514545961d6bd837060" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
-        <type><ref refid="classendstone_1_1SocketAddress" kindref="compound">SocketAddress</ref></type>
-        <definition>SocketAddress endstone::PacketSendEvent::getAddress</definition>
+      <memberdef kind="function" id="classendstone_1_1PacketSendEvent_1a2a790544d89c53b49e1caea4da2a932b" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type><ref refid="classendstone_1_1Identifier" kindref="compound">const</ref> <ref refid="classendstone_1_1SocketAddress" kindref="compound">SocketAddress</ref> &amp;</type>
+        <definition>const SocketAddress &amp; endstone::PacketSendEvent::getAddress</definition>
         <argsstring>() const</argsstring>
         <name>getAddress</name>
         <qualifiedname>endstone::PacketSendEvent::getAddress</qualifiedname>
@@ -243,7 +243,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/event/server/packet_send_event.h" line="79" column="20" bodyfile="include/endstone/event/server/packet_send_event.h" bodystart="79" bodyend="79"/>
+        <location file="include/endstone/event/server/packet_send_event.h" line="79" column="26" bodyfile="include/endstone/event/server/packet_send_event.h" bodystart="79" bodyend="79"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1PacketSendEvent_1a7521c9aa7ee4395b01ae312d7a14b65b" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
         <type><ref refid="classendstone_1_1Identifier" kindref="compound">int</ref></type>
@@ -339,7 +339,7 @@
       <member refid="classendstone_1_1ServerEvent_1a28cca8d74920493b449d035540acf023" prot="public" virt="non-virtual"><scope>endstone::PacketSendEvent</scope><name>Event</name></member>
       <member refid="classendstone_1_1ServerEvent_1a7199136ebb40e1441bc61e29f83c3cad" prot="public" virt="non-virtual"><scope>endstone::PacketSendEvent</scope><name>Event</name></member>
       <member refid="classendstone_1_1ServerEvent_1ad20bafd16e0671578e37390b95e5104c" prot="public" virt="non-virtual"><scope>endstone::PacketSendEvent</scope><name>Event</name></member>
-      <member refid="classendstone_1_1PacketSendEvent_1ada748078e0707514545961d6bd837060" prot="public" virt="non-virtual"><scope>endstone::PacketSendEvent</scope><name>getAddress</name></member>
+      <member refid="classendstone_1_1PacketSendEvent_1a2a790544d89c53b49e1caea4da2a932b" prot="public" virt="non-virtual"><scope>endstone::PacketSendEvent</scope><name>getAddress</name></member>
       <member refid="classendstone_1_1Event_1a826fe74f9c4195a36a364b9aeeb321bb" prot="public" virt="pure-virtual"><scope>endstone::PacketSendEvent</scope><name>getEventName</name></member>
       <member refid="classendstone_1_1PacketSendEvent_1a09a905e5a99059f865bcdb931bf7f230" prot="public" virt="non-virtual"><scope>endstone::PacketSendEvent</scope><name>getPacketId</name></member>
       <member refid="classendstone_1_1PacketSendEvent_1a5742091cbd6fd1a5883567f4509693a8" prot="public" virt="non-virtual"><scope>endstone::PacketSendEvent</scope><name>getPayload</name></member>

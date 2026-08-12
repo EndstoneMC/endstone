@@ -30,6 +30,7 @@
 
 #include "endstone/scoreboard/objective_sort_order.h"
 #include "endstone/scoreboard/score.h"
+#include "endstone/util/pointers.h"
 #include "endstone/util/result.h"
 
 namespace endstone {
@@ -50,7 +51,7 @@ public:
 
     [[nodiscard]] virtual bool isModifiable() const = 0;
 
-    [[nodiscard]] virtual Scoreboard &getScoreboard() const = 0;
+    [[nodiscard]] virtual NotNull<Scoreboard> getScoreboard() const = 0;
 
     virtual void unregister() const = 0;
 

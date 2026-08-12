@@ -49,7 +49,7 @@ public:
     {
     }
 
-    [[nodiscard]] SocketAddress getAddress() const { return address_; }
+    [[nodiscard]] const SocketAddress &getAddress() const { return address_; }
 
     [[nodiscard]] std::string getServerGuid() const { return server_guid_; }
 

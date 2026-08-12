@@ -75,7 +75,7 @@ public:
 
     virtual bool unloadChunk(int x, int z) = 0;
 
-    [[nodiscard]] virtual Item &dropItem(Location location, const ItemStack &item) = 0;
+    [[nodiscard]] virtual NotNull<Item> dropItem(Location location, const ItemStack &item) = 0;
 
     [[nodiscard]] virtual Nullable<Actor> spawnActor(Location location, ActorTypeId type) = 0;
 

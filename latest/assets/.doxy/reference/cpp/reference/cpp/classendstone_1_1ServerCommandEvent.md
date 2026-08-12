@@ -94,9 +94,9 @@ Inherits the following classes: [endstone::Cancellable](classendstone_1_1Cancell
 | Type | Name |
 | ---: | :--- |
 |   | [**ENDSTONE\_EVENT**](#function-endstone_event) ([**ServerCommandEvent**](classendstone_1_1ServerCommandEvent.md)) <br> |
-|   | [**ServerCommandEvent**](#function-servercommandevent) ([**CommandSender**](classendstone_1_1CommandSender.md) & sender, std::string command) <br> |
+|   | [**ServerCommandEvent**](#function-servercommandevent) ([**const**](classendstone_1_1Identifier.md) [**NotNull**](classendstone_1_1NotNull.md)&lt; [**CommandSender**](classendstone_1_1CommandSender.md) &gt; & sender, std::string command) <br> |
 |  std::string | [**getCommand**](#function-getcommand) () const<br>_Gets the command that the server is attempting to execute from the console._  |
-|  [**CommandSender**](classendstone_1_1CommandSender.md) & | [**getSender**](#function-getsender) () const<br>_Get the command sender._  |
+|  [**const**](classendstone_1_1Identifier.md) [**NotNull**](classendstone_1_1NotNull.md)&lt; [**CommandSender**](classendstone_1_1CommandSender.md) &gt; & | [**getSender**](#function-getsender) () const<br>_Get the command sender._  |
 |  [**void**](classendstone_1_1Identifier.md) | [**setCommand**](#function-setcommand) (std::string command) <br>_Sets the command that the server will execute._  |
 
 
@@ -235,7 +235,7 @@ endstone::ServerCommandEvent::ENDSTONE_EVENT (
 
 ```C++
 inline endstone::ServerCommandEvent::ServerCommandEvent (
-    CommandSender & sender,
+    const  NotNull < CommandSender > & sender,
     std::string command
 ) 
 ```
@@ -276,7 +276,7 @@ inline std::string endstone::ServerCommandEvent::getCommand () const
 
 _Get the command sender._ 
 ```C++
-inline CommandSender & endstone::ServerCommandEvent::getSender () const
+inline const  NotNull < CommandSender > & endstone::ServerCommandEvent::getSender () const
 ```
 
 

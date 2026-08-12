@@ -53,6 +53,7 @@ _A list of event handlers._ [More...](#detailed-description)
 | Type | Name |
 | ---: | :--- |
 |   | [**HandlerList**](#function-handlerlist) (std::string event) <br> |
+|  [**bool**](classendstone_1_1Identifier.md) | [**empty**](#function-empty) () const<br>_Checks whether this handler list has no registered handler._  |
 |  std::vector&lt; [**EventHandler**](classendstone_1_1EventHandler.md) \* &gt; | [**getHandlers**](#function-gethandlers) () const<br>_Get the baked registered handlers associated with this handler list._  |
 |  [**EventHandler**](classendstone_1_1EventHandler.md) \* | [**registerHandler**](#function-registerhandler) (std::unique\_ptr&lt; [**EventHandler**](classendstone_1_1EventHandler.md) &gt; handler) <br>_Register a new handler._  |
 |  [**void**](classendstone_1_1Identifier.md) | [**unregister**](#function-unregister-12) ([**const**](classendstone_1_1Identifier.md) [**EventHandler**](classendstone_1_1EventHandler.md) & handler) <br>_Remove a handler from a specific order slot._  |
@@ -112,6 +113,31 @@ inline explicit endstone::HandlerList::HandlerList (
 
 
 
+
+<hr>
+
+
+
+### function empty 
+
+_Checks whether this handler list has no registered handler._ 
+```C++
+inline bool endstone::HandlerList::empty () const
+```
+
+
+
+
+
+**Returns:**
+
+`true` if nothing is listening for this event 
+
+
+
+
+
+        
 
 <hr>
 

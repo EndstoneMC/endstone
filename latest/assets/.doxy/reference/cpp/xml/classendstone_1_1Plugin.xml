@@ -596,7 +596,7 @@
       <member refid="classendstone_1_1Plugin_1ab06a53213e2521dd7d2cde4a260f80f4" prot="public" virt="non-virtual"><scope>endstone::Plugin</scope><name>isEnabled</name></member>
       <member refid="classendstone_1_1Plugin_1adfef6b28e088eeba9322262d6c4bab5b" prot="private" virt="non-virtual"><scope>endstone::Plugin</scope><name>loader_</name></member>
       <member refid="classendstone_1_1Plugin_1a8772bd2b390aee5e1cf0ff8ed982ffe4" prot="private" virt="non-virtual"><scope>endstone::Plugin</scope><name>logger_</name></member>
-      <member refid="classendstone_1_1CommandExecutor_1abf189fa960c2e7f1fbc3f0366afc3d1f" prot="public" virt="virtual"><scope>endstone::Plugin</scope><name>onCommand</name></member>
+      <member refid="classendstone_1_1CommandExecutor_1afb60283a04728223c88798db4f62c545" prot="public" virt="virtual"><scope>endstone::Plugin</scope><name>onCommand</name></member>
       <member refid="classendstone_1_1Plugin_1aadd23b4ac5c6603e6961728d6586b121" prot="public" virt="virtual"><scope>endstone::Plugin</scope><name>onDisable</name></member>
       <member refid="classendstone_1_1Plugin_1ae2a98beb4cfdc042da7e0d7ed0cd5856" prot="public" virt="virtual"><scope>endstone::Plugin</scope><name>onEnable</name></member>
       <member refid="classendstone_1_1Plugin_1af5d90225a0057bf88d97144acfae2ff4" prot="public" virt="virtual"><scope>endstone::Plugin</scope><name>onLoad</name></member>

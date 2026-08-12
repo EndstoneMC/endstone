@@ -67,6 +67,7 @@ _A wrapper around a std::shared\_ptr that may be null._ [More...](#detailed-desc
 |   | [**Nullable**](#function-nullable-57) (std::shared\_ptr&lt; [**U**](classendstone_1_1Identifier.md) &gt; ptr) <br>_Covariant conversion from a shared\_ptr of a convertible (e.g._  |
 |   | [**Nullable**](#function-nullable-67) ([**const**](classendstone_1_1Identifier.md) [**Nullable**](classendstone_1_1Nullable.md)&lt; [**U**](classendstone_1_1Identifier.md) &gt; & other) <br>_Covariant conversion from a_ [_**Nullable**_](classendstone_1_1Nullable.md) _of a convertible (e.g._ |
 |   | [**Nullable**](#function-nullable-77) ([**const**](classendstone_1_1Identifier.md) [**NotNull**](classendstone_1_1NotNull.md)&lt; [**U**](classendstone_1_1Identifier.md) &gt; & other) <br>_Covariant conversion from a_ [_**NotNull**_](classendstone_1_1NotNull.md) _of a convertible (e.g._ |
+|  [**Nullable**](classendstone_1_1Nullable.md)&lt; [**U**](classendstone_1_1Identifier.md) &gt; | [**cast**](#function-cast) () const<br>_Statically downcasts to a related type, keeping the shared ownership._  |
 |  [**const**](classendstone_1_1Identifier.md) pointer\_type & | [**get**](#function-get) () noexcept const<br> |
 |   | [**operator bool**](#function-operator-bool) () noexcept const<br> |
 |  [**T**](classendstone_1_1Identifier.md) & | [**operator\***](#function-operator) () noexcept const<br> |
@@ -258,6 +259,21 @@ derived) type.
 
 
         
+
+<hr>
+
+
+
+### function cast 
+
+_Statically downcasts to a related type, keeping the shared ownership._ 
+```C++
+template<class  U>
+inline Nullable < U > endstone::Nullable::cast () const
+```
+
+
+
 
 <hr>
 

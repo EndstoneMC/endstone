@@ -25,6 +25,7 @@
 #pragma once
 
 #include "endstone/map/map_canvas.h"
+#include "endstone/util/pointers.h"
 
 namespace endstone {
 
@@ -50,7 +51,7 @@ public:
 
     virtual void initialize(MapView &map) {}
 
-    virtual void render(MapView &map, MapCanvas &canvas, Player &player) = 0;
+    virtual void render(MapView &map, MapCanvas &canvas, const NotNull<Player> &player) = 0;
 
 private:
     bool is_contextual_;

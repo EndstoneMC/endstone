@@ -112,10 +112,10 @@
         </inbodydescription>
         <location file="include/endstone/plugin/service_manager.h" line="55" column="18"/>
       </memberdef>
-      <memberdef kind="function" id="classendstone_1_1ServiceManager_1ad6e9b9f07037a0fa971697bf9de486ec" prot="public" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
+      <memberdef kind="function" id="classendstone_1_1ServiceManager_1a0a2d7123f88265cb7dc05cf2f1ac2687" prot="public" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
         <type><ref refid="classendstone_1_1Identifier" kindref="compound">void</ref></type>
         <definition>virtual void endstone::ServiceManager::unregister</definition>
-        <argsstring>(std::string name, const Service &amp;provider)=0</argsstring>
+        <argsstring>(std::string name, const NotNull&lt; Service &gt; &amp;provider)=0</argsstring>
         <name>unregister</name>
         <qualifiedname>endstone::ServiceManager::unregister</qualifiedname>
         <param>
@@ -123,7 +123,7 @@
           <declname>name</declname>
         </param>
         <param>
-          <type><ref refid="classendstone_1_1Identifier" kindref="compound">const</ref> <ref refid="classendstone_1_1Service" kindref="compound">Service</ref> &amp;</type>
+          <type><ref refid="classendstone_1_1Identifier" kindref="compound">const</ref> <ref refid="classendstone_1_1NotNull" kindref="compound">NotNull</ref>&lt; <ref refid="classendstone_1_1Service" kindref="compound">Service</ref> &gt; &amp;</type>
           <declname>provider</declname>
         </param>
         <briefdescription>
@@ -153,14 +153,14 @@
         </inbodydescription>
         <location file="include/endstone/plugin/service_manager.h" line="63" column="18"/>
       </memberdef>
-      <memberdef kind="function" id="classendstone_1_1ServiceManager_1aa8f39bf20330d57e8d3d242645ef5109" prot="public" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
+      <memberdef kind="function" id="classendstone_1_1ServiceManager_1a5520f82d237cf4bae8ba97bdaa63f037" prot="public" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
         <type><ref refid="classendstone_1_1Identifier" kindref="compound">void</ref></type>
         <definition>virtual void endstone::ServiceManager::unregister</definition>
-        <argsstring>(const Service &amp;provider)=0</argsstring>
+        <argsstring>(const NotNull&lt; Service &gt; &amp;provider)=0</argsstring>
         <name>unregister</name>
         <qualifiedname>endstone::ServiceManager::unregister</qualifiedname>
         <param>
-          <type><ref refid="classendstone_1_1Identifier" kindref="compound">const</ref> <ref refid="classendstone_1_1Service" kindref="compound">Service</ref> &amp;</type>
+          <type><ref refid="classendstone_1_1Identifier" kindref="compound">const</ref> <ref refid="classendstone_1_1NotNull" kindref="compound">NotNull</ref>&lt; <ref refid="classendstone_1_1Service" kindref="compound">Service</ref> &gt; &amp;</type>
           <declname>provider</declname>
         </param>
         <briefdescription>
@@ -272,8 +272,8 @@
       <member refid="classendstone_1_1ServiceManager_1a0fdf2bb43656c95b59cda365f188adb8" prot="public" virt="pure-virtual"><scope>endstone::ServiceManager</scope><name>get</name></member>
       <member refid="classendstone_1_1ServiceManager_1a6bbf7c90809c4b037f810cca50c4d17c" prot="public" virt="non-virtual"><scope>endstone::ServiceManager</scope><name>load</name></member>
       <member refid="classendstone_1_1ServiceManager_1a1b48aa5ba8026c6f8a84b4b39b1b0eb7" prot="public" virt="pure-virtual"><scope>endstone::ServiceManager</scope><name>registerService</name></member>
-      <member refid="classendstone_1_1ServiceManager_1ad6e9b9f07037a0fa971697bf9de486ec" prot="public" virt="pure-virtual"><scope>endstone::ServiceManager</scope><name>unregister</name></member>
-      <member refid="classendstone_1_1ServiceManager_1aa8f39bf20330d57e8d3d242645ef5109" prot="public" virt="pure-virtual"><scope>endstone::ServiceManager</scope><name>unregister</name></member>
+      <member refid="classendstone_1_1ServiceManager_1a0a2d7123f88265cb7dc05cf2f1ac2687" prot="public" virt="pure-virtual"><scope>endstone::ServiceManager</scope><name>unregister</name></member>
+      <member refid="classendstone_1_1ServiceManager_1a5520f82d237cf4bae8ba97bdaa63f037" prot="public" virt="pure-virtual"><scope>endstone::ServiceManager</scope><name>unregister</name></member>
       <member refid="classendstone_1_1ServiceManager_1af62f98b2abdd3fa261d372dd10b5d831" prot="public" virt="pure-virtual"><scope>endstone::ServiceManager</scope><name>unregisterAll</name></member>
       <member refid="classendstone_1_1ServiceManager_1abbb8cc4e6fb216c72faeba297e006eb7" prot="public" virt="virtual"><scope>endstone::ServiceManager</scope><name>~ServiceManager</name></member>
     </listofallmembers>

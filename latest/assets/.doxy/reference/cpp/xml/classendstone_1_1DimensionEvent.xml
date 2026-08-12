@@ -6,9 +6,9 @@
     <derivedcompoundref refid="classendstone_1_1ChunkEvent" prot="public" virt="non-virtual">endstone::ChunkEvent</derivedcompoundref>
     <includes refid="dimension__event_8h" local="no">endstone/event/level/dimension_event.h</includes>
     <sectiondef kind="private-attrib">
-      <memberdef kind="variable" id="classendstone_1_1DimensionEvent_1a06fb7621f6fd742856ae7b24537365d7" prot="private" static="no" mutable="no">
-        <type><ref refid="classendstone_1_1Dimension" kindref="compound">Dimension</ref> &amp;</type>
-        <definition>Dimension&amp; endstone::DimensionEvent::dimension_</definition>
+      <memberdef kind="variable" id="classendstone_1_1DimensionEvent_1af8cce93484fa6cb254029c15a684cd44" prot="private" static="no" mutable="no">
+        <type><ref refid="classendstone_1_1NotNull" kindref="compound">NotNull</ref>&lt; <ref refid="classendstone_1_1Dimension" kindref="compound">Dimension</ref> &gt;</type>
+        <definition>NotNull&lt;Dimension&gt; endstone::DimensionEvent::dimension_</definition>
         <argsstring></argsstring>
         <name>dimension_</name>
         <qualifiedname>endstone::DimensionEvent::dimension_</qualifiedname>
@@ -18,18 +18,18 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/event/level/dimension_event.h" line="37" column="15" bodyfile="include/endstone/event/level/dimension_event.h" bodystart="37" bodyend="-1"/>
+        <location file="include/endstone/event/level/dimension_event.h" line="38" column="13" bodyfile="include/endstone/event/level/dimension_event.h" bodystart="38" bodyend="-1"/>
       </memberdef>
     </sectiondef>
     <sectiondef kind="public-func">
-      <memberdef kind="function" id="classendstone_1_1DimensionEvent_1ad3a003262de859e49042454c65cfe383" prot="public" static="no" const="no" explicit="yes" inline="yes" virt="non-virtual">
+      <memberdef kind="function" id="classendstone_1_1DimensionEvent_1a14fa3f1e46c72c6f4d379be69195b9da" prot="public" static="no" const="no" explicit="yes" inline="yes" virt="non-virtual">
         <type></type>
         <definition>endstone::DimensionEvent::DimensionEvent</definition>
-        <argsstring>(Dimension &amp;dimension)</argsstring>
+        <argsstring>(const NotNull&lt; Dimension &gt; &amp;dimension)</argsstring>
         <name>DimensionEvent</name>
         <qualifiedname>endstone::DimensionEvent::DimensionEvent</qualifiedname>
         <param>
-          <type><ref refid="classendstone_1_1Dimension" kindref="compound">Dimension</ref> &amp;</type>
+          <type><ref refid="classendstone_1_1Identifier" kindref="compound">const</ref> <ref refid="classendstone_1_1NotNull" kindref="compound">NotNull</ref>&lt; <ref refid="classendstone_1_1Dimension" kindref="compound">Dimension</ref> &gt; &amp;</type>
           <declname>dimension</declname>
         </param>
         <briefdescription>
@@ -38,11 +38,11 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/event/level/dimension_event.h" line="27" column="14" bodyfile="include/endstone/event/level/dimension_event.h" bodystart="27" bodyend="27"/>
+        <location file="include/endstone/event/level/dimension_event.h" line="27" column="14" bodyfile="include/endstone/event/level/dimension_event.h" bodystart="27" bodyend="28"/>
       </memberdef>
-      <memberdef kind="function" id="classendstone_1_1DimensionEvent_1ac6b765e364d4f1275335726bc8ba65f1" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
-        <type><ref refid="classendstone_1_1Dimension" kindref="compound">Dimension</ref> &amp;</type>
-        <definition>Dimension &amp; endstone::DimensionEvent::getDimension</definition>
+      <memberdef kind="function" id="classendstone_1_1DimensionEvent_1a3bc5f18108033e1159d97dbe3be62dd3" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type><ref refid="classendstone_1_1Identifier" kindref="compound">const</ref> <ref refid="classendstone_1_1NotNull" kindref="compound">NotNull</ref>&lt; <ref refid="classendstone_1_1Dimension" kindref="compound">Dimension</ref> &gt; &amp;</type>
+        <definition>const NotNull&lt; Dimension &gt; &amp; endstone::DimensionEvent::getDimension</definition>
         <argsstring>() const</argsstring>
         <name>getDimension</name>
         <qualifiedname>endstone::DimensionEvent::getDimension</qualifiedname>
@@ -56,7 +56,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/event/level/dimension_event.h" line="34" column="16" bodyfile="include/endstone/event/level/dimension_event.h" bodystart="34" bodyend="34"/>
+        <location file="include/endstone/event/level/dimension_event.h" line="35" column="20" bodyfile="include/endstone/event/level/dimension_event.h" bodystart="35" bodyend="35"/>
       </memberdef>
     </sectiondef>
     <briefdescription>
@@ -118,14 +118,14 @@
         </childnode>
       </node>
     </collaborationgraph>
-    <location file="include/endstone/event/level/dimension_event.h" line="25" column="1" bodyfile="include/endstone/event/level/dimension_event.h" bodystart="25" bodyend="38"/>
+    <location file="include/endstone/event/level/dimension_event.h" line="25" column="1" bodyfile="include/endstone/event/level/dimension_event.h" bodystart="25" bodyend="39"/>
     <listofallmembers>
-      <member refid="classendstone_1_1DimensionEvent_1a06fb7621f6fd742856ae7b24537365d7" prot="private" virt="non-virtual"><scope>endstone::DimensionEvent</scope><name>dimension_</name></member>
-      <member refid="classendstone_1_1DimensionEvent_1ad3a003262de859e49042454c65cfe383" prot="public" virt="non-virtual"><scope>endstone::DimensionEvent</scope><name>DimensionEvent</name></member>
+      <member refid="classendstone_1_1DimensionEvent_1af8cce93484fa6cb254029c15a684cd44" prot="private" virt="non-virtual"><scope>endstone::DimensionEvent</scope><name>dimension_</name></member>
+      <member refid="classendstone_1_1DimensionEvent_1a14fa3f1e46c72c6f4d379be69195b9da" prot="public" virt="non-virtual"><scope>endstone::DimensionEvent</scope><name>DimensionEvent</name></member>
       <member refid="classendstone_1_1Event_1a28cca8d74920493b449d035540acf023" prot="public" virt="non-virtual"><scope>endstone::DimensionEvent</scope><name>Event</name></member>
       <member refid="classendstone_1_1Event_1a7199136ebb40e1441bc61e29f83c3cad" prot="public" virt="non-virtual"><scope>endstone::DimensionEvent</scope><name>Event</name></member>
       <member refid="classendstone_1_1Event_1ad20bafd16e0671578e37390b95e5104c" prot="public" virt="non-virtual"><scope>endstone::DimensionEvent</scope><name>Event</name></member>
-      <member refid="classendstone_1_1DimensionEvent_1ac6b765e364d4f1275335726bc8ba65f1" prot="public" virt="non-virtual"><scope>endstone::DimensionEvent</scope><name>getDimension</name></member>
+      <member refid="classendstone_1_1DimensionEvent_1a3bc5f18108033e1159d97dbe3be62dd3" prot="public" virt="non-virtual"><scope>endstone::DimensionEvent</scope><name>getDimension</name></member>
       <member refid="classendstone_1_1Event_1a826fe74f9c4195a36a364b9aeeb321bb" prot="public" virt="pure-virtual"><scope>endstone::DimensionEvent</scope><name>getEventName</name></member>
       <member refid="classendstone_1_1LevelEvent_1ac3be77ffb5a5416fe0c6b138ac01a709" prot="public" virt="non-virtual"><scope>endstone::DimensionEvent</scope><name>getLevel</name></member>
       <member refid="classendstone_1_1Event_1ae89b54f63dc32b0c8797a59db69b6931" prot="public" virt="non-virtual"><scope>endstone::DimensionEvent</scope><name>isAsynchronous</name></member>

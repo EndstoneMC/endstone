@@ -37,16 +37,19 @@ namespace endstone {
 class ServerCommandEvent : public Cancellable<ServerEvent> {
 public:
     ENDSTONE_EVENT(ServerCommandEvent);
-    ServerCommandEvent(CommandSender &sender, std::string command) : sender_(sender), command_(std::move(command)) {}
+    ServerCommandEvent(const NotNull<CommandSender> &sender, std::string command)
+        : sender_(sender), command_(std::move(command))
+    {
+    }
 
     [[nodiscard]] std::string getCommand() const { return command_; }
 
     void setCommand(std::string command) { command_ = std::move(command); }
 
-    [[nodiscard]] CommandSender &getSender() const { return sender_; }
+    [[nodiscard]] const NotNull<CommandSender> &getSender() const { return sender_; }
 
 private:
-    CommandSender &sender_;
+    NotNull<CommandSender> sender_;
     std::string command_;
 };
 

@@ -51,7 +51,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/util/pointers.h" line="80" column="18" bodyfile="include/endstone/util/pointers.h" bodystart="80" bodyend="-1"/>
+        <location file="include/endstone/util/pointers.h" line="90" column="18" bodyfile="include/endstone/util/pointers.h" bodystart="90" bodyend="-1"/>
       </memberdef>
     </sectiondef>
     <sectiondef kind="public-func">
@@ -175,6 +175,25 @@
         </inbodydescription>
         <location file="include/endstone/util/pointers.h" line="60" column="5" bodyfile="include/endstone/util/pointers.h" bodystart="60" bodyend="62"/>
       </memberdef>
+      <memberdef kind="function" id="classendstone_1_1NotNull_1aaece29f3c92b50f4cbde9ebcac1f3c2f" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>endstone::NotNull&lt; T &gt;::NotNull</definition>
+        <argsstring>(const Nullable&lt; T &gt; &amp;other)</argsstring>
+        <name>NotNull</name>
+        <qualifiedname>endstone::NotNull::NotNull</qualifiedname>
+        <param>
+          <type><ref refid="classendstone_1_1Identifier" kindref="compound">const</ref> <ref refid="classendstone_1_1Nullable" kindref="compound">Nullable</ref>&lt; <ref refid="classendstone_1_1Identifier" kindref="compound">T</ref> &gt; &amp;</type>
+          <declname>other</declname>
+        </param>
+        <briefdescription>
+<para>Narrowing conversion from a <ref refid="classendstone_1_1Nullable" kindref="compound">Nullable</ref>, throwing if it holds no value. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/util/pointers.h" line="65" column="5" bodyfile="include/endstone/util/pointers.h" bodystart="159" bodyend="161"/>
+      </memberdef>
       <memberdef kind="function" id="classendstone_1_1NotNull_1a533011e63ef7c9abff4433d5ea493c73" prot="public" static="no" const="yes" explicit="no" inline="yes" noexcept="yes" virt="non-virtual">
         <type><ref refid="classendstone_1_1Identifier" kindref="compound">const</ref> pointer_type &amp;</type>
         <definition>const pointer_type &amp; endstone::NotNull&lt; T &gt;::get</definition>
@@ -187,7 +206,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/util/pointers.h" line="64" column="24" bodyfile="include/endstone/util/pointers.h" bodystart="64" bodyend="64"/>
+        <location file="include/endstone/util/pointers.h" line="67" column="24" bodyfile="include/endstone/util/pointers.h" bodystart="67" bodyend="67"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1NotNull_1a21a8f4d85591cb435433f126f1b8f7b6" prot="public" static="no" const="yes" explicit="no" inline="yes" noexcept="yes" virt="non-virtual">
         <type><ref refid="classendstone_1_1Identifier" kindref="compound">T</ref> *</type>
@@ -201,7 +220,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/util/pointers.h" line="65" column="7" bodyfile="include/endstone/util/pointers.h" bodystart="65" bodyend="65"/>
+        <location file="include/endstone/util/pointers.h" line="68" column="7" bodyfile="include/endstone/util/pointers.h" bodystart="68" bodyend="68"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1NotNull_1a10782f46cb764067d938eb9f09164bd8" prot="public" static="no" const="yes" explicit="no" inline="yes" noexcept="yes" virt="non-virtual">
         <type><ref refid="classendstone_1_1Identifier" kindref="compound">T</ref> &amp;</type>
@@ -215,7 +234,27 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/util/pointers.h" line="66" column="7" bodyfile="include/endstone/util/pointers.h" bodystart="66" bodyend="66"/>
+        <location file="include/endstone/util/pointers.h" line="69" column="7" bodyfile="include/endstone/util/pointers.h" bodystart="69" bodyend="69"/>
+      </memberdef>
+      <memberdef kind="function" id="classendstone_1_1NotNull_1aa3a39f40b96ecb43b6eb5c052800f18b" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type><ref refid="classendstone_1_1Identifier" kindref="compound">class</ref> <ref refid="classendstone_1_1Identifier" kindref="compound">U</ref></type>
+          </param>
+        </templateparamlist>
+        <type><ref refid="classendstone_1_1NotNull" kindref="compound">NotNull</ref>&lt; <ref refid="classendstone_1_1Identifier" kindref="compound">U</ref> &gt;</type>
+        <definition>NotNull&lt; U &gt; endstone::NotNull&lt; T &gt;::cast</definition>
+        <argsstring>() const</argsstring>
+        <name>cast</name>
+        <qualifiedname>endstone::NotNull::cast</qualifiedname>
+        <briefdescription>
+<para>Statically downcasts to a related type, keeping the shared ownership. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/util/pointers.h" line="73" column="14" bodyfile="include/endstone/util/pointers.h" bodystart="73" bodyend="76"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1NotNull_1a4b74a11f0815fff2cbd6e97e16010758" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>
@@ -232,7 +271,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/util/pointers.h" line="68" column="5"/>
+        <location file="include/endstone/util/pointers.h" line="78" column="5"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1NotNull_1aa13cb05033bf872ad518942a3a685a39" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="classendstone_1_1NotNull" kindref="compound">NotNull</ref> &amp;</type>
@@ -249,7 +288,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/util/pointers.h" line="69" column="13"/>
+        <location file="include/endstone/util/pointers.h" line="79" column="13"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1NotNull_1aa5c8f8df6b82922f6f8ed994580d5e87" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="classendstone_1_1NotNull" kindref="compound">NotNull</ref> &amp;</type>
@@ -263,7 +302,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/util/pointers.h" line="70" column="13"/>
+        <location file="include/endstone/util/pointers.h" line="80" column="13"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1NotNull_1ae0ae6cb934ff096d25778ae85f9d5836" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="classendstone_1_1NotNull" kindref="compound">NotNull</ref> &amp;</type>
@@ -277,7 +316,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/util/pointers.h" line="71" column="13"/>
+        <location file="include/endstone/util/pointers.h" line="81" column="13"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1NotNull_1a1012fd4cb537045703262607b464f045" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="classendstone_1_1NotNull" kindref="compound">NotNull</ref></type>
@@ -294,7 +333,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/util/pointers.h" line="72" column="13"/>
+        <location file="include/endstone/util/pointers.h" line="82" column="13"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1NotNull_1a10cd4f71796664feba9512e51de3984a" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="classendstone_1_1NotNull" kindref="compound">NotNull</ref></type>
@@ -311,7 +350,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/util/pointers.h" line="73" column="13"/>
+        <location file="include/endstone/util/pointers.h" line="83" column="13"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1NotNull_1a14ce33c0a3857ca010b140b1dc155463" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="classendstone_1_1NotNull" kindref="compound">NotNull</ref> &amp;</type>
@@ -328,7 +367,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/util/pointers.h" line="74" column="13"/>
+        <location file="include/endstone/util/pointers.h" line="84" column="13"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1NotNull_1a56a78ca5ed1a136d46c6b5d5fc521f7b" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="classendstone_1_1NotNull" kindref="compound">NotNull</ref> &amp;</type>
@@ -345,7 +384,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/util/pointers.h" line="75" column="13"/>
+        <location file="include/endstone/util/pointers.h" line="85" column="13"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1NotNull_1ac9addf65a9ad25ebc593311383ff2fbc" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="classendstone_1_1Identifier" kindref="compound">void</ref></type>
@@ -362,7 +401,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/util/pointers.h" line="76" column="10"/>
+        <location file="include/endstone/util/pointers.h" line="86" column="10"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1NotNull_1a71569c477dbe7c3fa58f8a684db3de55" prot="public" static="no" const="no" explicit="no" inline="yes" noexcept="yes" virt="non-virtual">
         <type><ref refid="classendstone_1_1Identifier" kindref="compound">void</ref></type>
@@ -380,7 +419,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/util/pointers.h" line="77" column="10" bodyfile="include/endstone/util/pointers.h" bodystart="77" bodyend="77"/>
+        <location file="include/endstone/util/pointers.h" line="87" column="10" bodyfile="include/endstone/util/pointers.h" bodystart="87" bodyend="87"/>
       </memberdef>
     </sectiondef>
     <briefdescription>
@@ -389,8 +428,9 @@
     <detaileddescription>
 <para>Construction from a null pointer throws, and the pointer-mutating operators are deleted. This mirrors <computeroutput>gsl::not_null&lt;std::shared_ptr&lt;T&gt;&gt;</computeroutput>, but throws <computeroutput>std::invalid_argument</computeroutput> on a null pointer (instead of a contract violation) so that a misbehaving plugin cannot crash the host. </para>
     </detaileddescription>
-    <location file="include/endstone/util/pointers.h" line="37" column="1" bodyfile="include/endstone/util/pointers.h" bodystart="37" bodyend="81"/>
+    <location file="include/endstone/util/pointers.h" line="37" column="1" bodyfile="include/endstone/util/pointers.h" bodystart="37" bodyend="91"/>
     <listofallmembers>
+      <member refid="classendstone_1_1NotNull_1aa3a39f40b96ecb43b6eb5c052800f18b" prot="public" virt="non-virtual"><scope>endstone::NotNull</scope><name>cast</name></member>
       <member refid="classendstone_1_1NotNull_1a718ea290bdcac85b25e982aeb6f0e71b" prot="public" virt="non-virtual"><scope>endstone::NotNull</scope><name>element_type</name></member>
       <member refid="classendstone_1_1NotNull_1a533011e63ef7c9abff4433d5ea493c73" prot="public" virt="non-virtual"><scope>endstone::NotNull</scope><name>get</name></member>
       <member refid="classendstone_1_1NotNull_1a402089231c348f213539e7f7dc87845a" prot="public" virt="non-virtual"><scope>endstone::NotNull</scope><name>NotNull</name></member>
@@ -398,6 +438,7 @@
       <member refid="classendstone_1_1NotNull_1a61bbfe33e76c9258f86fecb07f224a6d" prot="public" virt="non-virtual"><scope>endstone::NotNull</scope><name>NotNull</name></member>
       <member refid="classendstone_1_1NotNull_1ac30007a7e20399423e2f46a16809a6cf" prot="public" virt="non-virtual"><scope>endstone::NotNull</scope><name>NotNull</name></member>
       <member refid="classendstone_1_1NotNull_1acc1708655120fd354d50f8ec5b10bb63" prot="public" virt="non-virtual"><scope>endstone::NotNull</scope><name>NotNull</name></member>
+      <member refid="classendstone_1_1NotNull_1aaece29f3c92b50f4cbde9ebcac1f3c2f" prot="public" virt="non-virtual"><scope>endstone::NotNull</scope><name>NotNull</name></member>
       <member refid="classendstone_1_1NotNull_1a4b74a11f0815fff2cbd6e97e16010758" prot="public" virt="non-virtual"><scope>endstone::NotNull</scope><name>NotNull</name></member>
       <member refid="classendstone_1_1NotNull_1a10782f46cb764067d938eb9f09164bd8" prot="public" virt="non-virtual"><scope>endstone::NotNull</scope><name>operator*</name></member>
       <member refid="classendstone_1_1NotNull_1aa5c8f8df6b82922f6f8ed994580d5e87" prot="public" virt="non-virtual"><scope>endstone::NotNull</scope><name>operator++</name></member>

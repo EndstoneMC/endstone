@@ -95,9 +95,10 @@ public:
 
     [[nodiscard]] virtual Nullable<PluginCommand> getPluginCommand(std::string name) const = 0;
 
-    [[nodiscard]] virtual ConsoleCommandSender &getCommandSender() const = 0;
+    [[nodiscard]] virtual NotNull<ConsoleCommandSender> getCommandSender() const = 0;
 
-    [[nodiscard]] virtual bool dispatchCommand(CommandSender &sender, std::string command_line) const = 0;
+    [[nodiscard]] virtual bool dispatchCommand(const NotNull<CommandSender> &sender,
+                                               std::string command_line) const = 0;
 
     [[nodiscard]] virtual Scheduler &getScheduler() const = 0;
 
@@ -146,7 +147,7 @@ public:
 
     [[nodiscard]] virtual Nullable<Scoreboard> getScoreboard() const = 0;
 
-    [[nodiscard]] virtual std::shared_ptr<Scoreboard> createScoreboard() = 0;
+    [[nodiscard]] virtual NotNull<Scoreboard> createScoreboard() = 0;
 
     virtual float getCurrentMillisecondsPerTick() = 0;
 
@@ -188,7 +189,7 @@ public:
 
     [[nodiscard]] virtual MapView *getMap(std::int64_t id) const = 0;
 
-    [[nodiscard]] virtual MapView &createMap(const Dimension &dimension) const = 0;
+    [[nodiscard]] virtual MapView &createMap(const NotNull<Dimension> &dimension) const = 0;
 
     inline static const std::string BroadcastChannelAdmin = "endstone.broadcast.admin";
 

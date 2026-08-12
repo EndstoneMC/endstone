@@ -95,7 +95,7 @@ Inherits the following classes: [endstone::Cancellable](classendstone_1_1Cancell
 | ---: | :--- |
 |   | [**ENDSTONE\_EVENT**](#function-endstone_event) ([**ServerListPingEvent**](classendstone_1_1ServerListPingEvent.md)) <br> |
 |   | [**ServerListPingEvent**](#function-serverlistpingevent) ([**SocketAddress**](classendstone_1_1SocketAddress.md) address, std::string motd, [**int**](classendstone_1_1Identifier.md) network\_protocol\_version, std::string minecraft\_version\_network, [**int**](classendstone_1_1Identifier.md) num\_players, [**int**](classendstone_1_1Identifier.md) max\_players, std::string server\_guid, std::string level\_name, [**GameMode**](namespaceendstone.md#enum-gamemode) game\_mode, [**int**](classendstone_1_1Identifier.md) local\_port, [**int**](classendstone_1_1Identifier.md) local\_port\_v6) <br> |
-|  [**SocketAddress**](classendstone_1_1SocketAddress.md) | [**getAddress**](#function-getaddress) () const<br>_Get the address the ping is coming from._  |
+|  [**const**](classendstone_1_1Identifier.md) [**SocketAddress**](classendstone_1_1SocketAddress.md) & | [**getAddress**](#function-getaddress) () const<br>_Get the address the ping is coming from._  |
 |  [**GameMode**](namespaceendstone.md#enum-gamemode) | [**getGameMode**](#function-getgamemode) () const<br>_Get the current game mode._  |
 |  std::string | [**getLevelName**](#function-getlevelname) () const<br>_Get the level name._  |
 |  [**int**](classendstone_1_1Identifier.md) | [**getLocalPort**](#function-getlocalport) () const<br>_Get the local port of the server._  |
@@ -267,7 +267,7 @@ inline endstone::ServerListPingEvent::ServerListPingEvent (
 
 _Get the address the ping is coming from._ 
 ```C++
-inline SocketAddress endstone::ServerListPingEvent::getAddress () const
+inline const  SocketAddress & endstone::ServerListPingEvent::getAddress () const
 ```
 
 

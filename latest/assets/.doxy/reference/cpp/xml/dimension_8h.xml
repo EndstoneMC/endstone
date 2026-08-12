@@ -432,6 +432,8 @@
         <link refid="map__renderer_8h_source"/>
         <childnode refid="60" relation="include">
         </childnode>
+        <childnode refid="28" relation="include">
+        </childnode>
       </node>
       <node id="58">
         <label>endstone/map/map_view.h</label>
@@ -692,6 +694,8 @@
         </childnode>
         <childnode refid="73" relation="include">
         </childnode>
+        <childnode refid="28" relation="include">
+        </childnode>
         <childnode refid="54" relation="include">
         </childnode>
       </node>
@@ -709,6 +713,8 @@
         <label>endstone/scoreboard/score.h</label>
         <link refid="score_8h_source"/>
         <childnode refid="74" relation="include">
+        </childnode>
+        <childnode refid="28" relation="include">
         </childnode>
         <childnode refid="54" relation="include">
         </childnode>
@@ -1116,7 +1122,7 @@
 <codeline lineno="147"><highlight class="normal"></highlight></codeline>
 <codeline lineno="159" refid="classendstone_1_1Dimension_1ad609a49160461ba607ca1b0702419538" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">virtual</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="classendstone_1_1Dimension_1ad609a49160461ba607ca1b0702419538" kindref="member">unloadChunk</ref>(</highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="classendstone_1_1Identifier" kindref="compound">x</ref>,<sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="classendstone_1_1Identifier" kindref="compound">z</ref>)<sp/>=<sp/>0;</highlight></codeline>
 <codeline lineno="160"><highlight class="normal"></highlight></codeline>
-<codeline lineno="169" refid="classendstone_1_1Dimension_1af0bd0493f3c931570be2c063b12576b9" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>[[<ref refid="classendstone_1_1Identifier" kindref="compound">nodiscard</ref>]]<sp/></highlight><highlight class="keyword">virtual</highlight><highlight class="normal"><sp/><ref refid="classendstone_1_1Item" kindref="compound">Item</ref><sp/>&amp;<ref refid="classendstone_1_1Dimension_1af0bd0493f3c931570be2c063b12576b9" kindref="member">dropItem</ref>(<ref refid="classendstone_1_1Location" kindref="compound">Location</ref><sp/><ref refid="classendstone_1_1Identifier" kindref="compound">location</ref>,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classendstone_1_1ItemStack" kindref="compound">ItemStack</ref><sp/>&amp;<ref refid="classendstone_1_1Identifier" kindref="compound">item</ref>)<sp/>=<sp/>0;</highlight></codeline>
+<codeline lineno="169" refid="classendstone_1_1Dimension_1abd639df3fb48522170838960359a3ace" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>[[<ref refid="classendstone_1_1Identifier" kindref="compound">nodiscard</ref>]]<sp/></highlight><highlight class="keyword">virtual</highlight><highlight class="normal"><sp/><ref refid="classendstone_1_1Identifier" kindref="compound">NotNull&lt;Item&gt;</ref><sp/><ref refid="classendstone_1_1Dimension_1abd639df3fb48522170838960359a3ace" kindref="member">dropItem</ref>(<ref refid="classendstone_1_1Location" kindref="compound">Location</ref><sp/><ref refid="classendstone_1_1Identifier" kindref="compound">location</ref>,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classendstone_1_1ItemStack" kindref="compound">ItemStack</ref><sp/>&amp;<ref refid="classendstone_1_1Identifier" kindref="compound">item</ref>)<sp/>=<sp/>0;</highlight></codeline>
 <codeline lineno="170"><highlight class="normal"></highlight></codeline>
 <codeline lineno="178" refid="classendstone_1_1Dimension_1aabbe5768489c5b1f9f9d227565e04fa6" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>[[<ref refid="classendstone_1_1Identifier" kindref="compound">nodiscard</ref>]]<sp/></highlight><highlight class="keyword">virtual</highlight><highlight class="normal"><sp/><ref refid="classendstone_1_1Identifier" kindref="compound">Nullable&lt;Actor&gt;</ref><sp/><ref refid="classendstone_1_1Dimension_1aabbe5768489c5b1f9f9d227565e04fa6" kindref="member">spawnActor</ref>(<ref refid="classendstone_1_1Location" kindref="compound">Location</ref><sp/><ref refid="classendstone_1_1Identifier" kindref="compound">location</ref>,<sp/><ref refid="classendstone_1_1Identifier" kindref="compound">ActorTypeId</ref><sp/>type)<sp/>=<sp/>0;</highlight></codeline>
 <codeline lineno="179"><highlight class="normal"></highlight></codeline>

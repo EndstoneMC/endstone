@@ -471,7 +471,7 @@
       <member refid="classendstone_1_1Actor_1a857512cc626e30cb57d03cacae88dd9f" prot="public" virt="pure-virtual"><scope>endstone::Mob</scope><name>setRotation</name></member>
       <member refid="classendstone_1_1Actor_1adeec376304cd5900f6c848f9e946320e" prot="public" virt="pure-virtual"><scope>endstone::Mob</scope><name>setScoreTag</name></member>
       <member refid="classendstone_1_1Actor_1aecfec6af43ddcb9ab2dfa1d23e2b0b82" prot="public" virt="pure-virtual"><scope>endstone::Mob</scope><name>teleport</name></member>
-      <member refid="classendstone_1_1Actor_1a4be9f8132bce43f6aa06660cb2439e66" prot="public" virt="pure-virtual"><scope>endstone::Mob</scope><name>teleport</name></member>
+      <member refid="classendstone_1_1Actor_1a07309f1d71b407099c722dcd44f281cb" prot="public" virt="pure-virtual"><scope>endstone::Mob</scope><name>teleport</name></member>
       <member refid="classendstone_1_1Object_1adfddc886af4b1d0e09ddac7d0391b4d2" prot="public" virt="virtual"><scope>endstone::Mob</scope><name>~Object</name></member>
     </listofallmembers>
   </compounddef>

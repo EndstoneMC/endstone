@@ -242,14 +242,14 @@
         </inbodydescription>
         <location file="include/endstone/actor/actor.h" line="112" column="18"/>
       </memberdef>
-      <memberdef kind="function" id="classendstone_1_1Actor_1a4be9f8132bce43f6aa06660cb2439e66" prot="public" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
+      <memberdef kind="function" id="classendstone_1_1Actor_1a07309f1d71b407099c722dcd44f281cb" prot="public" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
         <type><ref refid="classendstone_1_1Identifier" kindref="compound">bool</ref></type>
         <definition>virtual bool endstone::Actor::teleport</definition>
-        <argsstring>(const Actor &amp;target)=0</argsstring>
+        <argsstring>(const NotNull&lt; Actor &gt; &amp;target)=0</argsstring>
         <name>teleport</name>
         <qualifiedname>endstone::Actor::teleport</qualifiedname>
         <param>
-          <type><ref refid="classendstone_1_1Identifier" kindref="compound">const</ref> <ref refid="classendstone_1_1Actor" kindref="compound">Actor</ref> &amp;</type>
+          <type><ref refid="classendstone_1_1Identifier" kindref="compound">const</ref> <ref refid="classendstone_1_1NotNull" kindref="compound">NotNull</ref>&lt; <ref refid="classendstone_1_1Actor" kindref="compound">Actor</ref> &gt; &amp;</type>
           <declname>target</declname>
         </param>
         <briefdescription>
@@ -732,7 +732,7 @@
       <member refid="classendstone_1_1Actor_1a857512cc626e30cb57d03cacae88dd9f" prot="public" virt="pure-virtual"><scope>endstone::Actor</scope><name>setRotation</name></member>
       <member refid="classendstone_1_1Actor_1adeec376304cd5900f6c848f9e946320e" prot="public" virt="pure-virtual"><scope>endstone::Actor</scope><name>setScoreTag</name></member>
       <member refid="classendstone_1_1Actor_1aecfec6af43ddcb9ab2dfa1d23e2b0b82" prot="public" virt="pure-virtual"><scope>endstone::Actor</scope><name>teleport</name></member>
-      <member refid="classendstone_1_1Actor_1a4be9f8132bce43f6aa06660cb2439e66" prot="public" virt="pure-virtual"><scope>endstone::Actor</scope><name>teleport</name></member>
+      <member refid="classendstone_1_1Actor_1a07309f1d71b407099c722dcd44f281cb" prot="public" virt="pure-virtual"><scope>endstone::Actor</scope><name>teleport</name></member>
       <member refid="classendstone_1_1Object_1adfddc886af4b1d0e09ddac7d0391b4d2" prot="public" virt="virtual"><scope>endstone::Actor</scope><name>~Object</name></member>
     </listofallmembers>
   </compounddef>

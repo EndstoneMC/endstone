@@ -30,7 +30,7 @@
     <member refid="classendstone_1_1Actor_1a408807220ded9a0004de3e6d7aac214e" kind="function"><name>getDimension</name></member>
     <member refid="classendstone_1_1Actor_1a857512cc626e30cb57d03cacae88dd9f" kind="function"><name>setRotation</name></member>
     <member refid="classendstone_1_1Actor_1aecfec6af43ddcb9ab2dfa1d23e2b0b82" kind="function"><name>teleport</name></member>
-    <member refid="classendstone_1_1Actor_1a4be9f8132bce43f6aa06660cb2439e66" kind="function"><name>teleport</name></member>
+    <member refid="classendstone_1_1Actor_1a07309f1d71b407099c722dcd44f281cb" kind="function"><name>teleport</name></member>
     <member refid="classendstone_1_1Actor_1a78059bed5b1a6b23bfb2be9ac6ae81a3" kind="function"><name>getId</name></member>
     <member refid="classendstone_1_1Actor_1a896dcb16d037d3591b0d39480521a193" kind="function"><name>remove</name></member>
     <member refid="classendstone_1_1Actor_1aa099af11ae3053289f31c65c9126b50a" kind="function"><name>isDead</name></member>
@@ -514,8 +514,8 @@
     <member refid="classendstone_1_1BossBar_1ad87883aafad616b5d94c5f171140b790" kind="function"><name>setProgress</name></member>
     <member refid="classendstone_1_1BossBar_1a00f426146a25566319f641881318aa43" kind="function"><name>isVisible</name></member>
     <member refid="classendstone_1_1BossBar_1ac037275aadff9ea427432063ffeca138" kind="function"><name>setVisible</name></member>
-    <member refid="classendstone_1_1BossBar_1a12761830372d48958fd50bddef835170" kind="function"><name>addPlayer</name></member>
-    <member refid="classendstone_1_1BossBar_1a5e1dfb34a264bfcbfea1af2c2a2ba578" kind="function"><name>removePlayer</name></member>
+    <member refid="classendstone_1_1BossBar_1ad777847618860643bb8e714d1c1df73c" kind="function"><name>addPlayer</name></member>
+    <member refid="classendstone_1_1BossBar_1a55aae8072a0fa901bc5bff61f4f5f568" kind="function"><name>removePlayer</name></member>
     <member refid="classendstone_1_1BossBar_1adb723506a074cee293e813a4409b12c2" kind="function"><name>removeAll</name></member>
     <member refid="classendstone_1_1BossBar_1ad10cce1b4946fa66ffee36e9a0536ca1" kind="function"><name>getPlayers</name></member>
   </compound>
@@ -655,7 +655,7 @@
     <member refid="classendstone_1_1Command_1a5a849b3fce28dcd10f8f0944e54c3580" kind="variable"><name>command_map_</name></member>
     <member refid="classendstone_1_1Command_1aa44822c895d67402241b9570bafd2ce7" kind="function"><name>Command</name></member>
     <member refid="classendstone_1_1Command_1a1a6c0c0027b500df3e4eea60cf489ea2" kind="function"><name>~Command</name></member>
-    <member refid="classendstone_1_1Command_1a983f63a4d9460dcc7a952eabd7c46737" kind="function"><name>execute</name></member>
+    <member refid="classendstone_1_1Command_1a999eebcff677298c56335b26ef4d92c3" kind="function"><name>execute</name></member>
     <member refid="classendstone_1_1Command_1ae7306437f7a829db83548ca11288b298" kind="function"><name>getName</name></member>
     <member refid="classendstone_1_1Command_1a66160b5ff3d7efbc62e93e122d699776" kind="function"><name>setName</name></member>
     <member refid="classendstone_1_1Command_1a2f860b42aae19582ecc4a2d74ebc8cca" kind="function"><name>getDescription</name></member>
@@ -666,8 +666,8 @@
     <member refid="classendstone_1_1Command_1ab73ce16a9a92a52780fd2640b5f5a91a" kind="function"><name>setUsages</name></member>
     <member refid="classendstone_1_1Command_1a77de470be4805521e2f8887bbc873152" kind="function"><name>getPermissions</name></member>
     <member refid="classendstone_1_1Command_1a53e55d4c2375b2b34e321f4f46551b09" kind="function"><name>setPermissions</name></member>
-    <member refid="classendstone_1_1Command_1a3d6b00319efa8c4e8bc51227532577d6" kind="function"><name>testPermission</name></member>
-    <member refid="classendstone_1_1Command_1a72a27372e25345d4efe9f421520fc44b" kind="function"><name>testPermissionSilently</name></member>
+    <member refid="classendstone_1_1Command_1a509e2f7719c071e86c2330e59b788b03" kind="function"><name>testPermission</name></member>
+    <member refid="classendstone_1_1Command_1a7ec2943abb78b75488da16f47f699855" kind="function"><name>testPermissionSilently</name></member>
     <member refid="classendstone_1_1Command_1a694f2bdd19a6381000fad63fbc3d6ad0" kind="function"><name>registerTo</name></member>
     <member refid="classendstone_1_1Command_1af0220a368428afc83b15d638e40426fd" kind="function"><name>unregisterFrom</name></member>
     <member refid="classendstone_1_1Command_1a4b4bfe6350f3deae258fc5fd8e344fbf" kind="function"><name>isRegistered</name></member>
@@ -690,7 +690,7 @@
   </compound>
   <compound refid="classendstone_1_1CommandExecutor" kind="class"><name>endstone::CommandExecutor</name>
     <member refid="classendstone_1_1CommandExecutor_1a9dfc0b1fe01086e280de0d8202f6482c" kind="function"><name>~CommandExecutor</name></member>
-    <member refid="classendstone_1_1CommandExecutor_1abf189fa960c2e7f1fbc3f0366afc3d1f" kind="function"><name>onCommand</name></member>
+    <member refid="classendstone_1_1CommandExecutor_1afb60283a04728223c88798db4f62c545" kind="function"><name>onCommand</name></member>
   </compound>
   <compound refid="classendstone_1_1CommandMap" kind="class"><name>endstone::CommandMap</name>
     <member refid="classendstone_1_1CommandMap_1a25331c5810be15454974aaefe3fbc68b" kind="function"><name>CommandMap</name></member>
@@ -700,7 +700,7 @@
     <member refid="classendstone_1_1CommandMap_1a71900d4f6d83ea0a21f9b2dbddcae322" kind="function"><name>operator=</name></member>
     <member refid="classendstone_1_1CommandMap_1abc727aa73950b67e85315d0fa0317c9d" kind="function"><name>~CommandMap</name></member>
     <member refid="classendstone_1_1CommandMap_1a5b3beafddf2091946afee009ae1cf5de" kind="function"><name>registerCommand</name></member>
-    <member refid="classendstone_1_1CommandMap_1a4f06f0f67a32638079499c1b8bbc8dbc" kind="function"><name>dispatch</name></member>
+    <member refid="classendstone_1_1CommandMap_1a158e3036a4c7f22d7a07db174f47e00c" kind="function"><name>dispatch</name></member>
     <member refid="classendstone_1_1CommandMap_1a668e38f90aad2458f33563f84d87c95a" kind="function"><name>clearCommands</name></member>
     <member refid="classendstone_1_1CommandMap_1a8b44b32258c2a2d0dabfcc3618f1f383" kind="function"><name>getCommand</name></member>
   </compound>
@@ -714,10 +714,10 @@
   </compound>
   <compound refid="classendstone_1_1CommandSenderWrapper" kind="class"><name>endstone::CommandSenderWrapper</name>
     <member refid="classendstone_1_1CommandSenderWrapper_1aecfc3f07c79d140b40d890b7a7a2d541" kind="typedef"><name>Callback</name></member>
-    <member refid="classendstone_1_1CommandSenderWrapper_1a41ad90af25dd6fb6255edf5ff2c099b5" kind="variable"><name>sender_</name></member>
+    <member refid="classendstone_1_1CommandSenderWrapper_1aaffc6a7e6ff2fa2216b3e50f0f8785fe" kind="variable"><name>sender_</name></member>
     <member refid="classendstone_1_1CommandSenderWrapper_1ab9681dee5565195c3f25dcb2e5f25d43" kind="variable"><name>on_message_</name></member>
     <member refid="classendstone_1_1CommandSenderWrapper_1a90e1149cfbcb7b6e36a73c4172f84dc5" kind="variable"><name>on_error_</name></member>
-    <member refid="classendstone_1_1CommandSenderWrapper_1a0f9429e921096e79eeb39a5d8d78ea57" kind="function"><name>CommandSenderWrapper</name></member>
+    <member refid="classendstone_1_1CommandSenderWrapper_1a8d69583974533115b58a1e91237eff41" kind="function"><name>CommandSenderWrapper</name></member>
     <member refid="classendstone_1_1CommandSenderWrapper_1a46ff186c06fed5c771888c5d9167852c" kind="function"><name>sendMessage</name></member>
     <member refid="classendstone_1_1CommandSenderWrapper_1aeb7bc0ed994ee4aacd4834f5c97c5bdf" kind="function"><name>sendErrorMessage</name></member>
     <member refid="classendstone_1_1CommandSenderWrapper_1a35ea40a86d08d2e675932a8532b1851b" kind="function"><name>getPermissionLevel</name></member>
@@ -732,8 +732,7 @@
     <member refid="classendstone_1_1CommandSenderWrapper_1aeeb41c929000b7f74f64d289d509edba" kind="function"><name>getEffectivePermissions</name></member>
     <member refid="classendstone_1_1CommandSenderWrapper_1a32447f67b4a1cf445b8020fdf06518f5" kind="function"><name>getClassTypeId</name></member>
     <member refid="classendstone_1_1CommandSenderWrapper_1a98f9818a93988f413831e2c4e9d59db6" kind="function"><name>isInstanceOf</name></member>
-    <member refid="classendstone_1_1CommandSenderWrapper_1a47cca1b9fe1b2823c19740b77e5c142a" kind="function"><name>getWrapped</name></member>
-    <member refid="classendstone_1_1CommandSenderWrapper_1a2b78cec4928359c7f88126a5b696c5f2" kind="function"><name>getWrapped</name></member>
+    <member refid="classendstone_1_1CommandSenderWrapper_1a7fa80697d5a28fb87a0312ed2115655d" kind="function"><name>getWrapped</name></member>
     <member refid="classendstone_1_1CommandSenderWrapper_1ae4c0dbf8ed831f306f660688e294dcce" kind="function"><name>getServer</name></member>
     <member refid="classendstone_1_1CommandSenderWrapper_1af7a2f45adfa1e55eda23bd39a16d3642" kind="function"><name>getName</name></member>
   </compound>
@@ -834,7 +833,7 @@
     <member refid="classendstone_1_1Dimension_1ae5c461371c826a47b3f7cbd060ca9edc" kind="function"><name>isChunkLoaded</name></member>
     <member refid="classendstone_1_1Dimension_1ae6267ee9775ae738c3ee34d23f77a4fb" kind="function"><name>loadChunk</name></member>
     <member refid="classendstone_1_1Dimension_1ad609a49160461ba607ca1b0702419538" kind="function"><name>unloadChunk</name></member>
-    <member refid="classendstone_1_1Dimension_1af0bd0493f3c931570be2c063b12576b9" kind="function"><name>dropItem</name></member>
+    <member refid="classendstone_1_1Dimension_1abd639df3fb48522170838960359a3ace" kind="function"><name>dropItem</name></member>
     <member refid="classendstone_1_1Dimension_1aabbe5768489c5b1f9f9d227565e04fa6" kind="function"><name>spawnActor</name></member>
     <member refid="classendstone_1_1Dimension_1ab8476baf719292c340430109fcfdfadc" kind="function"><name>getActors</name></member>
   </compound>
@@ -845,9 +844,9 @@
     <member refid="classendstone_1_1DimensionCreator_1ad257f475b0ca20ea00706f5d4f6e3fe1" kind="function"><name>id</name></member>
   </compound>
   <compound refid="classendstone_1_1DimensionEvent" kind="class"><name>endstone::DimensionEvent</name>
-    <member refid="classendstone_1_1DimensionEvent_1a06fb7621f6fd742856ae7b24537365d7" kind="variable"><name>dimension_</name></member>
-    <member refid="classendstone_1_1DimensionEvent_1ad3a003262de859e49042454c65cfe383" kind="function"><name>DimensionEvent</name></member>
-    <member refid="classendstone_1_1DimensionEvent_1ac6b765e364d4f1275335726bc8ba65f1" kind="function"><name>getDimension</name></member>
+    <member refid="classendstone_1_1DimensionEvent_1af8cce93484fa6cb254029c15a684cd44" kind="variable"><name>dimension_</name></member>
+    <member refid="classendstone_1_1DimensionEvent_1a14fa3f1e46c72c6f4d379be69195b9da" kind="function"><name>DimensionEvent</name></member>
+    <member refid="classendstone_1_1DimensionEvent_1a3bc5f18108033e1159d97dbe3be62dd3" kind="function"><name>getDimension</name></member>
   </compound>
   <compound refid="classendstone_1_1Divider" kind="class"><name>endstone::Divider</name>
     <member refid="classendstone_1_1Divider_1a8a5122832b87ae7c59cb6786e9d3c8d1" kind="function"><name>Divider</name></member>
@@ -1179,6 +1178,7 @@
     <member refid="classendstone_1_1HandlerList_1a0c020fd39ab3790ae5066d0770e9f5e5" kind="function"><name>registerHandler</name></member>
     <member refid="classendstone_1_1HandlerList_1ad2417dc763c19d61a627a7e43c09b81a" kind="function"><name>unregister</name></member>
     <member refid="classendstone_1_1HandlerList_1a5950519aa05fb195d32afad8ea03addc" kind="function"><name>unregister</name></member>
+    <member refid="classendstone_1_1HandlerList_1af7971b36c9378c1ab0814e2f48ed0ee1" kind="function"><name>empty</name></member>
     <member refid="classendstone_1_1HandlerList_1ad341b769bbf3a604e82392b84212a18d" kind="function"><name>getHandlers</name></member>
     <member refid="classendstone_1_1HandlerList_1a60ca2f071683e43f5d601d886cc3a622" kind="function"><name>bake</name></member>
   </compound>
@@ -1635,7 +1635,7 @@
     <member refid="classendstone_1_1MapRenderer_1a8772440cd8520c99a6ab6b3c5f4d1cbc" kind="function"><name>~MapRenderer</name></member>
     <member refid="classendstone_1_1MapRenderer_1a2b1e4003332c6d6d04cb86417f857fd3" kind="function"><name>isContextual</name></member>
     <member refid="classendstone_1_1MapRenderer_1aa373a4708be2892341831df75a246bfc" kind="function"><name>initialize</name></member>
-    <member refid="classendstone_1_1MapRenderer_1a2ffd5d14ab9ff49f698f187b14159778" kind="function"><name>render</name></member>
+    <member refid="classendstone_1_1MapRenderer_1afd565b1e8f98324621ca44bebc73e0d5" kind="function"><name>render</name></member>
     <member refid="classendstone_1_1MapRenderer_1a6c4589d423e45ff060a37cb4f7e7a0c9" kind="function"><name>isEndstoneMapRenderer</name></member>
   </compound>
   <compound refid="classendstone_1_1MapView" kind="class"><name>endstone::MapView</name>
@@ -1655,7 +1655,7 @@
     <member refid="classendstone_1_1MapView_1a909106f650cd8d8755bca25a7b5c76aa" kind="function"><name>setCenterX</name></member>
     <member refid="classendstone_1_1MapView_1ae4875770b34a02497ccdcc081e3d71ec" kind="function"><name>setCenterZ</name></member>
     <member refid="classendstone_1_1MapView_1ab2001972badba74404636dc2379785be" kind="function"><name>getDimension</name></member>
-    <member refid="classendstone_1_1MapView_1a0ff3209db49eb4585652c8ca104cf7c6" kind="function"><name>setDimension</name></member>
+    <member refid="classendstone_1_1MapView_1aba37705e57a5d2ce11f5c2c74ed11e02" kind="function"><name>setDimension</name></member>
     <member refid="classendstone_1_1MapView_1a91a42244a4f6e209e3d80fd2d1343bda" kind="function"><name>getRenderers</name></member>
     <member refid="classendstone_1_1MapView_1a759c2ca352b140a77f6aec185c1f2561" kind="function"><name>addRenderer</name></member>
     <member refid="classendstone_1_1MapView_1a778c94e5095993dd7c5895d7f8c24eee" kind="function"><name>removeRenderer</name></member>
@@ -1721,9 +1721,11 @@
     <member refid="classendstone_1_1NotNull_1aa7fb65135484ebb79da3d599da6f500f" kind="function"><name>operator=</name></member>
     <member refid="classendstone_1_1NotNull_1ac30007a7e20399423e2f46a16809a6cf" kind="function"><name>NotNull</name></member>
     <member refid="classendstone_1_1NotNull_1acc1708655120fd354d50f8ec5b10bb63" kind="function"><name>NotNull</name></member>
+    <member refid="classendstone_1_1NotNull_1aaece29f3c92b50f4cbde9ebcac1f3c2f" kind="function"><name>NotNull</name></member>
     <member refid="classendstone_1_1NotNull_1a533011e63ef7c9abff4433d5ea493c73" kind="function"><name>get</name></member>
     <member refid="classendstone_1_1NotNull_1a21a8f4d85591cb435433f126f1b8f7b6" kind="function"><name>operator-&gt;</name></member>
     <member refid="classendstone_1_1NotNull_1a10782f46cb764067d938eb9f09164bd8" kind="function"><name>operator*</name></member>
+    <member refid="classendstone_1_1NotNull_1aa3a39f40b96ecb43b6eb5c052800f18b" kind="function"><name>cast</name></member>
     <member refid="classendstone_1_1NotNull_1a4b74a11f0815fff2cbd6e97e16010758" kind="function"><name>NotNull</name></member>
     <member refid="classendstone_1_1NotNull_1aa13cb05033bf872ad518942a3a685a39" kind="function"><name>operator=</name></member>
     <member refid="classendstone_1_1NotNull_1aa5c8f8df6b82922f6f8ed994580d5e87" kind="function"><name>operator++</name></member>
@@ -1750,6 +1752,7 @@
     <member refid="classendstone_1_1Nullable_1a7906d265f380f7a31adcef433165b028" kind="function"><name>operator-&gt;</name></member>
     <member refid="classendstone_1_1Nullable_1a992e605330beee0c1ae9f0a30c8b4dd2" kind="function"><name>operator*</name></member>
     <member refid="classendstone_1_1Nullable_1a7529b952cd5553e62038f8c15751940c" kind="function"><name>operator bool</name></member>
+    <member refid="classendstone_1_1Nullable_1a49d448ceeb976749bcd6b6ceb72b006d" kind="function"><name>cast</name></member>
     <member refid="classendstone_1_1Nullable_1aacfe83683413e2745f4482346f0a0a2a" kind="function"><name>value</name></member>
     <member refid="classendstone_1_1Nullable_1ac6d37b889dcdf009ec8da6a17718100f" kind="function"><name>value_or</name></member>
     <member refid="classendstone_1_1Nullable_1a259337d8c5e717cdda7397808ed2afd4" kind="function"><name>operator==</name></member>
@@ -1769,7 +1772,7 @@
     <member refid="classendstone_1_1Objective_1aef9a2e958f08540ef6c2f0c8bfc6663d" kind="function"><name>setDisplayName</name></member>
     <member refid="classendstone_1_1Objective_1ae125ae418556b2c6842c79b2b5de6690" kind="function"><name>getCriteria</name></member>
     <member refid="classendstone_1_1Objective_1abfd716f0de3c85f04700f06f4eb48a9a" kind="function"><name>isModifiable</name></member>
-    <member refid="classendstone_1_1Objective_1ada9df9db7d4dab1a2a129891a58822b9" kind="function"><name>getScoreboard</name></member>
+    <member refid="classendstone_1_1Objective_1a544f5253169230cdafddfe58e24eec4f" kind="function"><name>getScoreboard</name></member>
     <member refid="classendstone_1_1Objective_1aa121126c45b531b856e831ad2aa77722" kind="function"><name>unregister</name></member>
     <member refid="classendstone_1_1Objective_1afdcfd70f9cbfa5034cccdc374388208b" kind="function"><name>isDisplayed</name></member>
     <member refid="classendstone_1_1Objective_1a9b750f03e9ddd5a2b37816cefc594950" kind="function"><name>getDisplaySlot</name></member>
@@ -1802,7 +1805,7 @@
     <member refid="classendstone_1_1PacketReceiveEvent_1a518168db89685906e59159d8fde84006" kind="function"><name>getPayload</name></member>
     <member refid="classendstone_1_1PacketReceiveEvent_1a38da3d7aa9ee5431efbf9ef500b1df56" kind="function"><name>setPayload</name></member>
     <member refid="classendstone_1_1PacketReceiveEvent_1a6eef5dfc863f30663a1437c1d39ecfce" kind="function"><name>getPlayer</name></member>
-    <member refid="classendstone_1_1PacketReceiveEvent_1ab5fe2e62cbedfbe4312c442b1a774b10" kind="function"><name>getAddress</name></member>
+    <member refid="classendstone_1_1PacketReceiveEvent_1a37ca7d7a046ae0b65c0da0f0c6e5641e" kind="function"><name>getAddress</name></member>
     <member refid="classendstone_1_1PacketReceiveEvent_1af975d7e890536043acb7213e7b2e0923" kind="function"><name>getSubClientId</name></member>
   </compound>
   <compound refid="classendstone_1_1PacketSendEvent" kind="class"><name>endstone::PacketSendEvent</name>
@@ -1818,7 +1821,7 @@
     <member refid="classendstone_1_1PacketSendEvent_1a5742091cbd6fd1a5883567f4509693a8" kind="function"><name>getPayload</name></member>
     <member refid="classendstone_1_1PacketSendEvent_1a7388ad0e80c62aaf7a5d01a4e0974345" kind="function"><name>setPayload</name></member>
     <member refid="classendstone_1_1PacketSendEvent_1aea926d70c0fa5ed71d5e5a094780beb5" kind="function"><name>getPlayer</name></member>
-    <member refid="classendstone_1_1PacketSendEvent_1ada748078e0707514545961d6bd837060" kind="function"><name>getAddress</name></member>
+    <member refid="classendstone_1_1PacketSendEvent_1a2a790544d89c53b49e1caea4da2a932b" kind="function"><name>getAddress</name></member>
     <member refid="classendstone_1_1PacketSendEvent_1a7521c9aa7ee4395b01ae312d7a14b65b" kind="function"><name>getSubClientId</name></member>
   </compound>
   <compound refid="classendstone_1_1Permissible" kind="class"><name>endstone::Permissible</name>
@@ -1899,7 +1902,7 @@
     <member refid="classendstone_1_1Player_1abac4577ca5fcd890b21f148b3df1e441" kind="function"><name>isOp</name></member>
     <member refid="classendstone_1_1Player_1ab0988eb2cd4067117f2419a5a06fcedb" kind="function"><name>setOp</name></member>
     <member refid="classendstone_1_1Player_1a47c04697994e74cdac0e8b7c4d6b09c7" kind="function"><name>getXuid</name></member>
-    <member refid="classendstone_1_1Player_1ae4202aac53995316c87c800d8dc900a6" kind="function"><name>getAddress</name></member>
+    <member refid="classendstone_1_1Player_1a4bbd490a104f8b287c0beff7b1593ca5" kind="function"><name>getAddress</name></member>
     <member refid="classendstone_1_1Player_1a1eb6fe0de5da814e8d7467817e935603" kind="function"><name>transfer</name></member>
     <member refid="classendstone_1_1Player_1a6dbf34f6330cf0c9e17872426e1c2eb0" kind="function"><name>kick</name></member>
     <member refid="classendstone_1_1Player_1a9484ec57ceb309acfcfe4b2d61026f56" kind="function"><name>performCommand</name></member>
@@ -2018,12 +2021,12 @@
     <member refid="classendstone_1_1PlayerDeathEvent_1a6a243db2fbf5bdcb6163b39b151338a5" kind="function"><name>setDeathMessage</name></member>
   </compound>
   <compound refid="classendstone_1_1PlayerDimensionChangeEvent" kind="class"><name>endstone::PlayerDimensionChangeEvent</name>
-    <member refid="classendstone_1_1PlayerDimensionChangeEvent_1a8ccd365034bf854e02777b79f4b00312" kind="variable"><name>from_</name></member>
-    <member refid="classendstone_1_1PlayerDimensionChangeEvent_1af8722bb0c87b4df64a92628c134d7657" kind="variable"><name>to_</name></member>
+    <member refid="classendstone_1_1PlayerDimensionChangeEvent_1abf1d0cc7489995e03c311ed41d44f17b" kind="variable"><name>from_</name></member>
+    <member refid="classendstone_1_1PlayerDimensionChangeEvent_1a460e899d5f8b22ff38810bfab1d4bafc" kind="variable"><name>to_</name></member>
     <member refid="classendstone_1_1PlayerDimensionChangeEvent_1af8ebc15049381181867a6a0bd2db3668" kind="function"><name>ENDSTONE_EVENT</name></member>
-    <member refid="classendstone_1_1PlayerDimensionChangeEvent_1aab15ffbcb30dd398f1938e5db52c975e" kind="function"><name>PlayerDimensionChangeEvent</name></member>
-    <member refid="classendstone_1_1PlayerDimensionChangeEvent_1a9fe866587b790b24d5b811b70a2e9d19" kind="function"><name>getFrom</name></member>
-    <member refid="classendstone_1_1PlayerDimensionChangeEvent_1a6fc95e56eba0598121273b95006ead5a" kind="function"><name>getTo</name></member>
+    <member refid="classendstone_1_1PlayerDimensionChangeEvent_1ad09f1a736e4d0439bfa638417cd4a526" kind="function"><name>PlayerDimensionChangeEvent</name></member>
+    <member refid="classendstone_1_1PlayerDimensionChangeEvent_1a7c42e2f01a5d1dbd88bdc16be716be1d" kind="function"><name>getFrom</name></member>
+    <member refid="classendstone_1_1PlayerDimensionChangeEvent_1a5c99a7afe04b9dcd961b5d3ef5ae2a37" kind="function"><name>getTo</name></member>
   </compound>
   <compound refid="classendstone_1_1PlayerDropItemEvent" kind="class"><name>endstone::PlayerDropItemEvent</name>
     <member refid="classendstone_1_1PlayerDropItemEvent_1aa96b55c52eff51ed96cd0bf4d989efb8" kind="variable"><name>drop_</name></member>
@@ -2227,7 +2230,7 @@
     <member refid="classendstone_1_1PluginCommand_1a025ba1c09032b5fa58580e5819d18ff9" kind="variable"><name>owner_</name></member>
     <member refid="classendstone_1_1PluginCommand_1a2ec629d4eb987db62409bce874a9d2f3" kind="variable"><name>executor_</name></member>
     <member refid="classendstone_1_1PluginCommand_1aaceb3f61ac9023104cf66875c9407e2b" kind="function"><name>PluginCommand</name></member>
-    <member refid="classendstone_1_1PluginCommand_1a376735d9dccfa3142004f92063808cdc" kind="function"><name>execute</name></member>
+    <member refid="classendstone_1_1PluginCommand_1ab4775a442dac9270ead8e4c5d706852c" kind="function"><name>execute</name></member>
     <member refid="classendstone_1_1PluginCommand_1a49cc0fd16a008de539a703fa63fd7ef4" kind="function"><name>setExecutor</name></member>
     <member refid="classendstone_1_1PluginCommand_1a555a83596463f0b58e8f1895f16c34d7" kind="function"><name>getExecutor</name></member>
     <member refid="classendstone_1_1PluginCommand_1a7f812a8e80c3f2c9fc578b3a77513c9a" kind="function"><name>getPlugin</name></member>
@@ -2440,7 +2443,7 @@
     <member refid="classendstone_1_1Score_1af1f7bffee5b2dc2919d9c12e12ba36fe" kind="function"><name>setValue</name></member>
     <member refid="classendstone_1_1Score_1a1bdd66c862ca7134a12b4abbcc81c52e" kind="function"><name>isScoreSet</name></member>
     <member refid="classendstone_1_1Score_1a15ddb09b97449ea2805cc1b68ad1231a" kind="function"><name>getObjective</name></member>
-    <member refid="classendstone_1_1Score_1a3501e51b79e4d696e4d2513752d9967d" kind="function"><name>getScoreboard</name></member>
+    <member refid="classendstone_1_1Score_1aff4a5f566119ae5ea7af97fc431ee4cc" kind="function"><name>getScoreboard</name></member>
   </compound>
   <compound refid="classendstone_1_1Scoreboard" kind="class"><name>endstone::Scoreboard</name>
     <member refid="classendstone_1_1Scoreboard_1a3353d465636fad59aab0c4656f80ff37" kind="function"><name>~Scoreboard</name></member>
@@ -2459,12 +2462,12 @@
   <compound refid="classendstone_1_1ScriptMessageEvent" kind="class"><name>endstone::ScriptMessageEvent</name>
     <member refid="classendstone_1_1ScriptMessageEvent_1a58317ac21e5a652d21cc76f29e8fd689" kind="variable"><name>message_id_</name></member>
     <member refid="classendstone_1_1ScriptMessageEvent_1af5d0528484ef2dea019233ac46bb36b1" kind="variable"><name>message_</name></member>
-    <member refid="classendstone_1_1ScriptMessageEvent_1a1947b8b1a29c49b0302268f093ca5506" kind="variable"><name>sender_</name></member>
+    <member refid="classendstone_1_1ScriptMessageEvent_1ad73d0225c1edd77b13d71d115f80ce60" kind="variable"><name>sender_</name></member>
     <member refid="classendstone_1_1ScriptMessageEvent_1a05eff97cb6e568bf5e9462576101491e" kind="function"><name>ENDSTONE_EVENT</name></member>
-    <member refid="classendstone_1_1ScriptMessageEvent_1a5ca8c894f05907c46541fdd1546ec1b7" kind="function"><name>ScriptMessageEvent</name></member>
+    <member refid="classendstone_1_1ScriptMessageEvent_1a4ca0b88457a089668a24d34f663084cc" kind="function"><name>ScriptMessageEvent</name></member>
     <member refid="classendstone_1_1ScriptMessageEvent_1ab02541c1eb8d43ffb49c7a0fd11bd1bf" kind="function"><name>getMessageId</name></member>
     <member refid="classendstone_1_1ScriptMessageEvent_1a55b3bd04740ef0190905a76341117530" kind="function"><name>getMessage</name></member>
-    <member refid="classendstone_1_1ScriptMessageEvent_1af4876c77b5ba5b1a898318cc2fd71fe9" kind="function"><name>getSender</name></member>
+    <member refid="classendstone_1_1ScriptMessageEvent_1a4843dc7a21d94878b35db8d589d32530" kind="function"><name>getSender</name></member>
   </compound>
   <compound refid="classendstone_1_1Server" kind="class"><name>endstone::Server</name>
     <member refid="classendstone_1_1Server_1a7be1e023a703bcc57e49e341c9987397" kind="variable"><name>BroadcastChannelAdmin</name></member>
@@ -2481,8 +2484,8 @@
     <member refid="classendstone_1_1Server_1a90941565489a85794e4e0ff9d8378c68" kind="function"><name>getLanguage</name></member>
     <member refid="classendstone_1_1Server_1afd16655cd119fe34c52f3658245093d1" kind="function"><name>getPluginManager</name></member>
     <member refid="classendstone_1_1Server_1ac3484a4420ca5eaa86056e0dfbce54f1" kind="function"><name>getPluginCommand</name></member>
-    <member refid="classendstone_1_1Server_1ad67d5847b45b8fb7d23efbb4f1321a01" kind="function"><name>getCommandSender</name></member>
-    <member refid="classendstone_1_1Server_1ae51b7402688f21fe9779349df0c5df73" kind="function"><name>dispatchCommand</name></member>
+    <member refid="classendstone_1_1Server_1a3c7ae8300ce42964ce3b1d5791e43467" kind="function"><name>getCommandSender</name></member>
+    <member refid="classendstone_1_1Server_1a1cd4f8d13157ef50f4994455b25b154a" kind="function"><name>dispatchCommand</name></member>
     <member refid="classendstone_1_1Server_1a5c2d347170670b60809ea7ca42e8f045" kind="function"><name>getScheduler</name></member>
     <member refid="classendstone_1_1Server_1a2ff58d67a9e4bbfa0ee59696f441875a" kind="function"><name>getLevel</name></member>
     <member refid="classendstone_1_1Server_1ad89ab22253893ab047263ce351313f34" kind="function"><name>getOnlinePlayers</name></member>
@@ -2502,7 +2505,7 @@
     <member refid="classendstone_1_1Server_1a1a2968bddfbf66a9421477b42219799e" kind="function"><name>isPrimaryThread</name></member>
     <member refid="classendstone_1_1Server_1a889e988b65a8e60440b2ac4ac668a2e3" kind="function"><name>getItemFactory</name></member>
     <member refid="classendstone_1_1Server_1a3326599925a9f42da3edc28a9df6601b" kind="function"><name>getScoreboard</name></member>
-    <member refid="classendstone_1_1Server_1a6bff7fa11f6c5256df465cc74aab51e9" kind="function"><name>createScoreboard</name></member>
+    <member refid="classendstone_1_1Server_1af3830307c60cf17ae0f31c259d17074f" kind="function"><name>createScoreboard</name></member>
     <member refid="classendstone_1_1Server_1a2a9e4988b27ff1cfa65df290a8d61c7c" kind="function"><name>getCurrentMillisecondsPerTick</name></member>
     <member refid="classendstone_1_1Server_1a63e3ffb84311f233e965144501ceb195" kind="function"><name>getAverageMillisecondsPerTick</name></member>
     <member refid="classendstone_1_1Server_1a3b94b752dcf483b607c247ff335a0deb" kind="function"><name>getCurrentTicksPerSecond</name></member>
@@ -2520,16 +2523,16 @@
     <member refid="classendstone_1_1Server_1a845f601298b9157c2407118293d1d917" kind="function"><name>_getRegistry</name></member>
     <member refid="classendstone_1_1Server_1a767171af5232bcf5c1d1502f4903edea" kind="function"><name>getRegistry</name></member>
     <member refid="classendstone_1_1Server_1a1934abd049be85a1a3bf8170a0c56d49" kind="function"><name>getMap</name></member>
-    <member refid="classendstone_1_1Server_1a4d65ff2e2b62f582c1615497bb8b5d83" kind="function"><name>createMap</name></member>
+    <member refid="classendstone_1_1Server_1a13626af5278cd317051b248b70d12b9e" kind="function"><name>createMap</name></member>
   </compound>
   <compound refid="classendstone_1_1ServerCommandEvent" kind="class"><name>endstone::ServerCommandEvent</name>
-    <member refid="classendstone_1_1ServerCommandEvent_1a7cffd99adc29d5cbf698c13bbffaaa4a" kind="variable"><name>sender_</name></member>
+    <member refid="classendstone_1_1ServerCommandEvent_1a3db2c64d8a63135bbaed83e81079ce34" kind="variable"><name>sender_</name></member>
     <member refid="classendstone_1_1ServerCommandEvent_1a403198dc6dbe597662b617fdc88db4b3" kind="variable"><name>command_</name></member>
     <member refid="classendstone_1_1ServerCommandEvent_1a00d02732fd83d82492e41b0da23f3c25" kind="function"><name>ENDSTONE_EVENT</name></member>
-    <member refid="classendstone_1_1ServerCommandEvent_1a8c99c3360b322ea0d6fcf42b3b0ab4b0" kind="function"><name>ServerCommandEvent</name></member>
+    <member refid="classendstone_1_1ServerCommandEvent_1a5b8e8b6c9cbe1878dce3e25813569470" kind="function"><name>ServerCommandEvent</name></member>
     <member refid="classendstone_1_1ServerCommandEvent_1a93827eb1ca9e938792f2abcf9fd1a09c" kind="function"><name>getCommand</name></member>
     <member refid="classendstone_1_1ServerCommandEvent_1a3f806b7e5dd8a489495e633a39515df0" kind="function"><name>setCommand</name></member>
-    <member refid="classendstone_1_1ServerCommandEvent_1a989fc72b2d7b7feb85a88dc3aa50bca7" kind="function"><name>getSender</name></member>
+    <member refid="classendstone_1_1ServerCommandEvent_1a94986b04d9cb2d4b04e0717c11e87957" kind="function"><name>getSender</name></member>
   </compound>
   <compound refid="classendstone_1_1ServerEvent" kind="class"><name>endstone::ServerEvent</name>
     <member refid="classendstone_1_1ServerEvent_1a28cca8d74920493b449d035540acf023" kind="function"><name>Event</name></member>
@@ -2550,7 +2553,7 @@
     <member refid="classendstone_1_1ServerListPingEvent_1aa04477f40872fd8c43bccd24e10eff65" kind="variable"><name>local_port_v6_</name></member>
     <member refid="classendstone_1_1ServerListPingEvent_1a7e3f51fe9508e10d653cbb865efd58dc" kind="function"><name>ENDSTONE_EVENT</name></member>
     <member refid="classendstone_1_1ServerListPingEvent_1aa9371239a647b337859f3f28a8f51e4c" kind="function"><name>ServerListPingEvent</name></member>
-    <member refid="classendstone_1_1ServerListPingEvent_1a46846ceae37fa738e75938a46c42a6d1" kind="function"><name>getAddress</name></member>
+    <member refid="classendstone_1_1ServerListPingEvent_1ab8245eb6e2f1460205e0e13946313f3d" kind="function"><name>getAddress</name></member>
     <member refid="classendstone_1_1ServerListPingEvent_1aa6a64659d29e47acf3af3e860c1d16da" kind="function"><name>getServerGuid</name></member>
     <member refid="classendstone_1_1ServerListPingEvent_1a7398713547a0938d75954d29da7b8aba" kind="function"><name>setServerGuid</name></member>
     <member refid="classendstone_1_1ServerListPingEvent_1ad7e01f29129c5e342a38ad8a8732c96a" kind="function"><name>getLocalPort</name></member>
@@ -2587,8 +2590,8 @@
     <member refid="classendstone_1_1ServiceManager_1abbb8cc4e6fb216c72faeba297e006eb7" kind="function"><name>~ServiceManager</name></member>
     <member refid="classendstone_1_1ServiceManager_1a1b48aa5ba8026c6f8a84b4b39b1b0eb7" kind="function"><name>registerService</name></member>
     <member refid="classendstone_1_1ServiceManager_1af62f98b2abdd3fa261d372dd10b5d831" kind="function"><name>unregisterAll</name></member>
-    <member refid="classendstone_1_1ServiceManager_1ad6e9b9f07037a0fa971697bf9de486ec" kind="function"><name>unregister</name></member>
-    <member refid="classendstone_1_1ServiceManager_1aa8f39bf20330d57e8d3d242645ef5109" kind="function"><name>unregister</name></member>
+    <member refid="classendstone_1_1ServiceManager_1a0a2d7123f88265cb7dc05cf2f1ac2687" kind="function"><name>unregister</name></member>
+    <member refid="classendstone_1_1ServiceManager_1a5520f82d237cf4bae8ba97bdaa63f037" kind="function"><name>unregister</name></member>
     <member refid="classendstone_1_1ServiceManager_1a0fdf2bb43656c95b59cda365f188adb8" kind="function"><name>get</name></member>
     <member refid="classendstone_1_1ServiceManager_1a6bbf7c90809c4b037f810cca50c4d17c" kind="function"><name>load</name></member>
   </compound>
@@ -2991,6 +2994,8 @@
     <member refid="namespaceendstone_1a34cad5224fa76351c8c972f96d3714d4" kind="function"><name>operator!=</name></member>
     <member refid="namespaceendstone_1a80c7553c9d56b35db5a0dc38e593353b" kind="function"><name>operator==</name></member>
     <member refid="namespaceendstone_1ab04db219712717856d6a5330ef2b4534" kind="function"><name>operator!=</name></member>
+    <member refid="namespaceendstone_1a4f429d5c676fe4046cfdf25dfb8954d1" kind="function"><name>operator==</name></member>
+    <member refid="namespaceendstone_1a3c5ee19f3b24cf5bec78edae534f6090" kind="function"><name>operator==</name></member>
     <member refid="namespaceendstone_1ad7d0fbae7e1dd31cae1c84965a2f65a8" kind="function"><name>operator==</name></member>
     <member refid="namespaceendstone_1ac40f4f96efb610d56f90c6541fc8b400" kind="function"><name>operator&lt;</name></member>
     <member refid="namespaceendstone_1a96fb3e11970608db1df12feb7a3a829e" kind="function"><name>operator!=</name></member>

@@ -54,7 +54,7 @@ _Represents a score for an objective on a scoreboard._
 | ---: | :--- |
 | virtual [**ScoreEntry**](namespaceendstone.md#typedef-scoreentry) | [**getEntry**](#function-getentry) () const = 0<br>_Gets the entry being tracked by this_ [_**Score**_](classendstone_1_1Score.md) _._ |
 | virtual [**Objective**](classendstone_1_1Objective.md) & | [**getObjective**](#function-getobjective) () const = 0<br>_Gets the_ [_**Objective**_](classendstone_1_1Objective.md) _being tracked by this_[_**Score**_](classendstone_1_1Score.md) _._ |
-| virtual [**Scoreboard**](classendstone_1_1Scoreboard.md) & | [**getScoreboard**](#function-getscoreboard) () const = 0<br>_Gets the scoreboard for the associated objective._  |
+| virtual [**NotNull**](classendstone_1_1NotNull.md)&lt; [**Scoreboard**](classendstone_1_1Scoreboard.md) &gt; | [**getScoreboard**](#function-getscoreboard) () const = 0<br>_Gets the scoreboard for the associated objective._  |
 | virtual [**int**](classendstone_1_1Identifier.md) | [**getValue**](#function-getvalue) () const = 0<br>_Gets the current score._  |
 | virtual [**bool**](classendstone_1_1Identifier.md) | [**isScoreSet**](#function-isscoreset) () const = 0<br>_Shows if this score has been set at any point in time._  |
 | virtual [**void**](classendstone_1_1Identifier.md) | [**setValue**](#function-setvalue) ([**int**](classendstone_1_1Identifier.md) score) = 0<br>_Sets the current score._  |
@@ -146,7 +146,7 @@ the owning objective
 
 _Gets the scoreboard for the associated objective._ 
 ```C++
-virtual Scoreboard & endstone::Score::getScoreboard () const = 0
+virtual NotNull < Scoreboard > endstone::Score::getScoreboard () const = 0
 ```
 
 

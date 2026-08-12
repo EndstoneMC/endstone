@@ -94,10 +94,10 @@ Inherits the following classes: [endstone::Cancellable](classendstone_1_1Cancell
 | Type | Name |
 | ---: | :--- |
 |   | [**ENDSTONE\_EVENT**](#function-endstone_event) ([**ScriptMessageEvent**](classendstone_1_1ScriptMessageEvent.md)) <br> |
-|   | [**ScriptMessageEvent**](#function-scriptmessageevent) (std::string message\_id, std::string message, [**const**](classendstone_1_1Identifier.md) [**CommandSender**](classendstone_1_1CommandSender.md) & sender) <br> |
+|   | [**ScriptMessageEvent**](#function-scriptmessageevent) (std::string message\_id, std::string message, [**const**](classendstone_1_1Identifier.md) [**NotNull**](classendstone_1_1NotNull.md)&lt; [**CommandSender**](classendstone_1_1CommandSender.md) &gt; & sender) <br> |
 |  [**const**](classendstone_1_1Identifier.md) std::string & | [**getMessage**](#function-getmessage) () const<br>_Get the message to send._  |
 |  [**const**](classendstone_1_1Identifier.md) std::string & | [**getMessageId**](#function-getmessageid) () const<br>_Get the message id to send._  |
-|  [**const**](classendstone_1_1Identifier.md) [**CommandSender**](classendstone_1_1CommandSender.md) & | [**getSender**](#function-getsender) () const<br>_Gets the command sender who sent the script message._  |
+|  [**const**](classendstone_1_1Identifier.md) [**NotNull**](classendstone_1_1NotNull.md)&lt; [**CommandSender**](classendstone_1_1CommandSender.md) &gt; & | [**getSender**](#function-getsender) () const<br>_Gets the command sender who sent the script message._  |
 
 
 ## Public Functions inherited from endstone::Cancellable
@@ -227,7 +227,7 @@ endstone::ScriptMessageEvent::ENDSTONE_EVENT (
 inline endstone::ScriptMessageEvent::ScriptMessageEvent (
     std::string message_id,
     std::string message,
-    const  CommandSender & sender
+    const  NotNull < CommandSender > & sender
 ) 
 ```
 
@@ -292,7 +292,7 @@ Message id to send
 
 _Gets the command sender who sent the script message._ 
 ```C++
-inline const  CommandSender & endstone::ScriptMessageEvent::getSender () const
+inline const  NotNull < CommandSender > & endstone::ScriptMessageEvent::getSender () const
 ```
 
 

@@ -62,9 +62,17 @@ public:
     {
     }
 
+    NotNull(const Nullable<T> &other);
+
     const pointer_type &get() const noexcept { return ptr_; }
     T *operator->() const noexcept { return ptr_.get(); }
     T &operator*() const noexcept { return *get(); }
+
+    template <class U>
+    [[nodiscard]] NotNull<U> cast() const
+    {
+        return std::static_pointer_cast<U>(ptr_);
+    }
 
     NotNull(std::nullptr_t) = delete;
     NotNull &operator=(std::nullptr_t) = delete;
@@ -115,6 +123,12 @@ public:
     T &operator*() const noexcept { return *get(); }
     explicit operator bool() const noexcept { return ptr_ != nullptr; }
 
+    template <class U>
+    [[nodiscard]] Nullable<U> cast() const
+    {
+        return std::static_pointer_cast<U>(ptr_);
+    }
+
     T &value() const
     {
         Preconditions::checkState(ptr_ != nullptr, "Nullable holds no value.");
@@ -128,6 +142,11 @@ public:
 private:
     std::shared_ptr<T> ptr_;
 };
+
+template <class T>
+NotNull<T>::NotNull(const Nullable<T> &other) : NotNull(other.get())
+{
+}
 
 // Handle-to-handle comparisons (pointer identity), provided for both wrappers so they can be used as
 // keys in ordered/unordered containers. These delegate to the underlying shared_ptr comparisons.
@@ -171,6 +190,19 @@ private:
 ENDSTONE_DEFINE_PTR_COMPARISONS(NotNull)
 ENDSTONE_DEFINE_PTR_COMPARISONS(Nullable)
 #undef ENDSTONE_DEFINE_PTR_COMPARISONS
+
+// Cross-wrapper comparisons, so a NotNull and a Nullable can be compared without unwrapping either.
+template <class T, class U>
+bool operator==(const NotNull<T> &lhs, const Nullable<U> &rhs) noexcept
+{
+    return lhs.get() == rhs.get();
+}
+
+template <class T, class U>
+bool operator==(const Nullable<T> &lhs, const NotNull<U> &rhs) noexcept
+{
+    return lhs.get() == rhs.get();
+}
 }  // namespace endstone
 
 template <class T>

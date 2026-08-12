@@ -35,7 +35,7 @@ namespace endstone {
 class ScriptMessageEvent : public Cancellable<ServerEvent> {
 public:
     ENDSTONE_EVENT(ScriptMessageEvent);
-    ScriptMessageEvent(std::string message_id, std::string message, const CommandSender &sender)
+    ScriptMessageEvent(std::string message_id, std::string message, const NotNull<CommandSender> &sender)
         : Cancellable(false), message_id_(std::move(message_id)), message_(std::move(message)), sender_(sender)
     {
     }
@@ -44,12 +44,12 @@ public:
 
     [[nodiscard]] const std::string &getMessage() const { return message_; }
 
-    [[nodiscard]] const CommandSender &getSender() const { return sender_; }
+    [[nodiscard]] const NotNull<CommandSender> &getSender() const { return sender_; }
 
 private:
     std::string message_id_;
     std::string message_;
-    const CommandSender &sender_;
+    NotNull<CommandSender> sender_;
 };
 
 };  // namespace endstone

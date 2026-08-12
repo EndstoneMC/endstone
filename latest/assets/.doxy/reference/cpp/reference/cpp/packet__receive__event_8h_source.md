@@ -36,8 +36,8 @@ namespace endstone {
 class PacketReceiveEvent : public Cancellable<ServerEvent> {
 public:
     ENDSTONE_EVENT(PacketReceiveEvent);
-    PacketReceiveEvent(const Nullable<Player> &player, const int packet_id, std::string_view payload, SocketAddress address,
-                       const int sub_client_id)
+    PacketReceiveEvent(const Nullable<Player> &player, const int packet_id, std::string_view payload,
+                       SocketAddress address, const int sub_client_id)
         : player_(player), packet_id_(packet_id), payload_(payload), address_(std::move(address)),
           sub_client_id_(sub_client_id)
     {
@@ -55,7 +55,7 @@ public:
 
     [[nodiscard]] const Nullable<Player> &getPlayer() const { return player_; }
 
-    [[nodiscard]] SocketAddress getAddress() const { return address_; }
+    [[nodiscard]] const SocketAddress &getAddress() const { return address_; }
 
     [[nodiscard]] int getSubClientId() const { return sub_client_id_; }
 

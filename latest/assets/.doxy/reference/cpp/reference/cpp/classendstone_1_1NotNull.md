@@ -60,12 +60,14 @@ _A wrapper around a std::shared\_ptr that is guaranteed never to be null._ [More
 
 | Type | Name |
 | ---: | :--- |
-|   | [**NotNull**](#function-notnull-16) () = delete<br> |
-|   | [**NotNull**](#function-notnull-26) (std::shared\_ptr&lt; [**T**](classendstone_1_1Identifier.md) &gt; ptr) <br> |
-|   | [**NotNull**](#function-notnull-36) ([**const**](classendstone_1_1Identifier.md) [**NotNull**](classendstone_1_1NotNull.md) & other) = default<br> |
-|   | [**NotNull**](#function-notnull-46) (std::shared\_ptr&lt; [**U**](classendstone_1_1Identifier.md) &gt; ptr) <br>_Covariant conversion from a shared\_ptr of a convertible (e.g._  |
-|   | [**NotNull**](#function-notnull-56) ([**const**](classendstone_1_1Identifier.md) [**NotNull**](classendstone_1_1NotNull.md)&lt; [**U**](classendstone_1_1Identifier.md) &gt; & other) <br>_Covariant conversion from a_ [_**NotNull**_](classendstone_1_1NotNull.md) _of a convertible (e.g._ |
-|   | [**NotNull**](#function-notnull-66) (std::nullptr\_t) = delete<br> |
+|   | [**NotNull**](#function-notnull-17) () = delete<br> |
+|   | [**NotNull**](#function-notnull-27) (std::shared\_ptr&lt; [**T**](classendstone_1_1Identifier.md) &gt; ptr) <br> |
+|   | [**NotNull**](#function-notnull-37) ([**const**](classendstone_1_1Identifier.md) [**NotNull**](classendstone_1_1NotNull.md) & other) = default<br> |
+|   | [**NotNull**](#function-notnull-47) (std::shared\_ptr&lt; [**U**](classendstone_1_1Identifier.md) &gt; ptr) <br>_Covariant conversion from a shared\_ptr of a convertible (e.g._  |
+|   | [**NotNull**](#function-notnull-57) ([**const**](classendstone_1_1Identifier.md) [**NotNull**](classendstone_1_1NotNull.md)&lt; [**U**](classendstone_1_1Identifier.md) &gt; & other) <br>_Covariant conversion from a_ [_**NotNull**_](classendstone_1_1NotNull.md) _of a convertible (e.g._ |
+|   | [**NotNull**](#function-notnull-67) ([**const**](classendstone_1_1Identifier.md) [**Nullable**](classendstone_1_1Nullable.md)&lt; [**T**](classendstone_1_1Identifier.md) &gt; & other) <br>_Narrowing conversion from a_ [_**Nullable**_](classendstone_1_1Nullable.md) _, throwing if it holds no value._ |
+|   | [**NotNull**](#function-notnull-77) (std::nullptr\_t) = delete<br> |
+|  [**NotNull**](classendstone_1_1NotNull.md)&lt; [**U**](classendstone_1_1Identifier.md) &gt; | [**cast**](#function-cast) () const<br>_Statically downcasts to a related type, keeping the shared ownership._  |
 |  [**const**](classendstone_1_1Identifier.md) pointer\_type & | [**get**](#function-get) () noexcept const<br> |
 |  [**T**](classendstone_1_1Identifier.md) & | [**operator\***](#function-operator) () noexcept const<br> |
 |  [**NotNull**](classendstone_1_1NotNull.md) & | [**operator++**](#function-operator_1) () = delete<br> |
@@ -147,7 +149,7 @@ using endstone::NotNull< T >::pointer_type =  std::shared_ptr<T>;
 
 
 
-### function NotNull [1/6]
+### function NotNull [1/7]
 
 ```C++
 endstone::NotNull::NotNull () = delete
@@ -160,7 +162,7 @@ endstone::NotNull::NotNull () = delete
 
 
 
-### function NotNull [2/6]
+### function NotNull [2/7]
 
 ```C++
 inline endstone::NotNull::NotNull (
@@ -175,7 +177,7 @@ inline endstone::NotNull::NotNull (
 
 
 
-### function NotNull [3/6]
+### function NotNull [3/7]
 
 ```C++
 endstone::NotNull::NotNull (
@@ -190,7 +192,7 @@ endstone::NotNull::NotNull (
 
 
 
-### function NotNull [4/6]
+### function NotNull [4/7]
 
 _Covariant conversion from a shared\_ptr of a convertible (e.g._ 
 ```C++
@@ -211,7 +213,7 @@ derived) type.
 
 
 
-### function NotNull [5/6]
+### function NotNull [5/7]
 
 _Covariant conversion from a_ [_**NotNull**_](classendstone_1_1NotNull.md) _of a convertible (e.g._
 ```C++
@@ -232,12 +234,43 @@ derived) type.
 
 
 
-### function NotNull [6/6]
+### function NotNull [6/7]
+
+_Narrowing conversion from a_ [_**Nullable**_](classendstone_1_1Nullable.md) _, throwing if it holds no value._
+```C++
+endstone::NotNull::NotNull (
+    const  Nullable < T > & other
+) 
+```
+
+
+
+
+<hr>
+
+
+
+### function NotNull [7/7]
 
 ```C++
 endstone::NotNull::NotNull (
     std::nullptr_t
 ) = delete
+```
+
+
+
+
+<hr>
+
+
+
+### function cast 
+
+_Statically downcasts to a related type, keeping the shared ownership._ 
+```C++
+template<class  U>
+inline NotNull < U > endstone::NotNull::cast () const
 ```
 
 

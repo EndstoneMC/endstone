@@ -64,9 +64,9 @@ public:
 
     virtual void setVisible(bool visible) = 0;
 
-    virtual void addPlayer(Player &player) = 0;
+    virtual void addPlayer(const NotNull<Player> &player) = 0;
 
-    virtual void removePlayer(Player &player) = 0;
+    virtual void removePlayer(const NotNull<Player> &player) = 0;
 
     virtual void removeAll() = 0;
 

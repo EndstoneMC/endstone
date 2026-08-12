@@ -123,9 +123,9 @@
         </inbodydescription>
         <location file="include/endstone/player.h" line="79" column="26"/>
       </memberdef>
-      <memberdef kind="function" id="classendstone_1_1Player_1ae4202aac53995316c87c800d8dc900a6" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
-        <type><ref refid="classendstone_1_1SocketAddress" kindref="compound">SocketAddress</ref></type>
-        <definition>virtual SocketAddress endstone::Player::getAddress</definition>
+      <memberdef kind="function" id="classendstone_1_1Player_1a4bbd490a104f8b287c0beff7b1593ca5" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
+        <type><ref refid="classendstone_1_1Identifier" kindref="compound">const</ref> <ref refid="classendstone_1_1SocketAddress" kindref="compound">SocketAddress</ref> &amp;</type>
+        <definition>virtual const SocketAddress &amp; endstone::Player::getAddress</definition>
         <argsstring>() const =0</argsstring>
         <name>getAddress</name>
         <qualifiedname>endstone::Player::getAddress</qualifiedname>
@@ -139,7 +139,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/player.h" line="86" column="28"/>
+        <location file="include/endstone/player.h" line="86" column="34"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1Player_1a1eb6fe0de5da814e8d7467817e935603" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
         <type><ref refid="classendstone_1_1Identifier" kindref="compound">void</ref></type>
@@ -1764,7 +1764,7 @@
       <member refid="classendstone_1_1Player_1a7487bdbd73d71e461239d377790d377c" prot="public" virt="pure-virtual"><scope>endstone::Player</scope><name>closeForm</name></member>
       <member refid="classendstone_1_1Player_1a03ceece6b2097f9219b3b5976f232041" prot="protected" virt="non-virtual"><scope>endstone::Player</scope><name>FormVariant</name></member>
       <member refid="classendstone_1_1Mob_1ac89ab5a920e0700ff422802f59bbd4ed" prot="public" virt="pure-virtual"><scope>endstone::Player</scope><name>getActiveEffects</name></member>
-      <member refid="classendstone_1_1Player_1ae4202aac53995316c87c800d8dc900a6" prot="public" virt="pure-virtual"><scope>endstone::Player</scope><name>getAddress</name></member>
+      <member refid="classendstone_1_1Player_1a4bbd490a104f8b287c0beff7b1593ca5" prot="public" virt="pure-virtual"><scope>endstone::Player</scope><name>getAddress</name></member>
       <member refid="classendstone_1_1Player_1a981dfc3f6b3fd184569c64904401300f" prot="public" virt="pure-virtual"><scope>endstone::Player</scope><name>getAllowFlight</name></member>
       <member refid="classendstone_1_1Mob_1afdff3c5af17582670df6a26bfd2c4c4e" prot="public" virt="pure-virtual"><scope>endstone::Player</scope><name>getAttribute</name></member>
       <member refid="classendstone_1_1Mob_1af787b489d14574b8afa4dc8e29adbf65" prot="public" virt="pure-virtual"><scope>endstone::Player</scope><name>getAttributes</name></member>
@@ -1872,7 +1872,7 @@
       <member refid="classendstone_1_1Player_1a413039a8c159c88eb8d9aa4923a08521" prot="public" virt="pure-virtual"><scope>endstone::Player</scope><name>stopAllSounds</name></member>
       <member refid="classendstone_1_1Player_1a3cb05d6341f6edc50f3fe6d519cc82d9" prot="public" virt="pure-virtual"><scope>endstone::Player</scope><name>stopSound</name></member>
       <member refid="classendstone_1_1Actor_1aecfec6af43ddcb9ab2dfa1d23e2b0b82" prot="public" virt="pure-virtual"><scope>endstone::Player</scope><name>teleport</name></member>
-      <member refid="classendstone_1_1Actor_1a4be9f8132bce43f6aa06660cb2439e66" prot="public" virt="pure-virtual"><scope>endstone::Player</scope><name>teleport</name></member>
+      <member refid="classendstone_1_1Actor_1a07309f1d71b407099c722dcd44f281cb" prot="public" virt="pure-virtual"><scope>endstone::Player</scope><name>teleport</name></member>
       <member refid="classendstone_1_1Player_1a1eb6fe0de5da814e8d7467817e935603" prot="public" virt="pure-virtual"><scope>endstone::Player</scope><name>transfer</name></member>
       <member refid="classendstone_1_1Player_1ae89a62a763f1109d05e7718ae7ff9750" prot="public" virt="pure-virtual"><scope>endstone::Player</scope><name>updateCommands</name></member>
       <member refid="classendstone_1_1Object_1adfddc886af4b1d0e09ddac7d0391b4d2" prot="public" virt="virtual"><scope>endstone::Player</scope><name>~Object</name></member>

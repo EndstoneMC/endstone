@@ -490,9 +490,9 @@
         </inbodydescription>
         <location file="include/endstone/level/dimension.h" line="159" column="18"/>
       </memberdef>
-      <memberdef kind="function" id="classendstone_1_1Dimension_1af0bd0493f3c931570be2c063b12576b9" prot="public" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
-        <type><ref refid="classendstone_1_1Item" kindref="compound">Item</ref> &amp;</type>
-        <definition>virtual Item &amp; endstone::Dimension::dropItem</definition>
+      <memberdef kind="function" id="classendstone_1_1Dimension_1abd639df3fb48522170838960359a3ace" prot="public" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
+        <type><ref refid="classendstone_1_1NotNull" kindref="compound">NotNull</ref>&lt; <ref refid="classendstone_1_1Item" kindref="compound">Item</ref> &gt;</type>
+        <definition>virtual NotNull&lt; Item &gt; endstone::Dimension::dropItem</definition>
         <argsstring>(Location location, const ItemStack &amp;item)=0</argsstring>
         <name>dropItem</name>
         <qualifiedname>endstone::Dimension::dropItem</qualifiedname>
@@ -531,7 +531,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/level/dimension.h" line="169" column="19"/>
+        <location file="include/endstone/level/dimension.h" line="169" column="22"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1Dimension_1aabbe5768489c5b1f9f9d227565e04fa6" prot="public" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
         <type><ref refid="classendstone_1_1Nullable" kindref="compound">Nullable</ref>&lt; <ref refid="classendstone_1_1Actor" kindref="compound">Actor</ref> &gt;</type>
@@ -602,7 +602,7 @@
     </detaileddescription>
     <location file="include/endstone/level/dimension.h" line="37" column="1" bodyfile="include/endstone/level/dimension.h" bodystart="37" bodyend="186"/>
     <listofallmembers>
-      <member refid="classendstone_1_1Dimension_1af0bd0493f3c931570be2c063b12576b9" prot="public" virt="pure-virtual"><scope>endstone::Dimension</scope><name>dropItem</name></member>
+      <member refid="classendstone_1_1Dimension_1abd639df3fb48522170838960359a3ace" prot="public" virt="pure-virtual"><scope>endstone::Dimension</scope><name>dropItem</name></member>
       <member refid="classendstone_1_1Dimension_1ab8476baf719292c340430109fcfdfadc" prot="public" virt="pure-virtual"><scope>endstone::Dimension</scope><name>getActors</name></member>
       <member refid="classendstone_1_1Dimension_1a3dee0a686f00cf7c2c861a798ccf2346" prot="public" virt="pure-virtual"><scope>endstone::Dimension</scope><name>getBlockAt</name></member>
       <member refid="classendstone_1_1Dimension_1afd372293472494681775452163da7aed" prot="public" virt="pure-virtual"><scope>endstone::Dimension</scope><name>getBlockAt</name></member>

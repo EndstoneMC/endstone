@@ -53,6 +53,8 @@
         <link refid="map__renderer_8h_source"/>
         <childnode refid="6" relation="include">
         </childnode>
+        <childnode refid="20" relation="include">
+        </childnode>
       </node>
       <node id="1">
         <label>include/endstone/map/map_view.h</label>
@@ -964,7 +966,7 @@
 <codeline lineno="103"><highlight class="normal"></highlight></codeline>
 <codeline lineno="109" refid="classendstone_1_1MapView_1ab2001972badba74404636dc2379785be" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>[[<ref refid="classendstone_1_1Identifier" kindref="compound">nodiscard</ref>]]<sp/></highlight><highlight class="keyword">virtual</highlight><highlight class="normal"><sp/><ref refid="classendstone_1_1Identifier" kindref="compound">Nullable&lt;Dimension&gt;</ref><sp/><ref refid="classendstone_1_1MapView_1ab2001972badba74404636dc2379785be" kindref="member">getDimension</ref>()<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>=<sp/>0;</highlight></codeline>
 <codeline lineno="110"><highlight class="normal"></highlight></codeline>
-<codeline lineno="116" refid="classendstone_1_1MapView_1a0ff3209db49eb4585652c8ca104cf7c6" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">virtual</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classendstone_1_1MapView_1a0ff3209db49eb4585652c8ca104cf7c6" kindref="member">setDimension</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classendstone_1_1Dimension" kindref="compound">Dimension</ref><sp/>&amp;<ref refid="classendstone_1_1Identifier" kindref="compound">dimension</ref>)<sp/>=<sp/>0;</highlight></codeline>
+<codeline lineno="116" refid="classendstone_1_1MapView_1aba37705e57a5d2ce11f5c2c74ed11e02" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">virtual</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classendstone_1_1MapView_1aba37705e57a5d2ce11f5c2c74ed11e02" kindref="member">setDimension</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classendstone_1_1Identifier" kindref="compound">NotNull&lt;Dimension&gt;</ref><sp/>&amp;<ref refid="classendstone_1_1Identifier" kindref="compound">dimension</ref>)<sp/>=<sp/>0;</highlight></codeline>
 <codeline lineno="117"><highlight class="normal"></highlight></codeline>
 <codeline lineno="123" refid="classendstone_1_1MapView_1a91a42244a4f6e209e3d80fd2d1343bda" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>[[<ref refid="classendstone_1_1Identifier" kindref="compound">nodiscard</ref>]]<sp/></highlight><highlight class="keyword">virtual</highlight><highlight class="normal"><sp/>std::vector&lt;std::shared_ptr&lt;MapRenderer&gt;&gt;<sp/><ref refid="classendstone_1_1MapView_1a91a42244a4f6e209e3d80fd2d1343bda" kindref="member">getRenderers</ref>()<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>=<sp/>0;</highlight></codeline>
 <codeline lineno="124"><highlight class="normal"></highlight></codeline>

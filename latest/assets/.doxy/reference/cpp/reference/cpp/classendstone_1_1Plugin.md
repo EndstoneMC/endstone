@@ -98,7 +98,7 @@ See [endstone::CommandExecutor](classendstone_1_1CommandExecutor.md)
 
 | Type | Name |
 | ---: | :--- |
-| virtual [**bool**](classendstone_1_1Identifier.md) | [**onCommand**](classendstone_1_1CommandExecutor.md#function-oncommand) ([**CommandSender**](classendstone_1_1CommandSender.md) & sender, [**const**](classendstone_1_1Identifier.md) [**Command**](classendstone_1_1Command.md) & command, [**const**](classendstone_1_1Identifier.md) std::vector&lt; std::string &gt; & args) <br>_Executes the given command, returning its success._  |
+| virtual [**bool**](classendstone_1_1Identifier.md) | [**onCommand**](classendstone_1_1CommandExecutor.md#function-oncommand) ([**const**](classendstone_1_1Identifier.md) [**NotNull**](classendstone_1_1NotNull.md)&lt; [**CommandSender**](classendstone_1_1CommandSender.md) &gt; & sender, [**const**](classendstone_1_1Identifier.md) [**Command**](classendstone_1_1Command.md) & command, [**const**](classendstone_1_1Identifier.md) std::vector&lt; std::string &gt; & args) <br>_Executes the given command, returning its success._  |
 | virtual  | [**~CommandExecutor**](classendstone_1_1CommandExecutor.md#function-commandexecutor) () = default<br> |
 
 

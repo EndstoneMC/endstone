@@ -65,7 +65,7 @@ public:
 
     [[nodiscard]] virtual Nullable<Dimension> getDimension() const = 0;
 
-    virtual void setDimension(const Dimension &dimension) = 0;
+    virtual void setDimension(const NotNull<Dimension> &dimension) = 0;
 
     [[nodiscard]] virtual std::vector<std::shared_ptr<MapRenderer>> getRenderers() const = 0;
 

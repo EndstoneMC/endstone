@@ -154,8 +154,8 @@ See [endstone::DimensionEvent](classendstone_1_1DimensionEvent.md)
 
 | Type | Name |
 | ---: | :--- |
-|   | [**DimensionEvent**](classendstone_1_1DimensionEvent.md#function-dimensionevent) ([**Dimension**](classendstone_1_1Dimension.md) & dimension) <br> |
-|  [**Dimension**](classendstone_1_1Dimension.md) & | [**getDimension**](classendstone_1_1DimensionEvent.md#function-getdimension) () const<br>_Gets the dimension primarily involved with this event._  |
+|   | [**DimensionEvent**](classendstone_1_1DimensionEvent.md#function-dimensionevent) ([**const**](classendstone_1_1Identifier.md) [**NotNull**](classendstone_1_1NotNull.md)&lt; [**Dimension**](classendstone_1_1Dimension.md) &gt; & dimension) <br> |
+|  [**const**](classendstone_1_1Identifier.md) [**NotNull**](classendstone_1_1NotNull.md)&lt; [**Dimension**](classendstone_1_1Dimension.md) &gt; & | [**getDimension**](classendstone_1_1DimensionEvent.md#function-getdimension) () const<br>_Gets the dimension primarily involved with this event._  |
 
 
 ## Public Functions inherited from endstone::LevelEvent

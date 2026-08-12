@@ -118,7 +118,7 @@ Inherits the following classes: [endstone::CommandSender](classendstone_1_1Comma
 
 | Type | Name |
 | ---: | :--- |
-|   | [**CommandSenderWrapper**](#function-commandsenderwrapper) ([**CommandSender**](classendstone_1_1CommandSender.md) & sender, Callback on\_message={}, Callback on\_error={}) <br> |
+|   | [**CommandSenderWrapper**](#function-commandsenderwrapper) ([**const**](classendstone_1_1Identifier.md) [**NotNull**](classendstone_1_1NotNull.md)&lt; [**CommandSender**](classendstone_1_1CommandSender.md) &gt; & sender, Callback on\_message={}, Callback on\_error={}) <br> |
 | virtual [**PermissionAttachment**](classendstone_1_1PermissionAttachment.md) \* | [**addAttachment**](#function-addattachment-12) ([**Plugin**](classendstone_1_1Plugin.md) & plugin, [**const**](classendstone_1_1Identifier.md) std::string & name, [**bool**](classendstone_1_1Identifier.md) value) override<br>_Adds a new_ [_**PermissionAttachment**_](classendstone_1_1PermissionAttachment.md) _with a single permission by name and value._ |
 | virtual [**PermissionAttachment**](classendstone_1_1PermissionAttachment.md) \* | [**addAttachment**](#function-addattachment-22) ([**Plugin**](classendstone_1_1Plugin.md) & plugin) override<br>_Adds a new empty_ [_**PermissionAttachment**_](classendstone_1_1PermissionAttachment.md) _to this object._ |
 | virtual [**const**](classendstone_1_1Identifier.md) std::type\_info & | [**getClassTypeId**](#function-getclasstypeid) () override const<br> |
@@ -126,8 +126,7 @@ Inherits the following classes: [endstone::CommandSender](classendstone_1_1Comma
 | virtual std::string | [**getName**](#function-getname) () override const<br>_Gets the name of this command sender._  |
 | virtual [**PermissionLevel**](namespaceendstone.md#enum-permissionlevel) | [**getPermissionLevel**](#function-getpermissionlevel) () override const<br>_Gets the permission level of this object._  |
 | virtual [**Server**](classendstone_1_1Server.md) & | [**getServer**](#function-getserver) () override const<br>_Returns the server instance that this command is running on._  |
-|  [**CommandSender**](classendstone_1_1CommandSender.md) & | [**getWrapped**](#function-getwrapped-12) () <br>_Returns a reference to the wrapped_ [_**CommandSender**_](classendstone_1_1CommandSender.md) _._ |
-|  [**const**](classendstone_1_1Identifier.md) [**CommandSender**](classendstone_1_1CommandSender.md) & | [**getWrapped**](#function-getwrapped-22) () const<br>_Returns a reference to the wrapped_ [_**CommandSender**_](classendstone_1_1CommandSender.md) _._ |
+|  [**const**](classendstone_1_1Identifier.md) [**NotNull**](classendstone_1_1NotNull.md)&lt; [**CommandSender**](classendstone_1_1CommandSender.md) &gt; & | [**getWrapped**](#function-getwrapped) () const<br>_Returns the wrapped_ [_**CommandSender**_](classendstone_1_1CommandSender.md) _._ |
 | virtual [**bool**](classendstone_1_1Identifier.md) | [**hasPermission**](#function-haspermission-12) (std::string name) override const<br>_Gets the value of the specified permission, if set._  |
 | virtual [**bool**](classendstone_1_1Identifier.md) | [**hasPermission**](#function-haspermission-22) ([**const**](classendstone_1_1Identifier.md) [**Permission**](classendstone_1_1Permission.md) & perm) override const<br>_Gets the value of the specified permission, if set._  |
 | virtual [**bool**](classendstone_1_1Identifier.md) | [**isInstanceOf**](#function-isinstanceof) ([**const**](classendstone_1_1Identifier.md) std::type\_info & target) override const<br> |
@@ -313,7 +312,7 @@ using endstone::CommandSenderWrapper::Callback =  std::function<void(const Messa
 
 ```C++
 inline explicit endstone::CommandSenderWrapper::CommandSenderWrapper (
-    CommandSender & sender,
+    const  NotNull < CommandSender > & sender,
     Callback on_message={},
     Callback on_error={}
 ) 
@@ -525,11 +524,11 @@ Implements [*endstone::CommandSender::getServer*](classendstone_1_1CommandSender
 
 
 
-### function getWrapped [1/2]
+### function getWrapped 
 
-_Returns a reference to the wrapped_ [_**CommandSender**_](classendstone_1_1CommandSender.md) _._
+_Returns the wrapped_ [_**CommandSender**_](classendstone_1_1CommandSender.md) _._
 ```C++
-inline CommandSender & endstone::CommandSenderWrapper::getWrapped () 
+inline const  NotNull < CommandSender > & endstone::CommandSenderWrapper::getWrapped () const
 ```
 
 
@@ -539,31 +538,6 @@ inline CommandSender & endstone::CommandSenderWrapper::getWrapped ()
 **Returns:**
 
 The underlying command sender 
-
-
-
-
-
-        
-
-<hr>
-
-
-
-### function getWrapped [2/2]
-
-_Returns a reference to the wrapped_ [_**CommandSender**_](classendstone_1_1CommandSender.md) _._
-```C++
-inline const  CommandSender & endstone::CommandSenderWrapper::getWrapped () const
-```
-
-
-
-
-
-**Returns:**
-
-The underlying command sender   
 
 
 

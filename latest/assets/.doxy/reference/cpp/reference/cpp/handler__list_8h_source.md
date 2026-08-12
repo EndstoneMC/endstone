@@ -80,6 +80,15 @@ public:
         }
     }
 
+    [[nodiscard]] bool empty() const
+    {
+        std::lock_guard lock(mtx_);
+        if (!valid_) {
+            bake();
+        }
+        return baked_handlers_.empty();
+    }
+
     std::vector<EventHandler *> getHandlers() const
     {
         std::lock_guard lock(mtx_);

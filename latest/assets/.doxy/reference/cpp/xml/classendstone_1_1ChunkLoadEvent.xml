@@ -124,13 +124,13 @@
     <listofallmembers>
       <member refid="classendstone_1_1ChunkEvent_1a0a31bd1419d3b2a6ec089b194e11fcb2" prot="public" virt="non-virtual"><scope>endstone::ChunkLoadEvent</scope><name>ChunkEvent</name></member>
       <member refid="classendstone_1_1ChunkLoadEvent_1a9ff79720197da4050b8aebdd39067097" prot="public" virt="non-virtual"><scope>endstone::ChunkLoadEvent</scope><name>ChunkLoadEvent</name></member>
-      <member refid="classendstone_1_1DimensionEvent_1ad3a003262de859e49042454c65cfe383" prot="public" virt="non-virtual"><scope>endstone::ChunkLoadEvent</scope><name>DimensionEvent</name></member>
+      <member refid="classendstone_1_1DimensionEvent_1a14fa3f1e46c72c6f4d379be69195b9da" prot="public" virt="non-virtual"><scope>endstone::ChunkLoadEvent</scope><name>DimensionEvent</name></member>
       <member refid="classendstone_1_1ChunkLoadEvent_1ad1a4e1ce2adab937a4313231efe5dcd8" prot="public" virt="non-virtual"><scope>endstone::ChunkLoadEvent</scope><name>ENDSTONE_EVENT</name></member>
       <member refid="classendstone_1_1Event_1a28cca8d74920493b449d035540acf023" prot="public" virt="non-virtual"><scope>endstone::ChunkLoadEvent</scope><name>Event</name></member>
       <member refid="classendstone_1_1Event_1a7199136ebb40e1441bc61e29f83c3cad" prot="public" virt="non-virtual"><scope>endstone::ChunkLoadEvent</scope><name>Event</name></member>
       <member refid="classendstone_1_1Event_1ad20bafd16e0671578e37390b95e5104c" prot="public" virt="non-virtual"><scope>endstone::ChunkLoadEvent</scope><name>Event</name></member>
       <member refid="classendstone_1_1ChunkEvent_1aa78f307af69ce820f4a75b74a4485f0c" prot="public" virt="non-virtual"><scope>endstone::ChunkLoadEvent</scope><name>getChunk</name></member>
-      <member refid="classendstone_1_1DimensionEvent_1ac6b765e364d4f1275335726bc8ba65f1" prot="public" virt="non-virtual"><scope>endstone::ChunkLoadEvent</scope><name>getDimension</name></member>
+      <member refid="classendstone_1_1DimensionEvent_1a3bc5f18108033e1159d97dbe3be62dd3" prot="public" virt="non-virtual"><scope>endstone::ChunkLoadEvent</scope><name>getDimension</name></member>
       <member refid="classendstone_1_1Event_1a826fe74f9c4195a36a364b9aeeb321bb" prot="public" virt="pure-virtual"><scope>endstone::ChunkLoadEvent</scope><name>getEventName</name></member>
       <member refid="classendstone_1_1LevelEvent_1ac3be77ffb5a5416fe0c6b138ac01a709" prot="public" virt="non-virtual"><scope>endstone::ChunkLoadEvent</scope><name>getLevel</name></member>
       <member refid="classendstone_1_1Event_1ae89b54f63dc32b0c8797a59db69b6931" prot="public" virt="non-virtual"><scope>endstone::ChunkLoadEvent</scope><name>isAsynchronous</name></member>

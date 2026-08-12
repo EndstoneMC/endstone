@@ -59,7 +59,7 @@ public:
 
     virtual bool teleport(const Location &location) = 0;
 
-    virtual bool teleport(const Actor &target) = 0;
+    virtual bool teleport(const NotNull<Actor> &target) = 0;
 
     [[nodiscard]] virtual std::int64_t getId() const = 0;
 

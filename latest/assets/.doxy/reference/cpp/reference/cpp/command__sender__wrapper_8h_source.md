@@ -30,13 +30,15 @@
 #include <utility>
 
 #include "endstone/command/command_sender.h"
+#include "endstone/util/pointers.h"
 
 namespace endstone {
 
 class CommandSenderWrapper final : public CommandSender {
 public:
     using Callback = std::function<void(const Message &)>;
-    explicit CommandSenderWrapper(CommandSender &sender, Callback on_message = {}, Callback on_error = {})
+    explicit CommandSenderWrapper(const NotNull<CommandSender> &sender, Callback on_message = {},
+                                  Callback on_error = {})
         : sender_(sender), on_message_(std::move(on_message)), on_error_(std::move(on_error)) {};
 
     void sendMessage(const Message &message) const override
@@ -52,30 +54,30 @@ public:
         }
     }
 
-    [[nodiscard]] PermissionLevel getPermissionLevel() const override { return sender_.getPermissionLevel(); }
+    [[nodiscard]] PermissionLevel getPermissionLevel() const override { return sender_->getPermissionLevel(); }
 
-    [[nodiscard]] bool isPermissionSet(std::string name) const override { return sender_.isPermissionSet(name); }
+    [[nodiscard]] bool isPermissionSet(std::string name) const override { return sender_->isPermissionSet(name); }
 
-    [[nodiscard]] bool isPermissionSet(const Permission &perm) const override { return sender_.isPermissionSet(perm); }
+    [[nodiscard]] bool isPermissionSet(const Permission &perm) const override { return sender_->isPermissionSet(perm); }
 
-    [[nodiscard]] bool hasPermission(std::string name) const override { return sender_.hasPermission(name); }
+    [[nodiscard]] bool hasPermission(std::string name) const override { return sender_->hasPermission(name); }
 
-    [[nodiscard]] bool hasPermission(const Permission &perm) const override { return sender_.hasPermission(perm); }
+    [[nodiscard]] bool hasPermission(const Permission &perm) const override { return sender_->hasPermission(perm); }
 
     PermissionAttachment *addAttachment(Plugin &plugin, const std::string &name, bool value) override
     {
-        return sender_.addAttachment(plugin, name, value);
+        return sender_->addAttachment(plugin, name, value);
     }
 
-    PermissionAttachment *addAttachment(Plugin &plugin) override { return sender_.addAttachment(plugin); }
+    PermissionAttachment *addAttachment(Plugin &plugin) override { return sender_->addAttachment(plugin); }
 
-    bool removeAttachment(PermissionAttachment &attachment) override { return sender_.removeAttachment(attachment); }
+    bool removeAttachment(PermissionAttachment &attachment) override { return sender_->removeAttachment(attachment); }
 
-    void recalculatePermissions() override { sender_.recalculatePermissions(); }
+    void recalculatePermissions() override { sender_->recalculatePermissions(); }
 
     [[nodiscard]] std::unordered_set<PermissionAttachmentInfo *> getEffectivePermissions() const override
     {
-        return sender_.getEffectivePermissions();
+        return sender_->getEffectivePermissions();
     }
 
     [[nodiscard]] const std::type_info &getClassTypeId() const override { return typeid(CommandSender); }
@@ -84,16 +86,14 @@ public:
         return typeid(CommandSender) == target || typeid(Permissible) == target || typeid(Object) == target;
     }
 
-    CommandSender &getWrapped() { return sender_; }
+    [[nodiscard]] const NotNull<CommandSender> &getWrapped() const { return sender_; }
 
-    [[nodiscard]] const CommandSender &getWrapped() const { return sender_; }
+    [[nodiscard]] Server &getServer() const override { return sender_->getServer(); }
 
-    [[nodiscard]] Server &getServer() const override { return sender_.getServer(); }
-
-    [[nodiscard]] std::string getName() const override { return sender_.getName(); }
+    [[nodiscard]] std::string getName() const override { return sender_->getName(); }
 
 private:
-    CommandSender &sender_;
+    NotNull<CommandSender> sender_;
     Callback on_message_;
     Callback on_error_;
 };

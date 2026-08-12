@@ -11,6 +11,7 @@
 
 
 * `#include "endstone/map/map_canvas.h"`
+* `#include "endstone/util/pointers.h"`
 
 
 

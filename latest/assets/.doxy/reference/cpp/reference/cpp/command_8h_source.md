@@ -32,6 +32,7 @@
 #include "endstone/command/command_map.h"
 #include "endstone/command/command_sender.h"
 #include "endstone/object.h"
+#include "endstone/util/pointers.h"
 
 namespace endstone {
 
@@ -49,7 +50,7 @@ public:
 
     virtual ~Command() = default;
 
-    [[nodiscard]] virtual bool execute(CommandSender &sender, const std::vector<std::string> &args) const
+    [[nodiscard]] virtual bool execute(const NotNull<CommandSender> &sender, const std::vector<std::string> &args) const
     {
         return false;
     }
@@ -111,24 +112,24 @@ public:
         permissions_ = std::move(std::vector<std::string>{std::move(permissions)...});
     }
 
-    [[nodiscard]] bool testPermission(const CommandSender &target) const
+    [[nodiscard]] bool testPermission(const NotNull<CommandSender> &target) const
     {
         if (testPermissionSilently(target)) {
             return true;
         }
 
-        target.sendErrorMessage(Translatable("commands.generic.error.permissions", {getName()}));
+        target->sendErrorMessage(Translatable("commands.generic.error.permissions", {getName()}));
         return false;
     }
 
-    [[nodiscard]] bool testPermissionSilently(const CommandSender &target) const
+    [[nodiscard]] bool testPermissionSilently(const NotNull<CommandSender> &target) const
     {
         if (permissions_.empty()) {
             return true;
         }
 
         return std::any_of(permissions_.begin(), permissions_.end(),
-                           [&target](const auto &p) { return target.hasPermission(p); });
+                           [&target](const auto &p) { return target->hasPermission(p); });
     }
 
     bool registerTo(const CommandMap &command_map)

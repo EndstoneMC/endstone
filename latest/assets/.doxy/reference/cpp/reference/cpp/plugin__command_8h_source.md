@@ -39,11 +39,11 @@ class PluginCommand : public Command {
 public:
     PluginCommand(const Command &command, Plugin &owner) : Command(command), owner_(owner) {}
 
-    bool execute(CommandSender &sender, const std::vector<std::string> &args) const override
+    bool execute(const NotNull<CommandSender> &sender, const std::vector<std::string> &args) const override
     {
         if (!owner_.isEnabled()) {
-            sender.sendMessage("Cannot execute command '{}' in plugin {}. Plugin is disabled.", getName(),
-                               getPlugin().getDescription().getFullName());
+            sender->sendMessage("Cannot execute command '{}' in plugin {}. Plugin is disabled.", getName(),
+                                getPlugin().getDescription().getFullName());
             return false;
         }
 

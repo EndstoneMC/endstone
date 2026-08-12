@@ -33,18 +33,19 @@ class PlayerDimensionChangeEvent : public PlayerEvent {
 public:
     ENDSTONE_EVENT(PlayerDimensionChangeEvent);
 
-    explicit PlayerDimensionChangeEvent(const NotNull<Player> &player, Dimension &from, Dimension &to)
+    explicit PlayerDimensionChangeEvent(const NotNull<Player> &player, const NotNull<Dimension> &from,
+                                        const NotNull<Dimension> &to)
         : PlayerEvent(player), from_(from), to_(to)
     {
     }
 
-    [[nodiscard]] Dimension &getFrom() const { return from_; }
+    [[nodiscard]] const NotNull<Dimension> &getFrom() const { return from_; }
 
-    [[nodiscard]] Dimension &getTo() const { return to_; }
+    [[nodiscard]] const NotNull<Dimension> &getTo() const { return to_; }
 
 private:
-    Dimension &from_;
-    Dimension &to_;
+    NotNull<Dimension> from_;
+    NotNull<Dimension> to_;
 };
 
 }  // namespace endstone

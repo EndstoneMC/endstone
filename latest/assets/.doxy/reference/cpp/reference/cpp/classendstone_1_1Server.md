@@ -68,14 +68,14 @@ _Represents a server implementation._
 | virtual std::unique\_ptr&lt; [**BlockData**](classendstone_1_1BlockData.md) &gt; | [**createBlockData**](#function-createblockdata-22) ([**BlockTypeId**](classendstone_1_1Identifier.md) type, BlockStates block\_states) const = 0<br>_Creates a new_ [_**BlockData**_](classendstone_1_1BlockData.md) _instance for the specified block type, with all properties initialized to defaults, except for those provided in data._ |
 | virtual std::unique\_ptr&lt; [**BossBar**](classendstone_1_1BossBar.md) &gt; | [**createBossBar**](#function-createbossbar-12) (std::string title, [**BarColor**](namespaceendstone.md#enum-barcolor) color, [**BarStyle**](namespaceendstone.md#enum-barstyle) style) const = 0<br>_Creates a boss bar instance to display to players._  |
 | virtual std::unique\_ptr&lt; [**BossBar**](classendstone_1_1BossBar.md) &gt; | [**createBossBar**](#function-createbossbar-22) (std::string title, [**BarColor**](namespaceendstone.md#enum-barcolor) color, [**BarStyle**](namespaceendstone.md#enum-barstyle) style, std::vector&lt; [**BarFlag**](namespaceendstone.md#enum-barflag) &gt; flags) const = 0<br>_Creates a boss bar instance to display to players._  |
-| virtual [**MapView**](classendstone_1_1MapView.md) & | [**createMap**](#function-createmap) ([**const**](classendstone_1_1Identifier.md) [**Dimension**](classendstone_1_1Dimension.md) & dimension) const = 0<br>_Create a new map with an automatically assigned ID._  |
-| virtual std::shared\_ptr&lt; [**Scoreboard**](classendstone_1_1Scoreboard.md) &gt; | [**createScoreboard**](#function-createscoreboard) () = 0<br>_Creates a new_ [_**Scoreboard**_](classendstone_1_1Scoreboard.md) _to be tracked by the server._ |
-| virtual [**bool**](classendstone_1_1Identifier.md) | [**dispatchCommand**](#function-dispatchcommand) ([**CommandSender**](classendstone_1_1CommandSender.md) & sender, std::string command\_line) const = 0<br>_Dispatches a command on this server, and executes it if found._  |
+| virtual [**MapView**](classendstone_1_1MapView.md) & | [**createMap**](#function-createmap) ([**const**](classendstone_1_1Identifier.md) [**NotNull**](classendstone_1_1NotNull.md)&lt; [**Dimension**](classendstone_1_1Dimension.md) &gt; & dimension) const = 0<br>_Create a new map with an automatically assigned ID._  |
+| virtual [**NotNull**](classendstone_1_1NotNull.md)&lt; [**Scoreboard**](classendstone_1_1Scoreboard.md) &gt; | [**createScoreboard**](#function-createscoreboard) () = 0<br>_Creates a new_ [_**Scoreboard**_](classendstone_1_1Scoreboard.md) _to be tracked by the server._ |
+| virtual [**bool**](classendstone_1_1Identifier.md) | [**dispatchCommand**](#function-dispatchcommand) ([**const**](classendstone_1_1Identifier.md) [**NotNull**](classendstone_1_1NotNull.md)&lt; [**CommandSender**](classendstone_1_1CommandSender.md) &gt; & sender, std::string command\_line) const = 0<br>_Dispatches a command on this server, and executes it if found._  |
 | virtual [**float**](classendstone_1_1Identifier.md) | [**getAverageMillisecondsPerTick**](#function-getaveragemillisecondspertick) () = 0<br>_Gets the average milliseconds per tick (MSPT)._  |
 | virtual [**float**](classendstone_1_1Identifier.md) | [**getAverageTickUsage**](#function-getaveragetickusage) () = 0<br>_Gets the average tick usage of the server._  |
 | virtual [**float**](classendstone_1_1Identifier.md) | [**getAverageTicksPerSecond**](#function-getaveragetickspersecond) () = 0<br>_Gets the average ticks per second (TPS)._  |
 | virtual [**PlayerBanList**](classendstone_1_1PlayerBanList.md) & | [**getBanList**](#function-getbanlist) () const = 0<br>_Gets the player ban list._  |
-| virtual [**ConsoleCommandSender**](classendstone_1_1ConsoleCommandSender.md) & | [**getCommandSender**](#function-getcommandsender) () const = 0<br>_Gets a_ [_**CommandSender**_](classendstone_1_1CommandSender.md) _for this server._ |
+| virtual [**NotNull**](classendstone_1_1NotNull.md)&lt; [**ConsoleCommandSender**](classendstone_1_1ConsoleCommandSender.md) &gt; | [**getCommandSender**](#function-getcommandsender) () const = 0<br>_Gets a_ [_**CommandSender**_](classendstone_1_1CommandSender.md) _for this server._ |
 | virtual [**float**](classendstone_1_1Identifier.md) | [**getCurrentMillisecondsPerTick**](#function-getcurrentmillisecondspertick) () = 0<br>_Gets the current milliseconds per tick (MSPT)._  |
 | virtual [**float**](classendstone_1_1Identifier.md) | [**getCurrentTickUsage**](#function-getcurrenttickusage) () = 0<br>_Gets the current tick usage of the server._  |
 | virtual [**float**](classendstone_1_1Identifier.md) | [**getCurrentTicksPerSecond**](#function-getcurrenttickspersecond) () = 0<br>_Gets the current ticks per second (TPS)._  |
@@ -486,7 +486,7 @@ the created boss bar
 _Create a new map with an automatically assigned ID._ 
 ```C++
 virtual MapView & endstone::Server::createMap (
-    const  Dimension & dimension
+    const  NotNull < Dimension > & dimension
 ) const = 0
 ```
 
@@ -519,7 +519,7 @@ a newly created map view
 
 _Creates a new_ [_**Scoreboard**_](classendstone_1_1Scoreboard.md) _to be tracked by the server._
 ```C++
-virtual std::shared_ptr< Scoreboard > endstone::Server::createScoreboard () = 0
+virtual NotNull < Scoreboard > endstone::Server::createScoreboard () = 0
 ```
 
 
@@ -548,7 +548,7 @@ the newly created [**Scoreboard**](classendstone_1_1Scoreboard.md)
 _Dispatches a command on this server, and executes it if found._ 
 ```C++
 virtual bool endstone::Server::dispatchCommand (
-    CommandSender & sender,
+    const  NotNull < CommandSender > & sender,
     std::string command_line
 ) const = 0
 ```
@@ -683,7 +683,7 @@ The player ban list
 
 _Gets a_ [_**CommandSender**_](classendstone_1_1CommandSender.md) _for this server._
 ```C++
-virtual ConsoleCommandSender & endstone::Server::getCommandSender () const = 0
+virtual NotNull < ConsoleCommandSender > endstone::Server::getCommandSender () const = 0
 ```
 
 

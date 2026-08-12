@@ -262,6 +262,8 @@
         <link refid="map__renderer_8h_source"/>
         <childnode refid="58" relation="include">
         </childnode>
+        <childnode refid="26" relation="include">
+        </childnode>
       </node>
       <node id="56">
         <label>endstone/map/map_view.h</label>
@@ -396,6 +398,8 @@
         </childnode>
         <childnode refid="71" relation="include">
         </childnode>
+        <childnode refid="26" relation="include">
+        </childnode>
         <childnode refid="52" relation="include">
         </childnode>
       </node>
@@ -413,6 +417,8 @@
         <label>endstone/scoreboard/score.h</label>
         <link refid="score_8h_source"/>
         <childnode refid="72" relation="include">
+        </childnode>
+        <childnode refid="26" relation="include">
         </childnode>
         <childnode refid="52" relation="include">
         </childnode>

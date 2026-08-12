@@ -55,7 +55,7 @@ _Represents a renderer for a map._
 |   | [**MapRenderer**](#function-maprenderer) ([**const**](classendstone_1_1Identifier.md) [**bool**](classendstone_1_1Identifier.md) is\_contextual=[**false**](classendstone_1_1Identifier.md)) <br>_Initialize the map renderer base with the given contextual status._  |
 | virtual [**void**](classendstone_1_1Identifier.md) | [**initialize**](#function-initialize) ([**MapView**](classendstone_1_1MapView.md) & map) <br>_Initialize this_ [_**MapRenderer**_](classendstone_1_1MapRenderer.md) _for the given map._ |
 |  [**bool**](classendstone_1_1Identifier.md) | [**isContextual**](#function-iscontextual) () const<br>_Get whether the renderer is contextual, i.e._  |
-| virtual [**void**](classendstone_1_1Identifier.md) | [**render**](#function-render) ([**MapView**](classendstone_1_1MapView.md) & map, [**MapCanvas**](classendstone_1_1MapCanvas.md) & canvas, [**Player**](classendstone_1_1Player.md) & player) = 0<br>_Render to the given map._  |
+| virtual [**void**](classendstone_1_1Identifier.md) | [**render**](#function-render) ([**MapView**](classendstone_1_1MapView.md) & map, [**MapCanvas**](classendstone_1_1MapCanvas.md) & canvas, [**const**](classendstone_1_1Identifier.md) [**NotNull**](classendstone_1_1NotNull.md)&lt; [**Player**](classendstone_1_1Player.md) &gt; & player) = 0<br>_Render to the given map._  |
 | virtual  | [**~MapRenderer**](#function-maprenderer) () = default<br> |
 
 
@@ -179,7 +179,7 @@ _Render to the given map._
 virtual void endstone::MapRenderer::render (
     MapView & map,
     MapCanvas & canvas,
-    Player & player
+    const  NotNull < Player > & player
 ) = 0
 ```
 

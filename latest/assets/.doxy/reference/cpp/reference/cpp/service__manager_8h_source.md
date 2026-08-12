@@ -45,16 +45,16 @@ public:
 
     virtual void unregisterAll(const Plugin &plugin) = 0;
 
-    virtual void unregister(std::string name, const Service &provider) = 0;
+    virtual void unregister(std::string name, const NotNull<Service> &provider) = 0;
 
-    virtual void unregister(const Service &provider) = 0;
+    virtual void unregister(const NotNull<Service> &provider) = 0;
 
     virtual Nullable<Service> get(std::string name) const = 0;
 
     template <typename T>
     Nullable<T> load(std::string name) const
     {
-        return std::static_pointer_cast<T>(get(std::move(name)).get());
+        return get(std::move(name)).cast<T>();
     }
 };
 }  // namespace endstone

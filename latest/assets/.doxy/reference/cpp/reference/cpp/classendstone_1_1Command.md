@@ -75,7 +75,7 @@ Inherited by the following classes: [endstone::PluginCommand](classendstone_1_1P
 | Type | Name |
 | ---: | :--- |
 |   | [**Command**](#function-command) (std::string name, std::string description="", std::vector&lt; std::string &gt; usages={}, std::vector&lt; std::string &gt; aliases={}, std::vector&lt; std::string &gt; permissions={}) <br> |
-| virtual [**bool**](classendstone_1_1Identifier.md) | [**execute**](#function-execute) ([**CommandSender**](classendstone_1_1CommandSender.md) & sender, [**const**](classendstone_1_1Identifier.md) std::vector&lt; std::string &gt; & args) const<br>_Executes the command, returning its success._  |
+| virtual [**bool**](classendstone_1_1Identifier.md) | [**execute**](#function-execute) ([**const**](classendstone_1_1Identifier.md) [**NotNull**](classendstone_1_1NotNull.md)&lt; [**CommandSender**](classendstone_1_1CommandSender.md) &gt; & sender, [**const**](classendstone_1_1Identifier.md) std::vector&lt; std::string &gt; & args) const<br>_Executes the command, returning its success._  |
 |  std::vector&lt; std::string &gt; | [**getAliases**](#function-getaliases) () const<br>_Returns a list of aliases of this command._  |
 | virtual [**const**](classendstone_1_1Identifier.md) std::type\_info & | [**getClassTypeId**](#function-getclasstypeid) () override const<br> |
 |  std::string | [**getDescription**](#function-getdescription) () const<br>_Gets a brief description of this command._  |
@@ -90,8 +90,8 @@ Inherited by the following classes: [endstone::PluginCommand](classendstone_1_1P
 |  [**void**](classendstone_1_1Identifier.md) | [**setName**](#function-setname) (std::string name) <br>_Sets the name of this command._  |
 |  [**void**](classendstone_1_1Identifier.md) | [**setPermissions**](#function-setpermissions) (Permission... permissions) <br>_Sets the permissions required by users to be able to perform this command._  |
 |  [**void**](classendstone_1_1Identifier.md) | [**setUsages**](#function-setusages) (Usage... usages) <br>_Sets the usages of this command._  |
-|  [**bool**](classendstone_1_1Identifier.md) | [**testPermission**](#function-testpermission) ([**const**](classendstone_1_1Identifier.md) [**CommandSender**](classendstone_1_1CommandSender.md) & target) const<br>_Tests the given_ [_**CommandSender**_](classendstone_1_1CommandSender.md) _to see if they can perform this command._ |
-|  [**bool**](classendstone_1_1Identifier.md) | [**testPermissionSilently**](#function-testpermissionsilently) ([**const**](classendstone_1_1Identifier.md) [**CommandSender**](classendstone_1_1CommandSender.md) & target) const<br>_Tests the given_ [_**CommandSender**_](classendstone_1_1CommandSender.md) _to see if they can perform this command._ |
+|  [**bool**](classendstone_1_1Identifier.md) | [**testPermission**](#function-testpermission) ([**const**](classendstone_1_1Identifier.md) [**NotNull**](classendstone_1_1NotNull.md)&lt; [**CommandSender**](classendstone_1_1CommandSender.md) &gt; & target) const<br>_Tests the given_ [_**CommandSender**_](classendstone_1_1CommandSender.md) _to see if they can perform this command._ |
+|  [**bool**](classendstone_1_1Identifier.md) | [**testPermissionSilently**](#function-testpermissionsilently) ([**const**](classendstone_1_1Identifier.md) [**NotNull**](classendstone_1_1NotNull.md)&lt; [**CommandSender**](classendstone_1_1CommandSender.md) &gt; & target) const<br>_Tests the given_ [_**CommandSender**_](classendstone_1_1CommandSender.md) _to see if they can perform this command._ |
 |  [**bool**](classendstone_1_1Identifier.md) | [**unregisterFrom**](#function-unregisterfrom) ([**const**](classendstone_1_1Identifier.md) [**CommandMap**](classendstone_1_1CommandMap.md) & command\_map) <br>_Unregisters this command from a_ [_**CommandMap**_](classendstone_1_1CommandMap.md) _._ |
 | virtual  | [**~Command**](#function-command) () = default<br> |
 
@@ -191,7 +191,7 @@ inline explicit endstone::Command::Command (
 _Executes the command, returning its success._ 
 ```C++
 inline virtual bool endstone::Command::execute (
-    CommandSender & sender,
+    const  NotNull < CommandSender > & sender,
     const std::vector< std::string > & args
 ) const
 ```
@@ -584,7 +584,7 @@ inline void endstone::Command::setUsages (
 _Tests the given_ [_**CommandSender**_](classendstone_1_1CommandSender.md) _to see if they can perform this command._
 ```C++
 inline bool endstone::Command::testPermission (
-    const  CommandSender & target
+    const  NotNull < CommandSender > & target
 ) const
 ```
 
@@ -621,7 +621,7 @@ true if they can use it, otherwise false
 _Tests the given_ [_**CommandSender**_](classendstone_1_1CommandSender.md) _to see if they can perform this command._
 ```C++
 inline bool endstone::Command::testPermissionSilently (
-    const  CommandSender & target
+    const  NotNull < CommandSender > & target
 ) const
 ```
 

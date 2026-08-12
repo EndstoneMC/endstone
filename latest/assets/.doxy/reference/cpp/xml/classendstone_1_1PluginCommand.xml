@@ -57,15 +57,15 @@
         </inbodydescription>
         <location file="include/endstone/command/plugin_command.h" line="33" column="5" bodyfile="include/endstone/command/plugin_command.h" bodystart="33" bodyend="33"/>
       </memberdef>
-      <memberdef kind="function" id="classendstone_1_1PluginCommand_1a376735d9dccfa3142004f92063808cdc" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="virtual">
+      <memberdef kind="function" id="classendstone_1_1PluginCommand_1ab4775a442dac9270ead8e4c5d706852c" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="virtual">
         <type><ref refid="classendstone_1_1Identifier" kindref="compound">bool</ref></type>
         <definition>bool endstone::PluginCommand::execute</definition>
-        <argsstring>(CommandSender &amp;sender, const std::vector&lt; std::string &gt; &amp;args) const override</argsstring>
+        <argsstring>(const NotNull&lt; CommandSender &gt; &amp;sender, const std::vector&lt; std::string &gt; &amp;args) const override</argsstring>
         <name>execute</name>
         <qualifiedname>endstone::PluginCommand::execute</qualifiedname>
-        <reimplements refid="classendstone_1_1Command_1a983f63a4d9460dcc7a952eabd7c46737">execute</reimplements>
+        <reimplements refid="classendstone_1_1Command_1a999eebcff677298c56335b26ef4d92c3">execute</reimplements>
         <param>
-          <type><ref refid="classendstone_1_1CommandSender" kindref="compound">CommandSender</ref> &amp;</type>
+          <type><ref refid="classendstone_1_1Identifier" kindref="compound">const</ref> <ref refid="classendstone_1_1NotNull" kindref="compound">NotNull</ref>&lt; <ref refid="classendstone_1_1CommandSender" kindref="compound">CommandSender</ref> &gt; &amp;</type>
           <declname>sender</declname>
         </param>
         <param>
@@ -247,7 +247,7 @@
       <member refid="classendstone_1_1Object_1a798b5128ce018bbbe8ca949ba78c3db1" prot="public" virt="non-virtual"><scope>endstone::PluginCommand</scope><name>as</name></member>
       <member refid="classendstone_1_1Object_1ae0f38a62da4c186fce272145e2590cc1" prot="public" virt="non-virtual"><scope>endstone::PluginCommand</scope><name>as</name></member>
       <member refid="classendstone_1_1Command_1aa44822c895d67402241b9570bafd2ce7" prot="public" virt="non-virtual"><scope>endstone::PluginCommand</scope><name>Command</name></member>
-      <member refid="classendstone_1_1PluginCommand_1a376735d9dccfa3142004f92063808cdc" prot="public" virt="virtual"><scope>endstone::PluginCommand</scope><name>execute</name></member>
+      <member refid="classendstone_1_1PluginCommand_1ab4775a442dac9270ead8e4c5d706852c" prot="public" virt="virtual"><scope>endstone::PluginCommand</scope><name>execute</name></member>
       <member refid="classendstone_1_1PluginCommand_1a2ec629d4eb987db62409bce874a9d2f3" prot="private" virt="non-virtual"><scope>endstone::PluginCommand</scope><name>executor_</name></member>
       <member refid="classendstone_1_1Command_1a15380c3310b2a8f58b1ce3e227ddcf6d" prot="public" virt="non-virtual"><scope>endstone::PluginCommand</scope><name>getAliases</name></member>
       <member refid="classendstone_1_1PluginCommand_1a65c45d094ef0ea7700a98a53671993a7" prot="public" virt="virtual"><scope>endstone::PluginCommand</scope><name>getClassTypeId</name></member>
@@ -269,8 +269,8 @@
       <member refid="classendstone_1_1Command_1a66160b5ff3d7efbc62e93e122d699776" prot="public" virt="non-virtual"><scope>endstone::PluginCommand</scope><name>setName</name></member>
       <member refid="classendstone_1_1Command_1a53e55d4c2375b2b34e321f4f46551b09" prot="public" virt="non-virtual"><scope>endstone::PluginCommand</scope><name>setPermissions</name></member>
       <member refid="classendstone_1_1Command_1ab73ce16a9a92a52780fd2640b5f5a91a" prot="public" virt="non-virtual"><scope>endstone::PluginCommand</scope><name>setUsages</name></member>
-      <member refid="classendstone_1_1Command_1a3d6b00319efa8c4e8bc51227532577d6" prot="public" virt="non-virtual"><scope>endstone::PluginCommand</scope><name>testPermission</name></member>
-      <member refid="classendstone_1_1Command_1a72a27372e25345d4efe9f421520fc44b" prot="public" virt="non-virtual"><scope>endstone::PluginCommand</scope><name>testPermissionSilently</name></member>
+      <member refid="classendstone_1_1Command_1a509e2f7719c071e86c2330e59b788b03" prot="public" virt="non-virtual"><scope>endstone::PluginCommand</scope><name>testPermission</name></member>
+      <member refid="classendstone_1_1Command_1a7ec2943abb78b75488da16f47f699855" prot="public" virt="non-virtual"><scope>endstone::PluginCommand</scope><name>testPermissionSilently</name></member>
       <member refid="classendstone_1_1Command_1af0220a368428afc83b15d638e40426fd" prot="public" virt="non-virtual"><scope>endstone::PluginCommand</scope><name>unregisterFrom</name></member>
       <member refid="classendstone_1_1Command_1a1a6c0c0027b500df3e4eea60cf489ea2" prot="public" virt="virtual"><scope>endstone::PluginCommand</scope><name>~Command</name></member>
       <member refid="classendstone_1_1Object_1adfddc886af4b1d0e09ddac7d0391b4d2" prot="public" virt="virtual"><scope>endstone::PluginCommand</scope><name>~Object</name></member>

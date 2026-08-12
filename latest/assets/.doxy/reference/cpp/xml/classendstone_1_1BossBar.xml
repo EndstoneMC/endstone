@@ -342,14 +342,14 @@
         </inbodydescription>
         <location file="include/endstone/boss/boss_bar.h" line="111" column="18"/>
       </memberdef>
-      <memberdef kind="function" id="classendstone_1_1BossBar_1a12761830372d48958fd50bddef835170" prot="public" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
+      <memberdef kind="function" id="classendstone_1_1BossBar_1ad777847618860643bb8e714d1c1df73c" prot="public" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
         <type><ref refid="classendstone_1_1Identifier" kindref="compound">void</ref></type>
         <definition>virtual void endstone::BossBar::addPlayer</definition>
-        <argsstring>(Player &amp;player)=0</argsstring>
+        <argsstring>(const NotNull&lt; Player &gt; &amp;player)=0</argsstring>
         <name>addPlayer</name>
         <qualifiedname>endstone::BossBar::addPlayer</qualifiedname>
         <param>
-          <type><ref refid="classendstone_1_1Player" kindref="compound">Player</ref> &amp;</type>
+          <type><ref refid="classendstone_1_1Identifier" kindref="compound">const</ref> <ref refid="classendstone_1_1NotNull" kindref="compound">NotNull</ref>&lt; <ref refid="classendstone_1_1Player" kindref="compound">Player</ref> &gt; &amp;</type>
           <declname>player</declname>
         </param>
         <briefdescription>
@@ -371,14 +371,14 @@
         </inbodydescription>
         <location file="include/endstone/boss/boss_bar.h" line="117" column="18"/>
       </memberdef>
-      <memberdef kind="function" id="classendstone_1_1BossBar_1a5e1dfb34a264bfcbfea1af2c2a2ba578" prot="public" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
+      <memberdef kind="function" id="classendstone_1_1BossBar_1a55aae8072a0fa901bc5bff61f4f5f568" prot="public" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
         <type><ref refid="classendstone_1_1Identifier" kindref="compound">void</ref></type>
         <definition>virtual void endstone::BossBar::removePlayer</definition>
-        <argsstring>(Player &amp;player)=0</argsstring>
+        <argsstring>(const NotNull&lt; Player &gt; &amp;player)=0</argsstring>
         <name>removePlayer</name>
         <qualifiedname>endstone::BossBar::removePlayer</qualifiedname>
         <param>
-          <type><ref refid="classendstone_1_1Player" kindref="compound">Player</ref> &amp;</type>
+          <type><ref refid="classendstone_1_1Identifier" kindref="compound">const</ref> <ref refid="classendstone_1_1NotNull" kindref="compound">NotNull</ref>&lt; <ref refid="classendstone_1_1Player" kindref="compound">Player</ref> &gt; &amp;</type>
           <declname>player</declname>
         </param>
         <briefdescription>
@@ -442,7 +442,7 @@
     <location file="include/endstone/boss/boss_bar.h" line="30" column="1" bodyfile="include/endstone/boss/boss_bar.h" bodystart="30" bodyend="135"/>
     <listofallmembers>
       <member refid="classendstone_1_1BossBar_1a7620a5bbf2fe2e260ffd981ed812b233" prot="public" virt="pure-virtual"><scope>endstone::BossBar</scope><name>addFlag</name></member>
-      <member refid="classendstone_1_1BossBar_1a12761830372d48958fd50bddef835170" prot="public" virt="pure-virtual"><scope>endstone::BossBar</scope><name>addPlayer</name></member>
+      <member refid="classendstone_1_1BossBar_1ad777847618860643bb8e714d1c1df73c" prot="public" virt="pure-virtual"><scope>endstone::BossBar</scope><name>addPlayer</name></member>
       <member refid="classendstone_1_1BossBar_1adf1bfb4dc7ac123c729edc425c6dbf38" prot="public" virt="pure-virtual"><scope>endstone::BossBar</scope><name>getColor</name></member>
       <member refid="classendstone_1_1BossBar_1ad10cce1b4946fa66ffee36e9a0536ca1" prot="public" virt="pure-virtual"><scope>endstone::BossBar</scope><name>getPlayers</name></member>
       <member refid="classendstone_1_1BossBar_1a26fd77e91731b0d93a1053251c551cd0" prot="public" virt="pure-virtual"><scope>endstone::BossBar</scope><name>getProgress</name></member>
@@ -452,7 +452,7 @@
       <member refid="classendstone_1_1BossBar_1a00f426146a25566319f641881318aa43" prot="public" virt="pure-virtual"><scope>endstone::BossBar</scope><name>isVisible</name></member>
       <member refid="classendstone_1_1BossBar_1adb723506a074cee293e813a4409b12c2" prot="public" virt="pure-virtual"><scope>endstone::BossBar</scope><name>removeAll</name></member>
       <member refid="classendstone_1_1BossBar_1a1300817a31f861f6ec11094ab4d39a40" prot="public" virt="pure-virtual"><scope>endstone::BossBar</scope><name>removeFlag</name></member>
-      <member refid="classendstone_1_1BossBar_1a5e1dfb34a264bfcbfea1af2c2a2ba578" prot="public" virt="pure-virtual"><scope>endstone::BossBar</scope><name>removePlayer</name></member>
+      <member refid="classendstone_1_1BossBar_1a55aae8072a0fa901bc5bff61f4f5f568" prot="public" virt="pure-virtual"><scope>endstone::BossBar</scope><name>removePlayer</name></member>
       <member refid="classendstone_1_1BossBar_1a6f2954ac107a94b825740c52946f5fe1" prot="public" virt="pure-virtual"><scope>endstone::BossBar</scope><name>setColor</name></member>
       <member refid="classendstone_1_1BossBar_1ad87883aafad616b5d94c5f171140b790" prot="public" virt="pure-virtual"><scope>endstone::BossBar</scope><name>setProgress</name></member>
       <member refid="classendstone_1_1BossBar_1ae9af39fed4792bba3635aca0b33cc364" prot="public" virt="pure-virtual"><scope>endstone::BossBar</scope><name>setStyle</name></member>

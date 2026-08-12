@@ -94,8 +94,8 @@ Inherited by the following classes: [endstone::ChunkEvent](classendstone_1_1Chun
 
 | Type | Name |
 | ---: | :--- |
-|   | [**DimensionEvent**](#function-dimensionevent) ([**Dimension**](classendstone_1_1Dimension.md) & dimension) <br> |
-|  [**Dimension**](classendstone_1_1Dimension.md) & | [**getDimension**](#function-getdimension) () const<br>_Gets the dimension primarily involved with this event._  |
+|   | [**DimensionEvent**](#function-dimensionevent) ([**const**](classendstone_1_1Identifier.md) [**NotNull**](classendstone_1_1NotNull.md)&lt; [**Dimension**](classendstone_1_1Dimension.md) &gt; & dimension) <br> |
+|  [**const**](classendstone_1_1Identifier.md) [**NotNull**](classendstone_1_1NotNull.md)&lt; [**Dimension**](classendstone_1_1Dimension.md) &gt; & | [**getDimension**](#function-getdimension) () const<br>_Gets the dimension primarily involved with this event._  |
 
 
 ## Public Functions inherited from endstone::LevelEvent
@@ -211,7 +211,7 @@ See [endstone::Event](classendstone_1_1Event.md)
 
 ```C++
 inline explicit endstone::DimensionEvent::DimensionEvent (
-    Dimension & dimension
+    const  NotNull < Dimension > & dimension
 ) 
 ```
 
@@ -226,7 +226,7 @@ inline explicit endstone::DimensionEvent::DimensionEvent (
 
 _Gets the dimension primarily involved with this event._ 
 ```C++
-inline Dimension & endstone::DimensionEvent::getDimension () const
+inline const  NotNull < Dimension > & endstone::DimensionEvent::getDimension () const
 ```
 
 

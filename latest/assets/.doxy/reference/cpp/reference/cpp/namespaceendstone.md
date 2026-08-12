@@ -303,9 +303,11 @@ _Represents a button with text and an optional icon._
 |  [**bool**](classendstone_1_1Identifier.md) | [**operator&lt;=**](#function-operator_4) ([**UUID**](classendstone_1_1UUID.md) [**const**](classendstone_1_1Identifier.md) & lhs, [**UUID**](classendstone_1_1UUID.md) [**const**](classendstone_1_1Identifier.md) & rhs) noexcept<br> |
 |  [**bool**](classendstone_1_1Identifier.md) | [**operator==**](#function-operator_5) ([**const**](classendstone_1_1Identifier.md) [**ListTag**](classendstone_1_1ListTag.md) & a, [**const**](classendstone_1_1Identifier.md) [**ListTag**](classendstone_1_1ListTag.md) & b) noexcept<br> |
 |  [**bool**](classendstone_1_1Identifier.md) | [**operator==**](#function-operator_6) ([**const**](classendstone_1_1Identifier.md) [**CompoundTag**](classendstone_1_1CompoundTag.md) & a, [**const**](classendstone_1_1Identifier.md) [**CompoundTag**](classendstone_1_1CompoundTag.md) & b) noexcept<br> |
-|  [**bool**](classendstone_1_1Identifier.md) | [**operator==**](#function-operator_7) ([**UUID**](classendstone_1_1UUID.md) [**const**](classendstone_1_1Identifier.md) & lhs, [**UUID**](classendstone_1_1UUID.md) [**const**](classendstone_1_1Identifier.md) & rhs) noexcept<br> |
-|  [**bool**](classendstone_1_1Identifier.md) | [**operator&gt;**](#function-operator_8) ([**UUID**](classendstone_1_1UUID.md) [**const**](classendstone_1_1Identifier.md) & lhs, [**UUID**](classendstone_1_1UUID.md) [**const**](classendstone_1_1Identifier.md) & rhs) noexcept<br> |
-|  [**bool**](classendstone_1_1Identifier.md) | [**operator&gt;=**](#function-operator_9) ([**UUID**](classendstone_1_1UUID.md) [**const**](classendstone_1_1Identifier.md) & lhs, [**UUID**](classendstone_1_1UUID.md) [**const**](classendstone_1_1Identifier.md) & rhs) noexcept<br> |
+|  [**bool**](classendstone_1_1Identifier.md) | [**operator==**](#function-operator_7) ([**const**](classendstone_1_1Identifier.md) [**NotNull**](classendstone_1_1NotNull.md)&lt; [**T**](classendstone_1_1Identifier.md) &gt; & lhs, [**const**](classendstone_1_1Identifier.md) [**Nullable**](classendstone_1_1Nullable.md)&lt; [**U**](classendstone_1_1Identifier.md) &gt; & rhs) noexcept<br> |
+|  [**bool**](classendstone_1_1Identifier.md) | [**operator==**](#function-operator_8) ([**const**](classendstone_1_1Identifier.md) [**Nullable**](classendstone_1_1Nullable.md)&lt; [**T**](classendstone_1_1Identifier.md) &gt; & lhs, [**const**](classendstone_1_1Identifier.md) [**NotNull**](classendstone_1_1NotNull.md)&lt; [**U**](classendstone_1_1Identifier.md) &gt; & rhs) noexcept<br> |
+|  [**bool**](classendstone_1_1Identifier.md) | [**operator==**](#function-operator_9) ([**UUID**](classendstone_1_1UUID.md) [**const**](classendstone_1_1Identifier.md) & lhs, [**UUID**](classendstone_1_1UUID.md) [**const**](classendstone_1_1Identifier.md) & rhs) noexcept<br> |
+|  [**bool**](classendstone_1_1Identifier.md) | [**operator&gt;**](#function-operator_10) ([**UUID**](classendstone_1_1UUID.md) [**const**](classendstone_1_1Identifier.md) & lhs, [**UUID**](classendstone_1_1UUID.md) [**const**](classendstone_1_1Identifier.md) & rhs) noexcept<br> |
+|  [**bool**](classendstone_1_1Identifier.md) | [**operator&gt;=**](#function-operator_11) ([**UUID**](classendstone_1_1UUID.md) [**const**](classendstone_1_1Identifier.md) & lhs, [**UUID**](classendstone_1_1UUID.md) [**const**](classendstone_1_1Identifier.md) & rhs) noexcept<br> |
 |   | [**overloaded**](#function-overloaded) (Func...) <br>_Deduction guide._  |
 |  [**void**](classendstone_1_1Identifier.md) | [**swap**](#function-swap) ([**UUID**](classendstone_1_1UUID.md) & lhs, [**UUID**](classendstone_1_1UUID.md) & rhs) noexcept<br> |
 
@@ -1121,6 +1123,40 @@ inline bool endstone::operator== (
 inline bool endstone::operator== (
     const  CompoundTag & a,
     const  CompoundTag & b
+) noexcept
+```
+
+
+
+
+<hr>
+
+
+
+### function operator== 
+
+```C++
+template<class T, class U>
+bool endstone::operator== (
+    const  NotNull < T > & lhs,
+    const  Nullable < U > & rhs
+) noexcept
+```
+
+
+
+
+<hr>
+
+
+
+### function operator== 
+
+```C++
+template<class T, class U>
+bool endstone::operator== (
+    const  Nullable < T > & lhs,
+    const  NotNull < U > & rhs
 ) noexcept
 ```
 
