@@ -59,6 +59,7 @@ __all__ = [
     "PlayerBedLeaveEvent",
     "PlayerBucketEntityEvent",
     "PlayerBucketEvent",
+    "PlayerBucketFillEvent",
     "PlayerChatEvent",
     "PlayerCommandEvent",
     "PlayerDeathEvent",
@@ -617,6 +618,11 @@ class PlayerBucketEvent(PlayerEvent, Cancellable):
 
     @item_stack.setter
     def item_stack(self, arg1: ItemStack | None) -> None: ...
+
+class PlayerBucketFillEvent(PlayerBucketEvent):
+    """
+    Called when a player fills a bucket.
+    """
 
 class PlayerBucketEntityEvent(PlayerEvent, Cancellable):
     """

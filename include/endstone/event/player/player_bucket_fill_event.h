@@ -14,17 +14,17 @@
 
 #pragma once
 
+#include "endstone/event/player/player_bucket_event.h"
+
 namespace endstone {
+
 /**
- * Represents the face of a block.
+ * Called when a player fills a bucket.
  */
-enum class BlockFace {
-    Down,
-    Up,
-    North,
-    South,
-    West,
-    East,
-    Self,
+class PlayerBucketFillEvent : public PlayerBucketEvent {
+public:
+    ENDSTONE_EVENT(PlayerBucketFillEvent);
+    using PlayerBucketEvent::PlayerBucketEvent;
 };
+
 }  // namespace endstone

@@ -42,6 +42,7 @@
 #include "endstone/event/player/player_quit_event.h"
 #include "endstone/event/player/player_respawn_event.h"
 #include "endstone/runtime/bedrock_hooks/armor_stand.h"
+#include "endstone/runtime/bedrock_hooks/bucket_fill_entity.h"
 #include "endstone/runtime/vtable_hook.h"
 
 namespace {
@@ -187,7 +188,8 @@ bool handleEvent(const PlayerInteractWithBlockBeforeEvent &event)
 
 bool handleEvent(const PlayerInteractWithEntityBeforeEvent &event)
 {
-    const auto *player = WeakEntityRef(event.player).tryUnwrap<::Player>();
+    endstone::runtime::resetBucketFillEntityEvent();
+    auto *player = WeakEntityRef(event.player).tryUnwrap<::Player>();
     const auto *target = WeakEntityRef(event.target_entity).tryUnwrap<::Actor>();
 
     if (player && target) {
@@ -201,7 +203,17 @@ bool handleEvent(const PlayerInteractWithEntityBeforeEvent &event)
         if (!endstone::runtime::fireArmorStandManipulateEvent(*player, *target, event.item)) {
             return false;
         }
+        if (!endstone::runtime::fireBucketFillEntityEvent(*player, *target, event.item)) {
+            player->sendInventory(false);
+            return false;
+        }
     }
+    return true;
+}
+
+bool handleEvent(const PlayerInteractWithEntityAfterEvent &event)
+{
+    endstone::runtime::handleBucketFillEntityResult(event);
     return true;
 }
 
@@ -239,7 +251,8 @@ HandlerResult ScriptPlayerGameplayHandler::handleEvent1(const PlayerGameplayEven
                       std::is_same_v<T, Details::ValueOrRef<const PlayerFormResponseEvent>> ||
                       std::is_same_v<T, Details::ValueOrRef<const PlayerFormCloseEvent>> ||
                       std::is_same_v<T, Details::ValueOrRef<const ::PlayerRespawnEvent>> ||
-                      std::is_same_v<T, Details::ValueOrRef<const PlayerDimensionChangeAfterEvent>>) {
+                      std::is_same_v<T, Details::ValueOrRef<const PlayerDimensionChangeAfterEvent>> ||
+                      std::is_same_v<T, Details::ValueOrRef<const PlayerInteractWithEntityAfterEvent>>) {
             if (!handleEvent(arg.value())) {
                 return HandlerResult::BypassListeners;
             }

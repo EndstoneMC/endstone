@@ -29,6 +29,7 @@ void init_block(py::module_ &m, py::classh<Block> &block)
         .value("SOUTH", BlockFace::South)
         .value("WEST", BlockFace::West)
         .value("EAST", BlockFace::East)
+        .value("SELF", BlockFace::Self)
         .finalize();
 
     auto block_type = py::class_<BlockType>(m, "BlockType", "Represents a block type.");

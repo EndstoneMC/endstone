@@ -92,6 +92,8 @@ BlockFace EndstoneBlockFace::getOpposite(BlockFace face)
         return BlockFace::East;
     case BlockFace::East:
         return BlockFace::West;
+    case BlockFace::Self:
+        return BlockFace::Self;
     default:
         throw std::invalid_argument("Invalid face");
     }
