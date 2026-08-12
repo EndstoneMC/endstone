@@ -262,6 +262,19 @@ void init_event(py::module_ &m, py::class_<Event, PyEvent> &event)
     py::class_<PlayerBedLeaveEvent, PlayerEvent>(m, "PlayerBedLeaveEvent", "Called when a player is leaving a bed.")
         .def_property_readonly("bed", &PlayerBedLeaveEvent::getBed, py::return_value_policy::reference,
                                "The bed block involved in this event.");
+    py::class_<PlayerBucketEvent, PlayerEvent, ICancellable>(
+        m, "PlayerBucketEvent", "Base class for events involving a player's bucket interaction.")
+        .def_property_readonly("block", &PlayerBucketEvent::getBlock, py::return_value_policy::reference,
+                               "The block involved in this event, or `None` if unavailable.")
+        .def_property_readonly("block_clicked", &PlayerBucketEvent::getBlockClicked,
+                               py::return_value_policy::reference, "The block clicked by the player.")
+        .def_property_readonly("block_face", &PlayerBucketEvent::getBlockFace,
+                               "The face on the clicked block.")
+        .def_property_readonly("bucket", &PlayerBucketEvent::getBucket, py::return_value_policy::reference,
+                               "The bucket used in this event.")
+        .def_property_readonly("hand", &PlayerBucketEvent::getHand, "The hand used in this event.")
+        .def_property("item_stack", &PlayerBucketEvent::getItemStack, &PlayerBucketEvent::setItemStack,
+                      "The resulting item in the player's hand, or `None` if unavailable.");
     py::class_<PlayerBucketEntityEvent, PlayerEvent, ICancellable>(
         m, "PlayerBucketEntityEvent", "Called when a player captures an entity with a bucket.")
         .def_property_readonly("entity", &PlayerBucketEntityEvent::getEntity,
