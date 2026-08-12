@@ -57,7 +57,6 @@ __all__ = [
     "PlayerArmorStandManipulateEvent",
     "PlayerBedEnterEvent",
     "PlayerBedLeaveEvent",
-    "PlayerBlockDamageEvent",
     "PlayerBucketEntityEvent",
     "PlayerChatEvent",
     "PlayerCommandEvent",
@@ -853,60 +852,6 @@ class PlayerGameModeChangeEvent(PlayerEvent, Cancellable):
     def new_game_mode(self) -> GameMode:
         """
         The `GameMode` the player is switched to.
-        """
-
-class PlayerBlockDamageEvent(PlayerEvent, Cancellable):
-    """
-    Called when a player starts, continues, aborts, predicts, stops, or creatively destroys a block.
-
-    Cancellation is honored for `START` and `CONTINUE` actions only.
-    """
-    class Action(enum.Enum):
-        """
-        The block damage action that triggered this event.
-        """
-
-        START = 0
-        ABORT = 1
-        STOP = 2
-        CONTINUE = 3
-        PREDICT = 4
-        CREATIVE = 5
-
-    START = Action.START
-    ABORT = Action.ABORT
-    STOP = Action.STOP
-    CONTINUE = Action.CONTINUE
-    PREDICT = Action.PREDICT
-    CREATIVE = Action.CREATIVE
-    @property
-    def action(self) -> Action:
-        """
-        The block damage action that triggered this event.
-        """
-
-    @property
-    def item(self) -> ItemStack | None:
-        """
-        The item used to damage the block, or `None` if unavailable.
-        """
-
-    @property
-    def block(self) -> Block:
-        """
-        The block being damaged, or `None` if unavailable.
-        """
-
-    @property
-    def block_face(self) -> BlockFace | None:
-        """
-        The face being damaged, or `None` if unavailable.
-        """
-
-    @property
-    def position(self) -> Vector:
-        """
-        The block position.
         """
 
 class PlayerInteractEvent(PlayerEvent, Cancellable):

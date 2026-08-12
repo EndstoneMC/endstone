@@ -26,8 +26,6 @@
 #include "bedrock/network/connection_request.h"
 #include "bedrock/network/sub_client_connection_request.h"
 #include "bedrock/world/events/player_events.h"
-#include "bedrock/world/level/block_pos.h"
-#include "endstone/block/block_face.h"
 #include "endstone/core/actor/mob.h"
 #include "endstone/core/inventory/player_inventory.h"
 #include "endstone/inventory/meta/book_meta.h"
@@ -163,8 +161,6 @@ private:
     std::string game_version_;
     std::uint32_t form_ids_ = 0xffff;  // Set to a large value to avoid collision with forms created by script api
     std::unordered_map<std::uint32_t, FormVariant> forms_;
-    std::optional<BlockPos> block_damage_position_;
-    std::optional<BlockFace> block_damage_face_;
     std::unique_ptr<BookMeta> pending_book_meta_;
     int pending_book_slot_ = -1;
     std::optional<Input> last_input_;

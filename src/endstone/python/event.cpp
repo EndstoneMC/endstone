@@ -365,32 +365,6 @@ void init_event(py::module_ &m, py::class_<Event, PyEvent> &event)
         m, "PlayerGameModeChangeEvent", "Called when the `GameMode` of the player is changed.")
         .def_property_readonly("new_game_mode", &PlayerGameModeChangeEvent::getNewGameMode,
                                "The `GameMode` the player is switched to.");
-    auto player_block_damage_event = py::class_<PlayerBlockDamageEvent, PlayerEvent, ICancellable>(
-        m, "PlayerBlockDamageEvent", R"doc(
-    Called when a player starts, continues, aborts, predicts, stops, or creatively destroys a block.
-
-    Cancellation is honored for `START` and `CONTINUE` actions only.
-)doc");
-    py::native_enum<PlayerBlockDamageEvent::Action>(player_block_damage_event, "Action", "enum.Enum",
-                                                    "The block damage action that triggered this event.")
-        .value("START", PlayerBlockDamageEvent::Action::Start)
-        .value("ABORT", PlayerBlockDamageEvent::Action::Abort)
-        .value("STOP", PlayerBlockDamageEvent::Action::Stop)
-        .value("CONTINUE", PlayerBlockDamageEvent::Action::Continue)
-        .value("PREDICT", PlayerBlockDamageEvent::Action::Predict)
-        .value("CREATIVE", PlayerBlockDamageEvent::Action::Creative)
-        .export_values()
-        .finalize();
-    player_block_damage_event
-        .def_property_readonly("action", &PlayerBlockDamageEvent::getAction,
-                               "The block damage action that triggered this event.")
-        .def_property_readonly("item", &PlayerBlockDamageEvent::getItem,
-                               "The item used to damage the block, or `None` if unavailable.")
-        .def_property_readonly("block", &PlayerBlockDamageEvent::getBlock, py::return_value_policy::reference,
-                               "The block being damaged, or `None` if unavailable.")
-        .def_property_readonly("block_face", &PlayerBlockDamageEvent::getBlockFace,
-                               "The face being damaged, or `None` if unavailable.")
-        .def_property_readonly("position", &PlayerBlockDamageEvent::getPosition, "The block position.");
     auto player_interact_event = py::class_<PlayerInteractEvent, PlayerEvent, ICancellable>(
         m, "PlayerInteractEvent", "Represents an event that is called when a player interacts with an object or air.");
     py::native_enum<PlayerInteractEvent::Action>(player_interact_event, "Action", "enum.Enum",

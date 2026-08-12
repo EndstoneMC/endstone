@@ -101,7 +101,6 @@ static_assert(_ITERATOR_DEBUG_LEVEL == 0,
 #include "event/player/player_animation_event.h"
 #include "event/player/player_bed_enter_event.h"
 #include "event/player/player_bed_leave_event.h"
-#include "event/player/player_block_damage_event.h"
 #include "event/player/player_bucket_entity_event.h"
 #include "event/player/player_chat_event.h"
 #include "event/player/player_command_event.h"
