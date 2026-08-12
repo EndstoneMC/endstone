@@ -86,6 +86,7 @@ __all__ = [
     "PlayerRecipeBookSettingsChangeEvent",
     "PlayerRespawnEvent",
     "PlayerRiptideEvent",
+    "PlayerSetSpawnEvent",
     "PlayerShearEntityEvent",
     "PlayerSkinChangeEvent",
     "PlayerTeleportEvent",
@@ -714,6 +715,49 @@ class PlayerShearEntityEvent(PlayerEvent, Cancellable):
 
     @drops.setter
     def drops(self, arg1: list[ItemStack]) -> None: ...
+
+class PlayerSetSpawnEvent(PlayerEvent, Cancellable):
+    """
+    Called when a player's spawn is set, either by themselves or otherwise.
+
+    Cancelling this event prevents the spawn change on supported native paths.
+
+    Note:
+        On Bedrock, only the location's block coordinates and dimension are written back. Yaw/pitch are not persisted.
+        The native respawn invalidation path does not emit this event. Cancelling this event prevents the supported
+        native setter from writing the respawn state, but `/spawnpoint` may still report success because its native
+        `Player::setRespawnPosition()` setter returns `void`.
+    """
+    class Cause(enum.Enum):
+        """
+        The cause of the spawn change.
+        """
+
+        BED = 0
+        RESPAWN_ANCHOR = 1
+        COMMAND = 2
+        PLUGIN = 3
+        UNKNOWN = 4
+
+    BED = Cause.BED
+    RESPAWN_ANCHOR = Cause.RESPAWN_ANCHOR
+    COMMAND = Cause.COMMAND
+    PLUGIN = Cause.PLUGIN
+    UNKNOWN = Cause.UNKNOWN
+    @property
+    def cause(self) -> Cause:
+        """
+        The cause of the spawn change.
+        """
+
+    @property
+    def location(self) -> Location | None:
+        """
+        The spawn location, or `None` to remove the spawn location.
+        """
+
+    @location.setter
+    def location(self, arg1: Location | None) -> None: ...
 
 class PlayerChatEvent(PlayerEvent, Cancellable):
     """

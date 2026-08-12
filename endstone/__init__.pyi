@@ -523,6 +523,23 @@ class Player(Mob):
         """
 
     @property
+    def respawn_location(self) -> Location | None:
+        """
+        The player's respawn location, or `None` if not set.
+        """
+
+    def set_respawn_location(self, location: Location | None) -> None:
+        """
+        Sets this player's respawn location.
+
+        Args:
+            location: Respawn location, or `None` to clear it. Its dimension must be loaded when set.
+
+        Note:
+            Bedrock does not persist respawn yaw/pitch.
+        """
+
+    @property
     def is_sneaking(self) -> bool:
         """
         Whether the player is in sneak mode.

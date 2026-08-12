@@ -46,6 +46,7 @@
 #include "bedrock/server/server_instance.h"
 #include "bedrock/world/actor/player/player.h"
 #include "bedrock/world/actor/provider/actor_offset.h"
+#include "bedrock/world/level/dimension/vanilla_dimensions.h"
 #include "bedrock/world/level/level.h"
 #include "endstone/block/block.h"
 #include "endstone/color_format.h"
@@ -57,9 +58,11 @@
 #include "endstone/core/inventory/item_factory.h"
 #include "endstone/core/inventory/item_stack.h"
 #include "endstone/core/inventory/player_inventory.h"
+#include "endstone/core/level/dimension.h"
 #include "endstone/core/map/map_view.h"
 #include "endstone/core/message.h"
 #include "endstone/core/network/data_packet.h"
+#include "endstone/core/player_spawn_context.h"
 #include "endstone/core/server.h"
 #include "endstone/core/skin.h"
 #include "endstone/core/util/socket_address.h"
@@ -272,6 +275,39 @@ void EndstonePlayer::kick(std::string message) const
 bool EndstonePlayer::performCommand(std::string command) const
 {
     return server_.dispatchCommand(getSelf(), command);
+}
+
+std::optional<Location> EndstonePlayer::getRespawnLocation() const
+{
+    const auto &point = getHandle().getPlayerRespawnPoint();
+    const auto &position = point.spawn_block_pos == BlockPos::MIN ? point.player_position : point.spawn_block_pos;
+    if (position == BlockPos::MIN) {
+        return std::nullopt;
+    }
+
+    const auto dimension = server_.getEndstoneLevel()->getDimension(point.dimension);
+    if (!dimension) {
+        return std::nullopt;
+    }
+    return Location{dimension, position.x, position.y, position.z};
+}
+
+void EndstonePlayer::setRespawnLocation(std::optional<Location> location)
+{
+    if (!location) {
+        PlayerSpawnContextScope scope(PlayerSpawnContext{&getHandle(), PlayerSetSpawnEvent::Cause::Plugin});
+        getHandle().setRespawnPosition(BlockPos::MIN, VanillaDimensions::Undefined);
+        return;
+    }
+
+    if (!location->isDimensionLoaded()) {
+        return;
+    }
+
+    const auto dimension = location->getDimension();
+    const auto dimension_id = static_cast<const EndstoneDimension &>(dimension.value()).getHandle().getDimensionId();
+    PlayerSpawnContextScope scope(PlayerSpawnContext{&getHandle(), PlayerSetSpawnEvent::Cause::Plugin});
+    getHandle().setRespawnPosition(BlockPos(location->getX(), location->getY(), location->getZ()), dimension_id);
 }
 
 bool EndstonePlayer::isSneaking() const

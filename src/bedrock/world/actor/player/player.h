@@ -169,7 +169,8 @@ public:
     [[nodiscard]] const std::string &getName() const;
     void setCommandPermissions(CommandPermissionLevel permission);
     void setBedRespawnPosition(const BlockPos &);
-    bool setSpawnBlockRespawnPosition(const BlockPos &, DimensionType);
+    ENDSTONE_HOOK bool setSpawnBlockRespawnPosition(const BlockPos &, DimensionType);
+    ENDSTONE_HOOK void setRespawnPosition(const BlockPos &, DimensionType);
     bool canSleep() const;
     void stopGliding();
     [[nodiscard]] const SerializedSkinRef &getSkin() const;
@@ -312,6 +313,12 @@ protected:
         BlockPos player_position;
         DimensionType dimension;
     } player_respawn_point_;
+
+    // Endstone
+public:
+    [[nodiscard]] const PlayerSpawnPoint &getPlayerRespawnPoint() const { return player_respawn_point_; }
+
+protected:
     float server_build_ratio_;
     SubClientId client_id_;
     bool interact_data_dirty_;

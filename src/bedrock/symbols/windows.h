@@ -11,7 +11,7 @@
 
 namespace endstone::runtime {
 
-static constexpr std::array<std::pair<std::string_view, std::size_t>, 65> symbols = {{
+static constexpr std::array<std::pair<std::string_view, std::size_t>, 67> symbols = {{
     {"??_7ItemStackRequestActionCraftRecipeAuto@@6B@", 176340128},
     {"BlockState::StateListNode::mHead", 211163888},
     {"Enchant::mEnchants", 211010840},
@@ -94,6 +94,8 @@ static constexpr std::array<std::pair<std::string_view, std::size_t>, 65> symbol
     // Player
     {"?completeUsingItem@Player@@QEAAXXZ", 2206272},
     {"?drop@Player@@UEAA_NAEBVItemStack@@_N@Z", 2302400},
+    {"?setRespawnPosition@Player@@QEAAXAEBVBlockPos@@UDimensionType@@@Z", 2307600},
+    {"?setSpawnBlockRespawnPosition@Player@@QEAA_NAEBVBlockPos@@UDimensionType@@@Z", 2306752},
     {"?startSleepInBed@Player@@UEAA?AW4BedSleepingResult@@AEBVBlockPos@@_NM@Z", 2182176},
     {"?take@Player@@QEAA_NAEAVActor@@HH@Z", 2251552},
     {"?teleportTo@Player@@UEAAXAEBVVec3@@_NHH1@Z", 2176288},

@@ -582,6 +582,20 @@ extra = 0
 pattern = "55 41 57 41 56 41 55 41 54 53 48 81 EC ? ? ? ? 0F 29 84 24 ? ? ? ? 89 D5 49 89 F6"
 
 [[signatures]]
+name = "_ZN6Player28setSpawnBlockRespawnPositionERK8BlockPos13DimensionType"
+relative = false
+extra = 0
+# Player::setSpawnBlockRespawnPosition(BlockPos const&, DimensionType), confirmed in the 1.26.40 IDA database.
+pattern = "55 41 57 41 56 41 54 53 48 83 EC 70 89 D5 49 89 F7"
+
+[[signatures]]
+name = "_ZN6Player18setRespawnPositionERK8BlockPos13DimensionType"
+relative = false
+extra = 0
+# Player::setRespawnPosition(BlockPos const&, DimensionType), confirmed in the 1.26.40 IDA database.
+pattern = "55 41 57 41 56 41 54 53 48 83 EC 50 48 89 FB 8B 06"
+
+[[signatures]]
 name = "_ZN6Player17completeUsingItemEv"
 relative = false
 extra = 0
