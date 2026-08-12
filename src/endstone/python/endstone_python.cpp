@@ -634,6 +634,32 @@ void init_player(py::module_ &m, py_class<Player> &player)
     Returns:
         `True` if the command was successful, `False` otherwise.
 )doc")
+        .def("open_sign", &Player::openSign, py::arg("sign"), py::arg("side"), R"doc(
+    Opens a sign editor for this player.
+
+    The sign must be placed in the same dimension as this player.
+
+    Args:
+        sign: The sign to open.
+        side: The side of the sign to edit.
+
+    Raises:
+        ValueError: If the sign is not placed or is in another dimension.
+)doc")
+        .def("open_virtual_sign", &Player::openVirtualSign, py::arg("location"), py::arg("side"), R"doc(
+    Opens a sign editor for this player at the given location.
+
+    The sign must only be placed locally for this player before calling this method. Send
+    the sign block to the player's client; this method does not create it automatically. No sign is required to be
+    placed in the dimension.
+    The dimension component of `location` is ignored; only its block coordinates are used.
+    The client may enforce distance limits to the opened position.
+    This does not trigger `PlayerOpenSignEvent`.
+
+    Args:
+        location: The block location of the sign.
+        side: The side of the sign to edit.
+)doc")
         .def_property("is_sneaking", &Player::isSneaking, &Player::setSneaking, "Whether the player is in sneak mode.")
         .def_property("is_sprinting", &Player::isSprinting, &Player::setSprinting,
                       "Whether the player is sprinting or not.")

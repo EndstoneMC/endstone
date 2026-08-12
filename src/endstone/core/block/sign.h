@@ -27,7 +27,7 @@ class EndstoneSign;
 
 class EndstoneSignSide : public SignSide {
 public:
-    EndstoneSignSide(const EndstoneSign &sign, ::SignTextSide side);
+    EndstoneSignSide(EndstoneSign &sign, ::SignTextSide side);
 
     [[nodiscard]] std::vector<std::string> getLines() const override;
     [[nodiscard]] std::string getLine(int index) const override;
@@ -38,9 +38,7 @@ public:
     void setColor(Color color) override;
 
 private:
-    [[nodiscard]] ::SignBlockActor &getSign() const;
-
-    const EndstoneSign &sign_;
+    EndstoneSign &sign_;
     ::SignTextSide side_;
 };
 
@@ -51,11 +49,25 @@ public:
     [[nodiscard]] SignSide &getSide(Side side) const override;
     [[nodiscard]] bool isWaxed() const override;
     void setWaxed(bool waxed) override;
+    bool update() override;
+    bool update(bool force) override;
+    bool update(bool force, bool apply_physics) override;
 
 private:
+    struct SideData {
+        std::string message;
+        mce::Color color;
+        bool glowing;
+    };
+
     friend class EndstoneSignSide;
 
-    [[nodiscard]] ::SignBlockActor &getSign() const { return getBlockActor<::SignBlockActor>(); }
+    [[nodiscard]] SideData &getSideData(::SignTextSide side);
+    [[nodiscard]] const SideData &getSideData(::SignTextSide side) const;
+
+    SideData front_data_;
+    SideData back_data_;
+    bool waxed_;
     mutable EndstoneSignSide front_;
     mutable EndstoneSignSide back_;
 };

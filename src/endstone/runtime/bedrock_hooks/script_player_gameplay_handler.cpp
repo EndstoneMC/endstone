@@ -23,6 +23,7 @@
 #include "bedrock/server/server_instance.h"
 #include "bedrock/world/actor/actor.h"
 #include "bedrock/world/actor/item/item_actor.h"
+#include "bedrock/world/level/block/block.h"
 #include "endstone/color_format.h"
 #include "endstone/core/block/block.h"
 #include "endstone/core/damage/damage_source.h"
@@ -31,6 +32,7 @@
 #include "endstone/core/json.h"
 #include "endstone/core/message.h"
 #include "endstone/core/player.h"
+#include "endstone/core/player_open_sign.h"
 #include "endstone/core/server.h"
 #include "endstone/event/actor/player_death_event.h"
 #include "endstone/event/player/player_dimension_change_event.h"
@@ -146,9 +148,10 @@ bool handleEvent(const PlayerDimensionChangeAfterEvent &event)
     return true;
 }
 
-bool handleEvent(const PlayerInteractWithBlockBeforeEvent &event)
+bool handleEvent(const PlayerInteractWithBlockBeforeEvent &event, bool &is_sign)
 {
     if (const auto *player = WeakEntityRef(event.player).tryUnwrap<::Player>(); player) {
+        endstone::core::clearPendingOpenSignCause(*player);
         const auto &server = endstone::core::EndstoneServer::getInstance();
         auto &block_source = player->getDimension().getBlockSourceFromMainChunkSource();
         const auto block = endstone::core::EndstoneBlock::at(block_source, BlockPos(event.block_location));
@@ -168,6 +171,15 @@ bool handleEvent(const PlayerInteractWithBlockBeforeEvent &event)
         if (e.isCancelled()) {
             return false;
         }
+        is_sign = block->getMinecraftBlock().hasProperty(BlockProperty::Sign);
+    }
+    return true;
+}
+
+bool handleEvent(const PlayerInteractWithBlockAfterEvent &event)
+{
+    if (const auto *player = WeakEntityRef(event.player).tryUnwrap<::Player>(); player) {
+        endstone::core::clearPendingOpenSignCause(*player);
     }
     return true;
 }
@@ -222,7 +234,8 @@ HandlerResult ScriptPlayerGameplayHandler::handleEvent1(const PlayerGameplayEven
                       std::is_same_v<T, Details::ValueOrRef<const PlayerFormResponseEvent>> ||
                       std::is_same_v<T, Details::ValueOrRef<const PlayerFormCloseEvent>> ||
                       std::is_same_v<T, Details::ValueOrRef<const ::PlayerRespawnEvent>> ||
-                      std::is_same_v<T, Details::ValueOrRef<const PlayerDimensionChangeAfterEvent>>) {
+                      std::is_same_v<T, Details::ValueOrRef<const PlayerDimensionChangeAfterEvent>> ||
+                      std::is_same_v<T, Details::ValueOrRef<const PlayerInteractWithBlockAfterEvent>>) {
             if (!handleEvent(arg.value())) {
                 return HandlerResult::BypassListeners;
             }
@@ -237,8 +250,22 @@ GameplayHandlerResult<CoordinatorResult> ScriptPlayerGameplayHandler::handleEven
 {
     auto visitor = [&](auto &&arg) -> GameplayHandlerResult<CoordinatorResult> {
         using T = std::decay_t<decltype(arg)>;
-        if constexpr (std::is_same_v<T, Details::ValueOrRef<const PlayerInteractWithBlockBeforeEvent>> ||
-                      std::is_same_v<T, Details::ValueOrRef<const PlayerInteractWithEntityBeforeEvent>>) {
+        if constexpr (std::is_same_v<T, Details::ValueOrRef<const PlayerInteractWithBlockBeforeEvent>>) {
+            bool is_sign = false;
+            if (!handleEvent(arg.value(), is_sign)) {
+                return {HandlerResult::BypassListeners, CoordinatorResult::Cancel};
+            }
+
+            auto result = ENDSTONE_VHOOK_CALL_ORIGINAL(&ScriptPlayerGameplayHandler::handleEvent2, this, event);
+            if (result.return_value == CoordinatorResult::Continue && is_sign) {
+                if (const auto *player = WeakEntityRef(arg.value().player).tryUnwrap<::Player>(); player) {
+                    endstone::core::setPendingOpenSignCause(*player, BlockPos(arg.value().block_location),
+                                                            endstone::core::OpenSignCause::Interact);
+                }
+            }
+            return result;
+        }
+        else if constexpr (std::is_same_v<T, Details::ValueOrRef<const PlayerInteractWithEntityBeforeEvent>>) {
             if (!handleEvent(arg.value())) {
                 return {HandlerResult::BypassListeners, CoordinatorResult::Cancel};
             }

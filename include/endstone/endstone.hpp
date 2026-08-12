@@ -115,6 +115,7 @@ static_assert(_ITERATOR_DEBUG_LEVEL == 0,
 #include "event/player/player_kick_event.h"
 #include "event/player/player_login_event.h"
 #include "event/player/player_move_event.h"
+#include "event/player/player_open_sign_event.h"
 #include "event/player/player_pickup_item_event.h"
 #include "event/player/player_portal_event.h"
 #include "event/player/player_quit_event.h"

@@ -581,6 +581,15 @@ extra = 0
 pattern = "55 41 57 41 56 41 55 41 54 53 48 81 EC ? ? ? ? 0F 29 84 24 ? ? ? ? 89 D5 49 89 F6"
 
 [[signatures]]
+name = "_ZN12ServerPlayer8openSignERK8BlockPosb"
+relative = false
+extra = 0
+# 1. anchor ServerPlayer's vtable with Player::startSleepInBed and take the openSign slot after the sleep methods
+# 2. confirm the target takes a BlockPos and bool, resolves the sign block entity, and sends the edit request
+# 3. confirm vs the old named DB
+pattern = "55 41 57 41 56 41 54 53 48 83 EC 40 89 D5 48 89 F3 49 89 FE 48 8B BF"
+
+[[signatures]]
 name = "_ZN6Player17completeUsingItemEv"
 relative = false
 extra = 0

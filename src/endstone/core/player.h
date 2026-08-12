@@ -71,6 +71,8 @@ public:
     void transfer(std::string host, int port) const override;
     void kick(std::string message) const override;
     bool performCommand(std::string command) const override;  // NOLINT(*-use-nodiscard)
+    void openSign(const Sign &sign, Sign::Side side) override;
+    void openVirtualSign(const Location &location, Sign::Side side) override;
     [[nodiscard]] bool isSneaking() const override;
     void setSneaking(bool sneak) override;
     [[nodiscard]] bool isSprinting() const override;

@@ -7,7 +7,7 @@ import typing
 
 from endstone import GameMode, Player, Skin
 from endstone.actor import Actor, Item, Mob
-from endstone.block import Block, BlockFace, BlockState
+from endstone.block import Block, BlockFace, BlockState, Sign
 from endstone.command import CommandSender
 from endstone.damage import DamageSource
 from endstone.inventory import EquipmentSlot, ItemStack
@@ -71,6 +71,7 @@ __all__ = [
     "PlayerKickEvent",
     "PlayerLoginEvent",
     "PlayerMoveEvent",
+    "PlayerOpenSignEvent",
     "PlayerPickupItemEvent",
     "PlayerPortalEvent",
     "PlayerQuitEvent",
@@ -546,6 +547,44 @@ class PlayerBedLeaveEvent(PlayerEvent):
     def bed(self) -> Block:
         """
         The bed block involved in this event.
+        """
+
+class PlayerOpenSignEvent(PlayerEvent, Cancellable):
+    """
+    Called when a player begins editing a sign's text.
+
+    Cancelling this event stops the sign editing menu from opening.
+    """
+    class Cause(enum.Enum):
+        """
+        The cause of the sign opening.
+        """
+
+        PLACE = 0
+        INTERACT = 1
+        PLUGIN = 2
+        UNKNOWN = 3
+
+    PLACE = Cause.PLACE
+    INTERACT = Cause.INTERACT
+    PLUGIN = Cause.PLUGIN
+    UNKNOWN = Cause.UNKNOWN
+    @property
+    def sign(self) -> Sign:
+        """
+        A captured state of the sign involved in this event. Changes are kept in the captured state until `Sign.update()` is called.
+        """
+
+    @property
+    def side(self) -> Sign.Side:
+        """
+        The side of the sign being opened.
+        """
+
+    @property
+    def cause(self) -> Cause:
+        """
+        The cause of the sign opening.
         """
 
 class PlayerChatEvent(PlayerEvent, Cancellable):
