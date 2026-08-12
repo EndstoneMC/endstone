@@ -19,7 +19,7 @@ class PlayerLevelChangeEvent final : public PlayerEvent {
 public:
     ENDSTONE_EVENT(PlayerLevelChangeEvent);
 
-    PlayerLevelChangeEvent(Player &player, int old_level, int new_level)
+    PlayerLevelChangeEvent(const NotNull<Player> &player, int old_level, int new_level)
         : PlayerEvent(player), old_level_(old_level), new_level_(new_level)
     {
     }

@@ -110,8 +110,8 @@ bool Player::take(Actor &actor, int unknown, int favored_slot)
     }
     else if (actor.isType(ActorType::Arrow)) {
         const auto &server = endstone::core::EndstoneServer::getInstance();
-        auto &player = getEndstoneActor<endstone::core::EndstonePlayer>();
-        auto &arrow = actor.getEndstoneActor();
+        auto player = getEndstoneActor<endstone::core::EndstonePlayer>();
+        auto arrow = actor.getEndstoneActor();
         endstone::PlayerPickupArrowEvent e(player, arrow);
         server.getPluginManager().callEvent(e);
         if (e.isCancelled()) {

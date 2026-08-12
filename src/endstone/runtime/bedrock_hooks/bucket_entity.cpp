@@ -30,7 +30,7 @@ namespace {
 bool callBucketEntityEvent(const endstone::runtime::ActorInteractionContext &interaction, ::ItemStack &entity_bucket)
 {
     const auto &server = endstone::core::EndstoneServer::getInstance();
-    auto &player = interaction.player->getEndstoneActor<endstone::core::EndstonePlayer>();
+    auto player = interaction.player->getEndstoneActor<endstone::core::EndstonePlayer>();
     endstone::PlayerBucketEntityEvent event{
         player,
         interaction.target->getEndstoneActor(),

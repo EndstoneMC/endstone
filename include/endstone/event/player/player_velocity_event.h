@@ -17,7 +17,10 @@ class PlayerVelocityEvent final : public PlayerEvent {
 public:
     ENDSTONE_EVENT(PlayerVelocityEvent);
 
-    explicit PlayerVelocityEvent(Player &player, Vector velocity) : PlayerEvent(player), velocity_(velocity) {}
+    explicit PlayerVelocityEvent(const NotNull<Player> &player, Vector velocity)
+        : PlayerEvent(player), velocity_(velocity)
+    {
+    }
 
     /**
      * Gets the velocity vector that will be sent to the player.

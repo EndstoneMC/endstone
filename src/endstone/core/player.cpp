@@ -716,7 +716,7 @@ bool EndstonePlayer::handlePacket(Packet &packet)
         book_edit::applyBookEditOperation(*new_book_meta, pk.payload.operation);
         const auto is_signing = std::holds_alternative<BookEditAction::Finalize>(pk.payload.operation);
 
-        PlayerEditBookEvent event{*this, slot, *previous_book_meta, *new_book_meta, is_signing};
+        PlayerEditBookEvent event{getSelf(), slot, *previous_book_meta, *new_book_meta, is_signing};
         getServer().getPluginManager().callEvent(event);
         if (event.isCancelled()) {
             return false;
@@ -747,10 +747,10 @@ bool EndstonePlayer::handlePacket(Packet &packet)
         case PlayerActionType::CreativeDestroyBlock: {
             const auto &block_position = pk.payload.pos;
             const auto block =
-                getDimension().getBlockAt(block_position.x, block_position.y, block_position.z);
+                getDimension()->getBlockAt(block_position.x, block_position.y, block_position.z);
             const Vector position{block_position.x, block_position.y, block_position.z};
             PlayerBlockDamageEvent e{
-                *this,
+                getSelf(),
                 PlayerBlockDamageEvent::Action::Creative,
                 getInventory().getItemInMainHand(),
                 block.get(),
@@ -765,13 +765,13 @@ bool EndstonePlayer::handlePacket(Packet &packet)
                 std::unique_ptr<Block> bed;
                 if (getHandle().hasBedPosition()) {
                     const auto bed_position = getHandle().getBedPosition();
-                    bed = getDimension().getBlockAt(bed_position.x, bed_position.y, bed_position.z);
+                    bed = getDimension()->getBlockAt(bed_position.x, bed_position.y, bed_position.z);
                 }
                 else {
-                    bed = getDimension().getBlockAt(getLocation());
+                    bed = getDimension()->getBlockAt(getLocation());
                 }
 
-                PlayerBedLeaveEvent e(*this, *bed);
+                PlayerBedLeaveEvent e(getSelf(), *bed);
                 getServer().getPluginManager().callEvent(e);
             }
             break;
@@ -818,7 +818,7 @@ bool EndstonePlayer::handlePacket(Packet &packet)
         auto &pk = static_cast<AnimatePacket &>(packet);
         if (pk.payload.runtime_id.raw_id == getHandle().getRuntimeID().raw_id &&
             pk.payload.action == AnimatePacketPayload::Action::Swing) {
-            PlayerAnimationEvent e(*this, PlayerAnimationType::ArmSwing);
+            PlayerAnimationEvent e(getSelf(), PlayerAnimationType::ArmSwing);
             getServer().getPluginManager().callEvent(e);
         }
         return true;
@@ -856,7 +856,7 @@ bool EndstonePlayer::handlePacket(Packet &packet)
         }
 
         PlayerRecipeBookSettingsChangeEvent e{
-            *this,
+            getSelf(),
             PlayerRecipeBookSettingsChangeEvent::RecipeBookType::Crafting,
             options.layout_inv != InventoryLayout::InventoryOnly,
             options.filtering,
@@ -920,39 +920,39 @@ bool EndstonePlayer::handlePacket(Packet &packet)
         }
         if (pk.getInput(PlayerAuthInputPacket::InputData::StartGliding) && !getHandle().isGliding() &&
             !getHandle().isInWater()) {
-            PlayerToggleGlideEvent e(*this, true);
+            PlayerToggleGlideEvent e(getSelf(), true);
             getServer().getPluginManager().callEvent(e);
         }
         else if (pk.getInput(PlayerAuthInputPacket::InputData::StopGliding) && getHandle().isGliding()) {
-            PlayerToggleGlideEvent e(*this, false);
+            PlayerToggleGlideEvent e(getSelf(), false);
             getServer().getPluginManager().callEvent(e);
         }
         if (pk.getInput(PlayerAuthInputPacket::InputData::StartFlying) && !getHandle().isFlying()) {
-            PlayerToggleFlightEvent e(*this, true);
+            PlayerToggleFlightEvent e(getSelf(), true);
             getServer().getPluginManager().callEvent(e);
         }
         else if (pk.getInput(PlayerAuthInputPacket::InputData::StopFlying) && getHandle().isFlying()) {
-            PlayerToggleFlightEvent e(*this, false);
+            PlayerToggleFlightEvent e(getSelf(), false);
             getServer().getPluginManager().callEvent(e);
         }
         if (pk.getInput(PlayerAuthInputPacket::InputData::StartCrawling) && !getHandle().isCrawling()) {
-            PlayerToggleCrawlEvent e(*this, true);
+            PlayerToggleCrawlEvent e(getSelf(), true);
             getServer().getPluginManager().callEvent(e);
         }
         else if (pk.getInput(PlayerAuthInputPacket::InputData::StopCrawling) && getHandle().isCrawling()) {
-            PlayerToggleCrawlEvent e(*this, false);
+            PlayerToggleCrawlEvent e(getSelf(), false);
             getServer().getPluginManager().callEvent(e);
         }
         if (pk.getInput(PlayerAuthInputPacket::InputData::StartSpinAttack)) {
-            PlayerRiptideEvent e(*this, true);
+            PlayerRiptideEvent e(getSelf(), true);
             getServer().getPluginManager().callEvent(e);
         }
         else if (pk.getInput(PlayerAuthInputPacket::InputData::StopSpinAttack)) {
-            PlayerRiptideEvent e(*this, false);
+            PlayerRiptideEvent e(getSelf(), false);
             getServer().getPluginManager().callEvent(e);
         }
         if (input_changed) {
-            PlayerInputEvent e(*this, input);
+            PlayerInputEvent e(getSelf(), input);
             getServer().getPluginManager().callEvent(e);
         }
 
@@ -995,7 +995,7 @@ bool EndstonePlayer::handlePacket(Packet &packet)
                 continue;
             }
 
-            const auto block = getDimension().getBlockAt(damage_position.x, damage_position.y, damage_position.z);
+            const auto block = getDimension()->getBlockAt(damage_position.x, damage_position.y, damage_position.z);
             const Vector position{damage_position.x, damage_position.y, damage_position.z};
 
             const auto item = getInventory().getItemInMainHand();
@@ -1005,7 +1005,7 @@ bool EndstonePlayer::handlePacket(Packet &packet)
             const auto block_face =
                 has_action_face ? EndstoneBlockFace::fromBedrockFacing(action.facing)
                                 : block_damage_face_;
-            PlayerBlockDamageEvent e{*this, damage_action, item, block.get(), block_face, position};
+            PlayerBlockDamageEvent e{getSelf(), damage_action, item, block.get(), block_face, position};
             getServer().getPluginManager().callEvent(e);
             const auto can_cancel = action.player_action_type == PlayerActionType::StartDestroyBlock ||
                                     action.player_action_type == PlayerActionType::ContinueDestroyBlock;
@@ -1016,7 +1016,7 @@ bool EndstonePlayer::handlePacket(Packet &packet)
 
             if (action.player_action_type == PlayerActionType::StartDestroyBlock && block_face) {
                 PlayerInteractEvent interact_event{
-                    *this,
+                    getSelf(),
                     PlayerInteractEvent::Action::LeftClickBlock,
                     item,
                     block.get(),

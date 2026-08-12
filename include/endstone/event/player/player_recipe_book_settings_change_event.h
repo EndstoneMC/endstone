@@ -35,7 +35,7 @@ public:
         Smoker,
     };
 
-    PlayerRecipeBookSettingsChangeEvent(Player &player, RecipeBookType recipe_book_type, bool is_open,
+    PlayerRecipeBookSettingsChangeEvent(const NotNull<Player> &player, RecipeBookType recipe_book_type, bool is_open,
                                         bool is_filtering)
         : PlayerEvent(player), recipe_book_type_(recipe_book_type), is_open_(is_open), is_filtering_(is_filtering)
     {

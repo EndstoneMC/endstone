@@ -32,7 +32,8 @@ class PlayerBucketEntityEvent final : public Cancellable<PlayerEvent> {
 public:
     ENDSTONE_EVENT(PlayerBucketEntityEvent);
 
-    PlayerBucketEntityEvent(Player &player, Actor &entity, ItemStack entity_bucket, EquipmentSlot hand,
+    PlayerBucketEntityEvent(const NotNull<Player> &player, const NotNull<Actor> &entity, ItemStack entity_bucket,
+                            EquipmentSlot hand,
                             ItemStack original_bucket)
         : Cancellable(player),
           entity_(entity),
@@ -47,7 +48,7 @@ public:
      *
      * @return entity being captured
      */
-    [[nodiscard]] Actor &getEntity() const { return entity_; }
+    [[nodiscard]] const NotNull<Actor> &getEntity() const { return entity_; }
 
     /**
      * Gets the bucket item that will contain the captured entity.
@@ -78,7 +79,7 @@ public:
     [[nodiscard]] const ItemStack &getOriginalBucket() const { return original_bucket_; }
 
 private:
-    Actor &entity_;
+    NotNull<Actor> entity_;
     ItemStack entity_bucket_;
     EquipmentSlot hand_;
     ItemStack original_bucket_;

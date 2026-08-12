@@ -30,7 +30,7 @@ class PlayerAnimationEvent final : public PlayerEvent {
 public:
     ENDSTONE_EVENT(PlayerAnimationEvent);
 
-    PlayerAnimationEvent(Player &player, PlayerAnimationType animation_type)
+    PlayerAnimationEvent(const NotNull<Player> &player, PlayerAnimationType animation_type)
         : PlayerEvent(player), animation_type_(animation_type)
     {
     }

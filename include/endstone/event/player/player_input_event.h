@@ -26,7 +26,7 @@ class PlayerInputEvent final : public PlayerEvent {
 public:
     ENDSTONE_EVENT(PlayerInputEvent)
 
-    explicit PlayerInputEvent(Player &player, Input input) : PlayerEvent(player), input_(input) {}
+    explicit PlayerInputEvent(const NotNull<Player> &player, Input input) : PlayerEvent(player), input_(input) {}
 
     /**
      * Gets the new input received from this player.

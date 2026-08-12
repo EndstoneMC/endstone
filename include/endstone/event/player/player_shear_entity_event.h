@@ -36,8 +36,8 @@ public:
      * @param item item used to shear the entity
      * @param drops items dropped when the entity is sheared
      */
-    PlayerShearEntityEvent(Player &player, Actor &entity, EquipmentSlot hand, ItemStack item,
-                           std::vector<ItemStack> drops)
+    PlayerShearEntityEvent(const NotNull<Player> &player, const NotNull<Actor> &entity, EquipmentSlot hand,
+                           ItemStack item, std::vector<ItemStack> drops)
         : Cancellable(player), entity_(entity), hand_(hand), item_(std::move(item)), drops_(std::move(drops))
     {
     }
@@ -47,7 +47,7 @@ public:
      *
      * @return entity that was sheared
      */
-    [[nodiscard]] Actor &getEntity() const { return entity_; }
+    [[nodiscard]] const NotNull<Actor> &getEntity() const { return entity_; }
 
     /**
      * Gets the hand used to shear the entity.
@@ -78,7 +78,7 @@ public:
     void setDrops(std::vector<ItemStack> drops) { drops_ = std::move(drops); }
 
 private:
-    Actor &entity_;
+    NotNull<Actor> entity_;
     EquipmentSlot hand_;
     ItemStack item_;
     std::vector<ItemStack> drops_;

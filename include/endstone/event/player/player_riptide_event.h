@@ -25,7 +25,7 @@ class PlayerRiptideEvent final : public PlayerEvent {
 public:
     ENDSTONE_EVENT(PlayerRiptideEvent)
 
-    explicit PlayerRiptideEvent(Player &player, bool riptiding)
+    explicit PlayerRiptideEvent(const NotNull<Player> &player, bool riptiding)
         : PlayerEvent(player), riptiding_(riptiding)
     {
     }

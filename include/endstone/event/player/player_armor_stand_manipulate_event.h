@@ -23,7 +23,8 @@ class PlayerArmorStandManipulateEvent final : public PlayerInteractActorEvent {
 public:
     ENDSTONE_EVENT(PlayerArmorStandManipulateEvent);
 
-    PlayerArmorStandManipulateEvent(Player &player, Actor &right_clicked, ItemStack armor_stand_item,
+    PlayerArmorStandManipulateEvent(const NotNull<Player> &player, const NotNull<Actor> &right_clicked,
+                                    ItemStack armor_stand_item,
                                     ItemStack player_item, EquipmentSlot hand, EquipmentSlot slot)
         : PlayerInteractActorEvent(player, right_clicked), armor_stand_item_(std::move(armor_stand_item)),
           player_item_(std::move(player_item)), hand_(hand), slot_(slot)

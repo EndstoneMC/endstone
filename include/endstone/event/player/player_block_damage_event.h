@@ -64,7 +64,7 @@ public:
         Creative,
     };
 
-    PlayerBlockDamageEvent(Player &player, Action action, std::optional<ItemStack> item, Block *block,
+    PlayerBlockDamageEvent(const NotNull<Player> &player, Action action, std::optional<ItemStack> item, Block *block,
                            std::optional<BlockFace> block_face, Vector position)
         : Cancellable(player), action_(action), item_(std::move(item)), block_(block), block_face_(block_face),
           position_(std::move(position))

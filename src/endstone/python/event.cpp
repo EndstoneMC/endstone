@@ -264,7 +264,7 @@ void init_event(py::module_ &m, py::class_<Event, PyEvent> &event)
                                "The bed block involved in this event.");
     py::class_<PlayerBucketEntityEvent, PlayerEvent, ICancellable>(
         m, "PlayerBucketEntityEvent", "Called when a player captures an entity with a bucket.")
-        .def_property_readonly("entity", &PlayerBucketEntityEvent::getEntity, py::return_value_policy::reference,
+        .def_property_readonly("entity", &PlayerBucketEntityEvent::getEntity,
                                "The entity being captured.")
         .def_property("entity_bucket", &PlayerBucketEntityEvent::getEntityBucket,
                       &PlayerBucketEntityEvent::setEntityBucket,
@@ -286,7 +286,7 @@ void init_event(py::module_ &m, py::class_<Event, PyEvent> &event)
                                "The player's level after the change.");
     py::class_<PlayerPickupArrowEvent, PlayerEvent, ICancellable>(
         m, "PlayerPickupArrowEvent", "Called when a player picks up an arrow from the ground.")
-        .def_property_readonly("arrow", &PlayerPickupArrowEvent::getArrow, py::return_value_policy::reference,
+        .def_property_readonly("arrow", &PlayerPickupArrowEvent::getArrow,
                                "The arrow picked up by the player.");
     auto player_recipe_book_settings_change_event = py::class_<PlayerRecipeBookSettingsChangeEvent, PlayerEvent>(
         m, "PlayerRecipeBookSettingsChangeEvent", "Called when a player changes recipe book settings.");
@@ -308,7 +308,7 @@ void init_event(py::module_ &m, py::class_<Event, PyEvent> &event)
 
     py::class_<PlayerShearEntityEvent, PlayerEvent, ICancellable>(
         m, "PlayerShearEntityEvent", "Called when a player shears an entity.")
-        .def_property_readonly("entity", &PlayerShearEntityEvent::getEntity, py::return_value_policy::reference,
+        .def_property_readonly("entity", &PlayerShearEntityEvent::getEntity,
                                "The entity that was sheared.")
         .def_property_readonly("hand", &PlayerShearEntityEvent::getHand, "The hand used to shear the entity.")
         .def_property_readonly("item", &PlayerShearEntityEvent::getItem, "The item used to shear the entity.")
@@ -423,7 +423,7 @@ void init_event(py::module_ &m, py::class_<Event, PyEvent> &event)
                                "The new input received from this player.");
     py::class_<PlayerInteractActorEvent, PlayerEvent, ICancellable>(
         m, "PlayerInteractActorEvent", "Represents an event that is called when a player right-clicks an actor.")
-        .def_property_readonly("actor", &PlayerInteractActorEvent::getActor, py::return_value_policy::reference,
+        .def_property_readonly("actor", &PlayerInteractActorEvent::getActor,
                                "The actor that was right-clicked by the player.");
     py::class_<PlayerArmorStandManipulateEvent, PlayerInteractActorEvent>(
         m, "PlayerArmorStandManipulateEvent", "Called when a player interacts with an armor stand.")
