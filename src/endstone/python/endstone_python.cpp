@@ -634,6 +634,17 @@ void init_player(py::module_ &m, py_class<Player> &player)
     Returns:
         `True` if the command was successful, `False` otherwise.
 )doc")
+        .def_property_readonly("respawn_location", &Player::getRespawnLocation,
+                               "The player's respawn location, or `None` if not set.")
+        .def("set_respawn_location", &Player::setRespawnLocation, py::arg("location").noconvert(), R"doc(
+    Sets this player's respawn location.
+
+    Args:
+        location: Respawn location, or `None` to clear it. Its dimension must be loaded when set.
+
+    Note:
+        Bedrock does not persist respawn yaw/pitch.
+)doc")
         .def_property("is_sneaking", &Player::isSneaking, &Player::setSneaking, "Whether the player is in sneak mode.")
         .def_property("is_sprinting", &Player::isSprinting, &Player::setSprinting,
                       "Whether the player is sprinting or not.")

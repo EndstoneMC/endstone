@@ -17,6 +17,7 @@
 #include <algorithm>
 #include <cctype>
 #include <format>
+#include <optional>
 #include <ranges>
 #include <string>
 #include <unordered_map>
@@ -44,6 +45,7 @@
 #include "endstone/core/command/minecraft_command_wrapper.h"
 #include "endstone/core/devtools/devtools_command.h"
 #include "endstone/core/permissions/default_permissions.h"
+#include "endstone/core/player_spawn_context.h"
 #include "endstone/core/server.h"
 
 namespace endstone::core {
@@ -75,6 +77,11 @@ bool EndstoneCommandMap::dispatch(const NotNull<CommandSender> &sender, std::str
     if (!command) {
         sender->sendErrorMessage(Translatable("commands.generic.unknown", {args[0]}));
         return false;
+    }
+
+    std::optional<PlayerSpawnContextScope> spawn_context_scope;
+    if (!custom_commands_.contains(name) && name == "spawnpoint") {
+        spawn_context_scope.emplace(PlayerSpawnContext{nullptr, PlayerSetSpawnEvent::Cause::Command});
     }
 
     if (!custom_commands_.contains(name)) {

@@ -16,6 +16,7 @@
 
 #include <functional>
 #include <memory>
+#include <optional>
 #include <unordered_map>
 #include <unordered_set>
 #include <variant>
@@ -71,6 +72,8 @@ public:
     void transfer(std::string host, int port) const override;
     void kick(std::string message) const override;
     bool performCommand(std::string command) const override;  // NOLINT(*-use-nodiscard)
+    [[nodiscard]] std::optional<Location> getRespawnLocation() const override;
+    void setRespawnLocation(std::optional<Location> location) override;
     [[nodiscard]] bool isSneaking() const override;
     void setSneaking(bool sneak) override;
     [[nodiscard]] bool isSprinting() const override;

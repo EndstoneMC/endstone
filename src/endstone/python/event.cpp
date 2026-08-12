@@ -257,6 +257,31 @@ void init_event(py::module_ &m, py::class_<Event, PyEvent> &event)
     py::class_<PlayerBedLeaveEvent, PlayerEvent>(m, "PlayerBedLeaveEvent", "Called when a player is leaving a bed.")
         .def_property_readonly("bed", &PlayerBedLeaveEvent::getBed, py::return_value_policy::reference,
                                "The bed block involved in this event.");
+    auto player_set_spawn_event = py::class_<PlayerSetSpawnEvent, PlayerEvent, ICancellable>(
+        m, "PlayerSetSpawnEvent", R"doc(
+    Called when a player's spawn is set, either by themselves or otherwise.
+
+    Cancelling this event prevents the spawn change on supported native paths.
+
+    Note:
+        On Bedrock, only the location's block coordinates and dimension are written back. Yaw/pitch are not persisted.
+        The native respawn invalidation path does not emit this event. Cancelling this event prevents the supported
+        native setter from writing the respawn state, but `/spawnpoint` may still report success because its native
+        `Player::setRespawnPosition()` setter returns `void`.
+)doc");
+    py::native_enum<PlayerSetSpawnEvent::Cause>(player_set_spawn_event, "Cause", "enum.Enum",
+        "The cause of the spawn change.")
+        .value("BED", PlayerSetSpawnEvent::Cause::Bed)
+        .value("RESPAWN_ANCHOR", PlayerSetSpawnEvent::Cause::RespawnAnchor)
+        .value("COMMAND", PlayerSetSpawnEvent::Cause::Command)
+        .value("PLUGIN", PlayerSetSpawnEvent::Cause::Plugin)
+        .value("UNKNOWN", PlayerSetSpawnEvent::Cause::Unknown)
+        .export_values()
+        .finalize();
+    player_set_spawn_event
+        .def_property_readonly("cause", &PlayerSetSpawnEvent::getCause, "The cause of the spawn change.")
+        .def_property("location", &PlayerSetSpawnEvent::getLocation, &PlayerSetSpawnEvent::setLocation,
+                      "The spawn location, or `None` to remove the spawn location.");
     py::class_<PlayerChatEvent, PlayerEvent, ICancellable>(m, "PlayerChatEvent",
                                                            "Called when a player sends a chat message.")
         .def_property("message", &PlayerChatEvent::getMessage, &PlayerChatEvent::setMessage,
