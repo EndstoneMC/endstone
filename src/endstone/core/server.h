@@ -71,6 +71,11 @@ public:
     void loadPlugins();
     void enablePlugins(PluginLoadOrder type);
     void disablePlugins() const;
+    bool loadPlugin(const std::string &name);
+    bool unloadPlugin(const std::string &name, bool force = false);
+    bool reloadPlugin(const std::string &name);
+    void loadAllPlugins();
+    void unloadAllPlugins();
 
     [[nodiscard]] Scheduler &getScheduler() const override;
     [[nodiscard]] EndstoneScheduler &getEndstoneScheduler() const;

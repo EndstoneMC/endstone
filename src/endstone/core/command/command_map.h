@@ -21,6 +21,10 @@
 #include "endstone/command/command.h"
 #include "endstone/command/command_map.h"
 
+namespace endstone {
+class Plugin;
+}
+
 namespace endstone::core {
 
 class EndstoneServer;
@@ -32,11 +36,14 @@ public:
     void clearCommands() override;
     [[nodiscard]] std::shared_ptr<Command> getCommand(std::string name) const override;
     [[nodiscard]] ::MinecraftCommands &getHandle() const;
+    void registerPluginCommands(Plugin &plugin);
+    void unregisterPluginCommands(Plugin &plugin);
 
 private:
     friend class EndstoneServer;
     void setDefaultCommands();
     void setPluginCommands();
+    void refreshPluginNames();
     void unregisterCommand(std::string name);
     void clearEnumValues(const std::string &enum_name);
     void removeEnumValueFromExisting(const std::string &enum_name, const std::string &enum_value);

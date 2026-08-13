@@ -145,6 +145,13 @@ public:
     }
 
     /**
+     * Removes the specified plugin, freeing the instance owned by this loader.
+     *
+     * @param plugin Plugin to unload
+     */
+    virtual void unloadPlugin(Plugin &plugin) {}
+
+    /**
      * Retrieves the Server object associated with the PluginLoader.
      *
      * This function returns a reference to the Server object that the PluginLoader is associated with.

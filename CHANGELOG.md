@@ -9,6 +9,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Added
 
+- Added `/load`, `/unload`, and `/reload <plugin>` commands to load, unload, and reload individual plugins at runtime without restarting the server. `/load` and `/unload` without arguments load or unload all plugins.
 - Added `Player.send_action_bar()` for sending a message above the player's hotbar.
 - Added `/restart` command (console-only) that gracefully restarts the server without manually relaunching.
 - Added support for custom Python events with optional cancellation.

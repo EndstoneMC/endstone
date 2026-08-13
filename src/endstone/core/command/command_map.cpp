@@ -18,6 +18,7 @@
 #include <cctype>
 #include <format>
 #include <ranges>
+#include <set>
 #include <string>
 #include <unordered_map>
 #include <vector>
@@ -32,6 +33,7 @@
 #include "endstone/core/command/defaults/ban_command.h"
 #include "endstone/core/command/defaults/ban_ip_command.h"
 #include "endstone/core/command/defaults/ban_list_command.h"
+#include "endstone/core/command/defaults/load_command.h"
 #include "endstone/core/command/defaults/pardon_command.h"
 #include "endstone/core/command/defaults/pardon_ip_command.h"
 #include "endstone/core/command/defaults/plugins_command.h"
@@ -39,6 +41,7 @@
 #include "endstone/core/command/defaults/restart_command.h"
 #include "endstone/core/command/defaults/seed_command.h"
 #include "endstone/core/command/defaults/status_command.h"
+#include "endstone/core/command/defaults/unload_command.h"
 #include "endstone/core/command/defaults/version_command.h"
 #include "endstone/core/command/minecraft_command_adapter.h"
 #include "endstone/core/command/minecraft_command_wrapper.h"
@@ -149,6 +152,7 @@ void EndstoneCommandMap::setDefaultCommands()
     registerCommand(std::make_unique<BanCommand>());
     registerCommand(std::make_unique<BanIpCommand>());
     registerCommand(std::make_unique<BanListCommand>());
+    registerCommand(std::make_unique<LoadCommand>());
     registerCommand(std::make_unique<PardonCommand>());
     registerCommand(std::make_unique<PardonIpCommand>());
     registerCommand(std::make_unique<PluginsCommand>());
@@ -156,6 +160,7 @@ void EndstoneCommandMap::setDefaultCommands()
     registerCommand(std::make_unique<RestartCommand>());
     registerCommand(std::make_unique<SeedCommand>());
     registerCommand(std::make_unique<StatusCommand>());
+    registerCommand(std::make_unique<UnloadCommand>());
     registerCommand(std::make_unique<VersionCommand>());
 #ifdef ENDSTONE_WITH_DEVTOOLS
     registerCommand(std::make_unique<DevToolsCommand>());
@@ -164,17 +169,55 @@ void EndstoneCommandMap::setDefaultCommands()
 
 void EndstoneCommandMap::setPluginCommands()
 {
-    const auto plugins = server_.getPluginManager().getPlugins();
+    for (auto *plugin : server_.getPluginManager().getPlugins()) {
+        for (const auto &command : plugin->getDescription().getCommands()) {
+            registerCommand(std::make_unique<PluginCommand>(command, *plugin));
+        }
+    }
+    refreshPluginNames();
+}
+
+void EndstoneCommandMap::registerPluginCommands(Plugin &plugin)
+{
+    for (const auto &command : plugin.getDescription().getCommands()) {
+        registerCommand(std::make_unique<PluginCommand>(command, plugin));
+    }
+    refreshPluginNames();
+}
+
+void EndstoneCommandMap::unregisterPluginCommands(Plugin &plugin)
+{
+    std::lock_guard lock(mutex_);
+
+    std::set<std::string> names;
+    for (const auto &[key, command] : custom_commands_) {
+        if (command->is<PluginCommand>()) {
+            const auto *plugin_command = static_cast<const PluginCommand *>(command.get());
+            if (&plugin_command->getPlugin() == &plugin) {
+                names.emplace(plugin_command->getName());
+            }
+        }
+    }
+
+    for (const auto &name : names) {
+        if (auto it = custom_commands_.find(name); it != custom_commands_.end()) {
+            auto command = it->second;
+            command->unregisterFrom(*this);
+            unregisterCommand(name);
+            std::erase_if(custom_commands_, [&command](const auto &entry) { return entry.second == command; });
+        }
+    }
+
+    refreshPluginNames();
+}
+
+void EndstoneCommandMap::refreshPluginNames()
+{
     std::vector<std::string> plugin_names;
-    for (auto *plugin : plugins) {
+    for (const auto *plugin : server_.getPluginManager().getPlugins()) {
         auto name = plugin->getName();
         std::ranges::transform(name, name.begin(), [](unsigned char c) { return std::tolower(c); });
         plugin_names.emplace_back(name);
-
-        auto commands = plugin->getDescription().getCommands();
-        for (const auto &command : commands) {
-            registerCommand(std::make_unique<PluginCommand>(command, *plugin));
-        }
     }
     clearEnumValues("PluginName");
     getHandle().getRegistry().addEnumValues("PluginName", plugin_names);

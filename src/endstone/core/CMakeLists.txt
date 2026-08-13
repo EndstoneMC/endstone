@@ -64,6 +64,7 @@ add_library(endstone_core
         command/defaults/ban_command.cpp
         command/defaults/ban_ip_command.cpp
         command/defaults/ban_list_command.cpp
+        command/defaults/load_command.cpp
         command/defaults/pardon_command.cpp
         command/defaults/pardon_ip_command.cpp
         command/defaults/plugins_command.cpp
@@ -71,6 +72,7 @@ add_library(endstone_core
         command/defaults/restart_command.cpp
         command/defaults/seed_command.cpp
         command/defaults/status_command.cpp
+        command/defaults/unload_command.cpp
         command/defaults/version_command.cpp
         damage/damage_source.cpp
         enchantments/enchantment.cpp

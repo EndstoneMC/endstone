@@ -118,6 +118,8 @@ Plugin *CppPluginLoader::loadPlugin(std::string file)
                      "API version: {}, but the server has an incompatible API version: {}.",
                      plugin->getDescription().getName(), plugin->getDescription().getAPIVersion(),
                      supported_api_version);
+        delete plugin;
+        CLOSE_LIBRARY(module);
         return nullptr;
     }
 
@@ -137,6 +139,16 @@ std::vector<std::string> CppPluginLoader::getPluginFileFilters() const
 #elif __linux__
     return {"\\.so$"};
 #endif
+}
+
+void CppPluginLoader::unloadPlugin(Plugin &plugin)
+{
+    for (auto it = plugins_.begin(); it != plugins_.end(); ++it) {
+        if (it->get() == &plugin) {
+            plugins_.erase(it);
+            return;
+        }
+    }
 }
 
 }  // namespace endstone::core

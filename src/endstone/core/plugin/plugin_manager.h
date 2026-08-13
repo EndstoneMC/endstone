@@ -56,6 +56,7 @@ public:
     void disablePlugin(Plugin &plugin) override;
     void disablePlugins() override;
     void clearPlugins() override;
+    bool unloadPlugin(const std::string &name, bool force = false) override;
 
     /** Event system */
     void callEvent(Event &event) override;
@@ -105,6 +106,7 @@ private:
     void initPlugin(Plugin &plugin, PluginLoader &loader, const std::filesystem::path &base_folder);
     void calculatePermissionDefault(Permission &perm);
     void dirtyPermissibles(PermissionLevel level) const;
+    void removePluginPermissions(Plugin &plugin);
     [[nodiscard]] PluginLoader *resolvePluginLoader(const std::string &file) const;
     Server &server_;
     std::vector<std::unique_ptr<PluginLoader>> plugin_loaders_;

@@ -79,6 +79,16 @@ class PluginLoader:
             plugin: Plugin to disable.
         """
 
+    def unload_plugin(self, plugin: Plugin) -> None:
+        """
+        Unloads the specified plugin.
+
+        Attempting to unload a plugin that is not loaded will have no effect.
+
+        Args:
+            plugin: Plugin to unload.
+        """
+
     @property
     def plugin_file_filters(self) -> list[str]:
         """
@@ -512,6 +522,18 @@ class PluginManager:
     def clear_plugins(self) -> None:
         """
         Disables and removes all plugins.
+        """
+
+    def unload_plugin(self, name: str, force: bool = False) -> bool:
+        """
+        Unloads the plugin with the given name.
+
+        Args:
+            name: Name of the plugin to unload.
+            force: Whether to unload even if another plugin depends on it.
+
+        Returns:
+            `True` if the plugin was unloaded, otherwise `False`.
         """
 
     def call_event(self, event: Event) -> None:

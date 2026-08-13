@@ -32,6 +32,7 @@ public:
     [[nodiscard]] std::vector<std::string> getPluginFileFilters() const override;
     void enablePlugin(Plugin &plugin) const override;
     void disablePlugin(Plugin &plugin) const override;
+    void unloadPlugin(Plugin &plugin) override;
 
 private:
     [[nodiscard]] PluginLoader *pimpl() const;

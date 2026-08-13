@@ -67,6 +67,11 @@ void PythonPluginLoader::disablePlugin(Plugin &plugin) const
     pimpl()->disablePlugin(plugin);
 }
 
+void PythonPluginLoader::unloadPlugin(Plugin &plugin)
+{
+    pimpl()->unloadPlugin(plugin);
+}
+
 PluginLoader *PythonPluginLoader::pimpl() const
 {
     return obj_.cast<PluginLoader *>();
