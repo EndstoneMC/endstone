@@ -36,6 +36,7 @@ bool LoadCommand::execute(const NotNull<CommandSender> &sender, const std::vecto
 
     auto &server = EndstoneServer::getInstance();
     if (args.empty()) {
+        server.unloadAllPlugins();
         server.loadAllPlugins();
         sender->sendMessage("All plugins loaded.");
         return true;
