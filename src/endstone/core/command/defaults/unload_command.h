@@ -1,4 +1,4 @@
-// Copyright (c) 2023, The Endstone Project. (https://endstone.dev) All Rights Reserved.
+// Copyright (c) 2024, The Endstone Project. (https://endstone.dev) All Rights Reserved.
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -14,24 +14,14 @@
 
 #pragma once
 
-#include <memory>
-#include <string>
-#include <vector>
-
-#include "endstone/plugin/plugin_loader.h"
+#include "endstone/core/command/endstone_command.h"
 
 namespace endstone::core {
 
-class CppPluginLoader : public PluginLoader {
+class UnloadCommand : public EndstoneCommand {
 public:
-    explicit CppPluginLoader(Server &server);
-    [[nodiscard]] Plugin *loadPlugin(std::string file) override;
-    [[nodiscard]] std::vector<std::string> getPluginFileFilters() const override;
-    void unloadPlugin(Plugin &plugin) override;
-
-private:
-    std::filesystem::path prefix_;
-    std::vector<std::unique_ptr<Plugin, std::function<void(Plugin *)>>> plugins_;
+    UnloadCommand();
+    bool execute(const NotNull<CommandSender> &sender, const std::vector<std::string> &args) const override;
 };
 
 }  // namespace endstone::core

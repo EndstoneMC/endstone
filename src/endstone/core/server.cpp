@@ -21,6 +21,7 @@
 #include <fstream>
 #include <iostream>
 #include <memory>
+#include <optional>
 #include <ranges>
 #include <regex>
 #include <sstream>
@@ -132,6 +133,37 @@ std::string readContentKey(const ResourceLocation &location, Logger &logger)
         logger.error("Could not open encryption key file: '{}'. {}.", path, e.what());
         return {};
     }
+}
+
+std::optional<fs::path> resolvePluginFile(const fs::path &plugin_dir, const std::string &name)
+{
+    if (!exists(plugin_dir)) {
+        return std::nullopt;
+    }
+
+    for (const auto &entry : fs::directory_iterator(plugin_dir)) {
+        if (!is_regular_file(entry.status())) {
+            continue;
+        }
+
+        const auto &file = entry.path();
+        auto candidate = file.stem().string();
+        if (file.extension() == ".whl") {
+            candidate = candidate.substr(0, candidate.find('-'));
+            std::ranges::replace(candidate, '-', '_');
+        }
+        else if (file.extension() != ".dll" && file.extension() != ".so") {
+            continue;
+        }
+
+        if (candidate.starts_with("endstone_")) {
+            candidate.erase(0, sizeof("endstone_") - 1);
+        }
+        if (candidate == name) {
+            return file;
+        }
+    }
+    return std::nullopt;
 }
 }  // namespace
 
@@ -438,8 +470,10 @@ bool EndstoneServer::dispatchCommand(const NotNull<CommandSender> &sender, std::
 
 void EndstoneServer::loadPlugins()
 {
-    plugin_manager_->registerLoader(std::make_unique<CppPluginLoader>(*this));
-    plugin_manager_->registerLoader(std::make_unique<PythonPluginLoader>(*this));
+    if (plugin_manager_->plugin_loaders_.empty()) {
+        plugin_manager_->registerLoader(std::make_unique<CppPluginLoader>(*this));
+        plugin_manager_->registerLoader(std::make_unique<PythonPluginLoader>(*this));
+    }
 
     auto plugin_dir = fs::current_path() / "plugins";
 
@@ -483,6 +517,53 @@ void EndstoneServer::enablePlugin(Plugin &plugin)
     plugin_manager_->dirtyPermissibles(PermissionLevel::Operator);
     plugin_manager_->dirtyPermissibles(PermissionLevel::Console);
     plugin_manager_->enablePlugin(plugin);
+}
+
+bool EndstoneServer::loadPlugin(const std::string &name)
+{
+    auto plugin_file = resolvePluginFile(fs::current_path() / "plugins", name);
+    if (!plugin_file) {
+        getLogger().error("Could not find a plugin file for '{}'.", name);
+        return false;
+    }
+
+    auto *plugin = plugin_manager_->loadPlugin(plugin_file->string());
+    if (!plugin) {
+        return false;
+    }
+
+    command_map_->registerPluginCommands(*plugin);
+    enablePlugin(*plugin);
+
+    for (const auto &player : getOnlinePlayers()) {
+        player->updateCommands();
+    }
+    return true;
+}
+
+bool EndstoneServer::unloadPlugin(const std::string &name, bool force)
+{
+    auto *plugin = plugin_manager_->getPlugin(name);
+    if (!plugin) {
+        getLogger().error("Plugin '{}' is not loaded.", name);
+        return false;
+    }
+
+    command_map_->unregisterPluginCommands(*plugin);
+    if (!plugin_manager_->unloadPlugin(name, force)) {
+        command_map_->registerPluginCommands(*plugin);
+        return false;
+    }
+
+    for (const auto &player : getOnlinePlayers()) {
+        player->updateCommands();
+    }
+    return true;
+}
+
+bool EndstoneServer::reloadPlugin(const std::string &name)
+{
+    return unloadPlugin(name) && loadPlugin(name);
 }
 
 void EndstoneServer::disablePlugins() const
@@ -580,6 +661,13 @@ void EndstoneServer::shutdown()
 
 void EndstoneServer::reload()
 {
+    unloadAllPlugins();
+    reloadData();
+    loadAllPlugins();
+}
+
+void EndstoneServer::unloadAllPlugins()
+{
     command_map_->clearCommands();
 
     // Wait for at most 2.5 seconds for plugins to close their async tasks
@@ -598,7 +686,15 @@ void EndstoneServer::reload()
     scheduler.removeCancelledTasks();
 
     plugin_manager_->clearPlugins();
-    reloadData();
+
+    // sync commands
+    for (const auto &player : getOnlinePlayers()) {
+        player->updateCommands();
+    }
+}
+
+void EndstoneServer::loadAllPlugins()
+{
     loadPlugins();
     enablePlugins(PluginLoadOrder::Startup);
     enablePlugins(PluginLoadOrder::PostWorld);

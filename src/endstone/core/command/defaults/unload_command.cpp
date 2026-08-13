@@ -12,22 +12,23 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-#include "endstone/core/command/defaults/reload_command.h"
+#include "endstone/core/command/defaults/unload_command.h"
 
-#include "endstone/color_format.h"
+#include <string>
+#include <vector>
+
 #include "endstone/core/server.h"
 
 namespace endstone::core {
 
-ReloadCommand::ReloadCommand() : EndstoneCommand("reload")
+UnloadCommand::UnloadCommand() : EndstoneCommand("unload")
 {
-    setDescription("Reloads the server configuration, functions, scripts and plugins.");
-    setUsages("/reload", "/reload [plugin: str]");
-    setPermissions("endstone.command.reload");
-    setAliases("rl");
+    setDescription("Unloads a plugin.");
+    setUsages("/unload", "/unload <plugin: str>");
+    setPermissions("endstone.command.unload");
 }
 
-bool ReloadCommand::execute(const NotNull<CommandSender> &sender, const std::vector<std::string> &args) const
+bool UnloadCommand::execute(const NotNull<CommandSender> &sender, const std::vector<std::string> &args) const
 {
     if (!testPermission(sender)) {
         return true;
@@ -35,16 +36,17 @@ bool ReloadCommand::execute(const NotNull<CommandSender> &sender, const std::vec
 
     auto &server = EndstoneServer::getInstance();
     if (args.empty()) {
-        server.reload();
-        server.broadcast(ColorFormat::Green + "Reload complete.", Server::BroadcastChannelAdmin);
-    }
-    else if (!server.reloadPlugin(args[0])) {
-        sender->sendErrorMessage("Failed to reload plugin '{}'.", args[0]);
+        server.unloadAllPlugins();
+        sender->sendMessage("All plugins unloaded.");
         return true;
     }
-    else {
-        sender->sendMessage("Plugin '{}' reloaded.", args[0]);
+
+    if (!server.unloadPlugin(args[0])) {
+        sender->sendErrorMessage("Failed to unload plugin '{}'.", args[0]);
+        return true;
     }
+
+    sender->sendMessage("Plugin '{}' unloaded.", args[0]);
     return true;
 }
 

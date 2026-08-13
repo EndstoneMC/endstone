@@ -139,6 +139,16 @@ std::vector<std::string> CppPluginLoader::getPluginFileFilters() const
 #endif
 }
 
+void CppPluginLoader::unloadPlugin(Plugin &plugin)
+{
+    for (auto it = plugins_.begin(); it != plugins_.end(); ++it) {
+        if (it->get() == &plugin) {
+            plugins_.erase(it);
+            return;
+        }
+    }
+}
+
 }  // namespace endstone::core
 
 #undef LOAD_LIBRARY

@@ -77,6 +77,11 @@ public:
     {
         PYBIND11_OVERRIDE_NAME(void, PluginLoader, "disable_plugin", disablePlugin, std::ref(plugin));
     }
+
+    void unloadPlugin(Plugin &plugin) override
+    {
+        PYBIND11_OVERRIDE_NAME(void, PluginLoader, "unload_plugin", unloadPlugin, std::ref(plugin));
+    }
 };
 
 namespace {
@@ -237,6 +242,14 @@ void init_plugin(py::module &m)
     Args:
         plugin: Plugin to disable.
 )doc")
+        .def("unload_plugin", &PluginLoader::unloadPlugin, py::arg("plugin"), R"doc(
+    Unloads the specified plugin.
+
+    Attempting to unload a plugin that is not loaded will have no effect.
+
+    Args:
+        plugin: Plugin to unload.
+)doc")
         .def_property_readonly("plugin_file_filters", &PluginLoader::getPluginFileFilters,
                                "A list of all filename filters expected by this `PluginLoader`.")
         .def_property_readonly("server", &PluginLoader::getServer, py::return_value_policy::reference,
@@ -328,6 +341,16 @@ void init_plugin(py::module &m)
 )doc")
         .def("disable_plugins", &PluginManager::disablePlugins, "Disables all the loaded plugins.")
         .def("clear_plugins", &PluginManager::clearPlugins, "Disables and removes all plugins.")
+        .def("unload_plugin", &PluginManager::unloadPlugin, py::arg("name"), py::arg("force") = false, R"doc(
+    Unloads the plugin with the given name.
+
+    Args:
+        name: Name of the plugin to unload.
+        force: Whether to unload even if another plugin depends on it.
+
+    Returns:
+        `True` if the plugin was unloaded, otherwise `False`.
+)doc")
         .def("call_event", &PluginManager::callEvent, py::arg("event"), R"doc(
     Calls an event which will be passed to plugins.
 

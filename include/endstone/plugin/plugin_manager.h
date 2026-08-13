@@ -143,6 +143,15 @@ public:
     virtual void clearPlugins() = 0;
 
     /**
+     * Disables and removes the specified plugin.
+     *
+     * @param name Name of the plugin to unload
+     * @param force Whether to unload even if other plugins depend on it
+     * @return true if the plugin was unloaded, otherwise false
+     */
+    virtual bool unloadPlugin(const std::string &name, bool force = false) = 0;
+
+    /**
      * Calls an event which will be passed to plugins.
      *
      * @param event Event to be called

@@ -165,6 +165,17 @@ class PythonPluginLoader(PluginLoader):
 
         return loaded_plugins
 
+    def unload_plugin(self, plugin: Plugin) -> None:
+        if plugin in self._plugins:
+            self._plugins.remove(plugin)
+
+        prefix = f"endstone_{plugin.name}"
+        for module in list(sys.modules.keys()):
+            if module == prefix or module.startswith(prefix + "."):
+                del sys.modules[module]
+
+        importlib.invalidate_caches()
+
     def _load_plugin_from_ep(self, ep: EntryPoint) -> Plugin | None:
         # enforce naming convention
         if ep.dist is None:

@@ -507,6 +507,55 @@ void EndstonePluginManager::clearPlugins()
     default_perms_[PermissionLevel::Console].clear();
 }
 
+bool EndstonePluginManager::unloadPlugin(const std::string &name, bool force)
+{
+    auto *plugin = getPlugin(name);
+    if (!plugin) {
+        return false;
+    }
+
+    if (!force) {
+        const auto &provides = plugin->getDescription().getProvides();
+        for (const auto *other : plugins_) {
+            if (other == plugin) {
+                continue;
+            }
+            for (const auto &depend : other->getDescription().getDepend()) {
+                if (depend == plugin->getName() || std::ranges::find(provides, depend) != provides.end()) {
+                    server_.getLogger().error("Cannot unload plugin '{}': it is required by '{}'.", name,
+                                              other->getName());
+                    return false;
+                }
+            }
+        }
+    }
+
+    disablePlugin(*plugin);
+    std::erase(plugins_, plugin);
+    std::erase_if(lookup_names_, [plugin](const auto &entry) { return entry.second == plugin; });
+    removePluginPermissions(*plugin);
+    plugin->getPluginLoader().unloadPlugin(*plugin);
+    return true;
+}
+
+void EndstonePluginManager::removePluginPermissions(Plugin &plugin)
+{
+    for (const auto &perm : plugin.getDescription().getPermissions()) {
+        auto name = perm.getName();
+        std::ranges::transform(name, name.begin(), [](unsigned char c) { return std::tolower(c); });
+        if (const auto it = permissions_.find(name); it != permissions_.end()) {
+            auto *ptr = it->second.get();
+            default_perms_[PermissionLevel::Default].get<1>().erase(ptr);
+            default_perms_[PermissionLevel::Operator].get<1>().erase(ptr);
+            default_perms_[PermissionLevel::Console].get<1>().erase(ptr);
+            permissions_.erase(it);
+        }
+    }
+    dirtyPermissibles(PermissionLevel::Default);
+    dirtyPermissibles(PermissionLevel::Operator);
+    dirtyPermissibles(PermissionLevel::Console);
+}
+
 void EndstonePluginManager::callEvent(Event &event)
 {
     if (event.isAsynchronous() && server_.isPrimaryThread()) {
