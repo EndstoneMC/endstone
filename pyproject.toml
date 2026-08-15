@@ -81,10 +81,21 @@ testpaths = ["tests"]
 
 [tool.ruff]
 line-length = 120
-lint.extend-select = ["I", "E", "F"]
+indent-width = 4
+
+[tool.ruff.lint]
+select = ["I", "E", "F"]
+
+[tool.ruff.lint.per-file-ignores]
+"endstone/**/*.pyi" = ["E501"]
+
+[tool.ruff.format]
+quote-style = "double"
+indent-style = "space"
+docstring-code-format = true
 # Keep generated stubs LF on every OS (matches .gitattributes eol=lf); otherwise
 # ruff formats the .pyi with CRLF on Windows and git flags them as modified.
-format.line-ending = "lf"
+line-ending = "lf"
 
 [tool.cibuildwheel]
 skip = ["pp*"]

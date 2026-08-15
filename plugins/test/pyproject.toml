@@ -15,5 +15,15 @@ keywords = ["endstone", "plugin", "test"]
 [project.entry-points."endstone"]
 test = "endstone_test:EndstoneTest"
 
+[tool.ruff]
+line-length = 120
+indent-width = 4
+
 [tool.ruff.lint]
-extend-select = ["I", "F"]
+select = ["I", "E", "F"]
+
+[tool.ruff.format]
+quote-style = "double"
+indent-style = "space"
+docstring-code-format = true
+line-ending = "lf"

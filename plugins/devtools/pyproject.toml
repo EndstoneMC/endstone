@@ -16,5 +16,15 @@ dependencies = ["imgui-bundle"]
 # See src/endstone_devtools/__init__.py for why that matters.
 devtools = "endstone_devtools.plugin:DevToolsPlugin"
 
+[tool.ruff]
+line-length = 120
+indent-width = 4
+
 [tool.ruff.lint]
-extend-select = ["I", "F"]
+select = ["I", "E", "F"]
+
+[tool.ruff.format]
+quote-style = "double"
+indent-style = "space"
+docstring-code-format = true
+line-ending = "lf"

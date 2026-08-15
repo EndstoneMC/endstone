@@ -1,0 +1,10 @@
+format:
+  line_width: 120
+  tab_size: 4
+  use_tabchars: false
+  command_case: lower
+  keyword_case: unchanged
+  separate_fn_name_with_space: false
+  separate_ctrl_name_with_space: true
+  dangle_parens: false
+  line_ending: unix
