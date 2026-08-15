@@ -22,6 +22,7 @@ __all__ = [
     "ActorDeathEvent",
     "ActorEvent",
     "ActorExplodeEvent",
+    "ActorInsideBlockEvent",
     "ActorKnockbackEvent",
     "ActorRemoveEvent",
     "ActorSpawnEvent",
@@ -346,6 +347,16 @@ class ActorTeleportEvent(ActorEvent, Cancellable):
 
     @to_location.setter
     def to_location(self, arg1: Location) -> None: ...
+
+class ActorInsideBlockEvent(ActorEvent, Cancellable):
+    """
+    Called when an actor is inside a supported block. Endstone currently fires this event for non-empty water, lava, and powder snow cauldrons.
+    """
+    @property
+    def block(self) -> Block:
+        """
+        The block containing the actor.
+        """
 
 class BlockEvent(Event):
     """

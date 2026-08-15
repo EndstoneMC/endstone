@@ -16,6 +16,7 @@
 #include <optional>
 #include <utility>
 
+#include "bedrock/entity/systems/server_stand_in_cauldron_system/system_impl.h"
 #include "bedrock/nbt/compound_tag.h"
 #include "bedrock/world/actor/actor.h"
 #include "bedrock/world/actor/player/player.h"
@@ -24,10 +25,12 @@
 #include "bedrock/world/item/item_stack.h"
 #include "bedrock/world/level/block/block.h"
 #include "bedrock/world/level/block/cauldron_block.h"
+#include "bedrock/world/level/storage/game_rules.h"
 #include "endstone/core/block/block.h"
 #include "endstone/core/block/block_data.h"
 #include "endstone/core/server.h"
 #include "endstone/runtime/bedrock_hooks/bucket.h"
+#include "endstone/event/actor/actor_inside_block_event.h"
 #include "endstone/runtime/bedrock_hooks/bucket_empty.h"
 #include "endstone/runtime/bedrock_hooks/bucket_fill.h"
 #include "endstone/runtime/bedrock_hooks/cauldron.h"
@@ -50,6 +53,12 @@ ChangeReason getChangeReason(int old_level, int new_level, int old_liquid, int n
         return ChangeReason::NaturalFill;
     }
     return ChangeReason::Unknown;
+}
+
+bool isFilledCauldron(const ::Block &block)
+{
+    static const HashedString fill_level{"fill_level"};
+    return block.getName().getString() == "minecraft:cauldron" && block.getState<int>(fill_level) > 0;
 }
 
 bool isCauldron(const ::Block &block)
@@ -75,6 +84,11 @@ CauldronLiquidType getCauldronLiquid(const ::Block &block)
 {
     static const HashedString cauldron_liquid{"cauldron_liquid"};
     return static_cast<CauldronLiquidType>(block.getState<int>(cauldron_liquid));
+}
+
+bool isNonLavaCauldron(const ::Block &block)
+{
+    return isFilledCauldron(block) && getCauldronLiquid(block) != CauldronLiquidType::Lava;
 }
 
 bool isWaterPotion(const ::ItemStack &item_stack)
@@ -214,6 +228,20 @@ void applyDeferredCauldronState(CauldronChangeContext &context)
     endstone::core::EndstoneBlock::at(*context.region, context.position)
         ->setData(*context.deferred_data, true);
     context.state_applied = true;
+}
+
+bool prepareCauldronExtinguish(BlockSource &region, const BlockPos &position, CauldronChangeContext &context)
+{
+    const auto &block = region.getBlock(position);
+    if (!isNonLavaCauldron(block)) {
+        return true;
+    }
+
+    static const HashedString fill_level{"fill_level"};
+    // BDS passes Water for this path, including PowderSnow cauldrons.
+    const auto new_block = makeCauldronState(block, block.getState<int>(fill_level) - 1, CauldronLiquidType::Water);
+    return callCauldronLevelChangeEvent(region, position, block, *new_block, &context, false, true,
+                                        &context.skip_setter);
 }
 }  // namespace
 
@@ -360,6 +388,41 @@ void CauldronBlock::setLiquidLevel(BlockSource &region, const BlockPos &position
     }
 
     ENDSTONE_HOOK_CALL_ORIGINAL(&CauldronBlock::setLiquidLevel, this, region, position, liquid_level, liquid_type);
+}
+
+void ServerStandInCauldronSystem::SystemImpl::_checkInsideCauldron(ActorOwnerComponent &actor_owner)
+{
+    auto &actor = actor_owner.getActor();
+    auto &region = actor.getDimensionBlockSource();
+    const auto &actor_position = actor.getPosition();
+    const BlockPos position{actor_position.x, actor.getAABB().min.y, actor_position.z};
+    const auto &block = region.getBlock(position);
+    if (!isFilledCauldron(block)) {
+        ENDSTONE_HOOK_CALL_ORIGINAL(&ServerStandInCauldronSystem::SystemImpl::_checkInsideCauldron, actor_owner);
+        return;
+    }
+
+    endstone::ActorInsideBlockEvent inside_event{actor.getEndstoneActor<endstone::Actor>(),
+                                                 endstone::core::EndstoneBlock::at(region, position)};
+    endstone::core::EndstoneServer::getInstance().getPluginManager().callEvent(inside_event);
+    if (inside_event.isCancelled()) {
+        return;
+    }
+
+    if (getCauldronLiquid(block) == CauldronLiquidType::Lava || !actor.isOnFire()) {
+        ENDSTONE_HOOK_CALL_ORIGINAL(&ServerStandInCauldronSystem::SystemImpl::_checkInsideCauldron, actor_owner);
+        return;
+    }
+    if (!actor.isPlayer() && !actor.getLevel().getGameRules().getBool(GameRuleId(GameRules::MOB_GRIEFING), false)) {
+        return;
+    }
+
+    CauldronChangeContext context{&actor, ChangeReason::Extinguish, region, position, block};
+    if (!prepareCauldronExtinguish(region, position, context)) {
+        return;
+    }
+    ScopedCauldronChangeContext scope(context);
+    ENDSTONE_HOOK_CALL_ORIGINAL(&ServerStandInCauldronSystem::SystemImpl::_checkInsideCauldron, actor_owner);
 }
 
 void CauldronBlock::tick(BlockEvents::BlockQueuedTickEvent &event_data) const

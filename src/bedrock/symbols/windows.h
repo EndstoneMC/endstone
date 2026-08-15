@@ -11,7 +11,7 @@
 
 namespace endstone::runtime {
 
-static constexpr std::array<std::pair<std::string_view, std::size_t>, 71> symbols = {{
+static constexpr std::array<std::pair<std::string_view, std::size_t>, 72> symbols = {{
     {"??_7ItemStackRequestActionCraftRecipeAuto@@6B@", 176340128},
     {"BlockState::StateListNode::mHead", 211163888},
     {"Enchant::mEnchants", 211010840},
@@ -122,6 +122,8 @@ static constexpr std::array<std::pair<std::string_view, std::size_t>, 71> symbol
     {"?changeDimension@ServerPlayer@@UEAAXUDimensionType@@@Z", 6905168},
     // ServerScoreboard
     {"??0ServerScoreboard@@QEAA@VCommandSoftEnumRegistry@@PEAVLevelStorage@@V?$not_null@V?$NonOwnerPointer@VGameplayUserManager@@@Bedrock@@@gsl@@@Z", 1277104},
+    // ServerStandInCauldronSystem::SystemImpl
+    {"?_checkInsideCauldron@SystemImpl@ServerStandInCauldronSystem@@SAXAEAVActorOwnerComponent@@@Z", 99162608},
     // WeatherManager
     {"?updateWeather@WeatherManager@@QEAAXMHMH@Z", 19341888},
     // YAAEAVI18n

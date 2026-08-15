@@ -130,6 +130,12 @@ void init_event(py::module_ &m, py::class_<Event, PyEvent> &event)
                       "The location that this actor moved from.")
         .def_property("to_location", &ActorTeleportEvent::getTo, &ActorTeleportEvent::setTo,
                       "The location that this actor moved to.");
+    py::class_<ActorInsideBlockEvent, ActorEvent<Actor>, ICancellable>(
+        m, "ActorInsideBlockEvent",
+        "Called when an actor is inside a supported block. Endstone currently fires this event for non-empty water, "
+        "lava, and powder snow cauldrons.")
+        .def_property_readonly("block", &ActorInsideBlockEvent::getBlock, py::return_value_policy::reference,
+                               "The block containing the actor.");
 
     // Block events
     py::class_<BlockEvent, Event>(m, "BlockEvent", "Represents an `Block`-related event.")
