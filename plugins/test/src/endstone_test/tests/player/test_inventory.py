@@ -19,6 +19,8 @@ def test_get_item(player: Player, server: Server):
 
     item1 = player.inventory.get_item(0)
     item2 = player.inventory.contents[0]
+    assert item1 is not None
+    assert item2 is not None
     assert item1.type == "minecraft:clock"
     assert item1.amount == 1
     assert item1.type == item2.type
@@ -31,11 +33,13 @@ def test_get_item(player: Player, server: Server):
 def test_add_item(player: Player):
     player.inventory.add_item(ItemStack("minecraft:clock", 7))
     item = player.inventory.get_item(0)
+    assert item is not None
     assert item.type == "minecraft:clock"
     assert item.amount == 7
 
     player.inventory.add_item(ItemStack("minecraft:cobblestone", 2))
     item = player.inventory.get_item(1)
+    assert item is not None
     assert item.type == "minecraft:cobblestone"
     assert item.amount == 2
 
@@ -44,11 +48,13 @@ def test_set_item(player: Player):
     player.inventory.set_item(35, ItemStack("minecraft:diamond", 7))
 
     item = player.inventory.get_item(35)
+    assert item is not None
     assert item.type == "minecraft:diamond"
     assert item.amount == 7
 
     player.inventory.set_item(35, item)
     item = player.inventory.get_item(35)
+    assert item is not None
     assert item.type == "minecraft:diamond"
     assert item.amount == 7
 
@@ -66,6 +72,7 @@ def test_update_item_meta(player: Player, server: Server):
 
     # Set the lore
     item = player.inventory.contents[0]
+    assert item is not None
     meta = item.item_meta
     assert not meta.lore
     lore = ["This is a test lore", "And another line of lore:)"]
@@ -77,6 +84,7 @@ def test_update_item_meta(player: Player, server: Server):
     # Update the inventory
     player.inventory.set_item(0, item)
     item = player.inventory.get_item(0)
+    assert item is not None
     assert item.item_meta.lore == lore
 
     # Remove the lore
@@ -101,6 +109,7 @@ def test_add_item_with_meta(player: Player):
 
     player.inventory.set_item(1, item)
     item = player.inventory.get_item(1)
+    assert item is not None
     assert item.item_meta.display_name == "Excalibur"
     assert item.item_meta.lore == lore
     assert item.item_meta.damage == 500
@@ -116,7 +125,9 @@ def item(request, player: Player):
         return item_stack
     else:
         player.inventory.set_item(0, item_stack)
-        return player.inventory.get_item(0)
+        item = player.inventory.get_item(0)
+        assert item is not None
+        return item
 
 
 @pytest.mark.parametrize("name", ["§aEpic Sword", "§bTest Blade"])

@@ -18,10 +18,14 @@ on:
       - 'CMakeLists.txt'
       - 'conanfile.py'
       - 'pyproject.toml'
+      - '.pre-commit-config.yaml'
+      - '.cmake-format.yaml'
+      - 'pyrightconfig.json'
       - 'codecov.yml'
       - '.conan2/**'
       - '.conanrc'
       - '.github/workflows/ci.yml'
+      - '.github/workflows/quality.yml'
       - '.github/actions/**'
   push:
     branches:
@@ -78,6 +82,25 @@ jobs:
         run: |
           cmake --preset conan-relwithdebinfo
           cmake --build --preset conan-relwithdebinfo
+
+      - name: Run clang-tidy on changed files
+        if: runner.os == 'Linux' && github.event_name == 'pull_request'
+        shell: bash
+        run: |
+          mapfile -t files < <(
+            git diff --name-only --diff-filter=ACMR \
+              "${{ github.event.pull_request.base.sha }}" "${{ github.sha }}" \
+              -- 'src/**' 'tests/**' | grep -E '\.(c|cc|cpp|cxx)$' || true
+          )
+          if ((${#files[@]} == 0)); then
+            exit 0
+          fi
+          clang_tidy_diff="$(command -v clang-tidy-diff-20.py || command -v clang-tidy-diff.py || find /usr/lib/llvm-20 -name clang-tidy-diff.py -type f -print -quit)"
+          test -n "$clang_tidy_diff"
+          git diff -U0 --no-color \
+            "${{ github.event.pull_request.base.sha }}" "${{ github.sha }}" -- "${files[@]}" \
+            | python "$clang_tidy_diff" -p1 -path build/RelWithDebInfo \
+                -clang-tidy-binary clang-tidy-20
 
       - name: Check generated stubs are up to date
         run: git diff --exit-code -- endstone/

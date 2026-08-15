@@ -1,0 +1,9 @@
+{
+  "include": ["endstone"],
+  "ignore": ["endstone/**/*.pyi"],
+  "pythonVersion": "3.10",
+  "pythonPlatform": "All",
+  "typeCheckingMode": "standard",
+  "reportMissingImports": "none",
+  "reportMissingModuleSource": "none"
+}

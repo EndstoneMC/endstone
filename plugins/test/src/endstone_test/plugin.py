@@ -9,6 +9,7 @@ from .tests.conftest import clear_runtime_context, set_runtime_context
 class EndstoneTest(Plugin):
     prefix = "Test"
     api_version = "0.11"
+    last_testoptmsg_args: list[str]
     commands = {
         "test": {
             "description": "Run the tests",

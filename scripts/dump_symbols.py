@@ -70,6 +70,7 @@ from collections import defaultdict
 from ctypes import wintypes
 from dataclasses import dataclass
 from pathlib import Path
+from typing import Callable, cast
 from zipfile import ZipFile
 
 import click
@@ -321,7 +322,7 @@ class Signature:
     relative: bool
     extra: int
     pattern: str
-    offsets: list[int] = None
+    offsets: list[int] | None = None
     rip_relative: bool = False
     rip_offset: int = 0
 
@@ -828,4 +829,4 @@ def write_symbols_header(
 
 
 if __name__ == "__main__":
-    main()
+    cast(Callable[[], None], main)()

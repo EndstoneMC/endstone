@@ -10,6 +10,8 @@ from endstone.command import (
 from endstone.permissions import PermissionLevel
 from endstone.plugin import Plugin
 
+from endstone_test.plugin import EndstoneTest
+
 # =============================================================================
 # Fixtures
 # =============================================================================
@@ -548,6 +550,7 @@ class TestCommandOptionalMessageArg:
 
     def test_optional_message_arg_empty_when_omitted(self, server: Server, plugin: Plugin) -> None:
         """Test that args is empty when optional [msg: message] is not provided."""
+        assert isinstance(plugin, EndstoneTest)
         server.dispatch_command(server.command_sender, "testoptmsg")
         assert len(plugin.last_testoptmsg_args) == 0
 

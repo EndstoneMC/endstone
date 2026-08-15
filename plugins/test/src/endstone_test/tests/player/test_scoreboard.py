@@ -5,19 +5,23 @@ from endstone.scoreboard import Scoreboard
 
 @pytest.fixture
 def scoreboard(server: Server) -> Scoreboard:
-    return server.scoreboard
+    scoreboard = server.scoreboard
+    assert scoreboard is not None
+    return scoreboard
 
 
 def test_set_scoreboard(player: Player, server: Server):
-    assert player.scoreboard is server.scoreboard
+    scoreboard = server.scoreboard
+    assert scoreboard is not None
+    assert player.scoreboard is scoreboard
 
     new_scoreboard = server.create_scoreboard()
     player.scoreboard = new_scoreboard
     assert player.scoreboard is new_scoreboard
-    assert player.scoreboard is not server.scoreboard
+    assert player.scoreboard is not scoreboard
 
-    player.scoreboard = server.scoreboard
-    assert player.scoreboard is server.scoreboard
+    player.scoreboard = scoreboard
+    assert player.scoreboard is scoreboard
 
 
 def test_scoreboard_value(player: Player, server: Server, scoreboard: Scoreboard) -> None:

@@ -5,7 +5,9 @@ from endstone.scoreboard import Criteria, Scoreboard
 
 @pytest.fixture
 def scoreboard(server: Server) -> Scoreboard:
-    return server.scoreboard
+    scoreboard = server.scoreboard
+    assert scoreboard is not None
+    return scoreboard
 
 
 @pytest.fixture(scope="function", autouse=True)

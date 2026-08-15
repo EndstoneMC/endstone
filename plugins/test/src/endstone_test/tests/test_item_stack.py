@@ -100,7 +100,7 @@ def test_clear_item_meta():
     meta.lore = lore
     assert item.set_item_meta(meta)
 
-    assert item.set_item_meta(None)
+    assert item.set_item_meta(None)  # pyright: ignore[reportArgumentType]
     meta = item.item_meta
     assert not meta.has_lore
 
