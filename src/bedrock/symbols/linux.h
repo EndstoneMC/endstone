@@ -11,7 +11,7 @@
 
 namespace endstone::runtime {
 
-static constexpr std::array<std::pair<std::string_view, std::size_t>, 63> symbols = {{
+static constexpr std::array<std::pair<std::string_view, std::size_t>, 66> symbols = {{
     {"BlockState::StateListNode::mHead", 245468000},
     {"Enchant::mEnchants", 245294016},
     {"MobEffect::mMobEffects", 245274360},
@@ -36,6 +36,9 @@ static constexpr std::array<std::pair<std::string_view, std::size_t>, 63> symbol
     {"_ZNK17BlockTypeRegistry16forEachBlockTypeEN5brstd12function_refIFbRK9BlockTypeES5_EE", 203856688},
     // CampfireBlockActor
     {"_ZN18CampfireBlockActor14_finishCookingER11BlockSourcei", 207808544},
+    // CauldronBlock
+    {"_ZNK13CauldronBlock14setLiquidLevelER11BlockSourceRK8BlockPosi18CauldronLiquidType", 199221200},
+    {"_ZNK13CauldronBlock4tickERN11BlockEvents20BlockQueuedTickEventE", 199206576},
     // Command
     {"_ZNK7Command3runERK13CommandOriginR13CommandOutput", 160430576},
     // CommandOriginLoader
@@ -114,6 +117,8 @@ static constexpr std::array<std::pair<std::string_view, std::size_t>, 63> symbol
     {"_ZN12ServerPlayer15changeDimensionE13DimensionType", 160365232},
     // ServerScoreboard
     {"_ZN16ServerScoreboardC2E23CommandSoftEnumRegistryP12LevelStorageN3gsl8not_nullIN7Bedrock15NonOwnerPointerI19GameplayUserManagerEEEE", 209066992},
+    // ServerStandInCauldronSystem::SystemImpl
+    {"_ZN27ServerStandInCauldronSystem10SystemImpl20_checkInsideCauldronER19ActorOwnerComponent", 117992800},
     // WeatherManager
     {"_ZN14WeatherManager13updateWeatherEfifi", 201402304},
 }};

@@ -11,7 +11,7 @@
 
 namespace endstone::runtime {
 
-static constexpr std::array<std::pair<std::string_view, std::size_t>, 63> symbols = {{
+static constexpr std::array<std::pair<std::string_view, std::size_t>, 66> symbols = {{
     {"BlockState::StateListNode::mHead", 211294960},
     {"Enchant::mEnchants", 211141912},
     {"MobEffect::mMobEffects", 211424880},
@@ -35,6 +35,9 @@ static constexpr std::array<std::pair<std::string_view, std::size_t>, 63> symbol
     {"?forEachBlockType@BlockTypeRegistry@@QEBAXV?$function_ref@$$A6A_NAEBVBlockType@@@Z$$A6A_N0@Z@brstd@@@Z", 42281168},
     // CampfireBlockActor
     {"?_finishCooking@CampfireBlockActor@@AEAAXAEAVBlockSource@@H@Z", 43046640},
+    // CauldronBlock
+    {"?setLiquidLevel@CauldronBlock@@QEBAXAEAVBlockSource@@AEBVBlockPos@@HW4CauldronLiquidType@@@Z", 110796464},
+    {"?tick@CauldronBlock@@QEBAXAEAVBlockQueuedTickEvent@BlockEvents@@@Z", 110778144},
     // Command
     {"?run@Command@@QEBAXAEBVCommandOrigin@@AEAVCommandOutput@@@Z", 19785792},
     // CommandOriginLoader
@@ -113,6 +116,8 @@ static constexpr std::array<std::pair<std::string_view, std::size_t>, 63> symbol
     {"?changeDimension@ServerPlayer@@UEAAXUDimensionType@@@Z", 6907440},
     // ServerScoreboard
     {"??0ServerScoreboard@@QEAA@VCommandSoftEnumRegistry@@PEAVLevelStorage@@V?$not_null@V?$NonOwnerPointer@VGameplayUserManager@@@Bedrock@@@gsl@@@Z", 1277104},
+    // ServerStandInCauldronSystem::SystemImpl
+    {"?_checkInsideCauldron@SystemImpl@ServerStandInCauldronSystem@@SAXAEAVActorOwnerComponent@@@Z", 99231920},
     // WeatherManager
     {"?updateWeather@WeatherManager@@QEAAXMHMH@Z", 19355200},
     // YAAEAVI18n

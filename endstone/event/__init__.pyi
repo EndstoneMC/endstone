@@ -22,6 +22,7 @@ __all__ = [
     "ActorDeathEvent",
     "ActorEvent",
     "ActorExplodeEvent",
+    "ActorInsideBlockEvent",
     "ActorKnockbackEvent",
     "ActorRemoveEvent",
     "ActorSpawnEvent",
@@ -39,6 +40,7 @@ __all__ = [
     "BlockPlaceEvent",
     "BroadcastMessageEvent",
     "Cancellable",
+    "CauldronLevelChangeEvent",
     "ChunkEvent",
     "ChunkLoadEvent",
     "ChunkUnloadEvent",
@@ -325,6 +327,16 @@ class ActorTeleportEvent(ActorEvent, Cancellable):
     @to_location.setter
     def to_location(self, arg1: Location) -> None: ...
 
+class ActorInsideBlockEvent(ActorEvent, Cancellable):
+    """
+    Called when an actor is inside a supported block. Endstone currently fires this event for non-empty water, lava, and powder snow cauldrons.
+    """
+    @property
+    def block(self) -> Block:
+        """
+        The block containing the actor.
+        """
+
 class BlockEvent(Event):
     """
     Represents an `Block`-related event.
@@ -391,6 +403,56 @@ class BlockGrowEvent(BlockEvent, Cancellable):
     def new_state(self) -> BlockState:
         """
         The new state of the block after it has grown.
+        """
+
+class CauldronLevelChangeEvent(BlockEvent, Cancellable):
+    """
+    Called when a cauldron's level or contents change.
+    """
+    class ChangeReason(enum.Enum):
+        """
+        The reason the cauldron changed.
+        """
+
+        BUCKET_FILL = 0
+        BUCKET_EMPTY = 1
+        BOTTLE_FILL = 2
+        BOTTLE_EMPTY = 3
+        BANNER_WASH = 4
+        ARMOR_WASH = 5
+        SHULKER_WASH = 6
+        EXTINGUISH = 7
+        EVAPORATE = 8
+        NATURAL_FILL = 9
+        UNKNOWN = 10
+
+    BUCKET_FILL = ChangeReason.BUCKET_FILL
+    BUCKET_EMPTY = ChangeReason.BUCKET_EMPTY
+    BOTTLE_FILL = ChangeReason.BOTTLE_FILL
+    BOTTLE_EMPTY = ChangeReason.BOTTLE_EMPTY
+    BANNER_WASH = ChangeReason.BANNER_WASH
+    ARMOR_WASH = ChangeReason.ARMOR_WASH
+    SHULKER_WASH = ChangeReason.SHULKER_WASH
+    EXTINGUISH = ChangeReason.EXTINGUISH
+    EVAPORATE = ChangeReason.EVAPORATE
+    NATURAL_FILL = ChangeReason.NATURAL_FILL
+    UNKNOWN = ChangeReason.UNKNOWN
+    @property
+    def entity(self) -> Actor | None:
+        """
+        The entity responsible for the change, or `None`.
+        """
+
+    @property
+    def reason(self) -> ChangeReason:
+        """
+        The reason for the change.
+        """
+
+    @property
+    def new_state(self) -> BlockState:
+        """
+        The new state of the cauldron.
         """
 
 class BlockFormEvent(BlockGrowEvent):

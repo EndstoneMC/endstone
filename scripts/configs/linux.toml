@@ -454,6 +454,28 @@ extra = 0
 pattern = "41 57 41 56 53 8B 42"
 
 [[signatures]]
+name = "_ZN27ServerStandInCauldronSystem10SystemImpl20_checkInsideCauldronER19ActorOwnerComponent"
+relative = false
+extra = 0
+# 1. locate ServerStandInCauldronSystem::SystemImpl::_checkInsideCauldron from the ECS system's cauldron check call
+# 2. confirm the static function takes ActorOwnerComponent& and calls CauldronBlock::setLiquidLevel before clearing
+#    the actor's fire state
+# 3. confirm against the old named DB and use the direct function prologue
+pattern = "55 41 57 41 56 41 55 41 54 53 48 81 EC 88 00 00 00 48 8B 1F 80 BB ? ? ? ? ? 0F 85 ? ? ? ? 48 8B BB"
+
+[[signatures]]
+name = "_ZNK13CauldronBlock14setLiquidLevelER11BlockSourceRK8BlockPosi18CauldronLiquidType"
+relative = false
+extra = 0
+pattern = "55 41 57 41 56 41 55 41 54 53 48 83 EC 38 45 89 C7 89 CD"
+
+[[signatures]]
+name = "_ZNK13CauldronBlock4tickERN11BlockEvents20BlockQueuedTickEventE"
+relative = false
+extra = 0
+pattern = "55 41 57 41 56 41 55 41 54 53 48 83 EC 38 49 89 F6 4C 8B 7E"
+
+[[signatures]]
 name = "_ZN11LeavesBlock10randomTickERN11BlockEvents20BlockRandomTickEventE"
 relative = false
 extra = 0
