@@ -32,13 +32,31 @@
 #include "endstone/core/server.h"
 #include "endstone/event/player/player_bucket_empty_event.h"
 #include "endstone/runtime/bedrock_hooks/actor_interaction.h"
+#include "endstone/runtime/bedrock_hooks/bucket.h"
+
+bool endstone::runtime::isWaterContentBucket(const ::Item &item)
+{
+    switch (endstone::runtime::getBucketFillType(item)) {
+    case BucketFillType::Fish:
+    case BucketFillType::Salmon:
+    case BucketFillType::Tropicalfish:
+    case BucketFillType::Pufferfish:
+    case BucketFillType::Water:
+    case BucketFillType::Axolotl:
+    case BucketFillType::Tadpole:
+    case BucketFillType::SulfurCube:
+        return true;
+    default:
+        return false;
+    }
+}
 
 namespace {
 
 bool isFilledBucket(const ::Item &item)
 {
-    const auto &name = item.getFullItemName();
-    return item.isBucket() && name != "minecraft:bucket" && name != "minecraft:milk_bucket";
+    const auto type = endstone::runtime::getBucketFillType(item);
+    return item.isBucket() && type != BucketFillType::Empty && type != BucketFillType::Milk;
 }
 
 bool isCauldron(const ::Block &block)
@@ -46,20 +64,10 @@ bool isCauldron(const ::Block &block)
     return block.getName().getString() == "minecraft:cauldron";
 }
 
-bool hasWaterContent(const ::Item &item)
-{
-    const auto &name = item.getFullItemName();
-    return name == "minecraft:water_bucket" || name == "minecraft:cod_bucket" ||
-           name == "minecraft:salmon_bucket" || name == "minecraft:tropical_fish_bucket" ||
-           name == "minecraft:pufferfish_bucket" || name == "minecraft:axolotl_bucket" ||
-           name == "minecraft:tadpole_bucket" || name == "minecraft:sulfur_cube_bucket";
-}
-
 bool isCauldronBucket(const ::Item &item)
 {
-    const auto &name = item.getFullItemName();
-    return name == "minecraft:water_bucket" || name == "minecraft:lava_bucket" ||
-           name == "minecraft:powder_snow_bucket";
+    const auto type = endstone::runtime::getBucketFillType(item);
+    return type == BucketFillType::Water || type == BucketFillType::Lava || type == BucketFillType::PowderSnow;
 }
 
 bool canFillCauldron(const ::Block &block, const ::Item &item)
@@ -74,30 +82,29 @@ bool canFillCauldron(const ::Block &block, const ::Item &item)
     }
 
     static const HashedString cauldron_liquid{"cauldron_liquid"};
-    return hasWaterContent(item) && block.getState<int>(cauldron_liquid) == 0;
+    return endstone::runtime::isWaterContentBucket(item) && block.getState<int>(cauldron_liquid) == 0;
 }
 
 bool isNonWaterCauldronBucket(const ::Item &item)
 {
-    const auto &name = item.getFullItemName();
-    return name == "minecraft:lava_bucket" || name == "minecraft:powder_snow_bucket";
+    const auto type = endstone::runtime::getBucketFillType(item);
+    return type == BucketFillType::Lava || type == BucketFillType::PowderSnow;
 }
 
 bool shouldHandleEmptyEvent(const ::Item &item, const ::Block &clicked_block)
 {
-    const auto &name = item.getFullItemName();
+    const auto type = endstone::runtime::getBucketFillType(item);
     return isFilledBucket(item) &&
-           (isCauldron(clicked_block) ? isCauldronBucket(item) : name != "minecraft:powder_snow_bucket");
+           (isCauldron(clicked_block) ? isCauldronBucket(item) : type != BucketFillType::PowderSnow);
 }
 
 const ::Block *getFluidBlock(const ::Item &item)
 {
-    const auto &name = item.getFullItemName();
-    if (hasWaterContent(item)) {
+    if (endstone::runtime::isWaterContentBucket(item)) {
         return ScriptModuleMinecraft::ScriptBlockUtils::createBlockDescriptor("minecraft:water", std::nullopt)
             .tryGetBlockNoLogging();
     }
-    if (name == "minecraft:lava_bucket") {
+    if (endstone::runtime::getBucketFillType(item) == BucketFillType::Lava) {
         return ScriptModuleMinecraft::ScriptBlockUtils::createBlockDescriptor("minecraft:lava", std::nullopt)
             .tryGetBlockNoLogging();
     }
@@ -119,7 +126,7 @@ std::optional<BlockPos> getEmptyPosition(::BlockSource &block_source, const Bloc
         return clicked_position;
     }
 
-    if (fluid_block && hasWaterContent(item) &&
+    if (fluid_block && endstone::runtime::isWaterContentBucket(item) &&
         clicked_block.getBlockType().canFillAtPos(block_source, clicked_position, *fluid_block)) {
         return clicked_position;
     }
@@ -197,6 +204,7 @@ endstone::runtime::BucketEmptyAction callBucketEmptyEvent(::BlockSource &block_s
         endstone::runtime::getInteractionHand(*player, item_stack),
         std::move(result_stack),
     };
+    bucket_event.setCancelled(!endstone::runtime::canBuild(block_source, *player, *empty_position, face, item_stack));
     server.getPluginManager().callEvent(bucket_event);
     if (bucket_event.isCancelled()) {
         return endstone::runtime::BucketEmptyAction::Cancel;

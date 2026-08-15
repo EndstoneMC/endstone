@@ -66,6 +66,19 @@ public:
     Random &random;
 };
 
+class BlockQueuedTickEvent : public BlockEventBase {
+public:
+    static constexpr EventType Type = EventType::QueuedTick;
+
+    BlockQueuedTickEvent(BlockSource &, BlockPos, Random &, bool);
+    [[nodiscard]] const BlockSource &getBlockSource() const override { return region; }
+
+    const bool is_instaticking;
+    BlockSource &region;
+    Random &random;
+};
+BEDROCK_STATIC_ASSERT_SIZE(BlockQueuedTickEvent, 48, 40);
+
 class BlockPlayerInteractEvent : public BlockEventBase {
 public:
     const BlockSource &getBlockSource() const override;

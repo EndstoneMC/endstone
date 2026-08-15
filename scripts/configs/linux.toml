@@ -456,6 +456,18 @@ pattern = "55 41 57 41 56 41 55 41 54 53 50 48 8B 47 08 48 85 C0 0F 84 ? ? ? ? 4
 
 [[signatures]]
 [[signatures]]
+name = "_ZNK13CauldronBlock14setLiquidLevelER11BlockSourceRK8BlockPosi18CauldronLiquidType"
+relative = false
+extra = 0
+pattern = "55 41 57 41 56 41 55 41 54 53 48 83 EC 38 45 89 C7 89 CD"
+
+[[signatures]]
+name = "_ZNK13CauldronBlock4tickERN11BlockEvents20BlockQueuedTickEventE"
+relative = false
+extra = 0
+pattern = "55 41 57 41 56 41 55 41 54 53 48 83 EC 38 49 89 F6 4C 8B 7E"
+
+[[signatures]]
 name = "_ZNK13CauldronBlock3useERN11BlockEvents24BlockPlayerInteractEventE"
 relative = false
 extra = 0

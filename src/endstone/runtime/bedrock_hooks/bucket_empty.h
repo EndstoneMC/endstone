@@ -19,6 +19,7 @@
 class Actor;
 class BlockPos;
 class InteractionResult;
+class Item;
 class ItemStack;
 class Player;
 
@@ -30,6 +31,7 @@ enum class BucketEmptyAction {
     Consume,
 };
 
+bool isWaterContentBucket(const ::Item &item);
 void cancelBucketEmptyResult();
 BucketEmptyAction handleBucketEmptyEvent(::Actor &actor, const ::BlockPos &position, FacingID face,
                                          const ::ItemStack &item_stack);

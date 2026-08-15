@@ -429,6 +429,18 @@ pattern = "41 57 41 56 41 55 41 54 56 57 55 53 48 83 EC 58 48 89 D6 48 8B 41 08 
 
 [[signatures]]
 [[signatures]]
+name = "?setLiquidLevel@CauldronBlock@@QEBAXAEAVBlockSource@@AEBVBlockPos@@HW4CauldronLiquidType@@@Z"
+relative = false
+extra = 0
+pattern = "55 41 57 41 56 41 54 56 57 53 48 83 EC 60 48 8D 6C 24 ? 48 C7 45 ? ? ? ? ? 44 89 CB"
+
+[[signatures]]
+name = "?tick@CauldronBlock@@QEBAXAEAVBlockQueuedTickEvent@BlockEvents@@@Z"
+relative = false
+extra = 0
+pattern = "55 41 57 41 56 41 55 41 54 56 57 53 48 81 EC 98 00 00 00 48 8D AC 24 ? ? ? ? 44 0F 29 45 ? 0F 29 7D ? 0F 29 75 ? 48 C7 45 ? ? ? ? ? 48 89 D3"
+
+[[signatures]]
 name = "?use@CauldronBlock@@QEBAXAEAVBlockPlayerInteractEvent@BlockEvents@@@Z"
 relative = false
 extra = 0

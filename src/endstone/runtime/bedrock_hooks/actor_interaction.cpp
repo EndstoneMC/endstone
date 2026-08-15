@@ -21,6 +21,7 @@
 #include "bedrock/world/actor/player/player.h"
 #include "bedrock/world/inventory/transaction/item_use_on_actor_inventory_transaction.h"
 #include "bedrock/world/item/item_stack.h"
+#include "bedrock/world/level/block_source.h"
 #include "endstone/runtime/hook.h"
 #include "endstone/runtime/bedrock_hooks/shear.h"
 
@@ -73,6 +74,12 @@ EquipmentSlot getInteractionHand(const ::Player &player, const ::ItemStack &item
     const auto matches_main_hand = item == player.getCarriedItem();
     const auto matches_off_hand = item == player.getOffhandSlot();
     return matches_off_hand && !matches_main_hand ? EquipmentSlot::OffHand : EquipmentSlot::Hand;
+}
+
+bool canBuild(::BlockSource &block_source, ::Actor &actor, const ::BlockPos &position, FacingID face,
+              const ::ItemStackBase &item_stack)
+{
+    return block_source.checkBlockPermissions(actor, position, face, item_stack, false);
 }
 
 }  // namespace endstone::runtime

@@ -21,6 +21,7 @@ class ItemStack;
 
 namespace endstone::runtime {
 
+void cancelBucketFillResult();
 void handleBucketFillResult(const ::InteractionResult &result, ::ItemStack &item_stack, ::Actor &actor,
                             const ::BlockPos &position);
 

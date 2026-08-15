@@ -34,6 +34,7 @@
 #include "endstone/event/player/player_bucket_fill_event.h"
 #include "endstone/event/player/player_interact_event.h"
 #include "endstone/runtime/bedrock_hooks/actor_interaction.h"
+#include "endstone/runtime/bedrock_hooks/bucket.h"
 #include "endstone/runtime/bedrock_hooks/bucket_fill.h"
 #include "endstone/runtime/vtable_hook.h"
 
@@ -117,6 +118,11 @@ void endstone::runtime::handleBucketFillResult(const ::InteractionResult &result
     pending_bucket_fill.reset();
 }
 
+void endstone::runtime::cancelBucketFillResult()
+{
+    pending_bucket_fill.reset();
+}
+
 bool handleEvent(ItemUseEvent &event)
 {
     if (const auto *player = WeakEntityRef(event.actor).tryUnwrap<::Player>(); player) {
@@ -153,7 +159,7 @@ bool handleEvent(ItemUseOnEvent &event)
 
     const ::ItemStack item{event.item_before_use};
     const auto *minecraft_item = item.getItem();
-    if (!minecraft_item || minecraft_item->getFullItemName() != "minecraft:bucket") {
+    if (!minecraft_item || endstone::runtime::getBucketFillType(*minecraft_item) != BucketFillType::Empty) {
         return true;
     }
 
@@ -185,6 +191,8 @@ bool handleEvent(ItemUseOnEvent &event)
         hand,
         std::move(item_stack),
     };
+    bucket_event.setCancelled(
+        !endstone::runtime::canBuild(block_source, *player, event.block_position, event.face, item));
     server.getPluginManager().callEvent(bucket_event);
     if (bucket_event.isCancelled()) {
         return false;

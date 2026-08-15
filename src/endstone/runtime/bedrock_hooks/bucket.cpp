@@ -14,18 +14,38 @@
 
 #include "endstone/runtime/bedrock_hooks/bucket.h"
 
+#include <optional>
+
 #include "bedrock/world/actor/actor.h"
 #include "bedrock/world/item/item.h"
 #include "bedrock/world/item/item_stack.h"
 #include "bedrock/world/item/registry/item_registry_manager.h"
+#include "bedrock/world/level/block/block.h"
 #include "bedrock/world/level/block_pos.h"
+#include "bedrock/world/level/block_source.h"
 #include "endstone/runtime/bedrock_hooks/bucket_empty.h"
 #include "endstone/runtime/bedrock_hooks/bucket_fill.h"
+#include "endstone/runtime/bedrock_hooks/cauldron.h"
 #include "endstone/runtime/vtable_hook.h"
+
+BucketFillType endstone::runtime::getBucketFillType(const ::Item &item)
+{
+    return item.isBucket() ? static_cast<const ::BucketItem &>(item).getFillType() : BucketFillType::Unknown;
+}
 
 InteractionResult BucketItem::useOn(::ItemStack &item_stack, ::Actor &actor, BlockPos position, FacingID face,
                                     const Vec3 &click_pos) const
 {
+    auto &block_source = actor.getDimensionBlockSource();
+    const auto &block = block_source.getBlock(position);
+    const auto reason = endstone::runtime::getCauldronChangeReason(item_stack);
+    std::optional<endstone::runtime::CauldronChangeContext> cauldron_context;
+    std::optional<endstone::runtime::ScopedCauldronChangeContext> cauldron_scope;
+    if (actor.isPlayer() && block.getName().getString() == "minecraft:cauldron" &&
+        reason != endstone::runtime::CauldronChangeReason::Unknown) {
+        cauldron_context.emplace(&actor, reason, block_source, position, block);
+    }
+
     const auto action = endstone::runtime::handleBucketEmptyEvent(actor, position, face, item_stack);
     if (action == endstone::runtime::BucketEmptyAction::Cancel) {
         return InteractionResult::Failure();
@@ -34,8 +54,33 @@ InteractionResult BucketItem::useOn(::ItemStack &item_stack, ::Actor &actor, Blo
         return InteractionResult::Success();
     }
 
+    if (cauldron_context) {
+        endstone::runtime::prepareCauldronChange(*cauldron_context, item_stack);
+        if (cauldron_context->cancelled) {
+            endstone::runtime::cancelBucketEmptyResult();
+            endstone::runtime::cancelBucketFillResult();
+            return InteractionResult::Success();
+        }
+        cauldron_scope.emplace(*cauldron_context);
+    }
+
+    const auto original_item_stack = item_stack;
     const auto result = ENDSTONE_VHOOK_CALL_ORIGINAL(&BucketItem::useOn, this, item_stack, actor, position, face,
                                                      click_pos);
+
+    if (cauldron_context) {
+        cauldron_scope.reset();
+        endstone::runtime::finishCauldronChange(*cauldron_context);
+    }
+
+    if (cauldron_context && cauldron_context->cancelled) {
+        endstone::runtime::cancelBucketEmptyResult();
+        endstone::runtime::cancelBucketFillResult();
+        item_stack.setUserData(nullptr);
+        item_stack = original_item_stack;
+        return InteractionResult::Success();
+    }
+
     endstone::runtime::handleBucketFillResult(result, item_stack, actor, position);
     endstone::runtime::handleBucketEmptyResult(result, item_stack, actor, position);
     return result;

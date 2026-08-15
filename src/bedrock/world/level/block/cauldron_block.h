@@ -18,7 +18,16 @@
 #include "bedrock/world/level/block/actor_block.h"
 #include "bedrock/world/level/block/block_event.h"
 
+enum class CauldronLiquidType : int {
+    Water = 0,
+    Lava = 1,
+    PowderSnow = 2,
+    Count = 3,
+};
+
 class CauldronBlock : public ActorBlock {
 public:
+    ENDSTONE_HOOK void setLiquidLevel(BlockSource &, BlockPos const &, int, CauldronLiquidType) const;
+    ENDSTONE_HOOK void tick(BlockEvents::BlockQueuedTickEvent &) const;
     ENDSTONE_HOOK void use(BlockEvents::BlockPlayerInteractEvent &event_data) const;
 };

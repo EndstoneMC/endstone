@@ -11,7 +11,7 @@
 
 namespace endstone::runtime {
 
-static constexpr std::array<std::pair<std::string_view, std::size_t>, 69> symbols = {{
+static constexpr std::array<std::pair<std::string_view, std::size_t>, 71> symbols = {{
     {"??_7ItemStackRequestActionCraftRecipeAuto@@6B@", 176340128},
     {"BlockState::StateListNode::mHead", 211163888},
     {"Enchant::mEnchants", 211010840},
@@ -36,6 +36,8 @@ static constexpr std::array<std::pair<std::string_view, std::size_t>, 69> symbol
     // CampfireBlockActor
     {"?_finishCooking@CampfireBlockActor@@AEAAXAEAVBlockSource@@H@Z", 43024512},
     // CauldronBlock
+    {"?setLiquidLevel@CauldronBlock@@QEBAXAEAVBlockSource@@AEBVBlockPos@@HW4CauldronLiquidType@@@Z", 110709024},
+    {"?tick@CauldronBlock@@QEBAXAEAVBlockQueuedTickEvent@BlockEvents@@@Z", 110690704},
     {"?use@CauldronBlock@@QEBAXAEAVBlockPlayerInteractEvent@BlockEvents@@@Z", 110693568},
     // Command
     {"?run@Command@@QEBAXAEBVCommandOrigin@@AEAVCommandOutput@@@Z", 19772480},

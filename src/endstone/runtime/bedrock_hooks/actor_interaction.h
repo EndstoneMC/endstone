@@ -14,10 +14,14 @@
 
 #pragma once
 
+#include "bedrock/common_types.h"
 #include "endstone/inventory/equipment_slot.h"
 
 class Actor;
+class BlockPos;
+class BlockSource;
 class ItemStack;
+class ItemStackBase;
 class ItemUseOnActorInventoryTransaction;
 class Player;
 
@@ -31,5 +35,6 @@ struct ActorInteractionContext {
 
 [[nodiscard]] const ActorInteractionContext *getActorInteractionContext();
 [[nodiscard]] endstone::EquipmentSlot getInteractionHand(const ::Player &, const ::ItemStack &);
+[[nodiscard]] bool canBuild(::BlockSource &, ::Actor &, const ::BlockPos &, FacingID, const ::ItemStackBase &);
 
 }  // namespace endstone::runtime
