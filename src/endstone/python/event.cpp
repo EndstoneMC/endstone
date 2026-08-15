@@ -181,6 +181,29 @@ void init_event(py::module_ &m, py::class_<Event, PyEvent> &event)
 )doc")
         .def_property_readonly("new_state", &BlockGrowEvent::getNewState, py::return_value_policy::reference,
                                "The new state of the block after it has grown.");
+    auto cauldron_level_change_event = py::class_<CauldronLevelChangeEvent, BlockEvent, ICancellable>(
+        m, "CauldronLevelChangeEvent", "Called when a cauldron's level or contents change.");
+    py::native_enum<CauldronLevelChangeEvent::ChangeReason>(
+        cauldron_level_change_event, "ChangeReason", "enum.Enum", "The reason the cauldron changed.")
+        .value("BUCKET_FILL", CauldronLevelChangeEvent::ChangeReason::BucketFill)
+        .value("BUCKET_EMPTY", CauldronLevelChangeEvent::ChangeReason::BucketEmpty)
+        .value("BOTTLE_FILL", CauldronLevelChangeEvent::ChangeReason::BottleFill)
+        .value("BOTTLE_EMPTY", CauldronLevelChangeEvent::ChangeReason::BottleEmpty)
+        .value("BANNER_WASH", CauldronLevelChangeEvent::ChangeReason::BannerWash)
+        .value("ARMOR_WASH", CauldronLevelChangeEvent::ChangeReason::ArmorWash)
+        .value("SHULKER_WASH", CauldronLevelChangeEvent::ChangeReason::ShulkerWash)
+        .value("EXTINGUISH", CauldronLevelChangeEvent::ChangeReason::Extinguish)
+        .value("EVAPORATE", CauldronLevelChangeEvent::ChangeReason::Evaporate)
+        .value("NATURAL_FILL", CauldronLevelChangeEvent::ChangeReason::NaturalFill)
+        .value("UNKNOWN", CauldronLevelChangeEvent::ChangeReason::Unknown)
+        .export_values()
+        .finalize();
+    cauldron_level_change_event
+        .def_property_readonly("entity", &CauldronLevelChangeEvent::getEntity,
+                               "The entity responsible for the change, or `None`.")
+        .def_property_readonly("reason", &CauldronLevelChangeEvent::getReason, "The reason for the change.")
+        .def_property_readonly("new_state", &CauldronLevelChangeEvent::getNewState, py::return_value_policy::reference,
+                               "The new state of the cauldron.");
     py::class_<BlockFormEvent, BlockGrowEvent>(m, "BlockFormEvent", R"doc(
     Called when a block is formed or spreads based on world conditions.
 
