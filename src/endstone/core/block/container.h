@@ -32,10 +32,7 @@ public:
     {
     }
 
-    [[nodiscard]] Inventory &getInventory() const override
-    {
-        return *inventory_;
-    }
+    [[nodiscard]] Inventory &getInventory() const override { return *inventory_; }
 
 private:
     std::unique_ptr<EndstoneInventory> inventory_;

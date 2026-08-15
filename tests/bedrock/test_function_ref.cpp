@@ -22,17 +22,11 @@ int free_function(int x)
 }
 
 struct Functor {
-    int operator()(int x)
-    {
-        return x + 1;
-    }
+    int operator()(int x) { return x + 1; }
 };
 
 struct ConstFunctor {
-    int operator()(int x) const
-    {
-        return x - 1;
-    }
+    int operator()(int x) const { return x - 1; }
 };
 
 TEST(FunctionRefTests, FreeFunction)

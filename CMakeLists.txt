@@ -10,26 +10,24 @@ set(CMAKE_CXX_EXTENSIONS OFF)
 # Compiler Check
 if (WIN32)
     if (NOT (CMAKE_CXX_COMPILER_ID MATCHES "Clang" AND CMAKE_CXX_COMPILER_FRONTEND_VARIANT STREQUAL "MSVC"))
-        message(FATAL_ERROR
-            "Endstone: clang-cl is required on Windows, but CMake detected ${CMAKE_CXX_COMPILER_ID} "
-            "(frontend variant: ${CMAKE_CXX_COMPILER_FRONTEND_VARIANT}). "
-            "Install LLVM/Clang and reconfigure with CC=clang-cl and CXX=clang-cl."
-        )
+        message(
+            FATAL_ERROR
+                "Endstone: clang-cl is required on Windows, but CMake detected ${CMAKE_CXX_COMPILER_ID} "
+                "(frontend variant: ${CMAKE_CXX_COMPILER_FRONTEND_VARIANT}). "
+                "Install LLVM/Clang and reconfigure with CC=clang-cl and CXX=clang-cl.")
     endif ()
     if (CMAKE_VERSION VERSION_LESS 3.29)
         message(FATAL_ERROR "Endstone: CMake 3.29 or newer is required on Windows to link with lld-link.")
     endif ()
     # Link with the LLVM linker (lld-link) instead of the MSVC linker
     set(CMAKE_LINKER_TYPE LLD)
-    # CMake cannot scan for C++20 module imports with clang-cl; Endstone uses no
-    # modules, so disable scanning to avoid a hard configure error.
+    # CMake cannot scan for C++20 module imports with clang-cl; Endstone uses no modules, so disable scanning to avoid a
+    # hard configure error.
     set(CMAKE_CXX_SCAN_FOR_MODULES OFF)
 elseif (UNIX)
     if (NOT CMAKE_CXX_COMPILER_ID MATCHES "Clang")
-        message(FATAL_ERROR
-            "Endstone: Clang is required on Linux, but CMake detected ${CMAKE_CXX_COMPILER_ID}. "
-            "Reconfigure with CC=clang and CXX=clang++."
-        )
+        message(FATAL_ERROR "Endstone: Clang is required on Linux, but CMake detected ${CMAKE_CXX_COMPILER_ID}. "
+                            "Reconfigure with CC=clang and CXX=clang++.")
     endif ()
     set(CMAKE_POSITION_INDEPENDENT_CODE ON)
 else ()

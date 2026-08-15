@@ -92,9 +92,7 @@ class TestCancellableCustomEvent:
         assert "low" in results
         assert "high_ignore" not in results
 
-    def test_default_handler_still_runs_when_cancelled(
-        self, server: Server, plugin: Plugin
-    ):
+    def test_default_handler_still_runs_when_cancelled(self, server: Server, plugin: Plugin):
         results = []
 
         class CancellingListener:

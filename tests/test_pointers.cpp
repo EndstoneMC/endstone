@@ -12,16 +12,16 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-#include "endstone/util/pointers.h"
-
 #include <memory>
 #include <stdexcept>
 #include <unordered_set>
 
 #include <gtest/gtest.h>
 
-using endstone::Nullable;
+#include "endstone/util/pointers.h"
+
 using endstone::NotNull;
+using endstone::Nullable;
 
 namespace {
 struct Base {
@@ -49,7 +49,7 @@ TEST(NotNullTest, DereferenceAndAccess)
 TEST(NotNullTest, CovariantConstruction)
 {
     auto derived = std::make_shared<Derived>();
-    NotNull<Base> from_shared = derived;          // shared_ptr<Derived> -> NotNull<Base>
+    NotNull<Base> from_shared = derived;  // shared_ptr<Derived> -> NotNull<Base>
     NotNull<Derived> derived_handle(derived);
     NotNull<Base> from_notnull = derived_handle;  // NotNull<Derived> -> NotNull<Base>
     EXPECT_EQ(from_shared.get(), derived);
@@ -112,8 +112,8 @@ TEST(NullableTest, ConvertsFromNotNullAndCovariant)
 {
     auto derived = std::make_shared<Derived>();
     NotNull<Derived> not_null(derived);
-    Nullable<Base> from_not_null = not_null;   // NotNull<Derived> -> Nullable<Base>
-    Nullable<Base> from_shared = derived;      // shared_ptr<Derived> -> Nullable<Base>
+    Nullable<Base> from_not_null = not_null;  // NotNull<Derived> -> Nullable<Base>
+    Nullable<Base> from_shared = derived;     // shared_ptr<Derived> -> Nullable<Base>
     EXPECT_EQ(from_not_null.get(), derived);
     EXPECT_EQ(from_shared.get(), derived);
 }

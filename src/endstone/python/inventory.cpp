@@ -81,8 +81,7 @@ void init_inventory(py::module_ &m, py::class_<ItemStack> &item_stack)
         .def_property("lore", &ItemMeta::getLore, &ItemMeta::setLore, "The lore for this item.")
         .def_property_readonly("has_damage", &ItemMeta::hasDamage, "Whether this item has damage.")
         .def_property("damage", &ItemMeta::getDamage, &ItemMeta::setDamage, "The damage.")
-        .def_property_readonly("has_enchants", &ItemMeta::hasEnchants,
-                               "Whether an enchantment exists on this meta.")
+        .def_property_readonly("has_enchants", &ItemMeta::hasEnchants, "Whether an enchantment exists on this meta.")
         .def("has_enchant", &ItemMeta::hasEnchant, py::arg("id"), R"doc(
     Checks for existence of the specified enchantment.
 
@@ -127,8 +126,7 @@ void init_inventory(py::module_ &m, py::class_<ItemStack> &item_stack)
         `True` if the item meta changed as a result of this call, `False` otherwise.
 )doc")
         .def("remove_enchants", &ItemMeta::removeEnchants, "Removes all enchantments from this item meta.")
-        .def_property_readonly("has_repair_cost", &ItemMeta::hasRepairCost,
-                               "Whether this item has a repair penalty.")
+        .def_property_readonly("has_repair_cost", &ItemMeta::hasRepairCost, "Whether this item has a repair penalty.")
         .def_property("repair_cost", &ItemMeta::getRepairCost, &ItemMeta::setRepairCost, "The repair penalty.")
         .def_property("is_unbreakable", &ItemMeta::isUnbreakable, &ItemMeta::setUnbreakable,
                       "The unbreakable tag. An unbreakable item will not lose durability.");
@@ -141,7 +139,8 @@ void init_inventory(py::module_ &m, py::class_<ItemStack> &item_stack)
         .def_property("map_view", &MapMeta::getMapView, &MapMeta::setMapView, py::return_value_policy::reference,
                       "The map view associated with this map item.");
 
-    py::classh<WritableBookMeta, ItemMeta>(m, "WritableBookMeta", "Represents the meta for a writable book that can have pages.")
+    py::classh<WritableBookMeta, ItemMeta>(m, "WritableBookMeta",
+                                           "Represents the meta for a writable book that can have pages.")
         .def_property_readonly("has_pages", &WritableBookMeta::hasPages, "Whether the book has pages.")
         .def("get_page", &WritableBookMeta::getPage, py::arg("page"), R"doc(
     Gets the specified page in the book. The given page must exist.
@@ -198,8 +197,8 @@ void init_inventory(py::module_ &m, py::class_<ItemStack> &item_stack)
         .value("COPY_OF_COPY", BookMeta::Generation::CopyOfCopy)
         .finalize();
 
-    py::classh<BookMeta, WritableBookMeta>(m, "BookMeta",
-                                            "Represents the meta for a written book that can have a title, an author, and pages.")
+    py::classh<BookMeta, WritableBookMeta>(
+        m, "BookMeta", "Represents the meta for a written book that can have a title, an author, and pages.")
         .def_property_readonly("has_title", &BookMeta::hasTitle, "Whether the book has a title.")
         .def_property("title", &BookMeta::getTitle, &BookMeta::setTitle, "The title of the book.")
         .def_property_readonly("has_author", &BookMeta::hasAuthor, "Whether the book has an author.")
@@ -208,7 +207,7 @@ void init_inventory(py::module_ &m, py::class_<ItemStack> &item_stack)
         .def_property("generation", &BookMeta::getGeneration, &BookMeta::setGeneration, "The generation of the book.");
 
     py::classh<CrossbowMeta, ItemMeta>(m, "CrossbowMeta",
-                                        "Represents the meta for a crossbow that can have a charged projectile.")
+                                       "Represents the meta for a crossbow that can have a charged projectile.")
         .def_property_readonly("has_charged_projectile", &CrossbowMeta::hasChargedProjectile,
                                "Whether the crossbow has a charged projectile.")
         .def_property("charged_projectile", &CrossbowMeta::getChargedProjectile, &CrossbowMeta::setChargedProjectile,
@@ -275,10 +274,8 @@ void init_inventory(py::module_ &m, py::class_<ItemStack> &item_stack)
                       "The type of this item.")
         .def_property("amount", &ItemStack::getAmount, &ItemStack::setAmount, "The amount of items in this stack.")
         .def_property("data", &ItemStack::getData, &ItemStack::setData, "The data for this stack of items.")
-        .def_property_readonly("translation_key", &ItemStack::getTranslationKey,
-                               "The translation key for this item.")
-        .def_property_readonly("max_stack_size", &ItemStack::getMaxStackSize,
-                               "The maximum stack size for this item.")
+        .def_property_readonly("translation_key", &ItemStack::getTranslationKey, "The translation key for this item.")
+        .def_property_readonly("max_stack_size", &ItemStack::getMaxStackSize, "The maximum stack size for this item.")
         .def("is_similar", &ItemStack::isSimilar, py::arg("other"), R"doc(
     Checks if the two stacks are equal, but does not consider stack size (amount).
 
@@ -371,8 +368,8 @@ void init_inventory(py::module_ &m, py::class_<ItemStack> &item_stack)
 )doc")
         .def_property("contents", &Inventory::getContents, &Inventory::setContents,
                       "All `ItemStack` objects from the inventory. Empty slots are represented as `None`.")
-        .def("contains", py::overload_cast<const ItemStack &, int>(&Inventory::contains, py::const_),
-             py::arg("item"), py::arg("amount"), R"doc(
+        .def("contains", py::overload_cast<const ItemStack &, int>(&Inventory::contains, py::const_), py::arg("item"),
+             py::arg("amount"), R"doc(
     Checks if the inventory contains at least the minimum amount specified of exactly matching `ItemStack` objects.
 
     Note:

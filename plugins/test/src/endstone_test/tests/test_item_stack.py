@@ -40,9 +40,7 @@ def test_create_item_bad_amount(amount):
     with pytest.raises(RuntimeError) as err_info:
         _ = ItemStack("minecraft:apple", amount)
 
-    assert f"Item stack amount must be between 1 to 255, got {amount}." == str(
-        err_info.value
-    )
+    assert f"Item stack amount must be between 1 to 255, got {amount}." == str(err_info.value)
 
 
 @pytest.mark.parametrize(

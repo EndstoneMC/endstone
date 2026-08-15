@@ -95,25 +95,25 @@ struct PlayerAuthInputPacketPayload {
         INPUT_NUM = 66,
     };
 
-    Vec2 rot;                                                                      // +0
-    Vec3 pos;                                                                      // +8
-    float y_head_rot;                                                              // +20
-    Vec3 pos_delta;                                                                // +24
-    Vec2 vehicle_rot;                                                              // +36
-    Vec2 analog_move_vector;                                                       // +44
-    Vec2 move;                                                                     // +52
-    Vec2 interact_rotation;                                                        // +60
-    Vec3 camera_orientation;                                                       // +68
-    Vec2 raw_move_vector;                                                          // +80
-    std::bitset<INPUT_NUM> input_data;                                             // +88
-    InputMode input_mode;                                                          // +104
-    ClientPlayMode player_mode;                                                    // +108
-    NewInteractionModel new_interaction_model;                                     // +112
-    PlayerInputTick client_tick;                                                   // +120
-    std::unique_ptr<PackedItemUseLegacyInventoryTransaction> item_use_transaction; // +128
-    std::unique_ptr<ItemStackRequestData> item_stack_request;                      // +136
-    PlayerBlockActions player_block_actions;                                       // +144
-    ActorUniqueID client_predicted_vehicle;                                        // +168
+    Vec2 rot;                                                                       // +0
+    Vec3 pos;                                                                       // +8
+    float y_head_rot;                                                               // +20
+    Vec3 pos_delta;                                                                 // +24
+    Vec2 vehicle_rot;                                                               // +36
+    Vec2 analog_move_vector;                                                        // +44
+    Vec2 move;                                                                      // +52
+    Vec2 interact_rotation;                                                         // +60
+    Vec3 camera_orientation;                                                        // +68
+    Vec2 raw_move_vector;                                                           // +80
+    std::bitset<INPUT_NUM> input_data;                                              // +88
+    InputMode input_mode;                                                           // +104
+    ClientPlayMode player_mode;                                                     // +108
+    NewInteractionModel new_interaction_model;                                      // +112
+    PlayerInputTick client_tick;                                                    // +120
+    std::unique_ptr<PackedItemUseLegacyInventoryTransaction> item_use_transaction;  // +128
+    std::unique_ptr<ItemStackRequestData> item_stack_request;                       // +136
+    PlayerBlockActions player_block_actions;                                        // +144
+    ActorUniqueID client_predicted_vehicle;                                         // +168
 };
 BEDROCK_STATIC_ASSERT_SIZE(PlayerAuthInputPacketPayload, 176, 176);
 

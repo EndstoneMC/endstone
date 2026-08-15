@@ -740,7 +740,10 @@ std::unique_ptr<BlockData> EndstoneServer::createBlockData(BlockTypeId type, Blo
 {
     std::unordered_map<std::string, std::variant<int, std::string, bool>> states;
     for (const auto &state : block_states) {
-        std::visit(overloaded{[&](auto &&arg) { states.emplace(state.first, arg); }}, state.second);
+        std::visit(overloaded{[&](auto &&arg) {
+                       states.emplace(state.first, arg);
+                   }},
+                   state.second);
     }
     const auto block_descriptor =
         ScriptModuleMinecraft::ScriptBlockUtils::createBlockDescriptor(std::string(type), states);

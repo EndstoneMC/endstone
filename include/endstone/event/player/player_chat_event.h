@@ -30,8 +30,8 @@ namespace endstone {
 class PlayerChatEvent final : public Cancellable<PlayerEvent> {
 public:
     ENDSTONE_EVENT(PlayerChatEvent);
-    explicit PlayerChatEvent(const NotNull<Player> &player, std::string message, std::optional<std::vector<NotNull<Player>>> recipients,
-                             std::string format = "<{0}> {1}")
+    explicit PlayerChatEvent(const NotNull<Player> &player, std::string message,
+                             std::optional<std::vector<NotNull<Player>>> recipients, std::string format = "<{0}> {1}")
         : Cancellable(player), message_(std::move(message)), format_(std::move(format)),
           recipients_(std::move(recipients))
     {

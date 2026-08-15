@@ -137,8 +137,7 @@ std::unique_ptr<BlockState> EndstoneBlock::captureState() const
         case BlockActorType::HangingSign:
             return std::make_unique<EndstoneSign>(*this, static_cast<SignBlockActor &>(*block_entity));
         case BlockActorType::MobSpawner:
-            return std::make_unique<EndstoneCreatureSpawner>(*this,
-                                                             static_cast<MobSpawnerBlockActor &>(*block_entity));
+            return std::make_unique<EndstoneCreatureSpawner>(*this, static_cast<MobSpawnerBlockActor &>(*block_entity));
         case BlockActorType::Campfire:
             return std::make_unique<EndstoneCampfire>(*this, static_cast<CampfireBlockActor &>(*block_entity));
         case BlockActorType::Lectern:

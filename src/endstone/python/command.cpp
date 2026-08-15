@@ -65,8 +65,7 @@ void init_command(py::module &m, py_class<CommandSender> &command_sender)
         .def_property_readonly("name", &CommandSender::getName, "The name of this command sender.");
 
     py_class<BlockCommandSender>(m, "BlockCommandSender", "Represents a block command sender.")
-        .def_property_readonly("block", &BlockCommandSender::getBlock,
-                               "The block this command sender belongs to.");
+        .def_property_readonly("block", &BlockCommandSender::getBlock, "The block this command sender belongs to.");
 
     py_class<CommandSenderWrapper>(
         m, "CommandSenderWrapper",

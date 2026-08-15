@@ -12,7 +12,8 @@ class DrilldownPie(CustomChart):
 
         Args:
             chart_id (str): The id of the chart.
-            get_values (Callable[[], Dict[str, Dict[str, int]] | None]): The callable which is used to request the chart data.
+            get_values (Callable[[], Dict[str, Dict[str, int]] | None]): The callable which is used to request the
+                chart data.
         """
 
         super().__init__(chart_id)

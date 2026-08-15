@@ -25,7 +25,10 @@ namespace endstone {
 class PlayerInteractActorEvent : public Cancellable<PlayerEvent> {
 public:
     ENDSTONE_EVENT(PlayerInteractActorEvent);
-    explicit PlayerInteractActorEvent(const NotNull<Player> &player, const NotNull<Actor> &actor) : Cancellable(player), actor_(actor) {}
+    explicit PlayerInteractActorEvent(const NotNull<Player> &player, const NotNull<Actor> &actor)
+        : Cancellable(player), actor_(actor)
+    {
+    }
     ~PlayerInteractActorEvent() override = default;
 
     /**

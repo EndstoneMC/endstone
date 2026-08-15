@@ -10,9 +10,7 @@ def test_create_block_data_default_block_states(server: Server) -> None:
 
 
 def test_create_block_data_custom_block_states(server: Server) -> None:
-    block_data = server.create_block_data(
-        "minecraft:standing_sign", {"ground_sign_direction": 8}
-    )
+    block_data = server.create_block_data("minecraft:standing_sign", {"ground_sign_direction": 8})
     assert block_data.type == "minecraft:standing_sign"
     assert "ground_sign_direction" in block_data.block_states
     assert block_data.block_states["ground_sign_direction"] == 8

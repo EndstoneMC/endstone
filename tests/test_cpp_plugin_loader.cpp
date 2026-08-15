@@ -36,10 +36,7 @@ protected:
     }
 
     // Tear Down
-    void TearDown() override
-    {
-        loader_.reset();
-    }
+    void TearDown() override { loader_.reset(); }
 
     testing::NiceMock<MockServer> server_;
     std::unique_ptr<endstone::core::CppPluginLoader> loader_;

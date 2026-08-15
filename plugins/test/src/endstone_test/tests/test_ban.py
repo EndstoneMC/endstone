@@ -111,9 +111,7 @@ class TestPlayerBanListBasicOperations:
         assert entry.source == source
         assert entry.expiration is not None
 
-    def test_is_banned_returns_false_for_unbanned_player(
-        self, player_ban_list: PlayerBanList
-    ) -> None:
+    def test_is_banned_returns_false_for_unbanned_player(self, player_ban_list: PlayerBanList) -> None:
         """Test is_banned returns False for a player not in the ban list."""
         assert not player_ban_list.is_banned("nonexistent_player")
 
@@ -253,9 +251,7 @@ class TestPlayerBanListEntries:
         for name in names:
             assert name in entry_names
 
-    def test_entries_updated_after_removal(
-        self, player_ban_list: PlayerBanList
-    ) -> None:
+    def test_entries_updated_after_removal(self, player_ban_list: PlayerBanList) -> None:
         """Test that entries list is updated after ban removal."""
         names = ["remove_entry_1", "remove_entry_2"]
         for name in names:
@@ -350,9 +346,7 @@ class TestIpBanListBasicOperations:
         source = "AdminPanel"
         expires = datetime.now(timezone.utc) + timedelta(days=30)
 
-        entry = ip_ban_list.add_ban(
-            ip_address, reason=reason, expires=expires, source=source
-        )
+        entry = ip_ban_list.add_ban(ip_address, reason=reason, expires=expires, source=source)
 
         assert entry is not None
         assert entry.address == ip_address
@@ -360,9 +354,7 @@ class TestIpBanListBasicOperations:
         assert entry.source == source
         assert entry.expiration is not None
 
-    def test_is_ip_banned_returns_false_for_unbanned(
-        self, ip_ban_list: IpBanList
-    ) -> None:
+    def test_is_ip_banned_returns_false_for_unbanned(self, ip_ban_list: IpBanList) -> None:
         """Test is_banned returns False for an unbanned IP."""
         assert not ip_ban_list.is_banned("10.0.0.1")
 
@@ -535,9 +527,7 @@ class TestPlayerBanEntryProperties:
         entry = player_ban_list.add_ban("uuid_prop_test", uuid=player_uuid)
         assert entry.unique_id == player_uuid
 
-    def test_unique_id_property_when_not_set(
-        self, player_ban_list: PlayerBanList
-    ) -> None:
+    def test_unique_id_property_when_not_set(self, player_ban_list: PlayerBanList) -> None:
         """Test the unique_id property when UUID is not provided."""
         entry = player_ban_list.add_ban("no_uuid_test")
         assert entry.unique_id is None
@@ -577,9 +567,7 @@ class TestIpBanEntryProperties:
 class TestBanCommandIntegration:
     """Tests for ban/unban command integration."""
 
-    def test_ban_via_api_unban_via_command(
-        self, server: Server, player_ban_list: PlayerBanList
-    ) -> None:
+    def test_ban_via_api_unban_via_command(self, server: Server, player_ban_list: PlayerBanList) -> None:
         """Test banning via API and unbanning via command."""
         player_name = "api_ban_cmd_unban"
         player_ban_list.add_ban(player_name, reason="API ban test")
@@ -588,22 +576,16 @@ class TestBanCommandIntegration:
         server.dispatch_command(server.command_sender, f'unban "{player_name}"')
         assert not player_ban_list.is_banned(player_name)
 
-    def test_ban_via_command_unban_via_api(
-        self, server: Server, player_ban_list: PlayerBanList
-    ) -> None:
+    def test_ban_via_command_unban_via_api(self, server: Server, player_ban_list: PlayerBanList) -> None:
         """Test banning via command and unbanning via API."""
         player_name = "cmd_ban_api_unban"
-        server.dispatch_command(
-            server.command_sender, f'ban "{player_name}" Test reason'
-        )
+        server.dispatch_command(server.command_sender, f'ban "{player_name}" Test reason')
         assert player_ban_list.is_banned(player_name)
 
         player_ban_list.remove_ban(player_name)
         assert not player_ban_list.is_banned(player_name)
 
-    def test_ban_command_with_special_characters(
-        self, server: Server, player_ban_list: PlayerBanList
-    ) -> None:
+    def test_ban_command_with_special_characters(self, server: Server, player_ban_list: PlayerBanList) -> None:
         """Test ban command with special characters in reason."""
         player_name = "special_char_test"
         reason = ":emoji: special & characters!"
@@ -629,9 +611,7 @@ class TestBanEdgeCases:
         assert entry is not None
         # Empty reason should be allowed or use default
 
-    def test_ban_player_with_spaces_in_name(
-        self, player_ban_list: PlayerBanList
-    ) -> None:
+    def test_ban_player_with_spaces_in_name(self, player_ban_list: PlayerBanList) -> None:
         """Test banning a player with spaces in their name."""
         player_name = "player with spaces"
         entry = player_ban_list.add_ban(player_name)

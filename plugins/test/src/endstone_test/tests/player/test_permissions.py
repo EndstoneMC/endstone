@@ -31,9 +31,7 @@ def test_op_permissions(permissible: Player):
 def test_explicit_grant_non_op(permissible: Player, plugin: Plugin):
     attachment = permissible.add_attachment(plugin, "minecraft.command.kick", True)
     assert not permissible.is_op, "Player remains non-op"
-    assert permissible.has_permission("minecraft.command.kick"), (
-        "Explicit grant should allow the permission"
-    )
+    assert permissible.has_permission("minecraft.command.kick"), "Explicit grant should allow the permission"
     permissible.remove_attachment(attachment)
     assert not permissible.has_permission("minecraft.command.kick")
 
@@ -42,8 +40,6 @@ def test_explicit_deny_op(permissible: Player, plugin: Plugin):
     permissible.is_op = True
     attachment = permissible.add_attachment(plugin, "minecraft.command.kick", False)
     assert permissible.is_op, "Player is op"
-    assert not permissible.has_permission("minecraft.command.kick"), (
-        "Explicit deny should override op status"
-    )
+    assert not permissible.has_permission("minecraft.command.kick"), "Explicit deny should override op status"
     permissible.remove_attachment(attachment)
     assert permissible.has_permission("minecraft.command.kick")

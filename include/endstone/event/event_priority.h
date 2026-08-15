@@ -25,7 +25,8 @@ namespace endstone {
  */
 enum class EventPriority {
     /**
-     * Event call is of very low importance and should be run first, to allow other plugins to further customise the outcome.
+     * Event call is of very low importance and should be run first, to allow other plugins to further customise the
+     * outcome.
      */
     Lowest = 0,
     /**

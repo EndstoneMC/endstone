@@ -53,8 +53,8 @@ public:
         RightClickAir,
     };
 
-    PlayerInteractEvent(const NotNull<Player> &player, Action action, std::optional<ItemStack> item, Block *block_clicked,
-                        BlockFace block_face, std::optional<Vector> clicked_position)
+    PlayerInteractEvent(const NotNull<Player> &player, Action action, std::optional<ItemStack> item,
+                        Block *block_clicked, BlockFace block_face, std::optional<Vector> clicked_position)
         : Cancellable(player), action_(action), item_(std::move(item)), block_clicked_(block_clicked),
           block_face_(block_face), clicked_position_(std::move(clicked_position))
     {

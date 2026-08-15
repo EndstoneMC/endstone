@@ -32,7 +32,6 @@ class ItemMetaExtras;
  */
 class ItemMeta : public Object {
 public:
-
     /**
      * Checks for existence of a display name.
      *
@@ -205,6 +204,5 @@ public:
      * @internal Internal use only.
      */
     [[nodiscard]] virtual const core::ItemMetaExtras &getExtras() const = 0;
-
 };
 }  // namespace endstone

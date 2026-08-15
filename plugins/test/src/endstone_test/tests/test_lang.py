@@ -119,9 +119,7 @@ def test_translate_with_explicit_locale(server: Server) -> None:
 def test_translate_with_params_and_locale(server: Server) -> None:
     """Verify translation with params and locale returns a string."""
     language = server.language
-    result = language.translate(
-        "commands.give.success", ["apple", "1", "player"], locale="en_US"
-    )
+    result = language.translate("commands.give.success", ["apple", "1", "player"], locale="en_US")
     assert isinstance(result, str)
     assert result == "Gave apple * 1 to player"
 

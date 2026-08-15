@@ -129,8 +129,7 @@ void init_util(py::module &m, py::class_<Vector> &vector)
 )doc")
         .def("normalize", &Vector::normalize, "Converts this vector to a unit vector (a vector with length of 1).")
         .def("zero", &Vector::zero, "Zero this vector's components.")
-        .def_property_readonly("is_zero", &Vector::isZero,
-                               "`True` if each component of this vector is equal to 0.")
+        .def_property_readonly("is_zero", &Vector::isZero, "`True` if each component of this vector is equal to 0.")
         .def("normalize_zero", &Vector::normalizeZeros, "Converts each component of value `-0.0` to `0.0`.")
         .def("is_in_aabb", &Vector::isInAABB, py::arg("min"), py::arg("max"), R"doc(
     Returns whether this vector is in an axis-aligned bounding box.

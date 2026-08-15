@@ -16,10 +16,7 @@
 
 class TestPlugin : public endstone::Plugin {
 public:
-    void onLoad() override
-    {
-        getLogger().info("onLoad is called");
-    }
+    void onLoad() override { getLogger().info("onLoad is called"); }
 
     void onEnable() override
     {
@@ -27,10 +24,7 @@ public:
         registerEvent(&TestPlugin::onPlayerDeath, *this);
     }
 
-    void onDisable() override
-    {
-        getLogger().info("onDisable is called");
-    }
+    void onDisable() override { getLogger().info("onDisable is called"); }
 
     void onPlayerDeath(const endstone::PlayerDeathEvent &event)
     {

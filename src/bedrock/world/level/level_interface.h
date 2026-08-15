@@ -34,10 +34,10 @@
 #include "bedrock/network/packet_sender.h"
 #include "bedrock/platform/uuid.h"
 #include "bedrock/resources/resource_pack_manager.h"
-#include "bedrock/shared_types/height.h"
 #include "bedrock/server/commands/command_origin.h"
 #include "bedrock/server/commands/command_registry.h"
 #include "bedrock/server/commands/standard/teleport_command.h"
+#include "bedrock/shared_types/height.h"
 #include "bedrock/util/id_type.h"
 #include "bedrock/util/level_tag_registry_types.h"
 #include "bedrock/util/random.h"
@@ -156,8 +156,7 @@ public:
     [[nodiscard]] virtual Bedrock::NotNullNonOwnerPtr<const ActorFetcher> getActorFetcher() const = 0;
     [[nodiscard]] virtual Actor *getRuntimeEntity(ActorRuntimeID, bool) const = 0;
     virtual Bedrock::NotNullNonOwnerPtr<ActorRuntimeIDManager> getActorRuntimeIDManager() = 0;
-    [[nodiscard]] virtual Bedrock::NotNullNonOwnerPtr<const ActorRuntimeIDManager> getActorRuntimeIDManager()
-        const = 0;
+    [[nodiscard]] virtual Bedrock::NotNullNonOwnerPtr<const ActorRuntimeIDManager> getActorRuntimeIDManager() const = 0;
     [[nodiscard]] virtual Mob *getMob(ActorUniqueID) const = 0;
     [[nodiscard]] virtual Player *getPlayer(std::string const &) const = 0;
     [[nodiscard]] virtual Player *getPlayer(mce::UUID const &) const = 0;

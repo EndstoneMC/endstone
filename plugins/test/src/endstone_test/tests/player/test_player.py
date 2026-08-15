@@ -225,9 +225,7 @@ def test_player_get_tags(player: Player, server: Server):
     """Verify scoreboard tags added via commands are visible on the player."""
     server.dispatch_command(server.command_sender, f'tag "{player.name}" add test_tag')
     assert "test_tag" in player.scoreboard_tags
-    server.dispatch_command(
-        server.command_sender, f'tag "{player.name}" remove test_tag'
-    )
+    server.dispatch_command(server.command_sender, f'tag "{player.name}" remove test_tag')
     assert "test_tag" not in player.scoreboard_tags
 
 
@@ -237,9 +235,7 @@ def test_player_add_tag(player: Player, server: Server):
     assert "test_tag" in player.scoreboard_tags
 
     assert not player.add_scoreboard_tag("test_tag")
-    server.dispatch_command(
-        server.command_sender, f'tag "{player.name}" remove test_tag'
-    )
+    server.dispatch_command(server.command_sender, f'tag "{player.name}" remove test_tag')
 
 
 def test_player_remove_tag(player: Player, server: Server):

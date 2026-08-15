@@ -33,10 +33,7 @@ using namespace endstone;
 
 class ObjectTypeTest : public ::testing::Test {
 protected:
-    static void SetUpTestSuite()
-    {
-        core::registerTypes();
-    }
+    static void SetUpTestSuite() { core::registerTypes(); }
 };
 
 // --- Permissible / CommandSender / Actor hierarchy ---

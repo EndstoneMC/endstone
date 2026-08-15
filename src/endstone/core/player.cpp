@@ -619,7 +619,11 @@ void EndstonePlayer::sendForm(FormVariant form)
     auto packet = MinecraftPackets::createPacket(MinecraftPacketIds::ShowModalForm);
     std::shared_ptr<ModalFormRequestPacket> pk = std::static_pointer_cast<ModalFormRequestPacket>(packet);
     pk->payload.form_id = ++form_ids_;
-    pk->payload.form_json = std::visit(overloaded{[](auto &&arg) { return FormCodec::toJson(arg); }}, form).dump();
+    pk->payload.form_json = std::visit(overloaded{[](auto &&arg) {
+                                           return FormCodec::toJson(arg);
+                                       }},
+                                       form)
+                                .dump();
     forms_.emplace(pk->payload.form_id, std::move(form));
     getHandle().sendNetworkPacket(*packet);
 }
@@ -815,12 +819,8 @@ bool EndstonePlayer::handlePacket(Packet &packet)
 
         const Location from = getLocation();
         const auto height_offset = ActorOffset::getHeightOffset(actor.getEntity());
-        const Location to{getDimension(),
-                          input.pos.x,
-                          input.pos.y - height_offset,
-                          input.pos.z,
-                          input.rot.x,
-                          input.rot.y};
+        const Location to{getDimension(), input.pos.x, input.pos.y - height_offset,
+                          input.pos.z,    input.rot.x, input.rot.y};
 
         if (pk.getInput(PlayerAuthInputPacket::InputData::Jumping) && on_ground && delta.y > 0.0F) {
             PlayerJumpEvent e{getSelf(), from, to};

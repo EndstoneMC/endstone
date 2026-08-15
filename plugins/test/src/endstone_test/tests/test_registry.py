@@ -65,14 +65,9 @@ def test_excess_constants(server: Server, registry_type):
     """Every static Identifier constant on the class should resolve in the registry."""
     registry = server.get_registry(registry_type)
     constants = _get_enum_constants(registry_type)
-    excess = [
-        f"{name} ({value})"
-        for name, value in constants.items()
-        if registry.get(value) is None
-    ]
+    excess = [f"{name} ({value})" for name, value in constants.items() if registry.get(value) is None]
     assert not excess, (
-        f"{len(excess)} excess constant(s) in {registry_type.__name__} "
-        f"that do not exist in the registry: {excess}"
+        f"{len(excess)} excess constant(s) in {registry_type.__name__} that do not exist in the registry: {excess}"
     )
 
 
@@ -84,8 +79,7 @@ def test_missing_constants(server: Server, registry_type):
     exported_ids = set(constants.values())
     missing = [str(item.id) for item in registry if str(item.id) not in exported_ids]
     assert not missing, (
-        f"{len(missing)} registry id(s) in {registry_type.__name__} "
-        f"not exported as constants: {missing}"
+        f"{len(missing)} registry id(s) in {registry_type.__name__} not exported as constants: {missing}"
     )
 
 

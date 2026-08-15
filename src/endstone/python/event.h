@@ -14,9 +14,8 @@
 
 #pragma once
 
-#include <string>
-
 #include <format>
+#include <string>
 
 #include <pybind11/pybind11.h>
 

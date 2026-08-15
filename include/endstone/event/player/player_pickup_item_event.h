@@ -27,7 +27,8 @@ class PlayerPickupItemEvent : public Cancellable<PlayerEvent> {
 public:
     ENDSTONE_EVENT(PlayerPickupItemEvent);
 
-    explicit PlayerPickupItemEvent(const NotNull<Player> &player, const NotNull<Item> &item) : Cancellable(player), item_(item) {};
+    explicit PlayerPickupItemEvent(const NotNull<Player> &player, const NotNull<Item> &item)
+        : Cancellable(player), item_(item) {};
 
     /**
      * Gets the Item picked up by the entity.

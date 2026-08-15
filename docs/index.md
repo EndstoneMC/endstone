@@ -9,19 +9,19 @@ functionality, design innovative and bespoke player experiences.
 <div class="grid cards" markdown>
 
 -   **Install Endstone server**
-  
+
     ---
-  
+
     Follow the comprehensive guide to install and configure your Endstone server.
-  
+
     [**:octicons-arrow-right-24: Getting Started**](getting-started/installation.md)
-  
+
 -   **Write your first plugin**
-  
+
     ---
-  
+
     Our step-by-step tutorial takes you from zero to hero as you create your first plugin.
-  
+
     [**:octicons-arrow-right-24: Tutorials**](tutorials/create-your-first-plugin.md)
 
 </div>

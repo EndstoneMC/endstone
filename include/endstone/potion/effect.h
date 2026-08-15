@@ -40,8 +40,7 @@ public:
      */
     constexpr Effect(EffectId type, std::optional<int> duration, int amplifier, bool ambient = false,
                      bool particles = true, bool icon = true)
-        : type_(type), duration_(duration), amplifier_(amplifier), ambient_(ambient), particles_(particles),
-          icon_(icon)
+        : type_(type), duration_(duration), amplifier_(amplifier), ambient_(ambient), particles_(particles), icon_(icon)
     {
     }
 

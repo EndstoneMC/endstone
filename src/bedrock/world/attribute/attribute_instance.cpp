@@ -186,8 +186,8 @@ void AttributeInstance::removeModifier(const AttributeModifier &modifier, Attrib
 
 bool AttributeInstance::removeModifier(const mce::UUID &id, AttributeModificationContext context)
 {
-    const auto it = std::ranges::find_if(modifier_list_,
-                                         [&](const AttributeModifier &existing) { return existing.getId() == id; });
+    const auto it =
+        std::ranges::find_if(modifier_list_, [&](const AttributeModifier &existing) { return existing.getId() == id; });
     if (it == modifier_list_.end()) {
         return false;
     }

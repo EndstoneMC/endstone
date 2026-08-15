@@ -1,12 +1,13 @@
+#include <RakNetTypes.h>
+#include <RakNetVersion.h>
+#include <RakPeerInterface.h>
+
 #include <cstdio>
 #include <cstdlib>
 
-#include <RakPeerInterface.h>
-#include <RakNetTypes.h>
-#include <RakNetVersion.h>
-
-int main() {
-    RakNet::RakPeerInterface* peer = RakNet::RakPeerInterface::GetInstance();
+int main()
+{
+    RakNet::RakPeerInterface *peer = RakNet::RakPeerInterface::GetInstance();
     if (peer == nullptr) {
         std::fprintf(stderr, "RakPeerInterface::GetInstance returned null\n");
         return 1;
@@ -29,9 +30,7 @@ int main() {
         return 3;
     }
 
-    std::printf("raknet ok: version=%s guid=%llu\n",
-                RAKNET_VERSION,
-                static_cast<unsigned long long>(guid.g));
+    std::printf("raknet ok: version=%s guid=%llu\n", RAKNET_VERSION, static_cast<unsigned long long>(guid.g));
 
     peer->Shutdown(0);
     RakNet::RakPeerInterface::DestroyInstance(peer);

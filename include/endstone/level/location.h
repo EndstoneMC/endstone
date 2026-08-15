@@ -35,8 +35,8 @@ class Location {
 public:
     template <std::convertible_to<float> T>
     Location(const Nullable<Dimension> &dimension, T x, T y, T z, const float pitch = 0.0, const float yaw = 0.0)
-        : dimension_(dimension.get()), x_(static_cast<float>(x)), y_(static_cast<float>(y)),
-          z_(static_cast<float>(z)), pitch_(pitch), yaw_(yaw)
+        : dimension_(dimension.get()), x_(static_cast<float>(x)), y_(static_cast<float>(y)), z_(static_cast<float>(z)),
+          pitch_(pitch), yaw_(yaw)
     {
     }
 

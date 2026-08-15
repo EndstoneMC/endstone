@@ -328,8 +328,31 @@ class Signature:
 
 # Opcodes that carry a ModRM byte and can therefore address rip-relatively.
 _MODRM_OPS = frozenset(
-    {0x8D, 0x8B, 0x89, 0x8A, 0x88, 0x63, 0x39, 0x3B, 0x85, 0x01, 0x03, 0x29, 0x2B,
-     0x31, 0x33, 0x09, 0x0B, 0x21, 0x23, 0xC7, 0xFF, 0x83, 0x81}
+    {
+        0x8D,
+        0x8B,
+        0x89,
+        0x8A,
+        0x88,
+        0x63,
+        0x39,
+        0x3B,
+        0x85,
+        0x01,
+        0x03,
+        0x29,
+        0x2B,
+        0x31,
+        0x33,
+        0x09,
+        0x0B,
+        0x21,
+        0x23,
+        0xC7,
+        0xFF,
+        0x83,
+        0x81,
+    }
 )
 
 
@@ -410,7 +433,7 @@ def find_signature(section: lief.Section, sig: Signature) -> int:
             raise NameError(
                 f"rip_relative is set for {sig.name} but the bytes at rip_offset "
                 f"{sig.rip_offset} are not a rip-relative instruction "
-                f"({bytes(mem[matches[0]:matches[0] + sig.rip_offset])[-4:].hex(' ')} | disp). "
+                f"({bytes(mem[matches[0] : matches[0] + sig.rip_offset])[-4:].hex(' ')} | disp). "
                 f"Drop rip_relative/rip_offset if this is a direct prologue pattern."
             )
         logger.debug(f"rip_relative form: {form}")
@@ -517,17 +540,25 @@ class _PdbSymbols:
         self._dh.SymInitialize.argtypes = [wintypes.HANDLE, wintypes.LPCSTR, wintypes.BOOL]
         self._dh.SymInitialize.restype = wintypes.BOOL
         self._dh.SymLoadModuleEx.argtypes = [
-            wintypes.HANDLE, wintypes.HANDLE, wintypes.LPCSTR, wintypes.LPCSTR,
-            ctypes.c_ulonglong, wintypes.DWORD, ctypes.c_void_p, wintypes.DWORD,
+            wintypes.HANDLE,
+            wintypes.HANDLE,
+            wintypes.LPCSTR,
+            wintypes.LPCSTR,
+            ctypes.c_ulonglong,
+            wintypes.DWORD,
+            ctypes.c_void_p,
+            wintypes.DWORD,
         ]
         self._dh.SymLoadModuleEx.restype = ctypes.c_ulonglong
         self._dh.SymFromName.argtypes = [wintypes.HANDLE, wintypes.LPCSTR, ctypes.POINTER(_SYMBOL_INFO)]
         self._dh.SymFromName.restype = wintypes.BOOL
-        self._enum_cb = ctypes.WINFUNCTYPE(
-            wintypes.BOOL, ctypes.POINTER(_SYMBOL_INFO), wintypes.ULONG, ctypes.c_void_p
-        )
+        self._enum_cb = ctypes.WINFUNCTYPE(wintypes.BOOL, ctypes.POINTER(_SYMBOL_INFO), wintypes.ULONG, ctypes.c_void_p)
         self._dh.SymEnumSymbols.argtypes = [
-            wintypes.HANDLE, ctypes.c_ulonglong, wintypes.LPCSTR, self._enum_cb, ctypes.c_void_p,
+            wintypes.HANDLE,
+            ctypes.c_ulonglong,
+            wintypes.LPCSTR,
+            self._enum_cb,
+            ctypes.c_void_p,
         ]
         self._dh.SymEnumSymbols.restype = wintypes.BOOL
         self._dh.SymCleanup.argtypes = [wintypes.HANDLE]
@@ -593,9 +624,7 @@ def _locate_pe(pdb_path: Path, config: dict) -> Path:
     return dest
 
 
-def _scan_pe_fallback(
-    pdb_path: Path, config: dict, unresolved: list, result: dict[str, int]
-) -> None:
+def _scan_pe_fallback(pdb_path: Path, config: dict, unresolved: list, result: dict[str, int]) -> None:
     """
     Byte-pattern scan the PE for `unresolved` config entries -- functions the
     PDB can't pin to one address (ICF-folded, or overloaded non-publics).
@@ -714,9 +743,7 @@ def main(inputs: tuple[Path, ...], pdb_path: Path | None) -> None:
             sigs = scan_pdb(pdb_path, config)
         else:
             if pdb_path is not None:
-                logger.warning(
-                    f"--pdb applies only to a windows config; scanning {config_path} by signature"
-                )
+                logger.warning(f"--pdb applies only to a windows config; scanning {config_path} by signature")
 
             zip_path = download_server(version, platform)
 
@@ -780,9 +807,7 @@ def write_symbols_header(
     lines.append("")
     lines.append("namespace endstone::runtime {")
     lines.append("")
-    lines.append(
-        f"static constexpr std::array<std::pair<std::string_view, std::size_t>, {non_zero}> symbols = {{{{"
-    )
+    lines.append(f"static constexpr std::array<std::pair<std::string_view, std::size_t>, {non_zero}> symbols = {{{{")
     for scope, scoped_sigs in sorted(group_by_scope.items(), key=lambda x: x[0] or ""):
         if scope is not None:
             lines.append(f"    // {scope}")

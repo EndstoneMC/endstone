@@ -38,8 +38,8 @@ enum class CommandOriginType : std::uint8_t {
 };
 
 struct CommandOriginData {
-    CommandOriginType type;   // +0
-    mce::UUID uuid;           // +8
-    std::string request_id;   // +24
-    std::int64_t player_id;   // +56 (+48)
+    CommandOriginType type;  // +0
+    mce::UUID uuid;          // +8
+    std::string request_id;  // +24
+    std::int64_t player_id;  // +56 (+48)
 };

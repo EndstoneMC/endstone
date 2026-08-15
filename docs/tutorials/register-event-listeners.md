@@ -41,7 +41,7 @@ server.
         {
             getLogger().info("onEnable is called");
         }
-    
+
         void onPlayerJoin(endstone::PlayerJoinEvent& event)
         {
             getServer().broadcastMessage(ColorFormat::Yellow + "{} has joined the server", event.getPlayer().getName());
@@ -91,7 +91,7 @@ Now, we need to register our event handlers to the Endstone event system.
             getLogger().info("onEnable is called");
             registerEvent(&MyPlugin::onPlayerJoin, *this);
         }
-    
+
         void onPlayerJoin(endstone::PlayerJoinEvent& event)
         {
             getServer().broadcastMessage(ColorFormat::Yellow + "{} has joined the server", event.getPlayer().getName());

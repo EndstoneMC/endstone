@@ -131,10 +131,10 @@ bool EndstoneBookMeta::equalsCommon(const ItemMeta &meta) const
     }
     if (meta.as<BookMeta>()) {
         auto &that = static_cast<const EndstoneBookMeta &>(meta);
-        return (hasPages() ? that.hasPages() && pages_ == that.pages_ : !that.hasPages())
-            && (hasTitle() ? that.hasTitle() && title_ == that.title_ : !that.hasTitle())
-            && (hasAuthor() ? that.hasAuthor() && author_ == that.author_ : !that.hasAuthor())
-            && (hasGeneration() ? that.hasGeneration() && generation_ == that.generation_ : !that.hasGeneration());
+        return (hasPages() ? that.hasPages() && pages_ == that.pages_ : !that.hasPages()) &&
+               (hasTitle() ? that.hasTitle() && title_ == that.title_ : !that.hasTitle()) &&
+               (hasAuthor() ? that.hasAuthor() && author_ == that.author_ : !that.hasAuthor()) &&
+               (hasGeneration() ? that.hasGeneration() && generation_ == that.generation_ : !that.hasGeneration());
     }
     if (meta.as<WritableBookMeta>()) {
         auto *writable = static_cast<const WritableBookMeta *>(&meta);

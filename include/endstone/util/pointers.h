@@ -162,41 +162,41 @@ NotNull<T>::NotNull(const Nullable<T> &other) : NotNull(other.get())
 
 // Handle-to-handle comparisons (pointer identity), provided for both wrappers so they can be used as
 // keys in ordered/unordered containers. These delegate to the underlying shared_ptr comparisons.
-#define ENDSTONE_DEFINE_PTR_COMPARISONS(Wrapper)                                                  \
-    template <class T, class U>                                                                    \
-    bool operator==(const Wrapper<T> &lhs, const Wrapper<U> &rhs) noexcept                         \
-    {                                                                                              \
-        return lhs.get() == rhs.get();                                                            \
-    }                                                                                              \
-    template <class T, class U>                                                                    \
-    bool operator!=(const Wrapper<T> &lhs, const Wrapper<U> &rhs) noexcept                         \
-    {                                                                                              \
-        return lhs.get() != rhs.get();                                                            \
-    }                                                                                              \
-    template <class T, class U>                                                                    \
-    bool operator<(const Wrapper<T> &lhs, const Wrapper<U> &rhs) noexcept                          \
-    {                                                                                              \
-        return lhs.get() < rhs.get();                                                             \
-    }                                                                                              \
-    template <class T, class U>                                                                    \
-    bool operator<=(const Wrapper<T> &lhs, const Wrapper<U> &rhs) noexcept                         \
-    {                                                                                              \
-        return lhs.get() <= rhs.get();                                                            \
-    }                                                                                              \
-    template <class T, class U>                                                                    \
-    bool operator>(const Wrapper<T> &lhs, const Wrapper<U> &rhs) noexcept                          \
-    {                                                                                              \
-        return lhs.get() > rhs.get();                                                             \
-    }                                                                                              \
-    template <class T, class U>                                                                    \
-    bool operator>=(const Wrapper<T> &lhs, const Wrapper<U> &rhs) noexcept                         \
-    {                                                                                              \
-        return lhs.get() >= rhs.get();                                                            \
-    }                                                                                              \
-    template <class T, class U>                                                                    \
-    bool operator==(const Wrapper<T> &lhs, const std::shared_ptr<U> &rhs) noexcept                 \
-    {                                                                                              \
-        return lhs.get() == rhs;                                                                   \
+#define ENDSTONE_DEFINE_PTR_COMPARISONS(Wrapper)                                   \
+    template <class T, class U>                                                    \
+    bool operator==(const Wrapper<T> &lhs, const Wrapper<U> &rhs) noexcept         \
+    {                                                                              \
+        return lhs.get() == rhs.get();                                             \
+    }                                                                              \
+    template <class T, class U>                                                    \
+    bool operator!=(const Wrapper<T> &lhs, const Wrapper<U> &rhs) noexcept         \
+    {                                                                              \
+        return lhs.get() != rhs.get();                                             \
+    }                                                                              \
+    template <class T, class U>                                                    \
+    bool operator<(const Wrapper<T> &lhs, const Wrapper<U> &rhs) noexcept          \
+    {                                                                              \
+        return lhs.get() < rhs.get();                                              \
+    }                                                                              \
+    template <class T, class U>                                                    \
+    bool operator<=(const Wrapper<T> &lhs, const Wrapper<U> &rhs) noexcept         \
+    {                                                                              \
+        return lhs.get() <= rhs.get();                                             \
+    }                                                                              \
+    template <class T, class U>                                                    \
+    bool operator>(const Wrapper<T> &lhs, const Wrapper<U> &rhs) noexcept          \
+    {                                                                              \
+        return lhs.get() > rhs.get();                                              \
+    }                                                                              \
+    template <class T, class U>                                                    \
+    bool operator>=(const Wrapper<T> &lhs, const Wrapper<U> &rhs) noexcept         \
+    {                                                                              \
+        return lhs.get() >= rhs.get();                                             \
+    }                                                                              \
+    template <class T, class U>                                                    \
+    bool operator==(const Wrapper<T> &lhs, const std::shared_ptr<U> &rhs) noexcept \
+    {                                                                              \
+        return lhs.get() == rhs;                                                   \
     }
 
 ENDSTONE_DEFINE_PTR_COMPARISONS(NotNull)

@@ -10,4 +10,3 @@ updates:
     target-branch: develop
     schedule:
       interval: weekly
-

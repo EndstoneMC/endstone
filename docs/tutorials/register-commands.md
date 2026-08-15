@@ -167,7 +167,7 @@ message to whoever execute this command. It's just a few more lines away from th
     public:
         bool onCommand(endstone::CommandSender &sender, const endstone::Command &command, const std::vector<std::string> &args) override
         {
-            if (command.getName() == "hello") 
+            if (command.getName() == "hello")
             {
                 sender.sendMessage("Hello World!");
             }
@@ -267,7 +267,7 @@ should be `[msg: message]`. Let's add it to our code.
     public:
         bool onCommand(endstone::CommandSender &sender, const endstone::Command &command, const std::vector<std::string> &args) override
         {
-            if (command.getName() == "hello") 
+            if (command.getName() == "hello")
             {
                 if (args.empty()) {
                     sender.sendMessage("Hello World!");
@@ -327,7 +327,6 @@ followed by the parameter kind, name and type.
 !!! example
 
     An example of using enum types in command usages is: `/home (add|list|del)<action: HomeAction>`
-    
-    In this example, the parameter is named `action` and has a **user-defined enum** type `HomeAction`. 
-    When using the command, the user must select one of the specified action from the set: `add`, `list`, or `del`.
 
+    In this example, the parameter is named `action` and has a **user-defined enum** type `HomeAction`.
+    When using the command, the user must select one of the specified action from the set: `add`, `list`, or `del`.

@@ -40,17 +40,14 @@ public:
     EmotePacket();
     EmotePacket(ActorRuntimeID, const std::string &, uint32_t, const std::string &, const std::string &);
     void setServerSide();
-    [[nodiscard]] bool isServerSide() const
-    {
-        return (payload.flags & static_cast<uint8_t>(Flags::SERVER_SIDE)) != 0;
-    }
+    [[nodiscard]] bool isServerSide() const { return (payload.flags & static_cast<uint8_t>(Flags::SERVER_SIDE)) != 0; }
     void setEmoteChatMute();
     [[nodiscard]] bool isEmoteChatMuted() const
     {
         return (payload.flags & static_cast<uint8_t>(Flags::MUTE_EMOTE_CHAT)) != 0;
     }
 
-    EmotePacketPayload payload;                                                        // +48
+    EmotePacketPayload payload;                                                         // +48
     SerializationMode serialization_mode{SerializationMode::SideBySide_LogOnMismatch};  // +168
 };
 BEDROCK_STATIC_ASSERT_SIZE(EmotePacket, 176, 152);

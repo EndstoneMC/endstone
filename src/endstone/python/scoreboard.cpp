@@ -83,8 +83,8 @@ void init_scoreboard(py::module_ &m)
                       "The display slot this objective is displayed at.")
         .def_property("sort_order", &Objective::getSortOrder, &Objective::setSortOrder,
                       "The sort order for this objective.")
-        .def("set_display", &Objective::setDisplay, py::arg("slot"),
-             py::arg("order") = ObjectiveSortOrder::Ascending, R"doc(
+        .def("set_display", &Objective::setDisplay, py::arg("slot"), py::arg("order") = ObjectiveSortOrder::Ascending,
+             R"doc(
     Sets the display slot and sort order for this objective.
 
     This will remove it from any other display slot.
@@ -173,7 +173,8 @@ void init_scoreboard(py::module_ &m)
     Args:
         entry: The entry to drop all current scores for.
 )doc")
-        .def_property_readonly("entries", &Scoreboard::getEntries, "A list of all entries tracked by this `Scoreboard`.",
+        .def_property_readonly("entries", &Scoreboard::getEntries,
+                               "A list of all entries tracked by this `Scoreboard`.",
                                py::return_value_policy::reference_internal)
         .def("clear_slot", &Scoreboard::clearSlot, py::arg("slot"), R"doc(
     Clears any objective in the specified slot.

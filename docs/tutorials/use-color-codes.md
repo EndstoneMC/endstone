@@ -20,28 +20,28 @@ use api is provided.
     ```
 
     *[Pythons f-strings] are awesome.*
-    
+
     !!! tip
 
         Don't forget to end the colored text with `ColorFormat.RESET`,
-        it ends all extra color format options and resets them. 
+        it ends all extra color format options and resets them.
 
     [Pythons f-strings]: https://docs.python.org/3/tutorial/inputoutput.html#tut-f-strings
 
 === ":simple-cplusplus: C++"
 
     This code shows how easy it is to use colored text in endstone:
-    
+
     ```cpp
     #include <endstone/endstone.hpp>
 
     auto my_beautiful_text = "This is " + endstone::ColorFormat::DarkGreen + "dark green." + endstone::ColorFormat::Reset;
     ```
-    
+
     !!! tip
-    
+
         Don't forget to end the colored text with `endstone::ColorFormat::Reset`,
-        it ends all extra color format options and resets them. 
+        it ends all extra color format options and resets them.
 
 ## All color and format codes
 

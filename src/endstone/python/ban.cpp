@@ -21,8 +21,7 @@ namespace endstone::python {
 void init_ban(py::module_ &m)
 {
     py::class_<BanEntry, py::smart_holder>(m, "BanEntry", "A single entry from a ban list.")
-        .def_property("created", &BanEntry::getCreated, &BanEntry::setCreated,
-                      "The date this ban entry was created.")
+        .def_property("created", &BanEntry::getCreated, &BanEntry::setCreated, "The date this ban entry was created.")
         .def_property("source", &BanEntry::getSource, &BanEntry::setSource, "The source of this ban.")
         .def_property("expiration", &BanEntry::getExpiration, &BanEntry::setExpiration,
                       "The date this ban expires on, or `None` for no defined end date.")
@@ -76,7 +75,8 @@ void init_ban(py::module_ &m)
         .def_property_readonly("entries", &IpBanList::getEntries,
                                "A vector containing pointers to every entry tracked by this list.");
 
-    py::class_<PlayerBanEntry, BanEntry, py::smart_holder>(m, "PlayerBanEntry", "Represents an entry for a banned player.")
+    py::class_<PlayerBanEntry, BanEntry, py::smart_holder>(m, "PlayerBanEntry",
+                                                           "Represents an entry for a banned player.")
         .def(py::init<std::string, std::optional<UUID>, std::optional<std::string>>(), py::arg("name"),
              py::arg("uuid") = std::nullopt, py::arg("xuid") = std::nullopt)
         .def_property_readonly("name", &PlayerBanEntry::getName, "The banned player's name.")

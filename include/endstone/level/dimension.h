@@ -148,9 +148,9 @@ public:
     /**
      * Releases the hold that `loadChunk()` placed on the Chunk at the given coordinates.
      *
-     * This only drops Endstone's own reference; it never affects `/tickingarea`s or other holders. The chunk is unloaded
-     * once nothing else keeps it loaded (a nearby player, the spawn area, etc.), so this is a no-op in effect while the
-     * chunk is still in use.
+     * This only drops Endstone's own reference; it never affects `/tickingarea`s or other holders. The chunk is
+     * unloaded once nothing else keeps it loaded (a nearby player, the spawn area, etc.), so this is a no-op in effect
+     * while the chunk is still in use.
      *
      * @param x X-coordinate of the chunk
      * @param z Z-coordinate of the chunk

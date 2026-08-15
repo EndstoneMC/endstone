@@ -16,9 +16,7 @@ from endstone.plugin import Plugin
 @pytest.fixture(scope="session")
 def server_properties(plugin: Plugin) -> dict[str, str]:
     """Parse server.properties file and return as a dictionary."""
-    properties_file = Path(
-        plugin.data_folder, "..", "..", "server.properties"
-    ).resolve()
+    properties_file = Path(plugin.data_folder, "..", "..", "server.properties").resolve()
     properties = {}
 
     with properties_file.open(mode="r") as file:
@@ -119,9 +117,7 @@ def test_command_sender(server: Server) -> None:
 def test_dispatch_command(server: Server) -> None:
     """Test dispatching commands through the server."""
     # scriptevent command should return True on success
-    result = server.dispatch_command(
-        server.command_sender, "scriptevent endstone:test Hello World!"
-    )
+    result = server.dispatch_command(server.command_sender, "scriptevent endstone:test Hello World!")
     assert result is True
 
 
@@ -300,9 +296,7 @@ def test_create_map(server: Server) -> None:
     view = server.create_map(dimension)
     assert view.id != -1, f"Expected valid map id, got {view.id}"
     assert view.scale == 3, f"Expected scale 3, got {view.scale}"
-    assert view.center_x == view.center_z, (
-        f"Expected center_x == center_z, got {view.center_x} != {view.center_z}"
-    )
+    assert view.center_x == view.center_z, f"Expected center_x == center_z, got {view.center_x} != {view.center_z}"
     assert view.center_x == 448, f"Expected center_x 448, got {view.center_x}"
 
 

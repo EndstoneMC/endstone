@@ -1,25 +1,29 @@
+#include <funchook.h>
 #include <stdio.h>
 #include <stdlib.h>
 
-#include <funchook.h>
-
 #if defined(_MSC_VER)
-#  define NOINLINE __declspec(noinline)
+#define NOINLINE __declspec(noinline)
 #else
-#  define NOINLINE __attribute__((noinline))
+#define NOINLINE __attribute__((noinline))
 #endif
 
 static int (*real_add)(int, int);
 
-NOINLINE static int add(int a, int b) {
+NOINLINE static int add(int a, int b)
+{
     volatile int x = a;
     volatile int y = b;
     return x + y;
 }
 
-NOINLINE static int hooked_add(int a, int b) { return real_add(a, b) + 100; }
+NOINLINE static int hooked_add(int a, int b)
+{
+    return real_add(a, b) + 100;
+}
 
-int main(void) {
+int main(void)
+{
     real_add = add;
 
     funchook_t *fh = funchook_create();

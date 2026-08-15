@@ -856,8 +856,7 @@ struct std::formatter<endstone::ListTag> : std::formatter<std::string_view> {
 template <>
 struct std::formatter<endstone::CompoundTag::map_type::value_type> : std::formatter<std::string_view> {
     template <typename FormatContext>
-    auto format(const endstone::CompoundTag::map_type::value_type &pair,
-                FormatContext &ctx) const
+    auto format(const endstone::CompoundTag::map_type::value_type &pair, FormatContext &ctx) const
     {
         return std::format_to(ctx.out(), "{}:{}", endstone::nbt::escaped(pair.first), pair.second);
     }

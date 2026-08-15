@@ -36,7 +36,7 @@ BEDROCK_STATIC_ASSERT_SIZE(SetSpawnPositionPacketPayload, 32, 32);
 
 class SetSpawnPositionPacket : public Packet {
 public:
-    SetSpawnPositionPacketPayload payload;                                             // +48 Windows, +44 Linux
+    SetSpawnPositionPacketPayload payload;                                              // +48 Windows, +44 Linux
     SerializationMode serialization_mode{SerializationMode::SideBySide_LogOnMismatch};  // +80 Windows, +76 Linux
 };
 BEDROCK_STATIC_ASSERT_SIZE(SetSpawnPositionPacket, 88, 80);

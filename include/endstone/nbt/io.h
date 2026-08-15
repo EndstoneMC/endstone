@@ -429,8 +429,7 @@ inline Tag read_tag_payload(std::string_view &in, Type type, std::endian byte_or
         return Tag{std::move(ct)};
     }
     default:
-        throw std::runtime_error("nbt::load: unknown tag type " +
-                                 std::to_string(static_cast<int>(type)));
+        throw std::runtime_error("nbt::load: unknown tag type " + std::to_string(static_cast<int>(type)));
     }
 }
 

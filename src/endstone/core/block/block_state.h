@@ -43,10 +43,7 @@ public:
     {
     }
 
-    [[nodiscard]] const std::type_info &getClassTypeId() const override
-    {
-        return typeid(Interface);
-    }
+    [[nodiscard]] const std::type_info &getClassTypeId() const override { return typeid(Interface); }
 
     [[nodiscard]] bool isInstanceOf(const std::type_info &target) const override
     {
@@ -58,10 +55,7 @@ public:
         return EndstoneBlock::at(block_source_, block_pos_);
     }
 
-    [[nodiscard]] const BlockType &getType() const override
-    {
-        return *BlockType::get(block_->getName().getString());
-    }
+    [[nodiscard]] const BlockType &getType() const override { return *BlockType::get(block_->getName().getString()); }
 
     void setType(BlockTypeId type) override
     {
@@ -79,45 +73,21 @@ public:
         return std::make_unique<EndstoneBlockData>(*block_);
     }
 
-    void setData(const BlockData &data) override
-    {
-        block_ = &static_cast<const EndstoneBlockData &>(data).getHandle();
-    }
+    void setData(const BlockData &data) override { block_ = &static_cast<const EndstoneBlockData &>(data).getHandle(); }
 
-    [[nodiscard]] NotNull<Dimension> getDimension() const override
-    {
-        return dimension_;
-    }
+    [[nodiscard]] NotNull<Dimension> getDimension() const override { return dimension_; }
 
-    [[nodiscard]] int getX() const override
-    {
-        return block_pos_.x;
-    }
+    [[nodiscard]] int getX() const override { return block_pos_.x; }
 
-    [[nodiscard]] int getY() const override
-    {
-        return block_pos_.y;
-    }
+    [[nodiscard]] int getY() const override { return block_pos_.y; }
 
-    [[nodiscard]] int getZ() const override
-    {
-        return block_pos_.z;
-    }
+    [[nodiscard]] int getZ() const override { return block_pos_.z; }
 
-    [[nodiscard]] Location getLocation() const override
-    {
-        return Location{getDimension(), getX(), getY(), getZ()};
-    }
+    [[nodiscard]] Location getLocation() const override { return Location{getDimension(), getX(), getY(), getZ()}; }
 
-    bool update() override
-    {
-        return update(false);
-    }
+    bool update() override { return update(false); }
 
-    bool update(bool force) override
-    {
-        return update(force, true);
-    }
+    bool update(bool force) override { return update(force, true); }
 
     bool update(bool force, bool apply_physics) override
     {

@@ -32,7 +32,7 @@ BEDROCK_STATIC_ASSERT_SIZE(UpdateSoftEnumPacketPayload, 64, 56);
 
 class UpdateSoftEnumPacket : public Packet {
 public:
-    UpdateSoftEnumPacketPayload payload;                                               // +48
+    UpdateSoftEnumPacketPayload payload;                                                // +48
     SerializationMode serialization_mode{SerializationMode::SideBySide_LogOnMismatch};  // +112
 };
 BEDROCK_STATIC_ASSERT_SIZE(UpdateSoftEnumPacket, 120, 112);

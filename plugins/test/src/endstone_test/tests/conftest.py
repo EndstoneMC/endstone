@@ -41,9 +41,7 @@ player = _make_fixture("player")
 
 
 def pytest_configure(config):
-    config.addinivalue_line(
-        "markers", "player: tests that require a player to be connected"
-    )
+    config.addinivalue_line("markers", "player: tests that require a player to be connected")
 
 
 def pytest_collection_modifyitems(items):

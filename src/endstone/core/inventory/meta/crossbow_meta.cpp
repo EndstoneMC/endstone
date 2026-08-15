@@ -85,8 +85,7 @@ bool EndstoneCrossbowMeta::equalsCommon(const ItemMeta &meta) const
     }
     if (meta.as<CrossbowMeta>()) {
         auto &that = static_cast<const EndstoneCrossbowMeta &>(meta);
-        return (hasChargedProjectile() ? that.hasChargedProjectile()
-                                             && charged_projectile_ == that.charged_projectile_
+        return (hasChargedProjectile() ? that.hasChargedProjectile() && charged_projectile_ == that.charged_projectile_
                                        : !that.hasChargedProjectile());
     }
     return true;

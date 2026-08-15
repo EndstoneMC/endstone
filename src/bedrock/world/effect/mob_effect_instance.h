@@ -43,45 +43,21 @@ public:
         }
     }
 
-    [[nodiscard]] bool operator==(const MobEffectInstance &other) const
-    {
-        return id_ == other.id_;
-    }
+    [[nodiscard]] bool operator==(const MobEffectInstance &other) const { return id_ == other.id_; }
 
-    [[nodiscard]] bool operator!=(const MobEffectInstance &other) const
-    {
-        return id_ != other.id_;
-    }
+    [[nodiscard]] bool operator!=(const MobEffectInstance &other) const { return id_ != other.id_; }
 
-    [[nodiscard]] std::uint32_t getId() const
-    {
-        return id_;
-    }
+    [[nodiscard]] std::uint32_t getId() const { return id_; }
 
-    [[nodiscard]] EffectDuration getDuration() const
-    {
-        return duration_;
-    }
+    [[nodiscard]] EffectDuration getDuration() const { return duration_; }
 
-    [[nodiscard]] int getAmplifier() const
-    {
-        return amplifier_;
-    }
+    [[nodiscard]] int getAmplifier() const { return amplifier_; }
 
-    [[nodiscard]] bool isAmbient() const
-    {
-        return ambient_;
-    }
+    [[nodiscard]] bool isAmbient() const { return ambient_; }
 
-    [[nodiscard]] bool isEffectVisible() const
-    {
-        return effect_visible_;
-    }
+    [[nodiscard]] bool isEffectVisible() const { return effect_visible_; }
 
-    [[nodiscard]] bool displaysOnScreenTextureAnimation() const
-    {
-        return display_on_screen_texture_animation_;
-    }
+    [[nodiscard]] bool displaysOnScreenTextureAnimation() const { return display_on_screen_texture_animation_; }
 
     [[nodiscard]] const std::string &getResourceName() const
     {

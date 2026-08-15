@@ -355,15 +355,16 @@ static void bind_list_tag(py::module &m)
     Returns:
         The removed tag.
 )doc")
-                   .def("to_list",
-                        [](const ListTag &self) {
-                            py::typing::List<PyAny> lst;
-                            for (const auto &elem : self) {
-                                lst.append(tag_to_python(elem));
-                            }
-                            return lst;
-                        },
-                        "Converts this list to a plain Python list of native values.")
+                   .def(
+                       "to_list",
+                       [](const ListTag &self) {
+                           py::typing::List<PyAny> lst;
+                           for (const auto &elem : self) {
+                               lst.append(tag_to_python(elem));
+                           }
+                           return lst;
+                       },
+                       "Converts this list to a plain Python list of native values.")
                    .def("size", &ListTag::size, "The number of tags in this list.")
                    .def("empty", &ListTag::empty, "Returns `True` if this list contains no tags.")
                    .def(py::self == py::self)

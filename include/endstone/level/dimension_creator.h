@@ -39,10 +39,7 @@ public:
      *
      * @return the dimension identifier
      */
-    [[nodiscard]] DimensionId getId() const
-    {
-        return id_;
-    }
+    [[nodiscard]] DimensionId getId() const { return id_; }
 
     /**
      * Sets the identifier of the dimension that is being created.

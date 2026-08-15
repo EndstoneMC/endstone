@@ -6,7 +6,7 @@ Before installing your first plugin, you will need to build it.
 
 === ":fontawesome-brands-python: Python"
 
-    Click on the :octicons-terminal-16: icon on the side bar to open the 
+    Click on the :octicons-terminal-16: icon on the side bar to open the
     terminal and type:
 
     ```bash
@@ -23,18 +23,18 @@ Before installing your first plugin, you will need to build it.
 
     Now, [start your server] again. You should see your plugin has been successfully
     loaded.
-    
+
     ![Start server with plugin](screenshots/start-server-with-plugin.png)
 
     **:partying_face: Congratulations!** You've made your first plugin for Endstone servers!
 
     ## Development Mode (a.k.a Editable Installs)
-    
-    When creating a plugin, developers usually want to implement and test changes iteratively, before cutting a release 
-    and preparing a distribution archive. In normal circumstances this can be quite cumbersome and require the 
+
+    When creating a plugin, developers usually want to implement and test changes iteratively, before cutting a release
+    and preparing a distribution archive. In normal circumstances this can be quite cumbersome and require the
     developers to continuously re-build and re-install the plugin.
 
-    **But we've got you!** Endstone also allows developers to load the code under development directly from the project folder 
+    **But we've got you!** Endstone also allows developers to load the code under development directly from the project folder
     without having to copy the `whl` files to the `plugins` folder.
 
     To do so, you will need the activate the [virtual environment]. Please make sure Endstone is also installed inside the environment.
@@ -56,8 +56,8 @@ Before installing your first plugin, you will need to build it.
         ``` sh
         . .venv/bin/activate
         ```
-    
-    You can now enter this “development mode” by performing an [editable installation] inside the virtual environment, 
+
+    You can now enter this “development mode” by performing an [editable installation] inside the virtual environment,
     using pip’s `-e/--editable` flag, as shown below:
 
     ``` sh title="(.venv)"
@@ -67,22 +67,22 @@ Before installing your first plugin, you will need to build it.
     Now, if you change the source code on the disk, you can simply run the `/reload` command in Endstone and you change
     will be effective immediately.
 
-    When you’re done with a given development task, you can simply uninstall your package 
+    When you’re done with a given development task, you can simply uninstall your package
     (as you would normally do with `pip uninstall <package name>`).
 
 === ":simple-cplusplus: C++"
 
-    Click on the menu icon on the top bar and select **Build > Build Project** 
+    Click on the menu icon on the top bar and select **Build > Build Project**
     to build your plugin.
 
     ![CLion build plugin](screenshots/clion-build-plugin.png)
-    
-    Then, copy the built shared library `endstone_my_plugin.dll` to the plugins 
+
+    Then, copy the built shared library `endstone_my_plugin.dll` to the plugins
     folder `path/to/bedrock_server/plugins`.
 
     Now, [start your server] again. You should see your plugin has been successfully
     loaded.
-    
+
     ![Start server with plugin](screenshots/start-server-with-plugin.png)
 
     **:partying_face: Congratulations!** You've made your first plugin for Endstone servers!

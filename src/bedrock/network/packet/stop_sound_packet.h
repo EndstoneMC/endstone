@@ -28,7 +28,7 @@ BEDROCK_STATIC_ASSERT_SIZE(StopSoundPacketPayload, 40, 32);
 
 class StopSoundPacket : public Packet {
 public:
-    StopSoundPacketPayload payload;                                                    // +48
+    StopSoundPacketPayload payload;                                                     // +48
     SerializationMode serialization_mode{SerializationMode::SideBySide_LogOnMismatch};  // +88
 };
 BEDROCK_STATIC_ASSERT_SIZE(StopSoundPacket, 96, 88);

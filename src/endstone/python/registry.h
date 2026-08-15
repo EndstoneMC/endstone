@@ -58,10 +58,7 @@ struct PyIdentifier {
 
     [[nodiscard]] std::string str() const { return namespace_ + ":" + key_; }
 
-    bool operator==(const PyIdentifier &other) const
-    {
-        return namespace_ == other.namespace_ && key_ == other.key_;
-    }
+    bool operator==(const PyIdentifier &other) const { return namespace_ == other.namespace_ && key_ == other.key_; }
 };
 
 class PyRegistry {

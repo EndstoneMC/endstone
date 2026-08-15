@@ -30,8 +30,7 @@ public:
     ENDSTONE_EVENT(PlayerDeathEvent);
     explicit PlayerDeathEvent(const NotNull<Player> &player, std::unique_ptr<DamageSource> damage_source,
                               std::optional<Message> death_message)
-        : ActorDeathEvent(player, std::move(damage_source)), player_(player),
-          death_message_(std::move(death_message))
+        : ActorDeathEvent(player, std::move(damage_source)), player_(player), death_message_(std::move(death_message))
     {
     }
 

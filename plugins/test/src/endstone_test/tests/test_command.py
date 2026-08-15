@@ -198,40 +198,30 @@ class TestCommandRegistration:
 class TestCommandPermissions:
     """Tests for command permission checking."""
 
-    def test_permission_silently_with_no_permissions(
-        self, console_sender: ConsoleCommandSender
-    ) -> None:
+    def test_permission_silently_with_no_permissions(self, console_sender: ConsoleCommandSender) -> None:
         """Test test_permission_silently with command having no required permissions."""
         cmd = Command("noperm")
         assert cmd.test_permission_silently(console_sender) is True
 
-    def test_permission_silently_console_has_all(
-        self, console_sender: ConsoleCommandSender
-    ) -> None:
+    def test_permission_silently_console_has_all(self, console_sender: ConsoleCommandSender) -> None:
         """Test that console sender has permission for commands with permissions."""
         cmd = Command("withperm", permissions=["some.permission"])
         # Console sender should have high permission level
         result = cmd.test_permission_silently(console_sender)
         assert result is True
 
-    def test_permission_with_no_permissions(
-        self, console_sender: ConsoleCommandSender
-    ) -> None:
+    def test_permission_with_no_permissions(self, console_sender: ConsoleCommandSender) -> None:
         """Test test_permission with command having no required permissions."""
         cmd = Command("noperm")
         assert cmd.test_permission(console_sender) is True
 
-    def test_permission_console_sender(
-        self, console_sender: ConsoleCommandSender
-    ) -> None:
+    def test_permission_console_sender(self, console_sender: ConsoleCommandSender) -> None:
         """Test test_permission for console sender."""
         cmd = Command("test", permissions=["test.permission"])
         result = cmd.test_permission(console_sender)
         assert result is True
 
-    def test_console_sender_permission_level(
-        self, console_sender: ConsoleCommandSender
-    ) -> None:
+    def test_console_sender_permission_level(self, console_sender: ConsoleCommandSender) -> None:
         """Test that console sender has CONSOLE permission level."""
         assert console_sender.permission_level == PermissionLevel.CONSOLE
 
@@ -244,9 +234,7 @@ class TestCommandPermissions:
 class TestCommandExecution:
     """Tests for command execution."""
 
-    def test_base_execute_returns_false(
-        self, console_sender: ConsoleCommandSender
-    ) -> None:
+    def test_base_execute_returns_false(self, console_sender: ConsoleCommandSender) -> None:
         """Test that base Command.execute() returns False."""
         cmd = Command("basecmd")
         result = cmd.execute(console_sender, [])
@@ -254,23 +242,17 @@ class TestCommandExecution:
 
     def test_dispatch_known_command(self, server: Server) -> None:
         """Test dispatching a known command."""
-        result = server.dispatch_command(
-            server.command_sender, "scriptevent endstone:test hello"
-        )
+        result = server.dispatch_command(server.command_sender, "scriptevent endstone:test hello")
         assert result is True
 
     def test_dispatch_unknown_command(self, server: Server) -> None:
         """Test dispatching an unknown command returns False."""
-        result = server.dispatch_command(
-            server.command_sender, "nonexistent_command_xyz"
-        )
+        result = server.dispatch_command(server.command_sender, "nonexistent_command_xyz")
         assert result is False
 
     def test_dispatch_with_arguments(self, server: Server) -> None:
         """Test dispatching a command with arguments."""
-        result = server.dispatch_command(
-            server.command_sender, "scriptevent endstone:test arg1 arg2 arg3"
-        )
+        result = server.dispatch_command(server.command_sender, "scriptevent endstone:test arg1 arg2 arg3")
         assert result is True
 
 
@@ -286,9 +268,7 @@ class TestCommandSender:
         """Test that console sender name is 'Server'."""
         assert console_sender.name == "Server"
 
-    def test_server_property(
-        self, server: Server, console_sender: ConsoleCommandSender
-    ) -> None:
+    def test_server_property(self, server: Server, console_sender: ConsoleCommandSender) -> None:
         """Test that server property returns a valid Server."""
         assert console_sender.server is server
 
@@ -335,9 +315,7 @@ class TestConsoleCommandSenderType:
         """Test that ConsoleCommandSender is a CommandSender."""
         assert isinstance(console_sender, CommandSender)
 
-    def test_is_console_command_sender(
-        self, console_sender: ConsoleCommandSender
-    ) -> None:
+    def test_is_console_command_sender(self, console_sender: ConsoleCommandSender) -> None:
         """Test that console_sender is a ConsoleCommandSender instance."""
         assert isinstance(console_sender, ConsoleCommandSender)
 
@@ -350,9 +328,7 @@ class TestConsoleCommandSenderType:
 class TestCommandSenderWrapper:
     """Tests for CommandSenderWrapper functionality."""
 
-    def test_wrapper_captures_messages(
-        self, console_sender: ConsoleCommandSender
-    ) -> None:
+    def test_wrapper_captures_messages(self, console_sender: ConsoleCommandSender) -> None:
         """Test that wrapper captures messages via on_message callback."""
         messages = []
 
@@ -365,9 +341,7 @@ class TestCommandSenderWrapper:
         assert len(messages) == 1
         assert "Test captured message" in messages[0]
 
-    def test_wrapper_captures_errors(
-        self, console_sender: ConsoleCommandSender
-    ) -> None:
+    def test_wrapper_captures_errors(self, console_sender: ConsoleCommandSender) -> None:
         """Test that wrapper captures errors via on_error callback."""
         errors = []
 
@@ -380,9 +354,7 @@ class TestCommandSenderWrapper:
         assert len(errors) == 1
         assert "Test captured error" in errors[0]
 
-    def test_wrapper_without_callbacks(
-        self, console_sender: ConsoleCommandSender
-    ) -> None:
+    def test_wrapper_without_callbacks(self, console_sender: ConsoleCommandSender) -> None:
         """Test that wrapper works without callbacks (no crash)."""
         wrapper = CommandSenderWrapper(console_sender)
         # Should not raise
@@ -394,31 +366,23 @@ class TestCommandSenderWrapper:
         wrapper = CommandSenderWrapper(console_sender)
         assert wrapper.name == console_sender.name
 
-    def test_wrapper_delegates_server(
-        self, server: Server, console_sender: ConsoleCommandSender
-    ) -> None:
+    def test_wrapper_delegates_server(self, server: Server, console_sender: ConsoleCommandSender) -> None:
         """Test that wrapper delegates server property to wrapped sender."""
         wrapper = CommandSenderWrapper(console_sender)
         assert wrapper.server is server
 
-    def test_wrapper_delegates_permission_level(
-        self, console_sender: ConsoleCommandSender
-    ) -> None:
+    def test_wrapper_delegates_permission_level(self, console_sender: ConsoleCommandSender) -> None:
         """Test that wrapper delegates permission_level to wrapped sender."""
         wrapper = CommandSenderWrapper(console_sender)
         assert wrapper.permission_level == console_sender.permission_level
 
-    def test_wrapper_delegates_has_permission(
-        self, console_sender: ConsoleCommandSender
-    ) -> None:
+    def test_wrapper_delegates_has_permission(self, console_sender: ConsoleCommandSender) -> None:
         """Test that wrapper delegates has_permission to wrapped sender."""
         wrapper = CommandSenderWrapper(console_sender)
         perm = "endstone.command.test"
         assert wrapper.has_permission(perm) == console_sender.has_permission(perm)
 
-    def test_wrapper_is_command_sender(
-        self, console_sender: ConsoleCommandSender
-    ) -> None:
+    def test_wrapper_is_command_sender(self, console_sender: ConsoleCommandSender) -> None:
         """Test that wrapper is a CommandSender instance."""
         wrapper = CommandSenderWrapper(console_sender)
         assert isinstance(wrapper, CommandSender)
@@ -438,9 +402,7 @@ class TestExecutor(CommandExecutor):
         super().__init__()
         self.invocations = []
 
-    def on_command(
-        self, sender: CommandSender, command: Command, args: list[str]
-    ) -> bool:
+    def on_command(self, sender: CommandSender, command: Command, args: list[str]) -> bool:
         self.invocations.append(
             {
                 "command_name": command.name,
@@ -454,18 +416,14 @@ class TestExecutor(CommandExecutor):
 class TestCommandExecutor:
     """Tests for CommandExecutor functionality."""
 
-    def test_base_executor_returns_false(
-        self, console_sender: ConsoleCommandSender
-    ) -> None:
+    def test_base_executor_returns_false(self, console_sender: ConsoleCommandSender) -> None:
         """Test that base CommandExecutor.on_command returns False."""
         executor = CommandExecutor()
         cmd = Command("testcmd")
         result = executor.on_command(console_sender, cmd, [])
         assert result is False
 
-    def test_custom_executor_is_called(
-        self, console_sender: ConsoleCommandSender
-    ) -> None:
+    def test_custom_executor_is_called(self, console_sender: ConsoleCommandSender) -> None:
         """Test that custom executor's on_command is called."""
         executor = TestExecutor()
         cmd = Command("testcmd")
@@ -473,18 +431,14 @@ class TestCommandExecutor:
         assert result is True
         assert len(executor.invocations) == 1
 
-    def test_executor_receives_correct_command(
-        self, console_sender: ConsoleCommandSender
-    ) -> None:
+    def test_executor_receives_correct_command(self, console_sender: ConsoleCommandSender) -> None:
         """Test that executor receives the correct command name."""
         executor = TestExecutor()
         cmd = Command("mycommand")
         executor.on_command(console_sender, cmd, [])
         assert executor.invocations[0]["command_name"] == "mycommand"
 
-    def test_executor_receives_correct_args(
-        self, console_sender: ConsoleCommandSender
-    ) -> None:
+    def test_executor_receives_correct_args(self, console_sender: ConsoleCommandSender) -> None:
         """Test that executor receives the correct arguments."""
         executor = TestExecutor()
         cmd = Command("testcmd")
@@ -492,9 +446,7 @@ class TestCommandExecutor:
         executor.on_command(console_sender, cmd, args)
         assert executor.invocations[0]["args"] == args
 
-    def test_executor_receives_correct_sender(
-        self, console_sender: ConsoleCommandSender
-    ) -> None:
+    def test_executor_receives_correct_sender(self, console_sender: ConsoleCommandSender) -> None:
         """Test that executor receives the correct sender."""
         executor = TestExecutor()
         cmd = Command("testcmd")
@@ -505,9 +457,7 @@ class TestCommandExecutor:
 class FailingExecutor(CommandExecutor):
     """Executor that always returns False."""
 
-    def on_command(
-        self, sender: CommandSender, command: Command, args: list[str]
-    ) -> bool:
+    def on_command(self, sender: CommandSender, command: Command, args: list[str]) -> bool:
         return False
 
 
@@ -596,9 +546,7 @@ class TestPluginCommand:
 class TestCommandOptionalMessageArg:
     """Tests for commands with optional message arguments."""
 
-    def test_optional_message_arg_empty_when_omitted(
-        self, server: Server, plugin: Plugin
-    ) -> None:
+    def test_optional_message_arg_empty_when_omitted(self, server: Server, plugin: Plugin) -> None:
         """Test that args is empty when optional [msg: message] is not provided."""
         server.dispatch_command(server.command_sender, "testoptmsg")
         assert len(plugin.last_testoptmsg_args) == 0
@@ -610,9 +558,7 @@ class TestCommandIntegration:
     def test_server_dispatch_command(self, server: Server) -> None:
         """Test server.dispatch_command works correctly."""
         sender = server.command_sender
-        result = server.dispatch_command(
-            sender, "scriptevent endstone:integration_test test"
-        )
+        result = server.dispatch_command(sender, "scriptevent endstone:integration_test test")
         assert result is True
 
     def test_dispatch_with_wrapper(self, server: Server) -> None:
@@ -710,9 +656,7 @@ class TestCommandEdgeCases:
 class TestWrapperMessageCapture:
     """Additional tests for CommandSenderWrapper message capture."""
 
-    def test_multiple_messages_captured(
-        self, console_sender: ConsoleCommandSender
-    ) -> None:
+    def test_multiple_messages_captured(self, console_sender: ConsoleCommandSender) -> None:
         """Test that multiple messages are all captured."""
         messages = []
 
@@ -737,9 +681,7 @@ class TestWrapperMessageCapture:
         def on_error(msg):
             errors.append(str(msg))
 
-        wrapper = CommandSenderWrapper(
-            console_sender, on_message=on_message, on_error=on_error
-        )
+        wrapper = CommandSenderWrapper(console_sender, on_message=on_message, on_error=on_error)
         wrapper.send_message("Normal message")
         wrapper.send_error_message("Error message")
 
@@ -783,9 +725,7 @@ class TestWrapperMessageCapture:
 class TestPermissionAttachment:
     """Tests for permission attachment on command senders."""
 
-    def test_add_attachment(
-        self, plugin: Plugin, console_sender: ConsoleCommandSender
-    ) -> None:
+    def test_add_attachment(self, plugin: Plugin, console_sender: ConsoleCommandSender) -> None:
         """Test adding a permission attachment to console sender."""
         attachment = console_sender.add_attachment(plugin)
         assert attachment is not None
@@ -793,22 +733,16 @@ class TestPermissionAttachment:
         # Clean up
         console_sender.remove_attachment(attachment)
 
-    def test_add_attachment_with_permission(
-        self, plugin: Plugin, console_sender: ConsoleCommandSender
-    ) -> None:
+    def test_add_attachment_with_permission(self, plugin: Plugin, console_sender: ConsoleCommandSender) -> None:
         """Test adding a permission attachment with specific permission."""
-        attachment = console_sender.add_attachment(
-            plugin, "test.custom.permission", True
-        )
+        attachment = console_sender.add_attachment(plugin, "test.custom.permission", True)
         assert attachment is not None
         # Verify permission is set
         assert "test.custom.permission" in attachment.permissions
         # Clean up
         console_sender.remove_attachment(attachment)
 
-    def test_remove_attachment(
-        self, plugin: Plugin, console_sender: ConsoleCommandSender
-    ) -> None:
+    def test_remove_attachment(self, plugin: Plugin, console_sender: ConsoleCommandSender) -> None:
         """Test removing a permission attachment."""
         attachment = console_sender.add_attachment(plugin)
         result = console_sender.remove_attachment(attachment)
@@ -835,9 +769,7 @@ class CustomCommand(Command):
 class TestCommandSubclass:
     """Tests for Command subclasses."""
 
-    def test_subclass_execute_called(
-        self, console_sender: ConsoleCommandSender
-    ) -> None:
+    def test_subclass_execute_called(self, console_sender: ConsoleCommandSender) -> None:
         """Test that subclass execute() is called."""
         cmd = CustomCommand("custom")
         result = cmd.execute(console_sender, [])
@@ -851,9 +783,7 @@ class TestCommandSubclass:
         assert cmd.description == "A custom command"
         assert cmd.is_registered is False
 
-    def test_subclass_multiple_executions(
-        self, console_sender: ConsoleCommandSender
-    ) -> None:
+    def test_subclass_multiple_executions(self, console_sender: ConsoleCommandSender) -> None:
         """Test that subclass tracks multiple executions."""
         cmd = CustomCommand("custom")
         cmd.execute(console_sender, [])

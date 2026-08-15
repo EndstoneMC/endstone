@@ -36,8 +36,7 @@ void init_block(py::module_ &m, py::classh<Block> &block)
     py::classh<BlockData>(m, "BlockData", "Represents the data related to a live block.")
         .def_property_readonly("type", &BlockData::getType, py::return_value_policy::reference,
                                "The block type represented by this block data.")
-        .def_property_readonly("translation_key", &BlockData::getTranslationKey,
-                               "The translation key for this block.")
+        .def_property_readonly("translation_key", &BlockData::getTranslationKey, "The translation key for this block.")
         .def_property_readonly("block_states", &BlockData::getBlockStates, R"doc(
     The block states for this block.
 
@@ -66,7 +65,8 @@ void init_block(py::module_ &m, py::classh<Block> &block)
 
     Returns:
         The `BlockType`, or `None` if no block type with that name exists.
-)doc", py::return_value_policy::reference)
+)doc",
+                    py::return_value_policy::reference)
         .def("__str__", [](const BlockType &self) { return std::string(self.getId()); })
         .def("__repr__", [](const BlockType &self) { return std::format("BlockType({})", self.getId()); })
         .def("__hash__", [](const BlockType &self) { return py::hash(py::str(std::string(self.getId()))); })
@@ -87,7 +87,8 @@ void init_block(py::module_ &m, py::classh<Block> &block)
 
     Returns:
         The `Biome`, or `None` if no biome with that name exists.
-)doc", py::return_value_policy::reference)
+)doc",
+                    py::return_value_policy::reference)
         .def("__str__", [](const Biome &self) { return std::string(self.getId()); })
         .def("__repr__", [](const Biome &self) { return std::format("Biome({})", self.getId()); })
         .def("__hash__", [](const Biome &self) { return py::hash(py::str(std::string(self.getId()))); })
@@ -139,7 +140,8 @@ void init_block(py::module_ &m, py::classh<Block> &block)
     py::classh<Container, BlockState>(m, "Container", R"doc(
     Represents a captured state of a container block, such as a chest.
 )doc")
-        .def_property_readonly("inventory", &Container::getInventory, py::return_value_policy::reference_internal, R"doc(
+        .def_property_readonly("inventory", &Container::getInventory, py::return_value_policy::reference_internal,
+                               R"doc(
     The inventory of the block represented by this block state.
 
     If the block was changed to a different type in the meantime, the returned inventory might no
@@ -296,8 +298,7 @@ void init_block(py::module_ &m, py::classh<Block> &block)
     A waxed sign cannot be edited by players.
 )doc");
 
-    block.def_property_readonly("type", &Block::getType, py::return_value_policy::reference,
-                                "The type of the block.")
+    block.def_property_readonly("type", &Block::getType, py::return_value_policy::reference, "The type of the block.")
         .def("set_type", py::overload_cast<BlockTypeId, bool>(&Block::setType), py::arg("type"),
              py::arg("apply_physics") = true, R"doc(
     Sets the type of this block.

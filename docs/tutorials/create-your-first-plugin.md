@@ -10,7 +10,7 @@ toc_depth: 2
 === ":fontawesome-brands-python: Python"
 
     To develop your first plugin with the Python API, you will have to install the following prerequisites:
-    
+
     -   [JetBrains PyCharm]
     -   [Python] (>= 3.10)
     -   [endstone Python package]
@@ -37,7 +37,7 @@ toc_depth: 2
 
     ![New PyCharm Project](screenshots/pycharm-create-project.png)
 
-    Let's say you want to name your plugin **MyPlugin**. In Endstone plugin development, we follow the following 
+    Let's say you want to name your plugin **MyPlugin**. In Endstone plugin development, we follow the following
     naming convention:
 
     1. Use `lower-case-with-dash` for project name
@@ -45,7 +45,7 @@ toc_depth: 2
 
     Hence, you should put `endstone-my-plugin` in the **Name** field.
 
-    Then, in the **Interpreter type**, select **Custom environment**. Select **Select existing**, and set the path to 
+    Then, in the **Interpreter type**, select **Custom environment**. Select **Select existing**, and set the path to
     where you previously installed `endstone` as stated in the prerequisites.
 
     Finally, click on **Create**. The PyCharm workspace will pop up and you will see this.
@@ -78,19 +78,19 @@ toc_depth: 2
 
     ### Create `pyproject.toml`
 
-    Modern Python packages can contain a `pyproject.toml` file, first introduced in [PEP 518]. This file contains build 
+    Modern Python packages can contain a `pyproject.toml` file, first introduced in [PEP 518]. This file contains build
     system requirements and information, which are used by pip to build the package.
-    
-    Now, right click on the project folder and select **New > File** to create a `pyproject.toml`. 
 
-    ![Create pyproject.toml](screenshots/pycharm-create-pyproject-toml.png)    
+    Now, right click on the project folder and select **New > File** to create a `pyproject.toml`.
+
+    ![Create pyproject.toml](screenshots/pycharm-create-pyproject-toml.png)  
 
     Copy the following content and paste into the file.
     ``` toml title="pyproject.toml" linenums="1"
     [build-system]
     requires = ["hatchling"]
     build-backend = "hatchling.build"
-    
+
     [project]
     name = "endstone-my-plugin"
     version = "0.1.0"
@@ -98,7 +98,7 @@ toc_depth: 2
     ```
 
     !!! notice
-        The name field should always be the project name. It must start with `endstone-` which is **enforced** by the 
+        The name field should always be the project name. It must start with `endstone-` which is **enforced** by the
         plugin loader. The name should also use `lower-case-with-dash` style.
 
 === ":simple-cplusplus: C++"
@@ -111,7 +111,7 @@ toc_depth: 2
 
     ![New CLion Project](screenshots/clion-create-project.png)
 
-    In the side bar, select **C++ Library**. Select **C++ 20** for **Language standard**. 
+    In the side bar, select **C++ Library**. Select **C++ 20** for **Language standard**.
     Select **shared** for **Library type**. Click on **Create**. The CLion workspace will pop up and you will see this.
 
     ![CLion Workspace](screenshots/clion-workspace.png)
@@ -123,23 +123,23 @@ toc_depth: 2
     -   `CMakeLists.txt`: The manifest file for CMake build system
     -   `library.cpp`: Source file
     -   `library.h`: Header file
-    
-    **Delete** `library.cpp` and `library.h` as we don't need them. You can keep the `.clang-format` and 
+
+    **Delete** `library.cpp` and `library.h` as we don't need them. You can keep the `.clang-format` and
     `CMakeLists.txt`.
 
     ### Update `CMakeLists.txt`
 
-    Now, open the `CMakeLists.txt` in the side bar and delete all the existing content. 
+    Now, open the `CMakeLists.txt` in the side bar and delete all the existing content.
     Then, copy and paste the following into your `CMakeLists.txt`.
 
     ``` CMake title="CMakeLists.txt" linenums="1"
     cmake_minimum_required(VERSION 3.15)
-    
+
     project(my_plugin CXX)
-    
+
     set(CMAKE_CXX_STANDARD 20)
     set(CMAKE_CXX_STANDARD_REQUIRED ON)
-    
+
     include(FetchContent)
     FetchContent_Declare(
         endstone
@@ -150,40 +150,40 @@ toc_depth: 2
     ```
 
     1.  :warning: **Important:** This specifies the targeted API version of Endstone. Ensure you update it after every major release of Endstone to stay up to date.
-    
+
     [JetBrains CLion]: https://www.jetbrains.com/clion/
 
 ## Create the main plugin class
 
 === ":fontawesome-brands-python: Python"
 
-    Now, right click on the project folder and select **New > Directory** to create a `src` directory. 
+    Now, right click on the project folder and select **New > Directory** to create a `src` directory.
 
     Right click on the `src` directory you just created and select **Mark Directory as > Sources Root**. You will notice
     the colour of the icon changes to blue.
 
-    Right click again on the `src` directory and select **New > Python Package** to create a package for our plugin. 
+    Right click again on the `src` directory and select **New > Python Package** to create a package for our plugin.
     Since my project name is `endstone-my-plugin`, I will name the package `endstone_my_plugin`.
-    
+
     You should have something similar to this:
 
     ![Create Python Package](screenshots/pycharm-create-package.png)
-    
+
     !!! tip
-        For Python packages, it is a common practice to use `lower-case-with-dash` for project name and 
+        For Python packages, it is a common practice to use `lower-case-with-dash` for project name and
         `lower_case_with_underscore` for the package name. See [PEP 8] for the style guide for Python.
 
     Right click on the package you just created and select **New > Python File** to create a `my_plugin.py`. Create a
     class named `MyPlugin` which extends the `Plugin` class from `endstone.plugin`.
 
-    ``` python title="src/endstone_my_plugin/my_plugin.py" linenums="1" 
+    ``` python title="src/endstone_my_plugin/my_plugin.py" linenums="1"
     from endstone.plugin import Plugin
 
     class MyPlugin(Plugin):
         pass
     ```
 
-    Then, open the `__init__.py` under the same folder and import the `MyPlugin` class from the Python file and add it 
+    Then, open the `__init__.py` under the same folder and import the `MyPlugin` class from the Python file and add it
     to the `__all__` variable.
 
     ``` python title="src/endstone_my_plugin/__init__.py" linenums="1"
@@ -200,12 +200,12 @@ toc_depth: 2
 
     ``` CMake title="CMakeLists.txt" linenums="1" hl_lines="16"
     cmake_minimum_required(VERSION 3.15)
-    
+
     project(my_plugin CXX)
-    
+
     set(CMAKE_CXX_STANDARD 20)
     set(CMAKE_CXX_STANDARD_REQUIRED ON)
-    
+
     include(FetchContent)
     FetchContent_Declare(
         endstone
@@ -223,7 +223,7 @@ toc_depth: 2
 
     Open `include/my_plugin.h` and add a new class `MyPlugin` which extends the `endstone::Plugin` class.
 
-    ``` c++ title="include/my_plugin.h" linenums="1" 
+    ``` c++ title="include/my_plugin.h" linenums="1"
     #include <endstone/endstone.hpp>
 
     class MyPlugin : public endstone::Plugin {};
@@ -240,7 +240,7 @@ toc_depth: 2
 === ":fontawesome-brands-python: Python"
 
     Now we want to override a few methods from the base class:
-    
+
     - `on_load`: this will be called when the plugin is loaded by the server
     - `on_enable`: this will be called when the plugin is enabled
     - `on_disable`: this will be called when the plugin is disabled (e.g. during server shutdown)
@@ -264,7 +264,7 @@ toc_depth: 2
 === ":simple-cplusplus: C++"
 
     Now we want to override a few methods from the base class:
-    
+
     - `onLoad`: this will be called when the plugin is loaded by the server
     - `onEnable`: this will be called when the plugin is enabled
     - `onDisable`: this will be called when the plugin is disabled (e.g. during server shutdown)
@@ -280,12 +280,12 @@ toc_depth: 2
         {
             getLogger().info("onLoad is called");
         }
-    
+
         void onEnable() override
         {
             getLogger().info("onEnable is called");
         }
-    
+
         void onDisable() override
         {
             getLogger().info("onDisable is called");
@@ -314,14 +314,14 @@ toc_depth: 2
         def on_disable(self) -> None:
             self.logger.info("on_disable is called!")
     ```
-    
+
     Lastly, to have the plugin discoverable by the server, you must specify an entry point in `pyproject.toml`.
 
     ``` toml title="pyproject.toml" linenums="1" hl_lines="10-11"
     [build-system]
     requires = ["hatchling"]
     build-backend = "hatchling.build"
-    
+
     [project]
     name = "endstone-my-plugin"
     version = "0.1.0"
@@ -332,9 +332,9 @@ toc_depth: 2
     ```
 
     !!! notice
-    
+
         For the entry point, the name **must** be the name of your project **without** the `endstone-` prefix. For example,
-        our project name is `endstone-my-plugin` so the entry point's name should be `my-plugin`. The value is simply 
+        our project name is `endstone-my-plugin` so the entry point's name should be `my-plugin`. The value is simply
         `{module}:{class}`.
 
 === ":simple-cplusplus: C++"
@@ -355,7 +355,7 @@ toc_depth: 2
     3.  :white_check_mark: This is the main class of the plugin!
 
     !!! notice
-        
+
         For plugin name, it must contains **only** lowercase letters, numbers and underscores.
 
 [JetBrains PyCharm]: https://www.jetbrains.com/pycharm/

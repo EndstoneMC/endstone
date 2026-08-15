@@ -24,7 +24,8 @@ namespace endstone::core {
 EndstoneItemMetas::ItemMetaDetails EndstoneItemMetas::Empty = ItemMetaDetails::create<void>();
 EndstoneItemMetas::ItemMetaDetails EndstoneItemMetas::Item = ItemMetaDetails::create<EndstoneItemMeta>();
 EndstoneItemMetas::ItemMetaDetails EndstoneItemMetas::Map = ItemMetaDetails::create<EndstoneMapMeta>();
-EndstoneItemMetas::ItemMetaDetails EndstoneItemMetas::WritableBook = ItemMetaDetails::create<EndstoneWritableBookMeta>();
+EndstoneItemMetas::ItemMetaDetails EndstoneItemMetas::WritableBook =
+    ItemMetaDetails::create<EndstoneWritableBookMeta>();
 EndstoneItemMetas::ItemMetaDetails EndstoneItemMetas::Book = ItemMetaDetails::create<EndstoneBookMeta>();
 EndstoneItemMetas::ItemMetaDetails EndstoneItemMetas::Crossbow = ItemMetaDetails::create<EndstoneCrossbowMeta>();
 }  // namespace endstone::core

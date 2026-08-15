@@ -46,10 +46,7 @@ public:
      *
      * @return the reason the respawn occurred.
      */
-    [[nodiscard]] RespawnReason getRespawnReason() const
-    {
-        return reason_;
-    }
+    [[nodiscard]] RespawnReason getRespawnReason() const { return reason_; }
 
 private:
     RespawnReason reason_;
