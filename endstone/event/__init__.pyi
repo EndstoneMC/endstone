@@ -18,6 +18,7 @@ from endstone.plugin import Plugin
 from endstone.util import SocketAddress, Vector
 
 __all__ = [
+    "ActorCollideWithActorEvent",
     "ActorDamageEvent",
     "ActorDeathEvent",
     "ActorEvent",
@@ -357,6 +358,16 @@ class ActorInsideBlockEvent(ActorEvent, Cancellable):
     def block(self) -> Block:
         """
         The block containing the actor.
+        """
+
+class ActorCollideWithActorEvent(Event, Cancellable):
+    """
+    Called when two actors collide with each other. If cancelled, the actors will not be pushed away from each other.
+    """
+    @property
+    def actors(self) -> list[Actor]:
+        """
+        The actors involved in this event.
         """
 
 class BlockEvent(Event):

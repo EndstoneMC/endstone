@@ -11,7 +11,7 @@
 
 namespace endstone::runtime {
 
-static constexpr std::array<std::pair<std::string_view, std::size_t>, 72> symbols = {{
+static constexpr std::array<std::pair<std::string_view, std::size_t>, 74> symbols = {{
     {"??_7ItemStackRequestActionCraftRecipeAuto@@6B@", 176340128},
     {"BlockState::StateListNode::mHead", 211163888},
     {"Enchant::mEnchants", 211010840},
@@ -103,6 +103,9 @@ static constexpr std::array<std::pair<std::string_view, std::size_t>, 72> symbol
     {"?startSleepInBed@Player@@UEAA?AW4BedSleepingResult@@AEBVBlockPos@@_NM@Z", 2182176},
     {"?take@Player@@QEAA_NAEAVActor@@HH@Z", 2251552},
     {"?teleportTo@Player@@UEAAXAEBVVec3@@_NHH1@Z", 2176288},
+    // PushableByEntityUtility
+    {"?push@PushableByEntityUtility@@YAXAEAVActor@@0_N@Z", 47128400},
+    {"?skipPush@PushableByEntityUtility@@YA_NAEAVActor@@0@Z", 47129920},
     // RakPeerHelper
     {"?peerStartup@RakPeerHelper@@QEAA?AW4StartupResult@RakNet@@PEAVRakPeerInterface@3@AEBUConnectionDefinition@@W4PeerPurpose@1@@Z", 12695360},
     // RepositoryFactory

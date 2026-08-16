@@ -584,6 +584,28 @@ extra = 0
 pattern = "55 41 57 41 56 41 55 41 54 53 48 81 EC ? ? ? ? 49 89 D7 0F 29 54 24 ? 0F 29 4C 24"
 
 [[signatures]]
+name = "_ZN23PushableByEntityUtility4pushER5ActorS1_b"
+relative = false
+extra = 0
+# 1. locate Mob::pushActors: read Mob::knockback's slot in Player's vtable, then add 8 slots
+# 2. in Mob::pushActors, the normal push branch calls PushableByEntityUtility::push(owner, other, pushSelfOnly)
+#    after its PushableByEntity flag check
+# 3. confirm push by its body: it first calls skipPush(owner, other); when skipPush returns false it computes
+#    the push vectors and calls Actor::onPush on the owner (and the other unless pushSelfOnly is set)
+# 4. confirmed in the 1.26.40 IDA database; use the direct function prologue
+pattern = "55 41 57 41 56 41 55 41 54 53 48 81 EC C8 00 00 00 89 D5 49 89 F7 48 89 FB E8 D2 05 00 00 84 C0 0F 85 A8 05 00 00 41 BE FF FF FF FF 48 8B 4B 10"
+
+[[signatures]]
+name = "_ZN23PushableByEntityUtility8skipPushER5ActorS1_"
+relative = false
+extra = 0
+# 1. skipPush is the first call of PushableByEntityUtility::push
+# 2. confirm skipPush by its body: it skips when either actor has a passenger component or when the later
+#    PushableByEntity checks reject the pair
+# 3. confirmed in the 1.26.40 IDA database; use the direct function prologue
+pattern = "55 41 57 41 56 41 54 53 48 83 EC 30 49 89 F6 48 89 FB 4C 8B BF D0 01 00 00 49 8B 07 4C 89 FF FF 90 F0 09 00 00 40 B5 01 84 C0 75 1A 48 89 DF E8"
+
+[[signatures]]
 name = "_ZN16PistonBlockActor4tickER11BlockSource"
 relative = false
 extra = 0

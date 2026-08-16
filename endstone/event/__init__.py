@@ -60,6 +60,7 @@ __getattr__, __dir__, __all__ = lazy.attach(
     "endstone._python",
     submod_attrs={
         "event": [
+            "ActorCollideWithActorEvent",
             "ActorDamageEvent",
             "ActorDeathEvent",
             "ActorEvent",
