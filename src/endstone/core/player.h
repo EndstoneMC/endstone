@@ -14,6 +14,7 @@
 
 #pragma once
 
+#include <cstdint>
 #include <functional>
 #include <memory>
 #include <unordered_map>
@@ -71,6 +72,11 @@ public:
     void transfer(std::string host, int port) const override;
     void kick(std::string message) const override;
     bool performCommand(std::string command) const override;  // NOLINT(*-use-nodiscard)
+    void hideEntity(Plugin &plugin, Actor &entity) override;
+    void showEntity(Plugin &plugin, Actor &entity) override;
+    [[nodiscard]] bool canSee(const Actor &entity) const override;
+    [[nodiscard]] bool canSee(const Player &player) const override;
+    void sendBlockChange(const Location &location, const BlockData &block) override;
     [[nodiscard]] bool isSneaking() const override;
     void setSneaking(bool sneak) override;
     [[nodiscard]] bool isSprinting() const override;
@@ -135,10 +141,17 @@ public:
     void disconnect();
     void updateAbilities() const;
     void checkOpStatus();
+    void cachePlayerListEntry(std::int64_t unique_id, std::string payload);
+    void clearHiddenEntities(Plugin &plugin);
+    void removeEntityVisibility(std::int64_t unique_id, std::uint64_t runtime_id);
+    [[nodiscard]] bool isEntityHidden(std::int64_t unique_id) const;
+    [[nodiscard]] bool isPlayerHidden(std::uint64_t runtime_id) const;
 
 private:
     friend class ::ServerNetworkHandler;
 
+    void sendPlayerListRemove(const ::Player &player) const;
+    void sendPlayerListAdd(std::int64_t unique_id) const;
     std::shared_ptr<PermissibleBase> perm_;
     std::unique_ptr<EndstonePlayerInventory> inventory_;
     std::unique_ptr<EndstoneInventory> ender_chest_;
@@ -149,8 +162,14 @@ private:
     std::string game_version_;
     std::uint32_t form_ids_ = 0xffff;  // Set to a large value to avoid collision with forms created by script api
     std::unordered_map<std::uint32_t, FormVariant> forms_;
+    struct CachedPlayerListEntry {
+        std::string payload;
+    };
     bool spawned_ = false;
     bool last_op_status_ = false;
+    std::unordered_map<std::int64_t, std::unordered_set<Plugin *>> hidden_entities_;
+    std::unordered_map<std::uint64_t, std::int64_t> hidden_player_runtime_ids_;
+    std::unordered_map<std::int64_t, CachedPlayerListEntry> player_list_entries_;
 };
 
 }  // namespace endstone::core

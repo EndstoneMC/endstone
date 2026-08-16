@@ -21,6 +21,7 @@
 #include <variant>
 
 #include "endstone/actor/mob.h"
+#include "endstone/block/block_data.h"
 #include "endstone/form/action_form.h"
 #include "endstone/form/message_form.h"
 #include "endstone/form/modal_form.h"
@@ -109,6 +110,52 @@ public:
      * @return `true` if the command was successful, otherwise `false`
      */
     virtual bool performCommand(std::string command) const = 0;  // NOLINT(*-use-nodiscard)
+
+    /**
+     * Hides an entity from this player.
+     *
+     * @param plugin Plugin that wants to hide the entity
+     * @param entity Entity to hide
+     */
+    virtual void hideEntity(Plugin &plugin, Actor &entity) = 0;
+
+    /**
+     * Allows this player to see an entity that was previously hidden.
+     *
+     * If another plugin had hidden the entity too, the entity will remain hidden until the other plugin calls this
+     * method too.
+     *
+     * @param plugin Plugin that wants to show the entity
+     * @param entity Entity to show
+     */
+    virtual void showEntity(Plugin &plugin, Actor &entity) = 0;
+
+    /**
+     * Checks to see if an entity has been visually hidden from this player.
+     *
+     * @param entity Entity to check
+     * @return `true` if the entity is not being hidden from this player
+     */
+    [[nodiscard]] virtual bool canSee(const Actor &entity) const = 0;
+
+    /**
+     * Checks to see if a player has been hidden from this player.
+     *
+     * @param player Player to check
+     * @return `true` if the player is not being hidden from this player
+     */
+    [[nodiscard]] virtual bool canSee(const Player &player) const = 0;
+
+    /**
+     * Sends a block change to this player.
+     *
+     * This fakes a block change packet for a user at a certain location. This will not actually change the world in
+     * any way.
+     *
+     * @param location The location of the changed block
+     * @param block The new block data
+     */
+    virtual void sendBlockChange(const Location &location, const BlockData &block) = 0;
 
     /**
      * Returns if the player is in sneak mode.
