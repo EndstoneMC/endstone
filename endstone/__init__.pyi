@@ -7,7 +7,7 @@ import uuid
 import numpy
 import numpy.typing
 
-from endstone.actor import Mob
+from endstone.actor import Actor, Mob
 from endstone.ban import IpBanList, PlayerBanList
 from endstone.block import BlockData, BlockType, Sign
 from endstone.boss import BarColor, BarFlag, BarStyle, BossBar
@@ -17,7 +17,7 @@ from endstone.inventory import Inventory, ItemFactory, PlayerInventory
 from endstone.lang import Language, Translatable
 from endstone.level import Dimension, Level, Location
 from endstone.map import MapView
-from endstone.plugin import PluginCommand, PluginManager, ServiceManager
+from endstone.plugin import Plugin, PluginCommand, PluginManager, ServiceManager
 from endstone.scheduler import Scheduler
 from endstone.scoreboard import Scoreboard
 from endstone.util import SocketAddress
@@ -567,6 +567,63 @@ class Player(Mob):
         Args:
             location: The block location of the sign.
             side: The side of the sign to edit.
+        """
+
+    def hide_entity(self, plugin: Plugin, entity: Actor) -> None:
+        """
+        Hides an entity from this player.
+
+        Args:
+            plugin: Plugin that wants to hide the entity.
+            entity: Entity to hide.
+        """
+
+    def show_entity(self, plugin: Plugin, entity: Actor) -> None:
+        """
+        Allows this player to see an entity that was previously hidden.
+
+        If another plugin had hidden the entity too, the entity will remain hidden until the other plugin calls this method
+        too.
+
+        Args:
+            plugin: Plugin that wants to show the entity.
+            entity: Entity to show.
+        """
+
+    @typing.overload
+    def can_see(self, entity: Actor) -> bool:
+        """
+        Checks to see if an entity has been visually hidden from this player.
+
+        Args:
+            entity: Entity to check.
+
+        Returns:
+            `True` if the entity is not being hidden from this player.
+        """
+
+    @typing.overload
+    def can_see(self, player: Player) -> bool:
+        """
+        Checks to see if a player has been hidden from this player.
+
+        Args:
+            player: Player to check.
+
+        Returns:
+            `True` if the player is not being hidden from this player.
+        """
+
+    def send_block_change(self, location: Location, block: BlockData) -> None:
+        """
+        Sends a block change to this player.
+
+        This fakes a block change packet for a user at a certain location. This will not actually change the world in any
+        way.
+
+        Args:
+            location: The location of the changed block.
+            block: The new block data.
         """
 
     @property

@@ -18,6 +18,7 @@
 
 #include <unordered_map>
 #include <unordered_set>
+#include <utility>
 
 #include <magic_enum/magic_enum.hpp>
 #include <nlohmann/json.hpp>
@@ -61,6 +62,7 @@
 #include "endstone/core/inventory/item_stack.h"
 #include "endstone/core/inventory/player_inventory.h"
 #include "endstone/core/level/dimension.h"
+#include "endstone/plugin/plugin.h"
 #include "endstone/core/map/map_view.h"
 #include "endstone/core/message.h"
 #include "endstone/core/network/data_packet.h"
@@ -337,6 +339,100 @@ void EndstonePlayer::openVirtualSign(const Location &location, Sign::Side side)
     open_sign->payload.pos = {location.getBlockX(), location.getBlockY(), location.getBlockZ()};
     open_sign->payload.is_front_side = side == Sign::Side::Front;
     getHandle().sendNetworkPacket(*open_sign);
+}
+
+void EndstonePlayer::hideEntity(Plugin &plugin, Actor &entity)
+{
+    Preconditions::checkArgument(plugin.isEnabled(), "Plugin ({}) cannot be disabled", plugin.getName());
+    if (&entity == static_cast<Actor *>(this)) {
+        return;
+    }
+
+    const auto unique_id = entity.getId();
+    auto &plugins = hidden_entities_[unique_id];
+    if (plugins.contains(&plugin)) {
+        return;
+    }
+
+    const bool was_hidden = !plugins.empty();
+    plugins.insert(&plugin);
+    if (was_hidden) {
+        return;
+    }
+
+    if (const auto *player = dynamic_cast<const EndstonePlayer *>(&entity)) {
+        hidden_player_runtime_ids_[entity.getRuntimeId()] = unique_id;
+        sendPlayerListRemove(player->getHandle());
+    }
+
+    BinaryStream stream;
+    stream.writeVarInt64(unique_id, "Target Actor ID", nullptr);
+    sendPacket(static_cast<int>(MinecraftPacketIds::RemoveActor), stream.getView());
+}
+
+void EndstonePlayer::showEntity(Plugin &plugin, Actor &entity)
+{
+    if (&entity == static_cast<Actor *>(this)) {
+        return;
+    }
+
+    const auto unique_id = entity.getId();
+    auto it = hidden_entities_.find(unique_id);
+    if (it == hidden_entities_.end()) {
+        return;
+    }
+
+    auto &plugins = it->second;
+    if (!plugins.erase(&plugin)) {
+        return;
+    }
+
+    if (!plugins.empty()) {
+        return;
+    }
+
+    hidden_entities_.erase(it);
+    if (dynamic_cast<const EndstonePlayer *>(&entity)) {
+        hidden_player_runtime_ids_.erase(entity.getRuntimeId());
+        sendPlayerListAdd(unique_id);
+    }
+
+    auto *handle = getHandle().getLevel().fetchEntity(ActorUniqueID{unique_id}, false);
+    if (!handle || handle->getDimensionId() != getHandle().getDimensionId() ||
+        !getHandle().isActorRelevant(*handle)) {
+        return;
+    }
+
+    auto packet = handle->tryCreateAddActorPacket();
+    if (packet) {
+        getHandle().sendNetworkPacket(*packet);
+    }
+}
+
+bool EndstonePlayer::canSee(const Actor &entity) const
+{
+    if (&entity == static_cast<const Actor *>(this)) {
+        return true;
+    }
+
+    return !hidden_entities_.contains(entity.getId());
+}
+
+bool EndstonePlayer::canSee(const Player &player) const
+{
+    return canSee(static_cast<const Actor &>(player));
+}
+
+void EndstonePlayer::sendBlockChange(const Location &location, const BlockData &block)
+{
+    BinaryStream stream;
+    stream.writeVarInt(location.getBlockX(), "X", nullptr);
+    stream.writeVarInt(location.getBlockY(), "Y", nullptr);
+    stream.writeVarInt(location.getBlockZ(), "Z", nullptr);
+    stream.writeUnsignedVarInt(block.getRuntimeId(), "Block Runtime ID", nullptr);
+    stream.writeUnsignedVarInt(2, "Flags", nullptr);  // FLAG_NETWORK
+    stream.writeUnsignedVarInt(0, "Layer", nullptr);  // DATA_LAYER_NORMAL
+    sendPacket(static_cast<int>(MinecraftPacketIds::UpdateBlock), stream.getView());
 }
 
 bool EndstonePlayer::isSneaking() const
@@ -1273,6 +1369,9 @@ void EndstonePlayer::initFromConnectionRequest(std::variant<std::reference_wrapp
 void EndstonePlayer::disconnect()
 {
     server_.removePlayerBoard(getSelf().cast<EndstonePlayer>());
+    hidden_entities_.clear();
+    hidden_player_runtime_ids_.clear();
+    player_list_entries_.clear();
 }
 
 void EndstonePlayer::updateAbilities() const
@@ -1291,5 +1390,90 @@ void EndstonePlayer::checkOpStatus()
         updateCommands();
         last_op_status_ = isOp();
     }
+}
+
+void EndstonePlayer::cachePlayerListEntry(std::int64_t unique_id, std::string payload)
+{
+    player_list_entries_[unique_id] = {std::move(payload)};
+}
+
+void EndstonePlayer::clearHiddenEntities(Plugin &plugin)
+{
+    for (auto it = hidden_entities_.begin(); it != hidden_entities_.end();) {
+        auto &plugins = it->second;
+        if (!plugins.erase(&plugin) || !plugins.empty()) {
+            ++it;
+            continue;
+        }
+
+        const auto unique_id = it->first;
+        it = hidden_entities_.erase(it);
+        for (auto runtime_it = hidden_player_runtime_ids_.begin(); runtime_it != hidden_player_runtime_ids_.end();) {
+            if (runtime_it->second == unique_id) {
+                runtime_it = hidden_player_runtime_ids_.erase(runtime_it);
+            }
+            else {
+                ++runtime_it;
+            }
+        }
+
+        sendPlayerListAdd(unique_id);
+        auto *handle = getHandle().getLevel().fetchEntity(ActorUniqueID{unique_id}, false);
+        if (!handle) {
+            continue;
+        }
+
+        if (handle->getDimensionId() != getHandle().getDimensionId() || !getHandle().isActorRelevant(*handle)) {
+            continue;
+        }
+
+        auto packet = handle->tryCreateAddActorPacket();
+        if (packet) {
+            getHandle().sendNetworkPacket(*packet);
+        }
+    }
+}
+
+void EndstonePlayer::removeEntityVisibility(std::int64_t unique_id, std::uint64_t runtime_id)
+{
+    hidden_entities_.erase(unique_id);
+    hidden_player_runtime_ids_.erase(runtime_id);
+    player_list_entries_.erase(unique_id);
+}
+
+void EndstonePlayer::sendPlayerListRemove(const ::Player &player) const
+{
+    const auto uuid = player.getPersistentComponent<UserEntityIdentifierComponent>()->getClientUUID();
+
+    BinaryStream stream;
+    stream.writeUnsignedVarInt(1, "Entries", nullptr);
+    stream.writeByte(1, "Action", nullptr);  // TYPE_REMOVE
+    const auto *bytes = reinterpret_cast<const unsigned char *>(uuid.data);
+    stream.writeRawBytes({bytes, bytes + sizeof(uuid.data)}, nullptr, nullptr);
+    sendPacket(static_cast<int>(MinecraftPacketIds::PlayerList), stream.getView());
+}
+
+void EndstonePlayer::sendPlayerListAdd(const std::int64_t unique_id) const
+{
+    const auto it = player_list_entries_.find(unique_id);
+    if (it == player_list_entries_.end()) {
+        return;
+    }
+
+    BinaryStream stream;
+    stream.writeUnsignedVarInt(1, "Entries", nullptr);
+    const auto *bytes = reinterpret_cast<const unsigned char *>(it->second.payload.data());
+    stream.writeRawBytes({bytes, bytes + it->second.payload.size()}, nullptr, nullptr);
+    sendPacket(static_cast<int>(MinecraftPacketIds::PlayerList), stream.getView());
+}
+
+bool EndstonePlayer::isEntityHidden(std::int64_t unique_id) const
+{
+    return hidden_entities_.contains(unique_id);
+}
+
+bool EndstonePlayer::isPlayerHidden(std::uint64_t runtime_id) const
+{
+    return hidden_player_runtime_ids_.contains(runtime_id);
 }
 }  // namespace endstone::core

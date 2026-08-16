@@ -218,10 +218,10 @@ PYBIND11_MODULE(_python, m)  // NOLINT(*-use-anonymous-namespace)
     init_actor(m_actor, actor, mob);
     init_block(m_block, block);
     init_level(m_level, level, dimension, location);
+    init_command(m_command, command_sender);
+    init_plugin(m_plugin);  // Plugin must be registered before Player methods that accept Plugin.
     init_player(m, player);
     init_boss(m_boss);
-    init_command(m_command, command_sender);
-    init_plugin(m_plugin);
     init_scheduler(m_scheduler);
     init_permissions(m_permissions, permissible, permission);
     init_registry(m);
@@ -682,6 +682,51 @@ void init_player(py::module_ &m, py_class<Player> &player)
     Args:
         location: The block location of the sign.
         side: The side of the sign to edit.
+)doc")
+        .def("hide_entity", &Player::hideEntity, py::arg("plugin"), py::arg("entity"), R"doc(
+    Hides an entity from this player.
+
+    Args:
+        plugin: Plugin that wants to hide the entity.
+        entity: Entity to hide.
+)doc")
+        .def("show_entity", &Player::showEntity, py::arg("plugin"), py::arg("entity"), R"doc(
+    Allows this player to see an entity that was previously hidden.
+
+    If another plugin had hidden the entity too, the entity will remain hidden until the other plugin calls this method
+    too.
+
+    Args:
+        plugin: Plugin that wants to show the entity.
+        entity: Entity to show.
+)doc")
+        .def("can_see", py::overload_cast<const Actor &>(&Player::canSee, py::const_), py::arg("entity"), R"doc(
+    Checks to see if an entity has been visually hidden from this player.
+
+    Args:
+        entity: Entity to check.
+
+    Returns:
+        `True` if the entity is not being hidden from this player.
+)doc")
+        .def("can_see", py::overload_cast<const Player &>(&Player::canSee, py::const_), py::arg("player"), R"doc(
+    Checks to see if a player has been hidden from this player.
+
+    Args:
+        player: Player to check.
+
+    Returns:
+        `True` if the player is not being hidden from this player.
+)doc")
+        .def("send_block_change", &Player::sendBlockChange, py::arg("location").noconvert(), py::arg("block"), R"doc(
+    Sends a block change to this player.
+
+    This fakes a block change packet for a user at a certain location. This will not actually change the world in any
+    way.
+
+    Args:
+        location: The location of the changed block.
+        block: The new block data.
 )doc")
         .def_property("is_sneaking", &Player::isSneaking, &Player::setSneaking, "Whether the player is in sneak mode.")
         .def_property("is_sprinting", &Player::isSprinting, &Player::setSprinting,

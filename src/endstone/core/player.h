@@ -14,6 +14,7 @@
 
 #pragma once
 
+#include <cstdint>
 #include <functional>
 #include <memory>
 #include <optional>
@@ -78,6 +79,11 @@ public:
     void setRespawnLocation(std::optional<Location> location) override;
     void openSign(const Sign &sign, Sign::Side side) override;
     void openVirtualSign(const Location &location, Sign::Side side) override;
+    void hideEntity(Plugin &plugin, Actor &entity) override;
+    void showEntity(Plugin &plugin, Actor &entity) override;
+    [[nodiscard]] bool canSee(const Actor &entity) const override;
+    [[nodiscard]] bool canSee(const Player &player) const override;
+    void sendBlockChange(const Location &location, const BlockData &block) override;
     [[nodiscard]] bool isSneaking() const override;
     void setSneaking(bool sneak) override;
     [[nodiscard]] bool isSprinting() const override;
@@ -143,9 +149,17 @@ public:
     void disconnect();
     void updateAbilities() const;
     void checkOpStatus();
+    void cachePlayerListEntry(std::int64_t unique_id, std::string payload);
+    void clearHiddenEntities(Plugin &plugin);
+    void removeEntityVisibility(std::int64_t unique_id, std::uint64_t runtime_id);
+    [[nodiscard]] bool isEntityHidden(std::int64_t unique_id) const;
+    [[nodiscard]] bool isPlayerHidden(std::uint64_t runtime_id) const;
 
 private:
     friend class ::ServerNetworkHandler;
+
+    void sendPlayerListRemove(const ::Player &player) const;
+    void sendPlayerListAdd(std::int64_t unique_id) const;
 
     struct RecipeBookSettings {
         bool filtering;
@@ -169,8 +183,14 @@ private:
     int pending_book_slot_ = -1;
     std::optional<Input> last_input_;
     std::optional<RecipeBookSettings> last_recipe_book_settings_;
+    struct CachedPlayerListEntry {
+        std::string payload;
+    };
     bool spawned_ = false;
     bool last_op_status_ = false;
+    std::unordered_map<std::int64_t, std::unordered_set<Plugin *>> hidden_entities_;
+    std::unordered_map<std::uint64_t, std::int64_t> hidden_player_runtime_ids_;
+    std::unordered_map<std::int64_t, CachedPlayerListEntry> player_list_entries_;
 };
 
 }  // namespace endstone::core
