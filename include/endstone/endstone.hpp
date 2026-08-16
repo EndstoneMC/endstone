@@ -66,6 +66,7 @@ static_assert(_ITERATOR_DEBUG_LEVEL == 0,
 #include "command/plugin_command.h"
 #include "damage/damage_source.h"
 #include "enchantments/enchantment.h"
+#include "event/actor/actor_collide_with_actor_event.h"
 #include "event/actor/actor_damage_event.h"
 #include "event/actor/actor_death_event.h"
 #include "event/actor/actor_event.h"

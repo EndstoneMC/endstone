@@ -130,6 +130,12 @@ void init_event(py::module_ &m, py::class_<Event, PyEvent> &event)
                       "The location that this actor moved from.")
         .def_property("to_location", &ActorTeleportEvent::getTo, &ActorTeleportEvent::setTo,
                       "The location that this actor moved to.");
+    py::class_<ActorCollideWithActorEvent, Event, ICancellable>(
+        m, "ActorCollideWithActorEvent",
+        "Called when two actors collide with each other. If cancelled, the actors will not be pushed away "
+        "from each other.")
+        .def_property_readonly("actors", &ActorCollideWithActorEvent::getActors,
+                               "The actors involved in this event.");
 
     // Block events
     py::class_<BlockEvent, Event>(m, "BlockEvent", "Represents an `Block`-related event.")

@@ -26,6 +26,7 @@ add_library(endstone_runtime SHARED
         bedrock_hooks/packet.cpp
         bedrock_hooks/piston_block_actor.cpp
         bedrock_hooks/player.cpp
+        bedrock_hooks/pushable_by_entity_utility.cpp
         bedrock_hooks/rak_peer_helper.cpp
         bedrock_hooks/resource_pack_repository.cpp
         bedrock_hooks/say_command.cpp

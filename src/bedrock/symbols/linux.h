@@ -11,7 +11,7 @@
 
 namespace endstone::runtime {
 
-static constexpr std::array<std::pair<std::string_view, std::size_t>, 63> symbols = {{
+static constexpr std::array<std::pair<std::string_view, std::size_t>, 65> symbols = {{
     {"BlockState::StateListNode::mHead", 245468000},
     {"Enchant::mEnchants", 245294016},
     {"MobEffect::mMobEffects", 245274360},
@@ -95,6 +95,9 @@ static constexpr std::array<std::pair<std::string_view, std::size_t>, 63> symbol
     {"_ZN6Player17completeUsingItemEv", 188167680},
     {"_ZN6Player4dropERK9ItemStackb", 188279872},
     {"_ZN6Player4takeER5Actorii", 188227136},
+    // PushableByEntityUtility
+    {"_ZN23PushableByEntityUtility4pushER5ActorS1_b", 116138176},
+    {"_ZN23PushableByEntityUtility8skipPushER5ActorS1_", 116139696},
     // RakPeerHelper
     {"_ZN13RakPeerHelper11peerStartupEPN6RakNet16RakPeerInterfaceERK20ConnectionDefinitionNS_11PeerPurposeE", 140305792},
     // RepositoryFactory
