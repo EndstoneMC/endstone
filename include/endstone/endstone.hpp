@@ -116,6 +116,7 @@ static_assert(_ITERATOR_DEBUG_LEVEL == 0,
 #include "event/player/player_emote_event.h"
 #include "event/player/player_event.h"
 #include "event/player/player_game_mode_change_event.h"
+#include "event/player/player_hide_entity_event.h"
 #include "event/player/player_input_event.h"
 #include "event/player/player_interact_actor_event.h"
 #include "event/player/player_interact_event.h"

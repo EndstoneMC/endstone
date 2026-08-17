@@ -73,6 +73,7 @@ __all__ = [
     "PlayerEmoteEvent",
     "PlayerEvent",
     "PlayerGameModeChangeEvent",
+    "PlayerHideEntityEvent",
     "PlayerInputEvent",
     "PlayerInteractActorEvent",
     "PlayerInteractEvent",
@@ -777,6 +778,19 @@ class PlayerPickupArrowEvent(PlayerEvent, Cancellable):
     def arrow(self) -> Actor:
         """
         The arrow picked up by the player.
+        """
+
+class PlayerHideEntityEvent(PlayerEvent):
+    """
+    Called when a visible actor is hidden from a player.
+
+    This event is only called when the actor's visibility status is actually changed. It is called regardless of
+    whether the actor is within the player's tracking range.
+    """
+    @property
+    def entity(self) -> Actor:
+        """
+        The actor hidden from the player.
         """
 
 class PlayerRecipeBookSettingsChangeEvent(PlayerEvent):

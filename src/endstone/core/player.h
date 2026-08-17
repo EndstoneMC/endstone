@@ -158,6 +158,7 @@ public:
 private:
     friend class ::ServerNetworkHandler;
 
+    void untrackAndHideEntity(Actor &entity);
     void sendPlayerListRemove(const ::Player &player) const;
     void sendPlayerListAdd(std::int64_t unique_id) const;
 

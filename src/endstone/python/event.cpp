@@ -340,6 +340,13 @@ void init_event(py::module_ &m, py::class_<Event, PyEvent> &event)
         m, "PlayerPickupArrowEvent", "Called when a player picks up an arrow from the ground.")
         .def_property_readonly("arrow", &PlayerPickupArrowEvent::getArrow,
                                "The arrow picked up by the player.");
+    py::class_<PlayerHideEntityEvent, PlayerEvent>(m, "PlayerHideEntityEvent", R"doc(
+    Called when a visible actor is hidden from a player.
+
+    This event is only called when the actor's visibility status is actually changed. It is called regardless of
+    whether the actor is within the player's tracking range.
+)doc")
+        .def_property_readonly("entity", &PlayerHideEntityEvent::getEntity, "The actor hidden from the player.");
     auto player_recipe_book_settings_change_event = py::class_<PlayerRecipeBookSettingsChangeEvent, PlayerEvent>(
         m, "PlayerRecipeBookSettingsChangeEvent", "Called when a player changes recipe book settings.");
     py::native_enum<PlayerRecipeBookSettingsChangeEvent::RecipeBookType>(
