@@ -62,6 +62,7 @@ __all__ = [
     "PlayerEmoteEvent",
     "PlayerEvent",
     "PlayerGameModeChangeEvent",
+    "PlayerHideActorEvent",
     "PlayerInteractActorEvent",
     "PlayerInteractEvent",
     "PlayerItemConsumeEvent",
@@ -548,6 +549,19 @@ class PlayerBedLeaveEvent(PlayerEvent):
     def bed(self) -> Block:
         """
         The bed block involved in this event.
+        """
+
+class PlayerHideActorEvent(PlayerEvent):
+    """
+    Called when a visible actor is hidden from a player.
+
+    This event is only called when the actor's visibility status is actually changed. It is called regardless of
+    whether the actor is within the player's tracking range.
+    """
+    @property
+    def actor(self) -> Actor:
+        """
+        The actor hidden from the player.
         """
 
 class PlayerChatEvent(PlayerEvent, Cancellable):

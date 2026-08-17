@@ -63,6 +63,7 @@
 #include "endstone/core/util/uuid.h"
 #include "endstone/event/player/player_bed_leave_event.h"
 #include "endstone/event/player/player_emote_event.h"
+#include "endstone/event/player/player_hide_actor_event.h"
 #include "endstone/event/player/player_interact_event.h"
 #include "endstone/event/player/player_item_held_event.h"
 #include "endstone/event/player/player_join_event.h"
@@ -282,6 +283,12 @@ void EndstonePlayer::hideEntity(Plugin &plugin, Actor &entity)
         return;
     }
 
+    untrackAndHideEntity(entity);
+}
+
+void EndstonePlayer::untrackAndHideEntity(Actor &entity)
+{
+    const auto unique_id = entity.getId();
     if (const auto *player = dynamic_cast<const EndstonePlayer *>(&entity)) {
         hidden_player_runtime_ids_[entity.getRuntimeId()] = unique_id;
         sendPlayerListRemove(player->getHandle());
@@ -290,6 +297,11 @@ void EndstonePlayer::hideEntity(Plugin &plugin, Actor &entity)
     BinaryStream stream;
     stream.writeVarInt64(unique_id, "Target Actor ID", nullptr);
     sendPacket(static_cast<int>(MinecraftPacketIds::RemoveActor), stream.getView());
+
+    if (auto *handle = getHandle().getLevel().fetchEntity(ActorUniqueID{unique_id}, false); handle) {
+        PlayerHideActorEvent event{getSelf(), handle->getEndstoneActor()};
+        server_.getPluginManager().callEvent(event);
+    }
 }
 
 void EndstonePlayer::showEntity(Plugin &plugin, Actor &entity)
