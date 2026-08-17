@@ -310,7 +310,7 @@
       </memberdef>
     </sectiondef>
     <briefdescription>
-<para>Represents an event that is called when a player right-clicks a block. </para>
+<para>Represents an event that is called when a player interacts with an object or air. </para>
     </briefdescription>
     <detaileddescription>
     </detaileddescription>

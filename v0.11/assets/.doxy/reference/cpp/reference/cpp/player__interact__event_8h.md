@@ -40,7 +40,7 @@
 
 | Type | Name |
 | ---: | :--- |
-| class | [**PlayerInteractEvent**](classendstone_1_1PlayerInteractEvent.md) <br>_Represents an event that is called when a player right-clicks a block._  |
+| class | [**PlayerInteractEvent**](classendstone_1_1PlayerInteractEvent.md) <br>_Represents an event that is called when a player interacts with an object or air._  |
 
 
 
