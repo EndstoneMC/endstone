@@ -78,6 +78,7 @@ __all__ = [
     "PlayerPortalEvent",
     "PlayerQuitEvent",
     "PlayerRespawnEvent",
+    "PlayerShowActorEvent",
     "PlayerSkinChangeEvent",
     "PlayerTeleportEvent",
     "PlayerToggleSneakEvent",
@@ -562,6 +563,19 @@ class PlayerHideActorEvent(PlayerEvent):
     def actor(self) -> Actor:
         """
         The actor hidden from the player.
+        """
+
+class PlayerShowActorEvent(PlayerEvent):
+    """
+    Called when a hidden actor is shown to a player.
+
+    This event is only called when the actor's visibility status is actually changed. It is called regardless of
+    whether the actor is within the player's tracking range.
+    """
+    @property
+    def actor(self) -> Actor:
+        """
+        The actor shown to the player.
         """
 
 class PlayerChatEvent(PlayerEvent, Cancellable):

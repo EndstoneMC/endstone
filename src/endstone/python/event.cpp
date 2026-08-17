@@ -264,6 +264,14 @@ void init_event(py::module_ &m, py::class_<Event, PyEvent> &event)
     whether the actor is within the player's tracking range.
 )doc")
         .def_property_readonly("actor", &PlayerHideActorEvent::getActor, "The actor hidden from the player.");
+    py::class_<PlayerShowActorEvent, PlayerEvent>(m, "PlayerShowActorEvent", R"doc(
+    Called when a hidden actor is shown to a player.
+
+    This event is only called when the actor's visibility status is actually changed. It is called regardless of
+    whether the actor is within the player's tracking range.
+)doc")
+        .def_property_readonly("actor", &PlayerShowActorEvent::getActor, py::return_value_policy::reference,
+                               "The actor shown to the player.");
     py::class_<PlayerChatEvent, PlayerEvent, ICancellable>(m, "PlayerChatEvent",
                                                            "Called when a player sends a chat message.")
         .def_property("message", &PlayerChatEvent::getMessage, &PlayerChatEvent::setMessage,
