@@ -96,6 +96,7 @@ __all__ = [
     "PlayerRiptideEvent",
     "PlayerSetSpawnEvent",
     "PlayerShearEntityEvent",
+    "PlayerShowEntityEvent",
     "PlayerSkinChangeEvent",
     "PlayerTeleportEvent",
     "PlayerToggleCrawlEvent",
@@ -791,6 +792,19 @@ class PlayerHideEntityEvent(PlayerEvent):
     def entity(self) -> Actor:
         """
         The actor hidden from the player.
+        """
+
+class PlayerShowEntityEvent(PlayerEvent):
+    """
+    Called when a hidden actor is shown to a player.
+
+    This event is only called when the actor's visibility status is actually changed. It is called regardless of
+    whether the actor is within the player's tracking range.
+    """
+    @property
+    def entity(self) -> Actor:
+        """
+        The actor shown to the player.
         """
 
 class PlayerRecipeBookSettingsChangeEvent(PlayerEvent):

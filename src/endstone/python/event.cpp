@@ -347,6 +347,14 @@ void init_event(py::module_ &m, py::class_<Event, PyEvent> &event)
     whether the actor is within the player's tracking range.
 )doc")
         .def_property_readonly("entity", &PlayerHideEntityEvent::getEntity, "The actor hidden from the player.");
+    py::class_<PlayerShowEntityEvent, PlayerEvent>(m, "PlayerShowEntityEvent", R"doc(
+    Called when a hidden actor is shown to a player.
+
+    This event is only called when the actor's visibility status is actually changed. It is called regardless of
+    whether the actor is within the player's tracking range.
+)doc")
+        .def_property_readonly("entity", &PlayerShowEntityEvent::getEntity, py::return_value_policy::reference,
+                               "The actor shown to the player.");
     auto player_recipe_book_settings_change_event = py::class_<PlayerRecipeBookSettingsChangeEvent, PlayerEvent>(
         m, "PlayerRecipeBookSettingsChangeEvent", "Called when a player changes recipe book settings.");
     py::native_enum<PlayerRecipeBookSettingsChangeEvent::RecipeBookType>(

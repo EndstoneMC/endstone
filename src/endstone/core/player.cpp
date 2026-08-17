@@ -85,6 +85,7 @@
 #include "endstone/event/player/player_move_event.h"
 #include "endstone/event/player/player_recipe_book_settings_change_event.h"
 #include "endstone/event/player/player_riptide_event.h"
+#include "endstone/event/player/player_show_entity_event.h"
 #include "endstone/event/player/player_skin_change_event.h"
 #include "endstone/event/player/player_toggle_crawl_event.h"
 #include "endstone/event/player/player_toggle_flight_event.h"
@@ -404,21 +405,26 @@ void EndstonePlayer::showEntity(Plugin &plugin, Actor &entity)
     }
 
     hidden_entities_.erase(it);
+    trackAndShowEntity(entity);
+}
+
+void EndstonePlayer::trackAndShowEntity(Actor &entity)
+{
+    const auto unique_id = entity.getId();
     if (dynamic_cast<const EndstonePlayer *>(&entity)) {
         hidden_player_runtime_ids_.erase(entity.getRuntimeId());
         sendPlayerListAdd(unique_id);
     }
 
     auto *handle = getHandle().getLevel().fetchEntity(ActorUniqueID{unique_id}, false);
-    if (!handle || handle->getDimensionId() != getHandle().getDimensionId() ||
-        !getHandle().isActorRelevant(*handle)) {
-        return;
+    if (handle && handle->getDimensionId() == getHandle().getDimensionId() && getHandle().isActorRelevant(*handle)) {
+        if (auto packet = handle->tryCreateAddActorPacket(); packet) {
+            getHandle().sendNetworkPacket(*packet);
+        }
     }
 
-    auto packet = handle->tryCreateAddActorPacket();
-    if (packet) {
-        getHandle().sendNetworkPacket(*packet);
-    }
+    PlayerShowEntityEvent event{getSelf(), entity};
+    server_.getPluginManager().callEvent(event);
 }
 
 bool EndstonePlayer::canSee(const Actor &entity) const
