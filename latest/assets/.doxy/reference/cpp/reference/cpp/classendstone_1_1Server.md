@@ -75,6 +75,7 @@ _Represents a server implementation._
 | virtual [**float**](classendstone_1_1Identifier.md) | [**getAverageTickUsage**](#function-getaveragetickusage) () = 0<br>_Gets the average tick usage of the server._  |
 | virtual [**float**](classendstone_1_1Identifier.md) | [**getAverageTicksPerSecond**](#function-getaveragetickspersecond) () = 0<br>_Gets the average ticks per second (TPS)._  |
 | virtual [**PlayerBanList**](classendstone_1_1PlayerBanList.md) & | [**getBanList**](#function-getbanlist) () const = 0<br>_Gets the player ban list._  |
+| virtual [**CommandMap**](classendstone_1_1CommandMap.md) & | [**getCommandMap**](#function-getcommandmap) () const = 0<br>_Gets the command map for registering and looking up commands._  |
 | virtual [**NotNull**](classendstone_1_1NotNull.md)&lt; [**ConsoleCommandSender**](classendstone_1_1ConsoleCommandSender.md) &gt; | [**getCommandSender**](#function-getcommandsender) () const = 0<br>_Gets a_ [_**CommandSender**_](classendstone_1_1CommandSender.md) _for this server._ |
 | virtual [**float**](classendstone_1_1Identifier.md) | [**getCurrentMillisecondsPerTick**](#function-getcurrentmillisecondspertick) () = 0<br>_Gets the current milliseconds per tick (MSPT)._  |
 | virtual [**float**](classendstone_1_1Identifier.md) | [**getCurrentTickUsage**](#function-getcurrenttickusage) () = 0<br>_Gets the current tick usage of the server._  |
@@ -668,6 +669,31 @@ virtual PlayerBanList & endstone::Server::getBanList () const = 0
 **Returns:**
 
 The player ban list 
+
+
+
+
+
+        
+
+<hr>
+
+
+
+### function getCommandMap 
+
+_Gets the command map for registering and looking up commands._ 
+```C++
+virtual CommandMap & endstone::Server::getCommandMap () const = 0
+```
+
+
+
+
+
+**Returns:**
+
+the command map of this [**Server**](classendstone_1_1Server.md) instance 
 
 
 

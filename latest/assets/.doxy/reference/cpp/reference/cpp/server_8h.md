@@ -24,6 +24,7 @@
 * `#include "endstone/ban/player_ban_list.h"`
 * `#include "endstone/block/block_data.h"`
 * `#include "endstone/boss/boss_bar.h"`
+* `#include "endstone/command/command_map.h"`
 * `#include "endstone/command/command_sender.h"`
 * `#include "endstone/identifier.h"`
 * `#include "endstone/lang/language.h"`

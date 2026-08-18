@@ -2484,6 +2484,7 @@
     <member refid="classendstone_1_1Server_1a2c15860e3e6cf3347e9d485a44f8be1d" kind="function"><name>getLogger</name></member>
     <member refid="classendstone_1_1Server_1a90941565489a85794e4e0ff9d8378c68" kind="function"><name>getLanguage</name></member>
     <member refid="classendstone_1_1Server_1afd16655cd119fe34c52f3658245093d1" kind="function"><name>getPluginManager</name></member>
+    <member refid="classendstone_1_1Server_1adf302a8ea14159101ef1d1b25348e7ba" kind="function"><name>getCommandMap</name></member>
     <member refid="classendstone_1_1Server_1ac3484a4420ca5eaa86056e0dfbce54f1" kind="function"><name>getPluginCommand</name></member>
     <member refid="classendstone_1_1Server_1a3c7ae8300ce42964ce3b1d5791e43467" kind="function"><name>getCommandSender</name></member>
     <member refid="classendstone_1_1Server_1a1cd4f8d13157ef50f4994455b25b154a" kind="function"><name>dispatchCommand</name></member>

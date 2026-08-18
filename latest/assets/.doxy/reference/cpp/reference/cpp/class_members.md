@@ -636,6 +636,7 @@
 * **getAverageTickUsage** ([**endstone::Server**](classendstone_1_1Server.md))
 * **getAverageTicksPerSecond** ([**endstone::Server**](classendstone_1_1Server.md))
 * **getBanList** ([**endstone::Server**](classendstone_1_1Server.md))
+* **getCommandMap** ([**endstone::Server**](classendstone_1_1Server.md))
 * **getCommandSender** ([**endstone::Server**](classendstone_1_1Server.md))
 * **getCurrentMillisecondsPerTick** ([**endstone::Server**](classendstone_1_1Server.md))
 * **getCurrentTickUsage** ([**endstone::Server**](classendstone_1_1Server.md))

@@ -216,6 +216,8 @@
         <link refid="command__map_8h_source"/>
         <childnode refid="120" relation="include">
         </childnode>
+        <childnode refid="37" relation="include">
+        </childnode>
       </node>
       <node id="124">
         <label>include/endstone/command/command_sender_wrapper.h</label>

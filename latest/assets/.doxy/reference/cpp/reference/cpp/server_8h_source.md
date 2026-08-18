@@ -39,6 +39,7 @@
 #include "endstone/ban/player_ban_list.h"
 #include "endstone/block/block_data.h"
 #include "endstone/boss/boss_bar.h"
+#include "endstone/command/command_map.h"
 #include "endstone/command/command_sender.h"
 #include "endstone/identifier.h"
 #include "endstone/lang/language.h"
@@ -92,6 +93,8 @@ public:
     [[nodiscard]] virtual Language &getLanguage() const = 0;
 
     [[nodiscard]] virtual PluginManager &getPluginManager() const = 0;
+
+    [[nodiscard]] virtual CommandMap &getCommandMap() const = 0;
 
     [[nodiscard]] virtual Nullable<PluginCommand> getPluginCommand(std::string name) const = 0;
 
