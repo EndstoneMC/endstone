@@ -71,6 +71,7 @@ public:
     void transfer(std::string host, int port) const override;
     void kick(std::string message) const override;
     bool performCommand(std::string command) const override;  // NOLINT(*-use-nodiscard)
+    void sendBlockUpdate(const Location &location, const TileState &tile_state) override;
     [[nodiscard]] bool isSneaking() const override;
     void setSneaking(bool sneak) override;
     [[nodiscard]] bool isSprinting() const override;

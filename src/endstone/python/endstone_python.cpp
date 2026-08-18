@@ -634,6 +634,19 @@ void init_player(py::module_ &m, py_class<Player> &player)
     Returns:
         `True` if the command was successful, `False` otherwise.
 )doc")
+        .def("send_block_update", &Player::sendBlockUpdate, py::arg("location").noconvert(),
+             py::arg("tile_state"), R"doc(
+    Sends a tile state change to this player.
+
+    This fakes a tile state change for a user at the given location. This will not actually change the world in any
+    way.
+
+    The tile state is sent only to this player and does not update the world.
+
+    Args:
+        location: The location of the changed block.
+        tile_state: The new tile state.
+)doc")
         .def_property("is_sneaking", &Player::isSneaking, &Player::setSneaking, "Whether the player is in sneak mode.")
         .def_property("is_sprinting", &Player::isSprinting, &Player::setSprinting,
                       "Whether the player is sprinting or not.")

@@ -111,6 +111,19 @@ public:
     virtual bool performCommand(std::string command) const = 0;  // NOLINT(*-use-nodiscard)
 
     /**
+     * Sends a tile state change to this player.
+     *
+     * This fakes a tile state change for a user at the given location. This will not actually change the world in any
+     * way.
+     *
+     * The tile state is sent only to this player and does not update the world.
+     *
+     * @param location The location of the changed block
+     * @param tile_state The new tile state
+     */
+    virtual void sendBlockUpdate(const Location &location, const TileState &tile_state) = 0;
+
+    /**
      * Returns if the player is in sneak mode.
      *
      * @return `true` if player is in sneak mode
