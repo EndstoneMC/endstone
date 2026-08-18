@@ -14,7 +14,7 @@
 
 #pragma once
 
-#include "endstone/block/block_state.h"
+#include "endstone/block/tile_state.h"
 #include "endstone/block/sign/sign_side.h"
 
 namespace endstone {
@@ -24,7 +24,7 @@ namespace endstone {
  *
  * Changes are kept in the captured state until update() is called.
  */
-class Sign : public BlockState {
+class Sign : public TileState {
 public:
     /**
      * Represents a side of a sign.

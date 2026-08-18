@@ -4,6 +4,13 @@ executable = "bedrock_server"
 filename = "bedrock_server"
 
 [[signatures]]
+name = "_ZN24VanillaBlockActorFactory16createBlockActorE14BlockActorTypeRK8BlockPosRK9BlockType"
+relative = false
+extra = 0
+# Native 1.26.40 factory callback: returns a vanilla block actor for the block type.
+pattern = "41 57 41 56 53 48 83 EC 20 49 89 D7 49 89 F6 48 89 FB 0F B6 05"
+
+[[signatures]]
 name = "BlockState::StateListNode::mHead"
 relative = false
 extra = 0

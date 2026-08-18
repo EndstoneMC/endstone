@@ -21,6 +21,8 @@
 #include "endstone/block/sign.h"
 #include "endstone/core/block/block_state.h"
 
+class CompoundTag;
+
 namespace endstone::core {
 
 class EndstoneSign;
@@ -44,14 +46,17 @@ private:
 
 class EndstoneSign : public EndstoneBlockStateBase<Sign> {
 public:
-    EndstoneSign(const EndstoneBlock &block, ::SignBlockActor &sign);
+    EndstoneSign(const EndstoneBlock &block, ::SignBlockActor &sign, bool use_snapshot);
 
     [[nodiscard]] SignSide &getSide(Side side) const override;
     [[nodiscard]] bool isWaxed() const override;
     void setWaxed(bool waxed) override;
+    [[nodiscard]] bool serialize(::CompoundTag &tag) const override;
+    [[nodiscard]] bool serializeForUpdate(::CompoundTag &tag) const override;
     bool update() override;
     bool update(bool force) override;
     bool update(bool force, bool apply_physics) override;
+    void writeUpdateData(::CompoundTag &tag) const;
 
 private:
     struct SideData {
@@ -62,6 +67,7 @@ private:
 
     friend class EndstoneSignSide;
 
+    [[nodiscard]] ::SignBlockActor &getSign() const;
     [[nodiscard]] SideData &getSideData(::SignTextSide side);
     [[nodiscard]] const SideData &getSideData(::SignTextSide side) const;
 

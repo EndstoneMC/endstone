@@ -22,7 +22,7 @@ namespace endstone::core {
 
 class EndstoneLectern : public EndstoneContainerBase<Lectern> {
 public:
-    EndstoneLectern(const EndstoneBlock &block, ::LecternBlockActor &lectern);
+    EndstoneLectern(const EndstoneBlock &block, ::LecternBlockActor &lectern, bool use_snapshot);
 
     [[nodiscard]] int getPage() const override;
     void setPage(int page) override;

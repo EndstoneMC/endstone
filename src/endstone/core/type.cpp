@@ -31,6 +31,7 @@
 #include "endstone/block/item_frame.h"
 #include "endstone/block/lectern.h"
 #include "endstone/block/sign.h"
+#include "endstone/block/tile_state.h"
 #include "endstone/command/block_command_sender.h"
 #include "endstone/command/command_sender.h"
 #include "endstone/command/console_command_sender.h"
@@ -77,13 +78,14 @@ void registerTypes()
 
     // BlockState hierarchy
     registerType<BlockState>();
-    registerType<Container>().base<BlockState>();
+    registerType<TileState>().base<BlockState>();
+    registerType<Container>().base<TileState>();
     registerType<Furnace>().base<Container>();
     registerType<Lectern>().base<Container>();
-    registerType<Campfire>().base<BlockState>();
-    registerType<CreatureSpawner>().base<BlockState>();
-    registerType<ItemFrame>().base<BlockState>();
-    registerType<Sign>().base<BlockState>();
+    registerType<Campfire>().base<TileState>();
+    registerType<CreatureSpawner>().base<TileState>();
+    registerType<ItemFrame>().base<TileState>();
+    registerType<Sign>().base<TileState>();
 }
 
 bool isTypeInstanceOf(const std::type_info &from, const std::type_info &target)

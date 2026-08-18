@@ -12,25 +12,16 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-#pragma once
+#include "bedrock/world/item/save_context.h"
 
-#include "bedrock/world/level/block/actor/furnace_block_actor.h"
-#include "endstone/block/furnace.h"
-#include "endstone/core/block/container.h"
+SaveContext::SaveContext(SaveUseCase use_case) : save_use_case_(use_case) {}
 
-namespace endstone::core {
+SaveContext SaveContext::forNetwork()
+{
+    return SaveContext(SaveUseCase::SendOverNetwork);
+}
 
-class EndstoneFurnace : public EndstoneContainerBase<Furnace> {
-public:
-    EndstoneFurnace(const EndstoneBlock &block, ::FurnaceBlockActor &furnace, bool use_snapshot);
-
-    [[nodiscard]] int getBurnTime() const override;
-    void setBurnTime(int burn_time) override;
-    [[nodiscard]] int getCookTime() const override;
-    void setCookTime(int cook_time) override;
-
-private:
-    ::FurnaceBlockActor &furnace_;
-};
-
-}  // namespace endstone::core
+SaveContext SaveContext::forClone()
+{
+    return SaveContext(SaveUseCase::Clone);
+}

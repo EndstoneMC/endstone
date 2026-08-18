@@ -24,7 +24,7 @@ namespace endstone::core {
 
 class EndstoneCampfire : public EndstoneBlockStateBase<Campfire> {
 public:
-    EndstoneCampfire(const EndstoneBlock &block, ::CampfireBlockActor &campfire);
+    EndstoneCampfire(const EndstoneBlock &block, ::CampfireBlockActor &campfire, bool use_snapshot);
 
     [[nodiscard]] int getSize() const override;
     [[nodiscard]] std::optional<ItemStack> getItem(int index) const override;

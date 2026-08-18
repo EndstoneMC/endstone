@@ -11,7 +11,7 @@
 
 namespace endstone::runtime {
 
-static constexpr std::array<std::pair<std::string_view, std::size_t>, 74> symbols = {{
+static constexpr std::array<std::pair<std::string_view, std::size_t>, 75> symbols = {{
     {"BlockState::StateListNode::mHead", 245336464},
     {"Enchant::mEnchants", 245162480},
     {"MobEffect::mMobEffects", 245142824},
@@ -129,6 +129,8 @@ static constexpr std::array<std::pair<std::string_view, std::size_t>, 74> symbol
     {"_ZN16ServerScoreboardC2E23CommandSoftEnumRegistryP12LevelStorageN3gsl8not_nullIN7Bedrock15NonOwnerPointerI19GameplayUserManagerEEEE", 208972080},
     // ServerStandInCauldronSystem::SystemImpl
     {"_ZN27ServerStandInCauldronSystem10SystemImpl20_checkInsideCauldronER19ActorOwnerComponent", 117958144},
+    // VanillaBlockActorFactory
+    {"_ZN24VanillaBlockActorFactory16createBlockActorE14BlockActorTypeRK8BlockPosRK9BlockType", 73607792},
     // WeatherManager
     {"_ZN14WeatherManager13updateWeatherEfifi", 201312544},
 }};

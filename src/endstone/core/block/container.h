@@ -17,6 +17,7 @@
 #include <memory>
 #include <type_traits>
 
+#include "bedrock/world/level/block/actor/vanilla_block_actor.h"
 #include "endstone/block/container.h"
 #include "endstone/core/block/block_state.h"
 #include "endstone/core/inventory/inventory.h"
@@ -27,8 +28,10 @@ template <typename Interface = Container>
     requires std::is_base_of_v<Container, Interface>
 class EndstoneContainerBase : public EndstoneBlockStateBase<Interface> {
 public:
-    EndstoneContainerBase(const EndstoneBlock &block, ::Container &container)
-        : EndstoneBlockStateBase<Interface>(block), inventory_(std::make_unique<EndstoneInventory>(container))
+    EndstoneContainerBase(const EndstoneBlock &block, ::BlockActor &block_actor, bool use_snapshot)
+        : EndstoneBlockStateBase<Interface>(block, block_actor, use_snapshot),
+          inventory_(std::make_unique<EndstoneInventory>(
+              *static_cast<::VanillaBlockActor *>(this->getBlockActor())->getContainer()))
     {
     }
 

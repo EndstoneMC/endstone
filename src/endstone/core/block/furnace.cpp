@@ -16,8 +16,9 @@
 
 namespace endstone::core {
 
-EndstoneFurnace::EndstoneFurnace(const EndstoneBlock &block, ::FurnaceBlockActor &furnace)
-    : EndstoneContainerBase<Furnace>(block, furnace), furnace_(furnace)
+EndstoneFurnace::EndstoneFurnace(const EndstoneBlock &block, ::FurnaceBlockActor &furnace, bool use_snapshot)
+    : EndstoneContainerBase<Furnace>(block, furnace, use_snapshot),
+      furnace_(static_cast<::FurnaceBlockActor &>(*getBlockActor()))
 {
 }
 

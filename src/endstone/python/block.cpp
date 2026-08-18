@@ -137,7 +137,13 @@ void init_block(py::module_ &m, py::classh<Block> &block)
 )doc")
         .def("__str__", [](const BlockState &self) { return std::format("{}", self); });
 
-    py::classh<Container, BlockState>(m, "Container", R"doc(
+    py::classh<TileState, BlockState>(m, "TileState", R"doc(
+    Represents a captured state of a block entity.
+)doc")
+        .def_property_readonly("is_snapshot", &TileState::isSnapshot,
+                               "Whether this state is backed by an independent block entity snapshot.");
+
+    py::classh<Container, TileState>(m, "Container", R"doc(
     Represents a captured state of a container block, such as a chest.
 )doc")
         .def_property_readonly("inventory", &Container::getInventory, py::return_value_policy::reference_internal, R"doc(
@@ -147,7 +153,7 @@ void init_block(py::module_ &m, py::classh<Block> &block)
     longer be valid.
 )doc");
 
-    py::classh<Campfire, BlockState>(m, "Campfire", "Represents a captured state of a campfire.")
+    py::classh<Campfire, TileState>(m, "Campfire", "Represents a captured state of a campfire.")
         .def_property_readonly("size", &Campfire::getSize, "The number of items this campfire can cook at once.")
         .def("get_item", &Campfire::getItem, py::arg("index"), R"doc(
     Gets the item currently cooking in the given slot.
@@ -182,7 +188,7 @@ void init_block(py::module_ &m, py::classh<Block> &block)
         cook_time: The cook time, in ticks.
 )doc");
 
-    py::classh<CreatureSpawner, BlockState>(m, "CreatureSpawner", "Represents a captured state of a creature spawner.")
+    py::classh<CreatureSpawner, TileState>(m, "CreatureSpawner", "Represents a captured state of a creature spawner.")
         .def_property("spawned_type", &CreatureSpawner::getSpawnedType, &CreatureSpawner::setSpawnedType,
                       py::return_value_policy::reference, "The type of actor this spawner will spawn.")
         .def_property("delay", &CreatureSpawner::getDelay, &CreatureSpawner::setDelay,
@@ -224,7 +230,7 @@ void init_block(py::module_ &m, py::classh<Block> &block)
     This is the amount of time the item has been cooking for.
 )doc");
 
-    py::classh<ItemFrame, BlockState>(m, "ItemFrame", R"doc(
+    py::classh<ItemFrame, TileState>(m, "ItemFrame", R"doc(
     Represents a captured state of an item frame.
 )doc")
         .def_property("item", &ItemFrame::getItem, &ItemFrame::setItem, R"doc(
@@ -275,7 +281,7 @@ void init_block(py::module_ &m, py::classh<Block> &block)
     `Color` where Bukkit has a `DyeColor`.
 )doc");
 
-    auto sign = py::classh<Sign, BlockState>(m, "Sign", R"doc(
+    auto sign = py::classh<Sign, TileState>(m, "Sign", R"doc(
     Represents a captured state of a sign.
 
     Changes are kept in the captured state until `update()` is called.
@@ -350,11 +356,18 @@ void init_block(py::module_ &m, py::classh<Block> &block)
         .def_property_readonly("y", &Block::getY, "Y-coordinate of this block.")
         .def_property_readonly("z", &Block::getZ, "Z-coordinate of this block.")
         .def_property_readonly("location", &Block::getLocation, "The location of this block.")
-        .def("capture_state", &Block::captureState, R"doc(
+        .def("capture_state", py::overload_cast<bool>(&Block::captureState, py::const_), py::arg("use_snapshot") = true,
+             R"doc(
     Captures the current state of this block.
 
     The returned object will never be updated, and you are not guaranteed that (for example) a
     sign is still a sign after you capture its state.
+
+    By default, tile states use an independent block entity snapshot. Pass `False` to use the
+    block entity currently residing in the world.
+
+    Args:
+        use_snapshot: Whether to use an independent block entity snapshot.
 
     Returns:
         A `BlockState` snapshot of the current state of this block.

@@ -14,23 +14,23 @@
 
 #pragma once
 
-#include "bedrock/world/level/block/actor/furnace_block_actor.h"
-#include "endstone/block/furnace.h"
-#include "endstone/core/block/container.h"
+#include "endstone/block/block_state.h"
 
-namespace endstone::core {
+namespace endstone {
 
-class EndstoneFurnace : public EndstoneContainerBase<Furnace> {
+/**
+ * Represents a captured state of a block entity.
+ */
+class TileState : public BlockState {
 public:
-    EndstoneFurnace(const EndstoneBlock &block, ::FurnaceBlockActor &furnace, bool use_snapshot);
+    ~TileState() override = default;
 
-    [[nodiscard]] int getBurnTime() const override;
-    void setBurnTime(int burn_time) override;
-    [[nodiscard]] int getCookTime() const override;
-    void setCookTime(int cook_time) override;
-
-private:
-    ::FurnaceBlockActor &furnace_;
+    /**
+     * Gets whether this state is backed by an independent block entity snapshot.
+     *
+     * @return `true` if this state is a snapshot, otherwise `false`.
+     */
+    [[nodiscard]] virtual bool isSnapshot() const = 0;
 };
 
-}  // namespace endstone::core
+}  // namespace endstone

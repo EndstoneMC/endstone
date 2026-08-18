@@ -14,23 +14,17 @@
 
 #pragma once
 
-#include "bedrock/world/level/block/actor/furnace_block_actor.h"
-#include "endstone/block/furnace.h"
-#include "endstone/core/block/container.h"
+#include <cstdint>
+#include <memory>
 
-namespace endstone::core {
+#include "bedrock/world/level/block/actor/block_actor_type.h"
 
-class EndstoneFurnace : public EndstoneContainerBase<Furnace> {
-public:
-    EndstoneFurnace(const EndstoneBlock &block, ::FurnaceBlockActor &furnace, bool use_snapshot);
+class BlockActor;
+class BlockPos;
+class BlockType;
 
-    [[nodiscard]] int getBurnTime() const override;
-    void setBurnTime(int burn_time) override;
-    [[nodiscard]] int getCookTime() const override;
-    void setCookTime(int cook_time) override;
+namespace VanillaBlockActorFactory {
 
-private:
-    ::FurnaceBlockActor &furnace_;
-};
+std::shared_ptr<::BlockActor> createBlockActor(::BlockActorType, const ::BlockPos &, const ::BlockType &);
 
-}  // namespace endstone::core
+}  // namespace VanillaBlockActorFactory

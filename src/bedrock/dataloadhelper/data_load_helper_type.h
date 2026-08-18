@@ -14,23 +14,8 @@
 
 #pragma once
 
-#include "bedrock/world/level/block/actor/furnace_block_actor.h"
-#include "endstone/block/furnace.h"
-#include "endstone/core/block/container.h"
-
-namespace endstone::core {
-
-class EndstoneFurnace : public EndstoneContainerBase<Furnace> {
-public:
-    EndstoneFurnace(const EndstoneBlock &block, ::FurnaceBlockActor &furnace, bool use_snapshot);
-
-    [[nodiscard]] int getBurnTime() const override;
-    void setBurnTime(int burn_time) override;
-    [[nodiscard]] int getCookTime() const override;
-    void setCookTime(int cook_time) override;
-
-private:
-    ::FurnaceBlockActor &furnace_;
+enum class DataLoadHelperType : int {
+    Default = 0,
+    Structure = 1,
+    NewUniqueIds = 2,
 };
-
-}  // namespace endstone::core

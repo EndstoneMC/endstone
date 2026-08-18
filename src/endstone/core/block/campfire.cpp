@@ -19,8 +19,9 @@
 
 namespace endstone::core {
 
-EndstoneCampfire::EndstoneCampfire(const EndstoneBlock &block, ::CampfireBlockActor &campfire)
-    : EndstoneBlockStateBase<Campfire>(block), campfire_(campfire)
+EndstoneCampfire::EndstoneCampfire(const EndstoneBlock &block, ::CampfireBlockActor &campfire, bool use_snapshot)
+    : EndstoneBlockStateBase<Campfire>(block, campfire, use_snapshot),
+      campfire_(static_cast<::CampfireBlockActor &>(*getBlockActor()))
 {
 }
 

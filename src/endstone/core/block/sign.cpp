@@ -16,7 +16,10 @@
 
 #include <algorithm>
 #include <cmath>
+#include <cstdint>
+#include <string_view>
 
+#include "bedrock/nbt/compound_tag.h"
 #include "endstone/check.h"
 
 namespace endstone::core {
@@ -119,13 +122,13 @@ void EndstoneSignSide::setColor(Color color)
     sign_.getSideData(side_).color = toMinecraft(color);
 }
 
-EndstoneSign::EndstoneSign(const EndstoneBlock &block, ::SignBlockActor &sign)
-    : EndstoneBlockStateBase<Sign>(block),
-      front_data_{sign.getMessage(::SignTextSide::Front), sign.getSignTextColor(::SignTextSide::Front),
-                  sign.getIsGlowing(::SignTextSide::Front)},
-      back_data_{sign.getMessage(::SignTextSide::Back), sign.getSignTextColor(::SignTextSide::Back),
-                 sign.getIsGlowing(::SignTextSide::Back)},
-      waxed_(sign.getIsWaxed()), front_(*this, ::SignTextSide::Front), back_(*this, ::SignTextSide::Back)
+EndstoneSign::EndstoneSign(const EndstoneBlock &block, ::SignBlockActor &sign, bool use_snapshot)
+    : EndstoneBlockStateBase<Sign>(block, sign, use_snapshot),
+      front_data_{getSign().getMessage(::SignTextSide::Front), getSign().getSignTextColor(::SignTextSide::Front),
+                  getSign().getIsGlowing(::SignTextSide::Front)},
+      back_data_{getSign().getMessage(::SignTextSide::Back), getSign().getSignTextColor(::SignTextSide::Back),
+                 getSign().getIsGlowing(::SignTextSide::Back)},
+      waxed_(getSign().getIsWaxed()), front_(*this, ::SignTextSide::Front), back_(*this, ::SignTextSide::Back)
 {
 }
 
@@ -142,6 +145,24 @@ bool EndstoneSign::isWaxed() const
 void EndstoneSign::setWaxed(bool waxed)
 {
     waxed_ = waxed;
+}
+
+bool EndstoneSign::serialize(::CompoundTag &tag) const
+{
+    if (!EndstoneBlockStateBase<Sign>::serialize(tag)) {
+        return false;
+    }
+    writeUpdateData(tag);
+    return true;
+}
+
+bool EndstoneSign::serializeForUpdate(::CompoundTag &tag) const
+{
+    if (!EndstoneBlockStateBase<Sign>::serializeForUpdate(tag)) {
+        return false;
+    }
+    writeUpdateData(tag);
+    return true;
 }
 
 bool EndstoneSign::update()
@@ -175,6 +196,9 @@ bool EndstoneSign::update(bool force, bool apply_physics)
     }
 
     auto &sign = static_cast<::SignBlockActor &>(*block_entity);
+    if (isSnapshot()) {
+        return applySnapshot(block_source_.getILevel(), sign);
+    }
     sign.setMessageForServerScripingOnly(::SignTextSide::Front, front_data_.message, {});
     sign.setMessageForServerScripingOnly(::SignTextSide::Back, back_data_.message, {});
     sign.setSignTextColor(::SignTextSide::Front, front_data_.color);
@@ -182,7 +206,13 @@ bool EndstoneSign::update(bool force, bool apply_physics)
     sign.setIsGlowing(::SignTextSide::Front, front_data_.glowing);
     sign.setIsGlowing(::SignTextSide::Back, back_data_.glowing);
     sign.setWaxed(waxed_);
+    sign.setChanged();
     return true;
+}
+
+::SignBlockActor &EndstoneSign::getSign() const
+{
+    return static_cast<::SignBlockActor &>(*getBlockActor());
 }
 
 EndstoneSign::SideData &EndstoneSign::getSideData(::SignTextSide side)
@@ -193,6 +223,32 @@ EndstoneSign::SideData &EndstoneSign::getSideData(::SignTextSide side)
 const EndstoneSign::SideData &EndstoneSign::getSideData(::SignTextSide side) const
 {
     return side == ::SignTextSide::Front ? front_data_ : back_data_;
+}
+
+void EndstoneSign::writeUpdateData(::CompoundTag &tag) const
+{
+    const auto write_side = [](::CompoundTag &root, std::string_view name, const SideData &data) {
+        auto *side = root.getCompound(name);
+        if (side == nullptr) {
+            root.putCompound(std::string(name), ::CompoundTag{});
+            side = root.getCompound(name);
+        }
+        if (side == nullptr) {
+            return;
+        }
+
+        side->putString("Text", data.message);
+        const auto color = (static_cast<std::uint32_t>(toByte(data.color.a)) << 24) |
+                           (static_cast<std::uint32_t>(toByte(data.color.r)) << 16) |
+                           (static_cast<std::uint32_t>(toByte(data.color.g)) << 8) |
+                           static_cast<std::uint32_t>(toByte(data.color.b));
+        side->putInt("SignTextColor", static_cast<std::int32_t>(color));
+        side->putBoolean("IgnoreLighting", data.glowing);
+    };
+
+    write_side(tag, "FrontText", front_data_);
+    write_side(tag, "BackText", back_data_);
+    tag.putBoolean("IsWaxed", waxed_);
 }
 
 }  // namespace endstone::core

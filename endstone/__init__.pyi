@@ -9,7 +9,7 @@ import numpy.typing
 
 from endstone.actor import Actor, Mob
 from endstone.ban import IpBanList, PlayerBanList
-from endstone.block import BlockData, BlockType, Sign
+from endstone.block import BlockData, BlockType, Sign, TileState
 from endstone.boss import BarColor, BarFlag, BarStyle, BossBar
 from endstone.command import CommandSender, ConsoleCommandSender
 from endstone.form import ActionForm, MessageForm, ModalForm
