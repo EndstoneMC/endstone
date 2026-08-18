@@ -14,25 +14,17 @@
 
 #pragma once
 
-#include "endstone/block/tile_state.h"
-#include "endstone/inventory/inventory.h"
+#include <cstdint>
+#include <memory>
 
-namespace endstone {
+#include "bedrock/world/level/block/actor/block_actor_type.h"
 
-/**
- * Represents a captured state of a container block, such as a chest.
- */
-class Container : public TileState {
-public:
-    /**
-     * Gets the inventory of the block represented by this block state.
-     *
-     * <p>
-     * If the block was changed to a different type in the meantime, the returned inventory might no longer be valid.
-     *
-     * @return the inventory of the block
-     */
-    [[nodiscard]] virtual Inventory &getInventory() const = 0;
-};
+class BlockActor;
+class BlockPos;
+class BlockType;
 
-}  // namespace endstone
+namespace VanillaBlockActorFactory {
+
+std::shared_ptr<::BlockActor> createBlockActor(::BlockActorType, const ::BlockPos &, const ::BlockType &);
+
+}  // namespace VanillaBlockActorFactory

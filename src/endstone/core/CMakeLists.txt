@@ -50,6 +50,7 @@ add_library(endstone_core
         block/item_frame.cpp
         block/lectern.cpp
         block/sign.cpp
+        block/tile_state.cpp
         boss/boss_bar.cpp
         console/console.cpp
         command/block_command_sender.cpp

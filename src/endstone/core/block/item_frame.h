@@ -24,7 +24,7 @@ namespace endstone::core {
 
 class EndstoneItemFrame : public EndstoneBlockStateBase<ItemFrame> {
 public:
-    EndstoneItemFrame(const EndstoneBlock &block, ::ItemFrameBlockActor &item_frame);
+    EndstoneItemFrame(const EndstoneBlock &block, ::ItemFrameBlockActor &item_frame, bool use_snapshot);
 
     [[nodiscard]] std::optional<ItemStack> getItem() const override;
     void setItem(const std::optional<ItemStack> &item) override;

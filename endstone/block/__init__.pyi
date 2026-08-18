@@ -25,6 +25,7 @@ __all__ = [
     "Lectern",
     "Sign",
     "SignSide",
+    "TileState",
 ]
 
 class Block:
@@ -124,12 +125,18 @@ class Block:
         The location of this block.
         """
 
-    def capture_state(self) -> BlockState:
+    def capture_state(self, use_snapshot: bool = True) -> BlockState:
         """
         Captures the current state of this block.
 
         The returned object will never be updated, and you are not guaranteed that (for example) a
         sign is still a sign after you capture its state.
+
+        By default, tile states use an independent block entity snapshot. Pass `False` to use the
+        block entity currently residing in the world.
+
+        Args:
+            use_snapshot: Whether to use an independent block entity snapshot.
 
         Returns:
             A `BlockState` snapshot of the current state of this block.
@@ -334,7 +341,17 @@ class BlockState:
             `True` if the update was successful, `False` otherwise.
         """
 
-class Container(BlockState):
+class TileState(BlockState):
+    """
+    Represents a captured state of a block entity.
+    """
+    @property
+    def is_snapshot(self) -> bool:
+        """
+        Whether this state is backed by an independent block entity snapshot.
+        """
+
+class Container(TileState):
     """
     Represents a captured state of a container block, such as a chest.
     """
@@ -347,7 +364,7 @@ class Container(BlockState):
         longer be valid.
         """
 
-class Campfire(BlockState):
+class Campfire(TileState):
     """
     Represents a captured state of a campfire.
     """
@@ -397,7 +414,7 @@ class Campfire(BlockState):
             cook_time: The cook time, in ticks.
         """
 
-class CreatureSpawner(BlockState):
+class CreatureSpawner(TileState):
     """
     Represents a captured state of a creature spawner.
     """
@@ -507,7 +524,7 @@ class Furnace(Container):
     @cook_time.setter
     def cook_time(self, arg1: int) -> None: ...
 
-class ItemFrame(BlockState):
+class ItemFrame(TileState):
     """
     Represents a captured state of an item frame.
     """
@@ -597,7 +614,7 @@ class SignSide:
     @color.setter
     def color(self, arg1: tuple[int, ...]) -> None: ...
 
-class Sign(BlockState):
+class Sign(TileState):
     """
     Represents a captured state of a sign.
     """

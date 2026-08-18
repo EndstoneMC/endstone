@@ -12,27 +12,16 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-#pragma once
+#include "bedrock/world/item/save_context.h"
 
-#include "endstone/block/tile_state.h"
-#include "endstone/inventory/inventory.h"
+SaveContext::SaveContext(SaveUseCase use_case) : save_use_case_(use_case) {}
 
-namespace endstone {
+SaveContext SaveContext::forNetwork()
+{
+    return SaveContext(SaveUseCase::SendOverNetwork);
+}
 
-/**
- * Represents a captured state of a container block, such as a chest.
- */
-class Container : public TileState {
-public:
-    /**
-     * Gets the inventory of the block represented by this block state.
-     *
-     * <p>
-     * If the block was changed to a different type in the meantime, the returned inventory might no longer be valid.
-     *
-     * @return the inventory of the block
-     */
-    [[nodiscard]] virtual Inventory &getInventory() const = 0;
-};
-
-}  // namespace endstone
+SaveContext SaveContext::forClone()
+{
+    return SaveContext(SaveUseCase::Clone);
+}

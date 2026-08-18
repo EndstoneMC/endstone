@@ -22,7 +22,7 @@ namespace endstone::core {
 
 class EndstoneFurnace : public EndstoneContainerBase<Furnace> {
 public:
-    EndstoneFurnace(const EndstoneBlock &block, ::FurnaceBlockActor &furnace);
+    EndstoneFurnace(const EndstoneBlock &block, ::FurnaceBlockActor &furnace, bool use_snapshot);
 
     [[nodiscard]] int getBurnTime() const override;
     void setBurnTime(int burn_time) override;

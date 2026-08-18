@@ -12,27 +12,11 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-#pragma once
+#include "bedrock/world/level/block/actor/block_actor.h"
 
-#include "endstone/block/tile_state.h"
-#include "endstone/inventory/inventory.h"
+void BlockActor::load(ILevel &, CompoundTag const &, DataLoadHelper &) {}
 
-namespace endstone {
-
-/**
- * Represents a captured state of a container block, such as a chest.
- */
-class Container : public TileState {
-public:
-    /**
-     * Gets the inventory of the block represented by this block state.
-     *
-     * <p>
-     * If the block was changed to a different type in the meantime, the returned inventory might no longer be valid.
-     *
-     * @return the inventory of the block
-     */
-    [[nodiscard]] virtual Inventory &getInventory() const = 0;
-};
-
-}  // namespace endstone
+bool BlockActor::save(CompoundTag &, SaveContext const &) const
+{
+    return true;
+}

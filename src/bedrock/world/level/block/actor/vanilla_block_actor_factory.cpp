@@ -12,27 +12,15 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-#pragma once
+#include "bedrock/world/level/block/actor/vanilla_block_actor_factory.h"
 
-#include "endstone/block/tile_state.h"
-#include "endstone/inventory/inventory.h"
+#include "bedrock/symbol.h"
 
-namespace endstone {
+namespace VanillaBlockActorFactory {
 
-/**
- * Represents a captured state of a container block, such as a chest.
- */
-class Container : public TileState {
-public:
-    /**
-     * Gets the inventory of the block represented by this block state.
-     *
-     * <p>
-     * If the block was changed to a different type in the meantime, the returned inventory might no longer be valid.
-     *
-     * @return the inventory of the block
-     */
-    [[nodiscard]] virtual Inventory &getInventory() const = 0;
-};
+std::shared_ptr<::BlockActor> createBlockActor(::BlockActorType type, const ::BlockPos &pos, const ::BlockType &block)
+{
+    return BEDROCK_CALL(&VanillaBlockActorFactory::createBlockActor, type, pos, block);
+}
 
-}  // namespace endstone
+}  // namespace VanillaBlockActorFactory

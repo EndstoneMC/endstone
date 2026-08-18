@@ -14,25 +14,7 @@
 
 #pragma once
 
-#include "endstone/block/tile_state.h"
-#include "endstone/inventory/inventory.h"
-
-namespace endstone {
-
-/**
- * Represents a captured state of a container block, such as a chest.
- */
-class Container : public TileState {
+class InternalComponentRegistry {
 public:
-    /**
-     * Gets the inventory of the block represented by this block state.
-     *
-     * <p>
-     * If the block was changed to a different type in the meantime, the returned inventory might no longer be valid.
-     *
-     * @return the inventory of the block
-     */
-    [[nodiscard]] virtual Inventory &getInventory() const = 0;
+    struct ComponentInfo {};
 };
-
-}  // namespace endstone

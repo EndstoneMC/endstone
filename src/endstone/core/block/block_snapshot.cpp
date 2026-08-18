@@ -51,9 +51,9 @@ void EndstoneBlockSnapshot::setData(const BlockData &data, bool /*apply_physics*
     setData(data);
 }
 
-std::unique_ptr<BlockState> EndstoneBlockSnapshot::captureState() const
+std::unique_ptr<BlockState> EndstoneBlockSnapshot::captureState(bool /*use_snapshot*/) const
 {
-    return std::make_unique<EndstoneBlockState>(getDimension(), getPosition(), *placed_);
+    return std::make_unique<EndstoneBlockState>(getDimension(), getPosition(), *placed_, nullptr, false);
 }
 
 std::unique_ptr<Block> EndstoneBlockSnapshot::clone() const

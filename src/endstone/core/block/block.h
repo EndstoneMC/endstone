@@ -23,6 +23,8 @@
 namespace endstone::core {
 class EndstoneBlock : public Block {
 public:
+    using Block::captureState;
+
     EndstoneBlock(BlockSource &block_source, BlockPos block_pos);
     [[nodiscard]] const BlockType &getType() const override;
     void setType(BlockTypeId type) override;
@@ -39,7 +41,7 @@ public:
     [[nodiscard]] int getY() const override;
     [[nodiscard]] int getZ() const override;
     [[nodiscard]] Location getLocation() const override;
-    [[nodiscard]] std::unique_ptr<BlockState> captureState() const override;
+    [[nodiscard]] std::unique_ptr<BlockState> captureState(bool use_snapshot) const override;
     [[nodiscard]] std::unique_ptr<Block> clone() const override;
 
     [[nodiscard]] BlockPos getPosition() const;

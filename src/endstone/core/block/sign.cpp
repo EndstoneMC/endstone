@@ -16,7 +16,10 @@
 
 #include <algorithm>
 #include <cmath>
+#include <cstdint>
+#include <string_view>
 
+#include "bedrock/nbt/compound_tag.h"
 #include "endstone/check.h"
 
 namespace endstone::core {
@@ -126,8 +129,8 @@ void EndstoneSignSide::setColor(Color color)
     getSign().setChanged();
 }
 
-EndstoneSign::EndstoneSign(const EndstoneBlock &block, ::SignBlockActor &sign)
-    : EndstoneBlockStateBase<Sign>(block, sign), front_(*this, ::SignTextSide::Front),
+EndstoneSign::EndstoneSign(const EndstoneBlock &block, ::SignBlockActor &sign, bool use_snapshot)
+    : EndstoneBlockStateBase<Sign>(block, sign, use_snapshot), front_(*this, ::SignTextSide::Front),
       back_(*this, ::SignTextSide::Back)
 {
 }
@@ -146,6 +149,95 @@ void EndstoneSign::setWaxed(bool waxed)
 {
     getSign().setWaxed(waxed);
     getSign().setChanged();
+}
+
+bool EndstoneSign::serialize(::CompoundTag &tag) const
+{
+    if (!EndstoneBlockStateBase<Sign>::serialize(tag)) {
+        return false;
+    }
+    writeUpdateData(tag);
+    return true;
+}
+
+bool EndstoneSign::serializeForUpdate(::CompoundTag &tag) const
+{
+    if (!EndstoneBlockStateBase<Sign>::serializeForUpdate(tag)) {
+        return false;
+    }
+    writeUpdateData(tag);
+    return true;
+}
+
+bool EndstoneSign::update()
+{
+    return update(false);
+}
+
+bool EndstoneSign::update(bool force)
+{
+    return update(force, true);
+}
+
+bool EndstoneSign::update(bool force, bool apply_physics)
+{
+    const auto block = getBlock();
+    if (block->getType() != getType() && !force) {
+        return false;
+    }
+
+    auto *block_entity = getBlockSource().getBlockEntity(block_pos_);
+    if (block_entity == nullptr || (block_entity->getType() != BlockActorType::Sign &&
+                                    block_entity->getType() != BlockActorType::HangingSign)) {
+        return false;
+    }
+
+    block->setData(*getData(), apply_physics);
+    block_entity = getBlockSource().getBlockEntity(block_pos_);
+    if (block_entity == nullptr || (block_entity->getType() != BlockActorType::Sign &&
+                                    block_entity->getType() != BlockActorType::HangingSign)) {
+        return false;
+    }
+
+    auto &sign = static_cast<::SignBlockActor &>(*block_entity);
+    if (isSnapshot()) {
+        return applySnapshot(getBlockSource().getILevel(), sign);
+    }
+    sign.setChanged();
+    return true;
+}
+
+::SignBlockActor &EndstoneSign::getSign() const
+{
+    return getBlockActor<::SignBlockActor>();
+}
+
+void EndstoneSign::writeUpdateData(::CompoundTag &tag) const
+{
+    const auto write_side = [this](::CompoundTag &root, std::string_view name, ::SignTextSide side) {
+        auto *side_tag = root.getCompound(name);
+        if (side_tag == nullptr) {
+            root.putCompound(std::string(name), ::CompoundTag{});
+            side_tag = root.getCompound(name);
+        }
+        if (side_tag == nullptr) {
+            return;
+        }
+
+        const auto &sign = getSign();
+        side_tag->putString("Text", sign.getMessage(side));
+        const auto color = sign.getSignTextColor(side);
+        const auto packed_color = (static_cast<std::uint32_t>(toByte(color.a)) << 24) |
+                                  (static_cast<std::uint32_t>(toByte(color.r)) << 16) |
+                                  (static_cast<std::uint32_t>(toByte(color.g)) << 8) |
+                                  static_cast<std::uint32_t>(toByte(color.b));
+        side_tag->putInt("SignTextColor", static_cast<std::int32_t>(packed_color));
+        side_tag->putBoolean("IgnoreLighting", sign.getIsGlowing(side));
+    };
+
+    write_side(tag, "FrontText", ::SignTextSide::Front);
+    write_side(tag, "BackText", ::SignTextSide::Back);
+    tag.putBoolean("IsWaxed", getSign().getIsWaxed());
 }
 
 }  // namespace endstone::core

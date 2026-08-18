@@ -32,7 +32,17 @@
 
 using endstone::core::EndstoneServer;
 
+namespace endstone {
+
+std::unique_ptr<BlockState> Block::captureState() const
+{
+    return captureState(true);
+}
+
+}  // namespace endstone
+
 namespace endstone::core {
+
 EndstoneBlock::EndstoneBlock(BlockSource &block_source, BlockPos block_pos)
     : dimension_(block_source.getDimension().getEndstoneDimension().cast<EndstoneDimension>()),
       block_pos_(block_pos)
@@ -124,36 +134,38 @@ Location EndstoneBlock::getLocation() const
     return {getDimension(), getX(), getY(), getZ()};
 }
 
-std::unique_ptr<BlockState> EndstoneBlock::captureState() const
+std::unique_ptr<BlockState> EndstoneBlock::captureState(bool use_snapshot) const
 {
     if (auto *block_entity = getBlockSource().getBlockEntity(block_pos_)) {
-        // TODO(block-state): once we add more type-specific block states (Sign, Furnace, CreatureSpawner, ...),
-        // replace this switch with a BlockActorType -> factory registry (cf. CraftBukkit's CraftBlockStates),
-        // keeping the generic getContainer() check as the fallback for container blocks.
         switch (block_entity->getType()) {
         case BlockActorType::ItemFrame:
         case BlockActorType::GlowItemFrame:
-            return std::make_unique<EndstoneItemFrame>(*this, static_cast<ItemFrameBlockActor &>(*block_entity));
+            return std::make_unique<EndstoneItemFrame>(*this, static_cast<ItemFrameBlockActor &>(*block_entity),
+                                                       use_snapshot);
         case BlockActorType::Sign:
         case BlockActorType::HangingSign:
-            return std::make_unique<EndstoneSign>(*this, static_cast<SignBlockActor &>(*block_entity));
+            return std::make_unique<EndstoneSign>(*this, static_cast<SignBlockActor &>(*block_entity), use_snapshot);
         case BlockActorType::MobSpawner:
-            return std::make_unique<EndstoneCreatureSpawner>(*this,
-                                                             static_cast<MobSpawnerBlockActor &>(*block_entity));
+            return std::make_unique<EndstoneCreatureSpawner>(*this, static_cast<MobSpawnerBlockActor &>(*block_entity),
+                                                             use_snapshot);
         case BlockActorType::Campfire:
-            return std::make_unique<EndstoneCampfire>(*this, static_cast<CampfireBlockActor &>(*block_entity));
+            return std::make_unique<EndstoneCampfire>(*this, static_cast<CampfireBlockActor &>(*block_entity),
+                                                      use_snapshot);
         case BlockActorType::Lectern:
-            return std::make_unique<EndstoneLectern>(*this, static_cast<LecternBlockActor &>(*block_entity));
+            return std::make_unique<EndstoneLectern>(*this, static_cast<LecternBlockActor &>(*block_entity),
+                                                     use_snapshot);
         case BlockActorType::Furnace:
         case BlockActorType::BlastFurnace:
         case BlockActorType::Smoker:
-            return std::make_unique<EndstoneFurnace>(*this, static_cast<FurnaceBlockActor &>(*block_entity));
+            return std::make_unique<EndstoneFurnace>(*this, static_cast<FurnaceBlockActor &>(*block_entity),
+                                                     use_snapshot);
         default:
             break;
         }
         if (static_cast<VanillaBlockActor *>(block_entity)->getContainer() != nullptr) {
-            return std::make_unique<EndstoneContainer>(*this, *block_entity);
+            return std::make_unique<EndstoneContainer>(*this, *block_entity, use_snapshot);
         }
+        return std::make_unique<EndstoneTileStateBlock>(*this, *block_entity, use_snapshot);
     }
     return std::make_unique<EndstoneBlockState>(*this);
 }

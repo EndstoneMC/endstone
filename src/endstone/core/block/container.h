@@ -28,8 +28,8 @@ template <typename Interface = Container>
     requires std::is_base_of_v<Container, Interface>
 class EndstoneContainerBase : public EndstoneBlockStateBase<Interface> {
 public:
-    EndstoneContainerBase(const EndstoneBlock &block, const ::BlockActor &block_actor)
-        : EndstoneBlockStateBase<Interface>(block, block_actor),
+    EndstoneContainerBase(const EndstoneBlock &block, ::BlockActor &block_actor, bool use_snapshot)
+        : EndstoneBlockStateBase<Interface>(block, block_actor, use_snapshot),
           inventory_(std::make_unique<EndstoneInventory>([this]() -> ::Container & { return getContainer(); }))
     {
     }

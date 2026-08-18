@@ -30,6 +30,8 @@ namespace endstone::core {
  */
 class EndstoneBlockSnapshot : public EndstoneBlock {
 public:
+    using EndstoneBlock::captureState;
+
     EndstoneBlockSnapshot(BlockSource &block_source, BlockPos block_pos, const ::Block &placed)
         : EndstoneBlock(block_source, block_pos), placed_(const_cast<::Block *>(&placed))
     {
@@ -41,7 +43,7 @@ public:
     [[nodiscard]] std::unique_ptr<BlockData> getData() const override;
     void setData(const BlockData &data) override;
     void setData(const BlockData &data, bool apply_physics) override;
-    [[nodiscard]] std::unique_ptr<BlockState> captureState() const override;
+    [[nodiscard]] std::unique_ptr<BlockState> captureState(bool use_snapshot) const override;
     [[nodiscard]] std::unique_ptr<Block> clone() const override;
 
 private:
