@@ -11,7 +11,7 @@
 
 
 * `#include <string_view>`
-* `#include "endstone/identifier.h"`
+* `#include "endstone/registry.h"`
 
 
 
@@ -36,7 +36,7 @@
 
 | Type | Name |
 | ---: | :--- |
-| class | [**EffectType**](classendstone_1_1EffectType.md) <br>_All effect types._  |
+| class | [**EffectType**](classendstone_1_1EffectType.md) <br>_Represents an effect type._  |
 
 
 

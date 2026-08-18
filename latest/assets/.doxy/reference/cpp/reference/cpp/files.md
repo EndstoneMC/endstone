@@ -163,6 +163,7 @@ Here is a list of all files with brief descriptions:
                 * **file** [**crossbow\_meta.h**](crossbow__meta_8h.md)     
                 * **file** [**item\_meta.h**](item__meta_8h.md)     
                 * **file** [**map\_meta.h**](map__meta_8h.md)     
+                * **file** [**potion\_meta.h**](potion__meta_8h.md)     
                 * **file** [**writable\_book\_meta.h**](writable__book__meta_8h.md)     
             * **file** [**inventory.h**](inventory_8h.md)     
             * **file** [**item\_factory.h**](item__factory_8h.md)     

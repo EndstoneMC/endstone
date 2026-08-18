@@ -2354,6 +2354,11 @@
     <member refid="classendstone_1_1PluginManager_1a9a414d170b547bce47ac00933a4f1020" kind="function"><name>getDefaultPermSubscriptions</name></member>
     <member refid="classendstone_1_1PluginManager_1ad2545d188bff41477fe3fd5264251cfc" kind="function"><name>getPermissions</name></member>
   </compound>
+  <compound refid="classendstone_1_1PotionMeta" kind="class"><name>endstone::PotionMeta</name>
+    <member refid="classendstone_1_1PotionMeta_1a332aa5b0f04f82c4e32d747c6354ffca" kind="function"><name>hasBasePotionType</name></member>
+    <member refid="classendstone_1_1PotionMeta_1a7771fad00eb2010e904bad487226bf6c" kind="function"><name>getBasePotionType</name></member>
+    <member refid="classendstone_1_1PotionMeta_1aba394b97c3bea789e204919be251f6ae" kind="function"><name>setBasePotionType</name></member>
+  </compound>
   <compound refid="classendstone_1_1PotionType" kind="class"><name>endstone::PotionType</name>
     <member refid="classendstone_1_1PotionType_1a94815c4a6de78565094e9a9fc2917ac2" kind="variable"><name>Minecraft</name></member>
     <member refid="classendstone_1_1PotionType_1a82f5fefbd3fbca555cc3de232735f27e" kind="variable"><name>Water</name></member>
@@ -2987,8 +2992,8 @@
     <member refid="namespaceendstone_1a9f9696219c347f4a15b1e1495af99f66" kind="typedef"><name>StringTag</name></member>
     <member refid="namespaceendstone_1a32ff16a28255aeb30f8d6905e6100a2b" kind="typedef"><name>IntArrayTag</name></member>
     <member refid="namespaceendstone_1afe5c52ae8db67deff2df8c157cd1c71e" kind="typedef"><name>PermissionRemovedExecutor</name></member>
-    <member refid="namespaceendstone_1a1de715f3cef3cb85cbef38b7ec0ee3db" kind="typedef"><name>EffectId</name></member>
-    <member refid="namespaceendstone_1a752231e730d011e08a0c9329945d4d6f" kind="typedef"><name>PotionId</name></member>
+    <member refid="namespaceendstone_1a07d5edd6a4210fd917b36d15e1f3097c" kind="typedef"><name>EffectId</name></member>
+    <member refid="namespaceendstone_1af6c55d9f9339aed9d9a55d76503b44a7" kind="typedef"><name>PotionId</name></member>
     <member refid="namespaceendstone_1ae2ff6d706eb4d7bdf8062917bb90ac29" kind="typedef"><name>TaskId</name></member>
     <member refid="namespaceendstone_1ac9f61b8d814486634ef53948c2804a7a" kind="typedef"><name>ScoreEntry</name></member>
     <member refid="namespaceendstone_1abc54c88a21352cadabe5992bea8976d6" kind="typedef"><name>Result</name></member>
@@ -3348,6 +3353,8 @@
   <compound refid="item__meta_8h" kind="file"><name>item_meta.h</name>
   </compound>
   <compound refid="map__meta_8h" kind="file"><name>map_meta.h</name>
+  </compound>
+  <compound refid="potion__meta_8h" kind="file"><name>potion_meta.h</name>
   </compound>
   <compound refid="writable__book__meta_8h" kind="file"><name>writable_book_meta.h</name>
   </compound>

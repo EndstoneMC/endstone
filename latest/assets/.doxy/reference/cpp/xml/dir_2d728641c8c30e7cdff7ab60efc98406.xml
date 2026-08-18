@@ -6,6 +6,7 @@
     <innerfile refid="crossbow__meta_8h">crossbow_meta.h</innerfile>
     <innerfile refid="item__meta_8h">item_meta.h</innerfile>
     <innerfile refid="map__meta_8h">map_meta.h</innerfile>
+    <innerfile refid="potion__meta_8h">potion_meta.h</innerfile>
     <innerfile refid="writable__book__meta_8h">writable_book_meta.h</innerfile>
     <briefdescription>
     </briefdescription>

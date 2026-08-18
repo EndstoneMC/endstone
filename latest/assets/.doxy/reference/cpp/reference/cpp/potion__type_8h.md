@@ -10,7 +10,8 @@
 
 
 
-* `#include "endstone/identifier.h"`
+* `#include <string_view>`
+* `#include "endstone/registry.h"`
 
 
 
@@ -35,7 +36,7 @@
 
 | Type | Name |
 | ---: | :--- |
-| class | [**PotionType**](classendstone_1_1PotionType.md) <br>_All potion types._  |
+| class | [**PotionType**](classendstone_1_1PotionType.md) <br>_Represents a potion type._  |
 
 
 

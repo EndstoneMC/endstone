@@ -101,7 +101,7 @@ _Represents a button with text and an optional icon._
 | class | [**Divider**](classendstone_1_1Divider.md) <br>_Represents a divider._  |
 | class | [**Dropdown**](classendstone_1_1Dropdown.md) <br>_Represents a dropdown with a set of predefined options._  |
 | class | [**Effect**](classendstone_1_1Effect.md) <br>_Represents an effect that can be added to a_ [_**Mob**_](classendstone_1_1Mob.md) _._ |
-| class | [**EffectType**](classendstone_1_1EffectType.md) <br>_All effect types._  |
+| class | [**EffectType**](classendstone_1_1EffectType.md) <br>_Represents an effect type._  |
 | class | [**Enchantment**](classendstone_1_1Enchantment.md) <br>_Represents an enchantment that may be added to armor, weapons, tools or other items._  |
 | class | [**Event**](classendstone_1_1Event.md) <br>_Represents an event._  |
 | class | [**EventHandler**](classendstone_1_1EventHandler.md) <br>_Represents a registered_ [_**EventHandler**_](classendstone_1_1EventHandler.md) _which associates with a_[_**Plugin**_](classendstone_1_1Plugin.md) _._ |
@@ -191,7 +191,8 @@ _Represents a button with text and an optional icon._
 | class | [**PluginEnableEvent**](classendstone_1_1PluginEnableEvent.md) <br>_Called when a plugin is enabled._  |
 | class | [**PluginLoader**](classendstone_1_1PluginLoader.md) <br>_Represents a plugin loader, which handles direct access to specific types of plugins._  |
 | class | [**PluginManager**](classendstone_1_1PluginManager.md) <br>_Represents a plugin manager that handles all plugins from the_ [_**Server**_](classendstone_1_1Server.md) _._ |
-| class | [**PotionType**](classendstone_1_1PotionType.md) <br>_All potion types._  |
+| class | [**PotionMeta**](classendstone_1_1PotionMeta.md) <br>_Represents the metadata for a potion item._  |
+| class | [**PotionType**](classendstone_1_1PotionType.md) <br>_Represents a potion type._  |
 | class | [**Preconditions**](classendstone_1_1Preconditions.md) <br>_Static helpers for validating method arguments and object state._  |
 | class | [**Recipe**](classendstone_1_1Recipe.md) <br>_Represents some type of crafting recipe._  |
 | class | [**Registry**](classendstone_1_1Registry.md) &lt;[**typename**](classendstone_1_1Identifier.md) [**T**](classendstone_1_1Identifier.md)&gt;<br>_Abstract registry interface for objects with identifiers._  |
@@ -244,7 +245,7 @@ _Represents a button with text and an optional icon._
 | typedef [**Identifier**](classendstone_1_1Identifier.md)&lt; [**Dimension**](classendstone_1_1Dimension.md) &gt; | [**DimensionId**](#typedef-dimensionid)  <br> |
 | enum  | [**DisplaySlot**](#enum-displayslot)  <br>_Locations for displaying objectives to the player._  |
 | typedef [**nbt::ValueTag**](classendstone_1_1nbt_1_1ValueTag.md)&lt; [**double**](classendstone_1_1Identifier.md) &gt; | [**DoubleTag**](#typedef-doubletag)  <br> |
-| typedef [**Identifier**](classendstone_1_1Identifier.md)&lt; [**class**](classendstone_1_1Identifier.md) [**EffectType**](classendstone_1_1EffectType.md) &gt; | [**EffectId**](#typedef-effectid)  <br> |
+| typedef [**Identifier**](classendstone_1_1Identifier.md)&lt; [**EffectType**](classendstone_1_1EffectType.md) &gt; | [**EffectId**](#typedef-effectid)  <br> |
 | typedef [**Identifier**](classendstone_1_1Identifier.md)&lt; [**class**](classendstone_1_1Identifier.md) [**Enchantment**](classendstone_1_1Enchantment.md) &gt; | [**EnchantmentId**](#typedef-enchantmentid)  <br> |
 | enum  | [**EquipmentSlot**](#enum-equipmentslot)  <br>_Represents the equipment slots on an entity._  |
 | enum  | [**EventPriority**](#enum-eventpriority)  <br>_Represents an event's priority in execution._  |
@@ -262,7 +263,7 @@ _Represents a button with text and an optional icon._
 | enum  | [**PermissionLevel**](#enum-permissionlevel)  <br>_Represents the permission level of a_ [_**Permissible**_](classendstone_1_1Permissible.md) _._ |
 | typedef std::function&lt; [**void**](classendstone_1_1Identifier.md)([**const**](classendstone_1_1Identifier.md) [**PermissionAttachment**](classendstone_1_1PermissionAttachment.md) &)&gt; | [**PermissionRemovedExecutor**](#typedef-permissionremovedexecutor)  <br> |
 | enum  | [**PluginLoadOrder**](#enum-pluginloadorder)  <br>_Represents the order in which a plugin should be initialized and enabled._  |
-| typedef [**Identifier**](classendstone_1_1Identifier.md)&lt; [**class**](classendstone_1_1Identifier.md) [**PotionType**](classendstone_1_1PotionType.md) &gt; | [**PotionId**](#typedef-potionid)  <br> |
+| typedef [**Identifier**](classendstone_1_1Identifier.md)&lt; [**PotionType**](classendstone_1_1PotionType.md) &gt; | [**PotionId**](#typedef-potionid)  <br> |
 | enum std::uint8\_t | [**RenderType**](#enum-rendertype)  <br>_Controls the way in which an_ [_**Objective**_](classendstone_1_1Objective.md) _is rendered on the client side._ |
 | typedef nonstd::expected&lt; [**T**](classendstone_1_1Identifier.md), std::string &gt; | [**Result**](#typedef-result)  <br>_Holds either a value of type T on success or an error message on failure._  |
 | enum  | [**Rotation**](#enum-rotation)  <br>_Represents a rotation based orientation, like that on a clock._  |
@@ -575,7 +576,7 @@ using endstone::DoubleTag = typedef nbt::ValueTag<double>;
 ### typedef EffectId 
 
 ```C++
-using endstone::EffectId = typedef Identifier<class EffectType>;
+using endstone::EffectId = typedef Identifier<EffectType>;
 ```
 
 
@@ -863,7 +864,7 @@ enum endstone::PluginLoadOrder {
 ### typedef PotionId 
 
 ```C++
-using endstone::PotionId = typedef Identifier<class PotionType>;
+using endstone::PotionId = typedef Identifier<PotionType>;
 ```
 
 

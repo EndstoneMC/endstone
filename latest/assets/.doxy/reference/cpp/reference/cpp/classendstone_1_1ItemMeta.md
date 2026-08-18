@@ -17,7 +17,7 @@ _Represents the metadata of a generic item._
 Inherits the following classes: [endstone::Object](classendstone_1_1Object.md)
 
 
-Inherited by the following classes: [endstone::CrossbowMeta](classendstone_1_1CrossbowMeta.md),  [endstone::MapMeta](classendstone_1_1MapMeta.md),  [endstone::WritableBookMeta](classendstone_1_1WritableBookMeta.md)
+Inherited by the following classes: [endstone::CrossbowMeta](classendstone_1_1CrossbowMeta.md),  [endstone::MapMeta](classendstone_1_1MapMeta.md),  [endstone::PotionMeta](classendstone_1_1PotionMeta.md),  [endstone::WritableBookMeta](classendstone_1_1WritableBookMeta.md)
 
 
 

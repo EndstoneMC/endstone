@@ -768,7 +768,7 @@
         <link refid="effect__type_8h_source"/>
         <childnode refid="11" relation="include">
         </childnode>
-        <childnode refid="28" relation="include">
+        <childnode refid="20" relation="include">
         </childnode>
       </node>
       <node id="20">

@@ -13,6 +13,7 @@
     <includedby refid="item__stack_8h" local="yes">include/endstone/inventory/item_stack.h</includedby>
     <includedby refid="crossbow__meta_8h" local="yes">include/endstone/inventory/meta/crossbow_meta.h</includedby>
     <includedby refid="map__meta_8h" local="yes">include/endstone/inventory/meta/map_meta.h</includedby>
+    <includedby refid="potion__meta_8h" local="yes">include/endstone/inventory/meta/potion_meta.h</includedby>
     <includedby refid="writable__book__meta_8h" local="yes">include/endstone/inventory/meta/writable_book_meta.h</includedby>
     <incdepgraph>
       <node id="27">
@@ -813,7 +814,7 @@
         <childnode refid="6" relation="include">
         </childnode>
       </node>
-      <node id="26">
+      <node id="27">
         <label>include/endstone/inventory/meta/book_meta.h</label>
         <link refid="book__meta_8h_source"/>
       </node>
@@ -834,15 +835,21 @@
         </childnode>
         <childnode refid="25" relation="include">
         </childnode>
+        <childnode refid="26" relation="include">
+        </childnode>
       </node>
       <node id="24">
         <label>include/endstone/inventory/meta/map_meta.h</label>
         <link refid="map__meta_8h_source"/>
       </node>
       <node id="25">
+        <label>include/endstone/inventory/meta/potion_meta.h</label>
+        <link refid="potion__meta_8h_source"/>
+      </node>
+      <node id="26">
         <label>include/endstone/inventory/meta/writable_book_meta.h</label>
         <link refid="writable__book__meta_8h_source"/>
-        <childnode refid="26" relation="include">
+        <childnode refid="27" relation="include">
         </childnode>
       </node>
       <node id="22">

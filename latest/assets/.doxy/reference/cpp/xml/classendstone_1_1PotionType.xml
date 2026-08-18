@@ -2,9 +2,10 @@
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.8" xml:lang="en-US">
   <compounddef id="classendstone_1_1PotionType" kind="class" language="C++" prot="public">
     <compoundname>endstone::PotionType</compoundname>
+    <basecompoundref refid="classendstone_1_1Registry_1_1Type" prot="public" virt="non-virtual">endstone::Registry&lt; T &gt;::Type</basecompoundref>
     <includes refid="potion__type_8h" local="no">endstone/potion/potion_type.h</includes>
-    <sectiondef kind="private-static-attrib">
-      <memberdef kind="variable" id="classendstone_1_1PotionType_1a94815c4a6de78565094e9a9fc2917ac2" prot="private" static="yes" constexpr="yes" mutable="no">
+    <sectiondef kind="protected-static-attrib">
+      <memberdef kind="variable" id="classendstone_1_1PotionType_1a94815c4a6de78565094e9a9fc2917ac2" prot="protected" static="yes" constexpr="yes" mutable="no">
         <type><ref refid="classendstone_1_1Identifier" kindref="compound">constexpr</ref> std::string_view</type>
         <definition>constexpr std::string_view endstone::PotionType::Minecraft</definition>
         <argsstring></argsstring>
@@ -17,7 +18,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/potion/potion_type.h" line="25" column="39" bodyfile="include/endstone/potion/potion_type.h" bodystart="25" bodyend="-1"/>
+        <location file="include/endstone/potion/potion_type.h" line="29" column="39" bodyfile="include/endstone/potion/potion_type.h" bodystart="29" bodyend="-1"/>
       </memberdef>
     </sectiondef>
     <sectiondef kind="public-static-attrib">
@@ -34,7 +35,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/potion/potion_type.h" line="28" column="27" bodyfile="include/endstone/potion/potion_type.h" bodystart="28" bodyend="-1"/>
+        <location file="include/endstone/potion/potion_type.h" line="32" column="27" bodyfile="include/endstone/potion/potion_type.h" bodystart="32" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="classendstone_1_1PotionType_1a2e42a17c9960477de466c12c74ea4d69" prot="public" static="yes" constexpr="yes" mutable="no">
         <type><ref refid="classendstone_1_1Identifier" kindref="compound">constexpr</ref> <ref refid="classendstone_1_1Identifier" kindref="compound">auto</ref></type>
@@ -49,7 +50,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/potion/potion_type.h" line="29" column="27" bodyfile="include/endstone/potion/potion_type.h" bodystart="29" bodyend="-1"/>
+        <location file="include/endstone/potion/potion_type.h" line="33" column="27" bodyfile="include/endstone/potion/potion_type.h" bodystart="33" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="classendstone_1_1PotionType_1ae36b681f6c4552b3ee2f7bea5cfe0795" prot="public" static="yes" constexpr="yes" mutable="no">
         <type><ref refid="classendstone_1_1Identifier" kindref="compound">constexpr</ref> <ref refid="classendstone_1_1Identifier" kindref="compound">auto</ref></type>
@@ -64,7 +65,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/potion/potion_type.h" line="30" column="27" bodyfile="include/endstone/potion/potion_type.h" bodystart="30" bodyend="-1"/>
+        <location file="include/endstone/potion/potion_type.h" line="34" column="27" bodyfile="include/endstone/potion/potion_type.h" bodystart="34" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="classendstone_1_1PotionType_1a801f61e5678ed0836abbc44f6edc8056" prot="public" static="yes" constexpr="yes" mutable="no">
         <type><ref refid="classendstone_1_1Identifier" kindref="compound">constexpr</ref> <ref refid="classendstone_1_1Identifier" kindref="compound">auto</ref></type>
@@ -79,7 +80,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/potion/potion_type.h" line="31" column="27" bodyfile="include/endstone/potion/potion_type.h" bodystart="31" bodyend="-1"/>
+        <location file="include/endstone/potion/potion_type.h" line="35" column="27" bodyfile="include/endstone/potion/potion_type.h" bodystart="35" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="classendstone_1_1PotionType_1a934a4efc0c60904aa69e6dd875f1cd7e" prot="public" static="yes" constexpr="yes" mutable="no">
         <type><ref refid="classendstone_1_1Identifier" kindref="compound">constexpr</ref> <ref refid="classendstone_1_1Identifier" kindref="compound">auto</ref></type>
@@ -94,7 +95,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/potion/potion_type.h" line="32" column="27" bodyfile="include/endstone/potion/potion_type.h" bodystart="32" bodyend="-1"/>
+        <location file="include/endstone/potion/potion_type.h" line="36" column="27" bodyfile="include/endstone/potion/potion_type.h" bodystart="36" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="classendstone_1_1PotionType_1ace8f4629639d2b1c523320205494c27e" prot="public" static="yes" constexpr="yes" mutable="no">
         <type><ref refid="classendstone_1_1Identifier" kindref="compound">constexpr</ref> <ref refid="classendstone_1_1Identifier" kindref="compound">auto</ref></type>
@@ -109,7 +110,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/potion/potion_type.h" line="33" column="27" bodyfile="include/endstone/potion/potion_type.h" bodystart="33" bodyend="-1"/>
+        <location file="include/endstone/potion/potion_type.h" line="37" column="27" bodyfile="include/endstone/potion/potion_type.h" bodystart="37" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="classendstone_1_1PotionType_1a53ff99d5732b77f5b181404047616cbd" prot="public" static="yes" constexpr="yes" mutable="no">
         <type><ref refid="classendstone_1_1Identifier" kindref="compound">constexpr</ref> <ref refid="classendstone_1_1Identifier" kindref="compound">auto</ref></type>
@@ -124,7 +125,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/potion/potion_type.h" line="34" column="27" bodyfile="include/endstone/potion/potion_type.h" bodystart="34" bodyend="-1"/>
+        <location file="include/endstone/potion/potion_type.h" line="38" column="27" bodyfile="include/endstone/potion/potion_type.h" bodystart="38" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="classendstone_1_1PotionType_1acc44b7274cb6f20e2bbe02599b6d7e87" prot="public" static="yes" constexpr="yes" mutable="no">
         <type><ref refid="classendstone_1_1Identifier" kindref="compound">constexpr</ref> <ref refid="classendstone_1_1Identifier" kindref="compound">auto</ref></type>
@@ -139,7 +140,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/potion/potion_type.h" line="35" column="27" bodyfile="include/endstone/potion/potion_type.h" bodystart="35" bodyend="-1"/>
+        <location file="include/endstone/potion/potion_type.h" line="39" column="27" bodyfile="include/endstone/potion/potion_type.h" bodystart="39" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="classendstone_1_1PotionType_1a09a7a37a6ade2e8952a4678232134fa1" prot="public" static="yes" constexpr="yes" mutable="no">
         <type><ref refid="classendstone_1_1Identifier" kindref="compound">constexpr</ref> <ref refid="classendstone_1_1Identifier" kindref="compound">auto</ref></type>
@@ -154,7 +155,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/potion/potion_type.h" line="36" column="27" bodyfile="include/endstone/potion/potion_type.h" bodystart="36" bodyend="-1"/>
+        <location file="include/endstone/potion/potion_type.h" line="40" column="27" bodyfile="include/endstone/potion/potion_type.h" bodystart="40" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="classendstone_1_1PotionType_1aba6f1f93f0ac476af383b587a6c74ed8" prot="public" static="yes" constexpr="yes" mutable="no">
         <type><ref refid="classendstone_1_1Identifier" kindref="compound">constexpr</ref> <ref refid="classendstone_1_1Identifier" kindref="compound">auto</ref></type>
@@ -169,7 +170,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/potion/potion_type.h" line="37" column="27" bodyfile="include/endstone/potion/potion_type.h" bodystart="37" bodyend="-1"/>
+        <location file="include/endstone/potion/potion_type.h" line="41" column="27" bodyfile="include/endstone/potion/potion_type.h" bodystart="41" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="classendstone_1_1PotionType_1a36f3881be53c96e429de099807afd0c2" prot="public" static="yes" constexpr="yes" mutable="no">
         <type><ref refid="classendstone_1_1Identifier" kindref="compound">constexpr</ref> <ref refid="classendstone_1_1Identifier" kindref="compound">auto</ref></type>
@@ -184,7 +185,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/potion/potion_type.h" line="38" column="27" bodyfile="include/endstone/potion/potion_type.h" bodystart="38" bodyend="-1"/>
+        <location file="include/endstone/potion/potion_type.h" line="42" column="27" bodyfile="include/endstone/potion/potion_type.h" bodystart="42" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="classendstone_1_1PotionType_1a6dc284fe1840039c8ef8a2cc712188d4" prot="public" static="yes" constexpr="yes" mutable="no">
         <type><ref refid="classendstone_1_1Identifier" kindref="compound">constexpr</ref> <ref refid="classendstone_1_1Identifier" kindref="compound">auto</ref></type>
@@ -199,7 +200,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/potion/potion_type.h" line="39" column="27" bodyfile="include/endstone/potion/potion_type.h" bodystart="39" bodyend="-1"/>
+        <location file="include/endstone/potion/potion_type.h" line="43" column="27" bodyfile="include/endstone/potion/potion_type.h" bodystart="43" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="classendstone_1_1PotionType_1aec1eb44f513e34f339af932d64ffee8a" prot="public" static="yes" constexpr="yes" mutable="no">
         <type><ref refid="classendstone_1_1Identifier" kindref="compound">constexpr</ref> <ref refid="classendstone_1_1Identifier" kindref="compound">auto</ref></type>
@@ -214,7 +215,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/potion/potion_type.h" line="40" column="27" bodyfile="include/endstone/potion/potion_type.h" bodystart="40" bodyend="-1"/>
+        <location file="include/endstone/potion/potion_type.h" line="44" column="27" bodyfile="include/endstone/potion/potion_type.h" bodystart="44" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="classendstone_1_1PotionType_1aa438cb3ca3ee81ddb3b7858ee4877036" prot="public" static="yes" constexpr="yes" mutable="no">
         <type><ref refid="classendstone_1_1Identifier" kindref="compound">constexpr</ref> <ref refid="classendstone_1_1Identifier" kindref="compound">auto</ref></type>
@@ -229,7 +230,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/potion/potion_type.h" line="41" column="27" bodyfile="include/endstone/potion/potion_type.h" bodystart="41" bodyend="-1"/>
+        <location file="include/endstone/potion/potion_type.h" line="45" column="27" bodyfile="include/endstone/potion/potion_type.h" bodystart="45" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="classendstone_1_1PotionType_1a91dbe1465d0d788db72f2304d8b21892" prot="public" static="yes" constexpr="yes" mutable="no">
         <type><ref refid="classendstone_1_1Identifier" kindref="compound">constexpr</ref> <ref refid="classendstone_1_1Identifier" kindref="compound">auto</ref></type>
@@ -244,7 +245,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/potion/potion_type.h" line="42" column="27" bodyfile="include/endstone/potion/potion_type.h" bodystart="42" bodyend="-1"/>
+        <location file="include/endstone/potion/potion_type.h" line="46" column="27" bodyfile="include/endstone/potion/potion_type.h" bodystart="46" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="classendstone_1_1PotionType_1a5fc403b2603683ac91076569d7a23115" prot="public" static="yes" constexpr="yes" mutable="no">
         <type><ref refid="classendstone_1_1Identifier" kindref="compound">constexpr</ref> <ref refid="classendstone_1_1Identifier" kindref="compound">auto</ref></type>
@@ -259,7 +260,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/potion/potion_type.h" line="43" column="27" bodyfile="include/endstone/potion/potion_type.h" bodystart="43" bodyend="-1"/>
+        <location file="include/endstone/potion/potion_type.h" line="47" column="27" bodyfile="include/endstone/potion/potion_type.h" bodystart="47" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="classendstone_1_1PotionType_1a1581a974eed694438fa1d00489d9050d" prot="public" static="yes" constexpr="yes" mutable="no">
         <type><ref refid="classendstone_1_1Identifier" kindref="compound">constexpr</ref> <ref refid="classendstone_1_1Identifier" kindref="compound">auto</ref></type>
@@ -274,7 +275,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/potion/potion_type.h" line="44" column="27" bodyfile="include/endstone/potion/potion_type.h" bodystart="44" bodyend="-1"/>
+        <location file="include/endstone/potion/potion_type.h" line="48" column="27" bodyfile="include/endstone/potion/potion_type.h" bodystart="48" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="classendstone_1_1PotionType_1a1551a2caf362a91a1dfd81f9fa2e3726" prot="public" static="yes" constexpr="yes" mutable="no">
         <type><ref refid="classendstone_1_1Identifier" kindref="compound">constexpr</ref> <ref refid="classendstone_1_1Identifier" kindref="compound">auto</ref></type>
@@ -289,7 +290,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/potion/potion_type.h" line="45" column="27" bodyfile="include/endstone/potion/potion_type.h" bodystart="45" bodyend="-1"/>
+        <location file="include/endstone/potion/potion_type.h" line="49" column="27" bodyfile="include/endstone/potion/potion_type.h" bodystart="49" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="classendstone_1_1PotionType_1a71e4c65417a374a809d5fe3306eca358" prot="public" static="yes" constexpr="yes" mutable="no">
         <type><ref refid="classendstone_1_1Identifier" kindref="compound">constexpr</ref> <ref refid="classendstone_1_1Identifier" kindref="compound">auto</ref></type>
@@ -304,7 +305,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/potion/potion_type.h" line="46" column="27" bodyfile="include/endstone/potion/potion_type.h" bodystart="46" bodyend="-1"/>
+        <location file="include/endstone/potion/potion_type.h" line="50" column="27" bodyfile="include/endstone/potion/potion_type.h" bodystart="50" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="classendstone_1_1PotionType_1acc5c6ad888dcb9dac1c40e546e242c34" prot="public" static="yes" constexpr="yes" mutable="no">
         <type><ref refid="classendstone_1_1Identifier" kindref="compound">constexpr</ref> <ref refid="classendstone_1_1Identifier" kindref="compound">auto</ref></type>
@@ -319,7 +320,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/potion/potion_type.h" line="47" column="27" bodyfile="include/endstone/potion/potion_type.h" bodystart="47" bodyend="-1"/>
+        <location file="include/endstone/potion/potion_type.h" line="51" column="27" bodyfile="include/endstone/potion/potion_type.h" bodystart="51" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="classendstone_1_1PotionType_1ace66f2f54600a9d3b59c9895d6cbe21f" prot="public" static="yes" constexpr="yes" mutable="no">
         <type><ref refid="classendstone_1_1Identifier" kindref="compound">constexpr</ref> <ref refid="classendstone_1_1Identifier" kindref="compound">auto</ref></type>
@@ -334,7 +335,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/potion/potion_type.h" line="48" column="27" bodyfile="include/endstone/potion/potion_type.h" bodystart="48" bodyend="-1"/>
+        <location file="include/endstone/potion/potion_type.h" line="52" column="27" bodyfile="include/endstone/potion/potion_type.h" bodystart="52" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="classendstone_1_1PotionType_1a1c6d84c930df4d76627fd81a7ed127cc" prot="public" static="yes" constexpr="yes" mutable="no">
         <type><ref refid="classendstone_1_1Identifier" kindref="compound">constexpr</ref> <ref refid="classendstone_1_1Identifier" kindref="compound">auto</ref></type>
@@ -349,7 +350,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/potion/potion_type.h" line="49" column="27" bodyfile="include/endstone/potion/potion_type.h" bodystart="49" bodyend="-1"/>
+        <location file="include/endstone/potion/potion_type.h" line="53" column="27" bodyfile="include/endstone/potion/potion_type.h" bodystart="53" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="classendstone_1_1PotionType_1a66fffb2ec05a62c6efeb828517bfe575" prot="public" static="yes" constexpr="yes" mutable="no">
         <type><ref refid="classendstone_1_1Identifier" kindref="compound">constexpr</ref> <ref refid="classendstone_1_1Identifier" kindref="compound">auto</ref></type>
@@ -364,7 +365,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/potion/potion_type.h" line="50" column="27" bodyfile="include/endstone/potion/potion_type.h" bodystart="50" bodyend="-1"/>
+        <location file="include/endstone/potion/potion_type.h" line="54" column="27" bodyfile="include/endstone/potion/potion_type.h" bodystart="54" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="classendstone_1_1PotionType_1a7a6cd07d904eb6a7a0d1bae3bdfe0c45" prot="public" static="yes" constexpr="yes" mutable="no">
         <type><ref refid="classendstone_1_1Identifier" kindref="compound">constexpr</ref> <ref refid="classendstone_1_1Identifier" kindref="compound">auto</ref></type>
@@ -379,7 +380,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/potion/potion_type.h" line="51" column="27" bodyfile="include/endstone/potion/potion_type.h" bodystart="51" bodyend="-1"/>
+        <location file="include/endstone/potion/potion_type.h" line="55" column="27" bodyfile="include/endstone/potion/potion_type.h" bodystart="55" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="classendstone_1_1PotionType_1a707bbab37945163a2ac4c6f34bed9372" prot="public" static="yes" constexpr="yes" mutable="no">
         <type><ref refid="classendstone_1_1Identifier" kindref="compound">constexpr</ref> <ref refid="classendstone_1_1Identifier" kindref="compound">auto</ref></type>
@@ -394,7 +395,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/potion/potion_type.h" line="52" column="27" bodyfile="include/endstone/potion/potion_type.h" bodystart="52" bodyend="-1"/>
+        <location file="include/endstone/potion/potion_type.h" line="56" column="27" bodyfile="include/endstone/potion/potion_type.h" bodystart="56" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="classendstone_1_1PotionType_1a98c8cb9774dbf5ce65f7874d81a80185" prot="public" static="yes" constexpr="yes" mutable="no">
         <type><ref refid="classendstone_1_1Identifier" kindref="compound">constexpr</ref> <ref refid="classendstone_1_1Identifier" kindref="compound">auto</ref></type>
@@ -409,7 +410,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/potion/potion_type.h" line="53" column="27" bodyfile="include/endstone/potion/potion_type.h" bodystart="53" bodyend="-1"/>
+        <location file="include/endstone/potion/potion_type.h" line="57" column="27" bodyfile="include/endstone/potion/potion_type.h" bodystart="57" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="classendstone_1_1PotionType_1ae06515a190dbd97e6064a974578be9e2" prot="public" static="yes" constexpr="yes" mutable="no">
         <type><ref refid="classendstone_1_1Identifier" kindref="compound">constexpr</ref> <ref refid="classendstone_1_1Identifier" kindref="compound">auto</ref></type>
@@ -424,7 +425,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/potion/potion_type.h" line="54" column="27" bodyfile="include/endstone/potion/potion_type.h" bodystart="54" bodyend="-1"/>
+        <location file="include/endstone/potion/potion_type.h" line="58" column="27" bodyfile="include/endstone/potion/potion_type.h" bodystart="58" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="classendstone_1_1PotionType_1a19968831e3b8455f366ade3b3ca11279" prot="public" static="yes" constexpr="yes" mutable="no">
         <type><ref refid="classendstone_1_1Identifier" kindref="compound">constexpr</ref> <ref refid="classendstone_1_1Identifier" kindref="compound">auto</ref></type>
@@ -439,7 +440,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/potion/potion_type.h" line="55" column="27" bodyfile="include/endstone/potion/potion_type.h" bodystart="55" bodyend="-1"/>
+        <location file="include/endstone/potion/potion_type.h" line="59" column="27" bodyfile="include/endstone/potion/potion_type.h" bodystart="59" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="classendstone_1_1PotionType_1ac5b96d18de11e99756ac9168b882eb94" prot="public" static="yes" constexpr="yes" mutable="no">
         <type><ref refid="classendstone_1_1Identifier" kindref="compound">constexpr</ref> <ref refid="classendstone_1_1Identifier" kindref="compound">auto</ref></type>
@@ -454,7 +455,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/potion/potion_type.h" line="56" column="27" bodyfile="include/endstone/potion/potion_type.h" bodystart="56" bodyend="-1"/>
+        <location file="include/endstone/potion/potion_type.h" line="60" column="27" bodyfile="include/endstone/potion/potion_type.h" bodystart="60" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="classendstone_1_1PotionType_1a3cbd106a8e61957786636c5005089697" prot="public" static="yes" constexpr="yes" mutable="no">
         <type><ref refid="classendstone_1_1Identifier" kindref="compound">constexpr</ref> <ref refid="classendstone_1_1Identifier" kindref="compound">auto</ref></type>
@@ -469,7 +470,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/potion/potion_type.h" line="57" column="27" bodyfile="include/endstone/potion/potion_type.h" bodystart="57" bodyend="-1"/>
+        <location file="include/endstone/potion/potion_type.h" line="61" column="27" bodyfile="include/endstone/potion/potion_type.h" bodystart="61" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="classendstone_1_1PotionType_1a45d48d3ccb90eef2e260dadd78dc8c45" prot="public" static="yes" constexpr="yes" mutable="no">
         <type><ref refid="classendstone_1_1Identifier" kindref="compound">constexpr</ref> <ref refid="classendstone_1_1Identifier" kindref="compound">auto</ref></type>
@@ -484,7 +485,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/potion/potion_type.h" line="58" column="27" bodyfile="include/endstone/potion/potion_type.h" bodystart="58" bodyend="-1"/>
+        <location file="include/endstone/potion/potion_type.h" line="62" column="27" bodyfile="include/endstone/potion/potion_type.h" bodystart="62" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="classendstone_1_1PotionType_1a295b5f41c2b87b3568ba66feda45042e" prot="public" static="yes" constexpr="yes" mutable="no">
         <type><ref refid="classendstone_1_1Identifier" kindref="compound">constexpr</ref> <ref refid="classendstone_1_1Identifier" kindref="compound">auto</ref></type>
@@ -499,7 +500,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/potion/potion_type.h" line="59" column="27" bodyfile="include/endstone/potion/potion_type.h" bodystart="59" bodyend="-1"/>
+        <location file="include/endstone/potion/potion_type.h" line="63" column="27" bodyfile="include/endstone/potion/potion_type.h" bodystart="63" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="classendstone_1_1PotionType_1a7d494218a9889e2f3c6bd53385d4dd2d" prot="public" static="yes" constexpr="yes" mutable="no">
         <type><ref refid="classendstone_1_1Identifier" kindref="compound">constexpr</ref> <ref refid="classendstone_1_1Identifier" kindref="compound">auto</ref></type>
@@ -514,7 +515,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/potion/potion_type.h" line="60" column="27" bodyfile="include/endstone/potion/potion_type.h" bodystart="60" bodyend="-1"/>
+        <location file="include/endstone/potion/potion_type.h" line="64" column="27" bodyfile="include/endstone/potion/potion_type.h" bodystart="64" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="classendstone_1_1PotionType_1ad7bb3897ee2a96c3465827a8701c10ba" prot="public" static="yes" constexpr="yes" mutable="no">
         <type><ref refid="classendstone_1_1Identifier" kindref="compound">constexpr</ref> <ref refid="classendstone_1_1Identifier" kindref="compound">auto</ref></type>
@@ -529,7 +530,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/potion/potion_type.h" line="61" column="27" bodyfile="include/endstone/potion/potion_type.h" bodystart="61" bodyend="-1"/>
+        <location file="include/endstone/potion/potion_type.h" line="65" column="27" bodyfile="include/endstone/potion/potion_type.h" bodystart="65" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="classendstone_1_1PotionType_1a9a5d59579dec55740e51f926d21218df" prot="public" static="yes" constexpr="yes" mutable="no">
         <type><ref refid="classendstone_1_1Identifier" kindref="compound">constexpr</ref> <ref refid="classendstone_1_1Identifier" kindref="compound">auto</ref></type>
@@ -544,7 +545,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/potion/potion_type.h" line="62" column="27" bodyfile="include/endstone/potion/potion_type.h" bodystart="62" bodyend="-1"/>
+        <location file="include/endstone/potion/potion_type.h" line="66" column="27" bodyfile="include/endstone/potion/potion_type.h" bodystart="66" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="classendstone_1_1PotionType_1ae474688a67d93bd0b256d2e6e8be72e1" prot="public" static="yes" constexpr="yes" mutable="no">
         <type><ref refid="classendstone_1_1Identifier" kindref="compound">constexpr</ref> <ref refid="classendstone_1_1Identifier" kindref="compound">auto</ref></type>
@@ -559,7 +560,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/potion/potion_type.h" line="63" column="27" bodyfile="include/endstone/potion/potion_type.h" bodystart="63" bodyend="-1"/>
+        <location file="include/endstone/potion/potion_type.h" line="67" column="27" bodyfile="include/endstone/potion/potion_type.h" bodystart="67" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="classendstone_1_1PotionType_1a8bcb20c1075d56f4f42dca573cce6b13" prot="public" static="yes" constexpr="yes" mutable="no">
         <type><ref refid="classendstone_1_1Identifier" kindref="compound">constexpr</ref> <ref refid="classendstone_1_1Identifier" kindref="compound">auto</ref></type>
@@ -574,7 +575,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/potion/potion_type.h" line="64" column="27" bodyfile="include/endstone/potion/potion_type.h" bodystart="64" bodyend="-1"/>
+        <location file="include/endstone/potion/potion_type.h" line="68" column="27" bodyfile="include/endstone/potion/potion_type.h" bodystart="68" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="classendstone_1_1PotionType_1a754e358e88cee9f01ab363a78cf50456" prot="public" static="yes" constexpr="yes" mutable="no">
         <type><ref refid="classendstone_1_1Identifier" kindref="compound">constexpr</ref> <ref refid="classendstone_1_1Identifier" kindref="compound">auto</ref></type>
@@ -589,7 +590,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/potion/potion_type.h" line="65" column="27" bodyfile="include/endstone/potion/potion_type.h" bodystart="65" bodyend="-1"/>
+        <location file="include/endstone/potion/potion_type.h" line="69" column="27" bodyfile="include/endstone/potion/potion_type.h" bodystart="69" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="classendstone_1_1PotionType_1a67d039e139115f7984a08aa1f8757cfe" prot="public" static="yes" constexpr="yes" mutable="no">
         <type><ref refid="classendstone_1_1Identifier" kindref="compound">constexpr</ref> <ref refid="classendstone_1_1Identifier" kindref="compound">auto</ref></type>
@@ -604,7 +605,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/potion/potion_type.h" line="66" column="27" bodyfile="include/endstone/potion/potion_type.h" bodystart="66" bodyend="-1"/>
+        <location file="include/endstone/potion/potion_type.h" line="70" column="27" bodyfile="include/endstone/potion/potion_type.h" bodystart="70" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="classendstone_1_1PotionType_1a2ac345546d5a4809c511cbaa95264f2e" prot="public" static="yes" constexpr="yes" mutable="no">
         <type><ref refid="classendstone_1_1Identifier" kindref="compound">constexpr</ref> <ref refid="classendstone_1_1Identifier" kindref="compound">auto</ref></type>
@@ -619,7 +620,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/potion/potion_type.h" line="67" column="27" bodyfile="include/endstone/potion/potion_type.h" bodystart="67" bodyend="-1"/>
+        <location file="include/endstone/potion/potion_type.h" line="71" column="27" bodyfile="include/endstone/potion/potion_type.h" bodystart="71" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="classendstone_1_1PotionType_1ae26fbdaa7c876e4962ab806b55f3aa74" prot="public" static="yes" constexpr="yes" mutable="no">
         <type><ref refid="classendstone_1_1Identifier" kindref="compound">constexpr</ref> <ref refid="classendstone_1_1Identifier" kindref="compound">auto</ref></type>
@@ -634,7 +635,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/potion/potion_type.h" line="68" column="27" bodyfile="include/endstone/potion/potion_type.h" bodystart="68" bodyend="-1"/>
+        <location file="include/endstone/potion/potion_type.h" line="72" column="27" bodyfile="include/endstone/potion/potion_type.h" bodystart="72" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="classendstone_1_1PotionType_1a61c7675bf28f2ab7a07c1475463391fe" prot="public" static="yes" constexpr="yes" mutable="no">
         <type><ref refid="classendstone_1_1Identifier" kindref="compound">constexpr</ref> <ref refid="classendstone_1_1Identifier" kindref="compound">auto</ref></type>
@@ -649,7 +650,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/potion/potion_type.h" line="69" column="27" bodyfile="include/endstone/potion/potion_type.h" bodystart="69" bodyend="-1"/>
+        <location file="include/endstone/potion/potion_type.h" line="73" column="27" bodyfile="include/endstone/potion/potion_type.h" bodystart="73" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="classendstone_1_1PotionType_1a0f874f24c04561c244d61cc4b5eb6995" prot="public" static="yes" constexpr="yes" mutable="no">
         <type><ref refid="classendstone_1_1Identifier" kindref="compound">constexpr</ref> <ref refid="classendstone_1_1Identifier" kindref="compound">auto</ref></type>
@@ -664,7 +665,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/potion/potion_type.h" line="70" column="27" bodyfile="include/endstone/potion/potion_type.h" bodystart="70" bodyend="-1"/>
+        <location file="include/endstone/potion/potion_type.h" line="74" column="27" bodyfile="include/endstone/potion/potion_type.h" bodystart="74" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="classendstone_1_1PotionType_1ac8c7d8143bcb385b60d5731eeaad0bda" prot="public" static="yes" constexpr="yes" mutable="no">
         <type><ref refid="classendstone_1_1Identifier" kindref="compound">constexpr</ref> <ref refid="classendstone_1_1Identifier" kindref="compound">auto</ref></type>
@@ -679,7 +680,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/potion/potion_type.h" line="71" column="27" bodyfile="include/endstone/potion/potion_type.h" bodystart="71" bodyend="-1"/>
+        <location file="include/endstone/potion/potion_type.h" line="75" column="27" bodyfile="include/endstone/potion/potion_type.h" bodystart="75" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="classendstone_1_1PotionType_1a0595aaf16ef833f606fd5fb1bb0b7a5d" prot="public" static="yes" constexpr="yes" mutable="no">
         <type><ref refid="classendstone_1_1Identifier" kindref="compound">constexpr</ref> <ref refid="classendstone_1_1Identifier" kindref="compound">auto</ref></type>
@@ -694,7 +695,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/potion/potion_type.h" line="72" column="27" bodyfile="include/endstone/potion/potion_type.h" bodystart="72" bodyend="-1"/>
+        <location file="include/endstone/potion/potion_type.h" line="76" column="27" bodyfile="include/endstone/potion/potion_type.h" bodystart="76" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="classendstone_1_1PotionType_1add3039d4d2969b8c684abac9f9c3d9cd" prot="public" static="yes" constexpr="yes" mutable="no">
         <type><ref refid="classendstone_1_1Identifier" kindref="compound">constexpr</ref> <ref refid="classendstone_1_1Identifier" kindref="compound">auto</ref></type>
@@ -709,7 +710,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/potion/potion_type.h" line="73" column="27" bodyfile="include/endstone/potion/potion_type.h" bodystart="73" bodyend="-1"/>
+        <location file="include/endstone/potion/potion_type.h" line="77" column="27" bodyfile="include/endstone/potion/potion_type.h" bodystart="77" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="classendstone_1_1PotionType_1af75f7c3da68f94e50cddb8d1661aac01" prot="public" static="yes" constexpr="yes" mutable="no">
         <type><ref refid="classendstone_1_1Identifier" kindref="compound">constexpr</ref> <ref refid="classendstone_1_1Identifier" kindref="compound">auto</ref></type>
@@ -724,20 +725,48 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/potion/potion_type.h" line="74" column="27" bodyfile="include/endstone/potion/potion_type.h" bodystart="74" bodyend="-1"/>
+        <location file="include/endstone/potion/potion_type.h" line="78" column="27" bodyfile="include/endstone/potion/potion_type.h" bodystart="78" bodyend="-1"/>
       </memberdef>
     </sectiondef>
     <briefdescription>
-<para>All potion types. </para>
+<para>Represents a potion type. </para>
     </briefdescription>
     <detaileddescription>
     </detaileddescription>
-    <location file="include/endstone/potion/potion_type.h" line="24" column="1" bodyfile="include/endstone/potion/potion_type.h" bodystart="24" bodyend="75"/>
+    <inheritancegraph>
+      <node id="1">
+        <label>endstone::PotionType</label>
+        <link refid="classendstone_1_1PotionType"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>endstone::Registry&lt; T &gt;::Type</label>
+        <link refid="classendstone_1_1Registry_1_1Type"/>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="1">
+        <label>endstone::PotionType</label>
+        <link refid="classendstone_1_1PotionType"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>endstone::Registry&lt; T &gt;::Type</label>
+        <link refid="classendstone_1_1Registry_1_1Type"/>
+      </node>
+    </collaborationgraph>
+    <location file="include/endstone/potion/potion_type.h" line="27" column="1" bodyfile="include/endstone/potion/potion_type.h" bodystart="27" bodyend="79"/>
     <listofallmembers>
       <member refid="classendstone_1_1PotionType_1a934a4efc0c60904aa69e6dd875f1cd7e" prot="public" virt="non-virtual"><scope>endstone::PotionType</scope><name>Awkward</name></member>
       <member refid="classendstone_1_1PotionType_1aec1eb44f513e34f339af932d64ffee8a" prot="public" virt="non-virtual"><scope>endstone::PotionType</scope><name>FireResistance</name></member>
+      <member refid="classendstone_1_1Registry_1_1Type_1adb225834ec0af1fdd72f998cbee22946" prot="public" virt="non-virtual"><scope>endstone::PotionType</scope><name>get</name></member>
+      <member refid="classendstone_1_1Registry_1_1Type_1ac7979c573cb4a71caf8f0d766048e95a" prot="public" virt="pure-virtual"><scope>endstone::PotionType</scope><name>getId</name></member>
+      <member refid="classendstone_1_1Registry_1_1Type_1a3d82ceca29e75e71a8ad56c5d0f12aa7" prot="public" virt="pure-virtual"><scope>endstone::PotionType</scope><name>getTranslationKey</name></member>
       <member refid="classendstone_1_1PotionType_1a707bbab37945163a2ac4c6f34bed9372" prot="public" virt="non-virtual"><scope>endstone::PotionType</scope><name>Harming</name></member>
       <member refid="classendstone_1_1PotionType_1a66fffb2ec05a62c6efeb828517bfe575" prot="public" virt="non-virtual"><scope>endstone::PotionType</scope><name>Healing</name></member>
+      <member refid="classendstone_1_1Registry_1_1Type_1a7d2793f0ec3a8f4e7ab9b8afbd777e82" prot="public" virt="non-virtual"><scope>endstone::PotionType</scope><name>Id</name></member>
       <member refid="classendstone_1_1PotionType_1af75f7c3da68f94e50cddb8d1661aac01" prot="public" virt="non-virtual"><scope>endstone::PotionType</scope><name>Infested</name></member>
       <member refid="classendstone_1_1PotionType_1acc44b7274cb6f20e2bbe02599b6d7e87" prot="public" virt="non-virtual"><scope>endstone::PotionType</scope><name>Invisibility</name></member>
       <member refid="classendstone_1_1PotionType_1aba6f1f93f0ac476af383b587a6c74ed8" prot="public" virt="non-virtual"><scope>endstone::PotionType</scope><name>Leaping</name></member>
@@ -755,10 +784,15 @@
       <member refid="classendstone_1_1PotionType_1a2ac345546d5a4809c511cbaa95264f2e" prot="public" virt="non-virtual"><scope>endstone::PotionType</scope><name>LongTurtleMaster</name></member>
       <member refid="classendstone_1_1PotionType_1a1c6d84c930df4d76627fd81a7ed127cc" prot="public" virt="non-virtual"><scope>endstone::PotionType</scope><name>LongWaterBreathing</name></member>
       <member refid="classendstone_1_1PotionType_1a8bcb20c1075d56f4f42dca573cce6b13" prot="public" virt="non-virtual"><scope>endstone::PotionType</scope><name>LongWeakness</name></member>
-      <member refid="classendstone_1_1PotionType_1a94815c4a6de78565094e9a9fc2917ac2" prot="private" virt="non-virtual"><scope>endstone::PotionType</scope><name>Minecraft</name></member>
+      <member refid="classendstone_1_1PotionType_1a94815c4a6de78565094e9a9fc2917ac2" prot="protected" virt="non-virtual"><scope>endstone::PotionType</scope><name>Minecraft</name></member>
       <member refid="classendstone_1_1PotionType_1a2e42a17c9960477de466c12c74ea4d69" prot="public" virt="non-virtual"><scope>endstone::PotionType</scope><name>Mundane</name></member>
       <member refid="classendstone_1_1PotionType_1ace8f4629639d2b1c523320205494c27e" prot="public" virt="non-virtual"><scope>endstone::PotionType</scope><name>Nightvision</name></member>
       <member refid="classendstone_1_1PotionType_1add3039d4d2969b8c684abac9f9c3d9cd" prot="public" virt="non-virtual"><scope>endstone::PotionType</scope><name>Oozing</name></member>
+      <member refid="classendstone_1_1Registry_1_1Type_1ab333d4c3e969abfb5dd01c4ce34d7154" prot="public" virt="non-virtual"><scope>endstone::PotionType</scope><name>operator Id</name></member>
+      <member refid="classendstone_1_1Registry_1_1Type_1a9e32d0cd444cf6e98cece1f89fd16fb4" prot="public" virt="non-virtual"><scope>endstone::PotionType</scope><name>operator!=</name></member>
+      <member refid="classendstone_1_1Registry_1_1Type_1aece109daae5dede57edc8c23ef174aff" prot="public" virt="non-virtual"><scope>endstone::PotionType</scope><name>operator!=</name></member>
+      <member refid="classendstone_1_1Registry_1_1Type_1ae1f1c16d4904b521e7f727ae1e9715e7" prot="public" virt="non-virtual"><scope>endstone::PotionType</scope><name>operator==</name></member>
+      <member refid="classendstone_1_1Registry_1_1Type_1a0e07b4427e10e44725cefa814de62a11" prot="public" virt="non-virtual"><scope>endstone::PotionType</scope><name>operator==</name></member>
       <member refid="classendstone_1_1PotionType_1ae06515a190dbd97e6064a974578be9e2" prot="public" virt="non-virtual"><scope>endstone::PotionType</scope><name>Poison</name></member>
       <member refid="classendstone_1_1PotionType_1a3cbd106a8e61957786636c5005089697" prot="public" virt="non-virtual"><scope>endstone::PotionType</scope><name>Regeneration</name></member>
       <member refid="classendstone_1_1PotionType_1a61c7675bf28f2ab7a07c1475463391fe" prot="public" virt="non-virtual"><scope>endstone::PotionType</scope><name>SlowFalling</name></member>
@@ -782,6 +816,7 @@
       <member refid="classendstone_1_1PotionType_1a0595aaf16ef833f606fd5fb1bb0b7a5d" prot="public" virt="non-virtual"><scope>endstone::PotionType</scope><name>Weaving</name></member>
       <member refid="classendstone_1_1PotionType_1ac8c7d8143bcb385b60d5731eeaad0bda" prot="public" virt="non-virtual"><scope>endstone::PotionType</scope><name>WindCharged</name></member>
       <member refid="classendstone_1_1PotionType_1a754e358e88cee9f01ab363a78cf50456" prot="public" virt="non-virtual"><scope>endstone::PotionType</scope><name>Wither</name></member>
+      <member refid="classendstone_1_1Registry_1_1Type_1a2262020b59996fe1363c1e1058711944" prot="public" virt="virtual"><scope>endstone::PotionType</scope><name>~Type</name></member>
     </listofallmembers>
   </compounddef>
 </doxygen>

@@ -2968,7 +2968,8 @@ For latest updates join the chat on
 </span><span id="__span-3-2"><a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a><span class="w">    </span><span class="k">const</span><span class="w">  </span><span class="n">DimensionCreator</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">creator</span>
 </span><span id="__span-3-3"><a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a><span class="p">)</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span>
 </span></code></pre></div></p>
-<p>The dimension is created from the options described by the given <a href="../classendstone_1_1DimensionCreator/"><strong>DimensionCreator</strong></a>. Custom dimensions are empty (void) dimensions identified by a namespaced id, e.g. <code>myplugin:void_realm</code>; populate them with blocks, structures or actors afterward. Custom dimensions persist across server restarts. </p>
+<p>The dimension is created from the options described by the given <a href="../classendstone_1_1DimensionCreator/"><strong>DimensionCreator</strong></a>. Custom dimensions are empty (void) dimensions identified by a namespaced id, e.g. <code>myplugin:void_realm</code>; populate them with blocks, structures or actors afterward. </p>
+<p>The level remembers which id belongs to which name, so a dimension's terrain and actors survive a restart. The registration itself does not: call this again on every startup to get the same dimension back. </p>
 <p>If a dimension with the requested name already exists, that existing dimension is returned instead.</p>
 <p><strong>Parameters:</strong></p>
 <ul>

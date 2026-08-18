@@ -425,6 +425,7 @@
 * **getDefaultPermissions** ([**endstone::PluginManager**](classendstone_1_1PluginManager.md))
 * **getPermissionSubscriptions** ([**endstone::PluginManager**](classendstone_1_1PluginManager.md))
 * **getPlugins** ([**endstone::PluginManager**](classendstone_1_1PluginManager.md))
+* **getBasePotionType** ([**endstone::PotionMeta**](classendstone_1_1PotionMeta.md))
 * **getOrThrow** ([**endstone::Registry**](classendstone_1_1Registry.md))
 * **getPendingTasks** ([**endstone::Scheduler**](classendstone_1_1Scheduler.md))
 * **getEntry** ([**endstone::Score**](classendstone_1_1Score.md))
@@ -517,6 +518,7 @@
 * **hasEffect** ([**endstone::Mob**](classendstone_1_1Mob.md))
 * **hasBlock** ([**endstone::PlayerInteractEvent**](classendstone_1_1PlayerInteractEvent.md))
 * **hasItem** ([**endstone::PlayerInteractEvent**](classendstone_1_1PlayerInteractEvent.md))
+* **hasBasePotionType** ([**endstone::PotionMeta**](classendstone_1_1PotionMeta.md))
 * **hasPages** ([**endstone::WritableBookMeta**](classendstone_1_1WritableBookMeta.md))
 
 
@@ -905,6 +907,7 @@
 * **setExecutor** ([**endstone::PluginCommand**](classendstone_1_1PluginCommand.md))
 * **subscribeToDefaultPerms** ([**endstone::PluginManager**](classendstone_1_1PluginManager.md))
 * **subscribeToPermission** ([**endstone::PluginManager**](classendstone_1_1PluginManager.md))
+* **setBasePotionType** ([**endstone::PotionMeta**](classendstone_1_1PotionMeta.md))
 * **setValue** ([**endstone::Score**](classendstone_1_1Score.md))
 * **ScriptMessageEvent** ([**endstone::ScriptMessageEvent**](classendstone_1_1ScriptMessageEvent.md))
 * **Server** ([**endstone::Server**](classendstone_1_1Server.md))

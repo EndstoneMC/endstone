@@ -157,6 +157,7 @@
     <innerclass refid="classendstone_1_1PluginEnableEvent" prot="public">endstone::PluginEnableEvent</innerclass>
     <innerclass refid="classendstone_1_1PluginLoader" prot="public">endstone::PluginLoader</innerclass>
     <innerclass refid="classendstone_1_1PluginManager" prot="public">endstone::PluginManager</innerclass>
+    <innerclass refid="classendstone_1_1PotionMeta" prot="public">endstone::PotionMeta</innerclass>
     <innerclass refid="classendstone_1_1PotionType" prot="public">endstone::PotionType</innerclass>
     <innerclass refid="classendstone_1_1Preconditions" prot="public">endstone::Preconditions</innerclass>
     <innerclass refid="classendstone_1_1Recipe" prot="public">endstone::Recipe</innerclass>
@@ -1285,9 +1286,9 @@
         </inbodydescription>
         <location file="include/endstone/permissions/permission_attachment.h" line="28" column="1" bodyfile="include/endstone/permissions/permission_attachment.h" bodystart="28" bodyend="-1"/>
       </memberdef>
-      <memberdef kind="typedef" id="namespaceendstone_1a1de715f3cef3cb85cbef38b7ec0ee3db" prot="public" static="no">
-        <type><ref refid="classendstone_1_1Identifier" kindref="compound">Identifier</ref>&lt; <ref refid="classendstone_1_1Identifier" kindref="compound">class</ref> <ref refid="classendstone_1_1EffectType" kindref="compound">EffectType</ref> &gt;</type>
-        <definition>using endstone::EffectId = typedef Identifier&lt;class EffectType&gt;</definition>
+      <memberdef kind="typedef" id="namespaceendstone_1a07d5edd6a4210fd917b36d15e1f3097c" prot="public" static="no">
+        <type><ref refid="classendstone_1_1Identifier" kindref="compound">Identifier</ref>&lt; <ref refid="classendstone_1_1EffectType" kindref="compound">EffectType</ref> &gt;</type>
+        <definition>using endstone::EffectId = typedef Identifier&lt;EffectType&gt;</definition>
         <argsstring></argsstring>
         <name>EffectId</name>
         <qualifiedname>endstone::EffectId</qualifiedname>
@@ -1297,11 +1298,11 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/potion/effect_type.h" line="22" column="1" bodyfile="include/endstone/potion/effect_type.h" bodystart="22" bodyend="-1"/>
+        <location file="include/endstone/potion/effect_type.h" line="23" column="1" bodyfile="include/endstone/potion/effect_type.h" bodystart="23" bodyend="-1"/>
       </memberdef>
-      <memberdef kind="typedef" id="namespaceendstone_1a752231e730d011e08a0c9329945d4d6f" prot="public" static="no">
-        <type><ref refid="classendstone_1_1Identifier" kindref="compound">Identifier</ref>&lt; <ref refid="classendstone_1_1Identifier" kindref="compound">class</ref> <ref refid="classendstone_1_1PotionType" kindref="compound">PotionType</ref> &gt;</type>
-        <definition>using endstone::PotionId = typedef Identifier&lt;class PotionType&gt;</definition>
+      <memberdef kind="typedef" id="namespaceendstone_1af6c55d9f9339aed9d9a55d76503b44a7" prot="public" static="no">
+        <type><ref refid="classendstone_1_1Identifier" kindref="compound">Identifier</ref>&lt; <ref refid="classendstone_1_1PotionType" kindref="compound">PotionType</ref> &gt;</type>
+        <definition>using endstone::PotionId = typedef Identifier&lt;PotionType&gt;</definition>
         <argsstring></argsstring>
         <name>PotionId</name>
         <qualifiedname>endstone::PotionId</qualifiedname>
@@ -1311,7 +1312,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/potion/potion_type.h" line="20" column="1" bodyfile="include/endstone/potion/potion_type.h" bodystart="20" bodyend="-1"/>
+        <location file="include/endstone/potion/potion_type.h" line="23" column="1" bodyfile="include/endstone/potion/potion_type.h" bodystart="23" bodyend="-1"/>
       </memberdef>
       <memberdef kind="typedef" id="namespaceendstone_1ae2ff6d706eb4d7bdf8062917bb90ac29" prot="public" static="no">
         <type>std::uint32_t</type>

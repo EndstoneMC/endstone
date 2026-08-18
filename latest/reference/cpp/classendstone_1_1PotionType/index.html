@@ -2585,9 +2585,53 @@ For latest updates join the chat on
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
+    <a href="#public-types-inherited-from-endstoneregistrytype" class="md-nav__link">
+      <span class="md-ellipsis">
+        Public Types inherited from endstone::Registry::Type
+      </span>
+    </a>
+
+    <!-- Table of contents list -->
+    
+</li>
+      
+        <li class="md-nav__item">
     <a href="#public-static-attributes" class="md-nav__link">
       <span class="md-ellipsis">
         Public Static Attributes
+      </span>
+    </a>
+
+    <!-- Table of contents list -->
+    
+</li>
+      
+        <li class="md-nav__item">
+    <a href="#public-functions-inherited-from-endstoneregistrytype" class="md-nav__link">
+      <span class="md-ellipsis">
+        Public Functions inherited from endstone::Registry::Type
+      </span>
+    </a>
+
+    <!-- Table of contents list -->
+    
+</li>
+      
+        <li class="md-nav__item">
+    <a href="#public-static-functions-inherited-from-endstoneregistrytype" class="md-nav__link">
+      <span class="md-ellipsis">
+        Public Static Functions inherited from endstone::Registry::Type
+      </span>
+    </a>
+
+    <!-- Table of contents list -->
+    
+</li>
+      
+        <li class="md-nav__item">
+    <a href="#protected-static-attributes" class="md-nav__link">
+      <span class="md-ellipsis">
+        Protected Static Attributes
       </span>
     </a>
 
@@ -3223,6 +3267,36 @@ For latest updates join the chat on
     
 </li>
       
+        <li class="md-nav__item">
+    <a href="#protected-static-attributes-documentation" class="md-nav__link">
+      <span class="md-ellipsis">
+        Protected Static Attributes Documentation
+      </span>
+    </a>
+
+    <!-- Table of contents list -->
+    
+    <nav class="md-nav" aria-label="Protected Static Attributes Documentation">
+        <ul class="md-nav__list">
+            
+                
+                    <li class="md-nav__item">
+    <a href="#variable-minecraft" class="md-nav__link">
+      <span class="md-ellipsis">
+        variable Minecraft
+      </span>
+    </a>
+
+    <!-- Table of contents list -->
+    
+</li>
+                
+            
+        </ul>
+    </nav>
+    
+</li>
+      
     </ul>
   
 </nav>
@@ -3258,10 +3332,27 @@ For latest updates join the chat on
 
 <h1 id="class-endstonepotiontype">Class endstone::PotionType<a class="headerlink" href="#class-endstonepotiontype" title="Permanent link">&para;</a></h1>
 <p><a href="../annotated/"><strong>ClassList</strong></a> <strong>&gt;</strong> <a href="../namespaceendstone/"><strong>endstone</strong></a> <strong>&gt;</strong> <a href="./"><strong>PotionType</strong></a></p>
-<p><em>All potion types.</em> </p>
+<p><em>Represents a potion type.</em> </p>
 <ul>
 <li><code>#include &lt;endstone/potion/potion_type.h&gt;</code></li>
 </ul>
+<p>Inherits the following classes: <a href="../classendstone_1_1Registry_1_1Type/">endstone::Registry::Type</a></p>
+<h2 id="public-types-inherited-from-endstoneregistrytype">Public Types inherited from endstone::Registry::Type<a class="headerlink" href="#public-types-inherited-from-endstoneregistrytype" title="Permanent link">&para;</a></h2>
+<p>See <a href="../classendstone_1_1Registry_1_1Type/">endstone::Registry::Type</a></p>
+<table>
+<thead>
+<tr>
+<th style="text-align: right;">Type</th>
+<th style="text-align: left;">Name</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: right;">typedef <a href="../classendstone_1_1Identifier/"><strong>Identifier</strong></a>&lt; <a href="../classendstone_1_1Identifier/"><strong>T</strong></a> &gt;</td>
+<td style="text-align: left;"><a href="../classendstone_1_1Registry_1_1Type/#typedef-id"><strong>Id</strong></a>  <br><em>The identifier type used to look up this object in its registry.</em></td>
+</tr>
+</tbody>
+</table>
 <h2 id="public-static-attributes">Public Static Attributes<a class="headerlink" href="#public-static-attributes" title="Permanent link">&para;</a></h2>
 <table>
 <thead>
@@ -3458,6 +3549,81 @@ For latest updates join the chat on
 <tr>
 <td style="text-align: right;"><a href="../classendstone_1_1Identifier/"><strong>constexpr</strong></a> <a href="../classendstone_1_1Identifier/"><strong>auto</strong></a></td>
 <td style="text-align: left;"><a href="#variable-wither"><strong>Wither</strong></a>   = <code>[**PotionId**](classendstone_1_1Identifier.md)(Minecraft, "wither")</code><br></td>
+</tr>
+</tbody>
+</table>
+<h2 id="public-functions-inherited-from-endstoneregistrytype">Public Functions inherited from endstone::Registry::Type<a class="headerlink" href="#public-functions-inherited-from-endstoneregistrytype" title="Permanent link">&para;</a></h2>
+<p>See <a href="../classendstone_1_1Registry_1_1Type/">endstone::Registry::Type</a></p>
+<table>
+<thead>
+<tr>
+<th style="text-align: right;">Type</th>
+<th style="text-align: left;">Name</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: right;">virtual <a href="../classendstone_1_1Registry_1_1Type/#typedef-id"><strong>Id</strong></a></td>
+<td style="text-align: left;"><a href="../classendstone_1_1Registry_1_1Type/#function-getid"><strong>getId</strong></a> () const = 0<br><em>Return the identifier of this object.</em></td>
+</tr>
+<tr>
+<td style="text-align: right;">virtual std::string</td>
+<td style="text-align: left;"><a href="../classendstone_1_1Registry_1_1Type/#function-gettranslationkey"><strong>getTranslationKey</strong></a> () const = 0<br><em>Get the translation key, suitable for use in a translation component.</em></td>
+</tr>
+<tr>
+<td style="text-align: right;"></td>
+<td style="text-align: left;"><a href="../classendstone_1_1Registry_1_1Type/#function-operator-id"><strong>operator Id</strong></a> () const<br></td>
+</tr>
+<tr>
+<td style="text-align: right;"><a href="../classendstone_1_1Identifier/"><strong>bool</strong></a></td>
+<td style="text-align: left;"><a href="../classendstone_1_1Registry_1_1Type/#function-operator"><strong>operator!=</strong></a> (<a href="../classendstone_1_1Identifier/"><strong>const</strong></a> <a href="../classendstone_1_1Registry_1_1Type/#typedef-id"><strong>Id</strong></a> &amp; other) const<br></td>
+</tr>
+<tr>
+<td style="text-align: right;"><a href="../classendstone_1_1Identifier/"><strong>bool</strong></a></td>
+<td style="text-align: left;"><a href="../classendstone_1_1Registry_1_1Type/#function-operator_1"><strong>operator!=</strong></a> (<a href="../classendstone_1_1Identifier/"><strong>const</strong></a> <a href="../classendstone_1_1Identifier/"><strong>T</strong></a> &amp; other) const<br></td>
+</tr>
+<tr>
+<td style="text-align: right;"><a href="../classendstone_1_1Identifier/"><strong>bool</strong></a></td>
+<td style="text-align: left;"><a href="../classendstone_1_1Registry_1_1Type/#function-operator_2"><strong>operator==</strong></a> (<a href="../classendstone_1_1Identifier/"><strong>const</strong></a> <a href="../classendstone_1_1Registry_1_1Type/#typedef-id"><strong>Id</strong></a> &amp; other) const<br></td>
+</tr>
+<tr>
+<td style="text-align: right;"><a href="../classendstone_1_1Identifier/"><strong>bool</strong></a></td>
+<td style="text-align: left;"><a href="../classendstone_1_1Registry_1_1Type/#function-operator_3"><strong>operator==</strong></a> (<a href="../classendstone_1_1Identifier/"><strong>const</strong></a> <a href="../classendstone_1_1Identifier/"><strong>T</strong></a> &amp; other) const<br></td>
+</tr>
+<tr>
+<td style="text-align: right;">virtual</td>
+<td style="text-align: left;"><a href="../classendstone_1_1Registry_1_1Type/#function-type"><strong>~Type</strong></a> () = default<br></td>
+</tr>
+</tbody>
+</table>
+<h2 id="public-static-functions-inherited-from-endstoneregistrytype">Public Static Functions inherited from endstone::Registry::Type<a class="headerlink" href="#public-static-functions-inherited-from-endstoneregistrytype" title="Permanent link">&para;</a></h2>
+<p>See <a href="../classendstone_1_1Registry_1_1Type/">endstone::Registry::Type</a></p>
+<table>
+<thead>
+<tr>
+<th style="text-align: right;">Type</th>
+<th style="text-align: left;">Name</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: right;"><a href="../classendstone_1_1Identifier/"><strong>const</strong></a> <a href="../classendstone_1_1Identifier/"><strong>T</strong></a> *</td>
+<td style="text-align: left;"><a href="../classendstone_1_1Registry_1_1Type/#function-get"><strong>get</strong></a> (<a href="../classendstone_1_1Registry_1_1Type/#typedef-id"><strong>Id</strong></a> id) <br><em>Look up a registry entry by identifier.</em></td>
+</tr>
+</tbody>
+</table>
+<h2 id="protected-static-attributes">Protected Static Attributes<a class="headerlink" href="#protected-static-attributes" title="Permanent link">&para;</a></h2>
+<table>
+<thead>
+<tr>
+<th style="text-align: right;">Type</th>
+<th style="text-align: left;">Name</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: right;"><a href="../classendstone_1_1Identifier/"><strong>constexpr</strong></a> std::string_view</td>
+<td style="text-align: left;"><a href="#variable-minecraft"><strong>Minecraft</strong></a>   = <code>"minecraft:potion\_type"</code><br></td>
 </tr>
 </tbody>
 </table>
@@ -3694,6 +3860,11 @@ For latest updates join the chat on
 
 <h3 id="variable-wither">variable Wither<a class="headerlink" href="#variable-wither" title="Permanent link">&para;</a></h3>
 <div class="language-C++ highlight"><pre><span></span><code><span id="__span-46-1"><a id="__codelineno-46-1" name="__codelineno-46-1" href="#__codelineno-46-1"></a><span class="k">constexpr</span><span class="w"> </span><span class="k">auto</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">PotionType</span><span class="o">::</span><span class="n">Wither</span><span class="p">;</span>
+</span></code></pre></div>
+<hr>
+<h2 id="protected-static-attributes-documentation">Protected Static Attributes Documentation<a class="headerlink" href="#protected-static-attributes-documentation" title="Permanent link">&para;</a></h2>
+<h3 id="variable-minecraft">variable Minecraft<a class="headerlink" href="#variable-minecraft" title="Permanent link">&para;</a></h3>
+<div class="language-C++ highlight"><pre><span></span><code><span id="__span-47-1"><a id="__codelineno-47-1" name="__codelineno-47-1" href="#__codelineno-47-1"></a><span class="k">constexpr</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">string_view</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">PotionType</span><span class="o">::</span><span class="n">Minecraft</span><span class="p">;</span>
 </span></code></pre></div>
 <hr>
 

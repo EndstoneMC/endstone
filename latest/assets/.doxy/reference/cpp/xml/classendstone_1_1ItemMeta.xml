@@ -5,6 +5,7 @@
     <basecompoundref refid="classendstone_1_1Object" prot="public" virt="non-virtual">endstone::Object</basecompoundref>
     <derivedcompoundref refid="classendstone_1_1CrossbowMeta" prot="public" virt="non-virtual">endstone::CrossbowMeta</derivedcompoundref>
     <derivedcompoundref refid="classendstone_1_1MapMeta" prot="public" virt="non-virtual">endstone::MapMeta</derivedcompoundref>
+    <derivedcompoundref refid="classendstone_1_1PotionMeta" prot="public" virt="non-virtual">endstone::PotionMeta</derivedcompoundref>
     <derivedcompoundref refid="classendstone_1_1WritableBookMeta" prot="public" virt="non-virtual">endstone::WritableBookMeta</derivedcompoundref>
     <includes refid="item__meta_8h" local="no">endstone/inventory/meta/item_meta.h</includes>
     <sectiondef kind="public-func">
@@ -587,10 +588,10 @@
     <detaileddescription>
     </detaileddescription>
     <inheritancegraph>
-      <node id="6">
+      <node id="7">
         <label>endstone::BookMeta</label>
         <link refid="classendstone_1_1BookMeta"/>
-        <childnode refid="5" relation="public-inheritance">
+        <childnode refid="6" relation="public-inheritance">
         </childnode>
       </node>
       <node id="3">
@@ -616,6 +617,12 @@
         <link refid="classendstone_1_1Object"/>
       </node>
       <node id="5">
+        <label>endstone::PotionMeta</label>
+        <link refid="classendstone_1_1PotionMeta"/>
+        <childnode refid="1" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="6">
         <label>endstone::WritableBookMeta</label>
         <link refid="classendstone_1_1WritableBookMeta"/>
         <childnode refid="1" relation="public-inheritance">

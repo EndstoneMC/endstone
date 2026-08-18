@@ -69,7 +69,7 @@ Here are the classes, structs, unions and interfaces with brief descriptions:
     * **class** [**Divider**](classendstone_1_1Divider.md) _Represents a divider._     
     * **class** [**Dropdown**](classendstone_1_1Dropdown.md) _Represents a dropdown with a set of predefined options._     
     * **class** [**Effect**](classendstone_1_1Effect.md) _Represents an effect that can be added to a_ [_**Mob**_](classendstone_1_1Mob.md) _._    
-    * **class** [**EffectType**](classendstone_1_1EffectType.md) _All effect types._     
+    * **class** [**EffectType**](classendstone_1_1EffectType.md) _Represents an effect type._     
     * **class** [**Enchantment**](classendstone_1_1Enchantment.md) _Represents an enchantment that may be added to armor, weapons, tools or other items._     
     * **class** [**Event**](classendstone_1_1Event.md) _Represents an event._     
     * **class** [**EventHandler**](classendstone_1_1EventHandler.md) _Represents a registered_ [_**EventHandler**_](classendstone_1_1EventHandler.md) _which associates with a_[_**Plugin**_](classendstone_1_1Plugin.md) _._    
@@ -159,7 +159,8 @@ Here are the classes, structs, unions and interfaces with brief descriptions:
     * **class** [**PluginEnableEvent**](classendstone_1_1PluginEnableEvent.md) _Called when a plugin is enabled._     
     * **class** [**PluginLoader**](classendstone_1_1PluginLoader.md) _Represents a plugin loader, which handles direct access to specific types of plugins._     
     * **class** [**PluginManager**](classendstone_1_1PluginManager.md) _Represents a plugin manager that handles all plugins from the_ [_**Server**_](classendstone_1_1Server.md) _._    
-    * **class** [**PotionType**](classendstone_1_1PotionType.md) _All potion types._     
+    * **class** [**PotionMeta**](classendstone_1_1PotionMeta.md) _Represents the metadata for a potion item._     
+    * **class** [**PotionType**](classendstone_1_1PotionType.md) _Represents a potion type._     
     * **class** [**Preconditions**](classendstone_1_1Preconditions.md) _Static helpers for validating method arguments and object state._     
     * **class** [**Recipe**](classendstone_1_1Recipe.md) _Represents some type of crafting recipe._     
     * **class** [**Registry**](classendstone_1_1Registry.md) _Abstract registry interface for objects with identifiers._     

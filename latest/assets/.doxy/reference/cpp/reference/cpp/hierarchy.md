@@ -19,6 +19,7 @@ This inheritance list is sorted roughly, but not completely, alphabetically:
     * **class** [**endstone::ItemMeta**](classendstone_1_1ItemMeta.md) _Represents the metadata of a generic item._     
         * **class** [**endstone::CrossbowMeta**](classendstone_1_1CrossbowMeta.md) _Represents the meta for a crossbow that can have a charged projectile._ 
         * **class** [**endstone::MapMeta**](classendstone_1_1MapMeta.md) _Represents the metadata for a map item._ 
+        * **class** [**endstone::PotionMeta**](classendstone_1_1PotionMeta.md) _Represents the metadata for a potion item._ 
         * **class** [**endstone::WritableBookMeta**](classendstone_1_1WritableBookMeta.md) _Represents the meta for a writable book that can have pages._     
             * **class** [**endstone::BookMeta**](classendstone_1_1BookMeta.md) _Represents the meta for a written book that can have a title, an author, and pages._ 
     * **class** [**endstone::Permissible**](classendstone_1_1Permissible.md) _Represents an object that may become a server operator and can be assigned permissions._     
@@ -70,9 +71,11 @@ This inheritance list is sorted roughly, but not completely, alphabetically:
     * **class** [**endstone::ActorType**](classendstone_1_1ActorType.md) 
     * **class** [**endstone::Biome**](classendstone_1_1Biome.md) 
     * **class** [**endstone::BlockType**](classendstone_1_1BlockType.md) 
+    * **class** [**endstone::EffectType**](classendstone_1_1EffectType.md) _Represents an effect type._ 
     * **class** [**endstone::Enchantment**](classendstone_1_1Enchantment.md) _Represents an enchantment that may be added to armor, weapons, tools or other items._ 
     * **class** [**endstone::GameRule**](classendstone_1_1GameRule.md) _Represents a game rule._ 
     * **class** [**endstone::ItemType**](classendstone_1_1ItemType.md) _Represents an item type._ 
+    * **class** [**endstone::PotionType**](classendstone_1_1PotionType.md) _Represents a potion type._ 
 * **class** [**endstone::Attribute**](classendstone_1_1Attribute.md) _All attribute types._ 
 * **class** [**endstone::AttributeInstance**](classendstone_1_1AttributeInstance.md) _Represents a mutable instance of an attribute and its associated modifiers and values._ 
 * **class** [**endstone::AttributeModifier**](classendstone_1_1AttributeModifier.md) _Concrete implementation of an attribute modifier._ 
@@ -103,7 +106,6 @@ This inheritance list is sorted roughly, but not completely, alphabetically:
 * **class** [**endstone::Dropdown**](classendstone_1_1Dropdown.md) _Represents a dropdown with a set of predefined options._     
     * **class** [**endstone::StepSlider**](classendstone_1_1StepSlider.md) _Represents a step slider with a set of predefined options._ 
 * **class** [**endstone::Effect**](classendstone_1_1Effect.md) _Represents an effect that can be added to a_ [_**Mob**_](classendstone_1_1Mob.md) _._
-* **class** [**endstone::EffectType**](classendstone_1_1EffectType.md) _All effect types._ 
 * **class** [**endstone::EventHandler**](classendstone_1_1EventHandler.md) _Represents a registered_ [_**EventHandler**_](classendstone_1_1EventHandler.md) _which associates with a_[_**Plugin**_](classendstone_1_1Plugin.md) _._
 * **class** [**endstone::Identifier**](classendstone_1_1Identifier.md) _Represents a identifier consisting of two components: a namespace and a key._ 
 * **class** [**endstone::HandlerList**](classendstone_1_1HandlerList.md) _A list of event handlers._ 
@@ -134,7 +136,6 @@ This inheritance list is sorted roughly, but not completely, alphabetically:
 * **class** [**endstone::PluginDescription**](classendstone_1_1PluginDescription.md) _Represents the basic information about a plugin that the plugin loader needs to know._ 
 * **class** [**endstone::PluginLoader**](classendstone_1_1PluginLoader.md) _Represents a plugin loader, which handles direct access to specific types of plugins._ 
 * **class** [**endstone::PluginManager**](classendstone_1_1PluginManager.md) _Represents a plugin manager that handles all plugins from the_ [_**Server**_](classendstone_1_1Server.md) _._
-* **class** [**endstone::PotionType**](classendstone_1_1PotionType.md) _All potion types._ 
 * **class** [**endstone::Preconditions**](classendstone_1_1Preconditions.md) _Static helpers for validating method arguments and object state._ 
 * **class** [**endstone::Recipe**](classendstone_1_1Recipe.md) _Represents some type of crafting recipe._ 
 * **class** [**endstone::Scheduler**](classendstone_1_1Scheduler.md) _Represents a scheduler that executes various tasks._ 

@@ -6103,8 +6103,10 @@ the spawn area, etc.), so it is a no-op in effect while the chunk is still in us
 
         <p>Creates a new custom dimension within this level.</p>
 <p>Custom dimensions are empty (void) dimensions identified by a namespaced id, e.g. <code>myplugin:void_realm</code>;
-populate them with blocks, structures or actors afterward. Custom dimensions persist across server restarts.
-If a dimension with the requested name already exists, that existing dimension is returned instead.</p>
+populate them with blocks, structures or actors afterward.</p>
+<p>The level remembers which id belongs to which name, so a dimension's terrain and actors survive a restart.
+The registration itself does not: call this again on every startup to get the same dimension back.</p>
+<p>If a dimension with the requested name already exists, that existing dimension is returned instead.</p>
 
 
 <p><span class="doc-section-title">Parameters:</span></p>

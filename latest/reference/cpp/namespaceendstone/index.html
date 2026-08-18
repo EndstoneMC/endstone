@@ -3733,7 +3733,7 @@ For latest updates join the chat on
 </tr>
 <tr>
 <td style="text-align: right;">class</td>
-<td style="text-align: left;"><a href="../classendstone_1_1EffectType/"><strong>EffectType</strong></a> <br><em>All effect types.</em></td>
+<td style="text-align: left;"><a href="../classendstone_1_1EffectType/"><strong>EffectType</strong></a> <br><em>Represents an effect type.</em></td>
 </tr>
 <tr>
 <td style="text-align: right;">class</td>
@@ -4093,7 +4093,11 @@ For latest updates join the chat on
 </tr>
 <tr>
 <td style="text-align: right;">class</td>
-<td style="text-align: left;"><a href="../classendstone_1_1PotionType/"><strong>PotionType</strong></a> <br><em>All potion types.</em></td>
+<td style="text-align: left;"><a href="../classendstone_1_1PotionMeta/"><strong>PotionMeta</strong></a> <br><em>Represents the metadata for a potion item.</em></td>
+</tr>
+<tr>
+<td style="text-align: right;">class</td>
+<td style="text-align: left;"><a href="../classendstone_1_1PotionType/"><strong>PotionType</strong></a> <br><em>Represents a potion type.</em></td>
 </tr>
 <tr>
 <td style="text-align: right;">class</td>
@@ -4291,7 +4295,7 @@ For latest updates join the chat on
 <td style="text-align: left;"><a href="#typedef-doubletag"><strong>DoubleTag</strong></a>  <br></td>
 </tr>
 <tr>
-<td style="text-align: right;">typedef <a href="../classendstone_1_1Identifier/"><strong>Identifier</strong></a>&lt; <a href="../classendstone_1_1Identifier/"><strong>class</strong></a> <a href="../classendstone_1_1EffectType/"><strong>EffectType</strong></a> &gt;</td>
+<td style="text-align: right;">typedef <a href="../classendstone_1_1Identifier/"><strong>Identifier</strong></a>&lt; <a href="../classendstone_1_1EffectType/"><strong>EffectType</strong></a> &gt;</td>
 <td style="text-align: left;"><a href="#typedef-effectid"><strong>EffectId</strong></a>  <br></td>
 </tr>
 <tr>
@@ -4363,7 +4367,7 @@ For latest updates join the chat on
 <td style="text-align: left;"><a href="#enum-pluginloadorder"><strong>PluginLoadOrder</strong></a>  <br><em>Represents the order in which a plugin should be initialized and enabled.</em></td>
 </tr>
 <tr>
-<td style="text-align: right;">typedef <a href="../classendstone_1_1Identifier/"><strong>Identifier</strong></a>&lt; <a href="../classendstone_1_1Identifier/"><strong>class</strong></a> <a href="../classendstone_1_1PotionType/"><strong>PotionType</strong></a> &gt;</td>
+<td style="text-align: right;">typedef <a href="../classendstone_1_1Identifier/"><strong>Identifier</strong></a>&lt; <a href="../classendstone_1_1PotionType/"><strong>PotionType</strong></a> &gt;</td>
 <td style="text-align: left;"><a href="#typedef-potionid"><strong>PotionId</strong></a>  <br></td>
 </tr>
 <tr>
@@ -4582,7 +4586,7 @@ For latest updates join the chat on
 <hr>
 
 <h3 id="typedef-effectid">typedef EffectId<a class="headerlink" href="#typedef-effectid" title="Permanent link">&para;</a></h3>
-<div class="language-C++ highlight"><pre><span></span><code><span id="__span-15-1"><a id="__codelineno-15-1" name="__codelineno-15-1" href="#__codelineno-15-1"></a><span class="k">using</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">EffectId</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">typedef</span><span class="w"> </span><span class="n">Identifier</span><span class="o">&lt;</span><span class="k">class</span><span class="w"> </span><span class="nc">EffectType</span><span class="o">&gt;</span><span class="p">;</span>
+<div class="language-C++ highlight"><pre><span></span><code><span id="__span-15-1"><a id="__codelineno-15-1" name="__codelineno-15-1" href="#__codelineno-15-1"></a><span class="k">using</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">EffectId</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">typedef</span><span class="w"> </span><span class="n">Identifier</span><span class="o">&lt;</span><span class="n">EffectType</span><span class="o">&gt;</span><span class="p">;</span>
 </span></code></pre></div>
 <hr>
 
@@ -4723,7 +4727,7 @@ For latest updates join the chat on
 <hr>
 
 <h3 id="typedef-potionid">typedef PotionId<a class="headerlink" href="#typedef-potionid" title="Permanent link">&para;</a></h3>
-<div class="language-C++ highlight"><pre><span></span><code><span id="__span-33-1"><a id="__codelineno-33-1" name="__codelineno-33-1" href="#__codelineno-33-1"></a><span class="k">using</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">PotionId</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">typedef</span><span class="w"> </span><span class="n">Identifier</span><span class="o">&lt;</span><span class="k">class</span><span class="w"> </span><span class="nc">PotionType</span><span class="o">&gt;</span><span class="p">;</span>
+<div class="language-C++ highlight"><pre><span></span><code><span id="__span-33-1"><a id="__codelineno-33-1" name="__codelineno-33-1" href="#__codelineno-33-1"></a><span class="k">using</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">PotionId</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">typedef</span><span class="w"> </span><span class="n">Identifier</span><span class="o">&lt;</span><span class="n">PotionType</span><span class="o">&gt;</span><span class="p">;</span>
 </span></code></pre></div>
 <hr>
 

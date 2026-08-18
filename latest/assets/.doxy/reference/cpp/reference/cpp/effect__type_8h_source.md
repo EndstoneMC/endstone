@@ -26,11 +26,12 @@
 
 #include <string_view>
 
-#include "endstone/identifier.h"
+#include "endstone/registry.h"
 
 namespace endstone {
-using EffectId = Identifier<class EffectType>;
-class EffectType {
+class EffectType;
+using EffectId = Identifier<EffectType>;
+class EffectType : public Registry<EffectType>::Type {
 public:
     static constexpr auto Speed = EffectId::minecraft("speed");
 

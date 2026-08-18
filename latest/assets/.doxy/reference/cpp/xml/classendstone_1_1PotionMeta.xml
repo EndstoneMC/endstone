@@ -1,0 +1,153 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.8" xml:lang="en-US">
+  <compounddef id="classendstone_1_1PotionMeta" kind="class" language="C++" prot="public" abstract="yes">
+    <compoundname>endstone::PotionMeta</compoundname>
+    <basecompoundref refid="classendstone_1_1ItemMeta" prot="public" virt="non-virtual">endstone::ItemMeta</basecompoundref>
+    <includes refid="potion__meta_8h" local="no">endstone/inventory/meta/potion_meta.h</includes>
+    <sectiondef kind="public-func">
+      <memberdef kind="function" id="classendstone_1_1PotionMeta_1a332aa5b0f04f82c4e32d747c6354ffca" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
+        <type><ref refid="classendstone_1_1Identifier" kindref="compound">bool</ref></type>
+        <definition>virtual bool endstone::PotionMeta::hasBasePotionType</definition>
+        <argsstring>() const =0</argsstring>
+        <name>hasBasePotionType</name>
+        <qualifiedname>endstone::PotionMeta::hasBasePotionType</qualifiedname>
+        <briefdescription>
+<para>Checks for the presence of a base potion type. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="return"><para>true if this has a base potion type </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/inventory/meta/potion_meta.h" line="36" column="19"/>
+      </memberdef>
+      <memberdef kind="function" id="classendstone_1_1PotionMeta_1a7771fad00eb2010e904bad487226bf6c" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
+        <type>std::optional&lt; <ref refid="classendstone_1_1Identifier" kindref="compound">PotionId</ref> &gt;</type>
+        <definition>virtual std::optional&lt; PotionId &gt; endstone::PotionMeta::getBasePotionType</definition>
+        <argsstring>() const =0</argsstring>
+        <name>getBasePotionType</name>
+        <qualifiedname>endstone::PotionMeta::getBasePotionType</qualifiedname>
+        <briefdescription>
+<para>Gets the base potion type of this potion. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="return"><para>the base potion type, or <computeroutput>std::nullopt</computeroutput> if none is set </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/inventory/meta/potion_meta.h" line="43" column="28"/>
+      </memberdef>
+      <memberdef kind="function" id="classendstone_1_1PotionMeta_1aba394b97c3bea789e204919be251f6ae" prot="public" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
+        <type><ref refid="classendstone_1_1Identifier" kindref="compound">void</ref></type>
+        <definition>virtual void endstone::PotionMeta::setBasePotionType</definition>
+        <argsstring>(std::optional&lt; PotionId &gt; type)=0</argsstring>
+        <name>setBasePotionType</name>
+        <qualifiedname>endstone::PotionMeta::setBasePotionType</qualifiedname>
+        <param>
+          <type>std::optional&lt; <ref refid="classendstone_1_1Identifier" kindref="compound">PotionId</ref> &gt;</type>
+          <declname>type</declname>
+        </param>
+        <briefdescription>
+<para>Sets the base potion type of this potion, or removes it when given <computeroutput>std::nullopt</computeroutput>. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>type</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>the base potion type to set </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/inventory/meta/potion_meta.h" line="50" column="18"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+<para>Represents the metadata for a potion item. </para>
+    </briefdescription>
+    <detaileddescription>
+<para>A potion carries a single base potion type, which determines both the effects it applies and the colour it is rendered with. </para>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="2">
+        <label>endstone::ItemMeta</label>
+        <link refid="classendstone_1_1ItemMeta"/>
+        <childnode refid="3" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="3">
+        <label>endstone::Object</label>
+        <link refid="classendstone_1_1Object"/>
+      </node>
+      <node id="1">
+        <label>endstone::PotionMeta</label>
+        <link refid="classendstone_1_1PotionMeta"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="2">
+        <label>endstone::ItemMeta</label>
+        <link refid="classendstone_1_1ItemMeta"/>
+        <childnode refid="3" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="3">
+        <label>endstone::Object</label>
+        <link refid="classendstone_1_1Object"/>
+      </node>
+      <node id="1">
+        <label>endstone::PotionMeta</label>
+        <link refid="classendstone_1_1PotionMeta"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+    </collaborationgraph>
+    <location file="include/endstone/inventory/meta/potion_meta.h" line="29" column="1" bodyfile="include/endstone/inventory/meta/potion_meta.h" bodystart="29" bodyend="51"/>
+    <listofallmembers>
+      <member refid="classendstone_1_1ItemMeta_1ac1ee49d00e1cdd56816e0e775bff4241" prot="public" virt="pure-virtual"><scope>endstone::PotionMeta</scope><name>addEnchant</name></member>
+      <member refid="classendstone_1_1Object_1a798b5128ce018bbbe8ca949ba78c3db1" prot="public" virt="non-virtual"><scope>endstone::PotionMeta</scope><name>as</name></member>
+      <member refid="classendstone_1_1Object_1ae0f38a62da4c186fce272145e2590cc1" prot="public" virt="non-virtual"><scope>endstone::PotionMeta</scope><name>as</name></member>
+      <member refid="classendstone_1_1ItemMeta_1a6e2422771cf3c695b96dfbf279e17b4d" prot="public" virt="pure-virtual"><scope>endstone::PotionMeta</scope><name>clone</name></member>
+      <member refid="classendstone_1_1PotionMeta_1a7771fad00eb2010e904bad487226bf6c" prot="public" virt="pure-virtual"><scope>endstone::PotionMeta</scope><name>getBasePotionType</name></member>
+      <member refid="classendstone_1_1Object_1aaaeb27e8e442e5adb772ae0d1af1c33f" prot="public" virt="pure-virtual"><scope>endstone::PotionMeta</scope><name>getClassTypeId</name></member>
+      <member refid="classendstone_1_1ItemMeta_1a3892649cd822bf85b603d6a2b64b7ebd" prot="public" virt="pure-virtual"><scope>endstone::PotionMeta</scope><name>getDamage</name></member>
+      <member refid="classendstone_1_1ItemMeta_1a612f7b82c6ece41678ed8881acab96ee" prot="public" virt="pure-virtual"><scope>endstone::PotionMeta</scope><name>getDisplayName</name></member>
+      <member refid="classendstone_1_1ItemMeta_1a4ada54133ca59faa19c55d38b3be845f" prot="public" virt="pure-virtual"><scope>endstone::PotionMeta</scope><name>getEnchantLevel</name></member>
+      <member refid="classendstone_1_1ItemMeta_1afe5fbc4ed421b33e455d1e2e679d76e5" prot="public" virt="pure-virtual"><scope>endstone::PotionMeta</scope><name>getEnchants</name></member>
+      <member refid="classendstone_1_1ItemMeta_1aa9ac1cb2bb1fb71ff465001603b3cddf" prot="public" virt="pure-virtual"><scope>endstone::PotionMeta</scope><name>getExtras</name></member>
+      <member refid="classendstone_1_1ItemMeta_1a170ca4e3a87a7a590ba03019129793d1" prot="public" virt="pure-virtual"><scope>endstone::PotionMeta</scope><name>getLore</name></member>
+      <member refid="classendstone_1_1ItemMeta_1ad8d3243a6a5621568ef2f4ce505c42d7" prot="public" virt="pure-virtual"><scope>endstone::PotionMeta</scope><name>getRepairCost</name></member>
+      <member refid="classendstone_1_1PotionMeta_1a332aa5b0f04f82c4e32d747c6354ffca" prot="public" virt="pure-virtual"><scope>endstone::PotionMeta</scope><name>hasBasePotionType</name></member>
+      <member refid="classendstone_1_1ItemMeta_1af5939a3ac6202136120dcab179c8e9d6" prot="public" virt="pure-virtual"><scope>endstone::PotionMeta</scope><name>hasConflictingEnchant</name></member>
+      <member refid="classendstone_1_1ItemMeta_1ae2ded35522da3ad4a77ca127cd78d938" prot="public" virt="pure-virtual"><scope>endstone::PotionMeta</scope><name>hasDamage</name></member>
+      <member refid="classendstone_1_1ItemMeta_1a0a8bf5690f51d5e1438308d1858a1df4" prot="public" virt="pure-virtual"><scope>endstone::PotionMeta</scope><name>hasDisplayName</name></member>
+      <member refid="classendstone_1_1ItemMeta_1ade351771a140fed5f755067c9fa8d6e3" prot="public" virt="pure-virtual"><scope>endstone::PotionMeta</scope><name>hasEnchant</name></member>
+      <member refid="classendstone_1_1ItemMeta_1ac43230ac05adb1a16d1d6d60049dc010" prot="public" virt="pure-virtual"><scope>endstone::PotionMeta</scope><name>hasEnchants</name></member>
+      <member refid="classendstone_1_1ItemMeta_1a52d6ef7084538f60809b6baff98afdfa" prot="public" virt="pure-virtual"><scope>endstone::PotionMeta</scope><name>hasLore</name></member>
+      <member refid="classendstone_1_1ItemMeta_1a90cfeecd88da173df9c5b06a731ec6ed" prot="public" virt="pure-virtual"><scope>endstone::PotionMeta</scope><name>hasRepairCost</name></member>
+      <member refid="classendstone_1_1Object_1ae8213ae15ad1b14e4631399c6b18960a" prot="public" virt="non-virtual"><scope>endstone::PotionMeta</scope><name>is</name></member>
+      <member refid="classendstone_1_1Object_1a20376536a5f64ef02b2569af132171d4" prot="public" virt="pure-virtual"><scope>endstone::PotionMeta</scope><name>isInstanceOf</name></member>
+      <member refid="classendstone_1_1ItemMeta_1a6b272eb7b84e7cdce4c161402d9531fe" prot="public" virt="pure-virtual"><scope>endstone::PotionMeta</scope><name>isUnbreakable</name></member>
+      <member refid="classendstone_1_1ItemMeta_1ad00a6e480dbda4f8e054f48cd318756f" prot="public" virt="pure-virtual"><scope>endstone::PotionMeta</scope><name>removeEnchant</name></member>
+      <member refid="classendstone_1_1ItemMeta_1ada041111e07c6434bc9ac04a0b82cd61" prot="public" virt="pure-virtual"><scope>endstone::PotionMeta</scope><name>removeEnchants</name></member>
+      <member refid="classendstone_1_1PotionMeta_1aba394b97c3bea789e204919be251f6ae" prot="public" virt="pure-virtual"><scope>endstone::PotionMeta</scope><name>setBasePotionType</name></member>
+      <member refid="classendstone_1_1ItemMeta_1a65cb98d0b4ad3842775aeea2fb7900cc" prot="public" virt="pure-virtual"><scope>endstone::PotionMeta</scope><name>setDamage</name></member>
+      <member refid="classendstone_1_1ItemMeta_1a282788eea1a8f607e7fcf4cbc181951f" prot="public" virt="pure-virtual"><scope>endstone::PotionMeta</scope><name>setDisplayName</name></member>
+      <member refid="classendstone_1_1ItemMeta_1ae2d1ff3f93a5fe805dd0a74bbcfaf028" prot="public" virt="pure-virtual"><scope>endstone::PotionMeta</scope><name>setLore</name></member>
+      <member refid="classendstone_1_1ItemMeta_1a5377c0928c991a4e9ea1294b1f38bc1d" prot="public" virt="pure-virtual"><scope>endstone::PotionMeta</scope><name>setRepairCost</name></member>
+      <member refid="classendstone_1_1ItemMeta_1a4cd10bea89892329e54fec6ffc67a137" prot="public" virt="pure-virtual"><scope>endstone::PotionMeta</scope><name>setUnbreakable</name></member>
+      <member refid="classendstone_1_1Object_1adfddc886af4b1d0e09ddac7d0391b4d2" prot="public" virt="virtual"><scope>endstone::PotionMeta</scope><name>~Object</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

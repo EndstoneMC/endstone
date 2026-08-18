@@ -781,6 +781,10 @@
          <lastmod>2026-08-18</lastmod>
     </url>
     <url>
+         <loc>https://endstone.dev/latest/reference/cpp/classendstone_1_1PotionMeta/</loc>
+         <lastmod>2026-08-18</lastmod>
+    </url>
+    <url>
          <loc>https://endstone.dev/latest/reference/cpp/classendstone_1_1PotionType/</loc>
          <lastmod>2026-08-18</lastmod>
     </url>
@@ -2298,6 +2302,14 @@
     </url>
     <url>
          <loc>https://endstone.dev/latest/reference/cpp/map__meta_8h_source/</loc>
+         <lastmod>2026-08-18</lastmod>
+    </url>
+    <url>
+         <loc>https://endstone.dev/latest/reference/cpp/potion__meta_8h/</loc>
+         <lastmod>2026-08-18</lastmod>
+    </url>
+    <url>
+         <loc>https://endstone.dev/latest/reference/cpp/potion__meta_8h_source/</loc>
          <lastmod>2026-08-18</lastmod>
     </url>
     <url>
