@@ -52,16 +52,16 @@ _Represents an effect that can be added to a_ [_**Mob**_](classendstone_1_1Mob.m
 
 | Type | Name |
 | ---: | :--- |
-|  [**constexpr**](classendstone_1_1Identifier.md) | [**Effect**](#function-effect) ([**EffectId**](classendstone_1_1Identifier.md) type, std::optional&lt; [**int**](classendstone_1_1Identifier.md) &gt; duration, [**int**](classendstone_1_1Identifier.md) amplifier, [**bool**](classendstone_1_1Identifier.md) ambient=[**false**](classendstone_1_1Identifier.md), [**bool**](classendstone_1_1Identifier.md) particles=[**true**](classendstone_1_1Identifier.md), [**bool**](classendstone_1_1Identifier.md) icon=[**true**](classendstone_1_1Identifier.md)) <br>_Creates an effect._  |
+|   | [**Effect**](#function-effect) ([**EffectId**](classendstone_1_1Identifier.md) type, std::optional&lt; [**int**](classendstone_1_1Identifier.md) &gt; duration, [**int**](classendstone_1_1Identifier.md) amplifier, [**bool**](classendstone_1_1Identifier.md) ambient=[**false**](classendstone_1_1Identifier.md), [**bool**](classendstone_1_1Identifier.md) particles=[**true**](classendstone_1_1Identifier.md), [**bool**](classendstone_1_1Identifier.md) icon=[**true**](classendstone_1_1Identifier.md)) <br>_Creates an effect._  |
 |  [**constexpr**](classendstone_1_1Identifier.md) [**int**](classendstone_1_1Identifier.md) | [**getAmplifier**](#function-getamplifier) () noexcept const<br>_Gets the amplifier of this effect._  |
 |  [**constexpr**](classendstone_1_1Identifier.md) std::optional&lt; [**int**](classendstone_1_1Identifier.md) &gt; | [**getDuration**](#function-getduration) () noexcept const<br>_Gets the duration of this effect, in ticks._  |
-|  [**constexpr**](classendstone_1_1Identifier.md) [**EffectId**](classendstone_1_1Identifier.md) | [**getType**](#function-gettype) () noexcept const<br>_Gets the type of this effect._  |
+|  [**EffectId**](classendstone_1_1Identifier.md) | [**getType**](#function-gettype) () noexcept const<br>_Gets the type of this effect._  |
 |  [**constexpr**](classendstone_1_1Identifier.md) [**bool**](classendstone_1_1Identifier.md) | [**hasIcon**](#function-hasicon) () noexcept const<br>_Gets whether this effect has an icon._  |
 |  [**constexpr**](classendstone_1_1Identifier.md) [**bool**](classendstone_1_1Identifier.md) | [**hasParticles**](#function-hasparticles) () noexcept const<br>_Gets whether this effect has particles._  |
 |  [**constexpr**](classendstone_1_1Identifier.md) [**bool**](classendstone_1_1Identifier.md) | [**isAmbient**](#function-isambient) () noexcept const<br>_Makes the effect produce more, translucent, particles._  |
 |  [**constexpr**](classendstone_1_1Identifier.md) [**bool**](classendstone_1_1Identifier.md) | [**isInfinite**](#function-isinfinite) () noexcept const<br>_Returns whether this effect has an infinite duration._  |
-|  [**constexpr**](classendstone_1_1Identifier.md) [**bool**](classendstone_1_1Identifier.md) | [**operator!=**](#function-operator) ([**const**](classendstone_1_1Identifier.md) [**Effect**](classendstone_1_1Effect.md) & other) noexcept const<br> |
-|  [**constexpr**](classendstone_1_1Identifier.md) [**bool**](classendstone_1_1Identifier.md) | [**operator==**](#function-operator_1) ([**const**](classendstone_1_1Identifier.md) [**Effect**](classendstone_1_1Effect.md) & other) noexcept const<br> |
+|  [**bool**](classendstone_1_1Identifier.md) | [**operator!=**](#function-operator) ([**const**](classendstone_1_1Identifier.md) [**Effect**](classendstone_1_1Effect.md) & other) noexcept const<br> |
+|  [**bool**](classendstone_1_1Identifier.md) | [**operator==**](#function-operator_1) ([**const**](classendstone_1_1Identifier.md) [**Effect**](classendstone_1_1Effect.md) & other) noexcept const<br> |
 
 
 
@@ -106,7 +106,7 @@ An effect is an immutable description of an effect type together with a duration
 
 _Creates an effect._ 
 ```C++
-inline constexpr endstone::Effect::Effect (
+inline endstone::Effect::Effect (
     EffectId type,
     std::optional< int > duration,
     int amplifier,
@@ -196,7 +196,7 @@ the duration in ticks, or std::nullopt if this effect is infinite
 
 _Gets the type of this effect._ 
 ```C++
-inline constexpr  EffectId endstone::Effect::getType () noexcept const
+inline EffectId endstone::Effect::getType () noexcept const
 ```
 
 
@@ -323,7 +323,7 @@ whether this effect is infinite
 ### function operator!= 
 
 ```C++
-inline constexpr  bool endstone::Effect::operator!= (
+inline bool endstone::Effect::operator!= (
     const  Effect & other
 ) noexcept const
 ```
@@ -338,7 +338,7 @@ inline constexpr  bool endstone::Effect::operator!= (
 ### function operator== 
 
 ```C++
-inline constexpr  bool endstone::Effect::operator== (
+inline bool endstone::Effect::operator== (
     const  Effect & other
 ) noexcept const
 ```

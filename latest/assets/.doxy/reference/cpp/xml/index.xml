@@ -867,16 +867,16 @@
     <member refid="classendstone_1_1Dropdown_1a370ff769dafb86ac4ed83ddef6e3b4b4" kind="function"><name>setDefaultIndex</name></member>
   </compound>
   <compound refid="classendstone_1_1Effect" kind="class"><name>endstone::Effect</name>
-    <member refid="classendstone_1_1Effect_1afc6cc0784a5191143e1e7d6d8cbc7405" kind="variable"><name>type_</name></member>
+    <member refid="classendstone_1_1Effect_1a248d4ade9c6f74da3427df7152bd1ca4" kind="variable"><name>type_</name></member>
     <member refid="classendstone_1_1Effect_1adf17cad27f9cb4282fa32acc217142ed" kind="variable"><name>duration_</name></member>
     <member refid="classendstone_1_1Effect_1a165d8cc836879054846845673b8c85ca" kind="variable"><name>amplifier_</name></member>
     <member refid="classendstone_1_1Effect_1ae13ff245456a118db0400735cf71e93f" kind="variable"><name>ambient_</name></member>
     <member refid="classendstone_1_1Effect_1a4471d33b9eac9cb09b25c4cddd756f21" kind="variable"><name>particles_</name></member>
     <member refid="classendstone_1_1Effect_1a0d259ad579a79056b7689a95897a590d" kind="variable"><name>icon_</name></member>
-    <member refid="classendstone_1_1Effect_1a7f5f24c0ebbe1c6338156454485c6f3e" kind="function"><name>Effect</name></member>
-    <member refid="classendstone_1_1Effect_1a117cee9fbf59f4dbd6b77ef7b28abf83" kind="function"><name>operator==</name></member>
-    <member refid="classendstone_1_1Effect_1aef0742af66eb674b3483db3c238af655" kind="function"><name>operator!=</name></member>
-    <member refid="classendstone_1_1Effect_1a5855ab257f20b70e387e2dcc14bb206c" kind="function"><name>getType</name></member>
+    <member refid="classendstone_1_1Effect_1a37c748fa32aea161a4f7ea21764a030b" kind="function"><name>Effect</name></member>
+    <member refid="classendstone_1_1Effect_1afd7c59342d74accf5d6fe73887625f9f" kind="function"><name>operator==</name></member>
+    <member refid="classendstone_1_1Effect_1af978e59cdd09eb34e90aeda45df5e5a3" kind="function"><name>operator!=</name></member>
+    <member refid="classendstone_1_1Effect_1a89aeb81ce2a5aad1a2b90c8bb8b392a7" kind="function"><name>getType</name></member>
     <member refid="classendstone_1_1Effect_1a003813fb5cbb2ba724f92b69cbfce4a6" kind="function"><name>getDuration</name></member>
     <member refid="classendstone_1_1Effect_1a928e3a7e3cf0e5bfaa93a7e2ef69bbf2" kind="function"><name>isInfinite</name></member>
     <member refid="classendstone_1_1Effect_1a91ce745e26d2562e5772584d0503c9ae" kind="function"><name>getAmplifier</name></member>

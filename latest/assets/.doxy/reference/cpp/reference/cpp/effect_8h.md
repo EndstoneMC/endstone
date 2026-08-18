@@ -11,6 +11,7 @@
 
 
 * `#include <optional>`
+* `#include <string>`
 * `#include "endstone/potion/effect_type.h"`
 
 
