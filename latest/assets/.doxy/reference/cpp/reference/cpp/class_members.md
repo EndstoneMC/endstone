@@ -1216,6 +1216,7 @@
 * **Squid** ([**endstone::ActorType**](classendstone_1_1ActorType.md))
 * **Stray** ([**endstone::ActorType**](classendstone_1_1ActorType.md))
 * **Strider** ([**endstone::ActorType**](classendstone_1_1ActorType.md))
+* **SulfurCube** ([**endstone::ActorType**](classendstone_1_1ActorType.md))
 * **setBaseValue** ([**endstone::AttributeInstance**](classendstone_1_1AttributeInstance.md))
 * **setMaxValue** ([**endstone::AttributeInstance**](classendstone_1_1AttributeInstance.md))
 * **setMinValue** ([**endstone::AttributeInstance**](classendstone_1_1AttributeInstance.md))

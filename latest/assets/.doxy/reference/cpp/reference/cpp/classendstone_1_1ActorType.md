@@ -156,6 +156,7 @@ See [endstone::Registry::Type](classendstone_1_1Registry_1_1Type.md)
 |  [**constexpr**](classendstone_1_1Identifier.md) [**auto**](classendstone_1_1Identifier.md) | [**Squid**](#variable-squid)   = `[**ActorTypeId::minecraft**](classendstone_1_1Identifier.md#function-minecraft)("squid")`<br> |
 |  [**constexpr**](classendstone_1_1Identifier.md) [**auto**](classendstone_1_1Identifier.md) | [**Stray**](#variable-stray)   = `[**ActorTypeId::minecraft**](classendstone_1_1Identifier.md#function-minecraft)("stray")`<br> |
 |  [**constexpr**](classendstone_1_1Identifier.md) [**auto**](classendstone_1_1Identifier.md) | [**Strider**](#variable-strider)   = `[**ActorTypeId::minecraft**](classendstone_1_1Identifier.md#function-minecraft)("strider")`<br> |
+|  [**constexpr**](classendstone_1_1Identifier.md) [**auto**](classendstone_1_1Identifier.md) | [**SulfurCube**](#variable-sulfurcube)   = `[**ActorTypeId::minecraft**](classendstone_1_1Identifier.md#function-minecraft)("sulfur\_cube")`<br> |
 |  [**constexpr**](classendstone_1_1Identifier.md) [**auto**](classendstone_1_1Identifier.md) | [**Tadpole**](#variable-tadpole)   = `[**ActorTypeId::minecraft**](classendstone_1_1Identifier.md#function-minecraft)("tadpole")`<br> |
 |  [**constexpr**](classendstone_1_1Identifier.md) [**auto**](classendstone_1_1Identifier.md) | [**ThrownTrident**](#variable-throwntrident)   = `[**ActorTypeId::minecraft**](classendstone_1_1Identifier.md#function-minecraft)("thrown\_trident")`<br> |
 |  [**constexpr**](classendstone_1_1Identifier.md) [**auto**](classendstone_1_1Identifier.md) | [**Tnt**](#variable-tnt)   = `[**ActorTypeId::minecraft**](classendstone_1_1Identifier.md#function-minecraft)("tnt")`<br> |
@@ -1652,6 +1653,19 @@ constexpr auto endstone::ActorType::Stray;
 
 ```C++
 constexpr auto endstone::ActorType::Strider;
+```
+
+
+
+
+<hr>
+
+
+
+### variable SulfurCube 
+
+```C++
+constexpr auto endstone::ActorType::SulfurCube;
 ```
 
 

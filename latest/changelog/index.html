@@ -5529,6 +5529,7 @@ and this project adheres to <a href="https://semver.org/spec/v2.0.0.html">Semant
 <li>Added <code>/restart</code> command (console-only) that gracefully restarts the server without manually relaunching.</li>
 <li>Added support for custom Python events with optional cancellation.</li>
 <li>Added <code>ActorType</code> to the registry API.</li>
+<li>Added the missing <code>ActorType.SULFUR_CUBE</code> constant. The sulfur cube was in the actor type registry, so it was reachable by id, but the class did not name it.</li>
 <li>Added an attribute API: <code>Mob.get_attribute()</code>, <code>Mob.has_attribute()</code>, and <code>Mob.attributes</code> expose a living entity's attributes (health, movement speed, attack damage, etc.). Each <code>AttributeInstance</code> reports its current, base, minimum, and maximum value, and lets you add or remove <code>AttributeModifier</code>s at runtime.</li>
 <li>Added the <code>endstone.Identifier</code> type for namespaced ids: <code>dim.id.namespace == "minecraft"</code>, <code>dim.id.key == "overworld"</code>, and type checkers can now tell <code>Identifier[Dimension]</code> apart from <code>Identifier[ActorType]</code>. Plain strings are still accepted where an <code>Identifier</code> is required (e.g. <code>level.get_dimension("overworld")</code>).</li>
 <li>Added <code>BlockData.translation_key</code> for retrieving the translation key of a block.</li>
@@ -5594,6 +5595,8 @@ and this project adheres to <a href="https://semver.org/spec/v2.0.0.html">Semant
 <li>Fixed the effect API being unusable from Python. An <code>Effect</code> did not keep its own copy of the effect type, so <code>Effect.type</code> and <code>repr()</code> gave back corrupt text, and <code>Mob.add_effect()</code> / <code>Mob.remove_effect()</code> rejected a valid effect as an unknown type.</li>
 <li>Fixed <code>ServerLoadEvent</code> in Python. It was missing its <code>ServerEvent</code> base, so <code>isinstance(event, ServerEvent)</code> was <code>False</code>, and <code>LoadType.RELOAD</code> was never exposed even though the server fires it on <code>/reload</code>, leaving a listener reading an unmapped value.</li>
 <li>Fixed <code>BlockType.AIR</code> and <code>ItemType.AIR</code> raising <code>AttributeError</code> in Python. Both are documented as the way to name the air block and item, but neither constant was bound.</li>
+<li>Fixed <code>BookMeta.generation</code> losing <code>BookMetaGeneration.ORIGINAL</code>. Setting a written book's generation to <code>ORIGINAL</code> and reading it back gave <code>None</code>, because the round trip mistook the stored value <code>0</code> for an absent tag. The other three generations were unaffected.</li>
+<li>Fixed <code>BlockType.translation_key</code> returning a key that no language file resolves. It gave the block's base description id, such as <code>tile.stone.stone</code>, where the key clients actually translate is <code>tile.stone.stone.name</code>. It now agrees with <code>BlockData.translation_key</code>.</li>
 </ul>
 <h2 id="0119-2026-08-17"><a href="https://github.com/EndstoneMC/endstone/compare/v0.11.8...v0.11.9">0.11.9</a> - 2026-08-17<a class="headerlink" href="#0119-2026-08-17" title="Permanent link">&para;</a></h2>
 <h3 id="added_1">Added<a class="headerlink" href="#added_1" title="Permanent link">&para;</a></h3>

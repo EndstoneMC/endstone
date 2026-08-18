@@ -186,6 +186,7 @@
     <member refid="classendstone_1_1ActorType_1a04408c84bd3875ef4bd256710456c579" kind="variable"><name>Slime</name></member>
     <member refid="classendstone_1_1ActorType_1ac26bb49e22609d4f73eb80bd8a3cb1f9" kind="variable"><name>Spider</name></member>
     <member refid="classendstone_1_1ActorType_1ad1d271f92627b922e3394b54c2bcb239" kind="variable"><name>Stray</name></member>
+    <member refid="classendstone_1_1ActorType_1a7f16deb551d061fcba3fe4dd452cc53b" kind="variable"><name>SulfurCube</name></member>
     <member refid="classendstone_1_1ActorType_1acefb1e90f94c9a8beed6d91bf252eb61" kind="variable"><name>Vex</name></member>
     <member refid="classendstone_1_1ActorType_1ab61a995e9fbe281c5dfcf2df7d514d7c" kind="variable"><name>Vindicator</name></member>
     <member refid="classendstone_1_1ActorType_1aea159eb50cbdda697192cdffff841c6e" kind="variable"><name>Warden</name></member>

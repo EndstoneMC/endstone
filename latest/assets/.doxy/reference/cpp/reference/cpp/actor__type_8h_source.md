@@ -109,6 +109,7 @@ public:
     static constexpr auto Slime = ActorTypeId::minecraft("slime");
     static constexpr auto Spider = ActorTypeId::minecraft("spider");
     static constexpr auto Stray = ActorTypeId::minecraft("stray");
+    static constexpr auto SulfurCube = ActorTypeId::minecraft("sulfur_cube");
     static constexpr auto Vex = ActorTypeId::minecraft("vex");
     static constexpr auto Vindicator = ActorTypeId::minecraft("vindicator");
     static constexpr auto Warden = ActorTypeId::minecraft("warden");

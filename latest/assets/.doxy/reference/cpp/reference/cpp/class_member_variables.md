@@ -501,6 +501,7 @@
 * **Squid** ([**endstone::ActorType**](classendstone_1_1ActorType.md))
 * **Stray** ([**endstone::ActorType**](classendstone_1_1ActorType.md))
 * **Strider** ([**endstone::ActorType**](classendstone_1_1ActorType.md))
+* **SulfurCube** ([**endstone::ActorType**](classendstone_1_1ActorType.md))
 * **sender\_** ([**endstone::CommandSenderWrapper**](classendstone_1_1CommandSenderWrapper.md), [**endstone::ScriptMessageEvent**](classendstone_1_1ScriptMessageEvent.md), [**endstone::ServerCommandEvent**](classendstone_1_1ServerCommandEvent.md))
 * **Saturation** ([**endstone::EffectType**](classendstone_1_1EffectType.md))
 * **SlowFalling** ([**endstone::EffectType**](classendstone_1_1EffectType.md), [**endstone::PotionType**](classendstone_1_1PotionType.md))

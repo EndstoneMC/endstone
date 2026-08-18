@@ -1129,6 +1129,21 @@
         </inbodydescription>
         <location file="include/endstone/actor/actor_type.h" line="104" column="27" bodyfile="include/endstone/actor/actor_type.h" bodystart="104" bodyend="-1"/>
       </memberdef>
+      <memberdef kind="variable" id="classendstone_1_1ActorType_1a7f16deb551d061fcba3fe4dd452cc53b" prot="public" static="yes" constexpr="yes" mutable="no">
+        <type><ref refid="classendstone_1_1Identifier" kindref="compound">constexpr</ref> <ref refid="classendstone_1_1Identifier" kindref="compound">auto</ref></type>
+        <definition>constexpr auto endstone::ActorType::SulfurCube</definition>
+        <argsstring></argsstring>
+        <name>SulfurCube</name>
+        <qualifiedname>endstone::ActorType::SulfurCube</qualifiedname>
+        <initializer>= <ref refid="classendstone_1_1Identifier_1aced1fc62bee261849335ffd6bb7fa591" kindref="member">ActorTypeId::minecraft</ref>(&quot;sulfur_cube&quot;)</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/actor/actor_type.h" line="105" column="27" bodyfile="include/endstone/actor/actor_type.h" bodystart="105" bodyend="-1"/>
+      </memberdef>
       <memberdef kind="variable" id="classendstone_1_1ActorType_1acefb1e90f94c9a8beed6d91bf252eb61" prot="public" static="yes" constexpr="yes" mutable="no">
         <type><ref refid="classendstone_1_1Identifier" kindref="compound">constexpr</ref> <ref refid="classendstone_1_1Identifier" kindref="compound">auto</ref></type>
         <definition>constexpr auto endstone::ActorType::Vex</definition>
@@ -1142,7 +1157,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/actor/actor_type.h" line="105" column="27" bodyfile="include/endstone/actor/actor_type.h" bodystart="105" bodyend="-1"/>
+        <location file="include/endstone/actor/actor_type.h" line="106" column="27" bodyfile="include/endstone/actor/actor_type.h" bodystart="106" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="classendstone_1_1ActorType_1ab61a995e9fbe281c5dfcf2df7d514d7c" prot="public" static="yes" constexpr="yes" mutable="no">
         <type><ref refid="classendstone_1_1Identifier" kindref="compound">constexpr</ref> <ref refid="classendstone_1_1Identifier" kindref="compound">auto</ref></type>
@@ -1157,7 +1172,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/actor/actor_type.h" line="106" column="27" bodyfile="include/endstone/actor/actor_type.h" bodystart="106" bodyend="-1"/>
+        <location file="include/endstone/actor/actor_type.h" line="107" column="27" bodyfile="include/endstone/actor/actor_type.h" bodystart="107" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="classendstone_1_1ActorType_1aea159eb50cbdda697192cdffff841c6e" prot="public" static="yes" constexpr="yes" mutable="no">
         <type><ref refid="classendstone_1_1Identifier" kindref="compound">constexpr</ref> <ref refid="classendstone_1_1Identifier" kindref="compound">auto</ref></type>
@@ -1172,7 +1187,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/actor/actor_type.h" line="107" column="27" bodyfile="include/endstone/actor/actor_type.h" bodystart="107" bodyend="-1"/>
+        <location file="include/endstone/actor/actor_type.h" line="108" column="27" bodyfile="include/endstone/actor/actor_type.h" bodystart="108" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="classendstone_1_1ActorType_1a9b700d0bb2e6647e1157b1a1bfbcaf48" prot="public" static="yes" constexpr="yes" mutable="no">
         <type><ref refid="classendstone_1_1Identifier" kindref="compound">constexpr</ref> <ref refid="classendstone_1_1Identifier" kindref="compound">auto</ref></type>
@@ -1187,7 +1202,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/actor/actor_type.h" line="108" column="27" bodyfile="include/endstone/actor/actor_type.h" bodystart="108" bodyend="-1"/>
+        <location file="include/endstone/actor/actor_type.h" line="109" column="27" bodyfile="include/endstone/actor/actor_type.h" bodystart="109" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="classendstone_1_1ActorType_1a20490c6c685d2c08599349186742a7ca" prot="public" static="yes" constexpr="yes" mutable="no">
         <type><ref refid="classendstone_1_1Identifier" kindref="compound">constexpr</ref> <ref refid="classendstone_1_1Identifier" kindref="compound">auto</ref></type>
@@ -1202,7 +1217,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/actor/actor_type.h" line="109" column="27" bodyfile="include/endstone/actor/actor_type.h" bodystart="109" bodyend="-1"/>
+        <location file="include/endstone/actor/actor_type.h" line="110" column="27" bodyfile="include/endstone/actor/actor_type.h" bodystart="110" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="classendstone_1_1ActorType_1aa0ab628de6861c91a938b97ece5c3df8" prot="public" static="yes" constexpr="yes" mutable="no">
         <type><ref refid="classendstone_1_1Identifier" kindref="compound">constexpr</ref> <ref refid="classendstone_1_1Identifier" kindref="compound">auto</ref></type>
@@ -1217,7 +1232,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/actor/actor_type.h" line="110" column="27" bodyfile="include/endstone/actor/actor_type.h" bodystart="110" bodyend="-1"/>
+        <location file="include/endstone/actor/actor_type.h" line="111" column="27" bodyfile="include/endstone/actor/actor_type.h" bodystart="111" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="classendstone_1_1ActorType_1a98786096e7ce179f49c4bffb8b526fa1" prot="public" static="yes" constexpr="yes" mutable="no">
         <type><ref refid="classendstone_1_1Identifier" kindref="compound">constexpr</ref> <ref refid="classendstone_1_1Identifier" kindref="compound">auto</ref></type>
@@ -1232,7 +1247,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/actor/actor_type.h" line="111" column="27" bodyfile="include/endstone/actor/actor_type.h" bodystart="111" bodyend="-1"/>
+        <location file="include/endstone/actor/actor_type.h" line="112" column="27" bodyfile="include/endstone/actor/actor_type.h" bodystart="112" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="classendstone_1_1ActorType_1afbb02668f2e5f806d9cb092de72a01d3" prot="public" static="yes" constexpr="yes" mutable="no">
         <type><ref refid="classendstone_1_1Identifier" kindref="compound">constexpr</ref> <ref refid="classendstone_1_1Identifier" kindref="compound">auto</ref></type>
@@ -1247,7 +1262,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/actor/actor_type.h" line="112" column="27" bodyfile="include/endstone/actor/actor_type.h" bodystart="112" bodyend="-1"/>
+        <location file="include/endstone/actor/actor_type.h" line="113" column="27" bodyfile="include/endstone/actor/actor_type.h" bodystart="113" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="classendstone_1_1ActorType_1a50333650e9f33ed3e71b00d03a8434d2" prot="public" static="yes" constexpr="yes" mutable="no">
         <type><ref refid="classendstone_1_1Identifier" kindref="compound">constexpr</ref> <ref refid="classendstone_1_1Identifier" kindref="compound">auto</ref></type>
@@ -1262,7 +1277,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/actor/actor_type.h" line="113" column="27" bodyfile="include/endstone/actor/actor_type.h" bodystart="113" bodyend="-1"/>
+        <location file="include/endstone/actor/actor_type.h" line="114" column="27" bodyfile="include/endstone/actor/actor_type.h" bodystart="114" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="classendstone_1_1ActorType_1a247ed61f99c456997006a040af8d56f8" prot="public" static="yes" constexpr="yes" mutable="no">
         <type><ref refid="classendstone_1_1Identifier" kindref="compound">constexpr</ref> <ref refid="classendstone_1_1Identifier" kindref="compound">auto</ref></type>
@@ -1277,7 +1292,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/actor/actor_type.h" line="114" column="27" bodyfile="include/endstone/actor/actor_type.h" bodystart="114" bodyend="-1"/>
+        <location file="include/endstone/actor/actor_type.h" line="115" column="27" bodyfile="include/endstone/actor/actor_type.h" bodystart="115" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="classendstone_1_1ActorType_1a393582c7b5d5ee4eea0272909a8e77ab" prot="public" static="yes" constexpr="yes" mutable="no">
         <type><ref refid="classendstone_1_1Identifier" kindref="compound">constexpr</ref> <ref refid="classendstone_1_1Identifier" kindref="compound">auto</ref></type>
@@ -1292,7 +1307,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/actor/actor_type.h" line="115" column="27" bodyfile="include/endstone/actor/actor_type.h" bodystart="115" bodyend="-1"/>
+        <location file="include/endstone/actor/actor_type.h" line="116" column="27" bodyfile="include/endstone/actor/actor_type.h" bodystart="116" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="classendstone_1_1ActorType_1a0cd587036af64d5409fd33497f38dbe8" prot="public" static="yes" constexpr="yes" mutable="no">
         <type><ref refid="classendstone_1_1Identifier" kindref="compound">constexpr</ref> <ref refid="classendstone_1_1Identifier" kindref="compound">auto</ref></type>
@@ -1307,7 +1322,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/actor/actor_type.h" line="116" column="27" bodyfile="include/endstone/actor/actor_type.h" bodystart="116" bodyend="-1"/>
+        <location file="include/endstone/actor/actor_type.h" line="117" column="27" bodyfile="include/endstone/actor/actor_type.h" bodystart="117" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="classendstone_1_1ActorType_1ad47ee939f9f146f98907e0c9371929e6" prot="public" static="yes" constexpr="yes" mutable="no">
         <type><ref refid="classendstone_1_1Identifier" kindref="compound">constexpr</ref> <ref refid="classendstone_1_1Identifier" kindref="compound">auto</ref></type>
@@ -1322,7 +1337,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/actor/actor_type.h" line="119" column="27" bodyfile="include/endstone/actor/actor_type.h" bodystart="119" bodyend="-1"/>
+        <location file="include/endstone/actor/actor_type.h" line="120" column="27" bodyfile="include/endstone/actor/actor_type.h" bodystart="120" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="classendstone_1_1ActorType_1afda72adcddc77f67ad56611f3efdc9be" prot="public" static="yes" constexpr="yes" mutable="no">
         <type><ref refid="classendstone_1_1Identifier" kindref="compound">constexpr</ref> <ref refid="classendstone_1_1Identifier" kindref="compound">auto</ref></type>
@@ -1337,7 +1352,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/actor/actor_type.h" line="120" column="27" bodyfile="include/endstone/actor/actor_type.h" bodystart="120" bodyend="-1"/>
+        <location file="include/endstone/actor/actor_type.h" line="121" column="27" bodyfile="include/endstone/actor/actor_type.h" bodystart="121" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="classendstone_1_1ActorType_1ac591b53b8f3aa18f307f00151dbf6372" prot="public" static="yes" constexpr="yes" mutable="no">
         <type><ref refid="classendstone_1_1Identifier" kindref="compound">constexpr</ref> <ref refid="classendstone_1_1Identifier" kindref="compound">auto</ref></type>
@@ -1352,7 +1367,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/actor/actor_type.h" line="123" column="27" bodyfile="include/endstone/actor/actor_type.h" bodystart="123" bodyend="-1"/>
+        <location file="include/endstone/actor/actor_type.h" line="124" column="27" bodyfile="include/endstone/actor/actor_type.h" bodystart="124" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="classendstone_1_1ActorType_1aca8e74b25834de29c30b89c9278b37e8" prot="public" static="yes" constexpr="yes" mutable="no">
         <type><ref refid="classendstone_1_1Identifier" kindref="compound">constexpr</ref> <ref refid="classendstone_1_1Identifier" kindref="compound">auto</ref></type>
@@ -1367,7 +1382,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/actor/actor_type.h" line="124" column="27" bodyfile="include/endstone/actor/actor_type.h" bodystart="124" bodyend="-1"/>
+        <location file="include/endstone/actor/actor_type.h" line="125" column="27" bodyfile="include/endstone/actor/actor_type.h" bodystart="125" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="classendstone_1_1ActorType_1a19a784206b48adff4ec6f749f3123380" prot="public" static="yes" constexpr="yes" mutable="no">
         <type><ref refid="classendstone_1_1Identifier" kindref="compound">constexpr</ref> <ref refid="classendstone_1_1Identifier" kindref="compound">auto</ref></type>
@@ -1382,7 +1397,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/actor/actor_type.h" line="125" column="27" bodyfile="include/endstone/actor/actor_type.h" bodystart="125" bodyend="-1"/>
+        <location file="include/endstone/actor/actor_type.h" line="126" column="27" bodyfile="include/endstone/actor/actor_type.h" bodystart="126" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="classendstone_1_1ActorType_1a2f10c38022c93d00c8e57b6eef85dc41" prot="public" static="yes" constexpr="yes" mutable="no">
         <type><ref refid="classendstone_1_1Identifier" kindref="compound">constexpr</ref> <ref refid="classendstone_1_1Identifier" kindref="compound">auto</ref></type>
@@ -1397,7 +1412,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/actor/actor_type.h" line="126" column="27" bodyfile="include/endstone/actor/actor_type.h" bodystart="126" bodyend="-1"/>
+        <location file="include/endstone/actor/actor_type.h" line="127" column="27" bodyfile="include/endstone/actor/actor_type.h" bodystart="127" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="classendstone_1_1ActorType_1a4876c40e25367f5ab339d8c49ea1f229" prot="public" static="yes" constexpr="yes" mutable="no">
         <type><ref refid="classendstone_1_1Identifier" kindref="compound">constexpr</ref> <ref refid="classendstone_1_1Identifier" kindref="compound">auto</ref></type>
@@ -1412,7 +1427,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/actor/actor_type.h" line="127" column="27" bodyfile="include/endstone/actor/actor_type.h" bodystart="127" bodyend="-1"/>
+        <location file="include/endstone/actor/actor_type.h" line="128" column="27" bodyfile="include/endstone/actor/actor_type.h" bodystart="128" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="classendstone_1_1ActorType_1a72e5654a3f22422c25e48ac68cf8707e" prot="public" static="yes" constexpr="yes" mutable="no">
         <type><ref refid="classendstone_1_1Identifier" kindref="compound">constexpr</ref> <ref refid="classendstone_1_1Identifier" kindref="compound">auto</ref></type>
@@ -1427,7 +1442,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/actor/actor_type.h" line="128" column="27" bodyfile="include/endstone/actor/actor_type.h" bodystart="128" bodyend="-1"/>
+        <location file="include/endstone/actor/actor_type.h" line="129" column="27" bodyfile="include/endstone/actor/actor_type.h" bodystart="129" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="classendstone_1_1ActorType_1ab0476b55e3c2290c70bd366d07875ed8" prot="public" static="yes" constexpr="yes" mutable="no">
         <type><ref refid="classendstone_1_1Identifier" kindref="compound">constexpr</ref> <ref refid="classendstone_1_1Identifier" kindref="compound">auto</ref></type>
@@ -1442,7 +1457,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/actor/actor_type.h" line="131" column="27" bodyfile="include/endstone/actor/actor_type.h" bodystart="131" bodyend="-1"/>
+        <location file="include/endstone/actor/actor_type.h" line="132" column="27" bodyfile="include/endstone/actor/actor_type.h" bodystart="132" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="classendstone_1_1ActorType_1a8affc1ae39b1622c5cdf033f416d4e7d" prot="public" static="yes" constexpr="yes" mutable="no">
         <type><ref refid="classendstone_1_1Identifier" kindref="compound">constexpr</ref> <ref refid="classendstone_1_1Identifier" kindref="compound">auto</ref></type>
@@ -1457,7 +1472,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/actor/actor_type.h" line="132" column="27" bodyfile="include/endstone/actor/actor_type.h" bodystart="132" bodyend="-1"/>
+        <location file="include/endstone/actor/actor_type.h" line="133" column="27" bodyfile="include/endstone/actor/actor_type.h" bodystart="133" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="classendstone_1_1ActorType_1a4627e211a50d63cf873edf3c539fd44e" prot="public" static="yes" constexpr="yes" mutable="no">
         <type><ref refid="classendstone_1_1Identifier" kindref="compound">constexpr</ref> <ref refid="classendstone_1_1Identifier" kindref="compound">auto</ref></type>
@@ -1472,7 +1487,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/actor/actor_type.h" line="133" column="27" bodyfile="include/endstone/actor/actor_type.h" bodystart="133" bodyend="-1"/>
+        <location file="include/endstone/actor/actor_type.h" line="134" column="27" bodyfile="include/endstone/actor/actor_type.h" bodystart="134" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="classendstone_1_1ActorType_1ad8b96a4f2a652b3432b31b4c17616a5e" prot="public" static="yes" constexpr="yes" mutable="no">
         <type><ref refid="classendstone_1_1Identifier" kindref="compound">constexpr</ref> <ref refid="classendstone_1_1Identifier" kindref="compound">auto</ref></type>
@@ -1487,7 +1502,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/actor/actor_type.h" line="134" column="27" bodyfile="include/endstone/actor/actor_type.h" bodystart="134" bodyend="-1"/>
+        <location file="include/endstone/actor/actor_type.h" line="135" column="27" bodyfile="include/endstone/actor/actor_type.h" bodystart="135" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="classendstone_1_1ActorType_1a23da6abda61da91c44681133eec4b3da" prot="public" static="yes" constexpr="yes" mutable="no">
         <type><ref refid="classendstone_1_1Identifier" kindref="compound">constexpr</ref> <ref refid="classendstone_1_1Identifier" kindref="compound">auto</ref></type>
@@ -1502,7 +1517,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/actor/actor_type.h" line="135" column="27" bodyfile="include/endstone/actor/actor_type.h" bodystart="135" bodyend="-1"/>
+        <location file="include/endstone/actor/actor_type.h" line="136" column="27" bodyfile="include/endstone/actor/actor_type.h" bodystart="136" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="classendstone_1_1ActorType_1a1287b2046026c78de565d8d756043180" prot="public" static="yes" constexpr="yes" mutable="no">
         <type><ref refid="classendstone_1_1Identifier" kindref="compound">constexpr</ref> <ref refid="classendstone_1_1Identifier" kindref="compound">auto</ref></type>
@@ -1517,7 +1532,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/actor/actor_type.h" line="136" column="27" bodyfile="include/endstone/actor/actor_type.h" bodystart="136" bodyend="-1"/>
+        <location file="include/endstone/actor/actor_type.h" line="137" column="27" bodyfile="include/endstone/actor/actor_type.h" bodystart="137" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="classendstone_1_1ActorType_1a70602ad894433fb59d6661ef6fa76d54" prot="public" static="yes" constexpr="yes" mutable="no">
         <type><ref refid="classendstone_1_1Identifier" kindref="compound">constexpr</ref> <ref refid="classendstone_1_1Identifier" kindref="compound">auto</ref></type>
@@ -1532,7 +1547,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/actor/actor_type.h" line="137" column="27" bodyfile="include/endstone/actor/actor_type.h" bodystart="137" bodyend="-1"/>
+        <location file="include/endstone/actor/actor_type.h" line="138" column="27" bodyfile="include/endstone/actor/actor_type.h" bodystart="138" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="classendstone_1_1ActorType_1ad0c47f1bd6a02278afba42ad37fc8e87" prot="public" static="yes" constexpr="yes" mutable="no">
         <type><ref refid="classendstone_1_1Identifier" kindref="compound">constexpr</ref> <ref refid="classendstone_1_1Identifier" kindref="compound">auto</ref></type>
@@ -1547,7 +1562,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/actor/actor_type.h" line="138" column="27" bodyfile="include/endstone/actor/actor_type.h" bodystart="138" bodyend="-1"/>
+        <location file="include/endstone/actor/actor_type.h" line="139" column="27" bodyfile="include/endstone/actor/actor_type.h" bodystart="139" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="classendstone_1_1ActorType_1a11c7f20858cf713055d137c6dbd8fdad" prot="public" static="yes" constexpr="yes" mutable="no">
         <type><ref refid="classendstone_1_1Identifier" kindref="compound">constexpr</ref> <ref refid="classendstone_1_1Identifier" kindref="compound">auto</ref></type>
@@ -1562,7 +1577,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/actor/actor_type.h" line="139" column="27" bodyfile="include/endstone/actor/actor_type.h" bodystart="139" bodyend="-1"/>
+        <location file="include/endstone/actor/actor_type.h" line="140" column="27" bodyfile="include/endstone/actor/actor_type.h" bodystart="140" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="classendstone_1_1ActorType_1a10312249776a7000b9644e0ebfdd1cce" prot="public" static="yes" constexpr="yes" mutable="no">
         <type><ref refid="classendstone_1_1Identifier" kindref="compound">constexpr</ref> <ref refid="classendstone_1_1Identifier" kindref="compound">auto</ref></type>
@@ -1577,7 +1592,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/actor/actor_type.h" line="140" column="27" bodyfile="include/endstone/actor/actor_type.h" bodystart="140" bodyend="-1"/>
+        <location file="include/endstone/actor/actor_type.h" line="141" column="27" bodyfile="include/endstone/actor/actor_type.h" bodystart="141" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="classendstone_1_1ActorType_1ace3af7d8d24722c9f2be2d5a1b4fd314" prot="public" static="yes" constexpr="yes" mutable="no">
         <type><ref refid="classendstone_1_1Identifier" kindref="compound">constexpr</ref> <ref refid="classendstone_1_1Identifier" kindref="compound">auto</ref></type>
@@ -1592,7 +1607,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/actor/actor_type.h" line="141" column="27" bodyfile="include/endstone/actor/actor_type.h" bodystart="141" bodyend="-1"/>
+        <location file="include/endstone/actor/actor_type.h" line="142" column="27" bodyfile="include/endstone/actor/actor_type.h" bodystart="142" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="classendstone_1_1ActorType_1a935a236ba8ad7343ba15cfbb29f745ed" prot="public" static="yes" constexpr="yes" mutable="no">
         <type><ref refid="classendstone_1_1Identifier" kindref="compound">constexpr</ref> <ref refid="classendstone_1_1Identifier" kindref="compound">auto</ref></type>
@@ -1607,7 +1622,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/actor/actor_type.h" line="142" column="27" bodyfile="include/endstone/actor/actor_type.h" bodystart="142" bodyend="-1"/>
+        <location file="include/endstone/actor/actor_type.h" line="143" column="27" bodyfile="include/endstone/actor/actor_type.h" bodystart="143" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="classendstone_1_1ActorType_1ad364c7deacfeda2bbaf1aa3f75da0666" prot="public" static="yes" constexpr="yes" mutable="no">
         <type><ref refid="classendstone_1_1Identifier" kindref="compound">constexpr</ref> <ref refid="classendstone_1_1Identifier" kindref="compound">auto</ref></type>
@@ -1622,7 +1637,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/actor/actor_type.h" line="143" column="27" bodyfile="include/endstone/actor/actor_type.h" bodystart="143" bodyend="-1"/>
+        <location file="include/endstone/actor/actor_type.h" line="144" column="27" bodyfile="include/endstone/actor/actor_type.h" bodystart="144" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="classendstone_1_1ActorType_1ab50b364796a6b0c43d76cfbdfa778b7b" prot="public" static="yes" constexpr="yes" mutable="no">
         <type><ref refid="classendstone_1_1Identifier" kindref="compound">constexpr</ref> <ref refid="classendstone_1_1Identifier" kindref="compound">auto</ref></type>
@@ -1637,7 +1652,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/actor/actor_type.h" line="144" column="27" bodyfile="include/endstone/actor/actor_type.h" bodystart="144" bodyend="-1"/>
+        <location file="include/endstone/actor/actor_type.h" line="145" column="27" bodyfile="include/endstone/actor/actor_type.h" bodystart="145" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="classendstone_1_1ActorType_1a554a8595e1026625ecbb3ba0c79cbd1b" prot="public" static="yes" constexpr="yes" mutable="no">
         <type><ref refid="classendstone_1_1Identifier" kindref="compound">constexpr</ref> <ref refid="classendstone_1_1Identifier" kindref="compound">auto</ref></type>
@@ -1652,7 +1667,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/actor/actor_type.h" line="145" column="27" bodyfile="include/endstone/actor/actor_type.h" bodystart="145" bodyend="-1"/>
+        <location file="include/endstone/actor/actor_type.h" line="146" column="27" bodyfile="include/endstone/actor/actor_type.h" bodystart="146" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="classendstone_1_1ActorType_1aa79cef5c7cdec1071225413cba40e4de" prot="public" static="yes" constexpr="yes" mutable="no">
         <type><ref refid="classendstone_1_1Identifier" kindref="compound">constexpr</ref> <ref refid="classendstone_1_1Identifier" kindref="compound">auto</ref></type>
@@ -1667,7 +1682,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/actor/actor_type.h" line="146" column="27" bodyfile="include/endstone/actor/actor_type.h" bodystart="146" bodyend="-1"/>
+        <location file="include/endstone/actor/actor_type.h" line="147" column="27" bodyfile="include/endstone/actor/actor_type.h" bodystart="147" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="classendstone_1_1ActorType_1a2f7b8c4fc99bbbe6bc95fdc0ca7589bd" prot="public" static="yes" constexpr="yes" mutable="no">
         <type><ref refid="classendstone_1_1Identifier" kindref="compound">constexpr</ref> <ref refid="classendstone_1_1Identifier" kindref="compound">auto</ref></type>
@@ -1682,7 +1697,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/actor/actor_type.h" line="147" column="27" bodyfile="include/endstone/actor/actor_type.h" bodystart="147" bodyend="-1"/>
+        <location file="include/endstone/actor/actor_type.h" line="148" column="27" bodyfile="include/endstone/actor/actor_type.h" bodystart="148" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="classendstone_1_1ActorType_1a516d10eb0838e59a13297d8f53bbb223" prot="public" static="yes" constexpr="yes" mutable="no">
         <type><ref refid="classendstone_1_1Identifier" kindref="compound">constexpr</ref> <ref refid="classendstone_1_1Identifier" kindref="compound">auto</ref></type>
@@ -1697,7 +1712,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/actor/actor_type.h" line="148" column="27" bodyfile="include/endstone/actor/actor_type.h" bodystart="148" bodyend="-1"/>
+        <location file="include/endstone/actor/actor_type.h" line="149" column="27" bodyfile="include/endstone/actor/actor_type.h" bodystart="149" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="classendstone_1_1ActorType_1ad5741e92431149036d54bbbd22448401" prot="public" static="yes" constexpr="yes" mutable="no">
         <type><ref refid="classendstone_1_1Identifier" kindref="compound">constexpr</ref> <ref refid="classendstone_1_1Identifier" kindref="compound">auto</ref></type>
@@ -1712,7 +1727,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/actor/actor_type.h" line="149" column="27" bodyfile="include/endstone/actor/actor_type.h" bodystart="149" bodyend="-1"/>
+        <location file="include/endstone/actor/actor_type.h" line="150" column="27" bodyfile="include/endstone/actor/actor_type.h" bodystart="150" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="classendstone_1_1ActorType_1ab3268edef5073d1f4694eabc2d9c24dd" prot="public" static="yes" constexpr="yes" mutable="no">
         <type><ref refid="classendstone_1_1Identifier" kindref="compound">constexpr</ref> <ref refid="classendstone_1_1Identifier" kindref="compound">auto</ref></type>
@@ -1727,7 +1742,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/actor/actor_type.h" line="150" column="27" bodyfile="include/endstone/actor/actor_type.h" bodystart="150" bodyend="-1"/>
+        <location file="include/endstone/actor/actor_type.h" line="151" column="27" bodyfile="include/endstone/actor/actor_type.h" bodystart="151" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="classendstone_1_1ActorType_1a1610d2f9e42c0ceab6882544461330b1" prot="public" static="yes" constexpr="yes" mutable="no">
         <type><ref refid="classendstone_1_1Identifier" kindref="compound">constexpr</ref> <ref refid="classendstone_1_1Identifier" kindref="compound">auto</ref></type>
@@ -1742,7 +1757,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/actor/actor_type.h" line="151" column="27" bodyfile="include/endstone/actor/actor_type.h" bodystart="151" bodyend="-1"/>
+        <location file="include/endstone/actor/actor_type.h" line="152" column="27" bodyfile="include/endstone/actor/actor_type.h" bodystart="152" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="classendstone_1_1ActorType_1a4e2c51d8436f098ace580c599b0e8b64" prot="public" static="yes" constexpr="yes" mutable="no">
         <type><ref refid="classendstone_1_1Identifier" kindref="compound">constexpr</ref> <ref refid="classendstone_1_1Identifier" kindref="compound">auto</ref></type>
@@ -1757,7 +1772,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/actor/actor_type.h" line="152" column="27" bodyfile="include/endstone/actor/actor_type.h" bodystart="152" bodyend="-1"/>
+        <location file="include/endstone/actor/actor_type.h" line="153" column="27" bodyfile="include/endstone/actor/actor_type.h" bodystart="153" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="classendstone_1_1ActorType_1abce42d61795eedea65fbb1092bd7aadd" prot="public" static="yes" constexpr="yes" mutable="no">
         <type><ref refid="classendstone_1_1Identifier" kindref="compound">constexpr</ref> <ref refid="classendstone_1_1Identifier" kindref="compound">auto</ref></type>
@@ -1772,7 +1787,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/actor/actor_type.h" line="153" column="27" bodyfile="include/endstone/actor/actor_type.h" bodystart="153" bodyend="-1"/>
+        <location file="include/endstone/actor/actor_type.h" line="154" column="27" bodyfile="include/endstone/actor/actor_type.h" bodystart="154" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="classendstone_1_1ActorType_1a159dfb932c0ed47a201d4e9a95b0773f" prot="public" static="yes" constexpr="yes" mutable="no">
         <type><ref refid="classendstone_1_1Identifier" kindref="compound">constexpr</ref> <ref refid="classendstone_1_1Identifier" kindref="compound">auto</ref></type>
@@ -1787,7 +1802,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/actor/actor_type.h" line="154" column="27" bodyfile="include/endstone/actor/actor_type.h" bodystart="154" bodyend="-1"/>
+        <location file="include/endstone/actor/actor_type.h" line="155" column="27" bodyfile="include/endstone/actor/actor_type.h" bodystart="155" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="classendstone_1_1ActorType_1a57f1d9729d329a774b8299a9ec63b6bf" prot="public" static="yes" constexpr="yes" mutable="no">
         <type><ref refid="classendstone_1_1Identifier" kindref="compound">constexpr</ref> <ref refid="classendstone_1_1Identifier" kindref="compound">auto</ref></type>
@@ -1802,7 +1817,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/actor/actor_type.h" line="155" column="27" bodyfile="include/endstone/actor/actor_type.h" bodystart="155" bodyend="-1"/>
+        <location file="include/endstone/actor/actor_type.h" line="156" column="27" bodyfile="include/endstone/actor/actor_type.h" bodystart="156" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="classendstone_1_1ActorType_1a89fdafdb64f8e2c21858fcb5c35a2140" prot="public" static="yes" constexpr="yes" mutable="no">
         <type><ref refid="classendstone_1_1Identifier" kindref="compound">constexpr</ref> <ref refid="classendstone_1_1Identifier" kindref="compound">auto</ref></type>
@@ -1817,7 +1832,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/actor/actor_type.h" line="156" column="27" bodyfile="include/endstone/actor/actor_type.h" bodystart="156" bodyend="-1"/>
+        <location file="include/endstone/actor/actor_type.h" line="157" column="27" bodyfile="include/endstone/actor/actor_type.h" bodystart="157" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="classendstone_1_1ActorType_1a9892815c9ad54c4164f363913a6d1f98" prot="public" static="yes" constexpr="yes" mutable="no">
         <type><ref refid="classendstone_1_1Identifier" kindref="compound">constexpr</ref> <ref refid="classendstone_1_1Identifier" kindref="compound">auto</ref></type>
@@ -1832,7 +1847,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/actor/actor_type.h" line="157" column="27" bodyfile="include/endstone/actor/actor_type.h" bodystart="157" bodyend="-1"/>
+        <location file="include/endstone/actor/actor_type.h" line="158" column="27" bodyfile="include/endstone/actor/actor_type.h" bodystart="158" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="classendstone_1_1ActorType_1aab585c42c10b550625792266d88d2f78" prot="public" static="yes" constexpr="yes" mutable="no">
         <type><ref refid="classendstone_1_1Identifier" kindref="compound">constexpr</ref> <ref refid="classendstone_1_1Identifier" kindref="compound">auto</ref></type>
@@ -1847,7 +1862,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/actor/actor_type.h" line="158" column="27" bodyfile="include/endstone/actor/actor_type.h" bodystart="158" bodyend="-1"/>
+        <location file="include/endstone/actor/actor_type.h" line="159" column="27" bodyfile="include/endstone/actor/actor_type.h" bodystart="159" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="classendstone_1_1ActorType_1a8ae376f6bfff8559af63411bcb6b00e6" prot="public" static="yes" constexpr="yes" mutable="no">
         <type><ref refid="classendstone_1_1Identifier" kindref="compound">constexpr</ref> <ref refid="classendstone_1_1Identifier" kindref="compound">auto</ref></type>
@@ -1862,7 +1877,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/actor/actor_type.h" line="159" column="27" bodyfile="include/endstone/actor/actor_type.h" bodystart="159" bodyend="-1"/>
+        <location file="include/endstone/actor/actor_type.h" line="160" column="27" bodyfile="include/endstone/actor/actor_type.h" bodystart="160" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="classendstone_1_1ActorType_1a6299ee66ddec207115545295e0c5e09a" prot="public" static="yes" constexpr="yes" mutable="no">
         <type><ref refid="classendstone_1_1Identifier" kindref="compound">constexpr</ref> <ref refid="classendstone_1_1Identifier" kindref="compound">auto</ref></type>
@@ -1877,7 +1892,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/actor/actor_type.h" line="160" column="27" bodyfile="include/endstone/actor/actor_type.h" bodystart="160" bodyend="-1"/>
+        <location file="include/endstone/actor/actor_type.h" line="161" column="27" bodyfile="include/endstone/actor/actor_type.h" bodystart="161" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="classendstone_1_1ActorType_1a29fffc6b602b66cf822deadcf195f80e" prot="public" static="yes" constexpr="yes" mutable="no">
         <type><ref refid="classendstone_1_1Identifier" kindref="compound">constexpr</ref> <ref refid="classendstone_1_1Identifier" kindref="compound">auto</ref></type>
@@ -1892,7 +1907,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/actor/actor_type.h" line="161" column="27" bodyfile="include/endstone/actor/actor_type.h" bodystart="161" bodyend="-1"/>
+        <location file="include/endstone/actor/actor_type.h" line="162" column="27" bodyfile="include/endstone/actor/actor_type.h" bodystart="162" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="classendstone_1_1ActorType_1a19759eb1d885d87d697f6bd737c7dc52" prot="public" static="yes" constexpr="yes" mutable="no">
         <type><ref refid="classendstone_1_1Identifier" kindref="compound">constexpr</ref> <ref refid="classendstone_1_1Identifier" kindref="compound">auto</ref></type>
@@ -1907,7 +1922,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/actor/actor_type.h" line="162" column="27" bodyfile="include/endstone/actor/actor_type.h" bodystart="162" bodyend="-1"/>
+        <location file="include/endstone/actor/actor_type.h" line="163" column="27" bodyfile="include/endstone/actor/actor_type.h" bodystart="163" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="classendstone_1_1ActorType_1a3892f79d93f31d2642e22b2de07332fe" prot="public" static="yes" constexpr="yes" mutable="no">
         <type><ref refid="classendstone_1_1Identifier" kindref="compound">constexpr</ref> <ref refid="classendstone_1_1Identifier" kindref="compound">auto</ref></type>
@@ -1922,7 +1937,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/actor/actor_type.h" line="163" column="27" bodyfile="include/endstone/actor/actor_type.h" bodystart="163" bodyend="-1"/>
+        <location file="include/endstone/actor/actor_type.h" line="164" column="27" bodyfile="include/endstone/actor/actor_type.h" bodystart="164" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="classendstone_1_1ActorType_1acc4b1f25e653c2eb1084b718f7d40494" prot="public" static="yes" constexpr="yes" mutable="no">
         <type><ref refid="classendstone_1_1Identifier" kindref="compound">constexpr</ref> <ref refid="classendstone_1_1Identifier" kindref="compound">auto</ref></type>
@@ -1937,7 +1952,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/actor/actor_type.h" line="164" column="27" bodyfile="include/endstone/actor/actor_type.h" bodystart="164" bodyend="-1"/>
+        <location file="include/endstone/actor/actor_type.h" line="165" column="27" bodyfile="include/endstone/actor/actor_type.h" bodystart="165" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="classendstone_1_1ActorType_1a09513b0939ac3746009ecaa11b742d2a" prot="public" static="yes" constexpr="yes" mutable="no">
         <type><ref refid="classendstone_1_1Identifier" kindref="compound">constexpr</ref> <ref refid="classendstone_1_1Identifier" kindref="compound">auto</ref></type>
@@ -1952,7 +1967,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/actor/actor_type.h" line="165" column="27" bodyfile="include/endstone/actor/actor_type.h" bodystart="165" bodyend="-1"/>
+        <location file="include/endstone/actor/actor_type.h" line="166" column="27" bodyfile="include/endstone/actor/actor_type.h" bodystart="166" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="classendstone_1_1ActorType_1a8e5eb621321dfd5ab91f4236ec18b4fe" prot="public" static="yes" constexpr="yes" mutable="no">
         <type><ref refid="classendstone_1_1Identifier" kindref="compound">constexpr</ref> <ref refid="classendstone_1_1Identifier" kindref="compound">auto</ref></type>
@@ -1967,7 +1982,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/actor/actor_type.h" line="166" column="27" bodyfile="include/endstone/actor/actor_type.h" bodystart="166" bodyend="-1"/>
+        <location file="include/endstone/actor/actor_type.h" line="167" column="27" bodyfile="include/endstone/actor/actor_type.h" bodystart="167" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="classendstone_1_1ActorType_1abb297841aaa189b3eb54b493e20eb82d" prot="public" static="yes" constexpr="yes" mutable="no">
         <type><ref refid="classendstone_1_1Identifier" kindref="compound">constexpr</ref> <ref refid="classendstone_1_1Identifier" kindref="compound">auto</ref></type>
@@ -1982,7 +1997,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/actor/actor_type.h" line="167" column="27" bodyfile="include/endstone/actor/actor_type.h" bodystart="167" bodyend="-1"/>
+        <location file="include/endstone/actor/actor_type.h" line="168" column="27" bodyfile="include/endstone/actor/actor_type.h" bodystart="168" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="classendstone_1_1ActorType_1ae025111327c7912ef303231d6f42cfbf" prot="public" static="yes" constexpr="yes" mutable="no">
         <type><ref refid="classendstone_1_1Identifier" kindref="compound">constexpr</ref> <ref refid="classendstone_1_1Identifier" kindref="compound">auto</ref></type>
@@ -1997,7 +2012,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/actor/actor_type.h" line="168" column="27" bodyfile="include/endstone/actor/actor_type.h" bodystart="168" bodyend="-1"/>
+        <location file="include/endstone/actor/actor_type.h" line="169" column="27" bodyfile="include/endstone/actor/actor_type.h" bodystart="169" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="classendstone_1_1ActorType_1a8170481e030b764965d2e3bcc812a7b9" prot="public" static="yes" constexpr="yes" mutable="no">
         <type><ref refid="classendstone_1_1Identifier" kindref="compound">constexpr</ref> <ref refid="classendstone_1_1Identifier" kindref="compound">auto</ref></type>
@@ -2012,7 +2027,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/actor/actor_type.h" line="169" column="27" bodyfile="include/endstone/actor/actor_type.h" bodystart="169" bodyend="-1"/>
+        <location file="include/endstone/actor/actor_type.h" line="170" column="27" bodyfile="include/endstone/actor/actor_type.h" bodystart="170" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="classendstone_1_1ActorType_1adc3e87e80db7f0ea2bddf087fe7cd622" prot="public" static="yes" constexpr="yes" mutable="no">
         <type><ref refid="classendstone_1_1Identifier" kindref="compound">constexpr</ref> <ref refid="classendstone_1_1Identifier" kindref="compound">auto</ref></type>
@@ -2027,7 +2042,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/actor/actor_type.h" line="170" column="27" bodyfile="include/endstone/actor/actor_type.h" bodystart="170" bodyend="-1"/>
+        <location file="include/endstone/actor/actor_type.h" line="171" column="27" bodyfile="include/endstone/actor/actor_type.h" bodystart="171" bodyend="-1"/>
       </memberdef>
     </sectiondef>
     <briefdescription>
@@ -2058,7 +2073,7 @@
         <link refid="classendstone_1_1Registry_1_1Type"/>
       </node>
     </collaborationgraph>
-    <location file="include/endstone/actor/actor_type.h" line="25" column="1" bodyfile="include/endstone/actor/actor_type.h" bodystart="25" bodyend="171"/>
+    <location file="include/endstone/actor/actor_type.h" line="25" column="1" bodyfile="include/endstone/actor/actor_type.h" bodystart="25" bodyend="172"/>
     <listofallmembers>
       <member refid="classendstone_1_1ActorType_1ac591b53b8f3aa18f307f00151dbf6372" prot="public" virt="non-virtual"><scope>endstone::ActorType</scope><name>Agent</name></member>
       <member refid="classendstone_1_1ActorType_1a2963964779e1b9af72af24df5863b010" prot="public" virt="non-virtual"><scope>endstone::ActorType</scope><name>Allay</name></member>
@@ -2174,6 +2189,7 @@
       <member refid="classendstone_1_1ActorType_1a0f48768187f5745f55d843967cee5f58" prot="public" virt="non-virtual"><scope>endstone::ActorType</scope><name>Squid</name></member>
       <member refid="classendstone_1_1ActorType_1ad1d271f92627b922e3394b54c2bcb239" prot="public" virt="non-virtual"><scope>endstone::ActorType</scope><name>Stray</name></member>
       <member refid="classendstone_1_1ActorType_1a1d6f5bbea51f7e366e19e7f2939d73e9" prot="public" virt="non-virtual"><scope>endstone::ActorType</scope><name>Strider</name></member>
+      <member refid="classendstone_1_1ActorType_1a7f16deb551d061fcba3fe4dd452cc53b" prot="public" virt="non-virtual"><scope>endstone::ActorType</scope><name>SulfurCube</name></member>
       <member refid="classendstone_1_1ActorType_1a29314390bae6d07a6ac93118d4d1d250" prot="public" virt="non-virtual"><scope>endstone::ActorType</scope><name>Tadpole</name></member>
       <member refid="classendstone_1_1ActorType_1a3892f79d93f31d2642e22b2de07332fe" prot="public" virt="non-virtual"><scope>endstone::ActorType</scope><name>ThrownTrident</name></member>
       <member refid="classendstone_1_1ActorType_1acc4b1f25e653c2eb1084b718f7d40494" prot="public" virt="non-virtual"><scope>endstone::ActorType</scope><name>Tnt</name></member>
