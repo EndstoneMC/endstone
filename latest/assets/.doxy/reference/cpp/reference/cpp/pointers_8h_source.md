@@ -43,10 +43,7 @@ public:
     using element_type = T;
 
     NotNull() = delete;
-    NotNull(std::shared_ptr<T> ptr) : ptr_(std::move(ptr))
-    {
-        Preconditions::checkArgument(ptr_ != nullptr, "pointer must not be null.");
-    }
+    NotNull(std::shared_ptr<T> ptr) : ptr_(std::move(ptr)) {}
     NotNull(const NotNull &other) = default;
     NotNull &operator=(const NotNull &other) = default;
 

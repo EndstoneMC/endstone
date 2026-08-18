@@ -700,6 +700,7 @@
     <member refid="classendstone_1_1CommandMap_1a71900d4f6d83ea0a21f9b2dbddcae322" kind="function"><name>operator=</name></member>
     <member refid="classendstone_1_1CommandMap_1abc727aa73950b67e85315d0fa0317c9d" kind="function"><name>~CommandMap</name></member>
     <member refid="classendstone_1_1CommandMap_1a91d00e6546b1a95138ab78603167230a" kind="function"><name>registerCommand</name></member>
+    <member refid="classendstone_1_1CommandMap_1abc7669756aaee8f97d466d76709077e4" kind="function"><name>registerCommand</name></member>
     <member refid="classendstone_1_1CommandMap_1a158e3036a4c7f22d7a07db174f47e00c" kind="function"><name>dispatch</name></member>
     <member refid="classendstone_1_1CommandMap_1a668e38f90aad2458f33563f84d87c95a" kind="function"><name>clearCommands</name></member>
     <member refid="classendstone_1_1CommandMap_1a790bc333705be10e312917854c704b52" kind="function"><name>getCommand</name></member>

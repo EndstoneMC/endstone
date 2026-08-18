@@ -1480,7 +1480,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/util/pointers.h" line="208" column="6" bodyfile="include/endstone/util/pointers.h" bodystart="208" bodyend="211"/>
+        <location file="include/endstone/util/pointers.h" line="205" column="6" bodyfile="include/endstone/util/pointers.h" bodystart="205" bodyend="208"/>
       </memberdef>
       <memberdef kind="function" id="namespaceendstone_1a3c5ee19f3b24cf5bec78edae534f6090" prot="public" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="non-virtual">
         <templateparamlist>
@@ -1510,7 +1510,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/util/pointers.h" line="214" column="6" bodyfile="include/endstone/util/pointers.h" bodystart="214" bodyend="217"/>
+        <location file="include/endstone/util/pointers.h" line="211" column="6" bodyfile="include/endstone/util/pointers.h" bodystart="211" bodyend="214"/>
       </memberdef>
       <memberdef kind="function" id="namespaceendstone_1ad7d0fbae7e1dd31cae1c84965a2f65a8" prot="public" static="no" const="no" explicit="no" inline="yes" noexcept="yes" virt="non-virtual">
         <type><ref refid="classendstone_1_1Identifier" kindref="compound">bool</ref></type>

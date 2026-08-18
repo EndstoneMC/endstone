@@ -2986,7 +2986,7 @@ For latest updates join the chat on
 <h1 id="class-endstonenotnull">Class endstone::NotNull<a class="headerlink" href="#class-endstonenotnull" title="Permanent link">&para;</a></h1>
 <p><strong>template &lt;<a href="../classendstone_1_1Identifier/"><strong>class</strong></a> <a href="../classendstone_1_1Identifier/"><strong>T</strong></a>&gt;</strong></p>
 <p><a href="../annotated/"><strong>ClassList</strong></a> <strong>&gt;</strong> <a href="../namespaceendstone/"><strong>endstone</strong></a> <strong>&gt;</strong> <a href="./"><strong>NotNull</strong></a></p>
-<p><em>A wrapper around a std::shared_ptr that is guaranteed never to be null.</em> <a href="#detailed-description">More...</a></p>
+<p><em>A wrapper around a std::shared_ptr that documents that it is never null.</em> <a href="#detailed-description">More...</a></p>
 <ul>
 <li><code>#include &lt;endstone/util/pointers.h&gt;</code></li>
 </ul>
@@ -3040,7 +3040,7 @@ For latest updates join the chat on
 </tr>
 <tr>
 <td style="text-align: right;"></td>
-<td style="text-align: left;"><a href="#function-notnull-67"><strong>NotNull</strong></a> (<a href="../classendstone_1_1Identifier/"><strong>const</strong></a> <a href="../classendstone_1_1Nullable/"><strong>Nullable</strong></a>&lt; <a href="../classendstone_1_1Identifier/"><strong>T</strong></a> &gt; &amp; other) <br><em>Narrowing conversion from a</em> <a href="../classendstone_1_1Nullable/"><em><strong>Nullable</strong></em></a> <em>, throwing if it holds no value.</em></td>
+<td style="text-align: left;"><a href="#function-notnull-67"><strong>NotNull</strong></a> (<a href="../classendstone_1_1Identifier/"><strong>const</strong></a> <a href="../classendstone_1_1Nullable/"><strong>Nullable</strong></a>&lt; <a href="../classendstone_1_1Identifier/"><strong>T</strong></a> &gt; &amp; other) <br><em>Narrowing conversion from a</em> <a href="../classendstone_1_1Nullable/"><em><strong>Nullable</strong></em></a> <em>.</em></td>
 </tr>
 <tr>
 <td style="text-align: right;"></td>
@@ -3105,7 +3105,7 @@ For latest updates join the chat on
 </tbody>
 </table>
 <h2 id="detailed-description">Detailed Description<a class="headerlink" href="#detailed-description" title="Permanent link">&para;</a></h2>
-<p>Construction from a null pointer throws, and the pointer-mutating operators are deleted. This mirrors <code>gsl::not_null&lt;std::shared_ptr&lt;T&gt;&gt;</code>, but throws <code>std::invalid_argument</code> on a null pointer (instead of a contract violation) so that a misbehaving plugin cannot crash the host. </p>
+<p>This carries the same weight as Java's <code>@ NotNull</code>: it states the contract and costs nothing at run time. Passing <code>nullptr</code> is a compile error, as are the pointer-mutating operators, but a null <code>shared_ptr</code> handed over at run time is not diagnosed. Validate at the boundary where the pointer enters the API, not here. </p>
 <h2 id="public-types-documentation">Public Types Documentation<a class="headerlink" href="#public-types-documentation" title="Permanent link">&para;</a></h2>
 <h3 id="typedef-element_type">typedef element_type<a class="headerlink" href="#typedef-element_type" title="Permanent link">&para;</a></h3>
 <div class="language-C++ highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="k">using</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">NotNull</span><span class="o">&lt;</span><span class="w"> </span><span class="n">T</span><span class="w"> </span><span class="o">&gt;::</span><span class="n">element_type</span><span class="w"> </span><span class="o">=</span><span class="w">  </span><span class="n">T</span><span class="p">;</span>
@@ -3157,7 +3157,7 @@ For latest updates join the chat on
 <hr>
 
 <h3 id="function-notnull-67">function NotNull [6/7]<a class="headerlink" href="#function-notnull-67" title="Permanent link">&para;</a></h3>
-<p><em>Narrowing conversion from a</em> <a href="../classendstone_1_1Nullable/"><em><strong>Nullable</strong></em></a> <em>, throwing if it holds no value.</em>
+<p><em>Narrowing conversion from a</em> <a href="../classendstone_1_1Nullable/"><em><strong>Nullable</strong></em></a> <em>.</em>
 <div class="language-C++ highlight"><pre><span></span><code><span id="__span-7-1"><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a><span class="n">endstone</span><span class="o">::</span><span class="n">NotNull</span><span class="o">::</span><span class="n">NotNull</span><span class="w"> </span><span class="p">(</span>
 </span><span id="__span-7-2"><a id="__codelineno-7-2" name="__codelineno-7-2" href="#__codelineno-7-2"></a><span class="w">    </span><span class="k">const</span><span class="w">  </span><span class="n">Nullable</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">T</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">other</span>
 </span><span id="__span-7-3"><a id="__codelineno-7-3" name="__codelineno-7-3" href="#__codelineno-7-3"></a><span class="p">)</span><span class="w"> </span>

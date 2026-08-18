@@ -60,7 +60,8 @@ _Represents a command map that manages all commands of the_ [_**Server**_](class
 | virtual [**Nullable**](classendstone_1_1Nullable.md)&lt; [**Command**](classendstone_1_1Command.md) &gt; | [**getCommand**](#function-getcommand) (std::string name) const = 0<br>_Gets the command registered to the specified name._  |
 |  [**CommandMap**](classendstone_1_1CommandMap.md) & | [**operator=**](#function-operator) ([**const**](classendstone_1_1Identifier.md) [**CommandMap**](classendstone_1_1CommandMap.md) &) = delete<br> |
 |  [**CommandMap**](classendstone_1_1CommandMap.md) & | [**operator=**](#function-operator_1) ([**CommandMap**](classendstone_1_1CommandMap.md) &&) = default<br> |
-| virtual [**bool**](classendstone_1_1Identifier.md) | [**registerCommand**](#function-registercommand) ([**NotNull**](classendstone_1_1NotNull.md)&lt; [**Command**](classendstone_1_1Command.md) &gt; command) = 0<br>_Registers a command._  |
+| virtual [**bool**](classendstone_1_1Identifier.md) | [**registerCommand**](#function-registercommand-12) ([**NotNull**](classendstone_1_1NotNull.md)&lt; [**Command**](classendstone_1_1Command.md) &gt; command) = 0<br>_Registers a command._  |
+|  [**bool**](classendstone_1_1Identifier.md) | [**registerCommand**](#function-registercommand-22) ([**Args**](classendstone_1_1Identifier.md) &&... args) <br>_Constructs a command of the given type and registers it._  |
 | virtual  | [**~CommandMap**](#function-commandmap) () = default<br> |
 
 
@@ -252,7 +253,7 @@ CommandMap & endstone::CommandMap::operator= (
 
 
 
-### function registerCommand 
+### function registerCommand [1/2]
 
 _Registers a command._ 
 ```C++
@@ -269,6 +270,48 @@ virtual bool endstone::CommandMap::registerCommand (
 
 
 * `command` the command to register 
+
+
+
+**Returns:**
+
+true on success, false if a command with the same name is already registered 
+
+
+
+
+
+        
+
+<hr>
+
+
+
+### function registerCommand [2/2]
+
+_Constructs a command of the given type and registers it._ 
+```C++
+template<class  T, class... Args>
+inline bool endstone::CommandMap::registerCommand (
+    Args &&... args
+) 
+```
+
+
+
+
+
+**Template parameters:**
+
+
+* `T` the type of command to construct 
+
+
+
+**Parameters:**
+
+
+* `args` the arguments to construct the command with 
 
 
 
