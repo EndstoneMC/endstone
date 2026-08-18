@@ -420,7 +420,7 @@
 <para>Requests the <ref refid="classendstone_1_1Chunk" kindref="compound">Chunk</ref> at the given coordinates to be loaded, and keeps it loaded until it is unloaded again. </para>
         </briefdescription>
         <detaileddescription>
-<para>The chunk is loaded and then held resident by Endstone until removed with <computeroutput><ref refid="classendstone_1_1Dimension_1ad609a49160461ba607ca1b0702419538" kindref="member">unloadChunk()</ref></computeroutput> or the server restarts. Intended for keeping a handful of chunks resident; it is not suited to loading large regions.</para>
+<para>The chunk is held resident by Endstone from the moment this returns until removed with <computeroutput><ref refid="classendstone_1_1Dimension_1ad609a49160461ba607ca1b0702419538" kindref="member">unloadChunk()</ref></computeroutput> or the server restarts. Loading itself is asynchronous: unless the chunk was already resident, it finishes on a later tick, so <computeroutput><ref refid="classendstone_1_1Dimension_1ae5c461371c826a47b3f7cbd060ca9edc" kindref="member">isChunkLoaded()</ref></computeroutput> may still report <computeroutput>false</computeroutput> immediately afterwards. Intended for keeping a handful of chunks resident; it is not suited to loading large regions.</para>
 <para><parameterlist kind="param"><parameteritem>
 <parameternamelist>
 <parametername>x</parametername>
@@ -438,13 +438,13 @@
 </parameterdescription>
 </parameteritem>
 </parameterlist>
-<simplesect kind="return"><para><computeroutput>true</computeroutput> if the chunk was loaded (or already resident), otherwise <computeroutput>false</computeroutput> </para>
+<simplesect kind="return"><para><computeroutput>true</computeroutput> if the request was accepted, otherwise <computeroutput>false</computeroutput> </para>
 </simplesect>
 </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/level/dimension.h" line="146" column="18"/>
+        <location file="include/endstone/level/dimension.h" line="148" column="18"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1Dimension_1ad609a49160461ba607ca1b0702419538" prot="public" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
         <type><ref refid="classendstone_1_1Identifier" kindref="compound">bool</ref></type>
@@ -488,7 +488,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/level/dimension.h" line="159" column="18"/>
+        <location file="include/endstone/level/dimension.h" line="161" column="18"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1Dimension_1abd639df3fb48522170838960359a3ace" prot="public" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
         <type><ref refid="classendstone_1_1NotNull" kindref="compound">NotNull</ref>&lt; <ref refid="classendstone_1_1Item" kindref="compound">Item</ref> &gt;</type>
@@ -531,7 +531,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/level/dimension.h" line="169" column="22"/>
+        <location file="include/endstone/level/dimension.h" line="171" column="22"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1Dimension_1aabbe5768489c5b1f9f9d227565e04fa6" prot="public" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
         <type><ref refid="classendstone_1_1Nullable" kindref="compound">Nullable</ref>&lt; <ref refid="classendstone_1_1Actor" kindref="compound">Actor</ref> &gt;</type>
@@ -574,7 +574,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/level/dimension.h" line="178" column="23"/>
+        <location file="include/endstone/level/dimension.h" line="180" column="23"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1Dimension_1ab8476baf719292c340430109fcfdfadc" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
         <type>std::vector&lt; <ref refid="classendstone_1_1NotNull" kindref="compound">NotNull</ref>&lt; <ref refid="classendstone_1_1Actor" kindref="compound">Actor</ref> &gt; &gt;</type>
@@ -592,7 +592,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/level/dimension.h" line="185" column="26"/>
+        <location file="include/endstone/level/dimension.h" line="187" column="26"/>
       </memberdef>
     </sectiondef>
     <briefdescription>
@@ -600,7 +600,7 @@
     </briefdescription>
     <detaileddescription>
     </detaileddescription>
-    <location file="include/endstone/level/dimension.h" line="37" column="1" bodyfile="include/endstone/level/dimension.h" bodystart="37" bodyend="186"/>
+    <location file="include/endstone/level/dimension.h" line="37" column="1" bodyfile="include/endstone/level/dimension.h" bodystart="37" bodyend="188"/>
     <listofallmembers>
       <member refid="classendstone_1_1Dimension_1abd639df3fb48522170838960359a3ace" prot="public" virt="pure-virtual"><scope>endstone::Dimension</scope><name>dropItem</name></member>
       <member refid="classendstone_1_1Dimension_1ab8476baf719292c340430109fcfdfadc" prot="public" virt="pure-virtual"><scope>endstone::Dimension</scope><name>getActors</name></member>

@@ -565,7 +565,7 @@ virtual bool endstone::Dimension::loadChunk (
 
 
 
-The chunk is loaded and then held resident by Endstone until removed with `unloadChunk()` or the server restarts. Intended for keeping a handful of chunks resident; it is not suited to loading large regions.
+The chunk is held resident by Endstone from the moment this returns until removed with `unloadChunk()` or the server restarts. Loading itself is asynchronous: unless the chunk was already resident, it finishes on a later tick, so `isChunkLoaded()` may still report `false` immediately afterwards. Intended for keeping a handful of chunks resident; it is not suited to loading large regions.
 
 
 
@@ -580,7 +580,7 @@ The chunk is loaded and then held resident by Endstone until removed with `unloa
 
 **Returns:**
 
-`true` if the chunk was loaded (or already resident), otherwise `false` 
+`true` if the request was accepted, otherwise `false` 
 
 
 

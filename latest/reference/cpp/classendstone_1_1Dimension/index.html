@@ -3223,14 +3223,14 @@ For latest updates join the chat on
 </span><span id="__span-16-3"><a id="__codelineno-16-3" name="__codelineno-16-3" href="#__codelineno-16-3"></a><span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="n">z</span>
 </span><span id="__span-16-4"><a id="__codelineno-16-4" name="__codelineno-16-4" href="#__codelineno-16-4"></a><span class="p">)</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span>
 </span></code></pre></div></p>
-<p>The chunk is loaded and then held resident by Endstone until removed with <code>unloadChunk()</code> or the server restarts. Intended for keeping a handful of chunks resident; it is not suited to loading large regions.</p>
+<p>The chunk is held resident by Endstone from the moment this returns until removed with <code>unloadChunk()</code> or the server restarts. Loading itself is asynchronous: unless the chunk was already resident, it finishes on a later tick, so <code>isChunkLoaded()</code> may still report <code>false</code> immediately afterwards. Intended for keeping a handful of chunks resident; it is not suited to loading large regions.</p>
 <p><strong>Parameters:</strong></p>
 <ul>
 <li><code>x</code> X-coordinate of the chunk </li>
 <li><code>z</code> Z-coordinate of the chunk </li>
 </ul>
 <p><strong>Returns:</strong></p>
-<p><code>true</code> if the chunk was loaded (or already resident), otherwise <code>false</code> </p>
+<p><code>true</code> if the request was accepted, otherwise <code>false</code> </p>
 <hr>
 
 <h3 id="function-spawnactor">function spawnActor<a class="headerlink" href="#function-spawnactor" title="Permanent link">&para;</a></h3>
