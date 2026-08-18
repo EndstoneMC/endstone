@@ -12,9 +12,9 @@
 
 * `#include <cstdint>`
 * `#include <functional>`
-* `#include <memory>`
 * `#include <vector>`
 * `#include "endstone/scheduler/task.h"`
+* `#include "endstone/util/pointers.h"`
 
 
 

@@ -353,8 +353,6 @@
         <link refid="map__view_8h_source"/>
         <childnode refid="10" relation="include">
         </childnode>
-        <childnode refid="3" relation="include">
-        </childnode>
         <childnode refid="32" relation="include">
         </childnode>
         <childnode refid="62" relation="include">

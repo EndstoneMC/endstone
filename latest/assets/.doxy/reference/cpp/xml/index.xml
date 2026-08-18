@@ -699,10 +699,10 @@
     <member refid="classendstone_1_1CommandMap_1a4ebefdf37ff6f59a731c03217fe4bb9c" kind="function"><name>CommandMap</name></member>
     <member refid="classendstone_1_1CommandMap_1a71900d4f6d83ea0a21f9b2dbddcae322" kind="function"><name>operator=</name></member>
     <member refid="classendstone_1_1CommandMap_1abc727aa73950b67e85315d0fa0317c9d" kind="function"><name>~CommandMap</name></member>
-    <member refid="classendstone_1_1CommandMap_1a5b3beafddf2091946afee009ae1cf5de" kind="function"><name>registerCommand</name></member>
+    <member refid="classendstone_1_1CommandMap_1a91d00e6546b1a95138ab78603167230a" kind="function"><name>registerCommand</name></member>
     <member refid="classendstone_1_1CommandMap_1a158e3036a4c7f22d7a07db174f47e00c" kind="function"><name>dispatch</name></member>
     <member refid="classendstone_1_1CommandMap_1a668e38f90aad2458f33563f84d87c95a" kind="function"><name>clearCommands</name></member>
-    <member refid="classendstone_1_1CommandMap_1a8b44b32258c2a2d0dabfcc3618f1f383" kind="function"><name>getCommand</name></member>
+    <member refid="classendstone_1_1CommandMap_1a790bc333705be10e312917854c704b52" kind="function"><name>getCommand</name></member>
   </compound>
   <compound refid="classendstone_1_1CommandSender" kind="class"><name>endstone::CommandSender</name>
     <member refid="classendstone_1_1CommandSender_1a000782a076576822ea70b640f5f230ea" kind="function"><name>sendMessage</name></member>
@@ -1656,9 +1656,9 @@
     <member refid="classendstone_1_1MapView_1ae4875770b34a02497ccdcc081e3d71ec" kind="function"><name>setCenterZ</name></member>
     <member refid="classendstone_1_1MapView_1ab2001972badba74404636dc2379785be" kind="function"><name>getDimension</name></member>
     <member refid="classendstone_1_1MapView_1aba37705e57a5d2ce11f5c2c74ed11e02" kind="function"><name>setDimension</name></member>
-    <member refid="classendstone_1_1MapView_1a91a42244a4f6e209e3d80fd2d1343bda" kind="function"><name>getRenderers</name></member>
-    <member refid="classendstone_1_1MapView_1a759c2ca352b140a77f6aec185c1f2561" kind="function"><name>addRenderer</name></member>
-    <member refid="classendstone_1_1MapView_1a778c94e5095993dd7c5895d7f8c24eee" kind="function"><name>removeRenderer</name></member>
+    <member refid="classendstone_1_1MapView_1a4d063222877e7275e7ed98b15ae9944e" kind="function"><name>getRenderers</name></member>
+    <member refid="classendstone_1_1MapView_1a1d34d153cfecd22c7045e2cf985a6cc4" kind="function"><name>addRenderer</name></member>
+    <member refid="classendstone_1_1MapView_1aa057267c8f4a9f25590307dd4fc75494" kind="function"><name>removeRenderer</name></member>
     <member refid="classendstone_1_1MapView_1ab94f8ff90f7ecef5e313f40696a993b8" kind="function"><name>isUnlimitedTracking</name></member>
     <member refid="classendstone_1_1MapView_1a279570bf134982e89afa46b9ceeb81a7" kind="function"><name>setUnlimitedTracking</name></member>
     <member refid="classendstone_1_1MapView_1afde755089e4f1bcb1849fe27a56323fa" kind="function"><name>isLocked</name></member>
@@ -2228,10 +2228,10 @@
   </compound>
   <compound refid="classendstone_1_1PluginCommand" kind="class"><name>endstone::PluginCommand</name>
     <member refid="classendstone_1_1PluginCommand_1a025ba1c09032b5fa58580e5819d18ff9" kind="variable"><name>owner_</name></member>
-    <member refid="classendstone_1_1PluginCommand_1a2ec629d4eb987db62409bce874a9d2f3" kind="variable"><name>executor_</name></member>
+    <member refid="classendstone_1_1PluginCommand_1aef5719f7abca6fe15fc12cbcda4d653f" kind="variable"><name>executor_</name></member>
     <member refid="classendstone_1_1PluginCommand_1aaceb3f61ac9023104cf66875c9407e2b" kind="function"><name>PluginCommand</name></member>
     <member refid="classendstone_1_1PluginCommand_1ab4775a442dac9270ead8e4c5d706852c" kind="function"><name>execute</name></member>
-    <member refid="classendstone_1_1PluginCommand_1a49cc0fd16a008de539a703fa63fd7ef4" kind="function"><name>setExecutor</name></member>
+    <member refid="classendstone_1_1PluginCommand_1a07e2632d3e7c77a238d23b812b809017" kind="function"><name>setExecutor</name></member>
     <member refid="classendstone_1_1PluginCommand_1a555a83596463f0b58e8f1895f16c34d7" kind="function"><name>getExecutor</name></member>
     <member refid="classendstone_1_1PluginCommand_1a7f812a8e80c3f2c9fc578b3a77513c9a" kind="function"><name>getPlugin</name></member>
     <member refid="classendstone_1_1PluginCommand_1a65c45d094ef0ea7700a98a53671993a7" kind="function"><name>getClassTypeId</name></member>
@@ -2424,12 +2424,12 @@
   </compound>
   <compound refid="classendstone_1_1Scheduler" kind="class"><name>endstone::Scheduler</name>
     <member refid="classendstone_1_1Scheduler_1a869448c7e94100977f5c3026c6a16a45" kind="function"><name>~Scheduler</name></member>
-    <member refid="classendstone_1_1Scheduler_1a9f4787f0c3bcbd771935a8a58fb40198" kind="function"><name>runTask</name></member>
-    <member refid="classendstone_1_1Scheduler_1a756a006b06a7ceca85281bf4b1928631" kind="function"><name>runTaskLater</name></member>
-    <member refid="classendstone_1_1Scheduler_1a5e51e79411db6d37584d8ef311c34d16" kind="function"><name>runTaskTimer</name></member>
-    <member refid="classendstone_1_1Scheduler_1a00bc012bc77248bfe0334f0e7b3020a2" kind="function"><name>runTaskAsync</name></member>
-    <member refid="classendstone_1_1Scheduler_1aa025f22de368fa7a952d874e6c47af6e" kind="function"><name>runTaskLaterAsync</name></member>
-    <member refid="classendstone_1_1Scheduler_1ace8829c467271bbf23c72ebfb821aca2" kind="function"><name>runTaskTimerAsync</name></member>
+    <member refid="classendstone_1_1Scheduler_1a9242a5bf58d21cacc691cbdd46c759c1" kind="function"><name>runTask</name></member>
+    <member refid="classendstone_1_1Scheduler_1a49674b8664beb9d3824b5398b55cca03" kind="function"><name>runTaskLater</name></member>
+    <member refid="classendstone_1_1Scheduler_1a64e5dbb71bace2f00be5b087730fb4c7" kind="function"><name>runTaskTimer</name></member>
+    <member refid="classendstone_1_1Scheduler_1ac7a203563158d4be7f4fd653195a2b58" kind="function"><name>runTaskAsync</name></member>
+    <member refid="classendstone_1_1Scheduler_1ab51eeed03c0f061acfb159657dd8ef59" kind="function"><name>runTaskLaterAsync</name></member>
+    <member refid="classendstone_1_1Scheduler_1a337040e15723fbabf861d9ff6ea40e51" kind="function"><name>runTaskTimerAsync</name></member>
     <member refid="classendstone_1_1Scheduler_1ae1d4003f6f8035f2679b91c09441d53a" kind="function"><name>cancelTask</name></member>
     <member refid="classendstone_1_1Scheduler_1aff8ea940f0038a278a0d5f230280398c" kind="function"><name>cancelTasks</name></member>
     <member refid="classendstone_1_1Scheduler_1a8b427434811562ba2b4a49f1bd2e3e82" kind="function"><name>isRunning</name></member>

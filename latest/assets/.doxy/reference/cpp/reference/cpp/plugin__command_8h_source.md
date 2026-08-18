@@ -24,7 +24,6 @@
 
 #pragma once
 
-#include <memory>
 #include <stdexcept>
 #include <string>
 #include <vector>
@@ -62,7 +61,7 @@ public:
         }
     }
 
-    virtual void setExecutor(std::shared_ptr<CommandExecutor> executor) { executor_ = std::move(executor); }
+    virtual void setExecutor(Nullable<CommandExecutor> executor) { executor_ = std::move(executor); }
 
     [[nodiscard]] virtual CommandExecutor &getExecutor() const
     {
@@ -82,7 +81,7 @@ public:
 
 private:
     Plugin &owner_;
-    std::shared_ptr<CommandExecutor> executor_;
+    Nullable<CommandExecutor> executor_;
 };
 }  // namespace endstone
 ```

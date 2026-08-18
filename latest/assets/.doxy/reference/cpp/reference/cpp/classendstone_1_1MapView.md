@@ -57,17 +57,17 @@ _Represents a map item._
 
 | Type | Name |
 | ---: | :--- |
-| virtual [**void**](classendstone_1_1Identifier.md) | [**addRenderer**](#function-addrenderer) (std::shared\_ptr&lt; [**MapRenderer**](classendstone_1_1MapRenderer.md) &gt; renderer) = 0<br>_Add a renderer to this map._  |
+| virtual [**void**](classendstone_1_1Identifier.md) | [**addRenderer**](#function-addrenderer) ([**NotNull**](classendstone_1_1NotNull.md)&lt; [**MapRenderer**](classendstone_1_1MapRenderer.md) &gt; renderer) = 0<br>_Add a renderer to this map._  |
 | virtual [**int**](classendstone_1_1Identifier.md) | [**getCenterX**](#function-getcenterx) () const = 0<br>_Get the center X position of this map._  |
 | virtual [**int**](classendstone_1_1Identifier.md) | [**getCenterZ**](#function-getcenterz) () const = 0<br>_Get the center Z position of this map._  |
 | virtual [**Nullable**](classendstone_1_1Nullable.md)&lt; [**Dimension**](classendstone_1_1Dimension.md) &gt; | [**getDimension**](#function-getdimension) () const = 0<br>_Get the dimension that this map is associated with._  |
 | virtual std::int64\_t | [**getId**](#function-getid) () const = 0<br>_Get the ID of this map item for use with_ [_**MapMeta**_](classendstone_1_1MapMeta.md) _._ |
-| virtual std::vector&lt; std::shared\_ptr&lt; [**MapRenderer**](classendstone_1_1MapRenderer.md) &gt; &gt; | [**getRenderers**](#function-getrenderers) () const = 0<br>_Get a list of MapRenderers currently in effect._  |
+| virtual std::vector&lt; [**NotNull**](classendstone_1_1NotNull.md)&lt; [**MapRenderer**](classendstone_1_1MapRenderer.md) &gt; &gt; | [**getRenderers**](#function-getrenderers) () const = 0<br>_Get a list of MapRenderers currently in effect._  |
 | virtual [**Scale**](classendstone_1_1MapView.md#enum-scale) | [**getScale**](#function-getscale) () const = 0<br>_Get the scale of this map._  |
 | virtual [**bool**](classendstone_1_1Identifier.md) | [**isLocked**](#function-islocked) () const = 0<br>_Gets whether the map is locked or not._  |
 | virtual [**bool**](classendstone_1_1Identifier.md) | [**isUnlimitedTracking**](#function-isunlimitedtracking) () const = 0<br>_Whether the map will show a smaller position cursor (_ `true` _), or no position cursor (_`false` _) when cursor is outside of map's range._ |
 | virtual [**bool**](classendstone_1_1Identifier.md) | [**isVirtual**](#function-isvirtual) () const = 0<br>_Check whether this map is virtual._  |
-| virtual [**bool**](classendstone_1_1Identifier.md) | [**removeRenderer**](#function-removerenderer) ([**const**](classendstone_1_1Identifier.md) std::shared\_ptr&lt; [**MapRenderer**](classendstone_1_1MapRenderer.md) &gt; & renderer) = 0<br>_Remove a renderer from this map._  |
+| virtual [**bool**](classendstone_1_1Identifier.md) | [**removeRenderer**](#function-removerenderer) ([**const**](classendstone_1_1Identifier.md) [**NotNull**](classendstone_1_1NotNull.md)&lt; [**MapRenderer**](classendstone_1_1MapRenderer.md) &gt; & renderer) = 0<br>_Remove a renderer from this map._  |
 | virtual [**void**](classendstone_1_1Identifier.md) | [**setCenterX**](#function-setcenterx) ([**int**](classendstone_1_1Identifier.md) x) = 0<br>_Set the center X position of this map._  |
 | virtual [**void**](classendstone_1_1Identifier.md) | [**setCenterZ**](#function-setcenterz) ([**int**](classendstone_1_1Identifier.md) z) = 0<br>_Set the center Z position of this map._  |
 | virtual [**void**](classendstone_1_1Identifier.md) | [**setDimension**](#function-setdimension) ([**const**](classendstone_1_1Identifier.md) [**NotNull**](classendstone_1_1NotNull.md)&lt; [**Dimension**](classendstone_1_1Dimension.md) &gt; & dimension) = 0<br>_Set the dimension that this map is associated with._  |
@@ -135,7 +135,7 @@ enum endstone::MapView::Scale {
 _Add a renderer to this map._ 
 ```C++
 virtual void endstone::MapView::addRenderer (
-    std::shared_ptr< MapRenderer > renderer
+    NotNull < MapRenderer > renderer
 ) = 0
 ```
 
@@ -261,7 +261,7 @@ The unique ID of the map.
 
 _Get a list of MapRenderers currently in effect._ 
 ```C++
-virtual std::vector< std::shared_ptr< MapRenderer > > endstone::MapView::getRenderers () const = 0
+virtual std::vector< NotNull < MapRenderer > > endstone::MapView::getRenderers () const = 0
 ```
 
 
@@ -393,7 +393,7 @@ True if the map is virtual.
 _Remove a renderer from this map._ 
 ```C++
 virtual bool endstone::MapView::removeRenderer (
-    const std::shared_ptr< MapRenderer > & renderer
+    const  NotNull < MapRenderer > & renderer
 ) = 0
 ```
 

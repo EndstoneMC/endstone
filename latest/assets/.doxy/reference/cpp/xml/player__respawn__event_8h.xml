@@ -603,8 +603,6 @@
         <link refid="map__view_8h_source"/>
         <childnode refid="15" relation="include">
         </childnode>
-        <childnode refid="12" relation="include">
-        </childnode>
         <childnode refid="13" relation="include">
         </childnode>
         <childnode refid="63" relation="include">

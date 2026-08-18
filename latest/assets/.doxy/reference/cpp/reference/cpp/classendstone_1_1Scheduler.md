@@ -57,12 +57,12 @@ _Represents a scheduler that executes various tasks._
 | virtual std::vector&lt; [**Task**](classendstone_1_1Task.md) \* &gt; | [**getPendingTasks**](#function-getpendingtasks) () = 0<br>_Returns a vector of all pending tasks._  |
 | virtual [**bool**](classendstone_1_1Identifier.md) | [**isQueued**](#function-isqueued) (TaskId id) = 0<br>_Check if the task queued to be run later._  |
 | virtual [**bool**](classendstone_1_1Identifier.md) | [**isRunning**](#function-isrunning) (TaskId id) = 0<br>_Check if the task currently running._  |
-| virtual std::shared\_ptr&lt; [**Task**](classendstone_1_1Task.md) &gt; | [**runTask**](#function-runtask) ([**Plugin**](classendstone_1_1Plugin.md) & plugin, std::function&lt; [**void**](classendstone_1_1Identifier.md)()&gt; task) = 0<br>_Returns a task that will be executed synchronously on the next server tick._  |
-| virtual std::shared\_ptr&lt; [**Task**](classendstone_1_1Task.md) &gt; | [**runTaskAsync**](#function-runtaskasync) ([**Plugin**](classendstone_1_1Plugin.md) & plugin, std::function&lt; [**void**](classendstone_1_1Identifier.md)()&gt; task) = 0<br>_Returns a task that will be executed asynchronously on the next server tick._  |
-| virtual std::shared\_ptr&lt; [**Task**](classendstone_1_1Task.md) &gt; | [**runTaskLater**](#function-runtasklater) ([**Plugin**](classendstone_1_1Plugin.md) & plugin, std::function&lt; [**void**](classendstone_1_1Identifier.md)()&gt; task, std::uint64\_t delay) = 0<br>_Returns a task that will be executed synchronously after the specified number of server ticks._  |
-| virtual std::shared\_ptr&lt; [**Task**](classendstone_1_1Task.md) &gt; | [**runTaskLaterAsync**](#function-runtasklaterasync) ([**Plugin**](classendstone_1_1Plugin.md) & plugin, std::function&lt; [**void**](classendstone_1_1Identifier.md)()&gt; task, std::uint64\_t delay) = 0<br>_Returns a task that will be executed asynchronously after the specified number of server ticks._  |
-| virtual std::shared\_ptr&lt; [**Task**](classendstone_1_1Task.md) &gt; | [**runTaskTimer**](#function-runtasktimer) ([**Plugin**](classendstone_1_1Plugin.md) & plugin, std::function&lt; [**void**](classendstone_1_1Identifier.md)()&gt; task, std::uint64\_t delay, std::uint64\_t period) = 0<br>_Returns a task that will be executed repeatedly (and synchronously) until cancelled, starting after the specified number of server ticks._  |
-| virtual std::shared\_ptr&lt; [**Task**](classendstone_1_1Task.md) &gt; | [**runTaskTimerAsync**](#function-runtasktimerasync) ([**Plugin**](classendstone_1_1Plugin.md) & plugin, std::function&lt; [**void**](classendstone_1_1Identifier.md)()&gt; task, std::uint64\_t delay, std::uint64\_t period) = 0<br>_Returns a task that will be executed repeatedly (and asynchronously) until cancelled, starting after the specified number of server ticks._  |
+| virtual [**Nullable**](classendstone_1_1Nullable.md)&lt; [**Task**](classendstone_1_1Task.md) &gt; | [**runTask**](#function-runtask) ([**Plugin**](classendstone_1_1Plugin.md) & plugin, std::function&lt; [**void**](classendstone_1_1Identifier.md)()&gt; task) = 0<br>_Returns a task that will be executed synchronously on the next server tick._  |
+| virtual [**Nullable**](classendstone_1_1Nullable.md)&lt; [**Task**](classendstone_1_1Task.md) &gt; | [**runTaskAsync**](#function-runtaskasync) ([**Plugin**](classendstone_1_1Plugin.md) & plugin, std::function&lt; [**void**](classendstone_1_1Identifier.md)()&gt; task) = 0<br>_Returns a task that will be executed asynchronously on the next server tick._  |
+| virtual [**Nullable**](classendstone_1_1Nullable.md)&lt; [**Task**](classendstone_1_1Task.md) &gt; | [**runTaskLater**](#function-runtasklater) ([**Plugin**](classendstone_1_1Plugin.md) & plugin, std::function&lt; [**void**](classendstone_1_1Identifier.md)()&gt; task, std::uint64\_t delay) = 0<br>_Returns a task that will be executed synchronously after the specified number of server ticks._  |
+| virtual [**Nullable**](classendstone_1_1Nullable.md)&lt; [**Task**](classendstone_1_1Task.md) &gt; | [**runTaskLaterAsync**](#function-runtasklaterasync) ([**Plugin**](classendstone_1_1Plugin.md) & plugin, std::function&lt; [**void**](classendstone_1_1Identifier.md)()&gt; task, std::uint64\_t delay) = 0<br>_Returns a task that will be executed asynchronously after the specified number of server ticks._  |
+| virtual [**Nullable**](classendstone_1_1Nullable.md)&lt; [**Task**](classendstone_1_1Task.md) &gt; | [**runTaskTimer**](#function-runtasktimer) ([**Plugin**](classendstone_1_1Plugin.md) & plugin, std::function&lt; [**void**](classendstone_1_1Identifier.md)()&gt; task, std::uint64\_t delay, std::uint64\_t period) = 0<br>_Returns a task that will be executed repeatedly (and synchronously) until cancelled, starting after the specified number of server ticks._  |
+| virtual [**Nullable**](classendstone_1_1Nullable.md)&lt; [**Task**](classendstone_1_1Task.md) &gt; | [**runTaskTimerAsync**](#function-runtasktimerasync) ([**Plugin**](classendstone_1_1Plugin.md) & plugin, std::function&lt; [**void**](classendstone_1_1Identifier.md)()&gt; task, std::uint64\_t delay, std::uint64\_t period) = 0<br>_Returns a task that will be executed repeatedly (and asynchronously) until cancelled, starting after the specified number of server ticks._  |
 | virtual  | [**~Scheduler**](#function-scheduler) () = default<br> |
 
 
@@ -251,7 +251,7 @@ If the task is currently running.
 
 _Returns a task that will be executed synchronously on the next server tick._ 
 ```C++
-virtual std::shared_ptr< Task > endstone::Scheduler::runTask (
+virtual Nullable < Task > endstone::Scheduler::runTask (
     Plugin & plugin,
     std::function< void ()> task
 ) = 0
@@ -271,7 +271,7 @@ virtual std::shared_ptr< Task > endstone::Scheduler::runTask (
 
 **Returns:**
 
-a [**Task**](classendstone_1_1Task.md) that contains the id number (nullptr if task is empty) 
+a [**Task**](classendstone_1_1Task.md) that contains the id number, a null handle if the task is empty 
 
 
 
@@ -287,7 +287,7 @@ a [**Task**](classendstone_1_1Task.md) that contains the id number (nullptr if t
 
 _Returns a task that will be executed asynchronously on the next server tick._ 
 ```C++
-virtual std::shared_ptr< Task > endstone::Scheduler::runTaskAsync (
+virtual Nullable < Task > endstone::Scheduler::runTaskAsync (
     Plugin & plugin,
     std::function< void ()> task
 ) = 0
@@ -314,7 +314,7 @@ Asynchronous tasks should never access any Endstone API
 
 **Returns:**
 
-a [**Task**](classendstone_1_1Task.md) that contains the id number (nullptr if task is empty) 
+a [**Task**](classendstone_1_1Task.md) that contains the id number, a null handle if the task is empty 
 
 
 
@@ -330,7 +330,7 @@ a [**Task**](classendstone_1_1Task.md) that contains the id number (nullptr if t
 
 _Returns a task that will be executed synchronously after the specified number of server ticks._ 
 ```C++
-virtual std::shared_ptr< Task > endstone::Scheduler::runTaskLater (
+virtual Nullable < Task > endstone::Scheduler::runTaskLater (
     Plugin & plugin,
     std::function< void ()> task,
     std::uint64_t delay
@@ -352,7 +352,7 @@ virtual std::shared_ptr< Task > endstone::Scheduler::runTaskLater (
 
 **Returns:**
 
-a [**Task**](classendstone_1_1Task.md) that contains the id number (nullptr if task is empty) 
+a [**Task**](classendstone_1_1Task.md) that contains the id number, a null handle if the task is empty 
 
 
 
@@ -368,7 +368,7 @@ a [**Task**](classendstone_1_1Task.md) that contains the id number (nullptr if t
 
 _Returns a task that will be executed asynchronously after the specified number of server ticks._ 
 ```C++
-virtual std::shared_ptr< Task > endstone::Scheduler::runTaskLaterAsync (
+virtual Nullable < Task > endstone::Scheduler::runTaskLaterAsync (
     Plugin & plugin,
     std::function< void ()> task,
     std::uint64_t delay
@@ -397,7 +397,7 @@ Asynchronous tasks should never access any Endstone API
 
 **Returns:**
 
-a [**Task**](classendstone_1_1Task.md) that contains the id number (nullptr if task is empty) 
+a [**Task**](classendstone_1_1Task.md) that contains the id number, a null handle if the task is empty 
 
 
 
@@ -413,7 +413,7 @@ a [**Task**](classendstone_1_1Task.md) that contains the id number (nullptr if t
 
 _Returns a task that will be executed repeatedly (and synchronously) until cancelled, starting after the specified number of server ticks._ 
 ```C++
-virtual std::shared_ptr< Task > endstone::Scheduler::runTaskTimer (
+virtual Nullable < Task > endstone::Scheduler::runTaskTimer (
     Plugin & plugin,
     std::function< void ()> task,
     std::uint64_t delay,
@@ -437,7 +437,7 @@ virtual std::shared_ptr< Task > endstone::Scheduler::runTaskTimer (
 
 **Returns:**
 
-a [**Task**](classendstone_1_1Task.md) that contains the id number (nullptr if task is empty) 
+a [**Task**](classendstone_1_1Task.md) that contains the id number, a null handle if the task is empty 
 
 
 
@@ -453,7 +453,7 @@ a [**Task**](classendstone_1_1Task.md) that contains the id number (nullptr if t
 
 _Returns a task that will be executed repeatedly (and asynchronously) until cancelled, starting after the specified number of server ticks._ 
 ```C++
-virtual std::shared_ptr< Task > endstone::Scheduler::runTaskTimerAsync (
+virtual Nullable < Task > endstone::Scheduler::runTaskTimerAsync (
     Plugin & plugin,
     std::function< void ()> task,
     std::uint64_t delay,
@@ -484,7 +484,7 @@ Asynchronous tasks should never access any Endstone API
 
 **Returns:**
 
-a [**Task**](classendstone_1_1Task.md) that contains the id number (nullptr if task is empty) 
+a [**Task**](classendstone_1_1Task.md) that contains the id number, a null handle if the task is empty 
 
 
 

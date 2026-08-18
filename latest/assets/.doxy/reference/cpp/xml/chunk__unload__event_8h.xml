@@ -505,8 +505,6 @@
         <link refid="map__view_8h_source"/>
         <childnode refid="9" relation="include">
         </childnode>
-        <childnode refid="10" relation="include">
-        </childnode>
         <childnode refid="11" relation="include">
         </childnode>
         <childnode refid="64" relation="include">

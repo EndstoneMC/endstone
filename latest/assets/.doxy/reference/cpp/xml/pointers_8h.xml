@@ -25,6 +25,7 @@
     <includedby refid="map__renderer_8h" local="yes">include/endstone/map/map_renderer.h</includedby>
     <includedby refid="map__view_8h" local="yes">include/endstone/map/map_view.h</includedby>
     <includedby refid="service__manager_8h" local="yes">include/endstone/plugin/service_manager.h</includedby>
+    <includedby refid="scheduler_8h" local="yes">include/endstone/scheduler/scheduler.h</includedby>
     <includedby refid="objective_8h" local="yes">include/endstone/scoreboard/objective.h</includedby>
     <includedby refid="score_8h" local="yes">include/endstone/scoreboard/score.h</includedby>
     <includedby refid="score__entry_8h" local="yes">include/endstone/scoreboard/score_entry.h</includedby>
@@ -1005,6 +1006,8 @@
         <childnode refid="127" relation="include">
         </childnode>
         <childnode refid="128" relation="include">
+        </childnode>
+        <childnode refid="13" relation="include">
         </childnode>
         <childnode refid="129" relation="include">
         </childnode>

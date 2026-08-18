@@ -2952,7 +2952,7 @@ For latest updates join the chat on
 <tbody>
 <tr>
 <td style="text-align: right;">virtual <a href="../classendstone_1_1Identifier/"><strong>void</strong></a></td>
-<td style="text-align: left;"><a href="#function-addrenderer"><strong>addRenderer</strong></a> (std::shared_ptr&lt; <a href="../classendstone_1_1MapRenderer/"><strong>MapRenderer</strong></a> &gt; renderer) = 0<br><em>Add a renderer to this map.</em></td>
+<td style="text-align: left;"><a href="#function-addrenderer"><strong>addRenderer</strong></a> (<a href="../classendstone_1_1NotNull/"><strong>NotNull</strong></a>&lt; <a href="../classendstone_1_1MapRenderer/"><strong>MapRenderer</strong></a> &gt; renderer) = 0<br><em>Add a renderer to this map.</em></td>
 </tr>
 <tr>
 <td style="text-align: right;">virtual <a href="../classendstone_1_1Identifier/"><strong>int</strong></a></td>
@@ -2971,7 +2971,7 @@ For latest updates join the chat on
 <td style="text-align: left;"><a href="#function-getid"><strong>getId</strong></a> () const = 0<br><em>Get the ID of this map item for use with</em> <a href="../classendstone_1_1MapMeta/"><em><strong>MapMeta</strong></em></a> <em>.</em></td>
 </tr>
 <tr>
-<td style="text-align: right;">virtual std::vector&lt; std::shared_ptr&lt; <a href="../classendstone_1_1MapRenderer/"><strong>MapRenderer</strong></a> &gt; &gt;</td>
+<td style="text-align: right;">virtual std::vector&lt; <a href="../classendstone_1_1NotNull/"><strong>NotNull</strong></a>&lt; <a href="../classendstone_1_1MapRenderer/"><strong>MapRenderer</strong></a> &gt; &gt;</td>
 <td style="text-align: left;"><a href="#function-getrenderers"><strong>getRenderers</strong></a> () const = 0<br><em>Get a list of MapRenderers currently in effect.</em></td>
 </tr>
 <tr>
@@ -2992,7 +2992,7 @@ For latest updates join the chat on
 </tr>
 <tr>
 <td style="text-align: right;">virtual <a href="../classendstone_1_1Identifier/"><strong>bool</strong></a></td>
-<td style="text-align: left;"><a href="#function-removerenderer"><strong>removeRenderer</strong></a> (<a href="../classendstone_1_1Identifier/"><strong>const</strong></a> std::shared_ptr&lt; <a href="../classendstone_1_1MapRenderer/"><strong>MapRenderer</strong></a> &gt; &amp; renderer) = 0<br><em>Remove a renderer from this map.</em></td>
+<td style="text-align: left;"><a href="#function-removerenderer"><strong>removeRenderer</strong></a> (<a href="../classendstone_1_1Identifier/"><strong>const</strong></a> <a href="../classendstone_1_1NotNull/"><strong>NotNull</strong></a>&lt; <a href="../classendstone_1_1MapRenderer/"><strong>MapRenderer</strong></a> &gt; &amp; renderer) = 0<br><em>Remove a renderer from this map.</em></td>
 </tr>
 <tr>
 <td style="text-align: right;">virtual <a href="../classendstone_1_1Identifier/"><strong>void</strong></a></td>
@@ -3040,7 +3040,7 @@ For latest updates join the chat on
 <h3 id="function-addrenderer">function addRenderer<a class="headerlink" href="#function-addrenderer" title="Permanent link">&para;</a></h3>
 <p><em>Add a renderer to this map.</em> 
 <div class="language-C++ highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="k">virtual</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">MapView</span><span class="o">::</span><span class="n">addRenderer</span><span class="w"> </span><span class="p">(</span>
-</span><span id="__span-1-2"><a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a><span class="w">    </span><span class="n">std</span><span class="o">::</span><span class="n">shared_ptr</span><span class="o">&lt;</span><span class="w"> </span><span class="n">MapRenderer</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="n">renderer</span>
+</span><span id="__span-1-2"><a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a><span class="w">    </span><span class="n">NotNull</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">MapRenderer</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="n">renderer</span>
 </span><span id="__span-1-3"><a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a><span class="p">)</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span>
 </span></code></pre></div></p>
 <p><strong>Parameters:</strong></p>
@@ -3083,7 +3083,7 @@ For latest updates join the chat on
 
 <h3 id="function-getrenderers">function getRenderers<a class="headerlink" href="#function-getrenderers" title="Permanent link">&para;</a></h3>
 <p><em>Get a list of MapRenderers currently in effect.</em> 
-<div class="language-C++ highlight"><pre><span></span><code><span id="__span-6-1"><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a><span class="k">virtual</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">shared_ptr</span><span class="o">&lt;</span><span class="w"> </span><span class="n">MapRenderer</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">MapView</span><span class="o">::</span><span class="n">getRenderers</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span>
+<div class="language-C++ highlight"><pre><span></span><code><span id="__span-6-1"><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a><span class="k">virtual</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="w"> </span><span class="n">NotNull</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">MapRenderer</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">MapView</span><span class="o">::</span><span class="n">getRenderers</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span>
 </span></code></pre></div></p>
 <p><strong>Returns:</strong></p>
 <p>A list of references to each <a href="../classendstone_1_1MapRenderer/"><strong>MapRenderer</strong></a>. </p>
@@ -3126,7 +3126,7 @@ For latest updates join the chat on
 <h3 id="function-removerenderer">function removeRenderer<a class="headerlink" href="#function-removerenderer" title="Permanent link">&para;</a></h3>
 <p><em>Remove a renderer from this map.</em> 
 <div class="language-C++ highlight"><pre><span></span><code><span id="__span-11-1"><a id="__codelineno-11-1" name="__codelineno-11-1" href="#__codelineno-11-1"></a><span class="k">virtual</span><span class="w"> </span><span class="kt">bool</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">MapView</span><span class="o">::</span><span class="n">removeRenderer</span><span class="w"> </span><span class="p">(</span>
-</span><span id="__span-11-2"><a id="__codelineno-11-2" name="__codelineno-11-2" href="#__codelineno-11-2"></a><span class="w">    </span><span class="k">const</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">shared_ptr</span><span class="o">&lt;</span><span class="w"> </span><span class="n">MapRenderer</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">renderer</span>
+</span><span id="__span-11-2"><a id="__codelineno-11-2" name="__codelineno-11-2" href="#__codelineno-11-2"></a><span class="w">    </span><span class="k">const</span><span class="w">  </span><span class="n">NotNull</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">MapRenderer</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">renderer</span>
 </span><span id="__span-11-3"><a id="__codelineno-11-3" name="__codelineno-11-3" href="#__codelineno-11-3"></a><span class="p">)</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span>
 </span></code></pre></div></p>
 <p><strong>Parameters:</strong></p>

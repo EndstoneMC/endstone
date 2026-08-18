@@ -57,10 +57,10 @@ _Represents a command map that manages all commands of the_ [_**Server**_](class
 |   | [**CommandMap**](#function-commandmap-33) ([**CommandMap**](classendstone_1_1CommandMap.md) &&) = default<br> |
 | virtual [**void**](classendstone_1_1Identifier.md) | [**clearCommands**](#function-clearcommands) () = 0<br>_Clears all registered commands._  |
 | virtual [**bool**](classendstone_1_1Identifier.md) | [**dispatch**](#function-dispatch) ([**const**](classendstone_1_1Identifier.md) [**NotNull**](classendstone_1_1NotNull.md)&lt; [**CommandSender**](classendstone_1_1CommandSender.md) &gt; & sender, std::string command\_line) const = 0<br>_Looks for the requested command and executes it if found._  |
-| virtual std::shared\_ptr&lt; [**Command**](classendstone_1_1Command.md) &gt; | [**getCommand**](#function-getcommand) (std::string name) const = 0<br>_Gets the command registered to the specified name._  |
+| virtual [**Nullable**](classendstone_1_1Nullable.md)&lt; [**Command**](classendstone_1_1Command.md) &gt; | [**getCommand**](#function-getcommand) (std::string name) const = 0<br>_Gets the command registered to the specified name._  |
 |  [**CommandMap**](classendstone_1_1CommandMap.md) & | [**operator=**](#function-operator) ([**const**](classendstone_1_1Identifier.md) [**CommandMap**](classendstone_1_1CommandMap.md) &) = delete<br> |
 |  [**CommandMap**](classendstone_1_1CommandMap.md) & | [**operator=**](#function-operator_1) ([**CommandMap**](classendstone_1_1CommandMap.md) &&) = default<br> |
-| virtual [**bool**](classendstone_1_1Identifier.md) | [**registerCommand**](#function-registercommand) (std::shared\_ptr&lt; [**Command**](classendstone_1_1Command.md) &gt; command) = 0<br>_Registers a command._  |
+| virtual [**bool**](classendstone_1_1Identifier.md) | [**registerCommand**](#function-registercommand) ([**NotNull**](classendstone_1_1NotNull.md)&lt; [**Command**](classendstone_1_1Command.md) &gt; command) = 0<br>_Registers a command._  |
 | virtual  | [**~CommandMap**](#function-commandmap) () = default<br> |
 
 
@@ -192,7 +192,7 @@ true if execution is successful, false otherwise
 
 _Gets the command registered to the specified name._ 
 ```C++
-virtual std::shared_ptr< Command > endstone::CommandMap::getCommand (
+virtual Nullable < Command > endstone::CommandMap::getCommand (
     std::string name
 ) const = 0
 ```
@@ -210,7 +210,7 @@ virtual std::shared_ptr< Command > endstone::CommandMap::getCommand (
 
 **Returns:**
 
-[**Command**](classendstone_1_1Command.md) with the specified name or nullptr if a command with that label doesn't exist 
+[**Command**](classendstone_1_1Command.md) with the specified name, a null handle if a command with that label doesn't exist 
 
 
 
@@ -257,7 +257,7 @@ CommandMap & endstone::CommandMap::operator= (
 _Registers a command._ 
 ```C++
 virtual bool endstone::CommandMap::registerCommand (
-    std::shared_ptr< Command > command
+    NotNull < Command > command
 ) = 0
 ```
 

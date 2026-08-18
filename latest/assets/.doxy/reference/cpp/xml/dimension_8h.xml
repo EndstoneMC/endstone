@@ -440,8 +440,6 @@
         <link refid="map__view_8h_source"/>
         <childnode refid="7" relation="include">
         </childnode>
-        <childnode refid="3" relation="include">
-        </childnode>
         <childnode refid="5" relation="include">
         </childnode>
         <childnode refid="59" relation="include">

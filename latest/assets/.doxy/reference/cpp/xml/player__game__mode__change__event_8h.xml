@@ -613,8 +613,6 @@
         <link refid="map__view_8h_source"/>
         <childnode refid="16" relation="include">
         </childnode>
-        <childnode refid="13" relation="include">
-        </childnode>
         <childnode refid="14" relation="include">
         </childnode>
         <childnode refid="64" relation="include">

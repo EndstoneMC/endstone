@@ -99,7 +99,7 @@ Inherits the following classes: [endstone::Command](classendstone_1_1Command.md)
 | virtual [**CommandExecutor**](classendstone_1_1CommandExecutor.md) & | [**getExecutor**](#function-getexecutor) () const<br>_Gets the_ [_**CommandExecutor**_](classendstone_1_1CommandExecutor.md) _associated with this command._ |
 |  [**Plugin**](classendstone_1_1Plugin.md) & | [**getPlugin**](#function-getplugin) () const<br>_Gets the owner of this_ [_**PluginCommand**_](classendstone_1_1PluginCommand.md) _._ |
 | virtual [**bool**](classendstone_1_1Identifier.md) | [**isInstanceOf**](#function-isinstanceof) ([**const**](classendstone_1_1Identifier.md) std::type\_info & target) override const<br> |
-| virtual [**void**](classendstone_1_1Identifier.md) | [**setExecutor**](#function-setexecutor) (std::shared\_ptr&lt; [**CommandExecutor**](classendstone_1_1CommandExecutor.md) &gt; executor) <br>_Sets the_ [_**CommandExecutor**_](classendstone_1_1CommandExecutor.md) _to run when parsing this command._ |
+| virtual [**void**](classendstone_1_1Identifier.md) | [**setExecutor**](#function-setexecutor) ([**Nullable**](classendstone_1_1Nullable.md)&lt; [**CommandExecutor**](classendstone_1_1CommandExecutor.md) &gt; executor) <br>_Sets the_ [_**CommandExecutor**_](classendstone_1_1CommandExecutor.md) _to run when parsing this command._ |
 
 
 ## Public Functions inherited from endstone::Command
@@ -368,7 +368,7 @@ Implements [*endstone::Command::isInstanceOf*](classendstone_1_1Command.md#funct
 _Sets the_ [_**CommandExecutor**_](classendstone_1_1CommandExecutor.md) _to run when parsing this command._
 ```C++
 inline virtual void endstone::PluginCommand::setExecutor (
-    std::shared_ptr< CommandExecutor > executor
+    Nullable < CommandExecutor > executor
 ) 
 ```
 
@@ -379,7 +379,7 @@ inline virtual void endstone::PluginCommand::setExecutor (
 **Parameters:**
 
 
-* `executor` New executor to run 
+* `executor` New executor to run, a null handle to fall back to the owning plugin 
 
 
 

@@ -26,10 +26,10 @@
 
 #include <cstdint>
 #include <functional>
-#include <memory>
 #include <vector>
 
 #include "endstone/scheduler/task.h"
+#include "endstone/util/pointers.h"
 
 namespace endstone {
 
@@ -37,20 +37,19 @@ class Scheduler {
 public:
     virtual ~Scheduler() = default;
 
-    virtual std::shared_ptr<Task> runTask(Plugin &plugin, std::function<void()> task) = 0;
+    virtual Nullable<Task> runTask(Plugin &plugin, std::function<void()> task) = 0;
 
-    virtual std::shared_ptr<Task> runTaskLater(Plugin &plugin, std::function<void()> task, std::uint64_t delay) = 0;
+    virtual Nullable<Task> runTaskLater(Plugin &plugin, std::function<void()> task, std::uint64_t delay) = 0;
 
-    virtual std::shared_ptr<Task> runTaskTimer(Plugin &plugin, std::function<void()> task, std::uint64_t delay,
-                                               std::uint64_t period) = 0;
+    virtual Nullable<Task> runTaskTimer(Plugin &plugin, std::function<void()> task, std::uint64_t delay,
+                                        std::uint64_t period) = 0;
 
-    virtual std::shared_ptr<Task> runTaskAsync(Plugin &plugin, std::function<void()> task) = 0;
+    virtual Nullable<Task> runTaskAsync(Plugin &plugin, std::function<void()> task) = 0;
 
-    virtual std::shared_ptr<Task> runTaskLaterAsync(Plugin &plugin, std::function<void()> task,
-                                                    std::uint64_t delay) = 0;
+    virtual Nullable<Task> runTaskLaterAsync(Plugin &plugin, std::function<void()> task, std::uint64_t delay) = 0;
 
-    virtual std::shared_ptr<Task> runTaskTimerAsync(Plugin &plugin, std::function<void()> task, std::uint64_t delay,
-                                                    std::uint64_t period) = 0;
+    virtual Nullable<Task> runTaskTimerAsync(Plugin &plugin, std::function<void()> task, std::uint64_t delay,
+                                             std::uint64_t period) = 0;
 
     virtual void cancelTask(TaskId id) = 0;
 
