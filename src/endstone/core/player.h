@@ -84,6 +84,7 @@ public:
     [[nodiscard]] bool canSee(const Actor &entity) const override;
     [[nodiscard]] bool canSee(const Player &player) const override;
     void sendBlockChange(const Location &location, const BlockData &block) override;
+    void sendBlockUpdate(const Location &location, const TileState &tile_state) override;
     [[nodiscard]] bool isSneaking() const override;
     void setSneaking(bool sneak) override;
     [[nodiscard]] bool isSprinting() const override;

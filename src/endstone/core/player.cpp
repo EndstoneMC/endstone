@@ -16,6 +16,9 @@
 
 #include <RakPeerInterface.h>
 
+#include <cstddef>
+#include <cstdint>
+#include <string_view>
 #include <unordered_map>
 #include <unordered_set>
 #include <utility>
@@ -24,6 +27,8 @@
 #include <nlohmann/json.hpp>
 
 #include "bedrock/entity/components/user_entity_identifier_component.h"
+#include "bedrock/nbt/compound_tag.h"
+#include "bedrock/nbt/nbt_io.h"
 #include "bedrock/network/packet.h"
 #include "bedrock/network/packet/animate_packet.h"
 #include "bedrock/network/packet/book_edit_packet.h"
@@ -46,14 +51,17 @@
 #include "bedrock/network/server_network_handler.h"
 #include "bedrock/platform/build_platform.h"
 #include "bedrock/server/server_instance.h"
+#include "bedrock/util/data_io.h"
 #include "bedrock/world/actor/player/player.h"
 #include "bedrock/world/actor/provider/actor_offset.h"
-#include "bedrock/world/level/dimension/vanilla_dimensions.h"
 #include "bedrock/world/level/block/actor/block_actor.h"
+#include "bedrock/world/level/block_source.h"
+#include "bedrock/world/level/dimension/vanilla_dimensions.h"
 #include "bedrock/world/level/level.h"
 #include "endstone/block/block.h"
 #include "endstone/color_format.h"
 #include "endstone/core/base64.h"
+#include "endstone/core/block/tile_state.h"
 #include "endstone/core/entity/components/flag_components.h"
 #include "endstone/core/form/form_codec.h"
 #include "endstone/core/game_mode.h"
@@ -97,6 +105,33 @@
 #include "endstone/form/message_form.h"
 
 namespace endstone::core {
+
+namespace {
+
+class NetworkDataOutput final : public BytesDataOutput {
+public:
+    explicit NetworkDataOutput(BinaryStream &stream) : stream_(stream) {}
+
+    void writeString(std::string_view value) override
+    {
+        stream_.writeUnsignedVarInt(static_cast<std::uint32_t>(value.size()), nullptr, nullptr);
+        writeBytes(value.data(), value.size());
+    }
+    void writeLongString(std::string_view value) override { writeString(value); }
+    void writeInt(std::int32_t value) override { stream_.writeVarInt(value, nullptr, nullptr); }
+    void writeLongLong(std::int64_t value) override { stream_.writeVarInt64(value, nullptr, nullptr); }
+
+    void writeBytes(const void *data, std::size_t bytes) override
+    {
+        const auto *begin = static_cast<const unsigned char *>(data);
+        stream_.writeRawBytes({begin, begin + bytes}, nullptr, nullptr);
+    }
+
+private:
+    BinaryStream &stream_;
+};
+
+}  // namespace
 
 EndstonePlayer::EndstonePlayer(EndstoneServer &server, ::Player &player)
     : EndstoneMobBase(server, player), perm_(std::make_shared<PermissibleBase>(static_cast<Player *>(this))),
@@ -451,6 +486,25 @@ void EndstonePlayer::sendBlockChange(const Location &location, const BlockData &
     stream.writeUnsignedVarInt(2, "Flags", nullptr);  // FLAG_NETWORK
     stream.writeUnsignedVarInt(0, "Layer", nullptr);  // DATA_LAYER_NORMAL
     sendPacket(static_cast<int>(MinecraftPacketIds::UpdateBlock), stream.getView());
+}
+
+void EndstonePlayer::sendBlockUpdate(const Location &location, const TileState &tile_state)
+{
+    const auto *state = dynamic_cast<const EndstoneTileState *>(&tile_state);
+    Preconditions::checkArgument(state != nullptr, "Unsupported TileState implementation.");
+
+    ::CompoundTag tag;
+    if (!state->serialize(tag)) {
+        return;
+    }
+
+    BinaryStream stream;
+    stream.writeVarInt(location.getBlockX(), "X", nullptr);
+    stream.writeVarInt(location.getBlockY(), "Y", nullptr);
+    stream.writeVarInt(location.getBlockZ(), "Z", nullptr);
+    NetworkDataOutput output(stream);
+    NbtIo::writeNamedTag("", tag, output);
+    sendPacket(static_cast<int>(MinecraftPacketIds::BlockActorData), stream.getView());
 }
 
 bool EndstonePlayer::isSneaking() const

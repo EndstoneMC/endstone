@@ -626,6 +626,21 @@ class Player(Mob):
             block: The new block data.
         """
 
+    def send_block_update(self, location: Location, tile_state: TileState) -> None:
+        """
+        Sends a tile state change to this player.
+
+        This fakes a tile state change for a user at the given location. This will not actually change the world in any
+        way.
+
+        If the block at the location is client-side only, call `send_block_change()` before this method. The tile state is
+        sent only to this player and does not update the world.
+
+        Args:
+            location: The location of the changed block.
+            tile_state: The new tile state.
+        """
+
     @property
     def is_sneaking(self) -> bool:
         """
