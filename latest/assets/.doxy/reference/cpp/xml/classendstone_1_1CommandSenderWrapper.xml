@@ -33,7 +33,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/command/command_sender_wrapper.h" line="94" column="13" bodyfile="include/endstone/command/command_sender_wrapper.h" bodystart="94" bodyend="-1"/>
+        <location file="include/endstone/command/command_sender_wrapper.h" line="95" column="13" bodyfile="include/endstone/command/command_sender_wrapper.h" bodystart="95" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="classendstone_1_1CommandSenderWrapper_1ab9681dee5565195c3f25dcb2e5f25d43" prot="private" static="no" mutable="no">
         <type>Callback</type>
@@ -47,7 +47,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/command/command_sender_wrapper.h" line="95" column="14" bodyfile="include/endstone/command/command_sender_wrapper.h" bodystart="95" bodyend="-1"/>
+        <location file="include/endstone/command/command_sender_wrapper.h" line="96" column="14" bodyfile="include/endstone/command/command_sender_wrapper.h" bodystart="96" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="classendstone_1_1CommandSenderWrapper_1a90e1149cfbcb7b6e36a73c4172f84dc5" prot="private" static="no" mutable="no">
         <type>Callback</type>
@@ -61,7 +61,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/command/command_sender_wrapper.h" line="96" column="14" bodyfile="include/endstone/command/command_sender_wrapper.h" bodystart="96" bodyend="-1"/>
+        <location file="include/endstone/command/command_sender_wrapper.h" line="97" column="14" bodyfile="include/endstone/command/command_sender_wrapper.h" bodystart="97" bodyend="-1"/>
       </memberdef>
     </sectiondef>
     <sectiondef kind="public-func">
@@ -490,7 +490,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/command/command_sender_wrapper.h" line="77" column="11" bodyfile="include/endstone/command/command_sender_wrapper.h" bodystart="77" bodyend="80"/>
+        <location file="include/endstone/command/command_sender_wrapper.h" line="77" column="11" bodyfile="include/endstone/command/command_sender_wrapper.h" bodystart="77" bodyend="81"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1CommandSenderWrapper_1a7fa80697d5a28fb87a0312ed2115655d" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
         <type><ref refid="classendstone_1_1Identifier" kindref="compound">const</ref> <ref refid="classendstone_1_1NotNull" kindref="compound">NotNull</ref>&lt; <ref refid="classendstone_1_1CommandSender" kindref="compound">CommandSender</ref> &gt; &amp;</type>
@@ -508,7 +508,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/command/command_sender_wrapper.h" line="87" column="20" bodyfile="include/endstone/command/command_sender_wrapper.h" bodystart="87" bodyend="87"/>
+        <location file="include/endstone/command/command_sender_wrapper.h" line="88" column="20" bodyfile="include/endstone/command/command_sender_wrapper.h" bodystart="88" bodyend="88"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1CommandSenderWrapper_1ae4c0dbf8ed831f306f660688e294dcce" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="virtual">
         <type><ref refid="classendstone_1_1Server" kindref="compound">Server</ref> &amp;</type>
@@ -527,7 +527,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/command/command_sender_wrapper.h" line="89" column="13" bodyfile="include/endstone/command/command_sender_wrapper.h" bodystart="89" bodyend="89"/>
+        <location file="include/endstone/command/command_sender_wrapper.h" line="90" column="13" bodyfile="include/endstone/command/command_sender_wrapper.h" bodystart="90" bodyend="90"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1CommandSenderWrapper_1af7a2f45adfa1e55eda23bd39a16d3642" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="virtual">
         <type>std::string</type>
@@ -546,7 +546,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/command/command_sender_wrapper.h" line="91" column="18" bodyfile="include/endstone/command/command_sender_wrapper.h" bodystart="91" bodyend="91"/>
+        <location file="include/endstone/command/command_sender_wrapper.h" line="92" column="18" bodyfile="include/endstone/command/command_sender_wrapper.h" bodystart="92" bodyend="92"/>
       </memberdef>
     </sectiondef>
     <briefdescription>
@@ -602,7 +602,7 @@
         </childnode>
       </node>
     </collaborationgraph>
-    <location file="include/endstone/command/command_sender_wrapper.h" line="30" column="1" bodyfile="include/endstone/command/command_sender_wrapper.h" bodystart="30" bodyend="97"/>
+    <location file="include/endstone/command/command_sender_wrapper.h" line="30" column="1" bodyfile="include/endstone/command/command_sender_wrapper.h" bodystart="30" bodyend="98"/>
     <listofallmembers>
       <member refid="classendstone_1_1CommandSenderWrapper_1af0a7a00e451cb930b2f1f61cdf7f2db5" prot="public" virt="virtual"><scope>endstone::CommandSenderWrapper</scope><name>addAttachment</name></member>
       <member refid="classendstone_1_1CommandSenderWrapper_1a1c6684fab3293ddb3bc6b4edce8ebdd3" prot="public" virt="virtual"><scope>endstone::CommandSenderWrapper</scope><name>addAttachment</name></member>

@@ -456,13 +456,13 @@
         </inbodydescription>
         <location file="include/endstone/potion/effect_type.h" line="170" column="27" bodyfile="include/endstone/potion/effect_type.h" bodystart="170" bodyend="-1"/>
       </memberdef>
-      <memberdef kind="variable" id="classendstone_1_1EffectType_1a50ac6f6133315aa41d6ce621b882e7fb" prot="public" static="yes" constexpr="yes" mutable="no">
+      <memberdef kind="variable" id="classendstone_1_1EffectType_1a34fe418c35b99086f92e791a8a380ef6" prot="public" static="yes" constexpr="yes" mutable="no">
         <type><ref refid="classendstone_1_1Identifier" kindref="compound">constexpr</ref> <ref refid="classendstone_1_1Identifier" kindref="compound">auto</ref></type>
-        <definition>constexpr auto endstone::EffectType::HeroOfTheVillage</definition>
+        <definition>constexpr auto endstone::EffectType::VillageHero</definition>
         <argsstring></argsstring>
-        <name>HeroOfTheVillage</name>
-        <qualifiedname>endstone::EffectType::HeroOfTheVillage</qualifiedname>
-        <initializer>= <ref refid="classendstone_1_1Identifier_1aced1fc62bee261849335ffd6bb7fa591" kindref="member">EffectId::minecraft</ref>(&quot;hero_of_the_village&quot;)</initializer>
+        <name>VillageHero</name>
+        <qualifiedname>endstone::EffectType::VillageHero</qualifiedname>
+        <initializer>= <ref refid="classendstone_1_1Identifier_1aced1fc62bee261849335ffd6bb7fa591" kindref="member">EffectId::minecraft</ref>(&quot;village_hero&quot;)</initializer>
         <briefdescription>
 <para>Reduces the cost of villager trades. </para>
         </briefdescription>
@@ -647,7 +647,6 @@
       <member refid="classendstone_1_1Registry_1_1Type_1a3d82ceca29e75e71a8ad56c5d0f12aa7" prot="public" virt="pure-virtual"><scope>endstone::EffectType</scope><name>getTranslationKey</name></member>
       <member refid="classendstone_1_1EffectType_1aa2e24d50b86bc4934e057fbb0d53dff9" prot="public" virt="non-virtual"><scope>endstone::EffectType</scope><name>Haste</name></member>
       <member refid="classendstone_1_1EffectType_1a842baa92f96d10eefa227f7d5a746da5" prot="public" virt="non-virtual"><scope>endstone::EffectType</scope><name>HealthBoost</name></member>
-      <member refid="classendstone_1_1EffectType_1a50ac6f6133315aa41d6ce621b882e7fb" prot="public" virt="non-virtual"><scope>endstone::EffectType</scope><name>HeroOfTheVillage</name></member>
       <member refid="classendstone_1_1EffectType_1a0e59560b01d97c9a89ab950951bfb7f9" prot="public" virt="non-virtual"><scope>endstone::EffectType</scope><name>Hunger</name></member>
       <member refid="classendstone_1_1Registry_1_1Type_1a7d2793f0ec3a8f4e7ab9b8afbd777e82" prot="public" virt="non-virtual"><scope>endstone::EffectType</scope><name>Id</name></member>
       <member refid="classendstone_1_1EffectType_1a99c1d88dc16a4c3e25af259303b6d45f" prot="public" virt="non-virtual"><scope>endstone::EffectType</scope><name>Infested</name></member>
@@ -675,6 +674,7 @@
       <member refid="classendstone_1_1EffectType_1a1bc785783704de4311b5dd145b80f0a1" prot="public" virt="non-virtual"><scope>endstone::EffectType</scope><name>Speed</name></member>
       <member refid="classendstone_1_1EffectType_1a4acca2261fea494a4292d69479ef45b5" prot="public" virt="non-virtual"><scope>endstone::EffectType</scope><name>Strength</name></member>
       <member refid="classendstone_1_1EffectType_1aa5638d778e9ecc4793cd4b17cb295ed4" prot="public" virt="non-virtual"><scope>endstone::EffectType</scope><name>TrialOmen</name></member>
+      <member refid="classendstone_1_1EffectType_1a34fe418c35b99086f92e791a8a380ef6" prot="public" virt="non-virtual"><scope>endstone::EffectType</scope><name>VillageHero</name></member>
       <member refid="classendstone_1_1EffectType_1a12e3952816ecb830987c9c1abbd86a35" prot="public" virt="non-virtual"><scope>endstone::EffectType</scope><name>WaterBreathing</name></member>
       <member refid="classendstone_1_1EffectType_1a3ac3c89e8f6c9bb014f2c794d3c7294e" prot="public" virt="non-virtual"><scope>endstone::EffectType</scope><name>Weakness</name></member>
       <member refid="classendstone_1_1EffectType_1a8355b66ddcd485b67d62934d68f44243" prot="public" virt="non-virtual"><scope>endstone::EffectType</scope><name>Weaving</name></member>

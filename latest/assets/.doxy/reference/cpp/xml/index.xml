@@ -914,7 +914,7 @@
     <member refid="classendstone_1_1EffectType_1a5efdff0153d27ddd3079fa1547c0b9c4" kind="variable"><name>ConduitPower</name></member>
     <member refid="classendstone_1_1EffectType_1aedcd635847309a74e8c3d55c96ab81dd" kind="variable"><name>SlowFalling</name></member>
     <member refid="classendstone_1_1EffectType_1ad05807d9a795e264c221a562fff43ea2" kind="variable"><name>BadOmen</name></member>
-    <member refid="classendstone_1_1EffectType_1a50ac6f6133315aa41d6ce621b882e7fb" kind="variable"><name>HeroOfTheVillage</name></member>
+    <member refid="classendstone_1_1EffectType_1a34fe418c35b99086f92e791a8a380ef6" kind="variable"><name>VillageHero</name></member>
     <member refid="classendstone_1_1EffectType_1a8e1a95df98b75ee68797075094ae2ba7" kind="variable"><name>Darkness</name></member>
     <member refid="classendstone_1_1EffectType_1aa5638d778e9ecc4793cd4b17cb295ed4" kind="variable"><name>TrialOmen</name></member>
     <member refid="classendstone_1_1EffectType_1a900d76af4a5c87a1c223e8a63fb70d13" kind="variable"><name>WindCharged</name></member>

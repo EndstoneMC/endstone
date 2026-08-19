@@ -80,10 +80,11 @@ public:
         return sender_->getEffectivePermissions();
     }
 
-    [[nodiscard]] const std::type_info &getClassTypeId() const override { return typeid(CommandSender); }
+    [[nodiscard]] const std::type_info &getClassTypeId() const override { return typeid(CommandSenderWrapper); }
     [[nodiscard]] bool isInstanceOf(const std::type_info &target) const override
     {
-        return typeid(CommandSender) == target || typeid(Permissible) == target || typeid(Object) == target;
+        return typeid(CommandSenderWrapper) == target || typeid(CommandSender) == target ||
+               typeid(Permissible) == target || typeid(Object) == target;
     }
 
     [[nodiscard]] const NotNull<CommandSender> &getWrapped() const { return sender_; }

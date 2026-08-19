@@ -2772,19 +2772,6 @@ For latest updates join the chat on
             
                 
                     <li class="md-nav__item">
-    <a href="#variable-heroofthevillage" class="md-nav__link">
-      <span class="md-ellipsis">
-        variable HeroOfTheVillage
-      </span>
-    </a>
-
-    <!-- Table of contents list -->
-    
-</li>
-                
-            
-                
-                    <li class="md-nav__item">
     <a href="#variable-hunger" class="md-nav__link">
       <span class="md-ellipsis">
         variable Hunger
@@ -3058,6 +3045,19 @@ For latest updates join the chat on
             
                 
                     <li class="md-nav__item">
+    <a href="#variable-villagehero" class="md-nav__link">
+      <span class="md-ellipsis">
+        variable VillageHero
+      </span>
+    </a>
+
+    <!-- Table of contents list -->
+    
+</li>
+                
+            
+                
+                    <li class="md-nav__item">
     <a href="#variable-waterbreathing" class="md-nav__link">
       <span class="md-ellipsis">
         variable WaterBreathing
@@ -3233,10 +3233,6 @@ For latest updates join the chat on
 </tr>
 <tr>
 <td style="text-align: right;"><a href="../classendstone_1_1Identifier/"><strong>constexpr</strong></a> <a href="../classendstone_1_1Identifier/"><strong>auto</strong></a></td>
-<td style="text-align: left;"><a href="#variable-heroofthevillage"><strong>HeroOfTheVillage</strong></a>   = <code>[**EffectId::minecraft**](classendstone_1_1Identifier.md#function-minecraft)("hero\_of\_the\_village")</code><br><em>Reduces the cost of villager trades.</em></td>
-</tr>
-<tr>
-<td style="text-align: right;"><a href="../classendstone_1_1Identifier/"><strong>constexpr</strong></a> <a href="../classendstone_1_1Identifier/"><strong>auto</strong></a></td>
 <td style="text-align: left;"><a href="#variable-hunger"><strong>Hunger</strong></a>   = <code>[**EffectId::minecraft**](classendstone_1_1Identifier.md#function-minecraft)("hunger")</code><br><em>Increases hunger.</em></td>
 </tr>
 <tr>
@@ -3318,6 +3314,10 @@ For latest updates join the chat on
 <tr>
 <td style="text-align: right;"><a href="../classendstone_1_1Identifier/"><strong>constexpr</strong></a> <a href="../classendstone_1_1Identifier/"><strong>auto</strong></a></td>
 <td style="text-align: left;"><a href="#variable-trialomen"><strong>TrialOmen</strong></a>   = <code>[**EffectId::minecraft**](classendstone_1_1Identifier.md#function-minecraft)("trial\_omen")</code><br><em>Causes trial spawners to become ominous.</em></td>
+</tr>
+<tr>
+<td style="text-align: right;"><a href="../classendstone_1_1Identifier/"><strong>constexpr</strong></a> <a href="../classendstone_1_1Identifier/"><strong>auto</strong></a></td>
+<td style="text-align: left;"><a href="#variable-villagehero"><strong>VillageHero</strong></a>   = <code>[**EffectId::minecraft**](classendstone_1_1Identifier.md#function-minecraft)("village\_hero")</code><br><em>Reduces the cost of villager trades.</em></td>
 </tr>
 <tr>
 <td style="text-align: right;"><a href="../classendstone_1_1Identifier/"><strong>constexpr</strong></a> <a href="../classendstone_1_1Identifier/"><strong>auto</strong></a></td>
@@ -3464,137 +3464,137 @@ For latest updates join the chat on
 </span></code></pre></div></p>
 <hr>
 
-<h3 id="variable-heroofthevillage">variable HeroOfTheVillage<a class="headerlink" href="#variable-heroofthevillage" title="Permanent link">&para;</a></h3>
-<p><em>Reduces the cost of villager trades.</em> 
-<div class="language-C++ highlight"><pre><span></span><code><span id="__span-10-1"><a id="__codelineno-10-1" name="__codelineno-10-1" href="#__codelineno-10-1"></a><span class="k">constexpr</span><span class="w"> </span><span class="k">auto</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">EffectType</span><span class="o">::</span><span class="n">HeroOfTheVillage</span><span class="p">;</span>
-</span></code></pre></div></p>
-<p>\o/. </p>
-<hr>
-
 <h3 id="variable-hunger">variable Hunger<a class="headerlink" href="#variable-hunger" title="Permanent link">&para;</a></h3>
 <p><em>Increases hunger.</em> 
-<div class="language-C++ highlight"><pre><span></span><code><span id="__span-11-1"><a id="__codelineno-11-1" name="__codelineno-11-1" href="#__codelineno-11-1"></a><span class="k">constexpr</span><span class="w"> </span><span class="k">auto</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">EffectType</span><span class="o">::</span><span class="n">Hunger</span><span class="p">;</span>
+<div class="language-C++ highlight"><pre><span></span><code><span id="__span-10-1"><a id="__codelineno-10-1" name="__codelineno-10-1" href="#__codelineno-10-1"></a><span class="k">constexpr</span><span class="w"> </span><span class="k">auto</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">EffectType</span><span class="o">::</span><span class="n">Hunger</span><span class="p">;</span>
 </span></code></pre></div></p>
 <hr>
 
 <h3 id="variable-infested">variable Infested<a class="headerlink" href="#variable-infested" title="Permanent link">&para;</a></h3>
 <p><em>Chance of spawning silverfish when hurt.</em> 
-<div class="language-C++ highlight"><pre><span></span><code><span id="__span-12-1"><a id="__codelineno-12-1" name="__codelineno-12-1" href="#__codelineno-12-1"></a><span class="k">constexpr</span><span class="w"> </span><span class="k">auto</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">EffectType</span><span class="o">::</span><span class="n">Infested</span><span class="p">;</span>
+<div class="language-C++ highlight"><pre><span></span><code><span id="__span-11-1"><a id="__codelineno-11-1" name="__codelineno-11-1" href="#__codelineno-11-1"></a><span class="k">constexpr</span><span class="w"> </span><span class="k">auto</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">EffectType</span><span class="o">::</span><span class="n">Infested</span><span class="p">;</span>
 </span></code></pre></div></p>
 <hr>
 
 <h3 id="variable-instantdamage">variable InstantDamage<a class="headerlink" href="#variable-instantdamage" title="Permanent link">&para;</a></h3>
 <p><em>Hurts an entity.</em> 
-<div class="language-C++ highlight"><pre><span></span><code><span id="__span-13-1"><a id="__codelineno-13-1" name="__codelineno-13-1" href="#__codelineno-13-1"></a><span class="k">constexpr</span><span class="w"> </span><span class="k">auto</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">EffectType</span><span class="o">::</span><span class="n">InstantDamage</span><span class="p">;</span>
+<div class="language-C++ highlight"><pre><span></span><code><span id="__span-12-1"><a id="__codelineno-12-1" name="__codelineno-12-1" href="#__codelineno-12-1"></a><span class="k">constexpr</span><span class="w"> </span><span class="k">auto</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">EffectType</span><span class="o">::</span><span class="n">InstantDamage</span><span class="p">;</span>
 </span></code></pre></div></p>
 <hr>
 
 <h3 id="variable-instanthealth">variable InstantHealth<a class="headerlink" href="#variable-instanthealth" title="Permanent link">&para;</a></h3>
 <p><em>Heals an entity.</em> 
-<div class="language-C++ highlight"><pre><span></span><code><span id="__span-14-1"><a id="__codelineno-14-1" name="__codelineno-14-1" href="#__codelineno-14-1"></a><span class="k">constexpr</span><span class="w"> </span><span class="k">auto</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">EffectType</span><span class="o">::</span><span class="n">InstantHealth</span><span class="p">;</span>
+<div class="language-C++ highlight"><pre><span></span><code><span id="__span-13-1"><a id="__codelineno-13-1" name="__codelineno-13-1" href="#__codelineno-13-1"></a><span class="k">constexpr</span><span class="w"> </span><span class="k">auto</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">EffectType</span><span class="o">::</span><span class="n">InstantHealth</span><span class="p">;</span>
 </span></code></pre></div></p>
 <hr>
 
 <h3 id="variable-invisibility">variable Invisibility<a class="headerlink" href="#variable-invisibility" title="Permanent link">&para;</a></h3>
 <p><em>Grants invisibility.</em> 
-<div class="language-C++ highlight"><pre><span></span><code><span id="__span-15-1"><a id="__codelineno-15-1" name="__codelineno-15-1" href="#__codelineno-15-1"></a><span class="k">constexpr</span><span class="w"> </span><span class="k">auto</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">EffectType</span><span class="o">::</span><span class="n">Invisibility</span><span class="p">;</span>
+<div class="language-C++ highlight"><pre><span></span><code><span id="__span-14-1"><a id="__codelineno-14-1" name="__codelineno-14-1" href="#__codelineno-14-1"></a><span class="k">constexpr</span><span class="w"> </span><span class="k">auto</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">EffectType</span><span class="o">::</span><span class="n">Invisibility</span><span class="p">;</span>
 </span></code></pre></div></p>
 <hr>
 
 <h3 id="variable-jumpboost">variable JumpBoost<a class="headerlink" href="#variable-jumpboost" title="Permanent link">&para;</a></h3>
 <p><em>Increases jump height.</em> 
-<div class="language-C++ highlight"><pre><span></span><code><span id="__span-16-1"><a id="__codelineno-16-1" name="__codelineno-16-1" href="#__codelineno-16-1"></a><span class="k">constexpr</span><span class="w"> </span><span class="k">auto</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">EffectType</span><span class="o">::</span><span class="n">JumpBoost</span><span class="p">;</span>
+<div class="language-C++ highlight"><pre><span></span><code><span id="__span-15-1"><a id="__codelineno-15-1" name="__codelineno-15-1" href="#__codelineno-15-1"></a><span class="k">constexpr</span><span class="w"> </span><span class="k">auto</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">EffectType</span><span class="o">::</span><span class="n">JumpBoost</span><span class="p">;</span>
 </span></code></pre></div></p>
 <hr>
 
 <h3 id="variable-levitation">variable Levitation<a class="headerlink" href="#variable-levitation" title="Permanent link">&para;</a></h3>
 <p><em>Causes the entity to float into the air.</em> 
-<div class="language-C++ highlight"><pre><span></span><code><span id="__span-17-1"><a id="__codelineno-17-1" name="__codelineno-17-1" href="#__codelineno-17-1"></a><span class="k">constexpr</span><span class="w"> </span><span class="k">auto</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">EffectType</span><span class="o">::</span><span class="n">Levitation</span><span class="p">;</span>
+<div class="language-C++ highlight"><pre><span></span><code><span id="__span-16-1"><a id="__codelineno-16-1" name="__codelineno-16-1" href="#__codelineno-16-1"></a><span class="k">constexpr</span><span class="w"> </span><span class="k">auto</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">EffectType</span><span class="o">::</span><span class="n">Levitation</span><span class="p">;</span>
 </span></code></pre></div></p>
 <hr>
 
 <h3 id="variable-miningfatigue">variable MiningFatigue<a class="headerlink" href="#variable-miningfatigue" title="Permanent link">&para;</a></h3>
 <p><em>Decreases dig speed.</em> 
-<div class="language-C++ highlight"><pre><span></span><code><span id="__span-18-1"><a id="__codelineno-18-1" name="__codelineno-18-1" href="#__codelineno-18-1"></a><span class="k">constexpr</span><span class="w"> </span><span class="k">auto</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">EffectType</span><span class="o">::</span><span class="n">MiningFatigue</span><span class="p">;</span>
+<div class="language-C++ highlight"><pre><span></span><code><span id="__span-17-1"><a id="__codelineno-17-1" name="__codelineno-17-1" href="#__codelineno-17-1"></a><span class="k">constexpr</span><span class="w"> </span><span class="k">auto</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">EffectType</span><span class="o">::</span><span class="n">MiningFatigue</span><span class="p">;</span>
 </span></code></pre></div></p>
 <hr>
 
 <h3 id="variable-nausea">variable Nausea<a class="headerlink" href="#variable-nausea" title="Permanent link">&para;</a></h3>
 <p><em>Warps vision on the client.</em> 
-<div class="language-C++ highlight"><pre><span></span><code><span id="__span-19-1"><a id="__codelineno-19-1" name="__codelineno-19-1" href="#__codelineno-19-1"></a><span class="k">constexpr</span><span class="w"> </span><span class="k">auto</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">EffectType</span><span class="o">::</span><span class="n">Nausea</span><span class="p">;</span>
+<div class="language-C++ highlight"><pre><span></span><code><span id="__span-18-1"><a id="__codelineno-18-1" name="__codelineno-18-1" href="#__codelineno-18-1"></a><span class="k">constexpr</span><span class="w"> </span><span class="k">auto</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">EffectType</span><span class="o">::</span><span class="n">Nausea</span><span class="p">;</span>
 </span></code></pre></div></p>
 <hr>
 
 <h3 id="variable-nightvision">variable NightVision<a class="headerlink" href="#variable-nightvision" title="Permanent link">&para;</a></h3>
 <p><em>Allows an entity to see in the dark.</em> 
-<div class="language-C++ highlight"><pre><span></span><code><span id="__span-20-1"><a id="__codelineno-20-1" name="__codelineno-20-1" href="#__codelineno-20-1"></a><span class="k">constexpr</span><span class="w"> </span><span class="k">auto</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">EffectType</span><span class="o">::</span><span class="n">NightVision</span><span class="p">;</span>
+<div class="language-C++ highlight"><pre><span></span><code><span id="__span-19-1"><a id="__codelineno-19-1" name="__codelineno-19-1" href="#__codelineno-19-1"></a><span class="k">constexpr</span><span class="w"> </span><span class="k">auto</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">EffectType</span><span class="o">::</span><span class="n">NightVision</span><span class="p">;</span>
 </span></code></pre></div></p>
 <hr>
 
 <h3 id="variable-oozing">variable Oozing<a class="headerlink" href="#variable-oozing" title="Permanent link">&para;</a></h3>
 <p><em>Causes slimes to spawn upon death.</em> 
-<div class="language-C++ highlight"><pre><span></span><code><span id="__span-21-1"><a id="__codelineno-21-1" name="__codelineno-21-1" href="#__codelineno-21-1"></a><span class="k">constexpr</span><span class="w"> </span><span class="k">auto</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">EffectType</span><span class="o">::</span><span class="n">Oozing</span><span class="p">;</span>
+<div class="language-C++ highlight"><pre><span></span><code><span id="__span-20-1"><a id="__codelineno-20-1" name="__codelineno-20-1" href="#__codelineno-20-1"></a><span class="k">constexpr</span><span class="w"> </span><span class="k">auto</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">EffectType</span><span class="o">::</span><span class="n">Oozing</span><span class="p">;</span>
 </span></code></pre></div></p>
 <hr>
 
 <h3 id="variable-poison">variable Poison<a class="headerlink" href="#variable-poison" title="Permanent link">&para;</a></h3>
 <p><em>Deals damage to an entity over time.</em> 
-<div class="language-C++ highlight"><pre><span></span><code><span id="__span-22-1"><a id="__codelineno-22-1" name="__codelineno-22-1" href="#__codelineno-22-1"></a><span class="k">constexpr</span><span class="w"> </span><span class="k">auto</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">EffectType</span><span class="o">::</span><span class="n">Poison</span><span class="p">;</span>
+<div class="language-C++ highlight"><pre><span></span><code><span id="__span-21-1"><a id="__codelineno-21-1" name="__codelineno-21-1" href="#__codelineno-21-1"></a><span class="k">constexpr</span><span class="w"> </span><span class="k">auto</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">EffectType</span><span class="o">::</span><span class="n">Poison</span><span class="p">;</span>
 </span></code></pre></div></p>
 <hr>
 
 <h3 id="variable-raidomen">variable RaidOmen<a class="headerlink" href="#variable-raidomen" title="Permanent link">&para;</a></h3>
 <p><em>Triggers a raid when a player enters a village.</em> 
-<div class="language-C++ highlight"><pre><span></span><code><span id="__span-23-1"><a id="__codelineno-23-1" name="__codelineno-23-1" href="#__codelineno-23-1"></a><span class="k">constexpr</span><span class="w"> </span><span class="k">auto</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">EffectType</span><span class="o">::</span><span class="n">RaidOmen</span><span class="p">;</span>
+<div class="language-C++ highlight"><pre><span></span><code><span id="__span-22-1"><a id="__codelineno-22-1" name="__codelineno-22-1" href="#__codelineno-22-1"></a><span class="k">constexpr</span><span class="w"> </span><span class="k">auto</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">EffectType</span><span class="o">::</span><span class="n">RaidOmen</span><span class="p">;</span>
 </span></code></pre></div></p>
 <hr>
 
 <h3 id="variable-regeneration">variable Regeneration<a class="headerlink" href="#variable-regeneration" title="Permanent link">&para;</a></h3>
 <p><em>Regenerates health.</em> 
-<div class="language-C++ highlight"><pre><span></span><code><span id="__span-24-1"><a id="__codelineno-24-1" name="__codelineno-24-1" href="#__codelineno-24-1"></a><span class="k">constexpr</span><span class="w"> </span><span class="k">auto</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">EffectType</span><span class="o">::</span><span class="n">Regeneration</span><span class="p">;</span>
+<div class="language-C++ highlight"><pre><span></span><code><span id="__span-23-1"><a id="__codelineno-23-1" name="__codelineno-23-1" href="#__codelineno-23-1"></a><span class="k">constexpr</span><span class="w"> </span><span class="k">auto</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">EffectType</span><span class="o">::</span><span class="n">Regeneration</span><span class="p">;</span>
 </span></code></pre></div></p>
 <hr>
 
 <h3 id="variable-resistance">variable Resistance<a class="headerlink" href="#variable-resistance" title="Permanent link">&para;</a></h3>
 <p><em>Decreases damage dealt to an entity.</em> 
-<div class="language-C++ highlight"><pre><span></span><code><span id="__span-25-1"><a id="__codelineno-25-1" name="__codelineno-25-1" href="#__codelineno-25-1"></a><span class="k">constexpr</span><span class="w"> </span><span class="k">auto</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">EffectType</span><span class="o">::</span><span class="n">Resistance</span><span class="p">;</span>
+<div class="language-C++ highlight"><pre><span></span><code><span id="__span-24-1"><a id="__codelineno-24-1" name="__codelineno-24-1" href="#__codelineno-24-1"></a><span class="k">constexpr</span><span class="w"> </span><span class="k">auto</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">EffectType</span><span class="o">::</span><span class="n">Resistance</span><span class="p">;</span>
 </span></code></pre></div></p>
 <hr>
 
 <h3 id="variable-saturation">variable Saturation<a class="headerlink" href="#variable-saturation" title="Permanent link">&para;</a></h3>
 <p><em>Increases the food level of an entity each tick.</em> 
-<div class="language-C++ highlight"><pre><span></span><code><span id="__span-26-1"><a id="__codelineno-26-1" name="__codelineno-26-1" href="#__codelineno-26-1"></a><span class="k">constexpr</span><span class="w"> </span><span class="k">auto</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">EffectType</span><span class="o">::</span><span class="n">Saturation</span><span class="p">;</span>
+<div class="language-C++ highlight"><pre><span></span><code><span id="__span-25-1"><a id="__codelineno-25-1" name="__codelineno-25-1" href="#__codelineno-25-1"></a><span class="k">constexpr</span><span class="w"> </span><span class="k">auto</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">EffectType</span><span class="o">::</span><span class="n">Saturation</span><span class="p">;</span>
 </span></code></pre></div></p>
 <hr>
 
 <h3 id="variable-slowfalling">variable SlowFalling<a class="headerlink" href="#variable-slowfalling" title="Permanent link">&para;</a></h3>
 <p><em>Slows entity fall rate.</em> 
-<div class="language-C++ highlight"><pre><span></span><code><span id="__span-27-1"><a id="__codelineno-27-1" name="__codelineno-27-1" href="#__codelineno-27-1"></a><span class="k">constexpr</span><span class="w"> </span><span class="k">auto</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">EffectType</span><span class="o">::</span><span class="n">SlowFalling</span><span class="p">;</span>
+<div class="language-C++ highlight"><pre><span></span><code><span id="__span-26-1"><a id="__codelineno-26-1" name="__codelineno-26-1" href="#__codelineno-26-1"></a><span class="k">constexpr</span><span class="w"> </span><span class="k">auto</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">EffectType</span><span class="o">::</span><span class="n">SlowFalling</span><span class="p">;</span>
 </span></code></pre></div></p>
 <hr>
 
 <h3 id="variable-slowness">variable Slowness<a class="headerlink" href="#variable-slowness" title="Permanent link">&para;</a></h3>
 <p><em>Decreases movement speed.</em> 
-<div class="language-C++ highlight"><pre><span></span><code><span id="__span-28-1"><a id="__codelineno-28-1" name="__codelineno-28-1" href="#__codelineno-28-1"></a><span class="k">constexpr</span><span class="w"> </span><span class="k">auto</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">EffectType</span><span class="o">::</span><span class="n">Slowness</span><span class="p">;</span>
+<div class="language-C++ highlight"><pre><span></span><code><span id="__span-27-1"><a id="__codelineno-27-1" name="__codelineno-27-1" href="#__codelineno-27-1"></a><span class="k">constexpr</span><span class="w"> </span><span class="k">auto</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">EffectType</span><span class="o">::</span><span class="n">Slowness</span><span class="p">;</span>
 </span></code></pre></div></p>
 <hr>
 
 <h3 id="variable-speed">variable Speed<a class="headerlink" href="#variable-speed" title="Permanent link">&para;</a></h3>
 <p><em>Increases movement speed.</em> 
-<div class="language-C++ highlight"><pre><span></span><code><span id="__span-29-1"><a id="__codelineno-29-1" name="__codelineno-29-1" href="#__codelineno-29-1"></a><span class="k">constexpr</span><span class="w"> </span><span class="k">auto</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">EffectType</span><span class="o">::</span><span class="n">Speed</span><span class="p">;</span>
+<div class="language-C++ highlight"><pre><span></span><code><span id="__span-28-1"><a id="__codelineno-28-1" name="__codelineno-28-1" href="#__codelineno-28-1"></a><span class="k">constexpr</span><span class="w"> </span><span class="k">auto</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">EffectType</span><span class="o">::</span><span class="n">Speed</span><span class="p">;</span>
 </span></code></pre></div></p>
 <hr>
 
 <h3 id="variable-strength">variable Strength<a class="headerlink" href="#variable-strength" title="Permanent link">&para;</a></h3>
 <p><em>Increases damage dealt.</em> 
-<div class="language-C++ highlight"><pre><span></span><code><span id="__span-30-1"><a id="__codelineno-30-1" name="__codelineno-30-1" href="#__codelineno-30-1"></a><span class="k">constexpr</span><span class="w"> </span><span class="k">auto</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">EffectType</span><span class="o">::</span><span class="n">Strength</span><span class="p">;</span>
+<div class="language-C++ highlight"><pre><span></span><code><span id="__span-29-1"><a id="__codelineno-29-1" name="__codelineno-29-1" href="#__codelineno-29-1"></a><span class="k">constexpr</span><span class="w"> </span><span class="k">auto</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">EffectType</span><span class="o">::</span><span class="n">Strength</span><span class="p">;</span>
 </span></code></pre></div></p>
 <hr>
 
 <h3 id="variable-trialomen">variable TrialOmen<a class="headerlink" href="#variable-trialomen" title="Permanent link">&para;</a></h3>
 <p><em>Causes trial spawners to become ominous.</em> 
-<div class="language-C++ highlight"><pre><span></span><code><span id="__span-31-1"><a id="__codelineno-31-1" name="__codelineno-31-1" href="#__codelineno-31-1"></a><span class="k">constexpr</span><span class="w"> </span><span class="k">auto</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">EffectType</span><span class="o">::</span><span class="n">TrialOmen</span><span class="p">;</span>
+<div class="language-C++ highlight"><pre><span></span><code><span id="__span-30-1"><a id="__codelineno-30-1" name="__codelineno-30-1" href="#__codelineno-30-1"></a><span class="k">constexpr</span><span class="w"> </span><span class="k">auto</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">EffectType</span><span class="o">::</span><span class="n">TrialOmen</span><span class="p">;</span>
 </span></code></pre></div></p>
+<hr>
+
+<h3 id="variable-villagehero">variable VillageHero<a class="headerlink" href="#variable-villagehero" title="Permanent link">&para;</a></h3>
+<p><em>Reduces the cost of villager trades.</em> 
+<div class="language-C++ highlight"><pre><span></span><code><span id="__span-31-1"><a id="__codelineno-31-1" name="__codelineno-31-1" href="#__codelineno-31-1"></a><span class="k">constexpr</span><span class="w"> </span><span class="k">auto</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">EffectType</span><span class="o">::</span><span class="n">VillageHero</span><span class="p">;</span>
+</span></code></pre></div></p>
+<p>\o/. </p>
 <hr>
 
 <h3 id="variable-waterbreathing">variable WaterBreathing<a class="headerlink" href="#variable-waterbreathing" title="Permanent link">&para;</a></h3>

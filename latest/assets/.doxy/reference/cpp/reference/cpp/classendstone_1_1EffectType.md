@@ -62,7 +62,6 @@ See [endstone::Registry::Type](classendstone_1_1Registry_1_1Type.md)
 |  [**constexpr**](classendstone_1_1Identifier.md) [**auto**](classendstone_1_1Identifier.md) | [**FireResistance**](#variable-fireresistance)   = `[**EffectId::minecraft**](classendstone_1_1Identifier.md#function-minecraft)("fire\_resistance")`<br>_Stops fire damage._  |
 |  [**constexpr**](classendstone_1_1Identifier.md) [**auto**](classendstone_1_1Identifier.md) | [**Haste**](#variable-haste)   = `[**EffectId::minecraft**](classendstone_1_1Identifier.md#function-minecraft)("haste")`<br>_Increases dig speed._  |
 |  [**constexpr**](classendstone_1_1Identifier.md) [**auto**](classendstone_1_1Identifier.md) | [**HealthBoost**](#variable-healthboost)   = `[**EffectId::minecraft**](classendstone_1_1Identifier.md#function-minecraft)("health\_boost")`<br>_Increases the maximum health of an entity._  |
-|  [**constexpr**](classendstone_1_1Identifier.md) [**auto**](classendstone_1_1Identifier.md) | [**HeroOfTheVillage**](#variable-heroofthevillage)   = `[**EffectId::minecraft**](classendstone_1_1Identifier.md#function-minecraft)("hero\_of\_the\_village")`<br>_Reduces the cost of villager trades._  |
 |  [**constexpr**](classendstone_1_1Identifier.md) [**auto**](classendstone_1_1Identifier.md) | [**Hunger**](#variable-hunger)   = `[**EffectId::minecraft**](classendstone_1_1Identifier.md#function-minecraft)("hunger")`<br>_Increases hunger._  |
 |  [**constexpr**](classendstone_1_1Identifier.md) [**auto**](classendstone_1_1Identifier.md) | [**Infested**](#variable-infested)   = `[**EffectId::minecraft**](classendstone_1_1Identifier.md#function-minecraft)("infested")`<br>_Chance of spawning silverfish when hurt._  |
 |  [**constexpr**](classendstone_1_1Identifier.md) [**auto**](classendstone_1_1Identifier.md) | [**InstantDamage**](#variable-instantdamage)   = `[**EffectId::minecraft**](classendstone_1_1Identifier.md#function-minecraft)("instant\_damage")`<br>_Hurts an entity._  |
@@ -84,6 +83,7 @@ See [endstone::Registry::Type](classendstone_1_1Registry_1_1Type.md)
 |  [**constexpr**](classendstone_1_1Identifier.md) [**auto**](classendstone_1_1Identifier.md) | [**Speed**](#variable-speed)   = `[**EffectId::minecraft**](classendstone_1_1Identifier.md#function-minecraft)("speed")`<br>_Increases movement speed._  |
 |  [**constexpr**](classendstone_1_1Identifier.md) [**auto**](classendstone_1_1Identifier.md) | [**Strength**](#variable-strength)   = `[**EffectId::minecraft**](classendstone_1_1Identifier.md#function-minecraft)("strength")`<br>_Increases damage dealt._  |
 |  [**constexpr**](classendstone_1_1Identifier.md) [**auto**](classendstone_1_1Identifier.md) | [**TrialOmen**](#variable-trialomen)   = `[**EffectId::minecraft**](classendstone_1_1Identifier.md#function-minecraft)("trial\_omen")`<br>_Causes trial spawners to become ominous._  |
+|  [**constexpr**](classendstone_1_1Identifier.md) [**auto**](classendstone_1_1Identifier.md) | [**VillageHero**](#variable-villagehero)   = `[**EffectId::minecraft**](classendstone_1_1Identifier.md#function-minecraft)("village\_hero")`<br>_Reduces the cost of villager trades._  |
 |  [**constexpr**](classendstone_1_1Identifier.md) [**auto**](classendstone_1_1Identifier.md) | [**WaterBreathing**](#variable-waterbreathing)   = `[**EffectId::minecraft**](classendstone_1_1Identifier.md#function-minecraft)("water\_breathing")`<br>_Allows breathing underwater._  |
 |  [**constexpr**](classendstone_1_1Identifier.md) [**auto**](classendstone_1_1Identifier.md) | [**Weakness**](#variable-weakness)   = `[**EffectId::minecraft**](classendstone_1_1Identifier.md#function-minecraft)("weakness")`<br>_Decreases damage dealt by an entity._  |
 |  [**constexpr**](classendstone_1_1Identifier.md) [**auto**](classendstone_1_1Identifier.md) | [**Weaving**](#variable-weaving)   = `[**EffectId::minecraft**](classendstone_1_1Identifier.md#function-minecraft)("weaving")`<br>_Creates cobwebs upon death._  |
@@ -343,25 +343,6 @@ constexpr auto endstone::EffectType::HealthBoost;
 
 
 
-
-<hr>
-
-
-
-### variable HeroOfTheVillage 
-
-_Reduces the cost of villager trades._ 
-```C++
-constexpr auto endstone::EffectType::HeroOfTheVillage;
-```
-
-
-
-
- \o/. 
-
-
-        
 
 <hr>
 
@@ -656,6 +637,25 @@ constexpr auto endstone::EffectType::TrialOmen;
 
 
 
+
+<hr>
+
+
+
+### variable VillageHero 
+
+_Reduces the cost of villager trades._ 
+```C++
+constexpr auto endstone::EffectType::VillageHero;
+```
+
+
+
+
+ \o/. 
+
+
+        
 
 <hr>
 

@@ -89,7 +89,7 @@ public:
 
     static constexpr auto BadOmen = EffectId::minecraft("bad_omen");
 
-    static constexpr auto HeroOfTheVillage = EffectId::minecraft("hero_of_the_village");
+    static constexpr auto VillageHero = EffectId::minecraft("village_hero");
 
     static constexpr auto Darkness = EffectId::minecraft("darkness");
 
