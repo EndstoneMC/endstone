@@ -838,6 +838,8 @@
     <member refid="classendstone_1_1Dimension_1abd639df3fb48522170838960359a3ace" kind="function"><name>dropItem</name></member>
     <member refid="classendstone_1_1Dimension_1aabbe5768489c5b1f9f9d227565e04fa6" kind="function"><name>spawnActor</name></member>
     <member refid="classendstone_1_1Dimension_1ab8476baf719292c340430109fcfdfadc" kind="function"><name>getActors</name></member>
+    <member refid="classendstone_1_1Dimension_1a87c141242d56ca9b87a6a09e596f3dfa" kind="function"><name>getMobs</name></member>
+    <member refid="classendstone_1_1Dimension_1a90d34510ca20ac253a7a0cc3a2c2c17a" kind="function"><name>getPlayers</name></member>
   </compound>
   <compound refid="classendstone_1_1DimensionCreator" kind="class"><name>endstone::DimensionCreator</name>
     <member refid="classendstone_1_1DimensionCreator_1ab87578fc4fe5d00c14226a717fc58e9f" kind="variable"><name>id_</name></member>

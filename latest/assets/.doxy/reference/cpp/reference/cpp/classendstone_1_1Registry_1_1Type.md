@@ -161,6 +161,9 @@ virtual std::string endstone::Registry::Type::getTranslationKey () const = 0
 
 
 
+Bedrock does not localize every registry. `Biome` and `GameRule` have no translation key at all, and asking either for one raises.
+
+
 
 
 **Returns:**

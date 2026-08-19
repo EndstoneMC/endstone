@@ -38,6 +38,9 @@
 
 namespace endstone {
 
+class Mob;
+class Player;
+
 class Dimension;
 using DimensionId = Identifier<Dimension>;
 
@@ -80,6 +83,10 @@ public:
     [[nodiscard]] virtual Nullable<Actor> spawnActor(Location location, ActorTypeId type) = 0;
 
     [[nodiscard]] virtual std::vector<NotNull<Actor>> getActors() const = 0;
+
+    [[nodiscard]] virtual std::vector<NotNull<Mob>> getMobs() const = 0;
+
+    [[nodiscard]] virtual std::vector<NotNull<Player>> getPlayers() const = 0;
 };
 
 inline Nullable<Dimension> Location::getDimension() const
