@@ -160,7 +160,11 @@ void init_level(py::module_ &m, py::classh<Level> &level, py::classh<Dimension> 
         Resulting `Actor` of this method.
 )doc")
         .def_property_readonly("actors", &Dimension::getActors,
-                               "A list of all actors currently residing in this dimension.");
+                               "A list of all actors currently residing in this dimension.")
+        .def_property_readonly("mobs", &Dimension::getMobs,
+                               "A list of all mobs currently residing in this dimension.")
+        .def_property_readonly("players", &Dimension::getPlayers,
+                               "A list of all players currently residing in this dimension.");
 
     py::class_<DimensionCreator>(m, "DimensionCreator",
                                  "Represents the options that may be used to create a custom dimension.")

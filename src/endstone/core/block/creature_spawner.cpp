@@ -27,7 +27,7 @@ EndstoneCreatureSpawner::EndstoneCreatureSpawner(const EndstoneBlock &block, ::M
 const ActorType &EndstoneCreatureSpawner::getSpawnedType() const
 {
     const auto &id = getSpawner().getSpawner().getEntityId();
-    return EndstoneServer::getInstance().getRegistry<ActorType>().getOrThrow(id.getFullName());
+    return EndstoneServer::getInstance().getRegistry<ActorType>().getOrThrow(id.getCanonicalName());
 }
 
 void EndstoneCreatureSpawner::setSpawnedType(ActorTypeId type)

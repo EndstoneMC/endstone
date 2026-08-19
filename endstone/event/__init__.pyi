@@ -71,6 +71,7 @@ __all__ = [
     "PlayerKickEvent",
     "PlayerLoginEvent",
     "PlayerMoveEvent",
+    "PlayerPickupArrowEvent",
     "PlayerPickupItemEvent",
     "PlayerPortalEvent",
     "PlayerQuitEvent",
@@ -549,37 +550,6 @@ class PlayerBedLeaveEvent(PlayerEvent):
         The bed block involved in this event.
         """
 
-class PlayerShearActorEvent(PlayerEvent, Cancellable):
-    """
-    Called when a player shears an actor.
-    """
-    @property
-    def actor(self) -> Actor:
-        """
-        The actor that was sheared.
-        """
-
-    @property
-    def hand(self) -> EquipmentSlot:
-        """
-        The hand used to shear the actor.
-        """
-
-    @property
-    def item(self) -> ItemStack:
-        """
-        The item used to shear the actor.
-        """
-
-    @property
-    def drops(self) -> list[ItemStack]:
-        """
-        The items dropped when the actor is sheared.
-        """
-
-    @drops.setter
-    def drops(self, arg1: list[ItemStack]) -> None: ...
-
 class PlayerChatEvent(PlayerEvent, Cancellable):
     """
     Called when a player sends a chat message.
@@ -915,6 +885,37 @@ class PlayerRespawnEvent(PlayerEvent):
         The reason this respawn occurred.
         """
 
+class PlayerShearActorEvent(PlayerEvent, Cancellable):
+    """
+    Called when a player shears an actor.
+    """
+    @property
+    def actor(self) -> Actor:
+        """
+        The actor that was sheared.
+        """
+
+    @property
+    def hand(self) -> EquipmentSlot:
+        """
+        The hand used to shear the actor.
+        """
+
+    @property
+    def item(self) -> ItemStack:
+        """
+        The item used to shear the actor.
+        """
+
+    @property
+    def drops(self) -> list[ItemStack]:
+        """
+        The items dropped when the actor is sheared.
+        """
+
+    @drops.setter
+    def drops(self, arg1: list[ItemStack]) -> None: ...
+
 class PlayerSkinChangeEvent(PlayerEvent, Cancellable):
     """
     Called when a player changes their skin.
@@ -943,6 +944,16 @@ class PlayerPortalEvent(PlayerTeleportEvent):
     """
     Called when a player is about to teleport because it is in contact with a portal.
     """
+
+class PlayerPickupArrowEvent(PlayerEvent, Cancellable):
+    """
+    Called when a player picks up an arrow from the ground.
+    """
+    @property
+    def arrow(self) -> Actor:
+        """
+        The arrow picked up by the player.
+        """
 
 class PlayerPickupItemEvent(PlayerEvent, Cancellable):
     """

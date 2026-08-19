@@ -19,10 +19,10 @@ namespace py = pybind11;
 namespace endstone::python {
 void init_game_rule(py::module_ &m)
 {
-    py::class_<GameRule>(m, "GameRule", "Represents a game rule.")
+    def_registry_type(py::class_<GameRule>(m, "GameRule", "Represents a game rule."))
         .def_property_readonly("id", &GameRule::getId, "The identifier of this game rule.")
         .def_property_readonly("translation_key", &GameRule::getTranslationKey,
-                               "The translation key, suitable for use in a translation component.")
+                               "Raises, as Bedrock does not localize game rule names.")
         .def_static("get", &GameRule::get, py::arg("name"), R"doc(
     Attempts to get the `GameRule` with the given name.
 
@@ -33,9 +33,6 @@ void init_game_rule(py::module_ &m)
         The `GameRule`, or `None` if no game rule with that name exists.
 )doc",
                     py::return_value_policy::reference)
-        .def("__str__", [](const GameRule &self) { return std::string(self.getId()); })
-        .def("__repr__", [](const GameRule &self) { return std::format("GameRule({})", self.getId()); })
-        .def("__hash__", [](const GameRule &self) { return py::hash(py::str(std::string(self.getId()))); })
         .def_static(
             "__class_getitem__", [](const py::object &) { return py::type::of<GameRule>(); }, py::arg("item"))
         .def_property_readonly_static("COMMAND_BLOCK_OUTPUT", id(GameRule::CommandBlockOutput))
