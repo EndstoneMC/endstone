@@ -75,6 +75,7 @@ __all__ = [
     "PlayerPortalEvent",
     "PlayerQuitEvent",
     "PlayerRespawnEvent",
+    "PlayerRiptideEvent",
     "PlayerSkinChangeEvent",
     "PlayerTeleportEvent",
     "PlayerToggleSneakEvent",
@@ -881,6 +882,16 @@ class PlayerRespawnEvent(PlayerEvent):
     def respawn_reason(self) -> RespawnReason:
         """
         The reason this respawn occurred.
+        """
+
+class PlayerRiptideEvent(PlayerEvent):
+    """
+    Called when a player starts or stops a riptide attack.
+    """
+    @property
+    def is_riptiding(self) -> bool:
+        """
+        Whether the player is riptiding.
         """
 
 class PlayerSkinChangeEvent(PlayerEvent, Cancellable):

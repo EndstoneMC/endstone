@@ -380,6 +380,10 @@ void init_event(py::module_ &m, py::class_<Event, PyEvent> &event)
         .finalize();
     player_respawn_event.def_property_readonly("respawn_reason", &PlayerRespawnEvent::getRespawnReason,
                                                "The reason this respawn occurred.");
+    py::class_<PlayerRiptideEvent, PlayerEvent>(m, "PlayerRiptideEvent",
+                                                "Called when a player starts or stops a riptide attack.")
+        .def_property_readonly("is_riptiding", &PlayerRiptideEvent::isRiptiding,
+                               "Whether the player is riptiding.");
     py::class_<PlayerSkinChangeEvent, PlayerEvent, ICancellable>(m, "PlayerSkinChangeEvent",
                                                                  "Called when a player changes their skin.")
         .def_property_readonly("new_skin", &PlayerSkinChangeEvent::getNewSkin, "The skin that will be applied.")
