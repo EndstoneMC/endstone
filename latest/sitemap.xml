@@ -713,11 +713,19 @@
          <lastmod>2026-08-19</lastmod>
     </url>
     <url>
+         <loc>https://endstone.dev/latest/reference/cpp/classendstone_1_1PlayerLevelChangeEvent/</loc>
+         <lastmod>2026-08-19</lastmod>
+    </url>
+    <url>
          <loc>https://endstone.dev/latest/reference/cpp/classendstone_1_1PlayerLoginEvent/</loc>
          <lastmod>2026-08-19</lastmod>
     </url>
     <url>
          <loc>https://endstone.dev/latest/reference/cpp/classendstone_1_1PlayerMoveEvent/</loc>
+         <lastmod>2026-08-19</lastmod>
+    </url>
+    <url>
+         <loc>https://endstone.dev/latest/reference/cpp/classendstone_1_1PlayerPickupArrowEvent/</loc>
          <lastmod>2026-08-19</lastmod>
     </url>
     <url>
@@ -1945,6 +1953,14 @@
          <lastmod>2026-08-19</lastmod>
     </url>
     <url>
+         <loc>https://endstone.dev/latest/reference/cpp/player__level__change__event_8h/</loc>
+         <lastmod>2026-08-19</lastmod>
+    </url>
+    <url>
+         <loc>https://endstone.dev/latest/reference/cpp/player__level__change__event_8h_source/</loc>
+         <lastmod>2026-08-19</lastmod>
+    </url>
+    <url>
          <loc>https://endstone.dev/latest/reference/cpp/player__login__event_8h/</loc>
          <lastmod>2026-08-19</lastmod>
     </url>
@@ -1958,6 +1974,14 @@
     </url>
     <url>
          <loc>https://endstone.dev/latest/reference/cpp/player__move__event_8h_source/</loc>
+         <lastmod>2026-08-19</lastmod>
+    </url>
+    <url>
+         <loc>https://endstone.dev/latest/reference/cpp/player__pickup__arrow__event_8h/</loc>
+         <lastmod>2026-08-19</lastmod>
+    </url>
+    <url>
+         <loc>https://endstone.dev/latest/reference/cpp/player__pickup__arrow__event_8h_source/</loc>
          <lastmod>2026-08-19</lastmod>
     </url>
     <url>

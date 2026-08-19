@@ -2136,6 +2136,14 @@
     <member refid="classendstone_1_1PlayerKickEvent_1a8421ba745037cb00ef5fc333d43a790b" kind="function"><name>getReason</name></member>
     <member refid="classendstone_1_1PlayerKickEvent_1a43bcc4f3ba93c059fc4e7f524c7d4888" kind="function"><name>setReason</name></member>
   </compound>
+  <compound refid="classendstone_1_1PlayerLevelChangeEvent" kind="class"><name>endstone::PlayerLevelChangeEvent</name>
+    <member refid="classendstone_1_1PlayerLevelChangeEvent_1abd469d000eca49607933f0dbc904379a" kind="variable"><name>old_level_</name></member>
+    <member refid="classendstone_1_1PlayerLevelChangeEvent_1a701beef1652e89efa57209b9ebb17c06" kind="variable"><name>new_level_</name></member>
+    <member refid="classendstone_1_1PlayerLevelChangeEvent_1a0662b223b9cd2ada9fef4374b8d985ee" kind="function"><name>ENDSTONE_EVENT</name></member>
+    <member refid="classendstone_1_1PlayerLevelChangeEvent_1af20ad1b2e736b85c3f33f5938458892e" kind="function"><name>PlayerLevelChangeEvent</name></member>
+    <member refid="classendstone_1_1PlayerLevelChangeEvent_1afb58644fefa653898b462863f7d0076e" kind="function"><name>getOldLevel</name></member>
+    <member refid="classendstone_1_1PlayerLevelChangeEvent_1a6025bdcac964a0866493b7881fcc2228" kind="function"><name>getNewLevel</name></member>
+  </compound>
   <compound refid="classendstone_1_1PlayerLoginEvent" kind="class"><name>endstone::PlayerLoginEvent</name>
     <member refid="classendstone_1_1PlayerLoginEvent_1ad1404a38de83bce0919fa2c2f6f5cea1" kind="variable"><name>message_</name></member>
     <member refid="classendstone_1_1PlayerLoginEvent_1abd33d228ba078a87adf6842a8a0bbc24" kind="function"><name>ENDSTONE_EVENT</name></member>
@@ -2153,6 +2161,12 @@
     <member refid="classendstone_1_1PlayerMoveEvent_1a58170572971794cd9e8fff214a2cd0cc" kind="function"><name>setFrom</name></member>
     <member refid="classendstone_1_1PlayerMoveEvent_1a4b864f9dd1062d0f2ab64af81b20513e" kind="function"><name>getTo</name></member>
     <member refid="classendstone_1_1PlayerMoveEvent_1a98f462d71a7ea0f3f0fc42203fb91a2d" kind="function"><name>setTo</name></member>
+  </compound>
+  <compound refid="classendstone_1_1PlayerPickupArrowEvent" kind="class"><name>endstone::PlayerPickupArrowEvent</name>
+    <member refid="classendstone_1_1PlayerPickupArrowEvent_1ae064a1102fac4f0efa0d258b551e4683" kind="variable"><name>arrow_</name></member>
+    <member refid="classendstone_1_1PlayerPickupArrowEvent_1a31587bd06e361188e400c4f1567267d0" kind="function"><name>ENDSTONE_EVENT</name></member>
+    <member refid="classendstone_1_1PlayerPickupArrowEvent_1a312fb90c5b7e91449f8add5d94d1030f" kind="function"><name>PlayerPickupArrowEvent</name></member>
+    <member refid="classendstone_1_1PlayerPickupArrowEvent_1a08925c7d72368c4f8159eff2288f9e28" kind="function"><name>getArrow</name></member>
   </compound>
   <compound refid="classendstone_1_1PlayerPickupItemEvent" kind="class"><name>endstone::PlayerPickupItemEvent</name>
     <member refid="classendstone_1_1PlayerPickupItemEvent_1a4f3fc142ea17ae48dbf8e336d7a4b875" kind="variable"><name>item_</name></member>
@@ -3259,9 +3273,13 @@
   </compound>
   <compound refid="player__kick__event_8h" kind="file"><name>player_kick_event.h</name>
   </compound>
+  <compound refid="player__level__change__event_8h" kind="file"><name>player_level_change_event.h</name>
+  </compound>
   <compound refid="player__login__event_8h" kind="file"><name>player_login_event.h</name>
   </compound>
   <compound refid="player__move__event_8h" kind="file"><name>player_move_event.h</name>
+  </compound>
+  <compound refid="player__pickup__arrow__event_8h" kind="file"><name>player_pickup_arrow_event.h</name>
   </compound>
   <compound refid="player__pickup__item__event_8h" kind="file"><name>player_pickup_item_event.h</name>
   </compound>

@@ -27,6 +27,7 @@
 * **address\_** ([**endstone::IpBanEntry**](classendstone_1_1IpBanEntry.md), [**endstone::PacketReceiveEvent**](classendstone_1_1PacketReceiveEvent.md), [**endstone::PacketSendEvent**](classendstone_1_1PacketSendEvent.md), [**endstone::ServerListPingEvent**](classendstone_1_1ServerListPingEvent.md))
 * **attachment\_** ([**endstone::PermissionAttachmentInfo**](classendstone_1_1PermissionAttachmentInfo.md))
 * **action\_** ([**endstone::PlayerInteractEvent**](classendstone_1_1PlayerInteractEvent.md))
+* **arrow\_** ([**endstone::PlayerPickupArrowEvent**](classendstone_1_1PlayerPickupArrowEvent.md))
 * **api\_version\_** ([**endstone::PluginDescription**](classendstone_1_1PluginDescription.md))
 * **authors\_** ([**endstone::PluginDescription**](classendstone_1_1PluginDescription.md))
 * **Awkward** ([**endstone::PotionType**](classendstone_1_1PotionType.md))
@@ -374,6 +375,7 @@
 * **NaturalRegeneration** ([**endstone::GameRule**](classendstone_1_1GameRule.md))
 * **namespace\_** ([**endstone::Identifier**](classendstone_1_1Identifier.md))
 * **new\_game\_mode\_** ([**endstone::PlayerGameModeChangeEvent**](classendstone_1_1PlayerGameModeChangeEvent.md))
+* **new\_level\_** ([**endstone::PlayerLevelChangeEvent**](classendstone_1_1PlayerLevelChangeEvent.md))
 * **new\_skin\_** ([**endstone::PlayerSkinChangeEvent**](classendstone_1_1PlayerSkinChangeEvent.md))
 * **Nightvision** ([**endstone::PotionType**](classendstone_1_1PotionType.md))
 * **network\_protocol\_version\_** ([**endstone::ServerListPingEvent**](classendstone_1_1ServerListPingEvent.md))
@@ -395,6 +397,7 @@
 * **Oozing** ([**endstone::EffectType**](classendstone_1_1EffectType.md), [**endstone::PotionType**](classendstone_1_1PotionType.md))
 * **on\_close\_** ([**endstone::Form**](classendstone_1_1Form.md))
 * **owned\_payload\_** ([**endstone::PacketReceiveEvent**](classendstone_1_1PacketReceiveEvent.md), [**endstone::PacketSendEvent**](classendstone_1_1PacketSendEvent.md))
+* **old\_level\_** ([**endstone::PlayerLevelChangeEvent**](classendstone_1_1PlayerLevelChangeEvent.md))
 * **owner\_** ([**endstone::PluginCommand**](classendstone_1_1PluginCommand.md))
 
 

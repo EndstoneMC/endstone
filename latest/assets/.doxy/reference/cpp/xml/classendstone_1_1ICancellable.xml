@@ -145,7 +145,7 @@
         <childnode refid="1" relation="public-inheritance">
         </childnode>
       </node>
-      <node id="47">
+      <node id="48">
         <label>endstone::Cancellable&lt; WeatherEvent &gt;</label>
         <link refid="classendstone_1_1Cancellable"/>
         <childnode refid="1" relation="public-inheritance">
@@ -247,7 +247,7 @@
         <childnode refid="21" relation="public-inheritance">
         </childnode>
       </node>
-      <node id="50">
+      <node id="51">
         <label>endstone::Cancellable&lt; EventType &gt;</label>
         <link refid="classendstone_1_1Cancellable"/>
         <childnode refid="1" relation="public-inheritance">
@@ -360,6 +360,12 @@
         </childnode>
       </node>
       <node id="45">
+        <label>endstone::PlayerPickupArrowEvent</label>
+        <link refid="classendstone_1_1PlayerPickupArrowEvent"/>
+        <childnode refid="28" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="46">
         <label>endstone::PlayerPickupItemEvent</label>
         <link refid="classendstone_1_1PlayerPickupItemEvent"/>
         <childnode refid="28" relation="public-inheritance">
@@ -371,7 +377,7 @@
         <childnode refid="43" relation="public-inheritance">
         </childnode>
       </node>
-      <node id="46">
+      <node id="47">
         <label>endstone::PlayerSkinChangeEvent</label>
         <link refid="classendstone_1_1PlayerSkinChangeEvent"/>
         <childnode refid="28" relation="public-inheritance">
@@ -401,16 +407,16 @@
         <childnode refid="21" relation="public-inheritance">
         </childnode>
       </node>
-      <node id="48">
+      <node id="49">
         <label>endstone::ThunderChangeEvent</label>
         <link refid="classendstone_1_1ThunderChangeEvent"/>
-        <childnode refid="47" relation="public-inheritance">
+        <childnode refid="48" relation="public-inheritance">
         </childnode>
       </node>
-      <node id="49">
+      <node id="50">
         <label>endstone::WeatherChangeEvent</label>
         <link refid="classendstone_1_1WeatherChangeEvent"/>
-        <childnode refid="47" relation="public-inheritance">
+        <childnode refid="48" relation="public-inheritance">
         </childnode>
       </node>
     </inheritancegraph>

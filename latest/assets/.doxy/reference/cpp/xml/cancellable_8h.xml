@@ -30,6 +30,7 @@
     <includedby refid="player__kick__event_8h" local="yes">include/endstone/event/player/player_kick_event.h</includedby>
     <includedby refid="player__login__event_8h" local="yes">include/endstone/event/player/player_login_event.h</includedby>
     <includedby refid="player__move__event_8h" local="yes">include/endstone/event/player/player_move_event.h</includedby>
+    <includedby refid="player__pickup__arrow__event_8h" local="yes">include/endstone/event/player/player_pickup_arrow_event.h</includedby>
     <includedby refid="player__pickup__item__event_8h" local="yes">include/endstone/event/player/player_pickup_item_event.h</includedby>
     <includedby refid="player__skin__change__event_8h" local="yes">include/endstone/event/player/player_skin_change_event.h</includedby>
     <includedby refid="broadcast__message__event_8h" local="yes">include/endstone/event/server/broadcast_message_event.h</includedby>
@@ -190,6 +191,8 @@
         </childnode>
         <childnode refid="45" relation="include">
         </childnode>
+        <childnode refid="46" relation="include">
+        </childnode>
       </node>
       <node id="18">
         <label>include/endstone/event/player/player_bed_enter_event.h</label>
@@ -260,6 +263,10 @@
         </childnode>
       </node>
       <node id="36">
+        <label>include/endstone/event/player/player_pickup_arrow_event.h</label>
+        <link refid="player__pickup__arrow__event_8h_source"/>
+      </node>
+      <node id="37">
         <label>include/endstone/event/player/player_pickup_item_event.h</label>
         <link refid="player__pickup__item__event_8h_source"/>
       </node>
@@ -267,7 +274,7 @@
         <label>include/endstone/event/player/player_portal_event.h</label>
         <link refid="player__portal__event_8h_source"/>
       </node>
-      <node id="37">
+      <node id="38">
         <label>include/endstone/event/player/player_skin_change_event.h</label>
         <link refid="player__skin__change__event_8h_source"/>
       </node>
@@ -277,35 +284,35 @@
         <childnode refid="35" relation="include">
         </childnode>
       </node>
-      <node id="38">
+      <node id="39">
         <label>include/endstone/event/server/broadcast_message_event.h</label>
         <link refid="broadcast__message__event_8h_source"/>
       </node>
-      <node id="39">
+      <node id="40">
         <label>include/endstone/event/server/packet_receive_event.h</label>
         <link refid="packet__receive__event_8h_source"/>
       </node>
-      <node id="40">
+      <node id="41">
         <label>include/endstone/event/server/packet_send_event.h</label>
         <link refid="packet__send__event_8h_source"/>
       </node>
-      <node id="41">
+      <node id="42">
         <label>include/endstone/event/server/script_message_event.h</label>
         <link refid="script__message__event_8h_source"/>
       </node>
-      <node id="42">
+      <node id="43">
         <label>include/endstone/event/server/server_command_event.h</label>
         <link refid="server__command__event_8h_source"/>
       </node>
-      <node id="43">
+      <node id="44">
         <label>include/endstone/event/server/server_list_ping_event.h</label>
         <link refid="server__list__ping__event_8h_source"/>
       </node>
-      <node id="44">
+      <node id="45">
         <label>include/endstone/event/weather/thunder_change_event.h</label>
         <link refid="thunder__change__event_8h_source"/>
       </node>
-      <node id="45">
+      <node id="46">
         <label>include/endstone/event/weather/weather_change_event.h</label>
         <link refid="weather__change__event_8h_source"/>
       </node>
