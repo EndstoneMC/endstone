@@ -437,6 +437,12 @@ extra = 0
 pattern = "4C 8B 41 08 41 8B 40 70 83 F8 02 74 ? 83 F8 01 74 ? 85 C0 75 ?"
 
 [[signatures]]
+name = "?executeBucketEntityUse@ItemUseOnActorInventoryTransaction@@SA_JPEAX0PEAVActor@@HHHD0_J@Z"
+relative = false
+extra = 0
+pattern = "41 57 41 56 41 55 41 54 56 57 55 53 48 83 EC 58 48 89 D6 48 8B 41 08 48 85 C0 0F 84 ? ? ? ? 48 83 38 00 0F 84 ? ? ? ? 4C 89 C7 48 89 CB 44 89 CD 49 8B 88 D8 01 00 00"
+
+[[signatures]]
 name = "?readUserData@Item@@UEBAXAEAVItemStackBase@@AEAVIDataInput@@AEAVReadOnlyBinaryStream@@@Z"
 relative = false
 extra = 0

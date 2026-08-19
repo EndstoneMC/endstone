@@ -54,6 +54,7 @@ __all__ = [
     "PacketSendEvent",
     "PlayerBedEnterEvent",
     "PlayerBedLeaveEvent",
+    "PlayerBucketActorEvent",
     "PlayerChatEvent",
     "PlayerCommandEvent",
     "PlayerDeathEvent",
@@ -547,6 +548,36 @@ class PlayerBedLeaveEvent(PlayerEvent):
     def bed(self) -> Block:
         """
         The bed block involved in this event.
+        """
+
+class PlayerBucketActorEvent(PlayerEvent, Cancellable):
+    """
+    Called when a player captures an actor with a bucket.
+    """
+    @property
+    def actor(self) -> Actor:
+        """
+        The actor being captured.
+        """
+
+    @property
+    def actor_bucket(self) -> ItemStack:
+        """
+        The bucket item that will contain the captured actor.
+        """
+
+    @actor_bucket.setter
+    def actor_bucket(self, arg1: ItemStack) -> None: ...
+    @property
+    def hand(self) -> EquipmentSlot:
+        """
+        The hand used to capture the actor.
+        """
+
+    @property
+    def original_bucket(self) -> ItemStack:
+        """
+        The bucket used to capture the actor.
         """
 
 class PlayerShearActorEvent(PlayerEvent, Cancellable):

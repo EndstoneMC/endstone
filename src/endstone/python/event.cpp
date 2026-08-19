@@ -257,6 +257,16 @@ void init_event(py::module_ &m, py::class_<Event, PyEvent> &event)
     py::class_<PlayerBedLeaveEvent, PlayerEvent>(m, "PlayerBedLeaveEvent", "Called when a player is leaving a bed.")
         .def_property_readonly("bed", &PlayerBedLeaveEvent::getBed, py::return_value_policy::reference,
                                "The bed block involved in this event.");
+    py::class_<PlayerBucketActorEvent, PlayerEvent, ICancellable>(
+        m, "PlayerBucketActorEvent", "Called when a player captures an actor with a bucket.")
+        .def_property_readonly("actor", &PlayerBucketActorEvent::getActor,
+                               "The actor being captured.")
+        .def_property("actor_bucket", &PlayerBucketActorEvent::getActorBucket,
+                      &PlayerBucketActorEvent::setActorBucket,
+                      "The bucket item that will contain the captured actor.")
+        .def_property_readonly("hand", &PlayerBucketActorEvent::getHand, "The hand used to capture the actor.")
+        .def_property_readonly("original_bucket", &PlayerBucketActorEvent::getOriginalBucket,
+                               "The bucket used to capture the actor.");
     py::class_<PlayerShearActorEvent, PlayerEvent, ICancellable>(
         m, "PlayerShearActorEvent", "Called when a player shears an actor.")
         .def_property_readonly("actor", &PlayerShearActorEvent::getActor,
