@@ -28,6 +28,9 @@
 
 namespace endstone {
 
+class Mob;
+class Player;
+
 class Dimension;
 using DimensionId = Identifier<Dimension>;
 
@@ -185,6 +188,20 @@ public:
      * @return A List of all actors currently residing in this dimension
      */
     [[nodiscard]] virtual std::vector<NotNull<Actor>> getActors() const = 0;
+
+    /**
+     * Get a list of all mobs in this dimension.
+     *
+     * @return A List of all mobs currently residing in this dimension
+     */
+    [[nodiscard]] virtual std::vector<NotNull<Mob>> getMobs() const = 0;
+
+    /**
+     * Get a list of all players in this dimension.
+     *
+     * @return A List of all players currently residing in this dimension
+     */
+    [[nodiscard]] virtual std::vector<NotNull<Player>> getPlayers() const = 0;
 };
 
 inline Nullable<Dimension> Location::getDimension() const

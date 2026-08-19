@@ -275,6 +275,10 @@ void init_event(py::module_ &m, py::class_<Event, PyEvent> &event)
         .def_property_readonly("item", &PlayerShearActorEvent::getItem, "The item used to shear the actor.")
         .def_property("drops", &PlayerShearActorEvent::getDrops, &PlayerShearActorEvent::setDrops,
                       "The items dropped when the actor is sheared.");
+    py::class_<PlayerPickupArrowEvent, PlayerEvent, ICancellable>(
+        m, "PlayerPickupArrowEvent", "Called when a player picks up an arrow from the ground.")
+        .def_property_readonly("arrow", &PlayerPickupArrowEvent::getArrow,
+                               "The arrow picked up by the player.");
     py::class_<PlayerChatEvent, PlayerEvent, ICancellable>(m, "PlayerChatEvent",
                                                            "Called when a player sends a chat message.")
         .def_property("message", &PlayerChatEvent::getMessage, &PlayerChatEvent::setMessage,

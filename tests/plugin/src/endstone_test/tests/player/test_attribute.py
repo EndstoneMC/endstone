@@ -114,10 +114,11 @@ def test_value_is_read_only(player: Player) -> None:
         player.get_attribute(Attribute.HEALTH).value = 1.0
 
 
-def test_get_attribute_never_returns_none(player: Player) -> None:
-    """Verify get_attribute always hands back an instance, so pair it with has_attribute."""
+def test_an_unknown_attribute(player: Player) -> None:
+    """Verify an unknown name answers has_attribute False and makes get_attribute raise."""
     assert player.has_attribute("minecraft:not_an_attribute") is False
-    assert player.get_attribute("minecraft:not_an_attribute") is not None
+    with pytest.raises(RuntimeError):
+        player.get_attribute("minecraft:not_an_attribute")
 
 
 def test_attributes_are_attribute_instances(player: Player) -> None:

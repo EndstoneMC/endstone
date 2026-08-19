@@ -25,7 +25,7 @@ BiomeId EndstoneBiome::getId() const
 
 std::string EndstoneBiome::getTranslationKey() const
 {
-    return biome_.getFullName();
+    throw std::runtime_error("Bedrock does not localize biome names, so a biome has no translation key.");
 }
 
 const ::Biome &EndstoneBiome::getHandle() const
