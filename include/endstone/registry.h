@@ -88,6 +88,9 @@ public:
         /**
          * Get the translation key, suitable for use in a translation component.
          *
+         * Bedrock does not localize every registry. `Biome` and `GameRule` have no translation key at all, and
+         * asking either for one raises.
+         *
          * @return the translation key
          */
         [[nodiscard]] virtual std::string getTranslationKey() const = 0;

@@ -257,31 +257,6 @@ void init_event(py::module_ &m, py::class_<Event, PyEvent> &event)
     py::class_<PlayerBedLeaveEvent, PlayerEvent>(m, "PlayerBedLeaveEvent", "Called when a player is leaving a bed.")
         .def_property_readonly("bed", &PlayerBedLeaveEvent::getBed, py::return_value_policy::reference,
                                "The bed block involved in this event.");
-    auto player_set_spawn_event = py::class_<PlayerSetSpawnEvent, PlayerEvent, ICancellable>(
-        m, "PlayerSetSpawnEvent", R"doc(
-    Called when a player's spawn is set, either by themselves or otherwise.
-
-    Cancelling this event prevents the spawn change on supported native paths.
-
-    Note:
-        On Bedrock, only the location's block coordinates and dimension are written back. Yaw/pitch are not persisted.
-        The native respawn invalidation path does not emit this event. Cancelling this event prevents the supported
-        native setter from writing the respawn state, but `/spawnpoint` may still report success because its native
-        `Player::setRespawnPosition()` setter returns `void`.
-)doc");
-    py::native_enum<PlayerSetSpawnEvent::Cause>(player_set_spawn_event, "Cause", "enum.Enum",
-        "The cause of the spawn change.")
-        .value("BED", PlayerSetSpawnEvent::Cause::Bed)
-        .value("RESPAWN_ANCHOR", PlayerSetSpawnEvent::Cause::RespawnAnchor)
-        .value("COMMAND", PlayerSetSpawnEvent::Cause::Command)
-        .value("PLUGIN", PlayerSetSpawnEvent::Cause::Plugin)
-        .value("UNKNOWN", PlayerSetSpawnEvent::Cause::Unknown)
-        .export_values()
-        .finalize();
-    player_set_spawn_event
-        .def_property_readonly("cause", &PlayerSetSpawnEvent::getCause, "The cause of the spawn change.")
-        .def_property("location", &PlayerSetSpawnEvent::getLocation, &PlayerSetSpawnEvent::setLocation,
-                      "The spawn location, or `None` to remove the spawn location.");
     py::class_<PlayerChatEvent, PlayerEvent, ICancellable>(m, "PlayerChatEvent",
                                                            "Called when a player sends a chat message.")
         .def_property("message", &PlayerChatEvent::getMessage, &PlayerChatEvent::setMessage,
@@ -405,6 +380,31 @@ void init_event(py::module_ &m, py::class_<Event, PyEvent> &event)
         .finalize();
     player_respawn_event.def_property_readonly("respawn_reason", &PlayerRespawnEvent::getRespawnReason,
                                                "The reason this respawn occurred.");
+    auto player_set_spawn_event = py::class_<PlayerSetSpawnEvent, PlayerEvent, ICancellable>(
+        m, "PlayerSetSpawnEvent", R"doc(
+    Called when a player's spawn is set, either by themselves or otherwise.
+
+    Cancelling this event prevents the spawn change on supported native paths.
+
+    Note:
+        On Bedrock, only the location's block coordinates and dimension are written back. Yaw/pitch are not persisted.
+        The native respawn invalidation path does not emit this event. Cancelling this event prevents the supported
+        native setter from writing the respawn state, but `/spawnpoint` may still report success because its native
+        `Player::setRespawnPosition()` setter returns `void`.
+)doc");
+    py::native_enum<PlayerSetSpawnEvent::Cause>(player_set_spawn_event, "Cause", "enum.Enum",
+        "The cause of the spawn change.")
+        .value("BED", PlayerSetSpawnEvent::Cause::Bed)
+        .value("RESPAWN_ANCHOR", PlayerSetSpawnEvent::Cause::RespawnAnchor)
+        .value("COMMAND", PlayerSetSpawnEvent::Cause::Command)
+        .value("PLUGIN", PlayerSetSpawnEvent::Cause::Plugin)
+        .value("UNKNOWN", PlayerSetSpawnEvent::Cause::Unknown)
+        .export_values()
+        .finalize();
+    player_set_spawn_event
+        .def_property_readonly("cause", &PlayerSetSpawnEvent::getCause, "The cause of the spawn change.")
+        .def_property("location", &PlayerSetSpawnEvent::getLocation, &PlayerSetSpawnEvent::setLocation,
+                      "The spawn location, or `None` to remove the spawn location.");
     py::class_<PlayerSkinChangeEvent, PlayerEvent, ICancellable>(m, "PlayerSkinChangeEvent",
                                                                  "Called when a player changes their skin.")
         .def_property_readonly("new_skin", &PlayerSkinChangeEvent::getNewSkin, "The skin that will be applied.")
@@ -415,6 +415,10 @@ void init_event(py::module_ &m, py::class_<Event, PyEvent> &event)
         m, "PlayerTeleportEvent", "Called when a player is teleported from one location to another.");
     py::class_<PlayerPortalEvent, PlayerTeleportEvent>(
         m, "PlayerPortalEvent", "Called when a player is about to teleport because it is in contact with a portal.");
+    py::class_<PlayerPickupArrowEvent, PlayerEvent, ICancellable>(
+        m, "PlayerPickupArrowEvent", "Called when a player picks up an arrow from the ground.")
+        .def_property_readonly("arrow", &PlayerPickupArrowEvent::getArrow,
+                               "The arrow picked up by the player.");
     py::class_<PlayerPickupItemEvent, PlayerEvent, ICancellable>(
         m, "PlayerPickupItemEvent", "Called when a player picks an item up from the ground.")
         .def_property_readonly("item", &PlayerPickupItemEvent::getItem,

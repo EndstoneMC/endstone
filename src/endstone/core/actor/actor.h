@@ -195,11 +195,11 @@ public:
 
     [[nodiscard]] bool isValid() const override
     {
-        const auto *handle = handle_.tryUnwrap<Handle>();
+        const auto *handle = handle_.tryUnwrap<Handle>(/*include_removed*/ true);
         if (!handle) {
             return false;
         }
-        return handle->isAlive();
+        return !handle->isRemoved() && handle->isAlive();
     }
 
     [[nodiscard]] std::vector<std::string> getScoreboardTags() const override { return getHandle().getTags(); }
@@ -231,6 +231,11 @@ public:
     [[nodiscard]] std::string getScoreTag() const override { return getHandle().getScoreTag(); }
 
     void setScoreTag(std::string score) override { getHandle().setScoreTag(score); }
+
+    [[nodiscard]] Handle *tryGetHandle() const
+    {
+        return handle_.template tryUnwrap<Handle>(/*include_removed*/ true);
+    }
 
     Handle &getHandle() const
     {

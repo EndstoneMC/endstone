@@ -71,6 +71,7 @@ __all__ = [
     "PlayerKickEvent",
     "PlayerLoginEvent",
     "PlayerMoveEvent",
+    "PlayerPickupArrowEvent",
     "PlayerPickupItemEvent",
     "PlayerPortalEvent",
     "PlayerQuitEvent",
@@ -549,49 +550,6 @@ class PlayerBedLeaveEvent(PlayerEvent):
         The bed block involved in this event.
         """
 
-class PlayerSetSpawnEvent(PlayerEvent, Cancellable):
-    """
-    Called when a player's spawn is set, either by themselves or otherwise.
-
-    Cancelling this event prevents the spawn change on supported native paths.
-
-    Note:
-        On Bedrock, only the location's block coordinates and dimension are written back. Yaw/pitch are not persisted.
-        The native respawn invalidation path does not emit this event. Cancelling this event prevents the supported
-        native setter from writing the respawn state, but `/spawnpoint` may still report success because its native
-        `Player::setRespawnPosition()` setter returns `void`.
-    """
-    class Cause(enum.Enum):
-        """
-        The cause of the spawn change.
-        """
-
-        BED = 0
-        RESPAWN_ANCHOR = 1
-        COMMAND = 2
-        PLUGIN = 3
-        UNKNOWN = 4
-
-    BED = Cause.BED
-    RESPAWN_ANCHOR = Cause.RESPAWN_ANCHOR
-    COMMAND = Cause.COMMAND
-    PLUGIN = Cause.PLUGIN
-    UNKNOWN = Cause.UNKNOWN
-    @property
-    def cause(self) -> Cause:
-        """
-        The cause of the spawn change.
-        """
-
-    @property
-    def location(self) -> Location | None:
-        """
-        The spawn location, or `None` to remove the spawn location.
-        """
-
-    @location.setter
-    def location(self, arg1: Location | None) -> None: ...
-
 class PlayerChatEvent(PlayerEvent, Cancellable):
     """
     Called when a player sends a chat message.
@@ -927,6 +885,49 @@ class PlayerRespawnEvent(PlayerEvent):
         The reason this respawn occurred.
         """
 
+class PlayerSetSpawnEvent(PlayerEvent, Cancellable):
+    """
+    Called when a player's spawn is set, either by themselves or otherwise.
+
+    Cancelling this event prevents the spawn change on supported native paths.
+
+    Note:
+        On Bedrock, only the location's block coordinates and dimension are written back. Yaw/pitch are not persisted.
+        The native respawn invalidation path does not emit this event. Cancelling this event prevents the supported
+        native setter from writing the respawn state, but `/spawnpoint` may still report success because its native
+        `Player::setRespawnPosition()` setter returns `void`.
+    """
+    class Cause(enum.Enum):
+        """
+        The cause of the spawn change.
+        """
+
+        BED = 0
+        RESPAWN_ANCHOR = 1
+        COMMAND = 2
+        PLUGIN = 3
+        UNKNOWN = 4
+
+    BED = Cause.BED
+    RESPAWN_ANCHOR = Cause.RESPAWN_ANCHOR
+    COMMAND = Cause.COMMAND
+    PLUGIN = Cause.PLUGIN
+    UNKNOWN = Cause.UNKNOWN
+    @property
+    def cause(self) -> Cause:
+        """
+        The cause of the spawn change.
+        """
+
+    @property
+    def location(self) -> Location | None:
+        """
+        The spawn location, or `None` to remove the spawn location.
+        """
+
+    @location.setter
+    def location(self, arg1: Location | None) -> None: ...
+
 class PlayerSkinChangeEvent(PlayerEvent, Cancellable):
     """
     Called when a player changes their skin.
@@ -955,6 +956,16 @@ class PlayerPortalEvent(PlayerTeleportEvent):
     """
     Called when a player is about to teleport because it is in contact with a portal.
     """
+
+class PlayerPickupArrowEvent(PlayerEvent, Cancellable):
+    """
+    Called when a player picks up an arrow from the ground.
+    """
+    @property
+    def arrow(self) -> Actor:
+        """
+        The arrow picked up by the player.
+        """
 
 class PlayerPickupItemEvent(PlayerEvent, Cancellable):
     """

@@ -26,12 +26,16 @@
 #include "bedrock/world/attribute/attribute_instance.h"
 #include "bedrock/world/attribute/mutable_attribute_with_context.h"
 #include "endstone/attribute/attribute_instance.h"
+#include "endstone/check.h"
 
 namespace endstone::core {
 
 class EndstoneAttributeInstance : public AttributeInstance {
 public:
-    explicit EndstoneAttributeInstance(::MutableAttributeWithContext handle) : handle_(handle) {}
+    explicit EndstoneAttributeInstance(::MutableAttributeWithContext handle) : handle_(handle)
+    {
+        Preconditions::checkState(handle_.isValid(), "Attribute not found.");
+    }
 
     [[nodiscard]] AttributeId getType() const override
     {
