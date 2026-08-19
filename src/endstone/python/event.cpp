@@ -295,6 +295,10 @@ void init_event(py::module_ &m, py::class_<Event, PyEvent> &event)
         m, "PlayerGameModeChangeEvent", "Called when the `GameMode` of the player is changed.")
         .def_property_readonly("new_game_mode", &PlayerGameModeChangeEvent::getNewGameMode,
                                "The `GameMode` the player is switched to.");
+    py::class_<PlayerInputEvent, PlayerEvent>(m, "PlayerInputEvent",
+                                              "Called when a player sends updated input to the server.")
+        .def_property_readonly("input", &PlayerInputEvent::getInput,
+                               "The new input received from this player.");
     auto player_interact_event = py::class_<PlayerInteractEvent, PlayerEvent, ICancellable>(
         m, "PlayerInteractEvent", "Represents an event that is called when a player interacts with an object or air.");
     py::native_enum<PlayerInteractEvent::Action>(player_interact_event, "Action", "enum.Enum",
