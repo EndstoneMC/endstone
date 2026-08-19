@@ -123,6 +123,9 @@ class ItemType:
     """
     Represents an item type.
     """
+    def __hash__(self) -> int: ...
+    def __eq__(self, other: object) -> bool: ...
+    def __ne__(self, other: object) -> bool: ...
 
     AIR: Identifier[ItemType] = "minecraft:air"
     @property
@@ -176,10 +179,6 @@ class ItemType:
         """
         Attempts to get the `ItemType` with the given name.
         """
-
-    def __hash__(self) -> int: ...
-    def __eq__(self, other: object) -> bool: ...
-    def __ne__(self, other: object) -> bool: ...
 
 class ItemMeta:
     """

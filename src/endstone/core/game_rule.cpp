@@ -31,7 +31,7 @@ Identifier<GameRule> EndstoneGameRule::getId() const
 
 std::string EndstoneGameRule::getTranslationKey() const
 {
-    return game_rule_.getName();
+    throw std::runtime_error("Bedrock does not localize game rule names, so a game rule has no translation key.");
 }
 
 const ::GameRule &EndstoneGameRule::getHandle() const

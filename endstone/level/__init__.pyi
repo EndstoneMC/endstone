@@ -1,7 +1,7 @@
 import typing
 
-from endstone import GameRule, Identifier
-from endstone.actor import Actor, ActorType, Item
+from endstone import GameRule, Identifier, Player
+from endstone.actor import Actor, ActorType, Item, Mob
 from endstone.block import Block
 from endstone.inventory import ItemStack
 from endstone.util import Vector
@@ -298,6 +298,18 @@ class Dimension:
     def actors(self) -> list[Actor]:
         """
         A list of all actors currently residing in this dimension.
+        """
+
+    @property
+    def mobs(self) -> list[Mob]:
+        """
+        A list of all mobs currently residing in this dimension.
+        """
+
+    @property
+    def players(self) -> list[Player]:
+        """
+        A list of all players currently residing in this dimension.
         """
 
 class Location:

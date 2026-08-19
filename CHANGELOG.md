@@ -16,6 +16,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Added an attribute API: `Mob.get_attribute()`, `Mob.has_attribute()` and `Mob.attributes` expose a living entity's attributes (health, movement speed, attack damage, etc.). Each `AttributeInstance` reports its current, base, minimum and maximum value, and takes `AttributeModifier`s at runtime.
 - Added `endstone.Identifier` for namespaced ids, so `dim.id.namespace` and `dim.id.key` are separable and a type checker can tell `Identifier[Dimension]` apart from `Identifier[ActorType]`. Plain strings are still accepted wherever an `Identifier` is required.
 - Added `BlockData.translation_key` for retrieving the translation key of a block.
+- Added `Dimension.mobs` and `Dimension.players`, mirroring Bukkit's `World#getLivingEntities()` and `World#getPlayers()`. Both narrow `Dimension.actors`, which lists everything in the dimension.
 - Added `Level.create_dimension()` for creating custom dimensions at runtime, which registers and returns an empty (void) dimension built from -64 to 320. A dimension's terrain and actors survive a restart but the registration does not, so call it again on every startup to get the same dimension back.
 - Added `WritableBookMeta`, `BookMeta` and `CrossbowMeta` item meta types.
 - Added `PotionMeta` for potions, splash potions and lingering potions, giving the `PotionType` identifiers a consumer: `meta.base_potion_type` reads and writes the potion a bottle holds. Bedrock derives a potion's effects and its colour from the base potion type, so there is no `custom_effects` or `color` as in Bukkit's `PotionMeta`.
@@ -68,6 +69,11 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Fixed the NBT bindings hiding what their containers hold: `ByteArrayTag(iterable)` and `IntArrayTag(iterable)` take an `Iterable[int]`, `ListTag(iterable)` an `Iterable[Tag]`, `CompoundTag(mapping)` a `dict[str, Tag]`, and `to_list()`/`to_dict()` return `list[Any]`/`dict[str, Any]`.
 - Fixed `Plugin.default_permission` rejecting a string or a bool (`"operator"`, `"not op"`, `True`), which the `default` of an individual entry in `Plugin.permissions` already accepted. Only `PermissionDefault` worked; anything else raised `TypeError`.
 - Fixed `ServerLoadEvent` missing its `ServerEvent` base in Python, so `isinstance(event, ServerEvent)` was `False`, and `LoadType.RELOAD` never being exposed even though the server fires it on `/reload`.
+- Fixed every vanilla command failing when dispatched through a `CommandSenderWrapper`. The wrapper did not report its own type, so the command origin could not be resolved from it and the command was refused as an unsupported sender before it ran.
+- Fixed `Enchantment.FORTUNE` missing from Python. The constant existed in C++ but was never bound.
+- Fixed `Mob.has_attribute()` raising for a name that is not an attribute, instead of answering `False`.
+- Fixed `Dimension.actors` and `Level.actors` leaving out connected players. Bedrock keeps players in a separate list from other entities and only the latter was read, so a player was never among the actors of the dimension they were standing in.
+- Fixed `str()` on a `Translatable` giving `<endstone._python.lang.Translatable object at 0x...>` instead of its text. Command output captured through a `CommandSenderWrapper` arrives as `Translatable`, so it was unreadable without reaching for `.text` by hand.
 
 ## [0.11.9] - 2026-08-17
 

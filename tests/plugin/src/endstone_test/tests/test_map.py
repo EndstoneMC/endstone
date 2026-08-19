@@ -3,24 +3,24 @@ from endstone import Server
 from endstone.level import Dimension
 from endstone.map import MapCanvas, MapRenderer, MapView
 
-from endstone_test.image_renderer import ImageRenderer, test_pattern
+from endstone_test.image_renderer import ImageRenderer, make_test_pattern
 
 
 def test_pattern_shape() -> None:
     """Verify the generated test image is a 128x128 RGBA array."""
-    image = test_pattern()
+    image = make_test_pattern()
     assert image.shape == (128, 128, 4)
     assert image.dtype.name == "uint8"
 
 
 def test_pattern_is_deterministic() -> None:
     """Verify the generated test image is stable across calls."""
-    assert (test_pattern() == test_pattern()).all()
+    assert (make_test_pattern() == make_test_pattern()).all()
 
 
 def test_pattern_ramps_and_checkers() -> None:
     """Verify the test image ramps on red and green and checkers on blue."""
-    image = test_pattern()
+    image = make_test_pattern()
     assert image[0, 0, 0] < image[0, -1, 0]
     assert image[0, 0, 1] < image[-1, 0, 1]
     assert image[0, 0, 2] != image[0, 16, 2]
@@ -32,7 +32,7 @@ def test_renderer_is_a_map_renderer() -> None:
     renderer = ImageRenderer()
     assert isinstance(renderer, MapRenderer)
     assert renderer.rendered is False
-    assert (renderer.image == test_pattern()).all()
+    assert (renderer.image == make_test_pattern()).all()
 
 
 def test_add_and_remove_a_renderer(server: Server) -> None:

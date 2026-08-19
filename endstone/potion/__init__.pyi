@@ -14,6 +14,9 @@ class EffectType:
     """
     Represents an effect type.
     """
+    def __hash__(self) -> int: ...
+    def __eq__(self, other: object) -> bool: ...
+    def __ne__(self, other: object) -> bool: ...
     @property
     def id(self) -> Identifier[EffectType]:
         """
@@ -37,10 +40,6 @@ class EffectType:
         Returns:
             The `EffectType`, or `None` if no effect type with that name exists.
         """
-
-    def __hash__(self) -> int: ...
-    def __eq__(self, other: object) -> bool: ...
-    def __ne__(self, other: object) -> bool: ...
 
     SPEED: Identifier[EffectType] = "minecraft:speed"
     SLOWNESS: Identifier[EffectType] = "minecraft:slowness"
@@ -70,7 +69,7 @@ class EffectType:
     CONDUIT_POWER: Identifier[EffectType] = "minecraft:conduit_power"
     SLOW_FALLING: Identifier[EffectType] = "minecraft:slow_falling"
     BAD_OMEN: Identifier[EffectType] = "minecraft:bad_omen"
-    HERO_OF_THE_VILLAGE: Identifier[EffectType] = "minecraft:hero_of_the_village"
+    VILLAGE_HERO: Identifier[EffectType] = "minecraft:village_hero"
     DARKNESS: Identifier[EffectType] = "minecraft:darkness"
     TRIAL_OMEN: Identifier[EffectType] = "minecraft:trial_omen"
     WIND_CHARGED: Identifier[EffectType] = "minecraft:wind_charged"
@@ -145,6 +144,9 @@ class PotionType:
     """
     Represents a potion type.
     """
+    def __hash__(self) -> int: ...
+    def __eq__(self, other: object) -> bool: ...
+    def __ne__(self, other: object) -> bool: ...
     @property
     def id(self) -> Identifier[PotionType]:
         """
@@ -168,10 +170,6 @@ class PotionType:
         Returns:
             The `PotionType`, or `None` if no potion type with that name exists.
         """
-
-    def __hash__(self) -> int: ...
-    def __eq__(self, other: object) -> bool: ...
-    def __ne__(self, other: object) -> bool: ...
 
     WATER: Identifier[PotionType] = "minecraft:potion_type:water"
     MUNDANE: Identifier[PotionType] = "minecraft:potion_type:mundane"

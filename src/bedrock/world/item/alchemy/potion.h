@@ -76,6 +76,8 @@ public:
 
     [[nodiscard]] std::string getNameId() const { return name_id_; }
 
+    [[nodiscard]] std::string getDescriptionId(PotionType potion_type) const;
+
     [[nodiscard]] std::string getDescriptionId() const;
 
     [[nodiscard]] const std::vector<MobEffectInstance> &getMobEffects() const { return effects_; }

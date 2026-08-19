@@ -25,7 +25,9 @@ PotionId EndstonePotionType::getId() const
 
 std::string EndstonePotionType::getTranslationKey() const
 {
-    return potion_.getDescriptionId();
+    auto key = potion_.getDescriptionId(::Potion::Regular);
+    std::erase(key, '%');
+    return key;
 }
 
 const ::Potion &EndstonePotionType::getHandle() const
