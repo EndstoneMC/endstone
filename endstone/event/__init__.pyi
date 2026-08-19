@@ -71,6 +71,7 @@ __all__ = [
     "PlayerKickEvent",
     "PlayerLoginEvent",
     "PlayerMoveEvent",
+    "PlayerPickupArrowEvent",
     "PlayerPickupItemEvent",
     "PlayerPortalEvent",
     "PlayerQuitEvent",
@@ -549,25 +550,6 @@ class PlayerBedLeaveEvent(PlayerEvent):
         The bed block involved in this event.
         """
 
-class PlayerRecipeBookClickEvent(PlayerEvent, Cancellable):
-    """
-    Called when a player clicks a recipe in the recipe book.
-    """
-    @property
-    def recipe(self) -> str:
-        """
-        The recipe identifier clicked by the player.
-        """
-
-    @property
-    def make_all(self) -> bool:
-        """
-        Whether the player requested crafting as many copies as possible.
-        """
-
-    @make_all.setter
-    def make_all(self, arg1: bool) -> None: ...
-
 class PlayerChatEvent(PlayerEvent, Cancellable):
     """
     Called when a player sends a chat message.
@@ -883,6 +865,25 @@ class PlayerQuitEvent(PlayerEvent):
     @quit_message.setter
     def quit_message(self, arg1: str | Translatable | None) -> None: ...
 
+class PlayerRecipeBookClickEvent(PlayerEvent, Cancellable):
+    """
+    Called when a player clicks a recipe in the recipe book.
+    """
+    @property
+    def recipe(self) -> str:
+        """
+        The recipe identifier clicked by the player.
+        """
+
+    @property
+    def make_all(self) -> bool:
+        """
+        Whether the player requested crafting as many copies as possible.
+        """
+
+    @make_all.setter
+    def make_all(self, arg1: bool) -> None: ...
+
 class PlayerRespawnEvent(PlayerEvent):
     """
     Called when a player respawns.
@@ -931,6 +932,16 @@ class PlayerPortalEvent(PlayerTeleportEvent):
     """
     Called when a player is about to teleport because it is in contact with a portal.
     """
+
+class PlayerPickupArrowEvent(PlayerEvent, Cancellable):
+    """
+    Called when a player picks up an arrow from the ground.
+    """
+    @property
+    def arrow(self) -> Actor:
+        """
+        The arrow picked up by the player.
+        """
 
 class PlayerPickupItemEvent(PlayerEvent, Cancellable):
     """

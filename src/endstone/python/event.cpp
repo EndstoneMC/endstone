@@ -257,12 +257,6 @@ void init_event(py::module_ &m, py::class_<Event, PyEvent> &event)
     py::class_<PlayerBedLeaveEvent, PlayerEvent>(m, "PlayerBedLeaveEvent", "Called when a player is leaving a bed.")
         .def_property_readonly("bed", &PlayerBedLeaveEvent::getBed, py::return_value_policy::reference,
                                "The bed block involved in this event.");
-    py::class_<PlayerRecipeBookClickEvent, PlayerEvent, ICancellable>(
-        m, "PlayerRecipeBookClickEvent", "Called when a player clicks a recipe in the recipe book.")
-        .def_property_readonly("recipe", &PlayerRecipeBookClickEvent::getRecipe,
-                               "The recipe identifier clicked by the player.")
-        .def_property("make_all", &PlayerRecipeBookClickEvent::isMakeAll, &PlayerRecipeBookClickEvent::setMakeAll,
-                      "Whether the player requested crafting as many copies as possible.");
     py::class_<PlayerChatEvent, PlayerEvent, ICancellable>(m, "PlayerChatEvent",
                                                            "Called when a player sends a chat message.")
         .def_property("message", &PlayerChatEvent::getMessage, &PlayerChatEvent::setMessage,
@@ -376,6 +370,12 @@ void init_event(py::module_ &m, py::class_<Event, PyEvent> &event)
     py::class_<PlayerQuitEvent, PlayerEvent>(m, "PlayerQuitEvent", "Called when a player leaves a server.")
         .def_property("quit_message", &PlayerQuitEvent::getQuitMessage, &PlayerQuitEvent::setQuitMessage,
                       "The quit message to send to all online players.");
+    py::class_<PlayerRecipeBookClickEvent, PlayerEvent, ICancellable>(
+        m, "PlayerRecipeBookClickEvent", "Called when a player clicks a recipe in the recipe book.")
+        .def_property_readonly("recipe", &PlayerRecipeBookClickEvent::getRecipe,
+                               "The recipe identifier clicked by the player.")
+        .def_property("make_all", &PlayerRecipeBookClickEvent::isMakeAll, &PlayerRecipeBookClickEvent::setMakeAll,
+                      "Whether the player requested crafting as many copies as possible.");
     auto player_respawn_event =
         py::class_<PlayerRespawnEvent, PlayerEvent>(m, "PlayerRespawnEvent", "Called when a player respawns.");
     py::native_enum<PlayerRespawnEvent::RespawnReason>(player_respawn_event, "RespawnReason", "enum.Enum",
@@ -396,6 +396,10 @@ void init_event(py::module_ &m, py::class_<Event, PyEvent> &event)
         m, "PlayerTeleportEvent", "Called when a player is teleported from one location to another.");
     py::class_<PlayerPortalEvent, PlayerTeleportEvent>(
         m, "PlayerPortalEvent", "Called when a player is about to teleport because it is in contact with a portal.");
+    py::class_<PlayerPickupArrowEvent, PlayerEvent, ICancellable>(
+        m, "PlayerPickupArrowEvent", "Called when a player picks up an arrow from the ground.")
+        .def_property_readonly("arrow", &PlayerPickupArrowEvent::getArrow,
+                               "The arrow picked up by the player.");
     py::class_<PlayerPickupItemEvent, PlayerEvent, ICancellable>(
         m, "PlayerPickupItemEvent", "Called when a player picks an item up from the ground.")
         .def_property_readonly("item", &PlayerPickupItemEvent::getItem,

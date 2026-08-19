@@ -19,6 +19,7 @@
 #include "bedrock/locale/i18n.h"
 #include "bedrock/server/commands/command_origin_loader.h"
 #include "bedrock/server/commands/minecraft_commands.h"
+#include "endstone/command/command_sender_wrapper.h"
 #include "endstone/command/console_command_sender.h"
 #include "endstone/core/permissions/default_permissions.h"
 #include "endstone/core/server.h"
@@ -95,6 +96,10 @@ bool MinecraftCommandWrapper::execute(const NotNull<CommandSender> &sender, cons
 
 std::unique_ptr<CommandOrigin> MinecraftCommandWrapper::getCommandOrigin(const NotNull<CommandSender> &sender)
 {
+    if (const auto *wrapper = sender->as<CommandSenderWrapper>(); wrapper) {
+        return getCommandOrigin(wrapper->getWrapped());
+    }
+
     const auto *level = EndstoneServer::getInstance().getEndstoneLevel();
     if (const auto *console = sender->as<ConsoleCommandSender>(); console) {
         ::CompoundTag tag;

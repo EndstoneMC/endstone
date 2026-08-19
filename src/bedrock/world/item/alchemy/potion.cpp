@@ -19,6 +19,7 @@
 #include <string>
 #include <unordered_map>
 
+#include "bedrock/locale/i18n.h"
 #include "bedrock/symbol.h"
 
 namespace {
@@ -70,6 +71,53 @@ std::vector<std::shared_ptr<const Potion>> Potion::getPotions()
         }
     }
     return potions;
+}
+
+std::string Potion::getDescriptionId(const PotionType potion_type) const
+{
+    std::string legacy;
+    if (description_ids_.empty()) {
+        legacy = prefix_.empty() ? "%item.emptyPotion.name" : "%potion.prefix." + prefix_ + " %item.potion.name";
+    }
+    else {
+        legacy = prefix_.empty() ? "%potion." + description_ids_.front() + ".postfix"
+                                 : "%potion.prefix." + prefix_ + " %potion." + description_ids_.front() + ".postfix";
+    }
+    switch (potion_type) {
+    case Lingering:
+        legacy = "%potion.prefix.linger " + legacy;
+        break;
+    case Splash:
+        legacy = "%potion.prefix.grenade " + legacy;
+        break;
+    default:
+        break;
+    }
+
+    auto stripped = legacy;
+    std::erase(stripped, '%');
+    if (getI18n().get(legacy, nullptr) != stripped) {
+        return legacy;
+    }
+
+    std::string result = "%potion.";
+    if (prefix_.empty() && description_ids_.empty()) {
+        result += "emptyPotion";
+    }
+    else {
+        result += prefix_.empty() ? description_ids_.front() : prefix_;
+    }
+    switch (potion_type) {
+    case Lingering:
+        result += ".linger";
+        break;
+    case Splash:
+        result += ".splash";
+        break;
+    default:
+        break;
+    }
+    return result + ".name";
 }
 
 std::string Potion::getDescriptionId() const

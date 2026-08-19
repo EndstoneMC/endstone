@@ -28,6 +28,7 @@
 #include "endstone/event/player/player_bed_leave_event.h"
 #include "endstone/event/player/player_drop_item_event.h"
 #include "endstone/event/player/player_item_consume_event.h"
+#include "endstone/event/player/player_pickup_arrow_event.h"
 #include "endstone/event/player/player_pickup_item_event.h"
 #include "endstone/event/player/player_teleport_event.h"
 #include "endstone/runtime/hook.h"
@@ -102,6 +103,16 @@ bool Player::take(Actor &actor, int unknown, int favored_slot)
         auto player = getEndstoneActor<endstone::core::EndstonePlayer>();
         auto item = actor.getEndstoneActor<endstone::core::EndstoneItem>();
         endstone::PlayerPickupItemEvent e(player, item);
+        server.getPluginManager().callEvent(e);
+        if (e.isCancelled()) {
+            return false;
+        }
+    }
+    else if (actor.isType(ActorType::Arrow)) {
+        const auto &server = endstone::core::EndstoneServer::getInstance();
+        auto player = getEndstoneActor<endstone::core::EndstonePlayer>();
+        auto arrow = actor.getEndstoneActor();
+        endstone::PlayerPickupArrowEvent e(player, arrow);
         server.getPluginManager().callEvent(e);
         if (e.isCancelled()) {
             return false;
