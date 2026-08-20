@@ -659,7 +659,7 @@ class PlayerGameModeChangeEvent(PlayerEvent, Cancellable):
 
 class PlayerInteractEvent(PlayerEvent, Cancellable):
     """
-    Represents an event that is called when a player interacts with an object or air.
+    Called when a player interacts with an object or air.
     """
     class Action(enum.Enum):
         """
@@ -722,7 +722,7 @@ class PlayerInteractEvent(PlayerEvent, Cancellable):
 
 class PlayerInteractActorEvent(PlayerEvent, Cancellable):
     """
-    Represents an event that is called when a player right-clicks an actor.
+    Called when a player right-clicks an actor.
     """
     @property
     def actor(self) -> Actor:
@@ -949,16 +949,6 @@ class PlayerPortalEvent(PlayerTeleportEvent):
     """
     Called when a player is about to teleport because it is in contact with a portal.
     """
-
-class PlayerToggleSneakEvent(PlayerEvent):
-    """
-    Called when a player toggles their sneaking state.
-    """
-    @property
-    def is_sneaking(self) -> bool:
-        """
-        Whether the player is now sneaking or not.
-        """
 
 class PlayerToggleSprintEvent(PlayerEvent):
     """
