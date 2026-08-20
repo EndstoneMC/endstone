@@ -33,7 +33,8 @@ InteractionResult InteractComponent::getInteraction(Actor &owner, Player &player
     }
 
     const auto &interact_text = interaction.getInteractText();
-    if (interact_text != "action.interact.shear" && interact_text != "action.interact.mooshear") {
+    if (interact_text != "action.interact.shear" && interact_text != "action.interact.mooshear" &&
+        interact_text != "action.interact.take_sulfur_cube") {
         return result;
     }
 
