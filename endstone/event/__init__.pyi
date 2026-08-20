@@ -56,6 +56,7 @@ __all__ = [
     "PlayerBedLeaveEvent",
     "PlayerBucketEmptyEvent",
     "PlayerBucketEvent",
+    "PlayerBucketFillEvent",
     "PlayerChatEvent",
     "PlayerCommandEvent",
     "PlayerDeathEvent",
