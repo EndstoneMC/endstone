@@ -91,6 +91,7 @@ static constexpr std::array<std::pair<std::string_view, std::size_t>, 66> symbol
     {"_ZN16PistonBlockActor4tickER11BlockSource", 207194672},
     // Player
     {"_ZN6Player10teleportToERK4Vec3biib", 188137216},
+    {"_ZN6Player13addExperienceEi", 188297776},
     {"_ZN6Player15startSleepInBedERK8BlockPosbf", 188144032},
     {"_ZN6Player17completeUsingItemEv", 188167680},
     {"_ZN6Player4dropERK9ItemStackb", 188279872},
