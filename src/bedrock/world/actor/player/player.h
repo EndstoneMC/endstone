@@ -182,6 +182,7 @@ public:
     // Abilities
     [[nodiscard]] LayeredAbilities &getAbilities();
     [[nodiscard]] LayeredAbilities const &getAbilities() const;
+    [[nodiscard]] bool isCrawling();
     [[nodiscard]] bool isEmoting() const;
     [[nodiscard]] bool isFlying() const;
     // Attributes

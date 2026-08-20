@@ -143,6 +143,14 @@ void init_event(py::module_ &m, py::class_<Event, PyEvent> &event)
                       "The location that this actor moved from.")
         .def_property("to_location", &ActorTeleportEvent::getTo, &ActorTeleportEvent::setTo,
                       "The location that this actor moved to.");
+    py::class_<ActorToggleGlideEvent, ActorEvent<Mob>>(
+        m, "ActorToggleGlideEvent", "Called when an `Actor`'s gliding state is toggled with an elytra.")
+        .def_property_readonly("is_gliding", &ActorToggleGlideEvent::isGliding,
+                               "Whether the actor is now gliding or not.");
+    py::class_<ActorToggleSwimEvent, ActorEvent<Mob>>(m, "ActorToggleSwimEvent",
+                                                      "Called when an `Actor`'s swimming state is toggled.")
+        .def_property_readonly("is_swimming", &ActorToggleSwimEvent::isSwimming,
+                               "Whether the actor is now swimming or not.");
 
     // Block events
     py::class_<BlockEvent, Event>(m, "BlockEvent", "Represents an `Block`-related event.")
@@ -261,6 +269,9 @@ void init_event(py::module_ &m, py::class_<Event, PyEvent> &event)
     py::class_<PlayerEvent, Event>(m, "PlayerEvent", "Represents a player related event.")
         .def_property_readonly("player", &PlayerEvent::getPlayer,
                                "The `Player` who is involved in this event.");
+    py::class_<PlayerArmSwingEvent, PlayerEvent>(m, "PlayerArmSwingEvent", "Called when a player swings their arm.")
+        .def_property_readonly("item", &PlayerArmSwingEvent::getItem,
+                               "The item the player was holding when they swung their arm.");
     auto player_bed_enter_event = py::class_<PlayerBedEnterEvent, PlayerEvent, ICancellable>(
         m, "PlayerBedEnterEvent", "Called when a player is almost about to enter the bed.");
     player_bed_enter_event.def_property_readonly("bed", &PlayerBedEnterEvent::getBed,
@@ -270,6 +281,12 @@ void init_event(py::module_ &m, py::class_<Event, PyEvent> &event)
     py::class_<PlayerBedLeaveEvent, PlayerEvent>(m, "PlayerBedLeaveEvent", "Called when a player is leaving a bed.")
         .def_property_readonly("bed", &PlayerBedLeaveEvent::getBed, py::return_value_policy::reference,
                                "The bed block involved in this event.");
+    py::class_<PlayerBucketActorEvent, PlayerEvent, ICancellable>(m, "PlayerBucketActorEvent",
+                                                                  "Called when a player captures an actor in a bucket.")
+        .def_property_readonly("actor", &PlayerBucketActorEvent::getActor, "The actor being captured.")
+        .def_property_readonly("original_bucket", &PlayerBucketActorEvent::getOriginalBucket,
+                               "The bucket used to capture the actor.")
+        .def_property_readonly("hand", &PlayerBucketActorEvent::getHand, "The hand used to capture the actor.");
     py::class_<PlayerChatEvent, PlayerEvent, ICancellable>(m, "PlayerChatEvent",
                                                            "Called when a player sends a chat message.")
         .def_property("message", &PlayerChatEvent::getMessage, &PlayerChatEvent::setMessage,
@@ -346,6 +363,15 @@ void init_event(py::module_ &m, py::class_<Event, PyEvent> &event)
                                                                     "Called when a player right-clicks an actor.")
         .def_property_readonly("actor", &PlayerInteractActorEvent::getActor,
                                "The actor that was right-clicked by the player.");
+    py::class_<PlayerArmorStandManipulateEvent, PlayerInteractActorEvent>(
+        m, "PlayerArmorStandManipulateEvent",
+        "Called when a player interacts with an armor stand and will either swap, retrieve or place an item.")
+        .def_property_readonly("armor_stand_item", &PlayerArmorStandManipulateEvent::getArmorStandItem,
+                               "The item held by the armor stand in the affected slot.")
+        .def_property_readonly("player_item", &PlayerArmorStandManipulateEvent::getPlayerItem,
+                               "The item held by the player during the interaction.")
+        .def_property_readonly("slot", &PlayerArmorStandManipulateEvent::getSlot,
+                               "The armor stand equipment slot affected by the interaction.");
     py::class_<PlayerItemConsumeEvent, PlayerEvent, ICancellable>(m, "PlayerItemConsumeEvent", R"doc(
     Called when a player is finishing consuming an item (food, potion, milk bucket).
 
@@ -371,6 +397,14 @@ void init_event(py::module_ &m, py::class_<Event, PyEvent> &event)
                                                      "Called when a player toggles their sprinting state.")
         .def_property_readonly("is_sprinting", &PlayerToggleSprintEvent::isSprinting,
                                "Whether the player is now sprinting or not.");
+    py::class_<PlayerToggleCrawlEvent, PlayerEvent>(m, "PlayerToggleCrawlEvent",
+                                                    "Called when a player toggles their crawling state.")
+        .def_property_readonly("is_crawling", &PlayerToggleCrawlEvent::isCrawling,
+                               "Whether the player is now crawling or not.");
+    py::class_<PlayerToggleFlightEvent, PlayerEvent>(m, "PlayerToggleFlightEvent",
+                                                     "Called when a player toggles their flying state.")
+        .def_property_readonly("is_flying", &PlayerToggleFlightEvent::isFlying,
+                               "Whether the player is now flying or not.");
     py::class_<PlayerJoinEvent, PlayerEvent>(m, "PlayerJoinEvent", "Called when a player joins a server.")
         .def_property("join_message", &PlayerJoinEvent::getJoinMessage, &PlayerJoinEvent::setJoinMessage,
                       "The join message to send to all online players.");
@@ -424,6 +458,13 @@ void init_event(py::module_ &m, py::class_<Event, PyEvent> &event)
         .finalize();
     player_respawn_event.def_property_readonly("respawn_reason", &PlayerRespawnEvent::getRespawnReason,
                                                "The reason this respawn occurred.");
+    py::class_<PlayerRiptideEvent, PlayerEvent>(m, "PlayerRiptideEvent", R"doc(
+    Called when a player activates the riptide enchantment, using their trident to propel them through the air.
+
+    The riptide action is currently performed client side, so manipulating the player in this event may have
+    undesired effects.
+)doc")
+        .def_property_readonly("item", &PlayerRiptideEvent::getItem, "An `ItemStack` for the trident being used.");
     py::class_<PlayerSkinChangeEvent, PlayerEvent, ICancellable>(m, "PlayerSkinChangeEvent",
                                                                  "Called when a player changes their skin.")
         .def_property_readonly("new_skin", &PlayerSkinChangeEvent::getNewSkin, "The skin that will be applied.")

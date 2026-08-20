@@ -60,6 +60,8 @@
 #include "endstone/core/skin.h"
 #include "endstone/core/util/socket_address.h"
 #include "endstone/core/util/uuid.h"
+#include "endstone/event/actor/actor_toggle_glide_event.h"
+#include "endstone/event/actor/actor_toggle_swim_event.h"
 #include "endstone/event/player/player_bed_leave_event.h"
 #include "endstone/event/player/player_emote_event.h"
 #include "endstone/event/player/player_input_event.h"
@@ -70,6 +72,8 @@
 #include "endstone/event/player/player_move_event.h"
 #include "endstone/event/player/player_recipe_book_settings_change_event.h"
 #include "endstone/event/player/player_skin_change_event.h"
+#include "endstone/event/player/player_toggle_crawl_event.h"
+#include "endstone/event/player/player_toggle_flight_event.h"
 #include "endstone/event/player/player_toggle_sneak_event.h"
 #include "endstone/event/player/player_toggle_sprint_event.h"
 #include "endstone/form/action_form.h"
@@ -830,6 +834,38 @@ bool EndstonePlayer::handlePacket(Packet &packet)
             if (e.isCancelled()) {
                 pk.setInput(PlayerAuthInputPacket::InputData::MissedSwing, false);
             }
+        }
+        if (pk.getInput(PlayerAuthInputPacket::InputData::StartSwimming) && !getHandle().isSwimming()) {
+            ActorToggleSwimEvent e(getSelf(), true);
+            getServer().getPluginManager().callEvent(e);
+        }
+        if (pk.getInput(PlayerAuthInputPacket::InputData::StopSwimming) && getHandle().isSwimming()) {
+            ActorToggleSwimEvent e(getSelf(), false);
+            getServer().getPluginManager().callEvent(e);
+        }
+        if (pk.getInput(PlayerAuthInputPacket::InputData::StartGliding) && !getHandle().isGliding()) {
+            ActorToggleGlideEvent e(getSelf(), true);
+            getServer().getPluginManager().callEvent(e);
+        }
+        if (pk.getInput(PlayerAuthInputPacket::InputData::StopGliding) && getHandle().isGliding()) {
+            ActorToggleGlideEvent e(getSelf(), false);
+            getServer().getPluginManager().callEvent(e);
+        }
+        if (pk.getInput(PlayerAuthInputPacket::InputData::StartCrawling) && !getHandle().isCrawling()) {
+            PlayerToggleCrawlEvent e(getSelf(), true);
+            getServer().getPluginManager().callEvent(e);
+        }
+        if (pk.getInput(PlayerAuthInputPacket::InputData::StopCrawling) && getHandle().isCrawling()) {
+            PlayerToggleCrawlEvent e(getSelf(), false);
+            getServer().getPluginManager().callEvent(e);
+        }
+        if (pk.getInput(PlayerAuthInputPacket::InputData::StartFlying) && getAllowFlight() && !getHandle().isFlying()) {
+            PlayerToggleFlightEvent e(getSelf(), true);
+            getServer().getPluginManager().callEvent(e);
+        }
+        if (pk.getInput(PlayerAuthInputPacket::InputData::StopFlying) && getAllowFlight() && getHandle().isFlying()) {
+            PlayerToggleFlightEvent e(getSelf(), false);
+            getServer().getPluginManager().callEvent(e);
         }
         if (input_changed) {
             PlayerInputEvent e(getSelf(), player_input);
