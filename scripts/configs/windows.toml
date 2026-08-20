@@ -894,3 +894,32 @@ extra = 0
 # 5. confirm vs the old named DB. Unlike Linux 1.21 there is no separate _addLevels on Windows at
 #    any version - MSVC folds it into addLevels, so this virtual is the whole body
 pattern = "55 41 57 41 56 41 55 41 54 56 57 53 48 81 EC 08 02 00 00 48 8D AC 24 80 00 00 00 48 C7 85 80 01 00 00 FE FF FF FF 89 D7 48 89 CE 4C 8D 05 ? ? ? ? 48 8D 55 C8 E8"
+
+[[signatures]]
+name = "?addExperience@Player@@UEAAXH@Z"
+relative = false
+extra = 0
+# 1. no usable string, and no direct callers - addExperience is the Player virtual one slot BELOW
+#    addLevels. Locate addLevels first (its own entry), then read the qword at slot-8 in each of the
+#    three .rdata vtables that hold it; all three agree on one RVA - that is addExperience
+# 2. .pdata pins it: the entry is a BeginAddress of extent 0x47Bh, sitting 0x5C0 below addLevels
+# 3. its entry is `push rbp/r15/r14/r12/rsi/rdi/rbx` / `sub rsp, 200h` / `lea rbp, [rsp+80h]` / three
+#    `movaps [rbp+170h/160h/150h], xmm8/xmm7/xmm6` spills / the -2 SEH cookie store, then
+#    `mov edi, edx` / `mov rsi, rcx` / `lea r8, Player::EXPERIENCE` / `call Actor::getAttribute` /
+#    `cvtsi2ss xmm7, edi` / `movss xmm6, [rax+7Ch]` - it opens on EXPERIENCE where addLevels opens on
+#    LEVEL, which is what tells the two prologues apart
+# 4. Player::getXpNeededForLevelRange is inlined three times; each copy is the same run -
+#    `imul rcx, 0FFFFFFFF88888889h` / `shr rcx, 20h` / `add ecx, eax` / `sar ecx, 3` (signed divide by
+#    15) then one of `lea r15d, ds:7[rax*2]`, `lea r15d, [rax+rax*4]` / `add r15d, 0FFFFFFDAh` (-38),
+#    `lea r15d, [rax+rax*8]` / `add r15d, 0FFFFFF62h` (-158)
+# 5. the level-crossing loop does NOT call addLevels directly - it dispatches through the vtable and
+#    the CFG thunk: `mov rax, [rsi]` / `mov rax, [rax+6C8h]` / `mov rcx, rsi` / `mov edx, 1` /
+#    `call cs:__guard_dispatch_icall_fptr`, the same slot the vtable walk in step 1 landed on. Do not
+#    look for an `E8` to addLevels; there is none
+# 6. confirm identity on the event tail: `mov [rbp+138h], edi` stores the raw `amount` argument into
+#    the payload, then `mov byte [rbp+118h], 2` sets the variant index - index 2 is PlayerAddExpEvent
+#    in the PlayerGameplayEvent<void> variant list, where addLevels writes 3 - immediately before the
+#    call to EventCoordinatorPimpl<PlayerEventListener>::_processEvent
+# prologue through the `lea rdx, result` / `call Actor::getAttribute` that reads EXPERIENCE; the
+# wildcarded operands absorb the Player::EXPERIENCE lea displacement and the call target
+pattern = "55 41 57 41 56 41 54 56 57 53 48 81 EC 00 02 00 00 48 8D AC 24 80 00 00 00 44 0F 29 85 70 01 00 00 0F 29 BD 60 01 00 00 0F 29 B5 50 01 00 00 48 C7 85 48 01 00 00 FE FF FF FF 89 D7 48 89 CE 4C 8D 05 ? ? ? ? 48 8D 55 A0 E8"
