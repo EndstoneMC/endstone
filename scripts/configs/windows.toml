@@ -215,6 +215,29 @@ rip_relative = true
 rip_offset = 29
 
 [[signatures]]
+name = "?getInteraction@BucketableComponent@@QEAA?AVInteractionResult@@AEAVActor@@AEAVPlayer@@AEAVActorInteraction@@@Z"
+relative = false
+extra = 0
+# --pdb resolves this one by name; the pattern below is only the fallback for a PDB-less scan.
+# 1. find bytes "6D 69 6E 65 63 72 61 66 74 3A 77 61 74 65 72 5F 62 75 63 6B 65 74 00"
+#    = "minecraft:water_bucket\0"; it is unique and its data xref sits in the VanillaItemNames static
+#    initialiser
+# 2. the stores after that xref fill one 23-byte MSVC SSO buffer; the enclosing HashedString global
+#    starts nine bytes below the buffer - that is VanillaItemNames::WaterBucket
+# 3. among the code xrefs to it, BucketableComponent::getInteraction is the one whose first
+#    instruction after the prologue is `mov rdi, [rbp+0F0h]` / `cmp byte ptr [rdi+60h], 0` - the
+#    ActorInteraction argument arrives on the stack, not in a register, because InteractionResult is
+#    returned indirectly, and +60h is ActorInteraction::mNoCapture
+# 4. confirm identity from the body: it stores the lambda vtable, `owner` and `player` into three
+#    adjacent stack slots and merges them into `interaction + 20h`, then compares the selected item
+#    against VanillaItemNames::Bucket and VanillaItemNames::WaterBucket and the level's base game
+#    version against BucketableComponent::WATER_BUCKET_USEABLE_VERSION
+# 5. uniqueness: the pattern below matches exactly once in both the 1.26.32.2 and 1.26.44 images.
+#    The wildcarded operands absorb the frame size, the SEH cookie slot, the argument displacement,
+#    the jnz displacement and the lambda-vtable lea
+pattern = "55 41 57 41 56 41 55 41 54 56 57 53 48 81 EC ? ? 00 00 48 8D AC 24 80 00 00 00 48 C7 85 ? ? 00 00 FE FF FF FF 48 89 D6 48 8B BD ? ? 00 00 80 7F 60 00 0F 85 ? ? ? ? 4C 89 CB 48 8D 05 ? ? ? ? 48 89 45 38 4C 89 45 40 4C 89 4D 48"
+
+[[signatures]]
 name = "?_finishCooking@CampfireBlockActor@@AEAAXAEAVBlockSource@@H@Z"
 relative = false
 extra = 0
@@ -425,22 +448,6 @@ name = "?executeWorldInteraction@InventoryTransaction@@SA?AW4InventoryTransactio
 relative = false
 extra = 0
 pattern = "56 57 53 48 83 EC ? 41 8B 40"
-
-[[signatures]]
-# 1. locate the compiler-generated interaction callback in ItemUseOnActorInventoryTransaction::handle: it loads
-#    the transaction from closure +0x08, Player +0x10, target Actor +0x20, action +0x70, and hit position +0xE4
-# 2. confirm against the BDS 1.26.33 IDA database (unique match at RVA 0x3CDEE00); this is the
-#    platform-mangled BDS callback symbol, and the pattern resolves its direct RVA when symbols are unavailable
-name = "?executeInteraction@ItemUseOnActorInventoryTransaction@@SAXPEAX@Z"
-relative = false
-extra = 0
-pattern = "4C 8B 41 08 41 8B 40 70 83 F8 02 74 ? 83 F8 01 74 ? 85 C0 75 ?"
-
-[[signatures]]
-name = "?executeBucketEntityUse@ItemUseOnActorInventoryTransaction@@SA_JPEAX0PEAVActor@@HHHD0_J@Z"
-relative = false
-extra = 0
-pattern = "41 57 41 56 41 55 41 54 56 57 55 53 48 83 EC 58 48 89 D6 48 8B 41 08 48 85 C0 0F 84 ? ? ? ? 48 83 38 00 0F 84 ? ? ? ? 4C 89 C7 48 89 CB 44 89 CD 49 8B 88 D8 01 00 00"
 
 [[signatures]]
 name = "?readUserData@Item@@UEBAXAEAVItemStackBase@@AEAVIDataInput@@AEAVReadOnlyBinaryStream@@@Z"

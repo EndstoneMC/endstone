@@ -26,20 +26,15 @@ namespace endstone {
 class Actor;
 
 /**
- * Represents an event that is called when a player captures an actor with a bucket.
+ * Represents an event that is called when a player captures an actor in a bucket.
  */
 class PlayerBucketActorEvent final : public Cancellable<PlayerEvent> {
 public:
     ENDSTONE_EVENT(PlayerBucketActorEvent);
 
-    PlayerBucketActorEvent(const NotNull<Player> &player, const NotNull<Actor> &actor, ItemStack actor_bucket,
-                            EquipmentSlot hand,
-                            ItemStack original_bucket)
-        : Cancellable(player),
-          actor_(actor),
-          actor_bucket_(std::move(actor_bucket)),
-          hand_(hand),
-          original_bucket_(std::move(original_bucket))
+    PlayerBucketActorEvent(const NotNull<Player> &player, const NotNull<Actor> &actor, ItemStack original_bucket,
+                           EquipmentSlot hand)
+        : Cancellable(player), actor_(actor), original_bucket_(std::move(original_bucket)), hand_(hand)
     {
     }
 
@@ -51,18 +46,11 @@ public:
     [[nodiscard]] const NotNull<Actor> &getActor() const { return actor_; }
 
     /**
-     * Gets the bucket item that will contain the captured actor.
+     * Gets the bucket used to capture the actor. This refers to the bucket clicked with, i.e. a water bucket.
      *
-     * @return bucket item containing the captured actor
+     * @return bucket used to capture the actor
      */
-    [[nodiscard]] const ItemStack &getActorBucket() const { return actor_bucket_; }
-
-    /**
-     * Sets the bucket item that will contain the captured actor.
-     *
-     * @param actor_bucket new actor bucket
-     */
-    void setActorBucket(ItemStack actor_bucket) { actor_bucket_ = std::move(actor_bucket); }
+    [[nodiscard]] const ItemStack &getOriginalBucket() const { return original_bucket_; }
 
     /**
      * Gets the hand used to capture the actor.
@@ -71,18 +59,10 @@ public:
      */
     [[nodiscard]] EquipmentSlot getHand() const { return hand_; }
 
-    /**
-     * Gets the bucket used to capture the actor.
-     *
-     * @return bucket used to capture the actor
-     */
-    [[nodiscard]] const ItemStack &getOriginalBucket() const { return original_bucket_; }
-
 private:
     NotNull<Actor> actor_;
-    ItemStack actor_bucket_;
-    EquipmentSlot hand_;
     ItemStack original_bucket_;
+    EquipmentSlot hand_;
 };
 
 }  // namespace endstone

@@ -184,6 +184,34 @@ rip_relative = true
 rip_offset = 1
 
 [[signatures]]
+name = "_ZN19BucketableComponent14getInteractionER5ActorR6PlayerR16ActorInteraction"
+relative = false
+extra = 0
+# 1. find bytes "6D 69 6E 65 63 72 61 66 74 3A 77 61 74 65 72 5F 62 75 63 6B 65 74 00"
+#    = "minecraft:water_bucket\0"; it is unique and has exactly one data xref, inside the huge
+#    VanillaItemNames static initialiser
+# 2. at that xref the initialiser fills one HashedString: a `movups xmm0, <the string>` followed by
+#    `movups <buf>, xmm0` / `mov <buf+14h>, rax` / `mov byte <buf+16h>, 0` writing the 23-byte libc++
+#    SSO buffer. The std::string starts one byte below that buffer and the enclosing HashedString
+#    eight bytes below the string - that address is VanillaItemNames::WaterBucket
+# 3. take the code xrefs to VanillaItemNames::WaterBucket. Discard the initialiser itself, and discard
+#    BucketItem::_useOn (independently identifiable as the last function pointer of the RTTI-named
+#    `_ZTV10BucketItem`). BucketableComponent::getInteraction is the small one, ~0x529 bytes
+# 4. confirm identity from the body, not the prologue: it opens on `cmp byte ptr [rcx+60h], 0` /
+#    `jnz <return 0>` - that byte is ActorInteraction::mNoCapture, so this is the shouldCapture guard;
+#    it then writes a three-word closure (move_only_function vtable, `owner` from rsi, `player` from
+#    rdx) into stack slots and moves it into `interaction + 20h` (ActorInteraction::mInteraction); the
+#    tail inlines two HashedString comparisons - VanillaItemNames::Bucket then
+#    VanillaItemNames::WaterBucket - and returns 1 or 0
+# 5. cross-check vs the old named DB: Linux 1.21.132.3 carries
+#    `_ZN19BucketableComponent14getInteractionER5ActorR6PlayerR16ActorInteraction` with the same
+#    shape (ActorInteraction::shouldCapture is still an out-of-line call at that version)
+# 6. uniqueness: the pattern below matches exactly once in the 1.26.33, 1.26.40 and 1.26.44 ELFs.
+#    The wildcarded operands absorb the frame size, the jnz displacement, the closure-vtable lea and
+#    the three stack displacements
+pattern = "55 41 57 41 56 41 55 41 54 53 48 81 EC ? ? 00 00 80 79 60 00 0F 85 ? ? ? ? 48 89 CB 49 89 D6 48 8D 05 ? ? ? ? 48 89 84 24 ? ? 00 00 48 89 B4 24 ? ? 00 00 48 89 94 24 ? ? 00 00 48 83 C3 20"
+
+[[signatures]]
 name = "_ZN18CampfireBlockActor14_finishCookingER11BlockSourcei"
 relative = false
 extra = 0
@@ -452,22 +480,6 @@ extra = 0
 # 2. there is no string/xref recipe: verify the existing pattern still matches uniquely and keep it, else
 #    re-cut by hand against the inventory-transaction interaction lambda
 pattern = "41 57 41 56 53 8B 42"
-
-[[signatures]]
-# 1. locate the compiler-generated interaction callback in ItemUseOnActorInventoryTransaction::handle: it loads
-#    the transaction from closure +0x08, Player +0x10, target Actor +0x20, action +0x58, and hit position +0xBC
-# 2. confirm against the BDS 1.26.40.8 ELF (unique match at RVA 0xBC89160); this is the
-#    platform-mangled BDS callback symbol, and the pattern resolves its direct RVA when symbols are unavailable
-name = "_ZN34ItemUseOnActorInventoryTransaction18executeInteractionEPv"
-relative = false
-extra = 0
-pattern = "48 8B 57 08 8B 42 58 83 F8 02 74 ? 83 F8 01 74 ? 85 C0 75 ? 48 8B 47 10 48 8B 77 20 48 8B B8 E8 09 00 00 48 81 C2 BC 00 00 00"
-
-[[signatures]]
-name = "_ZN34ItemUseOnActorInventoryTransaction22executeBucketEntityUseEPvP5ActoriiicS0_x"
-relative = false
-extra = 0
-pattern = "55 41 57 41 56 41 55 41 54 53 50 48 8B 47 08 48 85 C0 0F 84 ? ? ? ? 48 83 38 00 0F 84 ? ? ? ? 45 89 CF 44 89 C3 89 CD 41 89 D6 49 89 F4 49 89 FD 48 8B BE D0 01 00 00"
 
 [[signatures]]
 name = "_ZN11LeavesBlock10randomTickERN11BlockEvents20BlockRandomTickEventE"

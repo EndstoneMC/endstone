@@ -257,16 +257,12 @@ void init_event(py::module_ &m, py::class_<Event, PyEvent> &event)
     py::class_<PlayerBedLeaveEvent, PlayerEvent>(m, "PlayerBedLeaveEvent", "Called when a player is leaving a bed.")
         .def_property_readonly("bed", &PlayerBedLeaveEvent::getBed, py::return_value_policy::reference,
                                "The bed block involved in this event.");
-    py::class_<PlayerBucketActorEvent, PlayerEvent, ICancellable>(
-        m, "PlayerBucketActorEvent", "Called when a player captures an actor with a bucket.")
-        .def_property_readonly("actor", &PlayerBucketActorEvent::getActor,
-                               "The actor being captured.")
-        .def_property("actor_bucket", &PlayerBucketActorEvent::getActorBucket,
-                      &PlayerBucketActorEvent::setActorBucket,
-                      "The bucket item that will contain the captured actor.")
-        .def_property_readonly("hand", &PlayerBucketActorEvent::getHand, "The hand used to capture the actor.")
+    py::class_<PlayerBucketActorEvent, PlayerEvent, ICancellable>(m, "PlayerBucketActorEvent",
+                                                                  "Called when a player captures an actor in a bucket.")
+        .def_property_readonly("actor", &PlayerBucketActorEvent::getActor, "The actor being captured.")
         .def_property_readonly("original_bucket", &PlayerBucketActorEvent::getOriginalBucket,
-                               "The bucket used to capture the actor.");
+                               "The bucket used to capture the actor.")
+        .def_property_readonly("hand", &PlayerBucketActorEvent::getHand, "The hand used to capture the actor.");
     py::class_<PlayerChatEvent, PlayerEvent, ICancellable>(m, "PlayerChatEvent",
                                                            "Called when a player sends a chat message.")
         .def_property("message", &PlayerChatEvent::getMessage, &PlayerChatEvent::setMessage,
@@ -360,6 +356,14 @@ void init_event(py::module_ &m, py::class_<Event, PyEvent> &event)
         .def_property_readonly("new_slot", &PlayerItemHeldEvent::getNewSlot, "The new held slot index.")
         .def_property_readonly("previous_slot", &PlayerItemHeldEvent::getPreviousSlot,
                                "The previous held slot index.");
+    py::class_<PlayerToggleSneakEvent, PlayerEvent>(m, "PlayerToggleSneakEvent",
+                                                    "Called when a player toggles their sneaking state.")
+        .def_property_readonly("is_sneaking", &PlayerToggleSneakEvent::isSneaking,
+                               "Whether the player is now sneaking or not.");
+    py::class_<PlayerToggleSprintEvent, PlayerEvent>(m, "PlayerToggleSprintEvent",
+                                                     "Called when a player toggles their sprinting state.")
+        .def_property_readonly("is_sprinting", &PlayerToggleSprintEvent::isSprinting,
+                               "Whether the player is now sprinting or not.");
     py::class_<PlayerJoinEvent, PlayerEvent>(m, "PlayerJoinEvent", "Called when a player joins a server.")
         .def_property("join_message", &PlayerJoinEvent::getJoinMessage, &PlayerJoinEvent::setJoinMessage,
                       "The join message to send to all online players.");
@@ -383,13 +387,6 @@ void init_event(py::module_ &m, py::class_<Event, PyEvent> &event)
         .def_property("to_location", &PlayerMoveEvent::getTo, &PlayerMoveEvent::setTo,
                       "The location that this player moved to.");
     py::class_<PlayerJumpEvent, PlayerMoveEvent>(m, "PlayerJumpEvent", "Called when a player jumps.");
-    py::class_<PlayerPickupArrowEvent, PlayerEvent, ICancellable>(
-        m, "PlayerPickupArrowEvent", "Called when a player picks up an arrow or a thrown trident from the ground.")
-        .def_property_readonly("arrow", &PlayerPickupArrowEvent::getArrow, "The arrow picked up by the player.");
-    py::class_<PlayerPickupItemEvent, PlayerEvent, ICancellable>(
-        m, "PlayerPickupItemEvent", "Called when a player picks an item up from the ground.")
-        .def_property_readonly("item", &PlayerPickupItemEvent::getItem,
-                               "The Item picked up by the entity.");
     py::class_<PlayerQuitEvent, PlayerEvent>(m, "PlayerQuitEvent", "Called when a player leaves a server.")
         .def_property("quit_message", &PlayerQuitEvent::getQuitMessage, &PlayerQuitEvent::setQuitMessage,
                       "The quit message to send to all online players.");
@@ -420,14 +417,6 @@ void init_event(py::module_ &m, py::class_<Event, PyEvent> &event)
         .finalize();
     player_respawn_event.def_property_readonly("respawn_reason", &PlayerRespawnEvent::getRespawnReason,
                                                "The reason this respawn occurred.");
-    py::class_<PlayerShearActorEvent, PlayerEvent, ICancellable>(
-        m, "PlayerShearActorEvent", "Called when a player shears an actor.")
-        .def_property_readonly("actor", &PlayerShearActorEvent::getActor,
-                               "The actor that was sheared.")
-        .def_property_readonly("hand", &PlayerShearActorEvent::getHand, "The hand used to shear the actor.")
-        .def_property_readonly("item", &PlayerShearActorEvent::getItem, "The item used to shear the actor.")
-        .def_property("drops", &PlayerShearActorEvent::getDrops, &PlayerShearActorEvent::setDrops,
-                      "The items dropped when the actor is sheared.");
     py::class_<PlayerSkinChangeEvent, PlayerEvent, ICancellable>(m, "PlayerSkinChangeEvent",
                                                                  "Called when a player changes their skin.")
         .def_property_readonly("new_skin", &PlayerSkinChangeEvent::getNewSkin, "The skin that will be applied.")
@@ -438,14 +427,13 @@ void init_event(py::module_ &m, py::class_<Event, PyEvent> &event)
         m, "PlayerTeleportEvent", "Called when a player is teleported from one location to another.");
     py::class_<PlayerPortalEvent, PlayerTeleportEvent>(
         m, "PlayerPortalEvent", "Called when a player is about to teleport because it is in contact with a portal.");
-    py::class_<PlayerToggleSneakEvent, PlayerEvent>(m, "PlayerToggleSneakEvent",
-                                                    "Called when a player toggles their sneaking state.")
-        .def_property_readonly("is_sneaking", &PlayerToggleSneakEvent::isSneaking,
-                               "Whether the player is now sneaking or not.");
-    py::class_<PlayerToggleSprintEvent, PlayerEvent>(m, "PlayerToggleSprintEvent",
-                                                     "Called when a player toggles their sprinting state.")
-        .def_property_readonly("is_sprinting", &PlayerToggleSprintEvent::isSprinting,
-                               "Whether the player is now sprinting or not.");
+    py::class_<PlayerPickupArrowEvent, PlayerEvent, ICancellable>(
+        m, "PlayerPickupArrowEvent", "Called when a player picks up an arrow or a thrown trident from the ground.")
+        .def_property_readonly("arrow", &PlayerPickupArrowEvent::getArrow, "The arrow picked up by the player.");
+    py::class_<PlayerPickupItemEvent, PlayerEvent, ICancellable>(
+        m, "PlayerPickupItemEvent", "Called when a player picks an item up from the ground.")
+        .def_property_readonly("item", &PlayerPickupItemEvent::getItem,
+                               "The Item picked up by the entity.");
 
     // Server events
     py::class_<ServerEvent, Event>(m, "ServerEvent", "Represents a Server-related event.");
