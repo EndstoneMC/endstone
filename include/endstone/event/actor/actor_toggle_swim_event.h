@@ -14,31 +14,29 @@
 
 #pragma once
 
-#include "endstone/event/player/player_event.h"
+#include "endstone/actor/mob.h"
+#include "endstone/event/actor/actor_event.h"
 
 namespace endstone {
 
 /**
- * Called when a player toggles their gliding state.
+ * Called when an Actor's swimming state is toggled.
  */
-class PlayerToggleGlideEvent final : public PlayerEvent {
+class ActorToggleSwimEvent final : public ActorEvent<Mob> {
 public:
-    ENDSTONE_EVENT(PlayerToggleGlideEvent)
+    ENDSTONE_EVENT(ActorToggleSwimEvent)
 
-    explicit PlayerToggleGlideEvent(const NotNull<Player> &player, bool gliding)
-        : PlayerEvent(player), gliding_(gliding)
-    {
-    }
+    explicit ActorToggleSwimEvent(const NotNull<Mob> &actor, bool swimming) : ActorEvent(actor), swimming_(swimming) {}
 
     /**
-     * Returns whether the player is now gliding or not.
+     * Returns whether the actor is now swimming or not.
      *
-     * @return the new gliding state
+     * @return the new swimming state
      */
-    [[nodiscard]] bool isGliding() const { return gliding_; }
+    [[nodiscard]] bool isSwimming() const { return swimming_; }
 
 private:
-    bool gliding_;
+    bool swimming_;
 };
 
 }  // namespace endstone
