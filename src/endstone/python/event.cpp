@@ -56,19 +56,19 @@ void init_event(py::module_ &m, py::class_<Event, PyEvent> &event)
     py::class_<ActorEvent<Mob>, Event>(m, "MobEvent", "Represents an `Mob`-related event.")
         .def_property_readonly("actor", &ActorEvent<Mob>::getActor,
                                "The `Mob` which is involved in this event.");
-    py::class_<ActorCollideWithActorEvent, ActorEvent<Actor>, ICancellable>(m, "ActorCollideWithActorEvent", R"doc(
-    Called when an `Actor` collides with another `Actor`.
+    py::class_<ActorCollideWithActorEvent, Event, ICancellable>(m, "ActorCollideWithActorEvent", R"doc(
+    Called when two actors collide with each other.
+
+    If this event is cancelled, the actors will not be pushed away from each other. Cancelling also stops
+    either actor from being pulled onto the other when the other is a rideable vehicle, so a listener that
+    cancels every collision also stops boats and minecarts from being boarded by walking into them.
 
     The server fires this before it decides whether the collision leads to a push, so it is also called for
     pairs the server then leaves alone, and it is called more than once per tick for a pair that keeps
     overlapping.
-
-    If this event is cancelled, the two actors are not pushed apart. Cancelling also stops either actor from
-    being pulled onto the other when the other is a rideable vehicle, so a listener that cancels every
-    collision also stops boats and minecarts from being boarded by walking into them.
 )doc")
-        .def_property_readonly("target", &ActorCollideWithActorEvent::getTarget,
-                               "The `Actor` that the actor of this event collided with.");
+        .def_property_readonly("actors", &ActorCollideWithActorEvent::getActors,
+                               "The actors that are involved in this event.");
     py::class_<ActorDamageEvent, ActorEvent<Mob>, ICancellable>(m, "ActorDamageEvent",
                                                                 "Called when an `Actor` is damaged.")
         .def_property("damage", &ActorDamageEvent::getDamage, &ActorDamageEvent::setDamage,

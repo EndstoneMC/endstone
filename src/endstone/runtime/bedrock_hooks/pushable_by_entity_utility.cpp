@@ -15,6 +15,7 @@
 #include "bedrock/entity/utilities/pushable_by_entity_utility.h"
 
 #include "bedrock/world/actor/actor.h"
+#include "endstone/core/plugin/plugin_manager.h"
 #include "endstone/core/server.h"
 #include "endstone/event/actor/actor_collide_with_actor_event.h"
 #include "endstone/runtime/hook.h"
@@ -22,11 +23,13 @@
 void PushableByEntityUtility::push(Actor &owner, Actor &other, bool push_self_only)
 {
     const auto &server = endstone::core::EndstoneServer::getInstance();
-    endstone::ActorCollideWithActorEvent event{owner.getEndstoneActor<endstone::Actor>(),
-                                               other.getEndstoneActor<endstone::Actor>()};
-    server.getPluginManager().callEvent(event);
-    if (event.isCancelled()) {
-        return;
+    if (server.getEndstonePluginManager().isEventRegistered<endstone::ActorCollideWithActorEvent>()) {
+        endstone::ActorCollideWithActorEvent event{owner.getEndstoneActor<endstone::Actor>(),
+                                                   other.getEndstoneActor<endstone::Actor>()};
+        server.getPluginManager().callEvent(event);
+        if (event.isCancelled()) {
+            return;
+        }
     }
 
     ENDSTONE_HOOK_CALL_ORIGINAL(&PushableByEntityUtility::push, owner, other, push_self_only);
