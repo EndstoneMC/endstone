@@ -394,6 +394,8 @@
 ([**endstone**](namespaceendstone.md))
 * [**PlayerBedLeaveEvent**](classendstone_1_1PlayerBedLeaveEvent.md)
 ([**endstone**](namespaceendstone.md))
+* [**PlayerBucketActorEvent**](classendstone_1_1PlayerBucketActorEvent.md)
+([**endstone**](namespaceendstone.md))
 * [**PlayerChatEvent**](classendstone_1_1PlayerChatEvent.md)
 ([**endstone**](namespaceendstone.md))
 * [**PlayerCommandEvent**](classendstone_1_1PlayerCommandEvent.md)

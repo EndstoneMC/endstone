@@ -6,6 +6,7 @@
     <innerfile refid="player__armor__stand__manipulate__event_8h">player_armor_stand_manipulate_event.h</innerfile>
     <innerfile refid="player__bed__enter__event_8h">player_bed_enter_event.h</innerfile>
     <innerfile refid="player__bed__leave__event_8h">player_bed_leave_event.h</innerfile>
+    <innerfile refid="player__bucket__actor__event_8h">player_bucket_actor_event.h</innerfile>
     <innerfile refid="player__chat__event_8h">player_chat_event.h</innerfile>
     <innerfile refid="player__command__event_8h">player_command_event.h</innerfile>
     <innerfile refid="player__dimension__change__event_8h">player_dimension_change_event.h</innerfile>

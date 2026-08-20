@@ -105,6 +105,7 @@ Here is a list of all files with brief descriptions:
                 * **file** [**player\_armor\_stand\_manipulate\_event.h**](player__armor__stand__manipulate__event_8h.md)     
                 * **file** [**player\_bed\_enter\_event.h**](player__bed__enter__event_8h.md)     
                 * **file** [**player\_bed\_leave\_event.h**](player__bed__leave__event_8h.md)     
+                * **file** [**player\_bucket\_actor\_event.h**](player__bucket__actor__event_8h.md)     
                 * **file** [**player\_chat\_event.h**](player__chat__event_8h.md)     
                 * **file** [**player\_command\_event.h**](player__command__event_8h.md)     
                 * **file** [**player\_dimension\_change\_event.h**](player__dimension__change__event_8h.md)     

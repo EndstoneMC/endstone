@@ -2046,6 +2046,16 @@
     <member refid="classendstone_1_1PlayerBedLeaveEvent_1a1961df4cabf3fb7a281c01379ce1cbf5" kind="function"><name>~PlayerBedLeaveEvent</name></member>
     <member refid="classendstone_1_1PlayerBedLeaveEvent_1aca06f33b1924e60bf91cd279c0389ab3" kind="function"><name>getBed</name></member>
   </compound>
+  <compound refid="classendstone_1_1PlayerBucketActorEvent" kind="class"><name>endstone::PlayerBucketActorEvent</name>
+    <member refid="classendstone_1_1PlayerBucketActorEvent_1abeb653b8dbeb875ae28a56d2ae50e23e" kind="variable"><name>actor_</name></member>
+    <member refid="classendstone_1_1PlayerBucketActorEvent_1aadab3e2832cf34977e2456960144eb79" kind="variable"><name>original_bucket_</name></member>
+    <member refid="classendstone_1_1PlayerBucketActorEvent_1a150b5ac08e803a41c15d223f2d12d03b" kind="variable"><name>hand_</name></member>
+    <member refid="classendstone_1_1PlayerBucketActorEvent_1ad41dd90e7893ba6f0f8aa1ce743a06d1" kind="function"><name>ENDSTONE_EVENT</name></member>
+    <member refid="classendstone_1_1PlayerBucketActorEvent_1acedb71b77732b5c72d2c08ebc0a82277" kind="function"><name>PlayerBucketActorEvent</name></member>
+    <member refid="classendstone_1_1PlayerBucketActorEvent_1ae7680ecf1e7276e5033bd99912a28a97" kind="function"><name>getActor</name></member>
+    <member refid="classendstone_1_1PlayerBucketActorEvent_1a0237dc1e5a4c158ca0aef364c86477c8" kind="function"><name>getOriginalBucket</name></member>
+    <member refid="classendstone_1_1PlayerBucketActorEvent_1a6775f10526c157537f43e15d8bd74cd9" kind="function"><name>getHand</name></member>
+  </compound>
   <compound refid="classendstone_1_1PlayerChatEvent" kind="class"><name>endstone::PlayerChatEvent</name>
     <member refid="classendstone_1_1PlayerChatEvent_1a5a2fadea22a0df7dcfd1e3229ace5414" kind="variable"><name>message_</name></member>
     <member refid="classendstone_1_1PlayerChatEvent_1a6f547117792397c1aa4dfeed946d6452" kind="variable"><name>format_</name></member>
@@ -3353,6 +3363,8 @@
   <compound refid="player__bed__enter__event_8h" kind="file"><name>player_bed_enter_event.h</name>
   </compound>
   <compound refid="player__bed__leave__event_8h" kind="file"><name>player_bed_leave_event.h</name>
+  </compound>
+  <compound refid="player__bucket__actor__event_8h" kind="file"><name>player_bucket_actor_event.h</name>
   </compound>
   <compound refid="player__chat__event_8h" kind="file"><name>player_chat_event.h</name>
   </compound>

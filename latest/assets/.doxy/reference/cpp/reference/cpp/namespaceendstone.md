@@ -163,6 +163,7 @@ _Represents a button with text and an optional icon._
 | class | [**PlayerBanList**](classendstone_1_1PlayerBanList.md) <br>_Represents a ban list, containing banned players._  |
 | class | [**PlayerBedEnterEvent**](classendstone_1_1PlayerBedEnterEvent.md) <br>_Called when a player is almost about to enter the bed._  |
 | class | [**PlayerBedLeaveEvent**](classendstone_1_1PlayerBedLeaveEvent.md) <br>_Called when a player is leaving a bed._  |
+| class | [**PlayerBucketActorEvent**](classendstone_1_1PlayerBucketActorEvent.md) <br>_Represents an event that is called when a player captures an actor in a bucket._  |
 | class | [**PlayerChatEvent**](classendstone_1_1PlayerChatEvent.md) <br>_Called when a player sends a chat message._  |
 | class | [**PlayerCommandEvent**](classendstone_1_1PlayerCommandEvent.md) <br>_Called whenever a player runs a command._  |
 | class | [**PlayerDeathEvent**](classendstone_1_1PlayerDeathEvent.md) <br>_Called when a_ [_**Player**_](classendstone_1_1Player.md) _dies._ |
