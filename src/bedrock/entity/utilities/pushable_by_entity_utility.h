@@ -20,23 +20,4 @@ class Actor;
 
 namespace PushableByEntityUtility {
 ENDSTONE_HOOK void push(Actor &owner, Actor &other, bool push_self_only);
-
-class SkipPushBypassScope {
-public:
-    SkipPushBypassScope(Actor &owner, Actor &other);
-    ~SkipPushBypassScope();
-
-    SkipPushBypassScope(const SkipPushBypassScope &) = delete;
-    SkipPushBypassScope &operator=(const SkipPushBypassScope &) = delete;
-
-    static bool consume(Actor &owner, Actor &other);
-
-private:
-    Actor *owner_;
-    Actor *other_;
-    bool consumed_;
-    SkipPushBypassScope *previous_;
-};
-
-ENDSTONE_HOOK bool skipPush(Actor &owner, Actor &other);
 }  // namespace PushableByEntityUtility

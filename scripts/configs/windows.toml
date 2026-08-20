@@ -632,28 +632,6 @@ extra = 0
 pattern = "55 41 57 41 56 56 57 53 48 81 EC ? ? ? ? 48 8D AC 24 ? ? ? ? 44 0F 29 8D ? ? ? ? 44 0F 29 85 ? ? ? ? 0F 29 BD ? ? ? ? 0F 29 B5 ? ? ? ? 48 C7 85 ? ? ? ? ? ? ? ? 0F 28 F3"
 
 [[signatures]]
-name = "?push@PushableByEntityUtility@@YAXAEAVActor@@0_N@Z"
-relative = false
-extra = 0
-# 1. locate Mob::pushActors: read Mob::knockback's slot in Player's vtable, then add 8 slots
-# 2. in Mob::pushActors, the normal push branch calls PushableByEntityUtility::push(owner, other, pushSelfOnly)
-#    after its PushableByEntity flag check
-# 3. confirm push by its body: it first calls skipPush(owner, other); when skipPush returns false it computes
-#    the push vectors and calls Actor::onPush on the owner (and the other unless pushSelfOnly is set)
-# 4. confirmed in the 1.26.40 IDA database; use the direct function prologue
-pattern = "55 41 57 41 56 41 54 56 57 53 48 81 EC 10 01 00 00 48 8D AC 24 80 00 00 00 0F 29 BD 80 00 00 00 0F 29 75 70 48 C7 45 68 FE FF FF FF 45 89 C7 48"
-
-[[signatures]]
-name = "?skipPush@PushableByEntityUtility@@YA_NAEAVActor@@0@Z"
-relative = false
-extra = 0
-# 1. skipPush is the first call of PushableByEntityUtility::push
-# 2. confirm skipPush by its body: it skips when either actor has a passenger component or when the later
-#    PushableByEntity checks reject the pair
-# 3. confirmed in the 1.26.40 IDA database; use the direct function prologue
-pattern = "55 41 56 56 57 53 48 83 EC 60 48 8D 6C 24 60 48 C7 45 F8 FE FF FF FF 48 89 D7 48 89 CE 4C 8B B1 D8 01 00 00 49 8B 06 48 8B 80 E8 09 00 00 4C 89"
-
-[[signatures]]
 name = "?tick@PistonBlockActor@@UEAAXAEAVBlockSource@@@Z"
 relative = false
 extra = 0
@@ -738,6 +716,23 @@ extra = 0
 # 2. its lone data xref (a validateVec3Position label arg) is a `lea` inside this function
 # 3. walk up to the prologue
 pattern = "55 41 57 41 56 41 54 56 57 53 48 81 EC ? ? ? ? 48 8D AC 24 ? ? ? ? 44 0F 29 9D ? ? ? ? 44 0F 29 95 ? ? ? ? 44 0F 29 8D ? ? ? ? 66 44 0F 7F 85 ? ? 00 00"
+
+[[signatures]]
+name = "?push@PushableByEntityUtility@@YAXAEAVActor@@0_N@Z"
+relative = false
+extra = 0
+# 1. locate Mob::pushActors: follow the Mob::knockback recipe above to knockback's slot in Player's vtable,
+#    then take the slot 8 entries (+0x40) later - the same delta holds in every vtable that inherits both
+# 2. Mob::pushActors calls three PushableByEntityUtility free functions; push is the only one that takes three
+#    arguments (the third a bool, in r8b) - skipPush and pullToRide take two
+# 3. confirm push by its body: it opens with a call to skipPush and branches on the result, then dispatches a
+#    4-case jump table on the preset's push mode (default / boat / minecart / ball push-vector helpers), and
+#    near the end passes the LevelSoundEvent literal 0x257 (PushedByPlayer) to Actor::playSynchronizedSound
+# 4. cross-check the call sites: push has exactly 4 (Mob::pushActors, SpawnActorSystem::tick,
+#    ArmorStand::pushActors, Minecart::postNormalTick); skipPush and pullToRide have 2 each
+# 5. uniqueness: the 25-byte prologue prefix is shared with 20+ functions, so the pattern runs on into the
+#    frame setup; as written it matches exactly once in the 1.26.44 .text
+pattern = "55 41 57 41 56 41 54 56 57 53 48 81 EC 10 01 00 00 48 8D AC 24 80 00 00 00 0F 29 BD 80 00 00 00 0F 29 75 70 48 C7 45 68 FE FF FF FF 45 89 C7 48"
 
 [[signatures]]
 name = "?peerStartup@RakPeerHelper@@QEAA?AW4StartupResult@RakNet@@PEAVRakPeerInterface@3@AEBUConnectionDefinition@@W4PeerPurpose@1@@Z"
