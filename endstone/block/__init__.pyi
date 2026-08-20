@@ -147,6 +147,9 @@ class BlockType:
     """
     Represents a block type.
     """
+    def __hash__(self) -> int: ...
+    def __eq__(self, other: object) -> bool: ...
+    def __ne__(self, other: object) -> bool: ...
 
     AIR: Identifier[BlockType] = "minecraft:air"
     @property
@@ -187,10 +190,6 @@ class BlockType:
             The `BlockType`, or `None` if no block type with that name exists.
         """
 
-    def __hash__(self) -> int: ...
-    def __eq__(self, other: object) -> bool: ...
-    def __ne__(self, other: object) -> bool: ...
-
 class BlockData:
     """
     Represents the data related to a live block.
@@ -226,6 +225,9 @@ class Biome:
     """
     Represents a biome.
     """
+    def __hash__(self) -> int: ...
+    def __eq__(self, other: object) -> bool: ...
+    def __ne__(self, other: object) -> bool: ...
     @property
     def id(self) -> Identifier[Biome]:
         """
@@ -235,7 +237,7 @@ class Biome:
     @property
     def translation_key(self) -> str:
         """
-        The translation key, suitable for use in a translation component.
+        Raises, as Bedrock does not localize biome names.
         """
 
     @staticmethod
@@ -249,10 +251,6 @@ class Biome:
         Returns:
             The `Biome`, or `None` if no biome with that name exists.
         """
-
-    def __hash__(self) -> int: ...
-    def __eq__(self, other: object) -> bool: ...
-    def __ne__(self, other: object) -> bool: ...
 
 class BlockState:
     """

@@ -173,7 +173,7 @@ public:
      * Reduces the cost of villager trades.<br>
      * \o/.
      */
-    static constexpr auto HeroOfTheVillage = EffectId::minecraft("hero_of_the_village");
+    static constexpr auto VillageHero = EffectId::minecraft("village_hero");
 
     /**
      * Causes the player's vision to dim occasionally.

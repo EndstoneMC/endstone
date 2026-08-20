@@ -1,3 +1,4 @@
+import pytest
 from endstone import Identifier, Server
 from endstone.block import Biome
 
@@ -22,10 +23,11 @@ def test_id_is_an_identifier(server: Server) -> None:
     assert plains.id.key == "plains"
 
 
-def test_translation_key(server: Server) -> None:
-    """Verify a biome exposes a non-empty translation key."""
+def test_translation_key_raises(server: Server) -> None:
+    """Verify asking a biome for a translation key raises, as Bedrock has none for biomes."""
     plains = server.get_registry(Biome).get_or_throw("minecraft:plains")
-    assert isinstance(plains.translation_key, str)
+    with pytest.raises(RuntimeError):
+        _ = plains.translation_key
 
 
 def test_str_and_repr(server: Server) -> None:
