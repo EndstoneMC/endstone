@@ -12,6 +12,7 @@
 
 * `#include <memory>`
 * `#include "endstone/inventory/meta/item_meta.h"`
+* `#include "endstone/util/pointers.h"`
 * `#include "item_type.h"`
 
 

@@ -94,7 +94,7 @@ Inherited by the following classes: [endstone::BlockFormEvent](classendstone_1_1
 
 | Type | Name |
 | ---: | :--- |
-|   | [**BlockGrowEvent**](#function-blockgrowevent) (std::unique\_ptr&lt; [**Block**](classendstone_1_1Block.md) &gt; block, [**const**](classendstone_1_1Identifier.md) [**NotNull**](classendstone_1_1NotNull.md)&lt; [**BlockState**](classendstone_1_1BlockState.md) &gt; & new\_state) <br> |
+|   | [**BlockGrowEvent**](#function-blockgrowevent) ([**const**](classendstone_1_1Identifier.md) [**NotNull**](classendstone_1_1NotNull.md)&lt; [**Block**](classendstone_1_1Block.md) &gt; & block, [**const**](classendstone_1_1Identifier.md) [**NotNull**](classendstone_1_1NotNull.md)&lt; [**BlockState**](classendstone_1_1BlockState.md) &gt; & new\_state) <br> |
 |   | [**ENDSTONE\_EVENT**](#function-endstone_event) ([**BlockGrowEvent**](classendstone_1_1BlockGrowEvent.md)) <br> |
 |  [**const**](classendstone_1_1Identifier.md) [**NotNull**](classendstone_1_1NotNull.md)&lt; [**BlockState**](classendstone_1_1BlockState.md) &gt; & | [**getNewState**](#function-getnewstate) () const<br>_Gets the state of the block after it has grown._  |
 
@@ -216,7 +216,7 @@ If a [**Block**](classendstone_1_1Block.md) Grow event is cancelled, the block w
 
 ```C++
 inline explicit endstone::BlockGrowEvent::BlockGrowEvent (
-    std::unique_ptr< Block > block,
+    const  NotNull < Block > & block,
     const  NotNull < BlockState > & new_state
 ) 
 ```

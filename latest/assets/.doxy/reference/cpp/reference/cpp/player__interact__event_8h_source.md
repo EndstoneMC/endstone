@@ -31,6 +31,7 @@
 #include "endstone/event/cancellable.h"
 #include "endstone/event/player/player_event.h"
 #include "endstone/inventory/item_stack.h"
+#include "endstone/util/pointers.h"
 
 namespace endstone {
 
@@ -45,8 +46,9 @@ public:
         RightClickAir,
     };
 
-    PlayerInteractEvent(const NotNull<Player> &player, Action action, std::optional<ItemStack> item, Block *block_clicked,
-                        BlockFace block_face, std::optional<Vector> clicked_position)
+    PlayerInteractEvent(const NotNull<Player> &player, Action action, std::optional<ItemStack> item,
+                        const Nullable<Block> &block_clicked, BlockFace block_face,
+                        std::optional<Vector> clicked_position)
         : Cancellable(player), action_(action), item_(std::move(item)), block_clicked_(block_clicked),
           block_face_(block_face), clicked_position_(std::move(clicked_position))
     {
@@ -58,9 +60,9 @@ public:
 
     [[nodiscard]] const std::optional<ItemStack> &getItem() const { return item_; }
 
-    [[nodiscard]] bool hasBlock() const { return block_clicked_ != nullptr; }
+    [[nodiscard]] bool hasBlock() const { return static_cast<bool>(block_clicked_); }
 
-    [[nodiscard]] Block *getBlock() const { return block_clicked_; }
+    [[nodiscard]] const Nullable<Block> &getBlock() const { return block_clicked_; }
 
     [[nodiscard]] BlockFace getBlockFace() const { return block_face_; }
 
@@ -69,7 +71,7 @@ public:
 private:
     std::optional<ItemStack> item_;
     Action action_;
-    Block *block_clicked_;
+    Nullable<Block> block_clicked_;
     BlockFace block_face_;
     std::optional<Vector> clicked_position_;
 };

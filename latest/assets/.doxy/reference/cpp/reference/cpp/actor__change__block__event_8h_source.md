@@ -37,15 +37,15 @@ class ActorChangeBlockEvent : public Cancellable<ActorEvent<Actor>> {
 public:
     ENDSTONE_EVENT(ActorChangeBlockEvent);
 
-    explicit ActorChangeBlockEvent(const NotNull<Actor> &actor, std::unique_ptr<Block> block)
-        : Cancellable(actor), block_(std::move(block))
+    explicit ActorChangeBlockEvent(const NotNull<Actor> &actor, const NotNull<Block> &block)
+        : Cancellable(actor), block_(block)
     {
     }
 
-    [[nodiscard]] Block &getBlock() const { return *block_; }
+    [[nodiscard]] const NotNull<Block> &getBlock() const { return block_; }
 
 private:
-    std::unique_ptr<Block> block_;
+    NotNull<Block> block_;
 };
 
 }  // namespace endstone

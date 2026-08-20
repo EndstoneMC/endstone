@@ -94,9 +94,9 @@ Inherited by the following classes: [endstone::PlayerDeathEvent](classendstone_1
 
 | Type | Name |
 | ---: | :--- |
-|   | [**ActorDeathEvent**](#function-actordeathevent) ([**const**](classendstone_1_1Identifier.md) [**NotNull**](classendstone_1_1NotNull.md)&lt; [**Mob**](classendstone_1_1Mob.md) &gt; & actor, std::unique\_ptr&lt; [**DamageSource**](classendstone_1_1DamageSource.md) &gt; damage\_source) <br> |
+|   | [**ActorDeathEvent**](#function-actordeathevent) ([**const**](classendstone_1_1Identifier.md) [**NotNull**](classendstone_1_1NotNull.md)&lt; [**Mob**](classendstone_1_1Mob.md) &gt; & actor, [**const**](classendstone_1_1Identifier.md) [**NotNull**](classendstone_1_1NotNull.md)&lt; [**DamageSource**](classendstone_1_1DamageSource.md) &gt; & damage\_source) <br> |
 |   | [**ENDSTONE\_EVENT**](#function-endstone_event) ([**ActorDeathEvent**](classendstone_1_1ActorDeathEvent.md)) <br> |
-|  [**DamageSource**](classendstone_1_1DamageSource.md) & | [**getDamageSource**](#function-getdamagesource) () const<br>_Gets the source of damage which caused the death._  |
+|  [**const**](classendstone_1_1Identifier.md) [**NotNull**](classendstone_1_1NotNull.md)&lt; [**DamageSource**](classendstone_1_1DamageSource.md) &gt; & | [**getDamageSource**](#function-getdamagesource) () const<br>_Gets the source of damage which caused the death._  |
 
 
 ## Public Functions inherited from endstone::ActorEvent
@@ -215,7 +215,7 @@ See [endstone::Event](classendstone_1_1Event.md)
 ```C++
 inline endstone::ActorDeathEvent::ActorDeathEvent (
     const  NotNull < Mob > & actor,
-    std::unique_ptr< DamageSource > damage_source
+    const  NotNull < DamageSource > & damage_source
 ) 
 ```
 
@@ -245,7 +245,7 @@ endstone::ActorDeathEvent::ENDSTONE_EVENT (
 
 _Gets the source of damage which caused the death._ 
 ```C++
-inline DamageSource & endstone::ActorDeathEvent::getDamageSource () const
+inline const  NotNull < DamageSource > & endstone::ActorDeathEvent::getDamageSource () const
 ```
 
 

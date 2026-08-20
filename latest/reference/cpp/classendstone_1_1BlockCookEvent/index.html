@@ -2750,7 +2750,7 @@ For latest updates join the chat on
 <tbody>
 <tr>
 <td style="text-align: right;"></td>
-<td style="text-align: left;"><a href="#function-blockcookevent"><strong>BlockCookEvent</strong></a> (std::unique_ptr&lt; <a href="../classendstone_1_1Block/"><strong>Block</strong></a> &gt; block, <a href="../classendstone_1_1ItemStack/"><strong>ItemStack</strong></a> source, <a href="../classendstone_1_1ItemStack/"><strong>ItemStack</strong></a> result) <br></td>
+<td style="text-align: left;"><a href="#function-blockcookevent"><strong>BlockCookEvent</strong></a> (<a href="../classendstone_1_1Identifier/"><strong>const</strong></a> <a href="../classendstone_1_1NotNull/"><strong>NotNull</strong></a>&lt; <a href="../classendstone_1_1Block/"><strong>Block</strong></a> &gt; &amp; block, <a href="../classendstone_1_1ItemStack/"><strong>ItemStack</strong></a> source, <a href="../classendstone_1_1ItemStack/"><strong>ItemStack</strong></a> result) <br></td>
 </tr>
 <tr>
 <td style="text-align: right;"></td>
@@ -2825,7 +2825,7 @@ For latest updates join the chat on
 <h2 id="public-functions-documentation">Public Functions Documentation<a class="headerlink" href="#public-functions-documentation" title="Permanent link">&para;</a></h2>
 <h3 id="function-blockcookevent">function BlockCookEvent<a class="headerlink" href="#function-blockcookevent" title="Permanent link">&para;</a></h3>
 <div class="language-C++ highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="kr">inline</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">BlockCookEvent</span><span class="o">::</span><span class="n">BlockCookEvent</span><span class="w"> </span><span class="p">(</span>
-</span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a><span class="w">    </span><span class="n">std</span><span class="o">::</span><span class="n">unique_ptr</span><span class="o">&lt;</span><span class="w"> </span><span class="n">Block</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="n">block</span><span class="p">,</span>
+</span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a><span class="w">    </span><span class="k">const</span><span class="w">  </span><span class="n">NotNull</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">Block</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">block</span><span class="p">,</span>
 </span><span id="__span-0-3"><a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a><span class="w">    </span><span class="n">ItemStack</span><span class="w"> </span><span class="n">source</span><span class="p">,</span>
 </span><span id="__span-0-4"><a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a><span class="w">    </span><span class="n">ItemStack</span><span class="w"> </span><span class="n">result</span>
 </span><span id="__span-0-5"><a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a><span class="p">)</span><span class="w"> </span>

@@ -7525,7 +7525,7 @@ For latest updates join the chat on
 <a href="#endstone.inventory.ItemFactory.as_meta_for" class="headerlink" title="Permanent link">&para;</a></h4>
 <div class="language-python doc-signature highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="nf">as_meta_for</span><span class="p">(</span>
 </span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>    <span class="n">meta</span><span class="p">:</span> <span class="n"><a class="autorefs autorefs-internal" title="            ItemMeta (endstone.inventory.ItemMeta)" href="#endstone.inventory.ItemMeta">ItemMeta</a></span><span class="p">,</span> <span class="nb">type</span><span class="p">:</span> <span class="n"><span title="endstone.Identifier">Identifier</span></span><span class="p">[</span><span class="n"><a class="autorefs autorefs-internal" title="            ItemType (endstone.inventory.ItemType)" href="#endstone.inventory.ItemType">ItemType</a></span><span class="p">]</span> <span class="o">|</span> <span class="n"><a class="autorefs autorefs-external" href="https://docs.python.org/3/library/stdtypes.html#str">str</a></span>
-</span><span id="__span-0-3"><a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a><span class="p">)</span> <span class="o">-&gt;</span> <span class="n"><a class="autorefs autorefs-internal" title="            ItemMeta (endstone.inventory.ItemMeta)" href="#endstone.inventory.ItemMeta">ItemMeta</a></span>
+</span><span id="__span-0-3"><a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a><span class="p">)</span> <span class="o">-&gt;</span> <span class="n"><a class="autorefs autorefs-internal" title="            ItemMeta (endstone.inventory.ItemMeta)" href="#endstone.inventory.ItemMeta">ItemMeta</a></span> <span class="o">|</span> <span class="kc">None</span>
 </span></code></pre></div>
 
     <div class="doc doc-contents ">
@@ -7594,7 +7594,7 @@ will also always be the most appropriate meta.</p>
       <tbody>
           <tr class="doc-section-item">
             <td>
-                  <code><a class="autorefs autorefs-internal" title="            ItemMeta (endstone.inventory.ItemMeta)" href="#endstone.inventory.ItemMeta">ItemMeta</a></code>
+                  <code><a class="autorefs autorefs-internal" title="            ItemMeta (endstone.inventory.ItemMeta)" href="#endstone.inventory.ItemMeta">ItemMeta</a> | None</code>
             </td>
             <td>
               <div class="doc-md-description">
@@ -7708,7 +7708,9 @@ will also always be the most appropriate meta.</p>
 
 
 <a href="#endstone.inventory.ItemFactory.get_item_meta" class="headerlink" title="Permanent link">&para;</a></h4>
-<div class="language-python doc-signature highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="nf">get_item_meta</span><span class="p">(</span><span class="nb">type</span><span class="p">:</span> <span class="n"><span title="endstone.Identifier">Identifier</span></span><span class="p">[</span><span class="n"><a class="autorefs autorefs-internal" title="            ItemType (endstone.inventory.ItemType)" href="#endstone.inventory.ItemType">ItemType</a></span><span class="p">]</span> <span class="o">|</span> <span class="n"><a class="autorefs autorefs-external" href="https://docs.python.org/3/library/stdtypes.html#str">str</a></span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n"><a class="autorefs autorefs-internal" title="            ItemMeta (endstone.inventory.ItemMeta)" href="#endstone.inventory.ItemMeta">ItemMeta</a></span>
+<div class="language-python doc-signature highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="nf">get_item_meta</span><span class="p">(</span>
+</span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>    <span class="nb">type</span><span class="p">:</span> <span class="n"><span title="endstone.Identifier">Identifier</span></span><span class="p">[</span><span class="n"><a class="autorefs autorefs-internal" title="            ItemType (endstone.inventory.ItemType)" href="#endstone.inventory.ItemType">ItemType</a></span><span class="p">]</span> <span class="o">|</span> <span class="n"><a class="autorefs autorefs-external" href="https://docs.python.org/3/library/stdtypes.html#str">str</a></span><span class="p">,</span>
+</span><span id="__span-0-3"><a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a><span class="p">)</span> <span class="o">-&gt;</span> <span class="n"><a class="autorefs autorefs-internal" title="            ItemMeta (endstone.inventory.ItemMeta)" href="#endstone.inventory.ItemMeta">ItemMeta</a></span> <span class="o">|</span> <span class="kc">None</span>
 </span></code></pre></div>
 
     <div class="doc doc-contents ">
@@ -7758,7 +7760,7 @@ will also always be the most appropriate meta.</p>
       <tbody>
           <tr class="doc-section-item">
             <td>
-                  <code><a class="autorefs autorefs-internal" title="            ItemMeta (endstone.inventory.ItemMeta)" href="#endstone.inventory.ItemMeta">ItemMeta</a></code>
+                  <code><a class="autorefs autorefs-internal" title="            ItemMeta (endstone.inventory.ItemMeta)" href="#endstone.inventory.ItemMeta">ItemMeta</a> | None</code>
             </td>
             <td>
               <div class="doc-md-description">
@@ -8962,7 +8964,7 @@ will also always be the most appropriate meta.</p>
       property
    (endstone.inventory.ItemStack.item_meta)" href="#endstone.inventory.ItemStack.item_meta">item_meta</a></code></td>
             <td>
-                  <code><a class="autorefs autorefs-internal" title="            ItemMeta (endstone.inventory.ItemMeta)" href="#endstone.inventory.ItemMeta">ItemMeta</a></code>
+                  <code><a class="autorefs autorefs-internal" title="            ItemMeta (endstone.inventory.ItemMeta)" href="#endstone.inventory.ItemMeta">ItemMeta</a> | None</code>
             </td>
             <td>
               <div class="doc-md-description">
@@ -9113,7 +9115,7 @@ will also always be the most appropriate meta.</p>
   </span>
 
 <a href="#endstone.inventory.ItemStack.item_meta" class="headerlink" title="Permanent link">&para;</a></h4>
-<div class="language-python doc-signature highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="n">item_meta</span><span class="p">:</span> <span class="n"><a class="autorefs autorefs-internal" title="            ItemMeta (endstone.inventory.ItemMeta)" href="#endstone.inventory.ItemMeta">ItemMeta</a></span>
+<div class="language-python doc-signature highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="n">item_meta</span><span class="p">:</span> <span class="n"><a class="autorefs autorefs-internal" title="            ItemMeta (endstone.inventory.ItemMeta)" href="#endstone.inventory.ItemMeta">ItemMeta</a></span> <span class="o">|</span> <span class="kc">None</span>
 </span></code></pre></div>
 
     <div class="doc doc-contents ">

@@ -228,6 +228,8 @@
         </childnode>
         <childnode refid="52" relation="include">
         </childnode>
+        <childnode refid="29" relation="include">
+        </childnode>
       </node>
       <node id="1">
         <label>include/endstone/inventory/meta/writable_book_meta.h</label>
@@ -495,6 +497,8 @@
         <childnode refid="72" relation="include">
         </childnode>
         <childnode refid="75" relation="include">
+        </childnode>
+        <childnode refid="29" relation="include">
         </childnode>
         <childnode refid="55" relation="include">
         </childnode>

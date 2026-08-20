@@ -43,6 +43,8 @@
         </childnode>
         <childnode refid="90" relation="include">
         </childnode>
+        <childnode refid="36" relation="include">
+        </childnode>
       </node>
       <node id="88">
         <label>endstone/attribute/attribute.h</label>
@@ -880,6 +882,8 @@
         <childnode refid="79" relation="include">
         </childnode>
         <childnode refid="82" relation="include">
+        </childnode>
+        <childnode refid="36" relation="include">
         </childnode>
         <childnode refid="62" relation="include">
         </childnode>

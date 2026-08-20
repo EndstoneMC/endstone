@@ -54,7 +54,7 @@
 | virtual std::unique\_ptr&lt; Impl &gt; | [**clone**](#function-clone) () const = 0<br> |
 | virtual [**int**](classendstone_1_1Identifier.md) | [**getAmount**](#function-getamount) () const = 0<br> |
 | virtual [**int**](classendstone_1_1Identifier.md) | [**getData**](#function-getdata) () const = 0<br> |
-| virtual std::unique\_ptr&lt; [**ItemMeta**](classendstone_1_1ItemMeta.md) &gt; | [**getItemMeta**](#function-getitemmeta) () const = 0<br> |
+| virtual [**Nullable**](classendstone_1_1Nullable.md)&lt; [**ItemMeta**](classendstone_1_1ItemMeta.md) &gt; | [**getItemMeta**](#function-getitemmeta) () const = 0<br> |
 | virtual [**int**](classendstone_1_1Identifier.md) | [**getMaxStackSize**](#function-getmaxstacksize) () const = 0<br> |
 | virtual [**CompoundTag**](classendstone_1_1CompoundTag.md) | [**getNbt**](#function-getnbt) () const = 0<br> |
 | virtual std::string | [**getTranslationKey**](#function-gettranslationkey) () const = 0<br> |
@@ -142,7 +142,7 @@ virtual int Impl::getData () const = 0
 ### function getItemMeta 
 
 ```C++
-virtual std::unique_ptr< ItemMeta > Impl::getItemMeta () const = 0
+virtual Nullable < ItemMeta > Impl::getItemMeta () const = 0
 ```
 
 

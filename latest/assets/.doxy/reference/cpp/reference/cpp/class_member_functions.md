@@ -82,7 +82,6 @@
 ## c
 
 * **captureState** ([**endstone::Block**](classendstone_1_1Block.md))
-* **clone** ([**endstone::Block**](classendstone_1_1Block.md), [**endstone::ItemMeta**](classendstone_1_1ItemMeta.md), [**endstone::ItemStack::Impl**](classendstone_1_1ItemStack_1_1Impl.md))
 * **createBlockData** ([**endstone::BlockType**](classendstone_1_1BlockType.md), [**endstone::Server**](classendstone_1_1Server.md))
 * **cancel** ([**endstone::Cancellable**](classendstone_1_1Cancellable.md), [**endstone::ICancellable**](classendstone_1_1ICancellable.md), [**endstone::Task**](classendstone_1_1Task.md))
 * **ChunkEvent** ([**endstone::ChunkEvent**](classendstone_1_1ChunkEvent.md))
@@ -102,6 +101,7 @@
 * **conflictsWith** ([**endstone::Enchantment**](classendstone_1_1Enchantment.md))
 * **callEvent** ([**endstone::EventHandler**](classendstone_1_1EventHandler.md), [**endstone::PluginManager**](classendstone_1_1PluginManager.md))
 * **containsAtLeast** ([**endstone::Inventory**](classendstone_1_1Inventory.md))
+* **clone** ([**endstone::ItemMeta**](classendstone_1_1ItemMeta.md), [**endstone::ItemStack::Impl**](classendstone_1_1ItemStack_1_1Impl.md))
 * **createItemStack** ([**endstone::ItemType**](classendstone_1_1ItemType.md))
 * **createDimension** ([**endstone::Level**](classendstone_1_1Level.md))
 * **critical** ([**endstone::Logger**](classendstone_1_1Logger.md))

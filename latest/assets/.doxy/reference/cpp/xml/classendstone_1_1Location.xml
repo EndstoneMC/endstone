@@ -212,9 +212,9 @@
         </inbodydescription>
         <location file="include/endstone/level/location.h" line="65" column="11" bodyfile="include/endstone/level/dimension.h" bodystart="222" bodyend="226"/>
       </memberdef>
-      <memberdef kind="function" id="classendstone_1_1Location_1a8854bf92ad004cab6557d0249547c2d1" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
-        <type>std::unique_ptr&lt; <ref refid="classendstone_1_1Block" kindref="compound">Block</ref> &gt;</type>
-        <definition>std::unique_ptr&lt; Block &gt; endstone::Location::getBlock</definition>
+      <memberdef kind="function" id="classendstone_1_1Location_1a4dc54621e53c0ce9ce1784880b04e939" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type><ref refid="classendstone_1_1NotNull" kindref="compound">NotNull</ref>&lt; <ref refid="classendstone_1_1Block" kindref="compound">Block</ref> &gt;</type>
+        <definition>NotNull&lt; Block &gt; endstone::Location::getBlock</definition>
         <argsstring>() const</argsstring>
         <name>getBlock</name>
         <qualifiedname>endstone::Location::getBlock</qualifiedname>
@@ -228,7 +228,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/level/location.h" line="72" column="22" bodyfile="include/endstone/level/dimension.h" bodystart="228" bodyend="231"/>
+        <location file="include/endstone/level/location.h" line="72" column="14" bodyfile="include/endstone/level/dimension.h" bodystart="228" bodyend="231"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1Location_1a5ba25937640328506266b859ef860a64" prot="public" static="no" constexpr="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
         <templateparamlist>
@@ -945,7 +945,7 @@
       <member refid="classendstone_1_1Location_1aea4ca4380e1b5e93a9a8c4c4517e51b9" prot="private" virt="non-virtual"><scope>endstone::Location</scope><name>dimension_</name></member>
       <member refid="classendstone_1_1Location_1a0f4172520ab11dc9b41158334e81fedc" prot="public" virt="non-virtual"><scope>endstone::Location</scope><name>distance</name></member>
       <member refid="classendstone_1_1Location_1a08de7b2db144638050d41198588210e8" prot="public" virt="non-virtual"><scope>endstone::Location</scope><name>distanceSquared</name></member>
-      <member refid="classendstone_1_1Location_1a8854bf92ad004cab6557d0249547c2d1" prot="public" virt="non-virtual"><scope>endstone::Location</scope><name>getBlock</name></member>
+      <member refid="classendstone_1_1Location_1a4dc54621e53c0ce9ce1784880b04e939" prot="public" virt="non-virtual"><scope>endstone::Location</scope><name>getBlock</name></member>
       <member refid="classendstone_1_1Location_1ac6300ab01c9a429cbfa0f146b92e53c7" prot="public" virt="non-virtual"><scope>endstone::Location</scope><name>getBlockX</name></member>
       <member refid="classendstone_1_1Location_1a9c1dc513631382f76879a53726d67353" prot="public" virt="non-virtual"><scope>endstone::Location</scope><name>getBlockY</name></member>
       <member refid="classendstone_1_1Location_1a63c3292662cc08cdfb01cfa3d4f104dc" prot="public" virt="non-virtual"><scope>endstone::Location</scope><name>getBlockZ</name></member>

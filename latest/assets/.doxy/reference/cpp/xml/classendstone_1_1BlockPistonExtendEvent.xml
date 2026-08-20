@@ -22,14 +22,14 @@
         </inbodydescription>
         <location file="include/endstone/event/block/block_piston_extend_event.h" line="26" column="5"/>
       </memberdef>
-      <memberdef kind="function" id="classendstone_1_1BlockPistonExtendEvent_1a4045e305bbfc65226b898f11a7ec8389" prot="public" static="no" const="no" explicit="yes" inline="yes" virt="non-virtual">
+      <memberdef kind="function" id="classendstone_1_1BlockPistonExtendEvent_1a2824fd7228c9630c6a8a23a4800759cb" prot="public" static="no" const="no" explicit="yes" inline="yes" virt="non-virtual">
         <type></type>
         <definition>endstone::BlockPistonEvent::BlockPistonEvent</definition>
-        <argsstring>(std::unique_ptr&lt; Block &gt; block, BlockFace direction)</argsstring>
+        <argsstring>(const NotNull&lt; Block &gt; &amp;block, BlockFace direction)</argsstring>
         <name>BlockPistonEvent</name>
         <qualifiedname>endstone::BlockPistonExtendEvent::BlockPistonEvent</qualifiedname>
         <param>
-          <type>std::unique_ptr&lt; <ref refid="classendstone_1_1Block" kindref="compound">Block</ref> &gt;</type>
+          <type><ref refid="classendstone_1_1Identifier" kindref="compound">const</ref> <ref refid="classendstone_1_1NotNull" kindref="compound">NotNull</ref>&lt; <ref refid="classendstone_1_1Block" kindref="compound">Block</ref> &gt; &amp;</type>
           <declname>block</declname>
         </param>
         <param>
@@ -92,13 +92,20 @@
         <link refid="classendstone_1_1Cancellable"/>
         <childnode refid="4" relation="public-inheritance">
         </childnode>
-        <childnode refid="6" relation="public-inheritance">
+        <childnode refid="7" relation="public-inheritance">
         </childnode>
+      </node>
+      <node id="6">
+        <label>endstone::NotNull&lt; endstone::Block &gt;</label>
+        <link refid="classendstone_1_1NotNull"/>
       </node>
       <node id="4">
         <label>endstone::BlockEvent</label>
         <link refid="classendstone_1_1BlockEvent"/>
         <childnode refid="5" relation="public-inheritance">
+        </childnode>
+        <childnode refid="6" relation="usage">
+          <edgelabel>block_</edgelabel>
         </childnode>
       </node>
       <node id="2">
@@ -117,22 +124,22 @@
         <label>endstone::Event</label>
         <link refid="classendstone_1_1Event"/>
       </node>
-      <node id="6">
+      <node id="7">
         <label>endstone::ICancellable</label>
         <link refid="classendstone_1_1ICancellable"/>
       </node>
     </collaborationgraph>
     <location file="include/endstone/event/block/block_piston_extend_event.h" line="24" column="1" bodyfile="include/endstone/event/block/block_piston_extend_event.h" bodystart="24" bodyend="28"/>
     <listofallmembers>
-      <member refid="classendstone_1_1BlockEvent_1a8495800ade942e17e6832ba40530e4d9" prot="protected" virt="non-virtual"><scope>endstone::BlockPistonExtendEvent</scope><name>block_</name></member>
-      <member refid="classendstone_1_1BlockEvent_1a784685838d2b051b0846ceb821e6a9b5" prot="public" virt="non-virtual"><scope>endstone::BlockPistonExtendEvent</scope><name>BlockEvent</name></member>
-      <member refid="classendstone_1_1BlockPistonExtendEvent_1a4045e305bbfc65226b898f11a7ec8389" prot="public" virt="non-virtual"><scope>endstone::BlockPistonExtendEvent</scope><name>BlockPistonEvent</name></member>
+      <member refid="classendstone_1_1BlockEvent_1a2d7d59fd58b79e945c604a2db25f1ef2" prot="protected" virt="non-virtual"><scope>endstone::BlockPistonExtendEvent</scope><name>block_</name></member>
+      <member refid="classendstone_1_1BlockEvent_1a969b16b4036cfebd9b2c09e014dba8bd" prot="public" virt="non-virtual"><scope>endstone::BlockPistonExtendEvent</scope><name>BlockEvent</name></member>
+      <member refid="classendstone_1_1BlockPistonExtendEvent_1a2824fd7228c9630c6a8a23a4800759cb" prot="public" virt="non-virtual"><scope>endstone::BlockPistonExtendEvent</scope><name>BlockPistonEvent</name></member>
       <member refid="classendstone_1_1Cancellable_1a3512b47db69c6001f5c0450051308327" prot="public" virt="virtual"><scope>endstone::BlockPistonExtendEvent</scope><name>cancel</name></member>
       <member refid="classendstone_1_1BlockPistonExtendEvent_1a05147059c8c4fbc251a2e8eaffaced16" prot="public" virt="non-virtual"><scope>endstone::BlockPistonExtendEvent</scope><name>ENDSTONE_EVENT</name></member>
       <member refid="classendstone_1_1Event_1a28cca8d74920493b449d035540acf023" prot="public" virt="non-virtual"><scope>endstone::BlockPistonExtendEvent</scope><name>Event</name></member>
       <member refid="classendstone_1_1Event_1a7199136ebb40e1441bc61e29f83c3cad" prot="public" virt="non-virtual"><scope>endstone::BlockPistonExtendEvent</scope><name>Event</name></member>
       <member refid="classendstone_1_1Event_1ad20bafd16e0671578e37390b95e5104c" prot="public" virt="non-virtual"><scope>endstone::BlockPistonExtendEvent</scope><name>Event</name></member>
-      <member refid="classendstone_1_1BlockEvent_1ac9da7c79ee76c2145547c4b09eea46a0" prot="public" virt="non-virtual"><scope>endstone::BlockPistonExtendEvent</scope><name>getBlock</name></member>
+      <member refid="classendstone_1_1BlockEvent_1a0a96c0b3103a80ca27eaf1e0ba5d1148" prot="public" virt="non-virtual"><scope>endstone::BlockPistonExtendEvent</scope><name>getBlock</name></member>
       <member refid="classendstone_1_1BlockPistonEvent_1ae3e821b114d8430fbfba8db2c7fdfa9a" prot="public" virt="non-virtual"><scope>endstone::BlockPistonExtendEvent</scope><name>getDirection</name></member>
       <member refid="classendstone_1_1Event_1a826fe74f9c4195a36a364b9aeeb321bb" prot="public" virt="pure-virtual"><scope>endstone::BlockPistonExtendEvent</scope><name>getEventName</name></member>
       <member refid="classendstone_1_1Event_1ae89b54f63dc32b0c8797a59db69b6931" prot="public" virt="non-virtual"><scope>endstone::BlockPistonExtendEvent</scope><name>isAsynchronous</name></member>

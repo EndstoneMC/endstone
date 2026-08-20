@@ -22,7 +22,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/actor/mob.h" line="35" column="19"/>
+        <location file="include/endstone/actor/mob.h" line="36" column="19"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1Mob_1aee57346e9cf1c008fb704e8a701112b6" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
         <type><ref refid="classendstone_1_1Identifier" kindref="compound">bool</ref></type>
@@ -40,7 +40,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/actor/mob.h" line="41" column="19"/>
+        <location file="include/endstone/actor/mob.h" line="42" column="19"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1Mob_1a082c0e3f266fc07386b6892b8af08b5f" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
         <type><ref refid="classendstone_1_1Identifier" kindref="compound">int</ref></type>
@@ -58,7 +58,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/actor/mob.h" line="48" column="18"/>
+        <location file="include/endstone/actor/mob.h" line="49" column="18"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1Mob_1addd7c205b763c7a9a6b1bf8ec1c811fd" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
         <type><ref refid="classendstone_1_1Identifier" kindref="compound">void</ref></type>
@@ -87,7 +87,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/actor/mob.h" line="55" column="18"/>
+        <location file="include/endstone/actor/mob.h" line="56" column="18"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1Mob_1a4efbe682a6adc265c113e1ef77b752fb" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
         <type><ref refid="classendstone_1_1Identifier" kindref="compound">int</ref></type>
@@ -105,7 +105,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/actor/mob.h" line="62" column="18"/>
+        <location file="include/endstone/actor/mob.h" line="63" column="18"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1Mob_1ae54b4e6eb8b5509bec9c330dfc5b46be" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
         <type><ref refid="classendstone_1_1Identifier" kindref="compound">void</ref></type>
@@ -137,7 +137,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/actor/mob.h" line="73" column="18"/>
+        <location file="include/endstone/actor/mob.h" line="74" column="18"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1Mob_1a2d038feb9ba603941bb670b61f486192" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
         <type><ref refid="classendstone_1_1Identifier" kindref="compound">bool</ref></type>
@@ -166,11 +166,11 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/actor/mob.h" line="80" column="19"/>
+        <location file="include/endstone/actor/mob.h" line="81" column="19"/>
       </memberdef>
-      <memberdef kind="function" id="classendstone_1_1Mob_1afdff3c5af17582670df6a26bfd2c4c4e" prot="public" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
-        <type>std::unique_ptr&lt; <ref refid="classendstone_1_1AttributeInstance" kindref="compound">AttributeInstance</ref> &gt;</type>
-        <definition>virtual std::unique_ptr&lt; AttributeInstance &gt; endstone::Mob::getAttribute</definition>
+      <memberdef kind="function" id="classendstone_1_1Mob_1a46c5456e110631a6e8d47ac762de91f0" prot="public" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
+        <type><ref refid="classendstone_1_1Nullable" kindref="compound">Nullable</ref>&lt; <ref refid="classendstone_1_1AttributeInstance" kindref="compound">AttributeInstance</ref> &gt;</type>
+        <definition>virtual Nullable&lt; AttributeInstance &gt; endstone::Mob::getAttribute</definition>
         <argsstring>(AttributeId id)=0</argsstring>
         <name>getAttribute</name>
         <qualifiedname>endstone::Mob::getAttribute</qualifiedname>
@@ -196,11 +196,11 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/actor/mob.h" line="88" column="30"/>
+        <location file="include/endstone/actor/mob.h" line="89" column="23"/>
       </memberdef>
-      <memberdef kind="function" id="classendstone_1_1Mob_1af787b489d14574b8afa4dc8e29adbf65" prot="public" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
-        <type>std::vector&lt; std::unique_ptr&lt; <ref refid="classendstone_1_1AttributeInstance" kindref="compound">AttributeInstance</ref> &gt; &gt;</type>
-        <definition>virtual std::vector&lt; std::unique_ptr&lt; AttributeInstance &gt; &gt; endstone::Mob::getAttributes</definition>
+      <memberdef kind="function" id="classendstone_1_1Mob_1af4dddab005007489ce1e40a9045bc277" prot="public" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
+        <type>std::vector&lt; <ref refid="classendstone_1_1NotNull" kindref="compound">NotNull</ref>&lt; <ref refid="classendstone_1_1AttributeInstance" kindref="compound">AttributeInstance</ref> &gt; &gt;</type>
+        <definition>virtual std::vector&lt; NotNull&lt; AttributeInstance &gt; &gt; endstone::Mob::getAttributes</definition>
         <argsstring>()=0</argsstring>
         <name>getAttributes</name>
         <qualifiedname>endstone::Mob::getAttributes</qualifiedname>
@@ -212,7 +212,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/actor/mob.h" line="94" column="26"/>
+        <location file="include/endstone/actor/mob.h" line="95" column="26"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1Mob_1a2836f61e2312723e336e43e41f0604f3" prot="public" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
         <type><ref refid="classendstone_1_1Identifier" kindref="compound">void</ref></type>
@@ -242,7 +242,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/actor/mob.h" line="104" column="18"/>
+        <location file="include/endstone/actor/mob.h" line="105" column="18"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1Mob_1aeac9fd85c147eaa5d63981f67604e348" prot="public" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
         <type><ref refid="classendstone_1_1Identifier" kindref="compound">void</ref></type>
@@ -271,7 +271,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/actor/mob.h" line="111" column="18"/>
+        <location file="include/endstone/actor/mob.h" line="112" column="18"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1Mob_1a412db4e15e78c57b8c712f5b3ca39f7c" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
         <type><ref refid="classendstone_1_1Identifier" kindref="compound">bool</ref></type>
@@ -302,7 +302,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/actor/mob.h" line="119" column="19"/>
+        <location file="include/endstone/actor/mob.h" line="120" column="19"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1Mob_1a3f4d776ae80d887fc4ddb1900b08983c" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
         <type>std::optional&lt; <ref refid="classendstone_1_1Effect" kindref="compound">Effect</ref> &gt;</type>
@@ -334,7 +334,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/actor/mob.h" line="129" column="28"/>
+        <location file="include/endstone/actor/mob.h" line="130" column="28"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1Mob_1ac89ab5a920e0700ff422802f59bbd4ed" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
         <type>std::vector&lt; <ref refid="classendstone_1_1Effect" kindref="compound">Effect</ref> &gt;</type>
@@ -352,7 +352,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/actor/mob.h" line="136" column="26"/>
+        <location file="include/endstone/actor/mob.h" line="137" column="26"/>
       </memberdef>
     </sectiondef>
     <briefdescription>
@@ -427,7 +427,7 @@
         </childnode>
       </node>
     </collaborationgraph>
-    <location file="include/endstone/actor/mob.h" line="29" column="1" bodyfile="include/endstone/actor/mob.h" bodystart="29" bodyend="137"/>
+    <location file="include/endstone/actor/mob.h" line="30" column="1" bodyfile="include/endstone/actor/mob.h" bodystart="30" bodyend="138"/>
     <listofallmembers>
       <member refid="classendstone_1_1Permissible_1a08be02debf01b55544c4566931ed98fc" prot="public" virt="pure-virtual"><scope>endstone::Mob</scope><name>addAttachment</name></member>
       <member refid="classendstone_1_1Permissible_1ab1adef2b8d0494a9bfcd9c9ffb995f2b" prot="public" virt="pure-virtual"><scope>endstone::Mob</scope><name>addAttachment</name></member>
@@ -436,8 +436,8 @@
       <member refid="classendstone_1_1Object_1a798b5128ce018bbbe8ca949ba78c3db1" prot="public" virt="non-virtual"><scope>endstone::Mob</scope><name>as</name></member>
       <member refid="classendstone_1_1Object_1ae0f38a62da4c186fce272145e2590cc1" prot="public" virt="non-virtual"><scope>endstone::Mob</scope><name>as</name></member>
       <member refid="classendstone_1_1Mob_1ac89ab5a920e0700ff422802f59bbd4ed" prot="public" virt="pure-virtual"><scope>endstone::Mob</scope><name>getActiveEffects</name></member>
-      <member refid="classendstone_1_1Mob_1afdff3c5af17582670df6a26bfd2c4c4e" prot="public" virt="pure-virtual"><scope>endstone::Mob</scope><name>getAttribute</name></member>
-      <member refid="classendstone_1_1Mob_1af787b489d14574b8afa4dc8e29adbf65" prot="public" virt="pure-virtual"><scope>endstone::Mob</scope><name>getAttributes</name></member>
+      <member refid="classendstone_1_1Mob_1a46c5456e110631a6e8d47ac762de91f0" prot="public" virt="pure-virtual"><scope>endstone::Mob</scope><name>getAttribute</name></member>
+      <member refid="classendstone_1_1Mob_1af4dddab005007489ce1e40a9045bc277" prot="public" virt="pure-virtual"><scope>endstone::Mob</scope><name>getAttributes</name></member>
       <member refid="classendstone_1_1Object_1aaaeb27e8e442e5adb772ae0d1af1c33f" prot="public" virt="pure-virtual"><scope>endstone::Mob</scope><name>getClassTypeId</name></member>
       <member refid="classendstone_1_1Actor_1a408807220ded9a0004de3e6d7aac214e" prot="public" virt="pure-virtual"><scope>endstone::Mob</scope><name>getDimension</name></member>
       <member refid="classendstone_1_1Mob_1a3f4d776ae80d887fc4ddb1900b08983c" prot="public" virt="pure-virtual"><scope>endstone::Mob</scope><name>getEffect</name></member>

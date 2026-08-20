@@ -93,9 +93,9 @@ Inherits the following classes: [endstone::Cancellable](classendstone_1_1Cancell
 
 | Type | Name |
 | ---: | :--- |
-|   | [**ActorChangeBlockEvent**](#function-actorchangeblockevent) ([**const**](classendstone_1_1Identifier.md) [**NotNull**](classendstone_1_1NotNull.md)&lt; [**Actor**](classendstone_1_1Actor.md) &gt; & actor, std::unique\_ptr&lt; [**Block**](classendstone_1_1Block.md) &gt; block) <br> |
+|   | [**ActorChangeBlockEvent**](#function-actorchangeblockevent) ([**const**](classendstone_1_1Identifier.md) [**NotNull**](classendstone_1_1NotNull.md)&lt; [**Actor**](classendstone_1_1Actor.md) &gt; & actor, [**const**](classendstone_1_1Identifier.md) [**NotNull**](classendstone_1_1NotNull.md)&lt; [**Block**](classendstone_1_1Block.md) &gt; & block) <br> |
 |   | [**ENDSTONE\_EVENT**](#function-endstone_event) ([**ActorChangeBlockEvent**](classendstone_1_1ActorChangeBlockEvent.md)) <br> |
-|  [**Block**](classendstone_1_1Block.md) & | [**getBlock**](#function-getblock) () const<br>_Gets the block that will be destroyed or changed._  |
+|  [**const**](classendstone_1_1Identifier.md) [**NotNull**](classendstone_1_1NotNull.md)&lt; [**Block**](classendstone_1_1Block.md) &gt; & | [**getBlock**](#function-getblock) () const<br>_Gets the block that will be destroyed or changed._  |
 
 
 ## Public Functions inherited from endstone::Cancellable
@@ -216,7 +216,7 @@ Unlike Bukkit's equivalent, this covers only the mob griefing paths. It is not c
 ```C++
 inline explicit endstone::ActorChangeBlockEvent::ActorChangeBlockEvent (
     const  NotNull < Actor > & actor,
-    std::unique_ptr< Block > block
+    const  NotNull < Block > & block
 ) 
 ```
 
@@ -246,7 +246,7 @@ endstone::ActorChangeBlockEvent::ENDSTONE_EVENT (
 
 _Gets the block that will be destroyed or changed._ 
 ```C++
-inline Block & endstone::ActorChangeBlockEvent::getBlock () const
+inline const  NotNull < Block > & endstone::ActorChangeBlockEvent::getBlock () const
 ```
 
 

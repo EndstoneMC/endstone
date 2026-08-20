@@ -113,7 +113,7 @@ Inherits the following classes: [endstone::CommandSender](classendstone_1_1Comma
 
 | Type | Name |
 | ---: | :--- |
-| virtual std::unique\_ptr&lt; [**Block**](classendstone_1_1Block.md) &gt; | [**getBlock**](#function-getblock) () const = 0<br>_Returns the block this command sender belongs to._  |
+| virtual [**NotNull**](classendstone_1_1NotNull.md)&lt; [**Block**](classendstone_1_1Block.md) &gt; | [**getBlock**](#function-getblock) () const = 0<br>_Returns the block this command sender belongs to._  |
 
 
 ## Public Functions inherited from endstone::CommandSender
@@ -275,7 +275,7 @@ See [endstone::Object](classendstone_1_1Object.md)
 
 _Returns the block this command sender belongs to._ 
 ```C++
-virtual std::unique_ptr< Block > endstone::BlockCommandSender::getBlock () const = 0
+virtual NotNull < Block > endstone::BlockCommandSender::getBlock () const = 0
 ```
 
 

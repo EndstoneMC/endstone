@@ -12,6 +12,7 @@
 
 * `#include <memory>`
 * `#include "endstone/registry.h"`
+* `#include "endstone/util/pointers.h"`
 
 
 

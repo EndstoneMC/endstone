@@ -93,10 +93,10 @@ Inherits the following classes: [endstone::Cancellable](classendstone_1_1Cancell
 
 | Type | Name |
 | ---: | :--- |
-|   | [**ActorDamageEvent**](#function-actordamageevent) ([**const**](classendstone_1_1Identifier.md) [**NotNull**](classendstone_1_1NotNull.md)&lt; [**Mob**](classendstone_1_1Mob.md) &gt; & actor, std::unique\_ptr&lt; [**DamageSource**](classendstone_1_1DamageSource.md) &gt; damage\_source, [**const**](classendstone_1_1Identifier.md) [**float**](classendstone_1_1Identifier.md) damage) <br> |
+|   | [**ActorDamageEvent**](#function-actordamageevent) ([**const**](classendstone_1_1Identifier.md) [**NotNull**](classendstone_1_1NotNull.md)&lt; [**Mob**](classendstone_1_1Mob.md) &gt; & actor, [**const**](classendstone_1_1Identifier.md) [**NotNull**](classendstone_1_1NotNull.md)&lt; [**DamageSource**](classendstone_1_1DamageSource.md) &gt; & damage\_source, [**const**](classendstone_1_1Identifier.md) [**float**](classendstone_1_1Identifier.md) damage) <br> |
 |   | [**ENDSTONE\_EVENT**](#function-endstone_event) ([**ActorDamageEvent**](classendstone_1_1ActorDamageEvent.md)) <br> |
 |  [**float**](classendstone_1_1Identifier.md) | [**getDamage**](#function-getdamage) () const<br>_Gets the raw amount of damage caused by the event._  |
-|  [**DamageSource**](classendstone_1_1DamageSource.md) & | [**getDamageSource**](#function-getdamagesource) () const<br>_Get the source of damage._  |
+|  [**const**](classendstone_1_1Identifier.md) [**NotNull**](classendstone_1_1NotNull.md)&lt; [**DamageSource**](classendstone_1_1DamageSource.md) &gt; & | [**getDamageSource**](#function-getdamagesource) () const<br>_Get the source of damage._  |
 |  [**void**](classendstone_1_1Identifier.md) | [**setDamage**](#function-setdamage) ([**const**](classendstone_1_1Identifier.md) [**float**](classendstone_1_1Identifier.md) damage) <br>_Sets the raw amount of damage caused by the event._  |
 
 
@@ -211,7 +211,7 @@ See [endstone::ICancellable](classendstone_1_1ICancellable.md)
 ```C++
 inline endstone::ActorDamageEvent::ActorDamageEvent (
     const  NotNull < Mob > & actor,
-    std::unique_ptr< DamageSource > damage_source,
+    const  NotNull < DamageSource > & damage_source,
     const  float damage
 ) 
 ```
@@ -267,7 +267,7 @@ The raw amount of damage caused by the event
 
 _Get the source of damage._ 
 ```C++
-inline DamageSource & endstone::ActorDamageEvent::getDamageSource () const
+inline const  NotNull < DamageSource > & endstone::ActorDamageEvent::getDamageSource () const
 ```
 
 

@@ -53,17 +53,17 @@ public:
 
     virtual void setType(BlockTypeId type, bool apply_physics) = 0;
 
-    [[nodiscard]] virtual std::unique_ptr<BlockData> getData() const = 0;
+    [[nodiscard]] virtual NotNull<BlockData> getData() const = 0;
 
     virtual void setData(const BlockData &data) = 0;
 
     virtual void setData(const BlockData &data, bool apply_physics) = 0;
 
-    virtual std::unique_ptr<Block> getRelative(int offset_x, int offset_y, int offset_z) = 0;
+    virtual NotNull<Block> getRelative(int offset_x, int offset_y, int offset_z) = 0;
 
-    virtual std::unique_ptr<Block> getRelative(BlockFace face) = 0;
+    virtual NotNull<Block> getRelative(BlockFace face) = 0;
 
-    virtual std::unique_ptr<Block> getRelative(BlockFace face, int distance) = 0;
+    virtual NotNull<Block> getRelative(BlockFace face, int distance) = 0;
 
     [[nodiscard]] virtual NotNull<Dimension> getDimension() const = 0;
 
@@ -78,8 +78,6 @@ public:
     [[nodiscard]] virtual Location getLocation() const = 0;
 
     [[nodiscard]] virtual NotNull<BlockState> captureState() const = 0;
-
-    [[nodiscard]] virtual std::unique_ptr<Block> clone() const = 0;
 };
 
 }  // namespace endstone
@@ -94,13 +92,7 @@ struct std::formatter<endstone::Block> : std::formatter<std::string_view> {
         auto it = ctx.out();
         it = std::format_to(it, "Block(pos=BlockPos(x={}, y={}, z={}), type={}", val.getX(), val.getY(), val.getZ(),
                             val.getType());
-        if (const auto data = val.getData()) {
-            it = std::format_to(it, ", data={}", *data);
-        }
-        else {
-            it = std::format_to(it, ", data=INVALID");
-        }
-        it = std::format_to(it, ")");
+        it = std::format_to(it, ", data={})", *val.getData());
         return it;
     }
 };

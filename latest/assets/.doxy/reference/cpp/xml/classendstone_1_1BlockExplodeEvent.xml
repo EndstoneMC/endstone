@@ -5,9 +5,9 @@
     <basecompoundref refid="classendstone_1_1Cancellable" prot="public" virt="non-virtual">endstone::Cancellable&lt; BlockEvent &gt;</basecompoundref>
     <includes refid="block__explode__event_8h" local="no">endstone/event/block/block_explode_event.h</includes>
     <sectiondef kind="private-type">
-      <memberdef kind="typedef" id="classendstone_1_1BlockExplodeEvent_1a409a121d4e1d653b794a153ca749aede" prot="private" static="no">
-        <type>std::vector&lt; std::unique_ptr&lt; <ref refid="classendstone_1_1Block" kindref="compound">Block</ref> &gt; &gt;</type>
-        <definition>using endstone::BlockExplodeEvent::BlockList =  std::vector&lt;std::unique_ptr&lt;Block&gt; &gt;</definition>
+      <memberdef kind="typedef" id="classendstone_1_1BlockExplodeEvent_1a7d1273b369ddb27bb7bc4e08a522e8e3" prot="private" static="no">
+        <type>std::vector&lt; <ref refid="classendstone_1_1NotNull" kindref="compound">NotNull</ref>&lt; <ref refid="classendstone_1_1Block" kindref="compound">Block</ref> &gt; &gt;</type>
+        <definition>using endstone::BlockExplodeEvent::BlockList =  std::vector&lt;NotNull&lt;Block&gt; &gt;</definition>
         <argsstring></argsstring>
         <name>BlockList</name>
         <qualifiedname>endstone::BlockExplodeEvent::BlockList</qualifiedname>
@@ -54,14 +54,14 @@
         </inbodydescription>
         <location file="include/endstone/event/block/block_explode_event.h" line="37" column="5"/>
       </memberdef>
-      <memberdef kind="function" id="classendstone_1_1BlockExplodeEvent_1a43d2aab21024a9c38ebea70d106c20ee" prot="public" static="no" const="no" explicit="yes" inline="yes" virt="non-virtual">
+      <memberdef kind="function" id="classendstone_1_1BlockExplodeEvent_1ab52133f0fa9a374cd86f126705242dc5" prot="public" static="no" const="no" explicit="yes" inline="yes" virt="non-virtual">
         <type></type>
         <definition>endstone::BlockExplodeEvent::BlockExplodeEvent</definition>
-        <argsstring>(std::unique_ptr&lt; Block &gt; block, BlockList blocks)</argsstring>
+        <argsstring>(const NotNull&lt; Block &gt; &amp;block, BlockList blocks)</argsstring>
         <name>BlockExplodeEvent</name>
         <qualifiedname>endstone::BlockExplodeEvent::BlockExplodeEvent</qualifiedname>
         <param>
-          <type>std::unique_ptr&lt; <ref refid="classendstone_1_1Block" kindref="compound">Block</ref> &gt;</type>
+          <type><ref refid="classendstone_1_1Identifier" kindref="compound">const</ref> <ref refid="classendstone_1_1NotNull" kindref="compound">NotNull</ref>&lt; <ref refid="classendstone_1_1Block" kindref="compound">Block</ref> &gt; &amp;</type>
           <declname>block</declname>
         </param>
         <param>
@@ -170,13 +170,20 @@
         <link refid="classendstone_1_1Cancellable"/>
         <childnode refid="3" relation="public-inheritance">
         </childnode>
-        <childnode refid="5" relation="public-inheritance">
+        <childnode refid="6" relation="public-inheritance">
         </childnode>
+      </node>
+      <node id="5">
+        <label>endstone::NotNull&lt; endstone::Block &gt;</label>
+        <link refid="classendstone_1_1NotNull"/>
       </node>
       <node id="3">
         <label>endstone::BlockEvent</label>
         <link refid="classendstone_1_1BlockEvent"/>
         <childnode refid="4" relation="public-inheritance">
+        </childnode>
+        <childnode refid="5" relation="usage">
+          <edgelabel>block_</edgelabel>
         </childnode>
       </node>
       <node id="1">
@@ -189,24 +196,24 @@
         <label>endstone::Event</label>
         <link refid="classendstone_1_1Event"/>
       </node>
-      <node id="5">
+      <node id="6">
         <label>endstone::ICancellable</label>
         <link refid="classendstone_1_1ICancellable"/>
       </node>
     </collaborationgraph>
     <location file="include/endstone/event/block/block_explode_event.h" line="33" column="1" bodyfile="include/endstone/event/block/block_explode_event.h" bodystart="33" bodyend="60"/>
     <listofallmembers>
-      <member refid="classendstone_1_1BlockEvent_1a8495800ade942e17e6832ba40530e4d9" prot="protected" virt="non-virtual"><scope>endstone::BlockExplodeEvent</scope><name>block_</name></member>
-      <member refid="classendstone_1_1BlockEvent_1a784685838d2b051b0846ceb821e6a9b5" prot="public" virt="non-virtual"><scope>endstone::BlockExplodeEvent</scope><name>BlockEvent</name></member>
-      <member refid="classendstone_1_1BlockExplodeEvent_1a43d2aab21024a9c38ebea70d106c20ee" prot="public" virt="non-virtual"><scope>endstone::BlockExplodeEvent</scope><name>BlockExplodeEvent</name></member>
-      <member refid="classendstone_1_1BlockExplodeEvent_1a409a121d4e1d653b794a153ca749aede" prot="private" virt="non-virtual"><scope>endstone::BlockExplodeEvent</scope><name>BlockList</name></member>
+      <member refid="classendstone_1_1BlockEvent_1a2d7d59fd58b79e945c604a2db25f1ef2" prot="protected" virt="non-virtual"><scope>endstone::BlockExplodeEvent</scope><name>block_</name></member>
+      <member refid="classendstone_1_1BlockEvent_1a969b16b4036cfebd9b2c09e014dba8bd" prot="public" virt="non-virtual"><scope>endstone::BlockExplodeEvent</scope><name>BlockEvent</name></member>
+      <member refid="classendstone_1_1BlockExplodeEvent_1ab52133f0fa9a374cd86f126705242dc5" prot="public" virt="non-virtual"><scope>endstone::BlockExplodeEvent</scope><name>BlockExplodeEvent</name></member>
+      <member refid="classendstone_1_1BlockExplodeEvent_1a7d1273b369ddb27bb7bc4e08a522e8e3" prot="private" virt="non-virtual"><scope>endstone::BlockExplodeEvent</scope><name>BlockList</name></member>
       <member refid="classendstone_1_1BlockExplodeEvent_1a234ce28e539f2369a835b96c64744b88" prot="private" virt="non-virtual"><scope>endstone::BlockExplodeEvent</scope><name>blocks_</name></member>
       <member refid="classendstone_1_1Cancellable_1a3512b47db69c6001f5c0450051308327" prot="public" virt="virtual"><scope>endstone::BlockExplodeEvent</scope><name>cancel</name></member>
       <member refid="classendstone_1_1BlockExplodeEvent_1a50a7570acc341450293b04dfe970b7d4" prot="public" virt="non-virtual"><scope>endstone::BlockExplodeEvent</scope><name>ENDSTONE_EVENT</name></member>
       <member refid="classendstone_1_1Event_1a28cca8d74920493b449d035540acf023" prot="public" virt="non-virtual"><scope>endstone::BlockExplodeEvent</scope><name>Event</name></member>
       <member refid="classendstone_1_1Event_1a7199136ebb40e1441bc61e29f83c3cad" prot="public" virt="non-virtual"><scope>endstone::BlockExplodeEvent</scope><name>Event</name></member>
       <member refid="classendstone_1_1Event_1ad20bafd16e0671578e37390b95e5104c" prot="public" virt="non-virtual"><scope>endstone::BlockExplodeEvent</scope><name>Event</name></member>
-      <member refid="classendstone_1_1BlockEvent_1ac9da7c79ee76c2145547c4b09eea46a0" prot="public" virt="non-virtual"><scope>endstone::BlockExplodeEvent</scope><name>getBlock</name></member>
+      <member refid="classendstone_1_1BlockEvent_1a0a96c0b3103a80ca27eaf1e0ba5d1148" prot="public" virt="non-virtual"><scope>endstone::BlockExplodeEvent</scope><name>getBlock</name></member>
       <member refid="classendstone_1_1BlockExplodeEvent_1aae52a2584c34eb63b03e3bd29e4797e0" prot="public" virt="non-virtual"><scope>endstone::BlockExplodeEvent</scope><name>getBlockList</name></member>
       <member refid="classendstone_1_1BlockExplodeEvent_1a8490b081947c453e975399089d792957" prot="public" virt="non-virtual"><scope>endstone::BlockExplodeEvent</scope><name>getBlockList</name></member>
       <member refid="classendstone_1_1Event_1a826fe74f9c4195a36a364b9aeeb321bb" prot="public" virt="pure-virtual"><scope>endstone::BlockExplodeEvent</scope><name>getEventName</name></member>

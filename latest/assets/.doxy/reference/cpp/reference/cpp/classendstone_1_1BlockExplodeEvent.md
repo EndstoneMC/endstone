@@ -93,7 +93,7 @@ Inherits the following classes: [endstone::Cancellable](classendstone_1_1Cancell
 
 | Type | Name |
 | ---: | :--- |
-|   | [**BlockExplodeEvent**](#function-blockexplodeevent) (std::unique\_ptr&lt; [**Block**](classendstone_1_1Block.md) &gt; block, BlockList blocks) <br> |
+|   | [**BlockExplodeEvent**](#function-blockexplodeevent) ([**const**](classendstone_1_1Identifier.md) [**NotNull**](classendstone_1_1NotNull.md)&lt; [**Block**](classendstone_1_1Block.md) &gt; & block, BlockList blocks) <br> |
 |   | [**ENDSTONE\_EVENT**](#function-endstone_event) ([**BlockExplodeEvent**](classendstone_1_1BlockExplodeEvent.md)) <br> |
 |  [**const**](classendstone_1_1Identifier.md) BlockList & | [**getBlockList**](#function-getblocklist-12) () const<br>_Returns the list of blocks that would have been removed or were removed from the explosion event._  |
 |  BlockList & | [**getBlockList**](#function-getblocklist-22) () <br>_Returns the list of blocks that would have been removed or were removed from the explosion event._  |
@@ -220,7 +220,7 @@ If a [**BlockExplodeEvent**](classendstone_1_1BlockExplodeEvent.md) is cancelled
 
 ```C++
 inline explicit endstone::BlockExplodeEvent::BlockExplodeEvent (
-    std::unique_ptr< Block > block,
+    const  NotNull < Block > & block,
     BlockList blocks
 ) 
 ```

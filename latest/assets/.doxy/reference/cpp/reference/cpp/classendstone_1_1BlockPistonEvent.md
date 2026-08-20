@@ -94,7 +94,7 @@ Inherited by the following classes: [endstone::BlockPistonExtendEvent](classends
 
 | Type | Name |
 | ---: | :--- |
-|   | [**BlockPistonEvent**](#function-blockpistonevent) (std::unique\_ptr&lt; [**Block**](classendstone_1_1Block.md) &gt; block, [**BlockFace**](namespaceendstone.md#enum-blockface) direction) <br> |
+|   | [**BlockPistonEvent**](#function-blockpistonevent) ([**const**](classendstone_1_1Identifier.md) [**NotNull**](classendstone_1_1NotNull.md)&lt; [**Block**](classendstone_1_1Block.md) &gt; & block, [**BlockFace**](namespaceendstone.md#enum-blockface) direction) <br> |
 |  [**BlockFace**](namespaceendstone.md#enum-blockface) | [**getDirection**](#function-getdirection) () const<br>_Return the direction in which the piston will operate._  |
 
 
@@ -208,7 +208,7 @@ See [endstone::ICancellable](classendstone_1_1ICancellable.md)
 
 ```C++
 inline explicit endstone::BlockPistonEvent::BlockPistonEvent (
-    std::unique_ptr< Block > block,
+    const  NotNull < Block > & block,
     BlockFace direction
 ) 
 ```

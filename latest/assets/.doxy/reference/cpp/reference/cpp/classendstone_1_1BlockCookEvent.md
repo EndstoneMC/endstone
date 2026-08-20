@@ -93,7 +93,7 @@ Inherits the following classes: [endstone::Cancellable](classendstone_1_1Cancell
 
 | Type | Name |
 | ---: | :--- |
-|   | [**BlockCookEvent**](#function-blockcookevent) (std::unique\_ptr&lt; [**Block**](classendstone_1_1Block.md) &gt; block, [**ItemStack**](classendstone_1_1ItemStack.md) source, [**ItemStack**](classendstone_1_1ItemStack.md) result) <br> |
+|   | [**BlockCookEvent**](#function-blockcookevent) ([**const**](classendstone_1_1Identifier.md) [**NotNull**](classendstone_1_1NotNull.md)&lt; [**Block**](classendstone_1_1Block.md) &gt; & block, [**ItemStack**](classendstone_1_1ItemStack.md) source, [**ItemStack**](classendstone_1_1ItemStack.md) result) <br> |
 |   | [**ENDSTONE\_EVENT**](#function-endstone_event) ([**BlockCookEvent**](classendstone_1_1BlockCookEvent.md)) <br> |
 |  [**const**](classendstone_1_1Identifier.md) [**ItemStack**](classendstone_1_1ItemStack.md) & | [**getResult**](#function-getresult) () const<br>_Gets the resultant_ [_**ItemStack**_](classendstone_1_1ItemStack.md) _for this event._ |
 |  [**const**](classendstone_1_1Identifier.md) [**ItemStack**](classendstone_1_1ItemStack.md) & | [**getSource**](#function-getsource) () const<br>_Gets the smelted_ [_**ItemStack**_](classendstone_1_1ItemStack.md) _for this event._ |
@@ -210,7 +210,7 @@ See [endstone::ICancellable](classendstone_1_1ICancellable.md)
 
 ```C++
 inline endstone::BlockCookEvent::BlockCookEvent (
-    std::unique_ptr< Block > block,
+    const  NotNull < Block > & block,
     ItemStack source,
     ItemStack result
 ) 

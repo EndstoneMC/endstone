@@ -93,7 +93,7 @@ Inherits the following classes: [endstone::Cancellable](classendstone_1_1Cancell
 
 | Type | Name |
 | ---: | :--- |
-|   | [**BlockBreakEvent**](#function-blockbreakevent) (std::unique\_ptr&lt; [**Block**](classendstone_1_1Block.md) &gt; block, [**const**](classendstone_1_1Identifier.md) [**NotNull**](classendstone_1_1NotNull.md)&lt; [**Player**](classendstone_1_1Player.md) &gt; & player) <br> |
+|   | [**BlockBreakEvent**](#function-blockbreakevent) ([**const**](classendstone_1_1Identifier.md) [**NotNull**](classendstone_1_1NotNull.md)&lt; [**Block**](classendstone_1_1Block.md) &gt; & block, [**const**](classendstone_1_1Identifier.md) [**NotNull**](classendstone_1_1NotNull.md)&lt; [**Player**](classendstone_1_1Player.md) &gt; & player) <br> |
 |   | [**ENDSTONE\_EVENT**](#function-endstone_event) ([**BlockBreakEvent**](classendstone_1_1BlockBreakEvent.md)) <br> |
 |  [**const**](classendstone_1_1Identifier.md) [**NotNull**](classendstone_1_1NotNull.md)&lt; [**Player**](classendstone_1_1Player.md) &gt; & | [**getPlayer**](#function-getplayer) () const<br>_Gets the_ [_**Player**_](classendstone_1_1Player.md) _that is breaking the block involved in this event._ |
 |   | [**~BlockBreakEvent**](#function-blockbreakevent) () override<br> |
@@ -216,7 +216,7 @@ If a [**BlockBreakEvent**](classendstone_1_1BlockBreakEvent.md) is cancelled, th
 
 ```C++
 inline explicit endstone::BlockBreakEvent::BlockBreakEvent (
-    std::unique_ptr< Block > block,
+    const  NotNull < Block > & block,
     const  NotNull < Player > & player
 ) 
 ```

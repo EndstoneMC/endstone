@@ -142,6 +142,8 @@
         </childnode>
         <childnode refid="18" relation="include">
         </childnode>
+        <childnode refid="36" relation="include">
+        </childnode>
       </node>
       <node id="45">
         <label>endstone/boss/bar_color.h</label>
@@ -237,6 +239,8 @@
         <childnode refid="5" relation="include">
         </childnode>
         <childnode refid="82" relation="include">
+        </childnode>
+        <childnode refid="36" relation="include">
         </childnode>
       </node>
       <node id="1">
@@ -550,6 +554,8 @@
         </childnode>
         <childnode refid="77" relation="include">
         </childnode>
+        <childnode refid="36" relation="include">
+        </childnode>
         <childnode refid="57" relation="include">
         </childnode>
       </node>
@@ -813,15 +819,15 @@
 <codeline lineno="30" refid="classendstone_1_1BlockFromToEvent" refkind="compound"><highlight class="normal"></highlight><highlight class="keyword">class<sp/></highlight><highlight class="normal"><ref refid="classendstone_1_1BlockFromToEvent" kindref="compound">BlockFromToEvent</ref><sp/>:<sp/></highlight><highlight class="keyword">public</highlight><highlight class="normal"><sp/><ref refid="classendstone_1_1Cancellable" kindref="compound">Cancellable</ref>&lt;BlockEvent&gt;<sp/>{</highlight></codeline>
 <codeline lineno="31"><highlight class="normal"></highlight><highlight class="keyword">public</highlight><highlight class="normal">:</highlight></codeline>
 <codeline lineno="32"><highlight class="normal"><sp/><sp/><sp/><sp/>ENDSTONE_EVENT(<ref refid="classendstone_1_1BlockFromToEvent" kindref="compound">BlockFromToEvent</ref>);</highlight></codeline>
-<codeline lineno="33"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">explicit</highlight><highlight class="normal"><sp/><ref refid="classendstone_1_1BlockFromToEvent" kindref="compound">BlockFromToEvent</ref>(std::unique_ptr&lt;Block&gt;<sp/><ref refid="classendstone_1_1Identifier" kindref="compound">block</ref>,<sp/>std::unique_ptr&lt;Block&gt;<sp/><ref refid="classendstone_1_1Identifier" kindref="compound">to_block</ref>)</highlight></codeline>
-<codeline lineno="34"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>:<sp/><ref refid="classendstone_1_1Cancellable" kindref="compound">Cancellable</ref>(std::move(<ref refid="classendstone_1_1Identifier" kindref="compound">block</ref>)),<sp/>to_(std::move(<ref refid="classendstone_1_1Identifier" kindref="compound">to_block</ref>))</highlight></codeline>
+<codeline lineno="33"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">explicit</highlight><highlight class="normal"><sp/><ref refid="classendstone_1_1BlockFromToEvent" kindref="compound">BlockFromToEvent</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classendstone_1_1Identifier" kindref="compound">NotNull&lt;Block&gt;</ref><sp/>&amp;<ref refid="classendstone_1_1Identifier" kindref="compound">block</ref>,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classendstone_1_1Identifier" kindref="compound">NotNull&lt;Block&gt;</ref><sp/>&amp;<ref refid="classendstone_1_1Identifier" kindref="compound">to_block</ref>)</highlight></codeline>
+<codeline lineno="34"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>:<sp/><ref refid="classendstone_1_1Cancellable" kindref="compound">Cancellable</ref>(<ref refid="classendstone_1_1Identifier" kindref="compound">block</ref>),<sp/>to_(<ref refid="classendstone_1_1Identifier" kindref="compound">to_block</ref>)</highlight></codeline>
 <codeline lineno="35"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
 <codeline lineno="36"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
 <codeline lineno="37"><highlight class="normal"></highlight></codeline>
 <codeline lineno="43" refid="classendstone_1_1BlockFromToEvent_1a8df95bd9daada5d36d8960a9aed89129" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>[[<ref refid="classendstone_1_1Identifier" kindref="compound">nodiscard</ref>]]<sp/><ref refid="classendstone_1_1Block" kindref="compound">Block</ref><sp/>&amp;<ref refid="classendstone_1_1BlockFromToEvent_1a8df95bd9daada5d36d8960a9aed89129" kindref="member">getToBlock</ref>()</highlight><highlight class="keyword"><sp/>const<sp/></highlight><highlight class="normal">{<sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>*to_;<sp/>}</highlight></codeline>
 <codeline lineno="44"><highlight class="normal"></highlight></codeline>
 <codeline lineno="45"><highlight class="normal"></highlight><highlight class="keyword">protected</highlight><highlight class="normal">:</highlight></codeline>
-<codeline lineno="46"><highlight class="normal"><sp/><sp/><sp/><sp/>std::unique_ptr&lt;Block&gt;<sp/>to_;</highlight></codeline>
+<codeline lineno="46"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classendstone_1_1Identifier" kindref="compound">NotNull&lt;Block&gt;</ref><sp/>to_;</highlight></codeline>
 <codeline lineno="47"><highlight class="normal">};</highlight></codeline>
 <codeline lineno="48"><highlight class="normal"></highlight></codeline>
 <codeline lineno="49"><highlight class="normal">}<sp/><sp/></highlight><highlight class="comment">//<sp/>namespace<sp/>endstone</highlight><highlight class="normal"></highlight></codeline>

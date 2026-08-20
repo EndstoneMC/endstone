@@ -38,14 +38,14 @@
         </inbodydescription>
         <location file="include/endstone/event/block/block_break_event.h" line="33" column="5"/>
       </memberdef>
-      <memberdef kind="function" id="classendstone_1_1BlockBreakEvent_1aa1becf569f42bc9f88869043d4ccccca" prot="public" static="no" const="no" explicit="yes" inline="yes" virt="non-virtual">
+      <memberdef kind="function" id="classendstone_1_1BlockBreakEvent_1a30f0fac4661f6c917fffc6bb11d48f32" prot="public" static="no" const="no" explicit="yes" inline="yes" virt="non-virtual">
         <type></type>
         <definition>endstone::BlockBreakEvent::BlockBreakEvent</definition>
-        <argsstring>(std::unique_ptr&lt; Block &gt; block, const NotNull&lt; Player &gt; &amp;player)</argsstring>
+        <argsstring>(const NotNull&lt; Block &gt; &amp;block, const NotNull&lt; Player &gt; &amp;player)</argsstring>
         <name>BlockBreakEvent</name>
         <qualifiedname>endstone::BlockBreakEvent::BlockBreakEvent</qualifiedname>
         <param>
-          <type>std::unique_ptr&lt; <ref refid="classendstone_1_1Block" kindref="compound">Block</ref> &gt;</type>
+          <type><ref refid="classendstone_1_1Identifier" kindref="compound">const</ref> <ref refid="classendstone_1_1NotNull" kindref="compound">NotNull</ref>&lt; <ref refid="classendstone_1_1Block" kindref="compound">Block</ref> &gt; &amp;</type>
           <declname>block</declname>
         </param>
         <param>
@@ -135,8 +135,12 @@
         <link refid="classendstone_1_1Cancellable"/>
         <childnode refid="3" relation="public-inheritance">
         </childnode>
-        <childnode refid="5" relation="public-inheritance">
+        <childnode refid="6" relation="public-inheritance">
         </childnode>
+      </node>
+      <node id="5">
+        <label>endstone::NotNull&lt; endstone::Block &gt;</label>
+        <link refid="classendstone_1_1NotNull"/>
       </node>
       <node id="1">
         <label>endstone::BlockBreakEvent</label>
@@ -149,27 +153,30 @@
         <link refid="classendstone_1_1BlockEvent"/>
         <childnode refid="4" relation="public-inheritance">
         </childnode>
+        <childnode refid="5" relation="usage">
+          <edgelabel>block_</edgelabel>
+        </childnode>
       </node>
       <node id="4">
         <label>endstone::Event</label>
         <link refid="classendstone_1_1Event"/>
       </node>
-      <node id="5">
+      <node id="6">
         <label>endstone::ICancellable</label>
         <link refid="classendstone_1_1ICancellable"/>
       </node>
     </collaborationgraph>
     <location file="include/endstone/event/block/block_break_event.h" line="31" column="1" bodyfile="include/endstone/event/block/block_break_event.h" bodystart="31" bodyend="49"/>
     <listofallmembers>
-      <member refid="classendstone_1_1BlockEvent_1a8495800ade942e17e6832ba40530e4d9" prot="protected" virt="non-virtual"><scope>endstone::BlockBreakEvent</scope><name>block_</name></member>
-      <member refid="classendstone_1_1BlockBreakEvent_1aa1becf569f42bc9f88869043d4ccccca" prot="public" virt="non-virtual"><scope>endstone::BlockBreakEvent</scope><name>BlockBreakEvent</name></member>
-      <member refid="classendstone_1_1BlockEvent_1a784685838d2b051b0846ceb821e6a9b5" prot="public" virt="non-virtual"><scope>endstone::BlockBreakEvent</scope><name>BlockEvent</name></member>
+      <member refid="classendstone_1_1BlockEvent_1a2d7d59fd58b79e945c604a2db25f1ef2" prot="protected" virt="non-virtual"><scope>endstone::BlockBreakEvent</scope><name>block_</name></member>
+      <member refid="classendstone_1_1BlockBreakEvent_1a30f0fac4661f6c917fffc6bb11d48f32" prot="public" virt="non-virtual"><scope>endstone::BlockBreakEvent</scope><name>BlockBreakEvent</name></member>
+      <member refid="classendstone_1_1BlockEvent_1a969b16b4036cfebd9b2c09e014dba8bd" prot="public" virt="non-virtual"><scope>endstone::BlockBreakEvent</scope><name>BlockEvent</name></member>
       <member refid="classendstone_1_1Cancellable_1a3512b47db69c6001f5c0450051308327" prot="public" virt="virtual"><scope>endstone::BlockBreakEvent</scope><name>cancel</name></member>
       <member refid="classendstone_1_1BlockBreakEvent_1a25079d4ef75e42a75a8bad657abb0da0" prot="public" virt="non-virtual"><scope>endstone::BlockBreakEvent</scope><name>ENDSTONE_EVENT</name></member>
       <member refid="classendstone_1_1Event_1a28cca8d74920493b449d035540acf023" prot="public" virt="non-virtual"><scope>endstone::BlockBreakEvent</scope><name>Event</name></member>
       <member refid="classendstone_1_1Event_1a7199136ebb40e1441bc61e29f83c3cad" prot="public" virt="non-virtual"><scope>endstone::BlockBreakEvent</scope><name>Event</name></member>
       <member refid="classendstone_1_1Event_1ad20bafd16e0671578e37390b95e5104c" prot="public" virt="non-virtual"><scope>endstone::BlockBreakEvent</scope><name>Event</name></member>
-      <member refid="classendstone_1_1BlockEvent_1ac9da7c79ee76c2145547c4b09eea46a0" prot="public" virt="non-virtual"><scope>endstone::BlockBreakEvent</scope><name>getBlock</name></member>
+      <member refid="classendstone_1_1BlockEvent_1a0a96c0b3103a80ca27eaf1e0ba5d1148" prot="public" virt="non-virtual"><scope>endstone::BlockBreakEvent</scope><name>getBlock</name></member>
       <member refid="classendstone_1_1Event_1a826fe74f9c4195a36a364b9aeeb321bb" prot="public" virt="pure-virtual"><scope>endstone::BlockBreakEvent</scope><name>getEventName</name></member>
       <member refid="classendstone_1_1BlockBreakEvent_1a02b6d4275930a001f422535dc1b0ed2a" prot="public" virt="non-virtual"><scope>endstone::BlockBreakEvent</scope><name>getPlayer</name></member>
       <member refid="classendstone_1_1Event_1ae89b54f63dc32b0c8797a59db69b6931" prot="public" virt="non-virtual"><scope>endstone::BlockBreakEvent</scope><name>isAsynchronous</name></member>

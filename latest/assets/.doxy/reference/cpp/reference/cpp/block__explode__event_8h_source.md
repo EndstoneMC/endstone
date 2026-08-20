@@ -35,12 +35,12 @@
 namespace endstone {
 
 class BlockExplodeEvent : public Cancellable<BlockEvent> {
-    using BlockList = std::vector<std::unique_ptr<Block>>;
+    using BlockList = std::vector<NotNull<Block>>;
 
 public:
     ENDSTONE_EVENT(BlockExplodeEvent);
-    explicit BlockExplodeEvent(std::unique_ptr<Block> block, BlockList blocks)
-        : Cancellable(std::move(block)), blocks_(std::move(blocks))
+    explicit BlockExplodeEvent(const NotNull<Block> &block, BlockList blocks)
+        : Cancellable(block), blocks_(std::move(blocks))
     {
     }
     ~BlockExplodeEvent() override = default;

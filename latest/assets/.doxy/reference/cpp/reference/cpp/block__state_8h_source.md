@@ -31,6 +31,7 @@
 #include "endstone/block/block.h"
 #include "endstone/block/block_type.h"
 #include "endstone/object.h"
+#include "endstone/util/pointers.h"
 #include "endstone/util/result.h"
 
 namespace endstone {
@@ -39,13 +40,13 @@ class BlockState : public Object {
 public:
     ~BlockState() override = default;
 
-    [[nodiscard]] virtual std::unique_ptr<Block> getBlock() const = 0;
+    [[nodiscard]] virtual NotNull<Block> getBlock() const = 0;
 
     [[nodiscard]] virtual const BlockType &getType() const = 0;
 
     virtual void setType(BlockTypeId type) = 0;
 
-    [[nodiscard]] virtual std::unique_ptr<BlockData> getData() const = 0;
+    [[nodiscard]] virtual NotNull<BlockData> getData() const = 0;
 
     virtual void setData(const BlockData &data) = 0;
 

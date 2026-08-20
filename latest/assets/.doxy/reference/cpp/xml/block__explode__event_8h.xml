@@ -144,6 +144,8 @@
         </childnode>
         <childnode refid="18" relation="include">
         </childnode>
+        <childnode refid="35" relation="include">
+        </childnode>
       </node>
       <node id="44">
         <label>endstone/boss/bar_color.h</label>
@@ -239,6 +241,8 @@
         <childnode refid="5" relation="include">
         </childnode>
         <childnode refid="82" relation="include">
+        </childnode>
+        <childnode refid="35" relation="include">
         </childnode>
       </node>
       <node id="1">
@@ -556,6 +560,8 @@
         </childnode>
         <childnode refid="76" relation="include">
         </childnode>
+        <childnode refid="35" relation="include">
+        </childnode>
         <childnode refid="56" relation="include">
         </childnode>
       </node>
@@ -820,12 +826,12 @@
 <codeline lineno="25"><highlight class="normal"></highlight><highlight class="keyword">namespace<sp/></highlight><highlight class="normal"><ref refid="namespaceendstone" kindref="compound">endstone</ref><sp/>{</highlight></codeline>
 <codeline lineno="26"><highlight class="normal"></highlight></codeline>
 <codeline lineno="33" refid="classendstone_1_1BlockExplodeEvent" refkind="compound"><highlight class="normal"></highlight><highlight class="keyword">class<sp/></highlight><highlight class="normal"><ref refid="classendstone_1_1BlockExplodeEvent" kindref="compound">BlockExplodeEvent</ref><sp/>:<sp/></highlight><highlight class="keyword">public</highlight><highlight class="normal"><sp/><ref refid="classendstone_1_1Cancellable" kindref="compound">Cancellable</ref>&lt;BlockEvent&gt;<sp/>{</highlight></codeline>
-<codeline lineno="34"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">using<sp/></highlight><highlight class="normal">BlockList<sp/>=<sp/>std::vector&lt;std::unique_ptr&lt;Block&gt;&gt;;</highlight></codeline>
+<codeline lineno="34"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">using<sp/></highlight><highlight class="normal">BlockList<sp/>=<sp/>std::vector&lt;NotNull&lt;Block&gt;&gt;;</highlight></codeline>
 <codeline lineno="35"><highlight class="normal"></highlight></codeline>
 <codeline lineno="36"><highlight class="normal"></highlight><highlight class="keyword">public</highlight><highlight class="normal">:</highlight></codeline>
 <codeline lineno="37"><highlight class="normal"><sp/><sp/><sp/><sp/>ENDSTONE_EVENT(<ref refid="classendstone_1_1BlockExplodeEvent" kindref="compound">BlockExplodeEvent</ref>);</highlight></codeline>
-<codeline lineno="38"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">explicit</highlight><highlight class="normal"><sp/><ref refid="classendstone_1_1BlockExplodeEvent" kindref="compound">BlockExplodeEvent</ref>(std::unique_ptr&lt;Block&gt;<sp/><ref refid="classendstone_1_1Identifier" kindref="compound">block</ref>,<sp/>BlockList<sp/><ref refid="classendstone_1_1Identifier" kindref="compound">blocks</ref>)</highlight></codeline>
-<codeline lineno="39"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>:<sp/><ref refid="classendstone_1_1Cancellable" kindref="compound">Cancellable</ref>(std::move(<ref refid="classendstone_1_1Identifier" kindref="compound">block</ref>)),<sp/>blocks_(std::move(<ref refid="classendstone_1_1Identifier" kindref="compound">blocks</ref>))</highlight></codeline>
+<codeline lineno="38"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">explicit</highlight><highlight class="normal"><sp/><ref refid="classendstone_1_1BlockExplodeEvent" kindref="compound">BlockExplodeEvent</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classendstone_1_1Identifier" kindref="compound">NotNull&lt;Block&gt;</ref><sp/>&amp;<ref refid="classendstone_1_1Identifier" kindref="compound">block</ref>,<sp/>BlockList<sp/><ref refid="classendstone_1_1Identifier" kindref="compound">blocks</ref>)</highlight></codeline>
+<codeline lineno="39"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>:<sp/><ref refid="classendstone_1_1Cancellable" kindref="compound">Cancellable</ref>(<ref refid="classendstone_1_1Identifier" kindref="compound">block</ref>),<sp/>blocks_(std::move(<ref refid="classendstone_1_1Identifier" kindref="compound">blocks</ref>))</highlight></codeline>
 <codeline lineno="40"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
 <codeline lineno="41"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
 <codeline lineno="42"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classendstone_1_1BlockExplodeEvent" kindref="compound">~BlockExplodeEvent</ref>()<sp/></highlight><highlight class="keyword">override</highlight><highlight class="normal"><sp/>=<sp/></highlight><highlight class="keywordflow">default</highlight><highlight class="normal">;</highlight></codeline>

@@ -37,25 +37,24 @@ namespace endstone {
 class BlockPlaceEvent : public Cancellable<BlockEvent> {
 public:
     ENDSTONE_EVENT(BlockPlaceEvent);
-    explicit BlockPlaceEvent(std::unique_ptr<Block> placed_block, const NotNull<BlockState> &replaced_state,
-                             std::unique_ptr<Block> placed_against, const NotNull<Player> &player)
-        : Cancellable(std::move(placed_block)), replaced_state_(replaced_state),
-          placed_against_(std::move(placed_against)), player_(player)
+    explicit BlockPlaceEvent(const NotNull<Block> &placed_block, const NotNull<BlockState> &replaced_state,
+                             const NotNull<Block> &placed_against, const NotNull<Player> &player)
+        : Cancellable(placed_block), replaced_state_(replaced_state), placed_against_(placed_against), player_(player)
     {
     }
     ~BlockPlaceEvent() override = default;
 
     [[nodiscard]] const NotNull<Player> &getPlayer() const { return player_; }
 
-    [[nodiscard]] Block &getBlockPlaced() const { return getBlock(); }
+    [[nodiscard]] const NotNull<Block> &getBlockPlaced() const { return getBlock(); }
 
     [[nodiscard]] const NotNull<BlockState> &getBlockReplacedState() const { return replaced_state_; }
 
-    [[nodiscard]] Block &getBlockAgainst() const { return *placed_against_; }
+    [[nodiscard]] const NotNull<Block> &getBlockAgainst() const { return placed_against_; }
 
 private:
     NotNull<BlockState> replaced_state_;
-    std::unique_ptr<Block> placed_against_;
+    NotNull<Block> placed_against_;
     NotNull<Player> player_;
 };
 

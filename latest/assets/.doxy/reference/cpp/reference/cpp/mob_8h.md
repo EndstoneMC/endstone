@@ -16,6 +16,7 @@
 * `#include "endstone/actor/actor.h"`
 * `#include "endstone/attribute/attribute_instance.h"`
 * `#include "endstone/potion/effect.h"`
+* `#include "endstone/util/pointers.h"`
 
 
 

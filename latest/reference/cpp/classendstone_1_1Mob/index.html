@@ -2908,11 +2908,11 @@ For latest updates join the chat on
 <td style="text-align: left;"><a href="#function-getactiveeffects"><strong>getActiveEffects</strong></a> () const = 0<br><em>Returns all currently active Effects on this entity.</em></td>
 </tr>
 <tr>
-<td style="text-align: right;">virtual std::unique_ptr&lt; <a href="../classendstone_1_1AttributeInstance/"><strong>AttributeInstance</strong></a> &gt;</td>
+<td style="text-align: right;">virtual <a href="../classendstone_1_1Nullable/"><strong>Nullable</strong></a>&lt; <a href="../classendstone_1_1AttributeInstance/"><strong>AttributeInstance</strong></a> &gt;</td>
 <td style="text-align: left;"><a href="#function-getattribute"><strong>getAttribute</strong></a> (<a href="../classendstone_1_1Identifier/"><strong>AttributeId</strong></a> id) = 0<br><em>Gets the specified attribute instance from the object.</em></td>
 </tr>
 <tr>
-<td style="text-align: right;">virtual std::vector&lt; std::unique_ptr&lt; <a href="../classendstone_1_1AttributeInstance/"><strong>AttributeInstance</strong></a> &gt; &gt;</td>
+<td style="text-align: right;">virtual std::vector&lt; <a href="../classendstone_1_1NotNull/"><strong>NotNull</strong></a>&lt; <a href="../classendstone_1_1AttributeInstance/"><strong>AttributeInstance</strong></a> &gt; &gt;</td>
 <td style="text-align: left;"><a href="#function-getattributes"><strong>getAttributes</strong></a> () = 0<br><em>Gets all attribute instances from the object.</em></td>
 </tr>
 <tr>
@@ -3227,7 +3227,7 @@ For latest updates join the chat on
 
 <h3 id="function-getattribute">function getAttribute<a class="headerlink" href="#function-getattribute" title="Permanent link">&para;</a></h3>
 <p><em>Gets the specified attribute instance from the object.</em> 
-<div class="language-C++ highlight"><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="k">virtual</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">unique_ptr</span><span class="o">&lt;</span><span class="w"> </span><span class="n">AttributeInstance</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">Mob</span><span class="o">::</span><span class="n">getAttribute</span><span class="w"> </span><span class="p">(</span>
+<div class="language-C++ highlight"><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="k">virtual</span><span class="w"> </span><span class="n">Nullable</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">AttributeInstance</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">Mob</span><span class="o">::</span><span class="n">getAttribute</span><span class="w"> </span><span class="p">(</span>
 </span><span id="__span-2-2"><a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a><span class="w">    </span><span class="n">AttributeId</span><span class="w"> </span><span class="n">id</span>
 </span><span id="__span-2-3"><a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a><span class="p">)</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span>
 </span></code></pre></div></p>
@@ -3240,7 +3240,7 @@ For latest updates join the chat on
 
 <h3 id="function-getattributes">function getAttributes<a class="headerlink" href="#function-getattributes" title="Permanent link">&para;</a></h3>
 <p><em>Gets all attribute instances from the object.</em> 
-<div class="language-C++ highlight"><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="k">virtual</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">unique_ptr</span><span class="o">&lt;</span><span class="w"> </span><span class="n">AttributeInstance</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">Mob</span><span class="o">::</span><span class="n">getAttributes</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span>
+<div class="language-C++ highlight"><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="k">virtual</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="w"> </span><span class="n">NotNull</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">AttributeInstance</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">Mob</span><span class="o">::</span><span class="n">getAttributes</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span>
 </span></code></pre></div></p>
 <p>This instance will be backed directly to the object and any changes will be visible at once. </p>
 <hr>

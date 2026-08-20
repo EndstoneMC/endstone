@@ -17,7 +17,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/block/block_type.h" line="32" column="27" bodyfile="include/endstone/block/block_type.h" bodystart="32" bodyend="-1"/>
+        <location file="include/endstone/block/block_type.h" line="33" column="27" bodyfile="include/endstone/block/block_type.h" bodystart="33" bodyend="-1"/>
       </memberdef>
     </sectiondef>
     <sectiondef kind="public-func">
@@ -37,11 +37,11 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/block/block_type.h" line="39" column="19"/>
+        <location file="include/endstone/block/block_type.h" line="40" column="19"/>
       </memberdef>
-      <memberdef kind="function" id="classendstone_1_1BlockType_1aa415d093dbd60f47b0cb358d70c2ddb7" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
-        <type>std::unique_ptr&lt; <ref refid="classendstone_1_1BlockData" kindref="compound">BlockData</ref> &gt;</type>
-        <definition>virtual std::unique_ptr&lt; BlockData &gt; endstone::BlockType::createBlockData</definition>
+      <memberdef kind="function" id="classendstone_1_1BlockType_1afa188d5b8bbfed200a7108a4a003e1b5" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
+        <type><ref refid="classendstone_1_1NotNull" kindref="compound">NotNull</ref>&lt; <ref refid="classendstone_1_1BlockData" kindref="compound">BlockData</ref> &gt;</type>
+        <definition>virtual NotNull&lt; BlockData &gt; endstone::BlockType::createBlockData</definition>
         <argsstring>() const =0</argsstring>
         <name>createBlockData</name>
         <qualifiedname>endstone::BlockType::createBlockData</qualifiedname>
@@ -55,7 +55,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/block/block_type.h" line="47" column="30"/>
+        <location file="include/endstone/block/block_type.h" line="48" column="22"/>
       </memberdef>
     </sectiondef>
     <briefdescription>
@@ -86,10 +86,10 @@
         <link refid="classendstone_1_1Registry_1_1Type"/>
       </node>
     </collaborationgraph>
-    <location file="include/endstone/block/block_type.h" line="30" column="1" bodyfile="include/endstone/block/block_type.h" bodystart="30" bodyend="48"/>
+    <location file="include/endstone/block/block_type.h" line="31" column="1" bodyfile="include/endstone/block/block_type.h" bodystart="31" bodyend="49"/>
     <listofallmembers>
       <member refid="classendstone_1_1BlockType_1aeae830d84b5168ebccfe9775be5e8bfc" prot="public" virt="non-virtual"><scope>endstone::BlockType</scope><name>Air</name></member>
-      <member refid="classendstone_1_1BlockType_1aa415d093dbd60f47b0cb358d70c2ddb7" prot="public" virt="pure-virtual"><scope>endstone::BlockType</scope><name>createBlockData</name></member>
+      <member refid="classendstone_1_1BlockType_1afa188d5b8bbfed200a7108a4a003e1b5" prot="public" virt="pure-virtual"><scope>endstone::BlockType</scope><name>createBlockData</name></member>
       <member refid="classendstone_1_1Registry_1_1Type_1adb225834ec0af1fdd72f998cbee22946" prot="public" virt="non-virtual"><scope>endstone::BlockType</scope><name>get</name></member>
       <member refid="classendstone_1_1Registry_1_1Type_1ac7979c573cb4a71caf8f0d766048e95a" prot="public" virt="pure-virtual"><scope>endstone::BlockType</scope><name>getId</name></member>
       <member refid="classendstone_1_1Registry_1_1Type_1a3d82ceca29e75e71a8ad56c5d0f12aa7" prot="public" virt="pure-virtual"><scope>endstone::BlockType</scope><name>getTranslationKey</name></member>

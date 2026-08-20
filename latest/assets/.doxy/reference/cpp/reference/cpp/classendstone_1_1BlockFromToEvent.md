@@ -93,7 +93,7 @@ Inherits the following classes: [endstone::Cancellable](classendstone_1_1Cancell
 
 | Type | Name |
 | ---: | :--- |
-|   | [**BlockFromToEvent**](#function-blockfromtoevent) (std::unique\_ptr&lt; [**Block**](classendstone_1_1Block.md) &gt; block, std::unique\_ptr&lt; [**Block**](classendstone_1_1Block.md) &gt; to\_block) <br> |
+|   | [**BlockFromToEvent**](#function-blockfromtoevent) ([**const**](classendstone_1_1Identifier.md) [**NotNull**](classendstone_1_1NotNull.md)&lt; [**Block**](classendstone_1_1Block.md) &gt; & block, [**const**](classendstone_1_1Identifier.md) [**NotNull**](classendstone_1_1NotNull.md)&lt; [**Block**](classendstone_1_1Block.md) &gt; & to\_block) <br> |
 |   | [**ENDSTONE\_EVENT**](#function-endstone_event) ([**BlockFromToEvent**](classendstone_1_1BlockFromToEvent.md)) <br> |
 |  [**Block**](classendstone_1_1Block.md) & | [**getToBlock**](#function-gettoblock) () const<br>_Convenience method for getting the faced_ [_**Block**_](classendstone_1_1Block.md) _._ |
 
@@ -143,7 +143,7 @@ See [endstone::ICancellable](classendstone_1_1ICancellable.md)
 
 | Type | Name |
 | ---: | :--- |
-|  std::unique\_ptr&lt; [**Block**](classendstone_1_1Block.md) &gt; | [**to\_**](#variable-to_)  <br> |
+|  [**NotNull**](classendstone_1_1NotNull.md)&lt; [**Block**](classendstone_1_1Block.md) &gt; | [**to\_**](#variable-to_)  <br> |
 
 
 
@@ -220,8 +220,8 @@ If a [**Block**](classendstone_1_1Block.md) From To event is cancelled, the bloc
 
 ```C++
 inline explicit endstone::BlockFromToEvent::BlockFromToEvent (
-    std::unique_ptr< Block > block,
-    std::unique_ptr< Block > to_block
+    const  NotNull < Block > & block,
+    const  NotNull < Block > & to_block
 ) 
 ```
 
@@ -277,7 +277,7 @@ The faced [**Block**](classendstone_1_1Block.md)
 ### variable to\_ 
 
 ```C++
-std::unique_ptr<Block> endstone::BlockFromToEvent::to_;
+NotNull<Block> endstone::BlockFromToEvent::to_;
 ```
 
 

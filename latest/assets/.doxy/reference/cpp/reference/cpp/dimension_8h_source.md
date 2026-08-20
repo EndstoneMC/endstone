@@ -60,17 +60,17 @@ public:
 
     [[nodiscard]] virtual bool isValid() const = 0;
 
-    [[nodiscard]] virtual std::unique_ptr<Block> getBlockAt(int x, int y, int z) const = 0;
+    [[nodiscard]] virtual NotNull<Block> getBlockAt(int x, int y, int z) const = 0;
 
-    [[nodiscard]] virtual std::unique_ptr<Block> getBlockAt(Location location) const = 0;
+    [[nodiscard]] virtual NotNull<Block> getBlockAt(Location location) const = 0;
 
     [[nodiscard]] virtual int getHighestBlockYAt(int x, int z) const = 0;
 
-    [[nodiscard]] virtual std::unique_ptr<Block> getHighestBlockAt(int x, int z) const = 0;
+    [[nodiscard]] virtual NotNull<Block> getHighestBlockAt(int x, int z) const = 0;
 
-    [[nodiscard]] virtual std::unique_ptr<Block> getHighestBlockAt(Location location) const = 0;
+    [[nodiscard]] virtual NotNull<Block> getHighestBlockAt(Location location) const = 0;
 
-    [[nodiscard]] virtual std::vector<std::unique_ptr<Chunk>> getLoadedChunks() = 0;
+    [[nodiscard]] virtual std::vector<NotNull<Chunk>> getLoadedChunks() = 0;
 
     [[nodiscard]] virtual bool isChunkLoaded(int x, int z) const = 0;
 
@@ -110,7 +110,7 @@ inline bool Location::isDimensionLoaded() const
     return dimension && dimension->isValid();
 }
 
-inline std::unique_ptr<Block> Location::getBlock() const
+inline NotNull<Block> Location::getBlock() const
 {
     return getDimension().value().getBlockAt(*this);
 }

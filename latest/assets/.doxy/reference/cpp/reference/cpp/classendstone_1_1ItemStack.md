@@ -57,7 +57,7 @@ _Represents a stack of items._
 |   | [**ItemStack**](#function-itemstack-34) ([**ItemStack**](classendstone_1_1ItemStack.md) && other) noexcept<br> |
 |  [**int**](classendstone_1_1Identifier.md) | [**getAmount**](#function-getamount) () const<br>_Gets the amount of items in this stack._  |
 |  [**int**](classendstone_1_1Identifier.md) | [**getData**](#function-getdata) () const<br>_Gets the data for this stack of items._  |
-|  std::unique\_ptr&lt; [**ItemMeta**](classendstone_1_1ItemMeta.md) &gt; | [**getItemMeta**](#function-getitemmeta) () const<br>_Gets a copy of this_ [_**ItemStack**_](classendstone_1_1ItemStack.md) _'s_[_**ItemMeta**_](classendstone_1_1ItemMeta.md) _._ |
+|  [**Nullable**](classendstone_1_1Nullable.md)&lt; [**ItemMeta**](classendstone_1_1ItemMeta.md) &gt; | [**getItemMeta**](#function-getitemmeta) () const<br>_Gets a copy of this_ [_**ItemStack**_](classendstone_1_1ItemStack.md) _'s_[_**ItemMeta**_](classendstone_1_1ItemMeta.md) _._ |
 |  [**int**](classendstone_1_1Identifier.md) | [**getMaxStackSize**](#function-getmaxstacksize) () const<br>_Get the maximum stack size for this item._  |
 |  [**CompoundTag**](classendstone_1_1CompoundTag.md) | [**getNbt**](#function-getnbt) () const<br>_Gets the NBT compound tag of this item stack._  |
 |  std::string | [**getTranslationKey**](#function-gettranslationkey) () const<br>_Get the translation key, suitable for use in a translation component._  |
@@ -222,7 +222,7 @@ Data for this item
 
 _Gets a copy of this_ [_**ItemStack**_](classendstone_1_1ItemStack.md) _'s_[_**ItemMeta**_](classendstone_1_1ItemMeta.md) _._
 ```C++
-inline std::unique_ptr< ItemMeta > endstone::ItemStack::getItemMeta () const
+inline Nullable < ItemMeta > endstone::ItemStack::getItemMeta () const
 ```
 
 

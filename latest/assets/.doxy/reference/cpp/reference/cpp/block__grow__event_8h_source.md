@@ -34,8 +34,8 @@ namespace endstone {
 class BlockGrowEvent : public Cancellable<BlockEvent> {
 public:
     ENDSTONE_EVENT(BlockGrowEvent);
-    explicit BlockGrowEvent(std::unique_ptr<Block> block, const NotNull<BlockState> &new_state)
-        : Cancellable(std::move(block)), new_state_(new_state)
+    explicit BlockGrowEvent(const NotNull<Block> &block, const NotNull<BlockState> &new_state)
+        : Cancellable(block), new_state_(new_state)
     {
     }
 

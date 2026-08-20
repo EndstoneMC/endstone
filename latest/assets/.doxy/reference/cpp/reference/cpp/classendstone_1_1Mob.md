@@ -136,8 +136,8 @@ Inherited by the following classes: [endstone::Player](classendstone_1_1Player.m
 | ---: | :--- |
 | virtual [**void**](classendstone_1_1Identifier.md) | [**addEffect**](#function-addeffect) ([**const**](classendstone_1_1Identifier.md) [**Effect**](classendstone_1_1Effect.md) & effect) = 0<br>_Adds the given_ [_**Effect**_](classendstone_1_1Effect.md) _to this entity._ |
 | virtual std::vector&lt; [**Effect**](classendstone_1_1Effect.md) &gt; | [**getActiveEffects**](#function-getactiveeffects) () const = 0<br>_Returns all currently active Effects on this entity._  |
-| virtual std::unique\_ptr&lt; [**AttributeInstance**](classendstone_1_1AttributeInstance.md) &gt; | [**getAttribute**](#function-getattribute) ([**AttributeId**](classendstone_1_1Identifier.md) id) = 0<br>_Gets the specified attribute instance from the object._  |
-| virtual std::vector&lt; std::unique\_ptr&lt; [**AttributeInstance**](classendstone_1_1AttributeInstance.md) &gt; &gt; | [**getAttributes**](#function-getattributes) () = 0<br>_Gets all attribute instances from the object._  |
+| virtual [**Nullable**](classendstone_1_1Nullable.md)&lt; [**AttributeInstance**](classendstone_1_1AttributeInstance.md) &gt; | [**getAttribute**](#function-getattribute) ([**AttributeId**](classendstone_1_1Identifier.md) id) = 0<br>_Gets the specified attribute instance from the object._  |
+| virtual std::vector&lt; [**NotNull**](classendstone_1_1NotNull.md)&lt; [**AttributeInstance**](classendstone_1_1AttributeInstance.md) &gt; &gt; | [**getAttributes**](#function-getattributes) () = 0<br>_Gets all attribute instances from the object._  |
 | virtual std::optional&lt; [**Effect**](classendstone_1_1Effect.md) &gt; | [**getEffect**](#function-geteffect) ([**EffectId**](classendstone_1_1Identifier.md) type) const = 0<br>_Returns the active_ [_**Effect**_](classendstone_1_1Effect.md) _of the specified type._ |
 | virtual [**int**](classendstone_1_1Identifier.md) | [**getHealth**](#function-gethealth) () const = 0<br>_Gets the entity's health from 0 to its max possible value, where 0 is dead._  |
 | virtual [**int**](classendstone_1_1Identifier.md) | [**getMaxHealth**](#function-getmaxhealth) () const = 0<br>_Gets the maximum health this entity has._  |
@@ -432,7 +432,7 @@ a vector of Effects
 
 _Gets the specified attribute instance from the object._ 
 ```C++
-virtual std::unique_ptr< AttributeInstance > endstone::Mob::getAttribute (
+virtual Nullable < AttributeInstance > endstone::Mob::getAttribute (
     AttributeId id
 ) = 0
 ```
@@ -462,7 +462,7 @@ This instance will be backed directly to the object and any changes will be visi
 
 _Gets all attribute instances from the object._ 
 ```C++
-virtual std::vector< std::unique_ptr< AttributeInstance > > endstone::Mob::getAttributes () = 0
+virtual std::vector< NotNull < AttributeInstance > > endstone::Mob::getAttributes () = 0
 ```
 
 

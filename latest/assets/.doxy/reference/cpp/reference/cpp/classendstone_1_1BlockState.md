@@ -74,8 +74,8 @@ Inherited by the following classes: [endstone::Campfire](classendstone_1_1Campfi
 
 | Type | Name |
 | ---: | :--- |
-| virtual std::unique\_ptr&lt; [**Block**](classendstone_1_1Block.md) &gt; | [**getBlock**](#function-getblock) () const = 0<br>_Gets the block represented by this block state._  |
-| virtual std::unique\_ptr&lt; [**BlockData**](classendstone_1_1BlockData.md) &gt; | [**getData**](#function-getdata) () const = 0<br>_Gets the data for this block state._  |
+| virtual [**NotNull**](classendstone_1_1NotNull.md)&lt; [**Block**](classendstone_1_1Block.md) &gt; | [**getBlock**](#function-getblock) () const = 0<br>_Gets the block represented by this block state._  |
+| virtual [**NotNull**](classendstone_1_1NotNull.md)&lt; [**BlockData**](classendstone_1_1BlockData.md) &gt; | [**getData**](#function-getdata) () const = 0<br>_Gets the data for this block state._  |
 | virtual [**NotNull**](classendstone_1_1NotNull.md)&lt; [**Dimension**](classendstone_1_1Dimension.md) &gt; | [**getDimension**](#function-getdimension) () const = 0<br>_Gets the dimension which contains the block represented by this block state._  |
 | virtual [**Location**](classendstone_1_1Location.md) | [**getLocation**](#function-getlocation) () const = 0<br>_Gets the location of this block state._  |
 | virtual [**const**](classendstone_1_1Identifier.md) [**BlockType**](classendstone_1_1BlockType.md) & | [**getType**](#function-gettype) () const = 0<br>_Gets the type of this block state._  |
@@ -172,7 +172,7 @@ Unlike [**Block**](classendstone_1_1Block.md), which only one object can exist p
 
 _Gets the block represented by this block state._ 
 ```C++
-virtual std::unique_ptr< Block > endstone::BlockState::getBlock () const = 0
+virtual NotNull < Block > endstone::BlockState::getBlock () const = 0
 ```
 
 
@@ -197,7 +197,7 @@ the block represented by this block state
 
 _Gets the data for this block state._ 
 ```C++
-virtual std::unique_ptr< BlockData > endstone::BlockState::getData () const = 0
+virtual NotNull < BlockData > endstone::BlockState::getData () const = 0
 ```
 
 

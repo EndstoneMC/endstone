@@ -17,6 +17,7 @@
 * `#include <vector>`
 * `#include "endstone/enchantments/enchantment.h"`
 * `#include "endstone/object.h"`
+* `#include "endstone/util/pointers.h"`
 
 
 

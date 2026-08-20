@@ -57,7 +57,7 @@ _Represents an objective on a scoreboard that can show scores specific to entrie
 | virtual std::optional&lt; [**DisplaySlot**](namespaceendstone.md#enum-displayslot) &gt; | [**getDisplaySlot**](#function-getdisplayslot) () const = 0<br>_Gets the display slot this objective is displayed at._  |
 | virtual std::string | [**getName**](#function-getname) () const = 0<br>_Gets the name of this_ [_**Objective**_](classendstone_1_1Objective.md) _._ |
 | virtual [**RenderType**](namespaceendstone.md#enum-rendertype) | [**getRenderType**](#function-getrendertype) () const = 0<br>_Gets manner in which this objective will be rendered._  |
-| virtual std::unique\_ptr&lt; [**Score**](classendstone_1_1Score.md) &gt; | [**getScore**](#function-getscore) ([**ScoreEntry**](namespaceendstone.md#typedef-scoreentry) entry) const = 0<br>_Sets manner in which this objective will be rendered._  |
+| virtual [**NotNull**](classendstone_1_1NotNull.md)&lt; [**Score**](classendstone_1_1Score.md) &gt; | [**getScore**](#function-getscore) ([**ScoreEntry**](namespaceendstone.md#typedef-scoreentry) entry) const = 0<br>_Sets manner in which this objective will be rendered._  |
 | virtual [**NotNull**](classendstone_1_1NotNull.md)&lt; [**Scoreboard**](classendstone_1_1Scoreboard.md) &gt; | [**getScoreboard**](#function-getscoreboard) () const = 0<br>_Gets the scoreboard to which this objective is attached._  |
 | virtual std::optional&lt; [**ObjectiveSortOrder**](namespaceendstone.md#enum-objectivesortorder) &gt; | [**getSortOrder**](#function-getsortorder) () const = 0<br>_Gets the sort order for this objective._  |
 | virtual [**bool**](classendstone_1_1Identifier.md) | [**isDisplayed**](#function-isdisplayed) () const = 0<br>_Gets if the objective is currently displayed in a slot._  |
@@ -232,7 +232,7 @@ the render type
 
 _Sets manner in which this objective will be rendered._ 
 ```C++
-virtual std::unique_ptr< Score > endstone::Objective::getScore (
+virtual NotNull < Score > endstone::Objective::getScore (
     ScoreEntry entry
 ) const = 0
 ```

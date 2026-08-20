@@ -84,7 +84,7 @@ See [endstone::Registry::Type](classendstone_1_1Registry_1_1Type.md)
 
 | Type | Name |
 | ---: | :--- |
-| virtual std::unique\_ptr&lt; [**BlockData**](classendstone_1_1BlockData.md) &gt; | [**createBlockData**](#function-createblockdata) () const = 0<br>_Creates a new_ [_**BlockData**_](classendstone_1_1BlockData.md) _instance for this block type, with all properties initialized to unspecified defaults._ |
+| virtual [**NotNull**](classendstone_1_1NotNull.md)&lt; [**BlockData**](classendstone_1_1BlockData.md) &gt; | [**createBlockData**](#function-createblockdata) () const = 0<br>_Creates a new_ [_**BlockData**_](classendstone_1_1BlockData.md) _instance for this block type, with all properties initialized to unspecified defaults._ |
 | virtual [**bool**](classendstone_1_1Identifier.md) | [**hasItemType**](#function-hasitemtype) () const = 0<br>_Returns true if this_ [_**BlockType**_](classendstone_1_1BlockType.md) _has a corresponding_[_**ItemType**_](classendstone_1_1ItemType.md) _._ |
 
 
@@ -187,7 +187,7 @@ constexpr auto endstone::BlockType::Air;
 
 _Creates a new_ [_**BlockData**_](classendstone_1_1BlockData.md) _instance for this block type, with all properties initialized to unspecified defaults._
 ```C++
-virtual std::unique_ptr< BlockData > endstone::BlockType::createBlockData () const = 0
+virtual NotNull < BlockData > endstone::BlockType::createBlockData () const = 0
 ```
 
 

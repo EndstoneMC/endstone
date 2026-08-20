@@ -74,8 +74,8 @@ Inherited by the following classes: [endstone::Cancellable](classendstone_1_1Can
 
 | Type | Name |
 | ---: | :--- |
-|   | [**BlockEvent**](#function-blockevent) (std::unique\_ptr&lt; [**Block**](classendstone_1_1Block.md) &gt; block) <br> |
-|  [**Block**](classendstone_1_1Block.md) & | [**getBlock**](#function-getblock) () const<br>_Gets the block involved in this event._  |
+|   | [**BlockEvent**](#function-blockevent) ([**const**](classendstone_1_1Identifier.md) [**NotNull**](classendstone_1_1NotNull.md)&lt; [**Block**](classendstone_1_1Block.md) &gt; & block) <br> |
+|  [**const**](classendstone_1_1Identifier.md) [**NotNull**](classendstone_1_1NotNull.md)&lt; [**Block**](classendstone_1_1Block.md) &gt; & | [**getBlock**](#function-getblock) () const<br>_Gets the block involved in this event._  |
 
 
 ## Public Functions inherited from endstone::Event
@@ -110,7 +110,7 @@ See [endstone::Event](classendstone_1_1Event.md)
 
 | Type | Name |
 | ---: | :--- |
-|  std::unique\_ptr&lt; [**Block**](classendstone_1_1Block.md) &gt; | [**block\_**](#variable-block_)  <br> |
+|  [**NotNull**](classendstone_1_1NotNull.md)&lt; [**Block**](classendstone_1_1Block.md) &gt; | [**block\_**](#variable-block_)  <br> |
 
 
 
@@ -160,7 +160,7 @@ See [endstone::Event](classendstone_1_1Event.md)
 
 ```C++
 inline explicit endstone::BlockEvent::BlockEvent (
-    std::unique_ptr< Block > block
+    const  NotNull < Block > & block
 ) 
 ```
 
@@ -175,7 +175,7 @@ inline explicit endstone::BlockEvent::BlockEvent (
 
 _Gets the block involved in this event._ 
 ```C++
-inline Block & endstone::BlockEvent::getBlock () const
+inline const  NotNull < Block > & endstone::BlockEvent::getBlock () const
 ```
 
 
@@ -201,7 +201,7 @@ The [**Block**](classendstone_1_1Block.md) which block is involved in this event
 ### variable block\_ 
 
 ```C++
-std::unique_ptr<Block> endstone::BlockEvent::block_;
+NotNull<Block> endstone::BlockEvent::block_;
 ```
 
 

@@ -227,6 +227,8 @@
         </childnode>
         <childnode refid="78" relation="include">
         </childnode>
+        <childnode refid="28" relation="include">
+        </childnode>
       </node>
       <node id="8">
         <label>endstone/inventory/item_type.h</label>
@@ -250,6 +252,8 @@
         <childnode refid="77" relation="include">
         </childnode>
         <childnode refid="52" relation="include">
+        </childnode>
+        <childnode refid="28" relation="include">
         </childnode>
       </node>
       <node id="1">
@@ -640,6 +644,8 @@
         <childnode refid="72" relation="include">
         </childnode>
         <childnode refid="75" relation="include">
+        </childnode>
+        <childnode refid="28" relation="include">
         </childnode>
         <childnode refid="55" relation="include">
         </childnode>

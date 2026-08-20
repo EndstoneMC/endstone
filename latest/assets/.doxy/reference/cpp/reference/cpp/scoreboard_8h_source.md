@@ -32,6 +32,7 @@
 #include "endstone/scoreboard/display_slot.h"
 #include "endstone/scoreboard/objective.h"
 #include "endstone/scoreboard/score_entry.h"
+#include "endstone/util/pointers.h"
 #include "endstone/util/result.h"
 
 namespace endstone {
@@ -40,24 +41,22 @@ class Scoreboard {
 public:
     virtual ~Scoreboard() = default;
 
-    virtual std::unique_ptr<Objective> addObjective(std::string name, Criteria::Type criteria) = 0;
+    virtual NotNull<Objective> addObjective(std::string name, Criteria::Type criteria) = 0;
 
-    virtual std::unique_ptr<Objective> addObjective(std::string name, Criteria::Type criteria,
-                                                    std::string display_name) = 0;
+    virtual NotNull<Objective> addObjective(std::string name, Criteria::Type criteria, std::string display_name) = 0;
 
-    virtual std::unique_ptr<Objective> addObjective(std::string name, Criteria::Type criteria, std::string display_name,
-                                                    RenderType render_type) = 0;
+    virtual NotNull<Objective> addObjective(std::string name, Criteria::Type criteria, std::string display_name,
+                                            RenderType render_type) = 0;
 
-    [[nodiscard]] virtual std::unique_ptr<Objective> getObjective(std::string name) const = 0;
+    [[nodiscard]] virtual Nullable<Objective> getObjective(std::string name) const = 0;
 
-    [[nodiscard]] virtual std::unique_ptr<Objective> getObjective(DisplaySlot slot) const = 0;
+    [[nodiscard]] virtual Nullable<Objective> getObjective(DisplaySlot slot) const = 0;
 
-    [[nodiscard]] virtual std::vector<std::unique_ptr<Objective>> getObjectives() const = 0;
+    [[nodiscard]] virtual std::vector<NotNull<Objective>> getObjectives() const = 0;
 
-    [[nodiscard]] virtual std::vector<std::unique_ptr<Objective>> getObjectivesByCriteria(
-        Criteria::Type criteria) const = 0;
+    [[nodiscard]] virtual std::vector<NotNull<Objective>> getObjectivesByCriteria(Criteria::Type criteria) const = 0;
 
-    [[nodiscard]] virtual std::vector<std::unique_ptr<Score>> getScores(ScoreEntry entry) const = 0;
+    [[nodiscard]] virtual std::vector<NotNull<Score>> getScores(ScoreEntry entry) const = 0;
 
     virtual void resetScores(ScoreEntry entry) = 0;
 

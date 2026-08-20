@@ -32,6 +32,7 @@
 
 #include "endstone/enchantments/enchantment.h"
 #include "endstone/object.h"
+#include "endstone/util/pointers.h"
 
 namespace endstone {
 namespace core {
@@ -83,7 +84,7 @@ public:
 
     virtual void setRepairCost(int cost) = 0;
 
-    [[nodiscard]] virtual std::unique_ptr<ItemMeta> clone() const = 0;
+    [[nodiscard]] virtual NotNull<ItemMeta> clone() const = 0;
 
     [[nodiscard]] virtual const core::ItemMetaExtras &getExtras() const = 0;
 

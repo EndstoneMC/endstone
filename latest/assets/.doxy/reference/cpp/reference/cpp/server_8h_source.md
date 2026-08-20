@@ -165,16 +165,14 @@ public:
 
     [[nodiscard]] virtual std::chrono::system_clock::time_point getStartTime() = 0;
 
-    [[nodiscard]] virtual std::unique_ptr<BossBar> createBossBar(std::string title, BarColor color,
-                                                                 BarStyle style) const = 0;
+    [[nodiscard]] virtual NotNull<BossBar> createBossBar(std::string title, BarColor color, BarStyle style) const = 0;
 
-    [[nodiscard]] virtual std::unique_ptr<BossBar> createBossBar(std::string title, BarColor color, BarStyle style,
-                                                                 std::vector<BarFlag> flags) const = 0;
+    [[nodiscard]] virtual NotNull<BossBar> createBossBar(std::string title, BarColor color, BarStyle style,
+                                                         std::vector<BarFlag> flags) const = 0;
 
-    [[nodiscard]] virtual std::unique_ptr<BlockData> createBlockData(BlockTypeId type) const = 0;
+    [[nodiscard]] virtual NotNull<BlockData> createBlockData(BlockTypeId type) const = 0;
 
-    [[nodiscard]] virtual std::unique_ptr<BlockData> createBlockData(BlockTypeId type,
-                                                                     BlockStates block_states) const = 0;
+    [[nodiscard]] virtual NotNull<BlockData> createBlockData(BlockTypeId type, BlockStates block_states) const = 0;
 
     [[nodiscard]] virtual PlayerBanList &getBanList() const = 0;
 

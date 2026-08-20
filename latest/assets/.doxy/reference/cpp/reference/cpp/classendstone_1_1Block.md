@@ -53,14 +53,13 @@ _Represents a block._ [More...](#detailed-description)
 | Type | Name |
 | ---: | :--- |
 | virtual [**NotNull**](classendstone_1_1NotNull.md)&lt; [**BlockState**](classendstone_1_1BlockState.md) &gt; | [**captureState**](#function-capturestate) () const = 0<br>_Captures the current state of this block._  |
-| virtual std::unique\_ptr&lt; [**Block**](classendstone_1_1Block.md) &gt; | [**clone**](#function-clone) () const = 0<br>_Creates a copy of the current block._  |
 | virtual [**const**](classendstone_1_1Identifier.md) [**Biome**](classendstone_1_1Biome.md) & | [**getBiome**](#function-getbiome) () const = 0<br>_Gets the biome that this block resides in._  |
-| virtual std::unique\_ptr&lt; [**BlockData**](classendstone_1_1BlockData.md) &gt; | [**getData**](#function-getdata) () const = 0<br>_Gets the complete block data for this block._  |
+| virtual [**NotNull**](classendstone_1_1NotNull.md)&lt; [**BlockData**](classendstone_1_1BlockData.md) &gt; | [**getData**](#function-getdata) () const = 0<br>_Gets the complete block data for this block._  |
 | virtual [**NotNull**](classendstone_1_1NotNull.md)&lt; [**Dimension**](classendstone_1_1Dimension.md) &gt; | [**getDimension**](#function-getdimension) () const = 0<br>_Gets the dimension which contains this_ [_**Block**_](classendstone_1_1Block.md) _._ |
 | virtual [**Location**](classendstone_1_1Location.md) | [**getLocation**](#function-getlocation) () const = 0<br>_Gets the_ [_**Location**_](classendstone_1_1Location.md) _of the block._ |
-| virtual std::unique\_ptr&lt; [**Block**](classendstone_1_1Block.md) &gt; | [**getRelative**](#function-getrelative-13) ([**int**](classendstone_1_1Identifier.md) offset\_x, [**int**](classendstone_1_1Identifier.md) offset\_y, [**int**](classendstone_1_1Identifier.md) offset\_z) = 0<br>_Gets the block at the given offsets._  |
-| virtual std::unique\_ptr&lt; [**Block**](classendstone_1_1Block.md) &gt; | [**getRelative**](#function-getrelative-23) ([**BlockFace**](namespaceendstone.md#enum-blockface) face) = 0<br>_Gets the block at the given face._  |
-| virtual std::unique\_ptr&lt; [**Block**](classendstone_1_1Block.md) &gt; | [**getRelative**](#function-getrelative-33) ([**BlockFace**](namespaceendstone.md#enum-blockface) face, [**int**](classendstone_1_1Identifier.md) distance) = 0<br>_Gets the block at the given distance of the given face._  |
+| virtual [**NotNull**](classendstone_1_1NotNull.md)&lt; [**Block**](classendstone_1_1Block.md) &gt; | [**getRelative**](#function-getrelative-13) ([**int**](classendstone_1_1Identifier.md) offset\_x, [**int**](classendstone_1_1Identifier.md) offset\_y, [**int**](classendstone_1_1Identifier.md) offset\_z) = 0<br>_Gets the block at the given offsets._  |
+| virtual [**NotNull**](classendstone_1_1NotNull.md)&lt; [**Block**](classendstone_1_1Block.md) &gt; | [**getRelative**](#function-getrelative-23) ([**BlockFace**](namespaceendstone.md#enum-blockface) face) = 0<br>_Gets the block at the given face._  |
+| virtual [**NotNull**](classendstone_1_1NotNull.md)&lt; [**Block**](classendstone_1_1Block.md) &gt; | [**getRelative**](#function-getrelative-33) ([**BlockFace**](namespaceendstone.md#enum-blockface) face, [**int**](classendstone_1_1Identifier.md) distance) = 0<br>_Gets the block at the given distance of the given face._  |
 | virtual [**const**](classendstone_1_1Identifier.md) [**BlockType**](classendstone_1_1BlockType.md) & | [**getType**](#function-gettype) () const = 0<br>_Get the type of the block._  |
 | virtual [**int**](classendstone_1_1Identifier.md) | [**getX**](#function-getx) () const = 0<br>_Gets the x-coordinate of this block._  |
 | virtual [**int**](classendstone_1_1Identifier.md) | [**getY**](#function-gety) () const = 0<br>_Gets the y-coordinate of this block._  |
@@ -138,31 +137,6 @@ The returned object will never be updated, and you are not guaranteed that (for 
 
 
 
-### function clone 
-
-_Creates a copy of the current block._ 
-```C++
-virtual std::unique_ptr< Block > endstone::Block::clone () const = 0
-```
-
-
-
-
-
-**Returns:**
-
-[**Block**](classendstone_1_1Block.md) 
-
-
-
-
-
-        
-
-<hr>
-
-
-
 ### function getBiome 
 
 _Gets the biome that this block resides in._ 
@@ -192,7 +166,7 @@ the biome that this block resides in
 
 _Gets the complete block data for this block._ 
 ```C++
-virtual std::unique_ptr< BlockData > endstone::Block::getData () const = 0
+virtual NotNull < BlockData > endstone::Block::getData () const = 0
 ```
 
 
@@ -267,7 +241,7 @@ virtual Location endstone::Block::getLocation () const = 0
 
 _Gets the block at the given offsets._ 
 ```C++
-virtual std::unique_ptr< Block > endstone::Block::getRelative (
+virtual NotNull < Block > endstone::Block::getRelative (
     int offset_x,
     int offset_y,
     int offset_z
@@ -305,7 +279,7 @@ virtual std::unique_ptr< Block > endstone::Block::getRelative (
 
 _Gets the block at the given face._ 
 ```C++
-virtual std::unique_ptr< Block > endstone::Block::getRelative (
+virtual NotNull < Block > endstone::Block::getRelative (
     BlockFace face
 ) = 0
 ```
@@ -342,7 +316,7 @@ This method is equal to getRelative(face, 1).
 
 _Gets the block at the given distance of the given face._ 
 ```C++
-virtual std::unique_ptr< Block > endstone::Block::getRelative (
+virtual NotNull < Block > endstone::Block::getRelative (
     BlockFace face,
     int distance
 ) = 0

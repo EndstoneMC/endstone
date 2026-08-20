@@ -150,6 +150,8 @@
         </childnode>
         <childnode refid="54" relation="include">
         </childnode>
+        <childnode refid="36" relation="include">
+        </childnode>
         <childnode refid="57" relation="include">
         </childnode>
       </node>
@@ -159,6 +161,8 @@
         <childnode refid="5" relation="include">
         </childnode>
         <childnode refid="18" relation="include">
+        </childnode>
+        <childnode refid="36" relation="include">
         </childnode>
       </node>
       <node id="1">
@@ -294,6 +298,8 @@
         </childnode>
         <childnode refid="86" relation="include">
         </childnode>
+        <childnode refid="36" relation="include">
+        </childnode>
       </node>
       <node id="83">
         <label>endstone/inventory/item_type.h</label>
@@ -317,6 +323,8 @@
         <childnode refid="85" relation="include">
         </childnode>
         <childnode refid="54" relation="include">
+        </childnode>
+        <childnode refid="36" relation="include">
         </childnode>
       </node>
       <node id="59">
@@ -723,6 +731,8 @@
         <childnode refid="74" relation="include">
         </childnode>
         <childnode refid="77" relation="include">
+        </childnode>
+        <childnode refid="36" relation="include">
         </childnode>
         <childnode refid="57" relation="include">
         </childnode>

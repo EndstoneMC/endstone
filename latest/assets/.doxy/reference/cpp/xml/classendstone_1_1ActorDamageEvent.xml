@@ -5,9 +5,9 @@
     <basecompoundref refid="classendstone_1_1Cancellable" prot="public" virt="non-virtual">endstone::Cancellable&lt; ActorEvent&lt; Mob &gt; &gt;</basecompoundref>
     <includes refid="actor__damage__event_8h" local="no">endstone/event/actor/actor_damage_event.h</includes>
     <sectiondef kind="private-attrib">
-      <memberdef kind="variable" id="classendstone_1_1ActorDamageEvent_1ac7b9815258c9fed79e45b7b5544a590e" prot="private" static="no" mutable="no">
-        <type>std::unique_ptr&lt; <ref refid="classendstone_1_1DamageSource" kindref="compound">DamageSource</ref> &gt;</type>
-        <definition>std::unique_ptr&lt;DamageSource&gt; endstone::ActorDamageEvent::damage_source_</definition>
+      <memberdef kind="variable" id="classendstone_1_1ActorDamageEvent_1a505ba996d03990811efe184334f78c8f" prot="private" static="no" mutable="no">
+        <type><ref refid="classendstone_1_1NotNull" kindref="compound">NotNull</ref>&lt; <ref refid="classendstone_1_1DamageSource" kindref="compound">DamageSource</ref> &gt;</type>
+        <definition>NotNull&lt;DamageSource&gt; endstone::ActorDamageEvent::damage_source_</definition>
         <argsstring></argsstring>
         <name>damage_source_</name>
         <qualifiedname>endstone::ActorDamageEvent::damage_source_</qualifiedname>
@@ -17,7 +17,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/event/actor/actor_damage_event.h" line="59" column="21" bodyfile="include/endstone/event/actor/actor_damage_event.h" bodystart="59" bodyend="-1"/>
+        <location file="include/endstone/event/actor/actor_damage_event.h" line="59" column="13" bodyfile="include/endstone/event/actor/actor_damage_event.h" bodystart="59" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="classendstone_1_1ActorDamageEvent_1a867187c57a779cad0f19459222377320" prot="private" static="no" mutable="no">
         <type><ref refid="classendstone_1_1Identifier" kindref="compound">float</ref></type>
@@ -52,10 +52,10 @@
         </inbodydescription>
         <location file="include/endstone/event/actor/actor_damage_event.h" line="31" column="5"/>
       </memberdef>
-      <memberdef kind="function" id="classendstone_1_1ActorDamageEvent_1a7bff4295ce5c50325fb7c0492832bdc3" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+      <memberdef kind="function" id="classendstone_1_1ActorDamageEvent_1ac4d93ae0c290c60b08e6b180e5fd0fee" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type></type>
         <definition>endstone::ActorDamageEvent::ActorDamageEvent</definition>
-        <argsstring>(const NotNull&lt; Mob &gt; &amp;actor, std::unique_ptr&lt; DamageSource &gt; damage_source, const float damage)</argsstring>
+        <argsstring>(const NotNull&lt; Mob &gt; &amp;actor, const NotNull&lt; DamageSource &gt; &amp;damage_source, const float damage)</argsstring>
         <name>ActorDamageEvent</name>
         <qualifiedname>endstone::ActorDamageEvent::ActorDamageEvent</qualifiedname>
         <param>
@@ -63,7 +63,7 @@
           <declname>actor</declname>
         </param>
         <param>
-          <type>std::unique_ptr&lt; <ref refid="classendstone_1_1DamageSource" kindref="compound">DamageSource</ref> &gt;</type>
+          <type><ref refid="classendstone_1_1Identifier" kindref="compound">const</ref> <ref refid="classendstone_1_1NotNull" kindref="compound">NotNull</ref>&lt; <ref refid="classendstone_1_1DamageSource" kindref="compound">DamageSource</ref> &gt; &amp;</type>
           <declname>damage_source</declname>
         </param>
         <param>
@@ -125,9 +125,9 @@
         </inbodydescription>
         <location file="include/endstone/event/actor/actor_damage_event.h" line="49" column="10" bodyfile="include/endstone/event/actor/actor_damage_event.h" bodystart="49" bodyend="49"/>
       </memberdef>
-      <memberdef kind="function" id="classendstone_1_1ActorDamageEvent_1a538c8cedc5f6f72088aaf4351d9e32f4" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
-        <type><ref refid="classendstone_1_1DamageSource" kindref="compound">DamageSource</ref> &amp;</type>
-        <definition>DamageSource &amp; endstone::ActorDamageEvent::getDamageSource</definition>
+      <memberdef kind="function" id="classendstone_1_1ActorDamageEvent_1aa043f505a49673924fca8a58d045bdf9" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type><ref refid="classendstone_1_1Identifier" kindref="compound">const</ref> <ref refid="classendstone_1_1NotNull" kindref="compound">NotNull</ref>&lt; <ref refid="classendstone_1_1DamageSource" kindref="compound">DamageSource</ref> &gt; &amp;</type>
+        <definition>const NotNull&lt; DamageSource &gt; &amp; endstone::ActorDamageEvent::getDamageSource</definition>
         <argsstring>() const</argsstring>
         <name>getDamageSource</name>
         <qualifiedname>endstone::ActorDamageEvent::getDamageSource</qualifiedname>
@@ -141,7 +141,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/event/actor/actor_damage_event.h" line="56" column="19" bodyfile="include/endstone/event/actor/actor_damage_event.h" bodystart="56" bodyend="56"/>
+        <location file="include/endstone/event/actor/actor_damage_event.h" line="56" column="20" bodyfile="include/endstone/event/actor/actor_damage_event.h" bodystart="56" bodyend="56"/>
       </memberdef>
     </sectiondef>
     <briefdescription>
@@ -211,11 +211,11 @@
     </collaborationgraph>
     <location file="include/endstone/event/actor/actor_damage_event.h" line="29" column="1" bodyfile="include/endstone/event/actor/actor_damage_event.h" bodystart="29" bodyend="61"/>
     <listofallmembers>
-      <member refid="classendstone_1_1ActorDamageEvent_1a7bff4295ce5c50325fb7c0492832bdc3" prot="public" virt="non-virtual"><scope>endstone::ActorDamageEvent</scope><name>ActorDamageEvent</name></member>
+      <member refid="classendstone_1_1ActorDamageEvent_1ac4d93ae0c290c60b08e6b180e5fd0fee" prot="public" virt="non-virtual"><scope>endstone::ActorDamageEvent</scope><name>ActorDamageEvent</name></member>
       <member refid="classendstone_1_1ActorEvent_1a6a5b746c518c92c1b7898f9f5839fc04" prot="public" virt="non-virtual"><scope>endstone::ActorDamageEvent</scope><name>ActorEvent</name></member>
       <member refid="classendstone_1_1Cancellable_1a3512b47db69c6001f5c0450051308327" prot="public" virt="virtual"><scope>endstone::ActorDamageEvent</scope><name>cancel</name></member>
       <member refid="classendstone_1_1ActorDamageEvent_1a867187c57a779cad0f19459222377320" prot="private" virt="non-virtual"><scope>endstone::ActorDamageEvent</scope><name>damage_</name></member>
-      <member refid="classendstone_1_1ActorDamageEvent_1ac7b9815258c9fed79e45b7b5544a590e" prot="private" virt="non-virtual"><scope>endstone::ActorDamageEvent</scope><name>damage_source_</name></member>
+      <member refid="classendstone_1_1ActorDamageEvent_1a505ba996d03990811efe184334f78c8f" prot="private" virt="non-virtual"><scope>endstone::ActorDamageEvent</scope><name>damage_source_</name></member>
       <member refid="classendstone_1_1ActorDamageEvent_1af4fe623c9cdd3978bb352e067273ee61" prot="public" virt="non-virtual"><scope>endstone::ActorDamageEvent</scope><name>ENDSTONE_EVENT</name></member>
       <member refid="classendstone_1_1Event_1a28cca8d74920493b449d035540acf023" prot="public" virt="non-virtual"><scope>endstone::ActorDamageEvent</scope><name>Event</name></member>
       <member refid="classendstone_1_1Event_1a7199136ebb40e1441bc61e29f83c3cad" prot="public" virt="non-virtual"><scope>endstone::ActorDamageEvent</scope><name>Event</name></member>
@@ -223,7 +223,7 @@
       <member refid="classendstone_1_1ActorEvent_1adcf86b581365bde3aa12c3c76029f035" prot="public" virt="non-virtual"><scope>endstone::ActorDamageEvent</scope><name>getActor</name></member>
       <member refid="classendstone_1_1ActorEvent_1a7a63d377ca9e669fbac6e7c9305e1ddb" prot="public" virt="non-virtual"><scope>endstone::ActorDamageEvent</scope><name>getActorType</name></member>
       <member refid="classendstone_1_1ActorDamageEvent_1a44564e018ef4caa37965500a468026e6" prot="public" virt="non-virtual"><scope>endstone::ActorDamageEvent</scope><name>getDamage</name></member>
-      <member refid="classendstone_1_1ActorDamageEvent_1a538c8cedc5f6f72088aaf4351d9e32f4" prot="public" virt="non-virtual"><scope>endstone::ActorDamageEvent</scope><name>getDamageSource</name></member>
+      <member refid="classendstone_1_1ActorDamageEvent_1aa043f505a49673924fca8a58d045bdf9" prot="public" virt="non-virtual"><scope>endstone::ActorDamageEvent</scope><name>getDamageSource</name></member>
       <member refid="classendstone_1_1Event_1a826fe74f9c4195a36a364b9aeeb321bb" prot="public" virt="pure-virtual"><scope>endstone::ActorDamageEvent</scope><name>getEventName</name></member>
       <member refid="classendstone_1_1Event_1ae89b54f63dc32b0c8797a59db69b6931" prot="public" virt="non-virtual"><scope>endstone::ActorDamageEvent</scope><name>isAsynchronous</name></member>
       <member refid="classendstone_1_1Cancellable_1a268b73cc5bda0fa5923336d031814faa" prot="public" virt="virtual"><scope>endstone::ActorDamageEvent</scope><name>isCancelled</name></member>

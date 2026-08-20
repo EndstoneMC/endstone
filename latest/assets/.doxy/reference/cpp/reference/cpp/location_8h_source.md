@@ -53,7 +53,7 @@ public:
 
     [[nodiscard]] bool isDimensionLoaded() const;
 
-    [[nodiscard]] std::unique_ptr<Block> getBlock() const;
+    [[nodiscard]] NotNull<Block> getBlock() const;
 
     template <std::convertible_to<float> T>
     constexpr void setX(T x)

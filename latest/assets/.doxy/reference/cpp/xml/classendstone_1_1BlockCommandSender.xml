@@ -5,9 +5,9 @@
     <basecompoundref refid="classendstone_1_1CommandSender" prot="public" virt="non-virtual">endstone::CommandSender</basecompoundref>
     <includes refid="block__command__sender_8h" local="no">endstone/command/block_command_sender.h</includes>
     <sectiondef kind="public-func">
-      <memberdef kind="function" id="classendstone_1_1BlockCommandSender_1a4b8542ff30c04bccecba373dde32188b" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
-        <type>std::unique_ptr&lt; <ref refid="classendstone_1_1Block" kindref="compound">Block</ref> &gt;</type>
-        <definition>virtual std::unique_ptr&lt; Block &gt; endstone::BlockCommandSender::getBlock</definition>
+      <memberdef kind="function" id="classendstone_1_1BlockCommandSender_1abafe2cff94ad8ccfd834a1f727b0f728" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
+        <type><ref refid="classendstone_1_1NotNull" kindref="compound">NotNull</ref>&lt; <ref refid="classendstone_1_1Block" kindref="compound">Block</ref> &gt;</type>
+        <definition>virtual NotNull&lt; Block &gt; endstone::BlockCommandSender::getBlock</definition>
         <argsstring>() const =0</argsstring>
         <name>getBlock</name>
         <qualifiedname>endstone::BlockCommandSender::getBlock</qualifiedname>
@@ -21,7 +21,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/command/block_command_sender.h" line="34" column="30"/>
+        <location file="include/endstone/command/block_command_sender.h" line="35" column="22"/>
       </memberdef>
     </sectiondef>
     <briefdescription>
@@ -77,13 +77,13 @@
         </childnode>
       </node>
     </collaborationgraph>
-    <location file="include/endstone/command/block_command_sender.h" line="27" column="1" bodyfile="include/endstone/command/block_command_sender.h" bodystart="27" bodyend="35"/>
+    <location file="include/endstone/command/block_command_sender.h" line="28" column="1" bodyfile="include/endstone/command/block_command_sender.h" bodystart="28" bodyend="36"/>
     <listofallmembers>
       <member refid="classendstone_1_1Permissible_1a08be02debf01b55544c4566931ed98fc" prot="public" virt="pure-virtual"><scope>endstone::BlockCommandSender</scope><name>addAttachment</name></member>
       <member refid="classendstone_1_1Permissible_1ab1adef2b8d0494a9bfcd9c9ffb995f2b" prot="public" virt="pure-virtual"><scope>endstone::BlockCommandSender</scope><name>addAttachment</name></member>
       <member refid="classendstone_1_1Object_1a798b5128ce018bbbe8ca949ba78c3db1" prot="public" virt="non-virtual"><scope>endstone::BlockCommandSender</scope><name>as</name></member>
       <member refid="classendstone_1_1Object_1ae0f38a62da4c186fce272145e2590cc1" prot="public" virt="non-virtual"><scope>endstone::BlockCommandSender</scope><name>as</name></member>
-      <member refid="classendstone_1_1BlockCommandSender_1a4b8542ff30c04bccecba373dde32188b" prot="public" virt="pure-virtual"><scope>endstone::BlockCommandSender</scope><name>getBlock</name></member>
+      <member refid="classendstone_1_1BlockCommandSender_1abafe2cff94ad8ccfd834a1f727b0f728" prot="public" virt="pure-virtual"><scope>endstone::BlockCommandSender</scope><name>getBlock</name></member>
       <member refid="classendstone_1_1Object_1aaaeb27e8e442e5adb772ae0d1af1c33f" prot="public" virt="pure-virtual"><scope>endstone::BlockCommandSender</scope><name>getClassTypeId</name></member>
       <member refid="classendstone_1_1Permissible_1ad9307f3eef07e6e03a55b4fe9aab9be6" prot="public" virt="pure-virtual"><scope>endstone::BlockCommandSender</scope><name>getEffectivePermissions</name></member>
       <member refid="classendstone_1_1CommandSender_1acf20807a70561a571e20d4ee3791d69e" prot="public" virt="pure-virtual"><scope>endstone::BlockCommandSender</scope><name>getName</name></member>
