@@ -16,13 +16,10 @@
 
 #include <cstdint>
 
-#include "bedrock/bedrock.h"
 #include "bedrock/core/math/vec3.h"
 #include "bedrock/world/actor/actor_runtime_id.h"
 #include "bedrock/world/inventory/transaction/complex_inventory_transaction.h"
 #include "bedrock/world/item/network_item_stack_descriptor.h"
-
-class Actor;
 
 class ItemUseOnActorInventoryTransaction : public ComplexInventoryTransaction {
 public:
@@ -38,15 +35,4 @@ public:
     NetworkItemStackDescriptor item_;
     Vec3 from_pos_;
     Vec3 hit_pos_;
-    // The target function is the interaction callback created by handle().
-    ENDSTONE_HOOK static void executeInteraction(void *context);
-
-#ifdef _WIN32
-    ENDSTONE_HOOK static std::int64_t executeBucketEntityUse(
-        void *item_stack, void *result, Actor *actor, int arg3, int arg4, int arg5, char arg6, void *arg7,
-        std::int64_t arg8);
-#else
-    ENDSTONE_HOOK static long long executeBucketEntityUse(
-        void *item_stack, Actor *actor, int arg2, int arg3, int arg4, char arg5, void *arg6, long long arg7);
-#endif
 };

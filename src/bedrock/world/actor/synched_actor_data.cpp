@@ -30,18 +30,6 @@ SynchedActorData::TypeInt8 SynchedActorData::getInt8(ID id) const
     return static_cast<DataItem2<TypeInt8> *>(item)->data;
 }
 
-SynchedActorData::TypeInt SynchedActorData::getInt(ID id) const
-{
-    if (!hasData(id)) {
-        return 0;
-    }
-    auto *item = _find(id);
-    if (item->getType() != DataItemType::Int) {
-        return 0;
-    }
-    return static_cast<DataItem2<TypeInt> *>(item)->data;
-}
-
 SynchedActorData::TypeInt64 SynchedActorData::getInt64(ID id) const
 {
     if (!hasData(id)) {
@@ -85,11 +73,6 @@ DataItem *SynchedActorData::_find(ID id) const
 SynchedActorData::TypeInt8 SynchedActorDataEntityWrapper::getInt8(SynchedActorData::ID id) const
 {
     return data_->data.getInt8(id);
-}
-
-SynchedActorData::TypeInt SynchedActorDataEntityWrapper::getInt(SynchedActorData::ID id) const
-{
-    return data_->data.getInt(id);
 }
 
 SynchedActorData::TypeInt64 SynchedActorDataEntityWrapper::getInt64(SynchedActorData::ID id) const

@@ -15,7 +15,6 @@
 #pragma once
 
 #include <functional>
-#include <utility>
 
 // Reference: https://github.com/LiteLDev/LeviLamina/blob/fbb3c97/src/mc/platform/brstd/detail/function.h
 
@@ -132,17 +131,15 @@ private:
                 from.heap_target = nullptr;
             }
             else {
-                auto *source = static_cast<T *>(target(from));
-                ::new (target(to)) T(std::move(*source));
-                source->~T();
+                ::new (target(to)) T(std::move(*static_cast<T *>(target(from))));
             }
         }
 
         static void destroy(storage &self)
         {
             if constexpr (HeapTarget) {
-                delete static_cast<T *>(target(self));
-                self.heap_target = nullptr;
+                delete target(self);
+                target(self) = nullptr;
             }
             else {
                 static_cast<T *>(target(self))->~T();
@@ -186,37 +183,6 @@ class function_base;
 
 template <typename Base>
 class function_base<DerivedType::MoveOnly, Base> : public Base {
-protected:
-    function_base() noexcept { this->storage_.vfptr = nullptr; }
-
-    function_base(function_base &&other) noexcept
-    {
-        if (other.storage_.vfptr) {
-            other.storage_.vfptr->move_to(other.storage_, this->storage_);
-            this->storage_.vfptr = std::exchange(other.storage_.vfptr, nullptr);
-        }
-        else {
-            this->storage_.vfptr = nullptr;
-        }
-    }
-
-    function_base &operator=(function_base &&other) noexcept
-    {
-        if (this != &other) {
-            if (this->storage_.vfptr) {
-                this->storage_.vfptr->destroy(this->storage_);
-            }
-            if (other.storage_.vfptr) {
-                other.storage_.vfptr->move_to(other.storage_, this->storage_);
-                this->storage_.vfptr = std::exchange(other.storage_.vfptr, nullptr);
-            }
-            else {
-                this->storage_.vfptr = nullptr;
-            }
-        }
-        return *this;
-    }
-
 public:
     ~function_base()
     {
@@ -224,57 +190,10 @@ public:
             vfptr->destroy(Base::storage_);
         }
     }
-
-    function_base &operator=(std::nullptr_t) noexcept
-    {
-        if (this->storage_.vfptr) {
-            this->storage_.vfptr->destroy(this->storage_);
-            this->storage_.vfptr = nullptr;
-        }
-        return *this;
-    }
-
-    friend bool operator==(const function_base &self, std::nullptr_t) noexcept
-    {
-        return self.storage_.vfptr == nullptr;
-    }
 };
 
 template <typename Base>
-class function_base<DerivedType::Copyable, Base> : public function_base<DerivedType::MoveOnly, Base> {
-protected:
-    function_base() noexcept = default;
-    function_base(function_base &&) noexcept = default;
-    function_base &operator=(function_base &&) noexcept = default;
-
-    function_base(const function_base &other)
-    {
-        if (other.storage_.vfptr) {
-            other.storage_.vfptr->copy_to(other.storage_, this->storage_);
-            this->storage_.vfptr = other.storage_.vfptr;
-        }
-        else {
-            this->storage_.vfptr = nullptr;
-        }
-    }
-
-    function_base &operator=(const function_base &other)
-    {
-        if (this != &other) {
-            if (this->storage_.vfptr) {
-                this->storage_.vfptr->destroy(this->storage_);
-            }
-            if (other.storage_.vfptr) {
-                other.storage_.vfptr->copy_to(other.storage_, this->storage_);
-                this->storage_.vfptr = other.storage_.vfptr;
-            }
-            else {
-                this->storage_.vfptr = nullptr;
-            }
-        }
-        return *this;
-    }
-};
+class function_base<DerivedType::Copyable, Base> : public function_base<DerivedType::MoveOnly, Base> {};
 
 template <DerivedType, typename Signature, bool OverrideCallOperatorModifiers>
 class function_invoke_base;

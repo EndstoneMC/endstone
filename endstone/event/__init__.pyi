@@ -54,7 +54,6 @@ __all__ = [
     "PacketSendEvent",
     "PlayerBedEnterEvent",
     "PlayerBedLeaveEvent",
-    "PlayerBucketActorEvent",
     "PlayerChatEvent",
     "PlayerCommandEvent",
     "PlayerDeathEvent",
@@ -81,7 +80,6 @@ __all__ = [
     "PlayerQuitEvent",
     "PlayerRecipeBookSettingsChangeEvent",
     "PlayerRespawnEvent",
-    "PlayerShearActorEvent",
     "PlayerSkinChangeEvent",
     "PlayerTeleportEvent",
     "PlayerToggleSneakEvent",
@@ -555,36 +553,6 @@ class PlayerBedLeaveEvent(PlayerEvent):
         The bed block involved in this event.
         """
 
-class PlayerBucketActorEvent(PlayerEvent, Cancellable):
-    """
-    Called when a player captures an actor with a bucket.
-    """
-    @property
-    def actor(self) -> Actor:
-        """
-        The actor being captured.
-        """
-
-    @property
-    def actor_bucket(self) -> ItemStack:
-        """
-        The bucket item that will contain the captured actor.
-        """
-
-    @actor_bucket.setter
-    def actor_bucket(self, arg1: ItemStack) -> None: ...
-    @property
-    def hand(self) -> EquipmentSlot:
-        """
-        The hand used to capture the actor.
-        """
-
-    @property
-    def original_bucket(self) -> ItemStack:
-        """
-        The bucket used to capture the actor.
-        """
-
 class PlayerChatEvent(PlayerEvent, Cancellable):
     """
     Called when a player sends a chat message.
@@ -825,6 +793,26 @@ class PlayerItemHeldEvent(PlayerEvent, Cancellable):
         The previous held slot index.
         """
 
+class PlayerToggleSneakEvent(PlayerEvent):
+    """
+    Called when a player toggles their sneaking state.
+    """
+    @property
+    def is_sneaking(self) -> bool:
+        """
+        Whether the player is now sneaking or not.
+        """
+
+class PlayerToggleSprintEvent(PlayerEvent):
+    """
+    Called when a player toggles their sprinting state.
+    """
+    @property
+    def is_sprinting(self) -> bool:
+        """
+        Whether the player is now sprinting or not.
+        """
+
 class PlayerJoinEvent(PlayerEvent):
     """
     Called when a player joins a server.
@@ -906,26 +894,6 @@ class PlayerJumpEvent(PlayerMoveEvent):
     Called when a player jumps.
     """
 
-class PlayerPickupArrowEvent(PlayerEvent, Cancellable):
-    """
-    Called when a player picks up an arrow or a thrown trident from the ground.
-    """
-    @property
-    def arrow(self) -> Actor:
-        """
-        The arrow picked up by the player.
-        """
-
-class PlayerPickupItemEvent(PlayerEvent, Cancellable):
-    """
-    Called when a player picks an item up from the ground.
-    """
-    @property
-    def item(self) -> Item:
-        """
-        The Item picked up by the entity.
-        """
-
 class PlayerQuitEvent(PlayerEvent):
     """
     Called when a player leaves a server.
@@ -995,37 +963,6 @@ class PlayerRespawnEvent(PlayerEvent):
         The reason this respawn occurred.
         """
 
-class PlayerShearActorEvent(PlayerEvent, Cancellable):
-    """
-    Called when a player shears an actor.
-    """
-    @property
-    def actor(self) -> Actor:
-        """
-        The actor that was sheared.
-        """
-
-    @property
-    def hand(self) -> EquipmentSlot:
-        """
-        The hand used to shear the actor.
-        """
-
-    @property
-    def item(self) -> ItemStack:
-        """
-        The item used to shear the actor.
-        """
-
-    @property
-    def drops(self) -> list[ItemStack]:
-        """
-        The items dropped when the actor is sheared.
-        """
-
-    @drops.setter
-    def drops(self, arg1: list[ItemStack]) -> None: ...
-
 class PlayerSkinChangeEvent(PlayerEvent, Cancellable):
     """
     Called when a player changes their skin.
@@ -1055,24 +992,24 @@ class PlayerPortalEvent(PlayerTeleportEvent):
     Called when a player is about to teleport because it is in contact with a portal.
     """
 
-class PlayerToggleSneakEvent(PlayerEvent):
+class PlayerPickupArrowEvent(PlayerEvent, Cancellable):
     """
-    Called when a player toggles their sneaking state.
+    Called when a player picks up an arrow or a thrown trident from the ground.
     """
     @property
-    def is_sneaking(self) -> bool:
+    def arrow(self) -> Actor:
         """
-        Whether the player is now sneaking or not.
+        The arrow picked up by the player.
         """
 
-class PlayerToggleSprintEvent(PlayerEvent):
+class PlayerPickupItemEvent(PlayerEvent, Cancellable):
     """
-    Called when a player toggles their sprinting state.
+    Called when a player picks an item up from the ground.
     """
     @property
-    def is_sprinting(self) -> bool:
+    def item(self) -> Item:
         """
-        Whether the player is now sprinting or not.
+        The Item picked up by the entity.
         """
 
 class ServerEvent(Event):

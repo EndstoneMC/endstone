@@ -83,7 +83,6 @@ add_library(bedrock STATIC
         world/actor/player/player_item_in_use.cpp
         world/actor/player/serialized_skin.cpp
         world/actor/provider/actor_offset.cpp
-        world/actor/provider/actor_riding.cpp
         world/attribute/attribute_instance.cpp
         world/attribute/attribute_map.cpp
         world/attribute/mutable_attribute_with_context.cpp
@@ -155,3 +154,4 @@ if (UNIX)
     target_link_options(bedrock PRIVATE -g)
     target_compile_options(bedrock PRIVATE -O2 -DNDEBUG -g -fms-extensions)
 endif ()
+
