@@ -400,6 +400,8 @@
 ([**endstone**](namespaceendstone.md))
 * [**PlayerEvent**](classendstone_1_1PlayerEvent.md)
 ([**endstone**](namespaceendstone.md))
+* [**PlayerExpChangeEvent**](classendstone_1_1PlayerExpChangeEvent.md)
+([**endstone**](namespaceendstone.md))
 * [**PlayerGameModeChangeEvent**](classendstone_1_1PlayerGameModeChangeEvent.md)
 ([**endstone**](namespaceendstone.md))
 * [**PlayerInputEvent**](classendstone_1_1PlayerInputEvent.md)

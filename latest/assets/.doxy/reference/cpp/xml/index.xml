@@ -2080,6 +2080,13 @@
     <member refid="classendstone_1_1PlayerEvent_1ab31b937251b8ccc1c72c275d1c7a522b" kind="function"><name>~PlayerEvent</name></member>
     <member refid="classendstone_1_1PlayerEvent_1abad8f8bca3e2be851c4b37075adf2cbc" kind="function"><name>getPlayer</name></member>
   </compound>
+  <compound refid="classendstone_1_1PlayerExpChangeEvent" kind="class"><name>endstone::PlayerExpChangeEvent</name>
+    <member refid="classendstone_1_1PlayerExpChangeEvent_1af4c068855aab3cd14001146004fb9458" kind="variable"><name>amount_</name></member>
+    <member refid="classendstone_1_1PlayerExpChangeEvent_1ab5b64a57c26ef877932c949b8ff0c44d" kind="function"><name>ENDSTONE_EVENT</name></member>
+    <member refid="classendstone_1_1PlayerExpChangeEvent_1ac40a34183c3bb68aefad3faf52c0b7a1" kind="function"><name>PlayerExpChangeEvent</name></member>
+    <member refid="classendstone_1_1PlayerExpChangeEvent_1a486ad9f190c980f6c1a3c184bc7bfd5f" kind="function"><name>getAmount</name></member>
+    <member refid="classendstone_1_1PlayerExpChangeEvent_1a242e3dd5a84093895cab5129b47d5a32" kind="function"><name>setAmount</name></member>
+  </compound>
   <compound refid="classendstone_1_1PlayerGameModeChangeEvent" kind="class"><name>endstone::PlayerGameModeChangeEvent</name>
     <member refid="classendstone_1_1PlayerGameModeChangeEvent_1a04a813980762f492edc3db56907da5b5" kind="variable"><name>new_game_mode_</name></member>
     <member refid="classendstone_1_1PlayerGameModeChangeEvent_1a6a40c884adc4e5b9f09c99aa8369e8a4" kind="function"><name>ENDSTONE_EVENT</name></member>
@@ -3308,6 +3315,8 @@
   <compound refid="player__emote__event_8h" kind="file"><name>player_emote_event.h</name>
   </compound>
   <compound refid="player__event_8h" kind="file"><name>player_event.h</name>
+  </compound>
+  <compound refid="player__exp__change__event_8h" kind="file"><name>player_exp_change_event.h</name>
   </compound>
   <compound refid="player__game__mode__change__event_8h" kind="file"><name>player_game_mode_change_event.h</name>
   </compound>

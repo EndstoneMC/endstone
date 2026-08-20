@@ -15,7 +15,7 @@
 * **Axolotl** ([**endstone::ActorType**](classendstone_1_1ActorType.md))
 * **Absorption** ([**endstone::Attribute**](classendstone_1_1Attribute.md), [**endstone::EffectType**](classendstone_1_1EffectType.md))
 * **AttackDamage** ([**endstone::Attribute**](classendstone_1_1Attribute.md))
-* **amount\_** ([**endstone::AttributeModifier**](classendstone_1_1AttributeModifier.md))
+* **amount\_** ([**endstone::AttributeModifier**](classendstone_1_1AttributeModifier.md), [**endstone::PlayerExpChangeEvent**](classendstone_1_1PlayerExpChangeEvent.md))
 * **Air** ([**endstone::BlockType**](classendstone_1_1BlockType.md), [**endstone::ItemType**](classendstone_1_1ItemType.md))
 * **alpha\_** ([**endstone::Color**](classendstone_1_1Color.md))
 * **Aqua** ([**endstone::ColorFormat**](structendstone_1_1ColorFormat.md))

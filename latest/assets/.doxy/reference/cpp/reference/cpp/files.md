@@ -107,6 +107,7 @@ Here is a list of all files with brief descriptions:
                 * **file** [**player\_drop\_item\_event.h**](player__drop__item__event_8h.md)     
                 * **file** [**player\_emote\_event.h**](player__emote__event_8h.md)     
                 * **file** [**player\_event.h**](player__event_8h.md)     
+                * **file** [**player\_exp\_change\_event.h**](player__exp__change__event_8h.md)     
                 * **file** [**player\_game\_mode\_change\_event.h**](player__game__mode__change__event_8h.md)     
                 * **file** [**player\_input\_event.h**](player__input__event_8h.md)     
                 * **file** [**player\_interact\_actor\_event.h**](player__interact__actor__event_8h.md)     
