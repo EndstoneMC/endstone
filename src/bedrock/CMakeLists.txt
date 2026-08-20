@@ -95,7 +95,6 @@ add_library(bedrock STATIC
         world/item/item_instance.cpp
         world/item/item_stack.cpp
         world/item/item_stack_base.cpp
-        world/item/vanilla_item_tags.cpp
         world/item/written_book_item.cpp
         world/item/alchemy/potion.cpp
         world/item/crafting/recipes.cpp
@@ -154,4 +153,3 @@ if (UNIX)
     target_link_options(bedrock PRIVATE -g)
     target_compile_options(bedrock PRIVATE -O2 -DNDEBUG -g -fms-extensions)
 endif ()
-

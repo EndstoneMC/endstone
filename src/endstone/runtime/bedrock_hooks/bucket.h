@@ -14,19 +14,14 @@
 
 #pragma once
 
-#include <optional>
+#include "bedrock/world/item/bucket_fill_type.h"
 
-#include "endstone/block/block_face.h"
+class Item;
 
-namespace endstone::core {
+namespace endstone::runtime {
 
-class EndstoneBlockFace {
-public:
-    static std::optional<BlockFace> fromBedrockFacing(int facing);
-    static int getOffsetX(BlockFace face);
-    static int getOffsetY(BlockFace face);
-    static int getOffsetZ(BlockFace face);
-    static BlockFace getOpposite(BlockFace face);
-};
+BucketFillType getBucketFillType(const ::Item &item);
+bool isWaterContentBucket(const ::Item &item);
+void installBucketHook();
 
-}  // namespace endstone::core
+}  // namespace endstone::runtime

@@ -16,7 +16,6 @@
 
 #include "bedrock/entity/components/item_in_use_component.h"
 #include "bedrock/world/item/item.h"
-#include "bedrock/world/item/vanilla_item_tags.h"
 
 const ItemStack &PlayerItemInUse::getItemInUse() const
 {
@@ -41,7 +40,7 @@ void PlayerItemInUse::setItemInUse(const ItemStack &new_item, EntityContext &own
     auto &item_in_use = owner.getOrAddComponent<ItemInUseComponent>();
     item_in_use.item = item_.getItemPtr();
     item_in_use.duration = duration;
-    if (item_.hasTag(VanillaItemTags::Trident)) {
+    if (item_.hasTag("minecraft:is_trident")) {
         owner.getOrAddComponent<ItemInUseTicksDuringMovementComponent>();
     }
 }

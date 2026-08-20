@@ -14,8 +14,17 @@
 
 #pragma once
 
-#include "bedrock/world/item/vanilla_item_tag.h"
+#include "endstone/event/player/player_bucket_event.h"
 
-namespace VanillaItemTags {
-extern const ItemTag Trident;
-}  // namespace VanillaItemTags
+namespace endstone {
+
+/**
+ * Called when a player empties a bucket.
+ */
+class PlayerBucketEmptyEvent : public PlayerBucketEvent {
+public:
+    ENDSTONE_EVENT(PlayerBucketEmptyEvent);
+    using PlayerBucketEvent::PlayerBucketEvent;
+};
+
+}  // namespace endstone

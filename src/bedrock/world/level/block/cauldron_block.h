@@ -12,8 +12,13 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-#include "bedrock/world/item/vanilla_item_tags.h"
+#pragma once
 
-namespace VanillaItemTags {
-const ItemTag Trident = "minecraft:is_trident";
-}  // namespace VanillaItemTags
+#include "bedrock/bedrock.h"
+#include "bedrock/world/level/block/actor_block.h"
+#include "bedrock/world/level/block/block_event.h"
+
+class CauldronBlock : public ActorBlock {
+public:
+    ENDSTONE_HOOK void use(BlockEvents::BlockPlayerInteractEvent &event_data) const;
+};

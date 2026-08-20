@@ -454,6 +454,18 @@ extra = 0
 pattern = "41 57 41 56 53 8B 42"
 
 [[signatures]]
+name = "_ZNK13CauldronBlock3useERN11BlockEvents24BlockPlayerInteractEventE"
+relative = false
+extra = 0
+# 1. find CauldronBlock's constructor and follow its third event subscription, which registers the
+#    BlockPlayerInteract callback
+# 2. confirm the callback body against the old named DB: it reads Player& at +0x18 and the optional
+#    interaction result at +0x20, then performs cauldron item interaction
+# 3. the callback has no recoverable BDS name; use the compiler-generated ABI name for the verified
+#    const CauldronBlock::use declaration
+pattern = "55 41 57 41 56 41 55 41 54 53 48 81 EC A8 02 00 00 48 89 F3 4C 8B 76"
+
+[[signatures]]
 name = "_ZN11LeavesBlock10randomTickERN11BlockEvents20BlockRandomTickEventE"
 relative = false
 extra = 0
@@ -748,7 +760,6 @@ extra = 0
 # 3. follow the thunk's jmp to WeatherManager::updateWeather and walk to its prologue
 # 4. confirm vs the old named DB
 pattern = "55 41 57 41 56 41 54 53 48 81 EC ? ? ? ? 89 D5 0F 29 4C 24"
-
 [[signatures]]
 name = "_ZN6Player9addLevelsEi"
 relative = false

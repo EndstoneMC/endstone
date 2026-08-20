@@ -272,6 +272,8 @@ void init_event(py::module_ &m, py::class_<Event, PyEvent> &event)
                       "The resulting item in the player's hand, or `None` if unavailable.");
     py::class_<PlayerBucketFillEvent, PlayerBucketEvent>(m, "PlayerBucketFillEvent",
                                                          "Called when a player fills a bucket.");
+    py::class_<PlayerBucketEmptyEvent, PlayerBucketEvent>(m, "PlayerBucketEmptyEvent",
+                                                          "Called when a player empties a bucket.");
     py::class_<PlayerChatEvent, PlayerEvent, ICancellable>(m, "PlayerChatEvent",
                                                            "Called when a player sends a chat message.")
         .def_property("message", &PlayerChatEvent::getMessage, &PlayerChatEvent::setMessage,

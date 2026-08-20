@@ -54,6 +54,7 @@ __all__ = [
     "PacketSendEvent",
     "PlayerBedEnterEvent",
     "PlayerBedLeaveEvent",
+    "PlayerBucketEmptyEvent",
     "PlayerBucketEvent",
     "PlayerChatEvent",
     "PlayerCommandEvent",
@@ -597,6 +598,11 @@ class PlayerBucketEvent(PlayerEvent, Cancellable):
 class PlayerBucketFillEvent(PlayerBucketEvent):
     """
     Called when a player fills a bucket.
+    """
+
+class PlayerBucketEmptyEvent(PlayerBucketEvent):
+    """
+    Called when a player empties a bucket.
     """
 
 class PlayerChatEvent(PlayerEvent, Cancellable):
