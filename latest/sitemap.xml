@@ -205,6 +205,14 @@
          <lastmod>2026-08-20</lastmod>
     </url>
     <url>
+         <loc>https://endstone.dev/latest/reference/cpp/classendstone_1_1ActorToggleGlideEvent/</loc>
+         <lastmod>2026-08-20</lastmod>
+    </url>
+    <url>
+         <loc>https://endstone.dev/latest/reference/cpp/classendstone_1_1ActorToggleSwimEvent/</loc>
+         <lastmod>2026-08-20</lastmod>
+    </url>
+    <url>
          <loc>https://endstone.dev/latest/reference/cpp/classendstone_1_1ActorType/</loc>
          <lastmod>2026-08-20</lastmod>
     </url>
@@ -641,6 +649,10 @@
          <lastmod>2026-08-20</lastmod>
     </url>
     <url>
+         <loc>https://endstone.dev/latest/reference/cpp/classendstone_1_1PlayerArmorStandManipulateEvent/</loc>
+         <lastmod>2026-08-20</lastmod>
+    </url>
+    <url>
          <loc>https://endstone.dev/latest/reference/cpp/classendstone_1_1PlayerBanEntry/</loc>
          <lastmod>2026-08-20</lastmod>
     </url>
@@ -774,6 +786,14 @@
     </url>
     <url>
          <loc>https://endstone.dev/latest/reference/cpp/classendstone_1_1PlayerTeleportEvent/</loc>
+         <lastmod>2026-08-20</lastmod>
+    </url>
+    <url>
+         <loc>https://endstone.dev/latest/reference/cpp/classendstone_1_1PlayerToggleCrawlEvent/</loc>
+         <lastmod>2026-08-20</lastmod>
+    </url>
+    <url>
+         <loc>https://endstone.dev/latest/reference/cpp/classendstone_1_1PlayerToggleFlightEvent/</loc>
          <lastmod>2026-08-20</lastmod>
     </url>
     <url>
@@ -1689,6 +1709,22 @@
          <lastmod>2026-08-20</lastmod>
     </url>
     <url>
+         <loc>https://endstone.dev/latest/reference/cpp/actor__toggle__glide__event_8h/</loc>
+         <lastmod>2026-08-20</lastmod>
+    </url>
+    <url>
+         <loc>https://endstone.dev/latest/reference/cpp/actor__toggle__glide__event_8h_source/</loc>
+         <lastmod>2026-08-20</lastmod>
+    </url>
+    <url>
+         <loc>https://endstone.dev/latest/reference/cpp/actor__toggle__swim__event_8h/</loc>
+         <lastmod>2026-08-20</lastmod>
+    </url>
+    <url>
+         <loc>https://endstone.dev/latest/reference/cpp/actor__toggle__swim__event_8h_source/</loc>
+         <lastmod>2026-08-20</lastmod>
+    </url>
+    <url>
          <loc>https://endstone.dev/latest/reference/cpp/player__death__event_8h/</loc>
          <lastmod>2026-08-20</lastmod>
     </url>
@@ -1854,6 +1890,14 @@
     </url>
     <url>
          <loc>https://endstone.dev/latest/reference/cpp/player__arm__swing__event_8h_source/</loc>
+         <lastmod>2026-08-20</lastmod>
+    </url>
+    <url>
+         <loc>https://endstone.dev/latest/reference/cpp/player__armor__stand__manipulate__event_8h/</loc>
+         <lastmod>2026-08-20</lastmod>
+    </url>
+    <url>
+         <loc>https://endstone.dev/latest/reference/cpp/player__armor__stand__manipulate__event_8h_source/</loc>
          <lastmod>2026-08-20</lastmod>
     </url>
     <url>
@@ -2094,6 +2138,22 @@
     </url>
     <url>
          <loc>https://endstone.dev/latest/reference/cpp/player__teleport__event_8h_source/</loc>
+         <lastmod>2026-08-20</lastmod>
+    </url>
+    <url>
+         <loc>https://endstone.dev/latest/reference/cpp/player__toggle__crawl__event_8h/</loc>
+         <lastmod>2026-08-20</lastmod>
+    </url>
+    <url>
+         <loc>https://endstone.dev/latest/reference/cpp/player__toggle__crawl__event_8h_source/</loc>
+         <lastmod>2026-08-20</lastmod>
+    </url>
+    <url>
+         <loc>https://endstone.dev/latest/reference/cpp/player__toggle__flight__event_8h/</loc>
+         <lastmod>2026-08-20</lastmod>
+    </url>
+    <url>
+         <loc>https://endstone.dev/latest/reference/cpp/player__toggle__flight__event_8h_source/</loc>
          <lastmod>2026-08-20</lastmod>
     </url>
     <url>

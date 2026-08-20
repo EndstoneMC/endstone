@@ -3,6 +3,7 @@
   <compounddef id="classendstone_1_1PlayerInteractActorEvent" kind="class" language="C++" prot="public">
     <compoundname>endstone::PlayerInteractActorEvent</compoundname>
     <basecompoundref refid="classendstone_1_1Cancellable" prot="public" virt="non-virtual">endstone::Cancellable&lt; PlayerEvent &gt;</basecompoundref>
+    <derivedcompoundref refid="classendstone_1_1PlayerArmorStandManipulateEvent" prot="public" virt="non-virtual">endstone::PlayerArmorStandManipulateEvent</derivedcompoundref>
     <includes refid="player__interact__actor__event_8h" local="no">endstone/event/player/player_interact_actor_event.h</includes>
     <sectiondef kind="private-attrib">
       <memberdef kind="variable" id="classendstone_1_1PlayerInteractActorEvent_1aaaad0a848f601ca19a388755b009ebd0" prot="private" static="no" mutable="no">
@@ -114,6 +115,12 @@
       <node id="5">
         <label>endstone::ICancellable</label>
         <link refid="classendstone_1_1ICancellable"/>
+      </node>
+      <node id="6">
+        <label>endstone::PlayerArmorStandManipulateEvent</label>
+        <link refid="classendstone_1_1PlayerArmorStandManipulateEvent"/>
+        <childnode refid="1" relation="public-inheritance">
+        </childnode>
       </node>
       <node id="3">
         <label>endstone::PlayerEvent</label>

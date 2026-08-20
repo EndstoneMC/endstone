@@ -17,6 +17,7 @@ _Called when a player right-clicks an actor._
 Inherits the following classes: [endstone::Cancellable](classendstone_1_1Cancellable.md)
 
 
+Inherited by the following classes: [endstone::PlayerArmorStandManipulateEvent](classendstone_1_1PlayerArmorStandManipulateEvent.md)
 
 
 

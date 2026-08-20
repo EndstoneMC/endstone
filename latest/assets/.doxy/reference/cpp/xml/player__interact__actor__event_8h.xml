@@ -4,6 +4,7 @@
     <compoundname>player_interact_actor_event.h</compoundname>
     <includes refid="cancellable_8h" local="yes">endstone/event/cancellable.h</includes>
     <includes refid="player__event_8h" local="yes">endstone/event/player/player_event.h</includes>
+    <includedby refid="player__armor__stand__manipulate__event_8h" local="yes">include/endstone/event/player/player_armor_stand_manipulate_event.h</includedby>
     <incdepgraph>
       <node id="15">
         <label>endstone/actor/actor.h</label>
@@ -1122,6 +1123,18 @@
         <label>vector</label>
       </node>
     </incdepgraph>
+    <invincdepgraph>
+      <node id="2">
+        <label>include/endstone/event/player/player_armor_stand_manipulate_event.h</label>
+        <link refid="player__armor__stand__manipulate__event_8h_source"/>
+      </node>
+      <node id="1">
+        <label>include/endstone/event/player/player_interact_actor_event.h</label>
+        <link refid="player__interact__actor__event_8h"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+      </node>
+    </invincdepgraph>
     <innerclass refid="classendstone_1_1PlayerInteractActorEvent" prot="public">endstone::PlayerInteractActorEvent</innerclass>
     <innernamespace refid="namespaceendstone">endstone</innernamespace>
     <briefdescription>

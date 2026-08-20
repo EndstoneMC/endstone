@@ -4,6 +4,7 @@
     <compoundname>equipment_slot.h</compoundname>
     <includes local="no">memory</includes>
     <includes local="no">vector</includes>
+    <includedby refid="player__armor__stand__manipulate__event_8h" local="yes">include/endstone/event/player/player_armor_stand_manipulate_event.h</includedby>
     <includedby refid="player__drop__item__event_8h" local="yes">include/endstone/event/player/player_drop_item_event.h</includedby>
     <includedby refid="player__item__consume__event_8h" local="yes">include/endstone/event/player/player_item_consume_event.h</includedby>
     <incdepgraph>
@@ -24,10 +25,14 @@
     </incdepgraph>
     <invincdepgraph>
       <node id="2">
+        <label>include/endstone/event/player/player_armor_stand_manipulate_event.h</label>
+        <link refid="player__armor__stand__manipulate__event_8h_source"/>
+      </node>
+      <node id="3">
         <label>include/endstone/event/player/player_drop_item_event.h</label>
         <link refid="player__drop__item__event_8h_source"/>
       </node>
-      <node id="3">
+      <node id="4">
         <label>include/endstone/event/player/player_item_consume_event.h</label>
         <link refid="player__item__consume__event_8h_source"/>
       </node>
@@ -37,6 +42,8 @@
         <childnode refid="2" relation="include">
         </childnode>
         <childnode refid="3" relation="include">
+        </childnode>
+        <childnode refid="4" relation="include">
         </childnode>
       </node>
     </invincdepgraph>

@@ -1,0 +1,274 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.8" xml:lang="en-US">
+  <compounddef id="classendstone_1_1PlayerArmorStandManipulateEvent" kind="class" language="C++" prot="public" final="yes">
+    <compoundname>endstone::PlayerArmorStandManipulateEvent</compoundname>
+    <basecompoundref refid="classendstone_1_1PlayerInteractActorEvent" prot="public" virt="non-virtual">endstone::PlayerInteractActorEvent</basecompoundref>
+    <includes refid="player__armor__stand__manipulate__event_8h" local="no">endstone/event/player/player_armor_stand_manipulate_event.h</includes>
+    <sectiondef kind="private-attrib">
+      <memberdef kind="variable" id="classendstone_1_1PlayerArmorStandManipulateEvent_1a82ce825e2d0449280c2e7d93d281b263" prot="private" static="no" mutable="no">
+        <type><ref refid="classendstone_1_1ItemStack" kindref="compound">ItemStack</ref></type>
+        <definition>ItemStack endstone::PlayerArmorStandManipulateEvent::armor_stand_item_</definition>
+        <argsstring></argsstring>
+        <name>armor_stand_item_</name>
+        <qualifiedname>endstone::PlayerArmorStandManipulateEvent::armor_stand_item_</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/event/player/player_armor_stand_manipulate_event.h" line="61" column="15" bodyfile="include/endstone/event/player/player_armor_stand_manipulate_event.h" bodystart="61" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classendstone_1_1PlayerArmorStandManipulateEvent_1a49fda130fe9048527628536e2e10e96b" prot="private" static="no" mutable="no">
+        <type><ref refid="classendstone_1_1ItemStack" kindref="compound">ItemStack</ref></type>
+        <definition>ItemStack endstone::PlayerArmorStandManipulateEvent::player_item_</definition>
+        <argsstring></argsstring>
+        <name>player_item_</name>
+        <qualifiedname>endstone::PlayerArmorStandManipulateEvent::player_item_</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/event/player/player_armor_stand_manipulate_event.h" line="62" column="15" bodyfile="include/endstone/event/player/player_armor_stand_manipulate_event.h" bodystart="62" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classendstone_1_1PlayerArmorStandManipulateEvent_1ae29fc2fdd68370b015caad98978c5b21" prot="private" static="no" mutable="no">
+        <type><ref refid="namespaceendstone_1afad3b218f2082aec71169d21f2493a39" kindref="member">EquipmentSlot</ref></type>
+        <definition>EquipmentSlot endstone::PlayerArmorStandManipulateEvent::slot_</definition>
+        <argsstring></argsstring>
+        <name>slot_</name>
+        <qualifiedname>endstone::PlayerArmorStandManipulateEvent::slot_</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/event/player/player_armor_stand_manipulate_event.h" line="63" column="19" bodyfile="include/endstone/event/player/player_armor_stand_manipulate_event.h" bodystart="63" bodyend="-1"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="public-func">
+      <memberdef kind="function" id="classendstone_1_1PlayerArmorStandManipulateEvent_1aa2366c30918ba5e1d737857dd10ea902" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>endstone::PlayerArmorStandManipulateEvent::ENDSTONE_EVENT</definition>
+        <argsstring>(PlayerArmorStandManipulateEvent)</argsstring>
+        <name>ENDSTONE_EVENT</name>
+        <qualifiedname>endstone::PlayerArmorStandManipulateEvent::ENDSTONE_EVENT</qualifiedname>
+        <param>
+          <type><ref refid="classendstone_1_1PlayerArmorStandManipulateEvent" kindref="compound">PlayerArmorStandManipulateEvent</ref></type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/event/player/player_armor_stand_manipulate_event.h" line="30" column="5"/>
+      </memberdef>
+      <memberdef kind="function" id="classendstone_1_1PlayerArmorStandManipulateEvent_1a1cc5838730b3233224e37db2e552e839" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type></type>
+        <definition>endstone::PlayerArmorStandManipulateEvent::PlayerArmorStandManipulateEvent</definition>
+        <argsstring>(const NotNull&lt; Player &gt; &amp;player, const NotNull&lt; Actor &gt; &amp;right_clicked, ItemStack armor_stand_item, ItemStack player_item, EquipmentSlot slot)</argsstring>
+        <name>PlayerArmorStandManipulateEvent</name>
+        <qualifiedname>endstone::PlayerArmorStandManipulateEvent::PlayerArmorStandManipulateEvent</qualifiedname>
+        <param>
+          <type><ref refid="classendstone_1_1Identifier" kindref="compound">const</ref> <ref refid="classendstone_1_1NotNull" kindref="compound">NotNull</ref>&lt; <ref refid="classendstone_1_1Player" kindref="compound">Player</ref> &gt; &amp;</type>
+          <declname>player</declname>
+        </param>
+        <param>
+          <type><ref refid="classendstone_1_1Identifier" kindref="compound">const</ref> <ref refid="classendstone_1_1NotNull" kindref="compound">NotNull</ref>&lt; <ref refid="classendstone_1_1Actor" kindref="compound">Actor</ref> &gt; &amp;</type>
+          <declname>right_clicked</declname>
+        </param>
+        <param>
+          <type><ref refid="classendstone_1_1ItemStack" kindref="compound">ItemStack</ref></type>
+          <declname>armor_stand_item</declname>
+        </param>
+        <param>
+          <type><ref refid="classendstone_1_1ItemStack" kindref="compound">ItemStack</ref></type>
+          <declname>player_item</declname>
+        </param>
+        <param>
+          <type><ref refid="namespaceendstone_1afad3b218f2082aec71169d21f2493a39" kindref="member">EquipmentSlot</ref></type>
+          <declname>slot</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/event/player/player_armor_stand_manipulate_event.h" line="32" column="5" bodyfile="include/endstone/event/player/player_armor_stand_manipulate_event.h" bodystart="32" bodyend="37"/>
+      </memberdef>
+      <memberdef kind="function" id="classendstone_1_1PlayerArmorStandManipulateEvent_1aa18bd5c12ecbdc117d9ca1df9be7dd38" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type><ref refid="classendstone_1_1Identifier" kindref="compound">const</ref> <ref refid="classendstone_1_1ItemStack" kindref="compound">ItemStack</ref> &amp;</type>
+        <definition>const ItemStack &amp; endstone::PlayerArmorStandManipulateEvent::getArmorStandItem</definition>
+        <argsstring>() const</argsstring>
+        <name>getArmorStandItem</name>
+        <qualifiedname>endstone::PlayerArmorStandManipulateEvent::getArmorStandItem</qualifiedname>
+        <briefdescription>
+<para>Gets the item held by the armor stand in the affected slot. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="return"><para>the item held by the armor stand </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/event/player/player_armor_stand_manipulate_event.h" line="44" column="22" bodyfile="include/endstone/event/player/player_armor_stand_manipulate_event.h" bodystart="44" bodyend="44"/>
+      </memberdef>
+      <memberdef kind="function" id="classendstone_1_1PlayerArmorStandManipulateEvent_1a9f78560c3440d7d87051453d7e65ecca" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type><ref refid="classendstone_1_1Identifier" kindref="compound">const</ref> <ref refid="classendstone_1_1ItemStack" kindref="compound">ItemStack</ref> &amp;</type>
+        <definition>const ItemStack &amp; endstone::PlayerArmorStandManipulateEvent::getPlayerItem</definition>
+        <argsstring>() const</argsstring>
+        <name>getPlayerItem</name>
+        <qualifiedname>endstone::PlayerArmorStandManipulateEvent::getPlayerItem</qualifiedname>
+        <briefdescription>
+<para>Gets the item held by the player during the interaction. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="return"><para>the item held by the player </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/event/player/player_armor_stand_manipulate_event.h" line="51" column="22" bodyfile="include/endstone/event/player/player_armor_stand_manipulate_event.h" bodystart="51" bodyend="51"/>
+      </memberdef>
+      <memberdef kind="function" id="classendstone_1_1PlayerArmorStandManipulateEvent_1a87db1321c4e63a69eb52c22d6e27edf7" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type><ref refid="namespaceendstone_1afad3b218f2082aec71169d21f2493a39" kindref="member">EquipmentSlot</ref></type>
+        <definition>EquipmentSlot endstone::PlayerArmorStandManipulateEvent::getSlot</definition>
+        <argsstring>() const</argsstring>
+        <name>getSlot</name>
+        <qualifiedname>endstone::PlayerArmorStandManipulateEvent::getSlot</qualifiedname>
+        <briefdescription>
+<para>Gets the armor stand equipment slot affected by the interaction. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="return"><para>the affected armor stand slot </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/event/player/player_armor_stand_manipulate_event.h" line="58" column="20" bodyfile="include/endstone/event/player/player_armor_stand_manipulate_event.h" bodystart="58" bodyend="58"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+<para>Called when a player interacts with an armor stand and will either swap, retrieve or place an item. </para>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="3">
+        <label>endstone::Cancellable&lt; PlayerEvent &gt;</label>
+        <link refid="classendstone_1_1Cancellable"/>
+        <childnode refid="4" relation="public-inheritance">
+        </childnode>
+        <childnode refid="6" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="5">
+        <label>endstone::Event</label>
+        <link refid="classendstone_1_1Event"/>
+      </node>
+      <node id="6">
+        <label>endstone::ICancellable</label>
+        <link refid="classendstone_1_1ICancellable"/>
+      </node>
+      <node id="1">
+        <label>endstone::PlayerArmorStandManipulateEvent</label>
+        <link refid="classendstone_1_1PlayerArmorStandManipulateEvent"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="4">
+        <label>endstone::PlayerEvent</label>
+        <link refid="classendstone_1_1PlayerEvent"/>
+        <childnode refid="5" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>endstone::PlayerInteractActorEvent</label>
+        <link refid="classendstone_1_1PlayerInteractActorEvent"/>
+        <childnode refid="3" relation="public-inheritance">
+        </childnode>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="3">
+        <label>endstone::Cancellable&lt; PlayerEvent &gt;</label>
+        <link refid="classendstone_1_1Cancellable"/>
+        <childnode refid="4" relation="public-inheritance">
+        </childnode>
+        <childnode refid="7" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="6">
+        <label>endstone::NotNull&lt; endstone::Player &gt;</label>
+        <link refid="classendstone_1_1NotNull"/>
+      </node>
+      <node id="5">
+        <label>endstone::Event</label>
+        <link refid="classendstone_1_1Event"/>
+      </node>
+      <node id="7">
+        <label>endstone::ICancellable</label>
+        <link refid="classendstone_1_1ICancellable"/>
+      </node>
+      <node id="1">
+        <label>endstone::PlayerArmorStandManipulateEvent</label>
+        <link refid="classendstone_1_1PlayerArmorStandManipulateEvent"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="4">
+        <label>endstone::PlayerEvent</label>
+        <link refid="classendstone_1_1PlayerEvent"/>
+        <childnode refid="5" relation="public-inheritance">
+        </childnode>
+        <childnode refid="6" relation="usage">
+          <edgelabel>player_</edgelabel>
+        </childnode>
+      </node>
+      <node id="2">
+        <label>endstone::PlayerInteractActorEvent</label>
+        <link refid="classendstone_1_1PlayerInteractActorEvent"/>
+        <childnode refid="3" relation="public-inheritance">
+        </childnode>
+      </node>
+    </collaborationgraph>
+    <location file="include/endstone/event/player/player_armor_stand_manipulate_event.h" line="28" column="1" bodyfile="include/endstone/event/player/player_armor_stand_manipulate_event.h" bodystart="28" bodyend="64"/>
+    <listofallmembers>
+      <member refid="classendstone_1_1PlayerArmorStandManipulateEvent_1a82ce825e2d0449280c2e7d93d281b263" prot="private" virt="non-virtual"><scope>endstone::PlayerArmorStandManipulateEvent</scope><name>armor_stand_item_</name></member>
+      <member refid="classendstone_1_1Cancellable_1a3512b47db69c6001f5c0450051308327" prot="public" virt="virtual"><scope>endstone::PlayerArmorStandManipulateEvent</scope><name>cancel</name></member>
+      <member refid="classendstone_1_1PlayerArmorStandManipulateEvent_1aa2366c30918ba5e1d737857dd10ea902" prot="public" virt="non-virtual"><scope>endstone::PlayerArmorStandManipulateEvent</scope><name>ENDSTONE_EVENT</name></member>
+      <member refid="classendstone_1_1PlayerInteractActorEvent_1a8ad3941658e76edfaecd94a9b7598404" prot="public" virt="non-virtual" ambiguityscope="endstone::PlayerInteractActorEvent::"><scope>endstone::PlayerArmorStandManipulateEvent</scope><name>ENDSTONE_EVENT</name></member>
+      <member refid="classendstone_1_1Event_1a28cca8d74920493b449d035540acf023" prot="public" virt="non-virtual"><scope>endstone::PlayerArmorStandManipulateEvent</scope><name>Event</name></member>
+      <member refid="classendstone_1_1Event_1a7199136ebb40e1441bc61e29f83c3cad" prot="public" virt="non-virtual"><scope>endstone::PlayerArmorStandManipulateEvent</scope><name>Event</name></member>
+      <member refid="classendstone_1_1Event_1ad20bafd16e0671578e37390b95e5104c" prot="public" virt="non-virtual"><scope>endstone::PlayerArmorStandManipulateEvent</scope><name>Event</name></member>
+      <member refid="classendstone_1_1PlayerInteractActorEvent_1a7600461d3df7a8d0e29bc1ddbdc0c0c9" prot="public" virt="non-virtual"><scope>endstone::PlayerArmorStandManipulateEvent</scope><name>getActor</name></member>
+      <member refid="classendstone_1_1PlayerArmorStandManipulateEvent_1aa18bd5c12ecbdc117d9ca1df9be7dd38" prot="public" virt="non-virtual"><scope>endstone::PlayerArmorStandManipulateEvent</scope><name>getArmorStandItem</name></member>
+      <member refid="classendstone_1_1Event_1a826fe74f9c4195a36a364b9aeeb321bb" prot="public" virt="pure-virtual"><scope>endstone::PlayerArmorStandManipulateEvent</scope><name>getEventName</name></member>
+      <member refid="classendstone_1_1PlayerEvent_1abad8f8bca3e2be851c4b37075adf2cbc" prot="public" virt="non-virtual"><scope>endstone::PlayerArmorStandManipulateEvent</scope><name>getPlayer</name></member>
+      <member refid="classendstone_1_1PlayerArmorStandManipulateEvent_1a9f78560c3440d7d87051453d7e65ecca" prot="public" virt="non-virtual"><scope>endstone::PlayerArmorStandManipulateEvent</scope><name>getPlayerItem</name></member>
+      <member refid="classendstone_1_1PlayerArmorStandManipulateEvent_1a87db1321c4e63a69eb52c22d6e27edf7" prot="public" virt="non-virtual"><scope>endstone::PlayerArmorStandManipulateEvent</scope><name>getSlot</name></member>
+      <member refid="classendstone_1_1Event_1ae89b54f63dc32b0c8797a59db69b6931" prot="public" virt="non-virtual"><scope>endstone::PlayerArmorStandManipulateEvent</scope><name>isAsynchronous</name></member>
+      <member refid="classendstone_1_1Cancellable_1a268b73cc5bda0fa5923336d031814faa" prot="public" virt="virtual"><scope>endstone::PlayerArmorStandManipulateEvent</scope><name>isCancelled</name></member>
+      <member refid="classendstone_1_1Event_1a44a4ff424a8b690c01a2afe10ae68d8f" prot="public" virt="non-virtual"><scope>endstone::PlayerArmorStandManipulateEvent</scope><name>operator=</name></member>
+      <member refid="classendstone_1_1Event_1a1d7fc5400782d20be99a3636aa7f53b9" prot="public" virt="non-virtual"><scope>endstone::PlayerArmorStandManipulateEvent</scope><name>operator=</name></member>
+      <member refid="classendstone_1_1PlayerEvent_1ae0f8240e8c7c3a66281295c43b1d522a" prot="protected" virt="non-virtual"><scope>endstone::PlayerArmorStandManipulateEvent</scope><name>player_</name></member>
+      <member refid="classendstone_1_1PlayerArmorStandManipulateEvent_1a49fda130fe9048527628536e2e10e96b" prot="private" virt="non-virtual"><scope>endstone::PlayerArmorStandManipulateEvent</scope><name>player_item_</name></member>
+      <member refid="classendstone_1_1PlayerArmorStandManipulateEvent_1a1cc5838730b3233224e37db2e552e839" prot="public" virt="non-virtual"><scope>endstone::PlayerArmorStandManipulateEvent</scope><name>PlayerArmorStandManipulateEvent</name></member>
+      <member refid="classendstone_1_1PlayerEvent_1afee42449de6752241c5472a38f7d94a9" prot="public" virt="non-virtual"><scope>endstone::PlayerArmorStandManipulateEvent</scope><name>PlayerEvent</name></member>
+      <member refid="classendstone_1_1PlayerInteractActorEvent_1a51123198e937beecc86c0e1b1d5e3bf1" prot="public" virt="non-virtual"><scope>endstone::PlayerArmorStandManipulateEvent</scope><name>PlayerInteractActorEvent</name></member>
+      <member refid="classendstone_1_1Cancellable_1aa12df44bcb66924d06a689d0dd07865e" prot="public" virt="virtual"><scope>endstone::PlayerArmorStandManipulateEvent</scope><name>setCancelled</name></member>
+      <member refid="classendstone_1_1PlayerArmorStandManipulateEvent_1ae29fc2fdd68370b015caad98978c5b21" prot="private" virt="non-virtual"><scope>endstone::PlayerArmorStandManipulateEvent</scope><name>slot_</name></member>
+      <member refid="classendstone_1_1Event_1a6aeaa8096baba90f8ace94106e0e05f3" prot="public" virt="virtual"><scope>endstone::PlayerArmorStandManipulateEvent</scope><name>~Event</name></member>
+      <member refid="classendstone_1_1ICancellable_1ab6d311fcaa18971f69a1b23f5a856301" prot="public" virt="virtual"><scope>endstone::PlayerArmorStandManipulateEvent</scope><name>~ICancellable</name></member>
+      <member refid="classendstone_1_1PlayerEvent_1ab31b937251b8ccc1c72c275d1c7a522b" prot="public" virt="non-virtual"><scope>endstone::PlayerArmorStandManipulateEvent</scope><name>~PlayerEvent</name></member>
+      <member refid="classendstone_1_1PlayerInteractActorEvent_1a3223c9370df9d9354fd174dd1918cd07" prot="public" virt="non-virtual"><scope>endstone::PlayerArmorStandManipulateEvent</scope><name>~PlayerInteractActorEvent</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>
