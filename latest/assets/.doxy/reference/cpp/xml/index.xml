@@ -1756,6 +1756,7 @@
   </compound>
   <compound refid="classendstone_1_1Mob" kind="class"><name>endstone::Mob</name>
     <member refid="classendstone_1_1Mob_1a7903900a62a82e920230c7fc75ff5ac6" kind="function"><name>isGliding</name></member>
+    <member refid="classendstone_1_1Mob_1aee57346e9cf1c008fb704e8a701112b6" kind="function"><name>isSwimming</name></member>
     <member refid="classendstone_1_1Mob_1a082c0e3f266fc07386b6892b8af08b5f" kind="function"><name>getHealth</name></member>
     <member refid="classendstone_1_1Mob_1addd7c205b763c7a9a6b1bf8ec1c811fd" kind="function"><name>setHealth</name></member>
     <member refid="classendstone_1_1Mob_1a4efbe682a6adc265c113e1ef77b752fb" kind="function"><name>getMaxHealth</name></member>

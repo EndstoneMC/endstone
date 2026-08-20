@@ -774,7 +774,7 @@
 * **isValid** ([**endstone::Actor**](classendstone_1_1Actor.md), [**endstone::Dimension**](classendstone_1_1Dimension.md))
 * **item\_** ([**endstone::ActorPickupItemEvent**](classendstone_1_1ActorPickupItemEvent.md), [**endstone::PlayerArmSwingEvent**](classendstone_1_1PlayerArmSwingEvent.md), [**endstone::PlayerInteractEvent**](classendstone_1_1PlayerInteractEvent.md), [**endstone::PlayerItemConsumeEvent**](classendstone_1_1PlayerItemConsumeEvent.md), [**endstone::PlayerPickupItemEvent**](classendstone_1_1PlayerPickupItemEvent.md), [**endstone::PlayerRiptideEvent**](classendstone_1_1PlayerRiptideEvent.md))
 * **isGliding** ([**endstone::ActorToggleGlideEvent**](classendstone_1_1ActorToggleGlideEvent.md), [**endstone::Mob**](classendstone_1_1Mob.md))
-* **isSwimming** ([**endstone::ActorToggleSwimEvent**](classendstone_1_1ActorToggleSwimEvent.md))
+* **isSwimming** ([**endstone::ActorToggleSwimEvent**](classendstone_1_1ActorToggleSwimEvent.md), [**endstone::Mob**](classendstone_1_1Mob.md))
 * **IceBomb** ([**endstone::ActorType**](classendstone_1_1ActorType.md))
 * **IronGolem** ([**endstone::ActorType**](classendstone_1_1ActorType.md))
 * **Item** ([**endstone::ActorType**](classendstone_1_1ActorType.md))

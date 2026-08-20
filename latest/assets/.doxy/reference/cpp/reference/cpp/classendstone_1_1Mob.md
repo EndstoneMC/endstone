@@ -144,6 +144,7 @@ Inherited by the following classes: [endstone::Player](classendstone_1_1Player.m
 | virtual [**bool**](classendstone_1_1Identifier.md) | [**hasAttribute**](#function-hasattribute) ([**AttributeId**](classendstone_1_1Identifier.md) id) const = 0<br>_Checks whether the given attribute is present on the object._  |
 | virtual [**bool**](classendstone_1_1Identifier.md) | [**hasEffect**](#function-haseffect) ([**EffectId**](classendstone_1_1Identifier.md) type) const = 0<br>_Returns whether the entity already has an existing effect of the given type applied to it._  |
 | virtual [**bool**](classendstone_1_1Identifier.md) | [**isGliding**](#function-isgliding) () const = 0<br>_Checks to see if an actor is gliding, such as using an Elytra._  |
+| virtual [**bool**](classendstone_1_1Identifier.md) | [**isSwimming**](#function-isswimming) () const = 0<br>_Checks to see if an actor is swimming._  |
 | virtual [**void**](classendstone_1_1Identifier.md) | [**removeEffect**](#function-removeeffect) ([**EffectId**](classendstone_1_1Identifier.md) type) = 0<br>_Removes any effects of the given type that are present on this entity._  |
 | virtual [**void**](classendstone_1_1Identifier.md) | [**setHealth**](#function-sethealth) ([**int**](classendstone_1_1Identifier.md) health) const = 0<br>_Sets the entity's health from 0 to its possible value, where 0 is dead._  |
 | virtual [**void**](classendstone_1_1Identifier.md) | [**setMaxHealth**](#function-setmaxhealth) ([**int**](classendstone_1_1Identifier.md) health) const = 0<br>_Sets the maximum health this entity can have._  |
@@ -637,6 +638,31 @@ virtual bool endstone::Mob::isGliding () const = 0
 **Returns:**
 
 True if this actor is gliding. 
+
+
+
+
+
+        
+
+<hr>
+
+
+
+### function isSwimming 
+
+_Checks to see if an actor is swimming._ 
+```C++
+virtual bool endstone::Mob::isSwimming () const = 0
+```
+
+
+
+
+
+**Returns:**
+
+True if this actor is swimming. 
 
 
 
