@@ -176,6 +176,7 @@ Inherits the following classes: [endstone::Mob](classendstone_1_1Mob.md)
 | virtual std::string | [**getXuid**](#function-getxuid) () const = 0<br>_Returns the Xbox User ID (XUID) of this player._  |
 | virtual [**void**](classendstone_1_1Identifier.md) | [**giveExp**](#function-giveexp) ([**int**](classendstone_1_1Identifier.md) amount) = 0<br>_Gives the player the amount of experience specified._  |
 | virtual [**void**](classendstone_1_1Identifier.md) | [**giveExpLevels**](#function-giveexplevels) ([**int**](classendstone_1_1Identifier.md) amount) = 0<br>_Gives the player the amount of experience levels specified._  |
+| virtual [**bool**](classendstone_1_1Identifier.md) | [**isCrawling**](#function-iscrawling) () const = 0<br>_Gets whether the player is crawling or not._  |
 | virtual [**bool**](classendstone_1_1Identifier.md) | [**isFlying**](#function-isflying) () const = 0<br>_Checks to see if this player is currently flying or not._  |
 | virtual [**bool**](classendstone_1_1Identifier.md) | [**isOp**](#function-isop) () const = 0<br>_Checks if this player is a server operator._  |
 | virtual [**bool**](classendstone_1_1Identifier.md) | [**isSneaking**](#function-issneaking) () const = 0<br>_Returns if the player is in sneak mode._  |
@@ -1049,6 +1050,34 @@ virtual void endstone::Player::giveExpLevels (
 
 
 * `amount` amount of experience levels to give or take 
+
+
+
+
+        
+
+<hr>
+
+
+
+### function isCrawling 
+
+_Gets whether the player is crawling or not._ 
+```C++
+virtual bool endstone::Player::isCrawling () const = 0
+```
+
+
+
+Bukkit has no equivalent, as crawling is a pose there rather than a state the server tracks.
+
+
+
+
+**Returns:**
+
+`true` if the player is crawling. 
+
 
 
 

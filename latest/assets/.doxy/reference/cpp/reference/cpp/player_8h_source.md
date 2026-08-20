@@ -78,6 +78,8 @@ public:
 
     virtual void setSprinting(bool sprinting) = 0;
 
+    [[nodiscard]] virtual bool isCrawling() const = 0;
+
     // TODO: playNote
 
     virtual void playSound(Location location, std::string sound, float volume, float pitch) = 0;
