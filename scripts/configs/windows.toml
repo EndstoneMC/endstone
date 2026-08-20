@@ -450,6 +450,27 @@ extra = 0
 pattern = "56 57 53 48 83 EC ? 41 8B 40"
 
 [[signatures]]
+name = "?getInteraction@ArmorStand@@UEAA?AVInteractionResult@@AEAVPlayer@@AEAVActorInteraction@@AEBVVec3@@@Z"
+relative = false
+extra = 0
+# 1. the name is real, so `dump_symbols.py --pdb` resolves it outright; the steps below are the
+#    no-PDB fallback
+# 2. find bytes "61 63 74 69 6F 6E 2E 69 6E 74 65 72 61 63 74 2E 61 72 6D 6F 72 73 74 61 6E 64 2E 65 71 75 69 70 00"
+#    = "action.interact.armorstand.equip\0" in .rdata (unique); it has exactly one rip-relative xref in
+#    .text - the RUNTIME_FUNCTION in .pdata whose range covers that xref gives the function start
+# 3. cross-check with the sibling string "action.interact.armorstand.pose\0": its single xref lands in the
+#    same function (the sneak/pose branch), and no other function references either string
+# 4. confirm identity from the body: it calls Actor::getInteraction first, tests `byte [rsi] & 1` and
+#    takes the early-out on success, and later builds the two interact-text std::strings around
+#    ActorInteraction::setInteractText
+# 5. independent confirmation: the function's address appears exactly once in .rdata - that slot is
+#    ArmorStand's vftable entry, and the vftable base is the only address in that run referenced by a
+#    `lea` in .text; the slot index matches Actor::getInteraction's
+# 6. walk back to the prologue (`push rbp/r15/r14/r13/r12/rsi/rdi/rbx`, `sub rsp, 0x1A8`) and cut there
+# uniqueness: matches exactly once in 1.26.44.3, and also exactly once in 1.26.32.2, 1.26.33 and 1.26.40
+pattern = "55 41 57 41 56 41 55 41 54 56 57 53 48 81 EC A8 01 00 00 48 8D AC 24 80 00 00 00 48 C7 85 20 01 00 00 FE FF FF FF 4C 89 CF 4D 89 C6 48 89 D6 48 89 CB"
+
+[[signatures]]
 name = "?readUserData@Item@@UEBAXAEAVItemStackBase@@AEAVIDataInput@@AEAVReadOnlyBinaryStream@@@Z"
 relative = false
 extra = 0

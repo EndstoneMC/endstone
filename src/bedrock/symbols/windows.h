@@ -11,7 +11,7 @@
 
 namespace endstone::runtime {
 
-static constexpr std::array<std::pair<std::string_view, std::size_t>, 67> symbols = {{
+static constexpr std::array<std::pair<std::string_view, std::size_t>, 68> symbols = {{
     {"BlockState::StateListNode::mHead", 211294960},
     {"Enchant::mEnchants", 211141912},
     {"MobEffect::mMobEffects", 211424880},
@@ -21,6 +21,8 @@ static constexpr std::array<std::pair<std::string_view, std::size_t>, 67> symbol
     {"?teleportTo@Actor@@UEAAXAEBVVec3@@_NHH1@Z", 14658832},
     // ActorFactory
     {"?createSpawnedActor@ActorFactory@@QEAA?AV?$OwnerPtr@VEntityContext@@@@AEBUActorDefinitionIdentifier@@PEAVActor@@AEBVVec3@@AEBVVec2@@@Z", 26276384},
+    // ArmorStand
+    {"?getInteraction@ArmorStand@@UEAA?AVInteractionResult@@AEAVPlayer@@AEAVActorInteraction@@AEBVVec3@@@Z", 37474192},
     // BatchedNetworkPeer
     {"?_receivePacket@BatchedNetworkPeer@@MEAA?AW4DataStatus@NetworkPeer@@AEAV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@AEBV?$shared_ptr@V?$time_point@Usteady_clock@chrono@std@@V?$duration@_JU?$ratio@$00$0DLJKMKAA@@std@@@23@@chrono@std@@@5@@Z", 16659136},
     {"?sendPacket@BatchedNetworkPeer@@UEAAXAEBV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@W4Reliability@NetworkPeer@@W4Compressibility@@@Z", 16658656},

@@ -11,7 +11,7 @@
 
 namespace endstone::runtime {
 
-static constexpr std::array<std::pair<std::string_view, std::size_t>, 67> symbols = {{
+static constexpr std::array<std::pair<std::string_view, std::size_t>, 68> symbols = {{
     {"BlockState::StateListNode::mHead", 245468000},
     {"Enchant::mEnchants", 245294016},
     {"MobEffect::mMobEffects", 245274360},
@@ -22,6 +22,8 @@ static constexpr std::array<std::pair<std::string_view, std::size_t>, 67> symbol
     {"_ZN5Actor9addEffectERK17MobEffectInstance", 180384480},
     // ActorFactory
     {"_ZN12ActorFactory18createSpawnedActorERK25ActorDefinitionIdentifierP5ActorRK4Vec3RK4Vec2", 178030944},
+    // ArmorStand
+    {"_ZN10ArmorStand14getInteractionER6PlayerR16ActorInteractionRK4Vec3", 177685440},
     // BatchedNetworkPeer
     {"_ZN18BatchedNetworkPeer10sendPacketERKNSt3__112basic_stringIcNS0_11char_traitsIcEENS0_9allocatorIcEEEEN11NetworkPeer11ReliabilityE15Compressibility", 115687712},
     {"_ZN18BatchedNetworkPeer14_receivePacketERNSt3__112basic_stringIcNS0_11char_traitsIcEENS0_9allocatorIcEEEERKNS0_10shared_ptrINS0_6chrono10time_pointINS9_12steady_clockENS9_8durationIxNS0_5ratioILl1ELl1000000000EEEEEEEEE", 115688128},

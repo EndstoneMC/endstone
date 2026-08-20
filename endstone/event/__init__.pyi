@@ -767,6 +767,28 @@ class PlayerInteractActorEvent(PlayerEvent, Cancellable):
         The actor that was right-clicked by the player.
         """
 
+class PlayerArmorStandManipulateEvent(PlayerInteractActorEvent):
+    """
+    Called when a player interacts with an armor stand and will either swap, retrieve or place an item.
+    """
+    @property
+    def armor_stand_item(self) -> ItemStack:
+        """
+        The item held by the armor stand in the affected slot.
+        """
+
+    @property
+    def player_item(self) -> ItemStack:
+        """
+        The item held by the player during the interaction.
+        """
+
+    @property
+    def slot(self) -> EquipmentSlot:
+        """
+        The armor stand equipment slot affected by the interaction.
+        """
+
 class PlayerItemConsumeEvent(PlayerEvent, Cancellable):
     """
     Called when a player is finishing consuming an item (food, potion, milk bucket).
