@@ -14,25 +14,11 @@
 
 #pragma once
 
-#include <cstdint>
+#include "bedrock/bedrock.h"
+#include "bedrock/forward.h"
+#include "bedrock/world/actor/mob.h"
 
-#include "bedrock/core/math/vec3.h"
-#include "bedrock/world/actor/actor_runtime_id.h"
-#include "bedrock/world/inventory/transaction/complex_inventory_transaction.h"
-#include "bedrock/world/item/network_item_stack_descriptor.h"
-
-class ItemUseOnActorInventoryTransaction : public ComplexInventoryTransaction {
+class ArmorStand : public Mob {
 public:
-    enum class ActionType : int {
-        Interact = 0,
-        Attack = 1,
-        ItemInteract = 2,
-    };
-
-    ActorRuntimeID runtime_id_;
-    ActionType action_type_;
-    std::int32_t slot_;
-    NetworkItemStackDescriptor item_;
-    Vec3 from_pos_;
-    Vec3 hit_pos_;
+    ENDSTONE_HOOK InteractionResult getInteraction(Player &, ActorInteraction &, Vec3 const &) override;
 };

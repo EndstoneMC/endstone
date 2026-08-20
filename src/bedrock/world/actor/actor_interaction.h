@@ -14,25 +14,30 @@
 
 #pragma once
 
-#include <cstdint>
+#include <memory>
+#include <string>
 
-#include "bedrock/core/math/vec3.h"
-#include "bedrock/world/actor/actor_runtime_id.h"
-#include "bedrock/world/inventory/transaction/complex_inventory_transaction.h"
-#include "bedrock/world/item/network_item_stack_descriptor.h"
+#include "bedrock/bedrock.h"
+#include "bedrock/platform/brstd/move_only_function.h"
 
-class ItemUseOnActorInventoryTransaction : public ComplexInventoryTransaction {
+class ActorInteraction {
 public:
-    enum class ActionType : int {
-        Interact = 0,
-        Attack = 1,
-        ItemInteract = 2,
-    };
+    using OnInteraction = brstd::move_only_function<void()>;
 
-    ActorRuntimeID runtime_id_;
-    ActionType action_type_;
-    std::int32_t slot_;
-    NetworkItemStackDescriptor item_;
-    Vec3 from_pos_;
-    Vec3 hit_pos_;
+    [[nodiscard]] bool shouldCapture() const { return !no_capture_; }
+
+    [[nodiscard]] const std::string &getInteractText() const { return interact_text_; }
+
+    void suppressInteraction()  // Endstone
+    {
+        std::destroy_at(&interaction_);
+        std::construct_at(&interaction_, [] {});
+    }
+
+private:
+    std::string interact_text_;
+    OnInteraction interaction_;
+    bool no_capture_;
 };
+
+BEDROCK_STATIC_ASSERT_SIZE(ActorInteraction, 112, 112);

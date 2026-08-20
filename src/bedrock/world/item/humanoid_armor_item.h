@@ -14,13 +14,10 @@
 
 #pragma once
 
-class Actor;
-class ItemStack;
-class Player;
+#include "bedrock/world/actor/armor_slot.h"
+#include "bedrock/world/item/item.h"
 
-namespace endstone::runtime {
-
-void prepareArmorStandInteraction(const ::Player *player, const ::Actor *target, const ::ItemStack &item);
-[[nodiscard]] bool fireArmorStandManipulateEvent();
-
-}  // namespace endstone::runtime
+class HumanoidArmorItem : public Item {
+public:
+    ArmorSlot slot_;
+};
