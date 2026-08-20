@@ -6,9 +6,9 @@
     <derivedcompoundref refid="classendstone_1_1BlockFormEvent" prot="public" virt="non-virtual">endstone::BlockFormEvent</derivedcompoundref>
     <includes refid="block__grow__event_8h" local="no">endstone/event/block/block_grow_event.h</includes>
     <sectiondef kind="private-attrib">
-      <memberdef kind="variable" id="classendstone_1_1BlockGrowEvent_1a27f103329af6eaa9c1d7d08778e1cc6c" prot="private" static="no" mutable="no">
-        <type>std::unique_ptr&lt; <ref refid="classendstone_1_1BlockState" kindref="compound">BlockState</ref> &gt;</type>
-        <definition>std::unique_ptr&lt;BlockState&gt; endstone::BlockGrowEvent::new_state_</definition>
+      <memberdef kind="variable" id="classendstone_1_1BlockGrowEvent_1ae30adf5d3b1e72d0355feef1ce9c5644" prot="private" static="no" mutable="no">
+        <type><ref refid="classendstone_1_1NotNull" kindref="compound">NotNull</ref>&lt; <ref refid="classendstone_1_1BlockState" kindref="compound">BlockState</ref> &gt;</type>
+        <definition>NotNull&lt;BlockState&gt; endstone::BlockGrowEvent::new_state_</definition>
         <argsstring></argsstring>
         <name>new_state_</name>
         <qualifiedname>endstone::BlockGrowEvent::new_state_</qualifiedname>
@@ -18,7 +18,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/event/block/block_grow_event.h" line="45" column="21" bodyfile="include/endstone/event/block/block_grow_event.h" bodystart="45" bodyend="-1"/>
+        <location file="include/endstone/event/block/block_grow_event.h" line="45" column="13" bodyfile="include/endstone/event/block/block_grow_event.h" bodystart="45" bodyend="-1"/>
       </memberdef>
     </sectiondef>
     <sectiondef kind="public-func">
@@ -39,10 +39,10 @@
         </inbodydescription>
         <location file="include/endstone/event/block/block_grow_event.h" line="31" column="5"/>
       </memberdef>
-      <memberdef kind="function" id="classendstone_1_1BlockGrowEvent_1ab1cb5e6658e9006a05108e0ce00e7995" prot="public" static="no" const="no" explicit="yes" inline="yes" virt="non-virtual">
+      <memberdef kind="function" id="classendstone_1_1BlockGrowEvent_1aa73730614717af028e17cc7189a0a7e2" prot="public" static="no" const="no" explicit="yes" inline="yes" virt="non-virtual">
         <type></type>
         <definition>endstone::BlockGrowEvent::BlockGrowEvent</definition>
-        <argsstring>(std::unique_ptr&lt; Block &gt; block, std::unique_ptr&lt; BlockState &gt; new_state)</argsstring>
+        <argsstring>(std::unique_ptr&lt; Block &gt; block, const NotNull&lt; BlockState &gt; &amp;new_state)</argsstring>
         <name>BlockGrowEvent</name>
         <qualifiedname>endstone::BlockGrowEvent::BlockGrowEvent</qualifiedname>
         <param>
@@ -50,7 +50,7 @@
           <declname>block</declname>
         </param>
         <param>
-          <type>std::unique_ptr&lt; <ref refid="classendstone_1_1BlockState" kindref="compound">BlockState</ref> &gt;</type>
+          <type><ref refid="classendstone_1_1Identifier" kindref="compound">const</ref> <ref refid="classendstone_1_1NotNull" kindref="compound">NotNull</ref>&lt; <ref refid="classendstone_1_1BlockState" kindref="compound">BlockState</ref> &gt; &amp;</type>
           <declname>new_state</declname>
         </param>
         <briefdescription>
@@ -61,9 +61,9 @@
         </inbodydescription>
         <location file="include/endstone/event/block/block_grow_event.h" line="32" column="14" bodyfile="include/endstone/event/block/block_grow_event.h" bodystart="32" bodyend="35"/>
       </memberdef>
-      <memberdef kind="function" id="classendstone_1_1BlockGrowEvent_1a41aec264692c13165c1935cbf4a6cf3b" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
-        <type><ref refid="classendstone_1_1BlockState" kindref="compound">BlockState</ref> &amp;</type>
-        <definition>BlockState &amp; endstone::BlockGrowEvent::getNewState</definition>
+      <memberdef kind="function" id="classendstone_1_1BlockGrowEvent_1a9a01cbf262491f2c29aaca9dd3cde10d" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type><ref refid="classendstone_1_1Identifier" kindref="compound">const</ref> <ref refid="classendstone_1_1NotNull" kindref="compound">NotNull</ref>&lt; <ref refid="classendstone_1_1BlockState" kindref="compound">BlockState</ref> &gt; &amp;</type>
+        <definition>const NotNull&lt; BlockState &gt; &amp; endstone::BlockGrowEvent::getNewState</definition>
         <argsstring>() const</argsstring>
         <name>getNewState</name>
         <qualifiedname>endstone::BlockGrowEvent::getNewState</qualifiedname>
@@ -77,7 +77,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/event/block/block_grow_event.h" line="42" column="17" bodyfile="include/endstone/event/block/block_grow_event.h" bodystart="42" bodyend="42"/>
+        <location file="include/endstone/event/block/block_grow_event.h" line="42" column="20" bodyfile="include/endstone/event/block/block_grow_event.h" bodystart="42" bodyend="42"/>
       </memberdef>
     </sectiondef>
     <briefdescription>
@@ -156,7 +156,7 @@
     <listofallmembers>
       <member refid="classendstone_1_1BlockEvent_1a8495800ade942e17e6832ba40530e4d9" prot="protected" virt="non-virtual"><scope>endstone::BlockGrowEvent</scope><name>block_</name></member>
       <member refid="classendstone_1_1BlockEvent_1a784685838d2b051b0846ceb821e6a9b5" prot="public" virt="non-virtual"><scope>endstone::BlockGrowEvent</scope><name>BlockEvent</name></member>
-      <member refid="classendstone_1_1BlockGrowEvent_1ab1cb5e6658e9006a05108e0ce00e7995" prot="public" virt="non-virtual"><scope>endstone::BlockGrowEvent</scope><name>BlockGrowEvent</name></member>
+      <member refid="classendstone_1_1BlockGrowEvent_1aa73730614717af028e17cc7189a0a7e2" prot="public" virt="non-virtual"><scope>endstone::BlockGrowEvent</scope><name>BlockGrowEvent</name></member>
       <member refid="classendstone_1_1Cancellable_1a3512b47db69c6001f5c0450051308327" prot="public" virt="virtual"><scope>endstone::BlockGrowEvent</scope><name>cancel</name></member>
       <member refid="classendstone_1_1BlockGrowEvent_1a0ce02b47c1d300e088bb2d841ca866d3" prot="public" virt="non-virtual"><scope>endstone::BlockGrowEvent</scope><name>ENDSTONE_EVENT</name></member>
       <member refid="classendstone_1_1Event_1a28cca8d74920493b449d035540acf023" prot="public" virt="non-virtual"><scope>endstone::BlockGrowEvent</scope><name>Event</name></member>
@@ -164,10 +164,10 @@
       <member refid="classendstone_1_1Event_1ad20bafd16e0671578e37390b95e5104c" prot="public" virt="non-virtual"><scope>endstone::BlockGrowEvent</scope><name>Event</name></member>
       <member refid="classendstone_1_1BlockEvent_1ac9da7c79ee76c2145547c4b09eea46a0" prot="public" virt="non-virtual"><scope>endstone::BlockGrowEvent</scope><name>getBlock</name></member>
       <member refid="classendstone_1_1Event_1a826fe74f9c4195a36a364b9aeeb321bb" prot="public" virt="pure-virtual"><scope>endstone::BlockGrowEvent</scope><name>getEventName</name></member>
-      <member refid="classendstone_1_1BlockGrowEvent_1a41aec264692c13165c1935cbf4a6cf3b" prot="public" virt="non-virtual"><scope>endstone::BlockGrowEvent</scope><name>getNewState</name></member>
+      <member refid="classendstone_1_1BlockGrowEvent_1a9a01cbf262491f2c29aaca9dd3cde10d" prot="public" virt="non-virtual"><scope>endstone::BlockGrowEvent</scope><name>getNewState</name></member>
       <member refid="classendstone_1_1Event_1ae89b54f63dc32b0c8797a59db69b6931" prot="public" virt="non-virtual"><scope>endstone::BlockGrowEvent</scope><name>isAsynchronous</name></member>
       <member refid="classendstone_1_1Cancellable_1a268b73cc5bda0fa5923336d031814faa" prot="public" virt="virtual"><scope>endstone::BlockGrowEvent</scope><name>isCancelled</name></member>
-      <member refid="classendstone_1_1BlockGrowEvent_1a27f103329af6eaa9c1d7d08778e1cc6c" prot="private" virt="non-virtual"><scope>endstone::BlockGrowEvent</scope><name>new_state_</name></member>
+      <member refid="classendstone_1_1BlockGrowEvent_1ae30adf5d3b1e72d0355feef1ce9c5644" prot="private" virt="non-virtual"><scope>endstone::BlockGrowEvent</scope><name>new_state_</name></member>
       <member refid="classendstone_1_1Event_1a44a4ff424a8b690c01a2afe10ae68d8f" prot="public" virt="non-virtual"><scope>endstone::BlockGrowEvent</scope><name>operator=</name></member>
       <member refid="classendstone_1_1Event_1a1d7fc5400782d20be99a3636aa7f53b9" prot="public" virt="non-virtual"><scope>endstone::BlockGrowEvent</scope><name>operator=</name></member>
       <member refid="classendstone_1_1Cancellable_1aa12df44bcb66924d06a689d0dd07865e" prot="public" virt="virtual"><scope>endstone::BlockGrowEvent</scope><name>setCancelled</name></member>

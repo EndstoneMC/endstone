@@ -113,7 +113,7 @@ Inherits the following classes: [endstone::BlockGrowEvent](classendstone_1_1Bloc
 
 | Type | Name |
 | ---: | :--- |
-|   | [**BlockGrowEvent**](#function-blockgrowevent) (std::unique\_ptr&lt; [**Block**](classendstone_1_1Block.md) &gt; block, std::unique\_ptr&lt; [**BlockState**](classendstone_1_1BlockState.md) &gt; new\_state) <br> |
+|   | [**BlockGrowEvent**](#function-blockgrowevent) (std::unique\_ptr&lt; [**Block**](classendstone_1_1Block.md) &gt; block, [**const**](classendstone_1_1Identifier.md) [**NotNull**](classendstone_1_1NotNull.md)&lt; [**BlockState**](classendstone_1_1BlockState.md) &gt; & new\_state) <br> |
 |   | [**ENDSTONE\_EVENT**](#function-endstone_event) ([**BlockFormEvent**](classendstone_1_1BlockFormEvent.md)) <br> |
 
 
@@ -123,9 +123,9 @@ See [endstone::BlockGrowEvent](classendstone_1_1BlockGrowEvent.md)
 
 | Type | Name |
 | ---: | :--- |
-|   | [**BlockGrowEvent**](classendstone_1_1BlockGrowEvent.md#function-blockgrowevent) (std::unique\_ptr&lt; [**Block**](classendstone_1_1Block.md) &gt; block, std::unique\_ptr&lt; [**BlockState**](classendstone_1_1BlockState.md) &gt; new\_state) <br> |
+|   | [**BlockGrowEvent**](classendstone_1_1BlockGrowEvent.md#function-blockgrowevent) (std::unique\_ptr&lt; [**Block**](classendstone_1_1Block.md) &gt; block, [**const**](classendstone_1_1Identifier.md) [**NotNull**](classendstone_1_1NotNull.md)&lt; [**BlockState**](classendstone_1_1BlockState.md) &gt; & new\_state) <br> |
 |   | [**ENDSTONE\_EVENT**](classendstone_1_1BlockGrowEvent.md#function-endstone_event) ([**BlockGrowEvent**](classendstone_1_1BlockGrowEvent.md)) <br> |
-|  [**BlockState**](classendstone_1_1BlockState.md) & | [**getNewState**](classendstone_1_1BlockGrowEvent.md#function-getnewstate) () const<br>_Gets the state of the block after it has grown._  |
+|  [**const**](classendstone_1_1Identifier.md) [**NotNull**](classendstone_1_1NotNull.md)&lt; [**BlockState**](classendstone_1_1BlockState.md) &gt; & | [**getNewState**](classendstone_1_1BlockGrowEvent.md#function-getnewstate) () const<br>_Gets the state of the block after it has grown._  |
 
 
 ## Public Functions inherited from endstone::Cancellable
@@ -284,7 +284,7 @@ If a [**Block**](classendstone_1_1Block.md) [**Form**](classendstone_1_1Form.md)
 ```C++
 inline explicit endstone::BlockFormEvent::BlockGrowEvent (
     std::unique_ptr< Block > block,
-    std::unique_ptr< BlockState > new_state
+    const  NotNull < BlockState > & new_state
 ) 
 ```
 

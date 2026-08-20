@@ -34,15 +34,15 @@ namespace endstone {
 class BlockGrowEvent : public Cancellable<BlockEvent> {
 public:
     ENDSTONE_EVENT(BlockGrowEvent);
-    explicit BlockGrowEvent(std::unique_ptr<Block> block, std::unique_ptr<BlockState> new_state)
-        : Cancellable(std::move(block)), new_state_(std::move(new_state))
+    explicit BlockGrowEvent(std::unique_ptr<Block> block, const NotNull<BlockState> &new_state)
+        : Cancellable(std::move(block)), new_state_(new_state)
     {
     }
 
-    [[nodiscard]] BlockState &getNewState() const { return *new_state_; }
+    [[nodiscard]] const NotNull<BlockState> &getNewState() const { return new_state_; }
 
 private:
-    std::unique_ptr<BlockState> new_state_;
+    NotNull<BlockState> new_state_;
 };
 
 }  // namespace endstone

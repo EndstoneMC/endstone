@@ -52,7 +52,7 @@ _Represents a block._ [More...](#detailed-description)
 
 | Type | Name |
 | ---: | :--- |
-| virtual std::unique\_ptr&lt; [**BlockState**](classendstone_1_1BlockState.md) &gt; | [**captureState**](#function-capturestate) () const = 0<br>_Captures the current state of this block._  |
+| virtual [**NotNull**](classendstone_1_1NotNull.md)&lt; [**BlockState**](classendstone_1_1BlockState.md) &gt; | [**captureState**](#function-capturestate) () const = 0<br>_Captures the current state of this block._  |
 | virtual std::unique\_ptr&lt; [**Block**](classendstone_1_1Block.md) &gt; | [**clone**](#function-clone) () const = 0<br>_Creates a copy of the current block._  |
 | virtual [**const**](classendstone_1_1Identifier.md) [**Biome**](classendstone_1_1Biome.md) & | [**getBiome**](#function-getbiome) () const = 0<br>_Gets the biome that this block resides in._  |
 | virtual std::unique\_ptr&lt; [**BlockData**](classendstone_1_1BlockData.md) &gt; | [**getData**](#function-getdata) () const = 0<br>_Gets the complete block data for this block._  |
@@ -114,7 +114,7 @@ This is a live object, and only one [**Block**](classendstone_1_1Block.md) may e
 
 _Captures the current state of this block._ 
 ```C++
-virtual std::unique_ptr< BlockState > endstone::Block::captureState () const = 0
+virtual NotNull < BlockState > endstone::Block::captureState () const = 0
 ```
 
 

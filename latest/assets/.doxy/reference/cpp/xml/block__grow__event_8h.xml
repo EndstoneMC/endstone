@@ -109,6 +109,8 @@
         </childnode>
         <childnode refid="78" relation="include">
         </childnode>
+        <childnode refid="36" relation="include">
+        </childnode>
         <childnode refid="57" relation="include">
         </childnode>
       </node>
@@ -824,15 +826,15 @@
 <codeline lineno="29" refid="classendstone_1_1BlockGrowEvent" refkind="compound"><highlight class="normal"></highlight><highlight class="keyword">class<sp/></highlight><highlight class="normal"><ref refid="classendstone_1_1BlockGrowEvent" kindref="compound">BlockGrowEvent</ref><sp/>:<sp/></highlight><highlight class="keyword">public</highlight><highlight class="normal"><sp/><ref refid="classendstone_1_1Cancellable" kindref="compound">Cancellable</ref>&lt;BlockEvent&gt;<sp/>{</highlight></codeline>
 <codeline lineno="30"><highlight class="normal"></highlight><highlight class="keyword">public</highlight><highlight class="normal">:</highlight></codeline>
 <codeline lineno="31"><highlight class="normal"><sp/><sp/><sp/><sp/>ENDSTONE_EVENT(<ref refid="classendstone_1_1BlockGrowEvent" kindref="compound">BlockGrowEvent</ref>);</highlight></codeline>
-<codeline lineno="32"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">explicit</highlight><highlight class="normal"><sp/><ref refid="classendstone_1_1BlockGrowEvent" kindref="compound">BlockGrowEvent</ref>(std::unique_ptr&lt;Block&gt;<sp/><ref refid="classendstone_1_1Identifier" kindref="compound">block</ref>,<sp/>std::unique_ptr&lt;BlockState&gt;<sp/><ref refid="classendstone_1_1Identifier" kindref="compound">new_state</ref>)</highlight></codeline>
-<codeline lineno="33"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>:<sp/><ref refid="classendstone_1_1Cancellable" kindref="compound">Cancellable</ref>(std::move(<ref refid="classendstone_1_1Identifier" kindref="compound">block</ref>)),<sp/>new_state_(std::move(<ref refid="classendstone_1_1Identifier" kindref="compound">new_state</ref>))</highlight></codeline>
+<codeline lineno="32"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">explicit</highlight><highlight class="normal"><sp/><ref refid="classendstone_1_1BlockGrowEvent" kindref="compound">BlockGrowEvent</ref>(std::unique_ptr&lt;Block&gt;<sp/><ref refid="classendstone_1_1Identifier" kindref="compound">block</ref>,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classendstone_1_1Identifier" kindref="compound">NotNull&lt;BlockState&gt;</ref><sp/>&amp;<ref refid="classendstone_1_1Identifier" kindref="compound">new_state</ref>)</highlight></codeline>
+<codeline lineno="33"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>:<sp/><ref refid="classendstone_1_1Cancellable" kindref="compound">Cancellable</ref>(std::move(<ref refid="classendstone_1_1Identifier" kindref="compound">block</ref>)),<sp/>new_state_(<ref refid="classendstone_1_1Identifier" kindref="compound">new_state</ref>)</highlight></codeline>
 <codeline lineno="34"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
 <codeline lineno="35"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
 <codeline lineno="36"><highlight class="normal"></highlight></codeline>
-<codeline lineno="42" refid="classendstone_1_1BlockGrowEvent_1a41aec264692c13165c1935cbf4a6cf3b" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>[[<ref refid="classendstone_1_1Identifier" kindref="compound">nodiscard</ref>]]<sp/><ref refid="classendstone_1_1BlockState" kindref="compound">BlockState</ref><sp/>&amp;<ref refid="classendstone_1_1BlockGrowEvent_1a41aec264692c13165c1935cbf4a6cf3b" kindref="member">getNewState</ref>()</highlight><highlight class="keyword"><sp/>const<sp/></highlight><highlight class="normal">{<sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>*new_state_;<sp/>}</highlight></codeline>
+<codeline lineno="42" refid="classendstone_1_1BlockGrowEvent_1a9a01cbf262491f2c29aaca9dd3cde10d" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>[[<ref refid="classendstone_1_1Identifier" kindref="compound">nodiscard</ref>]]<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classendstone_1_1Identifier" kindref="compound">NotNull&lt;BlockState&gt;</ref><sp/>&amp;<ref refid="classendstone_1_1BlockGrowEvent_1a9a01cbf262491f2c29aaca9dd3cde10d" kindref="member">getNewState</ref>()</highlight><highlight class="keyword"><sp/>const<sp/></highlight><highlight class="normal">{<sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>new_state_;<sp/>}</highlight></codeline>
 <codeline lineno="43"><highlight class="normal"></highlight></codeline>
 <codeline lineno="44"><highlight class="normal"></highlight><highlight class="keyword">private</highlight><highlight class="normal">:</highlight></codeline>
-<codeline lineno="45"><highlight class="normal"><sp/><sp/><sp/><sp/>std::unique_ptr&lt;BlockState&gt;<sp/>new_state_;</highlight></codeline>
+<codeline lineno="45"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classendstone_1_1Identifier" kindref="compound">NotNull&lt;BlockState&gt;</ref><sp/>new_state_;</highlight></codeline>
 <codeline lineno="46"><highlight class="normal">};</highlight></codeline>
 <codeline lineno="47"><highlight class="normal"></highlight></codeline>
 <codeline lineno="48"><highlight class="normal">}<sp/><sp/></highlight><highlight class="comment">//<sp/>namespace<sp/>endstone</highlight><highlight class="normal"></highlight></codeline>

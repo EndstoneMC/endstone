@@ -427,7 +427,7 @@
     <member refid="classendstone_1_1Block_1a390b31ef485c4b5176842bd3a59b01bc" kind="function"><name>getY</name></member>
     <member refid="classendstone_1_1Block_1a9509b72c86339e30a4b50567f6d5279c" kind="function"><name>getZ</name></member>
     <member refid="classendstone_1_1Block_1a19e164bc3cf23481d01886dfeda41c85" kind="function"><name>getLocation</name></member>
-    <member refid="classendstone_1_1Block_1a95bac5d6f459fcfe924ba470d9b9da81" kind="function"><name>captureState</name></member>
+    <member refid="classendstone_1_1Block_1adbb54e51386a34510f53584dfa26adef" kind="function"><name>captureState</name></member>
     <member refid="classendstone_1_1Block_1acf80e005f3032354d7cd7ed0057be6e7" kind="function"><name>clone</name></member>
   </compound>
   <compound refid="classendstone_1_1BlockBreakEvent" kind="class"><name>endstone::BlockBreakEvent</name>
@@ -472,7 +472,7 @@
   </compound>
   <compound refid="classendstone_1_1BlockFormEvent" kind="class"><name>endstone::BlockFormEvent</name>
     <member refid="classendstone_1_1BlockFormEvent_1aef9322541737c95f359e061c4e7a795f" kind="function"><name>ENDSTONE_EVENT</name></member>
-    <member refid="classendstone_1_1BlockFormEvent_1ab1cb5e6658e9006a05108e0ce00e7995" kind="function"><name>BlockGrowEvent</name></member>
+    <member refid="classendstone_1_1BlockFormEvent_1aa73730614717af028e17cc7189a0a7e2" kind="function"><name>BlockGrowEvent</name></member>
   </compound>
   <compound refid="classendstone_1_1BlockFromToEvent" kind="class"><name>endstone::BlockFromToEvent</name>
     <member refid="classendstone_1_1BlockFromToEvent_1acb8a3989091ef0b9d881aa368bc35a9e" kind="variable"><name>to_</name></member>
@@ -481,10 +481,10 @@
     <member refid="classendstone_1_1BlockFromToEvent_1a8df95bd9daada5d36d8960a9aed89129" kind="function"><name>getToBlock</name></member>
   </compound>
   <compound refid="classendstone_1_1BlockGrowEvent" kind="class"><name>endstone::BlockGrowEvent</name>
-    <member refid="classendstone_1_1BlockGrowEvent_1a27f103329af6eaa9c1d7d08778e1cc6c" kind="variable"><name>new_state_</name></member>
+    <member refid="classendstone_1_1BlockGrowEvent_1ae30adf5d3b1e72d0355feef1ce9c5644" kind="variable"><name>new_state_</name></member>
     <member refid="classendstone_1_1BlockGrowEvent_1a0ce02b47c1d300e088bb2d841ca866d3" kind="function"><name>ENDSTONE_EVENT</name></member>
-    <member refid="classendstone_1_1BlockGrowEvent_1ab1cb5e6658e9006a05108e0ce00e7995" kind="function"><name>BlockGrowEvent</name></member>
-    <member refid="classendstone_1_1BlockGrowEvent_1a41aec264692c13165c1935cbf4a6cf3b" kind="function"><name>getNewState</name></member>
+    <member refid="classendstone_1_1BlockGrowEvent_1aa73730614717af028e17cc7189a0a7e2" kind="function"><name>BlockGrowEvent</name></member>
+    <member refid="classendstone_1_1BlockGrowEvent_1a9a01cbf262491f2c29aaca9dd3cde10d" kind="function"><name>getNewState</name></member>
   </compound>
   <compound refid="classendstone_1_1BlockPistonEvent" kind="class"><name>endstone::BlockPistonEvent</name>
     <member refid="classendstone_1_1BlockPistonEvent_1aa385a3a821f0b75ab991b8f51d219f87" kind="variable"><name>direction_</name></member>
@@ -500,15 +500,15 @@
     <member refid="classendstone_1_1BlockPistonRetractEvent_1a4045e305bbfc65226b898f11a7ec8389" kind="function"><name>BlockPistonEvent</name></member>
   </compound>
   <compound refid="classendstone_1_1BlockPlaceEvent" kind="class"><name>endstone::BlockPlaceEvent</name>
-    <member refid="classendstone_1_1BlockPlaceEvent_1a734430257551b89b05bb7c71d7a4ab0b" kind="variable"><name>replaced_state_</name></member>
+    <member refid="classendstone_1_1BlockPlaceEvent_1a21410a77c2aebde3e7f5f139ce247c34" kind="variable"><name>replaced_state_</name></member>
     <member refid="classendstone_1_1BlockPlaceEvent_1ab58f51c0b2c6e6faad8b5f990bcdd2fa" kind="variable"><name>placed_against_</name></member>
     <member refid="classendstone_1_1BlockPlaceEvent_1a50eb716dbce47ab81f75e69f8a297dd1" kind="variable"><name>player_</name></member>
     <member refid="classendstone_1_1BlockPlaceEvent_1a846257ca82a9d7256f551ee36cfaae75" kind="function"><name>ENDSTONE_EVENT</name></member>
-    <member refid="classendstone_1_1BlockPlaceEvent_1a6bed3e0f5749399c38a14e0926e4ceb4" kind="function"><name>BlockPlaceEvent</name></member>
+    <member refid="classendstone_1_1BlockPlaceEvent_1a2753768721cdb311301bfb18e888bc94" kind="function"><name>BlockPlaceEvent</name></member>
     <member refid="classendstone_1_1BlockPlaceEvent_1ab1bb2ece0d15adb5704b90587d971bed" kind="function"><name>~BlockPlaceEvent</name></member>
     <member refid="classendstone_1_1BlockPlaceEvent_1af3d2b9baa690bbaca9f8737a3a2d4f40" kind="function"><name>getPlayer</name></member>
     <member refid="classendstone_1_1BlockPlaceEvent_1a6b8bc3f1e4367d32c1fcfc4e3825e07d" kind="function"><name>getBlockPlaced</name></member>
-    <member refid="classendstone_1_1BlockPlaceEvent_1a1f1656bfe3b37ec3d8eaf09b13d145bc" kind="function"><name>getBlockReplacedState</name></member>
+    <member refid="classendstone_1_1BlockPlaceEvent_1a5f1cf0fae77cffe186117c984606b911" kind="function"><name>getBlockReplacedState</name></member>
     <member refid="classendstone_1_1BlockPlaceEvent_1a822e71386ca87244c89763e333cfe7b2" kind="function"><name>getBlockAgainst</name></member>
   </compound>
   <compound refid="classendstone_1_1BlockState" kind="class"><name>endstone::BlockState</name>

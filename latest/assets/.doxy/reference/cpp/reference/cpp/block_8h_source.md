@@ -32,6 +32,7 @@
 #include "endstone/block/block_face.h"
 #include "endstone/block/block_type.h"
 #include "endstone/level/location.h"
+#include "endstone/util/pointers.h"
 #include "endstone/util/result.h"
 
 namespace endstone {
@@ -76,7 +77,7 @@ public:
 
     [[nodiscard]] virtual Location getLocation() const = 0;
 
-    [[nodiscard]] virtual std::unique_ptr<BlockState> captureState() const = 0;
+    [[nodiscard]] virtual NotNull<BlockState> captureState() const = 0;
 
     [[nodiscard]] virtual std::unique_ptr<Block> clone() const = 0;
 };
