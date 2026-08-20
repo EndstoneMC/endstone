@@ -769,66 +769,6 @@ class PlayerItemHeldEvent(PlayerEvent, Cancellable):
         The previous held slot index.
         """
 
-class PlayerToggleSneakEvent(PlayerEvent):
-    """
-    Called when a player toggles their sneaking state.
-    """
-    @property
-    def is_sneaking(self) -> bool:
-        """
-        Whether the player is now sneaking or not.
-        """
-
-class PlayerToggleSprintEvent(PlayerEvent):
-    """
-    Called when a player toggles their sprinting state.
-    """
-    @property
-    def is_sprinting(self) -> bool:
-        """
-        Whether the player is now sprinting or not.
-        """
-
-class PlayerToggleCrawlEvent(PlayerEvent):
-    """
-    Called when a player toggles their crawling state.
-    """
-    @property
-    def is_crawling(self) -> bool:
-        """
-        Whether the player is now crawling or not.
-        """
-
-class PlayerToggleFlightEvent(PlayerEvent):
-    """
-    Called when a player toggles their flying state.
-    """
-    @property
-    def is_flying(self) -> bool:
-        """
-        Whether the player is now flying or not.
-        """
-
-class PlayerToggleGlideEvent(PlayerEvent):
-    """
-    Called when a player toggles their gliding state.
-    """
-    @property
-    def is_gliding(self) -> bool:
-        """
-        Whether the player is now gliding or not.
-        """
-
-class PlayerToggleSwimEvent(PlayerEvent):
-    """
-    Called when a player toggles their swimming state.
-    """
-    @property
-    def is_swimming(self) -> bool:
-        """
-        Whether the player is now swimming or not.
-        """
-
 class PlayerJoinEvent(PlayerEvent):
     """
     Called when a player joins a server.
@@ -894,6 +834,16 @@ class PlayerJumpEvent(PlayerMoveEvent):
     Called when a player jumps.
     """
 
+class PlayerPickupItemEvent(PlayerEvent, Cancellable):
+    """
+    Called when a player picks an item up from the ground.
+    """
+    @property
+    def item(self) -> Item:
+        """
+        The Item picked up by the entity.
+        """
+
 class PlayerQuitEvent(PlayerEvent):
     """
     Called when a player leaves a server.
@@ -956,14 +906,64 @@ class PlayerPortalEvent(PlayerTeleportEvent):
     Called when a player is about to teleport because it is in contact with a portal.
     """
 
-class PlayerPickupItemEvent(PlayerEvent, Cancellable):
+class PlayerToggleSneakEvent(PlayerEvent):
     """
-    Called when a player picks an item up from the ground.
+    Called when a player toggles their sneaking state.
     """
     @property
-    def item(self) -> Item:
+    def is_sneaking(self) -> bool:
         """
-        The Item picked up by the entity.
+        Whether the player is now sneaking or not.
+        """
+
+class PlayerToggleSprintEvent(PlayerEvent):
+    """
+    Called when a player toggles their sprinting state.
+    """
+    @property
+    def is_sprinting(self) -> bool:
+        """
+        Whether the player is now sprinting or not.
+        """
+
+class PlayerToggleCrawlEvent(PlayerEvent):
+    """
+    Called when a player toggles their crawling state.
+    """
+    @property
+    def is_crawling(self) -> bool:
+        """
+        Whether the player is now crawling or not.
+        """
+
+class PlayerToggleFlightEvent(PlayerEvent):
+    """
+    Called when a player toggles their flying state.
+    """
+    @property
+    def is_flying(self) -> bool:
+        """
+        Whether the player is now flying or not.
+        """
+
+class PlayerToggleGlideEvent(PlayerEvent):
+    """
+    Called when a player toggles their gliding state.
+    """
+    @property
+    def is_gliding(self) -> bool:
+        """
+        Whether the player is now gliding or not.
+        """
+
+class PlayerToggleSwimEvent(PlayerEvent):
+    """
+    Called when a player toggles their swimming state.
+    """
+    @property
+    def is_swimming(self) -> bool:
+        """
+        Whether the player is now swimming or not.
         """
 
 class ServerEvent(Event):
