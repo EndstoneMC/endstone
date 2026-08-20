@@ -781,11 +781,6 @@ class PlayerJoinEvent(PlayerEvent):
     @join_message.setter
     def join_message(self, arg1: str | Translatable | None) -> None: ...
 
-class PlayerJumpEvent(PlayerMoveEvent):
-    """
-    Called when a player jumps.
-    """
-
 class PlayerKickEvent(PlayerEvent, Cancellable):
     """
     Called when a player gets kicked from the server.
@@ -849,15 +844,10 @@ class PlayerMoveEvent(PlayerEvent, Cancellable):
     @to_location.setter
     def to_location(self, arg1: Location) -> None: ...
 
-class PlayerPickupArrowEvent(PlayerEvent, Cancellable):
+class PlayerJumpEvent(PlayerMoveEvent):
     """
-    Called when a player picks up an arrow from the ground.
+    Called when a player jumps.
     """
-    @property
-    def arrow(self) -> Actor:
-        """
-        The arrow picked up by the player.
-        """
 
 class PlayerPickupArrowEvent(PlayerEvent, Cancellable):
     """
@@ -878,11 +868,6 @@ class PlayerPickupItemEvent(PlayerEvent, Cancellable):
         """
         The Item picked up by the entity.
         """
-
-class PlayerPortalEvent(PlayerTeleportEvent):
-    """
-    Called when a player is about to teleport because it is in contact with a portal.
-    """
 
 class PlayerQuitEvent(PlayerEvent):
     """
@@ -977,25 +962,10 @@ class PlayerTeleportEvent(PlayerMoveEvent):
     Called when a player is teleported from one location to another.
     """
 
-class PlayerToggleSneakEvent(PlayerEvent):
+class PlayerPortalEvent(PlayerTeleportEvent):
     """
-    Called when a player toggles their sneaking state.
+    Called when a player is about to teleport because it is in contact with a portal.
     """
-    @property
-    def is_sneaking(self) -> bool:
-        """
-        Whether the player is now sneaking or not.
-        """
-
-class PlayerToggleSprintEvent(PlayerEvent):
-    """
-    Called when a player toggles their sprinting state.
-    """
-    @property
-    def is_sprinting(self) -> bool:
-        """
-        Whether the player is now sprinting or not.
-        """
 
 class PlayerToggleSneakEvent(PlayerEvent):
     """
