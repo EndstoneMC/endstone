@@ -11,7 +11,7 @@
 
 namespace endstone::runtime {
 
-static constexpr std::array<std::pair<std::string_view, std::size_t>, 63> symbols = {{
+static constexpr std::array<std::pair<std::string_view, std::size_t>, 64> symbols = {{
     {"BlockState::StateListNode::mHead", 211294960},
     {"Enchant::mEnchants", 211141912},
     {"MobEffect::mMobEffects", 211424880},
@@ -89,6 +89,7 @@ static constexpr std::array<std::pair<std::string_view, std::size_t>, 63> symbol
     // PistonBlockActor
     {"?tick@PistonBlockActor@@UEAAXAEAVBlockSource@@@Z", 99573264},
     // Player
+    {"?addLevels@Player@@UEAAXH@Z", 2320016},
     {"?completeUsingItem@Player@@QEAAXXZ", 2206272},
     {"?drop@Player@@UEAA_NAEBVItemStack@@_N@Z", 2302400},
     {"?startSleepInBed@Player@@UEAA?AW4BedSleepingResult@@AEBVBlockPos@@_NM@Z", 2182176},

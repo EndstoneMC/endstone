@@ -23,6 +23,7 @@
 #include "endstone/core/inventory/item_stack.h"
 #include "endstone/core/level/chunk.h"
 #include "endstone/core/level/level.h"
+#include "endstone/player.h"
 
 namespace endstone::core {
 
@@ -154,6 +155,28 @@ std::vector<NotNull<Actor>> EndstoneDimension::getActors() const
             continue;
         }
         result.push_back(actor);
+    }
+    return result;
+}
+
+std::vector<NotNull<Mob>> EndstoneDimension::getMobs() const
+{
+    std::vector<NotNull<Mob>> result;
+    for (const auto &actor : getActors()) {
+        if (actor->is<Mob>()) {
+            result.push_back(actor.cast<Mob>());
+        }
+    }
+    return result;
+}
+
+std::vector<NotNull<Player>> EndstoneDimension::getPlayers() const
+{
+    std::vector<NotNull<Player>> result;
+    for (const auto &actor : getActors()) {
+        if (actor->is<Player>()) {
+            result.push_back(actor.cast<Player>());
+        }
     }
     return result;
 }

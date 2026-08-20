@@ -870,3 +870,27 @@ extra = 0
 # 4. confirm vs the old named DB (neighbouring slots line up). The thunk's member offset (0x718 in 1.26.32)
 #    is a fragile fallback anchor - prefer the vtable slot, which cross-checks against the neighbours
 pattern = "55 41 57 41 56 56 57 53 48 81 EC ? ? ? ? 48 8D AC 24 80 00 00 00 44 0F 29 95 ? ? ? ? 44 0F 29 8D ? ? ? ? 44 0F 29 85 ? ? ? ? 0F 29 BD ? ? ? ? 0F 29 75 ? 48 C7 45 ? FE FF FF FF 0F 28 F3"
+
+[[signatures]]
+name = "?addLevels@Player@@UEAAXH@Z"
+relative = false
+extra = 0
+# 1. no usable string; anchor on the body's own shape - it is the only function that reads the LEVEL
+#    attribute, clamps, and then dispatches PlayerGameplayEvent variant 3. Find it from the pair of
+#    immediates it bakes in: `69 ? ? 67 66 66 66` (imul ..., 66666667h - the post-mutation
+#    `level % 5 == 0` level-up test) and `41 B8 3E 00 00 00` (mov r8d, 3Eh = LevelSoundEvent 62)
+# 2. its entry is `push rbp/r15/r14/r13/r12/rsi/rdi/rbx` / `sub rsp, 208h` / `lea rbp, [rsp+80h]` /
+#    the -2 SEH cookie store, then `lea r8, Player::LEVEL` / `call Actor::getAttribute` /
+#    `cvttss2si eax, [rax+7Ch]` - the pre-mutation LEVEL read
+# 3. walk the body: `add eax, edi` / `js` picks the clamp branch, which does two
+#    `movss xmm0, [rdx+74h]` -> `movss [rdx+7Ch], xmm0` min-to-current copies (LEVEL then
+#    EXPERIENCE) and stores 0 and 7 into two adjacent Player fields; the other path passes
+#    operand 2 / type 0Ch to the AttributeBuff ctor; a second getAttribute then
+#    `cvttss2si r13d, [rax+7Ch]` reads the post value
+# 4. confirm identity on the event tail: the raw `levels` argument and the post-mutation level are
+#    stored as two adjacent ints, then a byte 3 is written as the variant index - index 3 is
+#    PlayerAddLevelEvent in the PlayerGameplayEvent<void> variant list - immediately before the call
+#    to EventCoordinatorPimpl<PlayerEventListener>::_processEvent
+# 5. confirm vs the old named DB. Unlike Linux 1.21 there is no separate _addLevels on Windows at
+#    any version - MSVC folds it into addLevels, so this virtual is the whole body
+pattern = "55 41 57 41 56 41 55 41 54 56 57 53 48 81 EC 08 02 00 00 48 8D AC 24 80 00 00 00 48 C7 85 80 01 00 00 FE FF FF FF 89 D7 48 89 CE 4C 8D 05 ? ? ? ? 48 8D 55 C8 E8"

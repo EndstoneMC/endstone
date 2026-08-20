@@ -23,8 +23,7 @@ namespace endstone {
  */
 class PlayerToggleSneakEvent final : public PlayerEvent {
 public:
-    ENDSTONE_EVENT(PlayerToggleSneakEvent)
-
+    ENDSTONE_EVENT(PlayerToggleSneakEvent);
     explicit PlayerToggleSneakEvent(const NotNull<Player> &player, bool sneaking) : PlayerEvent(player), sneaking_(sneaking) {}
 
     /**

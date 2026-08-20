@@ -20,7 +20,7 @@ namespace endstone::python {
 
 void init_actor(py::module_ &m, py_class<Actor> &actor, py_class<Mob> &mob)
 {
-    py::class_<ActorType>(m, "ActorType", "Represents an actor type.")
+    def_registry_type(py::class_<ActorType>(m, "ActorType", "Represents an actor type."))
         .def_property_readonly_static("AGENT", id(ActorType::Agent))
         .def_property_readonly_static("ALLAY", id(ActorType::Allay))
         .def_property_readonly_static("AREA_EFFECT_CLOUD", id(ActorType::AreaEffectCloud))
@@ -161,12 +161,7 @@ void init_actor(py::module_ &m, py_class<Actor> &actor, py_class<Mob> &mob)
         .def_property_readonly("translation_key", &ActorType::getTranslationKey,
                                "The translation key, suitable for use in a translation component.")
         .def_static("get", &ActorType::get, py::arg("name"), "Attempts to get the `ActorType` with the given name.",
-                    py::return_value_policy::reference)
-        .def("__str__", [](const ActorType &self) { return std::string(self.getId()); })
-        .def("__repr__", [](const ActorType &self) { return std::format("ActorType({})", self.getId()); })
-        .def("__hash__", [](const ActorType &self) { return std::hash<ActorTypeId>{}(self.getId()); })
-        .def(py::self == py::self)
-        .def(py::self != py::self);
+                    py::return_value_policy::reference);
 
     actor.def_property_readonly("type", &Actor::getType, py::return_value_policy::reference, "The type of the actor.")
         .def_property_readonly("runtime_id", &Actor::getRuntimeId, "The runtime id for this actor.")

@@ -33,8 +33,7 @@ namespace endstone {
  */
 class PlayerItemConsumeEvent final : public Cancellable<PlayerEvent> {
 public:
-    ENDSTONE_EVENT(PlayerItemConsumeEvent)
-
+    ENDSTONE_EVENT(PlayerItemConsumeEvent);
     explicit PlayerItemConsumeEvent(const NotNull<Player> &player, ItemStack item, EquipmentSlot hand)
         : Cancellable(player), item_(std::move(item)), hand_(hand)
     {
