@@ -1,0 +1,210 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.8" xml:lang="en-US">
+  <compounddef id="classendstone_1_1ActorPickupItemEvent" kind="class" language="C++" prot="public">
+    <compoundname>endstone::ActorPickupItemEvent</compoundname>
+    <basecompoundref refid="classendstone_1_1Cancellable" prot="public" virt="non-virtual">endstone::Cancellable&lt; ActorEvent&lt; Actor &gt; &gt;</basecompoundref>
+    <includes refid="actor__pickup__item__event_8h" local="no">endstone/event/actor/actor_pickup_item_event.h</includes>
+    <sectiondef kind="private-attrib">
+      <memberdef kind="variable" id="classendstone_1_1ActorPickupItemEvent_1aa6e06ab8cd94332ddcec267bed1f7289" prot="private" static="no" mutable="no">
+        <type><ref refid="classendstone_1_1NotNull" kindref="compound">NotNull</ref>&lt; <ref refid="classendstone_1_1Item" kindref="compound">Item</ref> &gt;</type>
+        <definition>NotNull&lt;Item&gt; endstone::ActorPickupItemEvent::item_</definition>
+        <argsstring></argsstring>
+        <name>item_</name>
+        <qualifiedname>endstone::ActorPickupItemEvent::item_</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/event/actor/actor_pickup_item_event.h" line="52" column="13" bodyfile="include/endstone/event/actor/actor_pickup_item_event.h" bodystart="52" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classendstone_1_1ActorPickupItemEvent_1ac2663af9a81b6aa53e7aecb5aa539d32" prot="private" static="no" mutable="no">
+        <type><ref refid="classendstone_1_1Identifier" kindref="compound">int</ref></type>
+        <definition>int endstone::ActorPickupItemEvent::amount_</definition>
+        <argsstring></argsstring>
+        <name>amount_</name>
+        <qualifiedname>endstone::ActorPickupItemEvent::amount_</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/event/actor/actor_pickup_item_event.h" line="53" column="9" bodyfile="include/endstone/event/actor/actor_pickup_item_event.h" bodystart="53" bodyend="-1"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="public-func">
+      <memberdef kind="function" id="classendstone_1_1ActorPickupItemEvent_1a4a0854ba1827eeb7a97cbe1eff3dd9e6" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>endstone::ActorPickupItemEvent::ENDSTONE_EVENT</definition>
+        <argsstring>(ActorPickupItemEvent)</argsstring>
+        <name>ENDSTONE_EVENT</name>
+        <qualifiedname>endstone::ActorPickupItemEvent::ENDSTONE_EVENT</qualifiedname>
+        <param>
+          <type><ref refid="classendstone_1_1ActorPickupItemEvent" kindref="compound">ActorPickupItemEvent</ref></type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/event/actor/actor_pickup_item_event.h" line="30" column="5"/>
+      </memberdef>
+      <memberdef kind="function" id="classendstone_1_1ActorPickupItemEvent_1ae1961b8a38ffe92f84273375bef3f03c" prot="public" static="no" const="no" explicit="yes" inline="yes" virt="non-virtual">
+        <type></type>
+        <definition>endstone::ActorPickupItemEvent::ActorPickupItemEvent</definition>
+        <argsstring>(const NotNull&lt; Actor &gt; &amp;actor, const NotNull&lt; Item &gt; &amp;item, int amount)</argsstring>
+        <name>ActorPickupItemEvent</name>
+        <qualifiedname>endstone::ActorPickupItemEvent::ActorPickupItemEvent</qualifiedname>
+        <param>
+          <type><ref refid="classendstone_1_1Identifier" kindref="compound">const</ref> <ref refid="classendstone_1_1NotNull" kindref="compound">NotNull</ref>&lt; <ref refid="classendstone_1_1Actor" kindref="compound">Actor</ref> &gt; &amp;</type>
+          <declname>actor</declname>
+        </param>
+        <param>
+          <type><ref refid="classendstone_1_1Identifier" kindref="compound">const</ref> <ref refid="classendstone_1_1NotNull" kindref="compound">NotNull</ref>&lt; <ref refid="classendstone_1_1Item" kindref="compound">Item</ref> &gt; &amp;</type>
+          <declname>item</declname>
+        </param>
+        <param>
+          <type><ref refid="classendstone_1_1Identifier" kindref="compound">int</ref></type>
+          <declname>amount</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/event/actor/actor_pickup_item_event.h" line="32" column="14" bodyfile="include/endstone/event/actor/actor_pickup_item_event.h" bodystart="32" bodyend="35"/>
+      </memberdef>
+      <memberdef kind="function" id="classendstone_1_1ActorPickupItemEvent_1a0d3dfe88782d62202c9eb984cea83aa7" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type><ref refid="classendstone_1_1Identifier" kindref="compound">const</ref> <ref refid="classendstone_1_1NotNull" kindref="compound">NotNull</ref>&lt; <ref refid="classendstone_1_1Item" kindref="compound">Item</ref> &gt; &amp;</type>
+        <definition>const NotNull&lt; Item &gt; &amp; endstone::ActorPickupItemEvent::getItem</definition>
+        <argsstring>() const</argsstring>
+        <name>getItem</name>
+        <qualifiedname>endstone::ActorPickupItemEvent::getItem</qualifiedname>
+        <briefdescription>
+<para>Gets the <ref refid="classendstone_1_1Item" kindref="compound">Item</ref> picked up by the actor. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="return"><para>the item </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/event/actor/actor_pickup_item_event.h" line="42" column="20" bodyfile="include/endstone/event/actor/actor_pickup_item_event.h" bodystart="42" bodyend="42"/>
+      </memberdef>
+      <memberdef kind="function" id="classendstone_1_1ActorPickupItemEvent_1a408832ef18f50b0f331abaea0b7edd38" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type><ref refid="classendstone_1_1Identifier" kindref="compound">int</ref></type>
+        <definition>int endstone::ActorPickupItemEvent::getAmount</definition>
+        <argsstring>() const</argsstring>
+        <name>getAmount</name>
+        <qualifiedname>endstone::ActorPickupItemEvent::getAmount</qualifiedname>
+        <briefdescription>
+<para>Gets the number of items that will be picked up from the stack. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="return"><para>the amount picked up </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/event/actor/actor_pickup_item_event.h" line="49" column="10" bodyfile="include/endstone/event/actor/actor_pickup_item_event.h" bodystart="49" bodyend="49"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+<para>Called when an <ref refid="classendstone_1_1Actor" kindref="compound">Actor</ref> picks an item up from the ground. </para>
+    </briefdescription>
+    <detaileddescription>
+<para>This is not called for players; see <ref refid="classendstone_1_1PlayerPickupItemEvent" kindref="compound">PlayerPickupItemEvent</ref> instead. </para>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="3">
+        <label>endstone::ActorEvent&lt; Actor &gt;</label>
+        <link refid="classendstone_1_1ActorEvent"/>
+        <childnode refid="4" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>endstone::Cancellable&lt; ActorEvent&lt; Actor &gt; &gt;</label>
+        <link refid="classendstone_1_1Cancellable"/>
+        <childnode refid="3" relation="public-inheritance">
+        </childnode>
+        <childnode refid="5" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="1">
+        <label>endstone::ActorPickupItemEvent</label>
+        <link refid="classendstone_1_1ActorPickupItemEvent"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="4">
+        <label>endstone::Event</label>
+        <link refid="classendstone_1_1Event"/>
+      </node>
+      <node id="5">
+        <label>endstone::ICancellable</label>
+        <link refid="classendstone_1_1ICancellable"/>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="3">
+        <label>endstone::ActorEvent&lt; Actor &gt;</label>
+        <link refid="classendstone_1_1ActorEvent"/>
+        <childnode refid="4" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>endstone::Cancellable&lt; ActorEvent&lt; Actor &gt; &gt;</label>
+        <link refid="classendstone_1_1Cancellable"/>
+        <childnode refid="3" relation="public-inheritance">
+        </childnode>
+        <childnode refid="5" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="1">
+        <label>endstone::ActorPickupItemEvent</label>
+        <link refid="classendstone_1_1ActorPickupItemEvent"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="4">
+        <label>endstone::Event</label>
+        <link refid="classendstone_1_1Event"/>
+      </node>
+      <node id="5">
+        <label>endstone::ICancellable</label>
+        <link refid="classendstone_1_1ICancellable"/>
+      </node>
+    </collaborationgraph>
+    <location file="include/endstone/event/actor/actor_pickup_item_event.h" line="28" column="1" bodyfile="include/endstone/event/actor/actor_pickup_item_event.h" bodystart="28" bodyend="54"/>
+    <listofallmembers>
+      <member refid="classendstone_1_1ActorEvent_1a6a5b746c518c92c1b7898f9f5839fc04" prot="public" virt="non-virtual"><scope>endstone::ActorPickupItemEvent</scope><name>ActorEvent</name></member>
+      <member refid="classendstone_1_1ActorPickupItemEvent_1ae1961b8a38ffe92f84273375bef3f03c" prot="public" virt="non-virtual"><scope>endstone::ActorPickupItemEvent</scope><name>ActorPickupItemEvent</name></member>
+      <member refid="classendstone_1_1ActorPickupItemEvent_1ac2663af9a81b6aa53e7aecb5aa539d32" prot="private" virt="non-virtual"><scope>endstone::ActorPickupItemEvent</scope><name>amount_</name></member>
+      <member refid="classendstone_1_1Cancellable_1a3512b47db69c6001f5c0450051308327" prot="public" virt="virtual"><scope>endstone::ActorPickupItemEvent</scope><name>cancel</name></member>
+      <member refid="classendstone_1_1ActorPickupItemEvent_1a4a0854ba1827eeb7a97cbe1eff3dd9e6" prot="public" virt="non-virtual"><scope>endstone::ActorPickupItemEvent</scope><name>ENDSTONE_EVENT</name></member>
+      <member refid="classendstone_1_1Event_1a28cca8d74920493b449d035540acf023" prot="public" virt="non-virtual"><scope>endstone::ActorPickupItemEvent</scope><name>Event</name></member>
+      <member refid="classendstone_1_1Event_1a7199136ebb40e1441bc61e29f83c3cad" prot="public" virt="non-virtual"><scope>endstone::ActorPickupItemEvent</scope><name>Event</name></member>
+      <member refid="classendstone_1_1Event_1ad20bafd16e0671578e37390b95e5104c" prot="public" virt="non-virtual"><scope>endstone::ActorPickupItemEvent</scope><name>Event</name></member>
+      <member refid="classendstone_1_1ActorEvent_1adcf86b581365bde3aa12c3c76029f035" prot="public" virt="non-virtual"><scope>endstone::ActorPickupItemEvent</scope><name>getActor</name></member>
+      <member refid="classendstone_1_1ActorEvent_1a7a63d377ca9e669fbac6e7c9305e1ddb" prot="public" virt="non-virtual"><scope>endstone::ActorPickupItemEvent</scope><name>getActorType</name></member>
+      <member refid="classendstone_1_1ActorPickupItemEvent_1a408832ef18f50b0f331abaea0b7edd38" prot="public" virt="non-virtual"><scope>endstone::ActorPickupItemEvent</scope><name>getAmount</name></member>
+      <member refid="classendstone_1_1Event_1a826fe74f9c4195a36a364b9aeeb321bb" prot="public" virt="pure-virtual"><scope>endstone::ActorPickupItemEvent</scope><name>getEventName</name></member>
+      <member refid="classendstone_1_1ActorPickupItemEvent_1a0d3dfe88782d62202c9eb984cea83aa7" prot="public" virt="non-virtual"><scope>endstone::ActorPickupItemEvent</scope><name>getItem</name></member>
+      <member refid="classendstone_1_1Event_1ae89b54f63dc32b0c8797a59db69b6931" prot="public" virt="non-virtual"><scope>endstone::ActorPickupItemEvent</scope><name>isAsynchronous</name></member>
+      <member refid="classendstone_1_1Cancellable_1a268b73cc5bda0fa5923336d031814faa" prot="public" virt="virtual"><scope>endstone::ActorPickupItemEvent</scope><name>isCancelled</name></member>
+      <member refid="classendstone_1_1ActorPickupItemEvent_1aa6e06ab8cd94332ddcec267bed1f7289" prot="private" virt="non-virtual"><scope>endstone::ActorPickupItemEvent</scope><name>item_</name></member>
+      <member refid="classendstone_1_1Event_1a44a4ff424a8b690c01a2afe10ae68d8f" prot="public" virt="non-virtual"><scope>endstone::ActorPickupItemEvent</scope><name>operator=</name></member>
+      <member refid="classendstone_1_1Event_1a1d7fc5400782d20be99a3636aa7f53b9" prot="public" virt="non-virtual"><scope>endstone::ActorPickupItemEvent</scope><name>operator=</name></member>
+      <member refid="classendstone_1_1Cancellable_1aa12df44bcb66924d06a689d0dd07865e" prot="public" virt="virtual"><scope>endstone::ActorPickupItemEvent</scope><name>setCancelled</name></member>
+      <member refid="classendstone_1_1ActorEvent_1a9fff5524effc04e99bb28d49a9b37b6f" prot="public" virt="non-virtual"><scope>endstone::ActorPickupItemEvent</scope><name>~ActorEvent</name></member>
+      <member refid="classendstone_1_1Event_1a6aeaa8096baba90f8ace94106e0e05f3" prot="public" virt="virtual"><scope>endstone::ActorPickupItemEvent</scope><name>~Event</name></member>
+      <member refid="classendstone_1_1ICancellable_1ab6d311fcaa18971f69a1b23f5a856301" prot="public" virt="virtual"><scope>endstone::ActorPickupItemEvent</scope><name>~ICancellable</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

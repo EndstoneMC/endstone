@@ -1,0 +1,96 @@
+
+
+# File actor\_change\_block\_event.h
+
+
+
+[**FileList**](files.md) **>** [**actor**](dir_621c26b5fd4198aba66e7e31570ce44a.md) **>** [**actor\_change\_block\_event.h**](actor__change__block__event_8h.md)
+
+[Go to the source code of this file](actor__change__block__event_8h_source.md)
+
+
+
+* `#include <memory>`
+* `#include <utility>`
+* `#include "endstone/block/block.h"`
+* `#include "endstone/event/actor/actor_event.h"`
+* `#include "endstone/event/cancellable.h"`
+
+
+
+
+
+
+
+
+
+
+
+
+
+## Namespaces
+
+| Type | Name |
+| ---: | :--- |
+| namespace | [**endstone**](namespaceendstone.md) <br>_Represents a button with text and an optional icon._  |
+
+
+## Classes
+
+| Type | Name |
+| ---: | :--- |
+| class | [**ActorChangeBlockEvent**](classendstone_1_1ActorChangeBlockEvent.md) <br>_Called when an_ [_**Actor**_](classendstone_1_1Actor.md) _changes a block as part of its own behaviour, such as a creeper exploding, an enderman picking a block up, a ravager trampling crops or a zombie breaking a door._ |
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+------------------------------
+The documentation for this class was generated from the following file `include/endstone/event/actor/actor_change_block_event.h`
+

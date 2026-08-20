@@ -177,6 +177,8 @@
         </childnode>
         <childnode refid="42" relation="include">
         </childnode>
+        <childnode refid="43" relation="include">
+        </childnode>
       </node>
       <node id="16">
         <label>include/endstone/event/player/player_exp_change_event.h</label>
@@ -241,6 +243,10 @@
         <link refid="player__pickup__arrow__event_8h_source"/>
       </node>
       <node id="33">
+        <label>include/endstone/event/player/player_pickup_experience_event.h</label>
+        <link refid="player__pickup__experience__event_8h_source"/>
+      </node>
+      <node id="34">
         <label>include/endstone/event/player/player_pickup_item_event.h</label>
         <link refid="player__pickup__item__event_8h_source"/>
       </node>
@@ -248,23 +254,23 @@
         <label>include/endstone/event/player/player_portal_event.h</label>
         <link refid="player__portal__event_8h_source"/>
       </node>
-      <node id="34">
+      <node id="35">
         <label>include/endstone/event/player/player_quit_event.h</label>
         <link refid="player__quit__event_8h_source"/>
       </node>
-      <node id="35">
+      <node id="36">
         <label>include/endstone/event/player/player_recipe_book_settings_change_event.h</label>
         <link refid="player__recipe__book__settings__change__event_8h_source"/>
       </node>
-      <node id="36">
+      <node id="37">
         <label>include/endstone/event/player/player_respawn_event.h</label>
         <link refid="player__respawn__event_8h_source"/>
       </node>
-      <node id="37">
+      <node id="38">
         <label>include/endstone/event/player/player_riptide_event.h</label>
         <link refid="player__riptide__event_8h_source"/>
       </node>
-      <node id="38">
+      <node id="39">
         <label>include/endstone/event/player/player_skin_change_event.h</label>
         <link refid="player__skin__change__event_8h_source"/>
       </node>
@@ -274,19 +280,19 @@
         <childnode refid="31" relation="include">
         </childnode>
       </node>
-      <node id="39">
+      <node id="40">
         <label>include/endstone/event/player/player_toggle_crawl_event.h</label>
         <link refid="player__toggle__crawl__event_8h_source"/>
       </node>
-      <node id="40">
+      <node id="41">
         <label>include/endstone/event/player/player_toggle_flight_event.h</label>
         <link refid="player__toggle__flight__event_8h_source"/>
       </node>
-      <node id="41">
+      <node id="42">
         <label>include/endstone/event/player/player_toggle_sneak_event.h</label>
         <link refid="player__toggle__sneak__event_8h_source"/>
       </node>
-      <node id="42">
+      <node id="43">
         <label>include/endstone/event/player/player_toggle_sprint_event.h</label>
         <link refid="player__toggle__sprint__event_8h_source"/>
       </node>
@@ -301,10 +307,10 @@
         <link refid="divider_8h"/>
         <childnode refid="2" relation="include">
         </childnode>
-        <childnode refid="43" relation="include">
+        <childnode refid="44" relation="include">
         </childnode>
       </node>
-      <node id="43">
+      <node id="44">
         <label>include/endstone/form/modal_form.h</label>
         <link refid="modal__form_8h_source"/>
         <childnode refid="3" relation="include">

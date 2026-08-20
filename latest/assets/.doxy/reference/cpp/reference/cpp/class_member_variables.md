@@ -6,7 +6,9 @@
 ## a
 
 * **actors\_** ([**endstone::ActorCollideWithActorEvent**](classendstone_1_1ActorCollideWithActorEvent.md))
+* **action\_** ([**endstone::ActorEffectEvent**](classendstone_1_1ActorEffectEvent.md), [**endstone::PlayerInteractEvent**](classendstone_1_1PlayerInteractEvent.md))
 * **actor\_** ([**endstone::ActorEvent**](classendstone_1_1ActorEvent.md), [**endstone::PlayerBucketActorEvent**](classendstone_1_1PlayerBucketActorEvent.md), [**endstone::PlayerInteractActorEvent**](classendstone_1_1PlayerInteractActorEvent.md))
+* **amount\_** ([**endstone::ActorPickupItemEvent**](classendstone_1_1ActorPickupItemEvent.md), [**endstone::AttributeModifier**](classendstone_1_1AttributeModifier.md), [**endstone::PlayerExpChangeEvent**](classendstone_1_1PlayerExpChangeEvent.md), [**endstone::PlayerPickupExperienceEvent**](classendstone_1_1PlayerPickupExperienceEvent.md))
 * **Agent** ([**endstone::ActorType**](classendstone_1_1ActorType.md))
 * **Allay** ([**endstone::ActorType**](classendstone_1_1ActorType.md))
 * **AreaEffectCloud** ([**endstone::ActorType**](classendstone_1_1ActorType.md))
@@ -16,7 +18,6 @@
 * **Axolotl** ([**endstone::ActorType**](classendstone_1_1ActorType.md))
 * **Absorption** ([**endstone::Attribute**](classendstone_1_1Attribute.md), [**endstone::EffectType**](classendstone_1_1EffectType.md))
 * **AttackDamage** ([**endstone::Attribute**](classendstone_1_1Attribute.md))
-* **amount\_** ([**endstone::AttributeModifier**](classendstone_1_1AttributeModifier.md), [**endstone::PlayerExpChangeEvent**](classendstone_1_1PlayerExpChangeEvent.md))
 * **Air** ([**endstone::BlockType**](classendstone_1_1BlockType.md), [**endstone::ItemType**](classendstone_1_1ItemType.md))
 * **alpha\_** ([**endstone::Color**](classendstone_1_1Color.md))
 * **Aqua** ([**endstone::ColorFormat**](structendstone_1_1ColorFormat.md))
@@ -28,7 +29,6 @@
 * **address\_** ([**endstone::IpBanEntry**](classendstone_1_1IpBanEntry.md), [**endstone::PacketReceiveEvent**](classendstone_1_1PacketReceiveEvent.md), [**endstone::PacketSendEvent**](classendstone_1_1PacketSendEvent.md), [**endstone::ServerListPingEvent**](classendstone_1_1ServerListPingEvent.md))
 * **attachment\_** ([**endstone::PermissionAttachmentInfo**](classendstone_1_1PermissionAttachmentInfo.md))
 * **armor\_stand\_item\_** ([**endstone::PlayerArmorStandManipulateEvent**](classendstone_1_1PlayerArmorStandManipulateEvent.md))
-* **action\_** ([**endstone::PlayerInteractEvent**](classendstone_1_1PlayerInteractEvent.md))
 * **arrow\_** ([**endstone::PlayerPickupArrowEvent**](classendstone_1_1PlayerPickupArrowEvent.md))
 * **api\_version\_** ([**endstone::PluginDescription**](classendstone_1_1PluginDescription.md))
 * **authors\_** ([**endstone::PluginDescription**](classendstone_1_1PluginDescription.md))
@@ -38,6 +38,7 @@
 
 ## b
 
+* **block\_** ([**endstone::ActorChangeBlockEvent**](classendstone_1_1ActorChangeBlockEvent.md), [**endstone::BlockEvent**](classendstone_1_1BlockEvent.md))
 * **blocks\_** ([**endstone::ActorExplodeEvent**](classendstone_1_1ActorExplodeEvent.md), [**endstone::BlockExplodeEvent**](classendstone_1_1BlockExplodeEvent.md))
 * **Balloon** ([**endstone::ActorType**](classendstone_1_1ActorType.md))
 * **Bat** ([**endstone::ActorType**](classendstone_1_1ActorType.md))
@@ -47,7 +48,6 @@
 * **Bogged** ([**endstone::ActorType**](classendstone_1_1ActorType.md))
 * **Breeze** ([**endstone::ActorType**](classendstone_1_1ActorType.md))
 * **BreezeWindChargeProjectile** ([**endstone::ActorType**](classendstone_1_1ActorType.md))
-* **block\_** ([**endstone::BlockEvent**](classendstone_1_1BlockEvent.md))
 * **BIT\_MASK** ([**endstone::Color**](classendstone_1_1Color.md))
 * **blue\_** ([**endstone::Color**](classendstone_1_1Color.md))
 * **Black** ([**endstone::ColorFormat**](structendstone_1_1ColorFormat.md))
@@ -165,6 +165,7 @@
 
 ## e
 
+* **effect\_** ([**endstone::ActorEffectEvent**](classendstone_1_1ActorEffectEvent.md))
 * **Egg** ([**endstone::ActorType**](classendstone_1_1ActorType.md))
 * **ElderGuardian** ([**endstone::ActorType**](classendstone_1_1ActorType.md))
 * **ElderGuardianGhost** ([**endstone::ActorType**](classendstone_1_1ActorType.md))
@@ -251,6 +252,7 @@
 
 ## i
 
+* **item\_** ([**endstone::ActorPickupItemEvent**](classendstone_1_1ActorPickupItemEvent.md), [**endstone::PlayerArmSwingEvent**](classendstone_1_1PlayerArmSwingEvent.md), [**endstone::PlayerInteractEvent**](classendstone_1_1PlayerInteractEvent.md), [**endstone::PlayerItemConsumeEvent**](classendstone_1_1PlayerItemConsumeEvent.md), [**endstone::PlayerPickupItemEvent**](classendstone_1_1PlayerPickupItemEvent.md), [**endstone::PlayerRiptideEvent**](classendstone_1_1PlayerRiptideEvent.md))
 * **IceBomb** ([**endstone::ActorType**](classendstone_1_1ActorType.md))
 * **IronGolem** ([**endstone::ActorType**](classendstone_1_1ActorType.md))
 * **Item** ([**endstone::ActorType**](classendstone_1_1ActorType.md))
@@ -266,7 +268,6 @@
 * **ignore\_cancelled\_** ([**endstone::EventHandler**](classendstone_1_1EventHandler.md))
 * **impl\_** ([**endstone::ItemStack**](classendstone_1_1ItemStack.md))
 * **is\_contextual\_** ([**endstone::MapRenderer**](classendstone_1_1MapRenderer.md))
-* **item\_** ([**endstone::PlayerArmSwingEvent**](classendstone_1_1PlayerArmSwingEvent.md), [**endstone::PlayerInteractEvent**](classendstone_1_1PlayerInteractEvent.md), [**endstone::PlayerItemConsumeEvent**](classendstone_1_1PlayerItemConsumeEvent.md), [**endstone::PlayerPickupItemEvent**](classendstone_1_1PlayerPickupItemEvent.md), [**endstone::PlayerRiptideEvent**](classendstone_1_1PlayerRiptideEvent.md))
 * **input\_** ([**endstone::PlayerInputEvent**](classendstone_1_1PlayerInputEvent.md))
 * **is\_filtering\_** ([**endstone::PlayerRecipeBookSettingsChangeEvent**](classendstone_1_1PlayerRecipeBookSettingsChangeEvent.md))
 * **is\_open\_** ([**endstone::PlayerRecipeBookSettingsChangeEvent**](classendstone_1_1PlayerRecipeBookSettingsChangeEvent.md))
@@ -599,6 +600,7 @@
 
 ## v
 
+* **vehicle\_** ([**endstone::ActorDismountEvent**](classendstone_1_1ActorDismountEvent.md))
 * **Vex** ([**endstone::ActorType**](classendstone_1_1ActorType.md))
 * **Villager** ([**endstone::ActorType**](classendstone_1_1ActorType.md))
 * **VillagerV2** ([**endstone::ActorType**](classendstone_1_1ActorType.md))

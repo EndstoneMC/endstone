@@ -173,6 +173,10 @@
          <lastmod>2026-08-20</lastmod>
     </url>
     <url>
+         <loc>https://endstone.dev/latest/reference/cpp/classendstone_1_1ActorChangeBlockEvent/</loc>
+         <lastmod>2026-08-20</lastmod>
+    </url>
+    <url>
          <loc>https://endstone.dev/latest/reference/cpp/classendstone_1_1ActorCollideWithActorEvent/</loc>
          <lastmod>2026-08-20</lastmod>
     </url>
@@ -185,6 +189,14 @@
          <lastmod>2026-08-20</lastmod>
     </url>
     <url>
+         <loc>https://endstone.dev/latest/reference/cpp/classendstone_1_1ActorDismountEvent/</loc>
+         <lastmod>2026-08-20</lastmod>
+    </url>
+    <url>
+         <loc>https://endstone.dev/latest/reference/cpp/classendstone_1_1ActorEffectEvent/</loc>
+         <lastmod>2026-08-20</lastmod>
+    </url>
+    <url>
          <loc>https://endstone.dev/latest/reference/cpp/classendstone_1_1ActorEvent/</loc>
          <lastmod>2026-08-20</lastmod>
     </url>
@@ -194,6 +206,10 @@
     </url>
     <url>
          <loc>https://endstone.dev/latest/reference/cpp/classendstone_1_1ActorKnockbackEvent/</loc>
+         <lastmod>2026-08-20</lastmod>
+    </url>
+    <url>
+         <loc>https://endstone.dev/latest/reference/cpp/classendstone_1_1ActorPickupItemEvent/</loc>
          <lastmod>2026-08-20</lastmod>
     </url>
     <url>
@@ -762,6 +778,10 @@
     </url>
     <url>
          <loc>https://endstone.dev/latest/reference/cpp/classendstone_1_1PlayerPickupArrowEvent/</loc>
+         <lastmod>2026-08-20</lastmod>
+    </url>
+    <url>
+         <loc>https://endstone.dev/latest/reference/cpp/classendstone_1_1PlayerPickupExperienceEvent/</loc>
          <lastmod>2026-08-20</lastmod>
     </url>
     <url>
@@ -1653,6 +1673,14 @@
          <lastmod>2026-08-20</lastmod>
     </url>
     <url>
+         <loc>https://endstone.dev/latest/reference/cpp/actor__change__block__event_8h/</loc>
+         <lastmod>2026-08-20</lastmod>
+    </url>
+    <url>
+         <loc>https://endstone.dev/latest/reference/cpp/actor__change__block__event_8h_source/</loc>
+         <lastmod>2026-08-20</lastmod>
+    </url>
+    <url>
          <loc>https://endstone.dev/latest/reference/cpp/actor__collide__with__actor__event_8h/</loc>
          <lastmod>2026-08-20</lastmod>
     </url>
@@ -1677,6 +1705,22 @@
          <lastmod>2026-08-20</lastmod>
     </url>
     <url>
+         <loc>https://endstone.dev/latest/reference/cpp/actor__dismount__event_8h/</loc>
+         <lastmod>2026-08-20</lastmod>
+    </url>
+    <url>
+         <loc>https://endstone.dev/latest/reference/cpp/actor__dismount__event_8h_source/</loc>
+         <lastmod>2026-08-20</lastmod>
+    </url>
+    <url>
+         <loc>https://endstone.dev/latest/reference/cpp/actor__effect__event_8h/</loc>
+         <lastmod>2026-08-20</lastmod>
+    </url>
+    <url>
+         <loc>https://endstone.dev/latest/reference/cpp/actor__effect__event_8h_source/</loc>
+         <lastmod>2026-08-20</lastmod>
+    </url>
+    <url>
          <loc>https://endstone.dev/latest/reference/cpp/actor__event_8h/</loc>
          <lastmod>2026-08-20</lastmod>
     </url>
@@ -1698,6 +1742,14 @@
     </url>
     <url>
          <loc>https://endstone.dev/latest/reference/cpp/actor__knockback__event_8h_source/</loc>
+         <lastmod>2026-08-20</lastmod>
+    </url>
+    <url>
+         <loc>https://endstone.dev/latest/reference/cpp/actor__pickup__item__event_8h/</loc>
+         <lastmod>2026-08-20</lastmod>
+    </url>
+    <url>
+         <loc>https://endstone.dev/latest/reference/cpp/actor__pickup__item__event_8h_source/</loc>
          <lastmod>2026-08-20</lastmod>
     </url>
     <url>
@@ -2098,6 +2150,14 @@
     </url>
     <url>
          <loc>https://endstone.dev/latest/reference/cpp/player__pickup__arrow__event_8h_source/</loc>
+         <lastmod>2026-08-20</lastmod>
+    </url>
+    <url>
+         <loc>https://endstone.dev/latest/reference/cpp/player__pickup__experience__event_8h/</loc>
+         <lastmod>2026-08-20</lastmod>
+    </url>
+    <url>
+         <loc>https://endstone.dev/latest/reference/cpp/player__pickup__experience__event_8h_source/</loc>
          <lastmod>2026-08-20</lastmod>
     </url>
     <url>

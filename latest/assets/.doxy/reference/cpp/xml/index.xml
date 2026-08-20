@@ -47,6 +47,12 @@
     <member refid="classendstone_1_1Actor_1a29bb3fe504b2b2bffd749a0d9ef1ed92" kind="function"><name>getScoreTag</name></member>
     <member refid="classendstone_1_1Actor_1adeec376304cd5900f6c848f9e946320e" kind="function"><name>setScoreTag</name></member>
   </compound>
+  <compound refid="classendstone_1_1ActorChangeBlockEvent" kind="class"><name>endstone::ActorChangeBlockEvent</name>
+    <member refid="classendstone_1_1ActorChangeBlockEvent_1a22cfc125955a74a6f82b81c92f8c12e3" kind="variable"><name>block_</name></member>
+    <member refid="classendstone_1_1ActorChangeBlockEvent_1af4f2135519524cee1426932ba4721995" kind="function"><name>ENDSTONE_EVENT</name></member>
+    <member refid="classendstone_1_1ActorChangeBlockEvent_1ac46aa2af328ffd963d191b06fb620cb5" kind="function"><name>ActorChangeBlockEvent</name></member>
+    <member refid="classendstone_1_1ActorChangeBlockEvent_1aa3e66f2bbc4d10570489f6d62d2dd6c8" kind="function"><name>getBlock</name></member>
+  </compound>
   <compound refid="classendstone_1_1ActorCollideWithActorEvent" kind="class"><name>endstone::ActorCollideWithActorEvent</name>
     <member refid="classendstone_1_1ActorCollideWithActorEvent_1a885b836e6bb87731c1336d63f0c1a9d4" kind="variable"><name>actors_</name></member>
     <member refid="classendstone_1_1ActorCollideWithActorEvent_1a8ee49a66fa920a4853a7b529cb05f94b" kind="function"><name>ENDSTONE_EVENT</name></member>
@@ -67,6 +73,23 @@
     <member refid="classendstone_1_1ActorDeathEvent_1a2c2b7162128bb50eae25b3c924a80207" kind="function"><name>ENDSTONE_EVENT</name></member>
     <member refid="classendstone_1_1ActorDeathEvent_1abdde8b189cb9b332a588c0dbac4d3368" kind="function"><name>ActorDeathEvent</name></member>
     <member refid="classendstone_1_1ActorDeathEvent_1ac269e4dac094cf1275a1fe60302872ed" kind="function"><name>getDamageSource</name></member>
+  </compound>
+  <compound refid="classendstone_1_1ActorDismountEvent" kind="class"><name>endstone::ActorDismountEvent</name>
+    <member refid="classendstone_1_1ActorDismountEvent_1abb29a685ac58692e853c9fdc1637dd1f" kind="variable"><name>vehicle_</name></member>
+    <member refid="classendstone_1_1ActorDismountEvent_1a3652ba918777eca55b8ee901f50cfd3a" kind="function"><name>ENDSTONE_EVENT</name></member>
+    <member refid="classendstone_1_1ActorDismountEvent_1afdcc553fed641deac5db1ac3d8ad18bf" kind="function"><name>ActorDismountEvent</name></member>
+    <member refid="classendstone_1_1ActorDismountEvent_1a725afb1095517a5051658217ee8fccef" kind="function"><name>getVehicle</name></member>
+  </compound>
+  <compound refid="classendstone_1_1ActorEffectEvent" kind="class"><name>endstone::ActorEffectEvent</name>
+    <member refid="classendstone_1_1ActorEffectEvent_1aef8d98810d5f8cc2d142fed35ea817d4" kind="enum"><name>Action</name></member>
+    <member refid="classendstone_1_1ActorEffectEvent_1aef8d98810d5f8cc2d142fed35ea817d4af29ddbfb905eb2593fdcdfb243f9af85" kind="enumvalue"><name>Added</name></member>
+    <member refid="classendstone_1_1ActorEffectEvent_1a7097476427914263dd80fefa896c7377" kind="variable"><name>action_</name></member>
+    <member refid="classendstone_1_1ActorEffectEvent_1aa5e7d9c0b7d0bca9c80db29d3c76da72" kind="variable"><name>effect_</name></member>
+    <member refid="classendstone_1_1ActorEffectEvent_1a2c3ceb9082d6bfd8c0495b8078007a1a" kind="function"><name>ENDSTONE_EVENT</name></member>
+    <member refid="classendstone_1_1ActorEffectEvent_1a0bbf240d3820500c041984305380ea21" kind="function"><name>ActorEffectEvent</name></member>
+    <member refid="classendstone_1_1ActorEffectEvent_1ad89927f999e39be42686fcfbcf796223" kind="function"><name>getAction</name></member>
+    <member refid="classendstone_1_1ActorEffectEvent_1a7e9ccc3c327d7c0e16064904d71a7d63" kind="function"><name>getEffect</name></member>
+    <member refid="classendstone_1_1ActorEffectEvent_1ae3033c2ff83f1d92086dafa9c0b2844d" kind="function"><name>setEffect</name></member>
   </compound>
   <compound refid="classendstone_1_1ActorEvent" kind="class"><name>endstone::ActorEvent</name>
     <member refid="classendstone_1_1ActorEvent_1ad44ede38a423c374d4f7256ea7cc3d3b" kind="variable"><name>actor_</name></member>
@@ -95,6 +118,14 @@
     <member refid="classendstone_1_1ActorKnockbackEvent_1a372cc255b48e708e6062e763dfdba4b1" kind="function"><name>getSource</name></member>
     <member refid="classendstone_1_1ActorKnockbackEvent_1aa141894e58254a8afe5f28d19d7aed02" kind="function"><name>getKnockback</name></member>
     <member refid="classendstone_1_1ActorKnockbackEvent_1a4d0589c39958cc0b744f76ba1d6e7714" kind="function"><name>setKnockback</name></member>
+  </compound>
+  <compound refid="classendstone_1_1ActorPickupItemEvent" kind="class"><name>endstone::ActorPickupItemEvent</name>
+    <member refid="classendstone_1_1ActorPickupItemEvent_1aa6e06ab8cd94332ddcec267bed1f7289" kind="variable"><name>item_</name></member>
+    <member refid="classendstone_1_1ActorPickupItemEvent_1ac2663af9a81b6aa53e7aecb5aa539d32" kind="variable"><name>amount_</name></member>
+    <member refid="classendstone_1_1ActorPickupItemEvent_1a4a0854ba1827eeb7a97cbe1eff3dd9e6" kind="function"><name>ENDSTONE_EVENT</name></member>
+    <member refid="classendstone_1_1ActorPickupItemEvent_1ae1961b8a38ffe92f84273375bef3f03c" kind="function"><name>ActorPickupItemEvent</name></member>
+    <member refid="classendstone_1_1ActorPickupItemEvent_1a0d3dfe88782d62202c9eb984cea83aa7" kind="function"><name>getItem</name></member>
+    <member refid="classendstone_1_1ActorPickupItemEvent_1a408832ef18f50b0f331abaea0b7edd38" kind="function"><name>getAmount</name></member>
   </compound>
   <compound refid="classendstone_1_1ActorRemoveEvent" kind="class"><name>endstone::ActorRemoveEvent</name>
     <member refid="classendstone_1_1ActorRemoveEvent_1a853848cbbafca10075888538955a29cb" kind="function"><name>ENDSTONE_EVENT</name></member>
@@ -2252,6 +2283,12 @@
     <member refid="classendstone_1_1PlayerPickupArrowEvent_1a312fb90c5b7e91449f8add5d94d1030f" kind="function"><name>PlayerPickupArrowEvent</name></member>
     <member refid="classendstone_1_1PlayerPickupArrowEvent_1a08925c7d72368c4f8159eff2288f9e28" kind="function"><name>getArrow</name></member>
   </compound>
+  <compound refid="classendstone_1_1PlayerPickupExperienceEvent" kind="class"><name>endstone::PlayerPickupExperienceEvent</name>
+    <member refid="classendstone_1_1PlayerPickupExperienceEvent_1ae1f09cc0d8e6dcb7739b30082eab6eb6" kind="variable"><name>amount_</name></member>
+    <member refid="classendstone_1_1PlayerPickupExperienceEvent_1a5812aad0d9d35528b5afb37830fd4618" kind="function"><name>ENDSTONE_EVENT</name></member>
+    <member refid="classendstone_1_1PlayerPickupExperienceEvent_1a2a5b9cc823f71d64392e2ac37e0e9f54" kind="function"><name>PlayerPickupExperienceEvent</name></member>
+    <member refid="classendstone_1_1PlayerPickupExperienceEvent_1a3762ae864995b5a804018a083605d51b" kind="function"><name>getAmount</name></member>
+  </compound>
   <compound refid="classendstone_1_1PlayerPickupItemEvent" kind="class"><name>endstone::PlayerPickupItemEvent</name>
     <member refid="classendstone_1_1PlayerPickupItemEvent_1a4f3fc142ea17ae48dbf8e336d7a4b875" kind="variable"><name>item_</name></member>
     <member refid="classendstone_1_1PlayerPickupItemEvent_1af8d09456f82338437efebcc77773909b" kind="function"><name>ENDSTONE_EVENT</name></member>
@@ -3295,17 +3332,25 @@
   </compound>
   <compound refid="enchantment_8h" kind="file"><name>enchantment.h</name>
   </compound>
+  <compound refid="actor__change__block__event_8h" kind="file"><name>actor_change_block_event.h</name>
+  </compound>
   <compound refid="actor__collide__with__actor__event_8h" kind="file"><name>actor_collide_with_actor_event.h</name>
   </compound>
   <compound refid="actor__damage__event_8h" kind="file"><name>actor_damage_event.h</name>
   </compound>
   <compound refid="actor__death__event_8h" kind="file"><name>actor_death_event.h</name>
   </compound>
+  <compound refid="actor__dismount__event_8h" kind="file"><name>actor_dismount_event.h</name>
+  </compound>
+  <compound refid="actor__effect__event_8h" kind="file"><name>actor_effect_event.h</name>
+  </compound>
   <compound refid="actor__event_8h" kind="file"><name>actor_event.h</name>
   </compound>
   <compound refid="actor__explode__event_8h" kind="file"><name>actor_explode_event.h</name>
   </compound>
   <compound refid="actor__knockback__event_8h" kind="file"><name>actor_knockback_event.h</name>
+  </compound>
+  <compound refid="actor__pickup__item__event_8h" kind="file"><name>actor_pickup_item_event.h</name>
   </compound>
   <compound refid="actor__remove__event_8h" kind="file"><name>actor_remove_event.h</name>
   </compound>
@@ -3413,6 +3458,8 @@
   <compound refid="player__move__event_8h" kind="file"><name>player_move_event.h</name>
   </compound>
   <compound refid="player__pickup__arrow__event_8h" kind="file"><name>player_pickup_arrow_event.h</name>
+  </compound>
+  <compound refid="player__pickup__experience__event_8h" kind="file"><name>player_pickup_experience_event.h</name>
   </compound>
   <compound refid="player__pickup__item__event_8h" kind="file"><name>player_pickup_item_event.h</name>
   </compound>

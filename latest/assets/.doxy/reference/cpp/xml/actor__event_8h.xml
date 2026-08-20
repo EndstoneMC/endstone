@@ -5,10 +5,14 @@
     <includes refid="actor_8h" local="yes">endstone/actor/actor.h</includes>
     <includes refid="event_8h" local="yes">endstone/event/event.h</includes>
     <includes refid="pointers_8h" local="yes">endstone/util/pointers.h</includes>
+    <includedby refid="actor__change__block__event_8h" local="yes">include/endstone/event/actor/actor_change_block_event.h</includedby>
     <includedby refid="actor__damage__event_8h" local="yes">include/endstone/event/actor/actor_damage_event.h</includedby>
     <includedby refid="actor__death__event_8h" local="yes">include/endstone/event/actor/actor_death_event.h</includedby>
+    <includedby refid="actor__dismount__event_8h" local="yes">include/endstone/event/actor/actor_dismount_event.h</includedby>
+    <includedby refid="actor__effect__event_8h" local="yes">include/endstone/event/actor/actor_effect_event.h</includedby>
     <includedby refid="actor__explode__event_8h" local="yes">include/endstone/event/actor/actor_explode_event.h</includedby>
     <includedby refid="actor__knockback__event_8h" local="yes">include/endstone/event/actor/actor_knockback_event.h</includedby>
+    <includedby refid="actor__pickup__item__event_8h" local="yes">include/endstone/event/actor/actor_pickup_item_event.h</includedby>
     <includedby refid="actor__remove__event_8h" local="yes">include/endstone/event/actor/actor_remove_event.h</includedby>
     <includedby refid="actor__spawn__event_8h" local="yes">include/endstone/event/actor/actor_spawn_event.h</includedby>
     <includedby refid="actor__teleport__event_8h" local="yes">include/endstone/event/actor/actor_teleport_event.h</includedby>
@@ -762,14 +766,26 @@
     </incdepgraph>
     <invincdepgraph>
       <node id="2">
+        <label>include/endstone/event/actor/actor_change_block_event.h</label>
+        <link refid="actor__change__block__event_8h_source"/>
+      </node>
+      <node id="3">
         <label>include/endstone/event/actor/actor_damage_event.h</label>
         <link refid="actor__damage__event_8h_source"/>
       </node>
-      <node id="3">
+      <node id="4">
         <label>include/endstone/event/actor/actor_death_event.h</label>
         <link refid="actor__death__event_8h_source"/>
-        <childnode refid="4" relation="include">
+        <childnode refid="5" relation="include">
         </childnode>
+      </node>
+      <node id="6">
+        <label>include/endstone/event/actor/actor_dismount_event.h</label>
+        <link refid="actor__dismount__event_8h_source"/>
+      </node>
+      <node id="7">
+        <label>include/endstone/event/actor/actor_effect_event.h</label>
+        <link refid="actor__effect__event_8h_source"/>
       </node>
       <node id="1">
         <label>include/endstone/event/actor/actor_event.h</label>
@@ -778,7 +794,7 @@
         </childnode>
         <childnode refid="3" relation="include">
         </childnode>
-        <childnode refid="5" relation="include">
+        <childnode refid="4" relation="include">
         </childnode>
         <childnode refid="6" relation="include">
         </childnode>
@@ -792,36 +808,48 @@
         </childnode>
         <childnode refid="11" relation="include">
         </childnode>
+        <childnode refid="12" relation="include">
+        </childnode>
+        <childnode refid="13" relation="include">
+        </childnode>
+        <childnode refid="14" relation="include">
+        </childnode>
+        <childnode refid="15" relation="include">
+        </childnode>
       </node>
-      <node id="5">
+      <node id="8">
         <label>include/endstone/event/actor/actor_explode_event.h</label>
         <link refid="actor__explode__event_8h_source"/>
       </node>
-      <node id="6">
+      <node id="9">
         <label>include/endstone/event/actor/actor_knockback_event.h</label>
         <link refid="actor__knockback__event_8h_source"/>
       </node>
-      <node id="7">
+      <node id="10">
+        <label>include/endstone/event/actor/actor_pickup_item_event.h</label>
+        <link refid="actor__pickup__item__event_8h_source"/>
+      </node>
+      <node id="11">
         <label>include/endstone/event/actor/actor_remove_event.h</label>
         <link refid="actor__remove__event_8h_source"/>
       </node>
-      <node id="8">
+      <node id="12">
         <label>include/endstone/event/actor/actor_spawn_event.h</label>
         <link refid="actor__spawn__event_8h_source"/>
       </node>
-      <node id="9">
+      <node id="13">
         <label>include/endstone/event/actor/actor_teleport_event.h</label>
         <link refid="actor__teleport__event_8h_source"/>
       </node>
-      <node id="10">
+      <node id="14">
         <label>include/endstone/event/actor/actor_toggle_glide_event.h</label>
         <link refid="actor__toggle__glide__event_8h_source"/>
       </node>
-      <node id="11">
+      <node id="15">
         <label>include/endstone/event/actor/actor_toggle_swim_event.h</label>
         <link refid="actor__toggle__swim__event_8h_source"/>
       </node>
-      <node id="4">
+      <node id="5">
         <label>include/endstone/event/actor/player_death_event.h</label>
         <link refid="player__death__event_8h_source"/>
       </node>

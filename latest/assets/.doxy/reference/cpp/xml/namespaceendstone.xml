@@ -4,12 +4,16 @@
     <compoundname>endstone</compoundname>
     <innerclass refid="classendstone_1_1ActionForm" prot="public">endstone::ActionForm</innerclass>
     <innerclass refid="classendstone_1_1Actor" prot="public">endstone::Actor</innerclass>
+    <innerclass refid="classendstone_1_1ActorChangeBlockEvent" prot="public">endstone::ActorChangeBlockEvent</innerclass>
     <innerclass refid="classendstone_1_1ActorCollideWithActorEvent" prot="public">endstone::ActorCollideWithActorEvent</innerclass>
     <innerclass refid="classendstone_1_1ActorDamageEvent" prot="public">endstone::ActorDamageEvent</innerclass>
     <innerclass refid="classendstone_1_1ActorDeathEvent" prot="public">endstone::ActorDeathEvent</innerclass>
+    <innerclass refid="classendstone_1_1ActorDismountEvent" prot="public">endstone::ActorDismountEvent</innerclass>
+    <innerclass refid="classendstone_1_1ActorEffectEvent" prot="public">endstone::ActorEffectEvent</innerclass>
     <innerclass refid="classendstone_1_1ActorEvent" prot="public">endstone::ActorEvent</innerclass>
     <innerclass refid="classendstone_1_1ActorExplodeEvent" prot="public">endstone::ActorExplodeEvent</innerclass>
     <innerclass refid="classendstone_1_1ActorKnockbackEvent" prot="public">endstone::ActorKnockbackEvent</innerclass>
+    <innerclass refid="classendstone_1_1ActorPickupItemEvent" prot="public">endstone::ActorPickupItemEvent</innerclass>
     <innerclass refid="classendstone_1_1ActorRemoveEvent" prot="public">endstone::ActorRemoveEvent</innerclass>
     <innerclass refid="classendstone_1_1ActorSpawnEvent" prot="public">endstone::ActorSpawnEvent</innerclass>
     <innerclass refid="classendstone_1_1ActorTeleportEvent" prot="public">endstone::ActorTeleportEvent</innerclass>
@@ -153,6 +157,7 @@
     <innerclass refid="classendstone_1_1PlayerLoginEvent" prot="public">endstone::PlayerLoginEvent</innerclass>
     <innerclass refid="classendstone_1_1PlayerMoveEvent" prot="public">endstone::PlayerMoveEvent</innerclass>
     <innerclass refid="classendstone_1_1PlayerPickupArrowEvent" prot="public">endstone::PlayerPickupArrowEvent</innerclass>
+    <innerclass refid="classendstone_1_1PlayerPickupExperienceEvent" prot="public">endstone::PlayerPickupExperienceEvent</innerclass>
     <innerclass refid="classendstone_1_1PlayerPickupItemEvent" prot="public">endstone::PlayerPickupItemEvent</innerclass>
     <innerclass refid="classendstone_1_1PlayerPortalEvent" prot="public">endstone::PlayerPortalEvent</innerclass>
     <innerclass refid="classendstone_1_1PlayerQuitEvent" prot="public">endstone::PlayerQuitEvent</innerclass>

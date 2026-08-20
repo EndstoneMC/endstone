@@ -39,12 +39,16 @@ _Represents a button with text and an optional icon._
 | ---: | :--- |
 | class | [**ActionForm**](classendstone_1_1ActionForm.md) <br>_Represents a form with buttons that let the player take action._  |
 | class | [**Actor**](classendstone_1_1Actor.md) <br>_Represents a base actor in the level._  |
+| class | [**ActorChangeBlockEvent**](classendstone_1_1ActorChangeBlockEvent.md) <br>_Called when an_ [_**Actor**_](classendstone_1_1Actor.md) _changes a block as part of its own behaviour, such as a creeper exploding, an enderman picking a block up, a ravager trampling crops or a zombie breaking a door._ |
 | class | [**ActorCollideWithActorEvent**](classendstone_1_1ActorCollideWithActorEvent.md) <br>_Called when two Actors collide with each other._  |
 | class | [**ActorDamageEvent**](classendstone_1_1ActorDamageEvent.md) <br>_Called when an_ [_**Actor**_](classendstone_1_1Actor.md) _is damaged._ |
 | class | [**ActorDeathEvent**](classendstone_1_1ActorDeathEvent.md) <br>_Called when an_ [_**Actor**_](classendstone_1_1Actor.md) _dies._ |
+| class | [**ActorDismountEvent**](classendstone_1_1ActorDismountEvent.md) <br>_Called when an_ [_**Actor**_](classendstone_1_1Actor.md) _stops riding another_[_**Actor**_](classendstone_1_1Actor.md) _._ |
+| class | [**ActorEffectEvent**](classendstone_1_1ActorEffectEvent.md) <br>_Called when an effect on a_ [_**Mob**_](classendstone_1_1Mob.md) _changes._ |
 | class | [**ActorEvent**](classendstone_1_1ActorEvent.md) &lt;[**typename**](classendstone_1_1Identifier.md) [**ActorType**](classendstone_1_1ActorType.md)&gt;<br>_Represents an Actor-related event._  |
 | class | [**ActorExplodeEvent**](classendstone_1_1ActorExplodeEvent.md) <br>_Called when an actor explodes._  |
 | class | [**ActorKnockbackEvent**](classendstone_1_1ActorKnockbackEvent.md) <br>_Called when a living entity receives knockback._  |
+| class | [**ActorPickupItemEvent**](classendstone_1_1ActorPickupItemEvent.md) <br>_Called when an_ [_**Actor**_](classendstone_1_1Actor.md) _picks an item up from the ground._ |
 | class | [**ActorRemoveEvent**](classendstone_1_1ActorRemoveEvent.md) <br>_Called when an_ [_**Actor**_](classendstone_1_1Actor.md) _is removed._ |
 | class | [**ActorSpawnEvent**](classendstone_1_1ActorSpawnEvent.md) <br>_Called when an_ [_**Actor**_](classendstone_1_1Actor.md) _is spawned into a world._ |
 | class | [**ActorTeleportEvent**](classendstone_1_1ActorTeleportEvent.md) <br>_Called when a non-player entity is teleported from one location to another._  |
@@ -187,6 +191,7 @@ _Represents a button with text and an optional icon._
 | class | [**PlayerLoginEvent**](classendstone_1_1PlayerLoginEvent.md) <br>_Called when a player attempts to login in._  |
 | class | [**PlayerMoveEvent**](classendstone_1_1PlayerMoveEvent.md) <br>_Called when a player moves._  |
 | class | [**PlayerPickupArrowEvent**](classendstone_1_1PlayerPickupArrowEvent.md) <br>_Called when a player picks up an arrow or a thrown trident from the ground._  |
+| class | [**PlayerPickupExperienceEvent**](classendstone_1_1PlayerPickupExperienceEvent.md) <br>_Called when a player picks up an experience orb._  |
 | class | [**PlayerPickupItemEvent**](classendstone_1_1PlayerPickupItemEvent.md) <br>_Called when a player picks an item up from the ground._  |
 | class | [**PlayerPortalEvent**](classendstone_1_1PlayerPortalEvent.md) <br>_Called when a player is about to teleport because it is in contact with a portal._  |
 | class | [**PlayerQuitEvent**](classendstone_1_1PlayerQuitEvent.md) <br>_Called when a player leaves a server._  |
