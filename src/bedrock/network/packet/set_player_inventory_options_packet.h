@@ -14,8 +14,6 @@
 
 #pragma once
 
-#include <stdexcept>
-
 #include "bedrock/bedrock.h"
 #include "bedrock/network/packet.h"
 #include "bedrock/world/inventory/inventory_options.h"
@@ -27,14 +25,6 @@ BEDROCK_STATIC_ASSERT_SIZE(SetPlayerInventoryOptionsPacketPayload, 20, 20);
 
 class SetPlayerInventoryOptionsPacket : public Packet {
 public:
-    [[nodiscard]] MinecraftPacketIds getId() const override
-    {
-        return MinecraftPacketIds::SetPlayerInventoryOptions;
-    }
-    [[nodiscard]] std::string_view getName() const override { return "SetPlayerInventoryOptionsPacket"; }
-    void write(BinaryStream &stream) const override { throw std::logic_error("Not implemented"); }
-    Bedrock::Result<void> _read(ReadOnlyBinaryStream &stream) override { throw std::logic_error("Not implemented"); }
-
     SetPlayerInventoryOptionsPacketPayload payload;
     SerializationMode serialization_mode;
 };

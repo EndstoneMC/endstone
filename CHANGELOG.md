@@ -29,6 +29,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Added `PlayerRespawnEvent.respawn_reason` (`RespawnReason.DEATH` / `RespawnReason.END_PORTAL`) so plugins can tell a normal death respawn apart from a player returning through the End exit portal.
 - Added `PlayerLevelChangeEvent`, called when a player's experience level changes, reporting `old_level` and `new_level`.
 - Added `PlayerPickupArrowEvent`, called when a player picks up an arrow or a thrown trident from the ground. Cancelling it leaves the projectile on the ground.
+- Added `PlayerRecipeBookSettingsChangeEvent`, called when a player opens, closes or filters their recipe book, reporting `recipe_book_type`, `is_open` and `is_filtering`.
 - Added a `Container` block state for reading and modifying container blocks such as chests, barrels, hoppers, dispensers, droppers, shulker boxes and furnaces, exposing their items via `container.inventory`.
 - Added a `CreatureSpawner` block state for monster spawners: `spawned_type`, `delay`, `min_spawn_delay`, `max_spawn_delay`, `spawn_count`, `max_nearby_entities`, `required_player_range` and `spawn_range`, all matching their Bukkit counterparts.
 - Added a `Campfire` block state for the four cooking slots of a campfire, with `get_item()`/`set_item()` and `get_cook_time()`/`set_cook_time()`.

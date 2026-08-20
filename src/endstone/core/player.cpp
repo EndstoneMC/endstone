@@ -772,10 +772,15 @@ bool EndstonePlayer::handlePacket(Packet &packet)
             return true;
         }
 
+        const auto is_open = options.layout_inv == InventoryLayout::Default ||
+                             options.layout_inv == InventoryLayout::RecipeBookOnly ||
+                             options.layout_craft == InventoryLayout::Default ||
+                             options.layout_craft == InventoryLayout::RecipeBookOnly;
+
         PlayerRecipeBookSettingsChangeEvent e{
             getSelf(),
             PlayerRecipeBookSettingsChangeEvent::RecipeBookType::Crafting,
-            options.layout_inv != InventoryLayout::InventoryOnly,
+            is_open,
             options.filtering,
         };
         getServer().getPluginManager().callEvent(e);
