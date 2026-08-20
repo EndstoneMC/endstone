@@ -5603,6 +5603,7 @@ and this project adheres to <a href="https://semver.org/spec/v2.0.0.html">Semant
 <li><strong>BREAKING</strong>: <code>Block.type</code>, <code>BlockState.type</code> and <code>BlockData.type</code> return a <code>BlockType</code> instead of a string, matching <code>ItemStack.type</code>. It still compares equal to its <code>"namespace:key"</code> string and stringifies to it, but is no longer a <code>str</code>.</li>
 <li><code>str()</code> on <code>BlockType</code>, <code>Enchantment</code> and <code>ItemType</code> returns a plain <code>"namespace:key"</code> string instead of the underlying <code>Identifier</code> repr.</li>
 <li><code>Block.set_type</code>, <code>BlockState.type</code>, <code>Server.create_block_data</code> and <code>Inventory.contains</code>/<code>contains_at_least</code>/<code>all</code>/<code>first</code>/<code>remove</code> take an <code>Identifier</code> (e.g. <code>BlockType.AIR</code>) instead of a plain string, matching <code>ItemStack.type</code> and <code>Dimension.spawn_actor</code>. Plain <code>"namespace:key"</code> strings are still accepted.</li>
+<li>Dropped Python 3.10 support (end-of-life). Minimum version is now Python 3.11.</li>
 </ul>
 <h3 id="fixed">Fixed<a class="headerlink" href="#fixed" title="Permanent link">&para;</a></h3>
 <ul>
