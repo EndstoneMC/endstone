@@ -379,7 +379,6 @@
 * **getXuid** ([**endstone::Player**](classendstone_1_1Player.md), [**endstone::PlayerBanEntry**](classendstone_1_1PlayerBanEntry.md))
 * **giveExp** ([**endstone::Player**](classendstone_1_1Player.md))
 * **giveExpLevels** ([**endstone::Player**](classendstone_1_1Player.md))
-* **getSwingSource** ([**endstone::PlayerArmSwingEvent**](classendstone_1_1PlayerArmSwingEvent.md))
 * **getBed** ([**endstone::PlayerBedEnterEvent**](classendstone_1_1PlayerBedEnterEvent.md), [**endstone::PlayerBedLeaveEvent**](classendstone_1_1PlayerBedLeaveEvent.md))
 * **getFormat** ([**endstone::PlayerChatEvent**](classendstone_1_1PlayerChatEvent.md))
 * **getDeathMessage** ([**endstone::PlayerDeathEvent**](classendstone_1_1PlayerDeathEvent.md))

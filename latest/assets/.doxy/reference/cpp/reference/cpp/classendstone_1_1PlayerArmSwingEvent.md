@@ -29,11 +29,6 @@ Inherits the following classes: [endstone::PlayerEvent](classendstone_1_1PlayerE
 
 
 
-## Public Types
-
-| Type | Name |
-| ---: | :--- |
-| enum  | [**SwingSource**](#enum-swingsource)  <br>_An enum to specify what the player was doing when they swung their arm._  |
 
 
 
@@ -99,9 +94,8 @@ Inherits the following classes: [endstone::PlayerEvent](classendstone_1_1PlayerE
 | Type | Name |
 | ---: | :--- |
 |   | [**ENDSTONE\_EVENT**](#function-endstone_event) ([**PlayerArmSwingEvent**](classendstone_1_1PlayerArmSwingEvent.md)) <br> |
-|   | [**PlayerArmSwingEvent**](#function-playerarmswingevent) ([**const**](classendstone_1_1Identifier.md) [**NotNull**](classendstone_1_1NotNull.md)&lt; [**Player**](classendstone_1_1Player.md) &gt; & player, std::optional&lt; [**ItemStack**](classendstone_1_1ItemStack.md) &gt; item, [**SwingSource**](classendstone_1_1PlayerArmSwingEvent.md#enum-swingsource) swing\_source) <br> |
+|   | [**PlayerArmSwingEvent**](#function-playerarmswingevent) ([**const**](classendstone_1_1Identifier.md) [**NotNull**](classendstone_1_1NotNull.md)&lt; [**Player**](classendstone_1_1Player.md) &gt; & player, std::optional&lt; [**ItemStack**](classendstone_1_1ItemStack.md) &gt; item) <br> |
 |  [**const**](classendstone_1_1Identifier.md) std::optional&lt; [**ItemStack**](classendstone_1_1ItemStack.md) &gt; & | [**getItem**](#function-getitem) () const<br>_Gets the item the player was holding when they swung their arm._  |
-|  [**SwingSource**](classendstone_1_1PlayerArmSwingEvent.md#enum-swingsource) | [**getSwingSource**](#function-getswingsource) () const<br>_Gets what the player was doing when they swung their arm._  |
 
 
 ## Public Functions inherited from endstone::PlayerEvent
@@ -216,32 +210,6 @@ See [endstone::PlayerEvent](classendstone_1_1PlayerEvent.md)
 
 
 
-## Public Types Documentation
-
-
-
-
-### enum SwingSource 
-
-_An enum to specify what the player was doing when they swung their arm._ 
-```C++
-enum endstone::PlayerArmSwingEvent::SwingSource {
-    None,
-    Build,
-    Mine,
-    Interact,
-    Attack,
-    UseItem,
-    ThrowItem,
-    DropItem,
-    Event
-};
-```
-
-
-
-
-<hr>
 ## Public Functions Documentation
 
 
@@ -267,8 +235,7 @@ endstone::PlayerArmSwingEvent::ENDSTONE_EVENT (
 ```C++
 inline endstone::PlayerArmSwingEvent::PlayerArmSwingEvent (
     const  NotNull < Player > & player,
-    std::optional< ItemStack > item,
-    SwingSource swing_source
+    std::optional< ItemStack > item
 ) 
 ```
 
@@ -293,31 +260,6 @@ inline const std::optional< ItemStack > & endstone::PlayerArmSwingEvent::getItem
 **Returns:**
 
 the item in the player's hand, or std::nullopt if the hand was empty. 
-
-
-
-
-
-        
-
-<hr>
-
-
-
-### function getSwingSource 
-
-_Gets what the player was doing when they swung their arm._ 
-```C++
-inline SwingSource endstone::PlayerArmSwingEvent::getSwingSource () const
-```
-
-
-
-
-
-**Returns:**
-
-the source of this swing. 
 
 
 

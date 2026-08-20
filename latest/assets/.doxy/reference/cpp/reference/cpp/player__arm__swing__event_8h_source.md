@@ -34,32 +34,17 @@ namespace endstone {
 
 class PlayerArmSwingEvent final : public PlayerEvent {
 public:
-    enum class SwingSource {
-        None,
-        Build,
-        Mine,
-        Interact,
-        Attack,
-        UseItem,
-        ThrowItem,
-        DropItem,
-        Event,
-    };
-
     ENDSTONE_EVENT(PlayerArmSwingEvent);
 
-    PlayerArmSwingEvent(const NotNull<Player> &player, std::optional<ItemStack> item, SwingSource swing_source)
-        : PlayerEvent(player), item_(std::move(item)), swing_source_(swing_source)
+    PlayerArmSwingEvent(const NotNull<Player> &player, std::optional<ItemStack> item)
+        : PlayerEvent(player), item_(std::move(item))
     {
     }
 
     [[nodiscard]] const std::optional<ItemStack> &getItem() const { return item_; }
 
-    [[nodiscard]] SwingSource getSwingSource() const { return swing_source_; }
-
 private:
     std::optional<ItemStack> item_;
-    SwingSource swing_source_;
 };
 
 }  // namespace endstone

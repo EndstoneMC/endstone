@@ -33,7 +33,6 @@
 ## s
 
 * **Scale** ([**endstone::MapView**](classendstone_1_1MapView.md))
-* **SwingSource** ([**endstone::PlayerArmSwingEvent**](classendstone_1_1PlayerArmSwingEvent.md))
 * **Side** ([**endstone::Sign**](classendstone_1_1Sign.md))
 
 

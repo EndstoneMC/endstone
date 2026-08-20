@@ -4,94 +4,6 @@
     <compoundname>endstone::PlayerArmSwingEvent</compoundname>
     <basecompoundref refid="classendstone_1_1PlayerEvent" prot="public" virt="non-virtual">endstone::PlayerEvent</basecompoundref>
     <includes refid="player__arm__swing__event_8h" local="no">endstone/event/player/player_arm_swing_event.h</includes>
-    <sectiondef kind="public-type">
-      <memberdef kind="enum" id="classendstone_1_1PlayerArmSwingEvent_1aaa1e83c844cf4225bcdc0d6d51a967e3" prot="public" static="no" strong="yes">
-        <type></type>
-        <name>SwingSource</name>
-        <qualifiedname>endstone::PlayerArmSwingEvent::SwingSource</qualifiedname>
-        <enumvalue id="classendstone_1_1PlayerArmSwingEvent_1aaa1e83c844cf4225bcdc0d6d51a967e3a6adf97f83acf6453d4a6a4b1070f3754" prot="public">
-          <name>None</name>
-          <briefdescription>
-<para>No particular source. </para>
-          </briefdescription>
-          <detaileddescription>
-          </detaileddescription>
-        </enumvalue>
-        <enumvalue id="classendstone_1_1PlayerArmSwingEvent_1aaa1e83c844cf4225bcdc0d6d51a967e3ac74c1f42f141c011ca6bd8b1114fc3d0" prot="public">
-          <name>Build</name>
-          <briefdescription>
-<para>Placing a block. </para>
-          </briefdescription>
-          <detaileddescription>
-          </detaileddescription>
-        </enumvalue>
-        <enumvalue id="classendstone_1_1PlayerArmSwingEvent_1aaa1e83c844cf4225bcdc0d6d51a967e3afedc0e3f18d0ff5df1579ad5ce33ba5d" prot="public">
-          <name>Mine</name>
-          <briefdescription>
-<para>Mining a block. </para>
-          </briefdescription>
-          <detaileddescription>
-          </detaileddescription>
-        </enumvalue>
-        <enumvalue id="classendstone_1_1PlayerArmSwingEvent_1aaa1e83c844cf4225bcdc0d6d51a967e3aefbc873e4634f3db63d62377d36e5f56" prot="public">
-          <name>Interact</name>
-          <briefdescription>
-<para>Interacting with a block or an actor. </para>
-          </briefdescription>
-          <detaileddescription>
-          </detaileddescription>
-        </enumvalue>
-        <enumvalue id="classendstone_1_1PlayerArmSwingEvent_1aaa1e83c844cf4225bcdc0d6d51a967e3adcfafcb4323b102c7e204555d313ba0a" prot="public">
-          <name>Attack</name>
-          <briefdescription>
-<para>Attacking a target. </para>
-          </briefdescription>
-          <detaileddescription>
-          </detaileddescription>
-        </enumvalue>
-        <enumvalue id="classendstone_1_1PlayerArmSwingEvent_1aaa1e83c844cf4225bcdc0d6d51a967e3a47529dc6a8f4a0b93824f2252e5b033f" prot="public">
-          <name>UseItem</name>
-          <briefdescription>
-<para>Using the held item. </para>
-          </briefdescription>
-          <detaileddescription>
-          </detaileddescription>
-        </enumvalue>
-        <enumvalue id="classendstone_1_1PlayerArmSwingEvent_1aaa1e83c844cf4225bcdc0d6d51a967e3a957272939561cfd5fb2cbe7feb8fa11b" prot="public">
-          <name>ThrowItem</name>
-          <briefdescription>
-<para>Throwing the held item. </para>
-          </briefdescription>
-          <detaileddescription>
-          </detaileddescription>
-        </enumvalue>
-        <enumvalue id="classendstone_1_1PlayerArmSwingEvent_1aaa1e83c844cf4225bcdc0d6d51a967e3a235400933cc661b97aa57f2e40c8b3cd" prot="public">
-          <name>DropItem</name>
-          <briefdescription>
-<para>Dropping an item. </para>
-          </briefdescription>
-          <detaileddescription>
-          </detaileddescription>
-        </enumvalue>
-        <enumvalue id="classendstone_1_1PlayerArmSwingEvent_1aaa1e83c844cf4225bcdc0d6d51a967e3aa4ecfc70574394990cf17bd83df499f7" prot="public">
-          <name>Event</name>
-          <briefdescription>
-<para>Requested by the server, e.g. </para>
-          </briefdescription>
-          <detaileddescription>
-<para>by a script or an add-on. </para>
-          </detaileddescription>
-        </enumvalue>
-        <briefdescription>
-<para>An enum to specify what the player was doing when they swung their arm. </para>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
-        <location file="include/endstone/event/player/player_arm_swing_event.h" line="33" column="5" bodyfile="include/endstone/event/player/player_arm_swing_event.h" bodystart="33" bodyend="70"/>
-      </memberdef>
-    </sectiondef>
     <sectiondef kind="private-attrib">
       <memberdef kind="variable" id="classendstone_1_1PlayerArmSwingEvent_1ae372e830cd83417d237067dd8c7ea766" prot="private" static="no" mutable="no">
         <type>std::optional&lt; <ref refid="classendstone_1_1ItemStack" kindref="compound">ItemStack</ref> &gt;</type>
@@ -105,21 +17,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/event/player/player_arm_swing_event.h" line="94" column="19" bodyfile="include/endstone/event/player/player_arm_swing_event.h" bodystart="94" bodyend="-1"/>
-      </memberdef>
-      <memberdef kind="variable" id="classendstone_1_1PlayerArmSwingEvent_1a2cbc9ea4bf7448261c889b0a899d3b26" prot="private" static="no" mutable="no">
-        <type><ref refid="classendstone_1_1PlayerArmSwingEvent_1aaa1e83c844cf4225bcdc0d6d51a967e3" kindref="member">SwingSource</ref></type>
-        <definition>SwingSource endstone::PlayerArmSwingEvent::swing_source_</definition>
-        <argsstring></argsstring>
-        <name>swing_source_</name>
-        <qualifiedname>endstone::PlayerArmSwingEvent::swing_source_</qualifiedname>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
-        <location file="include/endstone/event/player/player_arm_swing_event.h" line="95" column="17" bodyfile="include/endstone/event/player/player_arm_swing_event.h" bodystart="95" bodyend="-1"/>
+        <location file="include/endstone/event/player/player_arm_swing_event.h" line="45" column="19" bodyfile="include/endstone/event/player/player_arm_swing_event.h" bodystart="45" bodyend="-1"/>
       </memberdef>
     </sectiondef>
     <sectiondef kind="public-func">
@@ -138,12 +36,12 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/event/player/player_arm_swing_event.h" line="72" column="5"/>
+        <location file="include/endstone/event/player/player_arm_swing_event.h" line="30" column="5"/>
       </memberdef>
-      <memberdef kind="function" id="classendstone_1_1PlayerArmSwingEvent_1a2b0c6997862ddeef2f8d732ddad4b32f" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+      <memberdef kind="function" id="classendstone_1_1PlayerArmSwingEvent_1a3cd746a0f01018d76a27245ff872f628" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type></type>
         <definition>endstone::PlayerArmSwingEvent::PlayerArmSwingEvent</definition>
-        <argsstring>(const NotNull&lt; Player &gt; &amp;player, std::optional&lt; ItemStack &gt; item, SwingSource swing_source)</argsstring>
+        <argsstring>(const NotNull&lt; Player &gt; &amp;player, std::optional&lt; ItemStack &gt; item)</argsstring>
         <name>PlayerArmSwingEvent</name>
         <qualifiedname>endstone::PlayerArmSwingEvent::PlayerArmSwingEvent</qualifiedname>
         <param>
@@ -154,17 +52,13 @@
           <type>std::optional&lt; <ref refid="classendstone_1_1ItemStack" kindref="compound">ItemStack</ref> &gt;</type>
           <declname>item</declname>
         </param>
-        <param>
-          <type><ref refid="classendstone_1_1PlayerArmSwingEvent_1aaa1e83c844cf4225bcdc0d6d51a967e3" kindref="member">SwingSource</ref></type>
-          <declname>swing_source</declname>
-        </param>
         <briefdescription>
         </briefdescription>
         <detaileddescription>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/event/player/player_arm_swing_event.h" line="74" column="5" bodyfile="include/endstone/event/player/player_arm_swing_event.h" bodystart="74" bodyend="77"/>
+        <location file="include/endstone/event/player/player_arm_swing_event.h" line="32" column="5" bodyfile="include/endstone/event/player/player_arm_swing_event.h" bodystart="32" bodyend="35"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1PlayerArmSwingEvent_1ab9890dda85df1fe8a1a12f43e62e4b10" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
         <type><ref refid="classendstone_1_1Identifier" kindref="compound">const</ref> std::optional&lt; <ref refid="classendstone_1_1ItemStack" kindref="compound">ItemStack</ref> &gt; &amp;</type>
@@ -182,25 +76,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/event/player/player_arm_swing_event.h" line="84" column="26" bodyfile="include/endstone/event/player/player_arm_swing_event.h" bodystart="84" bodyend="84"/>
-      </memberdef>
-      <memberdef kind="function" id="classendstone_1_1PlayerArmSwingEvent_1a98407c9e9abd459e49c92fa82c511ab0" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
-        <type><ref refid="classendstone_1_1PlayerArmSwingEvent_1aaa1e83c844cf4225bcdc0d6d51a967e3" kindref="member">SwingSource</ref></type>
-        <definition>SwingSource endstone::PlayerArmSwingEvent::getSwingSource</definition>
-        <argsstring>() const</argsstring>
-        <name>getSwingSource</name>
-        <qualifiedname>endstone::PlayerArmSwingEvent::getSwingSource</qualifiedname>
-        <briefdescription>
-<para>Gets what the player was doing when they swung their arm. </para>
-        </briefdescription>
-        <detaileddescription>
-<para><simplesect kind="return"><para>the source of this swing. </para>
-</simplesect>
-</para>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
-        <location file="include/endstone/event/player/player_arm_swing_event.h" line="91" column="18" bodyfile="include/endstone/event/player/player_arm_swing_event.h" bodystart="91" bodyend="91"/>
+        <location file="include/endstone/event/player/player_arm_swing_event.h" line="42" column="26" bodyfile="include/endstone/event/player/player_arm_swing_event.h" bodystart="42" bodyend="42"/>
       </memberdef>
     </sectiondef>
     <briefdescription>
@@ -251,7 +127,7 @@
         </childnode>
       </node>
     </collaborationgraph>
-    <location file="include/endstone/event/player/player_arm_swing_event.h" line="28" column="1" bodyfile="include/endstone/event/player/player_arm_swing_event.h" bodystart="28" bodyend="96"/>
+    <location file="include/endstone/event/player/player_arm_swing_event.h" line="28" column="1" bodyfile="include/endstone/event/player/player_arm_swing_event.h" bodystart="28" bodyend="46"/>
     <listofallmembers>
       <member refid="classendstone_1_1PlayerArmSwingEvent_1abe9be90ca9e103d0da1e827638b9075f" prot="public" virt="non-virtual"><scope>endstone::PlayerArmSwingEvent</scope><name>ENDSTONE_EVENT</name></member>
       <member refid="classendstone_1_1Event_1a28cca8d74920493b449d035540acf023" prot="public" virt="non-virtual"><scope>endstone::PlayerArmSwingEvent</scope><name>Event</name></member>
@@ -260,16 +136,13 @@
       <member refid="classendstone_1_1Event_1a826fe74f9c4195a36a364b9aeeb321bb" prot="public" virt="pure-virtual"><scope>endstone::PlayerArmSwingEvent</scope><name>getEventName</name></member>
       <member refid="classendstone_1_1PlayerArmSwingEvent_1ab9890dda85df1fe8a1a12f43e62e4b10" prot="public" virt="non-virtual"><scope>endstone::PlayerArmSwingEvent</scope><name>getItem</name></member>
       <member refid="classendstone_1_1PlayerEvent_1abad8f8bca3e2be851c4b37075adf2cbc" prot="public" virt="non-virtual"><scope>endstone::PlayerArmSwingEvent</scope><name>getPlayer</name></member>
-      <member refid="classendstone_1_1PlayerArmSwingEvent_1a98407c9e9abd459e49c92fa82c511ab0" prot="public" virt="non-virtual"><scope>endstone::PlayerArmSwingEvent</scope><name>getSwingSource</name></member>
       <member refid="classendstone_1_1Event_1ae89b54f63dc32b0c8797a59db69b6931" prot="public" virt="non-virtual"><scope>endstone::PlayerArmSwingEvent</scope><name>isAsynchronous</name></member>
       <member refid="classendstone_1_1PlayerArmSwingEvent_1ae372e830cd83417d237067dd8c7ea766" prot="private" virt="non-virtual"><scope>endstone::PlayerArmSwingEvent</scope><name>item_</name></member>
       <member refid="classendstone_1_1Event_1a44a4ff424a8b690c01a2afe10ae68d8f" prot="public" virt="non-virtual"><scope>endstone::PlayerArmSwingEvent</scope><name>operator=</name></member>
       <member refid="classendstone_1_1Event_1a1d7fc5400782d20be99a3636aa7f53b9" prot="public" virt="non-virtual"><scope>endstone::PlayerArmSwingEvent</scope><name>operator=</name></member>
       <member refid="classendstone_1_1PlayerEvent_1ae0f8240e8c7c3a66281295c43b1d522a" prot="protected" virt="non-virtual"><scope>endstone::PlayerArmSwingEvent</scope><name>player_</name></member>
-      <member refid="classendstone_1_1PlayerArmSwingEvent_1a2b0c6997862ddeef2f8d732ddad4b32f" prot="public" virt="non-virtual"><scope>endstone::PlayerArmSwingEvent</scope><name>PlayerArmSwingEvent</name></member>
+      <member refid="classendstone_1_1PlayerArmSwingEvent_1a3cd746a0f01018d76a27245ff872f628" prot="public" virt="non-virtual"><scope>endstone::PlayerArmSwingEvent</scope><name>PlayerArmSwingEvent</name></member>
       <member refid="classendstone_1_1PlayerEvent_1afee42449de6752241c5472a38f7d94a9" prot="public" virt="non-virtual"><scope>endstone::PlayerArmSwingEvent</scope><name>PlayerEvent</name></member>
-      <member refid="classendstone_1_1PlayerArmSwingEvent_1a2cbc9ea4bf7448261c889b0a899d3b26" prot="private" virt="non-virtual"><scope>endstone::PlayerArmSwingEvent</scope><name>swing_source_</name></member>
-      <member refid="classendstone_1_1PlayerArmSwingEvent_1aaa1e83c844cf4225bcdc0d6d51a967e3" prot="public" virt="non-virtual"><scope>endstone::PlayerArmSwingEvent</scope><name>SwingSource</name></member>
       <member refid="classendstone_1_1Event_1a6aeaa8096baba90f8ace94106e0e05f3" prot="public" virt="virtual"><scope>endstone::PlayerArmSwingEvent</scope><name>~Event</name></member>
       <member refid="classendstone_1_1PlayerEvent_1ab31b937251b8ccc1c72c275d1c7a522b" prot="public" virt="non-virtual"><scope>endstone::PlayerArmSwingEvent</scope><name>~PlayerEvent</name></member>
     </listofallmembers>
