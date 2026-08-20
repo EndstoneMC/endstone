@@ -748,3 +748,33 @@ extra = 0
 # 3. follow the thunk's jmp to WeatherManager::updateWeather and walk to its prologue
 # 4. confirm vs the old named DB
 pattern = "55 41 57 41 56 41 54 53 48 81 EC ? ? ? ? 89 D5 0F 29 4C 24"
+
+[[signatures]]
+name = "_ZN6Player9addLevelsEi"
+relative = false
+extra = 0
+# 1. no usable string; anchor on the two immediates the body bakes in - `48 69 ? 67 66 66 66`
+#    (imul <r>, <r>, 66666667h, the post-mutation `level % 5 == 0` level-up test) and
+#    `BA 3E 00 00 00` (mov edx, 3Eh = LevelSoundEvent 62, LevelUp). Exactly one function in the
+#    binary contains both; that function is addLevels
+# 2. its entry is `push rbp/r15/r14/r13/r12/rbx` / `sub rsp, 1C8h` / `mov ebp, esi` / `mov rbx, rdi`,
+#    then `lea <r>, Player::LEVEL` / `mov rsi, <r>` / `call Actor::getAttribute` /
+#    `cvttss2si r12d, [rax+7Ch]` - the pre-mutation LEVEL read that opens the body
+# 3. walk the body and check the order: `add r12d, ebp` / `js` picks the clamp branch; the clamp path
+#    does two `movss xmm0, [<r>+74h]` -> `movss [<r>+7Ch], xmm0` min-to-current copies (LEVEL then
+#    EXPERIENCE) and stores 0 and 7 into two adjacent Player fields; the other path passes
+#    `mov esi, 2` / `mov edx, 0Ch` to the InstantaneousAttributeBuff ctor and addBuffs it; then a
+#    second getAttribute + `cvttss2si r13d, [rax+7Ch]` reads the post value
+# 4. confirm identity on the event tail: `mov [rsp+N], ebp` / `mov [rsp+N+4], r13d` stores the raw
+#    `levels` argument and the post-mutation level as two adjacent ints, then `mov dword [rsp+M], 3`
+#    sets the variant index - index 3 is PlayerAddLevelEvent in the PlayerGameplayEvent<void> variant
+#    list - immediately before the call to PlayerEventCoordinator::sendEvent
+# 5. cross-check by reference shape: the function has no direct callers at all; its only references
+#    are three R_X86_64_RELATIVE slots in .data.rel.ro, at the same slot index in the vtables whose
+#    Itanium typeinfo names are `6Player`, `12ServerPlayer` and `15SimulatedPlayer` - re-derive the
+#    slot index rather than trusting a remembered offset
+# 6. unlike 1.21 there is no separate _addLevels body and no 5-byte addLevels thunk - _addLevels is
+#    folded in, so the vtable slot points straight at the full body
+# prologue through the pre-mutation `cvttss2si r12d, [rax+7Ch]` LEVEL read; the wildcarded `4C 8D` /
+# `4C 89` operands absorb the r14/r15 register swap seen at 1.26.33
+pattern = "55 41 57 41 56 41 55 41 54 53 48 81 EC C8 01 00 00 89 F5 48 89 FB 4C 8D ? ? ? ? ? 4C 89 ? E8 ? ? ? ? F3 44 0F 2C 60 7C"

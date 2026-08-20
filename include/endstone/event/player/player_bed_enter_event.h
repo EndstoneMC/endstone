@@ -25,8 +25,7 @@ namespace endstone {
  */
 class PlayerBedEnterEvent : public Cancellable<PlayerEvent> {
 public:
-    ENDSTONE_EVENT(PlayerBedEnterEvent)
-
+    ENDSTONE_EVENT(PlayerBedEnterEvent);
     explicit PlayerBedEnterEvent(const NotNull<Player> &player, Block &bed) : Cancellable(player), bed_(bed) {}
 
     // /**

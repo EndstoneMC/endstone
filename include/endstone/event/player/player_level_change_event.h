@@ -14,30 +14,39 @@
 
 #pragma once
 
-#include <utility>
-
-#include "endstone/event/cancellable.h"
 #include "endstone/event/player/player_event.h"
-#include "endstone/inventory/equipment_slot.h"
-#include "endstone/inventory/item_stack.h"
 
 namespace endstone {
+
 /**
- * Called when a player drops an item from their inventory.
+ * Called when a player's level changes.
  */
-class PlayerDropItemEvent final : public Cancellable<PlayerEvent> {
+class PlayerLevelChangeEvent final : public PlayerEvent {
 public:
-    ENDSTONE_EVENT(PlayerDropItemEvent);
-    explicit PlayerDropItemEvent(const NotNull<Player> &player, ItemStack drop) : Cancellable(player), drop_(std::move(drop)) {}
+    ENDSTONE_EVENT(PlayerLevelChangeEvent);
+
+    PlayerLevelChangeEvent(const NotNull<Player> &player, int old_level, int new_level)
+        : PlayerEvent(player), old_level_(old_level), new_level_(new_level)
+    {
+    }
 
     /**
-     * Gets the ItemStack dropped by the player.
+     * Gets the player's level before the change.
      *
-     * @return ItemDrop dropped by the player
+     * @return the player's previous level
      */
-    [[nodiscard]] const ItemStack &getItem() const { return drop_; }
+    [[nodiscard]] int getOldLevel() const { return old_level_; }
+
+    /**
+     * Gets the player's level after the change.
+     *
+     * @return the player's new level
+     */
+    [[nodiscard]] int getNewLevel() const { return new_level_; }
 
 private:
-    ItemStack drop_;
+    int old_level_;
+    int new_level_;
 };
+
 }  // namespace endstone

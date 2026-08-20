@@ -16,6 +16,7 @@
 
 #include <bitset>
 #include <memory>
+#include <memory>
 #include <set>
 #include <string>
 #include <utility>

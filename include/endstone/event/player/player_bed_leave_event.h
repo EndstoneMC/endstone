@@ -25,8 +25,7 @@ namespace endstone {
  */
 class PlayerBedLeaveEvent final : public PlayerEvent {
 public:
-    ENDSTONE_EVENT(PlayerBedLeaveEvent)
-
+    ENDSTONE_EVENT(PlayerBedLeaveEvent);
     explicit PlayerBedLeaveEvent(const NotNull<Player> &player, Block &bed) : PlayerEvent(player), bed_(bed) {}
     ~PlayerBedLeaveEvent() override = default;
 
