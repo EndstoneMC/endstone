@@ -40,4 +40,4 @@ private:
     bool no_capture_;
 };
 
-BEDROCK_STATIC_ASSERT_SIZE(ActorInteraction, 112, 112);
+BEDROCK_STATIC_ASSERT_SIZE(ActorInteraction, 104, 112);
