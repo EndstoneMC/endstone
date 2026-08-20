@@ -1,4 +1,3 @@
-import pytest
 from endstone import Player
 from endstone.actor import Actor, Mob
 
@@ -86,14 +85,14 @@ def test_a_removed_actor_becomes_invalid(player: Player) -> None:
     assert actor.is_valid is False
 
 
-def test_touching_a_removed_actor_raises(player: Player) -> None:
-    """Verify reading through a dead handle raises rather than corrupting memory."""
+def test_a_removed_actor_is_still_readable(player: Player) -> None:
+    """Verify a removed actor still reads, the way CraftEntity keeps handing back its entity."""
     actor = player.dimension.spawn_actor(player.location, "minecraft:chicken")
     assert actor is not None
     actor.remove()
 
-    with pytest.raises(RuntimeError):
-        _ = actor.location
+    assert actor.is_valid is False
+    assert actor.location is not None
 
 
 # =============================================================================

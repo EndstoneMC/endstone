@@ -19,6 +19,12 @@ REGISTRY_TYPES = [
     PotionType,
 ]
 
+# Bedrock ships no lang keys for these, so asking for a translation key raises.
+UNLOCALIZED_REGISTRY_TYPES = [
+    Biome,
+    GameRule,
+]
+
 FULLY_EXPORTED_REGISTRY_TYPES = [
     ActorType,
     EffectType,
@@ -67,11 +73,16 @@ def test_iteration(server: Server, registry_type):
     """Iterating a registry should yield entries with valid id and translation_key."""
     registry = server.get_registry(registry_type)
     assert len(registry) > 0, f"{registry_type.__name__} registry is empty"
+    unlocalized = registry_type in UNLOCALIZED_REGISTRY_TYPES
     for item in registry:
         assert item.id is not None
         assert ":" in str(item.id)
-        assert isinstance(item.translation_key, str)
-        assert len(item.translation_key) > 0
+        if unlocalized:
+            with pytest.raises(RuntimeError):
+                _ = item.translation_key
+        else:
+            assert isinstance(item.translation_key, str)
+            assert len(item.translation_key) > 0
 
 
 # =============================================================================

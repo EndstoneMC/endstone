@@ -111,6 +111,20 @@ Layout mechanics:
   definition with `#ifndef NO_UNIQUE_ADDRESS`. (This is how `SpinLockImpl`
   stays 24 bytes with its `std::hash` member.)
 
+Packets:
+- Reconstruct only the **layout** — the payload member, `serialization_mode`,
+  and the size assert. Don't override `getId`, `getName`, `write` or `_read`:
+  we never construct these by value, we `static_cast` a packet BDS already
+  built, so the overrides are dead weight that emit a vtable in our TU and pull
+  in `<stdexcept>` for bodies that only throw. `emote_packet.h` is the model.
+  The exception is a packet Endstone genuinely constructs and sends.
+
+Helpers:
+- **Don't add a one-use helper lambda or helper function** to factor out a
+  condition or a bit of formatting. Inline the expression, or bind it to a
+  plain `const auto` local named for the value, matching what the surrounding
+  function already does.
+
 Markers & faithfulness:
 - **`// Endstone` marks only things we invented or changed** (synthetic helpers,
   `// Endstone: private -> public`). A faithful re-declaration of a real BDS

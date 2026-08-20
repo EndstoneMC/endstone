@@ -70,11 +70,14 @@ __all__ = [
     "PlayerJoinEvent",
     "PlayerJumpEvent",
     "PlayerKickEvent",
+    "PlayerLevelChangeEvent",
     "PlayerLoginEvent",
     "PlayerMoveEvent",
+    "PlayerPickupArrowEvent",
     "PlayerPickupItemEvent",
     "PlayerPortalEvent",
     "PlayerQuitEvent",
+    "PlayerRecipeBookSettingsChangeEvent",
     "PlayerRespawnEvent",
     "PlayerSkinChangeEvent",
     "PlayerTeleportEvent",
@@ -667,7 +670,7 @@ class PlayerInputEvent(PlayerEvent):
 
 class PlayerInteractEvent(PlayerEvent, Cancellable):
     """
-    Represents an event that is called when a player interacts with an object or air.
+    Called when a player interacts with an object or air.
     """
     class Action(enum.Enum):
         """
@@ -730,7 +733,7 @@ class PlayerInteractEvent(PlayerEvent, Cancellable):
 
 class PlayerInteractActorEvent(PlayerEvent, Cancellable):
     """
-    Represents an event that is called when a player right-clicks an actor.
+    Called when a player right-clicks an actor.
     """
     @property
     def actor(self) -> Actor:
@@ -822,6 +825,22 @@ class PlayerKickEvent(PlayerEvent, Cancellable):
     @reason.setter
     def reason(self, arg1: str) -> None: ...
 
+class PlayerLevelChangeEvent(PlayerEvent):
+    """
+    Called when a player's level changes.
+    """
+    @property
+    def old_level(self) -> int:
+        """
+        The player's level before the change.
+        """
+
+    @property
+    def new_level(self) -> int:
+        """
+        The player's level after the change.
+        """
+
 class PlayerLoginEvent(PlayerEvent, Cancellable):
     """
     Called when a player attempts to login in.
@@ -874,6 +893,42 @@ class PlayerQuitEvent(PlayerEvent):
     @quit_message.setter
     def quit_message(self, arg1: str | Translatable | None) -> None: ...
 
+class PlayerRecipeBookSettingsChangeEvent(PlayerEvent):
+    """
+    Called when a player changes recipe book settings.
+    """
+    class RecipeBookType(enum.Enum):
+        """
+        The recipe book type.
+        """
+
+        CRAFTING = 0
+        FURNACE = 1
+        BLAST_FURNACE = 2
+        SMOKER = 3
+
+    CRAFTING = RecipeBookType.CRAFTING
+    FURNACE = RecipeBookType.FURNACE
+    BLAST_FURNACE = RecipeBookType.BLAST_FURNACE
+    SMOKER = RecipeBookType.SMOKER
+    @property
+    def recipe_book_type(self) -> RecipeBookType:
+        """
+        The type of recipe book whose settings changed.
+        """
+
+    @property
+    def is_filtering(self) -> bool:
+        """
+        Whether recipe filtering is enabled.
+        """
+
+    @property
+    def is_open(self) -> bool:
+        """
+        Whether the recipe book is open.
+        """
+
 class PlayerRespawnEvent(PlayerEvent):
     """
     Called when a player respawns.
@@ -922,6 +977,16 @@ class PlayerPortalEvent(PlayerTeleportEvent):
     """
     Called when a player is about to teleport because it is in contact with a portal.
     """
+
+class PlayerPickupArrowEvent(PlayerEvent, Cancellable):
+    """
+    Called when a player picks up an arrow or a thrown trident from the ground.
+    """
+    @property
+    def arrow(self) -> Actor:
+        """
+        The arrow picked up by the player.
+        """
 
 class PlayerPickupItemEvent(PlayerEvent, Cancellable):
     """

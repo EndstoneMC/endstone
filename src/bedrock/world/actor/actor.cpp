@@ -375,9 +375,11 @@ bool Actor::removeTag(const std::string &tag)
 int Actor::getHealth() const
 {
     if (const auto *component = entity_context_.tryGetComponent<AttributesComponent>(); component) {
-        const auto &instance = component->attributes.getInstance("minecraft:health");
-        const auto current_value = instance->getCurrentValue();
-        return static_cast<int>(std::ceilf(current_value));
+        const auto *instance = component->attributes.getInstance("minecraft:health");
+        if (!instance) {
+            throw std::runtime_error("Attribute not found by name: minecraft:health");
+        }
+        return static_cast<int>(std::ceilf(instance->getCurrentValue()));
     }
     return 0;
 }
@@ -385,9 +387,11 @@ int Actor::getHealth() const
 int Actor::getMaxHealth() const
 {
     if (const auto *component = entity_context_.tryGetComponent<AttributesComponent>(); component) {
-        const auto &instance = component->attributes.getInstance("minecraft:health");
-        const auto current_value = instance->getMaxValue();
-        return static_cast<int>(std::ceilf(current_value));
+        const auto *instance = component->attributes.getInstance("minecraft:health");
+        if (!instance) {
+            throw std::runtime_error("Attribute not found by name: minecraft:health");
+        }
+        return static_cast<int>(std::ceilf(instance->getMaxValue()));
     }
     return 0;
 }

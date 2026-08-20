@@ -86,6 +86,24 @@ auto constant(T value)
     };
 }
 
+// Every Registry<T>::Type carries the same identity surface. Bind it in one place so a new registry
+// type cannot quietly ship without it: comparing and hashing against the plain id string is what lets
+// a plugin write `actor.type == "minecraft:zombie"` or key a dict on either form.
+template <typename Class>
+Class def_registry_type(Class cls)
+{
+    using T = typename Class::type;
+    auto name = cls.attr("__name__").template cast<std::string>();
+    cls.def("__str__", [](const T &self) { return std::string(self.getId()); })
+        .def("__repr__", [name = std::move(name)](const T &self) { return std::format("{}({})", name, self.getId()); })
+        .def("__hash__", [](const T &self) { return py::hash(py::str(std::string(self.getId()))); })
+        .def(py::self == py::self)  // NOLINT(misc-redundant-expression)
+        .def(py::self != py::self)  // NOLINT(misc-redundant-expression)
+        .def(py::self == std::string_view())
+        .def(py::self != std::string_view());
+    return cls;
+}
+
 // The base is taken by value, so a derived id such as GameRuleId<T> slices to the type the caster binds.
 template <typename T>
 auto id(Identifier<T> value)

@@ -25,7 +25,7 @@
 namespace endstone {
 
 /**
- * Represents an event that is called when a player interacts with an object or air.
+ * Called when a player interacts with an object or air.
  */
 class PlayerInteractEvent : public Cancellable<PlayerEvent> {
 public:

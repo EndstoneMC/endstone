@@ -13,6 +13,9 @@ class Enchantment:
     """
     Represents an enchantment that may be added to armor, weapons, tools or other items.
     """
+    def __hash__(self) -> int: ...
+    def __eq__(self, other: object) -> bool: ...
+    def __ne__(self, other: object) -> bool: ...
 
     PROTECTION: Identifier[Enchantment] = "minecraft:protection"
     FIRE_PROTECTION: Identifier[Enchantment] = "minecraft:fire_protection"
@@ -32,6 +35,7 @@ class Enchantment:
     EFFICIENCY: Identifier[Enchantment] = "minecraft:efficiency"
     SILK_TOUCH: Identifier[Enchantment] = "minecraft:silk_touch"
     UNBREAKING: Identifier[Enchantment] = "minecraft:unbreaking"
+    FORTUNE: Identifier[Enchantment] = "minecraft:fortune"
     POWER: Identifier[Enchantment] = "minecraft:power"
     PUNCH: Identifier[Enchantment] = "minecraft:punch"
     FLAME: Identifier[Enchantment] = "minecraft:flame"
@@ -114,7 +118,3 @@ class Enchantment:
         Returns:
             The `Enchantment`, or `None` if not found.
         """
-
-    def __hash__(self) -> int: ...
-    def __eq__(self, other: object) -> bool: ...
-    def __ne__(self, other: object) -> bool: ...

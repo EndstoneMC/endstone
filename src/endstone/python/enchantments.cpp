@@ -22,8 +22,8 @@ namespace endstone::python {
 
 void init_enchantments(py::module_ &m)
 {
-    py::class_<Enchantment, std::shared_ptr<Enchantment>>(
-        m, "Enchantment", "Represents an enchantment that may be added to armor, weapons, tools or other items.")
+    def_registry_type(py::class_<Enchantment, std::shared_ptr<Enchantment>>(
+        m, "Enchantment", "Represents an enchantment that may be added to armor, weapons, tools or other items."))
         .def_property_readonly_static("PROTECTION", id(Enchantment::Protection),
                                       "Provides protection against environmental damage.")
         .def_property_readonly_static("FIRE_PROTECTION", id(Enchantment::FireProtection),
@@ -58,6 +58,8 @@ void init_enchantments(py::module_ &m)
             "Allows blocks to drop themselves instead of fragments (for example, stone instead of cobblestone).")
         .def_property_readonly_static("UNBREAKING", id(Enchantment::Unbreaking),
                                       "Decreases the rate at which a tool looses durability.")
+        .def_property_readonly_static("FORTUNE", id(Enchantment::Fortune),
+                                      "Provides a chance of gaining extra loot when destroying blocks.")
         .def_property_readonly_static("POWER", id(Enchantment::Power),
                                       "Provides extra damage when shooting arrows from bows.")
         .def_property_readonly_static("PUNCH", id(Enchantment::Punch),
@@ -132,13 +134,7 @@ void init_enchantments(py::module_ &m)
     Returns:
         The `Enchantment`, or `None` if not found.
 )doc",
-                    py::return_value_policy::reference)
-        .def("__str__", [](const Enchantment &self) { return std::string(self.getId()); })
-        .def("__hash__", [](const Enchantment &self) { return py::hash(py::str(std::string(self.getId()))); })
-        .def(py::self == py::self)
-        .def(py::self != py::self)
-        .def(py::self == std::string_view())
-        .def(py::self != std::string_view());
+                    py::return_value_policy::reference);
 }
 
 }  // namespace endstone::python
