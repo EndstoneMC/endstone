@@ -28,6 +28,7 @@
 #include "endstone/event/player/player_bed_leave_event.h"
 #include "endstone/event/player/player_drop_item_event.h"
 #include "endstone/event/player/player_item_consume_event.h"
+#include "endstone/event/player/player_exp_change_event.h"
 #include "endstone/event/player/player_level_change_event.h"
 #include "endstone/event/player/player_pickup_arrow_event.h"
 #include "endstone/event/player/player_pickup_item_event.h"
@@ -90,6 +91,14 @@ bool Player::drop(const ItemStack &item, bool randomly)
         }
     }
     return ENDSTONE_HOOK_CALL_ORIGINAL(&Player::drop, this, item, randomly);
+}
+
+void Player::addExperience(int amount)
+{
+    const auto &server = endstone::core::EndstoneServer::getInstance();
+    endstone::PlayerExpChangeEvent e{getEndstoneActor<endstone::core::EndstonePlayer>(), amount};
+    server.getPluginManager().callEvent(e);
+    ENDSTONE_HOOK_CALL_ORIGINAL(&Player::addExperience, this, e.getAmount());
 }
 
 void Player::addLevels(int levels)

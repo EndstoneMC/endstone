@@ -28,6 +28,7 @@
 #include "bedrock/world/events/player_events.h"
 #include "endstone/core/actor/mob.h"
 #include "endstone/core/inventory/player_inventory.h"
+#include "endstone/input.h"
 #include "endstone/player.h"
 #include "permissions/permissible_base.h"
 
@@ -154,6 +155,14 @@ private:
     void trackAndShowEntity(Actor &entity);
     void sendPlayerListRemove(const ::Player &player) const;
     void sendPlayerListAdd(std::int64_t unique_id) const;
+    struct RecipeBookSettings {
+        bool filtering;
+        int inventory_layout;
+        int crafting_layout;
+
+        bool operator==(const RecipeBookSettings &) const = default;
+    };
+
     std::shared_ptr<PermissibleBase> perm_;
     std::unique_ptr<EndstonePlayerInventory> inventory_;
     std::unique_ptr<EndstoneInventory> ender_chest_;
@@ -167,6 +176,8 @@ private:
     struct CachedPlayerListEntry {
         std::string payload;
     };
+    Input last_input_;
+    std::optional<RecipeBookSettings> last_recipe_book_settings_;
     bool spawned_ = false;
     bool last_op_status_ = false;
     std::unordered_map<std::int64_t, std::unordered_set<Plugin *>> hidden_entities_;
