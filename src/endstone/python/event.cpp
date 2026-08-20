@@ -350,6 +350,12 @@ void init_event(py::module_ &m, py::class_<Event, PyEvent> &event)
                                                            "Called when a player gets kicked from the server.")
         .def_property("reason", &PlayerKickEvent::getReason, &PlayerKickEvent::setReason,
                       "The reason why the player is getting kicked.");
+    py::class_<PlayerLevelChangeEvent, PlayerEvent>(m, "PlayerLevelChangeEvent",
+                                                    "Called when a player's level changes.")
+        .def_property_readonly("old_level", &PlayerLevelChangeEvent::getOldLevel,
+                               "The player's level before the change.")
+        .def_property_readonly("new_level", &PlayerLevelChangeEvent::getNewLevel,
+                               "The player's level after the change.");
     py::class_<PlayerLoginEvent, PlayerEvent, ICancellable>(m, "PlayerLoginEvent",
                                                             "Called when a player attempts to login in.")
         .def_property("kick_message", &PlayerLoginEvent::getKickMessage, &PlayerLoginEvent::setKickMessage,

@@ -35,6 +35,7 @@
 #include "endstone/event/actor/player_death_event.h"
 #include "endstone/event/player/player_dimension_change_event.h"
 #include "endstone/event/player/player_drop_item_event.h"
+#include "endstone/event/player/player_level_change_event.h"
 #include "endstone/event/player/player_emote_event.h"
 #include "endstone/event/player/player_game_mode_change_event.h"
 #include "endstone/event/player/player_interact_actor_event.h"
@@ -116,6 +117,18 @@ bool handleEvent(const PlayerFormCloseEvent &event)
 {
     if (auto *player = WeakEntityRef(event.player).tryUnwrap<::Player>(); player) {
         player->getEndstoneActor<endstone::core::EndstonePlayer>()->onFormClose(event.form_id, event.form_close_reason);
+    }
+    return true;
+}
+
+bool handleEvent(const PlayerAddLevelEvent &event)
+{
+    if (const auto *player = WeakEntityRef(event.player).tryUnwrap<::Player>(); player) {
+        auto &server = endstone::core::EndstoneServer::getInstance();
+        endstone::PlayerLevelChangeEvent level_event{
+            player->getEndstoneActor<endstone::core::EndstonePlayer>(), event.new_level - event.add_level,
+            event.new_level};
+        server.getPluginManager().callEvent(level_event);
     }
     return true;
 }
@@ -219,6 +232,7 @@ HandlerResult ScriptPlayerGameplayHandler::handleEvent1(const PlayerGameplayEven
         using T = std::decay_t<decltype(arg)>;
         if constexpr (std::is_same_v<T, Details::ValueOrRef<const PlayerDamageEvent>> ||
                       std::is_same_v<T, Details::ValueOrRef<const PlayerDisconnectEvent>> ||
+                      std::is_same_v<T, Details::ValueOrRef<const PlayerAddLevelEvent>> ||
                       std::is_same_v<T, Details::ValueOrRef<const PlayerFormResponseEvent>> ||
                       std::is_same_v<T, Details::ValueOrRef<const PlayerFormCloseEvent>> ||
                       std::is_same_v<T, Details::ValueOrRef<const ::PlayerRespawnEvent>> ||
