@@ -781,11 +781,6 @@ class PlayerJoinEvent(PlayerEvent):
     @join_message.setter
     def join_message(self, arg1: str | Translatable | None) -> None: ...
 
-class PlayerJumpEvent(PlayerMoveEvent):
-    """
-    Called when a player jumps.
-    """
-
 class PlayerKickEvent(PlayerEvent, Cancellable):
     """
     Called when a player gets kicked from the server.
@@ -849,6 +844,11 @@ class PlayerMoveEvent(PlayerEvent, Cancellable):
     @to_location.setter
     def to_location(self, arg1: Location) -> None: ...
 
+class PlayerJumpEvent(PlayerMoveEvent):
+    """
+    Called when a player jumps.
+    """
+
 class PlayerPickupArrowEvent(PlayerEvent, Cancellable):
     """
     Called when a player picks up an arrow from the ground.
@@ -868,11 +868,6 @@ class PlayerPickupItemEvent(PlayerEvent, Cancellable):
         """
         The Item picked up by the entity.
         """
-
-class PlayerPortalEvent(PlayerTeleportEvent):
-    """
-    Called when a player is about to teleport because it is in contact with a portal.
-    """
 
 class PlayerQuitEvent(PlayerEvent):
     """
@@ -948,6 +943,11 @@ class PlayerSkinChangeEvent(PlayerEvent, Cancellable):
 class PlayerTeleportEvent(PlayerMoveEvent):
     """
     Called when a player is teleported from one location to another.
+    """
+
+class PlayerPortalEvent(PlayerTeleportEvent):
+    """
+    Called when a player is about to teleport because it is in contact with a portal.
     """
 
 class PlayerToggleSneakEvent(PlayerEvent):
