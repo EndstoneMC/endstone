@@ -59,6 +59,7 @@
 * **BlastProtection** ([**endstone::Enchantment**](classendstone_1_1Enchantment.md))
 * **Breach** ([**endstone::Enchantment**](classendstone_1_1Enchantment.md))
 * **baked\_handlers\_** ([**endstone::HandlerList**](classendstone_1_1HandlerList.md))
+* **backward\_** ([**endstone::Input**](classendstone_1_1Input.md))
 * **button1\_text\_** ([**endstone::MessageForm**](classendstone_1_1MessageForm.md))
 * **button2\_text\_** ([**endstone::MessageForm**](classendstone_1_1MessageForm.md))
 * **bed\_** ([**endstone::PlayerBedEnterEvent**](classendstone_1_1PlayerBedEnterEvent.md), [**endstone::PlayerBedLeaveEvent**](classendstone_1_1PlayerBedLeaveEvent.md))
@@ -206,6 +207,7 @@
 * **FireDamage** ([**endstone::GameRule**](classendstone_1_1GameRule.md))
 * **FreezeDamage** ([**endstone::GameRule**](classendstone_1_1GameRule.md))
 * **FunctionCommandLimit** ([**endstone::GameRule**](classendstone_1_1GameRule.md))
+* **forward\_** ([**endstone::Input**](classendstone_1_1Input.md))
 * **format\_** ([**endstone::PlayerChatEvent**](classendstone_1_1PlayerChatEvent.md))
 * **full\_name\_** ([**endstone::PluginDescription**](classendstone_1_1PluginDescription.md))
 
@@ -259,6 +261,7 @@
 * **ignore\_cancelled\_** ([**endstone::EventHandler**](classendstone_1_1EventHandler.md))
 * **impl\_** ([**endstone::ItemStack**](classendstone_1_1ItemStack.md))
 * **is\_contextual\_** ([**endstone::MapRenderer**](classendstone_1_1MapRenderer.md))
+* **input\_** ([**endstone::PlayerInputEvent**](classendstone_1_1PlayerInputEvent.md))
 * **item\_** ([**endstone::PlayerInteractEvent**](classendstone_1_1PlayerInteractEvent.md), [**endstone::PlayerItemConsumeEvent**](classendstone_1_1PlayerItemConsumeEvent.md), [**endstone::PlayerPickupItemEvent**](classendstone_1_1PlayerPickupItemEvent.md))
 * **is\_filtering\_** ([**endstone::PlayerRecipeBookSettingsChangeEvent**](classendstone_1_1PlayerRecipeBookSettingsChangeEvent.md))
 * **is\_open\_** ([**endstone::PlayerRecipeBookSettingsChangeEvent**](classendstone_1_1PlayerRecipeBookSettingsChangeEvent.md))
@@ -269,6 +272,7 @@
 
 * **JumpStrength** ([**endstone::Attribute**](classendstone_1_1Attribute.md))
 * **JumpBoost** ([**endstone::EffectType**](classendstone_1_1EffectType.md))
+* **jump\_** ([**endstone::Input**](classendstone_1_1Input.md))
 * **join\_message\_** ([**endstone::PlayerJoinEvent**](classendstone_1_1PlayerJoinEvent.md))
 
 
@@ -300,6 +304,7 @@
 * **Lunge** ([**endstone::Enchantment**](classendstone_1_1Enchantment.md))
 * **Lure** ([**endstone::Enchantment**](classendstone_1_1Enchantment.md))
 * **LocatorBar** ([**endstone::GameRule**](classendstone_1_1GameRule.md))
+* **left\_** ([**endstone::Input**](classendstone_1_1Input.md))
 * **level\_** ([**endstone::LevelEvent**](classendstone_1_1LevelEvent.md), [**endstone::WeatherEvent**](classendstone_1_1WeatherEvent.md))
 * **loader\_** ([**endstone::Plugin**](classendstone_1_1Plugin.md))
 * **logger\_** ([**endstone::Plugin**](classendstone_1_1Plugin.md))
@@ -482,6 +487,7 @@
 * **RandomTickSpeed** ([**endstone::GameRule**](classendstone_1_1GameRule.md))
 * **RecipesUnlock** ([**endstone::GameRule**](classendstone_1_1GameRule.md))
 * **RespawnBlocksExplode** ([**endstone::GameRule**](classendstone_1_1GameRule.md))
+* **right\_** ([**endstone::Input**](classendstone_1_1Input.md))
 * **removed\_** ([**endstone::PermissionAttachment**](classendstone_1_1PermissionAttachment.md))
 * **recipe\_book\_type\_** ([**endstone::PlayerRecipeBookSettingsChangeEvent**](classendstone_1_1PlayerRecipeBookSettingsChangeEvent.md))
 
@@ -526,6 +532,8 @@
 * **ShowRecipeMessages** ([**endstone::GameRule**](classendstone_1_1GameRule.md))
 * **ShowTags** ([**endstone::GameRule**](classendstone_1_1GameRule.md))
 * **SpawnRadius** ([**endstone::GameRule**](classendstone_1_1GameRule.md))
+* **sneak\_** ([**endstone::Input**](classendstone_1_1Input.md))
+* **sprint\_** ([**endstone::Input**](classendstone_1_1Input.md))
 * **submit\_button\_text\_** ([**endstone::ModalForm**](classendstone_1_1ModalForm.md))
 * **sub\_client\_id\_** ([**endstone::PacketReceiveEvent**](classendstone_1_1PacketReceiveEvent.md), [**endstone::PacketSendEvent**](classendstone_1_1PacketSendEvent.md))
 * **sneaking\_** ([**endstone::PlayerToggleSneakEvent**](classendstone_1_1PlayerToggleSneakEvent.md))

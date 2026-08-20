@@ -29,6 +29,7 @@
     <innerfile refid="game__mode_8h">game_mode.h</innerfile>
     <innerfile refid="game__rule_8h">game_rule.h</innerfile>
     <innerfile refid="identifier_8h">identifier.h</innerfile>
+    <innerfile refid="input_8h">input.h</innerfile>
     <innerfile refid="logger_8h">logger.h</innerfile>
     <innerfile refid="message_8h">message.h</innerfile>
     <innerfile refid="object_8h">object.h</innerfile>

@@ -1268,6 +1268,29 @@
     <member refid="classendstone_1_1ItemStack_1_1Impl_1a7ce8920388386eb28a6f353e9fe8f948" kind="function"><name>getNbt</name></member>
     <member refid="classendstone_1_1ItemStack_1_1Impl_1ad19e72564cbe271f2917d753a2b2e7a2" kind="function"><name>setNbt</name></member>
   </compound>
+  <compound refid="classendstone_1_1Input" kind="class"><name>endstone::Input</name>
+    <member refid="classendstone_1_1Input_1a16c87cc4d3d1aef54b8e110f8ab7fedf" kind="variable"><name>forward_</name></member>
+    <member refid="classendstone_1_1Input_1ae0c6893071a76ffd3548d3b988bab383" kind="variable"><name>backward_</name></member>
+    <member refid="classendstone_1_1Input_1a97093ff5c0fe6447e55a1d832698e17e" kind="variable"><name>left_</name></member>
+    <member refid="classendstone_1_1Input_1a3efa02d8f0315ffb2b0ab3b3f8539b94" kind="variable"><name>right_</name></member>
+    <member refid="classendstone_1_1Input_1acb6994dcf716dac3ae4909e2cc765f31" kind="variable"><name>jump_</name></member>
+    <member refid="classendstone_1_1Input_1a20127dccf8c507b2734aeba0ccd31573" kind="variable"><name>sneak_</name></member>
+    <member refid="classendstone_1_1Input_1a99e5206ab73420cea7ac5260181881fb" kind="variable"><name>sprint_</name></member>
+    <member refid="classendstone_1_1Input_1a8fbe446f47c38a704fe4c0ecf476738b" kind="function"><name>Input</name></member>
+    <member refid="classendstone_1_1Input_1a69327a420405997c418c6450addaa4b6" kind="function"><name>Input</name></member>
+    <member refid="classendstone_1_1Input_1a5368b13037ddf8a0d36121cff7d18bc8" kind="function"><name>Input</name></member>
+    <member refid="classendstone_1_1Input_1a2c82152f7deaf4f2eeac6c2c8fbdddc3" kind="function"><name>Input</name></member>
+    <member refid="classendstone_1_1Input_1af66337c40c410b5ab8fb8e90fc5ed73d" kind="function"><name>operator=</name></member>
+    <member refid="classendstone_1_1Input_1afdabe46ec48752f5cb9771818c61bd7c" kind="function"><name>operator=</name></member>
+    <member refid="classendstone_1_1Input_1a5959465b310fb56b4bf87d24faf82ca7" kind="function"><name>isForward</name></member>
+    <member refid="classendstone_1_1Input_1a70bc1d7c49e460f9a97466b884d0e318" kind="function"><name>isBackward</name></member>
+    <member refid="classendstone_1_1Input_1a078a13436b8293d6a146fb01a736f89f" kind="function"><name>isLeft</name></member>
+    <member refid="classendstone_1_1Input_1aa220ab7b630190937568af7c93e71a57" kind="function"><name>isRight</name></member>
+    <member refid="classendstone_1_1Input_1a7aa4f698796d029154b0bd565e8b3de2" kind="function"><name>isJump</name></member>
+    <member refid="classendstone_1_1Input_1a6fb9297e82cefab0e583aa299c091c45" kind="function"><name>isSneak</name></member>
+    <member refid="classendstone_1_1Input_1a925e6cad190ce7c0bc3c5e71b89c2294" kind="function"><name>isSprint</name></member>
+    <member refid="classendstone_1_1Input_1a2453067eaea424be47dbf8d503f03387" kind="function"><name>operator==</name></member>
+  </compound>
   <compound refid="classendstone_1_1Inventory" kind="class"><name>endstone::Inventory</name>
     <member refid="classendstone_1_1Inventory_1ae4195380f173c841a5df5ddea12087ae" kind="function"><name>~Inventory</name></member>
     <member refid="classendstone_1_1Inventory_1aeb95253ae2eaa18839b05b3612a7007e" kind="function"><name>getSize</name></member>
@@ -2063,6 +2086,12 @@
     <member refid="classendstone_1_1PlayerGameModeChangeEvent_1a29568d430cbbbc58a465b9e2be42cf83" kind="function"><name>PlayerGameModeChangeEvent</name></member>
     <member refid="classendstone_1_1PlayerGameModeChangeEvent_1aef8569884e4cbdbabb945eef9c4ec9eb" kind="function"><name>~PlayerGameModeChangeEvent</name></member>
     <member refid="classendstone_1_1PlayerGameModeChangeEvent_1a422c30eafa2b703fd105138e45da4540" kind="function"><name>getNewGameMode</name></member>
+  </compound>
+  <compound refid="classendstone_1_1PlayerInputEvent" kind="class"><name>endstone::PlayerInputEvent</name>
+    <member refid="classendstone_1_1PlayerInputEvent_1a7e32fd166d83d33b9e2f8675565f8fa1" kind="variable"><name>input_</name></member>
+    <member refid="classendstone_1_1PlayerInputEvent_1a2e9e858f6cea01ec7f2c8ab6c0e2fb3f" kind="function"><name>ENDSTONE_EVENT</name></member>
+    <member refid="classendstone_1_1PlayerInputEvent_1a4e98911453a5296f56270ab710ef70d8" kind="function"><name>PlayerInputEvent</name></member>
+    <member refid="classendstone_1_1PlayerInputEvent_1adef9efd3865ed2176d6067fde0b5c955" kind="function"><name>getInput</name></member>
   </compound>
   <compound refid="classendstone_1_1PlayerInteractActorEvent" kind="class"><name>endstone::PlayerInteractActorEvent</name>
     <member refid="classendstone_1_1PlayerInteractActorEvent_1aaaad0a848f601ca19a388755b009ebd0" kind="variable"><name>actor_</name></member>
@@ -3282,6 +3311,8 @@
   </compound>
   <compound refid="player__game__mode__change__event_8h" kind="file"><name>player_game_mode_change_event.h</name>
   </compound>
+  <compound refid="player__input__event_8h" kind="file"><name>player_input_event.h</name>
+  </compound>
   <compound refid="player__interact__actor__event_8h" kind="file"><name>player_interact_actor_event.h</name>
   </compound>
   <compound refid="player__interact__event_8h" kind="file"><name>player_interact_event.h</name>
@@ -3381,6 +3412,8 @@
   <compound refid="game__rule_8h" kind="file"><name>game_rule.h</name>
   </compound>
   <compound refid="identifier_8h" kind="file"><name>identifier.h</name>
+  </compound>
+  <compound refid="input_8h" kind="file"><name>input.h</name>
   </compound>
   <compound refid="equipment__slot_8h" kind="file"><name>equipment_slot.h</name>
   </compound>

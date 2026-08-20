@@ -1,0 +1,412 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.8" xml:lang="en-US">
+  <compounddef id="classendstone_1_1Input" kind="class" language="C++" prot="public">
+    <compoundname>endstone::Input</compoundname>
+    <includes refid="input_8h" local="no">endstone/input.h</includes>
+    <sectiondef kind="private-attrib">
+      <memberdef kind="variable" id="classendstone_1_1Input_1a16c87cc4d3d1aef54b8e110f8ab7fedf" prot="private" static="no" mutable="no">
+        <type><ref refid="classendstone_1_1Identifier" kindref="compound">bool</ref></type>
+        <definition>bool endstone::Input::forward_</definition>
+        <argsstring></argsstring>
+        <name>forward_</name>
+        <qualifiedname>endstone::Input::forward_</qualifiedname>
+        <initializer>= <ref refid="classendstone_1_1Identifier" kindref="compound">false</ref></initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/input.h" line="89" column="10" bodyfile="include/endstone/input.h" bodystart="89" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classendstone_1_1Input_1ae0c6893071a76ffd3548d3b988bab383" prot="private" static="no" mutable="no">
+        <type><ref refid="classendstone_1_1Identifier" kindref="compound">bool</ref></type>
+        <definition>bool endstone::Input::backward_</definition>
+        <argsstring></argsstring>
+        <name>backward_</name>
+        <qualifiedname>endstone::Input::backward_</qualifiedname>
+        <initializer>= <ref refid="classendstone_1_1Identifier" kindref="compound">false</ref></initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/input.h" line="90" column="10" bodyfile="include/endstone/input.h" bodystart="90" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classendstone_1_1Input_1a97093ff5c0fe6447e55a1d832698e17e" prot="private" static="no" mutable="no">
+        <type><ref refid="classendstone_1_1Identifier" kindref="compound">bool</ref></type>
+        <definition>bool endstone::Input::left_</definition>
+        <argsstring></argsstring>
+        <name>left_</name>
+        <qualifiedname>endstone::Input::left_</qualifiedname>
+        <initializer>= <ref refid="classendstone_1_1Identifier" kindref="compound">false</ref></initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/input.h" line="91" column="10" bodyfile="include/endstone/input.h" bodystart="91" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classendstone_1_1Input_1a3efa02d8f0315ffb2b0ab3b3f8539b94" prot="private" static="no" mutable="no">
+        <type><ref refid="classendstone_1_1Identifier" kindref="compound">bool</ref></type>
+        <definition>bool endstone::Input::right_</definition>
+        <argsstring></argsstring>
+        <name>right_</name>
+        <qualifiedname>endstone::Input::right_</qualifiedname>
+        <initializer>= <ref refid="classendstone_1_1Identifier" kindref="compound">false</ref></initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/input.h" line="92" column="10" bodyfile="include/endstone/input.h" bodystart="92" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classendstone_1_1Input_1acb6994dcf716dac3ae4909e2cc765f31" prot="private" static="no" mutable="no">
+        <type><ref refid="classendstone_1_1Identifier" kindref="compound">bool</ref></type>
+        <definition>bool endstone::Input::jump_</definition>
+        <argsstring></argsstring>
+        <name>jump_</name>
+        <qualifiedname>endstone::Input::jump_</qualifiedname>
+        <initializer>= <ref refid="classendstone_1_1Identifier" kindref="compound">false</ref></initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/input.h" line="93" column="10" bodyfile="include/endstone/input.h" bodystart="93" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classendstone_1_1Input_1a20127dccf8c507b2734aeba0ccd31573" prot="private" static="no" mutable="no">
+        <type><ref refid="classendstone_1_1Identifier" kindref="compound">bool</ref></type>
+        <definition>bool endstone::Input::sneak_</definition>
+        <argsstring></argsstring>
+        <name>sneak_</name>
+        <qualifiedname>endstone::Input::sneak_</qualifiedname>
+        <initializer>= <ref refid="classendstone_1_1Identifier" kindref="compound">false</ref></initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/input.h" line="94" column="10" bodyfile="include/endstone/input.h" bodystart="94" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classendstone_1_1Input_1a99e5206ab73420cea7ac5260181881fb" prot="private" static="no" mutable="no">
+        <type><ref refid="classendstone_1_1Identifier" kindref="compound">bool</ref></type>
+        <definition>bool endstone::Input::sprint_</definition>
+        <argsstring></argsstring>
+        <name>sprint_</name>
+        <qualifiedname>endstone::Input::sprint_</qualifiedname>
+        <initializer>= <ref refid="classendstone_1_1Identifier" kindref="compound">false</ref></initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/input.h" line="95" column="10" bodyfile="include/endstone/input.h" bodystart="95" bodyend="-1"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="public-func">
+      <memberdef kind="function" id="classendstone_1_1Input_1a8fbe446f47c38a704fe4c0ecf476738b" prot="public" static="no" constexpr="yes" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="classendstone_1_1Identifier" kindref="compound">constexpr</ref></type>
+        <definition>constexpr endstone::Input::Input</definition>
+        <argsstring>()=default</argsstring>
+        <name>Input</name>
+        <qualifiedname>endstone::Input::Input</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/input.h" line="24" column="15"/>
+      </memberdef>
+      <memberdef kind="function" id="classendstone_1_1Input_1a69327a420405997c418c6450addaa4b6" prot="public" static="no" constexpr="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type><ref refid="classendstone_1_1Identifier" kindref="compound">constexpr</ref></type>
+        <definition>constexpr endstone::Input::Input</definition>
+        <argsstring>(bool forward, bool backward, bool left, bool right, bool jump, bool sneak, bool sprint)</argsstring>
+        <name>Input</name>
+        <qualifiedname>endstone::Input::Input</qualifiedname>
+        <param>
+          <type><ref refid="classendstone_1_1Identifier" kindref="compound">bool</ref></type>
+          <declname>forward</declname>
+        </param>
+        <param>
+          <type><ref refid="classendstone_1_1Identifier" kindref="compound">bool</ref></type>
+          <declname>backward</declname>
+        </param>
+        <param>
+          <type><ref refid="classendstone_1_1Identifier" kindref="compound">bool</ref></type>
+          <declname>left</declname>
+        </param>
+        <param>
+          <type><ref refid="classendstone_1_1Identifier" kindref="compound">bool</ref></type>
+          <declname>right</declname>
+        </param>
+        <param>
+          <type><ref refid="classendstone_1_1Identifier" kindref="compound">bool</ref></type>
+          <declname>jump</declname>
+        </param>
+        <param>
+          <type><ref refid="classendstone_1_1Identifier" kindref="compound">bool</ref></type>
+          <declname>sneak</declname>
+        </param>
+        <param>
+          <type><ref refid="classendstone_1_1Identifier" kindref="compound">bool</ref></type>
+          <declname>sprint</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/input.h" line="26" column="15" bodyfile="include/endstone/input.h" bodystart="26" bodyend="30"/>
+      </memberdef>
+      <memberdef kind="function" id="classendstone_1_1Input_1a5368b13037ddf8a0d36121cff7d18bc8" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>endstone::Input::Input</definition>
+        <argsstring>(const Input &amp;)=default</argsstring>
+        <name>Input</name>
+        <qualifiedname>endstone::Input::Input</qualifiedname>
+        <param>
+          <type><ref refid="classendstone_1_1Identifier" kindref="compound">const</ref> <ref refid="classendstone_1_1Input" kindref="compound">Input</ref> &amp;</type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/input.h" line="32" column="5"/>
+      </memberdef>
+      <memberdef kind="function" id="classendstone_1_1Input_1a2c82152f7deaf4f2eeac6c2c8fbdddc3" prot="public" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="non-virtual">
+        <type></type>
+        <definition>endstone::Input::Input</definition>
+        <argsstring>(Input &amp;&amp;) noexcept=default</argsstring>
+        <name>Input</name>
+        <qualifiedname>endstone::Input::Input</qualifiedname>
+        <param>
+          <type><ref refid="classendstone_1_1Input" kindref="compound">Input</ref> &amp;&amp;</type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/input.h" line="33" column="5"/>
+      </memberdef>
+      <memberdef kind="function" id="classendstone_1_1Input_1af66337c40c410b5ab8fb8e90fc5ed73d" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="classendstone_1_1Input" kindref="compound">Input</ref> &amp;</type>
+        <definition>Input &amp; endstone::Input::operator=</definition>
+        <argsstring>(const Input &amp;)=default</argsstring>
+        <name>operator=</name>
+        <qualifiedname>endstone::Input::operator=</qualifiedname>
+        <param>
+          <type><ref refid="classendstone_1_1Identifier" kindref="compound">const</ref> <ref refid="classendstone_1_1Input" kindref="compound">Input</ref> &amp;</type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/input.h" line="34" column="11"/>
+      </memberdef>
+      <memberdef kind="function" id="classendstone_1_1Input_1afdabe46ec48752f5cb9771818c61bd7c" prot="public" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="non-virtual">
+        <type><ref refid="classendstone_1_1Input" kindref="compound">Input</ref> &amp;</type>
+        <definition>Input &amp; endstone::Input::operator=</definition>
+        <argsstring>(Input &amp;&amp;) noexcept=default</argsstring>
+        <name>operator=</name>
+        <qualifiedname>endstone::Input::operator=</qualifiedname>
+        <param>
+          <type><ref refid="classendstone_1_1Input" kindref="compound">Input</ref> &amp;&amp;</type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/input.h" line="35" column="11"/>
+      </memberdef>
+      <memberdef kind="function" id="classendstone_1_1Input_1a5959465b310fb56b4bf87d24faf82ca7" prot="public" static="no" constexpr="yes" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type><ref refid="classendstone_1_1Identifier" kindref="compound">constexpr</ref> <ref refid="classendstone_1_1Identifier" kindref="compound">bool</ref></type>
+        <definition>constexpr bool endstone::Input::isForward</definition>
+        <argsstring>() const</argsstring>
+        <name>isForward</name>
+        <qualifiedname>endstone::Input::isForward</qualifiedname>
+        <briefdescription>
+<para>Gets whether a forward input is applied. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="return"><para>true if a forward input is applied </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/input.h" line="42" column="21" bodyfile="include/endstone/input.h" bodystart="42" bodyend="42"/>
+      </memberdef>
+      <memberdef kind="function" id="classendstone_1_1Input_1a70bc1d7c49e460f9a97466b884d0e318" prot="public" static="no" constexpr="yes" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type><ref refid="classendstone_1_1Identifier" kindref="compound">constexpr</ref> <ref refid="classendstone_1_1Identifier" kindref="compound">bool</ref></type>
+        <definition>constexpr bool endstone::Input::isBackward</definition>
+        <argsstring>() const</argsstring>
+        <name>isBackward</name>
+        <qualifiedname>endstone::Input::isBackward</qualifiedname>
+        <briefdescription>
+<para>Gets whether a backward input is applied. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="return"><para>true if a backward input is applied </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/input.h" line="49" column="21" bodyfile="include/endstone/input.h" bodystart="49" bodyend="49"/>
+      </memberdef>
+      <memberdef kind="function" id="classendstone_1_1Input_1a078a13436b8293d6a146fb01a736f89f" prot="public" static="no" constexpr="yes" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type><ref refid="classendstone_1_1Identifier" kindref="compound">constexpr</ref> <ref refid="classendstone_1_1Identifier" kindref="compound">bool</ref></type>
+        <definition>constexpr bool endstone::Input::isLeft</definition>
+        <argsstring>() const</argsstring>
+        <name>isLeft</name>
+        <qualifiedname>endstone::Input::isLeft</qualifiedname>
+        <briefdescription>
+<para>Gets whether a left input is applied. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="return"><para>true if a left input is applied </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/input.h" line="56" column="21" bodyfile="include/endstone/input.h" bodystart="56" bodyend="56"/>
+      </memberdef>
+      <memberdef kind="function" id="classendstone_1_1Input_1aa220ab7b630190937568af7c93e71a57" prot="public" static="no" constexpr="yes" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type><ref refid="classendstone_1_1Identifier" kindref="compound">constexpr</ref> <ref refid="classendstone_1_1Identifier" kindref="compound">bool</ref></type>
+        <definition>constexpr bool endstone::Input::isRight</definition>
+        <argsstring>() const</argsstring>
+        <name>isRight</name>
+        <qualifiedname>endstone::Input::isRight</qualifiedname>
+        <briefdescription>
+<para>Gets whether a right input is applied. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="return"><para>true if a right input is applied </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/input.h" line="63" column="21" bodyfile="include/endstone/input.h" bodystart="63" bodyend="63"/>
+      </memberdef>
+      <memberdef kind="function" id="classendstone_1_1Input_1a7aa4f698796d029154b0bd565e8b3de2" prot="public" static="no" constexpr="yes" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type><ref refid="classendstone_1_1Identifier" kindref="compound">constexpr</ref> <ref refid="classendstone_1_1Identifier" kindref="compound">bool</ref></type>
+        <definition>constexpr bool endstone::Input::isJump</definition>
+        <argsstring>() const</argsstring>
+        <name>isJump</name>
+        <qualifiedname>endstone::Input::isJump</qualifiedname>
+        <briefdescription>
+<para>Gets whether a jump input is applied. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="return"><para>true if a jump input is applied </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/input.h" line="70" column="21" bodyfile="include/endstone/input.h" bodystart="70" bodyend="70"/>
+      </memberdef>
+      <memberdef kind="function" id="classendstone_1_1Input_1a6fb9297e82cefab0e583aa299c091c45" prot="public" static="no" constexpr="yes" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type><ref refid="classendstone_1_1Identifier" kindref="compound">constexpr</ref> <ref refid="classendstone_1_1Identifier" kindref="compound">bool</ref></type>
+        <definition>constexpr bool endstone::Input::isSneak</definition>
+        <argsstring>() const</argsstring>
+        <name>isSneak</name>
+        <qualifiedname>endstone::Input::isSneak</qualifiedname>
+        <briefdescription>
+<para>Gets whether a sneak input is applied. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="return"><para>true if a sneak input is applied </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/input.h" line="77" column="21" bodyfile="include/endstone/input.h" bodystart="77" bodyend="77"/>
+      </memberdef>
+      <memberdef kind="function" id="classendstone_1_1Input_1a925e6cad190ce7c0bc3c5e71b89c2294" prot="public" static="no" constexpr="yes" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type><ref refid="classendstone_1_1Identifier" kindref="compound">constexpr</ref> <ref refid="classendstone_1_1Identifier" kindref="compound">bool</ref></type>
+        <definition>constexpr bool endstone::Input::isSprint</definition>
+        <argsstring>() const</argsstring>
+        <name>isSprint</name>
+        <qualifiedname>endstone::Input::isSprint</qualifiedname>
+        <briefdescription>
+<para>Gets whether a sprint input is applied. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="return"><para>true if a sprint input is applied </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/input.h" line="84" column="21" bodyfile="include/endstone/input.h" bodystart="84" bodyend="84"/>
+      </memberdef>
+      <memberdef kind="function" id="classendstone_1_1Input_1a2453067eaea424be47dbf8d503f03387" prot="public" static="no" constexpr="yes" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="classendstone_1_1Identifier" kindref="compound">constexpr</ref> <ref refid="classendstone_1_1Identifier" kindref="compound">bool</ref></type>
+        <definition>constexpr bool endstone::Input::operator==</definition>
+        <argsstring>(const Input &amp;) const =default</argsstring>
+        <name>operator==</name>
+        <qualifiedname>endstone::Input::operator==</qualifiedname>
+        <param>
+          <type><ref refid="classendstone_1_1Identifier" kindref="compound">const</ref> <ref refid="classendstone_1_1Input" kindref="compound">Input</ref> &amp;</type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/input.h" line="86" column="20"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+<para>Represents a movement input applied to a player. </para>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="include/endstone/input.h" line="22" column="1" bodyfile="include/endstone/input.h" bodystart="22" bodyend="96"/>
+    <listofallmembers>
+      <member refid="classendstone_1_1Input_1ae0c6893071a76ffd3548d3b988bab383" prot="private" virt="non-virtual"><scope>endstone::Input</scope><name>backward_</name></member>
+      <member refid="classendstone_1_1Input_1a16c87cc4d3d1aef54b8e110f8ab7fedf" prot="private" virt="non-virtual"><scope>endstone::Input</scope><name>forward_</name></member>
+      <member refid="classendstone_1_1Input_1a8fbe446f47c38a704fe4c0ecf476738b" prot="public" virt="non-virtual"><scope>endstone::Input</scope><name>Input</name></member>
+      <member refid="classendstone_1_1Input_1a69327a420405997c418c6450addaa4b6" prot="public" virt="non-virtual"><scope>endstone::Input</scope><name>Input</name></member>
+      <member refid="classendstone_1_1Input_1a5368b13037ddf8a0d36121cff7d18bc8" prot="public" virt="non-virtual"><scope>endstone::Input</scope><name>Input</name></member>
+      <member refid="classendstone_1_1Input_1a2c82152f7deaf4f2eeac6c2c8fbdddc3" prot="public" virt="non-virtual"><scope>endstone::Input</scope><name>Input</name></member>
+      <member refid="classendstone_1_1Input_1a70bc1d7c49e460f9a97466b884d0e318" prot="public" virt="non-virtual"><scope>endstone::Input</scope><name>isBackward</name></member>
+      <member refid="classendstone_1_1Input_1a5959465b310fb56b4bf87d24faf82ca7" prot="public" virt="non-virtual"><scope>endstone::Input</scope><name>isForward</name></member>
+      <member refid="classendstone_1_1Input_1a7aa4f698796d029154b0bd565e8b3de2" prot="public" virt="non-virtual"><scope>endstone::Input</scope><name>isJump</name></member>
+      <member refid="classendstone_1_1Input_1a078a13436b8293d6a146fb01a736f89f" prot="public" virt="non-virtual"><scope>endstone::Input</scope><name>isLeft</name></member>
+      <member refid="classendstone_1_1Input_1aa220ab7b630190937568af7c93e71a57" prot="public" virt="non-virtual"><scope>endstone::Input</scope><name>isRight</name></member>
+      <member refid="classendstone_1_1Input_1a6fb9297e82cefab0e583aa299c091c45" prot="public" virt="non-virtual"><scope>endstone::Input</scope><name>isSneak</name></member>
+      <member refid="classendstone_1_1Input_1a925e6cad190ce7c0bc3c5e71b89c2294" prot="public" virt="non-virtual"><scope>endstone::Input</scope><name>isSprint</name></member>
+      <member refid="classendstone_1_1Input_1acb6994dcf716dac3ae4909e2cc765f31" prot="private" virt="non-virtual"><scope>endstone::Input</scope><name>jump_</name></member>
+      <member refid="classendstone_1_1Input_1a97093ff5c0fe6447e55a1d832698e17e" prot="private" virt="non-virtual"><scope>endstone::Input</scope><name>left_</name></member>
+      <member refid="classendstone_1_1Input_1af66337c40c410b5ab8fb8e90fc5ed73d" prot="public" virt="non-virtual"><scope>endstone::Input</scope><name>operator=</name></member>
+      <member refid="classendstone_1_1Input_1afdabe46ec48752f5cb9771818c61bd7c" prot="public" virt="non-virtual"><scope>endstone::Input</scope><name>operator=</name></member>
+      <member refid="classendstone_1_1Input_1a2453067eaea424be47dbf8d503f03387" prot="public" virt="non-virtual"><scope>endstone::Input</scope><name>operator==</name></member>
+      <member refid="classendstone_1_1Input_1a3efa02d8f0315ffb2b0ab3b3f8539b94" prot="private" virt="non-virtual"><scope>endstone::Input</scope><name>right_</name></member>
+      <member refid="classendstone_1_1Input_1a20127dccf8c507b2734aeba0ccd31573" prot="private" virt="non-virtual"><scope>endstone::Input</scope><name>sneak_</name></member>
+      <member refid="classendstone_1_1Input_1a99e5206ab73420cea7ac5260181881fb" prot="private" virt="non-virtual"><scope>endstone::Input</scope><name>sprint_</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>
