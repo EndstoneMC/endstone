@@ -8,6 +8,7 @@ __getattr__, __dir__, __all__ = lazy.attach(
             "GameMode",
             "GameRule",
             "Identifier",
+            "Input",
             "Logger",
             "OfflinePlayer",
             "Player",
