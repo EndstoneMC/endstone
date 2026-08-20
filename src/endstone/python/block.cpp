@@ -31,7 +31,7 @@ void init_block(py::module_ &m, py::classh<Block> &block)
         .value("EAST", BlockFace::East)
         .finalize();
 
-    auto block_type = py::class_<BlockType>(m, "BlockType", "Represents a block type.");
+    auto block_type = def_registry_type(py::class_<BlockType>(m, "BlockType", "Represents a block type."));
 
     py::classh<BlockData>(m, "BlockData", "Represents the data related to a live block.")
         .def_property_readonly("type", &BlockData::getType, py::return_value_policy::reference,
@@ -67,19 +67,12 @@ void init_block(py::module_ &m, py::classh<Block> &block)
 
     Returns:
         The `BlockType`, or `None` if no block type with that name exists.
-)doc", py::return_value_policy::reference)
-        .def("__str__", [](const BlockType &self) { return std::string(self.getId()); })
-        .def("__repr__", [](const BlockType &self) { return std::format("BlockType({})", self.getId()); })
-        .def("__hash__", [](const BlockType &self) { return py::hash(py::str(std::string(self.getId()))); })
-        .def(py::self == py::self)
-        .def(py::self != py::self)
-        .def(py::self == std::string_view())
-        .def(py::self != std::string_view());
+)doc", py::return_value_policy::reference);
 
-    py::class_<Biome>(m, "Biome", "Represents a biome.")
+    def_registry_type(py::class_<Biome>(m, "Biome", "Represents a biome."))
         .def_property_readonly("id", &Biome::getId, "The identifier of this biome.")
         .def_property_readonly("translation_key", &Biome::getTranslationKey,
-                               "The translation key, suitable for use in a translation component.")
+                               "Raises, as Bedrock does not localize biome names.")
         .def_static("get", &Biome::get, py::arg("name"), R"doc(
     Attempts to get the `Biome` with the given name.
 
@@ -88,14 +81,7 @@ void init_block(py::module_ &m, py::classh<Block> &block)
 
     Returns:
         The `Biome`, or `None` if no biome with that name exists.
-)doc", py::return_value_policy::reference)
-        .def("__str__", [](const Biome &self) { return std::string(self.getId()); })
-        .def("__repr__", [](const Biome &self) { return std::format("Biome({})", self.getId()); })
-        .def("__hash__", [](const Biome &self) { return py::hash(py::str(std::string(self.getId()))); })
-        .def(py::self == py::self)
-        .def(py::self != py::self)
-        .def(py::self == std::string_view())
-        .def(py::self != std::string_view());
+)doc", py::return_value_policy::reference);
 
     py::classh<BlockState>(m, "BlockState", R"doc(
     Represents a captured state of a block, which will not update automatically.

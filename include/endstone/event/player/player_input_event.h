@@ -14,30 +14,29 @@
 
 #pragma once
 
-#include <utility>
-
-#include "endstone/event/cancellable.h"
 #include "endstone/event/player/player_event.h"
-#include "endstone/inventory/equipment_slot.h"
-#include "endstone/inventory/item_stack.h"
+#include "endstone/input.h"
 
 namespace endstone {
+
 /**
- * Called when a player drops an item from their inventory.
+ * Called when a player sends updated input to the server.
  */
-class PlayerDropItemEvent final : public Cancellable<PlayerEvent> {
+class PlayerInputEvent final : public PlayerEvent {
 public:
-    ENDSTONE_EVENT(PlayerDropItemEvent);
-    explicit PlayerDropItemEvent(const NotNull<Player> &player, ItemStack drop) : Cancellable(player), drop_(std::move(drop)) {}
+    ENDSTONE_EVENT(PlayerInputEvent);
+
+    explicit PlayerInputEvent(const NotNull<Player> &player, Input input) : PlayerEvent(player), input_(input) {}
 
     /**
-     * Gets the ItemStack dropped by the player.
+     * Gets the new input received from this player.
      *
-     * @return ItemDrop dropped by the player
+     * @return the new input received from this player
      */
-    [[nodiscard]] const ItemStack &getItem() const { return drop_; }
+    [[nodiscard]] Input getInput() const { return input_; }
 
 private:
-    ItemStack drop_;
+    Input input_;
 };
+
 }  // namespace endstone

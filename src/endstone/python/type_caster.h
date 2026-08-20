@@ -34,7 +34,6 @@ public:
         PyObject *uuid_module = PyImport_ImportModule("uuid");
         PyObject *uuid_class = PyObject_GetAttrString(uuid_module, "UUID");
         if (!PyObject_IsInstance(source, uuid_class)) {
-            PyErr_SetString(PyExc_TypeError, "Object is not an instance of UUID");
             Py_XDECREF(uuid_module);
             Py_XDECREF(uuid_class);
             return false;
@@ -43,11 +42,10 @@ public:
         /* Now try to convert into C++ object */
         PyObject *bytes = PyObject_GetAttrString(source, "bytes");
         if (PyBytes_GET_SIZE(bytes) != 16) {
-            PyErr_SetString(PyExc_ValueError, "UUID bytes size must be 16");
             Py_XDECREF(bytes);
             Py_XDECREF(uuid_module);
             Py_XDECREF(uuid_class);
-            return false;
+            throw py::value_error("UUID bytes size must be 16");
         }
 
         const char *bytes_data = PyBytes_AS_STRING(bytes);
@@ -59,7 +57,7 @@ public:
         Py_XDECREF(bytes);
         Py_XDECREF(uuid_module);
         Py_XDECREF(uuid_class);
-        return PyErr_Occurred() == nullptr;
+        return true;
     }
 
     // C++ -> Python
@@ -133,7 +131,6 @@ public:
         // Ensure the object is a NumPy array of uint8
         auto array = pybind11::array_t<uint8_t, pybind11::array::c_style | pybind11::array::forcecast>::ensure(src);
         if (!array) {
-            PyErr_SetString(PyExc_TypeError, "TypeError: expected a numpy.ndarray of uint8");
             return false;
         }
 
@@ -160,14 +157,12 @@ public:
                 img_type = endstone::Image::Type::RGBA;
             }
             else {
-                PyErr_SetString(PyExc_TypeError, "TypeError: expected the last dimension to be 3 (RGB) or 4 (RGBA)");
-                return false;
+                throw py::type_error("expected the last dimension to be 3 (RGB) or 4 (RGBA)");
             }
         }
         else {
             // Unsupported number of dimensions
-            PyErr_SetString(PyExc_TypeError, "TypeError: expected a 2D (grayscale) or 3D (RGB/RGBA) array");
-            return false;
+            throw py::type_error("expected a 2D (grayscale) or 3D (RGB/RGBA) array");
         }
 
         // Compute expected buffer size
@@ -181,8 +176,7 @@ public:
         // Construct an Image from the byte buffer
         auto result = endstone::Image::fromBuffer(img_type, width, height, buffer);
         if (!result) {
-            PyErr_SetString(PyExc_TypeError, "TypeError: failed to construct Image from buffer");
-            return false;
+            throw py::type_error("failed to construct Image from buffer");
         }
         // Move the constructed Image into the caster's value
         value = std::move(result.value());
@@ -229,7 +223,6 @@ public:
     bool load(handle src, bool)
     {
         if (!pybind11::isinstance<sequence>(src)) {
-            PyErr_SetString(PyExc_ValueError, "Color must be a sequence of 3 or 4 integers");
             return false;
         }
 
@@ -237,8 +230,7 @@ public:
         size_t len = seq.size();
 
         if (len != 3 && len != 4) {
-            PyErr_SetString(PyExc_ValueError, "Color tuple must have length 3 or 4");
-            return false;
+            throw py::value_error("Color tuple must have length 3 or 4");
         }
 
         // Cast elements to int
@@ -249,8 +241,7 @@ public:
             value = std::move(color);
         }
         catch (const cast_error &) {
-            PyErr_SetString(PyExc_ValueError, "Color elements must be integers");
-            return false;
+            throw py::value_error("Color elements must be integers");
         }
         return true;
     }
@@ -288,8 +279,7 @@ public:
                 return true;
             }
             catch (const std::exception &e) {
-                PyErr_SetString(PyExc_ValueError, e.what());
-                return false;
+                throw py::value_error(e.what());
             }
         }
         return false;

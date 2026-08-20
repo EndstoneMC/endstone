@@ -237,7 +237,7 @@ std::unique_ptr<Registry<EffectType>> EndstoneRegistry<EffectType, ::MobEffect>:
 {
     auto registry = std::make_unique<EndstoneRegistry>(
         [](auto, const auto &handle) { return std::make_unique<EndstoneEffectType>(handle); });
-    for (MobEffectId id = 0; id < ::MobEffect::NUM_EFFECTS; ++id) {
+    for (MobEffectId id = ::MobEffect::UNKNOWN_EFFECT + 1; id < ::MobEffect::NUM_EFFECTS; ++id) {
         const auto *effect = ::MobEffect::getById(id);
         if (!effect) {
             continue;
