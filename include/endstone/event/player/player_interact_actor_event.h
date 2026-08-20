@@ -20,7 +20,7 @@
 namespace endstone {
 
 /**
- * Represents an event that is called when a player right-clicks an actor.
+ * Called when a player right-clicks an actor.
  */
 class PlayerInteractActorEvent : public Cancellable<PlayerEvent> {
 public:

@@ -306,7 +306,7 @@ void init_event(py::module_ &m, py::class_<Event, PyEvent> &event)
         .def_property_readonly("new_game_mode", &PlayerGameModeChangeEvent::getNewGameMode,
                                "The `GameMode` the player is switched to.");
     auto player_interact_event = py::class_<PlayerInteractEvent, PlayerEvent, ICancellable>(
-        m, "PlayerInteractEvent", "Represents an event that is called when a player interacts with an object or air.");
+        m, "PlayerInteractEvent", "Called when a player interacts with an object or air.");
     py::native_enum<PlayerInteractEvent::Action>(player_interact_event, "Action", "enum.Enum",
                                                  "Represents the type of interaction that triggered this event.")
         .value("LEFT_CLICK_BLOCK", PlayerInteractEvent::Action::LeftClickBlock)
@@ -331,8 +331,8 @@ void init_event(py::module_ &m, py::class_<Event, PyEvent> &event)
     This will be `None` outside of `Action.RIGHT_CLICK_BLOCK`. All vector components are between 0.0 and
     1.0 inclusive.
 )doc");
-    py::class_<PlayerInteractActorEvent, PlayerEvent, ICancellable>(
-        m, "PlayerInteractActorEvent", "Represents an event that is called when a player right-clicks an actor.")
+    py::class_<PlayerInteractActorEvent, PlayerEvent, ICancellable>(m, "PlayerInteractActorEvent",
+                                                                    "Called when a player right-clicks an actor.")
         .def_property_readonly("actor", &PlayerInteractActorEvent::getActor,
                                "The actor that was right-clicked by the player.");
     py::class_<PlayerItemConsumeEvent, PlayerEvent, ICancellable>(m, "PlayerItemConsumeEvent", R"doc(
@@ -376,9 +376,8 @@ void init_event(py::module_ &m, py::class_<Event, PyEvent> &event)
                       "The location that this player moved to.");
     py::class_<PlayerJumpEvent, PlayerMoveEvent>(m, "PlayerJumpEvent", "Called when a player jumps.");
     py::class_<PlayerPickupArrowEvent, PlayerEvent, ICancellable>(
-        m, "PlayerPickupArrowEvent", "Called when a player picks up an arrow from the ground.")
-        .def_property_readonly("arrow", &PlayerPickupArrowEvent::getArrow,
-                               "The arrow picked up by the player.");
+        m, "PlayerPickupArrowEvent", "Called when a player picks up an arrow or a thrown trident from the ground.")
+        .def_property_readonly("arrow", &PlayerPickupArrowEvent::getArrow, "The arrow picked up by the player.");
     py::class_<PlayerPickupItemEvent, PlayerEvent, ICancellable>(
         m, "PlayerPickupItemEvent", "Called when a player picks an item up from the ground.")
         .def_property_readonly("item", &PlayerPickupItemEvent::getItem,

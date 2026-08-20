@@ -690,7 +690,7 @@ class PlayerGameModeChangeEvent(PlayerEvent, Cancellable):
 
 class PlayerInteractEvent(PlayerEvent, Cancellable):
     """
-    Represents an event that is called when a player interacts with an object or air.
+    Called when a player interacts with an object or air.
     """
     class Action(enum.Enum):
         """
@@ -753,7 +753,7 @@ class PlayerInteractEvent(PlayerEvent, Cancellable):
 
 class PlayerInteractActorEvent(PlayerEvent, Cancellable):
     """
-    Represents an event that is called when a player right-clicks an actor.
+    Called when a player right-clicks an actor.
     """
     @property
     def actor(self) -> Actor:
@@ -882,7 +882,7 @@ class PlayerJumpEvent(PlayerMoveEvent):
 
 class PlayerPickupArrowEvent(PlayerEvent, Cancellable):
     """
-    Called when a player picks up an arrow from the ground.
+    Called when a player picks up an arrow or a thrown trident from the ground.
     """
     @property
     def arrow(self) -> Actor:
