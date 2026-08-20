@@ -10,7 +10,7 @@ from endstone.actor import Actor, Item, Mob
 from endstone.block import Block, BlockFace, BlockState
 from endstone.command import CommandSender
 from endstone.damage import DamageSource
-from endstone.inventory import EquipmentSlot, ItemStack
+from endstone.inventory import EquipmentSlot, ItemStack, ItemType
 from endstone.lang import Translatable
 from endstone.level import Chunk, Dimension, Level, Location
 from endstone.map import MapView
@@ -54,6 +54,7 @@ __all__ = [
     "PacketSendEvent",
     "PlayerBedEnterEvent",
     "PlayerBedLeaveEvent",
+    "PlayerBucketEvent",
     "PlayerChatEvent",
     "PlayerCommandEvent",
     "PlayerDeathEvent",
@@ -549,6 +550,49 @@ class PlayerBedLeaveEvent(PlayerEvent):
         """
         The bed block involved in this event.
         """
+
+class PlayerBucketEvent(PlayerEvent, Cancellable):
+    """
+    Base class for events involving a player's bucket interaction.
+    """
+    @property
+    def block(self) -> Block:
+        """
+        The block involved in this event, or `None` if unavailable.
+        """
+
+    @property
+    def block_clicked(self) -> Block:
+        """
+        The block clicked by the player.
+        """
+
+    @property
+    def block_face(self) -> BlockFace:
+        """
+        The face on the clicked block.
+        """
+
+    @property
+    def bucket(self) -> ItemType:
+        """
+        The bucket used in this event.
+        """
+
+    @property
+    def hand(self) -> EquipmentSlot:
+        """
+        The hand used in this event.
+        """
+
+    @property
+    def item_stack(self) -> ItemStack | None:
+        """
+        The resulting item in the player's hand, or `None` if unavailable.
+        """
+
+    @item_stack.setter
+    def item_stack(self, arg1: ItemStack | None) -> None: ...
 
 class PlayerChatEvent(PlayerEvent, Cancellable):
     """
