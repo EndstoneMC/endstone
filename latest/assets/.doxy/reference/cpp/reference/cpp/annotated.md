@@ -123,6 +123,7 @@ Here are the classes, structs, unions and interfaces with brief descriptions:
     * **class** [**PermissionAttachment**](classendstone_1_1PermissionAttachment.md) _Holds information about a permission attachment on a_ [_**Permissible**_](classendstone_1_1Permissible.md) _object._    
     * **class** [**PermissionAttachmentInfo**](classendstone_1_1PermissionAttachmentInfo.md) _Holds information on a permission and which_ [_**PermissionAttachment**_](classendstone_1_1PermissionAttachment.md) _provides it._    
     * **class** [**Player**](classendstone_1_1Player.md) _Represents a player._     
+    * **class** [**PlayerArmSwingEvent**](classendstone_1_1PlayerArmSwingEvent.md) _Called when a player swings their arm._     
     * **class** [**PlayerBanEntry**](classendstone_1_1PlayerBanEntry.md) _Represents an entry for a banned player._     
     * **class** [**PlayerBanList**](classendstone_1_1PlayerBanList.md) _Represents a ban list, containing banned players._     
     * **class** [**PlayerBedEnterEvent**](classendstone_1_1PlayerBedEnterEvent.md) _Called when a player is almost about to enter the bed._     

@@ -121,6 +121,7 @@
     <innerclass refid="classendstone_1_1PermissionAttachment" prot="public">endstone::PermissionAttachment</innerclass>
     <innerclass refid="classendstone_1_1PermissionAttachmentInfo" prot="public">endstone::PermissionAttachmentInfo</innerclass>
     <innerclass refid="classendstone_1_1Player" prot="public">endstone::Player</innerclass>
+    <innerclass refid="classendstone_1_1PlayerArmSwingEvent" prot="public">endstone::PlayerArmSwingEvent</innerclass>
     <innerclass refid="classendstone_1_1PlayerBanEntry" prot="public">endstone::PlayerBanEntry</innerclass>
     <innerclass refid="classendstone_1_1PlayerBanList" prot="public">endstone::PlayerBanList</innerclass>
     <innerclass refid="classendstone_1_1PlayerBedEnterEvent" prot="public">endstone::PlayerBedEnterEvent</innerclass>

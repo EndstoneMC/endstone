@@ -107,14 +107,18 @@
         </childnode>
       </node>
       <node id="19">
+        <label>include/endstone/event/player/player_arm_swing_event.h</label>
+        <link refid="player__arm__swing__event_8h_source"/>
+      </node>
+      <node id="20">
         <label>include/endstone/event/player/player_drop_item_event.h</label>
         <link refid="player__drop__item__event_8h_source"/>
       </node>
-      <node id="20">
+      <node id="21">
         <label>include/endstone/event/player/player_interact_event.h</label>
         <link refid="player__interact__event_8h_source"/>
       </node>
-      <node id="21">
+      <node id="22">
         <label>include/endstone/event/player/player_item_consume_event.h</label>
         <link refid="player__item__consume__event_8h_source"/>
       </node>
@@ -157,10 +161,12 @@
         </childnode>
         <childnode refid="22" relation="include">
         </childnode>
+        <childnode refid="23" relation="include">
+        </childnode>
         <childnode refid="6" relation="include">
         </childnode>
       </node>
-      <node id="22">
+      <node id="23">
         <label>include/endstone/inventory/recipe.h</label>
         <link refid="recipe_8h_source"/>
       </node>
@@ -180,7 +186,7 @@
         <childnode refid="13" relation="include">
         </childnode>
       </node>
-      <node id="23">
+      <node id="24">
         <label>include/endstone/nbt/io.h</label>
         <link refid="io_8h_source"/>
         <childnode refid="2" relation="include">
@@ -197,7 +203,7 @@
         <link refid="tag_8h_source"/>
         <childnode refid="3" relation="include">
         </childnode>
-        <childnode refid="23" relation="include">
+        <childnode refid="24" relation="include">
         </childnode>
       </node>
     </invincdepgraph>

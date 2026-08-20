@@ -378,6 +378,8 @@
 * [**PermissionBuilder**](classendstone_1_1detail_1_1PermissionBuilder.md)
 * [**Player**](classendstone_1_1Player.md)
 ([**endstone**](namespaceendstone.md))
+* [**PlayerArmSwingEvent**](classendstone_1_1PlayerArmSwingEvent.md)
+([**endstone**](namespaceendstone.md))
 * [**PlayerBanEntry**](classendstone_1_1PlayerBanEntry.md)
 ([**endstone**](namespaceendstone.md))
 * [**PlayerBanList**](classendstone_1_1PlayerBanList.md)
