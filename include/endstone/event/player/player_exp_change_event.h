@@ -34,6 +34,13 @@ public:
      */
     [[nodiscard]] int getAmount() const { return amount_; }
 
+    /**
+     * Sets the amount of experience the player will be given.
+     *
+     * @param amount the amount of experience to give
+     */
+    void setAmount(int amount) { amount_ = amount; }
+
 private:
     int amount_;
 };

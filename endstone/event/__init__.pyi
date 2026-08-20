@@ -656,8 +656,11 @@ class PlayerExpChangeEvent(PlayerEvent):
     @property
     def amount(self) -> int:
         """
-        The amount of experience gained by the player.
+        The amount of experience the player will be given.
         """
+
+    @amount.setter
+    def amount(self, arg1: int) -> None: ...
 
 class PlayerGameModeChangeEvent(PlayerEvent, Cancellable):
     """

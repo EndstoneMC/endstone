@@ -1007,6 +1007,10 @@ class Input:
         Whether a sprint input is applied.
         """
 
+    def __eq__(self, other: object) -> bool: ...
+    def __hash__(self) -> int: ...
+    def __ne__(self, other: object) -> bool: ...
+
 class Logger:
     """
     `Logger` class which can format and output varies levels of logs.
