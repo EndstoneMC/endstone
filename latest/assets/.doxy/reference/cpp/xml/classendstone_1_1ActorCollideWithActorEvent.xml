@@ -1,0 +1,157 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.8" xml:lang="en-US">
+  <compounddef id="classendstone_1_1ActorCollideWithActorEvent" kind="class" language="C++" prot="public" final="yes">
+    <compoundname>endstone::ActorCollideWithActorEvent</compoundname>
+    <basecompoundref refid="classendstone_1_1Cancellable" prot="public" virt="non-virtual">endstone::Cancellable&lt; Event &gt;</basecompoundref>
+    <includes refid="actor__collide__with__actor__event_8h" local="no">endstone/event/actor/actor_collide_with_actor_event.h</includes>
+    <sectiondef kind="private-attrib">
+      <memberdef kind="variable" id="classendstone_1_1ActorCollideWithActorEvent_1a885b836e6bb87731c1336d63f0c1a9d4" prot="private" static="no" mutable="no">
+        <type>std::vector&lt; <ref refid="classendstone_1_1NotNull" kindref="compound">NotNull</ref>&lt; <ref refid="classendstone_1_1Actor" kindref="compound">Actor</ref> &gt; &gt;</type>
+        <definition>std::vector&lt;NotNull&lt;Actor&gt; &gt; endstone::ActorCollideWithActorEvent::actors_</definition>
+        <argsstring></argsstring>
+        <name>actors_</name>
+        <qualifiedname>endstone::ActorCollideWithActorEvent::actors_</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/event/actor/actor_collide_with_actor_event.h" line="50" column="17" bodyfile="include/endstone/event/actor/actor_collide_with_actor_event.h" bodystart="50" bodyend="-1"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="public-func">
+      <memberdef kind="function" id="classendstone_1_1ActorCollideWithActorEvent_1a8ee49a66fa920a4853a7b529cb05f94b" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>endstone::ActorCollideWithActorEvent::ENDSTONE_EVENT</definition>
+        <argsstring>(ActorCollideWithActorEvent)</argsstring>
+        <name>ENDSTONE_EVENT</name>
+        <qualifiedname>endstone::ActorCollideWithActorEvent::ENDSTONE_EVENT</qualifiedname>
+        <param>
+          <type><ref refid="classendstone_1_1ActorCollideWithActorEvent" kindref="compound">ActorCollideWithActorEvent</ref></type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/event/actor/actor_collide_with_actor_event.h" line="38" column="5"/>
+      </memberdef>
+      <memberdef kind="function" id="classendstone_1_1ActorCollideWithActorEvent_1a7feadb6357872d0797015193a2a12945" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type></type>
+        <definition>endstone::ActorCollideWithActorEvent::ActorCollideWithActorEvent</definition>
+        <argsstring>(const NotNull&lt; Actor &gt; &amp;actor1, const NotNull&lt; Actor &gt; &amp;actor2)</argsstring>
+        <name>ActorCollideWithActorEvent</name>
+        <qualifiedname>endstone::ActorCollideWithActorEvent::ActorCollideWithActorEvent</qualifiedname>
+        <param>
+          <type><ref refid="classendstone_1_1Identifier" kindref="compound">const</ref> <ref refid="classendstone_1_1NotNull" kindref="compound">NotNull</ref>&lt; <ref refid="classendstone_1_1Actor" kindref="compound">Actor</ref> &gt; &amp;</type>
+          <declname>actor1</declname>
+        </param>
+        <param>
+          <type><ref refid="classendstone_1_1Identifier" kindref="compound">const</ref> <ref refid="classendstone_1_1NotNull" kindref="compound">NotNull</ref>&lt; <ref refid="classendstone_1_1Actor" kindref="compound">Actor</ref> &gt; &amp;</type>
+          <declname>actor2</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/event/actor/actor_collide_with_actor_event.h" line="40" column="5" bodyfile="include/endstone/event/actor/actor_collide_with_actor_event.h" bodystart="40" bodyend="40"/>
+      </memberdef>
+      <memberdef kind="function" id="classendstone_1_1ActorCollideWithActorEvent_1a81e57ecef6d230b7bf679efa77b12507" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type><ref refid="classendstone_1_1Identifier" kindref="compound">const</ref> std::vector&lt; <ref refid="classendstone_1_1NotNull" kindref="compound">NotNull</ref>&lt; <ref refid="classendstone_1_1Actor" kindref="compound">Actor</ref> &gt; &gt; &amp;</type>
+        <definition>const std::vector&lt; NotNull&lt; Actor &gt; &gt; &amp; endstone::ActorCollideWithActorEvent::getActors</definition>
+        <argsstring>() const</argsstring>
+        <name>getActors</name>
+        <qualifiedname>endstone::ActorCollideWithActorEvent::getActors</qualifiedname>
+        <briefdescription>
+<para>Returns the Actors involved in this event. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="return"><para>Actors that are involved in this event </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/event/actor/actor_collide_with_actor_event.h" line="47" column="24" bodyfile="include/endstone/event/actor/actor_collide_with_actor_event.h" bodystart="47" bodyend="47"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+<para>Called when two Actors collide with each other. </para>
+    </briefdescription>
+    <detaileddescription>
+<para>If this event is cancelled, the Actors will not be pushed away from each other. Cancelling also stops either <ref refid="classendstone_1_1Actor" kindref="compound">Actor</ref> from being pulled onto the other when the other is a rideable vehicle, so a listener that cancels every collision also stops boats and minecarts from being boarded by walking into them.</para>
+<para>The server fires this before it decides whether the collision leads to a push, so it is also called for pairs the server then leaves alone, and it is called more than once per tick for a pair that keeps overlapping. </para>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="2">
+        <label>endstone::Cancellable&lt; Event &gt;</label>
+        <link refid="classendstone_1_1Cancellable"/>
+        <childnode refid="3" relation="public-inheritance">
+        </childnode>
+        <childnode refid="4" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="1">
+        <label>endstone::ActorCollideWithActorEvent</label>
+        <link refid="classendstone_1_1ActorCollideWithActorEvent"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="3">
+        <label>endstone::Event</label>
+        <link refid="classendstone_1_1Event"/>
+      </node>
+      <node id="4">
+        <label>endstone::ICancellable</label>
+        <link refid="classendstone_1_1ICancellable"/>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="2">
+        <label>endstone::Cancellable&lt; Event &gt;</label>
+        <link refid="classendstone_1_1Cancellable"/>
+        <childnode refid="3" relation="public-inheritance">
+        </childnode>
+        <childnode refid="4" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="1">
+        <label>endstone::ActorCollideWithActorEvent</label>
+        <link refid="classendstone_1_1ActorCollideWithActorEvent"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="3">
+        <label>endstone::Event</label>
+        <link refid="classendstone_1_1Event"/>
+      </node>
+      <node id="4">
+        <label>endstone::ICancellable</label>
+        <link refid="classendstone_1_1ICancellable"/>
+      </node>
+    </collaborationgraph>
+    <location file="include/endstone/event/actor/actor_collide_with_actor_event.h" line="36" column="1" bodyfile="include/endstone/event/actor/actor_collide_with_actor_event.h" bodystart="36" bodyend="51"/>
+    <listofallmembers>
+      <member refid="classendstone_1_1ActorCollideWithActorEvent_1a7feadb6357872d0797015193a2a12945" prot="public" virt="non-virtual"><scope>endstone::ActorCollideWithActorEvent</scope><name>ActorCollideWithActorEvent</name></member>
+      <member refid="classendstone_1_1ActorCollideWithActorEvent_1a885b836e6bb87731c1336d63f0c1a9d4" prot="private" virt="non-virtual"><scope>endstone::ActorCollideWithActorEvent</scope><name>actors_</name></member>
+      <member refid="classendstone_1_1Cancellable_1a3512b47db69c6001f5c0450051308327" prot="public" virt="virtual"><scope>endstone::ActorCollideWithActorEvent</scope><name>cancel</name></member>
+      <member refid="classendstone_1_1ActorCollideWithActorEvent_1a8ee49a66fa920a4853a7b529cb05f94b" prot="public" virt="non-virtual"><scope>endstone::ActorCollideWithActorEvent</scope><name>ENDSTONE_EVENT</name></member>
+      <member refid="classendstone_1_1Event_1a28cca8d74920493b449d035540acf023" prot="public" virt="non-virtual"><scope>endstone::ActorCollideWithActorEvent</scope><name>Event</name></member>
+      <member refid="classendstone_1_1Event_1a7199136ebb40e1441bc61e29f83c3cad" prot="public" virt="non-virtual"><scope>endstone::ActorCollideWithActorEvent</scope><name>Event</name></member>
+      <member refid="classendstone_1_1Event_1ad20bafd16e0671578e37390b95e5104c" prot="public" virt="non-virtual"><scope>endstone::ActorCollideWithActorEvent</scope><name>Event</name></member>
+      <member refid="classendstone_1_1ActorCollideWithActorEvent_1a81e57ecef6d230b7bf679efa77b12507" prot="public" virt="non-virtual"><scope>endstone::ActorCollideWithActorEvent</scope><name>getActors</name></member>
+      <member refid="classendstone_1_1Event_1a826fe74f9c4195a36a364b9aeeb321bb" prot="public" virt="pure-virtual"><scope>endstone::ActorCollideWithActorEvent</scope><name>getEventName</name></member>
+      <member refid="classendstone_1_1Event_1ae89b54f63dc32b0c8797a59db69b6931" prot="public" virt="non-virtual"><scope>endstone::ActorCollideWithActorEvent</scope><name>isAsynchronous</name></member>
+      <member refid="classendstone_1_1Cancellable_1a268b73cc5bda0fa5923336d031814faa" prot="public" virt="virtual"><scope>endstone::ActorCollideWithActorEvent</scope><name>isCancelled</name></member>
+      <member refid="classendstone_1_1Event_1a44a4ff424a8b690c01a2afe10ae68d8f" prot="public" virt="non-virtual"><scope>endstone::ActorCollideWithActorEvent</scope><name>operator=</name></member>
+      <member refid="classendstone_1_1Event_1a1d7fc5400782d20be99a3636aa7f53b9" prot="public" virt="non-virtual"><scope>endstone::ActorCollideWithActorEvent</scope><name>operator=</name></member>
+      <member refid="classendstone_1_1Cancellable_1aa12df44bcb66924d06a689d0dd07865e" prot="public" virt="virtual"><scope>endstone::ActorCollideWithActorEvent</scope><name>setCancelled</name></member>
+      <member refid="classendstone_1_1Event_1a6aeaa8096baba90f8ace94106e0e05f3" prot="public" virt="virtual"><scope>endstone::ActorCollideWithActorEvent</scope><name>~Event</name></member>
+      <member refid="classendstone_1_1ICancellable_1ab6d311fcaa18971f69a1b23f5a856301" prot="public" virt="virtual"><scope>endstone::ActorCollideWithActorEvent</scope><name>~ICancellable</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>
