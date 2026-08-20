@@ -316,7 +316,22 @@ void init_input(py::module_ &m)
         .def_property_readonly("is_right", &Input::isRight, "Whether a right input is applied.")
         .def_property_readonly("is_jump", &Input::isJump, "Whether a jump input is applied.")
         .def_property_readonly("is_sneak", &Input::isSneak, "Whether a sneak input is applied.")
-        .def_property_readonly("is_sprint", &Input::isSprint, "Whether a sprint input is applied.");
+        .def_property_readonly("is_sprint", &Input::isSprint, "Whether a sprint input is applied.")
+        .def(py::self == py::self)  // NOLINT(misc-redundant-expression)
+        .def(py::self != py::self)  // NOLINT(misc-redundant-expression)
+        .def("__hash__",
+             [](const Input &self) {
+                 return py::hash(py::make_tuple(self.isForward(), self.isBackward(), self.isLeft(), self.isRight(),
+                                                self.isJump(), self.isSneak(), self.isSprint()));
+             })
+        .def("__repr__", [](const Input &self) {
+            const auto flag = [](const bool value) {
+                return value ? "True" : "False";
+            };
+            return std::format("Input(forward={}, backward={}, left={}, right={}, jump={}, sneak={}, sprint={})",
+                               flag(self.isForward()), flag(self.isBackward()), flag(self.isLeft()),
+                               flag(self.isRight()), flag(self.isJump()), flag(self.isSneak()), flag(self.isSprint()));
+        });
 }
 
 void init_logger(py::module &m)
