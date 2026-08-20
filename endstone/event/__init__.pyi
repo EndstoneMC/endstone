@@ -550,51 +550,6 @@ class PlayerBedLeaveEvent(PlayerEvent):
         The bed block involved in this event.
         """
 
-class PlayerRecipeBookSettingsChangeEvent(PlayerEvent):
-    """
-    Called when a player changes recipe book settings.
-    """
-    class RecipeBookType(enum.Enum):
-        """
-        The recipe book type.
-        """
-
-        CRAFTING = 0
-        FURNACE = 1
-        BLAST_FURNACE = 2
-        SMOKER = 3
-
-    CRAFTING = RecipeBookType.CRAFTING
-    FURNACE = RecipeBookType.FURNACE
-    BLAST_FURNACE = RecipeBookType.BLAST_FURNACE
-    SMOKER = RecipeBookType.SMOKER
-    @property
-    def recipe_book_type(self) -> RecipeBookType:
-        """
-        The type of recipe book whose settings changed.
-        """
-
-    @property
-    def is_filtering(self) -> bool:
-        """
-        Whether recipe filtering is enabled.
-        """
-
-    @property
-    def is_open(self) -> bool:
-        """
-        Whether the recipe book is open.
-
-class PlayerPickupArrowEvent(PlayerEvent, Cancellable):
-    """
-    Called when a player picks up an arrow from the ground.
-    """
-    @property
-    def arrow(self) -> Actor:
-        """
-        The arrow picked up by the player.
-        """
-
 class PlayerChatEvent(PlayerEvent, Cancellable):
     """
     Called when a player sends a chat message.
@@ -812,26 +767,6 @@ class PlayerItemHeldEvent(PlayerEvent, Cancellable):
         The previous held slot index.
         """
 
-class PlayerToggleSneakEvent(PlayerEvent):
-    """
-    Called when a player toggles their sneaking state.
-    """
-    @property
-    def is_sneaking(self) -> bool:
-        """
-        Whether the player is now sneaking or not.
-        """
-
-class PlayerToggleSprintEvent(PlayerEvent):
-    """
-    Called when a player toggles their sprinting state.
-    """
-    @property
-    def is_sprinting(self) -> bool:
-        """
-        Whether the player is now sprinting or not.
-        """
-
 class PlayerJoinEvent(PlayerEvent):
     """
     Called when a player joins a server.
@@ -844,6 +779,11 @@ class PlayerJoinEvent(PlayerEvent):
 
     @join_message.setter
     def join_message(self, arg1: str | Translatable | None) -> None: ...
+
+class PlayerJumpEvent(PlayerMoveEvent):
+    """
+    Called when a player jumps.
+    """
 
 class PlayerKickEvent(PlayerEvent, Cancellable):
     """
@@ -892,9 +832,29 @@ class PlayerMoveEvent(PlayerEvent, Cancellable):
     @to_location.setter
     def to_location(self, arg1: Location) -> None: ...
 
-class PlayerJumpEvent(PlayerMoveEvent):
+class PlayerPickupArrowEvent(PlayerEvent, Cancellable):
     """
-    Called when a player jumps.
+    Called when a player picks up an arrow from the ground.
+    """
+    @property
+    def arrow(self) -> Actor:
+        """
+        The arrow picked up by the player.
+        """
+
+class PlayerPickupItemEvent(PlayerEvent, Cancellable):
+    """
+    Called when a player picks an item up from the ground.
+    """
+    @property
+    def item(self) -> Item:
+        """
+        The Item picked up by the entity.
+        """
+
+class PlayerPortalEvent(PlayerTeleportEvent):
+    """
+    Called when a player is about to teleport because it is in contact with a portal.
     """
 
 class PlayerQuitEvent(PlayerEvent):
@@ -909,6 +869,42 @@ class PlayerQuitEvent(PlayerEvent):
 
     @quit_message.setter
     def quit_message(self, arg1: str | Translatable | None) -> None: ...
+
+class PlayerRecipeBookSettingsChangeEvent(PlayerEvent):
+    """
+    Called when a player changes recipe book settings.
+    """
+    class RecipeBookType(enum.Enum):
+        """
+        The recipe book type.
+        """
+
+        CRAFTING = 0
+        FURNACE = 1
+        BLAST_FURNACE = 2
+        SMOKER = 3
+
+    CRAFTING = RecipeBookType.CRAFTING
+    FURNACE = RecipeBookType.FURNACE
+    BLAST_FURNACE = RecipeBookType.BLAST_FURNACE
+    SMOKER = RecipeBookType.SMOKER
+    @property
+    def recipe_book_type(self) -> RecipeBookType:
+        """
+        The type of recipe book whose settings changed.
+        """
+
+    @property
+    def is_filtering(self) -> bool:
+        """
+        Whether recipe filtering is enabled.
+        """
+
+    @property
+    def is_open(self) -> bool:
+        """
+        Whether the recipe book is open.
+        """
 
 class PlayerRespawnEvent(PlayerEvent):
     """
@@ -954,19 +950,44 @@ class PlayerTeleportEvent(PlayerMoveEvent):
     Called when a player is teleported from one location to another.
     """
 
-class PlayerPortalEvent(PlayerTeleportEvent):
+class PlayerToggleSneakEvent(PlayerEvent):
     """
-    Called when a player is about to teleport because it is in contact with a portal.
-    """
-
-class PlayerPickupItemEvent(PlayerEvent, Cancellable):
-    """
-    Called when a player picks an item up from the ground.
+    Called when a player toggles their sneaking state.
     """
     @property
-    def item(self) -> Item:
+    def is_sneaking(self) -> bool:
         """
-        The Item picked up by the entity.
+        Whether the player is now sneaking or not.
+        """
+
+class PlayerToggleSprintEvent(PlayerEvent):
+    """
+    Called when a player toggles their sprinting state.
+    """
+    @property
+    def is_sprinting(self) -> bool:
+        """
+        Whether the player is now sprinting or not.
+        """
+
+class PlayerToggleSneakEvent(PlayerEvent):
+    """
+    Called when a player toggles their sneaking state.
+    """
+    @property
+    def is_sneaking(self) -> bool:
+        """
+        Whether the player is now sneaking or not.
+        """
+
+class PlayerToggleSprintEvent(PlayerEvent):
+    """
+    Called when a player toggles their sprinting state.
+    """
+    @property
+    def is_sprinting(self) -> bool:
+        """
+        Whether the player is now sprinting or not.
         """
 
 class ServerEvent(Event):
