@@ -351,7 +351,6 @@ void init_event(py::module_ &m, py::class_<Event, PyEvent> &event)
     py::class_<PlayerJoinEvent, PlayerEvent>(m, "PlayerJoinEvent", "Called when a player joins a server.")
         .def_property("join_message", &PlayerJoinEvent::getJoinMessage, &PlayerJoinEvent::setJoinMessage,
                       "The join message to send to all online players.");
-    py::class_<PlayerJumpEvent, PlayerMoveEvent>(m, "PlayerJumpEvent", "Called when a player jumps.");
     py::class_<PlayerKickEvent, PlayerEvent, ICancellable>(m, "PlayerKickEvent",
                                                            "Called when a player gets kicked from the server.")
         .def_property("reason", &PlayerKickEvent::getReason, &PlayerKickEvent::setReason,
@@ -371,6 +370,7 @@ void init_event(py::module_ &m, py::class_<Event, PyEvent> &event)
                       "The location that this player moved from.")
         .def_property("to_location", &PlayerMoveEvent::getTo, &PlayerMoveEvent::setTo,
                       "The location that this player moved to.");
+    py::class_<PlayerJumpEvent, PlayerMoveEvent>(m, "PlayerJumpEvent", "Called when a player jumps.");
     py::class_<PlayerPickupArrowEvent, PlayerEvent, ICancellable>(
         m, "PlayerPickupArrowEvent", "Called when a player picks up an arrow or a thrown trident from the ground.")
         .def_property_readonly("arrow", &PlayerPickupArrowEvent::getArrow, "The arrow picked up by the player.");
@@ -378,8 +378,6 @@ void init_event(py::module_ &m, py::class_<Event, PyEvent> &event)
         m, "PlayerPickupItemEvent", "Called when a player picks an item up from the ground.")
         .def_property_readonly("item", &PlayerPickupItemEvent::getItem,
                                "The Item picked up by the entity.");
-    py::class_<PlayerPortalEvent, PlayerTeleportEvent>(
-        m, "PlayerPortalEvent", "Called when a player is about to teleport because it is in contact with a portal.");
     py::class_<PlayerQuitEvent, PlayerEvent>(m, "PlayerQuitEvent", "Called when a player leaves a server.")
         .def_property("quit_message", &PlayerQuitEvent::getQuitMessage, &PlayerQuitEvent::setQuitMessage,
                       "The quit message to send to all online players.");

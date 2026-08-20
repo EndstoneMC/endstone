@@ -791,11 +791,6 @@ class PlayerJoinEvent(PlayerEvent):
     @join_message.setter
     def join_message(self, arg1: str | Translatable | None) -> None: ...
 
-class PlayerJumpEvent(PlayerMoveEvent):
-    """
-    Called when a player jumps.
-    """
-
 class PlayerKickEvent(PlayerEvent, Cancellable):
     """
     Called when a player gets kicked from the server.
@@ -858,6 +853,11 @@ class PlayerMoveEvent(PlayerEvent, Cancellable):
 
     @to_location.setter
     def to_location(self, arg1: Location) -> None: ...
+
+class PlayerJumpEvent(PlayerMoveEvent):
+    """
+    Called when a player jumps.
+    """
 
 class PlayerPickupArrowEvent(PlayerEvent, Cancellable):
     """
