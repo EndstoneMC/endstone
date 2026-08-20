@@ -14,38 +14,40 @@
 
 #pragma once
 
-#include <vector>
-
 #include "endstone/actor/actor.h"
+#include "endstone/event/actor/actor_event.h"
 #include "endstone/event/cancellable.h"
-#include "endstone/event/event.h"
-#include "endstone/util/pointers.h"
 
 namespace endstone {
 
 /**
- * Called when two Actors collide with each other.
+ * Called when an Actor collides with another Actor.
  *
- * If this event is cancelled, the Actors will not be pushed away from each other.
+ * The server fires this before it decides whether the collision leads to a push, so it is also called for pairs
+ * the server then leaves alone, and it is called more than once per tick for a pair that keeps overlapping.
+ *
+ * If this event is cancelled, the two Actors are not pushed apart. Cancelling also stops either Actor from being
+ * pulled onto the other when the other is a rideable vehicle, so a listener that cancels every collision also
+ * stops boats and minecarts from being boarded by walking into them.
  */
-class ActorCollideWithActorEvent final : public Cancellable<Event> {
+class ActorCollideWithActorEvent final : public Cancellable<ActorEvent<Actor>> {
 public:
     ENDSTONE_EVENT(ActorCollideWithActorEvent);
 
-    ActorCollideWithActorEvent(const NotNull<Actor> &actor1, const NotNull<Actor> &actor2) : actors_{actor1, actor2}
+    ActorCollideWithActorEvent(const NotNull<Actor> &actor, const NotNull<Actor> &target)
+        : Cancellable(actor), target_(target)
     {
     }
-    ~ActorCollideWithActorEvent() override = default;
 
     /**
-     * Returns the Actors involved in this event.
+     * Returns the other Actor involved in this collision.
      *
-     * @return Actors that are involved in this event
+     * @return Actor that the Actor of this event collided with
      */
-    [[nodiscard]] std::vector<NotNull<Actor>> getActors() const { return actors_; }
+    [[nodiscard]] const NotNull<Actor> &getTarget() const { return target_; }
 
 private:
-    std::vector<NotNull<Actor>> actors_;
+    NotNull<Actor> target_;
 };
 
 }  // namespace endstone
