@@ -108,6 +108,7 @@
     <member refid="classendstone_1_1ActorExplodeEvent_1a503cfca64807cacb36ca3c41de78be28" kind="function"><name>getLocation</name></member>
     <member refid="classendstone_1_1ActorExplodeEvent_1a0b009ccfd36dbb770f245f1d30d4e348" kind="function"><name>getBlockList</name></member>
     <member refid="classendstone_1_1ActorExplodeEvent_1a1a6ba8571a20ec1325ec4a9aa45a1a0a" kind="function"><name>getBlockList</name></member>
+    <member refid="classendstone_1_1ActorExplodeEvent_1a3b4abaea75f331689961d779bb000a18" kind="function"><name>setBlockList</name></member>
   </compound>
   <compound refid="classendstone_1_1ActorKnockbackEvent" kind="class"><name>endstone::ActorKnockbackEvent</name>
     <member refid="classendstone_1_1ActorKnockbackEvent_1a8738cee3b2fe9ee3daaf5f79c7745ccf" kind="variable"><name>source_</name></member>
@@ -468,6 +469,7 @@
     <member refid="classendstone_1_1BlockExplodeEvent_1abe639df82ee8a0278a20eeb8b24b433f" kind="function"><name>~BlockExplodeEvent</name></member>
     <member refid="classendstone_1_1BlockExplodeEvent_1aae52a2584c34eb63b03e3bd29e4797e0" kind="function"><name>getBlockList</name></member>
     <member refid="classendstone_1_1BlockExplodeEvent_1a8490b081947c453e975399089d792957" kind="function"><name>getBlockList</name></member>
+    <member refid="classendstone_1_1BlockExplodeEvent_1aac6f4ea7f2ca68b59c3b17e33935be50" kind="function"><name>setBlockList</name></member>
   </compound>
   <compound refid="classendstone_1_1BlockFormEvent" kind="class"><name>endstone::BlockFormEvent</name>
     <member refid="classendstone_1_1BlockFormEvent_1aef9322541737c95f359e061c4e7a795f" kind="function"><name>ENDSTONE_EVENT</name></member>

@@ -5525,6 +5525,7 @@ and this project adheres to <a href="https://semver.org/spec/v2.0.0.html">Semant
 <h2 id="unreleased"><a href="https://github.com/EndstoneMC/endstone/compare/v0.11.9...HEAD">Unreleased</a><a class="headerlink" href="#unreleased" title="Permanent link">&para;</a></h2>
 <h3 id="added">Added<a class="headerlink" href="#added" title="Permanent link">&para;</a></h3>
 <ul>
+<li>Added <code>ActorExplodeEvent::setBlockList()</code> and <code>BlockExplodeEvent::setBlockList()</code>, and made their <code>BlockList</code> alias public, so the blown-up block list can be replaced wholesale from C++ as it already could from Python.</li>
 <li>Added <code>Player.send_action_bar()</code> for sending a message above the player's hotbar.</li>
 <li>Added <code>/restart</code> command (console-only) that gracefully restarts the server without manually relaunching.</li>
 <li>Added support for custom Python events with optional cancellation.</li>

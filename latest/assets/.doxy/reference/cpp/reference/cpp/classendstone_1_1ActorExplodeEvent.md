@@ -29,6 +29,11 @@ Inherits the following classes: [endstone::Cancellable](classendstone_1_1Cancell
 
 
 
+## Public Types
+
+| Type | Name |
+| ---: | :--- |
+| typedef std::vector&lt; [**NotNull**](classendstone_1_1NotNull.md)&lt; [**Block**](classendstone_1_1Block.md) &gt; &gt; | [**BlockList**](#typedef-blocklist)  <br> |
 
 
 
@@ -98,6 +103,7 @@ Inherits the following classes: [endstone::Cancellable](classendstone_1_1Cancell
 |  [**const**](classendstone_1_1Identifier.md) BlockList & | [**getBlockList**](#function-getblocklist-12) () const<br>_Returns the list of blocks that would have been removed or were removed from the explosion event._  |
 |  BlockList & | [**getBlockList**](#function-getblocklist-22) () <br>_Returns the list of blocks that would have been removed or were removed from the explosion event._  |
 |  [**const**](classendstone_1_1Identifier.md) [**Location**](classendstone_1_1Location.md) & | [**getLocation**](#function-getlocation) () const<br>_Returns the location where the explosion happened._  |
+|  [**void**](classendstone_1_1Identifier.md) | [**setBlockList**](#function-setblocklist) (BlockList blocks) <br>_Sets the list of blocks that would have been removed or were removed from the explosion event._  |
 |   | [**~ActorExplodeEvent**](#function-actorexplodeevent) () override<br> |
 
 
@@ -202,6 +208,21 @@ See [endstone::ICancellable](classendstone_1_1ICancellable.md)
 
 
 
+## Public Types Documentation
+
+
+
+
+### typedef BlockList 
+
+```C++
+using endstone::ActorExplodeEvent::BlockList =  std::vector<NotNull<Block> >;
+```
+
+
+
+
+<hr>
 ## Public Functions Documentation
 
 
@@ -307,6 +328,33 @@ It is not possible to get this value from the Entity as the Entity no longer exi
 
 The location of the explosion 
 
+
+
+
+
+        
+
+<hr>
+
+
+
+### function setBlockList 
+
+_Sets the list of blocks that would have been removed or were removed from the explosion event._ 
+```C++
+inline void endstone::ActorExplodeEvent::setBlockList (
+    BlockList blocks
+) 
+```
+
+
+
+
+
+**Parameters:**
+
+
+* `blocks` All blown-up blocks 
 
 
 

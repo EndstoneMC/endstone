@@ -4,8 +4,8 @@
     <compoundname>endstone::ActorExplodeEvent</compoundname>
     <basecompoundref refid="classendstone_1_1Cancellable" prot="public" virt="non-virtual">endstone::Cancellable&lt; ActorEvent&lt; Actor &gt; &gt;</basecompoundref>
     <includes refid="actor__explode__event_8h" local="no">endstone/event/actor/actor_explode_event.h</includes>
-    <sectiondef kind="private-type">
-      <memberdef kind="typedef" id="classendstone_1_1ActorExplodeEvent_1ac825f40d9f507b290f5f28999d2feb3f" prot="private" static="no">
+    <sectiondef kind="public-type">
+      <memberdef kind="typedef" id="classendstone_1_1ActorExplodeEvent_1ac825f40d9f507b290f5f28999d2feb3f" prot="public" static="no">
         <type>std::vector&lt; <ref refid="classendstone_1_1NotNull" kindref="compound">NotNull</ref>&lt; <ref refid="classendstone_1_1Block" kindref="compound">Block</ref> &gt; &gt;</type>
         <definition>using endstone::ActorExplodeEvent::BlockList =  std::vector&lt;NotNull&lt;Block&gt; &gt;</definition>
         <argsstring></argsstring>
@@ -17,7 +17,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/event/actor/actor_explode_event.h" line="32" column="5" bodyfile="include/endstone/event/actor/actor_explode_event.h" bodystart="32" bodyend="-1"/>
+        <location file="include/endstone/event/actor/actor_explode_event.h" line="33" column="5" bodyfile="include/endstone/event/actor/actor_explode_event.h" bodystart="33" bodyend="-1"/>
       </memberdef>
     </sectiondef>
     <sectiondef kind="private-attrib">
@@ -33,7 +33,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/event/actor/actor_explode_event.h" line="66" column="14" bodyfile="include/endstone/event/actor/actor_explode_event.h" bodystart="66" bodyend="-1"/>
+        <location file="include/endstone/event/actor/actor_explode_event.h" line="73" column="14" bodyfile="include/endstone/event/actor/actor_explode_event.h" bodystart="73" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="classendstone_1_1ActorExplodeEvent_1ada001326b186e0574ce6b17be5dc4e07" prot="private" static="no" mutable="no">
         <type>BlockList</type>
@@ -47,7 +47,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/event/actor/actor_explode_event.h" line="67" column="15" bodyfile="include/endstone/event/actor/actor_explode_event.h" bodystart="67" bodyend="-1"/>
+        <location file="include/endstone/event/actor/actor_explode_event.h" line="74" column="15" bodyfile="include/endstone/event/actor/actor_explode_event.h" bodystart="74" bodyend="-1"/>
       </memberdef>
     </sectiondef>
     <sectiondef kind="public-func">
@@ -163,6 +163,35 @@
         </inbodydescription>
         <location file="include/endstone/event/actor/actor_explode_event.h" line="63" column="16" bodyfile="include/endstone/event/actor/actor_explode_event.h" bodystart="63" bodyend="63"/>
       </memberdef>
+      <memberdef kind="function" id="classendstone_1_1ActorExplodeEvent_1a3b4abaea75f331689961d779bb000a18" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type><ref refid="classendstone_1_1Identifier" kindref="compound">void</ref></type>
+        <definition>void endstone::ActorExplodeEvent::setBlockList</definition>
+        <argsstring>(BlockList blocks)</argsstring>
+        <name>setBlockList</name>
+        <qualifiedname>endstone::ActorExplodeEvent::setBlockList</qualifiedname>
+        <param>
+          <type>BlockList</type>
+          <declname>blocks</declname>
+        </param>
+        <briefdescription>
+<para>Sets the list of blocks that would have been removed or were removed from the explosion event. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>blocks</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>All blown-up blocks </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/event/actor/actor_explode_event.h" line="70" column="10" bodyfile="include/endstone/event/actor/actor_explode_event.h" bodystart="70" bodyend="70"/>
+      </memberdef>
     </sectiondef>
     <briefdescription>
 <para>Called when an actor explodes. </para>
@@ -229,11 +258,11 @@
         <link refid="classendstone_1_1ICancellable"/>
       </node>
     </collaborationgraph>
-    <location file="include/endstone/event/actor/actor_explode_event.h" line="31" column="1" bodyfile="include/endstone/event/actor/actor_explode_event.h" bodystart="31" bodyend="68"/>
+    <location file="include/endstone/event/actor/actor_explode_event.h" line="31" column="1" bodyfile="include/endstone/event/actor/actor_explode_event.h" bodystart="31" bodyend="75"/>
     <listofallmembers>
       <member refid="classendstone_1_1ActorEvent_1a6a5b746c518c92c1b7898f9f5839fc04" prot="public" virt="non-virtual"><scope>endstone::ActorExplodeEvent</scope><name>ActorEvent</name></member>
       <member refid="classendstone_1_1ActorExplodeEvent_1aecfc9d83d169bc32d04c46caa545f6d3" prot="public" virt="non-virtual"><scope>endstone::ActorExplodeEvent</scope><name>ActorExplodeEvent</name></member>
-      <member refid="classendstone_1_1ActorExplodeEvent_1ac825f40d9f507b290f5f28999d2feb3f" prot="private" virt="non-virtual"><scope>endstone::ActorExplodeEvent</scope><name>BlockList</name></member>
+      <member refid="classendstone_1_1ActorExplodeEvent_1ac825f40d9f507b290f5f28999d2feb3f" prot="public" virt="non-virtual"><scope>endstone::ActorExplodeEvent</scope><name>BlockList</name></member>
       <member refid="classendstone_1_1ActorExplodeEvent_1ada001326b186e0574ce6b17be5dc4e07" prot="private" virt="non-virtual"><scope>endstone::ActorExplodeEvent</scope><name>blocks_</name></member>
       <member refid="classendstone_1_1Cancellable_1a3512b47db69c6001f5c0450051308327" prot="public" virt="virtual"><scope>endstone::ActorExplodeEvent</scope><name>cancel</name></member>
       <member refid="classendstone_1_1ActorExplodeEvent_1ad5810b7076032742ba61707b9964ee13" prot="public" virt="non-virtual"><scope>endstone::ActorExplodeEvent</scope><name>ENDSTONE_EVENT</name></member>
@@ -251,6 +280,7 @@
       <member refid="classendstone_1_1ActorExplodeEvent_1a71dac852727c2b7fb8268622c43c0cc2" prot="private" virt="non-virtual"><scope>endstone::ActorExplodeEvent</scope><name>location_</name></member>
       <member refid="classendstone_1_1Event_1a44a4ff424a8b690c01a2afe10ae68d8f" prot="public" virt="non-virtual"><scope>endstone::ActorExplodeEvent</scope><name>operator=</name></member>
       <member refid="classendstone_1_1Event_1a1d7fc5400782d20be99a3636aa7f53b9" prot="public" virt="non-virtual"><scope>endstone::ActorExplodeEvent</scope><name>operator=</name></member>
+      <member refid="classendstone_1_1ActorExplodeEvent_1a3b4abaea75f331689961d779bb000a18" prot="public" virt="non-virtual"><scope>endstone::ActorExplodeEvent</scope><name>setBlockList</name></member>
       <member refid="classendstone_1_1Cancellable_1aa12df44bcb66924d06a689d0dd07865e" prot="public" virt="virtual"><scope>endstone::ActorExplodeEvent</scope><name>setCancelled</name></member>
       <member refid="classendstone_1_1ActorEvent_1a9fff5524effc04e99bb28d49a9b37b6f" prot="public" virt="non-virtual"><scope>endstone::ActorExplodeEvent</scope><name>~ActorEvent</name></member>
       <member refid="classendstone_1_1ActorExplodeEvent_1aeb8f75b17f04f27c4e4e64cd1f56d2f2" prot="public" virt="non-virtual"><scope>endstone::ActorExplodeEvent</scope><name>~ActorExplodeEvent</name></member>

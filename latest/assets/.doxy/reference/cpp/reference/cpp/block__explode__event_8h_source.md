@@ -35,9 +35,9 @@
 namespace endstone {
 
 class BlockExplodeEvent : public Cancellable<BlockEvent> {
+public:
     using BlockList = std::vector<NotNull<Block>>;
 
-public:
     ENDSTONE_EVENT(BlockExplodeEvent);
     explicit BlockExplodeEvent(const NotNull<Block> &block, BlockList blocks)
         : Cancellable(block), blocks_(std::move(blocks))
@@ -48,6 +48,8 @@ public:
     [[nodiscard]] const BlockList &getBlockList() const { return blocks_; }
 
     [[nodiscard]] BlockList &getBlockList() { return blocks_; }
+
+    void setBlockList(BlockList blocks) { blocks_ = std::move(blocks); }
 
 private:
     BlockList blocks_;

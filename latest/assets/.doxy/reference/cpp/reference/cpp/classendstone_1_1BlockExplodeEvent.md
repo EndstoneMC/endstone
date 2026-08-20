@@ -29,6 +29,11 @@ Inherits the following classes: [endstone::Cancellable](classendstone_1_1Cancell
 
 
 
+## Public Types
+
+| Type | Name |
+| ---: | :--- |
+| typedef std::vector&lt; [**NotNull**](classendstone_1_1NotNull.md)&lt; [**Block**](classendstone_1_1Block.md) &gt; &gt; | [**BlockList**](#typedef-blocklist)  <br> |
 
 
 
@@ -97,6 +102,7 @@ Inherits the following classes: [endstone::Cancellable](classendstone_1_1Cancell
 |   | [**ENDSTONE\_EVENT**](#function-endstone_event) ([**BlockExplodeEvent**](classendstone_1_1BlockExplodeEvent.md)) <br> |
 |  [**const**](classendstone_1_1Identifier.md) BlockList & | [**getBlockList**](#function-getblocklist-12) () const<br>_Returns the list of blocks that would have been removed or were removed from the explosion event._  |
 |  BlockList & | [**getBlockList**](#function-getblocklist-22) () <br>_Returns the list of blocks that would have been removed or were removed from the explosion event._  |
+|  [**void**](classendstone_1_1Identifier.md) | [**setBlockList**](#function-setblocklist) (BlockList blocks) <br>_Sets the list of blocks that would have been removed or were removed from the explosion event._  |
 |   | [**~BlockExplodeEvent**](#function-blockexplodeevent) () override<br> |
 
 
@@ -211,6 +217,21 @@ If a [**BlockExplodeEvent**](classendstone_1_1BlockExplodeEvent.md) is cancelled
 
 
     
+## Public Types Documentation
+
+
+
+
+### typedef BlockList 
+
+```C++
+using endstone::BlockExplodeEvent::BlockList =  std::vector<NotNull<Block> >;
+```
+
+
+
+
+<hr>
 ## Public Functions Documentation
 
 
@@ -287,6 +308,33 @@ inline BlockList & endstone::BlockExplodeEvent::getBlockList ()
 
 All blown-up blocks 
 
+
+
+
+
+        
+
+<hr>
+
+
+
+### function setBlockList 
+
+_Sets the list of blocks that would have been removed or were removed from the explosion event._ 
+```C++
+inline void endstone::BlockExplodeEvent::setBlockList (
+    BlockList blocks
+) 
+```
+
+
+
+
+
+**Parameters:**
+
+
+* `blocks` All blown-up blocks 
 
 
 
