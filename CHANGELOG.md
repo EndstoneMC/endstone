@@ -28,6 +28,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Added graceful shutdown on Linux, so stopping the server (e.g. via `docker stop`) lets the Bedrock server save the world before it exits.
 - Added `PlayerRespawnEvent.respawn_reason` (`RespawnReason.DEATH` / `RespawnReason.END_PORTAL`) so plugins can tell a normal death respawn apart from a player returning through the End exit portal.
 - Added `PlayerLevelChangeEvent`, called when a player's experience level changes, reporting `old_level` and `new_level`.
+- Added `PlayerExpChangeEvent`, called when a player gains experience, reporting the `amount` gained. It is not called when experience is reset on death.
 - Added `PlayerPickupArrowEvent`, called when a player picks up an arrow or a thrown trident from the ground. Cancelling it leaves the projectile on the ground.
 - Added a `Container` block state for reading and modifying container blocks such as chests, barrels, hoppers, dispensers, droppers, shulker boxes and furnaces, exposing their items via `container.inventory`.
 - Added a `CreatureSpawner` block state for monster spawners: `spawned_type`, `delay`, `min_spawn_delay`, `max_spawn_delay`, `spawn_count`, `max_nearby_entities`, `required_player_range` and `spawn_range`, all matching their Bukkit counterparts.

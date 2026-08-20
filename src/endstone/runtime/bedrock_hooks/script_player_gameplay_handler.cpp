@@ -36,6 +36,7 @@
 #include "endstone/event/player/player_dimension_change_event.h"
 #include "endstone/event/player/player_drop_item_event.h"
 #include "endstone/event/player/player_emote_event.h"
+#include "endstone/event/player/player_exp_change_event.h"
 #include "endstone/event/player/player_game_mode_change_event.h"
 #include "endstone/event/player/player_interact_actor_event.h"
 #include "endstone/event/player/player_interact_event.h"
@@ -146,6 +147,16 @@ bool handleEvent(const PlayerDimensionChangeAfterEvent &event)
     return true;
 }
 
+bool handleEvent(const PlayerAddExpEvent &event)
+{
+    if (const auto *player = WeakEntityRef(event.player).tryUnwrap<::Player>(); player) {
+        const auto &server = endstone::core::EndstoneServer::getInstance();
+        endstone::PlayerExpChangeEvent e{player->getEndstoneActor<endstone::core::EndstonePlayer>(), event.exp};
+        server.getPluginManager().callEvent(e);
+    }
+    return true;
+}
+
 bool handleEvent(const PlayerInteractWithBlockBeforeEvent &event)
 {
     if (const auto *player = WeakEntityRef(event.player).tryUnwrap<::Player>(); player) {
@@ -222,7 +233,8 @@ HandlerResult ScriptPlayerGameplayHandler::handleEvent1(const PlayerGameplayEven
                       std::is_same_v<T, Details::ValueOrRef<const PlayerFormResponseEvent>> ||
                       std::is_same_v<T, Details::ValueOrRef<const PlayerFormCloseEvent>> ||
                       std::is_same_v<T, Details::ValueOrRef<const ::PlayerRespawnEvent>> ||
-                      std::is_same_v<T, Details::ValueOrRef<const PlayerDimensionChangeAfterEvent>>) {
+                      std::is_same_v<T, Details::ValueOrRef<const PlayerDimensionChangeAfterEvent>> ||
+                      std::is_same_v<T, Details::ValueOrRef<const PlayerAddExpEvent>>) {
             if (!handleEvent(arg.value())) {
                 return HandlerResult::BypassListeners;
             }
