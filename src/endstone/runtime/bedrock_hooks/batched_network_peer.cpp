@@ -28,16 +28,99 @@
 #include "bedrock/network/raknet_connector.h"
 #include "bedrock/network/server_network_system.h"
 #include "bedrock/server/server_instance.h"
+#include "bedrock/world/item/crafting/recipes.h"
+#include "endstone/core/inventory/item_stack.h"
 #include "endstone/core/level/level.h"
 #include "endstone/core/map/map_view.h"
 #include "endstone/core/player.h"
 #include "endstone/core/server.h"
 #include "endstone/core/util/socket_address.h"
+#include "endstone/event/player/player_craft_item_event.h"
 #include "endstone/event/server/packet_receive_event.h"
 #include "endstone/event/server/packet_send_event.h"
 #include "endstone/runtime/hook.h"
 
 namespace {
+struct CraftRequest {
+    unsigned int recipe_net_id;
+    int repetitions;
+    std::size_t net_id_offset;
+    std::size_t net_id_length;
+};
+
+std::optional<CraftRequest> readCraftRequest(const std::string_view payload)
+{
+    constexpr unsigned int craft_recipe = 10;
+    constexpr unsigned int craft_recipe_auto = 11;
+    constexpr unsigned int max_entries = 100;
+
+    ReadOnlyBinaryStream stream(payload, false);
+    const auto requests = stream.getUnsignedVarInt().discardError();
+    if (!requests || requests.value() == 0 || requests.value() > max_entries) {
+        return std::nullopt;
+    }
+    const auto client_request_id = stream.getUnsignedVarInt().discardError();
+    const auto actions = stream.getUnsignedVarInt().discardError();
+    if (!client_request_id || !actions || actions.value() == 0 || actions.value() > max_entries) {
+        return std::nullopt;
+    }
+    const auto action_type = stream.getUnsignedVarInt().discardError();
+    const auto inner_action_type = stream.getByte().discardError();
+    if (!action_type || !inner_action_type ||
+        (action_type.value() != craft_recipe && action_type.value() != craft_recipe_auto)) {
+        return std::nullopt;
+    }
+    const auto net_id_offset = stream.getReadPointer();
+    const auto recipe_net_id = stream.getUnsignedVarInt().discardError();
+    const auto net_id_length = stream.getReadPointer() - net_id_offset;
+    const auto repetitions = stream.getByte().discardError();
+    if (!recipe_net_id || !repetitions || recipe_net_id.value() == 0) {
+        return std::nullopt;
+    }
+    return CraftRequest{recipe_net_id.value(), repetitions.value(), net_id_offset, net_id_length};
+}
+
+std::string invalidateRecipeNetId(const std::string_view payload, const CraftRequest &craft)
+{
+    std::string rewritten(payload);
+    for (std::size_t i = 0; i < craft.net_id_length; ++i) {
+        const auto is_last = i + 1 == craft.net_id_length;
+        rewritten[craft.net_id_offset + i] = static_cast<char>(is_last ? 0x7F : 0xFF);
+    }
+    return rewritten;
+}
+
+void callCraftItemEvent(const endstone::Nullable<endstone::Player> &player, endstone::PacketReceiveEvent &packet_event)
+{
+    const auto payload = packet_event.getPayload();
+    const auto craft = readCraftRequest(payload);
+    if (!craft.has_value()) {
+        return;
+    }
+
+    const auto endstone_player = player.cast<endstone::core::EndstonePlayer>();
+    RecipeNetId net_id;
+    net_id.raw_id = craft->recipe_net_id;
+    const auto *recipe = endstone_player->getHandle().getLevel().getRecipes().findRecipeByNetId(net_id);
+    if (recipe == nullptr) {
+        return;
+    }
+
+    const auto &results = recipe->getResultItems();
+    if (results.empty()) {
+        return;
+    }
+
+    const auto item = ItemStack(results.front());
+    endstone::PlayerCraftItemEvent e{endstone::NotNull<endstone::Player>{player.get()},
+                                     endstone::core::EndstoneItemStack::fromMinecraft(item), recipe->getRecipeId(),
+                                     craft->repetitions};
+    endstone::core::EndstoneServer::getInstance().getPluginManager().callEvent(e);
+    if (e.isCancelled()) {
+        packet_event.setPayload(invalidateRecipeNetId(payload, *craft));
+    }
+}
+
 void patchPacket(const StartGamePacket &packet)
 {
     const auto &server = endstone::core::EndstoneServer::getInstance();
@@ -358,6 +441,10 @@ NetworkPeer::DataStatus BatchedNetworkPeer::_receivePacket(std::string &out_data
         server.getPluginManager().callEvent(e);
         if (e.isCancelled()) {
             continue;
+        }
+
+        if (header.getPacketId() == MinecraftPacketIds::ItemStackRequest && player) {
+            callCraftItemEvent(player, e);
         }
 
         if (e.getPayload().data() == payload.data()) {

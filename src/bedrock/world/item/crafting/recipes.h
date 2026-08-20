@@ -43,6 +43,17 @@ public:
     Recipes(ILevel *);
     [[nodiscard]] ItemInstance getFurnaceRecipeResult(const ItemStackBase &, const HashedString &) const;
 
+    // Endstone
+    [[nodiscard]] const Recipe *findRecipeByNetId(const RecipeNetId &net_id) const
+    {
+        for (const auto &[id, recipe] : recipes_by_net_id_) {
+            if (id.raw_id == net_id.raw_id) {
+                return recipe;
+            }
+        }
+        return nullptr;
+    }
+
 private:
     ResourcePackManager *resource_pack_manager_;
     ExternalRecipeStore external_recipe_store_;
