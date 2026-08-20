@@ -17,7 +17,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/event/player/player_level_change_event.h" line="42" column="9" bodyfile="include/endstone/event/player/player_level_change_event.h" bodystart="42" bodyend="-1"/>
+        <location file="include/endstone/event/player/player_level_change_event.h" line="48" column="9" bodyfile="include/endstone/event/player/player_level_change_event.h" bodystart="48" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="classendstone_1_1PlayerLevelChangeEvent_1a701beef1652e89efa57209b9ebb17c06" prot="private" static="no" mutable="no">
         <type><ref refid="classendstone_1_1Identifier" kindref="compound">int</ref></type>
@@ -31,7 +31,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/event/player/player_level_change_event.h" line="43" column="9" bodyfile="include/endstone/event/player/player_level_change_event.h" bodystart="43" bodyend="-1"/>
+        <location file="include/endstone/event/player/player_level_change_event.h" line="49" column="9" bodyfile="include/endstone/event/player/player_level_change_event.h" bodystart="49" bodyend="-1"/>
       </memberdef>
     </sectiondef>
     <sectiondef kind="public-func">
@@ -50,7 +50,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/event/player/player_level_change_event.h" line="20" column="5"/>
+        <location file="include/endstone/event/player/player_level_change_event.h" line="26" column="5"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1PlayerLevelChangeEvent_1af20ad1b2e736b85c3f33f5938458892e" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type></type>
@@ -76,7 +76,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/event/player/player_level_change_event.h" line="22" column="5" bodyfile="include/endstone/event/player/player_level_change_event.h" bodystart="22" bodyend="25"/>
+        <location file="include/endstone/event/player/player_level_change_event.h" line="28" column="5" bodyfile="include/endstone/event/player/player_level_change_event.h" bodystart="28" bodyend="31"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1PlayerLevelChangeEvent_1afb58644fefa653898b462863f7d0076e" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
         <type><ref refid="classendstone_1_1Identifier" kindref="compound">int</ref></type>
@@ -94,7 +94,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/event/player/player_level_change_event.h" line="32" column="10" bodyfile="include/endstone/event/player/player_level_change_event.h" bodystart="32" bodyend="32"/>
+        <location file="include/endstone/event/player/player_level_change_event.h" line="38" column="10" bodyfile="include/endstone/event/player/player_level_change_event.h" bodystart="38" bodyend="38"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1PlayerLevelChangeEvent_1a6025bdcac964a0866493b7881fcc2228" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
         <type><ref refid="classendstone_1_1Identifier" kindref="compound">int</ref></type>
@@ -112,11 +112,11 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/event/player/player_level_change_event.h" line="39" column="10" bodyfile="include/endstone/event/player/player_level_change_event.h" bodystart="39" bodyend="39"/>
+        <location file="include/endstone/event/player/player_level_change_event.h" line="45" column="10" bodyfile="include/endstone/event/player/player_level_change_event.h" bodystart="45" bodyend="45"/>
       </memberdef>
     </sectiondef>
     <briefdescription>
-<para>Represents an event that is called when a player&apos;s level changes. </para>
+<para>Called when a player&apos;s level changes. </para>
     </briefdescription>
     <detaileddescription>
     </detaileddescription>
@@ -163,7 +163,7 @@
         </childnode>
       </node>
     </collaborationgraph>
-    <location file="include/endstone/event/player/player_level_change_event.h" line="18" column="1" bodyfile="include/endstone/event/player/player_level_change_event.h" bodystart="18" bodyend="44"/>
+    <location file="include/endstone/event/player/player_level_change_event.h" line="24" column="1" bodyfile="include/endstone/event/player/player_level_change_event.h" bodystart="24" bodyend="50"/>
     <listofallmembers>
       <member refid="classendstone_1_1PlayerLevelChangeEvent_1a0662b223b9cd2ada9fef4374b8d985ee" prot="public" virt="non-virtual"><scope>endstone::PlayerLevelChangeEvent</scope><name>ENDSTONE_EVENT</name></member>
       <member refid="classendstone_1_1Event_1a28cca8d74920493b449d035540acf023" prot="public" virt="non-virtual"><scope>endstone::PlayerLevelChangeEvent</scope><name>Event</name></member>

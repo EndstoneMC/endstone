@@ -36,7 +36,7 @@
 
 | Type | Name |
 | ---: | :--- |
-| class | [**PlayerPickupArrowEvent**](classendstone_1_1PlayerPickupArrowEvent.md) <br>_Represents an event that is called when a player picks up an arrow from the ground._  |
+| class | [**PlayerPickupArrowEvent**](classendstone_1_1PlayerPickupArrowEvent.md) <br>_Called when a player picks up an arrow or a thrown trident from the ground._  |
 
 
 

@@ -8,7 +8,7 @@
 
 
 
-_Represents an event that is called when a player picks up an arrow from the ground._ 
+_Called when a player picks up an arrow or a thrown trident from the ground._ 
 
 * `#include <endstone/event/player/player_pickup_arrow_event.h>`
 

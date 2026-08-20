@@ -35,7 +35,7 @@
 
 | Type | Name |
 | ---: | :--- |
-| class | [**PlayerLevelChangeEvent**](classendstone_1_1PlayerLevelChangeEvent.md) <br>_Represents an event that is called when a player's level changes._  |
+| class | [**PlayerLevelChangeEvent**](classendstone_1_1PlayerLevelChangeEvent.md) <br>_Called when a player's level changes._  |
 
 
 

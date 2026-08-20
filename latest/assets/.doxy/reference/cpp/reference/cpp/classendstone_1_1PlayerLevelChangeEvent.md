@@ -8,7 +8,7 @@
 
 
 
-_Represents an event that is called when a player's level changes._ 
+_Called when a player's level changes._ 
 
 * `#include <endstone/event/player/player_level_change_event.h>`
 
