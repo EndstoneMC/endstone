@@ -47,6 +47,8 @@ public:
     [[nodiscard]] NotNull<Item> dropItem(Location location, const ItemStack &item) override;
     [[nodiscard]] Nullable<Actor> spawnActor(Location location, ActorTypeId type) override;
     [[nodiscard]] std::vector<NotNull<Actor>> getActors() const override;
+    [[nodiscard]] std::vector<NotNull<Mob>> getMobs() const override;
+    [[nodiscard]] std::vector<NotNull<Player>> getPlayers() const override;
 
     [[nodiscard]] ::Dimension &getHandle() const;
     [[nodiscard]] NotNull<EndstoneDimension> getSelf() const;

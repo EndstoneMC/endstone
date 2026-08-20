@@ -65,18 +65,20 @@ std::string EndstoneLevel::getName() const
 std::vector<NotNull<Actor>> EndstoneLevel::getActors() const
 {
     std::vector<NotNull<Actor>> result;
-    for (const auto &entity : level_.getEntities()) {
-        if (!entity.hasValue()) {
-            continue;
+    for (const auto *entities : {&level_.getUsers(), &level_.getEntities()}) {
+        for (const auto &entity : *entities) {
+            if (!entity.hasValue()) {
+                continue;
+            }
+            const auto *actor = ::Actor::tryGetFromEntity(*entity, false);
+            if (!actor) {
+                continue;
+            }
+            if (&actor->getLevel() != &level_) {
+                continue;
+            }
+            result.push_back(actor->getEndstoneActor());
         }
-        const auto *actor = ::Actor::tryGetFromEntity(*entity, false);
-        if (!actor) {
-            continue;
-        }
-        if (&actor->getLevel() != &level_) {
-            continue;
-        }
-        result.push_back(actor->getEndstoneActor());
     }
     return result;
 }

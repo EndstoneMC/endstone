@@ -14,30 +14,34 @@
 
 #pragma once
 
-#include <utility>
-
 #include "endstone/event/cancellable.h"
 #include "endstone/event/player/player_event.h"
-#include "endstone/inventory/equipment_slot.h"
-#include "endstone/inventory/item_stack.h"
 
 namespace endstone {
+
+class Actor;
+
 /**
- * Called when a player drops an item from their inventory.
+ * Called when a player picks up an arrow or a thrown trident from the ground.
  */
-class PlayerDropItemEvent final : public Cancellable<PlayerEvent> {
+class PlayerPickupArrowEvent final : public Cancellable<PlayerEvent> {
 public:
-    ENDSTONE_EVENT(PlayerDropItemEvent);
-    explicit PlayerDropItemEvent(const NotNull<Player> &player, ItemStack drop) : Cancellable(player), drop_(std::move(drop)) {}
+    ENDSTONE_EVENT(PlayerPickupArrowEvent);
+
+    PlayerPickupArrowEvent(const NotNull<Player> &player, const NotNull<Actor> &arrow)
+        : Cancellable(player), arrow_(arrow)
+    {
+    }
 
     /**
-     * Gets the ItemStack dropped by the player.
+     * Gets the arrow picked up by the player.
      *
-     * @return ItemDrop dropped by the player
+     * @return the arrow picked up by the player
      */
-    [[nodiscard]] const ItemStack &getItem() const { return drop_; }
+    [[nodiscard]] const NotNull<Actor> &getArrow() const { return arrow_; }
 
 private:
-    ItemStack drop_;
+    NotNull<Actor> arrow_;
 };
+
 }  // namespace endstone

@@ -113,7 +113,7 @@ void EndstoneBossBar::setVisible(bool visible)
 void EndstoneBossBar::addPlayer(const NotNull<Player> &player)
 {
     players_.emplace(player.get());
-    if (visible_) {
+    if (visible_ && player->isValid()) {
         send(BossEventUpdateType::Add, player);
     }
 }
@@ -121,7 +121,7 @@ void EndstoneBossBar::addPlayer(const NotNull<Player> &player)
 void EndstoneBossBar::removePlayer(const NotNull<Player> &player)
 {
     players_.erase(player.get());
-    if (visible_) {
+    if (visible_ && player->isValid()) {
         send(BossEventUpdateType::Remove, player);
     }
 }
@@ -140,7 +140,8 @@ std::vector<NotNull<Player>> EndstoneBossBar::getPlayers() const
 {
     std::vector<NotNull<Player>> players;
     for (auto it = players_.begin(); it != players_.end();) {
-        if (auto player = it->lock(); player) {
+        auto player = it->lock();
+        if (player && static_cast<const EndstonePlayer *>(player.get())->tryGetHandle()) {
             players.emplace_back(std::move(player));
             ++it;
         }
@@ -164,6 +165,9 @@ void EndstoneBossBar::send(BossEventUpdateType event_type, const NotNull<Player>
     pk->payload.color = static_cast<BossBarColor>(color_);
     pk->payload.overlay = static_cast<BossBarOverlay>(style_);
     // BarFlag::DarkenSky / CreateFog dropped from BossEventPacket in BDS 1.26.32 (cereal-only migration)
+    EndstoneServer::getInstance().getLogger().info(
+        "[bossbar] to={} type={} boss_id={} percent={} title='{}'", player->getName(),
+        static_cast<int>(event_type), pk->payload.boss_id.raw_id, pk->payload.health_percent, title_);
     handle.sendNetworkPacket(*packet);
 }
 
