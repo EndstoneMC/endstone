@@ -43,15 +43,13 @@ public:
     Recipes(ILevel *);
     [[nodiscard]] ItemInstance getFurnaceRecipeResult(const ItemStackBase &, const HashedString &) const;
 
-    // Endstone
-    [[nodiscard]] const Recipe *findRecipeByNetId(const RecipeNetId &net_id) const
+    [[nodiscard]] const Recipe *getRecipeByNetId(const RecipeNetId &net_id) const
     {
-        for (const auto &[id, recipe] : recipes_by_net_id_) {
-            if (id.raw_id == net_id.raw_id) {
-                return recipe;
-            }
+        if (net_id.raw_id == 0) {
+            return nullptr;
         }
-        return nullptr;
+        const auto it = recipes_by_net_id_.find(net_id);
+        return it != recipes_by_net_id_.end() ? it->second : nullptr;
     }
 
 private:
