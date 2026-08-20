@@ -53,7 +53,6 @@ std::shared_ptr<Packet> MinecraftPackets::createPacket(MinecraftPacketIds id)
     case MinecraftPacketIds::PlayerAction:
     case MinecraftPacketIds::PlayerSkin:
     case MinecraftPacketIds::SetLocalPlayerAsInit:
-    case MinecraftPacketIds::Animate:
     case MinecraftPacketIds::PlayerAuthInputPacket:
     case MinecraftPacketIds::Emote:
     case MinecraftPacketIds::SetPlayerInventoryOptions: {

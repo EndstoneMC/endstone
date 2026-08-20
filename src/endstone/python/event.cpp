@@ -248,6 +248,27 @@ void init_event(py::module_ &m, py::class_<Event, PyEvent> &event)
     py::class_<PlayerEvent, Event>(m, "PlayerEvent", "Represents a player related event.")
         .def_property_readonly("player", &PlayerEvent::getPlayer,
                                "The `Player` who is involved in this event.");
+    auto player_arm_swing_event = py::class_<PlayerArmSwingEvent, PlayerEvent>(
+        m, "PlayerArmSwingEvent", "Called when a player swings their arm.");
+    py::native_enum<PlayerArmSwingEvent::SwingSource>(
+        player_arm_swing_event, "SwingSource", "enum.Enum",
+        "An enum to specify what the player was doing when they swung their arm.")
+        .value("NONE", PlayerArmSwingEvent::SwingSource::None)
+        .value("BUILD", PlayerArmSwingEvent::SwingSource::Build)
+        .value("MINE", PlayerArmSwingEvent::SwingSource::Mine)
+        .value("INTERACT", PlayerArmSwingEvent::SwingSource::Interact)
+        .value("ATTACK", PlayerArmSwingEvent::SwingSource::Attack)
+        .value("USE_ITEM", PlayerArmSwingEvent::SwingSource::UseItem)
+        .value("THROW_ITEM", PlayerArmSwingEvent::SwingSource::ThrowItem)
+        .value("DROP_ITEM", PlayerArmSwingEvent::SwingSource::DropItem)
+        .value("EVENT", PlayerArmSwingEvent::SwingSource::Event)
+        .export_values()
+        .finalize();
+    player_arm_swing_event
+        .def_property_readonly("item", &PlayerArmSwingEvent::getItem,
+                               "The item the player was holding when they swung their arm.")
+        .def_property_readonly("swing_source", &PlayerArmSwingEvent::getSwingSource,
+                               "What the player was doing when they swung their arm.");
     auto player_bed_enter_event = py::class_<PlayerBedEnterEvent, PlayerEvent, ICancellable>(
         m, "PlayerBedEnterEvent", "Called when a player is almost about to enter the bed.");
     player_bed_enter_event.def_property_readonly("bed", &PlayerBedEnterEvent::getBed,
