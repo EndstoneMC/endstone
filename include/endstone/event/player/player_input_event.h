@@ -20,11 +20,11 @@
 namespace endstone {
 
 /**
- * Represents an event that is called when a player sends updated input to the server.
+ * Called when a player sends updated input to the server.
  */
 class PlayerInputEvent final : public PlayerEvent {
 public:
-    ENDSTONE_EVENT(PlayerInputEvent)
+    ENDSTONE_EVENT(PlayerInputEvent);
 
     explicit PlayerInputEvent(const NotNull<Player> &player, Input input) : PlayerEvent(player), input_(input) {}
 
