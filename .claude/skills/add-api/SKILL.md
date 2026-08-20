@@ -111,7 +111,27 @@ Layout mechanics:
   definition with `#ifndef NO_UNIQUE_ADDRESS`. (This is how `SpinLockImpl`
   stays 24 bytes with its `std::hash` member.)
 
+Hooking:
+- **Prefer a `[[signatures]]` entry + `ENDSTONE_HOOK` over a vtable hook.** A
+  vtable ordinal is per-platform and fails *silently* when it drifts - it just
+  dispatches the wrong function. A byte pattern fails loudly at
+  `dump_symbols.py` time, and on Windows `--pdb` resolves the name outright.
+  Reserve `vhook::create<Ordinal>` for targets where no stable pattern can be
+  cut, and say why in the PR.
+
 Packets:
+- **Never touch raw wire bytes, in either direction.** Don't hand-parse an
+  inbound payload, and don't compose an outbound one by writing fields into a
+  `BinaryStream` or sending raw bytes. Reconstruct the packet layout, build it
+  with `MinecraftPackets::createPacket(...)`, assign the typed payload, and
+  send with `sendNetworkPacket`. Field order, widths and varint encoding belong
+  to BDS; a reconstruction gets them from the compiler and breaks the build
+  when they move, where hand-written bytes just emit a malformed packet.
+  The one sanctioned exception is a payload whose types would drag in a whole
+  subsystem for no gain: `EndstonePlayer::spawnParticle` hand-writes
+  SpawnParticleEffect on purpose, because doing it faithfully means
+  reconstructing Molang. Invoking the exception means naming the subsystem
+  you are avoiding, not just preferring bytes.
 - Reconstruct only the **layout** — the payload member, `serialization_mode`,
   and the size assert. Don't override `getId`, `getName`, `write` or `_read`:
   we never construct these by value, we `static_cast` a packet BDS already

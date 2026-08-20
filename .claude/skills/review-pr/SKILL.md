@@ -378,10 +378,21 @@ reason.
 1. **A BDS gameplay event already carries the signal.** Grep
    `src/bedrock/world/events/*_events.h`. Zero new symbols, and it fires on
    every path BDS itself considers the action. You MUST try this first.
-2. **An already-resolved anchor reaches it.** Virtuals cost nothing - call
-   through the vtable slot. A member read costs nothing - reconstruct the
-   struct. If the target is called from a function already in the table, hook
-   the caller.
+2. **An already-resolved anchor reaches it.** A member read costs nothing -
+   reconstruct the struct. If the target is called from a function already in
+   the table, hook the caller.
+
+   **A vtable slot does NOT count as free, and SHOULD NOT be preferred over a
+   signature.** `vhook::create<Ordinal>` needs a per-platform ordinal, and a
+   wrong or drifted one fails **silently** - it dispatches the wrong function
+   with no error. A byte pattern that stops matching fails **loudly**, at
+   `dump_symbols.py` time, and on Windows `--pdb` resolves the name directly.
+   So prefer a `[[signatures]]` entry with a proper §5.4 recipe over a vtable
+   hook, even though the ladder would otherwise call the vtable cheaper -
+   maintainability wins over symbol count here. *Confirmed: PR #489 shipped
+   Windows ordinal 109, which is `Actor::openContainerComponent`, where the
+   target `getInteraction` is 117; it compiled, linked and asserted clean.*
+   Reserve `vhook` for cases where no stable pattern can be cut, and say so.
 3. **Re-implement it in `src/bedrock`.** A non-virtual function whose body you
    can read MAY be reconstructed faithfully (§4.11) instead of resolved,
    trading a maintenance subscription for a one-time correctness risk - usually
@@ -449,10 +460,40 @@ correctness requirement, not a style preference. In descending preference:
 3. **`EndstonePlayer::handlePacket`** - last resort, for client intent with no
    server-side action behind it.
 
-**6.2** The PR MUST NOT hand-parse packet payload bytes. *A hand-written varint
-reader for `ItemStackRequest` in `batched_network_peer.cpp` duplicates BDS's own
-deserialization, breaks silently on every protocol bump, and cannot be tested.*
-BDS's `ItemStackRequestAction*` types exist and MUST be used.
+**6.2** The PR MUST NOT touch raw packet bytes, in **either** direction. Both
+halves duplicate BDS's own wire handling, break silently on a protocol bump,
+and cannot be unit-tested.
+
+- **Inbound:** MUST NOT hand-parse payload bytes. *A hand-written varint reader
+  for `ItemStackRequest` in `batched_network_peer.cpp` duplicated BDS's own
+  deserialization; its `10`/`11` constants were cereal variant indices, not the
+  `ItemStackRequestActionType` values they looked like, and would have shifted
+  silently on any change to the variant list.* BDS's
+  `ItemStackRequestAction*` types exist and MUST be used.
+- **Outbound:** MUST NOT compose a packet by writing fields into a
+  `BinaryStream`, and MUST NOT send raw bytes. Reconstruct the packet's layout
+  under `src/bedrock/network/packet/` (§4.13), build it through the factory,
+  assign the payload, and send it:
+
+  ```cpp
+  auto packet = MinecraftPackets::createPacket(MinecraftPacketIds::Text);
+  auto &pk = static_cast<TextPacket &>(*packet);
+  pk.payload = { /* typed fields */ };
+  getHandle().sendNetworkPacket(*packet);
+  ```
+
+  Hand-writing the wire format hardcodes field order, widths and varint
+  encoding that BDS owns and revises. A reconstructed payload gets those from
+  the compiler and fails at build time when the layout moves, instead of
+  emitting a malformed packet at runtime.
+
+  **The one sanctioned exception** is a payload whose types would drag in a
+  whole subsystem for no gain. `EndstonePlayer::spawnParticle` hand-writes
+  SpawnParticleEffect deliberately, because reconstructing it faithfully means
+  reconstructing Molang. That is accepted and MUST NOT be raised as a finding.
+  A PR MAY invoke the same exception, but it MUST name the subsystem it is
+  avoiding and why the trade is worth it - "it was easier" is not that. Absent
+  such a justification, the rule stands.
 
 **6.3** The trigger SHOULD match Paper's, not merely the name. Firing semantics
 are part of the contract plugin authors rely on. You MUST determine where Paper
