@@ -57,6 +57,7 @@ This inheritance list is sorted roughly, but not completely, alphabetically:
         * **class** [**endstone::PlayerJoinEvent**](classendstone_1_1PlayerJoinEvent.md) _Called when a player joins a server._ 
         * **class** [**endstone::PlayerLevelChangeEvent**](classendstone_1_1PlayerLevelChangeEvent.md) _Called when a player's level changes._ 
         * **class** [**endstone::PlayerQuitEvent**](classendstone_1_1PlayerQuitEvent.md) _Called when a player leaves a server._ 
+        * **class** [**endstone::PlayerRecipeBookSettingsChangeEvent**](classendstone_1_1PlayerRecipeBookSettingsChangeEvent.md) _Called when a player changes recipe book settings._ 
         * **class** [**endstone::PlayerRespawnEvent**](classendstone_1_1PlayerRespawnEvent.md) _Called when a player respawns._ 
         * **class** [**endstone::PlayerToggleSneakEvent**](classendstone_1_1PlayerToggleSneakEvent.md) _Called when a player toggles their sneaking state._ 
         * **class** [**endstone::PlayerToggleSprintEvent**](classendstone_1_1PlayerToggleSprintEvent.md) _Called when a player toggles their sprinting state._ 

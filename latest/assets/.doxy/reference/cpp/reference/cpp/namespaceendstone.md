@@ -181,6 +181,7 @@ _Represents a button with text and an optional icon._
 | class | [**PlayerPickupItemEvent**](classendstone_1_1PlayerPickupItemEvent.md) <br>_Called when a player picks an item up from the ground._  |
 | class | [**PlayerPortalEvent**](classendstone_1_1PlayerPortalEvent.md) <br>_Called when a player is about to teleport because it is in contact with a portal._  |
 | class | [**PlayerQuitEvent**](classendstone_1_1PlayerQuitEvent.md) <br>_Called when a player leaves a server._  |
+| class | [**PlayerRecipeBookSettingsChangeEvent**](classendstone_1_1PlayerRecipeBookSettingsChangeEvent.md) <br>_Called when a player changes recipe book settings._  |
 | class | [**PlayerRespawnEvent**](classendstone_1_1PlayerRespawnEvent.md) <br>_Called when a player respawns._  |
 | class | [**PlayerSkinChangeEvent**](classendstone_1_1PlayerSkinChangeEvent.md) <br>_Called when a player changes their skin._  |
 | class | [**PlayerTeleportEvent**](classendstone_1_1PlayerTeleportEvent.md) <br>_Called when a player is teleported from one location to another._  |

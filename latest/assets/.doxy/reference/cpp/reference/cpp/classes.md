@@ -430,6 +430,8 @@
 ([**endstone**](namespaceendstone.md))
 * [**PlayerQuitEvent**](classendstone_1_1PlayerQuitEvent.md)
 ([**endstone**](namespaceendstone.md))
+* [**PlayerRecipeBookSettingsChangeEvent**](classendstone_1_1PlayerRecipeBookSettingsChangeEvent.md)
+([**endstone**](namespaceendstone.md))
 * [**PlayerRespawnEvent**](classendstone_1_1PlayerRespawnEvent.md)
 ([**endstone**](namespaceendstone.md))
 * [**PlayerSkinChangeEvent**](classendstone_1_1PlayerSkinChangeEvent.md)

@@ -149,6 +149,7 @@ Here are the classes, structs, unions and interfaces with brief descriptions:
     * **class** [**PlayerPickupItemEvent**](classendstone_1_1PlayerPickupItemEvent.md) _Called when a player picks an item up from the ground._     
     * **class** [**PlayerPortalEvent**](classendstone_1_1PlayerPortalEvent.md) _Called when a player is about to teleport because it is in contact with a portal._     
     * **class** [**PlayerQuitEvent**](classendstone_1_1PlayerQuitEvent.md) _Called when a player leaves a server._     
+    * **class** [**PlayerRecipeBookSettingsChangeEvent**](classendstone_1_1PlayerRecipeBookSettingsChangeEvent.md) _Called when a player changes recipe book settings._     
     * **class** [**PlayerRespawnEvent**](classendstone_1_1PlayerRespawnEvent.md) _Called when a player respawns._     
     * **class** [**PlayerSkinChangeEvent**](classendstone_1_1PlayerSkinChangeEvent.md) _Called when a player changes their skin._     
     * **class** [**PlayerTeleportEvent**](classendstone_1_1PlayerTeleportEvent.md) _Called when a player is teleported from one location to another._     

@@ -741,6 +741,10 @@
          <lastmod>2026-08-20</lastmod>
     </url>
     <url>
+         <loc>https://endstone.dev/latest/reference/cpp/classendstone_1_1PlayerRecipeBookSettingsChangeEvent/</loc>
+         <lastmod>2026-08-20</lastmod>
+    </url>
+    <url>
          <loc>https://endstone.dev/latest/reference/cpp/classendstone_1_1PlayerRespawnEvent/</loc>
          <lastmod>2026-08-20</lastmod>
     </url>
@@ -2006,6 +2010,14 @@
     </url>
     <url>
          <loc>https://endstone.dev/latest/reference/cpp/player__quit__event_8h_source/</loc>
+         <lastmod>2026-08-20</lastmod>
+    </url>
+    <url>
+         <loc>https://endstone.dev/latest/reference/cpp/player__recipe__book__settings__change__event_8h/</loc>
+         <lastmod>2026-08-20</lastmod>
+    </url>
+    <url>
+         <loc>https://endstone.dev/latest/reference/cpp/player__recipe__book__settings__change__event_8h_source/</loc>
          <lastmod>2026-08-20</lastmod>
     </url>
     <url>

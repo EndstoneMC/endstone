@@ -2190,6 +2190,21 @@
     <member refid="classendstone_1_1PlayerQuitEvent_1a1dc49d81c8a458e1a45d8d2c33f03f15" kind="function"><name>getQuitMessage</name></member>
     <member refid="classendstone_1_1PlayerQuitEvent_1a33ac4f643cbabfbaec170ba5ef88551a" kind="function"><name>setQuitMessage</name></member>
   </compound>
+  <compound refid="classendstone_1_1PlayerRecipeBookSettingsChangeEvent" kind="class"><name>endstone::PlayerRecipeBookSettingsChangeEvent</name>
+    <member refid="classendstone_1_1PlayerRecipeBookSettingsChangeEvent_1ab5709b487202d4c52eacf9e8b54ce67f" kind="enum"><name>RecipeBookType</name></member>
+    <member refid="classendstone_1_1PlayerRecipeBookSettingsChangeEvent_1ab5709b487202d4c52eacf9e8b54ce67fa8c1a0a596c9fa42f02fe9c59eb1a83b6" kind="enumvalue"><name>Crafting</name></member>
+    <member refid="classendstone_1_1PlayerRecipeBookSettingsChangeEvent_1ab5709b487202d4c52eacf9e8b54ce67fa7399ee9906df06fdd5fb9b75294f2e4b" kind="enumvalue"><name>Furnace</name></member>
+    <member refid="classendstone_1_1PlayerRecipeBookSettingsChangeEvent_1ab5709b487202d4c52eacf9e8b54ce67facef16e217d26d844981df9c598984d6e" kind="enumvalue"><name>BlastFurnace</name></member>
+    <member refid="classendstone_1_1PlayerRecipeBookSettingsChangeEvent_1ab5709b487202d4c52eacf9e8b54ce67fa8678df5263057d6cafbd62b1770ad466" kind="enumvalue"><name>Smoker</name></member>
+    <member refid="classendstone_1_1PlayerRecipeBookSettingsChangeEvent_1a8037d2929f7d8835bd79634097fd35bf" kind="variable"><name>recipe_book_type_</name></member>
+    <member refid="classendstone_1_1PlayerRecipeBookSettingsChangeEvent_1abc414f1d40eccf224ff8d2b420add35b" kind="variable"><name>is_open_</name></member>
+    <member refid="classendstone_1_1PlayerRecipeBookSettingsChangeEvent_1a57c7b8ca86bfd62af5e899fe5338dade" kind="variable"><name>is_filtering_</name></member>
+    <member refid="classendstone_1_1PlayerRecipeBookSettingsChangeEvent_1a163a26b56d1934e51c89700fde84b167" kind="function"><name>ENDSTONE_EVENT</name></member>
+    <member refid="classendstone_1_1PlayerRecipeBookSettingsChangeEvent_1a261bbb1993cc91b0a9a03bb9d52edd51" kind="function"><name>PlayerRecipeBookSettingsChangeEvent</name></member>
+    <member refid="classendstone_1_1PlayerRecipeBookSettingsChangeEvent_1a2838a6df109a9eb9da17a13e7d689d0f" kind="function"><name>getRecipeBookType</name></member>
+    <member refid="classendstone_1_1PlayerRecipeBookSettingsChangeEvent_1a75c07cc59d9830e7bcdf96e1e4d51f05" kind="function"><name>isFiltering</name></member>
+    <member refid="classendstone_1_1PlayerRecipeBookSettingsChangeEvent_1a309c53a46738b3a11ee5961087152b30" kind="function"><name>isOpen</name></member>
+  </compound>
   <compound refid="classendstone_1_1PlayerRespawnEvent" kind="class"><name>endstone::PlayerRespawnEvent</name>
     <member refid="classendstone_1_1PlayerRespawnEvent_1aa0664aac960e4ad3aae6a8f048510afa" kind="enum"><name>RespawnReason</name></member>
     <member refid="classendstone_1_1PlayerRespawnEvent_1aa0664aac960e4ad3aae6a8f048510afaa6097f89e3092d4ccd249c9d479785c1f" kind="enumvalue"><name>Death</name></member>
@@ -3294,6 +3309,8 @@
   <compound refid="player__portal__event_8h" kind="file"><name>player_portal_event.h</name>
   </compound>
   <compound refid="player__quit__event_8h" kind="file"><name>player_quit_event.h</name>
+  </compound>
+  <compound refid="player__recipe__book__settings__change__event_8h" kind="file"><name>player_recipe_book_settings_change_event.h</name>
   </compound>
   <compound refid="player__respawn__event_8h" kind="file"><name>player_respawn_event.h</name>
   </compound>

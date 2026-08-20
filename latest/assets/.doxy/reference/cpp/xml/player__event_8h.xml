@@ -26,6 +26,7 @@
     <includedby refid="player__pickup__arrow__event_8h" local="yes">include/endstone/event/player/player_pickup_arrow_event.h</includedby>
     <includedby refid="player__pickup__item__event_8h" local="yes">include/endstone/event/player/player_pickup_item_event.h</includedby>
     <includedby refid="player__quit__event_8h" local="yes">include/endstone/event/player/player_quit_event.h</includedby>
+    <includedby refid="player__recipe__book__settings__change__event_8h" local="yes">include/endstone/event/player/player_recipe_book_settings_change_event.h</includedby>
     <includedby refid="player__respawn__event_8h" local="yes">include/endstone/event/player/player_respawn_event.h</includedby>
     <includedby refid="player__skin__change__event_8h" local="yes">include/endstone/event/player/player_skin_change_event.h</includedby>
     <includedby refid="player__toggle__sneak__event_8h" local="yes">include/endstone/event/player/player_toggle_sneak_event.h</includedby>
@@ -1222,6 +1223,8 @@
         </childnode>
         <childnode refid="29" relation="include">
         </childnode>
+        <childnode refid="30" relation="include">
+        </childnode>
       </node>
       <node id="10">
         <label>include/endstone/event/player/player_game_mode_change_event.h</label>
@@ -1288,10 +1291,14 @@
         <link refid="player__quit__event_8h_source"/>
       </node>
       <node id="26">
+        <label>include/endstone/event/player/player_recipe_book_settings_change_event.h</label>
+        <link refid="player__recipe__book__settings__change__event_8h_source"/>
+      </node>
+      <node id="27">
         <label>include/endstone/event/player/player_respawn_event.h</label>
         <link refid="player__respawn__event_8h_source"/>
       </node>
-      <node id="27">
+      <node id="28">
         <label>include/endstone/event/player/player_skin_change_event.h</label>
         <link refid="player__skin__change__event_8h_source"/>
       </node>
@@ -1301,11 +1308,11 @@
         <childnode refid="22" relation="include">
         </childnode>
       </node>
-      <node id="28">
+      <node id="29">
         <label>include/endstone/event/player/player_toggle_sneak_event.h</label>
         <link refid="player__toggle__sneak__event_8h_source"/>
       </node>
-      <node id="29">
+      <node id="30">
         <label>include/endstone/event/player/player_toggle_sprint_event.h</label>
         <link refid="player__toggle__sprint__event_8h_source"/>
       </node>

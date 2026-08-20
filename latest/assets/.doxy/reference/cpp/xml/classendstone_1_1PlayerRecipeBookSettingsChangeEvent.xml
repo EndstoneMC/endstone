@@ -1,0 +1,274 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.8" xml:lang="en-US">
+  <compounddef id="classendstone_1_1PlayerRecipeBookSettingsChangeEvent" kind="class" language="C++" prot="public" final="yes">
+    <compoundname>endstone::PlayerRecipeBookSettingsChangeEvent</compoundname>
+    <basecompoundref refid="classendstone_1_1PlayerEvent" prot="public" virt="non-virtual">endstone::PlayerEvent</basecompoundref>
+    <includes refid="player__recipe__book__settings__change__event_8h" local="no">endstone/event/player/player_recipe_book_settings_change_event.h</includes>
+    <sectiondef kind="public-type">
+      <memberdef kind="enum" id="classendstone_1_1PlayerRecipeBookSettingsChangeEvent_1ab5709b487202d4c52eacf9e8b54ce67f" prot="public" static="no" strong="yes">
+        <type></type>
+        <name>RecipeBookType</name>
+        <qualifiedname>endstone::PlayerRecipeBookSettingsChangeEvent::RecipeBookType</qualifiedname>
+        <enumvalue id="classendstone_1_1PlayerRecipeBookSettingsChangeEvent_1ab5709b487202d4c52eacf9e8b54ce67fa8c1a0a596c9fa42f02fe9c59eb1a83b6" prot="public">
+          <name>Crafting</name>
+          <briefdescription>
+<para>The player&apos;s crafting recipe book. </para>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="classendstone_1_1PlayerRecipeBookSettingsChangeEvent_1ab5709b487202d4c52eacf9e8b54ce67fa7399ee9906df06fdd5fb9b75294f2e4b" prot="public">
+          <name>Furnace</name>
+          <briefdescription>
+<para>The player&apos;s furnace recipe book. </para>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="classendstone_1_1PlayerRecipeBookSettingsChangeEvent_1ab5709b487202d4c52eacf9e8b54ce67facef16e217d26d844981df9c598984d6e" prot="public">
+          <name>BlastFurnace</name>
+          <briefdescription>
+<para>The player&apos;s blast furnace recipe book. </para>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="classendstone_1_1PlayerRecipeBookSettingsChangeEvent_1ab5709b487202d4c52eacf9e8b54ce67fa8678df5263057d6cafbd62b1770ad466" prot="public">
+          <name>Smoker</name>
+          <briefdescription>
+<para>The player&apos;s smoker recipe book. </para>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <briefdescription>
+<para>Represents the type of recipe book whose settings changed. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/event/player/player_recipe_book_settings_change_event.h" line="31" column="5" bodyfile="include/endstone/event/player/player_recipe_book_settings_change_event.h" bodystart="31" bodyend="42"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="private-attrib">
+      <memberdef kind="variable" id="classendstone_1_1PlayerRecipeBookSettingsChangeEvent_1a8037d2929f7d8835bd79634097fd35bf" prot="private" static="no" mutable="no">
+        <type><ref refid="classendstone_1_1PlayerRecipeBookSettingsChangeEvent_1ab5709b487202d4c52eacf9e8b54ce67f" kindref="member">RecipeBookType</ref></type>
+        <definition>RecipeBookType endstone::PlayerRecipeBookSettingsChangeEvent::recipe_book_type_</definition>
+        <argsstring></argsstring>
+        <name>recipe_book_type_</name>
+        <qualifiedname>endstone::PlayerRecipeBookSettingsChangeEvent::recipe_book_type_</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/event/player/player_recipe_book_settings_change_event.h" line="72" column="20" bodyfile="include/endstone/event/player/player_recipe_book_settings_change_event.h" bodystart="72" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classendstone_1_1PlayerRecipeBookSettingsChangeEvent_1abc414f1d40eccf224ff8d2b420add35b" prot="private" static="no" mutable="no">
+        <type><ref refid="classendstone_1_1Identifier" kindref="compound">bool</ref></type>
+        <definition>bool endstone::PlayerRecipeBookSettingsChangeEvent::is_open_</definition>
+        <argsstring></argsstring>
+        <name>is_open_</name>
+        <qualifiedname>endstone::PlayerRecipeBookSettingsChangeEvent::is_open_</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/event/player/player_recipe_book_settings_change_event.h" line="73" column="10" bodyfile="include/endstone/event/player/player_recipe_book_settings_change_event.h" bodystart="73" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classendstone_1_1PlayerRecipeBookSettingsChangeEvent_1a57c7b8ca86bfd62af5e899fe5338dade" prot="private" static="no" mutable="no">
+        <type><ref refid="classendstone_1_1Identifier" kindref="compound">bool</ref></type>
+        <definition>bool endstone::PlayerRecipeBookSettingsChangeEvent::is_filtering_</definition>
+        <argsstring></argsstring>
+        <name>is_filtering_</name>
+        <qualifiedname>endstone::PlayerRecipeBookSettingsChangeEvent::is_filtering_</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/event/player/player_recipe_book_settings_change_event.h" line="74" column="10" bodyfile="include/endstone/event/player/player_recipe_book_settings_change_event.h" bodystart="74" bodyend="-1"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="public-func">
+      <memberdef kind="function" id="classendstone_1_1PlayerRecipeBookSettingsChangeEvent_1a163a26b56d1934e51c89700fde84b167" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>endstone::PlayerRecipeBookSettingsChangeEvent::ENDSTONE_EVENT</definition>
+        <argsstring>(PlayerRecipeBookSettingsChangeEvent)</argsstring>
+        <name>ENDSTONE_EVENT</name>
+        <qualifiedname>endstone::PlayerRecipeBookSettingsChangeEvent::ENDSTONE_EVENT</qualifiedname>
+        <param>
+          <type><ref refid="classendstone_1_1PlayerRecipeBookSettingsChangeEvent" kindref="compound">PlayerRecipeBookSettingsChangeEvent</ref></type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/event/player/player_recipe_book_settings_change_event.h" line="26" column="5"/>
+      </memberdef>
+      <memberdef kind="function" id="classendstone_1_1PlayerRecipeBookSettingsChangeEvent_1a261bbb1993cc91b0a9a03bb9d52edd51" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type></type>
+        <definition>endstone::PlayerRecipeBookSettingsChangeEvent::PlayerRecipeBookSettingsChangeEvent</definition>
+        <argsstring>(const NotNull&lt; Player &gt; &amp;player, RecipeBookType recipe_book_type, bool is_open, bool is_filtering)</argsstring>
+        <name>PlayerRecipeBookSettingsChangeEvent</name>
+        <qualifiedname>endstone::PlayerRecipeBookSettingsChangeEvent::PlayerRecipeBookSettingsChangeEvent</qualifiedname>
+        <param>
+          <type><ref refid="classendstone_1_1Identifier" kindref="compound">const</ref> <ref refid="classendstone_1_1NotNull" kindref="compound">NotNull</ref>&lt; <ref refid="classendstone_1_1Player" kindref="compound">Player</ref> &gt; &amp;</type>
+          <declname>player</declname>
+        </param>
+        <param>
+          <type><ref refid="classendstone_1_1PlayerRecipeBookSettingsChangeEvent_1ab5709b487202d4c52eacf9e8b54ce67f" kindref="member">RecipeBookType</ref></type>
+          <declname>recipe_book_type</declname>
+        </param>
+        <param>
+          <type><ref refid="classendstone_1_1Identifier" kindref="compound">bool</ref></type>
+          <declname>is_open</declname>
+        </param>
+        <param>
+          <type><ref refid="classendstone_1_1Identifier" kindref="compound">bool</ref></type>
+          <declname>is_filtering</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/event/player/player_recipe_book_settings_change_event.h" line="44" column="5" bodyfile="include/endstone/event/player/player_recipe_book_settings_change_event.h" bodystart="44" bodyend="48"/>
+      </memberdef>
+      <memberdef kind="function" id="classendstone_1_1PlayerRecipeBookSettingsChangeEvent_1a2838a6df109a9eb9da17a13e7d689d0f" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type><ref refid="classendstone_1_1PlayerRecipeBookSettingsChangeEvent_1ab5709b487202d4c52eacf9e8b54ce67f" kindref="member">RecipeBookType</ref></type>
+        <definition>RecipeBookType endstone::PlayerRecipeBookSettingsChangeEvent::getRecipeBookType</definition>
+        <argsstring>() const</argsstring>
+        <name>getRecipeBookType</name>
+        <qualifiedname>endstone::PlayerRecipeBookSettingsChangeEvent::getRecipeBookType</qualifiedname>
+        <briefdescription>
+<para>Gets the type of recipe book whose settings changed. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="return"><para>the recipe book type </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/event/player/player_recipe_book_settings_change_event.h" line="55" column="21" bodyfile="include/endstone/event/player/player_recipe_book_settings_change_event.h" bodystart="55" bodyend="55"/>
+      </memberdef>
+      <memberdef kind="function" id="classendstone_1_1PlayerRecipeBookSettingsChangeEvent_1a75c07cc59d9830e7bcdf96e1e4d51f05" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type><ref refid="classendstone_1_1Identifier" kindref="compound">bool</ref></type>
+        <definition>bool endstone::PlayerRecipeBookSettingsChangeEvent::isFiltering</definition>
+        <argsstring>() const</argsstring>
+        <name>isFiltering</name>
+        <qualifiedname>endstone::PlayerRecipeBookSettingsChangeEvent::isFiltering</qualifiedname>
+        <briefdescription>
+<para>Gets whether recipe filtering is enabled. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="return"><para>true if recipe filtering is enabled </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/event/player/player_recipe_book_settings_change_event.h" line="62" column="11" bodyfile="include/endstone/event/player/player_recipe_book_settings_change_event.h" bodystart="62" bodyend="62"/>
+      </memberdef>
+      <memberdef kind="function" id="classendstone_1_1PlayerRecipeBookSettingsChangeEvent_1a309c53a46738b3a11ee5961087152b30" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type><ref refid="classendstone_1_1Identifier" kindref="compound">bool</ref></type>
+        <definition>bool endstone::PlayerRecipeBookSettingsChangeEvent::isOpen</definition>
+        <argsstring>() const</argsstring>
+        <name>isOpen</name>
+        <qualifiedname>endstone::PlayerRecipeBookSettingsChangeEvent::isOpen</qualifiedname>
+        <briefdescription>
+<para>Gets whether the recipe book is open. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="return"><para>true if the recipe book is open </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/event/player/player_recipe_book_settings_change_event.h" line="69" column="11" bodyfile="include/endstone/event/player/player_recipe_book_settings_change_event.h" bodystart="69" bodyend="69"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+<para>Called when a player changes recipe book settings. </para>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="3">
+        <label>endstone::Event</label>
+        <link refid="classendstone_1_1Event"/>
+      </node>
+      <node id="2">
+        <label>endstone::PlayerEvent</label>
+        <link refid="classendstone_1_1PlayerEvent"/>
+        <childnode refid="3" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="1">
+        <label>endstone::PlayerRecipeBookSettingsChangeEvent</label>
+        <link refid="classendstone_1_1PlayerRecipeBookSettingsChangeEvent"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="4">
+        <label>endstone::NotNull&lt; endstone::Player &gt;</label>
+        <link refid="classendstone_1_1NotNull"/>
+      </node>
+      <node id="3">
+        <label>endstone::Event</label>
+        <link refid="classendstone_1_1Event"/>
+      </node>
+      <node id="2">
+        <label>endstone::PlayerEvent</label>
+        <link refid="classendstone_1_1PlayerEvent"/>
+        <childnode refid="3" relation="public-inheritance">
+        </childnode>
+        <childnode refid="4" relation="usage">
+          <edgelabel>player_</edgelabel>
+        </childnode>
+      </node>
+      <node id="1">
+        <label>endstone::PlayerRecipeBookSettingsChangeEvent</label>
+        <link refid="classendstone_1_1PlayerRecipeBookSettingsChangeEvent"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+    </collaborationgraph>
+    <location file="include/endstone/event/player/player_recipe_book_settings_change_event.h" line="24" column="1" bodyfile="include/endstone/event/player/player_recipe_book_settings_change_event.h" bodystart="24" bodyend="75"/>
+    <listofallmembers>
+      <member refid="classendstone_1_1PlayerRecipeBookSettingsChangeEvent_1a163a26b56d1934e51c89700fde84b167" prot="public" virt="non-virtual"><scope>endstone::PlayerRecipeBookSettingsChangeEvent</scope><name>ENDSTONE_EVENT</name></member>
+      <member refid="classendstone_1_1Event_1a28cca8d74920493b449d035540acf023" prot="public" virt="non-virtual"><scope>endstone::PlayerRecipeBookSettingsChangeEvent</scope><name>Event</name></member>
+      <member refid="classendstone_1_1Event_1a7199136ebb40e1441bc61e29f83c3cad" prot="public" virt="non-virtual"><scope>endstone::PlayerRecipeBookSettingsChangeEvent</scope><name>Event</name></member>
+      <member refid="classendstone_1_1Event_1ad20bafd16e0671578e37390b95e5104c" prot="public" virt="non-virtual"><scope>endstone::PlayerRecipeBookSettingsChangeEvent</scope><name>Event</name></member>
+      <member refid="classendstone_1_1Event_1a826fe74f9c4195a36a364b9aeeb321bb" prot="public" virt="pure-virtual"><scope>endstone::PlayerRecipeBookSettingsChangeEvent</scope><name>getEventName</name></member>
+      <member refid="classendstone_1_1PlayerEvent_1abad8f8bca3e2be851c4b37075adf2cbc" prot="public" virt="non-virtual"><scope>endstone::PlayerRecipeBookSettingsChangeEvent</scope><name>getPlayer</name></member>
+      <member refid="classendstone_1_1PlayerRecipeBookSettingsChangeEvent_1a2838a6df109a9eb9da17a13e7d689d0f" prot="public" virt="non-virtual"><scope>endstone::PlayerRecipeBookSettingsChangeEvent</scope><name>getRecipeBookType</name></member>
+      <member refid="classendstone_1_1PlayerRecipeBookSettingsChangeEvent_1a57c7b8ca86bfd62af5e899fe5338dade" prot="private" virt="non-virtual"><scope>endstone::PlayerRecipeBookSettingsChangeEvent</scope><name>is_filtering_</name></member>
+      <member refid="classendstone_1_1PlayerRecipeBookSettingsChangeEvent_1abc414f1d40eccf224ff8d2b420add35b" prot="private" virt="non-virtual"><scope>endstone::PlayerRecipeBookSettingsChangeEvent</scope><name>is_open_</name></member>
+      <member refid="classendstone_1_1Event_1ae89b54f63dc32b0c8797a59db69b6931" prot="public" virt="non-virtual"><scope>endstone::PlayerRecipeBookSettingsChangeEvent</scope><name>isAsynchronous</name></member>
+      <member refid="classendstone_1_1PlayerRecipeBookSettingsChangeEvent_1a75c07cc59d9830e7bcdf96e1e4d51f05" prot="public" virt="non-virtual"><scope>endstone::PlayerRecipeBookSettingsChangeEvent</scope><name>isFiltering</name></member>
+      <member refid="classendstone_1_1PlayerRecipeBookSettingsChangeEvent_1a309c53a46738b3a11ee5961087152b30" prot="public" virt="non-virtual"><scope>endstone::PlayerRecipeBookSettingsChangeEvent</scope><name>isOpen</name></member>
+      <member refid="classendstone_1_1Event_1a44a4ff424a8b690c01a2afe10ae68d8f" prot="public" virt="non-virtual"><scope>endstone::PlayerRecipeBookSettingsChangeEvent</scope><name>operator=</name></member>
+      <member refid="classendstone_1_1Event_1a1d7fc5400782d20be99a3636aa7f53b9" prot="public" virt="non-virtual"><scope>endstone::PlayerRecipeBookSettingsChangeEvent</scope><name>operator=</name></member>
+      <member refid="classendstone_1_1PlayerEvent_1ae0f8240e8c7c3a66281295c43b1d522a" prot="protected" virt="non-virtual"><scope>endstone::PlayerRecipeBookSettingsChangeEvent</scope><name>player_</name></member>
+      <member refid="classendstone_1_1PlayerEvent_1afee42449de6752241c5472a38f7d94a9" prot="public" virt="non-virtual"><scope>endstone::PlayerRecipeBookSettingsChangeEvent</scope><name>PlayerEvent</name></member>
+      <member refid="classendstone_1_1PlayerRecipeBookSettingsChangeEvent_1a261bbb1993cc91b0a9a03bb9d52edd51" prot="public" virt="non-virtual"><scope>endstone::PlayerRecipeBookSettingsChangeEvent</scope><name>PlayerRecipeBookSettingsChangeEvent</name></member>
+      <member refid="classendstone_1_1PlayerRecipeBookSettingsChangeEvent_1a8037d2929f7d8835bd79634097fd35bf" prot="private" virt="non-virtual"><scope>endstone::PlayerRecipeBookSettingsChangeEvent</scope><name>recipe_book_type_</name></member>
+      <member refid="classendstone_1_1PlayerRecipeBookSettingsChangeEvent_1ab5709b487202d4c52eacf9e8b54ce67f" prot="public" virt="non-virtual"><scope>endstone::PlayerRecipeBookSettingsChangeEvent</scope><name>RecipeBookType</name></member>
+      <member refid="classendstone_1_1Event_1a6aeaa8096baba90f8ace94106e0e05f3" prot="public" virt="virtual"><scope>endstone::PlayerRecipeBookSettingsChangeEvent</scope><name>~Event</name></member>
+      <member refid="classendstone_1_1PlayerEvent_1ab31b937251b8ccc1c72c275d1c7a522b" prot="public" virt="non-virtual"><scope>endstone::PlayerRecipeBookSettingsChangeEvent</scope><name>~PlayerEvent</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

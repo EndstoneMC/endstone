@@ -260,6 +260,8 @@
 * **impl\_** ([**endstone::ItemStack**](classendstone_1_1ItemStack.md))
 * **is\_contextual\_** ([**endstone::MapRenderer**](classendstone_1_1MapRenderer.md))
 * **item\_** ([**endstone::PlayerInteractEvent**](classendstone_1_1PlayerInteractEvent.md), [**endstone::PlayerItemConsumeEvent**](classendstone_1_1PlayerItemConsumeEvent.md), [**endstone::PlayerPickupItemEvent**](classendstone_1_1PlayerPickupItemEvent.md))
+* **is\_filtering\_** ([**endstone::PlayerRecipeBookSettingsChangeEvent**](classendstone_1_1PlayerRecipeBookSettingsChangeEvent.md))
+* **is\_open\_** ([**endstone::PlayerRecipeBookSettingsChangeEvent**](classendstone_1_1PlayerRecipeBookSettingsChangeEvent.md))
 * **image\_** ([**endstone::Skin**](classendstone_1_1Skin.md))
 
 
@@ -481,6 +483,7 @@
 * **RecipesUnlock** ([**endstone::GameRule**](classendstone_1_1GameRule.md))
 * **RespawnBlocksExplode** ([**endstone::GameRule**](classendstone_1_1GameRule.md))
 * **removed\_** ([**endstone::PermissionAttachment**](classendstone_1_1PermissionAttachment.md))
+* **recipe\_book\_type\_** ([**endstone::PlayerRecipeBookSettingsChangeEvent**](classendstone_1_1PlayerRecipeBookSettingsChangeEvent.md))
 
 
 ## s
