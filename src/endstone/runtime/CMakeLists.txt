@@ -39,6 +39,7 @@ add_library(endstone_runtime SHARED
         bedrock_hooks/server_instance.cpp
         bedrock_hooks/server_network_handler.cpp
         bedrock_hooks/server_player.cpp
+        bedrock_hooks/trident_item.cpp
         bedrock_hooks/weather_manager.cpp
         main.cpp
         hook.cpp

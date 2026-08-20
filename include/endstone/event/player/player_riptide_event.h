@@ -14,31 +14,37 @@
 
 #pragma once
 
+#include <utility>
+
 #include "endstone/event/player/player_event.h"
+#include "endstone/inventory/item_stack.h"
 
 namespace endstone {
 
 /**
- * Called when a player starts or stops a riptide attack.
+ * Called when a player activates the riptide enchantment, using their trident to propel them through the air.
+ *
+ * @note The riptide action is currently performed client side, so manipulating the player in this event may have
+ * undesired effects.
  */
 class PlayerRiptideEvent final : public PlayerEvent {
 public:
-    ENDSTONE_EVENT(PlayerRiptideEvent)
+    ENDSTONE_EVENT(PlayerRiptideEvent);
 
-    explicit PlayerRiptideEvent(const NotNull<Player> &player, bool riptiding)
-        : PlayerEvent(player), riptiding_(riptiding)
+    explicit PlayerRiptideEvent(const NotNull<Player> &player, ItemStack item)
+        : PlayerEvent(player), item_(std::move(item))
     {
     }
 
     /**
-     * Gets whether the player is riptiding.
+     * Gets the item containing the used enchantment.
      *
-     * @return true when starting riptide, false when stopping
+     * @return an ItemStack for the trident being used
      */
-    [[nodiscard]] bool isRiptiding() const { return riptiding_; }
+    [[nodiscard]] const ItemStack &getItem() const { return item_; }
 
 private:
-    bool riptiding_;
+    ItemStack item_;
 };
 
 }  // namespace endstone

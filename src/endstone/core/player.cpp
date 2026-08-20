@@ -69,7 +69,6 @@
 #include "endstone/event/player/player_jump_event.h"
 #include "endstone/event/player/player_move_event.h"
 #include "endstone/event/player/player_recipe_book_settings_change_event.h"
-#include "endstone/event/player/player_riptide_event.h"
 #include "endstone/event/player/player_skin_change_event.h"
 #include "endstone/event/player/player_toggle_sneak_event.h"
 #include "endstone/event/player/player_toggle_sprint_event.h"
@@ -831,14 +830,6 @@ bool EndstonePlayer::handlePacket(Packet &packet)
             if (e.isCancelled()) {
                 pk.setInput(PlayerAuthInputPacket::InputData::MissedSwing, false);
             }
-        }
-        if (pk.getInput(PlayerAuthInputPacket::InputData::StartSpinAttack)) {
-            PlayerRiptideEvent e(getSelf(), true);
-            getServer().getPluginManager().callEvent(e);
-        }
-        else if (pk.getInput(PlayerAuthInputPacket::InputData::StopSpinAttack)) {
-            PlayerRiptideEvent e(getSelf(), false);
-            getServer().getPluginManager().callEvent(e);
         }
         if (input_changed) {
             PlayerInputEvent e(getSelf(), player_input);
