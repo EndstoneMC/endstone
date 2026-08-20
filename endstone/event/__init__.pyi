@@ -52,6 +52,7 @@ __all__ = [
     "MobEvent",
     "PacketReceiveEvent",
     "PacketSendEvent",
+    "PlayerArmSwingEvent",
     "PlayerBedEnterEvent",
     "PlayerBedLeaveEvent",
     "PlayerChatEvent",
@@ -80,6 +81,7 @@ __all__ = [
     "PlayerQuitEvent",
     "PlayerRecipeBookSettingsChangeEvent",
     "PlayerRespawnEvent",
+    "PlayerRiptideEvent",
     "PlayerSkinChangeEvent",
     "PlayerTeleportEvent",
     "PlayerToggleSneakEvent",
@@ -533,6 +535,16 @@ class PlayerEvent(Event):
         The `Player` who is involved in this event.
         """
 
+class PlayerArmSwingEvent(PlayerEvent):
+    """
+    Called when a player swings their arm.
+    """
+    @property
+    def item(self) -> ItemStack | None:
+        """
+        The item the player was holding when they swung their arm.
+        """
+
 class PlayerBedEnterEvent(PlayerEvent, Cancellable):
     """
     Called when a player is almost about to enter the bed.
@@ -983,6 +995,19 @@ class PlayerRespawnEvent(PlayerEvent):
     def respawn_reason(self) -> RespawnReason:
         """
         The reason this respawn occurred.
+        """
+
+class PlayerRiptideEvent(PlayerEvent):
+    """
+    Called when a player activates the riptide enchantment, using their trident to propel them through the air.
+
+    The riptide action is currently performed client side, so manipulating the player in this event may have
+    undesired effects.
+    """
+    @property
+    def item(self) -> ItemStack:
+        """
+        An `ItemStack` for the trident being used.
         """
 
 class PlayerSkinChangeEvent(PlayerEvent, Cancellable):
