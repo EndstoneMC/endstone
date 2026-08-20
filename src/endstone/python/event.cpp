@@ -372,10 +372,6 @@ void init_event(py::module_ &m, py::class_<Event, PyEvent> &event)
         m, "PlayerPickupItemEvent", "Called when a player picks an item up from the ground.")
         .def_property_readonly("item", &PlayerPickupItemEvent::getItem,
                                "The Item picked up by the entity.");
-    py::class_<PlayerPickupItemEvent, PlayerEvent, ICancellable>(
-        m, "PlayerPickupItemEvent", "Called when a player picks an item up from the ground.")
-        .def_property_readonly("item", &PlayerPickupItemEvent::getItem,
-                               "The Item picked up by the entity.");
     py::class_<PlayerQuitEvent, PlayerEvent>(m, "PlayerQuitEvent", "Called when a player leaves a server.")
         .def_property("quit_message", &PlayerQuitEvent::getQuitMessage, &PlayerQuitEvent::setQuitMessage,
                       "The quit message to send to all online players.");
