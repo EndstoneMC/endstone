@@ -42,7 +42,7 @@ const AttributeInstance *BaseAttributeMap::getInstance(const HashedString &name)
             return &instance;
         }
     }
-    throw std::runtime_error("Attribute not found by name: " + name.getString());
+    return nullptr;
 }
 
 MutableAttributeWithContext BaseAttributeMap::getMutableInstanceWithContext(const HashedString &name)
@@ -52,7 +52,7 @@ MutableAttributeWithContext BaseAttributeMap::getMutableInstanceWithContext(cons
             return {&instance, this};
         }
     }
-    throw std::runtime_error("Attribute not found by name: " + name.getString());
+    return {nullptr, this};
 }
 
 void BaseAttributeMap::_onAttributeModified(AttributeInstance const &instance)

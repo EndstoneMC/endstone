@@ -11,7 +11,7 @@
 
 namespace endstone::runtime {
 
-static constexpr std::array<std::pair<std::string_view, std::size_t>, 64> symbols = {{
+static constexpr std::array<std::pair<std::string_view, std::size_t>, 65> symbols = {{
     {"BlockState::StateListNode::mHead", 211294960},
     {"Enchant::mEnchants", 211141912},
     {"MobEffect::mMobEffects", 211424880},
@@ -71,8 +71,6 @@ static constexpr std::array<std::pair<std::string_view, std::size_t>, 64> symbol
     // ItemStackBase
     {"?_loadBlocksForCanPlaceOnCanDestroy@ItemStackBase@@CA_NAEAV?$vector@PEBVBlockType@@V?$allocator@PEBVBlockType@@@std@@@std@@AEBV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@3@@Z", 29168176},
     {"?_setItem@ItemStackBase@@AEAA_NH_N@Z", 29129472},
-    // ItemUseOnActorInventoryTransaction
-    {"?executeInteraction@ItemUseOnActorInventoryTransaction@@SAXPEAX@Z", 39531168},
     // LeavesBlock
     {"?randomTick@LeavesBlock@@QEBAXAEAVBlockRandomTickEvent@BlockEvents@@@Z", 48292160},
     // Level
@@ -91,6 +89,8 @@ static constexpr std::array<std::pair<std::string_view, std::size_t>, 64> symbol
     // PistonBlockActor
     {"?tick@PistonBlockActor@@UEAAXAEAVBlockSource@@@Z", 99573264},
     // Player
+    {"?addExperience@Player@@UEAAXH@Z", 2318544},
+    {"?addLevels@Player@@UEAAXH@Z", 2320016},
     {"?completeUsingItem@Player@@QEAAXXZ", 2206272},
     {"?drop@Player@@UEAA_NAEBVItemStack@@_N@Z", 2302400},
     {"?startSleepInBed@Player@@UEAA?AW4BedSleepingResult@@AEBVBlockPos@@_NM@Z", 2182176},

@@ -52,6 +52,7 @@ __all__ = [
     "GameMode",
     "GameRule",
     "Identifier",
+    "Input",
     "Logger",
     "OfflinePlayer",
     "Player",
@@ -875,6 +876,9 @@ class GameRule(typing.Generic[_T]):
     """
     Represents a game rule.
     """
+    def __hash__(self) -> int: ...
+    def __eq__(self, other: object) -> bool: ...
+    def __ne__(self, other: object) -> bool: ...
     @property
     def id(self) -> Identifier[GameRule[_T]]:
         """
@@ -884,7 +888,7 @@ class GameRule(typing.Generic[_T]):
     @property
     def translation_key(self) -> str:
         """
-        The translation key, suitable for use in a translation component.
+        Raises, as Bedrock does not localize game rule names.
         """
 
     @typing.overload
@@ -902,8 +906,6 @@ class GameRule(typing.Generic[_T]):
         Returns:
             The `GameRule`, or `None` if no game rule with that name exists.
         """
-
-    def __hash__(self) -> int: ...
 
     COMMAND_BLOCK_OUTPUT: Identifier[GameRule[bool]] = "minecraft:commandblockoutput"
     COMMAND_BLOCKS_ENABLED: Identifier[GameRule[bool]] = "minecraft:commandblocksenabled"
@@ -958,6 +960,56 @@ class Rotation(enum.Enum):
     FLIPPED_45 = 5
     COUNTER_CLOCKWISE = 6
     COUNTER_CLOCKWISE_45 = 7
+
+class Input:
+    """
+    Represents a movement input applied to a player.
+    """
+    @property
+    def is_forward(self) -> bool:
+        """
+        Whether a forward input is applied.
+        """
+
+    @property
+    def is_backward(self) -> bool:
+        """
+        Whether a backward input is applied.
+        """
+
+    @property
+    def is_left(self) -> bool:
+        """
+        Whether a left input is applied.
+        """
+
+    @property
+    def is_right(self) -> bool:
+        """
+        Whether a right input is applied.
+        """
+
+    @property
+    def is_jump(self) -> bool:
+        """
+        Whether a jump input is applied.
+        """
+
+    @property
+    def is_sneak(self) -> bool:
+        """
+        Whether a sneak input is applied.
+        """
+
+    @property
+    def is_sprint(self) -> bool:
+        """
+        Whether a sprint input is applied.
+        """
+
+    def __eq__(self, other: object) -> bool: ...
+    def __hash__(self) -> int: ...
+    def __ne__(self, other: object) -> bool: ...
 
 class Logger:
     """

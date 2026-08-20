@@ -14,30 +14,35 @@
 
 #pragma once
 
-#include <utility>
-
-#include "endstone/event/cancellable.h"
 #include "endstone/event/player/player_event.h"
-#include "endstone/inventory/equipment_slot.h"
-#include "endstone/inventory/item_stack.h"
 
 namespace endstone {
+
 /**
- * Called when a player drops an item from their inventory.
+ * Called when a player's experience changes.
  */
-class PlayerDropItemEvent final : public Cancellable<PlayerEvent> {
+class PlayerExpChangeEvent final : public PlayerEvent {
 public:
-    ENDSTONE_EVENT(PlayerDropItemEvent);
-    explicit PlayerDropItemEvent(const NotNull<Player> &player, ItemStack drop) : Cancellable(player), drop_(std::move(drop)) {}
+    ENDSTONE_EVENT(PlayerExpChangeEvent);
+
+    PlayerExpChangeEvent(const NotNull<Player> &player, int amount) : PlayerEvent(player), amount_(amount) {}
 
     /**
-     * Gets the ItemStack dropped by the player.
+     * Gets the amount of experience gained by the player.
      *
-     * @return ItemDrop dropped by the player
+     * @return the amount of experience gained
      */
-    [[nodiscard]] const ItemStack &getItem() const { return drop_; }
+    [[nodiscard]] int getAmount() const { return amount_; }
+
+    /**
+     * Sets the amount of experience the player will be given.
+     *
+     * @param amount the amount of experience to give
+     */
+    void setAmount(int amount) { amount_ = amount; }
 
 private:
-    ItemStack drop_;
+    int amount_;
 };
+
 }  // namespace endstone

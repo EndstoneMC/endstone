@@ -5,7 +5,7 @@ Classes relating to handling triggered code executions.
 import enum
 import typing
 
-from endstone import GameMode, Player, Skin
+from endstone import GameMode, Input, Player, Skin
 from endstone.actor import Actor, Item, Mob
 from endstone.block import Block, BlockFace, BlockState
 from endstone.command import CommandSender
@@ -52,7 +52,6 @@ __all__ = [
     "MobEvent",
     "PacketReceiveEvent",
     "PacketSendEvent",
-    "PlayerArmorStandManipulateEvent",
     "PlayerBedEnterEvent",
     "PlayerBedLeaveEvent",
     "PlayerChatEvent",
@@ -62,7 +61,9 @@ __all__ = [
     "PlayerDropItemEvent",
     "PlayerEmoteEvent",
     "PlayerEvent",
+    "PlayerExpChangeEvent",
     "PlayerGameModeChangeEvent",
+    "PlayerInputEvent",
     "PlayerInteractActorEvent",
     "PlayerInteractEvent",
     "PlayerItemConsumeEvent",
@@ -70,11 +71,14 @@ __all__ = [
     "PlayerJoinEvent",
     "PlayerJumpEvent",
     "PlayerKickEvent",
+    "PlayerLevelChangeEvent",
     "PlayerLoginEvent",
     "PlayerMoveEvent",
+    "PlayerPickupArrowEvent",
     "PlayerPickupItemEvent",
     "PlayerPortalEvent",
     "PlayerQuitEvent",
+    "PlayerRecipeBookSettingsChangeEvent",
     "PlayerRespawnEvent",
     "PlayerSkinChangeEvent",
     "PlayerTeleportEvent",
@@ -645,6 +649,19 @@ class PlayerEmoteEvent(PlayerEvent, Cancellable):
     @is_muted.setter
     def is_muted(self, arg1: bool) -> None: ...
 
+class PlayerExpChangeEvent(PlayerEvent):
+    """
+    Called when a player's experience changes.
+    """
+    @property
+    def amount(self) -> int:
+        """
+        The amount of experience the player will be given.
+        """
+
+    @amount.setter
+    def amount(self, arg1: int) -> None: ...
+
 class PlayerGameModeChangeEvent(PlayerEvent, Cancellable):
     """
     Called when the `GameMode` of the player is changed.
@@ -655,9 +672,19 @@ class PlayerGameModeChangeEvent(PlayerEvent, Cancellable):
         The `GameMode` the player is switched to.
         """
 
+class PlayerInputEvent(PlayerEvent):
+    """
+    Called when a player sends updated input to the server.
+    """
+    @property
+    def input(self) -> Input:
+        """
+        The new input received from this player.
+        """
+
 class PlayerInteractEvent(PlayerEvent, Cancellable):
     """
-    Represents an event that is called when a player interacts with an object or air.
+    Called when a player interacts with an object or air.
     """
     class Action(enum.Enum):
         """
@@ -720,34 +747,12 @@ class PlayerInteractEvent(PlayerEvent, Cancellable):
 
 class PlayerInteractActorEvent(PlayerEvent, Cancellable):
     """
-    Represents an event that is called when a player right-clicks an actor.
+    Called when a player right-clicks an actor.
     """
     @property
     def actor(self) -> Actor:
         """
         The actor that was right-clicked by the player.
-        """
-
-class PlayerArmorStandManipulateEvent(PlayerInteractActorEvent):
-    """
-    Called when a player interacts with an armor stand.
-    """
-    @property
-    def armor_stand_item(self) -> ItemStack:
-        """
-        The item held by the armor stand.
-        """
-
-    @property
-    def player_item(self) -> ItemStack:
-        """
-        The item held by the player.
-        """
-
-    @property
-    def slot(self) -> EquipmentSlot:
-        """
-        The armor stand slot involved in the interaction.
         """
 
 class PlayerItemConsumeEvent(PlayerEvent, Cancellable):
@@ -788,6 +793,26 @@ class PlayerItemHeldEvent(PlayerEvent, Cancellable):
         The previous held slot index.
         """
 
+class PlayerToggleSneakEvent(PlayerEvent):
+    """
+    Called when a player toggles their sneaking state.
+    """
+    @property
+    def is_sneaking(self) -> bool:
+        """
+        Whether the player is now sneaking or not.
+        """
+
+class PlayerToggleSprintEvent(PlayerEvent):
+    """
+    Called when a player toggles their sprinting state.
+    """
+    @property
+    def is_sprinting(self) -> bool:
+        """
+        Whether the player is now sprinting or not.
+        """
+
 class PlayerJoinEvent(PlayerEvent):
     """
     Called when a player joins a server.
@@ -813,6 +838,22 @@ class PlayerKickEvent(PlayerEvent, Cancellable):
 
     @reason.setter
     def reason(self, arg1: str) -> None: ...
+
+class PlayerLevelChangeEvent(PlayerEvent):
+    """
+    Called when a player's level changes.
+    """
+    @property
+    def old_level(self) -> int:
+        """
+        The player's level before the change.
+        """
+
+    @property
+    def new_level(self) -> int:
+        """
+        The player's level after the change.
+        """
 
 class PlayerLoginEvent(PlayerEvent, Cancellable):
     """
@@ -853,16 +894,6 @@ class PlayerJumpEvent(PlayerMoveEvent):
     Called when a player jumps.
     """
 
-class PlayerPickupItemEvent(PlayerEvent, Cancellable):
-    """
-    Called when a player picks an item up from the ground.
-    """
-    @property
-    def item(self) -> Item:
-        """
-        The Item picked up by the entity.
-        """
-
 class PlayerQuitEvent(PlayerEvent):
     """
     Called when a player leaves a server.
@@ -875,6 +906,42 @@ class PlayerQuitEvent(PlayerEvent):
 
     @quit_message.setter
     def quit_message(self, arg1: str | Translatable | None) -> None: ...
+
+class PlayerRecipeBookSettingsChangeEvent(PlayerEvent):
+    """
+    Called when a player changes recipe book settings.
+    """
+    class RecipeBookType(enum.Enum):
+        """
+        The recipe book type.
+        """
+
+        CRAFTING = 0
+        FURNACE = 1
+        BLAST_FURNACE = 2
+        SMOKER = 3
+
+    CRAFTING = RecipeBookType.CRAFTING
+    FURNACE = RecipeBookType.FURNACE
+    BLAST_FURNACE = RecipeBookType.BLAST_FURNACE
+    SMOKER = RecipeBookType.SMOKER
+    @property
+    def recipe_book_type(self) -> RecipeBookType:
+        """
+        The type of recipe book whose settings changed.
+        """
+
+    @property
+    def is_filtering(self) -> bool:
+        """
+        Whether recipe filtering is enabled.
+        """
+
+    @property
+    def is_open(self) -> bool:
+        """
+        Whether the recipe book is open.
+        """
 
 class PlayerRespawnEvent(PlayerEvent):
     """
@@ -925,24 +992,24 @@ class PlayerPortalEvent(PlayerTeleportEvent):
     Called when a player is about to teleport because it is in contact with a portal.
     """
 
-class PlayerToggleSneakEvent(PlayerEvent):
+class PlayerPickupArrowEvent(PlayerEvent, Cancellable):
     """
-    Called when a player toggles their sneaking state.
+    Called when a player picks up an arrow or a thrown trident from the ground.
     """
     @property
-    def is_sneaking(self) -> bool:
+    def arrow(self) -> Actor:
         """
-        Whether the player is now sneaking or not.
+        The arrow picked up by the player.
         """
 
-class PlayerToggleSprintEvent(PlayerEvent):
+class PlayerPickupItemEvent(PlayerEvent, Cancellable):
     """
-    Called when a player toggles their sprinting state.
+    Called when a player picks an item up from the ground.
     """
     @property
-    def is_sprinting(self) -> bool:
+    def item(self) -> Item:
         """
-        Whether the player is now sprinting or not.
+        The Item picked up by the entity.
         """
 
 class ServerEvent(Event):

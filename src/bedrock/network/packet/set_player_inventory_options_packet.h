@@ -14,27 +14,18 @@
 
 #pragma once
 
-#include "endstone/event/player/player_event.h"
+#include "bedrock/bedrock.h"
+#include "bedrock/network/packet.h"
+#include "bedrock/world/inventory/inventory_options.h"
 
-namespace endstone {
-
-/**
- * Called when a player toggles their sprinting state.
- */
-class PlayerToggleSprintEvent final : public PlayerEvent {
-public:
-    ENDSTONE_EVENT(PlayerToggleSprintEvent);
-    explicit PlayerToggleSprintEvent(const NotNull<Player> &player, bool sprinting) : PlayerEvent(player), sprinting_(sprinting) {}
-
-    /**
-     * Returns whether the player is now sprinting or not.
-     *
-     * @return the new sprinting state
-     */
-    [[nodiscard]] bool isSprinting() const { return sprinting_; }
-
-private:
-    bool sprinting_;
+struct SetPlayerInventoryOptionsPacketPayload {
+    InventoryOptions inventory_options;
 };
+BEDROCK_STATIC_ASSERT_SIZE(SetPlayerInventoryOptionsPacketPayload, 20, 20);
 
-}  // namespace endstone
+class SetPlayerInventoryOptionsPacket : public Packet {
+public:
+    SetPlayerInventoryOptionsPacketPayload payload;
+    SerializationMode serialization_mode;
+};
+BEDROCK_STATIC_ASSERT_SIZE(SetPlayerInventoryOptionsPacket, 72, 72);

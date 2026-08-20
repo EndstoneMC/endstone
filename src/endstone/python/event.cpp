@@ -291,12 +291,20 @@ void init_event(py::module_ &m, py::class_<Event, PyEvent> &event)
 
     When `True`, the emote is executed without sending a chat message about the emote.
 )doc");
+    py::class_<PlayerExpChangeEvent, PlayerEvent>(m, "PlayerExpChangeEvent",
+                                                  "Called when a player's experience changes.")
+        .def_property("amount", &PlayerExpChangeEvent::getAmount, &PlayerExpChangeEvent::setAmount,
+                      "The amount of experience the player will be given.");
     py::class_<PlayerGameModeChangeEvent, PlayerEvent, ICancellable>(
         m, "PlayerGameModeChangeEvent", "Called when the `GameMode` of the player is changed.")
         .def_property_readonly("new_game_mode", &PlayerGameModeChangeEvent::getNewGameMode,
                                "The `GameMode` the player is switched to.");
+    py::class_<PlayerInputEvent, PlayerEvent>(m, "PlayerInputEvent",
+                                              "Called when a player sends updated input to the server.")
+        .def_property_readonly("input", &PlayerInputEvent::getInput,
+                               "The new input received from this player.");
     auto player_interact_event = py::class_<PlayerInteractEvent, PlayerEvent, ICancellable>(
-        m, "PlayerInteractEvent", "Represents an event that is called when a player interacts with an object or air.");
+        m, "PlayerInteractEvent", "Called when a player interacts with an object or air.");
     py::native_enum<PlayerInteractEvent::Action>(player_interact_event, "Action", "enum.Enum",
                                                  "Represents the type of interaction that triggered this event.")
         .value("LEFT_CLICK_BLOCK", PlayerInteractEvent::Action::LeftClickBlock)
@@ -321,18 +329,10 @@ void init_event(py::module_ &m, py::class_<Event, PyEvent> &event)
     This will be `None` outside of `Action.RIGHT_CLICK_BLOCK`. All vector components are between 0.0 and
     1.0 inclusive.
 )doc");
-    py::class_<PlayerInteractActorEvent, PlayerEvent, ICancellable>(
-        m, "PlayerInteractActorEvent", "Represents an event that is called when a player right-clicks an actor.")
+    py::class_<PlayerInteractActorEvent, PlayerEvent, ICancellable>(m, "PlayerInteractActorEvent",
+                                                                    "Called when a player right-clicks an actor.")
         .def_property_readonly("actor", &PlayerInteractActorEvent::getActor,
                                "The actor that was right-clicked by the player.");
-    py::class_<PlayerArmorStandManipulateEvent, PlayerInteractActorEvent>(
-        m, "PlayerArmorStandManipulateEvent", "Called when a player interacts with an armor stand.")
-        .def_property_readonly("armor_stand_item", &PlayerArmorStandManipulateEvent::getArmorStandItem,
-                               "The item held by the armor stand.")
-        .def_property_readonly("player_item", &PlayerArmorStandManipulateEvent::getPlayerItem,
-                               "The item held by the player.")
-        .def_property_readonly("slot", &PlayerArmorStandManipulateEvent::getSlot,
-                               "The armor stand slot involved in the interaction.");
     py::class_<PlayerItemConsumeEvent, PlayerEvent, ICancellable>(m, "PlayerItemConsumeEvent", R"doc(
     Called when a player is finishing consuming an item (food, potion, milk bucket).
 
@@ -350,6 +350,14 @@ void init_event(py::module_ &m, py::class_<Event, PyEvent> &event)
         .def_property_readonly("new_slot", &PlayerItemHeldEvent::getNewSlot, "The new held slot index.")
         .def_property_readonly("previous_slot", &PlayerItemHeldEvent::getPreviousSlot,
                                "The previous held slot index.");
+    py::class_<PlayerToggleSneakEvent, PlayerEvent>(m, "PlayerToggleSneakEvent",
+                                                    "Called when a player toggles their sneaking state.")
+        .def_property_readonly("is_sneaking", &PlayerToggleSneakEvent::isSneaking,
+                               "Whether the player is now sneaking or not.");
+    py::class_<PlayerToggleSprintEvent, PlayerEvent>(m, "PlayerToggleSprintEvent",
+                                                     "Called when a player toggles their sprinting state.")
+        .def_property_readonly("is_sprinting", &PlayerToggleSprintEvent::isSprinting,
+                               "Whether the player is now sprinting or not.");
     py::class_<PlayerJoinEvent, PlayerEvent>(m, "PlayerJoinEvent", "Called when a player joins a server.")
         .def_property("join_message", &PlayerJoinEvent::getJoinMessage, &PlayerJoinEvent::setJoinMessage,
                       "The join message to send to all online players.");
@@ -357,6 +365,12 @@ void init_event(py::module_ &m, py::class_<Event, PyEvent> &event)
                                                            "Called when a player gets kicked from the server.")
         .def_property("reason", &PlayerKickEvent::getReason, &PlayerKickEvent::setReason,
                       "The reason why the player is getting kicked.");
+    py::class_<PlayerLevelChangeEvent, PlayerEvent>(m, "PlayerLevelChangeEvent",
+                                                    "Called when a player's level changes.")
+        .def_property_readonly("old_level", &PlayerLevelChangeEvent::getOldLevel,
+                               "The player's level before the change.")
+        .def_property_readonly("new_level", &PlayerLevelChangeEvent::getNewLevel,
+                               "The player's level after the change.");
     py::class_<PlayerLoginEvent, PlayerEvent, ICancellable>(m, "PlayerLoginEvent",
                                                             "Called when a player attempts to login in.")
         .def_property("kick_message", &PlayerLoginEvent::getKickMessage, &PlayerLoginEvent::setKickMessage,
@@ -367,13 +381,26 @@ void init_event(py::module_ &m, py::class_<Event, PyEvent> &event)
         .def_property("to_location", &PlayerMoveEvent::getTo, &PlayerMoveEvent::setTo,
                       "The location that this player moved to.");
     py::class_<PlayerJumpEvent, PlayerMoveEvent>(m, "PlayerJumpEvent", "Called when a player jumps.");
-    py::class_<PlayerPickupItemEvent, PlayerEvent, ICancellable>(
-        m, "PlayerPickupItemEvent", "Called when a player picks an item up from the ground.")
-        .def_property_readonly("item", &PlayerPickupItemEvent::getItem,
-                               "The Item picked up by the entity.");
     py::class_<PlayerQuitEvent, PlayerEvent>(m, "PlayerQuitEvent", "Called when a player leaves a server.")
         .def_property("quit_message", &PlayerQuitEvent::getQuitMessage, &PlayerQuitEvent::setQuitMessage,
                       "The quit message to send to all online players.");
+    auto player_recipe_book_settings_change_event = py::class_<PlayerRecipeBookSettingsChangeEvent, PlayerEvent>(
+        m, "PlayerRecipeBookSettingsChangeEvent", "Called when a player changes recipe book settings.");
+    py::native_enum<PlayerRecipeBookSettingsChangeEvent::RecipeBookType>(
+        player_recipe_book_settings_change_event, "RecipeBookType", "enum.Enum", "The recipe book type.")
+        .value("CRAFTING", PlayerRecipeBookSettingsChangeEvent::RecipeBookType::Crafting)
+        .value("FURNACE", PlayerRecipeBookSettingsChangeEvent::RecipeBookType::Furnace)
+        .value("BLAST_FURNACE", PlayerRecipeBookSettingsChangeEvent::RecipeBookType::BlastFurnace)
+        .value("SMOKER", PlayerRecipeBookSettingsChangeEvent::RecipeBookType::Smoker)
+        .export_values()
+        .finalize();
+    player_recipe_book_settings_change_event
+        .def_property_readonly("recipe_book_type", &PlayerRecipeBookSettingsChangeEvent::getRecipeBookType,
+                               "The type of recipe book whose settings changed.")
+        .def_property_readonly("is_filtering", &PlayerRecipeBookSettingsChangeEvent::isFiltering,
+                               "Whether recipe filtering is enabled.")
+        .def_property_readonly("is_open", &PlayerRecipeBookSettingsChangeEvent::isOpen,
+                               "Whether the recipe book is open.");
     auto player_respawn_event =
         py::class_<PlayerRespawnEvent, PlayerEvent>(m, "PlayerRespawnEvent", "Called when a player respawns.");
     py::native_enum<PlayerRespawnEvent::RespawnReason>(player_respawn_event, "RespawnReason", "enum.Enum",
@@ -394,14 +421,13 @@ void init_event(py::module_ &m, py::class_<Event, PyEvent> &event)
         m, "PlayerTeleportEvent", "Called when a player is teleported from one location to another.");
     py::class_<PlayerPortalEvent, PlayerTeleportEvent>(
         m, "PlayerPortalEvent", "Called when a player is about to teleport because it is in contact with a portal.");
-    py::class_<PlayerToggleSneakEvent, PlayerEvent>(m, "PlayerToggleSneakEvent",
-                                                    "Called when a player toggles their sneaking state.")
-        .def_property_readonly("is_sneaking", &PlayerToggleSneakEvent::isSneaking,
-                               "Whether the player is now sneaking or not.");
-    py::class_<PlayerToggleSprintEvent, PlayerEvent>(m, "PlayerToggleSprintEvent",
-                                                     "Called when a player toggles their sprinting state.")
-        .def_property_readonly("is_sprinting", &PlayerToggleSprintEvent::isSprinting,
-                               "Whether the player is now sprinting or not.");
+    py::class_<PlayerPickupArrowEvent, PlayerEvent, ICancellable>(
+        m, "PlayerPickupArrowEvent", "Called when a player picks up an arrow or a thrown trident from the ground.")
+        .def_property_readonly("arrow", &PlayerPickupArrowEvent::getArrow, "The arrow picked up by the player.");
+    py::class_<PlayerPickupItemEvent, PlayerEvent, ICancellable>(
+        m, "PlayerPickupItemEvent", "Called when a player picks an item up from the ground.")
+        .def_property_readonly("item", &PlayerPickupItemEvent::getItem,
+                               "The Item picked up by the entity.");
 
     // Server events
     py::class_<ServerEvent, Event>(m, "ServerEvent", "Represents a Server-related event.");

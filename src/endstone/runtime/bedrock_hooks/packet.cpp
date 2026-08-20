@@ -16,6 +16,7 @@
 
 #include "bedrock/network/packet.h"
 #include "bedrock/network/packet/login_packet.h"
+#include "bedrock/network/packet/set_player_inventory_options_packet.h"
 #include "bedrock/server/server_instance.h"
 #include "endstone/core/player.h"
 #include "endstone/core/server.h"
@@ -53,7 +54,8 @@ std::shared_ptr<Packet> MinecraftPackets::createPacket(MinecraftPacketIds id)
     case MinecraftPacketIds::PlayerSkin:
     case MinecraftPacketIds::SetLocalPlayerAsInit:
     case MinecraftPacketIds::PlayerAuthInputPacket:
-    case MinecraftPacketIds::Emote: {
+    case MinecraftPacketIds::Emote:
+    case MinecraftPacketIds::SetPlayerInventoryOptions: {
         static std::unordered_map<MinecraftPacketIds, std::unique_ptr<PlayerPacketHandler>> handlers;
         if (packet->handler_) {
             handlers.emplace(id, std::make_unique<PlayerPacketHandler>(*packet->handler_));
