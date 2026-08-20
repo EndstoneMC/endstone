@@ -93,6 +93,7 @@ __all__ = [
     "PlayerRecipeBookSettingsChangeEvent",
     "PlayerRespawnEvent",
     "PlayerRiptideEvent",
+    "PlayerShearActorEvent",
     "PlayerSkinChangeEvent",
     "PlayerTeleportEvent",
     "PlayerToggleCrawlEvent",
@@ -1173,6 +1174,28 @@ class PlayerRiptideEvent(PlayerEvent):
     def item(self) -> ItemStack:
         """
         An `ItemStack` for the trident being used.
+        """
+
+class PlayerShearActorEvent(PlayerEvent, Cancellable):
+    """
+    Called when a player shears an actor.
+    """
+    @property
+    def actor(self) -> Actor:
+        """
+        The actor being sheared.
+        """
+
+    @property
+    def item(self) -> ItemStack:
+        """
+        The shears used.
+        """
+
+    @property
+    def hand(self) -> EquipmentSlot:
+        """
+        The hand used to shear the actor.
         """
 
 class PlayerSkinChangeEvent(PlayerEvent, Cancellable):

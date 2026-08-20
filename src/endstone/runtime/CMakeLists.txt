@@ -16,6 +16,7 @@ add_library(endstone_runtime SHARED
         bedrock_hooks/dedicated_server.cpp
         bedrock_hooks/explosion.cpp
         bedrock_hooks/fire_block.cpp
+        bedrock_hooks/interact_component.cpp
         bedrock_hooks/inventory_transaction.cpp
         bedrock_hooks/item.cpp
         bedrock_hooks/item_registry_manager.cpp

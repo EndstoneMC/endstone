@@ -394,6 +394,26 @@ extra = 0
 pattern = "41 56 53 50 0F 57 C9 80 7F"
 
 [[signatures]]
+name = "_ZN17InteractComponent14getInteractionER5ActorR6PlayerR16ActorInteraction"
+relative = false
+extra = 0
+# 1. no usable string: the interaction's text ("action.interact.shear" and friends) is loaded from the
+#    vanilla behaviour pack, not baked into the binary. Anchor instead on the two entity type ids the
+#    telemetry branch near the end compares against - `3D 74 0B 03 00` (cmp eax, 30B74h) and
+#    `3D 2C 0B 03 00` (cmp eax, 30B2Ch), seven bytes apart. Exactly two sites in .text pair them
+# 2. pick the right one: getInteraction is the site that, within 0x80 bytes of that pair, does
+#    `lea <r>, [<r>+0x48]` and calls ActorInteraction::setInteractText with it - 0x48 is
+#    Interaction::mInteractText. The other pair belongs to a different telemetry caller
+# 3. confirm identity from the body: it walks the InteractDefinition's Interaction array with
+#    `add <r>, 0x140` (stride 320, sizeof(Interaction)) calling _runInteraction per candidate, and
+#    guards a `Bedrock::type_id<IDefinitionInstance, InteractDefinition>` lazy id with __cxa_guard_acquire
+# 4. walk back to the prologue - `push rbp/r15/r14/r13/r12/rbx`, `sub rsp, 0x228`, then the four
+#    System V argument moves (this, Actor&, Player&, ActorInteraction&) - and cut from there
+# uniqueness: the pattern below matches exactly once in 1.26.44.3, and also exactly once in
+# 1.26.40.8 and 1.26.33.1
+pattern = "55 41 57 41 56 41 55 41 54 53 48 81 EC 28 02 00 00 49 89 CE 48 89 54 24 08 49 89 F7 49 89 FD"
+
+[[signatures]]
 name = "_ZNK4Item12readUserDataER13ItemStackBaseR10IDataInputR20ReadOnlyBinaryStream"
 relative = false
 extra = 0

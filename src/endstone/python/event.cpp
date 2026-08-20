@@ -499,6 +499,11 @@ void init_event(py::module_ &m, py::class_<Event, PyEvent> &event)
     undesired effects.
 )doc")
         .def_property_readonly("item", &PlayerRiptideEvent::getItem, "An `ItemStack` for the trident being used.");
+    py::class_<PlayerShearActorEvent, PlayerEvent, ICancellable>(m, "PlayerShearActorEvent",
+                                                                 "Called when a player shears an actor.")
+        .def_property_readonly("actor", &PlayerShearActorEvent::getActor, "The actor being sheared.")
+        .def_property_readonly("item", &PlayerShearActorEvent::getItem, "The shears used.")
+        .def_property_readonly("hand", &PlayerShearActorEvent::getHand, "The hand used to shear the actor.");
     py::class_<PlayerSkinChangeEvent, PlayerEvent, ICancellable>(m, "PlayerSkinChangeEvent",
                                                                  "Called when a player changes their skin.")
         .def_property_readonly("new_skin", &PlayerSkinChangeEvent::getNewSkin, "The skin that will be applied.")

@@ -443,6 +443,25 @@ rip_relative = true
 rip_offset = 1
 
 [[signatures]]
+name = "?getInteraction@InteractComponent@@QEAA?AVInteractionResult@@AEAVActor@@AEAVPlayer@@AEAVActorInteraction@@@Z"
+relative = false
+extra = 0
+# 1. the name is real, so `dump_symbols.py --pdb` resolves it outright; the steps below are the
+#    no-PDB fallback
+# 2. no usable string - the interact text lives in the behaviour pack, not the image. Anchor on the
+#    two entity type ids the telemetry branch compares against: `3D 74 0B 03 00` (cmp eax, 30B74h)
+#    and `3D 2C 0B 03 00` (cmp eax, 30B2Ch), seven bytes apart. Two sites in .text pair them
+# 3. pick the right one: getInteraction is the site that, within 0x80 bytes of the pair, does
+#    `lea <r>, [<r>+0x48]` (Interaction::mInteractText) ahead of the ActorInteraction::setInteractText call
+# 4. confirm identity from the body: the Interaction array walk uses the 0x140 stride (sizeof(Interaction))
+#    and calls _runInteraction per candidate
+# 5. walk back to the prologue - `push rbp/r15/r14/r13/r12/rsi/rdi/rbx`, `sub rsp, 0x288`,
+#    `lea rbp, [rsp+0x80]`, then the xmm6 spill and the SEH scope marker - and cut from there
+# uniqueness: matches exactly once in 1.26.44.3 and once in 1.26.40.8. In 1.26.33.1 the same bytes
+# match twice, so re-derive rather than reuse if the version floor moves back
+pattern = "55 41 57 41 56 41 55 41 54 56 57 53 48 81 EC 88 02 00 00 48 8D AC 24 80 00 00 00 0F 29 B5 F0 01 00 00 48 C7 85 E8 01 00 00 FE FF FF FF 4D 89 CE"
+
+[[signatures]]
 # name is arbitrary, this is actually hooking a lambda function
 name = "?executeWorldInteraction@InventoryTransaction@@SA?AW4InventoryTransactionError@@PEAXAEAVPlayer@@AEBVInventoryAction@@@Z"
 relative = false
