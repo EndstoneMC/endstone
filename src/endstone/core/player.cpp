@@ -768,7 +768,7 @@ bool EndstonePlayer::handlePacket(Packet &packet)
             pk.getInput(PlayerAuthInputPacket::InputData::Sneaking),
             pk.getInput(PlayerAuthInputPacket::InputData::Sprinting),
         };
-        const bool input_changed = !last_input_ || *last_input_ != input;
+        const bool input_changed = last_input_ != input;
         last_input_ = input;
 
         if (pk.getInput(PlayerAuthInputPacket::InputData::StartSprinting) && !getHandle().isSprinting()) {
