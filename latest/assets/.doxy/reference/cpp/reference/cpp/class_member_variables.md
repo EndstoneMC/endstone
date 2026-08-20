@@ -7,7 +7,7 @@
 
 * **actors\_** ([**endstone::ActorCollideWithActorEvent**](classendstone_1_1ActorCollideWithActorEvent.md))
 * **action\_** ([**endstone::ActorEffectEvent**](classendstone_1_1ActorEffectEvent.md), [**endstone::PlayerInteractEvent**](classendstone_1_1PlayerInteractEvent.md))
-* **actor\_** ([**endstone::ActorEvent**](classendstone_1_1ActorEvent.md), [**endstone::PlayerBucketActorEvent**](classendstone_1_1PlayerBucketActorEvent.md), [**endstone::PlayerInteractActorEvent**](classendstone_1_1PlayerInteractActorEvent.md))
+* **actor\_** ([**endstone::ActorEvent**](classendstone_1_1ActorEvent.md), [**endstone::PlayerBucketActorEvent**](classendstone_1_1PlayerBucketActorEvent.md), [**endstone::PlayerInteractActorEvent**](classendstone_1_1PlayerInteractActorEvent.md), [**endstone::PlayerShearActorEvent**](classendstone_1_1PlayerShearActorEvent.md))
 * **amount\_** ([**endstone::ActorPickupItemEvent**](classendstone_1_1ActorPickupItemEvent.md), [**endstone::AttributeModifier**](classendstone_1_1AttributeModifier.md), [**endstone::PlayerExpChangeEvent**](classendstone_1_1PlayerExpChangeEvent.md), [**endstone::PlayerPickupExperienceEvent**](classendstone_1_1PlayerPickupExperienceEvent.md))
 * **Agent** ([**endstone::ActorType**](classendstone_1_1ActorType.md))
 * **Allay** ([**endstone::ActorType**](classendstone_1_1ActorType.md))
@@ -244,7 +244,7 @@
 * **Hunger** ([**endstone::EffectType**](classendstone_1_1EffectType.md))
 * **handlers\_** ([**endstone::HandlerList**](classendstone_1_1HandlerList.md))
 * **height\_** ([**endstone::Image**](classendstone_1_1Image.md))
-* **hand\_** ([**endstone::PlayerBucketActorEvent**](classendstone_1_1PlayerBucketActorEvent.md), [**endstone::PlayerItemConsumeEvent**](classendstone_1_1PlayerItemConsumeEvent.md))
+* **hand\_** ([**endstone::PlayerBucketActorEvent**](classendstone_1_1PlayerBucketActorEvent.md), [**endstone::PlayerItemConsumeEvent**](classendstone_1_1PlayerItemConsumeEvent.md), [**endstone::PlayerShearActorEvent**](classendstone_1_1PlayerShearActorEvent.md))
 * **Harming** ([**endstone::PotionType**](classendstone_1_1PotionType.md))
 * **Healing** ([**endstone::PotionType**](classendstone_1_1PotionType.md))
 * **hostname\_** ([**endstone::SocketAddress**](classendstone_1_1SocketAddress.md))
@@ -252,7 +252,7 @@
 
 ## i
 
-* **item\_** ([**endstone::ActorPickupItemEvent**](classendstone_1_1ActorPickupItemEvent.md), [**endstone::PlayerArmSwingEvent**](classendstone_1_1PlayerArmSwingEvent.md), [**endstone::PlayerInteractEvent**](classendstone_1_1PlayerInteractEvent.md), [**endstone::PlayerItemConsumeEvent**](classendstone_1_1PlayerItemConsumeEvent.md), [**endstone::PlayerPickupItemEvent**](classendstone_1_1PlayerPickupItemEvent.md), [**endstone::PlayerRiptideEvent**](classendstone_1_1PlayerRiptideEvent.md))
+* **item\_** ([**endstone::ActorPickupItemEvent**](classendstone_1_1ActorPickupItemEvent.md), [**endstone::PlayerArmSwingEvent**](classendstone_1_1PlayerArmSwingEvent.md), [**endstone::PlayerInteractEvent**](classendstone_1_1PlayerInteractEvent.md), [**endstone::PlayerItemConsumeEvent**](classendstone_1_1PlayerItemConsumeEvent.md), [**endstone::PlayerPickupItemEvent**](classendstone_1_1PlayerPickupItemEvent.md), [**endstone::PlayerRiptideEvent**](classendstone_1_1PlayerRiptideEvent.md), [**endstone::PlayerShearActorEvent**](classendstone_1_1PlayerShearActorEvent.md))
 * **IceBomb** ([**endstone::ActorType**](classendstone_1_1ActorType.md))
 * **IronGolem** ([**endstone::ActorType**](classendstone_1_1ActorType.md))
 * **Item** ([**endstone::ActorType**](classendstone_1_1ActorType.md))

@@ -1229,6 +1229,8 @@
         </childnode>
         <childnode refid="41" relation="include">
         </childnode>
+        <childnode refid="42" relation="include">
+        </childnode>
       </node>
       <node id="14">
         <label>include/endstone/event/player/player_exp_change_event.h</label>
@@ -1321,6 +1323,10 @@
         <link refid="player__riptide__event_8h_source"/>
       </node>
       <node id="37">
+        <label>include/endstone/event/player/player_shear_actor_event.h</label>
+        <link refid="player__shear__actor__event_8h_source"/>
+      </node>
+      <node id="38">
         <label>include/endstone/event/player/player_skin_change_event.h</label>
         <link refid="player__skin__change__event_8h_source"/>
       </node>
@@ -1330,19 +1336,19 @@
         <childnode refid="29" relation="include">
         </childnode>
       </node>
-      <node id="38">
+      <node id="39">
         <label>include/endstone/event/player/player_toggle_crawl_event.h</label>
         <link refid="player__toggle__crawl__event_8h_source"/>
       </node>
-      <node id="39">
+      <node id="40">
         <label>include/endstone/event/player/player_toggle_flight_event.h</label>
         <link refid="player__toggle__flight__event_8h_source"/>
       </node>
-      <node id="40">
+      <node id="41">
         <label>include/endstone/event/player/player_toggle_sneak_event.h</label>
         <link refid="player__toggle__sneak__event_8h_source"/>
       </node>
-      <node id="41">
+      <node id="42">
         <label>include/endstone/event/player/player_toggle_sprint_event.h</label>
         <link refid="player__toggle__sprint__event_8h_source"/>
       </node>

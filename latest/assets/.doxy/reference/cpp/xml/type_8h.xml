@@ -106,6 +106,10 @@
         <label>include/endstone/event/player/player_riptide_event.h</label>
         <link refid="player__riptide__event_8h_source"/>
       </node>
+      <node id="28">
+        <label>include/endstone/event/player/player_shear_actor_event.h</label>
+        <link refid="player__shear__actor__event_8h_source"/>
+      </node>
       <node id="16">
         <label>include/endstone/event/weather/thunder_change_event.h</label>
         <link refid="thunder__change__event_8h_source"/>
@@ -149,10 +153,12 @@
         </childnode>
         <childnode refid="28" relation="include">
         </childnode>
+        <childnode refid="29" relation="include">
+        </childnode>
         <childnode refid="8" relation="include">
         </childnode>
       </node>
-      <node id="28">
+      <node id="29">
         <label>include/endstone/inventory/recipe.h</label>
         <link refid="recipe_8h_source"/>
       </node>
@@ -178,19 +184,19 @@
         <childnode refid="3" relation="include">
         </childnode>
       </node>
-      <node id="30">
+      <node id="31">
         <label>include/endstone/nbt/compound.h</label>
         <link refid="compound_8h_source"/>
         <childnode refid="3" relation="include">
         </childnode>
       </node>
-      <node id="29">
+      <node id="30">
         <label>include/endstone/nbt/io.h</label>
         <link refid="io_8h_source"/>
         <childnode refid="3" relation="include">
         </childnode>
       </node>
-      <node id="31">
+      <node id="32">
         <label>include/endstone/nbt/list.h</label>
         <link refid="list_8h_source"/>
         <childnode refid="3" relation="include">
@@ -201,7 +207,7 @@
         <link refid="tag_8h_source"/>
         <childnode refid="4" relation="include">
         </childnode>
-        <childnode refid="29" relation="include">
+        <childnode refid="30" relation="include">
         </childnode>
       </node>
       <node id="1">
@@ -209,16 +215,16 @@
         <link refid="type_8h"/>
         <childnode refid="2" relation="include">
         </childnode>
-        <childnode refid="30" relation="include">
-        </childnode>
         <childnode refid="31" relation="include">
-        </childnode>
-        <childnode refid="3" relation="include">
         </childnode>
         <childnode refid="32" relation="include">
         </childnode>
+        <childnode refid="3" relation="include">
+        </childnode>
+        <childnode refid="33" relation="include">
+        </childnode>
       </node>
-      <node id="32">
+      <node id="33">
         <label>include/endstone/nbt/value.h</label>
         <link refid="value_8h_source"/>
         <childnode refid="3" relation="include">

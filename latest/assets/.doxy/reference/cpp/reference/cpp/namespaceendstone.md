@@ -198,6 +198,7 @@ _Represents a button with text and an optional icon._
 | class | [**PlayerRecipeBookSettingsChangeEvent**](classendstone_1_1PlayerRecipeBookSettingsChangeEvent.md) <br>_Called when a player changes recipe book settings._  |
 | class | [**PlayerRespawnEvent**](classendstone_1_1PlayerRespawnEvent.md) <br>_Called when a player respawns._  |
 | class | [**PlayerRiptideEvent**](classendstone_1_1PlayerRiptideEvent.md) <br>_Called when a player activates the riptide enchantment, using their trident to propel them through the air._  |
+| class | [**PlayerShearActorEvent**](classendstone_1_1PlayerShearActorEvent.md) <br>_Called when a player shears an_ [_**Actor**_](classendstone_1_1Actor.md) _._ |
 | class | [**PlayerSkinChangeEvent**](classendstone_1_1PlayerSkinChangeEvent.md) <br>_Called when a player changes their skin._  |
 | class | [**PlayerTeleportEvent**](classendstone_1_1PlayerTeleportEvent.md) <br>_Called when a player is teleported from one location to another._  |
 | class | [**PlayerToggleCrawlEvent**](classendstone_1_1PlayerToggleCrawlEvent.md) <br>_Called when a player toggles their crawling state._  |

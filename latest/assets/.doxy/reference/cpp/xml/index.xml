@@ -2338,6 +2338,16 @@
     <member refid="classendstone_1_1PlayerRiptideEvent_1ae91951af777fa806cf92a42b2f20a49a" kind="function"><name>PlayerRiptideEvent</name></member>
     <member refid="classendstone_1_1PlayerRiptideEvent_1a06eaa93f42fea6e7eea2141a1d2670eb" kind="function"><name>getItem</name></member>
   </compound>
+  <compound refid="classendstone_1_1PlayerShearActorEvent" kind="class"><name>endstone::PlayerShearActorEvent</name>
+    <member refid="classendstone_1_1PlayerShearActorEvent_1a171fe86a126769e52ba6d6953c58439c" kind="variable"><name>actor_</name></member>
+    <member refid="classendstone_1_1PlayerShearActorEvent_1a3648d77d96deab524b8722b40cd0b720" kind="variable"><name>item_</name></member>
+    <member refid="classendstone_1_1PlayerShearActorEvent_1a429407c42c281bc76e28845a22995cf9" kind="variable"><name>hand_</name></member>
+    <member refid="classendstone_1_1PlayerShearActorEvent_1a48b5bd6cd95c52845ebe298c943091fa" kind="function"><name>ENDSTONE_EVENT</name></member>
+    <member refid="classendstone_1_1PlayerShearActorEvent_1a885245dd2a35805aff4a3e2713b5e5d7" kind="function"><name>PlayerShearActorEvent</name></member>
+    <member refid="classendstone_1_1PlayerShearActorEvent_1aa735d25ec83a9cbc0aa05f336c62df37" kind="function"><name>getActor</name></member>
+    <member refid="classendstone_1_1PlayerShearActorEvent_1a6fbcbcb55e30cd8e9bba8dd68f330b8e" kind="function"><name>getItem</name></member>
+    <member refid="classendstone_1_1PlayerShearActorEvent_1a333ae22f12bd824a8b06ee0f187e512e" kind="function"><name>getHand</name></member>
+  </compound>
   <compound refid="classendstone_1_1PlayerSkinChangeEvent" kind="class"><name>endstone::PlayerSkinChangeEvent</name>
     <member refid="classendstone_1_1PlayerSkinChangeEvent_1a57dfa1e3c9e9fe052d06911c8665dae2" kind="variable"><name>new_skin_</name></member>
     <member refid="classendstone_1_1PlayerSkinChangeEvent_1a1d15c271ad8e7efc269f237d5f3e06d4" kind="variable"><name>message_</name></member>
@@ -3474,6 +3484,8 @@
   <compound refid="player__respawn__event_8h" kind="file"><name>player_respawn_event.h</name>
   </compound>
   <compound refid="player__riptide__event_8h" kind="file"><name>player_riptide_event.h</name>
+  </compound>
+  <compound refid="player__shear__actor__event_8h" kind="file"><name>player_shear_actor_event.h</name>
   </compound>
   <compound refid="player__skin__change__event_8h" kind="file"><name>player_skin_change_event.h</name>
   </compound>
