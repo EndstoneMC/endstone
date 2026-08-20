@@ -17,10 +17,27 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/event/player/player_bed_leave_event.h" line="41" column="11" bodyfile="include/endstone/event/player/player_bed_leave_event.h" bodystart="41" bodyend="-1"/>
+        <location file="include/endstone/event/player/player_bed_leave_event.h" line="40" column="11" bodyfile="include/endstone/event/player/player_bed_leave_event.h" bodystart="40" bodyend="-1"/>
       </memberdef>
     </sectiondef>
     <sectiondef kind="public-func">
+      <memberdef kind="function" id="classendstone_1_1PlayerBedLeaveEvent_1a715bebeab0b84c668015cc735f1d0f90" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>endstone::PlayerBedLeaveEvent::ENDSTONE_EVENT</definition>
+        <argsstring>(PlayerBedLeaveEvent)</argsstring>
+        <name>ENDSTONE_EVENT</name>
+        <qualifiedname>endstone::PlayerBedLeaveEvent::ENDSTONE_EVENT</qualifiedname>
+        <param>
+          <type><ref refid="classendstone_1_1PlayerBedLeaveEvent" kindref="compound">PlayerBedLeaveEvent</ref></type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/event/player/player_bed_leave_event.h" line="28" column="5"/>
+      </memberdef>
       <memberdef kind="function" id="classendstone_1_1PlayerBedLeaveEvent_1afe89ccfa710170e26ae2d41501a689cc" prot="public" static="no" const="no" explicit="yes" inline="yes" virt="non-virtual">
         <type></type>
         <definition>endstone::PlayerBedLeaveEvent::PlayerBedLeaveEvent</definition>
@@ -41,7 +58,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/event/player/player_bed_leave_event.h" line="30" column="14" bodyfile="include/endstone/event/player/player_bed_leave_event.h" bodystart="30" bodyend="30"/>
+        <location file="include/endstone/event/player/player_bed_leave_event.h" line="29" column="14" bodyfile="include/endstone/event/player/player_bed_leave_event.h" bodystart="29" bodyend="29"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1PlayerBedLeaveEvent_1a1961df4cabf3fb7a281c01379ce1cbf5" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>
@@ -55,7 +72,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/event/player/player_bed_leave_event.h" line="31" column="5"/>
+        <location file="include/endstone/event/player/player_bed_leave_event.h" line="30" column="5"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1PlayerBedLeaveEvent_1aca06f33b1924e60bf91cd279c0389ab3" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
         <type><ref refid="classendstone_1_1Block" kindref="compound">Block</ref> &amp;</type>
@@ -73,7 +90,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/event/player/player_bed_leave_event.h" line="38" column="12" bodyfile="include/endstone/event/player/player_bed_leave_event.h" bodystart="38" bodyend="38"/>
+        <location file="include/endstone/event/player/player_bed_leave_event.h" line="37" column="12" bodyfile="include/endstone/event/player/player_bed_leave_event.h" bodystart="37" bodyend="37"/>
       </memberdef>
     </sectiondef>
     <briefdescription>
@@ -124,9 +141,10 @@
         </childnode>
       </node>
     </collaborationgraph>
-    <location file="include/endstone/event/player/player_bed_leave_event.h" line="26" column="1" bodyfile="include/endstone/event/player/player_bed_leave_event.h" bodystart="26" bodyend="42"/>
+    <location file="include/endstone/event/player/player_bed_leave_event.h" line="26" column="1" bodyfile="include/endstone/event/player/player_bed_leave_event.h" bodystart="26" bodyend="41"/>
     <listofallmembers>
       <member refid="classendstone_1_1PlayerBedLeaveEvent_1a1efc7ba2b5c6f04bdcd70a4c84dd0966" prot="private" virt="non-virtual"><scope>endstone::PlayerBedLeaveEvent</scope><name>bed_</name></member>
+      <member refid="classendstone_1_1PlayerBedLeaveEvent_1a715bebeab0b84c668015cc735f1d0f90" prot="public" virt="non-virtual"><scope>endstone::PlayerBedLeaveEvent</scope><name>ENDSTONE_EVENT</name></member>
       <member refid="classendstone_1_1Event_1a28cca8d74920493b449d035540acf023" prot="public" virt="non-virtual"><scope>endstone::PlayerBedLeaveEvent</scope><name>Event</name></member>
       <member refid="classendstone_1_1Event_1a7199136ebb40e1441bc61e29f83c3cad" prot="public" virt="non-virtual"><scope>endstone::PlayerBedLeaveEvent</scope><name>Event</name></member>
       <member refid="classendstone_1_1Event_1ad20bafd16e0671578e37390b95e5104c" prot="public" virt="non-virtual"><scope>endstone::PlayerBedLeaveEvent</scope><name>Event</name></member>

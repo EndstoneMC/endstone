@@ -17,10 +17,27 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/event/player/player_drop_item_event.h" line="42" column="15" bodyfile="include/endstone/event/player/player_drop_item_event.h" bodystart="42" bodyend="-1"/>
+        <location file="include/endstone/event/player/player_drop_item_event.h" line="41" column="15" bodyfile="include/endstone/event/player/player_drop_item_event.h" bodystart="41" bodyend="-1"/>
       </memberdef>
     </sectiondef>
     <sectiondef kind="public-func">
+      <memberdef kind="function" id="classendstone_1_1PlayerDropItemEvent_1abdb5218e8beba230340ec6bf0e5f4dc2" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>endstone::PlayerDropItemEvent::ENDSTONE_EVENT</definition>
+        <argsstring>(PlayerDropItemEvent)</argsstring>
+        <name>ENDSTONE_EVENT</name>
+        <qualifiedname>endstone::PlayerDropItemEvent::ENDSTONE_EVENT</qualifiedname>
+        <param>
+          <type><ref refid="classendstone_1_1PlayerDropItemEvent" kindref="compound">PlayerDropItemEvent</ref></type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/event/player/player_drop_item_event.h" line="30" column="5"/>
+      </memberdef>
       <memberdef kind="function" id="classendstone_1_1PlayerDropItemEvent_1a91db643cdc05fbe3b16e2278ca9d6fb2" prot="public" static="no" const="no" explicit="yes" inline="yes" virt="non-virtual">
         <type></type>
         <definition>endstone::PlayerDropItemEvent::PlayerDropItemEvent</definition>
@@ -41,7 +58,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/event/player/player_drop_item_event.h" line="32" column="14" bodyfile="include/endstone/event/player/player_drop_item_event.h" bodystart="32" bodyend="32"/>
+        <location file="include/endstone/event/player/player_drop_item_event.h" line="31" column="14" bodyfile="include/endstone/event/player/player_drop_item_event.h" bodystart="31" bodyend="31"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1PlayerDropItemEvent_1a40ad469ac2c8a5035ba526833ca3c638" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
         <type><ref refid="classendstone_1_1Identifier" kindref="compound">const</ref> <ref refid="classendstone_1_1ItemStack" kindref="compound">ItemStack</ref> &amp;</type>
@@ -59,7 +76,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/event/player/player_drop_item_event.h" line="39" column="22" bodyfile="include/endstone/event/player/player_drop_item_event.h" bodystart="39" bodyend="39"/>
+        <location file="include/endstone/event/player/player_drop_item_event.h" line="38" column="22" bodyfile="include/endstone/event/player/player_drop_item_event.h" bodystart="38" bodyend="38"/>
       </memberdef>
     </sectiondef>
     <briefdescription>
@@ -134,10 +151,11 @@
         </childnode>
       </node>
     </collaborationgraph>
-    <location file="include/endstone/event/player/player_drop_item_event.h" line="28" column="1" bodyfile="include/endstone/event/player/player_drop_item_event.h" bodystart="28" bodyend="43"/>
+    <location file="include/endstone/event/player/player_drop_item_event.h" line="28" column="1" bodyfile="include/endstone/event/player/player_drop_item_event.h" bodystart="28" bodyend="42"/>
     <listofallmembers>
       <member refid="classendstone_1_1Cancellable_1a3512b47db69c6001f5c0450051308327" prot="public" virt="virtual"><scope>endstone::PlayerDropItemEvent</scope><name>cancel</name></member>
       <member refid="classendstone_1_1PlayerDropItemEvent_1aa96b55c52eff51ed96cd0bf4d989efb8" prot="private" virt="non-virtual"><scope>endstone::PlayerDropItemEvent</scope><name>drop_</name></member>
+      <member refid="classendstone_1_1PlayerDropItemEvent_1abdb5218e8beba230340ec6bf0e5f4dc2" prot="public" virt="non-virtual"><scope>endstone::PlayerDropItemEvent</scope><name>ENDSTONE_EVENT</name></member>
       <member refid="classendstone_1_1Event_1a28cca8d74920493b449d035540acf023" prot="public" virt="non-virtual"><scope>endstone::PlayerDropItemEvent</scope><name>Event</name></member>
       <member refid="classendstone_1_1Event_1a7199136ebb40e1441bc61e29f83c3cad" prot="public" virt="non-virtual"><scope>endstone::PlayerDropItemEvent</scope><name>Event</name></member>
       <member refid="classendstone_1_1Event_1ad20bafd16e0671578e37390b95e5104c" prot="public" virt="non-virtual"><scope>endstone::PlayerDropItemEvent</scope><name>Event</name></member>

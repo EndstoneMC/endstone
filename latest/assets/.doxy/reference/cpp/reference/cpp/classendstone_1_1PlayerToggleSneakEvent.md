@@ -93,6 +93,7 @@ Inherits the following classes: [endstone::PlayerEvent](classendstone_1_1PlayerE
 
 | Type | Name |
 | ---: | :--- |
+|   | [**ENDSTONE\_EVENT**](#function-endstone_event) ([**PlayerToggleSneakEvent**](classendstone_1_1PlayerToggleSneakEvent.md)) <br> |
 |   | [**PlayerToggleSneakEvent**](#function-playertogglesneakevent) ([**const**](classendstone_1_1Identifier.md) [**NotNull**](classendstone_1_1NotNull.md)&lt; [**Player**](classendstone_1_1Player.md) &gt; & player, [**bool**](classendstone_1_1Identifier.md) sneaking) <br> |
 |  [**bool**](classendstone_1_1Identifier.md) | [**isSneaking**](#function-issneaking) () const<br>_Returns whether the player is now sneaking or not._  |
 
@@ -211,6 +212,21 @@ See [endstone::PlayerEvent](classendstone_1_1PlayerEvent.md)
 
 ## Public Functions Documentation
 
+
+
+
+### function ENDSTONE\_EVENT 
+
+```C++
+endstone::PlayerToggleSneakEvent::ENDSTONE_EVENT (
+    PlayerToggleSneakEvent
+) 
+```
+
+
+
+
+<hr>
 
 
 

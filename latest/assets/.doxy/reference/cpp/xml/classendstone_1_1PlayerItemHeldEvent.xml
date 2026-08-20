@@ -17,7 +17,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/event/player/player_item_held_event.h" line="48" column="9" bodyfile="include/endstone/event/player/player_item_held_event.h" bodystart="48" bodyend="-1"/>
+        <location file="include/endstone/event/player/player_item_held_event.h" line="47" column="9" bodyfile="include/endstone/event/player/player_item_held_event.h" bodystart="47" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="classendstone_1_1PlayerItemHeldEvent_1a5082d2da1001d82b0c9a6dcfb2844997" prot="private" static="no" mutable="no">
         <type><ref refid="classendstone_1_1Identifier" kindref="compound">int</ref></type>
@@ -31,10 +31,27 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/event/player/player_item_held_event.h" line="49" column="9" bodyfile="include/endstone/event/player/player_item_held_event.h" bodystart="49" bodyend="-1"/>
+        <location file="include/endstone/event/player/player_item_held_event.h" line="48" column="9" bodyfile="include/endstone/event/player/player_item_held_event.h" bodystart="48" bodyend="-1"/>
       </memberdef>
     </sectiondef>
     <sectiondef kind="public-func">
+      <memberdef kind="function" id="classendstone_1_1PlayerItemHeldEvent_1a007266db41494f53f3c2756eba70bc3e" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>endstone::PlayerItemHeldEvent::ENDSTONE_EVENT</definition>
+        <argsstring>(PlayerItemHeldEvent)</argsstring>
+        <name>ENDSTONE_EVENT</name>
+        <qualifiedname>endstone::PlayerItemHeldEvent::ENDSTONE_EVENT</qualifiedname>
+        <param>
+          <type><ref refid="classendstone_1_1PlayerItemHeldEvent" kindref="compound">PlayerItemHeldEvent</ref></type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/event/player/player_item_held_event.h" line="26" column="5"/>
+      </memberdef>
       <memberdef kind="function" id="classendstone_1_1PlayerItemHeldEvent_1adf6a10c28c1482c451107c0243b95cfc" prot="public" static="no" const="no" explicit="yes" inline="yes" virt="non-virtual">
         <type></type>
         <definition>endstone::PlayerItemHeldEvent::PlayerItemHeldEvent</definition>
@@ -59,7 +76,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/event/player/player_item_held_event.h" line="28" column="14" bodyfile="include/endstone/event/player/player_item_held_event.h" bodystart="28" bodyend="31"/>
+        <location file="include/endstone/event/player/player_item_held_event.h" line="27" column="14" bodyfile="include/endstone/event/player/player_item_held_event.h" bodystart="27" bodyend="30"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1PlayerItemHeldEvent_1afd86e8a183c753785358dc92841d4d78" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
         <type><ref refid="classendstone_1_1Identifier" kindref="compound">int</ref></type>
@@ -77,7 +94,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/event/player/player_item_held_event.h" line="38" column="10" bodyfile="include/endstone/event/player/player_item_held_event.h" bodystart="38" bodyend="38"/>
+        <location file="include/endstone/event/player/player_item_held_event.h" line="37" column="10" bodyfile="include/endstone/event/player/player_item_held_event.h" bodystart="37" bodyend="37"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1PlayerItemHeldEvent_1a73d70b44a39f70b1a253d4f4ff3a4b7f" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
         <type><ref refid="classendstone_1_1Identifier" kindref="compound">int</ref></type>
@@ -95,7 +112,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/event/player/player_item_held_event.h" line="45" column="10" bodyfile="include/endstone/event/player/player_item_held_event.h" bodystart="45" bodyend="45"/>
+        <location file="include/endstone/event/player/player_item_held_event.h" line="44" column="10" bodyfile="include/endstone/event/player/player_item_held_event.h" bodystart="44" bodyend="44"/>
       </memberdef>
     </sectiondef>
     <briefdescription>
@@ -170,10 +187,11 @@
         </childnode>
       </node>
     </collaborationgraph>
-    <location file="include/endstone/event/player/player_item_held_event.h" line="24" column="1" bodyfile="include/endstone/event/player/player_item_held_event.h" bodystart="24" bodyend="50"/>
+    <location file="include/endstone/event/player/player_item_held_event.h" line="24" column="1" bodyfile="include/endstone/event/player/player_item_held_event.h" bodystart="24" bodyend="49"/>
     <listofallmembers>
       <member refid="classendstone_1_1Cancellable_1a3512b47db69c6001f5c0450051308327" prot="public" virt="virtual"><scope>endstone::PlayerItemHeldEvent</scope><name>cancel</name></member>
       <member refid="classendstone_1_1PlayerItemHeldEvent_1a5082d2da1001d82b0c9a6dcfb2844997" prot="private" virt="non-virtual"><scope>endstone::PlayerItemHeldEvent</scope><name>current_</name></member>
+      <member refid="classendstone_1_1PlayerItemHeldEvent_1a007266db41494f53f3c2756eba70bc3e" prot="public" virt="non-virtual"><scope>endstone::PlayerItemHeldEvent</scope><name>ENDSTONE_EVENT</name></member>
       <member refid="classendstone_1_1Event_1a28cca8d74920493b449d035540acf023" prot="public" virt="non-virtual"><scope>endstone::PlayerItemHeldEvent</scope><name>Event</name></member>
       <member refid="classendstone_1_1Event_1a7199136ebb40e1441bc61e29f83c3cad" prot="public" virt="non-virtual"><scope>endstone::PlayerItemHeldEvent</scope><name>Event</name></member>
       <member refid="classendstone_1_1Event_1ad20bafd16e0671578e37390b95e5104c" prot="public" virt="non-virtual"><scope>endstone::PlayerItemHeldEvent</scope><name>Event</name></member>

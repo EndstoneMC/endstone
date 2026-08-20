@@ -93,6 +93,7 @@ Inherits the following classes: [endstone::PlayerEvent](classendstone_1_1PlayerE
 
 | Type | Name |
 | ---: | :--- |
+|   | [**ENDSTONE\_EVENT**](#function-endstone_event) ([**PlayerToggleSprintEvent**](classendstone_1_1PlayerToggleSprintEvent.md)) <br> |
 |   | [**PlayerToggleSprintEvent**](#function-playertogglesprintevent) ([**const**](classendstone_1_1Identifier.md) [**NotNull**](classendstone_1_1NotNull.md)&lt; [**Player**](classendstone_1_1Player.md) &gt; & player, [**bool**](classendstone_1_1Identifier.md) sprinting) <br> |
 |  [**bool**](classendstone_1_1Identifier.md) | [**isSprinting**](#function-issprinting) () const<br>_Returns whether the player is now sprinting or not._  |
 
@@ -211,6 +212,21 @@ See [endstone::PlayerEvent](classendstone_1_1PlayerEvent.md)
 
 ## Public Functions Documentation
 
+
+
+
+### function ENDSTONE\_EVENT 
+
+```C++
+endstone::PlayerToggleSprintEvent::ENDSTONE_EVENT (
+    PlayerToggleSprintEvent
+) 
+```
+
+
+
+
+<hr>
 
 
 

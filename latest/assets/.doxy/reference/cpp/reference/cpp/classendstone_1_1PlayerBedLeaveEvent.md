@@ -93,6 +93,7 @@ Inherits the following classes: [endstone::PlayerEvent](classendstone_1_1PlayerE
 
 | Type | Name |
 | ---: | :--- |
+|   | [**ENDSTONE\_EVENT**](#function-endstone_event) ([**PlayerBedLeaveEvent**](classendstone_1_1PlayerBedLeaveEvent.md)) <br> |
 |   | [**PlayerBedLeaveEvent**](#function-playerbedleaveevent) ([**const**](classendstone_1_1Identifier.md) [**NotNull**](classendstone_1_1NotNull.md)&lt; [**Player**](classendstone_1_1Player.md) &gt; & player, [**Block**](classendstone_1_1Block.md) & bed) <br> |
 |  [**Block**](classendstone_1_1Block.md) & | [**getBed**](#function-getbed) () const<br>_Returns the bed block involved in this event._  |
 |   | [**~PlayerBedLeaveEvent**](#function-playerbedleaveevent) () override<br> |
@@ -212,6 +213,21 @@ See [endstone::PlayerEvent](classendstone_1_1PlayerEvent.md)
 
 ## Public Functions Documentation
 
+
+
+
+### function ENDSTONE\_EVENT 
+
+```C++
+endstone::PlayerBedLeaveEvent::ENDSTONE_EVENT (
+    PlayerBedLeaveEvent
+) 
+```
+
+
+
+
+<hr>
 
 
 

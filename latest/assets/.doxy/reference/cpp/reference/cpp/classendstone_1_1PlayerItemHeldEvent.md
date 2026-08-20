@@ -93,6 +93,7 @@ Inherits the following classes: [endstone::Cancellable](classendstone_1_1Cancell
 
 | Type | Name |
 | ---: | :--- |
+|   | [**ENDSTONE\_EVENT**](#function-endstone_event) ([**PlayerItemHeldEvent**](classendstone_1_1PlayerItemHeldEvent.md)) <br> |
 |   | [**PlayerItemHeldEvent**](#function-playeritemheldevent) ([**const**](classendstone_1_1Identifier.md) [**NotNull**](classendstone_1_1NotNull.md)&lt; [**Player**](classendstone_1_1Player.md) &gt; & player, [**const**](classendstone_1_1Identifier.md) [**int**](classendstone_1_1Identifier.md) previous, [**const**](classendstone_1_1Identifier.md) [**int**](classendstone_1_1Identifier.md) current) <br> |
 |  [**int**](classendstone_1_1Identifier.md) | [**getNewSlot**](#function-getnewslot) () const<br>_Gets the new held slot index._  |
 |  [**int**](classendstone_1_1Identifier.md) | [**getPreviousSlot**](#function-getpreviousslot) () const<br>_Gets the previous held slot index._  |
@@ -201,6 +202,21 @@ See [endstone::ICancellable](classendstone_1_1ICancellable.md)
 
 ## Public Functions Documentation
 
+
+
+
+### function ENDSTONE\_EVENT 
+
+```C++
+endstone::PlayerItemHeldEvent::ENDSTONE_EVENT (
+    PlayerItemHeldEvent
+) 
+```
+
+
+
+
+<hr>
 
 
 

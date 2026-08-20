@@ -93,6 +93,7 @@ Inherits the following classes: [endstone::Cancellable](classendstone_1_1Cancell
 
 | Type | Name |
 | ---: | :--- |
+|   | [**ENDSTONE\_EVENT**](#function-endstone_event) ([**PlayerItemConsumeEvent**](classendstone_1_1PlayerItemConsumeEvent.md)) <br> |
 |   | [**PlayerItemConsumeEvent**](#function-playeritemconsumeevent) ([**const**](classendstone_1_1Identifier.md) [**NotNull**](classendstone_1_1NotNull.md)&lt; [**Player**](classendstone_1_1Player.md) &gt; & player, [**ItemStack**](classendstone_1_1ItemStack.md) item, [**EquipmentSlot**](namespaceendstone.md#enum-equipmentslot) hand) <br> |
 |  [**EquipmentSlot**](namespaceendstone.md#enum-equipmentslot) | [**getHand**](#function-gethand) () const<br>_Get the hand used to consume the item._  |
 |  [**const**](classendstone_1_1Identifier.md) [**ItemStack**](classendstone_1_1ItemStack.md) & | [**getItem**](#function-getitem) () const<br>_Gets the item that is being consumed._  |
@@ -222,6 +223,21 @@ If the event is cancelled the effect will not be applied and the item will not b
     
 ## Public Functions Documentation
 
+
+
+
+### function ENDSTONE\_EVENT 
+
+```C++
+endstone::PlayerItemConsumeEvent::ENDSTONE_EVENT (
+    PlayerItemConsumeEvent
+) 
+```
+
+
+
+
+<hr>
 
 
 

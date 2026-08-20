@@ -17,10 +17,27 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/event/player/player_toggle_sneak_event.h" line="38" column="10" bodyfile="include/endstone/event/player/player_toggle_sneak_event.h" bodystart="38" bodyend="-1"/>
+        <location file="include/endstone/event/player/player_toggle_sneak_event.h" line="37" column="10" bodyfile="include/endstone/event/player/player_toggle_sneak_event.h" bodystart="37" bodyend="-1"/>
       </memberdef>
     </sectiondef>
     <sectiondef kind="public-func">
+      <memberdef kind="function" id="classendstone_1_1PlayerToggleSneakEvent_1a30fad6844ddf21a16f43f75186a2a163" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>endstone::PlayerToggleSneakEvent::ENDSTONE_EVENT</definition>
+        <argsstring>(PlayerToggleSneakEvent)</argsstring>
+        <name>ENDSTONE_EVENT</name>
+        <qualifiedname>endstone::PlayerToggleSneakEvent::ENDSTONE_EVENT</qualifiedname>
+        <param>
+          <type><ref refid="classendstone_1_1PlayerToggleSneakEvent" kindref="compound">PlayerToggleSneakEvent</ref></type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/event/player/player_toggle_sneak_event.h" line="26" column="5"/>
+      </memberdef>
       <memberdef kind="function" id="classendstone_1_1PlayerToggleSneakEvent_1a8d9c821203ce2269d19327946f71ee72" prot="public" static="no" const="no" explicit="yes" inline="yes" virt="non-virtual">
         <type></type>
         <definition>endstone::PlayerToggleSneakEvent::PlayerToggleSneakEvent</definition>
@@ -41,7 +58,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/event/player/player_toggle_sneak_event.h" line="28" column="14" bodyfile="include/endstone/event/player/player_toggle_sneak_event.h" bodystart="28" bodyend="28"/>
+        <location file="include/endstone/event/player/player_toggle_sneak_event.h" line="27" column="14" bodyfile="include/endstone/event/player/player_toggle_sneak_event.h" bodystart="27" bodyend="27"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1PlayerToggleSneakEvent_1ae261eda7c39cc66a11b3477582c7a045" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
         <type><ref refid="classendstone_1_1Identifier" kindref="compound">bool</ref></type>
@@ -59,7 +76,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/event/player/player_toggle_sneak_event.h" line="35" column="11" bodyfile="include/endstone/event/player/player_toggle_sneak_event.h" bodystart="35" bodyend="35"/>
+        <location file="include/endstone/event/player/player_toggle_sneak_event.h" line="34" column="11" bodyfile="include/endstone/event/player/player_toggle_sneak_event.h" bodystart="34" bodyend="34"/>
       </memberdef>
     </sectiondef>
     <briefdescription>
@@ -110,8 +127,9 @@
         </childnode>
       </node>
     </collaborationgraph>
-    <location file="include/endstone/event/player/player_toggle_sneak_event.h" line="24" column="1" bodyfile="include/endstone/event/player/player_toggle_sneak_event.h" bodystart="24" bodyend="39"/>
+    <location file="include/endstone/event/player/player_toggle_sneak_event.h" line="24" column="1" bodyfile="include/endstone/event/player/player_toggle_sneak_event.h" bodystart="24" bodyend="38"/>
     <listofallmembers>
+      <member refid="classendstone_1_1PlayerToggleSneakEvent_1a30fad6844ddf21a16f43f75186a2a163" prot="public" virt="non-virtual"><scope>endstone::PlayerToggleSneakEvent</scope><name>ENDSTONE_EVENT</name></member>
       <member refid="classendstone_1_1Event_1a28cca8d74920493b449d035540acf023" prot="public" virt="non-virtual"><scope>endstone::PlayerToggleSneakEvent</scope><name>Event</name></member>
       <member refid="classendstone_1_1Event_1a7199136ebb40e1441bc61e29f83c3cad" prot="public" virt="non-virtual"><scope>endstone::PlayerToggleSneakEvent</scope><name>Event</name></member>
       <member refid="classendstone_1_1Event_1ad20bafd16e0671578e37390b95e5104c" prot="public" virt="non-virtual"><scope>endstone::PlayerToggleSneakEvent</scope><name>Event</name></member>

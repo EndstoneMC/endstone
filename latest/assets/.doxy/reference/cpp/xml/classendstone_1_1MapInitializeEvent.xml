@@ -17,10 +17,27 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/event/server/map_initialize_event.h" line="42" column="13" bodyfile="include/endstone/event/server/map_initialize_event.h" bodystart="42" bodyend="-1"/>
+        <location file="include/endstone/event/server/map_initialize_event.h" line="41" column="13" bodyfile="include/endstone/event/server/map_initialize_event.h" bodystart="41" bodyend="-1"/>
       </memberdef>
     </sectiondef>
     <sectiondef kind="public-func">
+      <memberdef kind="function" id="classendstone_1_1MapInitializeEvent_1a78235ba3056e04850b40909b8a36a8f3" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>endstone::MapInitializeEvent::ENDSTONE_EVENT</definition>
+        <argsstring>(MapInitializeEvent)</argsstring>
+        <name>ENDSTONE_EVENT</name>
+        <qualifiedname>endstone::MapInitializeEvent::ENDSTONE_EVENT</qualifiedname>
+        <param>
+          <type><ref refid="classendstone_1_1MapInitializeEvent" kindref="compound">MapInitializeEvent</ref></type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/event/server/map_initialize_event.h" line="30" column="5"/>
+      </memberdef>
       <memberdef kind="function" id="classendstone_1_1MapInitializeEvent_1ae3c1caa0f7a0d1fb7987307e6305fa35" prot="public" static="no" const="no" explicit="yes" inline="yes" virt="non-virtual">
         <type></type>
         <definition>endstone::MapInitializeEvent::MapInitializeEvent</definition>
@@ -37,7 +54,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/event/server/map_initialize_event.h" line="32" column="14" bodyfile="include/endstone/event/server/map_initialize_event.h" bodystart="32" bodyend="32"/>
+        <location file="include/endstone/event/server/map_initialize_event.h" line="31" column="14" bodyfile="include/endstone/event/server/map_initialize_event.h" bodystart="31" bodyend="31"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1MapInitializeEvent_1ab82614a939a5a9a0ec1bd7ed24007994" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
         <type><ref refid="classendstone_1_1MapView" kindref="compound">MapView</ref> &amp;</type>
@@ -55,7 +72,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/event/server/map_initialize_event.h" line="39" column="14" bodyfile="include/endstone/event/server/map_initialize_event.h" bodystart="39" bodyend="39"/>
+        <location file="include/endstone/event/server/map_initialize_event.h" line="38" column="14" bodyfile="include/endstone/event/server/map_initialize_event.h" bodystart="38" bodyend="38"/>
       </memberdef>
     </sectiondef>
     <briefdescription>
@@ -99,8 +116,9 @@
         </childnode>
       </node>
     </collaborationgraph>
-    <location file="include/endstone/event/server/map_initialize_event.h" line="28" column="1" bodyfile="include/endstone/event/server/map_initialize_event.h" bodystart="28" bodyend="43"/>
+    <location file="include/endstone/event/server/map_initialize_event.h" line="28" column="1" bodyfile="include/endstone/event/server/map_initialize_event.h" bodystart="28" bodyend="42"/>
     <listofallmembers>
+      <member refid="classendstone_1_1MapInitializeEvent_1a78235ba3056e04850b40909b8a36a8f3" prot="public" virt="non-virtual"><scope>endstone::MapInitializeEvent</scope><name>ENDSTONE_EVENT</name></member>
       <member refid="classendstone_1_1ServerEvent_1a28cca8d74920493b449d035540acf023" prot="public" virt="non-virtual"><scope>endstone::MapInitializeEvent</scope><name>Event</name></member>
       <member refid="classendstone_1_1ServerEvent_1a7199136ebb40e1441bc61e29f83c3cad" prot="public" virt="non-virtual"><scope>endstone::MapInitializeEvent</scope><name>Event</name></member>
       <member refid="classendstone_1_1ServerEvent_1ad20bafd16e0671578e37390b95e5104c" prot="public" virt="non-virtual"><scope>endstone::MapInitializeEvent</scope><name>Event</name></member>

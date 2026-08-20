@@ -93,6 +93,7 @@ Inherits the following classes: [endstone::ServerEvent](classendstone_1_1ServerE
 
 | Type | Name |
 | ---: | :--- |
+|   | [**ENDSTONE\_EVENT**](#function-endstone_event) ([**MapInitializeEvent**](classendstone_1_1MapInitializeEvent.md)) <br> |
 |   | [**MapInitializeEvent**](#function-mapinitializeevent) ([**MapView**](classendstone_1_1MapView.md) & map) <br> |
 |  [**MapView**](classendstone_1_1MapView.md) & | [**getMap**](#function-getmap) () const<br>_Gets the map initialized in this event._  |
 
@@ -204,6 +205,21 @@ See [endstone::Event](classendstone_1_1Event.md)
 
 ## Public Functions Documentation
 
+
+
+
+### function ENDSTONE\_EVENT 
+
+```C++
+endstone::MapInitializeEvent::ENDSTONE_EVENT (
+    MapInitializeEvent
+) 
+```
+
+
+
+
+<hr>
 
 
 
