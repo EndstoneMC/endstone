@@ -805,13 +805,11 @@ bool EndstonePlayer::handlePacket(Packet &packet)
         const bool input_changed = last_input_ != player_input;
         last_input_ = player_input;
 
-        if (pk.getInput(PlayerAuthInputPacket::InputData::StartSprinting) && !getHandle().isSprinting() &&
-            !getHandle().isInWater()) {
+        if (pk.getInput(PlayerAuthInputPacket::InputData::StartSprinting) && !getHandle().isSprinting()) {
             PlayerToggleSprintEvent e(getSelf(), true);
             getServer().getPluginManager().callEvent(e);
         }
-        if (pk.getInput(PlayerAuthInputPacket::InputData::StopSprinting) && getHandle().isSprinting() &&
-            !getHandle().isInWater()) {
+        if (pk.getInput(PlayerAuthInputPacket::InputData::StopSprinting) && getHandle().isSprinting()) {
             PlayerToggleSprintEvent e(getSelf(), false);
             getServer().getPluginManager().callEvent(e);
         }
