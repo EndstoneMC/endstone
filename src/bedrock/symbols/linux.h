@@ -11,7 +11,7 @@
 
 namespace endstone::runtime {
 
-static constexpr std::array<std::pair<std::string_view, std::size_t>, 66> symbols = {{
+static constexpr std::array<std::pair<std::string_view, std::size_t>, 71> symbols = {{
     {"BlockState::StateListNode::mHead", 245468000},
     {"Enchant::mEnchants", 245294016},
     {"MobEffect::mMobEffects", 245274360},
@@ -22,23 +22,29 @@ static constexpr std::array<std::pair<std::string_view, std::size_t>, 66> symbol
     {"_ZN5Actor9addEffectERK17MobEffectInstance", 180384480},
     // ActorFactory
     {"_ZN12ActorFactory18createSpawnedActorERK25ActorDefinitionIdentifierP5ActorRK4Vec3RK4Vec2", 178030944},
+    // BasePressurePlateBlock
+    {"_ZNK22BasePressurePlateBlock12entityInsideER11BlockSourceRK8BlockPosR5Actor", 200839056},
     // BatchedNetworkPeer
     {"_ZN18BatchedNetworkPeer10sendPacketERKNSt3__112basic_stringIcNS0_11char_traitsIcEENS0_9allocatorIcEEEEN11NetworkPeer11ReliabilityE15Compressibility", 115687712},
     {"_ZN18BatchedNetworkPeer14_receivePacketERNSt3__112basic_stringIcNS0_11char_traitsIcEENS0_9allocatorIcEEEERKNS0_10shared_ptrINS0_6chrono10time_pointINS9_12steady_clockENS9_8durationIxNS0_5ratioILl1ELl1000000000EEEEEEEEE", 115688128},
     // BedrockLog::LogDetails
     {"_ZN10BedrockLog10LogDetails7_log_vaE9LogAreaIDjPKciiS3_P13__va_list_tag", 237069760},
+    // BigDripleafBlock
+    {"_ZNK16BigDripleafBlock12entityInsideER11BlockSourceRK8BlockPosR5Actor", 200651248},
     // BlockDescriptor::ResolveHelper
     {"_ZN15BlockDescriptor13ResolveHelper7resolveEb", 200714528},
     // BlockType
     {"_ZNK9BlockType14spawnResourcesER11BlockSourceRK8BlockPosRK5BlockR7IRandomRK20ResourceDropsContextPK5Actor", 199391376},
+    {"_ZNK9BlockType25shouldTriggerEntityInsideER11BlockSourceRK8BlockPosR5Actor", 199397424},
     {"_ZNK9BlockType25tryGetStateFromLegacyDataEt", 199383024},
     // BlockTypeRegistry
     {"_ZNK17BlockTypeRegistry16forEachBlockTypeEN5brstd12function_refIFbRK9BlockTypeES5_EE", 203856688},
+    // ButtonBlock
+    {"_ZNK11ButtonBlock12entityInsideER11BlockSourceRK8BlockPosR5Actor", 199453088},
+    // CampfireBlock
+    {"_ZNK13CampfireBlock12entityInsideER11BlockSourceRK8BlockPosR5Actor", 199183584},
     // CampfireBlockActor
     {"_ZN18CampfireBlockActor14_finishCookingER11BlockSourcei", 207808544},
-    // CauldronBlock
-    {"_ZNK13CauldronBlock14setLiquidLevelER11BlockSourceRK8BlockPosi18CauldronLiquidType", 199221200},
-    {"_ZNK13CauldronBlock4tickERN11BlockEvents20BlockQueuedTickEventE", 199206576},
     // Command
     {"_ZNK7Command3runERK13CommandOriginR13CommandOutput", 160430576},
     // CommandOriginLoader
@@ -56,10 +62,20 @@ static constexpr std::array<std::pair<std::string_view, std::size_t>, 66> symbol
     {"_ZN25CraftingDataPacketPayload11fromRecipesERK7Recipesb", 134785984},
     // DedicatedServer
     {"_ZN15DedicatedServer5startERKNSt3__112basic_stringIcNS0_11char_traitsIcEENS0_9allocatorIcEEEERKN7Bedrock19ActivationArgumentsE", 71550016},
+    // DetectorRailBlock
+    {"_ZNK17DetectorRailBlock12entityInsideER11BlockSourceRK8BlockPosR5Actor", 199018656},
     // DimensionManager
     {"_ZN16DimensionManager29serverRegisterCustomDimensionENSt3__117basic_string_viewIcNS0_11char_traitsIcEEEERKN3mce4UUIDE", 202063456},
+    // EndPortalBlock
+    {"_ZNK14EndPortalBlock12entityInsideER11BlockSourceRK8BlockPosR5Actor", 198866128},
     // Explosion
     {"_ZN9Explosion7explodeER7IRandom", 202093568},
+    // EyeblossomBlock
+    {"_ZNK15EyeblossomBlock12entityInsideER11BlockSourceRK8BlockPosR5Actor", 198888192},
+    // FireBlock
+    {"_ZNK9FireBlock12entityInsideER11BlockSourceRK8BlockPosR5Actor", 198929888},
+    // FrogSpawnBlock
+    {"_ZNK14FrogSpawnBlock12entityInsideER11BlockSourceRK8BlockPosR5Actor", 198792496},
     // FurnaceBlockActor
     {"_ZN17FurnaceBlockActor15getBurnDurationERK13ItemStackBasef", 207577216},
     // InventoryTransaction
@@ -121,6 +137,8 @@ static constexpr std::array<std::pair<std::string_view, std::size_t>, 66> symbol
     {"_ZN27ServerStandInCauldronSystem10SystemImpl20_checkInsideCauldronER19ActorOwnerComponent", 117992800},
     // WeatherManager
     {"_ZN14WeatherManager13updateWeatherEfifi", 201402304},
+    // WitherRoseBlock
+    {"_ZNK15WitherRoseBlock12entityInsideER11BlockSourceRK8BlockPosR5Actor", 208169232},
 }};
 
 }  // namespace endstone::runtime

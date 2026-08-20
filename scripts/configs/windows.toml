@@ -437,18 +437,6 @@ extra = 0
 pattern = "55 41 57 41 56 41 54 56 57 53 48 81 EC E0 00 00 00 48 8D AC 24 ? ? ? ? 0F 29 7D ? 0F 29 75 ? 48 C7 45 ? ? ? ? ? 48 8B 31"
 
 [[signatures]]
-name = "?setLiquidLevel@CauldronBlock@@QEBAXAEAVBlockSource@@AEBVBlockPos@@HW4CauldronLiquidType@@@Z"
-relative = false
-extra = 0
-pattern = "55 41 57 41 56 41 54 56 57 53 48 83 EC 60 48 8D 6C 24 ? 48 C7 45 ? ? ? ? ? 44 89 CB"
-
-[[signatures]]
-name = "?tick@CauldronBlock@@QEBAXAEAVBlockQueuedTickEvent@BlockEvents@@@Z"
-relative = false
-extra = 0
-pattern = "55 41 57 41 56 41 55 41 54 56 57 53 48 81 EC 98 00 00 00 48 8D AC 24 ? ? ? ? 44 0F 29 45 ? 0F 29 7D ? 0F 29 75 ? 48 C7 45 ? ? ? ? ? 48 89 D3"
-
-[[signatures]]
 name = "?readUserData@Item@@UEBAXAEAVItemStackBase@@AEAVIDataInput@@AEAVReadOnlyBinaryStream@@@Z"
 relative = false
 extra = 0
@@ -892,3 +880,108 @@ extra = 0
 # 4. confirm vs the old named DB (neighbouring slots line up). The thunk's member offset (0x718 in 1.26.32)
 #    is a fragile fallback anchor - prefer the vtable slot, which cross-checks against the neighbours
 pattern = "55 41 57 41 56 56 57 53 48 81 EC ? ? ? ? 48 8D AC 24 80 00 00 00 44 0F 29 95 ? ? ? ? 44 0F 29 8D ? ? ? ? 44 0F 29 85 ? ? ? ? 0F 29 BD ? ? ? ? 0F 29 75 ? 48 C7 45 ? FE FF FF FF 0F 28 F3"
+
+[[signatures]]
+name = "?shouldTriggerEntityInside@BlockType@@UEBA_NAEAVBlockSource@@AEBVBlockPos@@AEAVActor@@@Z"
+relative = false
+extra = 0
+# Native 1.26.40.8 BlockType::shouldTriggerEntityInside prologue, confirmed from the q82 vtable slot.
+pattern = "55 41 57 41 56 41 54 56 57 53 48 81 EC 90 01 00 00 48 8D AC 24 80 00 00 00 48 C7 85 08 01 00 00 FE FF FF FF 48 89 D6 8B 05 ? ? ? ? 8B 15 ? ? ? ? 65 4C 8B 14 25 58 00 00 00 49 8B 14 D2 3B 82 04 00 00 00 0F 8F ? ? ? ? 4C 8B 99 F0 02 00 00 48 8B 81 F8 02 00 00 48 89 C3 4C 29 DB"
+
+[[signatures]]
+name = "?entityInside@BigDripleafBlock@@UEBAXAEAVBlockSource@@AEBVBlockPos@@AEAVActor@@@Z"
+relative = false
+extra = 0
+# Native 1.26.40.8 BigDripleafBlock::entityInside prologue, confirmed from its vtable slot.
+pattern = "56 57 53 48 83 EC 30 4C 89 CB 4C 89 C6 48 89 D7 48 8B 05 ? ? ? ? 48 31 E0 48 89 44 24 28 48 8B 02 48 8B 80 58 01 00 00 48 89 D1 FF 15 ? ? ? ? 48 8B 08 48 8B 91 E8 09 00 00 48 89 C1 48 89 D0 FF 15 ? ? ? ? 84 C0 74 ?"
+
+[[signatures]]
+name = "?entityInside@ButtonBlock@@UEBAXAEAVBlockSource@@AEBVBlockPos@@AEAVActor@@@Z"
+relative = false
+extra = 0
+# Native 1.26.40.8 ButtonBlock::entityInside prologue, confirmed from its vtable slot.
+pattern = "56 57 53 48 83 EC 30 4C 89 C6 48 89 D7 48 89 CB 48 8B 05 ? ? ? ? 48 31 E0 48 89 44 24 28 48 8B 02 48 8B 80 58 01 00 00 48 89 D1 FF 15 ? ? ? ? 48 8B 08 48 8B 91 E8 09 00 00 48 89 C1 48 89 D0 FF 15 ? ? ? ? 84 C0 0F 85 ? ? ? ?"
+
+[[signatures]]
+name = "?entityInside@CampfireBlock@@UEBAXAEAVBlockSource@@AEBVBlockPos@@AEAVActor@@@Z"
+relative = false
+extra = 0
+# Native 1.26.40.8 CampfireBlock::entityInside prologue, confirmed from its vtable slot.
+pattern = "41 56 56 57 55 53 48 81 EC 80 00 00 00 4C 89 CE 4C 89 C3 49 89 D6 48 89 CF 48 8B 02 48 8B 80 58 01 00 00 48 89 D1 FF 15 ? ? ? ? 48 8B 08 48 8B 91 E8 09 00 00 48 89 C1 48 89 D0 FF 15 ? ? ? ? 84 C0 75 ?"
+
+[[signatures]]
+name = "?entityInside@DetectorRailBlock@@UEBAXAEAVBlockSource@@AEBVBlockPos@@AEAVActor@@@Z"
+relative = false
+extra = 0
+# Native 1.26.40.8 DetectorRailBlock::entityInside prologue, confirmed from its vtable slot.
+pattern = "41 56 56 57 53 48 83 EC 38 4D 89 CE 4C 89 C6 48 89 D7 48 89 CB 48 8B 05 ? ? ? ? 48 31 E0 48 89 44 24 30 48 8B 02 48 8B 80 58 01 00 00 48 89 D1 FF 15 ? ? ? ? 48 8B 08 48 8B 91 E8 09 00 00 48 89 C1 48 89 D0 FF 15 ? ? ? ? 84 C0 0F 85 ? ? ? ?"
+
+[[signatures]]
+name = "?entityInside@EndPortalBlock@@UEBAXAEAVBlockSource@@AEBVBlockPos@@AEAVActor@@@Z"
+relative = false
+extra = 0
+# Native 1.26.40.8 EndPortalBlock::entityInside prologue, confirmed from its vtable slot.
+pattern = "41 56 56 57 53 48 81 EC C8 00 00 00 44 0F 29 9C 24 B0 00 00 00 44 0F 29 94 24 A0 00 00 00 44 0F 29 8C 24 90 00 00 00 44 0F 29 84 24 80 00 00 00 0F 29 7C 24 70 0F 29 74 24 60 4C 89 CE 4D 89 C6 48 89 D7 48 89 CB 48 8B 02 48 8B 80 58 01 00 00"
+
+[[signatures]]
+name = "?entityInside@EyeblossomBlock@@UEBAXAEAVBlockSource@@AEBVBlockPos@@AEAVActor@@@Z"
+relative = false
+extra = 0
+# Native 1.26.40.8 EyeblossomBlock::entityInside prologue, confirmed from its vtable slot.
+pattern = "55 56 57 48 81 EC B0 00 00 00 48 8D AC 24 80 00 00 00 48 C7 45 28 FE FF FF FF 48 8B 81 E0 00 00 00 48 3B 05 ? ? ? ? 0F 85 ? ? ? ? 4C 89 CE 48 8B 02 48 8B 80 58 01 00 00 48 89 D1 FF 15 ? ? ? ?"
+
+[[signatures]]
+name = "?entityInside@FireBlock@@UEBAXAEAVBlockSource@@AEBVBlockPos@@AEAVActor@@@Z"
+relative = false
+extra = 0
+# Native 1.26.40.8 FireBlock::entityInside prologue, confirmed from its vtable slot.
+pattern = "56 53 48 83 EC 28 4C 89 CE 49 8B 01 48 8B 80 90 00 00 00 4C 89 C9 FF 15 ? ? ? ? 84 C0 75 1C 48 89 F1 BA 01 00 00 00 41 B0 01 E8 ? ? ? ? 48 89 F1"
+
+[[signatures]]
+name = "?entityInside@FrogSpawnBlock@@UEBAXAEAVBlockSource@@AEBVBlockPos@@AEAVActor@@@Z"
+relative = false
+extra = 0
+# Native 1.26.40.8 FrogSpawnBlock::entityInside prologue, confirmed from its vtable slot.
+pattern = "55 41 56 56 57 53 48 81 EC B0 00 00 00 48 8D AC 24 80 00 00 00 0F 29 75 20 48 C7 45 18 FE FF FF FF 49 8B 89 D8 01 00 00 48 85 C9 0F 84 ? ? ? ? 4C 89 CB 4C 89 C6 48 89 D7 48 8B 01 48 8B 80 E8 09 00 00 FF 15 ? ? ? ? 84 C0 0F 85 ? ? ? ?"
+
+[[signatures]]
+name = "?entityInside@PortalBlock@@UEBAXAEAVBlockSource@@AEBVBlockPos@@AEAVActor@@@Z"
+relative = false
+extra = 0
+# Native 1.26.40.8 PortalBlock::entityInside prologue, confirmed from its vtable slot.
+pattern = "56 57 48 83 EC 28 4C 89 CF 4C 89 C6 4C 89 C9 E8 ? ? ? ? 48 85 C0 75 ? 48 8D 4F 08 E8 ? ? ? ? 48 8B 48 08 48 3B 08 75 ?"
+
+[[signatures]]
+name = "?entityInside@BasePressurePlateBlock@@UEBAXAEAVBlockSource@@AEBVBlockPos@@AEAVActor@@@Z"
+relative = false
+extra = 0
+# Native 1.26.40.8 BasePressurePlateBlock::entityInside prologue, confirmed from its vtable slot.
+pattern = "41 56 56 57 53 48 83 EC 28 4C 89 CE 4C 89 C7 48 89 D3 49 89 CE 48 8B 02 48 8B 80 58 01 00 00 48 89 D1 FF 15 ? ? ? ? 48 8B 08 48 8B 91 E8 09 00 00 48 89 C1 48 89 D0 FF 15 ? ? ? ? 84 C0 75 ?"
+
+[[signatures]]
+name = "?entityInside@SweetBerryBushBlock@@UEBAXAEAVBlockSource@@AEBVBlockPos@@AEAVActor@@@Z"
+relative = false
+extra = 0
+# Native 1.26.40.8 SweetBerryBushBlock::entityInside prologue, confirmed from its vtable slot.
+pattern = "56 57 53 48 83 EC 50 4C 89 CE 4C 89 C7 48 89 D3 4C 89 C9 BA 00 01 00 00 E8 ? ? ? ? 84 C0 0F 84 ? ? ? ? 48 8B 03 48 8B 40 10 48 89 D9 48 89 FA FF 15 ? ? ? ?"
+
+[[signatures]]
+name = "?entityInside@TripWireBlock@@UEBAXAEAVBlockSource@@AEBVBlockPos@@AEAVActor@@@Z"
+relative = false
+extra = 0
+# Native 1.26.40.8 TripWireBlock::entityInside prologue, confirmed from its vtable slot.
+pattern = "56 57 53 48 83 EC 20 4C 89 C6 48 89 D7 48 89 CB 48 89 D1 4C 89 C2 4D 89 C8 E8 ? ? ? ? 84 C0 74 ? 48 89 D9 48 89 FA 49 89 F0 48 83 C4 20 5B 5F 5E E9 ? ? ? ? 90 48 83 C4 20 5B 5F 5E C3"
+
+[[signatures]]
+name = "?entityInside@WitherRoseBlock@@UEBAXAEAVBlockSource@@AEBVBlockPos@@AEAVActor@@@Z"
+relative = false
+extra = 0
+# Native 1.26.40.8 WitherRoseBlock::entityInside prologue, confirmed from its vtable slot.
+pattern = "55 56 57 53 48 81 EC E8 00 00 00 48 8D AC 24 80 00 00 00 48 C7 45 60 FE FF FF FF 4C 89 CE 48 89 D7 48 8B 02 48 8B 80 58 01 00 00 48 89 D1 FF 15 ? ? ? ? 48 8B 08 48 8B 91 E8 09 00 00 48 89 C1 48 89 D0 FF 15 ? ? ? ? 84 C0 0F 85 ? ? ? ?"
+
+[[signatures]]
+name = "?entityInside@SoulFireBlock@@UEBAXAEAVBlockSource@@AEBVBlockPos@@AEAVActor@@@Z"
+relative = false
+extra = 0
+# Native 1.26.40.8 SoulFireBlock::entityInside prologue, confirmed from its vtable slot.
+pattern = "56 53 48 83 EC 28 4C 89 CE 49 8B 01 48 8B 80 90 00 00 00 4C 89 C9 FF 15 ? ? ? ? 84 C0 75 1C 48 89 F1 BA 02 00 00 00 41 B0 01 E8 ? ? ? ? 48 89 F1"

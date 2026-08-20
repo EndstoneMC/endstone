@@ -14,6 +14,7 @@
 
 #pragma once
 
+#include "bedrock/bedrock.h"
 #include "bedrock/world/level/block/block_type.h"
 #include "bedrock/world/level/block_source.h"
 
@@ -24,6 +25,7 @@ public:
     static constexpr int VERTICAL_DIRECTION_BURN_CHANCE = 250;
     static constexpr int HUMID_BURN_CHANCE_OFFSET = 50;
     FireBlock(const std::string &, int);
+    ENDSTONE_HOOK void entityInside(BlockSource &, BlockPos const &, Actor &) const override;
 
     void checkBurn(BlockSource &region, const BlockPos &pos, int chance, IRandom &random, int age) const;
 

@@ -464,18 +464,6 @@ extra = 0
 pattern = "55 41 57 41 56 41 55 41 54 53 48 81 EC 88 00 00 00 48 8B 1F 80 BB ? ? ? ? ? 0F 85 ? ? ? ? 48 8B BB"
 
 [[signatures]]
-name = "_ZNK13CauldronBlock14setLiquidLevelER11BlockSourceRK8BlockPosi18CauldronLiquidType"
-relative = false
-extra = 0
-pattern = "55 41 57 41 56 41 55 41 54 53 48 83 EC 38 45 89 C7 89 CD"
-
-[[signatures]]
-name = "_ZNK13CauldronBlock4tickERN11BlockEvents20BlockQueuedTickEventE"
-relative = false
-extra = 0
-pattern = "55 41 57 41 56 41 55 41 54 53 48 83 EC 38 49 89 F6 4C 8B 7E"
-
-[[signatures]]
 name = "_ZN11LeavesBlock10randomTickERN11BlockEvents20BlockRandomTickEventE"
 relative = false
 extra = 0
@@ -770,3 +758,108 @@ extra = 0
 # 3. follow the thunk's jmp to WeatherManager::updateWeather and walk to its prologue
 # 4. confirm vs the old named DB
 pattern = "55 41 57 41 56 41 54 53 48 81 EC ? ? ? ? 89 D5 0F 29 4C 24"
+
+[[signatures]]
+name = "_ZNK9BlockType25shouldTriggerEntityInsideER11BlockSourceRK8BlockPosR5Actor"
+relative = false
+extra = 0
+# Native 1.26.40.8 BlockType::shouldTriggerEntityInside prologue, confirmed from the q82 vtable slot.
+pattern = "55 41 57 41 56 41 54 53 48 81 EC 30 01 00 00 48 89 F3 0F B6 05 ? ? ? ? 84 C0 0F 84 ? ? ? ? 48 8B B7 20 03 00 00 48 8B 87 28 03 00 00 49 89 C3 49 29 F3 0F 84 ? ? ? ?"
+
+[[signatures]]
+name = "_ZNK16BigDripleafBlock12entityInsideER11BlockSourceRK8BlockPosR5Actor"
+relative = false
+extra = 0
+# Native 1.26.40.8 BigDripleafBlock::entityInside prologue, confirmed from its vtable slot.
+pattern = "41 57 41 56 53 49 89 CF 48 89 D3 49 89 F6 48 8B 06 48 89 F7 FF 90 50 01 00 00 48 8B 08 48 89 C7 FF 91 F0 09 00 00 84 C0 74 06"
+
+[[signatures]]
+name = "_ZNK11ButtonBlock12entityInsideER11BlockSourceRK8BlockPosR5Actor"
+relative = false
+extra = 0
+# Native 1.26.40.8 ButtonBlock::entityInside prologue, confirmed from its vtable slot.
+pattern = "41 57 41 56 53 48 89 D3 49 89 F6 49 89 FF 48 8B 06 48 89 F7 FF 90 50 01 00 00 48 8B 08 48 89 C7 FF 91 F0 09 00 00 84 C0 0F 85 ? ? ? ? 41 80 BF A8 03 00 00 01"
+
+[[signatures]]
+name = "_ZNK13CampfireBlock12entityInsideER11BlockSourceRK8BlockPosR5Actor"
+relative = false
+extra = 0
+# Native 1.26.40.8 CampfireBlock::entityInside prologue, confirmed from its vtable slot.
+pattern = "55 41 57 41 56 41 54 53 48 83 EC 50 48 89 CB 49 89 D7 49 89 F4 49 89 FE 48 8B 06 48 89 F7 FF 90 50 01 00 00 48 8B 08 48 89 C7 FF 91 F0 09 00 00 84 C0 75 1E"
+
+[[signatures]]
+name = "_ZNK17DetectorRailBlock12entityInsideER11BlockSourceRK8BlockPosR5Actor"
+relative = false
+extra = 0
+# Native 1.26.40.8 DetectorRailBlock::entityInside prologue, confirmed from its vtable slot.
+pattern = "41 57 41 56 41 54 53 50 49 89 CC 48 89 D3 49 89 F6 49 89 FF 48 8B 06 48 89 F7 FF 90 50 01 00 00 48 8B 08 48 89 C7 FF 91 F0 09 00 00 84 C0 0F 85 ? ? ? ?"
+
+[[signatures]]
+name = "_ZNK14EndPortalBlock12entityInsideER11BlockSourceRK8BlockPosR5Actor"
+relative = false
+extra = 0
+# Native 1.26.40.8 EndPortalBlock::entityInside prologue, confirmed from its vtable slot.
+pattern = "55 41 57 41 56 41 54 53 48 83 EC 30 48 89 CB 49 89 D6 49 89 F7 49 89 FC 48 8B 06 48 89 F7 FF 90 50 01 00 00 48 8B 08 48 89 C7 FF 91 F0 09 00 00 84 C0 0F 85 ? ? ? ?"
+
+[[signatures]]
+name = "_ZNK15EyeblossomBlock12entityInsideER11BlockSourceRK8BlockPosR5Actor"
+relative = false
+extra = 0
+# Native 1.26.40.8 EyeblossomBlock::entityInside prologue, confirmed from its vtable slot.
+pattern = "41 56 53 48 81 EC 88 00 00 00 48 8B 87 C8 00 00 00 48 3B 05 ? ? ? ? 0F 85 ? ? ? ? 48 89 CB 48 8B 06 48 89 F7 FF 90 50 01 00 00"
+
+[[signatures]]
+name = "_ZNK9FireBlock12entityInsideER11BlockSourceRK8BlockPosR5Actor"
+relative = false
+extra = 0
+# Native 1.26.40.8 FireBlock::entityInside prologue, confirmed from its vtable slot.
+pattern = "53 48 89 CB 48 8B 01 48 89 CF FF 90 98 00 00 00 84 C0 75 1E 48 89 DF BE 01 00 00 00 BA 01 00 00 00"
+
+[[signatures]]
+name = "_ZNK14FrogSpawnBlock12entityInsideER11BlockSourceRK8BlockPosR5Actor"
+relative = false
+extra = 0
+# Native 1.26.40.8 FrogSpawnBlock::entityInside prologue, confirmed from its vtable slot.
+pattern = "41 57 41 56 41 54 53 48 83 EC 58 48 8B B9 D0 01 00 00 48 85 FF 0F 84 ? ? ? ? 49 89 CF 48 89 D3 49 89 F6 48 8B 07 FF 90 F0 09 00 00"
+
+[[signatures]]
+name = "_ZNK11PortalBlock12entityInsideER11BlockSourceRK8BlockPosR5Actor"
+relative = false
+extra = 0
+# Native 1.26.40.8 PortalBlock::entityInside prologue, confirmed from its vtable slot.
+pattern = "41 56 53 50 49 89 CE 48 89 D3 48 89 CF E8 ? ? ? ? 48 85 C0 75 ? 49 8D 7E 08 E8 ? ? ? ? 48 8B 48 08 48 3B 08 75 ?"
+
+[[signatures]]
+name = "_ZNK22BasePressurePlateBlock12entityInsideER11BlockSourceRK8BlockPosR5Actor"
+relative = false
+extra = 0
+# Native 1.26.40.8 BasePressurePlateBlock::entityInside prologue, confirmed from its vtable slot.
+pattern = "55 41 57 41 56 41 55 41 54 53 48 83 EC 78 49 89 CD 49 89 D7 49 89 F6 49 89 FC 48 8B 7E 28 48 8B 07 FF 90 F0 09 00 00 84 C0 0F 85 ? ? ? ?"
+
+[[signatures]]
+name = "_ZNK19SweetBerryBushBlock12entityInsideER11BlockSourceRK8BlockPosR5Actor"
+relative = false
+extra = 0
+# Native 1.26.40.8 SweetBerryBushBlock::entityInside prologue, confirmed from its vtable slot.
+pattern = "41 57 41 56 41 54 53 50 48 89 CB 49 89 D6 49 89 F7 48 89 CF BE 00 01 00 00 E8 ? ? ? ? 84 C0 0F 84 ? ? ? ?"
+
+[[signatures]]
+name = "_ZNK13TripWireBlock12entityInsideER11BlockSourceRK8BlockPosR5Actor"
+relative = false
+extra = 0
+# Native 1.26.40.8 TripWireBlock::entityInside prologue, confirmed from its vtable slot.
+pattern = "41 57 41 56 53 48 89 D3 49 89 F6 49 89 FF 48 89 F7 48 89 D6 48 89 CA E8 ? ? ? ? 84 C0 74 ? 4C 89 FF 4C 89 F6 48 89 DA"
+
+[[signatures]]
+name = "_ZNK15WitherRoseBlock12entityInsideER11BlockSourceRK8BlockPosR5Actor"
+relative = false
+extra = 0
+# Native 1.26.40.8 WitherRoseBlock::entityInside prologue, confirmed from its vtable slot.
+pattern = "55 41 56 53 48 81 EC 80 00 00 00 48 89 CB 49 89 F6 48 8B 06 48 89 F7 FF 90 50 01 00 00 48 8B 08 48 89 C7 FF 91 F0 09 00 00 84 C0 0F 85 ? ? ? ?"
+
+[[signatures]]
+name = "_ZNK13SoulFireBlock12entityInsideER11BlockSourceRK8BlockPosR5Actor"
+relative = false
+extra = 0
+# Native 1.26.40.8 SoulFireBlock::entityInside prologue, confirmed from its vtable slot.
+pattern = "53 48 89 CB 48 8B 01 48 89 CF FF 90 98 00 00 00 84 C0 75 1E 48 89 DF BE 02 00 00 00 BA 01 00 00 00"

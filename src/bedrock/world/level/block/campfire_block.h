@@ -14,10 +14,12 @@
 
 #pragma once
 
+#include "bedrock/bedrock.h"
 #include "bedrock/world/level/block/actor_block.h"
 
 class CampfireBlock : public ActorBlock {
 public:
     CampfireBlock(const std::string &, int, const bool, bool);
+    ENDSTONE_HOOK void entityInside(BlockSource &, BlockPos const &, Actor &) const override;
     static bool tryLightFire(BlockSource &region, const BlockPos &pos, Actor *source_actor);
 };

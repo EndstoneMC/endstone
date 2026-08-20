@@ -21,6 +21,7 @@
 #include <entt/core/enum.hpp>
 #include <gsl/span>
 
+#include "bedrock/bedrock.h"
 #include "bedrock/common_types.h"
 #include "bedrock/core/container/cache.h"
 #include "bedrock/core/math/color.h"
@@ -226,7 +227,7 @@ public:
     // [[nodiscard]] virtual int calcVariant(BlockSource &, BlockPos const &, mce::Color const &) const = 0;
     [[nodiscard]] virtual bool isAttachedTo(BlockSource &, BlockPos const &, BlockPos &) const = 0;
     [[nodiscard]] virtual bool attack(Player *player, BlockPos const &) const = 0;
-    [[nodiscard]] virtual bool shouldTriggerEntityInside(BlockSource &, BlockPos const &, Actor &) const = 0;
+    ENDSTONE_HOOK [[nodiscard]] virtual bool shouldTriggerEntityInside(BlockSource &, BlockPos const &, Actor &) const;
     [[nodiscard]] virtual bool canBeBuiltOver(const Block &, BlockSource const &, BlockPos const &,
                                               BlockType const &) const = 0;
     [[nodiscard]] virtual bool canBeBuiltOver(const Block &, BlockSource const &, BlockPos const &) const = 0;

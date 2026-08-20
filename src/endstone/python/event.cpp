@@ -132,8 +132,10 @@ void init_event(py::module_ &m, py::class_<Event, PyEvent> &event)
                       "The location that this actor moved to.");
     py::class_<ActorInsideBlockEvent, ActorEvent<Actor>, ICancellable>(
         m, "ActorInsideBlockEvent",
-        "Called when an actor is inside a supported block. Endstone currently fires this event for non-empty water, "
-        "lava, and powder snow cauldrons.")
+        "Called when an actor is inside a supported block, including big dripleaves, bubble columns, buttons, "
+        "cacti, campfires, cauldrons, crops, end gateways and end portals, eyeblossoms, fires, frogspawn, honey "
+        "blocks, hoppers, detector rails, nether portals, pitcher crops, powdered snow, pressure plates, sweet "
+        "berry bushes, tripwire, waterlilies, webs, and wither roses.")
         .def_property_readonly("block", &ActorInsideBlockEvent::getBlock, py::return_value_policy::reference,
                                "The block containing the actor.");
 

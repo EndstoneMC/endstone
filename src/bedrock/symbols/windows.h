@@ -11,7 +11,7 @@
 
 namespace endstone::runtime {
 
-static constexpr std::array<std::pair<std::string_view, std::size_t>, 66> symbols = {{
+static constexpr std::array<std::pair<std::string_view, std::size_t>, 72> symbols = {{
     {"BlockState::StateListNode::mHead", 211294960},
     {"Enchant::mEnchants", 211141912},
     {"MobEffect::mMobEffects", 211424880},
@@ -21,23 +21,29 @@ static constexpr std::array<std::pair<std::string_view, std::size_t>, 66> symbol
     {"?teleportTo@Actor@@UEAAXAEBVVec3@@_NHH1@Z", 14658832},
     // ActorFactory
     {"?createSpawnedActor@ActorFactory@@QEAA?AV?$OwnerPtr@VEntityContext@@@@AEBUActorDefinitionIdentifier@@PEAVActor@@AEBVVec3@@AEBVVec2@@@Z", 26276384},
+    // BasePressurePlateBlock
+    {"?entityInside@BasePressurePlateBlock@@UEBAXAEAVBlockSource@@AEBVBlockPos@@AEAVActor@@@Z", 99664432},
     // BatchedNetworkPeer
     {"?_receivePacket@BatchedNetworkPeer@@MEAA?AW4DataStatus@NetworkPeer@@AEAV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@AEBV?$shared_ptr@V?$time_point@Usteady_clock@chrono@std@@V?$duration@_JU?$ratio@$00$0DLJKMKAA@@std@@@23@@chrono@std@@@5@@Z", 16659136},
     {"?sendPacket@BatchedNetworkPeer@@UEAAXAEBV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@W4Reliability@NetworkPeer@@W4Compressibility@@@Z", 16658656},
     // BedrockLog::LogDetails
     {"?_log_va@LogDetails@BedrockLog@@AEAAXW4LogAreaID@@IPEBDHH1PEAD@Z", 1890144},
+    // BigDripleafBlock
+    {"?entityInside@BigDripleafBlock@@UEBAXAEAVBlockSource@@AEBVBlockPos@@AEAVActor@@@Z", 29049824},
     // BlockDescriptor::ResolveHelper
     {"?resolve@ResolveHelper@BlockDescriptor@@QEAAX_N@Z", 75234016},
     // BlockType
+    {"?shouldTriggerEntityInside@BlockType@@UEBA_NAEAVBlockSource@@AEBVBlockPos@@AEAVActor@@@Z", 32436720},
     {"?spawnResources@BlockType@@QEBAXAEAVBlockSource@@AEBVBlockPos@@AEBVBlock@@AEAVIRandom@@AEBUResourceDropsContext@@PEBVActor@@@Z", 32431200},
     {"?tryGetStateFromLegacyData@BlockType@@QEBAPEBVBlock@@G@Z", 32421904},
     // BlockTypeRegistry
     {"?forEachBlockType@BlockTypeRegistry@@QEBAXV?$function_ref@$$A6A_NAEBVBlockType@@@Z$$A6A_N0@Z@brstd@@@Z", 42281168},
+    // ButtonBlock
+    {"?entityInside@ButtonBlock@@UEBAXAEAVBlockSource@@AEBVBlockPos@@AEAVActor@@@Z", 32506672},
+    // CampfireBlock
+    {"?entityInside@CampfireBlock@@UEBAXAEAVBlockSource@@AEBVBlockPos@@AEAVActor@@@Z", 32527904},
     // CampfireBlockActor
     {"?_finishCooking@CampfireBlockActor@@AEAAXAEAVBlockSource@@H@Z", 43046640},
-    // CauldronBlock
-    {"?setLiquidLevel@CauldronBlock@@QEBAXAEAVBlockSource@@AEBVBlockPos@@HW4CauldronLiquidType@@@Z", 110796464},
-    {"?tick@CauldronBlock@@QEBAXAEAVBlockQueuedTickEvent@BlockEvents@@@Z", 110778144},
     // Command
     {"?run@Command@@QEBAXAEBVCommandOrigin@@AEAVCommandOutput@@@Z", 19785792},
     // CommandOriginLoader
@@ -55,10 +61,20 @@ static constexpr std::array<std::pair<std::string_view, std::size_t>, 66> symbol
     {"?fromRecipes@CraftingDataPacketPayload@@SA?AU1@AEBVRecipes@@_N@Z", 39627104},
     // DedicatedServer
     {"?start@DedicatedServer@@QEAA?AW4ServerExitCode@1@AEBV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@AEBVActivationArguments@Bedrock@@@Z", 501600},
+    // DetectorRailBlock
+    {"?entityInside@DetectorRailBlock@@UEBAXAEAVBlockSource@@AEBVBlockPos@@AEAVActor@@@Z", 149484752},
     // DimensionManager
     {"?serverRegisterCustomDimension@DimensionManager@@QEAA?AV?$optional@UDimensionType@@@std@@V?$basic_string_view@DU?$char_traits@D@std@@@3@AEBVUUID@mce@@@Z", 7151824},
+    // EndPortalBlock
+    {"?entityInside@EndPortalBlock@@UEBAXAEAVBlockSource@@AEBVBlockPos@@AEAVActor@@@Z", 144488608},
     // Explosion
     {"?explode@Explosion@@QEAA_NAEAVIRandom@@@Z", 7190560},
+    // EyeblossomBlock
+    {"?entityInside@EyeblossomBlock@@UEBAXAEAVBlockSource@@AEBVBlockPos@@AEAVActor@@@Z", 144511600},
+    // FireBlock
+    {"?entityInside@FireBlock@@UEBAXAEAVBlockSource@@AEBVBlockPos@@AEAVActor@@@Z", 144557824},
+    // FrogSpawnBlock
+    {"?entityInside@FrogSpawnBlock@@UEBAXAEAVBlockSource@@AEBVBlockPos@@AEAVActor@@@Z", 144584608},
     // FurnaceBlockActor
     {"?getBurnDuration@FurnaceBlockActor@@SAMAEBVItemStackBase@@M@Z", 99471088},
     // InventoryTransaction
@@ -120,6 +136,8 @@ static constexpr std::array<std::pair<std::string_view, std::size_t>, 66> symbol
     {"?_checkInsideCauldron@SystemImpl@ServerStandInCauldronSystem@@SAXAEAVActorOwnerComponent@@@Z", 99231920},
     // WeatherManager
     {"?updateWeather@WeatherManager@@QEAAXMHMH@Z", 19355200},
+    // WitherRoseBlock
+    {"?entityInside@WitherRoseBlock@@UEBAXAEAVBlockSource@@AEBVBlockPos@@AEAVActor@@@Z", 43623680},
     // YAAEAVI18n
     {"?getI18n@@YAAEAVI18n@@XZ", 6057456},
 }};

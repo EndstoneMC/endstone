@@ -26,7 +26,10 @@ namespace endstone {
 /**
  * Called when an Actor is inside a supported block.
  *
- * Endstone currently fires this event for non-empty water, lava, and powder snow cauldrons.
+ * Endstone fires this event for supported native block handlers, including big dripleaves, bubble columns, buttons,
+ * cactus, campfires, crops, end gateways and portals, eyeblossoms, fires, frogspawn, honey blocks, hoppers, detector
+ * rails, nether portals, pitcher crops, powdered snow, pressure plates, sweet berry bushes, tripwire, waterlilies,
+ * webs, wither roses, and cauldrons.
  *
  * If this event is cancelled, the block will not affect the Actor.
  */
