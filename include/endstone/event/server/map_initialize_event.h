@@ -27,8 +27,7 @@ namespace endstone {
  */
 class MapInitializeEvent : public ServerEvent {
 public:
-    ENDSTONE_EVENT(MapInitializeEvent)
-
+    ENDSTONE_EVENT(MapInitializeEvent);
     explicit MapInitializeEvent(MapView &map) : map_(map) {}
 
     /**

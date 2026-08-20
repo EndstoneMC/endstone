@@ -23,8 +23,7 @@ namespace endstone {
  */
 class PlayerToggleSprintEvent final : public PlayerEvent {
 public:
-    ENDSTONE_EVENT(PlayerToggleSprintEvent)
-
+    ENDSTONE_EVENT(PlayerToggleSprintEvent);
     explicit PlayerToggleSprintEvent(const NotNull<Player> &player, bool sprinting) : PlayerEvent(player), sprinting_(sprinting) {}
 
     /**

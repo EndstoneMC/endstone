@@ -70,8 +70,10 @@ __all__ = [
     "PlayerJoinEvent",
     "PlayerJumpEvent",
     "PlayerKickEvent",
+    "PlayerLevelChangeEvent",
     "PlayerLoginEvent",
     "PlayerMoveEvent",
+    "PlayerPickupArrowEvent",
     "PlayerPickupItemEvent",
     "PlayerPortalEvent",
     "PlayerQuitEvent",
@@ -707,7 +709,7 @@ class PlayerGameModeChangeEvent(PlayerEvent, Cancellable):
 
 class PlayerInteractEvent(PlayerEvent, Cancellable):
     """
-    Represents an event that is called when a player interacts with an object or air.
+    Called when a player interacts with an object or air.
     """
     class Action(enum.Enum):
         """
@@ -770,7 +772,7 @@ class PlayerInteractEvent(PlayerEvent, Cancellable):
 
 class PlayerInteractActorEvent(PlayerEvent, Cancellable):
     """
-    Represents an event that is called when a player right-clicks an actor.
+    Called when a player right-clicks an actor.
     """
     @property
     def actor(self) -> Actor:
@@ -829,11 +831,6 @@ class PlayerJoinEvent(PlayerEvent):
     @join_message.setter
     def join_message(self, arg1: str | Translatable | None) -> None: ...
 
-class PlayerJumpEvent(PlayerMoveEvent):
-    """
-    Called when a player jumps.
-    """
-
 class PlayerKickEvent(PlayerEvent, Cancellable):
     """
     Called when a player gets kicked from the server.
@@ -846,6 +843,22 @@ class PlayerKickEvent(PlayerEvent, Cancellable):
 
     @reason.setter
     def reason(self, arg1: str) -> None: ...
+
+class PlayerLevelChangeEvent(PlayerEvent):
+    """
+    Called when a player's level changes.
+    """
+    @property
+    def old_level(self) -> int:
+        """
+        The player's level before the change.
+        """
+
+    @property
+    def new_level(self) -> int:
+        """
+        The player's level after the change.
+        """
 
 class PlayerLoginEvent(PlayerEvent, Cancellable):
     """
@@ -881,6 +894,21 @@ class PlayerMoveEvent(PlayerEvent, Cancellable):
     @to_location.setter
     def to_location(self, arg1: Location) -> None: ...
 
+class PlayerJumpEvent(PlayerMoveEvent):
+    """
+    Called when a player jumps.
+    """
+
+class PlayerPickupArrowEvent(PlayerEvent, Cancellable):
+    """
+    Called when a player picks up an arrow or a thrown trident from the ground.
+    """
+    @property
+    def arrow(self) -> Actor:
+        """
+        The arrow picked up by the player.
+        """
+
 class PlayerPickupItemEvent(PlayerEvent, Cancellable):
     """
     Called when a player picks an item up from the ground.
@@ -890,11 +918,6 @@ class PlayerPickupItemEvent(PlayerEvent, Cancellable):
         """
         The Item picked up by the entity.
         """
-
-class PlayerPortalEvent(PlayerTeleportEvent):
-    """
-    Called when a player is about to teleport because it is in contact with a portal.
-    """
 
 class PlayerQuitEvent(PlayerEvent):
     """
@@ -951,6 +974,11 @@ class PlayerSkinChangeEvent(PlayerEvent, Cancellable):
 class PlayerTeleportEvent(PlayerMoveEvent):
     """
     Called when a player is teleported from one location to another.
+    """
+
+class PlayerPortalEvent(PlayerTeleportEvent):
+    """
+    Called when a player is about to teleport because it is in contact with a portal.
     """
 
 class PlayerToggleSneakEvent(PlayerEvent):
