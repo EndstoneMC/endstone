@@ -52,6 +52,7 @@ __all__ = [
     "GameMode",
     "GameRule",
     "Identifier",
+    "Input",
     "Logger",
     "OfflinePlayer",
     "Player",
@@ -959,6 +960,52 @@ class Rotation(enum.Enum):
     FLIPPED_45 = 5
     COUNTER_CLOCKWISE = 6
     COUNTER_CLOCKWISE_45 = 7
+
+class Input:
+    """
+    Represents a movement input applied to a player.
+    """
+    @property
+    def is_forward(self) -> bool:
+        """
+        Whether a forward input is applied.
+        """
+
+    @property
+    def is_backward(self) -> bool:
+        """
+        Whether a backward input is applied.
+        """
+
+    @property
+    def is_left(self) -> bool:
+        """
+        Whether a left input is applied.
+        """
+
+    @property
+    def is_right(self) -> bool:
+        """
+        Whether a right input is applied.
+        """
+
+    @property
+    def is_jump(self) -> bool:
+        """
+        Whether a jump input is applied.
+        """
+
+    @property
+    def is_sneak(self) -> bool:
+        """
+        Whether a sneak input is applied.
+        """
+
+    @property
+    def is_sprint(self) -> bool:
+        """
+        Whether a sprint input is applied.
+        """
 
 class Logger:
     """

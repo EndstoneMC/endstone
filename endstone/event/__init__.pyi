@@ -5,7 +5,7 @@ Classes relating to handling triggered code executions.
 import enum
 import typing
 
-from endstone import GameMode, Player, Skin
+from endstone import GameMode, Input, Player, Skin
 from endstone.actor import Actor, Item, Mob
 from endstone.block import Block, BlockFace, BlockState
 from endstone.command import CommandSender
@@ -63,6 +63,7 @@ __all__ = [
     "PlayerEvent",
     "PlayerExpChangeEvent",
     "PlayerGameModeChangeEvent",
+    "PlayerInputEvent",
     "PlayerInteractActorEvent",
     "PlayerInteractEvent",
     "PlayerItemConsumeEvent",
@@ -77,6 +78,7 @@ __all__ = [
     "PlayerPickupItemEvent",
     "PlayerPortalEvent",
     "PlayerQuitEvent",
+    "PlayerRecipeBookSettingsChangeEvent",
     "PlayerRespawnEvent",
     "PlayerSkinChangeEvent",
     "PlayerTeleportEvent",
@@ -667,6 +669,16 @@ class PlayerGameModeChangeEvent(PlayerEvent, Cancellable):
         The `GameMode` the player is switched to.
         """
 
+class PlayerInputEvent(PlayerEvent):
+    """
+    Called when a player sends updated input to the server.
+    """
+    @property
+    def input(self) -> Input:
+        """
+        The new input received from this player.
+        """
+
 class PlayerInteractEvent(PlayerEvent, Cancellable):
     """
     Called when a player interacts with an object or air.
@@ -891,6 +903,42 @@ class PlayerQuitEvent(PlayerEvent):
 
     @quit_message.setter
     def quit_message(self, arg1: str | Translatable | None) -> None: ...
+
+class PlayerRecipeBookSettingsChangeEvent(PlayerEvent):
+    """
+    Called when a player changes recipe book settings.
+    """
+    class RecipeBookType(enum.Enum):
+        """
+        The recipe book type.
+        """
+
+        CRAFTING = 0
+        FURNACE = 1
+        BLAST_FURNACE = 2
+        SMOKER = 3
+
+    CRAFTING = RecipeBookType.CRAFTING
+    FURNACE = RecipeBookType.FURNACE
+    BLAST_FURNACE = RecipeBookType.BLAST_FURNACE
+    SMOKER = RecipeBookType.SMOKER
+    @property
+    def recipe_book_type(self) -> RecipeBookType:
+        """
+        The type of recipe book whose settings changed.
+        """
+
+    @property
+    def is_filtering(self) -> bool:
+        """
+        Whether recipe filtering is enabled.
+        """
+
+    @property
+    def is_open(self) -> bool:
+        """
+        Whether the recipe book is open.
+        """
 
 class PlayerRespawnEvent(PlayerEvent):
     """

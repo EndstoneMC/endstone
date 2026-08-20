@@ -30,6 +30,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Added `PlayerLevelChangeEvent`, called when a player's experience level changes, reporting `old_level` and `new_level`.
 - Added `PlayerExpChangeEvent`, called when a player gains experience, reporting the `amount` gained. It is not called when experience is reset on death.
 - Added `PlayerPickupArrowEvent`, called when a player picks up an arrow or a thrown trident from the ground. Cancelling it leaves the projectile on the ground.
+- Added `PlayerRecipeBookSettingsChangeEvent`, called when a player opens, closes or filters their recipe book, reporting `recipe_book_type`, `is_open` and `is_filtering`.
+- Added `PlayerInputEvent`, called when a player's movement input changes, and the `Input` type it carries: `is_forward`, `is_backward`, `is_left`, `is_right`, `is_jump`, `is_sneak` and `is_sprint`. Like Bukkit's event, it fires only when the input differs from the last one the player sent, not every tick.
 - Added a `Container` block state for reading and modifying container blocks such as chests, barrels, hoppers, dispensers, droppers, shulker boxes and furnaces, exposing their items via `container.inventory`.
 - Added a `CreatureSpawner` block state for monster spawners: `spawned_type`, `delay`, `min_spawn_delay`, `max_spawn_delay`, `spawn_count`, `max_nearby_entities`, `required_player_range` and `spawn_range`, all matching their Bukkit counterparts.
 - Added a `Campfire` block state for the four cooking slots of a campfire, with `get_item()`/`set_item()` and `get_cook_time()`/`set_cook_time()`.
