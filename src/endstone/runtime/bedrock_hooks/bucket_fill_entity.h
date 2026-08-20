@@ -14,17 +14,15 @@
 
 #pragma once
 
-namespace endstone {
-/**
- * Represents the face of a block.
- */
-enum class BlockFace {
-    Down,
-    Up,
-    North,
-    South,
-    West,
-    East,
-    Self,
-};
-}  // namespace endstone
+class Actor;
+class ItemStack;
+class Player;
+struct PlayerInteractWithEntityAfterEvent;
+
+namespace endstone::runtime {
+
+void resetBucketFillEntityEvent();
+bool fireBucketFillEntityEvent(::Player &, const ::Actor &, const ::ItemStack &);
+void handleBucketFillEntityResult(const ::PlayerInteractWithEntityAfterEvent &);
+
+}  // namespace endstone::runtime

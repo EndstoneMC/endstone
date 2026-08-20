@@ -14,17 +14,8 @@
 
 #pragma once
 
-namespace endstone {
-/**
- * Represents the face of a block.
- */
-enum class BlockFace {
-    Down,
-    Up,
-    North,
-    South,
-    West,
-    East,
-    Self,
-};
-}  // namespace endstone
+namespace endstone::runtime {
+
+void installBucketFillHook();
+
+}  // namespace endstone::runtime

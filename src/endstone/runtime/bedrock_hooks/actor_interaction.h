@@ -14,17 +14,19 @@
 
 #pragma once
 
-namespace endstone {
-/**
- * Represents the face of a block.
- */
-enum class BlockFace {
-    Down,
-    Up,
-    North,
-    South,
-    West,
-    East,
-    Self,
-};
-}  // namespace endstone
+#include "bedrock/common_types.h"
+#include "endstone/inventory/equipment_slot.h"
+
+class Actor;
+class BlockPos;
+class BlockSource;
+class ItemStack;
+class ItemStackBase;
+class Player;
+
+namespace endstone::runtime {
+
+[[nodiscard]] endstone::EquipmentSlot getInteractionHand(const ::Player &, const ::ItemStack &);
+[[nodiscard]] bool canBuild(::BlockSource &, ::Actor &, const ::BlockPos &, FacingID, const ::ItemStackBase &);
+
+}  // namespace endstone::runtime

@@ -594,6 +594,11 @@ class PlayerBucketEvent(PlayerEvent, Cancellable):
     @item_stack.setter
     def item_stack(self, arg1: ItemStack | None) -> None: ...
 
+class PlayerBucketFillEvent(PlayerBucketEvent):
+    """
+    Called when a player fills a bucket.
+    """
+
 class PlayerChatEvent(PlayerEvent, Cancellable):
     """
     Called when a player sends a chat message.

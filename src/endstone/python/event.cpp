@@ -270,6 +270,8 @@ void init_event(py::module_ &m, py::class_<Event, PyEvent> &event)
         .def_property_readonly("hand", &PlayerBucketEvent::getHand, "The hand used in this event.")
         .def_property("item_stack", &PlayerBucketEvent::getItemStack, &PlayerBucketEvent::setItemStack,
                       "The resulting item in the player's hand, or `None` if unavailable.");
+    py::class_<PlayerBucketFillEvent, PlayerBucketEvent>(m, "PlayerBucketFillEvent",
+                                                         "Called when a player fills a bucket.");
     py::class_<PlayerChatEvent, PlayerEvent, ICancellable>(m, "PlayerChatEvent",
                                                            "Called when a player sends a chat message.")
         .def_property("message", &PlayerChatEvent::getMessage, &PlayerChatEvent::setMessage,
