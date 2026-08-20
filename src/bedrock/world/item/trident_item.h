@@ -21,5 +21,5 @@ class Player;
 
 class TridentItem {
 public:
-    ENDSTONE_VHOOK void releaseUsing(ItemStack &item_stack, Player *player, int duration_left) const;
+    ENDSTONE_HOOK virtual void releaseUsing(ItemStack &item_stack, Player *player, int duration_left) const;
 };

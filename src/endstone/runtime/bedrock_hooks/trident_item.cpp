@@ -20,13 +20,13 @@
 #include "endstone/core/player.h"
 #include "endstone/core/server.h"
 #include "endstone/event/player/player_riptide_event.h"
-#include "endstone/runtime/vtable_hook.h"
+#include "endstone/runtime/hook.h"
 
 void TridentItem::releaseUsing(ItemStack &item_stack, Player *player, int duration_left) const
 {
     const auto item = endstone::core::EndstoneItemStack::fromMinecraft(item_stack);
     const auto was_spin_attacking = player && player->hasComponent<RiptideTridentSpinAttackComponent>();
-    ENDSTONE_VHOOK_CALL_ORIGINAL(&TridentItem::releaseUsing, this, item_stack, player, duration_left);
+    ENDSTONE_HOOK_CALL_ORIGINAL(&TridentItem::releaseUsing, this, item_stack, player, duration_left);
     if (was_spin_attacking || !player || !player->hasComponent<RiptideTridentSpinAttackComponent>()) {
         return;
     }

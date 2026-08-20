@@ -859,6 +859,33 @@ extra = 0
 pattern = "55 41 57 41 56 41 55 41 54 56 57 53 48 81 EC ? ? ? ? 48 8D AC 24 ? ? ? ? 0F 29 BD ? ? ? ? 0F 29 B5 ? ? ? ? 48 C7 85 ? ? ? ? ? ? ? ? 4C 89 4D ? 4C 89 C6 48 89 CF E8"
 
 [[signatures]]
+name = "?releaseUsing@TridentItem@@UEBAXAEAVItemStack@@PEAVPlayer@@H@Z"
+relative = false
+extra = 0
+# 1. TridentItem::releaseUsing carries no string of its own; anchor on Enchant::Type::Riptide = 30. Search
+#    .text for "B1 1E E8" (mov cl, 1Eh into the first integer argument register, immediately before a call)
+#    - 2 hits on 1.26.44 - and keep the ones whose callee is EnchantUtils::getEnchantLevel(Enchant::Type,
+#    ItemStackBase const &), the small leaf that indexes Enchant::mEnchants (see that entry) and walks the
+#    stack's enchant list
+# 2. of those, exactly one sits in a function that rejects a null player ("test r8, r8") and then an
+#    isClientSide byte ("cmp byte ptr [r8+2XXh], 0") in its first ~0x60 bytes before loading 1Eh, and whose
+#    arm after the call gates on "test eax, eax / jle", then Actor::isInWaterOrRain, then Actor::getVehicle
+#    (isRiding), then "sub <maxUseDuration>, <durationLeft> / cmp <reg>, 0Ah / jl". That function is the
+#    TARGET
+# 3. confirm identity independently: the arm surviving all four gates calls a two-argument helper on
+#    player+8 (the Player's EntityContext) with the riptide level - ActorMobilityUtils::startSpinAttack,
+#    which has exactly ONE caller in the whole binary, this function - then plays one of three consecutive
+#    LevelSoundEvent ids chosen by the riptide level, while the other arm builds a thrown_trident actor and
+#    plays the next id along
+# 4. cross-check against the vtable: the TARGET is entry 87 of TridentItem's vftable ??_7TridentItem@@6B@,
+#    one lower than Linux because the MSVC ABI spends a single slot on the deleting destructor. When a PDB
+#    is available, dump_symbols.py --pdb resolves this name directly and the pattern is only the fallback
+# 5. uniqueness: the pattern runs from the prologue through "mov cl, 1Eh" + call and matches exactly once
+#    in .text of 1.26.44 (and once in 1.26.32.2). No byte-identical sibling exists - no other Item override
+#    loads 1Eh into the getEnchantLevel argument
+pattern = "55 41 57 41 56 41 55 41 54 56 57 53 48 81 EC ? ? ? ? 48 8D AC 24 ? ? ? ? 44 0F 29 85 ? ? ? ? 0F 29 BD ? ? ? ? 0F 29 B5 ? ? ? ? 48 C7 85 ? ? ? ? FE FF FF FF 4D 85 C0 0F 84 ? ? ? ? 4C 89 C6 41 80 B8 ? ? ? ? 00 0F 85 ? ? ? ? 45 89 CF 48 89 D7 48 89 CB B1 1E E8"
+
+[[signatures]]
 name = "?updateWeather@WeatherManager@@QEAAXMHMH@Z"
 relative = false
 extra = 0

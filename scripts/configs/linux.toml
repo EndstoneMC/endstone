@@ -739,6 +739,33 @@ extra = 0
 pattern = "55 41 57 41 56 41 55 41 54 53 48 81 EC ? ? ? ? 48 89 8C 24 ? ? ? ? 49 89 D6 48 89 FB"
 
 [[signatures]]
+name = "_ZNK11TridentItem12releaseUsingER9ItemStackP6Playeri"
+relative = false
+extra = 0
+# 1. TridentItem::releaseUsing carries no string of its own; anchor on Enchant::Type::Riptide = 30. Search
+#    .text for "BF 1E 00 00 00 E8" (mov edi, 1Eh into the first argument register, immediately before a
+#    call) - 7 hits on 1.26.44 - and keep the ones whose callee is EnchantUtils::getEnchantLevel(
+#    Enchant::Type, ItemStackBase const &), the small leaf that indexes Enchant::mEnchants (see that entry)
+#    and walks the stack's enchant list
+# 2. of those, exactly one sits in a function that rejects a null player and then an isClientSide byte
+#    ("cmp byte ptr [rdx+2XXh], 0") in its first ~0x40 bytes before loading 1Eh, and whose arm after the
+#    call gates on "test eax, eax / jle", then Actor::isInWaterOrRain, then Actor::getVehicle (isRiding),
+#    then "sub <maxUseDuration>, <durationLeft> / cmp <reg>, 0Ah / jl". That function is the TARGET
+# 3. confirm identity independently: the arm surviving all four gates calls a two-argument helper on
+#    player+8 (the Player's EntityContext) with the riptide level - ActorMobilityUtils::startSpinAttack,
+#    which has exactly ONE caller in the whole binary, this function - then plays one of three consecutive
+#    LevelSoundEvent ids chosen by the riptide level, while the other arm builds a thrown_trident actor and
+#    plays the next id along
+# 4. cross-check against the vtable: the RTTI name string "11TridentItem" is unique, its lone data xref is
+#    typeinfo for TridentItem, and the lone reference to that typeinfo is vtable for TridentItem - the
+#    TARGET is entry 88 of its function-pointer array (Item declaration index 87, +1 for the Itanium second
+#    destructor slot)
+# 5. uniqueness: the pattern runs from the prologue through "mov edi, 1Eh" + call and matches exactly once
+#    in .text of 1.26.44 (and once in each of 1.26.40 and 1.26.33). No byte-identical sibling exists - no
+#    other Item override loads 1Eh into the getEnchantLevel argument
+pattern = "55 41 57 41 56 41 55 41 54 53 48 81 EC ? ? ? ? 48 85 D2 0F 84 ? ? ? ? 48 89 D3 80 BA ? ? ? ? 00 0F 85 ? ? ? ? 41 89 CE 49 89 F7 49 89 FC BF 1E 00 00 00 E8"
+
+[[signatures]]
 name = "_ZN14WeatherManager13updateWeatherEfifi"
 relative = false
 extra = 0
