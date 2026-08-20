@@ -218,6 +218,11 @@ LayeredAbilities const &Player::getAbilities() const
     return component->abilities;
 }
 
+bool Player::isCrawling()
+{
+    return getStatusFlag(ActorFlags::CRAWLING);
+}
+
 bool Player::isEmoting() const
 {
     return getStatusFlag(ActorFlags::EMOTING);
