@@ -166,8 +166,8 @@ _Represents a button with text and an optional icon._
 | class | [**PlayerEmoteEvent**](classendstone_1_1PlayerEmoteEvent.md) <br>_Called when a player uses an emote._  |
 | class | [**PlayerEvent**](classendstone_1_1PlayerEvent.md) <br>_Represents a player related event._  |
 | class | [**PlayerGameModeChangeEvent**](classendstone_1_1PlayerGameModeChangeEvent.md) <br>_Called when the GameMode of the player is changed._  |
-| class | [**PlayerInteractActorEvent**](classendstone_1_1PlayerInteractActorEvent.md) <br>_Represents an event that is called when a player right-clicks an actor._  |
-| class | [**PlayerInteractEvent**](classendstone_1_1PlayerInteractEvent.md) <br>_Represents an event that is called when a player interacts with an object or air._  |
+| class | [**PlayerInteractActorEvent**](classendstone_1_1PlayerInteractActorEvent.md) <br>_Called when a player right-clicks an actor._  |
+| class | [**PlayerInteractEvent**](classendstone_1_1PlayerInteractEvent.md) <br>_Called when a player interacts with an object or air._  |
 | class | [**PlayerInventory**](classendstone_1_1PlayerInventory.md) <br>_Interface to the inventory of a_ [_**Player**_](classendstone_1_1Player.md) _, including the four armor slots and any extra slots._ |
 | class | [**PlayerItemConsumeEvent**](classendstone_1_1PlayerItemConsumeEvent.md) <br>_Called when a player is finishing consuming an item (food, potion, milk bucket)._  |
 | class | [**PlayerItemHeldEvent**](classendstone_1_1PlayerItemHeldEvent.md) <br>_Called when a player changes their currently held item._  |

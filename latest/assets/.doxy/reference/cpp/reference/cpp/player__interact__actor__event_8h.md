@@ -36,7 +36,7 @@
 
 | Type | Name |
 | ---: | :--- |
-| class | [**PlayerInteractActorEvent**](classendstone_1_1PlayerInteractActorEvent.md) <br>_Represents an event that is called when a player right-clicks an actor._  |
+| class | [**PlayerInteractActorEvent**](classendstone_1_1PlayerInteractActorEvent.md) <br>_Called when a player right-clicks an actor._  |
 
 
 

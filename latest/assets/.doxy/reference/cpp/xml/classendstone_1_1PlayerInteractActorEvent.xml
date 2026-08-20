@@ -94,7 +94,7 @@
       </memberdef>
     </sectiondef>
     <briefdescription>
-<para>Represents an event that is called when a player right-clicks an actor. </para>
+<para>Called when a player right-clicks an actor. </para>
     </briefdescription>
     <detaileddescription>
     </detaileddescription>

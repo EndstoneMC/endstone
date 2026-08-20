@@ -8,7 +8,7 @@
 
 
 
-_Represents an event that is called when a player right-clicks an actor._ 
+_Called when a player right-clicks an actor._ 
 
 * `#include <endstone/event/player/player_interact_actor_event.h>`
 

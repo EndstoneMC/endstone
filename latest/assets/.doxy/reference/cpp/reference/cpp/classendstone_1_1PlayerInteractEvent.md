@@ -8,7 +8,7 @@
 
 
 
-_Represents an event that is called when a player interacts with an object or air._ 
+_Called when a player interacts with an object or air._ 
 
 * `#include <endstone/event/player/player_interact_event.h>`
 
