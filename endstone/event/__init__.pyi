@@ -851,7 +851,7 @@ class PlayerJumpEvent(PlayerMoveEvent):
 
 class PlayerPickupArrowEvent(PlayerEvent, Cancellable):
     """
-    Called when a player picks up an arrow from the ground.
+    Called when a player picks up an arrow or a thrown trident from the ground.
     """
     @property
     def arrow(self) -> Actor:
@@ -949,6 +949,16 @@ class PlayerPortalEvent(PlayerTeleportEvent):
     """
     Called when a player is about to teleport because it is in contact with a portal.
     """
+
+class PlayerToggleSneakEvent(PlayerEvent):
+    """
+    Called when a player toggles their sneaking state.
+    """
+    @property
+    def is_sneaking(self) -> bool:
+        """
+        Whether the player is now sneaking or not.
+        """
 
 class PlayerToggleSprintEvent(PlayerEvent):
     """

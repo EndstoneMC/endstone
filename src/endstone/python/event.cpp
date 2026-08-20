@@ -366,7 +366,7 @@ void init_event(py::module_ &m, py::class_<Event, PyEvent> &event)
                       "The location that this player moved to.");
     py::class_<PlayerJumpEvent, PlayerMoveEvent>(m, "PlayerJumpEvent", "Called when a player jumps.");
     py::class_<PlayerPickupArrowEvent, PlayerEvent, ICancellable>(
-        m, "PlayerPickupArrowEvent", "Called when a player picks up an arrow from the ground.")
+        m, "PlayerPickupArrowEvent", "Called when a player picks up an arrow or a thrown trident from the ground.")
         .def_property_readonly("arrow", &PlayerPickupArrowEvent::getArrow,
                                "The arrow picked up by the player.");
     py::class_<PlayerPickupItemEvent, PlayerEvent, ICancellable>(
