@@ -778,3 +778,32 @@ extra = 0
 # prologue through the pre-mutation `cvttss2si r12d, [rax+7Ch]` LEVEL read; the wildcarded `4C 8D` /
 # `4C 89` operands absorb the r14/r15 register swap seen at 1.26.33
 pattern = "55 41 57 41 56 41 55 41 54 53 48 81 EC C8 01 00 00 89 F5 48 89 FB 4C 8D ? ? ? ? ? 4C 89 ? E8 ? ? ? ? F3 44 0F 2C 60 7C"
+
+[[signatures]]
+name = "_ZN6Player13addExperienceEi"
+relative = false
+extra = 0
+# 1. no usable string, and no direct callers - addExperience is the Player virtual one slot BELOW
+#    addLevels. Locate addLevels first (its own entry), then read the R_X86_64_RELATIVE addend at
+#    slot-8 in each of the three .data.rel.ro vtables that hold it (Itanium typeinfo names `6Player`,
+#    `12ServerPlayer`, `15SimulatedPlayer`); all three agree on one address - that is addExperience
+# 2. it is also the function immediately preceding addLevels in .text: the .eh_frame_hdr start right
+#    below addLevels' start, ~0x450 bytes
+# 3. its entry is `push rbp/r15/r14/r12/rbx` (no r13, unlike addLevels) / `sub rsp, 1C0h` /
+#    `mov ebp, esi` / `mov rbx, rdi`, then `lea rsi, Player::EXPERIENCE` / `call Actor::getAttribute` /
+#    `cvtsi2ss xmm2, ebp` / `movss xmm1, [rax+7Ch]` - it opens on EXPERIENCE where addLevels opens on
+#    LEVEL, which is what tells the two prologues apart
+# 4. Player::getXpNeededForLevelRange is inlined three times; each copy is the same run -
+#    `imul rcx, rcx, -77777777h` / `shr rcx, 20h` / `add ecx, eax` / `sar ecx, 3` (signed divide by 15)
+#    then one of `lea r15d, [rax*2+7]`, `lea r15d, [rax+rax*4]` / `add r15d, -26h` (5*level-38),
+#    `lea r15d, [rax+rax*8]` / `add r15d, 0FFFFFF62h` (9*level-158)
+# 5. the level-crossing loop does NOT call addLevels directly - it dispatches through the vtable:
+#    `mov rax, [rbx]` / `mov rdi, rbx` / `mov esi, 1` / `call qword [rax+6D0h]`, the same slot the
+#    vtable walk in step 1 landed on. Do not look for an `E8` to addLevels; there is none
+# 6. confirm identity on the event tail: `mov [rsp+38h], ebp` stores the raw `amount` argument into
+#    the payload, then `mov dword [rsp+1B8h], 2` sets the variant index - index 2 is PlayerAddExpEvent
+#    in the PlayerGameplayEvent<void> variant list, where addLevels writes 3 - immediately before the
+#    call to PlayerEventCoordinator::sendEvent
+# prologue through the `cvtsi2ss xmm2, ebp` / `movss xmm1, [rax+7Ch]` EXPERIENCE read that opens the
+# body; the wildcarded operands absorb the Player::EXPERIENCE lea displacement and the getAttribute call
+pattern = "55 41 57 41 56 41 54 53 48 81 EC C0 01 00 00 89 F5 48 89 FB 48 8D 35 ? ? ? ? E8 ? ? ? ? F3 0F 2A D5 F3 0F 10 48 7C"

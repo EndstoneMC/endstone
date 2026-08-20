@@ -345,6 +345,20 @@ You MUST therefore source every asserted number from the headers or IDA
 yourself, on both ABIs, and record it in the report (§12.1). An assert whose
 value you did not independently confirm is unverified under §4.4.
 
+**4.13** A reconstructed packet SHOULD declare only its layout - the payload
+member, `serialization_mode`, and the size assert. It SHOULD NOT override
+`getId`, `getName`, `write` or `_read`. Endstone never constructs these by
+value; it `static_cast`s a packet BDS already built, so the overrides are dead
+weight that emit a vtable in our TU and drag in `<stdexcept>` for bodies that
+only throw. 29 of the 37 packet headers already do it this way - `EmotePacket`
+is the model, and it is consumed exactly the same way from
+`EndstonePlayer::handlePacket`. The exception is a packet Endstone genuinely
+constructs and sends, which needs whatever BDS's own type provides.
+
+Style note that comes up in the same files: prefer an inline expression, or a
+plain `const auto` local named for the value, over a one-use helper lambda or
+helper function. Match what the surrounding function already does.
+
 ## 5. New BDS symbols
 
 A `[[signatures]]` entry in `scripts/configs/{windows,linux}.toml` asks the
