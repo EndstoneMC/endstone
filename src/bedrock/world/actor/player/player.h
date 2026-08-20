@@ -120,7 +120,7 @@ public:
     [[nodiscard]] virtual IMinecraftEventing *getEventing() const = 0;
     virtual std::string getUserId() = 0;
     virtual void addExperience(int) = 0;
-    virtual void addLevels(int) = 0;
+    ENDSTONE_HOOK virtual void addLevels(int levels);
     virtual void setContainerData(IContainerManager &, int, int) = 0;
     virtual void slotChanged(IContainerManager &, Container &, int, ItemStack const &, ItemStack const &, bool) = 0;
     virtual void refreshContainer(IContainerManager &) = 0;

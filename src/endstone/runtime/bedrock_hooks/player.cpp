@@ -34,6 +34,7 @@
 #include "endstone/event/player/player_bed_leave_event.h"
 #include "endstone/event/player/player_drop_item_event.h"
 #include "endstone/event/player/player_item_consume_event.h"
+#include "endstone/event/player/player_level_change_event.h"
 #include "endstone/event/player/player_pickup_arrow_event.h"
 #include "endstone/event/player/player_pickup_item_event.h"
 #include "endstone/event/player/player_set_spawn_event.h"
@@ -167,6 +168,19 @@ bool Player::drop(const ItemStack &item, bool randomly)
     return ENDSTONE_HOOK_CALL_ORIGINAL(&Player::drop, this, item, randomly);
 }
 
+void Player::addLevels(int levels)
+{
+    const auto old_level = getPlayerLevel();
+    ENDSTONE_HOOK_CALL_ORIGINAL(&Player::addLevels, this, levels);
+    const auto new_level = getPlayerLevel();
+    if (old_level == new_level) {
+        return;
+    }
+    const auto &server = endstone::core::EndstoneServer::getInstance();
+    endstone::PlayerLevelChangeEvent e{getEndstoneActor<endstone::core::EndstonePlayer>(), old_level, new_level};
+    server.getPluginManager().callEvent(e);
+}
+
 bool Player::take(Actor &actor, int unknown, int favored_slot)
 {
     if (isClientSide() || !canInteractWithOtherEntitiesInGame()) {
@@ -184,7 +198,7 @@ bool Player::take(Actor &actor, int unknown, int favored_slot)
             return false;
         }
     }
-    else if (actor.isType(ActorType::Arrow)) {
+    else if (actor.hasType(ActorType::AbstractArrow)) {
         const auto &server = endstone::core::EndstoneServer::getInstance();
         auto player = getEndstoneActor<endstone::core::EndstonePlayer>();
         auto arrow = actor.getEndstoneActor();
