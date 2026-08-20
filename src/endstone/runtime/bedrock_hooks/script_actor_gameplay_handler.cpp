@@ -25,9 +25,9 @@
 #include "endstone/runtime/vtable_hook.h"
 
 namespace {
-bool handleEvent(const ActorKilledEvent &event)
+bool handleEvent(const ActorDiedEvent &event)
 {
-    if (const auto *mob = WeakEntityRef(event.actor_context).tryUnwrap<::Mob>(); mob && !mob->isPlayer()) {
+    if (const auto *mob = event.entity.tryUnwrap<::Mob>(); mob && !mob->isPlayer()) {
         const auto &server = endstone::core::EndstoneServer::getInstance();
         endstone::ActorDeathEvent e{mob->getEndstoneActor<endstone::core::EndstoneMob>(),
                                     std::make_unique<endstone::core::EndstoneDamageSource>(*event.source)};
@@ -78,7 +78,7 @@ HandlerResult ScriptActorGameplayHandler::handleEvent1(const ActorGameplayEvent<
 {
     auto visitor = [&](auto &&arg) -> HandlerResult {
         using T = std::decay_t<decltype(arg)>;
-        if constexpr (std::is_same_v<T, Details::ValueOrRef<const ActorKilledEvent>> ||
+        if constexpr (std::is_same_v<T, Details::ValueOrRef<const ActorDiedEvent>> ||
                       std::is_same_v<T, Details::ValueOrRef<const ActorRemovedEvent>>) {
             if (!handleEvent(arg.value())) {
                 return HandlerResult::BypassListeners;

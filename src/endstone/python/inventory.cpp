@@ -30,7 +30,7 @@ void init_inventory(py::module_ &m, py::class_<ItemStack> &item_stack)
         .value("BODY", EquipmentSlot::Body, "Only for certain entities such as horses and wolves.")
         .finalize();
 
-    py::class_<ItemType>(m, "ItemType", "Represents an item type.")
+    def_registry_type(py::class_<ItemType>(m, "ItemType", "Represents an item type."))
         .def_property_readonly_static("AIR", id(ItemType::Air), "The identifier of the air item type.")
         .def_property_readonly("id", &ItemType::getId, "The identifier of this item type.")
         .def_property_readonly("translation_key", py::overload_cast<>(&ItemType::getTranslationKey, py::const_),
@@ -60,13 +60,7 @@ void init_inventory(py::module_ &m, py::class_<ItemStack> &item_stack)
         An `ItemStack` of this item type.
 )doc")
         .def_static("get", &ItemType::get, py::arg("name"), "Attempts to get the `ItemType` with the given name.",
-                    py::return_value_policy::reference)
-        .def("__str__", [](const ItemType &self) { return std::string(self.getId()); })
-        .def("__hash__", [](const ItemType &self) { return py::hash(py::str(std::string(self.getId()))); })
-        .def(py::self == py::self)
-        .def(py::self != py::self)
-        .def(py::self == std::string_view())
-        .def(py::self != std::string_view());
+                    py::return_value_policy::reference);
 
     py::classh<ItemMeta>(m, "ItemMeta", "Represents the metadata of a generic item.")
         .def("clone", &ItemMeta::clone, R"doc(

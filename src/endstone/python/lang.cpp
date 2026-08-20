@@ -27,7 +27,18 @@ void init_lang(py::module_ &m)
              }),
              py::arg("text"), py::arg("params") = py::none())
         .def_property_readonly("text", &Translatable::getText, "The text to be translated.")
-        .def_property_readonly("params", &Translatable::getParameters, "The translation parameters.");
+        .def_property_readonly("params", &Translatable::getParameters, "The translation parameters.")
+        .def("__str__", [](const Translatable &self) { return self.getText(); })
+        .def("__repr__", [](const Translatable &self) {
+            std::string params;
+            for (const auto &param : self.getParameters()) {
+                if (!params.empty()) {
+                    params += ", ";
+                }
+                params += param;
+            }
+            return std::format("Translatable(text='{}', params=[{}])", self.getText(), params);
+        });
 
     py::classh<Language>(m, "Language", "Represents the interface for translating text into different languages.")
         .def(

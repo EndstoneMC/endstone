@@ -274,6 +274,9 @@ class ActorType:
     """
     Represents an actor type.
     """
+    def __hash__(self) -> int: ...
+    def __eq__(self, other: object) -> bool: ...
+    def __ne__(self, other: object) -> bool: ...
 
     AGENT: Identifier[ActorType] = "minecraft:agent"
     ALLAY: Identifier[ActorType] = "minecraft:allay"
@@ -428,10 +431,6 @@ class ActorType:
         """
         Attempts to get the `ActorType` with the given name.
         """
-
-    def __hash__(self) -> int: ...
-    def __eq__(self, other: object) -> bool: ...
-    def __ne__(self, other: object) -> bool: ...
 
 class Item(Actor):
     """
