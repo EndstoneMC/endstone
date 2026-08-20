@@ -2269,6 +2269,12 @@
     <member refid="classendstone_1_1PlayerRespawnEvent_1a6d85e0d878c46548c97daab6e89bad91" kind="function"><name>~PlayerRespawnEvent</name></member>
     <member refid="classendstone_1_1PlayerRespawnEvent_1a06c6d2fad9c2925ddab52de6a6af0b21" kind="function"><name>getRespawnReason</name></member>
   </compound>
+  <compound refid="classendstone_1_1PlayerRiptideEvent" kind="class"><name>endstone::PlayerRiptideEvent</name>
+    <member refid="classendstone_1_1PlayerRiptideEvent_1ab65d73b770528468e3cb83581cd7c8ca" kind="variable"><name>item_</name></member>
+    <member refid="classendstone_1_1PlayerRiptideEvent_1af1ed91b1cdbc6edfc9179f6297fcbcb8" kind="function"><name>ENDSTONE_EVENT</name></member>
+    <member refid="classendstone_1_1PlayerRiptideEvent_1ae91951af777fa806cf92a42b2f20a49a" kind="function"><name>PlayerRiptideEvent</name></member>
+    <member refid="classendstone_1_1PlayerRiptideEvent_1a06eaa93f42fea6e7eea2141a1d2670eb" kind="function"><name>getItem</name></member>
+  </compound>
   <compound refid="classendstone_1_1PlayerSkinChangeEvent" kind="class"><name>endstone::PlayerSkinChangeEvent</name>
     <member refid="classendstone_1_1PlayerSkinChangeEvent_1a57dfa1e3c9e9fe052d06911c8665dae2" kind="variable"><name>new_skin_</name></member>
     <member refid="classendstone_1_1PlayerSkinChangeEvent_1a1d15c271ad8e7efc269f237d5f3e06d4" kind="variable"><name>message_</name></member>
@@ -3373,6 +3379,8 @@
   <compound refid="player__recipe__book__settings__change__event_8h" kind="file"><name>player_recipe_book_settings_change_event.h</name>
   </compound>
   <compound refid="player__respawn__event_8h" kind="file"><name>player_respawn_event.h</name>
+  </compound>
+  <compound refid="player__riptide__event_8h" kind="file"><name>player_riptide_event.h</name>
   </compound>
   <compound refid="player__skin__change__event_8h" kind="file"><name>player_skin_change_event.h</name>
   </compound>

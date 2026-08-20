@@ -765,6 +765,10 @@
          <lastmod>2026-08-20</lastmod>
     </url>
     <url>
+         <loc>https://endstone.dev/latest/reference/cpp/classendstone_1_1PlayerRiptideEvent/</loc>
+         <lastmod>2026-08-20</lastmod>
+    </url>
+    <url>
          <loc>https://endstone.dev/latest/reference/cpp/classendstone_1_1PlayerSkinChangeEvent/</loc>
          <lastmod>2026-08-20</lastmod>
     </url>
@@ -2066,6 +2070,14 @@
     </url>
     <url>
          <loc>https://endstone.dev/latest/reference/cpp/player__respawn__event_8h_source/</loc>
+         <lastmod>2026-08-20</lastmod>
+    </url>
+    <url>
+         <loc>https://endstone.dev/latest/reference/cpp/player__riptide__event_8h/</loc>
+         <lastmod>2026-08-20</lastmod>
+    </url>
+    <url>
+         <loc>https://endstone.dev/latest/reference/cpp/player__riptide__event_8h_source/</loc>
          <lastmod>2026-08-20</lastmod>
     </url>
     <url>

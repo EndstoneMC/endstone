@@ -261,7 +261,7 @@
 * **ignore\_cancelled\_** ([**endstone::EventHandler**](classendstone_1_1EventHandler.md))
 * **impl\_** ([**endstone::ItemStack**](classendstone_1_1ItemStack.md))
 * **is\_contextual\_** ([**endstone::MapRenderer**](classendstone_1_1MapRenderer.md))
-* **item\_** ([**endstone::PlayerArmSwingEvent**](classendstone_1_1PlayerArmSwingEvent.md), [**endstone::PlayerInteractEvent**](classendstone_1_1PlayerInteractEvent.md), [**endstone::PlayerItemConsumeEvent**](classendstone_1_1PlayerItemConsumeEvent.md), [**endstone::PlayerPickupItemEvent**](classendstone_1_1PlayerPickupItemEvent.md))
+* **item\_** ([**endstone::PlayerArmSwingEvent**](classendstone_1_1PlayerArmSwingEvent.md), [**endstone::PlayerInteractEvent**](classendstone_1_1PlayerInteractEvent.md), [**endstone::PlayerItemConsumeEvent**](classendstone_1_1PlayerItemConsumeEvent.md), [**endstone::PlayerPickupItemEvent**](classendstone_1_1PlayerPickupItemEvent.md), [**endstone::PlayerRiptideEvent**](classendstone_1_1PlayerRiptideEvent.md))
 * **input\_** ([**endstone::PlayerInputEvent**](classendstone_1_1PlayerInputEvent.md))
 * **is\_filtering\_** ([**endstone::PlayerRecipeBookSettingsChangeEvent**](classendstone_1_1PlayerRecipeBookSettingsChangeEvent.md))
 * **is\_open\_** ([**endstone::PlayerRecipeBookSettingsChangeEvent**](classendstone_1_1PlayerRecipeBookSettingsChangeEvent.md))
