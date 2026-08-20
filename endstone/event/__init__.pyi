@@ -69,6 +69,7 @@ __all__ = [
     "PlayerJoinEvent",
     "PlayerJumpEvent",
     "PlayerKickEvent",
+    "PlayerLevelChangeEvent",
     "PlayerLoginEvent",
     "PlayerMoveEvent",
     "PlayerPickupArrowEvent",
@@ -797,6 +798,22 @@ class PlayerKickEvent(PlayerEvent, Cancellable):
 
     @reason.setter
     def reason(self, arg1: str) -> None: ...
+
+class PlayerLevelChangeEvent(PlayerEvent):
+    """
+    Called when a player's level changes.
+    """
+    @property
+    def old_level(self) -> int:
+        """
+        The player's level before the change.
+        """
+
+    @property
+    def new_level(self) -> int:
+        """
+        The player's level after the change.
+        """
 
 class PlayerLoginEvent(PlayerEvent, Cancellable):
     """
