@@ -51,8 +51,6 @@ public:
     /**
      * Gets a captured state of the sign involved in this event.
      *
-     * Changes to the sign are kept in the captured state until Sign::update() is called.
-     *
      * @return the sign being opened
      */
     [[nodiscard]] Sign &getSign() const { return sign_; }

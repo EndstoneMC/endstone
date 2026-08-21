@@ -21,8 +21,6 @@ namespace endstone {
 
 /**
  * Represents a captured state of a sign.
- *
- * Changes are kept in the captured state until update() is called.
  */
 class Sign : public BlockState {
 public:
