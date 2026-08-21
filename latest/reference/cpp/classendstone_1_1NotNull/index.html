@@ -2765,6 +2765,19 @@ For latest updates join the chat on
             
                 
                     <li class="md-nav__item">
+    <a href="#function-as" class="md-nav__link">
+      <span class="md-ellipsis">
+        function as
+      </span>
+    </a>
+
+    <!-- Table of contents list -->
+    
+</li>
+                
+            
+                
+                    <li class="md-nav__item">
     <a href="#function-cast" class="md-nav__link">
       <span class="md-ellipsis">
         function cast
@@ -2781,6 +2794,19 @@ For latest updates join the chat on
     <a href="#function-get" class="md-nav__link">
       <span class="md-ellipsis">
         function get
+      </span>
+    </a>
+
+    <!-- Table of contents list -->
+    
+</li>
+                
+            
+                
+                    <li class="md-nav__item">
+    <a href="#function-is" class="md-nav__link">
+      <span class="md-ellipsis">
+        function is
       </span>
     </a>
 
@@ -3047,12 +3073,20 @@ For latest updates join the chat on
 <td style="text-align: left;"><a href="#function-notnull-77"><strong>NotNull</strong></a> (std::nullptr_t) = delete<br></td>
 </tr>
 <tr>
+<td style="text-align: right;"><a href="../classendstone_1_1Nullable/"><strong>Nullable</strong></a>&lt; <a href="../classendstone_1_1Identifier/"><strong>U</strong></a> &gt;</td>
+<td style="text-align: left;"><a href="#function-as"><strong>as</strong></a> () const<br><em>Attempts to narrow the pointee to the given type U, keeping the shared ownership.</em></td>
+</tr>
+<tr>
 <td style="text-align: right;"><a href="./"><strong>NotNull</strong></a>&lt; <a href="../classendstone_1_1Identifier/"><strong>U</strong></a> &gt;</td>
-<td style="text-align: left;"><a href="#function-cast"><strong>cast</strong></a> () const<br><em>Statically downcasts to a related type, keeping the shared ownership.</em></td>
+<td style="text-align: left;"><a href="#function-cast"><strong>cast</strong></a> () const<br></td>
 </tr>
 <tr>
 <td style="text-align: right;"><a href="../classendstone_1_1Identifier/"><strong>const</strong></a> pointer_type &amp;</td>
 <td style="text-align: left;"><a href="#function-get"><strong>get</strong></a> () noexcept const<br></td>
+</tr>
+<tr>
+<td style="text-align: right;"><a href="../classendstone_1_1Identifier/"><strong>bool</strong></a></td>
+<td style="text-align: left;"><a href="#function-is"><strong>is</strong></a> () const<br><em>Checks if the pointee is an instance of the given type U (or a subclass of U).</em></td>
 </tr>
 <tr>
 <td style="text-align: right;"><a href="../classendstone_1_1Identifier/"><strong>T</strong></a> &amp;</td>
@@ -3171,91 +3205,117 @@ For latest updates join the chat on
 </span></code></pre></div>
 <hr>
 
-<h3 id="function-cast">function cast<a class="headerlink" href="#function-cast" title="Permanent link">&para;</a></h3>
-<p><em>Statically downcasts to a related type, keeping the shared ownership.</em> 
+<h3 id="function-as">function as<a class="headerlink" href="#function-as" title="Permanent link">&para;</a></h3>
+<p><em>Attempts to narrow the pointee to the given type U, keeping the shared ownership.</em> 
 <div class="language-C++ highlight"><pre><span></span><code><span id="__span-9-1"><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a><span class="k">template</span><span class="o">&lt;</span><span class="k">class</span><span class="w">  </span><span class="nc">U</span><span class="o">&gt;</span>
-</span><span id="__span-9-2"><a id="__codelineno-9-2" name="__codelineno-9-2" href="#__codelineno-9-2"></a><span class="kr">inline</span><span class="w"> </span><span class="n">NotNull</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">U</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">NotNull</span><span class="o">::</span><span class="n">cast</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="k">const</span>
+</span><span id="__span-9-2"><a id="__codelineno-9-2" name="__codelineno-9-2" href="#__codelineno-9-2"></a><span class="kr">inline</span><span class="w"> </span><span class="n">Nullable</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">U</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">NotNull</span><span class="o">::</span><span class="n">as</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="k">const</span>
 </span></code></pre></div></p>
+<p>Returns a null <a href="../classendstone_1_1Nullable/"><strong>Nullable</strong></a> if the pointee is not an instance of U (or a subclass of U).</p>
+<p><strong>Template parameters:</strong></p>
+<ul>
+<li><code>U</code> Target type to narrow to (must derive from <a href="../classendstone_1_1Object/"><strong>Object</strong></a>) </li>
+</ul>
+<p><strong>Returns:</strong></p>
+<p>A <a href="../classendstone_1_1Nullable/"><strong>Nullable</strong></a> holding this as U, or a null <a href="../classendstone_1_1Nullable/"><strong>Nullable</strong></a> if the narrowing is invalid </p>
 <hr>
 
-<h3 id="function-get">function get<a class="headerlink" href="#function-get" title="Permanent link">&para;</a></h3>
-<div class="language-C++ highlight"><pre><span></span><code><span id="__span-10-1"><a id="__codelineno-10-1" name="__codelineno-10-1" href="#__codelineno-10-1"></a><span class="kr">inline</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="n">pointer_type</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">NotNull</span><span class="o">::</span><span class="n">get</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="k">noexcept</span><span class="w"> </span><span class="k">const</span>
+<h3 id="function-cast">function cast<a class="headerlink" href="#function-cast" title="Permanent link">&para;</a></h3>
+<div class="language-C++ highlight"><pre><span></span><code><span id="__span-10-1"><a id="__codelineno-10-1" name="__codelineno-10-1" href="#__codelineno-10-1"></a><span class="k">template</span><span class="o">&lt;</span><span class="k">class</span><span class="w">  </span><span class="nc">U</span><span class="o">&gt;</span>
+</span><span id="__span-10-2"><a id="__codelineno-10-2" name="__codelineno-10-2" href="#__codelineno-10-2"></a><span class="kr">inline</span><span class="w"> </span><span class="n">NotNull</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">U</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">NotNull</span><span class="o">::</span><span class="n">cast</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="k">const</span>
 </span></code></pre></div>
 <hr>
 
+<h3 id="function-get">function get<a class="headerlink" href="#function-get" title="Permanent link">&para;</a></h3>
+<div class="language-C++ highlight"><pre><span></span><code><span id="__span-11-1"><a id="__codelineno-11-1" name="__codelineno-11-1" href="#__codelineno-11-1"></a><span class="kr">inline</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="n">pointer_type</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">NotNull</span><span class="o">::</span><span class="n">get</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="k">noexcept</span><span class="w"> </span><span class="k">const</span>
+</span></code></pre></div>
+<hr>
+
+<h3 id="function-is">function is<a class="headerlink" href="#function-is" title="Permanent link">&para;</a></h3>
+<p><em>Checks if the pointee is an instance of the given type U (or a subclass of U).</em> 
+<div class="language-C++ highlight"><pre><span></span><code><span id="__span-12-1"><a id="__codelineno-12-1" name="__codelineno-12-1" href="#__codelineno-12-1"></a><span class="k">template</span><span class="o">&lt;</span><span class="k">class</span><span class="w">  </span><span class="nc">U</span><span class="o">&gt;</span>
+</span><span id="__span-12-2"><a id="__codelineno-12-2" name="__codelineno-12-2" href="#__codelineno-12-2"></a><span class="kr">inline</span><span class="w"> </span><span class="kt">bool</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">NotNull</span><span class="o">::</span><span class="n">is</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="k">const</span>
+</span></code></pre></div></p>
+<p><strong>Template parameters:</strong></p>
+<ul>
+<li><code>U</code> Type to check against (must derive from <a href="../classendstone_1_1Object/"><strong>Object</strong></a>) </li>
+</ul>
+<p><strong>Returns:</strong></p>
+<p><code>true</code> if the pointee is an instance of U </p>
+<hr>
+
 <h3 id="function-operator">function operator*<a class="headerlink" href="#function-operator" title="Permanent link">&para;</a></h3>
-<div class="language-C++ highlight"><pre><span></span><code><span id="__span-11-1"><a id="__codelineno-11-1" name="__codelineno-11-1" href="#__codelineno-11-1"></a><span class="kr">inline</span><span class="w"> </span><span class="n">T</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">NotNull</span><span class="o">::</span><span class="k">operator</span><span class="o">*</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="k">noexcept</span><span class="w"> </span><span class="k">const</span>
+<div class="language-C++ highlight"><pre><span></span><code><span id="__span-13-1"><a id="__codelineno-13-1" name="__codelineno-13-1" href="#__codelineno-13-1"></a><span class="kr">inline</span><span class="w"> </span><span class="n">T</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">NotNull</span><span class="o">::</span><span class="k">operator</span><span class="o">*</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="k">noexcept</span><span class="w"> </span><span class="k">const</span>
 </span></code></pre></div>
 <hr>
 
 <h3 id="function-operator_1">function operator++<a class="headerlink" href="#function-operator_1" title="Permanent link">&para;</a></h3>
-<div class="language-C++ highlight"><pre><span></span><code><span id="__span-12-1"><a id="__codelineno-12-1" name="__codelineno-12-1" href="#__codelineno-12-1"></a><span class="n">NotNull</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">NotNull</span><span class="o">::</span><span class="k">operator</span><span class="o">++</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">delete</span>
+<div class="language-C++ highlight"><pre><span></span><code><span id="__span-14-1"><a id="__codelineno-14-1" name="__codelineno-14-1" href="#__codelineno-14-1"></a><span class="n">NotNull</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">NotNull</span><span class="o">::</span><span class="k">operator</span><span class="o">++</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">delete</span>
 </span></code></pre></div>
 <hr>
 
 <h3 id="function-operator_2">function operator++<a class="headerlink" href="#function-operator_2" title="Permanent link">&para;</a></h3>
-<div class="language-C++ highlight"><pre><span></span><code><span id="__span-13-1"><a id="__codelineno-13-1" name="__codelineno-13-1" href="#__codelineno-13-1"></a><span class="n">NotNull</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">NotNull</span><span class="o">::</span><span class="k">operator</span><span class="o">++</span><span class="w"> </span><span class="p">(</span>
-</span><span id="__span-13-2"><a id="__codelineno-13-2" name="__codelineno-13-2" href="#__codelineno-13-2"></a><span class="w">    </span><span class="kt">int</span>
-</span><span id="__span-13-3"><a id="__codelineno-13-3" name="__codelineno-13-3" href="#__codelineno-13-3"></a><span class="p">)</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">delete</span>
+<div class="language-C++ highlight"><pre><span></span><code><span id="__span-15-1"><a id="__codelineno-15-1" name="__codelineno-15-1" href="#__codelineno-15-1"></a><span class="n">NotNull</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">NotNull</span><span class="o">::</span><span class="k">operator</span><span class="o">++</span><span class="w"> </span><span class="p">(</span>
+</span><span id="__span-15-2"><a id="__codelineno-15-2" name="__codelineno-15-2" href="#__codelineno-15-2"></a><span class="w">    </span><span class="kt">int</span>
+</span><span id="__span-15-3"><a id="__codelineno-15-3" name="__codelineno-15-3" href="#__codelineno-15-3"></a><span class="p">)</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">delete</span>
 </span></code></pre></div>
 <hr>
 
 <h3 id="function-operator_3">function operator+=<a class="headerlink" href="#function-operator_3" title="Permanent link">&para;</a></h3>
-<div class="language-C++ highlight"><pre><span></span><code><span id="__span-14-1"><a id="__codelineno-14-1" name="__codelineno-14-1" href="#__codelineno-14-1"></a><span class="n">NotNull</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">NotNull</span><span class="o">::</span><span class="k">operator</span><span class="o">+=</span><span class="w"> </span><span class="p">(</span>
-</span><span id="__span-14-2"><a id="__codelineno-14-2" name="__codelineno-14-2" href="#__codelineno-14-2"></a><span class="w">    </span><span class="n">std</span><span class="o">::</span><span class="kt">ptrdiff_t</span>
-</span><span id="__span-14-3"><a id="__codelineno-14-3" name="__codelineno-14-3" href="#__codelineno-14-3"></a><span class="p">)</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">delete</span>
-</span></code></pre></div>
-<hr>
-
-<h3 id="function-operator-">function operator--<a class="headerlink" href="#function-operator-" title="Permanent link">&para;</a></h3>
-<div class="language-C++ highlight"><pre><span></span><code><span id="__span-15-1"><a id="__codelineno-15-1" name="__codelineno-15-1" href="#__codelineno-15-1"></a><span class="n">NotNull</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">NotNull</span><span class="o">::</span><span class="k">operator</span><span class="o">--</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">delete</span>
-</span></code></pre></div>
-<hr>
-
-<h3 id="function-operator-_1">function operator--<a class="headerlink" href="#function-operator-_1" title="Permanent link">&para;</a></h3>
-<div class="language-C++ highlight"><pre><span></span><code><span id="__span-16-1"><a id="__codelineno-16-1" name="__codelineno-16-1" href="#__codelineno-16-1"></a><span class="n">NotNull</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">NotNull</span><span class="o">::</span><span class="k">operator</span><span class="o">--</span><span class="w"> </span><span class="p">(</span>
-</span><span id="__span-16-2"><a id="__codelineno-16-2" name="__codelineno-16-2" href="#__codelineno-16-2"></a><span class="w">    </span><span class="kt">int</span>
+<div class="language-C++ highlight"><pre><span></span><code><span id="__span-16-1"><a id="__codelineno-16-1" name="__codelineno-16-1" href="#__codelineno-16-1"></a><span class="n">NotNull</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">NotNull</span><span class="o">::</span><span class="k">operator</span><span class="o">+=</span><span class="w"> </span><span class="p">(</span>
+</span><span id="__span-16-2"><a id="__codelineno-16-2" name="__codelineno-16-2" href="#__codelineno-16-2"></a><span class="w">    </span><span class="n">std</span><span class="o">::</span><span class="kt">ptrdiff_t</span>
 </span><span id="__span-16-3"><a id="__codelineno-16-3" name="__codelineno-16-3" href="#__codelineno-16-3"></a><span class="p">)</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">delete</span>
 </span></code></pre></div>
 <hr>
 
+<h3 id="function-operator-">function operator--<a class="headerlink" href="#function-operator-" title="Permanent link">&para;</a></h3>
+<div class="language-C++ highlight"><pre><span></span><code><span id="__span-17-1"><a id="__codelineno-17-1" name="__codelineno-17-1" href="#__codelineno-17-1"></a><span class="n">NotNull</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">NotNull</span><span class="o">::</span><span class="k">operator</span><span class="o">--</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">delete</span>
+</span></code></pre></div>
+<hr>
+
+<h3 id="function-operator-_1">function operator--<a class="headerlink" href="#function-operator-_1" title="Permanent link">&para;</a></h3>
+<div class="language-C++ highlight"><pre><span></span><code><span id="__span-18-1"><a id="__codelineno-18-1" name="__codelineno-18-1" href="#__codelineno-18-1"></a><span class="n">NotNull</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">NotNull</span><span class="o">::</span><span class="k">operator</span><span class="o">--</span><span class="w"> </span><span class="p">(</span>
+</span><span id="__span-18-2"><a id="__codelineno-18-2" name="__codelineno-18-2" href="#__codelineno-18-2"></a><span class="w">    </span><span class="kt">int</span>
+</span><span id="__span-18-3"><a id="__codelineno-18-3" name="__codelineno-18-3" href="#__codelineno-18-3"></a><span class="p">)</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">delete</span>
+</span></code></pre></div>
+<hr>
+
 <h3 id="function-operator-_2">function operator-=<a class="headerlink" href="#function-operator-_2" title="Permanent link">&para;</a></h3>
-<div class="language-C++ highlight"><pre><span></span><code><span id="__span-17-1"><a id="__codelineno-17-1" name="__codelineno-17-1" href="#__codelineno-17-1"></a><span class="n">NotNull</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">NotNull</span><span class="o">::</span><span class="k">operator</span><span class="o">-=</span><span class="w"> </span><span class="p">(</span>
-</span><span id="__span-17-2"><a id="__codelineno-17-2" name="__codelineno-17-2" href="#__codelineno-17-2"></a><span class="w">    </span><span class="n">std</span><span class="o">::</span><span class="kt">ptrdiff_t</span>
-</span><span id="__span-17-3"><a id="__codelineno-17-3" name="__codelineno-17-3" href="#__codelineno-17-3"></a><span class="p">)</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">delete</span>
+<div class="language-C++ highlight"><pre><span></span><code><span id="__span-19-1"><a id="__codelineno-19-1" name="__codelineno-19-1" href="#__codelineno-19-1"></a><span class="n">NotNull</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">NotNull</span><span class="o">::</span><span class="k">operator</span><span class="o">-=</span><span class="w"> </span><span class="p">(</span>
+</span><span id="__span-19-2"><a id="__codelineno-19-2" name="__codelineno-19-2" href="#__codelineno-19-2"></a><span class="w">    </span><span class="n">std</span><span class="o">::</span><span class="kt">ptrdiff_t</span>
+</span><span id="__span-19-3"><a id="__codelineno-19-3" name="__codelineno-19-3" href="#__codelineno-19-3"></a><span class="p">)</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">delete</span>
 </span></code></pre></div>
 <hr>
 
 <h3 id="function-operator-_3">function operator-&gt;<a class="headerlink" href="#function-operator-_3" title="Permanent link">&para;</a></h3>
-<div class="language-C++ highlight"><pre><span></span><code><span id="__span-18-1"><a id="__codelineno-18-1" name="__codelineno-18-1" href="#__codelineno-18-1"></a><span class="kr">inline</span><span class="w"> </span><span class="n">T</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">NotNull</span><span class="o">::</span><span class="k">operator</span><span class="o">-&gt;</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="k">noexcept</span><span class="w"> </span><span class="k">const</span>
+<div class="language-C++ highlight"><pre><span></span><code><span id="__span-20-1"><a id="__codelineno-20-1" name="__codelineno-20-1" href="#__codelineno-20-1"></a><span class="kr">inline</span><span class="w"> </span><span class="n">T</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">NotNull</span><span class="o">::</span><span class="k">operator</span><span class="o">-&gt;</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="k">noexcept</span><span class="w"> </span><span class="k">const</span>
 </span></code></pre></div>
 <hr>
 
 <h3 id="function-operator_4">function operator=<a class="headerlink" href="#function-operator_4" title="Permanent link">&para;</a></h3>
-<div class="language-C++ highlight"><pre><span></span><code><span id="__span-19-1"><a id="__codelineno-19-1" name="__codelineno-19-1" href="#__codelineno-19-1"></a><span class="n">NotNull</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">NotNull</span><span class="o">::</span><span class="k">operator</span><span class="o">=</span><span class="w"> </span><span class="p">(</span>
-</span><span id="__span-19-2"><a id="__codelineno-19-2" name="__codelineno-19-2" href="#__codelineno-19-2"></a><span class="w">    </span><span class="k">const</span><span class="w">  </span><span class="n">NotNull</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">other</span>
-</span><span id="__span-19-3"><a id="__codelineno-19-3" name="__codelineno-19-3" href="#__codelineno-19-3"></a><span class="p">)</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">default</span>
+<div class="language-C++ highlight"><pre><span></span><code><span id="__span-21-1"><a id="__codelineno-21-1" name="__codelineno-21-1" href="#__codelineno-21-1"></a><span class="n">NotNull</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">NotNull</span><span class="o">::</span><span class="k">operator</span><span class="o">=</span><span class="w"> </span><span class="p">(</span>
+</span><span id="__span-21-2"><a id="__codelineno-21-2" name="__codelineno-21-2" href="#__codelineno-21-2"></a><span class="w">    </span><span class="k">const</span><span class="w">  </span><span class="n">NotNull</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">other</span>
+</span><span id="__span-21-3"><a id="__codelineno-21-3" name="__codelineno-21-3" href="#__codelineno-21-3"></a><span class="p">)</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">default</span>
 </span></code></pre></div>
 <hr>
 
 <h3 id="function-operator_5">function operator=<a class="headerlink" href="#function-operator_5" title="Permanent link">&para;</a></h3>
-<div class="language-C++ highlight"><pre><span></span><code><span id="__span-20-1"><a id="__codelineno-20-1" name="__codelineno-20-1" href="#__codelineno-20-1"></a><span class="n">NotNull</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">NotNull</span><span class="o">::</span><span class="k">operator</span><span class="o">=</span><span class="w"> </span><span class="p">(</span>
-</span><span id="__span-20-2"><a id="__codelineno-20-2" name="__codelineno-20-2" href="#__codelineno-20-2"></a><span class="w">    </span><span class="n">std</span><span class="o">::</span><span class="n">nullptr_t</span>
-</span><span id="__span-20-3"><a id="__codelineno-20-3" name="__codelineno-20-3" href="#__codelineno-20-3"></a><span class="p">)</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">delete</span>
+<div class="language-C++ highlight"><pre><span></span><code><span id="__span-22-1"><a id="__codelineno-22-1" name="__codelineno-22-1" href="#__codelineno-22-1"></a><span class="n">NotNull</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">NotNull</span><span class="o">::</span><span class="k">operator</span><span class="o">=</span><span class="w"> </span><span class="p">(</span>
+</span><span id="__span-22-2"><a id="__codelineno-22-2" name="__codelineno-22-2" href="#__codelineno-22-2"></a><span class="w">    </span><span class="n">std</span><span class="o">::</span><span class="n">nullptr_t</span>
+</span><span id="__span-22-3"><a id="__codelineno-22-3" name="__codelineno-22-3" href="#__codelineno-22-3"></a><span class="p">)</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">delete</span>
 </span></code></pre></div>
 <hr>
 
 <h3 id="function-operator_6">function operator[]<a class="headerlink" href="#function-operator_6" title="Permanent link">&para;</a></h3>
-<div class="language-C++ highlight"><pre><span></span><code><span id="__span-21-1"><a id="__codelineno-21-1" name="__codelineno-21-1" href="#__codelineno-21-1"></a><span class="kt">void</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">NotNull</span><span class="o">::</span><span class="k">operator</span><span class="p">[]</span><span class="w"> </span><span class="p">(</span>
-</span><span id="__span-21-2"><a id="__codelineno-21-2" name="__codelineno-21-2" href="#__codelineno-21-2"></a><span class="w">    </span><span class="n">std</span><span class="o">::</span><span class="kt">ptrdiff_t</span>
-</span><span id="__span-21-3"><a id="__codelineno-21-3" name="__codelineno-21-3" href="#__codelineno-21-3"></a><span class="p">)</span><span class="w"> </span><span class="k">const</span>
+<div class="language-C++ highlight"><pre><span></span><code><span id="__span-23-1"><a id="__codelineno-23-1" name="__codelineno-23-1" href="#__codelineno-23-1"></a><span class="kt">void</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">NotNull</span><span class="o">::</span><span class="k">operator</span><span class="p">[]</span><span class="w"> </span><span class="p">(</span>
+</span><span id="__span-23-2"><a id="__codelineno-23-2" name="__codelineno-23-2" href="#__codelineno-23-2"></a><span class="w">    </span><span class="n">std</span><span class="o">::</span><span class="kt">ptrdiff_t</span>
+</span><span id="__span-23-3"><a id="__codelineno-23-3" name="__codelineno-23-3" href="#__codelineno-23-3"></a><span class="p">)</span><span class="w"> </span><span class="k">const</span>
 </span></code></pre></div>
 <hr>
 
 <h3 id="function-swap">function swap<a class="headerlink" href="#function-swap" title="Permanent link">&para;</a></h3>
-<div class="language-C++ highlight"><pre><span></span><code><span id="__span-22-1"><a id="__codelineno-22-1" name="__codelineno-22-1" href="#__codelineno-22-1"></a><span class="kr">inline</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">NotNull</span><span class="o">::</span><span class="n">swap</span><span class="w"> </span><span class="p">(</span>
-</span><span id="__span-22-2"><a id="__codelineno-22-2" name="__codelineno-22-2" href="#__codelineno-22-2"></a><span class="w">    </span><span class="n">NotNull</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">other</span>
-</span><span id="__span-22-3"><a id="__codelineno-22-3" name="__codelineno-22-3" href="#__codelineno-22-3"></a><span class="p">)</span><span class="w"> </span><span class="k">noexcept</span>
+<div class="language-C++ highlight"><pre><span></span><code><span id="__span-24-1"><a id="__codelineno-24-1" name="__codelineno-24-1" href="#__codelineno-24-1"></a><span class="kr">inline</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">NotNull</span><span class="o">::</span><span class="n">swap</span><span class="w"> </span><span class="p">(</span>
+</span><span id="__span-24-2"><a id="__codelineno-24-2" name="__codelineno-24-2" href="#__codelineno-24-2"></a><span class="w">    </span><span class="n">NotNull</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">other</span>
+</span><span id="__span-24-3"><a id="__codelineno-24-3" name="__codelineno-24-3" href="#__codelineno-24-3"></a><span class="p">)</span><span class="w"> </span><span class="k">noexcept</span>
 </span></code></pre></div>
 <hr>
 

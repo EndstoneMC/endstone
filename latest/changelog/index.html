@@ -5538,7 +5538,7 @@ and this project adheres to <a href="https://semver.org/spec/v2.0.0.html">Semant
 <li>Added <code>WritableBookMeta</code>, <code>BookMeta</code> and <code>CrossbowMeta</code> item meta types.</li>
 <li>Added <code>PotionMeta</code> for potions, splash potions and lingering potions, giving the <code>PotionType</code> identifiers a consumer: <code>meta.base_potion_type</code> reads and writes the potion a bottle holds. Bedrock derives a potion's effects and its colour from the base potion type, so there is no <code>custom_effects</code> or <code>color</code> as in Bukkit's <code>PotionMeta</code>.</li>
 <li>Added binary NBT serialization (<code>dump</code>/<code>load</code>) with support for multiple formats.</li>
-<li>Added a unified <code>Object.as&lt;T&gt;()</code>/<code>is&lt;T&gt;()</code> casting API, replacing the per-type <code>asPlayer()</code>, <code>asMob()</code>, etc.</li>
+<li>Added a unified <code>Object.as&lt;T&gt;()</code>/<code>is&lt;T&gt;()</code> casting API, replacing the per-type <code>asPlayer()</code>, <code>asMob()</code>, etc. <code>NotNull&lt;T&gt;</code> and <code>Nullable&lt;T&gt;</code> carry the same pair, so a handle can be narrowed without unwrapping it: <code>event.getActor().as&lt;Player&gt;()</code> returns a <code>Nullable&lt;Player&gt;</code> that shares ownership with the original, or a null one if the actor is not a player.</li>
 <li>Added a healthcheck to the Docker image so <code>docker ps</code> and Docker Compose report whether the server is actually online.</li>
 <li>Added <code>PUID</code>/<code>PGID</code> environment variables to the Docker image to keep server files owned by your host user.</li>
 <li>Added a <code>docker-compose.yml</code> for running the server with Docker Compose.</li>

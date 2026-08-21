@@ -31,6 +31,7 @@
 #include <utility>
 
 #include "endstone/check.h"
+#include "endstone/object.h"
 
 namespace endstone {
 template <class T>
@@ -64,6 +65,23 @@ public:
     const pointer_type &get() const noexcept { return ptr_; }
     T *operator->() const noexcept { return ptr_.get(); }
     T &operator*() const noexcept { return *get(); }
+
+    template <class U>
+        requires std::is_base_of_v<Object, T> && std::is_base_of_v<Object, U>
+    [[nodiscard]] bool is() const
+    {
+        return ptr_->template is<U>();
+    }
+
+    template <class U>
+        requires std::is_base_of_v<Object, T> && std::is_base_of_v<Object, U>
+    [[nodiscard]] Nullable<U> as() const
+    {
+        if (auto *raw = ptr_->template as<U>()) {
+            return std::shared_ptr<U>(ptr_, raw);
+        }
+        return nullptr;
+    }
 
     template <class U>
     [[nodiscard]] NotNull<U> cast() const
@@ -119,6 +137,25 @@ public:
     T *operator->() const noexcept { return ptr_.get(); }
     T &operator*() const noexcept { return *get(); }
     explicit operator bool() const noexcept { return ptr_ != nullptr; }
+
+    template <class U>
+        requires std::is_base_of_v<Object, T> && std::is_base_of_v<Object, U>
+    [[nodiscard]] bool is() const
+    {
+        return ptr_ != nullptr && ptr_->template is<U>();
+    }
+
+    template <class U>
+        requires std::is_base_of_v<Object, T> && std::is_base_of_v<Object, U>
+    [[nodiscard]] Nullable<U> as() const
+    {
+        if (ptr_) {
+            if (auto *raw = ptr_->template as<U>()) {
+                return std::shared_ptr<U>(ptr_, raw);
+            }
+        }
+        return nullptr;
+    }
 
     template <class U>
     [[nodiscard]] Nullable<U> cast() const

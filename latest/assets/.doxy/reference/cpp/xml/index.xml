@@ -1802,6 +1802,8 @@
     <member refid="classendstone_1_1NotNull_1a533011e63ef7c9abff4433d5ea493c73" kind="function"><name>get</name></member>
     <member refid="classendstone_1_1NotNull_1a21a8f4d85591cb435433f126f1b8f7b6" kind="function"><name>operator-&gt;</name></member>
     <member refid="classendstone_1_1NotNull_1a10782f46cb764067d938eb9f09164bd8" kind="function"><name>operator*</name></member>
+    <member refid="classendstone_1_1NotNull_1a3b96727cb9995dd280206c7c40c5008f" kind="function"><name>is</name></member>
+    <member refid="classendstone_1_1NotNull_1ac93add1380341be0cae5f6bf8820ba75" kind="function"><name>as</name></member>
     <member refid="classendstone_1_1NotNull_1aa3a39f40b96ecb43b6eb5c052800f18b" kind="function"><name>cast</name></member>
     <member refid="classendstone_1_1NotNull_1a4b74a11f0815fff2cbd6e97e16010758" kind="function"><name>NotNull</name></member>
     <member refid="classendstone_1_1NotNull_1aa13cb05033bf872ad518942a3a685a39" kind="function"><name>operator=</name></member>
@@ -1829,6 +1831,8 @@
     <member refid="classendstone_1_1Nullable_1a7906d265f380f7a31adcef433165b028" kind="function"><name>operator-&gt;</name></member>
     <member refid="classendstone_1_1Nullable_1a992e605330beee0c1ae9f0a30c8b4dd2" kind="function"><name>operator*</name></member>
     <member refid="classendstone_1_1Nullable_1a7529b952cd5553e62038f8c15751940c" kind="function"><name>operator bool</name></member>
+    <member refid="classendstone_1_1Nullable_1ac5f55894f08fe1d48dd2c5f5bda97e3d" kind="function"><name>is</name></member>
+    <member refid="classendstone_1_1Nullable_1a167b5f72175efcceed49277f9cccd0be" kind="function"><name>as</name></member>
     <member refid="classendstone_1_1Nullable_1a49d448ceeb976749bcd6b6ceb72b006d" kind="function"><name>cast</name></member>
     <member refid="classendstone_1_1Nullable_1aacfe83683413e2745f4482346f0a0a2a" kind="function"><name>value</name></member>
     <member refid="classendstone_1_1Nullable_1ac6d37b889dcdf009ec8da6a17718100f" kind="function"><name>value_or</name></member>

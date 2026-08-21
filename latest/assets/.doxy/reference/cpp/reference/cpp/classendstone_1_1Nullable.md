@@ -67,8 +67,10 @@ _A wrapper around a std::shared\_ptr that may be null._ [More...](#detailed-desc
 |   | [**Nullable**](#function-nullable-57) (std::shared\_ptr&lt; [**U**](classendstone_1_1Identifier.md) &gt; ptr) <br>_Covariant conversion from a shared\_ptr of a convertible (e.g._  |
 |   | [**Nullable**](#function-nullable-67) ([**const**](classendstone_1_1Identifier.md) [**Nullable**](classendstone_1_1Nullable.md)&lt; [**U**](classendstone_1_1Identifier.md) &gt; & other) <br>_Covariant conversion from a_ [_**Nullable**_](classendstone_1_1Nullable.md) _of a convertible (e.g._ |
 |   | [**Nullable**](#function-nullable-77) ([**const**](classendstone_1_1Identifier.md) [**NotNull**](classendstone_1_1NotNull.md)&lt; [**U**](classendstone_1_1Identifier.md) &gt; & other) <br>_Covariant conversion from a_ [_**NotNull**_](classendstone_1_1NotNull.md) _of a convertible (e.g._ |
-|  [**Nullable**](classendstone_1_1Nullable.md)&lt; [**U**](classendstone_1_1Identifier.md) &gt; | [**cast**](#function-cast) () const<br>_Statically downcasts to a related type, keeping the shared ownership._  |
+|  [**Nullable**](classendstone_1_1Nullable.md)&lt; [**U**](classendstone_1_1Identifier.md) &gt; | [**as**](#function-as) () const<br>_Attempts to narrow the pointee to the given type U, keeping the shared ownership._  |
+|  [**Nullable**](classendstone_1_1Nullable.md)&lt; [**U**](classendstone_1_1Identifier.md) &gt; | [**cast**](#function-cast) () const<br> |
 |  [**const**](classendstone_1_1Identifier.md) pointer\_type & | [**get**](#function-get) () noexcept const<br> |
+|  [**bool**](classendstone_1_1Identifier.md) | [**is**](#function-is) () const<br>_Checks if the pointee is an instance of the given type U (or a subclass of U)._  |
 |   | [**operator bool**](#function-operator-bool) () noexcept const<br> |
 |  [**T**](classendstone_1_1Identifier.md) & | [**operator\***](#function-operator) () noexcept const<br> |
 |  [**T**](classendstone_1_1Identifier.md) \* | [**operator-&gt;**](#function-operator-) () noexcept const<br> |
@@ -264,9 +266,44 @@ derived) type.
 
 
 
+### function as 
+
+_Attempts to narrow the pointee to the given type U, keeping the shared ownership._ 
+```C++
+template<class  U>
+inline Nullable < U > endstone::Nullable::as () const
+```
+
+
+
+Returns a null [**Nullable**](classendstone_1_1Nullable.md) if this is null, or if the pointee is not an instance of U (or a subclass of U).
+
+
+
+
+**Template parameters:**
+
+
+* `U` Target type to narrow to (must derive from [**Object**](classendstone_1_1Object.md)) 
+
+
+
+**Returns:**
+
+A [**Nullable**](classendstone_1_1Nullable.md) holding this as U, or a null [**Nullable**](classendstone_1_1Nullable.md) if the narrowing is invalid 
+
+
+
+
+
+        
+
+<hr>
+
+
+
 ### function cast 
 
-_Statically downcasts to a related type, keeping the shared ownership._ 
 ```C++
 template<class  U>
 inline Nullable < U > endstone::Nullable::cast () const
@@ -287,6 +324,39 @@ inline const pointer_type & endstone::Nullable::get () noexcept const
 
 
 
+
+<hr>
+
+
+
+### function is 
+
+_Checks if the pointee is an instance of the given type U (or a subclass of U)._ 
+```C++
+template<class  U>
+inline bool endstone::Nullable::is () const
+```
+
+
+
+
+
+**Template parameters:**
+
+
+* `U` Type to check against (must derive from [**Object**](classendstone_1_1Object.md)) 
+
+
+
+**Returns:**
+
+`true` if a value is held and the pointee is an instance of U 
+
+
+
+
+
+        
 
 <hr>
 

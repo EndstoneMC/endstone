@@ -16,6 +16,7 @@
 * `#include <type_traits>`
 * `#include <utility>`
 * `#include "endstone/check.h"`
+* `#include "endstone/object.h"`
 
 
 

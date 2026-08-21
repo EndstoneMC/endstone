@@ -38,7 +38,7 @@
         <childnode refid="9" relation="include">
         </childnode>
       </node>
-      <node id="17">
+      <node id="19">
         <label>endstone/ban/player_ban_entry.h</label>
         <link refid="player__ban__entry_8h_source"/>
         <childnode refid="3" relation="include">
@@ -49,7 +49,7 @@
         </childnode>
         <childnode refid="7" relation="include">
         </childnode>
-        <childnode refid="18" relation="include">
+        <childnode refid="20" relation="include">
         </childnode>
       </node>
       <node id="1">
@@ -65,7 +65,7 @@
         </childnode>
         <childnode refid="6" relation="include">
         </childnode>
-        <childnode refid="17" relation="include">
+        <childnode refid="19" relation="include">
         </childnode>
       </node>
       <node id="14">
@@ -76,6 +76,14 @@
         <childnode refid="16" relation="include">
         </childnode>
         <childnode refid="8" relation="include">
+        </childnode>
+      </node>
+      <node id="17">
+        <label>endstone/object.h</label>
+        <link refid="object_8h_source"/>
+        <childnode refid="13" relation="include">
+        </childnode>
+        <childnode refid="18" relation="include">
         </childnode>
       </node>
       <node id="9">
@@ -93,24 +101,26 @@
         </childnode>
         <childnode refid="14" relation="include">
         </childnode>
+        <childnode refid="17" relation="include">
+        </childnode>
       </node>
-      <node id="18">
+      <node id="20">
         <label>endstone/util/uuid.h</label>
         <link refid="uuid_8h_source"/>
-        <childnode refid="19" relation="include">
+        <childnode refid="21" relation="include">
         </childnode>
         <childnode refid="10" relation="include">
         </childnode>
-        <childnode refid="20" relation="include">
+        <childnode refid="22" relation="include">
         </childnode>
-        <childnode refid="21" relation="include">
+        <childnode refid="23" relation="include">
         </childnode>
         <childnode refid="11" relation="include">
         </childnode>
         <childnode refid="4" relation="include">
         </childnode>
       </node>
-      <node id="19">
+      <node id="21">
         <label>algorithm</label>
       </node>
       <node id="2">
@@ -119,10 +129,10 @@
       <node id="10">
         <label>cstddef</label>
       </node>
-      <node id="20">
+      <node id="22">
         <label>cstdint</label>
       </node>
-      <node id="21">
+      <node id="23">
         <label>cstring</label>
       </node>
       <node id="15">
@@ -145,6 +155,9 @@
       </node>
       <node id="13">
         <label>type_traits</label>
+      </node>
+      <node id="18">
+        <label>typeinfo</label>
       </node>
       <node id="8">
         <label>utility</label>
