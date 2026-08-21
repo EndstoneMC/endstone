@@ -8,8 +8,6 @@
             "args": [
                 "install",
                 ".",
-                "-of",
-                "build/conan_out",
                 "--build=missing"
             ],
             "options": {
@@ -41,10 +39,7 @@
         {
             "label": "Project: Install",
             "type": "shell",
-            "command": "rm -rf build/package && uv pip install -U . -C build-dir=./build --verbose",
-            "windows": {
-                "command": "Remove-Item -Recurse -Force build/package; uv pip install -U . -C build-dir=./build --verbose"
-            },
+            "command": "uv pip install -U . --verbose",
             "options": {
                 "cwd": "${workspaceFolder}"
             },

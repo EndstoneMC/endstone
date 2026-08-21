@@ -147,9 +147,13 @@ EndstoneServer::EndstoneServer() : logger_(LoggerFactory::getLogger(""))
     crash_handler_ = std::make_unique<CrashHandler>();
     signal_handler_ = std::make_unique<SignalHandler>();
     player_ban_list_ = std::make_unique<EndstonePlayerBanList>("banned-players.json");
-    player_ban_list_->load();
+    if (auto result = player_ban_list_->load(); !result) {
+        EndstoneServer::getLogger().error(result.error());
+    }
     ip_ban_list_ = std::make_unique<EndstoneIpBanList>("banned-ips.json");
-    ip_ban_list_->load();
+    if (auto result = ip_ban_list_->load(); !result) {
+        EndstoneServer::getLogger().error(result.error());
+    }
     language_ = std::make_unique<EndstoneLanguage>();
     plugin_manager_ = std::make_unique<EndstonePluginManager>(*this);
     service_manager_ = std::make_unique<EndstoneServiceManager>();
