@@ -20,7 +20,6 @@
 #include "bedrock/bedrock.h"
 #include "bedrock/network/packet.h"
 #include "bedrock/network/packet/cerealize/core/serialization_mode.h"
-#include "bedrock/network/packet/serialize/serialized_packet.h"
 
 namespace BookEditAction {
 inline constexpr int MAX_TEXT_LENGTH = 768;
@@ -83,15 +82,14 @@ struct BookEditPacketPayload {
 };
 BEDROCK_STATIC_ASSERT_SIZE(BookEditPacketPayload, 112, 88);
 
-struct BookEditPacketInfo {
-    static constexpr auto PACKET_NAME = "BookEditPacket";
-    static constexpr auto PACKET_ID = MinecraftPacketIds::BookEdit;
-    static constexpr auto DEFAULT_PACKET_SERIALIZATION_MODE = SerializationMode::CerealOnly;
-    static constexpr auto COMPRESSIBILITY = Compressibility::Compressible;
-};
-
-class BookEditPacket : public SerializedPayloadPacket<BookEditPacketInfo, BookEditPacketPayload> {
+class BookEditPacket : public Packet {
 public:
     static constexpr bool SHARE_WITH_HANDLER = false;
+
+    BookEditPacket();
+    BookEditPacket(BookEditPacketPayload);
+
+    BookEditPacketPayload payload;                                        // +48
+    SerializationMode serialization_mode{SerializationMode::CerealOnly};  // +160
 };
 BEDROCK_STATIC_ASSERT_SIZE(BookEditPacket, 168, 144);
