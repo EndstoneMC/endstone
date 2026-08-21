@@ -60,7 +60,7 @@ std::shared_ptr<::BlockActor> cloneBlockActor(::ILevel &level, const ::BlockActo
         return nullptr;
     }
 
-    auto clone = VanillaBlockActorFactory::createBlockActor(source.getType(), position, block);
+    auto clone = VanillaBlockActorFactory::createBlockActor(position, block);
     if (clone == nullptr) {
         return nullptr;
     }

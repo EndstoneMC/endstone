@@ -4,13 +4,6 @@ executable = "bedrock_server.exe"
 filename = "bedrock_server"
 
 [[signatures]]
-name = "?createBlockActor@VanillaBlockActorFactory@@YA?AV?$shared_ptr@VBlockActor@@@std@@W4BlockActorType@@AEBVBlockPos@@AEBVBlockType@@@Z"
-relative = false
-extra = 0
-# Native 1.26.40 factory callback: returns a vanilla block actor for the block type.
-pattern = "55 41 56 56 57 53 48 83 EC 50 48 8D 6C 24 ? 48 C7 45 ? ? ? ? ? 4C 89 C3 48 89 D7"
-
-[[signatures]]
 name = "BlockState::StateListNode::mHead"
 relative = false
 extra = 0
@@ -864,6 +857,32 @@ extra = 0
 #    read ("DisplayObjectives" / "LastUniqueID" / "dummy" default criteria)
 # 3. confirm vs the old named DB (ctor args: CommandSoftEnumRegistry, LevelStorage*, not_null<NonOwnerPointer<GameplayUserManager>>); caller_count 1 = ServerLevel::_initializeScoreboard. Size ballooned 0x3d4 -> 0x3032 from the inlining
 pattern = "55 41 57 41 56 41 55 41 54 56 57 53 48 81 EC ? ? ? ? 48 8D AC 24 ? ? ? ? 0F 29 BD ? ? ? ? 0F 29 B5 ? ? ? ? 48 C7 85 ? ? ? ? ? ? ? ? 4C 89 4D ? 4C 89 C6 48 89 CF E8"
+
+[[signatures]]
+name = "?createBlockActor@VanillaBlockActorFactory@@YA?AV?$shared_ptr@VBlockActor@@@std@@AEBVBlockPos@@AEBVBlockType@@@Z"
+relative = false
+extra = 0
+# VanillaBlockActorFactory::createBlockActor is the vanilla BlockActorCreationFunction that BDS installs
+# into BlockActorFactory and then invokes through a std::function, so nothing in .text calls it or takes
+# its address directly - there is no call-site anchor and it has to be found by body shape.
+# 1. the signature is (sret std::shared_ptr<BlockActor>, const BlockPos &pos, const BlockType &block), so
+#    exactly three incoming registers are live in the prologue and the fourth is never touched
+# 2. the body reads a one-byte block actor type out of `block`, substitutes BlockActorType::Undefined on a
+#    miss (`mov ecx, 3Eh`), then bounds-checks with `dec eax; cmp eax, 3Dh; ja <default>` and jumps
+#    through a 62-entry jump table - the two immediates are BlockActorType's count and count-1, so they
+#    move only when a block entity is added to the game, never with a rebuild
+# 3. every case of that table is the same three instructions: build a block actor into a stack temporary,
+#    `movups xmm0, [rsp]` / `movups [sret], xmm0` (the 16-byte shared_ptr), then release the temporary
+# 4. confirm identity: each case must call a *different* block actor constructor, and there must be no
+#    other 62-way switch in the binary that returns a shared_ptr<BlockActor>. Shape alone is not enough -
+#    a wrong hit here compiles, links and crashes only when a snapshot is taken.
+# 5. cross-check the decoded address against the old named database, or against bedrock_server.pdb on
+#    Windows, where the decorated name above resolves outright - `dump_symbols.py --pdb` takes that path
+#    and never reaches this pattern.
+# 6. uniqueness: the pattern below (prologue + the three argument saves + the byte load that follows) had
+#    exactly one .text hit when it was cut. It was cut against 1.26.40 and has NOT been re-validated
+#    against the version in `version =` above - do that before release.
+pattern = "55 41 56 56 57 53 48 83 EC 50 48 8D 6C 24 ? 48 C7 45 ? ? ? ? ? 4C 89 C3 48 89 D7"
 
 [[signatures]]
 name = "?updateWeather@WeatherManager@@QEAAXMHMH@Z"

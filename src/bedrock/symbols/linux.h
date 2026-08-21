@@ -116,7 +116,7 @@ static constexpr std::array<std::pair<std::string_view, std::size_t>, 65> symbol
     // ServerScoreboard
     {"_ZN16ServerScoreboardC2E23CommandSoftEnumRegistryP12LevelStorageN3gsl8not_nullIN7Bedrock15NonOwnerPointerI19GameplayUserManagerEEEE", 209066992},
     // VanillaBlockActorFactory
-    {"_ZN24VanillaBlockActorFactory16createBlockActorE14BlockActorTypeRK8BlockPosRK9BlockType", 73615632},
+    {"_ZN24VanillaBlockActorFactory16createBlockActorERK8BlockPosRK9BlockType", 73615632},
     // WeatherManager
     {"_ZN14WeatherManager13updateWeatherEfifi", 201402304},
 }};

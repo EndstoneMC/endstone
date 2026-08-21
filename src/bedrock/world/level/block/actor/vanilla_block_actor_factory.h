@@ -14,10 +14,7 @@
 
 #pragma once
 
-#include <cstdint>
 #include <memory>
-
-#include "bedrock/world/level/block/actor/block_actor_type.h"
 
 class BlockActor;
 class BlockPos;
@@ -25,6 +22,6 @@ class BlockType;
 
 namespace VanillaBlockActorFactory {
 
-std::shared_ptr<::BlockActor> createBlockActor(::BlockActorType, const ::BlockPos &, const ::BlockType &);
+std::shared_ptr<::BlockActor> createBlockActor(const ::BlockPos &, const ::BlockType &);
 
 }  // namespace VanillaBlockActorFactory

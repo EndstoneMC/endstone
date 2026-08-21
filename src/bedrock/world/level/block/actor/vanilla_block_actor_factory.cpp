@@ -18,9 +18,9 @@
 
 namespace VanillaBlockActorFactory {
 
-std::shared_ptr<::BlockActor> createBlockActor(::BlockActorType type, const ::BlockPos &pos, const ::BlockType &block)
+std::shared_ptr<::BlockActor> createBlockActor(const ::BlockPos &pos, const ::BlockType &block)
 {
-    return BEDROCK_CALL(&VanillaBlockActorFactory::createBlockActor, type, pos, block);
+    return BEDROCK_CALL(&VanillaBlockActorFactory::createBlockActor, pos, block);
 }
 
 }  // namespace VanillaBlockActorFactory
