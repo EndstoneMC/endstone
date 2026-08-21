@@ -91,6 +91,7 @@ __all__ = [
     "PlayerPickupItemEvent",
     "PlayerPortalEvent",
     "PlayerQuitEvent",
+    "PlayerRecipeBookClickEvent",
     "PlayerRecipeBookSettingsChangeEvent",
     "PlayerRespawnEvent",
     "PlayerRiptideEvent",
