@@ -32,13 +32,15 @@
 #include "endstone/core/server.h"
 #include "endstone/event/player/player_bucket_empty_event.h"
 #include "endstone/runtime/bedrock_hooks/actor_interaction.h"
+#include "endstone/runtime/bedrock_hooks/bucket.h"
 
 namespace {
 
 bool isFilledBucket(const ::Item &item)
 {
-    const auto &name = item.getFullItemName();
-    return item.isBucket() && name != "minecraft:bucket" && name != "minecraft:milk_bucket";
+    const auto fill_type = endstone::runtime::getBucketFillType(item);
+    return fill_type != BucketFillType::Unknown && fill_type != BucketFillType::Empty &&
+           fill_type != BucketFillType::Milk;
 }
 
 bool isCauldron(const ::Block &block)
@@ -48,18 +50,31 @@ bool isCauldron(const ::Block &block)
 
 bool hasWaterContent(const ::Item &item)
 {
-    const auto &name = item.getFullItemName();
-    return name == "minecraft:water_bucket" || name == "minecraft:cod_bucket" ||
-           name == "minecraft:salmon_bucket" || name == "minecraft:tropical_fish_bucket" ||
-           name == "minecraft:pufferfish_bucket" || name == "minecraft:axolotl_bucket" ||
-           name == "minecraft:tadpole_bucket" || name == "minecraft:sulfur_cube_bucket";
+    switch (endstone::runtime::getBucketFillType(item)) {
+    case BucketFillType::Fish:
+    case BucketFillType::Salmon:
+    case BucketFillType::Tropicalfish:
+    case BucketFillType::Pufferfish:
+    case BucketFillType::Water:
+    case BucketFillType::Axolotl:
+    case BucketFillType::Tadpole:
+    case BucketFillType::SulfurCube:
+        return true;
+    default:
+        return false;
+    }
 }
 
 bool isCauldronBucket(const ::Item &item)
 {
-    const auto &name = item.getFullItemName();
-    return name == "minecraft:water_bucket" || name == "minecraft:lava_bucket" ||
-           name == "minecraft:powder_snow_bucket";
+    switch (endstone::runtime::getBucketFillType(item)) {
+    case BucketFillType::Water:
+    case BucketFillType::Lava:
+    case BucketFillType::PowderSnow:
+        return true;
+    default:
+        return false;
+    }
 }
 
 bool canFillCauldron(const ::Block &block, const ::Item &item)
@@ -79,25 +94,28 @@ bool canFillCauldron(const ::Block &block, const ::Item &item)
 
 bool isNonWaterCauldronBucket(const ::Item &item)
 {
-    const auto &name = item.getFullItemName();
-    return name == "minecraft:lava_bucket" || name == "minecraft:powder_snow_bucket";
+    const auto fill_type = endstone::runtime::getBucketFillType(item);
+    return fill_type == BucketFillType::Lava || fill_type == BucketFillType::PowderSnow;
 }
 
 bool shouldHandleEmptyEvent(const ::Item &item, const ::Block &clicked_block)
 {
-    const auto &name = item.getFullItemName();
-    return isFilledBucket(item) &&
-           (isCauldron(clicked_block) ? isCauldronBucket(item) : name != "minecraft:powder_snow_bucket");
+    if (!isFilledBucket(item)) {
+        return false;
+    }
+    if (isCauldron(clicked_block)) {
+        return isCauldronBucket(item);
+    }
+    return endstone::runtime::getBucketFillType(item) != BucketFillType::PowderSnow;
 }
 
 const ::Block *getFluidBlock(const ::Item &item)
 {
-    const auto &name = item.getFullItemName();
     if (hasWaterContent(item)) {
         return ScriptModuleMinecraft::ScriptBlockUtils::createBlockDescriptor("minecraft:water", std::nullopt)
             .tryGetBlockNoLogging();
     }
-    if (name == "minecraft:lava_bucket") {
+    if (endstone::runtime::getBucketFillType(item) == BucketFillType::Lava) {
         return ScriptModuleMinecraft::ScriptBlockUtils::createBlockDescriptor("minecraft:lava", std::nullopt)
             .tryGetBlockNoLogging();
     }
@@ -204,8 +222,8 @@ endstone::runtime::BucketEmptyAction callBucketEmptyEvent(::BlockSource &block_s
 
     const auto &event_item_stack = bucket_event.getItemStack();
     const ::ItemStack default_result{"minecraft:bucket"};
-    const auto keep_native_result = event_item_stack &&
-                                    endstone::core::EndstoneItemStack::toMinecraft(*event_item_stack) == default_result;
+    const auto keep_native_result =
+        event_item_stack && endstone::core::EndstoneItemStack::toMinecraft(*event_item_stack) == default_result;
     pending_bucket_empty = BucketEmptyResult{
         player,
         clicked_position,
@@ -243,15 +261,17 @@ void endstone::runtime::handleCauldronBucketEmptyResult(::Player &player, const 
     pending_bucket_empty.reset();
 }
 
-endstone::runtime::BucketEmptyAction endstone::runtime::handleBucketEmptyEvent(
-    ::Actor &actor, const ::BlockPos &position, FacingID face, const ::ItemStack &item_stack)
+endstone::runtime::BucketEmptyAction endstone::runtime::handleBucketEmptyEvent(::Actor &actor,
+                                                                               const ::BlockPos &position,
+                                                                               FacingID face,
+                                                                               const ::ItemStack &item_stack)
 {
     pending_bucket_empty.reset();
     return callBucketEmptyEvent(actor.getDimensionBlockSource(), &actor, position, face, item_stack);
 }
 
 void endstone::runtime::handleBucketEmptyResult(const ::InteractionResult &result, ::ItemStack &item_stack,
-                                                 ::Actor &actor, const ::BlockPos &position)
+                                                ::Actor &actor, const ::BlockPos &position)
 {
     if (!pending_bucket_empty || !actor.isPlayer()) {
         return;
@@ -266,8 +286,8 @@ void endstone::runtime::handleBucketEmptyResult(const ::InteractionResult &resul
     if (result.isSuccessful() && pending_bucket_empty->write_item_stack) {
         item_stack.setUserData(nullptr);
         item_stack = pending_bucket_empty->item_stack
-                         ? endstone::core::EndstoneItemStack::toMinecraft(*pending_bucket_empty->item_stack)
-                         : ::ItemStack::EMPTY_ITEM;
+                       ? endstone::core::EndstoneItemStack::toMinecraft(*pending_bucket_empty->item_stack)
+                       : ::ItemStack::EMPTY_ITEM;
     }
     pending_bucket_empty.reset();
 }
