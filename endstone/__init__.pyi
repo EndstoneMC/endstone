@@ -528,37 +528,37 @@ class Player(Mob):
             `True` if the command was successful, `False` otherwise.
         """
 
-    def hide_entity(self, plugin: Plugin, entity: Actor) -> None:
+    def hide_actor(self, plugin: Plugin, actor: Actor) -> None:
         """
-        Hides an entity from this player.
+        Hides an actor from this player.
 
         Args:
-            plugin: Plugin that wants to hide the entity.
-            entity: Entity to hide.
+            plugin: Plugin that wants to hide the actor.
+            actor: Actor to hide.
         """
 
-    def show_entity(self, plugin: Plugin, entity: Actor) -> None:
+    def show_actor(self, plugin: Plugin, actor: Actor) -> None:
         """
-        Allows this player to see an entity that was previously hidden.
+        Allows this player to see an actor that was previously hidden.
 
-        If another plugin had hidden the entity too, the entity will remain hidden until the other plugin calls this method
-        too.
+        If another plugin had hidden the actor too, the actor will remain hidden until the other plugin calls this
+        method too.
 
         Args:
-            plugin: Plugin that wants to show the entity.
-            entity: Entity to show.
+            plugin: Plugin that wants to show the actor.
+            actor: Actor to show.
         """
 
     @typing.overload
-    def can_see(self, entity: Actor) -> bool:
+    def can_see(self, actor: Actor) -> bool:
         """
-        Checks to see if an entity has been visually hidden from this player.
+        Checks to see if an actor has been visually hidden from this player.
 
         Args:
-            entity: Entity to check.
+            actor: Actor to check.
 
         Returns:
-            `True` if the entity is not being hidden from this player.
+            `True` if the actor is not being hidden from this player.
         """
 
     @typing.overload
@@ -577,8 +577,8 @@ class Player(Mob):
         """
         Sends a block change to this player.
 
-        This fakes a block change packet for a user at a certain location. This will not actually change the world in any
-        way.
+        This fakes a block change packet for a user at a certain location. This will not actually change the
+        world in any way.
 
         Args:
             location: The location of the changed block.

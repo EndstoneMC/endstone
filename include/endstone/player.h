@@ -112,31 +112,31 @@ public:
     virtual bool performCommand(std::string command) const = 0;  // NOLINT(*-use-nodiscard)
 
     /**
-     * Hides an entity from this player.
+     * Hides an actor from this player.
      *
-     * @param plugin Plugin that wants to hide the entity
-     * @param entity Entity to hide
+     * @param plugin Plugin that wants to hide the actor
+     * @param actor Actor to hide
      */
-    virtual void hideEntity(Plugin &plugin, Actor &entity) = 0;
+    virtual void hideActor(Plugin &plugin, Actor &actor) = 0;
 
     /**
-     * Allows this player to see an entity that was previously hidden.
+     * Allows this player to see an actor that was previously hidden.
      *
-     * If another plugin had hidden the entity too, the entity will remain hidden until the other plugin calls this
+     * If another plugin had hidden the actor too, the actor will remain hidden until the other plugin calls this
      * method too.
      *
-     * @param plugin Plugin that wants to show the entity
-     * @param entity Entity to show
+     * @param plugin Plugin that wants to show the actor
+     * @param actor Actor to show
      */
-    virtual void showEntity(Plugin &plugin, Actor &entity) = 0;
+    virtual void showActor(Plugin &plugin, Actor &actor) = 0;
 
     /**
-     * Checks to see if an entity has been visually hidden from this player.
+     * Checks to see if an actor has been visually hidden from this player.
      *
-     * @param entity Entity to check
-     * @return `true` if the entity is not being hidden from this player
+     * @param actor Actor to check
+     * @return `true` if the actor is not being hidden from this player
      */
-    [[nodiscard]] virtual bool canSee(const Actor &entity) const = 0;
+    [[nodiscard]] virtual bool canSee(const Actor &actor) const = 0;
 
     /**
      * Checks to see if a player has been hidden from this player.

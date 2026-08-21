@@ -26,7 +26,7 @@ class Actor;
  * This event is only called when the actor's visibility status is actually changed. It is called regardless of
  * whether the actor is within the player's tracking range.
  *
- * @see Player::hideEntity()
+ * @see Player::hideActor()
  */
 class PlayerHideActorEvent final : public PlayerEvent {
 public:

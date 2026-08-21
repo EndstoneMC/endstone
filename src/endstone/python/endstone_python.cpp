@@ -218,10 +218,10 @@ PYBIND11_MODULE(_python, m)  // NOLINT(*-use-anonymous-namespace)
     init_actor(m_actor, actor, mob);
     init_block(m_block, block);
     init_level(m_level, level, dimension, location);
-    init_command(m_command, command_sender);
-    init_plugin(m_plugin);  // Plugin must be registered before Player methods that accept Plugin.
     init_player(m, player);
     init_boss(m_boss);
+    init_command(m_command, command_sender);
+    init_plugin(m_plugin);
     init_scheduler(m_scheduler);
     init_permissions(m_permissions, permissible, permission);
     init_registry(m);
@@ -663,31 +663,31 @@ void init_player(py::module_ &m, py_class<Player> &player)
     Returns:
         `True` if the command was successful, `False` otherwise.
 )doc")
-        .def("hide_entity", &Player::hideEntity, py::arg("plugin"), py::arg("entity"), R"doc(
-    Hides an entity from this player.
+        .def("hide_actor", &Player::hideActor, py::arg("plugin"), py::arg("actor"), R"doc(
+    Hides an actor from this player.
 
     Args:
-        plugin: Plugin that wants to hide the entity.
-        entity: Entity to hide.
+        plugin: Plugin that wants to hide the actor.
+        actor: Actor to hide.
 )doc")
-        .def("show_entity", &Player::showEntity, py::arg("plugin"), py::arg("entity"), R"doc(
-    Allows this player to see an entity that was previously hidden.
+        .def("show_actor", &Player::showActor, py::arg("plugin"), py::arg("actor"), R"doc(
+    Allows this player to see an actor that was previously hidden.
 
-    If another plugin had hidden the entity too, the entity will remain hidden until the other plugin calls this method
-    too.
+    If another plugin had hidden the actor too, the actor will remain hidden until the other plugin calls this
+    method too.
 
     Args:
-        plugin: Plugin that wants to show the entity.
-        entity: Entity to show.
+        plugin: Plugin that wants to show the actor.
+        actor: Actor to show.
 )doc")
-        .def("can_see", py::overload_cast<const Actor &>(&Player::canSee, py::const_), py::arg("entity"), R"doc(
-    Checks to see if an entity has been visually hidden from this player.
+        .def("can_see", py::overload_cast<const Actor &>(&Player::canSee, py::const_), py::arg("actor"), R"doc(
+    Checks to see if an actor has been visually hidden from this player.
 
     Args:
-        entity: Entity to check.
+        actor: Actor to check.
 
     Returns:
-        `True` if the entity is not being hidden from this player.
+        `True` if the actor is not being hidden from this player.
 )doc")
         .def("can_see", py::overload_cast<const Player &>(&Player::canSee, py::const_), py::arg("player"), R"doc(
     Checks to see if a player has been hidden from this player.
@@ -701,8 +701,8 @@ void init_player(py::module_ &m, py_class<Player> &player)
         .def("send_block_change", &Player::sendBlockChange, py::arg("location").noconvert(), py::arg("block"), R"doc(
     Sends a block change to this player.
 
-    This fakes a block change packet for a user at a certain location. This will not actually change the world in any
-    way.
+    This fakes a block change packet for a user at a certain location. This will not actually change the
+    world in any way.
 
     Args:
         location: The location of the changed block.

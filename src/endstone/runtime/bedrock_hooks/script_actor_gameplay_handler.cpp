@@ -50,7 +50,7 @@ bool handleEvent(const ActorRemovedEvent &event)
         const auto runtime_id = actor->getRuntimeID().raw_id;
         const auto &server = endstone::core::EndstoneServer::getInstance();
         for (const auto &player : server.getOnlinePlayers()) {
-            static_cast<endstone::core::EndstonePlayer *>(&*player)->removeEntityVisibility(unique_id, runtime_id);
+            player.cast<endstone::core::EndstonePlayer>()->removeActorVisibility(unique_id, runtime_id);
         }
 
         if (actor->isPlayer()) {

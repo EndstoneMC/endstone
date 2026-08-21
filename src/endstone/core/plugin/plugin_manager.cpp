@@ -499,7 +499,7 @@ void EndstonePluginManager::disablePlugin(Plugin &plugin)
         }
         if (auto *server = dynamic_cast<EndstoneServer *>(&server_); server && server->getEndstoneLevel()) {
             for (const auto &player : server->getOnlinePlayers()) {
-                static_cast<EndstonePlayer *>(&*player)->clearHiddenEntities(plugin);
+                player.cast<EndstonePlayer>()->clearHiddenActors(plugin);
             }
         }
     }

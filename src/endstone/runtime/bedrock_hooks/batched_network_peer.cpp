@@ -267,8 +267,7 @@ bool skipBytes(std::string_view payload, std::size_t &offset, const std::size_t 
 bool skipString(std::string_view payload, std::size_t &offset)
 {
     std::uint64_t length = 0;
-    if (!readUnsignedVarInt64(payload, offset, length) || offset > payload.size() ||
-        length > payload.size() - offset) {
+    if (!readUnsignedVarInt64(payload, offset, length) || offset > payload.size() || length > payload.size() - offset) {
         return false;
     }
     return skipBytes(payload, offset, static_cast<std::size_t>(length));
@@ -278,8 +277,7 @@ bool skipSkinImage(std::string_view payload, std::size_t &offset)
 {
     std::uint64_t image_size = 0;
     return skipBytes(payload, offset, 8) && readUnsignedVarInt64(payload, offset, image_size) &&
-           image_size <= payload.size() - offset &&
-           skipBytes(payload, offset, static_cast<std::size_t>(image_size));
+           image_size <= payload.size() - offset && skipBytes(payload, offset, static_cast<std::size_t>(image_size));
 }
 
 bool skipSkin(std::string_view payload, std::size_t &offset)
@@ -333,8 +331,7 @@ bool skipSkin(std::string_view payload, std::size_t &offset)
     }
 
     std::uint64_t tint_color_count = 0;
-    if (!readUnsignedVarInt64(payload, offset, tint_color_count) ||
-        tint_color_count > payload.size() - offset) {
+    if (!readUnsignedVarInt64(payload, offset, tint_color_count) || tint_color_count > payload.size() - offset) {
         return false;
     }
     for (std::uint64_t i = 0; i < tint_color_count; ++i) {
@@ -427,7 +424,7 @@ PlayerListPacketResult filterPlayerListPacket(std::string_view payload, endstone
             player.cachePlayerListEntry(entry.unique_id,
                                         std::string(payload.substr(entry.begin, entry.end - entry.begin)));
         }
-        if (entry.action == 0 && player.isEntityHidden(entry.unique_id)) {
+        if (entry.action == 0 && player.isActorHidden(entry.unique_id)) {
             modified = true;
         }
         else {
@@ -453,8 +450,8 @@ PlayerListPacketResult filterPlayerListPacket(std::string_view payload, endstone
     return PlayerListPacketResult::Modified;
 }
 
-bool isHiddenPacket(const MinecraftPacketIds packet_id, std::string_view payload,
-                    const endstone::core::EndstonePlayer &player)
+bool isHiddenActorPacket(const MinecraftPacketIds packet_id, std::string_view payload,
+                         const endstone::core::EndstonePlayer &player)
 {
     std::size_t offset = 0;
     switch (packet_id) {
@@ -462,7 +459,7 @@ bool isHiddenPacket(const MinecraftPacketIds packet_id, std::string_view payload
     case MinecraftPacketIds::AddItemActor:
     case MinecraftPacketIds::AddPainting: {
         std::int64_t unique_id = 0;
-        return readSignedVarInt64(payload, offset, unique_id) && player.isEntityHidden(unique_id);
+        return readSignedVarInt64(payload, offset, unique_id) && player.isActorHidden(unique_id);
     }
     case MinecraftPacketIds::AddPlayer: {
         if (payload.size() - offset < 16) {
@@ -543,17 +540,18 @@ void BatchedNetworkPeer::sendPacket(const std::string &data, Reliability reliabi
 
     // Create packet send event
     auto payload = stream.getView().substr(stream.getReadPointer());
-    if (player && isHiddenPacket(header.getPacketId(), payload,
-                                 static_cast<const endstone::core::EndstonePlayer &>(*player))) {
-        return;
-    }
     std::string filtered_player_list_payload;
     auto player_list_result = PlayerListPacketResult::Unchanged;
-    if (player && header.getPacketId() == MinecraftPacketIds::PlayerList) {
-        player_list_result = filterPlayerListPacket(
-            payload, static_cast<endstone::core::EndstonePlayer &>(*player), filtered_player_list_payload);
-        if (player_list_result == PlayerListPacketResult::Drop) {
+    if (player) {
+        auto &recipient = static_cast<endstone::core::EndstonePlayer &>(*player);
+        if (recipient.hasHiddenActors() && isHiddenActorPacket(header.getPacketId(), payload, recipient)) {
             return;
+        }
+        if (header.getPacketId() == MinecraftPacketIds::PlayerList) {
+            player_list_result = filterPlayerListPacket(payload, recipient, filtered_player_list_payload);
+            if (player_list_result == PlayerListPacketResult::Drop) {
+                return;
+            }
         }
     }
 

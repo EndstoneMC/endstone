@@ -14,10 +14,11 @@
 
 #pragma once
 
-#include "endstone/actor/actor.h"
 #include "endstone/event/player/player_event.h"
 
 namespace endstone {
+
+class Actor;
 
 /**
  * Called when a hidden actor is shown to a player.
@@ -25,13 +26,13 @@ namespace endstone {
  * This event is only called when the actor's visibility status is actually changed. It is called regardless of
  * whether the actor is within the player's tracking range.
  *
- * @see Player::showEntity()
+ * @see Player::showActor()
  */
 class PlayerShowActorEvent final : public PlayerEvent {
 public:
     ENDSTONE_EVENT(PlayerShowActorEvent);
 
-    PlayerShowActorEvent(const NotNull<Player> &player, Actor &actor)
+    PlayerShowActorEvent(const NotNull<Player> &player, const NotNull<Actor> &actor)
         : PlayerEvent(player), actor_(actor)
     {
     }
@@ -41,10 +42,10 @@ public:
      *
      * @return the shown actor
      */
-    [[nodiscard]] Actor &getActor() const { return actor_; }
+    [[nodiscard]] const NotNull<Actor> &getActor() const { return actor_; }
 
 private:
-    Actor &actor_;
+    NotNull<Actor> actor_;
 };
 
 }  // namespace endstone
