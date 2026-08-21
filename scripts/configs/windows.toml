@@ -784,56 +784,53 @@ pattern = "55 41 57 41 56 41 54 56 57 53 48 81 EC ? ? ? ? 48 8D AC 24 ? ? ? ? 44
 name = "?setSpawnBlockRespawnPosition@Player@@QEAA_NAEBVBlockPos@@UDimensionType@@@Z"
 relative = false
 extra = 0
-# Ladder rung 5 (add-api "New BDS symbols"). Rung 1 fails: neither src/bedrock/world/events/*_events.h nor
-# the BDS headers carry a gameplay event for setting a spawn - PlayerInitialSpawnEvent is the closest and
-# it is about the initial spawn, not the respawn point. Rung 2 fails: both targets are non-virtual, so
-# there is no vtable slot, and of the callers only the bed path is reachable from an anchor already in
-# this table (Player::startSleepInBed). Rung 3 is inapplicable - the feature must intercept the write,
-# not perform it. Rung 4 fails: there is no shared chokepoint upstream of both, because
-# setSpawnBlockRespawnPosition does not call setRespawnPosition; each writes mPlayerRespawnPoint itself.
-# 1. find bytes "31 20 73 65 74 53 70 61 77 6E 50 6F 69 6E 74 00" = "1 setSpawnPoint\0" (unique binary-wide).
-#    It is the label BDS hands to ActorValueValidation::validateBlockPos, and it has exactly five data
-#    xrefs: Player::readAdditionalSaveData, Player::PlayerSpawnPoint::setSpawnPoint, this function, the
-#    2-arg Player::setRespawnPosition and the 3-arg Player::setRespawnPosition
-# 2. of those five this is the only one that opens by calling Actor::getPosition and Actor::getAABB, then
-#    rounds the AABB's max Y through mce::Math::ceil and builds a BlockPos from the resulting Vec3
-# 3. confirm identity by the payload it builds: SetSpawnPositionPacketPayload(dimension,
-#    &mPlayerRespawnPoint.mPlayerPosition, &mPlayerRespawnPoint.mSpawnBlockPos) - the two-BlockPos ctor.
-#    The 2-arg setRespawnPosition uses the (SpawnPositionType, dimension, BlockPos) ctor instead. This is
-#    also the only one of the five that returns bool
-# 4. cross-check the callers - Player::setBedRespawnPosition (itself findable from "tile.bed.respawnSet",
-#    and it gates its entire body on this function's return value), RespawnAnchorBlock::_trySetSpawn and
-#    SimulatedPlayer::create; nothing else calls it
-# 5. walk up to the prologue
-# Steps 1-4 were verified in linux_server_x64/1.21.132.3. The byte pattern below came with the original
-# contribution and has NOT been validated against the version named at the top of this file - re-cut it
-# with update-signatures and confirm a single .text hit before release.
+# 1. find bytes "31 20 73 65 74 53 70 61 77 6E 50 6F 69 6E 74 00" = "1 setSpawnPoint\0". It occurs exactly ONCE in
+#    read-only data and is the label BDS hands to ActorValueValidation::validateBlockPos
+# 2. take its rip-relative lea references in .text. On Windows there is exactly one and it is inside this
+#    function; on Linux there are three - Player::readAdditionalSaveData (~0x3ae0, far larger than the
+#    other two), this function (~0x2c7) and the 2-arg Player::setRespawnPosition (~0x283)
+# 3. separate the two small ones by their direct call sites, which is decisive and identical on both
+#    platforms: this function has exactly THREE direct callers (Player::setBedRespawnPosition,
+#    RespawnAnchorBlock::_trySetSpawn and SimulatedPlayer::create) and none of them references
+#    "commands.spawnpoint.success.single", whereas setRespawnPosition has exactly two and one of them does
+# 4. confirm the body: it opens by calling Actor::getPosition and Actor::getAABB, rounds the AABB's max Y
+#    through mce::Math::ceil to build a BlockPos, and builds SetSpawnPositionPacketPayload from
+#    (dimension, &mPlayerRespawnPoint.mPlayerPosition, &mPlayerRespawnPoint.mSpawnBlockPos). It returns bool,
+#    where setRespawnPosition returns void
+# 5. the pattern below starts at the function's first byte, which is also its .pdata / .eh_frame entry point
+# Verified against 1.26.44.3 (the version at the top of this file): the pattern matches EXACTLY ONCE in
+# .text, that match is the function's start address, and it resolves to the offset committed in
+# src/bedrock/symbols/.
 pattern = "41 57 41 56 41 54 56 57 55 53 48 81 EC A0 00 00 00 0F 29 BC 24 ? ? ? ? 0F 29 B4 24 ? ? ? ? 44 89 C5"
 
 [[signatures]]
 name = "?setRespawnPosition@Player@@QEAAXAEBVBlockPos@@UDimensionType@@@Z"
 relative = false
 extra = 0
-# WARNING: the pattern below is 14 bytes and is almost entirely a generic MSVC prologue. find_signature
-# takes the LOWEST .text hit and binds silently, so this entry MUST be re-cut and its uniqueness checked
-# on every bump - follow the recipe rather than trusting the pattern.
-# 1. same anchor as setSpawnBlockRespawnPosition above: "31 20 73 65 74 53 70 61 77 6E 50 6F 69 6E 74 00"
-#    = "1 setSpawnPoint\0", five data xrefs
-# 2. two of the five are Player::setRespawnPosition overloads. The 2-arg one wanted here is the large body
-#    (~0x255 bytes in linux_server_x64/1.21.132.3); the 3-arg overload is a ~0x4e stub. Take the large one
-# 3. confirm identity by the body: unlike setSpawnBlockRespawnPosition it never calls Actor::getPosition
-#    or Actor::getAABB. It compares the incoming BlockPos and dimension against mPlayerRespawnPoint,
-#    references BlockPos::MIN and VanillaDimensions::Undefined, then stores 0x80000000 into all three
-#    components of mSpawnBlockPos (clearing the spawn block) and builds SetSpawnPositionPacketPayload
-#    through the (SpawnPositionType, dimension, BlockPos) ctor. It returns void
-# 4. cross-check the callers - exactly two: SpawnPointCommand::execute (i.e. /spawnpoint) and
-#    ScriptModuleMinecraft::ScriptPlayer::setSpawnPoint. Neither the bed nor the respawn-anchor path
-#    reaches it
-# 5. walk up to the prologue
-# Steps 1-4 were verified in linux_server_x64/1.21.132.3. The byte pattern below came with the original
-# contribution and has NOT been validated against the version named at the top of this file - re-cut it
-# with update-signatures and confirm a single .text hit before release.
-pattern = "41 56 56 57 53 48 83 EC 78 48 89 CE 8B 02"
+# NOTE: the prologue alone (`41 56 56 57 53 48 83 EC 78`) matches 1436 times in 1.26.44.3, so the pattern is
+# deliberately carried past it into the body - the `mov rsi, rcx; mov eax, [rdx]` argument setup and the
+# first `cmp eax, [rcx+mPlayerRespawnPoint]; jne` of the "did anything change?" test. The member offset and
+# the jump displacement are wildcarded so a layout shift does not break it gratuitously, while the shape
+# still pins it to one function. Do not shorten it back to the prologue: find_signature takes the lowest
+# .text hit and would bind silently.
+# 1. same anchor family as setSpawnBlockRespawnPosition above, but do not rely on it alone: on Windows this
+#    function carries no rip-relative reference to "1 setSpawnPoint" at all, and on Linux it is one of three
+#    that do
+# 2. the version-stable anchor is the caller. Find "commands.spawnpoint.success.single\0" (exactly one
+#    occurrence in read-only data); its lone referring function is SpawnPointCommand::execute
+# 3. this function is the target of a direct `call rel32` from SpawnPointCommand::execute. It has exactly TWO
+#    direct callers binary-wide - that one and ScriptModuleMinecraft::ScriptPlayer::setSpawnPoint - which is
+#    what separates it from setSpawnBlockRespawnPosition (three callers, none of them the command)
+# 4. confirm the body: unlike setSpawnBlockRespawnPosition it never calls Actor::getPosition or
+#    Actor::getAABB. It opens by comparing the incoming BlockPos and dimension against mPlayerRespawnPoint,
+#    references BlockPos::MIN and VanillaDimensions::Undefined, clears mSpawnBlockPos, and builds
+#    SetSpawnPositionPacketPayload through the (SpawnPositionType, dimension, BlockPos) ctor. It returns void
+# 5. it sits immediately after setSpawnBlockRespawnPosition in .text on both platforms - a useful sanity
+#    check, never the primary anchor
+# Verified against 1.26.44.3 (the version at the top of this file): the pattern matches EXACTLY ONCE in
+# .text, that match is the function's start address, and it resolves to the offset committed in
+# src/bedrock/symbols/.
+pattern = "41 56 56 57 53 48 83 EC 78 48 89 CE 8B 02 3B 81 ? ? 00 00 75 ?"
 
 [[signatures]]
 name = "?take@Player@@QEAA_NAEAVActor@@HH@Z"
