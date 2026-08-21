@@ -69,7 +69,7 @@ public:
      *
      * @return Block at the represented location
      */
-    [[nodiscard]] std::unique_ptr<Block> getBlock() const;
+    [[nodiscard]] NotNull<Block> getBlock() const;
 
     /**
      * Sets the x-coordinate of this location.

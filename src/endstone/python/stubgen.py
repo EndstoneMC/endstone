@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 # /// script
-# requires-python = ">=3.10"
+# requires-python = ">=3.11"
 # dependencies = [
 #     "griffe>=2.1,<3",
 # ]
@@ -708,6 +708,8 @@ class StubGen:
             return False
         name = obj.name
         if name in SKIP_LIST:
+            return False
+        if name.startswith("__pybind11"):
             return False
         if is_private(name) and not self.include_private:
             return False

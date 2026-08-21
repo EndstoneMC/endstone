@@ -23,6 +23,7 @@
 #include "endstone/inventory/item_type.h"
 #include "endstone/inventory/meta/item_meta.h"
 #include "endstone/nbt/tag.h"
+#include "endstone/util/pointers.h"
 
 namespace endstone {
 
@@ -162,7 +163,7 @@ public:
      *
      * @return a copy of the current ItemStack's ItemMeta
      */
-    [[nodiscard]] std::unique_ptr<ItemMeta> getItemMeta() const { return impl_->getItemMeta(); }
+    [[nodiscard]] Nullable<ItemMeta> getItemMeta() const { return impl_->getItemMeta(); }
 
     /**
      * Checks to see if any metadata has been defined.
@@ -195,7 +196,7 @@ private:
         [[nodiscard]] virtual std::string getTranslationKey() const = 0;
         [[nodiscard]] virtual int getMaxStackSize() const = 0;
         [[nodiscard]] virtual bool isSimilar(const Impl &other) const = 0;
-        [[nodiscard]] virtual std::unique_ptr<ItemMeta> getItemMeta() const = 0;
+        [[nodiscard]] virtual Nullable<ItemMeta> getItemMeta() const = 0;
         [[nodiscard]] virtual bool hasItemMeta() const = 0;
         virtual bool setItemMeta(const ItemMeta *meta) = 0;
         [[nodiscard]] virtual CompoundTag getNbt() const = 0;

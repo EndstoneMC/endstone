@@ -43,14 +43,14 @@ public:
     // Permissible
     [[nodiscard]] PermissionLevel getPermissionLevel() const override;
     [[nodiscard]] bool isPermissionSet(std::string name) const override;
-    [[nodiscard]] bool isPermissionSet(const Permission &perm) const override;
+    [[nodiscard]] bool isPermissionSet(const NotNull<Permission> &perm) const override;
     [[nodiscard]] bool hasPermission(std::string name) const override;
-    [[nodiscard]] bool hasPermission(const Permission &perm) const override;
-    PermissionAttachment *addAttachment(Plugin &plugin, const std::string &name, bool value) override;
-    PermissionAttachment *addAttachment(Plugin &plugin) override;
-    bool removeAttachment(PermissionAttachment &attachment) override;
+    [[nodiscard]] bool hasPermission(const NotNull<Permission> &perm) const override;
+    NotNull<PermissionAttachment> addAttachment(Plugin &plugin, const std::string &name, bool value) override;
+    NotNull<PermissionAttachment> addAttachment(Plugin &plugin) override;
+    bool removeAttachment(const NotNull<PermissionAttachment> &attachment) override;
     void recalculatePermissions() override;
-    [[nodiscard]] std::unordered_set<PermissionAttachmentInfo *> getEffectivePermissions() const override;
+    [[nodiscard]] std::unordered_set<NotNull<PermissionAttachmentInfo>> getEffectivePermissions() const override;
 
     // CommandSender
     void sendMessage(const Message &message) const override;
@@ -91,6 +91,7 @@ public:
     [[nodiscard]] bool getAllowFlight() const override;
     void setAllowFlight(bool flight) override;
     [[nodiscard]] bool isFlying() const override;
+    [[nodiscard]] bool isCrawling() const override;
     void setFlying(bool value) override;
     [[nodiscard]] float getFlySpeed() const override;
     void setFlySpeed(float value) const override;

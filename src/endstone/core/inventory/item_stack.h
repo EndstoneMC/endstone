@@ -36,7 +36,7 @@ public:
     [[nodiscard]] std::string getTranslationKey() const override;
     [[nodiscard]] int getMaxStackSize() const override;
     [[nodiscard]] bool isSimilar(const Impl &other) const override;
-    [[nodiscard]] std::unique_ptr<ItemMeta> getItemMeta() const override;
+    [[nodiscard]] Nullable<ItemMeta> getItemMeta() const override;
     [[nodiscard]] bool hasItemMeta() const override;
     bool setItemMeta(const ItemMeta *meta) override;
     [[nodiscard]] CompoundTag getNbt() const override;
@@ -45,7 +45,7 @@ public:
     static ::ItemStack toMinecraft(const ItemStack &item);
     static ItemStack fromMinecraft(const ::ItemStackBase &item);
     static const ItemType &getType(const ItemStackBase *item);
-    static std::unique_ptr<ItemMeta> getItemMeta(const ItemStackBase *item);
+    static Nullable<ItemMeta> getItemMeta(const ItemStackBase *item);
     static bool hasItemMeta(const ItemStackBase *item);
     static bool setItemMeta(ItemStackBase *item, const ItemMeta *meta);
 

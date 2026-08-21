@@ -178,10 +178,10 @@ RenderType EndstoneObjective::getRenderType() const
     return static_cast<RenderType>(objective_->getRenderType());
 }
 
-std::unique_ptr<Score> EndstoneObjective::getScore(ScoreEntry entry) const
+NotNull<Score> EndstoneObjective::getScore(ScoreEntry entry) const
 {
     checkState();
-    return std::make_unique<EndstoneScore>(copy(), entry);
+    return std::make_shared<EndstoneScore>(copy(), entry);
 }
 
 NotNull<EndstoneScoreboard> EndstoneObjective::checkState() const
@@ -190,9 +190,9 @@ NotNull<EndstoneScoreboard> EndstoneObjective::checkState() const
     return scoreboard_;
 }
 
-std::unique_ptr<EndstoneObjective> EndstoneObjective::copy() const
+NotNull<EndstoneObjective> EndstoneObjective::copy() const
 {
-    return std::make_unique<EndstoneObjective>(scoreboard_, objective_);
+    return std::make_shared<EndstoneObjective>(scoreboard_, objective_);
 }
 
 bool EndstoneObjective::operator==(const Objective &other) const

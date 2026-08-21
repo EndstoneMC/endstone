@@ -75,7 +75,7 @@ PermissionLevel EndstoneBlockCommandSender::getPermissionLevel() const
     return BlockPermissionBase::instance()->getPermissionLevel();
 }
 
-std::unique_ptr<Block> EndstoneBlockCommandSender::getBlock() const
+NotNull<Block> EndstoneBlockCommandSender::getBlock() const
 {
     return EndstoneBlock::at(origin_.getDimension()->getBlockSourceFromMainChunkSource(), origin_.getBlockPosition());
 }

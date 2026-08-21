@@ -51,24 +51,33 @@ public:
 
     [[nodiscard]] bool isPermissionSet(std::string name) const override { return sender_->isPermissionSet(name); }
 
-    [[nodiscard]] bool isPermissionSet(const Permission &perm) const override { return sender_->isPermissionSet(perm); }
+    [[nodiscard]] bool isPermissionSet(const NotNull<Permission> &perm) const override
+    {
+        return sender_->isPermissionSet(perm);
+    }
 
     [[nodiscard]] bool hasPermission(std::string name) const override { return sender_->hasPermission(name); }
 
-    [[nodiscard]] bool hasPermission(const Permission &perm) const override { return sender_->hasPermission(perm); }
+    [[nodiscard]] bool hasPermission(const NotNull<Permission> &perm) const override
+    {
+        return sender_->hasPermission(perm);
+    }
 
-    PermissionAttachment *addAttachment(Plugin &plugin, const std::string &name, bool value) override
+    NotNull<PermissionAttachment> addAttachment(Plugin &plugin, const std::string &name, bool value) override
     {
         return sender_->addAttachment(plugin, name, value);
     }
 
-    PermissionAttachment *addAttachment(Plugin &plugin) override { return sender_->addAttachment(plugin); }
+    NotNull<PermissionAttachment> addAttachment(Plugin &plugin) override { return sender_->addAttachment(plugin); }
 
-    bool removeAttachment(PermissionAttachment &attachment) override { return sender_->removeAttachment(attachment); }
+    bool removeAttachment(const NotNull<PermissionAttachment> &attachment) override
+    {
+        return sender_->removeAttachment(attachment);
+    }
 
     void recalculatePermissions() override { sender_->recalculatePermissions(); }
 
-    [[nodiscard]] std::unordered_set<PermissionAttachmentInfo *> getEffectivePermissions() const override
+    [[nodiscard]] std::unordered_set<NotNull<PermissionAttachmentInfo>> getEffectivePermissions() const override
     {
         return sender_->getEffectivePermissions();
     }
