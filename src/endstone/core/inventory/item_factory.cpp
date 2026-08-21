@@ -26,7 +26,7 @@ EndstoneItemFactory &EndstoneItemFactory::instance()
     return factory;
 }
 
-std::unique_ptr<ItemMeta> EndstoneItemFactory::getItemMeta(const ItemTypeId type) const
+Nullable<ItemMeta> EndstoneItemFactory::getItemMeta(const ItemTypeId type) const
 {
     return getItemMeta(type, nullptr);
 }
@@ -60,12 +60,12 @@ bool EndstoneItemFactory::equals(const ItemMeta *meta1, const ItemMeta *meta2) c
     return equals0(*meta1, *meta2);
 }
 
-std::unique_ptr<ItemMeta> EndstoneItemFactory::asMetaFor(const ItemMeta *meta, ItemTypeId type) const
+Nullable<ItemMeta> EndstoneItemFactory::asMetaFor(const ItemMeta *meta, ItemTypeId type) const
 {
     return getItemMeta(type, meta);
 }
 
-std::unique_ptr<ItemMeta> EndstoneItemFactory::getItemMeta(const ItemTypeId &type, const ItemMeta *meta) const
+Nullable<ItemMeta> EndstoneItemFactory::getItemMeta(const ItemTypeId &type, const ItemMeta *meta) const
 {
     return EndstoneItemMetas::getItemMetaDetails(type).fromItemMeta(type, meta);
 }

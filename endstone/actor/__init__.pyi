@@ -209,6 +209,12 @@ class Mob(Actor):
         """
 
     @property
+    def is_swimming(self) -> bool:
+        """
+        `True` if this actor is swimming.
+        """
+
+    @property
     def health(self) -> int:
         """
         The entity's health from 0 to its max possible value, where 0 is dead.
@@ -233,7 +239,7 @@ class Mob(Actor):
         Checks whether the given attribute is present on the object.
         """
 
-    def get_attribute(self, attribute: Identifier[Attribute] | str) -> AttributeInstance:
+    def get_attribute(self, attribute: Identifier[Attribute] | str) -> AttributeInstance | None:
         """
         Gets the specified attribute instance from the object. This instance will be backed directly to the object and any changes will be visible at once.
         """

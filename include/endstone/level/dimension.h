@@ -84,7 +84,7 @@ public:
      * @param z Z-coordinate of the block
      * @return Block at the given coordinates
      */
-    [[nodiscard]] virtual std::unique_ptr<Block> getBlockAt(int x, int y, int z) const = 0;
+    [[nodiscard]] virtual NotNull<Block> getBlockAt(int x, int y, int z) const = 0;
 
     /**
      * Gets the Block at the given Location.
@@ -92,7 +92,7 @@ public:
      * @param location Location of the block
      * @return Block at the given coordinates
      */
-    [[nodiscard]] virtual std::unique_ptr<Block> getBlockAt(Location location) const = 0;
+    [[nodiscard]] virtual NotNull<Block> getBlockAt(Location location) const = 0;
 
     /**
      * Gets the highest non-empty (impassable) coordinate at the given coordinates.
@@ -110,7 +110,7 @@ public:
      * @param z Z-coordinate of the block
      * @return Highest non-empty block
      */
-    [[nodiscard]] virtual std::unique_ptr<Block> getHighestBlockAt(int x, int z) const = 0;
+    [[nodiscard]] virtual NotNull<Block> getHighestBlockAt(int x, int z) const = 0;
 
     /**
      * Gets the highest non-empty (impassable) block at the given Location.
@@ -118,14 +118,14 @@ public:
      * @param location Coordinates to get the highest block
      * @return Highest non-empty block
      */
-    [[nodiscard]] virtual std::unique_ptr<Block> getHighestBlockAt(Location location) const = 0;
+    [[nodiscard]] virtual NotNull<Block> getHighestBlockAt(Location location) const = 0;
 
     /**
      * Gets a list of all loaded Chunks.
      *
      * @return All loaded chunks
      */
-    [[nodiscard]] virtual std::vector<std::unique_ptr<Chunk>> getLoadedChunks() = 0;
+    [[nodiscard]] virtual std::vector<NotNull<Chunk>> getLoadedChunks() = 0;
 
     /**
      * Checks if the Chunk at the given coordinates is loaded.
@@ -225,7 +225,7 @@ inline bool Location::isDimensionLoaded() const
     return dimension && dimension->isValid();
 }
 
-inline std::unique_ptr<Block> Location::getBlock() const
+inline NotNull<Block> Location::getBlock() const
 {
     return getDimension().value().getBlockAt(*this);
 }

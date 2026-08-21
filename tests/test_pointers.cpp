@@ -14,6 +14,7 @@
 
 #include "endstone/util/pointers.h"
 
+#include <concepts>
 #include <memory>
 #include <stdexcept>
 #include <type_traits>
@@ -30,6 +31,39 @@ struct Base {
     int value = 0;
 };
 struct Derived : Base {};
+
+struct Tagged {
+    virtual ~Tagged() = default;
+    int tag = 7;
+};
+
+struct Shape : endstone::Object {
+    [[nodiscard]] const std::type_info &getClassTypeId() const override { return typeid(Shape); }
+    [[nodiscard]] bool isInstanceOf(const std::type_info &target) const override { return target == typeid(Shape); }
+};
+
+// Tagged comes first so the Object subobject sits at a non-zero offset within Circle.
+struct Circle : Tagged, Shape {
+    [[nodiscard]] const std::type_info &getClassTypeId() const override { return typeid(Circle); }
+    [[nodiscard]] bool isInstanceOf(const std::type_info &target) const override
+    {
+        return target == typeid(Circle) || Shape::isInstanceOf(target);
+    }
+};
+
+struct Square : Shape {
+    [[nodiscard]] const std::type_info &getClassTypeId() const override { return typeid(Square); }
+    [[nodiscard]] bool isInstanceOf(const std::type_info &target) const override
+    {
+        return target == typeid(Square) || Shape::isInstanceOf(target);
+    }
+};
+
+template <class Handle, class U>
+concept CanNarrow = requires(const Handle &h) {
+    { h.template is<U>() } -> std::same_as<bool>;
+    h.template as<U>();
+};
 }  // namespace
 
 TEST(NotNullTest, RejectsNullptrAtCompileTime)
@@ -76,6 +110,44 @@ TEST(NotNullTest, Cast)
     auto derived = std::make_shared<Derived>();
     const NotNull<Base> base(derived);
     EXPECT_EQ(base.cast<Derived>().get(), derived);
+}
+
+TEST(NotNullTest, IsAndAs)
+{
+    auto circle = std::make_shared<Circle>();
+    const NotNull<Shape> shape(circle);
+
+    EXPECT_TRUE(shape.is<Circle>());
+    EXPECT_TRUE(shape.is<Shape>());
+    EXPECT_FALSE(shape.is<Square>());
+
+    const Nullable<Circle> narrowed = shape.as<Circle>();
+    EXPECT_TRUE(static_cast<bool>(narrowed));
+    EXPECT_EQ(narrowed.get(), circle);
+    EXPECT_EQ(narrowed->tag, 7);
+
+    EXPECT_FALSE(static_cast<bool>(shape.as<Square>()));
+}
+
+TEST(NotNullTest, AsSharesOwnership)
+{
+    auto circle = std::make_shared<Circle>();
+    const NotNull<Shape> shape(circle);
+    EXPECT_EQ(circle.use_count(), 2);
+    {
+        const Nullable<Circle> narrowed = shape.as<Circle>();
+        EXPECT_EQ(circle.use_count(), 3);
+    }
+    EXPECT_EQ(circle.use_count(), 2);
+}
+
+TEST(NotNullTest, IsAndAsRequireObject)
+{
+    static_assert(CanNarrow<NotNull<Shape>, Circle>);
+    static_assert(!CanNarrow<NotNull<Shape>, Base>);
+    static_assert(!CanNarrow<NotNull<Base>, Shape>);
+    static_assert(!CanNarrow<NotNull<Base>, Base>);
+    static_assert(!CanNarrow<Nullable<Base>, Base>);
 }
 
 TEST(NotNullTest, ComparisonAndHash)
@@ -130,6 +202,22 @@ TEST(NullableTest, Cast)
 
     const Nullable<Base> empty;
     EXPECT_FALSE(static_cast<bool>(empty.cast<Derived>()));
+}
+
+TEST(NullableTest, IsAndAs)
+{
+    auto circle = std::make_shared<Circle>();
+    const Nullable<Shape> shape(circle);
+
+    EXPECT_TRUE(shape.is<Circle>());
+    EXPECT_FALSE(shape.is<Square>());
+    EXPECT_EQ(shape.as<Circle>().get(), circle);
+    EXPECT_FALSE(static_cast<bool>(shape.as<Square>()));
+
+    const Nullable<Shape> empty;
+    EXPECT_FALSE(empty.is<Circle>());
+    EXPECT_FALSE(empty.is<Shape>());
+    EXPECT_FALSE(static_cast<bool>(empty.as<Circle>()));
 }
 
 TEST(NullableTest, Hashable)

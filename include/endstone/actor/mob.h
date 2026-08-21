@@ -21,6 +21,7 @@
 #include "endstone/actor/actor.h"
 #include "endstone/attribute/attribute_instance.h"
 #include "endstone/potion/effect.h"
+#include "endstone/util/pointers.h"
 
 namespace endstone {
 /**
@@ -33,6 +34,12 @@ public:
      * @return True if this actor is gliding.
      */
     [[nodiscard]] virtual bool isGliding() const = 0;
+
+    /**
+     * Checks to see if an actor is swimming.
+     * @return True if this actor is swimming.
+     */
+    [[nodiscard]] virtual bool isSwimming() const = 0;
 
     /**
      * Gets the entity's health from 0 to its max possible value, where 0 is dead.
@@ -79,13 +86,13 @@ public:
      *
      * @param id The attribute to get
      */
-    [[nodiscard]] virtual std::unique_ptr<AttributeInstance> getAttribute(AttributeId id) = 0;
+    [[nodiscard]] virtual Nullable<AttributeInstance> getAttribute(AttributeId id) = 0;
 
     /**
      * Gets all attribute instances from the object. This instance will be backed directly to the object and any
      * changes will be visible at once.
      */
-    [[nodiscard]] virtual std::vector<std::unique_ptr<AttributeInstance>> getAttributes() = 0;
+    [[nodiscard]] virtual std::vector<NotNull<AttributeInstance>> getAttributes() = 0;
 
     /**
      * Adds the given Effect to this entity.

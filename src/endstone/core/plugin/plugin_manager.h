@@ -15,6 +15,7 @@
 #pragma once
 
 #include <memory>
+#include <set>
 #include <string>
 #include <string_view>
 #include <unordered_map>
@@ -70,27 +71,30 @@ public:
     }
 
     /** Permission system */
-    [[nodiscard]] Permission *getPermission(std::string name) const override;
-    Permission &addPermission(std::unique_ptr<Permission> perm) override;
-    void removePermission(Permission &perm) override;
+    [[nodiscard]] Nullable<Permission> getPermission(std::string name) const override;
+    NotNull<Permission> addPermission(NotNull<Permission> perm) override;
+    void removePermission(const NotNull<Permission> &perm) override;
     void removePermission(std::string name) override;
-    [[nodiscard]] std::vector<Permission *> getDefaultPermissions(PermissionLevel level) const override;
-    void recalculatePermissionDefaults(Permission &perm) override;
-    void subscribeToPermission(std::string permission, Permissible &permissible) override;
-    void unsubscribeFromPermission(std::string permission, Permissible &permissible) override;
-    [[nodiscard]] std::unordered_set<Permissible *> getPermissionSubscriptions(std::string permission) const override;
-    void subscribeToDefaultPerms(PermissionLevel level, Permissible &permissible) override;
-    void unsubscribeFromDefaultPerms(PermissionLevel level, Permissible &permissible) override;
-    [[nodiscard]] std::unordered_set<Permissible *> getDefaultPermSubscriptions(PermissionLevel level) const override;
-    [[nodiscard]] std::unordered_set<Permission *> getPermissions() const override;
+    [[nodiscard]] std::vector<NotNull<Permission>> getDefaultPermissions(PermissionLevel level) const override;
+    void recalculatePermissionDefaults(const NotNull<Permission> &perm) override;
+    void subscribeToPermission(std::string permission, const NotNull<Permissible> &permissible) override;
+    void unsubscribeFromPermission(std::string permission, const NotNull<Permissible> &permissible) override;
+    [[nodiscard]] std::unordered_set<NotNull<Permissible>> getPermissionSubscriptions(
+        std::string permission) const override;
+    void subscribeToDefaultPerms(PermissionLevel level, const NotNull<Permissible> &permissible) override;
+    void unsubscribeFromDefaultPerms(PermissionLevel level, const NotNull<Permissible> &permissible) override;
+    [[nodiscard]] std::unordered_set<NotNull<Permissible>> getDefaultPermSubscriptions(
+        PermissionLevel level) const override;
+    [[nodiscard]] std::unordered_set<NotNull<Permission>> getPermissions() const override;
 
 private:
     friend class EndstoneServer;
 
     template <typename T>
     using linked_hash_set = boost::multi_index::multi_index_container<
-        T, boost::multi_index::indexed_by<boost::multi_index::sequenced<>,
-                                          boost::multi_index::hashed_unique<boost::multi_index::identity<T>>>>;
+        T, boost::multi_index::indexed_by<
+               boost::multi_index::sequenced<>,
+               boost::multi_index::hashed_unique<boost::multi_index::identity<T>, std::hash<T>>>>;
 
     struct StringHash {
         using is_transparent = void;  // NOLINT(readability-identifier-naming)
@@ -103,7 +107,8 @@ private:
     Plugin *loadPlugin(Plugin &plugin);
     std::vector<Plugin *> loadPlugins(std::vector<Plugin *>);
     void initPlugin(Plugin &plugin, PluginLoader &loader, const std::filesystem::path &base_folder);
-    void calculatePermissionDefault(Permission &perm);
+    using PermissibleSubscriptions = std::set<std::weak_ptr<Permissible>, std::owner_less<std::weak_ptr<Permissible>>>;
+    void calculatePermissionDefault(const NotNull<Permission> &perm);
     void dirtyPermissibles(PermissionLevel level) const;
     [[nodiscard]] PluginLoader *resolvePluginLoader(const std::string &file) const;
     Server &server_;
@@ -111,10 +116,10 @@ private:
     std::vector<Plugin *> plugins_;
     std::unordered_map<std::string, Plugin *> lookup_names_;
     std::unordered_map<std::string, HandlerList, StringHash, std::equal_to<>> event_handlers_;
-    std::unordered_map<std::string, std::unique_ptr<Permission>> permissions_;
-    std::unordered_map<PermissionLevel, linked_hash_set<Permission *>> default_perms_;
-    std::unordered_map<std::string, std::unordered_map<Permissible *, bool>> perm_subs_;
-    std::unordered_map<PermissionLevel, std::unordered_map<Permissible *, bool>> def_subs_;
+    std::unordered_map<std::string, NotNull<Permission>> permissions_;
+    std::unordered_map<PermissionLevel, linked_hash_set<NotNull<Permission>>> default_perms_;
+    mutable std::unordered_map<std::string, PermissibleSubscriptions> perm_subs_;
+    mutable std::unordered_map<PermissionLevel, PermissibleSubscriptions> def_subs_;
 };
 
 }  // namespace core
