@@ -146,7 +146,7 @@ public:
      * @param entry Entry for the Score
      * @return Score tracking the Objective and entry specified
      */
-    [[nodiscard]] virtual std::unique_ptr<Score> getScore(ScoreEntry entry) const = 0;
+    [[nodiscard]] virtual NotNull<Score> getScore(ScoreEntry entry) const = 0;
 
     virtual bool operator==(const Objective &other) const = 0;
     virtual bool operator!=(const Objective &other) const = 0;

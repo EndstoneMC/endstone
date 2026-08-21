@@ -30,24 +30,22 @@ public:
     static NotNull<EndstoneScoreboard> create(::Scoreboard &board);
     static NotNull<EndstoneScoreboard> create(std::unique_ptr<::Scoreboard> board);
 
-    std::unique_ptr<Objective> addObjective(std::string name, Criteria::Type criteria) override;
-    std::unique_ptr<Objective> addObjective(std::string name, Criteria::Type criteria,
-                                            std::string display_name) override;
-    std::unique_ptr<Objective> addObjective(std::string name, Criteria::Type criteria, std::string display_name,
-                                            RenderType render_type) override;
-    [[nodiscard]] std::unique_ptr<Objective> getObjective(std::string name) const override;
-    [[nodiscard]] std::unique_ptr<Objective> getObjective(DisplaySlot slot) const override;
-    [[nodiscard]] std::vector<std::unique_ptr<Objective>> getObjectives() const override;
-    [[nodiscard]] std::vector<std::unique_ptr<Objective>> getObjectivesByCriteria(
-        Criteria::Type criteria) const override;
-    [[nodiscard]] std::vector<std::unique_ptr<Score>> getScores(ScoreEntry entry) const override;
+    NotNull<Objective> addObjective(std::string name, Criteria::Type criteria) override;
+    NotNull<Objective> addObjective(std::string name, Criteria::Type criteria, std::string display_name) override;
+    NotNull<Objective> addObjective(std::string name, Criteria::Type criteria, std::string display_name,
+                                    RenderType render_type) override;
+    [[nodiscard]] Nullable<Objective> getObjective(std::string name) const override;
+    [[nodiscard]] Nullable<Objective> getObjective(DisplaySlot slot) const override;
+    [[nodiscard]] std::vector<NotNull<Objective>> getObjectives() const override;
+    [[nodiscard]] std::vector<NotNull<Objective>> getObjectivesByCriteria(Criteria::Type criteria) const override;
+    [[nodiscard]] std::vector<NotNull<Score>> getScores(ScoreEntry entry) const override;
     void resetScores(ScoreEntry entry) override;
     [[nodiscard]] std::vector<ScoreEntry> getEntries() const override;
     void clearSlot(DisplaySlot slot) override;
     [[nodiscard]] const ::ScoreboardId &getScoreboardId(ScoreEntry entry) const;
     const ::ScoreboardId &getOrCreateScoreboardId(ScoreEntry entry);
     [[nodiscard]] ::Scoreboard &getHandle() const;
-    [[nodiscard]] NotNull<EndstoneScoreboard> getSelf() const;
+    [[nodiscard]] NotNull<EndstoneScoreboard> self() const;
 
     static std::string getCriteriaName(Criteria::Type type);
     static std::string toMinecraftSlot(DisplaySlot slot);

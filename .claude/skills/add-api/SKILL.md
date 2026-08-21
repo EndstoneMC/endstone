@@ -112,6 +112,21 @@ Layout mechanics:
   stays 24 bytes with its `std::hash` member.)
 
 Hooking:
+- **Hooking a virtual by symbol: use a standalone detour holder, not a derived
+  class.** Writing `class TridentItem : public Item { ... override; }` compiles
+  clean but forces out a vtable, typeinfo and deleting destructor, which drag in
+  every `Item::` virtual as undefined. The runtime links `-Wl,--no-undefined`,
+  so it fails at **link**, not compile - single-TU verification will not catch
+  it. Declare a standalone class with the member alone, as the
+  `ScriptPlayerGameplayHandler` hooks do.
+- **Keep `virtual` on that declaration.** It is load-bearing on Windows: MSVC
+  encodes it in the decoration (`U` = public virtual, `Q` = public non-virtual),
+  and `hook::install()` pairs detours to targets by exported mangled name. Drop
+  `virtual` and the name decorates differently, misses the table, and throws
+  "Unable to find target function for detour" at startup. Check the emitted
+  object with `nm`: it should define exactly the mangled name in
+  `symbols/<platform>.h`, with `GLOBAL DEFAULT` visibility, and no undefined
+  base-class symbols.
 - **Prefer a `[[signatures]]` entry + `ENDSTONE_HOOK` over a vtable hook.** A
   vtable ordinal is per-platform and fails *silently* when it drifts - it just
   dispatches the wrong function. A byte pattern fails loudly at

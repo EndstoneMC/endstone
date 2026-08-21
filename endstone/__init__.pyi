@@ -653,6 +653,12 @@ class Player(Mob):
     @is_flying.setter
     def is_flying(self, arg1: bool) -> None: ...
     @property
+    def is_crawling(self) -> bool:
+        """
+        Whether the player is currently crawling or not.
+        """
+
+    @property
     def allow_flight(self) -> bool:
         """
         Whether the Player is allowed to fly via jump key double-tap.

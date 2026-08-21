@@ -110,14 +110,14 @@ bool EndstoneItemStack::isSimilar(const Impl &other) const
                          : !rhs.hasItemMeta();
 }
 
-std::unique_ptr<ItemMeta> EndstoneItemStack::getItemMeta() const
+Nullable<ItemMeta> EndstoneItemStack::getItemMeta() const
 {
     return getItemMeta(&item_);
 }
 
 bool EndstoneItemStack::hasItemMeta() const
 {
-    return hasItemMeta(&item_) && !EndstoneItemFactory::instance().equals(getItemMeta().get(), nullptr);
+    return hasItemMeta(&item_) && !EndstoneItemFactory::instance().equals(getItemMeta().get().get(), nullptr);
 }
 
 bool EndstoneItemStack::setItemMeta(const ItemMeta *meta)
@@ -167,13 +167,13 @@ const ItemType &EndstoneItemStack::getType(const ItemStackBase *item)
     return (item && *item) ? *ItemType::get(item->getItem()->getFullItemName()) : *ItemType::get(ItemType::Air);
 }
 
-std::unique_ptr<ItemMeta> EndstoneItemStack::getItemMeta(const ItemStackBase *item)
+Nullable<ItemMeta> EndstoneItemStack::getItemMeta(const ItemStackBase *item)
 {
     const auto &type = getType(item);
     auto meta = hasItemMeta(item) ? EndstoneItemMetas::getItemMetaDetails(type).fromItemStack(*item)
                                   : EndstoneItemFactory::instance().getItemMeta(type);
     if (item != nullptr && !item->isNull() && meta && meta->as<PotionMeta>()) {
-        static_cast<EndstonePotionMeta *>(meta.get())->readBasePotionType(*item);
+        static_cast<EndstonePotionMeta *>(meta.get().get())->readBasePotionType(*item);
     }
     return meta;
 }

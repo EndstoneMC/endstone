@@ -55,9 +55,9 @@ void EndstoneBlock::setType(BlockTypeId type, bool apply_physics)
     return setData(*server.createBlockData(type), apply_physics);
 }
 
-std::unique_ptr<BlockData> EndstoneBlock::getData() const
+NotNull<BlockData> EndstoneBlock::getData() const
 {
-    return std::make_unique<EndstoneBlockData>(getMinecraftBlock());
+    return std::make_shared<EndstoneBlockData>(getMinecraftBlock());
 }
 
 void EndstoneBlock::setData(const BlockData &data)
@@ -77,17 +77,17 @@ void EndstoneBlock::setData(const BlockData &data, bool apply_physics)
     }
 }
 
-std::unique_ptr<Block> EndstoneBlock::getRelative(int offset_x, int offset_y, int offset_z)
+NotNull<Block> EndstoneBlock::getRelative(int offset_x, int offset_y, int offset_z)
 {
     return getDimension()->getBlockAt(getX() + offset_x, getY() + offset_y, getZ() + offset_z);
 }
 
-std::unique_ptr<Block> EndstoneBlock::getRelative(BlockFace face)
+NotNull<Block> EndstoneBlock::getRelative(BlockFace face)
 {
     return getRelative(face, 1);
 }
 
-std::unique_ptr<Block> EndstoneBlock::getRelative(BlockFace face, int distance)
+NotNull<Block> EndstoneBlock::getRelative(BlockFace face, int distance)
 {
     return getRelative(EndstoneBlockFace::getOffsetX(face) * distance, EndstoneBlockFace::getOffsetY(face) * distance,
                        EndstoneBlockFace::getOffsetZ(face) * distance);
@@ -124,7 +124,7 @@ Location EndstoneBlock::getLocation() const
     return {getDimension(), getX(), getY(), getZ()};
 }
 
-std::unique_ptr<BlockState> EndstoneBlock::captureState() const
+NotNull<BlockState> EndstoneBlock::captureState() const
 {
     if (auto *block_entity = getBlockSource().getBlockEntity(block_pos_)) {
         // TODO(block-state): once we add more type-specific block states (Sign, Furnace, CreatureSpawner, ...),
@@ -133,39 +133,34 @@ std::unique_ptr<BlockState> EndstoneBlock::captureState() const
         switch (block_entity->getType()) {
         case BlockActorType::ItemFrame:
         case BlockActorType::GlowItemFrame:
-            return std::make_unique<EndstoneItemFrame>(*this, static_cast<ItemFrameBlockActor &>(*block_entity));
+            return std::make_shared<EndstoneItemFrame>(*this, static_cast<ItemFrameBlockActor &>(*block_entity));
         case BlockActorType::Sign:
         case BlockActorType::HangingSign:
-            return std::make_unique<EndstoneSign>(*this, static_cast<SignBlockActor &>(*block_entity));
+            return std::make_shared<EndstoneSign>(*this, static_cast<SignBlockActor &>(*block_entity));
         case BlockActorType::MobSpawner:
-            return std::make_unique<EndstoneCreatureSpawner>(*this,
+            return std::make_shared<EndstoneCreatureSpawner>(*this,
                                                              static_cast<MobSpawnerBlockActor &>(*block_entity));
         case BlockActorType::Campfire:
-            return std::make_unique<EndstoneCampfire>(*this, static_cast<CampfireBlockActor &>(*block_entity));
+            return std::make_shared<EndstoneCampfire>(*this, static_cast<CampfireBlockActor &>(*block_entity));
         case BlockActorType::Lectern:
-            return std::make_unique<EndstoneLectern>(*this, static_cast<LecternBlockActor &>(*block_entity));
+            return std::make_shared<EndstoneLectern>(*this, static_cast<LecternBlockActor &>(*block_entity));
         case BlockActorType::Furnace:
         case BlockActorType::BlastFurnace:
         case BlockActorType::Smoker:
-            return std::make_unique<EndstoneFurnace>(*this, static_cast<FurnaceBlockActor &>(*block_entity));
+            return std::make_shared<EndstoneFurnace>(*this, static_cast<FurnaceBlockActor &>(*block_entity));
         default:
             break;
         }
         if (static_cast<VanillaBlockActor *>(block_entity)->getContainer() != nullptr) {
-            return std::make_unique<EndstoneContainer>(*this, *block_entity);
+            return std::make_shared<EndstoneContainer>(*this, *block_entity);
         }
     }
-    return std::make_unique<EndstoneBlockState>(*this);
+    return std::make_shared<EndstoneBlockState>(*this);
 }
 
 BlockSource &EndstoneBlock::getBlockSource() const
 {
     return dimension_->getHandle().getBlockSourceFromMainChunkSource();
-}
-
-std::unique_ptr<Block> EndstoneBlock::clone() const
-{
-    return std::make_unique<EndstoneBlock>(*this);
 }
 
 BlockPos EndstoneBlock::getPosition() const
@@ -178,8 +173,8 @@ BlockPos EndstoneBlock::getPosition() const
     return const_cast<::Block &>(getBlockSource().getBlock(block_pos_));
 }
 
-std::unique_ptr<EndstoneBlock> EndstoneBlock::at(BlockSource &block_source, BlockPos block_pos)
+NotNull<EndstoneBlock> EndstoneBlock::at(BlockSource &block_source, BlockPos block_pos)
 {
-    return std::make_unique<EndstoneBlock>(block_source, block_pos);
+    return std::make_shared<EndstoneBlock>(block_source, block_pos);
 }
 }  // namespace endstone::core

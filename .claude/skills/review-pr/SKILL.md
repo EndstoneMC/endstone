@@ -557,6 +557,20 @@ Report the outcome either way, with the BDS function, its address or mangled
 name, and its cost. A better site identified but not implemented is still the
 most useful thing in the review.
 
+**6.9** An event on a hot path MUST be skipped when no plugin is listening.
+Guard it with `EndstoneServer::getEndstonePluginManager()`'s
+`isEventRegistered<EventType>()`, placed early enough to skip the work that
+builds the event, not just the dispatch - the handle lookups, the `Block`
+allocations, the address formatting. Treat a site as hot when it runs per tick,
+per packet, per actor pair or per block update. Paper marks the same sites with
+`getHandlerList().getRegisteredListeners().length != 0`; when the counterpart
+event carries that guard upstream, the Endstone port MUST carry it too.
+
+**6.10** A guard MUST NOT change behaviour when a listener is present, and MUST
+NOT skip work the server needs regardless. Where a hook does something besides
+firing the event - patching an outbound packet, keeping a cached value current -
+the guard belongs after that work, or the condition must exclude it.
+
 ## 7. The cancel contract
 
 An event need not be cancellable (§3.8). But where the PR *declares* it

@@ -7,13 +7,16 @@ find_package(funchook CONFIG REQUIRED)
 
 add_library(endstone_runtime SHARED
         bedrock_hooks/actor.cpp
+        bedrock_hooks/armor_stand.cpp
         bedrock_hooks/batched_network_peer.cpp
         bedrock_hooks/bedrock_event_logger.cpp
+        bedrock_hooks/bucketable_component.cpp
         bedrock_hooks/campfire_block_actor.cpp
         bedrock_hooks/console_input_reader.cpp
         bedrock_hooks/dedicated_server.cpp
         bedrock_hooks/explosion.cpp
         bedrock_hooks/fire_block.cpp
+        bedrock_hooks/interact_component.cpp
         bedrock_hooks/inventory_transaction.cpp
         bedrock_hooks/item.cpp
         bedrock_hooks/item_registry_manager.cpp
@@ -27,6 +30,7 @@ add_library(endstone_runtime SHARED
         bedrock_hooks/packet.cpp
         bedrock_hooks/piston_block_actor.cpp
         bedrock_hooks/player.cpp
+        bedrock_hooks/pushable_by_entity_utility.cpp
         bedrock_hooks/rak_peer_helper.cpp
         bedrock_hooks/resource_pack_repository.cpp
         bedrock_hooks/say_command.cpp
@@ -40,6 +44,7 @@ add_library(endstone_runtime SHARED
         bedrock_hooks/server_instance.cpp
         bedrock_hooks/server_network_handler.cpp
         bedrock_hooks/server_player.cpp
+        bedrock_hooks/trident_item.cpp
         bedrock_hooks/weather_manager.cpp
         main.cpp
         hook.cpp

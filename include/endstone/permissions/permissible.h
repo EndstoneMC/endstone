@@ -21,7 +21,7 @@
 #include "endstone/object.h"
 #include "endstone/permissions/permission_attachment_info.h"
 #include "endstone/permissions/permission_level.h"
-#include "endstone/util/result.h"
+#include "endstone/util/pointers.h"
 
 namespace endstone {
 
@@ -33,7 +33,7 @@ class PermissionAttachment;
 /**
  * Represents an object that may become a server operator and can be assigned permissions.
  */
-class Permissible : public Object {
+class Permissible : public Object, public std::enable_shared_from_this<Permissible> {
 public:
     /**
      * Gets the permission level of this object.
@@ -56,7 +56,7 @@ public:
      * @param perm Permission to check
      * @return true if the permission is set, otherwise false
      */
-    [[nodiscard]] virtual bool isPermissionSet(const Permission &perm) const = 0;
+    [[nodiscard]] virtual bool isPermissionSet(const NotNull<Permission> &perm) const = 0;
 
     /**
      * Gets the value of the specified permission, if set.
@@ -74,7 +74,7 @@ public:
      * @param perm Permission to get
      * @return Value of the permission
      */
-    [[nodiscard]] virtual bool hasPermission(const Permission &perm) const = 0;
+    [[nodiscard]] virtual bool hasPermission(const NotNull<Permission> &perm) const = 0;
 
     /**
      * Adds a new PermissionAttachment with a single permission by name and value.
@@ -83,16 +83,18 @@ public:
      * @param name Name of the permission to attach
      * @param value Value of the permission
      * @return The PermissionAttachment that was just created
+     * @throws std::invalid_argument if the name is empty or the plugin is disabled
      */
-    virtual PermissionAttachment *addAttachment(Plugin &plugin, const std::string &name, bool value) = 0;
+    virtual NotNull<PermissionAttachment> addAttachment(Plugin &plugin, const std::string &name, bool value) = 0;
 
     /**
      * Adds a new empty PermissionAttachment to this object.
      *
      * @param plugin Plugin responsible for this attachment; must not be disabled.
      * @return The PermissionAttachment that was just created
+     * @throws std::invalid_argument if the plugin is disabled
      */
-    virtual PermissionAttachment *addAttachment(Plugin &plugin) = 0;
+    virtual NotNull<PermissionAttachment> addAttachment(Plugin &plugin) = 0;
 
     /**
      * Removes the given PermissionAttachment from this object.
@@ -100,7 +102,7 @@ public:
      * @param attachment Attachment to remove
      * @return true if the specified attachment was removed successfully, false when it isn't part of this object
      */
-    virtual bool removeAttachment(PermissionAttachment &attachment) = 0;
+    virtual bool removeAttachment(const NotNull<PermissionAttachment> &attachment) = 0;
 
     /**
      * Recalculates the permissions for this object, if the attachments have changed values.
@@ -113,6 +115,6 @@ public:
      *
      * @return Set of currently effective permissions
      */
-    [[nodiscard]] virtual std::unordered_set<PermissionAttachmentInfo *> getEffectivePermissions() const = 0;
+    [[nodiscard]] virtual std::unordered_set<NotNull<PermissionAttachmentInfo>> getEffectivePermissions() const = 0;
 };
 }  // namespace endstone

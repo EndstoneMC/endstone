@@ -28,10 +28,9 @@ namespace endstone {
 class PlayerDeathEvent : public ActorDeathEvent {
 public:
     ENDSTONE_EVENT(PlayerDeathEvent);
-    explicit PlayerDeathEvent(const NotNull<Player> &player, std::unique_ptr<DamageSource> damage_source,
+    explicit PlayerDeathEvent(const NotNull<Player> &player, const NotNull<DamageSource> &damage_source,
                               std::optional<Message> death_message)
-        : ActorDeathEvent(player, std::move(damage_source)), player_(player),
-          death_message_(std::move(death_message))
+        : ActorDeathEvent(player, damage_source), player_(player), death_message_(std::move(death_message))
     {
     }
 

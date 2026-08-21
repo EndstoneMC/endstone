@@ -8,6 +8,7 @@
 #include "bedrock/world/phys/aabb.h"
 #include "endstone/core/block/block.h"
 #include "endstone/core/block/block_type.h"
+#include "endstone/core/plugin/plugin_manager.h"
 #include "endstone/core/server.h"
 #include "endstone/event/block/leaves_decay_event.h"
 
@@ -99,10 +100,12 @@ void LeavesBlock::_die(BlockSource &region, const BlockPos &pos) /*const*/
 {
     // Endstone begins
     const auto &server = endstone::core::EndstoneServer::getInstance();
-    endstone::LeavesDecayEvent event(endstone::core::EndstoneBlock::at(region, pos));
-    server.getPluginManager().callEvent(event);
-    if (event.isCancelled()) {
-        return;
+    if (server.getEndstonePluginManager().isEventRegistered<endstone::LeavesDecayEvent>()) {
+        endstone::LeavesDecayEvent event(endstone::core::EndstoneBlock::at(region, pos));
+        server.getPluginManager().callEvent(event);
+        if (event.isCancelled()) {
+            return;
+        }
     }
     // Endstone ends
 

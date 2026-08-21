@@ -107,12 +107,11 @@ public:
     float getCurrentTickUsage() override;
     float getAverageTickUsage() override;
     [[nodiscard]] std::chrono::system_clock::time_point getStartTime() override;
-    [[nodiscard]] std::unique_ptr<BossBar> createBossBar(std::string title, BarColor color,
-                                                         BarStyle style) const override;
-    [[nodiscard]] std::unique_ptr<BossBar> createBossBar(std::string title, BarColor color, BarStyle style,
-                                                         std::vector<BarFlag> flags) const override;
-    [[nodiscard]] std::unique_ptr<BlockData> createBlockData(BlockTypeId type) const override;
-    [[nodiscard]] std::unique_ptr<BlockData> createBlockData(BlockTypeId type, BlockStates block_states) const override;
+    [[nodiscard]] NotNull<BossBar> createBossBar(std::string title, BarColor color, BarStyle style) const override;
+    [[nodiscard]] NotNull<BossBar> createBossBar(std::string title, BarColor color, BarStyle style,
+                                                 std::vector<BarFlag> flags) const override;
+    [[nodiscard]] NotNull<BlockData> createBlockData(BlockTypeId type) const override;
+    [[nodiscard]] NotNull<BlockData> createBlockData(BlockTypeId type, BlockStates block_states) const override;
     [[nodiscard]] PlayerBanList &getBanList() const override;
     [[nodiscard]] IpBanList &getIpBanList() const override;
     [[nodiscard]] ServiceManager &getServiceManager() const override;

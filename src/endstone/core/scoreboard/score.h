@@ -26,7 +26,7 @@ class EndstoneObjective;
 
 class EndstoneScore : public Score {
 public:
-    EndstoneScore(std::unique_ptr<EndstoneObjective> objective, ScoreEntry entry);
+    EndstoneScore(NotNull<EndstoneObjective> objective, ScoreEntry entry);
     [[nodiscard]] ScoreEntry getEntry() const override;
     [[nodiscard]] int getValue() const override;
     void setValue(int score) override;
@@ -35,7 +35,7 @@ public:
     [[nodiscard]] NotNull<Scoreboard> getScoreboard() const override;
 
 private:
-    std::unique_ptr<EndstoneObjective> objective_;
+    NotNull<EndstoneObjective> objective_;
     ScoreEntry entry_;
 };
 

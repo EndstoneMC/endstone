@@ -23,7 +23,7 @@
 
 namespace endstone::core {
 
-EndstoneScore::EndstoneScore(std::unique_ptr<EndstoneObjective> objective, ScoreEntry entry)
+EndstoneScore::EndstoneScore(NotNull<EndstoneObjective> objective, ScoreEntry entry)
     : objective_(std::move(objective)), entry_(std::move(entry))
 {
 }

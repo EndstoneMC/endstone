@@ -369,8 +369,7 @@ public:
      * @param style the style of the boss bar
      * @return the created boss bar
      */
-    [[nodiscard]] virtual std::unique_ptr<BossBar> createBossBar(std::string title, BarColor color,
-                                                                 BarStyle style) const = 0;
+    [[nodiscard]] virtual NotNull<BossBar> createBossBar(std::string title, BarColor color, BarStyle style) const = 0;
 
     /**
      * Creates a boss bar instance to display to players. The progress defaults to 1.0.
@@ -381,8 +380,8 @@ public:
      * @param flags a list of flags to set on the boss bar
      * @return the created boss bar
      */
-    [[nodiscard]] virtual std::unique_ptr<BossBar> createBossBar(std::string title, BarColor color, BarStyle style,
-                                                                 std::vector<BarFlag> flags) const = 0;
+    [[nodiscard]] virtual NotNull<BossBar> createBossBar(std::string title, BarColor color, BarStyle style,
+                                                         std::vector<BarFlag> flags) const = 0;
 
     /**
      * Creates a new BlockData instance for the specified block type, with all properties initialized to
@@ -391,7 +390,7 @@ public:
      * @param type the block type
      * @return new data instance
      */
-    [[nodiscard]] virtual std::unique_ptr<BlockData> createBlockData(BlockTypeId type) const = 0;
+    [[nodiscard]] virtual NotNull<BlockData> createBlockData(BlockTypeId type) const = 0;
 
     /**
      * Creates a new BlockData instance for the specified block type, with all properties initialized to
@@ -401,8 +400,7 @@ public:
      * @param block_states block states, for example `{"old_leaf_type":"birch", "persistent_bit":true}`
      * @return new data instance
      */
-    [[nodiscard]] virtual std::unique_ptr<BlockData> createBlockData(BlockTypeId type,
-                                                                     BlockStates block_states) const = 0;
+    [[nodiscard]] virtual NotNull<BlockData> createBlockData(BlockTypeId type, BlockStates block_states) const = 0;
 
     /**
      * Gets the player ban list.

@@ -21,6 +21,7 @@
 
 #include <entt/locator/locator.hpp>
 
+#include "endstone/check.h"
 #include "endstone/core/server.h"
 #include "endstone/core/type.h"
 #include "endstone/permissions/permission.h"
@@ -28,17 +29,7 @@
 
 namespace endstone::core {
 
-PermissibleBase::PermissibleBase(Permissible *opable) : opable_(opable), parent_(opable ? *opable : *this) {}
-
-PermissibleBase::~PermissibleBase()
-{
-    if (getPluginManager()) {
-        // Ensure clearPermissions() is called during destruction to remove this object from the permission subscription
-        // list and avoid dangling pointers. During server shutdown, if the plugin manager is already destroyed, this
-        // step is safely skipped as no dangling pointers can occur.
-        clearPermissions();
-    }
-}
+PermissibleBase::PermissibleBase(Permissible *opable) : opable_(opable) {}
 
 PermissionLevel PermissibleBase::getPermissionLevel() const
 {
@@ -54,9 +45,9 @@ bool PermissibleBase::isPermissionSet(std::string name) const
     return permissions_.contains(name);
 }
 
-bool PermissibleBase::isPermissionSet(const Permission &perm) const
+bool PermissibleBase::isPermissionSet(const NotNull<Permission> &perm) const
 {
-    return isPermissionSet(perm.getName());
+    return isPermissionSet(perm->getName());
 }
 
 bool PermissibleBase::hasPermission(std::string name) const
@@ -66,20 +57,20 @@ bool PermissibleBase::hasPermission(std::string name) const
         return permissions_.find(name)->second->getValue();
     }
 
-    if (auto *perm = getPluginManager()->getPermission(name); perm != nullptr) {
+    if (const auto perm = getPluginManager()->getPermission(name)) {
         return hasPermission(perm->getDefault(), getPermissionLevel());
     }
     return hasPermission(Permission::DefaultPermission, getPermissionLevel());
 }
 
-bool PermissibleBase::hasPermission(const Permission &perm) const
+bool PermissibleBase::hasPermission(const NotNull<Permission> &perm) const
 {
-    auto name = perm.getName();
+    auto name = perm->getName();
     std::ranges::transform(name, name.begin(), [](unsigned char c) { return std::tolower(c); });
     if (isPermissionSet(name)) {
         return permissions_.find(name)->second->getValue();
     }
-    return hasPermission(perm.getDefault(), getPermissionLevel());
+    return hasPermission(perm->getDefault(), getPermissionLevel());
 }
 
 bool PermissibleBase::hasPermission(PermissionDefault default_value, PermissionLevel level)
@@ -100,94 +91,90 @@ bool PermissibleBase::hasPermission(PermissionDefault default_value, PermissionL
     }
 }
 
-PermissionAttachment *PermissibleBase::addAttachment(Plugin &plugin, const std::string &name, bool value)
+NotNull<PermissionAttachment> PermissibleBase::addAttachment(Plugin &plugin, const std::string &name, bool value)
 {
-    if (name.empty()) {
-        plugin.getLogger().error("Could not add PermissionAttachment: Permission name cannot be empty");
-        return nullptr;
-    }
+    Preconditions::checkArgument(!name.empty(), "Could not add PermissionAttachment: permission name cannot be empty.");
 
-    auto *result = addAttachment(plugin);
-    if (result) {
-        result->setPermission(name, value);
-        recalculatePermissions();
-    }
-
-    return result;
-}
-
-PermissionAttachment *PermissibleBase::addAttachment(Plugin &plugin)
-{
-    if (!plugin.isEnabled()) {
-        plugin.getLogger().error("Could not add PermissionAttachment: Plugin is disabled");
-        return nullptr;
-    }
-
-    const auto &it = attachments_.emplace_back(std::make_unique<PermissionAttachment>(plugin, parent_));
-    auto *result = it.get();
+    auto result = addAttachment(plugin);
+    result->setPermission(name, value);
     recalculatePermissions();
     return result;
 }
 
-bool PermissibleBase::removeAttachment(PermissionAttachment &attachment)
+NotNull<PermissionAttachment> PermissibleBase::addAttachment(Plugin &plugin)
 {
-    const auto it =
-        std::ranges::find_if(attachments_, [&attachment](const auto &item) { return item.get() == &attachment; });
-    if (it != attachments_.end()) {
-        if (const auto callback = it->get()->getRemovalCallback()) {
-            callback(attachment);
-        }
-        attachments_.erase(it);
-        recalculatePermissions();
-        return true;
+    Preconditions::checkArgument(plugin.isEnabled(), "Could not add PermissionAttachment: plugin {} is disabled.",
+                                 plugin.getName());
+
+    const auto &result = attachments_.emplace_back(std::make_shared<PermissionAttachment>(plugin, getParent()));
+    recalculatePermissions();
+    return result;
+}
+
+bool PermissibleBase::removeAttachment(const NotNull<PermissionAttachment> &attachment)
+{
+    const auto it = std::ranges::find(attachments_, attachment);
+    if (it == attachments_.end()) {
+        return false;
     }
-    return false;
+
+    const auto removed = *it;
+    attachments_.erase(it);
+    if (const auto callback = removed->getRemovalCallback()) {
+        callback(removed);
+    }
+    recalculatePermissions();
+    return true;
 }
 
 void PermissibleBase::recalculatePermissions()
 {
     clearPermissions();
-    const auto defaults = getPluginManager()->getDefaultPermissions(getPermissionLevel());
-    getPluginManager()->subscribeToDefaultPerms(getPermissionLevel(), parent_);
+    const auto parent = getParent();
+    auto *plugin_manager = getPluginManager();
+    const auto defaults = plugin_manager->getDefaultPermissions(getPermissionLevel());
+    plugin_manager->subscribeToDefaultPerms(getPermissionLevel(), parent);
 
-    for (auto *perm : defaults) {
+    for (const auto &perm : defaults) {
         auto name = perm->getName();
         std::ranges::transform(name, name.begin(), [](unsigned char c) { return std::tolower(c); });
-        permissions_[name] = std::make_unique<PermissionAttachmentInfo>(parent_, name, nullptr, true);
-        getPluginManager()->subscribeToPermission(name, parent_);
+        permissions_.insert_or_assign(name, std::make_shared<PermissionAttachmentInfo>(parent, name, nullptr, true));
+        plugin_manager->subscribeToPermission(name, parent);
         calculateChildPermissions(perm->getChildren(), false, nullptr);
     }
 
     for (const auto &attachment : attachments_) {
-        calculateChildPermissions(attachment->getPermissions(), false, attachment.get());
+        calculateChildPermissions(attachment->getPermissions(), false, attachment);
     }
 }
 
 // NOLINTNEXTLINE(*-no-recursion)
 void PermissibleBase::calculateChildPermissions(const std::unordered_map<std::string, bool> &children, bool invert,
-                                                PermissionAttachment *attachment)
+                                                const Nullable<PermissionAttachment> &attachment)
 {
+    const auto parent = getParent();
     for (const auto &entry : children) {
         auto name = entry.first;
 
-        auto *perm = getPluginManager()->getPermission(name);
+        const auto perm = getPluginManager()->getPermission(name);
         std::ranges::transform(name, name.begin(), [](unsigned char c) { return std::tolower(c); });
-        bool value = entry.second ^ invert;
+        const bool value = entry.second ^ invert;
 
-        permissions_[name] = std::make_unique<PermissionAttachmentInfo>(parent_, name, attachment, value);
-        getPluginManager()->subscribeToPermission(name, parent_);
+        permissions_.insert_or_assign(name,
+                                      std::make_shared<PermissionAttachmentInfo>(parent, name, attachment, value));
+        getPluginManager()->subscribeToPermission(name, parent);
 
-        if (perm != nullptr) {
+        if (perm) {
             calculateChildPermissions(perm->getChildren(), !value, attachment);
         }
     }
 }
 
-std::unordered_set<PermissionAttachmentInfo *> PermissibleBase::getEffectivePermissions() const
+std::unordered_set<NotNull<PermissionAttachmentInfo>> PermissibleBase::getEffectivePermissions() const
 {
-    std::unordered_set<PermissionAttachmentInfo *> result;
+    std::unordered_set<NotNull<PermissionAttachmentInfo>> result;
     for (const auto &entry : permissions_) {
-        result.insert(entry.second.get());
+        result.insert(entry.second);
     }
     return result;
 }
@@ -204,14 +191,31 @@ bool PermissibleBase::isInstanceOf(const std::type_info &target) const
 
 void PermissibleBase::clearPermissions()
 {
-    // Clear permissions
-    for (const auto &[name, perm] : permissions_) {
-        getPluginManager()->unsubscribeFromPermission(name, parent_);
+    auto *plugin_manager = getPluginManager();
+    if (const auto parent = tryGetParent(); plugin_manager && parent) {
+        const NotNull<Permissible> handle = parent;
+        for (const auto &name : permissions_ | std::views::keys) {
+            plugin_manager->unsubscribeFromPermission(name, handle);
+        }
+        plugin_manager->unsubscribeFromDefaultPerms(PermissionLevel::Default, handle);
+        plugin_manager->unsubscribeFromDefaultPerms(PermissionLevel::Operator, handle);
+        plugin_manager->unsubscribeFromDefaultPerms(PermissionLevel::Console, handle);
     }
-    getPluginManager()->unsubscribeFromDefaultPerms(PermissionLevel::Default, parent_);
-    getPluginManager()->unsubscribeFromDefaultPerms(PermissionLevel::Operator, parent_);
-    getPluginManager()->unsubscribeFromDefaultPerms(PermissionLevel::Console, parent_);
     permissions_.clear();
+}
+
+Nullable<Permissible> PermissibleBase::tryGetParent() const
+{
+    auto *owner = opable_ != nullptr ? opable_ : const_cast<PermissibleBase *>(this);
+    return owner->weak_from_this().lock();
+}
+
+NotNull<Permissible> PermissibleBase::getParent() const
+{
+    const auto parent = tryGetParent();
+    Preconditions::checkState(parent != nullptr,
+                              "Permissible is not owned by a std::shared_ptr, its permissions cannot be tracked.");
+    return parent;
 }
 
 PluginManager *PermissibleBase::getPluginManager()

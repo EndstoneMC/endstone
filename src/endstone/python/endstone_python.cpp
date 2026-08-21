@@ -734,6 +734,7 @@ void init_player(py::module_ &m, py_class<Player> &player)
 )doc")
         .def_property("is_flying", &Player::isFlying, &Player::setFlying,
                       "Whether the player is currently flying or not.")
+        .def_property_readonly("is_crawling", &Player::isCrawling, "Whether the player is currently crawling or not.")
         .def_property("allow_flight", &Player::getAllowFlight, &Player::setAllowFlight,
                       "Whether the Player is allowed to fly via jump key double-tap.")
         .def_property("fly_speed", &Player::getFlySpeed, &Player::setFlySpeed,

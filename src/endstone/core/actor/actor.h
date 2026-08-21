@@ -14,6 +14,7 @@
 
 #pragma once
 
+#include <memory>
 #include <unordered_set>
 
 #include "bedrock/entity/components/post_tick_position_delta_component.h"
@@ -64,7 +65,7 @@ public:
         return ActorPermissibleBase::get().isPermissionSet(name);
     }
 
-    [[nodiscard]] bool isPermissionSet(const Permission &perm) const override
+    [[nodiscard]] bool isPermissionSet(const NotNull<Permission> &perm) const override
     {
         return ActorPermissibleBase::get().isPermissionSet(perm);
     }
@@ -74,29 +75,29 @@ public:
         return ActorPermissibleBase::get().hasPermission(name);
     }
 
-    [[nodiscard]] bool hasPermission(const Permission &perm) const override
+    [[nodiscard]] bool hasPermission(const NotNull<Permission> &perm) const override
     {
         return ActorPermissibleBase::get().hasPermission(perm);
     }
 
-    PermissionAttachment *addAttachment(Plugin &plugin, const std::string &name, bool value) override
+    NotNull<PermissionAttachment> addAttachment(Plugin &plugin, const std::string &name, bool value) override
     {
         return ActorPermissibleBase::get().addAttachment(plugin, name, value);
     }
 
-    PermissionAttachment *addAttachment(Plugin &plugin) override
+    NotNull<PermissionAttachment> addAttachment(Plugin &plugin) override
     {
         return ActorPermissibleBase::get().addAttachment(plugin);
     }
 
-    bool removeAttachment(PermissionAttachment &attachment) override
+    bool removeAttachment(const NotNull<PermissionAttachment> &attachment) override
     {
         return ActorPermissibleBase::get().removeAttachment(attachment);
     }
 
     void recalculatePermissions() override { ActorPermissibleBase::get().recalculatePermissions(); }
 
-    [[nodiscard]] std::unordered_set<PermissionAttachmentInfo *> getEffectivePermissions() const override
+    [[nodiscard]] std::unordered_set<NotNull<PermissionAttachmentInfo>> getEffectivePermissions() const override
     {
         return ActorPermissibleBase::get().getEffectivePermissions();
     }
@@ -246,9 +247,9 @@ public:
         return *ptr;
     }
 
-    [[nodiscard]] NotNull<Interface> getSelf() const
+    [[nodiscard]] NotNull<Interface> self() const
     {
-        return getHandle().template getEndstoneActor<Interface>();
+        return std::static_pointer_cast<Interface>(const_cast<EndstoneActorBase *>(this)->shared_from_this());
     }
 
 protected:

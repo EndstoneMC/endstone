@@ -19,6 +19,7 @@
 
 #include "endstone/block/block.h"
 #include "endstone/event/event.h"
+#include "endstone/util/pointers.h"
 
 namespace endstone {
 
@@ -27,17 +28,17 @@ namespace endstone {
  */
 class BlockEvent : public Event {
 public:
-    explicit BlockEvent(std::unique_ptr<Block> block) : block_(std::move(block)) {};
+    explicit BlockEvent(const NotNull<Block> &block) : block_(block) {};
 
     /**
      * Gets the block involved in this event.
      *
      * @return The Block which block is involved in this event
      */
-    [[nodiscard]] Block &getBlock() const { return *block_; }
+    [[nodiscard]] const NotNull<Block> &getBlock() const { return block_; }
 
 protected:
-    std::unique_ptr<Block> block_;
+    NotNull<Block> block_;
 };
 
 }  // namespace endstone
