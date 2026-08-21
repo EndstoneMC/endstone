@@ -14,6 +14,7 @@
 
 #pragma once
 
+#include <functional>
 #include <sstream>
 #include <string>
 #include <variant>
@@ -29,6 +30,9 @@ template <typename Tag, typename RawIdT = int, RawIdT RawInvalid = 0>
 class TypedServerNetId {
 public:
     TypedServerNetId() = default;
+
+    [[nodiscard]] bool operator==(const TypedServerNetId &other) const { return raw_id == other.raw_id; }
+    [[nodiscard]] std::size_t getHash() const { return std::hash<RawIdT>{}(raw_id); }
 
     [[nodiscard]] std::string toString() const
     {
