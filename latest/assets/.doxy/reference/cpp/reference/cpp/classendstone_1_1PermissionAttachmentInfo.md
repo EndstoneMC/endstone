@@ -52,9 +52,9 @@ _Holds information on a permission and which_ [_**PermissionAttachment**_](class
 
 | Type | Name |
 | ---: | :--- |
-|   | [**PermissionAttachmentInfo**](#function-permissionattachmentinfo) ([**Permissible**](classendstone_1_1Permissible.md) & permissible, std::string permission, [**PermissionAttachment**](classendstone_1_1PermissionAttachment.md) \* attachment, [**bool**](classendstone_1_1Identifier.md) value) <br> |
-|  [**PermissionAttachment**](classendstone_1_1PermissionAttachment.md) \* | [**getAttachment**](#function-getattachment) () const<br>_Gets the attachment providing this permission._  |
-|  [**Permissible**](classendstone_1_1Permissible.md) & | [**getPermissible**](#function-getpermissible) () const<br>_Gets the permissible this is attached to._  |
+|   | [**PermissionAttachmentInfo**](#function-permissionattachmentinfo) ([**const**](classendstone_1_1Identifier.md) [**NotNull**](classendstone_1_1NotNull.md)&lt; [**Permissible**](classendstone_1_1Permissible.md) &gt; & permissible, std::string permission, [**Nullable**](classendstone_1_1Nullable.md)&lt; [**PermissionAttachment**](classendstone_1_1PermissionAttachment.md) &gt; attachment, [**bool**](classendstone_1_1Identifier.md) value) <br> |
+|  [**Nullable**](classendstone_1_1Nullable.md)&lt; [**PermissionAttachment**](classendstone_1_1PermissionAttachment.md) &gt; | [**getAttachment**](#function-getattachment) () const<br>_Gets the attachment providing this permission._  |
+|  [**Nullable**](classendstone_1_1Nullable.md)&lt; [**Permissible**](classendstone_1_1Permissible.md) &gt; | [**getPermissible**](#function-getpermissible) () const<br>_Gets the permissible this is attached to._  |
 |  std::string | [**getPermission**](#function-getpermission) () const<br>_Gets the permission being set._  |
 |  [**bool**](classendstone_1_1Identifier.md) | [**getValue**](#function-getvalue) () const<br>_Gets the value of this permission._  |
 
@@ -94,9 +94,9 @@ _Holds information on a permission and which_ [_**PermissionAttachment**_](class
 
 ```C++
 inline endstone::PermissionAttachmentInfo::PermissionAttachmentInfo (
-    Permissible & permissible,
+    const  NotNull < Permissible > & permissible,
     std::string permission,
-    PermissionAttachment * attachment,
+    Nullable < PermissionAttachment > attachment,
     bool value
 ) 
 ```
@@ -112,7 +112,7 @@ inline endstone::PermissionAttachmentInfo::PermissionAttachmentInfo (
 
 _Gets the attachment providing this permission._ 
 ```C++
-inline PermissionAttachment * endstone::PermissionAttachmentInfo::getAttachment () const
+inline Nullable < PermissionAttachment > endstone::PermissionAttachmentInfo::getAttachment () const
 ```
 
 
@@ -140,7 +140,7 @@ Attachment
 
 _Gets the permissible this is attached to._ 
 ```C++
-inline Permissible & endstone::PermissionAttachmentInfo::getPermissible () const
+inline Nullable < Permissible > endstone::PermissionAttachmentInfo::getPermissible () const
 ```
 
 
@@ -149,7 +149,7 @@ inline Permissible & endstone::PermissionAttachmentInfo::getPermissible () const
 
 **Returns:**
 
-[**Permissible**](classendstone_1_1Permissible.md) this permission is for 
+[**Permissible**](classendstone_1_1Permissible.md) this permission is for, or nullptr if it no longer exists 
 
 
 

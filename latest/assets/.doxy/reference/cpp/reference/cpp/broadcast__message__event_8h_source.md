@@ -31,13 +31,14 @@
 #include "endstone/command/command_sender.h"
 #include "endstone/event/cancellable.h"
 #include "endstone/event/server/server_event.h"
+#include "endstone/util/pointers.h"
 
 namespace endstone {
 
 class BroadcastMessageEvent : public Cancellable<ServerEvent> {
 public:
     ENDSTONE_EVENT(BroadcastMessageEvent);
-    BroadcastMessageEvent(bool async, Message message, std::unordered_set<const CommandSender *> recipients)
+    BroadcastMessageEvent(bool async, Message message, std::unordered_set<NotNull<CommandSender>> recipients)
         : Cancellable(async), message_(std::move(message)), recipients_(std::move(recipients))
     {
     }
@@ -46,11 +47,11 @@ public:
 
     void setMessage(Message message) { message_ = std::move(message); }
 
-    [[nodiscard]] const std::unordered_set<const CommandSender *> &getRecipients() const { return recipients_; }
+    [[nodiscard]] const std::unordered_set<NotNull<CommandSender>> &getRecipients() const { return recipients_; }
 
 private:
     Message message_;
-    std::unordered_set<const CommandSender *> recipients_;
+    std::unordered_set<NotNull<CommandSender>> recipients_;
 };
 
 }  // namespace endstone

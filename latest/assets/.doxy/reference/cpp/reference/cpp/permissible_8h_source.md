@@ -31,7 +31,7 @@
 #include "endstone/object.h"
 #include "endstone/permissions/permission_attachment_info.h"
 #include "endstone/permissions/permission_level.h"
-#include "endstone/util/result.h"
+#include "endstone/util/pointers.h"
 
 namespace endstone {
 
@@ -40,27 +40,27 @@ class Plugin;
 class Permission;
 class PermissionAttachment;
 
-class Permissible : public Object {
+class Permissible : public Object, public std::enable_shared_from_this<Permissible> {
 public:
     [[nodiscard]] virtual PermissionLevel getPermissionLevel() const = 0;
 
     [[nodiscard]] virtual bool isPermissionSet(std::string name) const = 0;
 
-    [[nodiscard]] virtual bool isPermissionSet(const Permission &perm) const = 0;
+    [[nodiscard]] virtual bool isPermissionSet(const NotNull<Permission> &perm) const = 0;
 
     [[nodiscard]] virtual bool hasPermission(std::string name) const = 0;
 
-    [[nodiscard]] virtual bool hasPermission(const Permission &perm) const = 0;
+    [[nodiscard]] virtual bool hasPermission(const NotNull<Permission> &perm) const = 0;
 
-    virtual PermissionAttachment *addAttachment(Plugin &plugin, const std::string &name, bool value) = 0;
+    virtual NotNull<PermissionAttachment> addAttachment(Plugin &plugin, const std::string &name, bool value) = 0;
 
-    virtual PermissionAttachment *addAttachment(Plugin &plugin) = 0;
+    virtual NotNull<PermissionAttachment> addAttachment(Plugin &plugin) = 0;
 
-    virtual bool removeAttachment(PermissionAttachment &attachment) = 0;
+    virtual bool removeAttachment(const NotNull<PermissionAttachment> &attachment) = 0;
 
     virtual void recalculatePermissions() = 0;
 
-    [[nodiscard]] virtual std::unordered_set<PermissionAttachmentInfo *> getEffectivePermissions() const = 0;
+    [[nodiscard]] virtual std::unordered_set<NotNull<PermissionAttachmentInfo>> getEffectivePermissions() const = 0;
 };
 }  // namespace endstone
 ```

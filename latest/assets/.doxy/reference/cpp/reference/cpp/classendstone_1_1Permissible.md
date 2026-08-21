@@ -14,7 +14,7 @@ _Represents an object that may become a server operator and can be assigned perm
 
 
 
-Inherits the following classes: [endstone::Object](classendstone_1_1Object.md)
+Inherits the following classes: [endstone::Object](classendstone_1_1Object.md),  std::enable_shared_from_this< Permissible >
 
 
 Inherited by the following classes: [endstone::CommandSender](classendstone_1_1CommandSender.md)
@@ -74,16 +74,16 @@ Inherited by the following classes: [endstone::CommandSender](classendstone_1_1C
 
 | Type | Name |
 | ---: | :--- |
-| virtual [**PermissionAttachment**](classendstone_1_1PermissionAttachment.md) \* | [**addAttachment**](#function-addattachment-12) ([**Plugin**](classendstone_1_1Plugin.md) & plugin, [**const**](classendstone_1_1Identifier.md) std::string & name, [**bool**](classendstone_1_1Identifier.md) value) = 0<br>_Adds a new_ [_**PermissionAttachment**_](classendstone_1_1PermissionAttachment.md) _with a single permission by name and value._ |
-| virtual [**PermissionAttachment**](classendstone_1_1PermissionAttachment.md) \* | [**addAttachment**](#function-addattachment-22) ([**Plugin**](classendstone_1_1Plugin.md) & plugin) = 0<br>_Adds a new empty_ [_**PermissionAttachment**_](classendstone_1_1PermissionAttachment.md) _to this object._ |
-| virtual std::unordered\_set&lt; [**PermissionAttachmentInfo**](classendstone_1_1PermissionAttachmentInfo.md) \* &gt; | [**getEffectivePermissions**](#function-geteffectivepermissions) () const = 0<br>_Gets a set containing all the permissions currently in effect by this object._  |
+| virtual [**NotNull**](classendstone_1_1NotNull.md)&lt; [**PermissionAttachment**](classendstone_1_1PermissionAttachment.md) &gt; | [**addAttachment**](#function-addattachment-12) ([**Plugin**](classendstone_1_1Plugin.md) & plugin, [**const**](classendstone_1_1Identifier.md) std::string & name, [**bool**](classendstone_1_1Identifier.md) value) = 0<br>_Adds a new_ [_**PermissionAttachment**_](classendstone_1_1PermissionAttachment.md) _with a single permission by name and value._ |
+| virtual [**NotNull**](classendstone_1_1NotNull.md)&lt; [**PermissionAttachment**](classendstone_1_1PermissionAttachment.md) &gt; | [**addAttachment**](#function-addattachment-22) ([**Plugin**](classendstone_1_1Plugin.md) & plugin) = 0<br>_Adds a new empty_ [_**PermissionAttachment**_](classendstone_1_1PermissionAttachment.md) _to this object._ |
+| virtual std::unordered\_set&lt; [**NotNull**](classendstone_1_1NotNull.md)&lt; [**PermissionAttachmentInfo**](classendstone_1_1PermissionAttachmentInfo.md) &gt; &gt; | [**getEffectivePermissions**](#function-geteffectivepermissions) () const = 0<br>_Gets a set containing all the permissions currently in effect by this object._  |
 | virtual [**PermissionLevel**](namespaceendstone.md#enum-permissionlevel) | [**getPermissionLevel**](#function-getpermissionlevel) () const = 0<br>_Gets the permission level of this object._  |
 | virtual [**bool**](classendstone_1_1Identifier.md) | [**hasPermission**](#function-haspermission-12) (std::string name) const = 0<br>_Gets the value of the specified permission, if set._  |
-| virtual [**bool**](classendstone_1_1Identifier.md) | [**hasPermission**](#function-haspermission-22) ([**const**](classendstone_1_1Identifier.md) [**Permission**](classendstone_1_1Permission.md) & perm) const = 0<br>_Gets the value of the specified permission, if set._  |
+| virtual [**bool**](classendstone_1_1Identifier.md) | [**hasPermission**](#function-haspermission-22) ([**const**](classendstone_1_1Identifier.md) [**NotNull**](classendstone_1_1NotNull.md)&lt; [**Permission**](classendstone_1_1Permission.md) &gt; & perm) const = 0<br>_Gets the value of the specified permission, if set._  |
 | virtual [**bool**](classendstone_1_1Identifier.md) | [**isPermissionSet**](#function-ispermissionset-12) (std::string name) const = 0<br>_Checks if this object contains an override for the specified permission, by fully qualified name._  |
-| virtual [**bool**](classendstone_1_1Identifier.md) | [**isPermissionSet**](#function-ispermissionset-22) ([**const**](classendstone_1_1Identifier.md) [**Permission**](classendstone_1_1Permission.md) & perm) const = 0<br>_Checks if this object contains an override for the specified_ [_**Permission**_](classendstone_1_1Permission.md) _._ |
+| virtual [**bool**](classendstone_1_1Identifier.md) | [**isPermissionSet**](#function-ispermissionset-22) ([**const**](classendstone_1_1Identifier.md) [**NotNull**](classendstone_1_1NotNull.md)&lt; [**Permission**](classendstone_1_1Permission.md) &gt; & perm) const = 0<br>_Checks if this object contains an override for the specified_ [_**Permission**_](classendstone_1_1Permission.md) _._ |
 | virtual [**void**](classendstone_1_1Identifier.md) | [**recalculatePermissions**](#function-recalculatepermissions) () = 0<br>_Recalculates the permissions for this object, if the attachments have changed values._  |
-| virtual [**bool**](classendstone_1_1Identifier.md) | [**removeAttachment**](#function-removeattachment) ([**PermissionAttachment**](classendstone_1_1PermissionAttachment.md) & attachment) = 0<br>_Removes the given_ [_**PermissionAttachment**_](classendstone_1_1PermissionAttachment.md) _from this object._ |
+| virtual [**bool**](classendstone_1_1Identifier.md) | [**removeAttachment**](#function-removeattachment) ([**const**](classendstone_1_1Identifier.md) [**NotNull**](classendstone_1_1NotNull.md)&lt; [**PermissionAttachment**](classendstone_1_1PermissionAttachment.md) &gt; & attachment) = 0<br>_Removes the given_ [_**PermissionAttachment**_](classendstone_1_1PermissionAttachment.md) _from this object._ |
 
 
 ## Public Functions inherited from endstone::Object
@@ -161,7 +161,7 @@ See [endstone::Object](classendstone_1_1Object.md)
 
 _Adds a new_ [_**PermissionAttachment**_](classendstone_1_1PermissionAttachment.md) _with a single permission by name and value._
 ```C++
-virtual PermissionAttachment * endstone::Permissible::addAttachment (
+virtual NotNull < PermissionAttachment > endstone::Permissible::addAttachment (
     Plugin & plugin,
     const std::string & name,
     bool value
@@ -188,6 +188,13 @@ The [**PermissionAttachment**](classendstone_1_1PermissionAttachment.md) that wa
 
 
 
+**Exception:**
+
+
+* `std::invalid_argument` if the name is empty or the plugin is disabled 
+
+
+
 
         
 
@@ -199,7 +206,7 @@ The [**PermissionAttachment**](classendstone_1_1PermissionAttachment.md) that wa
 
 _Adds a new empty_ [_**PermissionAttachment**_](classendstone_1_1PermissionAttachment.md) _to this object._
 ```C++
-virtual PermissionAttachment * endstone::Permissible::addAttachment (
+virtual NotNull < PermissionAttachment > endstone::Permissible::addAttachment (
     Plugin & plugin
 ) = 0
 ```
@@ -222,6 +229,13 @@ The [**PermissionAttachment**](classendstone_1_1PermissionAttachment.md) that wa
 
 
 
+**Exception:**
+
+
+* `std::invalid_argument` if the plugin is disabled 
+
+
+
 
         
 
@@ -233,7 +247,7 @@ The [**PermissionAttachment**](classendstone_1_1PermissionAttachment.md) that wa
 
 _Gets a set containing all the permissions currently in effect by this object._ 
 ```C++
-virtual std::unordered_set< PermissionAttachmentInfo * > endstone::Permissible::getEffectivePermissions () const = 0
+virtual std::unordered_set< NotNull < PermissionAttachmentInfo > > endstone::Permissible::getEffectivePermissions () const = 0
 ```
 
 
@@ -321,7 +335,7 @@ Value of the permission
 _Gets the value of the specified permission, if set._ 
 ```C++
 virtual bool endstone::Permissible::hasPermission (
-    const  Permission & perm
+    const  NotNull < Permission > & perm
 ) const = 0
 ```
 
@@ -392,7 +406,7 @@ true if the permission is set, otherwise false
 _Checks if this object contains an override for the specified_ [_**Permission**_](classendstone_1_1Permission.md) _._
 ```C++
 virtual bool endstone::Permissible::isPermissionSet (
-    const  Permission & perm
+    const  NotNull < Permission > & perm
 ) const = 0
 ```
 
@@ -444,7 +458,7 @@ This should very rarely need to be called from a plugin.
 _Removes the given_ [_**PermissionAttachment**_](classendstone_1_1PermissionAttachment.md) _from this object._
 ```C++
 virtual bool endstone::Permissible::removeAttachment (
-    PermissionAttachment & attachment
+    const  NotNull < PermissionAttachment > & attachment
 ) = 0
 ```
 

@@ -12,11 +12,13 @@
 
 * `#include <algorithm>`
 * `#include <functional>`
+* `#include <memory>`
 * `#include <string>`
 * `#include <unordered_map>`
 * `#include <utility>`
 * `#include "endstone/permissions/permissible.h"`
 * `#include "endstone/permissions/permission.h"`
+* `#include "endstone/util/pointers.h"`
 
 
 

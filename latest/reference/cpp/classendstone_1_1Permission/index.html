@@ -2848,6 +2848,7 @@ For latest updates join the chat on
 <ul>
 <li><code>#include &lt;endstone/permissions/permission.h&gt;</code></li>
 </ul>
+<p>Inherits the following classes: std::enable_shared_from_this&lt; Permission &gt;</p>
 <h2 id="public-static-attributes">Public Static Attributes<a class="headerlink" href="#public-static-attributes" title="Permanent link">&para;</a></h2>
 <table>
 <thead>
@@ -2877,12 +2878,12 @@ For latest updates join the chat on
 <td style="text-align: left;"><a href="#function-permission"><strong>Permission</strong></a> (std::string name, std::string description="", <a href="../namespaceendstone/#enum-permissiondefault"><strong>PermissionDefault</strong></a> default_value=DefaultPermission, std::unordered_map&lt; std::string, <a href="../classendstone_1_1Identifier/"><strong>bool</strong></a> &gt; children={}) <br></td>
 </tr>
 <tr>
-<td style="text-align: right;"><a href="./"><strong>Permission</strong></a> *</td>
+<td style="text-align: right;"><a href="../classendstone_1_1NotNull/"><strong>NotNull</strong></a>&lt; <a href="./"><strong>Permission</strong></a> &gt;</td>
 <td style="text-align: left;"><a href="#function-addparent-12"><strong>addParent</strong></a> (std::string name, <a href="../classendstone_1_1Identifier/"><strong>bool</strong></a> value) <br><em>Adds this permission to the specified parent permission.</em></td>
 </tr>
 <tr>
 <td style="text-align: right;"><a href="../classendstone_1_1Identifier/"><strong>void</strong></a></td>
-<td style="text-align: left;"><a href="#function-addparent-22"><strong>addParent</strong></a> (<a href="./"><strong>Permission</strong></a> &amp; perm, <a href="../classendstone_1_1Identifier/"><strong>bool</strong></a> value) const<br><em>Adds this permission to the specified parent permission.</em></td>
+<td style="text-align: left;"><a href="#function-addparent-22"><strong>addParent</strong></a> (<a href="../classendstone_1_1Identifier/"><strong>const</strong></a> <a href="../classendstone_1_1NotNull/"><strong>NotNull</strong></a>&lt; <a href="./"><strong>Permission</strong></a> &gt; &amp; perm, <a href="../classendstone_1_1Identifier/"><strong>bool</strong></a> value) const<br><em>Adds this permission to the specified parent permission.</em></td>
 </tr>
 <tr>
 <td style="text-align: right;">std::unordered_map&lt; std::string, <a href="../classendstone_1_1Identifier/"><strong>bool</strong></a> &gt; &amp;</td>
@@ -2901,7 +2902,7 @@ For latest updates join the chat on
 <td style="text-align: left;"><a href="#function-getname"><strong>getName</strong></a> () const<br><em>Returns the unique fully qualified name of this</em> <a href="./"><em><strong>Permission</strong></em></a> <em>.</em></td>
 </tr>
 <tr>
-<td style="text-align: right;">std::unordered_set&lt; <a href="../classendstone_1_1Permissible/"><strong>Permissible</strong></a> * &gt;</td>
+<td style="text-align: right;">std::unordered_set&lt; <a href="../classendstone_1_1NotNull/"><strong>NotNull</strong></a>&lt; <a href="../classendstone_1_1Permissible/"><strong>Permissible</strong></a> &gt; &gt;</td>
 <td style="text-align: left;"><a href="#function-getpermissibles"><strong>getPermissibles</strong></a> () const<br><em>Gets a set containing every</em> <a href="../classendstone_1_1Permissible/"><em><strong>Permissible</strong></em></a> <em>that has this permission.</em></td>
 </tr>
 <tr>
@@ -2940,7 +2941,7 @@ For latest updates join the chat on
 
 <h3 id="function-addparent-12">function addParent [&frac12;]<a class="headerlink" href="#function-addparent-12" title="Permanent link">&para;</a></h3>
 <p><em>Adds this permission to the specified parent permission.</em> 
-<div class="language-C++ highlight"><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="kr">inline</span><span class="w"> </span><span class="n">Permission</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">Permission</span><span class="o">::</span><span class="n">addParent</span><span class="w"> </span><span class="p">(</span>
+<div class="language-C++ highlight"><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="kr">inline</span><span class="w"> </span><span class="n">NotNull</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">Permission</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">Permission</span><span class="o">::</span><span class="n">addParent</span><span class="w"> </span><span class="p">(</span>
 </span><span id="__span-2-2"><a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a><span class="w">    </span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="w"> </span><span class="n">name</span><span class="p">,</span>
 </span><span id="__span-2-3"><a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a><span class="w">    </span><span class="kt">bool</span><span class="w"> </span><span class="n">value</span>
 </span><span id="__span-2-4"><a id="__codelineno-2-4" name="__codelineno-2-4" href="#__codelineno-2-4"></a><span class="p">)</span><span class="w"> </span>
@@ -2953,12 +2954,16 @@ For latest updates join the chat on
 </ul>
 <p><strong>Returns:</strong></p>
 <p>Parent permission it created or loaded </p>
+<p><strong>Exception:</strong></p>
+<ul>
+<li><code>std::runtime_error</code> if this permission is not registered with a plugin manager </li>
+</ul>
 <hr>
 
 <h3 id="function-addparent-22">function addParent [2/2]<a class="headerlink" href="#function-addparent-22" title="Permanent link">&para;</a></h3>
 <p><em>Adds this permission to the specified parent permission.</em> 
 <div class="language-C++ highlight"><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="kr">inline</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">Permission</span><span class="o">::</span><span class="n">addParent</span><span class="w"> </span><span class="p">(</span>
-</span><span id="__span-3-2"><a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a><span class="w">    </span><span class="n">Permission</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">perm</span><span class="p">,</span>
+</span><span id="__span-3-2"><a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a><span class="w">    </span><span class="k">const</span><span class="w">  </span><span class="n">NotNull</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">Permission</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">perm</span><span class="p">,</span>
 </span><span id="__span-3-3"><a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a><span class="w">    </span><span class="kt">bool</span><span class="w"> </span><span class="n">value</span>
 </span><span id="__span-3-4"><a id="__codelineno-3-4" name="__codelineno-3-4" href="#__codelineno-3-4"></a><span class="p">)</span><span class="w"> </span><span class="k">const</span>
 </span></code></pre></div></p>
@@ -3004,7 +3009,7 @@ For latest updates join the chat on
 
 <h3 id="function-getpermissibles">function getPermissibles<a class="headerlink" href="#function-getpermissibles" title="Permanent link">&para;</a></h3>
 <p><em>Gets a set containing every</em> <a href="../classendstone_1_1Permissible/"><em><strong>Permissible</strong></em></a> <em>that has this permission.</em>
-<div class="language-C++ highlight"><pre><span></span><code><span id="__span-8-1"><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a><span class="kr">inline</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">unordered_set</span><span class="o">&lt;</span><span class="w"> </span><span class="n">Permissible</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">Permission</span><span class="o">::</span><span class="n">getPermissibles</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="k">const</span>
+<div class="language-C++ highlight"><pre><span></span><code><span id="__span-8-1"><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a><span class="kr">inline</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">unordered_set</span><span class="o">&lt;</span><span class="w"> </span><span class="n">NotNull</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">Permissible</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">Permission</span><span class="o">::</span><span class="n">getPermissibles</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="k">const</span>
 </span></code></pre></div></p>
 <p>This set cannot be modified.</p>
 <p><strong>Returns:</strong></p>

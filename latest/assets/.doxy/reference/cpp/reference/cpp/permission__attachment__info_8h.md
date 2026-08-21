@@ -10,8 +10,10 @@
 
 
 
+* `#include <memory>`
 * `#include <string>`
 * `#include <utility>`
+* `#include "endstone/util/pointers.h"`
 
 
 

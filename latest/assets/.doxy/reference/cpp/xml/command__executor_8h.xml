@@ -10,12 +10,12 @@
     <includedby refid="plugin__command_8h" local="yes">include/endstone/command/plugin_command.h</includedby>
     <includedby refid="plugin_8h" local="yes">include/endstone/plugin/plugin.h</includedby>
     <incdepgraph>
-      <node id="27">
+      <node id="24">
         <label>endstone/check.h</label>
         <link refid="check_8h_source"/>
         <childnode refid="12" relation="include">
         </childnode>
-        <childnode refid="28" relation="include">
+        <childnode refid="25" relation="include">
         </childnode>
         <childnode refid="7" relation="include">
         </childnode>
@@ -37,7 +37,7 @@
         </childnode>
         <childnode refid="18" relation="include">
         </childnode>
-        <childnode refid="24" relation="include">
+        <childnode refid="21" relation="include">
         </childnode>
       </node>
       <node id="1">
@@ -69,7 +69,7 @@
         </childnode>
         <childnode refid="11" relation="include">
         </childnode>
-        <childnode refid="24" relation="include">
+        <childnode refid="21" relation="include">
         </childnode>
       </node>
       <node id="11">
@@ -129,29 +129,33 @@
         </childnode>
         <childnode refid="20" relation="include">
         </childnode>
-        <childnode refid="21" relation="include">
+        <childnode refid="26" relation="include">
         </childnode>
-        <childnode refid="22" relation="include">
+        <childnode refid="21" relation="include">
         </childnode>
       </node>
       <node id="20">
         <label>endstone/permissions/permission_attachment_info.h</label>
         <link refid="permission__attachment__info_8h_source"/>
+        <childnode refid="9" relation="include">
+        </childnode>
         <childnode refid="3" relation="include">
         </childnode>
         <childnode refid="7" relation="include">
         </childnode>
+        <childnode refid="21" relation="include">
+        </childnode>
       </node>
-      <node id="21">
+      <node id="26">
         <label>endstone/permissions/permission_level.h</label>
         <link refid="permission__level_8h_source"/>
       </node>
-      <node id="24">
+      <node id="21">
         <label>endstone/util/pointers.h</label>
         <link refid="pointers_8h_source"/>
-        <childnode refid="25" relation="include">
+        <childnode refid="22" relation="include">
         </childnode>
-        <childnode refid="26" relation="include">
+        <childnode refid="23" relation="include">
         </childnode>
         <childnode refid="9" relation="include">
         </childnode>
@@ -159,29 +163,19 @@
         </childnode>
         <childnode refid="7" relation="include">
         </childnode>
-        <childnode refid="27" relation="include">
-        </childnode>
-      </node>
-      <node id="22">
-        <label>endstone/util/result.h</label>
-        <link refid="result_8h_source"/>
-        <childnode refid="12" relation="include">
-        </childnode>
-        <childnode refid="3" relation="include">
-        </childnode>
-        <childnode refid="23" relation="include">
+        <childnode refid="24" relation="include">
         </childnode>
       </node>
       <node id="6">
         <label>algorithm</label>
       </node>
-      <node id="25">
+      <node id="22">
         <label>cstddef</label>
       </node>
       <node id="12">
         <label>format</label>
       </node>
-      <node id="26">
+      <node id="23">
         <label>functional</label>
       </node>
       <node id="2">
@@ -190,10 +184,7 @@
       <node id="9">
         <label>memory</label>
       </node>
-      <node id="23">
-        <label>nonstd/expected.hpp</label>
-      </node>
-      <node id="28">
+      <node id="25">
         <label>stdexcept</label>
       </node>
       <node id="3">

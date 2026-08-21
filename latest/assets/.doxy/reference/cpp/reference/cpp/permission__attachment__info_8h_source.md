@@ -24,8 +24,11 @@
 
 #pragma once
 
+#include <memory>
 #include <string>
 #include <utility>
+
+#include "endstone/util/pointers.h"
 
 namespace endstone {
 
@@ -35,24 +38,25 @@ class PermissionAttachment;
 class PermissionAttachmentInfo {
 
 public:
-    PermissionAttachmentInfo(Permissible &permissible, std::string permission, PermissionAttachment *attachment,
-                             bool value)
-        : permissible_(permissible), permission_(std::move(permission)), attachment_(attachment), value_(value)
+    PermissionAttachmentInfo(const NotNull<Permissible> &permissible, std::string permission,
+                             Nullable<PermissionAttachment> attachment, bool value)
+        : permissible_(permissible.get()), permission_(std::move(permission)), attachment_(std::move(attachment)),
+          value_(value)
     {
     }
 
-    [[nodiscard]] Permissible &getPermissible() const { return permissible_; }
+    [[nodiscard]] Nullable<Permissible> getPermissible() const { return permissible_.lock(); }
 
     [[nodiscard]] std::string getPermission() const { return permission_; }
 
-    [[nodiscard]] PermissionAttachment *getAttachment() const { return attachment_; }
+    [[nodiscard]] Nullable<PermissionAttachment> getAttachment() const { return attachment_; }
 
     [[nodiscard]] bool getValue() const { return value_; }
 
 private:
-    Permissible &permissible_;
+    std::weak_ptr<Permissible> permissible_;
     std::string permission_;
-    PermissionAttachment *attachment_;
+    Nullable<PermissionAttachment> attachment_;
     bool value_;
 };
 

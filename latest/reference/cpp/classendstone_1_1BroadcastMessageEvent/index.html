@@ -2761,7 +2761,7 @@ For latest updates join the chat on
 <tbody>
 <tr>
 <td style="text-align: right;"></td>
-<td style="text-align: left;"><a href="#function-broadcastmessageevent"><strong>BroadcastMessageEvent</strong></a> (<a href="../classendstone_1_1Identifier/"><strong>bool</strong></a> async, <a href="../namespaceendstone/#typedef-message"><strong>Message</strong></a> message, std::unordered_set&lt; <a href="../classendstone_1_1Identifier/"><strong>const</strong></a> <a href="../classendstone_1_1CommandSender/"><strong>CommandSender</strong></a> * &gt; recipients) <br></td>
+<td style="text-align: left;"><a href="#function-broadcastmessageevent"><strong>BroadcastMessageEvent</strong></a> (<a href="../classendstone_1_1Identifier/"><strong>bool</strong></a> async, <a href="../namespaceendstone/#typedef-message"><strong>Message</strong></a> message, std::unordered_set&lt; <a href="../classendstone_1_1NotNull/"><strong>NotNull</strong></a>&lt; <a href="../classendstone_1_1CommandSender/"><strong>CommandSender</strong></a> &gt; &gt; recipients) <br></td>
 </tr>
 <tr>
 <td style="text-align: right;"></td>
@@ -2772,7 +2772,7 @@ For latest updates join the chat on
 <td style="text-align: left;"><a href="#function-getmessage"><strong>getMessage</strong></a> () const<br><em>Get the message to broadcast.</em></td>
 </tr>
 <tr>
-<td style="text-align: right;"><a href="../classendstone_1_1Identifier/"><strong>const</strong></a> std::unordered_set&lt; <a href="../classendstone_1_1Identifier/"><strong>const</strong></a> <a href="../classendstone_1_1CommandSender/"><strong>CommandSender</strong></a> * &gt; &amp;</td>
+<td style="text-align: right;"><a href="../classendstone_1_1Identifier/"><strong>const</strong></a> std::unordered_set&lt; <a href="../classendstone_1_1NotNull/"><strong>NotNull</strong></a>&lt; <a href="../classendstone_1_1CommandSender/"><strong>CommandSender</strong></a> &gt; &gt; &amp;</td>
 <td style="text-align: left;"><a href="#function-getrecipients"><strong>getRecipients</strong></a> () const<br><em>Gets a set of recipients that this broadcast message will be displayed to.</em></td>
 </tr>
 <tr>
@@ -2840,7 +2840,7 @@ For latest updates join the chat on
 <div class="language-C++ highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="kr">inline</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">BroadcastMessageEvent</span><span class="o">::</span><span class="n">BroadcastMessageEvent</span><span class="w"> </span><span class="p">(</span>
 </span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a><span class="w">    </span><span class="kt">bool</span><span class="w"> </span><span class="n">async</span><span class="p">,</span>
 </span><span id="__span-0-3"><a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a><span class="w">    </span><span class="n">Message</span><span class="w"> </span><span class="n">message</span><span class="p">,</span>
-</span><span id="__span-0-4"><a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a><span class="w">    </span><span class="n">std</span><span class="o">::</span><span class="n">unordered_set</span><span class="o">&lt;</span><span class="w"> </span><span class="k">const</span><span class="w">  </span><span class="n">CommandSender</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="n">recipients</span>
+</span><span id="__span-0-4"><a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a><span class="w">    </span><span class="n">std</span><span class="o">::</span><span class="n">unordered_set</span><span class="o">&lt;</span><span class="w"> </span><span class="n">NotNull</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">CommandSender</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="n">recipients</span>
 </span><span id="__span-0-5"><a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a><span class="p">)</span><span class="w"> </span>
 </span></code></pre></div>
 <hr>
@@ -2862,7 +2862,7 @@ For latest updates join the chat on
 
 <h3 id="function-getrecipients">function getRecipients<a class="headerlink" href="#function-getrecipients" title="Permanent link">&para;</a></h3>
 <p><em>Gets a set of recipients that this broadcast message will be displayed to.</em> 
-<div class="language-C++ highlight"><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="kr">inline</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">unordered_set</span><span class="o">&lt;</span><span class="w"> </span><span class="k">const</span><span class="w">  </span><span class="n">CommandSender</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">BroadcastMessageEvent</span><span class="o">::</span><span class="n">getRecipients</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="k">const</span>
+<div class="language-C++ highlight"><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="kr">inline</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">unordered_set</span><span class="o">&lt;</span><span class="w"> </span><span class="n">NotNull</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">CommandSender</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">BroadcastMessageEvent</span><span class="o">::</span><span class="n">getRecipients</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="k">const</span>
 </span></code></pre></div></p>
 <p><strong>Returns:</strong></p>
 <p>All CommandSenders who will see this broadcast message </p>

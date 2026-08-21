@@ -1293,9 +1293,9 @@
         </inbodydescription>
         <location file="include/endstone/nbt/tag.h" line="45" column="1" bodyfile="include/endstone/nbt/tag.h" bodystart="45" bodyend="-1"/>
       </memberdef>
-      <memberdef kind="typedef" id="namespaceendstone_1afe5c52ae8db67deff2df8c157cd1c71e" prot="public" static="no">
-        <type>std::function&lt; <ref refid="classendstone_1_1Identifier" kindref="compound">void</ref>(<ref refid="classendstone_1_1Identifier" kindref="compound">const</ref> <ref refid="classendstone_1_1PermissionAttachment" kindref="compound">PermissionAttachment</ref> &amp;)&gt;</type>
-        <definition>using endstone::PermissionRemovedExecutor = typedef std::function&lt;void(const PermissionAttachment &amp;)&gt;</definition>
+      <memberdef kind="typedef" id="namespaceendstone_1abc500d9b323691204fe1cf0dbe9d7262" prot="public" static="no">
+        <type>std::function&lt; <ref refid="classendstone_1_1Identifier" kindref="compound">void</ref>(<ref refid="classendstone_1_1Identifier" kindref="compound">const</ref> <ref refid="classendstone_1_1NotNull" kindref="compound">NotNull</ref>&lt; <ref refid="classendstone_1_1PermissionAttachment" kindref="compound">PermissionAttachment</ref> &gt; &amp;)&gt;</type>
+        <definition>using endstone::PermissionRemovedExecutor = typedef std::function&lt;void(const NotNull&lt;PermissionAttachment&gt; &amp;)&gt;</definition>
         <argsstring></argsstring>
         <name>PermissionRemovedExecutor</name>
         <qualifiedname>endstone::PermissionRemovedExecutor</qualifiedname>
@@ -1305,7 +1305,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/permissions/permission_attachment.h" line="28" column="1" bodyfile="include/endstone/permissions/permission_attachment.h" bodystart="28" bodyend="-1"/>
+        <location file="include/endstone/permissions/permission_attachment.h" line="30" column="1" bodyfile="include/endstone/permissions/permission_attachment.h" bodystart="30" bodyend="-1"/>
       </memberdef>
       <memberdef kind="typedef" id="namespaceendstone_1a07d5edd6a4210fd917b36d15e1f3097c" prot="public" static="no">
         <type><ref refid="classendstone_1_1Identifier" kindref="compound">Identifier</ref>&lt; <ref refid="classendstone_1_1EffectType" kindref="compound">EffectType</ref> &gt;</type>

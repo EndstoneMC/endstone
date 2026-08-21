@@ -282,7 +282,7 @@ _Represents a button with text and an optional icon._
 | enum  | [**ObjectiveSortOrder**](#enum-objectivesortorder)  <br>_Represents the sort order of objectives on a DisplaySlot._  |
 | enum  | [**PermissionDefault**](#enum-permissiondefault)  <br>_Represents the possible default values for permissions._  |
 | enum  | [**PermissionLevel**](#enum-permissionlevel)  <br>_Represents the permission level of a_ [_**Permissible**_](classendstone_1_1Permissible.md) _._ |
-| typedef std::function&lt; [**void**](classendstone_1_1Identifier.md)([**const**](classendstone_1_1Identifier.md) [**PermissionAttachment**](classendstone_1_1PermissionAttachment.md) &)&gt; | [**PermissionRemovedExecutor**](#typedef-permissionremovedexecutor)  <br> |
+| typedef std::function&lt; [**void**](classendstone_1_1Identifier.md)([**const**](classendstone_1_1Identifier.md) [**NotNull**](classendstone_1_1NotNull.md)&lt; [**PermissionAttachment**](classendstone_1_1PermissionAttachment.md) &gt; &)&gt; | [**PermissionRemovedExecutor**](#typedef-permissionremovedexecutor)  <br> |
 | enum  | [**PluginLoadOrder**](#enum-pluginloadorder)  <br>_Represents the order in which a plugin should be initialized and enabled._  |
 | typedef [**Identifier**](classendstone_1_1Identifier.md)&lt; [**PotionType**](classendstone_1_1PotionType.md) &gt; | [**PotionId**](#typedef-potionid)  <br> |
 | enum std::uint8\_t | [**RenderType**](#enum-rendertype)  <br>_Controls the way in which an_ [_**Objective**_](classendstone_1_1Objective.md) _is rendered on the client side._ |
@@ -855,7 +855,7 @@ enum endstone::PermissionLevel {
 ### typedef PermissionRemovedExecutor 
 
 ```C++
-using endstone::PermissionRemovedExecutor = typedef std::function<void(const PermissionAttachment &)>;
+using endstone::PermissionRemovedExecutor = typedef std::function<void(const NotNull<PermissionAttachment> &)>;
 ```
 
 

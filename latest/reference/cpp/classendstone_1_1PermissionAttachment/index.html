@@ -2794,6 +2794,7 @@ For latest updates join the chat on
 <ul>
 <li><code>#include &lt;endstone/permissions/permission_attachment.h&gt;</code></li>
 </ul>
+<p>Inherits the following classes: std::enable_shared_from_this&lt; PermissionAttachment &gt;</p>
 <h2 id="public-functions">Public Functions<a class="headerlink" href="#public-functions" title="Permanent link">&para;</a></h2>
 <table>
 <thead>
@@ -2805,10 +2806,10 @@ For latest updates join the chat on
 <tbody>
 <tr>
 <td style="text-align: right;"></td>
-<td style="text-align: left;"><a href="#function-permissionattachment"><strong>PermissionAttachment</strong></a> (<a href="../classendstone_1_1Plugin/"><strong>Plugin</strong></a> &amp; plugin, <a href="../classendstone_1_1Permissible/"><strong>Permissible</strong></a> &amp; permissible) <br></td>
+<td style="text-align: left;"><a href="#function-permissionattachment"><strong>PermissionAttachment</strong></a> (<a href="../classendstone_1_1Plugin/"><strong>Plugin</strong></a> &amp; plugin, <a href="../classendstone_1_1Identifier/"><strong>const</strong></a> <a href="../classendstone_1_1NotNull/"><strong>NotNull</strong></a>&lt; <a href="../classendstone_1_1Permissible/"><strong>Permissible</strong></a> &gt; &amp; permissible) <br></td>
 </tr>
 <tr>
-<td style="text-align: right;"><a href="../classendstone_1_1Permissible/"><strong>Permissible</strong></a> &amp;</td>
+<td style="text-align: right;"><a href="../classendstone_1_1Nullable/"><strong>Nullable</strong></a>&lt; <a href="../classendstone_1_1Permissible/"><strong>Permissible</strong></a> &gt;</td>
 <td style="text-align: left;"><a href="#function-getpermissible"><strong>getPermissible</strong></a> () const<br><em>Gets the</em> <a href="../classendstone_1_1Permissible/"><em><strong>Permissible</strong></em></a> <em>that this is attached to.</em></td>
 </tr>
 <tr>
@@ -2833,7 +2834,7 @@ For latest updates join the chat on
 </tr>
 <tr>
 <td style="text-align: right;"><a href="../classendstone_1_1Identifier/"><strong>void</strong></a></td>
-<td style="text-align: left;"><a href="#function-setpermission-22"><strong>setPermission</strong></a> (<a href="../classendstone_1_1Permission/"><strong>Permission</strong></a> &amp; perm, <a href="../classendstone_1_1Identifier/"><strong>bool</strong></a> value) <br><em>Sets a permission to the given value.</em></td>
+<td style="text-align: left;"><a href="#function-setpermission-22"><strong>setPermission</strong></a> (<a href="../classendstone_1_1Identifier/"><strong>const</strong></a> <a href="../classendstone_1_1NotNull/"><strong>NotNull</strong></a>&lt; <a href="../classendstone_1_1Permission/"><strong>Permission</strong></a> &gt; &amp; perm, <a href="../classendstone_1_1Identifier/"><strong>bool</strong></a> value) <br><em>Sets a permission to the given value.</em></td>
 </tr>
 <tr>
 <td style="text-align: right;"><a href="../classendstone_1_1Identifier/"><strong>void</strong></a></td>
@@ -2845,7 +2846,7 @@ For latest updates join the chat on
 </tr>
 <tr>
 <td style="text-align: right;"><a href="../classendstone_1_1Identifier/"><strong>void</strong></a></td>
-<td style="text-align: left;"><a href="#function-unsetpermission-22"><strong>unsetPermission</strong></a> (<a href="../classendstone_1_1Permission/"><strong>Permission</strong></a> &amp; perm) <br><em>Removes the specified permission from this attachment.</em></td>
+<td style="text-align: left;"><a href="#function-unsetpermission-22"><strong>unsetPermission</strong></a> (<a href="../classendstone_1_1Identifier/"><strong>const</strong></a> <a href="../classendstone_1_1NotNull/"><strong>NotNull</strong></a>&lt; <a href="../classendstone_1_1Permission/"><strong>Permission</strong></a> &gt; &amp; perm) <br><em>Removes the specified permission from this attachment.</em></td>
 </tr>
 </tbody>
 </table>
@@ -2853,17 +2854,17 @@ For latest updates join the chat on
 <h3 id="function-permissionattachment">function PermissionAttachment<a class="headerlink" href="#function-permissionattachment" title="Permanent link">&para;</a></h3>
 <div class="language-C++ highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="kr">inline</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">PermissionAttachment</span><span class="o">::</span><span class="n">PermissionAttachment</span><span class="w"> </span><span class="p">(</span>
 </span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a><span class="w">    </span><span class="n">Plugin</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">plugin</span><span class="p">,</span>
-</span><span id="__span-0-3"><a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a><span class="w">    </span><span class="n">Permissible</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">permissible</span>
+</span><span id="__span-0-3"><a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a><span class="w">    </span><span class="k">const</span><span class="w">  </span><span class="n">NotNull</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">Permissible</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">permissible</span>
 </span><span id="__span-0-4"><a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a><span class="p">)</span><span class="w"> </span>
 </span></code></pre></div>
 <hr>
 
 <h3 id="function-getpermissible">function getPermissible<a class="headerlink" href="#function-getpermissible" title="Permanent link">&para;</a></h3>
 <p><em>Gets the</em> <a href="../classendstone_1_1Permissible/"><em><strong>Permissible</strong></em></a> <em>that this is attached to.</em>
-<div class="language-C++ highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="kr">inline</span><span class="w"> </span><span class="n">Permissible</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">PermissionAttachment</span><span class="o">::</span><span class="n">getPermissible</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="k">const</span>
+<div class="language-C++ highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="kr">inline</span><span class="w"> </span><span class="n">Nullable</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">Permissible</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">PermissionAttachment</span><span class="o">::</span><span class="n">getPermissible</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="k">const</span>
 </span></code></pre></div></p>
 <p><strong>Returns:</strong></p>
-<p><a href="../classendstone_1_1Permissible/"><strong>Permissible</strong></a> containing this attachment </p>
+<p><a href="../classendstone_1_1Permissible/"><strong>Permissible</strong></a> containing this attachment, or nullptr if it no longer exists </p>
 <hr>
 
 <h3 id="function-getpermissions">function getPermissions<a class="headerlink" href="#function-getpermissions" title="Permanent link">&para;</a></h3>
@@ -2897,7 +2898,7 @@ For latest updates join the chat on
 <div class="language-C++ highlight"><pre><span></span><code><span id="__span-5-1"><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a><span class="kr">inline</span><span class="w"> </span><span class="kt">bool</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">PermissionAttachment</span><span class="o">::</span><span class="n">remove</span><span class="w"> </span><span class="p">()</span><span class="w"> </span>
 </span></code></pre></div></p>
 <p><strong>Returns:</strong></p>
-<p>true if the permissible was removed successfully, false if it did not exist </p>
+<p>true if the attachment was removed successfully, false if it was already removed or its <a href="../classendstone_1_1Permissible/"><strong>Permissible</strong></a> no longer exists </p>
 <hr>
 
 <h3 id="function-setpermission-12">function setPermission [&frac12;]<a class="headerlink" href="#function-setpermission-12" title="Permanent link">&para;</a></h3>
@@ -2917,7 +2918,7 @@ For latest updates join the chat on
 <h3 id="function-setpermission-22">function setPermission [2/2]<a class="headerlink" href="#function-setpermission-22" title="Permanent link">&para;</a></h3>
 <p><em>Sets a permission to the given value.</em> 
 <div class="language-C++ highlight"><pre><span></span><code><span id="__span-7-1"><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a><span class="kr">inline</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">PermissionAttachment</span><span class="o">::</span><span class="n">setPermission</span><span class="w"> </span><span class="p">(</span>
-</span><span id="__span-7-2"><a id="__codelineno-7-2" name="__codelineno-7-2" href="#__codelineno-7-2"></a><span class="w">    </span><span class="n">Permission</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">perm</span><span class="p">,</span>
+</span><span id="__span-7-2"><a id="__codelineno-7-2" name="__codelineno-7-2" href="#__codelineno-7-2"></a><span class="w">    </span><span class="k">const</span><span class="w">  </span><span class="n">NotNull</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">Permission</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">perm</span><span class="p">,</span>
 </span><span id="__span-7-3"><a id="__codelineno-7-3" name="__codelineno-7-3" href="#__codelineno-7-3"></a><span class="w">    </span><span class="kt">bool</span><span class="w"> </span><span class="n">value</span>
 </span><span id="__span-7-4"><a id="__codelineno-7-4" name="__codelineno-7-4" href="#__codelineno-7-4"></a><span class="p">)</span><span class="w"> </span>
 </span></code></pre></div></p>
@@ -2957,7 +2958,7 @@ For latest updates join the chat on
 <h3 id="function-unsetpermission-22">function unsetPermission [2/2]<a class="headerlink" href="#function-unsetpermission-22" title="Permanent link">&para;</a></h3>
 <p><em>Removes the specified permission from this attachment.</em> 
 <div class="language-C++ highlight"><pre><span></span><code><span id="__span-10-1"><a id="__codelineno-10-1" name="__codelineno-10-1" href="#__codelineno-10-1"></a><span class="kr">inline</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">PermissionAttachment</span><span class="o">::</span><span class="n">unsetPermission</span><span class="w"> </span><span class="p">(</span>
-</span><span id="__span-10-2"><a id="__codelineno-10-2" name="__codelineno-10-2" href="#__codelineno-10-2"></a><span class="w">    </span><span class="n">Permission</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">perm</span>
+</span><span id="__span-10-2"><a id="__codelineno-10-2" name="__codelineno-10-2" href="#__codelineno-10-2"></a><span class="w">    </span><span class="k">const</span><span class="w">  </span><span class="n">NotNull</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">Permission</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">perm</span>
 </span><span id="__span-10-3"><a id="__codelineno-10-3" name="__codelineno-10-3" href="#__codelineno-10-3"></a><span class="p">)</span><span class="w"> </span>
 </span></code></pre></div></p>
 <p>If the permission does not exist in this attachment, nothing will happen.</p>

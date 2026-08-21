@@ -389,12 +389,17 @@
         <link refid="classendstone_1_1Permissible"/>
         <childnode refid="5" relation="public-inheritance">
         </childnode>
+        <childnode refid="6" relation="public-inheritance">
+        </childnode>
       </node>
-      <node id="6">
+      <node id="7">
         <label>endstone::Player</label>
         <link refid="classendstone_1_1Player"/>
         <childnode refid="1" relation="public-inheritance">
         </childnode>
+      </node>
+      <node id="6">
+        <label>std::enable_shared_from_this&lt; Permissible &gt;</label>
       </node>
     </inheritancegraph>
     <collaborationgraph>
@@ -425,12 +430,17 @@
         <link refid="classendstone_1_1Permissible"/>
         <childnode refid="5" relation="public-inheritance">
         </childnode>
+        <childnode refid="6" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="6">
+        <label>std::enable_shared_from_this&lt; Permissible &gt;</label>
       </node>
     </collaborationgraph>
     <location file="include/endstone/actor/mob.h" line="30" column="1" bodyfile="include/endstone/actor/mob.h" bodystart="30" bodyend="138"/>
     <listofallmembers>
-      <member refid="classendstone_1_1Permissible_1a08be02debf01b55544c4566931ed98fc" prot="public" virt="pure-virtual"><scope>endstone::Mob</scope><name>addAttachment</name></member>
-      <member refid="classendstone_1_1Permissible_1ab1adef2b8d0494a9bfcd9c9ffb995f2b" prot="public" virt="pure-virtual"><scope>endstone::Mob</scope><name>addAttachment</name></member>
+      <member refid="classendstone_1_1Permissible_1a849fc5c1e67a17c5b012ab5d94031ec1" prot="public" virt="pure-virtual"><scope>endstone::Mob</scope><name>addAttachment</name></member>
+      <member refid="classendstone_1_1Permissible_1a0b408f42fc8a1ab752422ff525b55d03" prot="public" virt="pure-virtual"><scope>endstone::Mob</scope><name>addAttachment</name></member>
       <member refid="classendstone_1_1Mob_1a2836f61e2312723e336e43e41f0604f3" prot="public" virt="pure-virtual"><scope>endstone::Mob</scope><name>addEffect</name></member>
       <member refid="classendstone_1_1Actor_1a7df17ed4f47907e5022b1eff1f306271" prot="public" virt="pure-virtual"><scope>endstone::Mob</scope><name>addScoreboardTag</name></member>
       <member refid="classendstone_1_1Object_1a798b5128ce018bbbe8ca949ba78c3db1" prot="public" virt="non-virtual"><scope>endstone::Mob</scope><name>as</name></member>
@@ -441,7 +451,7 @@
       <member refid="classendstone_1_1Object_1aaaeb27e8e442e5adb772ae0d1af1c33f" prot="public" virt="pure-virtual"><scope>endstone::Mob</scope><name>getClassTypeId</name></member>
       <member refid="classendstone_1_1Actor_1a408807220ded9a0004de3e6d7aac214e" prot="public" virt="pure-virtual"><scope>endstone::Mob</scope><name>getDimension</name></member>
       <member refid="classendstone_1_1Mob_1a3f4d776ae80d887fc4ddb1900b08983c" prot="public" virt="pure-virtual"><scope>endstone::Mob</scope><name>getEffect</name></member>
-      <member refid="classendstone_1_1Permissible_1ad9307f3eef07e6e03a55b4fe9aab9be6" prot="public" virt="pure-virtual"><scope>endstone::Mob</scope><name>getEffectivePermissions</name></member>
+      <member refid="classendstone_1_1Permissible_1a152d098beb17384e97f3b7aa127338bd" prot="public" virt="pure-virtual"><scope>endstone::Mob</scope><name>getEffectivePermissions</name></member>
       <member refid="classendstone_1_1Mob_1a082c0e3f266fc07386b6892b8af08b5f" prot="public" virt="pure-virtual"><scope>endstone::Mob</scope><name>getHealth</name></member>
       <member refid="classendstone_1_1Actor_1a78059bed5b1a6b23bfb2be9ac6ae81a3" prot="public" virt="pure-virtual"><scope>endstone::Mob</scope><name>getId</name></member>
       <member refid="classendstone_1_1Actor_1aff1ed8218696acc7009bf7ce5a5069a2" prot="public" virt="pure-virtual"><scope>endstone::Mob</scope><name>getLevel</name></member>
@@ -459,7 +469,7 @@
       <member refid="classendstone_1_1Mob_1a2d038feb9ba603941bb670b61f486192" prot="public" virt="pure-virtual"><scope>endstone::Mob</scope><name>hasAttribute</name></member>
       <member refid="classendstone_1_1Mob_1a412db4e15e78c57b8c712f5b3ca39f7c" prot="public" virt="pure-virtual"><scope>endstone::Mob</scope><name>hasEffect</name></member>
       <member refid="classendstone_1_1Permissible_1ade03215666f81be410f2b058fa2c158b" prot="public" virt="pure-virtual"><scope>endstone::Mob</scope><name>hasPermission</name></member>
-      <member refid="classendstone_1_1Permissible_1ae3da30350acda91f5a007e15fc783ae6" prot="public" virt="pure-virtual"><scope>endstone::Mob</scope><name>hasPermission</name></member>
+      <member refid="classendstone_1_1Permissible_1af0f63d64c914da1e0d3b29a5083c423d" prot="public" virt="pure-virtual"><scope>endstone::Mob</scope><name>hasPermission</name></member>
       <member refid="classendstone_1_1Object_1ae8213ae15ad1b14e4631399c6b18960a" prot="public" virt="non-virtual"><scope>endstone::Mob</scope><name>is</name></member>
       <member refid="classendstone_1_1Actor_1aa099af11ae3053289f31c65c9126b50a" prot="public" virt="pure-virtual"><scope>endstone::Mob</scope><name>isDead</name></member>
       <member refid="classendstone_1_1Mob_1a7903900a62a82e920230c7fc75ff5ac6" prot="public" virt="pure-virtual"><scope>endstone::Mob</scope><name>isGliding</name></member>
@@ -470,12 +480,12 @@
       <member refid="classendstone_1_1Actor_1ada87051d8b64c9df5cab73732bddf710" prot="public" virt="pure-virtual"><scope>endstone::Mob</scope><name>isNameTagVisible</name></member>
       <member refid="classendstone_1_1Actor_1a7cfff436cf3ddabdb1f28f744234f218" prot="public" virt="pure-virtual"><scope>endstone::Mob</scope><name>isOnGround</name></member>
       <member refid="classendstone_1_1Permissible_1ae625f98f57116c559dc35a6cfce960d9" prot="public" virt="pure-virtual"><scope>endstone::Mob</scope><name>isPermissionSet</name></member>
-      <member refid="classendstone_1_1Permissible_1af40d6121208b293a05abf56c47792995" prot="public" virt="pure-virtual"><scope>endstone::Mob</scope><name>isPermissionSet</name></member>
+      <member refid="classendstone_1_1Permissible_1aee86d20869f042e6a9c191d199539e23" prot="public" virt="pure-virtual"><scope>endstone::Mob</scope><name>isPermissionSet</name></member>
       <member refid="classendstone_1_1Mob_1aee57346e9cf1c008fb704e8a701112b6" prot="public" virt="pure-virtual"><scope>endstone::Mob</scope><name>isSwimming</name></member>
       <member refid="classendstone_1_1Actor_1a5b744893654143e1d8a1f03b1d3cc459" prot="public" virt="pure-virtual"><scope>endstone::Mob</scope><name>isValid</name></member>
       <member refid="classendstone_1_1Permissible_1acbd0e4c4815db28b66ef14976f110af5" prot="public" virt="pure-virtual"><scope>endstone::Mob</scope><name>recalculatePermissions</name></member>
       <member refid="classendstone_1_1Actor_1a896dcb16d037d3591b0d39480521a193" prot="public" virt="pure-virtual"><scope>endstone::Mob</scope><name>remove</name></member>
-      <member refid="classendstone_1_1Permissible_1abcc26358591f3aef6007d815e8265c47" prot="public" virt="pure-virtual"><scope>endstone::Mob</scope><name>removeAttachment</name></member>
+      <member refid="classendstone_1_1Permissible_1ac8dad41fb93f88e0688ca4557884dd38" prot="public" virt="pure-virtual"><scope>endstone::Mob</scope><name>removeAttachment</name></member>
       <member refid="classendstone_1_1Mob_1aeac9fd85c147eaa5d63981f67604e348" prot="public" virt="pure-virtual"><scope>endstone::Mob</scope><name>removeEffect</name></member>
       <member refid="classendstone_1_1Actor_1a6f068c4612aa487ba76d3a4c3e3b1033" prot="public" virt="pure-virtual"><scope>endstone::Mob</scope><name>removeScoreboardTag</name></member>
       <member refid="classendstone_1_1CommandSender_1a25f6e7b7397652fd14cb57bc994b00eb" prot="public" virt="pure-virtual"><scope>endstone::Mob</scope><name>sendErrorMessage</name></member>

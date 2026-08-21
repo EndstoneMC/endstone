@@ -16,9 +16,11 @@
 * `#include <unordered_map>`
 * `#include <unordered_set>`
 * `#include <utility>`
+* `#include "endstone/check.h"`
 * `#include "endstone/permissions/permissible.h"`
 * `#include "endstone/permissions/permission_default.h"`
 * `#include "endstone/plugin/plugin_manager.h"`
+* `#include "endstone/util/pointers.h"`
 
 
 

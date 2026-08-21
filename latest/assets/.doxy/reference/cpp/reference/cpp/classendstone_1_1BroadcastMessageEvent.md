@@ -93,10 +93,10 @@ Inherits the following classes: [endstone::Cancellable](classendstone_1_1Cancell
 
 | Type | Name |
 | ---: | :--- |
-|   | [**BroadcastMessageEvent**](#function-broadcastmessageevent) ([**bool**](classendstone_1_1Identifier.md) async, [**Message**](namespaceendstone.md#typedef-message) message, std::unordered\_set&lt; [**const**](classendstone_1_1Identifier.md) [**CommandSender**](classendstone_1_1CommandSender.md) \* &gt; recipients) <br> |
+|   | [**BroadcastMessageEvent**](#function-broadcastmessageevent) ([**bool**](classendstone_1_1Identifier.md) async, [**Message**](namespaceendstone.md#typedef-message) message, std::unordered\_set&lt; [**NotNull**](classendstone_1_1NotNull.md)&lt; [**CommandSender**](classendstone_1_1CommandSender.md) &gt; &gt; recipients) <br> |
 |   | [**ENDSTONE\_EVENT**](#function-endstone_event) ([**BroadcastMessageEvent**](classendstone_1_1BroadcastMessageEvent.md)) <br> |
 |  [**const**](classendstone_1_1Identifier.md) [**Message**](namespaceendstone.md#typedef-message) & | [**getMessage**](#function-getmessage) () const<br>_Get the message to broadcast._  |
-|  [**const**](classendstone_1_1Identifier.md) std::unordered\_set&lt; [**const**](classendstone_1_1Identifier.md) [**CommandSender**](classendstone_1_1CommandSender.md) \* &gt; & | [**getRecipients**](#function-getrecipients) () const<br>_Gets a set of recipients that this broadcast message will be displayed to._  |
+|  [**const**](classendstone_1_1Identifier.md) std::unordered\_set&lt; [**NotNull**](classendstone_1_1NotNull.md)&lt; [**CommandSender**](classendstone_1_1CommandSender.md) &gt; &gt; & | [**getRecipients**](#function-getrecipients) () const<br>_Gets a set of recipients that this broadcast message will be displayed to._  |
 |  [**void**](classendstone_1_1Identifier.md) | [**setMessage**](#function-setmessage) ([**Message**](namespaceendstone.md#typedef-message) message) <br>_Set the message to broadcast._  |
 
 
@@ -219,7 +219,7 @@ This event should be async if fired from an async thread.
 inline endstone::BroadcastMessageEvent::BroadcastMessageEvent (
     bool async,
     Message message,
-    std::unordered_set< const  CommandSender * > recipients
+    std::unordered_set< NotNull < CommandSender > > recipients
 ) 
 ```
 
@@ -274,7 +274,7 @@ Message to broadcast
 
 _Gets a set of recipients that this broadcast message will be displayed to._ 
 ```C++
-inline const std::unordered_set< const  CommandSender * > & endstone::BroadcastMessageEvent::getRecipients () const
+inline const std::unordered_set< NotNull < CommandSender > > & endstone::BroadcastMessageEvent::getRecipients () const
 ```
 
 

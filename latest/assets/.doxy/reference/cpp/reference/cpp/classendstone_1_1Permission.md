@@ -14,6 +14,7 @@ _Represents a unique permission that may be attached to a_ [_**Permissible**_](c
 
 
 
+Inherits the following classes: std::enable_shared_from_this< Permission >
 
 
 
@@ -58,13 +59,13 @@ _Represents a unique permission that may be attached to a_ [_**Permissible**_](c
 | Type | Name |
 | ---: | :--- |
 |   | [**Permission**](#function-permission) (std::string name, std::string description="", [**PermissionDefault**](namespaceendstone.md#enum-permissiondefault) default\_value=DefaultPermission, std::unordered\_map&lt; std::string, [**bool**](classendstone_1_1Identifier.md) &gt; children={}) <br> |
-|  [**Permission**](classendstone_1_1Permission.md) \* | [**addParent**](#function-addparent-12) (std::string name, [**bool**](classendstone_1_1Identifier.md) value) <br>_Adds this permission to the specified parent permission._  |
-|  [**void**](classendstone_1_1Identifier.md) | [**addParent**](#function-addparent-22) ([**Permission**](classendstone_1_1Permission.md) & perm, [**bool**](classendstone_1_1Identifier.md) value) const<br>_Adds this permission to the specified parent permission._  |
+|  [**NotNull**](classendstone_1_1NotNull.md)&lt; [**Permission**](classendstone_1_1Permission.md) &gt; | [**addParent**](#function-addparent-12) (std::string name, [**bool**](classendstone_1_1Identifier.md) value) <br>_Adds this permission to the specified parent permission._  |
+|  [**void**](classendstone_1_1Identifier.md) | [**addParent**](#function-addparent-22) ([**const**](classendstone_1_1Identifier.md) [**NotNull**](classendstone_1_1NotNull.md)&lt; [**Permission**](classendstone_1_1Permission.md) &gt; & perm, [**bool**](classendstone_1_1Identifier.md) value) const<br>_Adds this permission to the specified parent permission._  |
 |  std::unordered\_map&lt; std::string, [**bool**](classendstone_1_1Identifier.md) &gt; & | [**getChildren**](#function-getchildren) () <br>_Gets the children of this permission._  |
 |  [**PermissionDefault**](namespaceendstone.md#enum-permissiondefault) | [**getDefault**](#function-getdefault) () const<br>_Gets the default value of this permission._  |
 |  std::string | [**getDescription**](#function-getdescription) () const<br>_Gets a brief description of this permission, may be empty._  |
 |  std::string | [**getName**](#function-getname) () const<br>_Returns the unique fully qualified name of this_ [_**Permission**_](classendstone_1_1Permission.md) _._ |
-|  std::unordered\_set&lt; [**Permissible**](classendstone_1_1Permissible.md) \* &gt; | [**getPermissibles**](#function-getpermissibles) () const<br>_Gets a set containing every_ [_**Permissible**_](classendstone_1_1Permissible.md) _that has this permission._ |
+|  std::unordered\_set&lt; [**NotNull**](classendstone_1_1NotNull.md)&lt; [**Permissible**](classendstone_1_1Permissible.md) &gt; &gt; | [**getPermissibles**](#function-getpermissibles) () const<br>_Gets a set containing every_ [_**Permissible**_](classendstone_1_1Permissible.md) _that has this permission._ |
 |  [**void**](classendstone_1_1Identifier.md) | [**init**](#function-init) ([**PluginManager**](classendstone_1_1PluginManager.md) & plugin\_manager) <br> |
 |  [**void**](classendstone_1_1Identifier.md) | [**recalculatePermissibles**](#function-recalculatepermissibles) () <br>_Recalculates all Permissibles that contain this permission._  |
 |  [**void**](classendstone_1_1Identifier.md) | [**setDefault**](#function-setdefault) ([**PermissionDefault**](namespaceendstone.md#enum-permissiondefault) value) <br>_Sets the default value of this permission._  |
@@ -139,7 +140,7 @@ inline explicit endstone::Permission::Permission (
 
 _Adds this permission to the specified parent permission._ 
 ```C++
-inline Permission * endstone::Permission::addParent (
+inline NotNull < Permission > endstone::Permission::addParent (
     std::string name,
     bool value
 ) 
@@ -167,6 +168,13 @@ Parent permission it created or loaded
 
 
 
+**Exception:**
+
+
+* `std::runtime_error` if this permission is not registered with a plugin manager 
+
+
+
 
         
 
@@ -179,7 +187,7 @@ Parent permission it created or loaded
 _Adds this permission to the specified parent permission._ 
 ```C++
 inline void endstone::Permission::addParent (
-    Permission & perm,
+    const  NotNull < Permission > & perm,
     bool value
 ) const
 ```
@@ -310,7 +318,7 @@ Fully qualified name
 
 _Gets a set containing every_ [_**Permissible**_](classendstone_1_1Permissible.md) _that has this permission._
 ```C++
-inline std::unordered_set< Permissible * > endstone::Permission::getPermissibles () const
+inline std::unordered_set< NotNull < Permissible > > endstone::Permission::getPermissibles () const
 ```
 
 

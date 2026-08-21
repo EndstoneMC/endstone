@@ -33,6 +33,7 @@
 #include "endstone/event/event.h"
 #include "endstone/event/event_priority.h"
 #include "endstone/permissions/permission_level.h"
+#include "endstone/util/pointers.h"
 
 namespace endstone {
 
@@ -79,33 +80,33 @@ public:
     virtual void registerEvent(std::string event, std::function<void(Event &)> executor, EventPriority priority,
                                Plugin &plugin, bool ignore_cancelled) = 0;
 
-    [[nodiscard]] virtual Permission *getPermission(std::string name) const = 0;
+    [[nodiscard]] virtual Nullable<Permission> getPermission(std::string name) const = 0;
 
-    virtual Permission &addPermission(std::unique_ptr<Permission> perm) = 0;
+    virtual NotNull<Permission> addPermission(NotNull<Permission> perm) = 0;
 
-    virtual void removePermission(Permission &perm) = 0;
+    virtual void removePermission(const NotNull<Permission> &perm) = 0;
 
     virtual void removePermission(std::string name) = 0;
 
-    [[nodiscard]] virtual std::vector<Permission *> getDefaultPermissions(PermissionLevel level) const = 0;
+    [[nodiscard]] virtual std::vector<NotNull<Permission>> getDefaultPermissions(PermissionLevel level) const = 0;
 
-    virtual void recalculatePermissionDefaults(Permission &perm) = 0;
+    virtual void recalculatePermissionDefaults(const NotNull<Permission> &perm) = 0;
 
-    virtual void subscribeToPermission(std::string permission, Permissible &permissible) = 0;
+    virtual void subscribeToPermission(std::string permission, const NotNull<Permissible> &permissible) = 0;
 
-    virtual void unsubscribeFromPermission(std::string permission, Permissible &permissible) = 0;
+    virtual void unsubscribeFromPermission(std::string permission, const NotNull<Permissible> &permissible) = 0;
 
-    [[nodiscard]] virtual std::unordered_set<Permissible *> getPermissionSubscriptions(
+    [[nodiscard]] virtual std::unordered_set<NotNull<Permissible>> getPermissionSubscriptions(
         std::string permission) const = 0;
 
-    virtual void subscribeToDefaultPerms(PermissionLevel level, Permissible &permissible) = 0;
+    virtual void subscribeToDefaultPerms(PermissionLevel level, const NotNull<Permissible> &permissible) = 0;
 
-    virtual void unsubscribeFromDefaultPerms(PermissionLevel level, Permissible &permissible) = 0;
+    virtual void unsubscribeFromDefaultPerms(PermissionLevel level, const NotNull<Permissible> &permissible) = 0;
 
-    [[nodiscard]] virtual std::unordered_set<Permissible *> getDefaultPermSubscriptions(
+    [[nodiscard]] virtual std::unordered_set<NotNull<Permissible>> getDefaultPermSubscriptions(
         PermissionLevel level) const = 0;
 
-    [[nodiscard]] virtual std::unordered_set<Permission *> getPermissions() const = 0;
+    [[nodiscard]] virtual std::unordered_set<NotNull<Permission>> getPermissions() const = 0;
 };
 
 }  // namespace endstone

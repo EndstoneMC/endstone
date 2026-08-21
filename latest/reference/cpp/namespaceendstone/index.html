@@ -4443,7 +4443,7 @@ For latest updates join the chat on
 <td style="text-align: left;"><a href="#enum-permissionlevel"><strong>PermissionLevel</strong></a>  <br><em>Represents the permission level of a</em> <a href="../classendstone_1_1Permissible/"><em><strong>Permissible</strong></em></a> <em>.</em></td>
 </tr>
 <tr>
-<td style="text-align: right;">typedef std::function&lt; <a href="../classendstone_1_1Identifier/"><strong>void</strong></a>(<a href="../classendstone_1_1Identifier/"><strong>const</strong></a> <a href="../classendstone_1_1PermissionAttachment/"><strong>PermissionAttachment</strong></a> &amp;)&gt;</td>
+<td style="text-align: right;">typedef std::function&lt; <a href="../classendstone_1_1Identifier/"><strong>void</strong></a>(<a href="../classendstone_1_1Identifier/"><strong>const</strong></a> <a href="../classendstone_1_1NotNull/"><strong>NotNull</strong></a>&lt; <a href="../classendstone_1_1PermissionAttachment/"><strong>PermissionAttachment</strong></a> &gt; &amp;)&gt;</td>
 <td style="text-align: left;"><a href="#typedef-permissionremovedexecutor"><strong>PermissionRemovedExecutor</strong></a>  <br></td>
 </tr>
 <tr>
@@ -4797,7 +4797,7 @@ For latest updates join the chat on
 <hr>
 
 <h3 id="typedef-permissionremovedexecutor">typedef PermissionRemovedExecutor<a class="headerlink" href="#typedef-permissionremovedexecutor" title="Permanent link">&para;</a></h3>
-<div class="language-C++ highlight"><pre><span></span><code><span id="__span-31-1"><a id="__codelineno-31-1" name="__codelineno-31-1" href="#__codelineno-31-1"></a><span class="k">using</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">PermissionRemovedExecutor</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">typedef</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">function</span><span class="o">&lt;</span><span class="kt">void</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="n">PermissionAttachment</span><span class="w"> </span><span class="o">&amp;</span><span class="p">)</span><span class="o">&gt;</span><span class="p">;</span>
+<div class="language-C++ highlight"><pre><span></span><code><span id="__span-31-1"><a id="__codelineno-31-1" name="__codelineno-31-1" href="#__codelineno-31-1"></a><span class="k">using</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">PermissionRemovedExecutor</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">typedef</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">function</span><span class="o">&lt;</span><span class="kt">void</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="n">NotNull</span><span class="o">&lt;</span><span class="n">PermissionAttachment</span><span class="o">&gt;</span><span class="w"> </span><span class="o">&amp;</span><span class="p">)</span><span class="o">&gt;</span><span class="p">;</span>
 </span></code></pre></div>
 <hr>
 
