@@ -14,12 +14,17 @@
 
 #pragma once
 
-#include "bedrock/world/item/bucket_fill_type.h"
+#include "bedrock/bedrock.h"
+#include "bedrock/common_types.h"
 
-class Item;
+class Actor;
+class BlockPos;
+class InteractionResult;
+class ItemStack;
+class Vec3;
 
-namespace endstone::runtime {
-
-BucketFillType getBucketFillType(const ::Item &item);
-
-}  // namespace endstone::runtime
+class BucketItem {
+private:
+    ENDSTONE_HOOK virtual InteractionResult _useOn(ItemStack &instance, Actor &entity, BlockPos pos, FacingID face,
+                                                   const Vec3 &click_pos) const;
+};

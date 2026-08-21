@@ -527,6 +527,30 @@ extra = 0
 pattern = "41 57 41 56 53 8B 42"
 
 [[signatures]]
+name = "_ZNK10BucketItem6_useOnER9ItemStackR5Actor8BlockPoshRK4Vec3"
+relative = false
+extra = 0
+# 1. the name is real: BDS declares `private: virtual InteractionResult BucketItem::_useOn(ItemStack&, Actor&,
+#    BlockPos, FacingID, const Vec3&) const`, so a symbol-bearing build resolves it by name; the steps below
+#    are the no-symbol fallback
+# 2. find bytes "62 75 63 6B 65 74 00" = "bucket\0" in .rodata and follow the vanilla item registration that
+#    constructs BucketItem; from the constructor take the vtable it stores and count to the slot
+#    Item::_useOn occupies - it is the 130th virtual declared by Item (Itanium, i.e. two destructor slots
+#    ahead of MSVC's 129), and Item declares no virtual after it
+# 3. confirm identity from the body, not the slot: the target calls Actor::getDimensionBlockSource in its
+#    first ~0x30 bytes, then constructs a BaseGameVersion(1, 17, 20) behind a __cxa_guard, switches on
+#    Actor::getEntityTypeId, and its three tail calls are BucketItem::_emptyBucket, ::_takeLiquid and
+#    ::_takePowderSnow - no other function in the binary calls all three
+# 4. cross-check: BucketItem::_emptyBucket is reached from the target only, and the target is the sole
+#    definition in BucketItem's vtable slot for Item::_useOn; verified at 0x9713770 in the 1.21.132.3 named
+#    build
+# 5. walk back to the prologue (`push rbp/r15/r14/r13/r12/rbx`, `sub rsp, 0x308`) and cut from there
+# CUT AGAINST 1.21.132.3, NOT 1.26.44 - no 1.26.44 database exists on the machine that wrote this. The frame
+# size and the register shuffle after it are the volatile part; re-cut and re-verify uniqueness with
+# dump_symbols.py before relying on it
+pattern = "55 41 57 41 56 41 55 41 54 53 48 81 EC 08 03 00 00 45 89 CE 49 89 D4 48 89 74 24 18 49 89 FD"
+
+[[signatures]]
 name = "_ZNK13CauldronBlock3useERN11BlockEvents24BlockPlayerInteractEventE"
 relative = false
 extra = 0

@@ -469,6 +469,27 @@ extra = 0
 pattern = "56 57 53 48 83 EC ? 41 8B 40"
 
 [[signatures]]
+name = "?_useOn@BucketItem@@EEBA?AVInteractionResult@@AEAVItemStack@@AEAVActor@@VBlockPos@@EAEBVVec3@@@Z"
+relative = false
+extra = 0
+# 1. the name is real - confirmed present in the shipped PDB - so `dump_symbols.py --pdb` resolves it
+#    outright; the steps below are the no-PDB fallback. `E` is private-virtual, which is how BDS declares it
+# 2. find bytes "62 75 63 6B 65 74 00" = "bucket\0" in .rdata and follow the vanilla item registration that
+#    constructs BucketItem; from the constructor take the vftable it stores and count to the slot
+#    Item::_useOn occupies - it is index 129, the last virtual Item declares
+# 3. confirm identity from the body, not the slot: the target calls Actor::getDimensionBlockSource early,
+#    builds a BaseGameVersion(1, 17, 20) behind a thread-safe-init guard, switches on Actor::getEntityTypeId,
+#    and its three tail calls are BucketItem::_emptyBucket, ::_takeLiquid and ::_takePowderSnow - no other
+#    function in the binary calls all three
+# 4. cross-check against the named 1.26.32.2 database, where the PDB names this address directly
+# 5. walk back to the prologue (`push rbp/r15/r14/r13/r12/rsi/rdi/rbx`, `sub rsp, 0x448`,
+#    `lea rbp, [rsp+0x80]`) and cut there
+# CUT AGAINST 1.26.32.2, NOT 1.26.44 - no 1.26.44 database exists on the machine that wrote this. The frame
+# size and the spill displacements are the volatile part; re-cut and re-verify uniqueness with
+# dump_symbols.py before relying on it. --pdb resolution does not need it
+pattern = "55 41 57 41 56 41 55 41 54 56 57 53 48 81 EC 48 04 00 00 48 8D AC 24 80 00 00 00 0F 29 BD B0 03 00 00 0F 29 B5 A0 03 00 00 48 C7 85 98 03 00 00 FE FF FF FF"
+
+[[signatures]]
 name = "?use@CauldronBlock@@QEBAXAEAVBlockPlayerInteractEvent@BlockEvents@@@Z"
 relative = false
 extra = 0

@@ -25,7 +25,6 @@
 #include "bedrock/scripting/event_handlers/script_server_network_event_handler.h"
 #include "endstone/core/server.h"
 #include "endstone/detail.h"
-#include "endstone/runtime/bedrock_hooks/bucket.h"
 #include "endstone/runtime/hook.h"
 #include "endstone/runtime/vtable_hook.h"
 
@@ -128,7 +127,6 @@ public:
         hookEventHandler(*level.getScriptingEventCoordinator().scripting_event_handler);
         hookEventHandler(*level.getServerNetworkEventCoordinator().server_network_event_handler);
         server.setLevel(level);
-        endstone::runtime::installBucketHook();
         return ::EventResult::KeepGoing;
     }
 
