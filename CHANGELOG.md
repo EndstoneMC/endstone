@@ -66,6 +66,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 #### Commands and permissions
 
+- `UnknownCommandEvent` for undefined commands, reporting the `sender`, `command_line` and mutable `message`. Setting `message` to `None` suppresses the unknown-command response.
 - `Server.command_map`, exposing `CommandMap` to Python with `register_command()`, `dispatch()`, `clear_commands()` and `get_command()`.
 - `Command` can now be subclassed in Python to override `execute()`.
 - `/restart` command (console-only) for gracefully restarting the server.

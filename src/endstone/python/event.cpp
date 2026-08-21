@@ -262,6 +262,13 @@ void init_event(py::module_ &m, py::class_<Event, PyEvent> &event)
     py::class_<ChunkLoadEvent, ChunkEvent>(m, "ChunkLoadEvent", "Called when a chunk is loaded.");
     py::class_<ChunkUnloadEvent, ChunkEvent>(m, "ChunkUnloadEvent", "Called when a chunk is unloaded.");
 
+    py::class_<UnknownCommandEvent, Event>(m, "UnknownCommandEvent",
+                                           "Called when a command sender executes a command that is not defined.")
+        .def_property_readonly("sender", &UnknownCommandEvent::getSender, "The command sender.")
+        .def_property_readonly("command_line", &UnknownCommandEvent::getCommandLine, "The command that was sent.")
+        .def_property("message", &UnknownCommandEvent::getMessage, &UnknownCommandEvent::setMessage,
+                      "The message that will be returned, or `None` if no message will be sent.");
+
     // Player events
     py::class_<PlayerEvent, Event>(m, "PlayerEvent", "Represents a player related event.")
         .def_property_readonly("player", &PlayerEvent::getPlayer,

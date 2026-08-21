@@ -9,6 +9,7 @@ from endstone_test.command_executor import TestCommandExecutor
 from endstone_test.listeners import (
     ActorEventListener,
     BlockEventListener,
+    CommandEventListener,
     LevelEventListener,
     PlayerEventListener,
     ServerEventListener,
@@ -23,6 +24,7 @@ MARKER_DEFAULT = "not player and not event"
 LISTENERS = (
     ActorEventListener,
     BlockEventListener,
+    CommandEventListener,
     LevelEventListener,
     PlayerEventListener,
     ServerEventListener,

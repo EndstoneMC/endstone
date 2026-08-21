@@ -112,6 +112,7 @@ __all__ = [
     "ServerListPingEvent",
     "ServerLoadEvent",
     "ThunderChangeEvent",
+    "UnknownCommandEvent",
     "WeatherChangeEvent",
     "WeatherEvent",
     "event_handler",
@@ -652,6 +653,31 @@ class ChunkUnloadEvent(ChunkEvent):
     """
     Called when a chunk is unloaded.
     """
+
+class UnknownCommandEvent(Event):
+    """
+    Called when a command sender executes a command that is not defined.
+    """
+    @property
+    def sender(self) -> CommandSender:
+        """
+        The command sender.
+        """
+
+    @property
+    def command_line(self) -> str:
+        """
+        The command that was sent.
+        """
+
+    @property
+    def message(self) -> str | Translatable | None:
+        """
+        The message that will be returned, or `None` if no message will be sent.
+        """
+
+    @message.setter
+    def message(self, arg1: str | Translatable | None) -> None: ...
 
 class PlayerEvent(Event):
     """
