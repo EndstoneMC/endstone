@@ -89,8 +89,8 @@ public:
     void setIsGlowing(SignTextSide side, bool is_glowing) { _getText(side).setGlowing(is_glowing); }
     [[nodiscard]] bool getIsWaxed() const { return is_waxed_; }
     void setWaxed(bool waxed) { is_waxed_ = waxed; }
-    [[nodiscard]] const ActorUniqueID &getLockedForEditingBy() const { return locked_for_editing_by_; }
-    void setLockedForEditingBy(ActorUniqueID id) { locked_for_editing_by_ = id; }
+    [[nodiscard]] const ActorUniqueID &getLockedForEditingBy() const { return locked_for_editing_by_; }  // Endstone
+    void setLockedForEditingBy(ActorUniqueID id) { locked_for_editing_by_ = id; }                        // Endstone
     void setMessageForServerScripingOnly(SignTextSide side, std::string message, std::string owner_id);
 
 private:
