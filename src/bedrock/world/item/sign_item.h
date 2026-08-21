@@ -14,8 +14,17 @@
 
 #pragma once
 
-namespace endstone::runtime {
+#include "bedrock/bedrock.h"
+#include "bedrock/common_types.h"
+#include "bedrock/world/gamemode/interaction_result.h"
+#include "bedrock/world/level/block_pos.h"
 
-void installSignItemHook();
+class Actor;
+class ItemStack;
+class Vec3;
 
-}  // namespace endstone::runtime
+class SignItem {
+private:
+    ENDSTONE_HOOK virtual InteractionResult _useOn(ItemStack &, Actor &, BlockPos pos, FacingID face,
+                                                   Vec3 const &) const;
+};

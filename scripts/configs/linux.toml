@@ -693,7 +693,8 @@ extra = 0
 #    where clang-cl inlines both into raw member accesses, so windows.toml needs its own step 4
 # uniqueness: the anchor chain is unique (one code xref on requestToSendOpenSignPacket); the pattern
 #    below is only the prologue, so re-cut it from the address the chain lands on rather than trusting
-#    it. Chain walked in linux_server_x64 1.21.132.3 (symbols.debug); pattern NOT re-cut against 1.26.44
+#    it. Chain walked in linux_server_x64 1.21.132.3 (symbols.debug); pattern verified to match
+#    exactly ONCE in the 1.26.44.3 .text, at 0x98ed400
 pattern = "55 41 57 41 56 41 54 53 48 83 EC 40 89 D5 48 89 F3 49 89 FE 48 8B BF"
 
 [[signatures]]
@@ -871,6 +872,28 @@ extra = 0
 # 3. confirm vs the old named DB (args: CommandSoftEnumRegistry, LevelStorage*, not_null<NonOwnerPointer<...>>);
 #    sole caller is ServerLevel::_initializeScoreboard
 pattern = "55 41 57 41 56 41 55 41 54 53 48 81 EC ? ? ? ? 48 89 8C 24 ? ? ? ? 49 89 D6 48 89 FB"
+
+[[signatures]]
+name = "_ZNK8SignItem6_useOnER9ItemStackR5Actor8BlockPoshRK4Vec3"
+relative = false
+extra = 0
+# 1. find bytes "00 38 53 69 67 6E 49 74 65 6D 00" = "\0" + "8SignItem\0", the Itanium typeinfo name
+#    _ZTS8SignItem in .rodata (verified unique for 1.26.44.3; the HangingSignItem one reads
+#    "15HangingSignItem", also unique). Typeinfo names survive stripping
+# 2. the binary is a PIE, so vtables are zero in the file - resolve through .rela.dyn R_X86_64_RELATIVE
+#    entries by ADDEND, not by reading the slot: the reloc whose addend is the string lands at
+#    _ZTI8SignItem + 8; the reloc whose addend is that _ZTI lands at _ZTV8SignItem + 8
+# 3. _useOn is Item's 130th declared virtual and Item's first virtual is its destructor, which takes TWO
+#    Itanium slots (D1 complete + D0 deleting), so the target is the reloc addend at
+#    _ZTV8SignItem + 16 + 8*130
+# 4. confirm identity: repeat steps 1-3 for "15HangingSignItem" - _ZTV15HangingSignItem slot 130 holds
+#    the SAME address, because HangingSignItem derives from SignItem and does NOT override _useOn. Two
+#    independent vtables agreeing on one address is the check; a wrong ordinal disagrees
+# 5. confirm by the body: Actor::getDimensionBlockSource, the getBlockToPlace vtable call,
+#    Item::_sendTryPlaceBlockEvent, then the Actor virtual that is Player::openSign
+# uniqueness: cut against 1.26.44.3 and verified to match exactly ONCE in .text, at the address the
+#    vtable chain above resolves to (0xbba3e60)
+pattern = "55 41 57 41 56 41 55 41 54 53 48 83 EC ? 45 89 CE 49 89 CD 48 89 D3 48 89 74 24 ? 48 89 FD 48 89 0C 24 44 89 44 24 ? 44 89 44 24 ? 48 8B BA ? ? ? ? E8 ? ? ? ? 49 89 C7 4C 8B A3 ? ? ? ? 48 C7 C0 FF FF FF FF F0 49 0F C1 47 08 48 85 C0 75"
 
 [[signatures]]
 name = "_ZNK11TridentItem12releaseUsingER9ItemStackP6Playeri"

@@ -796,7 +796,8 @@ extra = 0
 #    calls ILevel::getPlayer on it, then Actor::getOrCreateUniqueID before the call from step 3
 # uniqueness: the anchor chain is unique (one code xref on requestToSendOpenSignPacket); the pattern
 #    below is only the prologue, so re-cut it from the address the chain lands on rather than trusting
-#    it. Chain walked in win32_server_x64 1.26.32.2; pattern NOT re-cut against 1.26.44
+#    it. Chain walked in win32_server_x64 1.26.32.2; pattern verified to match exactly ONCE
+#    in the 1.26.44.3 .text, at 0x693da0
 pattern = "55 41 57 41 56 56 57 53 48 83 EC 48 48 8D 6C 24 ? 48 C7 45 ? ? ? ? ? 44 89 C3 48 89 D6 48 89 CF"
 
 [[signatures]]
@@ -982,6 +983,33 @@ extra = 0
 #    read ("DisplayObjectives" / "LastUniqueID" / "dummy" default criteria)
 # 3. confirm vs the old named DB (ctor args: CommandSoftEnumRegistry, LevelStorage*, not_null<NonOwnerPointer<GameplayUserManager>>); caller_count 1 = ServerLevel::_initializeScoreboard. Size ballooned 0x3d4 -> 0x3032 from the inlining
 pattern = "55 41 57 41 56 41 55 41 54 56 57 53 48 81 EC ? ? ? ? 48 8D AC 24 ? ? ? ? 0F 29 BD ? ? ? ? 0F 29 B5 ? ? ? ? 48 C7 85 ? ? ? ? ? ? ? ? 4C 89 4D ? 4C 89 C6 48 89 CF E8"
+
+[[signatures]]
+name = "?_useOn@SignItem@@EEBA?AVInteractionResult@@AEAVItemStack@@AEAVActor@@VBlockPos@@EAEBVVec3@@@Z"
+relative = false
+extra = 0
+# NOTE: the shipped Windows server is built without RTTI - there is no ".?AVSignItem@@" type descriptor -
+#    so IDA will not name the vftable for you. Anchor on the item registration instead
+# 1. find bytes "6D 69 6E 65 63 72 61 66 74 3A 6F 61 6B 5F 73 69 67 6E 00" = "minecraft:oak_sign\0"
+#    (verified unique in .rdata for 1.26.44.3). It sits in a run of sibling literals - acacia_wall_sign,
+#    dark_oak_sign, oak_hanging_sign - which is the vanilla sign item registration block
+# 2. its lone data xref is a `lea` in the vanilla item registration function; the SignItem the block
+#    constructs stores ??_7SignItem@@6B@ into its object (`lea reg, <vftable>; mov [this], reg`). Take
+#    that vftable
+# 3. _useOn is Item's 130th declared virtual and Item's first virtual is its destructor, so on the MSVC
+#    ABI (one destructor slot) the target is that vftable's slot 129
+# 4. confirm identity mechanically, without reading any code: the address in slot 129 must occur in
+#    .rdata EXACTLY TWICE, and the second occurrence must also be at slot 129 of its own vftable. That
+#    is ??_7HangingSignItem@@6B@ - HangingSignItem derives from SignItem and does NOT override _useOn.
+#    A wrong ordinal gives an address that occurs once, or in more than two vftables (verified on
+#    1.26.44.3: 0x142cab490 occurs exactly twice, both at slot 129)
+# 5. confirm by the body: it calls Item::_sendTryPlaceBlockEvent, places the block, fires the blockPlace
+#    game event and BlockEventCoordinator::sendBlockPlacedByPlayer, and only for a player whose stack has
+#    no compound text user data calls the Actor virtual that is Player::openSign
+# uniqueness: cut against 1.26.44.3 and verified to match exactly ONCE in .text, at the address step 4
+#    confirms (0x2cab490). Steps 2-3 were cross-checked against the named win32_server_x64 1.26.32.2
+#    database, where the same bytes are ?_useOn@SignItem@@EEBA...
+pattern = "55 41 57 41 56 41 55 41 54 56 57 53 48 81 EC ? ? ? ? 48 8D AC 24 ? ? ? ? 0F 29 75 ? 48 C7 45 ? FE FF FF FF 4C 89 CF 4C 89 45 ? 48 89 D6 49 89 CF 44 0F B6 B5 ? ? ? ? 48 8B 9D ? ? ? ? 49 8B 89 ? ? ? ? 8B 41 08"
 
 [[signatures]]
 name = "?releaseUsing@TridentItem@@UEBAXAEAVItemStack@@PEAVPlayer@@H@Z"
