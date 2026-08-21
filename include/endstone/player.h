@@ -123,14 +123,11 @@ public:
     virtual void openSign(const Sign &sign, Sign::Side side) = 0;
 
     /**
-     * Opens a sign editor for this player at the given location.
+     * Opens a sign editor for this player at the given block location.
      *
-     * The sign must only be placed locally for this player before calling this method. Send
-     * the sign block to the player's client; this method does not create it automatically. No sign is required to be
-     * placed in the dimension.
-     * The dimension component of `location` is ignored; only its block coordinates are used.
-     * The client may enforce distance limits to the opened position.
-     * This does not trigger PlayerOpenSignEvent.
+     * No sign has to exist in the dimension: the caller is responsible for sending the client a sign block at that
+     * position first. Only the block coordinates of the location are used, the client may refuse a position that is
+     * too far away, and PlayerOpenSignEvent is not called.
      *
      * @param location the block location of the sign
      * @param side the side of the sign to edit

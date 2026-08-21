@@ -63,6 +63,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Added `PlayerToggleCrawlEvent`, fired when a player starts or stops crawling, with the new state in `is_crawling`. Bukkit has no equivalent because crawling is only a pose there, while on Bedrock it is a state the server tracks in its own right.
 - Added `Server.command_map` (`Server::getCommandMap()`), mirroring Paper's `Server#getCommandMap()`, which Bukkit leaves off the interface so plugins there resort to reflection. `CommandMap` is now available from Python with `register_command()`, `dispatch()`, `clear_commands()` and `get_command()`, so a plugin can register a command at runtime rather than declaring it up front.
 - `Command` can now be subclassed in Python to override `execute()`, the way Paper plugins subclass `Command`. Previously a Python subclass could be written but its `execute()` was never called.
+- Added `PlayerOpenSignEvent`, called when a player begins editing a sign's text, reporting the `sign` involved, the `side` being edited and the `cause` (`PLACE`, `INTERACT`, `PLUGIN` or `UNKNOWN`). Cancelling it stops the sign editor from opening. Like Paper's event, it is called before the editor opens, so the sign is already placed when it fires for `PLACE`.
+- Added `Player.open_sign()` and `Player.open_virtual_sign()` for opening a sign editor on a player's client. `open_sign()` takes a sign placed in the player's own dimension and fires `PlayerOpenSignEvent`; `open_virtual_sign()` opens the editor at any block position and fires nothing, so the caller is responsible for having sent the client a sign block there.
 
 ### Changed
 
