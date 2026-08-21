@@ -41,6 +41,7 @@
 #include "bedrock/world/level/level.h"
 #include "endstone/color_format.h"
 #include "endstone/core/base64.h"
+#include "endstone/core/entity/components/flag_components.h"
 #include "endstone/core/form/form_codec.h"
 #include "endstone/core/game_mode.h"
 #include "endstone/core/inventory/item_stack.h"
@@ -49,7 +50,6 @@
 #include "endstone/core/map/map_view.h"
 #include "endstone/core/message.h"
 #include "endstone/core/network/data_packet.h"
-#include "endstone/core/player_spawn_context.h"
 #include "endstone/core/server.h"
 #include "endstone/core/skin.h"
 #include "endstone/core/util/socket_address.h"
@@ -272,7 +272,7 @@ std::optional<Location> EndstonePlayer::getRespawnLocation() const
 void EndstonePlayer::setRespawnLocation(std::optional<Location> location)
 {
     if (!location) {
-        PlayerSpawnContextScope scope(PlayerSpawnContext{&getHandle(), PlayerSetSpawnEvent::Cause::Plugin});
+        getHandle().addOrRemoveComponent<InternalSpawnChangeFlagComponent>(true);
         getHandle().setRespawnPosition(BlockPos::MIN, VanillaDimensions::Undefined);
         return;
     }
@@ -283,7 +283,7 @@ void EndstonePlayer::setRespawnLocation(std::optional<Location> location)
 
     const auto dimension = location->getDimension();
     const auto dimension_id = static_cast<const EndstoneDimension &>(dimension.value()).getHandle().getDimensionId();
-    PlayerSpawnContextScope scope(PlayerSpawnContext{&getHandle(), PlayerSetSpawnEvent::Cause::Plugin});
+    getHandle().addOrRemoveComponent<InternalSpawnChangeFlagComponent>(true);
     getHandle().setRespawnPosition(BlockPos(location->getX(), location->getY(), location->getZ()), dimension_id);
 }
 

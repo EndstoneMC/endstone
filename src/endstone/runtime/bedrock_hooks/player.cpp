@@ -29,7 +29,6 @@
 #include "endstone/core/inventory/item_stack.h"
 #include "endstone/core/level/dimension.h"
 #include "endstone/core/player.h"
-#include "endstone/core/player_spawn_context.h"
 #include "endstone/core/server.h"
 #include "endstone/event/player/player_bed_enter_event.h"
 #include "endstone/event/player/player_bed_leave_event.h"
@@ -68,13 +67,8 @@ SpawnPosition get_spawn_position(const std::optional<endstone::Location> &locati
 
 std::optional<SpawnPosition> fire_set_spawn_event(Player &player, const BlockPos &position,
                                                   const DimensionType dimension,
-                                                  endstone::PlayerSetSpawnEvent::Cause cause, bool suspend_context)
+                                                  endstone::PlayerSetSpawnEvent::Cause cause)
 {
-    std::optional<endstone::core::PlayerSpawnContextSuspension> context_suspension;
-    if (suspend_context) {
-        context_suspension.emplace();
-    }
-
     const auto &server = endstone::core::EndstoneServer::getInstance();
     const auto endstone_player = player.getEndstoneActor<endstone::core::EndstonePlayer>();
     std::optional<endstone::Location> location;
@@ -259,8 +253,6 @@ BedSleepingResult Player::startSleepInBed(BlockPos const &bed_block_pos, bool a2
         }
     }
 
-    endstone::core::PlayerSpawnContextScope scope(
-        endstone::core::PlayerSpawnContext{this, endstone::PlayerSetSpawnEvent::Cause::Bed});
     return ENDSTONE_HOOK_CALL_ORIGINAL(&Player::startSleepInBed, this, bed_block_pos, a2, a3);
 }
 
@@ -287,15 +279,10 @@ bool Player::setSpawnBlockRespawnPosition(const BlockPos &spawn_block_position, 
                                            dimension);
     }
 
-    const auto context = endstone::core::consumePlayerSpawnContext(*this);
-    if (context && context->suppress_event) {
-        return ENDSTONE_HOOK_CALL_ORIGINAL(&Player::setSpawnBlockRespawnPosition, this, spawn_block_position,
-                                           dimension);
-    }
-
     auto cause = endstone::PlayerSetSpawnEvent::Cause::Unknown;
-    if (context) {
-        cause = context->cause;
+    if (hasComponent<endstone::core::InternalSpawnChangeFlagComponent>()) {
+        addOrRemoveComponent<endstone::core::InternalSpawnChangeFlagComponent>(false);
+        cause = endstone::PlayerSetSpawnEvent::Cause::Plugin;
     }
     else {
         const auto block_name = getDimensionBlockSource().getBlock(spawn_block_position).getName().getString();
@@ -307,15 +294,12 @@ bool Player::setSpawnBlockRespawnPosition(const BlockPos &spawn_block_position, 
         }
     }
 
-    const auto position =
-        fire_set_spawn_event(*this, spawn_block_position, dimension, cause, context && !context->player);
+    const auto position = fire_set_spawn_event(*this, spawn_block_position, dimension, cause);
     if (!position) {
         return false;
     }
     if (position->clear) {
-        endstone::core::PlayerSpawnContextScope scope(
-            endstone::core::PlayerSpawnContext{this, endstone::PlayerSetSpawnEvent::Cause::Unknown, true});
-        setRespawnPosition(BlockPos::MIN, VanillaDimensions::Undefined);
+        ENDSTONE_HOOK_CALL_ORIGINAL(&Player::setRespawnPosition, this, BlockPos::MIN, VanillaDimensions::Undefined);
         return false;
     }
 
@@ -330,14 +314,13 @@ void Player::setRespawnPosition(const BlockPos &respawn_position, DimensionType 
         return;
     }
 
-    const auto context = endstone::core::consumePlayerSpawnContext(*this);
-    if (context && context->suppress_event) {
-        ENDSTONE_HOOK_CALL_ORIGINAL(&Player::setRespawnPosition, this, respawn_position, dimension);
-        return;
+    auto cause = endstone::PlayerSetSpawnEvent::Cause::Command;
+    if (hasComponent<endstone::core::InternalSpawnChangeFlagComponent>()) {
+        addOrRemoveComponent<endstone::core::InternalSpawnChangeFlagComponent>(false);
+        cause = endstone::PlayerSetSpawnEvent::Cause::Plugin;
     }
 
-    const auto cause = context ? context->cause : endstone::PlayerSetSpawnEvent::Cause::Unknown;
-    const auto position = fire_set_spawn_event(*this, respawn_position, dimension, cause, context && !context->player);
+    const auto position = fire_set_spawn_event(*this, respawn_position, dimension, cause);
     if (!position) {
         return;
     }

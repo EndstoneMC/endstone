@@ -14,14 +14,10 @@
 
 #include "bedrock/server/commands/minecraft_commands.h"
 
-#include <optional>
-#include <string_view>
-
 #include "bedrock/world/actor/actor.h"
 #include "bedrock/world/actor/player/player.h"
 #include "endstone/core/command/console_command_sender.h"
 #include "endstone/core/player.h"
-#include "endstone/core/player_spawn_context.h"
 #include "endstone/core/server.h"
 #include "endstone/event/player/player_command_event.h"
 #include "endstone/event/server/server_command_event.h"
@@ -29,29 +25,10 @@
 
 using endstone::core::EndstoneServer;
 
-namespace {
-bool is_spawnpoint_command(std::string_view command)
-{
-    if (!command.empty() && command.front() == '/') {
-        command.remove_prefix(1);
-    }
-    const auto end = command.find_first_of(" \t\r\n");
-    return command.substr(0, end) == "spawnpoint";
-}
-}  // namespace
-
 MCRESULT MinecraftCommands::executeCommand(CommandContext &ctx, bool suppress_output) const
 {
     const auto &server = EndstoneServer::getInstance();
-    const auto origin_type = ctx.getOrigin().getOriginType();
-    std::optional<endstone::core::PlayerSpawnContextScope> spawn_context_scope;
-    if (origin_type != CommandOriginType::Player && origin_type != CommandOriginType::DedicatedServer &&
-        is_spawnpoint_command(ctx.getCommand())) {
-        spawn_context_scope.emplace(
-            endstone::core::PlayerSpawnContext{nullptr, endstone::PlayerSetSpawnEvent::Cause::Command});
-    }
-
-    switch (origin_type) {
+    switch (ctx.getOrigin().getOriginType()) {
     case CommandOriginType::Player: {
         auto command_line = ctx.getCommand();
         auto player = ctx.getOrigin().getEntity()->getEndstoneActor<endstone::core::EndstonePlayer>();

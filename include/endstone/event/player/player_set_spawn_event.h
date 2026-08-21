@@ -47,7 +47,7 @@ public:
         Bed,
         /** When a player interacts successfully with a respawn anchor. */
         RespawnAnchor,
-        /** When the spawnpoint command is used on a player. */
+        /** When the spawnpoint command, or the script API equivalent, is used on a player. */
         Command,
         /** When a plugin uses Player::setRespawnLocation. */
         Plugin,
