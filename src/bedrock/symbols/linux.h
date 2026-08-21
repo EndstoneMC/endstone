@@ -11,7 +11,7 @@
 
 namespace endstone::runtime {
 
-static constexpr std::array<std::pair<std::string_view, std::size_t>, 77> symbols = {{
+static constexpr std::array<std::pair<std::string_view, std::size_t>, 78> symbols = {{
     {"BlockState::StateListNode::mHead", 245468000},
     {"Enchant::mEnchants", 245294016},
     {"MobEffect::mMobEffects", 245274360},
@@ -55,6 +55,8 @@ static constexpr std::array<std::pair<std::string_view, std::size_t>, 77> symbol
     {"_ZN12CommandUtils12getActorNameERK5Actor", 159774800},
     // CraftHandlerCrafting
     {"_ZN20CraftHandlerCrafting18_handleCraftActionERK31ItemStackRequestActionCraftBase", 197828768},
+    // CraftHandlerEnchant
+    {"_ZN19CraftHandlerEnchant18_handleCraftActionERK31ItemStackRequestActionCraftBase", 197838512},
     // CraftingDataPacketPayload
     {"_ZN25CraftingDataPacketPayload11fromRecipesERK7Recipesb", 134785984},
     // DedicatedServer

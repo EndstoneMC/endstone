@@ -10,6 +10,7 @@ from endstone.actor import Actor, Item, Mob
 from endstone.block import Block, BlockFace, BlockState
 from endstone.command import CommandSender
 from endstone.damage import DamageSource
+from endstone.enchantments import Enchantment, EnchantmentOffer
 from endstone.inventory import BookMeta, EquipmentSlot, Inventory, ItemStack, Recipe
 from endstone.lang import Translatable
 from endstone.level import Chunk, Dimension, Level, Location
@@ -52,6 +53,7 @@ __all__ = [
     "ChunkUnloadEvent",
     "DimensionEvent",
     "DimensionLoadEvent",
+    "EnchantItemEvent",
     "Event",
     "EventPriority",
     "EventResult",
@@ -1427,6 +1429,54 @@ class PlayerPickupItemEvent(PlayerEvent, Cancellable):
     def item(self) -> Item:
         """
         The Item picked up by the entity.
+        """
+
+class EnchantItemEvent(PlayerEvent, Cancellable):
+    """
+    Called when a player enchants an item at an enchanting table.
+
+    Cancelling the event leaves the item, the player's experience levels and the lapis lazuli untouched.
+    """
+    @property
+    def enchant_block(self) -> Block:
+        """
+        The enchanting table involved in this event.
+        """
+    @property
+    def item(self) -> ItemStack:
+        """
+        The item that will be enchanted.
+        """
+    @item.setter
+    def item(self, arg1: ItemStack) -> None: ...
+    @property
+    def exp_level_cost(self) -> int:
+        """
+        The minimum player level required by the selected option.
+        """
+    @exp_level_cost.setter
+    def exp_level_cost(self, arg1: int) -> None: ...
+    @property
+    def enchants_to_add(self) -> dict[Enchantment, int]:
+        """
+        A copy of the enchantments and levels that will be applied; assign it back after changes.
+        """
+    @enchants_to_add.setter
+    def enchants_to_add(self, arg1: typing.Mapping[Enchantment, int]) -> None: ...
+    @property
+    def enchantment_hint(self) -> Enchantment | None:
+        """
+        The enchantment shown as the hint, or `None` if unavailable.
+        """
+    @property
+    def level_hint(self) -> int:
+        """
+        The level shown for the enchantment hint.
+        """
+    @property
+    def which_button(self) -> int:
+        """
+        The selected enchanting button, from 0 to 2.
         """
 
 class InventoryEvent(Event):

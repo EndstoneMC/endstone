@@ -332,6 +332,21 @@ rip_relative = true
 rip_offset = 1
 
 [[signatures]]
+name = "_ZN19CraftHandlerEnchant18_handleCraftActionERK31ItemStackRequestActionCraftBase"
+relative = false
+extra = 0
+# 1. RTTI survives here, so start from the typeinfo name "19CraftHandlerEnchant": the pointer to it is the
+#    type_info, and the pointer to that type_info is vtable[-1], giving the CraftHandlerEnchant vtable
+# 2. it holds 8 slots - the two Itanium destructors plus the six CraftHandlerBase virtuals - so slot 5 is
+#    _handleCraftAction. It opens `sub rsp, 138h` / `mov bpl, 6` / `cmp byte ptr [rsi+8], 0Ch`: a default
+#    result of 6, then a check that the request action is CraftRecipe (12)
+# 3. the action-type check is what makes the pattern unique: the prologue plus `mov bpl, 6` alone also
+#    matches CraftHandlerLoom, which is identical up to its own check of 11h. Grindstone checks 10h
+# 4. the enumerator-name strings ("FailedToEnchant", "InsufficientPlayerLevelToEnchant") are NOT usable as
+#    anchors - see the note on the windows.toml entry
+pattern = "55 41 57 41 56 41 55 41 54 53 48 81 EC ? ? ? ? 40 B5 06 80 7E 08 0C"
+
+[[signatures]]
 name = "_ZN25CraftingDataPacketPayload11fromRecipesERK7Recipesb"
 relative = false
 extra = 0

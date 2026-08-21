@@ -592,6 +592,29 @@ void init_event(py::module_ &m, py::class_<Event, PyEvent> &event)
                                                     "Called when a player closes an inventory.")
         .def_property_readonly("player", &InventoryCloseEvent::getPlayer, "The player who is closing the inventory.");
 
+    // Enchantment events
+    py::class_<EnchantItemEvent, PlayerEvent, ICancellable>(m, "EnchantItemEvent", R"doc(
+    Called when a player enchants an item at an enchanting table.
+
+    Cancelling the event leaves the item, the player's experience levels and the lapis lazuli untouched.
+)doc")
+        .def_property_readonly("enchant_block", &EnchantItemEvent::getEnchantBlock,
+                               "The enchanting table involved in this event.")
+        .def_property("item", &EnchantItemEvent::getItem, &EnchantItemEvent::setItem,
+                      "The item that will be enchanted.")
+        .def_property("exp_level_cost", &EnchantItemEvent::getExpLevelCost, &EnchantItemEvent::setExpLevelCost,
+                      "The minimum player level required by the selected option.")
+        .def_property("enchants_to_add", py::overload_cast<>(&EnchantItemEvent::getEnchantsToAdd, py::const_),
+                      &EnchantItemEvent::setEnchantsToAdd,
+                      "A copy of the enchantments and levels that will be applied; assign it back after changes.")
+        .def_property_readonly("enchantment_hint", &EnchantItemEvent::getEnchantmentHint,
+                               py::return_value_policy::reference,
+                               "The enchantment shown as the hint, or `None` if unavailable.")
+        .def_property_readonly("level_hint", &EnchantItemEvent::getLevelHint,
+                               "The level shown for the enchantment hint.")
+        .def_property_readonly("which_button", &EnchantItemEvent::getWhichButton,
+                               "The selected enchanting button, from 0 to 2.");
+
     // Server events
     py::class_<ServerEvent, Event>(m, "ServerEvent", "Represents a Server-related event.");
     py::class_<BroadcastMessageEvent, ServerEvent, ICancellable>(m, "BroadcastMessageEvent", R"doc(
