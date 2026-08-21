@@ -1177,17 +1177,16 @@ class PlayerRiptideEvent(PlayerEvent):
         An `ItemStack` for the trident being used.
         """
 
-class PlayerSetSpawnEvent(PlayerEvent, Cancellable):
+class PlayerSetSpawnEvent(PlayerEvent):
     """
     Called when a player's spawn is set, either by themselves or otherwise.
 
-    Cancelling this event prevents the spawn change on supported native paths.
+    Assigning a new `location` redirects the spawn that is about to be written.
 
     Note:
-        On Bedrock, only the location's block coordinates and dimension are written back. Yaw/pitch are not persisted.
-        The native respawn invalidation path does not emit this event. Cancelling this event prevents the supported
-        native setter from writing the respawn state, but `/spawnpoint` may still report success because its native
-        `Player::setRespawnPosition()` setter returns `void`.
+        Only the location's block coordinates and dimension are written back; Bedrock does not persist yaw/pitch for
+        a respawn point. This event is not fired when Bedrock clears a respawn point, so `/clearspawnpoint` and
+        breaking the bed a player is bound to are both silent.
     """
     class Cause(enum.Enum):
         """

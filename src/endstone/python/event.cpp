@@ -461,20 +461,18 @@ void init_event(py::module_ &m, py::class_<Event, PyEvent> &event)
     undesired effects.
 )doc")
         .def_property_readonly("item", &PlayerRiptideEvent::getItem, "An `ItemStack` for the trident being used.");
-    auto player_set_spawn_event = py::class_<PlayerSetSpawnEvent, PlayerEvent, ICancellable>(
-        m, "PlayerSetSpawnEvent", R"doc(
+    auto player_set_spawn_event = py::class_<PlayerSetSpawnEvent, PlayerEvent>(m, "PlayerSetSpawnEvent", R"doc(
     Called when a player's spawn is set, either by themselves or otherwise.
 
-    Cancelling this event prevents the spawn change on supported native paths.
+    Assigning a new `location` redirects the spawn that is about to be written.
 
     Note:
-        On Bedrock, only the location's block coordinates and dimension are written back. Yaw/pitch are not persisted.
-        The native respawn invalidation path does not emit this event. Cancelling this event prevents the supported
-        native setter from writing the respawn state, but `/spawnpoint` may still report success because its native
-        `Player::setRespawnPosition()` setter returns `void`.
+        Only the location's block coordinates and dimension are written back; Bedrock does not persist yaw/pitch for
+        a respawn point. This event is not fired when Bedrock clears a respawn point, so `/clearspawnpoint` and
+        breaking the bed a player is bound to are both silent.
 )doc");
     py::native_enum<PlayerSetSpawnEvent::Cause>(player_set_spawn_event, "Cause", "enum.Enum",
-        "The cause of the spawn change.")
+                                                "The cause of the spawn change.")
         .value("BED", PlayerSetSpawnEvent::Cause::Bed)
         .value("RESPAWN_ANCHOR", PlayerSetSpawnEvent::Cause::RespawnAnchor)
         .value("COMMAND", PlayerSetSpawnEvent::Cause::Command)

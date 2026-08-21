@@ -17,7 +17,6 @@
 #include <optional>
 #include <utility>
 
-#include "endstone/event/cancellable.h"
 #include "endstone/event/player/player_event.h"
 #include "endstone/level/location.h"
 
@@ -26,14 +25,13 @@ namespace endstone {
 /**
  * Called when a player's spawn is set, either by themselves or otherwise.
  *
- * Cancelling this event prevents the spawn change on supported native paths.
+ * Assigning a new location through setLocation() redirects the spawn that is about to be written.
  *
- * @note On Bedrock, only the location's block coordinates and dimension are written back. Yaw/pitch are not persisted.
- * The native respawn invalidation path does not emit this event. Cancelling this event prevents the supported native
- * setter from writing the respawn state, but `/spawnpoint` may still report success because its native
- * Player::setRespawnPosition() setter returns void.
+ * @note Only the location's block coordinates and dimension are written back; Bedrock does not persist yaw/pitch for
+ * a respawn point. This event is not fired when Bedrock clears a respawn point, so `/clearspawnpoint` and breaking
+ * the bed a player is bound to are both silent.
  */
-class PlayerSetSpawnEvent final : public Cancellable<PlayerEvent> {
+class PlayerSetSpawnEvent final : public PlayerEvent {
 public:
     ENDSTONE_EVENT(PlayerSetSpawnEvent);
 
@@ -54,7 +52,7 @@ public:
     };
 
     PlayerSetSpawnEvent(const NotNull<Player> &player, Cause cause, std::optional<Location> location)
-        : Cancellable(player), cause_(cause), location_(std::move(location))
+        : PlayerEvent(player), cause_(cause), location_(std::move(location))
     {
     }
 

@@ -33,8 +33,8 @@
 #include "endstone/event/player/player_bed_enter_event.h"
 #include "endstone/event/player/player_bed_leave_event.h"
 #include "endstone/event/player/player_drop_item_event.h"
-#include "endstone/event/player/player_item_consume_event.h"
 #include "endstone/event/player/player_exp_change_event.h"
+#include "endstone/event/player/player_item_consume_event.h"
 #include "endstone/event/player/player_level_change_event.h"
 #include "endstone/event/player/player_pickup_arrow_event.h"
 #include "endstone/event/player/player_pickup_item_event.h"
@@ -49,20 +49,6 @@ struct SpawnPosition {
     DimensionType dimension;
     bool clear = false;
 };
-
-endstone::PlayerSetSpawnEvent::Cause determine_cause(const Player &player, const BlockPos &position, bool spawn_block)
-{
-    if (spawn_block) {
-        const auto name = player.getDimensionBlockSource().getBlock(position).getName().getString();
-        if (name == "minecraft:bed") {
-            return endstone::PlayerSetSpawnEvent::Cause::Bed;
-        }
-        if (name == "minecraft:respawn_anchor") {
-            return endstone::PlayerSetSpawnEvent::Cause::RespawnAnchor;
-        }
-    }
-    return endstone::PlayerSetSpawnEvent::Cause::Unknown;
-}
 
 SpawnPosition get_spawn_position(const std::optional<endstone::Location> &location, const SpawnPosition fallback)
 {
@@ -79,10 +65,8 @@ SpawnPosition get_spawn_position(const std::optional<endstone::Location> &locati
             endstone_dimension.getHandle().getDimensionId(), false};
 }
 
-std::optional<SpawnPosition> fire_set_spawn_event(Player &player, const BlockPos &position,
-                                                   const DimensionType dimension,
-                                                   endstone::PlayerSetSpawnEvent::Cause cause,
-                                                   bool suspend_context)
+SpawnPosition fire_set_spawn_event(Player &player, const BlockPos &position, const DimensionType dimension,
+                                   endstone::PlayerSetSpawnEvent::Cause cause, bool suspend_context)
 {
     std::optional<endstone::core::PlayerSpawnContextSuspension> context_suspension;
     if (suspend_context) {
@@ -92,20 +76,13 @@ std::optional<SpawnPosition> fire_set_spawn_event(Player &player, const BlockPos
     const auto &server = endstone::core::EndstoneServer::getInstance();
     const auto endstone_player = player.getEndstoneActor<endstone::core::EndstonePlayer>();
     std::optional<endstone::Location> location;
-    if (position == BlockPos::MIN && dimension == VanillaDimensions::Undefined) {
-        location = std::nullopt;
-    }
-    else {
-        location = endstone::Location{server.getEndstoneLevel()->getDimension(dimension), position.x, position.y,
-                                      position.z};
+    if (position != BlockPos::MIN || dimension != VanillaDimensions::Undefined) {
+        location =
+            endstone::Location{server.getEndstoneLevel()->getDimension(dimension), position.x, position.y, position.z};
     }
 
     endstone::PlayerSetSpawnEvent event{endstone_player, cause, std::move(location)};
     server.getPluginManager().callEvent(event);
-    if (event.isCancelled()) {
-        return std::nullopt;
-    }
-
     return get_spawn_position(event.getLocation(), SpawnPosition{position, dimension});
 }
 
@@ -283,43 +260,58 @@ BedSleepingResult Player::startSleepInBed(BlockPos const &bed_block_pos, bool a2
 
 bool Player::setSpawnBlockRespawnPosition(const BlockPos &spawn_block_position, DimensionType dimension)
 {
+    if (!isPlayerInitialized()) {
+        return ENDSTONE_HOOK_CALL_ORIGINAL(&Player::setSpawnBlockRespawnPosition, this, spawn_block_position,
+                                           dimension);
+    }
+
     const auto context = endstone::core::consumePlayerSpawnContext(*this);
     if (context && context->suppress_event) {
         return ENDSTONE_HOOK_CALL_ORIGINAL(&Player::setSpawnBlockRespawnPosition, this, spawn_block_position,
                                            dimension);
     }
 
-    const auto cause = context ? context->cause : determine_cause(*this, spawn_block_position, true);
-    const auto position = fire_set_spawn_event(*this, spawn_block_position, dimension, cause,
-                                                context && !context->player);
-    if (!position) {
-        return false;
+    auto cause = endstone::PlayerSetSpawnEvent::Cause::Unknown;
+    if (context) {
+        cause = context->cause;
     }
-    if (position->clear) {
+    else {
+        const auto block_name = getDimensionBlockSource().getBlock(spawn_block_position).getName().getString();
+        if (block_name == "minecraft:bed") {
+            cause = endstone::PlayerSetSpawnEvent::Cause::Bed;
+        }
+        else if (block_name == "minecraft:respawn_anchor") {
+            cause = endstone::PlayerSetSpawnEvent::Cause::RespawnAnchor;
+        }
+    }
+
+    const auto position =
+        fire_set_spawn_event(*this, spawn_block_position, dimension, cause, context && !context->player);
+    if (position.clear) {
         endstone::core::PlayerSpawnContextScope scope(
             endstone::core::PlayerSpawnContext{this, endstone::PlayerSetSpawnEvent::Cause::Unknown, true});
         setRespawnPosition(BlockPos::MIN, VanillaDimensions::Undefined);
         return false;
     }
 
-    return ENDSTONE_HOOK_CALL_ORIGINAL(&Player::setSpawnBlockRespawnPosition, this, position->position,
-                                       position->dimension);
+    return ENDSTONE_HOOK_CALL_ORIGINAL(&Player::setSpawnBlockRespawnPosition, this, position.position,
+                                       position.dimension);
 }
 
 void Player::setRespawnPosition(const BlockPos &respawn_position, DimensionType dimension)
 {
+    if (!isPlayerInitialized()) {
+        ENDSTONE_HOOK_CALL_ORIGINAL(&Player::setRespawnPosition, this, respawn_position, dimension);
+        return;
+    }
+
     const auto context = endstone::core::consumePlayerSpawnContext(*this);
     if (context && context->suppress_event) {
         ENDSTONE_HOOK_CALL_ORIGINAL(&Player::setRespawnPosition, this, respawn_position, dimension);
         return;
     }
 
-    const auto cause = context ? context->cause : determine_cause(*this, respawn_position, false);
-    const auto position = fire_set_spawn_event(*this, respawn_position, dimension, cause,
-                                                context && !context->player);
-    if (!position) {
-        return;
-    }
-
-    ENDSTONE_HOOK_CALL_ORIGINAL(&Player::setRespawnPosition, this, position->position, position->dimension);
+    const auto cause = context ? context->cause : endstone::PlayerSetSpawnEvent::Cause::Unknown;
+    const auto position = fire_set_spawn_event(*this, respawn_position, dimension, cause, context && !context->player);
+    ENDSTONE_HOOK_CALL_ORIGINAL(&Player::setRespawnPosition, this, position.position, position.dimension);
 }
