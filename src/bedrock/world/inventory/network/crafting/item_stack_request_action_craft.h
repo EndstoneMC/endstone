@@ -40,7 +40,12 @@ private:
 
 using ItemStackRequestActionCraftRecipe =
     ItemStackRequestActionCraft<RecipeNetId, ItemStackRequestActionType::CraftRecipe>;
-using ItemStackRequestActionCraftRecipeAuto =
-    ItemStackRequestActionCraft<RecipeNetId, ItemStackRequestActionType::CraftRecipeAuto>;
 BEDROCK_STATIC_ASSERT_SIZE(ItemStackRequestActionCraftRecipe, 32, 16);
-BEDROCK_STATIC_ASSERT_SIZE(ItemStackRequestActionCraftRecipeAuto, 32, 16);
+
+class ItemStackRequestActionCraftRecipeAuto
+    : public ItemStackRequestActionCraft<RecipeNetId, ItemStackRequestActionType::CraftRecipeAuto> {
+private:
+    Recipe::Ingredients ingredients_;
+    std::uint8_t num_ingredients_;
+};
+BEDROCK_STATIC_ASSERT_SIZE(ItemStackRequestActionCraftRecipeAuto, 64, 48);
