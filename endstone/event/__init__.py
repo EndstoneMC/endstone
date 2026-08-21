@@ -69,6 +69,7 @@ __getattr__, __dir__, __all__ = lazy.attach(
             "ActorEvent",
             "ActorExplodeEvent",
             "ActorKnockbackEvent",
+            "ActorKnockbackPrepareEvent",
             "ActorPickupItemEvent",
             "ActorRemoveEvent",
             "ActorSpawnEvent",

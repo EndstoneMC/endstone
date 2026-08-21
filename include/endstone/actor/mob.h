@@ -74,6 +74,20 @@ public:
     virtual void setMaxHealth(int health) const = 0;
 
     /**
+     * Gets the mob's current no-damage ticks.
+     *
+     * @return the amount of no-damage ticks
+     */
+    [[nodiscard]] virtual int getNoDamageTicks() const = 0;
+
+    /**
+     * Sets the mob's current no-damage ticks.
+     *
+     * @param ticks the amount of no-damage ticks
+     */
+    virtual void setNoDamageTicks(int ticks) = 0;
+
+    /**
      * Checks whether the given attribute is present on the object.
      *
      * @param id The attribute to check

@@ -47,6 +47,21 @@ def test_actor_knockback(recorder: EventRecorder) -> None:
         assert len(snapshot["knockback"]) == 3
 
 
+def test_actor_knockback_prepare(recorder: EventRecorder) -> None:
+    """Verify ActorKnockbackPrepareEvent exposes every native calculation input."""
+    for snapshot in recorder.require("ActorKnockbackPrepareEvent"):
+        assert snapshot["damage"] >= 0
+        assert len(snapshot["direction"]) == 3
+        assert snapshot["direction"][1] == 0
+        assert snapshot["vertical_velocity_cap"] >= 0
+        assert 0 <= snapshot["slowdown_scale"] <= 1
+        assert snapshot["extra_knockback_approach"] in {
+            "REAPPLY_DEFAULT",
+            "MULTIPLY_REDUCED",
+        }
+        assert snapshot["no_damage_ticks"] >= 0
+
+
 def test_actor_teleport(recorder: EventRecorder) -> None:
     """Verify ActorTeleportEvent moves the actor somewhere else."""
     assert (

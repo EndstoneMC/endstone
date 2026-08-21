@@ -20,6 +20,45 @@ namespace endstone::python {
 
 void init_actor(py::module_ &m, py_class<Actor> &actor, py_class<Mob> &mob)
 {
+    auto knockback_parameters =
+        py::class_<KnockbackParameters>(m, "KnockbackParameters", "Describes how knockback is calculated for a mob.");
+    py::native_enum<KnockbackParameters::ExtraKnockbackApproach>(
+        knockback_parameters, "ExtraKnockbackApproach", "enum.Enum",
+        "Defines how extra knockback from sprinting or enchantments is combined with the base knockback.")
+        .value("REAPPLY_DEFAULT", KnockbackParameters::ExtraKnockbackApproach::ReapplyDefault)
+        .value("MULTIPLY_REDUCED", KnockbackParameters::ExtraKnockbackApproach::MultiplyReduced)
+        .export_values()
+        .finalize();
+    knockback_parameters
+        .def_property("horizontal_power", &KnockbackParameters::getHorizontalPower,
+                      &KnockbackParameters::setHorizontalPower, "The power with which the target is knocked backwards.")
+        .def_property("vertical_power", &KnockbackParameters::getVerticalPower, &KnockbackParameters::setVerticalPower,
+                      "The power with which the target is knocked upwards.")
+        .def_property("vertical_velocity_cap", &KnockbackParameters::getVerticalVelocityCap,
+                      &KnockbackParameters::setVerticalVelocityCap,
+                      "The maximum Y velocity after the knockback rules are evaluated.")
+        .def_property("slowdown_scale", &KnockbackParameters::getSlowdownScale, &KnockbackParameters::setSlowdownScale,
+                      R"doc(
+    The scale applied to the target's existing velocity before knockback is added.
+
+    Bedrock clamps this value to the range from `0.0` to `1.0`.
+)doc")
+        .def_property("scale_with_damage", &KnockbackParameters::isScaleWithDamage,
+                      &KnockbackParameters::setScaleWithDamage,
+                      "Whether the knockback power is scaled using the damage.")
+        .def_property("slow_down_attacker", &KnockbackParameters::isSlowDownAttacker,
+                      &KnockbackParameters::setSlowDownAttacker,
+                      "Whether the source's horizontal velocity is slowed when knockback is applied.")
+        .def_property("check_legacy_knockback", &KnockbackParameters::isCheckLegacyKnockback,
+                      &KnockbackParameters::setCheckLegacyKnockback,
+                      "Whether Bedrock checks the legacy pre-Nether Update knockback rules.")
+        .def_property("extra_knockback_power", &KnockbackParameters::getExtraKnockbackPower,
+                      &KnockbackParameters::setExtraKnockbackPower,
+                      "The extra knockback power supplied by sprinting or enchantments.")
+        .def_property("extra_knockback_approach", &KnockbackParameters::getExtraKnockbackApproach,
+                      &KnockbackParameters::setExtraKnockbackApproach,
+                      "How extra knockback is combined with the base knockback.");
+
     def_registry_type(py::class_<ActorType>(m, "ActorType", "Represents an actor type."))
         .def_property_readonly_static("AGENT", id(ActorType::Agent))
         .def_property_readonly_static("ALLAY", id(ActorType::Allay))
@@ -251,6 +290,8 @@ void init_actor(py::module_ &m, py_class<Actor> &actor, py_class<Mob> &mob)
     with a health bar (e.g. `Player`, `EnderDragon`, `Wither`, etc.) will have their bar scaled
     accordingly.
 )doc")
+        .def_property("no_damage_ticks", &Mob::getNoDamageTicks, &Mob::setNoDamageTicks,
+                      "The mob's current no-damage ticks.")
         .def("has_attribute", &Mob::hasAttribute, py::arg("attribute"),
              "Checks whether the given attribute is present on the object.")
         .def("get_attribute", &Mob::getAttribute, py::arg("attribute"),
