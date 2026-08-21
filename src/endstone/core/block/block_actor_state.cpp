@@ -74,8 +74,9 @@ std::shared_ptr<::BlockActor> cloneBlockActor(::ILevel &level, const ::BlockActo
 
 EndstoneBlockActorState::~EndstoneBlockActorState() = default;
 
-void EndstoneBlockActorState::initializeBlockActor(::ILevel &level, ::BlockActor &block_actor, const ::BlockPos &position,
-                                             const ::BlockType &block, bool use_snapshot)
+void EndstoneBlockActorState::initializeBlockActor(::ILevel &level, ::BlockActor &block_actor,
+                                                   const ::BlockPos &position, const ::BlockType &block,
+                                                   bool use_snapshot)
 {
     block_actor_ = &block_actor;
     if (!use_snapshot) {
@@ -97,15 +98,17 @@ bool EndstoneBlockActorState::isSnapshot() const
     return snapshot_ != nullptr;
 }
 
-bool EndstoneBlockActorState::applySnapshot(::ILevel &level, ::BlockActor &block_actor) const
+bool EndstoneBlockActorState::applyTo(::ILevel &level, ::BlockActor &block_actor) const
 {
-    ::CompoundTag tag;
-    if (!serializeForUpdate(tag)) {
-        return false;
-    }
+    if (isSnapshot()) {
+        ::CompoundTag tag;
+        if (!serializeForUpdate(tag)) {
+            return false;
+        }
 
-    SnapshotDataLoadHelper data_load_helper;
-    block_actor.load(level, tag, data_load_helper);
+        SnapshotDataLoadHelper data_load_helper;
+        block_actor.load(level, tag, data_load_helper);
+    }
     static_cast<::VanillaBlockActor &>(block_actor).setChanged();
     return true;
 }

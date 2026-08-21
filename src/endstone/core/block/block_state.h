@@ -153,16 +153,13 @@ public:
             return false;
         }
         block->setData(*getData(), apply_physics);
-        if (!isSnapshot()) {
-            return true;
-        }
 
         const auto *state_actor = EndstoneBlockActorState::getBlockActor();
         auto *block_actor = getBlockSource().getBlockEntity(block_pos_);
-        if (state_actor == nullptr || block_actor == nullptr || block_actor->getType() != state_actor->getType()) {
-            return false;
+        if (state_actor != nullptr && block_actor != nullptr && block_actor->getType() == state_actor->getType()) {
+            applyTo(getBlockSource().getILevel(), *block_actor);
         }
-        return applySnapshot(getBlockSource().getILevel(), *block_actor);
+        return true;
     }
 
 protected:

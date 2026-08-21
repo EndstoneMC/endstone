@@ -35,7 +35,7 @@ protected:
     void initializeBlockActor(::ILevel &, ::BlockActor &, const ::BlockPos &, const ::BlockType &, bool use_snapshot);
     [[nodiscard]] ::BlockActor *getBlockActor() const;
     [[nodiscard]] bool isSnapshot() const;
-    [[nodiscard]] bool applySnapshot(::ILevel &, ::BlockActor &) const;
+    bool applyTo(::ILevel &, ::BlockActor &) const;
 
 private:
     ::BlockActor *block_actor_{nullptr};
