@@ -51,7 +51,7 @@ CommandRegistry::NonTerminal CommandRegistry::findEnum(const std::string &name) 
     if (it == enum_lookup_.end()) {
         return Symbol{0};
     }
-    return Symbol::fromEnumValueIndex(it->second);
+    return Symbol::fromEnumIndex(it->second);
 }
 
 CommandRegistry::Terminal CommandRegistry::findEnumValue(const std::string &name) const

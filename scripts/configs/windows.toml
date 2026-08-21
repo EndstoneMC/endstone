@@ -342,6 +342,37 @@ rip_relative = true
 rip_offset = 1
 
 [[signatures]]
+name = "CommandRegistry::ParseRuleFor<CommandSelector<Actor>>::instance"
+relative = false
+extra = 0
+# 1. the ParseRuleFor<T>::instance globals are each filled by their own tiny dynamic initializer:
+#    `lea rax, parse<T>; mov [rip+X], rax; mov dword [rip+Y], <symbol>; ret`, padded out to 0x20
+# 2. the selector rules all carry HardNonTerminal::Selection (0x100008), so `C7 05 ? ? ? ? 08 00 10 00`
+#    finds CommandSelector<Actor> and CommandSelector<Player> and nothing else - their two initializers
+#    are byte-identical apart from displacements
+# 3. disambiguate by running on into the next initializer: Actor is followed by WildcardCommandSelector
+#    <Actor>, whose symbol is WildcardSelection (0x10000a), so the trailing `0A 00 10 00` pins which of
+#    the two matched
+# 4. rip_offset lands on the `mov [rip+X], rax` displacement, which targets the instance itself
+pattern = "48 8D 05 ? ? ? ? 48 89 05 ? ? ? ? C7 05 ? ? ? ? 08 00 10 00 C3 CC CC CC CC CC CC CC 48 8D 05 ? ? ? ? 48 89 05 ? ? ? ? C7 05 ? ? ? ? 0A 00 10 00 C3"
+rip_relative = true
+rip_offset = 10
+
+[[signatures]]
+name = "?newResults@CommandSelectorBase@@IEBA?AV?$shared_ptr@V?$vector@PEAVActor@@V?$allocator@PEAVActor@@@std@@@std@@@std@@AEBVCommandOrigin@@@Z"
+relative = false
+extra = 0
+# 1. this is what actually turns a parsed selector into actors; CommandSelector<T>::results is only a thin
+#    wrapper that moves the shared_ptr into a CommandSelectorResults, so one symbol serves both the actor
+#    and the player selector
+# 2. it is the sole caller of the two Bedrock::sort_by_cached_key<Actor*> instantiations and of
+#    brstd::shuffle<Actor*>, and has ~60 callers of its own (every vanilla command that takes a target)
+# 3. the prologue below is its own: eight pushes, a 0x208 frame, the rbp bias and the -2 SEH slot, then
+#    the three argument moves. The frame size and the rip displacement are wildcarded so it survives a
+#    patch bump
+# 4. confirm vs the old named DB
+pattern = "55 41 57 41 56 41 55 41 54 56 57 53 48 81 EC ? ? ? ? 48 8D AC 24 ? ? ? ? 48 C7 85 ? ? ? ? FE FF FF FF 4D 89 C6 48 89 D3 48 89 CE 48 8B 0D"
+[[signatures]]
 name = "?symbolToString@CommandRegistry@@AEBA?AV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@VSymbol@1@@Z"
 relative = false
 extra = 0

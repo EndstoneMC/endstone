@@ -11,6 +11,7 @@ pybind11_add_module(_python MODULE
         block.cpp
         boss.cpp
         command.cpp
+        command_tree.cpp
         damage.cpp
         enchantments.cpp
         endstone_python.cpp

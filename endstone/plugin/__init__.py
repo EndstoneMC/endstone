@@ -53,6 +53,21 @@ class Plugin(_Plugin):
     def _get_description(self) -> PluginDescription:
         return self._description
 
+    def register_commands(self, holder: object | None = None) -> None:
+        """Registers every command tree declared with `@command` on the given object.
+
+        Args:
+            holder (object): The object holding the decorated methods. Defaults to the plugin
+                itself.
+        """
+        if not self.is_enabled:
+            raise RuntimeError(f"Plugin {self.name} attempted to register commands while not enabled")
+
+        from endstone.command._tree import build_command_trees
+
+        for builder in build_command_trees(self if holder is None else holder):
+            builder.register_to(self.server.command_map, self)
+
     def register_events(self, listener: object) -> None:
         """Registers all events defined in the given listener instance.
 

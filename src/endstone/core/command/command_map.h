@@ -20,6 +20,7 @@
 #include "bedrock/server/commands/minecraft_commands.h"
 #include "endstone/command/command.h"
 #include "endstone/command/command_map.h"
+#include "endstone/command/command_node.h"
 
 namespace endstone::core {
 
@@ -29,6 +30,8 @@ public:
     explicit EndstoneCommandMap(EndstoneServer &server);
     using CommandMap::registerCommand;
     bool registerCommand(NotNull<Command> command) override;
+    bool registerCommand(NotNull<LiteralCommandNode> root, Plugin &owner) override;
+    void setSuggestions(std::string name, std::vector<std::string> values) override;
     bool dispatch(const NotNull<CommandSender> &sender, std::string command_line) const override;
     void clearCommands() override;
     [[nodiscard]] Nullable<Command> getCommand(std::string name) const override;

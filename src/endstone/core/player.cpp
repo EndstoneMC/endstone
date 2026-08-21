@@ -41,6 +41,7 @@
 #include "bedrock/world/level/level.h"
 #include "endstone/color_format.h"
 #include "endstone/core/base64.h"
+#include "endstone/core/command/tree/tree_command.h"
 #include "endstone/core/entity/components/flag_components.h"
 #include "endstone/core/form/form_codec.h"
 #include "endstone/core/game_mode.h"
@@ -570,6 +571,25 @@ std::string EndstonePlayer::getLocale() const
     return locale_;
 }
 
+namespace {
+bool retainVisibleOverloads(const Nullable<Command> &command, AvailableCommandsPacketPayload::CommandData &data,
+                            const NotNull<CommandSender> &sender)
+{
+    const auto tree = std::dynamic_pointer_cast<TreeCommand>(command.get());
+    if (!tree) {
+        return true;
+    }
+
+    const auto &overloads = tree->getOverloads();
+    for (auto i = data.overloads.size(); i-- > 0;) {
+        if (i >= overloads.size() || !TreeCommand::testOverloadSilently(overloads[i], sender)) {
+            data.overloads.erase(data.overloads.begin() + static_cast<std::ptrdiff_t>(i));
+        }
+    }
+    return !data.overloads.empty();
+}
+}  // namespace
+
 void EndstonePlayer::updateCommands() const
 {
     const auto &command_map = server_.getCommandMap();
@@ -580,7 +600,8 @@ void EndstonePlayer::updateCommands() const
     for (auto it = packet.payload.commands.begin(); it != packet.payload.commands.end();) {
         const auto &name = it->name;
         const auto command = command_map.getCommand(name);
-        if (command && command->isRegistered() && command->testPermissionSilently(self())) {
+        if (command && command->isRegistered() && command->testPermissionSilently(self()) &&
+            retainVisibleOverloads(command, *it, self())) {
             if (auto symbol = registry.findEnumValue(name); symbol.value() != 0) {
                 auto symbol_index = static_cast<std::uint32_t>(symbol.toIndex());
                 if (it->permission_level >= CommandPermissionLevel::Host) {

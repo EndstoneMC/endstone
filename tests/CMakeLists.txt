@@ -10,6 +10,7 @@ add_executable(endstone_test
         bedrock/test_binary_stream.cpp
         bedrock/test_block_pos.cpp
         bedrock/test_check.cpp
+        bedrock/test_command_selector.cpp
         bedrock/test_function_ref.cpp
         bedrock/test_hashed_string.cpp
         bedrock/test_sem_version.cpp
@@ -18,8 +19,10 @@ add_executable(endstone_test
         bedrock/test_uuid.cpp
         test_identifier.cpp
         test_nbt.cpp
+        test_argument_types.cpp
         test_base64.cpp
         test_command_lexer.cpp
+        test_command_tree.cpp
         test_command_usage_parser.cpp
         test_cpp_plugin_loader.cpp
         test_effect.cpp

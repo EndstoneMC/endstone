@@ -42,6 +42,9 @@
 #include "endstone/core/command/defaults/version_command.h"
 #include "endstone/core/command/minecraft_command_adapter.h"
 #include "endstone/core/command/minecraft_command_wrapper.h"
+#include "endstone/core/command/tree/command_tree.h"
+#include "endstone/core/command/tree/command_tree_registrar.h"
+#include "endstone/core/command/tree/tree_command.h"
 #include "endstone/core/devtools/devtools_command.h"
 #include "endstone/core/permissions/default_permissions.h"
 #include "endstone/core/server.h"
@@ -101,6 +104,9 @@ bool EndstoneCommandMap::dispatch(const NotNull<CommandSender> &sender, std::str
             return false;
         }
         try {
+            if (const auto *tree = dynamic_cast<const TreeCommandAdapter *>(compiled)) {
+                return tree->runFrom(sender, *command_origin);
+            }
             return command->execute(sender, static_cast<const MinecraftCommandAdapter *>(compiled)->args_);
         }
         catch (const std::exception &e) {
@@ -108,6 +114,89 @@ bool EndstoneCommandMap::dispatch(const NotNull<CommandSender> &sender, std::str
             return false;
         }
     }
+}
+
+bool EndstoneCommandMap::registerCommand(NotNull<LiteralCommandNode> root, Plugin &owner)
+{
+    std::lock_guard lock(mutex_);
+    auto &registry = getHandle().getRegistry();
+
+    auto name = root->getName();
+    std::ranges::transform(name, name.begin(), [](unsigned char c) { return std::tolower(c); });
+    if (getCommand(name) != nullptr) {
+        server_.getLogger().error("Plugin {} is unable to register command '{}' as it already exists.", owner.getName(),
+                                  name);
+        return false;
+    }
+
+    auto flattened = flattenCommandTree(root);
+    if (!flattened.has_value()) {
+        server_.getLogger().error("Plugin {} is unable to register command '{}'. {}", owner.getName(), name,
+                                  flattened.error());
+        return false;
+    }
+
+    auto command = std::make_shared<TreeCommand>(root, std::move(flattened.value()));
+
+    std::vector<std::vector<CommandParameterData>> pending_param_data;
+    pending_param_data.reserve(command->getOverloads().size());
+    for (const auto &overload : command->getOverloads()) {
+        std::vector<CommandParameterData> param_data;
+        param_data.reserve(overload.slots.size());
+        for (std::size_t index = 0; index < overload.slots.size(); ++index) {
+            const auto &slot = overload.slots[index];
+            auto data = slot.is_literal
+                          ? CommandTreeRegistrar::makeLiteralParameter(slot.node->getName(), static_cast<int>(index),
+                                                                       *command, registry)
+                          : CommandTreeRegistrar::makeArgumentParameter(
+                                slot.node->getName(),
+                                *static_cast<const ArgumentCommandNode *>(slot.node.get().get())->getArgumentType(),
+                                static_cast<int>(index), *command, registry);
+            if (!data.has_value()) {
+                server_.getLogger().error("Plugin {} is unable to register command '{}'. {}", owner.getName(), name,
+                                          data.error());
+                return false;
+            }
+            param_data.push_back(std::move(data.value()));
+        }
+        pending_param_data.push_back(std::move(param_data));
+    }
+
+    std::vector<std::string> pending_aliases;
+    for (const auto &alias : command->getAliases()) {
+        if (getCommand(alias) == nullptr) {
+            pending_aliases.push_back(alias);
+        }
+    }
+
+    registry.registerCommand(name, command->getDescription().c_str(), CommandPermissionLevel::Any,
+                             CommandCheatFlag::NotCheat, CommandUsageFlag::Normal);
+    custom_commands_.emplace(name, command);
+    for (const auto &alias : pending_aliases) {
+        registry.registerAlias(name, alias);
+        custom_commands_.emplace(alias, command);
+    }
+
+    const auto *raw = command.get();
+    for (std::size_t i = 0; i < pending_param_data.size(); ++i) {
+        const auto *overload = &raw->getOverloads()[i];
+        registry.registerOverload(
+            name.c_str(), {1, INT_MAX},
+            [raw, overload]() -> std::unique_ptr<::Command> {
+                return std::make_unique<TreeCommandAdapter>(*raw, *overload);
+            },
+            pending_param_data[i]);
+    }
+
+    command->setAliases(pending_aliases);
+    command->registerTo(*this);
+    return true;
+}
+
+void EndstoneCommandMap::setSuggestions(std::string name, std::vector<std::string> values)
+{
+    std::lock_guard lock(mutex_);
+    CommandTreeRegistrar::setSoftEnumValues(name, std::move(values), getHandle().getRegistry());
 }
 
 void EndstoneCommandMap::clearCommands()

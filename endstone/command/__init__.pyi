@@ -9,16 +9,28 @@ from endstone import Server
 from endstone.block import Block
 from endstone.lang import Translatable
 from endstone.permissions import Permissible
+from endstone.plugin import Plugin
 
 __all__ = [
+    "ArgumentCommandNode",
+    "ArgumentKind",
+    "ArgumentType",
     "BlockCommandSender",
+    "BuiltinArgumentType",
     "Command",
+    "CommandContext",
+    "CommandError",
     "CommandExecutor",
     "CommandMap",
+    "CommandNode",
     "CommandSender",
     "CommandSenderWrapper",
+    "Commands",
     "ConsoleCommandSender",
+    "LiteralArgumentBuilder",
+    "LiteralCommandNode",
     "ProxiedCommandSender",
+    "RequiredArgumentBuilder",
 ]
 
 class CommandSender(Permissible):
@@ -254,4 +266,267 @@ class CommandExecutor:
 
         Returns:
             `True` if the execution is successful, `False` otherwise.
+        """
+
+class CommandError(Exception): ...
+
+class ArgumentKind:
+    """
+    The built-in argument types Endstone can register with the client.
+    """
+    def __init__(self, value: int) -> None: ...
+
+    __entries = ...
+    @property
+    def name(self) -> str:
+        """
+        name(self: object, /) -> str
+        """
+
+
+    __members__ = ...
+    def __eq__(self, other: object) -> bool: ...
+    def __ne__(self, other: object) -> bool: ...
+    def __getstate__(self, /) -> int: ...
+    def __hash__(self, /) -> int: ...
+    @property
+    def value(self) -> int: ...
+    def __int__(self, /) -> int: ...
+    def __index__(self, /) -> int: ...
+    def __setstate__(self, state: int, /) -> None: ...
+
+    CUSTOM: int = 0
+    BOOLEAN: int = 1
+    INTEGER: int = 2
+    FLOAT: int = 3
+    STRING: int = 4
+    MESSAGE: int = 5
+    RAW_TEXT: int = 6
+    PLAYER: int = 7
+    PLAYERS: int = 8
+    ENTITY: int = 9
+    ENTITIES: int = 10
+    BLOCK_POSITION: int = 11
+    POSITION: int = 12
+    BLOCK_TYPE: int = 13
+    BLOCK_STATES: int = 14
+    ENTITY_TYPE: int = 15
+    JSON: int = 16
+    INTEGER_RANGE: int = 17
+    ENUMERATION: int = 18
+    SOFT_ENUM: int = 19
+
+class ArgumentType:
+    """
+    Describes how a command argument is parsed.
+    """
+    @property
+    def kind(self) -> ArgumentKind:
+        """
+        Which built-in type this is.
+        """
+
+class BuiltinArgumentType(ArgumentType):
+    """
+    An argument type provided by Endstone.
+    """
+
+class CommandNode:
+    """
+    Represents a node in a command tree.
+    """
+    @property
+    def name(self) -> str:
+        """
+        The name of this node.
+        """
+
+    @property
+    def children(self) -> list[CommandNode]:
+        """
+        The children of this node.
+        """
+
+    @property
+    def is_executable(self) -> bool:
+        """
+        Whether a command may end at this node.
+        """
+
+    @property
+    def permissions(self) -> list[str]:
+        """
+        The permissions that allow this branch to be used.
+        """
+
+class LiteralCommandNode(CommandNode):
+    """
+    A node matched by typing a fixed word.
+    """
+    @property
+    def description(self) -> str:
+        """
+        A brief description of this command.
+        """
+
+    @property
+    def aliases(self) -> list[str]:
+        """
+        The alternative names this command is registered under.
+        """
+
+class ArgumentCommandNode(CommandNode):
+    """
+    A node matched by parsing a value.
+    """
+
+class LiteralArgumentBuilder:
+    """
+    Builds a node matched by typing a fixed word.
+    """
+    def description(self, description: str) -> LiteralArgumentBuilder:
+        """
+        Sets a brief description of this command.
+        """
+
+    def aliases(self, aliases: list[str]) -> LiteralArgumentBuilder:
+        """
+        Adds alternative names this command may be typed as.
+        """
+
+    def register_to(self, command_map: CommandMap, owner: Plugin) -> bool:
+        """
+        Registers this command tree.
+
+        Args:
+            command_map: The `CommandMap` to register to.
+            owner: The plugin the command belongs to.
+
+        Returns:
+            `True` on success, `False` if a command with the same name is already registered.
+        """
+
+    @typing.overload
+    def then(self, child: LiteralArgumentBuilder) -> LiteralArgumentBuilder: ...
+    @typing.overload
+    def then(self, child: RequiredArgumentBuilder) -> LiteralArgumentBuilder:
+        """
+        Adds a child branch.
+        """
+
+    def executes(self, handler: collections.abc.Callable) -> LiteralArgumentBuilder:
+        """
+        Sets the handler run when a command ends at this node.
+
+        Returning normally reports the command as successful; raise a `CommandError` to report a
+        failure to the sender.
+        """
+
+    def permission(self, permission: str) -> LiteralArgumentBuilder:
+        """
+        Requires a permission to use this branch.
+
+        A sender holding any one of the permissions added here passes. A sender without one is told
+        they lack permission, and the branch is hidden from their client.
+        """
+
+    def requires(self, predicate: collections.abc.Callable) -> LiteralArgumentBuilder:
+        """
+        Requires a predicate to pass to use this branch.
+
+        Unlike `permission`, a sender that fails is not told why, and the branch is simply absent.
+        Keep the predicate cheap: it runs once per node per parse, and again for every node each time
+        the command tree is sent to a player.
+        """
+
+    def build(self) -> LiteralCommandNode:
+        """
+        Returns the node this builder has shaped.
+        """
+
+class RequiredArgumentBuilder:
+    """
+    Builds a node matched by parsing a value.
+    """
+    @typing.overload
+    def then(self, child: LiteralArgumentBuilder) -> RequiredArgumentBuilder: ...
+    @typing.overload
+    def then(self, child: RequiredArgumentBuilder) -> RequiredArgumentBuilder:
+        """
+        Adds a child branch.
+        """
+
+    def executes(self, handler: collections.abc.Callable) -> RequiredArgumentBuilder:
+        """
+        Sets the handler run when a command ends at this node.
+
+        Returning normally reports the command as successful; raise a `CommandError` to report a
+        failure to the sender.
+        """
+
+    def permission(self, permission: str) -> RequiredArgumentBuilder:
+        """
+        Requires a permission to use this branch.
+
+        A sender holding any one of the permissions added here passes. A sender without one is told
+        they lack permission, and the branch is hidden from their client.
+        """
+
+    def requires(self, predicate: collections.abc.Callable) -> RequiredArgumentBuilder:
+        """
+        Requires a predicate to pass to use this branch.
+
+        Unlike `permission`, a sender that fails is not told why, and the branch is simply absent.
+        Keep the predicate cheap: it runs once per node per parse, and again for every node each time
+        the command tree is sent to a player.
+        """
+
+    def build(self) -> ArgumentCommandNode:
+        """
+        Returns the node this builder has shaped.
+        """
+
+class Commands:
+    """
+    Entry points for building a command tree.
+    """
+    @staticmethod
+    def literal(name: str) -> LiteralArgumentBuilder:
+        """
+        Begins a branch matched by typing a fixed word.
+        """
+
+    @staticmethod
+    def argument(name: str, type: ArgumentType) -> RequiredArgumentBuilder:
+        """
+        Begins a branch matched by parsing a value.
+        """
+
+class CommandContext:
+    """
+    The arguments and sender a command handler is invoked with.
+    """
+    @property
+    def sender(self) -> CommandSender:
+        """
+        The source of this command.
+        """
+
+    @property
+    def command(self) -> Command:
+        """
+        The command being executed.
+        """
+
+    @property
+    def argument_names(self) -> list[str]:
+        """
+        The names of the arguments bound on the branch that ran.
+        """
+
+    def __contains__(self, name: str) -> bool: ...
+    def __getitem__(self, name: str) -> object: ...
+    def get(self, name: str, default: object | None = None) -> object:
+        """
+        Returns the value of the named argument, or the default if it was omitted.
         """
