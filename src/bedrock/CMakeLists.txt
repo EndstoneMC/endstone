@@ -95,6 +95,7 @@ add_library(bedrock STATIC
         world/item/item_instance.cpp
         world/item/item_stack.cpp
         world/item/item_stack_base.cpp
+        world/item/save_context.cpp
         world/item/vanilla_item_tags.cpp
         world/item/written_book_item.cpp
         world/item/alchemy/potion.cpp
@@ -122,7 +123,6 @@ add_library(bedrock STATIC
         world/level/block/resource_drops_context.cpp
         world/level/block/vanilla_block_type_ids.cpp
         world/level/block/actor/beehive_block_actor.cpp
-        world/level/block/actor/block_actor.cpp
         world/level/block/actor/furnace_block_actor.cpp
         world/level/block/actor/item_frame_block_actor.cpp
         world/level/block/actor/sign_block_actor.cpp

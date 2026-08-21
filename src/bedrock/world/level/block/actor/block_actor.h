@@ -42,8 +42,8 @@ public:
 
     BlockActor(BlockActorType, const BlockPos &, const std::string &);
     virtual ~BlockActor() = default;
-    virtual void load(ILevel &, CompoundTag const &, DataLoadHelper &);
-    virtual bool save(CompoundTag &, SaveContext const &) const;
+    virtual void load(ILevel &, const CompoundTag &, DataLoadHelper &) = 0;
+    virtual bool save(CompoundTag &, const SaveContext &) const = 0;
 
     [[nodiscard]] BlockActorType getType() const { return type_; }
 

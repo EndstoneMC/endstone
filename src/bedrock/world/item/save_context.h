@@ -31,7 +31,8 @@ class SaveContext {
     };
 
 public:
-    explicit SaveContext(SaveUseCase);  // Endstone
+    SaveContext();
+    explicit SaveContext(SaveUseCase);
 
     static SaveContext forNetwork();  // Endstone
     static SaveContext forClone();    // Endstone
