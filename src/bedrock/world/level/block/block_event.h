@@ -71,8 +71,8 @@ public:
     const BlockSource &getBlockSource() const override;
     BlockPlayerInteractEvent(Player &, BlockPos, FacingID, std::optional<Vec3>);
 
-    Player &player;
-    std::optional<bool> successful;
+    Player &player;                  // Endstone: private -> public
+    std::optional<bool> successful;  // Endstone: private -> public
     const std::optional<Vec3> hit;
     const FacingID face;
 };
