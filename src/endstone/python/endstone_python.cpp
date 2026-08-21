@@ -663,8 +663,8 @@ void init_player(py::module_ &m, py_class<Player> &player)
     Returns:
         `True` if the command was successful, `False` otherwise.
 )doc")
-        .def("send_block_update", &Player::sendBlockUpdate, py::arg("location").noconvert(),
-             py::arg("tile_state"), R"doc(
+        .def("send_block_update", &Player::sendBlockUpdate, py::arg("location").noconvert(), py::arg("tile_state"),
+             R"doc(
     Sends a tile state change to this player.
 
     This fakes a tile state change for a user at the given location. This will not actually change the world in any

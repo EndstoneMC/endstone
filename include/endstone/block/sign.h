@@ -14,8 +14,8 @@
 
 #pragma once
 
-#include "endstone/block/tile_state.h"
 #include "endstone/block/sign/sign_side.h"
+#include "endstone/block/tile_state.h"
 
 namespace endstone {
 
