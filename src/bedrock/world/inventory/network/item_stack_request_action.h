@@ -15,74 +15,51 @@
 #pragma once
 
 #include <cstdint>
-#include <vector>
 
 #include "bedrock/bedrock.h"
-#include "bedrock/world/inventory/network/item_stack_net_result.h"
-#include "bedrock/world/inventory/network/item_stack_request_action_type.h"
-#include "bedrock/world/item/crafting/recipe.h"
+#include "bedrock/platform/result.h"
 
-class Player;
-class ItemStackRequestActionHandler;
-class ItemStackRequestActionHandlerContext;
+class BinaryStream;
+class BlockPalette;
+class ItemStackRequestActionCraftBase;
+class ReadOnlyBinaryStream;
+
+enum class ItemStackRequestActionType : std::uint8_t {
+    Take = 0,
+    Place = 1,
+    Swap = 2,
+    Drop = 3,
+    Destroy = 4,
+    Consume = 5,
+    Create = 6,
+    PlaceInItemContainer_DEPRECATED = 7,
+    TakeFromItemContainer_DEPRECATED = 8,
+    ScreenLabTableCombine = 9,
+    ScreenBeaconPayment = 10,
+    ScreenHUDMineBlock = 11,
+    CraftRecipe = 12,
+    CraftRecipeAuto = 13,
+    CraftCreative = 14,
+    CraftRecipeOptional = 15,
+    CraftRepairAndDisenchant = 16,
+    CraftLoom = 17,
+    CraftNonImplemented_DEPRECATEDASKTYLAING = 18,
+    CraftResults_DEPRECATEDASKTYLAING = 19,
+};
 
 class ItemStackRequestAction {
 public:
-    virtual ~ItemStackRequestAction() = default;
+    virtual ~ItemStackRequestAction() = 0;
+    [[nodiscard]] ItemStackRequestActionType getActionType() const { return action_type_; }
+    [[nodiscard]] virtual const ItemStackRequestActionCraftBase *getCraftAction() const = 0;
+    [[nodiscard]] virtual int getFilteredStringIndex() const = 0;
+    virtual void postLoadItems_DEPRECATEDASKTYLAING(BlockPalette &, bool) = 0;
 
-    // Endstone: private -> public
-    ItemStackRequestActionType type_;
+protected:
+    virtual void _write(BinaryStream &) const = 0;
+    virtual Bedrock::Result<void> _read(ReadOnlyBinaryStream &) = 0;
+
+private:
+    ItemStackRequestActionType action_type_;
 };
 BEDROCK_STATIC_ASSERT_SIZE(ItemStackRequestAction, 16, 16);
-
-class ItemStackRequestActionCraftBase : public ItemStackRequestAction {
-public:
-    // Endstone: private -> public
-    std::uint8_t craft_count_;
-};
-BEDROCK_STATIC_ASSERT_SIZE(ItemStackRequestActionCraftBase, 24, 16);
-
-class ItemStackRequestActionCraftRecipe : public ItemStackRequestActionCraftBase {
-public:
-    // Endstone: private -> public
-    RecipeNetId recipe_net_id_;
-};
-BEDROCK_STATIC_ASSERT_SIZE(ItemStackRequestActionCraftRecipe, 32, 16);
-
-class ItemStackRequestActionCraftRecipeAuto : public ItemStackRequestActionCraftRecipe {
-public:
-    // Endstone: private -> public
-    std::vector<RecipeIngredient> ingredients_;
-
-    // Endstone: private -> public
-    std::uint8_t ingredient_count_;
-};
-BEDROCK_STATIC_ASSERT_SIZE(ItemStackRequestActionCraftRecipeAuto, 64, 48);
-
-class ItemStackRequestActionCraftHandler {
-public:
-    virtual ~ItemStackRequestActionCraftHandler() = default;
-
-    ENDSTONE_HOOK ItemStackNetResult handleCraftAction(const ItemStackRequestActionCraftBase &);
-
-    // Endstone
-    [[nodiscard]] Player *getPlayer() const { return player_; }
-
-private:
-    ItemStackRequestActionHandler *action_handler_;
-    Player *player_;
-};
-BEDROCK_STATIC_ASSERT_SIZE(ItemStackRequestActionCraftHandler, 24, 24);
-
-class ItemStackRequestActionHandler {
-public:
-    virtual ~ItemStackRequestActionHandler() = default;
-
-    // Endstone
-    [[nodiscard]] Player *getPlayer() const { return player_; }
-
-private:
-    ItemStackRequestActionHandlerContext *context_;
-    Player *player_;
-};
-BEDROCK_STATIC_ASSERT_SIZE(ItemStackRequestActionHandler, 24, 24);

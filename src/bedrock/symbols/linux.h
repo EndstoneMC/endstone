@@ -11,18 +11,19 @@
 
 namespace endstone::runtime {
 
-static constexpr std::array<std::pair<std::string_view, std::size_t>, 66> symbols = {{
+static constexpr std::array<std::pair<std::string_view, std::size_t>, 71> symbols = {{
     {"BlockState::StateListNode::mHead", 245468000},
     {"Enchant::mEnchants", 245294016},
     {"MobEffect::mMobEffects", 245274360},
     {"Potion::mPotionsById", 245353632},
-    {"_ZTV37ItemStackRequestActionCraftRecipeAuto", 241977592},
     {"getI18n::result", 244110448},
     // Actor
     {"_ZN5Actor10teleportToERK4Vec3biib", 180244464},
     {"_ZN5Actor9addEffectERK17MobEffectInstance", 180384480},
     // ActorFactory
     {"_ZN12ActorFactory18createSpawnedActorERK25ActorDefinitionIdentifierP5ActorRK4Vec3RK4Vec2", 178030944},
+    // ArmorStand
+    {"_ZN10ArmorStand14getInteractionER6PlayerR16ActorInteractionRK4Vec3", 177685440},
     // BatchedNetworkPeer
     {"_ZN18BatchedNetworkPeer10sendPacketERKNSt3__112basic_stringIcNS0_11char_traitsIcEENS0_9allocatorIcEEEEN11NetworkPeer11ReliabilityE15Compressibility", 115687712},
     {"_ZN18BatchedNetworkPeer14_receivePacketERNSt3__112basic_stringIcNS0_11char_traitsIcEENS0_9allocatorIcEEEERKNS0_10shared_ptrINS0_6chrono10time_pointINS9_12steady_clockENS9_8durationIxNS0_5ratioILl1ELl1000000000EEEEEEEEE", 115688128},
@@ -35,6 +36,8 @@ static constexpr std::array<std::pair<std::string_view, std::size_t>, 66> symbol
     {"_ZNK9BlockType25tryGetStateFromLegacyDataEt", 199383024},
     // BlockTypeRegistry
     {"_ZNK17BlockTypeRegistry16forEachBlockTypeEN5brstd12function_refIFbRK9BlockTypeES5_EE", 203856688},
+    // BucketableComponent
+    {"_ZN19BucketableComponent14getInteractionER5ActorR6PlayerR16ActorInteraction", 113911152},
     // CampfireBlockActor
     {"_ZN18CampfireBlockActor14_finishCookingER11BlockSourcei", 207808544},
     // Command
@@ -60,6 +63,8 @@ static constexpr std::array<std::pair<std::string_view, std::size_t>, 66> symbol
     {"_ZN9Explosion7explodeER7IRandom", 202093568},
     // FurnaceBlockActor
     {"_ZN17FurnaceBlockActor15getBurnDurationERK13ItemStackBasef", 207577216},
+    // InteractComponent
+    {"_ZN17InteractComponent14getInteractionER5ActorR6PlayerR16ActorInteraction", 112049360},
     // InventoryTransaction
     {"_ZN20InventoryTransaction23executeWorldInteractionEPvR6PlayerRK15InventoryAction", 197769664},
     // Item
@@ -94,11 +99,14 @@ static constexpr std::array<std::pair<std::string_view, std::size_t>, 66> symbol
     {"_ZN16PistonBlockActor4tickER11BlockSource", 207194672},
     // Player
     {"_ZN6Player10teleportToERK4Vec3biib", 188137216},
+    {"_ZN6Player13addExperienceEi", 188297776},
     {"_ZN6Player15startSleepInBedERK8BlockPosbf", 188144032},
     {"_ZN6Player17completeUsingItemEv", 188167680},
     {"_ZN6Player4dropERK9ItemStackb", 188279872},
     {"_ZN6Player4takeER5Actorii", 188227136},
     {"_ZN6Player9addLevelsEi", 188298880},
+    // PushableByEntityUtility
+    {"_ZN23PushableByEntityUtility4pushER5ActorS1_b", 116138176},
     // RakPeerHelper
     {"_ZN13RakPeerHelper11peerStartupEPN6RakNet16RakPeerInterfaceERK20ConnectionDefinitionNS_11PeerPurposeE", 140305792},
     // RepositoryFactory
@@ -118,6 +126,8 @@ static constexpr std::array<std::pair<std::string_view, std::size_t>, 66> symbol
     {"_ZN12ServerPlayer15changeDimensionE13DimensionType", 160365232},
     // ServerScoreboard
     {"_ZN16ServerScoreboardC2E23CommandSoftEnumRegistryP12LevelStorageN3gsl8not_nullIN7Bedrock15NonOwnerPointerI19GameplayUserManagerEEEE", 209066992},
+    // TridentItem
+    {"_ZNK11TridentItem12releaseUsingER9ItemStackP6Playeri", 195973728},
     // WeatherManager
     {"_ZN14WeatherManager13updateWeatherEfifi", 201402304},
 }};

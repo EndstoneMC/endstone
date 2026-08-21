@@ -22,6 +22,10 @@ namespace endstone::python {
 
 void init_block(py::module_ &m, py::classh<Block> &block)
 {
+    py::bind_vector<std::vector<NotNull<Block>>>(m, "BlockList",
+                                                 "A mutable list of blocks, backed by the event that owns it.");
+    py::implicitly_convertible<py::iterable, std::vector<NotNull<Block>>>();
+
     py::native_enum<BlockFace>(m, "BlockFace", "enum.Enum")
         .value("DOWN", BlockFace::Down)
         .value("UP", BlockFace::Up)

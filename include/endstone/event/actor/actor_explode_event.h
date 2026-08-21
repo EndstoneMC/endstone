@@ -29,9 +29,9 @@ namespace endstone {
  * Called when an actor explodes.
  */
 class ActorExplodeEvent : public Cancellable<ActorEvent<Actor>> {
-    using BlockList = std::vector<std::unique_ptr<Block>>;
-
 public:
+    using BlockList = std::vector<NotNull<Block>>;
+
     ENDSTONE_EVENT(ActorExplodeEvent);
     explicit ActorExplodeEvent(const NotNull<Actor> &actor, Location location, BlockList blocks)
         : Cancellable(actor), location_(location), blocks_(std::move(blocks))
@@ -61,6 +61,13 @@ public:
      * @return All blown-up blocks
      */
     [[nodiscard]] BlockList &getBlockList() { return blocks_; }
+
+    /**
+     * Sets the list of blocks that would have been removed or were removed from the explosion event.
+     *
+     * @param blocks All blown-up blocks
+     */
+    void setBlockList(BlockList blocks) { blocks_ = std::move(blocks); }
 
 private:
     Location location_;

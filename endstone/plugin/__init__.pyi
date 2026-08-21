@@ -541,7 +541,7 @@ class PluginManager:
             ignore_cancelled: Do not call executor if event was already cancelled.
         """
 
-    def get_permission(self, name: str) -> Permission:
+    def get_permission(self, name: str) -> Permission | None:
         """
         Gets a `Permission` from its fully qualified name.
 

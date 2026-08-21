@@ -31,6 +31,7 @@
 #include "endstone/core/level/level.h"
 #include "endstone/core/map/map_view.h"
 #include "endstone/core/player.h"
+#include "endstone/core/plugin/plugin_manager.h"
 #include "endstone/core/server.h"
 #include "endstone/core/util/socket_address.h"
 #include "endstone/event/server/packet_receive_event.h"
@@ -234,20 +235,30 @@ void patchPacket(Packet &packet, const endstone::Nullable<endstone::Player> &pla
 
 void BatchedNetworkPeer::sendPacket(const std::string &data, Reliability reliability, Compressibility compressible)
 {
+    const auto &server = endstone::core::EndstoneServer::getInstance();
     ReadOnlyBinaryStream stream(data, false);
     auto result = stream.getUnsignedVarInt().discardError();
     if (!result) {
-        const auto &server = endstone::core::EndstoneServer::getInstance();
         server.getLogger().critical("BatchedNetworkPeer::sendPacket: Failed to parse raw packet header!");
         return;
     }
 
     // Parse packet header
     auto header = PacketHeader::fromRaw(result.value());
+
+    const auto patched = header.getPacketId() == MinecraftPacketIds::StartGame ||
+                         header.getPacketId() == MinecraftPacketIds::ResourcePacksInfo ||
+                         header.getPacketId() == MinecraftPacketIds::ResourcePackStack ||
+                         header.getPacketId() == MinecraftPacketIds::MapData ||
+                         header.getPacketId() == MinecraftPacketIds::SetScore;
+    if (!patched && !server.getEndstonePluginManager().isEventRegistered<endstone::PacketSendEvent>()) {
+        ENDSTONE_HOOK_CALL_ORIGINAL(&BatchedNetworkPeer::sendPacket, this, data, reliability, compressible);
+        return;
+    }
+
     const auto &id = getId();
 
     // Get player object - if exists
-    const auto &server = endstone::core::EndstoneServer::getInstance();
     const auto *server_player =
         server.getServer().getMinecraft()->getServerNetworkHandler()->getServerPlayer(id, header.getSenderSubId());
     endstone::Nullable<endstone::Player> player;
@@ -330,6 +341,10 @@ NetworkPeer::DataStatus BatchedNetworkPeer::_receivePacket(std::string &out_data
                                                            const PacketRecvTimepointPtr &timepoint_ptr)
 {
     const auto &server = endstone::core::EndstoneServer::getInstance();
+    if (!server.getEndstonePluginManager().isEventRegistered<endstone::PacketReceiveEvent>()) {
+        return ENDSTONE_HOOK_CALL_ORIGINAL(&BatchedNetworkPeer::_receivePacket, this, out_data, timepoint_ptr);
+    }
+
     auto network_handler = server.getServer().getMinecraft()->getServerNetworkHandler();
     while (true) {
         const auto status =

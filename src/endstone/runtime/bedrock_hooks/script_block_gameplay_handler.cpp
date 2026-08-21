@@ -57,7 +57,7 @@ bool handleEvent(const BlockTryPlaceByPlayerEvent &event)
     // Placed block: a live block at the target position whose type/data are overridden by the
     // permutation about to be placed (the world is not yet mutated when this event fires).
     auto block_placed =
-        std::make_unique<endstone::core::EndstoneBlockSnapshot>(block_source, event.pos, event.permutation_to_place);
+        std::make_shared<endstone::core::EndstoneBlockSnapshot>(block_source, event.pos, event.permutation_to_place);
 
     // Capture replaced block state from current world state
     auto block_at_pos = endstone::core::EndstoneBlock::at(block_source, event.pos);
@@ -67,8 +67,7 @@ bool handleEvent(const BlockTryPlaceByPlayerEvent &event)
     const auto opposite = endstone::core::EndstoneBlockFace::getOpposite(block_face);
     auto block_against = block_at_pos->getRelative(opposite);
 
-    endstone::BlockPlaceEvent e{std::move(block_placed), std::move(replaced_state), std::move(block_against),
-                                endstone_player};
+    endstone::BlockPlaceEvent e{std::move(block_placed), replaced_state, std::move(block_against), endstone_player};
     server.getPluginManager().callEvent(e);
     if (e.isCancelled()) {
         return false;
@@ -81,7 +80,7 @@ bool handleEvent(ExplosionStartedEvent &event)
     const auto *source = WeakEntityRef(event.source).tryUnwrap<::Actor>();
     const auto &server = endstone::core::EndstoneServer::getInstance();
 
-    std::vector<std::unique_ptr<endstone::Block>> block_list;
+    std::vector<endstone::NotNull<endstone::Block>> block_list;
     for (const auto &pos : event.blocks) {
         block_list.emplace_back(
             endstone::core::EndstoneBlock::at(event.dimension.getBlockSourceFromMainChunkSource(), pos));
@@ -96,9 +95,7 @@ bool handleEvent(ExplosionStartedEvent &event)
         }
         event.blocks.clear();
         for (const auto &block : e.getBlockList()) {
-            if (block) {
-                event.blocks.emplace(block->getX(), block->getY(), block->getZ());
-            }
+            event.blocks.emplace(block->getX(), block->getY(), block->getZ());
         }
     }
     else {
@@ -116,9 +113,7 @@ bool handleEvent(ExplosionStartedEvent &event)
         }
         event.blocks.clear();
         for (const auto &block : e.getBlockList()) {
-            if (block) {
-                event.blocks.emplace(block->getX(), block->getY(), block->getZ());
-            }
+            event.blocks.emplace(block->getX(), block->getY(), block->getZ());
         }
     }
     return true;

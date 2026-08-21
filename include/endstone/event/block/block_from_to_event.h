@@ -30,8 +30,8 @@ namespace endstone {
 class BlockFromToEvent : public Cancellable<BlockEvent> {
 public:
     ENDSTONE_EVENT(BlockFromToEvent);
-    explicit BlockFromToEvent(std::unique_ptr<Block> block, std::unique_ptr<Block> to_block)
-        : Cancellable(std::move(block)), to_(std::move(to_block))
+    explicit BlockFromToEvent(const NotNull<Block> &block, const NotNull<Block> &to_block)
+        : Cancellable(block), to_(to_block)
     {
     }
 
@@ -43,7 +43,7 @@ public:
     [[nodiscard]] Block &getToBlock() const { return *to_; }
 
 protected:
-    std::unique_ptr<Block> to_;
+    NotNull<Block> to_;
 };
 
 }  // namespace endstone

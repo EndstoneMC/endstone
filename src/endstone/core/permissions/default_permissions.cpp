@@ -19,59 +19,62 @@
 #include "bedrock/server/server_instance.h"
 
 namespace endstone::core {
-Permission &DefaultPermissions::registerPermission(std::unique_ptr<Permission> perm)
+NotNull<Permission> DefaultPermissions::registerPermission(NotNull<Permission> perm)
 {
     const auto &server = EndstoneServer::getInstance();
-    auto *result = server.getPluginManager().getPermission(perm->getName());
-    if (result == nullptr) {
-        result = &server.getPluginManager().addPermission(std::move(perm));
+    auto result = server.getPluginManager().getPermission(perm->getName());
+    if (!result) {
+        result = server.getPluginManager().addPermission(std::move(perm));
     }
-    return *result;
+    return result;
 }
 
-Permission &DefaultPermissions::registerPermission(std::unique_ptr<Permission> perm, Permission &parent)
+NotNull<Permission> DefaultPermissions::registerPermission(NotNull<Permission> perm, const NotNull<Permission> &parent)
 {
-    parent.getChildren()[perm->getName()] = true;
+    parent->getChildren()[perm->getName()] = true;
     return registerPermission(std::move(perm));
 }
 
-Permission &DefaultPermissions::registerPermission(std::string_view name, std::string_view desc)
+NotNull<Permission> DefaultPermissions::registerPermission(std::string_view name, std::string_view desc)
 {
     return registerPermission(
-        std::make_unique<Permission>(std::string(name), std::string(desc), PermissionDefault::False));
+        std::make_shared<Permission>(std::string(name), std::string(desc), PermissionDefault::False));
 }
 
-Permission &DefaultPermissions::registerPermission(std::string_view name, std::string_view desc, Permission &parent)
+NotNull<Permission> DefaultPermissions::registerPermission(std::string_view name, std::string_view desc,
+                                                           const NotNull<Permission> &parent)
 {
-    auto &perm = registerPermission(name, desc);
-    parent.getChildren()[perm.getName()] = true;
+    const auto perm = registerPermission(name, desc);
+    parent->getChildren()[perm->getName()] = true;
     return perm;
 }
 
-Permission &DefaultPermissions::registerPermission(std::string_view name, std::string_view desc, PermissionDefault def,
-                                                   Permission &parent)
+NotNull<Permission> DefaultPermissions::registerPermission(std::string_view name, std::string_view desc,
+                                                           PermissionDefault def, const NotNull<Permission> &parent)
 {
-    auto &perm = registerPermission(std::make_unique<Permission>(std::string(name), std::string(desc), def));
-    parent.getChildren()[perm.getName()] = true;
+    const auto perm = registerPermission(std::make_shared<Permission>(std::string(name), std::string(desc), def));
+    parent->getChildren()[perm->getName()] = true;
     return perm;
 }
 
 void DefaultPermissions::registerCorePermissions()
 {
-    auto &parent = registerPermission(ROOT, "Gives the user the ability to use all Endstone utilities and commands");
+    const auto parent =
+        registerPermission(ROOT, "Gives the user the ability to use all Endstone utilities and commands");
     CommandPermissions::registerPermissions(parent);
     BroadcastPermissions::registerPermissions(parent);
-    parent.recalculatePermissibles();
+    parent->recalculatePermissibles();
 }
 
-Permission &CommandPermissions::registerPermission(std::string_view name, std::string_view cmd, std::string_view desc,
-                                                   Permission &parent)
+NotNull<Permission> CommandPermissions::registerPermission(std::string_view name, std::string_view cmd,
+                                                           std::string_view desc, const NotNull<Permission> &parent)
 {
     return registerPermission(name, cmd, desc, PermissionDefault::True, parent);
 }
 
-Permission &CommandPermissions::registerPermission(std::string_view name, std::string_view cmd, std::string_view desc,
-                                                   PermissionDefault def, Permission &parent)
+NotNull<Permission> CommandPermissions::registerPermission(std::string_view name, std::string_view cmd,
+                                                           std::string_view desc, PermissionDefault def,
+                                                           const NotNull<Permission> &parent)
 {
     const auto &server = EndstoneServer::getInstance();
     const auto &registry = server.getServer().getMinecraft()->getCommands().getRegistry();
@@ -88,10 +91,10 @@ Permission &CommandPermissions::registerPermission(std::string_view name, std::s
     return DefaultPermissions::registerPermission(name, desc, def, parent);
 }
 
-Permission &CommandPermissions::registerPermissions(Permission &parent)
+NotNull<Permission> CommandPermissions::registerPermissions(const NotNull<Permission> &parent)
 {
     const static std::string PREFIX = std::string(ROOT) + ".";
-    auto &commands =
+    const auto commands =
         DefaultPermissions::registerPermission(ROOT, "Gives the user the ability to use all Endstone command", parent);
     registerPermission(PREFIX + "ban", "ban", "Allows the user to ban players.", PermissionDefault::Operator, commands);
     registerPermission(PREFIX + "banip", "ban-ip", "Allows the user to ban IP addresses.", PermissionDefault::Operator,
@@ -121,35 +124,35 @@ Permission &CommandPermissions::registerPermissions(Permission &parent)
     registerPermission(PREFIX + "devtools", "devtools", "Allows the user to open the DevTools.",
                        PermissionDefault::Console, commands);
 #endif
-    commands.recalculatePermissibles();
+    commands->recalculatePermissibles();
     return commands;
 }
 
-Permission &BroadcastPermissions::registerPermissions(Permission &parent)
+NotNull<Permission> BroadcastPermissions::registerPermissions(const NotNull<Permission> &parent)
 {
     const static std::string PREFIX = std::string(ROOT) + ".";
-    auto &broadcasts =
+    const auto broadcasts =
         DefaultPermissions::registerPermission(ROOT, "Allows the user to receive all broadcast messages");
     DefaultPermissions::registerPermission(PREFIX + "admin", "Allows the user to receive administrative broadcasts",
                                            PermissionDefault::Operator, parent);
     DefaultPermissions::registerPermission(PREFIX + "user", "Allows the user to receive user broadcasts",
                                            PermissionDefault::True, parent);
-    broadcasts.recalculatePermissibles();
+    broadcasts->recalculatePermissibles();
     return broadcasts;
 }
 
 void MinecraftDefaultPermissions::registerCorePermissions()
 {
-    auto &parent = DefaultPermissions::registerPermission(
+    const auto parent = DefaultPermissions::registerPermission(
         ROOT, "Gives the user the ability to use all vanilla utilities and commands");
     MinecraftCommandPermissions::registerPermissions(parent);
-    parent.recalculatePermissibles();
+    parent->recalculatePermissibles();
 }
 
-Permission &MinecraftCommandPermissions::registerPermissions(Permission &parent)
+NotNull<Permission> MinecraftCommandPermissions::registerPermissions(const NotNull<Permission> &parent)
 {
     const static std::string PREFIX = std::string(ROOT) + ".";
-    Permission &commands = DefaultPermissions::registerPermission(
+    const auto commands = DefaultPermissions::registerPermission(
         ROOT, "Gives the user the ability to use all vanilla minecraft commands", parent);
     CommandPermissions::registerPermission(PREFIX + "help", "help", "Allows the user to access Vanilla command help.",
                                            commands);
@@ -177,7 +180,7 @@ Permission &MinecraftCommandPermissions::registerPermissions(Permission &parent)
             perm, signature.name,
             std::format("Allows the user to use the /{} command provided by mojang.", signature.name), commands);
     }
-    commands.recalculatePermissibles();
+    commands->recalculatePermissibles();
     return commands;
 }
 }  // namespace endstone::core

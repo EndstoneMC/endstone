@@ -310,6 +310,6 @@ public:
     using Base = EndstoneItemMetaBase;
     using Base::Base;
 
-    [[nodiscard]] std::unique_ptr<ItemMeta> clone() const override { return std::make_unique<EndstoneItemMeta>(*this); }
+    [[nodiscard]] NotNull<ItemMeta> clone() const override { return std::make_shared<EndstoneItemMeta>(*this); }
 };
 }  // namespace endstone::core

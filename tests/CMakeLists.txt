@@ -25,6 +25,7 @@ add_executable(endstone_test
         test_effect.cpp
         test_logger_factory.cpp
         test_player_ban_list.cpp
+        test_permissions.cpp
         test_pointers.cpp
         test_scheduler.cpp
         test_service_manager.cpp

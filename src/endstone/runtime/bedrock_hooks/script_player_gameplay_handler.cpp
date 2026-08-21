@@ -33,12 +33,12 @@
 #include "endstone/core/player.h"
 #include "endstone/core/server.h"
 #include "endstone/event/actor/player_death_event.h"
+#include "endstone/event/player/player_arm_swing_event.h"
 #include "endstone/event/player/player_dimension_change_event.h"
-#include "endstone/event/player/player_drop_item_event.h"
-#include "endstone/event/player/player_emote_event.h"
 #include "endstone/event/player/player_game_mode_change_event.h"
 #include "endstone/event/player/player_interact_actor_event.h"
 #include "endstone/event/player/player_interact_event.h"
+#include "endstone/event/player/player_pickup_experience_event.h"
 #include "endstone/event/player/player_quit_event.h"
 #include "endstone/event/player/player_respawn_event.h"
 #include "endstone/runtime/vtable_hook.h"
@@ -59,7 +59,7 @@ bool handleEvent(const PlayerDamageEvent &event)
             endstone::Message death_message =
                 endstone::Translatable(death_cause_message.first, death_cause_message.second);
             endstone::PlayerDeathEvent e{endstone_player,
-                                         std::make_unique<endstone::core::EndstoneDamageSource>(*event.damage_source),
+                                         std::make_shared<endstone::core::EndstoneDamageSource>(*event.damage_source),
                                          death_message};
             server.getPluginManager().callEvent(e);
             death_message = e.getDeathMessage().value_or("");
@@ -88,12 +88,12 @@ bool handleEvent(const PlayerDisconnectEvent &event)
     if (auto *player = WeakEntityRef(event.player).tryUnwrap<::Player>(); player) {
         const auto &server = endstone::core::EndstoneServer::getInstance();
         auto endstone_player = player->getEndstoneActor<endstone::core::EndstonePlayer>();
-        endstone_player->disconnect();
 
         endstone::Message quit_message = endstone::Translatable{
             endstone::ColorFormat::Yellow + "%multiplayer.player.left", {endstone_player->getName()}};
         endstone::PlayerQuitEvent e{endstone_player, quit_message};
         server.getPluginManager().callEvent(e);
+        endstone_player->disconnect();
 
         quit_message = e.getQuitMessage().value_or("");
         if (server.isServerTextEnabled(ServerTextEvent::PlayerConnection) &&
@@ -142,6 +142,38 @@ bool handleEvent(const PlayerDimensionChangeAfterEvent &event)
             server.getEndstoneLevel()->getDimension(event.to_dimension),
         };
         server.getPluginManager().callEvent(e);
+    }
+    return true;
+}
+
+bool handleEvent(const PlayerSwingStartEvent &event)
+{
+    if (const auto *player = event.player.tryUnwrap<::Player>(); player) {
+        const auto &server = endstone::core::EndstoneServer::getInstance();
+        std::optional<endstone::ItemStack> item;
+        if (!event.held_item.isNull()) {
+            item = endstone::core::EndstoneItemStack::fromMinecraft(event.held_item);
+        }
+        endstone::PlayerArmSwingEvent e{player->getEndstoneActor<endstone::core::EndstonePlayer>(), std::move(item)};
+        server.getPluginManager().callEvent(e);
+    }
+    return true;
+}
+
+bool handleEvent(const PlayerGetExperienceOrbEvent &event)
+{
+    const auto &server = endstone::core::EndstoneServer::getInstance();
+    if (!server.getEndstonePluginManager().isEventRegistered<endstone::PlayerPickupExperienceEvent>()) {
+        return true;
+    }
+
+    if (const auto *player = WeakEntityRef(event.player).tryUnwrap<::Player>(); player) {
+        endstone::PlayerPickupExperienceEvent e{player->getEndstoneActor<endstone::core::EndstonePlayer>(),
+                                                event.experience_value};
+        server.getPluginManager().callEvent(e);
+        if (e.isCancelled()) {
+            return false;
+        }
     }
     return true;
 }
@@ -222,7 +254,8 @@ HandlerResult ScriptPlayerGameplayHandler::handleEvent1(const PlayerGameplayEven
                       std::is_same_v<T, Details::ValueOrRef<const PlayerFormResponseEvent>> ||
                       std::is_same_v<T, Details::ValueOrRef<const PlayerFormCloseEvent>> ||
                       std::is_same_v<T, Details::ValueOrRef<const ::PlayerRespawnEvent>> ||
-                      std::is_same_v<T, Details::ValueOrRef<const PlayerDimensionChangeAfterEvent>>) {
+                      std::is_same_v<T, Details::ValueOrRef<const PlayerDimensionChangeAfterEvent>> ||
+                      std::is_same_v<T, Details::ValueOrRef<const PlayerSwingStartEvent>>) {
             if (!handleEvent(arg.value())) {
                 return HandlerResult::BypassListeners;
             }
@@ -238,7 +271,8 @@ GameplayHandlerResult<CoordinatorResult> ScriptPlayerGameplayHandler::handleEven
     auto visitor = [&](auto &&arg) -> GameplayHandlerResult<CoordinatorResult> {
         using T = std::decay_t<decltype(arg)>;
         if constexpr (std::is_same_v<T, Details::ValueOrRef<const PlayerInteractWithBlockBeforeEvent>> ||
-                      std::is_same_v<T, Details::ValueOrRef<const PlayerInteractWithEntityBeforeEvent>>) {
+                      std::is_same_v<T, Details::ValueOrRef<const PlayerInteractWithEntityBeforeEvent>> ||
+                      std::is_same_v<T, Details::ValueOrRef<const PlayerGetExperienceOrbEvent>>) {
             if (!handleEvent(arg.value())) {
                 return {HandlerResult::BypassListeners, CoordinatorResult::Cancel};
             }

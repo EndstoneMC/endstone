@@ -35,10 +35,10 @@ bool EndstoneBlockType::hasItemType() const
     return block_type_.getBlockItemId() != 0;
 }
 
-std::unique_ptr<BlockData> EndstoneBlockType::createBlockData() const
+NotNull<BlockData> EndstoneBlockType::createBlockData() const
 {
     auto &default_state = const_cast<::Block &>(block_type_.getDefaultState());
-    return std::make_unique<EndstoneBlockData>(default_state);
+    return std::make_shared<EndstoneBlockData>(default_state);
 }
 const ::BlockType &EndstoneBlockType::getHandle() const
 {

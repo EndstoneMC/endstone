@@ -36,9 +36,9 @@ void EndstoneBlockSnapshot::setType(BlockTypeId type, bool /*apply_physics*/)
     setType(type);
 }
 
-std::unique_ptr<BlockData> EndstoneBlockSnapshot::getData() const
+NotNull<BlockData> EndstoneBlockSnapshot::getData() const
 {
-    return std::make_unique<EndstoneBlockData>(*placed_);
+    return std::make_shared<EndstoneBlockData>(*placed_);
 }
 
 void EndstoneBlockSnapshot::setData(const BlockData &data)
@@ -51,14 +51,9 @@ void EndstoneBlockSnapshot::setData(const BlockData &data, bool /*apply_physics*
     setData(data);
 }
 
-std::unique_ptr<BlockState> EndstoneBlockSnapshot::captureState() const
+NotNull<BlockState> EndstoneBlockSnapshot::captureState() const
 {
-    return std::make_unique<EndstoneBlockState>(getDimension(), getPosition(), *placed_);
-}
-
-std::unique_ptr<Block> EndstoneBlockSnapshot::clone() const
-{
-    return std::make_unique<EndstoneBlockSnapshot>(getBlockSource(), block_pos_, *placed_);
+    return std::make_shared<EndstoneBlockState>(getDimension(), getPosition(), *placed_);
 }
 
 }  // namespace endstone::core

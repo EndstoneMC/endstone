@@ -43,8 +43,14 @@ public:
     Recipes(ILevel *);
     [[nodiscard]] ItemInstance getFurnaceRecipeResult(const ItemStackBase &, const HashedString &) const;
 
-    // Endstone
-    [[nodiscard]] const Recipe *getRecipeByNetId(const RecipeNetId &) const;
+    [[nodiscard]] const Recipe *getRecipeByNetId(const RecipeNetId &net_id) const
+    {
+        if (net_id.raw_id == 0) {
+            return nullptr;
+        }
+        const auto it = recipes_by_net_id_.find(net_id);
+        return it != recipes_by_net_id_.end() ? it->second : nullptr;
+    }
 
 private:
     ResourcePackManager *resource_pack_manager_;

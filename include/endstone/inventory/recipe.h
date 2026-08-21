@@ -17,9 +17,8 @@
 #include "endstone/inventory/item_stack.h"
 
 namespace endstone {
-
 /**
- * Represents a crafting recipe.
+ * Represents some type of crafting recipe.
  */
 class Recipe {
 public:

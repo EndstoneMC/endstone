@@ -59,6 +59,21 @@ std::string toCamelCase(const std::string &input)
     }
     return output;
 }
+
+std::unordered_set<endstone::NotNull<endstone::Permissible>> lockAndPrune(auto &subs)
+{
+    std::unordered_set<endstone::NotNull<endstone::Permissible>> result;
+    for (auto it = subs.begin(); it != subs.end();) {
+        if (auto permissible = it->lock()) {
+            result.emplace(std::move(permissible));
+            ++it;
+        }
+        else {
+            it = subs.erase(it);
+        }
+    }
+    return result;
+}
 }  // namespace
 
 namespace endstone::core {
@@ -562,17 +577,17 @@ bool EndstonePluginManager::isEventRegistered(const std::string_view event) cons
     return it != event_handlers_.end() && !it->second.empty();
 }
 
-Permission *EndstonePluginManager::getPermission(std::string name) const
+Nullable<Permission> EndstonePluginManager::getPermission(std::string name) const
 {
     std::ranges::transform(name, name.begin(), [](unsigned char c) { return std::tolower(c); });
     const auto it = permissions_.find(name);
     if (it == permissions_.end()) {
         return nullptr;
     }
-    return it->second.get();
+    return it->second;
 }
 
-Permission &EndstonePluginManager::addPermission(std::unique_ptr<Permission> perm)
+NotNull<Permission> EndstonePluginManager::addPermission(NotNull<Permission> perm)
 {
     auto name = perm->getName();
     std::ranges::transform(name, name.begin(), [](unsigned char c) { return std::tolower(c); });
@@ -582,13 +597,13 @@ Permission &EndstonePluginManager::addPermission(std::unique_ptr<Permission> per
 
     perm->init(*this);
     const auto it = permissions_.emplace(name, std::move(perm)).first;
-    calculatePermissionDefault(*it->second);
-    return *it->second.get();
+    calculatePermissionDefault(it->second);
+    return it->second;
 }
 
-void EndstonePluginManager::removePermission(Permission &perm)
+void EndstonePluginManager::removePermission(const NotNull<Permission> &perm)
 {
-    removePermission(perm.getName());
+    removePermission(perm->getName());
 }
 
 void EndstonePluginManager::removePermission(std::string name)
@@ -597,46 +612,46 @@ void EndstonePluginManager::removePermission(std::string name)
     permissions_.erase(name);
 }
 
-std::vector<Permission *> EndstonePluginManager::getDefaultPermissions(PermissionLevel level) const
+std::vector<NotNull<Permission>> EndstonePluginManager::getDefaultPermissions(PermissionLevel level) const
 {
-    std::vector<Permission *> permissions;
+    std::vector<NotNull<Permission>> permissions;
     for (const auto &perm : default_perms_.at(level).get<0>()) {
         permissions.emplace_back(perm);
     }
     return permissions;
 }
 
-void EndstonePluginManager::recalculatePermissionDefaults(Permission &perm)
+void EndstonePluginManager::recalculatePermissionDefaults(const NotNull<Permission> &perm)
 {
-    if (getPermission(perm.getName()) != nullptr) {
-        default_perms_.at(PermissionLevel::Default).get<1>().erase(&perm);
-        default_perms_.at(PermissionLevel::Operator).get<1>().erase(&perm);
-        default_perms_.at(PermissionLevel::Console).get<1>().erase(&perm);
+    if (getPermission(perm->getName())) {
+        default_perms_.at(PermissionLevel::Default).get<1>().erase(perm);
+        default_perms_.at(PermissionLevel::Operator).get<1>().erase(perm);
+        default_perms_.at(PermissionLevel::Console).get<1>().erase(perm);
         calculatePermissionDefault(perm);
     }
 }
 
-void EndstonePluginManager::calculatePermissionDefault(Permission &perm)
+void EndstonePluginManager::calculatePermissionDefault(const NotNull<Permission> &perm)
 {
-    switch (perm.getDefault()) {
+    switch (perm->getDefault()) {
     case PermissionDefault::Console:
-        default_perms_.at(PermissionLevel::Console).emplace_back(&perm);
+        default_perms_.at(PermissionLevel::Console).emplace_back(perm);
         dirtyPermissibles(PermissionLevel::Console);
         break;
     case PermissionDefault::Operator:
-        default_perms_.at(PermissionLevel::Operator).emplace_back(&perm);
-        default_perms_.at(PermissionLevel::Console).emplace_back(&perm);
+        default_perms_.at(PermissionLevel::Operator).emplace_back(perm);
+        default_perms_.at(PermissionLevel::Console).emplace_back(perm);
         dirtyPermissibles(PermissionLevel::Operator);
         dirtyPermissibles(PermissionLevel::Console);
         break;
     case PermissionDefault::NotOperator:
-        default_perms_.at(PermissionLevel::Default).emplace_back(&perm);
+        default_perms_.at(PermissionLevel::Default).emplace_back(perm);
         dirtyPermissibles(PermissionLevel::Default);
         break;
     case PermissionDefault::True:
-        default_perms_.at(PermissionLevel::Default).emplace_back(&perm);
-        default_perms_.at(PermissionLevel::Operator).emplace_back(&perm);
-        default_perms_.at(PermissionLevel::Console).emplace_back(&perm);
+        default_perms_.at(PermissionLevel::Default).emplace_back(perm);
+        default_perms_.at(PermissionLevel::Operator).emplace_back(perm);
+        default_perms_.at(PermissionLevel::Console).emplace_back(perm);
         dirtyPermissibles(PermissionLevel::Default);
         dirtyPermissibles(PermissionLevel::Operator);
         dirtyPermissibles(PermissionLevel::Console);
@@ -649,83 +664,81 @@ void EndstonePluginManager::calculatePermissionDefault(Permission &perm)
 
 void EndstonePluginManager::dirtyPermissibles(PermissionLevel level) const
 {
-    auto permissibles = getDefaultPermSubscriptions(level);
-    for (auto *p : permissibles) {
-        p->recalculatePermissions();
+    const auto permissibles = getDefaultPermSubscriptions(level);
+    for (const auto &permissible : permissibles) {
+        permissible->recalculatePermissions();
     }
 }
 
-void EndstonePluginManager::subscribeToPermission(std::string permission, Permissible &permissible)
+void EndstonePluginManager::subscribeToPermission(std::string permission, const NotNull<Permissible> &permissible)
 {
     auto &name = permission;
     std::ranges::transform(name, name.begin(), [](unsigned char c) { return std::tolower(c); });
-    auto &map = perm_subs_.emplace(name, std::unordered_map<Permissible *, bool>()).first->second;
-    map[&permissible] = true;
+    perm_subs_[name].insert(permissible.get());
 }
 
-void EndstonePluginManager::unsubscribeFromPermission(std::string permission, Permissible &permissible)
-{
-    auto &name = permission;
-    std::ranges::transform(name, name.begin(), [](unsigned char c) { return std::tolower(c); });
-    if (const auto it = perm_subs_.find(name); it != perm_subs_.end()) {
-        auto &map = it->second;
-        map.erase(&permissible);
-        if (map.empty()) {
-            perm_subs_.erase(name);
-        }
-    }
-}
-
-std::unordered_set<Permissible *> EndstonePluginManager::getPermissionSubscriptions(std::string permission) const
+void EndstonePluginManager::unsubscribeFromPermission(std::string permission, const NotNull<Permissible> &permissible)
 {
     auto &name = permission;
     std::ranges::transform(name, name.begin(), [](unsigned char c) { return std::tolower(c); });
     if (const auto it = perm_subs_.find(name); it != perm_subs_.end()) {
-        std::unordered_set<Permissible *> subs;
-        const auto &map = it->second;
-        for (const auto &entry : map) {
-            subs.insert(entry.first);
+        it->second.erase(permissible.get());
+        if (it->second.empty()) {
+            perm_subs_.erase(it);
         }
-        return subs;
     }
-    return {};
 }
 
-void EndstonePluginManager::subscribeToDefaultPerms(PermissionLevel level, Permissible &permissible)
+std::unordered_set<NotNull<Permissible>> EndstonePluginManager::getPermissionSubscriptions(std::string permission) const
 {
-    auto &map = def_subs_.emplace(level, std::unordered_map<Permissible *, bool>()).first->second;
-    map[&permissible] = true;
+    auto &name = permission;
+    std::ranges::transform(name, name.begin(), [](unsigned char c) { return std::tolower(c); });
+    const auto it = perm_subs_.find(name);
+    if (it == perm_subs_.end()) {
+        return {};
+    }
+
+    auto subs = lockAndPrune(it->second);
+    if (it->second.empty()) {
+        perm_subs_.erase(it);
+    }
+    return subs;
 }
 
-void EndstonePluginManager::unsubscribeFromDefaultPerms(PermissionLevel level, Permissible &permissible)
+void EndstonePluginManager::subscribeToDefaultPerms(PermissionLevel level, const NotNull<Permissible> &permissible)
+{
+    def_subs_[level].insert(permissible.get());
+}
+
+void EndstonePluginManager::unsubscribeFromDefaultPerms(PermissionLevel level, const NotNull<Permissible> &permissible)
 {
     if (const auto it = def_subs_.find(level); it != def_subs_.end()) {
-        auto &map = it->second;
-        map.erase(&permissible);
-        if (map.empty()) {
-            def_subs_.erase(level);
+        it->second.erase(permissible.get());
+        if (it->second.empty()) {
+            def_subs_.erase(it);
         }
     }
 }
 
-std::unordered_set<Permissible *> EndstonePluginManager::getDefaultPermSubscriptions(PermissionLevel level) const
+std::unordered_set<NotNull<Permissible>> EndstonePluginManager::getDefaultPermSubscriptions(PermissionLevel level) const
 {
-    if (const auto it = def_subs_.find(level); it != def_subs_.end()) {
-        std::unordered_set<Permissible *> subs;
-        const auto &map = it->second;
-        for (const auto &entry : map) {
-            subs.insert(entry.first);
-        }
-        return subs;
+    const auto it = def_subs_.find(level);
+    if (it == def_subs_.end()) {
+        return {};
     }
-    return {};
+
+    auto subs = lockAndPrune(it->second);
+    if (it->second.empty()) {
+        def_subs_.erase(it);
+    }
+    return subs;
 }
 
-std::unordered_set<Permission *> EndstonePluginManager::getPermissions() const
+std::unordered_set<NotNull<Permission>> EndstonePluginManager::getPermissions() const
 {
-    std::unordered_set<Permission *> perms;
+    std::unordered_set<NotNull<Permission>> perms;
     for (const auto &entry : permissions_) {
-        perms.insert(entry.second.get());
+        perms.insert(entry.second);
     }
     return perms;
 }

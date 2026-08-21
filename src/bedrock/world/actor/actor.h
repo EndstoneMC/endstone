@@ -282,6 +282,7 @@ public:
     BuiltInActorComponents &getBuiltInActorComponents();
     [[nodiscard]] const BuiltInActorComponents &getBuiltInActorComponents() const;
     [[nodiscard]] bool isSneaking() const;
+    [[nodiscard]] bool isSwimming() const;
     [[nodiscard]] bool isPlayer() const;
     [[nodiscard]] bool isRemoved() const;
     [[nodiscard]] bool isOnGround() const;

@@ -16,17 +16,6 @@
 
 #include "bedrock/world/item/item.h"
 
-// Endstone
-const Recipe *Recipes::getRecipeByNetId(const RecipeNetId &net_id) const
-{
-    for (const auto &[id, recipe] : recipes_by_net_id_) {
-        if (id.raw_id == net_id.raw_id) {
-            return recipe;
-        }
-    }
-    return nullptr;
-}
-
 ItemInstance Recipes::getFurnaceRecipeResult(const ItemStackBase &item, const HashedString &tag) const
 {
     if (!item) {
