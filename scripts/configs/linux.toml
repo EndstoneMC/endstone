@@ -347,6 +347,14 @@ extra = 0
 pattern = "55 41 57 41 56 41 55 41 54 53 48 81 EC ? ? ? ? 40 B5 06 80 7E 08 0C"
 
 [[signatures]]
+name = "_ZN29ItemStackRequestActionHandler25_getOrInitSparseContainerERK17FullContainerName"
+relative = false
+extra = 0
+# CraftHandlerEnchant::_handleCraftAction calls this for both the enchanting input and material containers.
+# The callee is the only function with this prologue and sret initialization followed by the current-screen lookup.
+pattern = "41 57 41 56 41 54 53 48 83 EC 18 49 89 D7 49 89 F4 48 89 FB 48 89 F7 E8 ? ? ? ? 0F 57 C0 0F 11 03"
+
+[[signatures]]
 name = "_ZN25CraftingDataPacketPayload11fromRecipesERK7Recipesb"
 relative = false
 extra = 0

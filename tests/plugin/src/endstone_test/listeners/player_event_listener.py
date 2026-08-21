@@ -1,5 +1,6 @@
 from endstone import ColorFormat
 from endstone.event import (
+    EnchantItemEvent,
     PlayerArmorStandManipulateEvent,
     PlayerArmSwingEvent,
     PlayerBedEnterEvent,
@@ -437,6 +438,27 @@ class PlayerEventListener(EventListener):
             player=event.player.name,
             old_level=event.old_level,
             new_level=event.new_level,
+        )
+
+    @event_handler
+    def on_enchant_item(self, event: EnchantItemEvent):
+        hint = event.enchantment_hint
+        self.record(
+            event,
+            f"{event.player.name} enchants {event.item} using option "
+            f"{event.which_button}",
+            always_log=True,
+            player=event.player.name,
+            block_type=str(event.enchant_block.type),
+            item_type=str(event.item.type),
+            exp_level_cost=event.exp_level_cost,
+            enchants={
+                str(enchantment.id): level
+                for enchantment, level in event.enchants_to_add.items()
+            },
+            enchantment_hint=None if hint is None else str(hint.id),
+            level_hint=event.level_hint,
+            which_button=event.which_button,
         )
 
     @event_handler

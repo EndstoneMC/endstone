@@ -12,14 +12,12 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-#pragma once
+#include "bedrock/world/inventory/network/item_stack_request_action_handler.h"
 
-#include <cstdint>
+#include "bedrock/symbol.h"
 
-enum class ItemStackNetResult : std::uint8_t {
-    Success = 0,
-    Error = 1,
-    ActionRequestNotAllowed = 3,
-    FailedToEnchant = 37,
-    CannotDropItem = 59,
-};
+std::shared_ptr<SimpleSparseContainer> ItemStackRequestActionHandler::_getOrInitSparseContainer(
+    const FullContainerName &open_container_id)
+{
+    return BEDROCK_CALL(&ItemStackRequestActionHandler::_getOrInitSparseContainer, this, open_container_id);
+}

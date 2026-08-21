@@ -36,6 +36,8 @@ public:
 
     std::vector<std::pair<ItemInstance, unsigned int>> &getCraftResults() { return craft_results_; }  // Endstone
 
+    [[nodiscard]] ItemStackRequestActionHandler &getRequestActionHandler() const { return request_action_handler_; }
+
 private:
     ItemStackRequestActionHandler &request_action_handler_;
     Player &player_;

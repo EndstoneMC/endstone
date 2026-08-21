@@ -14,12 +14,20 @@
 
 #pragma once
 
-#include <cstdint>
+#include "bedrock/world/item/enchanting/enchant.h"
 
-enum class ItemStackNetResult : std::uint8_t {
-    Success = 0,
-    Error = 1,
-    ActionRequestNotAllowed = 3,
-    FailedToEnchant = 37,
-    CannotDropItem = 59,
+class EnchantmentInstance {
+public:
+    EnchantmentInstance() = default;
+    EnchantmentInstance(Enchant::Type enchant_type, int level) : enchant_type_(enchant_type), level_(level) {}
+
+    [[nodiscard]] Enchant::Type getEnchantType() const { return enchant_type_; }
+    [[nodiscard]] int getEnchantLevel() const { return level_; }
+    void setEnchantType(Enchant::Type enchant_type) { enchant_type_ = enchant_type; }
+    void setEnchantLevel(int level) { level_ = level; }
+
+private:
+    Enchant::Type enchant_type_;
+    int level_;
 };
+static_assert(sizeof(EnchantmentInstance) == 8);

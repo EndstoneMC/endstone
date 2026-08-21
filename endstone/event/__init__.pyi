@@ -10,7 +10,7 @@ from endstone.actor import Actor, Item, Mob
 from endstone.block import Block, BlockFace, BlockState
 from endstone.command import CommandSender
 from endstone.damage import DamageSource
-from endstone.enchantments import Enchantment, EnchantmentOffer
+from endstone.enchantments import Enchantment
 from endstone.inventory import BookMeta, EquipmentSlot, Inventory, ItemStack, Recipe
 from endstone.lang import Translatable
 from endstone.level import Chunk, Dimension, Level, Location
