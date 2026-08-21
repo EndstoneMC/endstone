@@ -22,6 +22,7 @@
 
 #include "endstone/enchantments/enchantment.h"
 #include "endstone/object.h"
+#include "endstone/util/pointers.h"
 
 namespace endstone {
 namespace core {
@@ -199,7 +200,7 @@ public:
      * Creates a clone of the current metadata.
      * @return A copy of the metadata containing the same state as the original.
      */
-    [[nodiscard]] virtual std::unique_ptr<ItemMeta> clone() const = 0;
+    [[nodiscard]] virtual NotNull<ItemMeta> clone() const = 0;
 
     /**
      * @internal Internal use only.

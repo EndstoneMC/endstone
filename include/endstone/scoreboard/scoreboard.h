@@ -22,6 +22,7 @@
 #include "endstone/scoreboard/display_slot.h"
 #include "endstone/scoreboard/objective.h"
 #include "endstone/scoreboard/score_entry.h"
+#include "endstone/util/pointers.h"
 #include "endstone/util/result.h"
 
 namespace endstone {
@@ -40,7 +41,7 @@ public:
      * @param criteria Criteria for the Objective
      * @return The newly registered Objective.
      */
-    virtual std::unique_ptr<Objective> addObjective(std::string name, Criteria::Type criteria) = 0;
+    virtual NotNull<Objective> addObjective(std::string name, Criteria::Type criteria) = 0;
 
     /**
      * Registers an Objective on this Scoreboard.
@@ -50,8 +51,7 @@ public:
      * @param display_name Name displayed to players for the Objective.
      * @return The newly registered Objective.
      */
-    virtual std::unique_ptr<Objective> addObjective(std::string name, Criteria::Type criteria,
-                                                    std::string display_name) = 0;
+    virtual NotNull<Objective> addObjective(std::string name, Criteria::Type criteria, std::string display_name) = 0;
 
     /**
      * Registers an Objective on this Scoreboard.
@@ -62,8 +62,8 @@ public:
      * @param render_type Manner of rendering the Objective
      * @return The newly registered Objective.
      */
-    virtual std::unique_ptr<Objective> addObjective(std::string name, Criteria::Type criteria, std::string display_name,
-                                                    RenderType render_type) = 0;
+    virtual NotNull<Objective> addObjective(std::string name, Criteria::Type criteria, std::string display_name,
+                                            RenderType render_type) = 0;
 
     /**
      * Gets an Objective on this Scoreboard by name.
@@ -71,7 +71,7 @@ public:
      * @param name Name of the Objective
      * @return the Objective or <code>nullptr</code> if it does not exist
      */
-    [[nodiscard]] virtual std::unique_ptr<Objective> getObjective(std::string name) const = 0;
+    [[nodiscard]] virtual Nullable<Objective> getObjective(std::string name) const = 0;
 
     /**
      * Gets the Objective currently displayed in a DisplaySlot on this Scoreboard.
@@ -79,14 +79,14 @@ public:
      * @param slot The DisplaySlot
      * @return the Objective currently displayed or <code>nullptr</code> if nothing is displayed in that DisplaySlot
      */
-    [[nodiscard]] virtual std::unique_ptr<Objective> getObjective(DisplaySlot slot) const = 0;
+    [[nodiscard]] virtual Nullable<Objective> getObjective(DisplaySlot slot) const = 0;
 
     /**
      * Gets all Objectives on this Scoreboard.
      *
      * @return A list of all Objectives on this Scoreboard
      */
-    [[nodiscard]] virtual std::vector<std::unique_ptr<Objective>> getObjectives() const = 0;
+    [[nodiscard]] virtual std::vector<NotNull<Objective>> getObjectives() const = 0;
 
     /**
      * Gets all Objectives of a Criteria on the Scoreboard.
@@ -94,8 +94,7 @@ public:
      * @param criteria Criteria type to search by
      * @return A list of Objectives using the specified Criteria
      */
-    [[nodiscard]] virtual std::vector<std::unique_ptr<Objective>> getObjectivesByCriteria(
-        Criteria::Type criteria) const = 0;
+    [[nodiscard]] virtual std::vector<NotNull<Objective>> getObjectivesByCriteria(Criteria::Type criteria) const = 0;
 
     /**
      * Gets all scores for an entry on this Scoreboard.
@@ -103,7 +102,7 @@ public:
      * @param entry the entry whose scores are being retrieved
      * @return a list of all scores tracked for the entry
      */
-    [[nodiscard]] virtual std::vector<std::unique_ptr<Score>> getScores(ScoreEntry entry) const = 0;
+    [[nodiscard]] virtual std::vector<NotNull<Score>> getScores(ScoreEntry entry) const = 0;
 
     /**
      * Removes all scores for an entry on this Scoreboard.

@@ -15,6 +15,7 @@
 #pragma once
 
 #include <memory>
+#include <string>
 #include <unordered_map>
 #include <unordered_set>
 #include <vector>
@@ -26,6 +27,7 @@
 #include "endstone/permissions/permission_attachment_info.h"
 #include "endstone/permissions/permission_default.h"
 #include "endstone/permissions/permission_level.h"
+#include "endstone/util/pointers.h"
 
 namespace endstone::core {
 
@@ -35,30 +37,30 @@ namespace endstone::core {
 class PermissibleBase : public Permissible {
 public:
     explicit PermissibleBase(Permissible *opable);
-    ~PermissibleBase() override;
 
     [[nodiscard]] PermissionLevel getPermissionLevel() const override;
     [[nodiscard]] bool isPermissionSet(std::string name) const override;
-    [[nodiscard]] bool isPermissionSet(const Permission &perm) const override;
+    [[nodiscard]] bool isPermissionSet(const NotNull<Permission> &perm) const override;
     [[nodiscard]] bool hasPermission(std::string name) const override;
-    [[nodiscard]] bool hasPermission(const Permission &perm) const override;
-    PermissionAttachment *addAttachment(Plugin &plugin, const std::string &name, bool value) override;
-    PermissionAttachment *addAttachment(Plugin &plugin) override;
-    bool removeAttachment(PermissionAttachment &attachment) override;
+    [[nodiscard]] bool hasPermission(const NotNull<Permission> &perm) const override;
+    NotNull<PermissionAttachment> addAttachment(Plugin &plugin, const std::string &name, bool value) override;
+    NotNull<PermissionAttachment> addAttachment(Plugin &plugin) override;
+    bool removeAttachment(const NotNull<PermissionAttachment> &attachment) override;
     void recalculatePermissions() override;
-    [[nodiscard]] std::unordered_set<PermissionAttachmentInfo *> getEffectivePermissions() const override;
+    [[nodiscard]] std::unordered_set<NotNull<PermissionAttachmentInfo>> getEffectivePermissions() const override;
     [[nodiscard]] const std::type_info &getClassTypeId() const override;
     [[nodiscard]] bool isInstanceOf(const std::type_info &target) const override;
     void clearPermissions();
 
 private:
     [[nodiscard]] static PluginManager *getPluginManager();
+    [[nodiscard]] Nullable<Permissible> tryGetParent() const;
+    [[nodiscard]] NotNull<Permissible> getParent() const;
     void calculateChildPermissions(const std::unordered_map<std::string, bool> &children, bool invert,
-                                   PermissionAttachment *attachment);
+                                   const Nullable<PermissionAttachment> &attachment);
     [[nodiscard]] static bool hasPermission(PermissionDefault default_value, PermissionLevel level);
     Permissible *opable_;
-    Permissible &parent_;
-    std::vector<std::unique_ptr<PermissionAttachment>> attachments_;
-    std::unordered_map<std::string, std::unique_ptr<PermissionAttachmentInfo>> permissions_;
+    std::vector<NotNull<PermissionAttachment>> attachments_;
+    std::unordered_map<std::string, NotNull<PermissionAttachmentInfo>> permissions_;
 };
 }  // namespace endstone::core

@@ -18,6 +18,7 @@
 
 #include "endstone/block/block.h"
 #include "endstone/command/command_sender.h"
+#include "endstone/util/pointers.h"
 
 namespace endstone {
 
@@ -31,7 +32,7 @@ public:
      *
      * @return Block for the command sender
      */
-    [[nodiscard]] virtual std::unique_ptr<Block> getBlock() const = 0;
+    [[nodiscard]] virtual NotNull<Block> getBlock() const = 0;
 };
 
 }  // namespace endstone

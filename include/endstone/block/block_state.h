@@ -21,6 +21,7 @@
 #include "endstone/block/block.h"
 #include "endstone/block/block_type.h"
 #include "endstone/object.h"
+#include "endstone/util/pointers.h"
 #include "endstone/util/result.h"
 
 namespace endstone {
@@ -42,7 +43,7 @@ public:
      *
      * @return the block represented by this block state
      */
-    [[nodiscard]] virtual std::unique_ptr<Block> getBlock() const = 0;
+    [[nodiscard]] virtual NotNull<Block> getBlock() const = 0;
 
     /**
      * Gets the type of this block state.
@@ -63,7 +64,7 @@ public:
      *
      * @return block specific data
      */
-    [[nodiscard]] virtual std::unique_ptr<BlockData> getData() const = 0;
+    [[nodiscard]] virtual NotNull<BlockData> getData() const = 0;
 
     /**
      * Sets the data for this block state.

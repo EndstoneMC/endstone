@@ -32,7 +32,7 @@ public:
     [[nodiscard]] bool isEmpty() const override;
     [[nodiscard]] bool equalsCommon(const ItemMeta &meta) const override;
     [[nodiscard]] bool notUncommon(const ItemMeta &meta) const override;
-    [[nodiscard]] std::unique_ptr<ItemMeta> clone() const override;
+    [[nodiscard]] NotNull<ItemMeta> clone() const override;
 
 private:
     [[nodiscard]] bool isCrossbowEmpty() const;
