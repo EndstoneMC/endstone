@@ -9,6 +9,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Added
 
+- Added a player visibility API: `Player.hide_actor()` and `Player.show_actor()` hide an actor from one player without affecting anyone else, and `Player.can_see()` reports whether an actor is currently visible to them. Hiding is tracked per plugin, so an actor stays hidden until every plugin that hid it has shown it again, and disabling a plugin restores whatever it was hiding. These are Bukkit's `Player#hideEntity()`, `Player#showEntity()` and `Player#canSee()`, spelled with `Actor` as everywhere else in Endstone.
+- Added `PlayerHideActorEvent` and `PlayerShowActorEvent`, called when an actor is hidden from or shown to a player, reporting the `actor` involved. They are only called when the visibility actually changes, and regardless of whether the actor is within the player's tracking range. These are Paper's `PlayerHideEntityEvent` and `PlayerShowEntityEvent`.
+- Added `Player.send_block_change()` for showing a player a block that is not really there. It sends the block change to that player only and does not touch the world.
 - Added `ActorExplodeEvent::setBlockList()` and `BlockExplodeEvent::setBlockList()`, and made their `BlockList` alias public, so the blown-up block list can be replaced wholesale from C++ as it already could from Python.
 - Added `Player.send_action_bar()` for sending a message above the player's hotbar.
 - Added `/restart` command (console-only) that gracefully restarts the server without manually relaunching.
