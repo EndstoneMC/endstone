@@ -1276,9 +1276,9 @@ void EndstonePlayer::checkOpStatus()
     }
 }
 
-void EndstonePlayer::cachePlayerListEntry(std::int64_t unique_id, std::string payload)
+void EndstonePlayer::cachePlayerListEntry(const PlayerListPacketPayload::AddEntry &entry)
 {
-    player_list_entries_[unique_id] = std::move(payload);
+    player_list_entries_[entry.id.raw_id] = entry;
 }
 
 void EndstonePlayer::clearHiddenActors(Plugin &plugin)
@@ -1307,14 +1307,11 @@ void EndstonePlayer::removeActorVisibility(std::int64_t unique_id, std::uint64_t
 
 void EndstonePlayer::sendPlayerListRemove(const ::Player &player) const
 {
-    const auto uuid = player.getPersistentComponent<UserEntityIdentifierComponent>()->getClientUUID();
-
-    BinaryStream stream;
-    stream.writeUnsignedVarInt(1, "Entries", nullptr);
-    stream.writeByte(static_cast<std::uint8_t>(PlayerListPacketType::Remove), "Action", nullptr);
-    const auto *bytes = reinterpret_cast<const unsigned char *>(uuid.data);
-    stream.writeRawBytes({bytes, bytes + sizeof(uuid.data)}, nullptr, nullptr);
-    sendPacket(static_cast<int>(MinecraftPacketIds::PlayerList), stream.getView());
+    auto packet = MinecraftPackets::createPacket(MinecraftPacketIds::PlayerList);
+    auto &pk = static_cast<PlayerListPacket &>(*packet);
+    pk.payload.entries.emplace_back(PlayerListPacketPayload::RemoveEntry{
+        PlayerListPacketType::Remove, player.getPersistentComponent<UserEntityIdentifierComponent>()->getClientUUID()});
+    getHandle().sendNetworkPacket(*packet);
 }
 
 void EndstonePlayer::sendPlayerListAdd(const std::int64_t unique_id) const
@@ -1324,11 +1321,10 @@ void EndstonePlayer::sendPlayerListAdd(const std::int64_t unique_id) const
         return;
     }
 
-    BinaryStream stream;
-    stream.writeUnsignedVarInt(1, "Entries", nullptr);
-    const auto *bytes = reinterpret_cast<const unsigned char *>(it->second.data());
-    stream.writeRawBytes({bytes, bytes + it->second.size()}, nullptr, nullptr);
-    sendPacket(static_cast<int>(MinecraftPacketIds::PlayerList), stream.getView());
+    auto packet = MinecraftPackets::createPacket(MinecraftPacketIds::PlayerList);
+    auto &pk = static_cast<PlayerListPacket &>(*packet);
+    pk.payload.entries.emplace_back(it->second);
+    getHandle().sendNetworkPacket(*packet);
 }
 
 bool EndstonePlayer::hasHiddenActors() const

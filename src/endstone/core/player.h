@@ -24,6 +24,7 @@
 #include <nlohmann/json.hpp>
 
 #include "bedrock/network/connection_request.h"
+#include "bedrock/network/packet/player_list_packet.h"
 #include "bedrock/network/sub_client_connection_request.h"
 #include "bedrock/world/events/player_events.h"
 #include "endstone/core/actor/mob.h"
@@ -143,7 +144,7 @@ public:
     void disconnect();
     void updateAbilities() const;
     void checkOpStatus();
-    void cachePlayerListEntry(std::int64_t unique_id, std::string payload);
+    void cachePlayerListEntry(const PlayerListPacketPayload::AddEntry &entry);
     void clearHiddenActors(Plugin &plugin);
     void removeActorVisibility(std::int64_t unique_id, std::uint64_t runtime_id);
     [[nodiscard]] bool hasHiddenActors() const;
@@ -182,7 +183,7 @@ private:
     bool last_op_status_ = false;
     std::unordered_map<std::int64_t, std::unordered_set<Plugin *>> hidden_actors_;
     std::unordered_map<std::uint64_t, std::int64_t> hidden_player_runtime_ids_;
-    std::unordered_map<std::int64_t, std::string> player_list_entries_;
+    std::unordered_map<std::int64_t, PlayerListPacketPayload::AddEntry> player_list_entries_;
 };
 
 }  // namespace endstone::core
