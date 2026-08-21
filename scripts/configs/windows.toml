@@ -472,22 +472,27 @@ pattern = "56 57 53 48 83 EC ? 41 8B 40"
 name = "?_useOn@BucketItem@@EEBA?AVInteractionResult@@AEAVItemStack@@AEAVActor@@VBlockPos@@EAEBVVec3@@@Z"
 relative = false
 extra = 0
-# 1. the name is real - confirmed present in the shipped PDB - so `dump_symbols.py --pdb` resolves it
-#    outright; the steps below are the no-PDB fallback. `E` is private-virtual, which is how BDS declares it
-# 2. find bytes "62 75 63 6B 65 74 00" = "bucket\0" in .rdata and follow the vanilla item registration that
-#    constructs BucketItem; from the constructor take the vftable it stores and count to the slot
-#    Item::_useOn occupies - it is index 129, the last virtual Item declares
-# 3. confirm identity from the body, not the slot: the target calls Actor::getDimensionBlockSource early,
-#    builds a BaseGameVersion(1, 17, 20) behind a thread-safe-init guard, switches on Actor::getEntityTypeId,
-#    and its three tail calls are BucketItem::_emptyBucket, ::_takeLiquid and ::_takePowderSnow - no other
-#    function in the binary calls all three
-# 4. cross-check against the named 1.26.32.2 database, where the PDB names this address directly
-# 5. walk back to the prologue (`push rbp/r15/r14/r13/r12/rsi/rdi/rbx`, `sub rsp, 0x448`,
-#    `lea rbp, [rsp+0x80]`) and cut there
-# CUT AGAINST 1.26.32.2, NOT 1.26.44 - no 1.26.44 database exists on the machine that wrote this. The frame
-# size and the spill displacements are the volatile part; re-cut and re-verify uniqueness with
-# dump_symbols.py before relying on it. --pdb resolution does not need it
-pattern = "55 41 57 41 56 41 55 41 54 56 57 53 48 81 EC 48 04 00 00 48 8D AC 24 80 00 00 00 0F 29 BD B0 03 00 00 0F 29 B5 A0 03 00 00 48 C7 85 98 03 00 00 FE FF FF FF"
+# 1. the name is real, so `dump_symbols.py --pdb` resolves it outright; the steps below are the no-PDB route.
+#    `E` is private-virtual, which is how BDS declares it. No PDB ships with the server, and the shipped
+#    binary carries no RTTI type descriptors, so the fallback must work from data alone
+# 2. BucketItem's vftable is findable without disassembly: read .rdata as an array of qwords and keep the
+#    ones that are image-base-relative pointers into .text. Item declares 129 virtuals after its destructor,
+#    so an Item subclass vftable is exactly 130 consecutive such slots (1 destructor slot + 129)
+# 3. identify BucketItem among them: it is the only 130-slot vftable whose slot 12 (Item::isBucket) is the
+#    3-byte thunk `B0 01 C3` (mov al, 1; ret). Confirm with the sibling overrides that all read mFillType at
+#    [rcx+0x210]: slot 50 isLiquidClipItem `8B 81 10 02 00 00`, slot 80 canUseOnSimTick
+#    `0F B7 89 10 02 00 00`, slot 100 getMaxStackSize `66 83 B9 10 02 00 00`, slot 109 validFishInteraction
+#    `8B 81 10 02 00 00`; slot 70 uniqueAuxValues is a second `B0 01 C3`
+# 4. the target is slot 129 of that vftable - the last entry, Item::_useOn. In 1.26.44.3 the vftable is at
+#    RVA 0xA7E65A0 and slot 129 holds 0x779EFC0
+# 5. the index arithmetic is checked against a symbol already in this table: TridentItem::releaseUsing
+#    (0x32CF570) occurs exactly once in .rdata, at slot 87 of a 130-slot vftable, and Item declares
+#    releaseUsing as its 87th virtual
+# 6. cut from the prologue at 0x779EFC0
+# uniqueness: this pattern matches exactly once in the whole .text of 1.26.44.3. The prologue alone (through
+# `sub rsp, 0x478`) takes 29 hits, so the xmm spills and the frame setup after it are load-bearing; do not
+# shorten it
+pattern = "55 41 57 41 56 41 55 41 54 56 57 53 48 81 EC 78 04 00 00 48 8D AC 24 80 00 00 00 0F 29 BD E0 03 00 00 0F 29 B5 D0 03 00 00 48 C7 85 C8 03 00 00 FE FF FF FF 4C 89 CF"
 
 [[signatures]]
 name = "?use@CauldronBlock@@QEBAXAEAVBlockPlayerInteractEvent@BlockEvents@@@Z"
@@ -507,8 +512,8 @@ extra = 0
 #    CauldronBlock::_explodeCauldronContents; cross-checked against the 1.21.132.3 named linux build at
 #    0x984cd20
 # 5. walk back to the prologue (`push rbp/r15/r14/r13/r12/rsi/rdi/rbx`, `sub rsp, 0x358`) and cut there
-# uniqueness: NOT re-verified against 1.26.44 by the pass that wrote this comment - run dump_symbols.py and
-# confirm the pattern takes exactly one .text hit before relying on it
+# uniqueness: verified against the 1.26.44.3 exe this table targets - the pattern matches exactly once in
+# .text, at RVA 0x69A6250, which is the offset in the generated table
 pattern = "55 41 57 41 56 41 55 41 54 56 57 53 48 81 EC 58 03 00 00 48 8D AC 24 ? ? ? ? 0F 29 B5 ? ? ? ? 48 C7 85 ? ? ? ? ? ? ? ? 48 89 D6 48 8B 7A"
 
 [[signatures]]

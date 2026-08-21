@@ -36,7 +36,7 @@ static constexpr std::array<std::pair<std::string_view, std::size_t>, 73> symbol
     // BlockTypeRegistry
     {"?forEachBlockType@BlockTypeRegistry@@QEBAXV?$function_ref@$$A6A_NAEBVBlockType@@@Z$$A6A_N0@Z@brstd@@@Z", 42281168},
     // BucketItem
-    {"?_useOn@BucketItem@@EEBA?AVInteractionResult@@AEAVItemStack@@AEAVActor@@VBlockPos@@EAEBVVec3@@@Z", 0},
+    {"?_useOn@BucketItem@@EEBA?AVInteractionResult@@AEAVItemStack@@AEAVActor@@VBlockPos@@EAEBVVec3@@@Z", 125431744},
     // BucketableComponent
     {"?getInteraction@BucketableComponent@@QEAA?AVInteractionResult@@AEAVActor@@AEAVPlayer@@AEAVActorInteraction@@@Z", 38215168},
     // CampfireBlockActor
