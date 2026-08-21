@@ -20,6 +20,7 @@ add_executable(endstone_test
         test_nbt.cpp
         test_base64.cpp
         test_command_lexer.cpp
+        test_command_tree.cpp
         test_command_usage_parser.cpp
         test_cpp_plugin_loader.cpp
         test_effect.cpp

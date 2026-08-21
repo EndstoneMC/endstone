@@ -58,6 +58,10 @@ add_library(endstone_core
         command/command_origin_wrapper.cpp
         command/command_sender.cpp
         command/command_usage_parser.cpp
+        command/tree/argument_types.cpp
+        command/tree/command_tree.cpp
+        command/tree/command_tree_registrar.cpp
+        command/tree/tree_command.cpp
         command/console_command_sender.cpp
         command/minecraft_command_adapter.cpp
         command/minecraft_command_wrapper.cpp
