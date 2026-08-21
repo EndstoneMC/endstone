@@ -4453,6 +4453,51 @@ For latest updates join the chat on
             
                 
                     <li class="md-nav__item">
+    <a href="#endstone.event.PlayerRecipeBookClickEvent" class="md-nav__link">
+      <span class="md-ellipsis">
+        <code class="doc-symbol doc-symbol-toc doc-symbol-class"></code>&nbsp;PlayerRecipeBookClickEvent
+      </span>
+    </a>
+
+    <!-- Table of contents list -->
+    
+    <nav class="md-nav" aria-label=" PlayerRecipeBookClickEvent">
+        <ul class="md-nav__list">
+            
+                
+                    <li class="md-nav__item">
+    <a href="#endstone.event.PlayerRecipeBookClickEvent.amount" class="md-nav__link">
+      <span class="md-ellipsis">
+        <code class="doc-symbol doc-symbol-toc doc-symbol-attribute"></code>&nbsp;amount
+      </span>
+    </a>
+
+    <!-- Table of contents list -->
+    
+</li>
+                
+            
+                
+                    <li class="md-nav__item">
+    <a href="#endstone.event.PlayerRecipeBookClickEvent.recipe" class="md-nav__link">
+      <span class="md-ellipsis">
+        <code class="doc-symbol doc-symbol-toc doc-symbol-attribute"></code>&nbsp;recipe
+      </span>
+    </a>
+
+    <!-- Table of contents list -->
+    
+</li>
+                
+            
+        </ul>
+    </nav>
+    
+</li>
+                
+            
+                
+                    <li class="md-nav__item">
     <a href="#endstone.event.PlayerRecipeBookSettingsChangeEvent" class="md-nav__link">
       <span class="md-ellipsis">
         <code class="doc-symbol doc-symbol-toc doc-symbol-class"></code>&nbsp;PlayerRecipeBookSettingsChangeEvent
@@ -9795,6 +9840,51 @@ For latest updates join the chat on
             
                 
                     <li class="md-nav__item">
+    <a href="#endstone.event.PlayerRecipeBookClickEvent" class="md-nav__link">
+      <span class="md-ellipsis">
+        <code class="doc-symbol doc-symbol-toc doc-symbol-class"></code>&nbsp;PlayerRecipeBookClickEvent
+      </span>
+    </a>
+
+    <!-- Table of contents list -->
+    
+    <nav class="md-nav" aria-label=" PlayerRecipeBookClickEvent">
+        <ul class="md-nav__list">
+            
+                
+                    <li class="md-nav__item">
+    <a href="#endstone.event.PlayerRecipeBookClickEvent.amount" class="md-nav__link">
+      <span class="md-ellipsis">
+        <code class="doc-symbol doc-symbol-toc doc-symbol-attribute"></code>&nbsp;amount
+      </span>
+    </a>
+
+    <!-- Table of contents list -->
+    
+</li>
+                
+            
+                
+                    <li class="md-nav__item">
+    <a href="#endstone.event.PlayerRecipeBookClickEvent.recipe" class="md-nav__link">
+      <span class="md-ellipsis">
+        <code class="doc-symbol doc-symbol-toc doc-symbol-attribute"></code>&nbsp;recipe
+      </span>
+    </a>
+
+    <!-- Table of contents list -->
+    
+</li>
+                
+            
+        </ul>
+    </nav>
+    
+</li>
+                
+            
+                
+                    <li class="md-nav__item">
     <a href="#endstone.event.PlayerRecipeBookSettingsChangeEvent" class="md-nav__link">
       <span class="md-ellipsis">
         <code class="doc-symbol doc-symbol-toc doc-symbol-class"></code>&nbsp;PlayerRecipeBookSettingsChangeEvent
@@ -11552,6 +11642,14 @@ For latest updates join the chat on
             <td>
               <div class="doc-md-description">
                 <p>Called when a player leaves a server.</p>
+              </div>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td><code><a class="autorefs autorefs-internal" title="            PlayerRecipeBookClickEvent (endstone.event.PlayerRecipeBookClickEvent)" href="#endstone.event.PlayerRecipeBookClickEvent">PlayerRecipeBookClickEvent</a></code></td>
+            <td>
+              <div class="doc-md-description">
+                <p>Called when a player clicks a recipe in the recipe book.</p>
               </div>
             </td>
           </tr>
@@ -21905,6 +22003,157 @@ the player's inventory.</p>
     <div class="doc doc-contents ">
 
         <p>The quit message to send to all online players.</p>
+
+    </div>
+
+</div>
+
+
+
+
+
+
+  </div>
+
+    </div>
+
+</div>
+
+<div class="doc doc-object doc-class">
+
+
+
+<h3 id="endstone.event.PlayerRecipeBookClickEvent" class="doc doc-heading">
+<code class="doc-symbol doc-symbol-heading doc-symbol-class"></code>            <span class="doc doc-object-name doc-class-name">PlayerRecipeBookClickEvent</span>
+
+
+<a href="#endstone.event.PlayerRecipeBookClickEvent" class="headerlink" title="Permanent link">&para;</a></h3>
+<div class="language-python doc-signature highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="nf">PlayerRecipeBookClickEvent</span><span class="p">(</span><span class="n">is_async</span><span class="p">:</span> <span class="n"><a class="autorefs autorefs-external" href="https://docs.python.org/3/library/functions.html#bool">bool</a></span> <span class="o">=</span> <span class="kc">False</span><span class="p">)</span>
+</span></code></pre></div>
+
+    <div class="doc doc-contents ">
+            <p class="doc doc-class-bases">
+              Bases: <code><a class="autorefs autorefs-internal" title="            PlayerEvent (endstone.event.PlayerEvent)" href="#endstone.event.PlayerEvent">PlayerEvent</a></code>, <code><a class="autorefs autorefs-internal" title="            Cancellable (endstone.event.Cancellable)" href="#endstone.event.Cancellable">Cancellable</a></code></p>
+
+
+
+        <p>Called when a player clicks a recipe in the recipe book.</p>
+<p>If the event is cancelled the recipe will not be crafted and no ingredients will be consumed.</p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<p><span class="doc-section-title">Attributes:</span></p>
+    <table>
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Type</th>
+          <th>Description</th>
+        </tr>
+      </thead>
+      <tbody>
+          <tr class="doc-section-item">
+            <td><code><a class="autorefs autorefs-internal" title="            amount
+
+
+  
+      property
+      writable
+   (endstone.event.PlayerRecipeBookClickEvent.amount)" href="#endstone.event.PlayerRecipeBookClickEvent.amount">amount</a></code></td>
+            <td>
+                  <code><a class="autorefs autorefs-external" href="https://docs.python.org/3/library/functions.html#int">int</a></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>The number of times the recipe is being crafted.</p>
+              </div>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td><code><a class="autorefs autorefs-internal" title="            recipe
+
+
+  
+      property
+   (endstone.event.PlayerRecipeBookClickEvent.recipe)" href="#endstone.event.PlayerRecipeBookClickEvent.recipe">recipe</a></code></td>
+            <td>
+                  <code><a class="autorefs autorefs-external" href="https://docs.python.org/3/library/stdtypes.html#str">str</a></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>The identifier of the recipe clicked by the player.</p>
+              </div>
+            </td>
+          </tr>
+      </tbody>
+    </table>
+
+
+
+
+<div class="doc doc-children">
+
+
+
+
+
+
+
+<div class="doc doc-object doc-attribute">
+
+
+
+<h4 id="endstone.event.PlayerRecipeBookClickEvent.amount" class="doc doc-heading">
+<code class="doc-symbol doc-symbol-heading doc-symbol-attribute"></code>            <span class="doc doc-object-name doc-attribute-name">amount</span>
+
+
+  <span class="doc doc-labels">
+      <small class="doc doc-label doc-label-property"><code>property</code></small>
+      <small class="doc doc-label doc-label-writable"><code>writable</code></small>
+  </span>
+
+<a href="#endstone.event.PlayerRecipeBookClickEvent.amount" class="headerlink" title="Permanent link">&para;</a></h4>
+<div class="language-python doc-signature highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="n">amount</span><span class="p">:</span> <span class="n"><a class="autorefs autorefs-external" href="https://docs.python.org/3/library/functions.html#int">int</a></span>
+</span></code></pre></div>
+
+    <div class="doc doc-contents ">
+
+        <p>The number of times the recipe is being crafted.</p>
+
+    </div>
+
+</div>
+
+<div class="doc doc-object doc-attribute">
+
+
+
+<h4 id="endstone.event.PlayerRecipeBookClickEvent.recipe" class="doc doc-heading">
+<code class="doc-symbol doc-symbol-heading doc-symbol-attribute"></code>            <span class="doc doc-object-name doc-attribute-name">recipe</span>
+
+
+  <span class="doc doc-labels">
+      <small class="doc doc-label doc-label-property"><code>property</code></small>
+  </span>
+
+<a href="#endstone.event.PlayerRecipeBookClickEvent.recipe" class="headerlink" title="Permanent link">&para;</a></h4>
+<div class="language-python doc-signature highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="n">recipe</span><span class="p">:</span> <span class="n"><a class="autorefs autorefs-external" href="https://docs.python.org/3/library/stdtypes.html#str">str</a></span>
+</span></code></pre></div>
+
+    <div class="doc doc-contents ">
+
+        <p>The identifier of the recipe clicked by the player.</p>
 
     </div>
 
