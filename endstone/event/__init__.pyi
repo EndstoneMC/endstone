@@ -1132,6 +1132,24 @@ class PlayerQuitEvent(PlayerEvent):
     @quit_message.setter
     def quit_message(self, arg1: str | Translatable | None) -> None: ...
 
+class PlayerRecipeBookClickEvent(PlayerEvent, Cancellable):
+    """
+    Called when a player clicks a recipe in the recipe book.
+
+    If the event is cancelled the recipe will not be crafted and no ingredients will be consumed.
+    """
+    @property
+    def recipe(self) -> str:
+        """
+        The identifier of the recipe clicked by the player.
+        """
+
+    @property
+    def make_all(self) -> bool:
+        """
+        Whether the player requested crafting as many copies as possible.
+        """
+
 class PlayerRecipeBookSettingsChangeEvent(PlayerEvent):
     """
     Called when a player changes recipe book settings.

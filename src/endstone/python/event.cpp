@@ -436,6 +436,15 @@ void init_event(py::module_ &m, py::class_<Event, PyEvent> &event)
     py::class_<PlayerQuitEvent, PlayerEvent>(m, "PlayerQuitEvent", "Called when a player leaves a server.")
         .def_property("quit_message", &PlayerQuitEvent::getQuitMessage, &PlayerQuitEvent::setQuitMessage,
                       "The quit message to send to all online players.");
+    py::class_<PlayerRecipeBookClickEvent, PlayerEvent, ICancellable>(m, "PlayerRecipeBookClickEvent", R"doc(
+    Called when a player clicks a recipe in the recipe book.
+
+    If the event is cancelled the recipe will not be crafted and no ingredients will be consumed.
+)doc")
+        .def_property_readonly("recipe", &PlayerRecipeBookClickEvent::getRecipe,
+                               "The identifier of the recipe clicked by the player.")
+        .def_property_readonly("make_all", &PlayerRecipeBookClickEvent::isMakeAll,
+                               "Whether the player requested crafting as many copies as possible.");
     auto player_recipe_book_settings_change_event = py::class_<PlayerRecipeBookSettingsChangeEvent, PlayerEvent>(
         m, "PlayerRecipeBookSettingsChangeEvent", "Called when a player changes recipe book settings.");
     py::native_enum<PlayerRecipeBookSettingsChangeEvent::RecipeBookType>(
