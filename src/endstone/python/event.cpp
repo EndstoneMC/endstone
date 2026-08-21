@@ -461,14 +461,18 @@ void init_event(py::module_ &m, py::class_<Event, PyEvent> &event)
     undesired effects.
 )doc")
         .def_property_readonly("item", &PlayerRiptideEvent::getItem, "An `ItemStack` for the trident being used.");
-    auto player_set_spawn_event = py::class_<PlayerSetSpawnEvent, PlayerEvent>(m, "PlayerSetSpawnEvent", R"doc(
+    auto player_set_spawn_event =
+        py::class_<PlayerSetSpawnEvent, PlayerEvent, ICancellable>(m, "PlayerSetSpawnEvent", R"doc(
     Called when a player's spawn is set, either by themselves or otherwise.
 
-    Assigning a new `location` redirects the spawn that is about to be written.
+    Assigning a new `location` redirects the spawn that is about to be written; cancelling leaves the respawn point
+    untouched.
 
     Note:
         Only the location's block coordinates and dimension are written back; Bedrock does not persist yaw/pitch for
-        a respawn point. This event is not fired when Bedrock clears a respawn point, so `/clearspawnpoint` and
+        a respawn point. Cancelling stops the respawn point from changing, but not the feedback around it:
+        `/spawnpoint` still reports success and a respawn anchor still plays its sound and message, because neither
+        consults the setter. The event is not fired when Bedrock clears a respawn point, so `/clearspawnpoint` and
         breaking the bed a player is bound to are both silent.
 )doc");
     py::native_enum<PlayerSetSpawnEvent::Cause>(player_set_spawn_event, "Cause", "enum.Enum",

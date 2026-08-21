@@ -65,8 +65,9 @@ SpawnPosition get_spawn_position(const std::optional<endstone::Location> &locati
             endstone_dimension.getHandle().getDimensionId(), false};
 }
 
-SpawnPosition fire_set_spawn_event(Player &player, const BlockPos &position, const DimensionType dimension,
-                                   endstone::PlayerSetSpawnEvent::Cause cause, bool suspend_context)
+std::optional<SpawnPosition> fire_set_spawn_event(Player &player, const BlockPos &position,
+                                                  const DimensionType dimension,
+                                                  endstone::PlayerSetSpawnEvent::Cause cause, bool suspend_context)
 {
     std::optional<endstone::core::PlayerSpawnContextSuspension> context_suspension;
     if (suspend_context) {
@@ -83,6 +84,10 @@ SpawnPosition fire_set_spawn_event(Player &player, const BlockPos &position, con
 
     endstone::PlayerSetSpawnEvent event{endstone_player, cause, std::move(location)};
     server.getPluginManager().callEvent(event);
+    if (event.isCancelled()) {
+        return std::nullopt;
+    }
+
     return get_spawn_position(event.getLocation(), SpawnPosition{position, dimension});
 }
 
@@ -287,15 +292,18 @@ bool Player::setSpawnBlockRespawnPosition(const BlockPos &spawn_block_position, 
 
     const auto position =
         fire_set_spawn_event(*this, spawn_block_position, dimension, cause, context && !context->player);
-    if (position.clear) {
+    if (!position) {
+        return false;
+    }
+    if (position->clear) {
         endstone::core::PlayerSpawnContextScope scope(
             endstone::core::PlayerSpawnContext{this, endstone::PlayerSetSpawnEvent::Cause::Unknown, true});
         setRespawnPosition(BlockPos::MIN, VanillaDimensions::Undefined);
         return false;
     }
 
-    return ENDSTONE_HOOK_CALL_ORIGINAL(&Player::setSpawnBlockRespawnPosition, this, position.position,
-                                       position.dimension);
+    return ENDSTONE_HOOK_CALL_ORIGINAL(&Player::setSpawnBlockRespawnPosition, this, position->position,
+                                       position->dimension);
 }
 
 void Player::setRespawnPosition(const BlockPos &respawn_position, DimensionType dimension)
@@ -313,5 +321,9 @@ void Player::setRespawnPosition(const BlockPos &respawn_position, DimensionType 
 
     const auto cause = context ? context->cause : endstone::PlayerSetSpawnEvent::Cause::Unknown;
     const auto position = fire_set_spawn_event(*this, respawn_position, dimension, cause, context && !context->player);
-    ENDSTONE_HOOK_CALL_ORIGINAL(&Player::setRespawnPosition, this, position.position, position.dimension);
+    if (!position) {
+        return;
+    }
+
+    ENDSTONE_HOOK_CALL_ORIGINAL(&Player::setRespawnPosition, this, position->position, position->dimension);
 }
