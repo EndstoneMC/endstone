@@ -27,6 +27,9 @@ enum class CauldronLiquidType : int {
 
 class CauldronBlock : public ActorBlock {
 public:
+    static constexpr int MIN_FILL_LEVEL = 0;
+    static constexpr int MAX_FILL_LEVEL = 6;
+
     ENDSTONE_HOOK void setLiquidLevel(BlockSource &, BlockPos const &, int, CauldronLiquidType) const;
     ENDSTONE_HOOK void tick(BlockEvents::BlockQueuedTickEvent &) const;
     ENDSTONE_HOOK void use(BlockEvents::BlockPlayerInteractEvent &event_data) const;

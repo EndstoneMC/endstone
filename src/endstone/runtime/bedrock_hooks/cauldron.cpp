@@ -12,6 +12,8 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
+#include "endstone/runtime/bedrock_hooks/cauldron.h"
+
 #include <algorithm>
 #include <optional>
 #include <utility>
@@ -24,13 +26,13 @@
 #include "bedrock/world/item/item_stack.h"
 #include "bedrock/world/level/block/block.h"
 #include "bedrock/world/level/block/cauldron_block.h"
+#include "bedrock/world/level/block/vanilla_block_type_ids.h"
 #include "endstone/core/block/block.h"
 #include "endstone/core/block/block_data.h"
 #include "endstone/core/server.h"
 #include "endstone/runtime/bedrock_hooks/bucket.h"
 #include "endstone/runtime/bedrock_hooks/bucket_empty.h"
 #include "endstone/runtime/bedrock_hooks/bucket_fill.h"
-#include "endstone/runtime/bedrock_hooks/cauldron.h"
 #include "endstone/runtime/hook.h"
 
 namespace {
@@ -54,14 +56,15 @@ ChangeReason getChangeReason(int old_level, int new_level, int old_liquid, int n
 
 bool isCauldron(const ::Block &block)
 {
-    return block.getName().getString() == "minecraft:cauldron";
+    return block.getName() == VanillaBlockTypeIds::Cauldron;
 }
 
 const ::Block *makeCauldronState(const ::Block &block, int liquid_level, CauldronLiquidType liquid_type)
 {
     static const HashedString fill_level{"fill_level"};
     static const HashedString cauldron_liquid{"cauldron_liquid"};
-    const auto *new_block = block.setState<int>(fill_level, std::clamp(liquid_level, 0, 6)).get();
+    const auto level = std::clamp(liquid_level, CauldronBlock::MIN_FILL_LEVEL, CauldronBlock::MAX_FILL_LEVEL);
+    const auto *new_block = block.setState<int>(fill_level, level).get();
     return new_block->setState<int>(cauldron_liquid, static_cast<int>(liquid_type)).get();
 }
 
@@ -112,18 +115,21 @@ const ::Block *getCauldronUseState(BlockSource &region, const BlockPos &position
     const auto reason = endstone::runtime::getCauldronChangeReason(item_stack);
     switch (reason) {
     case ChangeReason::BucketFill:
-        return level == 6 ? makeCauldronState(block, 0, CauldronLiquidType::Water) : nullptr;
+        return level == CauldronBlock::MAX_FILL_LEVEL
+                   ? makeCauldronState(block, CauldronBlock::MIN_FILL_LEVEL, CauldronLiquidType::Water)
+                   : nullptr;
     case ChangeReason::BucketEmpty: {
         if (endstone::runtime::isWaterContentBucket(*item) &&
-            (level == 0 || (liquid == CauldronLiquidType::Water && level < 6))) {
-            return makeCauldronState(block, 6, CauldronLiquidType::Water);
+            (level == CauldronBlock::MIN_FILL_LEVEL ||
+             (liquid == CauldronLiquidType::Water && level < CauldronBlock::MAX_FILL_LEVEL))) {
+            return makeCauldronState(block, CauldronBlock::MAX_FILL_LEVEL, CauldronLiquidType::Water);
         }
         const auto bucket_type = endstone::runtime::getBucketFillType(*item);
-        if (level == 0 &&
+        if (level == CauldronBlock::MIN_FILL_LEVEL &&
             (bucket_type == BucketFillType::Lava || bucket_type == BucketFillType::PowderSnow) &&
             !region.isUnderWater(position, block)) {
             return makeCauldronState(
-                block, 6,
+                block, CauldronBlock::MAX_FILL_LEVEL,
                 bucket_type == BucketFillType::Lava ? CauldronLiquidType::Lava : CauldronLiquidType::PowderSnow);
         }
         return nullptr;
@@ -133,7 +139,8 @@ const ::Block *getCauldronUseState(BlockSource &region, const BlockPos &position
                    ? makeCauldronState(block, level - 2, CauldronLiquidType::Water)
                    : nullptr;
     case ChangeReason::BottleEmpty:
-        if (!isWaterPotion(item_stack) || level == 6 || (level > 0 && liquid != CauldronLiquidType::Water)) {
+        if (!isWaterPotion(item_stack) || level == CauldronBlock::MAX_FILL_LEVEL ||
+            (level > CauldronBlock::MIN_FILL_LEVEL && liquid != CauldronLiquidType::Water)) {
             return nullptr;
         }
         return makeCauldronState(block, level + 2, CauldronLiquidType::Water);
@@ -367,10 +374,12 @@ void CauldronBlock::tick(BlockEvents::BlockQueuedTickEvent &event_data) const
     const auto &original_block = event_data.region.getBlock(event_data.pos);
     CauldronChangeContext context{nullptr, ChangeReason::Unknown, event_data.region, event_data.pos, original_block};
     const auto &block_above = event_data.region.getBlock(event_data.pos.above());
-    if (getCauldronLevel(original_block) < 6 && getCauldronLiquid(original_block) == CauldronLiquidType::Water &&
+    if (getCauldronLevel(original_block) < CauldronBlock::MAX_FILL_LEVEL &&
+        getCauldronLiquid(original_block) == CauldronLiquidType::Water &&
         block_above.getMaterial().isType(MaterialType::Water) &&
         !block_above.hasProperty(BlockProperty::Trapdoor)) {
-        const auto *new_block = makeCauldronState(original_block, 6, CauldronLiquidType::Water);
+        const auto *new_block =
+            makeCauldronState(original_block, CauldronBlock::MAX_FILL_LEVEL, CauldronLiquidType::Water);
         context.reason = ChangeReason::NaturalFill;
         context.defer_state_update = true;
         if (!callCauldronLevelChangeEvent(event_data.region, event_data.pos, original_block, *new_block, &context,
