@@ -51,13 +51,6 @@ public:
     [[nodiscard]] virtual const Command &getCommand() const = 0;
 
     /**
-     * Returns the command line as it was typed.
-     *
-     * @return Full command line, including the leading slash
-     */
-    [[nodiscard]] virtual std::string getInput() const = 0;
-
-    /**
      * Returns the names of the arguments bound on the branch that ran.
      *
      * @return Bound argument names, in the order they were parsed

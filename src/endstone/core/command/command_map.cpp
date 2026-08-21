@@ -143,13 +143,15 @@ bool EndstoneCommandMap::registerCommand(NotNull<LiteralCommandNode> root, Plugi
     for (const auto &overload : command->getOverloads()) {
         std::vector<CommandParameterData> param_data;
         param_data.reserve(overload.slots.size());
-        for (const auto &slot : overload.slots) {
+        for (std::size_t index = 0; index < overload.slots.size(); ++index) {
+            const auto &slot = overload.slots[index];
             auto data = slot.is_literal
-                          ? CommandTreeRegistrar::makeLiteralParameter(slot.node->getName(), *command, registry)
+                          ? CommandTreeRegistrar::makeLiteralParameter(slot.node->getName(), static_cast<int>(index),
+                                                                       *command, registry)
                           : CommandTreeRegistrar::makeArgumentParameter(
                                 slot.node->getName(),
                                 *static_cast<const ArgumentCommandNode *>(slot.node.get().get())->getArgumentType(),
-                                *command, registry);
+                                static_cast<int>(index), *command, registry);
             if (!data.has_value()) {
                 server_.getLogger().error("Plugin {} is unable to register command '{}'. {}", owner.getName(), name,
                                           data.error());

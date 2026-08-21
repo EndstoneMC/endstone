@@ -39,7 +39,7 @@ public:
      * A literal becomes a single-value enum, which is what the client renders as the word to type.
      */
     static nonstd::expected<CommandParameterData, std::string> makeLiteralParameter(const std::string &literal,
-                                                                                    TreeCommand &command,
+                                                                                    int index, TreeCommand &command,
                                                                                     CommandRegistry &registry);
 
     /**
@@ -49,7 +49,7 @@ public:
      */
     static nonstd::expected<CommandParameterData, std::string> makeArgumentParameter(const std::string &name,
                                                                                      const ArgumentType &type,
-                                                                                     TreeCommand &command,
+                                                                                     int index, TreeCommand &command,
                                                                                      CommandRegistry &registry);
 
     /**
@@ -60,22 +60,22 @@ public:
     static bool setSoftEnumValues(const std::string &name, std::vector<std::string> values, CommandRegistry &registry);
 
 private:
-    static CommandParameterData basicParameter(const std::string &name, TreeCommand &command);
+    static CommandParameterData basicParameter(const std::string &name, int index, TreeCommand &command);
     static nonstd::expected<CommandParameterData, std::string> existingEnumParameter(const std::string &name,
-                                                                                     const char *enum_name,
+                                                                                     const char *enum_name, int index,
                                                                                      TreeCommand &command,
                                                                                      CommandRegistry &registry);
     static nonstd::expected<CommandParameterData, std::string> newEnumParameter(const std::string &name,
                                                                                 const std::string &wanted_enum_name,
                                                                                 const std::vector<std::string> &values,
-                                                                                TreeCommand &command,
+                                                                                int index, TreeCommand &command,
                                                                                 CommandRegistry &registry);
     static nonstd::expected<CommandParameterData, std::string> softEnumParameter(const std::string &name,
                                                                                  const std::string &enum_name,
-                                                                                 TreeCommand &command,
+                                                                                 int index, TreeCommand &command,
                                                                                  CommandRegistry &registry);
     static nonstd::expected<CommandParameterData, std::string> hardNonTerminalParameter(
-        const std::string &name, CommandRegistry::HardNonTerminal symbol, TreeCommand &command);
+        const std::string &name, CommandRegistry::HardNonTerminal symbol, int index, TreeCommand &command);
     static std::uint32_t findOrCreateSoftEnum(const std::string &name, CommandRegistry &registry);
     static std::string uniqueEnumName(const std::string &wanted, const CommandRegistry &registry);
 };
