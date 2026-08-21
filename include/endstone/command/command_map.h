@@ -26,6 +26,8 @@
 namespace endstone {
 
 class Command;
+class LiteralCommandNode;
+class Plugin;
 
 /**
  * Represents a command map that manages all commands of the Server.
@@ -83,5 +85,26 @@ public:
      * @return Command with the specified name, a null handle if a command with that label doesn't exist
      */
     [[nodiscard]] virtual Nullable<Command> getCommand(std::string name) const = 0;
+
+    /**
+     * Registers a command tree on behalf of a plugin.
+     *
+     * @param root the root of the command tree, from LiteralArgumentBuilder::build()
+     * @param owner the plugin the command belongs to
+     * @return true on success, false if a command with the same name is already registered
+     */
+    virtual bool registerCommand(NotNull<LiteralCommandNode> root, Plugin &owner) = 0;
+
+    /**
+     * Replaces the values of a named suggestion set.
+     *
+     * The set is what Arguments::softEnum() completes from. Every connected client is updated, so
+     * players see the new values without rejoining. The values are only a hint: the server accepts
+     * any string for a soft enum argument.
+     *
+     * @param name Name of the suggestion set
+     * @param values New values
+     */
+    virtual void setSuggestions(std::string name, std::vector<std::string> values) = 0;
 };
 }  // namespace endstone
