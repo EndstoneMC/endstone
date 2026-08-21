@@ -70,6 +70,9 @@ include = ["endstone"]
 [tool.conan-py-build.version]
 provider = "setuptools_scm"
 
+[tool.uv]
+config-settings = { build-dir = "./build" }
+
 [tool.setuptools_scm]
 version_file = "endstone/_version.py"
 version_scheme = "guess-next-dev"

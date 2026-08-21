@@ -9,6 +9,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Added
 
+- Added `ProxiedCommandSender`, the sender a command receives when it is run through `/execute`. Its `caller` is whoever typed the command and receives its output, and its `callee` is the sender the command is being run as, which supplies the name and the execution context. Permission checks resolve against the caller.
 - Added `ActorExplodeEvent::setBlockList()` and `BlockExplodeEvent::setBlockList()`, and made their `BlockList` alias public, so the blown-up block list can be replaced wholesale from C++ as it already could from Python.
 - Added `Player.send_action_bar()` for sending a message above the player's hotbar.
 - Added `/restart` command (console-only) that gracefully restarts the server without manually relaunching.
@@ -20,6 +21,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Added `Dimension.mobs` and `Dimension.players`, mirroring Bukkit's `World#getLivingEntities()` and `World#getPlayers()`. Both narrow `Dimension.actors`, which lists everything in the dimension.
 - Added `Level.create_dimension()` for creating custom dimensions at runtime, which registers and returns an empty (void) dimension built from -64 to 320. A dimension's terrain and actors survive a restart but the registration does not, so call it again on every startup to get the same dimension back.
 - Added `WritableBookMeta`, `BookMeta` and `CrossbowMeta` item meta types.
+- Added `PlayerEditBookEvent`, called when a player edits a page of a book and quill or signs it into a written book. The event carries the book metadata before and after the edit, the inventory slot the book sits in, and whether the book is being signed; `new_book_meta` and `is_signing` are writable, and cancelling it discards the edit.
 - Added `PotionMeta` for potions, splash potions and lingering potions, giving the `PotionType` identifiers a consumer: `meta.base_potion_type` reads and writes the potion a bottle holds. Bedrock derives a potion's effects and its colour from the base potion type, so there is no `custom_effects` or `color` as in Bukkit's `PotionMeta`.
 - Added binary NBT serialization (`dump`/`load`) with support for multiple formats.
 - Added a unified `Object.as<T>()`/`is<T>()` casting API, replacing the per-type `asPlayer()`, `asMob()`, etc. `NotNull<T>` and `Nullable<T>` carry the same pair, so a handle can be narrowed without unwrapping it: `event.getActor().as<Player>()` returns a `Nullable<Player>` that shares ownership with the original, or a null one if the actor is not a player.
@@ -32,6 +34,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Added `PlayerExpChangeEvent`, called when a player gains experience, reporting the `amount` gained. It is not called when experience is reset on death.
 - Added `PlayerPickupArrowEvent`, called when a player picks up an arrow or a thrown trident from the ground. Cancelling it leaves the projectile on the ground.
 - Added `PlayerRecipeBookSettingsChangeEvent`, called when a player opens, closes or filters their recipe book, reporting `recipe_book_type`, `is_open` and `is_filtering`.
+- Added `PlayerRecipeBookClickEvent`, called when a player crafts a recipe straight from the recipe book, reporting the `recipe` identifier and the `amount` of times it is being crafted, which can be changed to craft more or fewer copies. Cancelling it declines the craft and leaves the ingredients untouched. A recipe-book craft also raises `PlayerCraftItemEvent` afterwards, so cancelling this event suppresses that one too; crafting from a grid raises only `PlayerCraftItemEvent`.
 - Added `PlayerInputEvent`, called when a player's movement input changes, and the `Input` type it carries: `is_forward`, `is_backward`, `is_left`, `is_right`, `is_jump`, `is_sneak` and `is_sprint`. Like Bukkit's event, it fires only when the input differs from the last one the player sent, not every tick.
 - Added `PlayerArmSwingEvent`, called when a player swings their arm, reporting the `item` in their hand. It follows the server's own swing handling, so it also covers swings the server drives itself, such as dropping an item.
 - Added `PlayerRiptideEvent`, called when a player activates the riptide enchantment and is propelled by their trident, reporting the `item` used. It fires only once the server has accepted the riptide, so a trident that is merely thrown does not trigger it.
@@ -112,6 +115,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Fixed `Mob.has_attribute()` raising for a name that is not an attribute, instead of answering `False`.
 - Fixed `Dimension.actors` and `Level.actors` leaving out connected players. Bedrock keeps players in a separate list from other entities and only the latter was read, so a player was never among the actors of the dimension they were standing in.
 - Fixed `str()` on a `Translatable` giving `<endstone._python.lang.Translatable object at 0x...>` instead of its text. Command output captured through a `CommandSenderWrapper` arrives as `Translatable`, so it was unreadable without reaching for `.text` by hand.
+- Fixed `PlayerBedLeaveEvent` only being called when a player pressed the leave button in a bed. It now follows the server's own wake-up handling, so it is also called when morning comes, when the bed is broken or otherwise obstructed, and when the player is woken by anything else. The `bed` block it reports is the bed being slept in rather than the player's respawn point.
 - Fixed the server crashing on a broadcast once a player had left and rejoined. A plugin that holds on to a `Player` after they disconnect kept them subscribed to broadcasts, and the next chat or quit message aimed at them took the server down. A player's permissions are now cleared when they leave, as the Java edition does, and sending a message to a player who is no longer on the server is a no-op rather than an error.
 
 ## [0.11.9] - 2026-08-17

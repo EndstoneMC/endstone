@@ -61,6 +61,7 @@ add_library(endstone_core
         command/console_command_sender.cpp
         command/minecraft_command_adapter.cpp
         command/minecraft_command_wrapper.cpp
+        command/proxied_command_sender.cpp
         command/defaults/ban_command.cpp
         command/defaults/ban_ip_command.cpp
         command/defaults/ban_list_command.cpp

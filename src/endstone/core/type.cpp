@@ -34,6 +34,7 @@
 #include "endstone/command/block_command_sender.h"
 #include "endstone/command/command_sender.h"
 #include "endstone/command/console_command_sender.h"
+#include "endstone/command/proxied_command_sender.h"
 #include "endstone/inventory/meta/book_meta.h"
 #include "endstone/inventory/meta/crossbow_meta.h"
 #include "endstone/inventory/meta/item_meta.h"
@@ -64,6 +65,7 @@ void registerTypes()
     registerType<CommandSender>().base<Permissible>();
     registerType<ConsoleCommandSender>().base<CommandSender>();
     registerType<BlockCommandSender>().base<CommandSender>();
+    registerType<ProxiedCommandSender>().base<CommandSender>();
     registerType<Actor>().base<CommandSender>();
     registerType<Mob>().base<Actor>();
     registerType<Player>().base<Mob>();

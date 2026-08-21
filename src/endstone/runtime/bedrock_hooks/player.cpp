@@ -17,6 +17,7 @@
 #include <optional>
 #include <utility>
 
+#include "bedrock/world/actor/actor_data_ids.h"
 #include "bedrock/world/actor/item/item_actor.h"
 #include "bedrock/world/level/block/bed_block.h"
 #include "bedrock/world/level/block/block.h"
@@ -261,6 +262,22 @@ BedSleepingResult Player::startSleepInBed(BlockPos const &bed_block_pos, bool a2
     endstone::core::PlayerSpawnContextScope scope(
         endstone::core::PlayerSpawnContext{this, endstone::PlayerSetSpawnEvent::Cause::Bed});
     return ENDSTONE_HOOK_CALL_ORIGINAL(&Player::startSleepInBed, this, bed_block_pos, a2, a3);
+}
+
+void Player::stopSleepInBed(bool forceful_wake_up, bool update_level_list)
+{
+    if (isSleeping()) {
+        const auto &server = endstone::core::EndstoneServer::getInstance();
+        auto player = getEndstoneActor<endstone::core::EndstonePlayer>();
+        const auto bed_position =
+            entity_data.getPosition(static_cast<SynchedActorData::ID>(ActorDataIDs::BED_POSITION));
+        const auto block = endstone::core::EndstoneBlock::at(getDimensionBlockSource(), bed_position);
+
+        endstone::PlayerBedLeaveEvent e(player, *block);
+        server.getPluginManager().callEvent(e);
+    }
+
+    ENDSTONE_HOOK_CALL_ORIGINAL(&Player::stopSleepInBed, this, forceful_wake_up, update_level_list);
 }
 
 bool Player::setSpawnBlockRespawnPosition(const BlockPos &spawn_block_position, DimensionType dimension)
