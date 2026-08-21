@@ -573,6 +573,32 @@ extra = 0
 pattern = "55 56 57 53 48 83 EC ? 48 8D 6C 24 ? 48 C7 45 ? ? ? ? ? 44 89 C3 89 D7"
 
 [[signatures]]
+name = "?handleCraftAction@ItemStackRequestActionCraftHandler@@QEAA?AW4ItemStackNetResult@@AEBVItemStackRequestActionCraftBase@@@Z"
+relative = false
+extra = 0
+# 1. the class emits no RTTI descriptor and the function carries no string, so anchor on the member walk
+#    that opens it: find the byte run "48 8B 41 08 48 8B 80 E8 00 00 00 48 85 C0 74"
+#    = `mov rax, [rcx+8]` (mRequestActionHandler) / `mov rax, [rax+0E8h]` (mScreenValidation) /
+#    `test rax, rax` / `jz`. Exactly two functions in .text contain it, and both are members of
+#    ItemStackRequestActionCraftHandler
+# 2. tell them apart: the short one (`push rsi` / `sub rsp, 20h` / `mov rdx, [rcx+18h]` / `mov al, 1` /
+#    `cmp byte [rdx+60h], 0`) reads mCraftHandler (+18h) and CraftHandlerBase::mIsCraftRequest (+60h) -
+#    that is isCraftRequest(). The target is the other one, which continues
+#    `mov rcx, [rax+0F8h]` (mContainerScreenValidator) / `mov rax, [rcx]` / `mov rax, [rax+10h]` /
+#    `call cs:__guard_dispatch_icall_fptr` - ContainerScreenValidator::isCraftingImplemented, vtable slot 2
+# 3. walk back to the entry: the preceding bytes are CC padding, then
+#    `push rbp/r15/r14/r13/r12/rsi/rdi/rbx` / `sub rsp, 108h` / `lea rbp, [rsp+80h]` /
+#    `mov qword [rbp+88h], -2` (the EH state slot) / `mov rbx, rdx` / `mov rsi, rcx`
+# 4. confirm identity in the body: it switches on `movzx eax, byte [rbx+8]`
+#    (ItemStackRequestAction::mActionType) with `cmp eax, 0Fh` (CraftRecipeOptional) and `cmp eax, 0Ch`
+#    (CraftRecipe), materialises the ItemStackNetResult immediates 7 (InvalidCraftRequest), 0Fh
+#    (RequestAlreadyInProgress) and 10h (FailedToInitSparseContainer) into one result register, and the
+#    CraftRecipeOptional branch allocates 0A0h bytes for the ContainerValidationCraftInputs it builds
+# 5. uniqueness: the pattern below matches exactly once in 1.26.44. It does not match 1.26.32.2 - that
+#    build has one push fewer (no r13) and a 110h frame - so re-cut it rather than porting it backwards
+pattern = "55 41 57 41 56 41 55 41 54 56 57 53 48 81 EC ? ? ? ? 48 8D AC 24 ? ? ? ? 48 C7 85 ? ? ? ? FE FF FF FF 48 89 D3 48 89 CE 48 8B 41 08 48 8B 80 E8 00 00 00 48 85 C0 74 ? 48 8B 88 F8 00 00 00 48 8B 01 48 8B 40 10 FF 15"
+
+[[signatures]]
 name = "?randomTick@LeavesBlock@@QEBAXAEAVBlockRandomTickEvent@BlockEvents@@@Z"
 relative = false
 extra = 0
