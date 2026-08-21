@@ -758,14 +758,55 @@ pattern = "55 41 57 41 56 41 54 56 57 53 48 81 EC ? ? ? ? 48 8D AC 24 ? ? ? ? 44
 name = "?setSpawnBlockRespawnPosition@Player@@QEAA_NAEBVBlockPos@@UDimensionType@@@Z"
 relative = false
 extra = 0
-# Player::setSpawnBlockRespawnPosition(BlockPos const&, DimensionType), confirmed in the 1.26.40 IDA database.
+# Ladder rung 5 (add-api "New BDS symbols"). Rung 1 fails: neither src/bedrock/world/events/*_events.h nor
+# the BDS headers carry a gameplay event for setting a spawn - PlayerInitialSpawnEvent is the closest and
+# it is about the initial spawn, not the respawn point. Rung 2 fails: both targets are non-virtual, so
+# there is no vtable slot, and of the callers only the bed path is reachable from an anchor already in
+# this table (Player::startSleepInBed). Rung 3 is inapplicable - the feature must intercept the write,
+# not perform it. Rung 4 fails: there is no shared chokepoint upstream of both, because
+# setSpawnBlockRespawnPosition does not call setRespawnPosition; each writes mPlayerRespawnPoint itself.
+# 1. find bytes "31 20 73 65 74 53 70 61 77 6E 50 6F 69 6E 74 00" = "1 setSpawnPoint\0" (unique binary-wide).
+#    It is the label BDS hands to ActorValueValidation::validateBlockPos, and it has exactly five data
+#    xrefs: Player::readAdditionalSaveData, Player::PlayerSpawnPoint::setSpawnPoint, this function, the
+#    2-arg Player::setRespawnPosition and the 3-arg Player::setRespawnPosition
+# 2. of those five this is the only one that opens by calling Actor::getPosition and Actor::getAABB, then
+#    rounds the AABB's max Y through mce::Math::ceil and builds a BlockPos from the resulting Vec3
+# 3. confirm identity by the payload it builds: SetSpawnPositionPacketPayload(dimension,
+#    &mPlayerRespawnPoint.mPlayerPosition, &mPlayerRespawnPoint.mSpawnBlockPos) - the two-BlockPos ctor.
+#    The 2-arg setRespawnPosition uses the (SpawnPositionType, dimension, BlockPos) ctor instead. This is
+#    also the only one of the five that returns bool
+# 4. cross-check the callers - Player::setBedRespawnPosition (itself findable from "tile.bed.respawnSet",
+#    and it gates its entire body on this function's return value), RespawnAnchorBlock::_trySetSpawn and
+#    SimulatedPlayer::create; nothing else calls it
+# 5. walk up to the prologue
+# Steps 1-4 were verified in linux_server_x64/1.21.132.3. The byte pattern below came with the original
+# contribution and has NOT been validated against the version named at the top of this file - re-cut it
+# with update-signatures and confirm a single .text hit before release.
 pattern = "41 57 41 56 41 54 56 57 55 53 48 81 EC A0 00 00 00 0F 29 BC 24 ? ? ? ? 0F 29 B4 24 ? ? ? ? 44 89 C5"
 
 [[signatures]]
 name = "?setRespawnPosition@Player@@QEAAXAEBVBlockPos@@UDimensionType@@@Z"
 relative = false
 extra = 0
-# Player::setRespawnPosition(BlockPos const&, DimensionType), confirmed in the 1.26.40 IDA database.
+# WARNING: the pattern below is 14 bytes and is almost entirely a generic MSVC prologue. find_signature
+# takes the LOWEST .text hit and binds silently, so this entry MUST be re-cut and its uniqueness checked
+# on every bump - follow the recipe rather than trusting the pattern.
+# 1. same anchor as setSpawnBlockRespawnPosition above: "31 20 73 65 74 53 70 61 77 6E 50 6F 69 6E 74 00"
+#    = "1 setSpawnPoint\0", five data xrefs
+# 2. two of the five are Player::setRespawnPosition overloads. The 2-arg one wanted here is the large body
+#    (~0x255 bytes in linux_server_x64/1.21.132.3); the 3-arg overload is a ~0x4e stub. Take the large one
+# 3. confirm identity by the body: unlike setSpawnBlockRespawnPosition it never calls Actor::getPosition
+#    or Actor::getAABB. It compares the incoming BlockPos and dimension against mPlayerRespawnPoint,
+#    references BlockPos::MIN and VanillaDimensions::Undefined, then stores 0x80000000 into all three
+#    components of mSpawnBlockPos (clearing the spawn block) and builds SetSpawnPositionPacketPayload
+#    through the (SpawnPositionType, dimension, BlockPos) ctor. It returns void
+# 4. cross-check the callers - exactly two: SpawnPointCommand::execute (i.e. /spawnpoint) and
+#    ScriptModuleMinecraft::ScriptPlayer::setSpawnPoint. Neither the bed nor the respawn-anchor path
+#    reaches it
+# 5. walk up to the prologue
+# Steps 1-4 were verified in linux_server_x64/1.21.132.3. The byte pattern below came with the original
+# contribution and has NOT been validated against the version named at the top of this file - re-cut it
+# with update-signatures and confirm a single .text hit before release.
 pattern = "41 56 56 57 53 48 83 EC 78 48 89 CE 8B 02"
 
 [[signatures]]
