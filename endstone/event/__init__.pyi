@@ -6,7 +6,7 @@ import enum
 import typing
 
 from endstone import GameMode, Input, Player, Skin
-from endstone.actor import Actor, Item, Mob
+from endstone.actor import Actor, Item, KnockbackParameters, Mob
 from endstone.block import Block, BlockFace, BlockState
 from endstone.command import CommandSender
 from endstone.damage import DamageSource
@@ -28,6 +28,7 @@ __all__ = [
     "ActorEvent",
     "ActorExplodeEvent",
     "ActorKnockbackEvent",
+    "ActorKnockbackPrepareEvent",
     "ActorPickupItemEvent",
     "ActorRemoveEvent",
     "ActorSpawnEvent",
@@ -382,6 +383,45 @@ class ActorKnockbackEvent(MobEvent, Cancellable):
 
     @knockback.setter
     def knockback(self, arg1: Vector) -> None: ...
+
+class ActorKnockbackPrepareEvent(MobEvent, Cancellable):
+    """
+    Called before Bedrock calculates the knockback received by a mob.
+
+    The damage, horizontal direction and every native `KnockbackParameters` value may be changed before
+    they are passed to Bedrock. Cancelling the event prevents the knockback calculation entirely. Bedrock
+    may perform an additional calculation when applying extra knockback, in which case this event is called
+    for each calculation.
+    """
+    @property
+    def source(self) -> Actor | None:
+        """
+        The source actor that caused the knockback, or `None` if one does not exist.
+        """
+
+    @property
+    def damage(self) -> float:
+        """
+        The damage used when scaling the knockback power.
+        """
+
+    @damage.setter
+    def damage(self, arg1: float) -> None: ...
+    @property
+    def direction(self) -> Vector:
+        """
+        The horizontal direction of the knockback.
+
+        The Y component is ignored by Bedrock. The getter returns a copy; changes must be applied via the setter.
+        """
+
+    @direction.setter
+    def direction(self, arg1: Vector) -> None: ...
+    @property
+    def parameters(self) -> KnockbackParameters:
+        """
+        The parameters used to calculate the knockback. Changes are passed to Bedrock.
+        """
 
 class ActorPickupItemEvent(ActorEvent, Cancellable):
     """

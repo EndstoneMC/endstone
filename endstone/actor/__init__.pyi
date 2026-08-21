@@ -2,6 +2,7 @@
 Classes relating to actors (entities) that can exist in a world, including all players, monsters, projectiles, etc.
 """
 
+import enum
 import typing
 
 from endstone import Identifier
@@ -16,6 +17,7 @@ __all__ = [
     "Actor",
     "ActorType",
     "Item",
+    "KnockbackParameters",
     "Mob",
 ]
 
@@ -234,6 +236,14 @@ class Mob(Actor):
 
     @max_health.setter
     def max_health(self, arg1: int) -> None: ...
+    @property
+    def no_damage_ticks(self) -> int:
+        """
+        The mob's current no-damage ticks.
+        """
+
+    @no_damage_ticks.setter
+    def no_damage_ticks(self, arg1: int) -> None: ...
     def has_attribute(self, attribute: Identifier[Attribute] | str) -> bool:
         """
         Checks whether the given attribute is present on the object.
@@ -275,6 +285,95 @@ class Mob(Actor):
         """
         Returns all currently active potion effects on this entity.
         """
+
+class KnockbackParameters:
+    """
+    Describes how knockback is calculated for a mob.
+    """
+    class ExtraKnockbackApproach(enum.Enum):
+        """
+        Defines how extra knockback from sprinting or enchantments is combined with the base knockback.
+        """
+
+        REAPPLY_DEFAULT = 0
+        MULTIPLY_REDUCED = 1
+
+    REAPPLY_DEFAULT = ExtraKnockbackApproach.REAPPLY_DEFAULT
+    MULTIPLY_REDUCED = ExtraKnockbackApproach.MULTIPLY_REDUCED
+    @property
+    def horizontal_power(self) -> float:
+        """
+        The power with which the target is knocked backwards.
+        """
+
+    @horizontal_power.setter
+    def horizontal_power(self, arg1: float) -> None: ...
+    @property
+    def vertical_power(self) -> float:
+        """
+        The power with which the target is knocked upwards.
+        """
+
+    @vertical_power.setter
+    def vertical_power(self, arg1: float) -> None: ...
+    @property
+    def vertical_velocity_cap(self) -> float:
+        """
+        The maximum Y velocity after the knockback rules are evaluated.
+        """
+
+    @vertical_velocity_cap.setter
+    def vertical_velocity_cap(self, arg1: float) -> None: ...
+    @property
+    def slowdown_scale(self) -> float:
+        """
+        The scale applied to the target's existing velocity before knockback is added.
+
+        Bedrock clamps this value to the range from `0.0` to `1.0`.
+        """
+
+    @slowdown_scale.setter
+    def slowdown_scale(self, arg1: float) -> None: ...
+    @property
+    def scale_with_damage(self) -> bool:
+        """
+        Whether the knockback power is scaled using the damage.
+        """
+
+    @scale_with_damage.setter
+    def scale_with_damage(self, arg1: bool) -> None: ...
+    @property
+    def slow_down_attacker(self) -> bool:
+        """
+        Whether the source's horizontal velocity is slowed when knockback is applied.
+        """
+
+    @slow_down_attacker.setter
+    def slow_down_attacker(self, arg1: bool) -> None: ...
+    @property
+    def check_legacy_knockback(self) -> bool:
+        """
+        Whether Bedrock checks the legacy pre-Nether Update knockback rules.
+        """
+
+    @check_legacy_knockback.setter
+    def check_legacy_knockback(self, arg1: bool) -> None: ...
+    @property
+    def extra_knockback_power(self) -> float:
+        """
+        The extra knockback power supplied by sprinting or enchantments.
+        """
+
+    @extra_knockback_power.setter
+    def extra_knockback_power(self, arg1: float) -> None: ...
+    @property
+    def extra_knockback_approach(self) -> ExtraKnockbackApproach:
+        """
+        How extra knockback is combined with the base knockback.
+        """
+
+    @extra_knockback_approach.setter
+    def extra_knockback_approach(self, arg1: ExtraKnockbackApproach) -> None: ...
 
 class ActorType:
     """
