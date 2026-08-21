@@ -89,9 +89,9 @@ public:
 
     [[nodiscard]] bool isEmpty() const override { return Base::isEmpty() && isPagesEmpty(); }
 
-    [[nodiscard]] std::unique_ptr<ItemMeta> clone() const override
+    [[nodiscard]] NotNull<ItemMeta> clone() const override
     {
-        return std::make_unique<Derived>(static_cast<const Derived &>(*this));
+        return std::make_shared<Derived>(static_cast<const Derived &>(*this));
     }
 
 protected:

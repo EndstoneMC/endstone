@@ -55,73 +55,72 @@ void EndstoneScoreboard::init()
 {
     auto &server = EndstoneServer::getInstance();
     const auto *level = server.getEndstoneLevel();
-    packet_sender_ = std::make_unique<ScoreboardPacketSender>(server, getSelf(), *level->getHandle().getPacketSender());
+    packet_sender_ = std::make_unique<ScoreboardPacketSender>(server, self(), *level->getHandle().getPacketSender());
     board_.setPacketSender(packet_sender_.get());
 }
 
-std::unique_ptr<Objective> EndstoneScoreboard::addObjective(std::string name, Criteria::Type criteria)
+NotNull<Objective> EndstoneScoreboard::addObjective(std::string name, Criteria::Type criteria)
 {
     return addObjective(name, criteria, name);
 }
 
-std::unique_ptr<Objective> EndstoneScoreboard::addObjective(std::string name, Criteria::Type criteria,
-                                                            std::string display_name)
+NotNull<Objective> EndstoneScoreboard::addObjective(std::string name, Criteria::Type criteria, std::string display_name)
 {
     return addObjective(name, criteria, name, RenderType::Integer);
 }
 
-std::unique_ptr<Objective> EndstoneScoreboard::addObjective(std::string name, Criteria::Type criteria,
-                                                            std::string display_name, RenderType render_type)
+NotNull<Objective> EndstoneScoreboard::addObjective(std::string name, Criteria::Type criteria, std::string display_name,
+                                                    RenderType render_type)
 {
     const auto *cr = board_.getCriteria(getCriteriaName(criteria));
     Preconditions::checkState(cr != nullptr, "Criteria does not exist.");
     auto *objective = board_.addObjective(name, display_name, *cr);
     Preconditions::checkState(objective != nullptr, "Objective {} already exists.", name);
-    return std::make_unique<EndstoneObjective>(getSelf(), *objective);
+    return std::make_shared<EndstoneObjective>(self(), *objective);
 }
 
-std::unique_ptr<Objective> EndstoneScoreboard::getObjective(std::string name) const
+Nullable<Objective> EndstoneScoreboard::getObjective(std::string name) const
 {
     if (auto *objective = board_.getObjective(name); objective) {
-        return std::make_unique<EndstoneObjective>(getSelf(), *objective);
+        return std::make_shared<EndstoneObjective>(self(), *objective);
     }
     return nullptr;
 }
 
-std::unique_ptr<Objective> EndstoneScoreboard::getObjective(DisplaySlot slot) const
+Nullable<Objective> EndstoneScoreboard::getObjective(DisplaySlot slot) const
 {
     const auto *display_objective = board_.getDisplayObjective(toMinecraftSlot(slot));
     if (!display_objective) {
         return nullptr;
     }
-    return std::make_unique<EndstoneObjective>(getSelf(), const_cast<::Objective &>(display_objective->getObjective()));
+    return std::make_shared<EndstoneObjective>(self(), const_cast<::Objective &>(display_objective->getObjective()));
 }
 
-std::vector<std::unique_ptr<Objective>> EndstoneScoreboard::getObjectives() const
+std::vector<NotNull<Objective>> EndstoneScoreboard::getObjectives() const
 {
-    std::vector<std::unique_ptr<Objective>> result;
+    std::vector<NotNull<Objective>> result;
     board_.forEachObjective(
-        [&](auto &objective) { result.push_back(std::make_unique<EndstoneObjective>(getSelf(), objective)); });
+        [&](auto &objective) { result.push_back(std::make_shared<EndstoneObjective>(self(), objective)); });
     return result;
 }
 
-std::vector<std::unique_ptr<Objective>> EndstoneScoreboard::getObjectivesByCriteria(Criteria::Type criteria) const
+std::vector<NotNull<Objective>> EndstoneScoreboard::getObjectivesByCriteria(Criteria::Type criteria) const
 {
-    std::vector<std::unique_ptr<Objective>> result;
+    std::vector<NotNull<Objective>> result;
     board_.forEachObjective([&](auto &objective) {
         if (objective.getCriteria().getName() == getCriteriaName(criteria)) {
-            result.push_back(std::make_unique<EndstoneObjective>(getSelf(), objective));
+            result.push_back(std::make_shared<EndstoneObjective>(self(), objective));
         }
     });
     return result;
 }
 
-std::vector<std::unique_ptr<Score>> EndstoneScoreboard::getScores(ScoreEntry entry) const
+std::vector<NotNull<Score>> EndstoneScoreboard::getScores(ScoreEntry entry) const
 {
-    std::vector<std::unique_ptr<Score>> result;
+    std::vector<NotNull<Score>> result;
     board_.forEachObjective([&](auto &objective) {
-        auto obj = std::make_unique<EndstoneObjective>(getSelf(), objective);
-        result.push_back(std::make_unique<EndstoneScore>(std::move(obj), entry));
+        auto obj = std::make_shared<EndstoneObjective>(self(), objective);
+        result.push_back(std::make_shared<EndstoneScore>(std::move(obj), entry));
     });
     return result;
 }
@@ -246,7 +245,7 @@ const ::ScoreboardId &EndstoneScoreboard::getOrCreateScoreboardId(ScoreEntry ent
     return board_;
 }
 
-NotNull<EndstoneScoreboard> EndstoneScoreboard::getSelf() const
+NotNull<EndstoneScoreboard> EndstoneScoreboard::self() const
 {
     return const_cast<EndstoneScoreboard *>(this)->shared_from_this();
 }

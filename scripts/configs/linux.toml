@@ -184,6 +184,34 @@ rip_relative = true
 rip_offset = 1
 
 [[signatures]]
+name = "_ZN19BucketableComponent14getInteractionER5ActorR6PlayerR16ActorInteraction"
+relative = false
+extra = 0
+# 1. find bytes "6D 69 6E 65 63 72 61 66 74 3A 77 61 74 65 72 5F 62 75 63 6B 65 74 00"
+#    = "minecraft:water_bucket\0"; it is unique and has exactly one data xref, inside the huge
+#    VanillaItemNames static initialiser
+# 2. at that xref the initialiser fills one HashedString: a `movups xmm0, <the string>` followed by
+#    `movups <buf>, xmm0` / `mov <buf+14h>, rax` / `mov byte <buf+16h>, 0` writing the 23-byte libc++
+#    SSO buffer. The std::string starts one byte below that buffer and the enclosing HashedString
+#    eight bytes below the string - that address is VanillaItemNames::WaterBucket
+# 3. take the code xrefs to VanillaItemNames::WaterBucket. Discard the initialiser itself, and discard
+#    BucketItem::_useOn (independently identifiable as the last function pointer of the RTTI-named
+#    `_ZTV10BucketItem`). BucketableComponent::getInteraction is the small one, ~0x529 bytes
+# 4. confirm identity from the body, not the prologue: it opens on `cmp byte ptr [rcx+60h], 0` /
+#    `jnz <return 0>` - that byte is ActorInteraction::mNoCapture, so this is the shouldCapture guard;
+#    it then writes a three-word closure (move_only_function vtable, `owner` from rsi, `player` from
+#    rdx) into stack slots and moves it into `interaction + 20h` (ActorInteraction::mInteraction); the
+#    tail inlines two HashedString comparisons - VanillaItemNames::Bucket then
+#    VanillaItemNames::WaterBucket - and returns 1 or 0
+# 5. cross-check vs the old named DB: Linux 1.21.132.3 carries
+#    `_ZN19BucketableComponent14getInteractionER5ActorR6PlayerR16ActorInteraction` with the same
+#    shape (ActorInteraction::shouldCapture is still an out-of-line call at that version)
+# 6. uniqueness: the pattern below matches exactly once in the 1.26.33, 1.26.40 and 1.26.44 ELFs.
+#    The wildcarded operands absorb the frame size, the jnz displacement, the closure-vtable lea and
+#    the three stack displacements
+pattern = "55 41 57 41 56 41 55 41 54 53 48 81 EC ? ? 00 00 80 79 60 00 0F 85 ? ? ? ? 48 89 CB 49 89 D6 48 8D 05 ? ? ? ? 48 89 84 24 ? ? 00 00 48 89 B4 24 ? ? 00 00 48 89 94 24 ? ? 00 00 48 83 C3 20"
+
+[[signatures]]
 name = "_ZN18CampfireBlockActor14_finishCookingER11BlockSourcei"
 relative = false
 extra = 0
@@ -366,6 +394,26 @@ extra = 0
 pattern = "41 56 53 50 0F 57 C9 80 7F"
 
 [[signatures]]
+name = "_ZN17InteractComponent14getInteractionER5ActorR6PlayerR16ActorInteraction"
+relative = false
+extra = 0
+# 1. no usable string: the interaction's text ("action.interact.shear" and friends) is loaded from the
+#    vanilla behaviour pack, not baked into the binary. Anchor instead on the two entity type ids the
+#    telemetry branch near the end compares against - `3D 74 0B 03 00` (cmp eax, 30B74h) and
+#    `3D 2C 0B 03 00` (cmp eax, 30B2Ch), seven bytes apart. Exactly two sites in .text pair them
+# 2. pick the right one: getInteraction is the site that, within 0x80 bytes of that pair, does
+#    `lea <r>, [<r>+0x48]` and calls ActorInteraction::setInteractText with it - 0x48 is
+#    Interaction::mInteractText. The other pair belongs to a different telemetry caller
+# 3. confirm identity from the body: it walks the InteractDefinition's Interaction array with
+#    `add <r>, 0x140` (stride 320, sizeof(Interaction)) calling _runInteraction per candidate, and
+#    guards a `Bedrock::type_id<IDefinitionInstance, InteractDefinition>` lazy id with __cxa_guard_acquire
+# 4. walk back to the prologue - `push rbp/r15/r14/r13/r12/rbx`, `sub rsp, 0x228`, then the four
+#    System V argument moves (this, Actor&, Player&, ActorInteraction&) - and cut from there
+# uniqueness: the pattern below matches exactly once in 1.26.44.3, and also exactly once in
+# 1.26.40.8 and 1.26.33.1
+pattern = "55 41 57 41 56 41 55 41 54 53 48 81 EC 28 02 00 00 49 89 CE 48 89 54 24 08 49 89 F7 49 89 FD"
+
+[[signatures]]
 name = "_ZNK4Item12readUserDataER13ItemStackBaseR10IDataInputR20ReadOnlyBinaryStream"
 relative = false
 extra = 0
@@ -457,13 +505,44 @@ pattern = "41 57 41 56 53 8B 42"
 name = "_ZNK13CauldronBlock3useERN11BlockEvents24BlockPlayerInteractEventE"
 relative = false
 extra = 0
-# 1. find CauldronBlock's constructor and follow its third event subscription, which registers the
-#    BlockPlayerInteract callback
-# 2. confirm the callback body against the old named DB: it reads Player& at +0x18 and the optional
-#    interaction result at +0x20, then performs cauldron item interaction
-# 3. the callback has no recoverable BDS name; use the compiler-generated ABI name for the verified
-#    const CauldronBlock::use declaration
+# 1. the name is real: `void CauldronBlock::use(BlockEvents::BlockPlayerInteractEvent&) const` is a declared
+#    member, so a symbol-bearing build resolves it by name; the steps below are the no-symbol fallback
+# 2. find bytes "63 61 75 6C 64 72 6F 6E 00" = "cauldron\0" in .rodata and take the xref in the vanilla block
+#    registration that constructs CauldronBlock; from the constructor follow the single call to
+#    CauldronBlock::_addHardCodedBlockComponents - a ~0x35-byte leaf whose whole body is three
+#    BlockType::_subscribeForEvent calls and nothing else
+# 3. the three member-function pointers those calls pass are CauldronBlock::onPlace, CauldronBlock::tick and
+#    the target; do not pick by call order, pick by identity in step 4
+# 4. confirm identity from the body: the target is by far the largest of the three (~0x1F00 bytes, ~270 basic
+#    blocks against a few dozen), it is the only one that calls
+#    BlockEvents::BlockPlayerInteractEvent::setInteractionResult, it builds both the CauldronUsed and the
+#    POICauldronUsed LegacyTelemetryEvent packets, and it reaches CauldronBlock::setLiquidLevel and
+#    CauldronBlock::_explodeCauldronContents; cross-checked at 0x984cd20 in the 1.21.132.3 named build
+# 5. walk back to the prologue and cut from there
+# uniqueness: NOT re-verified against 1.26.44 by the pass that wrote this comment - run dump_symbols.py and
+# confirm the pattern takes exactly one .text hit before relying on it
 pattern = "55 41 57 41 56 41 55 41 54 53 48 81 EC A8 02 00 00 48 89 F3 4C 8B 76"
+
+[[signatures]]
+name = "_ZN10ArmorStand14getInteractionER6PlayerR16ActorInteractionRK4Vec3"
+relative = false
+extra = 0
+# 1. find bytes "61 63 74 69 6F 6E 2E 69 6E 74 65 72 61 63 74 2E 61 72 6D 6F 72 73 74 61 6E 64 2E 65 71 75 69 70 00"
+#    = "action.interact.armorstand.equip\0" in .rodata (unique); it has exactly one rip-relative xref in
+#    .text - the function containing it (the .eh_frame_hdr FDE start at or below the xref) is the target
+# 2. cross-check with the sibling string "action.interact.armorstand.pose\0": its single xref lands in the
+#    same function, a few hundred bytes further on - the pose branch is the sneak path, the equip branch
+#    the item-swap path, and no other function in the binary references either string
+# 3. confirm identity from the body: it opens with a call to Actor::getInteraction, tests `al & 1` and
+#    returns early on success, then loads the level from `[r15+0x1D0]` and dispatches
+#    `call qword [rax+0x9F0]` (ILevel::isClientSide) before reaching the sneak test
+# 4. independent confirmation: the same address appears exactly once in `_ZTV10ArmorStand` (reached via
+#    RTTI - typeinfo name "10ArmorStand" -> _ZTI10ArmorStand -> the vtable that names it), at the slot
+#    Actor::getInteraction occupies
+# 5. walk back to the prologue (`push rbp/r15/r14/r13/r12/rbx`, `sub rsp, 0x138`) and cut from there
+# uniqueness: matches exactly once in 1.26.44.3, and also exactly once in 1.26.33 and 1.26.40; the two
+# wildcards are the call/jmp displacements, so no byte-identical sibling can collide
+pattern = "55 41 57 41 56 41 55 41 54 53 48 81 EC 38 01 00 00 49 89 CD 48 89 D3 49 89 F7 49 89 FE E8 ? ? ? ? 89 C5 A8 01 74 08 41 89 ED"
 
 [[signatures]]
 name = "_ZN11LeavesBlock10randomTickERN11BlockEvents20BlockRandomTickEventE"
@@ -627,6 +706,24 @@ rip_relative = true
 rip_offset = 1
 
 [[signatures]]
+name = "_ZN23PushableByEntityUtility4pushER5ActorS1_b"
+relative = false
+extra = 0
+# 1. locate Mob::pushActors: Player's vtable is RTTI-named `_ZTV6Player`; follow the Mob::knockback recipe
+#    above to knockback's slot in it, then take the slot 8 entries (+0x40) later
+# 2. Mob::pushActors calls three PushableByEntityUtility free functions; push is the only one that takes three
+#    arguments (the third a bool, in edx) - skipPush and pullToRide take two
+# 3. confirm push by its body: it opens with a call to skipPush and branches on the result, then dispatches a
+#    4-case jump table on the preset's push mode (default / boat / minecart / ball push-vector helpers), and
+#    near the end passes the LevelSoundEvent literal 0x257 (PushedByPlayer) to Actor::playSynchronizedSound
+# 4. cross-check the call sites: push has exactly 4 (Mob::pushActors, SpawnActorSystem::tick,
+#    ArmorStand::pushActors, Minecart::postNormalTick); skipPush and pullToRide have 2 each
+# 5. uniqueness: the prologue alone is shared with many functions, so the pattern runs past it; both branch
+#    displacements are wildcarded because the call to skipPush shifts whenever code moves between the two.
+#    As written it matches exactly once in the 1.26.44 .text
+pattern = "55 41 57 41 56 41 55 41 54 53 48 81 EC C8 00 00 00 89 D5 49 89 F7 48 89 FB E8 ? ? ? ? 84 C0 0F 85 ? ? ? ? 41 BE FF FF FF FF 48 8B 4B 10"
+
+[[signatures]]
 name = "_ZN13RakPeerHelper11peerStartupEPN6RakNet16RakPeerInterfaceERK20ConnectionDefinitionNS_11PeerPurposeE"
 relative = false
 extra = 0
@@ -751,6 +848,33 @@ extra = 0
 pattern = "55 41 57 41 56 41 55 41 54 53 48 81 EC ? ? ? ? 48 89 8C 24 ? ? ? ? 49 89 D6 48 89 FB"
 
 [[signatures]]
+name = "_ZNK11TridentItem12releaseUsingER9ItemStackP6Playeri"
+relative = false
+extra = 0
+# 1. TridentItem::releaseUsing carries no string of its own; anchor on Enchant::Type::Riptide = 30. Search
+#    .text for "BF 1E 00 00 00 E8" (mov edi, 1Eh into the first argument register, immediately before a
+#    call) - 7 hits on 1.26.44 - and keep the ones whose callee is EnchantUtils::getEnchantLevel(
+#    Enchant::Type, ItemStackBase const &), the small leaf that indexes Enchant::mEnchants (see that entry)
+#    and walks the stack's enchant list
+# 2. of those, exactly one sits in a function that rejects a null player and then an isClientSide byte
+#    ("cmp byte ptr [rdx+2XXh], 0") in its first ~0x40 bytes before loading 1Eh, and whose arm after the
+#    call gates on "test eax, eax / jle", then Actor::isInWaterOrRain, then Actor::getVehicle (isRiding),
+#    then "sub <maxUseDuration>, <durationLeft> / cmp <reg>, 0Ah / jl". That function is the TARGET
+# 3. confirm identity independently: the arm surviving all four gates calls a two-argument helper on
+#    player+8 (the Player's EntityContext) with the riptide level - ActorMobilityUtils::startSpinAttack,
+#    which has exactly ONE caller in the whole binary, this function - then plays one of three consecutive
+#    LevelSoundEvent ids chosen by the riptide level, while the other arm builds a thrown_trident actor and
+#    plays the next id along
+# 4. cross-check against the vtable: the RTTI name string "11TridentItem" is unique, its lone data xref is
+#    typeinfo for TridentItem, and the lone reference to that typeinfo is vtable for TridentItem - the
+#    TARGET is entry 88 of its function-pointer array (Item declaration index 87, +1 for the Itanium second
+#    destructor slot)
+# 5. uniqueness: the pattern runs from the prologue through "mov edi, 1Eh" + call and matches exactly once
+#    in .text of 1.26.44 (and once in each of 1.26.40 and 1.26.33). No byte-identical sibling exists - no
+#    other Item override loads 1Eh into the getEnchantLevel argument
+pattern = "55 41 57 41 56 41 55 41 54 53 48 81 EC ? ? ? ? 48 85 D2 0F 84 ? ? ? ? 48 89 D3 80 BA ? ? ? ? 00 0F 85 ? ? ? ? 41 89 CE 49 89 F7 49 89 FC BF 1E 00 00 00 E8"
+
+[[signatures]]
 name = "_ZN14WeatherManager13updateWeatherEfifi"
 relative = false
 extra = 0
@@ -760,6 +884,7 @@ extra = 0
 # 3. follow the thunk's jmp to WeatherManager::updateWeather and walk to its prologue
 # 4. confirm vs the old named DB
 pattern = "55 41 57 41 56 41 54 53 48 81 EC ? ? ? ? 89 D5 0F 29 4C 24"
+
 [[signatures]]
 name = "_ZN6Player9addLevelsEi"
 relative = false
@@ -789,3 +914,32 @@ extra = 0
 # prologue through the pre-mutation `cvttss2si r12d, [rax+7Ch]` LEVEL read; the wildcarded `4C 8D` /
 # `4C 89` operands absorb the r14/r15 register swap seen at 1.26.33
 pattern = "55 41 57 41 56 41 55 41 54 53 48 81 EC C8 01 00 00 89 F5 48 89 FB 4C 8D ? ? ? ? ? 4C 89 ? E8 ? ? ? ? F3 44 0F 2C 60 7C"
+
+[[signatures]]
+name = "_ZN6Player13addExperienceEi"
+relative = false
+extra = 0
+# 1. no usable string, and no direct callers - addExperience is the Player virtual one slot BELOW
+#    addLevels. Locate addLevels first (its own entry), then read the R_X86_64_RELATIVE addend at
+#    slot-8 in each of the three .data.rel.ro vtables that hold it (Itanium typeinfo names `6Player`,
+#    `12ServerPlayer`, `15SimulatedPlayer`); all three agree on one address - that is addExperience
+# 2. it is also the function immediately preceding addLevels in .text: the .eh_frame_hdr start right
+#    below addLevels' start, ~0x450 bytes
+# 3. its entry is `push rbp/r15/r14/r12/rbx` (no r13, unlike addLevels) / `sub rsp, 1C0h` /
+#    `mov ebp, esi` / `mov rbx, rdi`, then `lea rsi, Player::EXPERIENCE` / `call Actor::getAttribute` /
+#    `cvtsi2ss xmm2, ebp` / `movss xmm1, [rax+7Ch]` - it opens on EXPERIENCE where addLevels opens on
+#    LEVEL, which is what tells the two prologues apart
+# 4. Player::getXpNeededForLevelRange is inlined three times; each copy is the same run -
+#    `imul rcx, rcx, -77777777h` / `shr rcx, 20h` / `add ecx, eax` / `sar ecx, 3` (signed divide by 15)
+#    then one of `lea r15d, [rax*2+7]`, `lea r15d, [rax+rax*4]` / `add r15d, -26h` (5*level-38),
+#    `lea r15d, [rax+rax*8]` / `add r15d, 0FFFFFF62h` (9*level-158)
+# 5. the level-crossing loop does NOT call addLevels directly - it dispatches through the vtable:
+#    `mov rax, [rbx]` / `mov rdi, rbx` / `mov esi, 1` / `call qword [rax+6D0h]`, the same slot the
+#    vtable walk in step 1 landed on. Do not look for an `E8` to addLevels; there is none
+# 6. confirm identity on the event tail: `mov [rsp+38h], ebp` stores the raw `amount` argument into
+#    the payload, then `mov dword [rsp+1B8h], 2` sets the variant index - index 2 is PlayerAddExpEvent
+#    in the PlayerGameplayEvent<void> variant list, where addLevels writes 3 - immediately before the
+#    call to PlayerEventCoordinator::sendEvent
+# prologue through the `cvtsi2ss xmm2, ebp` / `movss xmm1, [rax+7Ch]` EXPERIENCE read that opens the
+# body; the wildcarded operands absorb the Player::EXPERIENCE lea displacement and the getAttribute call
+pattern = "55 41 57 41 56 41 54 53 48 81 EC C0 01 00 00 89 F5 48 89 FB 48 8D 35 ? ? ? ? E8 ? ? ? ? F3 0F 2A D5 F3 0F 10 48 7C"

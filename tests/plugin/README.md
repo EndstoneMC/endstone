@@ -33,7 +33,7 @@ than marking it by hand.
 
 Events cannot be constructed from Python and listeners cannot be unregistered, so event coverage works differently:
 a single set of listeners is registered once at startup and records a snapshot of every event it sees. A boss bar
-shows how many of the tracked events have fired (`Events: 7/55, Next: PlayerJumpEvent`), and the event tests assert
+shows how many of the tracked events have fired (`Events: 7/75, Next: PlayerJumpEvent`), and the event tests assert
 on the recorded snapshots. An event that has not been triggered yet **skips** rather than fails, so a fresh server
 is green; use the boss bar and `/test events` to see what is still unexercised.
 

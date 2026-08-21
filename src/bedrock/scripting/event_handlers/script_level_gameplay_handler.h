@@ -20,6 +20,4 @@
 class ScriptLevelGameplayHandler {
 public:
     ENDSTONE_VHOOK HandlerResult handleEvent1(LevelGameplayEvent<void> const &event);
-    ENDSTONE_VHOOK GameplayHandlerResult<CoordinatorResult> handleEvent2(
-        MutableLevelGameplayEvent<CoordinatorResult> &event);
 };

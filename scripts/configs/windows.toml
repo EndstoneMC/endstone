@@ -215,6 +215,29 @@ rip_relative = true
 rip_offset = 29
 
 [[signatures]]
+name = "?getInteraction@BucketableComponent@@QEAA?AVInteractionResult@@AEAVActor@@AEAVPlayer@@AEAVActorInteraction@@@Z"
+relative = false
+extra = 0
+# --pdb resolves this one by name; the pattern below is only the fallback for a PDB-less scan.
+# 1. find bytes "6D 69 6E 65 63 72 61 66 74 3A 77 61 74 65 72 5F 62 75 63 6B 65 74 00"
+#    = "minecraft:water_bucket\0"; it is unique and its data xref sits in the VanillaItemNames static
+#    initialiser
+# 2. the stores after that xref fill one 23-byte MSVC SSO buffer; the enclosing HashedString global
+#    starts nine bytes below the buffer - that is VanillaItemNames::WaterBucket
+# 3. among the code xrefs to it, BucketableComponent::getInteraction is the one whose first
+#    instruction after the prologue is `mov rdi, [rbp+0F0h]` / `cmp byte ptr [rdi+60h], 0` - the
+#    ActorInteraction argument arrives on the stack, not in a register, because InteractionResult is
+#    returned indirectly, and +60h is ActorInteraction::mNoCapture
+# 4. confirm identity from the body: it stores the lambda vtable, `owner` and `player` into three
+#    adjacent stack slots and merges them into `interaction + 20h`, then compares the selected item
+#    against VanillaItemNames::Bucket and VanillaItemNames::WaterBucket and the level's base game
+#    version against BucketableComponent::WATER_BUCKET_USEABLE_VERSION
+# 5. uniqueness: the pattern below matches exactly once in both the 1.26.32.2 and 1.26.44 images.
+#    The wildcarded operands absorb the frame size, the SEH cookie slot, the argument displacement,
+#    the jnz displacement and the lambda-vtable lea
+pattern = "55 41 57 41 56 41 55 41 54 56 57 53 48 81 EC ? ? 00 00 48 8D AC 24 80 00 00 00 48 C7 85 ? ? 00 00 FE FF FF FF 48 89 D6 48 8B BD ? ? 00 00 80 7F 60 00 0F 85 ? ? ? ? 4C 89 CB 48 8D 05 ? ? ? ? 48 89 45 38 4C 89 45 40 4C 89 4D 48"
+
+[[signatures]]
 name = "?_finishCooking@CampfireBlockActor@@AEAAXAEAVBlockSource@@H@Z"
 relative = false
 extra = 0
@@ -420,6 +443,25 @@ rip_relative = true
 rip_offset = 1
 
 [[signatures]]
+name = "?getInteraction@InteractComponent@@QEAA?AVInteractionResult@@AEAVActor@@AEAVPlayer@@AEAVActorInteraction@@@Z"
+relative = false
+extra = 0
+# 1. the name is real, so `dump_symbols.py --pdb` resolves it outright; the steps below are the
+#    no-PDB fallback
+# 2. no usable string - the interact text lives in the behaviour pack, not the image. Anchor on the
+#    two entity type ids the telemetry branch compares against: `3D 74 0B 03 00` (cmp eax, 30B74h)
+#    and `3D 2C 0B 03 00` (cmp eax, 30B2Ch), seven bytes apart. Two sites in .text pair them
+# 3. pick the right one: getInteraction is the site that, within 0x80 bytes of the pair, does
+#    `lea <r>, [<r>+0x48]` (Interaction::mInteractText) ahead of the ActorInteraction::setInteractText call
+# 4. confirm identity from the body: the Interaction array walk uses the 0x140 stride (sizeof(Interaction))
+#    and calls _runInteraction per candidate
+# 5. walk back to the prologue - `push rbp/r15/r14/r13/r12/rsi/rdi/rbx`, `sub rsp, 0x288`,
+#    `lea rbp, [rsp+0x80]`, then the xmm6 spill and the SEH scope marker - and cut from there
+# uniqueness: matches exactly once in 1.26.44.3 and once in 1.26.40.8. In 1.26.33.1 the same bytes
+# match twice, so re-derive rather than reuse if the version floor moves back
+pattern = "55 41 57 41 56 41 55 41 54 56 57 53 48 81 EC 88 02 00 00 48 8D AC 24 80 00 00 00 0F 29 B5 F0 01 00 00 48 C7 85 E8 01 00 00 FE FF FF FF 4D 89 CE"
+
+[[signatures]]
 # name is arbitrary, this is actually hooking a lambda function
 name = "?executeWorldInteraction@InventoryTransaction@@SA?AW4InventoryTransactionError@@PEAXAEAVPlayer@@AEBVInventoryAction@@@Z"
 relative = false
@@ -430,13 +472,44 @@ pattern = "56 57 53 48 83 EC ? 41 8B 40"
 name = "?use@CauldronBlock@@QEBAXAEAVBlockPlayerInteractEvent@BlockEvents@@@Z"
 relative = false
 extra = 0
-# 1. find CauldronBlock's constructor and follow its third event subscription, which registers the
-#    BlockPlayerInteract callback
-# 2. confirm the callback body against the old named DB: it reads Player& at +0x18 and the optional
-#    interaction result at +0x20, then performs cauldron item interaction
-# 3. the callback has no recoverable BDS name; use the compiler-generated ABI name for the verified
-#    const CauldronBlock::use declaration
+# 1. the name is real: `void CauldronBlock::use(BlockEvents::BlockPlayerInteractEvent&) const` is a declared
+#    member, so `dump_symbols.py --pdb` resolves it outright; the steps below are the no-PDB fallback
+# 2. find bytes "63 61 75 6C 64 72 6F 6E 00" = "cauldron\0" in .rdata and take the xref in the vanilla block
+#    registration that constructs CauldronBlock; from the constructor follow the single call to
+#    CauldronBlock::_addHardCodedBlockComponents - a tiny leaf whose whole body is three
+#    BlockType::_subscribeForEvent calls and nothing else
+# 3. the three member-function pointers those calls pass are CauldronBlock::onPlace, CauldronBlock::tick and
+#    the target; do not pick by call order, pick by identity in step 4
+# 4. confirm identity from the body: the target is by far the largest of the three, it is the only one that
+#    calls BlockEvents::BlockPlayerInteractEvent::setInteractionResult, it builds both the CauldronUsed and
+#    the POICauldronUsed LegacyTelemetryEvent packets, and it reaches CauldronBlock::setLiquidLevel and
+#    CauldronBlock::_explodeCauldronContents; cross-checked against the 1.21.132.3 named linux build at
+#    0x984cd20
+# 5. walk back to the prologue (`push rbp/r15/r14/r13/r12/rsi/rdi/rbx`, `sub rsp, 0x358`) and cut there
+# uniqueness: NOT re-verified against 1.26.44 by the pass that wrote this comment - run dump_symbols.py and
+# confirm the pattern takes exactly one .text hit before relying on it
 pattern = "55 41 57 41 56 41 55 41 54 56 57 53 48 81 EC 58 03 00 00 48 8D AC 24 ? ? ? ? 0F 29 B5 ? ? ? ? 48 C7 85 ? ? ? ? ? ? ? ? 48 89 D6 48 8B 7A"
+
+[[signatures]]
+name = "?getInteraction@ArmorStand@@UEAA?AVInteractionResult@@AEAVPlayer@@AEAVActorInteraction@@AEBVVec3@@@Z"
+relative = false
+extra = 0
+# 1. the name is real, so `dump_symbols.py --pdb` resolves it outright; the steps below are the
+#    no-PDB fallback
+# 2. find bytes "61 63 74 69 6F 6E 2E 69 6E 74 65 72 61 63 74 2E 61 72 6D 6F 72 73 74 61 6E 64 2E 65 71 75 69 70 00"
+#    = "action.interact.armorstand.equip\0" in .rdata (unique); it has exactly one rip-relative xref in
+#    .text - the RUNTIME_FUNCTION in .pdata whose range covers that xref gives the function start
+# 3. cross-check with the sibling string "action.interact.armorstand.pose\0": its single xref lands in the
+#    same function (the sneak/pose branch), and no other function references either string
+# 4. confirm identity from the body: it calls Actor::getInteraction first, tests `byte [rsi] & 1` and
+#    takes the early-out on success, and later builds the two interact-text std::strings around
+#    ActorInteraction::setInteractText
+# 5. independent confirmation: the function's address appears exactly once in .rdata - that slot is
+#    ArmorStand's vftable entry, and the vftable base is the only address in that run referenced by a
+#    `lea` in .text; the slot index matches Actor::getInteraction's
+# 6. walk back to the prologue (`push rbp/r15/r14/r13/r12/rsi/rdi/rbx`, `sub rsp, 0x1A8`) and cut there
+# uniqueness: matches exactly once in 1.26.44.3, and also exactly once in 1.26.32.2, 1.26.33 and 1.26.40
+pattern = "55 41 57 41 56 41 55 41 54 56 57 53 48 81 EC A8 01 00 00 48 8D AC 24 80 00 00 00 48 C7 85 20 01 00 00 FE FF FF FF 4C 89 CF 4D 89 C6 48 89 D6 48 89 CB"
 
 [[signatures]]
 name = "?readUserData@Item@@UEBAXAEAVItemStackBase@@AEAVIDataInput@@AEAVReadOnlyBinaryStream@@@Z"
@@ -730,6 +803,23 @@ extra = 0
 pattern = "55 41 57 41 56 41 54 56 57 53 48 81 EC ? ? ? ? 48 8D AC 24 ? ? ? ? 44 0F 29 9D ? ? ? ? 44 0F 29 95 ? ? ? ? 44 0F 29 8D ? ? ? ? 66 44 0F 7F 85 ? ? 00 00"
 
 [[signatures]]
+name = "?push@PushableByEntityUtility@@YAXAEAVActor@@0_N@Z"
+relative = false
+extra = 0
+# 1. locate Mob::pushActors: follow the Mob::knockback recipe above to knockback's slot in Player's vtable,
+#    then take the slot 8 entries (+0x40) later - the same delta holds in every vtable that inherits both
+# 2. Mob::pushActors calls three PushableByEntityUtility free functions; push is the only one that takes three
+#    arguments (the third a bool, in r8b) - skipPush and pullToRide take two
+# 3. confirm push by its body: it opens with a call to skipPush and branches on the result, then dispatches a
+#    4-case jump table on the preset's push mode (default / boat / minecart / ball push-vector helpers), and
+#    near the end passes the LevelSoundEvent literal 0x257 (PushedByPlayer) to Actor::playSynchronizedSound
+# 4. cross-check the call sites: push has exactly 4 (Mob::pushActors, SpawnActorSystem::tick,
+#    ArmorStand::pushActors, Minecart::postNormalTick); skipPush and pullToRide have 2 each
+# 5. uniqueness: the 25-byte prologue prefix is shared with 20+ functions, so the pattern runs on into the
+#    frame setup; as written it matches exactly once in the 1.26.44 .text
+pattern = "55 41 57 41 56 41 54 56 57 53 48 81 EC 10 01 00 00 48 8D AC 24 80 00 00 00 0F 29 BD 80 00 00 00 0F 29 75 70 48 C7 45 68 FE FF FF FF 45 89 C7 48"
+
+[[signatures]]
 name = "?peerStartup@RakPeerHelper@@QEAA?AW4StartupResult@RakNet@@PEAVRakPeerInterface@3@AEBUConnectionDefinition@@W4PeerPurpose@1@@Z"
 relative = false
 extra = 0
@@ -871,6 +961,33 @@ extra = 0
 pattern = "55 41 57 41 56 41 55 41 54 56 57 53 48 81 EC ? ? ? ? 48 8D AC 24 ? ? ? ? 0F 29 BD ? ? ? ? 0F 29 B5 ? ? ? ? 48 C7 85 ? ? ? ? ? ? ? ? 4C 89 4D ? 4C 89 C6 48 89 CF E8"
 
 [[signatures]]
+name = "?releaseUsing@TridentItem@@UEBAXAEAVItemStack@@PEAVPlayer@@H@Z"
+relative = false
+extra = 0
+# 1. TridentItem::releaseUsing carries no string of its own; anchor on Enchant::Type::Riptide = 30. Search
+#    .text for "B1 1E E8" (mov cl, 1Eh into the first integer argument register, immediately before a call)
+#    - 2 hits on 1.26.44 - and keep the ones whose callee is EnchantUtils::getEnchantLevel(Enchant::Type,
+#    ItemStackBase const &), the small leaf that indexes Enchant::mEnchants (see that entry) and walks the
+#    stack's enchant list
+# 2. of those, exactly one sits in a function that rejects a null player ("test r8, r8") and then an
+#    isClientSide byte ("cmp byte ptr [r8+2XXh], 0") in its first ~0x60 bytes before loading 1Eh, and whose
+#    arm after the call gates on "test eax, eax / jle", then Actor::isInWaterOrRain, then Actor::getVehicle
+#    (isRiding), then "sub <maxUseDuration>, <durationLeft> / cmp <reg>, 0Ah / jl". That function is the
+#    TARGET
+# 3. confirm identity independently: the arm surviving all four gates calls a two-argument helper on
+#    player+8 (the Player's EntityContext) with the riptide level - ActorMobilityUtils::startSpinAttack,
+#    which has exactly ONE caller in the whole binary, this function - then plays one of three consecutive
+#    LevelSoundEvent ids chosen by the riptide level, while the other arm builds a thrown_trident actor and
+#    plays the next id along
+# 4. cross-check against the vtable: the TARGET is entry 87 of TridentItem's vftable ??_7TridentItem@@6B@,
+#    one lower than Linux because the MSVC ABI spends a single slot on the deleting destructor. When a PDB
+#    is available, dump_symbols.py --pdb resolves this name directly and the pattern is only the fallback
+# 5. uniqueness: the pattern runs from the prologue through "mov cl, 1Eh" + call and matches exactly once
+#    in .text of 1.26.44 (and once in 1.26.32.2). No byte-identical sibling exists - no other Item override
+#    loads 1Eh into the getEnchantLevel argument
+pattern = "55 41 57 41 56 41 55 41 54 56 57 53 48 81 EC ? ? ? ? 48 8D AC 24 ? ? ? ? 44 0F 29 85 ? ? ? ? 0F 29 BD ? ? ? ? 0F 29 B5 ? ? ? ? 48 C7 85 ? ? ? ? FE FF FF FF 4D 85 C0 0F 84 ? ? ? ? 4C 89 C6 41 80 B8 ? ? ? ? 00 0F 85 ? ? ? ? 45 89 CF 48 89 D7 48 89 CB B1 1E E8"
+
+[[signatures]]
 name = "?updateWeather@WeatherManager@@QEAAXMHMH@Z"
 relative = false
 extra = 0
@@ -906,3 +1023,32 @@ extra = 0
 # 5. confirm vs the old named DB. Unlike Linux 1.21 there is no separate _addLevels on Windows at
 #    any version - MSVC folds it into addLevels, so this virtual is the whole body
 pattern = "55 41 57 41 56 41 55 41 54 56 57 53 48 81 EC 08 02 00 00 48 8D AC 24 80 00 00 00 48 C7 85 80 01 00 00 FE FF FF FF 89 D7 48 89 CE 4C 8D 05 ? ? ? ? 48 8D 55 C8 E8"
+
+[[signatures]]
+name = "?addExperience@Player@@UEAAXH@Z"
+relative = false
+extra = 0
+# 1. no usable string, and no direct callers - addExperience is the Player virtual one slot BELOW
+#    addLevels. Locate addLevels first (its own entry), then read the qword at slot-8 in each of the
+#    three .rdata vtables that hold it; all three agree on one RVA - that is addExperience
+# 2. .pdata pins it: the entry is a BeginAddress of extent 0x47Bh, sitting 0x5C0 below addLevels
+# 3. its entry is `push rbp/r15/r14/r12/rsi/rdi/rbx` / `sub rsp, 200h` / `lea rbp, [rsp+80h]` / three
+#    `movaps [rbp+170h/160h/150h], xmm8/xmm7/xmm6` spills / the -2 SEH cookie store, then
+#    `mov edi, edx` / `mov rsi, rcx` / `lea r8, Player::EXPERIENCE` / `call Actor::getAttribute` /
+#    `cvtsi2ss xmm7, edi` / `movss xmm6, [rax+7Ch]` - it opens on EXPERIENCE where addLevels opens on
+#    LEVEL, which is what tells the two prologues apart
+# 4. Player::getXpNeededForLevelRange is inlined three times; each copy is the same run -
+#    `imul rcx, 0FFFFFFFF88888889h` / `shr rcx, 20h` / `add ecx, eax` / `sar ecx, 3` (signed divide by
+#    15) then one of `lea r15d, ds:7[rax*2]`, `lea r15d, [rax+rax*4]` / `add r15d, 0FFFFFFDAh` (-38),
+#    `lea r15d, [rax+rax*8]` / `add r15d, 0FFFFFF62h` (-158)
+# 5. the level-crossing loop does NOT call addLevels directly - it dispatches through the vtable and
+#    the CFG thunk: `mov rax, [rsi]` / `mov rax, [rax+6C8h]` / `mov rcx, rsi` / `mov edx, 1` /
+#    `call cs:__guard_dispatch_icall_fptr`, the same slot the vtable walk in step 1 landed on. Do not
+#    look for an `E8` to addLevels; there is none
+# 6. confirm identity on the event tail: `mov [rbp+138h], edi` stores the raw `amount` argument into
+#    the payload, then `mov byte [rbp+118h], 2` sets the variant index - index 2 is PlayerAddExpEvent
+#    in the PlayerGameplayEvent<void> variant list, where addLevels writes 3 - immediately before the
+#    call to EventCoordinatorPimpl<PlayerEventListener>::_processEvent
+# prologue through the `lea rdx, result` / `call Actor::getAttribute` that reads EXPERIENCE; the
+# wildcarded operands absorb the Player::EXPERIENCE lea displacement and the call target
+pattern = "55 41 57 41 56 41 54 56 57 53 48 81 EC 00 02 00 00 48 8D AC 24 80 00 00 00 44 0F 29 85 70 01 00 00 0F 29 BD 60 01 00 00 0F 29 B5 50 01 00 00 48 C7 85 48 01 00 00 FE FF FF FF 89 D7 48 89 CE 4C 8D 05 ? ? ? ? 48 8D 55 A0 E8"

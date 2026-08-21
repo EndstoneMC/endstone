@@ -23,6 +23,7 @@
 #include "endstone/event/event.h"
 #include "endstone/event/event_priority.h"
 #include "endstone/permissions/permission_level.h"
+#include "endstone/util/pointers.h"
 
 namespace endstone {
 
@@ -168,16 +169,16 @@ public:
      * @param name Name of the permission
      * @return Permission, or nullptr if none
      */
-    [[nodiscard]] virtual Permission *getPermission(std::string name) const = 0;
+    [[nodiscard]] virtual Nullable<Permission> getPermission(std::string name) const = 0;
 
     /**
      * Adds a Permission to this plugin manager.
      *
      * @param perm Permission to add
-     * @return A reference to the newly added permission.
+     * @return The newly added permission.
      * @throws std::runtime_error if a permission with the same name is already defined.
      */
-    virtual Permission &addPermission(std::unique_ptr<Permission> perm) = 0;
+    virtual NotNull<Permission> addPermission(NotNull<Permission> perm) = 0;
 
     /**
      * Removes a Permission registration from this plugin manager.
@@ -187,7 +188,7 @@ public:
      *
      * @param perm Permission to remove
      */
-    virtual void removePermission(Permission &perm) = 0;
+    virtual void removePermission(const NotNull<Permission> &perm) = 0;
 
     /**
      * Removes a Permission registration from this plugin manager.
@@ -205,7 +206,7 @@ public:
      * @param level Which set of default permissions to get
      * @return The default permissions
      */
-    [[nodiscard]] virtual std::vector<Permission *> getDefaultPermissions(PermissionLevel level) const = 0;
+    [[nodiscard]] virtual std::vector<NotNull<Permission>> getDefaultPermissions(PermissionLevel level) const = 0;
 
     /**
      * Recalculates the defaults for the given Permission.
@@ -214,7 +215,7 @@ public:
      *
      * @param perm Permission to recalculate
      */
-    virtual void recalculatePermissionDefaults(Permission &perm) = 0;
+    virtual void recalculatePermissionDefaults(const NotNull<Permission> &perm) = 0;
 
     /**
      * Subscribes the given Permissible for information about the requested Permission, by name.
@@ -223,7 +224,7 @@ public:
      * @param permission Permission to subscribe to
      * @param permissible Permissible subscribing
      */
-    virtual void subscribeToPermission(std::string permission, Permissible &permissible) = 0;
+    virtual void subscribeToPermission(std::string permission, const NotNull<Permissible> &permissible) = 0;
 
     /**
      * Unsubscribes the given Permissible for information about the requested Permission, by name.
@@ -231,7 +232,7 @@ public:
      * @param permission Permission to unsubscribe from
      * @param permissible Permissible subscribing
      */
-    virtual void unsubscribeFromPermission(std::string permission, Permissible &permissible) = 0;
+    virtual void unsubscribeFromPermission(std::string permission, const NotNull<Permissible> &permissible) = 0;
 
     /**
      * Gets a set containing all subscribed Permissibles to the given permission, by name.
@@ -239,7 +240,7 @@ public:
      * @param permission Permission to query for
      * @return Set containing all subscribed permissions
      */
-    [[nodiscard]] virtual std::unordered_set<Permissible *> getPermissionSubscriptions(
+    [[nodiscard]] virtual std::unordered_set<NotNull<Permissible>> getPermissionSubscriptions(
         std::string permission) const = 0;
 
     /**
@@ -250,7 +251,7 @@ public:
      * @param level Default list to subscribe to
      * @param permissible Permissible subscribing
      */
-    virtual void subscribeToDefaultPerms(PermissionLevel level, Permissible &permissible) = 0;
+    virtual void subscribeToDefaultPerms(PermissionLevel level, const NotNull<Permissible> &permissible) = 0;
 
     /**
      * Unsubscribes from the given Default permissions by permission level.
@@ -258,7 +259,7 @@ public:
      * @param level Default list to unsubscribe from
      * @param permissible Permissible subscribing
      */
-    virtual void unsubscribeFromDefaultPerms(PermissionLevel level, Permissible &permissible) = 0;
+    virtual void unsubscribeFromDefaultPerms(PermissionLevel level, const NotNull<Permissible> &permissible) = 0;
 
     /**
      * Gets a set containing all subscribed Permissibles to the given default list, by permission level.
@@ -266,7 +267,7 @@ public:
      * @param level Default list to query for
      * @return Set containing all subscribed permissions
      */
-    [[nodiscard]] virtual std::unordered_set<Permissible *> getDefaultPermSubscriptions(
+    [[nodiscard]] virtual std::unordered_set<NotNull<Permissible>> getDefaultPermSubscriptions(
         PermissionLevel level) const = 0;
 
     /**
@@ -276,7 +277,7 @@ public:
      *
      * @return Set containing all current registered permissions
      */
-    [[nodiscard]] virtual std::unordered_set<Permission *> getPermissions() const = 0;
+    [[nodiscard]] virtual std::unordered_set<NotNull<Permission>> getPermissions() const = 0;
 };
 
 }  // namespace endstone

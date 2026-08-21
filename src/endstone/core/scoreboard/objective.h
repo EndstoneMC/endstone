@@ -48,12 +48,12 @@ public:
     void setDisplay(std::optional<DisplaySlot> slot, ObjectiveSortOrder order) override;
     [[nodiscard]] RenderType getRenderType() const override;
     // Result<void> setRenderType(RenderType render_type) override;
-    [[nodiscard]] std::unique_ptr<Score> getScore(ScoreEntry entry) const override;
+    [[nodiscard]] NotNull<Score> getScore(ScoreEntry entry) const override;
     bool operator==(const Objective &other) const override;
     bool operator!=(const Objective &other) const override;
 
     NotNull<EndstoneScoreboard> checkState() const;
-    [[nodiscard]] std::unique_ptr<EndstoneObjective> copy() const;
+    [[nodiscard]] NotNull<EndstoneObjective> copy() const;
 
 private:
     friend class EndstoneScore;

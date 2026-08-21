@@ -99,9 +99,9 @@ bool EndstoneMapMeta::notUncommon(const ItemMeta &meta) const
     return EndstoneItemMetaBase::notUncommon(meta) && (meta.as<MapMeta>() || isMapEmpty());
 }
 
-std::unique_ptr<ItemMeta> EndstoneMapMeta::clone() const
+NotNull<ItemMeta> EndstoneMapMeta::clone() const
 {
-    return std::make_unique<EndstoneMapMeta>(*this);
+    return std::make_shared<EndstoneMapMeta>(*this);
 }
 
 bool EndstoneMapMeta::isMapEmpty() const

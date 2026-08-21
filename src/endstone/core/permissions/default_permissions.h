@@ -19,18 +19,20 @@
 
 #include "endstone/core/server.h"
 #include "endstone/permissions/permission.h"
+#include "endstone/util/pointers.h"
 
 namespace endstone::core {
 class DefaultPermissions {
     constexpr static std::string_view ROOT = "endstone";
 
 public:
-    static Permission &registerPermission(std::unique_ptr<Permission> perm);
-    static Permission &registerPermission(std::unique_ptr<Permission> perm, Permission &parent);
-    static Permission &registerPermission(std::string_view name, std::string_view desc);
-    static Permission &registerPermission(std::string_view name, std::string_view desc, Permission &parent);
-    static Permission &registerPermission(std::string_view name, std::string_view desc, PermissionDefault def,
-                                          Permission &parent);
+    static NotNull<Permission> registerPermission(NotNull<Permission> perm);
+    static NotNull<Permission> registerPermission(NotNull<Permission> perm, const NotNull<Permission> &parent);
+    static NotNull<Permission> registerPermission(std::string_view name, std::string_view desc);
+    static NotNull<Permission> registerPermission(std::string_view name, std::string_view desc,
+                                                  const NotNull<Permission> &parent);
+    static NotNull<Permission> registerPermission(std::string_view name, std::string_view desc, PermissionDefault def,
+                                                  const NotNull<Permission> &parent);
 
     static void registerCorePermissions();
 };
@@ -39,18 +41,18 @@ class CommandPermissions {
     constexpr static std::string_view ROOT = "endstone.command";
 
 public:
-    static Permission &registerPermission(std::string_view name, std::string_view cmd, std::string_view desc,
-                                          Permission &parent);
-    static Permission &registerPermission(std::string_view name, std::string_view cmd, std::string_view desc,
-                                          PermissionDefault def, Permission &parent);
-    static Permission &registerPermissions(Permission &parent);
+    static NotNull<Permission> registerPermission(std::string_view name, std::string_view cmd, std::string_view desc,
+                                                  const NotNull<Permission> &parent);
+    static NotNull<Permission> registerPermission(std::string_view name, std::string_view cmd, std::string_view desc,
+                                                  PermissionDefault def, const NotNull<Permission> &parent);
+    static NotNull<Permission> registerPermissions(const NotNull<Permission> &parent);
 };
 
 class BroadcastPermissions {
     constexpr static std::string_view ROOT = "endstone.broadcast";
 
 public:
-    static Permission &registerPermissions(Permission &parent);
+    static NotNull<Permission> registerPermissions(const NotNull<Permission> &parent);
 };
 
 class MinecraftDefaultPermissions {
@@ -64,6 +66,6 @@ class MinecraftCommandPermissions {
     constexpr static std::string_view ROOT = "minecraft.command";
 
 public:
-    static Permission &registerPermissions(Permission &parent);
+    static NotNull<Permission> registerPermissions(const NotNull<Permission> &parent);
 };
 }  // namespace endstone::core
