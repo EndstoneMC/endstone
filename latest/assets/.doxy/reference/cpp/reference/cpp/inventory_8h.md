@@ -16,8 +16,8 @@
 * `#include <unordered_map>`
 * `#include <utility>`
 * `#include <vector>`
+* `#include "endstone/inventory/item_stack.h"`
 * `#include "endstone/inventory/item_type.h"`
-* `#include "endstone/util/result.h"`
 
 
 

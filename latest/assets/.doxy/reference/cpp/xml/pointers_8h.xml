@@ -916,18 +916,18 @@
         <childnode refid="9" relation="include">
         </childnode>
       </node>
-      <node id="131">
+      <node id="133">
         <label>include/endstone/game_rule.h</label>
         <link refid="game__rule_8h_source"/>
         <childnode refid="73" relation="include">
         </childnode>
       </node>
-      <node id="133">
+      <node id="125">
         <label>include/endstone/inventory/inventory.h</label>
         <link refid="inventory_8h_source"/>
         <childnode refid="104" relation="include">
         </childnode>
-        <childnode refid="134" relation="include">
+        <childnode refid="126" relation="include">
         </childnode>
       </node>
       <node id="123">
@@ -965,24 +965,26 @@
         </childnode>
         <childnode refid="125" relation="include">
         </childnode>
+        <childnode refid="127" relation="include">
+        </childnode>
         <childnode refid="68" relation="include">
         </childnode>
       </node>
-      <node id="132">
+      <node id="134">
         <label>include/endstone/inventory/item_type.h</label>
         <link refid="item__type_8h_source"/>
-        <childnode refid="133" relation="include">
+        <childnode refid="125" relation="include">
         </childnode>
         <childnode refid="123" relation="include">
         </childnode>
         <childnode refid="124" relation="include">
         </childnode>
       </node>
-      <node id="130">
+      <node id="132">
         <label>include/endstone/inventory/meta/book_meta.h</label>
         <link refid="book__meta_8h_source"/>
       </node>
-      <node id="126">
+      <node id="128">
         <label>include/endstone/inventory/meta/crossbow_meta.h</label>
         <link refid="crossbow__meta_8h_source"/>
       </node>
@@ -993,36 +995,36 @@
         </childnode>
         <childnode refid="124" relation="include">
         </childnode>
-        <childnode refid="126" relation="include">
-        </childnode>
-        <childnode refid="127" relation="include">
-        </childnode>
         <childnode refid="128" relation="include">
         </childnode>
         <childnode refid="129" relation="include">
         </childnode>
+        <childnode refid="130" relation="include">
+        </childnode>
+        <childnode refid="131" relation="include">
+        </childnode>
       </node>
-      <node id="127">
+      <node id="129">
         <label>include/endstone/inventory/meta/map_meta.h</label>
         <link refid="map__meta_8h_source"/>
       </node>
-      <node id="128">
+      <node id="130">
         <label>include/endstone/inventory/meta/potion_meta.h</label>
         <link refid="potion__meta_8h_source"/>
       </node>
-      <node id="129">
+      <node id="131">
         <label>include/endstone/inventory/meta/writable_book_meta.h</label>
         <link refid="writable__book__meta_8h_source"/>
-        <childnode refid="130" relation="include">
+        <childnode refid="132" relation="include">
         </childnode>
       </node>
-      <node id="134">
+      <node id="126">
         <label>include/endstone/inventory/player_inventory.h</label>
         <link refid="player__inventory_8h_source"/>
         <childnode refid="9" relation="include">
         </childnode>
       </node>
-      <node id="125">
+      <node id="127">
         <label>include/endstone/inventory/recipe.h</label>
         <link refid="recipe_8h_source"/>
       </node>
@@ -1077,7 +1079,7 @@
         <link refid="map__view_8h_source"/>
         <childnode refid="90" relation="include">
         </childnode>
-        <childnode refid="127" relation="include">
+        <childnode refid="129" relation="include">
         </childnode>
         <childnode refid="9" relation="include">
         </childnode>
@@ -1177,7 +1179,7 @@
       <node id="137">
         <label>include/endstone/potion/potion_type.h</label>
         <link refid="potion__type_8h_source"/>
-        <childnode refid="128" relation="include">
+        <childnode refid="130" relation="include">
         </childnode>
       </node>
       <node id="63">
@@ -1191,9 +1193,9 @@
         </childnode>
         <childnode refid="121" relation="include">
         </childnode>
-        <childnode refid="131" relation="include">
+        <childnode refid="133" relation="include">
         </childnode>
-        <childnode refid="132" relation="include">
+        <childnode refid="134" relation="include">
         </childnode>
         <childnode refid="135" relation="include">
         </childnode>
