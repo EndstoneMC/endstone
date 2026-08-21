@@ -26,16 +26,17 @@
 ItemStackNetResult ItemStackRequestActionCraftHandler::handleCraftAction(
     const ItemStackRequestActionCraftBase &request_action)
 {
+    const auto &server = endstone::core::EndstoneServer::getInstance();
     const auto action_type = request_action.getActionType();
-    if (action_type == ItemStackRequestActionType::CraftRecipe ||
-        action_type == ItemStackRequestActionType::CraftRecipeAuto) {
+    if ((action_type == ItemStackRequestActionType::CraftRecipe ||
+         action_type == ItemStackRequestActionType::CraftRecipeAuto) &&
+        server.getEndstonePluginManager().isEventRegistered<endstone::PlayerCraftItemEvent>()) {
         const auto &net_id =
             action_type == ItemStackRequestActionType::CraftRecipe
                 ? static_cast<const ItemStackRequestActionCraftRecipe &>(request_action).getRecipeNetId()
                 : static_cast<const ItemStackRequestActionCraftRecipeAuto &>(request_action).getRecipeNetId();
         const auto *recipe = player_.getLevel().getRecipes().getRecipeByNetId(net_id);
         if (recipe != nullptr && !recipe->getResultItems().empty()) {
-            const auto &server = endstone::core::EndstoneServer::getInstance();
             const auto result = ItemStack(recipe->getResultItems().front());
             endstone::PlayerCraftItemEvent e{player_.getEndstoneActor<endstone::core::EndstonePlayer>(),
                                              endstone::core::EndstoneItemStack::fromMinecraft(result),
