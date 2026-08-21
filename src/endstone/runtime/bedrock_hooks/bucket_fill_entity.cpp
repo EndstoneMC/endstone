@@ -114,10 +114,9 @@ bool fireBucketFillEntityEvent(::Player &player, const ::Actor &target, const ::
 
     const auto &event_item_stack = event.getItemStack();
     const ::ItemStack default_result{"minecraft:milk_bucket"};
-    const auto keep_native_result = event_item_stack &&
-                                    endstone::core::EndstoneItemStack::toMinecraft(*event_item_stack) == default_result;
-    pending_bucket_fill_entity = PendingBucketFillEntity{&player, &target, hand, event_item_stack,
-                                                         !keep_native_result};
+    const auto keep_native_result =
+        event_item_stack && endstone::core::EndstoneItemStack::toMinecraft(*event_item_stack) == default_result;
+    pending_bucket_fill_entity = PendingBucketFillEntity{&player, &target, hand, event_item_stack, !keep_native_result};
     return true;
 }
 
@@ -137,10 +136,10 @@ void handleBucketFillEntityResult(const PlayerInteractWithEntityAfterEvent &even
     const auto succeeded =
         isMilkBucket(event.after_item) || (player->isCreative() && event.after_item == event.before_item);
     if (succeeded && pending_bucket_fill_entity->write_item_stack) {
-        const auto item_stack = pending_bucket_fill_entity->item_stack
-                                    ? endstone::core::EndstoneItemStack::toMinecraft(
-                                          *pending_bucket_fill_entity->item_stack)
-                                    : ::ItemStack::EMPTY_ITEM;
+        const auto item_stack =
+            pending_bucket_fill_entity->item_stack
+                ? endstone::core::EndstoneItemStack::toMinecraft(*pending_bucket_fill_entity->item_stack)
+                : ::ItemStack::EMPTY_ITEM;
         if (pending_bucket_fill_entity->hand == endstone::EquipmentSlot::OffHand) {
             player->setOffhandSlot(item_stack);
         }

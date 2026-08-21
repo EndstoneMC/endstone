@@ -23,8 +23,7 @@ void CauldronBlock::use(BlockEvents::BlockPlayerInteractEvent &event_data) const
     auto &player = event_data.player;
     const auto slot = player.getSelectedItemSlot();
     const auto &item_stack = player.getInventory().getItem(slot);
-    const auto action = endstone::runtime::handleBucketEmptyEvent(player, event_data.pos, event_data.face,
-                                                                   item_stack);
+    const auto action = endstone::runtime::handleBucketEmptyEvent(player, event_data.pos, event_data.face, item_stack);
     if (action == endstone::runtime::BucketEmptyAction::Cancel) {
         event_data.successful = false;
         return;

@@ -92,7 +92,7 @@ thread_local std::optional<PendingBucketFill> pending_bucket_fill;
 }  // namespace
 
 void endstone::runtime::handleBucketFillResult(const ::InteractionResult &result, ::ItemStack &item_stack,
-                                                ::Actor &actor, const ::BlockPos &position)
+                                               ::Actor &actor, const ::BlockPos &position)
 {
     if (!pending_bucket_fill) {
         return;
@@ -111,8 +111,8 @@ void endstone::runtime::handleBucketFillResult(const ::InteractionResult &result
     if (result.isSuccessful() && pending_bucket_fill->write_item_stack) {
         item_stack.setUserData(nullptr);
         item_stack = pending_bucket_fill->item_stack
-                         ? endstone::core::EndstoneItemStack::toMinecraft(*pending_bucket_fill->item_stack)
-                         : ::ItemStack::EMPTY_ITEM;
+                       ? endstone::core::EndstoneItemStack::toMinecraft(*pending_bucket_fill->item_stack)
+                       : ::ItemStack::EMPTY_ITEM;
     }
     pending_bucket_fill.reset();
 }
@@ -193,8 +193,7 @@ bool handleEvent(ItemUseOnEvent &event)
     const auto &event_item_stack = bucket_event.getItemStack();
     const auto keep_creative_result = player->getPlayerGameType() == GameType::Creative && event_item_stack &&
                                       endstone::core::EndstoneItemStack::toMinecraft(*event_item_stack) == result_item;
-    pending_bucket_fill =
-        PendingBucketFill{player, event.block_position, event_item_stack, !keep_creative_result};
+    pending_bucket_fill = PendingBucketFill{player, event.block_position, event_item_stack, !keep_creative_result};
     return true;
 }
 
