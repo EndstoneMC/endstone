@@ -171,6 +171,7 @@ _Represents a button with text and an optional icon._
 | class | [**PlayerBucketActorEvent**](classendstone_1_1PlayerBucketActorEvent.md) <br>_Represents an event that is called when a player captures an actor in a bucket._  |
 | class | [**PlayerChatEvent**](classendstone_1_1PlayerChatEvent.md) <br>_Called when a player sends a chat message._  |
 | class | [**PlayerCommandEvent**](classendstone_1_1PlayerCommandEvent.md) <br>_Called whenever a player runs a command._  |
+| class | [**PlayerCraftItemEvent**](classendstone_1_1PlayerCraftItemEvent.md) <br>_Called when a player crafts an item._  |
 | class | [**PlayerDeathEvent**](classendstone_1_1PlayerDeathEvent.md) <br>_Called when a_ [_**Player**_](classendstone_1_1Player.md) _dies._ |
 | class | [**PlayerDimensionChangeEvent**](classendstone_1_1PlayerDimensionChangeEvent.md) <br>_Called when a player switches to another dimension._  |
 | class | [**PlayerDropItemEvent**](classendstone_1_1PlayerDropItemEvent.md) <br>_Called when a player drops an item from their inventory._  |

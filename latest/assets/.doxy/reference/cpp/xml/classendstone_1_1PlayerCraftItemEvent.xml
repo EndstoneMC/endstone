@@ -1,0 +1,257 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.8" xml:lang="en-US">
+  <compounddef id="classendstone_1_1PlayerCraftItemEvent" kind="class" language="C++" prot="public" final="yes">
+    <compoundname>endstone::PlayerCraftItemEvent</compoundname>
+    <basecompoundref refid="classendstone_1_1Cancellable" prot="public" virt="non-virtual">endstone::Cancellable&lt; PlayerEvent &gt;</basecompoundref>
+    <includes refid="player__craft__item__event_8h" local="no">endstone/event/player/player_craft_item_event.h</includes>
+    <sectiondef kind="private-attrib">
+      <memberdef kind="variable" id="classendstone_1_1PlayerCraftItemEvent_1ae63bc3e4aed5671f27445cffecb53acc" prot="private" static="no" mutable="no">
+        <type><ref refid="classendstone_1_1ItemStack" kindref="compound">ItemStack</ref></type>
+        <definition>ItemStack endstone::PlayerCraftItemEvent::item_</definition>
+        <argsstring></argsstring>
+        <name>item_</name>
+        <qualifiedname>endstone::PlayerCraftItemEvent::item_</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/event/player/player_craft_item_event.h" line="62" column="15" bodyfile="include/endstone/event/player/player_craft_item_event.h" bodystart="62" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classendstone_1_1PlayerCraftItemEvent_1a1a3ba0ac2a6bab2929a868e1c299b3ba" prot="private" static="no" mutable="no">
+        <type>std::string</type>
+        <definition>std::string endstone::PlayerCraftItemEvent::recipe_id_</definition>
+        <argsstring></argsstring>
+        <name>recipe_id_</name>
+        <qualifiedname>endstone::PlayerCraftItemEvent::recipe_id_</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/event/player/player_craft_item_event.h" line="63" column="17" bodyfile="include/endstone/event/player/player_craft_item_event.h" bodystart="63" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classendstone_1_1PlayerCraftItemEvent_1ac7f812eb3e938dc2cc4f447cbbd4aaca" prot="private" static="no" mutable="no">
+        <type><ref refid="classendstone_1_1Identifier" kindref="compound">int</ref></type>
+        <definition>int endstone::PlayerCraftItemEvent::amount_</definition>
+        <argsstring></argsstring>
+        <name>amount_</name>
+        <qualifiedname>endstone::PlayerCraftItemEvent::amount_</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/event/player/player_craft_item_event.h" line="64" column="9" bodyfile="include/endstone/event/player/player_craft_item_event.h" bodystart="64" bodyend="-1"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="public-func">
+      <memberdef kind="function" id="classendstone_1_1PlayerCraftItemEvent_1a51d5c8208e09d88cf95647feae9428b0" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>endstone::PlayerCraftItemEvent::ENDSTONE_EVENT</definition>
+        <argsstring>(PlayerCraftItemEvent)</argsstring>
+        <name>ENDSTONE_EVENT</name>
+        <qualifiedname>endstone::PlayerCraftItemEvent::ENDSTONE_EVENT</qualifiedname>
+        <param>
+          <type><ref refid="classendstone_1_1PlayerCraftItemEvent" kindref="compound">PlayerCraftItemEvent</ref></type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/event/player/player_craft_item_event.h" line="33" column="5"/>
+      </memberdef>
+      <memberdef kind="function" id="classendstone_1_1PlayerCraftItemEvent_1a843ad5db3b00eb2aacb4e86020f6172f" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type></type>
+        <definition>endstone::PlayerCraftItemEvent::PlayerCraftItemEvent</definition>
+        <argsstring>(const NotNull&lt; Player &gt; &amp;player, ItemStack item, std::string recipe_id, int amount)</argsstring>
+        <name>PlayerCraftItemEvent</name>
+        <qualifiedname>endstone::PlayerCraftItemEvent::PlayerCraftItemEvent</qualifiedname>
+        <param>
+          <type><ref refid="classendstone_1_1Identifier" kindref="compound">const</ref> <ref refid="classendstone_1_1NotNull" kindref="compound">NotNull</ref>&lt; <ref refid="classendstone_1_1Player" kindref="compound">Player</ref> &gt; &amp;</type>
+          <declname>player</declname>
+        </param>
+        <param>
+          <type><ref refid="classendstone_1_1ItemStack" kindref="compound">ItemStack</ref></type>
+          <declname>item</declname>
+        </param>
+        <param>
+          <type>std::string</type>
+          <declname>recipe_id</declname>
+        </param>
+        <param>
+          <type><ref refid="classendstone_1_1Identifier" kindref="compound">int</ref></type>
+          <declname>amount</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/event/player/player_craft_item_event.h" line="35" column="5" bodyfile="include/endstone/event/player/player_craft_item_event.h" bodystart="35" bodyend="38"/>
+      </memberdef>
+      <memberdef kind="function" id="classendstone_1_1PlayerCraftItemEvent_1ac3ca22f3cffc253dbc17f3d33aeafa0f" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type><ref refid="classendstone_1_1Identifier" kindref="compound">const</ref> <ref refid="classendstone_1_1ItemStack" kindref="compound">ItemStack</ref> &amp;</type>
+        <definition>const ItemStack &amp; endstone::PlayerCraftItemEvent::getItem</definition>
+        <argsstring>() const</argsstring>
+        <name>getItem</name>
+        <qualifiedname>endstone::PlayerCraftItemEvent::getItem</qualifiedname>
+        <briefdescription>
+<para>Gets the item that is being crafted. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="return"><para>an <ref refid="classendstone_1_1ItemStack" kindref="compound">ItemStack</ref> for the item being crafted </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/event/player/player_craft_item_event.h" line="45" column="22" bodyfile="include/endstone/event/player/player_craft_item_event.h" bodystart="45" bodyend="45"/>
+      </memberdef>
+      <memberdef kind="function" id="classendstone_1_1PlayerCraftItemEvent_1a4607ed615aaeea46bc8d4398c47dd696" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type><ref refid="classendstone_1_1Identifier" kindref="compound">const</ref> std::string &amp;</type>
+        <definition>const std::string &amp; endstone::PlayerCraftItemEvent::getRecipeId</definition>
+        <argsstring>() const</argsstring>
+        <name>getRecipeId</name>
+        <qualifiedname>endstone::PlayerCraftItemEvent::getRecipeId</qualifiedname>
+        <briefdescription>
+<para>Gets the identifier of the recipe being used. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="return"><para>the recipe identifier </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/event/player/player_craft_item_event.h" line="52" column="24" bodyfile="include/endstone/event/player/player_craft_item_event.h" bodystart="52" bodyend="52"/>
+      </memberdef>
+      <memberdef kind="function" id="classendstone_1_1PlayerCraftItemEvent_1a904390061ec56bbc2632c68ce518c850" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type><ref refid="classendstone_1_1Identifier" kindref="compound">int</ref></type>
+        <definition>int endstone::PlayerCraftItemEvent::getAmount</definition>
+        <argsstring>() const</argsstring>
+        <name>getAmount</name>
+        <qualifiedname>endstone::PlayerCraftItemEvent::getAmount</qualifiedname>
+        <briefdescription>
+<para>Gets the number of times the recipe is being crafted. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="return"><para>the number of crafts </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/event/player/player_craft_item_event.h" line="59" column="10" bodyfile="include/endstone/event/player/player_craft_item_event.h" bodystart="59" bodyend="59"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+<para>Called when a player crafts an item. </para>
+    </briefdescription>
+    <detaileddescription>
+<para><simplesect kind="note"><para>If the event is cancelled the item will not be crafted and the ingredients will not be consumed. </para>
+</simplesect>
+</para>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="2">
+        <label>endstone::Cancellable&lt; PlayerEvent &gt;</label>
+        <link refid="classendstone_1_1Cancellable"/>
+        <childnode refid="3" relation="public-inheritance">
+        </childnode>
+        <childnode refid="5" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="4">
+        <label>endstone::Event</label>
+        <link refid="classendstone_1_1Event"/>
+      </node>
+      <node id="5">
+        <label>endstone::ICancellable</label>
+        <link refid="classendstone_1_1ICancellable"/>
+      </node>
+      <node id="1">
+        <label>endstone::PlayerCraftItemEvent</label>
+        <link refid="classendstone_1_1PlayerCraftItemEvent"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="3">
+        <label>endstone::PlayerEvent</label>
+        <link refid="classendstone_1_1PlayerEvent"/>
+        <childnode refid="4" relation="public-inheritance">
+        </childnode>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="2">
+        <label>endstone::Cancellable&lt; PlayerEvent &gt;</label>
+        <link refid="classendstone_1_1Cancellable"/>
+        <childnode refid="3" relation="public-inheritance">
+        </childnode>
+        <childnode refid="6" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="5">
+        <label>endstone::NotNull&lt; endstone::Player &gt;</label>
+        <link refid="classendstone_1_1NotNull"/>
+      </node>
+      <node id="4">
+        <label>endstone::Event</label>
+        <link refid="classendstone_1_1Event"/>
+      </node>
+      <node id="6">
+        <label>endstone::ICancellable</label>
+        <link refid="classendstone_1_1ICancellable"/>
+      </node>
+      <node id="1">
+        <label>endstone::PlayerCraftItemEvent</label>
+        <link refid="classendstone_1_1PlayerCraftItemEvent"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="3">
+        <label>endstone::PlayerEvent</label>
+        <link refid="classendstone_1_1PlayerEvent"/>
+        <childnode refid="4" relation="public-inheritance">
+        </childnode>
+        <childnode refid="5" relation="usage">
+          <edgelabel>player_</edgelabel>
+        </childnode>
+      </node>
+    </collaborationgraph>
+    <location file="include/endstone/event/player/player_craft_item_event.h" line="31" column="1" bodyfile="include/endstone/event/player/player_craft_item_event.h" bodystart="31" bodyend="65"/>
+    <listofallmembers>
+      <member refid="classendstone_1_1PlayerCraftItemEvent_1ac7f812eb3e938dc2cc4f447cbbd4aaca" prot="private" virt="non-virtual"><scope>endstone::PlayerCraftItemEvent</scope><name>amount_</name></member>
+      <member refid="classendstone_1_1Cancellable_1a3512b47db69c6001f5c0450051308327" prot="public" virt="virtual"><scope>endstone::PlayerCraftItemEvent</scope><name>cancel</name></member>
+      <member refid="classendstone_1_1PlayerCraftItemEvent_1a51d5c8208e09d88cf95647feae9428b0" prot="public" virt="non-virtual"><scope>endstone::PlayerCraftItemEvent</scope><name>ENDSTONE_EVENT</name></member>
+      <member refid="classendstone_1_1Event_1a28cca8d74920493b449d035540acf023" prot="public" virt="non-virtual"><scope>endstone::PlayerCraftItemEvent</scope><name>Event</name></member>
+      <member refid="classendstone_1_1Event_1a7199136ebb40e1441bc61e29f83c3cad" prot="public" virt="non-virtual"><scope>endstone::PlayerCraftItemEvent</scope><name>Event</name></member>
+      <member refid="classendstone_1_1Event_1ad20bafd16e0671578e37390b95e5104c" prot="public" virt="non-virtual"><scope>endstone::PlayerCraftItemEvent</scope><name>Event</name></member>
+      <member refid="classendstone_1_1PlayerCraftItemEvent_1a904390061ec56bbc2632c68ce518c850" prot="public" virt="non-virtual"><scope>endstone::PlayerCraftItemEvent</scope><name>getAmount</name></member>
+      <member refid="classendstone_1_1Event_1a826fe74f9c4195a36a364b9aeeb321bb" prot="public" virt="pure-virtual"><scope>endstone::PlayerCraftItemEvent</scope><name>getEventName</name></member>
+      <member refid="classendstone_1_1PlayerCraftItemEvent_1ac3ca22f3cffc253dbc17f3d33aeafa0f" prot="public" virt="non-virtual"><scope>endstone::PlayerCraftItemEvent</scope><name>getItem</name></member>
+      <member refid="classendstone_1_1PlayerEvent_1abad8f8bca3e2be851c4b37075adf2cbc" prot="public" virt="non-virtual"><scope>endstone::PlayerCraftItemEvent</scope><name>getPlayer</name></member>
+      <member refid="classendstone_1_1PlayerCraftItemEvent_1a4607ed615aaeea46bc8d4398c47dd696" prot="public" virt="non-virtual"><scope>endstone::PlayerCraftItemEvent</scope><name>getRecipeId</name></member>
+      <member refid="classendstone_1_1Event_1ae89b54f63dc32b0c8797a59db69b6931" prot="public" virt="non-virtual"><scope>endstone::PlayerCraftItemEvent</scope><name>isAsynchronous</name></member>
+      <member refid="classendstone_1_1Cancellable_1a268b73cc5bda0fa5923336d031814faa" prot="public" virt="virtual"><scope>endstone::PlayerCraftItemEvent</scope><name>isCancelled</name></member>
+      <member refid="classendstone_1_1PlayerCraftItemEvent_1ae63bc3e4aed5671f27445cffecb53acc" prot="private" virt="non-virtual"><scope>endstone::PlayerCraftItemEvent</scope><name>item_</name></member>
+      <member refid="classendstone_1_1Event_1a44a4ff424a8b690c01a2afe10ae68d8f" prot="public" virt="non-virtual"><scope>endstone::PlayerCraftItemEvent</scope><name>operator=</name></member>
+      <member refid="classendstone_1_1Event_1a1d7fc5400782d20be99a3636aa7f53b9" prot="public" virt="non-virtual"><scope>endstone::PlayerCraftItemEvent</scope><name>operator=</name></member>
+      <member refid="classendstone_1_1PlayerEvent_1ae0f8240e8c7c3a66281295c43b1d522a" prot="protected" virt="non-virtual"><scope>endstone::PlayerCraftItemEvent</scope><name>player_</name></member>
+      <member refid="classendstone_1_1PlayerCraftItemEvent_1a843ad5db3b00eb2aacb4e86020f6172f" prot="public" virt="non-virtual"><scope>endstone::PlayerCraftItemEvent</scope><name>PlayerCraftItemEvent</name></member>
+      <member refid="classendstone_1_1PlayerEvent_1afee42449de6752241c5472a38f7d94a9" prot="public" virt="non-virtual"><scope>endstone::PlayerCraftItemEvent</scope><name>PlayerEvent</name></member>
+      <member refid="classendstone_1_1PlayerCraftItemEvent_1a1a3ba0ac2a6bab2929a868e1c299b3ba" prot="private" virt="non-virtual"><scope>endstone::PlayerCraftItemEvent</scope><name>recipe_id_</name></member>
+      <member refid="classendstone_1_1Cancellable_1aa12df44bcb66924d06a689d0dd07865e" prot="public" virt="virtual"><scope>endstone::PlayerCraftItemEvent</scope><name>setCancelled</name></member>
+      <member refid="classendstone_1_1Event_1a6aeaa8096baba90f8ace94106e0e05f3" prot="public" virt="virtual"><scope>endstone::PlayerCraftItemEvent</scope><name>~Event</name></member>
+      <member refid="classendstone_1_1ICancellable_1ab6d311fcaa18971f69a1b23f5a856301" prot="public" virt="virtual"><scope>endstone::PlayerCraftItemEvent</scope><name>~ICancellable</name></member>
+      <member refid="classendstone_1_1PlayerEvent_1ab31b937251b8ccc1c72c275d1c7a522b" prot="public" virt="non-virtual"><scope>endstone::PlayerCraftItemEvent</scope><name>~PlayerEvent</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

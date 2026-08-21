@@ -137,6 +137,7 @@
     <innerclass refid="classendstone_1_1PlayerBucketActorEvent" prot="public">endstone::PlayerBucketActorEvent</innerclass>
     <innerclass refid="classendstone_1_1PlayerChatEvent" prot="public">endstone::PlayerChatEvent</innerclass>
     <innerclass refid="classendstone_1_1PlayerCommandEvent" prot="public">endstone::PlayerCommandEvent</innerclass>
+    <innerclass refid="classendstone_1_1PlayerCraftItemEvent" prot="public">endstone::PlayerCraftItemEvent</innerclass>
     <innerclass refid="classendstone_1_1PlayerDeathEvent" prot="public">endstone::PlayerDeathEvent</innerclass>
     <innerclass refid="classendstone_1_1PlayerDimensionChangeEvent" prot="public">endstone::PlayerDimensionChangeEvent</innerclass>
     <innerclass refid="classendstone_1_1PlayerDropItemEvent" prot="public">endstone::PlayerDropItemEvent</innerclass>

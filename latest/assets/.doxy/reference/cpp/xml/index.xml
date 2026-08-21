@@ -2121,6 +2121,16 @@
     <member refid="classendstone_1_1PlayerCommandEvent_1a4096e979a5e327ddecdd9328f087d57b" kind="function"><name>getCommand</name></member>
     <member refid="classendstone_1_1PlayerCommandEvent_1a6d2c4a174ce786fc8a1cd6cd8f9ca7c5" kind="function"><name>setCommand</name></member>
   </compound>
+  <compound refid="classendstone_1_1PlayerCraftItemEvent" kind="class"><name>endstone::PlayerCraftItemEvent</name>
+    <member refid="classendstone_1_1PlayerCraftItemEvent_1ae63bc3e4aed5671f27445cffecb53acc" kind="variable"><name>item_</name></member>
+    <member refid="classendstone_1_1PlayerCraftItemEvent_1a1a3ba0ac2a6bab2929a868e1c299b3ba" kind="variable"><name>recipe_id_</name></member>
+    <member refid="classendstone_1_1PlayerCraftItemEvent_1ac7f812eb3e938dc2cc4f447cbbd4aaca" kind="variable"><name>amount_</name></member>
+    <member refid="classendstone_1_1PlayerCraftItemEvent_1a51d5c8208e09d88cf95647feae9428b0" kind="function"><name>ENDSTONE_EVENT</name></member>
+    <member refid="classendstone_1_1PlayerCraftItemEvent_1a843ad5db3b00eb2aacb4e86020f6172f" kind="function"><name>PlayerCraftItemEvent</name></member>
+    <member refid="classendstone_1_1PlayerCraftItemEvent_1ac3ca22f3cffc253dbc17f3d33aeafa0f" kind="function"><name>getItem</name></member>
+    <member refid="classendstone_1_1PlayerCraftItemEvent_1a4607ed615aaeea46bc8d4398c47dd696" kind="function"><name>getRecipeId</name></member>
+    <member refid="classendstone_1_1PlayerCraftItemEvent_1a904390061ec56bbc2632c68ce518c850" kind="function"><name>getAmount</name></member>
+  </compound>
   <compound refid="classendstone_1_1PlayerDeathEvent" kind="class"><name>endstone::PlayerDeathEvent</name>
     <member refid="classendstone_1_1PlayerDeathEvent_1af06323e6ed61542a475022a16b07931e" kind="variable"><name>player_</name></member>
     <member refid="classendstone_1_1PlayerDeathEvent_1a6480e2399396eaa3fb8ed7bfcb56da21" kind="variable"><name>death_message_</name></member>
@@ -3439,6 +3449,8 @@
   <compound refid="player__chat__event_8h" kind="file"><name>player_chat_event.h</name>
   </compound>
   <compound refid="player__command__event_8h" kind="file"><name>player_command_event.h</name>
+  </compound>
+  <compound refid="player__craft__item__event_8h" kind="file"><name>player_craft_item_event.h</name>
   </compound>
   <compound refid="player__dimension__change__event_8h" kind="file"><name>player_dimension_change_event.h</name>
   </compound>

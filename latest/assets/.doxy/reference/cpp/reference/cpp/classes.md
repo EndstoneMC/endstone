@@ -410,6 +410,8 @@
 ([**endstone**](namespaceendstone.md))
 * [**PlayerCommandEvent**](classendstone_1_1PlayerCommandEvent.md)
 ([**endstone**](namespaceendstone.md))
+* [**PlayerCraftItemEvent**](classendstone_1_1PlayerCraftItemEvent.md)
+([**endstone**](namespaceendstone.md))
 * [**PlayerDeathEvent**](classendstone_1_1PlayerDeathEvent.md)
 ([**endstone**](namespaceendstone.md))
 * [**PlayerDimensionChangeEvent**](classendstone_1_1PlayerDimensionChangeEvent.md)
