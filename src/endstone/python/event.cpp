@@ -425,7 +425,7 @@ void init_event(py::module_ &m, py::class_<Event, PyEvent> &event)
                       "The location that this player moved to.");
     py::class_<PlayerJumpEvent, PlayerMoveEvent>(m, "PlayerJumpEvent", "Called when a player jumps.");
     auto player_open_sign_event = py::class_<PlayerOpenSignEvent, PlayerEvent, ICancellable>(m, "PlayerOpenSignEvent",
-                                                                                            R"doc(
+                                                                                             R"doc(
     Called when a player begins editing a sign's text.
 
     Cancelling this event stops the sign editing menu from opening.
