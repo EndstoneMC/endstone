@@ -81,7 +81,6 @@ add_library(endstone_core
         inventory/meta/map_meta.cpp
         inventory/meta/potion_meta.cpp
         inventory/meta/writable_book_meta.cpp
-        inventory/book_edit.cpp
         inventory/item_factory.cpp
         inventory/item_metas.cpp
         inventory/item_stack.cpp

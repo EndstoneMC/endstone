@@ -23,28 +23,40 @@
 #include "bedrock/network/packet/serialize/serialized_packet.h"
 
 namespace BookEditAction {
+inline constexpr int MAX_TEXT_LENGTH = 768;
+
 struct ReplacePage {
+    bool operator==(const ReplacePage &) const;
+
     int page_index;
     std::string page_text;
     std::string photo_name;
 };
 
 struct AddPage {
+    bool operator==(const AddPage &) const;
+
     int page_index;
     std::string page_text;
     std::string photo_name;
 };
 
 struct DeletePage {
+    bool operator==(const DeletePage &) const;
+
     int page_index;
 };
 
 struct SwapPages {
+    bool operator==(const SwapPages &) const;
+
     int page_index;
     int swap_with_index;
 };
 
 struct Finalize {
+    bool operator==(const Finalize &) const;
+
     std::string title;
     std::string author;
     std::string xuid;
@@ -54,6 +66,17 @@ struct Finalize {
 struct BookEditPacketPayload {
     using Operation = std::variant<BookEditAction::ReplacePage, BookEditAction::AddPage, BookEditAction::DeletePage,
                                    BookEditAction::SwapPages, BookEditAction::Finalize>;
+
+    BookEditPacketPayload();
+    [[nodiscard]] const Operation &getOperation() const;
+    [[nodiscard]] const std::string &getText1() const;
+    [[nodiscard]] const std::string &getText2() const;
+    [[nodiscard]] PageContent getPage() const;
+    void setToReplacePage(int, int, const PageContent &);
+    void setToAddPage(int, int, const PageContent &);
+    void setToDeletePage(int, int);
+    void setToSwapPages(int, int, int);
+    void setToFinalize(int, std::string, std::string, std::string);
 
     int book_slot;
     Operation operation;

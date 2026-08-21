@@ -194,6 +194,7 @@ class PackedItemUseLegacyInventoryTransaction {};
 class PackManifestFactory;
 class PackMetadata;
 class PackSettingsFactory;
+struct PageContent;
 class Particle;
 class Path;
 class PauseManager;
