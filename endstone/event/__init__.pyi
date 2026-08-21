@@ -71,6 +71,7 @@ __all__ = [
     "PlayerDeathEvent",
     "PlayerDimensionChangeEvent",
     "PlayerDropItemEvent",
+    "PlayerEditBookEvent",
     "PlayerEmoteEvent",
     "PlayerEvent",
     "PlayerExpChangeEvent",
