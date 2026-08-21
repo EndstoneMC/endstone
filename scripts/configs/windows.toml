@@ -990,6 +990,7 @@ extra = 0
 #    in .text of 1.26.44 (and once in 1.26.32.2). No byte-identical sibling exists - no other Item override
 #    loads 1Eh into the getEnchantLevel argument
 pattern = "55 41 57 41 56 41 55 41 54 56 57 53 48 81 EC ? ? ? ? 48 8D AC 24 ? ? ? ? 44 0F 29 85 ? ? ? ? 0F 29 BD ? ? ? ? 0F 29 B5 ? ? ? ? 48 C7 85 ? ? ? ? FE FF FF FF 4D 85 C0 0F 84 ? ? ? ? 4C 89 C6 41 80 B8 ? ? ? ? 00 0F 85 ? ? ? ? 45 89 CF 48 89 D7 48 89 CB B1 1E E8"
+[[signatures]]
 name = "?createBlockActor@VanillaBlockActorFactory@@YA?AV?$shared_ptr@VBlockActor@@@std@@AEBVBlockPos@@AEBVBlockType@@@Z"
 relative = false
 extra = 0

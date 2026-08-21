@@ -876,6 +876,7 @@ extra = 0
 #    in .text of 1.26.44 (and once in each of 1.26.40 and 1.26.33). No byte-identical sibling exists - no
 #    other Item override loads 1Eh into the getEnchantLevel argument
 pattern = "55 41 57 41 56 41 55 41 54 53 48 81 EC ? ? ? ? 48 85 D2 0F 84 ? ? ? ? 48 89 D3 80 BA ? ? ? ? 00 0F 85 ? ? ? ? 41 89 CE 49 89 F7 49 89 FC BF 1E 00 00 00 E8"
+[[signatures]]
 name = "_ZN24VanillaBlockActorFactory16createBlockActorERK8BlockPosRK9BlockType"
 relative = false
 extra = 0
