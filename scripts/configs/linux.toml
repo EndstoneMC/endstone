@@ -653,9 +653,22 @@ pattern = "55 41 57 41 56 41 55 41 54 53 48 81 EC ? ? ? ? 0F 29 84 24 ? ? ? ? 89
 name = "_ZN12ServerPlayer8openSignERK8BlockPosb"
 relative = false
 extra = 0
-# 1. anchor ServerPlayer's vtable with Player::startSleepInBed and take the openSign slot after the sleep methods
-# 2. confirm the target takes a BlockPos and bool, resolves the sign block entity, and sends the edit request
-# 3. confirm vs the old named DB
+# 1. find bytes "31 34 4F 70 65 6E 53 69 67 6E 50 61 63 6B 65 74 00" = "14OpenSignPacket\0", the Itanium
+#    typeinfo name; it survives stripping. Its lone data xref is _ZTI14OpenSignPacket + 8
+# 2. take the data xref to that typeinfo object: it is _ZTV14OpenSignPacket + 8. The vtable head
+#    (typeinfo slot - 8) has exactly one data xref, and it is inside
+#    SignBlockActor::requestToSendOpenSignPacket (the two OpenSignPacket constructors reference
+#    head + 0x10, the vptr value, instead)
+# 3. requestToSendOpenSignPacket has exactly ONE code xref, and that caller is this function
+# 4. confirm by the body: Actor::getDimensionBlockSource -> BlockSource::getBlockEntity, accepts
+#    BlockActor::getType() 4 (Sign) and 50 (HangingSign) only, then
+#    SignBlockActor::getIsLockedForEditing / serverOnlySetIsLockedForEditing and
+#    EntityContext::getWeakRef before the call from step 3
+# NOTE: the Itanium build keeps getIsLockedForEditing / serverOnlySetIsLockedForEditing as real calls
+#    where clang-cl inlines both into raw member accesses, so windows.toml needs its own step 4
+# uniqueness: the anchor chain is unique (one code xref on requestToSendOpenSignPacket); the pattern
+#    below is only the prologue, so re-cut it from the address the chain lands on rather than trusting
+#    it. Chain walked in linux_server_x64 1.21.132.3 (symbols.debug); pattern NOT re-cut against 1.26.44
 pattern = "55 41 57 41 56 41 54 53 48 83 EC 40 89 D5 48 89 F3 49 89 FE 48 8B BF"
 
 [[signatures]]

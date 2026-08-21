@@ -758,9 +758,19 @@ pattern = "55 41 57 41 56 41 54 56 57 53 48 81 EC ? ? ? ? 48 8D AC 24 ? ? ? ? 44
 name = "?openSign@ServerPlayer@@UEAAXAEBVBlockPos@@_N@Z"
 relative = false
 extra = 0
-# 1. anchor ServerPlayer's vtable with Player::startSleepInBed and take the openSign slot after the sleep methods
-# 2. confirm the target takes a BlockPos and bool, resolves the sign block entity, and sends the edit request
-# 3. confirm vs the old named DB
+# 1. find bytes "4F 70 65 6E 53 69 67 6E 50 61 63 6B 65 74 00" = "OpenSignPacket\0" (unique); its lone code
+#    xref is OpenSignPacket::getName, a ~0x16-byte stub that stores the literal and the length 0x0E
+# 2. getName's lone data xref is a slot in the OpenSignPacket vftable; take data xrefs to the head of
+#    that vftable - one of them is SignBlockActor::requestToSendOpenSignPacket, the only one that stores
+#    a freshly built OpenSignPacket into an std::optional on `this` (the others are the cereal/entt
+#    type-schema helpers and make_packet<OpenSignPacket>)
+# 3. requestToSendOpenSignPacket has exactly ONE code xref, and that caller is this function
+# 4. confirm by the body: getDimensionBlockSource -> BlockSource::getChunkAt -> LevelChunk::getBlockEntity,
+#    accepts BlockActorType 4 (Sign) and 50 (HangingSign) only, tests an ActorUniqueID against -1 and
+#    calls ILevel::getPlayer on it, then Actor::getOrCreateUniqueID before the call from step 3
+# uniqueness: the anchor chain is unique (one code xref on requestToSendOpenSignPacket); the pattern
+#    below is only the prologue, so re-cut it from the address the chain lands on rather than trusting
+#    it. Chain walked in win32_server_x64 1.26.32.2; pattern NOT re-cut against 1.26.44
 pattern = "55 41 57 41 56 56 57 53 48 83 EC 48 48 8D 6C 24 ? 48 C7 45 ? ? ? ? ? 44 89 C3 48 89 D6 48 89 CF"
 
 [[signatures]]
