@@ -111,6 +111,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Fixed `Mob.has_attribute()` raising for a name that is not an attribute, instead of answering `False`.
 - Fixed `Dimension.actors` and `Level.actors` leaving out connected players. Bedrock keeps players in a separate list from other entities and only the latter was read, so a player was never among the actors of the dimension they were standing in.
 - Fixed `str()` on a `Translatable` giving `<endstone._python.lang.Translatable object at 0x...>` instead of its text. Command output captured through a `CommandSenderWrapper` arrives as `Translatable`, so it was unreadable without reaching for `.text` by hand.
+- Fixed `PlayerBedLeaveEvent` only being called when a player pressed the leave button in a bed. It now follows the server's own wake-up handling, so it is also called when morning comes, when the bed is broken or otherwise obstructed, and when the player is woken by anything else. The `bed` block it reports is the bed being slept in rather than the player's respawn point.
 - Fixed the server crashing on a broadcast once a player had left and rejoined. A plugin that holds on to a `Player` after they disconnect kept them subscribed to broadcasts, and the next chat or quit message aimed at them took the server down. A player's permissions are now cleared when they leave, as the Java edition does, and sending a message to a player who is no longer on the server is a no-op rather than an error.
 
 ## [0.11.9] - 2026-08-17

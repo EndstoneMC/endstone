@@ -781,6 +781,22 @@ extra = 0
 pattern = "55 41 57 41 56 41 54 56 57 53 48 81 EC ? ? ? ? 48 8D AC 24 ? ? ? ? 44 0F 29 9D ? ? ? ? 44 0F 29 95 ? ? ? ? 44 0F 29 8D ? ? ? ? 44 0F 29 45"
 
 [[signatures]]
+name = "?stopSleepInBed@Player@@UEAAX_N0@Z"
+relative = false
+extra = 0
+# 1. find bytes "33 20 73 74 6F 70 53 6C 65 65 70 20 62 65 64 20 70 6F 73 00" = "3 stopSleep bed pos\0"
+#    (unique)
+# 2. its lone data xref (an ActorValueValidation::_fireTelemetryEvent caller arg) is a `lea` 0x1c2 past
+#    the entry of this function
+# 3. walk up to the prologue - the nearest 16-aligned, CC-padded entry above that `lea`
+# 4. confirm identity at the entry: the body opens on the isSleeping() dispatch (`mov rax, [rcx]` /
+#    `mov rax, [rax+148h]` / `call cs:__guard_dispatch_icall_fptr` / `test al, al` / `jz` - the early
+#    return for a player who is not sleeping), then loads the 3FE666663F19999Ah bounding-box immediate at
+#    +0E7h and reaches BedBlock::setOccupied / BedBlock::findWakeupPosition / BedBlockActor::stopSleepingOn
+# 5. cross-check the neighbourhood: startSleepInBed sits 1550h below it in the same TU
+pattern = "55 41 57 41 56 41 55 41 54 56 57 53 48 81 EC ? ? ? ? 48 8D AC 24 ? ? ? ? 0F 29 B5 ? ? ? ? 48 C7 45 ? FE FF FF FF 44 89 C7 89 D3 48 89 CE 48 8B 01 48 8B 80 ? ? ? ? FF 15"
+
+[[signatures]]
 name = "?take@Player@@QEAA_NAEAVActor@@HH@Z"
 relative = false
 extra = 0

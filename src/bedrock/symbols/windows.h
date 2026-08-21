@@ -11,7 +11,7 @@
 
 namespace endstone::runtime {
 
-static constexpr std::array<std::pair<std::string_view, std::size_t>, 71> symbols = {{
+static constexpr std::array<std::pair<std::string_view, std::size_t>, 72> symbols = {{
     {"BlockState::StateListNode::mHead", 211294960},
     {"Enchant::mEnchants", 211141912},
     {"MobEffect::mMobEffects", 211424880},
@@ -102,6 +102,7 @@ static constexpr std::array<std::pair<std::string_view, std::size_t>, 71> symbol
     {"?completeUsingItem@Player@@QEAAXXZ", 2206272},
     {"?drop@Player@@UEAA_NAEBVItemStack@@_N@Z", 2302400},
     {"?startSleepInBed@Player@@UEAA?AW4BedSleepingResult@@AEBVBlockPos@@_NM@Z", 2182176},
+    {"?stopSleepInBed@Player@@UEAAX_N0@Z", 2187632},
     {"?take@Player@@QEAA_NAEAVActor@@HH@Z", 2251552},
     {"?teleportTo@Player@@UEAAXAEBVVec3@@_NHH1@Z", 2176288},
     // PushableByEntityUtility

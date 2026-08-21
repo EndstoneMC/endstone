@@ -24,6 +24,7 @@ class Level;
 namespace core {
 class EndstoneActor;
 class EndstoneLevel;
+class EndstonePacketHandler;
 class EndstonePlayer;
 class EndstoneServer;
 class EndstoneServerNetworkEventHandler;

@@ -28,7 +28,6 @@
 #include "endstone/core/actor/mob.h"
 #include "endstone/core/inventory/player_inventory.h"
 #include "endstone/input.h"
-#include "endstone/inventory/meta/book_meta.h"
 #include "endstone/player.h"
 #include "permissions/permissible_base.h"
 
@@ -128,8 +127,6 @@ public:
     void sendPacket(int packet_id, std::string_view payload) const override;
     void sendMap(MapView &map) override;
 
-    bool handlePacket(Packet &packet);
-    void applyPendingBookMeta();
     void onFormClose(std::uint32_t form_id, PlayerFormCloseReason reason);
     void onFormResponse(std::uint32_t form_id, const nlohmann::json &json);
     void doFirstSpawn();
@@ -142,6 +139,7 @@ public:
 
 private:
     friend class ::ServerNetworkHandler;
+    friend class EndstonePacketHandler;
 
     struct RecipeBookSettings {
         bool filtering;
@@ -163,8 +161,6 @@ private:
     std::unordered_map<std::uint32_t, FormVariant> forms_;
     Input last_input_;
     std::optional<RecipeBookSettings> last_recipe_book_settings_;
-    Nullable<BookMeta> pending_book_meta_;
-    int pending_book_slot_ = -1;
     bool spawned_ = false;
     bool last_op_status_ = false;
 };

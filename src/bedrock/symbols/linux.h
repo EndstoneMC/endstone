@@ -11,7 +11,7 @@
 
 namespace endstone::runtime {
 
-static constexpr std::array<std::pair<std::string_view, std::size_t>, 71> symbols = {{
+static constexpr std::array<std::pair<std::string_view, std::size_t>, 72> symbols = {{
     {"BlockState::StateListNode::mHead", 245468000},
     {"Enchant::mEnchants", 245294016},
     {"MobEffect::mMobEffects", 245274360},
@@ -100,6 +100,7 @@ static constexpr std::array<std::pair<std::string_view, std::size_t>, 71> symbol
     // Player
     {"_ZN6Player10teleportToERK4Vec3biib", 188137216},
     {"_ZN6Player13addExperienceEi", 188297776},
+    {"_ZN6Player14stopSleepInBedEbb", 188148304},
     {"_ZN6Player15startSleepInBedERK8BlockPosbf", 188144032},
     {"_ZN6Player17completeUsingItemEv", 188167680},
     {"_ZN6Player4dropERK9ItemStackb", 188279872},

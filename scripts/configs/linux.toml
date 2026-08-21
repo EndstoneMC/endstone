@@ -666,6 +666,22 @@ extra = 0
 pattern = "55 41 57 41 56 41 55 41 54 53 48 81 EC ? ? ? ? 45 89 CC 45 89 C6 89 CD 41 89 D5"
 
 [[signatures]]
+name = "_ZN6Player14stopSleepInBedEbb"
+relative = false
+extra = 0
+# 1. find bytes "33 20 73 74 6F 70 53 6C 65 65 70 20 62 65 64 20 70 6F 73 00" = "3 stopSleep bed pos\0"
+#    (unique)
+# 2. its lone data xref (an ActorValueValidation::_fireTelemetryEvent caller arg) is a `lea` 0x1b5 past
+#    the entry of this function
+# 3. walk up to the prologue - the nearest CC-padded entry above that `lea`
+# 4. confirm identity at the entry: the body opens on the isSleeping() dispatch (`mov rax, [rdi]` /
+#    `call qword [rax+150h]` / `test al, al` / `jz` - the early return for a player who is not sleeping),
+#    then loads the 3FE666663F19999Ah bounding-box immediate and reaches BedBlock::setOccupied /
+#    BedBlock::findWakeupPosition / BedBlockActor::stopSleepingOn
+# 5. cross-check the neighbourhood: startSleepInBed is 10B0h below it in the same TU
+pattern = "55 41 57 41 56 41 55 41 54 53 48 81 EC ? ? ? ? 89 D5 41 89 F5 49 89 FE 48 8B 07 FF 90 ? ? ? ? 84 C0 0F 84"
+
+[[signatures]]
 name = "_ZN6Player15startSleepInBedERK8BlockPosbf"
 relative = false
 extra = 0
