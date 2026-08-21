@@ -10,6 +10,7 @@ add_executable(endstone_test
         bedrock/test_binary_stream.cpp
         bedrock/test_block_pos.cpp
         bedrock/test_check.cpp
+        bedrock/test_command_selector.cpp
         bedrock/test_function_ref.cpp
         bedrock/test_hashed_string.cpp
         bedrock/test_sem_version.cpp
