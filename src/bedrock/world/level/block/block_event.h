@@ -72,11 +72,13 @@ BEDROCK_STATIC_ASSERT_SIZE(BlockQueuedTickEvent, 48, 40);
 
 class BlockPlayerInteractEvent : public BlockEventBase {
 public:
-    const BlockSource &getBlockSource() const override;
-    BlockPlayerInteractEvent(Player &, BlockPos, FacingID, std::optional<Vec3>);
+    static constexpr EventType Type = EventType::PlayerInteract;
 
-    Player &player;
-    std::optional<bool> successful;
+    BlockPlayerInteractEvent(Player &, BlockPos, FacingID, std::optional<Vec3>);
+    [[nodiscard]] const BlockSource &getBlockSource() const override;
+
+    Player &player;                  // Endstone: private -> public
+    std::optional<bool> successful;  // Endstone: private -> public
     const std::optional<Vec3> hit;
     const FacingID face;
 };
