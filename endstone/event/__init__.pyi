@@ -67,6 +67,7 @@ __all__ = [
     "PlayerBucketActorEvent",
     "PlayerChatEvent",
     "PlayerCommandEvent",
+    "PlayerCraftItemEvent",
     "PlayerDeathEvent",
     "PlayerDimensionChangeEvent",
     "PlayerDropItemEvent",
@@ -759,6 +760,30 @@ class PlayerCommandEvent(PlayerEvent, Cancellable):
 
     @command.setter
     def command(self, arg1: str) -> None: ...
+
+class PlayerCraftItemEvent(PlayerEvent, Cancellable):
+    """
+    Called when a player crafts an item.
+
+    If the event is cancelled the item will not be crafted and the ingredients will not be consumed.
+    """
+    @property
+    def item(self) -> ItemStack:
+        """
+        An `ItemStack` for the item being crafted.
+        """
+
+    @property
+    def recipe_id(self) -> str:
+        """
+        The identifier of the recipe used.
+        """
+
+    @property
+    def amount(self) -> int:
+        """
+        The number of times the recipe is being crafted.
+        """
 
 class PlayerDimensionChangeEvent(PlayerEvent):
     """
