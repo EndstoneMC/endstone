@@ -14,9 +14,6 @@
 
 #pragma once
 
-#include <memory>
-#include <stdexcept>
-
 #include "endstone/event/cancellable.h"
 #include "endstone/event/player/player_event.h"
 #include "endstone/inventory/meta/book_meta.h"
@@ -30,11 +27,10 @@ class PlayerEditBookEvent final : public Cancellable<PlayerEvent> {
 public:
     ENDSTONE_EVENT(PlayerEditBookEvent);
 
-    PlayerEditBookEvent(const NotNull<Player> &player, int slot, const BookMeta &previous_book_meta,
-                        const BookMeta &new_book_meta,
-                        bool signing)
-        : Cancellable(player), slot_(slot), previous_book_meta_(cloneBookMeta(previous_book_meta)),
-          new_book_meta_(cloneBookMeta(new_book_meta)), signing_(signing)
+    PlayerEditBookEvent(const NotNull<Player> &player, int slot, const NotNull<BookMeta> &previous_book_meta,
+                        const NotNull<BookMeta> &new_book_meta, bool signing)
+        : Cancellable(player), slot_(slot), previous_book_meta_(previous_book_meta->clone().cast<BookMeta>()),
+          new_book_meta_(new_book_meta->clone().cast<BookMeta>()), signing_(signing)
     {
     }
 
@@ -50,28 +46,24 @@ public:
      *
      * @return the book metadata before the edit
      */
-    [[nodiscard]] const BookMeta &getPreviousBookMeta() const { return *previous_book_meta_; }
+    [[nodiscard]] const NotNull<BookMeta> &getPreviousBookMeta() const { return previous_book_meta_; }
 
     /**
-     * Gets the metadata after the edit.
-     *
-     * @return the mutable book metadata after the edit
-     */
-    [[nodiscard]] BookMeta &getNewBookMeta() { return *new_book_meta_; }
-
-    /**
-     * Gets the metadata after the edit.
+     * Gets the metadata that will be applied after the edit. Changes made to it take effect.
      *
      * @return the book metadata after the edit
      */
-    [[nodiscard]] const BookMeta &getNewBookMeta() const { return *new_book_meta_; }
+    [[nodiscard]] const NotNull<BookMeta> &getNewBookMeta() const { return new_book_meta_; }
 
     /**
      * Replaces the metadata that will be applied after the edit.
      *
      * @param new_book_meta the metadata to apply after the edit
      */
-    void setNewBookMeta(const BookMeta &new_book_meta) { new_book_meta_ = cloneBookMeta(new_book_meta); }
+    void setNewBookMeta(const NotNull<BookMeta> &new_book_meta)
+    {
+        new_book_meta_ = new_book_meta->clone().cast<BookMeta>();
+    }
 
     /**
      * Gets whether the book should be signed.
@@ -88,20 +80,9 @@ public:
     void setSigning(bool signing) { signing_ = signing; }
 
 private:
-    [[nodiscard]] static std::unique_ptr<BookMeta> cloneBookMeta(const BookMeta &meta)
-    {
-        auto clone = meta.clone();
-        auto *book_meta = clone->as<BookMeta>();
-        if (book_meta == nullptr) {
-            throw std::invalid_argument("Book metadata must implement BookMeta");
-        }
-        clone.release();
-        return std::unique_ptr<BookMeta>(book_meta);
-    }
-
     int slot_;
-    std::unique_ptr<BookMeta> previous_book_meta_;
-    std::unique_ptr<BookMeta> new_book_meta_;
+    NotNull<BookMeta> previous_book_meta_;
+    NotNull<BookMeta> new_book_meta_;
     bool signing_;
 };
 

@@ -129,7 +129,7 @@ public:
     void sendMap(MapView &map) override;
 
     bool handlePacket(Packet &packet);
-    void handlePacketPost();
+    void applyPendingBookMeta();
     void onFormClose(std::uint32_t form_id, PlayerFormCloseReason reason);
     void onFormResponse(std::uint32_t form_id, const nlohmann::json &json);
     void doFirstSpawn();
@@ -163,7 +163,7 @@ private:
     std::unordered_map<std::uint32_t, FormVariant> forms_;
     Input last_input_;
     std::optional<RecipeBookSettings> last_recipe_book_settings_;
-    std::unique_ptr<BookMeta> pending_book_meta_;
+    Nullable<BookMeta> pending_book_meta_;
     int pending_book_slot_ = -1;
     bool spawned_ = false;
     bool last_op_status_ = false;

@@ -38,7 +38,7 @@ public:
             if (endstone_player->handlePacket(*packet)) {
                 original_.handle(network_id, callback, packet);
                 if (packet->getId() == MinecraftPacketIds::BookEdit) {
-                    endstone_player->handlePacketPost();
+                    endstone_player->applyPendingBookMeta();
                 }
             }
         }

@@ -712,7 +712,7 @@ bool EndstonePlayer::handlePacket(Packet &packet)
         return true;
     }
     case MinecraftPacketIds::BookEdit: {
-        pending_book_meta_.reset();
+        pending_book_meta_ = nullptr;
         pending_book_slot_ = -1;
 
         auto &pk = static_cast<BookEditPacket &>(packet);
@@ -722,16 +722,19 @@ bool EndstonePlayer::handlePacket(Packet &packet)
         }
 
         const auto item = getInventory().getItem(slot);
-        if (!item || !book_edit::isBook(*item)) {
+        if (!item || !book_edit::isWritableBook(*item)) {
             return true;
         }
 
-        auto previous_book_meta = book_edit::createBookMeta(*item);
-        auto new_book_meta = book_edit::createBookMeta(*item);
+        const auto previous_book_meta = book_edit::createBookMeta(*item);
+        const auto new_book_meta = book_edit::createBookMeta(*item);
+        if (!previous_book_meta || !new_book_meta) {
+            return true;
+        }
         book_edit::applyBookEditOperation(*new_book_meta, pk.payload.operation);
         const auto is_signing = std::holds_alternative<BookEditAction::Finalize>(pk.payload.operation);
 
-        PlayerEditBookEvent event{self(), slot, *previous_book_meta, *new_book_meta, is_signing};
+        PlayerEditBookEvent event{self(), slot, previous_book_meta, new_book_meta, is_signing};
         getServer().getPluginManager().callEvent(event);
         if (event.isCancelled()) {
             return false;
@@ -740,18 +743,14 @@ bool EndstonePlayer::handlePacket(Packet &packet)
         if (event.isSigning() != is_signing) {
             auto edited_item = *item;
             edited_item.setType(event.isSigning() ? book_edit::WRITTEN_BOOK : book_edit::WRITABLE_BOOK);
-            auto item_meta = book_edit::createBookItemMeta(
-                event.getNewBookMeta(),
-                event.isSigning() ? book_edit::WRITTEN_BOOK : book_edit::WRITABLE_BOOK);
-            if (item_meta && edited_item.setItemMeta(item_meta.get())) {
+            if (edited_item.setItemMeta(event.getNewBookMeta().get().get())) {
                 getInventory().setItem(slot, std::move(edited_item));
             }
             return false;
         }
 
-        if (!EndstoneItemFactory::instance().equals(&event.getNewBookMeta(), new_book_meta.get())) {
-            auto new_meta = event.getNewBookMeta().clone();
-            pending_book_meta_.reset(static_cast<BookMeta *>(new_meta.release()));
+        if (!EndstoneItemFactory::instance().equals(event.getNewBookMeta().get().get(), new_book_meta.get().get())) {
+            pending_book_meta_ = event.getNewBookMeta();
             pending_book_slot_ = slot;
         }
         return true;
@@ -1021,14 +1020,15 @@ bool EndstonePlayer::handlePacket(Packet &packet)
     }
 }
 
-void EndstonePlayer::handlePacketPost()
+void EndstonePlayer::applyPendingBookMeta()
 {
-    if (pending_book_meta_ == nullptr) {
+    if (!pending_book_meta_) {
         return;
     }
 
-    auto new_book_meta = std::move(pending_book_meta_);
+    const auto new_book_meta = pending_book_meta_;
     const auto slot = pending_book_slot_;
+    pending_book_meta_ = nullptr;
     pending_book_slot_ = -1;
     if (slot < 0 || slot >= getInventory().getSize()) {
         return;
@@ -1039,9 +1039,7 @@ void EndstonePlayer::handlePacketPost()
         return;
     }
 
-    const auto type = item->getType().getId();
-    auto item_meta = book_edit::createBookItemMeta(*new_book_meta, type);
-    if (item_meta && item->setItemMeta(item_meta.get())) {
+    if (item->setItemMeta(new_book_meta.get().get())) {
         getInventory().setItem(slot, std::move(item));
     }
 }

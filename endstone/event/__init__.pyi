@@ -805,7 +805,7 @@ class PlayerEditBookEvent(PlayerEvent, Cancellable):
     @property
     def new_book_meta(self) -> BookMeta:
         """
-        The book metadata after the edit.
+        The book metadata that will be applied after the edit.
         """
 
     @new_book_meta.setter

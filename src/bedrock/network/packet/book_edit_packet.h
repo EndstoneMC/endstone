@@ -53,7 +53,7 @@ struct Finalize {
 
 struct BookEditPacketPayload {
     using Operation = std::variant<BookEditAction::ReplacePage, BookEditAction::AddPage, BookEditAction::DeletePage,
-                                    BookEditAction::SwapPages, BookEditAction::Finalize>;
+                                   BookEditAction::SwapPages, BookEditAction::Finalize>;
 
     int book_slot;
     Operation operation;
@@ -63,7 +63,7 @@ BEDROCK_STATIC_ASSERT_SIZE(BookEditPacketPayload, 112, 88);
 struct BookEditPacketInfo {
     static constexpr auto PACKET_NAME = "BookEditPacket";
     static constexpr auto PACKET_ID = MinecraftPacketIds::BookEdit;
-    static constexpr auto DEFAULT_PACKET_SERIALIZATION_MODE = SerializationMode::SideBySide_LogOnMismatch;
+    static constexpr auto DEFAULT_PACKET_SERIALIZATION_MODE = SerializationMode::CerealOnly;
     static constexpr auto COMPRESSIBILITY = Compressibility::Compressible;
 };
 

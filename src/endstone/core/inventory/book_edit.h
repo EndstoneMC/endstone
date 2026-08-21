@@ -14,8 +14,6 @@
 
 #pragma once
 
-#include <memory>
-
 #include "bedrock/network/packet/book_edit_packet.h"
 #include "endstone/inventory/item_stack.h"
 #include "endstone/inventory/meta/book_meta.h"
@@ -24,12 +22,11 @@ namespace endstone::core::book_edit {
 
 inline constexpr auto WRITABLE_BOOK = ItemTypeId::minecraft("writable_book");
 inline constexpr auto WRITTEN_BOOK = ItemTypeId::minecraft("written_book");
+inline constexpr int MAX_PAGE_COUNT = 50;
 
-[[nodiscard]] bool isBook(const ItemStack &item);
+[[nodiscard]] bool isWritableBook(const ItemStack &item);
 
-[[nodiscard]] std::unique_ptr<BookMeta> createBookMeta(const ItemStack &item);
-
-[[nodiscard]] std::unique_ptr<ItemMeta> createBookItemMeta(const BookMeta &meta, ItemTypeId type);
+[[nodiscard]] Nullable<BookMeta> createBookMeta(const ItemStack &item);
 
 void applyBookEditOperation(BookMeta &meta, const ::BookEditPacketPayload::Operation &operation);
 
