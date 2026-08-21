@@ -21,7 +21,6 @@ class Item;
 namespace endstone::runtime {
 
 BucketFillType getBucketFillType(const ::Item &item);
-bool isWaterContentBucket(const ::Item &item);
 void installBucketHook();
 
 }  // namespace endstone::runtime

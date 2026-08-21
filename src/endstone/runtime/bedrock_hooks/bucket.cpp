@@ -26,7 +26,7 @@
 class BucketItem : public Item {
 public:
     [[nodiscard]] BucketFillType getFillType() const { return fill_type_; }
-    InteractionResult useOn(ItemStack &, Actor &, BlockPos, FacingID, Vec3 const &) const;
+    InteractionResult _useOn(ItemStack &, Actor &, BlockPos, FacingID, Vec3 const &) const;
 
 private:
     BucketFillType fill_type_;
@@ -37,8 +37,8 @@ BucketFillType endstone::runtime::getBucketFillType(const ::Item &item)
     return item.isBucket() ? static_cast<const ::BucketItem &>(item).getFillType() : BucketFillType::Unknown;
 }
 
-InteractionResult BucketItem::useOn(::ItemStack &item_stack, ::Actor &actor, BlockPos position, FacingID face,
-                                    const Vec3 &click_pos) const
+InteractionResult BucketItem::_useOn(::ItemStack &item_stack, ::Actor &actor, BlockPos position, FacingID face,
+                                     const Vec3 &click_pos) const
 {
     const auto action = endstone::runtime::handleBucketEmptyEvent(actor, position, face, item_stack);
     if (action == endstone::runtime::BucketEmptyAction::Cancel) {
@@ -48,8 +48,8 @@ InteractionResult BucketItem::useOn(::ItemStack &item_stack, ::Actor &actor, Blo
         return InteractionResult::Success();
     }
 
-    const auto result = ENDSTONE_VHOOK_CALL_ORIGINAL(&BucketItem::useOn, this, item_stack, actor, position, face,
-                                                     click_pos);
+    const auto result =
+        ENDSTONE_VHOOK_CALL_ORIGINAL(&BucketItem::_useOn, this, item_stack, actor, position, face, click_pos);
     endstone::runtime::handleBucketFillResult(result, item_stack, actor, position);
     endstone::runtime::handleBucketEmptyResult(result, item_stack, actor, position);
     return result;
@@ -74,9 +74,9 @@ void endstone::runtime::installBucketHook()
     }
 
 #ifdef _WIN32
-    endstone::runtime::vhook::create<129>(bucket.get(), &BucketItem::useOn);
+    endstone::runtime::vhook::create<129>(bucket.get(), &BucketItem::_useOn);
 #else
-    endstone::runtime::vhook::create<130>(bucket.get(), &BucketItem::useOn);
+    endstone::runtime::vhook::create<130>(bucket.get(), &BucketItem::_useOn);
 #endif
     installed = true;
 }
