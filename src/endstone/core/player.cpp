@@ -282,8 +282,7 @@ bool EndstonePlayer::performCommand(std::string command) const
 std::optional<Location> EndstonePlayer::getRespawnLocation() const
 {
     const auto &point = getHandle().getPlayerRespawnPoint();
-    const auto &position = point.spawn_block_pos == BlockPos::MIN ? point.player_position : point.spawn_block_pos;
-    if (position == BlockPos::MIN) {
+    if (point.player_position == BlockPos::MIN || point.dimension == VanillaDimensions::Undefined) {
         return std::nullopt;
     }
 
@@ -291,7 +290,7 @@ std::optional<Location> EndstonePlayer::getRespawnLocation() const
     if (!dimension) {
         return std::nullopt;
     }
-    return Location{dimension, position.x, position.y, position.z};
+    return Location{dimension, point.player_position.x, point.player_position.y, point.player_position.z};
 }
 
 void EndstonePlayer::setRespawnLocation(std::optional<Location> location)

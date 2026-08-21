@@ -531,20 +531,17 @@ class Player(Mob):
     @property
     def respawn_location(self) -> Location | None:
         """
-        The player's respawn location, or `None` if not set.
-        """
+        The location where the player will respawn, or `None` if they don't have a valid respawn point.
 
-    def set_respawn_location(self, location: Location | None) -> None:
-        """
-        Sets this player's respawn location.
-
-        Args:
-            location: Respawn location, or `None` to clear it. Its dimension must be loaded when set.
+        Assigning `None` clears the respawn point. When a location is assigned, its dimension must be loaded.
 
         Note:
-            Bedrock does not persist respawn yaw/pitch.
+            Only the block coordinates and the dimension are written back; Bedrock does not persist yaw/pitch for a
+            respawn point.
         """
 
+    @respawn_location.setter
+    def respawn_location(self, arg1: Location | None) -> None: ...
     @property
     def is_sneaking(self) -> bool:
         """
