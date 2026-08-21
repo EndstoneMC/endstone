@@ -16,8 +16,10 @@
 
 #include <cstddef>
 #include <functional>
+#include <limits>
 #include <memory>
 #include <string>
+#include <type_traits>
 #include <vector>
 
 #include "bedrock/bedrock.h"
@@ -48,6 +50,8 @@ using CommandResultVector = std::shared_ptr<std::vector<Actor *>>;
 
 class CommandSelectorBase {
 public:
+    static constexpr std::size_t Unlimited = 4294967295;
+
     using FilterFunc = std::function<bool(const CommandOrigin &, const Actor &)>;
 
     [[nodiscard]] CommandSelectionType getType() const { return type_; }
@@ -57,41 +61,53 @@ public:
     [[nodiscard]] bool isExplicitIdSelector() const { return is_explicit_id_selector_; }
 
 protected:
+    explicit CommandSelectorBase(bool force_player) : force_player_(force_player) {}
+
     [[nodiscard]] CommandResultVector newResults(const CommandOrigin &origin) const;
 
 private:
-    int version_;                                                            // +0
-    CommandSelectionType type_;                                              // +4
-    CommandSelectionOrder order_;                                            // +8
+    int version_{0};                                                         // +0
+    CommandSelectionType type_{CommandSelectionType::Self};                  // +4
+    CommandSelectionOrder order_{CommandSelectionOrder::Sorted};             // +8
     std::vector<InvertableFilter<std::string>> name_filters_;                // +16
     std::vector<InvertableFilter<ActorDefinitionIdentifier>> type_filters_;  // +40
     std::vector<InvertableFilter<HashedString>> family_filters_;             // +64
     std::vector<InvertableFilter<std::string>> tag_filters_;                 // +88
     std::vector<FilterFunc> filter_chain_;                                   // +112
-    CommandPosition position_;                                               // +136
-    Vec3 box_deltas_;                                                        // +152
-    float radius_min_sqr_;                                                   // +164
-    float radius_max_sqr_;                                                   // +168
-    std::size_t count_;                                                      // +176
-    bool include_dead_players_;                                              // +184
-    bool is_position_bound_;                                                 // +185
-    bool distance_filtered_;                                                 // +186
-    bool position_filtered_;                                                 // +187
-    bool count_filtered_;                                                    // +188
-    bool have_deltas_;                                                       // +189
-    bool force_player_;                                                      // +190
-    bool exclude_agents_;                                                    // +191
-    bool is_explicit_id_selector_;                                           // +192
-    bool force_dimension_filtering_;                                         // +193
-    bool is_name_filters_only_in_chain_;                                     // +194
+    CommandPosition position_{};                                             // +136
+    Vec3 box_deltas_{};                                                      // +152
+    float radius_min_sqr_{0.0F};                                             // +164
+    float radius_max_sqr_{std::numeric_limits<float>::max()};                // +168
+    std::size_t count_{Unlimited};                                           // +176
+    bool include_dead_players_{false};                                       // +184
+    bool is_position_bound_{false};                                          // +185
+    bool distance_filtered_{false};                                          // +186
+    bool position_filtered_{false};                                          // +187
+    bool count_filtered_{false};                                             // +188
+    bool have_deltas_{false};                                                // +189
+    bool force_player_{false};                                               // +190
+    bool exclude_agents_{false};                                             // +191
+    bool is_explicit_id_selector_{false};                                    // +192
+    bool force_dimension_filtering_{false};                                  // +193
+    bool is_name_filters_only_in_chain_{true};                               // +194
 };
 BEDROCK_STATIC_ASSERT_SIZE(CommandSelectorBase, 200, 200);
 
 template <typename T>
 class CommandSelector : public CommandSelectorBase {
 public:
+    CommandSelector() : CommandSelectorBase(std::is_same_v<T, ::Player>) {}
+
     using CommandSelectorBase::newResults;
 };
 
 using ActorSelector = CommandSelector<Actor>;
 using PlayerSelector = CommandSelector<Player>;
+
+/**
+ * The parse rule the command registry uses for a target selector.
+ *
+ * The actor and the player selector share one rule; which of the two a parameter yields is decided
+ * by the storage it is parsed into, not by the rule.
+ */
+const CommandRegistry::ParamParseRule &getCommandSelectorParseRule();

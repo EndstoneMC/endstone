@@ -56,6 +56,7 @@ add_library(bedrock STATIC
         resources/resource_pack_stack.cpp
         server/server_instance.cpp
         server/commands/command.cpp
+        server/commands/command_selector.cpp
         server/commands/command_origin.cpp
         server/commands/command_origin_loader.cpp
         server/commands/command_output.cpp

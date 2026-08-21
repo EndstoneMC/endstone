@@ -324,6 +324,35 @@ rip_relative = true
 rip_offset = 1
 
 [[signatures]]
+name = "CommandRegistry::ParseRuleFor<CommandSelector<Actor>>::instance"
+relative = false
+extra = 0
+# 1. unlike Windows, every ParseRuleFor<T>::instance is filled from one combined initializer for
+#    CommandRegistry.cpp, so the three selector rules sit back to back inside it
+# 2. the selector rules carry HardNonTerminal::Selection (0x100008), so `C7 05 ? ? ? ? 08 00 10 00` finds
+#    CommandSelector<Actor> and CommandSelector<Player> and nothing else
+# 3. disambiguate by running on into the next block: Actor is followed by WildcardCommandSelector<Actor>,
+#    whose symbol is WildcardSelection (0x10000a), so the trailing `0A 00 10 00` pins which one matched
+# 4. rip_offset lands on the `mov [rip+X], rax` displacement, which targets the instance itself
+pattern = "48 8D 05 ? ? ? ? 48 89 05 ? ? ? ? 48 C7 05 ? ? ? ? 00 00 00 00 C7 05 ? ? ? ? 08 00 10 00 48 8D 05 ? ? ? ? 48 89 05 ? ? ? ? 48 C7 05 ? ? ? ? 00 00 00 00 C7 05 ? ? ? ? 0A 00 10 00"
+rip_relative = true
+rip_offset = 10
+
+[[signatures]]
+name = "_ZNK19CommandSelectorBase10newResultsERK13CommandOrigin"
+relative = false
+extra = 0
+# 1. this is what actually turns a parsed selector into actors; CommandSelector<T>::results is only a thin
+#    wrapper around it, so one symbol serves both the actor and the player selector
+# 2. the binary is fully stripped, but its own lambdas leave RTTI behind: the type name
+#    "ZNK19CommandSelectorBase10newResultsERK13CommandOriginE3$_0" is the sort-key lambda. Follow that
+#    string to the typeinfo, the typeinfo to the std::__function::__func vtable, and the vtable to the
+#    code that constructs the std::function - that code is inside newResults
+# 3. confirm by shape: ~60 callers (every vanilla command that takes a target) and the same four
+#    MemoryOperators.cpp strings the Windows build shows
+# 4. confirm vs the old named DB
+pattern = "55 41 57 41 56 41 55 41 54 53 48 81 EC ? ? ? ? 49 89 D4 48 89 F3 48 89 FD 48 8B 05"
+[[signatures]]
 name = "_ZN12CommandUtils12getActorNameERK5Actor"
 relative = false
 extra = 0

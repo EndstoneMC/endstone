@@ -39,3 +39,16 @@ TEST(CommandSelectorTest, SelectionOrderMatchesTheGameValues)
     EXPECT_EQ(static_cast<int>(CommandSelectionOrder::InverseSorted), 1);
     EXPECT_EQ(static_cast<int>(CommandSelectionOrder::Random), 2);
 }
+
+TEST(CommandSelectorTest, DefaultsMatchTheGameConstructor)
+{
+    const CommandSelector<Actor> selector;
+
+    EXPECT_EQ(selector.getType(), CommandSelectionType::Self);
+    EXPECT_EQ(selector.getOrder(), CommandSelectionOrder::Sorted);
+    EXPECT_FALSE(selector.isExplicitIdSelector());
+
+    // A zero-initialised selector would count zero targets and search a zero radius, so it would
+    // silently match nothing. The game constructor starts unbounded.
+    EXPECT_EQ(selector.getResultCount(), CommandSelectorBase::Unlimited);
+}

@@ -11,8 +11,9 @@
 
 namespace endstone::runtime {
 
-static constexpr std::array<std::pair<std::string_view, std::size_t>, 75> symbols = {{
+static constexpr std::array<std::pair<std::string_view, std::size_t>, 77> symbols = {{
     {"BlockState::StateListNode::mHead", 245468000},
+    {"CommandRegistry::ParseRuleFor<CommandSelector<Actor>>::instance", 244780312},
     {"Enchant::mEnchants", 245294016},
     {"MobEffect::mMobEffects", 245274360},
     {"Potion::mPotionsById", 245353632},
@@ -51,6 +52,8 @@ static constexpr std::array<std::pair<std::string_view, std::size_t>, 75> symbol
     {"_ZN15CommandRegistry24registerOverloadInternalERNS_9SignatureERNS_8OverloadE", 159975664},
     {"_ZNK15CommandRegistry14symbolToStringENS_6SymbolE", 159852320},
     {"_ZNK15CommandRegistry26serializeAvailableCommandsEv", 160039360},
+    // CommandSelectorBase
+    {"_ZNK19CommandSelectorBase10newResultsERK13CommandOrigin", 160056128},
     // CommandUtils
     {"_ZN12CommandUtils12getActorNameERK5Actor", 159774800},
     // CraftingDataPacketPayload

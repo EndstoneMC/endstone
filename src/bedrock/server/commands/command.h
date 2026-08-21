@@ -28,14 +28,15 @@ class MinecraftCommandWrapper;
 
 class CommandPosition {
 public:
+    CommandPosition() = default;
     explicit CommandPosition(const Vec3 &);
 
 private:
-    Vec3 offset_;      // +0
-    bool relative_x_;  // +12
-    bool relative_y_;  // +13
-    bool relative_z_;  // +14
-    bool local_;       // +15
+    Vec3 offset_{};          // +0
+    bool relative_x_{true};  // +12
+    bool relative_y_{true};  // +13
+    bool relative_z_{true};  // +14
+    bool local_{false};      // +15
 };
 
 class CommandPositionFloat : public CommandPosition {};

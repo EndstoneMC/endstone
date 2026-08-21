@@ -11,8 +11,9 @@
 
 namespace endstone::runtime {
 
-static constexpr std::array<std::pair<std::string_view, std::size_t>, 75> symbols = {{
+static constexpr std::array<std::pair<std::string_view, std::size_t>, 77> symbols = {{
     {"BlockState::StateListNode::mHead", 211294960},
+    {"CommandRegistry::ParseRuleFor<CommandSelector<Actor>>::instance", 210651704},
     {"Enchant::mEnchants", 211141912},
     {"MobEffect::mMobEffects", 211424880},
     {"Potion::mPotionsById", 211501744},
@@ -50,6 +51,8 @@ static constexpr std::array<std::pair<std::string_view, std::size_t>, 75> symbol
     {"?registerOverloadInternal@CommandRegistry@@AEAAXAEAUSignature@1@AEAUOverload@1@@Z", 3589280},
     {"?serializeAvailableCommands@CommandRegistry@@QEBA?AVAvailableCommandsPacket@@XZ", 3654624},
     {"?symbolToString@CommandRegistry@@AEBA?AV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@VSymbol@1@@Z", 3423632},
+    // CommandSelectorBase
+    {"?newResults@CommandSelectorBase@@IEBA?AV?$shared_ptr@V?$vector@PEAVActor@@V?$allocator@PEAVActor@@@std@@@std@@@std@@AEBVCommandOrigin@@@Z", 3682048},
     // CommandUtils
     {"?getActorName@CommandUtils@@YA?AV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@AEBVActor@@@Z", 3711424},
     // CraftingDataPacketPayload
