@@ -105,7 +105,7 @@ bool EndstoneCommandMap::dispatch(const NotNull<CommandSender> &sender, std::str
         }
         try {
             if (const auto *tree = dynamic_cast<const TreeCommandAdapter *>(compiled)) {
-                return tree->runFrom(sender);
+                return tree->runFrom(sender, *command_origin);
             }
             return command->execute(sender, static_cast<const MinecraftCommandAdapter *>(compiled)->args_);
         }

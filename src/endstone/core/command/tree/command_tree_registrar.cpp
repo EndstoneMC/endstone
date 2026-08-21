@@ -16,6 +16,7 @@
 
 #include <format>
 
+#include "bedrock/server/commands/command_selector.h"
 #include "endstone/core/command/tree/tree_command.h"
 
 namespace endstone::core {
@@ -144,6 +145,14 @@ nonstd::expected<CommandParameterData, std::string> CommandTreeRegistrar::makeAr
         return hardNonTerminalParameter(name, HardNonTerminal::RawText, index, command);
     case ArgumentKind::Json:
         return hardNonTerminalParameter(name, HardNonTerminal::JsonObject, index, command);
+    case ArgumentKind::Player:
+    case ArgumentKind::Players:
+    case ArgumentKind::Entity:
+    case ArgumentKind::Entities: {
+        auto data = basicParameter(name, index, command);
+        data.parse_rule = &getCommandSelectorParseRule();
+        return data;
+    }
     case ArgumentKind::Enumeration: {
         const auto &builtin = static_cast<const BuiltinArgumentType &>(type);
         return newEnumParameter(name, builtin.getName(), builtin.getValues(), index, command, registry);

@@ -20,7 +20,11 @@
 
 #include <nlohmann/json.hpp>
 
+#include "bedrock/world/actor/actor.h"
+#include "bedrock/world/actor/player/player.h"
+#include "endstone/actor/actor.h"
 #include "endstone/command/command_error.h"
+#include "endstone/player.h"
 
 namespace endstone::core {
 
@@ -51,6 +55,46 @@ float parseFloat(const std::string &text, const std::string_view name)
     catch (const std::exception &) {
         throw CommandError(std::format("'{}' is not a number for '{}'.", text, name));
     }
+}
+
+std::vector<NotNull<Actor>> toActors(const CommandResultVector &results)
+{
+    std::vector<NotNull<Actor>> actors;
+    if (!results) {
+        return actors;
+    }
+    for (auto *actor : *results) {
+        if (actor) {
+            actors.emplace_back(actor->getEndstoneActor<Actor>());
+        }
+    }
+    return actors;
+}
+
+std::vector<NotNull<Player>> toPlayers(const CommandResultVector &results)
+{
+    std::vector<NotNull<Player>> players;
+    if (!results) {
+        return players;
+    }
+    for (auto *actor : *results) {
+        if (actor && actor->isPlayer()) {
+            players.emplace_back(actor->getEndstoneActor<Player>());
+        }
+    }
+    return players;
+}
+
+template <typename T>
+T requireExactlyOne(std::vector<T> matched)
+{
+    if (matched.empty()) {
+        throw CommandError("No targets matched selector");
+    }
+    if (matched.size() > 1) {
+        throw CommandError("This argument accepts a single target, but the selector matched more than one");
+    }
+    return matched.front();
 }
 
 }  // namespace
@@ -96,6 +140,41 @@ ArgumentValue convertArgument(const ArgumentType &type, const std::string &text,
     }
     default:
         return ArgumentValue::of(text);
+    }
+}
+
+ArgumentValue convertSelector(const ArgumentType &type, const CommandResultVector &results,
+                              const NotNull<CommandSender> &sender)
+{
+    if (type.getKind() == ArgumentKind::Custom) {
+        const auto native = type.getNativeType();
+        if (!native) {
+            throw CommandError("This argument has no native type to parse as.");
+        }
+        return type.convert(convertSelector(*native, results, sender), sender);
+    }
+
+    switch (type.getKind()) {
+    case ArgumentKind::Player:
+        return ArgumentValue::of(requireExactlyOne(toPlayers(results)));
+    case ArgumentKind::Players: {
+        auto players = toPlayers(results);
+        if (players.empty()) {
+            throw CommandError("No targets matched selector");
+        }
+        return ArgumentValue::of(std::move(players));
+    }
+    case ArgumentKind::Entity:
+        return ArgumentValue::of(requireExactlyOne(toActors(results)));
+    case ArgumentKind::Entities: {
+        auto actors = toActors(results);
+        if (actors.empty()) {
+            throw CommandError("No targets matched selector");
+        }
+        return ArgumentValue::of(std::move(actors));
+    }
+    default:
+        throw CommandError("This argument is not a target selector.");
     }
 }
 

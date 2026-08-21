@@ -17,6 +17,7 @@
 #include <algorithm>
 #include <unordered_map>
 
+#include "bedrock/server/commands/command_selector.h"
 #include "endstone/command/command_context.h"
 #include "endstone/command/command_error.h"
 #include "endstone/core/command/parse_token_text.h"
@@ -68,6 +69,24 @@ private:
     std::unordered_map<std::string, ArgumentValue> values_;
 };
 
+std::unique_ptr<ArgumentStorage> makeStorage(const CommandTreeSlot &slot)
+{
+    if (!slot.is_literal) {
+        const auto &type = *static_cast<const ArgumentCommandNode *>(slot.node.get().get())->getArgumentType();
+        switch (effectiveArgumentKind(type)) {
+        case ArgumentKind::Player:
+        case ArgumentKind::Players:
+            return std::make_unique<TypedArgumentStorage<CommandSelector<::Player>>>();
+        case ArgumentKind::Entity:
+        case ArgumentKind::Entities:
+            return std::make_unique<TypedArgumentStorage<CommandSelector<::Actor>>>();
+        default:
+            break;
+        }
+    }
+    return std::make_unique<TypedArgumentStorage<std::string>>();
+}
+
 }  // namespace
 
 TreeCommand::TreeCommand(NotNull<LiteralCommandNode> root, std::vector<CommandTreeOverload> overloads)
@@ -95,7 +114,7 @@ bool TreeCommand::execute(const NotNull<CommandSender> &sender, const std::vecto
 }
 
 bool TreeCommand::run(const CommandTreeOverload &overload, const NotNull<CommandSender> &sender,
-                      const std::vector<std::unique_ptr<ArgumentStorage>> &slots) const
+                      const std::vector<std::unique_ptr<ArgumentStorage>> &slots, const CommandOrigin &origin) const
 {
     if (!testOverloadSilently(overload, sender)) {
         sender->sendErrorMessage(Translatable("commands.generic.error.permissions", {getName()}));
@@ -109,8 +128,24 @@ bool TreeCommand::run(const CommandTreeOverload &overload, const NotNull<Command
             continue;
         }
         const auto *argument = static_cast<const ArgumentCommandNode *>(slot.node.get().get());
+        const auto &type = *argument->getArgumentType();
+        const auto kind = effectiveArgumentKind(type);
+
+        if (isSelectorArgument(kind)) {
+            const auto results =
+                kind == ArgumentKind::Player || kind == ArgumentKind::Players
+                    ? static_cast<const TypedArgumentStorage<CommandSelector<::Player>> *>(slots[i].get())
+                          ->get()
+                          .newResults(origin)
+                    : static_cast<const TypedArgumentStorage<CommandSelector<::Actor>> *>(slots[i].get())
+                          ->get()
+                          .newResults(origin);
+            context.bind(argument->getName(), convertSelector(type, results, sender));
+            continue;
+        }
+
         const auto *text = static_cast<const TypedArgumentStorage<std::string> *>(slots[i].get());
-        context.bind(argument->getName(), convertArgument(*argument->getArgumentType(), text->get(), sender));
+        context.bind(argument->getName(), convertArgument(type, text->get(), sender));
     }
 
     overload.leaf->getHandler()(context);
@@ -121,8 +156,8 @@ TreeCommandAdapter::TreeCommandAdapter(const TreeCommand &command, const Command
     : command_(&command), overload_(&overload)
 {
     slots_.reserve(overload.slots.size());
-    for (std::size_t i = 0; i < overload.slots.size(); ++i) {
-        slots_.push_back(std::make_unique<TypedArgumentStorage<std::string>>());
+    for (const auto &slot : overload.slots) {
+        slots_.push_back(makeStorage(slot));
     }
 }
 
@@ -135,10 +170,10 @@ void *TreeCommandAdapter::getStorageValue(::Command *command, int index)
     return slots[index]->data();
 }
 
-bool TreeCommandAdapter::runFrom(const NotNull<CommandSender> &sender) const
+bool TreeCommandAdapter::runFrom(const NotNull<CommandSender> &sender, const CommandOrigin &origin) const
 {
     try {
-        return command_->run(*overload_, sender, slots_);
+        return command_->run(*overload_, sender, slots_, origin);
     }
     catch (const CommandError &e) {
         sender->sendErrorMessage(e.getMessage());
@@ -153,7 +188,7 @@ bool TreeCommandAdapter::runFrom(const NotNull<CommandSender> &sender) const
 
 void TreeCommandAdapter::execute(const CommandOrigin &origin, CommandOutput &output) const
 {
-    if (runFrom(origin.getEndstoneSender(output))) {
+    if (runFrom(origin.getEndstoneSender(output), origin)) {
         output.success();
     }
 }

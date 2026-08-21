@@ -19,6 +19,7 @@ add_executable(endstone_test
         bedrock/test_uuid.cpp
         test_identifier.cpp
         test_nbt.cpp
+        test_argument_types.cpp
         test_base64.cpp
         test_command_lexer.cpp
         test_command_tree.cpp

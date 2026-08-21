@@ -75,10 +75,12 @@ public:
      * @param overload the overload that parsed
      * @param sender source of the command
      * @param slots the parsed value of each slot, in slot order
+     * @param origin the origin the command registry parsed against, needed to resolve selectors
      * @return true if the command reported success
      */
     [[nodiscard]] bool run(const CommandTreeOverload &overload, const NotNull<CommandSender> &sender,
-                           const std::vector<std::unique_ptr<ArgumentStorage>> &slots) const;
+                           const std::vector<std::unique_ptr<ArgumentStorage>> &slots,
+                           const CommandOrigin &origin) const;
 
     /**
      * Tests every node on an overload's path against a sender.
@@ -121,9 +123,10 @@ public:
      * the command registry run it.
      *
      * @param sender source of the command
+     * @param origin the origin the command line was compiled against
      * @return true if the command reported success
      */
-    [[nodiscard]] bool runFrom(const NotNull<CommandSender> &sender) const;
+    [[nodiscard]] bool runFrom(const NotNull<CommandSender> &sender, const CommandOrigin &origin) const;
 
 private:
     friend class ::CommandRegistry;
