@@ -24,6 +24,7 @@ class Player;
 class CraftHandlerEnchant : public CraftHandlerBase {
 public:
     CraftHandlerEnchant();
+    ~CraftHandlerEnchant() override = 0;
 
     ENDSTONE_HOOK virtual ItemStackNetResult
     _handleCraftAction(const ItemStackRequestActionCraftBase &request_action) override;
