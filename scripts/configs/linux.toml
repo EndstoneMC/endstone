@@ -893,12 +893,15 @@ extra = 0
 # 4. confirm identity: each case must call a *different* block actor constructor, and there must be no
 #    other 62-way switch in the binary that returns a shared_ptr<BlockActor>. Shape alone is not enough -
 #    a wrong hit here compiles, links and crashes only when a snapshot is taken.
-# 5. cross-check the decoded address against the old named database, or against bedrock_server.pdb on
-#    Windows, where the decorated name above resolves outright - `dump_symbols.py --pdb` takes that path
-#    and never reaches this pattern.
-# 6. uniqueness: the pattern below (prologue + the three argument saves + the byte load that follows) had
-#    exactly one .text hit when it was cut. It was cut against 1.26.40 and has NOT been re-validated
-#    against the version in `version =` above - do that before release.
+# 5. cross-check the decoded address against the old named database. The decorated name above also
+#    resolves outright from a bedrock_server.pdb - `dump_symbols.py --pdb` takes that path and never
+#    reaches this pattern - but no PDB ships in the server zip, so the pattern is the path that matters.
+# 6. uniqueness and validation: cut and validated against 1.26.44.3, the build `version` above targets.
+#    Exactly one .text hit per platform, resolving to the function described here - 62-entry jump table,
+#    60 distinct case bodies, 58 distinct block actor constructors, every case target inside the
+#    function's own range. The register use is what proves there is no third parameter: rcx/rdx/r8 on
+#    Windows and rdi/rsi/rdx on Linux are the only incoming registers read, and r9/rcx respectively are
+#    never touched.
 pattern = "41 57 41 56 53 48 83 EC 20 49 89 D7 49 89 F6 48 89 FB 0F B6 05"
 
 [[signatures]]
