@@ -8,6 +8,11 @@
 * **Action** ([**endstone::ActorEffectEvent**](classendstone_1_1ActorEffectEvent.md), [**endstone::PlayerInteractEvent**](classendstone_1_1PlayerInteractEvent.md))
 
 
+## c
+
+* **Cause** ([**endstone::PlayerSetSpawnEvent**](classendstone_1_1PlayerSetSpawnEvent.md))
+
+
 ## g
 
 * **Generation** ([**endstone::BookMeta**](classendstone_1_1BookMeta.md))

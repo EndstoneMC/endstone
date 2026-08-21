@@ -821,6 +821,10 @@
          <lastmod>2026-08-21</lastmod>
     </url>
     <url>
+         <loc>https://endstone.dev/latest/reference/cpp/classendstone_1_1PlayerSetSpawnEvent/</loc>
+         <lastmod>2026-08-21</lastmod>
+    </url>
+    <url>
          <loc>https://endstone.dev/latest/reference/cpp/classendstone_1_1PlayerShearActorEvent/</loc>
          <lastmod>2026-08-21</lastmod>
     </url>
@@ -2258,6 +2262,14 @@
     </url>
     <url>
          <loc>https://endstone.dev/latest/reference/cpp/player__riptide__event_8h_source/</loc>
+         <lastmod>2026-08-21</lastmod>
+    </url>
+    <url>
+         <loc>https://endstone.dev/latest/reference/cpp/player__set__spawn__event_8h/</loc>
+         <lastmod>2026-08-21</lastmod>
+    </url>
+    <url>
+         <loc>https://endstone.dev/latest/reference/cpp/player__set__spawn__event_8h_source/</loc>
          <lastmod>2026-08-21</lastmod>
     </url>
     <url>

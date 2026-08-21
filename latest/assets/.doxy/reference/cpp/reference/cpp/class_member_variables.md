@@ -104,6 +104,7 @@
 * **command\_** ([**endstone::PlayerCommandEvent**](classendstone_1_1PlayerCommandEvent.md), [**endstone::ServerCommandEvent**](classendstone_1_1ServerCommandEvent.md))
 * **clicked\_position\_** ([**endstone::PlayerInteractEvent**](classendstone_1_1PlayerInteractEvent.md))
 * **current\_** ([**endstone::PlayerItemHeldEvent**](classendstone_1_1PlayerItemHeldEvent.md))
+* **cause\_** ([**endstone::PlayerSetSpawnEvent**](classendstone_1_1PlayerSetSpawnEvent.md))
 * **crawling\_** ([**endstone::PlayerToggleCrawlEvent**](classendstone_1_1PlayerToggleCrawlEvent.md))
 * **commands\_** ([**endstone::PluginDescription**](classendstone_1_1PluginDescription.md))
 * **contributors\_** ([**endstone::PluginDescription**](classendstone_1_1PluginDescription.md))
@@ -293,7 +294,7 @@
 
 ## l
 
-* **location\_** ([**endstone::ActorExplodeEvent**](classendstone_1_1ActorExplodeEvent.md))
+* **location\_** ([**endstone::ActorExplodeEvent**](classendstone_1_1ActorExplodeEvent.md), [**endstone::PlayerSetSpawnEvent**](classendstone_1_1PlayerSetSpawnEvent.md))
 * **LeashKnot** ([**endstone::ActorType**](classendstone_1_1ActorType.md))
 * **LightningBolt** ([**endstone::ActorType**](classendstone_1_1ActorType.md))
 * **LingeringPotion** ([**endstone::ActorType**](classendstone_1_1ActorType.md))

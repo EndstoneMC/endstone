@@ -5536,6 +5536,7 @@ and this project adheres to <a href="https://semver.org/spec/v2.0.0.html">Semant
 <li><code>PlayerCraftItemEvent</code> for crafting from a grid or the recipe book, reporting the crafted <code>item</code>, the <code>recipe_id</code> and the <code>amount</code> of crafts.</li>
 <li><code>PlayerRecipeBookClickEvent</code> for crafting straight from the recipe book, reporting the <code>recipe</code> identifier and a writable <code>amount</code>. Cancelling it suppresses the following <code>PlayerCraftItemEvent</code> too.</li>
 <li><code>PlayerEditBookEvent</code> for editing a page of a book and quill or signing it, reporting the book metadata before and after the edit, the inventory <code>slot</code>, and whether the book is being signed. <code>new_book_meta</code> and <code>is_signing</code> are writable.</li>
+<li><code>PlayerSetSpawnEvent</code> for a player's respawn point being set, reporting the <code>cause</code> (<code>BED</code>, <code>RESPAWN_ANCHOR</code>, <code>COMMAND</code>, <code>PLUGIN</code> or <code>UNKNOWN</code>) and a writable <code>location</code>. Cancelling leaves the respawn point untouched, though <code>/spawnpoint</code> still reports success and a respawn anchor still plays its sound. It does not fire when Bedrock clears a respawn point, so <code>/clearspawnpoint</code> and breaking the bed are both silent.</li>
 <li><code>PlayerToggleSneakEvent</code>, <code>PlayerToggleSprintEvent</code>, <code>PlayerToggleFlightEvent</code> and <code>PlayerToggleCrawlEvent</code>, carrying the new state in <code>is_sneaking</code>, <code>is_sprinting</code>, <code>is_flying</code> and <code>is_crawling</code>.</li>
 <li><code>ActorToggleSwimEvent</code> and <code>ActorToggleGlideEvent</code>, carrying the new state in <code>is_swimming</code> and <code>is_gliding</code>.</li>
 <li><code>ActorCollideWithActorEvent</code>, reporting both actors in <code>actors</code>. Cancelling it also stops boats and minecarts being boarded by walking into them.</li>
@@ -5553,6 +5554,7 @@ and this project adheres to <a href="https://semver.org/spec/v2.0.0.html">Semant
 <li>Effect API: <code>Mob.add_effect()</code>, <code>Mob.remove_effect()</code>, <code>Mob.has_effect()</code>, <code>Mob.get_effect()</code> and <code>Mob.active_effects</code>, with the new <code>Effect</code> type carrying effect type, duration, amplifier and the ambient/particles/icon flags.</li>
 <li><code>Mob.is_swimming</code> and <code>Player.is_crawling</code>.</li>
 <li><code>Player.send_action_bar()</code> for sending a message above the hotbar.</li>
+<li><code>Player.respawn_location</code> for reading and writing where a player will respawn, or <code>None</code> when they have no valid respawn point. Bedrock does not persist yaw/pitch for a respawn point, so only the block coordinates and the dimension are kept.</li>
 </ul>
 <h4 id="blocks">Blocks<a class="headerlink" href="#blocks" title="Permanent link">&para;</a></h4>
 <ul>

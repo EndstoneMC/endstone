@@ -1,0 +1,96 @@
+
+
+# File player\_set\_spawn\_event.h
+
+
+
+[**FileList**](files.md) **>** [**endstone**](dir_6cf277b678674f97c7a2b6b3b2447b33.md) **>** [**event**](dir_f1d783c0ad83ee143d16e768ebca51c8.md) **>** [**player**](dir_7c05c37b25e9c9eccd9c63c2d313ba28.md) **>** [**player\_set\_spawn\_event.h**](player__set__spawn__event_8h.md)
+
+[Go to the source code of this file](player__set__spawn__event_8h_source.md)
+
+
+
+* `#include <optional>`
+* `#include <utility>`
+* `#include "endstone/event/cancellable.h"`
+* `#include "endstone/event/player/player_event.h"`
+* `#include "endstone/level/location.h"`
+
+
+
+
+
+
+
+
+
+
+
+
+
+## Namespaces
+
+| Type | Name |
+| ---: | :--- |
+| namespace | [**endstone**](namespaceendstone.md) <br>_Represents a button with text and an optional icon._  |
+
+
+## Classes
+
+| Type | Name |
+| ---: | :--- |
+| class | [**PlayerSetSpawnEvent**](classendstone_1_1PlayerSetSpawnEvent.md) <br>_Called when a player's spawn is set, either by themselves or otherwise._  |
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+------------------------------
+The documentation for this class was generated from the following file `include/endstone/event/player/player_set_spawn_event.h`
+

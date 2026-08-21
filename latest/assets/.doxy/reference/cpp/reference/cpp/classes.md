@@ -470,6 +470,8 @@
 ([**endstone**](namespaceendstone.md))
 * [**PlayerRiptideEvent**](classendstone_1_1PlayerRiptideEvent.md)
 ([**endstone**](namespaceendstone.md))
+* [**PlayerSetSpawnEvent**](classendstone_1_1PlayerSetSpawnEvent.md)
+([**endstone**](namespaceendstone.md))
 * [**PlayerShearActorEvent**](classendstone_1_1PlayerShearActorEvent.md)
 ([**endstone**](namespaceendstone.md))
 * [**PlayerSkinChangeEvent**](classendstone_1_1PlayerSkinChangeEvent.md)

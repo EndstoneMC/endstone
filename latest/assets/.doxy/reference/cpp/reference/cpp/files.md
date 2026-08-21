@@ -142,6 +142,7 @@ Here is a list of all files with brief descriptions:
                 * **file** [**player\_recipe\_book\_settings\_change\_event.h**](player__recipe__book__settings__change__event_8h.md)     
                 * **file** [**player\_respawn\_event.h**](player__respawn__event_8h.md)     
                 * **file** [**player\_riptide\_event.h**](player__riptide__event_8h.md)     
+                * **file** [**player\_set\_spawn\_event.h**](player__set__spawn__event_8h.md)     
                 * **file** [**player\_shear\_actor\_event.h**](player__shear__actor__event_8h.md)     
                 * **file** [**player\_skin\_change\_event.h**](player__skin__change__event_8h.md)     
                 * **file** [**player\_teleport\_event.h**](player__teleport__event_8h.md)     

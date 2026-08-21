@@ -167,6 +167,7 @@
     <innerclass refid="classendstone_1_1PlayerRecipeBookSettingsChangeEvent" prot="public">endstone::PlayerRecipeBookSettingsChangeEvent</innerclass>
     <innerclass refid="classendstone_1_1PlayerRespawnEvent" prot="public">endstone::PlayerRespawnEvent</innerclass>
     <innerclass refid="classendstone_1_1PlayerRiptideEvent" prot="public">endstone::PlayerRiptideEvent</innerclass>
+    <innerclass refid="classendstone_1_1PlayerSetSpawnEvent" prot="public">endstone::PlayerSetSpawnEvent</innerclass>
     <innerclass refid="classendstone_1_1PlayerShearActorEvent" prot="public">endstone::PlayerShearActorEvent</innerclass>
     <innerclass refid="classendstone_1_1PlayerSkinChangeEvent" prot="public">endstone::PlayerSkinChangeEvent</innerclass>
     <innerclass refid="classendstone_1_1PlayerTeleportEvent" prot="public">endstone::PlayerTeleportEvent</innerclass>

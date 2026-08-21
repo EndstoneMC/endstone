@@ -1,0 +1,306 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.8" xml:lang="en-US">
+  <compounddef id="classendstone_1_1PlayerSetSpawnEvent" kind="class" language="C++" prot="public" final="yes">
+    <compoundname>endstone::PlayerSetSpawnEvent</compoundname>
+    <basecompoundref refid="classendstone_1_1Cancellable" prot="public" virt="non-virtual">endstone::Cancellable&lt; PlayerEvent &gt;</basecompoundref>
+    <includes refid="player__set__spawn__event_8h" local="no">endstone/event/player/player_set_spawn_event.h</includes>
+    <sectiondef kind="public-type">
+      <memberdef kind="enum" id="classendstone_1_1PlayerSetSpawnEvent_1acfffd40b297c5ebdb54d39ec9f811d21" prot="public" static="no" strong="yes">
+        <type></type>
+        <name>Cause</name>
+        <qualifiedname>endstone::PlayerSetSpawnEvent::Cause</qualifiedname>
+        <enumvalue id="classendstone_1_1PlayerSetSpawnEvent_1acfffd40b297c5ebdb54d39ec9f811d21ad19c65bc26ec025653d95586db2c31de" prot="public">
+          <name>Bed</name>
+          <briefdescription>
+<para>When a player interacts successfully with a bed. </para>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="classendstone_1_1PlayerSetSpawnEvent_1acfffd40b297c5ebdb54d39ec9f811d21aa08d7e095dd721b2ecdb05aab5641067" prot="public">
+          <name>RespawnAnchor</name>
+          <briefdescription>
+<para>When a player interacts successfully with a respawn anchor. </para>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="classendstone_1_1PlayerSetSpawnEvent_1acfffd40b297c5ebdb54d39ec9f811d21aee97be03cb04119af45014d815621ce1" prot="public">
+          <name>Command</name>
+          <briefdescription>
+<para>When the spawnpoint command, or the script API equivalent, is used on a player. </para>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="classendstone_1_1PlayerSetSpawnEvent_1acfffd40b297c5ebdb54d39ec9f811d21a409c1892b68cb394799262ac57f6d4f1" prot="public">
+          <name>Plugin</name>
+          <briefdescription>
+<para>When a plugin uses <ref refid="classendstone_1_1Player_1a5bffefb78ba5e5dea934c249a4d30229" kindref="member">Player::setRespawnLocation</ref>. </para>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="classendstone_1_1PlayerSetSpawnEvent_1acfffd40b297c5ebdb54d39ec9f811d21a88183b946cc5f0e8c96b2e66e1c74a7e" prot="public">
+          <name>Unknown</name>
+          <briefdescription>
+<para>Fallback cause. </para>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <briefdescription>
+<para>Represents the cause of the spawn change. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/event/player/player_set_spawn_event.h" line="45" column="5" bodyfile="include/endstone/event/player/player_set_spawn_event.h" bodystart="45" bodyend="56"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="private-attrib">
+      <memberdef kind="variable" id="classendstone_1_1PlayerSetSpawnEvent_1ab9d9c27238f4ddcc2447924e3c3a49ec" prot="private" static="no" mutable="no">
+        <type><ref refid="classendstone_1_1PlayerSetSpawnEvent_1acfffd40b297c5ebdb54d39ec9f811d21" kindref="member">Cause</ref></type>
+        <definition>Cause endstone::PlayerSetSpawnEvent::cause_</definition>
+        <argsstring></argsstring>
+        <name>cause_</name>
+        <qualifiedname>endstone::PlayerSetSpawnEvent::cause_</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/event/player/player_set_spawn_event.h" line="85" column="11" bodyfile="include/endstone/event/player/player_set_spawn_event.h" bodystart="85" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classendstone_1_1PlayerSetSpawnEvent_1a2e5e1dab1a1624c165c4875898baf315" prot="private" static="no" mutable="no">
+        <type>std::optional&lt; <ref refid="classendstone_1_1Location" kindref="compound">Location</ref> &gt;</type>
+        <definition>std::optional&lt;Location&gt; endstone::PlayerSetSpawnEvent::location_</definition>
+        <argsstring></argsstring>
+        <name>location_</name>
+        <qualifiedname>endstone::PlayerSetSpawnEvent::location_</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/event/player/player_set_spawn_event.h" line="86" column="19" bodyfile="include/endstone/event/player/player_set_spawn_event.h" bodystart="86" bodyend="-1"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="public-func">
+      <memberdef kind="function" id="classendstone_1_1PlayerSetSpawnEvent_1ae72fcf0305034b29a7958c840773c2f0" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>endstone::PlayerSetSpawnEvent::ENDSTONE_EVENT</definition>
+        <argsstring>(PlayerSetSpawnEvent)</argsstring>
+        <name>ENDSTONE_EVENT</name>
+        <qualifiedname>endstone::PlayerSetSpawnEvent::ENDSTONE_EVENT</qualifiedname>
+        <param>
+          <type><ref refid="classendstone_1_1PlayerSetSpawnEvent" kindref="compound">PlayerSetSpawnEvent</ref></type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/event/player/player_set_spawn_event.h" line="40" column="5"/>
+      </memberdef>
+      <memberdef kind="function" id="classendstone_1_1PlayerSetSpawnEvent_1a79ed210e2b9cf0d6c259e0dfdb776c53" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type></type>
+        <definition>endstone::PlayerSetSpawnEvent::PlayerSetSpawnEvent</definition>
+        <argsstring>(const NotNull&lt; Player &gt; &amp;player, Cause cause, std::optional&lt; Location &gt; location)</argsstring>
+        <name>PlayerSetSpawnEvent</name>
+        <qualifiedname>endstone::PlayerSetSpawnEvent::PlayerSetSpawnEvent</qualifiedname>
+        <param>
+          <type><ref refid="classendstone_1_1Identifier" kindref="compound">const</ref> <ref refid="classendstone_1_1NotNull" kindref="compound">NotNull</ref>&lt; <ref refid="classendstone_1_1Player" kindref="compound">Player</ref> &gt; &amp;</type>
+          <declname>player</declname>
+        </param>
+        <param>
+          <type><ref refid="classendstone_1_1PlayerSetSpawnEvent_1acfffd40b297c5ebdb54d39ec9f811d21" kindref="member">Cause</ref></type>
+          <declname>cause</declname>
+        </param>
+        <param>
+          <type>std::optional&lt; <ref refid="classendstone_1_1Location" kindref="compound">Location</ref> &gt;</type>
+          <declname>location</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/event/player/player_set_spawn_event.h" line="58" column="5" bodyfile="include/endstone/event/player/player_set_spawn_event.h" bodystart="58" bodyend="61"/>
+      </memberdef>
+      <memberdef kind="function" id="classendstone_1_1PlayerSetSpawnEvent_1a41541505a893b1cfb775caa0a1ead598" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type><ref refid="classendstone_1_1PlayerSetSpawnEvent_1acfffd40b297c5ebdb54d39ec9f811d21" kindref="member">Cause</ref></type>
+        <definition>Cause endstone::PlayerSetSpawnEvent::getCause</definition>
+        <argsstring>() const</argsstring>
+        <name>getCause</name>
+        <qualifiedname>endstone::PlayerSetSpawnEvent::getCause</qualifiedname>
+        <briefdescription>
+<para>Gets the cause of this event. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="return"><para>the cause </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/event/player/player_set_spawn_event.h" line="68" column="12" bodyfile="include/endstone/event/player/player_set_spawn_event.h" bodystart="68" bodyend="68"/>
+      </memberdef>
+      <memberdef kind="function" id="classendstone_1_1PlayerSetSpawnEvent_1aafb9d8122969b9078e3cd182cdc35b03" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type><ref refid="classendstone_1_1Identifier" kindref="compound">const</ref> std::optional&lt; <ref refid="classendstone_1_1Location" kindref="compound">Location</ref> &gt; &amp;</type>
+        <definition>const std::optional&lt; Location &gt; &amp; endstone::PlayerSetSpawnEvent::getLocation</definition>
+        <argsstring>() const</argsstring>
+        <name>getLocation</name>
+        <qualifiedname>endstone::PlayerSetSpawnEvent::getLocation</qualifiedname>
+        <briefdescription>
+<para>Gets the location that the spawn is set to. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="return"><para>the spawn location, or std::nullopt if removing the location </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/event/player/player_set_spawn_event.h" line="75" column="26" bodyfile="include/endstone/event/player/player_set_spawn_event.h" bodystart="75" bodyend="75"/>
+      </memberdef>
+      <memberdef kind="function" id="classendstone_1_1PlayerSetSpawnEvent_1aba9e572ea6156c957e24c013ce745f52" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type><ref refid="classendstone_1_1Identifier" kindref="compound">void</ref></type>
+        <definition>void endstone::PlayerSetSpawnEvent::setLocation</definition>
+        <argsstring>(std::optional&lt; Location &gt; location)</argsstring>
+        <name>setLocation</name>
+        <qualifiedname>endstone::PlayerSetSpawnEvent::setLocation</qualifiedname>
+        <param>
+          <type>std::optional&lt; <ref refid="classendstone_1_1Location" kindref="compound">Location</ref> &gt;</type>
+          <declname>location</declname>
+        </param>
+        <briefdescription>
+<para>Sets the location to be set as the spawn location. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>location</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>the spawn location, or std::nullopt to remove the spawn location </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/event/player/player_set_spawn_event.h" line="82" column="10" bodyfile="include/endstone/event/player/player_set_spawn_event.h" bodystart="82" bodyend="82"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+<para>Called when a player&apos;s spawn is set, either by themselves or otherwise. </para>
+    </briefdescription>
+    <detaileddescription>
+<para>Assigning a new location through <ref refid="classendstone_1_1PlayerSetSpawnEvent_1aba9e572ea6156c957e24c013ce745f52" kindref="member">setLocation()</ref> redirects the spawn that is about to be written; cancelling leaves the respawn point untouched.</para>
+<para><simplesect kind="note"><para>Only the location&apos;s block coordinates and dimension are written back; Bedrock does not persist yaw/pitch for a respawn point. Cancelling stops the respawn point from changing, but not the feedback around it: <computeroutput>/spawnpoint</computeroutput> still reports success and a respawn anchor still plays its sound and message, because neither consults the setter. The event is not fired when Bedrock clears a respawn point, so <computeroutput>/clearspawnpoint</computeroutput> and breaking the bed a player is bound to are both silent. </para>
+</simplesect>
+</para>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="2">
+        <label>endstone::Cancellable&lt; PlayerEvent &gt;</label>
+        <link refid="classendstone_1_1Cancellable"/>
+        <childnode refid="3" relation="public-inheritance">
+        </childnode>
+        <childnode refid="5" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="4">
+        <label>endstone::Event</label>
+        <link refid="classendstone_1_1Event"/>
+      </node>
+      <node id="5">
+        <label>endstone::ICancellable</label>
+        <link refid="classendstone_1_1ICancellable"/>
+      </node>
+      <node id="3">
+        <label>endstone::PlayerEvent</label>
+        <link refid="classendstone_1_1PlayerEvent"/>
+        <childnode refid="4" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="1">
+        <label>endstone::PlayerSetSpawnEvent</label>
+        <link refid="classendstone_1_1PlayerSetSpawnEvent"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="2">
+        <label>endstone::Cancellable&lt; PlayerEvent &gt;</label>
+        <link refid="classendstone_1_1Cancellable"/>
+        <childnode refid="3" relation="public-inheritance">
+        </childnode>
+        <childnode refid="6" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="5">
+        <label>endstone::NotNull&lt; endstone::Player &gt;</label>
+        <link refid="classendstone_1_1NotNull"/>
+      </node>
+      <node id="4">
+        <label>endstone::Event</label>
+        <link refid="classendstone_1_1Event"/>
+      </node>
+      <node id="6">
+        <label>endstone::ICancellable</label>
+        <link refid="classendstone_1_1ICancellable"/>
+      </node>
+      <node id="3">
+        <label>endstone::PlayerEvent</label>
+        <link refid="classendstone_1_1PlayerEvent"/>
+        <childnode refid="4" relation="public-inheritance">
+        </childnode>
+        <childnode refid="5" relation="usage">
+          <edgelabel>player_</edgelabel>
+        </childnode>
+      </node>
+      <node id="1">
+        <label>endstone::PlayerSetSpawnEvent</label>
+        <link refid="classendstone_1_1PlayerSetSpawnEvent"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+    </collaborationgraph>
+    <location file="include/endstone/event/player/player_set_spawn_event.h" line="38" column="1" bodyfile="include/endstone/event/player/player_set_spawn_event.h" bodystart="38" bodyend="87"/>
+    <listofallmembers>
+      <member refid="classendstone_1_1Cancellable_1a3512b47db69c6001f5c0450051308327" prot="public" virt="virtual"><scope>endstone::PlayerSetSpawnEvent</scope><name>cancel</name></member>
+      <member refid="classendstone_1_1PlayerSetSpawnEvent_1acfffd40b297c5ebdb54d39ec9f811d21" prot="public" virt="non-virtual"><scope>endstone::PlayerSetSpawnEvent</scope><name>Cause</name></member>
+      <member refid="classendstone_1_1PlayerSetSpawnEvent_1ab9d9c27238f4ddcc2447924e3c3a49ec" prot="private" virt="non-virtual"><scope>endstone::PlayerSetSpawnEvent</scope><name>cause_</name></member>
+      <member refid="classendstone_1_1PlayerSetSpawnEvent_1ae72fcf0305034b29a7958c840773c2f0" prot="public" virt="non-virtual"><scope>endstone::PlayerSetSpawnEvent</scope><name>ENDSTONE_EVENT</name></member>
+      <member refid="classendstone_1_1Event_1a28cca8d74920493b449d035540acf023" prot="public" virt="non-virtual"><scope>endstone::PlayerSetSpawnEvent</scope><name>Event</name></member>
+      <member refid="classendstone_1_1Event_1a7199136ebb40e1441bc61e29f83c3cad" prot="public" virt="non-virtual"><scope>endstone::PlayerSetSpawnEvent</scope><name>Event</name></member>
+      <member refid="classendstone_1_1Event_1ad20bafd16e0671578e37390b95e5104c" prot="public" virt="non-virtual"><scope>endstone::PlayerSetSpawnEvent</scope><name>Event</name></member>
+      <member refid="classendstone_1_1PlayerSetSpawnEvent_1a41541505a893b1cfb775caa0a1ead598" prot="public" virt="non-virtual"><scope>endstone::PlayerSetSpawnEvent</scope><name>getCause</name></member>
+      <member refid="classendstone_1_1Event_1a826fe74f9c4195a36a364b9aeeb321bb" prot="public" virt="pure-virtual"><scope>endstone::PlayerSetSpawnEvent</scope><name>getEventName</name></member>
+      <member refid="classendstone_1_1PlayerSetSpawnEvent_1aafb9d8122969b9078e3cd182cdc35b03" prot="public" virt="non-virtual"><scope>endstone::PlayerSetSpawnEvent</scope><name>getLocation</name></member>
+      <member refid="classendstone_1_1PlayerEvent_1abad8f8bca3e2be851c4b37075adf2cbc" prot="public" virt="non-virtual"><scope>endstone::PlayerSetSpawnEvent</scope><name>getPlayer</name></member>
+      <member refid="classendstone_1_1Event_1ae89b54f63dc32b0c8797a59db69b6931" prot="public" virt="non-virtual"><scope>endstone::PlayerSetSpawnEvent</scope><name>isAsynchronous</name></member>
+      <member refid="classendstone_1_1Cancellable_1a268b73cc5bda0fa5923336d031814faa" prot="public" virt="virtual"><scope>endstone::PlayerSetSpawnEvent</scope><name>isCancelled</name></member>
+      <member refid="classendstone_1_1PlayerSetSpawnEvent_1a2e5e1dab1a1624c165c4875898baf315" prot="private" virt="non-virtual"><scope>endstone::PlayerSetSpawnEvent</scope><name>location_</name></member>
+      <member refid="classendstone_1_1Event_1a44a4ff424a8b690c01a2afe10ae68d8f" prot="public" virt="non-virtual"><scope>endstone::PlayerSetSpawnEvent</scope><name>operator=</name></member>
+      <member refid="classendstone_1_1Event_1a1d7fc5400782d20be99a3636aa7f53b9" prot="public" virt="non-virtual"><scope>endstone::PlayerSetSpawnEvent</scope><name>operator=</name></member>
+      <member refid="classendstone_1_1PlayerEvent_1ae0f8240e8c7c3a66281295c43b1d522a" prot="protected" virt="non-virtual"><scope>endstone::PlayerSetSpawnEvent</scope><name>player_</name></member>
+      <member refid="classendstone_1_1PlayerEvent_1afee42449de6752241c5472a38f7d94a9" prot="public" virt="non-virtual"><scope>endstone::PlayerSetSpawnEvent</scope><name>PlayerEvent</name></member>
+      <member refid="classendstone_1_1PlayerSetSpawnEvent_1a79ed210e2b9cf0d6c259e0dfdb776c53" prot="public" virt="non-virtual"><scope>endstone::PlayerSetSpawnEvent</scope><name>PlayerSetSpawnEvent</name></member>
+      <member refid="classendstone_1_1Cancellable_1aa12df44bcb66924d06a689d0dd07865e" prot="public" virt="virtual"><scope>endstone::PlayerSetSpawnEvent</scope><name>setCancelled</name></member>
+      <member refid="classendstone_1_1PlayerSetSpawnEvent_1aba9e572ea6156c957e24c013ce745f52" prot="public" virt="non-virtual"><scope>endstone::PlayerSetSpawnEvent</scope><name>setLocation</name></member>
+      <member refid="classendstone_1_1Event_1a6aeaa8096baba90f8ace94106e0e05f3" prot="public" virt="virtual"><scope>endstone::PlayerSetSpawnEvent</scope><name>~Event</name></member>
+      <member refid="classendstone_1_1ICancellable_1ab6d311fcaa18971f69a1b23f5a856301" prot="public" virt="virtual"><scope>endstone::PlayerSetSpawnEvent</scope><name>~ICancellable</name></member>
+      <member refid="classendstone_1_1PlayerEvent_1ab31b937251b8ccc1c72c275d1c7a522b" prot="public" virt="non-virtual"><scope>endstone::PlayerSetSpawnEvent</scope><name>~PlayerEvent</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

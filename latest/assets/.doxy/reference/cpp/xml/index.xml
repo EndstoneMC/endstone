@@ -1987,6 +1987,8 @@
     <member refid="classendstone_1_1Player_1a1eb6fe0de5da814e8d7467817e935603" kind="function"><name>transfer</name></member>
     <member refid="classendstone_1_1Player_1a6dbf34f6330cf0c9e17872426e1c2eb0" kind="function"><name>kick</name></member>
     <member refid="classendstone_1_1Player_1a9484ec57ceb309acfcfe4b2d61026f56" kind="function"><name>performCommand</name></member>
+    <member refid="classendstone_1_1Player_1afca7774ebf09e8f3f77f0e1dc7b298ec" kind="function"><name>getRespawnLocation</name></member>
+    <member refid="classendstone_1_1Player_1a5bffefb78ba5e5dea934c249a4d30229" kind="function"><name>setRespawnLocation</name></member>
     <member refid="classendstone_1_1Player_1a5cdb79fdd152c6c6ed8f251bd1e31523" kind="function"><name>isSneaking</name></member>
     <member refid="classendstone_1_1Player_1a23622b02f067bad332947a0b9459fd0a" kind="function"><name>setSneaking</name></member>
     <member refid="classendstone_1_1Player_1abb2a1b9ae99b24fc1e80ed5f73d55646" kind="function"><name>isSprinting</name></member>
@@ -2375,6 +2377,21 @@
     <member refid="classendstone_1_1PlayerRiptideEvent_1af1ed91b1cdbc6edfc9179f6297fcbcb8" kind="function"><name>ENDSTONE_EVENT</name></member>
     <member refid="classendstone_1_1PlayerRiptideEvent_1ae91951af777fa806cf92a42b2f20a49a" kind="function"><name>PlayerRiptideEvent</name></member>
     <member refid="classendstone_1_1PlayerRiptideEvent_1a06eaa93f42fea6e7eea2141a1d2670eb" kind="function"><name>getItem</name></member>
+  </compound>
+  <compound refid="classendstone_1_1PlayerSetSpawnEvent" kind="class"><name>endstone::PlayerSetSpawnEvent</name>
+    <member refid="classendstone_1_1PlayerSetSpawnEvent_1acfffd40b297c5ebdb54d39ec9f811d21" kind="enum"><name>Cause</name></member>
+    <member refid="classendstone_1_1PlayerSetSpawnEvent_1acfffd40b297c5ebdb54d39ec9f811d21ad19c65bc26ec025653d95586db2c31de" kind="enumvalue"><name>Bed</name></member>
+    <member refid="classendstone_1_1PlayerSetSpawnEvent_1acfffd40b297c5ebdb54d39ec9f811d21aa08d7e095dd721b2ecdb05aab5641067" kind="enumvalue"><name>RespawnAnchor</name></member>
+    <member refid="classendstone_1_1PlayerSetSpawnEvent_1acfffd40b297c5ebdb54d39ec9f811d21aee97be03cb04119af45014d815621ce1" kind="enumvalue"><name>Command</name></member>
+    <member refid="classendstone_1_1PlayerSetSpawnEvent_1acfffd40b297c5ebdb54d39ec9f811d21a409c1892b68cb394799262ac57f6d4f1" kind="enumvalue"><name>Plugin</name></member>
+    <member refid="classendstone_1_1PlayerSetSpawnEvent_1acfffd40b297c5ebdb54d39ec9f811d21a88183b946cc5f0e8c96b2e66e1c74a7e" kind="enumvalue"><name>Unknown</name></member>
+    <member refid="classendstone_1_1PlayerSetSpawnEvent_1ab9d9c27238f4ddcc2447924e3c3a49ec" kind="variable"><name>cause_</name></member>
+    <member refid="classendstone_1_1PlayerSetSpawnEvent_1a2e5e1dab1a1624c165c4875898baf315" kind="variable"><name>location_</name></member>
+    <member refid="classendstone_1_1PlayerSetSpawnEvent_1ae72fcf0305034b29a7958c840773c2f0" kind="function"><name>ENDSTONE_EVENT</name></member>
+    <member refid="classendstone_1_1PlayerSetSpawnEvent_1a79ed210e2b9cf0d6c259e0dfdb776c53" kind="function"><name>PlayerSetSpawnEvent</name></member>
+    <member refid="classendstone_1_1PlayerSetSpawnEvent_1a41541505a893b1cfb775caa0a1ead598" kind="function"><name>getCause</name></member>
+    <member refid="classendstone_1_1PlayerSetSpawnEvent_1aafb9d8122969b9078e3cd182cdc35b03" kind="function"><name>getLocation</name></member>
+    <member refid="classendstone_1_1PlayerSetSpawnEvent_1aba9e572ea6156c957e24c013ce745f52" kind="function"><name>setLocation</name></member>
   </compound>
   <compound refid="classendstone_1_1PlayerShearActorEvent" kind="class"><name>endstone::PlayerShearActorEvent</name>
     <member refid="classendstone_1_1PlayerShearActorEvent_1a171fe86a126769e52ba6d6953c58439c" kind="variable"><name>actor_</name></member>
@@ -3534,6 +3551,8 @@
   <compound refid="player__respawn__event_8h" kind="file"><name>player_respawn_event.h</name>
   </compound>
   <compound refid="player__riptide__event_8h" kind="file"><name>player_riptide_event.h</name>
+  </compound>
+  <compound refid="player__set__spawn__event_8h" kind="file"><name>player_set_spawn_event.h</name>
   </compound>
   <compound refid="player__shear__actor__event_8h" kind="file"><name>player_shear_actor_event.h</name>
   </compound>

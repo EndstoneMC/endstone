@@ -1445,6 +1445,19 @@ For latest updates join the chat on
             
                 
                     <li class="md-nav__item">
+    <a href="#endstone.Player.respawn_location" class="md-nav__link">
+      <span class="md-ellipsis">
+        <code class="doc-symbol doc-symbol-toc doc-symbol-attribute"></code>&nbsp;respawn_location
+      </span>
+    </a>
+
+    <!-- Table of contents list -->
+    
+</li>
+                
+            
+                
+                    <li class="md-nav__item">
     <a href="#endstone.Player.scoreboard" class="md-nav__link">
       <span class="md-ellipsis">
         <code class="doc-symbol doc-symbol-toc doc-symbol-attribute"></code>&nbsp;scoreboard
@@ -3619,6 +3632,19 @@ For latest updates join the chat on
             
                 
                     <li class="md-nav__item">
+    <a href="#endstone.Player.respawn_location" class="md-nav__link">
+      <span class="md-ellipsis">
+        <code class="doc-symbol doc-symbol-toc doc-symbol-attribute"></code>&nbsp;respawn_location
+      </span>
+    </a>
+
+    <!-- Table of contents list -->
+    
+</li>
+                
+            
+                
+                    <li class="md-nav__item">
     <a href="#endstone.Player.scoreboard" class="md-nav__link">
       <span class="md-ellipsis">
         <code class="doc-symbol doc-symbol-toc doc-symbol-attribute"></code>&nbsp;scoreboard
@@ -4636,6 +4662,23 @@ For latest updates join the chat on
             </td>
           </tr>
           <tr class="doc-section-item">
+            <td><code><a class="autorefs autorefs-internal" title="            respawn_location
+
+
+  
+      property
+      writable
+   (endstone.Player.respawn_location)" href="#endstone.Player.respawn_location">respawn_location</a></code></td>
+            <td>
+                  <code><a class="autorefs autorefs-internal" title="            Location (endstone.level.Location)" href="../level/#endstone.level.Location">Location</a> | None</code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>The location where the player will respawn, or <code>None</code> if they don't have a valid respawn point.</p>
+              </div>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
             <td><code><a class="autorefs autorefs-internal" title="            scoreboard
 
 
@@ -5210,6 +5253,38 @@ For latest updates join the chat on
 
         <p>The player's average ping in milliseconds.</p>
 
+    </div>
+
+</div>
+
+<div class="doc doc-object doc-attribute">
+
+
+
+<h3 id="endstone.Player.respawn_location" class="doc doc-heading">
+<code class="doc-symbol doc-symbol-heading doc-symbol-attribute"></code>            <span class="doc doc-object-name doc-attribute-name">respawn_location</span>
+
+
+  <span class="doc doc-labels">
+      <small class="doc doc-label doc-label-property"><code>property</code></small>
+      <small class="doc doc-label doc-label-writable"><code>writable</code></small>
+  </span>
+
+<a href="#endstone.Player.respawn_location" class="headerlink" title="Permanent link">&para;</a></h3>
+<div class="language-python doc-signature highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="n">respawn_location</span><span class="p">:</span> <span class="n"><a class="autorefs autorefs-internal" title="            Location (endstone.level.Location)" href="../level/#endstone.level.Location">Location</a></span> <span class="o">|</span> <span class="kc">None</span>
+</span></code></pre></div>
+
+    <div class="doc doc-contents ">
+
+        <p>The location where the player will respawn, or <code>None</code> if they don't have a valid respawn point.</p>
+<p>Assigning <code>None</code> clears the respawn point. When a location is assigned, its dimension must be loaded.</p>
+
+
+<details class="note" open>
+  <summary>Note</summary>
+  <p>Only the block coordinates and the dimension are written back; Bedrock does not persist yaw/pitch for a
+respawn point.</p>
+</details>
     </div>
 
 </div>
