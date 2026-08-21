@@ -342,8 +342,7 @@ void init_block(py::module_ &m, py::classh<Block> &block)
         .def_property_readonly("y", &Block::getY, "Y-coordinate of this block.")
         .def_property_readonly("z", &Block::getZ, "Z-coordinate of this block.")
         .def_property_readonly("location", &Block::getLocation, "The location of this block.")
-        .def("capture_state", py::overload_cast<bool>(&Block::captureState, py::const_), py::arg("use_snapshot") = true,
-             R"doc(
+        .def("capture_state", &Block::captureState, py::arg("use_snapshot") = true, R"doc(
     Captures the current state of this block.
 
     The returned object will never be updated, and you are not guaranteed that (for example) a

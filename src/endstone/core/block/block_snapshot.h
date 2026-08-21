@@ -30,8 +30,6 @@ namespace endstone::core {
  */
 class EndstoneBlockSnapshot : public EndstoneBlock {
 public:
-    using EndstoneBlock::captureState;
-
     EndstoneBlockSnapshot(BlockSource &block_source, BlockPos block_pos, const ::Block &placed)
         : EndstoneBlock(block_source, block_pos), placed_(const_cast<::Block *>(&placed))
     {

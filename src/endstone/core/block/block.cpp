@@ -32,15 +32,6 @@
 
 using endstone::core::EndstoneServer;
 
-namespace endstone {
-
-std::unique_ptr<BlockState> Block::captureState() const
-{
-    return captureState(true);
-}
-
-}  // namespace endstone
-
 namespace endstone::core {
 
 EndstoneBlock::EndstoneBlock(BlockSource &block_source, BlockPos block_pos)
