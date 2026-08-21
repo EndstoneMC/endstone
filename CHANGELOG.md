@@ -62,6 +62,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Added `PlayerToggleFlightEvent`, fired when a player starts or stops flying, with the new state in `is_flying`. Like Bukkit's event, it fires only for a player who is allowed to fly.
 - Added `PlayerToggleCrawlEvent`, fired when a player starts or stops crawling, with the new state in `is_crawling`. Bukkit has no equivalent because crawling is only a pose there, while on Bedrock it is a state the server tracks in its own right.
 - Added `Server.command_map` (`Server::getCommandMap()`), mirroring Paper's `Server#getCommandMap()`, which Bukkit leaves off the interface so plugins there resort to reflection. `CommandMap` is now available from Python with `register_command()`, `dispatch()`, `clear_commands()` and `get_command()`, so a plugin can register a command at runtime rather than declaring it up front.
+- Added `CauldronLevelChangeEvent`, called when a cauldron's level or contents change, reporting the `actor` responsible (if any), the `reason` for the change and the `new_state` the cauldron will take. Cancelling it leaves the cauldron as it is. This is Bukkit's `CauldronLevelChangeEvent`, with `actor` where Bukkit says `getEntity()`; Bukkit's deprecated `old_level`/`new_level` accessors are not ported because not all cauldron contents are levelled.
 - `Command` can now be subclassed in Python to override `execute()`, the way Paper plugins subclass `Command`. Previously a Python subclass could be written but its `execute()` was never called.
 
 ### Changed
