@@ -256,6 +256,15 @@ class Plugin:
     default_permission: PermissionDefault | bool | str | None = None
     permissions: dict[str, typing.Any] | None = None
     def __init__(self) -> None: ...
+    def register_commands(self, holder: object | None = None) -> None:
+        """
+        Registers every command tree declared with `@command` on the given object.
+
+        Args:
+            holder (object): The object holding the decorated methods. Defaults to the plugin
+                itself.
+        """
+
     def register_events(self, listener: object) -> None:
         """
         Registers all events defined in the given listener instance.

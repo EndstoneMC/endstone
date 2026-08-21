@@ -32,6 +32,7 @@ void init_block(py::module_ &, py::classh<Block> &block);
 void init_boss(py::module_ &);
 void init_color_format(py::module_ &);
 void init_command(py::module &, py_class<CommandSender> &command_sender);
+void init_command_tree(py::module_ &);
 void init_damage(py::module_ &);
 void init_enchantments(py::module_ &);
 void init_event(py::module_ &, py::class_<Event, PyEvent> &event);
@@ -222,6 +223,9 @@ PYBIND11_MODULE(_python, m)  // NOLINT(*-use-anonymous-namespace)
     init_boss(m_boss);
     init_command(m_command, command_sender);
     init_plugin(m_plugin);
+    // init_command_tree after init_plugin: registerTo takes a Plugin, and pybind11 bakes the
+    // signature at definition time, so Plugin has to be a registered type by then.
+    init_command_tree(m_command);
     init_scheduler(m_scheduler);
     init_permissions(m_permissions, permissible, permission);
     init_registry(m);
