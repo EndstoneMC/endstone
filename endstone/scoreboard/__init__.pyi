@@ -86,7 +86,7 @@ class Scoreboard:
         """
 
     @typing.overload
-    def get_objective(self, name: str) -> Objective:
+    def get_objective(self, name: str) -> Objective | None:
         """
         Gets an `Objective` on this `Scoreboard` by name.
 
@@ -98,7 +98,7 @@ class Scoreboard:
         """
 
     @typing.overload
-    def get_objective(self, slot: DisplaySlot) -> Objective:
+    def get_objective(self, slot: DisplaySlot) -> Objective | None:
         """
         Gets the `Objective` currently displayed in a `DisplaySlot` on this `Scoreboard`.
 

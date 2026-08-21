@@ -29,6 +29,8 @@
 #include "poly.h"
 #include "type_caster.h"
 
+PYBIND11_MAKE_OPAQUE(std::vector<endstone::NotNull<endstone::Block>>)
+
 namespace py = pybind11;
 
 namespace endstone::python {

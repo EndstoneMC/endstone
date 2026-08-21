@@ -16,6 +16,7 @@
 
 #include <string>
 
+#include "bedrock/bedrock.h"
 #include "bedrock/deps/json/value.h"
 #include "bedrock/forward.h"
 #include "bedrock/resources/base_game_version.h"
@@ -267,3 +268,5 @@ protected:
     std::vector<std::function<void()>> on_reset_bai_callbacks_;
     std::vector<ItemTag> tags_;
 };
+
+BEDROCK_STATIC_ASSERT_SIZE(Item, 528, 456);

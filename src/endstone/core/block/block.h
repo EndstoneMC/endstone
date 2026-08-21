@@ -27,25 +27,24 @@ public:
     [[nodiscard]] const BlockType &getType() const override;
     void setType(BlockTypeId type) override;
     void setType(BlockTypeId type, bool apply_physics) override;
-    [[nodiscard]] std::unique_ptr<BlockData> getData() const override;
+    [[nodiscard]] NotNull<BlockData> getData() const override;
     void setData(const BlockData &data) override;
     void setData(const BlockData &data, bool apply_physics) override;
-    std::unique_ptr<Block> getRelative(int offset_x, int offset_y, int offset_z) override;
-    std::unique_ptr<Block> getRelative(BlockFace face) override;
-    std::unique_ptr<Block> getRelative(BlockFace face, int distance) override;
+    NotNull<Block> getRelative(int offset_x, int offset_y, int offset_z) override;
+    NotNull<Block> getRelative(BlockFace face) override;
+    NotNull<Block> getRelative(BlockFace face, int distance) override;
     [[nodiscard]] NotNull<Dimension> getDimension() const override;
     [[nodiscard]] const Biome &getBiome() const override;
     [[nodiscard]] int getX() const override;
     [[nodiscard]] int getY() const override;
     [[nodiscard]] int getZ() const override;
     [[nodiscard]] Location getLocation() const override;
-    [[nodiscard]] std::unique_ptr<BlockState> captureState(bool use_snapshot) const override;
-    [[nodiscard]] std::unique_ptr<Block> clone() const override;
+    [[nodiscard]] NotNull<BlockState> captureState(bool use_snapshot) const override;
 
     [[nodiscard]] BlockPos getPosition() const;
     [[nodiscard]] ::Block &getMinecraftBlock() const;
 
-    static std::unique_ptr<EndstoneBlock> at(BlockSource &block_source, BlockPos block_pos);
+    static NotNull<EndstoneBlock> at(BlockSource &block_source, BlockPos block_pos);
     static BlockFace toBlockFace(Direction::Type direction);
 
 protected:

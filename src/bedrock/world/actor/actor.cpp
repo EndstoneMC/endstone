@@ -94,6 +94,11 @@ bool Actor::isSneaking() const
     return getStatusFlag(ActorFlags::SNEAKING);
 }
 
+bool Actor::isSwimming() const
+{
+    return SynchedActorDataAccess::getActorFlag(entity_context_, ActorFlags::SWIMMING);
+}
+
 bool Actor::isPlayer() const
 {
     return hasComponent<PlayerComponent>();

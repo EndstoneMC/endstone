@@ -113,7 +113,7 @@ void EndstoneBossBar::setVisible(bool visible)
 void EndstoneBossBar::addPlayer(const NotNull<Player> &player)
 {
     players_.emplace(player.get());
-    if (visible_ && player->isValid()) {
+    if (visible_) {
         send(BossEventUpdateType::Add, player);
     }
 }
@@ -121,7 +121,7 @@ void EndstoneBossBar::addPlayer(const NotNull<Player> &player)
 void EndstoneBossBar::removePlayer(const NotNull<Player> &player)
 {
     players_.erase(player.get());
-    if (visible_ && player->isValid()) {
+    if (visible_) {
         send(BossEventUpdateType::Remove, player);
     }
 }
@@ -154,21 +154,22 @@ std::vector<NotNull<Player>> EndstoneBossBar::getPlayers() const
 
 void EndstoneBossBar::send(BossEventUpdateType event_type, const NotNull<Player> &player)
 {
+    const auto *handle = player.cast<EndstonePlayer>()->tryGetHandle();
+    if (!handle) {
+        return;
+    }
+
     const auto packet = MinecraftPackets::createPacket(MinecraftPacketIds::BossEvent);
     const auto pk = std::static_pointer_cast<BossEventPacket>(packet);
-    const auto &handle = player.cast<EndstonePlayer>()->getHandle();
-    pk->payload.boss_id = handle.getOrCreateUniqueID();
-    pk->payload.player_id = handle.getOrCreateUniqueID();
+    pk->payload.boss_id = handle->getOrCreateUniqueID();
+    pk->payload.player_id = handle->getOrCreateUniqueID();
     pk->payload.event_type = event_type;
     pk->payload.name = title_;
     pk->payload.health_percent = progress_;
     pk->payload.color = static_cast<BossBarColor>(color_);
     pk->payload.overlay = static_cast<BossBarOverlay>(style_);
     // BarFlag::DarkenSky / CreateFog dropped from BossEventPacket in BDS 1.26.32 (cereal-only migration)
-    EndstoneServer::getInstance().getLogger().info(
-        "[bossbar] to={} type={} boss_id={} percent={} title='{}'", player->getName(),
-        static_cast<int>(event_type), pk->payload.boss_id.raw_id, pk->payload.health_percent, title_);
-    handle.sendNetworkPacket(*packet);
+    handle->sendNetworkPacket(*packet);
 }
 
 void EndstoneBossBar::broadcast(BossEventUpdateType event_type)

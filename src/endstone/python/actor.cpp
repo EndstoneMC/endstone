@@ -241,6 +241,7 @@ void init_actor(py::module_ &m, py_class<Actor> &actor, py_class<Mob> &mob)
 
     mob.def_property_readonly("is_gliding", &Mob::isGliding,
                               "`True` if this actor is gliding, such as using an Elytra.")
+        .def_property_readonly("is_swimming", &Mob::isSwimming, "`True` if this actor is swimming.")
         .def_property("health", &Mob::getHealth, &Mob::setHealth,
                       "The entity's health from 0 to its max possible value, where 0 is dead.")
         .def_property("max_health", &Mob::getMaxHealth, &Mob::setMaxHealth, R"doc(

@@ -1,3 +1,5 @@
+import gc
+
 import pytest
 from endstone import Player
 from endstone.command import Command, CommandSender
@@ -64,6 +66,10 @@ class EndstoneTest(Plugin):
             "description": "Allow users to use the /testoptmsg command.",
             "default": "op",
         },
+        "endstone_test.granted": {
+            "description": "Never granted by default, only via a permission attachment.",
+            "default": "false",
+        },
     }
 
     def __init__(self):
@@ -113,3 +119,4 @@ class EndstoneTest(Plugin):
             return pytest.main(["-s", "-m", marker, "--pyargs", "endstone_test.tests"])
         finally:
             clear_runtime_context()
+            gc.collect()

@@ -11,7 +11,7 @@
 
 namespace endstone::runtime {
 
-static constexpr std::array<std::pair<std::string_view, std::size_t>, 65> symbols = {{
+static constexpr std::array<std::pair<std::string_view, std::size_t>, 72> symbols = {{
     {"BlockState::StateListNode::mHead", 211294960},
     {"Enchant::mEnchants", 211141912},
     {"MobEffect::mMobEffects", 211424880},
@@ -21,6 +21,8 @@ static constexpr std::array<std::pair<std::string_view, std::size_t>, 65> symbol
     {"?teleportTo@Actor@@UEAAXAEBVVec3@@_NHH1@Z", 14658832},
     // ActorFactory
     {"?createSpawnedActor@ActorFactory@@QEAA?AV?$OwnerPtr@VEntityContext@@@@AEBUActorDefinitionIdentifier@@PEAVActor@@AEBVVec3@@AEBVVec2@@@Z", 26276384},
+    // ArmorStand
+    {"?getInteraction@ArmorStand@@UEAA?AVInteractionResult@@AEAVPlayer@@AEAVActorInteraction@@AEBVVec3@@@Z", 37474192},
     // BatchedNetworkPeer
     {"?_receivePacket@BatchedNetworkPeer@@MEAA?AW4DataStatus@NetworkPeer@@AEAV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@AEBV?$shared_ptr@V?$time_point@Usteady_clock@chrono@std@@V?$duration@_JU?$ratio@$00$0DLJKMKAA@@std@@@23@@chrono@std@@@5@@Z", 16659136},
     {"?sendPacket@BatchedNetworkPeer@@UEAAXAEBV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@W4Reliability@NetworkPeer@@W4Compressibility@@@Z", 16658656},
@@ -33,6 +35,8 @@ static constexpr std::array<std::pair<std::string_view, std::size_t>, 65> symbol
     {"?tryGetStateFromLegacyData@BlockType@@QEBAPEBVBlock@@G@Z", 32421904},
     // BlockTypeRegistry
     {"?forEachBlockType@BlockTypeRegistry@@QEBAXV?$function_ref@$$A6A_NAEBVBlockType@@@Z$$A6A_N0@Z@brstd@@@Z", 42281168},
+    // BucketableComponent
+    {"?getInteraction@BucketableComponent@@QEAA?AVInteractionResult@@AEAVActor@@AEAVPlayer@@AEAVActorInteraction@@@Z", 38215168},
     // CampfireBlockActor
     {"?_finishCooking@CampfireBlockActor@@AEAAXAEAVBlockSource@@H@Z", 43046640},
     // Command
@@ -58,6 +62,8 @@ static constexpr std::array<std::pair<std::string_view, std::size_t>, 65> symbol
     {"?explode@Explosion@@QEAA_NAEAVIRandom@@@Z", 7190560},
     // FurnaceBlockActor
     {"?getBurnDuration@FurnaceBlockActor@@SAMAEBVItemStackBase@@M@Z", 99471088},
+    // InteractComponent
+    {"?getInteraction@InteractComponent@@QEAA?AVInteractionResult@@AEAVActor@@AEAVPlayer@@AEAVActorInteraction@@@Z", 47665408},
     // InventoryTransaction
     {"?executeWorldInteraction@InventoryTransaction@@SA?AW4InventoryTransactionError@@PEAXAEAVPlayer@@AEBVInventoryAction@@@Z", 39521808},
     // Item
@@ -71,6 +77,8 @@ static constexpr std::array<std::pair<std::string_view, std::size_t>, 65> symbol
     // ItemStackBase
     {"?_loadBlocksForCanPlaceOnCanDestroy@ItemStackBase@@CA_NAEAV?$vector@PEBVBlockType@@V?$allocator@PEBVBlockType@@@std@@@std@@AEBV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@3@@Z", 29168176},
     {"?_setItem@ItemStackBase@@AEAA_NH_N@Z", 29129472},
+    // ItemStackRequestActionCraftHandler
+    {"?handleCraftAction@ItemStackRequestActionCraftHandler@@QEAA?AW4ItemStackNetResult@@AEBVItemStackRequestActionCraftBase@@@Z", 150405296},
     // LeavesBlock
     {"?randomTick@LeavesBlock@@QEBAXAEAVBlockRandomTickEvent@BlockEvents@@@Z", 48292160},
     // Level
@@ -89,12 +97,15 @@ static constexpr std::array<std::pair<std::string_view, std::size_t>, 65> symbol
     // PistonBlockActor
     {"?tick@PistonBlockActor@@UEAAXAEAVBlockSource@@@Z", 99573264},
     // Player
+    {"?addExperience@Player@@UEAAXH@Z", 2318544},
     {"?addLevels@Player@@UEAAXH@Z", 2320016},
     {"?completeUsingItem@Player@@QEAAXXZ", 2206272},
     {"?drop@Player@@UEAA_NAEBVItemStack@@_N@Z", 2302400},
     {"?startSleepInBed@Player@@UEAA?AW4BedSleepingResult@@AEBVBlockPos@@_NM@Z", 2182176},
     {"?take@Player@@QEAA_NAEAVActor@@HH@Z", 2251552},
     {"?teleportTo@Player@@UEAAXAEBVVec3@@_NHH1@Z", 2176288},
+    // PushableByEntityUtility
+    {"?push@PushableByEntityUtility@@YAXAEAVActor@@0_N@Z", 47156208},
     // RakPeerHelper
     {"?peerStartup@RakPeerHelper@@QEAA?AW4StartupResult@RakNet@@PEAVRakPeerInterface@3@AEBUConnectionDefinition@@W4PeerPurpose@1@@Z", 12705152},
     // RepositoryFactory
@@ -114,6 +125,8 @@ static constexpr std::array<std::pair<std::string_view, std::size_t>, 65> symbol
     {"?changeDimension@ServerPlayer@@UEAAXUDimensionType@@@Z", 6907440},
     // ServerScoreboard
     {"??0ServerScoreboard@@QEAA@VCommandSoftEnumRegistry@@PEAVLevelStorage@@V?$not_null@V?$NonOwnerPointer@VGameplayUserManager@@@Bedrock@@@gsl@@@Z", 1277104},
+    // TridentItem
+    {"?releaseUsing@TridentItem@@UEBAXAEAVItemStack@@PEAVPlayer@@H@Z", 53278064},
     // VanillaBlockActorFactory
     {"?createBlockActor@VanillaBlockActorFactory@@YA?AV?$shared_ptr@VBlockActor@@@std@@AEBVBlockPos@@AEBVBlockType@@@Z", 135364784},
     // WeatherManager

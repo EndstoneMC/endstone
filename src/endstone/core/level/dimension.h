@@ -35,12 +35,12 @@ public:
     [[nodiscard]] std::string getTranslationKey() const override;
     [[nodiscard]] Level &getLevel() const override;
     [[nodiscard]] bool isValid() const override;
-    [[nodiscard]] std::unique_ptr<Block> getBlockAt(int x, int y, int z) const override;
-    [[nodiscard]] std::unique_ptr<Block> getBlockAt(Location location) const override;
+    [[nodiscard]] NotNull<Block> getBlockAt(int x, int y, int z) const override;
+    [[nodiscard]] NotNull<Block> getBlockAt(Location location) const override;
     [[nodiscard]] int getHighestBlockYAt(int x, int z) const override;
-    [[nodiscard]] std::unique_ptr<Block> getHighestBlockAt(int x, int z) const override;
-    [[nodiscard]] std::unique_ptr<Block> getHighestBlockAt(Location location) const override;
-    [[nodiscard]] std::vector<std::unique_ptr<Chunk>> getLoadedChunks() override;
+    [[nodiscard]] NotNull<Block> getHighestBlockAt(int x, int z) const override;
+    [[nodiscard]] NotNull<Block> getHighestBlockAt(Location location) const override;
+    [[nodiscard]] std::vector<NotNull<Chunk>> getLoadedChunks() override;
     [[nodiscard]] bool isChunkLoaded(int x, int z) const override;
     bool loadChunk(int x, int z) override;
     bool unloadChunk(int x, int z) override;
@@ -51,7 +51,7 @@ public:
     [[nodiscard]] std::vector<NotNull<Player>> getPlayers() const override;
 
     [[nodiscard]] ::Dimension &getHandle() const;
-    [[nodiscard]] NotNull<EndstoneDimension> getSelf() const;
+    [[nodiscard]] NotNull<EndstoneDimension> self() const;
 
 private:
     WeakRef<::Dimension> dimension_;

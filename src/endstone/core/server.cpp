@@ -475,8 +475,8 @@ void EndstoneServer::enablePlugin(Plugin &plugin)
 {
     auto perms = plugin.getDescription().getPermissions();
     for (const auto &perm : perms) {
-        if (plugin_manager_->getPermission(perm.getName()) == nullptr) {
-            plugin_manager_->addPermission(std::make_unique<Permission>(perm));
+        if (!plugin_manager_->getPermission(perm.getName())) {
+            plugin_manager_->addPermission(std::make_shared<Permission>(perm));
         }
         else {
             getLogger().error("Plugin {} tried to register permission '{}' that was already registered.",
@@ -624,10 +624,10 @@ void EndstoneServer::reloadData()
 
 void EndstoneServer::broadcast(const Message &message, const std::string &permission) const
 {
-    std::unordered_set<const CommandSender *> recipients;
-    for (const auto *permissible : getPluginManager().getPermissionSubscriptions(permission)) {
-        if (const auto *sender = permissible->as<CommandSender>(); sender && sender->hasPermission(permission)) {
-            recipients.insert(sender);
+    std::unordered_set<NotNull<CommandSender>> recipients;
+    for (const auto &permissible : getPluginManager().getPermissionSubscriptions(permission)) {
+        if (permissible->is<CommandSender>() && permissible->hasPermission(permission)) {
+            recipients.insert(permissible.cast<CommandSender>());
         }
     }
 
@@ -724,23 +724,23 @@ std::chrono::system_clock::time_point EndstoneServer::getStartTime()
     return start_time_;
 }
 
-std::unique_ptr<BossBar> EndstoneServer::createBossBar(std::string title, BarColor color, BarStyle style) const
+NotNull<BossBar> EndstoneServer::createBossBar(std::string title, BarColor color, BarStyle style) const
 {
-    return std::make_unique<EndstoneBossBar>(std::move(title), color, style);
+    return std::make_shared<EndstoneBossBar>(std::move(title), color, style);
 }
 
-std::unique_ptr<BossBar> EndstoneServer::createBossBar(std::string title, BarColor color, BarStyle style,
-                                                       std::vector<BarFlag> flags) const
+NotNull<BossBar> EndstoneServer::createBossBar(std::string title, BarColor color, BarStyle style,
+                                               std::vector<BarFlag> flags) const
 {
-    return std::make_unique<EndstoneBossBar>(std::move(title), color, style, flags);
+    return std::make_shared<EndstoneBossBar>(std::move(title), color, style, flags);
 }
 
-std::unique_ptr<BlockData> EndstoneServer::createBlockData(BlockTypeId type) const
+NotNull<BlockData> EndstoneServer::createBlockData(BlockTypeId type) const
 {
     return createBlockData(type, {});
 }
 
-std::unique_ptr<BlockData> EndstoneServer::createBlockData(BlockTypeId type, BlockStates block_states) const
+NotNull<BlockData> EndstoneServer::createBlockData(BlockTypeId type, BlockStates block_states) const
 {
     std::unordered_map<std::string, std::variant<int, std::string, bool>> states;
     for (const auto &state : block_states) {
@@ -750,7 +750,7 @@ std::unique_ptr<BlockData> EndstoneServer::createBlockData(BlockTypeId type, Blo
         ScriptModuleMinecraft::ScriptBlockUtils::createBlockDescriptor(std::string(type), states);
     const auto *block = block_descriptor.tryGetBlockNoLogging();
     Preconditions::checkArgument(block != nullptr, "Block type {} cannot be found in the registry.", type);
-    return std::make_unique<EndstoneBlockData>(const_cast<::Block &>(*block));
+    return std::make_shared<EndstoneBlockData>(const_cast<::Block &>(*block));
 }
 
 PlayerBanList &EndstoneServer::getBanList() const
@@ -815,7 +815,7 @@ void EndstoneServer::setPlayerBoard(const NotNull<EndstonePlayer> &player, NotNu
     }
 
     // remove player from the old board
-    getPlayerBoard(player)->resetScores(player->getSelf());
+    getPlayerBoard(player)->resetScores(player->self());
 
     // add player to the new board
     new_board.onPlayerJoined(player->getHandle());

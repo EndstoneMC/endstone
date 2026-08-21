@@ -35,6 +35,8 @@
 
 namespace endstone {
 
+class TileState;
+
 /**
  * Represents a player.
  */
@@ -150,6 +152,15 @@ public:
      * @param sprinting `true` if the player should be sprinting
      */
     virtual void setSprinting(bool sprinting) = 0;
+
+    /**
+     * Gets whether the player is crawling or not.
+     *
+     * Bukkit has no equivalent, as crawling is a pose there rather than a state the server tracks.
+     *
+     * @return `true` if the player is crawling.
+     */
+    [[nodiscard]] virtual bool isCrawling() const = 0;
 
     // TODO: playNote
 

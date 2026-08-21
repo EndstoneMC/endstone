@@ -99,13 +99,17 @@ GameplayHandlerResult<CoordinatorResult> handleEvent(ChatEvent &event,
     if (e.getMessage() != event.message) {
         player = &e.getPlayer().cast<endstone::core::EndstonePlayer>()->getHandle();
         for (const auto &recipient : e.getRecipients()) {
+            auto *handle = recipient.cast<endstone::core::EndstonePlayer>()->tryGetHandle();
+            if (!handle) {
+                continue;
+            }
             auto packet = MinecraftPackets::createPacket(MinecraftPacketIds::Text);
             auto &pk = static_cast<TextPacket &>(*packet);
             pk.payload = {
                 .xuid = player->getXuid(),
                 .platform_id = player->getPlatformOnlineId(),
                 .body = TextPacketPayload::AuthorAndMessage{TextPacketType::Chat, player->getName(), e.getMessage()}};
-            recipient.cast<endstone::core::EndstonePlayer>()->getHandle().sendNetworkPacket(*packet);
+            handle->sendNetworkPacket(*packet);
         }
         return CANCEL;
     }

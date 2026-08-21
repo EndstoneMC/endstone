@@ -38,11 +38,10 @@ public:
     [[nodiscard]] const BlockType &getType() const override;
     void setType(BlockTypeId type) override;
     void setType(BlockTypeId type, bool apply_physics) override;
-    [[nodiscard]] std::unique_ptr<BlockData> getData() const override;
+    [[nodiscard]] NotNull<BlockData> getData() const override;
     void setData(const BlockData &data) override;
     void setData(const BlockData &data, bool apply_physics) override;
-    [[nodiscard]] std::unique_ptr<BlockState> captureState(bool use_snapshot) const override;
-    [[nodiscard]] std::unique_ptr<Block> clone() const override;
+    [[nodiscard]] NotNull<BlockState> captureState(bool use_snapshot) const override;
 
 private:
     ::Block *placed_;

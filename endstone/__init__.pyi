@@ -52,6 +52,7 @@ __all__ = [
     "GameMode",
     "GameRule",
     "Identifier",
+    "Input",
     "Logger",
     "OfflinePlayer",
     "Player",
@@ -666,6 +667,12 @@ class Player(Mob):
     @is_flying.setter
     def is_flying(self, arg1: bool) -> None: ...
     @property
+    def is_crawling(self) -> bool:
+        """
+        Whether the player is currently crawling or not.
+        """
+
+    @property
     def allow_flight(self) -> bool:
         """
         Whether the Player is allowed to fly via jump key double-tap.
@@ -973,6 +980,56 @@ class Rotation(enum.Enum):
     FLIPPED_45 = 5
     COUNTER_CLOCKWISE = 6
     COUNTER_CLOCKWISE_45 = 7
+
+class Input:
+    """
+    Represents a movement input applied to a player.
+    """
+    @property
+    def is_forward(self) -> bool:
+        """
+        Whether a forward input is applied.
+        """
+
+    @property
+    def is_backward(self) -> bool:
+        """
+        Whether a backward input is applied.
+        """
+
+    @property
+    def is_left(self) -> bool:
+        """
+        Whether a left input is applied.
+        """
+
+    @property
+    def is_right(self) -> bool:
+        """
+        Whether a right input is applied.
+        """
+
+    @property
+    def is_jump(self) -> bool:
+        """
+        Whether a jump input is applied.
+        """
+
+    @property
+    def is_sneak(self) -> bool:
+        """
+        Whether a sneak input is applied.
+        """
+
+    @property
+    def is_sprint(self) -> bool:
+        """
+        Whether a sprint input is applied.
+        """
+
+    def __eq__(self, other: object) -> bool: ...
+    def __hash__(self) -> int: ...
+    def __ne__(self, other: object) -> bool: ...
 
 class Logger:
     """

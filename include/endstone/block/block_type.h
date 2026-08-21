@@ -17,6 +17,7 @@
 #include <memory>
 
 #include "endstone/registry.h"
+#include "endstone/util/pointers.h"
 
 namespace endstone {
 
@@ -44,6 +45,6 @@ public:
      *
      * @return new data instance
      */
-    [[nodiscard]] virtual std::unique_ptr<BlockData> createBlockData() const = 0;
+    [[nodiscard]] virtual NotNull<BlockData> createBlockData() const = 0;
 };
 }  // namespace endstone

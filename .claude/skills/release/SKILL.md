@@ -28,7 +28,7 @@ git push --follow-tags origin <branch>
                 v
         build.yml (DAG of jobs on tag push)
         +-----------------------------------+
-        |   wheels    (cp310-14 x 2 OS)     |
+        |   wheels    (cp311-14 x 2 OS)     |
         |       |                           |
         |       +-- bundle  (zip per OS)    |
         |       +-- docker  (GHCR/Hub push) |
@@ -266,7 +266,7 @@ with `gh run watch <run_id>` and check back later instead of polling.
 
 Expected job outcomes on a tag push:
 
-- **wheels** (~15-20 min, parallel matrix): 10 wheels (cp310-cp314 ×
+- **wheels** (~15-20 min, parallel matrix): 8 wheels (cp311-cp314 ×
   manylinux_x86_64/win_amd64). Linux wheels build inside the
   `manylinux_2_31` container; deps come from the `Linux-conan-Release-*`
   cache populated by prior develop/main pushes. Artifacts uploaded with

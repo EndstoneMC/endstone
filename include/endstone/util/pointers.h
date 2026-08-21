@@ -21,6 +21,7 @@
 #include <utility>
 
 #include "endstone/check.h"
+#include "endstone/object.h"
 
 namespace endstone {
 template <class T>
@@ -65,7 +66,38 @@ public:
     T *operator->() const noexcept { return ptr_.get(); }
     T &operator*() const noexcept { return *get(); }
 
-    /** Statically downcasts to a related type, keeping the shared ownership. */
+    /**
+     * Checks if the pointee is an instance of the given type U (or a subclass of U).
+     *
+     * @tparam U Type to check against (must derive from Object)
+     * @return `true` if the pointee is an instance of U
+     */
+    template <class U>
+        requires std::is_base_of_v<Object, T> && std::is_base_of_v<Object, U>
+    [[nodiscard]] bool is() const
+    {
+        return ptr_->template is<U>();
+    }
+
+    /**
+     * Attempts to narrow the pointee to the given type U, keeping the shared ownership.
+     *
+     * Returns a null Nullable if the pointee is not an instance of U (or a subclass of U).
+     *
+     * @tparam U Target type to narrow to (must derive from Object)
+     * @return A Nullable holding this as U, or a null Nullable if the narrowing is invalid
+     */
+    template <class U>
+        requires std::is_base_of_v<Object, T> && std::is_base_of_v<Object, U>
+    [[nodiscard]] Nullable<U> as() const
+    {
+        if (auto *raw = ptr_->template as<U>()) {
+            return std::shared_ptr<U>(ptr_, raw);
+        }
+        return nullptr;
+    }
+
+    /** @internal Statically downcasts to a related type, keeping the shared ownership. Prefer as(). */
     template <class U>
     [[nodiscard]] NotNull<U> cast() const
     {
@@ -129,7 +161,40 @@ public:
     T &operator*() const noexcept { return *get(); }
     explicit operator bool() const noexcept { return ptr_ != nullptr; }
 
-    /** Statically downcasts to a related type, keeping the shared ownership. */
+    /**
+     * Checks if the pointee is an instance of the given type U (or a subclass of U).
+     *
+     * @tparam U Type to check against (must derive from Object)
+     * @return `true` if a value is held and the pointee is an instance of U
+     */
+    template <class U>
+        requires std::is_base_of_v<Object, T> && std::is_base_of_v<Object, U>
+    [[nodiscard]] bool is() const
+    {
+        return ptr_ != nullptr && ptr_->template is<U>();
+    }
+
+    /**
+     * Attempts to narrow the pointee to the given type U, keeping the shared ownership.
+     *
+     * Returns a null Nullable if this is null, or if the pointee is not an instance of U (or a subclass of U).
+     *
+     * @tparam U Target type to narrow to (must derive from Object)
+     * @return A Nullable holding this as U, or a null Nullable if the narrowing is invalid
+     */
+    template <class U>
+        requires std::is_base_of_v<Object, T> && std::is_base_of_v<Object, U>
+    [[nodiscard]] Nullable<U> as() const
+    {
+        if (ptr_) {
+            if (auto *raw = ptr_->template as<U>()) {
+                return std::shared_ptr<U>(ptr_, raw);
+            }
+        }
+        return nullptr;
+    }
+
+    /** @internal Statically downcasts to a related type, keeping the shared ownership. Prefer as(). */
     template <class U>
     [[nodiscard]] Nullable<U> cast() const
     {

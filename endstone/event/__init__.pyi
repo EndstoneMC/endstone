@@ -5,7 +5,7 @@ Classes relating to handling triggered code executions.
 import enum
 import typing
 
-from endstone import GameMode, Player, Skin
+from endstone import GameMode, Input, Player, Skin
 from endstone.actor import Actor, Item, Mob
 from endstone.block import Block, BlockFace, BlockState
 from endstone.command import CommandSender
@@ -15,17 +15,25 @@ from endstone.lang import Translatable
 from endstone.level import Chunk, Dimension, Level, Location
 from endstone.map import MapView
 from endstone.plugin import Plugin
+from endstone.potion import Effect
 from endstone.util import SocketAddress, Vector
 
 __all__ = [
+    "ActorChangeBlockEvent",
+    "ActorCollideWithActorEvent",
     "ActorDamageEvent",
     "ActorDeathEvent",
+    "ActorDismountEvent",
+    "ActorEffectEvent",
     "ActorEvent",
     "ActorExplodeEvent",
     "ActorKnockbackEvent",
+    "ActorPickupItemEvent",
     "ActorRemoveEvent",
     "ActorSpawnEvent",
     "ActorTeleportEvent",
+    "ActorToggleGlideEvent",
+    "ActorToggleSwimEvent",
     "BlockBreakEvent",
     "BlockCookEvent",
     "BlockEvent",
@@ -52,16 +60,22 @@ __all__ = [
     "MobEvent",
     "PacketReceiveEvent",
     "PacketSendEvent",
+    "PlayerArmSwingEvent",
+    "PlayerArmorStandManipulateEvent",
     "PlayerBedEnterEvent",
     "PlayerBedLeaveEvent",
+    "PlayerBucketActorEvent",
     "PlayerChatEvent",
     "PlayerCommandEvent",
+    "PlayerCraftItemEvent",
     "PlayerDeathEvent",
     "PlayerDimensionChangeEvent",
     "PlayerDropItemEvent",
     "PlayerEmoteEvent",
     "PlayerEvent",
+    "PlayerExpChangeEvent",
     "PlayerGameModeChangeEvent",
+    "PlayerInputEvent",
     "PlayerInteractActorEvent",
     "PlayerInteractEvent",
     "PlayerItemConsumeEvent",
@@ -73,12 +87,18 @@ __all__ = [
     "PlayerLoginEvent",
     "PlayerMoveEvent",
     "PlayerPickupArrowEvent",
+    "PlayerPickupExperienceEvent",
     "PlayerPickupItemEvent",
     "PlayerPortalEvent",
     "PlayerQuitEvent",
+    "PlayerRecipeBookSettingsChangeEvent",
     "PlayerRespawnEvent",
+    "PlayerRiptideEvent",
+    "PlayerShearActorEvent",
     "PlayerSkinChangeEvent",
     "PlayerTeleportEvent",
+    "PlayerToggleCrawlEvent",
+    "PlayerToggleFlightEvent",
     "PlayerToggleSneakEvent",
     "PlayerToggleSprintEvent",
     "PluginDisableEvent",
@@ -198,6 +218,24 @@ class MobEvent(Event):
         The `Mob` which is involved in this event.
         """
 
+class ActorCollideWithActorEvent(Event, Cancellable):
+    """
+    Called when two actors collide with each other.
+
+    If this event is cancelled, the actors will not be pushed away from each other. Cancelling also stops
+    either actor from being pulled onto the other when the other is a rideable vehicle, so a listener that
+    cancels every collision also stops boats and minecarts from being boarded by walking into them.
+
+    The server fires this before it decides whether the collision leads to a push, so it is also called for
+    pairs the server then leaves alone, and it is called more than once per tick for a pair that keeps
+    overlapping.
+    """
+    @property
+    def actors(self) -> list[Actor]:
+        """
+        The actors that are involved in this event.
+        """
+
 class ActorDamageEvent(MobEvent, Cancellable):
     """
     Called when an `Actor` is damaged.
@@ -267,6 +305,60 @@ class ActorExplodeEvent(ActorEvent, Cancellable):
     @block_list.setter
     def block_list(self, arg1: list[Block]) -> None: ...
 
+class ActorEffectEvent(MobEvent, Cancellable):
+    """
+    Called when an effect on a `Mob` changes.
+
+    This is fired before the change is applied. Cancelling the event prevents it, and the effect may be
+    replaced with a different one by assigning to `effect`.
+    """
+    class Action(enum.Enum):
+        """
+        An enum to specify how the effect changed.
+        """
+
+        ADDED = 0
+
+    ADDED = Action.ADDED
+    @property
+    def action(self) -> Action:
+        """
+        How the effect changed.
+        """
+
+    @property
+    def effect(self) -> Effect:
+        """
+        The effect involved in this event.
+        """
+
+    @effect.setter
+    def effect(self, arg1: Effect) -> None: ...
+
+class ActorDismountEvent(ActorEvent, Cancellable):
+    """
+    Called when an `Actor` stops riding another `Actor`.
+    """
+    @property
+    def vehicle(self) -> Actor:
+        """
+        The actor that is being dismounted.
+        """
+
+class ActorChangeBlockEvent(ActorEvent, Cancellable):
+    """
+    Called when an `Actor` changes a block through its own behaviour, such as a creeper exploding, an
+    enderman picking a block up, a ravager trampling crops or a zombie breaking a door.
+
+    Unlike Bukkit's equivalent, this covers only the mob griefing paths. It is not called for falling
+    blocks landing or for sheep eating grass, and the resulting block state is not available.
+    """
+    @property
+    def block(self) -> Block:
+        """
+        The block that will be changed.
+        """
+
 class ActorKnockbackEvent(MobEvent, Cancellable):
     """
     Called when a living entity receives knockback.
@@ -287,6 +379,24 @@ class ActorKnockbackEvent(MobEvent, Cancellable):
 
     @knockback.setter
     def knockback(self, arg1: Vector) -> None: ...
+
+class ActorPickupItemEvent(ActorEvent, Cancellable):
+    """
+    Called when an `Actor` picks an item up from the ground.
+
+    This is not called for players; see `PlayerPickupItemEvent` instead.
+    """
+    @property
+    def item(self) -> Item:
+        """
+        The Item picked up by the actor.
+        """
+
+    @property
+    def amount(self) -> int:
+        """
+        The number of items that will be picked up from the stack.
+        """
 
 class ActorRemoveEvent(ActorEvent):
     """
@@ -326,6 +436,26 @@ class ActorTeleportEvent(ActorEvent, Cancellable):
 
     @to_location.setter
     def to_location(self, arg1: Location) -> None: ...
+
+class ActorToggleGlideEvent(MobEvent):
+    """
+    Called when an `Actor`'s gliding state is toggled with an elytra.
+    """
+    @property
+    def is_gliding(self) -> bool:
+        """
+        Whether the actor is now gliding or not.
+        """
+
+class ActorToggleSwimEvent(MobEvent):
+    """
+    Called when an `Actor`'s swimming state is toggled.
+    """
+    @property
+    def is_swimming(self) -> bool:
+        """
+        Whether the actor is now swimming or not.
+        """
 
 class BlockEvent(Event):
     """
@@ -530,6 +660,16 @@ class PlayerEvent(Event):
         The `Player` who is involved in this event.
         """
 
+class PlayerArmSwingEvent(PlayerEvent):
+    """
+    Called when a player swings their arm.
+    """
+    @property
+    def item(self) -> ItemStack | None:
+        """
+        The item the player was holding when they swung their arm.
+        """
+
 class PlayerBedEnterEvent(PlayerEvent, Cancellable):
     """
     Called when a player is almost about to enter the bed.
@@ -548,6 +688,28 @@ class PlayerBedLeaveEvent(PlayerEvent):
     def bed(self) -> Block:
         """
         The bed block involved in this event.
+        """
+
+class PlayerBucketActorEvent(PlayerEvent, Cancellable):
+    """
+    Called when a player captures an actor in a bucket.
+    """
+    @property
+    def actor(self) -> Actor:
+        """
+        The actor being captured.
+        """
+
+    @property
+    def original_bucket(self) -> ItemStack:
+        """
+        The bucket used to capture the actor.
+        """
+
+    @property
+    def hand(self) -> EquipmentSlot:
+        """
+        The hand used to capture the actor.
         """
 
 class PlayerChatEvent(PlayerEvent, Cancellable):
@@ -599,6 +761,30 @@ class PlayerCommandEvent(PlayerEvent, Cancellable):
     @command.setter
     def command(self, arg1: str) -> None: ...
 
+class PlayerCraftItemEvent(PlayerEvent, Cancellable):
+    """
+    Called when a player crafts an item.
+
+    If the event is cancelled the item will not be crafted and the ingredients will not be consumed.
+    """
+    @property
+    def item(self) -> ItemStack:
+        """
+        An `ItemStack` for the item being crafted.
+        """
+
+    @property
+    def recipe_id(self) -> str:
+        """
+        The identifier of the recipe used.
+        """
+
+    @property
+    def amount(self) -> int:
+        """
+        The number of times the recipe is being crafted.
+        """
+
 class PlayerDimensionChangeEvent(PlayerEvent):
     """
     Called when a player switches to another dimension.
@@ -646,6 +832,19 @@ class PlayerEmoteEvent(PlayerEvent, Cancellable):
     @is_muted.setter
     def is_muted(self, arg1: bool) -> None: ...
 
+class PlayerExpChangeEvent(PlayerEvent):
+    """
+    Called when a player's experience changes.
+    """
+    @property
+    def amount(self) -> int:
+        """
+        The amount of experience the player will be given.
+        """
+
+    @amount.setter
+    def amount(self, arg1: int) -> None: ...
+
 class PlayerGameModeChangeEvent(PlayerEvent, Cancellable):
     """
     Called when the `GameMode` of the player is changed.
@@ -654,6 +853,16 @@ class PlayerGameModeChangeEvent(PlayerEvent, Cancellable):
     def new_game_mode(self) -> GameMode:
         """
         The `GameMode` the player is switched to.
+        """
+
+class PlayerInputEvent(PlayerEvent):
+    """
+    Called when a player sends updated input to the server.
+    """
+    @property
+    def input(self) -> Input:
+        """
+        The new input received from this player.
         """
 
 class PlayerInteractEvent(PlayerEvent, Cancellable):
@@ -699,7 +908,7 @@ class PlayerInteractEvent(PlayerEvent, Cancellable):
         """
 
     @property
-    def block(self) -> Block:
+    def block(self) -> Block | None:
         """
         The block clicked with this item.
         """
@@ -727,6 +936,28 @@ class PlayerInteractActorEvent(PlayerEvent, Cancellable):
     def actor(self) -> Actor:
         """
         The actor that was right-clicked by the player.
+        """
+
+class PlayerArmorStandManipulateEvent(PlayerInteractActorEvent):
+    """
+    Called when a player interacts with an armor stand and will either swap, retrieve or place an item.
+    """
+    @property
+    def armor_stand_item(self) -> ItemStack:
+        """
+        The item held by the armor stand in the affected slot.
+        """
+
+    @property
+    def player_item(self) -> ItemStack:
+        """
+        The item held by the player during the interaction.
+        """
+
+    @property
+    def slot(self) -> EquipmentSlot:
+        """
+        The armor stand equipment slot affected by the interaction.
         """
 
 class PlayerItemConsumeEvent(PlayerEvent, Cancellable):
@@ -785,6 +1016,26 @@ class PlayerToggleSprintEvent(PlayerEvent):
     def is_sprinting(self) -> bool:
         """
         Whether the player is now sprinting or not.
+        """
+
+class PlayerToggleCrawlEvent(PlayerEvent):
+    """
+    Called when a player toggles their crawling state.
+    """
+    @property
+    def is_crawling(self) -> bool:
+        """
+        Whether the player is now crawling or not.
+        """
+
+class PlayerToggleFlightEvent(PlayerEvent):
+    """
+    Called when a player toggles their flying state.
+    """
+    @property
+    def is_flying(self) -> bool:
+        """
+        Whether the player is now flying or not.
         """
 
 class PlayerJoinEvent(PlayerEvent):
@@ -881,6 +1132,42 @@ class PlayerQuitEvent(PlayerEvent):
     @quit_message.setter
     def quit_message(self, arg1: str | Translatable | None) -> None: ...
 
+class PlayerRecipeBookSettingsChangeEvent(PlayerEvent):
+    """
+    Called when a player changes recipe book settings.
+    """
+    class RecipeBookType(enum.Enum):
+        """
+        The recipe book type.
+        """
+
+        CRAFTING = 0
+        FURNACE = 1
+        BLAST_FURNACE = 2
+        SMOKER = 3
+
+    CRAFTING = RecipeBookType.CRAFTING
+    FURNACE = RecipeBookType.FURNACE
+    BLAST_FURNACE = RecipeBookType.BLAST_FURNACE
+    SMOKER = RecipeBookType.SMOKER
+    @property
+    def recipe_book_type(self) -> RecipeBookType:
+        """
+        The type of recipe book whose settings changed.
+        """
+
+    @property
+    def is_filtering(self) -> bool:
+        """
+        Whether recipe filtering is enabled.
+        """
+
+    @property
+    def is_open(self) -> bool:
+        """
+        Whether the recipe book is open.
+        """
+
 class PlayerRespawnEvent(PlayerEvent):
     """
     Called when a player respawns.
@@ -899,6 +1186,41 @@ class PlayerRespawnEvent(PlayerEvent):
     def respawn_reason(self) -> RespawnReason:
         """
         The reason this respawn occurred.
+        """
+
+class PlayerRiptideEvent(PlayerEvent):
+    """
+    Called when a player activates the riptide enchantment, using their trident to propel them through the air.
+
+    The riptide action is currently performed client side, so manipulating the player in this event may have
+    undesired effects.
+    """
+    @property
+    def item(self) -> ItemStack:
+        """
+        An `ItemStack` for the trident being used.
+        """
+
+class PlayerShearActorEvent(PlayerEvent, Cancellable):
+    """
+    Called when a player shears an actor.
+    """
+    @property
+    def actor(self) -> Actor:
+        """
+        The actor being sheared.
+        """
+
+    @property
+    def item(self) -> ItemStack:
+        """
+        The shears used.
+        """
+
+    @property
+    def hand(self) -> EquipmentSlot:
+        """
+        The hand used to shear the actor.
         """
 
 class PlayerSkinChangeEvent(PlayerEvent, Cancellable):
@@ -938,6 +1260,18 @@ class PlayerPickupArrowEvent(PlayerEvent, Cancellable):
     def arrow(self) -> Actor:
         """
         The arrow picked up by the player.
+        """
+
+class PlayerPickupExperienceEvent(PlayerEvent, Cancellable):
+    """
+    Called when a player picks up an experience orb.
+
+    Cancelling the event leaves the orb in the world.
+    """
+    @property
+    def amount(self) -> int:
+        """
+        The amount of experience the orb is worth.
         """
 
 class PlayerPickupItemEvent(PlayerEvent, Cancellable):

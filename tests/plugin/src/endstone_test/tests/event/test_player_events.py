@@ -2,6 +2,16 @@ import pytest
 
 from endstone_test.recorder import EventRecorder
 
+_INPUT_KEYS = ("forward", "backward", "left", "right", "jump", "sneak", "sprint")
+
+
+def _by_player(snapshots: list[dict]) -> dict[str, list[dict]]:
+    grouped: dict[str, list[dict]] = {}
+    for snapshot in snapshots:
+        grouped.setdefault(snapshot["player"], []).append(snapshot)
+    return grouped
+
+
 # =============================================================================
 # Section 1: Connection
 # =============================================================================
@@ -93,6 +103,39 @@ def test_player_toggle_sprint(recorder: EventRecorder) -> None:
         assert isinstance(snapshot["is_sprinting"], bool)
 
 
+def test_player_toggle_crawl(recorder: EventRecorder) -> None:
+    """Verify PlayerToggleCrawlEvent fires before the new state is applied."""
+    for snapshot in recorder.require("PlayerToggleCrawlEvent"):
+        assert isinstance(snapshot["is_crawling"], bool)
+        assert snapshot["player_is_crawling"] is not snapshot["is_crawling"]
+
+
+def test_player_toggle_flight(recorder: EventRecorder) -> None:
+    """Verify PlayerToggleFlightEvent fires before the new state is applied."""
+    for snapshot in recorder.require("PlayerToggleFlightEvent"):
+        assert isinstance(snapshot["is_flying"], bool)
+        assert snapshot["player_is_flying"] is not snapshot["is_flying"]
+
+
+def test_player_toggle_flight_requires_allow_flight(recorder: EventRecorder) -> None:
+    """Verify PlayerToggleFlightEvent only fires while flight is allowed."""
+    assert all(s["allow_flight"] for s in recorder.require("PlayerToggleFlightEvent"))
+
+
+def test_player_input(recorder: EventRecorder) -> None:
+    """Verify PlayerInputEvent reports every input direction as a bool."""
+    for snapshot in recorder.require("PlayerInputEvent"):
+        for key in _INPUT_KEYS:
+            assert isinstance(snapshot[key], bool)
+
+
+def test_player_input_fires_only_on_change(recorder: EventRecorder) -> None:
+    """Verify PlayerInputEvent is not fired again for an unchanged input."""
+    for snapshots in _by_player(recorder.require("PlayerInputEvent")).values():
+        states = [tuple(s[key] for key in _INPUT_KEYS) for s in snapshots]
+        assert all(a != b for a, b in zip(states, states[1:]))
+
+
 # =============================================================================
 # Section 3: Interaction
 # =============================================================================
@@ -160,6 +203,73 @@ def test_player_emote(recorder: EventRecorder) -> None:
     assert recorder.require("PlayerEmoteEvent")[0]["emote_id"]
 
 
+def test_player_arm_swing(recorder: EventRecorder) -> None:
+    """Verify PlayerArmSwingEvent reports the held item, or none for an empty hand."""
+    for snapshot in recorder.require("PlayerArmSwingEvent"):
+        assert (snapshot["item_type"] is not None) == snapshot["has_item"]
+        if snapshot["has_item"]:
+            assert ":" in snapshot["item_type"]
+
+
+def test_player_armor_stand_manipulate(recorder: EventRecorder) -> None:
+    """Verify PlayerArmorStandManipulateEvent names the stand, slot and both items."""
+    for snapshot in recorder.require("PlayerArmorStandManipulateEvent"):
+        assert snapshot["actor_type"] == "minecraft:armor_stand"
+        assert snapshot["slot"]
+        assert ":" in snapshot["armor_stand_item_type"]
+        assert ":" in snapshot["player_item_type"]
+
+
+def test_player_armor_stand_manipulate_moves_an_item(recorder: EventRecorder) -> None:
+    """Verify the interaction always has an item to swap, retrieve or place."""
+    for snapshot in recorder.require("PlayerArmorStandManipulateEvent"):
+        assert (
+            snapshot["armor_stand_item_type"] != "minecraft:air"
+            or snapshot["player_item_type"] != "minecraft:air"
+        )
+
+
+def test_player_bucket_actor(recorder: EventRecorder) -> None:
+    """Verify PlayerBucketActorEvent names the actor, the bucket and the hand."""
+    for snapshot in recorder.require("PlayerBucketActorEvent"):
+        assert ":" in snapshot["actor_type"]
+        assert "bucket" in snapshot["original_bucket_type"]
+        assert snapshot["hand"]
+
+
+def test_player_shear_actor(recorder: EventRecorder) -> None:
+    """Verify PlayerShearActorEvent names the sheared actor and the shears used."""
+    for snapshot in recorder.require("PlayerShearActorEvent"):
+        assert ":" in snapshot["actor_type"]
+        assert snapshot["item_type"] == "minecraft:shears"
+        assert snapshot["hand"]
+
+
+def test_player_riptide(recorder: EventRecorder) -> None:
+    """Verify PlayerRiptideEvent names the trident being used."""
+    for snapshot in recorder.require("PlayerRiptideEvent"):
+        assert "trident" in snapshot["item_type"]
+
+
+def test_player_pickup_arrow(recorder: EventRecorder) -> None:
+    """Verify PlayerPickupArrowEvent only fires for an abstract arrow."""
+    for snapshot in recorder.require("PlayerPickupArrowEvent"):
+        assert "arrow" in snapshot["arrow_type"] or "trident" in snapshot["arrow_type"]
+
+
+def test_player_recipe_book_settings_change(recorder: EventRecorder) -> None:
+    """Verify PlayerRecipeBookSettingsChangeEvent reports the open and filter flags."""
+    for snapshot in recorder.require("PlayerRecipeBookSettingsChangeEvent"):
+        assert isinstance(snapshot["is_open"], bool)
+        assert isinstance(snapshot["is_filtering"], bool)
+
+
+def test_recipe_book_settings_change_is_crafting_only(recorder: EventRecorder) -> None:
+    """Verify only the crafting recipe book has a fire site in the server."""
+    snapshots = recorder.require("PlayerRecipeBookSettingsChangeEvent")
+    assert {s["recipe_book_type"] for s in snapshots} == {"CRAFTING"}
+
+
 # =============================================================================
 # Section 4: Bed, death and respawn
 # =============================================================================
@@ -205,6 +315,25 @@ def test_player_game_mode_change(recorder: EventRecorder) -> None:
     assert recorder.require("PlayerGameModeChangeEvent")[0]["new_game_mode"]
 
 
+def test_player_exp_change(recorder: EventRecorder) -> None:
+    """Verify PlayerExpChangeEvent reports a non-negative amount."""
+    for snapshot in recorder.require("PlayerExpChangeEvent"):
+        assert snapshot["amount"] >= 0
+
+
+def test_player_pickup_experience(recorder: EventRecorder) -> None:
+    """Verify PlayerPickupExperienceEvent reports what the orb is worth."""
+    for snapshot in recorder.require("PlayerPickupExperienceEvent"):
+        assert snapshot["amount"] > 0
+
+
+def test_player_level_change(recorder: EventRecorder) -> None:
+    """Verify PlayerLevelChangeEvent reports two different levels."""
+    for snapshot in recorder.require("PlayerLevelChangeEvent"):
+        assert snapshot["old_level"] != snapshot["new_level"]
+        assert snapshot["new_level"] >= 0
+
+
 def test_player_skin_change(recorder: EventRecorder) -> None:
     """Verify PlayerSkinChangeEvent carries the new skin id."""
     assert recorder.require("PlayerSkinChangeEvent")[0]["new_skin_id"]
@@ -221,6 +350,14 @@ def test_player_skin_change(recorder: EventRecorder) -> None:
         "PlayerBedLeaveEvent",
         "PlayerDeathEvent",
         "PlayerDimensionChangeEvent",
+        "PlayerArmSwingEvent",
+        "PlayerExpChangeEvent",
+        "PlayerInputEvent",
+        "PlayerLevelChangeEvent",
+        "PlayerRecipeBookSettingsChangeEvent",
+        "PlayerRiptideEvent",
+        "PlayerToggleCrawlEvent",
+        "PlayerToggleFlightEvent",
     ],
 )
 def test_not_cancellable(event_name: str) -> None:
@@ -230,3 +367,22 @@ def test_not_cancellable(event_name: str) -> None:
     event_cls = getattr(event_module, event_name)
     assert not hasattr(event_cls, "cancel")
     assert not hasattr(event_cls, "is_cancelled")
+
+
+@pytest.mark.parametrize(
+    "event_name",
+    [
+        "PlayerArmorStandManipulateEvent",
+        "PlayerBucketActorEvent",
+        "PlayerPickupArrowEvent",
+        "PlayerPickupExperienceEvent",
+        "PlayerShearActorEvent",
+    ],
+)
+def test_cancellable(event_name: str) -> None:
+    """Verify the player events that stop the action they announce are cancellable."""
+    from endstone import event as event_module
+
+    event_cls = getattr(event_module, event_name)
+    assert hasattr(event_cls, "cancel")
+    assert hasattr(event_cls, "is_cancelled")
