@@ -492,6 +492,31 @@ rip_relative = true
 rip_offset = 1
 
 [[signatures]]
+name = "_ZN34ItemStackRequestActionCraftHandler17handleCraftActionERK31ItemStackRequestActionCraftBase"
+relative = false
+extra = 0
+# 1. find bytes "33 34 49 74 65 6D 53 74 61 63 6B 52 65 71 75 65 73 74 41 63 74 69 6F 6E 43 72 61 66 74 48 61 6E 64 6C 65 72 00"
+#    = the Itanium typeinfo name "34ItemStackRequestActionCraftHandler\0" (unique); its lone data xref is
+#    _ZTI34ItemStackRequestActionCraftHandler at (that address - 8), and the lone data xref to the typeinfo
+#    is the class vtable at (that address - 8), whose first two slots are the D1/D0 destructors
+# 2. the class has exactly one virtual, so the vtable stops there; the rest of its members are emitted
+#    from the same TU and sit immediately after the destructors in .text. handleCraftAction is the large
+#    (~0x9e0) one that opens `mov rax, [rdi+8]` (mRequestActionHandler) /
+#    `mov rax, [rax+0F8h]` (mScreenValidation) / `test rax, rax` / `jz` / `mov rdi, [rax+0B0h]`
+#    (mContainerScreenValidator) / `mov rax, [rdi]` / `call qword [rax+18h]` - the
+#    ContainerScreenValidator::isCraftingImplemented dispatch that opens the body
+# 3. confirm identity in the body: it switches on `movzx eax, byte [<action>+8]`
+#    (ItemStackRequestAction::mActionType) with `cmp eax, 0Fh` (CraftRecipeOptional) and `cmp eax, 0Ch`
+#    (CraftRecipe), materialises the ItemStackNetResult immediates 7 (InvalidCraftRequest), 0Fh
+#    (RequestAlreadyInProgress) and 10h (FailedToInitSparseContainer) into one result register, and on the
+#    CraftRecipe branch dispatches `call qword [rax+38h]` on the action - vtable slot 7, getRecipeNetId
+# 4. cross-check the frame: the sibling members it sits beside are tiny (isCraftRequest, endRequestBatch,
+#    postRequest); handleCraftAction is the only one of them with a 0C8h frame and six pushes
+# 5. uniqueness: the pattern below matches exactly once in 1.26.44, and once in 1.26.33 and 1.26.40 - the
+#    two wildcarded operand bytes absorb the rbx/r14 and rbp/rbx register swaps across those builds
+pattern = "55 41 57 41 56 41 55 41 54 53 48 81 EC C8 00 00 00 ? 89 ? 48 89 ? 48 8B 47 08 48 8B 80 F8 00 00 00 48 85 C0 74 12 48 8B B8 B0 00 00 00 48 8B 07 FF 50 18 41 89 C7 EB 03 45 31 FF 48 8B ? 18"
+
+[[signatures]]
 name = "_ZN20InventoryTransaction23executeWorldInteractionEPvR6PlayerRK15InventoryAction"
 relative = false
 extra = 0
