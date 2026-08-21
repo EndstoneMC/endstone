@@ -13,8 +13,16 @@
 // limitations under the License.
 
 #pragma once
+
+#include <optional>
+
+#include "bedrock/bedrock.h"
+#include "bedrock/common_types.h"
+#include "bedrock/core/math/vec3.h"
 #include "bedrock/world/level/block_source.h"
 #include "bedrock/world/level/level.h"
+
+class Player;
 
 namespace BlockEvents {
 enum class EventType : uint8_t {
