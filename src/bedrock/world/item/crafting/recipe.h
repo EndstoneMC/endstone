@@ -25,6 +25,11 @@
 struct RecipeNetIdTag {};
 using RecipeNetId = TypedServerNetId<RecipeNetIdTag, unsigned int>;
 
+template <>
+struct std::hash<RecipeNetId> {
+    std::size_t operator()(const RecipeNetId &net_id) const { return net_id.getHash(); }
+};
+
 class Recipe {
 public:
     using Ingredients = std::vector<RecipeIngredient>;
