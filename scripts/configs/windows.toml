@@ -493,29 +493,36 @@ name = "?setLiquidLevel@CauldronBlock@@QEBAXAEAVBlockSource@@AEBVBlockPos@@HW4Ca
 relative = false
 extra = 0
 # 1. the name is real, so `dump_symbols.py --pdb` resolves it outright; the steps below are the
-#    no-PDB fallback
-# 2. find bytes "63 61 75 6C 64 72 6F 6E 5F 6C 69 71 75 69 64 00" = "cauldron_liquid\0" (unique - one
-#    match in .rdata, one data xref); that xref is in the unity static initializer that constructs the
-#    BlockStateVariant<CauldronLiquidType> global VanillaStates::CauldronLiquid - the rip-relative store
-#    it feeds is that global
-# 3. take the data xrefs of VanillaStates::CauldronLiquid.mID (the global + 8): MSVC inlines the block
-#    state lookup, so users of the state reference the mID field rather than the base
-# 4. setLiquidLevel is the only one of them that OPENS with the guard
-#    `cmp <r>, cs:VanillaBlockTypeIds::Cauldron.mStrHash` / `jnz <return>` on the BlockLegacy name hash,
-#    then clamps the level into [0, 6] with a cmovg/cmovl pair, applies exactly two states in the order
-#    FillLevel then CauldronLiquid, calls BlockSource::setBlock through the vtable with updateFlags 3,
-#    and only when liquidLevel == 0 finishes with LevelChunk::getBlockEntity + BlockActor::setChanged
-# 5. confirm identity independently from its call set, which is the complete list of cauldron fill-level
-#    writers and matches no sibling: CauldronBlock::use / tick / onPlace / handlePrecipitation /
+#    no-PDB fallback (the shipped zip carries no PDB)
+# 2. find bytes "6D 69 6E 65 63 72 61 66 74 3A 63 61 75 6C 64 72 6F 6E 00" = "minecraft:cauldron\0"
+#    (unique - one occurrence, in .rdata). It has two rip-relative xrefs in .text; the one whose
+#    surrounding block also writes a HashedString object is the VanillaBlockTypeIds static
+#    initializer, and the object it builds is VanillaBlockTypeIds::Cauldron
+# 3. do the same for "63 61 75 6C 64 72 6F 6E 5F 6C 69 71 75 69 64 00" = "cauldron_liquid\0" and
+#    "66 69 6C 6C 5F 6C 65 76 65 6C 00" = "fill_level\0" (both unique; the first has exactly one
+#    .text xref). Each xref sits in the unity initializer that constructs the matching
+#    BlockStateVariant - VanillaStates::CauldronLiquid and VanillaStates::FillLevel. MSVC inlines
+#    the state lookup, so callers reference the mID field at object + 8, not the base
+# 4. the target is the function that references all three - Cauldron's hash first, then FillLevel.mID,
+#    then CauldronLiquid.mID. Exactly TWO places in .text do that in this order within 0x400 bytes:
+#    this function, where the Cauldron compare sits in the first 0x50 bytes, and
+#    ServerStandInCauldronSystem::SystemImpl::_checkInsideCauldron, which is told apart because it
+#    CALLS this one. Confirm by decoding that E8
+# 5. confirm the body independently: it opens `cmp <r>, cs:VanillaBlockTypeIds::Cauldron.mStrHash` /
+#    `jnz <return>`, clamps the level into [0, 6] with a cmovg/cmovl pair, applies FillLevel then
+#    CauldronLiquid, calls BlockSource::setBlock through the vtable with updateFlags 3, and only when
+#    liquidLevel == 0 finishes with LevelChunk::getBlockEntity + BlockActor::setChanged
+# 6. confirm by call set: it has 36 call sites in 1.26.44.3, and they are the complete list of
+#    cauldron fill-level writers - CauldronBlock::use / tick / onPlace / handlePrecipitation /
 #    _explodeCauldronContents / _useDyeableComponent, the receiveStalactiteDrip lambda,
-#    ServerStandInCauldronSystem::SystemImpl::_checkInsideCauldron,
-#    MinecraftGameTestHelper::setFluidContainer, and the ScriptBlockFluidContainerComponent
-#    setFillLevel / setFluidType / setPotionType reflection thunks
-# 6. cross-check vs the old named DB (member, const, ~0x330) and walk back to the prologue to cut
-# WARNING: this entry and the CauldronBlock::tick entry below sit in a family of blocks whose prologues
-# open with the same push/sub run (ArmorStand::getInteraction above is another). Cut past `sub rsp, XX`
-# into the argument shuffle and never shorten either entry to the prologue alone - find_signature takes
-# the LOWEST .text hit, so an over-short pattern binds a neighbour silently
+#    _checkInsideCauldron, MinecraftGameTestHelper::setFluidContainer, and the
+#    ScriptBlockFluidContainerComponent setFillLevel / setFluidType / setPotionType thunks
+# 7. walk back to the prologue and cut there
+# uniqueness: verified by scanning the 1.26.44.3 .text - this pattern matches EXACTLY ONCE and
+# resolves to 0x69a9eb0 (RVA), which is the committed offset. Do not shorten it: CauldronBlock::tick
+# below and ArmorStand::getInteraction above open with the same push/sub run, and find_signature takes
+# the LOWEST .text hit, so a prologue-only pattern binds a neighbour silently. Both entries are cut
+# past `sub rsp, XX` into the argument shuffle for that reason
 pattern = "55 41 57 41 56 41 54 56 57 53 48 83 EC 60 48 8D 6C 24 ? 48 C7 45 ? ? ? ? ? 44 89 CB"
 
 [[signatures]]
@@ -524,19 +531,24 @@ relative = false
 extra = 0
 # 1. the name is real, so `dump_symbols.py --pdb` resolves it outright; the steps below are the
 #    no-PDB fallback
-# 2. locate CauldronBlock::setLiquidLevel first (see the entry above), then take its code xrefs
-# 3. tick is the only caller that reaches it TWICE from adjacent call sites, and the only caller that
-#    opens by reading the block one above the event position (pos.y + 1), taking its Material and
-#    testing it for the water MaterialType before anything else
+# 2. locate CauldronBlock::setLiquidLevel first (see the entry above), then decode every E8 in .text
+#    that targets it
+# 3. tick is the only caller that reaches it TWICE from adjacent call sites (0x1a apart in 1.26.44.3 -
+#    the water-above fill writes the fill level, then the liquid type), and the only caller that opens
+#    by reading the block one above the event position (pos.y + 1) and testing its Material for water
+#    before anything else
 # 4. confirm identity independently from the tail: below those two calls it queries
-#    PointedDripstoneBlock::findStalactiteTipAboveCauldron, then
-#    PointedDripstoneBlock::getCauldronFillLiquidType, then CauldronBlock::canReceiveStalactiteDrip,
-#    then receiveStalactiteDrip; and on the water-above path it spawns the cauldron fill LevelEvent.
-#    Its single argument is a BlockEvents::BlockQueuedTickEvent& - the body reads mRegion and mPos
-#    straight out of it and never touches a Player, which is what separates it from CauldronBlock::use
-# 5. cross-check vs the old named DB (member, const, ~0x750) and walk back to the prologue to cut
-# WARNING: see the prologue-family warning on the setLiquidLevel entry above - it applies to this
-# pattern too
+#    PointedDripstoneBlock::findStalactiteTipAboveCauldron, then getCauldronFillLiquidType, then
+#    CauldronBlock::canReceiveStalactiteDrip, then receiveStalactiteDrip, and on the water-above path
+#    it spawns the cauldron fill LevelEvent. Its single argument is a
+#    BlockEvents::BlockQueuedTickEvent& - the body reads mRegion and mPos straight out of it and never
+#    touches a Player, which is what separates it from CauldronBlock::use
+# 5. corroborate on data: within its first 0x400 bytes it references VanillaStates::FillLevel.mID
+#    three times and touches no other block state
+# 6. walk back to the prologue and cut there
+# uniqueness: verified by scanning the 1.26.44.3 .text - this pattern matches EXACTLY ONCE and
+# resolves to 0x69a5720 (RVA), which is the committed offset. See the shared-prologue warning on the
+# setLiquidLevel entry above; it applies to this pattern too
 pattern = "55 41 57 41 56 41 55 41 54 56 57 53 48 81 EC 98 00 00 00 48 8D AC 24 ? ? ? ? 44 0F 29 45 ? 0F 29 7D ? 0F 29 75 ? 48 C7 45 ? ? ? ? ? 48 89 D3"
 
 [[signatures]]
