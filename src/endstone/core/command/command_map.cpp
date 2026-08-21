@@ -79,13 +79,12 @@ bool EndstoneCommandMap::dispatch(const NotNull<CommandSender> &sender, std::str
         return false;
     }
 
-    std::optional<PlayerSpawnContextScope> spawn_context_scope;
-    if (!custom_commands_.contains(name) && name == "spawnpoint") {
-        spawn_context_scope.emplace(PlayerSpawnContext{nullptr, PlayerSetSpawnEvent::Cause::Command});
-    }
-
     if (!custom_commands_.contains(name)) {
         // This is a vanilla command
+        std::optional<PlayerSpawnContextScope> spawn_context_scope;
+        if (name == "spawnpoint") {
+            spawn_context_scope.emplace(PlayerSpawnContext{nullptr, PlayerSetSpawnEvent::Cause::Command});
+        }
         try {
             return command->execute(sender, std::vector(args.begin() + 1, args.end()));
         }

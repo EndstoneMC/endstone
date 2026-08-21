@@ -49,10 +49,7 @@ private:
 
 class PlayerSpawnContextSuspension {
 public:
-    PlayerSpawnContextSuspension() : previous_(std::move(player_spawn_context))
-    {
-        player_spawn_context.reset();
-    }
+    PlayerSpawnContextSuspension() : previous_(std::move(player_spawn_context)) { player_spawn_context.reset(); }
 
     ~PlayerSpawnContextSuspension() { player_spawn_context = std::move(previous_); }
 
