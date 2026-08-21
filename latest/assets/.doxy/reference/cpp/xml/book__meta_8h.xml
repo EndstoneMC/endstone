@@ -5,6 +5,7 @@
     <includes local="no">optional</includes>
     <includes local="no">string</includes>
     <includes refid="writable__book__meta_8h" local="yes">endstone/inventory/meta/writable_book_meta.h</includes>
+    <includedby refid="player__edit__book__event_8h" local="yes">include/endstone/event/player/player_edit_book_event.h</includedby>
     <incdepgraph>
       <node id="29">
         <label>endstone/ban/ban_entry.h</label>
@@ -727,6 +728,18 @@
         <label>vector</label>
       </node>
     </incdepgraph>
+    <invincdepgraph>
+      <node id="2">
+        <label>include/endstone/event/player/player_edit_book_event.h</label>
+        <link refid="player__edit__book__event_8h_source"/>
+      </node>
+      <node id="1">
+        <label>include/endstone/inventory/meta/book_meta.h</label>
+        <link refid="book__meta_8h"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+      </node>
+    </invincdepgraph>
     <innerclass refid="classendstone_1_1BookMeta" prot="public">endstone::BookMeta</innerclass>
     <innernamespace refid="namespaceendstone">endstone</innernamespace>
     <briefdescription>

@@ -719,9 +719,15 @@
       </node>
     </incdepgraph>
     <invincdepgraph>
+      <node id="3">
+        <label>include/endstone/event/player/player_edit_book_event.h</label>
+        <link refid="player__edit__book__event_8h_source"/>
+      </node>
       <node id="2">
         <label>include/endstone/inventory/meta/book_meta.h</label>
         <link refid="book__meta_8h_source"/>
+        <childnode refid="3" relation="include">
+        </childnode>
       </node>
       <node id="1">
         <label>include/endstone/inventory/meta/writable_book_meta.h</label>

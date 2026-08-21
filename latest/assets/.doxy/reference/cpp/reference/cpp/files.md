@@ -116,6 +116,7 @@ Here is a list of all files with brief descriptions:
                 * **file** [**player\_craft\_item\_event.h**](player__craft__item__event_8h.md)     
                 * **file** [**player\_dimension\_change\_event.h**](player__dimension__change__event_8h.md)     
                 * **file** [**player\_drop\_item\_event.h**](player__drop__item__event_8h.md)     
+                * **file** [**player\_edit\_book\_event.h**](player__edit__book__event_8h.md)     
                 * **file** [**player\_emote\_event.h**](player__emote__event_8h.md)     
                 * **file** [**player\_event.h**](player__event_8h.md)     
                 * **file** [**player\_exp\_change\_event.h**](player__exp__change__event_8h.md)     

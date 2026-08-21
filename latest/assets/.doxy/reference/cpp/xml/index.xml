@@ -2154,6 +2154,20 @@
     <member refid="classendstone_1_1PlayerDropItemEvent_1a91db643cdc05fbe3b16e2278ca9d6fb2" kind="function"><name>PlayerDropItemEvent</name></member>
     <member refid="classendstone_1_1PlayerDropItemEvent_1a40ad469ac2c8a5035ba526833ca3c638" kind="function"><name>getItem</name></member>
   </compound>
+  <compound refid="classendstone_1_1PlayerEditBookEvent" kind="class"><name>endstone::PlayerEditBookEvent</name>
+    <member refid="classendstone_1_1PlayerEditBookEvent_1ab77fd53052f2adb1c8c2be9f56c4f4a9" kind="variable"><name>slot_</name></member>
+    <member refid="classendstone_1_1PlayerEditBookEvent_1a0017d6c958df55e8ae55ba8d4fbe6e79" kind="variable"><name>previous_book_meta_</name></member>
+    <member refid="classendstone_1_1PlayerEditBookEvent_1a58b7f9640d19fcb1f51cdad27b899650" kind="variable"><name>new_book_meta_</name></member>
+    <member refid="classendstone_1_1PlayerEditBookEvent_1a303d9ce81c2079c465cdadee3822446a" kind="variable"><name>signing_</name></member>
+    <member refid="classendstone_1_1PlayerEditBookEvent_1ab1ed0f44304e1df2b04e0d92b3630df8" kind="function"><name>ENDSTONE_EVENT</name></member>
+    <member refid="classendstone_1_1PlayerEditBookEvent_1a22580776b96d2b46daf0f1b764063298" kind="function"><name>PlayerEditBookEvent</name></member>
+    <member refid="classendstone_1_1PlayerEditBookEvent_1af71ffebeffdbd6948d0bca262fda3bf2" kind="function"><name>getSlot</name></member>
+    <member refid="classendstone_1_1PlayerEditBookEvent_1abead36c8bdae6c55e36192e886590c24" kind="function"><name>getPreviousBookMeta</name></member>
+    <member refid="classendstone_1_1PlayerEditBookEvent_1abbbab07f5338507af631d68570c7f37d" kind="function"><name>getNewBookMeta</name></member>
+    <member refid="classendstone_1_1PlayerEditBookEvent_1a84df742e7a63cb2f2c17956f467006e7" kind="function"><name>setNewBookMeta</name></member>
+    <member refid="classendstone_1_1PlayerEditBookEvent_1ae872bda3627b53d486bea898fc0a53be" kind="function"><name>isSigning</name></member>
+    <member refid="classendstone_1_1PlayerEditBookEvent_1a33306c08313104acddedf584e0f60dfc" kind="function"><name>setSigning</name></member>
+  </compound>
   <compound refid="classendstone_1_1PlayerEmoteEvent" kind="class"><name>endstone::PlayerEmoteEvent</name>
     <member refid="classendstone_1_1PlayerEmoteEvent_1a74fb29919f23124f944930495dccc486" kind="variable"><name>emote_id_</name></member>
     <member refid="classendstone_1_1PlayerEmoteEvent_1a21d26ae7e9b87b41ffe4defd24162dc6" kind="variable"><name>muted_</name></member>
@@ -3455,6 +3469,8 @@
   <compound refid="player__dimension__change__event_8h" kind="file"><name>player_dimension_change_event.h</name>
   </compound>
   <compound refid="player__drop__item__event_8h" kind="file"><name>player_drop_item_event.h</name>
+  </compound>
+  <compound refid="player__edit__book__event_8h" kind="file"><name>player_edit_book_event.h</name>
   </compound>
   <compound refid="player__emote__event_8h" kind="file"><name>player_emote_event.h</name>
   </compound>

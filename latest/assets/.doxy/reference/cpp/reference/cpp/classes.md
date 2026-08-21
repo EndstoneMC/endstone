@@ -418,6 +418,8 @@
 ([**endstone**](namespaceendstone.md))
 * [**PlayerDropItemEvent**](classendstone_1_1PlayerDropItemEvent.md)
 ([**endstone**](namespaceendstone.md))
+* [**PlayerEditBookEvent**](classendstone_1_1PlayerEditBookEvent.md)
+([**endstone**](namespaceendstone.md))
 * [**PlayerEmoteEvent**](classendstone_1_1PlayerEmoteEvent.md)
 ([**endstone**](namespaceendstone.md))
 * [**PlayerEvent**](classendstone_1_1PlayerEvent.md)
