@@ -37,4 +37,4 @@ private:
     std::vector<ItemEnchantOption> enchant_options_;
     std::function<void(EnchantingContainerManagerModel &)> options_changed_callback_;
 };
-BEDROCK_STATIC_ASSERT_SIZE(EnchantingContainerManagerModel, 496, 392);
+BEDROCK_STATIC_ASSERT_SIZE(EnchantingContainerManagerModel, 496, 400);

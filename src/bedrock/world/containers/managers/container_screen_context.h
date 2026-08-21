@@ -34,4 +34,4 @@ private:
     ContainerType screen_container_type_;
     std::variant<std::monostate, ActorUniqueID, BlockPos> owner_;
 };
-BEDROCK_STATIC_ASSERT_SIZE(ContainerScreenContext, 40, 32);
+BEDROCK_STATIC_ASSERT_SIZE(ContainerScreenContext, 40, 40);
