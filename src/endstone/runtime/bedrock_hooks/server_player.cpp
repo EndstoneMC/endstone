@@ -13,6 +13,7 @@
 // limitations under the License.
 
 #include "bedrock/server/server_player.h"
+
 #include "bedrock/world/level/block/actor/block_actor.h"
 #include "bedrock/world/level/block/actor/sign_block_actor.h"
 #include "bedrock/world/level/level.h"
@@ -30,8 +31,8 @@ void ServerPlayer::openSign(const BlockPos &position, bool is_front_side)
     constexpr auto symbol = __FUNCDNAME__;
     auto &block_source = getDimensionBlockSource();
     auto *block_entity = block_source.getBlockEntity(position);
-    if (block_entity == nullptr || (block_entity->getType() != BlockActorType::Sign &&
-                                    block_entity->getType() != BlockActorType::HangingSign)) {
+    if (block_entity == nullptr ||
+        (block_entity->getType() != BlockActorType::Sign && block_entity->getType() != BlockActorType::HangingSign)) {
         endstone::core::clearPendingOpenSignCause(*this);
         ENDSTONE_HOOK_CALL_ORIGINAL_NAME(&ServerPlayer::openSign, symbol, this, position, is_front_side);
         return;
@@ -58,8 +59,8 @@ void ServerPlayer::openSign(const BlockPos &position, bool is_front_side)
 
     const auto &server = endstone::core::EndstoneServer::getInstance();
     auto player = getEndstoneActor<endstone::core::EndstonePlayer>();
-    const auto cause = endstone::core::consumeOpenSignCause(*this, position)
-                           .value_or(endstone::core::OpenSignCause::Unknown);
+    const auto cause =
+        endstone::core::consumeOpenSignCause(*this, position).value_or(endstone::core::OpenSignCause::Unknown);
     endstone::PlayerOpenSignEvent event{
         player,
         *sign,
@@ -72,7 +73,6 @@ void ServerPlayer::openSign(const BlockPos &position, bool is_front_side)
     }
 
     if (locked_for_editing_by == current_player_id) {
-        // BDS returns for any online lock holder, so clear the current player's lock before calling it.
         sign_block_actor->setLockedForEditingBy(ActorUniqueID::INVALID_ID);
     }
     ENDSTONE_HOOK_CALL_ORIGINAL_NAME(&ServerPlayer::openSign, symbol, this, position, is_front_side);

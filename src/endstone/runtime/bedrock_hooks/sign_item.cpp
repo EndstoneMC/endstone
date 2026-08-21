@@ -20,6 +20,7 @@
 #include "bedrock/world/item/item_stack.h"
 #include "bedrock/world/item/registry/item_registry_manager.h"
 #include "endstone/core/player_open_sign.h"
+#include "endstone/core/server.h"
 #include "endstone/runtime/vtable_hook.h"
 
 namespace {
@@ -40,7 +41,8 @@ void clearPendingOpenSignCause(::Actor &actor)
 InteractionResult signItemUseOn(const ::Item *item, ::ItemStack &item_stack, ::Actor &actor, BlockPos position,
                                 FacingID face, const Vec3 &click_pos)
 {
-    const auto result = ENDSTONE_VHOOK_CALL_ORIGINAL(&signItemUseOn, item, item_stack, actor, position, face, click_pos);
+    const auto result =
+        ENDSTONE_VHOOK_CALL_ORIGINAL(&signItemUseOn, item, item_stack, actor, position, face, click_pos);
     clearPendingOpenSignCause(actor);
     return result;
 }
@@ -68,8 +70,10 @@ void endstone::runtime::installSignItemHook()
         return;
     }
 
+    const auto &server = endstone::core::EndstoneServer::getInstance();
     const auto registry = ItemRegistryManager::getItemRegistry();
     if (!registry.isValid()) {
+        server.getLogger().error("Unable to hook SignItem::_useOn: the item registry is not available.");
         return;
     }
 
@@ -80,6 +84,7 @@ void endstone::runtime::installSignItemHook()
     }
     const auto hanging_sign = registry.lookupByName(aux_value, "minecraft:oak_hanging_sign");
     if (sign.isNull() && hanging_sign.isNull()) {
+        server.getLogger().error("Unable to hook SignItem::_useOn: no sign item found in the item registry.");
         return;
     }
 
