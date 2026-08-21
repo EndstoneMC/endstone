@@ -246,9 +246,9 @@ class PermissionAttachment:
         """
 
     @property
-    def permissible(self) -> Permissible:
+    def permissible(self) -> Permissible | None:
         """
-        The `Permissible` that this is attached to.
+        The `Permissible` that this is attached to, or `None` if it no longer exists.
         """
 
     @property
@@ -315,12 +315,12 @@ class PermissionAttachmentInfo:
     Holds information on a permission and which `PermissionAttachment` provides it.
     """
     def __init__(
-        self, permissible: Permissible, permission: str, attachment: PermissionAttachment, value: bool
+        self, permissible: Permissible, permission: str, attachment: PermissionAttachment | None, value: bool
     ) -> None: ...
     @property
-    def permissible(self) -> Permissible:
+    def permissible(self) -> Permissible | None:
         """
-        The `Permissible` this permission is for.
+        The `Permissible` this permission is for, or `None` if it no longer exists.
         """
 
     @property
@@ -330,7 +330,7 @@ class PermissionAttachmentInfo:
         """
 
     @property
-    def attachment(self) -> PermissionAttachment:
+    def attachment(self) -> PermissionAttachment | None:
         """
         The attachment providing this permission.
 

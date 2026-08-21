@@ -28,7 +28,7 @@ public:
     void sendErrorMessage(const Message &message) const override;
     [[nodiscard]] std::string getName() const override;
     [[nodiscard]] PermissionLevel getPermissionLevel() const override;
-    [[nodiscard]] std::unique_ptr<Block> getBlock() const override;
+    [[nodiscard]] NotNull<Block> getBlock() const override;
 
 private:
     const CommandOrigin &origin_;

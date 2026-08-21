@@ -34,39 +34,39 @@ public:
         {
             ItemMetaDetails details;
             if constexpr (std::is_same_v<T, void>) {
-                details.from_item_stack_ = [](const ::ItemStackBase &) -> std::unique_ptr<ItemMeta> {
+                details.from_item_stack_ = [](const ::ItemStackBase &) -> Nullable<ItemMeta> {
                     return nullptr;
                 };
-                details.from_item_meta_ = [](ItemTypeId, const ItemMeta *) -> std::unique_ptr<ItemMeta> {
+                details.from_item_meta_ = [](ItemTypeId, const ItemMeta *) -> Nullable<ItemMeta> {
                     return nullptr;
                 };
             }
             else {
-                details.from_item_stack_ = [](const ::ItemStackBase &stack) -> std::unique_ptr<ItemMeta> {
+                details.from_item_stack_ = [](const ::ItemStackBase &stack) -> Nullable<ItemMeta> {
                     static auto empty_tag = std::make_unique<::CompoundTag>();
                     const auto *tag = stack.hasUserData() ? stack.getUserData() : empty_tag.get();
-                    return std::make_unique<T>(*tag);
+                    return std::make_shared<T>(*tag);
                 };
-                details.from_item_meta_ = [](ItemTypeId, const ItemMeta *meta) -> std::unique_ptr<ItemMeta> {
-                    return std::make_unique<T>(meta);
+                details.from_item_meta_ = [](ItemTypeId, const ItemMeta *meta) -> Nullable<ItemMeta> {
+                    return std::make_shared<T>(meta);
                 };
             }
             return details;
         }
 
-        [[nodiscard]] std::unique_ptr<ItemMeta> fromItemStack(const ::ItemStackBase &item) const
+        [[nodiscard]] Nullable<ItemMeta> fromItemStack(const ::ItemStackBase &item) const
         {
             return from_item_stack_(item);
         }
 
-        [[nodiscard]] std::unique_ptr<ItemMeta> fromItemMeta(const ItemTypeId &type, const ItemMeta *meta) const
+        [[nodiscard]] Nullable<ItemMeta> fromItemMeta(const ItemTypeId &type, const ItemMeta *meta) const
         {
             return from_item_meta_(type, meta);
         }
 
     private:
-        std::function<std::unique_ptr<ItemMeta>(const ::ItemStackBase &)> from_item_stack_;
-        std::function<std::unique_ptr<ItemMeta>(ItemTypeId, const ItemMeta *)> from_item_meta_;
+        std::function<Nullable<ItemMeta>(const ::ItemStackBase &)> from_item_stack_;
+        std::function<Nullable<ItemMeta>(ItemTypeId, const ItemMeta *)> from_item_meta_;
     };
 
     static ItemMetaDetails &getItemMetaDetails(const ItemTypeId &type)

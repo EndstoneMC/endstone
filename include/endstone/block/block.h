@@ -22,6 +22,7 @@
 #include "endstone/block/block_face.h"
 #include "endstone/block/block_type.h"
 #include "endstone/level/location.h"
+#include "endstone/util/pointers.h"
 #include "endstone/util/result.h"
 
 namespace endstone {
@@ -69,7 +70,7 @@ public:
      *
      * @return block specific data
      */
-    [[nodiscard]] virtual std::unique_ptr<BlockData> getData() const = 0;
+    [[nodiscard]] virtual NotNull<BlockData> getData() const = 0;
 
     /**
      * Sets the complete data for this block.
@@ -94,7 +95,7 @@ public:
      * @param offset_z Z-coordinate offset
      * @return Block at the given offsets
      */
-    virtual std::unique_ptr<Block> getRelative(int offset_x, int offset_y, int offset_z) = 0;
+    virtual NotNull<Block> getRelative(int offset_x, int offset_y, int offset_z) = 0;
 
     /**
      * Gets the block at the given face.
@@ -104,7 +105,7 @@ public:
      * @param face Face of this block to return
      * @return Block at the given face
      */
-    virtual std::unique_ptr<Block> getRelative(BlockFace face) = 0;
+    virtual NotNull<Block> getRelative(BlockFace face) = 0;
 
     /**
      * Gets the block at the given distance of the given face.
@@ -113,7 +114,7 @@ public:
      * @param distance Distance to get the block at
      * @return Block at the given face
      */
-    virtual std::unique_ptr<Block> getRelative(BlockFace face, int distance) = 0;
+    virtual NotNull<Block> getRelative(BlockFace face, int distance) = 0;
 
     /**
      * Gets the dimension which contains this Block.
@@ -165,14 +166,7 @@ public:
      *
      * @return BlockState with the current state of this block.
      */
-    [[nodiscard]] virtual std::unique_ptr<BlockState> captureState() const = 0;
-
-    /**
-     * Creates a copy of the current block.
-     *
-     * @return Block
-     */
-    [[nodiscard]] virtual std::unique_ptr<Block> clone() const = 0;
+    [[nodiscard]] virtual NotNull<BlockState> captureState() const = 0;
 };
 
 }  // namespace endstone
@@ -187,13 +181,7 @@ struct std::formatter<endstone::Block> : std::formatter<std::string_view> {
         auto it = ctx.out();
         it = std::format_to(it, "Block(pos=BlockPos(x={}, y={}, z={}), type={}", val.getX(), val.getY(), val.getZ(),
                             val.getType());
-        if (const auto data = val.getData()) {
-            it = std::format_to(it, ", data={}", *data);
-        }
-        else {
-            it = std::format_to(it, ", data=INVALID");
-        }
-        it = std::format_to(it, ")");
+        it = std::format_to(it, ", data={})", *val.getData());
         return it;
     }
 };

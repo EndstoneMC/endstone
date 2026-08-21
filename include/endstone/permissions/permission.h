@@ -21,16 +21,18 @@
 #include <unordered_set>
 #include <utility>
 
+#include "endstone/check.h"
 #include "endstone/permissions/permissible.h"
 #include "endstone/permissions/permission_default.h"
 #include "endstone/plugin/plugin_manager.h"
+#include "endstone/util/pointers.h"
 
 namespace endstone {
 
 /**
  * Represents a unique permission that may be attached to a Permissible.
  */
-class Permission {
+class Permission : public std::enable_shared_from_this<Permission> {
 public:
     static constexpr auto DefaultPermission = PermissionDefault::Operator;
 
@@ -103,7 +105,7 @@ public:
      *
      * @return Set containing permissibles with this permission
      */
-    [[nodiscard]] std::unordered_set<Permissible *> getPermissibles() const
+    [[nodiscard]] std::unordered_set<NotNull<Permissible>> getPermissibles() const
     {
         if (!plugin_manager_) {
             return {};
@@ -119,15 +121,16 @@ public:
      */
     void recalculatePermissibles()
     {
-        if (!plugin_manager_) {
+        const auto self = weak_from_this().lock();
+        if (!plugin_manager_ || !self) {
             return;
         }
 
         auto perms = getPermissibles();
-        plugin_manager_->recalculatePermissionDefaults(*this);
+        plugin_manager_->recalculatePermissionDefaults(self);
 
-        for (auto *p : perms) {
-            p->recalculatePermissions();
+        for (const auto &perm : perms) {
+            perm->recalculatePermissions();
         }
     }
 
@@ -139,18 +142,18 @@ public:
      * @param name Name of the parent permission
      * @param value The value to set this permission to
      * @return Parent permission it created or loaded
+     * @throws std::runtime_error if this permission is not registered with a plugin manager
      */
-    Permission *addParent(std::string name, bool value)
+    NotNull<Permission> addParent(std::string name, bool value)
     {
-        if (!plugin_manager_) {
-            return nullptr;
-        }
+        Preconditions::checkState(plugin_manager_ != nullptr,
+                                  "The permission {} is not registered with a plugin manager.", name_);
         std::transform(name.begin(), name.end(), name.begin(), [](unsigned char c) { return std::tolower(c); });
-        auto *perm = plugin_manager_->getPermission(name);
+        auto perm = plugin_manager_->getPermission(name);
         if (!perm) {
-            perm = &plugin_manager_->addPermission(std::make_unique<Permission>(name));
+            perm = plugin_manager_->addPermission(std::make_shared<Permission>(name));
         }
-        addParent(*perm, value);
+        addParent(perm, value);
         return perm;
     }
 
@@ -160,10 +163,10 @@ public:
      * @param perm Parent permission to register with
      * @param value The value to set this permission to
      */
-    void addParent(Permission &perm, bool value) const
+    void addParent(const NotNull<Permission> &perm, bool value) const
     {
-        perm.getChildren()[getName()] = value;
-        perm.recalculatePermissibles();
+        perm->getChildren()[getName()] = value;
+        perm->recalculatePermissibles();
     }
 
     /**
@@ -176,7 +179,7 @@ private:
     std::unordered_map<std::string, bool> children_;
     PermissionDefault default_value_ = DefaultPermission;
     std::string description_;
-    PluginManager *plugin_manager_;
+    PluginManager *plugin_manager_ = nullptr;
 };
 
 }  // namespace endstone

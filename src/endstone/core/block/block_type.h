@@ -25,7 +25,7 @@ public:
     [[nodiscard]] BlockTypeId getId() const override;
     [[nodiscard]] std::string getTranslationKey() const override;
     [[nodiscard]] bool hasItemType() const override;
-    [[nodiscard]] std::unique_ptr<BlockData> createBlockData() const override;
+    [[nodiscard]] NotNull<BlockData> createBlockData() const override;
     [[nodiscard]] const ::BlockType &getHandle() const;
 
 private:
