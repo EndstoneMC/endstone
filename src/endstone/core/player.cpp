@@ -51,7 +51,7 @@
 #include "endstone/block/block.h"
 #include "endstone/color_format.h"
 #include "endstone/core/base64.h"
-#include "endstone/core/block/tile_state.h"
+#include "endstone/core/block/block_actor_state.h"
 #include "endstone/core/entity/components/flag_components.h"
 #include "endstone/core/form/form_codec.h"
 #include "endstone/core/game_mode.h"
@@ -280,10 +280,10 @@ bool EndstonePlayer::performCommand(std::string command) const
     return server_.dispatchCommand(self(), command);
 }
 
-void EndstonePlayer::sendBlockUpdate(const Location &location, const TileState &tile_state)
+void EndstonePlayer::sendBlockUpdate(const Location &location, const BlockActorState &block_actor_state)
 {
-    const auto *state = dynamic_cast<const EndstoneTileState *>(&tile_state);
-    Preconditions::checkArgument(state != nullptr, "Unsupported TileState implementation.");
+    const auto *state = dynamic_cast<const EndstoneBlockActorState *>(&block_actor_state);
+    Preconditions::checkArgument(state != nullptr, "Unsupported BlockActorState implementation.");
 
     const auto packet = MinecraftPackets::createPacket(MinecraftPacketIds::BlockActorData);
     auto &pk = static_cast<BlockActorDataPacket &>(*packet);

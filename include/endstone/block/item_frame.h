@@ -16,7 +16,7 @@
 
 #include <optional>
 
-#include "endstone/block/tile_state.h"
+#include "endstone/block/block_actor_state.h"
 #include "endstone/inventory/item_stack.h"
 #include "endstone/rotation.h"
 
@@ -25,7 +25,7 @@ namespace endstone {
 /**
  * Represents a captured state of an item frame.
  */
-class ItemFrame : public TileState {
+class ItemFrame : public BlockActorState {
 public:
     /**
      * Gets the item in this frame.

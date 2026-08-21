@@ -9,7 +9,7 @@ import numpy.typing
 
 from endstone.actor import Mob
 from endstone.ban import IpBanList, PlayerBanList
-from endstone.block import BlockData, BlockType, TileState
+from endstone.block import BlockActorState, BlockData, BlockType
 from endstone.boss import BarColor, BarFlag, BarStyle, BossBar
 from endstone.command import CommandMap, CommandSender, ConsoleCommandSender
 from endstone.form import ActionForm, MessageForm, ModalForm
@@ -528,18 +528,18 @@ class Player(Mob):
             `True` if the command was successful, `False` otherwise.
         """
 
-    def send_block_update(self, location: Location, tile_state: TileState) -> None:
+    def send_block_update(self, location: Location, block_actor_state: BlockActorState) -> None:
         """
-        Sends a tile state change to this player.
+        Sends a block entity state change to this player.
 
-        This fakes a tile state change for a user at the given location. This will not actually change the world in any
-        way.
+        This fakes a block entity state change for a user at the given location. This will not actually change the world
+        in any way.
 
-        The tile state is sent only to this player and does not update the world.
+        The state is sent only to this player and does not update the world.
 
         Args:
             location: The location of the changed block.
-            tile_state: The new tile state.
+            block_actor_state: The new block entity state.
         """
 
     @property

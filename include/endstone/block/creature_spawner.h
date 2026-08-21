@@ -15,14 +15,14 @@
 #pragma once
 
 #include "endstone/actor/actor_type.h"
-#include "endstone/block/tile_state.h"
+#include "endstone/block/block_actor_state.h"
 
 namespace endstone {
 
 /**
  * Represents a captured state of a creature spawner.
  */
-class CreatureSpawner : public TileState {
+class CreatureSpawner : public BlockActorState {
 public:
     /**
      * Gets the type of actor this spawner will spawn.

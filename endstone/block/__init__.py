@@ -5,6 +5,7 @@ __getattr__, __dir__, __all__ = lazy.attach(
     submod_attrs={
         "block": [
             "Biome",
+            "BlockActorState",
             "Block",
             "BlockData",
             "BlockFace",
@@ -18,7 +19,6 @@ __getattr__, __dir__, __all__ = lazy.attach(
             "Lectern",
             "Sign",
             "SignSide",
-            "TileState",
         ],
     },
 )

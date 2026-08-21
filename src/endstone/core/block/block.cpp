@@ -156,7 +156,7 @@ NotNull<BlockState> EndstoneBlock::captureState(bool use_snapshot) const
         if (static_cast<VanillaBlockActor *>(block_entity)->getContainer() != nullptr) {
             return std::make_shared<EndstoneContainer>(*this, *block_entity, use_snapshot);
         }
-        return std::make_shared<EndstoneTileStateBlock>(*this, *block_entity, use_snapshot);
+        return std::make_shared<EndstoneGenericBlockActorState>(*this, *block_entity, use_snapshot);
     }
     return std::make_shared<EndstoneBlockState>(*this);
 }

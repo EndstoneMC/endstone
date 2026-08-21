@@ -14,15 +14,15 @@
 
 #pragma once
 
+#include "endstone/block/block_actor_state.h"
 #include "endstone/block/sign/sign_side.h"
-#include "endstone/block/tile_state.h"
 
 namespace endstone {
 
 /**
  * Represents a captured state of a sign.
  */
-class Sign : public TileState {
+class Sign : public BlockActorState {
 public:
     /**
      * Represents a side of a sign.

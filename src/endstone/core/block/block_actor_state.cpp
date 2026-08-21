@@ -12,7 +12,7 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-#include "endstone/core/block/tile_state.h"
+#include "endstone/core/block/block_actor_state.h"
 
 #include "bedrock/dataloadhelper/data_load_helper.h"
 #include "bedrock/nbt/compound_tag.h"
@@ -72,9 +72,9 @@ std::shared_ptr<::BlockActor> cloneBlockActor(::ILevel &level, const ::BlockActo
 
 }  // namespace
 
-EndstoneTileState::~EndstoneTileState() = default;
+EndstoneBlockActorState::~EndstoneBlockActorState() = default;
 
-void EndstoneTileState::initializeBlockActor(::ILevel &level, ::BlockActor &block_actor, const ::BlockPos &position,
+void EndstoneBlockActorState::initializeBlockActor(::ILevel &level, ::BlockActor &block_actor, const ::BlockPos &position,
                                              const ::BlockType &block, bool use_snapshot)
 {
     block_actor_ = &block_actor;
@@ -87,17 +87,17 @@ void EndstoneTileState::initializeBlockActor(::ILevel &level, ::BlockActor &bloc
     block_actor_ = snapshot_.get();
 }
 
-::BlockActor *EndstoneTileState::getBlockActor() const
+::BlockActor *EndstoneBlockActorState::getBlockActor() const
 {
     return block_actor_;
 }
 
-bool EndstoneTileState::isSnapshot() const
+bool EndstoneBlockActorState::isSnapshot() const
 {
     return snapshot_ != nullptr;
 }
 
-bool EndstoneTileState::applySnapshot(::ILevel &level, ::BlockActor &block_actor) const
+bool EndstoneBlockActorState::applySnapshot(::ILevel &level, ::BlockActor &block_actor) const
 {
     ::CompoundTag tag;
     if (!serializeForUpdate(tag)) {

@@ -164,8 +164,8 @@ public:
      * The returned object will never be updated, and you are not guaranteed that (for example) a sign is still a
      * sign after you capture its state.
      *
-     * @param use_snapshot Whether a tile state should use an independent block entity snapshot. If `false`, the tile
-     * state is backed by the block entity currently residing in the world.
+     * @param use_snapshot Whether a BlockActorState should take an independent snapshot of the block entity. If
+     * `false`, the state is backed by the block entity currently residing in the world.
      * @return BlockState with the current state of this block.
      */
     [[nodiscard]] virtual NotNull<BlockState> captureState(bool use_snapshot = true) const = 0;

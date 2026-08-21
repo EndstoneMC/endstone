@@ -16,7 +16,7 @@
 
 #include <optional>
 
-#include "endstone/block/tile_state.h"
+#include "endstone/block/block_actor_state.h"
 #include "endstone/inventory/item_stack.h"
 
 namespace endstone {
@@ -24,7 +24,7 @@ namespace endstone {
 /**
  * Represents a captured state of a campfire.
  */
-class Campfire : public TileState {
+class Campfire : public BlockActorState {
 public:
     /**
      * Gets the number of items this campfire can cook at once.

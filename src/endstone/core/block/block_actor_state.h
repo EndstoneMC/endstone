@@ -24,9 +24,9 @@ class ILevel;
 
 namespace endstone::core {
 
-class EndstoneTileState {
+class EndstoneBlockActorState {
 public:
-    virtual ~EndstoneTileState();
+    virtual ~EndstoneBlockActorState();
 
     [[nodiscard]] virtual bool serialize(::CompoundTag &tag) const = 0;
     [[nodiscard]] virtual bool serializeForUpdate(::CompoundTag &tag) const = 0;

@@ -21,12 +21,12 @@
 #include "bedrock/world/level/block/actor/block_actor.h"
 #include "bedrock/world/level/block/block_descriptor.h"
 #include "endstone/block/block.h"
+#include "endstone/block/block_actor_state.h"
 #include "endstone/block/block_state.h"
-#include "endstone/block/tile_state.h"
 #include "endstone/check.h"
 #include "endstone/core/block/block.h"
+#include "endstone/core/block/block_actor_state.h"
 #include "endstone/core/block/block_data.h"
-#include "endstone/core/block/tile_state.h"
 #include "endstone/core/level/dimension.h"
 #include "endstone/core/type.h"
 
@@ -34,7 +34,7 @@ namespace endstone::core {
 
 template <typename Interface = BlockState>
     requires std::is_base_of_v<BlockState, Interface>
-class EndstoneBlockStateBase : public Interface, public EndstoneTileState {
+class EndstoneBlockStateBase : public Interface, public EndstoneBlockActorState {
 public:
     explicit EndstoneBlockStateBase(const EndstoneBlock &block)
         : EndstoneBlockStateBase(block.getDimension(), block.getPosition(), block.getMinecraftBlock(), nullptr, false)
@@ -121,18 +121,18 @@ public:
 
     [[nodiscard]] bool isSnapshot() const
     {
-        return EndstoneTileState::isSnapshot();
+        return EndstoneBlockActorState::isSnapshot();
     }
 
     [[nodiscard]] bool serialize(::CompoundTag &tag) const override
     {
-        const auto *block_actor = EndstoneTileState::getBlockActor();
+        const auto *block_actor = EndstoneBlockActorState::getBlockActor();
         return block_actor != nullptr && serializeBlockActor(*block_actor, tag);
     }
 
     [[nodiscard]] bool serializeForUpdate(::CompoundTag &tag) const override
     {
-        const auto *block_actor = EndstoneTileState::getBlockActor();
+        const auto *block_actor = EndstoneBlockActorState::getBlockActor();
         return block_actor != nullptr && block_actor->save(tag, SaveContext::forClone());
     }
 
@@ -157,7 +157,7 @@ public:
             return true;
         }
 
-        const auto *state_actor = EndstoneTileState::getBlockActor();
+        const auto *state_actor = EndstoneBlockActorState::getBlockActor();
         auto *block_actor = getBlockSource().getBlockEntity(block_pos_);
         if (state_actor == nullptr || block_actor == nullptr || block_actor->getType() != state_actor->getType()) {
             return false;
@@ -175,7 +175,7 @@ protected:
     [[nodiscard]] T &getBlockActor() const
     {
         if (isSnapshot()) {
-            auto *block_actor = EndstoneTileState::getBlockActor();
+            auto *block_actor = EndstoneBlockActorState::getBlockActor();
             if (block_actor == nullptr || !block_actor_type_.has_value() ||
                 block_actor->getType() != block_actor_type_.value()) {
                 throw std::runtime_error("Trying to access a block state that is no longer valid.");
@@ -198,6 +198,6 @@ protected:
 };
 
 using EndstoneBlockState = EndstoneBlockStateBase<BlockState>;
-using EndstoneTileStateBlock = EndstoneBlockStateBase<TileState>;
+using EndstoneGenericBlockActorState = EndstoneBlockStateBase<BlockActorState>;
 
 }  // namespace endstone::core

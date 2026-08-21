@@ -14,7 +14,7 @@
 
 #pragma once
 
-#include "endstone/block/tile_state.h"
+#include "endstone/block/block_actor_state.h"
 #include "endstone/inventory/inventory.h"
 
 namespace endstone {
@@ -22,7 +22,7 @@ namespace endstone {
 /**
  * Represents a captured state of a container block, such as a chest.
  */
-class Container : public TileState {
+class Container : public BlockActorState {
 public:
     /**
      * Gets the inventory of the block represented by this block state.

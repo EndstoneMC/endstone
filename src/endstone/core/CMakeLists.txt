@@ -39,6 +39,7 @@ add_library(endstone_core
         ban/ip_ban_list.cpp
         ban/player_ban_list.cpp
         block/biome.cpp
+        block/block_actor_state.cpp
         block/block.cpp
         block/block_data.cpp
         block/block_face.cpp
@@ -50,7 +51,6 @@ add_library(endstone_core
         block/item_frame.cpp
         block/lectern.cpp
         block/sign.cpp
-        block/tile_state.cpp
         boss/boss_bar.cpp
         console/console.cpp
         command/block_command_sender.cpp

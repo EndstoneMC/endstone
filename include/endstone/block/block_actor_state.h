@@ -21,9 +21,9 @@ namespace endstone {
 /**
  * Represents a captured state of a block entity.
  */
-class TileState : public BlockState {
+class BlockActorState : public BlockState {
 public:
-    ~TileState() override = default;
+    ~BlockActorState() override = default;
 
     /**
      * Gets whether this state is backed by an independent block entity snapshot.
