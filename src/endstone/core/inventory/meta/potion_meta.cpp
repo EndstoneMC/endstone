@@ -91,9 +91,9 @@ bool EndstonePotionMeta::notUncommon(const ItemMeta &meta) const
     return EndstoneItemMetaBase::notUncommon(meta) && (meta.as<PotionMeta>() || isPotionEmpty());
 }
 
-std::unique_ptr<ItemMeta> EndstonePotionMeta::clone() const
+NotNull<ItemMeta> EndstonePotionMeta::clone() const
 {
-    return std::make_unique<EndstonePotionMeta>(*this);
+    return std::make_shared<EndstonePotionMeta>(*this);
 }
 
 bool EndstonePotionMeta::isPotionEmpty() const

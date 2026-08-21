@@ -28,8 +28,8 @@ class BlockCookEvent : public Cancellable<BlockEvent> {
 public:
     ENDSTONE_EVENT(BlockCookEvent);
 
-    BlockCookEvent(std::unique_ptr<Block> block, ItemStack source, ItemStack result)
-        : Cancellable(std::move(block)), source_(std::move(source)), result_(std::move(result))
+    BlockCookEvent(const NotNull<Block> &block, ItemStack source, ItemStack result)
+        : Cancellable(block), source_(std::move(source)), result_(std::move(result))
     {
     }
 

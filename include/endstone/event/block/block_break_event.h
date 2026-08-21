@@ -31,8 +31,8 @@ namespace endstone {
 class BlockBreakEvent : public Cancellable<BlockEvent> {
 public:
     ENDSTONE_EVENT(BlockBreakEvent);
-    explicit BlockBreakEvent(std::unique_ptr<Block> block, const NotNull<Player> &player)
-        : Cancellable(std::move(block)), player_(player)
+    explicit BlockBreakEvent(const NotNull<Block> &block, const NotNull<Player> &player)
+        : Cancellable(block), player_(player)
     {
     }
     ~BlockBreakEvent() override = default;

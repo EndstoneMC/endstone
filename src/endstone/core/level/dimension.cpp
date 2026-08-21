@@ -59,12 +59,12 @@ bool EndstoneDimension::isValid() const
     return dimension_.isSet();
 }
 
-std::unique_ptr<Block> EndstoneDimension::getBlockAt(int x, int y, int z) const
+NotNull<Block> EndstoneDimension::getBlockAt(int x, int y, int z) const
 {
     return EndstoneBlock::at(getHandle().getBlockSourceFromMainChunkSource(), BlockPos(x, y, z));
 }
 
-std::unique_ptr<Block> EndstoneDimension::getBlockAt(Location location) const
+NotNull<Block> EndstoneDimension::getBlockAt(Location location) const
 {
     return getBlockAt(location.getBlockX(), location.getBlockY(), location.getBlockZ());
 }
@@ -76,25 +76,25 @@ int EndstoneDimension::getHighestBlockYAt(int x, int z) const
     return height - 1;
 }
 
-std::unique_ptr<Block> EndstoneDimension::getHighestBlockAt(int x, int z) const
+NotNull<Block> EndstoneDimension::getHighestBlockAt(int x, int z) const
 {
     return getBlockAt(x, getHighestBlockYAt(x, z), z);
 }
 
-std::unique_ptr<Block> EndstoneDimension::getHighestBlockAt(Location location) const
+NotNull<Block> EndstoneDimension::getHighestBlockAt(Location location) const
 {
     return getHighestBlockAt(location.getBlockX(), location.getBlockZ());
 }
 
-std::vector<std::unique_ptr<Chunk>> EndstoneDimension::getLoadedChunks()
+std::vector<NotNull<Chunk>> EndstoneDimension::getLoadedChunks()
 {
-    std::vector<std::unique_ptr<Chunk>> chunks;
+    std::vector<NotNull<Chunk>> chunks;
     for (const auto &weak_lc : getHandle().getChunkSource().getStorage() | std::views::values) {
         if (weak_lc.expired()) {
             continue;
         }
         if (auto chunk = weak_lc.lock(); chunk && chunk->getState() >= ChunkState::Loaded) {
-            chunks.emplace_back(std::make_unique<EndstoneChunk>(*chunk));
+            chunks.emplace_back(std::make_shared<EndstoneChunk>(*chunk));
         }
     }
     return chunks;
@@ -151,7 +151,7 @@ std::vector<NotNull<Actor>> EndstoneDimension::getActors() const
 {
     std::vector<NotNull<Actor>> result;
     for (const auto &actor : level_.getActors()) {
-        if (actor->getDimension() != getSelf()) {
+        if (actor->getDimension() != self()) {
             continue;
         }
         result.push_back(actor);
@@ -190,7 +190,7 @@ std::vector<NotNull<Player>> EndstoneDimension::getPlayers() const
     return *handle;
 }
 
-NotNull<EndstoneDimension> EndstoneDimension::getSelf() const
+NotNull<EndstoneDimension> EndstoneDimension::self() const
 {
     return const_cast<EndstoneDimension *>(this)->shared_from_this();
 }

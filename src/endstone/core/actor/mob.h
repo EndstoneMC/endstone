@@ -50,6 +50,8 @@ public:
 
     [[nodiscard]] bool isGliding() const override { return Base::getHandle().isGliding(); }
 
+    [[nodiscard]] bool isSwimming() const override { return Base::getHandle().isSwimming(); }
+
     [[nodiscard]] int getHealth() const override { return Base::getHandle().getHealth(); }
 
     void setHealth(int health) const override
@@ -76,17 +78,17 @@ public:
         return Base::getHandle().getAttribute({id}) != nullptr;
     }
 
-    [[nodiscard]] std::unique_ptr<AttributeInstance> getAttribute(AttributeId id) override
+    [[nodiscard]] Nullable<AttributeInstance> getAttribute(AttributeId id) override
     {
-        return std::make_unique<EndstoneAttributeInstance>(Base::getHandle().getMutableAttribute({id}));
+        return std::make_shared<EndstoneAttributeInstance>(Base::getHandle().getMutableAttribute({id}));
     }
 
-    [[nodiscard]] std::vector<std::unique_ptr<AttributeInstance>> getAttributes() override
+    [[nodiscard]] std::vector<NotNull<AttributeInstance>> getAttributes() override
     {
-        std::vector<std::unique_ptr<AttributeInstance>> attributes;
+        std::vector<NotNull<AttributeInstance>> attributes;
         auto component = Base::getHandle().template getPersistentComponent<AttributesComponent>();
         for (auto &attribute : component->attributes.getAttributes()) {
-            attributes.emplace_back(std::make_unique<EndstoneAttributeInstance>(attribute));
+            attributes.emplace_back(std::make_shared<EndstoneAttributeInstance>(attribute));
         }
         return attributes;
     }

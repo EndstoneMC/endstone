@@ -80,7 +80,7 @@ class ItemStack:
         """
 
     @property
-    def item_meta(self) -> ItemMeta:
+    def item_meta(self) -> ItemMeta | None:
         """
         A copy of the `ItemMeta` of this `ItemStack`.
         """
@@ -515,7 +515,7 @@ class ItemFactory:
     """
     An interface to the methods used to create item metadata.
     """
-    def get_item_meta(self, type: Identifier[ItemType] | str) -> ItemMeta:
+    def get_item_meta(self, type: Identifier[ItemType] | str) -> ItemMeta | None:
         """
         This creates a new item meta for the item type.
 
@@ -550,7 +550,7 @@ class ItemFactory:
             `False` if one of the meta has data the other does not, otherwise `True`.
         """
 
-    def as_meta_for(self, meta: ItemMeta, type: Identifier[ItemType] | str) -> ItemMeta:
+    def as_meta_for(self, meta: ItemMeta, type: Identifier[ItemType] | str) -> ItemMeta | None:
         """
         Returns an appropriate item meta for the specified item type.
 

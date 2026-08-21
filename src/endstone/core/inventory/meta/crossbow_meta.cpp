@@ -97,9 +97,9 @@ bool EndstoneCrossbowMeta::notUncommon(const ItemMeta &meta) const
     return EndstoneItemMetaBase::notUncommon(meta) && (meta.as<CrossbowMeta>() || isCrossbowEmpty());
 }
 
-std::unique_ptr<ItemMeta> EndstoneCrossbowMeta::clone() const
+NotNull<ItemMeta> EndstoneCrossbowMeta::clone() const
 {
-    return std::make_unique<EndstoneCrossbowMeta>(*this);
+    return std::make_shared<EndstoneCrossbowMeta>(*this);
 }
 
 bool EndstoneCrossbowMeta::isCrossbowEmpty() const

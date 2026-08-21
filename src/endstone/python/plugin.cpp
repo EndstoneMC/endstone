@@ -352,8 +352,7 @@ void init_plugin(py::module &m)
         plugin: Plugin to register.
         ignore_cancelled: Do not call executor if event was already cancelled.
 )doc")
-        .def("get_permission", &PluginManager::getPermission, py::arg("name"), py::return_value_policy::reference,
-             R"doc(
+        .def("get_permission", &PluginManager::getPermission, py::arg("name"), R"doc(
     Gets a `Permission` from its fully qualified name.
 
     Args:
@@ -362,7 +361,8 @@ void init_plugin(py::module &m)
     Returns:
         `Permission`, or `None` if none.
 )doc")
-        .def("remove_permission", py::overload_cast<Permission &>(&PluginManager::removePermission), py::arg("perm"),
+        .def("remove_permission", py::overload_cast<const NotNull<Permission> &>(&PluginManager::removePermission),
+             py::arg("perm"),
              R"doc(
     Removes a `Permission` registration from this plugin manager.
 
@@ -382,8 +382,7 @@ void init_plugin(py::module &m)
     Args:
         name: Permission to remove.
 )doc")
-        .def("get_default_permissions", &PluginManager::getDefaultPermissions, py::arg("level"),
-             py::return_value_policy::reference_internal, R"doc(
+        .def("get_default_permissions", &PluginManager::getDefaultPermissions, py::arg("level"), R"doc(
     Gets the default permissions for the given permission level.
 
     Args:
@@ -419,7 +418,7 @@ void init_plugin(py::module &m)
         permissible: Permissible subscribing.
 )doc")
         .def("get_permission_subscriptions", &PluginManager::getPermissionSubscriptions, py::arg("permission"),
-             py::return_value_policy::reference_internal, R"doc(
+             R"doc(
     Gets a set containing all subscribed `Permissibles` to the given permission, by name.
 
     Args:
@@ -447,7 +446,7 @@ void init_plugin(py::module &m)
         permissible: Permissible subscribing.
 )doc")
         .def("get_default_perm_subscriptions", &PluginManager::getDefaultPermSubscriptions, py::arg("level"),
-             py::return_value_policy::reference_internal, R"doc(
+             R"doc(
     Gets a set containing all subscribed `Permissibles` to the given default list, by permission level.
 
     Args:

@@ -16,23 +16,28 @@
 
 #include <algorithm>
 #include <functional>
+#include <memory>
 #include <string>
 #include <unordered_map>
 #include <utility>
 
 #include "endstone/permissions/permissible.h"
 #include "endstone/permissions/permission.h"
+#include "endstone/util/pointers.h"
 
 namespace endstone {
 
-using PermissionRemovedExecutor = std::function<void(const PermissionAttachment &)>;
+using PermissionRemovedExecutor = std::function<void(const NotNull<PermissionAttachment> &)>;
 
 /**
  * Holds information about a permission attachment on a Permissible object.
  */
-class PermissionAttachment {
+class PermissionAttachment : public std::enable_shared_from_this<PermissionAttachment> {
 public:
-    PermissionAttachment(Plugin &plugin, Permissible &permissible) : permissible_(permissible), plugin_(plugin) {}
+    PermissionAttachment(Plugin &plugin, const NotNull<Permissible> &permissible)
+        : permissible_(permissible.get()), plugin_(plugin)
+    {
+    }
 
     /**
      * Gets the plugin responsible for this attachment.
@@ -59,9 +64,9 @@ public:
     /**
      * Gets the Permissible that this is attached to.
      *
-     * @return Permissible containing this attachment
+     * @return Permissible containing this attachment, or nullptr if it no longer exists
      */
-    [[nodiscard]] Permissible &getPermissible() const { return permissible_; }
+    [[nodiscard]] Nullable<Permissible> getPermissible() const { return permissible_.lock(); }
 
     /**
      * Gets a copy of all set permissions and values contained within this attachment.
@@ -81,7 +86,9 @@ public:
     {
         std::transform(name.begin(), name.end(), name.begin(), [](unsigned char c) { return std::tolower(c); });
         permissions_[name] = value;
-        permissible_.recalculatePermissions();
+        if (const auto permissible = permissible_.lock()) {
+            permissible->recalculatePermissions();
+        }
     }
 
     /**
@@ -90,7 +97,7 @@ public:
      * @param perm Permission to set
      * @param value New value of the permission
      */
-    void setPermission(Permission &perm, bool value) { setPermission(perm.getName(), value); }
+    void setPermission(const NotNull<Permission> &perm, bool value) { setPermission(perm->getName(), value); }
 
     /**
      * Removes the specified permission from this attachment.
@@ -102,7 +109,9 @@ public:
     {
         std::transform(name.begin(), name.end(), name.begin(), [](unsigned char c) { return std::tolower(c); });
         permissions_.erase(name);
-        permissible_.recalculatePermissions();
+        if (const auto permissible = permissible_.lock()) {
+            permissible->recalculatePermissions();
+        }
     }
 
     /**
@@ -111,19 +120,28 @@ public:
      *
      * @param perm Permission to remove
      */
-    void unsetPermission(Permission &perm) { unsetPermission(perm.getName()); }
+    void unsetPermission(const NotNull<Permission> &perm) { unsetPermission(perm->getName()); }
 
     /**
      * Removes this attachment from its registered Permissible.
      *
-     * @return true if the permissible was removed successfully, false if it did not exist
+     * @return true if the attachment was removed successfully, false if it was already removed or its Permissible no
+     * longer exists
      */
-    bool remove() { return permissible_.removeAttachment(*this); }
+    bool remove()
+    {
+        const auto self = weak_from_this().lock();
+        const auto permissible = permissible_.lock();
+        if (!self || !permissible) {
+            return false;
+        }
+        return permissible->removeAttachment(self);
+    }
 
 private:
     PermissionRemovedExecutor removed_;
     std::unordered_map<std::string, bool> permissions_;
-    Permissible &permissible_;
+    std::weak_ptr<Permissible> permissible_;
     Plugin &plugin_;
 };
 

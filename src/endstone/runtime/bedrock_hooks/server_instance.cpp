@@ -38,9 +38,11 @@ void hookEventHandler(ActorGameplayHandler &handler)
 {
 #ifdef _WIN32
     vhook::create<4>(&handler, &ScriptActorGameplayHandler::handleEvent1);
+    vhook::create<2>(&handler, &ScriptActorGameplayHandler::handleEvent3);
     vhook::create<1>(&handler, &ScriptActorGameplayHandler::handleEvent4);
 #else
     vhook::create<2>(&handler, &ScriptActorGameplayHandler::handleEvent1);
+    vhook::create<4>(&handler, &ScriptActorGameplayHandler::handleEvent3);
     vhook::create<5>(&handler, &ScriptActorGameplayHandler::handleEvent4);
 #endif
 }
@@ -60,11 +62,11 @@ void hookEventHandler(BlockGameplayHandler &handler)
 template <>
 void hookEventHandler(ItemGameplayHandler &handler)
 {
+    // ItemGameplayEvent<void> is never dispatched: BDS instantiates no _processEvent for it, so handleEvent1
+    // is unreachable and hooking it would gain nothing.
 #ifdef _WIN32
-    // vhook::create<2>(&handler, &ScriptItemGameplayHandler::handleEvent1);
     vhook::create<1>(&handler, &ScriptItemGameplayHandler::handleEvent2);
 #else
-    // vhook::create<2>(&handler, &ScriptItemGameplayHandler::handleEvent1);
     vhook::create<3>(&handler, &ScriptItemGameplayHandler::handleEvent2);
 #endif
 }
@@ -72,14 +74,9 @@ void hookEventHandler(ItemGameplayHandler &handler)
 template <>
 void hookEventHandler(LevelGameplayHandler &handler)
 {
-    // TODO(hook): find new way to implement WeatherEvent
-#ifdef _WIN32
+    // MutableLevelGameplayEvent<CoordinatorResult> never reached this hook after the install point moved to
+    // onServerThreadStarted; WeatherChangeEvent and ThunderChangeEvent come from WeatherManager::updateWeather.
     vhook::create<2>(&handler, &ScriptLevelGameplayHandler::handleEvent1);
-    // vhook::create<1>(&handler, &ScriptLevelGameplayHandler::handleEvent2);
-#else
-    vhook::create<2>(&handler, &ScriptLevelGameplayHandler::handleEvent1);
-    // vhook::create<3>(&handler, &ScriptLevelGameplayHandler::handleEvent2);
-#endif
 }
 
 template <>

@@ -61,10 +61,7 @@ public:
         return core::isInstanceOf(*this, target);
     }
 
-    [[nodiscard]] std::unique_ptr<Block> getBlock() const override
-    {
-        return EndstoneBlock::at(getBlockSource(), block_pos_);
-    }
+    [[nodiscard]] NotNull<Block> getBlock() const override { return EndstoneBlock::at(getBlockSource(), block_pos_); }
 
     [[nodiscard]] const BlockType &getType() const override
     {
@@ -82,10 +79,7 @@ public:
         }
     }
 
-    [[nodiscard]] std::unique_ptr<BlockData> getData() const override
-    {
-        return std::make_unique<EndstoneBlockData>(*block_);
-    }
+    [[nodiscard]] NotNull<BlockData> getData() const override { return std::make_shared<EndstoneBlockData>(*block_); }
 
     void setData(const BlockData &data) override
     {

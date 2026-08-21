@@ -117,3 +117,8 @@
     def event_handler(func: _F, /) -> _F: ...
     @typing.overload
     def event_handler(*, priority: EventPriority = ..., ignore_cancelled: bool = ...) -> typing.Callable[[_F], _F]: ...
+
+# Bound only so the explode block list is mutable in place; ALIASES maps every
+# reference to list[Block], so the class itself must not appear in the stubs.
+^endstone\.block\.BlockList$:
+

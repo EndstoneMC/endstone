@@ -62,14 +62,14 @@ public:
     MOCK_METHOD(float, getCurrentTickUsage, (), (override));
     MOCK_METHOD(float, getAverageTickUsage, (), (override));
     MOCK_METHOD(std::chrono::system_clock::time_point, getStartTime, (), (override));
-    MOCK_METHOD(std::unique_ptr<endstone::BossBar>, createBossBar,
+    MOCK_METHOD(endstone::NotNull<endstone::BossBar>, createBossBar,
                 (std::string, endstone::BarColor, endstone::BarStyle), (const, override));
-    MOCK_METHOD(std::unique_ptr<endstone::BossBar>, createBossBar,
+    MOCK_METHOD(endstone::NotNull<endstone::BossBar>, createBossBar,
                 (std::string, endstone::BarColor, endstone::BarStyle, std::vector<endstone::BarFlag>),
                 (const, override));
-    MOCK_METHOD(std::unique_ptr<endstone::BlockData>, createBlockData, (endstone::BlockTypeId), (const, override));
-    MOCK_METHOD(std::unique_ptr<endstone::BlockData>, createBlockData,
-                (endstone::BlockTypeId, endstone::BlockStates), (const, override));
+    MOCK_METHOD(endstone::NotNull<endstone::BlockData>, createBlockData, (endstone::BlockTypeId), (const, override));
+    MOCK_METHOD(endstone::NotNull<endstone::BlockData>, createBlockData, (endstone::BlockTypeId, endstone::BlockStates),
+                (const, override));
     MOCK_METHOD(endstone::PlayerBanList &, getBanList, (), (const, override));
     MOCK_METHOD(endstone::IpBanList &, getIpBanList, (), (const, override));
 };

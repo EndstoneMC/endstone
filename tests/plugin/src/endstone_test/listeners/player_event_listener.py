@@ -1,14 +1,19 @@
 from endstone import ColorFormat
 from endstone.event import (
+    PlayerArmorStandManipulateEvent,
+    PlayerArmSwingEvent,
     PlayerBedEnterEvent,
     PlayerBedLeaveEvent,
+    PlayerBucketActorEvent,
     PlayerChatEvent,
     PlayerCommandEvent,
     PlayerDeathEvent,
     PlayerDimensionChangeEvent,
     PlayerDropItemEvent,
     PlayerEmoteEvent,
+    PlayerExpChangeEvent,
     PlayerGameModeChangeEvent,
+    PlayerInputEvent,
     PlayerInteractActorEvent,
     PlayerInteractEvent,
     PlayerItemConsumeEvent,
@@ -16,14 +21,22 @@ from endstone.event import (
     PlayerJoinEvent,
     PlayerJumpEvent,
     PlayerKickEvent,
+    PlayerLevelChangeEvent,
     PlayerLoginEvent,
     PlayerMoveEvent,
+    PlayerPickupArrowEvent,
+    PlayerPickupExperienceEvent,
     PlayerPickupItemEvent,
     PlayerPortalEvent,
     PlayerQuitEvent,
+    PlayerRecipeBookSettingsChangeEvent,
     PlayerRespawnEvent,
+    PlayerRiptideEvent,
+    PlayerShearActorEvent,
     PlayerSkinChangeEvent,
     PlayerTeleportEvent,
+    PlayerToggleCrawlEvent,
+    PlayerToggleFlightEvent,
     PlayerToggleSneakEvent,
     PlayerToggleSprintEvent,
     event_handler,
@@ -350,4 +363,155 @@ class PlayerEventListener(EventListener):
             player=event.player.name,
             is_sprinting=event.is_sprinting,
             player_is_sprinting=event.player.is_sprinting,
+        )
+
+    @event_handler
+    def on_player_arm_swing(self, event: PlayerArmSwingEvent):
+        self.record(
+            event,
+            f"{event.player.name} swings their arm holding {event.item}",
+            player=event.player.name,
+            has_item=event.item is not None,
+            item_type=str(event.item.type) if event.item is not None else None,
+        )
+
+    @event_handler
+    def on_player_armor_stand_manipulate(self, event: PlayerArmorStandManipulateEvent):
+        self.record(
+            event,
+            f"{event.player.name} swaps {event.player_item} for "
+            f"{event.armor_stand_item} in the {event.slot} slot of "
+            f"{event.actor.name}",
+            always_log=True,
+            player=event.player.name,
+            actor_type=str(event.actor.type),
+            slot=str(event.slot),
+            armor_stand_item_type=str(event.armor_stand_item.type),
+            player_item_type=str(event.player_item.type),
+        )
+
+    @event_handler
+    def on_player_bucket_actor(self, event: PlayerBucketActorEvent):
+        self.record(
+            event,
+            f"{event.player.name} captures {event.actor.name} "
+            f"({event.actor.type}) with {event.original_bucket}",
+            always_log=True,
+            player=event.player.name,
+            actor_type=str(event.actor.type),
+            original_bucket_type=str(event.original_bucket.type),
+            hand=str(event.hand),
+        )
+
+    @event_handler
+    def on_player_exp_change(self, event: PlayerExpChangeEvent):
+        self.record(
+            event,
+            f"{event.player.name} gains {event.amount} experience",
+            player=event.player.name,
+            amount=event.amount,
+        )
+
+    @event_handler
+    def on_player_input(self, event: PlayerInputEvent):
+        player_input = event.input
+        self.record(
+            event,
+            f"{event.player.name} input: {player_input}",
+            player=event.player.name,
+            forward=player_input.is_forward,
+            backward=player_input.is_backward,
+            left=player_input.is_left,
+            right=player_input.is_right,
+            jump=player_input.is_jump,
+            sneak=player_input.is_sneak,
+            sprint=player_input.is_sprint,
+        )
+
+    @event_handler
+    def on_player_level_change(self, event: PlayerLevelChangeEvent):
+        self.record(
+            event,
+            f"{event.player.name} level {event.old_level} -> {event.new_level}",
+            always_log=True,
+            player=event.player.name,
+            old_level=event.old_level,
+            new_level=event.new_level,
+        )
+
+    @event_handler
+    def on_player_pickup_arrow(self, event: PlayerPickupArrowEvent):
+        self.record(
+            event,
+            f"{event.player.name} picks up an arrow ({event.arrow.type})",
+            player=event.player.name,
+            arrow_type=str(event.arrow.type),
+        )
+
+    @event_handler
+    def on_player_pickup_experience(self, event: PlayerPickupExperienceEvent):
+        self.record(
+            event,
+            f"{event.player.name} picks up an orb worth {event.amount} experience",
+            player=event.player.name,
+            amount=event.amount,
+        )
+
+    @event_handler
+    def on_player_recipe_book_settings_change(
+        self, event: PlayerRecipeBookSettingsChangeEvent
+    ):
+        self.record(
+            event,
+            f"{event.player.name} recipe book {event.recipe_book_type} "
+            f"(open={event.is_open}, filtering={event.is_filtering})",
+            always_log=True,
+            player=event.player.name,
+            recipe_book_type=event.recipe_book_type.name,
+            is_open=event.is_open,
+            is_filtering=event.is_filtering,
+        )
+
+    @event_handler
+    def on_player_riptide(self, event: PlayerRiptideEvent):
+        self.record(
+            event,
+            f"{event.player.name} riptides with {event.item}",
+            always_log=True,
+            player=event.player.name,
+            item_type=str(event.item.type),
+        )
+
+    @event_handler
+    def on_player_shear_actor(self, event: PlayerShearActorEvent):
+        self.record(
+            event,
+            f"{event.player.name} shears {event.actor.name} ({event.actor.type}) "
+            f"with {event.item}",
+            always_log=True,
+            player=event.player.name,
+            actor_type=str(event.actor.type),
+            item_type=str(event.item.type),
+            hand=str(event.hand),
+        )
+
+    @event_handler
+    def on_player_toggle_crawl(self, event: PlayerToggleCrawlEvent):
+        self.record(
+            event,
+            f"{event.player.name} crawling -> {event.is_crawling}",
+            player=event.player.name,
+            is_crawling=event.is_crawling,
+            player_is_crawling=event.player.is_crawling,
+        )
+
+    @event_handler
+    def on_player_toggle_flight(self, event: PlayerToggleFlightEvent):
+        self.record(
+            event,
+            f"{event.player.name} flying -> {event.is_flying}",
+            player=event.player.name,
+            is_flying=event.is_flying,
+            player_is_flying=event.player.is_flying,
+            allow_flight=event.player.allow_flight,
         )

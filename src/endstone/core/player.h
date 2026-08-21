@@ -27,6 +27,7 @@
 #include "bedrock/world/events/player_events.h"
 #include "endstone/core/actor/mob.h"
 #include "endstone/core/inventory/player_inventory.h"
+#include "endstone/input.h"
 #include "endstone/inventory/meta/book_meta.h"
 #include "endstone/player.h"
 #include "permissions/permissible_base.h"
@@ -43,14 +44,14 @@ public:
     // Permissible
     [[nodiscard]] PermissionLevel getPermissionLevel() const override;
     [[nodiscard]] bool isPermissionSet(std::string name) const override;
-    [[nodiscard]] bool isPermissionSet(const Permission &perm) const override;
+    [[nodiscard]] bool isPermissionSet(const NotNull<Permission> &perm) const override;
     [[nodiscard]] bool hasPermission(std::string name) const override;
-    [[nodiscard]] bool hasPermission(const Permission &perm) const override;
-    PermissionAttachment *addAttachment(Plugin &plugin, const std::string &name, bool value) override;
-    PermissionAttachment *addAttachment(Plugin &plugin) override;
-    bool removeAttachment(PermissionAttachment &attachment) override;
+    [[nodiscard]] bool hasPermission(const NotNull<Permission> &perm) const override;
+    NotNull<PermissionAttachment> addAttachment(Plugin &plugin, const std::string &name, bool value) override;
+    NotNull<PermissionAttachment> addAttachment(Plugin &plugin) override;
+    bool removeAttachment(const NotNull<PermissionAttachment> &attachment) override;
     void recalculatePermissions() override;
-    [[nodiscard]] std::unordered_set<PermissionAttachmentInfo *> getEffectivePermissions() const override;
+    [[nodiscard]] std::unordered_set<NotNull<PermissionAttachmentInfo>> getEffectivePermissions() const override;
 
     // CommandSender
     void sendMessage(const Message &message) const override;
@@ -89,6 +90,7 @@ public:
     [[nodiscard]] bool getAllowFlight() const override;
     void setAllowFlight(bool flight) override;
     [[nodiscard]] bool isFlying() const override;
+    [[nodiscard]] bool isCrawling() const override;
     void setFlying(bool value) override;
     [[nodiscard]] float getFlySpeed() const override;
     void setFlySpeed(float value) const override;
@@ -141,6 +143,14 @@ public:
 private:
     friend class ::ServerNetworkHandler;
 
+    struct RecipeBookSettings {
+        bool filtering;
+        int inventory_layout;
+        int crafting_layout;
+
+        bool operator==(const RecipeBookSettings &) const = default;
+    };
+
     std::shared_ptr<PermissibleBase> perm_;
     std::unique_ptr<EndstonePlayerInventory> inventory_;
     std::unique_ptr<EndstoneInventory> ender_chest_;
@@ -151,6 +161,8 @@ private:
     std::string game_version_;
     std::uint32_t form_ids_ = 0xffff;  // Set to a large value to avoid collision with forms created by script api
     std::unordered_map<std::uint32_t, FormVariant> forms_;
+    Input last_input_;
+    std::optional<RecipeBookSettings> last_recipe_book_settings_;
     std::unique_ptr<BookMeta> pending_book_meta_;
     int pending_book_slot_ = -1;
     bool spawned_ = false;
