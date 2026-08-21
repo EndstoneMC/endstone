@@ -43,6 +43,7 @@ class CommandRunStats;
 
 namespace endstone::core {
 class CommandPermissions;
+class CommandTreeRegistrar;
 class EndstoneCommandMap;
 class EndstonePlayer;
 class MinecraftCommandPermissions;
@@ -218,7 +219,7 @@ public:
         static Symbol fromFactorizationIndex(size_t index);
         static Symbol fromPostfixIndex(size_t index);
         static Symbol fromEnumValueIndex(size_t index) { return {index | EnumValueBit}; }
-        static Symbol fromSoftEnumIndex(size_t index);
+        static Symbol fromSoftEnumIndex(size_t index) { return {index | SoftEnumBit | NonTerminalBit}; }
         static Symbol fromChainedSubcommandIndex(size_t index);
         static Symbol fromChainedSubcommandValueIndex(size_t index);
 
@@ -340,6 +341,7 @@ public:
 
     // Endstone begins
     friend class endstone::core::CommandPermissions;
+    friend class endstone::core::CommandTreeRegistrar;
     friend class endstone::core::EndstoneCommandMap;
     friend class endstone::core::EndstonePlayer;
     friend class endstone::core::MinecraftCommandPermissions;
@@ -358,9 +360,13 @@ public:
         return std::move(std::make_unique<CommandType>());
     }
 
+    const Overload *registerOverload(const char *name, CommandVersion version, Overload::AllocFunction alloc,
+                                     std::vector<CommandParameterData> params);
+
     template <typename CommandType>
     const Overload *registerOverload(const char *name, CommandVersion version,
                                      std::vector<CommandParameterData> params);
+
     // Endstone ends
 
 private:
@@ -462,21 +468,26 @@ public:
     CustomStorageIsSetFn value_is_set_fn{nullptr};
 };
 
-template <typename CommandType>
-const CommandRegistry::Overload *CommandRegistry::registerOverload(const char *name, CommandVersion version,
-                                                                   std::vector<CommandParameterData> params)
+inline const CommandRegistry::Overload *CommandRegistry::registerOverload(const char *name, CommandVersion version,
+                                                                          Overload::AllocFunction alloc,
+                                                                          std::vector<CommandParameterData> params)
 {
     auto *signature = const_cast<Signature *>(findCommand(name));
     if (!signature) {
         return nullptr;
     }
 
-    auto overload = Overload(version, &allocateCommand<CommandType>);
+    auto &overload = signature->overloads.emplace_back(version, std::move(alloc));
     overload.params = std::move(params);
-
-    signature->overloads.push_back(overload);
     registerOverloadInternal(*signature, overload);
-    return &signature->overloads.back();
+    return &overload;
+}
+
+template <typename CommandType>
+const CommandRegistry::Overload *CommandRegistry::registerOverload(const char *name, CommandVersion version,
+                                                                   std::vector<CommandParameterData> params)
+{
+    return registerOverload(name, version, &allocateCommand<CommandType>, std::move(params));
 }
 
 template <>
