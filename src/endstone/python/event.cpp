@@ -218,8 +218,8 @@ void init_event(py::module_ &m, py::class_<Event, PyEvent> &event)
         .export_values()
         .finalize();
     cauldron_level_change_event
-        .def_property_readonly("entity", &CauldronLevelChangeEvent::getEntity,
-                               "The entity responsible for the change, or `None`.")
+        .def_property_readonly("actor", &CauldronLevelChangeEvent::getActor,
+                               "The actor which did this, or `None`.")
         .def_property_readonly("reason", &CauldronLevelChangeEvent::getReason, "The reason for the change.")
         .def_property_readonly("new_state", &CauldronLevelChangeEvent::getNewState, py::return_value_policy::reference,
                                "The new state of the cauldron.");

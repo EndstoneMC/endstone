@@ -1,3 +1,17 @@
+// Copyright (c) 2024, The Endstone Project. (https://endstone.dev) All Rights Reserved.
+//
+// Licensed under the Apache License, Version 2.0 (the "License");
+// you may not use this file except in compliance with the License.
+// You may obtain a copy of the License at
+//
+//     http://www.apache.org/licenses/LICENSE-2.0
+//
+// Unless required by applicable law or agreed to in writing, software
+// distributed under the License is distributed on an "AS IS" BASIS,
+// WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+// See the License for the specific language governing permissions and
+// limitations under the License.
+
 #pragma once
 
 #include <memory>
@@ -36,28 +50,28 @@ public:
         ArmorWash,
         /** A player washed a shulker box. */
         ShulkerWash,
-        /** An entity was extinguished. */
+        /** An actor was extinguished. */
         Extinguish,
-        /** The cauldron evaporated. */
+        /** The cauldron evaporated due to biome dryness. */
         Evaporate,
-        /** The cauldron was filled by rain or dripstone. */
+        /** The cauldron was filled by a natural fluid source, e.g. rain or dripstone. */
         NaturalFill,
         /** The cause is unknown. */
         Unknown,
     };
 
-    CauldronLevelChangeEvent(std::unique_ptr<Block> block, Nullable<Actor> entity, ChangeReason reason,
+    CauldronLevelChangeEvent(std::unique_ptr<Block> block, Nullable<Actor> actor, ChangeReason reason,
                              std::unique_ptr<BlockState> new_state)
-        : Cancellable(std::move(block)), entity_(std::move(entity)), reason_(reason), new_state_(std::move(new_state))
+        : Cancellable(std::move(block)), actor_(std::move(actor)), reason_(reason), new_state_(std::move(new_state))
     {
     }
 
     /**
-     * Gets the entity responsible for the change.
+     * Gets the actor which did this.
      *
-     * @return the responsible entity, or nullptr if there is none
+     * @return the responsible actor, or nullptr if there is none
      */
-    [[nodiscard]] const Nullable<Actor> &getEntity() const { return entity_; }
+    [[nodiscard]] const Nullable<Actor> &getActor() const { return actor_; }
 
     /**
      * Gets the reason for the change.
@@ -74,7 +88,7 @@ public:
     [[nodiscard]] BlockState &getNewState() const { return *new_state_; }
 
 private:
-    Nullable<Actor> entity_;
+    Nullable<Actor> actor_;
     ChangeReason reason_;
     std::unique_ptr<BlockState> new_state_;
 };

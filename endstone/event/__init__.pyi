@@ -558,9 +558,9 @@ class CauldronLevelChangeEvent(BlockEvent, Cancellable):
     NATURAL_FILL = ChangeReason.NATURAL_FILL
     UNKNOWN = ChangeReason.UNKNOWN
     @property
-    def entity(self) -> Actor | None:
+    def actor(self) -> Actor | None:
         """
-        The entity responsible for the change, or `None`.
+        The actor which did this, or `None`.
         """
 
     @property
