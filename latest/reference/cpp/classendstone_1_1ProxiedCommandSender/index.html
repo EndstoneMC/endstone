@@ -10,7 +10,7 @@
         <meta name="author" content="Vincent Wu">
       
       
-        <link rel="canonical" href="https://endstone.dev/latest/reference/cpp/classendstone_1_1CommandSender/">
+        <link rel="canonical" href="https://endstone.dev/latest/reference/cpp/classendstone_1_1ProxiedCommandSender/">
       
       
       
@@ -23,7 +23,7 @@
     
     
       
-        <title>Class endstone::CommandSender - Endstone</title>
+        <title>Class endstone::ProxiedCommandSender - Endstone</title>
       
     
     
@@ -78,7 +78,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#class-endstonecommandsender" class="md-skip">
+        <a href="#class-endstoneproxiedcommandsender" class="md-skip">
           Skip to content
         </a>
       
@@ -138,7 +138,7 @@ For latest updates join the chat on
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Class endstone::CommandSender
+              Class endstone::ProxiedCommandSender
             
           </span>
         </div>
@@ -2596,6 +2596,17 @@ For latest updates join the chat on
 </li>
       
         <li class="md-nav__item">
+    <a href="#public-functions-inherited-from-endstonecommandsender" class="md-nav__link">
+      <span class="md-ellipsis">
+        Public Functions inherited from endstone::CommandSender
+      </span>
+    </a>
+
+    <!-- Table of contents list -->
+    
+</li>
+      
+        <li class="md-nav__item">
     <a href="#public-functions-inherited-from-endstonepermissible" class="md-nav__link">
       <span class="md-ellipsis">
         Public Functions inherited from endstone::Permissible
@@ -2618,6 +2629,17 @@ For latest updates join the chat on
 </li>
       
         <li class="md-nav__item">
+    <a href="#detailed-description" class="md-nav__link">
+      <span class="md-ellipsis">
+        Detailed Description
+      </span>
+    </a>
+
+    <!-- Table of contents list -->
+    
+</li>
+      
+        <li class="md-nav__item">
     <a href="#public-functions-documentation" class="md-nav__link">
       <span class="md-ellipsis">
         Public Functions Documentation
@@ -2631,9 +2653,9 @@ For latest updates join the chat on
             
                 
                     <li class="md-nav__item">
-    <a href="#function-getname" class="md-nav__link">
+    <a href="#function-getcallee" class="md-nav__link">
       <span class="md-ellipsis">
-        function getName
+        function getCallee
       </span>
     </a>
 
@@ -2644,61 +2666,9 @@ For latest updates join the chat on
             
                 
                     <li class="md-nav__item">
-    <a href="#function-getserver" class="md-nav__link">
+    <a href="#function-getcaller" class="md-nav__link">
       <span class="md-ellipsis">
-        function getServer
-      </span>
-    </a>
-
-    <!-- Table of contents list -->
-    
-</li>
-                
-            
-                
-                    <li class="md-nav__item">
-    <a href="#function-senderrormessage-12" class="md-nav__link">
-      <span class="md-ellipsis">
-        function sendErrorMessage [&frac12;]
-      </span>
-    </a>
-
-    <!-- Table of contents list -->
-    
-</li>
-                
-            
-                
-                    <li class="md-nav__item">
-    <a href="#function-senderrormessage-22" class="md-nav__link">
-      <span class="md-ellipsis">
-        function sendErrorMessage [2/2]
-      </span>
-    </a>
-
-    <!-- Table of contents list -->
-    
-</li>
-                
-            
-                
-                    <li class="md-nav__item">
-    <a href="#function-sendmessage-12" class="md-nav__link">
-      <span class="md-ellipsis">
-        function sendMessage [&frac12;]
-      </span>
-    </a>
-
-    <!-- Table of contents list -->
-    
-</li>
-                
-            
-                
-                    <li class="md-nav__item">
-    <a href="#function-sendmessage-22" class="md-nav__link">
-      <span class="md-ellipsis">
-        function sendMessage [2/2]
+        function getCaller
       </span>
     </a>
 
@@ -2729,7 +2699,7 @@ For latest updates join the chat on
 
 
   
-    <a href="https://github.com/EndstoneMC/endstone/edit/develop/docs/reference/cpp/classendstone_1_1CommandSender.md" title="Edit this page" class="md-content__button md-icon" rel="edit">
+    <a href="https://github.com/EndstoneMC/endstone/edit/develop/docs/reference/cpp/classendstone_1_1ProxiedCommandSender.md" title="Edit this page" class="md-content__button md-icon" rel="edit">
       
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M10 20H6V4h7v5h5v3.1l2-2V8l-6-6H6c-1.1 0-2 .9-2 2v16c0 1.1.9 2 2 2h4zm10.2-7c.1 0 .3.1.4.2l1.3 1.3c.2.2.2.6 0 .8l-1 1-2.1-2.1 1-1c.1-.1.2-.2.4-.2m0 3.9L14.1 23H12v-2.1l6.1-6.1z"/></svg>
     </a>
@@ -2738,21 +2708,20 @@ For latest updates join the chat on
     
       
     
-    <a href="https://github.com/EndstoneMC/endstone/raw/develop/docs/reference/cpp/classendstone_1_1CommandSender.md" title="View source of this page" class="md-content__button md-icon">
+    <a href="https://github.com/EndstoneMC/endstone/raw/develop/docs/reference/cpp/classendstone_1_1ProxiedCommandSender.md" title="View source of this page" class="md-content__button md-icon">
       
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M17 18c.56 0 1 .44 1 1s-.44 1-1 1-1-.44-1-1 .44-1 1-1m0-3c-2.73 0-5.06 1.66-6 4 .94 2.34 3.27 4 6 4s5.06-1.66 6-4c-.94-2.34-3.27-4-6-4m0 6.5a2.5 2.5 0 0 1-2.5-2.5 2.5 2.5 0 0 1 2.5-2.5 2.5 2.5 0 0 1 2.5 2.5 2.5 2.5 0 0 1-2.5 2.5M9.27 20H6V4h7v5h5v4.07c.7.08 1.36.25 2 .49V8l-6-6H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h4.5a8.2 8.2 0 0 1-1.23-2"/></svg>
     </a>
   
 
 
-<h1 id="class-endstonecommandsender">Class endstone::CommandSender<a class="headerlink" href="#class-endstonecommandsender" title="Permanent link">&para;</a></h1>
-<p><a href="../annotated/"><strong>ClassList</strong></a> <strong>&gt;</strong> <a href="../namespaceendstone/"><strong>endstone</strong></a> <strong>&gt;</strong> <a href="./"><strong>CommandSender</strong></a></p>
-<p><em>Represents a command sender.</em> </p>
+<h1 id="class-endstoneproxiedcommandsender">Class endstone::ProxiedCommandSender<a class="headerlink" href="#class-endstoneproxiedcommandsender" title="Permanent link">&para;</a></h1>
+<p><a href="../annotated/"><strong>ClassList</strong></a> <strong>&gt;</strong> <a href="../namespaceendstone/"><strong>endstone</strong></a> <strong>&gt;</strong> <a href="./"><strong>ProxiedCommandSender</strong></a></p>
+<p><em>Represents a command sender that is running a command on behalf of another one, as</em> <code>/execute</code> <em>does.</em><a href="#detailed-description">More...</a></p>
 <ul>
-<li><code>#include &lt;endstone/command/command_sender.h&gt;</code></li>
+<li><code>#include &lt;endstone/command/proxied_command_sender.h&gt;</code></li>
 </ul>
-<p>Inherits the following classes: <a href="../classendstone_1_1Permissible/">endstone::Permissible</a></p>
-<p>Inherited by the following classes: <a href="../classendstone_1_1Actor/">endstone::Actor</a>,  <a href="../classendstone_1_1BlockCommandSender/">endstone::BlockCommandSender</a>,  <a href="../classendstone_1_1CommandSenderWrapper/">endstone::CommandSenderWrapper</a>,  <a href="../classendstone_1_1ConsoleCommandSender/">endstone::ConsoleCommandSender</a>,  <a href="../classendstone_1_1ProxiedCommandSender/">endstone::ProxiedCommandSender</a></p>
+<p>Inherits the following classes: <a href="../classendstone_1_1CommandSender/">endstone::CommandSender</a></p>
 <h2 id="public-functions">Public Functions<a class="headerlink" href="#public-functions" title="Permanent link">&para;</a></h2>
 <table>
 <thead>
@@ -2763,28 +2732,48 @@ For latest updates join the chat on
 </thead>
 <tbody>
 <tr>
+<td style="text-align: right;">virtual <a href="../classendstone_1_1NotNull/"><strong>NotNull</strong></a>&lt; <a href="../classendstone_1_1CommandSender/"><strong>CommandSender</strong></a> &gt;</td>
+<td style="text-align: left;"><a href="#function-getcallee"><strong>getCallee</strong></a> () const = 0<br><em>Returns the</em> <a href="../classendstone_1_1CommandSender/"><em><strong>CommandSender</strong></em></a> <em>which is being used to call the command.</em></td>
+</tr>
+<tr>
+<td style="text-align: right;">virtual <a href="../classendstone_1_1NotNull/"><strong>NotNull</strong></a>&lt; <a href="../classendstone_1_1CommandSender/"><strong>CommandSender</strong></a> &gt;</td>
+<td style="text-align: left;"><a href="#function-getcaller"><strong>getCaller</strong></a> () const = 0<br><em>Returns the</em> <a href="../classendstone_1_1CommandSender/"><em><strong>CommandSender</strong></em></a> <em>which triggered this proxied command.</em></td>
+</tr>
+</tbody>
+</table>
+<h2 id="public-functions-inherited-from-endstonecommandsender">Public Functions inherited from endstone::CommandSender<a class="headerlink" href="#public-functions-inherited-from-endstonecommandsender" title="Permanent link">&para;</a></h2>
+<p>See <a href="../classendstone_1_1CommandSender/">endstone::CommandSender</a></p>
+<table>
+<thead>
+<tr>
+<th style="text-align: right;">Type</th>
+<th style="text-align: left;">Name</th>
+</tr>
+</thead>
+<tbody>
+<tr>
 <td style="text-align: right;">virtual std::string</td>
-<td style="text-align: left;"><a href="#function-getname"><strong>getName</strong></a> () const = 0<br><em>Gets the name of this command sender.</em></td>
+<td style="text-align: left;"><a href="../classendstone_1_1CommandSender/#function-getname"><strong>getName</strong></a> () const = 0<br><em>Gets the name of this command sender.</em></td>
 </tr>
 <tr>
 <td style="text-align: right;">virtual <a href="../classendstone_1_1Server/"><strong>Server</strong></a> &amp;</td>
-<td style="text-align: left;"><a href="#function-getserver"><strong>getServer</strong></a> () const = 0<br><em>Returns the server instance that this command is running on.</em></td>
+<td style="text-align: left;"><a href="../classendstone_1_1CommandSender/#function-getserver"><strong>getServer</strong></a> () const = 0<br><em>Returns the server instance that this command is running on.</em></td>
 </tr>
 <tr>
 <td style="text-align: right;">virtual <a href="../classendstone_1_1Identifier/"><strong>void</strong></a></td>
-<td style="text-align: left;"><a href="#function-senderrormessage-12"><strong>sendErrorMessage</strong></a> (<a href="../classendstone_1_1Identifier/"><strong>const</strong></a> <a href="../namespaceendstone/#typedef-message"><strong>Message</strong></a> &amp; message) const = 0<br><em>Sends this sender a error message.</em></td>
+<td style="text-align: left;"><a href="../classendstone_1_1CommandSender/#function-senderrormessage-12"><strong>sendErrorMessage</strong></a> (<a href="../classendstone_1_1Identifier/"><strong>const</strong></a> <a href="../namespaceendstone/#typedef-message"><strong>Message</strong></a> &amp; message) const = 0<br><em>Sends this sender a error message.</em></td>
 </tr>
 <tr>
 <td style="text-align: right;"><a href="../classendstone_1_1Identifier/"><strong>void</strong></a></td>
-<td style="text-align: left;"><a href="#function-senderrormessage-22"><strong>sendErrorMessage</strong></a> (<a href="../classendstone_1_1Identifier/"><strong>const</strong></a> std::format_string&lt; Args... &gt; format, <a href="../classendstone_1_1Identifier/"><strong>Args</strong></a> &amp;&amp;... args) const<br></td>
+<td style="text-align: left;"><a href="../classendstone_1_1CommandSender/#function-senderrormessage-22"><strong>sendErrorMessage</strong></a> (<a href="../classendstone_1_1Identifier/"><strong>const</strong></a> std::format_string&lt; Args... &gt; format, <a href="../classendstone_1_1Identifier/"><strong>Args</strong></a> &amp;&amp;... args) const<br></td>
 </tr>
 <tr>
 <td style="text-align: right;">virtual <a href="../classendstone_1_1Identifier/"><strong>void</strong></a></td>
-<td style="text-align: left;"><a href="#function-sendmessage-12"><strong>sendMessage</strong></a> (<a href="../classendstone_1_1Identifier/"><strong>const</strong></a> <a href="../namespaceendstone/#typedef-message"><strong>Message</strong></a> &amp; message) const = 0<br><em>Sends this sender a message.</em></td>
+<td style="text-align: left;"><a href="../classendstone_1_1CommandSender/#function-sendmessage-12"><strong>sendMessage</strong></a> (<a href="../classendstone_1_1Identifier/"><strong>const</strong></a> <a href="../namespaceendstone/#typedef-message"><strong>Message</strong></a> &amp; message) const = 0<br><em>Sends this sender a message.</em></td>
 </tr>
 <tr>
 <td style="text-align: right;"><a href="../classendstone_1_1Identifier/"><strong>void</strong></a></td>
-<td style="text-align: left;"><a href="#function-sendmessage-22"><strong>sendMessage</strong></a> (<a href="../classendstone_1_1Identifier/"><strong>const</strong></a> std::format_string&lt; Args... &gt; format, <a href="../classendstone_1_1Identifier/"><strong>Args</strong></a> &amp;&amp;... args) const<br></td>
+<td style="text-align: left;"><a href="../classendstone_1_1CommandSender/#function-sendmessage-22"><strong>sendMessage</strong></a> (<a href="../classendstone_1_1Identifier/"><strong>const</strong></a> std::format_string&lt; Args... &gt; format, <a href="../classendstone_1_1Identifier/"><strong>Args</strong></a> &amp;&amp;... args) const<br></td>
 </tr>
 </tbody>
 </table>
@@ -2876,67 +2865,27 @@ For latest updates join the chat on
 </tr>
 </tbody>
 </table>
+<h2 id="detailed-description">Detailed Description<a class="headerlink" href="#detailed-description" title="Permanent link">&para;</a></h2>
+<p>Output and permissions belong to the caller, while the name and the execution context belong to the callee. </p>
 <h2 id="public-functions-documentation">Public Functions Documentation<a class="headerlink" href="#public-functions-documentation" title="Permanent link">&para;</a></h2>
-<h3 id="function-getname">function getName<a class="headerlink" href="#function-getname" title="Permanent link">&para;</a></h3>
-<p><em>Gets the name of this command sender.</em> 
-<div class="language-C++ highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="k">virtual</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">CommandSender</span><span class="o">::</span><span class="n">getName</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span>
+<h3 id="function-getcallee">function getCallee<a class="headerlink" href="#function-getcallee" title="Permanent link">&para;</a></h3>
+<p><em>Returns the</em> <a href="../classendstone_1_1CommandSender/"><em><strong>CommandSender</strong></em></a> <em>which is being used to call the command.</em>
+<div class="language-C++ highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="k">virtual</span><span class="w"> </span><span class="n">NotNull</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">CommandSender</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">ProxiedCommandSender</span><span class="o">::</span><span class="n">getCallee</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span>
 </span></code></pre></div></p>
 <p><strong>Returns:</strong></p>
-<p>Name of the sender </p>
+<p>The sender which the command is being run as </p>
 <hr>
 
-<h3 id="function-getserver">function getServer<a class="headerlink" href="#function-getserver" title="Permanent link">&para;</a></h3>
-<p><em>Returns the server instance that this command is running on.</em> 
-<div class="language-C++ highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="k">virtual</span><span class="w"> </span><span class="n">Server</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">CommandSender</span><span class="o">::</span><span class="n">getServer</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span>
+<h3 id="function-getcaller">function getCaller<a class="headerlink" href="#function-getcaller" title="Permanent link">&para;</a></h3>
+<p><em>Returns the</em> <a href="../classendstone_1_1CommandSender/"><em><strong>CommandSender</strong></em></a> <em>which triggered this proxied command.</em>
+<div class="language-C++ highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="k">virtual</span><span class="w"> </span><span class="n">NotNull</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">CommandSender</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">ProxiedCommandSender</span><span class="o">::</span><span class="n">getCaller</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span>
 </span></code></pre></div></p>
 <p><strong>Returns:</strong></p>
-<p><a href="../classendstone_1_1Server/"><strong>Server</strong></a> instance </p>
-<hr>
-
-<h3 id="function-senderrormessage-12">function sendErrorMessage [&frac12;]<a class="headerlink" href="#function-senderrormessage-12" title="Permanent link">&para;</a></h3>
-<p><em>Sends this sender a error message.</em> 
-<div class="language-C++ highlight"><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="k">virtual</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">CommandSender</span><span class="o">::</span><span class="n">sendErrorMessage</span><span class="w"> </span><span class="p">(</span>
-</span><span id="__span-2-2"><a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a><span class="w">    </span><span class="k">const</span><span class="w">  </span><span class="n">Message</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">message</span>
-</span><span id="__span-2-3"><a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a><span class="p">)</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span>
-</span></code></pre></div></p>
-<p><strong>Parameters:</strong></p>
-<ul>
-<li><code>message</code> Error message to be displayed </li>
-</ul>
-<hr>
-
-<h3 id="function-senderrormessage-22">function sendErrorMessage [2/2]<a class="headerlink" href="#function-senderrormessage-22" title="Permanent link">&para;</a></h3>
-<div class="language-C++ highlight"><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="k">template</span><span class="o">&lt;</span><span class="k">typename</span><span class="p">...</span><span class="w"> </span><span class="n">Args</span><span class="o">&gt;</span>
-</span><span id="__span-3-2"><a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a><span class="kr">inline</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">CommandSender</span><span class="o">::</span><span class="n">sendErrorMessage</span><span class="w"> </span><span class="p">(</span>
-</span><span id="__span-3-3"><a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a><span class="w">    </span><span class="k">const</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">format_string</span><span class="o">&lt;</span><span class="w"> </span><span class="n">Args</span><span class="p">...</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="n">format</span><span class="p">,</span>
-</span><span id="__span-3-4"><a id="__codelineno-3-4" name="__codelineno-3-4" href="#__codelineno-3-4"></a><span class="w">    </span><span class="n">Args</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="p">...</span><span class="w"> </span><span class="n">args</span>
-</span><span id="__span-3-5"><a id="__codelineno-3-5" name="__codelineno-3-5" href="#__codelineno-3-5"></a><span class="p">)</span><span class="w"> </span><span class="k">const</span>
-</span></code></pre></div>
-<hr>
-
-<h3 id="function-sendmessage-12">function sendMessage [&frac12;]<a class="headerlink" href="#function-sendmessage-12" title="Permanent link">&para;</a></h3>
-<p><em>Sends this sender a message.</em> 
-<div class="language-C++ highlight"><pre><span></span><code><span id="__span-4-1"><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a><span class="k">virtual</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">CommandSender</span><span class="o">::</span><span class="n">sendMessage</span><span class="w"> </span><span class="p">(</span>
-</span><span id="__span-4-2"><a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a><span class="w">    </span><span class="k">const</span><span class="w">  </span><span class="n">Message</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">message</span>
-</span><span id="__span-4-3"><a id="__codelineno-4-3" name="__codelineno-4-3" href="#__codelineno-4-3"></a><span class="p">)</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span>
-</span></code></pre></div></p>
-<p><strong>Parameters:</strong></p>
-<ul>
-<li><code>message</code> Message to be displayed </li>
-</ul>
-<hr>
-
-<h3 id="function-sendmessage-22">function sendMessage [2/2]<a class="headerlink" href="#function-sendmessage-22" title="Permanent link">&para;</a></h3>
-<div class="language-C++ highlight"><pre><span></span><code><span id="__span-5-1"><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a><span class="k">template</span><span class="o">&lt;</span><span class="k">typename</span><span class="p">...</span><span class="w"> </span><span class="n">Args</span><span class="o">&gt;</span>
-</span><span id="__span-5-2"><a id="__codelineno-5-2" name="__codelineno-5-2" href="#__codelineno-5-2"></a><span class="kr">inline</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">CommandSender</span><span class="o">::</span><span class="n">sendMessage</span><span class="w"> </span><span class="p">(</span>
-</span><span id="__span-5-3"><a id="__codelineno-5-3" name="__codelineno-5-3" href="#__codelineno-5-3"></a><span class="w">    </span><span class="k">const</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">format_string</span><span class="o">&lt;</span><span class="w"> </span><span class="n">Args</span><span class="p">...</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="n">format</span><span class="p">,</span>
-</span><span id="__span-5-4"><a id="__codelineno-5-4" name="__codelineno-5-4" href="#__codelineno-5-4"></a><span class="w">    </span><span class="n">Args</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="p">...</span><span class="w"> </span><span class="n">args</span>
-</span><span id="__span-5-5"><a id="__codelineno-5-5" name="__codelineno-5-5" href="#__codelineno-5-5"></a><span class="p">)</span><span class="w"> </span><span class="k">const</span>
-</span></code></pre></div>
+<p>The caller which triggered the command </p>
 <hr>
 
 <hr />
-<p>The documentation for this class was generated from the following file <code>include/endstone/command/command_sender.h</code></p>
+<p>The documentation for this class was generated from the following file <code>include/endstone/command/proxied_command_sender.h</code></p>
 
 
 

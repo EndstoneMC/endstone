@@ -218,6 +218,7 @@ _Represents a button with text and an optional icon._
 | class | [**PotionMeta**](classendstone_1_1PotionMeta.md) <br>_Represents the metadata for a potion item._  |
 | class | [**PotionType**](classendstone_1_1PotionType.md) <br>_Represents a potion type._  |
 | class | [**Preconditions**](classendstone_1_1Preconditions.md) <br>_Static helpers for validating method arguments and object state._  |
+| class | [**ProxiedCommandSender**](classendstone_1_1ProxiedCommandSender.md) <br>_Represents a command sender that is running a command on behalf of another one, as_ `/execute` _does._ |
 | class | [**Recipe**](classendstone_1_1Recipe.md) <br>_Represents some type of crafting recipe._  |
 | class | [**Registry**](classendstone_1_1Registry.md) &lt;[**typename**](classendstone_1_1Identifier.md) [**T**](classendstone_1_1Identifier.md)&gt;<br>_Abstract registry interface for objects with identifiers._  |
 | class | [**Scheduler**](classendstone_1_1Scheduler.md) <br>_Represents a scheduler that executes various tasks._  |

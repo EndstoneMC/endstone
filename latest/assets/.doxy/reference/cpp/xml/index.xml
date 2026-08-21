@@ -2634,6 +2634,10 @@
     <member refid="classendstone_1_1Preconditions_1a67ef7267ef07164ae88052ed43750426" kind="function"><name>checkArgument</name></member>
     <member refid="classendstone_1_1Preconditions_1a5fb6820ed9c6e4629a00776f25d11ef5" kind="function"><name>checkState</name></member>
   </compound>
+  <compound refid="classendstone_1_1ProxiedCommandSender" kind="class"><name>endstone::ProxiedCommandSender</name>
+    <member refid="classendstone_1_1ProxiedCommandSender_1ad6d120eab4f0abc48ff747e94954f0a1" kind="function"><name>getCaller</name></member>
+    <member refid="classendstone_1_1ProxiedCommandSender_1a8c828f34db5e1330837faee2c6e2ba36" kind="function"><name>getCallee</name></member>
+  </compound>
   <compound refid="classendstone_1_1Recipe" kind="class"><name>endstone::Recipe</name>
     <member refid="classendstone_1_1Recipe_1a7c54e5660b82baa721fa86ebb1e55638" kind="function"><name>~Recipe</name></member>
     <member refid="classendstone_1_1Recipe_1a4e20782db3c7f6ea868059af8f2b1cc1" kind="function"><name>getResult</name></member>
@@ -3375,6 +3379,8 @@
   <compound refid="console__command__sender_8h" kind="file"><name>console_command_sender.h</name>
   </compound>
   <compound refid="plugin__command_8h" kind="file"><name>plugin_command.h</name>
+  </compound>
+  <compound refid="proxied__command__sender_8h" kind="file"><name>proxied_command_sender.h</name>
   </compound>
   <compound refid="damage__source_8h" kind="file"><name>damage_source.h</name>
   </compound>

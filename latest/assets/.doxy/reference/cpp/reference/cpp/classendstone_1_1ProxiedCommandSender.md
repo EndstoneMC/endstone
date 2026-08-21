@@ -1,23 +1,42 @@
 
 
-# Class endstone::CommandSender
+# Class endstone::ProxiedCommandSender
 
 
 
-[**ClassList**](annotated.md) **>** [**endstone**](namespaceendstone.md) **>** [**CommandSender**](classendstone_1_1CommandSender.md)
+[**ClassList**](annotated.md) **>** [**endstone**](namespaceendstone.md) **>** [**ProxiedCommandSender**](classendstone_1_1ProxiedCommandSender.md)
 
 
 
-_Represents a command sender._ 
+_Represents a command sender that is running a command on behalf of another one, as_ `/execute` _does._[More...](#detailed-description)
 
-* `#include <endstone/command/command_sender.h>`
-
-
-
-Inherits the following classes: [endstone::Permissible](classendstone_1_1Permissible.md)
+* `#include <endstone/command/proxied_command_sender.h>`
 
 
-Inherited by the following classes: [endstone::Actor](classendstone_1_1Actor.md),  [endstone::BlockCommandSender](classendstone_1_1BlockCommandSender.md),  [endstone::CommandSenderWrapper](classendstone_1_1CommandSenderWrapper.md),  [endstone::ConsoleCommandSender](classendstone_1_1ConsoleCommandSender.md),  [endstone::ProxiedCommandSender](classendstone_1_1ProxiedCommandSender.md)
+
+Inherits the following classes: [endstone::CommandSender](classendstone_1_1CommandSender.md)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -94,12 +113,22 @@ Inherited by the following classes: [endstone::Actor](classendstone_1_1Actor.md)
 
 | Type | Name |
 | ---: | :--- |
-| virtual std::string | [**getName**](#function-getname) () const = 0<br>_Gets the name of this command sender._  |
-| virtual [**Server**](classendstone_1_1Server.md) & | [**getServer**](#function-getserver) () const = 0<br>_Returns the server instance that this command is running on._  |
-| virtual [**void**](classendstone_1_1Identifier.md) | [**sendErrorMessage**](#function-senderrormessage-12) ([**const**](classendstone_1_1Identifier.md) [**Message**](namespaceendstone.md#typedef-message) & message) const = 0<br>_Sends this sender a error message._  |
-|  [**void**](classendstone_1_1Identifier.md) | [**sendErrorMessage**](#function-senderrormessage-22) ([**const**](classendstone_1_1Identifier.md) std::format\_string&lt; Args... &gt; format, [**Args**](classendstone_1_1Identifier.md) &&... args) const<br> |
-| virtual [**void**](classendstone_1_1Identifier.md) | [**sendMessage**](#function-sendmessage-12) ([**const**](classendstone_1_1Identifier.md) [**Message**](namespaceendstone.md#typedef-message) & message) const = 0<br>_Sends this sender a message._  |
-|  [**void**](classendstone_1_1Identifier.md) | [**sendMessage**](#function-sendmessage-22) ([**const**](classendstone_1_1Identifier.md) std::format\_string&lt; Args... &gt; format, [**Args**](classendstone_1_1Identifier.md) &&... args) const<br> |
+| virtual [**NotNull**](classendstone_1_1NotNull.md)&lt; [**CommandSender**](classendstone_1_1CommandSender.md) &gt; | [**getCallee**](#function-getcallee) () const = 0<br>_Returns the_ [_**CommandSender**_](classendstone_1_1CommandSender.md) _which is being used to call the command._ |
+| virtual [**NotNull**](classendstone_1_1NotNull.md)&lt; [**CommandSender**](classendstone_1_1CommandSender.md) &gt; | [**getCaller**](#function-getcaller) () const = 0<br>_Returns the_ [_**CommandSender**_](classendstone_1_1CommandSender.md) _which triggered this proxied command._ |
+
+
+## Public Functions inherited from endstone::CommandSender
+
+See [endstone::CommandSender](classendstone_1_1CommandSender.md)
+
+| Type | Name |
+| ---: | :--- |
+| virtual std::string | [**getName**](classendstone_1_1CommandSender.md#function-getname) () const = 0<br>_Gets the name of this command sender._  |
+| virtual [**Server**](classendstone_1_1Server.md) & | [**getServer**](classendstone_1_1CommandSender.md#function-getserver) () const = 0<br>_Returns the server instance that this command is running on._  |
+| virtual [**void**](classendstone_1_1Identifier.md) | [**sendErrorMessage**](classendstone_1_1CommandSender.md#function-senderrormessage-12) ([**const**](classendstone_1_1Identifier.md) [**Message**](namespaceendstone.md#typedef-message) & message) const = 0<br>_Sends this sender a error message._  |
+|  [**void**](classendstone_1_1Identifier.md) | [**sendErrorMessage**](classendstone_1_1CommandSender.md#function-senderrormessage-22) ([**const**](classendstone_1_1Identifier.md) std::format\_string&lt; Args... &gt; format, [**Args**](classendstone_1_1Identifier.md) &&... args) const<br> |
+| virtual [**void**](classendstone_1_1Identifier.md) | [**sendMessage**](classendstone_1_1CommandSender.md#function-sendmessage-12) ([**const**](classendstone_1_1Identifier.md) [**Message**](namespaceendstone.md#typedef-message) & message) const = 0<br>_Sends this sender a message._  |
+|  [**void**](classendstone_1_1Identifier.md) | [**sendMessage**](classendstone_1_1CommandSender.md#function-sendmessage-22) ([**const**](classendstone_1_1Identifier.md) std::format\_string&lt; Args... &gt; format, [**Args**](classendstone_1_1Identifier.md) &&... args) const<br> |
 
 
 ## Public Functions inherited from endstone::Permissible
@@ -212,16 +241,49 @@ See [endstone::Object](classendstone_1_1Object.md)
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+## Detailed Description
+
+
+Output and permissions belong to the caller, while the name and the execution context belong to the callee. 
+
+
+    
 ## Public Functions Documentation
 
 
 
 
-### function getName 
+### function getCallee 
 
-_Gets the name of this command sender._ 
+_Returns the_ [_**CommandSender**_](classendstone_1_1CommandSender.md) _which is being used to call the command._
 ```C++
-virtual std::string endstone::CommandSender::getName () const = 0
+virtual NotNull < CommandSender > endstone::ProxiedCommandSender::getCallee () const = 0
 ```
 
 
@@ -230,7 +292,7 @@ virtual std::string endstone::CommandSender::getName () const = 0
 
 **Returns:**
 
-Name of the sender 
+The sender which the command is being run as 
 
 
 
@@ -242,11 +304,11 @@ Name of the sender
 
 
 
-### function getServer 
+### function getCaller 
 
-_Returns the server instance that this command is running on._ 
+_Returns the_ [_**CommandSender**_](classendstone_1_1CommandSender.md) _which triggered this proxied command._
 ```C++
-virtual Server & endstone::CommandSender::getServer () const = 0
+virtual NotNull < CommandSender > endstone::ProxiedCommandSender::getCaller () const = 0
 ```
 
 
@@ -255,104 +317,16 @@ virtual Server & endstone::CommandSender::getServer () const = 0
 
 **Returns:**
 
-[**Server**](classendstone_1_1Server.md) instance 
+The caller which triggered the command 
 
 
 
 
 
         
-
-<hr>
-
-
-
-### function sendErrorMessage [1/2]
-
-_Sends this sender a error message._ 
-```C++
-virtual void endstone::CommandSender::sendErrorMessage (
-    const  Message & message
-) const = 0
-```
-
-
-
-
-
-**Parameters:**
-
-
-* `message` Error message to be displayed 
-
-
-
-
-        
-
-<hr>
-
-
-
-### function sendErrorMessage [2/2]
-
-```C++
-template<typename... Args>
-inline void endstone::CommandSender::sendErrorMessage (
-    const std::format_string< Args... > format,
-    Args &&... args
-) const
-```
-
-
-
-
-<hr>
-
-
-
-### function sendMessage [1/2]
-
-_Sends this sender a message._ 
-```C++
-virtual void endstone::CommandSender::sendMessage (
-    const  Message & message
-) const = 0
-```
-
-
-
-
-
-**Parameters:**
-
-
-* `message` Message to be displayed 
-
-
-
-
-        
-
-<hr>
-
-
-
-### function sendMessage [2/2]
-
-```C++
-template<typename... Args>
-inline void endstone::CommandSender::sendMessage (
-    const std::format_string< Args... > format,
-    Args &&... args
-) const
-```
-
-
-
 
 <hr>
 
 ------------------------------
-The documentation for this class was generated from the following file `include/endstone/command/command_sender.h`
+The documentation for this class was generated from the following file `include/endstone/command/proxied_command_sender.h`
 

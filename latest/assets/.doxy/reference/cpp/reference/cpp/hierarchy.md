@@ -31,6 +31,7 @@ This inheritance list is sorted roughly, but not completely, alphabetically:
             * **class** [**endstone::BlockCommandSender**](classendstone_1_1BlockCommandSender.md) _Represents a block command sender._ 
             * **class** [**endstone::CommandSenderWrapper**](classendstone_1_1CommandSenderWrapper.md) _Represents a wrapper that forwards commands to the wrapped_ [_**CommandSender**_](classendstone_1_1CommandSender.md) _and captures its output._
             * **class** [**endstone::ConsoleCommandSender**](classendstone_1_1ConsoleCommandSender.md) _Represents a console command sender._ 
+            * **class** [**endstone::ProxiedCommandSender**](classendstone_1_1ProxiedCommandSender.md) _Represents a command sender that is running a command on behalf of another one, as_ `/execute` _does._
 * **class** [**endstone::ICancellable**](classendstone_1_1ICancellable.md) _Interface for events that may be cancelled by a plugin or the server._     
     * **class** [**endstone::Cancellable**](classendstone_1_1Cancellable.md) _A type characterizing events that may be cancelled by a plugin or the server._ 
     * **class** [**endstone::Cancellable**](classendstone_1_1Cancellable.md) _A type characterizing events that may be cancelled by a plugin or the server._ 
@@ -186,6 +187,7 @@ This inheritance list is sorted roughly, but not completely, alphabetically:
             * **class** [**endstone::BlockCommandSender**](classendstone_1_1BlockCommandSender.md) _Represents a block command sender._ 
             * **class** [**endstone::CommandSenderWrapper**](classendstone_1_1CommandSenderWrapper.md) _Represents a wrapper that forwards commands to the wrapped_ [_**CommandSender**_](classendstone_1_1CommandSender.md) _and captures its output._
             * **class** [**endstone::ConsoleCommandSender**](classendstone_1_1ConsoleCommandSender.md) _Represents a console command sender._ 
+            * **class** [**endstone::ProxiedCommandSender**](classendstone_1_1ProxiedCommandSender.md) _Represents a command sender that is running a command on behalf of another one, as_ `/execute` _does._
     * **class** [**endstone::Permissible**](classendstone_1_1Permissible.md) _Represents an object that may become a server operator and can be assigned permissions._     
         * **class** [**endstone::CommandSender**](classendstone_1_1CommandSender.md) _Represents a command sender._     
             * **class** [**endstone::Actor**](classendstone_1_1Actor.md) _Represents a base actor in the level._     
@@ -195,6 +197,7 @@ This inheritance list is sorted roughly, but not completely, alphabetically:
             * **class** [**endstone::BlockCommandSender**](classendstone_1_1BlockCommandSender.md) _Represents a block command sender._ 
             * **class** [**endstone::CommandSenderWrapper**](classendstone_1_1CommandSenderWrapper.md) _Represents a wrapper that forwards commands to the wrapped_ [_**CommandSender**_](classendstone_1_1CommandSender.md) _and captures its output._
             * **class** [**endstone::ConsoleCommandSender**](classendstone_1_1ConsoleCommandSender.md) _Represents a console command sender._ 
+            * **class** [**endstone::ProxiedCommandSender**](classendstone_1_1ProxiedCommandSender.md) _Represents a command sender that is running a command on behalf of another one, as_ `/execute` _does._
     * **class** [**endstone::Permissible**](classendstone_1_1Permissible.md) _Represents an object that may become a server operator and can be assigned permissions._     
         * **class** [**endstone::CommandSender**](classendstone_1_1CommandSender.md) _Represents a command sender._     
             * **class** [**endstone::Actor**](classendstone_1_1Actor.md) _Represents a base actor in the level._     
@@ -204,6 +207,7 @@ This inheritance list is sorted roughly, but not completely, alphabetically:
             * **class** [**endstone::BlockCommandSender**](classendstone_1_1BlockCommandSender.md) _Represents a block command sender._ 
             * **class** [**endstone::CommandSenderWrapper**](classendstone_1_1CommandSenderWrapper.md) _Represents a wrapper that forwards commands to the wrapped_ [_**CommandSender**_](classendstone_1_1CommandSender.md) _and captures its output._
             * **class** [**endstone::ConsoleCommandSender**](classendstone_1_1ConsoleCommandSender.md) _Represents a console command sender._ 
+            * **class** [**endstone::ProxiedCommandSender**](classendstone_1_1ProxiedCommandSender.md) _Represents a command sender that is running a command on behalf of another one, as_ `/execute` _does._
     * **class** [**endstone::Permissible**](classendstone_1_1Permissible.md) _Represents an object that may become a server operator and can be assigned permissions._     
         * **class** [**endstone::CommandSender**](classendstone_1_1CommandSender.md) _Represents a command sender._     
             * **class** [**endstone::Actor**](classendstone_1_1Actor.md) _Represents a base actor in the level._     
@@ -213,6 +217,7 @@ This inheritance list is sorted roughly, but not completely, alphabetically:
             * **class** [**endstone::BlockCommandSender**](classendstone_1_1BlockCommandSender.md) _Represents a block command sender._ 
             * **class** [**endstone::CommandSenderWrapper**](classendstone_1_1CommandSenderWrapper.md) _Represents a wrapper that forwards commands to the wrapped_ [_**CommandSender**_](classendstone_1_1CommandSender.md) _and captures its output._
             * **class** [**endstone::ConsoleCommandSender**](classendstone_1_1ConsoleCommandSender.md) _Represents a console command sender._ 
+            * **class** [**endstone::ProxiedCommandSender**](classendstone_1_1ProxiedCommandSender.md) _Represents a command sender that is running a command on behalf of another one, as_ `/execute` _does._
     * **class** [**endstone::Permissible**](classendstone_1_1Permissible.md) _Represents an object that may become a server operator and can be assigned permissions._     
         * **class** [**endstone::CommandSender**](classendstone_1_1CommandSender.md) _Represents a command sender._     
             * **class** [**endstone::Actor**](classendstone_1_1Actor.md) _Represents a base actor in the level._     
@@ -222,6 +227,7 @@ This inheritance list is sorted roughly, but not completely, alphabetically:
             * **class** [**endstone::BlockCommandSender**](classendstone_1_1BlockCommandSender.md) _Represents a block command sender._ 
             * **class** [**endstone::CommandSenderWrapper**](classendstone_1_1CommandSenderWrapper.md) _Represents a wrapper that forwards commands to the wrapped_ [_**CommandSender**_](classendstone_1_1CommandSender.md) _and captures its output._
             * **class** [**endstone::ConsoleCommandSender**](classendstone_1_1ConsoleCommandSender.md) _Represents a console command sender._ 
+            * **class** [**endstone::ProxiedCommandSender**](classendstone_1_1ProxiedCommandSender.md) _Represents a command sender that is running a command on behalf of another one, as_ `/execute` _does._
     * **class** [**endstone::Permissible**](classendstone_1_1Permissible.md) _Represents an object that may become a server operator and can be assigned permissions._     
         * **class** [**endstone::CommandSender**](classendstone_1_1CommandSender.md) _Represents a command sender._     
             * **class** [**endstone::Actor**](classendstone_1_1Actor.md) _Represents a base actor in the level._     
@@ -231,6 +237,7 @@ This inheritance list is sorted roughly, but not completely, alphabetically:
             * **class** [**endstone::BlockCommandSender**](classendstone_1_1BlockCommandSender.md) _Represents a block command sender._ 
             * **class** [**endstone::CommandSenderWrapper**](classendstone_1_1CommandSenderWrapper.md) _Represents a wrapper that forwards commands to the wrapped_ [_**CommandSender**_](classendstone_1_1CommandSender.md) _and captures its output._
             * **class** [**endstone::ConsoleCommandSender**](classendstone_1_1ConsoleCommandSender.md) _Represents a console command sender._ 
+            * **class** [**endstone::ProxiedCommandSender**](classendstone_1_1ProxiedCommandSender.md) _Represents a command sender that is running a command on behalf of another one, as_ `/execute` _does._
     * **class** [**endstone::Permissible**](classendstone_1_1Permissible.md) _Represents an object that may become a server operator and can be assigned permissions._     
         * **class** [**endstone::CommandSender**](classendstone_1_1CommandSender.md) _Represents a command sender._     
             * **class** [**endstone::Actor**](classendstone_1_1Actor.md) _Represents a base actor in the level._     
@@ -240,6 +247,7 @@ This inheritance list is sorted roughly, but not completely, alphabetically:
             * **class** [**endstone::BlockCommandSender**](classendstone_1_1BlockCommandSender.md) _Represents a block command sender._ 
             * **class** [**endstone::CommandSenderWrapper**](classendstone_1_1CommandSenderWrapper.md) _Represents a wrapper that forwards commands to the wrapped_ [_**CommandSender**_](classendstone_1_1CommandSender.md) _and captures its output._
             * **class** [**endstone::ConsoleCommandSender**](classendstone_1_1ConsoleCommandSender.md) _Represents a console command sender._ 
+            * **class** [**endstone::ProxiedCommandSender**](classendstone_1_1ProxiedCommandSender.md) _Represents a command sender that is running a command on behalf of another one, as_ `/execute` _does._
     * **class** [**endstone::Permissible**](classendstone_1_1Permissible.md) _Represents an object that may become a server operator and can be assigned permissions._     
         * **class** [**endstone::CommandSender**](classendstone_1_1CommandSender.md) _Represents a command sender._     
             * **class** [**endstone::Actor**](classendstone_1_1Actor.md) _Represents a base actor in the level._     
@@ -249,6 +257,7 @@ This inheritance list is sorted roughly, but not completely, alphabetically:
             * **class** [**endstone::BlockCommandSender**](classendstone_1_1BlockCommandSender.md) _Represents a block command sender._ 
             * **class** [**endstone::CommandSenderWrapper**](classendstone_1_1CommandSenderWrapper.md) _Represents a wrapper that forwards commands to the wrapped_ [_**CommandSender**_](classendstone_1_1CommandSender.md) _and captures its output._
             * **class** [**endstone::ConsoleCommandSender**](classendstone_1_1ConsoleCommandSender.md) _Represents a console command sender._ 
+            * **class** [**endstone::ProxiedCommandSender**](classendstone_1_1ProxiedCommandSender.md) _Represents a command sender that is running a command on behalf of another one, as_ `/execute` _does._
     * **class** [**endstone::Permissible**](classendstone_1_1Permissible.md) _Represents an object that may become a server operator and can be assigned permissions._     
         * **class** [**endstone::CommandSender**](classendstone_1_1CommandSender.md) _Represents a command sender._     
             * **class** [**endstone::Actor**](classendstone_1_1Actor.md) _Represents a base actor in the level._     
@@ -258,6 +267,17 @@ This inheritance list is sorted roughly, but not completely, alphabetically:
             * **class** [**endstone::BlockCommandSender**](classendstone_1_1BlockCommandSender.md) _Represents a block command sender._ 
             * **class** [**endstone::CommandSenderWrapper**](classendstone_1_1CommandSenderWrapper.md) _Represents a wrapper that forwards commands to the wrapped_ [_**CommandSender**_](classendstone_1_1CommandSender.md) _and captures its output._
             * **class** [**endstone::ConsoleCommandSender**](classendstone_1_1ConsoleCommandSender.md) _Represents a console command sender._ 
+            * **class** [**endstone::ProxiedCommandSender**](classendstone_1_1ProxiedCommandSender.md) _Represents a command sender that is running a command on behalf of another one, as_ `/execute` _does._
+    * **class** [**endstone::Permissible**](classendstone_1_1Permissible.md) _Represents an object that may become a server operator and can be assigned permissions._     
+        * **class** [**endstone::CommandSender**](classendstone_1_1CommandSender.md) _Represents a command sender._     
+            * **class** [**endstone::Actor**](classendstone_1_1Actor.md) _Represents a base actor in the level._     
+                * **class** [**endstone::Item**](classendstone_1_1Item.md) _Represents a dropped item that can be picked up by players._ 
+                * **class** [**endstone::Mob**](classendstone_1_1Mob.md) _Represents a mobile entity (i.e._     
+                    * **class** [**endstone::Player**](classendstone_1_1Player.md) _Represents a player._ 
+            * **class** [**endstone::BlockCommandSender**](classendstone_1_1BlockCommandSender.md) _Represents a block command sender._ 
+            * **class** [**endstone::CommandSenderWrapper**](classendstone_1_1CommandSenderWrapper.md) _Represents a wrapper that forwards commands to the wrapped_ [_**CommandSender**_](classendstone_1_1CommandSender.md) _and captures its output._
+            * **class** [**endstone::ConsoleCommandSender**](classendstone_1_1ConsoleCommandSender.md) _Represents a console command sender._ 
+            * **class** [**endstone::ProxiedCommandSender**](classendstone_1_1ProxiedCommandSender.md) _Represents a command sender that is running a command on behalf of another one, as_ `/execute` _does._
 * **class** **EventType**    
     * **class** [**endstone::Cancellable**](classendstone_1_1Cancellable.md) _A type characterizing events that may be cancelled by a plugin or the server._ 
     * **class** [**endstone::Cancellable**](classendstone_1_1Cancellable.md) _A type characterizing events that may be cancelled by a plugin or the server._ 

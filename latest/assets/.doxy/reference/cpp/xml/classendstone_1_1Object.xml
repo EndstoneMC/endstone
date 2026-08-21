@@ -311,6 +311,12 @@
         <childnode refid="12" relation="public-inheritance">
         </childnode>
       </node>
+      <node id="27">
+        <label>endstone::ProxiedCommandSender</label>
+        <link refid="classendstone_1_1ProxiedCommandSender"/>
+        <childnode refid="19" relation="public-inheritance">
+        </childnode>
+      </node>
       <node id="9">
         <label>endstone::Sign</label>
         <link refid="classendstone_1_1Sign"/>

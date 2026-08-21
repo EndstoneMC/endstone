@@ -397,6 +397,12 @@
         <childnode refid="7" relation="public-inheritance">
         </childnode>
       </node>
+      <node id="12">
+        <label>endstone::ProxiedCommandSender</label>
+        <link refid="classendstone_1_1ProxiedCommandSender"/>
+        <childnode refid="4" relation="public-inheritance">
+        </childnode>
+      </node>
       <node id="3">
         <label>std::enable_shared_from_this&lt; Permissible &gt;</label>
       </node>

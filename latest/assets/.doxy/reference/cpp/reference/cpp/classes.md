@@ -505,6 +505,8 @@
 ([**endstone**](namespaceendstone.md))
 * [**Preconditions**](classendstone_1_1Preconditions.md)
 ([**endstone**](namespaceendstone.md))
+* [**ProxiedCommandSender**](classendstone_1_1ProxiedCommandSender.md)
+([**endstone**](namespaceendstone.md))
 
 
 ## r

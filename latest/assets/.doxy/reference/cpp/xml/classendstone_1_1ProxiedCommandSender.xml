@@ -1,0 +1,137 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.8" xml:lang="en-US">
+  <compounddef id="classendstone_1_1ProxiedCommandSender" kind="class" language="C++" prot="public" abstract="yes">
+    <compoundname>endstone::ProxiedCommandSender</compoundname>
+    <basecompoundref refid="classendstone_1_1CommandSender" prot="public" virt="non-virtual">endstone::CommandSender</basecompoundref>
+    <includes refid="proxied__command__sender_8h" local="no">endstone/command/proxied_command_sender.h</includes>
+    <sectiondef kind="public-func">
+      <memberdef kind="function" id="classendstone_1_1ProxiedCommandSender_1ad6d120eab4f0abc48ff747e94954f0a1" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
+        <type><ref refid="classendstone_1_1NotNull" kindref="compound">NotNull</ref>&lt; <ref refid="classendstone_1_1CommandSender" kindref="compound">CommandSender</ref> &gt;</type>
+        <definition>virtual NotNull&lt; CommandSender &gt; endstone::ProxiedCommandSender::getCaller</definition>
+        <argsstring>() const =0</argsstring>
+        <name>getCaller</name>
+        <qualifiedname>endstone::ProxiedCommandSender::getCaller</qualifiedname>
+        <briefdescription>
+<para>Returns the <ref refid="classendstone_1_1CommandSender" kindref="compound">CommandSender</ref> which triggered this proxied command. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="return"><para>The caller which triggered the command </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/command/proxied_command_sender.h" line="34" column="22"/>
+      </memberdef>
+      <memberdef kind="function" id="classendstone_1_1ProxiedCommandSender_1a8c828f34db5e1330837faee2c6e2ba36" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
+        <type><ref refid="classendstone_1_1NotNull" kindref="compound">NotNull</ref>&lt; <ref refid="classendstone_1_1CommandSender" kindref="compound">CommandSender</ref> &gt;</type>
+        <definition>virtual NotNull&lt; CommandSender &gt; endstone::ProxiedCommandSender::getCallee</definition>
+        <argsstring>() const =0</argsstring>
+        <name>getCallee</name>
+        <qualifiedname>endstone::ProxiedCommandSender::getCallee</qualifiedname>
+        <briefdescription>
+<para>Returns the <ref refid="classendstone_1_1CommandSender" kindref="compound">CommandSender</ref> which is being used to call the command. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="return"><para>The sender which the command is being run as </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/command/proxied_command_sender.h" line="41" column="22"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+<para>Represents a command sender that is running a command on behalf of another one, as <computeroutput>/execute</computeroutput> does. </para>
+    </briefdescription>
+    <detaileddescription>
+<para>Output and permissions belong to the caller, while the name and the execution context belong to the callee. </para>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="2">
+        <label>endstone::CommandSender</label>
+        <link refid="classendstone_1_1CommandSender"/>
+        <childnode refid="3" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="4">
+        <label>endstone::Object</label>
+        <link refid="classendstone_1_1Object"/>
+      </node>
+      <node id="3">
+        <label>endstone::Permissible</label>
+        <link refid="classendstone_1_1Permissible"/>
+        <childnode refid="4" relation="public-inheritance">
+        </childnode>
+        <childnode refid="5" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="1">
+        <label>endstone::ProxiedCommandSender</label>
+        <link refid="classendstone_1_1ProxiedCommandSender"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="5">
+        <label>std::enable_shared_from_this&lt; Permissible &gt;</label>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="2">
+        <label>endstone::CommandSender</label>
+        <link refid="classendstone_1_1CommandSender"/>
+        <childnode refid="3" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="4">
+        <label>endstone::Object</label>
+        <link refid="classendstone_1_1Object"/>
+      </node>
+      <node id="3">
+        <label>endstone::Permissible</label>
+        <link refid="classendstone_1_1Permissible"/>
+        <childnode refid="4" relation="public-inheritance">
+        </childnode>
+        <childnode refid="5" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="1">
+        <label>endstone::ProxiedCommandSender</label>
+        <link refid="classendstone_1_1ProxiedCommandSender"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="5">
+        <label>std::enable_shared_from_this&lt; Permissible &gt;</label>
+      </node>
+    </collaborationgraph>
+    <location file="include/endstone/command/proxied_command_sender.h" line="27" column="1" bodyfile="include/endstone/command/proxied_command_sender.h" bodystart="27" bodyend="42"/>
+    <listofallmembers>
+      <member refid="classendstone_1_1Permissible_1a849fc5c1e67a17c5b012ab5d94031ec1" prot="public" virt="pure-virtual"><scope>endstone::ProxiedCommandSender</scope><name>addAttachment</name></member>
+      <member refid="classendstone_1_1Permissible_1a0b408f42fc8a1ab752422ff525b55d03" prot="public" virt="pure-virtual"><scope>endstone::ProxiedCommandSender</scope><name>addAttachment</name></member>
+      <member refid="classendstone_1_1Object_1a798b5128ce018bbbe8ca949ba78c3db1" prot="public" virt="non-virtual"><scope>endstone::ProxiedCommandSender</scope><name>as</name></member>
+      <member refid="classendstone_1_1Object_1ae0f38a62da4c186fce272145e2590cc1" prot="public" virt="non-virtual"><scope>endstone::ProxiedCommandSender</scope><name>as</name></member>
+      <member refid="classendstone_1_1ProxiedCommandSender_1a8c828f34db5e1330837faee2c6e2ba36" prot="public" virt="pure-virtual"><scope>endstone::ProxiedCommandSender</scope><name>getCallee</name></member>
+      <member refid="classendstone_1_1ProxiedCommandSender_1ad6d120eab4f0abc48ff747e94954f0a1" prot="public" virt="pure-virtual"><scope>endstone::ProxiedCommandSender</scope><name>getCaller</name></member>
+      <member refid="classendstone_1_1Object_1aaaeb27e8e442e5adb772ae0d1af1c33f" prot="public" virt="pure-virtual"><scope>endstone::ProxiedCommandSender</scope><name>getClassTypeId</name></member>
+      <member refid="classendstone_1_1Permissible_1a152d098beb17384e97f3b7aa127338bd" prot="public" virt="pure-virtual"><scope>endstone::ProxiedCommandSender</scope><name>getEffectivePermissions</name></member>
+      <member refid="classendstone_1_1CommandSender_1acf20807a70561a571e20d4ee3791d69e" prot="public" virt="pure-virtual"><scope>endstone::ProxiedCommandSender</scope><name>getName</name></member>
+      <member refid="classendstone_1_1Permissible_1a6d78baa46215c951dc25cb5e55af085c" prot="public" virt="pure-virtual"><scope>endstone::ProxiedCommandSender</scope><name>getPermissionLevel</name></member>
+      <member refid="classendstone_1_1CommandSender_1aecd5cad85026861938379fa283d626cf" prot="public" virt="pure-virtual"><scope>endstone::ProxiedCommandSender</scope><name>getServer</name></member>
+      <member refid="classendstone_1_1Permissible_1ade03215666f81be410f2b058fa2c158b" prot="public" virt="pure-virtual"><scope>endstone::ProxiedCommandSender</scope><name>hasPermission</name></member>
+      <member refid="classendstone_1_1Permissible_1af0f63d64c914da1e0d3b29a5083c423d" prot="public" virt="pure-virtual"><scope>endstone::ProxiedCommandSender</scope><name>hasPermission</name></member>
+      <member refid="classendstone_1_1Object_1ae8213ae15ad1b14e4631399c6b18960a" prot="public" virt="non-virtual"><scope>endstone::ProxiedCommandSender</scope><name>is</name></member>
+      <member refid="classendstone_1_1Object_1a20376536a5f64ef02b2569af132171d4" prot="public" virt="pure-virtual"><scope>endstone::ProxiedCommandSender</scope><name>isInstanceOf</name></member>
+      <member refid="classendstone_1_1Permissible_1ae625f98f57116c559dc35a6cfce960d9" prot="public" virt="pure-virtual"><scope>endstone::ProxiedCommandSender</scope><name>isPermissionSet</name></member>
+      <member refid="classendstone_1_1Permissible_1aee86d20869f042e6a9c191d199539e23" prot="public" virt="pure-virtual"><scope>endstone::ProxiedCommandSender</scope><name>isPermissionSet</name></member>
+      <member refid="classendstone_1_1Permissible_1acbd0e4c4815db28b66ef14976f110af5" prot="public" virt="pure-virtual"><scope>endstone::ProxiedCommandSender</scope><name>recalculatePermissions</name></member>
+      <member refid="classendstone_1_1Permissible_1ac8dad41fb93f88e0688ca4557884dd38" prot="public" virt="pure-virtual"><scope>endstone::ProxiedCommandSender</scope><name>removeAttachment</name></member>
+      <member refid="classendstone_1_1CommandSender_1a25f6e7b7397652fd14cb57bc994b00eb" prot="public" virt="pure-virtual"><scope>endstone::ProxiedCommandSender</scope><name>sendErrorMessage</name></member>
+      <member refid="classendstone_1_1CommandSender_1ab61032bb4ef9bb659a21c69616e2567c" prot="public" virt="non-virtual"><scope>endstone::ProxiedCommandSender</scope><name>sendErrorMessage</name></member>
+      <member refid="classendstone_1_1CommandSender_1a000782a076576822ea70b640f5f230ea" prot="public" virt="pure-virtual"><scope>endstone::ProxiedCommandSender</scope><name>sendMessage</name></member>
+      <member refid="classendstone_1_1CommandSender_1a5b5362b6c8db65d78676386397ad9f6c" prot="public" virt="non-virtual"><scope>endstone::ProxiedCommandSender</scope><name>sendMessage</name></member>
+      <member refid="classendstone_1_1Object_1adfddc886af4b1d0e09ddac7d0391b4d2" prot="public" virt="virtual"><scope>endstone::ProxiedCommandSender</scope><name>~Object</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

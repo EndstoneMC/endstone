@@ -184,6 +184,7 @@
     <innerclass refid="classendstone_1_1PotionMeta" prot="public">endstone::PotionMeta</innerclass>
     <innerclass refid="classendstone_1_1PotionType" prot="public">endstone::PotionType</innerclass>
     <innerclass refid="classendstone_1_1Preconditions" prot="public">endstone::Preconditions</innerclass>
+    <innerclass refid="classendstone_1_1ProxiedCommandSender" prot="public">endstone::ProxiedCommandSender</innerclass>
     <innerclass refid="classendstone_1_1Recipe" prot="public">endstone::Recipe</innerclass>
     <innerclass refid="classendstone_1_1Registry" prot="public">endstone::Registry</innerclass>
     <innerclass refid="classendstone_1_1Scheduler" prot="public">endstone::Scheduler</innerclass>

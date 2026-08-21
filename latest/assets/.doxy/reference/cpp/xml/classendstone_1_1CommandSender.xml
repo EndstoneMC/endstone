@@ -7,6 +7,7 @@
     <derivedcompoundref refid="classendstone_1_1BlockCommandSender" prot="public" virt="non-virtual">endstone::BlockCommandSender</derivedcompoundref>
     <derivedcompoundref refid="classendstone_1_1CommandSenderWrapper" prot="public" virt="non-virtual">endstone::CommandSenderWrapper</derivedcompoundref>
     <derivedcompoundref refid="classendstone_1_1ConsoleCommandSender" prot="public" virt="non-virtual">endstone::ConsoleCommandSender</derivedcompoundref>
+    <derivedcompoundref refid="classendstone_1_1ProxiedCommandSender" prot="public" virt="non-virtual">endstone::ProxiedCommandSender</derivedcompoundref>
     <includes refid="command__sender_8h" local="no">endstone/command/command_sender.h</includes>
     <sectiondef kind="public-func">
       <memberdef kind="function" id="classendstone_1_1CommandSender_1a000782a076576822ea70b640f5f230ea" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
@@ -231,6 +232,12 @@
         <label>endstone::Player</label>
         <link refid="classendstone_1_1Player"/>
         <childnode refid="7" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="12">
+        <label>endstone::ProxiedCommandSender</label>
+        <link refid="classendstone_1_1ProxiedCommandSender"/>
+        <childnode refid="1" relation="public-inheritance">
         </childnode>
       </node>
       <node id="4">

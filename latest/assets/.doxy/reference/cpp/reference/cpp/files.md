@@ -58,6 +58,7 @@ Here is a list of all files with brief descriptions:
             * **file** [**command\_sender\_wrapper.h**](command__sender__wrapper_8h.md)     
             * **file** [**console\_command\_sender.h**](console__command__sender_8h.md)     
             * **file** [**plugin\_command.h**](plugin__command_8h.md)     
+            * **file** [**proxied\_command\_sender.h**](proxied__command__sender_8h.md)     
         * **dir** [**damage**](dir_d35032eb9ca22acb8eface5f2c8b6a35.md)     
             * **file** [**damage\_source.h**](damage__source_8h.md)     
         * **dir** [**enchantments**](dir_5154bf3e53eefb0e1f350f5612107967.md)     

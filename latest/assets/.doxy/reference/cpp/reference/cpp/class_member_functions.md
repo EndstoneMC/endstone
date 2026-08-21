@@ -448,6 +448,8 @@
 * **getPermissionSubscriptions** ([**endstone::PluginManager**](classendstone_1_1PluginManager.md))
 * **getPlugins** ([**endstone::PluginManager**](classendstone_1_1PluginManager.md))
 * **getBasePotionType** ([**endstone::PotionMeta**](classendstone_1_1PotionMeta.md))
+* **getCallee** ([**endstone::ProxiedCommandSender**](classendstone_1_1ProxiedCommandSender.md))
+* **getCaller** ([**endstone::ProxiedCommandSender**](classendstone_1_1ProxiedCommandSender.md))
 * **getOrThrow** ([**endstone::Registry**](classendstone_1_1Registry.md))
 * **getPendingTasks** ([**endstone::Scheduler**](classendstone_1_1Scheduler.md))
 * **getEntry** ([**endstone::Score**](classendstone_1_1Score.md))
