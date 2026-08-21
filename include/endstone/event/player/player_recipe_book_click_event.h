@@ -31,8 +31,8 @@ class PlayerRecipeBookClickEvent final : public Cancellable<PlayerEvent> {
 public:
     ENDSTONE_EVENT(PlayerRecipeBookClickEvent);
 
-    PlayerRecipeBookClickEvent(const NotNull<Player> &player, std::string recipe, bool make_all)
-        : Cancellable(player), recipe_(std::move(recipe)), make_all_(make_all)
+    PlayerRecipeBookClickEvent(const NotNull<Player> &player, std::string recipe, int amount)
+        : Cancellable(player), recipe_(std::move(recipe)), amount_(amount)
     {
     }
 
@@ -44,15 +44,24 @@ public:
     [[nodiscard]] const std::string &getRecipe() const { return recipe_; }
 
     /**
-     * Gets whether the player requested crafting as many copies as possible.
+     * Gets the number of times the recipe is being crafted.
      *
-     * @return true if the player requested crafting all possible copies
+     * @return the number of crafts
      */
-    [[nodiscard]] bool isMakeAll() const { return make_all_; }
+    [[nodiscard]] int getAmount() const { return amount_; }
+
+    /**
+     * Sets the number of times the recipe is being crafted.
+     *
+     * @note Values are clamped to the 0-255 range the server accepts.
+     *
+     * @param amount the number of crafts
+     */
+    void setAmount(int amount) { amount_ = amount; }
 
 private:
     std::string recipe_;
-    bool make_all_;
+    int amount_;
 };
 
 }  // namespace endstone

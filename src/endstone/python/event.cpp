@@ -443,8 +443,8 @@ void init_event(py::module_ &m, py::class_<Event, PyEvent> &event)
 )doc")
         .def_property_readonly("recipe", &PlayerRecipeBookClickEvent::getRecipe,
                                "The identifier of the recipe clicked by the player.")
-        .def_property_readonly("make_all", &PlayerRecipeBookClickEvent::isMakeAll,
-                               "Whether the player requested crafting as many copies as possible.");
+        .def_property("amount", &PlayerRecipeBookClickEvent::getAmount, &PlayerRecipeBookClickEvent::setAmount,
+                      "The number of times the recipe is being crafted.");
     auto player_recipe_book_settings_change_event = py::class_<PlayerRecipeBookSettingsChangeEvent, PlayerEvent>(
         m, "PlayerRecipeBookSettingsChangeEvent", "Called when a player changes recipe book settings.");
     py::native_enum<PlayerRecipeBookSettingsChangeEvent::RecipeBookType>(

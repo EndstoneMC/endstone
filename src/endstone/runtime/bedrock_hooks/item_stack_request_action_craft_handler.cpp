@@ -14,6 +14,9 @@
 
 #include "bedrock/world/inventory/network/crafting/item_stack_request_action_craft_handler.h"
 
+#include <algorithm>
+#include <cstdint>
+
 #include "bedrock/world/actor/player/player.h"
 #include "bedrock/world/item/crafting/recipes.h"
 #include "bedrock/world/level/level.h"
@@ -41,22 +44,26 @@ ItemStackNetResult ItemStackRequestActionCraftHandler::handleCraftAction(
                 ? static_cast<const ItemStackRequestActionCraftRecipeAuto &>(request_action).getRecipeNetId()
                 : static_cast<const ItemStackRequestActionCraftRecipe &>(request_action).getRecipeNetId();
         const auto *recipe = player_.getLevel().getRecipes().getRecipeByNetId(net_id);
-        if (recipe != nullptr && call_recipe_book_click) {
-            endstone::PlayerRecipeBookClickEvent e{player_.getEndstoneActor<endstone::core::EndstonePlayer>(),
-                                                   recipe->getRecipeId(), request_action.getNumCrafts() > 1};
-            server.getPluginManager().callEvent(e);
-            if (e.isCancelled()) {
-                return ItemStackNetResult::ActionRequestNotAllowed;
+        if (recipe != nullptr) {
+            if (call_recipe_book_click) {
+                endstone::PlayerRecipeBookClickEvent e{player_.getEndstoneActor<endstone::core::EndstonePlayer>(),
+                                                       recipe->getRecipeId(), request_action.getNumCrafts()};
+                server.getPluginManager().callEvent(e);
+                if (e.isCancelled()) {
+                    return ItemStackNetResult::ActionRequestNotAllowed;
+                }
+                const_cast<ItemStackRequestActionCraftBase &>(request_action)
+                    .setNumCrafts(static_cast<std::uint8_t>(std::clamp(e.getAmount(), 0, 255)));
             }
-        }
-        if (recipe != nullptr && call_craft_item && !recipe->getResultItems().empty()) {
-            const auto result = ItemStack(recipe->getResultItems().front());
-            endstone::PlayerCraftItemEvent e{player_.getEndstoneActor<endstone::core::EndstonePlayer>(),
-                                             endstone::core::EndstoneItemStack::fromMinecraft(result),
-                                             recipe->getRecipeId(), request_action.getNumCrafts()};
-            server.getPluginManager().callEvent(e);
-            if (e.isCancelled()) {
-                return ItemStackNetResult::ActionRequestNotAllowed;
+            if (call_craft_item && !recipe->getResultItems().empty()) {
+                const auto result = ItemStack(recipe->getResultItems().front());
+                endstone::PlayerCraftItemEvent e{player_.getEndstoneActor<endstone::core::EndstonePlayer>(),
+                                                 endstone::core::EndstoneItemStack::fromMinecraft(result),
+                                                 recipe->getRecipeId(), request_action.getNumCrafts()};
+                server.getPluginManager().callEvent(e);
+                if (e.isCancelled()) {
+                    return ItemStackNetResult::ActionRequestNotAllowed;
+                }
             }
         }
     }

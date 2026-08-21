@@ -1145,10 +1145,13 @@ class PlayerRecipeBookClickEvent(PlayerEvent, Cancellable):
         """
 
     @property
-    def make_all(self) -> bool:
+    def amount(self) -> int:
         """
-        Whether the player requested crafting as many copies as possible.
+        The number of times the recipe is being crafted.
         """
+
+    @amount.setter
+    def amount(self, arg1: int) -> None: ...
 
 class PlayerRecipeBookSettingsChangeEvent(PlayerEvent):
     """
