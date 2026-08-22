@@ -18,13 +18,8 @@
 
 namespace endstone {
 
-/** Any JSON value: an object, an array, a string, a number, a boolean, or null. */
 using JsonValue = nlohmann::json;
-
-/** A JSON object, mapping string keys to JSON values. */
 using JsonObject = nlohmann::json::object_t;
-
-/** A JSON array, a sequence of JSON values. */
 using JsonArray = nlohmann::json::array_t;
 
 }  // namespace endstone
