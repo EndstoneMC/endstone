@@ -74,6 +74,9 @@ jobs:
       - name: Set up uv
         uses: astral-sh/setup-uv@v7
 
+      - name: Install Python runtime dependencies
+        run: uv pip install --system -r pyproject.toml
+
       - name: Build with CMake
         run: |
           cmake --preset conan-relwithdebinfo
@@ -83,7 +86,7 @@ jobs:
         run: git diff --exit-code -- endstone/
 
       - name: Run Tests
-        run: ctest --preset conan-relwithdebinfo
+        run: ctest --preset conan-relwithdebinfo --output-on-failure
 
   coverage:
     name: Coverage
@@ -110,6 +113,12 @@ jobs:
         with:
           install-dependencies: 'false'
 
+      - name: Set up uv
+        uses: astral-sh/setup-uv@v7
+
+      - name: Install Python runtime dependencies
+        run: uv pip install --system -r pyproject.toml
+
       - name: Install dependencies (Endstone=Debug, deps=Release)
         run: conan install . --build=missing -s "&:build_type=Debug"
 
@@ -119,7 +128,7 @@ jobs:
           cmake --build --preset conan-debug
 
       - name: Run Tests
-        run: ctest --preset conan-debug
+        run: ctest --preset conan-debug --output-on-failure
 
       - name: Generate Coverage Report
         run: |
