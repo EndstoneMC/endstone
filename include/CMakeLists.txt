@@ -3,8 +3,6 @@ project(endstone VERSION 0.12.0 LANGUAGES CXX)
 
 include(FetchContent)
 
-# Both tags track conanfile.py: a plugin built without conan still has to agree with the server on
-# the layout of every type they pass across the boundary.
 find_package(expected-lite QUIET)
 if (NOT expected-lite_FOUND)
     FetchContent_Declare(
