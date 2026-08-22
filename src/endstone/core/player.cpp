@@ -528,13 +528,13 @@ void EndstonePlayer::spawnParticle(std::string name, float x, float y, float z) 
 }
 
 void EndstonePlayer::spawnParticle(std::string name, Location location,
-                                   std::optional<nlohmann::json::object_t> molang_variables) const
+                                   std::optional<JsonObject> molang_variables) const
 {
     spawnParticle(name, location.getX(), location.getY(), location.getZ(), std::move(molang_variables));
 }
 
 void EndstonePlayer::spawnParticle(std::string name, float x, float y, float z,
-                                   std::optional<nlohmann::json::object_t> molang_variables) const
+                                   std::optional<JsonObject> molang_variables) const
 {
     BinaryStream stream;
     stream.writeByte(getHandle().getDimension().getDimensionId().value, "Dimension Id", nullptr);
@@ -547,7 +547,7 @@ void EndstonePlayer::spawnParticle(std::string name, float x, float y, float z,
     stream.writeBool(molang_variables.has_value(), "Has Value",
                      "If true, follow with appropriate data type, otherwise nothing");
     if (molang_variables.has_value()) {
-        stream.writeString(nlohmann::json(*molang_variables).dump(), "Serialized Variable Map", nullptr);
+        stream.writeString(JsonValue(*molang_variables).dump(), "Serialized Variable Map", nullptr);
     }
     sendPacket(static_cast<int>(MinecraftPacketIds::SpawnParticleEffect), stream.getView());
 }
@@ -764,7 +764,7 @@ void EndstonePlayer::onFormResponse(std::uint32_t form_id, const nlohmann::json 
                            },
                            [&](const ModalForm &form) {
                                if (auto callback = form.getOnSubmit()) {
-                                   callback(self(), json.get<nlohmann::json::array_t>());
+                                   callback(self(), json.get<JsonArray>());
                                }
                            },
                        },

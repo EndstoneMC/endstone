@@ -20,14 +20,13 @@
 #include <string_view>
 #include <variant>
 
-#include <nlohmann/json.hpp>
-
 #include "endstone/actor/mob.h"
 #include "endstone/form/action_form.h"
 #include "endstone/form/message_form.h"
 #include "endstone/form/modal_form.h"
 #include "endstone/game_mode.h"
 #include "endstone/inventory/player_inventory.h"
+#include "endstone/json.h"
 #include "endstone/level/location.h"
 #include "endstone/map/map_view.h"
 #include "endstone/scoreboard/scoreboard.h"
@@ -400,7 +399,7 @@ public:
      * @param molang_variables the customizable molang variables that can be adjusted for this particle
      */
     virtual void spawnParticle(std::string name, Location location,
-                               std::optional<nlohmann::json::object_t> molang_variables) const = 0;
+                               std::optional<JsonObject> molang_variables) const = 0;
 
     /**
      * Spawns the particle at the target location.
@@ -412,7 +411,7 @@ public:
      * @param molang_variables the customizable molang variables that can be adjusted for this particle
      */
     virtual void spawnParticle(std::string name, float x, float y, float z,
-                               std::optional<nlohmann::json::object_t> molang_variables) const = 0;
+                               std::optional<JsonObject> molang_variables) const = 0;
 
     // TODO: getClientViewDistance
 

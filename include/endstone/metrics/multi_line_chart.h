@@ -33,13 +33,13 @@ public:
     {
     }
 
-    [[nodiscard]] std::optional<nlohmann::json::object_t> getChartData() override
+    [[nodiscard]] std::optional<JsonObject> getChartData() override
     {
         const auto map_values = get_values_();
         if (!map_values) {
             return std::nullopt;
         }
-        nlohmann::json::object_t values;
+        JsonObject values;
         for (const auto &[key, value] : *map_values) {
             if (value == 0) {
                 continue;
@@ -49,7 +49,7 @@ public:
         if (values.empty()) {
             return std::nullopt;
         }
-        return nlohmann::json::object_t{{"values", std::move(values)}};
+        return JsonObject{{"values", std::move(values)}};
     }
 
 private:

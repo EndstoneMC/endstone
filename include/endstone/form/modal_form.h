@@ -21,8 +21,6 @@
 #include <variant>
 #include <vector>
 
-#include <nlohmann/json.hpp>
-
 #include "endstone/form/controls/divider.h"
 #include "endstone/form/controls/dropdown.h"
 #include "endstone/form/controls/header.h"
@@ -32,6 +30,7 @@
 #include "endstone/form/controls/text_input.h"
 #include "endstone/form/controls/toggle.h"
 #include "endstone/form/form.h"
+#include "endstone/json.h"
 #include "endstone/util/pointers.h"
 
 namespace endstone {
@@ -42,7 +41,7 @@ namespace endstone {
 class ModalForm : public Form<ModalForm> {
 public:
     using Control = std::variant<Dropdown, Label, Slider, StepSlider, TextInput, Toggle, Divider, Header>;
-    using OnSubmitCallback = std::function<void(const NotNull<Player> &, nlohmann::json::array_t)>;
+    using OnSubmitCallback = std::function<void(const NotNull<Player> &, JsonArray)>;
 
     /**
      * Adds a control to the form.

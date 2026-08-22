@@ -191,6 +191,7 @@ static_assert(_ITERATOR_DEBUG_LEVEL == 0,
 #include "inventory/meta/writable_book_meta.h"
 #include "inventory/player_inventory.h"
 #include "inventory/recipe.h"
+#include "json.h"
 #include "lang/language.h"
 #include "lang/translatable.h"
 #include "level/chunk.h"

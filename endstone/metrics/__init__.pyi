@@ -8,6 +8,7 @@ import pathlib
 import typing
 import uuid
 
+from endstone import JsonObject
 from endstone.plugin import Plugin
 
 __all__ = [
@@ -47,7 +48,7 @@ class CustomChart:
         The id of this chart.
         """
 
-    def get_chart_data(self) -> dict[str, typing.Any] | None:
+    def get_chart_data(self) -> JsonObject | None:
         """
         Gets the data for this chart.
 

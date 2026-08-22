@@ -14,35 +14,17 @@
 
 #pragma once
 
-#include <functional>
-#include <optional>
-#include <string>
-#include <utility>
-
-#include "endstone/metrics/custom_chart.h"
+#include <nlohmann/json.hpp>
 
 namespace endstone {
 
-/** A bStats line chart with a single line. */
-class SingleLineChart : public CustomChart {
-public:
-    using Callback = std::function<int()>;
+/** Any JSON value: an object, an array, a string, a number, a boolean, or null. */
+using JsonValue = nlohmann::json;
 
-    SingleLineChart(std::string chart_id, Callback get_value)
-        : CustomChart(std::move(chart_id)), get_value_(std::move(get_value))
-    {
-    }
+/** A JSON object, mapping string keys to JSON values. */
+using JsonObject = nlohmann::json::object_t;
 
-    [[nodiscard]] std::optional<JsonObject> getChartData() override
-    {
-        const auto value = get_value_();
-        if (value == 0) {
-            return std::nullopt;
-        }
-        return JsonObject{{"value", value}};
-    }
+/** A JSON array, a sequence of JSON values. */
+using JsonArray = nlohmann::json::array_t;
 
-private:
-    Callback get_value_;
-};
 }  // namespace endstone

@@ -10,6 +10,9 @@
     \from ._version import __version__
     \export __version__
     _T = typing.TypeVar("_T")
+    JsonValue: typing.TypeAlias = JsonObject | JsonArray | str | int | float | bool | None
+    JsonObject: typing.TypeAlias = dict[str, JsonValue]
+    JsonArray: typing.TypeAlias = list[JsonValue]
 
 ^endstone\.Identifier$:
     class Identifier(typing.Generic[_T]):

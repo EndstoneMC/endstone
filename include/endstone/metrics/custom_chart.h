@@ -22,7 +22,7 @@
 #include <utility>
 #include <vector>
 
-#include <nlohmann/json.hpp>
+#include "endstone/json.h"
 
 namespace endstone {
 
@@ -68,7 +68,7 @@ public:
      *
      * @return the chart data, or no value to skip this chart
      */
-    [[nodiscard]] virtual std::optional<nlohmann::json::object_t> getChartData() = 0;
+    [[nodiscard]] virtual std::optional<JsonObject> getChartData() = 0;
 
 private:
     std::string chart_id_;

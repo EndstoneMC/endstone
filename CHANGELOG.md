@@ -76,7 +76,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 - `endstone::metrics::Metrics` for C++ plugins, mirroring bStats' `Metrics(plugin, service_id)` and carrying all seven chart types plus `CustomChart`. A plugin holds one as a member; destroying it stops collection and releases its charts.
 - `endstone.metrics` chart classes are now the C++ ones, so a chart behaves identically whichever language declares it. Python plugins keep the same `SimplePie("id", callback)` usage and can still subclass `CustomChart`, whose `get_chart_data()` returns JSON.
-- nlohmann/json is part of the public C++ API. `endstone_add_plugin()` links it for you, so a plugin can return a `nlohmann::json::object_t` from `CustomChart::getChartData()` and read a modal form response as an array.
+- nlohmann/json is part of the public C++ API, with `endstone::JsonValue`, `JsonObject` and `JsonArray` naming the three shapes (and `endstone.JsonValue` / `JsonObject` / `JsonArray` in Python). `endstone_add_plugin()` links it for you.
 - Unified `Object.as<T>()`/`is<T>()` casting API. `NotNull<T>` and `Nullable<T>` carry the same pair, so `event.getActor().as<Player>()` returns a `Nullable<Player>` sharing ownership with the original.
 - `endstone.Identifier` for namespaced ids, splitting `dim.id.namespace` from `dim.id.key` and distinguishing `Identifier[Dimension]` from `Identifier[ActorType]`. Plain strings are still accepted.
 - `ActorType`, `EffectType` and `PotionType` in the registry API, each entry carrying a `translation_key`, plus the missing `ActorType.SULFUR_CUBE` constant.
@@ -94,8 +94,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 #### JSON payloads
 
-- **BREAKING**: `ModalForm`'s submit callback receives the parsed response instead of a JSON string: a `nlohmann::json::array_t` in C++, a `list` in Python. A Python handler doing `json.loads(data)` must drop the call, and a C++ one must stop parsing the string itself.
-- **BREAKING**: `Player.spawn_particle()` takes the molang variables as a JSON object (`nlohmann::json::object_t` in C++, a `dict` in Python), and the parameter is renamed `molang_variables_json` -> `molang_variables`. Both the rename and the type change make an old call fail rather than send the wrong payload.
+- **BREAKING**: `ModalForm`'s submit callback receives the parsed response instead of a JSON string: a `JsonArray` in C++, a `JsonArray` (`list`) in Python. A Python handler doing `json.loads(data)` must drop the call, and a C++ one must stop parsing the string itself.
+- **BREAKING**: `Player.spawn_particle()` takes the molang variables as a `JsonObject` (a `dict` in Python), and the parameter is renamed `molang_variables_json` -> `molang_variables`. Both the rename and the type change make an old call fail rather than send the wrong payload.
 
 #### Smart handles
 

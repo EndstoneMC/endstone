@@ -42,11 +42,16 @@ ALIASES = {
 }
 
 # The engine only rewrites dotted names, so a bare one reaches the stub with no import behind it.
-# These are the two that do: pybind11_json calls its caster's type `json`, and the grafted metrics
-# source annotates with `Plugin`. simplify() is the single hook that sees type text - annotations,
-# bases and signatures, never docstrings or literals - so the substitution goes there.
-_BARE_ALIASES = {"json": "typing.Any", "Plugin": "endstone.plugin.Plugin"}
-_BARE_ALIAS_RE = re.compile(r"(?<![\w.])(" + "|".join(_BARE_ALIASES) + r")(?![\w.])")
+# pybind11_json calls its caster's type `json`, and the grafted metrics source annotates with
+# `Plugin`. Rewrite both here, naming the JSON shapes the aliases stubgen.pat declares; the
+# composites come first so `dict[str, json]` does not decay to a bare JsonValue. simplify() is the
+# single hook that sees type text - annotations, bases and signatures, never docstrings or literals.
+_REWRITES = [
+    (re.compile(r"(?:dict|collections\.abc\.Mapping)\[str, json\]"), "endstone.JsonObject"),
+    (re.compile(r"(?:list|collections\.abc\.Sequence)\[json\]"), "endstone.JsonArray"),
+    (re.compile(r"(?<![\w.])json(?![\w.])"), "endstone.JsonValue"),
+    (re.compile(r"(?<![\w.])Plugin(?![\w.])"), "endstone.plugin.Plugin"),
+]
 
 # A namespaced value the pattern file did not claim, i.e. an Identifier constant
 # on a class its owner list does not cover.
@@ -168,7 +173,9 @@ def main() -> None:
     engine = load_engine(opt.engine)
 
     def simplify(self, text: str, _original=engine.StubGen.simplify) -> str:
-        return _original(self, _BARE_ALIAS_RE.sub(lambda m: _BARE_ALIASES[m[1]], text))
+        for pattern, replacement in _REWRITES:
+            text = pattern.sub(replacement, text)
+        return _original(self, text)
 
     engine.StubGen.simplify = simplify
 
