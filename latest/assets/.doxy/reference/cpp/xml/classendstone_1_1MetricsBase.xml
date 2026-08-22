@@ -1,0 +1,130 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.8" xml:lang="en-US">
+  <compounddef id="classendstone_1_1MetricsBase" kind="class" language="C++" prot="public" abstract="yes">
+    <compoundname>endstone::MetricsBase</compoundname>
+    <includes refid="base_8h" local="no">endstone/metrics/base.h</includes>
+    <sectiondef kind="public-func">
+      <memberdef kind="function" id="classendstone_1_1MetricsBase_1a00a96770e3c603fc73bfcdafc7732983" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>endstone::MetricsBase::MetricsBase</definition>
+        <argsstring>()=default</argsstring>
+        <name>MetricsBase</name>
+        <qualifiedname>endstone::MetricsBase::MetricsBase</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/metrics/base.h" line="30" column="5"/>
+      </memberdef>
+      <memberdef kind="function" id="classendstone_1_1MetricsBase_1af717c77b5aa9184dda848e510140ea8c" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>endstone::MetricsBase::MetricsBase</definition>
+        <argsstring>(const MetricsBase &amp;)=delete</argsstring>
+        <name>MetricsBase</name>
+        <qualifiedname>endstone::MetricsBase::MetricsBase</qualifiedname>
+        <param>
+          <type><ref refid="classendstone_1_1Identifier" kindref="compound">const</ref> <ref refid="classendstone_1_1MetricsBase" kindref="compound">MetricsBase</ref> &amp;</type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/metrics/base.h" line="31" column="5"/>
+      </memberdef>
+      <memberdef kind="function" id="classendstone_1_1MetricsBase_1ae4c27df1e44bbf9f38443bbf4fa65280" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="classendstone_1_1MetricsBase" kindref="compound">MetricsBase</ref> &amp;</type>
+        <definition>MetricsBase &amp; endstone::MetricsBase::operator=</definition>
+        <argsstring>(const MetricsBase &amp;)=delete</argsstring>
+        <name>operator=</name>
+        <qualifiedname>endstone::MetricsBase::operator=</qualifiedname>
+        <param>
+          <type><ref refid="classendstone_1_1Identifier" kindref="compound">const</ref> <ref refid="classendstone_1_1MetricsBase" kindref="compound">MetricsBase</ref> &amp;</type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/metrics/base.h" line="32" column="17"/>
+      </memberdef>
+      <memberdef kind="function" id="classendstone_1_1MetricsBase_1acc9d14887d5a78683a2bc994bcc9e5f4" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type></type>
+        <definition>virtual endstone::MetricsBase::~MetricsBase</definition>
+        <argsstring>()=default</argsstring>
+        <name>~MetricsBase</name>
+        <qualifiedname>endstone::MetricsBase::~MetricsBase</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/metrics/base.h" line="33" column="13"/>
+      </memberdef>
+      <memberdef kind="function" id="classendstone_1_1MetricsBase_1a844b60ac30ce13119021098efb4d578e" prot="public" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
+        <type><ref refid="classendstone_1_1Identifier" kindref="compound">void</ref></type>
+        <definition>virtual void endstone::MetricsBase::addCustomChart</definition>
+        <argsstring>(std::unique_ptr&lt; CustomChart &gt; chart)=0</argsstring>
+        <name>addCustomChart</name>
+        <qualifiedname>endstone::MetricsBase::addCustomChart</qualifiedname>
+        <param>
+          <type>std::unique_ptr&lt; <ref refid="classendstone_1_1CustomChart" kindref="compound">CustomChart</ref> &gt;</type>
+          <declname>chart</declname>
+        </param>
+        <briefdescription>
+<para>Adds a custom chart. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>chart</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>the chart to add </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/metrics/base.h" line="40" column="18"/>
+      </memberdef>
+      <memberdef kind="function" id="classendstone_1_1MetricsBase_1a94c8b80c9b3aeb3d7109ebca2fe0d3b0" prot="public" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="pure-virtual">
+        <type><ref refid="classendstone_1_1Identifier" kindref="compound">void</ref></type>
+        <definition>virtual void endstone::MetricsBase::shutdown</definition>
+        <argsstring>() noexcept=0</argsstring>
+        <name>shutdown</name>
+        <qualifiedname>endstone::MetricsBase::shutdown</qualifiedname>
+        <briefdescription>
+<para>Stops collecting and submitting data. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/metrics/base.h" line="45" column="18"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+<para>Collects and submits the data behind a <ref refid="classendstone_1_1Metrics" kindref="compound">Metrics</ref> instance. </para>
+    </briefdescription>
+    <detaileddescription>
+<para>Plugins hold a <ref refid="classendstone_1_1Metrics" kindref="compound">Metrics</ref> rather than implementing this interface. </para>
+    </detaileddescription>
+    <location file="include/endstone/metrics/base.h" line="28" column="1" bodyfile="include/endstone/metrics/base.h" bodystart="28" bodyend="46"/>
+    <listofallmembers>
+      <member refid="classendstone_1_1MetricsBase_1a844b60ac30ce13119021098efb4d578e" prot="public" virt="pure-virtual"><scope>endstone::MetricsBase</scope><name>addCustomChart</name></member>
+      <member refid="classendstone_1_1MetricsBase_1a00a96770e3c603fc73bfcdafc7732983" prot="public" virt="non-virtual"><scope>endstone::MetricsBase</scope><name>MetricsBase</name></member>
+      <member refid="classendstone_1_1MetricsBase_1af717c77b5aa9184dda848e510140ea8c" prot="public" virt="non-virtual"><scope>endstone::MetricsBase</scope><name>MetricsBase</name></member>
+      <member refid="classendstone_1_1MetricsBase_1ae4c27df1e44bbf9f38443bbf4fa65280" prot="public" virt="non-virtual"><scope>endstone::MetricsBase</scope><name>operator=</name></member>
+      <member refid="classendstone_1_1MetricsBase_1a94c8b80c9b3aeb3d7109ebca2fe0d3b0" prot="public" virt="pure-virtual"><scope>endstone::MetricsBase</scope><name>shutdown</name></member>
+      <member refid="classendstone_1_1MetricsBase_1acc9d14887d5a78683a2bc994bcc9e5f4" prot="public" virt="virtual"><scope>endstone::MetricsBase</scope><name>~MetricsBase</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

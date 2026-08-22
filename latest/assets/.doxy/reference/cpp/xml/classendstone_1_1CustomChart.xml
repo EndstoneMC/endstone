@@ -1,0 +1,261 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.8" xml:lang="en-US">
+  <compounddef id="classendstone_1_1CustomChart" kind="class" language="C++" prot="public" abstract="yes">
+    <compoundname>endstone::CustomChart</compoundname>
+    <derivedcompoundref refid="classendstone_1_1AdvancedBarChart" prot="public" virt="non-virtual">endstone::AdvancedBarChart</derivedcompoundref>
+    <derivedcompoundref refid="classendstone_1_1AdvancedPie" prot="public" virt="non-virtual">endstone::AdvancedPie</derivedcompoundref>
+    <derivedcompoundref refid="classendstone_1_1DrilldownPie" prot="public" virt="non-virtual">endstone::DrilldownPie</derivedcompoundref>
+    <derivedcompoundref refid="classendstone_1_1MultiLineChart" prot="public" virt="non-virtual">endstone::MultiLineChart</derivedcompoundref>
+    <derivedcompoundref refid="classendstone_1_1SimpleBarChart" prot="public" virt="non-virtual">endstone::SimpleBarChart</derivedcompoundref>
+    <derivedcompoundref refid="classendstone_1_1SimplePie" prot="public" virt="non-virtual">endstone::SimplePie</derivedcompoundref>
+    <derivedcompoundref refid="classendstone_1_1SingleLineChart" prot="public" virt="non-virtual">endstone::SingleLineChart</derivedcompoundref>
+    <includes refid="custom__chart_8h" local="no">endstone/metrics/custom_chart.h</includes>
+    <sectiondef kind="private-attrib">
+      <memberdef kind="variable" id="classendstone_1_1CustomChart_1a07ea2b8c72c4aaf0871ba8731e3d7ee3" prot="private" static="no" mutable="no">
+        <type>std::string</type>
+        <definition>std::string endstone::CustomChart::chart_id_</definition>
+        <argsstring></argsstring>
+        <name>chart_id_</name>
+        <qualifiedname>endstone::CustomChart::chart_id_</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/metrics/custom_chart.h" line="74" column="17" bodyfile="include/endstone/metrics/custom_chart.h" bodystart="74" bodyend="-1"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="public-func">
+      <memberdef kind="function" id="classendstone_1_1CustomChart_1ae3ced3f9b9edefd0cabf1e205d7f4ce2" prot="public" static="no" const="no" explicit="yes" inline="yes" virt="non-virtual">
+        <type></type>
+        <definition>endstone::CustomChart::CustomChart</definition>
+        <argsstring>(std::string chart_id)</argsstring>
+        <name>CustomChart</name>
+        <qualifiedname>endstone::CustomChart::CustomChart</qualifiedname>
+        <param>
+          <type>std::string</type>
+          <declname>chart_id</declname>
+        </param>
+        <briefdescription>
+<para>Creates a chart with the given bStats chart id. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>chart_id</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>the id of the chart </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<parameterlist kind="exception"><parameteritem>
+<parameternamelist>
+<parametername>std::invalid_argument</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>if chart_id is empty </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/metrics/custom_chart.h" line="44" column="14" bodyfile="include/endstone/metrics/custom_chart.h" bodystart="44" bodyend="49"/>
+      </memberdef>
+      <memberdef kind="function" id="classendstone_1_1CustomChart_1a864e4ceb59eb73ede3d252156cd6ae96" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>endstone::CustomChart::CustomChart</definition>
+        <argsstring>(const CustomChart &amp;)=delete</argsstring>
+        <name>CustomChart</name>
+        <qualifiedname>endstone::CustomChart::CustomChart</qualifiedname>
+        <param>
+          <type><ref refid="classendstone_1_1Identifier" kindref="compound">const</ref> <ref refid="classendstone_1_1CustomChart" kindref="compound">CustomChart</ref> &amp;</type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/metrics/custom_chart.h" line="51" column="5"/>
+      </memberdef>
+      <memberdef kind="function" id="classendstone_1_1CustomChart_1a4df748c94a39b9022f84bbe6735d3417" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="classendstone_1_1CustomChart" kindref="compound">CustomChart</ref> &amp;</type>
+        <definition>CustomChart &amp; endstone::CustomChart::operator=</definition>
+        <argsstring>(const CustomChart &amp;)=delete</argsstring>
+        <name>operator=</name>
+        <qualifiedname>endstone::CustomChart::operator=</qualifiedname>
+        <param>
+          <type><ref refid="classendstone_1_1Identifier" kindref="compound">const</ref> <ref refid="classendstone_1_1CustomChart" kindref="compound">CustomChart</ref> &amp;</type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/metrics/custom_chart.h" line="52" column="17"/>
+      </memberdef>
+      <memberdef kind="function" id="classendstone_1_1CustomChart_1acc5a05f0c91fb681fe6fed136e5c1c7f" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>endstone::CustomChart::CustomChart</definition>
+        <argsstring>(CustomChart &amp;&amp;)=delete</argsstring>
+        <name>CustomChart</name>
+        <qualifiedname>endstone::CustomChart::CustomChart</qualifiedname>
+        <param>
+          <type><ref refid="classendstone_1_1CustomChart" kindref="compound">CustomChart</ref> &amp;&amp;</type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/metrics/custom_chart.h" line="53" column="5"/>
+      </memberdef>
+      <memberdef kind="function" id="classendstone_1_1CustomChart_1a69a631b102092d50e56ca9123e970c46" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="classendstone_1_1CustomChart" kindref="compound">CustomChart</ref> &amp;</type>
+        <definition>CustomChart &amp; endstone::CustomChart::operator=</definition>
+        <argsstring>(CustomChart &amp;&amp;)=delete</argsstring>
+        <name>operator=</name>
+        <qualifiedname>endstone::CustomChart::operator=</qualifiedname>
+        <param>
+          <type><ref refid="classendstone_1_1CustomChart" kindref="compound">CustomChart</ref> &amp;&amp;</type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/metrics/custom_chart.h" line="54" column="17"/>
+      </memberdef>
+      <memberdef kind="function" id="classendstone_1_1CustomChart_1afbf1344198d16424f81a05311cfb283c" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type></type>
+        <definition>virtual endstone::CustomChart::~CustomChart</definition>
+        <argsstring>()=default</argsstring>
+        <name>~CustomChart</name>
+        <qualifiedname>endstone::CustomChart::~CustomChart</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/metrics/custom_chart.h" line="55" column="13"/>
+      </memberdef>
+      <memberdef kind="function" id="classendstone_1_1CustomChart_1aff6403a38ec3eda21c04253fa942ee6b" prot="public" static="no" const="yes" explicit="no" inline="yes" noexcept="yes" virt="non-virtual">
+        <type><ref refid="classendstone_1_1Identifier" kindref="compound">const</ref> std::string &amp;</type>
+        <definition>const std::string &amp; endstone::CustomChart::getChartId</definition>
+        <argsstring>() const noexcept</argsstring>
+        <name>getChartId</name>
+        <qualifiedname>endstone::CustomChart::getChartId</qualifiedname>
+        <briefdescription>
+<para>Gets the id of this chart. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="return"><para>the id of this chart </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/metrics/custom_chart.h" line="62" column="24" bodyfile="include/endstone/metrics/custom_chart.h" bodystart="62" bodyend="62"/>
+      </memberdef>
+      <memberdef kind="function" id="classendstone_1_1CustomChart_1a020b222052894ea51d89f6918943f65b" prot="public" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
+        <type>std::optional&lt; JsonObject &gt;</type>
+        <definition>virtual std::optional&lt; JsonObject &gt; endstone::CustomChart::getChartData</definition>
+        <argsstring>()=0</argsstring>
+        <name>getChartData</name>
+        <qualifiedname>endstone::CustomChart::getChartData</qualifiedname>
+        <reimplementedby refid="classendstone_1_1AdvancedBarChart_1a8e4d7d9f21548eed13bea91d080f0440">getChartData</reimplementedby>
+        <reimplementedby refid="classendstone_1_1AdvancedPie_1a35402e4741d4c10b3c039c647287e63e">getChartData</reimplementedby>
+        <reimplementedby refid="classendstone_1_1DrilldownPie_1a7b6b8b6c62319988a2a1f5f7fe127674">getChartData</reimplementedby>
+        <reimplementedby refid="classendstone_1_1MultiLineChart_1ada0376558cd5556a296c3562e63e774f">getChartData</reimplementedby>
+        <reimplementedby refid="classendstone_1_1SimpleBarChart_1a861c9e0c5a45a4e42f99b6cbc23df3fc">getChartData</reimplementedby>
+        <reimplementedby refid="classendstone_1_1SimplePie_1a2ed831fe5d1b9e7adea575a7175694c7">getChartData</reimplementedby>
+        <reimplementedby refid="classendstone_1_1SingleLineChart_1a45301719dcc9f592edd648755bcb5b07">getChartData</reimplementedby>
+        <briefdescription>
+<para>Gets the data for this chart. </para>
+        </briefdescription>
+        <detaileddescription>
+<para>This is called on the primary server thread. Returning no value omits the chart from the submission.</para>
+<para><simplesect kind="return"><para>the chart data, or no value to skip this chart </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/metrics/custom_chart.h" line="71" column="28"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+<para>Represents a custom chart. </para>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="2">
+        <label>endstone::AdvancedBarChart</label>
+        <link refid="classendstone_1_1AdvancedBarChart"/>
+        <childnode refid="1" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="3">
+        <label>endstone::AdvancedPie</label>
+        <link refid="classendstone_1_1AdvancedPie"/>
+        <childnode refid="1" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="1">
+        <label>endstone::CustomChart</label>
+        <link refid="classendstone_1_1CustomChart"/>
+      </node>
+      <node id="4">
+        <label>endstone::DrilldownPie</label>
+        <link refid="classendstone_1_1DrilldownPie"/>
+        <childnode refid="1" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="5">
+        <label>endstone::MultiLineChart</label>
+        <link refid="classendstone_1_1MultiLineChart"/>
+        <childnode refid="1" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="6">
+        <label>endstone::SimpleBarChart</label>
+        <link refid="classendstone_1_1SimpleBarChart"/>
+        <childnode refid="1" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="7">
+        <label>endstone::SimplePie</label>
+        <link refid="classendstone_1_1SimplePie"/>
+        <childnode refid="1" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="8">
+        <label>endstone::SingleLineChart</label>
+        <link refid="classendstone_1_1SingleLineChart"/>
+        <childnode refid="1" relation="public-inheritance">
+        </childnode>
+      </node>
+    </inheritancegraph>
+    <location file="include/endstone/metrics/custom_chart.h" line="36" column="1" bodyfile="include/endstone/metrics/custom_chart.h" bodystart="36" bodyend="75"/>
+    <listofallmembers>
+      <member refid="classendstone_1_1CustomChart_1a07ea2b8c72c4aaf0871ba8731e3d7ee3" prot="private" virt="non-virtual"><scope>endstone::CustomChart</scope><name>chart_id_</name></member>
+      <member refid="classendstone_1_1CustomChart_1ae3ced3f9b9edefd0cabf1e205d7f4ce2" prot="public" virt="non-virtual"><scope>endstone::CustomChart</scope><name>CustomChart</name></member>
+      <member refid="classendstone_1_1CustomChart_1a864e4ceb59eb73ede3d252156cd6ae96" prot="public" virt="non-virtual"><scope>endstone::CustomChart</scope><name>CustomChart</name></member>
+      <member refid="classendstone_1_1CustomChart_1acc5a05f0c91fb681fe6fed136e5c1c7f" prot="public" virt="non-virtual"><scope>endstone::CustomChart</scope><name>CustomChart</name></member>
+      <member refid="classendstone_1_1CustomChart_1a020b222052894ea51d89f6918943f65b" prot="public" virt="pure-virtual"><scope>endstone::CustomChart</scope><name>getChartData</name></member>
+      <member refid="classendstone_1_1CustomChart_1aff6403a38ec3eda21c04253fa942ee6b" prot="public" virt="non-virtual"><scope>endstone::CustomChart</scope><name>getChartId</name></member>
+      <member refid="classendstone_1_1CustomChart_1a4df748c94a39b9022f84bbe6735d3417" prot="public" virt="non-virtual"><scope>endstone::CustomChart</scope><name>operator=</name></member>
+      <member refid="classendstone_1_1CustomChart_1a69a631b102092d50e56ca9123e970c46" prot="public" virt="non-virtual"><scope>endstone::CustomChart</scope><name>operator=</name></member>
+      <member refid="classendstone_1_1CustomChart_1afbf1344198d16424f81a05311cfb283c" prot="public" virt="virtual"><scope>endstone::CustomChart</scope><name>~CustomChart</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

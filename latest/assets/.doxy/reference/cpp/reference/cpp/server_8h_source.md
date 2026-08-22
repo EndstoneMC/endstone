@@ -60,8 +60,10 @@ class ItemFactory;
 class ItemType;
 class IRegistry;
 class Level;
+class MetricsBase;
 class Scheduler;
 class Player;
+class Plugin;
 class PluginCommand;
 class PluginManager;
 
@@ -191,6 +193,8 @@ public:
     [[nodiscard]] virtual MapView *getMap(std::int64_t id) const = 0;
 
     [[nodiscard]] virtual MapView &createMap(const NotNull<Dimension> &dimension) const = 0;
+
+    [[nodiscard]] virtual NotNull<MetricsBase> createMetrics(Plugin &plugin, int service_id) = 0;
 
     inline static const std::string BroadcastChannelAdmin = "endstone.broadcast.admin";
 

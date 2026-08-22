@@ -15,6 +15,7 @@
 * **BarColor** ([**endstone**](namespaceendstone.md))
 * **BarFlag** ([**endstone**](namespaceendstone.md))
 * **BarStyle** ([**endstone**](namespaceendstone.md))
+* **BarValues** ([**endstone**](namespaceendstone.md))
 * **BiomeId** ([**endstone**](namespaceendstone.md))
 * **BlockFace** ([**endstone**](namespaceendstone.md))
 * **BlockStates** ([**endstone**](namespaceendstone.md))
@@ -28,6 +29,7 @@
 * **DimensionId** ([**endstone**](namespaceendstone.md))
 * **DisplaySlot** ([**endstone**](namespaceendstone.md))
 * **DoubleTag** ([**endstone**](namespaceendstone.md))
+* **DrilldownValues** ([**endstone**](namespaceendstone.md))
 * **dump** ([**endstone::nbt**](namespaceendstone_1_1nbt.md))
 
 
@@ -68,6 +70,9 @@
 
 ## j
 
+* **JsonArray** ([**endstone**](namespaceendstone.md))
+* **JsonObject** ([**endstone**](namespaceendstone.md))
+* **JsonValue** ([**endstone**](namespaceendstone.md))
 * **join** ([**endstone::detail**](namespaceendstone_1_1detail.md))
 
 
@@ -130,6 +135,7 @@
 * **ServicePriority** ([**endstone**](namespaceendstone.md))
 * **ShortTag** ([**endstone**](namespaceendstone.md))
 * **StringTag** ([**endstone**](namespaceendstone.md))
+* **StringValues** ([**endstone**](namespaceendstone.md))
 * **swap** ([**endstone**](namespaceendstone.md))
 
 

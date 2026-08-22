@@ -90,6 +90,14 @@ This inheritance list is sorted roughly, but not completely, alphabetically:
     * **class** [**endstone::GameRule**](classendstone_1_1GameRule.md) _Represents a game rule._ 
     * **class** [**endstone::ItemType**](classendstone_1_1ItemType.md) _Represents an item type._ 
     * **class** [**endstone::PotionType**](classendstone_1_1PotionType.md) _Represents a potion type._ 
+* **class** [**endstone::CustomChart**](classendstone_1_1CustomChart.md) _Represents a custom chart._     
+    * **class** [**endstone::AdvancedBarChart**](classendstone_1_1AdvancedBarChart.md) _A bStats bar chart with several bars per category._ 
+    * **class** [**endstone::AdvancedPie**](classendstone_1_1AdvancedPie.md) _A bStats pie chart with named values._ 
+    * **class** [**endstone::DrilldownPie**](classendstone_1_1DrilldownPie.md) _A bStats pie chart with grouped named values._ 
+    * **class** [**endstone::MultiLineChart**](classendstone_1_1MultiLineChart.md) _A bStats line chart with a line per named value._ 
+    * **class** [**endstone::SimpleBarChart**](classendstone_1_1SimpleBarChart.md) _A bStats bar chart with a single bar per category._ 
+    * **class** [**endstone::SimplePie**](classendstone_1_1SimplePie.md) _A bStats pie chart with a single value._ 
+    * **class** [**endstone::SingleLineChart**](classendstone_1_1SingleLineChart.md) _A bStats line chart with a single line._ 
 * **class** [**endstone::Attribute**](classendstone_1_1Attribute.md) _All attribute types._ 
 * **class** [**endstone::AttributeInstance**](classendstone_1_1AttributeInstance.md) _Represents a mutable instance of an attribute and its associated modifiers and values._ 
 * **class** [**endstone::AttributeModifier**](classendstone_1_1AttributeModifier.md) _Concrete implementation of an attribute modifier._ 
@@ -141,6 +149,8 @@ This inheritance list is sorted roughly, but not completely, alphabetically:
 * **class** [**endstone::MapCursor**](classendstone_1_1MapCursor.md) _Represents a cursor on a map._ 
 * **class** [**endstone::MapRenderer**](classendstone_1_1MapRenderer.md) _Represents a renderer for a map._ 
 * **class** [**endstone::MapView**](classendstone_1_1MapView.md) _Represents a map item._ 
+* **class** [**endstone::Metrics**](classendstone_1_1Metrics.md) _Collects and submits anonymous usage statistics for a plugin to bStats._ 
+* **class** [**endstone::MetricsBase**](classendstone_1_1MetricsBase.md) _Collects and submits the data behind a_ [_**Metrics**_](classendstone_1_1Metrics.md) _instance._
 * **class** [**endstone::NotNull**](classendstone_1_1NotNull.md) _A wrapper around a std::shared\_ptr that documents that it is never null._ 
 * **class** [**endstone::Nullable**](classendstone_1_1Nullable.md) _A wrapper around a std::shared\_ptr that may be null._ 
 * **class** [**endstone::Objective**](classendstone_1_1Objective.md) _Represents an objective on a scoreboard that can show scores specific to entries._ 

@@ -12,6 +12,7 @@
 
 ## b
 
+* **BarValues** ([**endstone**](namespaceendstone.md))
 * **BiomeId** ([**endstone**](namespaceendstone.md))
 * **BlockStates** ([**endstone**](namespaceendstone.md))
 * **BlockTypeId** ([**endstone**](namespaceendstone.md))
@@ -23,6 +24,7 @@
 
 * **DimensionId** ([**endstone**](namespaceendstone.md))
 * **DoubleTag** ([**endstone**](namespaceendstone.md))
+* **DrilldownValues** ([**endstone**](namespaceendstone.md))
 
 
 ## e
@@ -46,6 +48,13 @@
 * **IntArrayTag** ([**endstone**](namespaceendstone.md))
 * **IntTag** ([**endstone**](namespaceendstone.md))
 * **ItemTypeId** ([**endstone**](namespaceendstone.md))
+
+
+## j
+
+* **JsonArray** ([**endstone**](namespaceendstone.md))
+* **JsonObject** ([**endstone**](namespaceendstone.md))
+* **JsonValue** ([**endstone**](namespaceendstone.md))
 
 
 ## l
@@ -74,6 +83,7 @@
 * **ScoreEntry** ([**endstone**](namespaceendstone.md))
 * **ShortTag** ([**endstone**](namespaceendstone.md))
 * **StringTag** ([**endstone**](namespaceendstone.md))
+* **StringValues** ([**endstone**](namespaceendstone.md))
 
 
 ## t

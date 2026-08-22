@@ -17,11 +17,11 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/form/modal_form.h" line="42" column="5" bodyfile="include/endstone/form/modal_form.h" bodystart="42" bodyend="-1"/>
+        <location file="include/endstone/form/modal_form.h" line="43" column="5" bodyfile="include/endstone/form/modal_form.h" bodystart="43" bodyend="-1"/>
       </memberdef>
-      <memberdef kind="typedef" id="classendstone_1_1ModalForm_1a3c0e5203c9a370acdaef35e3b1fae97d" prot="public" static="no">
-        <type>std::function&lt; <ref refid="classendstone_1_1Identifier" kindref="compound">void</ref>(<ref refid="classendstone_1_1Identifier" kindref="compound">const</ref> <ref refid="classendstone_1_1NotNull" kindref="compound">NotNull</ref>&lt; <ref refid="classendstone_1_1Player" kindref="compound">Player</ref> &gt; &amp;, std::string)&gt;</type>
-        <definition>using endstone::ModalForm::OnSubmitCallback =  std::function&lt;void(const NotNull&lt;Player&gt; &amp;, std::string)&gt;</definition>
+      <memberdef kind="typedef" id="classendstone_1_1ModalForm_1ae421b7eff9a2d0f87a0174388d091e55" prot="public" static="no">
+        <type>std::function&lt; <ref refid="classendstone_1_1Identifier" kindref="compound">void</ref>(<ref refid="classendstone_1_1Identifier" kindref="compound">const</ref> <ref refid="classendstone_1_1NotNull" kindref="compound">NotNull</ref>&lt; <ref refid="classendstone_1_1Player" kindref="compound">Player</ref> &gt; &amp;, JsonArray)&gt;</type>
+        <definition>using endstone::ModalForm::OnSubmitCallback =  std::function&lt;void(const NotNull&lt;Player&gt; &amp;, JsonArray)&gt;</definition>
         <argsstring></argsstring>
         <name>OnSubmitCallback</name>
         <qualifiedname>endstone::ModalForm::OnSubmitCallback</qualifiedname>
@@ -31,7 +31,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/form/modal_form.h" line="43" column="5" bodyfile="include/endstone/form/modal_form.h" bodystart="43" bodyend="-1"/>
+        <location file="include/endstone/form/modal_form.h" line="44" column="5" bodyfile="include/endstone/form/modal_form.h" bodystart="44" bodyend="-1"/>
       </memberdef>
     </sectiondef>
     <sectiondef kind="private-attrib">
@@ -47,7 +47,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/form/modal_form.h" line="134" column="17" bodyfile="include/endstone/form/modal_form.h" bodystart="134" bodyend="-1"/>
+        <location file="include/endstone/form/modal_form.h" line="135" column="17" bodyfile="include/endstone/form/modal_form.h" bodystart="135" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="classendstone_1_1ModalForm_1a9c20fa164938a772d5a6fe6a460be120" prot="private" static="no" mutable="no">
         <type>std::optional&lt; <ref refid="namespaceendstone_1ab1be61859bf80a227cf5d0b12a26ef78" kindref="member">Message</ref> &gt;</type>
@@ -61,7 +61,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/form/modal_form.h" line="135" column="19" bodyfile="include/endstone/form/modal_form.h" bodystart="135" bodyend="-1"/>
+        <location file="include/endstone/form/modal_form.h" line="136" column="19" bodyfile="include/endstone/form/modal_form.h" bodystart="136" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="classendstone_1_1ModalForm_1adc2b552f970f23e0165a7209eb556160" prot="private" static="no" mutable="no">
         <type>std::optional&lt; std::string &gt;</type>
@@ -75,7 +75,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/form/modal_form.h" line="136" column="19" bodyfile="include/endstone/form/modal_form.h" bodystart="136" bodyend="-1"/>
+        <location file="include/endstone/form/modal_form.h" line="137" column="19" bodyfile="include/endstone/form/modal_form.h" bodystart="137" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="classendstone_1_1ModalForm_1a7a6e46fb4f9f8173705cc361bc8a1336" prot="private" static="no" mutable="no">
         <type>OnSubmitCallback</type>
@@ -89,7 +89,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/form/modal_form.h" line="137" column="22" bodyfile="include/endstone/form/modal_form.h" bodystart="137" bodyend="-1"/>
+        <location file="include/endstone/form/modal_form.h" line="138" column="22" bodyfile="include/endstone/form/modal_form.h" bodystart="138" bodyend="-1"/>
       </memberdef>
     </sectiondef>
     <sectiondef kind="public-func">
@@ -122,7 +122,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/form/modal_form.h" line="51" column="15" bodyfile="include/endstone/form/modal_form.h" bodystart="51" bodyend="55"/>
+        <location file="include/endstone/form/modal_form.h" line="52" column="15" bodyfile="include/endstone/form/modal_form.h" bodystart="52" bodyend="56"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1ModalForm_1a9d307f7b12bb0b9fcc13ae2b6945db93" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
         <type>std::vector&lt; Control &gt;</type>
@@ -140,7 +140,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/form/modal_form.h" line="62" column="18" bodyfile="include/endstone/form/modal_form.h" bodystart="62" bodyend="62"/>
+        <location file="include/endstone/form/modal_form.h" line="63" column="18" bodyfile="include/endstone/form/modal_form.h" bodystart="63" bodyend="63"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1ModalForm_1ab65ea6f6acb1b5c10610e83ce5f67bc2" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type><ref refid="classendstone_1_1ModalForm" kindref="compound">ModalForm</ref> &amp;</type>
@@ -171,7 +171,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/form/modal_form.h" line="70" column="15" bodyfile="include/endstone/form/modal_form.h" bodystart="70" bodyend="74"/>
+        <location file="include/endstone/form/modal_form.h" line="71" column="15" bodyfile="include/endstone/form/modal_form.h" bodystart="71" bodyend="75"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1ModalForm_1a5e57d1511c91d8af59d8df8ad3f29803" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
         <type>std::optional&lt; <ref refid="namespaceendstone_1ab1be61859bf80a227cf5d0b12a26ef78" kindref="member">Message</ref> &gt;</type>
@@ -189,7 +189,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/form/modal_form.h" line="81" column="20" bodyfile="include/endstone/form/modal_form.h" bodystart="81" bodyend="81"/>
+        <location file="include/endstone/form/modal_form.h" line="82" column="20" bodyfile="include/endstone/form/modal_form.h" bodystart="82" bodyend="82"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1ModalForm_1a0829564dd011a2e7de8518900dd17561" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type><ref refid="classendstone_1_1ModalForm" kindref="compound">ModalForm</ref> &amp;</type>
@@ -220,7 +220,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/form/modal_form.h" line="89" column="15" bodyfile="include/endstone/form/modal_form.h" bodystart="89" bodyend="93"/>
+        <location file="include/endstone/form/modal_form.h" line="90" column="15" bodyfile="include/endstone/form/modal_form.h" bodystart="90" bodyend="94"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1ModalForm_1a5b90bdebd0b0e810a4d8fbdeb15fa18d" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
         <type>std::optional&lt; std::string &gt;</type>
@@ -238,7 +238,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/form/modal_form.h" line="100" column="20" bodyfile="include/endstone/form/modal_form.h" bodystart="100" bodyend="100"/>
+        <location file="include/endstone/form/modal_form.h" line="101" column="20" bodyfile="include/endstone/form/modal_form.h" bodystart="101" bodyend="101"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1ModalForm_1a4192a3d22178a35987c77ce2a4cee2e2" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type><ref refid="classendstone_1_1ModalForm" kindref="compound">ModalForm</ref> &amp;</type>
@@ -269,7 +269,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/form/modal_form.h" line="108" column="15" bodyfile="include/endstone/form/modal_form.h" bodystart="108" bodyend="112"/>
+        <location file="include/endstone/form/modal_form.h" line="109" column="15" bodyfile="include/endstone/form/modal_form.h" bodystart="109" bodyend="113"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1ModalForm_1afb79d3eda590aca8e014c5db99715e70" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
         <type>OnSubmitCallback</type>
@@ -287,7 +287,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/form/modal_form.h" line="119" column="23" bodyfile="include/endstone/form/modal_form.h" bodystart="119" bodyend="119"/>
+        <location file="include/endstone/form/modal_form.h" line="120" column="23" bodyfile="include/endstone/form/modal_form.h" bodystart="120" bodyend="120"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1ModalForm_1a9b0b97dfd47eb028a0dda6b1229bacec" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type><ref refid="classendstone_1_1ModalForm" kindref="compound">ModalForm</ref> &amp;</type>
@@ -318,7 +318,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/form/modal_form.h" line="127" column="15" bodyfile="include/endstone/form/modal_form.h" bodystart="127" bodyend="131"/>
+        <location file="include/endstone/form/modal_form.h" line="128" column="15" bodyfile="include/endstone/form/modal_form.h" bodystart="128" bodyend="132"/>
       </memberdef>
     </sectiondef>
     <briefdescription>
@@ -350,7 +350,7 @@
         </childnode>
       </node>
     </collaborationgraph>
-    <location file="include/endstone/form/modal_form.h" line="40" column="1" bodyfile="include/endstone/form/modal_form.h" bodystart="40" bodyend="138"/>
+    <location file="include/endstone/form/modal_form.h" line="41" column="1" bodyfile="include/endstone/form/modal_form.h" bodystart="41" bodyend="139"/>
     <listofallmembers>
       <member refid="classendstone_1_1ModalForm_1a452bb91fb803add030766ca27b591ff2" prot="public" virt="non-virtual"><scope>endstone::ModalForm</scope><name>addControl</name></member>
       <member refid="classendstone_1_1ModalForm_1a8e10f5a1239c36f705b0a61711efa6ef" prot="public" virt="non-virtual"><scope>endstone::ModalForm</scope><name>Control</name></member>
@@ -366,7 +366,7 @@
       <member refid="classendstone_1_1Form_1a2e7d8ad1b41e12cf0d4f1e8522bf3e46" prot="protected" virt="non-virtual"><scope>endstone::ModalForm</scope><name>on_close_</name></member>
       <member refid="classendstone_1_1ModalForm_1a7a6e46fb4f9f8173705cc361bc8a1336" prot="private" virt="non-virtual"><scope>endstone::ModalForm</scope><name>on_submit_</name></member>
       <member refid="classendstone_1_1Form_1a325e7cdc52fbbf536cc9fe8a32ba06c8" prot="public" virt="non-virtual"><scope>endstone::ModalForm</scope><name>OnCloseCallback</name></member>
-      <member refid="classendstone_1_1ModalForm_1a3c0e5203c9a370acdaef35e3b1fae97d" prot="public" virt="non-virtual"><scope>endstone::ModalForm</scope><name>OnSubmitCallback</name></member>
+      <member refid="classendstone_1_1ModalForm_1ae421b7eff9a2d0f87a0174388d091e55" prot="public" virt="non-virtual"><scope>endstone::ModalForm</scope><name>OnSubmitCallback</name></member>
       <member refid="classendstone_1_1ModalForm_1ab65ea6f6acb1b5c10610e83ce5f67bc2" prot="public" virt="non-virtual"><scope>endstone::ModalForm</scope><name>setControls</name></member>
       <member refid="classendstone_1_1ModalForm_1a4192a3d22178a35987c77ce2a4cee2e2" prot="public" virt="non-virtual"><scope>endstone::ModalForm</scope><name>setIcon</name></member>
       <member refid="classendstone_1_1Form_1aff78b36d4798b8185ea1ff93f6260f63" prot="public" virt="non-virtual"><scope>endstone::ModalForm</scope><name>setOnClose</name></member>

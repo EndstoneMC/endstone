@@ -1,0 +1,127 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.8" xml:lang="en-US">
+  <compounddef id="classendstone_1_1SingleLineChart" kind="class" language="C++" prot="public">
+    <compoundname>endstone::SingleLineChart</compoundname>
+    <basecompoundref refid="classendstone_1_1CustomChart" prot="public" virt="non-virtual">endstone::CustomChart</basecompoundref>
+    <includes refid="single__line__chart_8h" local="no">endstone/metrics/single_line_chart.h</includes>
+    <sectiondef kind="public-type">
+      <memberdef kind="typedef" id="classendstone_1_1SingleLineChart_1abf5e239f1534bb26fc60b9347b9d6da2" prot="public" static="no">
+        <type>std::function&lt; <ref refid="classendstone_1_1Identifier" kindref="compound">int</ref>()&gt;</type>
+        <definition>using endstone::SingleLineChart::Callback =  std::function&lt;int()&gt;</definition>
+        <argsstring></argsstring>
+        <name>Callback</name>
+        <qualifiedname>endstone::SingleLineChart::Callback</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/metrics/single_line_chart.h" line="29" column="5" bodyfile="include/endstone/metrics/single_line_chart.h" bodystart="29" bodyend="-1"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="private-attrib">
+      <memberdef kind="variable" id="classendstone_1_1SingleLineChart_1a1831ee83d1b10c6dd56106d85ce3efd5" prot="private" static="no" mutable="no">
+        <type>Callback</type>
+        <definition>Callback endstone::SingleLineChart::get_value_</definition>
+        <argsstring></argsstring>
+        <name>get_value_</name>
+        <qualifiedname>endstone::SingleLineChart::get_value_</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/metrics/single_line_chart.h" line="46" column="14" bodyfile="include/endstone/metrics/single_line_chart.h" bodystart="46" bodyend="-1"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="public-func">
+      <memberdef kind="function" id="classendstone_1_1SingleLineChart_1aff3c5b6af0d8c0ffdd333f1d3cc2b1c4" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type></type>
+        <definition>endstone::SingleLineChart::SingleLineChart</definition>
+        <argsstring>(std::string chart_id, Callback get_value)</argsstring>
+        <name>SingleLineChart</name>
+        <qualifiedname>endstone::SingleLineChart::SingleLineChart</qualifiedname>
+        <param>
+          <type>std::string</type>
+          <declname>chart_id</declname>
+        </param>
+        <param>
+          <type>Callback</type>
+          <declname>get_value</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/metrics/single_line_chart.h" line="31" column="5" bodyfile="include/endstone/metrics/single_line_chart.h" bodystart="31" bodyend="34"/>
+      </memberdef>
+      <memberdef kind="function" id="classendstone_1_1SingleLineChart_1a45301719dcc9f592edd648755bcb5b07" prot="public" static="no" const="no" explicit="no" inline="yes" virt="virtual">
+        <type>std::optional&lt; JsonObject &gt;</type>
+        <definition>std::optional&lt; JsonObject &gt; endstone::SingleLineChart::getChartData</definition>
+        <argsstring>() override</argsstring>
+        <name>getChartData</name>
+        <qualifiedname>endstone::SingleLineChart::getChartData</qualifiedname>
+        <reimplements refid="classendstone_1_1CustomChart_1a020b222052894ea51d89f6918943f65b">getChartData</reimplements>
+        <briefdescription>
+<para>Gets the data for this chart. </para>
+        </briefdescription>
+        <detaileddescription>
+<para>This is called on the primary server thread. Returning no value omits the chart from the submission.</para>
+<para><simplesect kind="return"><para>the chart data, or no value to skip this chart </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/metrics/single_line_chart.h" line="36" column="20" bodyfile="include/endstone/metrics/single_line_chart.h" bodystart="36" bodyend="43"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+<para>A bStats line chart with a single line. </para>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="2">
+        <label>endstone::CustomChart</label>
+        <link refid="classendstone_1_1CustomChart"/>
+      </node>
+      <node id="1">
+        <label>endstone::SingleLineChart</label>
+        <link refid="classendstone_1_1SingleLineChart"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="2">
+        <label>endstone::CustomChart</label>
+        <link refid="classendstone_1_1CustomChart"/>
+      </node>
+      <node id="1">
+        <label>endstone::SingleLineChart</label>
+        <link refid="classendstone_1_1SingleLineChart"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+    </collaborationgraph>
+    <location file="include/endstone/metrics/single_line_chart.h" line="27" column="1" bodyfile="include/endstone/metrics/single_line_chart.h" bodystart="27" bodyend="47"/>
+    <listofallmembers>
+      <member refid="classendstone_1_1SingleLineChart_1abf5e239f1534bb26fc60b9347b9d6da2" prot="public" virt="non-virtual"><scope>endstone::SingleLineChart</scope><name>Callback</name></member>
+      <member refid="classendstone_1_1CustomChart_1ae3ced3f9b9edefd0cabf1e205d7f4ce2" prot="public" virt="non-virtual"><scope>endstone::SingleLineChart</scope><name>CustomChart</name></member>
+      <member refid="classendstone_1_1CustomChart_1a864e4ceb59eb73ede3d252156cd6ae96" prot="public" virt="non-virtual"><scope>endstone::SingleLineChart</scope><name>CustomChart</name></member>
+      <member refid="classendstone_1_1CustomChart_1acc5a05f0c91fb681fe6fed136e5c1c7f" prot="public" virt="non-virtual"><scope>endstone::SingleLineChart</scope><name>CustomChart</name></member>
+      <member refid="classendstone_1_1SingleLineChart_1a1831ee83d1b10c6dd56106d85ce3efd5" prot="private" virt="non-virtual"><scope>endstone::SingleLineChart</scope><name>get_value_</name></member>
+      <member refid="classendstone_1_1SingleLineChart_1a45301719dcc9f592edd648755bcb5b07" prot="public" virt="virtual"><scope>endstone::SingleLineChart</scope><name>getChartData</name></member>
+      <member refid="classendstone_1_1CustomChart_1aff6403a38ec3eda21c04253fa942ee6b" prot="public" virt="non-virtual"><scope>endstone::SingleLineChart</scope><name>getChartId</name></member>
+      <member refid="classendstone_1_1CustomChart_1a4df748c94a39b9022f84bbe6735d3417" prot="public" virt="non-virtual"><scope>endstone::SingleLineChart</scope><name>operator=</name></member>
+      <member refid="classendstone_1_1CustomChart_1a69a631b102092d50e56ca9123e970c46" prot="public" virt="non-virtual"><scope>endstone::SingleLineChart</scope><name>operator=</name></member>
+      <member refid="classendstone_1_1SingleLineChart_1aff3c5b6af0d8c0ffdd333f1d3cc2b1c4" prot="public" virt="non-virtual"><scope>endstone::SingleLineChart</scope><name>SingleLineChart</name></member>
+      <member refid="classendstone_1_1CustomChart_1afbf1344198d16424f81a05311cfb283c" prot="public" virt="virtual"><scope>endstone::SingleLineChart</scope><name>~CustomChart</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

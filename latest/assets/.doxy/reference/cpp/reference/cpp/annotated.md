@@ -23,6 +23,8 @@ Here are the classes, structs, unions and interfaces with brief descriptions:
     * **class** [**ActorToggleGlideEvent**](classendstone_1_1ActorToggleGlideEvent.md) _Called when an_ [_**Actor**_](classendstone_1_1Actor.md) _'s gliding state is toggled with an elytra._    
     * **class** [**ActorToggleSwimEvent**](classendstone_1_1ActorToggleSwimEvent.md) _Called when an_ [_**Actor**_](classendstone_1_1Actor.md) _'s swimming state is toggled._    
     * **class** [**ActorType**](classendstone_1_1ActorType.md)     
+    * **class** [**AdvancedBarChart**](classendstone_1_1AdvancedBarChart.md) _A bStats bar chart with several bars per category._     
+    * **class** [**AdvancedPie**](classendstone_1_1AdvancedPie.md) _A bStats pie chart with named values._     
     * **class** [**Attribute**](classendstone_1_1Attribute.md) _All attribute types._     
     * **class** [**AttributeInstance**](classendstone_1_1AttributeInstance.md) _Represents a mutable instance of an attribute and its associated modifiers and values._     
     * **class** [**AttributeModifier**](classendstone_1_1AttributeModifier.md) _Concrete implementation of an attribute modifier._     
@@ -69,11 +71,13 @@ Here are the classes, structs, unions and interfaces with brief descriptions:
     * **class** [**CreatureSpawner**](classendstone_1_1CreatureSpawner.md) _Represents a captured state of a creature spawner._     
     * **class** [**Criteria**](classendstone_1_1Criteria.md) _Represents a scoreboard criteria._     
     * **class** [**CrossbowMeta**](classendstone_1_1CrossbowMeta.md) _Represents the meta for a crossbow that can have a charged projectile._     
+    * **class** [**CustomChart**](classendstone_1_1CustomChart.md) _Represents a custom chart._     
     * **class** [**DamageSource**](classendstone_1_1DamageSource.md) _Represents a source of damage._     
     * **class** [**Dimension**](classendstone_1_1Dimension.md) _Represents a dimension within a_ [_**Level**_](classendstone_1_1Level.md) _._    
     * **class** [**DimensionCreator**](classendstone_1_1DimensionCreator.md) _Represents the options that may be used to create a custom_ [_**Dimension**_](classendstone_1_1Dimension.md) _._    
     * **class** [**DimensionEvent**](classendstone_1_1DimensionEvent.md) _Represents events within a dimension._     
     * **class** [**Divider**](classendstone_1_1Divider.md) _Represents a divider._     
+    * **class** [**DrilldownPie**](classendstone_1_1DrilldownPie.md) _A bStats pie chart with grouped named values._     
     * **class** [**Dropdown**](classendstone_1_1Dropdown.md) _Represents a dropdown with a set of predefined options._     
     * **class** [**Effect**](classendstone_1_1Effect.md) _Represents an effect that can be added to a_ [_**Mob**_](classendstone_1_1Mob.md) _._    
     * **class** [**EffectType**](classendstone_1_1EffectType.md) _Represents an effect type._     
@@ -118,8 +122,11 @@ Here are the classes, structs, unions and interfaces with brief descriptions:
     * **class** [**MapRenderer**](classendstone_1_1MapRenderer.md) _Represents a renderer for a map._     
     * **class** [**MapView**](classendstone_1_1MapView.md) _Represents a map item._     
     * **class** [**MessageForm**](classendstone_1_1MessageForm.md) _Represents a form with two buttons._     
+    * **class** [**Metrics**](classendstone_1_1Metrics.md) _Collects and submits anonymous usage statistics for a plugin to bStats._     
+    * **class** [**MetricsBase**](classendstone_1_1MetricsBase.md) _Collects and submits the data behind a_ [_**Metrics**_](classendstone_1_1Metrics.md) _instance._    
     * **class** [**Mob**](classendstone_1_1Mob.md) _Represents a mobile entity (i.e._     
     * **class** [**ModalForm**](classendstone_1_1ModalForm.md) _Represents a modal form with controls._     
+    * **class** [**MultiLineChart**](classendstone_1_1MultiLineChart.md) _A bStats line chart with a line per named value._     
     * **class** [**NotNull**](classendstone_1_1NotNull.md) _A wrapper around a std::shared\_ptr that documents that it is never null._     
     * **class** [**Nullable**](classendstone_1_1Nullable.md) _A wrapper around a std::shared\_ptr that may be null._     
     * **class** [**Object**](classendstone_1_1Object.md) _Base class providing runtime type identification and safe casting._     
@@ -205,6 +212,9 @@ Here are the classes, structs, unions and interfaces with brief descriptions:
     * **class** [**ServiceManager**](classendstone_1_1ServiceManager.md) _Represent a service manager that manages services and service providers._     
     * **class** [**Sign**](classendstone_1_1Sign.md) _Represents a captured state of a sign._     
     * **class** [**SignSide**](classendstone_1_1SignSide.md) _Represents a side of a sign._     
+    * **class** [**SimpleBarChart**](classendstone_1_1SimpleBarChart.md) _A bStats bar chart with a single bar per category._     
+    * **class** [**SimplePie**](classendstone_1_1SimplePie.md) _A bStats pie chart with a single value._     
+    * **class** [**SingleLineChart**](classendstone_1_1SingleLineChart.md) _A bStats line chart with a single line._     
     * **class** [**Skin**](classendstone_1_1Skin.md) _Represents a player skin._     
     * **class** [**Slider**](classendstone_1_1Slider.md) _Represents a slider with a label._     
     * **class** [**SocketAddress**](classendstone_1_1SocketAddress.md) _Represents an IP Socket Address (hostname + port number)._     

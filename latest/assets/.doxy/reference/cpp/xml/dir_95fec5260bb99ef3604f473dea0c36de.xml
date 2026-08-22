@@ -1,0 +1,21 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.8" xml:lang="en-US">
+  <compounddef id="dir_95fec5260bb99ef3604f473dea0c36de" kind="dir">
+    <compoundname>include/endstone/metrics</compoundname>
+    <innerfile refid="advanced__bar__chart_8h">advanced_bar_chart.h</innerfile>
+    <innerfile refid="advanced__pie_8h">advanced_pie.h</innerfile>
+    <innerfile refid="base_8h">base.h</innerfile>
+    <innerfile refid="custom__chart_8h">custom_chart.h</innerfile>
+    <innerfile refid="drilldown__pie_8h">drilldown_pie.h</innerfile>
+    <innerfile refid="metrics_8h">metrics.h</innerfile>
+    <innerfile refid="multi__line__chart_8h">multi_line_chart.h</innerfile>
+    <innerfile refid="simple__bar__chart_8h">simple_bar_chart.h</innerfile>
+    <innerfile refid="simple__pie_8h">simple_pie.h</innerfile>
+    <innerfile refid="single__line__chart_8h">single_line_chart.h</innerfile>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="include/endstone/metrics/"/>
+  </compounddef>
+</doxygen>

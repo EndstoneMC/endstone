@@ -92,6 +92,7 @@
 * **created\_** ([**endstone::BanEntry**](classendstone_1_1BanEntry.md))
 * **chunk\_** ([**endstone::ChunkEvent**](classendstone_1_1ChunkEvent.md))
 * **command\_map\_** ([**endstone::Command**](classendstone_1_1Command.md))
+* **chart\_id\_** ([**endstone::CustomChart**](classendstone_1_1CustomChart.md))
 * **ConduitPower** ([**endstone::EffectType**](classendstone_1_1EffectType.md))
 * **Channeling** ([**endstone::Enchantment**](classendstone_1_1Enchantment.md))
 * **CurseOfBinding** ([**endstone::Enchantment**](classendstone_1_1Enchantment.md))
@@ -225,11 +226,13 @@
 * **GlowSquid** ([**endstone::ActorType**](classendstone_1_1ActorType.md))
 * **Goat** ([**endstone::ActorType**](classendstone_1_1ActorType.md))
 * **Guardian** ([**endstone::ActorType**](classendstone_1_1ActorType.md))
+* **get\_values\_** ([**endstone::AdvancedBarChart**](classendstone_1_1AdvancedBarChart.md), [**endstone::AdvancedPie**](classendstone_1_1AdvancedPie.md), [**endstone::DrilldownPie**](classendstone_1_1DrilldownPie.md), [**endstone::MultiLineChart**](classendstone_1_1MultiLineChart.md), [**endstone::SimpleBarChart**](classendstone_1_1SimpleBarChart.md))
 * **green\_** ([**endstone::Color**](classendstone_1_1Color.md))
 * **Gold** ([**endstone::ColorFormat**](structendstone_1_1ColorFormat.md))
 * **Gray** ([**endstone::ColorFormat**](structendstone_1_1ColorFormat.md))
 * **Green** ([**endstone::ColorFormat**](structendstone_1_1ColorFormat.md))
 * **game\_mode\_** ([**endstone::ServerListPingEvent**](classendstone_1_1ServerListPingEvent.md))
+* **get\_value\_** ([**endstone::SimplePie**](classendstone_1_1SimplePie.md), [**endstone::SingleLineChart**](classendstone_1_1SingleLineChart.md))
 
 
 ## h
@@ -268,7 +271,7 @@
 * **Infinity** ([**endstone::Enchantment**](classendstone_1_1Enchantment.md))
 * **ignore\_cancelled\_** ([**endstone::EventHandler**](classendstone_1_1EventHandler.md))
 * **inventory\_** ([**endstone::InventoryEvent**](classendstone_1_1InventoryEvent.md))
-* **impl\_** ([**endstone::ItemStack**](classendstone_1_1ItemStack.md))
+* **impl\_** ([**endstone::ItemStack**](classendstone_1_1ItemStack.md), [**endstone::Metrics**](classendstone_1_1Metrics.md))
 * **is\_contextual\_** ([**endstone::MapRenderer**](classendstone_1_1MapRenderer.md))
 * **ingredients\_** ([**endstone::PlayerCraftItemEvent**](classendstone_1_1PlayerCraftItemEvent.md))
 * **input\_** ([**endstone::PlayerInputEvent**](classendstone_1_1PlayerInputEvent.md))

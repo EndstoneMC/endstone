@@ -11,7 +11,7 @@
 ## c
 
 * **Control** ([**endstone::ActionForm**](classendstone_1_1ActionForm.md), [**endstone::ModalForm**](classendstone_1_1ModalForm.md))
-* **Callback** ([**endstone::CommandSenderWrapper**](classendstone_1_1CommandSenderWrapper.md))
+* **Callback** ([**endstone::AdvancedBarChart**](classendstone_1_1AdvancedBarChart.md), [**endstone::AdvancedPie**](classendstone_1_1AdvancedPie.md), [**endstone::CommandSenderWrapper**](classendstone_1_1CommandSenderWrapper.md), [**endstone::DrilldownPie**](classendstone_1_1DrilldownPie.md), [**endstone::MultiLineChart**](classendstone_1_1MultiLineChart.md), [**endstone::SimpleBarChart**](classendstone_1_1SimpleBarChart.md), [**endstone::SimplePie**](classendstone_1_1SimplePie.md), [**endstone::SingleLineChart**](classendstone_1_1SingleLineChart.md))
 * **const\_iterator** ([**endstone::CompoundTag**](classendstone_1_1CompoundTag.md), [**endstone::ListTag**](classendstone_1_1ListTag.md), [**endstone::nbt::ArrayTag**](classendstone_1_1nbt_1_1ArrayTag.md))
 * **container\_type** ([**endstone::ListTag**](classendstone_1_1ListTag.md))
 

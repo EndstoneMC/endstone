@@ -36,6 +36,7 @@
 #include "endstone/form/modal_form.h"
 #include "endstone/game_mode.h"
 #include "endstone/inventory/player_inventory.h"
+#include "endstone/json.h"
 #include "endstone/level/location.h"
 #include "endstone/map/map_view.h"
 #include "endstone/scoreboard/scoreboard.h"
@@ -147,10 +148,10 @@ public:
     virtual void spawnParticle(std::string name, float x, float y, float z) const = 0;
 
     virtual void spawnParticle(std::string name, Location location,
-                               std::optional<std::string> molang_variables_json) const = 0;
+                               std::optional<JsonObject> molang_variables) const = 0;
 
     virtual void spawnParticle(std::string name, float x, float y, float z,
-                               std::optional<std::string> molang_variables_json) const = 0;
+                               std::optional<JsonObject> molang_variables) const = 0;
 
     // TODO: getClientViewDistance
 

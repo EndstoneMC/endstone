@@ -209,8 +209,8 @@ Inherits the following classes: [endstone::Mob](classendstone_1_1Mob.md)
 | virtual [**void**](classendstone_1_1Identifier.md) | [**setWalkSpeed**](#function-setwalkspeed) ([**float**](classendstone_1_1Identifier.md) value) const = 0<br>_Sets the speed at which a client will walk._  |
 | virtual [**void**](classendstone_1_1Identifier.md) | [**spawnParticle**](#function-spawnparticle-14) (std::string name, [**Location**](classendstone_1_1Location.md) location) const = 0<br>_Spawns the particle at the target location._  |
 | virtual [**void**](classendstone_1_1Identifier.md) | [**spawnParticle**](#function-spawnparticle-24) (std::string name, [**float**](classendstone_1_1Identifier.md) x, [**float**](classendstone_1_1Identifier.md) y, [**float**](classendstone_1_1Identifier.md) z) const = 0<br>_Spawns the particle at the target location._  |
-| virtual [**void**](classendstone_1_1Identifier.md) | [**spawnParticle**](#function-spawnparticle-34) (std::string name, [**Location**](classendstone_1_1Location.md) location, std::optional&lt; std::string &gt; molang\_variables\_json) const = 0<br>_Spawns the particle at the target location._  |
-| virtual [**void**](classendstone_1_1Identifier.md) | [**spawnParticle**](#function-spawnparticle-44) (std::string name, [**float**](classendstone_1_1Identifier.md) x, [**float**](classendstone_1_1Identifier.md) y, [**float**](classendstone_1_1Identifier.md) z, std::optional&lt; std::string &gt; molang\_variables\_json) const = 0<br>_Spawns the particle at the target location._  |
+| virtual [**void**](classendstone_1_1Identifier.md) | [**spawnParticle**](#function-spawnparticle-34) (std::string name, [**Location**](classendstone_1_1Location.md) location, std::optional&lt; JsonObject &gt; molang\_variables) const = 0<br>_Spawns the particle at the target location._  |
+| virtual [**void**](classendstone_1_1Identifier.md) | [**spawnParticle**](#function-spawnparticle-44) (std::string name, [**float**](classendstone_1_1Identifier.md) x, [**float**](classendstone_1_1Identifier.md) y, [**float**](classendstone_1_1Identifier.md) z, std::optional&lt; JsonObject &gt; molang\_variables) const = 0<br>_Spawns the particle at the target location._  |
 | virtual [**void**](classendstone_1_1Identifier.md) | [**stopAllSounds**](#function-stopallsounds) () = 0<br>_Stop all sounds from playing._  |
 | virtual [**void**](classendstone_1_1Identifier.md) | [**stopSound**](#function-stopsound) (std::string sound) = 0<br>_Stop the specified sound from playing._  |
 | virtual [**void**](classendstone_1_1Identifier.md) | [**transfer**](#function-transfer) (std::string host, [**int**](classendstone_1_1Identifier.md) port) const = 0<br>_Transfers the player to another server._  |
@@ -1999,7 +1999,7 @@ _Spawns the particle at the target location._
 virtual void endstone::Player::spawnParticle (
     std::string name,
     Location location,
-    std::optional< std::string > molang_variables_json
+    std::optional< JsonObject > molang_variables
 ) const = 0
 ```
 
@@ -2012,7 +2012,7 @@ virtual void endstone::Player::spawnParticle (
 
 * `name` the name of the particle effect to spawn 
 * `location` the location to spawn at 
-* `molang_variables_json` the customizable molang variables that can be adjusted for this particle, in json 
+* `molang_variables` the customizable molang variables that can be adjusted for this particle 
 
 
 
@@ -2032,7 +2032,7 @@ virtual void endstone::Player::spawnParticle (
     float x,
     float y,
     float z,
-    std::optional< std::string > molang_variables_json
+    std::optional< JsonObject > molang_variables
 ) const = 0
 ```
 
@@ -2047,7 +2047,7 @@ virtual void endstone::Player::spawnParticle (
 * `x` the position on the x axis to spawn at 
 * `y` the position on the y axis to spawn at 
 * `z` the position on the z axis to spawn at 
-* `molang_variables_json` the customizable molang variables that can be adjusted for this particle, in json 
+* `molang_variables` the customizable molang variables that can be adjusted for this particle 
 
 
 

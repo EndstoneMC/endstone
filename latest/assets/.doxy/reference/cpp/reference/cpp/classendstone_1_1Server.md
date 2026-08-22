@@ -69,6 +69,7 @@ _Represents a server implementation._
 | virtual [**NotNull**](classendstone_1_1NotNull.md)&lt; [**BossBar**](classendstone_1_1BossBar.md) &gt; | [**createBossBar**](#function-createbossbar-12) (std::string title, [**BarColor**](namespaceendstone.md#enum-barcolor) color, [**BarStyle**](namespaceendstone.md#enum-barstyle) style) const = 0<br>_Creates a boss bar instance to display to players._  |
 | virtual [**NotNull**](classendstone_1_1NotNull.md)&lt; [**BossBar**](classendstone_1_1BossBar.md) &gt; | [**createBossBar**](#function-createbossbar-22) (std::string title, [**BarColor**](namespaceendstone.md#enum-barcolor) color, [**BarStyle**](namespaceendstone.md#enum-barstyle) style, std::vector&lt; [**BarFlag**](namespaceendstone.md#enum-barflag) &gt; flags) const = 0<br>_Creates a boss bar instance to display to players._  |
 | virtual [**MapView**](classendstone_1_1MapView.md) & | [**createMap**](#function-createmap) ([**const**](classendstone_1_1Identifier.md) [**NotNull**](classendstone_1_1NotNull.md)&lt; [**Dimension**](classendstone_1_1Dimension.md) &gt; & dimension) const = 0<br>_Create a new map with an automatically assigned ID._  |
+| virtual [**NotNull**](classendstone_1_1NotNull.md)&lt; [**MetricsBase**](classendstone_1_1MetricsBase.md) &gt; | [**createMetrics**](#function-createmetrics) ([**Plugin**](classendstone_1_1Plugin.md) & plugin, [**int**](classendstone_1_1Identifier.md) service\_id) = 0<br>_Creates the backend for a plugin's metrics._  |
 | virtual [**NotNull**](classendstone_1_1NotNull.md)&lt; [**Scoreboard**](classendstone_1_1Scoreboard.md) &gt; | [**createScoreboard**](#function-createscoreboard) () = 0<br>_Creates a new_ [_**Scoreboard**_](classendstone_1_1Scoreboard.md) _to be tracked by the server._ |
 | virtual [**bool**](classendstone_1_1Identifier.md) | [**dispatchCommand**](#function-dispatchcommand) ([**const**](classendstone_1_1Identifier.md) [**NotNull**](classendstone_1_1NotNull.md)&lt; [**CommandSender**](classendstone_1_1CommandSender.md) &gt; & sender, std::string command\_line) const = 0<br>_Dispatches a command on this server, and executes it if found._  |
 | virtual [**float**](classendstone_1_1Identifier.md) | [**getAverageMillisecondsPerTick**](#function-getaveragemillisecondspertick) () = 0<br>_Gets the average milliseconds per tick (MSPT)._  |
@@ -505,6 +506,45 @@ virtual MapView & endstone::Server::createMap (
 **Returns:**
 
 a newly created map view 
+
+
+
+
+
+        
+
+<hr>
+
+
+
+### function createMetrics 
+
+_Creates the backend for a plugin's metrics._ 
+```C++
+virtual NotNull < MetricsBase > endstone::Server::createMetrics (
+    Plugin & plugin,
+    int service_id
+) = 0
+```
+
+
+
+Plugins construct an `endstone::Metrics` instead of calling this. The server keeps the backend alive until it reloads or shuts down, and returns the one it already has for a service id.
+
+
+
+
+**Parameters:**
+
+
+* `plugin` the plugin the metrics belong to 
+* `service_id` the id of the service, found at [https://bstats.org/what-is-my-plugin-id](https://bstats.org/what-is-my-plugin-id) 
+
+
+
+**Returns:**
+
+the metrics backend 
 
 
 

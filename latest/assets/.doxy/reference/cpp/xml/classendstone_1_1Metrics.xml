@@ -1,0 +1,124 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.8" xml:lang="en-US">
+  <compounddef id="classendstone_1_1Metrics" kind="class" language="C++" prot="public">
+    <compoundname>endstone::Metrics</compoundname>
+    <includes refid="metrics_8h" local="no">endstone/metrics/metrics.h</includes>
+    <sectiondef kind="private-attrib">
+      <memberdef kind="variable" id="classendstone_1_1Metrics_1a7ea97ce567b770d9ad7a8bd7ff0c29d6" prot="private" static="no" mutable="no">
+        <type><ref refid="classendstone_1_1NotNull" kindref="compound">NotNull</ref>&lt; <ref refid="classendstone_1_1MetricsBase" kindref="compound">MetricsBase</ref> &gt;</type>
+        <definition>NotNull&lt;MetricsBase&gt; endstone::Metrics::impl_</definition>
+        <argsstring></argsstring>
+        <name>impl_</name>
+        <qualifiedname>endstone::Metrics::impl_</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/metrics/metrics.h" line="66" column="13" bodyfile="include/endstone/metrics/metrics.h" bodystart="66" bodyend="-1"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="public-func">
+      <memberdef kind="function" id="classendstone_1_1Metrics_1aff285689af51373fb2386d7a345544f8" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type></type>
+        <definition>endstone::Metrics::Metrics</definition>
+        <argsstring>(Plugin &amp;plugin, int service_id)</argsstring>
+        <name>Metrics</name>
+        <qualifiedname>endstone::Metrics::Metrics</qualifiedname>
+        <param>
+          <type><ref refid="classendstone_1_1Plugin" kindref="compound">Plugin</ref> &amp;</type>
+          <declname>plugin</declname>
+        </param>
+        <param>
+          <type><ref refid="classendstone_1_1Identifier" kindref="compound">int</ref></type>
+          <declname>service_id</declname>
+        </param>
+        <briefdescription>
+<para>Creates a new <ref refid="classendstone_1_1Metrics" kindref="compound">Metrics</ref> instance. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>plugin</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>the plugin these metrics belong to </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>service_id</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>the id of the service, found at <ulink url="https://bstats.org/what-is-my-plugin-id">https://bstats.org/what-is-my-plugin-id</ulink> </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/metrics/metrics.h" line="49" column="5" bodyfile="include/endstone/metrics/metrics.h" bodystart="49" bodyend="49"/>
+      </memberdef>
+      <memberdef kind="function" id="classendstone_1_1Metrics_1addbbb203522970ef4e77897052333204" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type><ref refid="classendstone_1_1Identifier" kindref="compound">void</ref></type>
+        <definition>void endstone::Metrics::addCustomChart</definition>
+        <argsstring>(std::unique_ptr&lt; CustomChart &gt; chart)</argsstring>
+        <name>addCustomChart</name>
+        <qualifiedname>endstone::Metrics::addCustomChart</qualifiedname>
+        <param>
+          <type>std::unique_ptr&lt; <ref refid="classendstone_1_1CustomChart" kindref="compound">CustomChart</ref> &gt;</type>
+          <declname>chart</declname>
+        </param>
+        <briefdescription>
+<para>Adds a custom chart. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>chart</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>the chart to add </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/metrics/metrics.h" line="56" column="10" bodyfile="include/endstone/metrics/metrics.h" bodystart="56" bodyend="56"/>
+      </memberdef>
+      <memberdef kind="function" id="classendstone_1_1Metrics_1aa9a9dd49f426415c8027fb996eca698e" prot="public" static="no" const="no" explicit="no" inline="yes" noexcept="yes" virt="non-virtual">
+        <type><ref refid="classendstone_1_1Identifier" kindref="compound">void</ref></type>
+        <definition>void endstone::Metrics::shutdown</definition>
+        <argsstring>() noexcept</argsstring>
+        <name>shutdown</name>
+        <qualifiedname>endstone::Metrics::shutdown</qualifiedname>
+        <briefdescription>
+<para>Stops collecting and submitting data. </para>
+        </briefdescription>
+        <detaileddescription>
+<para>Repeated calls have no effect. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/metrics/metrics.h" line="63" column="10" bodyfile="include/endstone/metrics/metrics.h" bodystart="63" bodyend="63"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+<para>Collects and submits anonymous usage statistics for a plugin to bStats. </para>
+    </briefdescription>
+    <detaileddescription>
+<para>The server owns the metrics behind this handle and retires them when it reloads or shuts down, so a plugin may add its charts in <ref refid="classendstone_1_1Plugin_1ae2a98beb4cfdc042da7e0d7ed0cd5856" kindref="member">Plugin::onEnable</ref> and drop the handle. Asking twice for the same service id gives back the same metrics. </para>
+    </detaileddescription>
+    <location file="include/endstone/metrics/metrics.h" line="41" column="1" bodyfile="include/endstone/metrics/metrics.h" bodystart="41" bodyend="67"/>
+    <listofallmembers>
+      <member refid="classendstone_1_1Metrics_1addbbb203522970ef4e77897052333204" prot="public" virt="non-virtual"><scope>endstone::Metrics</scope><name>addCustomChart</name></member>
+      <member refid="classendstone_1_1Metrics_1a7ea97ce567b770d9ad7a8bd7ff0c29d6" prot="private" virt="non-virtual"><scope>endstone::Metrics</scope><name>impl_</name></member>
+      <member refid="classendstone_1_1Metrics_1aff285689af51373fb2386d7a345544f8" prot="public" virt="non-virtual"><scope>endstone::Metrics</scope><name>Metrics</name></member>
+      <member refid="classendstone_1_1Metrics_1aa9a9dd49f426415c8027fb996eca698e" prot="public" virt="non-virtual"><scope>endstone::Metrics</scope><name>shutdown</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

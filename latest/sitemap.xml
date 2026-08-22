@@ -237,6 +237,14 @@
          <lastmod>2026-08-22</lastmod>
     </url>
     <url>
+         <loc>https://endstone.dev/latest/reference/cpp/classendstone_1_1AdvancedBarChart/</loc>
+         <lastmod>2026-08-22</lastmod>
+    </url>
+    <url>
+         <loc>https://endstone.dev/latest/reference/cpp/classendstone_1_1AdvancedPie/</loc>
+         <lastmod>2026-08-22</lastmod>
+    </url>
+    <url>
          <loc>https://endstone.dev/latest/reference/cpp/classendstone_1_1Attribute/</loc>
          <lastmod>2026-08-22</lastmod>
     </url>
@@ -421,6 +429,10 @@
          <lastmod>2026-08-22</lastmod>
     </url>
     <url>
+         <loc>https://endstone.dev/latest/reference/cpp/classendstone_1_1CustomChart/</loc>
+         <lastmod>2026-08-22</lastmod>
+    </url>
+    <url>
          <loc>https://endstone.dev/latest/reference/cpp/classendstone_1_1DamageSource/</loc>
          <lastmod>2026-08-22</lastmod>
     </url>
@@ -438,6 +450,10 @@
     </url>
     <url>
          <loc>https://endstone.dev/latest/reference/cpp/classendstone_1_1Divider/</loc>
+         <lastmod>2026-08-22</lastmod>
+    </url>
+    <url>
+         <loc>https://endstone.dev/latest/reference/cpp/classendstone_1_1DrilldownPie/</loc>
          <lastmod>2026-08-22</lastmod>
     </url>
     <url>
@@ -617,11 +633,23 @@
          <lastmod>2026-08-22</lastmod>
     </url>
     <url>
+         <loc>https://endstone.dev/latest/reference/cpp/classendstone_1_1Metrics/</loc>
+         <lastmod>2026-08-22</lastmod>
+    </url>
+    <url>
+         <loc>https://endstone.dev/latest/reference/cpp/classendstone_1_1MetricsBase/</loc>
+         <lastmod>2026-08-22</lastmod>
+    </url>
+    <url>
          <loc>https://endstone.dev/latest/reference/cpp/classendstone_1_1Mob/</loc>
          <lastmod>2026-08-22</lastmod>
     </url>
     <url>
          <loc>https://endstone.dev/latest/reference/cpp/classendstone_1_1ModalForm/</loc>
+         <lastmod>2026-08-22</lastmod>
+    </url>
+    <url>
+         <loc>https://endstone.dev/latest/reference/cpp/classendstone_1_1MultiLineChart/</loc>
          <lastmod>2026-08-22</lastmod>
     </url>
     <url>
@@ -962,6 +990,18 @@
     </url>
     <url>
          <loc>https://endstone.dev/latest/reference/cpp/classendstone_1_1SignSide/</loc>
+         <lastmod>2026-08-22</lastmod>
+    </url>
+    <url>
+         <loc>https://endstone.dev/latest/reference/cpp/classendstone_1_1SimpleBarChart/</loc>
+         <lastmod>2026-08-22</lastmod>
+    </url>
+    <url>
+         <loc>https://endstone.dev/latest/reference/cpp/classendstone_1_1SimplePie/</loc>
+         <lastmod>2026-08-22</lastmod>
+    </url>
+    <url>
+         <loc>https://endstone.dev/latest/reference/cpp/classendstone_1_1SingleLineChart/</loc>
          <lastmod>2026-08-22</lastmod>
     </url>
     <url>
@@ -2789,6 +2829,90 @@
          <lastmod>2026-08-22</lastmod>
     </url>
     <url>
+         <loc>https://endstone.dev/latest/reference/cpp/dir_95fec5260bb99ef3604f473dea0c36de/</loc>
+         <lastmod>2026-08-22</lastmod>
+    </url>
+    <url>
+         <loc>https://endstone.dev/latest/reference/cpp/advanced__bar__chart_8h/</loc>
+         <lastmod>2026-08-22</lastmod>
+    </url>
+    <url>
+         <loc>https://endstone.dev/latest/reference/cpp/advanced__bar__chart_8h_source/</loc>
+         <lastmod>2026-08-22</lastmod>
+    </url>
+    <url>
+         <loc>https://endstone.dev/latest/reference/cpp/advanced__pie_8h/</loc>
+         <lastmod>2026-08-22</lastmod>
+    </url>
+    <url>
+         <loc>https://endstone.dev/latest/reference/cpp/advanced__pie_8h_source/</loc>
+         <lastmod>2026-08-22</lastmod>
+    </url>
+    <url>
+         <loc>https://endstone.dev/latest/reference/cpp/base_8h/</loc>
+         <lastmod>2026-08-22</lastmod>
+    </url>
+    <url>
+         <loc>https://endstone.dev/latest/reference/cpp/base_8h_source/</loc>
+         <lastmod>2026-08-22</lastmod>
+    </url>
+    <url>
+         <loc>https://endstone.dev/latest/reference/cpp/custom__chart_8h/</loc>
+         <lastmod>2026-08-22</lastmod>
+    </url>
+    <url>
+         <loc>https://endstone.dev/latest/reference/cpp/custom__chart_8h_source/</loc>
+         <lastmod>2026-08-22</lastmod>
+    </url>
+    <url>
+         <loc>https://endstone.dev/latest/reference/cpp/drilldown__pie_8h/</loc>
+         <lastmod>2026-08-22</lastmod>
+    </url>
+    <url>
+         <loc>https://endstone.dev/latest/reference/cpp/drilldown__pie_8h_source/</loc>
+         <lastmod>2026-08-22</lastmod>
+    </url>
+    <url>
+         <loc>https://endstone.dev/latest/reference/cpp/metrics_8h/</loc>
+         <lastmod>2026-08-22</lastmod>
+    </url>
+    <url>
+         <loc>https://endstone.dev/latest/reference/cpp/metrics_8h_source/</loc>
+         <lastmod>2026-08-22</lastmod>
+    </url>
+    <url>
+         <loc>https://endstone.dev/latest/reference/cpp/multi__line__chart_8h/</loc>
+         <lastmod>2026-08-22</lastmod>
+    </url>
+    <url>
+         <loc>https://endstone.dev/latest/reference/cpp/multi__line__chart_8h_source/</loc>
+         <lastmod>2026-08-22</lastmod>
+    </url>
+    <url>
+         <loc>https://endstone.dev/latest/reference/cpp/simple__bar__chart_8h/</loc>
+         <lastmod>2026-08-22</lastmod>
+    </url>
+    <url>
+         <loc>https://endstone.dev/latest/reference/cpp/simple__bar__chart_8h_source/</loc>
+         <lastmod>2026-08-22</lastmod>
+    </url>
+    <url>
+         <loc>https://endstone.dev/latest/reference/cpp/simple__pie_8h/</loc>
+         <lastmod>2026-08-22</lastmod>
+    </url>
+    <url>
+         <loc>https://endstone.dev/latest/reference/cpp/simple__pie_8h_source/</loc>
+         <lastmod>2026-08-22</lastmod>
+    </url>
+    <url>
+         <loc>https://endstone.dev/latest/reference/cpp/single__line__chart_8h/</loc>
+         <lastmod>2026-08-22</lastmod>
+    </url>
+    <url>
+         <loc>https://endstone.dev/latest/reference/cpp/single__line__chart_8h_source/</loc>
+         <lastmod>2026-08-22</lastmod>
+    </url>
+    <url>
          <loc>https://endstone.dev/latest/reference/cpp/dir_777e494cd9d9b9aeedcd0556d83eeb02/</loc>
          <lastmod>2026-08-22</lastmod>
     </url>
@@ -3158,6 +3282,14 @@
     </url>
     <url>
          <loc>https://endstone.dev/latest/reference/cpp/input_8h_source/</loc>
+         <lastmod>2026-08-22</lastmod>
+    </url>
+    <url>
+         <loc>https://endstone.dev/latest/reference/cpp/json_8h/</loc>
+         <lastmod>2026-08-22</lastmod>
+    </url>
+    <url>
+         <loc>https://endstone.dev/latest/reference/cpp/json_8h_source/</loc>
          <lastmod>2026-08-22</lastmod>
     </url>
     <url>

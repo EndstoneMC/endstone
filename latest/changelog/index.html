@@ -5589,6 +5589,9 @@ and this project adheres to <a href="https://semver.org/spec/v2.0.0.html">Semant
 </ul>
 <h4 id="api-and-types">API and types<a class="headerlink" href="#api-and-types" title="Permanent link">&para;</a></h4>
 <ul>
+<li><code>endstone::Metrics</code> for C++ plugins, mirroring bStats' <code>Metrics(plugin, service_id)</code> and carrying all seven chart types plus <code>CustomChart</code>. The server owns what it creates and retires it on reload, so a plugin can add its charts in <code>onEnable</code> and forget the handle. One service id gets one Metrics, however many times it is asked for.</li>
+<li><code>endstone.metrics</code> chart classes are now the C++ ones, so a chart behaves identically whichever language declares it. Python plugins keep the same <code>SimplePie("id", callback)</code> usage and can still subclass <code>CustomChart</code>, whose <code>get_chart_data()</code> returns JSON.</li>
+<li>nlohmann/json is part of the public C++ API, with <code>endstone::JsonValue</code>, <code>JsonObject</code> and <code>JsonArray</code> naming the three shapes (and <code>endstone.JsonValue</code> / <code>JsonObject</code> / <code>JsonArray</code> in Python). <code>endstone_add_plugin()</code> links it for you.</li>
 <li>Unified <code>Object.as&lt;T&gt;()</code>/<code>is&lt;T&gt;()</code> casting API. <code>NotNull&lt;T&gt;</code> and <code>Nullable&lt;T&gt;</code> carry the same pair, so <code>event.getActor().as&lt;Player&gt;()</code> returns a <code>Nullable&lt;Player&gt;</code> sharing ownership with the original.</li>
 <li><code>endstone.Identifier</code> for namespaced ids, splitting <code>dim.id.namespace</code> from <code>dim.id.key</code> and distinguishing <code>Identifier[Dimension]</code> from <code>Identifier[ActorType]</code>. Plain strings are still accepted.</li>
 <li><code>ActorType</code>, <code>EffectType</code> and <code>PotionType</code> in the registry API, each entry carrying a <code>translation_key</code>, plus the missing <code>ActorType.SULFUR_CUBE</code> constant.</li>
@@ -5603,6 +5606,11 @@ and this project adheres to <a href="https://semver.org/spec/v2.0.0.html">Semant
 <li>A <code>docker-compose.yml</code> for running the server with Docker Compose.</li>
 </ul>
 <h3 id="changed">Changed<a class="headerlink" href="#changed" title="Permanent link">&para;</a></h3>
+<h4 id="json-payloads">JSON payloads<a class="headerlink" href="#json-payloads" title="Permanent link">&para;</a></h4>
+<ul>
+<li><strong>BREAKING</strong>: <code>ModalForm</code>'s submit callback receives the parsed response instead of a JSON string: a <code>JsonArray</code> in C++, a <code>JsonArray</code> (<code>list</code>) in Python. A Python handler doing <code>json.loads(data)</code> must drop the call, and a C++ one must stop parsing the string itself.</li>
+<li><strong>BREAKING</strong>: <code>Player.spawn_particle()</code> takes the molang variables as a <code>JsonObject</code> (a <code>dict</code> in Python), and the parameter is renamed <code>molang_variables_json</code> -&gt; <code>molang_variables</code>. Both the rename and the type change make an old call fail rather than send the wrong payload.</li>
+</ul>
 <h4 id="smart-handles">Smart handles<a class="headerlink" href="#smart-handles" title="Permanent link">&para;</a></h4>
 <ul>
 <li><strong>BREAKING</strong>: Every API that returned a raw <code>std::unique_ptr</code> now returns a smart handle stating whether it can be absent. <code>ItemStack.item_meta</code>, <code>ItemFactory.get_item_meta()</code>, <code>ItemFactory.as_meta_for()</code>, <code>Scoreboard.get_objective()</code>, <code>Mob.get_attribute()</code> and <code>PlayerInteractEvent.block</code> are <code>Nullable</code>; the rest are <code>NotNull</code>. C++ plugins use <code>-&gt;</code> where they used <code>.</code>; Python call sites are unchanged.</li>

@@ -21,6 +21,7 @@
 * `#include "endstone/form/modal_form.h"`
 * `#include "endstone/game_mode.h"`
 * `#include "endstone/inventory/player_inventory.h"`
+* `#include "endstone/json.h"`
 * `#include "endstone/level/location.h"`
 * `#include "endstone/map/map_view.h"`
 * `#include "endstone/scoreboard/scoreboard.h"`
