@@ -3,18 +3,18 @@ project(endstone VERSION 0.12.0 LANGUAGES CXX)
 
 include(FetchContent)
 
+# Both tags track conanfile.py: a plugin built without conan still has to agree with the server on
+# the layout of every type they pass across the boundary.
 find_package(expected-lite QUIET)
 if (NOT expected-lite_FOUND)
     FetchContent_Declare(
             expected-lite
             GIT_REPOSITORY https://github.com/martinmoene/expected-lite.git
-            GIT_TAG v0.8.0
+            GIT_TAG v0.9.0
     )
     FetchContent_MakeAvailable(expected-lite)
 endif ()
 
-# Keep the tag in step with conanfile.py: the server and a plugin must agree on the layout of
-# every type they pass across the boundary.
 find_package(nlohmann_json QUIET)
 if (NOT nlohmann_json_FOUND)
     FetchContent_Declare(

@@ -93,9 +93,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Changed
 
-#### Forms
+#### JSON payloads
 
 - **BREAKING**: `ModalForm`'s submit callback receives the parsed response instead of a JSON string. C++ takes a `nlohmann::json`, Python a `list`; a Python handler doing `json.loads(data)` must drop the call, and a C++ one must stop parsing the string itself.
+- **BREAKING**: `Player.spawn_particle()` takes the molang variables as JSON, and the parameter is renamed `molang_variables_json` -> `molang_variables`. Passing a keyword now fails loudly, but a **positional** string still compiles and is serialized as a JSON string rather than an object, so audit any call that built the JSON by hand.
 
 #### Smart handles
 

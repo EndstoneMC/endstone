@@ -774,20 +774,21 @@ void init_player(py::module_ &m, py_class<Player> &player)
 
     This will clear the displayed title / subtitle and reset timings to their default values.
 )doc")
-        .def("spawn_particle",
-             py::overload_cast<std::string, Location, std::optional<std::string>>(&Player::spawnParticle, py::const_),
-             py::arg("name"), py::arg("location").noconvert(), py::arg("molang_variables_json") = std::nullopt, R"doc(
+        .def(
+            "spawn_particle",
+            py::overload_cast<std::string, Location, std::optional<nlohmann::json>>(&Player::spawnParticle, py::const_),
+            py::arg("name"), py::arg("location").noconvert(), py::arg("molang_variables") = std::nullopt, R"doc(
     Spawns the particle at the target location.
 
     Args:
         name: The name of the particle effect to spawn.
         location: The location to spawn at.
-        molang_variables_json: The customizable molang variables that can be adjusted for this particle, in json.
+        molang_variables: The customizable molang variables that can be adjusted for this particle.
 )doc")
         .def("spawn_particle",
-             py::overload_cast<std::string, float, float, float, std::optional<std::string>>(&Player::spawnParticle,
-                                                                                             py::const_),
-             py::arg("name"), py::arg("x"), py::arg("y"), py::arg("z"), py::arg("molang_variables_json") = std::nullopt,
+             py::overload_cast<std::string, float, float, float, std::optional<nlohmann::json>>(&Player::spawnParticle,
+                                                                                                py::const_),
+             py::arg("name"), py::arg("x"), py::arg("y"), py::arg("z"), py::arg("molang_variables") = std::nullopt,
              R"doc(
     Spawns the particle at the target location.
 
@@ -796,7 +797,7 @@ void init_player(py::module_ &m, py_class<Player> &player)
         x: The position on the x axis to spawn at.
         y: The position on the y axis to spawn at.
         z: The position on the z axis to spawn at.
-        molang_variables_json: The customizable molang variables that can be adjusted for this particle, in json.
+        molang_variables: The customizable molang variables that can be adjusted for this particle.
 )doc")
         .def_property_readonly(
             "ping", [](const Player &self) { return self.getPing().count(); },

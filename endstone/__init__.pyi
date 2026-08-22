@@ -728,18 +728,20 @@ class Player(Mob):
         """
 
     @typing.overload
-    def spawn_particle(self, name: str, location: Location, molang_variables_json: str | None = None) -> None:
+    def spawn_particle(self, name: str, location: Location, molang_variables: typing.Any | None = None) -> None:
         """
         Spawns the particle at the target location.
 
         Args:
             name: The name of the particle effect to spawn.
             location: The location to spawn at.
-            molang_variables_json: The customizable molang variables that can be adjusted for this particle, in json.
+            molang_variables: The customizable molang variables that can be adjusted for this particle.
         """
 
     @typing.overload
-    def spawn_particle(self, name: str, x: float, y: float, z: float, molang_variables_json: str | None = None) -> None:
+    def spawn_particle(
+        self, name: str, x: float, y: float, z: float, molang_variables: typing.Any | None = None
+    ) -> None:
         """
         Spawns the particle at the target location.
 
@@ -748,7 +750,7 @@ class Player(Mob):
             x: The position on the x axis to spawn at.
             y: The position on the y axis to spawn at.
             z: The position on the z axis to spawn at.
-            molang_variables_json: The customizable molang variables that can be adjusted for this particle, in json.
+            molang_variables: The customizable molang variables that can be adjusted for this particle.
         """
 
     @property

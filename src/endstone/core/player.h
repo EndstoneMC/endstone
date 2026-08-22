@@ -110,9 +110,9 @@ public:
     void spawnParticle(std::string name, Location location) const override;
     void spawnParticle(std::string name, float x, float y, float z) const override;
     void spawnParticle(std::string name, Location location,
-                       std::optional<std::string> molang_variables_json) const override;
+                       std::optional<nlohmann::json> molang_variables) const override;
     void spawnParticle(std::string name, float x, float y, float z,
-                       std::optional<std::string> molang_variables_json) const override;
+                       std::optional<nlohmann::json> molang_variables) const override;
     [[nodiscard]] std::chrono::milliseconds getPing() const override;
     void updateCommands() const override;
 

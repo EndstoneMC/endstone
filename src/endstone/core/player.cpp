@@ -528,13 +528,13 @@ void EndstonePlayer::spawnParticle(std::string name, float x, float y, float z) 
 }
 
 void EndstonePlayer::spawnParticle(std::string name, Location location,
-                                   std::optional<std::string> molang_variables_json) const
+                                   std::optional<nlohmann::json> molang_variables) const
 {
-    spawnParticle(name, location.getX(), location.getY(), location.getZ(), molang_variables_json);
+    spawnParticle(name, location.getX(), location.getY(), location.getZ(), std::move(molang_variables));
 }
 
 void EndstonePlayer::spawnParticle(std::string name, float x, float y, float z,
-                                   std::optional<std::string> molang_variables_json) const
+                                   std::optional<nlohmann::json> molang_variables) const
 {
     BinaryStream stream;
     stream.writeByte(getHandle().getDimension().getDimensionId().value, "Dimension Id", nullptr);
@@ -544,10 +544,10 @@ void EndstonePlayer::spawnParticle(std::string name, float x, float y, float z,
     stream.writeFloat(z, "Z", nullptr);
     stream.writeString(name, "Effect Name",
                        "Should be an effect that exists on the client. No-op if the effect doesn't exist.");
-    stream.writeBool(molang_variables_json.has_value(), "Has Value",
+    stream.writeBool(molang_variables.has_value(), "Has Value",
                      "If true, follow with appropriate data type, otherwise nothing");
-    if (molang_variables_json.has_value()) {
-        stream.writeString(molang_variables_json.value(), "Serialized Variable Map", nullptr);
+    if (molang_variables.has_value()) {
+        stream.writeString(molang_variables->dump(), "Serialized Variable Map", nullptr);
     }
     sendPacket(static_cast<int>(MinecraftPacketIds::SpawnParticleEffect), stream.getView());
 }

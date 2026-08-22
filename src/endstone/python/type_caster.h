@@ -14,6 +14,9 @@
 
 #pragma once
 
+#include <algorithm>
+#include <vector>
+
 #include <nlohmann/json.hpp>
 #include <pybind11/numpy.h>
 #include <pybind11/pybind11.h>
@@ -447,7 +450,8 @@ public:
     bool load(handle src, bool)
     {
         try {
-            value = toJson(src);
+            std::vector<PyObject *> open;
+            value = toJson(src, open);
         }
         catch (const std::exception &) {
             return false;
@@ -465,7 +469,9 @@ public:
 private:
     // pybind11/operators.h puts an `int_` and a `float_` in this namespace, so every pybind type
     // here has to be spelled out.
-    static nlohmann::json toJson(const pybind11::handle &src)
+    // `open` holds the containers on the current recursion path, so a dict or list reachable from
+    // itself is rejected instead of overflowing the stack.
+    static nlohmann::json toJson(const pybind11::handle &src, std::vector<PyObject *> &open)
     {
         if (src.is_none()) {
             return nullptr;
@@ -482,21 +488,31 @@ private:
         if (pybind11::isinstance<pybind11::str>(src)) {
             return src.cast<std::string>();
         }
+        const auto is_container = pybind11::isinstance<pybind11::dict>(src) ||
+                                  pybind11::isinstance<pybind11::list>(src) ||
+                                  pybind11::isinstance<pybind11::tuple>(src);
+        if (!is_container) {
+            throw std::invalid_argument("object is not JSON serializable");
+        }
+        if (std::find(open.begin(), open.end(), src.ptr()) != open.end()) {
+            throw std::invalid_argument("object contains a circular reference");
+        }
+        open.push_back(src.ptr());
+        auto result = nlohmann::json();
         if (pybind11::isinstance<pybind11::dict>(src)) {
-            auto object = nlohmann::json::object();
+            result = nlohmann::json::object();
             for (auto item : src.cast<pybind11::dict>()) {
-                object[item.first.cast<std::string>()] = toJson(item.second);
+                result[item.first.cast<std::string>()] = toJson(item.second, open);
             }
-            return object;
         }
-        if (pybind11::isinstance<pybind11::list>(src) || pybind11::isinstance<pybind11::tuple>(src)) {
-            auto array = nlohmann::json::array();
+        else {
+            result = nlohmann::json::array();
             for (auto item : src) {
-                array.push_back(toJson(item));
+                result.push_back(toJson(item, open));
             }
-            return array;
         }
-        throw std::invalid_argument("object is not JSON serializable");
+        open.pop_back();
+        return result;
     }
 
     static pybind11::object toPython(const nlohmann::json &src)
