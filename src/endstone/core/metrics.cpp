@@ -134,7 +134,7 @@ void scheduleServerMetricsTask(const std::shared_ptr<ServerMetricsState> &state,
     }
 }
 
-class PluginMetrics final : public metrics::MetricsBase {
+class PluginMetrics final : public MetricsBase {
 public:
     PluginMetrics(Plugin &plugin, int service_id)
     {
@@ -154,7 +154,7 @@ public:
 
     ~PluginMetrics() override { shutdown(); }
 
-    void addCustomChart(std::unique_ptr<metrics::CustomChart> chart) override
+    void addCustomChart(std::unique_ptr<CustomChart> chart) override
     {
         if (!chart) {
             throw std::invalid_argument("chart cannot be null");
@@ -292,7 +292,7 @@ EndstoneMetrics::EndstoneMetrics(Server &server) : impl_(std::make_unique<Impl>(
 
 EndstoneMetrics::~EndstoneMetrics() = default;
 
-std::unique_ptr<metrics::MetricsBase> createPluginMetrics(Plugin &plugin, int service_id)
+std::unique_ptr<MetricsBase> createPluginMetrics(Plugin &plugin, int service_id)
 {
     return std::make_unique<PluginMetrics>(plugin, service_id);
 }

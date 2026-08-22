@@ -21,7 +21,7 @@
 
 #include "endstone/metrics/custom_chart.h"
 
-namespace endstone::metrics {
+namespace endstone {
 
 /** A bStats pie chart with a single value. */
 class SimplePie : public CustomChart {
@@ -45,4 +45,4 @@ public:
 private:
     Callback get_value_;
 };
-}  // namespace endstone::metrics
+}  // namespace endstone

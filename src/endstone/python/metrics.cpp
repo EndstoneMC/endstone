@@ -19,21 +19,19 @@ namespace py = pybind11;
 namespace endstone::python {
 
 namespace {
-class PyCustomChart : public metrics::CustomChart, public py::trampoline_self_life_support {
+class PyCustomChart : public CustomChart, public py::trampoline_self_life_support {
 public:
     using CustomChart::CustomChart;
 
-    std::optional<metrics::ChartData> getChartData() override
+    std::optional<ChartData> getChartData() override
     {
-        PYBIND11_OVERRIDE_PURE_NAME(std::optional<metrics::ChartData>, CustomChart, "get_chart_data", getChartData);
+        PYBIND11_OVERRIDE_PURE_NAME(std::optional<ChartData>, CustomChart, "get_chart_data", getChartData);
     }
 };
 }  // namespace
 
 void init_metrics(py::module_ &m)
 {
-    using namespace endstone::metrics;
-
     py::classh<CustomChart, PyCustomChart>(m, "CustomChart", R"doc(
     Represents a custom chart.
 

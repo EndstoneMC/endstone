@@ -36,17 +36,17 @@
 namespace fs = std::filesystem;
 namespace py = pybind11;
 
-using endstone::metrics::AdvancedBarChart;
-using endstone::metrics::AdvancedPie;
-using endstone::metrics::BarValues;
-using endstone::metrics::DrilldownPie;
-using endstone::metrics::DrilldownValues;
-using endstone::metrics::Metrics;
-using endstone::metrics::MultiLineChart;
-using endstone::metrics::SimpleBarChart;
-using endstone::metrics::SimplePie;
-using endstone::metrics::SingleLineChart;
-using endstone::metrics::StringValues;
+using endstone::AdvancedBarChart;
+using endstone::AdvancedPie;
+using endstone::BarValues;
+using endstone::DrilldownPie;
+using endstone::DrilldownValues;
+using endstone::Metrics;
+using endstone::MultiLineChart;
+using endstone::SimpleBarChart;
+using endstone::SimplePie;
+using endstone::SingleLineChart;
+using endstone::StringValues;
 
 namespace {
 

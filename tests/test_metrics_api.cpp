@@ -24,18 +24,18 @@
 
 #include "endstone/metrics/metrics.h"
 
-using endstone::metrics::AdvancedBarChart;
-using endstone::metrics::AdvancedPie;
-using endstone::metrics::BarValues;
-using endstone::metrics::ChartData;
-using endstone::metrics::CustomChart;
-using endstone::metrics::DrilldownPie;
-using endstone::metrics::DrilldownValues;
-using endstone::metrics::MultiLineChart;
-using endstone::metrics::SimpleBarChart;
-using endstone::metrics::SimplePie;
-using endstone::metrics::SingleLineChart;
-using endstone::metrics::StringValues;
+using endstone::AdvancedBarChart;
+using endstone::AdvancedPie;
+using endstone::BarValues;
+using endstone::ChartData;
+using endstone::CustomChart;
+using endstone::DrilldownPie;
+using endstone::DrilldownValues;
+using endstone::MultiLineChart;
+using endstone::SimpleBarChart;
+using endstone::SimplePie;
+using endstone::SingleLineChart;
+using endstone::StringValues;
 
 namespace {
 class TestChart : public CustomChart {

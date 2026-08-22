@@ -29,7 +29,7 @@
 #include "endstone/plugin/plugin.h"
 #include "endstone/server.h"
 
-namespace endstone::metrics {
+namespace endstone {
 
 /**
  * Collects and submits anonymous usage statistics for a plugin to bStats.
@@ -70,4 +70,4 @@ public:
 private:
     std::unique_ptr<MetricsBase> impl_;
 };
-}  // namespace endstone::metrics
+}  // namespace endstone

@@ -503,7 +503,7 @@ Scheduler &EndstoneServer::getScheduler() const
     return *scheduler_;
 }
 
-std::unique_ptr<metrics::MetricsBase> EndstoneServer::createMetrics(Plugin &plugin, int service_id) const
+std::unique_ptr<MetricsBase> EndstoneServer::createMetrics(Plugin &plugin, int service_id) const
 {
     return createPluginMetrics(plugin, service_id);
 }

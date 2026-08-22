@@ -21,7 +21,7 @@
 
 #include "endstone/metrics/custom_chart.h"
 
-namespace endstone::metrics {
+namespace endstone {
 
 /** A bStats pie chart with grouped named values. */
 class DrilldownPie : public CustomChart {
@@ -55,4 +55,4 @@ public:
 private:
     Callback get_values_;
 };
-}  // namespace endstone::metrics
+}  // namespace endstone

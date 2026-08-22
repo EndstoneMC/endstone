@@ -16,7 +16,7 @@
 
 #include <memory>
 
-namespace endstone::metrics {
+namespace endstone {
 
 class CustomChart;
 
@@ -44,4 +44,4 @@ public:
      */
     virtual void shutdown() noexcept = 0;
 };
-}  // namespace endstone::metrics
+}  // namespace endstone

@@ -22,7 +22,7 @@
 #include <variant>
 #include <vector>
 
-namespace endstone::metrics {
+namespace endstone {
 
 using StringValues = std::unordered_map<std::string, int>;
 using DrilldownValues = std::unordered_map<std::string, StringValues>;
@@ -73,4 +73,4 @@ public:
 private:
     std::string chart_id_;
 };
-}  // namespace endstone::metrics
+}  // namespace endstone

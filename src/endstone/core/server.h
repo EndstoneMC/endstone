@@ -75,7 +75,7 @@ public:
 
     [[nodiscard]] Scheduler &getScheduler() const override;
     [[nodiscard]] EndstoneScheduler &getEndstoneScheduler() const;
-    [[nodiscard]] std::unique_ptr<metrics::MetricsBase> createMetrics(Plugin &plugin, int service_id) const override;
+    [[nodiscard]] std::unique_ptr<MetricsBase> createMetrics(Plugin &plugin, int service_id) const override;
 
     [[nodiscard]] Level &getLevel() const override;
     [[nodiscard]] EndstoneLevel *getEndstoneLevel() const;

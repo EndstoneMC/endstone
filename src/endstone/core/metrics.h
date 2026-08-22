@@ -36,6 +36,6 @@ private:
     std::unique_ptr<Impl> impl_;
 };
 
-[[nodiscard]] std::unique_ptr<metrics::MetricsBase> createPluginMetrics(Plugin &plugin, int service_id);
+[[nodiscard]] std::unique_ptr<MetricsBase> createPluginMetrics(Plugin &plugin, int service_id);
 
 }  // namespace endstone::core

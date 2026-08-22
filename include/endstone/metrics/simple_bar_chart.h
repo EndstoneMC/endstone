@@ -22,7 +22,7 @@
 
 #include "endstone/metrics/custom_chart.h"
 
-namespace endstone::metrics {
+namespace endstone {
 
 /** A bStats bar chart with a single bar per category. */
 class SimpleBarChart : public CustomChart {
@@ -50,4 +50,4 @@ public:
 private:
     Callback get_values_;
 };
-}  // namespace endstone::metrics
+}  // namespace endstone
