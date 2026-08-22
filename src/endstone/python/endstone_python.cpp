@@ -774,10 +774,10 @@ void init_player(py::module_ &m, py_class<Player> &player)
 
     This will clear the displayed title / subtitle and reset timings to their default values.
 )doc")
-        .def(
-            "spawn_particle",
-            py::overload_cast<std::string, Location, std::optional<nlohmann::json>>(&Player::spawnParticle, py::const_),
-            py::arg("name"), py::arg("location").noconvert(), py::arg("molang_variables") = std::nullopt, R"doc(
+        .def("spawn_particle",
+             py::overload_cast<std::string, Location, std::optional<nlohmann::json::object_t>>(&Player::spawnParticle,
+                                                                                               py::const_),
+             py::arg("name"), py::arg("location").noconvert(), py::arg("molang_variables") = std::nullopt, R"doc(
     Spawns the particle at the target location.
 
     Args:
@@ -786,8 +786,8 @@ void init_player(py::module_ &m, py_class<Player> &player)
         molang_variables: The customizable molang variables that can be adjusted for this particle.
 )doc")
         .def("spawn_particle",
-             py::overload_cast<std::string, float, float, float, std::optional<nlohmann::json>>(&Player::spawnParticle,
-                                                                                                py::const_),
+             py::overload_cast<std::string, float, float, float, std::optional<nlohmann::json::object_t>>(
+                 &Player::spawnParticle, py::const_),
              py::arg("name"), py::arg("x"), py::arg("y"), py::arg("z"), py::arg("molang_variables") = std::nullopt,
              R"doc(
     Spawns the particle at the target location.

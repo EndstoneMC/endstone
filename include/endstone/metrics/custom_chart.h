@@ -64,11 +64,11 @@ public:
     /**
      * Gets the data for this chart.
      *
-     * This is called on the primary server thread. A null value omits the chart from the submission.
+     * This is called on the primary server thread. Returning no value omits the chart from the submission.
      *
-     * @return the chart data, or a null value to skip this chart
+     * @return the chart data, or no value to skip this chart
      */
-    [[nodiscard]] virtual nlohmann::json getChartData() = 0;
+    [[nodiscard]] virtual std::optional<nlohmann::json::object_t> getChartData() = 0;
 
 private:
     std::string chart_id_;

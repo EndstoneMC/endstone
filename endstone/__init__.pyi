@@ -728,7 +728,9 @@ class Player(Mob):
         """
 
     @typing.overload
-    def spawn_particle(self, name: str, location: Location, molang_variables: typing.Any | None = None) -> None:
+    def spawn_particle(
+        self, name: str, location: Location, molang_variables: collections.abc.Mapping[str, typing.Any] | None = None
+    ) -> None:
         """
         Spawns the particle at the target location.
 
@@ -740,7 +742,12 @@ class Player(Mob):
 
     @typing.overload
     def spawn_particle(
-        self, name: str, x: float, y: float, z: float, molang_variables: typing.Any | None = None
+        self,
+        name: str,
+        x: float,
+        y: float,
+        z: float,
+        molang_variables: collections.abc.Mapping[str, typing.Any] | None = None,
     ) -> None:
         """
         Spawns the particle at the target location.

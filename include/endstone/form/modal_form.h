@@ -42,7 +42,7 @@ namespace endstone {
 class ModalForm : public Form<ModalForm> {
 public:
     using Control = std::variant<Dropdown, Label, Slider, StepSlider, TextInput, Toggle, Divider, Header>;
-    using OnSubmitCallback = std::function<void(const NotNull<Player> &, nlohmann::json)>;
+    using OnSubmitCallback = std::function<void(const NotNull<Player> &, nlohmann::json::array_t)>;
 
     /**
      * Adds a control to the form.

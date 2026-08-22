@@ -400,7 +400,7 @@ public:
      * @param molang_variables the customizable molang variables that can be adjusted for this particle
      */
     virtual void spawnParticle(std::string name, Location location,
-                               std::optional<nlohmann::json> molang_variables) const = 0;
+                               std::optional<nlohmann::json::object_t> molang_variables) const = 0;
 
     /**
      * Spawns the particle at the target location.
@@ -412,7 +412,7 @@ public:
      * @param molang_variables the customizable molang variables that can be adjusted for this particle
      */
     virtual void spawnParticle(std::string name, float x, float y, float z,
-                               std::optional<nlohmann::json> molang_variables) const = 0;
+                               std::optional<nlohmann::json::object_t> molang_variables) const = 0;
 
     // TODO: getClientViewDistance
 
