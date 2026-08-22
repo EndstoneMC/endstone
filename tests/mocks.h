@@ -16,7 +16,7 @@
 
 #include <gmock/gmock.h>
 
-#include "endstone/metrics/metrics_base.h"
+#include "endstone/metrics/base.h"
 #include "endstone/server.h"
 
 class MockServer : public endstone::Server {

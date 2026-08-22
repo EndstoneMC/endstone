@@ -19,7 +19,7 @@
 
 #include "endstone/metrics/advanced_bar_chart.h"
 #include "endstone/metrics/advanced_pie.h"
-#include "endstone/metrics/metrics_base.h"
+#include "endstone/metrics/base.h"
 #include "endstone/metrics/custom_chart.h"
 #include "endstone/metrics/drilldown_pie.h"
 #include "endstone/metrics/multi_line_chart.h"

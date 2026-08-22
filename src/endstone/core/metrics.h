@@ -20,7 +20,7 @@
 
 #include <pybind11/pybind11.h>
 
-#include "endstone/metrics/metrics_base.h"
+#include "endstone/metrics/base.h"
 #include "endstone/server.h"
 
 namespace endstone::core {
