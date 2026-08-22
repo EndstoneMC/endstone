@@ -1,3 +1,4 @@
+import types
 import uuid
 
 import pytest
@@ -8,6 +9,7 @@ from endstone.metrics import (
     AdvancedPie,
     CustomChart,
     DrilldownPie,
+    Metrics,
     MetricsBase,
     MultiLineChart,
     SimpleBarChart,
@@ -157,3 +159,30 @@ def test_a_failing_chart_is_reported_and_skipped(submitted) -> None:
 
     assert submitted[0]["service"]["customCharts"] == [{"chartId": "fine", "data": {"value": "v"}}]
     assert metrics.errors == ["Failed to get data for custom chart with id broken"]
+
+
+class FakePlugin:
+    """Stands in for either plugin kind: both answer _get_description()."""
+
+    def __init__(self, description) -> None:
+        self._description = description
+
+    def _get_description(self):
+        return self._description
+
+
+def test_service_data_carries_the_plugin_version() -> None:
+    """Verify the version is read through the trampoline hook, which a C++ plugin answers too."""
+    metrics = Metrics.__new__(Metrics)
+    metrics._plugin = FakePlugin(types.SimpleNamespace(version="1.2.3"))
+    service_data: dict = {}
+    metrics.append_service_data(service_data)
+    assert service_data == {"pluginVersion": "1.2.3"}
+
+
+def test_service_data_reports_a_missing_description() -> None:
+    """A Python plugin that was never loaded has no description; say so rather than AttributeError."""
+    metrics = Metrics.__new__(Metrics)
+    metrics._plugin = FakePlugin(None)
+    with pytest.raises(RuntimeError, match="Plugin description is not available"):
+        metrics.append_service_data({})

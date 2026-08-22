@@ -75,7 +75,6 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 #### API and types
 
 - `endstone::metrics::Metrics` for C++ plugins, mirroring bStats' `Metrics(plugin, service_id)` and carrying all seven chart types plus `CustomChart`. A plugin holds one as a member; destroying it stops collection and releases its charts.
-- `Plugin.plugin_description` in Python, exposing the description a plugin's loader declared for it.
 - `endstone.metrics` chart classes are now the C++ ones, so a chart behaves identically whichever language declares it. Python plugins keep the same `SimplePie("id", callback)` usage and can still subclass `CustomChart`, whose `get_chart_data()` returns JSON.
 - nlohmann/json is part of the public C++ API. `endstone_add_plugin()` links it for you, so a plugin can return a `nlohmann::json::object_t` from `CustomChart::getChartData()` and read a modal form response as an array.
 - Unified `Object.as<T>()`/`is<T>()` casting API. `NotNull<T>` and `Nullable<T>` carry the same pair, so `event.getActor().as<Player>()` returns a `Nullable<Player>` sharing ownership with the original.

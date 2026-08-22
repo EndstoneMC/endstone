@@ -93,7 +93,10 @@ class Metrics(MetricsBase):
         Args:
             service_data (dict[str, typing.Any]): The dict to append data to.
         """
-        service_data["pluginVersion"] = self._plugin.plugin_description.version
+        description = self._plugin._get_description()
+        if description is None:
+            raise RuntimeError("Plugin description is not available")
+        service_data["pluginVersion"] = description.version
 
     def submit_task(self, task: collections.abc.Callable[[], None]) -> None:
         if self._plugin is not None and not self._shutdown:
