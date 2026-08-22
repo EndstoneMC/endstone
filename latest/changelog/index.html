@@ -5577,7 +5577,8 @@ and this project adheres to <a href="https://semver.org/spec/v2.0.0.html">Semant
 <ul>
 <li><code>Level.create_dimension()</code> for registering an empty (void) dimension from -64 to 320 at runtime. The registration does not survive a restart, so call it again on every startup.</li>
 <li><code>Dimension.mobs</code> and <code>Dimension.players</code>, both narrowing <code>Dimension.actors</code>.</li>
-<li>Chunk loading API: <code>Dimension.load_chunk()</code>, <code>Dimension.unload_chunk()</code> and <code>Dimension.is_chunk_loaded()</code>.</li>
+<li>Chunk loading API: <code>Dimension.load_chunk()</code>, <code>Dimension.unload_chunk()</code>, <code>Dimension.unload_chunk_request()</code>, <code>Dimension.is_chunk_loaded()</code> and <code>Dimension.is_chunk_generated()</code>, plus <code>Chunk.load()</code>, <code>Chunk.unload()</code> and <code>Chunk.is_loaded()</code>. Bedrock has no synchronous chunk load, so <code>load_chunk()</code> keeps the chunk resident from a later tick onwards and does not make it tick. <code>unload_chunk()</code> reports whether the chunk actually went away, while <code>unload_chunk_request()</code> only releases the hold.</li>
+<li>Plugin chunk tickets: <code>Dimension.add_plugin_chunk_ticket()</code>, <code>remove_plugin_chunk_ticket()</code>, <code>remove_plugin_chunk_tickets()</code>, <code>get_plugin_chunk_tickets()</code> and <code>plugin_chunk_tickets</code>, with the same methods on <code>Chunk</code>. A ticket keeps a chunk loaded until it is removed or the owning plugin is disabled, and <code>unload_chunk()</code> leaves it alone.</li>
 </ul>
 <h4 id="commands-and-permissions">Commands and permissions<a class="headerlink" href="#commands-and-permissions" title="Permanent link">&para;</a></h4>
 <ul>

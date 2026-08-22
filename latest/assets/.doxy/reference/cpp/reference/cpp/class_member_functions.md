@@ -31,6 +31,7 @@
 * **addBan** ([**endstone::BanList**](classendstone_1_1BanList.md), [**endstone::IpBanList**](classendstone_1_1IpBanList.md), [**endstone::PlayerBanList**](classendstone_1_1PlayerBanList.md))
 * **addFlag** ([**endstone::BossBar**](classendstone_1_1BossBar.md))
 * **addPlayer** ([**endstone::BossBar**](classendstone_1_1BossBar.md))
+* **addPluginChunkTicket** ([**endstone::Chunk**](classendstone_1_1Chunk.md), [**endstone::Dimension**](classendstone_1_1Dimension.md))
 * **asABGR** ([**endstone::Color**](classendstone_1_1Color.md))
 * **asBGR** ([**endstone::Color**](classendstone_1_1Color.md))
 * **asRGB** ([**endstone::Color**](classendstone_1_1Color.md))
@@ -251,6 +252,7 @@
 * **getText** ([**endstone::Button**](classendstone_1_1Button.md), [**endstone::Label**](classendstone_1_1Label.md), [**endstone::Translatable**](classendstone_1_1Translatable.md))
 * **getCookTime** ([**endstone::Campfire**](classendstone_1_1Campfire.md), [**endstone::Furnace**](classendstone_1_1Furnace.md))
 * **getSize** ([**endstone::Campfire**](classendstone_1_1Campfire.md), [**endstone::Inventory**](classendstone_1_1Inventory.md))
+* **getPluginChunkTickets** ([**endstone::Chunk**](classendstone_1_1Chunk.md), [**endstone::Dimension**](classendstone_1_1Dimension.md))
 * **getChunk** ([**endstone::ChunkEvent**](classendstone_1_1ChunkEvent.md))
 * **getAlpha** ([**endstone::Color**](classendstone_1_1Color.md))
 * **getBlue** ([**endstone::Color**](classendstone_1_1Color.md))
@@ -563,6 +565,7 @@
 * **isVisible** ([**endstone::BossBar**](classendstone_1_1BossBar.md), [**endstone::MapCursor**](classendstone_1_1MapCursor.md))
 * **isCancellable** ([**endstone::Cancellable**](classendstone_1_1Cancellable.md), [**endstone::Event**](classendstone_1_1Event.md))
 * **isCancelled** ([**endstone::Cancellable**](classendstone_1_1Cancellable.md), [**endstone::Event**](classendstone_1_1Event.md), [**endstone::ICancellable**](classendstone_1_1ICancellable.md), [**endstone::Task**](classendstone_1_1Task.md))
+* **isLoaded** ([**endstone::Chunk**](classendstone_1_1Chunk.md))
 * **isInstanceOf** ([**endstone::Command**](classendstone_1_1Command.md), [**endstone::CommandSenderWrapper**](classendstone_1_1CommandSenderWrapper.md), [**endstone::Object**](classendstone_1_1Object.md), [**endstone::PluginCommand**](classendstone_1_1PluginCommand.md))
 * **isRegistered** ([**endstone::Command**](classendstone_1_1Command.md))
 * **isPermissionSet** ([**endstone::CommandSenderWrapper**](classendstone_1_1CommandSenderWrapper.md), [**endstone::Permissible**](classendstone_1_1Permissible.md))
@@ -570,6 +573,7 @@
 * **insert\_or\_assign** ([**endstone::CompoundTag**](classendstone_1_1CompoundTag.md))
 * **isReadOnly** ([**endstone::Criteria**](classendstone_1_1Criteria.md))
 * **isIndirect** ([**endstone::DamageSource**](classendstone_1_1DamageSource.md))
+* **isChunkGenerated** ([**endstone::Dimension**](classendstone_1_1Dimension.md))
 * **isChunkLoaded** ([**endstone::Dimension**](classendstone_1_1Dimension.md))
 * **id** ([**endstone::DimensionCreator**](classendstone_1_1DimensionCreator.md))
 * **isAmbient** ([**endstone::Effect**](classendstone_1_1Effect.md))
@@ -638,6 +642,7 @@
 
 ## l
 
+* **load** ([**endstone::Chunk**](classendstone_1_1Chunk.md), [**endstone::ServiceManager**](classendstone_1_1ServiceManager.md))
 * **loadChunk** ([**endstone::Dimension**](classendstone_1_1Dimension.md))
 * **Label** ([**endstone::Label**](classendstone_1_1Label.md))
 * **LevelEvent** ([**endstone::LevelEvent**](classendstone_1_1LevelEvent.md))
@@ -649,7 +654,6 @@
 * **log** ([**endstone::Logger**](classendstone_1_1Logger.md))
 * **loadPlugin** ([**endstone::PluginLoader**](classendstone_1_1PluginLoader.md), [**endstone::PluginManager**](classendstone_1_1PluginManager.md))
 * **loadPlugins** ([**endstone::PluginLoader**](classendstone_1_1PluginLoader.md), [**endstone::PluginManager**](classendstone_1_1PluginManager.md))
-* **load** ([**endstone::ServiceManager**](classendstone_1_1ServiceManager.md))
 
 
 ## m
@@ -773,10 +777,12 @@
 * **removeAll** ([**endstone::BossBar**](classendstone_1_1BossBar.md))
 * **removeFlag** ([**endstone::BossBar**](classendstone_1_1BossBar.md))
 * **removePlayer** ([**endstone::BossBar**](classendstone_1_1BossBar.md))
+* **removePluginChunkTicket** ([**endstone::Chunk**](classendstone_1_1Chunk.md), [**endstone::Dimension**](classendstone_1_1Dimension.md))
 * **registerTo** ([**endstone::Command**](classendstone_1_1Command.md))
 * **registerCommand** ([**endstone::CommandMap**](classendstone_1_1CommandMap.md))
 * **recalculatePermissions** ([**endstone::CommandSenderWrapper**](classendstone_1_1CommandSenderWrapper.md), [**endstone::Permissible**](classendstone_1_1Permissible.md))
 * **removeAttachment** ([**endstone::CommandSenderWrapper**](classendstone_1_1CommandSenderWrapper.md), [**endstone::Permissible**](classendstone_1_1Permissible.md))
+* **removePluginChunkTickets** ([**endstone::Dimension**](classendstone_1_1Dimension.md))
 * **registerHandler** ([**endstone::HandlerList**](classendstone_1_1HandlerList.md))
 * **removeItem** ([**endstone::Inventory**](classendstone_1_1Inventory.md))
 * **removeEnchant** ([**endstone::ItemMeta**](classendstone_1_1ItemMeta.md))
@@ -1022,8 +1028,10 @@
 ## u
 
 * **update** ([**endstone::BlockState**](classendstone_1_1BlockState.md))
+* **unload** ([**endstone::Chunk**](classendstone_1_1Chunk.md))
 * **unregisterFrom** ([**endstone::Command**](classendstone_1_1Command.md))
 * **unloadChunk** ([**endstone::Dimension**](classendstone_1_1Dimension.md))
+* **unloadChunkRequest** ([**endstone::Dimension**](classendstone_1_1Dimension.md))
 * **unregister** ([**endstone::HandlerList**](classendstone_1_1HandlerList.md), [**endstone::Objective**](classendstone_1_1Objective.md), [**endstone::ServiceManager**](classendstone_1_1ServiceManager.md))
 * **unsetPermission** ([**endstone::PermissionAttachment**](classendstone_1_1PermissionAttachment.md))
 * **updateCommands** ([**endstone::Player**](classendstone_1_1Player.md))

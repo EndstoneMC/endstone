@@ -610,6 +610,13 @@
     <member refid="classendstone_1_1Chunk_1aa41c6ad331470b359dc503a9542f6637" kind="function"><name>getZ</name></member>
     <member refid="classendstone_1_1Chunk_1ad6b110bcd41022ffbf923d732debbb93" kind="function"><name>getLevel</name></member>
     <member refid="classendstone_1_1Chunk_1aadc09bebf53d22748a3f49252e6a3487" kind="function"><name>getDimension</name></member>
+    <member refid="classendstone_1_1Chunk_1a5fcde69b5e66c467744b6988d756f812" kind="function"><name>isLoaded</name></member>
+    <member refid="classendstone_1_1Chunk_1aea53b9aef3e4358824bafbc25d0510f9" kind="function"><name>load</name></member>
+    <member refid="classendstone_1_1Chunk_1a1e8b8217b7189639498c39052d5b0f76" kind="function"><name>load</name></member>
+    <member refid="classendstone_1_1Chunk_1a76e6c5eb43fec20961854d5a44aa4430" kind="function"><name>unload</name></member>
+    <member refid="classendstone_1_1Chunk_1ac1fce145e58f2ddc757ea71d2878596b" kind="function"><name>addPluginChunkTicket</name></member>
+    <member refid="classendstone_1_1Chunk_1a582bd646b9010816bd2028c8a48a0423" kind="function"><name>removePluginChunkTicket</name></member>
+    <member refid="classendstone_1_1Chunk_1aac95d98dded6d378a3cf67c18ee61aad" kind="function"><name>getPluginChunkTickets</name></member>
   </compound>
   <compound refid="classendstone_1_1ChunkEvent" kind="class"><name>endstone::ChunkEvent</name>
     <member refid="classendstone_1_1ChunkEvent_1aa4583a861ca944ce8a28202fe959dd60" kind="variable"><name>chunk_</name></member>
@@ -881,8 +888,16 @@
     <member refid="classendstone_1_1Dimension_1acdeb388320140d30f18737b796685029" kind="function"><name>getHighestBlockAt</name></member>
     <member refid="classendstone_1_1Dimension_1aa38c3179eab9158557aeae144833750a" kind="function"><name>getLoadedChunks</name></member>
     <member refid="classendstone_1_1Dimension_1ae5c461371c826a47b3f7cbd060ca9edc" kind="function"><name>isChunkLoaded</name></member>
+    <member refid="classendstone_1_1Dimension_1a688fc40b07119e5984d5f8b21f634db3" kind="function"><name>isChunkGenerated</name></member>
     <member refid="classendstone_1_1Dimension_1ae6267ee9775ae738c3ee34d23f77a4fb" kind="function"><name>loadChunk</name></member>
+    <member refid="classendstone_1_1Dimension_1ae8f1e1b750573c6884c92302c67f3f40" kind="function"><name>loadChunk</name></member>
     <member refid="classendstone_1_1Dimension_1ad609a49160461ba607ca1b0702419538" kind="function"><name>unloadChunk</name></member>
+    <member refid="classendstone_1_1Dimension_1a63cb5a6c2c32a184ec147eed1adcd12d" kind="function"><name>unloadChunkRequest</name></member>
+    <member refid="classendstone_1_1Dimension_1a7ce339f50befc72372d5db326ed5773c" kind="function"><name>addPluginChunkTicket</name></member>
+    <member refid="classendstone_1_1Dimension_1a6b22cb1ce6c6f3df5ccbf2dafdf6b07a" kind="function"><name>removePluginChunkTicket</name></member>
+    <member refid="classendstone_1_1Dimension_1a92f533942a1dfc8eda9b05c5d1c0981e" kind="function"><name>removePluginChunkTickets</name></member>
+    <member refid="classendstone_1_1Dimension_1a8076b841e1458f21a65e8acbfaa47948" kind="function"><name>getPluginChunkTickets</name></member>
+    <member refid="classendstone_1_1Dimension_1aefd191e9414688ec7ae960340c808b21" kind="function"><name>getPluginChunkTickets</name></member>
     <member refid="classendstone_1_1Dimension_1abd639df3fb48522170838960359a3ace" kind="function"><name>dropItem</name></member>
     <member refid="classendstone_1_1Dimension_1aabbe5768489c5b1f9f9d227565e04fa6" kind="function"><name>spawnActor</name></member>
     <member refid="classendstone_1_1Dimension_1ab8476baf719292c340430109fcfdfadc" kind="function"><name>getActors</name></member>

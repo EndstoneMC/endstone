@@ -16,7 +16,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/level/chunk.h" line="28" column="13"/>
+        <location file="include/endstone/level/chunk.h" line="31" column="13"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1Chunk_1a8f8d55f6c6a9a27772da990c6aa533b1" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
         <type><ref refid="classendstone_1_1Identifier" kindref="compound">int</ref></type>
@@ -34,7 +34,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/level/chunk.h" line="35" column="18"/>
+        <location file="include/endstone/level/chunk.h" line="38" column="18"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1Chunk_1aa41c6ad331470b359dc503a9542f6637" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
         <type><ref refid="classendstone_1_1Identifier" kindref="compound">int</ref></type>
@@ -52,7 +52,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/level/chunk.h" line="42" column="18"/>
+        <location file="include/endstone/level/chunk.h" line="45" column="18"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1Chunk_1ad6b110bcd41022ffbf923d732debbb93" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
         <type><ref refid="classendstone_1_1Level" kindref="compound">Level</ref> &amp;</type>
@@ -70,7 +70,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/level/chunk.h" line="49" column="20"/>
+        <location file="include/endstone/level/chunk.h" line="52" column="20"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1Chunk_1aadc09bebf53d22748a3f49252e6a3487" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
         <type><ref refid="classendstone_1_1NotNull" kindref="compound">NotNull</ref>&lt; <ref refid="classendstone_1_1Dimension" kindref="compound">Dimension</ref> &gt;</type>
@@ -88,7 +88,176 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/level/chunk.h" line="56" column="22"/>
+        <location file="include/endstone/level/chunk.h" line="59" column="22"/>
+      </memberdef>
+      <memberdef kind="function" id="classendstone_1_1Chunk_1a5fcde69b5e66c467744b6988d756f812" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
+        <type><ref refid="classendstone_1_1Identifier" kindref="compound">bool</ref></type>
+        <definition>virtual bool endstone::Chunk::isLoaded</definition>
+        <argsstring>() const =0</argsstring>
+        <name>isLoaded</name>
+        <qualifiedname>endstone::Chunk::isLoaded</qualifiedname>
+        <briefdescription>
+<para>Checks if this chunk is loaded. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="return"><para><computeroutput>true</computeroutput> if the chunk is loaded, otherwise <computeroutput>false</computeroutput> </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/level/chunk.h" line="66" column="19"/>
+      </memberdef>
+      <memberdef kind="function" id="classendstone_1_1Chunk_1aea53b9aef3e4358824bafbc25d0510f9" prot="public" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
+        <type><ref refid="classendstone_1_1Identifier" kindref="compound">bool</ref></type>
+        <definition>virtual bool endstone::Chunk::load</definition>
+        <argsstring>()=0</argsstring>
+        <name>load</name>
+        <qualifiedname>endstone::Chunk::load</qualifiedname>
+        <briefdescription>
+<para>Requests this chunk to be loaded, generating it if it does not exist yet. </para>
+        </briefdescription>
+        <detaileddescription>
+<para>Equivalent to <computeroutput><ref refid="classendstone_1_1Chunk_1a1e8b8217b7189639498c39052d5b0f76" kindref="member">load(true)</ref></computeroutput>.</para>
+<para><simplesect kind="return"><para><computeroutput>true</computeroutput> if the chunk is now held resident, otherwise <computeroutput>false</computeroutput> </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/level/chunk.h" line="75" column="18"/>
+      </memberdef>
+      <memberdef kind="function" id="classendstone_1_1Chunk_1a1e8b8217b7189639498c39052d5b0f76" prot="public" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
+        <type><ref refid="classendstone_1_1Identifier" kindref="compound">bool</ref></type>
+        <definition>virtual bool endstone::Chunk::load</definition>
+        <argsstring>(bool generate)=0</argsstring>
+        <name>load</name>
+        <qualifiedname>endstone::Chunk::load</qualifiedname>
+        <param>
+          <type><ref refid="classendstone_1_1Identifier" kindref="compound">bool</ref></type>
+          <declname>generate</declname>
+        </param>
+        <briefdescription>
+<para>Requests this chunk to be loaded, and keeps it resident until it is released again. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="see"><para><ref refid="classendstone_1_1Dimension_1ae6267ee9775ae738c3ee34d23f77a4fb" kindref="member">Dimension::loadChunk()</ref> for how the hold behaves.</para>
+</simplesect>
+<parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>generate</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Whether to generate the chunk if it does not exist yet </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para><computeroutput>false</computeroutput> if <computeroutput>generate</computeroutput> is <computeroutput>false</computeroutput> and the chunk has not been generated, otherwise <computeroutput>true</computeroutput> </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/level/chunk.h" line="85" column="18"/>
+      </memberdef>
+      <memberdef kind="function" id="classendstone_1_1Chunk_1a76e6c5eb43fec20961854d5a44aa4430" prot="public" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
+        <type><ref refid="classendstone_1_1Identifier" kindref="compound">bool</ref></type>
+        <definition>virtual bool endstone::Chunk::unload</definition>
+        <argsstring>()=0</argsstring>
+        <name>unload</name>
+        <qualifiedname>endstone::Chunk::unload</qualifiedname>
+        <briefdescription>
+<para>Releases the hold that <computeroutput><ref refid="classendstone_1_1Chunk_1aea53b9aef3e4358824bafbc25d0510f9" kindref="member">load()</ref></computeroutput> placed on this chunk, and unloads it if nothing else keeps it resident. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="return"><para><computeroutput>true</computeroutput> if the chunk is no longer loaded, otherwise <computeroutput>false</computeroutput> </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/level/chunk.h" line="92" column="18"/>
+      </memberdef>
+      <memberdef kind="function" id="classendstone_1_1Chunk_1ac1fce145e58f2ddc757ea71d2878596b" prot="public" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
+        <type><ref refid="classendstone_1_1Identifier" kindref="compound">bool</ref></type>
+        <definition>virtual bool endstone::Chunk::addPluginChunkTicket</definition>
+        <argsstring>(Plugin &amp;plugin)=0</argsstring>
+        <name>addPluginChunkTicket</name>
+        <qualifiedname>endstone::Chunk::addPluginChunkTicket</qualifiedname>
+        <param>
+          <type><ref refid="classendstone_1_1Plugin" kindref="compound">Plugin</ref> &amp;</type>
+          <declname>plugin</declname>
+        </param>
+        <briefdescription>
+<para>Adds a plugin ticket for this chunk, loading it if it is not already loaded. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>plugin</parametername>
+</parameternamelist>
+<parameterdescription>
+<para><ref refid="classendstone_1_1Plugin" kindref="compound">Plugin</ref> taking the ticket </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para><computeroutput>true</computeroutput> if a plugin ticket was added, <computeroutput>false</computeroutput> if the plugin already holds one for this chunk </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/level/chunk.h" line="100" column="18"/>
+      </memberdef>
+      <memberdef kind="function" id="classendstone_1_1Chunk_1a582bd646b9010816bd2028c8a48a0423" prot="public" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
+        <type><ref refid="classendstone_1_1Identifier" kindref="compound">bool</ref></type>
+        <definition>virtual bool endstone::Chunk::removePluginChunkTicket</definition>
+        <argsstring>(Plugin &amp;plugin)=0</argsstring>
+        <name>removePluginChunkTicket</name>
+        <qualifiedname>endstone::Chunk::removePluginChunkTicket</qualifiedname>
+        <param>
+          <type><ref refid="classendstone_1_1Plugin" kindref="compound">Plugin</ref> &amp;</type>
+          <declname>plugin</declname>
+        </param>
+        <briefdescription>
+<para>Removes the given plugin&apos;s ticket for this chunk. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>plugin</parametername>
+</parameternamelist>
+<parameterdescription>
+<para><ref refid="classendstone_1_1Plugin" kindref="compound">Plugin</ref> whose ticket to remove </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para><computeroutput>true</computeroutput> if a plugin ticket was removed, <computeroutput>false</computeroutput> if the plugin holds none for this chunk </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/level/chunk.h" line="108" column="18"/>
+      </memberdef>
+      <memberdef kind="function" id="classendstone_1_1Chunk_1aac95d98dded6d378a3cf67c18ee61aad" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
+        <type>std::vector&lt; <ref refid="classendstone_1_1Plugin" kindref="compound">Plugin</ref> * &gt;</type>
+        <definition>virtual std::vector&lt; Plugin * &gt; endstone::Chunk::getPluginChunkTickets</definition>
+        <argsstring>() const =0</argsstring>
+        <name>getPluginChunkTickets</name>
+        <qualifiedname>endstone::Chunk::getPluginChunkTickets</qualifiedname>
+        <briefdescription>
+<para>Gets which plugins hold a ticket for this chunk. </para>
+        </briefdescription>
+        <detaileddescription>
+<para>The returned list is a snapshot; it does not track tickets added or removed afterwards.</para>
+<para><simplesect kind="return"><para>Plugins holding a ticket for this chunk </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/level/chunk.h" line="117" column="26"/>
       </memberdef>
     </sectiondef>
     <briefdescription>
@@ -96,12 +265,19 @@
     </briefdescription>
     <detaileddescription>
     </detaileddescription>
-    <location file="include/endstone/level/chunk.h" line="26" column="1" bodyfile="include/endstone/level/chunk.h" bodystart="26" bodyend="57"/>
+    <location file="include/endstone/level/chunk.h" line="29" column="1" bodyfile="include/endstone/level/chunk.h" bodystart="29" bodyend="118"/>
     <listofallmembers>
+      <member refid="classendstone_1_1Chunk_1ac1fce145e58f2ddc757ea71d2878596b" prot="public" virt="pure-virtual"><scope>endstone::Chunk</scope><name>addPluginChunkTicket</name></member>
       <member refid="classendstone_1_1Chunk_1aadc09bebf53d22748a3f49252e6a3487" prot="public" virt="pure-virtual"><scope>endstone::Chunk</scope><name>getDimension</name></member>
       <member refid="classendstone_1_1Chunk_1ad6b110bcd41022ffbf923d732debbb93" prot="public" virt="pure-virtual"><scope>endstone::Chunk</scope><name>getLevel</name></member>
+      <member refid="classendstone_1_1Chunk_1aac95d98dded6d378a3cf67c18ee61aad" prot="public" virt="pure-virtual"><scope>endstone::Chunk</scope><name>getPluginChunkTickets</name></member>
       <member refid="classendstone_1_1Chunk_1a8f8d55f6c6a9a27772da990c6aa533b1" prot="public" virt="pure-virtual"><scope>endstone::Chunk</scope><name>getX</name></member>
       <member refid="classendstone_1_1Chunk_1aa41c6ad331470b359dc503a9542f6637" prot="public" virt="pure-virtual"><scope>endstone::Chunk</scope><name>getZ</name></member>
+      <member refid="classendstone_1_1Chunk_1a5fcde69b5e66c467744b6988d756f812" prot="public" virt="pure-virtual"><scope>endstone::Chunk</scope><name>isLoaded</name></member>
+      <member refid="classendstone_1_1Chunk_1aea53b9aef3e4358824bafbc25d0510f9" prot="public" virt="pure-virtual"><scope>endstone::Chunk</scope><name>load</name></member>
+      <member refid="classendstone_1_1Chunk_1a1e8b8217b7189639498c39052d5b0f76" prot="public" virt="pure-virtual"><scope>endstone::Chunk</scope><name>load</name></member>
+      <member refid="classendstone_1_1Chunk_1a582bd646b9010816bd2028c8a48a0423" prot="public" virt="pure-virtual"><scope>endstone::Chunk</scope><name>removePluginChunkTicket</name></member>
+      <member refid="classendstone_1_1Chunk_1a76e6c5eb43fec20961854d5a44aa4430" prot="public" virt="pure-virtual"><scope>endstone::Chunk</scope><name>unload</name></member>
       <member refid="classendstone_1_1Chunk_1ac9753b865a92b8ce919a9a71d82b61d7" prot="public" virt="virtual"><scope>endstone::Chunk</scope><name>~Chunk</name></member>
     </listofallmembers>
   </compounddef>

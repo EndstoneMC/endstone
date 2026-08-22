@@ -2676,6 +2676,19 @@ For latest updates join the chat on
             
                 
                     <li class="md-nav__item">
+    <a href="#function-addpluginchunkticket" class="md-nav__link">
+      <span class="md-ellipsis">
+        function addPluginChunkTicket
+      </span>
+    </a>
+
+    <!-- Table of contents list -->
+    
+</li>
+                
+            
+                
+                    <li class="md-nav__item">
     <a href="#function-dropitem" class="md-nav__link">
       <span class="md-ellipsis">
         function dropItem
@@ -2832,9 +2845,48 @@ For latest updates join the chat on
             
                 
                     <li class="md-nav__item">
+    <a href="#function-getpluginchunktickets-12" class="md-nav__link">
+      <span class="md-ellipsis">
+        function getPluginChunkTickets [&frac12;]
+      </span>
+    </a>
+
+    <!-- Table of contents list -->
+    
+</li>
+                
+            
+                
+                    <li class="md-nav__item">
+    <a href="#function-getpluginchunktickets-22" class="md-nav__link">
+      <span class="md-ellipsis">
+        function getPluginChunkTickets [2/2]
+      </span>
+    </a>
+
+    <!-- Table of contents list -->
+    
+</li>
+                
+            
+                
+                    <li class="md-nav__item">
     <a href="#function-gettranslationkey" class="md-nav__link">
       <span class="md-ellipsis">
         function getTranslationKey
+      </span>
+    </a>
+
+    <!-- Table of contents list -->
+    
+</li>
+                
+            
+                
+                    <li class="md-nav__item">
+    <a href="#function-ischunkgenerated" class="md-nav__link">
+      <span class="md-ellipsis">
+        function isChunkGenerated
       </span>
     </a>
 
@@ -2871,9 +2923,48 @@ For latest updates join the chat on
             
                 
                     <li class="md-nav__item">
-    <a href="#function-loadchunk" class="md-nav__link">
+    <a href="#function-loadchunk-12" class="md-nav__link">
       <span class="md-ellipsis">
-        function loadChunk
+        function loadChunk [&frac12;]
+      </span>
+    </a>
+
+    <!-- Table of contents list -->
+    
+</li>
+                
+            
+                
+                    <li class="md-nav__item">
+    <a href="#function-loadchunk-22" class="md-nav__link">
+      <span class="md-ellipsis">
+        function loadChunk [2/2]
+      </span>
+    </a>
+
+    <!-- Table of contents list -->
+    
+</li>
+                
+            
+                
+                    <li class="md-nav__item">
+    <a href="#function-removepluginchunkticket" class="md-nav__link">
+      <span class="md-ellipsis">
+        function removePluginChunkTicket
+      </span>
+    </a>
+
+    <!-- Table of contents list -->
+    
+</li>
+                
+            
+                
+                    <li class="md-nav__item">
+    <a href="#function-removepluginchunktickets" class="md-nav__link">
+      <span class="md-ellipsis">
+        function removePluginChunkTickets
       </span>
     </a>
 
@@ -2900,6 +2991,19 @@ For latest updates join the chat on
     <a href="#function-unloadchunk" class="md-nav__link">
       <span class="md-ellipsis">
         function unloadChunk
+      </span>
+    </a>
+
+    <!-- Table of contents list -->
+    
+</li>
+                
+            
+                
+                    <li class="md-nav__item">
+    <a href="#function-unloadchunkrequest" class="md-nav__link">
+      <span class="md-ellipsis">
+        function unloadChunkRequest
       </span>
     </a>
 
@@ -2998,6 +3102,10 @@ For latest updates join the chat on
 </thead>
 <tbody>
 <tr>
+<td style="text-align: right;">virtual <a href="../classendstone_1_1Identifier/"><strong>bool</strong></a></td>
+<td style="text-align: left;"><a href="#function-addpluginchunkticket"><strong>addPluginChunkTicket</strong></a> (<a href="../classendstone_1_1Identifier/"><strong>int</strong></a> x, <a href="../classendstone_1_1Identifier/"><strong>int</strong></a> z, <a href="../classendstone_1_1Plugin/"><strong>Plugin</strong></a> &amp; plugin) = 0<br><em>Adds a plugin ticket for the</em> <a href="../classendstone_1_1Chunk/"><em><strong>Chunk</strong></em></a> <em>at the given coordinates, loading it if it is not already loaded.</em></td>
+</tr>
+<tr>
 <td style="text-align: right;">virtual <a href="../classendstone_1_1NotNull/"><strong>NotNull</strong></a>&lt; <a href="../classendstone_1_1Item/"><strong>Item</strong></a> &gt;</td>
 <td style="text-align: left;"><a href="#function-dropitem"><strong>dropItem</strong></a> (<a href="../classendstone_1_1Location/"><strong>Location</strong></a> location, <a href="../classendstone_1_1Identifier/"><strong>const</strong></a> <a href="../classendstone_1_1ItemStack/"><strong>ItemStack</strong></a> &amp; item) = 0<br><em>Drops an item at the specified</em> <a href="../classendstone_1_1Location/"><em><strong>Location</strong></em></a> <em>.</em></td>
 </tr>
@@ -3046,8 +3154,20 @@ For latest updates join the chat on
 <td style="text-align: left;"><a href="#function-getplayers"><strong>getPlayers</strong></a> () const = 0<br><em>Get a list of all players in this dimension.</em></td>
 </tr>
 <tr>
+<td style="text-align: right;">virtual std::vector&lt; <a href="../classendstone_1_1Plugin/"><strong>Plugin</strong></a> * &gt;</td>
+<td style="text-align: left;"><a href="#function-getpluginchunktickets-12"><strong>getPluginChunkTickets</strong></a> (<a href="../classendstone_1_1Identifier/"><strong>int</strong></a> x, <a href="../classendstone_1_1Identifier/"><strong>int</strong></a> z) const = 0<br><em>Gets which plugins hold a ticket for the</em> <a href="../classendstone_1_1Chunk/"><em><strong>Chunk</strong></em></a> <em>at the given coordinates.</em></td>
+</tr>
+<tr>
+<td style="text-align: right;">virtual std::unordered_map&lt; <a href="../classendstone_1_1Plugin/"><strong>Plugin</strong></a> *, std::vector&lt; <a href="../classendstone_1_1NotNull/"><strong>NotNull</strong></a>&lt; <a href="../classendstone_1_1Chunk/"><strong>Chunk</strong></a> &gt; &gt; &gt;</td>
+<td style="text-align: left;"><a href="#function-getpluginchunktickets-22"><strong>getPluginChunkTickets</strong></a> () const = 0<br><em>Gets which plugins hold tickets for which Chunks in this dimension.</em></td>
+</tr>
+<tr>
 <td style="text-align: right;">virtual std::string</td>
 <td style="text-align: left;"><a href="#function-gettranslationkey"><strong>getTranslationKey</strong></a> () const = 0<br><em>Get the translation key, suitable for use in a translation component.</em></td>
+</tr>
+<tr>
+<td style="text-align: right;">virtual <a href="../classendstone_1_1Identifier/"><strong>bool</strong></a></td>
+<td style="text-align: left;"><a href="#function-ischunkgenerated"><strong>isChunkGenerated</strong></a> (<a href="../classendstone_1_1Identifier/"><strong>int</strong></a> x, <a href="../classendstone_1_1Identifier/"><strong>int</strong></a> z) const = 0<br><em>Checks if the</em> <a href="../classendstone_1_1Chunk/"><em><strong>Chunk</strong></em></a> <em>at the given coordinates has been generated.</em></td>
 </tr>
 <tr>
 <td style="text-align: right;">virtual <a href="../classendstone_1_1Identifier/"><strong>bool</strong></a></td>
@@ -3059,7 +3179,19 @@ For latest updates join the chat on
 </tr>
 <tr>
 <td style="text-align: right;">virtual <a href="../classendstone_1_1Identifier/"><strong>bool</strong></a></td>
-<td style="text-align: left;"><a href="#function-loadchunk"><strong>loadChunk</strong></a> (<a href="../classendstone_1_1Identifier/"><strong>int</strong></a> x, <a href="../classendstone_1_1Identifier/"><strong>int</strong></a> z) = 0<br><em>Requests the</em> <a href="../classendstone_1_1Chunk/"><em><strong>Chunk</strong></em></a> <em>at the given coordinates to be loaded, and keeps it loaded until it is unloaded again.</em></td>
+<td style="text-align: left;"><a href="#function-loadchunk-12"><strong>loadChunk</strong></a> (<a href="../classendstone_1_1Identifier/"><strong>int</strong></a> x, <a href="../classendstone_1_1Identifier/"><strong>int</strong></a> z) = 0<br><em>Requests the</em> <a href="../classendstone_1_1Chunk/"><em><strong>Chunk</strong></em></a> <em>at the given coordinates to be loaded, generating it if it does not exist yet.</em></td>
+</tr>
+<tr>
+<td style="text-align: right;">virtual <a href="../classendstone_1_1Identifier/"><strong>bool</strong></a></td>
+<td style="text-align: left;"><a href="#function-loadchunk-22"><strong>loadChunk</strong></a> (<a href="../classendstone_1_1Identifier/"><strong>int</strong></a> x, <a href="../classendstone_1_1Identifier/"><strong>int</strong></a> z, <a href="../classendstone_1_1Identifier/"><strong>bool</strong></a> generate) = 0<br><em>Requests the</em> <a href="../classendstone_1_1Chunk/"><em><strong>Chunk</strong></em></a> <em>at the given coordinates to be loaded, and keeps it resident until it is released again.</em></td>
+</tr>
+<tr>
+<td style="text-align: right;">virtual <a href="../classendstone_1_1Identifier/"><strong>bool</strong></a></td>
+<td style="text-align: left;"><a href="#function-removepluginchunkticket"><strong>removePluginChunkTicket</strong></a> (<a href="../classendstone_1_1Identifier/"><strong>int</strong></a> x, <a href="../classendstone_1_1Identifier/"><strong>int</strong></a> z, <a href="../classendstone_1_1Plugin/"><strong>Plugin</strong></a> &amp; plugin) = 0<br><em>Removes the given plugin's ticket for the</em> <a href="../classendstone_1_1Chunk/"><em><strong>Chunk</strong></em></a> <em>at the given coordinates.</em></td>
+</tr>
+<tr>
+<td style="text-align: right;">virtual <a href="../classendstone_1_1Identifier/"><strong>void</strong></a></td>
+<td style="text-align: left;"><a href="#function-removepluginchunktickets"><strong>removePluginChunkTickets</strong></a> (<a href="../classendstone_1_1Plugin/"><strong>Plugin</strong></a> &amp; plugin) = 0<br><em>Removes every ticket the given plugin holds in this dimension.</em></td>
 </tr>
 <tr>
 <td style="text-align: right;">virtual <a href="../classendstone_1_1Nullable/"><strong>Nullable</strong></a>&lt; <a href="../classendstone_1_1Actor/"><strong>Actor</strong></a> &gt;</td>
@@ -3067,7 +3199,11 @@ For latest updates join the chat on
 </tr>
 <tr>
 <td style="text-align: right;">virtual <a href="../classendstone_1_1Identifier/"><strong>bool</strong></a></td>
-<td style="text-align: left;"><a href="#function-unloadchunk"><strong>unloadChunk</strong></a> (<a href="../classendstone_1_1Identifier/"><strong>int</strong></a> x, <a href="../classendstone_1_1Identifier/"><strong>int</strong></a> z) = 0<br><em>Releases the hold that</em> <code>loadChunk()</code> <em>placed on the</em><a href="../classendstone_1_1Chunk/"><em><strong>Chunk</strong></em></a> <em>at the given coordinates.</em></td>
+<td style="text-align: left;"><a href="#function-unloadchunk"><strong>unloadChunk</strong></a> (<a href="../classendstone_1_1Identifier/"><strong>int</strong></a> x, <a href="../classendstone_1_1Identifier/"><strong>int</strong></a> z) = 0<br><em>Releases the hold that</em> <code>loadChunk()</code> <em>placed on the</em><a href="../classendstone_1_1Chunk/"><em><strong>Chunk</strong></em></a> <em>at the given coordinates, and unloads it if nothing else keeps it resident.</em></td>
+</tr>
+<tr>
+<td style="text-align: right;">virtual <a href="../classendstone_1_1Identifier/"><strong>bool</strong></a></td>
+<td style="text-align: left;"><a href="#function-unloadchunkrequest"><strong>unloadChunkRequest</strong></a> (<a href="../classendstone_1_1Identifier/"><strong>int</strong></a> x, <a href="../classendstone_1_1Identifier/"><strong>int</strong></a> z) = 0<br><em>Releases the hold that</em> <code>loadChunk()</code> <em>placed on the</em><a href="../classendstone_1_1Chunk/"><em><strong>Chunk</strong></em></a> <em>at the given coordinates, without unloading it now.</em></td>
 </tr>
 <tr>
 <td style="text-align: right;">virtual</td>
@@ -3091,12 +3227,31 @@ For latest updates join the chat on
 </span></code></pre></div>
 <hr>
 <h2 id="public-functions-documentation">Public Functions Documentation<a class="headerlink" href="#public-functions-documentation" title="Permanent link">&para;</a></h2>
+<h3 id="function-addpluginchunkticket">function addPluginChunkTicket<a class="headerlink" href="#function-addpluginchunkticket" title="Permanent link">&para;</a></h3>
+<p><em>Adds a plugin ticket for the</em> <a href="../classendstone_1_1Chunk/"><em><strong>Chunk</strong></em></a> <em>at the given coordinates, loading it if it is not already loaded.</em>
+<div class="language-C++ highlight"><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="k">virtual</span><span class="w"> </span><span class="kt">bool</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">Dimension</span><span class="o">::</span><span class="n">addPluginChunkTicket</span><span class="w"> </span><span class="p">(</span>
+</span><span id="__span-3-2"><a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a><span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="n">x</span><span class="p">,</span>
+</span><span id="__span-3-3"><a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a><span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="n">z</span><span class="p">,</span>
+</span><span id="__span-3-4"><a id="__codelineno-3-4" name="__codelineno-3-4" href="#__codelineno-3-4"></a><span class="w">    </span><span class="n">Plugin</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">plugin</span>
+</span><span id="__span-3-5"><a id="__codelineno-3-5" name="__codelineno-3-5" href="#__codelineno-3-5"></a><span class="p">)</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span>
+</span></code></pre></div></p>
+<p>A plugin ticket keeps the chunk resident until it is explicitly removed or the owning plugin is disabled. A plugin may only have one ticket per chunk, but each chunk can have multiple plugin tickets. <code>unloadChunk()</code> does not remove plugin tickets.</p>
+<p><strong>Parameters:</strong></p>
+<ul>
+<li><code>x</code> X-coordinate of the chunk </li>
+<li><code>z</code> Z-coordinate of the chunk </li>
+<li><code>plugin</code> <a href="../classendstone_1_1Plugin/"><strong>Plugin</strong></a> taking the ticket </li>
+</ul>
+<p><strong>Returns:</strong></p>
+<p><code>true</code> if a plugin ticket was added, <code>false</code> if the plugin already holds one for this chunk </p>
+<hr>
+
 <h3 id="function-dropitem">function dropItem<a class="headerlink" href="#function-dropitem" title="Permanent link">&para;</a></h3>
 <p><em>Drops an item at the specified</em> <a href="../classendstone_1_1Location/"><em><strong>Location</strong></em></a> <em>.</em>
-<div class="language-C++ highlight"><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="k">virtual</span><span class="w"> </span><span class="n">NotNull</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">Item</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">Dimension</span><span class="o">::</span><span class="n">dropItem</span><span class="w"> </span><span class="p">(</span>
-</span><span id="__span-3-2"><a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a><span class="w">    </span><span class="n">Location</span><span class="w"> </span><span class="n">location</span><span class="p">,</span>
-</span><span id="__span-3-3"><a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a><span class="w">    </span><span class="k">const</span><span class="w">  </span><span class="n">ItemStack</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">item</span>
-</span><span id="__span-3-4"><a id="__codelineno-3-4" name="__codelineno-3-4" href="#__codelineno-3-4"></a><span class="p">)</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span>
+<div class="language-C++ highlight"><pre><span></span><code><span id="__span-4-1"><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a><span class="k">virtual</span><span class="w"> </span><span class="n">NotNull</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">Item</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">Dimension</span><span class="o">::</span><span class="n">dropItem</span><span class="w"> </span><span class="p">(</span>
+</span><span id="__span-4-2"><a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a><span class="w">    </span><span class="n">Location</span><span class="w"> </span><span class="n">location</span><span class="p">,</span>
+</span><span id="__span-4-3"><a id="__codelineno-4-3" name="__codelineno-4-3" href="#__codelineno-4-3"></a><span class="w">    </span><span class="k">const</span><span class="w">  </span><span class="n">ItemStack</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">item</span>
+</span><span id="__span-4-4"><a id="__codelineno-4-4" name="__codelineno-4-4" href="#__codelineno-4-4"></a><span class="p">)</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span>
 </span></code></pre></div></p>
 <p><strong>Parameters:</strong></p>
 <ul>
@@ -3109,7 +3264,7 @@ For latest updates join the chat on
 
 <h3 id="function-getactors">function getActors<a class="headerlink" href="#function-getactors" title="Permanent link">&para;</a></h3>
 <p><em>Get a list of all actors in this dimension.</em> 
-<div class="language-C++ highlight"><pre><span></span><code><span id="__span-4-1"><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a><span class="k">virtual</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="w"> </span><span class="n">NotNull</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">Actor</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">Dimension</span><span class="o">::</span><span class="n">getActors</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span>
+<div class="language-C++ highlight"><pre><span></span><code><span id="__span-5-1"><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a><span class="k">virtual</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="w"> </span><span class="n">NotNull</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">Actor</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">Dimension</span><span class="o">::</span><span class="n">getActors</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span>
 </span></code></pre></div></p>
 <p><strong>Returns:</strong></p>
 <p>A List of all actors currently residing in this dimension </p>
@@ -3117,11 +3272,11 @@ For latest updates join the chat on
 
 <h3 id="function-getblockat-12">function getBlockAt [&frac12;]<a class="headerlink" href="#function-getblockat-12" title="Permanent link">&para;</a></h3>
 <p><em>Gets the</em> <a href="../classendstone_1_1Block/"><em><strong>Block</strong></em></a> <em>at the given coordinates.</em>
-<div class="language-C++ highlight"><pre><span></span><code><span id="__span-5-1"><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a><span class="k">virtual</span><span class="w"> </span><span class="n">NotNull</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">Block</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">Dimension</span><span class="o">::</span><span class="n">getBlockAt</span><span class="w"> </span><span class="p">(</span>
-</span><span id="__span-5-2"><a id="__codelineno-5-2" name="__codelineno-5-2" href="#__codelineno-5-2"></a><span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="n">x</span><span class="p">,</span>
-</span><span id="__span-5-3"><a id="__codelineno-5-3" name="__codelineno-5-3" href="#__codelineno-5-3"></a><span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="n">y</span><span class="p">,</span>
-</span><span id="__span-5-4"><a id="__codelineno-5-4" name="__codelineno-5-4" href="#__codelineno-5-4"></a><span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="n">z</span>
-</span><span id="__span-5-5"><a id="__codelineno-5-5" name="__codelineno-5-5" href="#__codelineno-5-5"></a><span class="p">)</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span>
+<div class="language-C++ highlight"><pre><span></span><code><span id="__span-6-1"><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a><span class="k">virtual</span><span class="w"> </span><span class="n">NotNull</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">Block</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">Dimension</span><span class="o">::</span><span class="n">getBlockAt</span><span class="w"> </span><span class="p">(</span>
+</span><span id="__span-6-2"><a id="__codelineno-6-2" name="__codelineno-6-2" href="#__codelineno-6-2"></a><span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="n">x</span><span class="p">,</span>
+</span><span id="__span-6-3"><a id="__codelineno-6-3" name="__codelineno-6-3" href="#__codelineno-6-3"></a><span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="n">y</span><span class="p">,</span>
+</span><span id="__span-6-4"><a id="__codelineno-6-4" name="__codelineno-6-4" href="#__codelineno-6-4"></a><span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="n">z</span>
+</span><span id="__span-6-5"><a id="__codelineno-6-5" name="__codelineno-6-5" href="#__codelineno-6-5"></a><span class="p">)</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span>
 </span></code></pre></div></p>
 <p><strong>Parameters:</strong></p>
 <ul>
@@ -3135,9 +3290,9 @@ For latest updates join the chat on
 
 <h3 id="function-getblockat-22">function getBlockAt [2/2]<a class="headerlink" href="#function-getblockat-22" title="Permanent link">&para;</a></h3>
 <p><em>Gets the</em> <a href="../classendstone_1_1Block/"><em><strong>Block</strong></em></a> <em>at the given</em><a href="../classendstone_1_1Location/"><em><strong>Location</strong></em></a> <em>.</em>
-<div class="language-C++ highlight"><pre><span></span><code><span id="__span-6-1"><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a><span class="k">virtual</span><span class="w"> </span><span class="n">NotNull</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">Block</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">Dimension</span><span class="o">::</span><span class="n">getBlockAt</span><span class="w"> </span><span class="p">(</span>
-</span><span id="__span-6-2"><a id="__codelineno-6-2" name="__codelineno-6-2" href="#__codelineno-6-2"></a><span class="w">    </span><span class="n">Location</span><span class="w"> </span><span class="n">location</span>
-</span><span id="__span-6-3"><a id="__codelineno-6-3" name="__codelineno-6-3" href="#__codelineno-6-3"></a><span class="p">)</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span>
+<div class="language-C++ highlight"><pre><span></span><code><span id="__span-7-1"><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a><span class="k">virtual</span><span class="w"> </span><span class="n">NotNull</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">Block</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">Dimension</span><span class="o">::</span><span class="n">getBlockAt</span><span class="w"> </span><span class="p">(</span>
+</span><span id="__span-7-2"><a id="__codelineno-7-2" name="__codelineno-7-2" href="#__codelineno-7-2"></a><span class="w">    </span><span class="n">Location</span><span class="w"> </span><span class="n">location</span>
+</span><span id="__span-7-3"><a id="__codelineno-7-3" name="__codelineno-7-3" href="#__codelineno-7-3"></a><span class="p">)</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span>
 </span></code></pre></div></p>
 <p><strong>Parameters:</strong></p>
 <ul>
@@ -3149,10 +3304,10 @@ For latest updates join the chat on
 
 <h3 id="function-gethighestblockat-12">function getHighestBlockAt [&frac12;]<a class="headerlink" href="#function-gethighestblockat-12" title="Permanent link">&para;</a></h3>
 <p><em>Gets the highest non-empty (impassable) block at the given coordinates.</em> 
-<div class="language-C++ highlight"><pre><span></span><code><span id="__span-7-1"><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a><span class="k">virtual</span><span class="w"> </span><span class="n">NotNull</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">Block</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">Dimension</span><span class="o">::</span><span class="n">getHighestBlockAt</span><span class="w"> </span><span class="p">(</span>
-</span><span id="__span-7-2"><a id="__codelineno-7-2" name="__codelineno-7-2" href="#__codelineno-7-2"></a><span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="n">x</span><span class="p">,</span>
-</span><span id="__span-7-3"><a id="__codelineno-7-3" name="__codelineno-7-3" href="#__codelineno-7-3"></a><span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="n">z</span>
-</span><span id="__span-7-4"><a id="__codelineno-7-4" name="__codelineno-7-4" href="#__codelineno-7-4"></a><span class="p">)</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span>
+<div class="language-C++ highlight"><pre><span></span><code><span id="__span-8-1"><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a><span class="k">virtual</span><span class="w"> </span><span class="n">NotNull</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">Block</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">Dimension</span><span class="o">::</span><span class="n">getHighestBlockAt</span><span class="w"> </span><span class="p">(</span>
+</span><span id="__span-8-2"><a id="__codelineno-8-2" name="__codelineno-8-2" href="#__codelineno-8-2"></a><span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="n">x</span><span class="p">,</span>
+</span><span id="__span-8-3"><a id="__codelineno-8-3" name="__codelineno-8-3" href="#__codelineno-8-3"></a><span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="n">z</span>
+</span><span id="__span-8-4"><a id="__codelineno-8-4" name="__codelineno-8-4" href="#__codelineno-8-4"></a><span class="p">)</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span>
 </span></code></pre></div></p>
 <p><strong>Parameters:</strong></p>
 <ul>
@@ -3165,9 +3320,9 @@ For latest updates join the chat on
 
 <h3 id="function-gethighestblockat-22">function getHighestBlockAt [2/2]<a class="headerlink" href="#function-gethighestblockat-22" title="Permanent link">&para;</a></h3>
 <p><em>Gets the highest non-empty (impassable) block at the given</em> <a href="../classendstone_1_1Location/"><em><strong>Location</strong></em></a> <em>.</em>
-<div class="language-C++ highlight"><pre><span></span><code><span id="__span-8-1"><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a><span class="k">virtual</span><span class="w"> </span><span class="n">NotNull</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">Block</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">Dimension</span><span class="o">::</span><span class="n">getHighestBlockAt</span><span class="w"> </span><span class="p">(</span>
-</span><span id="__span-8-2"><a id="__codelineno-8-2" name="__codelineno-8-2" href="#__codelineno-8-2"></a><span class="w">    </span><span class="n">Location</span><span class="w"> </span><span class="n">location</span>
-</span><span id="__span-8-3"><a id="__codelineno-8-3" name="__codelineno-8-3" href="#__codelineno-8-3"></a><span class="p">)</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span>
+<div class="language-C++ highlight"><pre><span></span><code><span id="__span-9-1"><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a><span class="k">virtual</span><span class="w"> </span><span class="n">NotNull</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">Block</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">Dimension</span><span class="o">::</span><span class="n">getHighestBlockAt</span><span class="w"> </span><span class="p">(</span>
+</span><span id="__span-9-2"><a id="__codelineno-9-2" name="__codelineno-9-2" href="#__codelineno-9-2"></a><span class="w">    </span><span class="n">Location</span><span class="w"> </span><span class="n">location</span>
+</span><span id="__span-9-3"><a id="__codelineno-9-3" name="__codelineno-9-3" href="#__codelineno-9-3"></a><span class="p">)</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span>
 </span></code></pre></div></p>
 <p><strong>Parameters:</strong></p>
 <ul>
@@ -3179,10 +3334,10 @@ For latest updates join the chat on
 
 <h3 id="function-gethighestblockyat">function getHighestBlockYAt<a class="headerlink" href="#function-gethighestblockyat" title="Permanent link">&para;</a></h3>
 <p><em>Gets the highest non-empty (impassable) coordinate at the given coordinates.</em> 
-<div class="language-C++ highlight"><pre><span></span><code><span id="__span-9-1"><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a><span class="k">virtual</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">Dimension</span><span class="o">::</span><span class="n">getHighestBlockYAt</span><span class="w"> </span><span class="p">(</span>
-</span><span id="__span-9-2"><a id="__codelineno-9-2" name="__codelineno-9-2" href="#__codelineno-9-2"></a><span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="n">x</span><span class="p">,</span>
-</span><span id="__span-9-3"><a id="__codelineno-9-3" name="__codelineno-9-3" href="#__codelineno-9-3"></a><span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="n">z</span>
-</span><span id="__span-9-4"><a id="__codelineno-9-4" name="__codelineno-9-4" href="#__codelineno-9-4"></a><span class="p">)</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span>
+<div class="language-C++ highlight"><pre><span></span><code><span id="__span-10-1"><a id="__codelineno-10-1" name="__codelineno-10-1" href="#__codelineno-10-1"></a><span class="k">virtual</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">Dimension</span><span class="o">::</span><span class="n">getHighestBlockYAt</span><span class="w"> </span><span class="p">(</span>
+</span><span id="__span-10-2"><a id="__codelineno-10-2" name="__codelineno-10-2" href="#__codelineno-10-2"></a><span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="n">x</span><span class="p">,</span>
+</span><span id="__span-10-3"><a id="__codelineno-10-3" name="__codelineno-10-3" href="#__codelineno-10-3"></a><span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="n">z</span>
+</span><span id="__span-10-4"><a id="__codelineno-10-4" name="__codelineno-10-4" href="#__codelineno-10-4"></a><span class="p">)</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span>
 </span></code></pre></div></p>
 <p><strong>Parameters:</strong></p>
 <ul>
@@ -3195,7 +3350,7 @@ For latest updates join the chat on
 
 <h3 id="function-getid">function getId<a class="headerlink" href="#function-getid" title="Permanent link">&para;</a></h3>
 <p><em>Return the identifier of this dimension.</em> 
-<div class="language-C++ highlight"><pre><span></span><code><span id="__span-10-1"><a id="__codelineno-10-1" name="__codelineno-10-1" href="#__codelineno-10-1"></a><span class="k">virtual</span><span class="w"> </span><span class="n">DimensionId</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">Dimension</span><span class="o">::</span><span class="n">getId</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span>
+<div class="language-C++ highlight"><pre><span></span><code><span id="__span-11-1"><a id="__codelineno-11-1" name="__codelineno-11-1" href="#__codelineno-11-1"></a><span class="k">virtual</span><span class="w"> </span><span class="n">DimensionId</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">Dimension</span><span class="o">::</span><span class="n">getId</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span>
 </span></code></pre></div></p>
 <p><strong>Returns:</strong></p>
 <p>this dimension's identifier </p>
@@ -3203,7 +3358,7 @@ For latest updates join the chat on
 
 <h3 id="function-getlevel">function getLevel<a class="headerlink" href="#function-getlevel" title="Permanent link">&para;</a></h3>
 <p><em>Gets the level to which this dimension belongs.</em> 
-<div class="language-C++ highlight"><pre><span></span><code><span id="__span-11-1"><a id="__codelineno-11-1" name="__codelineno-11-1" href="#__codelineno-11-1"></a><span class="k">virtual</span><span class="w"> </span><span class="n">Level</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">Dimension</span><span class="o">::</span><span class="n">getLevel</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span>
+<div class="language-C++ highlight"><pre><span></span><code><span id="__span-12-1"><a id="__codelineno-12-1" name="__codelineno-12-1" href="#__codelineno-12-1"></a><span class="k">virtual</span><span class="w"> </span><span class="n">Level</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">Dimension</span><span class="o">::</span><span class="n">getLevel</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span>
 </span></code></pre></div></p>
 <p><strong>Returns:</strong></p>
 <p><a href="../classendstone_1_1Level/"><strong>Level</strong></a> containing this dimension. </p>
@@ -3211,7 +3366,7 @@ For latest updates join the chat on
 
 <h3 id="function-getloadedchunks">function getLoadedChunks<a class="headerlink" href="#function-getloadedchunks" title="Permanent link">&para;</a></h3>
 <p><em>Gets a list of all loaded Chunks.</em> 
-<div class="language-C++ highlight"><pre><span></span><code><span id="__span-12-1"><a id="__codelineno-12-1" name="__codelineno-12-1" href="#__codelineno-12-1"></a><span class="k">virtual</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="w"> </span><span class="n">NotNull</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">Chunk</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">Dimension</span><span class="o">::</span><span class="n">getLoadedChunks</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span>
+<div class="language-C++ highlight"><pre><span></span><code><span id="__span-13-1"><a id="__codelineno-13-1" name="__codelineno-13-1" href="#__codelineno-13-1"></a><span class="k">virtual</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="w"> </span><span class="n">NotNull</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">Chunk</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">Dimension</span><span class="o">::</span><span class="n">getLoadedChunks</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span>
 </span></code></pre></div></p>
 <p><strong>Returns:</strong></p>
 <p>All loaded chunks </p>
@@ -3219,7 +3374,7 @@ For latest updates join the chat on
 
 <h3 id="function-getmobs">function getMobs<a class="headerlink" href="#function-getmobs" title="Permanent link">&para;</a></h3>
 <p><em>Get a list of all mobs in this dimension.</em> 
-<div class="language-C++ highlight"><pre><span></span><code><span id="__span-13-1"><a id="__codelineno-13-1" name="__codelineno-13-1" href="#__codelineno-13-1"></a><span class="k">virtual</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="w"> </span><span class="n">NotNull</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">Mob</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">Dimension</span><span class="o">::</span><span class="n">getMobs</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span>
+<div class="language-C++ highlight"><pre><span></span><code><span id="__span-14-1"><a id="__codelineno-14-1" name="__codelineno-14-1" href="#__codelineno-14-1"></a><span class="k">virtual</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="w"> </span><span class="n">NotNull</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">Mob</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">Dimension</span><span class="o">::</span><span class="n">getMobs</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span>
 </span></code></pre></div></p>
 <p><strong>Returns:</strong></p>
 <p>A List of all mobs currently residing in this dimension </p>
@@ -3227,26 +3382,69 @@ For latest updates join the chat on
 
 <h3 id="function-getplayers">function getPlayers<a class="headerlink" href="#function-getplayers" title="Permanent link">&para;</a></h3>
 <p><em>Get a list of all players in this dimension.</em> 
-<div class="language-C++ highlight"><pre><span></span><code><span id="__span-14-1"><a id="__codelineno-14-1" name="__codelineno-14-1" href="#__codelineno-14-1"></a><span class="k">virtual</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="w"> </span><span class="n">NotNull</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">Player</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">Dimension</span><span class="o">::</span><span class="n">getPlayers</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span>
+<div class="language-C++ highlight"><pre><span></span><code><span id="__span-15-1"><a id="__codelineno-15-1" name="__codelineno-15-1" href="#__codelineno-15-1"></a><span class="k">virtual</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="w"> </span><span class="n">NotNull</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">Player</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">Dimension</span><span class="o">::</span><span class="n">getPlayers</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span>
 </span></code></pre></div></p>
 <p><strong>Returns:</strong></p>
 <p>A List of all players currently residing in this dimension </p>
 <hr>
 
+<h3 id="function-getpluginchunktickets-12">function getPluginChunkTickets [&frac12;]<a class="headerlink" href="#function-getpluginchunktickets-12" title="Permanent link">&para;</a></h3>
+<p><em>Gets which plugins hold a ticket for the</em> <a href="../classendstone_1_1Chunk/"><em><strong>Chunk</strong></em></a> <em>at the given coordinates.</em>
+<div class="language-C++ highlight"><pre><span></span><code><span id="__span-16-1"><a id="__codelineno-16-1" name="__codelineno-16-1" href="#__codelineno-16-1"></a><span class="k">virtual</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="w"> </span><span class="n">Plugin</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">Dimension</span><span class="o">::</span><span class="n">getPluginChunkTickets</span><span class="w"> </span><span class="p">(</span>
+</span><span id="__span-16-2"><a id="__codelineno-16-2" name="__codelineno-16-2" href="#__codelineno-16-2"></a><span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="n">x</span><span class="p">,</span>
+</span><span id="__span-16-3"><a id="__codelineno-16-3" name="__codelineno-16-3" href="#__codelineno-16-3"></a><span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="n">z</span>
+</span><span id="__span-16-4"><a id="__codelineno-16-4" name="__codelineno-16-4" href="#__codelineno-16-4"></a><span class="p">)</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span>
+</span></code></pre></div></p>
+<p>The returned list is a snapshot; it does not track tickets added or removed afterwards.</p>
+<p><strong>Parameters:</strong></p>
+<ul>
+<li><code>x</code> X-coordinate of the chunk </li>
+<li><code>z</code> Z-coordinate of the chunk </li>
+</ul>
+<p><strong>Returns:</strong></p>
+<p>Plugins holding a ticket for the chunk </p>
+<hr>
+
+<h3 id="function-getpluginchunktickets-22">function getPluginChunkTickets [2/2]<a class="headerlink" href="#function-getpluginchunktickets-22" title="Permanent link">&para;</a></h3>
+<p><em>Gets which plugins hold tickets for which Chunks in this dimension.</em> 
+<div class="language-C++ highlight"><pre><span></span><code><span id="__span-17-1"><a id="__codelineno-17-1" name="__codelineno-17-1" href="#__codelineno-17-1"></a><span class="k">virtual</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">unordered_map</span><span class="o">&lt;</span><span class="w"> </span><span class="n">Plugin</span><span class="w"> </span><span class="o">*</span><span class="p">,</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="w"> </span><span class="n">NotNull</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">Chunk</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">Dimension</span><span class="o">::</span><span class="n">getPluginChunkTickets</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span>
+</span></code></pre></div></p>
+<p>The returned map is a snapshot; it does not track tickets added or removed afterwards. A plugin holding no tickets is absent from it.</p>
+<p><strong>Returns:</strong></p>
+<p>Chunks each plugin holds a ticket for </p>
+<hr>
+
 <h3 id="function-gettranslationkey">function getTranslationKey<a class="headerlink" href="#function-gettranslationkey" title="Permanent link">&para;</a></h3>
 <p><em>Get the translation key, suitable for use in a translation component.</em> 
-<div class="language-C++ highlight"><pre><span></span><code><span id="__span-15-1"><a id="__codelineno-15-1" name="__codelineno-15-1" href="#__codelineno-15-1"></a><span class="k">virtual</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">Dimension</span><span class="o">::</span><span class="n">getTranslationKey</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span>
+<div class="language-C++ highlight"><pre><span></span><code><span id="__span-18-1"><a id="__codelineno-18-1" name="__codelineno-18-1" href="#__codelineno-18-1"></a><span class="k">virtual</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">Dimension</span><span class="o">::</span><span class="n">getTranslationKey</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span>
 </span></code></pre></div></p>
 <p><strong>Returns:</strong></p>
 <p>the translation key </p>
 <hr>
 
+<h3 id="function-ischunkgenerated">function isChunkGenerated<a class="headerlink" href="#function-ischunkgenerated" title="Permanent link">&para;</a></h3>
+<p><em>Checks if the</em> <a href="../classendstone_1_1Chunk/"><em><strong>Chunk</strong></em></a> <em>at the given coordinates has been generated.</em>
+<div class="language-C++ highlight"><pre><span></span><code><span id="__span-19-1"><a id="__codelineno-19-1" name="__codelineno-19-1" href="#__codelineno-19-1"></a><span class="k">virtual</span><span class="w"> </span><span class="kt">bool</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">Dimension</span><span class="o">::</span><span class="n">isChunkGenerated</span><span class="w"> </span><span class="p">(</span>
+</span><span id="__span-19-2"><a id="__codelineno-19-2" name="__codelineno-19-2" href="#__codelineno-19-2"></a><span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="n">x</span><span class="p">,</span>
+</span><span id="__span-19-3"><a id="__codelineno-19-3" name="__codelineno-19-3" href="#__codelineno-19-3"></a><span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="n">z</span>
+</span><span id="__span-19-4"><a id="__codelineno-19-4" name="__codelineno-19-4" href="#__codelineno-19-4"></a><span class="p">)</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span>
+</span></code></pre></div></p>
+<p>A chunk counts as generated once it is loaded or has been written to the level's chunk storage.</p>
+<p><strong>Parameters:</strong></p>
+<ul>
+<li><code>x</code> X-coordinate of the chunk </li>
+<li><code>z</code> Z-coordinate of the chunk </li>
+</ul>
+<p><strong>Returns:</strong></p>
+<p><code>true</code> if the chunk has been generated, otherwise <code>false</code> </p>
+<hr>
+
 <h3 id="function-ischunkloaded">function isChunkLoaded<a class="headerlink" href="#function-ischunkloaded" title="Permanent link">&para;</a></h3>
 <p><em>Checks if the</em> <a href="../classendstone_1_1Chunk/"><em><strong>Chunk</strong></em></a> <em>at the given coordinates is loaded.</em>
-<div class="language-C++ highlight"><pre><span></span><code><span id="__span-16-1"><a id="__codelineno-16-1" name="__codelineno-16-1" href="#__codelineno-16-1"></a><span class="k">virtual</span><span class="w"> </span><span class="kt">bool</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">Dimension</span><span class="o">::</span><span class="n">isChunkLoaded</span><span class="w"> </span><span class="p">(</span>
-</span><span id="__span-16-2"><a id="__codelineno-16-2" name="__codelineno-16-2" href="#__codelineno-16-2"></a><span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="n">x</span><span class="p">,</span>
-</span><span id="__span-16-3"><a id="__codelineno-16-3" name="__codelineno-16-3" href="#__codelineno-16-3"></a><span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="n">z</span>
-</span><span id="__span-16-4"><a id="__codelineno-16-4" name="__codelineno-16-4" href="#__codelineno-16-4"></a><span class="p">)</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span>
+<div class="language-C++ highlight"><pre><span></span><code><span id="__span-20-1"><a id="__codelineno-20-1" name="__codelineno-20-1" href="#__codelineno-20-1"></a><span class="k">virtual</span><span class="w"> </span><span class="kt">bool</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">Dimension</span><span class="o">::</span><span class="n">isChunkLoaded</span><span class="w"> </span><span class="p">(</span>
+</span><span id="__span-20-2"><a id="__codelineno-20-2" name="__codelineno-20-2" href="#__codelineno-20-2"></a><span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="n">x</span><span class="p">,</span>
+</span><span id="__span-20-3"><a id="__codelineno-20-3" name="__codelineno-20-3" href="#__codelineno-20-3"></a><span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="n">z</span>
+</span><span id="__span-20-4"><a id="__codelineno-20-4" name="__codelineno-20-4" href="#__codelineno-20-4"></a><span class="p">)</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span>
 </span></code></pre></div></p>
 <p><strong>Parameters:</strong></p>
 <ul>
@@ -3259,36 +3457,86 @@ For latest updates join the chat on
 
 <h3 id="function-isvalid">function isValid<a class="headerlink" href="#function-isvalid" title="Permanent link">&para;</a></h3>
 <p><em>Checks whether this dimension is still valid (loaded).</em> 
-<div class="language-C++ highlight"><pre><span></span><code><span id="__span-17-1"><a id="__codelineno-17-1" name="__codelineno-17-1" href="#__codelineno-17-1"></a><span class="k">virtual</span><span class="w"> </span><span class="kt">bool</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">Dimension</span><span class="o">::</span><span class="n">isValid</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span>
+<div class="language-C++ highlight"><pre><span></span><code><span id="__span-21-1"><a id="__codelineno-21-1" name="__codelineno-21-1" href="#__codelineno-21-1"></a><span class="k">virtual</span><span class="w"> </span><span class="kt">bool</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">Dimension</span><span class="o">::</span><span class="n">isValid</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span>
 </span></code></pre></div></p>
 <p>A <a href="./"><strong>Dimension</strong></a> handle can outlive the underlying dimension if it is unloaded; this returns false once that happens, after which accessing the dimension throws.</p>
 <p><strong>Returns:</strong></p>
 <p><code>true</code> if the dimension is still loaded, <code>false</code> otherwise </p>
 <hr>
 
-<h3 id="function-loadchunk">function loadChunk<a class="headerlink" href="#function-loadchunk" title="Permanent link">&para;</a></h3>
-<p><em>Requests the</em> <a href="../classendstone_1_1Chunk/"><em><strong>Chunk</strong></em></a> <em>at the given coordinates to be loaded, and keeps it loaded until it is unloaded again.</em>
-<div class="language-C++ highlight"><pre><span></span><code><span id="__span-18-1"><a id="__codelineno-18-1" name="__codelineno-18-1" href="#__codelineno-18-1"></a><span class="k">virtual</span><span class="w"> </span><span class="kt">bool</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">Dimension</span><span class="o">::</span><span class="n">loadChunk</span><span class="w"> </span><span class="p">(</span>
-</span><span id="__span-18-2"><a id="__codelineno-18-2" name="__codelineno-18-2" href="#__codelineno-18-2"></a><span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="n">x</span><span class="p">,</span>
-</span><span id="__span-18-3"><a id="__codelineno-18-3" name="__codelineno-18-3" href="#__codelineno-18-3"></a><span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="n">z</span>
-</span><span id="__span-18-4"><a id="__codelineno-18-4" name="__codelineno-18-4" href="#__codelineno-18-4"></a><span class="p">)</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span>
+<h3 id="function-loadchunk-12">function loadChunk [&frac12;]<a class="headerlink" href="#function-loadchunk-12" title="Permanent link">&para;</a></h3>
+<p><em>Requests the</em> <a href="../classendstone_1_1Chunk/"><em><strong>Chunk</strong></em></a> <em>at the given coordinates to be loaded, generating it if it does not exist yet.</em>
+<div class="language-C++ highlight"><pre><span></span><code><span id="__span-22-1"><a id="__codelineno-22-1" name="__codelineno-22-1" href="#__codelineno-22-1"></a><span class="k">virtual</span><span class="w"> </span><span class="kt">bool</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">Dimension</span><span class="o">::</span><span class="n">loadChunk</span><span class="w"> </span><span class="p">(</span>
+</span><span id="__span-22-2"><a id="__codelineno-22-2" name="__codelineno-22-2" href="#__codelineno-22-2"></a><span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="n">x</span><span class="p">,</span>
+</span><span id="__span-22-3"><a id="__codelineno-22-3" name="__codelineno-22-3" href="#__codelineno-22-3"></a><span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="n">z</span>
+</span><span id="__span-22-4"><a id="__codelineno-22-4" name="__codelineno-22-4" href="#__codelineno-22-4"></a><span class="p">)</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span>
 </span></code></pre></div></p>
-<p>The chunk is held resident by Endstone from the moment this returns until removed with <code>unloadChunk()</code> or the server restarts. Loading itself is asynchronous: unless the chunk was already resident, it finishes on a later tick, so <code>isChunkLoaded()</code> may still report <code>false</code> immediately afterwards. Intended for keeping a handful of chunks resident; it is not suited to loading large regions.</p>
+<p>Equivalent to <code>loadChunk(x, z, true)</code>.</p>
 <p><strong>Parameters:</strong></p>
 <ul>
 <li><code>x</code> X-coordinate of the chunk </li>
 <li><code>z</code> Z-coordinate of the chunk </li>
 </ul>
 <p><strong>Returns:</strong></p>
-<p><code>true</code> if the request was accepted, otherwise <code>false</code> </p>
+<p><code>true</code> if the chunk is now held resident, otherwise <code>false</code> </p>
+<hr>
+
+<h3 id="function-loadchunk-22">function loadChunk [2/2]<a class="headerlink" href="#function-loadchunk-22" title="Permanent link">&para;</a></h3>
+<p><em>Requests the</em> <a href="../classendstone_1_1Chunk/"><em><strong>Chunk</strong></em></a> <em>at the given coordinates to be loaded, and keeps it resident until it is released again.</em>
+<div class="language-C++ highlight"><pre><span></span><code><span id="__span-23-1"><a id="__codelineno-23-1" name="__codelineno-23-1" href="#__codelineno-23-1"></a><span class="k">virtual</span><span class="w"> </span><span class="kt">bool</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">Dimension</span><span class="o">::</span><span class="n">loadChunk</span><span class="w"> </span><span class="p">(</span>
+</span><span id="__span-23-2"><a id="__codelineno-23-2" name="__codelineno-23-2" href="#__codelineno-23-2"></a><span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="n">x</span><span class="p">,</span>
+</span><span id="__span-23-3"><a id="__codelineno-23-3" name="__codelineno-23-3" href="#__codelineno-23-3"></a><span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="n">z</span><span class="p">,</span>
+</span><span id="__span-23-4"><a id="__codelineno-23-4" name="__codelineno-23-4" href="#__codelineno-23-4"></a><span class="w">    </span><span class="kt">bool</span><span class="w"> </span><span class="n">generate</span>
+</span><span id="__span-23-5"><a id="__codelineno-23-5" name="__codelineno-23-5" href="#__codelineno-23-5"></a><span class="p">)</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span>
+</span></code></pre></div></p>
+<p>The chunk is held from the moment this returns until <code>unloadChunk()</code> or <code>unloadChunkRequest()</code> releases it, or the server restarts. Bedrock has no synchronous chunk load, so unless the chunk was already resident the load finishes on a later tick and <code>isChunkLoaded()</code> may still report <code>false</code> right afterwards. A chunk held this way stays in memory but is not ticked, and the hold never expires on its own. Intended for keeping a handful of chunks resident; it is not suited to loading large regions.</p>
+<p>The hold is not attributed to any plugin and survives that plugin being disabled. Use <code>addPluginChunkTicket()</code> for a hold that is released automatically.</p>
+<p><strong>Parameters:</strong></p>
+<ul>
+<li><code>x</code> X-coordinate of the chunk </li>
+<li><code>z</code> Z-coordinate of the chunk </li>
+<li><code>generate</code> Whether to generate the chunk if it does not exist yet </li>
+</ul>
+<p><strong>Returns:</strong></p>
+<p><code>false</code> if <code>generate</code> is <code>false</code> and the chunk has not been generated, or if the coordinates lie outside the world limit, otherwise <code>true</code> </p>
+<hr>
+
+<h3 id="function-removepluginchunkticket">function removePluginChunkTicket<a class="headerlink" href="#function-removepluginchunkticket" title="Permanent link">&para;</a></h3>
+<p><em>Removes the given plugin's ticket for the</em> <a href="../classendstone_1_1Chunk/"><em><strong>Chunk</strong></em></a> <em>at the given coordinates.</em>
+<div class="language-C++ highlight"><pre><span></span><code><span id="__span-24-1"><a id="__codelineno-24-1" name="__codelineno-24-1" href="#__codelineno-24-1"></a><span class="k">virtual</span><span class="w"> </span><span class="kt">bool</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">Dimension</span><span class="o">::</span><span class="n">removePluginChunkTicket</span><span class="w"> </span><span class="p">(</span>
+</span><span id="__span-24-2"><a id="__codelineno-24-2" name="__codelineno-24-2" href="#__codelineno-24-2"></a><span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="n">x</span><span class="p">,</span>
+</span><span id="__span-24-3"><a id="__codelineno-24-3" name="__codelineno-24-3" href="#__codelineno-24-3"></a><span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="n">z</span><span class="p">,</span>
+</span><span id="__span-24-4"><a id="__codelineno-24-4" name="__codelineno-24-4" href="#__codelineno-24-4"></a><span class="w">    </span><span class="n">Plugin</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">plugin</span>
+</span><span id="__span-24-5"><a id="__codelineno-24-5" name="__codelineno-24-5" href="#__codelineno-24-5"></a><span class="p">)</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span>
+</span></code></pre></div></p>
+<p><strong>Parameters:</strong></p>
+<ul>
+<li><code>x</code> X-coordinate of the chunk </li>
+<li><code>z</code> Z-coordinate of the chunk </li>
+<li><code>plugin</code> <a href="../classendstone_1_1Plugin/"><strong>Plugin</strong></a> whose ticket to remove </li>
+</ul>
+<p><strong>Returns:</strong></p>
+<p><code>true</code> if a plugin ticket was removed, <code>false</code> if the plugin holds none for this chunk </p>
+<hr>
+
+<h3 id="function-removepluginchunktickets">function removePluginChunkTickets<a class="headerlink" href="#function-removepluginchunktickets" title="Permanent link">&para;</a></h3>
+<p><em>Removes every ticket the given plugin holds in this dimension.</em> 
+<div class="language-C++ highlight"><pre><span></span><code><span id="__span-25-1"><a id="__codelineno-25-1" name="__codelineno-25-1" href="#__codelineno-25-1"></a><span class="k">virtual</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">Dimension</span><span class="o">::</span><span class="n">removePluginChunkTickets</span><span class="w"> </span><span class="p">(</span>
+</span><span id="__span-25-2"><a id="__codelineno-25-2" name="__codelineno-25-2" href="#__codelineno-25-2"></a><span class="w">    </span><span class="n">Plugin</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">plugin</span>
+</span><span id="__span-25-3"><a id="__codelineno-25-3" name="__codelineno-25-3" href="#__codelineno-25-3"></a><span class="p">)</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span>
+</span></code></pre></div></p>
+<p><strong>Parameters:</strong></p>
+<ul>
+<li><code>plugin</code> <a href="../classendstone_1_1Plugin/"><strong>Plugin</strong></a> whose tickets to remove </li>
+</ul>
 <hr>
 
 <h3 id="function-spawnactor">function spawnActor<a class="headerlink" href="#function-spawnactor" title="Permanent link">&para;</a></h3>
 <p><em>Creates an actor at the given</em> <a href="../classendstone_1_1Location/"><em><strong>Location</strong></em></a> <em>.</em>
-<div class="language-C++ highlight"><pre><span></span><code><span id="__span-19-1"><a id="__codelineno-19-1" name="__codelineno-19-1" href="#__codelineno-19-1"></a><span class="k">virtual</span><span class="w"> </span><span class="n">Nullable</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">Actor</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">Dimension</span><span class="o">::</span><span class="n">spawnActor</span><span class="w"> </span><span class="p">(</span>
-</span><span id="__span-19-2"><a id="__codelineno-19-2" name="__codelineno-19-2" href="#__codelineno-19-2"></a><span class="w">    </span><span class="n">Location</span><span class="w"> </span><span class="n">location</span><span class="p">,</span>
-</span><span id="__span-19-3"><a id="__codelineno-19-3" name="__codelineno-19-3" href="#__codelineno-19-3"></a><span class="w">    </span><span class="n">ActorTypeId</span><span class="w"> </span><span class="n">type</span>
-</span><span id="__span-19-4"><a id="__codelineno-19-4" name="__codelineno-19-4" href="#__codelineno-19-4"></a><span class="p">)</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span>
+<div class="language-C++ highlight"><pre><span></span><code><span id="__span-26-1"><a id="__codelineno-26-1" name="__codelineno-26-1" href="#__codelineno-26-1"></a><span class="k">virtual</span><span class="w"> </span><span class="n">Nullable</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">Actor</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">Dimension</span><span class="o">::</span><span class="n">spawnActor</span><span class="w"> </span><span class="p">(</span>
+</span><span id="__span-26-2"><a id="__codelineno-26-2" name="__codelineno-26-2" href="#__codelineno-26-2"></a><span class="w">    </span><span class="n">Location</span><span class="w"> </span><span class="n">location</span><span class="p">,</span>
+</span><span id="__span-26-3"><a id="__codelineno-26-3" name="__codelineno-26-3" href="#__codelineno-26-3"></a><span class="w">    </span><span class="n">ActorTypeId</span><span class="w"> </span><span class="n">type</span>
+</span><span id="__span-26-4"><a id="__codelineno-26-4" name="__codelineno-26-4" href="#__codelineno-26-4"></a><span class="p">)</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span>
 </span></code></pre></div></p>
 <p><strong>Parameters:</strong></p>
 <ul>
@@ -3300,24 +3548,43 @@ For latest updates join the chat on
 <hr>
 
 <h3 id="function-unloadchunk">function unloadChunk<a class="headerlink" href="#function-unloadchunk" title="Permanent link">&para;</a></h3>
-<p><em>Releases the hold that</em> <code>loadChunk()</code> <em>placed on the</em><a href="../classendstone_1_1Chunk/"><em><strong>Chunk</strong></em></a> <em>at the given coordinates.</em>
-<div class="language-C++ highlight"><pre><span></span><code><span id="__span-20-1"><a id="__codelineno-20-1" name="__codelineno-20-1" href="#__codelineno-20-1"></a><span class="k">virtual</span><span class="w"> </span><span class="kt">bool</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">Dimension</span><span class="o">::</span><span class="n">unloadChunk</span><span class="w"> </span><span class="p">(</span>
-</span><span id="__span-20-2"><a id="__codelineno-20-2" name="__codelineno-20-2" href="#__codelineno-20-2"></a><span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="n">x</span><span class="p">,</span>
-</span><span id="__span-20-3"><a id="__codelineno-20-3" name="__codelineno-20-3" href="#__codelineno-20-3"></a><span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="n">z</span>
-</span><span id="__span-20-4"><a id="__codelineno-20-4" name="__codelineno-20-4" href="#__codelineno-20-4"></a><span class="p">)</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span>
+<p><em>Releases the hold that</em> <code>loadChunk()</code> <em>placed on the</em><a href="../classendstone_1_1Chunk/"><em><strong>Chunk</strong></em></a> <em>at the given coordinates, and unloads it if nothing else keeps it resident.</em>
+<div class="language-C++ highlight"><pre><span></span><code><span id="__span-27-1"><a id="__codelineno-27-1" name="__codelineno-27-1" href="#__codelineno-27-1"></a><span class="k">virtual</span><span class="w"> </span><span class="kt">bool</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">Dimension</span><span class="o">::</span><span class="n">unloadChunk</span><span class="w"> </span><span class="p">(</span>
+</span><span id="__span-27-2"><a id="__codelineno-27-2" name="__codelineno-27-2" href="#__codelineno-27-2"></a><span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="n">x</span><span class="p">,</span>
+</span><span id="__span-27-3"><a id="__codelineno-27-3" name="__codelineno-27-3" href="#__codelineno-27-3"></a><span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="n">z</span>
+</span><span id="__span-27-4"><a id="__codelineno-27-4" name="__codelineno-27-4" href="#__codelineno-27-4"></a><span class="p">)</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span>
 </span></code></pre></div></p>
-<p>This only drops Endstone's own reference; it never affects <code>/tickingarea</code>s or other holders. The chunk is unloaded once nothing else keeps it loaded (a nearby player, the spawn area, etc.), so this is a no-op in effect while the chunk is still in use.</p>
+<p>A chunk kept alive by a nearby player, the spawn area, a <code>/tickingarea</code> or a plugin chunk ticket stays loaded, and this reports <code>false</code>. Unloading a chunk saves it and fires a <a href="../classendstone_1_1ChunkUnloadEvent/"><strong>ChunkUnloadEvent</strong></a>, which handlers observe before this returns.</p>
+<p><strong>Note:</strong></p>
+<p>This also completes any chunk unloads the dimension had pending, so calling it once per chunk over a large area is expensive. Use <code>unloadChunkRequest()</code> when releasing many chunks at once.</p>
 <p><strong>Parameters:</strong></p>
 <ul>
 <li><code>x</code> X-coordinate of the chunk </li>
 <li><code>z</code> Z-coordinate of the chunk </li>
 </ul>
 <p><strong>Returns:</strong></p>
-<p><code>true</code> once the hold has been released </p>
+<p><code>true</code> if the chunk is no longer loaded, otherwise <code>false</code> </p>
+<hr>
+
+<h3 id="function-unloadchunkrequest">function unloadChunkRequest<a class="headerlink" href="#function-unloadchunkrequest" title="Permanent link">&para;</a></h3>
+<p><em>Releases the hold that</em> <code>loadChunk()</code> <em>placed on the</em><a href="../classendstone_1_1Chunk/"><em><strong>Chunk</strong></em></a> <em>at the given coordinates, without unloading it now.</em>
+<div class="language-C++ highlight"><pre><span></span><code><span id="__span-28-1"><a id="__codelineno-28-1" name="__codelineno-28-1" href="#__codelineno-28-1"></a><span class="k">virtual</span><span class="w"> </span><span class="kt">bool</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">Dimension</span><span class="o">::</span><span class="n">unloadChunkRequest</span><span class="w"> </span><span class="p">(</span>
+</span><span id="__span-28-2"><a id="__codelineno-28-2" name="__codelineno-28-2" href="#__codelineno-28-2"></a><span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="n">x</span><span class="p">,</span>
+</span><span id="__span-28-3"><a id="__codelineno-28-3" name="__codelineno-28-3" href="#__codelineno-28-3"></a><span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="n">z</span>
+</span><span id="__span-28-4"><a id="__codelineno-28-4" name="__codelineno-28-4" href="#__codelineno-28-4"></a><span class="p">)</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span>
+</span></code></pre></div></p>
+<p>The chunk is unloaded on a later tick once nothing else keeps it resident.</p>
+<p><strong>Parameters:</strong></p>
+<ul>
+<li><code>x</code> X-coordinate of the chunk </li>
+<li><code>z</code> Z-coordinate of the chunk </li>
+</ul>
+<p><strong>Returns:</strong></p>
+<p><code>true</code> </p>
 <hr>
 
 <h3 id="function-dimension">function ~Dimension<a class="headerlink" href="#function-dimension" title="Permanent link">&para;</a></h3>
-<div class="language-C++ highlight"><pre><span></span><code><span id="__span-21-1"><a id="__codelineno-21-1" name="__codelineno-21-1" href="#__codelineno-21-1"></a><span class="k">virtual</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">Dimension</span><span class="o">::~</span><span class="n">Dimension</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">default</span>
+<div class="language-C++ highlight"><pre><span></span><code><span id="__span-29-1"><a id="__codelineno-29-1" name="__codelineno-29-1" href="#__codelineno-29-1"></a><span class="k">virtual</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">Dimension</span><span class="o">::~</span><span class="n">Dimension</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">default</span>
 </span></code></pre></div>
 <hr>
 

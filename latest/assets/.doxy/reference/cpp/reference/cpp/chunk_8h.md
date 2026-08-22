@@ -11,6 +11,7 @@
 
 
 * `#include <format>`
+* `#include <vector>`
 * `#include "endstone/actor/actor.h"`
 
 

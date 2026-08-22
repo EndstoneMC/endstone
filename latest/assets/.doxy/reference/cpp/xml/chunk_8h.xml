@@ -3,20 +3,21 @@
   <compounddef id="chunk_8h" kind="file" language="C++">
     <compoundname>chunk.h</compoundname>
     <includes local="no">format</includes>
+    <includes local="no">vector</includes>
     <includes refid="actor_8h" local="yes">endstone/actor/actor.h</includes>
     <includedby refid="chunk__event_8h" local="yes">include/endstone/event/chunk/chunk_event.h</includedby>
     <includedby refid="dimension_8h" local="yes">include/endstone/level/dimension.h</includedby>
     <incdepgraph>
-      <node id="3">
+      <node id="4">
         <label>endstone/actor/actor.h</label>
         <link refid="actor_8h_source"/>
-        <childnode refid="4" relation="include">
+        <childnode refid="5" relation="include">
         </childnode>
         <childnode refid="2" relation="include">
         </childnode>
-        <childnode refid="5" relation="include">
-        </childnode>
         <childnode refid="6" relation="include">
+        </childnode>
+        <childnode refid="3" relation="include">
         </childnode>
         <childnode refid="7" relation="include">
         </childnode>
@@ -38,7 +39,7 @@
         </childnode>
         <childnode refid="25" relation="include">
         </childnode>
-        <childnode refid="5" relation="include">
+        <childnode refid="6" relation="include">
         </childnode>
         <childnode refid="23" relation="include">
         </childnode>
@@ -50,9 +51,9 @@
         </childnode>
         <childnode refid="25" relation="include">
         </childnode>
-        <childnode refid="5" relation="include">
-        </childnode>
         <childnode refid="6" relation="include">
+        </childnode>
+        <childnode refid="3" relation="include">
         </childnode>
         <childnode refid="27" relation="include">
         </childnode>
@@ -62,7 +63,7 @@
       <node id="32">
         <label>endstone/ban/ip_ban_entry.h</label>
         <link refid="ip__ban__entry_8h_source"/>
-        <childnode refid="5" relation="include">
+        <childnode refid="6" relation="include">
         </childnode>
         <childnode refid="23" relation="include">
         </childnode>
@@ -76,9 +77,9 @@
         </childnode>
         <childnode refid="25" relation="include">
         </childnode>
-        <childnode refid="5" relation="include">
-        </childnode>
         <childnode refid="6" relation="include">
+        </childnode>
+        <childnode refid="3" relation="include">
         </childnode>
         <childnode refid="26" relation="include">
         </childnode>
@@ -90,7 +91,7 @@
         <link refid="player__ban__entry_8h_source"/>
         <childnode refid="25" relation="include">
         </childnode>
-        <childnode refid="5" relation="include">
+        <childnode refid="6" relation="include">
         </childnode>
         <childnode refid="23" relation="include">
         </childnode>
@@ -106,9 +107,9 @@
         </childnode>
         <childnode refid="25" relation="include">
         </childnode>
-        <childnode refid="5" relation="include">
-        </childnode>
         <childnode refid="6" relation="include">
+        </childnode>
+        <childnode refid="3" relation="include">
         </childnode>
         <childnode refid="26" relation="include">
         </childnode>
@@ -118,11 +119,11 @@
       <node id="37">
         <label>endstone/block/block_data.h</label>
         <link refid="block__data_8h_source"/>
-        <childnode refid="4" relation="include">
+        <childnode refid="5" relation="include">
         </childnode>
         <childnode refid="2" relation="include">
         </childnode>
-        <childnode refid="5" relation="include">
+        <childnode refid="6" relation="include">
         </childnode>
         <childnode refid="38" relation="include">
         </childnode>
@@ -148,9 +149,9 @@
       <node id="43">
         <label>endstone/boss/boss_bar.h</label>
         <link refid="boss__bar_8h_source"/>
-        <childnode refid="5" relation="include">
-        </childnode>
         <childnode refid="6" relation="include">
+        </childnode>
+        <childnode refid="3" relation="include">
         </childnode>
         <childnode refid="44" relation="include">
         </childnode>
@@ -176,13 +177,13 @@
         <link refid="command__map_8h_source"/>
         <childnode refid="21" relation="include">
         </childnode>
-        <childnode refid="5" relation="include">
+        <childnode refid="6" relation="include">
         </childnode>
         <childnode refid="29" relation="include">
         </childnode>
         <childnode refid="23" relation="include">
         </childnode>
-        <childnode refid="6" relation="include">
+        <childnode refid="3" relation="include">
         </childnode>
         <childnode refid="48" relation="include">
         </childnode>
@@ -194,7 +195,7 @@
         <link refid="command__sender_8h_source"/>
         <childnode refid="2" relation="include">
         </childnode>
-        <childnode refid="5" relation="include">
+        <childnode refid="6" relation="include">
         </childnode>
         <childnode refid="23" relation="include">
         </childnode>
@@ -224,7 +225,7 @@
         </childnode>
         <childnode refid="10" relation="include">
         </childnode>
-        <childnode refid="5" relation="include">
+        <childnode refid="6" relation="include">
         </childnode>
         <childnode refid="18" relation="include">
         </childnode>
@@ -232,9 +233,9 @@
       <node id="55">
         <label>endstone/lang/language.h</label>
         <link refid="language_8h_source"/>
-        <childnode refid="5" relation="include">
-        </childnode>
         <childnode refid="6" relation="include">
+        </childnode>
+        <childnode refid="3" relation="include">
         </childnode>
         <childnode refid="50" relation="include">
         </childnode>
@@ -242,11 +243,11 @@
       <node id="50">
         <label>endstone/lang/translatable.h</label>
         <link refid="translatable_8h_source"/>
-        <childnode refid="5" relation="include">
+        <childnode refid="6" relation="include">
         </childnode>
         <childnode refid="23" relation="include">
         </childnode>
-        <childnode refid="6" relation="include">
+        <childnode refid="3" relation="include">
         </childnode>
       </node>
       <node id="1">
@@ -255,6 +256,8 @@
         <childnode refid="2" relation="include">
         </childnode>
         <childnode refid="3" relation="include">
+        </childnode>
+        <childnode refid="4" relation="include">
         </childnode>
       </node>
       <node id="76">
@@ -278,13 +281,13 @@
       <node id="56">
         <label>endstone/logger.h</label>
         <link refid="logger_8h_source"/>
-        <childnode refid="4" relation="include">
+        <childnode refid="5" relation="include">
         </childnode>
         <childnode refid="2" relation="include">
         </childnode>
         <childnode refid="11" relation="include">
         </childnode>
-        <childnode refid="5" relation="include">
+        <childnode refid="6" relation="include">
         </childnode>
         <childnode refid="18" relation="include">
         </childnode>
@@ -296,9 +299,9 @@
       <node id="59">
         <label>endstone/map/map_canvas.h</label>
         <link refid="map__canvas_8h_source"/>
-        <childnode refid="4" relation="include">
+        <childnode refid="5" relation="include">
         </childnode>
-        <childnode refid="6" relation="include">
+        <childnode refid="3" relation="include">
         </childnode>
         <childnode refid="60" relation="include">
         </childnode>
@@ -310,9 +313,9 @@
       <node id="60">
         <label>endstone/map/map_cursor.h</label>
         <link refid="map__cursor_8h_source"/>
-        <childnode refid="4" relation="include">
-        </childnode>
         <childnode refid="5" relation="include">
+        </childnode>
+        <childnode refid="6" relation="include">
         </childnode>
         <childnode refid="23" relation="include">
         </childnode>
@@ -330,9 +333,9 @@
       <node id="57">
         <label>endstone/map/map_view.h</label>
         <link refid="map__view_8h_source"/>
-        <childnode refid="4" relation="include">
+        <childnode refid="5" relation="include">
         </childnode>
-        <childnode refid="6" relation="include">
+        <childnode refid="3" relation="include">
         </childnode>
         <childnode refid="58" relation="include">
         </childnode>
@@ -342,7 +345,7 @@
       <node id="49">
         <label>endstone/message.h</label>
         <link refid="message_8h_source"/>
-        <childnode refid="5" relation="include">
+        <childnode refid="6" relation="include">
         </childnode>
         <childnode refid="23" relation="include">
         </childnode>
@@ -364,7 +367,7 @@
         <link refid="permissible_8h_source"/>
         <childnode refid="21" relation="include">
         </childnode>
-        <childnode refid="5" relation="include">
+        <childnode refid="6" relation="include">
         </childnode>
         <childnode refid="52" relation="include">
         </childnode>
@@ -382,7 +385,7 @@
         <link refid="permission__attachment__info_8h_source"/>
         <childnode refid="21" relation="include">
         </childnode>
-        <childnode refid="5" relation="include">
+        <childnode refid="6" relation="include">
         </childnode>
         <childnode refid="23" relation="include">
         </childnode>
@@ -402,7 +405,7 @@
         <link refid="service__manager_8h_source"/>
         <childnode refid="21" relation="include">
         </childnode>
-        <childnode refid="5" relation="include">
+        <childnode refid="6" relation="include">
         </childnode>
         <childnode refid="23" relation="include">
         </childnode>
@@ -428,7 +431,7 @@
         </childnode>
         <childnode refid="11" relation="include">
         </childnode>
-        <childnode refid="5" relation="include">
+        <childnode refid="6" relation="include">
         </childnode>
         <childnode refid="12" relation="include">
         </childnode>
@@ -440,7 +443,7 @@
       <node id="69">
         <label>endstone/scoreboard/criteria.h</label>
         <link refid="criteria_8h_source"/>
-        <childnode refid="5" relation="include">
+        <childnode refid="6" relation="include">
         </childnode>
         <childnode refid="70" relation="include">
         </childnode>
@@ -456,7 +459,7 @@
         </childnode>
         <childnode refid="25" relation="include">
         </childnode>
-        <childnode refid="5" relation="include">
+        <childnode refid="6" relation="include">
         </childnode>
         <childnode refid="73" relation="include">
         </childnode>
@@ -474,7 +477,7 @@
       <node id="70">
         <label>endstone/scoreboard/render_type.h</label>
         <link refid="render__type_8h_source"/>
-        <childnode refid="4" relation="include">
+        <childnode refid="5" relation="include">
         </childnode>
       </node>
       <node id="74">
@@ -490,11 +493,11 @@
       <node id="75">
         <label>endstone/scoreboard/score_entry.h</label>
         <link refid="score__entry_8h_source"/>
-        <childnode refid="5" relation="include">
+        <childnode refid="6" relation="include">
         </childnode>
         <childnode refid="39" relation="include">
         </childnode>
-        <childnode refid="6" relation="include">
+        <childnode refid="3" relation="include">
         </childnode>
         <childnode refid="28" relation="include">
         </childnode>
@@ -504,9 +507,9 @@
         <link refid="scoreboard_8h_source"/>
         <childnode refid="21" relation="include">
         </childnode>
-        <childnode refid="5" relation="include">
-        </childnode>
         <childnode refid="6" relation="include">
+        </childnode>
+        <childnode refid="3" relation="include">
         </childnode>
         <childnode refid="69" relation="include">
         </childnode>
@@ -526,7 +529,7 @@
         <link refid="server_8h_source"/>
         <childnode refid="20" relation="include">
         </childnode>
-        <childnode refid="4" relation="include">
+        <childnode refid="5" relation="include">
         </childnode>
         <childnode refid="2" relation="include">
         </childnode>
@@ -534,7 +537,7 @@
         </childnode>
         <childnode refid="11" relation="include">
         </childnode>
-        <childnode refid="5" relation="include">
+        <childnode refid="6" relation="include">
         </childnode>
         <childnode refid="18" relation="include">
         </childnode>
@@ -542,7 +545,7 @@
         </childnode>
         <childnode refid="23" relation="include">
         </childnode>
-        <childnode refid="6" relation="include">
+        <childnode refid="3" relation="include">
         </childnode>
         <childnode refid="24" relation="include">
         </childnode>
@@ -578,7 +581,7 @@
       <node id="61">
         <label>endstone/util/color.h</label>
         <link refid="color_8h_source"/>
-        <childnode refid="4" relation="include">
+        <childnode refid="5" relation="include">
         </childnode>
       </node>
       <node id="40">
@@ -588,7 +591,7 @@
         </childnode>
         <childnode refid="41" relation="include">
         </childnode>
-        <childnode refid="5" relation="include">
+        <childnode refid="6" relation="include">
         </childnode>
         <childnode refid="18" relation="include">
         </childnode>
@@ -602,9 +605,9 @@
         </childnode>
         <childnode refid="13" relation="include">
         </childnode>
-        <childnode refid="5" relation="include">
-        </childnode>
         <childnode refid="6" relation="include">
+        </childnode>
+        <childnode refid="3" relation="include">
         </childnode>
         <childnode refid="61" relation="include">
         </childnode>
@@ -634,7 +637,7 @@
         <link refid="result_8h_source"/>
         <childnode refid="2" relation="include">
         </childnode>
-        <childnode refid="5" relation="include">
+        <childnode refid="6" relation="include">
         </childnode>
         <childnode refid="64" relation="include">
         </childnode>
@@ -646,13 +649,13 @@
         </childnode>
         <childnode refid="15" relation="include">
         </childnode>
-        <childnode refid="4" relation="include">
+        <childnode refid="5" relation="include">
         </childnode>
         <childnode refid="13" relation="include">
         </childnode>
         <childnode refid="10" relation="include">
         </childnode>
-        <childnode refid="5" relation="include">
+        <childnode refid="6" relation="include">
         </childnode>
       </node>
       <node id="79">
@@ -686,7 +689,7 @@
       <node id="15">
         <label>cstddef</label>
       </node>
-      <node id="4">
+      <node id="5">
         <label>cstdint</label>
       </node>
       <node id="13">
@@ -722,7 +725,7 @@
       <node id="11">
         <label>stdexcept</label>
       </node>
-      <node id="5">
+      <node id="6">
         <label>string</label>
       </node>
       <node id="18">
@@ -746,7 +749,7 @@
       <node id="39">
         <label>variant</label>
       </node>
-      <node id="6">
+      <node id="3">
         <label>vector</label>
       </node>
     </incdepgraph>
@@ -845,34 +848,51 @@
 <codeline lineno="15"><highlight class="normal"></highlight><highlight class="preprocessor">#pragma<sp/>once</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="16"><highlight class="normal"></highlight></codeline>
 <codeline lineno="17"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;format&gt;</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="18"><highlight class="normal"></highlight></codeline>
-<codeline lineno="19"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;endstone/actor/actor.h&quot;</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="20"><highlight class="normal"></highlight></codeline>
-<codeline lineno="21"><highlight class="normal"></highlight><highlight class="keyword">namespace<sp/></highlight><highlight class="normal"><ref refid="namespaceendstone" kindref="compound">endstone</ref><sp/>{</highlight></codeline>
-<codeline lineno="22"><highlight class="normal"></highlight></codeline>
-<codeline lineno="26" refid="classendstone_1_1Chunk" refkind="compound"><highlight class="normal"></highlight><highlight class="keyword">class<sp/></highlight><highlight class="normal"><ref refid="classendstone_1_1Chunk" kindref="compound">Chunk</ref><sp/>{</highlight></codeline>
-<codeline lineno="27"><highlight class="normal"></highlight><highlight class="keyword">public</highlight><highlight class="normal">:</highlight></codeline>
-<codeline lineno="28"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">virtual</highlight><highlight class="normal"><sp/><ref refid="classendstone_1_1Chunk" kindref="compound">~Chunk</ref>()<sp/>=<sp/></highlight><highlight class="keywordflow">default</highlight><highlight class="normal">;</highlight></codeline>
-<codeline lineno="29"><highlight class="normal"></highlight></codeline>
-<codeline lineno="35" refid="classendstone_1_1Chunk_1a8f8d55f6c6a9a27772da990c6aa533b1" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>[[<ref refid="classendstone_1_1Identifier" kindref="compound">nodiscard</ref>]]<sp/></highlight><highlight class="keyword">virtual</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="classendstone_1_1Chunk_1a8f8d55f6c6a9a27772da990c6aa533b1" kindref="member">getX</ref>()<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>=<sp/>0;</highlight></codeline>
-<codeline lineno="36"><highlight class="normal"></highlight></codeline>
-<codeline lineno="42" refid="classendstone_1_1Chunk_1aa41c6ad331470b359dc503a9542f6637" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>[[<ref refid="classendstone_1_1Identifier" kindref="compound">nodiscard</ref>]]<sp/></highlight><highlight class="keyword">virtual</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="classendstone_1_1Chunk_1aa41c6ad331470b359dc503a9542f6637" kindref="member">getZ</ref>()<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>=<sp/>0;</highlight></codeline>
-<codeline lineno="43"><highlight class="normal"></highlight></codeline>
-<codeline lineno="49" refid="classendstone_1_1Chunk_1ad6b110bcd41022ffbf923d732debbb93" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>[[<ref refid="classendstone_1_1Identifier" kindref="compound">nodiscard</ref>]]<sp/></highlight><highlight class="keyword">virtual</highlight><highlight class="normal"><sp/><ref refid="classendstone_1_1Level" kindref="compound">Level</ref><sp/>&amp;<ref refid="classendstone_1_1Chunk_1ad6b110bcd41022ffbf923d732debbb93" kindref="member">getLevel</ref>()<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>=<sp/>0;</highlight></codeline>
-<codeline lineno="50"><highlight class="normal"></highlight></codeline>
-<codeline lineno="56" refid="classendstone_1_1Chunk_1aadc09bebf53d22748a3f49252e6a3487" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>[[<ref refid="classendstone_1_1Identifier" kindref="compound">nodiscard</ref>]]<sp/></highlight><highlight class="keyword">virtual</highlight><highlight class="normal"><sp/><ref refid="classendstone_1_1Identifier" kindref="compound">NotNull&lt;Dimension&gt;</ref><sp/><ref refid="classendstone_1_1Chunk_1aadc09bebf53d22748a3f49252e6a3487" kindref="member">getDimension</ref>()<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>=<sp/>0;</highlight></codeline>
-<codeline lineno="57"><highlight class="normal">};</highlight></codeline>
-<codeline lineno="58"><highlight class="normal"></highlight></codeline>
-<codeline lineno="59"><highlight class="normal">}<sp/><sp/></highlight><highlight class="comment">//<sp/>namespace<sp/>endstone</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="18"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;vector&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="19"><highlight class="normal"></highlight></codeline>
+<codeline lineno="20"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;endstone/actor/actor.h&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="21"><highlight class="normal"></highlight></codeline>
+<codeline lineno="22"><highlight class="normal"></highlight><highlight class="keyword">namespace<sp/></highlight><highlight class="normal"><ref refid="namespaceendstone" kindref="compound">endstone</ref><sp/>{</highlight></codeline>
+<codeline lineno="23"><highlight class="normal"></highlight></codeline>
+<codeline lineno="24"><highlight class="normal"></highlight><highlight class="keyword">class<sp/></highlight><highlight class="normal">Plugin;</highlight></codeline>
+<codeline lineno="25"><highlight class="normal"></highlight></codeline>
+<codeline lineno="29" refid="classendstone_1_1Chunk" refkind="compound"><highlight class="normal"></highlight><highlight class="keyword">class<sp/></highlight><highlight class="normal"><ref refid="classendstone_1_1Chunk" kindref="compound">Chunk</ref><sp/>{</highlight></codeline>
+<codeline lineno="30"><highlight class="normal"></highlight><highlight class="keyword">public</highlight><highlight class="normal">:</highlight></codeline>
+<codeline lineno="31"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">virtual</highlight><highlight class="normal"><sp/><ref refid="classendstone_1_1Chunk" kindref="compound">~Chunk</ref>()<sp/>=<sp/></highlight><highlight class="keywordflow">default</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="32"><highlight class="normal"></highlight></codeline>
+<codeline lineno="38" refid="classendstone_1_1Chunk_1a8f8d55f6c6a9a27772da990c6aa533b1" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>[[<ref refid="classendstone_1_1Identifier" kindref="compound">nodiscard</ref>]]<sp/></highlight><highlight class="keyword">virtual</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="classendstone_1_1Chunk_1a8f8d55f6c6a9a27772da990c6aa533b1" kindref="member">getX</ref>()<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>=<sp/>0;</highlight></codeline>
+<codeline lineno="39"><highlight class="normal"></highlight></codeline>
+<codeline lineno="45" refid="classendstone_1_1Chunk_1aa41c6ad331470b359dc503a9542f6637" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>[[<ref refid="classendstone_1_1Identifier" kindref="compound">nodiscard</ref>]]<sp/></highlight><highlight class="keyword">virtual</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="classendstone_1_1Chunk_1aa41c6ad331470b359dc503a9542f6637" kindref="member">getZ</ref>()<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>=<sp/>0;</highlight></codeline>
+<codeline lineno="46"><highlight class="normal"></highlight></codeline>
+<codeline lineno="52" refid="classendstone_1_1Chunk_1ad6b110bcd41022ffbf923d732debbb93" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>[[<ref refid="classendstone_1_1Identifier" kindref="compound">nodiscard</ref>]]<sp/></highlight><highlight class="keyword">virtual</highlight><highlight class="normal"><sp/><ref refid="classendstone_1_1Level" kindref="compound">Level</ref><sp/>&amp;<ref refid="classendstone_1_1Chunk_1ad6b110bcd41022ffbf923d732debbb93" kindref="member">getLevel</ref>()<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>=<sp/>0;</highlight></codeline>
+<codeline lineno="53"><highlight class="normal"></highlight></codeline>
+<codeline lineno="59" refid="classendstone_1_1Chunk_1aadc09bebf53d22748a3f49252e6a3487" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>[[<ref refid="classendstone_1_1Identifier" kindref="compound">nodiscard</ref>]]<sp/></highlight><highlight class="keyword">virtual</highlight><highlight class="normal"><sp/><ref refid="classendstone_1_1Identifier" kindref="compound">NotNull&lt;Dimension&gt;</ref><sp/><ref refid="classendstone_1_1Chunk_1aadc09bebf53d22748a3f49252e6a3487" kindref="member">getDimension</ref>()<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>=<sp/>0;</highlight></codeline>
 <codeline lineno="60"><highlight class="normal"></highlight></codeline>
-<codeline lineno="61"><highlight class="normal"></highlight><highlight class="keyword">template</highlight><highlight class="normal"><sp/>&lt;&gt;</highlight></codeline>
-<codeline lineno="62" refid="structstd_1_1formatter_3_01endstone_1_1Chunk_01_4" refkind="compound"><highlight class="normal"></highlight><highlight class="keyword">struct<sp/></highlight><highlight class="normal">std::formatter&lt;<ref refid="namespaceendstone" kindref="compound">endstone</ref>::Chunk&gt;<sp/>:<sp/>std::formatter&lt;std::string_view&gt;<sp/>{</highlight></codeline>
-<codeline lineno="63"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">template</highlight><highlight class="normal"><sp/>&lt;</highlight><highlight class="keyword">typename</highlight><highlight class="normal"><sp/>FormatContext&gt;</highlight></codeline>
-<codeline lineno="64"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/>format(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classendstone_1_1Chunk" kindref="compound">endstone::Chunk</ref><sp/>&amp;self,<sp/>FormatContext<sp/>&amp;ctx)</highlight><highlight class="keyword"><sp/>const</highlight></codeline>
-<codeline lineno="65"><highlight class="keyword"><sp/><sp/><sp/><sp/></highlight><highlight class="normal">{</highlight></codeline>
-<codeline lineno="66"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>std::format_to(ctx.out(),<sp/></highlight><highlight class="stringliteral">&quot;Chunk(x={},<sp/>z={})&quot;</highlight><highlight class="normal">,<sp/>self.<ref refid="classendstone_1_1Chunk_1a8f8d55f6c6a9a27772da990c6aa533b1" kindref="member">getX</ref>(),<sp/>self.<ref refid="classendstone_1_1Chunk_1aa41c6ad331470b359dc503a9542f6637" kindref="member">getZ</ref>());</highlight></codeline>
-<codeline lineno="67"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
-<codeline lineno="68"><highlight class="normal">};</highlight></codeline>
+<codeline lineno="66" refid="classendstone_1_1Chunk_1a5fcde69b5e66c467744b6988d756f812" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>[[<ref refid="classendstone_1_1Identifier" kindref="compound">nodiscard</ref>]]<sp/></highlight><highlight class="keyword">virtual</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="classendstone_1_1Chunk_1a5fcde69b5e66c467744b6988d756f812" kindref="member">isLoaded</ref>()<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>=<sp/>0;</highlight></codeline>
+<codeline lineno="67"><highlight class="normal"></highlight></codeline>
+<codeline lineno="75" refid="classendstone_1_1Chunk_1aea53b9aef3e4358824bafbc25d0510f9" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">virtual</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="classendstone_1_1Chunk_1aea53b9aef3e4358824bafbc25d0510f9" kindref="member">load</ref>()<sp/>=<sp/>0;</highlight></codeline>
+<codeline lineno="76"><highlight class="normal"></highlight></codeline>
+<codeline lineno="85" refid="classendstone_1_1Chunk_1a1e8b8217b7189639498c39052d5b0f76" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">virtual</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="classendstone_1_1Chunk_1a1e8b8217b7189639498c39052d5b0f76" kindref="member">load</ref>(</highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="classendstone_1_1Identifier" kindref="compound">generate</ref>)<sp/>=<sp/>0;</highlight></codeline>
+<codeline lineno="86"><highlight class="normal"></highlight></codeline>
+<codeline lineno="92" refid="classendstone_1_1Chunk_1a76e6c5eb43fec20961854d5a44aa4430" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">virtual</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="classendstone_1_1Chunk_1a76e6c5eb43fec20961854d5a44aa4430" kindref="member">unload</ref>()<sp/>=<sp/>0;</highlight></codeline>
+<codeline lineno="93"><highlight class="normal"></highlight></codeline>
+<codeline lineno="100" refid="classendstone_1_1Chunk_1ac1fce145e58f2ddc757ea71d2878596b" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">virtual</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="classendstone_1_1Chunk_1ac1fce145e58f2ddc757ea71d2878596b" kindref="member">addPluginChunkTicket</ref>(<ref refid="classendstone_1_1Plugin" kindref="compound">Plugin</ref><sp/>&amp;<ref refid="classendstone_1_1Identifier" kindref="compound">plugin</ref>)<sp/>=<sp/>0;</highlight></codeline>
+<codeline lineno="101"><highlight class="normal"></highlight></codeline>
+<codeline lineno="108" refid="classendstone_1_1Chunk_1a582bd646b9010816bd2028c8a48a0423" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">virtual</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="classendstone_1_1Chunk_1a582bd646b9010816bd2028c8a48a0423" kindref="member">removePluginChunkTicket</ref>(<ref refid="classendstone_1_1Plugin" kindref="compound">Plugin</ref><sp/>&amp;<ref refid="classendstone_1_1Identifier" kindref="compound">plugin</ref>)<sp/>=<sp/>0;</highlight></codeline>
+<codeline lineno="109"><highlight class="normal"></highlight></codeline>
+<codeline lineno="117" refid="classendstone_1_1Chunk_1aac95d98dded6d378a3cf67c18ee61aad" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>[[<ref refid="classendstone_1_1Identifier" kindref="compound">nodiscard</ref>]]<sp/></highlight><highlight class="keyword">virtual</highlight><highlight class="normal"><sp/>std::vector&lt;Plugin<sp/>*&gt;<sp/><ref refid="classendstone_1_1Chunk_1aac95d98dded6d378a3cf67c18ee61aad" kindref="member">getPluginChunkTickets</ref>()<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>=<sp/>0;</highlight></codeline>
+<codeline lineno="118"><highlight class="normal">};</highlight></codeline>
+<codeline lineno="119"><highlight class="normal"></highlight></codeline>
+<codeline lineno="120"><highlight class="normal">}<sp/><sp/></highlight><highlight class="comment">//<sp/>namespace<sp/>endstone</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="121"><highlight class="normal"></highlight></codeline>
+<codeline lineno="122"><highlight class="normal"></highlight><highlight class="keyword">template</highlight><highlight class="normal"><sp/>&lt;&gt;</highlight></codeline>
+<codeline lineno="123" refid="structstd_1_1formatter_3_01endstone_1_1Chunk_01_4" refkind="compound"><highlight class="normal"></highlight><highlight class="keyword">struct<sp/></highlight><highlight class="normal">std::formatter&lt;<ref refid="namespaceendstone" kindref="compound">endstone</ref>::Chunk&gt;<sp/>:<sp/>std::formatter&lt;std::string_view&gt;<sp/>{</highlight></codeline>
+<codeline lineno="124"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">template</highlight><highlight class="normal"><sp/>&lt;</highlight><highlight class="keyword">typename</highlight><highlight class="normal"><sp/>FormatContext&gt;</highlight></codeline>
+<codeline lineno="125"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/>format(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classendstone_1_1Chunk" kindref="compound">endstone::Chunk</ref><sp/>&amp;self,<sp/>FormatContext<sp/>&amp;ctx)</highlight><highlight class="keyword"><sp/>const</highlight></codeline>
+<codeline lineno="126"><highlight class="keyword"><sp/><sp/><sp/><sp/></highlight><highlight class="normal">{</highlight></codeline>
+<codeline lineno="127"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>std::format_to(ctx.out(),<sp/></highlight><highlight class="stringliteral">&quot;Chunk(x={},<sp/>z={})&quot;</highlight><highlight class="normal">,<sp/>self.<ref refid="classendstone_1_1Chunk_1a8f8d55f6c6a9a27772da990c6aa533b1" kindref="member">getX</ref>(),<sp/>self.<ref refid="classendstone_1_1Chunk_1aa41c6ad331470b359dc503a9542f6637" kindref="member">getZ</ref>());</highlight></codeline>
+<codeline lineno="128"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="129"><highlight class="normal">};</highlight></codeline>
     </programlisting>
     <location file="include/endstone/level/chunk.h"/>
   </compounddef>

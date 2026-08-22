@@ -27,6 +27,7 @@
 #include <format>
 #include <memory>
 #include <string>
+#include <unordered_map>
 #include <vector>
 
 #include "endstone/actor/actor.h"
@@ -40,6 +41,7 @@ namespace endstone {
 
 class Mob;
 class Player;
+class Plugin;
 
 class Dimension;
 using DimensionId = Identifier<Dimension>;
@@ -74,9 +76,25 @@ public:
 
     [[nodiscard]] virtual bool isChunkLoaded(int x, int z) const = 0;
 
+    [[nodiscard]] virtual bool isChunkGenerated(int x, int z) const = 0;
+
     virtual bool loadChunk(int x, int z) = 0;
 
+    virtual bool loadChunk(int x, int z, bool generate) = 0;
+
     virtual bool unloadChunk(int x, int z) = 0;
+
+    virtual bool unloadChunkRequest(int x, int z) = 0;
+
+    virtual bool addPluginChunkTicket(int x, int z, Plugin &plugin) = 0;
+
+    virtual bool removePluginChunkTicket(int x, int z, Plugin &plugin) = 0;
+
+    virtual void removePluginChunkTickets(Plugin &plugin) = 0;
+
+    [[nodiscard]] virtual std::vector<Plugin *> getPluginChunkTickets(int x, int z) const = 0;
+
+    [[nodiscard]] virtual std::unordered_map<Plugin *, std::vector<NotNull<Chunk>>> getPluginChunkTickets() const = 0;
 
     [[nodiscard]] virtual NotNull<Item> dropItem(Location location, const ItemStack &item) = 0;
 

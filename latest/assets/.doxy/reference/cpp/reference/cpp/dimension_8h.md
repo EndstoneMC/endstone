@@ -13,6 +13,7 @@
 * `#include <format>`
 * `#include <memory>`
 * `#include <string>`
+* `#include <unordered_map>`
 * `#include <vector>`
 * `#include "endstone/actor/actor.h"`
 * `#include "endstone/actor/item.h"`
