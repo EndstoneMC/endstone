@@ -35,8 +35,8 @@ namespace endstone {
 /**
  * Collects and submits anonymous usage statistics for a plugin to bStats.
  *
- * The server owns the metrics behind this handle and retires them when the plugin is disabled or the server shuts
- * down, so a plugin may add its charts in Plugin::onEnable and drop the handle.
+ * The server owns the metrics behind this handle and retires them when it reloads or shuts down, so a plugin may add
+ * its charts in Plugin::onEnable and drop the handle. Asking twice for the same service id gives back the same metrics.
  */
 class Metrics {
 public:

@@ -15,33 +15,30 @@
 #pragma once
 
 #include <memory>
-#include <unordered_map>
-#include <vector>
+#include <utility>
 
 #include <pybind11/pybind11.h>
 
 #include "endstone/metrics/base.h"
-#include "endstone/server.h"
 
 namespace endstone::core {
-class EndstoneMetrics {
+
+/** A metrics reporter backed by a Python class, named by the module it lives in. */
+class Metrics final : public MetricsBase {
 public:
-    EndstoneMetrics(Server &server);
-    ~EndstoneMetrics();
+    template <typename... Args>
+    Metrics(const char *module, const char *name, Args &&...args)
+    {
+        pybind11::gil_scoped_acquire gil{};
+        obj_ = pybind11::module_::import(module).attr(name)(std::forward<Args>(args)...);
+    }
+
+    ~Metrics() override;
+    void addCustomChart(std::unique_ptr<CustomChart> chart) override;
+    void shutdown() noexcept override;
 
 private:
-    Server &server_;
     pybind11::object obj_;
-};
-
-/** Holds every metrics the server has created for a plugin, so none of them outlives it. */
-class PluginMetricsRegistry {
-public:
-    [[nodiscard]] NotNull<MetricsBase> create(Plugin &plugin, int service_id);
-    void retire(const Plugin &plugin);
-
-private:
-    std::unordered_map<const Plugin *, std::vector<std::shared_ptr<MetricsBase>>> metrics_;
 };
 
 }  // namespace endstone::core

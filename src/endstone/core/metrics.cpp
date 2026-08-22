@@ -17,87 +17,38 @@
 #include <memory>
 #include <stdexcept>
 #include <string>
-#include <utility>
 
 #include <pybind11/embed.h>
 
 #include "endstone/metrics/custom_chart.h"
-#include "endstone/plugin/plugin.h"
 
 namespace py = pybind11;
 
 namespace endstone::core {
-namespace {
 
-class PluginMetrics final : public MetricsBase {
-public:
-    PluginMetrics(Plugin &plugin, int service_id)
-    {
-        py::gil_scoped_acquire gil{};
-        try {
-            const auto module = py::module_::import("endstone.metrics");
-            const auto cls = module.attr("Metrics");
-            obj_ = cls(py::cast(&plugin, py::return_value_policy::reference), service_id);
-        }
-        catch (std::exception &e) {
-            throw std::runtime_error(std::string("Unable to start metrics: ") + e.what());
-        }
-    }
-
-    ~PluginMetrics() override { shutdown(); }
-
-    void addCustomChart(std::unique_ptr<CustomChart> chart) override
-    {
-        if (!chart) {
-            throw std::invalid_argument("chart cannot be null");
-        }
-        if (!obj_) {
-            return;
-        }
-        py::gil_scoped_acquire gil{};
-        try {
-            obj_.attr("add_custom_chart")(py::cast(chart.release(), py::return_value_policy::take_ownership));
-        }
-        catch (std::exception &e) {
-            throw std::runtime_error(std::string("Unable to add metrics chart: ") + e.what());
-        }
-    }
-
-    void shutdown() noexcept override
-    {
-        if (!obj_) {
-            return;
-        }
-        py::gil_scoped_acquire gil{};
-        try {
-            auto shutdown = obj_.attr("shutdown");
-            (void)shutdown();
-        }
-        catch (std::exception &) {
-        }
-        obj_ = py::object();
-    }
-
-private:
-    py::object obj_;
-};
-
-}  // namespace
-
-EndstoneMetrics::EndstoneMetrics(Server &server) : server_(server)
+Metrics::~Metrics()
 {
+    Metrics::shutdown();
+}
+
+void Metrics::addCustomChart(std::unique_ptr<CustomChart> chart)
+{
+    if (!chart) {
+        throw std::invalid_argument("chart cannot be null");
+    }
+    if (!obj_) {
+        return;
+    }
+    py::gil_scoped_acquire gil{};
     try {
-        py::gil_scoped_acquire gil{};
-        const auto module = py::module_::import("endstone._metrics");
-        const auto cls = module.attr("EndstoneMetrics");
-        obj_ = cls(std::ref(server));
+        obj_.attr("add_custom_chart")(py::cast(chart.release(), py::return_value_policy::take_ownership));
     }
     catch (std::exception &e) {
-        server_.getLogger().warning("Unable to start metrics: {}", e.what());
+        throw std::runtime_error(std::string("Unable to add metrics chart: ") + e.what());
     }
 }
 
-EndstoneMetrics::~EndstoneMetrics()
+void Metrics::shutdown() noexcept
 {
     if (!obj_) {
         return;
@@ -107,30 +58,9 @@ EndstoneMetrics::~EndstoneMetrics()
         auto shutdown = obj_.attr("shutdown");
         (void)shutdown();
     }
-    catch (std::exception &e) {
-        server_.getLogger().warning("Unable to shutdown metrics: {}", e.what());
+    catch (std::exception &) {
     }
     obj_ = py::object();
-}
-
-NotNull<MetricsBase> PluginMetricsRegistry::create(Plugin &plugin, int service_id)
-{
-    auto metrics = std::make_shared<PluginMetrics>(plugin, service_id);
-    metrics_[&plugin].push_back(metrics);
-    return metrics;
-}
-
-void PluginMetricsRegistry::retire(const Plugin &plugin)
-{
-    const auto it = metrics_.find(&plugin);
-    if (it == metrics_.end()) {
-        return;
-    }
-    const auto retired = std::move(it->second);
-    metrics_.erase(it);
-    for (const auto &metrics : retired) {
-        metrics->shutdown();
-    }
 }
 
 }  // namespace endstone::core

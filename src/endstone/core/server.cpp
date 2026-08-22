@@ -155,7 +155,6 @@ EndstoneServer::EndstoneServer() : logger_(LoggerFactory::getLogger(""))
         EndstoneServer::getLogger().error(result.error());
     }
     language_ = std::make_unique<EndstoneLanguage>();
-    plugin_metrics_ = std::make_unique<PluginMetricsRegistry>();
     plugin_manager_ = std::make_unique<EndstonePluginManager>(*this);
     service_manager_ = std::make_unique<EndstoneServiceManager>();
     scheduler_ = std::make_unique<EndstoneScheduler>(*this);
@@ -212,7 +211,12 @@ void EndstoneServer::setLevel(::Level &level)
     level_ = std::make_unique<EndstoneLevel>(level);
     scoreboard_ = EndstoneScoreboard::create(level.getScoreboard());
     command_map_ = std::make_unique<EndstoneCommandMap>(*this);
-    metrics_ = std::make_unique<EndstoneMetrics>(*this);  // start metrics
+    try {
+        metrics_ = std::make_unique<Metrics>("endstone._metrics", "EndstoneMetrics", std::ref(*this));
+    }
+    catch (std::exception &e) {
+        getLogger().warning("Unable to start metrics: {}", e.what());
+    }
     loadResourcePacks();
     initRegistries();
 
@@ -504,9 +508,14 @@ Scheduler &EndstoneServer::getScheduler() const
     return *scheduler_;
 }
 
-NotNull<MetricsBase> EndstoneServer::createMetrics(Plugin &plugin, int service_id) const
+NotNull<MetricsBase> EndstoneServer::createMetrics(Plugin &plugin, int service_id)
 {
-    return plugin_metrics_->create(plugin, service_id);
+    auto it = plugin_metrics_.find(service_id);
+    if (it == plugin_metrics_.end()) {
+        plugin_metrics_.emplace(service_id,
+                                std::make_shared<Metrics>("endstone.metrics", "Metrics", &plugin, service_id));
+    }
+    return plugin_metrics_.at(service_id);
 }
 
 EndstoneScheduler &EndstoneServer::getEndstoneScheduler() const
@@ -611,6 +620,7 @@ void EndstoneServer::reload()
     }
     scheduler.removeCancelledTasks();
 
+    plugin_metrics_.clear();
     plugin_manager_->clearPlugins();
     reloadData();
     loadPlugins();
