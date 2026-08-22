@@ -31,6 +31,7 @@ __getattr__, __dir__, __all__ = lazy.attach(
             "lang",
             "level",
             "map",
+            "metrics",
             "nbt",
             "permissions",
             "plugin",

@@ -46,10 +46,13 @@ ALIASES = {
 _UNTYPED_CONST_RE = re.compile(r"""^ +[A-Z][A-Z0-9_]*(: str)? = (['"])[\w.]+:[\w.]+\2$""", re.MULTILINE)
 
 # The only source files griffe needs statically: the extension is inspected, and
-# everything else that reaches the stubs is hand-written in these three.
+# everything else that reaches the stubs is hand-written in these.
 STAGED_SOURCES = [
     Path("__init__.py"),
     Path("event/__init__.py"),
+    Path("metrics/__init__.py"),
+    Path("metrics/base.py"),
+    Path("metrics/config.py"),
     Path("plugin/__init__.py"),
 ]
 
@@ -175,6 +178,10 @@ def main() -> None:
     plugin.docstring = binding.docstring
     plugin.bases = []
     top.set_member("plugin.Plugin", plugin)
+    # The metrics transport stays in Python; only the charts are bound.
+    for name in ("MetricsBase", "MetricsConfig", "Metrics"):
+        member = package.get_member(f"metrics.{name}")
+        top.set_member(f"metrics.{name}", member.final_target if member.is_alias else member)
 
     # Present the extension as the package it is re-exported from; Object.path is
     # derived from the parent chain, so this renames the whole tree.

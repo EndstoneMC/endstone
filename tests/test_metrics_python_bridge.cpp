@@ -118,9 +118,14 @@ private:
     py::list charts_;
 };
 
-py::object request(const py::handle &chart)
+py::object chartData(const py::handle &chart)
 {
-    return chart.attr("_get_request_json_object")();
+    return chart.attr("get_chart_data")();
+}
+
+std::string chartId(const py::handle &chart)
+{
+    return chart.attr("chart_id").cast<std::string>();
 }
 
 class MetricsPythonBridgeTest : public ::testing::Test {
@@ -209,16 +214,15 @@ TEST_F(MetricsPythonBridgeTest, MetricsConvertsAllSevenCharts)
         std::make_unique<MultiLineChart>("multi_line", [] { return StringValues{{"zero", 0}, {"value", -2}}; }));
 
     ASSERT_EQ(capture.charts().size(), 7);
-    EXPECT_EQ(request(capture.charts()[0])["chartId"].cast<std::string>(), "simple");
-    EXPECT_EQ(request(capture.charts()[0])["data"]["value"].cast<std::string>(), "native");
-    EXPECT_EQ(request(capture.charts()[1])["data"]["values"].cast<StringValues>(), (StringValues{{"value", 2}}));
-    EXPECT_EQ(request(capture.charts()[2])["data"]["values"].cast<DrilldownValues>(),
+    EXPECT_EQ(chartId(capture.charts()[0]), "simple");
+    EXPECT_EQ(chartData(capture.charts()[0])["value"].cast<std::string>(), "native");
+    EXPECT_EQ(chartData(capture.charts()[1])["values"].cast<StringValues>(), (StringValues{{"value", 2}}));
+    EXPECT_EQ(chartData(capture.charts()[2])["values"].cast<DrilldownValues>(),
               (DrilldownValues{{"value", {{"inner", 3}}}}));
-    EXPECT_EQ(request(capture.charts()[3])["data"]["values"].cast<BarValues>(),
-              (BarValues{{"first", {1}}, {"zero", {0}}}));
-    EXPECT_EQ(request(capture.charts()[4])["data"]["values"].cast<BarValues>(), (BarValues{{"value", {1, 2}}}));
-    EXPECT_EQ(request(capture.charts()[5])["data"]["value"].cast<int>(), 4);
-    EXPECT_EQ(request(capture.charts()[6])["data"]["values"].cast<StringValues>(), (StringValues{{"value", -2}}));
+    EXPECT_EQ(chartData(capture.charts()[3])["values"].cast<BarValues>(), (BarValues{{"first", {1}}, {"zero", {0}}}));
+    EXPECT_EQ(chartData(capture.charts()[4])["values"].cast<BarValues>(), (BarValues{{"value", {1, 2}}}));
+    EXPECT_EQ(chartData(capture.charts()[5])["value"].cast<int>(), 4);
+    EXPECT_EQ(chartData(capture.charts()[6])["values"].cast<StringValues>(), (StringValues{{"value", -2}}));
 }
 
 TEST_F(MetricsPythonBridgeTest, MetricsPreservesEmptyAndExceptionSemantics)
@@ -233,9 +237,9 @@ TEST_F(MetricsPythonBridgeTest, MetricsPreservesEmptyAndExceptionSemantics)
         "throwing", []() -> std::optional<std::string> { throw std::runtime_error("callback failed"); }));
 
     ASSERT_EQ(capture.charts().size(), 3);
-    EXPECT_TRUE(request(capture.charts()[0]).is_none());
-    EXPECT_TRUE(request(capture.charts()[1]).is_none());
-    EXPECT_THROW(request(capture.charts()[2]), py::error_already_set);
+    EXPECT_TRUE(chartData(capture.charts()[0]).is_none());
+    EXPECT_TRUE(chartData(capture.charts()[1]).is_none());
+    EXPECT_THROW(chartData(capture.charts()[2]), py::error_already_set);
     PyErr_Clear();
 }
 

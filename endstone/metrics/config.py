@@ -1,5 +1,5 @@
+import pathlib
 import uuid
-from pathlib import Path
 
 import tomlkit
 
@@ -9,7 +9,7 @@ class MetricsConfig:
     A simple config for bStats.
     """
 
-    def __init__(self, file: Path, default_enabled: bool) -> None:
+    def __init__(self, file: pathlib.Path, default_enabled: bool) -> None:
         self._file = file
         self._default_enabled = default_enabled
 

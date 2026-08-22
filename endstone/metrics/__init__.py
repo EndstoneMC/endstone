@@ -1,38 +1,17 @@
+import collections.abc
 import platform
+import typing
 from pathlib import Path
-from typing import Any, Callable, Dict
 
+import lazy_loader as lazy
 import psutil
 
-from endstone.plugin import Plugin
+import endstone.plugin
+from endstone._python.metrics import DrilldownPie, SimplePie
 
 from ._arch import host_arch
 from .base import MetricsBase
-from .charts import (
-    AdvancedBarChart,
-    AdvancedPie,
-    CustomChart,
-    DrilldownPie,
-    MultiLineChart,
-    SimpleBarChart,
-    SimplePie,
-    SingleLineChart,
-)
 from .config import MetricsConfig
-
-__all__ = [
-    "Metrics",
-    "AdvancedBarChart",
-    "AdvancedPie",
-    "CustomChart",
-    "DrilldownPie",
-    "MultiLineChart",
-    "SimpleBarChart",
-    "SimplePie",
-    "SingleLineChart",
-    "MetricsBase",
-    "MetricsConfig",
-]
 
 
 def _get_python_version() -> dict[str, dict[str, int]]:
@@ -46,12 +25,12 @@ def _get_python_version() -> dict[str, dict[str, int]]:
 
 
 class Metrics(MetricsBase):
-    def __init__(self, plugin: Plugin, service_id: int) -> None:
+    def __init__(self, plugin: endstone.plugin.Plugin, service_id: int) -> None:
         """
         Creates a new Metrics instance.
 
         Args:
-            plugin (Plugin): Your plugin instance.
+            plugin (endstone.plugin.Plugin): Your plugin instance.
             service_id (int): The id of the service.
                               It can be found at https://bstats.org/what-is-my-plugin-id
         """
@@ -83,12 +62,12 @@ class Metrics(MetricsBase):
     def service_enabled(self) -> bool:
         return self._plugin is not None and self._plugin.is_enabled
 
-    def append_platform_data(self, platform_data: Dict[str, Any]) -> None:
+    def append_platform_data(self, platform_data: dict[str, typing.Any]) -> None:
         """
         Appends platform-specific data to the provided dict.
 
         Args:
-            platform_data (Dict[str, Any]): The dict to append data to.
+            platform_data (dict[str, typing.Any]): The dict to append data to.
         """
         server = self._plugin.server
         platform_data["playerAmount"] = len(server.online_players)
@@ -107,16 +86,16 @@ class Metrics(MetricsBase):
         platform_data["osArch"] = host_arch()
         platform_data["coreCount"] = psutil.cpu_count(logical=False)
 
-    def append_service_data(self, service_data: Dict[str, Any]) -> None:
+    def append_service_data(self, service_data: dict[str, typing.Any]) -> None:
         """
         Appends service-specific data to the provided dict.
 
         Args:
-            service_data (Dict[str, Any]): The dict to append data to.
+            service_data (dict[str, typing.Any]): The dict to append data to.
         """
         service_data["pluginVersion"] = self._plugin.plugin_description.version
 
-    def submit_task(self, task: Callable[[], None]) -> None:
+    def submit_task(self, task: collections.abc.Callable[[], None]) -> None:
         if self._plugin is not None and not self._shutdown:
             self._plugin.server.scheduler.run_task(self._plugin, task)
 
@@ -133,3 +112,20 @@ class Metrics(MetricsBase):
             super().shutdown()
         finally:
             self._plugin = None
+
+
+__getattr__, __dir__, __all__ = lazy.attach(
+    "endstone._python",
+    submod_attrs={
+        "metrics": [
+            "AdvancedBarChart",
+            "AdvancedPie",
+            "CustomChart",
+            "MultiLineChart",
+            "SimpleBarChart",
+            "SingleLineChart",
+        ]
+    },
+)
+
+__all__.extend(["DrilldownPie", "Metrics", "MetricsBase", "MetricsConfig", "SimplePie"])

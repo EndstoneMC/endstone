@@ -1,20 +1,22 @@
+import abc
 import asyncio
+import collections.abc
 import concurrent.futures
 import gzip
 import json
 import logging
 import random
+import typing
 import uuid
-from abc import ABC, abstractmethod
-from typing import Any, Callable, Dict, Set, final
+from typing import final
 
 import aiohttp
 
 import endstone.asyncio
-from endstone.metrics.charts.custom_chart import CustomChart
+from endstone._python.metrics import CustomChart
 
 
-class MetricsBase(ABC):
+class MetricsBase(abc.ABC):
     """
     The MetricsBase class to handle sending metrics to bStats.
 
@@ -52,9 +54,9 @@ class MetricsBase(ABC):
         self._log_errors = log_errors
         self._log_sent_data = log_sent_data
         self._log_response_status_text = log_response_status_text
-        self._custom_charts: Set[CustomChart] = set()
-        self._future: concurrent.futures.Future[Any] | None = None
-        self._send_futures: Set[concurrent.futures.Future[Any]] = set()
+        self._custom_charts: set[CustomChart] = set()
+        self._future: concurrent.futures.Future[typing.Any] | None = None
+        self._send_futures: set[concurrent.futures.Future[typing.Any]] = set()
         self._shutdown = False
 
         if self.enabled:
@@ -66,7 +68,7 @@ class MetricsBase(ABC):
                 raise
             self._future.add_done_callback(self._submission_done)
 
-    def _submission_done(self, future: concurrent.futures.Future[Any]) -> None:
+    def _submission_done(self, future: concurrent.futures.Future[typing.Any]) -> None:
         if self._shutdown:
             return
         try:
@@ -91,43 +93,43 @@ class MetricsBase(ABC):
         self._custom_charts.clear()
 
     @property
-    @abstractmethod
+    @abc.abstractmethod
     def enabled(self) -> bool:
         """
         Whether data sending is enabled.
         """
 
     @property
-    @abstractmethod
+    @abc.abstractmethod
     def service_enabled(self) -> bool:
         """
         Whether the service is enabled.
         """
 
-    def append_platform_data(self, data: Dict[str, Any]) -> None:
+    def append_platform_data(self, data: dict[str, typing.Any]) -> None:
         """
         Append platform-specific data.
 
         Args:
-            data (Dict[str, Any]): The data to append platform-specific values to.
+            data (dict[str, typing.Any]): The data to append platform-specific values to.
         """
         pass
 
-    def append_service_data(self, data: Dict[str, Any]) -> None:
+    def append_service_data(self, data: dict[str, typing.Any]) -> None:
         """
         Append service-specific data.
 
         Args:
-            data (Dict[str, Any]): The data to append service-specific values to.
+            data (dict[str, typing.Any]): The data to append service-specific values to.
         """
         pass
 
-    def submit_task(self, task: Callable[[], None]) -> None:
+    def submit_task(self, task: collections.abc.Callable[[], None]) -> None:
         """
         Submit the given task
 
         Args:
-            task (Callable[[], None]): The task to be submitted.
+            task (collections.abc.Callable[[], None]): The task to be submitted.
         """
         if not self._shutdown:
             task()
@@ -194,31 +196,32 @@ class MetricsBase(ABC):
         if self._shutdown:
             return
 
-        platform_data: dict[str, Any] = {}
+        platform_data: dict[str, typing.Any] = {}
         self.append_platform_data(platform_data)
 
-        service_data: dict[str, Any] = {}
+        service_data: dict[str, typing.Any] = {}
         self.append_service_data(service_data)
 
         chart_data = []
         for chart in self._custom_charts:
             try:
-                chart_json = chart._get_request_json_object()  # noqa
-                if chart_json is not None:
-                    chart_data.append(chart_json)
+                data = chart.get_chart_data()
             except Exception as e:
                 if not self._shutdown and self._log_errors:
                     self.log_error(
                         f"Failed to get data for custom chart with id {chart.chart_id}",
                         e,
                     )
+                continue
+            if data:
+                chart_data.append({"chartId": chart.chart_id, "data": data})
 
         service_data["id"] = self._service_id
         service_data["customCharts"] = chart_data
         platform_data["service"] = service_data
         platform_data["serverUUID"] = str(self._server_uuid)
 
-        def send_callback(fut: concurrent.futures.Future[Any]) -> None:
+        def send_callback(fut: concurrent.futures.Future[typing.Any]) -> None:
             self._send_futures.discard(fut)
             try:
                 fut.result()
@@ -243,7 +246,7 @@ class MetricsBase(ABC):
         future.add_done_callback(send_callback)
 
     @final
-    async def _send_data(self, data: Dict[str, Any]) -> None:
+    async def _send_data(self, data: dict[str, typing.Any]) -> None:
         """
         Sends the JSON data to bStats.
 

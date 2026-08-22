@@ -45,6 +45,7 @@ void init_level(py::module_ &, py::classh<Level> &level, py::classh<Dimension> &
                 py::class_<Location> &location);
 void init_logger(py::module_ &);
 void init_map(py::module_ &);
+void init_metrics(py::module_ &);
 void init_nbt(py::module_ &);
 void init_permissions(py::module_ &, py_class<Permissible> &permissible, py::classh<Permission> &permission);
 void init_player(py::module_ &, py_class<Player> &player);
@@ -119,6 +120,7 @@ PYBIND11_MODULE(_python, m)  // NOLINT(*-use-anonymous-namespace)
     auto m_lang = m.def_submodule("lang");
     auto m_level = m.def_submodule("level");
     auto m_map = m.def_submodule("map", "Classes relating to plugin handling of map displays.");
+    auto m_metrics = m.def_submodule("metrics", "Classes relating to the bStats metrics charts.");
     auto m_nbt = m.def_submodule("nbt", "Classes relating to the NBT data format.");
     auto m_permissions = m.def_submodule("permissions", "Classes relating to permissions of players.");
     auto m_plugin = m.def_submodule("plugin", "Classes relating to loading and managing plugins.");
@@ -208,6 +210,7 @@ PYBIND11_MODULE(_python, m)  // NOLINT(*-use-anonymous-namespace)
     init_form(m_form);
     init_enchantments(m_enchantments);
     init_map(m_map);
+    init_metrics(m_metrics);
     init_nbt(m_nbt);
     init_potion(m_potion);
     init_inventory(m_inventory, item_stack);

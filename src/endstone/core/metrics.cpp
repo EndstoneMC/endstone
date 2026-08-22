@@ -167,19 +167,11 @@ public:
         }
 
         py::gil_scoped_acquire gil;
-        auto &added = charts_.emplace_back(std::move(chart));
         try {
-            const auto module = py::module_::import("endstone.metrics.charts.custom_chart");
-            metrics_.attr("add_custom_chart")(module.attr("_CallbackChart")(
-                added->getChartId(), py::cpp_function([chart = added.get()] { return chart->getChartData(); })));
+            metrics_.attr("add_custom_chart")(py::cast(chart.release(), py::return_value_policy::take_ownership));
         }
         catch (py::error_already_set &error) {
-            charts_.pop_back();
             throw std::runtime_error(std::string("Unable to add metrics chart: ") + error.what());
-        }
-        catch (...) {
-            charts_.pop_back();
-            throw;
         }
     }
 
@@ -190,7 +182,6 @@ public:
         }
         if (!Py_IsInitialized()) {
             metrics_.release();
-            charts_.clear();
             return;
         }
         try {
@@ -207,13 +198,11 @@ public:
         catch (...) {
             metrics_.release();
         }
-        charts_.clear();
     }
 
 private:
     std::atomic_bool stopped_{false};
     py::object metrics_;
-    std::vector<std::unique_ptr<metrics::CustomChart>> charts_;
 };
 
 }  // namespace
