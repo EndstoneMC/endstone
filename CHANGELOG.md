@@ -147,8 +147,6 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 #### API behaviour
 
-- Fixed plugin metrics collecting chart data off the primary server thread for every submission after the first. A chart callback that touches the server no longer races the submission task.
-- Fixed `Metrics.shutdown()` blocking the caller for up to three seconds waiting on the submission task, and a submission that failed unexpectedly going unreported.
 - Fixed `Dimension.actors` and `Level.actors` leaving out connected players.
 - Fixed `PlayerBedLeaveEvent` only being called when a player pressed the leave button. It now also fires when morning comes, when the bed is broken or obstructed, and when the player is woken by anything else, and the `bed` block it reports is the bed being slept in rather than the respawn point.
 - Fixed every vanilla command failing when dispatched through a `CommandSenderWrapper`, which did not report its own type.

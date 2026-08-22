@@ -60,7 +60,7 @@ class Metrics(MetricsBase):
 
     @property
     def service_enabled(self) -> bool:
-        return self._plugin is not None and self._plugin.is_enabled
+        return self._plugin.is_enabled
 
     def append_platform_data(self, platform_data: dict[str, typing.Any]) -> None:
         """
@@ -99,22 +99,13 @@ class Metrics(MetricsBase):
         service_data["pluginVersion"] = description.version
 
     def submit_task(self, task: collections.abc.Callable[[], None]) -> None:
-        if self._plugin is not None and not self._shutdown:
-            self._plugin.server.scheduler.run_task(self._plugin, task)
+        self._plugin.server.scheduler.run_task(self._plugin, task)
 
     def log_info(self, message: str) -> None:
-        if self._plugin is not None:
-            self._plugin.logger.info(message)
+        self._plugin.logger.info(message)
 
     def log_error(self, message: str, exception: Exception) -> None:
-        if self._plugin is not None:
-            self._plugin.logger.warning(f"{message}: {exception}")
-
-    def shutdown(self) -> None:
-        try:
-            super().shutdown()
-        finally:
-            self._plugin = None
+        self._plugin.logger.warning(f"{message}: {exception}")
 
 
 __getattr__, __dir__, __all__ = lazy.attach(
