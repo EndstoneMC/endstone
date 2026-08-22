@@ -1,6 +1,9 @@
 cmake_minimum_required(VERSION 3.15)
 project(endstone_test LANGUAGES CXX)
 
+set(PYBIND11_FINDPYTHON ON)
+find_package(pybind11 CONFIG REQUIRED)
+
 endstone_add_plugin(test_plugin test_plugin.cpp)
 set_target_properties(test_plugin PROPERTIES LIBRARY_OUTPUT_DIRECTORY "plugins")
 set_target_properties(test_plugin PROPERTIES RUNTIME_OUTPUT_DIRECTORY "plugins")
@@ -24,6 +27,8 @@ add_executable(endstone_test
         test_cpp_plugin_loader.cpp
         test_effect.cpp
         test_logger_factory.cpp
+        test_metrics_api.cpp
+        test_metrics_python_bridge.cpp
         test_player_ban_list.cpp
         test_permissions.cpp
         test_pointers.cpp
@@ -35,12 +40,15 @@ add_executable(endstone_test
         test_object.cpp
         test_vector.cpp
 )
-add_dependencies(endstone_test test_plugin)
-target_link_libraries(endstone_test PRIVATE endstone::core GTest::gtest_main GTest::gmock_main)
+add_dependencies(endstone_test test_plugin _python)
+target_link_libraries(endstone_test PRIVATE endstone::core GTest::gtest_main GTest::gmock_main pybind11::embed)
+target_compile_definitions(endstone_test PRIVATE
+        ENDSTONE_PYTHON_MODULE_DIR="$<TARGET_FILE_DIR:_python>"
+        ENDSTONE_SOURCE_DIR="${CMAKE_SOURCE_DIR}")
 # CppPluginLoaderTest cases share the plugins/.local shadow-copy dir, whose
 # cleanup races when ctest runs them in parallel; serialize just those.
 gtest_discover_tests(endstone_test
-        TEST_FILTER "CppPluginLoaderTest.*"
+        TEST_FILTER "CppPluginLoaderTest.*:MetricsPythonBridgeTest.*:MetricsPythonLifecycleTest.*"
         PROPERTIES RESOURCE_LOCK cpp_plugin_loader_local)
 gtest_discover_tests(endstone_test
-        TEST_FILTER "-CppPluginLoaderTest.*")
+        TEST_FILTER "-CppPluginLoaderTest.*:MetricsPythonBridgeTest.*:MetricsPythonLifecycleTest.*")

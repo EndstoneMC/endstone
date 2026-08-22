@@ -22,6 +22,7 @@
 #include "endstone/event/server/plugin_disable_event.h"
 #include "endstone/event/server/plugin_enable_event.h"
 #include "endstone/logger.h"
+#include "endstone/metrics/metrics_service.h"
 #include "endstone/plugin/plugin.h"
 #include "endstone/server.h"
 
@@ -139,6 +140,7 @@ public:
                 plugin.getLogger().error(e.what());
                 return;
             }
+            server_.getMetrics().unregisterPlugin(plugin);
             PluginDisableEvent event(plugin);
             server_.getPluginManager().callEvent(event);
         }

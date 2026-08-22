@@ -1,7 +1,7 @@
 from __future__ import annotations
 
 from abc import ABC, abstractmethod
-from typing import Any, final
+from typing import Any, Callable, final
 
 
 class CustomChart(ABC):
@@ -59,3 +59,12 @@ class CustomChart(ABC):
         Raises:
             Exception: If there is an error getting the chart data.
         """
+
+
+class _CallbackChart(CustomChart):
+    def __init__(self, chart_id: str, get_data: Callable[[], dict[str, Any] | None]) -> None:
+        super().__init__(chart_id)
+        self._get_data = get_data
+
+    def get_chart_data(self) -> dict[str, Any] | None:
+        return self._get_data()

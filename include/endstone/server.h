@@ -55,6 +55,10 @@ class Player;
 class PluginCommand;
 class PluginManager;
 
+namespace metrics {
+class MetricsService;
+}
+
 template <typename T>
 class Registry;
 
@@ -463,6 +467,13 @@ public:
      * @return a newly created map view
      */
     [[nodiscard]] virtual MapView &createMap(const NotNull<Dimension> &dimension) const = 0;
+
+    /**
+     * Gets the server-owned metrics registration service.
+     *
+     * @return metrics service associated with this server
+     */
+    [[nodiscard]] virtual metrics::MetricsService &getMetrics() const = 0;
 
     /**
      * Used for all administrative messages, such as an operator using a command.

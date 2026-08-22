@@ -81,7 +81,7 @@ class Metrics(MetricsBase):
 
     @property
     def service_enabled(self) -> bool:
-        return self._plugin.is_enabled
+        return self._plugin is not None and self._plugin.is_enabled
 
     def append_platform_data(self, platform_data: Dict[str, Any]) -> None:
         """
@@ -114,15 +114,22 @@ class Metrics(MetricsBase):
         Args:
             service_data (Dict[str, Any]): The dict to append data to.
         """
-        if self._plugin._description is None:
-            raise RuntimeError("Plugin description is not available")
-        service_data["pluginVersion"] = self._plugin._description.version
+        service_data["pluginVersion"] = self._plugin.plugin_description.version
 
     def submit_task(self, task: Callable[[], None]) -> None:
-        self._plugin.server.scheduler.run_task(self._plugin, task)
+        if self._plugin is not None and not self._shutdown:
+            self._plugin.server.scheduler.run_task(self._plugin, task)
 
     def log_info(self, message: str) -> None:
-        self._plugin.logger.info(message)
+        if self._plugin is not None:
+            self._plugin.logger.info(message)
 
     def log_error(self, message: str, exception: Exception) -> None:
-        self._plugin.logger.warning(f"{message}: {exception}")
+        if self._plugin is not None:
+            self._plugin.logger.warning(f"{message}: {exception}")
+
+    def shutdown(self) -> None:
+        try:
+            super().shutdown()
+        finally:
+            self._plugin = None

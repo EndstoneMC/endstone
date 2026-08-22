@@ -14,18 +14,36 @@
 
 #pragma once
 
-#include <pybind11/pybind11.h>
+#include <memory>
+#include <mutex>
+#include <vector>
 
-#include "endstone/server.h"
+#include "endstone/metrics/metrics.h"
+
+namespace endstone {
+class Plugin;
+class Server;
+}  // namespace endstone
 
 namespace endstone::core {
-class EndstoneMetrics {
+class EndstoneMetrics final : public metrics::MetricsService {
 public:
-    EndstoneMetrics(Server &server);
-    ~EndstoneMetrics();
+    explicit EndstoneMetrics(Server &server);
+    ~EndstoneMetrics() override;
+
+    void start();
+    [[nodiscard]] std::shared_ptr<metrics::MetricsRegistration> registerPlugin(Plugin &plugin, int service_id) override;
+    void unregisterPlugin(Plugin &plugin) noexcept override;
+    void shutdown() noexcept;
 
 private:
+    class Registration;
+    class ServerMetrics;
+
     Server &server_;
-    pybind11::object obj_;
+    mutable std::mutex mutex_;
+    bool active_{true};
+    std::vector<std::weak_ptr<Registration>> registrations_;
+    std::unique_ptr<ServerMetrics> server_metrics_;
 };
 }  // namespace endstone::core

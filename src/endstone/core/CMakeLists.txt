@@ -134,13 +134,13 @@ target_link_libraries(endstone_core PUBLIC
         EnTT::EnTT
         magic_enum::magic_enum
         nlohmann_json::nlohmann_json
-        pybind11::pybind11
         replxx::replxx
         sentry::sentry
         spdlog::spdlog
         tomlplusplus::tomlplusplus
         zstr::zstr)
-target_compile_definitions(endstone_core PUBLIC PYBIND11_DETAILED_ERROR_MESSAGES)
+target_link_libraries(endstone_core PRIVATE pybind11::embed)
+target_compile_definitions(endstone_core PRIVATE PYBIND11_DETAILED_ERROR_MESSAGES)
 if (ENDSTONE_ENABLE_DEVTOOLS)
     add_subdirectory(devtools)
     target_link_libraries(endstone_core PRIVATE endstone::devtools)

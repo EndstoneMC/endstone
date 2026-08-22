@@ -158,6 +158,7 @@ EndstoneServer::EndstoneServer() : logger_(LoggerFactory::getLogger(""))
     plugin_manager_ = std::make_unique<EndstonePluginManager>(*this);
     service_manager_ = std::make_unique<EndstoneServiceManager>();
     scheduler_ = std::make_unique<EndstoneScheduler>(*this);
+    metrics_ = std::make_unique<EndstoneMetrics>(*this);
     start_time_ = std::chrono::system_clock::now();
 
     try {
@@ -172,7 +173,12 @@ EndstoneServer::EndstoneServer() : logger_(LoggerFactory::getLogger(""))
     loadPlugins();
 }
 
-EndstoneServer::~EndstoneServer() = default;
+EndstoneServer::~EndstoneServer()
+{
+    if (metrics_) {
+        metrics_->shutdown();
+    }
+}
 
 void EndstoneServer::init(ServerInstance &server_instance)
 {
@@ -211,7 +217,7 @@ void EndstoneServer::setLevel(::Level &level)
     level_ = std::make_unique<EndstoneLevel>(level);
     scoreboard_ = EndstoneScoreboard::create(level.getScoreboard());
     command_map_ = std::make_unique<EndstoneCommandMap>(*this);
-    metrics_ = std::make_unique<EndstoneMetrics>(*this);  // start metrics
+    metrics_->start();
     loadResourcePacks();
     initRegistries();
 
@@ -501,6 +507,11 @@ void EndstoneServer::disablePlugins() const
 Scheduler &EndstoneServer::getScheduler() const
 {
     return *scheduler_;
+}
+
+metrics::MetricsService &EndstoneServer::getMetrics() const
+{
+    return *metrics_;
 }
 
 EndstoneScheduler &EndstoneServer::getEndstoneScheduler() const

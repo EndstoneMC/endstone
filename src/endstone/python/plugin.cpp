@@ -173,6 +173,8 @@ void init_plugin(py::module &m)
         .def("on_enable", &Plugin::onEnable, "Called when this plugin is enabled.")
         .def("on_disable", &Plugin::onDisable, "Called when this plugin is disabled.")
         .def("_get_description", &Plugin::getDescription, py::return_value_policy::reference)
+        .def_property_readonly("plugin_description", &Plugin::getDescription, py::return_value_policy::reference,
+                               "The plugin description declared by its loader.")
         .def_property_readonly("logger", &Plugin::getLogger, py::return_value_policy::reference, R"doc(
     The plugin logger associated with this server's logger.
 

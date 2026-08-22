@@ -343,6 +343,12 @@ class Plugin:
         """
 
     @property
+    def plugin_description(self) -> PluginDescription:
+        """
+        The plugin description declared by its loader.
+        """
+
+    @property
     def logger(self) -> Logger:
         """
         The plugin logger associated with this server's logger.

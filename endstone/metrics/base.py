@@ -54,17 +54,41 @@ class MetricsBase(ABC):
         self._log_response_status_text = log_response_status_text
         self._custom_charts: Set[CustomChart] = set()
         self._future: concurrent.futures.Future[Any] | None = None
+        self._send_futures: Set[concurrent.futures.Future[Any]] = set()
+        self._shutdown = False
 
         if self.enabled:
-            self._future = endstone.asyncio.submit(self._start_submitting())
+            submitting = self._start_submitting()
+            try:
+                self._future = endstone.asyncio.submit(submitting)
+            except Exception:
+                submitting.close()
+                raise
+            self._future.add_done_callback(self._submission_done)
+
+    def _submission_done(self, future: concurrent.futures.Future[Any]) -> None:
+        if self._shutdown:
+            return
+        try:
+            future.result()
+        except concurrent.futures.CancelledError:
+            return
+        except Exception as e:
+            if self._log_errors:
+                self.log_error("Metrics submission task stopped unexpectedly", e)
 
     def shutdown(self) -> None:
-        if self._future:
-            self._future.cancel()
-            try:
-                self._future.result(timeout=3)  # wait for cancellation
-            except concurrent.futures.CancelledError:
-                self._future = None
+        if self._shutdown:
+            return
+        self._shutdown = True
+        future = self._future
+        self._future = None
+        if future is not None:
+            future.cancel()
+        for future in tuple(self._send_futures):
+            future.cancel()
+        self._send_futures.clear()
+        self._custom_charts.clear()
 
     @property
     @abstractmethod
@@ -105,7 +129,8 @@ class MetricsBase(ABC):
         Args:
             task (Callable[[], None]): The task to be submitted.
         """
-        task()
+        if not self._shutdown:
+            task()
 
     def log_info(self, message: str) -> None:
         """
@@ -114,7 +139,8 @@ class MetricsBase(ABC):
         Args:
             message (str): The info message.
         """
-        logging.info(message)
+        if not self._shutdown:
+            logging.info(message)
 
     def log_error(self, message: str, exception: Exception) -> None:
         """
@@ -124,7 +150,8 @@ class MetricsBase(ABC):
             message (str): The error message.
             exception (Exception): The exception that occurred.
         """
-        logging.warning(message, exc_info=exception)
+        if not self._shutdown:
+            logging.warning(message, exc_info=exception)
 
     @final
     def add_custom_chart(self, chart: CustomChart) -> None:
@@ -134,6 +161,8 @@ class MetricsBase(ABC):
         Args:
             chart: The custom chart to add.
         """
+        if self._shutdown:
+            raise RuntimeError("metrics has been shut down")
         self._custom_charts.add(chart)
 
     @final
@@ -146,14 +175,14 @@ class MetricsBase(ABC):
         second_delay = int((random.random() * 30) * 60)
 
         await asyncio.sleep(initial_delay)
-        if not (self.enabled and self.service_enabled):
+        if self._shutdown or not (self.enabled and self.service_enabled):
             return
 
         self.submit_task(self._submit_data)
         await asyncio.sleep(second_delay)
 
-        while self.enabled and self.service_enabled:
-            self._submit_data()
+        while not self._shutdown and self.enabled and self.service_enabled:
+            self.submit_task(self._submit_data)
             await asyncio.sleep(30 * 60)
 
     @final
@@ -161,6 +190,9 @@ class MetricsBase(ABC):
         """
         Constructs the JSON data and sends it to bStats.
         """
+
+        if self._shutdown:
+            return
 
         platform_data: dict[str, Any] = {}
         self.append_platform_data(platform_data)
@@ -175,7 +207,7 @@ class MetricsBase(ABC):
                 if chart_json is not None:
                     chart_data.append(chart_json)
             except Exception as e:
-                if self._log_errors:
+                if not self._shutdown and self._log_errors:
                     self.log_error(
                         f"Failed to get data for custom chart with id {chart.chart_id}",
                         e,
@@ -187,13 +219,27 @@ class MetricsBase(ABC):
         platform_data["serverUUID"] = str(self._server_uuid)
 
         def send_callback(fut: concurrent.futures.Future[Any]) -> None:
+            self._send_futures.discard(fut)
             try:
                 fut.result()
+            except concurrent.futures.CancelledError:
+                return
             except Exception as e:
-                if self._log_errors:
+                if not self._shutdown and self._log_errors:
                     self.log_error("Could not submit bStats metrics data", e)
 
-        future = endstone.asyncio.submit(self._send_data(platform_data))
+        sending = self._send_data(platform_data)
+        try:
+            future = endstone.asyncio.submit(sending)
+        except Exception as e:
+            sending.close()
+            if not self._shutdown and self._log_errors:
+                self.log_error("Could not submit bStats metrics data", e)
+            return
+        if self._shutdown:
+            future.cancel()
+            return
+        self._send_futures.add(future)
         future.add_done_callback(send_callback)
 
     @final
@@ -204,7 +250,10 @@ class MetricsBase(ABC):
         Args:
             data: The JSON data to send.
         """
-        if self._log_sent_data:
+        if self._shutdown:
+            return
+
+        if self._log_sent_data and not self._shutdown:
             self.log_info(f"Sent bStats metrics data: {data}")
 
         url = self.REPORT_URL.format(platform=self._platform)
@@ -222,6 +271,7 @@ class MetricsBase(ABC):
         async with aiohttp.ClientSession() as session:
             async with session.post(url, data=compressed_data, headers=headers) as resp:
                 resp.raise_for_status()
-                if self._log_response_status_text:
+                if self._log_response_status_text and not self._shutdown:
                     text = await resp.text()
-                    self.log_info(f"Sent data to bStats and received response: {text}")
+                    if not self._shutdown:
+                        self.log_info(f"Sent data to bStats and received response: {text}")

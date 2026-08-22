@@ -33,6 +33,7 @@
 #include "endstone/event/event.h"
 #include "endstone/event/event_handler.h"
 #include "endstone/event/handler_list.h"
+#include "endstone/metrics/metrics_service.h"
 #include "endstone/plugin/plugin.h"
 #include "endstone/plugin/plugin_loader.h"
 #include "endstone/scheduler/scheduler.h"
@@ -493,6 +494,7 @@ void EndstonePluginManager::disablePlugin(Plugin &plugin)
     if (plugin.isEnabled()) {
         plugin.getPluginLoader().disablePlugin(plugin);
         server_.getScheduler().cancelTasks(plugin);
+        server_.getMetrics().unregisterPlugin(plugin);
         server_.getServiceManager().unregisterAll(plugin);
         for (const auto &dimension : server_.getLevel().getDimensions()) {
             dimension->removePluginChunkTickets(plugin);

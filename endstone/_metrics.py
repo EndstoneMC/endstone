@@ -1,6 +1,6 @@
 import platform
 from pathlib import Path
-from typing import Any, Dict
+from typing import Any, Callable, Dict
 
 import psutil
 
@@ -11,8 +11,9 @@ from .metrics._arch import host_arch
 
 
 class EndstoneMetrics(MetricsBase):
-    def __init__(self, server: Server):
+    def __init__(self, server: Server, submit_task: Callable[[Callable[[], None]], None]):
         self._server = server
+        self._submit_task = submit_task
 
         # Get the config file
         config_path = Path("plugins") / "bstats"
@@ -28,8 +29,8 @@ class EndstoneMetrics(MetricsBase):
             log_response_status_text=self._config.log_response_status_text_enabled,
         )
 
-        self.add_custom_chart(SingleLineChart("players", lambda: len(self._server.online_players)))
-        self.add_custom_chart(SimplePie("endstone_version", lambda: self._server.version))
+        self.add_custom_chart(SingleLineChart("players", self._get_player_count))
+        self.add_custom_chart(SimplePie("endstone_version", self._get_endstone_version))
         self.add_custom_chart(SimplePie("minecraft_version", lambda: __minecraft_version__))
         self.add_custom_chart(DrilldownPie("online_mode", self._get_online_mode))
         self.add_custom_chart(DrilldownPie("python_version", self._get_python_version))
@@ -42,7 +43,18 @@ class EndstoneMetrics(MetricsBase):
 
     @property
     def service_enabled(self) -> bool:
-        return True
+        return not self._shutdown and self._server is not None
+
+    def submit_task(self, task: Callable[[], None]) -> None:
+        if not self._shutdown and self._submit_task is not None:
+            self._submit_task(task)
+
+    def shutdown(self) -> None:
+        try:
+            super().shutdown()
+        finally:
+            self._submit_task = None
+            self._server = None
 
     def append_platform_data(self, platform_data: Dict[str, Any]) -> None:
         os_name = platform.system()
@@ -57,13 +69,29 @@ class EndstoneMetrics(MetricsBase):
         platform_data["coreCount"] = psutil.cpu_count(logical=False)
 
     def log_info(self, message: str) -> None:
-        self._server.logger.info(message)
+        server = self._server
+        if server is not None:
+            server.logger.info(message)
 
     def log_error(self, message: str, exception: Exception) -> None:
-        self._server.logger.warning(f"{message}: {exception}")
+        server = self._server
+        if server is not None:
+            server.logger.warning(f"{message}: {exception}")
 
-    def _get_online_mode(self) -> dict[str, dict[str, int]]:
-        value = "true" if self._server.online_mode else "false"
+    def _get_player_count(self) -> int:
+        server = self._server
+        return len(server.online_players) if server is not None else 0
+
+    def _get_endstone_version(self) -> str | None:
+        server = self._server
+        return server.version if server is not None else None
+
+    def _get_online_mode(self) -> dict[str, dict[str, int]] | None:
+        server = self._server
+        if server is None:
+            return None
+
+        value = "true" if server.online_mode else "false"
         return {
             value: {
                 value: 1,
@@ -79,9 +107,13 @@ class EndstoneMetrics(MetricsBase):
             },
         }
 
-    def _get_player_platforms(self) -> dict[str, int]:
+    def _get_player_platforms(self) -> dict[str, int] | None:
+        server = self._server
+        if server is None:
+            return None
+
         result: dict[str, int] = {}
-        for player in self._server.online_players:
+        for player in server.online_players:
             if player.device_os not in result:
                 result[player.device_os] = 1
             else:
@@ -89,9 +121,13 @@ class EndstoneMetrics(MetricsBase):
 
         return result
 
-    def _get_player_game_versions(self) -> dict[str, int]:
+    def _get_player_game_versions(self) -> dict[str, int] | None:
+        server = self._server
+        if server is None:
+            return None
+
         result: dict[str, int] = {}
-        for player in self._server.online_players:
+        for player in server.online_players:
             if player.game_version not in result:
                 result[player.game_version] = 1
             else:
