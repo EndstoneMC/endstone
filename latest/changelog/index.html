@@ -5593,6 +5593,7 @@ and this project adheres to <a href="https://semver.org/spec/v2.0.0.html">Semant
 <li><code>endstone.Identifier</code> for namespaced ids, splitting <code>dim.id.namespace</code> from <code>dim.id.key</code> and distinguishing <code>Identifier[Dimension]</code> from <code>Identifier[ActorType]</code>. Plain strings are still accepted.</li>
 <li><code>ActorType</code>, <code>EffectType</code> and <code>PotionType</code> in the registry API, each entry carrying a <code>translation_key</code>, plus the missing <code>ActorType.SULFUR_CUBE</code> constant.</li>
 <li>Binary NBT serialization (<code>dump</code>/<code>load</code>) with support for multiple formats.</li>
+<li>The logger handles ANSI escape codes alongside <code>§</code> colour codes, so a plugin can log text that is already coloured. Colour sequences reach the console as written, and every escape sequence is stripped from the log file, which previously kept them verbatim.</li>
 </ul>
 <h4 id="server-and-docker">Server and Docker<a class="headerlink" href="#server-and-docker" title="Permanent link">&para;</a></h4>
 <ul>
