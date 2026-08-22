@@ -14,6 +14,7 @@
 
 #pragma once
 
+#include <nlohmann/json.hpp>
 #include <pybind11/numpy.h>
 #include <pybind11/pybind11.h>
 
@@ -438,5 +439,95 @@ public:
         return value_conv::cast(src.get(), policy, parent);
     }
     PYBIND11_TYPE_CASTER(endstone::Nullable<T>, value_conv::name | make_caster<none>::name);
+};
+
+template <>
+class type_caster<nlohmann::json> {
+public:
+    bool load(handle src, bool)
+    {
+        try {
+            value = toJson(src);
+        }
+        catch (const std::exception &) {
+            return false;
+        }
+        return true;
+    }
+
+    static handle cast(const nlohmann::json &src, return_value_policy /*policy*/, handle /*parent*/)
+    {
+        return toPython(src).release();
+    }
+
+    PYBIND11_TYPE_CASTER(nlohmann::json, const_name("typing.Any"));
+
+private:
+    // pybind11/operators.h puts an `int_` and a `float_` in this namespace, so every pybind type
+    // here has to be spelled out.
+    static nlohmann::json toJson(const pybind11::handle &src)
+    {
+        if (src.is_none()) {
+            return nullptr;
+        }
+        if (pybind11::isinstance<pybind11::bool_>(src)) {
+            return src.cast<bool>();
+        }
+        if (pybind11::isinstance<pybind11::int_>(src)) {
+            return src.cast<std::int64_t>();
+        }
+        if (pybind11::isinstance<pybind11::float_>(src)) {
+            return src.cast<double>();
+        }
+        if (pybind11::isinstance<pybind11::str>(src)) {
+            return src.cast<std::string>();
+        }
+        if (pybind11::isinstance<pybind11::dict>(src)) {
+            auto object = nlohmann::json::object();
+            for (auto item : src.cast<pybind11::dict>()) {
+                object[item.first.cast<std::string>()] = toJson(item.second);
+            }
+            return object;
+        }
+        if (pybind11::isinstance<pybind11::list>(src) || pybind11::isinstance<pybind11::tuple>(src)) {
+            auto array = nlohmann::json::array();
+            for (auto item : src) {
+                array.push_back(toJson(item));
+            }
+            return array;
+        }
+        throw std::invalid_argument("object is not JSON serializable");
+    }
+
+    static pybind11::object toPython(const nlohmann::json &src)
+    {
+        switch (src.type()) {
+        case nlohmann::json::value_t::boolean:
+            return pybind11::bool_(src.get<bool>());
+        case nlohmann::json::value_t::number_integer:
+        case nlohmann::json::value_t::number_unsigned:
+            return pybind11::int_(src.get<std::int64_t>());
+        case nlohmann::json::value_t::number_float:
+            return pybind11::float_(src.get<double>());
+        case nlohmann::json::value_t::string:
+            return pybind11::str(src.get<std::string>());
+        case nlohmann::json::value_t::object: {
+            pybind11::dict object;
+            for (const auto &[key, item] : src.items()) {
+                object[pybind11::str(key)] = toPython(item);
+            }
+            return object;
+        }
+        case nlohmann::json::value_t::array: {
+            pybind11::list array;
+            for (const auto &item : src) {
+                array.append(toPython(item));
+            }
+            return array;
+        }
+        default:
+            return pybind11::none();
+        }
+    }
 };
 }  // namespace pybind11::detail

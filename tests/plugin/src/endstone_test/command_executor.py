@@ -1,4 +1,3 @@
-import json
 import threading
 
 import numpy as np
@@ -364,9 +363,7 @@ class TestCommandExecutor(CommandExecutor):
                     ],
                     submit_button="Let's GO",
                     icon=ENDSTONE_ICON,
-                    on_submit=lambda p, data: p.send_message(
-                        f"Response {json.loads(data)}"
-                    ),
+                    on_submit=lambda p, data: p.send_message(f"Response {data}"),
                     on_close=lambda p: p.send_message(
                         f"You just closed a {ColorFormat.GREEN}modal form"
                     ),

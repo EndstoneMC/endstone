@@ -23,9 +23,9 @@ class PyCustomChart : public CustomChart, public py::trampoline_self_life_suppor
 public:
     using CustomChart::CustomChart;
 
-    std::optional<ChartData> getChartData() override
+    nlohmann::json getChartData() override
     {
-        PYBIND11_OVERRIDE_PURE_NAME(std::optional<ChartData>, CustomChart, "get_chart_data", getChartData);
+        PYBIND11_OVERRIDE_PURE_NAME(nlohmann::json, CustomChart, "get_chart_data", getChartData);
     }
 };
 }  // namespace

@@ -764,7 +764,7 @@ void EndstonePlayer::onFormResponse(std::uint32_t form_id, const nlohmann::json 
                            },
                            [&](const ModalForm &form) {
                                if (auto callback = form.getOnSubmit()) {
-                                   callback(self(), json.dump());
+                                   callback(self(), json);
                                }
                            },
                        },

@@ -47,9 +47,7 @@ class CustomChart:
         The id of this chart.
         """
 
-    def get_chart_data(
-        self,
-    ) -> dict[str, str | int | dict[str, int] | dict[str, dict[str, int]] | dict[str, list[int]]] | None:
+    def get_chart_data(self) -> typing.Any:
         """
         Gets the data for this chart.
 

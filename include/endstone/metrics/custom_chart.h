@@ -14,21 +14,21 @@
 
 #pragma once
 
+#include <functional>
 #include <optional>
 #include <stdexcept>
 #include <string>
 #include <unordered_map>
 #include <utility>
-#include <variant>
 #include <vector>
+
+#include <nlohmann/json.hpp>
 
 namespace endstone {
 
 using StringValues = std::unordered_map<std::string, int>;
 using DrilldownValues = std::unordered_map<std::string, StringValues>;
 using BarValues = std::unordered_map<std::string, std::vector<int>>;
-using ChartValue = std::variant<std::string, int, StringValues, DrilldownValues, BarValues>;
-using ChartData = std::unordered_map<std::string, ChartValue>;
 
 /**
  * Represents a custom chart.
@@ -64,11 +64,11 @@ public:
     /**
      * Gets the data for this chart.
      *
-     * This is called on the primary server thread. Returning no value omits the chart from the submission.
+     * This is called on the primary server thread. A null value omits the chart from the submission.
      *
-     * @return the chart data, or no value to skip this chart
+     * @return the chart data, or a null value to skip this chart
      */
-    [[nodiscard]] virtual std::optional<ChartData> getChartData() = 0;
+    [[nodiscard]] virtual nlohmann::json getChartData() = 0;
 
 private:
     std::string chart_id_;

@@ -33,23 +33,23 @@ public:
     {
     }
 
-    [[nodiscard]] std::optional<ChartData> getChartData() override
+    [[nodiscard]] nlohmann::json getChartData() override
     {
         const auto map_values = get_values_();
         if (!map_values) {
-            return std::nullopt;
+            return nullptr;
         }
-        StringValues values;
+        auto values = nlohmann::json::object();
         for (const auto &[key, value] : *map_values) {
             if (value == 0) {
                 continue;
             }
-            values.emplace(key, value);
+            values[key] = value;
         }
         if (values.empty()) {
-            return std::nullopt;
+            return nullptr;
         }
-        return ChartData{{"values", std::move(values)}};
+        return nlohmann::json{{"values", std::move(values)}};
     }
 
 private:
