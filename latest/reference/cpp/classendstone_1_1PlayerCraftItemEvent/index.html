@@ -2668,9 +2668,9 @@ For latest updates join the chat on
             
                 
                     <li class="md-nav__item">
-    <a href="#function-getamount" class="md-nav__link">
+    <a href="#function-getingredients" class="md-nav__link">
       <span class="md-ellipsis">
-        function getAmount
+        function getIngredients
       </span>
     </a>
 
@@ -2681,9 +2681,9 @@ For latest updates join the chat on
             
                 
                     <li class="md-nav__item">
-    <a href="#function-getitem" class="md-nav__link">
+    <a href="#function-getrepetitions" class="md-nav__link">
       <span class="md-ellipsis">
-        function getItem
+        function getRepetitions
       </span>
     </a>
 
@@ -2694,9 +2694,35 @@ For latest updates join the chat on
             
                 
                     <li class="md-nav__item">
-    <a href="#function-getrecipeid" class="md-nav__link">
+    <a href="#function-getresults" class="md-nav__link">
       <span class="md-ellipsis">
-        function getRecipeId
+        function getResults
+      </span>
+    </a>
+
+    <!-- Table of contents list -->
+    
+</li>
+                
+            
+                
+                    <li class="md-nav__item">
+    <a href="#function-setrepetitions" class="md-nav__link">
+      <span class="md-ellipsis">
+        function setRepetitions
+      </span>
+    </a>
+
+    <!-- Table of contents list -->
+    
+</li>
+                
+            
+                
+                    <li class="md-nav__item">
+    <a href="#function-setresults" class="md-nav__link">
+      <span class="md-ellipsis">
+        function setResults
       </span>
     </a>
 
@@ -2745,7 +2771,7 @@ For latest updates join the chat on
 
 <h1 id="class-endstoneplayercraftitemevent">Class endstone::PlayerCraftItemEvent<a class="headerlink" href="#class-endstoneplayercraftitemevent" title="Permanent link">&para;</a></h1>
 <p><a href="../annotated/"><strong>ClassList</strong></a> <strong>&gt;</strong> <a href="../namespaceendstone/"><strong>endstone</strong></a> <strong>&gt;</strong> <a href="./"><strong>PlayerCraftItemEvent</strong></a></p>
-<p><em>Called when a player crafts an item.</em> <a href="#detailed-description">More...</a></p>
+<p><em>Called when a player crafts an item, either inside a crafting grid or straight from the recipe book.</em> <a href="#detailed-description">More...</a></p>
 <ul>
 <li><code>#include &lt;endstone/event/player/player_craft_item_event.h&gt;</code></li>
 </ul>
@@ -2765,19 +2791,27 @@ For latest updates join the chat on
 </tr>
 <tr>
 <td style="text-align: right;"></td>
-<td style="text-align: left;"><a href="#function-playercraftitemevent"><strong>PlayerCraftItemEvent</strong></a> (<a href="../classendstone_1_1Identifier/"><strong>const</strong></a> <a href="../classendstone_1_1NotNull/"><strong>NotNull</strong></a>&lt; <a href="../classendstone_1_1Player/"><strong>Player</strong></a> &gt; &amp; player, <a href="../classendstone_1_1ItemStack/"><strong>ItemStack</strong></a> item, std::string recipe_id, <a href="../classendstone_1_1Identifier/"><strong>int</strong></a> amount) <br></td>
+<td style="text-align: left;"><a href="#function-playercraftitemevent"><strong>PlayerCraftItemEvent</strong></a> (<a href="../classendstone_1_1Identifier/"><strong>const</strong></a> <a href="../classendstone_1_1NotNull/"><strong>NotNull</strong></a>&lt; <a href="../classendstone_1_1Player/"><strong>Player</strong></a> &gt; &amp; player, std::vector&lt; <a href="../classendstone_1_1ItemStack/"><strong>ItemStack</strong></a> &gt; ingredients, std::vector&lt; <a href="../classendstone_1_1ItemStack/"><strong>ItemStack</strong></a> &gt; results, <a href="../classendstone_1_1Identifier/"><strong>int</strong></a> repetitions) <br></td>
+</tr>
+<tr>
+<td style="text-align: right;"><a href="../classendstone_1_1Identifier/"><strong>const</strong></a> std::vector&lt; <a href="../classendstone_1_1ItemStack/"><strong>ItemStack</strong></a> &gt; &amp;</td>
+<td style="text-align: left;"><a href="#function-getingredients"><strong>getIngredients</strong></a> () const<br><em>Gets the ingredients a single craft consumes.</em></td>
 </tr>
 <tr>
 <td style="text-align: right;"><a href="../classendstone_1_1Identifier/"><strong>int</strong></a></td>
-<td style="text-align: left;"><a href="#function-getamount"><strong>getAmount</strong></a> () const<br><em>Gets the number of times the recipe is being crafted.</em></td>
+<td style="text-align: left;"><a href="#function-getrepetitions"><strong>getRepetitions</strong></a> () const<br><em>Gets the number of times the recipe is being crafted.</em></td>
 </tr>
 <tr>
-<td style="text-align: right;"><a href="../classendstone_1_1Identifier/"><strong>const</strong></a> <a href="../classendstone_1_1ItemStack/"><strong>ItemStack</strong></a> &amp;</td>
-<td style="text-align: left;"><a href="#function-getitem"><strong>getItem</strong></a> () const<br><em>Gets the item that is being crafted.</em></td>
+<td style="text-align: right;"><a href="../classendstone_1_1Identifier/"><strong>const</strong></a> std::vector&lt; <a href="../classendstone_1_1ItemStack/"><strong>ItemStack</strong></a> &gt; &amp;</td>
+<td style="text-align: left;"><a href="#function-getresults"><strong>getResults</strong></a> () const<br><em>Gets the items a single craft produces.</em></td>
 </tr>
 <tr>
-<td style="text-align: right;"><a href="../classendstone_1_1Identifier/"><strong>const</strong></a> std::string &amp;</td>
-<td style="text-align: left;"><a href="#function-getrecipeid"><strong>getRecipeId</strong></a> () const<br><em>Gets the identifier of the recipe being used.</em></td>
+<td style="text-align: right;"><a href="../classendstone_1_1Identifier/"><strong>void</strong></a></td>
+<td style="text-align: left;"><a href="#function-setrepetitions"><strong>setRepetitions</strong></a> (<a href="../classendstone_1_1Identifier/"><strong>int</strong></a> repetitions) <br><em>Sets the number of times the recipe is being crafted.</em></td>
+</tr>
+<tr>
+<td style="text-align: right;"><a href="../classendstone_1_1Identifier/"><strong>void</strong></a></td>
+<td style="text-align: left;"><a href="#function-setresults"><strong>setResults</strong></a> (std::vector&lt; <a href="../classendstone_1_1ItemStack/"><strong>ItemStack</strong></a> &gt; results) <br><em>Sets the items a single craft produces.</em></td>
 </tr>
 </tbody>
 </table>
@@ -2847,35 +2881,67 @@ For latest updates join the chat on
 <h3 id="function-playercraftitemevent">function PlayerCraftItemEvent<a class="headerlink" href="#function-playercraftitemevent" title="Permanent link">&para;</a></h3>
 <div class="language-C++ highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="kr">inline</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">PlayerCraftItemEvent</span><span class="o">::</span><span class="n">PlayerCraftItemEvent</span><span class="w"> </span><span class="p">(</span>
 </span><span id="__span-1-2"><a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a><span class="w">    </span><span class="k">const</span><span class="w">  </span><span class="n">NotNull</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">Player</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">player</span><span class="p">,</span>
-</span><span id="__span-1-3"><a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a><span class="w">    </span><span class="n">ItemStack</span><span class="w"> </span><span class="n">item</span><span class="p">,</span>
-</span><span id="__span-1-4"><a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a><span class="w">    </span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="w"> </span><span class="n">recipe_id</span><span class="p">,</span>
-</span><span id="__span-1-5"><a id="__codelineno-1-5" name="__codelineno-1-5" href="#__codelineno-1-5"></a><span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="n">amount</span>
+</span><span id="__span-1-3"><a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a><span class="w">    </span><span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="w"> </span><span class="n">ItemStack</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="n">ingredients</span><span class="p">,</span>
+</span><span id="__span-1-4"><a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a><span class="w">    </span><span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="w"> </span><span class="n">ItemStack</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="n">results</span><span class="p">,</span>
+</span><span id="__span-1-5"><a id="__codelineno-1-5" name="__codelineno-1-5" href="#__codelineno-1-5"></a><span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="n">repetitions</span>
 </span><span id="__span-1-6"><a id="__codelineno-1-6" name="__codelineno-1-6" href="#__codelineno-1-6"></a><span class="p">)</span><span class="w"> </span>
 </span></code></pre></div>
 <hr>
 
-<h3 id="function-getamount">function getAmount<a class="headerlink" href="#function-getamount" title="Permanent link">&para;</a></h3>
+<h3 id="function-getingredients">function getIngredients<a class="headerlink" href="#function-getingredients" title="Permanent link">&para;</a></h3>
+<p><em>Gets the ingredients a single craft consumes.</em> 
+<div class="language-C++ highlight"><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="kr">inline</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="w"> </span><span class="n">ItemStack</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">PlayerCraftItemEvent</span><span class="o">::</span><span class="n">getIngredients</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="k">const</span>
+</span></code></pre></div></p>
+<p><strong>Note:</strong></p>
+<p>These are the items in the crafting grid where the player used one. Crafting from the recipe book never fills the grid, so the ingredients then come from the recipe instead, and an ingredient that accepts several items reports the one the recipe names rather than the one the player supplied.</p>
+<p><strong>Returns:</strong></p>
+<p>the ingredients the craft consumes </p>
+<hr>
+
+<h3 id="function-getrepetitions">function getRepetitions<a class="headerlink" href="#function-getrepetitions" title="Permanent link">&para;</a></h3>
 <p><em>Gets the number of times the recipe is being crafted.</em> 
-<div class="language-C++ highlight"><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="kr">inline</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">PlayerCraftItemEvent</span><span class="o">::</span><span class="n">getAmount</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="k">const</span>
+<div class="language-C++ highlight"><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="kr">inline</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">PlayerCraftItemEvent</span><span class="o">::</span><span class="n">getRepetitions</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="k">const</span>
 </span></code></pre></div></p>
+<p>This is usually 1, but is higher when a batch is crafted at once, such as a shift click in the recipe book.</p>
 <p><strong>Returns:</strong></p>
-<p>the number of crafts </p>
+<p>the number of times the recipe is being crafted </p>
 <hr>
 
-<h3 id="function-getitem">function getItem<a class="headerlink" href="#function-getitem" title="Permanent link">&para;</a></h3>
-<p><em>Gets the item that is being crafted.</em> 
-<div class="language-C++ highlight"><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="kr">inline</span><span class="w"> </span><span class="k">const</span><span class="w">  </span><span class="n">ItemStack</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">PlayerCraftItemEvent</span><span class="o">::</span><span class="n">getItem</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="k">const</span>
+<h3 id="function-getresults">function getResults<a class="headerlink" href="#function-getresults" title="Permanent link">&para;</a></h3>
+<p><em>Gets the items a single craft produces.</em> 
+<div class="language-C++ highlight"><pre><span></span><code><span id="__span-4-1"><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a><span class="kr">inline</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="w"> </span><span class="n">ItemStack</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">PlayerCraftItemEvent</span><span class="o">::</span><span class="n">getResults</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="k">const</span>
 </span></code></pre></div></p>
+<p>A recipe usually produces one item, but may produce several, and an ingredient that leaves a remainder behind contributes one too.</p>
 <p><strong>Returns:</strong></p>
-<p>an <a href="../classendstone_1_1ItemStack/"><strong>ItemStack</strong></a> for the item being crafted </p>
+<p>the items the craft produces </p>
 <hr>
 
-<h3 id="function-getrecipeid">function getRecipeId<a class="headerlink" href="#function-getrecipeid" title="Permanent link">&para;</a></h3>
-<p><em>Gets the identifier of the recipe being used.</em> 
-<div class="language-C++ highlight"><pre><span></span><code><span id="__span-4-1"><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a><span class="kr">inline</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">PlayerCraftItemEvent</span><span class="o">::</span><span class="n">getRecipeId</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="k">const</span>
+<h3 id="function-setrepetitions">function setRepetitions<a class="headerlink" href="#function-setrepetitions" title="Permanent link">&para;</a></h3>
+<p><em>Sets the number of times the recipe is being crafted.</em> 
+<div class="language-C++ highlight"><pre><span></span><code><span id="__span-5-1"><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a><span class="kr">inline</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">PlayerCraftItemEvent</span><span class="o">::</span><span class="n">setRepetitions</span><span class="w"> </span><span class="p">(</span>
+</span><span id="__span-5-2"><a id="__codelineno-5-2" name="__codelineno-5-2" href="#__codelineno-5-2"></a><span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="n">repetitions</span>
+</span><span id="__span-5-3"><a id="__codelineno-5-3" name="__codelineno-5-3" href="#__codelineno-5-3"></a><span class="p">)</span><span class="w"> </span>
 </span></code></pre></div></p>
-<p><strong>Returns:</strong></p>
-<p>the recipe identifier </p>
+<p><strong>Note:</strong></p>
+<p>Values are clamped to the 0-255 range the server accepts.</p>
+<p><strong>Parameters:</strong></p>
+<ul>
+<li><code>repetitions</code> the number of times the recipe is being crafted </li>
+</ul>
+<hr>
+
+<h3 id="function-setresults">function setResults<a class="headerlink" href="#function-setresults" title="Permanent link">&para;</a></h3>
+<p><em>Sets the items a single craft produces.</em> 
+<div class="language-C++ highlight"><pre><span></span><code><span id="__span-6-1"><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a><span class="kr">inline</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">PlayerCraftItemEvent</span><span class="o">::</span><span class="n">setResults</span><span class="w"> </span><span class="p">(</span>
+</span><span id="__span-6-2"><a id="__codelineno-6-2" name="__codelineno-6-2" href="#__codelineno-6-2"></a><span class="w">    </span><span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="w"> </span><span class="n">ItemStack</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="n">results</span>
+</span><span id="__span-6-3"><a id="__codelineno-6-3" name="__codelineno-6-3" href="#__codelineno-6-3"></a><span class="p">)</span><span class="w"> </span>
+</span></code></pre></div></p>
+<p><strong>Note:</strong></p>
+<p>Results are replaced one for one, so any beyond the number the recipe produces are ignored. Cancel the event to stop the craft instead.</p>
+<p><strong>Parameters:</strong></p>
+<ul>
+<li><code>results</code> the items the craft should produce </li>
+</ul>
 <hr>
 
 <hr />

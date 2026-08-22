@@ -2149,14 +2149,16 @@
     <member refid="classendstone_1_1PlayerCommandEvent_1a6d2c4a174ce786fc8a1cd6cd8f9ca7c5" kind="function"><name>setCommand</name></member>
   </compound>
   <compound refid="classendstone_1_1PlayerCraftItemEvent" kind="class"><name>endstone::PlayerCraftItemEvent</name>
-    <member refid="classendstone_1_1PlayerCraftItemEvent_1ae63bc3e4aed5671f27445cffecb53acc" kind="variable"><name>item_</name></member>
-    <member refid="classendstone_1_1PlayerCraftItemEvent_1a1a3ba0ac2a6bab2929a868e1c299b3ba" kind="variable"><name>recipe_id_</name></member>
-    <member refid="classendstone_1_1PlayerCraftItemEvent_1ac7f812eb3e938dc2cc4f447cbbd4aaca" kind="variable"><name>amount_</name></member>
+    <member refid="classendstone_1_1PlayerCraftItemEvent_1a45a2a20c5e038fc8bb89285a8cac02ad" kind="variable"><name>ingredients_</name></member>
+    <member refid="classendstone_1_1PlayerCraftItemEvent_1a72a4ab1becb4a882af91cd93c5f86144" kind="variable"><name>results_</name></member>
+    <member refid="classendstone_1_1PlayerCraftItemEvent_1a23f787e96651ba19256d9d9527523aaf" kind="variable"><name>repetitions_</name></member>
     <member refid="classendstone_1_1PlayerCraftItemEvent_1a51d5c8208e09d88cf95647feae9428b0" kind="function"><name>ENDSTONE_EVENT</name></member>
-    <member refid="classendstone_1_1PlayerCraftItemEvent_1a843ad5db3b00eb2aacb4e86020f6172f" kind="function"><name>PlayerCraftItemEvent</name></member>
-    <member refid="classendstone_1_1PlayerCraftItemEvent_1ac3ca22f3cffc253dbc17f3d33aeafa0f" kind="function"><name>getItem</name></member>
-    <member refid="classendstone_1_1PlayerCraftItemEvent_1a4607ed615aaeea46bc8d4398c47dd696" kind="function"><name>getRecipeId</name></member>
-    <member refid="classendstone_1_1PlayerCraftItemEvent_1a904390061ec56bbc2632c68ce518c850" kind="function"><name>getAmount</name></member>
+    <member refid="classendstone_1_1PlayerCraftItemEvent_1af17b3362fbb6ec52553628777cfac1b0" kind="function"><name>PlayerCraftItemEvent</name></member>
+    <member refid="classendstone_1_1PlayerCraftItemEvent_1a336f603d4d5946c333cbdac759411cfd" kind="function"><name>getIngredients</name></member>
+    <member refid="classendstone_1_1PlayerCraftItemEvent_1a574dae1a5a5655b03d041247900ce111" kind="function"><name>getResults</name></member>
+    <member refid="classendstone_1_1PlayerCraftItemEvent_1af566dc7aca83d6f45e3e82dfb11b2c35" kind="function"><name>setResults</name></member>
+    <member refid="classendstone_1_1PlayerCraftItemEvent_1ac406b14595f95db5f91a6e36c9b36815" kind="function"><name>getRepetitions</name></member>
+    <member refid="classendstone_1_1PlayerCraftItemEvent_1ae64dab864d9b9f80a006266d27af92dd" kind="function"><name>setRepetitions</name></member>
   </compound>
   <compound refid="classendstone_1_1PlayerDeathEvent" kind="class"><name>endstone::PlayerDeathEvent</name>
     <member refid="classendstone_1_1PlayerDeathEvent_1af06323e6ed61542a475022a16b07931e" kind="variable"><name>player_</name></member>

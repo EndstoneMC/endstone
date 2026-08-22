@@ -8,7 +8,7 @@
 
 
 
-_Called when a player crafts an item._ [More...](#detailed-description)
+_Called when a player crafts an item, either inside a crafting grid or straight from the recipe book._ [More...](#detailed-description)
 
 * `#include <endstone/event/player/player_craft_item_event.h>`
 
@@ -94,10 +94,12 @@ Inherits the following classes: [endstone::Cancellable](classendstone_1_1Cancell
 | Type | Name |
 | ---: | :--- |
 |   | [**ENDSTONE\_EVENT**](#function-endstone_event) ([**PlayerCraftItemEvent**](classendstone_1_1PlayerCraftItemEvent.md)) <br> |
-|   | [**PlayerCraftItemEvent**](#function-playercraftitemevent) ([**const**](classendstone_1_1Identifier.md) [**NotNull**](classendstone_1_1NotNull.md)&lt; [**Player**](classendstone_1_1Player.md) &gt; & player, [**ItemStack**](classendstone_1_1ItemStack.md) item, std::string recipe\_id, [**int**](classendstone_1_1Identifier.md) amount) <br> |
-|  [**int**](classendstone_1_1Identifier.md) | [**getAmount**](#function-getamount) () const<br>_Gets the number of times the recipe is being crafted._  |
-|  [**const**](classendstone_1_1Identifier.md) [**ItemStack**](classendstone_1_1ItemStack.md) & | [**getItem**](#function-getitem) () const<br>_Gets the item that is being crafted._  |
-|  [**const**](classendstone_1_1Identifier.md) std::string & | [**getRecipeId**](#function-getrecipeid) () const<br>_Gets the identifier of the recipe being used._  |
+|   | [**PlayerCraftItemEvent**](#function-playercraftitemevent) ([**const**](classendstone_1_1Identifier.md) [**NotNull**](classendstone_1_1NotNull.md)&lt; [**Player**](classendstone_1_1Player.md) &gt; & player, std::vector&lt; [**ItemStack**](classendstone_1_1ItemStack.md) &gt; ingredients, std::vector&lt; [**ItemStack**](classendstone_1_1ItemStack.md) &gt; results, [**int**](classendstone_1_1Identifier.md) repetitions) <br> |
+|  [**const**](classendstone_1_1Identifier.md) std::vector&lt; [**ItemStack**](classendstone_1_1ItemStack.md) &gt; & | [**getIngredients**](#function-getingredients) () const<br>_Gets the ingredients a single craft consumes._  |
+|  [**int**](classendstone_1_1Identifier.md) | [**getRepetitions**](#function-getrepetitions) () const<br>_Gets the number of times the recipe is being crafted._  |
+|  [**const**](classendstone_1_1Identifier.md) std::vector&lt; [**ItemStack**](classendstone_1_1ItemStack.md) &gt; & | [**getResults**](#function-getresults) () const<br>_Gets the items a single craft produces._  |
+|  [**void**](classendstone_1_1Identifier.md) | [**setRepetitions**](#function-setrepetitions) ([**int**](classendstone_1_1Identifier.md) repetitions) <br>_Sets the number of times the recipe is being crafted._  |
+|  [**void**](classendstone_1_1Identifier.md) | [**setResults**](#function-setresults) (std::vector&lt; [**ItemStack**](classendstone_1_1ItemStack.md) &gt; results) <br>_Sets the items a single craft produces._  |
 
 
 ## Public Functions inherited from endstone::Cancellable
@@ -240,9 +242,9 @@ endstone::PlayerCraftItemEvent::ENDSTONE_EVENT (
 ```C++
 inline endstone::PlayerCraftItemEvent::PlayerCraftItemEvent (
     const  NotNull < Player > & player,
-    ItemStack item,
-    std::string recipe_id,
-    int amount
+    std::vector< ItemStack > ingredients,
+    std::vector< ItemStack > results,
+    int repetitions
 ) 
 ```
 
@@ -253,20 +255,55 @@ inline endstone::PlayerCraftItemEvent::PlayerCraftItemEvent (
 
 
 
-### function getAmount 
+### function getIngredients 
+
+_Gets the ingredients a single craft consumes._ 
+```C++
+inline const std::vector< ItemStack > & endstone::PlayerCraftItemEvent::getIngredients () const
+```
+
+
+
+
+
+**Note:**
+
+These are the items in the crafting grid where the player used one. Crafting from the recipe book never fills the grid, so the ingredients then come from the recipe instead, and an ingredient that accepts several items reports the one the recipe names rather than the one the player supplied.
+
+
+
+
+**Returns:**
+
+the ingredients the craft consumes 
+
+
+
+
+
+        
+
+<hr>
+
+
+
+### function getRepetitions 
 
 _Gets the number of times the recipe is being crafted._ 
 ```C++
-inline int endstone::PlayerCraftItemEvent::getAmount () const
+inline int endstone::PlayerCraftItemEvent::getRepetitions () const
 ```
 
+
+
+This is usually 1, but is higher when a batch is crafted at once, such as a shift click in the recipe book.
 
 
 
 
 **Returns:**
 
-the number of crafts 
+the number of times the recipe is being crafted 
 
 
 
@@ -278,20 +315,23 @@ the number of crafts
 
 
 
-### function getItem 
+### function getResults 
 
-_Gets the item that is being crafted._ 
+_Gets the items a single craft produces._ 
 ```C++
-inline const  ItemStack & endstone::PlayerCraftItemEvent::getItem () const
+inline const std::vector< ItemStack > & endstone::PlayerCraftItemEvent::getResults () const
 ```
 
+
+
+A recipe usually produces one item, but may produce several, and an ingredient that leaves a remainder behind contributes one too.
 
 
 
 
 **Returns:**
 
-an [**ItemStack**](classendstone_1_1ItemStack.md) for the item being crafted 
+the items the craft produces 
 
 
 
@@ -303,21 +343,64 @@ an [**ItemStack**](classendstone_1_1ItemStack.md) for the item being crafted
 
 
 
-### function getRecipeId 
+### function setRepetitions 
 
-_Gets the identifier of the recipe being used._ 
+_Sets the number of times the recipe is being crafted._ 
 ```C++
-inline const std::string & endstone::PlayerCraftItemEvent::getRecipeId () const
+inline void endstone::PlayerCraftItemEvent::setRepetitions (
+    int repetitions
+) 
 ```
 
 
 
 
 
-**Returns:**
+**Note:**
 
-the recipe identifier 
+Values are clamped to the 0-255 range the server accepts.
 
+
+
+
+**Parameters:**
+
+
+* `repetitions` the number of times the recipe is being crafted 
+
+
+
+
+        
+
+<hr>
+
+
+
+### function setResults 
+
+_Sets the items a single craft produces._ 
+```C++
+inline void endstone::PlayerCraftItemEvent::setResults (
+    std::vector< ItemStack > results
+) 
+```
+
+
+
+
+
+**Note:**
+
+Results are replaced one for one, so any beyond the number the recipe produces are ignored. Cancel the event to stop the craft instead.
+
+
+
+
+**Parameters:**
+
+
+* `results` the items the craft should produce 
 
 
 
