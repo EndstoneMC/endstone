@@ -14,7 +14,6 @@
 
 #pragma once
 
-#include <functional>
 #include <optional>
 #include <stdexcept>
 #include <string>
@@ -30,14 +29,6 @@ using DrilldownValues = std::unordered_map<std::string, StringValues>;
 using BarValues = std::unordered_map<std::string, std::vector<int>>;
 using ChartValue = std::variant<std::string, int, StringValues, DrilldownValues, BarValues>;
 using ChartData = std::unordered_map<std::string, ChartValue>;
-
-using SimplePieCallback = std::function<std::optional<std::string>()>;
-using AdvancedPieCallback = std::function<std::optional<StringValues>()>;
-using DrilldownPieCallback = std::function<std::optional<DrilldownValues>()>;
-using SimpleBarChartCallback = std::function<std::optional<StringValues>()>;
-using AdvancedBarChartCallback = std::function<std::optional<BarValues>()>;
-using SingleLineChartCallback = std::function<int()>;
-using MultiLineChartCallback = std::function<std::optional<StringValues>()>;
 
 /**
  * Represents a custom chart.

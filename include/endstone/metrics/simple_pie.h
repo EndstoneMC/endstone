@@ -14,6 +14,7 @@
 
 #pragma once
 
+#include <functional>
 #include <optional>
 #include <string>
 #include <utility>
@@ -25,7 +26,9 @@ namespace endstone::metrics {
 /** A bStats pie chart with a single value. */
 class SimplePie : public CustomChart {
 public:
-    SimplePie(std::string chart_id, SimplePieCallback get_value)
+    using Callback = std::function<std::optional<std::string>()>;
+
+    SimplePie(std::string chart_id, Callback get_value)
         : CustomChart(std::move(chart_id)), get_value_(std::move(get_value))
     {
     }
@@ -40,6 +43,6 @@ public:
     }
 
 private:
-    SimplePieCallback get_value_;
+    Callback get_value_;
 };
 }  // namespace endstone::metrics

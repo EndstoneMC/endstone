@@ -14,6 +14,7 @@
 
 #pragma once
 
+#include <functional>
 #include <optional>
 #include <string>
 #include <utility>
@@ -25,7 +26,9 @@ namespace endstone::metrics {
 /** A bStats bar chart with several bars per category. */
 class AdvancedBarChart : public CustomChart {
 public:
-    AdvancedBarChart(std::string chart_id, AdvancedBarChartCallback get_values)
+    using Callback = std::function<std::optional<BarValues>()>;
+
+    AdvancedBarChart(std::string chart_id, Callback get_values)
         : CustomChart(std::move(chart_id)), get_values_(std::move(get_values))
     {
     }
@@ -50,6 +53,6 @@ public:
     }
 
 private:
-    AdvancedBarChartCallback get_values_;
+    Callback get_values_;
 };
 }  // namespace endstone::metrics
