@@ -41,10 +41,12 @@ ALIASES = {
     "numpy.ndarray": "numpy.typing.NDArray",
 }
 
-# pybind11_json calls its caster's type `json`, which is not a name Python knows, and the engine
-# only rewrites dotted ones. simplify() is the single hook that sees type text - annotations, bases
-# and signatures, never docstrings or literals - so the substitution goes there.
-_BARE_JSON = re.compile(r"(?<![\w.])json(?![\w.])")
+# The engine only rewrites dotted names, so a bare one reaches the stub with no import behind it.
+# These are the two that do: pybind11_json calls its caster's type `json`, and the grafted metrics
+# source annotates with `Plugin`. simplify() is the single hook that sees type text - annotations,
+# bases and signatures, never docstrings or literals - so the substitution goes there.
+_BARE_ALIASES = {"json": "typing.Any", "Plugin": "endstone.plugin.Plugin"}
+_BARE_ALIAS_RE = re.compile(r"(?<![\w.])(" + "|".join(_BARE_ALIASES) + r")(?![\w.])")
 
 # A namespaced value the pattern file did not claim, i.e. an Identifier constant
 # on a class its owner list does not cover.
@@ -166,7 +168,7 @@ def main() -> None:
     engine = load_engine(opt.engine)
 
     def simplify(self, text: str, _original=engine.StubGen.simplify) -> str:
-        return _original(self, _BARE_JSON.sub("typing.Any", text))
+        return _original(self, _BARE_ALIAS_RE.sub(lambda m: _BARE_ALIASES[m[1]], text))
 
     engine.StubGen.simplify = simplify
 

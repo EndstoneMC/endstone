@@ -6,8 +6,8 @@ from pathlib import Path
 import lazy_loader as lazy
 import psutil
 
-import endstone.plugin
 from endstone._python.metrics import DrilldownPie, SimplePie
+from endstone.plugin import Plugin
 
 from ._arch import host_arch
 from .base import MetricsBase
@@ -25,12 +25,12 @@ def _get_python_version() -> dict[str, dict[str, int]]:
 
 
 class Metrics(MetricsBase):
-    def __init__(self, plugin: endstone.plugin.Plugin, service_id: int) -> None:
+    def __init__(self, plugin: Plugin, service_id: int) -> None:
         """
         Creates a new Metrics instance.
 
         Args:
-            plugin (endstone.plugin.Plugin): Your plugin instance.
+            plugin (Plugin): Your plugin instance.
             service_id (int): The id of the service.
                               It can be found at https://bstats.org/what-is-my-plugin-id
         """

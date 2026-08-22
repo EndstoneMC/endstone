@@ -282,7 +282,7 @@ class Metrics(MetricsBase):
         Creates a new Metrics instance.
 
         Args:
-            plugin (endstone.plugin.Plugin): Your plugin instance.
+            plugin (Plugin): Your plugin instance.
             service_id (int): The id of the service.
                               It can be found at https://bstats.org/what-is-my-plugin-id
         """
