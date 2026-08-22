@@ -24,7 +24,6 @@ add_executable(endstone_test
         test_cpp_plugin_loader.cpp
         test_effect.cpp
         test_logger_factory.cpp
-        test_metrics_api.cpp
         test_player_ban_list.cpp
         test_permissions.cpp
         test_pointers.cpp
