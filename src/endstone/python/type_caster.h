@@ -16,9 +16,9 @@
 
 #include <pybind11/numpy.h>
 #include <pybind11/pybind11.h>
-#include <pybind11_json/pybind11_json.hpp>  // NOLINT(*-include-cleaner): type_caster<nlohmann::json>
 
 #include "endstone/endstone.hpp"
+#include "pybind11_json.hpp"  // NOLINT(*-include-cleaner): type_caster<nlohmann::json>
 #include "registry.h"
 
 namespace pybind11::detail {

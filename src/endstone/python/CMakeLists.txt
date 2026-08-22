@@ -3,7 +3,6 @@ project(endstone_python LANGUAGES CXX)
 
 set(PYBIND11_FINDPYTHON ON)
 find_package(pybind11 CONFIG REQUIRED)
-find_package(pybind11_json CONFIG REQUIRED)
 
 pybind11_add_module(_python MODULE
         actor.cpp
@@ -31,7 +30,7 @@ pybind11_add_module(_python MODULE
         scoreboard.cpp
         util.cpp
 )
-target_link_libraries(_python PRIVATE endstone::endstone pybind11::module pybind11_json::pybind11_json)
+target_link_libraries(_python PRIVATE endstone::endstone pybind11::module)
 target_include_directories(_python PRIVATE ${CMAKE_SOURCE_DIR}/src)
 target_compile_definitions(_python PUBLIC PYBIND11_DETAILED_ERROR_MESSAGES)
 
