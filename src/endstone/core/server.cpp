@@ -155,6 +155,7 @@ EndstoneServer::EndstoneServer() : logger_(LoggerFactory::getLogger(""))
         EndstoneServer::getLogger().error(result.error());
     }
     language_ = std::make_unique<EndstoneLanguage>();
+    plugin_metrics_ = std::make_unique<PluginMetricsRegistry>();
     plugin_manager_ = std::make_unique<EndstonePluginManager>(*this);
     service_manager_ = std::make_unique<EndstoneServiceManager>();
     scheduler_ = std::make_unique<EndstoneScheduler>(*this);
@@ -503,9 +504,9 @@ Scheduler &EndstoneServer::getScheduler() const
     return *scheduler_;
 }
 
-std::unique_ptr<MetricsBase> EndstoneServer::createMetrics(Plugin &plugin, int service_id) const
+NotNull<MetricsBase> EndstoneServer::createMetrics(Plugin &plugin, int service_id) const
 {
-    return createPluginMetrics(plugin, service_id);
+    return plugin_metrics_->create(plugin, service_id);
 }
 
 EndstoneScheduler &EndstoneServer::getEndstoneScheduler() const

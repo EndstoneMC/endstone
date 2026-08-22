@@ -15,27 +15,33 @@
 #pragma once
 
 #include <memory>
+#include <unordered_map>
+#include <vector>
+
+#include <pybind11/pybind11.h>
 
 #include "endstone/metrics/metrics_base.h"
-
-namespace endstone {
-class Plugin;
-class Server;
-}  // namespace endstone
+#include "endstone/server.h"
 
 namespace endstone::core {
-
-/** The server's own bStats reporter, distinct from the per-plugin metrics below. */
 class EndstoneMetrics {
 public:
-    explicit EndstoneMetrics(Server &server);
+    EndstoneMetrics(Server &server);
     ~EndstoneMetrics();
 
 private:
-    class Impl;
-    std::unique_ptr<Impl> impl_;
+    Server &server_;
+    pybind11::object obj_;
 };
 
-[[nodiscard]] std::unique_ptr<MetricsBase> createPluginMetrics(Plugin &plugin, int service_id);
+/** Holds every metrics the server has created for a plugin, so none of them outlives it. */
+class PluginMetricsRegistry {
+public:
+    [[nodiscard]] NotNull<MetricsBase> create(Plugin &plugin, int service_id);
+    void retire(const Plugin &plugin);
+
+private:
+    std::unordered_map<const Plugin *, std::vector<std::shared_ptr<MetricsBase>>> metrics_;
+};
 
 }  // namespace endstone::core

@@ -19,23 +19,24 @@
 
 #include "endstone/metrics/advanced_bar_chart.h"
 #include "endstone/metrics/advanced_pie.h"
+#include "endstone/metrics/metrics_base.h"
 #include "endstone/metrics/custom_chart.h"
 #include "endstone/metrics/drilldown_pie.h"
-#include "endstone/metrics/metrics_base.h"
 #include "endstone/metrics/multi_line_chart.h"
 #include "endstone/metrics/simple_bar_chart.h"
 #include "endstone/metrics/simple_pie.h"
 #include "endstone/metrics/single_line_chart.h"
 #include "endstone/plugin/plugin.h"
 #include "endstone/server.h"
+#include "endstone/util/pointers.h"
 
 namespace endstone {
 
 /**
  * Collects and submits anonymous usage statistics for a plugin to bStats.
  *
- * A plugin owns its Metrics, typically as a member created in Plugin::onEnable. Destroying it stops
- * collection and releases every chart, so a plugin that keeps one needs no further cleanup.
+ * The server owns the metrics behind this handle and retires them when the plugin is disabled or the server shuts
+ * down, so a plugin may add its charts in Plugin::onEnable and drop the handle.
  */
 class Metrics {
 public:
@@ -46,12 +47,6 @@ public:
      * @param service_id the id of the service, found at https://bstats.org/what-is-my-plugin-id
      */
     Metrics(Plugin &plugin, int service_id) : impl_(plugin.getServer().createMetrics(plugin, service_id)) {}
-
-    Metrics(const Metrics &) = delete;
-    Metrics &operator=(const Metrics &) = delete;
-    Metrics(Metrics &&) noexcept = default;
-    Metrics &operator=(Metrics &&) noexcept = default;
-    ~Metrics() = default;
 
     /**
      * Adds a custom chart.
@@ -68,6 +63,6 @@ public:
     void shutdown() noexcept { impl_->shutdown(); }
 
 private:
-    std::unique_ptr<MetricsBase> impl_;
+    NotNull<MetricsBase> impl_;
 };
 }  // namespace endstone
