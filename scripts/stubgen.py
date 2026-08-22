@@ -41,6 +41,11 @@ ALIASES = {
     "numpy.ndarray": "numpy.typing.NDArray",
 }
 
+# pybind11_json calls its caster's type `json`, which is not a name Python knows, and the engine
+# only rewrites dotted ones. simplify() is the single hook that sees type text - annotations, bases
+# and signatures, never docstrings or literals - so the substitution goes there.
+_BARE_JSON = re.compile(r"(?<![\w.])json(?![\w.])")
+
 # A namespaced value the pattern file did not claim, i.e. an Identifier constant
 # on a class its owner list does not cover.
 _UNTYPED_CONST_RE = re.compile(r"""^ +[A-Z][A-Z0-9_]*(: str)? = (['"])[\w.]+:[\w.]+\2$""", re.MULTILINE)
@@ -159,6 +164,12 @@ def main() -> None:
     opt = parser.parse_args()
 
     engine = load_engine(opt.engine)
+
+    def simplify(self, text: str, _original=engine.StubGen.simplify) -> str:
+        return _original(self, _BARE_JSON.sub("typing.Any", text))
+
+    engine.StubGen.simplify = simplify
+
     patterns = engine.load_pattern_file(str(opt.pattern_file))
 
     import_root = stage(opt.source_dir, opt.extension, opt.work_dir)

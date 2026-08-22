@@ -60,8 +60,11 @@ class EndstoneRecipe(ConanFile):
         self.requires("glm/1.0.3")
         self.requires("magic_enum/0.9.7")
         self.requires("ms-gsl/4.2.2")
-        self.requires("nlohmann_json/3.12.0")
-        self.requires("pybind11/3.0.1")
+        # force: pybind11_json pins older versions of both, and it is a header-only shim that
+        # builds fine against ours.
+        self.requires("nlohmann_json/3.12.0", force=True)
+        self.requires("pybind11/3.0.1", force=True)
+        self.requires("pybind11_json/0.2.13")
         self.requires("raknet/4.081-mojang")
         self.requires("replxx/0.0.4")
         self.requires("sentry-native/0.14.2")
