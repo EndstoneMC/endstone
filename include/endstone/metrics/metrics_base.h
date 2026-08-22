@@ -16,26 +16,32 @@
 
 #include <memory>
 
-#include "endstone/metrics/metrics_base.h"
+namespace endstone::metrics {
 
-namespace endstone {
-class Plugin;
-class Server;
-}  // namespace endstone
+class CustomChart;
 
-namespace endstone::core {
-
-/** The server's own bStats reporter, distinct from the per-plugin metrics below. */
-class EndstoneMetrics {
+/**
+ * Collects and submits the data behind a Metrics instance.
+ *
+ * Plugins hold a Metrics rather than implementing this interface.
+ */
+class MetricsBase {
 public:
-    explicit EndstoneMetrics(Server &server);
-    ~EndstoneMetrics();
+    MetricsBase() = default;
+    MetricsBase(const MetricsBase &) = delete;
+    MetricsBase &operator=(const MetricsBase &) = delete;
+    virtual ~MetricsBase() = default;
 
-private:
-    class Impl;
-    std::unique_ptr<Impl> impl_;
+    /**
+     * Adds a custom chart.
+     *
+     * @param chart the chart to add
+     */
+    virtual void addCustomChart(std::unique_ptr<CustomChart> chart) = 0;
+
+    /**
+     * Stops collecting and submitting data.
+     */
+    virtual void shutdown() noexcept = 0;
 };
-
-[[nodiscard]] std::unique_ptr<metrics::MetricsBase> createPluginMetrics(Plugin &plugin, int service_id);
-
-}  // namespace endstone::core
+}  // namespace endstone::metrics

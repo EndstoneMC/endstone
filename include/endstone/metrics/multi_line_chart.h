@@ -5,10 +5,15 @@
 // You may obtain a copy of the License at
 //
 //     http://www.apache.org/licenses/LICENSE-2.0
+//
+// Unless required by applicable law or agreed to in writing, software
+// distributed under the License is distributed on an "AS IS" BASIS,
+// WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+// See the License for the specific language governing permissions and
+// limitations under the License.
 
 #pragma once
 
-#include <functional>
 #include <optional>
 #include <string>
 #include <utility>
@@ -17,20 +22,34 @@
 
 namespace endstone::metrics {
 
-/** A bStats line chart with named values. */
+/** A bStats line chart with a line per named value. */
 class MultiLineChart : public CustomChart {
 public:
-    using ValuesCallback = MultiLineChartCallback;
-
-    MultiLineChart(std::string chart_id, ValuesCallback get_values)
+    MultiLineChart(std::string chart_id, MultiLineChartCallback get_values)
         : CustomChart(std::move(chart_id)), get_values_(std::move(get_values))
     {
     }
 
-private:
-    std::optional<ChartData> getChartData() override { return std::nullopt; }
-    void dispatch(detail::ChartVisitor &visitor) override { visitor.visitMultiLineChart(getChartId(), get_values_); }
+    [[nodiscard]] std::optional<ChartData> getChartData() override
+    {
+        const auto map_values = get_values_();
+        if (!map_values) {
+            return std::nullopt;
+        }
+        StringValues values;
+        for (const auto &[key, value] : *map_values) {
+            if (value == 0) {
+                continue;
+            }
+            values.emplace(key, value);
+        }
+        if (values.empty()) {
+            return std::nullopt;
+        }
+        return ChartData{{"values", std::move(values)}};
+    }
 
-    ValuesCallback get_values_;
+private:
+    MultiLineChartCallback get_values_;
 };
 }  // namespace endstone::metrics

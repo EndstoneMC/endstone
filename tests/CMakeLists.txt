@@ -45,8 +45,8 @@ target_link_libraries(endstone_test PRIVATE endstone::core GTest::gtest_main GTe
 target_compile_definitions(endstone_test PRIVATE
         ENDSTONE_PYTHON_MODULE_DIR="$<TARGET_FILE_DIR:_python>"
         ENDSTONE_SOURCE_DIR="${CMAKE_SOURCE_DIR}")
-# CppPluginLoaderTest cases share the plugins/.local shadow-copy dir, whose
-# cleanup races when ctest runs them in parallel; serialize just those.
+# CppPluginLoaderTest and the metrics tests share the plugins/.local shadow-copy dir and the embedded
+# interpreter, both of which race when ctest runs them in parallel; serialize just those.
 gtest_discover_tests(endstone_test
         TEST_FILTER "CppPluginLoaderTest.*:MetricsPythonBridgeTest.*:MetricsPythonLifecycleTest.*"
         PROPERTIES RESOURCE_LOCK cpp_plugin_loader_local)

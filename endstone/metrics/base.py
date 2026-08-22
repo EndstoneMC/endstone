@@ -253,7 +253,7 @@ class MetricsBase(ABC):
         if self._shutdown:
             return
 
-        if self._log_sent_data and not self._shutdown:
+        if self._log_sent_data:
             self.log_info(f"Sent bStats metrics data: {data}")
 
         url = self.REPORT_URL.format(platform=self._platform)
@@ -273,5 +273,4 @@ class MetricsBase(ABC):
                 resp.raise_for_status()
                 if self._log_response_status_text and not self._shutdown:
                     text = await resp.text()
-                    if not self._shutdown:
-                        self.log_info(f"Sent data to bStats and received response: {text}")
+                    self.log_info(f"Sent data to bStats and received response: {text}")

@@ -5,10 +5,15 @@
 // You may obtain a copy of the License at
 //
 //     http://www.apache.org/licenses/LICENSE-2.0
+//
+// Unless required by applicable law or agreed to in writing, software
+// distributed under the License is distributed on an "AS IS" BASIS,
+// WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+// See the License for the specific language governing permissions and
+// limitations under the License.
 
 #pragma once
 
-#include <functional>
 #include <optional>
 #include <string>
 #include <utility>
@@ -17,20 +22,28 @@
 
 namespace endstone::metrics {
 
-/** A bStats bar chart with one value per bar. */
+/** A bStats bar chart with a single bar per category. */
 class SimpleBarChart : public CustomChart {
 public:
-    using ValuesCallback = SimpleBarChartCallback;
-
-    SimpleBarChart(std::string chart_id, ValuesCallback get_values)
+    SimpleBarChart(std::string chart_id, SimpleBarChartCallback get_values)
         : CustomChart(std::move(chart_id)), get_values_(std::move(get_values))
     {
     }
 
-private:
-    std::optional<ChartData> getChartData() override { return std::nullopt; }
-    void dispatch(detail::ChartVisitor &visitor) override { visitor.visitSimpleBarChart(getChartId(), get_values_); }
+    [[nodiscard]] std::optional<ChartData> getChartData() override
+    {
+        const auto map_values = get_values_();
+        if (!map_values || map_values->empty()) {
+            return std::nullopt;
+        }
+        BarValues values;
+        for (const auto &[key, value] : *map_values) {
+            values.emplace(key, std::vector{value});
+        }
+        return ChartData{{"values", std::move(values)}};
+    }
 
-    ValuesCallback get_values_;
+private:
+    SimpleBarChartCallback get_values_;
 };
 }  // namespace endstone::metrics

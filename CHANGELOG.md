@@ -74,7 +74,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 #### API and types
 
-- Public C++ metrics service with Paper-style plugin registrations and all seven bStats chart types, backed by Endstone's existing Python metrics implementation.
+- `endstone::metrics::Metrics` for C++ plugins, mirroring bStats' `Metrics(plugin, service_id)` and carrying all seven chart types plus `CustomChart`. A plugin holds one as a member; destroying it stops collection and releases its charts.
+- `Plugin.plugin_description` in Python, exposing the description a plugin's loader declared for it.
 - Unified `Object.as<T>()`/`is<T>()` casting API. `NotNull<T>` and `Nullable<T>` carry the same pair, so `event.getActor().as<Player>()` returns a `Nullable<Player>` sharing ownership with the original.
 - `endstone.Identifier` for namespaced ids, splitting `dim.id.namespace` from `dim.id.key` and distinguishing `Identifier[Dimension]` from `Identifier[ActorType]`. Plain strings are still accepted.
 - `ActorType`, `EffectType` and `PotionType` in the registry API, each entry carrying a `translation_key`, plus the missing `ActorType.SULFUR_CUBE` constant.
@@ -140,6 +141,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 #### API behaviour
 
+- Fixed plugin metrics collecting chart data off the primary server thread for every submission after the first. A chart callback that touches the server no longer races the submission task.
+- Fixed `Metrics.shutdown()` blocking the caller for up to three seconds waiting on the submission task, and a submission that failed unexpectedly going unreported.
 - Fixed `Dimension.actors` and `Level.actors` leaving out connected players.
 - Fixed `PlayerBedLeaveEvent` only being called when a player pressed the leave button. It now also fires when morning comes, when the bed is broken or obstructed, and when the player is woken by anything else, and the `bed` block it reports is the bed being slept in rather than the respawn point.
 - Fixed every vanilla command failing when dispatched through a `CommandSenderWrapper`, which did not report its own type.

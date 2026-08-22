@@ -1,6 +1,16 @@
 // Copyright (c) 2024, The Endstone Project. (https://endstone.dev) All Rights Reserved.
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
+// you may not use this file except in compliance with the License.
+// You may obtain a copy of the License at
+//
+//     http://www.apache.org/licenses/LICENSE-2.0
+//
+// Unless required by applicable law or agreed to in writing, software
+// distributed under the License is distributed on an "AS IS" BASIS,
+// WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+// See the License for the specific language governing permissions and
+// limitations under the License.
 
 #include <filesystem>
 #include <memory>
@@ -20,46 +30,56 @@
 #include "endstone/core/plugin/plugin_manager.h"
 #include "endstone/core/plugin/service_manager.h"
 #include "endstone/core/scheduler/scheduler.h"
-#include "endstone/metrics/advanced_bar_chart.h"
-#include "endstone/metrics/advanced_pie.h"
-#include "endstone/metrics/drilldown_pie.h"
-#include "endstone/metrics/multi_line_chart.h"
-#include "endstone/metrics/simple_bar_chart.h"
-#include "endstone/metrics/simple_pie.h"
-#include "endstone/metrics/single_line_chart.h"
+#include "endstone/metrics/metrics.h"
 #include "mocks.h"
 
 namespace fs = std::filesystem;
 namespace py = pybind11;
 
+using endstone::metrics::AdvancedBarChart;
+using endstone::metrics::AdvancedPie;
+using endstone::metrics::BarValues;
+using endstone::metrics::DrilldownPie;
+using endstone::metrics::DrilldownValues;
+using endstone::metrics::Metrics;
+using endstone::metrics::MultiLineChart;
+using endstone::metrics::SimpleBarChart;
+using endstone::metrics::SimplePie;
+using endstone::metrics::SingleLineChart;
+using endstone::metrics::StringValues;
+
 namespace {
 
 void initializePython()
 {
-    if (!Py_IsInitialized()) {
-        py::initialize_interpreter();
-    }
-
-    py::gil_scoped_acquire gil;
-    auto sys = py::module_::import("sys");
-    sys.attr("path").attr("insert")(0, ENDSTONE_PYTHON_MODULE_DIR);
-    auto native_module = py::module_::import("_python");
-    auto modules = sys.attr("modules").cast<py::dict>();
-    auto package = py::module_::import("types").attr("ModuleType")("endstone");
-    package.attr("__path__") = py::make_tuple((fs::path(ENDSTONE_SOURCE_DIR) / "endstone").string());
-    modules["endstone"] = package;
-    modules["endstone._python"] = native_module;
-
-    auto items = py::list(modules.attr("items")());
-    for (auto item : items) {
-        auto pair = item.cast<py::tuple>();
-        auto name = pair[0].cast<std::string>();
-        if (name.starts_with("_python.")) {
-            modules[py::str("endstone." + name)] = pair[1];
+    static const bool initialized = [] {
+        if (!Py_IsInitialized()) {
+            py::initialize_interpreter();
         }
-    }
-    sys.attr("path").attr("insert")(0, ENDSTONE_SOURCE_DIR);
-    py::module_::import("endstone.metrics");
+
+        py::gil_scoped_acquire gil;
+        auto sys = py::module_::import("sys");
+        sys.attr("path").attr("insert")(0, ENDSTONE_PYTHON_MODULE_DIR);
+        auto native_module = py::module_::import("_python");
+        auto modules = sys.attr("modules").cast<py::dict>();
+        auto package = py::module_::import("types").attr("ModuleType")("endstone");
+        package.attr("__path__") = py::make_tuple((fs::path(ENDSTONE_SOURCE_DIR) / "endstone").string());
+        modules["endstone"] = package;
+        modules["endstone._python"] = native_module;
+
+        auto items = py::list(modules.attr("items")());
+        for (auto item : items) {
+            auto pair = item.cast<py::tuple>();
+            auto name = pair[0].cast<std::string>();
+            if (name.starts_with("_python.")) {
+                modules[py::str("endstone." + name)] = pair[1];
+            }
+        }
+        sys.attr("path").attr("insert")(0, ENDSTONE_SOURCE_DIR);
+        py::module_::import("endstone.metrics");
+        return true;
+    }();
+    (void)initialized;
 }
 
 class PythonMetricsCapture {
@@ -98,6 +118,11 @@ private:
     py::list charts_;
 };
 
+py::object request(const py::handle &chart)
+{
+    return chart.attr("_get_request_json_object")();
+}
+
 class MetricsPythonBridgeTest : public ::testing::Test {
 protected:
     void SetUp() override
@@ -106,12 +131,14 @@ protected:
         ON_CALL(server_, getLogger())
             .WillByDefault(testing::ReturnRef(endstone::core::LoggerFactory::getLogger("MetricsBridgeTest")));
         ON_CALL(server_, isPrimaryThread()).WillByDefault(testing::Return(true));
+        ON_CALL(server_, createMetrics(testing::_, testing::_))
+            .WillByDefault([](endstone::Plugin &plugin, int service_id) {
+                return endstone::core::createPluginMetrics(plugin, service_id);
+            });
         scheduler_ = std::make_unique<endstone::core::EndstoneScheduler>(server_);
         ON_CALL(server_, getScheduler()).WillByDefault(testing::ReturnRef(*scheduler_));
         service_manager_ = std::make_unique<endstone::core::EndstoneServiceManager>();
         ON_CALL(server_, getServiceManager()).WillByDefault(testing::ReturnRef(*service_manager_));
-        metrics_ = std::make_unique<endstone::core::EndstoneMetrics>(server_);
-        ON_CALL(server_, getMetrics()).WillByDefault(testing::ReturnRef(*metrics_));
         manager_ = std::make_unique<endstone::core::EndstonePluginManager>(server_);
         ON_CALL(server_, getPluginManager()).WillByDefault(testing::ReturnRef(*manager_));
         manager_->registerLoader(std::make_unique<endstone::core::CppPluginLoader>(server_));
@@ -137,7 +164,6 @@ protected:
             manager_->clearPlugins();
         }
         manager_.reset();
-        metrics_.reset();
         scheduler_.reset();
         service_manager_.reset();
         plugin_ = nullptr;
@@ -146,15 +172,9 @@ protected:
     testing::NiceMock<MockServer> server_;
     std::unique_ptr<endstone::core::EndstoneScheduler> scheduler_;
     std::unique_ptr<endstone::core::EndstoneServiceManager> service_manager_;
-    std::unique_ptr<endstone::core::EndstoneMetrics> metrics_;
     std::unique_ptr<endstone::core::EndstonePluginManager> manager_;
     endstone::Plugin *plugin_{};
 };
-
-py::object request(const py::handle &chart)
-{
-    return chart.attr("_get_request_json_object")();
-}
 
 TEST_F(MetricsPythonBridgeTest, NativePluginUsesPublicPluginDescription)
 {
@@ -168,61 +188,48 @@ TEST_F(MetricsPythonBridgeTest, NativePluginUsesPublicPluginDescription)
     EXPECT_EQ(object.attr("plugin_description").attr("version").cast<std::string>(), "1.0.0");
 }
 
-TEST_F(MetricsPythonBridgeTest, RegistrationConvertsAllSevenCharts)
+TEST_F(MetricsPythonBridgeTest, MetricsConvertsAllSevenCharts)
 {
     py::gil_scoped_acquire gil;
     PythonMetricsCapture capture;
-    endstone::core::EndstoneMetrics service(server_);
-    auto registration = service.registerPlugin(*plugin_, 12345);
-    ASSERT_TRUE(registration);
-    EXPECT_THROW(registration->addCustomChart(nullptr), std::invalid_argument);
+    Metrics metrics(*plugin_, 12345);
+    EXPECT_THROW(metrics.addCustomChart(nullptr), std::invalid_argument);
 
-    registration->addCustomChart(
-        std::make_unique<endstone::metrics::SimplePie>("simple", [] { return std::optional<std::string>{"native"}; }));
-    registration->addCustomChart(std::make_unique<endstone::metrics::AdvancedPie>(
-        "advanced", [] { return std::optional<endstone::metrics::StringValues>{{{"zero", 0}, {"value", 2}}}; }));
-    registration->addCustomChart(std::make_unique<endstone::metrics::DrilldownPie>("drilldown", [] {
-        return std::optional<endstone::metrics::DrilldownValues>{{{"empty", {}}, {"value", {{"inner", 3}}}}};
-    }));
-    registration->addCustomChart(std::make_unique<endstone::metrics::SimpleBarChart>(
-        "simple_bar", [] { return std::optional<endstone::metrics::StringValues>{{{"first", 1}, {"zero", 0}}}; }));
-    registration->addCustomChart(std::make_unique<endstone::metrics::AdvancedBarChart>("advanced_bar", [] {
-        return std::optional<endstone::metrics::BarValues>{{{"empty", {}}, {"value", {1, 2}}}};
-    }));
-    registration->addCustomChart(std::make_unique<endstone::metrics::SingleLineChart>("single_line", [] { return 4; }));
-    registration->addCustomChart(std::make_unique<endstone::metrics::MultiLineChart>(
-        "multi_line", [] { return std::optional<endstone::metrics::StringValues>{{{"zero", 0}, {"value", -2}}}; }));
+    metrics.addCustomChart(std::make_unique<SimplePie>("simple", [] { return std::optional<std::string>{"native"}; }));
+    metrics.addCustomChart(
+        std::make_unique<AdvancedPie>("advanced", [] { return StringValues{{"zero", 0}, {"value", 2}}; }));
+    metrics.addCustomChart(std::make_unique<DrilldownPie>(
+        "drilldown", [] { return DrilldownValues{{"empty", {}}, {"value", {{"inner", 3}}}}; }));
+    metrics.addCustomChart(
+        std::make_unique<SimpleBarChart>("simple_bar", [] { return StringValues{{"first", 1}, {"zero", 0}}; }));
+    metrics.addCustomChart(
+        std::make_unique<AdvancedBarChart>("advanced_bar", [] { return BarValues{{"empty", {}}, {"value", {1, 2}}}; }));
+    metrics.addCustomChart(std::make_unique<SingleLineChart>("single_line", [] { return 4; }));
+    metrics.addCustomChart(
+        std::make_unique<MultiLineChart>("multi_line", [] { return StringValues{{"zero", 0}, {"value", -2}}; }));
 
     ASSERT_EQ(capture.charts().size(), 7);
     EXPECT_EQ(request(capture.charts()[0])["chartId"].cast<std::string>(), "simple");
     EXPECT_EQ(request(capture.charts()[0])["data"]["value"].cast<std::string>(), "native");
-    EXPECT_EQ(request(capture.charts()[1])["data"]["values"].cast<endstone::metrics::StringValues>(),
-              (endstone::metrics::StringValues{{"value", 2}}));
-    EXPECT_EQ(request(capture.charts()[2])["data"]["values"].cast<endstone::metrics::DrilldownValues>(),
-              (endstone::metrics::DrilldownValues{{"value", {{"inner", 3}}}}));
-    EXPECT_EQ(request(capture.charts()[3])["data"]["values"].cast<endstone::metrics::BarValues>(),
-              (endstone::metrics::BarValues{{"first", {1}}, {"zero", {0}}}));
-    EXPECT_EQ(request(capture.charts()[4])["data"]["values"].cast<endstone::metrics::BarValues>(),
-              (endstone::metrics::BarValues{{"value", {1, 2}}}));
+    EXPECT_EQ(request(capture.charts()[1])["data"]["values"].cast<StringValues>(), (StringValues{{"value", 2}}));
+    EXPECT_EQ(request(capture.charts()[2])["data"]["values"].cast<DrilldownValues>(),
+              (DrilldownValues{{"value", {{"inner", 3}}}}));
+    EXPECT_EQ(request(capture.charts()[3])["data"]["values"].cast<BarValues>(),
+              (BarValues{{"first", {1}}, {"zero", {0}}}));
+    EXPECT_EQ(request(capture.charts()[4])["data"]["values"].cast<BarValues>(), (BarValues{{"value", {1, 2}}}));
     EXPECT_EQ(request(capture.charts()[5])["data"]["value"].cast<int>(), 4);
-    EXPECT_EQ(request(capture.charts()[6])["data"]["values"].cast<endstone::metrics::StringValues>(),
-              (endstone::metrics::StringValues{{"value", -2}}));
-
-    service.shutdown();
+    EXPECT_EQ(request(capture.charts()[6])["data"]["values"].cast<StringValues>(), (StringValues{{"value", -2}}));
 }
 
-TEST_F(MetricsPythonBridgeTest, RegistrationPreservesEmptyAndExceptionSemantics)
+TEST_F(MetricsPythonBridgeTest, MetricsPreservesEmptyAndExceptionSemantics)
 {
     py::gil_scoped_acquire gil;
     PythonMetricsCapture capture;
-    endstone::core::EndstoneMetrics service(server_);
-    auto registration = service.registerPlugin(*plugin_, 12346);
+    Metrics metrics(*plugin_, 12346);
 
-    registration->addCustomChart(
-        std::make_unique<endstone::metrics::SimplePie>("empty", [] { return std::optional<std::string>{}; }));
-    registration->addCustomChart(std::make_unique<endstone::metrics::AdvancedPie>(
-        "zero", [] { return std::optional<endstone::metrics::StringValues>{{{"zero", 0}}}; }));
-    registration->addCustomChart(std::make_unique<endstone::metrics::SimplePie>(
+    metrics.addCustomChart(std::make_unique<SimplePie>("empty", [] { return std::optional<std::string>{}; }));
+    metrics.addCustomChart(std::make_unique<AdvancedPie>("zero", [] { return StringValues{{"zero", 0}}; }));
+    metrics.addCustomChart(std::make_unique<SimplePie>(
         "throwing", []() -> std::optional<std::string> { throw std::runtime_error("callback failed"); }));
 
     ASSERT_EQ(capture.charts().size(), 3);
@@ -230,96 +237,41 @@ TEST_F(MetricsPythonBridgeTest, RegistrationPreservesEmptyAndExceptionSemantics)
     EXPECT_TRUE(request(capture.charts()[1]).is_none());
     EXPECT_THROW(request(capture.charts()[2]), py::error_already_set);
     PyErr_Clear();
-    service.shutdown();
 }
 
 TEST_F(MetricsPythonBridgeTest, ShutdownIsIdempotentAndReleasesCallbackCaptures)
 {
     py::gil_scoped_acquire gil;
     PythonMetricsCapture capture;
-    endstone::core::EndstoneMetrics service(server_);
-    auto registration = service.registerPlugin(*plugin_, 12347);
+    Metrics metrics(*plugin_, 12347);
     auto state = std::make_shared<int>(1);
-    std::weak_ptr<int> weak = state;
-    registration->addCustomChart(
-        std::make_unique<endstone::metrics::SimplePie>("lifetime", [state] { return std::to_string(*state); }));
-    state.reset();
-    EXPECT_FALSE(weak.expired());
+    const std::weak_ptr<int> observer = state;
+    metrics.addCustomChart(
+        std::make_unique<SimplePie>("lifetime", [state = std::move(state)] { return std::to_string(*state); }));
+    EXPECT_FALSE(observer.expired());
 
-    registration->shutdown();
-    registration->shutdown();
-    EXPECT_FALSE(registration->isActive());
-    EXPECT_TRUE(weak.expired());
-    EXPECT_THROW(registration->addCustomChart(std::make_unique<endstone::metrics::SimplePie>(
-                     "late", [] { return std::optional<std::string>{"late"}; })),
-                 std::logic_error);
-    service.shutdown();
+    metrics.shutdown();
+    metrics.shutdown();
+
+    EXPECT_TRUE(observer.expired());
+    EXPECT_THROW(
+        metrics.addCustomChart(std::make_unique<SimplePie>("late", [] { return std::optional<std::string>{"late"}; })),
+        std::logic_error);
 }
 
-TEST_F(MetricsPythonBridgeTest, RetainedHandleIsInertAfterServiceDestruction)
+TEST_F(MetricsPythonBridgeTest, DestroyingMetricsReleasesCallbackCaptures)
 {
     py::gil_scoped_acquire gil;
     PythonMetricsCapture capture;
-    std::shared_ptr<endstone::metrics::MetricsRegistration> registration;
+    auto state = std::make_shared<int>(1);
+    const std::weak_ptr<int> observer = state;
     {
-        endstone::core::EndstoneMetrics service(server_);
-        registration = service.registerPlugin(*plugin_, 12351);
-        ASSERT_TRUE(registration->isActive());
+        Metrics metrics(*plugin_, 12348);
+        metrics.addCustomChart(
+            std::make_unique<SimplePie>("lifetime", [state = std::move(state)] { return std::to_string(*state); }));
+        EXPECT_FALSE(observer.expired());
     }
-
-    EXPECT_FALSE(registration->isActive());
-    EXPECT_THROW(registration->addCustomChart(
-                     std::make_unique<endstone::metrics::SimplePie>("late", [] { return std::string{"late"}; })),
-                 std::logic_error);
-}
-
-TEST_F(MetricsPythonBridgeTest, RegistrationRejectsInvalidOwnersIdsDuplicatesAndOffThreadCalls)
-{
-    py::gil_scoped_acquire gil;
-    PythonMetricsCapture capture;
-    endstone::core::EndstoneMetrics service(server_);
-
-    EXPECT_THROW((void)service.registerPlugin(*plugin_, 0), std::invalid_argument);
-    MockPlugin disabled_owner;
-    EXPECT_THROW((void)service.registerPlugin(disabled_owner, 12348), std::logic_error);
-
-    auto registration = service.registerPlugin(*plugin_, 12348);
-    ASSERT_TRUE(registration);
-    EXPECT_THROW((void)service.registerPlugin(*plugin_, 12348), std::logic_error);
-    EXPECT_THROW((void)service.registerPlugin(*plugin_, 54321), std::logic_error);
-
-    ON_CALL(server_, isPrimaryThread()).WillByDefault(testing::Return(false));
-    EXPECT_THROW((void)service.registerPlugin(*plugin_, 12349), std::logic_error);
-    service.shutdown();
-}
-
-TEST_F(MetricsPythonBridgeTest, ServiceShutdownAndPluginShutdownRetireRetainedHandles)
-{
-    py::gil_scoped_acquire gil;
-    PythonMetricsCapture capture;
-    endstone::core::EndstoneMetrics service(server_);
-    auto registration = service.registerPlugin(*plugin_, 12350);
-    ASSERT_TRUE(registration->isActive());
-
-    service.unregisterPlugin(*plugin_);
-    EXPECT_FALSE(registration->isActive());
-
-    EXPECT_THROW(registration->addCustomChart(std::make_unique<endstone::metrics::SimplePie>(
-                     "late", [] { return std::optional<std::string>{"late"}; })),
-                 std::logic_error);
-    service.shutdown();
-}
-
-TEST_F(MetricsPythonBridgeTest, LoaderDisableRetiresRegistrationBeforePluginUnload)
-{
-    PythonMetricsCapture capture;
-    auto registration = metrics_->registerPlugin(*plugin_, 12351);
-    ASSERT_TRUE(registration->isActive());
-
-    plugin_->getPluginLoader().disablePlugin(*plugin_);
-
-    EXPECT_FALSE(plugin_->isEnabled());
-    EXPECT_FALSE(registration->isActive());
+    EXPECT_TRUE(observer.expired());
 }
 
 TEST(MetricsPythonLifecycleTest, PythonMetricsShutdownCancelsAndDetachesWithoutWaiting)

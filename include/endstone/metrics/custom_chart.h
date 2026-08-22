@@ -24,6 +24,7 @@
 #include <vector>
 
 namespace endstone::metrics {
+
 using StringValues = std::unordered_map<std::string, int>;
 using DrilldownValues = std::unordered_map<std::string, StringValues>;
 using BarValues = std::unordered_map<std::string, std::vector<int>>;
@@ -37,45 +38,17 @@ using SimpleBarChartCallback = std::function<std::optional<StringValues>()>;
 using AdvancedBarChartCallback = std::function<std::optional<BarValues>()>;
 using SingleLineChartCallback = std::function<int()>;
 using MultiLineChartCallback = std::function<std::optional<StringValues>()>;
-using CustomChartCallback = std::function<std::optional<ChartData>()>;
-
-class CustomChart;
-
-namespace detail {
-class ChartVisitor {
-public:
-    virtual ~ChartVisitor() = default;
-
-    virtual void visitSimplePie(std::string chart_id, SimplePieCallback callback) = 0;
-    virtual void visitAdvancedPie(std::string chart_id, AdvancedPieCallback callback) = 0;
-    virtual void visitDrilldownPie(std::string chart_id, DrilldownPieCallback callback) = 0;
-    virtual void visitSimpleBarChart(std::string chart_id, SimpleBarChartCallback callback) = 0;
-    virtual void visitAdvancedBarChart(std::string chart_id, AdvancedBarChartCallback callback) = 0;
-    virtual void visitSingleLineChart(std::string chart_id, SingleLineChartCallback callback) = 0;
-    virtual void visitMultiLineChart(std::string chart_id, MultiLineChartCallback callback) = 0;
-    virtual void visitCustomChart(std::string chart_id, CustomChartCallback callback) = 0;
-};
-
-void dispatchChart(CustomChart &chart, ChartVisitor &visitor);
-}  // namespace detail
 
 /**
- * Represents a custom metrics chart.
- *
- * Chart callbacks are collected on the primary server thread. Empty callback results omit the chart.
+ * Represents a custom chart.
  */
 class CustomChart {
 public:
-    using StringValues = endstone::metrics::StringValues;
-    using DrilldownValues = endstone::metrics::DrilldownValues;
-    using BarValues = endstone::metrics::BarValues;
-    using ChartValue = endstone::metrics::ChartValue;
-    using ChartData = endstone::metrics::ChartData;
-
     /**
-     * Creates a chart with the supplied bStats identifier.
+     * Creates a chart with the given bStats chart id.
      *
-     * @throws std::invalid_argument if chart_id is empty.
+     * @param chart_id the id of the chart
+     * @throws std::invalid_argument if chart_id is empty
      */
     explicit CustomChart(std::string chart_id) : chart_id_(std::move(chart_id))
     {
@@ -86,24 +59,27 @@ public:
 
     CustomChart(const CustomChart &) = delete;
     CustomChart &operator=(const CustomChart &) = delete;
-    CustomChart(CustomChart &&) noexcept = default;
-    CustomChart &operator=(CustomChart &&) noexcept = default;
-
+    CustomChart(CustomChart &&) = delete;
+    CustomChart &operator=(CustomChart &&) = delete;
     virtual ~CustomChart() = default;
 
+    /**
+     * Gets the id of this chart.
+     *
+     * @return the id of this chart
+     */
     [[nodiscard]] const std::string &getChartId() const noexcept { return chart_id_; }
 
-protected:
-    virtual std::optional<ChartData> getChartData() = 0;
+    /**
+     * Gets the data for this chart.
+     *
+     * This is called on the primary server thread. Returning no value omits the chart from the submission.
+     *
+     * @return the chart data, or no value to skip this chart
+     */
+    [[nodiscard]] virtual std::optional<ChartData> getChartData() = 0;
 
 private:
-    friend void detail::dispatchChart(CustomChart &, detail::ChartVisitor &);
-
-    virtual void dispatch(detail::ChartVisitor &visitor)
-    {
-        visitor.visitCustomChart(getChartId(), [this] { return getChartData(); });
-    }
-
     std::string chart_id_;
 };
 }  // namespace endstone::metrics

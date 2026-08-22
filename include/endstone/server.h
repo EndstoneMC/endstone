@@ -52,11 +52,12 @@ class IRegistry;
 class Level;
 class Scheduler;
 class Player;
+class Plugin;
 class PluginCommand;
 class PluginManager;
 
 namespace metrics {
-class MetricsService;
+class MetricsBase;
 }
 
 template <typename T>
@@ -469,11 +470,15 @@ public:
     [[nodiscard]] virtual MapView &createMap(const NotNull<Dimension> &dimension) const = 0;
 
     /**
-     * Gets the server-owned metrics registration service.
+     * Creates the backend for a plugin's metrics.
      *
-     * @return metrics service associated with this server
+     * Plugins construct an `endstone::metrics::Metrics` instead of calling this.
+     *
+     * @param plugin the plugin the metrics belong to
+     * @param service_id the id of the service, found at https://bstats.org/what-is-my-plugin-id
+     * @return the metrics backend
      */
-    [[nodiscard]] virtual metrics::MetricsService &getMetrics() const = 0;
+    [[nodiscard]] virtual std::unique_ptr<metrics::MetricsBase> createMetrics(Plugin &plugin, int service_id) const = 0;
 
     /**
      * Used for all administrative messages, such as an operator using a command.

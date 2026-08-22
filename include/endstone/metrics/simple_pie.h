@@ -5,10 +5,15 @@
 // You may obtain a copy of the License at
 //
 //     http://www.apache.org/licenses/LICENSE-2.0
+//
+// Unless required by applicable law or agreed to in writing, software
+// distributed under the License is distributed on an "AS IS" BASIS,
+// WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+// See the License for the specific language governing permissions and
+// limitations under the License.
 
 #pragma once
 
-#include <functional>
 #include <optional>
 #include <string>
 #include <utility>
@@ -17,20 +22,24 @@
 
 namespace endstone::metrics {
 
-/** A bStats pie chart with one value. */
+/** A bStats pie chart with a single value. */
 class SimplePie : public CustomChart {
 public:
-    using ValueCallback = SimplePieCallback;
-
-    SimplePie(std::string chart_id, ValueCallback get_value)
+    SimplePie(std::string chart_id, SimplePieCallback get_value)
         : CustomChart(std::move(chart_id)), get_value_(std::move(get_value))
     {
     }
 
-private:
-    std::optional<ChartData> getChartData() override { return std::nullopt; }
-    void dispatch(detail::ChartVisitor &visitor) override { visitor.visitSimplePie(getChartId(), get_value_); }
+    [[nodiscard]] std::optional<ChartData> getChartData() override
+    {
+        const auto value = get_value_();
+        if (!value || value->empty()) {
+            return std::nullopt;
+        }
+        return ChartData{{"value", *value}};
+    }
 
-    ValueCallback get_value_;
+private:
+    SimplePieCallback get_value_;
 };
 }  // namespace endstone::metrics

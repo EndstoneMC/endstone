@@ -14,7 +14,7 @@ def test_metrics_public_headers_do_not_leak_backend_types() -> None:
         assert not any(token in text for token in forbidden), header
 
 
-def test_server_exposes_the_metrics_service() -> None:
+def test_server_exposes_the_metrics_factory() -> None:
     server_header = (ROOT / "include" / "endstone" / "server.h").read_text(encoding="utf-8")
-    assert "getMetrics" in server_header
-    assert "MetricsService" in server_header
+    assert "createMetrics" in server_header
+    assert "MetricsBase" in server_header
