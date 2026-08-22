@@ -124,6 +124,8 @@ _Represents a button with text and an optional icon._
 | class | [**Image**](classendstone_1_1Image.md) <br>_Represents an RGBA image._  |
 | class | [**Input**](classendstone_1_1Input.md) <br>_Represents a movement input applied to a player._  |
 | class | [**Inventory**](classendstone_1_1Inventory.md) <br>_Interface to the various inventories._  |
+| class | [**InventoryEvent**](classendstone_1_1InventoryEvent.md) <br>_Represents a player related inventory event._  |
+| class | [**InventoryInteractEvent**](classendstone_1_1InventoryInteractEvent.md) <br>_An abstract base class for events that describe an interaction between a_ [_**Player**_](classendstone_1_1Player.md) _and the contents of an_[_**Inventory**_](classendstone_1_1Inventory.md) _._ |
 | class | [**IpBanEntry**](classendstone_1_1IpBanEntry.md) <br>_Represents an entry for a banned IP address._  |
 | class | [**IpBanList**](classendstone_1_1IpBanList.md) <br>_Represents a ban list, containing banned IP addresses._  |
 | class | [**Item**](classendstone_1_1Item.md) <br>_Represents a dropped item that can be picked up by players._  |
@@ -197,7 +199,6 @@ _Represents a button with text and an optional icon._
 | class | [**PlayerPickupItemEvent**](classendstone_1_1PlayerPickupItemEvent.md) <br>_Called when a player picks an item up from the ground._  |
 | class | [**PlayerPortalEvent**](classendstone_1_1PlayerPortalEvent.md) <br>_Called when a player is about to teleport because it is in contact with a portal._  |
 | class | [**PlayerQuitEvent**](classendstone_1_1PlayerQuitEvent.md) <br>_Called when a player leaves a server._  |
-| class | [**PlayerRecipeBookClickEvent**](classendstone_1_1PlayerRecipeBookClickEvent.md) <br>_Called when a player clicks a recipe in the recipe book._  |
 | class | [**PlayerRecipeBookSettingsChangeEvent**](classendstone_1_1PlayerRecipeBookSettingsChangeEvent.md) <br>_Called when a player changes recipe book settings._  |
 | class | [**PlayerRespawnEvent**](classendstone_1_1PlayerRespawnEvent.md) <br>_Called when a player respawns._  |
 | class | [**PlayerRiptideEvent**](classendstone_1_1PlayerRiptideEvent.md) <br>_Called when a player activates the riptide enchantment, using their trident to propel them through the air._  |

@@ -5534,7 +5534,6 @@ and this project adheres to <a href="https://semver.org/spec/v2.0.0.html">Semant
 <li><code>PlayerBucketActorEvent</code> and <code>PlayerShearActorEvent</code>, reporting the <code>actor</code>, the <code>original_bucket</code> or <code>item</code> used and the <code>hand</code>.</li>
 <li><code>PlayerRecipeBookSettingsChangeEvent</code>, reporting <code>recipe_book_type</code>, <code>is_open</code> and <code>is_filtering</code>.</li>
 <li><code>PlayerCraftItemEvent</code> for crafting from a grid or the recipe book, reporting the crafted <code>item</code>, the <code>recipe_id</code> and the <code>amount</code> of crafts.</li>
-<li><code>PlayerRecipeBookClickEvent</code> for crafting straight from the recipe book, reporting the <code>recipe</code> identifier and a writable <code>amount</code>. Cancelling it suppresses the following <code>PlayerCraftItemEvent</code> too.</li>
 <li><code>PlayerEditBookEvent</code> for editing a page of a book and quill or signing it, reporting the book metadata before and after the edit, the inventory <code>slot</code>, and whether the book is being signed. <code>new_book_meta</code> and <code>is_signing</code> are writable.</li>
 <li><code>PlayerSetSpawnEvent</code> for a player's respawn point being set, reporting the <code>cause</code> (<code>BED</code>, <code>RESPAWN_ANCHOR</code>, <code>COMMAND</code>, <code>PLUGIN</code> or <code>UNKNOWN</code>) and a writable <code>location</code>. Cancelling leaves the respawn point untouched, though <code>/spawnpoint</code> still reports success and a respawn anchor still plays its sound. It does not fire when Bedrock clears a respawn point, so <code>/clearspawnpoint</code> and breaking the bed are both silent.</li>
 <li><code>PlayerToggleSneakEvent</code>, <code>PlayerToggleSprintEvent</code>, <code>PlayerToggleFlightEvent</code> and <code>PlayerToggleCrawlEvent</code>, carrying the new state in <code>is_sneaking</code>, <code>is_sprinting</code>, <code>is_flying</code> and <code>is_crawling</code>.</li>
@@ -5546,6 +5545,7 @@ and this project adheres to <a href="https://semver.org/spec/v2.0.0.html">Semant
 <li><code>ActorChangeBlockEvent</code> for blocks changed by mob behaviour, such as creeper explosions, endermen, ravagers and door-breaking zombies.</li>
 <li><code>PlayerRespawnEvent.respawn_reason</code> (<code>RespawnReason.DEATH</code> / <code>RespawnReason.END_PORTAL</code>).</li>
 <li><code>ActorExplodeEvent::setBlockList()</code> and <code>BlockExplodeEvent::setBlockList()</code>, with the <code>BlockList</code> alias made public.</li>
+<li><code>InventoryEvent</code>, a base class for inventory-related events, reporting the primary <code>inventory</code> involved, and the cancellable <code>InventoryInteractEvent</code> under it, which adds the <code>who_clicked</code> player.</li>
 <li>Support for custom Python events with optional cancellation.</li>
 </ul>
 <h4 id="actors-and-players">Actors and players<a class="headerlink" href="#actors-and-players" title="Permanent link">&para;</a></h4>

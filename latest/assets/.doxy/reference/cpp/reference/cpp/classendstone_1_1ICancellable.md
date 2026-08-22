@@ -16,7 +16,7 @@ _Interface for events that may be cancelled by a plugin or the server._
 
 
 
-Inherited by the following classes: [endstone::Cancellable](classendstone_1_1Cancellable.md),  [endstone::Cancellable](classendstone_1_1Cancellable.md),  [endstone::Cancellable](classendstone_1_1Cancellable.md),  [endstone::Cancellable](classendstone_1_1Cancellable.md),  [endstone::Cancellable](classendstone_1_1Cancellable.md),  [endstone::Cancellable](classendstone_1_1Cancellable.md),  [endstone::Cancellable](classendstone_1_1Cancellable.md),  [endstone::Cancellable](classendstone_1_1Cancellable.md)
+Inherited by the following classes: [endstone::Cancellable](classendstone_1_1Cancellable.md),  [endstone::Cancellable](classendstone_1_1Cancellable.md),  [endstone::Cancellable](classendstone_1_1Cancellable.md),  [endstone::Cancellable](classendstone_1_1Cancellable.md),  [endstone::Cancellable](classendstone_1_1Cancellable.md),  [endstone::Cancellable](classendstone_1_1Cancellable.md),  [endstone::Cancellable](classendstone_1_1Cancellable.md),  [endstone::Cancellable](classendstone_1_1Cancellable.md),  [endstone::Cancellable](classendstone_1_1Cancellable.md)
 
 
 

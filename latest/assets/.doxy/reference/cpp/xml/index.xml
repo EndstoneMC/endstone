@@ -1382,6 +1382,16 @@
     <member refid="classendstone_1_1Inventory_1a367187fb26cad50974f6a01f0df9e86c" kind="function"><name>clear</name></member>
     <member refid="classendstone_1_1Inventory_1afc114b9f2e5c05fb1e1388963b8c86e8" kind="function"><name>clear</name></member>
   </compound>
+  <compound refid="classendstone_1_1InventoryEvent" kind="class"><name>endstone::InventoryEvent</name>
+    <member refid="classendstone_1_1InventoryEvent_1ae9ef316bace42b6237891933053fc506" kind="variable"><name>inventory_</name></member>
+    <member refid="classendstone_1_1InventoryEvent_1a5e7d601191283f7541f0620a81b5f82a" kind="function"><name>InventoryEvent</name></member>
+    <member refid="classendstone_1_1InventoryEvent_1ae4d05ecd0e9f81e263ac102d48cdfcf6" kind="function"><name>getInventory</name></member>
+  </compound>
+  <compound refid="classendstone_1_1InventoryInteractEvent" kind="class"><name>endstone::InventoryInteractEvent</name>
+    <member refid="classendstone_1_1InventoryInteractEvent_1a8eddeba8857db9efdb7b180f6c5bdf20" kind="variable"><name>who_clicked_</name></member>
+    <member refid="classendstone_1_1InventoryInteractEvent_1ab4fa458385223dd5cb641e41354a57a5" kind="function"><name>InventoryInteractEvent</name></member>
+    <member refid="classendstone_1_1InventoryInteractEvent_1a525b19538457b9e2b9a36191243cf8d8" kind="function"><name>getWhoClicked</name></member>
+  </compound>
   <compound refid="classendstone_1_1IpBanEntry" kind="class"><name>endstone::IpBanEntry</name>
     <member refid="classendstone_1_1IpBanEntry_1a5d1d45ba5dfa2993909e03d945e33125" kind="variable"><name>address_</name></member>
     <member refid="classendstone_1_1IpBanEntry_1a0268afb79ea778f4a19d51f268bcb656" kind="function"><name>IpBanEntry</name></member>
@@ -2352,15 +2362,6 @@
     <member refid="classendstone_1_1PlayerQuitEvent_1aebed8d5f4f30ea56823e599880b6af84" kind="function"><name>PlayerQuitEvent</name></member>
     <member refid="classendstone_1_1PlayerQuitEvent_1a1dc49d81c8a458e1a45d8d2c33f03f15" kind="function"><name>getQuitMessage</name></member>
     <member refid="classendstone_1_1PlayerQuitEvent_1a33ac4f643cbabfbaec170ba5ef88551a" kind="function"><name>setQuitMessage</name></member>
-  </compound>
-  <compound refid="classendstone_1_1PlayerRecipeBookClickEvent" kind="class"><name>endstone::PlayerRecipeBookClickEvent</name>
-    <member refid="classendstone_1_1PlayerRecipeBookClickEvent_1a3f294c49e9615c3f4e30c3f7c32a184a" kind="variable"><name>recipe_</name></member>
-    <member refid="classendstone_1_1PlayerRecipeBookClickEvent_1a8fdff0aca18ca1220ac5cdf316c5e105" kind="variable"><name>amount_</name></member>
-    <member refid="classendstone_1_1PlayerRecipeBookClickEvent_1ac8369533e374a734dda5edd17923c0eb" kind="function"><name>ENDSTONE_EVENT</name></member>
-    <member refid="classendstone_1_1PlayerRecipeBookClickEvent_1a55bd221fccec8c2a3e27bd686dab6590" kind="function"><name>PlayerRecipeBookClickEvent</name></member>
-    <member refid="classendstone_1_1PlayerRecipeBookClickEvent_1a9077d11f8f6683293e4c15980d485e64" kind="function"><name>getRecipe</name></member>
-    <member refid="classendstone_1_1PlayerRecipeBookClickEvent_1a1a82063a5d6f0fe9fe73ac4b706eba70" kind="function"><name>getAmount</name></member>
-    <member refid="classendstone_1_1PlayerRecipeBookClickEvent_1a1353797221774a6dc2b3323976a305e6" kind="function"><name>setAmount</name></member>
   </compound>
   <compound refid="classendstone_1_1PlayerRecipeBookSettingsChangeEvent" kind="class"><name>endstone::PlayerRecipeBookSettingsChangeEvent</name>
     <member refid="classendstone_1_1PlayerRecipeBookSettingsChangeEvent_1ab5709b487202d4c52eacf9e8b54ce67f" kind="enum"><name>RecipeBookType</name></member>
@@ -3493,6 +3494,10 @@
   </compound>
   <compound refid="handler__list_8h" kind="file"><name>handler_list.h</name>
   </compound>
+  <compound refid="inventory__event_8h" kind="file"><name>inventory_event.h</name>
+  </compound>
+  <compound refid="inventory__interact__event_8h" kind="file"><name>inventory_interact_event.h</name>
+  </compound>
   <compound refid="dimension__event_8h" kind="file"><name>dimension_event.h</name>
   </compound>
   <compound refid="level__event_8h" kind="file"><name>level_event.h</name>
@@ -3558,8 +3563,6 @@
   <compound refid="player__portal__event_8h" kind="file"><name>player_portal_event.h</name>
   </compound>
   <compound refid="player__quit__event_8h" kind="file"><name>player_quit_event.h</name>
-  </compound>
-  <compound refid="player__recipe__book__click__event_8h" kind="file"><name>player_recipe_book_click_event.h</name>
   </compound>
   <compound refid="player__recipe__book__settings__change__event_8h" kind="file"><name>player_recipe_book_settings_change_event.h</name>
   </compound>
@@ -3834,6 +3837,8 @@
   <compound refid="dir_0fd3b458603af3963ebb9c312a9238ec" kind="dir"><name>include/endstone/form</name>
   </compound>
   <compound refid="dir_d44c64559bbebec7f509842c48db8b23" kind="dir"><name>include</name>
+  </compound>
+  <compound refid="dir_d762bdddaaf949e56af1361197bdc822" kind="dir"><name>include/endstone/event/inventory</name>
   </compound>
   <compound refid="dir_d1e84b530b14f41e8b6f5ec1b5dee76c" kind="dir"><name>include/endstone/inventory</name>
   </compound>
