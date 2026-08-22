@@ -1,14 +1,12 @@
-import abc
 import asyncio
-import collections.abc
 import concurrent.futures
 import gzip
 import json
 import logging
 import random
-import typing
 import uuid
-from typing import final
+from abc import ABC, abstractmethod
+from typing import Any, Callable, Dict, Set, final
 
 import aiohttp
 
@@ -16,7 +14,7 @@ import endstone.asyncio
 from endstone._python.metrics import CustomChart
 
 
-class MetricsBase(abc.ABC):
+class MetricsBase(ABC):
     """
     The MetricsBase class to handle sending metrics to bStats.
 
@@ -54,8 +52,8 @@ class MetricsBase(abc.ABC):
         self._log_errors = log_errors
         self._log_sent_data = log_sent_data
         self._log_response_status_text = log_response_status_text
-        self._custom_charts: set[CustomChart] = set()
-        self._future: concurrent.futures.Future[typing.Any] | None = None
+        self._custom_charts: Set[CustomChart] = set()
+        self._future: concurrent.futures.Future[Any] | None = None
 
         if self.enabled:
             self._future = endstone.asyncio.submit(self._start_submitting())
@@ -69,43 +67,43 @@ class MetricsBase(abc.ABC):
                 self._future = None
 
     @property
-    @abc.abstractmethod
+    @abstractmethod
     def enabled(self) -> bool:
         """
         Whether data sending is enabled.
         """
 
     @property
-    @abc.abstractmethod
+    @abstractmethod
     def service_enabled(self) -> bool:
         """
         Whether the service is enabled.
         """
 
-    def append_platform_data(self, data: dict[str, typing.Any]) -> None:
+    def append_platform_data(self, data: Dict[str, Any]) -> None:
         """
         Append platform-specific data.
 
         Args:
-            data (dict[str, typing.Any]): The data to append platform-specific values to.
+            data (Dict[str, Any]): The data to append platform-specific values to.
         """
         pass
 
-    def append_service_data(self, data: dict[str, typing.Any]) -> None:
+    def append_service_data(self, data: Dict[str, Any]) -> None:
         """
         Append service-specific data.
 
         Args:
-            data (dict[str, typing.Any]): The data to append service-specific values to.
+            data (Dict[str, Any]): The data to append service-specific values to.
         """
         pass
 
-    def submit_task(self, task: collections.abc.Callable[[], None]) -> None:
+    def submit_task(self, task: Callable[[], None]) -> None:
         """
         Submit the given task
 
         Args:
-            task (collections.abc.Callable[[], None]): The task to be submitted.
+            task (Callable[[], None]): The task to be submitted.
         """
         task()
 
@@ -164,10 +162,10 @@ class MetricsBase(abc.ABC):
         Constructs the JSON data and sends it to bStats.
         """
 
-        platform_data: dict[str, typing.Any] = {}
+        platform_data: dict[str, Any] = {}
         self.append_platform_data(platform_data)
 
-        service_data: dict[str, typing.Any] = {}
+        service_data: dict[str, Any] = {}
         self.append_service_data(service_data)
 
         chart_data = []
@@ -189,7 +187,7 @@ class MetricsBase(abc.ABC):
         platform_data["service"] = service_data
         platform_data["serverUUID"] = str(self._server_uuid)
 
-        def send_callback(fut: concurrent.futures.Future[typing.Any]) -> None:
+        def send_callback(fut: concurrent.futures.Future[Any]) -> None:
             try:
                 fut.result()
             except Exception as e:
@@ -200,7 +198,7 @@ class MetricsBase(abc.ABC):
         future.add_done_callback(send_callback)
 
     @final
-    async def _send_data(self, data: dict[str, typing.Any]) -> None:
+    async def _send_data(self, data: Dict[str, Any]) -> None:
         """
         Sends the JSON data to bStats.
 

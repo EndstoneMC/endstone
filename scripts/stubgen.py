@@ -41,16 +41,15 @@ ALIASES = {
     "numpy.ndarray": "numpy.typing.NDArray",
 }
 
-# The engine only rewrites dotted names, so a bare one reaches the stub with no import behind it.
-# pybind11_json calls its caster's type `json`, and the grafted metrics source annotates with
-# `Plugin`. Rewrite both here, naming the JSON shapes the aliases stubgen.pat declares; the
-# composites come first so `dict[str, json]` does not decay to a bare JsonValue. simplify() is the
-# single hook that sees type text - annotations, bases and signatures, never docstrings or literals.
+# The engine only rewrites dotted names, so a bare one reaches the stub with no import behind it, and
+# pybind11_json calls its caster's type `json`. Rewrite it here, naming the JSON shapes the aliases
+# stubgen.pat declares; the composites come first so `dict[str, json]` does not decay to a bare
+# JsonValue. simplify() is the single hook that sees type text - annotations, bases and signatures,
+# never docstrings or literals.
 _REWRITES = [
     (re.compile(r"(?:dict|collections\.abc\.Mapping)\[str, json\]"), "endstone.JsonObject"),
     (re.compile(r"(?:list|collections\.abc\.Sequence)\[json\]"), "endstone.JsonArray"),
     (re.compile(r"(?<![\w.])json(?![\w.])"), "endstone.JsonValue"),
-    (re.compile(r"(?<![\w.])Plugin(?![\w.])"), "endstone.plugin.Plugin"),
 ]
 
 # A namespaced value the pattern file did not claim, i.e. an Identifier constant
@@ -58,13 +57,10 @@ _REWRITES = [
 _UNTYPED_CONST_RE = re.compile(r"""^ +[A-Z][A-Z0-9_]*(: str)? = (['"])[\w.]+:[\w.]+\2$""", re.MULTILINE)
 
 # The only source files griffe needs statically: the extension is inspected, and
-# everything else that reaches the stubs is hand-written in these.
+# everything else that reaches the stubs is hand-written in these three.
 STAGED_SOURCES = [
     Path("__init__.py"),
     Path("event/__init__.py"),
-    Path("metrics/__init__.py"),
-    Path("metrics/base.py"),
-    Path("metrics/config.py"),
     Path("plugin/__init__.py"),
 ]
 
@@ -198,10 +194,6 @@ def main() -> None:
     plugin.docstring = binding.docstring
     plugin.bases = []
     top.set_member("plugin.Plugin", plugin)
-    # The metrics transport stays in Python; only the charts are bound.
-    for name in ("MetricsBase", "MetricsConfig", "Metrics"):
-        member = package.get_member(f"metrics.{name}")
-        top.set_member(f"metrics.{name}", member.final_target if member.is_alias else member)
 
     # Present the extension as the package it is re-exported from; Object.path is
     # derived from the parent chain, so this renames the whole tree.

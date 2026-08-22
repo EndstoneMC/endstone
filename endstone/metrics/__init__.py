@@ -1,7 +1,6 @@
-import collections.abc
 import platform
-import typing
 from pathlib import Path
+from typing import Any, Callable, Dict
 
 import lazy_loader as lazy
 import psutil
@@ -10,8 +9,8 @@ from endstone._python.metrics import DrilldownPie, SimplePie
 from endstone.plugin import Plugin
 
 from ._arch import host_arch
-from .base import MetricsBase
-from .config import MetricsConfig
+from ._base import MetricsBase
+from ._config import MetricsConfig
 
 
 def _get_python_version() -> dict[str, dict[str, int]]:
@@ -62,12 +61,12 @@ class Metrics(MetricsBase):
     def service_enabled(self) -> bool:
         return self._plugin.is_enabled
 
-    def append_platform_data(self, platform_data: dict[str, typing.Any]) -> None:
+    def append_platform_data(self, platform_data: Dict[str, Any]) -> None:
         """
         Appends platform-specific data to the provided dict.
 
         Args:
-            platform_data (dict[str, typing.Any]): The dict to append data to.
+            platform_data (Dict[str, Any]): The dict to append data to.
         """
         server = self._plugin.server
         platform_data["playerAmount"] = len(server.online_players)
@@ -86,19 +85,19 @@ class Metrics(MetricsBase):
         platform_data["osArch"] = host_arch()
         platform_data["coreCount"] = psutil.cpu_count(logical=False)
 
-    def append_service_data(self, service_data: dict[str, typing.Any]) -> None:
+    def append_service_data(self, service_data: Dict[str, Any]) -> None:
         """
         Appends service-specific data to the provided dict.
 
         Args:
-            service_data (dict[str, typing.Any]): The dict to append data to.
+            service_data (Dict[str, Any]): The dict to append data to.
         """
         description = self._plugin._get_description()
         if description is None:
             raise RuntimeError("Plugin description is not available")
         service_data["pluginVersion"] = description.version
 
-    def submit_task(self, task: collections.abc.Callable[[], None]) -> None:
+    def submit_task(self, task: Callable[[], None]) -> None:
         self._plugin.server.scheduler.run_task(self._plugin, task)
 
     def log_info(self, message: str) -> None:
