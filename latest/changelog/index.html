@@ -2619,6 +2619,8 @@ For latest updates join the chat on
             
                 
             
+                
+            
         </ul>
     </nav>
     
@@ -4071,6 +4073,8 @@ For latest updates join the chat on
     
     <nav class="md-nav" aria-label="Unreleased">
         <ul class="md-nav__list">
+            
+                
             
                 
             
@@ -5679,6 +5683,10 @@ and this project adheres to <a href="https://semver.org/spec/v2.0.0.html">Semant
 <li>Fixed type annotations for <code>Plugin</code> and <code>event_handler</code>.</li>
 <li>Fixed the type stubs so a type checker no longer reports errors on them: <code>__eq__</code>/<code>__ne__</code> take <code>object</code>, in-place operators such as <code>Vector.__iadd__</code> accept everything their binary counterpart does and return <code>Self</code>, an optional callback is typed <code>Callable[...] | None</code>, a skin image is a <code>numpy.typing.NDArray</code>, and <code>Plugin.config</code> is a <code>dict[str, Any]</code>.</li>
 <li>Fixed the NBT bindings hiding what their containers hold: <code>ByteArrayTag(iterable)</code> and <code>IntArrayTag(iterable)</code> take an <code>Iterable[int]</code>, <code>ListTag(iterable)</code> an <code>Iterable[Tag]</code>, <code>CompoundTag(mapping)</code> a <code>dict[str, Tag]</code>, and <code>to_list()</code>/<code>to_dict()</code> return <code>list[Any]</code>/<code>dict[str, Any]</code>.</li>
+</ul>
+<h3 id="security">Security<a class="headerlink" href="#security" title="Permanent link">&para;</a></h3>
+<ul>
+<li>Rate-limited the network ping packet (<code>NetworkStackLatencyPacket</code>, id 115). Bedrock accepts it from a connection that has not logged in yet, and the shipped <code>packetlimitconfig.json</code> left it unbounded, so a single connection could flood it to exhaust the server. On startup Endstone now adds a limit for it to <code>packetlimitconfig.json</code> when one is not already present, leaving any entry you have set yourself untouched.</li>
 </ul>
 <h2 id="0119-2026-08-17"><a href="https://github.com/EndstoneMC/endstone/compare/v0.11.8...v0.11.9">0.11.9</a> - 2026-08-17<a class="headerlink" href="#0119-2026-08-17" title="Permanent link">&para;</a></h2>
 <h3 id="added_1">Added<a class="headerlink" href="#added_1" title="Permanent link">&para;</a></h3>
