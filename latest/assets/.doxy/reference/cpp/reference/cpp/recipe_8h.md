@@ -10,7 +10,11 @@
 
 
 
+* `#include <string>`
+* `#include <vector>`
 * `#include "endstone/inventory/item_stack.h"`
+* `#include "endstone/inventory/recipe_ingredient.h"`
+* `#include "endstone/object.h"`
 
 
 

@@ -506,6 +506,7 @@
 * **RespawnBlocksExplode** ([**endstone::GameRule**](classendstone_1_1GameRule.md))
 * **right\_** ([**endstone::Input**](classendstone_1_1Input.md))
 * **removed\_** ([**endstone::PermissionAttachment**](classendstone_1_1PermissionAttachment.md))
+* **recipe\_** ([**endstone::PlayerCraftItemEvent**](classendstone_1_1PlayerCraftItemEvent.md))
 * **repetitions\_** ([**endstone::PlayerCraftItemEvent**](classendstone_1_1PlayerCraftItemEvent.md))
 * **results\_** ([**endstone::PlayerCraftItemEvent**](classendstone_1_1PlayerCraftItemEvent.md))
 * **recipe\_book\_type\_** ([**endstone::PlayerRecipeBookSettingsChangeEvent**](classendstone_1_1PlayerRecipeBookSettingsChangeEvent.md))

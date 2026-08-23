@@ -1,0 +1,138 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.8" xml:lang="en-US">
+  <compounddef id="classendstone_1_1RecipeIngredient" kind="class" language="C++" prot="public" abstract="yes">
+    <compoundname>endstone::RecipeIngredient</compoundname>
+    <basecompoundref refid="classendstone_1_1Object" prot="public" virt="non-virtual">endstone::Object</basecompoundref>
+    <derivedcompoundref refid="classendstone_1_1ComplexAliasIngredient" prot="public" virt="non-virtual">endstone::ComplexAliasIngredient</derivedcompoundref>
+    <derivedcompoundref refid="classendstone_1_1ExactIngredient" prot="public" virt="non-virtual">endstone::ExactIngredient</derivedcompoundref>
+    <derivedcompoundref refid="classendstone_1_1ItemTagIngredient" prot="public" virt="non-virtual">endstone::ItemTagIngredient</derivedcompoundref>
+    <derivedcompoundref refid="classendstone_1_1ItemTypeIngredient" prot="public" virt="non-virtual">endstone::ItemTypeIngredient</derivedcompoundref>
+    <derivedcompoundref refid="classendstone_1_1MolangIngredient" prot="public" virt="non-virtual">endstone::MolangIngredient</derivedcompoundref>
+    <includes refid="recipe__ingredient_8h" local="no">endstone/inventory/recipe_ingredient.h</includes>
+    <sectiondef kind="public-func">
+      <memberdef kind="function" id="classendstone_1_1RecipeIngredient_1a8f9690a962c133fdea8e4eaad272d5e9" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>endstone::RecipeIngredient::~RecipeIngredient</definition>
+        <argsstring>() override=default</argsstring>
+        <name>~RecipeIngredient</name>
+        <qualifiedname>endstone::RecipeIngredient::~RecipeIngredient</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/inventory/recipe_ingredient.h" line="27" column="5"/>
+      </memberdef>
+      <memberdef kind="function" id="classendstone_1_1RecipeIngredient_1a66b2e4dadf5693b58412099c533fc430" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
+        <type><ref refid="classendstone_1_1Identifier" kindref="compound">bool</ref></type>
+        <definition>virtual bool endstone::RecipeIngredient::test</definition>
+        <argsstring>(const ItemStack &amp;item) const =0</argsstring>
+        <name>test</name>
+        <qualifiedname>endstone::RecipeIngredient::test</qualifiedname>
+        <param>
+          <type><ref refid="classendstone_1_1Identifier" kindref="compound">const</ref> <ref refid="classendstone_1_1ItemStack" kindref="compound">ItemStack</ref> &amp;</type>
+          <declname>item</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/inventory/recipe_ingredient.h" line="29" column="19"/>
+      </memberdef>
+      <memberdef kind="function" id="classendstone_1_1RecipeIngredient_1aca2eaef22d0b028c1ce697c85cf02df1" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
+        <type><ref refid="classendstone_1_1Identifier" kindref="compound">int</ref></type>
+        <definition>virtual int endstone::RecipeIngredient::getCount</definition>
+        <argsstring>() const =0</argsstring>
+        <name>getCount</name>
+        <qualifiedname>endstone::RecipeIngredient::getCount</qualifiedname>
+        <briefdescription>
+<para>Get how many items this ingredient consumes. </para>
+        </briefdescription>
+        <detaileddescription>
+<para>Bedrock records a count on each ingredient where Java repeats the ingredient instead.</para>
+<para><simplesect kind="return"><para>the number of items consumed </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/inventory/recipe_ingredient.h" line="38" column="18"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+<para>Represents a potential item match within a recipe. </para>
+    </briefdescription>
+    <detaileddescription>
+<para>All choices within a recipe must be satisfied for it to be craftable. </para>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="3">
+        <label>endstone::ComplexAliasIngredient</label>
+        <link refid="classendstone_1_1ComplexAliasIngredient"/>
+        <childnode refid="1" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="4">
+        <label>endstone::ExactIngredient</label>
+        <link refid="classendstone_1_1ExactIngredient"/>
+        <childnode refid="1" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="5">
+        <label>endstone::ItemTagIngredient</label>
+        <link refid="classendstone_1_1ItemTagIngredient"/>
+        <childnode refid="1" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="6">
+        <label>endstone::ItemTypeIngredient</label>
+        <link refid="classendstone_1_1ItemTypeIngredient"/>
+        <childnode refid="1" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="7">
+        <label>endstone::MolangIngredient</label>
+        <link refid="classendstone_1_1MolangIngredient"/>
+        <childnode refid="1" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>endstone::Object</label>
+        <link refid="classendstone_1_1Object"/>
+      </node>
+      <node id="1">
+        <label>endstone::RecipeIngredient</label>
+        <link refid="classendstone_1_1RecipeIngredient"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="2">
+        <label>endstone::Object</label>
+        <link refid="classendstone_1_1Object"/>
+      </node>
+      <node id="1">
+        <label>endstone::RecipeIngredient</label>
+        <link refid="classendstone_1_1RecipeIngredient"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+    </collaborationgraph>
+    <location file="include/endstone/inventory/recipe_ingredient.h" line="25" column="1" bodyfile="include/endstone/inventory/recipe_ingredient.h" bodystart="25" bodyend="39"/>
+    <listofallmembers>
+      <member refid="classendstone_1_1Object_1a798b5128ce018bbbe8ca949ba78c3db1" prot="public" virt="non-virtual"><scope>endstone::RecipeIngredient</scope><name>as</name></member>
+      <member refid="classendstone_1_1Object_1ae0f38a62da4c186fce272145e2590cc1" prot="public" virt="non-virtual"><scope>endstone::RecipeIngredient</scope><name>as</name></member>
+      <member refid="classendstone_1_1Object_1aaaeb27e8e442e5adb772ae0d1af1c33f" prot="public" virt="pure-virtual"><scope>endstone::RecipeIngredient</scope><name>getClassTypeId</name></member>
+      <member refid="classendstone_1_1RecipeIngredient_1aca2eaef22d0b028c1ce697c85cf02df1" prot="public" virt="pure-virtual"><scope>endstone::RecipeIngredient</scope><name>getCount</name></member>
+      <member refid="classendstone_1_1Object_1ae8213ae15ad1b14e4631399c6b18960a" prot="public" virt="non-virtual"><scope>endstone::RecipeIngredient</scope><name>is</name></member>
+      <member refid="classendstone_1_1Object_1a20376536a5f64ef02b2569af132171d4" prot="public" virt="pure-virtual"><scope>endstone::RecipeIngredient</scope><name>isInstanceOf</name></member>
+      <member refid="classendstone_1_1RecipeIngredient_1a66b2e4dadf5693b58412099c533fc430" prot="public" virt="pure-virtual"><scope>endstone::RecipeIngredient</scope><name>test</name></member>
+      <member refid="classendstone_1_1Object_1adfddc886af4b1d0e09ddac7d0391b4d2" prot="public" virt="virtual"><scope>endstone::RecipeIngredient</scope><name>~Object</name></member>
+      <member refid="classendstone_1_1RecipeIngredient_1a8f9690a962c133fdea8e4eaad272d5e9" prot="public" virt="non-virtual"><scope>endstone::RecipeIngredient</scope><name>~RecipeIngredient</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

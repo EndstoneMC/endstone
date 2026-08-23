@@ -24,14 +24,25 @@
 
 #pragma once
 
+#include <string>
+#include <vector>
+
 #include "endstone/inventory/item_stack.h"
+#include "endstone/inventory/recipe_ingredient.h"
+#include "endstone/object.h"
 
 namespace endstone {
-class Recipe {
+class Recipe : public Object {
 public:
-    virtual ~Recipe() = default;
+    ~Recipe() override = default;
 
     [[nodiscard]] virtual ItemStack getResult() const = 0;
+
+    [[nodiscard]] virtual const std::vector<Nullable<RecipeIngredient>> &getIngredients() const = 0;
+
+    [[nodiscard]] virtual const std::string &getRecipeId() const = 0;
+
+    [[nodiscard]] virtual const std::string &getTag() const = 0;
 };
 }  // namespace endstone
 ```

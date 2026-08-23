@@ -65,6 +65,8 @@ Here are the classes, structs, unions and interfaces with brief descriptions:
     * **class** [**CommandMap**](classendstone_1_1CommandMap.md) _Represents a command map that manages all commands of the_ [_**Server**_](classendstone_1_1Server.md) _._    
     * **class** [**CommandSender**](classendstone_1_1CommandSender.md) _Represents a command sender._     
     * **class** [**CommandSenderWrapper**](classendstone_1_1CommandSenderWrapper.md) _Represents a wrapper that forwards commands to the wrapped_ [_**CommandSender**_](classendstone_1_1CommandSender.md) _and captures its output._    
+    * **class** [**ComplexAliasIngredient**](classendstone_1_1ComplexAliasIngredient.md) _Represents an ingredient that matches any item an id stands for._     
+    * **class** [**ComplexRecipe**](classendstone_1_1ComplexRecipe.md) _Represents a complex recipe which has imperative server-defined behavior, eg armor dyeing._     
     * **class** [**CompoundTag**](classendstone_1_1CompoundTag.md) _An NBT tag holding a set of named child tags, keyed by string._     
     * **class** [**ConsoleCommandSender**](classendstone_1_1ConsoleCommandSender.md) _Represents a console command sender._ 
     * **class** [**Container**](classendstone_1_1Container.md) _Represents a captured state of a container block, such as a chest._     
@@ -85,6 +87,7 @@ Here are the classes, structs, unions and interfaces with brief descriptions:
     * **class** [**Enchantment**](classendstone_1_1Enchantment.md) _Represents an enchantment that may be added to armor, weapons, tools or other items._     
     * **class** [**Event**](classendstone_1_1Event.md) _Represents an event._     
     * **class** [**EventHandler**](classendstone_1_1EventHandler.md) _Represents a registered_ [_**EventHandler**_](classendstone_1_1EventHandler.md) _which associates with a_[_**Plugin**_](classendstone_1_1Plugin.md) _._    
+    * **class** [**ExactIngredient**](classendstone_1_1ExactIngredient.md) _Represents an ingredient that matches one item with one exact data value._     
     * **class** [**Form**](classendstone_1_1Form.md) _Represents a generic form._     
     * **class** [**Furnace**](classendstone_1_1Furnace.md) _Represents a captured state of a furnace._     
     * **class** [**GameRule**](classendstone_1_1GameRule.md) _Represents a game rule._     
@@ -106,7 +109,9 @@ Here are the classes, structs, unions and interfaces with brief descriptions:
     * **class** [**ItemFrame**](classendstone_1_1ItemFrame.md) _Represents a captured state of an item frame._     
     * **class** [**ItemMeta**](classendstone_1_1ItemMeta.md) _Represents the metadata of a generic item._     
     * **class** [**ItemStack**](classendstone_1_1ItemStack.md) _Represents a stack of items._     
+    * **class** [**ItemTagIngredient**](classendstone_1_1ItemTagIngredient.md) _Represents an ingredient that matches any item carrying a tag._     
     * **class** [**ItemType**](classendstone_1_1ItemType.md) _Represents an item type._     
+    * **class** [**ItemTypeIngredient**](classendstone_1_1ItemTypeIngredient.md) _Represents an ingredient that matches an item type, whatever its data value._     
     * **class** [**Label**](classendstone_1_1Label.md) _Represents a text label._     
     * **class** [**Language**](classendstone_1_1Language.md) _Represents the interface for translating text into different languages._     
     * **class** [**LeavesDecayEvent**](classendstone_1_1LeavesDecayEvent.md) _Called when leaves are decaying naturally._     
@@ -127,6 +132,7 @@ Here are the classes, structs, unions and interfaces with brief descriptions:
     * **class** [**MetricsBase**](classendstone_1_1MetricsBase.md) _Collects and submits the data behind a_ [_**Metrics**_](classendstone_1_1Metrics.md) _instance._    
     * **class** [**Mob**](classendstone_1_1Mob.md) _Represents a mobile entity (i.e._     
     * **class** [**ModalForm**](classendstone_1_1ModalForm.md) _Represents a modal form with controls._     
+    * **class** [**MolangIngredient**](classendstone_1_1MolangIngredient.md) _Represents an ingredient that matches the items a Molang expression selects._     
     * **class** [**MultiLineChart**](classendstone_1_1MultiLineChart.md) _A bStats line chart with a line per named value._     
     * **class** [**NotNull**](classendstone_1_1NotNull.md) _A wrapper around a std::shared\_ptr that documents that it is never null._     
     * **class** [**Nullable**](classendstone_1_1Nullable.md) _A wrapper around a std::shared\_ptr that may be null._     
@@ -198,6 +204,7 @@ Here are the classes, structs, unions and interfaces with brief descriptions:
     * **class** [**Preconditions**](classendstone_1_1Preconditions.md) _Static helpers for validating method arguments and object state._     
     * **class** [**ProxiedCommandSender**](classendstone_1_1ProxiedCommandSender.md) _Represents a command sender that is running a command on behalf of another one, as_ `/execute` _does._    
     * **class** [**Recipe**](classendstone_1_1Recipe.md) _Represents some type of crafting recipe._     
+    * **class** [**RecipeIngredient**](classendstone_1_1RecipeIngredient.md) _Represents a potential item match within a recipe._     
     * **class** [**Registry**](classendstone_1_1Registry.md) _Abstract registry interface for objects with identifiers._     
         * **class** [**Type**](classendstone_1_1Registry_1_1Type.md) _CRTP base for registry-backed types identified by an_ [_**Identifier**_](classendstone_1_1Identifier.md) _._    
     * **class** [**Scheduler**](classendstone_1_1Scheduler.md) _Represents a scheduler that executes various tasks._     
@@ -211,6 +218,8 @@ Here are the classes, structs, unions and interfaces with brief descriptions:
     * **class** [**ServerLoadEvent**](classendstone_1_1ServerLoadEvent.md) _Called when either the server startup or reload has completed._     
     * **class** [**Service**](classendstone_1_1Service.md) _Services represent a list of methods._     
     * **class** [**ServiceManager**](classendstone_1_1ServiceManager.md) _Represent a service manager that manages services and service providers._     
+    * **class** [**ShapedRecipe**](classendstone_1_1ShapedRecipe.md) _Represents a shaped (ie normal) crafting recipe._     
+    * **class** [**ShapelessRecipe**](classendstone_1_1ShapelessRecipe.md) _Represents a shapeless recipe, where the arrangement of the ingredients on the crafting grid does not matter._     
     * **class** [**Sign**](classendstone_1_1Sign.md) _Represents a captured state of a sign._     
     * **class** [**SignSide**](classendstone_1_1SignSide.md) _Represents a side of a sign._     
     * **class** [**SimpleBarChart**](classendstone_1_1SimpleBarChart.md) _A bStats bar chart with a single bar per category._     
@@ -218,6 +227,9 @@ Here are the classes, structs, unions and interfaces with brief descriptions:
     * **class** [**SingleLineChart**](classendstone_1_1SingleLineChart.md) _A bStats line chart with a single line._     
     * **class** [**Skin**](classendstone_1_1Skin.md) _Represents a player skin._     
     * **class** [**Slider**](classendstone_1_1Slider.md) _Represents a slider with a label._     
+    * **class** [**SmithingRecipe**](classendstone_1_1SmithingRecipe.md) _Represents a smithing recipe._     
+    * **class** [**SmithingTransformRecipe**](classendstone_1_1SmithingTransformRecipe.md) _Represents a smithing transform recipe._     
+    * **class** [**SmithingTrimRecipe**](classendstone_1_1SmithingTrimRecipe.md) _Represents a smithing trim recipe._     
     * **class** [**SocketAddress**](classendstone_1_1SocketAddress.md) _Represents an IP Socket Address (hostname + port number)._     
     * **class** [**StepSlider**](classendstone_1_1StepSlider.md) _Represents a step slider with a set of predefined options._     
     * **class** [**Task**](classendstone_1_1Task.md) _Represents a task being executed by the scheduler._     

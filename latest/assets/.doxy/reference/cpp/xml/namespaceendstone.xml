@@ -62,6 +62,8 @@
     <innerclass refid="classendstone_1_1CommandMap" prot="public">endstone::CommandMap</innerclass>
     <innerclass refid="classendstone_1_1CommandSender" prot="public">endstone::CommandSender</innerclass>
     <innerclass refid="classendstone_1_1CommandSenderWrapper" prot="public">endstone::CommandSenderWrapper</innerclass>
+    <innerclass refid="classendstone_1_1ComplexAliasIngredient" prot="public">endstone::ComplexAliasIngredient</innerclass>
+    <innerclass refid="classendstone_1_1ComplexRecipe" prot="public">endstone::ComplexRecipe</innerclass>
     <innerclass refid="classendstone_1_1CompoundTag" prot="public">endstone::CompoundTag</innerclass>
     <innerclass refid="classendstone_1_1ConsoleCommandSender" prot="public">endstone::ConsoleCommandSender</innerclass>
     <innerclass refid="classendstone_1_1Container" prot="public">endstone::Container</innerclass>
@@ -82,6 +84,7 @@
     <innerclass refid="classendstone_1_1Enchantment" prot="public">endstone::Enchantment</innerclass>
     <innerclass refid="classendstone_1_1Event" prot="public">endstone::Event</innerclass>
     <innerclass refid="classendstone_1_1EventHandler" prot="public">endstone::EventHandler</innerclass>
+    <innerclass refid="classendstone_1_1ExactIngredient" prot="public">endstone::ExactIngredient</innerclass>
     <innerclass refid="classendstone_1_1Form" prot="public">endstone::Form</innerclass>
     <innerclass refid="classendstone_1_1Furnace" prot="public">endstone::Furnace</innerclass>
     <innerclass refid="classendstone_1_1GameRule" prot="public">endstone::GameRule</innerclass>
@@ -103,7 +106,9 @@
     <innerclass refid="classendstone_1_1ItemFrame" prot="public">endstone::ItemFrame</innerclass>
     <innerclass refid="classendstone_1_1ItemMeta" prot="public">endstone::ItemMeta</innerclass>
     <innerclass refid="classendstone_1_1ItemStack" prot="public">endstone::ItemStack</innerclass>
+    <innerclass refid="classendstone_1_1ItemTagIngredient" prot="public">endstone::ItemTagIngredient</innerclass>
     <innerclass refid="classendstone_1_1ItemType" prot="public">endstone::ItemType</innerclass>
+    <innerclass refid="classendstone_1_1ItemTypeIngredient" prot="public">endstone::ItemTypeIngredient</innerclass>
     <innerclass refid="classendstone_1_1Label" prot="public">endstone::Label</innerclass>
     <innerclass refid="classendstone_1_1Language" prot="public">endstone::Language</innerclass>
     <innerclass refid="classendstone_1_1LeavesDecayEvent" prot="public">endstone::LeavesDecayEvent</innerclass>
@@ -124,6 +129,7 @@
     <innerclass refid="classendstone_1_1MetricsBase" prot="public">endstone::MetricsBase</innerclass>
     <innerclass refid="classendstone_1_1Mob" prot="public">endstone::Mob</innerclass>
     <innerclass refid="classendstone_1_1ModalForm" prot="public">endstone::ModalForm</innerclass>
+    <innerclass refid="classendstone_1_1MolangIngredient" prot="public">endstone::MolangIngredient</innerclass>
     <innerclass refid="classendstone_1_1MultiLineChart" prot="public">endstone::MultiLineChart</innerclass>
     <innerclass refid="classendstone_1_1NotNull" prot="public">endstone::NotNull</innerclass>
     <innerclass refid="classendstone_1_1Nullable" prot="public">endstone::Nullable</innerclass>
@@ -196,6 +202,7 @@
     <innerclass refid="classendstone_1_1Preconditions" prot="public">endstone::Preconditions</innerclass>
     <innerclass refid="classendstone_1_1ProxiedCommandSender" prot="public">endstone::ProxiedCommandSender</innerclass>
     <innerclass refid="classendstone_1_1Recipe" prot="public">endstone::Recipe</innerclass>
+    <innerclass refid="classendstone_1_1RecipeIngredient" prot="public">endstone::RecipeIngredient</innerclass>
     <innerclass refid="classendstone_1_1Registry" prot="public">endstone::Registry</innerclass>
     <innerclass refid="classendstone_1_1Scheduler" prot="public">endstone::Scheduler</innerclass>
     <innerclass refid="classendstone_1_1Score" prot="public">endstone::Score</innerclass>
@@ -208,6 +215,8 @@
     <innerclass refid="classendstone_1_1ServerLoadEvent" prot="public">endstone::ServerLoadEvent</innerclass>
     <innerclass refid="classendstone_1_1Service" prot="public">endstone::Service</innerclass>
     <innerclass refid="classendstone_1_1ServiceManager" prot="public">endstone::ServiceManager</innerclass>
+    <innerclass refid="classendstone_1_1ShapedRecipe" prot="public">endstone::ShapedRecipe</innerclass>
+    <innerclass refid="classendstone_1_1ShapelessRecipe" prot="public">endstone::ShapelessRecipe</innerclass>
     <innerclass refid="classendstone_1_1Sign" prot="public">endstone::Sign</innerclass>
     <innerclass refid="classendstone_1_1SignSide" prot="public">endstone::SignSide</innerclass>
     <innerclass refid="classendstone_1_1SimpleBarChart" prot="public">endstone::SimpleBarChart</innerclass>
@@ -215,6 +224,9 @@
     <innerclass refid="classendstone_1_1SingleLineChart" prot="public">endstone::SingleLineChart</innerclass>
     <innerclass refid="classendstone_1_1Skin" prot="public">endstone::Skin</innerclass>
     <innerclass refid="classendstone_1_1Slider" prot="public">endstone::Slider</innerclass>
+    <innerclass refid="classendstone_1_1SmithingRecipe" prot="public">endstone::SmithingRecipe</innerclass>
+    <innerclass refid="classendstone_1_1SmithingTransformRecipe" prot="public">endstone::SmithingTransformRecipe</innerclass>
+    <innerclass refid="classendstone_1_1SmithingTrimRecipe" prot="public">endstone::SmithingTrimRecipe</innerclass>
     <innerclass refid="classendstone_1_1SocketAddress" prot="public">endstone::SocketAddress</innerclass>
     <innerclass refid="classendstone_1_1StepSlider" prot="public">endstone::StepSlider</innerclass>
     <innerclass refid="classendstone_1_1Task" prot="public">endstone::Task</innerclass>

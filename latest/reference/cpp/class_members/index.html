@@ -3782,6 +3782,7 @@ For latest updates join the chat on
 <li><strong>getEffectivePermissions</strong> (<a href="../classendstone_1_1CommandSenderWrapper/"><strong>endstone::CommandSenderWrapper</strong></a>, <a href="../classendstone_1_1Permissible/"><strong>endstone::Permissible</strong></a>)</li>
 <li><strong>getPermissionLevel</strong> (<a href="../classendstone_1_1CommandSenderWrapper/"><strong>endstone::CommandSenderWrapper</strong></a>, <a href="../classendstone_1_1Permissible/"><strong>endstone::Permissible</strong></a>)</li>
 <li><strong>getWrapped</strong> (<a href="../classendstone_1_1CommandSenderWrapper/"><strong>endstone::CommandSenderWrapper</strong></a>)</li>
+<li><strong>getAlias</strong> (<a href="../classendstone_1_1ComplexAliasIngredient/"><strong>endstone::ComplexAliasIngredient</strong></a>)</li>
 <li><strong>getInventory</strong> (<a href="../classendstone_1_1Container/"><strong>endstone::Container</strong></a>, <a href="../classendstone_1_1InventoryEvent/"><strong>endstone::InventoryEvent</strong></a>, <a href="../classendstone_1_1Player/"><strong>endstone::Player</strong></a>)</li>
 <li><strong>getDelay</strong> (<a href="../classendstone_1_1CreatureSpawner/"><strong>endstone::CreatureSpawner</strong></a>)</li>
 <li><strong>getMaxNearbyEntities</strong> (<a href="../classendstone_1_1CreatureSpawner/"><strong>endstone::CreatureSpawner</strong></a>)</li>
@@ -3811,6 +3812,7 @@ For latest updates join the chat on
 <li><strong>getEventType</strong> (<a href="../classendstone_1_1EventHandler/"><strong>endstone::EventHandler</strong></a>)</li>
 <li><strong>getPlugin</strong> (<a href="../classendstone_1_1EventHandler/"><strong>endstone::EventHandler</strong></a>, <a href="../classendstone_1_1PermissionAttachment/"><strong>endstone::PermissionAttachment</strong></a>, <a href="../classendstone_1_1PluginCommand/"><strong>endstone::PluginCommand</strong></a>, <a href="../classendstone_1_1PluginDisableEvent/"><strong>endstone::PluginDisableEvent</strong></a>, <a href="../classendstone_1_1PluginEnableEvent/"><strong>endstone::PluginEnableEvent</strong></a>, <a href="../classendstone_1_1PluginManager/"><strong>endstone::PluginManager</strong></a>)</li>
 <li><strong>getPriority</strong> (<a href="../classendstone_1_1EventHandler/"><strong>endstone::EventHandler</strong></a>)</li>
+<li><strong>getItemStack</strong> (<a href="../classendstone_1_1ExactIngredient/"><strong>endstone::ExactIngredient</strong></a>, <a href="../classendstone_1_1Item/"><strong>endstone::Item</strong></a>)</li>
 <li><strong>getOnClose</strong> (<a href="../classendstone_1_1Form/"><strong>endstone::Form</strong></a>)</li>
 <li><strong>getBurnTime</strong> (<a href="../classendstone_1_1Furnace/"><strong>endstone::Furnace</strong></a>)</li>
 <li><strong>getHandlers</strong> (<a href="../classendstone_1_1HandlerList/"><strong>endstone::HandlerList</strong></a>)</li>
@@ -3819,13 +3821,12 @@ For latest updates join the chat on
 <li><strong>getKey</strong> (<a href="../classendstone_1_1Identifier/"><strong>endstone::Identifier</strong></a>)</li>
 <li><strong>getNamespace</strong> (<a href="../classendstone_1_1Identifier/"><strong>endstone::Identifier</strong></a>)</li>
 <li><strong>getDepth</strong> (<a href="../classendstone_1_1Image/"><strong>endstone::Image</strong></a>)</li>
-<li><strong>getHeight</strong> (<a href="../classendstone_1_1Image/"><strong>endstone::Image</strong></a>)</li>
-<li><strong>getWidth</strong> (<a href="../classendstone_1_1Image/"><strong>endstone::Image</strong></a>)</li>
+<li><strong>getHeight</strong> (<a href="../classendstone_1_1Image/"><strong>endstone::Image</strong></a>, <a href="../classendstone_1_1ShapedRecipe/"><strong>endstone::ShapedRecipe</strong></a>)</li>
+<li><strong>getWidth</strong> (<a href="../classendstone_1_1Image/"><strong>endstone::Image</strong></a>, <a href="../classendstone_1_1ShapedRecipe/"><strong>endstone::ShapedRecipe</strong></a>)</li>
 <li><strong>getContents</strong> (<a href="../classendstone_1_1Inventory/"><strong>endstone::Inventory</strong></a>)</li>
 <li><strong>getMaxStackSize</strong> (<a href="../classendstone_1_1Inventory/"><strong>endstone::Inventory</strong></a>, <a href="../classendstone_1_1ItemStack/"><strong>endstone::ItemStack</strong></a>, <a href="../classendstone_1_1ItemType/"><strong>endstone::ItemType</strong></a>, <a href="../classendstone_1_1ItemStack_1_1Impl/"><strong>endstone::ItemStack::Impl</strong></a>)</li>
 <li><strong>getWhoClicked</strong> (<a href="../classendstone_1_1InventoryInteractEvent/"><strong>endstone::InventoryInteractEvent</strong></a>)</li>
 <li><strong>getAddress</strong> (<a href="../classendstone_1_1IpBanEntry/"><strong>endstone::IpBanEntry</strong></a>, <a href="../classendstone_1_1PacketReceiveEvent/"><strong>endstone::PacketReceiveEvent</strong></a>, <a href="../classendstone_1_1PacketSendEvent/"><strong>endstone::PacketSendEvent</strong></a>, <a href="../classendstone_1_1Player/"><strong>endstone::Player</strong></a>, <a href="../classendstone_1_1ServerListPingEvent/"><strong>endstone::ServerListPingEvent</strong></a>)</li>
-<li><strong>getItemStack</strong> (<a href="../classendstone_1_1Item/"><strong>endstone::Item</strong></a>)</li>
 <li><strong>getPickupDelay</strong> (<a href="../classendstone_1_1Item/"><strong>endstone::Item</strong></a>)</li>
 <li><strong>getThrower</strong> (<a href="../classendstone_1_1Item/"><strong>endstone::Item</strong></a>)</li>
 <li><strong>getItemMeta</strong> (<a href="../classendstone_1_1ItemFactory/"><strong>endstone::ItemFactory</strong></a>, <a href="../classendstone_1_1ItemStack/"><strong>endstone::ItemStack</strong></a>, <a href="../classendstone_1_1ItemStack_1_1Impl/"><strong>endstone::ItemStack::Impl</strong></a>)</li>
@@ -3838,11 +3839,14 @@ For latest updates join the chat on
 <li><strong>getLore</strong> (<a href="../classendstone_1_1ItemMeta/"><strong>endstone::ItemMeta</strong></a>)</li>
 <li><strong>getRepairCost</strong> (<a href="../classendstone_1_1ItemMeta/"><strong>endstone::ItemMeta</strong></a>)</li>
 <li><strong>getNbt</strong> (<a href="../classendstone_1_1ItemStack/"><strong>endstone::ItemStack</strong></a>, <a href="../classendstone_1_1ItemStack_1_1Impl/"><strong>endstone::ItemStack::Impl</strong></a>)</li>
+<li><strong>getItemTag</strong> (<a href="../classendstone_1_1ItemTagIngredient/"><strong>endstone::ItemTagIngredient</strong></a>)</li>
 <li><strong>getMaxDurability</strong> (<a href="../classendstone_1_1ItemType/"><strong>endstone::ItemType</strong></a>)</li>
+<li><strong>getItemType</strong> (<a href="../classendstone_1_1ItemTypeIngredient/"><strong>endstone::ItemTypeIngredient</strong></a>)</li>
 <li><strong>getLocale</strong> (<a href="../classendstone_1_1Language/"><strong>endstone::Language</strong></a>, <a href="../classendstone_1_1Player/"><strong>endstone::Player</strong></a>)</li>
 <li><strong>getPage</strong> (<a href="../classendstone_1_1Lectern/"><strong>endstone::Lectern</strong></a>, <a href="../classendstone_1_1WritableBookMeta/"><strong>endstone::WritableBookMeta</strong></a>)</li>
 <li><strong>getDimensions</strong> (<a href="../classendstone_1_1Level/"><strong>endstone::Level</strong></a>)</li>
 <li><strong>getGameRule</strong> (<a href="../classendstone_1_1Level/"><strong>endstone::Level</strong></a>)</li>
+<li><strong>getRecipes</strong> (<a href="../classendstone_1_1Level/"><strong>endstone::Level</strong></a>, <a href="../classendstone_1_1Server/"><strong>endstone::Server</strong></a>)</li>
 <li><strong>getSeed</strong> (<a href="../classendstone_1_1Level/"><strong>endstone::Level</strong></a>)</li>
 <li><strong>getTime</strong> (<a href="../classendstone_1_1Level/"><strong>endstone::Level</strong></a>)</li>
 <li><strong>getBlockX</strong> (<a href="../classendstone_1_1Location/"><strong>endstone::Location</strong></a>, <a href="../classendstone_1_1Vector/"><strong>endstone::Vector</strong></a>)</li>
@@ -3871,6 +3875,7 @@ For latest updates join the chat on
 <li><strong>getHealth</strong> (<a href="../classendstone_1_1Mob/"><strong>endstone::Mob</strong></a>)</li>
 <li><strong>getMaxHealth</strong> (<a href="../classendstone_1_1Mob/"><strong>endstone::Mob</strong></a>)</li>
 <li><strong>getSubmitButton</strong> (<a href="../classendstone_1_1ModalForm/"><strong>endstone::ModalForm</strong></a>)</li>
+<li><strong>getExpression</strong> (<a href="../classendstone_1_1MolangIngredient/"><strong>endstone::MolangIngredient</strong></a>)</li>
 <li><strong>get</strong> (<a href="../classendstone_1_1NotNull/"><strong>endstone::NotNull</strong></a>, <a href="../classendstone_1_1Nullable/"><strong>endstone::Nullable</strong></a>, <a href="../classendstone_1_1Registry_1_1Type/"><strong>endstone::Registry::Type</strong></a>, <a href="../classendstone_1_1Registry/"><strong>endstone::Registry</strong></a>, <a href="../classendstone_1_1ServiceManager/"><strong>endstone::ServiceManager</strong></a>, <a href="../classendstone_1_1nbt_1_1Tag/"><strong>endstone::nbt::Tag</strong></a>)</li>
 <li><strong>getCriteria</strong> (<a href="../classendstone_1_1Objective/"><strong>endstone::Objective</strong></a>)</li>
 <li><strong>getDisplaySlot</strong> (<a href="../classendstone_1_1Objective/"><strong>endstone::Objective</strong></a>)</li>
@@ -3913,7 +3918,8 @@ For latest updates join the chat on
 <li><strong>getHand</strong> (<a href="../classendstone_1_1PlayerBucketActorEvent/"><strong>endstone::PlayerBucketActorEvent</strong></a>, <a href="../classendstone_1_1PlayerItemConsumeEvent/"><strong>endstone::PlayerItemConsumeEvent</strong></a>, <a href="../classendstone_1_1PlayerShearActorEvent/"><strong>endstone::PlayerShearActorEvent</strong></a>)</li>
 <li><strong>getOriginalBucket</strong> (<a href="../classendstone_1_1PlayerBucketActorEvent/"><strong>endstone::PlayerBucketActorEvent</strong></a>)</li>
 <li><strong>getFormat</strong> (<a href="../classendstone_1_1PlayerChatEvent/"><strong>endstone::PlayerChatEvent</strong></a>)</li>
-<li><strong>getIngredients</strong> (<a href="../classendstone_1_1PlayerCraftItemEvent/"><strong>endstone::PlayerCraftItemEvent</strong></a>)</li>
+<li><strong>getIngredients</strong> (<a href="../classendstone_1_1PlayerCraftItemEvent/"><strong>endstone::PlayerCraftItemEvent</strong></a>, <a href="../classendstone_1_1Recipe/"><strong>endstone::Recipe</strong></a>)</li>
+<li><strong>getRecipe</strong> (<a href="../classendstone_1_1PlayerCraftItemEvent/"><strong>endstone::PlayerCraftItemEvent</strong></a>)</li>
 <li><strong>getRepetitions</strong> (<a href="../classendstone_1_1PlayerCraftItemEvent/"><strong>endstone::PlayerCraftItemEvent</strong></a>)</li>
 <li><strong>getResults</strong> (<a href="../classendstone_1_1PlayerCraftItemEvent/"><strong>endstone::PlayerCraftItemEvent</strong></a>)</li>
 <li><strong>getDeathMessage</strong> (<a href="../classendstone_1_1PlayerDeathEvent/"><strong>endstone::PlayerDeathEvent</strong></a>)</li>
@@ -3970,6 +3976,9 @@ For latest updates join the chat on
 <li><strong>getBasePotionType</strong> (<a href="../classendstone_1_1PotionMeta/"><strong>endstone::PotionMeta</strong></a>)</li>
 <li><strong>getCallee</strong> (<a href="../classendstone_1_1ProxiedCommandSender/"><strong>endstone::ProxiedCommandSender</strong></a>)</li>
 <li><strong>getCaller</strong> (<a href="../classendstone_1_1ProxiedCommandSender/"><strong>endstone::ProxiedCommandSender</strong></a>)</li>
+<li><strong>getRecipeId</strong> (<a href="../classendstone_1_1Recipe/"><strong>endstone::Recipe</strong></a>)</li>
+<li><strong>getTag</strong> (<a href="../classendstone_1_1Recipe/"><strong>endstone::Recipe</strong></a>)</li>
+<li><strong>getCount</strong> (<a href="../classendstone_1_1RecipeIngredient/"><strong>endstone::RecipeIngredient</strong></a>)</li>
 <li><strong>getOrThrow</strong> (<a href="../classendstone_1_1Registry/"><strong>endstone::Registry</strong></a>)</li>
 <li><strong>getPendingTasks</strong> (<a href="../classendstone_1_1Scheduler/"><strong>endstone::Scheduler</strong></a>)</li>
 <li><strong>getEntry</strong> (<a href="../classendstone_1_1Score/"><strong>endstone::Score</strong></a>)</li>
@@ -4024,6 +4033,9 @@ For latest updates join the chat on
 <li><strong>getMax</strong> (<a href="../classendstone_1_1Slider/"><strong>endstone::Slider</strong></a>)</li>
 <li><strong>getMin</strong> (<a href="../classendstone_1_1Slider/"><strong>endstone::Slider</strong></a>)</li>
 <li><strong>getStep</strong> (<a href="../classendstone_1_1Slider/"><strong>endstone::Slider</strong></a>)</li>
+<li><strong>getAddition</strong> (<a href="../classendstone_1_1SmithingRecipe/"><strong>endstone::SmithingRecipe</strong></a>)</li>
+<li><strong>getBase</strong> (<a href="../classendstone_1_1SmithingRecipe/"><strong>endstone::SmithingRecipe</strong></a>)</li>
+<li><strong>getTemplate</strong> (<a href="../classendstone_1_1SmithingTransformRecipe/"><strong>endstone::SmithingTransformRecipe</strong></a>, <a href="../classendstone_1_1SmithingTrimRecipe/"><strong>endstone::SmithingTrimRecipe</strong></a>)</li>
 <li><strong>getHostname</strong> (<a href="../classendstone_1_1SocketAddress/"><strong>endstone::SocketAddress</strong></a>)</li>
 <li><strong>getOwner</strong> (<a href="../classendstone_1_1Task/"><strong>endstone::Task</strong></a>)</li>
 <li><strong>getTaskId</strong> (<a href="../classendstone_1_1Task/"><strong>endstone::Task</strong></a>)</li>
@@ -4550,6 +4562,7 @@ For latest updates join the chat on
 <li><strong>recalculatePermissibles</strong> (<a href="../classendstone_1_1Permission/"><strong>endstone::Permission</strong></a>)</li>
 <li><strong>removed_</strong> (<a href="../classendstone_1_1PermissionAttachment/"><strong>endstone::PermissionAttachment</strong></a>)</li>
 <li><strong>resetTitle</strong> (<a href="../classendstone_1_1Player/"><strong>endstone::Player</strong></a>)</li>
+<li><strong>recipe_</strong> (<a href="../classendstone_1_1PlayerCraftItemEvent/"><strong>endstone::PlayerCraftItemEvent</strong></a>)</li>
 <li><strong>repetitions_</strong> (<a href="../classendstone_1_1PlayerCraftItemEvent/"><strong>endstone::PlayerCraftItemEvent</strong></a>)</li>
 <li><strong>results_</strong> (<a href="../classendstone_1_1PlayerCraftItemEvent/"><strong>endstone::PlayerCraftItemEvent</strong></a>)</li>
 <li><strong>RecipeBookType</strong> (<a href="../classendstone_1_1PlayerRecipeBookSettingsChangeEvent/"><strong>endstone::PlayerRecipeBookSettingsChangeEvent</strong></a>)</li>
@@ -4871,6 +4884,7 @@ For latest updates join the chat on
 <li><strong>transfer</strong> (<a href="../classendstone_1_1Player/"><strong>endstone::Player</strong></a>)</li>
 <li><strong>Thick</strong> (<a href="../classendstone_1_1PotionType/"><strong>endstone::PotionType</strong></a>)</li>
 <li><strong>TurtleMaster</strong> (<a href="../classendstone_1_1PotionType/"><strong>endstone::PotionType</strong></a>)</li>
+<li><strong>test</strong> (<a href="../classendstone_1_1RecipeIngredient/"><strong>endstone::RecipeIngredient</strong></a>)</li>
 <li><strong>TextInput</strong> (<a href="../classendstone_1_1TextInput/"><strong>endstone::TextInput</strong></a>)</li>
 <li><strong>ThunderChangeEvent</strong> (<a href="../classendstone_1_1ThunderChangeEvent/"><strong>endstone::ThunderChangeEvent</strong></a>)</li>
 <li><strong>toThunderState</strong> (<a href="../classendstone_1_1ThunderChangeEvent/"><strong>endstone::ThunderChangeEvent</strong></a>)</li>
@@ -4994,17 +5008,22 @@ For latest updates join the chat on
 <li><strong>~Command</strong> (<a href="../classendstone_1_1Command/"><strong>endstone::Command</strong></a>)</li>
 <li><strong>~CommandExecutor</strong> (<a href="../classendstone_1_1CommandExecutor/"><strong>endstone::CommandExecutor</strong></a>)</li>
 <li><strong>~CommandMap</strong> (<a href="../classendstone_1_1CommandMap/"><strong>endstone::CommandMap</strong></a>)</li>
+<li><strong>~ComplexAliasIngredient</strong> (<a href="../classendstone_1_1ComplexAliasIngredient/"><strong>endstone::ComplexAliasIngredient</strong></a>)</li>
+<li><strong>~ComplexRecipe</strong> (<a href="../classendstone_1_1ComplexRecipe/"><strong>endstone::ComplexRecipe</strong></a>)</li>
 <li><strong>~Criteria</strong> (<a href="../classendstone_1_1Criteria/"><strong>endstone::Criteria</strong></a>)</li>
 <li><strong>~CustomChart</strong> (<a href="../classendstone_1_1CustomChart/"><strong>endstone::CustomChart</strong></a>)</li>
 <li><strong>~DamageSource</strong> (<a href="../classendstone_1_1DamageSource/"><strong>endstone::DamageSource</strong></a>)</li>
 <li><strong>~Dimension</strong> (<a href="../classendstone_1_1Dimension/"><strong>endstone::Dimension</strong></a>)</li>
 <li><strong>~DimensionLoadEvent</strong> (<a href="../classendstone_1_1DimensionLoadEvent/"><strong>endstone::DimensionLoadEvent</strong></a>)</li>
 <li><strong>~Event</strong> (<a href="../classendstone_1_1Event/"><strong>endstone::Event</strong></a>)</li>
+<li><strong>~ExactIngredient</strong> (<a href="../classendstone_1_1ExactIngredient/"><strong>endstone::ExactIngredient</strong></a>)</li>
 <li><strong>~ICancellable</strong> (<a href="../classendstone_1_1ICancellable/"><strong>endstone::ICancellable</strong></a>)</li>
 <li><strong>~IRegistry</strong> (<a href="../classendstone_1_1IRegistry/"><strong>endstone::IRegistry</strong></a>)</li>
 <li><strong>~Inventory</strong> (<a href="../classendstone_1_1Inventory/"><strong>endstone::Inventory</strong></a>)</li>
 <li><strong>~ItemFactory</strong> (<a href="../classendstone_1_1ItemFactory/"><strong>endstone::ItemFactory</strong></a>)</li>
 <li><strong>~ItemStack</strong> (<a href="../classendstone_1_1ItemStack/"><strong>endstone::ItemStack</strong></a>)</li>
+<li><strong>~ItemTagIngredient</strong> (<a href="../classendstone_1_1ItemTagIngredient/"><strong>endstone::ItemTagIngredient</strong></a>)</li>
+<li><strong>~ItemTypeIngredient</strong> (<a href="../classendstone_1_1ItemTypeIngredient/"><strong>endstone::ItemTypeIngredient</strong></a>)</li>
 <li><strong>~Language</strong> (<a href="../classendstone_1_1Language/"><strong>endstone::Language</strong></a>)</li>
 <li><strong>~Level</strong> (<a href="../classendstone_1_1Level/"><strong>endstone::Level</strong></a>)</li>
 <li><strong>~Logger</strong> (<a href="../classendstone_1_1Logger/"><strong>endstone::Logger</strong></a>)</li>
@@ -5012,6 +5031,7 @@ For latest updates join the chat on
 <li><strong>~MapRenderer</strong> (<a href="../classendstone_1_1MapRenderer/"><strong>endstone::MapRenderer</strong></a>)</li>
 <li><strong>~MapView</strong> (<a href="../classendstone_1_1MapView/"><strong>endstone::MapView</strong></a>)</li>
 <li><strong>~MetricsBase</strong> (<a href="../classendstone_1_1MetricsBase/"><strong>endstone::MetricsBase</strong></a>)</li>
+<li><strong>~MolangIngredient</strong> (<a href="../classendstone_1_1MolangIngredient/"><strong>endstone::MolangIngredient</strong></a>)</li>
 <li><strong>~Object</strong> (<a href="../classendstone_1_1Object/"><strong>endstone::Object</strong></a>)</li>
 <li><strong>~Objective</strong> (<a href="../classendstone_1_1Objective/"><strong>endstone::Objective</strong></a>)</li>
 <li><strong>~OfflinePlayer</strong> (<a href="../classendstone_1_1OfflinePlayer/"><strong>endstone::OfflinePlayer</strong></a>)</li>
@@ -5027,6 +5047,7 @@ For latest updates join the chat on
 <li><strong>~PluginLoader</strong> (<a href="../classendstone_1_1PluginLoader/"><strong>endstone::PluginLoader</strong></a>)</li>
 <li><strong>~PluginManager</strong> (<a href="../classendstone_1_1PluginManager/"><strong>endstone::PluginManager</strong></a>)</li>
 <li><strong>~Recipe</strong> (<a href="../classendstone_1_1Recipe/"><strong>endstone::Recipe</strong></a>)</li>
+<li><strong>~RecipeIngredient</strong> (<a href="../classendstone_1_1RecipeIngredient/"><strong>endstone::RecipeIngredient</strong></a>)</li>
 <li><strong>~Type</strong> (<a href="../classendstone_1_1Registry_1_1Type/"><strong>endstone::Registry::Type</strong></a>)</li>
 <li><strong>~Scheduler</strong> (<a href="../classendstone_1_1Scheduler/"><strong>endstone::Scheduler</strong></a>)</li>
 <li><strong>~Score</strong> (<a href="../classendstone_1_1Score/"><strong>endstone::Score</strong></a>)</li>
@@ -5034,7 +5055,12 @@ For latest updates join the chat on
 <li><strong>~Server</strong> (<a href="../classendstone_1_1Server/"><strong>endstone::Server</strong></a>)</li>
 <li><strong>~Service</strong> (<a href="../classendstone_1_1Service/"><strong>endstone::Service</strong></a>)</li>
 <li><strong>~ServiceManager</strong> (<a href="../classendstone_1_1ServiceManager/"><strong>endstone::ServiceManager</strong></a>)</li>
+<li><strong>~ShapedRecipe</strong> (<a href="../classendstone_1_1ShapedRecipe/"><strong>endstone::ShapedRecipe</strong></a>)</li>
+<li><strong>~ShapelessRecipe</strong> (<a href="../classendstone_1_1ShapelessRecipe/"><strong>endstone::ShapelessRecipe</strong></a>)</li>
 <li><strong>~SignSide</strong> (<a href="../classendstone_1_1SignSide/"><strong>endstone::SignSide</strong></a>)</li>
+<li><strong>~SmithingRecipe</strong> (<a href="../classendstone_1_1SmithingRecipe/"><strong>endstone::SmithingRecipe</strong></a>)</li>
+<li><strong>~SmithingTransformRecipe</strong> (<a href="../classendstone_1_1SmithingTransformRecipe/"><strong>endstone::SmithingTransformRecipe</strong></a>)</li>
+<li><strong>~SmithingTrimRecipe</strong> (<a href="../classendstone_1_1SmithingTrimRecipe/"><strong>endstone::SmithingTrimRecipe</strong></a>)</li>
 <li><strong>~Task</strong> (<a href="../classendstone_1_1Task/"><strong>endstone::Task</strong></a>)</li>
 <li><strong>~ThunderChangeEvent</strong> (<a href="../classendstone_1_1ThunderChangeEvent/"><strong>endstone::ThunderChangeEvent</strong></a>)</li>
 <li><strong>~WeatherChangeEvent</strong> (<a href="../classendstone_1_1WeatherChangeEvent/"><strong>endstone::WeatherChangeEvent</strong></a>)</li>

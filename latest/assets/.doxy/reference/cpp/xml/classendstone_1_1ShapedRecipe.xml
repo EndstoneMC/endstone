@@ -1,0 +1,110 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.8" xml:lang="en-US">
+  <compounddef id="classendstone_1_1ShapedRecipe" kind="class" language="C++" prot="public" abstract="yes">
+    <compoundname>endstone::ShapedRecipe</compoundname>
+    <basecompoundref refid="classendstone_1_1Recipe" prot="public" virt="non-virtual">endstone::Recipe</basecompoundref>
+    <includes refid="shaped__recipe_8h" local="no">endstone/inventory/shaped_recipe.h</includes>
+    <sectiondef kind="public-func">
+      <memberdef kind="function" id="classendstone_1_1ShapedRecipe_1abfc3f99c4013fb5c78e1ccabef4041e7" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>endstone::ShapedRecipe::~ShapedRecipe</definition>
+        <argsstring>() override=default</argsstring>
+        <name>~ShapedRecipe</name>
+        <qualifiedname>endstone::ShapedRecipe::~ShapedRecipe</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/inventory/shaped_recipe.h" line="25" column="5"/>
+      </memberdef>
+      <memberdef kind="function" id="classendstone_1_1ShapedRecipe_1a6fdba4c9e0935fa3a5febb4c6d154c24" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
+        <type><ref refid="classendstone_1_1Identifier" kindref="compound">int</ref></type>
+        <definition>virtual int endstone::ShapedRecipe::getWidth</definition>
+        <argsstring>() const =0</argsstring>
+        <name>getWidth</name>
+        <qualifiedname>endstone::ShapedRecipe::getWidth</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/inventory/shaped_recipe.h" line="27" column="18"/>
+      </memberdef>
+      <memberdef kind="function" id="classendstone_1_1ShapedRecipe_1ac8c6be4177213ace66144dbf02afc40a" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
+        <type><ref refid="classendstone_1_1Identifier" kindref="compound">int</ref></type>
+        <definition>virtual int endstone::ShapedRecipe::getHeight</definition>
+        <argsstring>() const =0</argsstring>
+        <name>getHeight</name>
+        <qualifiedname>endstone::ShapedRecipe::getHeight</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/inventory/shaped_recipe.h" line="29" column="18"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+<para>Represents a shaped (ie normal) crafting recipe. </para>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="3">
+        <label>endstone::Object</label>
+        <link refid="classendstone_1_1Object"/>
+      </node>
+      <node id="2">
+        <label>endstone::Recipe</label>
+        <link refid="classendstone_1_1Recipe"/>
+        <childnode refid="3" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="1">
+        <label>endstone::ShapedRecipe</label>
+        <link refid="classendstone_1_1ShapedRecipe"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="3">
+        <label>endstone::Object</label>
+        <link refid="classendstone_1_1Object"/>
+      </node>
+      <node id="2">
+        <label>endstone::Recipe</label>
+        <link refid="classendstone_1_1Recipe"/>
+        <childnode refid="3" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="1">
+        <label>endstone::ShapedRecipe</label>
+        <link refid="classendstone_1_1ShapedRecipe"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+    </collaborationgraph>
+    <location file="include/endstone/inventory/shaped_recipe.h" line="23" column="1" bodyfile="include/endstone/inventory/shaped_recipe.h" bodystart="23" bodyend="30"/>
+    <listofallmembers>
+      <member refid="classendstone_1_1Object_1a798b5128ce018bbbe8ca949ba78c3db1" prot="public" virt="non-virtual"><scope>endstone::ShapedRecipe</scope><name>as</name></member>
+      <member refid="classendstone_1_1Object_1ae0f38a62da4c186fce272145e2590cc1" prot="public" virt="non-virtual"><scope>endstone::ShapedRecipe</scope><name>as</name></member>
+      <member refid="classendstone_1_1Object_1aaaeb27e8e442e5adb772ae0d1af1c33f" prot="public" virt="pure-virtual"><scope>endstone::ShapedRecipe</scope><name>getClassTypeId</name></member>
+      <member refid="classendstone_1_1ShapedRecipe_1ac8c6be4177213ace66144dbf02afc40a" prot="public" virt="pure-virtual"><scope>endstone::ShapedRecipe</scope><name>getHeight</name></member>
+      <member refid="classendstone_1_1Recipe_1ab9974a01f5e5570b0c2b9b88b9fb7b58" prot="public" virt="pure-virtual"><scope>endstone::ShapedRecipe</scope><name>getIngredients</name></member>
+      <member refid="classendstone_1_1Recipe_1a7db7fc6f3cd018dc4aeb841098806a90" prot="public" virt="pure-virtual"><scope>endstone::ShapedRecipe</scope><name>getRecipeId</name></member>
+      <member refid="classendstone_1_1Recipe_1a4e20782db3c7f6ea868059af8f2b1cc1" prot="public" virt="pure-virtual"><scope>endstone::ShapedRecipe</scope><name>getResult</name></member>
+      <member refid="classendstone_1_1Recipe_1ab353c82a04f30ce3a1d89d78d1ffe043" prot="public" virt="pure-virtual"><scope>endstone::ShapedRecipe</scope><name>getTag</name></member>
+      <member refid="classendstone_1_1ShapedRecipe_1a6fdba4c9e0935fa3a5febb4c6d154c24" prot="public" virt="pure-virtual"><scope>endstone::ShapedRecipe</scope><name>getWidth</name></member>
+      <member refid="classendstone_1_1Object_1ae8213ae15ad1b14e4631399c6b18960a" prot="public" virt="non-virtual"><scope>endstone::ShapedRecipe</scope><name>is</name></member>
+      <member refid="classendstone_1_1Object_1a20376536a5f64ef02b2569af132171d4" prot="public" virt="pure-virtual"><scope>endstone::ShapedRecipe</scope><name>isInstanceOf</name></member>
+      <member refid="classendstone_1_1Object_1adfddc886af4b1d0e09ddac7d0391b4d2" prot="public" virt="virtual"><scope>endstone::ShapedRecipe</scope><name>~Object</name></member>
+      <member refid="classendstone_1_1Recipe_1a8252ec2109ad301042cda25df98b923e" prot="public" virt="non-virtual"><scope>endstone::ShapedRecipe</scope><name>~Recipe</name></member>
+      <member refid="classendstone_1_1ShapedRecipe_1abfc3f99c4013fb5c78e1ccabef4041e7" prot="public" virt="non-virtual"><scope>endstone::ShapedRecipe</scope><name>~ShapedRecipe</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

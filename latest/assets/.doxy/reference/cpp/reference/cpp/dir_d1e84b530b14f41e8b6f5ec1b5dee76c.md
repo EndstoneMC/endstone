@@ -21,13 +21,25 @@
 
 | Type | Name |
 | ---: | :--- |
+| file | [**complex\_alias\_ingredient.h**](complex__alias__ingredient_8h.md) <br> |
+| file | [**complex\_recipe.h**](complex__recipe_8h.md) <br> |
 | file | [**equipment\_slot.h**](equipment__slot_8h.md) <br> |
+| file | [**exact\_ingredient.h**](exact__ingredient_8h.md) <br> |
 | file | [**inventory.h**](inventory_8h.md) <br> |
 | file | [**item\_factory.h**](item__factory_8h.md) <br> |
 | file | [**item\_stack.h**](item__stack_8h.md) <br> |
+| file | [**item\_tag\_ingredient.h**](item__tag__ingredient_8h.md) <br> |
 | file | [**item\_type.h**](item__type_8h.md) <br> |
+| file | [**item\_type\_ingredient.h**](item__type__ingredient_8h.md) <br> |
+| file | [**molang\_ingredient.h**](molang__ingredient_8h.md) <br> |
 | file | [**player\_inventory.h**](player__inventory_8h.md) <br> |
 | file | [**recipe.h**](recipe_8h.md) <br> |
+| file | [**recipe\_ingredient.h**](recipe__ingredient_8h.md) <br> |
+| file | [**shaped\_recipe.h**](shaped__recipe_8h.md) <br> |
+| file | [**shapeless\_recipe.h**](shapeless__recipe_8h.md) <br> |
+| file | [**smithing\_recipe.h**](smithing__recipe_8h.md) <br> |
+| file | [**smithing\_transform\_recipe.h**](smithing__transform__recipe_8h.md) <br> |
+| file | [**smithing\_trim\_recipe.h**](smithing__trim__recipe_8h.md) <br> |
 
 
 ## Directories

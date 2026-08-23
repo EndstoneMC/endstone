@@ -405,6 +405,14 @@
          <lastmod>2026-08-23</lastmod>
     </url>
     <url>
+         <loc>https://endstone.dev/latest/reference/cpp/classendstone_1_1ComplexAliasIngredient/</loc>
+         <lastmod>2026-08-23</lastmod>
+    </url>
+    <url>
+         <loc>https://endstone.dev/latest/reference/cpp/classendstone_1_1ComplexRecipe/</loc>
+         <lastmod>2026-08-23</lastmod>
+    </url>
+    <url>
          <loc>https://endstone.dev/latest/reference/cpp/classendstone_1_1CompoundTag/</loc>
          <lastmod>2026-08-23</lastmod>
     </url>
@@ -482,6 +490,10 @@
     </url>
     <url>
          <loc>https://endstone.dev/latest/reference/cpp/classendstone_1_1EventHandler/</loc>
+         <lastmod>2026-08-23</lastmod>
+    </url>
+    <url>
+         <loc>https://endstone.dev/latest/reference/cpp/classendstone_1_1ExactIngredient/</loc>
          <lastmod>2026-08-23</lastmod>
     </url>
     <url>
@@ -569,7 +581,15 @@
          <lastmod>2026-08-23</lastmod>
     </url>
     <url>
+         <loc>https://endstone.dev/latest/reference/cpp/classendstone_1_1ItemTagIngredient/</loc>
+         <lastmod>2026-08-23</lastmod>
+    </url>
+    <url>
          <loc>https://endstone.dev/latest/reference/cpp/classendstone_1_1ItemType/</loc>
+         <lastmod>2026-08-23</lastmod>
+    </url>
+    <url>
+         <loc>https://endstone.dev/latest/reference/cpp/classendstone_1_1ItemTypeIngredient/</loc>
          <lastmod>2026-08-23</lastmod>
     </url>
     <url>
@@ -650,6 +670,10 @@
     </url>
     <url>
          <loc>https://endstone.dev/latest/reference/cpp/classendstone_1_1ModalForm/</loc>
+         <lastmod>2026-08-23</lastmod>
+    </url>
+    <url>
+         <loc>https://endstone.dev/latest/reference/cpp/classendstone_1_1MolangIngredient/</loc>
          <lastmod>2026-08-23</lastmod>
     </url>
     <url>
@@ -937,6 +961,10 @@
          <lastmod>2026-08-23</lastmod>
     </url>
     <url>
+         <loc>https://endstone.dev/latest/reference/cpp/classendstone_1_1RecipeIngredient/</loc>
+         <lastmod>2026-08-23</lastmod>
+    </url>
+    <url>
          <loc>https://endstone.dev/latest/reference/cpp/classendstone_1_1Registry/</loc>
          <lastmod>2026-08-23</lastmod>
     </url>
@@ -989,6 +1017,14 @@
          <lastmod>2026-08-23</lastmod>
     </url>
     <url>
+         <loc>https://endstone.dev/latest/reference/cpp/classendstone_1_1ShapedRecipe/</loc>
+         <lastmod>2026-08-23</lastmod>
+    </url>
+    <url>
+         <loc>https://endstone.dev/latest/reference/cpp/classendstone_1_1ShapelessRecipe/</loc>
+         <lastmod>2026-08-23</lastmod>
+    </url>
+    <url>
          <loc>https://endstone.dev/latest/reference/cpp/classendstone_1_1Sign/</loc>
          <lastmod>2026-08-23</lastmod>
     </url>
@@ -1014,6 +1050,18 @@
     </url>
     <url>
          <loc>https://endstone.dev/latest/reference/cpp/classendstone_1_1Slider/</loc>
+         <lastmod>2026-08-23</lastmod>
+    </url>
+    <url>
+         <loc>https://endstone.dev/latest/reference/cpp/classendstone_1_1SmithingRecipe/</loc>
+         <lastmod>2026-08-23</lastmod>
+    </url>
+    <url>
+         <loc>https://endstone.dev/latest/reference/cpp/classendstone_1_1SmithingTransformRecipe/</loc>
+         <lastmod>2026-08-23</lastmod>
+    </url>
+    <url>
+         <loc>https://endstone.dev/latest/reference/cpp/classendstone_1_1SmithingTrimRecipe/</loc>
          <lastmod>2026-08-23</lastmod>
     </url>
     <url>
@@ -2649,11 +2697,35 @@
          <lastmod>2026-08-23</lastmod>
     </url>
     <url>
+         <loc>https://endstone.dev/latest/reference/cpp/complex__alias__ingredient_8h/</loc>
+         <lastmod>2026-08-23</lastmod>
+    </url>
+    <url>
+         <loc>https://endstone.dev/latest/reference/cpp/complex__alias__ingredient_8h_source/</loc>
+         <lastmod>2026-08-23</lastmod>
+    </url>
+    <url>
+         <loc>https://endstone.dev/latest/reference/cpp/complex__recipe_8h/</loc>
+         <lastmod>2026-08-23</lastmod>
+    </url>
+    <url>
+         <loc>https://endstone.dev/latest/reference/cpp/complex__recipe_8h_source/</loc>
+         <lastmod>2026-08-23</lastmod>
+    </url>
+    <url>
          <loc>https://endstone.dev/latest/reference/cpp/equipment__slot_8h/</loc>
          <lastmod>2026-08-23</lastmod>
     </url>
     <url>
          <loc>https://endstone.dev/latest/reference/cpp/equipment__slot_8h_source/</loc>
+         <lastmod>2026-08-23</lastmod>
+    </url>
+    <url>
+         <loc>https://endstone.dev/latest/reference/cpp/exact__ingredient_8h/</loc>
+         <lastmod>2026-08-23</lastmod>
+    </url>
+    <url>
+         <loc>https://endstone.dev/latest/reference/cpp/exact__ingredient_8h_source/</loc>
          <lastmod>2026-08-23</lastmod>
     </url>
     <url>
@@ -2733,11 +2805,35 @@
          <lastmod>2026-08-23</lastmod>
     </url>
     <url>
+         <loc>https://endstone.dev/latest/reference/cpp/item__tag__ingredient_8h/</loc>
+         <lastmod>2026-08-23</lastmod>
+    </url>
+    <url>
+         <loc>https://endstone.dev/latest/reference/cpp/item__tag__ingredient_8h_source/</loc>
+         <lastmod>2026-08-23</lastmod>
+    </url>
+    <url>
          <loc>https://endstone.dev/latest/reference/cpp/item__type_8h/</loc>
          <lastmod>2026-08-23</lastmod>
     </url>
     <url>
          <loc>https://endstone.dev/latest/reference/cpp/item__type_8h_source/</loc>
+         <lastmod>2026-08-23</lastmod>
+    </url>
+    <url>
+         <loc>https://endstone.dev/latest/reference/cpp/item__type__ingredient_8h/</loc>
+         <lastmod>2026-08-23</lastmod>
+    </url>
+    <url>
+         <loc>https://endstone.dev/latest/reference/cpp/item__type__ingredient_8h_source/</loc>
+         <lastmod>2026-08-23</lastmod>
+    </url>
+    <url>
+         <loc>https://endstone.dev/latest/reference/cpp/molang__ingredient_8h/</loc>
+         <lastmod>2026-08-23</lastmod>
+    </url>
+    <url>
+         <loc>https://endstone.dev/latest/reference/cpp/molang__ingredient_8h_source/</loc>
          <lastmod>2026-08-23</lastmod>
     </url>
     <url>
@@ -2754,6 +2850,54 @@
     </url>
     <url>
          <loc>https://endstone.dev/latest/reference/cpp/recipe_8h_source/</loc>
+         <lastmod>2026-08-23</lastmod>
+    </url>
+    <url>
+         <loc>https://endstone.dev/latest/reference/cpp/recipe__ingredient_8h/</loc>
+         <lastmod>2026-08-23</lastmod>
+    </url>
+    <url>
+         <loc>https://endstone.dev/latest/reference/cpp/recipe__ingredient_8h_source/</loc>
+         <lastmod>2026-08-23</lastmod>
+    </url>
+    <url>
+         <loc>https://endstone.dev/latest/reference/cpp/shaped__recipe_8h/</loc>
+         <lastmod>2026-08-23</lastmod>
+    </url>
+    <url>
+         <loc>https://endstone.dev/latest/reference/cpp/shaped__recipe_8h_source/</loc>
+         <lastmod>2026-08-23</lastmod>
+    </url>
+    <url>
+         <loc>https://endstone.dev/latest/reference/cpp/shapeless__recipe_8h/</loc>
+         <lastmod>2026-08-23</lastmod>
+    </url>
+    <url>
+         <loc>https://endstone.dev/latest/reference/cpp/shapeless__recipe_8h_source/</loc>
+         <lastmod>2026-08-23</lastmod>
+    </url>
+    <url>
+         <loc>https://endstone.dev/latest/reference/cpp/smithing__recipe_8h/</loc>
+         <lastmod>2026-08-23</lastmod>
+    </url>
+    <url>
+         <loc>https://endstone.dev/latest/reference/cpp/smithing__recipe_8h_source/</loc>
+         <lastmod>2026-08-23</lastmod>
+    </url>
+    <url>
+         <loc>https://endstone.dev/latest/reference/cpp/smithing__transform__recipe_8h/</loc>
+         <lastmod>2026-08-23</lastmod>
+    </url>
+    <url>
+         <loc>https://endstone.dev/latest/reference/cpp/smithing__transform__recipe_8h_source/</loc>
+         <lastmod>2026-08-23</lastmod>
+    </url>
+    <url>
+         <loc>https://endstone.dev/latest/reference/cpp/smithing__trim__recipe_8h/</loc>
+         <lastmod>2026-08-23</lastmod>
+    </url>
+    <url>
+         <loc>https://endstone.dev/latest/reference/cpp/smithing__trim__recipe_8h_source/</loc>
          <lastmod>2026-08-23</lastmod>
     </url>
     <url>

@@ -61,6 +61,7 @@ _Represents a level, which may contain actors, chunks and blocks._
 | virtual std::vector&lt; [**NotNull**](classendstone_1_1NotNull.md)&lt; [**Dimension**](classendstone_1_1Dimension.md) &gt; &gt; | [**getDimensions**](#function-getdimensions) () const = 0<br>_Gets a list of all dimensions within this level._  |
 |  [**T**](classendstone_1_1Identifier.md) | [**getGameRule**](#function-getgamerule) ([**GameRuleId**](classendstone_1_1GameRuleId.md)&lt; [**T**](classendstone_1_1Identifier.md) &gt; rule) const<br>_Gets the value of a game rule._  |
 | virtual std::string | [**getName**](#function-getname) () const = 0<br>_Gets the unique name of this level._  |
+| virtual std::vector&lt; [**NotNull**](classendstone_1_1NotNull.md)&lt; [**Recipe**](classendstone_1_1Recipe.md) &gt; &gt; | [**getRecipes**](#function-getrecipes) () const = 0<br>_Get the list of crafting recipes._  |
 | virtual std::int64\_t | [**getSeed**](#function-getseed) () const = 0<br>_Gets the Seed for this level._  |
 | virtual [**int**](classendstone_1_1Identifier.md) | [**getTime**](#function-gettime) () const = 0<br>_Gets the relative in-game time of this level._  |
 |  [**bool**](classendstone_1_1Identifier.md) | [**hasGameRule**](#function-hasgamerule) ([**GameRuleId**](classendstone_1_1GameRuleId.md)&lt; [**T**](classendstone_1_1Identifier.md) &gt; rule) const<br>_Checks if a game rule exists._  |
@@ -387,6 +388,31 @@ virtual std::string endstone::Level::getName () const = 0
 **Returns:**
 
 Name of this level 
+
+
+
+
+
+        
+
+<hr>
+
+
+
+### function getRecipes 
+
+_Get the list of crafting recipes._ 
+```C++
+virtual std::vector< NotNull < Recipe > > endstone::Level::getRecipes () const = 0
+```
+
+
+
+
+
+**Returns:**
+
+a list of recipes 
 
 
 

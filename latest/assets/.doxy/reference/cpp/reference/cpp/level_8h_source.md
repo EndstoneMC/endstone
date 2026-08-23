@@ -31,6 +31,7 @@
 
 #include "endstone/actor/actor.h"
 #include "endstone/game_rule.h"
+#include "endstone/inventory/recipe.h"
 #include "endstone/level/dimension.h"
 #include "endstone/level/dimension_creator.h"
 
@@ -79,6 +80,8 @@ public:
     {
         return _setGameRule(rule, value);
     }
+
+    [[nodiscard]] virtual std::vector<NotNull<Recipe>> getRecipes() const = 0;
 };
 
 }  // namespace endstone

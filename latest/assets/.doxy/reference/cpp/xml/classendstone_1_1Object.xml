@@ -6,6 +6,8 @@
     <derivedcompoundref refid="classendstone_1_1Command" prot="public" virt="non-virtual">endstone::Command</derivedcompoundref>
     <derivedcompoundref refid="classendstone_1_1ItemMeta" prot="public" virt="non-virtual">endstone::ItemMeta</derivedcompoundref>
     <derivedcompoundref refid="classendstone_1_1Permissible" prot="public" virt="non-virtual">endstone::Permissible</derivedcompoundref>
+    <derivedcompoundref refid="classendstone_1_1Recipe" prot="public" virt="non-virtual">endstone::Recipe</derivedcompoundref>
+    <derivedcompoundref refid="classendstone_1_1RecipeIngredient" prot="public" virt="non-virtual">endstone::RecipeIngredient</derivedcompoundref>
     <includes refid="object_8h" local="no">endstone/object.h</includes>
     <sectiondef kind="public-func">
       <memberdef kind="function" id="classendstone_1_1Object_1adfddc886af4b1d0e09ddac7d0391b4d2" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
@@ -217,6 +219,18 @@
         <childnode refid="19" relation="public-inheritance">
         </childnode>
       </node>
+      <node id="36">
+        <label>endstone::ComplexAliasIngredient</label>
+        <link refid="classendstone_1_1ComplexAliasIngredient"/>
+        <childnode refid="35" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="29">
+        <label>endstone::ComplexRecipe</label>
+        <link refid="classendstone_1_1ComplexRecipe"/>
+        <childnode refid="28" relation="public-inheritance">
+        </childnode>
+      </node>
       <node id="26">
         <label>endstone::ConsoleCommandSender</label>
         <link refid="classendstone_1_1ConsoleCommandSender"/>
@@ -239,6 +253,12 @@
         <label>endstone::CrossbowMeta</label>
         <link refid="classendstone_1_1CrossbowMeta"/>
         <childnode refid="12" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="37">
+        <label>endstone::ExactIngredient</label>
+        <link refid="classendstone_1_1ExactIngredient"/>
+        <childnode refid="35" relation="public-inheritance">
         </childnode>
       </node>
       <node id="5">
@@ -265,6 +285,18 @@
         <childnode refid="1" relation="public-inheritance">
         </childnode>
       </node>
+      <node id="38">
+        <label>endstone::ItemTagIngredient</label>
+        <link refid="classendstone_1_1ItemTagIngredient"/>
+        <childnode refid="35" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="39">
+        <label>endstone::ItemTypeIngredient</label>
+        <link refid="classendstone_1_1ItemTypeIngredient"/>
+        <childnode refid="35" relation="public-inheritance">
+        </childnode>
+      </node>
       <node id="6">
         <label>endstone::Lectern</label>
         <link refid="classendstone_1_1Lectern"/>
@@ -281,6 +313,12 @@
         <label>endstone::Mob</label>
         <link refid="classendstone_1_1Mob"/>
         <childnode refid="20" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="40">
+        <label>endstone::MolangIngredient</label>
+        <link refid="classendstone_1_1MolangIngredient"/>
+        <childnode refid="35" relation="public-inheritance">
         </childnode>
       </node>
       <node id="1">
@@ -317,10 +355,52 @@
         <childnode refid="19" relation="public-inheritance">
         </childnode>
       </node>
+      <node id="28">
+        <label>endstone::Recipe</label>
+        <link refid="classendstone_1_1Recipe"/>
+        <childnode refid="1" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="35">
+        <label>endstone::RecipeIngredient</label>
+        <link refid="classendstone_1_1RecipeIngredient"/>
+        <childnode refid="1" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="30">
+        <label>endstone::ShapedRecipe</label>
+        <link refid="classendstone_1_1ShapedRecipe"/>
+        <childnode refid="28" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="31">
+        <label>endstone::ShapelessRecipe</label>
+        <link refid="classendstone_1_1ShapelessRecipe"/>
+        <childnode refid="28" relation="public-inheritance">
+        </childnode>
+      </node>
       <node id="9">
         <label>endstone::Sign</label>
         <link refid="classendstone_1_1Sign"/>
         <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="32">
+        <label>endstone::SmithingRecipe</label>
+        <link refid="classendstone_1_1SmithingRecipe"/>
+        <childnode refid="28" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="33">
+        <label>endstone::SmithingTransformRecipe</label>
+        <link refid="classendstone_1_1SmithingTransformRecipe"/>
+        <childnode refid="32" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="34">
+        <label>endstone::SmithingTrimRecipe</label>
+        <link refid="classendstone_1_1SmithingTrimRecipe"/>
+        <childnode refid="32" relation="public-inheritance">
         </childnode>
       </node>
       <node id="16">

@@ -266,13 +266,13 @@
         </childnode>
         <childnode refid="104" relation="include">
         </childnode>
-        <childnode refid="148" relation="include">
+        <childnode refid="160" relation="include">
         </childnode>
-        <childnode refid="149" relation="include">
+        <childnode refid="161" relation="include">
         </childnode>
-        <childnode refid="150" relation="include">
+        <childnode refid="162" relation="include">
         </childnode>
-        <childnode refid="151" relation="include">
+        <childnode refid="163" relation="include">
         </childnode>
         <childnode refid="81" relation="include">
         </childnode>
@@ -283,11 +283,11 @@
         <childnode refid="105" relation="include">
         </childnode>
       </node>
-      <node id="148">
+      <node id="160">
         <label>include/endstone/command/command_sender_wrapper.h</label>
         <link refid="command__sender__wrapper_8h_source"/>
       </node>
-      <node id="149">
+      <node id="161">
         <label>include/endstone/command/console_command_sender.h</label>
         <link refid="console__command__sender_8h_source"/>
       </node>
@@ -295,7 +295,7 @@
         <label>include/endstone/command/plugin_command.h</label>
         <link refid="plugin__command_8h_source"/>
       </node>
-      <node id="150">
+      <node id="162">
         <label>include/endstone/command/proxied_command_sender.h</label>
         <link refid="proxied__command__sender_8h_source"/>
       </node>
@@ -491,7 +491,7 @@
         <label>include/endstone/event/chunk/chunk_unload_event.h</label>
         <link refid="chunk__unload__event_8h_source"/>
       </node>
-      <node id="151">
+      <node id="163">
         <label>include/endstone/event/command/unknown_command_event.h</label>
         <link refid="unknown__command__event_8h_source"/>
       </node>
@@ -505,7 +505,7 @@
         <label>include/endstone/event/handler_list.h</label>
         <link refid="handler__list_8h_source"/>
       </node>
-      <node id="135">
+      <node id="136">
         <label>include/endstone/event/inventory/inventory_event.h</label>
         <link refid="inventory__event_8h_source"/>
         <childnode refid="28" relation="include">
@@ -869,20 +869,32 @@
         <childnode refid="18" relation="include">
         </childnode>
       </node>
-      <node id="143">
+      <node id="155">
         <label>include/endstone/game_rule.h</label>
         <link refid="game__rule_8h_source"/>
         <childnode refid="14" relation="include">
         </childnode>
       </node>
+      <node id="146">
+        <label>include/endstone/inventory/complex_alias_ingredient.h</label>
+        <link refid="complex__alias__ingredient_8h_source"/>
+      </node>
+      <node id="139">
+        <label>include/endstone/inventory/complex_recipe.h</label>
+        <link refid="complex__recipe_8h_source"/>
+      </node>
       <node id="134">
+        <label>include/endstone/inventory/exact_ingredient.h</label>
+        <link refid="exact__ingredient_8h_source"/>
+      </node>
+      <node id="135">
         <label>include/endstone/inventory/inventory.h</label>
         <link refid="inventory_8h_source"/>
         <childnode refid="114" relation="include">
         </childnode>
-        <childnode refid="135" relation="include">
-        </childnode>
         <childnode refid="136" relation="include">
+        </childnode>
+        <childnode refid="137" relation="include">
         </childnode>
       </node>
       <node id="132">
@@ -920,28 +932,42 @@
         </childnode>
         <childnode refid="134" relation="include">
         </childnode>
-        <childnode refid="137" relation="include">
+        <childnode refid="135" relation="include">
+        </childnode>
+        <childnode refid="138" relation="include">
+        </childnode>
+        <childnode refid="145" relation="include">
         </childnode>
         <childnode refid="8" relation="include">
         </childnode>
       </node>
-      <node id="144">
+      <node id="147">
+        <label>include/endstone/inventory/item_tag_ingredient.h</label>
+        <link refid="item__tag__ingredient_8h_source"/>
+      </node>
+      <node id="156">
         <label>include/endstone/inventory/item_type.h</label>
         <link refid="item__type_8h_source"/>
-        <childnode refid="134" relation="include">
+        <childnode refid="135" relation="include">
         </childnode>
         <childnode refid="132" relation="include">
         </childnode>
         <childnode refid="133" relation="include">
         </childnode>
+        <childnode refid="148" relation="include">
+        </childnode>
       </node>
-      <node id="142">
+      <node id="148">
+        <label>include/endstone/inventory/item_type_ingredient.h</label>
+        <link refid="item__type__ingredient_8h_source"/>
+      </node>
+      <node id="154">
         <label>include/endstone/inventory/meta/book_meta.h</label>
         <link refid="book__meta_8h_source"/>
         <childnode refid="39" relation="include">
         </childnode>
       </node>
-      <node id="138">
+      <node id="150">
         <label>include/endstone/inventory/meta/crossbow_meta.h</label>
         <link refid="crossbow__meta_8h_source"/>
       </node>
@@ -952,7 +978,43 @@
         </childnode>
         <childnode refid="133" relation="include">
         </childnode>
-        <childnode refid="138" relation="include">
+        <childnode refid="150" relation="include">
+        </childnode>
+        <childnode refid="151" relation="include">
+        </childnode>
+        <childnode refid="152" relation="include">
+        </childnode>
+        <childnode refid="153" relation="include">
+        </childnode>
+      </node>
+      <node id="151">
+        <label>include/endstone/inventory/meta/map_meta.h</label>
+        <link refid="map__meta_8h_source"/>
+      </node>
+      <node id="152">
+        <label>include/endstone/inventory/meta/potion_meta.h</label>
+        <link refid="potion__meta_8h_source"/>
+      </node>
+      <node id="153">
+        <label>include/endstone/inventory/meta/writable_book_meta.h</label>
+        <link refid="writable__book__meta_8h_source"/>
+        <childnode refid="154" relation="include">
+        </childnode>
+      </node>
+      <node id="149">
+        <label>include/endstone/inventory/molang_ingredient.h</label>
+        <link refid="molang__ingredient_8h_source"/>
+      </node>
+      <node id="137">
+        <label>include/endstone/inventory/player_inventory.h</label>
+        <link refid="player__inventory_8h_source"/>
+        <childnode refid="26" relation="include">
+        </childnode>
+      </node>
+      <node id="138">
+        <label>include/endstone/inventory/recipe.h</label>
+        <link refid="recipe_8h_source"/>
+        <childnode refid="36" relation="include">
         </childnode>
         <childnode refid="139" relation="include">
         </childnode>
@@ -960,30 +1022,50 @@
         </childnode>
         <childnode refid="141" relation="include">
         </childnode>
-      </node>
-      <node id="139">
-        <label>include/endstone/inventory/meta/map_meta.h</label>
-        <link refid="map__meta_8h_source"/>
-      </node>
-      <node id="140">
-        <label>include/endstone/inventory/meta/potion_meta.h</label>
-        <link refid="potion__meta_8h_source"/>
-      </node>
-      <node id="141">
-        <label>include/endstone/inventory/meta/writable_book_meta.h</label>
-        <link refid="writable__book__meta_8h_source"/>
         <childnode refid="142" relation="include">
         </childnode>
-      </node>
-      <node id="136">
-        <label>include/endstone/inventory/player_inventory.h</label>
-        <link refid="player__inventory_8h_source"/>
-        <childnode refid="26" relation="include">
+        <childnode refid="14" relation="include">
         </childnode>
       </node>
-      <node id="137">
-        <label>include/endstone/inventory/recipe.h</label>
-        <link refid="recipe_8h_source"/>
+      <node id="145">
+        <label>include/endstone/inventory/recipe_ingredient.h</label>
+        <link refid="recipe__ingredient_8h_source"/>
+        <childnode refid="146" relation="include">
+        </childnode>
+        <childnode refid="134" relation="include">
+        </childnode>
+        <childnode refid="147" relation="include">
+        </childnode>
+        <childnode refid="148" relation="include">
+        </childnode>
+        <childnode refid="149" relation="include">
+        </childnode>
+        <childnode refid="138" relation="include">
+        </childnode>
+      </node>
+      <node id="140">
+        <label>include/endstone/inventory/shaped_recipe.h</label>
+        <link refid="shaped__recipe_8h_source"/>
+      </node>
+      <node id="141">
+        <label>include/endstone/inventory/shapeless_recipe.h</label>
+        <link refid="shapeless__recipe_8h_source"/>
+      </node>
+      <node id="142">
+        <label>include/endstone/inventory/smithing_recipe.h</label>
+        <link refid="smithing__recipe_8h_source"/>
+        <childnode refid="143" relation="include">
+        </childnode>
+        <childnode refid="144" relation="include">
+        </childnode>
+      </node>
+      <node id="143">
+        <label>include/endstone/inventory/smithing_transform_recipe.h</label>
+        <link refid="smithing__transform__recipe_8h_source"/>
+      </node>
+      <node id="144">
+        <label>include/endstone/inventory/smithing_trim_recipe.h</label>
+        <link refid="smithing__trim__recipe_8h_source"/>
       </node>
       <node id="92">
         <label>include/endstone/level/chunk.h</label>
@@ -1018,22 +1100,22 @@
         <link refid="permissible_8h_source"/>
         <childnode refid="3" relation="include">
         </childnode>
-        <childnode refid="152" relation="include">
+        <childnode refid="164" relation="include">
         </childnode>
-        <childnode refid="153" relation="include">
+        <childnode refid="165" relation="include">
         </childnode>
       </node>
-      <node id="152">
+      <node id="164">
         <label>include/endstone/permissions/permission.h</label>
         <link refid="permission_8h_source"/>
-        <childnode refid="153" relation="include">
+        <childnode refid="165" relation="include">
         </childnode>
         <childnode refid="97" relation="include">
         </childnode>
         <childnode refid="103" relation="include">
         </childnode>
       </node>
-      <node id="153">
+      <node id="165">
         <label>include/endstone/permissions/permission_attachment.h</label>
         <link refid="permission__attachment_8h_source"/>
       </node>
@@ -1081,7 +1163,7 @@
         <label>include/endstone/plugin/plugin_loader.h</label>
         <link refid="plugin__loader_8h_source"/>
       </node>
-      <node id="146">
+      <node id="158">
         <label>include/endstone/potion/effect.h</label>
         <link refid="effect_8h_source"/>
         <childnode refid="19" relation="include">
@@ -1089,16 +1171,16 @@
         <childnode refid="22" relation="include">
         </childnode>
       </node>
-      <node id="145">
+      <node id="157">
         <label>include/endstone/potion/effect_type.h</label>
         <link refid="effect__type_8h_source"/>
-        <childnode refid="146" relation="include">
+        <childnode refid="158" relation="include">
         </childnode>
       </node>
-      <node id="147">
+      <node id="159">
         <label>include/endstone/potion/potion_type.h</label>
         <link refid="potion__type_8h_source"/>
-        <childnode refid="140" relation="include">
+        <childnode refid="152" relation="include">
         </childnode>
       </node>
       <node id="106">
@@ -1112,13 +1194,13 @@
         </childnode>
         <childnode refid="130" relation="include">
         </childnode>
-        <childnode refid="143" relation="include">
+        <childnode refid="155" relation="include">
         </childnode>
-        <childnode refid="144" relation="include">
+        <childnode refid="156" relation="include">
         </childnode>
-        <childnode refid="145" relation="include">
+        <childnode refid="157" relation="include">
         </childnode>
-        <childnode refid="147" relation="include">
+        <childnode refid="159" relation="include">
         </childnode>
       </node>
       <node id="102">

@@ -94,8 +94,9 @@ Inherits the following classes: [endstone::Cancellable](classendstone_1_1Cancell
 | Type | Name |
 | ---: | :--- |
 |   | [**ENDSTONE\_EVENT**](#function-endstone_event) ([**PlayerCraftItemEvent**](classendstone_1_1PlayerCraftItemEvent.md)) <br> |
-|   | [**PlayerCraftItemEvent**](#function-playercraftitemevent) ([**const**](classendstone_1_1Identifier.md) [**NotNull**](classendstone_1_1NotNull.md)&lt; [**Player**](classendstone_1_1Player.md) &gt; & player, std::vector&lt; [**ItemStack**](classendstone_1_1ItemStack.md) &gt; ingredients, std::vector&lt; [**ItemStack**](classendstone_1_1ItemStack.md) &gt; results, [**int**](classendstone_1_1Identifier.md) repetitions) <br> |
+|   | [**PlayerCraftItemEvent**](#function-playercraftitemevent) ([**const**](classendstone_1_1Identifier.md) [**NotNull**](classendstone_1_1NotNull.md)&lt; [**Player**](classendstone_1_1Player.md) &gt; & player, [**NotNull**](classendstone_1_1NotNull.md)&lt; [**Recipe**](classendstone_1_1Recipe.md) &gt; recipe, std::vector&lt; [**ItemStack**](classendstone_1_1ItemStack.md) &gt; ingredients, std::vector&lt; [**ItemStack**](classendstone_1_1ItemStack.md) &gt; results, [**int**](classendstone_1_1Identifier.md) repetitions) <br> |
 |  [**const**](classendstone_1_1Identifier.md) std::vector&lt; [**ItemStack**](classendstone_1_1ItemStack.md) &gt; & | [**getIngredients**](#function-getingredients) () const<br>_Gets the ingredients a single craft consumes._  |
+|  [**NotNull**](classendstone_1_1NotNull.md)&lt; [**Recipe**](classendstone_1_1Recipe.md) &gt; | [**getRecipe**](#function-getrecipe) () const<br> |
 |  [**int**](classendstone_1_1Identifier.md) | [**getRepetitions**](#function-getrepetitions) () const<br>_Gets the number of times the recipe is being crafted._  |
 |  [**const**](classendstone_1_1Identifier.md) std::vector&lt; [**ItemStack**](classendstone_1_1ItemStack.md) &gt; & | [**getResults**](#function-getresults) () const<br>_Gets the items a single craft produces._  |
 |  [**void**](classendstone_1_1Identifier.md) | [**setRepetitions**](#function-setrepetitions) ([**int**](classendstone_1_1Identifier.md) repetitions) <br>_Sets the number of times the recipe is being crafted._  |
@@ -242,6 +243,7 @@ endstone::PlayerCraftItemEvent::ENDSTONE_EVENT (
 ```C++
 inline endstone::PlayerCraftItemEvent::PlayerCraftItemEvent (
     const  NotNull < Player > & player,
+    NotNull < Recipe > recipe,
     std::vector< ItemStack > ingredients,
     std::vector< ItemStack > results,
     int repetitions
@@ -276,6 +278,30 @@ These are the items in the crafting grid where the player used one. Crafting fro
 **Returns:**
 
 the ingredients the craft consumes 
+
+
+
+
+
+        
+
+<hr>
+
+
+
+### function getRecipe 
+
+```C++
+inline NotNull < Recipe > endstone::PlayerCraftItemEvent::getRecipe () const
+```
+
+
+
+
+
+**Returns:**
+
+A copy of the current recipe on the crafting matrix. 
 
 
 

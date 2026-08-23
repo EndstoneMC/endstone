@@ -99,6 +99,7 @@ _Represents a server implementation._
 | virtual [**int**](classendstone_1_1Identifier.md) | [**getPort**](#function-getport) () const = 0<br>_Get the game port that the server runs on._  |
 | virtual [**int**](classendstone_1_1Identifier.md) | [**getPortV6**](#function-getportv6) () const = 0<br>_Get the game port (IPv6) that the server runs on._  |
 | virtual [**int**](classendstone_1_1Identifier.md) | [**getProtocolVersion**](#function-getprotocolversion) () const = 0<br>_Gets the network protocol version that this server supports._  |
+| virtual std::vector&lt; [**NotNull**](classendstone_1_1NotNull.md)&lt; [**Recipe**](classendstone_1_1Recipe.md) &gt; &gt; | [**getRecipes**](#function-getrecipes) () const = 0<br>_Get the list of crafting recipes._  |
 |  [**const**](classendstone_1_1Identifier.md) [**Registry**](classendstone_1_1Registry.md)&lt; [**T**](classendstone_1_1Identifier.md) &gt; & | [**getRegistry**](#function-getregistry) () const<br>_Returns the registry for the given element type._  |
 | virtual [**Scheduler**](classendstone_1_1Scheduler.md) & | [**getScheduler**](#function-getscheduler) () const = 0<br>_Gets the scheduler for managing scheduled events._  |
 | virtual [**Nullable**](classendstone_1_1Nullable.md)&lt; [**Scoreboard**](classendstone_1_1Scoreboard.md) &gt; | [**getScoreboard**](#function-getscoreboard) () const = 0<br>_Gets the primary_ [_**Scoreboard**_](classendstone_1_1Scoreboard.md) _controlled by the server._ |
@@ -1330,6 +1331,31 @@ virtual int endstone::Server::getProtocolVersion () const = 0
 **Returns:**
 
 version of network protocol 
+
+
+
+
+
+        
+
+<hr>
+
+
+
+### function getRecipes 
+
+_Get the list of crafting recipes._ 
+```C++
+virtual std::vector< NotNull < Recipe > > endstone::Server::getRecipes () const = 0
+```
+
+
+
+
+
+**Returns:**
+
+a list of recipes 
 
 
 

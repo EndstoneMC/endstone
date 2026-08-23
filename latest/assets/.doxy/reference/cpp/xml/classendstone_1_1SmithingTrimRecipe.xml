@@ -1,0 +1,114 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.8" xml:lang="en-US">
+  <compounddef id="classendstone_1_1SmithingTrimRecipe" kind="class" language="C++" prot="public" abstract="yes">
+    <compoundname>endstone::SmithingTrimRecipe</compoundname>
+    <basecompoundref refid="classendstone_1_1SmithingRecipe" prot="public" virt="non-virtual">endstone::SmithingRecipe</basecompoundref>
+    <includes refid="smithing__trim__recipe_8h" local="no">endstone/inventory/smithing_trim_recipe.h</includes>
+    <sectiondef kind="public-func">
+      <memberdef kind="function" id="classendstone_1_1SmithingTrimRecipe_1a170abfa36bc685dda72e3336411fc9c7" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>endstone::SmithingTrimRecipe::~SmithingTrimRecipe</definition>
+        <argsstring>() override=default</argsstring>
+        <name>~SmithingTrimRecipe</name>
+        <qualifiedname>endstone::SmithingTrimRecipe::~SmithingTrimRecipe</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/inventory/smithing_trim_recipe.h" line="25" column="5"/>
+      </memberdef>
+      <memberdef kind="function" id="classendstone_1_1SmithingTrimRecipe_1a50bcbd929db9884a7c17f412e12ced64" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
+        <type><ref refid="classendstone_1_1Nullable" kindref="compound">Nullable</ref>&lt; <ref refid="classendstone_1_1RecipeIngredient" kindref="compound">RecipeIngredient</ref> &gt;</type>
+        <definition>virtual Nullable&lt; RecipeIngredient &gt; endstone::SmithingTrimRecipe::getTemplate</definition>
+        <argsstring>() const =0</argsstring>
+        <name>getTemplate</name>
+        <qualifiedname>endstone::SmithingTrimRecipe::getTemplate</qualifiedname>
+        <briefdescription>
+<para>Get the template recipe item. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="return"><para>template choice </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/inventory/smithing_trim_recipe.h" line="32" column="23"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+<para>Represents a smithing trim recipe. </para>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="4">
+        <label>endstone::Object</label>
+        <link refid="classendstone_1_1Object"/>
+      </node>
+      <node id="3">
+        <label>endstone::Recipe</label>
+        <link refid="classendstone_1_1Recipe"/>
+        <childnode refid="4" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>endstone::SmithingRecipe</label>
+        <link refid="classendstone_1_1SmithingRecipe"/>
+        <childnode refid="3" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="1">
+        <label>endstone::SmithingTrimRecipe</label>
+        <link refid="classendstone_1_1SmithingTrimRecipe"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="4">
+        <label>endstone::Object</label>
+        <link refid="classendstone_1_1Object"/>
+      </node>
+      <node id="3">
+        <label>endstone::Recipe</label>
+        <link refid="classendstone_1_1Recipe"/>
+        <childnode refid="4" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>endstone::SmithingRecipe</label>
+        <link refid="classendstone_1_1SmithingRecipe"/>
+        <childnode refid="3" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="1">
+        <label>endstone::SmithingTrimRecipe</label>
+        <link refid="classendstone_1_1SmithingTrimRecipe"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+    </collaborationgraph>
+    <location file="include/endstone/inventory/smithing_trim_recipe.h" line="23" column="1" bodyfile="include/endstone/inventory/smithing_trim_recipe.h" bodystart="23" bodyend="33"/>
+    <listofallmembers>
+      <member refid="classendstone_1_1Object_1a798b5128ce018bbbe8ca949ba78c3db1" prot="public" virt="non-virtual"><scope>endstone::SmithingTrimRecipe</scope><name>as</name></member>
+      <member refid="classendstone_1_1Object_1ae0f38a62da4c186fce272145e2590cc1" prot="public" virt="non-virtual"><scope>endstone::SmithingTrimRecipe</scope><name>as</name></member>
+      <member refid="classendstone_1_1SmithingRecipe_1aa2920c638e232a3c57db1909dc40c4c5" prot="public" virt="pure-virtual"><scope>endstone::SmithingTrimRecipe</scope><name>getAddition</name></member>
+      <member refid="classendstone_1_1SmithingRecipe_1a9ed7ef19c3b78b19f2dba0847774c8f9" prot="public" virt="pure-virtual"><scope>endstone::SmithingTrimRecipe</scope><name>getBase</name></member>
+      <member refid="classendstone_1_1Object_1aaaeb27e8e442e5adb772ae0d1af1c33f" prot="public" virt="pure-virtual"><scope>endstone::SmithingTrimRecipe</scope><name>getClassTypeId</name></member>
+      <member refid="classendstone_1_1Recipe_1ab9974a01f5e5570b0c2b9b88b9fb7b58" prot="public" virt="pure-virtual"><scope>endstone::SmithingTrimRecipe</scope><name>getIngredients</name></member>
+      <member refid="classendstone_1_1Recipe_1a7db7fc6f3cd018dc4aeb841098806a90" prot="public" virt="pure-virtual"><scope>endstone::SmithingTrimRecipe</scope><name>getRecipeId</name></member>
+      <member refid="classendstone_1_1Recipe_1a4e20782db3c7f6ea868059af8f2b1cc1" prot="public" virt="pure-virtual"><scope>endstone::SmithingTrimRecipe</scope><name>getResult</name></member>
+      <member refid="classendstone_1_1Recipe_1ab353c82a04f30ce3a1d89d78d1ffe043" prot="public" virt="pure-virtual"><scope>endstone::SmithingTrimRecipe</scope><name>getTag</name></member>
+      <member refid="classendstone_1_1SmithingTrimRecipe_1a50bcbd929db9884a7c17f412e12ced64" prot="public" virt="pure-virtual"><scope>endstone::SmithingTrimRecipe</scope><name>getTemplate</name></member>
+      <member refid="classendstone_1_1Object_1ae8213ae15ad1b14e4631399c6b18960a" prot="public" virt="non-virtual"><scope>endstone::SmithingTrimRecipe</scope><name>is</name></member>
+      <member refid="classendstone_1_1Object_1a20376536a5f64ef02b2569af132171d4" prot="public" virt="pure-virtual"><scope>endstone::SmithingTrimRecipe</scope><name>isInstanceOf</name></member>
+      <member refid="classendstone_1_1Object_1adfddc886af4b1d0e09ddac7d0391b4d2" prot="public" virt="virtual"><scope>endstone::SmithingTrimRecipe</scope><name>~Object</name></member>
+      <member refid="classendstone_1_1Recipe_1a8252ec2109ad301042cda25df98b923e" prot="public" virt="non-virtual"><scope>endstone::SmithingTrimRecipe</scope><name>~Recipe</name></member>
+      <member refid="classendstone_1_1SmithingRecipe_1a813e4b0f6778211c6bd0cf73143039f2" prot="public" virt="non-virtual"><scope>endstone::SmithingTrimRecipe</scope><name>~SmithingRecipe</name></member>
+      <member refid="classendstone_1_1SmithingTrimRecipe_1a170abfa36bc685dda72e3336411fc9c7" prot="public" virt="non-virtual"><scope>endstone::SmithingTrimRecipe</scope><name>~SmithingTrimRecipe</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

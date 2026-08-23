@@ -805,6 +805,13 @@
     <member refid="classendstone_1_1CommandSenderWrapper_1ae4c0dbf8ed831f306f660688e294dcce" kind="function"><name>getServer</name></member>
     <member refid="classendstone_1_1CommandSenderWrapper_1af7a2f45adfa1e55eda23bd39a16d3642" kind="function"><name>getName</name></member>
   </compound>
+  <compound refid="classendstone_1_1ComplexAliasIngredient" kind="class"><name>endstone::ComplexAliasIngredient</name>
+    <member refid="classendstone_1_1ComplexAliasIngredient_1ae1a633af695ec991cd465a7512bf3b7d" kind="function"><name>~ComplexAliasIngredient</name></member>
+    <member refid="classendstone_1_1ComplexAliasIngredient_1ab67e2fa1ee696004d4f52c7f32d6b530" kind="function"><name>getAlias</name></member>
+  </compound>
+  <compound refid="classendstone_1_1ComplexRecipe" kind="class"><name>endstone::ComplexRecipe</name>
+    <member refid="classendstone_1_1ComplexRecipe_1ad4d503cae24033e5ab8d3397fcb63ef1" kind="function"><name>~ComplexRecipe</name></member>
+  </compound>
   <compound refid="classendstone_1_1CompoundTag" kind="class"><name>endstone::CompoundTag</name>
     <member refid="classendstone_1_1CompoundTag_1afda677b68ae8b9344ceda952fbb75d67" kind="typedef"><name>key_type</name></member>
     <member refid="classendstone_1_1CompoundTag_1ae595ad1781cf4d0d7c4211c798fe5881" kind="typedef"><name>value_type</name></member>
@@ -1102,6 +1109,10 @@
     <member refid="classendstone_1_1EventHandler_1a09736eece61298b452a850f687b9a8ff" kind="function"><name>isIgnoreCancelled</name></member>
     <member refid="classendstone_1_1EventHandler_1a9f180123779aa67ed32f51753a40290c" kind="function"><name>callEvent</name></member>
     <member refid="classendstone_1_1EventHandler_1aa8bc3d7f90a485cefdf0cbae3f95ffc0" kind="function"><name>getEventType</name></member>
+  </compound>
+  <compound refid="classendstone_1_1ExactIngredient" kind="class"><name>endstone::ExactIngredient</name>
+    <member refid="classendstone_1_1ExactIngredient_1af7fc8203b94e1c56bbe91f2c58bc8593" kind="function"><name>~ExactIngredient</name></member>
+    <member refid="classendstone_1_1ExactIngredient_1aebd2187bb1fdd25ecef14a081dccc3c5" kind="function"><name>getItemStack</name></member>
   </compound>
   <compound refid="classendstone_1_1Form" kind="class"><name>endstone::Form</name>
     <member refid="classendstone_1_1Form_1a325e7cdc52fbbf536cc9fe8a32ba06c8" kind="typedef"><name>OnCloseCallback</name></member>
@@ -1525,6 +1536,10 @@
     <member refid="classendstone_1_1ItemStack_1a5fe552f9a77b134c4abf028e2432d47e" kind="function"><name>setItemMeta</name></member>
     <member refid="classendstone_1_1ItemStack_1ab48d69432cdda322e63a390afdaccb7d" kind="function"><name>ItemStack</name></member>
   </compound>
+  <compound refid="classendstone_1_1ItemTagIngredient" kind="class"><name>endstone::ItemTagIngredient</name>
+    <member refid="classendstone_1_1ItemTagIngredient_1a51465ac4b0a4b583c5601185c3c5820e" kind="function"><name>~ItemTagIngredient</name></member>
+    <member refid="classendstone_1_1ItemTagIngredient_1a6dfd8323c891c0fd1f40eee218f919eb" kind="function"><name>getItemTag</name></member>
+  </compound>
   <compound refid="classendstone_1_1ItemType" kind="class"><name>endstone::ItemType</name>
     <member refid="classendstone_1_1ItemType_1aee73c12bf0391b460432889b55496e59" kind="variable"><name>Air</name></member>
     <member refid="classendstone_1_1ItemType_1a1218189315a2083b2d08228fff42fa71" kind="function"><name>getTranslationKey</name></member>
@@ -1533,6 +1548,10 @@
     <member refid="classendstone_1_1ItemType_1ad6e45d72ee92f575f9913674f3beacd9" kind="function"><name>getMaxDurability</name></member>
     <member refid="classendstone_1_1ItemType_1afc38f163e45fb047c3f66d93131838eb" kind="function"><name>createItemStack</name></member>
     <member refid="classendstone_1_1ItemType_1ae41d77467211c50202ccfc4b01e2a633" kind="function"><name>createItemStack</name></member>
+  </compound>
+  <compound refid="classendstone_1_1ItemTypeIngredient" kind="class"><name>endstone::ItemTypeIngredient</name>
+    <member refid="classendstone_1_1ItemTypeIngredient_1a9ad4236610fe4b87016b737ee8dcd193" kind="function"><name>~ItemTypeIngredient</name></member>
+    <member refid="classendstone_1_1ItemTypeIngredient_1a2c05c91808b7cd114452bba8b08322da" kind="function"><name>getItemType</name></member>
   </compound>
   <compound refid="structendstone_1_1detail_1_1JoinView" kind="struct"><name>endstone::detail::JoinView</name>
     <member refid="structendstone_1_1detail_1_1JoinView_1a8905b05b2d04a6a70ac384c8d2ddd41b" kind="variable"><name>begin</name></member>
@@ -1579,6 +1598,7 @@
     <member refid="classendstone_1_1Level_1a6916cd92f074cd26f9a933dcef0bbc00" kind="function"><name>getGameRule</name></member>
     <member refid="classendstone_1_1Level_1ac710e81ac716a26ee47acb71f660abf4" kind="function"><name>_setGameRule</name></member>
     <member refid="classendstone_1_1Level_1abe694748cb651cd8a2158e3d59c4fa7c" kind="function"><name>setGameRule</name></member>
+    <member refid="classendstone_1_1Level_1a04f451d7959fe1c73745900ad0c3a8e1" kind="function"><name>getRecipes</name></member>
   </compound>
   <compound refid="classendstone_1_1LevelEvent" kind="class"><name>endstone::LevelEvent</name>
     <member refid="classendstone_1_1LevelEvent_1ab3a3f5c2858709f045ea2195567b7892" kind="variable"><name>level_</name></member>
@@ -1860,6 +1880,10 @@
     <member refid="classendstone_1_1ModalForm_1a4192a3d22178a35987c77ce2a4cee2e2" kind="function"><name>setIcon</name></member>
     <member refid="classendstone_1_1ModalForm_1afb79d3eda590aca8e014c5db99715e70" kind="function"><name>getOnSubmit</name></member>
     <member refid="classendstone_1_1ModalForm_1a9b0b97dfd47eb028a0dda6b1229bacec" kind="function"><name>setOnSubmit</name></member>
+  </compound>
+  <compound refid="classendstone_1_1MolangIngredient" kind="class"><name>endstone::MolangIngredient</name>
+    <member refid="classendstone_1_1MolangIngredient_1afaef3bc8e42e58979c912e5c206f23cf" kind="function"><name>~MolangIngredient</name></member>
+    <member refid="classendstone_1_1MolangIngredient_1af67115d8c52062c862858c7dbd98c4f9" kind="function"><name>getExpression</name></member>
   </compound>
   <compound refid="classendstone_1_1MultiLineChart" kind="class"><name>endstone::MultiLineChart</name>
     <member refid="classendstone_1_1MultiLineChart_1ac7402076cc1c5ef968e605d8348602be" kind="typedef"><name>Callback</name></member>
@@ -2203,11 +2227,13 @@
     <member refid="classendstone_1_1PlayerCommandEvent_1a6d2c4a174ce786fc8a1cd6cd8f9ca7c5" kind="function"><name>setCommand</name></member>
   </compound>
   <compound refid="classendstone_1_1PlayerCraftItemEvent" kind="class"><name>endstone::PlayerCraftItemEvent</name>
+    <member refid="classendstone_1_1PlayerCraftItemEvent_1a6b95f9015e529dd66271920e142f7e2a" kind="variable"><name>recipe_</name></member>
     <member refid="classendstone_1_1PlayerCraftItemEvent_1a45a2a20c5e038fc8bb89285a8cac02ad" kind="variable"><name>ingredients_</name></member>
     <member refid="classendstone_1_1PlayerCraftItemEvent_1a72a4ab1becb4a882af91cd93c5f86144" kind="variable"><name>results_</name></member>
     <member refid="classendstone_1_1PlayerCraftItemEvent_1a23f787e96651ba19256d9d9527523aaf" kind="variable"><name>repetitions_</name></member>
     <member refid="classendstone_1_1PlayerCraftItemEvent_1a51d5c8208e09d88cf95647feae9428b0" kind="function"><name>ENDSTONE_EVENT</name></member>
-    <member refid="classendstone_1_1PlayerCraftItemEvent_1af17b3362fbb6ec52553628777cfac1b0" kind="function"><name>PlayerCraftItemEvent</name></member>
+    <member refid="classendstone_1_1PlayerCraftItemEvent_1a4902820bb14cdb96ba571615a8c672b2" kind="function"><name>PlayerCraftItemEvent</name></member>
+    <member refid="classendstone_1_1PlayerCraftItemEvent_1a33947b76d50c2aad68d1b1fd7c541185" kind="function"><name>getRecipe</name></member>
     <member refid="classendstone_1_1PlayerCraftItemEvent_1a336f603d4d5946c333cbdac759411cfd" kind="function"><name>getIngredients</name></member>
     <member refid="classendstone_1_1PlayerCraftItemEvent_1a574dae1a5a5655b03d041247900ce111" kind="function"><name>getResults</name></member>
     <member refid="classendstone_1_1PlayerCraftItemEvent_1af566dc7aca83d6f45e3e82dfb11b2c35" kind="function"><name>setResults</name></member>
@@ -2728,8 +2754,16 @@
     <member refid="classendstone_1_1ProxiedCommandSender_1a8c828f34db5e1330837faee2c6e2ba36" kind="function"><name>getCallee</name></member>
   </compound>
   <compound refid="classendstone_1_1Recipe" kind="class"><name>endstone::Recipe</name>
-    <member refid="classendstone_1_1Recipe_1a7c54e5660b82baa721fa86ebb1e55638" kind="function"><name>~Recipe</name></member>
+    <member refid="classendstone_1_1Recipe_1a8252ec2109ad301042cda25df98b923e" kind="function"><name>~Recipe</name></member>
     <member refid="classendstone_1_1Recipe_1a4e20782db3c7f6ea868059af8f2b1cc1" kind="function"><name>getResult</name></member>
+    <member refid="classendstone_1_1Recipe_1ab9974a01f5e5570b0c2b9b88b9fb7b58" kind="function"><name>getIngredients</name></member>
+    <member refid="classendstone_1_1Recipe_1a7db7fc6f3cd018dc4aeb841098806a90" kind="function"><name>getRecipeId</name></member>
+    <member refid="classendstone_1_1Recipe_1ab353c82a04f30ce3a1d89d78d1ffe043" kind="function"><name>getTag</name></member>
+  </compound>
+  <compound refid="classendstone_1_1RecipeIngredient" kind="class"><name>endstone::RecipeIngredient</name>
+    <member refid="classendstone_1_1RecipeIngredient_1a8f9690a962c133fdea8e4eaad272d5e9" kind="function"><name>~RecipeIngredient</name></member>
+    <member refid="classendstone_1_1RecipeIngredient_1a66b2e4dadf5693b58412099c533fc430" kind="function"><name>test</name></member>
+    <member refid="classendstone_1_1RecipeIngredient_1aca2eaef22d0b028c1ce697c85cf02df1" kind="function"><name>getCount</name></member>
   </compound>
   <compound refid="classendstone_1_1Registry" kind="class"><name>endstone::Registry</name>
     <member refid="classendstone_1_1Registry_1a97c2758ea2a49ded5abeae90e02a31a0" kind="function"><name>get</name></member>
@@ -2846,6 +2880,7 @@
     <member refid="classendstone_1_1Server_1a1934abd049be85a1a3bf8170a0c56d49" kind="function"><name>getMap</name></member>
     <member refid="classendstone_1_1Server_1a13626af5278cd317051b248b70d12b9e" kind="function"><name>createMap</name></member>
     <member refid="classendstone_1_1Server_1aba3b8870db149e2feae809df93ead4a6" kind="function"><name>createMetrics</name></member>
+    <member refid="classendstone_1_1Server_1a22cfb82446edaff2a501f1e1f7139cf3" kind="function"><name>getRecipes</name></member>
   </compound>
   <compound refid="classendstone_1_1ServerCommandEvent" kind="class"><name>endstone::ServerCommandEvent</name>
     <member refid="classendstone_1_1ServerCommandEvent_1a3db2c64d8a63135bbaed83e81079ce34" kind="variable"><name>sender_</name></member>
@@ -2917,6 +2952,14 @@
     <member refid="classendstone_1_1ServiceManager_1a0fdf2bb43656c95b59cda365f188adb8" kind="function"><name>get</name></member>
     <member refid="classendstone_1_1ServiceManager_1a6bbf7c90809c4b037f810cca50c4d17c" kind="function"><name>load</name></member>
   </compound>
+  <compound refid="classendstone_1_1ShapedRecipe" kind="class"><name>endstone::ShapedRecipe</name>
+    <member refid="classendstone_1_1ShapedRecipe_1abfc3f99c4013fb5c78e1ccabef4041e7" kind="function"><name>~ShapedRecipe</name></member>
+    <member refid="classendstone_1_1ShapedRecipe_1a6fdba4c9e0935fa3a5febb4c6d154c24" kind="function"><name>getWidth</name></member>
+    <member refid="classendstone_1_1ShapedRecipe_1ac8c6be4177213ace66144dbf02afc40a" kind="function"><name>getHeight</name></member>
+  </compound>
+  <compound refid="classendstone_1_1ShapelessRecipe" kind="class"><name>endstone::ShapelessRecipe</name>
+    <member refid="classendstone_1_1ShapelessRecipe_1aedfb409224c0d5936373f468dedb9080" kind="function"><name>~ShapelessRecipe</name></member>
+  </compound>
   <compound refid="classendstone_1_1Sign" kind="class"><name>endstone::Sign</name>
     <member refid="classendstone_1_1Sign_1a929cbf8d4588c069d839517313ed3afa" kind="enum"><name>Side</name></member>
     <member refid="classendstone_1_1Sign_1a929cbf8d4588c069d839517313ed3afaa5835bab1ade0060909e31a06af2e2cde" kind="enumvalue"><name>Front</name></member>
@@ -2982,6 +3025,19 @@
     <member refid="classendstone_1_1Slider_1afe6aff5dcd3a303663266990ee107cd8" kind="function"><name>setStep</name></member>
     <member refid="classendstone_1_1Slider_1a40402a633fa41306b80e4da2cd84b99a" kind="function"><name>getDefaultValue</name></member>
     <member refid="classendstone_1_1Slider_1a72c66f99531b81c256375d5d530d058c" kind="function"><name>setDefaultValue</name></member>
+  </compound>
+  <compound refid="classendstone_1_1SmithingRecipe" kind="class"><name>endstone::SmithingRecipe</name>
+    <member refid="classendstone_1_1SmithingRecipe_1a813e4b0f6778211c6bd0cf73143039f2" kind="function"><name>~SmithingRecipe</name></member>
+    <member refid="classendstone_1_1SmithingRecipe_1a9ed7ef19c3b78b19f2dba0847774c8f9" kind="function"><name>getBase</name></member>
+    <member refid="classendstone_1_1SmithingRecipe_1aa2920c638e232a3c57db1909dc40c4c5" kind="function"><name>getAddition</name></member>
+  </compound>
+  <compound refid="classendstone_1_1SmithingTransformRecipe" kind="class"><name>endstone::SmithingTransformRecipe</name>
+    <member refid="classendstone_1_1SmithingTransformRecipe_1af6ec40c742f7d6b9cdf366f0028c5eb9" kind="function"><name>~SmithingTransformRecipe</name></member>
+    <member refid="classendstone_1_1SmithingTransformRecipe_1a2cf4633fee5187f7be7667be1541abb5" kind="function"><name>getTemplate</name></member>
+  </compound>
+  <compound refid="classendstone_1_1SmithingTrimRecipe" kind="class"><name>endstone::SmithingTrimRecipe</name>
+    <member refid="classendstone_1_1SmithingTrimRecipe_1a170abfa36bc685dda72e3336411fc9c7" kind="function"><name>~SmithingTrimRecipe</name></member>
+    <member refid="classendstone_1_1SmithingTrimRecipe_1a50bcbd929db9884a7c17f412e12ced64" kind="function"><name>getTemplate</name></member>
   </compound>
   <compound refid="classendstone_1_1SocketAddress" kind="class"><name>endstone::SocketAddress</name>
     <member refid="classendstone_1_1SocketAddress_1a4fe90c360d5406ed2edd091f1f707b57" kind="variable"><name>hostname_</name></member>
@@ -3741,7 +3797,13 @@
   </compound>
   <compound refid="input_8h" kind="file"><name>input.h</name>
   </compound>
+  <compound refid="complex__alias__ingredient_8h" kind="file"><name>complex_alias_ingredient.h</name>
+  </compound>
+  <compound refid="complex__recipe_8h" kind="file"><name>complex_recipe.h</name>
+  </compound>
   <compound refid="equipment__slot_8h" kind="file"><name>equipment_slot.h</name>
+  </compound>
+  <compound refid="exact__ingredient_8h" kind="file"><name>exact_ingredient.h</name>
   </compound>
   <compound refid="inventory_8h" kind="file"><name>inventory.h</name>
   </compound>
@@ -3749,7 +3811,11 @@
   </compound>
   <compound refid="item__stack_8h" kind="file"><name>item_stack.h</name>
   </compound>
+  <compound refid="item__tag__ingredient_8h" kind="file"><name>item_tag_ingredient.h</name>
+  </compound>
   <compound refid="item__type_8h" kind="file"><name>item_type.h</name>
+  </compound>
+  <compound refid="item__type__ingredient_8h" kind="file"><name>item_type_ingredient.h</name>
   </compound>
   <compound refid="book__meta_8h" kind="file"><name>book_meta.h</name>
   </compound>
@@ -3763,9 +3829,23 @@
   </compound>
   <compound refid="writable__book__meta_8h" kind="file"><name>writable_book_meta.h</name>
   </compound>
+  <compound refid="molang__ingredient_8h" kind="file"><name>molang_ingredient.h</name>
+  </compound>
   <compound refid="player__inventory_8h" kind="file"><name>player_inventory.h</name>
   </compound>
   <compound refid="recipe_8h" kind="file"><name>recipe.h</name>
+  </compound>
+  <compound refid="recipe__ingredient_8h" kind="file"><name>recipe_ingredient.h</name>
+  </compound>
+  <compound refid="shaped__recipe_8h" kind="file"><name>shaped_recipe.h</name>
+  </compound>
+  <compound refid="shapeless__recipe_8h" kind="file"><name>shapeless_recipe.h</name>
+  </compound>
+  <compound refid="smithing__recipe_8h" kind="file"><name>smithing_recipe.h</name>
+  </compound>
+  <compound refid="smithing__transform__recipe_8h" kind="file"><name>smithing_transform_recipe.h</name>
+  </compound>
+  <compound refid="smithing__trim__recipe_8h" kind="file"><name>smithing_trim_recipe.h</name>
   </compound>
   <compound refid="json_8h" kind="file"><name>json.h</name>
   </compound>

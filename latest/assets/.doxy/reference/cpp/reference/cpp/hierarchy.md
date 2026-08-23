@@ -32,6 +32,19 @@ This inheritance list is sorted roughly, but not completely, alphabetically:
             * **class** [**endstone::CommandSenderWrapper**](classendstone_1_1CommandSenderWrapper.md) _Represents a wrapper that forwards commands to the wrapped_ [_**CommandSender**_](classendstone_1_1CommandSender.md) _and captures its output._
             * **class** [**endstone::ConsoleCommandSender**](classendstone_1_1ConsoleCommandSender.md) _Represents a console command sender._ 
             * **class** [**endstone::ProxiedCommandSender**](classendstone_1_1ProxiedCommandSender.md) _Represents a command sender that is running a command on behalf of another one, as_ `/execute` _does._
+    * **class** [**endstone::Recipe**](classendstone_1_1Recipe.md) _Represents some type of crafting recipe._     
+        * **class** [**endstone::ComplexRecipe**](classendstone_1_1ComplexRecipe.md) _Represents a complex recipe which has imperative server-defined behavior, eg armor dyeing._ 
+        * **class** [**endstone::ShapedRecipe**](classendstone_1_1ShapedRecipe.md) _Represents a shaped (ie normal) crafting recipe._ 
+        * **class** [**endstone::ShapelessRecipe**](classendstone_1_1ShapelessRecipe.md) _Represents a shapeless recipe, where the arrangement of the ingredients on the crafting grid does not matter._ 
+        * **class** [**endstone::SmithingRecipe**](classendstone_1_1SmithingRecipe.md) _Represents a smithing recipe._     
+            * **class** [**endstone::SmithingTransformRecipe**](classendstone_1_1SmithingTransformRecipe.md) _Represents a smithing transform recipe._ 
+            * **class** [**endstone::SmithingTrimRecipe**](classendstone_1_1SmithingTrimRecipe.md) _Represents a smithing trim recipe._ 
+    * **class** [**endstone::RecipeIngredient**](classendstone_1_1RecipeIngredient.md) _Represents a potential item match within a recipe._     
+        * **class** [**endstone::ComplexAliasIngredient**](classendstone_1_1ComplexAliasIngredient.md) _Represents an ingredient that matches any item an id stands for._ 
+        * **class** [**endstone::ExactIngredient**](classendstone_1_1ExactIngredient.md) _Represents an ingredient that matches one item with one exact data value._ 
+        * **class** [**endstone::ItemTagIngredient**](classendstone_1_1ItemTagIngredient.md) _Represents an ingredient that matches any item carrying a tag._ 
+        * **class** [**endstone::ItemTypeIngredient**](classendstone_1_1ItemTypeIngredient.md) _Represents an ingredient that matches an item type, whatever its data value._ 
+        * **class** [**endstone::MolangIngredient**](classendstone_1_1MolangIngredient.md) _Represents an ingredient that matches the items a Molang expression selects._ 
 * **class** [**endstone::ICancellable**](classendstone_1_1ICancellable.md) _Interface for events that may be cancelled by a plugin or the server._     
     * **class** [**endstone::Cancellable**](classendstone_1_1Cancellable.md) _A type characterizing events that may be cancelled by a plugin or the server._ 
     * **class** [**endstone::Cancellable**](classendstone_1_1Cancellable.md) _A type characterizing events that may be cancelled by a plugin or the server._ 
@@ -161,7 +174,6 @@ This inheritance list is sorted roughly, but not completely, alphabetically:
 * **class** [**endstone::PluginLoader**](classendstone_1_1PluginLoader.md) _Represents a plugin loader, which handles direct access to specific types of plugins._ 
 * **class** [**endstone::PluginManager**](classendstone_1_1PluginManager.md) _Represents a plugin manager that handles all plugins from the_ [_**Server**_](classendstone_1_1Server.md) _._
 * **class** [**endstone::Preconditions**](classendstone_1_1Preconditions.md) _Static helpers for validating method arguments and object state._ 
-* **class** [**endstone::Recipe**](classendstone_1_1Recipe.md) _Represents some type of crafting recipe._ 
 * **class** [**endstone::Scheduler**](classendstone_1_1Scheduler.md) _Represents a scheduler that executes various tasks._ 
 * **class** [**endstone::Score**](classendstone_1_1Score.md) _Represents a score for an objective on a scoreboard._ 
 * **class** [**endstone::Scoreboard**](classendstone_1_1Scoreboard.md) _Represents a scoreboard._ 

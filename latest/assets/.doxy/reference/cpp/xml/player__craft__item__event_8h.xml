@@ -7,6 +7,7 @@
     <includes refid="cancellable_8h" local="yes">endstone/event/cancellable.h</includes>
     <includes refid="player__event_8h" local="yes">endstone/event/player/player_event.h</includes>
     <includes refid="item__stack_8h" local="yes">endstone/inventory/item_stack.h</includes>
+    <includes refid="recipe_8h" local="yes">endstone/inventory/recipe.h</includes>
     <incdepgraph>
       <node id="16">
         <label>endstone/actor/actor.h</label>
@@ -292,6 +293,8 @@
         <childnode refid="5" relation="include">
         </childnode>
         <childnode refid="108" relation="include">
+        </childnode>
+        <childnode refid="124" relation="include">
         </childnode>
       </node>
       <node id="5">
@@ -592,6 +595,28 @@
         <childnode refid="11" relation="include">
         </childnode>
         <childnode refid="107" relation="include">
+        </childnode>
+      </node>
+      <node id="124">
+        <label>endstone/inventory/recipe.h</label>
+        <link refid="recipe_8h_source"/>
+        <childnode refid="8" relation="include">
+        </childnode>
+        <childnode refid="3" relation="include">
+        </childnode>
+        <childnode refid="108" relation="include">
+        </childnode>
+        <childnode refid="125" relation="include">
+        </childnode>
+        <childnode refid="37" relation="include">
+        </childnode>
+      </node>
+      <node id="125">
+        <label>endstone/inventory/recipe_ingredient.h</label>
+        <link refid="recipe__ingredient_8h_source"/>
+        <childnode refid="108" relation="include">
+        </childnode>
+        <childnode refid="37" relation="include">
         </childnode>
       </node>
       <node id="103">
@@ -1366,38 +1391,41 @@
 <codeline lineno="20"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;endstone/event/cancellable.h&quot;</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="21"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;endstone/event/player/player_event.h&quot;</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="22"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;endstone/inventory/item_stack.h&quot;</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="23"><highlight class="normal"></highlight></codeline>
-<codeline lineno="24"><highlight class="normal"></highlight><highlight class="keyword">namespace<sp/></highlight><highlight class="normal"><ref refid="namespaceendstone" kindref="compound">endstone</ref><sp/>{</highlight></codeline>
-<codeline lineno="25"><highlight class="normal"></highlight></codeline>
-<codeline lineno="31" refid="classendstone_1_1PlayerCraftItemEvent" refkind="compound"><highlight class="normal"></highlight><highlight class="keyword">class<sp/></highlight><highlight class="normal"><ref refid="classendstone_1_1PlayerCraftItemEvent" kindref="compound">PlayerCraftItemEvent</ref><sp/><ref refid="classendstone_1_1Identifier" kindref="compound">final</ref><sp/>:<sp/></highlight><highlight class="keyword">public</highlight><highlight class="normal"><sp/><ref refid="classendstone_1_1Cancellable" kindref="compound">Cancellable</ref>&lt;PlayerEvent&gt;<sp/>{</highlight></codeline>
-<codeline lineno="32"><highlight class="normal"></highlight><highlight class="keyword">public</highlight><highlight class="normal">:</highlight></codeline>
-<codeline lineno="33"><highlight class="normal"><sp/><sp/><sp/><sp/>ENDSTONE_EVENT(<ref refid="classendstone_1_1PlayerCraftItemEvent" kindref="compound">PlayerCraftItemEvent</ref>);</highlight></codeline>
-<codeline lineno="34"><highlight class="normal"></highlight></codeline>
-<codeline lineno="35"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>TODO(recipe):<sp/>add<sp/>getRecipe()<sp/>once<sp/>the<sp/>Recipe<sp/>API<sp/>lands</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="36"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classendstone_1_1PlayerCraftItemEvent" kindref="compound">PlayerCraftItemEvent</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classendstone_1_1Identifier" kindref="compound">NotNull&lt;Player&gt;</ref><sp/>&amp;<ref refid="classendstone_1_1Identifier" kindref="compound">player</ref>,<sp/>std::vector&lt;ItemStack&gt;<sp/><ref refid="classendstone_1_1Identifier" kindref="compound">ingredients</ref>,</highlight></codeline>
+<codeline lineno="23"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;endstone/inventory/recipe.h&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="24"><highlight class="normal"></highlight></codeline>
+<codeline lineno="25"><highlight class="normal"></highlight><highlight class="keyword">namespace<sp/></highlight><highlight class="normal"><ref refid="namespaceendstone" kindref="compound">endstone</ref><sp/>{</highlight></codeline>
+<codeline lineno="26"><highlight class="normal"></highlight></codeline>
+<codeline lineno="32" refid="classendstone_1_1PlayerCraftItemEvent" refkind="compound"><highlight class="normal"></highlight><highlight class="keyword">class<sp/></highlight><highlight class="normal"><ref refid="classendstone_1_1PlayerCraftItemEvent" kindref="compound">PlayerCraftItemEvent</ref><sp/><ref refid="classendstone_1_1Identifier" kindref="compound">final</ref><sp/>:<sp/></highlight><highlight class="keyword">public</highlight><highlight class="normal"><sp/><ref refid="classendstone_1_1Cancellable" kindref="compound">Cancellable</ref>&lt;PlayerEvent&gt;<sp/>{</highlight></codeline>
+<codeline lineno="33"><highlight class="normal"></highlight><highlight class="keyword">public</highlight><highlight class="normal">:</highlight></codeline>
+<codeline lineno="34"><highlight class="normal"><sp/><sp/><sp/><sp/>ENDSTONE_EVENT(<ref refid="classendstone_1_1PlayerCraftItemEvent" kindref="compound">PlayerCraftItemEvent</ref>);</highlight></codeline>
+<codeline lineno="35"><highlight class="normal"></highlight></codeline>
+<codeline lineno="36"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classendstone_1_1PlayerCraftItemEvent" kindref="compound">PlayerCraftItemEvent</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classendstone_1_1Identifier" kindref="compound">NotNull&lt;Player&gt;</ref><sp/>&amp;<ref refid="classendstone_1_1Identifier" kindref="compound">player</ref>,<sp/><ref refid="classendstone_1_1Identifier" kindref="compound">NotNull&lt;Recipe&gt;</ref><sp/><ref refid="classendstone_1_1Identifier" kindref="compound">recipe</ref>,<sp/>std::vector&lt;ItemStack&gt;<sp/><ref refid="classendstone_1_1Identifier" kindref="compound">ingredients</ref>,</highlight></codeline>
 <codeline lineno="37"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>std::vector&lt;ItemStack&gt;<sp/><ref refid="classendstone_1_1Identifier" kindref="compound">results</ref>,<sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="classendstone_1_1Identifier" kindref="compound">repetitions</ref>)</highlight></codeline>
-<codeline lineno="38"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>:<sp/><ref refid="classendstone_1_1Cancellable" kindref="compound">Cancellable</ref>(<ref refid="classendstone_1_1Identifier" kindref="compound">player</ref>),<sp/>ingredients_(std::move(<ref refid="classendstone_1_1Identifier" kindref="compound">ingredients</ref>)),<sp/>results_(std::move(<ref refid="classendstone_1_1Identifier" kindref="compound">results</ref>)),</highlight></codeline>
-<codeline lineno="39"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>repetitions_(<ref refid="classendstone_1_1Identifier" kindref="compound">repetitions</ref>)</highlight></codeline>
+<codeline lineno="38"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>:<sp/><ref refid="classendstone_1_1Cancellable" kindref="compound">Cancellable</ref>(<ref refid="classendstone_1_1Identifier" kindref="compound">player</ref>),<sp/>recipe_(std::move(<ref refid="classendstone_1_1Identifier" kindref="compound">recipe</ref>)),<sp/>ingredients_(std::move(<ref refid="classendstone_1_1Identifier" kindref="compound">ingredients</ref>)),</highlight></codeline>
+<codeline lineno="39"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>results_(std::move(<ref refid="classendstone_1_1Identifier" kindref="compound">results</ref>)),<sp/>repetitions_(<ref refid="classendstone_1_1Identifier" kindref="compound">repetitions</ref>)</highlight></codeline>
 <codeline lineno="40"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
 <codeline lineno="41"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
 <codeline lineno="42"><highlight class="normal"></highlight></codeline>
-<codeline lineno="52" refid="classendstone_1_1PlayerCraftItemEvent_1a336f603d4d5946c333cbdac759411cfd" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>[[<ref refid="classendstone_1_1Identifier" kindref="compound">nodiscard</ref>]]<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::vector&lt;ItemStack&gt;<sp/>&amp;<ref refid="classendstone_1_1PlayerCraftItemEvent_1a336f603d4d5946c333cbdac759411cfd" kindref="member">getIngredients</ref>()</highlight><highlight class="keyword"><sp/>const<sp/></highlight><highlight class="normal">{<sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>ingredients_;<sp/>}</highlight></codeline>
-<codeline lineno="53"><highlight class="normal"></highlight></codeline>
-<codeline lineno="62" refid="classendstone_1_1PlayerCraftItemEvent_1a574dae1a5a5655b03d041247900ce111" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>[[<ref refid="classendstone_1_1Identifier" kindref="compound">nodiscard</ref>]]<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::vector&lt;ItemStack&gt;<sp/>&amp;<ref refid="classendstone_1_1PlayerCraftItemEvent_1a574dae1a5a5655b03d041247900ce111" kindref="member">getResults</ref>()</highlight><highlight class="keyword"><sp/>const<sp/></highlight><highlight class="normal">{<sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>results_;<sp/>}</highlight></codeline>
-<codeline lineno="63"><highlight class="normal"></highlight></codeline>
-<codeline lineno="72" refid="classendstone_1_1PlayerCraftItemEvent_1af566dc7aca83d6f45e3e82dfb11b2c35" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classendstone_1_1PlayerCraftItemEvent_1af566dc7aca83d6f45e3e82dfb11b2c35" kindref="member">setResults</ref>(std::vector&lt;ItemStack&gt;<sp/><ref refid="classendstone_1_1Identifier" kindref="compound">results</ref>)<sp/>{<sp/>results_<sp/>=<sp/>std::move(<ref refid="classendstone_1_1Identifier" kindref="compound">results</ref>);<sp/>}</highlight></codeline>
-<codeline lineno="73"><highlight class="normal"></highlight></codeline>
-<codeline lineno="81" refid="classendstone_1_1PlayerCraftItemEvent_1ac406b14595f95db5f91a6e36c9b36815" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>[[<ref refid="classendstone_1_1Identifier" kindref="compound">nodiscard</ref>]]<sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="classendstone_1_1PlayerCraftItemEvent_1ac406b14595f95db5f91a6e36c9b36815" kindref="member">getRepetitions</ref>()</highlight><highlight class="keyword"><sp/>const<sp/></highlight><highlight class="normal">{<sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>repetitions_;<sp/>}</highlight></codeline>
-<codeline lineno="82"><highlight class="normal"></highlight></codeline>
-<codeline lineno="90" refid="classendstone_1_1PlayerCraftItemEvent_1ae64dab864d9b9f80a006266d27af92dd" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classendstone_1_1PlayerCraftItemEvent_1ae64dab864d9b9f80a006266d27af92dd" kindref="member">setRepetitions</ref>(</highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="classendstone_1_1Identifier" kindref="compound">repetitions</ref>)<sp/>{<sp/>repetitions_<sp/>=<sp/><ref refid="classendstone_1_1Identifier" kindref="compound">repetitions</ref>;<sp/>}</highlight></codeline>
-<codeline lineno="91"><highlight class="normal"></highlight></codeline>
-<codeline lineno="92"><highlight class="normal"></highlight><highlight class="keyword">private</highlight><highlight class="normal">:</highlight></codeline>
-<codeline lineno="93"><highlight class="normal"><sp/><sp/><sp/><sp/>std::vector&lt;ItemStack&gt;<sp/>ingredients_;</highlight></codeline>
-<codeline lineno="94"><highlight class="normal"><sp/><sp/><sp/><sp/>std::vector&lt;ItemStack&gt;<sp/>results_;</highlight></codeline>
-<codeline lineno="95"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>repetitions_;</highlight></codeline>
-<codeline lineno="96"><highlight class="normal">};</highlight></codeline>
-<codeline lineno="97"><highlight class="normal"></highlight></codeline>
-<codeline lineno="98"><highlight class="normal">}<sp/><sp/></highlight><highlight class="comment">//<sp/>namespace<sp/>endstone</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="46" refid="classendstone_1_1PlayerCraftItemEvent_1a33947b76d50c2aad68d1b1fd7c541185" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>[[<ref refid="classendstone_1_1Identifier" kindref="compound">nodiscard</ref>]]<sp/><ref refid="classendstone_1_1Identifier" kindref="compound">NotNull&lt;Recipe&gt;</ref><sp/><ref refid="classendstone_1_1PlayerCraftItemEvent_1a33947b76d50c2aad68d1b1fd7c541185" kindref="member">getRecipe</ref>()</highlight><highlight class="keyword"><sp/>const<sp/></highlight><highlight class="normal">{<sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>recipe_;<sp/>}</highlight></codeline>
+<codeline lineno="47"><highlight class="normal"></highlight></codeline>
+<codeline lineno="57" refid="classendstone_1_1PlayerCraftItemEvent_1a336f603d4d5946c333cbdac759411cfd" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>[[<ref refid="classendstone_1_1Identifier" kindref="compound">nodiscard</ref>]]<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::vector&lt;ItemStack&gt;<sp/>&amp;<ref refid="classendstone_1_1PlayerCraftItemEvent_1a336f603d4d5946c333cbdac759411cfd" kindref="member">getIngredients</ref>()</highlight><highlight class="keyword"><sp/>const<sp/></highlight><highlight class="normal">{<sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>ingredients_;<sp/>}</highlight></codeline>
+<codeline lineno="58"><highlight class="normal"></highlight></codeline>
+<codeline lineno="67" refid="classendstone_1_1PlayerCraftItemEvent_1a574dae1a5a5655b03d041247900ce111" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>[[<ref refid="classendstone_1_1Identifier" kindref="compound">nodiscard</ref>]]<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::vector&lt;ItemStack&gt;<sp/>&amp;<ref refid="classendstone_1_1PlayerCraftItemEvent_1a574dae1a5a5655b03d041247900ce111" kindref="member">getResults</ref>()</highlight><highlight class="keyword"><sp/>const<sp/></highlight><highlight class="normal">{<sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>results_;<sp/>}</highlight></codeline>
+<codeline lineno="68"><highlight class="normal"></highlight></codeline>
+<codeline lineno="77" refid="classendstone_1_1PlayerCraftItemEvent_1af566dc7aca83d6f45e3e82dfb11b2c35" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classendstone_1_1PlayerCraftItemEvent_1af566dc7aca83d6f45e3e82dfb11b2c35" kindref="member">setResults</ref>(std::vector&lt;ItemStack&gt;<sp/><ref refid="classendstone_1_1Identifier" kindref="compound">results</ref>)<sp/>{<sp/>results_<sp/>=<sp/>std::move(<ref refid="classendstone_1_1Identifier" kindref="compound">results</ref>);<sp/>}</highlight></codeline>
+<codeline lineno="78"><highlight class="normal"></highlight></codeline>
+<codeline lineno="86" refid="classendstone_1_1PlayerCraftItemEvent_1ac406b14595f95db5f91a6e36c9b36815" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>[[<ref refid="classendstone_1_1Identifier" kindref="compound">nodiscard</ref>]]<sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="classendstone_1_1PlayerCraftItemEvent_1ac406b14595f95db5f91a6e36c9b36815" kindref="member">getRepetitions</ref>()</highlight><highlight class="keyword"><sp/>const<sp/></highlight><highlight class="normal">{<sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>repetitions_;<sp/>}</highlight></codeline>
+<codeline lineno="87"><highlight class="normal"></highlight></codeline>
+<codeline lineno="95" refid="classendstone_1_1PlayerCraftItemEvent_1ae64dab864d9b9f80a006266d27af92dd" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classendstone_1_1PlayerCraftItemEvent_1ae64dab864d9b9f80a006266d27af92dd" kindref="member">setRepetitions</ref>(</highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="classendstone_1_1Identifier" kindref="compound">repetitions</ref>)<sp/>{<sp/>repetitions_<sp/>=<sp/><ref refid="classendstone_1_1Identifier" kindref="compound">repetitions</ref>;<sp/>}</highlight></codeline>
+<codeline lineno="96"><highlight class="normal"></highlight></codeline>
+<codeline lineno="97"><highlight class="normal"></highlight><highlight class="keyword">private</highlight><highlight class="normal">:</highlight></codeline>
+<codeline lineno="98"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classendstone_1_1Identifier" kindref="compound">NotNull&lt;Recipe&gt;</ref><sp/>recipe_;</highlight></codeline>
+<codeline lineno="99"><highlight class="normal"><sp/><sp/><sp/><sp/>std::vector&lt;ItemStack&gt;<sp/>ingredients_;</highlight></codeline>
+<codeline lineno="100"><highlight class="normal"><sp/><sp/><sp/><sp/>std::vector&lt;ItemStack&gt;<sp/>results_;</highlight></codeline>
+<codeline lineno="101"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>repetitions_;</highlight></codeline>
+<codeline lineno="102"><highlight class="normal">};</highlight></codeline>
+<codeline lineno="103"><highlight class="normal"></highlight></codeline>
+<codeline lineno="104"><highlight class="normal">}<sp/><sp/></highlight><highlight class="comment">//<sp/>namespace<sp/>endstone</highlight><highlight class="normal"></highlight></codeline>
     </programlisting>
     <location file="include/endstone/event/player/player_craft_item_event.h"/>
   </compounddef>
