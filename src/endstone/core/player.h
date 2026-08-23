@@ -128,6 +128,8 @@ public:
     void closeForm() override;
     void sendPacket(int packet_id, std::string_view payload) const override;
     void sendMap(MapView &map) override;
+    [[nodiscard]] AbilityValue _getAbility(Identifier<Ability> ability) const override;
+    bool _setAbility(Identifier<Ability> ability, AbilityValue value) override;
 
     void onFormClose(std::uint32_t form_id, PlayerFormCloseReason reason);
     void onFormResponse(std::uint32_t form_id, const nlohmann::json &json);

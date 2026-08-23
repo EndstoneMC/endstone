@@ -40,6 +40,7 @@
 #include "bedrock/world/level/dimension/vanilla_dimensions.h"
 #include "bedrock/world/level/level.h"
 #include "endstone/color_format.h"
+#include "endstone/core/ability.h"
 #include "endstone/core/base64.h"
 #include "endstone/core/entity/components/flag_components.h"
 #include "endstone/core/form/form_codec.h"
@@ -698,6 +699,46 @@ void EndstonePlayer::sendMap(MapView &map)
     }
     pk.payload.map_pixels.resize(pk.payload.width * pk.payload.height);
     getHandle().sendNetworkPacket(*packet);
+}
+
+AbilityValue EndstonePlayer::_getAbility(const Identifier<Ability> ability) const
+{
+    const auto *entry = server_.getRegistry<Ability>().get(ability);
+    if (entry == nullptr) {
+        throw std::out_of_range("Ability is not available.");
+    }
+
+    const auto index = static_cast<const EndstoneAbility *>(entry)->getIndex();
+    const auto &value = getHandle().getAbilities().getAbility(index);
+    switch (value.getType()) {
+    case ::Ability::Type::Bool:
+        return value.getBool();
+    case ::Ability::Type::Float:
+        return value.getFloat();
+    case ::Ability::Type::Invalid:
+    case ::Ability::Type::Unset:
+        break;
+    }
+    throw std::runtime_error("Ability holds no value type.");
+}
+
+bool EndstonePlayer::_setAbility(const Identifier<Ability> ability, AbilityValue value)
+{
+    const auto *entry = server_.getRegistry<Ability>().get(ability);
+    if (entry == nullptr) {
+        return false;
+    }
+
+    const auto index = static_cast<const EndstoneAbility *>(entry)->getIndex();
+    auto &abilities = getHandle().getAbilities();
+    const auto expected = std::holds_alternative<bool>(value) ? ::Ability::Type::Bool : ::Ability::Type::Float;
+    if (abilities.getAbility(index).getType() != expected) {
+        return false;
+    }
+
+    std::visit([&abilities, index](auto &&v) { abilities.setAbility(index, v); }, value);
+    updateAbilities();
+    return true;
 }
 
 void EndstonePlayer::onFormClose(std::uint32_t form_id, PlayerFormCloseReason /*reason*/)

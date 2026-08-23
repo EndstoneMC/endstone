@@ -20,6 +20,7 @@
 #include <string_view>
 #include <variant>
 
+#include "endstone/ability.h"
 #include "endstone/actor/mob.h"
 #include "endstone/form/action_form.h"
 #include "endstone/form/message_form.h"
@@ -521,6 +522,58 @@ public:
      * @param map The map to send
      */
     virtual void sendMap(MapView &map) = 0;
+
+    /**
+     * Gets the value of an ability.
+     *
+     * @param ability The Minecraft ability to get
+     * @return The current ability value
+     */
+    [[nodiscard]] virtual AbilityValue _getAbility(Identifier<Ability> ability) const = 0;
+
+    /**
+     * Gets the value of an ability.
+     *
+     * The value returned is the one in effect, which is not always the one that was set: while the player is
+     * spectating, or has the loading screen up, or is in the editor, that state supplies its own value for some
+     * abilities and it takes precedence over the player's own.
+     *
+     * @tparam T The type of the ability's value.
+     * @param ability The Minecraft ability to get
+     * @return The current ability value
+     */
+    template <typename T>
+    [[nodiscard]] T getAbility(AbilityId<T> ability) const
+    {
+        return std::get<T>(_getAbility(ability));
+    }
+
+    /**
+     * Sets the value of an ability.
+     *
+     * @param ability The Minecraft ability to set
+     * @param value The new value
+     * @return True if the value was accepted
+     */
+    virtual bool _setAbility(Identifier<Ability> ability, AbilityValue value) = 0;
+
+    /**
+     * Sets the value of an ability.
+     *
+     * Abilities are not persisted for a player whose permissions are managed by the server, so a plugin that wants
+     * a value to outlast the session must set it again when the player rejoins. Ability::Muted, Ability::NoClip,
+     * Ability::PrivilegedBuilder and Ability::WorldBuilder are never saved at all.
+     *
+     * @tparam T The type of the ability's value.
+     * @param ability The Minecraft ability to set
+     * @param value The new value
+     * @return True if the value was accepted
+     */
+    template <typename T>
+    bool setAbility(AbilityId<T> ability, T value)
+    {
+        return _setAbility(ability, value);
+    }
 };
 
 }  // namespace endstone

@@ -24,6 +24,7 @@ static_assert(_ITERATOR_DEBUG_LEVEL == 0,
               "Error: Endstone plugins must be built in Release or RelWithDebInfo mode with MSVC!");
 #endif
 
+#include "ability.h"
 #include "actor/actor.h"
 #include "actor/actor_type.h"
 #include "actor/item.h"

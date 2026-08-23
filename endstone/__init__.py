@@ -10,6 +10,7 @@ __getattr__, __dir__, __all__ = lazy.attach(
     __name__,
     submod_attrs={
         "_python": [
+            "Ability",
             "ColorFormat",
             "GameMode",
             "GameRule",

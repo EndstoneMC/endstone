@@ -18,6 +18,7 @@ find_package(tomlplusplus REQUIRED)
 find_package(zstr CONFIG REQUIRED)
 
 add_library(endstone_core
+        ability.cpp
         crash_handler.cpp
         game_mode.cpp
         game_rule.cpp

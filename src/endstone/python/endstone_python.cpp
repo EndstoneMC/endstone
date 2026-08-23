@@ -25,6 +25,7 @@
 #include "type_caster.h"
 
 namespace endstone::python {
+void init_ability(py::module_ &);
 void init_actor(py::module_ &, py_class<Actor> &actor, py_class<Mob> &mob);
 void init_attribute(py::module_ &);
 void init_ban(py::module_ &);
@@ -198,6 +199,7 @@ PYBIND11_MODULE(_python, m)  // NOLINT(*-use-anonymous-namespace)
     auto location =
         py::class_<Location>(m_level, "Location", "Represents a 3-dimensional location in a dimension within a level.");
 
+    init_ability(m);
     init_attribute(m_attribute);
     init_color_format(m);
     init_damage(m_damage);
@@ -845,6 +847,43 @@ void init_player(py::module_ &m, py_class<Player> &player)
     Args:
         packet_id: The packet ID to be sent.
         payload: The payload of the packet to be transmitted.
+)doc")
+        .def("get_ability", &Player::_getAbility, py::arg("ability"), R"doc(
+    Gets the value of an ability.
+
+    The value returned is the one in effect, which is not always the one that was set: while the player is
+    spectating, or has the loading screen up, or is in the editor, that state supplies its own value for some
+    abilities and it takes precedence over the player's own.
+
+    Args:
+        ability: The Minecraft ability to get.
+
+    Returns:
+        The current ability value.
+
+    Raises:
+        IndexError: If the ability does not exist.
+)doc")
+        .def(
+            "set_ability",
+            [](Player &self, Identifier<Ability> ability, AbilityValue value) {
+                if (!self._setAbility(ability, value)) {
+                    throw py::value_error(std::format("Unable to set ability {}.", ability));
+                }
+            },
+            py::arg("ability"), py::arg("value"), R"doc(
+    Sets the value of an ability.
+
+    Abilities are not persisted for a player whose permissions are managed by the server, so a plugin that wants a
+    value to outlast the session must set it again when the player rejoins. `Ability.MUTED`, `Ability.NO_CLIP`,
+    `Ability.PRIVILEGED_BUILDER` and `Ability.WORLD_BUILDER` are never saved at all.
+
+    Args:
+        ability: The Minecraft ability to set.
+        value: The new value, which must match the type of the ability.
+
+    Raises:
+        ValueError: If the ability does not exist or the value has the wrong type.
 )doc");
 }
 

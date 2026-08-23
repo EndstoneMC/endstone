@@ -285,6 +285,7 @@ void EndstoneServer::setLevel(::Level &level)
 
 void EndstoneServer::initRegistries()
 {
+    registries_[typeid(Ability)] = EndstoneRegistry<Ability, std::string>::create();
     registries_[typeid(ActorType)] = EndstoneRegistry<ActorType, std::string>::create();
     registries_[typeid(Biome)] = EndstoneRegistry<Biome, ::Biome>::create();
     registries_[typeid(BlockType)] = EndstoneRegistry<BlockType, ::BlockType>::create();
