@@ -19,6 +19,7 @@ __all__ = [
     "CrossbowMeta",
     "EquipmentSlot",
     "ExactIngredient",
+    "FurnaceRecipe",
     "Inventory",
     "ItemFactory",
     "ItemMeta",
@@ -261,7 +262,7 @@ class ComplexAliasIngredient(RecipeIngredient):
 
 class Recipe:
     """
-    Represents some type of crafting recipe.
+    Represents some type of recipe.
     """
     @property
     def result(self) -> ItemStack:
@@ -270,13 +271,39 @@ class Recipe:
         """
 
     @property
-    def ingredients(self) -> list[RecipeIngredient | None]: ...
+    def ingredients(self) -> list[RecipeIngredient | None]:
+        """
+        The ingredients consumed by this recipe.
+
+        A value is `None` when the corresponding slot does not require an ingredient.
+        """
+
     @property
-    def recipe_id(self) -> str: ...
+    def recipe_id(self) -> str:
+        """
+        The identifier of this recipe.
+
+        Bedrock does not retain the identifiers of furnace recipes after loading them, so `FurnaceRecipe` returns an empty
+        string.
+        """
+
     @property
     def tag(self) -> str:
         """
-        The crafting station this recipe belongs to, such as `crafting_table`.
+        The station this recipe belongs to, such as `crafting_table` or `furnace`.
+        """
+
+class FurnaceRecipe(Recipe):
+    """
+    Represents a furnace recipe.
+
+    Bedrock uses furnace recipes for furnaces, blast furnaces, smokers and campfires. The recipe's `tag` identifies the
+    station that accepts it.
+    """
+    @property
+    def input(self) -> RecipeIngredient:
+        """
+        The input ingredient.
         """
 
 class ShapedRecipe(Recipe):
