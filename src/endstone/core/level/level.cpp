@@ -119,7 +119,7 @@ std::vector<NotNull<Recipe>> EndstoneLevel::getRecipes() const
             }
         }
     }
-    for (const auto *tag : {"furnace", "blast_furnace", "smoker", "campfire"}) {
+    for (const auto *tag : {"furnace", "blast_furnace", "smoker", "campfire", "soul_campfire"}) {
         if (const auto *results = minecraft_recipes.findFurnaceResults(tag)) {
             for (const auto &[input_id_aux, result] : *results) {
                 if (auto recipe = EndstoneFurnaceRecipe::fromMinecraft(input_id_aux, result, tag)) {

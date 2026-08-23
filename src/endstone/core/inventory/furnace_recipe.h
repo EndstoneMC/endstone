@@ -23,12 +23,18 @@
 #include "endstone/core/type.h"
 #include "endstone/inventory/furnace_recipe.h"
 
+class HashedString;
+class ItemStackBase;
+class Recipes;
+
 namespace endstone::core {
 
 class EndstoneFurnaceRecipe final : public endstone::FurnaceRecipe {
 public:
     static Nullable<endstone::FurnaceRecipe> fromMinecraft(int input_id_aux, const ::ItemInstance &result,
                                                            std::string tag);
+    static Nullable<endstone::FurnaceRecipe> fromMinecraft(const ::Recipes &recipes, const ::ItemStackBase &input,
+                                                           const ::HashedString &tag);
 
     EndstoneFurnaceRecipe(endstone::ItemStack result, std::string tag, NotNull<endstone::RecipeIngredient> input)
         : result_(std::move(result)), tag_(std::move(tag)), input_(std::move(input)), ingredients_{input_}

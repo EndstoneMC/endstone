@@ -187,12 +187,14 @@ void init_event(py::module_ &m, py::class_<Event, PyEvent> &event)
         .def_property("block_list", py::overload_cast<>(&BlockExplodeEvent::getBlockList),
                       &BlockExplodeEvent::setBlockList, py::return_value_policy::reference_internal,
                       "The list of blocks that would have been removed or were removed from the explosion event.");
-    py::class_<BlockCookEvent, BlockEvent, ICancellable>(m, "BlockCookEvent",
-                                                         "Called when an `ItemStack` is successfully cooked in a block.")
+    py::class_<BlockCookEvent, BlockEvent, ICancellable>(
+        m, "BlockCookEvent", "Called when an `ItemStack` is successfully cooked in a block.")
         .def_property_readonly("source", &BlockCookEvent::getSource, py::return_value_policy::reference,
                                "The smelted (source) `ItemStack` for this event.")
         .def_property("result", &BlockCookEvent::getResult, &BlockCookEvent::setResult,
-                      "The resultant `ItemStack` for this event.");
+                      "The resultant `ItemStack` for this event.")
+        .def_property_readonly("recipe", &BlockCookEvent::getRecipe,
+                               "The furnace recipe associated with this event, if available.");
     py::class_<BlockGrowEvent, BlockEvent, ICancellable>(m, "BlockGrowEvent", R"doc(
     Called when a block grows naturally in the world.
 

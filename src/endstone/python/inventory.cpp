@@ -123,8 +123,8 @@ void init_inventory(py::module_ &m, py::class_<ItemStack> &item_stack)
     py::classh<FurnaceRecipe, Recipe>(m, "FurnaceRecipe", R"doc(
     Represents a furnace recipe.
 
-    Bedrock uses furnace recipes for furnaces, blast furnaces, smokers and campfires. The recipe's `tag` identifies the
-    station that accepts it.
+    Bedrock uses furnace recipes for furnaces, blast furnaces, smokers, campfires and soul campfires. The recipe's `tag`
+    identifies the station that accepts it.
 )doc")
         .def_property_readonly("input", &FurnaceRecipe::getInput, "The input ingredient.");
 

@@ -17,6 +17,7 @@
 #include <cstdint>
 #include <memory>
 
+#include "bedrock/world/item/crafting/recipes.h"
 #include "bedrock/world/item/item.h"
 #include "bedrock/world/item/item_descriptor.h"
 #include "bedrock/world/item/item_stack.h"
@@ -113,8 +114,33 @@ Nullable<endstone::FurnaceRecipe> EndstoneFurnaceRecipe::fromMinecraft(const int
         input = std::make_shared<EndstoneFurnaceExactIngredient>(input_id_aux, std::move(item_stack));
     }
 
-    return std::make_shared<EndstoneFurnaceRecipe>(EndstoneItemStack::fromMinecraft(result), std::move(tag),
-                                                   std::move(input));
+    auto endstone_result = EndstoneItemStack::fromMinecraft(result);
+    if (endstone_result.getData() == ItemDescriptor::ANY_AUX_VALUE) {
+        endstone_result.setData(0);
+    }
+    return std::make_shared<EndstoneFurnaceRecipe>(std::move(endstone_result), std::move(tag), std::move(input));
+}
+
+Nullable<endstone::FurnaceRecipe> EndstoneFurnaceRecipe::fromMinecraft(const ::Recipes &recipes,
+                                                                       const ::ItemStackBase &input,
+                                                                       const ::HashedString &tag)
+{
+    const auto *results = recipes.findFurnaceResults(tag);
+    if (results == nullptr || !input) {
+        return nullptr;
+    }
+
+    if (const auto exact = results->find(input.getIdAux()); exact != results->end()) {
+        return fromMinecraft(exact->first, exact->second, tag.getString());
+    }
+
+    const auto any_id_aux =
+        input.getItem()->buildIdAux(static_cast<std::int16_t>(ItemDescriptor::ANY_AUX_VALUE), input.getUserData());
+    if (const auto any = results->find(any_id_aux); any != results->end()) {
+        return fromMinecraft(any->first, any->second, tag.getString());
+    }
+
+    return nullptr;
 }
 
 }  // namespace endstone::core

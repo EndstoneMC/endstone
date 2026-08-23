@@ -17,6 +17,7 @@ def test_furnace_recipes(server: Server) -> None:
         "campfire",
         "furnace",
         "smoker",
+        "soul_campfire",
     }
 
     for recipe in recipes:
@@ -26,9 +27,9 @@ def test_furnace_recipes(server: Server) -> None:
         assert recipe.input is not None
         assert recipe.input.count == 1
 
-        if isinstance(recipe.input, ExactIngredient):
-            assert recipe.input.test(recipe.input.item_stack)
-        elif isinstance(recipe.input, ItemTypeIngredient):
-            assert recipe.input.test(ItemStack(recipe.input.item_type))
+        ingredient = recipe.input
+        assert isinstance(ingredient, (ExactIngredient, ItemTypeIngredient))
+        if isinstance(ingredient, ExactIngredient):
+            assert ingredient.test(ingredient.item_stack)
         else:
-            raise AssertionError(f"Unexpected furnace ingredient: {type(recipe.input).__name__}")
+            assert ingredient.test(ItemStack(ingredient.item_type))

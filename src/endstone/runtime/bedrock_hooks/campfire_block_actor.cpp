@@ -6,6 +6,7 @@
 #include "bedrock/world/level/block_source.h"
 #include "bedrock/world/level/level.h"
 #include "endstone/core/block/block.h"
+#include "endstone/core/inventory/furnace_recipe.h"
 #include "endstone/core/inventory/item_stack.h"
 #include "endstone/core/server.h"
 #include "endstone/event/block/block_cook_event.h"
@@ -20,16 +21,19 @@ void CampfireBlockActor::_finishCooking(::BlockSource &region, int slot)
         }
 
         auto source = ItemStack(cooking_item_[slot]);
-        auto result = ItemStack(region.getLevel().getRecipes().getFurnaceRecipeResult(cooking_item_[slot], tag));
+        const auto &recipes = region.getLevel().getRecipes();
+        auto result = ItemStack(recipes.getFurnaceRecipeResult(cooking_item_[slot], tag));
         if (result.getAuxValue() == ItemDescriptor::ANY_AUX_VALUE) {
             result.setAuxValue(0);
         }
 
         // Endstone start
         const auto &server = endstone::core::EndstoneServer::getInstance();
-        endstone::BlockCookEvent event{endstone::core::EndstoneBlock::at(region, position_),
-                                       endstone::core::EndstoneItemStack::fromMinecraft(source),
-                                       endstone::core::EndstoneItemStack::fromMinecraft(result)};
+        endstone::BlockCookEvent event{
+            endstone::core::EndstoneBlock::at(region, position_),
+            endstone::core::EndstoneItemStack::fromMinecraft(source),
+            endstone::core::EndstoneItemStack::fromMinecraft(result),
+            endstone::core::EndstoneFurnaceRecipe::fromMinecraft(recipes, cooking_item_[slot], tag)};
         server.getPluginManager().callEvent(event);
         if (event.isCancelled()) {
             return;

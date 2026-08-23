@@ -32,6 +32,11 @@ class BlockEventListener(EventListener):
             block_type=str(event.block.type),
             source_type=str(event.source.type),
             result_type=str(event.result.type),
+            recipe_tag=event.recipe.tag if event.recipe else None,
+            recipe_input_matches=event.recipe.input.test(event.source)
+            if event.recipe
+            else False,
+            recipe_result_type=str(event.recipe.result.type) if event.recipe else None,
         )
 
     @event_handler
