@@ -2,6 +2,7 @@
 Classes relating to handling triggered code executions.
 """
 
+import collections.abc
 import enum
 import typing
 
@@ -1431,54 +1432,6 @@ class PlayerPickupItemEvent(PlayerEvent, Cancellable):
         The Item picked up by the entity.
         """
 
-class EnchantItemEvent(PlayerEvent, Cancellable):
-    """
-    Called when a player enchants an item at an enchanting table.
-
-    Cancelling the event leaves the item, the player's experience levels and the lapis lazuli untouched.
-    """
-    @property
-    def enchant_block(self) -> Block:
-        """
-        The enchanting table involved in this event.
-        """
-    @property
-    def item(self) -> ItemStack:
-        """
-        The item that will be enchanted.
-        """
-    @item.setter
-    def item(self, arg1: ItemStack) -> None: ...
-    @property
-    def exp_level_cost(self) -> int:
-        """
-        The minimum player level required by the selected option.
-        """
-    @exp_level_cost.setter
-    def exp_level_cost(self, arg1: int) -> None: ...
-    @property
-    def enchants_to_add(self) -> dict[Enchantment, int]:
-        """
-        A copy of the enchantments and levels that will be applied; assign it back after changes.
-        """
-    @enchants_to_add.setter
-    def enchants_to_add(self, arg1: typing.Mapping[Enchantment, int]) -> None: ...
-    @property
-    def enchantment_hint(self) -> Enchantment | None:
-        """
-        The enchantment shown as the hint, or `None` if unavailable.
-        """
-    @property
-    def level_hint(self) -> int:
-        """
-        The level shown for the enchantment hint.
-        """
-    @property
-    def which_button(self) -> int:
-        """
-        The selected enchanting button, from 0 to 2.
-        """
-
 class InventoryEvent(Event):
     """
     Represents a player related inventory event.
@@ -1520,6 +1473,56 @@ class InventoryCloseEvent(InventoryEvent):
     def player(self) -> Player:
         """
         The player who is closing the inventory.
+        """
+
+class EnchantItemEvent(PlayerEvent, Cancellable):
+    """
+    Called when a player enchants an item at an enchanting table.
+
+    Use `PrepareItemEnchantEvent` to hide or replace an offer before the player selects it.
+
+    Cancelling the event leaves the item, the player's experience levels and the lapis lazuli untouched.
+    """
+    @property
+    def enchant_block(self) -> Block:
+        """
+        The enchanting table involved in this event.
+        """
+    @property
+    def item(self) -> ItemStack:
+        """
+        The item that will be enchanted.
+        """
+    @item.setter
+    def item(self, arg1: ItemStack) -> None: ...
+    @property
+    def exp_level_cost(self) -> int:
+        """
+        The minimum player level required by the selected option.
+        """
+    @exp_level_cost.setter
+    def exp_level_cost(self, arg1: int) -> None: ...
+    @property
+    def enchants_to_add(self) -> dict[Enchantment, int]:
+        """
+        A copy of the enchantments and levels that will be applied; assign it back after changes.
+        """
+    @enchants_to_add.setter
+    def enchants_to_add(self, arg1: collections.abc.Mapping[Enchantment, int]) -> None: ...
+    @property
+    def enchantment_hint(self) -> Enchantment | None:
+        """
+        The enchantment shown as the hint, or `None` if unavailable.
+        """
+    @property
+    def level_hint(self) -> int:
+        """
+        The level shown for the enchantment hint.
+        """
+    @property
+    def which_button(self) -> int:
+        """
+        The selected enchanting button, from 0 to 2.
         """
 
 class ServerEvent(Event):
