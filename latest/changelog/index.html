@@ -5582,6 +5582,7 @@ and this project adheres to <a href="https://semver.org/spec/v2.0.0.html">Semant
 </ul>
 <h4 id="commands-and-permissions">Commands and permissions<a class="headerlink" href="#commands-and-permissions" title="Permanent link">&para;</a></h4>
 <ul>
+<li><code>UnknownCommandEvent</code> for undefined commands, reporting the <code>sender</code>, <code>command_line</code> and mutable <code>message</code>. Setting <code>message</code> to <code>None</code> suppresses the unknown-command response.</li>
 <li><code>Server.command_map</code>, exposing <code>CommandMap</code> to Python with <code>register_command()</code>, <code>dispatch()</code>, <code>clear_commands()</code> and <code>get_command()</code>.</li>
 <li><code>Command</code> can now be subclassed in Python to override <code>execute()</code>.</li>
 <li><code>/restart</code> command (console-only) for gracefully restarting the server.</li>

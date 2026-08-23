@@ -601,6 +601,8 @@
 
 ## u
 
+* [**UnknownCommandEvent**](classendstone_1_1UnknownCommandEvent.md)
+([**endstone**](namespaceendstone.md))
 * [**UUID**](classendstone_1_1UUID.md)
 ([**endstone**](namespaceendstone.md))
 

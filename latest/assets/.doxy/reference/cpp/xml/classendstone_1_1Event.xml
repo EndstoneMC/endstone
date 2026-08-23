@@ -11,6 +11,7 @@
     <derivedcompoundref refid="classendstone_1_1LevelEvent" prot="public" virt="non-virtual">endstone::LevelEvent</derivedcompoundref>
     <derivedcompoundref refid="classendstone_1_1PlayerEvent" prot="public" virt="non-virtual">endstone::PlayerEvent</derivedcompoundref>
     <derivedcompoundref refid="classendstone_1_1ServerEvent" prot="public" virt="non-virtual">endstone::ServerEvent</derivedcompoundref>
+    <derivedcompoundref refid="classendstone_1_1UnknownCommandEvent" prot="public" virt="non-virtual">endstone::UnknownCommandEvent</derivedcompoundref>
     <derivedcompoundref refid="classendstone_1_1WeatherEvent" prot="public" virt="non-virtual">endstone::WeatherEvent</derivedcompoundref>
     <includes refid="event_8h" local="no">endstone/event/event.h</includes>
     <sectiondef kind="friend">
@@ -330,10 +331,10 @@
         <childnode refid="87" relation="public-inheritance">
         </childnode>
       </node>
-      <node id="100">
+      <node id="101">
         <label>endstone::Cancellable&lt; WeatherEvent &gt;</label>
         <link refid="classendstone_1_1Cancellable"/>
-        <childnode refid="99" relation="public-inheritance">
+        <childnode refid="100" relation="public-inheritance">
         </childnode>
       </node>
       <node id="4">
@@ -868,19 +869,25 @@
         <childnode refid="87" relation="public-inheritance">
         </childnode>
       </node>
-      <node id="101">
+      <node id="102">
         <label>endstone::ThunderChangeEvent</label>
         <link refid="classendstone_1_1ThunderChangeEvent"/>
-        <childnode refid="100" relation="public-inheritance">
-        </childnode>
-      </node>
-      <node id="102">
-        <label>endstone::WeatherChangeEvent</label>
-        <link refid="classendstone_1_1WeatherChangeEvent"/>
-        <childnode refid="100" relation="public-inheritance">
+        <childnode refid="101" relation="public-inheritance">
         </childnode>
       </node>
       <node id="99">
+        <label>endstone::UnknownCommandEvent</label>
+        <link refid="classendstone_1_1UnknownCommandEvent"/>
+        <childnode refid="1" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="103">
+        <label>endstone::WeatherChangeEvent</label>
+        <link refid="classendstone_1_1WeatherChangeEvent"/>
+        <childnode refid="101" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="100">
         <label>endstone::WeatherEvent</label>
         <link refid="classendstone_1_1WeatherEvent"/>
         <childnode refid="1" relation="public-inheritance">

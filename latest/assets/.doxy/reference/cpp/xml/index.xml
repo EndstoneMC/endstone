@@ -3100,6 +3100,17 @@
     <member refid="classendstone_1_1Registry_1_1Type_1ab333d4c3e969abfb5dd01c4ce34d7154" kind="function"><name>operator Id</name></member>
     <member refid="classendstone_1_1Registry_1_1Type_1adb225834ec0af1fdd72f998cbee22946" kind="function"><name>get</name></member>
   </compound>
+  <compound refid="classendstone_1_1UnknownCommandEvent" kind="class"><name>endstone::UnknownCommandEvent</name>
+    <member refid="classendstone_1_1UnknownCommandEvent_1a9fb178ed9f4dea69d649cf2fd6216143" kind="variable"><name>sender_</name></member>
+    <member refid="classendstone_1_1UnknownCommandEvent_1a19de6725339cf9d04890d26eede081a9" kind="variable"><name>command_line_</name></member>
+    <member refid="classendstone_1_1UnknownCommandEvent_1a6de672ab5198ab24bc1127754975c5f4" kind="variable"><name>message_</name></member>
+    <member refid="classendstone_1_1UnknownCommandEvent_1a92b140c22609d10e0e68a7b60892001c" kind="function"><name>ENDSTONE_EVENT</name></member>
+    <member refid="classendstone_1_1UnknownCommandEvent_1abb873fa919e7c049ce9cfb505fdcd5de" kind="function"><name>UnknownCommandEvent</name></member>
+    <member refid="classendstone_1_1UnknownCommandEvent_1ab5a9e6507f1a79c552ac632f52a03a13" kind="function"><name>getSender</name></member>
+    <member refid="classendstone_1_1UnknownCommandEvent_1afe94389abba6bb27dce242fb1282c53d" kind="function"><name>getCommandLine</name></member>
+    <member refid="classendstone_1_1UnknownCommandEvent_1af2edba3509636c28bd7371285a05a3fb" kind="function"><name>getMessage</name></member>
+    <member refid="classendstone_1_1UnknownCommandEvent_1a0c69bca386a2468527b51e6706b0afba" kind="function"><name>setMessage</name></member>
+  </compound>
   <compound refid="classendstone_1_1UUID" kind="class"><name>endstone::UUID</name>
     <member refid="classendstone_1_1UUID_1a1364e6289755ab27da41bf19976530d1" kind="variable"><name>data</name></member>
     <member refid="classendstone_1_1UUID_1aa0bd3b5d88e662f58bd7dc3695be1da4" kind="function"><name>begin</name></member>
@@ -3558,6 +3569,8 @@
   </compound>
   <compound refid="chunk__unload__event_8h" kind="file"><name>chunk_unload_event.h</name>
   </compound>
+  <compound refid="unknown__command__event_8h" kind="file"><name>unknown_command_event.h</name>
+  </compound>
   <compound refid="event_8h" kind="file"><name>event.h</name>
     <member refid="event_8h_1a80b507d6ebc2a0dd5db7cabd52a9790f" kind="define"><name>ENDSTONE_EVENT</name></member>
   </compound>
@@ -3918,6 +3931,8 @@
   <compound refid="dir_7eabd153c13720ffd29490c98a6f4dde" kind="dir"><name>include/endstone/event/chunk</name>
   </compound>
   <compound refid="dir_5c7b2dbfabcd1115569d1e20a260545c" kind="dir"><name>include/endstone/command</name>
+  </compound>
+  <compound refid="dir_05a1f6e1b04260aa3cefb17cb1753190" kind="dir"><name>include/endstone/event/command</name>
   </compound>
   <compound refid="dir_035306890ec6a3fa870e30b726ac5ffc" kind="dir"><name>include/endstone/form/controls</name>
   </compound>

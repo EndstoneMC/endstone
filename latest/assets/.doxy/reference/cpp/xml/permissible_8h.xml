@@ -302,6 +302,8 @@
         </childnode>
         <childnode refid="148" relation="include">
         </childnode>
+        <childnode refid="149" relation="include">
+        </childnode>
         <childnode refid="79" relation="include">
         </childnode>
         <childnode refid="87" relation="include">
@@ -518,6 +520,10 @@
       <node id="11">
         <label>include/endstone/event/chunk/chunk_unload_event.h</label>
         <link refid="chunk__unload__event_8h_source"/>
+      </node>
+      <node id="149">
+        <label>include/endstone/event/command/unknown_command_event.h</label>
+        <link refid="unknown__command__event_8h_source"/>
       </node>
       <node id="96">
         <label>include/endstone/event/event_handler.h</label>
@@ -1036,22 +1042,22 @@
         <link refid="permissible_8h"/>
         <childnode refid="2" relation="include">
         </childnode>
-        <childnode refid="149" relation="include">
-        </childnode>
         <childnode refid="150" relation="include">
+        </childnode>
+        <childnode refid="151" relation="include">
         </childnode>
       </node>
-      <node id="149">
+      <node id="150">
         <label>include/endstone/permissions/permission.h</label>
         <link refid="permission_8h_source"/>
-        <childnode refid="150" relation="include">
+        <childnode refid="151" relation="include">
         </childnode>
         <childnode refid="95" relation="include">
         </childnode>
         <childnode refid="101" relation="include">
         </childnode>
       </node>
-      <node id="150">
+      <node id="151">
         <label>include/endstone/permissions/permission_attachment.h</label>
         <link refid="permission__attachment_8h_source"/>
       </node>

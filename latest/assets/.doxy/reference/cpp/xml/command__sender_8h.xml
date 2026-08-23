@@ -15,6 +15,7 @@
     <includedby refid="command__sender__wrapper_8h" local="yes">include/endstone/command/command_sender_wrapper.h</includedby>
     <includedby refid="console__command__sender_8h" local="yes">include/endstone/command/console_command_sender.h</includedby>
     <includedby refid="proxied__command__sender_8h" local="yes">include/endstone/command/proxied_command_sender.h</includedby>
+    <includedby refid="unknown__command__event_8h" local="yes">include/endstone/event/command/unknown_command_event.h</includedby>
     <includedby refid="broadcast__message__event_8h" local="yes">include/endstone/event/server/broadcast_message_event.h</includedby>
     <includedby refid="server__command__event_8h" local="yes">include/endstone/event/server/server_command_event.h</includedby>
     <includedby refid="server__load__event_8h" local="yes">include/endstone/event/server/server_load_event.h</includedby>
@@ -351,6 +352,8 @@
         </childnode>
         <childnode refid="147" relation="include">
         </childnode>
+        <childnode refid="148" relation="include">
+        </childnode>
         <childnode refid="78" relation="include">
         </childnode>
         <childnode refid="86" relation="include">
@@ -567,6 +570,10 @@
       <node id="10">
         <label>include/endstone/event/chunk/chunk_unload_event.h</label>
         <link refid="chunk__unload__event_8h_source"/>
+      </node>
+      <node id="148">
+        <label>include/endstone/event/command/unknown_command_event.h</label>
+        <link refid="unknown__command__event_8h_source"/>
       </node>
       <node id="95">
         <label>include/endstone/event/event_handler.h</label>
