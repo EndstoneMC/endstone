@@ -332,6 +332,14 @@ rip_relative = true
 rip_offset = 1
 
 [[signatures]]
+name = "_ZN34ItemStackRequestActionCraftHandler17handleCraftActionERK31ItemStackRequestActionCraftBase"
+relative = false
+extra = 0
+# The class has one virtual craft handler. The unique body checks CraftRecipeOptional (15) and CraftRecipe (12),
+# then dispatches through the request action handler for container validation.
+pattern = "55 41 57 41 56 41 55 41 54 53 48 81 EC C8 00 00 00 ? 89 ? 48 89 ? 48 8B 47 08 48 8B 80 F8 00 00 00 48 85 C0 74 12 48 8B B8 B0 00 00 00 48 8B 07 FF 50 18 41 89 C7 EB 03 45 31 FF 48 8B ? 18"
+
+[[signatures]]
 name = "_ZN19CraftHandlerEnchant18_handleCraftActionERK31ItemStackRequestActionCraftBase"
 relative = false
 extra = 0
