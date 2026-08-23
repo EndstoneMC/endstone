@@ -5,9 +5,9 @@
     <basecompoundref refid="classendstone_1_1CustomChart" prot="public" virt="non-virtual">endstone::CustomChart</basecompoundref>
     <includes refid="simple__bar__chart_8h" local="no">endstone/metrics/simple_bar_chart.h</includes>
     <sectiondef kind="public-type">
-      <memberdef kind="typedef" id="classendstone_1_1SimpleBarChart_1ad00157e525d930cca62e86dede4046d4" prot="public" static="no">
-        <type>std::function&lt; std::optional&lt; StringValues &gt;()&gt;</type>
-        <definition>using endstone::SimpleBarChart::Callback =  std::function&lt;std::optional&lt;StringValues&gt;()&gt;</definition>
+      <memberdef kind="typedef" id="classendstone_1_1SimpleBarChart_1afc36145f6fd17527fec330eb4df2e4ec" prot="public" static="no">
+        <type>std::function&lt; std::optional&lt; std::unordered_map&lt; std::string, <ref refid="classendstone_1_1Identifier" kindref="compound">int</ref> &gt; &gt;()&gt;</type>
+        <definition>using endstone::SimpleBarChart::Callback =  std::function&lt;std::optional&lt;std::unordered_map&lt;std::string, int&gt; &gt;()&gt;</definition>
         <argsstring></argsstring>
         <name>Callback</name>
         <qualifiedname>endstone::SimpleBarChart::Callback</qualifiedname>
@@ -111,7 +111,7 @@
     </collaborationgraph>
     <location file="include/endstone/metrics/simple_bar_chart.h" line="28" column="1" bodyfile="include/endstone/metrics/simple_bar_chart.h" bodystart="28" bodyend="52"/>
     <listofallmembers>
-      <member refid="classendstone_1_1SimpleBarChart_1ad00157e525d930cca62e86dede4046d4" prot="public" virt="non-virtual"><scope>endstone::SimpleBarChart</scope><name>Callback</name></member>
+      <member refid="classendstone_1_1SimpleBarChart_1afc36145f6fd17527fec330eb4df2e4ec" prot="public" virt="non-virtual"><scope>endstone::SimpleBarChart</scope><name>Callback</name></member>
       <member refid="classendstone_1_1CustomChart_1ae3ced3f9b9edefd0cabf1e205d7f4ce2" prot="public" virt="non-virtual"><scope>endstone::SimpleBarChart</scope><name>CustomChart</name></member>
       <member refid="classendstone_1_1CustomChart_1a864e4ceb59eb73ede3d252156cd6ae96" prot="public" virt="non-virtual"><scope>endstone::SimpleBarChart</scope><name>CustomChart</name></member>
       <member refid="classendstone_1_1CustomChart_1acc5a05f0c91fb681fe6fed136e5c1c7f" prot="public" virt="non-virtual"><scope>endstone::SimpleBarChart</scope><name>CustomChart</name></member>

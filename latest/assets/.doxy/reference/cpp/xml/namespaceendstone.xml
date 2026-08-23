@@ -1225,48 +1225,6 @@
         </inbodydescription>
         <location file="include/endstone/message.h" line="28" column="1" bodyfile="include/endstone/message.h" bodystart="28" bodyend="-1"/>
       </memberdef>
-      <memberdef kind="typedef" id="namespaceendstone_1a8305ac023c49df0e3c1fdfe0288cb76c" prot="public" static="no">
-        <type>std::unordered_map&lt; std::string, <ref refid="classendstone_1_1Identifier" kindref="compound">int</ref> &gt;</type>
-        <definition>using endstone::StringValues = typedef std::unordered_map&lt;std::string, int&gt;</definition>
-        <argsstring></argsstring>
-        <name>StringValues</name>
-        <qualifiedname>endstone::StringValues</qualifiedname>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
-        <location file="include/endstone/metrics/custom_chart.h" line="29" column="1" bodyfile="include/endstone/metrics/custom_chart.h" bodystart="29" bodyend="-1"/>
-      </memberdef>
-      <memberdef kind="typedef" id="namespaceendstone_1ac7000ff5148d3a81df57386b17c2beaf" prot="public" static="no">
-        <type>std::unordered_map&lt; std::string, StringValues &gt;</type>
-        <definition>using endstone::DrilldownValues = typedef std::unordered_map&lt;std::string, StringValues&gt;</definition>
-        <argsstring></argsstring>
-        <name>DrilldownValues</name>
-        <qualifiedname>endstone::DrilldownValues</qualifiedname>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
-        <location file="include/endstone/metrics/custom_chart.h" line="30" column="1" bodyfile="include/endstone/metrics/custom_chart.h" bodystart="30" bodyend="-1"/>
-      </memberdef>
-      <memberdef kind="typedef" id="namespaceendstone_1a1312b99f234e46302202c30d1e66612e" prot="public" static="no">
-        <type>std::unordered_map&lt; std::string, std::vector&lt; <ref refid="classendstone_1_1Identifier" kindref="compound">int</ref> &gt; &gt;</type>
-        <definition>using endstone::BarValues = typedef std::unordered_map&lt;std::string, std::vector&lt;int&gt; &gt;</definition>
-        <argsstring></argsstring>
-        <name>BarValues</name>
-        <qualifiedname>endstone::BarValues</qualifiedname>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
-        <location file="include/endstone/metrics/custom_chart.h" line="31" column="1" bodyfile="include/endstone/metrics/custom_chart.h" bodystart="31" bodyend="-1"/>
-      </memberdef>
       <memberdef kind="typedef" id="namespaceendstone_1a33e1574322a8aca1ebab711faea30a4a" prot="public" static="no">
         <type><ref refid="classendstone_1_1nbt_1_1ValueTag" kindref="compound">nbt::ValueTag</ref>&lt; std::uint8_t &gt;</type>
         <definition>using endstone::ByteTag = typedef nbt::ValueTag&lt;std::uint8_t&gt;</definition>

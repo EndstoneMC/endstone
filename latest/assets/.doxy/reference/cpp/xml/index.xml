@@ -297,13 +297,13 @@
     <member refid="classendstone_1_1ActorType_1adc3e87e80db7f0ea2bddf087fe7cd622" kind="variable"><name>XpOrb</name></member>
   </compound>
   <compound refid="classendstone_1_1AdvancedBarChart" kind="class"><name>endstone::AdvancedBarChart</name>
-    <member refid="classendstone_1_1AdvancedBarChart_1a46047239f104d1ca3dc16872a19fc209" kind="typedef"><name>Callback</name></member>
+    <member refid="classendstone_1_1AdvancedBarChart_1ad1929550139ad7e2c046e324204cf4f4" kind="typedef"><name>Callback</name></member>
     <member refid="classendstone_1_1AdvancedBarChart_1a3da491779ff22b1585ff3add3020e04d" kind="variable"><name>get_values_</name></member>
     <member refid="classendstone_1_1AdvancedBarChart_1aeab1daca6d15b2668d6d3e251fe908be" kind="function"><name>AdvancedBarChart</name></member>
     <member refid="classendstone_1_1AdvancedBarChart_1a8e4d7d9f21548eed13bea91d080f0440" kind="function"><name>getChartData</name></member>
   </compound>
   <compound refid="classendstone_1_1AdvancedPie" kind="class"><name>endstone::AdvancedPie</name>
-    <member refid="classendstone_1_1AdvancedPie_1adbda62ba7f75355c30aed7eb17081241" kind="typedef"><name>Callback</name></member>
+    <member refid="classendstone_1_1AdvancedPie_1ad3cacb05a0b1118707f592cc89dedc33" kind="typedef"><name>Callback</name></member>
     <member refid="classendstone_1_1AdvancedPie_1ab080d4c594896d7731b410d2541ff0b4" kind="variable"><name>get_values_</name></member>
     <member refid="classendstone_1_1AdvancedPie_1aa06817e11a20a7d945c7a876219bc956" kind="function"><name>AdvancedPie</name></member>
     <member refid="classendstone_1_1AdvancedPie_1a35402e4741d4c10b3c039c647287e63e" kind="function"><name>getChartData</name></member>
@@ -942,7 +942,7 @@
     <member refid="classendstone_1_1Divider_1a8a5122832b87ae7c59cb6786e9d3c8d1" kind="function"><name>Divider</name></member>
   </compound>
   <compound refid="classendstone_1_1DrilldownPie" kind="class"><name>endstone::DrilldownPie</name>
-    <member refid="classendstone_1_1DrilldownPie_1a58582988154c739c0917f33af3542c7d" kind="typedef"><name>Callback</name></member>
+    <member refid="classendstone_1_1DrilldownPie_1af81f4f157dc2661da8589e561e70947e" kind="typedef"><name>Callback</name></member>
     <member refid="classendstone_1_1DrilldownPie_1a4d338aa09384426690b76865c6e9e2ea" kind="variable"><name>get_values_</name></member>
     <member refid="classendstone_1_1DrilldownPie_1a1cec7d4b3b17e5c6d07fff9d7f3e1699" kind="function"><name>DrilldownPie</name></member>
     <member refid="classendstone_1_1DrilldownPie_1a7b6b8b6c62319988a2a1f5f7fe127674" kind="function"><name>getChartData</name></member>
@@ -1857,7 +1857,7 @@
     <member refid="classendstone_1_1ModalForm_1a9b0b97dfd47eb028a0dda6b1229bacec" kind="function"><name>setOnSubmit</name></member>
   </compound>
   <compound refid="classendstone_1_1MultiLineChart" kind="class"><name>endstone::MultiLineChart</name>
-    <member refid="classendstone_1_1MultiLineChart_1aabae70e1b27a5010a9b491df82310c5e" kind="typedef"><name>Callback</name></member>
+    <member refid="classendstone_1_1MultiLineChart_1ac7402076cc1c5ef968e605d8348602be" kind="typedef"><name>Callback</name></member>
     <member refid="classendstone_1_1MultiLineChart_1ac4eadb44262d120d29f4ee92f5333210" kind="variable"><name>get_values_</name></member>
     <member refid="classendstone_1_1MultiLineChart_1a9ac3f6f486cad54eb0dab09f2186c04e" kind="function"><name>MultiLineChart</name></member>
     <member refid="classendstone_1_1MultiLineChart_1ada0376558cd5556a296c3562e63e774f" kind="function"><name>getChartData</name></member>
@@ -2931,7 +2931,7 @@
     <member refid="classendstone_1_1SignSide_1a0344a80b56855c753927d452f65e1ab4" kind="function"><name>setColor</name></member>
   </compound>
   <compound refid="classendstone_1_1SimpleBarChart" kind="class"><name>endstone::SimpleBarChart</name>
-    <member refid="classendstone_1_1SimpleBarChart_1ad00157e525d930cca62e86dede4046d4" kind="typedef"><name>Callback</name></member>
+    <member refid="classendstone_1_1SimpleBarChart_1afc36145f6fd17527fec330eb4df2e4ec" kind="typedef"><name>Callback</name></member>
     <member refid="classendstone_1_1SimpleBarChart_1ad6f06092b383596f16985b48d0b51f35" kind="variable"><name>get_values_</name></member>
     <member refid="classendstone_1_1SimpleBarChart_1a378a185dfb15dc23ab495c40f98c0c93" kind="function"><name>SimpleBarChart</name></member>
     <member refid="classendstone_1_1SimpleBarChart_1a861c9e0c5a45a4e42f99b6cbc23df3fc" kind="function"><name>getChartData</name></member>
@@ -3313,9 +3313,6 @@
     <member refid="namespaceendstone_1a0a9429f5c39e092606ad2e113ad0707b" kind="typedef"><name>JsonArray</name></member>
     <member refid="namespaceendstone_1a50a151fb732635e869fd9c0a4ef78c2c" kind="typedef"><name>DimensionId</name></member>
     <member refid="namespaceendstone_1ab1be61859bf80a227cf5d0b12a26ef78" kind="typedef"><name>Message</name></member>
-    <member refid="namespaceendstone_1a8305ac023c49df0e3c1fdfe0288cb76c" kind="typedef"><name>StringValues</name></member>
-    <member refid="namespaceendstone_1ac7000ff5148d3a81df57386b17c2beaf" kind="typedef"><name>DrilldownValues</name></member>
-    <member refid="namespaceendstone_1a1312b99f234e46302202c30d1e66612e" kind="typedef"><name>BarValues</name></member>
     <member refid="namespaceendstone_1a33e1574322a8aca1ebab711faea30a4a" kind="typedef"><name>ByteTag</name></member>
     <member refid="namespaceendstone_1acb2bf69099c0af04c6c085cb2b3241c8" kind="typedef"><name>ShortTag</name></member>
     <member refid="namespaceendstone_1ac3fa2364d5a39f92bac2643e995aef4f" kind="typedef"><name>IntTag</name></member>

@@ -273,7 +273,6 @@ _Represents a button with text and an optional icon._
 | enum  | [**BarColor**](#enum-barcolor)  <br>_Represents the color of a boss bar._  |
 | enum  | [**BarFlag**](#enum-barflag)  <br>_Represents an optional flag that changes the appearance or behaviour of a boss bar._  |
 | enum  | [**BarStyle**](#enum-barstyle)  <br>_Represents the segment style of a boss bar._  |
-| typedef std::unordered\_map&lt; std::string, std::vector&lt; [**int**](classendstone_1_1Identifier.md) &gt; &gt; | [**BarValues**](#typedef-barvalues)  <br> |
 | typedef [**Identifier**](classendstone_1_1Identifier.md)&lt; [**Biome**](classendstone_1_1Biome.md) &gt; | [**BiomeId**](#typedef-biomeid)  <br> |
 | enum  | [**BlockFace**](#enum-blockface)  <br>_Represents the face of a block._  |
 | typedef std::unordered\_map&lt; std::string, std::variant&lt; [**bool**](classendstone_1_1Identifier.md), std::string, [**int**](classendstone_1_1Identifier.md) &gt; &gt; | [**BlockStates**](#typedef-blockstates)  <br> |
@@ -283,7 +282,6 @@ _Represents a button with text and an optional icon._
 | typedef [**Identifier**](classendstone_1_1Identifier.md)&lt; [**Dimension**](classendstone_1_1Dimension.md) &gt; | [**DimensionId**](#typedef-dimensionid)  <br> |
 | enum  | [**DisplaySlot**](#enum-displayslot)  <br>_Locations for displaying objectives to the player._  |
 | typedef [**nbt::ValueTag**](classendstone_1_1nbt_1_1ValueTag.md)&lt; [**double**](classendstone_1_1Identifier.md) &gt; | [**DoubleTag**](#typedef-doubletag)  <br> |
-| typedef std::unordered\_map&lt; std::string, StringValues &gt; | [**DrilldownValues**](#typedef-drilldownvalues)  <br> |
 | typedef [**Identifier**](classendstone_1_1Identifier.md)&lt; [**EffectType**](classendstone_1_1EffectType.md) &gt; | [**EffectId**](#typedef-effectid)  <br> |
 | typedef [**Identifier**](classendstone_1_1Identifier.md)&lt; [**class**](classendstone_1_1Identifier.md) [**Enchantment**](classendstone_1_1Enchantment.md) &gt; | [**EnchantmentId**](#typedef-enchantmentid)  <br> |
 | enum  | [**EquipmentSlot**](#enum-equipmentslot)  <br>_Represents the equipment slots on an entity._  |
@@ -313,7 +311,6 @@ _Represents a button with text and an optional icon._
 | enum  | [**ServicePriority**](#enum-servicepriority)  <br>_Represents various priorities of a provider._  |
 | typedef [**nbt::ValueTag**](classendstone_1_1nbt_1_1ValueTag.md)&lt; std::int16\_t &gt; | [**ShortTag**](#typedef-shorttag)  <br> |
 | typedef [**nbt::ValueTag**](classendstone_1_1nbt_1_1ValueTag.md)&lt; std::string &gt; | [**StringTag**](#typedef-stringtag)  <br> |
-| typedef std::unordered\_map&lt; std::string, [**int**](classendstone_1_1Identifier.md) &gt; | [**StringValues**](#typedef-stringvalues)  <br> |
 | typedef std::uint32\_t | [**TaskId**](#typedef-taskid)  <br> |
 
 
@@ -486,19 +483,6 @@ enum endstone::BarStyle {
 
 
 
-### typedef BarValues 
-
-```C++
-using endstone::BarValues = typedef std::unordered_map<std::string, std::vector<int> >;
-```
-
-
-
-
-<hr>
-
-
-
 ### typedef BiomeId 
 
 ```C++
@@ -620,19 +604,6 @@ enum endstone::DisplaySlot {
 
 ```C++
 using endstone::DoubleTag = typedef nbt::ValueTag<double>;
-```
-
-
-
-
-<hr>
-
-
-
-### typedef DrilldownValues 
-
-```C++
-using endstone::DrilldownValues = typedef std::unordered_map<std::string, StringValues>;
 ```
 
 
@@ -1091,19 +1062,6 @@ using endstone::ShortTag = typedef nbt::ValueTag<std::int16_t>;
 
 ```C++
 using endstone::StringTag = typedef nbt::ValueTag<std::string>;
-```
-
-
-
-
-<hr>
-
-
-
-### typedef StringValues 
-
-```C++
-using endstone::StringValues = typedef std::unordered_map<std::string, int>;
 ```
 
 

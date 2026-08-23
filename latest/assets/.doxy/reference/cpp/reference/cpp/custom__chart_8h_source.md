@@ -24,21 +24,14 @@
 
 #pragma once
 
-#include <functional>
 #include <optional>
 #include <stdexcept>
 #include <string>
-#include <unordered_map>
 #include <utility>
-#include <vector>
 
 #include "endstone/json.h"
 
 namespace endstone {
-
-using StringValues = std::unordered_map<std::string, int>;
-using DrilldownValues = std::unordered_map<std::string, StringValues>;
-using BarValues = std::unordered_map<std::string, std::vector<int>>;
 
 class CustomChart {
 public:

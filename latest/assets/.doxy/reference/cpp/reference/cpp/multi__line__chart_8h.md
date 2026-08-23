@@ -13,6 +13,7 @@
 * `#include <functional>`
 * `#include <optional>`
 * `#include <string>`
+* `#include <unordered_map>`
 * `#include <utility>`
 * `#include "endstone/metrics/custom_chart.h"`
 

@@ -33,7 +33,7 @@ Inherits the following classes: [endstone::CustomChart](classendstone_1_1CustomC
 
 | Type | Name |
 | ---: | :--- |
-| typedef std::function&lt; std::optional&lt; StringValues &gt;()&gt; | [**Callback**](#typedef-callback)  <br> |
+| typedef std::function&lt; std::optional&lt; std::unordered\_map&lt; std::string, [**int**](classendstone_1_1Identifier.md) &gt; &gt;()&gt; | [**Callback**](#typedef-callback)  <br> |
 
 
 
@@ -158,7 +158,7 @@ See [endstone::CustomChart](classendstone_1_1CustomChart.md)
 ### typedef Callback 
 
 ```C++
-using endstone::MultiLineChart::Callback =  std::function<std::optional<StringValues>()>;
+using endstone::MultiLineChart::Callback =  std::function<std::optional<std::unordered_map<std::string, int> >()>;
 ```
 
 

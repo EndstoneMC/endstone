@@ -23,7 +23,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/metrics/custom_chart.h" line="74" column="17" bodyfile="include/endstone/metrics/custom_chart.h" bodystart="74" bodyend="-1"/>
+        <location file="include/endstone/metrics/custom_chart.h" line="67" column="17" bodyfile="include/endstone/metrics/custom_chart.h" bodystart="67" bodyend="-1"/>
       </memberdef>
     </sectiondef>
     <sectiondef kind="public-func">
@@ -63,7 +63,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/metrics/custom_chart.h" line="44" column="14" bodyfile="include/endstone/metrics/custom_chart.h" bodystart="44" bodyend="49"/>
+        <location file="include/endstone/metrics/custom_chart.h" line="37" column="14" bodyfile="include/endstone/metrics/custom_chart.h" bodystart="37" bodyend="42"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1CustomChart_1a864e4ceb59eb73ede3d252156cd6ae96" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>
@@ -80,7 +80,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/metrics/custom_chart.h" line="51" column="5"/>
+        <location file="include/endstone/metrics/custom_chart.h" line="44" column="5"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1CustomChart_1a4df748c94a39b9022f84bbe6735d3417" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="classendstone_1_1CustomChart" kindref="compound">CustomChart</ref> &amp;</type>
@@ -97,7 +97,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/metrics/custom_chart.h" line="52" column="17"/>
+        <location file="include/endstone/metrics/custom_chart.h" line="45" column="17"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1CustomChart_1acc5a05f0c91fb681fe6fed136e5c1c7f" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>
@@ -114,7 +114,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/metrics/custom_chart.h" line="53" column="5"/>
+        <location file="include/endstone/metrics/custom_chart.h" line="46" column="5"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1CustomChart_1a69a631b102092d50e56ca9123e970c46" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="classendstone_1_1CustomChart" kindref="compound">CustomChart</ref> &amp;</type>
@@ -131,7 +131,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/metrics/custom_chart.h" line="54" column="17"/>
+        <location file="include/endstone/metrics/custom_chart.h" line="47" column="17"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1CustomChart_1afbf1344198d16424f81a05311cfb283c" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
         <type></type>
@@ -145,7 +145,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/metrics/custom_chart.h" line="55" column="13"/>
+        <location file="include/endstone/metrics/custom_chart.h" line="48" column="13"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1CustomChart_1aff6403a38ec3eda21c04253fa942ee6b" prot="public" static="no" const="yes" explicit="no" inline="yes" noexcept="yes" virt="non-virtual">
         <type><ref refid="classendstone_1_1Identifier" kindref="compound">const</ref> std::string &amp;</type>
@@ -163,7 +163,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/metrics/custom_chart.h" line="62" column="24" bodyfile="include/endstone/metrics/custom_chart.h" bodystart="62" bodyend="62"/>
+        <location file="include/endstone/metrics/custom_chart.h" line="55" column="24" bodyfile="include/endstone/metrics/custom_chart.h" bodystart="55" bodyend="55"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1CustomChart_1a020b222052894ea51d89f6918943f65b" prot="public" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
         <type>std::optional&lt; JsonObject &gt;</type>
@@ -189,7 +189,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/metrics/custom_chart.h" line="71" column="28"/>
+        <location file="include/endstone/metrics/custom_chart.h" line="64" column="28"/>
       </memberdef>
     </sectiondef>
     <briefdescription>
@@ -245,7 +245,7 @@
         </childnode>
       </node>
     </inheritancegraph>
-    <location file="include/endstone/metrics/custom_chart.h" line="36" column="1" bodyfile="include/endstone/metrics/custom_chart.h" bodystart="36" bodyend="75"/>
+    <location file="include/endstone/metrics/custom_chart.h" line="29" column="1" bodyfile="include/endstone/metrics/custom_chart.h" bodystart="29" bodyend="68"/>
     <listofallmembers>
       <member refid="classendstone_1_1CustomChart_1a07ea2b8c72c4aaf0871ba8731e3d7ee3" prot="private" virt="non-virtual"><scope>endstone::CustomChart</scope><name>chart_id_</name></member>
       <member refid="classendstone_1_1CustomChart_1ae3ced3f9b9edefd0cabf1e205d7f4ce2" prot="public" virt="non-virtual"><scope>endstone::CustomChart</scope><name>CustomChart</name></member>
