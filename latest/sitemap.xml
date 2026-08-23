@@ -553,11 +553,19 @@
          <lastmod>2026-08-23</lastmod>
     </url>
     <url>
+         <loc>https://endstone.dev/latest/reference/cpp/classendstone_1_1InventoryCloseEvent/</loc>
+         <lastmod>2026-08-23</lastmod>
+    </url>
+    <url>
          <loc>https://endstone.dev/latest/reference/cpp/classendstone_1_1InventoryEvent/</loc>
          <lastmod>2026-08-23</lastmod>
     </url>
     <url>
          <loc>https://endstone.dev/latest/reference/cpp/classendstone_1_1InventoryInteractEvent/</loc>
+         <lastmod>2026-08-23</lastmod>
+    </url>
+    <url>
+         <loc>https://endstone.dev/latest/reference/cpp/classendstone_1_1InventoryOpenEvent/</loc>
          <lastmod>2026-08-23</lastmod>
     </url>
     <url>
@@ -2093,6 +2101,14 @@
          <lastmod>2026-08-23</lastmod>
     </url>
     <url>
+         <loc>https://endstone.dev/latest/reference/cpp/inventory__close__event_8h/</loc>
+         <lastmod>2026-08-23</lastmod>
+    </url>
+    <url>
+         <loc>https://endstone.dev/latest/reference/cpp/inventory__close__event_8h_source/</loc>
+         <lastmod>2026-08-23</lastmod>
+    </url>
+    <url>
          <loc>https://endstone.dev/latest/reference/cpp/inventory__event_8h/</loc>
          <lastmod>2026-08-23</lastmod>
     </url>
@@ -2106,6 +2122,14 @@
     </url>
     <url>
          <loc>https://endstone.dev/latest/reference/cpp/inventory__interact__event_8h_source/</loc>
+         <lastmod>2026-08-23</lastmod>
+    </url>
+    <url>
+         <loc>https://endstone.dev/latest/reference/cpp/inventory__open__event_8h/</loc>
+         <lastmod>2026-08-23</lastmod>
+    </url>
+    <url>
+         <loc>https://endstone.dev/latest/reference/cpp/inventory__open__event_8h_source/</loc>
          <lastmod>2026-08-23</lastmod>
     </url>
     <url>

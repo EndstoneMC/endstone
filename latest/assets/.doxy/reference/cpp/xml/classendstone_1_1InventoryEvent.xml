@@ -4,6 +4,7 @@
     <compoundname>endstone::InventoryEvent</compoundname>
     <basecompoundref refid="classendstone_1_1Event" prot="public" virt="non-virtual">endstone::Event</basecompoundref>
     <derivedcompoundref refid="classendstone_1_1Cancellable" prot="public" virt="non-virtual">endstone::Cancellable&lt; InventoryEvent &gt;</derivedcompoundref>
+    <derivedcompoundref refid="classendstone_1_1InventoryCloseEvent" prot="public" virt="non-virtual">endstone::InventoryCloseEvent</derivedcompoundref>
     <includes refid="inventory__event_8h" local="no">endstone/event/inventory/inventory_event.h</includes>
     <sectiondef kind="private-attrib">
       <memberdef kind="variable" id="classendstone_1_1InventoryEvent_1ae9ef316bace42b6237891933053fc506" prot="private" static="no" mutable="no">
@@ -75,6 +76,12 @@
         <label>endstone::Event</label>
         <link refid="classendstone_1_1Event"/>
       </node>
+      <node id="6">
+        <label>endstone::InventoryCloseEvent</label>
+        <link refid="classendstone_1_1InventoryCloseEvent"/>
+        <childnode refid="1" relation="public-inheritance">
+        </childnode>
+      </node>
       <node id="1">
         <label>endstone::InventoryEvent</label>
         <link refid="classendstone_1_1InventoryEvent"/>
@@ -84,6 +91,12 @@
       <node id="4">
         <label>endstone::InventoryInteractEvent</label>
         <link refid="classendstone_1_1InventoryInteractEvent"/>
+        <childnode refid="3" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="5">
+        <label>endstone::InventoryOpenEvent</label>
+        <link refid="classendstone_1_1InventoryOpenEvent"/>
         <childnode refid="3" relation="public-inheritance">
         </childnode>
       </node>

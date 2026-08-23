@@ -1456,6 +1456,12 @@
     <member refid="classendstone_1_1Inventory_1a367187fb26cad50974f6a01f0df9e86c" kind="function"><name>clear</name></member>
     <member refid="classendstone_1_1Inventory_1afc114b9f2e5c05fb1e1388963b8c86e8" kind="function"><name>clear</name></member>
   </compound>
+  <compound refid="classendstone_1_1InventoryCloseEvent" kind="class"><name>endstone::InventoryCloseEvent</name>
+    <member refid="classendstone_1_1InventoryCloseEvent_1a415c707ca373c4fdc39c88512a3b6cc3" kind="variable"><name>player_</name></member>
+    <member refid="classendstone_1_1InventoryCloseEvent_1a92bf71f2624b8812308c2e944d67c466" kind="function"><name>ENDSTONE_EVENT</name></member>
+    <member refid="classendstone_1_1InventoryCloseEvent_1ab63d414c4cd40bc6d7ef20ffbc930f77" kind="function"><name>InventoryCloseEvent</name></member>
+    <member refid="classendstone_1_1InventoryCloseEvent_1a683c184f30467a4e1b1175ba1ee4cde0" kind="function"><name>getPlayer</name></member>
+  </compound>
   <compound refid="classendstone_1_1InventoryEvent" kind="class"><name>endstone::InventoryEvent</name>
     <member refid="classendstone_1_1InventoryEvent_1ae9ef316bace42b6237891933053fc506" kind="variable"><name>inventory_</name></member>
     <member refid="classendstone_1_1InventoryEvent_1a5e7d601191283f7541f0620a81b5f82a" kind="function"><name>InventoryEvent</name></member>
@@ -1465,6 +1471,12 @@
     <member refid="classendstone_1_1InventoryInteractEvent_1a8eddeba8857db9efdb7b180f6c5bdf20" kind="variable"><name>who_clicked_</name></member>
     <member refid="classendstone_1_1InventoryInteractEvent_1ab4fa458385223dd5cb641e41354a57a5" kind="function"><name>InventoryInteractEvent</name></member>
     <member refid="classendstone_1_1InventoryInteractEvent_1a525b19538457b9e2b9a36191243cf8d8" kind="function"><name>getWhoClicked</name></member>
+  </compound>
+  <compound refid="classendstone_1_1InventoryOpenEvent" kind="class"><name>endstone::InventoryOpenEvent</name>
+    <member refid="classendstone_1_1InventoryOpenEvent_1a547e28fbe97eea24044a9778e803fa90" kind="variable"><name>player_</name></member>
+    <member refid="classendstone_1_1InventoryOpenEvent_1ad1f68816eb2d08712674f2f22907d00b" kind="function"><name>ENDSTONE_EVENT</name></member>
+    <member refid="classendstone_1_1InventoryOpenEvent_1abb921ff3de07886f1a502db1f503269e" kind="function"><name>InventoryOpenEvent</name></member>
+    <member refid="classendstone_1_1InventoryOpenEvent_1a538f1b1e1819e27c9b05d26cc115342c" kind="function"><name>getPlayer</name></member>
   </compound>
   <compound refid="classendstone_1_1IpBanEntry" kind="class"><name>endstone::IpBanEntry</name>
     <member refid="classendstone_1_1IpBanEntry_1a5d1d45ba5dfa2993909e03d945e33125" kind="variable"><name>address_</name></member>
@@ -3677,9 +3689,13 @@
   </compound>
   <compound refid="handler__list_8h" kind="file"><name>handler_list.h</name>
   </compound>
+  <compound refid="inventory__close__event_8h" kind="file"><name>inventory_close_event.h</name>
+  </compound>
   <compound refid="inventory__event_8h" kind="file"><name>inventory_event.h</name>
   </compound>
   <compound refid="inventory__interact__event_8h" kind="file"><name>inventory_interact_event.h</name>
+  </compound>
+  <compound refid="inventory__open__event_8h" kind="file"><name>inventory_open_event.h</name>
   </compound>
   <compound refid="dimension__event_8h" kind="file"><name>dimension_event.h</name>
   </compound>

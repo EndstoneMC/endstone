@@ -4,7 +4,9 @@
     <compoundname>inventory_event.h</compoundname>
     <includes refid="event_8h" local="yes">endstone/event/event.h</includes>
     <includes refid="inventory_8h" local="yes">endstone/inventory/inventory.h</includes>
+    <includedby refid="inventory__close__event_8h" local="yes">include/endstone/event/inventory/inventory_close_event.h</includedby>
     <includedby refid="inventory__interact__event_8h" local="yes">include/endstone/event/inventory/inventory_interact_event.h</includedby>
+    <includedby refid="inventory__open__event_8h" local="yes">include/endstone/event/inventory/inventory_open_event.h</includedby>
     <incdepgraph>
       <node id="31">
         <label>endstone/ban/ban_entry.h</label>
@@ -907,15 +909,27 @@
       </node>
     </incdepgraph>
     <invincdepgraph>
+      <node id="2">
+        <label>include/endstone/event/inventory/inventory_close_event.h</label>
+        <link refid="inventory__close__event_8h_source"/>
+      </node>
       <node id="1">
         <label>include/endstone/event/inventory/inventory_event.h</label>
         <link refid="inventory__event_8h"/>
         <childnode refid="2" relation="include">
         </childnode>
+        <childnode refid="3" relation="include">
+        </childnode>
+        <childnode refid="4" relation="include">
+        </childnode>
       </node>
-      <node id="2">
+      <node id="3">
         <label>include/endstone/event/inventory/inventory_interact_event.h</label>
         <link refid="inventory__interact__event_8h_source"/>
+      </node>
+      <node id="4">
+        <label>include/endstone/event/inventory/inventory_open_event.h</label>
+        <link refid="inventory__open__event_8h_source"/>
       </node>
     </invincdepgraph>
     <innerclass refid="classendstone_1_1InventoryEvent" prot="public">endstone::InventoryEvent</innerclass>

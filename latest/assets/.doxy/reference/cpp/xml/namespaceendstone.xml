@@ -98,8 +98,10 @@
     <innerclass refid="classendstone_1_1Image" prot="public">endstone::Image</innerclass>
     <innerclass refid="classendstone_1_1Input" prot="public">endstone::Input</innerclass>
     <innerclass refid="classendstone_1_1Inventory" prot="public">endstone::Inventory</innerclass>
+    <innerclass refid="classendstone_1_1InventoryCloseEvent" prot="public">endstone::InventoryCloseEvent</innerclass>
     <innerclass refid="classendstone_1_1InventoryEvent" prot="public">endstone::InventoryEvent</innerclass>
     <innerclass refid="classendstone_1_1InventoryInteractEvent" prot="public">endstone::InventoryInteractEvent</innerclass>
+    <innerclass refid="classendstone_1_1InventoryOpenEvent" prot="public">endstone::InventoryOpenEvent</innerclass>
     <innerclass refid="classendstone_1_1IpBanEntry" prot="public">endstone::IpBanEntry</innerclass>
     <innerclass refid="classendstone_1_1IpBanList" prot="public">endstone::IpBanList</innerclass>
     <innerclass refid="classendstone_1_1IRegistry" prot="public">endstone::IRegistry</innerclass>

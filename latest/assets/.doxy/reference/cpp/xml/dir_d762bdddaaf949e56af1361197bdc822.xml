@@ -2,8 +2,10 @@
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.8" xml:lang="en-US">
   <compounddef id="dir_d762bdddaaf949e56af1361197bdc822" kind="dir">
     <compoundname>include/endstone/event/inventory</compoundname>
+    <innerfile refid="inventory__close__event_8h">inventory_close_event.h</innerfile>
     <innerfile refid="inventory__event_8h">inventory_event.h</innerfile>
     <innerfile refid="inventory__interact__event_8h">inventory_interact_event.h</innerfile>
+    <innerfile refid="inventory__open__event_8h">inventory_open_event.h</innerfile>
     <briefdescription>
     </briefdescription>
     <detaileddescription>
