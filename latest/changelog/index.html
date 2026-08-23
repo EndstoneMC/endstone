@@ -5616,6 +5616,10 @@ and this project adheres to <a href="https://semver.org/spec/v2.0.0.html">Semant
 <li>A <code>docker-compose.yml</code> for running the server with Docker Compose.</li>
 </ul>
 <h3 id="changed">Changed<a class="headerlink" href="#changed" title="Permanent link">&para;</a></h3>
+<h4 id="networking">Networking<a class="headerlink" href="#networking" title="Permanent link">&para;</a></h4>
+<ul>
+<li>Packet compression now uses libdeflate instead of the vanilla zlib compressor. The wire format is unchanged standard raw deflate, so clients need no update and Snappy connections are untouched. Measured on 39.7 MB of live gameplay traffic, batches compress 4.6x faster for 0.4% more bytes on the wire. The saving shows up most on servers broadcasting to many players, since every player's batch is compressed separately.</li>
+</ul>
 <h4 id="json-payloads">JSON payloads<a class="headerlink" href="#json-payloads" title="Permanent link">&para;</a></h4>
 <ul>
 <li><strong>BREAKING</strong>: <code>ModalForm</code>'s submit callback receives the parsed response instead of a JSON string: a <code>JsonArray</code> in C++, a <code>JsonArray</code> (<code>list</code>) in Python. A Python handler doing <code>json.loads(data)</code> must drop the call, and a C++ one must stop parsing the string itself.</li>
