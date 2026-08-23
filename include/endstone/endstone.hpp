@@ -187,6 +187,7 @@ static_assert(_ITERATOR_DEBUG_LEVEL == 0,
 #include "inventory/complex_recipe.h"
 #include "inventory/equipment_slot.h"
 #include "inventory/exact_ingredient.h"
+#include "inventory/furnace_recipe.h"
 #include "inventory/inventory.h"
 #include "inventory/item_factory.h"
 #include "inventory/item_stack.h"

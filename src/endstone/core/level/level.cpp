@@ -29,6 +29,7 @@
 #include "bedrock/world/level/storage/game_rules.h"
 #include "endstone/core/actor/actor.h"
 #include "endstone/core/game_rule.h"
+#include "endstone/core/inventory/furnace_recipe.h"
 #include "endstone/core/inventory/recipe_data.h"
 #include "endstone/core/level/dimension.h"
 #include "endstone/event/level/dimension_load_event.h"
@@ -110,10 +111,20 @@ std::vector<NotNull<Dimension>> EndstoneLevel::getDimensions() const
 std::vector<NotNull<Recipe>> EndstoneLevel::getRecipes() const
 {
     std::vector<NotNull<Recipe>> recipes;
-    for (const auto &by_tag : level_.getRecipes().getRecipesAllTags()) {
+    const auto &minecraft_recipes = level_.getRecipes();
+    for (const auto &by_tag : minecraft_recipes.getRecipesAllTags()) {
         for (const auto &by_id : by_tag.second) {
             if (by_id.second) {
                 recipes.push_back(EndstoneRecipeData::fromMinecraft(by_id.second));
+            }
+        }
+    }
+    for (const auto *tag : {"furnace", "blast_furnace", "smoker", "campfire"}) {
+        if (const auto *results = minecraft_recipes.findFurnaceResults(tag)) {
+            for (const auto &[input_id_aux, result] : *results) {
+                if (auto recipe = EndstoneFurnaceRecipe::fromMinecraft(input_id_aux, result, tag)) {
+                    recipes.emplace_back(recipe.get());
+                }
             }
         }
     }

@@ -104,12 +104,29 @@ void init_inventory(py::module_ &m, py::class_<ItemStack> &item_stack)
     not an item tag, and the items are not reported.
 )doc");
 
-    py::classh<Recipe>(m, "Recipe", "Represents some type of crafting recipe.")
+    py::classh<Recipe>(m, "Recipe", "Represents some type of recipe.")
         .def_property_readonly("result", &Recipe::getResult, "The result of this recipe.")
-        .def_property_readonly("ingredients", &Recipe::getIngredients)
-        .def_property_readonly("recipe_id", &Recipe::getRecipeId)
+        .def_property_readonly("ingredients", &Recipe::getIngredients, R"doc(
+    The ingredients consumed by this recipe.
+
+    A value is `None` when the corresponding slot does not require an ingredient.
+)doc")
+        .def_property_readonly("recipe_id", &Recipe::getRecipeId, R"doc(
+    The identifier of this recipe.
+
+    Bedrock does not retain the identifiers of furnace recipes after loading them, so `FurnaceRecipe` returns an empty
+    string.
+)doc")
         .def_property_readonly("tag", &Recipe::getTag,
-                               "The crafting station this recipe belongs to, such as `crafting_table`.");
+                               "The station this recipe belongs to, such as `crafting_table` or `furnace`.");
+
+    py::classh<FurnaceRecipe, Recipe>(m, "FurnaceRecipe", R"doc(
+    Represents a furnace recipe.
+
+    Bedrock uses furnace recipes for furnaces, blast furnaces, smokers and campfires. The recipe's `tag` identifies the
+    station that accepts it.
+)doc")
+        .def_property_readonly("input", &FurnaceRecipe::getInput, "The input ingredient.");
 
     py::classh<ShapedRecipe, Recipe>(m, "ShapedRecipe", "Represents a shaped (ie normal) crafting recipe.")
         .def_property_readonly("width", &ShapedRecipe::getWidth)

@@ -23,7 +23,7 @@
 
 namespace endstone {
 /**
- * Represents some type of crafting recipe.
+ * Represents some type of recipe.
  */
 class Recipe : public Object {
 public:
@@ -36,14 +36,29 @@ public:
      */
     [[nodiscard]] virtual ItemStack getResult() const = 0;
 
+    /**
+     * Gets the ingredients consumed by this recipe.
+     *
+     * A value is empty when the corresponding slot does not require an ingredient.
+     *
+     * @return the recipe ingredients
+     */
     [[nodiscard]] virtual const std::vector<Nullable<RecipeIngredient>> &getIngredients() const = 0;
 
+    /**
+     * Gets the identifier of this recipe.
+     *
+     * Bedrock does not retain the identifiers of furnace recipes after loading them, so FurnaceRecipe returns an empty
+     * string.
+     *
+     * @return the recipe identifier, or an empty string when it is unavailable
+     */
     [[nodiscard]] virtual const std::string &getRecipeId() const = 0;
 
     /**
-     * Get the crafting station this recipe belongs to, such as `crafting_table` or `smithing_table`.
+     * Gets the station this recipe belongs to, such as `crafting_table`, `smithing_table` or `furnace`.
      *
-     * @return the crafting tag
+     * @return the recipe tag
      */
     [[nodiscard]] virtual const std::string &getTag() const = 0;
 };

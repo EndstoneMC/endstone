@@ -47,6 +47,13 @@ public:
 
     [[nodiscard]] const std::map<HashedString, RecipeMap> &getRecipesAllTags() const { return recipes_; }
 
+    [[nodiscard]] const std::unordered_map<int, ItemInstance> *findFurnaceResults(
+        const HashedString &tag) const  // Endstone
+    {
+        const auto it = furnace_results_.find(static_cast<int>(tag.getHash()));
+        return it != furnace_results_.end() ? &it->second : nullptr;
+    }
+
     [[nodiscard]] const Recipe *getRecipeByNetId(const RecipeNetId &net_id) const
     {
         if (net_id.raw_id == 0) {
