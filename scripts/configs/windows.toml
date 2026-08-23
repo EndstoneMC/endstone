@@ -150,6 +150,15 @@ extra = 0
 pattern = "56 57 53 48 81 EC ? ? ? ? 48 89 D7 48 89 CE 48 8B 91 ? ? ? ? 48 8B 89 ? ? ? ? 48 39 CA 0F 85 ? ? ? ? 48 8B 4E ? 48 8D 5E ? 48 8B 01 48 8B 40 ? 48 89 DA FF 15"
 
 [[signatures]]
+name = "?onNewIncomingConnection@NetworkSystem@@EEAA_NAEBVNetworkIdentifier@@$$QEAV?$shared_ptr@VNetworkPeer@@@std@@@Z"
+relative = false
+extra = 0
+# 1. NetworkSystem's first base is Connector::ConnectionCallbacks, so its overrides sit at the head of the
+#    primary vtable: onNewIncomingConnection is the 1st slot after the destructor
+# 2. confirm by the body: it walks mConnections comparing NetworkIdentifier before building the peer chain
+pattern = "55 41 57 41 56 41 55 41 54 56 57 53 48 81 EC ? ? ? ? 48 8D AC 24 ? ? ? ? 48 C7 45 50 ? ? ? ? 4D 89 C6 48 89 D7 48 89 CE"
+
+[[signatures]]
 name = "?_log_va@LogDetails@BedrockLog@@AEAAXW4LogAreaID@@IPEBDHH1PEAD@Z"
 relative = false
 extra = 0

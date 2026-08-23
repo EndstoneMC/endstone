@@ -121,6 +121,15 @@ extra = 0
 pattern = "41 57 41 56 53 48 81 EC ? ? ? ? 49 89 F6 48 89 FB 48 8B 8F ? ? ? ?"
 
 [[signatures]]
+name = "_ZN13NetworkSystem23onNewIncomingConnectionERK17NetworkIdentifierONSt3__110shared_ptrI11NetworkPeerEE"
+relative = false
+extra = 0
+# 1. use NetworkSystem's RTTI vtable `_ZTV13NetworkSystem` and take the primary (offset-to-top 0) one
+# 2. Connector::ConnectionCallbacks is the first base, so onNewIncomingConnection is the 3rd slot; the four
+#    trivial port accessors sit 0x20 apart further down and pin the layout
+pattern = "55 41 57 41 56 41 55 41 54 53 48 83 EC 58 49 89 D7 49 89 F6 48 89 FB 48 8B 47 78"
+
+[[signatures]]
 name = "_ZN10BedrockLog10LogDetails7_log_vaE9LogAreaIDjPKciiS3_P13__va_list_tag"
 relative = false
 extra = 0

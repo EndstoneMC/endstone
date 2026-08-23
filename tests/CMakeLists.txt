@@ -1,6 +1,9 @@
 cmake_minimum_required(VERSION 3.15)
 project(endstone_test LANGUAGES CXX)
 
+find_package(libdeflate REQUIRED)
+find_package(ZLIB REQUIRED)
+
 endstone_add_plugin(test_plugin test_plugin.cpp)
 set_target_properties(test_plugin PROPERTIES LIBRARY_OUTPUT_DIRECTORY "plugins")
 set_target_properties(test_plugin PROPERTIES RUNTIME_OUTPUT_DIRECTORY "plugins")
@@ -33,10 +36,11 @@ add_executable(endstone_test
         test_thread_pool_executor.cpp
         test_uuid.cpp
         test_object.cpp
+        test_packet_compression.cpp
         test_vector.cpp
 )
 add_dependencies(endstone_test test_plugin)
-target_link_libraries(endstone_test PRIVATE endstone::core GTest::gtest_main GTest::gmock_main)
+target_link_libraries(endstone_test PRIVATE endstone::core GTest::gtest_main GTest::gmock_main ZLIB::ZLIB libdeflate::libdeflate_static)
 # CppPluginLoaderTest cases share the plugins/.local shadow-copy dir, whose
 # cleanup races when ctest runs them in parallel; serialize just those.
 gtest_discover_tests(endstone_test
