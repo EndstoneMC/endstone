@@ -37,6 +37,8 @@ _Represents a button with text and an optional icon._
 
 | Type | Name |
 | ---: | :--- |
+| class | [**Ability**](classendstone_1_1Ability.md) <br>_All player abilities._  |
+| class | [**AbilityId**](classendstone_1_1AbilityId.md) &lt;[**typename**](classendstone_1_1Identifier.md) [**T**](classendstone_1_1Identifier.md)&gt;<br>_Represents the identifier of a player ability, carrying the type of the ability's value._  |
 | class | [**ActionForm**](classendstone_1_1ActionForm.md) <br>_Represents a form with buttons that let the player take action._  |
 | class | [**Actor**](classendstone_1_1Actor.md) <br>_Represents a base actor in the level._  |
 | class | [**ActorChangeBlockEvent**](classendstone_1_1ActorChangeBlockEvent.md) <br>_Called when an_ [_**Actor**_](classendstone_1_1Actor.md) _changes a block as part of its own behaviour, such as a creeper exploding, an enderman picking a block up, a ravager trampling crops or a zombie breaking a door._ |
@@ -281,6 +283,7 @@ _Represents a button with text and an optional icon._
 
 | Type | Name |
 | ---: | :--- |
+| typedef std::variant&lt; [**bool**](classendstone_1_1Identifier.md), [**float**](classendstone_1_1Identifier.md) &gt; | [**AbilityValue**](#typedef-abilityvalue)  <br> |
 | typedef [**Identifier**](classendstone_1_1Identifier.md)&lt; [**ActorType**](classendstone_1_1ActorType.md) &gt; | [**ActorTypeId**](#typedef-actortypeid)  <br> |
 | typedef [**Identifier**](classendstone_1_1Identifier.md)&lt; [**class**](classendstone_1_1Identifier.md) [**Attribute**](classendstone_1_1Attribute.md) &gt; | [**AttributeId**](#typedef-attributeid)  <br> |
 | typedef [**Identifier**](classendstone_1_1Identifier.md)&lt; [**class**](classendstone_1_1Identifier.md) [**AttributeModifier**](classendstone_1_1AttributeModifier.md) &gt; | [**AttributeModifierId**](#typedef-attributemodifierid)  <br> |
@@ -395,6 +398,19 @@ _Represents a button with text and an optional icon._
 
 ## Public Types Documentation
 
+
+
+
+### typedef AbilityValue 
+
+```C++
+using endstone::AbilityValue = typedef std::variant<bool, float>;
+```
+
+
+
+
+<hr>
 
 
 
@@ -1352,5 +1368,5 @@ inline void endstone::swap (
 <hr>
 
 ------------------------------
-The documentation for this class was generated from the following file `include/endstone/actor/actor.h`
+The documentation for this class was generated from the following file `include/endstone/ability.h`
 

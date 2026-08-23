@@ -153,7 +153,10 @@ Inherits the following classes: [endstone::Mob](classendstone_1_1Mob.md)
 
 | Type | Name |
 | ---: | :--- |
+| virtual AbilityValue | [**\_getAbility**](#function-_getability) ([**Identifier**](classendstone_1_1Identifier.md)&lt; [**Ability**](classendstone_1_1Ability.md) &gt; ability) const = 0<br>_Gets the value of an ability._  |
+| virtual [**bool**](classendstone_1_1Identifier.md) | [**\_setAbility**](#function-_setability) ([**Identifier**](classendstone_1_1Identifier.md)&lt; [**Ability**](classendstone_1_1Ability.md) &gt; ability, AbilityValue value) = 0<br>_Sets the value of an ability._  |
 | virtual [**void**](classendstone_1_1Identifier.md) | [**closeForm**](#function-closeform) () = 0<br>_Closes the forms that are currently open for the player._  |
+|  [**T**](classendstone_1_1Identifier.md) | [**getAbility**](#function-getability) ([**AbilityId**](classendstone_1_1AbilityId.md)&lt; [**T**](classendstone_1_1Identifier.md) &gt; ability) const<br>_Gets the value of an ability._  |
 | virtual [**const**](classendstone_1_1Identifier.md) [**SocketAddress**](classendstone_1_1SocketAddress.md) & | [**getAddress**](#function-getaddress) () const = 0<br>_Gets the socket address of this player._  |
 | virtual [**bool**](classendstone_1_1Identifier.md) | [**getAllowFlight**](#function-getallowflight) () const = 0<br>_Determines if the_ [_**Player**_](classendstone_1_1Player.md) _is allowed to fly via jump key double-tap._ |
 | virtual std::string | [**getDeviceId**](#function-getdeviceid) () const = 0<br>_Gets the player's current device id._  |
@@ -195,6 +198,7 @@ Inherits the following classes: [endstone::Mob](classendstone_1_1Mob.md)
 | virtual [**void**](classendstone_1_1Identifier.md) | [**sendTitle**](#function-sendtitle-12) (std::string title, std::string subtitle) const = 0<br>_Sends a title and a subtitle message to the player._  |
 | virtual [**void**](classendstone_1_1Identifier.md) | [**sendTitle**](#function-sendtitle-22) (std::string title, std::string subtitle, [**int**](classendstone_1_1Identifier.md) fade\_in, [**int**](classendstone_1_1Identifier.md) stay, [**int**](classendstone_1_1Identifier.md) fade\_out) const = 0<br>_Sends a title and a subtitle message to the player._  |
 | virtual [**void**](classendstone_1_1Identifier.md) | [**sendToast**](#function-sendtoast) (std::string title, std::string content) const = 0<br>_Sends this player a toast notification._  |
+|  [**bool**](classendstone_1_1Identifier.md) | [**setAbility**](#function-setability) ([**AbilityId**](classendstone_1_1AbilityId.md)&lt; [**T**](classendstone_1_1Identifier.md) &gt; ability, [**T**](classendstone_1_1Identifier.md) value) <br>_Sets the value of an ability._  |
 | virtual [**void**](classendstone_1_1Identifier.md) | [**setAllowFlight**](#function-setallowflight) ([**bool**](classendstone_1_1Identifier.md) flight) = 0<br>_Sets if the_ [_**Player**_](classendstone_1_1Player.md) _is allowed to fly via jump key double-tap._ |
 | virtual [**void**](classendstone_1_1Identifier.md) | [**setExpLevel**](#function-setexplevel) ([**int**](classendstone_1_1Identifier.md) level) = 0<br>_Sets the players current experience level._  |
 | virtual [**void**](classendstone_1_1Identifier.md) | [**setExpProgress**](#function-setexpprogress) ([**float**](classendstone_1_1Identifier.md) progress) = 0<br>_Sets the players current experience progress towards the next level._  |
@@ -486,6 +490,76 @@ See [endstone::Object](classendstone_1_1Object.md)
 
 
 
+### function \_getAbility 
+
+_Gets the value of an ability._ 
+```C++
+virtual AbilityValue endstone::Player::_getAbility (
+    Identifier < Ability > ability
+) const = 0
+```
+
+
+
+
+
+**Parameters:**
+
+
+* `ability` The Minecraft ability to get 
+
+
+
+**Returns:**
+
+The current ability value 
+
+
+
+
+
+        
+
+<hr>
+
+
+
+### function \_setAbility 
+
+_Sets the value of an ability._ 
+```C++
+virtual bool endstone::Player::_setAbility (
+    Identifier < Ability > ability,
+    AbilityValue value
+) = 0
+```
+
+
+
+
+
+**Parameters:**
+
+
+* `ability` The Minecraft ability to set 
+* `value` The new value 
+
+
+
+**Returns:**
+
+True if the value was accepted 
+
+
+
+
+
+        
+
+<hr>
+
+
+
 ### function closeForm 
 
 _Closes the forms that are currently open for the player._ 
@@ -495,6 +569,51 @@ virtual void endstone::Player::closeForm () = 0
 
 
 
+
+<hr>
+
+
+
+### function getAbility 
+
+_Gets the value of an ability._ 
+```C++
+template<typename  T>
+inline T endstone::Player::getAbility (
+    AbilityId < T > ability
+) const
+```
+
+
+
+The value returned is the one in effect, which is not always the one that was set: while the player is spectating, or has the loading screen up, or is in the editor, that state supplies its own value for some abilities and it takes precedence over the player's own.
+
+
+
+
+**Template parameters:**
+
+
+* `T` The type of the ability's value. 
+
+
+
+**Parameters:**
+
+
+* `ability` The Minecraft ability to get 
+
+
+
+**Returns:**
+
+The current ability value 
+
+
+
+
+
+        
 
 <hr>
 
@@ -1590,6 +1709,53 @@ virtual void endstone::Player::sendToast (
 
 * `title` The title of the toast notification. 
 * `content` The content of the toast notification. 
+
+
+
+
+        
+
+<hr>
+
+
+
+### function setAbility 
+
+_Sets the value of an ability._ 
+```C++
+template<typename  T>
+inline bool endstone::Player::setAbility (
+    AbilityId < T > ability,
+    T value
+) 
+```
+
+
+
+Abilities are not persisted for a player whose permissions are managed by the server, so a plugin that wants a value to outlast the session must set it again when the player rejoins. [**Ability::Muted**](classendstone_1_1Ability.md#variable-muted), [**Ability::NoClip**](classendstone_1_1Ability.md#variable-noclip), [**Ability::PrivilegedBuilder**](classendstone_1_1Ability.md#variable-privilegedbuilder) and [**Ability::WorldBuilder**](classendstone_1_1Ability.md#variable-worldbuilder) are never saved at all.
+
+
+
+
+**Template parameters:**
+
+
+* `T` The type of the ability's value. 
+
+
+
+**Parameters:**
+
+
+* `ability` The Minecraft ability to set 
+* `value` The new value 
+
+
+
+**Returns:**
+
+True if the value was accepted 
+
 
 
 

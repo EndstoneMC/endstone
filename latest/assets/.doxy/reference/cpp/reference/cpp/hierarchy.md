@@ -4,6 +4,17 @@
 This inheritance list is sorted roughly, but not completely, alphabetically:
 
 
+* **class** [**endstone::Registry::Type**](classendstone_1_1Registry_1_1Type.md) _CRTP base for registry-backed types identified by an_ [_**Identifier**_](classendstone_1_1Identifier.md) _._    
+    * **class** [**endstone::Ability**](classendstone_1_1Ability.md) _All player abilities._ 
+    * **class** [**endstone::ActorType**](classendstone_1_1ActorType.md) 
+    * **class** [**endstone::Biome**](classendstone_1_1Biome.md) 
+    * **class** [**endstone::BlockType**](classendstone_1_1BlockType.md) 
+    * **class** [**endstone::EffectType**](classendstone_1_1EffectType.md) _Represents an effect type._ 
+    * **class** [**endstone::Enchantment**](classendstone_1_1Enchantment.md) _Represents an enchantment that may be added to armor, weapons, tools or other items._ 
+    * **class** [**endstone::GameRule**](classendstone_1_1GameRule.md) _Represents a game rule._ 
+    * **class** [**endstone::ItemType**](classendstone_1_1ItemType.md) _Represents an item type._ 
+    * **class** [**endstone::PotionType**](classendstone_1_1PotionType.md) _Represents a potion type._ 
+* **class** [**endstone::Identifier**](classendstone_1_1Identifier.md) _Represents a identifier consisting of two components: a namespace and a key._ 
 * **class** [**endstone::Form**](classendstone_1_1Form.md) _Represents a generic form._ 
 * **class** [**endstone::Object**](classendstone_1_1Object.md) _Base class providing runtime type identification and safe casting._     
     * **class** [**endstone::BlockState**](classendstone_1_1BlockState.md) _Represents a captured state of a block, which will not update automatically._     
@@ -95,15 +106,6 @@ This inheritance list is sorted roughly, but not completely, alphabetically:
     * **class** [**endstone::UnknownCommandEvent**](classendstone_1_1UnknownCommandEvent.md) _Called when a command sender executes a command that is not defined._ 
     * **class** [**endstone::WeatherEvent**](classendstone_1_1WeatherEvent.md) _Represents a Weather-related event._     
         * **class** [**endstone::Cancellable**](classendstone_1_1Cancellable.md) _A type characterizing events that may be cancelled by a plugin or the server._ 
-* **class** [**endstone::Registry::Type**](classendstone_1_1Registry_1_1Type.md) _CRTP base for registry-backed types identified by an_ [_**Identifier**_](classendstone_1_1Identifier.md) _._    
-    * **class** [**endstone::ActorType**](classendstone_1_1ActorType.md) 
-    * **class** [**endstone::Biome**](classendstone_1_1Biome.md) 
-    * **class** [**endstone::BlockType**](classendstone_1_1BlockType.md) 
-    * **class** [**endstone::EffectType**](classendstone_1_1EffectType.md) _Represents an effect type._ 
-    * **class** [**endstone::Enchantment**](classendstone_1_1Enchantment.md) _Represents an enchantment that may be added to armor, weapons, tools or other items._ 
-    * **class** [**endstone::GameRule**](classendstone_1_1GameRule.md) _Represents a game rule._ 
-    * **class** [**endstone::ItemType**](classendstone_1_1ItemType.md) _Represents an item type._ 
-    * **class** [**endstone::PotionType**](classendstone_1_1PotionType.md) _Represents a potion type._ 
 * **class** [**endstone::CustomChart**](classendstone_1_1CustomChart.md) _Represents a custom chart._     
     * **class** [**endstone::AdvancedBarChart**](classendstone_1_1AdvancedBarChart.md) _A bStats bar chart with several bars per category._ 
     * **class** [**endstone::AdvancedPie**](classendstone_1_1AdvancedPie.md) _A bStats pie chart with named values._ 
@@ -143,7 +145,6 @@ This inheritance list is sorted roughly, but not completely, alphabetically:
     * **class** [**endstone::StepSlider**](classendstone_1_1StepSlider.md) _Represents a step slider with a set of predefined options._ 
 * **class** [**endstone::Effect**](classendstone_1_1Effect.md) _Represents an effect that can be added to a_ [_**Mob**_](classendstone_1_1Mob.md) _._
 * **class** [**endstone::EventHandler**](classendstone_1_1EventHandler.md) _Represents a registered_ [_**EventHandler**_](classendstone_1_1EventHandler.md) _which associates with a_[_**Plugin**_](classendstone_1_1Plugin.md) _._
-* **class** [**endstone::Identifier**](classendstone_1_1Identifier.md) _Represents a identifier consisting of two components: a namespace and a key._ 
 * **class** [**endstone::HandlerList**](classendstone_1_1HandlerList.md) _A list of event handlers._ 
 * **class** [**endstone::Header**](classendstone_1_1Header.md) _Represents a header with a label._ 
 * **class** [**endstone::IRegistry**](classendstone_1_1IRegistry.md) _Type-erased base interface for registries._     

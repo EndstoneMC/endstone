@@ -1,5 +1,34 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
 <doxygenindex xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="index.xsd" version="1.9.8" xml:lang="en-US">
+  <compound refid="classendstone_1_1Ability" kind="class"><name>endstone::Ability</name>
+    <member refid="classendstone_1_1Ability_1af0a5242c85382034ad8170a26e291071" kind="variable"><name>AttackMobs</name></member>
+    <member refid="classendstone_1_1Ability_1a05b7b875b03b0f3da05f8e942e182b59" kind="variable"><name>AttackPlayers</name></member>
+    <member refid="classendstone_1_1Ability_1a61ab34a949726af7940a5a03f8fb8be0" kind="variable"><name>Build</name></member>
+    <member refid="classendstone_1_1Ability_1af466b7cc6321244b6ab67e31015a4381" kind="variable"><name>DoorsAndSwitches</name></member>
+    <member refid="classendstone_1_1Ability_1a2ee698a759b3794be20ebd05039b295d" kind="variable"><name>Flying</name></member>
+    <member refid="classendstone_1_1Ability_1a088250fb424f29c6a3f04404a99fa0ed" kind="variable"><name>FlySpeed</name></member>
+    <member refid="classendstone_1_1Ability_1ad488ea57ed20478478c69a5e9c7732aa" kind="variable"><name>Instabuild</name></member>
+    <member refid="classendstone_1_1Ability_1a61c367d4550d6066e450c6bdc3a7bf21" kind="variable"><name>Invulnerable</name></member>
+    <member refid="classendstone_1_1Ability_1a0bdb0d9e0991e3fe1a5247846811097f" kind="variable"><name>Lightning</name></member>
+    <member refid="classendstone_1_1Ability_1a45d68b850ed787314308629a2f7867b9" kind="variable"><name>MayFly</name></member>
+    <member refid="classendstone_1_1Ability_1abb466b2999535b55dc870877e0ffc72e" kind="variable"><name>Mine</name></member>
+    <member refid="classendstone_1_1Ability_1aeb1dbd0ef89b1f4a6b4e3b8bc282b9a7" kind="variable"><name>Muted</name></member>
+    <member refid="classendstone_1_1Ability_1a54579d94f0c952aecb43d45dafb0e1df" kind="variable"><name>NoClip</name></member>
+    <member refid="classendstone_1_1Ability_1a3c5095a8ca05e1d518b0118d80dd9f20" kind="variable"><name>OpenContainers</name></member>
+    <member refid="classendstone_1_1Ability_1a7c171a250e8bbbb51dfda36ebe1e6167" kind="variable"><name>OperatorCommands</name></member>
+    <member refid="classendstone_1_1Ability_1a513b78e65b4b21db8aa2245364e15f82" kind="variable"><name>PrivilegedBuilder</name></member>
+    <member refid="classendstone_1_1Ability_1a7321899aaf3a4f77b3fa0c20d91b7869" kind="variable"><name>Teleport</name></member>
+    <member refid="classendstone_1_1Ability_1a370bd2df1864a9ac810aa7e3a68e2655" kind="variable"><name>VerticalFlySpeed</name></member>
+    <member refid="classendstone_1_1Ability_1a0d4d6f321a2a5e841851a04c11732096" kind="variable"><name>WalkSpeed</name></member>
+    <member refid="classendstone_1_1Ability_1a12e5b4681be34fc3da9d60857a2125d5" kind="variable"><name>WorldBuilder</name></member>
+  </compound>
+  <compound refid="classendstone_1_1AbilityId" kind="class"><name>endstone::AbilityId</name>
+    <member refid="classendstone_1_1AbilityId_1a313b40d4ea876daaa68e073dfc170fb9" kind="function"><name>minecraft</name></member>
+    <member refid="classendstone_1_1AbilityId_1a8fb79d1d92931c86800559f3cb1dc442" kind="function"><name>Identifier</name></member>
+    <member refid="classendstone_1_1AbilityId_1a188a3d0cc50fa80ea6176183740fe007" kind="function"><name>Identifier</name></member>
+    <member refid="classendstone_1_1AbilityId_1a1433ff65a2a925be18f2537224160137" kind="function"><name>Identifier</name></member>
+    <member refid="classendstone_1_1AbilityId_1ad7a0a327a55eed2cae97237160b022a4" kind="function"><name>Identifier</name></member>
+  </compound>
   <compound refid="classendstone_1_1ActionForm" kind="class"><name>endstone::ActionForm</name>
     <member refid="classendstone_1_1ActionForm_1a468369b9ae764e15f0cda9dcd721934c" kind="typedef"><name>Control</name></member>
     <member refid="classendstone_1_1ActionForm_1a37c67d7904afea71dca76a3260412237" kind="typedef"><name>OnSubmitCallback</name></member>
@@ -2143,6 +2172,10 @@
     <member refid="classendstone_1_1Player_1a7487bdbd73d71e461239d377790d377c" kind="function"><name>closeForm</name></member>
     <member refid="classendstone_1_1Player_1a68b095f25d166158a3e03d1840194896" kind="function"><name>sendPacket</name></member>
     <member refid="classendstone_1_1Player_1a4724e064b700532ef4ea3155cab9910d" kind="function"><name>sendMap</name></member>
+    <member refid="classendstone_1_1Player_1a76862af9300d67eb6a3195a690e7b1a2" kind="function"><name>_getAbility</name></member>
+    <member refid="classendstone_1_1Player_1ab0c97dd37a2da864057d9df129ce0b8a" kind="function"><name>getAbility</name></member>
+    <member refid="classendstone_1_1Player_1a40b7ee429ed27750aba9bc0d7f690030" kind="function"><name>_setAbility</name></member>
+    <member refid="classendstone_1_1Player_1abd69f89976efe71db07353b764facbae" kind="function"><name>setAbility</name></member>
   </compound>
   <compound refid="classendstone_1_1PlayerArmorStandManipulateEvent" kind="class"><name>endstone::PlayerArmorStandManipulateEvent</name>
     <member refid="classendstone_1_1PlayerArmorStandManipulateEvent_1a82ce825e2d0449280c2e7d93d281b263" kind="variable"><name>armor_stand_item_</name></member>
@@ -3371,6 +3404,7 @@
     <member refid="namespaceendstone_1ae444241ed516d06f778078ee798db9e9" kind="enum"><name>RenderType</name></member>
     <member refid="namespaceendstone_1ae444241ed516d06f778078ee798db9e9aa0faef0851b4294c06f2b94bb1cb2044" kind="enumvalue"><name>Integer</name></member>
     <member refid="namespaceendstone_1ae444241ed516d06f778078ee798db9e9a6af4bf214d6cf054f9528da5b6054817" kind="enumvalue"><name>Hearts</name></member>
+    <member refid="namespaceendstone_1abe5f8dc169d844308940720b959caa0b" kind="typedef"><name>AbilityValue</name></member>
     <member refid="namespaceendstone_1a94ee63841c0963c0a0676b0783e03486" kind="typedef"><name>ActorTypeId</name></member>
     <member refid="namespaceendstone_1ac2d399872c391e7ce2ec1896ba62e669" kind="typedef"><name>AttributeId</name></member>
     <member refid="namespaceendstone_1a41bbb2fa08f8ead1e9b082a4fd4ef454" kind="typedef"><name>AttributeModifierId</name></member>
@@ -3475,6 +3509,8 @@
   <compound refid="namespaceendstone_1_1python" kind="namespace"><name>endstone::python</name>
   </compound>
   <compound refid="namespacestd" kind="namespace"><name>std</name>
+  </compound>
+  <compound refid="ability_8h" kind="file"><name>ability.h</name>
   </compound>
   <compound refid="actor_8h" kind="file"><name>actor.h</name>
   </compound>

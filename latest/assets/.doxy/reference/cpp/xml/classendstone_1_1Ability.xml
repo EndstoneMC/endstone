@@ -1,0 +1,393 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.8" xml:lang="en-US">
+  <compounddef id="classendstone_1_1Ability" kind="class" language="C++" prot="public">
+    <compoundname>endstone::Ability</compoundname>
+    <basecompoundref refid="classendstone_1_1Registry_1_1Type" prot="public" virt="non-virtual">endstone::Registry&lt; T &gt;::Type</basecompoundref>
+    <includes refid="ability_8h" local="no">endstone/ability.h</includes>
+    <sectiondef kind="public-static-attrib">
+      <memberdef kind="variable" id="classendstone_1_1Ability_1af0a5242c85382034ad8170a26e291071" prot="public" static="yes" constexpr="yes" mutable="no">
+        <type><ref refid="classendstone_1_1Identifier" kindref="compound">constexpr</ref> <ref refid="classendstone_1_1Identifier" kindref="compound">auto</ref></type>
+        <definition>constexpr auto endstone::Ability::AttackMobs</definition>
+        <argsstring></argsstring>
+        <name>AttackMobs</name>
+        <qualifiedname>endstone::Ability::AttackMobs</qualifiedname>
+        <initializer>= <ref refid="classendstone_1_1AbilityId" kindref="compound">AbilityId</ref>&lt;<ref refid="classendstone_1_1Identifier" kindref="compound">bool</ref>&gt;::minecraft(&quot;attackmobs&quot;)</initializer>
+        <briefdescription>
+<para>Whether the player can attack mobs. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/ability.h" line="48" column="27" bodyfile="include/endstone/ability.h" bodystart="48" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classendstone_1_1Ability_1a05b7b875b03b0f3da05f8e942e182b59" prot="public" static="yes" constexpr="yes" mutable="no">
+        <type><ref refid="classendstone_1_1Identifier" kindref="compound">constexpr</ref> <ref refid="classendstone_1_1Identifier" kindref="compound">auto</ref></type>
+        <definition>constexpr auto endstone::Ability::AttackPlayers</definition>
+        <argsstring></argsstring>
+        <name>AttackPlayers</name>
+        <qualifiedname>endstone::Ability::AttackPlayers</qualifiedname>
+        <initializer>= <ref refid="classendstone_1_1AbilityId" kindref="compound">AbilityId</ref>&lt;<ref refid="classendstone_1_1Identifier" kindref="compound">bool</ref>&gt;::minecraft(&quot;attackplayers&quot;)</initializer>
+        <briefdescription>
+<para>Whether the player can attack other players. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/ability.h" line="50" column="27" bodyfile="include/endstone/ability.h" bodystart="50" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classendstone_1_1Ability_1a61ab34a949726af7940a5a03f8fb8be0" prot="public" static="yes" constexpr="yes" mutable="no">
+        <type><ref refid="classendstone_1_1Identifier" kindref="compound">constexpr</ref> <ref refid="classendstone_1_1Identifier" kindref="compound">auto</ref></type>
+        <definition>constexpr auto endstone::Ability::Build</definition>
+        <argsstring></argsstring>
+        <name>Build</name>
+        <qualifiedname>endstone::Ability::Build</qualifiedname>
+        <initializer>= <ref refid="classendstone_1_1AbilityId" kindref="compound">AbilityId</ref>&lt;<ref refid="classendstone_1_1Identifier" kindref="compound">bool</ref>&gt;::minecraft(&quot;build&quot;)</initializer>
+        <briefdescription>
+<para>Whether the player can place blocks. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/ability.h" line="52" column="27" bodyfile="include/endstone/ability.h" bodystart="52" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classendstone_1_1Ability_1af466b7cc6321244b6ab67e31015a4381" prot="public" static="yes" constexpr="yes" mutable="no">
+        <type><ref refid="classendstone_1_1Identifier" kindref="compound">constexpr</ref> <ref refid="classendstone_1_1Identifier" kindref="compound">auto</ref></type>
+        <definition>constexpr auto endstone::Ability::DoorsAndSwitches</definition>
+        <argsstring></argsstring>
+        <name>DoorsAndSwitches</name>
+        <qualifiedname>endstone::Ability::DoorsAndSwitches</qualifiedname>
+        <initializer>= <ref refid="classendstone_1_1AbilityId" kindref="compound">AbilityId</ref>&lt;<ref refid="classendstone_1_1Identifier" kindref="compound">bool</ref>&gt;::minecraft(&quot;doorsandswitches&quot;)</initializer>
+        <briefdescription>
+<para>Whether the player can use doors, trapdoors, buttons, levers and other redstone components. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/ability.h" line="54" column="27" bodyfile="include/endstone/ability.h" bodystart="54" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classendstone_1_1Ability_1a2ee698a759b3794be20ebd05039b295d" prot="public" static="yes" constexpr="yes" mutable="no">
+        <type><ref refid="classendstone_1_1Identifier" kindref="compound">constexpr</ref> <ref refid="classendstone_1_1Identifier" kindref="compound">auto</ref></type>
+        <definition>constexpr auto endstone::Ability::Flying</definition>
+        <argsstring></argsstring>
+        <name>Flying</name>
+        <qualifiedname>endstone::Ability::Flying</qualifiedname>
+        <initializer>= <ref refid="classendstone_1_1AbilityId" kindref="compound">AbilityId</ref>&lt;<ref refid="classendstone_1_1Identifier" kindref="compound">bool</ref>&gt;::minecraft(&quot;flying&quot;)</initializer>
+        <briefdescription>
+<para>Whether the player is currently flying. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/ability.h" line="56" column="27" bodyfile="include/endstone/ability.h" bodystart="56" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classendstone_1_1Ability_1a088250fb424f29c6a3f04404a99fa0ed" prot="public" static="yes" constexpr="yes" mutable="no">
+        <type><ref refid="classendstone_1_1Identifier" kindref="compound">constexpr</ref> <ref refid="classendstone_1_1Identifier" kindref="compound">auto</ref></type>
+        <definition>constexpr auto endstone::Ability::FlySpeed</definition>
+        <argsstring></argsstring>
+        <name>FlySpeed</name>
+        <qualifiedname>endstone::Ability::FlySpeed</qualifiedname>
+        <initializer>= <ref refid="classendstone_1_1AbilityId" kindref="compound">AbilityId</ref>&lt;<ref refid="classendstone_1_1Identifier" kindref="compound">float</ref>&gt;::minecraft(&quot;flyspeed&quot;)</initializer>
+        <briefdescription>
+<para>The speed at which the player flies, default is <computeroutput>0.05</computeroutput>. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/ability.h" line="58" column="27" bodyfile="include/endstone/ability.h" bodystart="58" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classendstone_1_1Ability_1ad488ea57ed20478478c69a5e9c7732aa" prot="public" static="yes" constexpr="yes" mutable="no">
+        <type><ref refid="classendstone_1_1Identifier" kindref="compound">constexpr</ref> <ref refid="classendstone_1_1Identifier" kindref="compound">auto</ref></type>
+        <definition>constexpr auto endstone::Ability::Instabuild</definition>
+        <argsstring></argsstring>
+        <name>Instabuild</name>
+        <qualifiedname>endstone::Ability::Instabuild</qualifiedname>
+        <initializer>= <ref refid="classendstone_1_1AbilityId" kindref="compound">AbilityId</ref>&lt;<ref refid="classendstone_1_1Identifier" kindref="compound">bool</ref>&gt;::minecraft(&quot;instabuild&quot;)</initializer>
+        <briefdescription>
+<para>Whether the player destroys blocks instantly. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/ability.h" line="60" column="27" bodyfile="include/endstone/ability.h" bodystart="60" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classendstone_1_1Ability_1a61c367d4550d6066e450c6bdc3a7bf21" prot="public" static="yes" constexpr="yes" mutable="no">
+        <type><ref refid="classendstone_1_1Identifier" kindref="compound">constexpr</ref> <ref refid="classendstone_1_1Identifier" kindref="compound">auto</ref></type>
+        <definition>constexpr auto endstone::Ability::Invulnerable</definition>
+        <argsstring></argsstring>
+        <name>Invulnerable</name>
+        <qualifiedname>endstone::Ability::Invulnerable</qualifiedname>
+        <initializer>= <ref refid="classendstone_1_1AbilityId" kindref="compound">AbilityId</ref>&lt;<ref refid="classendstone_1_1Identifier" kindref="compound">bool</ref>&gt;::minecraft(&quot;invulnerable&quot;)</initializer>
+        <briefdescription>
+<para>Whether the player is immune to all damage. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/ability.h" line="62" column="27" bodyfile="include/endstone/ability.h" bodystart="62" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classendstone_1_1Ability_1a0bdb0d9e0991e3fe1a5247846811097f" prot="public" static="yes" constexpr="yes" mutable="no">
+        <type><ref refid="classendstone_1_1Identifier" kindref="compound">constexpr</ref> <ref refid="classendstone_1_1Identifier" kindref="compound">auto</ref></type>
+        <definition>constexpr auto endstone::Ability::Lightning</definition>
+        <argsstring></argsstring>
+        <name>Lightning</name>
+        <qualifiedname>endstone::Ability::Lightning</qualifiedname>
+        <initializer>= <ref refid="classendstone_1_1AbilityId" kindref="compound">AbilityId</ref>&lt;<ref refid="classendstone_1_1Identifier" kindref="compound">bool</ref>&gt;::minecraft(&quot;lightning&quot;)</initializer>
+        <briefdescription>
+<para>Whether the player was struck by lightning. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/ability.h" line="64" column="27" bodyfile="include/endstone/ability.h" bodystart="64" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classendstone_1_1Ability_1a45d68b850ed787314308629a2f7867b9" prot="public" static="yes" constexpr="yes" mutable="no">
+        <type><ref refid="classendstone_1_1Identifier" kindref="compound">constexpr</ref> <ref refid="classendstone_1_1Identifier" kindref="compound">auto</ref></type>
+        <definition>constexpr auto endstone::Ability::MayFly</definition>
+        <argsstring></argsstring>
+        <name>MayFly</name>
+        <qualifiedname>endstone::Ability::MayFly</qualifiedname>
+        <initializer>= <ref refid="classendstone_1_1AbilityId" kindref="compound">AbilityId</ref>&lt;<ref refid="classendstone_1_1Identifier" kindref="compound">bool</ref>&gt;::minecraft(&quot;mayfly&quot;)</initializer>
+        <briefdescription>
+<para>Whether the player is allowed to fly. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/ability.h" line="66" column="27" bodyfile="include/endstone/ability.h" bodystart="66" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classendstone_1_1Ability_1abb466b2999535b55dc870877e0ffc72e" prot="public" static="yes" constexpr="yes" mutable="no">
+        <type><ref refid="classendstone_1_1Identifier" kindref="compound">constexpr</ref> <ref refid="classendstone_1_1Identifier" kindref="compound">auto</ref></type>
+        <definition>constexpr auto endstone::Ability::Mine</definition>
+        <argsstring></argsstring>
+        <name>Mine</name>
+        <qualifiedname>endstone::Ability::Mine</qualifiedname>
+        <initializer>= <ref refid="classendstone_1_1AbilityId" kindref="compound">AbilityId</ref>&lt;<ref refid="classendstone_1_1Identifier" kindref="compound">bool</ref>&gt;::minecraft(&quot;mine&quot;)</initializer>
+        <briefdescription>
+<para>Whether the player can destroy blocks. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/ability.h" line="68" column="27" bodyfile="include/endstone/ability.h" bodystart="68" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classendstone_1_1Ability_1aeb1dbd0ef89b1f4a6b4e3b8bc282b9a7" prot="public" static="yes" constexpr="yes" mutable="no">
+        <type><ref refid="classendstone_1_1Identifier" kindref="compound">constexpr</ref> <ref refid="classendstone_1_1Identifier" kindref="compound">auto</ref></type>
+        <definition>constexpr auto endstone::Ability::Muted</definition>
+        <argsstring></argsstring>
+        <name>Muted</name>
+        <qualifiedname>endstone::Ability::Muted</qualifiedname>
+        <initializer>= <ref refid="classendstone_1_1AbilityId" kindref="compound">AbilityId</ref>&lt;<ref refid="classendstone_1_1Identifier" kindref="compound">bool</ref>&gt;::minecraft(&quot;mute&quot;)</initializer>
+        <briefdescription>
+<para>Whether the player&apos;s chat messages are hidden from other players. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/ability.h" line="70" column="27" bodyfile="include/endstone/ability.h" bodystart="70" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classendstone_1_1Ability_1a54579d94f0c952aecb43d45dafb0e1df" prot="public" static="yes" constexpr="yes" mutable="no">
+        <type><ref refid="classendstone_1_1Identifier" kindref="compound">constexpr</ref> <ref refid="classendstone_1_1Identifier" kindref="compound">auto</ref></type>
+        <definition>constexpr auto endstone::Ability::NoClip</definition>
+        <argsstring></argsstring>
+        <name>NoClip</name>
+        <qualifiedname>endstone::Ability::NoClip</qualifiedname>
+        <initializer>= <ref refid="classendstone_1_1AbilityId" kindref="compound">AbilityId</ref>&lt;<ref refid="classendstone_1_1Identifier" kindref="compound">bool</ref>&gt;::minecraft(&quot;noclip&quot;)</initializer>
+        <briefdescription>
+<para>Whether the player can move through blocks. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/ability.h" line="72" column="27" bodyfile="include/endstone/ability.h" bodystart="72" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classendstone_1_1Ability_1a3c5095a8ca05e1d518b0118d80dd9f20" prot="public" static="yes" constexpr="yes" mutable="no">
+        <type><ref refid="classendstone_1_1Identifier" kindref="compound">constexpr</ref> <ref refid="classendstone_1_1Identifier" kindref="compound">auto</ref></type>
+        <definition>constexpr auto endstone::Ability::OpenContainers</definition>
+        <argsstring></argsstring>
+        <name>OpenContainers</name>
+        <qualifiedname>endstone::Ability::OpenContainers</qualifiedname>
+        <initializer>= <ref refid="classendstone_1_1AbilityId" kindref="compound">AbilityId</ref>&lt;<ref refid="classendstone_1_1Identifier" kindref="compound">bool</ref>&gt;::minecraft(&quot;opencontainers&quot;)</initializer>
+        <briefdescription>
+<para>Whether the player can open containers. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/ability.h" line="74" column="27" bodyfile="include/endstone/ability.h" bodystart="74" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classendstone_1_1Ability_1a7c171a250e8bbbb51dfda36ebe1e6167" prot="public" static="yes" constexpr="yes" mutable="no">
+        <type><ref refid="classendstone_1_1Identifier" kindref="compound">constexpr</ref> <ref refid="classendstone_1_1Identifier" kindref="compound">auto</ref></type>
+        <definition>constexpr auto endstone::Ability::OperatorCommands</definition>
+        <argsstring></argsstring>
+        <name>OperatorCommands</name>
+        <qualifiedname>endstone::Ability::OperatorCommands</qualifiedname>
+        <initializer>= <ref refid="classendstone_1_1AbilityId" kindref="compound">AbilityId</ref>&lt;<ref refid="classendstone_1_1Identifier" kindref="compound">bool</ref>&gt;::minecraft(&quot;op&quot;)</initializer>
+        <briefdescription>
+<para>Whether the player can use operator commands. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/ability.h" line="76" column="27" bodyfile="include/endstone/ability.h" bodystart="76" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classendstone_1_1Ability_1a513b78e65b4b21db8aa2245364e15f82" prot="public" static="yes" constexpr="yes" mutable="no">
+        <type><ref refid="classendstone_1_1Identifier" kindref="compound">constexpr</ref> <ref refid="classendstone_1_1Identifier" kindref="compound">auto</ref></type>
+        <definition>constexpr auto endstone::Ability::PrivilegedBuilder</definition>
+        <argsstring></argsstring>
+        <name>PrivilegedBuilder</name>
+        <qualifiedname>endstone::Ability::PrivilegedBuilder</qualifiedname>
+        <initializer>= <ref refid="classendstone_1_1AbilityId" kindref="compound">AbilityId</ref>&lt;<ref refid="classendstone_1_1Identifier" kindref="compound">bool</ref>&gt;::minecraft(&quot;privilegedbuilder&quot;)</initializer>
+        <briefdescription>
+<para>Whether the player is a privileged builder. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/ability.h" line="78" column="27" bodyfile="include/endstone/ability.h" bodystart="78" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classendstone_1_1Ability_1a7321899aaf3a4f77b3fa0c20d91b7869" prot="public" static="yes" constexpr="yes" mutable="no">
+        <type><ref refid="classendstone_1_1Identifier" kindref="compound">constexpr</ref> <ref refid="classendstone_1_1Identifier" kindref="compound">auto</ref></type>
+        <definition>constexpr auto endstone::Ability::Teleport</definition>
+        <argsstring></argsstring>
+        <name>Teleport</name>
+        <qualifiedname>endstone::Ability::Teleport</qualifiedname>
+        <initializer>= <ref refid="classendstone_1_1AbilityId" kindref="compound">AbilityId</ref>&lt;<ref refid="classendstone_1_1Identifier" kindref="compound">bool</ref>&gt;::minecraft(&quot;teleport&quot;)</initializer>
+        <briefdescription>
+<para>Whether the player can teleport. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/ability.h" line="80" column="27" bodyfile="include/endstone/ability.h" bodystart="80" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classendstone_1_1Ability_1a370bd2df1864a9ac810aa7e3a68e2655" prot="public" static="yes" constexpr="yes" mutable="no">
+        <type><ref refid="classendstone_1_1Identifier" kindref="compound">constexpr</ref> <ref refid="classendstone_1_1Identifier" kindref="compound">auto</ref></type>
+        <definition>constexpr auto endstone::Ability::VerticalFlySpeed</definition>
+        <argsstring></argsstring>
+        <name>VerticalFlySpeed</name>
+        <qualifiedname>endstone::Ability::VerticalFlySpeed</qualifiedname>
+        <initializer>= <ref refid="classendstone_1_1AbilityId" kindref="compound">AbilityId</ref>&lt;<ref refid="classendstone_1_1Identifier" kindref="compound">float</ref>&gt;::minecraft(&quot;verticalflyspeed&quot;)</initializer>
+        <briefdescription>
+<para>The speed at which the player flies up and down, default is <computeroutput>1</computeroutput>. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/ability.h" line="82" column="27" bodyfile="include/endstone/ability.h" bodystart="82" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classendstone_1_1Ability_1a0d4d6f321a2a5e841851a04c11732096" prot="public" static="yes" constexpr="yes" mutable="no">
+        <type><ref refid="classendstone_1_1Identifier" kindref="compound">constexpr</ref> <ref refid="classendstone_1_1Identifier" kindref="compound">auto</ref></type>
+        <definition>constexpr auto endstone::Ability::WalkSpeed</definition>
+        <argsstring></argsstring>
+        <name>WalkSpeed</name>
+        <qualifiedname>endstone::Ability::WalkSpeed</qualifiedname>
+        <initializer>= <ref refid="classendstone_1_1AbilityId" kindref="compound">AbilityId</ref>&lt;<ref refid="classendstone_1_1Identifier" kindref="compound">float</ref>&gt;::minecraft(&quot;walkspeed&quot;)</initializer>
+        <briefdescription>
+<para>The speed at which the player walks, default is <computeroutput>0.1</computeroutput>. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/ability.h" line="84" column="27" bodyfile="include/endstone/ability.h" bodystart="84" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classendstone_1_1Ability_1a12e5b4681be34fc3da9d60857a2125d5" prot="public" static="yes" constexpr="yes" mutable="no">
+        <type><ref refid="classendstone_1_1Identifier" kindref="compound">constexpr</ref> <ref refid="classendstone_1_1Identifier" kindref="compound">auto</ref></type>
+        <definition>constexpr auto endstone::Ability::WorldBuilder</definition>
+        <argsstring></argsstring>
+        <name>WorldBuilder</name>
+        <qualifiedname>endstone::Ability::WorldBuilder</qualifiedname>
+        <initializer>= <ref refid="classendstone_1_1AbilityId" kindref="compound">AbilityId</ref>&lt;<ref refid="classendstone_1_1Identifier" kindref="compound">bool</ref>&gt;::minecraft(&quot;worldbuilder&quot;)</initializer>
+        <briefdescription>
+<para>Whether the player is a world builder. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/ability.h" line="86" column="27" bodyfile="include/endstone/ability.h" bodystart="86" bodyend="-1"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+<para>All player abilities. </para>
+    </briefdescription>
+    <detaileddescription>
+<para>AttackMobs, AttackPlayers, Build, DoorsAndSwitches, Mine, OpenContainers, OperatorCommands and Teleport are the eight member permissions the client shows in its pause menu, and the server enforces every one of them. </para>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="1">
+        <label>endstone::Ability</label>
+        <link refid="classendstone_1_1Ability"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>endstone::Registry&lt; T &gt;::Type</label>
+        <link refid="classendstone_1_1Registry_1_1Type"/>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="1">
+        <label>endstone::Ability</label>
+        <link refid="classendstone_1_1Ability"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>endstone::Registry&lt; T &gt;::Type</label>
+        <link refid="classendstone_1_1Registry_1_1Type"/>
+      </node>
+    </collaborationgraph>
+    <location file="include/endstone/ability.h" line="45" column="1" bodyfile="include/endstone/ability.h" bodystart="45" bodyend="87"/>
+    <listofallmembers>
+      <member refid="classendstone_1_1Ability_1af0a5242c85382034ad8170a26e291071" prot="public" virt="non-virtual"><scope>endstone::Ability</scope><name>AttackMobs</name></member>
+      <member refid="classendstone_1_1Ability_1a05b7b875b03b0f3da05f8e942e182b59" prot="public" virt="non-virtual"><scope>endstone::Ability</scope><name>AttackPlayers</name></member>
+      <member refid="classendstone_1_1Ability_1a61ab34a949726af7940a5a03f8fb8be0" prot="public" virt="non-virtual"><scope>endstone::Ability</scope><name>Build</name></member>
+      <member refid="classendstone_1_1Ability_1af466b7cc6321244b6ab67e31015a4381" prot="public" virt="non-virtual"><scope>endstone::Ability</scope><name>DoorsAndSwitches</name></member>
+      <member refid="classendstone_1_1Ability_1a2ee698a759b3794be20ebd05039b295d" prot="public" virt="non-virtual"><scope>endstone::Ability</scope><name>Flying</name></member>
+      <member refid="classendstone_1_1Ability_1a088250fb424f29c6a3f04404a99fa0ed" prot="public" virt="non-virtual"><scope>endstone::Ability</scope><name>FlySpeed</name></member>
+      <member refid="classendstone_1_1Registry_1_1Type_1adb225834ec0af1fdd72f998cbee22946" prot="public" virt="non-virtual"><scope>endstone::Ability</scope><name>get</name></member>
+      <member refid="classendstone_1_1Registry_1_1Type_1ac7979c573cb4a71caf8f0d766048e95a" prot="public" virt="pure-virtual"><scope>endstone::Ability</scope><name>getId</name></member>
+      <member refid="classendstone_1_1Registry_1_1Type_1a3d82ceca29e75e71a8ad56c5d0f12aa7" prot="public" virt="pure-virtual"><scope>endstone::Ability</scope><name>getTranslationKey</name></member>
+      <member refid="classendstone_1_1Registry_1_1Type_1a7d2793f0ec3a8f4e7ab9b8afbd777e82" prot="public" virt="non-virtual"><scope>endstone::Ability</scope><name>Id</name></member>
+      <member refid="classendstone_1_1Ability_1ad488ea57ed20478478c69a5e9c7732aa" prot="public" virt="non-virtual"><scope>endstone::Ability</scope><name>Instabuild</name></member>
+      <member refid="classendstone_1_1Ability_1a61c367d4550d6066e450c6bdc3a7bf21" prot="public" virt="non-virtual"><scope>endstone::Ability</scope><name>Invulnerable</name></member>
+      <member refid="classendstone_1_1Ability_1a0bdb0d9e0991e3fe1a5247846811097f" prot="public" virt="non-virtual"><scope>endstone::Ability</scope><name>Lightning</name></member>
+      <member refid="classendstone_1_1Ability_1a45d68b850ed787314308629a2f7867b9" prot="public" virt="non-virtual"><scope>endstone::Ability</scope><name>MayFly</name></member>
+      <member refid="classendstone_1_1Ability_1abb466b2999535b55dc870877e0ffc72e" prot="public" virt="non-virtual"><scope>endstone::Ability</scope><name>Mine</name></member>
+      <member refid="classendstone_1_1Ability_1aeb1dbd0ef89b1f4a6b4e3b8bc282b9a7" prot="public" virt="non-virtual"><scope>endstone::Ability</scope><name>Muted</name></member>
+      <member refid="classendstone_1_1Ability_1a54579d94f0c952aecb43d45dafb0e1df" prot="public" virt="non-virtual"><scope>endstone::Ability</scope><name>NoClip</name></member>
+      <member refid="classendstone_1_1Ability_1a3c5095a8ca05e1d518b0118d80dd9f20" prot="public" virt="non-virtual"><scope>endstone::Ability</scope><name>OpenContainers</name></member>
+      <member refid="classendstone_1_1Registry_1_1Type_1ab333d4c3e969abfb5dd01c4ce34d7154" prot="public" virt="non-virtual"><scope>endstone::Ability</scope><name>operator Id</name></member>
+      <member refid="classendstone_1_1Registry_1_1Type_1a9e32d0cd444cf6e98cece1f89fd16fb4" prot="public" virt="non-virtual"><scope>endstone::Ability</scope><name>operator!=</name></member>
+      <member refid="classendstone_1_1Registry_1_1Type_1aece109daae5dede57edc8c23ef174aff" prot="public" virt="non-virtual"><scope>endstone::Ability</scope><name>operator!=</name></member>
+      <member refid="classendstone_1_1Registry_1_1Type_1ae1f1c16d4904b521e7f727ae1e9715e7" prot="public" virt="non-virtual"><scope>endstone::Ability</scope><name>operator==</name></member>
+      <member refid="classendstone_1_1Registry_1_1Type_1a0e07b4427e10e44725cefa814de62a11" prot="public" virt="non-virtual"><scope>endstone::Ability</scope><name>operator==</name></member>
+      <member refid="classendstone_1_1Ability_1a7c171a250e8bbbb51dfda36ebe1e6167" prot="public" virt="non-virtual"><scope>endstone::Ability</scope><name>OperatorCommands</name></member>
+      <member refid="classendstone_1_1Ability_1a513b78e65b4b21db8aa2245364e15f82" prot="public" virt="non-virtual"><scope>endstone::Ability</scope><name>PrivilegedBuilder</name></member>
+      <member refid="classendstone_1_1Ability_1a7321899aaf3a4f77b3fa0c20d91b7869" prot="public" virt="non-virtual"><scope>endstone::Ability</scope><name>Teleport</name></member>
+      <member refid="classendstone_1_1Ability_1a370bd2df1864a9ac810aa7e3a68e2655" prot="public" virt="non-virtual"><scope>endstone::Ability</scope><name>VerticalFlySpeed</name></member>
+      <member refid="classendstone_1_1Ability_1a0d4d6f321a2a5e841851a04c11732096" prot="public" virt="non-virtual"><scope>endstone::Ability</scope><name>WalkSpeed</name></member>
+      <member refid="classendstone_1_1Ability_1a12e5b4681be34fc3da9d60857a2125d5" prot="public" virt="non-virtual"><scope>endstone::Ability</scope><name>WorldBuilder</name></member>
+      <member refid="classendstone_1_1Registry_1_1Type_1a2262020b59996fe1363c1e1058711944" prot="public" virt="virtual"><scope>endstone::Ability</scope><name>~Type</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

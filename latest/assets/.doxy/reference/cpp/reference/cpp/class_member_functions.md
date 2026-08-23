@@ -389,6 +389,7 @@
 * **getRemovalCallback** ([**endstone::PermissionAttachment**](classendstone_1_1PermissionAttachment.md))
 * **getAttachment** ([**endstone::PermissionAttachmentInfo**](classendstone_1_1PermissionAttachmentInfo.md))
 * **getPermission** ([**endstone::PermissionAttachmentInfo**](classendstone_1_1PermissionAttachmentInfo.md), [**endstone::PluginManager**](classendstone_1_1PluginManager.md))
+* **getAbility** ([**endstone::Player**](classendstone_1_1Player.md))
 * **getAllowFlight** ([**endstone::Player**](classendstone_1_1Player.md))
 * **getDeviceId** ([**endstone::Player**](classendstone_1_1Player.md))
 * **getDeviceOS** ([**endstone::Player**](classendstone_1_1Player.md))
@@ -576,6 +577,7 @@
 
 ## i
 
+* **Identifier** ([**endstone::AbilityId**](classendstone_1_1AbilityId.md), [**endstone::GameRuleId**](classendstone_1_1GameRuleId.md), [**endstone::Identifier**](classendstone_1_1Identifier.md))
 * **isDead** ([**endstone::Actor**](classendstone_1_1Actor.md))
 * **isInLava** ([**endstone::Actor**](classendstone_1_1Actor.md))
 * **isInWater** ([**endstone::Actor**](classendstone_1_1Actor.md))
@@ -604,7 +606,6 @@
 * **isInfinite** ([**endstone::Effect**](classendstone_1_1Effect.md))
 * **isAsynchronous** ([**endstone::Event**](classendstone_1_1Event.md))
 * **isIgnoreCancelled** ([**endstone::EventHandler**](classendstone_1_1EventHandler.md))
-* **Identifier** ([**endstone::GameRuleId**](classendstone_1_1GameRuleId.md), [**endstone::Identifier**](classendstone_1_1Identifier.md))
 * **Image** ([**endstone::Image**](classendstone_1_1Image.md))
 * **Input** ([**endstone::Input**](classendstone_1_1Input.md))
 * **isBackward** ([**endstone::Input**](classendstone_1_1Input.md))
@@ -684,8 +685,8 @@
 
 ## m
 
+* **minecraft** ([**endstone::AbilityId**](classendstone_1_1AbilityId.md), [**endstone::GameRuleId**](classendstone_1_1GameRuleId.md), [**endstone::Identifier**](classendstone_1_1Identifier.md))
 * **merge** ([**endstone::CompoundTag**](classendstone_1_1CompoundTag.md))
-* **minecraft** ([**endstone::GameRuleId**](classendstone_1_1GameRuleId.md), [**endstone::Identifier**](classendstone_1_1Identifier.md))
 * **MapCursor** ([**endstone::MapCursor**](classendstone_1_1MapCursor.md))
 * **MapInitializeEvent** ([**endstone::MapInitializeEvent**](classendstone_1_1MapInitializeEvent.md))
 * **MapRenderer** ([**endstone::MapRenderer**](classendstone_1_1MapRenderer.md))
@@ -966,6 +967,7 @@
 * **sendTip** ([**endstone::Player**](classendstone_1_1Player.md))
 * **sendTitle** ([**endstone::Player**](classendstone_1_1Player.md))
 * **sendToast** ([**endstone::Player**](classendstone_1_1Player.md))
+* **setAbility** ([**endstone::Player**](classendstone_1_1Player.md))
 * **setAllowFlight** ([**endstone::Player**](classendstone_1_1Player.md))
 * **setExpLevel** ([**endstone::Player**](classendstone_1_1Player.md))
 * **setExpProgress** ([**endstone::Player**](classendstone_1_1Player.md))
@@ -1184,6 +1186,8 @@
 * **\_getGameRule** ([**endstone::Level**](classendstone_1_1Level.md))
 * **\_hasGameRule** ([**endstone::Level**](classendstone_1_1Level.md))
 * **\_setGameRule** ([**endstone::Level**](classendstone_1_1Level.md))
+* **\_getAbility** ([**endstone::Player**](classendstone_1_1Player.md))
+* **\_setAbility** ([**endstone::Player**](classendstone_1_1Player.md))
 * **\_getRegistry** ([**endstone::Server**](classendstone_1_1Server.md))
 
 

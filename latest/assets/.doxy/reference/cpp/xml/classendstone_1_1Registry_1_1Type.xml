@@ -2,6 +2,7 @@
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.8" xml:lang="en-US">
   <compounddef id="classendstone_1_1Registry_1_1Type" kind="class" language="C++" prot="public" abstract="yes">
     <compoundname>endstone::Registry::Type</compoundname>
+    <derivedcompoundref refid="classendstone_1_1Ability" prot="public" virt="non-virtual">endstone::Ability</derivedcompoundref>
     <derivedcompoundref refid="classendstone_1_1ActorType" prot="public" virt="non-virtual">endstone::ActorType</derivedcompoundref>
     <derivedcompoundref refid="classendstone_1_1Biome" prot="public" virt="non-virtual">endstone::Biome</derivedcompoundref>
     <derivedcompoundref refid="classendstone_1_1BlockType" prot="public" virt="non-virtual">endstone::BlockType</derivedcompoundref>
@@ -209,48 +210,54 @@
     </detaileddescription>
     <inheritancegraph>
       <node id="2">
+        <label>endstone::Ability</label>
+        <link refid="classendstone_1_1Ability"/>
+        <childnode refid="1" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="3">
         <label>endstone::ActorType</label>
         <link refid="classendstone_1_1ActorType"/>
         <childnode refid="1" relation="public-inheritance">
         </childnode>
       </node>
-      <node id="3">
+      <node id="4">
         <label>endstone::Biome</label>
         <link refid="classendstone_1_1Biome"/>
         <childnode refid="1" relation="public-inheritance">
         </childnode>
       </node>
-      <node id="4">
+      <node id="5">
         <label>endstone::BlockType</label>
         <link refid="classendstone_1_1BlockType"/>
         <childnode refid="1" relation="public-inheritance">
         </childnode>
       </node>
-      <node id="5">
+      <node id="6">
         <label>endstone::EffectType</label>
         <link refid="classendstone_1_1EffectType"/>
         <childnode refid="1" relation="public-inheritance">
         </childnode>
       </node>
-      <node id="6">
+      <node id="7">
         <label>endstone::Enchantment</label>
         <link refid="classendstone_1_1Enchantment"/>
         <childnode refid="1" relation="public-inheritance">
         </childnode>
       </node>
-      <node id="7">
+      <node id="8">
         <label>endstone::GameRule</label>
         <link refid="classendstone_1_1GameRule"/>
         <childnode refid="1" relation="public-inheritance">
         </childnode>
       </node>
-      <node id="8">
+      <node id="9">
         <label>endstone::ItemType</label>
         <link refid="classendstone_1_1ItemType"/>
         <childnode refid="1" relation="public-inheritance">
         </childnode>
       </node>
-      <node id="9">
+      <node id="10">
         <label>endstone::PotionType</label>
         <link refid="classendstone_1_1PotionType"/>
         <childnode refid="1" relation="public-inheritance">

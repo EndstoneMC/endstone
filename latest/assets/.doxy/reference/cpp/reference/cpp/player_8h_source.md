@@ -30,6 +30,7 @@
 #include <string_view>
 #include <variant>
 
+#include "endstone/ability.h"
 #include "endstone/actor/mob.h"
 #include "endstone/form/action_form.h"
 #include "endstone/form/message_form.h"
@@ -185,6 +186,22 @@ public:
     virtual void sendPacket(int packet_id, std::string_view payload) const = 0;
 
     virtual void sendMap(MapView &map) = 0;
+
+    [[nodiscard]] virtual AbilityValue _getAbility(Identifier<Ability> ability) const = 0;
+
+    template <typename T>
+    [[nodiscard]] T getAbility(AbilityId<T> ability) const
+    {
+        return std::get<T>(_getAbility(ability));
+    }
+
+    virtual bool _setAbility(Identifier<Ability> ability, AbilityValue value) = 0;
+
+    template <typename T>
+    bool setAbility(AbilityId<T> ability, T value)
+    {
+        return _setAbility(ability, value);
+    }
 };
 
 }  // namespace endstone

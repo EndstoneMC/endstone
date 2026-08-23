@@ -5,6 +5,8 @@
 
 ## a
 
+* **AttackMobs** ([**endstone::Ability**](classendstone_1_1Ability.md))
+* **AttackPlayers** ([**endstone::Ability**](classendstone_1_1Ability.md))
 * **ActionForm** ([**endstone::ActionForm**](classendstone_1_1ActionForm.md))
 * **addButton** ([**endstone::ActionForm**](classendstone_1_1ActionForm.md))
 * **addDivider** ([**endstone::ActionForm**](classendstone_1_1ActionForm.md))
@@ -94,6 +96,7 @@
 
 ## b
 
+* **Build** ([**endstone::Ability**](classendstone_1_1Ability.md))
 * **block\_** ([**endstone::ActorChangeBlockEvent**](classendstone_1_1ActorChangeBlockEvent.md), [**endstone::BlockEvent**](classendstone_1_1BlockEvent.md))
 * **BlockList** ([**endstone::ActorExplodeEvent**](classendstone_1_1ActorExplodeEvent.md), [**endstone::BlockExplodeEvent**](classendstone_1_1BlockExplodeEvent.md))
 * **blocks\_** ([**endstone::ActorExplodeEvent**](classendstone_1_1ActorExplodeEvent.md), [**endstone::BlockExplodeEvent**](classendstone_1_1BlockExplodeEvent.md))
@@ -237,6 +240,7 @@
 
 ## d
 
+* **DoorsAndSwitches** ([**endstone::Ability**](classendstone_1_1Ability.md))
 * **damage\_** ([**endstone::ActorDamageEvent**](classendstone_1_1ActorDamageEvent.md))
 * **damage\_source\_** ([**endstone::ActorDamageEvent**](classendstone_1_1ActorDamageEvent.md), [**endstone::ActorDeathEvent**](classendstone_1_1ActorDeathEvent.md))
 * **Dolphin** ([**endstone::ActorType**](classendstone_1_1ActorType.md))
@@ -348,6 +352,8 @@
 
 ## f
 
+* **FlySpeed** ([**endstone::Ability**](classendstone_1_1Ability.md))
+* **Flying** ([**endstone::Ability**](classendstone_1_1Ability.md))
 * **from\_** ([**endstone::ActorTeleportEvent**](classendstone_1_1ActorTeleportEvent.md), [**endstone::PlayerDimensionChangeEvent**](classendstone_1_1PlayerDimensionChangeEvent.md), [**endstone::PlayerMoveEvent**](classendstone_1_1PlayerMoveEvent.md))
 * **FallingBlock** ([**endstone::ActorType**](classendstone_1_1ActorType.md))
 * **Fireball** ([**endstone::ActorType**](classendstone_1_1ActorType.md))
@@ -601,6 +607,7 @@
 * **getRemovalCallback** ([**endstone::PermissionAttachment**](classendstone_1_1PermissionAttachment.md))
 * **getAttachment** ([**endstone::PermissionAttachmentInfo**](classendstone_1_1PermissionAttachmentInfo.md))
 * **getPermission** ([**endstone::PermissionAttachmentInfo**](classendstone_1_1PermissionAttachmentInfo.md), [**endstone::PluginManager**](classendstone_1_1PluginManager.md))
+* **getAbility** ([**endstone::Player**](classendstone_1_1Player.md))
 * **getAllowFlight** ([**endstone::Player**](classendstone_1_1Player.md))
 * **getDeviceId** ([**endstone::Player**](classendstone_1_1Player.md))
 * **getDeviceOS** ([**endstone::Player**](classendstone_1_1Player.md))
@@ -805,6 +812,9 @@
 
 ## i
 
+* **Instabuild** ([**endstone::Ability**](classendstone_1_1Ability.md))
+* **Invulnerable** ([**endstone::Ability**](classendstone_1_1Ability.md))
+* **Identifier** ([**endstone::AbilityId**](classendstone_1_1AbilityId.md), [**endstone::GameRuleId**](classendstone_1_1GameRuleId.md), [**endstone::Identifier**](classendstone_1_1Identifier.md))
 * **isDead** ([**endstone::Actor**](classendstone_1_1Actor.md))
 * **isInLava** ([**endstone::Actor**](classendstone_1_1Actor.md))
 * **isInWater** ([**endstone::Actor**](classendstone_1_1Actor.md))
@@ -848,7 +858,6 @@
 * **isAsynchronous** ([**endstone::Event**](classendstone_1_1Event.md))
 * **ignore\_cancelled\_** ([**endstone::EventHandler**](classendstone_1_1EventHandler.md))
 * **isIgnoreCancelled** ([**endstone::EventHandler**](classendstone_1_1EventHandler.md))
-* **Identifier** ([**endstone::GameRuleId**](classendstone_1_1GameRuleId.md), [**endstone::Identifier**](classendstone_1_1Identifier.md))
 * **Image** ([**endstone::Image**](classendstone_1_1Image.md))
 * **Input** ([**endstone::Input**](classendstone_1_1Input.md))
 * **isBackward** ([**endstone::Input**](classendstone_1_1Input.md))
@@ -935,6 +944,7 @@
 
 ## l
 
+* **Lightning** ([**endstone::Ability**](classendstone_1_1Ability.md))
 * **location\_** ([**endstone::ActorExplodeEvent**](classendstone_1_1ActorExplodeEvent.md), [**endstone::PlayerSetSpawnEvent**](classendstone_1_1PlayerSetSpawnEvent.md))
 * **LeashKnot** ([**endstone::ActorType**](classendstone_1_1ActorType.md))
 * **LightningBolt** ([**endstone::ActorType**](classendstone_1_1ActorType.md))
@@ -995,6 +1005,10 @@
 
 ## m
 
+* **MayFly** ([**endstone::Ability**](classendstone_1_1Ability.md))
+* **Mine** ([**endstone::Ability**](classendstone_1_1Ability.md))
+* **Muted** ([**endstone::Ability**](classendstone_1_1Ability.md))
+* **minecraft** ([**endstone::AbilityId**](classendstone_1_1AbilityId.md), [**endstone::GameRuleId**](classendstone_1_1GameRuleId.md), [**endstone::Identifier**](classendstone_1_1Identifier.md))
 * **MagmaCube** ([**endstone::ActorType**](classendstone_1_1ActorType.md))
 * **Minecart** ([**endstone::ActorType**](classendstone_1_1ActorType.md))
 * **Mooshroom** ([**endstone::ActorType**](classendstone_1_1ActorType.md))
@@ -1020,7 +1034,6 @@
 * **Multishot** ([**endstone::Enchantment**](classendstone_1_1Enchantment.md))
 * **MaxCommandChainLength** ([**endstone::GameRule**](classendstone_1_1GameRule.md))
 * **MobGriefing** ([**endstone::GameRule**](classendstone_1_1GameRule.md))
-* **minecraft** ([**endstone::GameRuleId**](classendstone_1_1GameRuleId.md), [**endstone::Identifier**](classendstone_1_1Identifier.md))
 * **mtx\_** ([**endstone::HandlerList**](classendstone_1_1HandlerList.md))
 * **Minecraft** ([**endstone::Identifier**](classendstone_1_1Identifier.md), [**endstone::PotionType**](classendstone_1_1PotionType.md))
 * **MapCursor** ([**endstone::MapCursor**](classendstone_1_1MapCursor.md))
@@ -1044,6 +1057,7 @@
 
 ## n
 
+* **NoClip** ([**endstone::Ability**](classendstone_1_1Ability.md))
 * **Nautilus** ([**endstone::ActorType**](classendstone_1_1ActorType.md))
 * **Npc** ([**endstone::ActorType**](classendstone_1_1ActorType.md))
 * **new\_state\_** ([**endstone::BlockGrowEvent**](classendstone_1_1BlockGrowEvent.md))
@@ -1070,6 +1084,8 @@
 
 ## o
 
+* **OpenContainers** ([**endstone::Ability**](classendstone_1_1Ability.md))
+* **OperatorCommands** ([**endstone::Ability**](classendstone_1_1Ability.md))
 * **OnSubmitCallback** ([**endstone::ActionForm**](classendstone_1_1ActionForm.md), [**endstone::MessageForm**](classendstone_1_1MessageForm.md), [**endstone::ModalForm**](classendstone_1_1ModalForm.md))
 * **on\_submit\_** ([**endstone::ActionForm**](classendstone_1_1ActionForm.md), [**endstone::MessageForm**](classendstone_1_1MessageForm.md), [**endstone::ModalForm**](classendstone_1_1ModalForm.md))
 * **Ocelot** ([**endstone::ActorType**](classendstone_1_1ActorType.md))
@@ -1118,6 +1134,7 @@
 
 ## p
 
+* **PrivilegedBuilder** ([**endstone::Ability**](classendstone_1_1Ability.md))
 * **Painting** ([**endstone::ActorType**](classendstone_1_1ActorType.md))
 * **Panda** ([**endstone::ActorType**](classendstone_1_1ActorType.md))
 * **Parched** ([**endstone::ActorType**](classendstone_1_1ActorType.md))
@@ -1477,6 +1494,7 @@
 * **sendTip** ([**endstone::Player**](classendstone_1_1Player.md))
 * **sendTitle** ([**endstone::Player**](classendstone_1_1Player.md))
 * **sendToast** ([**endstone::Player**](classendstone_1_1Player.md))
+* **setAbility** ([**endstone::Player**](classendstone_1_1Player.md))
 * **setAllowFlight** ([**endstone::Player**](classendstone_1_1Player.md))
 * **setExpLevel** ([**endstone::Player**](classendstone_1_1Player.md))
 * **setExpProgress** ([**endstone::Player**](classendstone_1_1Player.md))
@@ -1576,6 +1594,7 @@
 
 ## t
 
+* **Teleport** ([**endstone::Ability**](classendstone_1_1Ability.md))
 * **teleport** ([**endstone::Actor**](classendstone_1_1Actor.md))
 * **to\_** ([**endstone::ActorTeleportEvent**](classendstone_1_1ActorTeleportEvent.md), [**endstone::BlockFromToEvent**](classendstone_1_1BlockFromToEvent.md), [**endstone::PlayerDimensionChangeEvent**](classendstone_1_1PlayerDimensionChangeEvent.md), [**endstone::PlayerMoveEvent**](classendstone_1_1PlayerMoveEvent.md), [**endstone::ThunderChangeEvent**](classendstone_1_1ThunderChangeEvent.md), [**endstone::WeatherChangeEvent**](classendstone_1_1WeatherChangeEvent.md))
 * **Tadpole** ([**endstone::ActorType**](classendstone_1_1ActorType.md))
@@ -1637,6 +1656,7 @@
 
 ## v
 
+* **VerticalFlySpeed** ([**endstone::Ability**](classendstone_1_1Ability.md))
 * **vehicle\_** ([**endstone::ActorDismountEvent**](classendstone_1_1ActorDismountEvent.md))
 * **Vex** ([**endstone::ActorType**](classendstone_1_1ActorType.md))
 * **Villager** ([**endstone::ActorType**](classendstone_1_1ActorType.md))
@@ -1659,6 +1679,8 @@
 
 ## w
 
+* **WalkSpeed** ([**endstone::Ability**](classendstone_1_1Ability.md))
+* **WorldBuilder** ([**endstone::Ability**](classendstone_1_1Ability.md))
 * **WanderingTrader** ([**endstone::ActorType**](classendstone_1_1ActorType.md))
 * **Warden** ([**endstone::ActorType**](classendstone_1_1ActorType.md))
 * **WindChargeProjectile** ([**endstone::ActorType**](classendstone_1_1ActorType.md))
@@ -1800,6 +1822,8 @@
 * **\_getGameRule** ([**endstone::Level**](classendstone_1_1Level.md))
 * **\_hasGameRule** ([**endstone::Level**](classendstone_1_1Level.md))
 * **\_setGameRule** ([**endstone::Level**](classendstone_1_1Level.md))
+* **\_getAbility** ([**endstone::Player**](classendstone_1_1Player.md))
+* **\_setAbility** ([**endstone::Player**](classendstone_1_1Player.md))
 * **\_getRegistry** ([**endstone::Server**](classendstone_1_1Server.md))
 
 

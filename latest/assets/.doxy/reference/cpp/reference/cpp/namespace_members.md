@@ -5,6 +5,7 @@
 
 ## a
 
+* **AbilityValue** ([**endstone**](namespaceendstone.md))
 * **ActorTypeId** ([**endstone**](namespaceendstone.md))
 * **AttributeId** ([**endstone**](namespaceendstone.md))
 * **AttributeModifierId** ([**endstone**](namespaceendstone.md))

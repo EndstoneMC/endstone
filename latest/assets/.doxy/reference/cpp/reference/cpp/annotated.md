@@ -5,6 +5,8 @@
 Here are the classes, structs, unions and interfaces with brief descriptions:
 
 * **namespace** [**endstone**](namespaceendstone.md) _Represents a button with text and an optional icon._     
+    * **class** [**Ability**](classendstone_1_1Ability.md) _All player abilities._     
+    * **class** [**AbilityId**](classendstone_1_1AbilityId.md) _Represents the identifier of a player ability, carrying the type of the ability's value._     
     * **class** [**ActionForm**](classendstone_1_1ActionForm.md) _Represents a form with buttons that let the player take action._     
     * **class** [**Actor**](classendstone_1_1Actor.md) _Represents a base actor in the level._     
     * **class** [**ActorChangeBlockEvent**](classendstone_1_1ActorChangeBlockEvent.md) _Called when an_ [_**Actor**_](classendstone_1_1Actor.md) _changes a block as part of its own behaviour, such as a creeper exploding, an enderman picking a block up, a ravager trampling crops or a zombie breaking a door._    
