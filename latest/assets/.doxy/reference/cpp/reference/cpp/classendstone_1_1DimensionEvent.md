@@ -17,7 +17,7 @@ _Represents events within a dimension._
 Inherits the following classes: [endstone::LevelEvent](classendstone_1_1LevelEvent.md)
 
 
-Inherited by the following classes: [endstone::ChunkEvent](classendstone_1_1ChunkEvent.md)
+Inherited by the following classes: [endstone::ChunkEvent](classendstone_1_1ChunkEvent.md),  [endstone::DimensionLoadEvent](classendstone_1_1DimensionLoadEvent.md)
 
 
 

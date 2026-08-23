@@ -5,6 +5,7 @@
     <includes refid="level__event_8h" local="yes">endstone/event/level/level_event.h</includes>
     <includes refid="dimension_8h" local="yes">endstone/level/dimension.h</includes>
     <includedby refid="chunk__event_8h" local="yes">include/endstone/event/chunk/chunk_event.h</includedby>
+    <includedby refid="dimension__load__event_8h" local="yes">include/endstone/event/level/dimension_load_event.h</includedby>
     <incdepgraph>
       <node id="10">
         <label>endstone/actor/actor.h</label>
@@ -1098,6 +1099,12 @@
         <link refid="dimension__event_8h"/>
         <childnode refid="2" relation="include">
         </childnode>
+        <childnode refid="5" relation="include">
+        </childnode>
+      </node>
+      <node id="5">
+        <label>include/endstone/event/level/dimension_load_event.h</label>
+        <link refid="dimension__load__event_8h_source"/>
       </node>
     </invincdepgraph>
     <innerclass refid="classendstone_1_1DimensionEvent" prot="public">endstone::DimensionEvent</innerclass>

@@ -938,6 +938,11 @@
     <member refid="classendstone_1_1DimensionEvent_1a14fa3f1e46c72c6f4d379be69195b9da" kind="function"><name>DimensionEvent</name></member>
     <member refid="classendstone_1_1DimensionEvent_1a3bc5f18108033e1159d97dbe3be62dd3" kind="function"><name>getDimension</name></member>
   </compound>
+  <compound refid="classendstone_1_1DimensionLoadEvent" kind="class"><name>endstone::DimensionLoadEvent</name>
+    <member refid="classendstone_1_1DimensionLoadEvent_1a26a050c811a382ab8084550f1e03c8ed" kind="function"><name>ENDSTONE_EVENT</name></member>
+    <member refid="classendstone_1_1DimensionLoadEvent_1a8f3aaaf0b30a964375c02d5ed16ae9d2" kind="function"><name>DimensionLoadEvent</name></member>
+    <member refid="classendstone_1_1DimensionLoadEvent_1a8cac9e0bf25ed7fb91b30d091278d60f" kind="function"><name>~DimensionLoadEvent</name></member>
+  </compound>
   <compound refid="classendstone_1_1Divider" kind="class"><name>endstone::Divider</name>
     <member refid="classendstone_1_1Divider_1a8a5122832b87ae7c59cb6786e9d3c8d1" kind="function"><name>Divider</name></member>
   </compound>
@@ -3585,6 +3590,8 @@
   <compound refid="inventory__interact__event_8h" kind="file"><name>inventory_interact_event.h</name>
   </compound>
   <compound refid="dimension__event_8h" kind="file"><name>dimension_event.h</name>
+  </compound>
+  <compound refid="dimension__load__event_8h" kind="file"><name>dimension_load_event.h</name>
   </compound>
   <compound refid="level__event_8h" kind="file"><name>level_event.h</name>
   </compound>

@@ -2542,6 +2542,19 @@ For latest updates join the chat on
             
                 
                     <li class="md-nav__item">
+    <a href="#endstone.event.DimensionLoadEvent" class="md-nav__link">
+      <span class="md-ellipsis">
+        <code class="doc-symbol doc-symbol-toc doc-symbol-class"></code>&nbsp;DimensionLoadEvent
+      </span>
+    </a>
+
+    <!-- Table of contents list -->
+    
+</li>
+                
+            
+                
+                    <li class="md-nav__item">
     <a href="#endstone.event.Event" class="md-nav__link">
       <span class="md-ellipsis">
         <code class="doc-symbol doc-symbol-toc doc-symbol-class"></code>&nbsp;Event
@@ -8200,6 +8213,19 @@ For latest updates join the chat on
             
                 
                     <li class="md-nav__item">
+    <a href="#endstone.event.DimensionLoadEvent" class="md-nav__link">
+      <span class="md-ellipsis">
+        <code class="doc-symbol doc-symbol-toc doc-symbol-class"></code>&nbsp;DimensionLoadEvent
+      </span>
+    </a>
+
+    <!-- Table of contents list -->
+    
+</li>
+                
+            
+                
+                    <li class="md-nav__item">
     <a href="#endstone.event.Event" class="md-nav__link">
       <span class="md-ellipsis">
         <code class="doc-symbol doc-symbol-toc doc-symbol-class"></code>&nbsp;Event
@@ -11864,6 +11890,14 @@ For latest updates join the chat on
             <td>
               <div class="doc-md-description">
                 <p>Represents events within a dimension.</p>
+              </div>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td><code><a class="autorefs autorefs-internal" title="            DimensionLoadEvent (endstone.event.DimensionLoadEvent)" href="#endstone.event.DimensionLoadEvent">DimensionLoadEvent</a></code></td>
+            <td>
+              <div class="doc-md-description">
+                <p>Called when a dimension is loaded.</p>
               </div>
             </td>
           </tr>
@@ -16219,6 +16253,60 @@ leads to undefined behaviours. This event will not be called for <code>Player</c
 
 
 
+<h3 id="endstone.event.DimensionLoadEvent" class="doc doc-heading">
+<code class="doc-symbol doc-symbol-heading doc-symbol-class"></code>            <span class="doc doc-object-name doc-class-name">DimensionLoadEvent</span>
+
+
+<a href="#endstone.event.DimensionLoadEvent" class="headerlink" title="Permanent link">&para;</a></h3>
+<div class="language-python doc-signature highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="nf">DimensionLoadEvent</span><span class="p">(</span><span class="n">is_async</span><span class="p">:</span> <span class="n"><a class="autorefs autorefs-external" href="https://docs.python.org/3/library/functions.html#bool">bool</a></span> <span class="o">=</span> <span class="kc">False</span><span class="p">)</span>
+</span></code></pre></div>
+
+    <div class="doc doc-contents ">
+            <p class="doc doc-class-bases">
+              Bases: <code><a class="autorefs autorefs-internal" title="            DimensionEvent (endstone.event.DimensionEvent)" href="#endstone.event.DimensionEvent">DimensionEvent</a></code></p>
+
+
+
+        <p>Called when a dimension is loaded.</p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="doc doc-children">
+
+
+
+
+
+
+
+
+
+
+
+
+  </div>
+
+    </div>
+
+</div>
+
+<div class="doc doc-object doc-class">
+
+
+
 <h3 id="endstone.event.Event" class="doc doc-heading">
 <code class="doc-symbol doc-symbol-heading doc-symbol-class"></code>            <span class="doc doc-object-name doc-class-name">Event</span>
 
@@ -18012,12 +18100,21 @@ leads to undefined behaviours. This event will not be called for <code>Player</c
 
     <div class="doc doc-contents ">
             <p class="doc doc-class-bases">
-              Bases: <code><a class="autorefs autorefs-internal" title="            PlayerEvent (endstone.event.PlayerEvent)" href="#endstone.event.PlayerEvent">PlayerEvent</a></code></p>
+              Bases: <code><a class="autorefs autorefs-internal" title="            PlayerEvent (endstone.event.PlayerEvent)" href="#endstone.event.PlayerEvent">PlayerEvent</a></code>, <code><a class="autorefs autorefs-internal" title="            Cancellable (endstone.event.Cancellable)" href="#endstone.event.Cancellable">Cancellable</a></code></p>
 
 
 
         <p>Called when a player swings their arm.</p>
+<p>Cancelling stops the server acting on the swing at all. The swing is neither recorded nor shown to the other
+players in the dimension.</p>
 
+
+<details class="note" open>
+  <summary>Note</summary>
+  <p>The swinging player still sees their own arm move, because their client plays the animation without waiting
+for the server. The event covers swings the player starts. Swings the server drives itself, such as dropping
+an item, do not fire it.</p>
+</details>
 
 
 

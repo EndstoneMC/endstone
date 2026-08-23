@@ -108,6 +108,7 @@ _Represents a button with text and an optional icon._
 | class | [**Dimension**](classendstone_1_1Dimension.md) <br>_Represents a dimension within a_ [_**Level**_](classendstone_1_1Level.md) _._ |
 | class | [**DimensionCreator**](classendstone_1_1DimensionCreator.md) <br>_Represents the options that may be used to create a custom_ [_**Dimension**_](classendstone_1_1Dimension.md) _._ |
 | class | [**DimensionEvent**](classendstone_1_1DimensionEvent.md) <br>_Represents events within a dimension._  |
+| class | [**DimensionLoadEvent**](classendstone_1_1DimensionLoadEvent.md) <br>_Called when a dimension is loaded._  |
 | class | [**Divider**](classendstone_1_1Divider.md) <br>_Represents a divider._  |
 | class | [**DrilldownPie**](classendstone_1_1DrilldownPie.md) <br>_A bStats pie chart with grouped named values._  |
 | class | [**Dropdown**](classendstone_1_1Dropdown.md) <br>_Represents a dropdown with a set of predefined options._  |

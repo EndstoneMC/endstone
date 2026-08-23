@@ -1,0 +1,130 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.8" xml:lang="en-US">
+  <compounddef id="classendstone_1_1DimensionLoadEvent" kind="class" language="C++" prot="public">
+    <compoundname>endstone::DimensionLoadEvent</compoundname>
+    <basecompoundref refid="classendstone_1_1DimensionEvent" prot="public" virt="non-virtual">endstone::DimensionEvent</basecompoundref>
+    <includes refid="dimension__load__event_8h" local="no">endstone/event/level/dimension_load_event.h</includes>
+    <sectiondef kind="public-func">
+      <memberdef kind="function" id="classendstone_1_1DimensionLoadEvent_1a26a050c811a382ab8084550f1e03c8ed" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>endstone::DimensionLoadEvent::ENDSTONE_EVENT</definition>
+        <argsstring>(DimensionLoadEvent)</argsstring>
+        <name>ENDSTONE_EVENT</name>
+        <qualifiedname>endstone::DimensionLoadEvent::ENDSTONE_EVENT</qualifiedname>
+        <param>
+          <type><ref refid="classendstone_1_1DimensionLoadEvent" kindref="compound">DimensionLoadEvent</ref></type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/event/level/dimension_load_event.h" line="26" column="5"/>
+      </memberdef>
+      <memberdef kind="function" id="classendstone_1_1DimensionLoadEvent_1a8f3aaaf0b30a964375c02d5ed16ae9d2" prot="public" static="no" const="no" explicit="yes" inline="yes" virt="non-virtual">
+        <type></type>
+        <definition>endstone::DimensionLoadEvent::DimensionLoadEvent</definition>
+        <argsstring>(const NotNull&lt; Dimension &gt; &amp;dimension)</argsstring>
+        <name>DimensionLoadEvent</name>
+        <qualifiedname>endstone::DimensionLoadEvent::DimensionLoadEvent</qualifiedname>
+        <param>
+          <type><ref refid="classendstone_1_1Identifier" kindref="compound">const</ref> <ref refid="classendstone_1_1NotNull" kindref="compound">NotNull</ref>&lt; <ref refid="classendstone_1_1Dimension" kindref="compound">Dimension</ref> &gt; &amp;</type>
+          <declname>dimension</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/event/level/dimension_load_event.h" line="28" column="14" bodyfile="include/endstone/event/level/dimension_load_event.h" bodystart="28" bodyend="28"/>
+      </memberdef>
+      <memberdef kind="function" id="classendstone_1_1DimensionLoadEvent_1a8cac9e0bf25ed7fb91b30d091278d60f" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>endstone::DimensionLoadEvent::~DimensionLoadEvent</definition>
+        <argsstring>() override=default</argsstring>
+        <name>~DimensionLoadEvent</name>
+        <qualifiedname>endstone::DimensionLoadEvent::~DimensionLoadEvent</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/event/level/dimension_load_event.h" line="29" column="5"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+<para>Called when a dimension is loaded. </para>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="2">
+        <label>endstone::DimensionEvent</label>
+        <link refid="classendstone_1_1DimensionEvent"/>
+        <childnode refid="3" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="1">
+        <label>endstone::DimensionLoadEvent</label>
+        <link refid="classendstone_1_1DimensionLoadEvent"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="4">
+        <label>endstone::Event</label>
+        <link refid="classendstone_1_1Event"/>
+      </node>
+      <node id="3">
+        <label>endstone::LevelEvent</label>
+        <link refid="classendstone_1_1LevelEvent"/>
+        <childnode refid="4" relation="public-inheritance">
+        </childnode>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="2">
+        <label>endstone::DimensionEvent</label>
+        <link refid="classendstone_1_1DimensionEvent"/>
+        <childnode refid="3" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="1">
+        <label>endstone::DimensionLoadEvent</label>
+        <link refid="classendstone_1_1DimensionLoadEvent"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="4">
+        <label>endstone::Event</label>
+        <link refid="classendstone_1_1Event"/>
+      </node>
+      <node id="3">
+        <label>endstone::LevelEvent</label>
+        <link refid="classendstone_1_1LevelEvent"/>
+        <childnode refid="4" relation="public-inheritance">
+        </childnode>
+      </node>
+    </collaborationgraph>
+    <location file="include/endstone/event/level/dimension_load_event.h" line="24" column="1" bodyfile="include/endstone/event/level/dimension_load_event.h" bodystart="24" bodyend="30"/>
+    <listofallmembers>
+      <member refid="classendstone_1_1DimensionEvent_1a14fa3f1e46c72c6f4d379be69195b9da" prot="public" virt="non-virtual"><scope>endstone::DimensionLoadEvent</scope><name>DimensionEvent</name></member>
+      <member refid="classendstone_1_1DimensionLoadEvent_1a8f3aaaf0b30a964375c02d5ed16ae9d2" prot="public" virt="non-virtual"><scope>endstone::DimensionLoadEvent</scope><name>DimensionLoadEvent</name></member>
+      <member refid="classendstone_1_1DimensionLoadEvent_1a26a050c811a382ab8084550f1e03c8ed" prot="public" virt="non-virtual"><scope>endstone::DimensionLoadEvent</scope><name>ENDSTONE_EVENT</name></member>
+      <member refid="classendstone_1_1Event_1a28cca8d74920493b449d035540acf023" prot="public" virt="non-virtual"><scope>endstone::DimensionLoadEvent</scope><name>Event</name></member>
+      <member refid="classendstone_1_1Event_1a7199136ebb40e1441bc61e29f83c3cad" prot="public" virt="non-virtual"><scope>endstone::DimensionLoadEvent</scope><name>Event</name></member>
+      <member refid="classendstone_1_1Event_1ad20bafd16e0671578e37390b95e5104c" prot="public" virt="non-virtual"><scope>endstone::DimensionLoadEvent</scope><name>Event</name></member>
+      <member refid="classendstone_1_1DimensionEvent_1a3bc5f18108033e1159d97dbe3be62dd3" prot="public" virt="non-virtual"><scope>endstone::DimensionLoadEvent</scope><name>getDimension</name></member>
+      <member refid="classendstone_1_1Event_1a826fe74f9c4195a36a364b9aeeb321bb" prot="public" virt="pure-virtual"><scope>endstone::DimensionLoadEvent</scope><name>getEventName</name></member>
+      <member refid="classendstone_1_1LevelEvent_1ac3be77ffb5a5416fe0c6b138ac01a709" prot="public" virt="non-virtual"><scope>endstone::DimensionLoadEvent</scope><name>getLevel</name></member>
+      <member refid="classendstone_1_1Event_1ae89b54f63dc32b0c8797a59db69b6931" prot="public" virt="non-virtual"><scope>endstone::DimensionLoadEvent</scope><name>isAsynchronous</name></member>
+      <member refid="classendstone_1_1LevelEvent_1a75f2817cfb11480dedbf70c1d3ddc162" prot="public" virt="non-virtual"><scope>endstone::DimensionLoadEvent</scope><name>LevelEvent</name></member>
+      <member refid="classendstone_1_1Event_1a44a4ff424a8b690c01a2afe10ae68d8f" prot="public" virt="non-virtual"><scope>endstone::DimensionLoadEvent</scope><name>operator=</name></member>
+      <member refid="classendstone_1_1Event_1a1d7fc5400782d20be99a3636aa7f53b9" prot="public" virt="non-virtual"><scope>endstone::DimensionLoadEvent</scope><name>operator=</name></member>
+      <member refid="classendstone_1_1DimensionLoadEvent_1a8cac9e0bf25ed7fb91b30d091278d60f" prot="public" virt="non-virtual"><scope>endstone::DimensionLoadEvent</scope><name>~DimensionLoadEvent</name></member>
+      <member refid="classendstone_1_1Event_1a6aeaa8096baba90f8ace94106e0e05f3" prot="public" virt="virtual"><scope>endstone::DimensionLoadEvent</scope><name>~Event</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

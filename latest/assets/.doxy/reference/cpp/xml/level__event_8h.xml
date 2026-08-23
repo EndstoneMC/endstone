@@ -1090,6 +1090,12 @@
         <link refid="dimension__event_8h_source"/>
         <childnode refid="3" relation="include">
         </childnode>
+        <childnode refid="6" relation="include">
+        </childnode>
+      </node>
+      <node id="6">
+        <label>include/endstone/event/level/dimension_load_event.h</label>
+        <link refid="dimension__load__event_8h_source"/>
       </node>
       <node id="1">
         <label>include/endstone/event/level/level_event.h</label>

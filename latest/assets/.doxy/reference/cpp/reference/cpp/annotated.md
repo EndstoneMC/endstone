@@ -76,6 +76,7 @@ Here are the classes, structs, unions and interfaces with brief descriptions:
     * **class** [**Dimension**](classendstone_1_1Dimension.md) _Represents a dimension within a_ [_**Level**_](classendstone_1_1Level.md) _._    
     * **class** [**DimensionCreator**](classendstone_1_1DimensionCreator.md) _Represents the options that may be used to create a custom_ [_**Dimension**_](classendstone_1_1Dimension.md) _._    
     * **class** [**DimensionEvent**](classendstone_1_1DimensionEvent.md) _Represents events within a dimension._     
+    * **class** [**DimensionLoadEvent**](classendstone_1_1DimensionLoadEvent.md) _Called when a dimension is loaded._     
     * **class** [**Divider**](classendstone_1_1Divider.md) _Represents a divider._     
     * **class** [**DrilldownPie**](classendstone_1_1DrilldownPie.md) _A bStats pie chart with grouped named values._     
     * **class** [**Dropdown**](classendstone_1_1Dropdown.md) _Represents a dropdown with a set of predefined options._     

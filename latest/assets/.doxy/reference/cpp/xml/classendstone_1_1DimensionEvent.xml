@@ -4,6 +4,7 @@
     <compoundname>endstone::DimensionEvent</compoundname>
     <basecompoundref refid="classendstone_1_1LevelEvent" prot="public" virt="non-virtual">endstone::LevelEvent</basecompoundref>
     <derivedcompoundref refid="classendstone_1_1ChunkEvent" prot="public" virt="non-virtual">endstone::ChunkEvent</derivedcompoundref>
+    <derivedcompoundref refid="classendstone_1_1DimensionLoadEvent" prot="public" virt="non-virtual">endstone::DimensionLoadEvent</derivedcompoundref>
     <includes refid="dimension__event_8h" local="no">endstone/event/level/dimension_event.h</includes>
     <sectiondef kind="private-attrib">
       <memberdef kind="variable" id="classendstone_1_1DimensionEvent_1af8cce93484fa6cb254029c15a684cd44" prot="private" static="no" mutable="no">
@@ -87,6 +88,12 @@
         <label>endstone::DimensionEvent</label>
         <link refid="classendstone_1_1DimensionEvent"/>
         <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="7">
+        <label>endstone::DimensionLoadEvent</label>
+        <link refid="classendstone_1_1DimensionLoadEvent"/>
+        <childnode refid="1" relation="public-inheritance">
         </childnode>
       </node>
       <node id="3">

@@ -73,6 +73,7 @@
     <innerclass refid="classendstone_1_1Dimension" prot="public">endstone::Dimension</innerclass>
     <innerclass refid="classendstone_1_1DimensionCreator" prot="public">endstone::DimensionCreator</innerclass>
     <innerclass refid="classendstone_1_1DimensionEvent" prot="public">endstone::DimensionEvent</innerclass>
+    <innerclass refid="classendstone_1_1DimensionLoadEvent" prot="public">endstone::DimensionLoadEvent</innerclass>
     <innerclass refid="classendstone_1_1Divider" prot="public">endstone::Divider</innerclass>
     <innerclass refid="classendstone_1_1DrilldownPie" prot="public">endstone::DrilldownPie</innerclass>
     <innerclass refid="classendstone_1_1Dropdown" prot="public">endstone::Dropdown</innerclass>

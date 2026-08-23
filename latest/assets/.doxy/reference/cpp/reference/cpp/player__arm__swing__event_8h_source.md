@@ -27,17 +27,18 @@
 #include <optional>
 #include <utility>
 
+#include "endstone/event/cancellable.h"
 #include "endstone/event/player/player_event.h"
 #include "endstone/inventory/item_stack.h"
 
 namespace endstone {
 
-class PlayerArmSwingEvent final : public PlayerEvent {
+class PlayerArmSwingEvent final : public Cancellable<PlayerEvent> {
 public:
     ENDSTONE_EVENT(PlayerArmSwingEvent);
 
     PlayerArmSwingEvent(const NotNull<Player> &player, std::optional<ItemStack> item)
-        : PlayerEvent(player), item_(std::move(item))
+        : Cancellable(player), item_(std::move(item))
     {
     }
 

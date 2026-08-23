@@ -2596,9 +2596,9 @@ For latest updates join the chat on
 </li>
       
         <li class="md-nav__item">
-    <a href="#public-functions-inherited-from-endstoneplayerevent" class="md-nav__link">
+    <a href="#public-functions-inherited-from-endstonecancellable" class="md-nav__link">
       <span class="md-ellipsis">
-        Public Functions inherited from endstone::PlayerEvent
+        Public Functions inherited from endstone::Cancellable
       </span>
     </a>
 
@@ -2607,9 +2607,9 @@ For latest updates join the chat on
 </li>
       
         <li class="md-nav__item">
-    <a href="#public-functions-inherited-from-endstoneevent" class="md-nav__link">
+    <a href="#public-functions-inherited-from-endstoneicancellable" class="md-nav__link">
       <span class="md-ellipsis">
-        Public Functions inherited from endstone::Event
+        Public Functions inherited from endstone::ICancellable
       </span>
     </a>
 
@@ -2618,9 +2618,9 @@ For latest updates join the chat on
 </li>
       
         <li class="md-nav__item">
-    <a href="#protected-attributes-inherited-from-endstoneplayerevent" class="md-nav__link">
+    <a href="#detailed-description" class="md-nav__link">
       <span class="md-ellipsis">
-        Protected Attributes inherited from endstone::PlayerEvent
+        Detailed Description
       </span>
     </a>
 
@@ -2719,11 +2719,11 @@ For latest updates join the chat on
 
 <h1 id="class-endstoneplayerarmswingevent">Class endstone::PlayerArmSwingEvent<a class="headerlink" href="#class-endstoneplayerarmswingevent" title="Permanent link">&para;</a></h1>
 <p><a href="../annotated/"><strong>ClassList</strong></a> <strong>&gt;</strong> <a href="../namespaceendstone/"><strong>endstone</strong></a> <strong>&gt;</strong> <a href="./"><strong>PlayerArmSwingEvent</strong></a></p>
-<p><em>Called when a player swings their arm.</em> </p>
+<p><em>Called when a player swings their arm.</em> <a href="#detailed-description">More...</a></p>
 <ul>
 <li><code>#include &lt;endstone/event/player/player_arm_swing_event.h&gt;</code></li>
 </ul>
-<p>Inherits the following classes: <a href="../classendstone_1_1PlayerEvent/">endstone::PlayerEvent</a></p>
+<p>Inherits the following classes: <a href="../classendstone_1_1Cancellable/">endstone::Cancellable</a></p>
 <h2 id="public-functions">Public Functions<a class="headerlink" href="#public-functions" title="Permanent link">&para;</a></h2>
 <table>
 <thead>
@@ -2747,8 +2747,8 @@ For latest updates join the chat on
 </tr>
 </tbody>
 </table>
-<h2 id="public-functions-inherited-from-endstoneplayerevent">Public Functions inherited from endstone::PlayerEvent<a class="headerlink" href="#public-functions-inherited-from-endstoneplayerevent" title="Permanent link">&para;</a></h2>
-<p>See <a href="../classendstone_1_1PlayerEvent/">endstone::PlayerEvent</a></p>
+<h2 id="public-functions-inherited-from-endstonecancellable">Public Functions inherited from endstone::Cancellable<a class="headerlink" href="#public-functions-inherited-from-endstonecancellable" title="Permanent link">&para;</a></h2>
+<p>See <a href="../classendstone_1_1Cancellable/">endstone::Cancellable</a></p>
 <table>
 <thead>
 <tr>
@@ -2758,21 +2758,21 @@ For latest updates join the chat on
 </thead>
 <tbody>
 <tr>
-<td style="text-align: right;"></td>
-<td style="text-align: left;"><a href="../classendstone_1_1PlayerEvent/#function-playerevent"><strong>PlayerEvent</strong></a> (<a href="../classendstone_1_1Identifier/"><strong>const</strong></a> <a href="../classendstone_1_1NotNull/"><strong>NotNull</strong></a>&lt; <a href="../classendstone_1_1Player/"><strong>Player</strong></a> &gt; &amp; player) <br></td>
+<td style="text-align: right;">virtual <a href="../classendstone_1_1Identifier/"><strong>void</strong></a></td>
+<td style="text-align: left;"><a href="../classendstone_1_1Cancellable/#function-cancel"><strong>cancel</strong></a> () <br><em>Cancel this event.</em></td>
 </tr>
 <tr>
-<td style="text-align: right;"><a href="../classendstone_1_1Identifier/"><strong>const</strong></a> <a href="../classendstone_1_1NotNull/"><strong>NotNull</strong></a>&lt; <a href="../classendstone_1_1Player/"><strong>Player</strong></a> &gt; &amp;</td>
-<td style="text-align: left;"><a href="../classendstone_1_1PlayerEvent/#function-getplayer"><strong>getPlayer</strong></a> () const<br><em>Returns the player involved in this event.</em></td>
+<td style="text-align: right;">virtual <a href="../classendstone_1_1Identifier/"><strong>bool</strong></a></td>
+<td style="text-align: left;"><a href="../classendstone_1_1Cancellable/#function-iscancelled"><strong>isCancelled</strong></a> () override const<br><em>Gets the cancellation state of this event.</em></td>
 </tr>
 <tr>
-<td style="text-align: right;"></td>
-<td style="text-align: left;"><a href="../classendstone_1_1PlayerEvent/#function-playerevent"><strong>~PlayerEvent</strong></a> () override<br></td>
+<td style="text-align: right;">virtual <a href="../classendstone_1_1Identifier/"><strong>void</strong></a></td>
+<td style="text-align: left;"><a href="../classendstone_1_1Cancellable/#function-setcancelled"><strong>setCancelled</strong></a> (<a href="../classendstone_1_1Identifier/"><strong>bool</strong></a> cancel) override<br><em>Sets the cancellation state of this event.</em></td>
 </tr>
 </tbody>
 </table>
-<h2 id="public-functions-inherited-from-endstoneevent">Public Functions inherited from endstone::Event<a class="headerlink" href="#public-functions-inherited-from-endstoneevent" title="Permanent link">&para;</a></h2>
-<p>See <a href="../classendstone_1_1Event/">endstone::Event</a></p>
+<h2 id="public-functions-inherited-from-endstoneicancellable">Public Functions inherited from endstone::ICancellable<a class="headerlink" href="#public-functions-inherited-from-endstoneicancellable" title="Permanent link">&para;</a></h2>
+<p>See <a href="../classendstone_1_1ICancellable/">endstone::ICancellable</a></p>
 <table>
 <thead>
 <tr>
@@ -2782,55 +2782,27 @@ For latest updates join the chat on
 </thead>
 <tbody>
 <tr>
-<td style="text-align: right;"></td>
-<td style="text-align: left;"><a href="../classendstone_1_1Event/#function-event-13"><strong>Event</strong></a> (<a href="../classendstone_1_1Identifier/"><strong>bool</strong></a> async=<a href="../classendstone_1_1Identifier/"><strong>false</strong></a>) <br></td>
+<td style="text-align: right;">virtual <a href="../classendstone_1_1Identifier/"><strong>void</strong></a></td>
+<td style="text-align: left;"><a href="../classendstone_1_1ICancellable/#function-cancel"><strong>cancel</strong></a> () = 0<br><em>Cancels this event.</em></td>
 </tr>
 <tr>
-<td style="text-align: right;"></td>
-<td style="text-align: left;"><a href="../classendstone_1_1Event/#function-event-23"><strong>Event</strong></a> (<a href="../classendstone_1_1Identifier/"><strong>const</strong></a> <a href="../classendstone_1_1Event/"><strong>Event</strong></a> &amp;) = delete<br></td>
+<td style="text-align: right;">virtual <a href="../classendstone_1_1Identifier/"><strong>bool</strong></a></td>
+<td style="text-align: left;"><a href="../classendstone_1_1ICancellable/#function-iscancelled"><strong>isCancelled</strong></a> () const = 0<br><em>Gets the cancellation state of this event.</em></td>
 </tr>
 <tr>
-<td style="text-align: right;"></td>
-<td style="text-align: left;"><a href="../classendstone_1_1Event/#function-event-33"><strong>Event</strong></a> (<a href="../classendstone_1_1Event/"><strong>Event</strong></a> &amp;&amp;) = default<br></td>
-</tr>
-<tr>
-<td style="text-align: right;">virtual std::string</td>
-<td style="text-align: left;"><a href="../classendstone_1_1Event/#function-geteventname"><strong>getEventName</strong></a> () const = 0<br><em>Gets a user-friendly identifier for this event.</em></td>
-</tr>
-<tr>
-<td style="text-align: right;"><a href="../classendstone_1_1Identifier/"><strong>bool</strong></a></td>
-<td style="text-align: left;"><a href="../classendstone_1_1Event/#function-isasynchronous"><strong>isAsynchronous</strong></a> () const<br><em>Any custom event that should not by synchronized with other events must use the specific constructor.</em></td>
-</tr>
-<tr>
-<td style="text-align: right;"><a href="../classendstone_1_1Event/"><strong>Event</strong></a> &amp;</td>
-<td style="text-align: left;"><a href="../classendstone_1_1Event/#function-operator"><strong>operator=</strong></a> (<a href="../classendstone_1_1Identifier/"><strong>const</strong></a> <a href="../classendstone_1_1Event/"><strong>Event</strong></a> &amp;) = delete<br></td>
-</tr>
-<tr>
-<td style="text-align: right;"><a href="../classendstone_1_1Event/"><strong>Event</strong></a> &amp;</td>
-<td style="text-align: left;"><a href="../classendstone_1_1Event/#function-operator_1"><strong>operator=</strong></a> (<a href="../classendstone_1_1Event/"><strong>Event</strong></a> &amp;&amp;) = default<br></td>
+<td style="text-align: right;">virtual <a href="../classendstone_1_1Identifier/"><strong>void</strong></a></td>
+<td style="text-align: left;"><a href="../classendstone_1_1ICancellable/#function-setcancelled"><strong>setCancelled</strong></a> (<a href="../classendstone_1_1Identifier/"><strong>bool</strong></a> cancel) = 0<br><em>Sets the cancellation state of this event.</em></td>
 </tr>
 <tr>
 <td style="text-align: right;">virtual</td>
-<td style="text-align: left;"><a href="../classendstone_1_1Event/#function-event"><strong>~Event</strong></a> () = default<br></td>
+<td style="text-align: left;"><a href="../classendstone_1_1ICancellable/#function-icancellable"><strong>~ICancellable</strong></a> () = default<br></td>
 </tr>
 </tbody>
 </table>
-<h2 id="protected-attributes-inherited-from-endstoneplayerevent">Protected Attributes inherited from endstone::PlayerEvent<a class="headerlink" href="#protected-attributes-inherited-from-endstoneplayerevent" title="Permanent link">&para;</a></h2>
-<p>See <a href="../classendstone_1_1PlayerEvent/">endstone::PlayerEvent</a></p>
-<table>
-<thead>
-<tr>
-<th style="text-align: right;">Type</th>
-<th style="text-align: left;">Name</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align: right;"><a href="../classendstone_1_1NotNull/"><strong>NotNull</strong></a>&lt; <a href="../classendstone_1_1Player/"><strong>Player</strong></a> &gt;</td>
-<td style="text-align: left;"><a href="../classendstone_1_1PlayerEvent/#variable-player_"><strong>player_</strong></a>  <br></td>
-</tr>
-</tbody>
-</table>
+<h2 id="detailed-description">Detailed Description<a class="headerlink" href="#detailed-description" title="Permanent link">&para;</a></h2>
+<p>Cancelling stops the server acting on the swing at all. The swing is neither recorded nor shown to the other players in the dimension.</p>
+<p><strong>Note:</strong></p>
+<p>The swinging player still sees their own arm move, because their client plays the animation without waiting for the server. The event covers swings the player starts. Swings the server drives itself, such as dropping an item, do not fire it. </p>
 <h2 id="public-functions-documentation">Public Functions Documentation<a class="headerlink" href="#public-functions-documentation" title="Permanent link">&para;</a></h2>
 <h3 id="function-endstone_event">function ENDSTONE_EVENT<a class="headerlink" href="#function-endstone_event" title="Permanent link">&para;</a></h3>
 <div class="language-C++ highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="n">endstone</span><span class="o">::</span><span class="n">PlayerArmSwingEvent</span><span class="o">::</span><span class="n">ENDSTONE_EVENT</span><span class="w"> </span><span class="p">(</span>

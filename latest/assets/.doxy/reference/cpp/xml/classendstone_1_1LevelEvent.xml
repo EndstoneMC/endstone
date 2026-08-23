@@ -89,6 +89,12 @@
         <childnode refid="1" relation="public-inheritance">
         </childnode>
       </node>
+      <node id="7">
+        <label>endstone::DimensionLoadEvent</label>
+        <link refid="classendstone_1_1DimensionLoadEvent"/>
+        <childnode refid="3" relation="public-inheritance">
+        </childnode>
+      </node>
       <node id="2">
         <label>endstone::Event</label>
         <link refid="classendstone_1_1Event"/>

@@ -2,7 +2,7 @@
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.8" xml:lang="en-US">
   <compounddef id="classendstone_1_1PlayerArmSwingEvent" kind="class" language="C++" prot="public" final="yes">
     <compoundname>endstone::PlayerArmSwingEvent</compoundname>
-    <basecompoundref refid="classendstone_1_1PlayerEvent" prot="public" virt="non-virtual">endstone::PlayerEvent</basecompoundref>
+    <basecompoundref refid="classendstone_1_1Cancellable" prot="public" virt="non-virtual">endstone::Cancellable&lt; PlayerEvent &gt;</basecompoundref>
     <includes refid="player__arm__swing__event_8h" local="no">endstone/event/player/player_arm_swing_event.h</includes>
     <sectiondef kind="private-attrib">
       <memberdef kind="variable" id="classendstone_1_1PlayerArmSwingEvent_1ae372e830cd83417d237067dd8c7ea766" prot="private" static="no" mutable="no">
@@ -17,7 +17,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/event/player/player_arm_swing_event.h" line="45" column="19" bodyfile="include/endstone/event/player/player_arm_swing_event.h" bodystart="45" bodyend="-1"/>
+        <location file="include/endstone/event/player/player_arm_swing_event.h" line="53" column="19" bodyfile="include/endstone/event/player/player_arm_swing_event.h" bodystart="53" bodyend="-1"/>
       </memberdef>
     </sectiondef>
     <sectiondef kind="public-func">
@@ -36,7 +36,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/event/player/player_arm_swing_event.h" line="30" column="5"/>
+        <location file="include/endstone/event/player/player_arm_swing_event.h" line="38" column="5"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1PlayerArmSwingEvent_1a3cd746a0f01018d76a27245ff872f628" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type></type>
@@ -58,7 +58,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/event/player/player_arm_swing_event.h" line="32" column="5" bodyfile="include/endstone/event/player/player_arm_swing_event.h" bodystart="32" bodyend="35"/>
+        <location file="include/endstone/event/player/player_arm_swing_event.h" line="40" column="5" bodyfile="include/endstone/event/player/player_arm_swing_event.h" bodystart="40" bodyend="43"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1PlayerArmSwingEvent_1ab9890dda85df1fe8a1a12f43e62e4b10" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
         <type><ref refid="classendstone_1_1Identifier" kindref="compound">const</ref> std::optional&lt; <ref refid="classendstone_1_1ItemStack" kindref="compound">ItemStack</ref> &gt; &amp;</type>
@@ -76,18 +76,34 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/event/player/player_arm_swing_event.h" line="42" column="26" bodyfile="include/endstone/event/player/player_arm_swing_event.h" bodystart="42" bodyend="42"/>
+        <location file="include/endstone/event/player/player_arm_swing_event.h" line="50" column="26" bodyfile="include/endstone/event/player/player_arm_swing_event.h" bodystart="50" bodyend="50"/>
       </memberdef>
     </sectiondef>
     <briefdescription>
 <para>Called when a player swings their arm. </para>
     </briefdescription>
     <detaileddescription>
+<para>Cancelling stops the server acting on the swing at all. The swing is neither recorded nor shown to the other players in the dimension.</para>
+<para><simplesect kind="note"><para>The swinging player still sees their own arm move, because their client plays the animation without waiting for the server. The event covers swings the player starts. Swings the server drives itself, such as dropping an item, do not fire it. </para>
+</simplesect>
+</para>
     </detaileddescription>
     <inheritancegraph>
-      <node id="3">
+      <node id="2">
+        <label>endstone::Cancellable&lt; PlayerEvent &gt;</label>
+        <link refid="classendstone_1_1Cancellable"/>
+        <childnode refid="3" relation="public-inheritance">
+        </childnode>
+        <childnode refid="5" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="4">
         <label>endstone::Event</label>
         <link refid="classendstone_1_1Event"/>
+      </node>
+      <node id="5">
+        <label>endstone::ICancellable</label>
+        <link refid="classendstone_1_1ICancellable"/>
       </node>
       <node id="1">
         <label>endstone::PlayerArmSwingEvent</label>
@@ -95,21 +111,33 @@
         <childnode refid="2" relation="public-inheritance">
         </childnode>
       </node>
-      <node id="2">
+      <node id="3">
         <label>endstone::PlayerEvent</label>
         <link refid="classendstone_1_1PlayerEvent"/>
-        <childnode refid="3" relation="public-inheritance">
+        <childnode refid="4" relation="public-inheritance">
         </childnode>
       </node>
     </inheritancegraph>
     <collaborationgraph>
-      <node id="4">
+      <node id="2">
+        <label>endstone::Cancellable&lt; PlayerEvent &gt;</label>
+        <link refid="classendstone_1_1Cancellable"/>
+        <childnode refid="3" relation="public-inheritance">
+        </childnode>
+        <childnode refid="6" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="5">
         <label>endstone::NotNull&lt; endstone::Player &gt;</label>
         <link refid="classendstone_1_1NotNull"/>
       </node>
-      <node id="3">
+      <node id="4">
         <label>endstone::Event</label>
         <link refid="classendstone_1_1Event"/>
+      </node>
+      <node id="6">
+        <label>endstone::ICancellable</label>
+        <link refid="classendstone_1_1ICancellable"/>
       </node>
       <node id="1">
         <label>endstone::PlayerArmSwingEvent</label>
@@ -117,18 +145,19 @@
         <childnode refid="2" relation="public-inheritance">
         </childnode>
       </node>
-      <node id="2">
+      <node id="3">
         <label>endstone::PlayerEvent</label>
         <link refid="classendstone_1_1PlayerEvent"/>
-        <childnode refid="3" relation="public-inheritance">
+        <childnode refid="4" relation="public-inheritance">
         </childnode>
-        <childnode refid="4" relation="usage">
+        <childnode refid="5" relation="usage">
           <edgelabel>player_</edgelabel>
         </childnode>
       </node>
     </collaborationgraph>
-    <location file="include/endstone/event/player/player_arm_swing_event.h" line="28" column="1" bodyfile="include/endstone/event/player/player_arm_swing_event.h" bodystart="28" bodyend="46"/>
+    <location file="include/endstone/event/player/player_arm_swing_event.h" line="36" column="1" bodyfile="include/endstone/event/player/player_arm_swing_event.h" bodystart="36" bodyend="54"/>
     <listofallmembers>
+      <member refid="classendstone_1_1Cancellable_1a3512b47db69c6001f5c0450051308327" prot="public" virt="virtual"><scope>endstone::PlayerArmSwingEvent</scope><name>cancel</name></member>
       <member refid="classendstone_1_1PlayerArmSwingEvent_1abe9be90ca9e103d0da1e827638b9075f" prot="public" virt="non-virtual"><scope>endstone::PlayerArmSwingEvent</scope><name>ENDSTONE_EVENT</name></member>
       <member refid="classendstone_1_1Event_1a28cca8d74920493b449d035540acf023" prot="public" virt="non-virtual"><scope>endstone::PlayerArmSwingEvent</scope><name>Event</name></member>
       <member refid="classendstone_1_1Event_1a7199136ebb40e1441bc61e29f83c3cad" prot="public" virt="non-virtual"><scope>endstone::PlayerArmSwingEvent</scope><name>Event</name></member>
@@ -137,13 +166,16 @@
       <member refid="classendstone_1_1PlayerArmSwingEvent_1ab9890dda85df1fe8a1a12f43e62e4b10" prot="public" virt="non-virtual"><scope>endstone::PlayerArmSwingEvent</scope><name>getItem</name></member>
       <member refid="classendstone_1_1PlayerEvent_1abad8f8bca3e2be851c4b37075adf2cbc" prot="public" virt="non-virtual"><scope>endstone::PlayerArmSwingEvent</scope><name>getPlayer</name></member>
       <member refid="classendstone_1_1Event_1ae89b54f63dc32b0c8797a59db69b6931" prot="public" virt="non-virtual"><scope>endstone::PlayerArmSwingEvent</scope><name>isAsynchronous</name></member>
+      <member refid="classendstone_1_1Cancellable_1a268b73cc5bda0fa5923336d031814faa" prot="public" virt="virtual"><scope>endstone::PlayerArmSwingEvent</scope><name>isCancelled</name></member>
       <member refid="classendstone_1_1PlayerArmSwingEvent_1ae372e830cd83417d237067dd8c7ea766" prot="private" virt="non-virtual"><scope>endstone::PlayerArmSwingEvent</scope><name>item_</name></member>
       <member refid="classendstone_1_1Event_1a44a4ff424a8b690c01a2afe10ae68d8f" prot="public" virt="non-virtual"><scope>endstone::PlayerArmSwingEvent</scope><name>operator=</name></member>
       <member refid="classendstone_1_1Event_1a1d7fc5400782d20be99a3636aa7f53b9" prot="public" virt="non-virtual"><scope>endstone::PlayerArmSwingEvent</scope><name>operator=</name></member>
       <member refid="classendstone_1_1PlayerEvent_1ae0f8240e8c7c3a66281295c43b1d522a" prot="protected" virt="non-virtual"><scope>endstone::PlayerArmSwingEvent</scope><name>player_</name></member>
       <member refid="classendstone_1_1PlayerArmSwingEvent_1a3cd746a0f01018d76a27245ff872f628" prot="public" virt="non-virtual"><scope>endstone::PlayerArmSwingEvent</scope><name>PlayerArmSwingEvent</name></member>
       <member refid="classendstone_1_1PlayerEvent_1afee42449de6752241c5472a38f7d94a9" prot="public" virt="non-virtual"><scope>endstone::PlayerArmSwingEvent</scope><name>PlayerEvent</name></member>
+      <member refid="classendstone_1_1Cancellable_1aa12df44bcb66924d06a689d0dd07865e" prot="public" virt="virtual"><scope>endstone::PlayerArmSwingEvent</scope><name>setCancelled</name></member>
       <member refid="classendstone_1_1Event_1a6aeaa8096baba90f8ace94106e0e05f3" prot="public" virt="virtual"><scope>endstone::PlayerArmSwingEvent</scope><name>~Event</name></member>
+      <member refid="classendstone_1_1ICancellable_1ab6d311fcaa18971f69a1b23f5a856301" prot="public" virt="virtual"><scope>endstone::PlayerArmSwingEvent</scope><name>~ICancellable</name></member>
       <member refid="classendstone_1_1PlayerEvent_1ab31b937251b8ccc1c72c275d1c7a522b" prot="public" virt="non-virtual"><scope>endstone::PlayerArmSwingEvent</scope><name>~PlayerEvent</name></member>
     </listofallmembers>
   </compounddef>

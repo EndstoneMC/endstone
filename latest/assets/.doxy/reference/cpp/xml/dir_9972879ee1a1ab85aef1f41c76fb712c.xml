@@ -3,6 +3,7 @@
   <compounddef id="dir_9972879ee1a1ab85aef1f41c76fb712c" kind="dir">
     <compoundname>include/endstone/event/level</compoundname>
     <innerfile refid="dimension__event_8h">dimension_event.h</innerfile>
+    <innerfile refid="dimension__load__event_8h">dimension_load_event.h</innerfile>
     <innerfile refid="level__event_8h">level_event.h</innerfile>
     <briefdescription>
     </briefdescription>

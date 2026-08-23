@@ -8,13 +8,13 @@
 
 
 
-_Called when a player swings their arm._ 
+_Called when a player swings their arm._ [More...](#detailed-description)
 
 * `#include <endstone/event/player/player_arm_swing_event.h>`
 
 
 
-Inherits the following classes: [endstone::PlayerEvent](classendstone_1_1PlayerEvent.md)
+Inherits the following classes: [endstone::Cancellable](classendstone_1_1Cancellable.md)
 
 
 
@@ -98,60 +98,27 @@ Inherits the following classes: [endstone::PlayerEvent](classendstone_1_1PlayerE
 |  [**const**](classendstone_1_1Identifier.md) std::optional&lt; [**ItemStack**](classendstone_1_1ItemStack.md) &gt; & | [**getItem**](#function-getitem) () const<br>_Gets the item the player was holding when they swung their arm._  |
 
 
-## Public Functions inherited from endstone::PlayerEvent
+## Public Functions inherited from endstone::Cancellable
 
-See [endstone::PlayerEvent](classendstone_1_1PlayerEvent.md)
-
-| Type | Name |
-| ---: | :--- |
-|   | [**PlayerEvent**](classendstone_1_1PlayerEvent.md#function-playerevent) ([**const**](classendstone_1_1Identifier.md) [**NotNull**](classendstone_1_1NotNull.md)&lt; [**Player**](classendstone_1_1Player.md) &gt; & player) <br> |
-|  [**const**](classendstone_1_1Identifier.md) [**NotNull**](classendstone_1_1NotNull.md)&lt; [**Player**](classendstone_1_1Player.md) &gt; & | [**getPlayer**](classendstone_1_1PlayerEvent.md#function-getplayer) () const<br>_Returns the player involved in this event._  |
-|   | [**~PlayerEvent**](classendstone_1_1PlayerEvent.md#function-playerevent) () override<br> |
-
-
-## Public Functions inherited from endstone::Event
-
-See [endstone::Event](classendstone_1_1Event.md)
+See [endstone::Cancellable](classendstone_1_1Cancellable.md)
 
 | Type | Name |
 | ---: | :--- |
-|   | [**Event**](classendstone_1_1Event.md#function-event-13) ([**bool**](classendstone_1_1Identifier.md) async=[**false**](classendstone_1_1Identifier.md)) <br> |
-|   | [**Event**](classendstone_1_1Event.md#function-event-23) ([**const**](classendstone_1_1Identifier.md) [**Event**](classendstone_1_1Event.md) &) = delete<br> |
-|   | [**Event**](classendstone_1_1Event.md#function-event-33) ([**Event**](classendstone_1_1Event.md) &&) = default<br> |
-| virtual std::string | [**getEventName**](classendstone_1_1Event.md#function-geteventname) () const = 0<br>_Gets a user-friendly identifier for this event._  |
-|  [**bool**](classendstone_1_1Identifier.md) | [**isAsynchronous**](classendstone_1_1Event.md#function-isasynchronous) () const<br>_Any custom event that should not by synchronized with other events must use the specific constructor._  |
-|  [**Event**](classendstone_1_1Event.md) & | [**operator=**](classendstone_1_1Event.md#function-operator) ([**const**](classendstone_1_1Identifier.md) [**Event**](classendstone_1_1Event.md) &) = delete<br> |
-|  [**Event**](classendstone_1_1Event.md) & | [**operator=**](classendstone_1_1Event.md#function-operator_1) ([**Event**](classendstone_1_1Event.md) &&) = default<br> |
-| virtual  | [**~Event**](classendstone_1_1Event.md#function-event) () = default<br> |
+| virtual [**void**](classendstone_1_1Identifier.md) | [**cancel**](classendstone_1_1Cancellable.md#function-cancel) () <br>_Cancel this event._  |
+| virtual [**bool**](classendstone_1_1Identifier.md) | [**isCancelled**](classendstone_1_1Cancellable.md#function-iscancelled) () override const<br>_Gets the cancellation state of this event._  |
+| virtual [**void**](classendstone_1_1Identifier.md) | [**setCancelled**](classendstone_1_1Cancellable.md#function-setcancelled) ([**bool**](classendstone_1_1Identifier.md) cancel) override<br>_Sets the cancellation state of this event._  |
 
 
+## Public Functions inherited from endstone::ICancellable
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-## Protected Attributes inherited from endstone::PlayerEvent
-
-See [endstone::PlayerEvent](classendstone_1_1PlayerEvent.md)
+See [endstone::ICancellable](classendstone_1_1ICancellable.md)
 
 | Type | Name |
 | ---: | :--- |
-|  [**NotNull**](classendstone_1_1NotNull.md)&lt; [**Player**](classendstone_1_1Player.md) &gt; | [**player\_**](classendstone_1_1PlayerEvent.md#variable-player_)  <br> |
+| virtual [**void**](classendstone_1_1Identifier.md) | [**cancel**](classendstone_1_1ICancellable.md#function-cancel) () = 0<br>_Cancels this event._  |
+| virtual [**bool**](classendstone_1_1Identifier.md) | [**isCancelled**](classendstone_1_1ICancellable.md#function-iscancelled) () const = 0<br>_Gets the cancellation state of this event._  |
+| virtual [**void**](classendstone_1_1Identifier.md) | [**setCancelled**](classendstone_1_1ICancellable.md#function-setcancelled) ([**bool**](classendstone_1_1Identifier.md) cancel) = 0<br>_Sets the cancellation state of this event._  |
+| virtual  | [**~ICancellable**](classendstone_1_1ICancellable.md#function-icancellable) () = default<br> |
 
 
 
@@ -210,6 +177,45 @@ See [endstone::PlayerEvent](classendstone_1_1PlayerEvent.md)
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+## Detailed Description
+
+
+Cancelling stops the server acting on the swing at all. The swing is neither recorded nor shown to the other players in the dimension.
+
+
+
+
+**Note:**
+
+The swinging player still sees their own arm move, because their client plays the animation without waiting for the server. The event covers swings the player starts. Swings the server drives itself, such as dropping an item, do not fire it. 
+
+
+
+
+
+    
 ## Public Functions Documentation
 
 

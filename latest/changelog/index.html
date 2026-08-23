@@ -5528,7 +5528,7 @@ and this project adheres to <a href="https://semver.org/spec/v2.0.0.html">Semant
 <ul>
 <li><code>PlayerLevelChangeEvent</code> (<code>old_level</code>, <code>new_level</code>), <code>PlayerExpChangeEvent</code> (<code>amount</code> gained) and <code>PlayerPickupExperienceEvent</code> (<code>amount</code> the orb is worth).</li>
 <li><code>PlayerPickupArrowEvent</code> for picking up an arrow or thrown trident.</li>
-<li><code>PlayerArmSwingEvent</code> and <code>PlayerRiptideEvent</code>, both reporting the <code>item</code> in hand.</li>
+<li><code>PlayerArmSwingEvent</code> and <code>PlayerRiptideEvent</code>, both reporting the <code>item</code> in hand. Cancelling an arm swing stops the server acting on it at all, so it is neither recorded nor shown to the other players. The swinging player still sees their own arm move, because their client plays the animation without waiting for the server.</li>
 <li><code>PlayerInputEvent</code> for movement input changes, carrying the new <code>Input</code> type (<code>is_forward</code>, <code>is_backward</code>, <code>is_left</code>, <code>is_right</code>, <code>is_jump</code>, <code>is_sneak</code>, <code>is_sprint</code>).</li>
 <li><code>PlayerArmorStandManipulateEvent</code>, reporting <code>armor_stand_item</code>, <code>player_item</code> and <code>slot</code>.</li>
 <li><code>PlayerBucketActorEvent</code> and <code>PlayerShearActorEvent</code>, reporting the <code>actor</code>, the <code>original_bucket</code> or <code>item</code> used and the <code>hand</code>.</li>
@@ -5546,6 +5546,7 @@ and this project adheres to <a href="https://semver.org/spec/v2.0.0.html">Semant
 <li><code>PlayerRespawnEvent.respawn_reason</code> (<code>RespawnReason.DEATH</code> / <code>RespawnReason.END_PORTAL</code>).</li>
 <li><code>ActorExplodeEvent::setBlockList()</code> and <code>BlockExplodeEvent::setBlockList()</code>, with the <code>BlockList</code> alias made public.</li>
 <li><code>InventoryEvent</code>, a base class for inventory-related events, reporting the primary <code>inventory</code> involved, and the cancellable <code>InventoryInteractEvent</code> under it, which adds the <code>who_clicked</code> player.</li>
+<li><code>DimensionLoadEvent</code> for a dimension being loaded.</li>
 <li>Support for custom Python events with optional cancellation.</li>
 </ul>
 <h4 id="actors-and-players">Actors and players<a class="headerlink" href="#actors-and-players" title="Permanent link">&para;</a></h4>

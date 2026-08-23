@@ -161,6 +161,8 @@
 ([**endstone**](namespaceendstone.md))
 * [**DimensionEvent**](classendstone_1_1DimensionEvent.md)
 ([**endstone**](namespaceendstone.md))
+* [**DimensionLoadEvent**](classendstone_1_1DimensionLoadEvent.md)
+([**endstone**](namespaceendstone.md))
 * [**Divider**](classendstone_1_1Divider.md)
 ([**endstone**](namespaceendstone.md))
 * [**DrilldownPie**](classendstone_1_1DrilldownPie.md)

@@ -982,8 +982,14 @@
         <link refid="dimension__event_8h_source"/>
         <childnode refid="6" relation="include">
         </childnode>
+        <childnode refid="9" relation="include">
+        </childnode>
       </node>
-      <node id="10">
+      <node id="9">
+        <label>include/endstone/event/level/dimension_load_event.h</label>
+        <link refid="dimension__load__event_8h_source"/>
+      </node>
+      <node id="11">
         <label>include/endstone/event/level/level_event.h</label>
         <link refid="level__event_8h_source"/>
         <childnode refid="5" relation="include">
@@ -993,20 +999,20 @@
         <label>include/endstone/event/player/player_pickup_item_event.h</label>
         <link refid="player__pickup__item__event_8h_source"/>
       </node>
-      <node id="12">
+      <node id="13">
         <label>include/endstone/event/weather/thunder_change_event.h</label>
         <link refid="thunder__change__event_8h_source"/>
       </node>
-      <node id="13">
+      <node id="14">
         <label>include/endstone/event/weather/weather_change_event.h</label>
         <link refid="weather__change__event_8h_source"/>
       </node>
-      <node id="11">
+      <node id="12">
         <label>include/endstone/event/weather/weather_event.h</label>
         <link refid="weather__event_8h_source"/>
-        <childnode refid="12" relation="include">
-        </childnode>
         <childnode refid="13" relation="include">
+        </childnode>
+        <childnode refid="14" relation="include">
         </childnode>
       </node>
       <node id="4">
@@ -1014,15 +1020,15 @@
         <link refid="dimension_8h_source"/>
         <childnode refid="5" relation="include">
         </childnode>
-        <childnode refid="9" relation="include">
-        </childnode>
-      </node>
-      <node id="9">
-        <label>include/endstone/level/level.h</label>
-        <link refid="level_8h_source"/>
         <childnode refid="10" relation="include">
         </childnode>
+      </node>
+      <node id="10">
+        <label>include/endstone/level/level.h</label>
+        <link refid="level_8h_source"/>
         <childnode refid="11" relation="include">
+        </childnode>
+        <childnode refid="12" relation="include">
         </childnode>
       </node>
     </invincdepgraph>
