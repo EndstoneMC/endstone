@@ -1488,11 +1488,13 @@ class EnchantItemEvent(PlayerEvent, Cancellable):
         """
         The enchanting table involved in this event.
         """
+
     @property
     def item(self) -> ItemStack:
         """
         The item that will be enchanted.
         """
+
     @item.setter
     def item(self, arg1: ItemStack) -> None: ...
     @property
@@ -1500,6 +1502,7 @@ class EnchantItemEvent(PlayerEvent, Cancellable):
         """
         The minimum player level required by the selected option.
         """
+
     @exp_level_cost.setter
     def exp_level_cost(self, arg1: int) -> None: ...
     @property
@@ -1507,6 +1510,7 @@ class EnchantItemEvent(PlayerEvent, Cancellable):
         """
         A copy of the enchantments and levels that will be applied; assign it back after changes.
         """
+
     @enchants_to_add.setter
     def enchants_to_add(self, arg1: collections.abc.Mapping[Enchantment, int]) -> None: ...
     @property
@@ -1514,11 +1518,13 @@ class EnchantItemEvent(PlayerEvent, Cancellable):
         """
         The enchantment shown as the hint, or `None` if unavailable.
         """
+
     @property
     def level_hint(self) -> int:
         """
         The level shown for the enchantment hint.
         """
+
     @property
     def which_button(self) -> int:
         """
