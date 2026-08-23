@@ -130,6 +130,27 @@ void init_event(py::module_ &m, py::class_<Event, PyEvent> &event)
 
     Note: the getter returns a copy; changes must be applied via the setter.
 )doc");
+    py::class_<ActorKnockbackPrepareEvent, ActorEvent<Mob>, ICancellable>(m, "ActorKnockbackPrepareEvent", R"doc(
+    Called before Bedrock calculates the knockback received by a mob.
+
+    The damage, horizontal direction and every native `KnockbackParameters` value may be changed before
+    they are passed to Bedrock. Cancelling the event prevents the knockback calculation entirely. Bedrock
+    may perform an additional calculation when applying extra knockback, in which case this event is called
+    for each calculation.
+)doc")
+        .def_property_readonly("source", &ActorKnockbackPrepareEvent::getSource,
+                               "The source actor that caused the knockback, or `None` if one does not exist.")
+        .def_property("damage", &ActorKnockbackPrepareEvent::getDamage, &ActorKnockbackPrepareEvent::setDamage,
+                      "The damage used when scaling the knockback power.")
+        .def_property("direction", &ActorKnockbackPrepareEvent::getDirection, &ActorKnockbackPrepareEvent::setDirection,
+                      R"doc(
+    The horizontal direction of the knockback.
+
+    The Y component is ignored by Bedrock. The getter returns a copy; changes must be applied via the setter.
+)doc")
+        .def_property_readonly("parameters", py::overload_cast<>(&ActorKnockbackPrepareEvent::getParameters),
+                               py::return_value_policy::reference_internal,
+                               "The parameters used to calculate the knockback. Changes are passed to Bedrock.");
     py::class_<ActorPickupItemEvent, ActorEvent<Actor>, ICancellable>(m, "ActorPickupItemEvent", R"doc(
     Called when an `Actor` picks an item up from the ground.
 

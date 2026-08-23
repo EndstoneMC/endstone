@@ -73,6 +73,10 @@ public:
         mutable_attr->setMaxValue(static_cast<float>(health));
     }
 
+    [[nodiscard]] int getNoDamageTicks() const override { return Base::getHandle().invulnerable_time; }
+
+    void setNoDamageTicks(int ticks) override { Base::getHandle().invulnerable_time = ticks; }
+
     [[nodiscard]] bool hasAttribute(AttributeId id) const override
     {
         return Base::getHandle().getAttribute({id}) != nullptr;

@@ -7,6 +7,7 @@ from endstone.event import (
     ActorEffectEvent,
     ActorExplodeEvent,
     ActorKnockbackEvent,
+    ActorKnockbackPrepareEvent,
     ActorPickupItemEvent,
     ActorRemoveEvent,
     ActorSpawnEvent,
@@ -109,6 +110,28 @@ class ActorEventListener(EventListener):
             f"{event.actor.name} ({event.actor.type}) is knocked by {event.knockback}",
             actor_type=str(event.actor.type),
             knockback=(event.knockback.x, event.knockback.y, event.knockback.z),
+            has_source=event.source is not None,
+        )
+
+    @event_handler
+    def on_actor_knockback_prepare(self, event: ActorKnockbackPrepareEvent):
+        parameters = event.parameters
+        self.record(
+            event,
+            f"{event.actor.name} ({event.actor.type}) prepares knockback",
+            actor_type=str(event.actor.type),
+            damage=event.damage,
+            direction=(event.direction.x, event.direction.y, event.direction.z),
+            horizontal_power=parameters.horizontal_power,
+            vertical_power=parameters.vertical_power,
+            vertical_velocity_cap=parameters.vertical_velocity_cap,
+            slowdown_scale=parameters.slowdown_scale,
+            scale_with_damage=parameters.scale_with_damage,
+            slow_down_attacker=parameters.slow_down_attacker,
+            check_legacy_knockback=parameters.check_legacy_knockback,
+            extra_knockback_power=parameters.extra_knockback_power,
+            extra_knockback_approach=parameters.extra_knockback_approach.name,
+            no_damage_ticks=event.actor.no_damage_ticks,
             has_source=event.source is not None,
         )
 

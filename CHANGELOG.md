@@ -11,6 +11,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 #### Events
 
+- `ActorKnockbackPrepareEvent` for changing Bedrock's knockback direction, damage, horizontal and vertical power,
+  velocity retention, vertical velocity cap, damage scaling and extra knockback before each calculation.
 - `PlayerLevelChangeEvent` (`old_level`, `new_level`), `PlayerExpChangeEvent` (`amount` gained) and `PlayerPickupExperienceEvent` (`amount` the orb is worth).
 - `PlayerPickupArrowEvent` for picking up an arrow or thrown trident.
 - `PlayerArmSwingEvent` and `PlayerRiptideEvent`, both reporting the `item` in hand. Cancelling an arm swing stops the server acting on it at all, so it is neither recorded nor shown to the other players. The swinging player still sees their own arm move, because their client plays the animation without waiting for the server.
@@ -36,6 +38,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 #### Actors and players
 
+- `Mob.no_damage_ticks` for reading and changing the remaining damage-immunity ticks, including custom hit delays.
 - Attribute API: `Mob.get_attribute()`, `Mob.has_attribute()` and `Mob.attributes`. Each `AttributeInstance` reports its current, base, minimum and maximum value and takes `AttributeModifier`s at runtime.
 - Effect API: `Mob.add_effect()`, `Mob.remove_effect()`, `Mob.has_effect()`, `Mob.get_effect()` and `Mob.active_effects`, with the new `Effect` type carrying effect type, duration, amplifier and the ambient/particles/icon flags.
 - `Mob.is_swimming` and `Player.is_crawling`.
