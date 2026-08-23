@@ -55,7 +55,7 @@ static constexpr std::array<std::pair<std::string_view, std::size_t>, 80> symbol
     // CraftHandlerCrafting
     {"?_handleCraftAction@CraftHandlerCrafting@@MEAA?AW4ItemStackNetResult@@AEBVItemStackRequestActionCraftBase@@@Z", 150353088},
     // CraftHandlerEnchant
-    {"?_handleCraftAction@CraftHandlerEnchant@@UEAA?AW4ItemStackNetResult@@AEBVItemStackRequestActionCraftBase@@@Z", 150363184},
+    {"?_handleCraftAction@CraftHandlerEnchant@@MEAA?AW4ItemStackNetResult@@AEBVItemStackRequestActionCraftBase@@@Z", 150363184},
     // CraftingDataPacketPayload
     {"?fromRecipes@CraftingDataPacketPayload@@SA?AU1@AEBVRecipes@@_N@Z", 39627104},
     // DedicatedServer
