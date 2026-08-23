@@ -1,6 +1,7 @@
 import errno
 import fnmatch
 import hashlib
+import json
 import logging
 import os
 import platform
@@ -27,6 +28,9 @@ _SERVER_PROPERTY_OVERRIDES = {
     "server-name": "Endstone Server",
     "client-side-chunk-generation-enabled": False,
 }
+
+# NetworkStackLatencyPacket, left unbounded by the shipped packetlimitconfig.json.
+_PING_PACKET_ID = 115
 
 
 class Bootstrap:
@@ -233,6 +237,46 @@ class Bootstrap:
             migrate_config(default_config, config)
             with open(self.config_path, "w", encoding="utf-8") as f:
                 tomlkit.dump(config, f)
+
+        self._update_packet_limit_config()
+
+    def _update_packet_limit_config(self) -> None:
+        path = self.server_path / "packetlimitconfig.json"
+
+        config: dict = {}
+        if path.exists():
+            try:
+                with path.open("r", encoding="utf-8") as f:
+                    config = json.load(f)
+            except (OSError, ValueError):
+                return
+
+        if not isinstance(config, dict):
+            return
+
+        groups = config.setdefault("limitGroups", [])
+        if not isinstance(groups, list):
+            return
+
+        for group in groups:
+            ids = group.get("minecraftPacketIds") if isinstance(group, dict) else None
+            if isinstance(ids, list) and _PING_PACKET_ID in ids:
+                return
+
+        groups.append(
+            {
+                "minecraftPacketIds": [_PING_PACKET_ID],
+                "algorithm": {
+                    "name": "BucketPacketLimitAlgorithm",
+                    "params": {"drainRatePerSec": 5, "maxBucketSize": 20},
+                },
+            }
+        )
+
+        with path.open("w", encoding="utf-8") as f:
+            json.dump(config, f, indent=2)
+
+        self._logger.info(f"Added a rate limit for packet {_PING_PACKET_ID} to packetlimitconfig.json.")
 
     def _install(self) -> None:
         """

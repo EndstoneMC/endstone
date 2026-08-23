@@ -26,6 +26,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 - Fixed items vanishing when `PlayerDropItemEvent` is cancelled for a drop from the main hand. The item is now restored to the player's inventory.
 
+### Security
+
+- Rate-limited the network ping packet (`NetworkStackLatencyPacket`, id 115). Bedrock accepts it from a connection that has not logged in yet, and the shipped `packetlimitconfig.json` left it unbounded, so a single connection could flood it to exhaust the server. On startup Endstone now adds a limit for it to `packetlimitconfig.json` when one is not already present, leaving any entry you have set yourself untouched.
+
 ## [0.11.9] - 2026-08-17
 
 ### Added
