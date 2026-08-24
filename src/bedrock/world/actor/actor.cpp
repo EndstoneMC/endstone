@@ -64,7 +64,7 @@ bool Actor::isType(ActorType type) const
 
 bool Actor::hasType(ActorType types) const
 {
-    if (static_cast<std::underlying_type_t<ActorType>>(types)) {
+    if (static_cast<std::underlying_type_t<ActorType>>(types & ActorType::TypeMask)) {
         return types == getEntityTypeId();
     }
     return (types & getEntityTypeId()) == types;

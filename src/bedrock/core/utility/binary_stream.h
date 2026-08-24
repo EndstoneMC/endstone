@@ -14,6 +14,8 @@
 
 #pragma once
 
+#include <functional>
+
 #include "bedrock/core/utility/buffer_span.h"
 #include "bedrock/core/utility/serialize_simple_types.h"
 #include "bedrock/platform/brstd/function_ref.h"

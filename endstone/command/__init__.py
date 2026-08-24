@@ -11,6 +11,7 @@ __getattr__, __dir__, __all__ = lazy.attach(
             "CommandSender",
             "CommandSenderWrapper",
             "ConsoleCommandSender",
+            "ProxiedCommandSender",
         ],
     },
 )

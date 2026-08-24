@@ -18,6 +18,7 @@ __all__ = [
     "CommandSender",
     "CommandSenderWrapper",
     "ConsoleCommandSender",
+    "ProxiedCommandSender",
 ]
 
 class CommandSender(Permissible):
@@ -77,6 +78,24 @@ class ConsoleCommandSender(CommandSender):
     """
     Represents a console command sender.
     """
+
+class ProxiedCommandSender(CommandSender):
+    """
+    Represents a command sender that is running a command on behalf of another one, as `/execute` does.
+
+    Output and permissions belong to the caller, while the name and the execution context belong to the callee.
+    """
+    @property
+    def caller(self) -> CommandSender:
+        """
+        The `CommandSender` which triggered this proxied command.
+        """
+
+    @property
+    def callee(self) -> CommandSender:
+        """
+        The `CommandSender` which is being used to call the command.
+        """
 
 class Command:
     """

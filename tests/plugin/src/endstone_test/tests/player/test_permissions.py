@@ -47,3 +47,30 @@ def test_explicit_deny_op(permissible: Player, plugin: Plugin):
     )
     permissible.remove_attachment(attachment)
     assert permissible.has_permission("minecraft.command.kick")
+
+
+def test_remove_attachment_while_walking_effective_permissions(permissible: Player, plugin: Plugin):
+    """Reproduces #421: removing an attachment mid-walk used to free every PermissionAttachmentInfo
+    the loop was still holding."""
+    attachment = permissible.add_attachment(plugin, "endstone_test.granted", True)
+    assert permissible.has_permission("endstone_test.granted")
+
+    snapshot = permissible.effective_permissions
+    removed = False
+    for info in snapshot:
+        att = info.attachment
+        if att is not None and att.permissions.get("endstone_test.granted"):
+            permissible.remove_attachment(att)
+            removed = True
+
+    assert removed, "the attachment should have been reachable through effective_permissions"
+
+    for info in snapshot:
+        assert isinstance(info.permission, str)
+        att = info.attachment
+        if att is not None:
+            assert isinstance(att.permissions, dict)
+
+    assert not permissible.has_permission("endstone_test.granted")
+    assert attachment.permissions == {"endstone_test.granted": True}
+    assert attachment.remove() is False

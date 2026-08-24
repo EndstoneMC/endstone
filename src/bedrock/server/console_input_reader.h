@@ -17,6 +17,7 @@
 #include <atomic>
 #include <string>
 
+#include "bedrock/bedrock.h"
 #include "bedrock/core/threading/spsc_queue.h"
 #include "bedrock/platform/threading/thread.h"
 
@@ -24,7 +25,7 @@ class ConsoleInputReader {
 public:
     ConsoleInputReader();
     ~ConsoleInputReader();
-    void startEndstone();  // Endstone
+    ENDSTONE_HOOK static void *run(void *);  // Endstone
 
 private:
     SPSCQueue<std::string> console_input_;

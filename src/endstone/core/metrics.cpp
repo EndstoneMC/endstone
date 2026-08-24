@@ -14,25 +14,41 @@
 
 #include "endstone/core/metrics.h"
 
+#include <memory>
+#include <stdexcept>
+#include <string>
+
 #include <pybind11/embed.h>
+
+#include "endstone/metrics/custom_chart.h"
 
 namespace py = pybind11;
 
 namespace endstone::core {
-EndstoneMetrics::EndstoneMetrics(Server &server) : server_(server)
+
+Metrics::~Metrics()
 {
+    Metrics::shutdown();
+}
+
+void Metrics::addCustomChart(std::unique_ptr<CustomChart> chart)
+{
+    if (!chart) {
+        throw std::invalid_argument("chart cannot be null");
+    }
+    if (!obj_) {
+        return;
+    }
+    py::gil_scoped_acquire gil{};
     try {
-        py::gil_scoped_acquire gil{};
-        const auto module = py::module_::import("endstone._metrics");
-        const auto cls = module.attr("EndstoneMetrics");
-        obj_ = cls(std::ref(server));
+        obj_.attr("add_custom_chart")(py::cast(chart.release(), py::return_value_policy::take_ownership));
     }
     catch (std::exception &e) {
-        server_.getLogger().warning("Unable to start metrics: {}", e.what());
+        throw std::runtime_error(std::string("Unable to add metrics chart: ") + e.what());
     }
 }
 
-EndstoneMetrics::~EndstoneMetrics()
+void Metrics::shutdown() noexcept
 {
     if (!obj_) {
         return;
@@ -42,9 +58,9 @@ EndstoneMetrics::~EndstoneMetrics()
         auto shutdown = obj_.attr("shutdown");
         (void)shutdown();
     }
-    catch (std::exception &e) {
-        server_.getLogger().warning("Unable to shutdown metrics: {}", e.what());
+    catch (std::exception &) {
     }
     obj_ = py::object();
 }
+
 }  // namespace endstone::core

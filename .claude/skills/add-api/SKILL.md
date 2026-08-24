@@ -32,7 +32,9 @@ bedrock accessor needs no public API).
      Identifier<Biome>;`. Look-ups are by string id; the public surface is
      `id`, `translation_key`, static `get(name)`, plus `==`/`!=`/`hash`/`str`.
    - Doc conventions live in the **`cpp-docs`** skill (no `@brief`, etc.).
-   - Verify Bukkit-derived wording/behaviour against **Paper Javadocs**, not memory.
+   - Verify Bukkit-derived wording/behaviour against the **Paper Javadocs**, not
+     memory: <https://jd.papermc.io/paper/26.2/>. The version is part of the URL —
+     an older one serves stale wording.
 
 2. **Bedrock layer** — `src/bedrock/...`
    Type-/ABI-compatible reconstructions of BDS. Expose whatever the core needs
@@ -200,37 +202,48 @@ Name clashes (`endstone::X` vs bedrock `::X`):
 Tooling note: there is **no `python` on PATH** — use the project venv
 (`.venv/Scripts/python.exe`) or `uv run --no-project python`. On Windows the C++
 build needs a VS Developer environment: `VsDevCmd.bat -arch=amd64` then
-`build/Release/generators/conanbuild.bat` (clang-cl + lld-link).
+`build/RelWithDebInfo/generators/conanbuild.bat` (clang-cl + lld-link).
 
-6. **Build + install the wheel** (compiles the C++ extension into `.venv`):
+6. **Build.** The local dev tree is the one you drive by hand; it relinks
+   `_python`, which is what regenerates the stubs (step 7):
    ```shell
-   rm -rf build/package/*.dist-info        # clear stale dist-info to avoid a version mismatch
-   uv pip install -U . -C build-dir=./build
+   cmake --build --preset conan-relwithdebinfo
    ```
-   `build-dir=./build` keeps a persistent build tree (much faster on reruns).
-   See `bump-bds` for the wider build/toolchain context. **Never use an editable
-   install** (a stale in-tree `endstone/_python.pyd` will shadow site-packages).
+   To `import endstone` or run `pytest`, install the wheel into `.venv` as well:
+   ```shell
+   rm -rf ./build/package/endstone-*.dist-info   # stale dist-info => version mismatch
+   uv pip install -U .
+   ```
+   Do **not** add `-C build-dir=./build`: `[tool.uv] config-settings` in
+   `pyproject.toml` already supplies it, and passing it twice reaches
+   `conan-py-build` as a list (`TypeError: argument should be a str or an
+   os.PathLike object ... not 'list'`). See `bump-bds` for the wider
+   build/toolchain context. **Never use an editable install** (a stale in-tree
+   `endstone/_python.pyd` will shadow site-packages).
    - To verify one reconstruction TU in isolation (e.g. when unrelated files are
      mid-refactor), build just its object with the real flags:
-     `ninja -C build/Release src/bedrock/CMakeFiles/bedrock.dir/<path>.cpp.obj`.
+     `ninja -C build/RelWithDebInfo src/bedrock/CMakeFiles/bedrock.dir/<path>.cpp.obj`.
      This also confirms your `static_assert` sizes/offsets without a full link.
 
-7. **Regenerate Python stubs** (`.pyi`). The module must be importable, so the
-   wheel from step 6 must be installed first. Stubs only change when the
-   *public/Python* surface changes — bedrock-internal reconstruction edits don't
-   need a regen.
-   - `uv run scripts/stubgen.py` **does not work standalone** — the PEP 723
-     inline-script env doesn't include `endstone`, so griffe raises
-     `ModuleNotFoundError: endstone`.
-   - Working invocation: install the stubgen deps into the same `.venv` that has
-     the freshly built `endstone`, then run with that interpreter:
-     ```shell
-     uv pip install "endstone-stubgen @ git+https://github.com/EndstoneMC/stubgen" ruff
-     python scripts/stubgen.py          # .venv python; or: uv run --no-project python scripts/stubgen.py
-     ```
-   - Regen rewrites `endstone/**/__init__.pyi`. Confirm `git diff` shows only
-     your additions (ruff may report reformatting more files than git shows
-     changed — that's fine).
+7. **Python stubs regenerate themselves — there is nothing to run by hand.**
+   `ENDSTONE_GENERATE_STUBS` (ON by default) hangs an `endstone_stubs` target off
+   `_python`, so every build that relinks the extension rewrites
+   `endstone/**/__init__.pyi` *and* the `lazy.attach` re-export lists in
+   `endstone/**/__init__.py`. They can never go stale, and a generation failure
+   fails the build.
+   - **Never invoke `scripts/stubgen.py` yourself.** It is the CMake driver and
+     requires `--extension` (plus `--engine`, `--pattern-file`, `--source-dir`,
+     `--work-dir`); CMake supplies them from the built extension.
+   - Generation writes into the source tree, so two build dirs configured against
+     one checkout would race. Drive one, or pass
+     `-DENDSTONE_GENERATE_STUBS=OFF` in the others.
+   - Confirm `git diff` shows only your additions. On Windows ruff rewrites every
+     `__init__.pyi` with CRLF, so `git status` can list ~23 files while
+     `git diff --stat` (line-ending-normalized) shows only the real change.
+   - Stub pieces with no pybind11 counterpart (the generic `Registry`,
+     `Server.get_registry`, the `_T` typevar) live in
+     `src/endstone/python/stubgen.pat`. If a rename stops a pattern matching, the
+     build fails and names the pattern.
 
 8. **CHANGELOG** — add a human-readable entry under `## [Unreleased]` in the
    right group (`Added` / `Changed` / `Deprecated` / `Removed` / `Fixed` /

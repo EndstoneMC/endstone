@@ -88,6 +88,7 @@ add_library(bedrock STATIC
         world/attribute/mutable_attribute_with_context.cpp
         world/attribute/attribute_modifier.cpp
         world/effect/mob_effect.cpp
+        world/inventory/network/crafting/craft_handler_base.cpp
         world/inventory/network/item_stack_net_id_variant.cpp
         world/inventory/transaction/inventory_source.cpp
         world/item/item.cpp
@@ -123,10 +124,10 @@ add_library(bedrock STATIC
         world/level/block/resource_drops_context.cpp
         world/level/block/vanilla_block_type_ids.cpp
         world/level/block/actor/beehive_block_actor.cpp
+        world/level/block/actor/block_actor.cpp
         world/level/block/actor/furnace_block_actor.cpp
         world/level/block/actor/item_frame_block_actor.cpp
         world/level/block/actor/sign_block_actor.cpp
-        world/level/block/actor/vanilla_block_actor_factory.cpp
         world/level/block/registry/block_type_registry.cpp
         world/level/block/states/block_state.cpp
         world/level/block/states/vanilla_block_states.cpp
@@ -136,6 +137,7 @@ add_library(bedrock STATIC
         world/level/saveddata/maps/map_decoration.cpp
         world/level/saveddata/maps/map_item_tracked_actor.cpp
         world/level/saveddata/map_item_saved_data.cpp
+        world/level/ticking/ticking_areas_manager.cpp
         world/scores/objective.cpp
         world/scores/scoreboard.cpp
         world/scores/scoreboard_id.cpp

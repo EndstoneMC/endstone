@@ -15,20 +15,29 @@
 #pragma once
 
 #include "bedrock/world/level/chunk/level_chunk.h"
+#include "bedrock/world/level/dimension/dimension.h"
 #include "endstone/level/chunk.h"
 
 namespace endstone::core {
 
 class EndstoneChunk : public Chunk {
 public:
+    EndstoneChunk(WeakRef<::Dimension> dimension, int x, int z);
     explicit EndstoneChunk(const LevelChunk &chunk);
     [[nodiscard]] int getX() const override;
     [[nodiscard]] int getZ() const override;
     [[nodiscard]] Level &getLevel() const override;
     [[nodiscard]] NotNull<Dimension> getDimension() const override;
+    [[nodiscard]] bool isLoaded() const override;
+    bool load() override;
+    bool load(bool generate) override;
+    bool unload() override;
+    bool addPluginChunkTicket(Plugin &plugin) override;
+    bool removePluginChunkTicket(Plugin &plugin) override;
+    [[nodiscard]] std::vector<Plugin *> getPluginChunkTickets() const override;
 
 private:
-    ::Dimension &dimension_;
+    WeakRef<::Dimension> dimension_;
     int x_;
     int z_;
 };

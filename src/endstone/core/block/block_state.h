@@ -59,12 +59,12 @@ public:
         }
     }
 
-    [[nodiscard]] const std::type_info &getClassTypeId() const override
+    [[nodiscard]] ClassInfo getClassInfo() const override
     {
         return typeid(Interface);
     }
 
-    [[nodiscard]] bool isInstanceOf(const std::type_info &target) const override
+    [[nodiscard]] bool isInstanceOf(ClassInfo target) const override
     {
         return core::isInstanceOf(*this, target);
     }
@@ -121,18 +121,18 @@ public:
 
     [[nodiscard]] bool isSnapshot() const
     {
-        return EndstoneBlockActorState::isSnapshot();
+        return snapshot_ != nullptr;
     }
 
     [[nodiscard]] bool serialize(::CompoundTag &tag) const override
     {
-        const auto *block_actor = EndstoneBlockActorState::getBlockActor();
-        return block_actor != nullptr && serializeBlockActor(*block_actor, tag);
+        const auto *block_actor = tryGetBlockActor();
+        return block_actor != nullptr && block_actor->save(tag, SaveContext::forNetwork());
     }
 
     [[nodiscard]] bool serializeForUpdate(::CompoundTag &tag) const override
     {
-        const auto *block_actor = EndstoneBlockActorState::getBlockActor();
+        const auto *block_actor = tryGetBlockActor();
         return block_actor != nullptr && block_actor->save(tag, SaveContext::forClone());
     }
 
@@ -154,9 +154,7 @@ public:
         }
         block->setData(*getData(), apply_physics);
 
-        const auto *state_actor = EndstoneBlockActorState::getBlockActor();
-        auto *block_actor = getBlockSource().getBlockEntity(block_pos_);
-        if (state_actor != nullptr && block_actor != nullptr && block_actor->getType() == state_actor->getType()) {
+        if (auto *block_actor = tryGetLiveBlockActor(); block_actor != nullptr) {
             applyTo(getBlockSource().getILevel(), *block_actor);
         }
         return true;
@@ -168,24 +166,29 @@ protected:
         return dimension_->getHandle().getBlockSourceFromMainChunkSource();
     }
 
+    [[nodiscard]] ::BlockActor *tryGetLiveBlockActor() const
+    {
+        auto *block_actor = getBlockSource().getBlockEntity(block_pos_);
+        if (block_actor == nullptr || !block_actor_type_.has_value() ||
+            block_actor->getType() != block_actor_type_.value()) {
+            return nullptr;
+        }
+        return block_actor;
+    }
+
+    [[nodiscard]] ::BlockActor *tryGetBlockActor() const
+    {
+        return snapshot_ != nullptr ? snapshot_.get() : tryGetLiveBlockActor();
+    }
+
     template <typename T>
     [[nodiscard]] T &getBlockActor() const
     {
-        if (isSnapshot()) {
-            auto *block_actor = EndstoneBlockActorState::getBlockActor();
-            if (block_actor == nullptr || !block_actor_type_.has_value() ||
-                block_actor->getType() != block_actor_type_.value()) {
-                throw std::runtime_error("Trying to access a block state that is no longer valid.");
-            }
-            return static_cast<T &>(*block_actor);
-        }
-
-        auto *block_entity = getBlockSource().getBlockEntity(block_pos_);
-        if (block_entity == nullptr || !block_actor_type_.has_value() ||
-            block_entity->getType() != block_actor_type_.value()) {
+        auto *block_actor = tryGetBlockActor();
+        if (block_actor == nullptr) {
             throw std::runtime_error("Trying to access a block state that is no longer valid.");
         }
-        return static_cast<T &>(*block_entity);
+        return static_cast<T &>(*block_actor);
     }
 
     NotNull<EndstoneDimension> dimension_;

@@ -55,6 +55,18 @@ const std::string &SynchedActorData::getString(ID id) const
     return static_cast<DataItem2<std::string> *>(item)->data;
 }
 
+BlockPos SynchedActorData::getPosition(ID id) const
+{
+    if (!hasData(id)) {
+        return BlockPos::ZERO;
+    }
+    auto *item = _find(id);
+    if (item->getType() != DataItemType::Pos) {
+        return BlockPos::ZERO;
+    }
+    return static_cast<DataItem2<BlockPos> *>(item)->data;
+}
+
 bool SynchedActorData::hasData(ID id) const
 {
     return id < items_array_.size() && items_array_[id];
@@ -83,6 +95,11 @@ SynchedActorData::TypeInt64 SynchedActorDataEntityWrapper::getInt64(SynchedActor
 const std::string &SynchedActorDataEntityWrapper::getString(SynchedActorData::ID id) const
 {
     return data_->data.getString(id);
+}
+
+BlockPos SynchedActorDataEntityWrapper::getPosition(SynchedActorData::ID id) const
+{
+    return data_->data.getPosition(id);
 }
 
 bool SynchedActorDataEntityWrapper::hasData(SynchedActorData::ID id) const

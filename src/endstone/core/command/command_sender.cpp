@@ -20,6 +20,7 @@
 #include "command_origin_wrapper.h"
 #include "endstone/core/command/block_command_sender.h"
 #include "endstone/core/command/console_command_sender.h"
+#include "endstone/core/command/proxied_command_sender.h"
 #include "endstone/core/player.h"
 #include "endstone/core/server.h"
 
@@ -36,6 +37,10 @@ endstone::NotNull<endstone::CommandSender> CommandOrigin::getEndstoneSender(Comm
     }
     case CommandOriginType::CommandBlock: {
         return std::make_shared<endstone::core::EndstoneBlockCommandSender>(*this, output);
+    }
+    case CommandOriginType::Virtual: {
+        return std::make_shared<endstone::core::EndstoneProxiedCommandSender>(
+            static_cast<const VirtualCommandOrigin &>(*this), output);
     }
     case CommandOriginType::MinecartCommandBlock:
         // TODO(permission): add CommandMinecart

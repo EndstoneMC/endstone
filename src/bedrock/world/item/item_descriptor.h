@@ -64,6 +64,8 @@ public:
         Deferred = 4,
         ComplexAlias = 5,
     };
+    // Endstone: BDS keeps the type on the private BaseDescriptor; hoisted so the recipe API can read it.
+    [[nodiscard]] InternalType getType() const;
 
     class BaseDescriptor {
     public:

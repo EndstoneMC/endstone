@@ -24,6 +24,8 @@ class ItemStackRequestActionCraftBase : public ItemStackRequestAction {
 public:
     [[nodiscard]] std::uint8_t getNumCrafts() const { return num_crafts_; }
 
+    void setNumCrafts(std::uint8_t num_crafts) { num_crafts_ = num_crafts; }  // Endstone
+
 protected:
     std::uint8_t num_crafts_;
 };

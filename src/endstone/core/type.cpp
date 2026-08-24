@@ -14,7 +14,6 @@
 
 #include "endstone/core/type.h"
 
-#include <typeindex>
 #include <unordered_map>
 
 #include <entt/meta/factory.hpp>
@@ -35,25 +34,39 @@
 #include "endstone/command/block_command_sender.h"
 #include "endstone/command/command_sender.h"
 #include "endstone/command/console_command_sender.h"
+#include "endstone/command/proxied_command_sender.h"
+#include "endstone/inventory/complex_alias_ingredient.h"
+#include "endstone/inventory/complex_recipe.h"
+#include "endstone/inventory/exact_ingredient.h"
+#include "endstone/inventory/item_tag_ingredient.h"
+#include "endstone/inventory/item_type_ingredient.h"
 #include "endstone/inventory/meta/book_meta.h"
 #include "endstone/inventory/meta/crossbow_meta.h"
 #include "endstone/inventory/meta/item_meta.h"
 #include "endstone/inventory/meta/map_meta.h"
 #include "endstone/inventory/meta/potion_meta.h"
 #include "endstone/inventory/meta/writable_book_meta.h"
+#include "endstone/inventory/molang_ingredient.h"
+#include "endstone/inventory/recipe.h"
+#include "endstone/inventory/recipe_ingredient.h"
+#include "endstone/inventory/shaped_recipe.h"
+#include "endstone/inventory/shapeless_recipe.h"
+#include "endstone/inventory/smithing_recipe.h"
+#include "endstone/inventory/smithing_transform_recipe.h"
+#include "endstone/inventory/smithing_trim_recipe.h"
 #include "endstone/permissions/permissible.h"
 #include "endstone/player.h"
 
 namespace endstone::core {
 
 namespace {
-std::unordered_map<std::type_index, entt::meta_type> MetaLookup;
+std::unordered_map<ClassInfo, entt::meta_type> MetaLookup;
 
 template <typename T>
 entt::meta_factory<T> registerType()
 {
     auto factory = entt::meta_factory<T>{};
-    MetaLookup[std::type_index(typeid(T))] = entt::resolve<T>();
+    MetaLookup[typeid(T)] = entt::resolve<T>();
     return factory;
 }
 }  // namespace
@@ -65,6 +78,7 @@ void registerTypes()
     registerType<CommandSender>().base<Permissible>();
     registerType<ConsoleCommandSender>().base<CommandSender>();
     registerType<BlockCommandSender>().base<CommandSender>();
+    registerType<ProxiedCommandSender>().base<CommandSender>();
     registerType<Actor>().base<CommandSender>();
     registerType<Mob>().base<Actor>();
     registerType<Player>().base<Mob>();
@@ -88,24 +102,41 @@ void registerTypes()
     registerType<CreatureSpawner>().base<BlockActorState>();
     registerType<ItemFrame>().base<BlockActorState>();
     registerType<Sign>().base<BlockActorState>();
+
+    // Recipe hierarchy
+    registerType<Recipe>();
+    registerType<ComplexRecipe>().base<Recipe>();
+    registerType<ShapedRecipe>().base<Recipe>();
+    registerType<ShapelessRecipe>().base<Recipe>();
+    registerType<SmithingRecipe>().base<Recipe>();
+    registerType<SmithingTransformRecipe>().base<SmithingRecipe>();
+    registerType<SmithingTrimRecipe>().base<SmithingRecipe>();
+
+    // RecipeIngredient hierarchy
+    registerType<RecipeIngredient>();
+    registerType<ExactIngredient>().base<RecipeIngredient>();
+    registerType<ComplexAliasIngredient>().base<RecipeIngredient>();
+    registerType<ItemTagIngredient>().base<RecipeIngredient>();
+    registerType<ItemTypeIngredient>().base<RecipeIngredient>();
+    registerType<MolangIngredient>().base<RecipeIngredient>();
 }
 
-bool isTypeInstanceOf(const std::type_info &from, const std::type_info &target)
+bool isTypeInstanceOf(ClassInfo from, ClassInfo target)
 {
     if (from == target) {
         return true;
     }
-    auto it_from = MetaLookup.find(std::type_index(from));
-    auto it_to = MetaLookup.find(std::type_index(target));
+    auto it_from = MetaLookup.find(from);
+    auto it_to = MetaLookup.find(target);
     if (it_from == MetaLookup.end() || it_to == MetaLookup.end()) {
         return false;
     }
     return it_from->second.can_cast(it_to->second);
 }
 
-bool isInstanceOf(const Object &obj, const std::type_info &target)
+bool isInstanceOf(const Object &obj, ClassInfo target)
 {
-    return isTypeInstanceOf(obj.getClassTypeId(), target);
+    return isTypeInstanceOf(obj.getClassInfo(), target);
 }
 
 }  // namespace endstone::core

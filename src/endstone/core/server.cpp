@@ -147,9 +147,13 @@ EndstoneServer::EndstoneServer() : logger_(LoggerFactory::getLogger(""))
     crash_handler_ = std::make_unique<CrashHandler>();
     signal_handler_ = std::make_unique<SignalHandler>();
     player_ban_list_ = std::make_unique<EndstonePlayerBanList>("banned-players.json");
-    player_ban_list_->load();
+    if (auto result = player_ban_list_->load(); !result) {
+        EndstoneServer::getLogger().error(result.error());
+    }
     ip_ban_list_ = std::make_unique<EndstoneIpBanList>("banned-ips.json");
-    ip_ban_list_->load();
+    if (auto result = ip_ban_list_->load(); !result) {
+        EndstoneServer::getLogger().error(result.error());
+    }
     language_ = std::make_unique<EndstoneLanguage>();
     plugin_manager_ = std::make_unique<EndstonePluginManager>(*this);
     service_manager_ = std::make_unique<EndstoneServiceManager>();
@@ -205,9 +209,10 @@ void EndstoneServer::setLevel(::Level &level)
         throw std::runtime_error("Level already initialized.");
     }
     level_ = std::make_unique<EndstoneLevel>(level);
+    level_->loadDimensions();
     scoreboard_ = EndstoneScoreboard::create(level.getScoreboard());
     command_map_ = std::make_unique<EndstoneCommandMap>(*this);
-    metrics_ = std::make_unique<EndstoneMetrics>(*this);  // start metrics
+    metrics_ = std::make_unique<Metrics>(*this, "endstone._metrics", "EndstoneMetrics", std::ref<Server>(*this));
     loadResourcePacks();
     initRegistries();
 
@@ -271,15 +276,11 @@ void EndstoneServer::setLevel(::Level &level)
     enablePlugins(PluginLoadOrder::PostWorld);
     ServerLoadEvent event{ServerLoadEvent::LoadType::Startup};
     getPluginManager().callEvent(event);
-
-    // start accepting input
-    runtime::stdin_restore();
-    auto *server = entt::locator<DedicatedServer *>::value();
-    server->console_input_reader_->startEndstone();
 }
 
 void EndstoneServer::initRegistries()
 {
+    registries_[typeid(Ability)] = EndstoneRegistry<Ability, std::string>::create();
     registries_[typeid(ActorType)] = EndstoneRegistry<ActorType, std::string>::create();
     registries_[typeid(Biome)] = EndstoneRegistry<Biome, ::Biome>::create();
     registries_[typeid(BlockType)] = EndstoneRegistry<BlockType, ::BlockType>::create();
@@ -499,6 +500,16 @@ Scheduler &EndstoneServer::getScheduler() const
     return *scheduler_;
 }
 
+NotNull<MetricsBase> EndstoneServer::createMetrics(Plugin &plugin, int service_id)
+{
+    auto it = plugin_metrics_.find(service_id);
+    if (it == plugin_metrics_.end()) {
+        plugin_metrics_.emplace(service_id,
+                                std::make_shared<Metrics>(*this, "endstone.metrics", "Metrics", &plugin, service_id));
+    }
+    return plugin_metrics_.at(service_id);
+}
+
 EndstoneScheduler &EndstoneServer::getEndstoneScheduler() const
 {
     return *scheduler_;
@@ -510,6 +521,11 @@ Level &EndstoneServer::getLevel() const
         throw std::runtime_error("Level has not been loaded yet.");
     }
     return *level_;
+}
+
+std::vector<NotNull<Recipe>> EndstoneServer::getRecipes() const
+{
+    return getLevel().getRecipes();
 }
 
 EndstoneLevel *EndstoneServer::getEndstoneLevel() const
@@ -565,11 +581,6 @@ int EndstoneServer::getPort() const
     return getRemoteConnector().getIPv4Port();
 }
 
-int EndstoneServer::getPortV6() const
-{
-    return getRemoteConnector().getIPv6Port();
-}
-
 bool EndstoneServer::getOnlineMode() const
 {
     return getServer().getMinecraft()->getServerNetworkHandler()->network_server_config_.require_trusted_authentication;
@@ -601,6 +612,7 @@ void EndstoneServer::reload()
     }
     scheduler.removeCancelledTasks();
 
+    plugin_metrics_.clear();
     plugin_manager_->clearPlugins();
     reloadData();
     loadPlugins();
@@ -724,15 +736,29 @@ std::chrono::system_clock::time_point EndstoneServer::getStartTime()
     return start_time_;
 }
 
-NotNull<BossBar> EndstoneServer::createBossBar(std::string title, BarColor color, BarStyle style) const
+NotNull<BossBar> EndstoneServer::createBossBar(std::string title, BarColor color, BarStyle style)
 {
-    return std::make_shared<EndstoneBossBar>(std::move(title), color, style);
+    return createBossBar(std::move(title), color, style, {});
 }
 
 NotNull<BossBar> EndstoneServer::createBossBar(std::string title, BarColor color, BarStyle style,
-                                               std::vector<BarFlag> flags) const
+                                               std::vector<BarFlag> flags)
 {
-    return std::make_shared<EndstoneBossBar>(std::move(title), color, style, flags);
+    auto boss_bar = std::make_shared<EndstoneBossBar>(std::move(title), color, style, flags);
+    boss_bars_.emplace_back(boss_bar);
+    return boss_bar;
+}
+
+void EndstoneServer::updateBossBars(const NotNull<EndstonePlayer> &player)
+{
+    std::erase_if(boss_bars_, [&](const auto &boss_bar) {
+        const auto bar = boss_bar.lock();
+        if (!bar) {
+            return true;
+        }
+        bar->update(player);
+        return false;
+    });
 }
 
 NotNull<BlockData> EndstoneServer::createBlockData(BlockTypeId type) const
@@ -768,9 +794,9 @@ ServiceManager &EndstoneServer::getServiceManager() const
     return *service_manager_;
 }
 
-IRegistry *EndstoneServer::_getRegistry(const std::type_info &type) const
+IRegistry *EndstoneServer::_getRegistry(ClassInfo type) const
 {
-    const auto it = registries_.find(std::type_index(type));
+    const auto it = registries_.find(type);
     if (registries_.end() == it) {
         return nullptr;
     }

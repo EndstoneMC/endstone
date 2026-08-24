@@ -103,7 +103,7 @@ public:
     virtual void displayWhisperMessage(std::string const &, std::string const &, std::string const &,
                                        std::string const &) = 0;
     ENDSTONE_HOOK virtual BedSleepingResult startSleepInBed(BlockPos const &bed_block_pos, bool a2, float a3);
-    virtual void stopSleepInBed(bool, bool) = 0;
+    ENDSTONE_HOOK virtual void stopSleepInBed(bool forceful_wake_up, bool update_level_list);
     virtual bool canStartSleepInBed() = 0;
     virtual void openSign(BlockPos const &, bool) = 0;
     virtual void playEmote(std::string const &, bool) = 0;
@@ -161,6 +161,8 @@ public:
     PlayerInventory &getSupplies();
     [[nodiscard]] const Container &getInventory() const;
     Container &getInventory();
+    PlayerUIContainer &getPlayerUIContainer() { return player_ui_container_; }
+    [[nodiscard]] const PlayerUIContainer &getPlayerUIContainer() const { return player_ui_container_; }
     EnderChestContainer *getEnderChestContainer();
     [[nodiscard]] const EnderChestContainer *getEnderChestContainer() const;
     [[nodiscard]] int getSelectedItemSlot() const;
@@ -169,7 +171,8 @@ public:
     [[nodiscard]] const std::string &getName() const;
     void setCommandPermissions(CommandPermissionLevel permission);
     void setBedRespawnPosition(const BlockPos &);
-    bool setSpawnBlockRespawnPosition(const BlockPos &, DimensionType);
+    ENDSTONE_HOOK bool setSpawnBlockRespawnPosition(const BlockPos &, DimensionType);
+    ENDSTONE_HOOK void setRespawnPosition(const BlockPos &, DimensionType);
     bool canSleep() const;
     void stopGliding();
     [[nodiscard]] const SerializedSkinRef &getSkin() const;
@@ -313,6 +316,12 @@ protected:
         BlockPos player_position;
         DimensionType dimension;
     } player_respawn_point_;
+
+    // Endstone
+public:
+    [[nodiscard]] const PlayerSpawnPoint &getPlayerRespawnPoint() const { return player_respawn_point_; }
+
+protected:
     float server_build_ratio_;
     SubClientId client_id_;
     bool interact_data_dirty_;

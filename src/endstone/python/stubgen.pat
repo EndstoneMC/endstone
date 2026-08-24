@@ -10,6 +10,9 @@
     \from ._version import __version__
     \export __version__
     _T = typing.TypeVar("_T")
+    JsonValue: typing.TypeAlias = JsonObject | JsonArray | str | int | float | bool | None
+    JsonObject: typing.TypeAlias = dict[str, JsonValue]
+    JsonArray: typing.TypeAlias = list[JsonValue]
 
 ^endstone\.Identifier$:
     class Identifier(typing.Generic[_T]):
@@ -51,6 +54,44 @@
 
 ^endstone\.Server\.get_registry$:
     def get_registry(self, type: type[_T]) -> Registry[_T]:
+        \doc
+
+# Ability is generic in the value type, the same way GameRule is: bool for every
+# flag, float for the three speeds.
+^endstone\.Ability\.__bases__$:
+    typing.Generic[_T]
+
+^endstone\.Ability\.id$:
+    @property
+    def id(self) -> Identifier[Ability[_T]]:
+        \doc
+
+^endstone\.Ability\.get$:
+    @typing.overload
+    @staticmethod
+    def get(name: Identifier[Ability[_T]]) -> Ability[_T] | None: ...
+    @typing.overload
+    @staticmethod
+    def get(name: str) -> Ability[typing.Any] | None:
+        \doc
+
+^endstone\.Ability\.(?P<name>FLY_SPEED|VERTICAL_FLY_SPEED|WALK_SPEED)$:
+    \name: Identifier[Ability[float]] = \value
+^endstone\.Ability\.(?P<name>[A-Z][A-Z0-9_]*)$:
+    \name: Identifier[Ability[bool]] = \value
+
+^endstone\.Player\.get_ability$:
+    @typing.overload
+    def get_ability(self, ability: Identifier[Ability[_T]]) -> _T: ...
+    @typing.overload
+    def get_ability(self, ability: str) -> bool | float:
+        \doc
+
+^endstone\.Player\.set_ability$:
+    @typing.overload
+    def set_ability(self, ability: Identifier[Ability[_T]], value: _T) -> None: ...
+    @typing.overload
+    def set_ability(self, ability: str, value: bool | float) -> None:
         \doc
 
 # GameRule is generic in the value type, which nothing carries at runtime -- a

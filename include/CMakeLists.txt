@@ -8,9 +8,19 @@ if (NOT expected-lite_FOUND)
     FetchContent_Declare(
             expected-lite
             GIT_REPOSITORY https://github.com/martinmoene/expected-lite.git
-            GIT_TAG v0.8.0
+            GIT_TAG v0.9.0
     )
     FetchContent_MakeAvailable(expected-lite)
+endif ()
+
+find_package(nlohmann_json QUIET)
+if (NOT nlohmann_json_FOUND)
+    FetchContent_Declare(
+            nlohmann_json
+            GIT_REPOSITORY https://github.com/nlohmann/json.git
+            GIT_TAG v3.12.0
+    )
+    FetchContent_MakeAvailable(nlohmann_json)
 endif ()
 
 # A git version (passed by conanfile.py) overrides the project() fallback at build time.
@@ -24,7 +34,7 @@ add_library(endstone::endstone ALIAS endstone)
 target_include_directories(endstone INTERFACE
         ${CMAKE_CURRENT_SOURCE_DIR}
         $<BUILD_INTERFACE:${CMAKE_CURRENT_BINARY_DIR}/generated>)
-target_link_libraries(endstone INTERFACE nonstd::expected-lite)
+target_link_libraries(endstone INTERFACE nlohmann_json::nlohmann_json nonstd::expected-lite)
 if (WIN32)
     # Keep <Windows.h> from dragging in the min/max macros and the rarely-wanted extras
     target_compile_definitions(endstone INTERFACE NOMINMAX WIN32_LEAN_AND_MEAN)

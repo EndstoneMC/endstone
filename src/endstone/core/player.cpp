@@ -28,14 +28,8 @@
 #include "bedrock/network/packet.h"
 #include "bedrock/network/packet/block_actor_data_packet.h"
 #include "bedrock/network/packet/clientbound_map_item_data_packet.h"
-#include "bedrock/network/packet/correct_player_move_prediction_packet.h"
-#include "bedrock/network/packet/emote_packet.h"
-#include "bedrock/network/packet/mob_equipment_packet.h"
 #include "bedrock/network/packet/modal_form_request_packet.h"
 #include "bedrock/network/packet/play_sound_packet.h"
-#include "bedrock/network/packet/player_auth_input_packet.h"
-#include "bedrock/network/packet/player_skin_packet.h"
-#include "bedrock/network/packet/set_player_inventory_options_packet.h"
 #include "bedrock/network/packet/set_title_packet.h"
 #include "bedrock/network/packet/stop_sound_packet.h"
 #include "bedrock/network/packet/text_packet.h"
@@ -46,10 +40,10 @@
 #include "bedrock/platform/build_platform.h"
 #include "bedrock/server/server_instance.h"
 #include "bedrock/world/actor/player/player.h"
-#include "bedrock/world/actor/provider/actor_offset.h"
+#include "bedrock/world/level/dimension/vanilla_dimensions.h"
 #include "bedrock/world/level/level.h"
-#include "endstone/block/block.h"
 #include "endstone/color_format.h"
+#include "endstone/core/ability.h"
 #include "endstone/core/base64.h"
 #include "endstone/core/block/block_actor_state.h"
 #include "endstone/core/entity/components/flag_components.h"
@@ -57,6 +51,7 @@
 #include "endstone/core/game_mode.h"
 #include "endstone/core/inventory/item_stack.h"
 #include "endstone/core/inventory/player_inventory.h"
+#include "endstone/core/level/dimension.h"
 #include "endstone/core/map/map_view.h"
 #include "endstone/core/message.h"
 #include "endstone/core/network/data_packet.h"
@@ -64,22 +59,7 @@
 #include "endstone/core/skin.h"
 #include "endstone/core/util/socket_address.h"
 #include "endstone/core/util/uuid.h"
-#include "endstone/event/actor/actor_toggle_glide_event.h"
-#include "endstone/event/actor/actor_toggle_swim_event.h"
-#include "endstone/event/player/player_bed_leave_event.h"
-#include "endstone/event/player/player_emote_event.h"
-#include "endstone/event/player/player_input_event.h"
-#include "endstone/event/player/player_interact_event.h"
-#include "endstone/event/player/player_item_held_event.h"
 #include "endstone/event/player/player_join_event.h"
-#include "endstone/event/player/player_jump_event.h"
-#include "endstone/event/player/player_move_event.h"
-#include "endstone/event/player/player_recipe_book_settings_change_event.h"
-#include "endstone/event/player/player_skin_change_event.h"
-#include "endstone/event/player/player_toggle_crawl_event.h"
-#include "endstone/event/player/player_toggle_flight_event.h"
-#include "endstone/event/player/player_toggle_sneak_event.h"
-#include "endstone/event/player/player_toggle_sprint_event.h"
 #include "endstone/form/action_form.h"
 #include "endstone/form/message_form.h"
 
@@ -278,6 +258,38 @@ void EndstonePlayer::kick(std::string message) const
 bool EndstonePlayer::performCommand(std::string command) const
 {
     return server_.dispatchCommand(self(), command);
+}
+
+std::optional<Location> EndstonePlayer::getRespawnLocation() const
+{
+    const auto &point = getHandle().getPlayerRespawnPoint();
+    if (point.player_position == BlockPos::MIN || point.dimension == VanillaDimensions::Undefined) {
+        return std::nullopt;
+    }
+
+    const auto dimension = server_.getEndstoneLevel()->getDimension(point.dimension);
+    if (!dimension) {
+        return std::nullopt;
+    }
+    return Location{dimension, point.player_position.x, point.player_position.y, point.player_position.z};
+}
+
+void EndstonePlayer::setRespawnLocation(std::optional<Location> location)
+{
+    if (!location) {
+        getHandle().addOrRemoveComponent<InternalSpawnChangeFlagComponent>(true);
+        getHandle().setRespawnPosition(BlockPos::MIN, VanillaDimensions::Undefined);
+        return;
+    }
+
+    if (!location->isDimensionLoaded()) {
+        return;
+    }
+
+    const auto dimension = location->getDimension();
+    const auto dimension_id = static_cast<const EndstoneDimension &>(dimension.value()).getHandle().getDimensionId();
+    getHandle().addOrRemoveComponent<InternalSpawnChangeFlagComponent>(true);
+    getHandle().setRespawnPosition(BlockPos(location->getX(), location->getY(), location->getZ()), dimension_id);
 }
 
 void EndstonePlayer::sendBlockUpdate(const Location &location, const BlockActorState &block_actor_state)
@@ -535,13 +547,13 @@ void EndstonePlayer::spawnParticle(std::string name, float x, float y, float z) 
 }
 
 void EndstonePlayer::spawnParticle(std::string name, Location location,
-                                   std::optional<std::string> molang_variables_json) const
+                                   std::optional<JsonObject> molang_variables) const
 {
-    spawnParticle(name, location.getX(), location.getY(), location.getZ(), molang_variables_json);
+    spawnParticle(name, location.getX(), location.getY(), location.getZ(), std::move(molang_variables));
 }
 
 void EndstonePlayer::spawnParticle(std::string name, float x, float y, float z,
-                                   std::optional<std::string> molang_variables_json) const
+                                   std::optional<JsonObject> molang_variables) const
 {
     BinaryStream stream;
     stream.writeByte(getHandle().getDimension().getDimensionId().value, "Dimension Id", nullptr);
@@ -551,10 +563,10 @@ void EndstonePlayer::spawnParticle(std::string name, float x, float y, float z,
     stream.writeFloat(z, "Z", nullptr);
     stream.writeString(name, "Effect Name",
                        "Should be an effect that exists on the client. No-op if the effect doesn't exist.");
-    stream.writeBool(molang_variables_json.has_value(), "Has Value",
+    stream.writeBool(molang_variables.has_value(), "Has Value",
                      "If true, follow with appropriate data type, otherwise nothing");
-    if (molang_variables_json.has_value()) {
-        stream.writeString(molang_variables_json.value(), "Serialized Variable Map", nullptr);
+    if (molang_variables.has_value()) {
+        stream.writeString(JsonValue(*molang_variables).dump(), "Serialized Variable Map", nullptr);
     }
     sendPacket(static_cast<int>(MinecraftPacketIds::SpawnParticleEffect), stream.getView());
 }
@@ -707,287 +719,44 @@ void EndstonePlayer::sendMap(MapView &map)
     getHandle().sendNetworkPacket(*packet);
 }
 
-bool EndstonePlayer::handlePacket(Packet &packet)
+AbilityValue EndstonePlayer::_getAbility(const Identifier<Ability> ability) const
 {
-    switch (packet.getId()) {
-    case MinecraftPacketIds::PlayerEquipment: {
-        auto &pk = static_cast<MobEquipmentPacket &>(packet);
-        auto from_slot = this->inventory_->getHeldItemSlot();
-        auto to_slot = pk.payload.selected_slot;
-        if (from_slot == to_slot) {
-            return true;
-        }
-        PlayerItemHeldEvent e(self(), from_slot, to_slot);
-        getServer().getPluginManager().callEvent(e);
-        if (e.isCancelled()) {
-            this->inventory_->setHeldItemSlot(from_slot);
-            return false;
-        }
-        return true;
+    const auto *entry = server_.getRegistry<Ability>().get(ability);
+    if (entry == nullptr) {
+        throw std::out_of_range("Ability is not available.");
     }
-    case MinecraftPacketIds::PlayerAction: {
-        auto &pk = static_cast<PlayerActionPacket &>(packet);
-        if (pk.payload.action == PlayerActionType::StopSleeping && getHandle().isSleeping()) {
-            Nullable<Block> bed;
-            if (getHandle().hasBedPosition()) {
-                const auto bed_position = getHandle().getBedPosition();
-                bed = getDimension()->getBlockAt(bed_position.x, bed_position.y, bed_position.z);
-            }
-            else {
-                bed = getDimension()->getBlockAt(getLocation());
-            }
 
-            PlayerBedLeaveEvent e(self(), *bed);
-            getServer().getPluginManager().callEvent(e);
-        }
-        return true;
+    const auto index = static_cast<const EndstoneAbility *>(entry)->getIndex();
+    const auto &value = getHandle().getAbilities().getAbility(index);
+    switch (value.getType()) {
+    case ::Ability::Type::Bool:
+        return value.getBool();
+    case ::Ability::Type::Float:
+        return value.getFloat();
+    case ::Ability::Type::Invalid:
+    case ::Ability::Type::Unset:
+        break;
     }
-    case MinecraftPacketIds::PlayerSkin: {
-        auto &server = static_cast<EndstoneServer &>(getServer());
-        auto &pk = static_cast<PlayerSkinPacket &>(packet);
-        if (getHandle().getPersistentComponent<UserEntityIdentifierComponent>()->getClientUUID() == pk.payload.uuid) {
-            Message skin_change_message = Translatable(
-                ColorFormat::Yellow + (pk.payload.skin.getIsPersona() ? "%multiplayer.player.changeToPersona"
-                                                                      : "%multiplayer.player.changeToSkin"),
-                {getName()});
-            PlayerSkinChangeEvent e{self(), EndstoneSkin::fromMinecraft(pk.payload.skin), skin_change_message};
-            getServer().getPluginManager().callEvent(e);
-            if (e.isCancelled()) {
-                auto new_packet = MinecraftPackets::createPacket(MinecraftPacketIds::PlayerSkin);
-                auto &new_pk = static_cast<PlayerSkinPacket &>(*new_packet);
-                new_pk.payload.uuid = pk.payload.uuid;
-                new_pk.payload.skin = getHandle().getSkin();
-                new_pk.payload.localized_new_skin_name = pk.payload.localized_old_skin_name;
-                new_pk.payload.localized_old_skin_name = pk.payload.localized_new_skin_name;
-                getHandle().sendNetworkPacket(new_pk);
-                return false;
-            }
+    throw std::runtime_error("Ability holds no value type.");
+}
 
-            skin_change_message = e.getSkinChangeMessage().value_or("");
-            if (server.isServerTextEnabled(ServerTextEvent::PlayerChangedSkin) &&
-                (!std::holds_alternative<std::string>(skin_change_message) ||
-                 !std::get<std::string>(skin_change_message).empty())) {
-                server.broadcastMessage(skin_change_message);
-            }
-        }
-        return true;
+bool EndstonePlayer::_setAbility(const Identifier<Ability> ability, AbilityValue value)
+{
+    const auto *entry = server_.getRegistry<Ability>().get(ability);
+    if (entry == nullptr) {
+        return false;
     }
-    case MinecraftPacketIds::SetLocalPlayerAsInit: {
-        doFirstSpawn();
-        return true;
+
+    const auto index = static_cast<const EndstoneAbility *>(entry)->getIndex();
+    auto &abilities = getHandle().getAbilities();
+    const auto expected = std::holds_alternative<bool>(value) ? ::Ability::Type::Bool : ::Ability::Type::Float;
+    if (abilities.getAbility(index).getType() != expected) {
+        return false;
     }
-    case MinecraftPacketIds::Emote: {
-        auto &pk = static_cast<EmotePacket &>(packet);
-        if (pk.isServerSide()) {
-            return true;
-        }
-        PlayerEmoteEvent e(self(), pk.payload.piece_id, pk.isEmoteChatMuted());
-        getServer().getPluginManager().callEvent(e);
-        if (e.isCancelled()) {
-            return false;
-        }
-        if (e.isMuted()) {
-            pk.payload.flags |= static_cast<uint8_t>(EmotePacket::Flags::MUTE_EMOTE_CHAT);
-        }
-        else {
-            pk.payload.flags &= ~static_cast<uint8_t>(EmotePacket::Flags::MUTE_EMOTE_CHAT);
-        }
-        return true;
-    }
-    case MinecraftPacketIds::SetPlayerInventoryOptions: {
-        auto &pk = static_cast<SetPlayerInventoryOptionsPacket &>(packet);
-        const auto &options = pk.payload.inventory_options;
-        const RecipeBookSettings settings{
-            options.filtering,
-            static_cast<int>(options.layout_inv),
-            static_cast<int>(options.layout_craft),
-        };
-        const auto settings_changed = !last_recipe_book_settings_ || *last_recipe_book_settings_ != settings;
-        last_recipe_book_settings_ = settings;
-        if (!settings_changed) {
-            return true;
-        }
 
-        const auto is_open = options.layout_inv == InventoryLayout::Default ||
-                             options.layout_inv == InventoryLayout::RecipeBookOnly ||
-                             options.layout_craft == InventoryLayout::Default ||
-                             options.layout_craft == InventoryLayout::RecipeBookOnly;
-
-        PlayerRecipeBookSettingsChangeEvent e{
-            self(),
-            PlayerRecipeBookSettingsChangeEvent::RecipeBookType::Crafting,
-            is_open,
-            options.filtering,
-        };
-        getServer().getPluginManager().callEvent(e);
-        return true;
-    }
-    case MinecraftPacketIds::PlayerAuthInputPacket: {
-        auto &pk = static_cast<PlayerAuthInputPacket &>(packet);
-        const Input player_input{
-            pk.getInput(PlayerAuthInputPacket::InputData::Up),
-            pk.getInput(PlayerAuthInputPacket::InputData::Down),
-            pk.getInput(PlayerAuthInputPacket::InputData::Left),
-            pk.getInput(PlayerAuthInputPacket::InputData::Right),
-            pk.getInput(PlayerAuthInputPacket::InputData::Jumping),
-            pk.getInput(PlayerAuthInputPacket::InputData::Sneaking),
-            pk.getInput(PlayerAuthInputPacket::InputData::Sprinting),
-        };
-        const bool input_changed = last_input_ != player_input;
-        last_input_ = player_input;
-
-        if (pk.getInput(PlayerAuthInputPacket::InputData::StartSprinting) && !getHandle().isSprinting()) {
-            PlayerToggleSprintEvent e(self(), true);
-            getServer().getPluginManager().callEvent(e);
-        }
-        if (pk.getInput(PlayerAuthInputPacket::InputData::StopSprinting) && getHandle().isSprinting()) {
-            PlayerToggleSprintEvent e(self(), false);
-            getServer().getPluginManager().callEvent(e);
-        }
-        if (pk.getInput(PlayerAuthInputPacket::InputData::StartSneaking) && !getHandle().isSneaking()) {
-            PlayerToggleSneakEvent e(self(), true);
-            getServer().getPluginManager().callEvent(e);
-        }
-        if (pk.getInput(PlayerAuthInputPacket::InputData::StopSneaking) && getHandle().isSneaking()) {
-            PlayerToggleSneakEvent e(self(), false);
-            getServer().getPluginManager().callEvent(e);
-        }
-        if (pk.getInput(PlayerAuthInputPacket::InputData::MissedSwing)) {
-            PlayerInteractEvent e{
-                self(),
-                PlayerInteractEvent::Action::LeftClickAir,
-                getInventory().getItemInMainHand(),
-                nullptr,
-                BlockFace::South,
-                std::nullopt,
-            };
-            getServer().getPluginManager().callEvent(e);
-            if (e.isCancelled()) {
-                pk.setInput(PlayerAuthInputPacket::InputData::MissedSwing, false);
-            }
-        }
-        if (pk.getInput(PlayerAuthInputPacket::InputData::StartSwimming) && !getHandle().isSwimming()) {
-            ActorToggleSwimEvent e(self(), true);
-            getServer().getPluginManager().callEvent(e);
-        }
-        if (pk.getInput(PlayerAuthInputPacket::InputData::StopSwimming) && getHandle().isSwimming()) {
-            ActorToggleSwimEvent e(self(), false);
-            getServer().getPluginManager().callEvent(e);
-        }
-        if (pk.getInput(PlayerAuthInputPacket::InputData::StartGliding) && !getHandle().isGliding()) {
-            ActorToggleGlideEvent e(self(), true);
-            getServer().getPluginManager().callEvent(e);
-        }
-        if (pk.getInput(PlayerAuthInputPacket::InputData::StopGliding) && getHandle().isGliding()) {
-            ActorToggleGlideEvent e(self(), false);
-            getServer().getPluginManager().callEvent(e);
-        }
-        if (pk.getInput(PlayerAuthInputPacket::InputData::StartCrawling) && !getHandle().isCrawling()) {
-            PlayerToggleCrawlEvent e(self(), true);
-            getServer().getPluginManager().callEvent(e);
-        }
-        if (pk.getInput(PlayerAuthInputPacket::InputData::StopCrawling) && getHandle().isCrawling()) {
-            PlayerToggleCrawlEvent e(self(), false);
-            getServer().getPluginManager().callEvent(e);
-        }
-        if (pk.getInput(PlayerAuthInputPacket::InputData::StartFlying) && getAllowFlight() && !getHandle().isFlying()) {
-            PlayerToggleFlightEvent e(self(), true);
-            getServer().getPluginManager().callEvent(e);
-        }
-        if (pk.getInput(PlayerAuthInputPacket::InputData::StopFlying) && getAllowFlight() && getHandle().isFlying()) {
-            PlayerToggleFlightEvent e(self(), false);
-            getServer().getPluginManager().callEvent(e);
-        }
-        if (input_changed) {
-            PlayerInputEvent e(self(), player_input);
-            getServer().getPluginManager().callEvent(e);
-        }
-
-        auto &actions = pk.payload.player_block_actions.actions_;
-        for (auto it = actions.begin(); it != actions.end();) {
-            const auto &action = *it;
-            if (action.player_action_type == PlayerActionType::StartDestroyBlock) {
-                const auto item = getInventory().getItemInMainHand();
-                const auto block = getDimension()->getBlockAt(action.pos.x, action.pos.y, action.pos.z);
-                PlayerInteractEvent e{
-                    self(),
-                    PlayerInteractEvent::Action::LeftClickBlock,
-                    item,
-                    block,
-                    static_cast<BlockFace>(action.facing),
-                    Vector{action.pos.x, action.pos.y, action.pos.z},
-                };
-                getServer().getPluginManager().callEvent(e);
-                if (e.isCancelled()) {
-                    it = actions.erase(it);
-                    continue;
-                }
-            }
-            ++it;
-        }
-
-        auto &actor = getHandle();
-        const auto pos = actor.getPosition();
-        const auto rot = actor.getRotation();
-        const auto &input = pk.payload;
-        const auto delta = input.pos - pos;
-        const auto delta_angle = input.rot - rot;
-        const auto on_ground = actor.isOnGround();
-
-        const Location from = getLocation();
-        const auto height_offset = ActorOffset::getHeightOffset(actor.getEntity());
-        const Location to{getDimension(),
-                          input.pos.x,
-                          input.pos.y - height_offset,
-                          input.pos.z,
-                          input.rot.x,
-                          input.rot.y};
-
-        if (pk.getInput(PlayerAuthInputPacket::InputData::Jumping) && on_ground && delta.y > 0.0F) {
-            PlayerJumpEvent e{self(), from, to};
-            getServer().getPluginManager().callEvent(e);
-            if (e.isCancelled()) {
-                actor.addOrRemoveComponent<InternalTeleportFlagComponent>(true);
-                teleport(from);
-                return false;
-            }
-        }
-
-        // Prevent intensive event calls on tiny movement using the thresholds from Spigot
-        if (delta.lengthSquared() > 1.0F / 256 || delta_angle.lengthSquared() > 10.0F) {
-            PlayerMoveEvent e{self(), from, to};
-            getServer().getPluginManager().callEvent(e);
-            if (e.isCancelled()) {
-                if (delta_angle.lengthSquared() > 0.0F) {
-                    actor.addOrRemoveComponent<InternalTeleportFlagComponent>(true);
-                    teleport(from);
-                }
-                else {
-                    auto correction =
-                        MinecraftPackets::createPacket(MinecraftPacketIds::CorrectPlayerMovePredictionPacket);
-                    auto &payload = static_cast<CorrectPlayerMovePredictionPacket &>(*correction).payload;
-                    payload.pos = pos;
-                    payload.pos_delta = Vec3::ZERO;
-                    payload.vehicle_rotation = Vec2::ZERO;
-                    payload.vehicle_angular_velocity = std::nullopt;
-                    payload.tick = input.client_tick;
-                    payload.on_ground = on_ground;
-                    payload.prediction_type = RewindType::Player;
-                    actor.sendNetworkPacket(*correction);
-                }
-                return false;
-            }
-            if (to != e.getTo()) {
-                actor.addOrRemoveComponent<InternalTeleportFlagComponent>(true);
-                teleport(e.getTo());
-                return false;
-            }
-        }
-        return true;
-    }
-    default:
-        return true;
-    }
+    std::visit([&abilities, index](auto &&v) { abilities.setAbility(index, v); }, value);
+    updateAbilities();
+    return true;
 }
 
 void EndstonePlayer::onFormClose(std::uint32_t form_id, PlayerFormCloseReason /*reason*/)
@@ -1054,7 +823,7 @@ void EndstonePlayer::onFormResponse(std::uint32_t form_id, const nlohmann::json 
                            },
                            [&](const ModalForm &form) {
                                if (auto callback = form.getOnSubmit()) {
-                                   callback(self(), json.dump());
+                                   callback(self(), json.get<JsonArray>());
                                }
                            },
                        },

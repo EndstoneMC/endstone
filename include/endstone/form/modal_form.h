@@ -30,6 +30,7 @@
 #include "endstone/form/controls/text_input.h"
 #include "endstone/form/controls/toggle.h"
 #include "endstone/form/form.h"
+#include "endstone/json.h"
 #include "endstone/util/pointers.h"
 
 namespace endstone {
@@ -40,7 +41,7 @@ namespace endstone {
 class ModalForm : public Form<ModalForm> {
 public:
     using Control = std::variant<Dropdown, Label, Slider, StepSlider, TextInput, Toggle, Divider, Header>;
-    using OnSubmitCallback = std::function<void(const NotNull<Player> &, std::string)>;
+    using OnSubmitCallback = std::function<void(const NotNull<Player> &, JsonArray)>;
 
     /**
      * Adds a control to the form.
