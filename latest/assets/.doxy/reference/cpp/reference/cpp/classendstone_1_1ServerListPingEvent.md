@@ -94,12 +94,11 @@ Inherits the following classes: [endstone::Cancellable](classendstone_1_1Cancell
 | Type | Name |
 | ---: | :--- |
 |   | [**ENDSTONE\_EVENT**](#function-endstone_event) ([**ServerListPingEvent**](classendstone_1_1ServerListPingEvent.md)) <br> |
-|   | [**ServerListPingEvent**](#function-serverlistpingevent) ([**SocketAddress**](classendstone_1_1SocketAddress.md) address, std::string motd, [**int**](classendstone_1_1Identifier.md) network\_protocol\_version, std::string minecraft\_version\_network, [**int**](classendstone_1_1Identifier.md) num\_players, [**int**](classendstone_1_1Identifier.md) max\_players, std::string server\_guid, std::string level\_name, [**GameMode**](namespaceendstone.md#enum-gamemode) game\_mode, [**int**](classendstone_1_1Identifier.md) local\_port, [**int**](classendstone_1_1Identifier.md) local\_port\_v6) <br> |
+|   | [**ServerListPingEvent**](#function-serverlistpingevent) ([**SocketAddress**](classendstone_1_1SocketAddress.md) address, std::string motd, [**int**](classendstone_1_1Identifier.md) network\_protocol\_version, std::string minecraft\_version\_network, [**int**](classendstone_1_1Identifier.md) num\_players, [**int**](classendstone_1_1Identifier.md) max\_players, std::string server\_guid, std::string level\_name, [**GameMode**](namespaceendstone.md#enum-gamemode) game\_mode, [**int**](classendstone_1_1Identifier.md) local\_port) <br> |
 |  [**const**](classendstone_1_1Identifier.md) [**SocketAddress**](classendstone_1_1SocketAddress.md) & | [**getAddress**](#function-getaddress) () const<br>_Get the address the ping is coming from._  |
 |  [**GameMode**](namespaceendstone.md#enum-gamemode) | [**getGameMode**](#function-getgamemode) () const<br>_Get the current game mode._  |
 |  std::string | [**getLevelName**](#function-getlevelname) () const<br>_Get the level name._  |
 |  [**int**](classendstone_1_1Identifier.md) | [**getLocalPort**](#function-getlocalport) () const<br>_Get the local port of the server._  |
-|  [**int**](classendstone_1_1Identifier.md) | [**getLocalPortV6**](#function-getlocalportv6) () const<br>_Get the local port of the server for IPv6 support._  |
 |  [**int**](classendstone_1_1Identifier.md) | [**getMaxPlayers**](#function-getmaxplayers) () const<br>_Get the maximum number of players allowed._  |
 |  std::string | [**getMinecraftVersionNetwork**](#function-getminecraftversionnetwork) () const<br>_Get the network version of Minecraft that is supported by this server._  |
 |  std::string | [**getMotd**](#function-getmotd) () const<br>_Get the message of the day message._  |
@@ -109,7 +108,6 @@ Inherits the following classes: [endstone::Cancellable](classendstone_1_1Cancell
 |  [**void**](classendstone_1_1Identifier.md) | [**setGameMode**](#function-setgamemode) ([**GameMode**](namespaceendstone.md#enum-gamemode) game\_mode) <br>_Set the current game mode._  |
 |  [**void**](classendstone_1_1Identifier.md) | [**setLevelName**](#function-setlevelname) (std::string level\_name) <br>_Set the level name._  |
 |  [**void**](classendstone_1_1Identifier.md) | [**setLocalPort**](#function-setlocalport) ([**int**](classendstone_1_1Identifier.md) port) <br>_Set the local port of the server._  |
-|  [**void**](classendstone_1_1Identifier.md) | [**setLocalPortV6**](#function-setlocalportv6) ([**int**](classendstone_1_1Identifier.md) port) <br>_Set the local port of the server for IPv6 support._  |
 |  [**void**](classendstone_1_1Identifier.md) | [**setMaxPlayers**](#function-setmaxplayers) ([**int**](classendstone_1_1Identifier.md) max\_players) <br>_Set the maximum number of players allowed._  |
 |  [**void**](classendstone_1_1Identifier.md) | [**setMinecraftVersionNetwork**](#function-setminecraftversionnetwork) (std::string minecraft\_version\_network) <br>_Set the network version of Minecraft that is supported by this server._  |
 |  [**void**](classendstone_1_1Identifier.md) | [**setMotd**](#function-setmotd) (std::string motd) <br>_Change the message of the day message._  |
@@ -251,8 +249,7 @@ inline endstone::ServerListPingEvent::ServerListPingEvent (
     std::string server_guid,
     std::string level_name,
     GameMode game_mode,
-    int local_port,
-    int local_port_v6
+    int local_port
 ) 
 ```
 
@@ -352,31 +349,6 @@ inline int endstone::ServerListPingEvent::getLocalPort () const
 **Returns:**
 
 The local port 
-
-
-
-
-
-        
-
-<hr>
-
-
-
-### function getLocalPortV6 
-
-_Get the local port of the server for IPv6 support._ 
-```C++
-inline int endstone::ServerListPingEvent::getLocalPortV6 () const
-```
-
-
-
-
-
-**Returns:**
-
-The local port for IPv6 
 
 
 
@@ -609,33 +581,6 @@ inline void endstone::ServerListPingEvent::setLocalPort (
 
 
 * `port` the local port 
-
-
-
-
-        
-
-<hr>
-
-
-
-### function setLocalPortV6 
-
-_Set the local port of the server for IPv6 support._ 
-```C++
-inline void endstone::ServerListPingEvent::setLocalPortV6 (
-    int port
-) 
-```
-
-
-
-
-
-**Parameters:**
-
-
-* `port` the local port for IPv6 
 
 
 

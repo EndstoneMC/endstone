@@ -2621,6 +2621,8 @@ For latest updates join the chat on
             
                 
             
+                
+            
         </ul>
     </nav>
     
@@ -4073,6 +4075,8 @@ For latest updates join the chat on
     
     <nav class="md-nav" aria-label="Unreleased">
         <ul class="md-nav__list">
+            
+                
             
                 
             
@@ -5658,12 +5662,18 @@ and this project adheres to <a href="https://semver.org/spec/v2.0.0.html">Semant
 <li><strong>BREAKING</strong>: <code>ActorDeathEvent</code> is now called for player deaths as well as every other mob. A listener that assumed it only saw non-player mobs should check <code>actor.type</code> or listen for <code>PlayerDeathEvent</code>.</li>
 <li><code>Block.set_type</code>, <code>BlockState.type</code>, <code>Server.create_block_data</code> and <code>Inventory.contains</code>/<code>contains_at_least</code>/<code>all</code>/<code>first</code>/<code>remove</code> take an <code>Identifier</code> (e.g. <code>BlockType.AIR</code>). Plain <code>"namespace:key"</code> strings are still accepted.</li>
 <li><code>str()</code> on <code>BlockType</code>, <code>Enchantment</code> and <code>ItemType</code> returns a plain <code>"namespace:key"</code> string instead of the underlying <code>Identifier</code> repr.</li>
+<li><strong>BREAKING</strong>: <code>Server::createBossBar()</code> is no longer <code>const</code>, since the server now keeps track of the boss bars it hands out. C++ plugins holding a <code>const Server &amp;</code> need a non-const one; Python call sites are unchanged.</li>
 </ul>
 <h4 id="platform">Platform<a class="headerlink" href="#platform" title="Permanent link">&para;</a></h4>
 <ul>
 <li><strong>BREAKING</strong>: The Docker image stores server data in <code>/data</code> instead of <code>/home/endstone/bedrock_server</code>. Update your volume mount accordingly (e.g. <code>-v ./data:/data</code>).</li>
 <li>The console prompt now appears as soon as the server starts, right after the version banner, instead of only once the world has finished loading. Commands typed while the server is still starting are queued and run once it is ready, as they already were. Endstone no longer redirects the server's stdin during startup, so anything else reading it sees the real terminal throughout.</li>
 <li>Dropped Python 3.10 support (end-of-life). Minimum version is now Python 3.11.</li>
+</ul>
+<h3 id="removed">Removed<a class="headerlink" href="#removed" title="Permanent link">&para;</a></h3>
+<h4 id="networking_1">Networking<a class="headerlink" href="#networking_1" title="Permanent link">&para;</a></h4>
+<ul>
+<li><strong>BREAKING</strong>: <code>Server.port_v6</code> and <code>ServerListPingEvent.local_port_v6</code>. A server advertises one game port; the separate IPv6 port was rarely set and has no counterpart under NetherNet, which shares a single port across both families. Use <code>Server.port</code> and <code>ServerListPingEvent.local_port</code>. The IPv6 port field in the LAN advertisement is now passed through untouched rather than being rewritten from the event.</li>
 </ul>
 <h3 id="fixed">Fixed<a class="headerlink" href="#fixed" title="Permanent link">&para;</a></h3>
 <h4 id="crashes-and-memory">Crashes and memory<a class="headerlink" href="#crashes-and-memory" title="Permanent link">&para;</a></h4>
@@ -5684,6 +5694,7 @@ and this project adheres to <a href="https://semver.org/spec/v2.0.0.html">Semant
 <li>Fixed writing book metadata wiping the photo attached to a page and the filtered text the server keeps beside it. Pages you did not change now keep both.</li>
 <li>Fixed <code>Enchantment.FORTUNE</code> missing from Python.</li>
 <li>Fixed <code>ServerLoadEvent</code> missing its <code>ServerEvent</code> base in Python, and <code>LoadType.RELOAD</code> never being exposed.</li>
+<li>Fixed a boss bar vanishing for a player who travelled to another dimension. The Bedrock client drops every boss bar it is showing once it rebuilds the world, so the bars a player is in are now sent again after the dimension change finishes.</li>
 <li>Fixed <code>Plugin.default_permission</code> rejecting a string or a bool (<code>"operator"</code>, <code>"not op"</code>, <code>True</code>), which individual entries in <code>Plugin.permissions</code> already accepted.</li>
 </ul>
 <h4 id="type-annotations">Type annotations<a class="headerlink" href="#type-annotations" title="Permanent link">&para;</a></h4>

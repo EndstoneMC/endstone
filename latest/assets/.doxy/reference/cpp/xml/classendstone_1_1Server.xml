@@ -18,7 +18,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/server.h" line="498" column="37" bodyfile="include/endstone/server.h" bodystart="498" bodyend="-1"/>
+        <location file="include/endstone/server.h" line="491" column="37" bodyfile="include/endstone/server.h" bodystart="491" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="classendstone_1_1Server_1ac3e6fddabfcbb3075d2539b673d04ed2" prot="public" static="yes" mutable="no">
         <type><ref refid="classendstone_1_1Identifier" kindref="compound">const</ref> std::string</type>
@@ -34,7 +34,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/server.h" line="503" column="37" bodyfile="include/endstone/server.h" bodystart="503" bodyend="-1"/>
+        <location file="include/endstone/server.h" line="496" column="37" bodyfile="include/endstone/server.h" bodystart="496" bodyend="-1"/>
       </memberdef>
     </sectiondef>
     <sectiondef kind="public-func">
@@ -495,24 +495,6 @@
         </inbodydescription>
         <location file="include/endstone/server.h" line="210" column="18"/>
       </memberdef>
-      <memberdef kind="function" id="classendstone_1_1Server_1a8f5fe4938d839ad53d7449429dbc6f7a" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
-        <type><ref refid="classendstone_1_1Identifier" kindref="compound">int</ref></type>
-        <definition>virtual int endstone::Server::getPortV6</definition>
-        <argsstring>() const =0</argsstring>
-        <name>getPortV6</name>
-        <qualifiedname>endstone::Server::getPortV6</qualifiedname>
-        <briefdescription>
-<para>Get the game port (IPv6) that the server runs on. </para>
-        </briefdescription>
-        <detaileddescription>
-<para><simplesect kind="return"><para>the port number of this server </para>
-</simplesect>
-</para>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
-        <location file="include/endstone/server.h" line="217" column="18"/>
-      </memberdef>
       <memberdef kind="function" id="classendstone_1_1Server_1ae3fa91a411498dc3b3bdecfeaffac19e" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
         <type><ref refid="classendstone_1_1Identifier" kindref="compound">bool</ref></type>
         <definition>virtual bool endstone::Server::getOnlineMode</definition>
@@ -529,7 +511,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/server.h" line="224" column="19"/>
+        <location file="include/endstone/server.h" line="217" column="19"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1Server_1aa38f7706ba5b65103c7bc8bc71149485" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
         <type><ref refid="classendstone_1_1Nullable" kindref="compound">Nullable</ref>&lt; <ref refid="classendstone_1_1Player" kindref="compound">Player</ref> &gt;</type>
@@ -560,7 +542,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/server.h" line="232" column="23"/>
+        <location file="include/endstone/server.h" line="225" column="23"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1Server_1a349c02e809ca14e2c16b0fa6bf021d1a" prot="public" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
         <type><ref refid="classendstone_1_1Identifier" kindref="compound">void</ref></type>
@@ -575,7 +557,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/server.h" line="237" column="18"/>
+        <location file="include/endstone/server.h" line="230" column="18"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1Server_1acd79b367ca64559921c87dbfe9950bea" prot="public" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
         <type><ref refid="classendstone_1_1Identifier" kindref="compound">void</ref></type>
@@ -590,7 +572,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/server.h" line="242" column="18"/>
+        <location file="include/endstone/server.h" line="235" column="18"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1Server_1aba9dbe7bb1d4c0083a7d5bd1e76fbca0" prot="public" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
         <type><ref refid="classendstone_1_1Identifier" kindref="compound">void</ref></type>
@@ -606,7 +588,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/server.h" line="249" column="18"/>
+        <location file="include/endstone/server.h" line="242" column="18"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1Server_1aad0acb0f58d11256a696ecdc04287331" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
         <type><ref refid="classendstone_1_1Identifier" kindref="compound">void</ref></type>
@@ -647,7 +629,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/server.h" line="257" column="18"/>
+        <location file="include/endstone/server.h" line="250" column="18"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1Server_1acc4f0ea241258f9d987752f1b86d1c8e" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
         <type><ref refid="classendstone_1_1Identifier" kindref="compound">void</ref></type>
@@ -676,7 +658,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/server.h" line="264" column="18"/>
+        <location file="include/endstone/server.h" line="257" column="18"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1Server_1a049a25c58efc38008bb38eebd4e885d4" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
         <templateparamlist>
@@ -725,7 +707,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/server.h" line="276" column="10" bodyfile="include/endstone/server.h" bodystart="276" bodyend="284"/>
+        <location file="include/endstone/server.h" line="269" column="10" bodyfile="include/endstone/server.h" bodystart="269" bodyend="277"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1Server_1a1a2968bddfbf66a9421477b42219799e" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
         <type><ref refid="classendstone_1_1Identifier" kindref="compound">bool</ref></type>
@@ -743,7 +725,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/server.h" line="291" column="19"/>
+        <location file="include/endstone/server.h" line="284" column="19"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1Server_1a889e988b65a8e60440b2ac4ac668a2e3" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
         <type><ref refid="classendstone_1_1ItemFactory" kindref="compound">ItemFactory</ref> &amp;</type>
@@ -763,7 +745,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/server.h" line="299" column="26"/>
+        <location file="include/endstone/server.h" line="292" column="26"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1Server_1a3326599925a9f42da3edc28a9df6601b" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
         <type><ref refid="classendstone_1_1Nullable" kindref="compound">Nullable</ref>&lt; <ref refid="classendstone_1_1Scoreboard" kindref="compound">Scoreboard</ref> &gt;</type>
@@ -782,7 +764,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/server.h" line="309" column="23"/>
+        <location file="include/endstone/server.h" line="302" column="23"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1Server_1af3830307c60cf17ae0f31c259d17074f" prot="public" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
         <type><ref refid="classendstone_1_1NotNull" kindref="compound">NotNull</ref>&lt; <ref refid="classendstone_1_1Scoreboard" kindref="compound">Scoreboard</ref> &gt;</type>
@@ -801,7 +783,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/server.h" line="318" column="22"/>
+        <location file="include/endstone/server.h" line="311" column="22"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1Server_1a2a9e4988b27ff1cfa65df290a8d61c7c" prot="public" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
         <type><ref refid="classendstone_1_1Identifier" kindref="compound">float</ref></type>
@@ -819,7 +801,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/server.h" line="325" column="19"/>
+        <location file="include/endstone/server.h" line="318" column="19"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1Server_1a63e3ffb84311f233e965144501ceb195" prot="public" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
         <type><ref refid="classendstone_1_1Identifier" kindref="compound">float</ref></type>
@@ -837,7 +819,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/server.h" line="332" column="19"/>
+        <location file="include/endstone/server.h" line="325" column="19"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1Server_1a3b94b752dcf483b607c247ff335a0deb" prot="public" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
         <type><ref refid="classendstone_1_1Identifier" kindref="compound">float</ref></type>
@@ -855,7 +837,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/server.h" line="339" column="19"/>
+        <location file="include/endstone/server.h" line="332" column="19"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1Server_1a23be2bfc5675e6b04cce1e2a7f7f3277" prot="public" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
         <type><ref refid="classendstone_1_1Identifier" kindref="compound">float</ref></type>
@@ -873,7 +855,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/server.h" line="345" column="19"/>
+        <location file="include/endstone/server.h" line="338" column="19"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1Server_1a4961829bb78b2cbb9e53393f6c4ee3ad" prot="public" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
         <type><ref refid="classendstone_1_1Identifier" kindref="compound">float</ref></type>
@@ -891,7 +873,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/server.h" line="352" column="19"/>
+        <location file="include/endstone/server.h" line="345" column="19"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1Server_1a08daaf367859b76040b252ba7e2b3dcf" prot="public" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
         <type><ref refid="classendstone_1_1Identifier" kindref="compound">float</ref></type>
@@ -909,7 +891,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/server.h" line="359" column="19"/>
+        <location file="include/endstone/server.h" line="352" column="19"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1Server_1a1a8387bc10d12e8b2895fa29654ded55" prot="public" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
         <type>std::chrono::system_clock::time_point</type>
@@ -927,12 +909,12 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/server.h" line="366" column="52"/>
+        <location file="include/endstone/server.h" line="359" column="52"/>
       </memberdef>
-      <memberdef kind="function" id="classendstone_1_1Server_1a7d8f691e99cf80aa30ecbb4cac90fdcc" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
+      <memberdef kind="function" id="classendstone_1_1Server_1aef45bd16d5032c6b9ccae094baced488" prot="public" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
         <type><ref refid="classendstone_1_1NotNull" kindref="compound">NotNull</ref>&lt; <ref refid="classendstone_1_1BossBar" kindref="compound">BossBar</ref> &gt;</type>
         <definition>virtual NotNull&lt; BossBar &gt; endstone::Server::createBossBar</definition>
-        <argsstring>(std::string title, BarColor color, BarStyle style) const =0</argsstring>
+        <argsstring>(std::string title, BarColor color, BarStyle style)=0</argsstring>
         <name>createBossBar</name>
         <qualifiedname>endstone::Server::createBossBar</qualifiedname>
         <param>
@@ -983,12 +965,12 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/server.h" line="376" column="22"/>
+        <location file="include/endstone/server.h" line="369" column="22"/>
       </memberdef>
-      <memberdef kind="function" id="classendstone_1_1Server_1a82d7a14309acb162511c84399b6d7211" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
+      <memberdef kind="function" id="classendstone_1_1Server_1a09f97f43b0a7715dd2909b97753945a8" prot="public" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
         <type><ref refid="classendstone_1_1NotNull" kindref="compound">NotNull</ref>&lt; <ref refid="classendstone_1_1BossBar" kindref="compound">BossBar</ref> &gt;</type>
         <definition>virtual NotNull&lt; BossBar &gt; endstone::Server::createBossBar</definition>
-        <argsstring>(std::string title, BarColor color, BarStyle style, std::vector&lt; BarFlag &gt; flags) const =0</argsstring>
+        <argsstring>(std::string title, BarColor color, BarStyle style, std::vector&lt; BarFlag &gt; flags)=0</argsstring>
         <name>createBossBar</name>
         <qualifiedname>endstone::Server::createBossBar</qualifiedname>
         <param>
@@ -1051,7 +1033,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/server.h" line="387" column="22"/>
+        <location file="include/endstone/server.h" line="380" column="22"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1Server_1a10886cad19773838cbceb67d93183066" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
         <type><ref refid="classendstone_1_1NotNull" kindref="compound">NotNull</ref>&lt; <ref refid="classendstone_1_1BlockData" kindref="compound">BlockData</ref> &gt;</type>
@@ -1082,7 +1064,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/server.h" line="397" column="22"/>
+        <location file="include/endstone/server.h" line="390" column="22"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1Server_1a0bea773bcd3ae96b77f75e7591a6805a" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
         <type><ref refid="classendstone_1_1NotNull" kindref="compound">NotNull</ref>&lt; <ref refid="classendstone_1_1BlockData" kindref="compound">BlockData</ref> &gt;</type>
@@ -1125,7 +1107,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/server.h" line="407" column="22"/>
+        <location file="include/endstone/server.h" line="400" column="22"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1Server_1a6aabbee05ed99ba41702ae926c6374b2" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
         <type><ref refid="classendstone_1_1PlayerBanList" kindref="compound">PlayerBanList</ref> &amp;</type>
@@ -1143,7 +1125,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/server.h" line="414" column="28"/>
+        <location file="include/endstone/server.h" line="407" column="28"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1Server_1a8ab4971ec939f666bf3b98d1a80c7af3" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
         <type><ref refid="classendstone_1_1IpBanList" kindref="compound">IpBanList</ref> &amp;</type>
@@ -1161,7 +1143,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/server.h" line="421" column="24"/>
+        <location file="include/endstone/server.h" line="414" column="24"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1Server_1a846007f57bf27a84e78f49b218c2fa7c" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
         <type><ref refid="classendstone_1_1ServiceManager" kindref="compound">ServiceManager</ref> &amp;</type>
@@ -1179,7 +1161,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/server.h" line="428" column="29"/>
+        <location file="include/endstone/server.h" line="421" column="29"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1Server_1a91a4c4ec696a55823c71426cd886fc4c" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
         <type><ref refid="classendstone_1_1IRegistry" kindref="compound">IRegistry</ref> *</type>
@@ -1211,7 +1193,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/server.h" line="439" column="24"/>
+        <location file="include/endstone/server.h" line="432" column="24"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1Server_1a767171af5232bcf5c1d1502f4903edea" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
         <templateparamlist>
@@ -1252,7 +1234,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/server.h" line="449" column="21" bodyfile="include/endstone/server.h" bodystart="449" bodyend="456"/>
+        <location file="include/endstone/server.h" line="442" column="21" bodyfile="include/endstone/server.h" bodystart="442" bodyend="449"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1Server_1a1934abd049be85a1a3bf8170a0c56d49" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
         <type><ref refid="classendstone_1_1MapView" kindref="compound">MapView</ref> *</type>
@@ -1283,7 +1265,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/server.h" line="465" column="22"/>
+        <location file="include/endstone/server.h" line="458" column="22"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1Server_1a13626af5278cd317051b248b70d12b9e" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
         <type><ref refid="classendstone_1_1MapView" kindref="compound">MapView</ref> &amp;</type>
@@ -1314,7 +1296,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/server.h" line="474" column="22"/>
+        <location file="include/endstone/server.h" line="467" column="22"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1Server_1aba3b8870db149e2feae809df93ead4a6" prot="public" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
         <type><ref refid="classendstone_1_1NotNull" kindref="compound">NotNull</ref>&lt; <ref refid="classendstone_1_1MetricsBase" kindref="compound">MetricsBase</ref> &gt;</type>
@@ -1358,7 +1340,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/server.h" line="486" column="22"/>
+        <location file="include/endstone/server.h" line="479" column="22"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1Server_1a22cfb82446edaff2a501f1e1f7139cf3" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
         <type>std::vector&lt; <ref refid="classendstone_1_1NotNull" kindref="compound">NotNull</ref>&lt; <ref refid="classendstone_1_1Recipe" kindref="compound">Recipe</ref> &gt; &gt;</type>
@@ -1376,7 +1358,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/server.h" line="493" column="26"/>
+        <location file="include/endstone/server.h" line="486" column="26"/>
       </memberdef>
     </sectiondef>
     <briefdescription>
@@ -1384,7 +1366,7 @@
     </briefdescription>
     <detaileddescription>
     </detaileddescription>
-    <location file="include/endstone/server.h" line="72" column="1" bodyfile="include/endstone/server.h" bodystart="72" bodyend="504"/>
+    <location file="include/endstone/server.h" line="72" column="1" bodyfile="include/endstone/server.h" bodystart="72" bodyend="497"/>
     <listofallmembers>
       <member refid="classendstone_1_1Server_1a91a4c4ec696a55823c71426cd886fc4c" prot="public" virt="pure-virtual"><scope>endstone::Server</scope><name>_getRegistry</name></member>
       <member refid="classendstone_1_1Server_1aad0acb0f58d11256a696ecdc04287331" prot="public" virt="pure-virtual"><scope>endstone::Server</scope><name>broadcast</name></member>
@@ -1394,8 +1376,8 @@
       <member refid="classendstone_1_1Server_1a049a25c58efc38008bb38eebd4e885d4" prot="public" virt="non-virtual"><scope>endstone::Server</scope><name>broadcastMessage</name></member>
       <member refid="classendstone_1_1Server_1a10886cad19773838cbceb67d93183066" prot="public" virt="pure-virtual"><scope>endstone::Server</scope><name>createBlockData</name></member>
       <member refid="classendstone_1_1Server_1a0bea773bcd3ae96b77f75e7591a6805a" prot="public" virt="pure-virtual"><scope>endstone::Server</scope><name>createBlockData</name></member>
-      <member refid="classendstone_1_1Server_1a7d8f691e99cf80aa30ecbb4cac90fdcc" prot="public" virt="pure-virtual"><scope>endstone::Server</scope><name>createBossBar</name></member>
-      <member refid="classendstone_1_1Server_1a82d7a14309acb162511c84399b6d7211" prot="public" virt="pure-virtual"><scope>endstone::Server</scope><name>createBossBar</name></member>
+      <member refid="classendstone_1_1Server_1aef45bd16d5032c6b9ccae094baced488" prot="public" virt="pure-virtual"><scope>endstone::Server</scope><name>createBossBar</name></member>
+      <member refid="classendstone_1_1Server_1a09f97f43b0a7715dd2909b97753945a8" prot="public" virt="pure-virtual"><scope>endstone::Server</scope><name>createBossBar</name></member>
       <member refid="classendstone_1_1Server_1a13626af5278cd317051b248b70d12b9e" prot="public" virt="pure-virtual"><scope>endstone::Server</scope><name>createMap</name></member>
       <member refid="classendstone_1_1Server_1aba3b8870db149e2feae809df93ead4a6" prot="public" virt="pure-virtual"><scope>endstone::Server</scope><name>createMetrics</name></member>
       <member refid="classendstone_1_1Server_1af3830307c60cf17ae0f31c259d17074f" prot="public" virt="pure-virtual"><scope>endstone::Server</scope><name>createScoreboard</name></member>
@@ -1425,7 +1407,6 @@
       <member refid="classendstone_1_1Server_1ac3484a4420ca5eaa86056e0dfbce54f1" prot="public" virt="pure-virtual"><scope>endstone::Server</scope><name>getPluginCommand</name></member>
       <member refid="classendstone_1_1Server_1afd16655cd119fe34c52f3658245093d1" prot="public" virt="pure-virtual"><scope>endstone::Server</scope><name>getPluginManager</name></member>
       <member refid="classendstone_1_1Server_1a02ad5f608bf57e66d60959ace598c492" prot="public" virt="pure-virtual"><scope>endstone::Server</scope><name>getPort</name></member>
-      <member refid="classendstone_1_1Server_1a8f5fe4938d839ad53d7449429dbc6f7a" prot="public" virt="pure-virtual"><scope>endstone::Server</scope><name>getPortV6</name></member>
       <member refid="classendstone_1_1Server_1a18c9bcc8cd31afdf4e5294c64135d2f4" prot="public" virt="pure-virtual"><scope>endstone::Server</scope><name>getProtocolVersion</name></member>
       <member refid="classendstone_1_1Server_1a22cfb82446edaff2a501f1e1f7139cf3" prot="public" virt="pure-virtual"><scope>endstone::Server</scope><name>getRecipes</name></member>
       <member refid="classendstone_1_1Server_1a767171af5232bcf5c1d1502f4903edea" prot="public" virt="non-virtual"><scope>endstone::Server</scope><name>getRegistry</name></member>

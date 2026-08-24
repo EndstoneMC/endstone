@@ -2903,7 +2903,6 @@
     <member refid="classendstone_1_1Server_1a44ff16f118e70e3a032854124ffca958" kind="function"><name>setMaxPlayers</name></member>
     <member refid="classendstone_1_1Server_1a1811aab4be6529d7fabdf912d8b14f6d" kind="function"><name>getPlayer</name></member>
     <member refid="classendstone_1_1Server_1a02ad5f608bf57e66d60959ace598c492" kind="function"><name>getPort</name></member>
-    <member refid="classendstone_1_1Server_1a8f5fe4938d839ad53d7449429dbc6f7a" kind="function"><name>getPortV6</name></member>
     <member refid="classendstone_1_1Server_1ae3fa91a411498dc3b3bdecfeaffac19e" kind="function"><name>getOnlineMode</name></member>
     <member refid="classendstone_1_1Server_1aa38f7706ba5b65103c7bc8bc71149485" kind="function"><name>getPlayer</name></member>
     <member refid="classendstone_1_1Server_1a349c02e809ca14e2c16b0fa6bf021d1a" kind="function"><name>shutdown</name></member>
@@ -2923,8 +2922,8 @@
     <member refid="classendstone_1_1Server_1a4961829bb78b2cbb9e53393f6c4ee3ad" kind="function"><name>getCurrentTickUsage</name></member>
     <member refid="classendstone_1_1Server_1a08daaf367859b76040b252ba7e2b3dcf" kind="function"><name>getAverageTickUsage</name></member>
     <member refid="classendstone_1_1Server_1a1a8387bc10d12e8b2895fa29654ded55" kind="function"><name>getStartTime</name></member>
-    <member refid="classendstone_1_1Server_1a7d8f691e99cf80aa30ecbb4cac90fdcc" kind="function"><name>createBossBar</name></member>
-    <member refid="classendstone_1_1Server_1a82d7a14309acb162511c84399b6d7211" kind="function"><name>createBossBar</name></member>
+    <member refid="classendstone_1_1Server_1aef45bd16d5032c6b9ccae094baced488" kind="function"><name>createBossBar</name></member>
+    <member refid="classendstone_1_1Server_1a09f97f43b0a7715dd2909b97753945a8" kind="function"><name>createBossBar</name></member>
     <member refid="classendstone_1_1Server_1a10886cad19773838cbceb67d93183066" kind="function"><name>createBlockData</name></member>
     <member refid="classendstone_1_1Server_1a0bea773bcd3ae96b77f75e7591a6805a" kind="function"><name>createBlockData</name></member>
     <member refid="classendstone_1_1Server_1a6aabbee05ed99ba41702ae926c6374b2" kind="function"><name>getBanList</name></member>
@@ -2962,16 +2961,13 @@
     <member refid="classendstone_1_1ServerListPingEvent_1a0445fcfd1719ff62e013ce5f499f5872" kind="variable"><name>level_name_</name></member>
     <member refid="classendstone_1_1ServerListPingEvent_1a5684f820a993d3726b9e742ab8ed1911" kind="variable"><name>game_mode_</name></member>
     <member refid="classendstone_1_1ServerListPingEvent_1a2bb3386b5d3530ccefdff7fae10a557c" kind="variable"><name>local_port_</name></member>
-    <member refid="classendstone_1_1ServerListPingEvent_1aa04477f40872fd8c43bccd24e10eff65" kind="variable"><name>local_port_v6_</name></member>
     <member refid="classendstone_1_1ServerListPingEvent_1a7e3f51fe9508e10d653cbb865efd58dc" kind="function"><name>ENDSTONE_EVENT</name></member>
-    <member refid="classendstone_1_1ServerListPingEvent_1aa9371239a647b337859f3f28a8f51e4c" kind="function"><name>ServerListPingEvent</name></member>
+    <member refid="classendstone_1_1ServerListPingEvent_1a23c2eb92acf0ac889b478835efc385fd" kind="function"><name>ServerListPingEvent</name></member>
     <member refid="classendstone_1_1ServerListPingEvent_1ab8245eb6e2f1460205e0e13946313f3d" kind="function"><name>getAddress</name></member>
     <member refid="classendstone_1_1ServerListPingEvent_1aa6a64659d29e47acf3af3e860c1d16da" kind="function"><name>getServerGuid</name></member>
     <member refid="classendstone_1_1ServerListPingEvent_1a7398713547a0938d75954d29da7b8aba" kind="function"><name>setServerGuid</name></member>
     <member refid="classendstone_1_1ServerListPingEvent_1ad7e01f29129c5e342a38ad8a8732c96a" kind="function"><name>getLocalPort</name></member>
     <member refid="classendstone_1_1ServerListPingEvent_1a5da7cb54f3d9d5a97a5c9696a5a7123a" kind="function"><name>setLocalPort</name></member>
-    <member refid="classendstone_1_1ServerListPingEvent_1aa68b81ed4b1a3fd074213be9c8ce9f9c" kind="function"><name>getLocalPortV6</name></member>
-    <member refid="classendstone_1_1ServerListPingEvent_1a831630406c4b0d3c92fa914a26251953" kind="function"><name>setLocalPortV6</name></member>
     <member refid="classendstone_1_1ServerListPingEvent_1a6815d44f4a92512b6af951ffeb540c01" kind="function"><name>getMotd</name></member>
     <member refid="classendstone_1_1ServerListPingEvent_1ad534cad4e5f078d2a49c2ece69503239" kind="function"><name>setMotd</name></member>
     <member refid="classendstone_1_1ServerListPingEvent_1a9855e0851bdc24a5329ab6dfebd8fb52" kind="function"><name>getNetworkProtocolVersion</name></member>

@@ -66,8 +66,8 @@ _Represents a server implementation._
 |  [**void**](classendstone_1_1Identifier.md) | [**broadcastMessage**](#function-broadcastmessage-22) ([**const**](classendstone_1_1Identifier.md) std::format\_string&lt; Args... &gt; format, [**Args**](classendstone_1_1Identifier.md) &&... args) const<br>_Broadcasts a formatted message to every user with permission_ `endstone.broadcast.user` _._ |
 | virtual [**NotNull**](classendstone_1_1NotNull.md)&lt; [**BlockData**](classendstone_1_1BlockData.md) &gt; | [**createBlockData**](#function-createblockdata-12) ([**BlockTypeId**](classendstone_1_1Identifier.md) type) const = 0<br>_Creates a new_ [_**BlockData**_](classendstone_1_1BlockData.md) _instance for the specified block type, with all properties initialized to defaults._ |
 | virtual [**NotNull**](classendstone_1_1NotNull.md)&lt; [**BlockData**](classendstone_1_1BlockData.md) &gt; | [**createBlockData**](#function-createblockdata-22) ([**BlockTypeId**](classendstone_1_1Identifier.md) type, BlockStates block\_states) const = 0<br>_Creates a new_ [_**BlockData**_](classendstone_1_1BlockData.md) _instance for the specified block type, with all properties initialized to defaults, except for those provided in data._ |
-| virtual [**NotNull**](classendstone_1_1NotNull.md)&lt; [**BossBar**](classendstone_1_1BossBar.md) &gt; | [**createBossBar**](#function-createbossbar-12) (std::string title, [**BarColor**](namespaceendstone.md#enum-barcolor) color, [**BarStyle**](namespaceendstone.md#enum-barstyle) style) const = 0<br>_Creates a boss bar instance to display to players._  |
-| virtual [**NotNull**](classendstone_1_1NotNull.md)&lt; [**BossBar**](classendstone_1_1BossBar.md) &gt; | [**createBossBar**](#function-createbossbar-22) (std::string title, [**BarColor**](namespaceendstone.md#enum-barcolor) color, [**BarStyle**](namespaceendstone.md#enum-barstyle) style, std::vector&lt; [**BarFlag**](namespaceendstone.md#enum-barflag) &gt; flags) const = 0<br>_Creates a boss bar instance to display to players._  |
+| virtual [**NotNull**](classendstone_1_1NotNull.md)&lt; [**BossBar**](classendstone_1_1BossBar.md) &gt; | [**createBossBar**](#function-createbossbar-12) (std::string title, [**BarColor**](namespaceendstone.md#enum-barcolor) color, [**BarStyle**](namespaceendstone.md#enum-barstyle) style) = 0<br>_Creates a boss bar instance to display to players._  |
+| virtual [**NotNull**](classendstone_1_1NotNull.md)&lt; [**BossBar**](classendstone_1_1BossBar.md) &gt; | [**createBossBar**](#function-createbossbar-22) (std::string title, [**BarColor**](namespaceendstone.md#enum-barcolor) color, [**BarStyle**](namespaceendstone.md#enum-barstyle) style, std::vector&lt; [**BarFlag**](namespaceendstone.md#enum-barflag) &gt; flags) = 0<br>_Creates a boss bar instance to display to players._  |
 | virtual [**MapView**](classendstone_1_1MapView.md) & | [**createMap**](#function-createmap) ([**const**](classendstone_1_1Identifier.md) [**NotNull**](classendstone_1_1NotNull.md)&lt; [**Dimension**](classendstone_1_1Dimension.md) &gt; & dimension) const = 0<br>_Create a new map with an automatically assigned ID._  |
 | virtual [**NotNull**](classendstone_1_1NotNull.md)&lt; [**MetricsBase**](classendstone_1_1MetricsBase.md) &gt; | [**createMetrics**](#function-createmetrics) ([**Plugin**](classendstone_1_1Plugin.md) & plugin, [**int**](classendstone_1_1Identifier.md) service\_id) = 0<br>_Creates the backend for a plugin's metrics._  |
 | virtual [**NotNull**](classendstone_1_1NotNull.md)&lt; [**Scoreboard**](classendstone_1_1Scoreboard.md) &gt; | [**createScoreboard**](#function-createscoreboard) () = 0<br>_Creates a new_ [_**Scoreboard**_](classendstone_1_1Scoreboard.md) _to be tracked by the server._ |
@@ -97,7 +97,6 @@ _Represents a server implementation._
 | virtual [**Nullable**](classendstone_1_1Nullable.md)&lt; [**PluginCommand**](classendstone_1_1PluginCommand.md) &gt; | [**getPluginCommand**](#function-getplugincommand) (std::string name) const = 0<br>_Gets a_ [_**PluginCommand**_](classendstone_1_1PluginCommand.md) _with the given name or alias._ |
 | virtual [**PluginManager**](classendstone_1_1PluginManager.md) & | [**getPluginManager**](#function-getpluginmanager) () const = 0<br>_Gets the plugin manager for interfacing with plugins._  |
 | virtual [**int**](classendstone_1_1Identifier.md) | [**getPort**](#function-getport) () const = 0<br>_Get the game port that the server runs on._  |
-| virtual [**int**](classendstone_1_1Identifier.md) | [**getPortV6**](#function-getportv6) () const = 0<br>_Get the game port (IPv6) that the server runs on._  |
 | virtual [**int**](classendstone_1_1Identifier.md) | [**getProtocolVersion**](#function-getprotocolversion) () const = 0<br>_Gets the network protocol version that this server supports._  |
 | virtual std::vector&lt; [**NotNull**](classendstone_1_1NotNull.md)&lt; [**Recipe**](classendstone_1_1Recipe.md) &gt; &gt; | [**getRecipes**](#function-getrecipes) () const = 0<br>_Get the list of crafting recipes._  |
 |  [**const**](classendstone_1_1Identifier.md) [**Registry**](classendstone_1_1Registry.md)&lt; [**T**](classendstone_1_1Identifier.md) &gt; & | [**getRegistry**](#function-getregistry) () const<br>_Returns the registry for the given element type._  |
@@ -408,7 +407,7 @@ virtual NotNull < BossBar > endstone::Server::createBossBar (
     std::string title,
     BarColor color,
     BarStyle style
-) const = 0
+) = 0
 ```
 
 
@@ -450,7 +449,7 @@ virtual NotNull < BossBar > endstone::Server::createBossBar (
     BarColor color,
     BarStyle style,
     std::vector< BarFlag > flags
-) const = 0
+) = 0
 ```
 
 
@@ -1272,31 +1271,6 @@ a plugin manager for this [**Server**](classendstone_1_1Server.md) instance
 _Get the game port that the server runs on._ 
 ```C++
 virtual int endstone::Server::getPort () const = 0
-```
-
-
-
-
-
-**Returns:**
-
-the port number of this server 
-
-
-
-
-
-        
-
-<hr>
-
-
-
-### function getPortV6 
-
-_Get the game port (IPv6) that the server runs on._ 
-```C++
-virtual int endstone::Server::getPortV6 () const = 0
 ```
 
 

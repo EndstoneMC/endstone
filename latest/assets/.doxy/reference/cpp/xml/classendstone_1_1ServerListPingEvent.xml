@@ -17,7 +17,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/event/server/server_list_ping_event.h" line="189" column="19" bodyfile="include/endstone/event/server/server_list_ping_event.h" bodystart="189" bodyend="-1"/>
+        <location file="include/endstone/event/server/server_list_ping_event.h" line="174" column="19" bodyfile="include/endstone/event/server/server_list_ping_event.h" bodystart="174" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="classendstone_1_1ServerListPingEvent_1a0dddc976593869152d0ef38a5d8daa34" prot="private" static="no" mutable="no">
         <type>std::string</type>
@@ -31,7 +31,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/event/server/server_list_ping_event.h" line="190" column="17" bodyfile="include/endstone/event/server/server_list_ping_event.h" bodystart="190" bodyend="-1"/>
+        <location file="include/endstone/event/server/server_list_ping_event.h" line="175" column="17" bodyfile="include/endstone/event/server/server_list_ping_event.h" bodystart="175" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="classendstone_1_1ServerListPingEvent_1abc081ef7f7466cae98e3f43b95a5426a" prot="private" static="no" mutable="no">
         <type><ref refid="classendstone_1_1Identifier" kindref="compound">int</ref></type>
@@ -45,7 +45,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/event/server/server_list_ping_event.h" line="191" column="9" bodyfile="include/endstone/event/server/server_list_ping_event.h" bodystart="191" bodyend="-1"/>
+        <location file="include/endstone/event/server/server_list_ping_event.h" line="176" column="9" bodyfile="include/endstone/event/server/server_list_ping_event.h" bodystart="176" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="classendstone_1_1ServerListPingEvent_1a8b799147a933986630505d722d9362a0" prot="private" static="no" mutable="no">
         <type>std::string</type>
@@ -59,7 +59,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/event/server/server_list_ping_event.h" line="192" column="17" bodyfile="include/endstone/event/server/server_list_ping_event.h" bodystart="192" bodyend="-1"/>
+        <location file="include/endstone/event/server/server_list_ping_event.h" line="177" column="17" bodyfile="include/endstone/event/server/server_list_ping_event.h" bodystart="177" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="classendstone_1_1ServerListPingEvent_1aaa7524b98b5e398a6bef0a2d91ae34b5" prot="private" static="no" mutable="no">
         <type><ref refid="classendstone_1_1Identifier" kindref="compound">int</ref></type>
@@ -73,7 +73,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/event/server/server_list_ping_event.h" line="193" column="9" bodyfile="include/endstone/event/server/server_list_ping_event.h" bodystart="193" bodyend="-1"/>
+        <location file="include/endstone/event/server/server_list_ping_event.h" line="178" column="9" bodyfile="include/endstone/event/server/server_list_ping_event.h" bodystart="178" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="classendstone_1_1ServerListPingEvent_1a5f396ee3655ee17dac3ab89758cc9de8" prot="private" static="no" mutable="no">
         <type><ref refid="classendstone_1_1Identifier" kindref="compound">int</ref></type>
@@ -87,7 +87,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/event/server/server_list_ping_event.h" line="194" column="9" bodyfile="include/endstone/event/server/server_list_ping_event.h" bodystart="194" bodyend="-1"/>
+        <location file="include/endstone/event/server/server_list_ping_event.h" line="179" column="9" bodyfile="include/endstone/event/server/server_list_ping_event.h" bodystart="179" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="classendstone_1_1ServerListPingEvent_1a9eccbd82f7c4d756be8344ab6f30a0cb" prot="private" static="no" mutable="no">
         <type>std::string</type>
@@ -101,7 +101,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/event/server/server_list_ping_event.h" line="195" column="17" bodyfile="include/endstone/event/server/server_list_ping_event.h" bodystart="195" bodyend="-1"/>
+        <location file="include/endstone/event/server/server_list_ping_event.h" line="180" column="17" bodyfile="include/endstone/event/server/server_list_ping_event.h" bodystart="180" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="classendstone_1_1ServerListPingEvent_1a0445fcfd1719ff62e013ce5f499f5872" prot="private" static="no" mutable="no">
         <type>std::string</type>
@@ -115,7 +115,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/event/server/server_list_ping_event.h" line="196" column="17" bodyfile="include/endstone/event/server/server_list_ping_event.h" bodystart="196" bodyend="-1"/>
+        <location file="include/endstone/event/server/server_list_ping_event.h" line="181" column="17" bodyfile="include/endstone/event/server/server_list_ping_event.h" bodystart="181" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="classendstone_1_1ServerListPingEvent_1a5684f820a993d3726b9e742ab8ed1911" prot="private" static="no" mutable="no">
         <type><ref refid="namespaceendstone_1a3185831693a75ff4595095c0fe568c2a" kindref="member">GameMode</ref></type>
@@ -129,7 +129,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/event/server/server_list_ping_event.h" line="197" column="14" bodyfile="include/endstone/event/server/server_list_ping_event.h" bodystart="197" bodyend="-1"/>
+        <location file="include/endstone/event/server/server_list_ping_event.h" line="182" column="14" bodyfile="include/endstone/event/server/server_list_ping_event.h" bodystart="182" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="classendstone_1_1ServerListPingEvent_1a2bb3386b5d3530ccefdff7fae10a557c" prot="private" static="no" mutable="no">
         <type><ref refid="classendstone_1_1Identifier" kindref="compound">int</ref></type>
@@ -143,21 +143,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/event/server/server_list_ping_event.h" line="198" column="9" bodyfile="include/endstone/event/server/server_list_ping_event.h" bodystart="198" bodyend="-1"/>
-      </memberdef>
-      <memberdef kind="variable" id="classendstone_1_1ServerListPingEvent_1aa04477f40872fd8c43bccd24e10eff65" prot="private" static="no" mutable="no">
-        <type><ref refid="classendstone_1_1Identifier" kindref="compound">int</ref></type>
-        <definition>int endstone::ServerListPingEvent::local_port_v6_</definition>
-        <argsstring></argsstring>
-        <name>local_port_v6_</name>
-        <qualifiedname>endstone::ServerListPingEvent::local_port_v6_</qualifiedname>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
-        <location file="include/endstone/event/server/server_list_ping_event.h" line="199" column="9" bodyfile="include/endstone/event/server/server_list_ping_event.h" bodystart="199" bodyend="-1"/>
+        <location file="include/endstone/event/server/server_list_ping_event.h" line="183" column="9" bodyfile="include/endstone/event/server/server_list_ping_event.h" bodystart="183" bodyend="-1"/>
       </memberdef>
     </sectiondef>
     <sectiondef kind="public-func">
@@ -178,10 +164,10 @@
         </inbodydescription>
         <location file="include/endstone/event/server/server_list_ping_event.h" line="32" column="5"/>
       </memberdef>
-      <memberdef kind="function" id="classendstone_1_1ServerListPingEvent_1aa9371239a647b337859f3f28a8f51e4c" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+      <memberdef kind="function" id="classendstone_1_1ServerListPingEvent_1a23c2eb92acf0ac889b478835efc385fd" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type></type>
         <definition>endstone::ServerListPingEvent::ServerListPingEvent</definition>
-        <argsstring>(SocketAddress address, std::string motd, int network_protocol_version, std::string minecraft_version_network, int num_players, int max_players, std::string server_guid, std::string level_name, GameMode game_mode, int local_port, int local_port_v6)</argsstring>
+        <argsstring>(SocketAddress address, std::string motd, int network_protocol_version, std::string minecraft_version_network, int num_players, int max_players, std::string server_guid, std::string level_name, GameMode game_mode, int local_port)</argsstring>
         <name>ServerListPingEvent</name>
         <qualifiedname>endstone::ServerListPingEvent::ServerListPingEvent</qualifiedname>
         <param>
@@ -224,17 +210,13 @@
           <type><ref refid="classendstone_1_1Identifier" kindref="compound">int</ref></type>
           <declname>local_port</declname>
         </param>
-        <param>
-          <type><ref refid="classendstone_1_1Identifier" kindref="compound">int</ref></type>
-          <declname>local_port_v6</declname>
-        </param>
         <briefdescription>
         </briefdescription>
         <detaileddescription>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/event/server/server_list_ping_event.h" line="33" column="5" bodyfile="include/endstone/event/server/server_list_ping_event.h" bodystart="33" bodyend="43"/>
+        <location file="include/endstone/event/server/server_list_ping_event.h" line="33" column="5" bodyfile="include/endstone/event/server/server_list_ping_event.h" bodystart="33" bodyend="42"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1ServerListPingEvent_1ab8245eb6e2f1460205e0e13946313f3d" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
         <type><ref refid="classendstone_1_1Identifier" kindref="compound">const</ref> <ref refid="classendstone_1_1SocketAddress" kindref="compound">SocketAddress</ref> &amp;</type>
@@ -252,7 +234,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/event/server/server_list_ping_event.h" line="50" column="26" bodyfile="include/endstone/event/server/server_list_ping_event.h" bodystart="50" bodyend="50"/>
+        <location file="include/endstone/event/server/server_list_ping_event.h" line="49" column="26" bodyfile="include/endstone/event/server/server_list_ping_event.h" bodystart="49" bodyend="49"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1ServerListPingEvent_1aa6a64659d29e47acf3af3e860c1d16da" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
         <type>std::string</type>
@@ -270,7 +252,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/event/server/server_list_ping_event.h" line="57" column="18" bodyfile="include/endstone/event/server/server_list_ping_event.h" bodystart="57" bodyend="57"/>
+        <location file="include/endstone/event/server/server_list_ping_event.h" line="56" column="18" bodyfile="include/endstone/event/server/server_list_ping_event.h" bodystart="56" bodyend="56"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1ServerListPingEvent_1a7398713547a0938d75954d29da7b8aba" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type><ref refid="classendstone_1_1Identifier" kindref="compound">void</ref></type>
@@ -299,7 +281,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/event/server/server_list_ping_event.h" line="64" column="10" bodyfile="include/endstone/event/server/server_list_ping_event.h" bodystart="64" bodyend="64"/>
+        <location file="include/endstone/event/server/server_list_ping_event.h" line="63" column="10" bodyfile="include/endstone/event/server/server_list_ping_event.h" bodystart="63" bodyend="63"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1ServerListPingEvent_1ad7e01f29129c5e342a38ad8a8732c96a" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
         <type><ref refid="classendstone_1_1Identifier" kindref="compound">int</ref></type>
@@ -317,7 +299,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/event/server/server_list_ping_event.h" line="71" column="10" bodyfile="include/endstone/event/server/server_list_ping_event.h" bodystart="71" bodyend="71"/>
+        <location file="include/endstone/event/server/server_list_ping_event.h" line="70" column="10" bodyfile="include/endstone/event/server/server_list_ping_event.h" bodystart="70" bodyend="70"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1ServerListPingEvent_1a5da7cb54f3d9d5a97a5c9696a5a7123a" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type><ref refid="classendstone_1_1Identifier" kindref="compound">void</ref></type>
@@ -346,54 +328,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/event/server/server_list_ping_event.h" line="78" column="10" bodyfile="include/endstone/event/server/server_list_ping_event.h" bodystart="78" bodyend="78"/>
-      </memberdef>
-      <memberdef kind="function" id="classendstone_1_1ServerListPingEvent_1aa68b81ed4b1a3fd074213be9c8ce9f9c" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
-        <type><ref refid="classendstone_1_1Identifier" kindref="compound">int</ref></type>
-        <definition>int endstone::ServerListPingEvent::getLocalPortV6</definition>
-        <argsstring>() const</argsstring>
-        <name>getLocalPortV6</name>
-        <qualifiedname>endstone::ServerListPingEvent::getLocalPortV6</qualifiedname>
-        <briefdescription>
-<para>Get the local port of the server for IPv6 support. </para>
-        </briefdescription>
-        <detaileddescription>
-<para><simplesect kind="return"><para>The local port for IPv6 </para>
-</simplesect>
-</para>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
-        <location file="include/endstone/event/server/server_list_ping_event.h" line="85" column="10" bodyfile="include/endstone/event/server/server_list_ping_event.h" bodystart="85" bodyend="85"/>
-      </memberdef>
-      <memberdef kind="function" id="classendstone_1_1ServerListPingEvent_1a831630406c4b0d3c92fa914a26251953" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
-        <type><ref refid="classendstone_1_1Identifier" kindref="compound">void</ref></type>
-        <definition>void endstone::ServerListPingEvent::setLocalPortV6</definition>
-        <argsstring>(int port)</argsstring>
-        <name>setLocalPortV6</name>
-        <qualifiedname>endstone::ServerListPingEvent::setLocalPortV6</qualifiedname>
-        <param>
-          <type><ref refid="classendstone_1_1Identifier" kindref="compound">int</ref></type>
-          <declname>port</declname>
-        </param>
-        <briefdescription>
-<para>Set the local port of the server for IPv6 support. </para>
-        </briefdescription>
-        <detaileddescription>
-<para><parameterlist kind="param"><parameteritem>
-<parameternamelist>
-<parametername>port</parametername>
-</parameternamelist>
-<parameterdescription>
-<para>the local port for IPv6 </para>
-</parameterdescription>
-</parameteritem>
-</parameterlist>
-</para>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
-        <location file="include/endstone/event/server/server_list_ping_event.h" line="92" column="10" bodyfile="include/endstone/event/server/server_list_ping_event.h" bodystart="92" bodyend="92"/>
+        <location file="include/endstone/event/server/server_list_ping_event.h" line="77" column="10" bodyfile="include/endstone/event/server/server_list_ping_event.h" bodystart="77" bodyend="77"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1ServerListPingEvent_1a6815d44f4a92512b6af951ffeb540c01" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
         <type>std::string</type>
@@ -411,7 +346,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/event/server/server_list_ping_event.h" line="99" column="18" bodyfile="include/endstone/event/server/server_list_ping_event.h" bodystart="99" bodyend="99"/>
+        <location file="include/endstone/event/server/server_list_ping_event.h" line="84" column="18" bodyfile="include/endstone/event/server/server_list_ping_event.h" bodystart="84" bodyend="84"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1ServerListPingEvent_1ad534cad4e5f078d2a49c2ece69503239" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type><ref refid="classendstone_1_1Identifier" kindref="compound">void</ref></type>
@@ -440,7 +375,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/event/server/server_list_ping_event.h" line="106" column="10" bodyfile="include/endstone/event/server/server_list_ping_event.h" bodystart="106" bodyend="106"/>
+        <location file="include/endstone/event/server/server_list_ping_event.h" line="91" column="10" bodyfile="include/endstone/event/server/server_list_ping_event.h" bodystart="91" bodyend="91"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1ServerListPingEvent_1a9855e0851bdc24a5329ab6dfebd8fb52" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
         <type><ref refid="classendstone_1_1Identifier" kindref="compound">int</ref></type>
@@ -458,7 +393,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/event/server/server_list_ping_event.h" line="113" column="10" bodyfile="include/endstone/event/server/server_list_ping_event.h" bodystart="113" bodyend="113"/>
+        <location file="include/endstone/event/server/server_list_ping_event.h" line="98" column="10" bodyfile="include/endstone/event/server/server_list_ping_event.h" bodystart="98" bodyend="98"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1ServerListPingEvent_1acb182fef4c35c59a0892be887503e20e" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
         <type>std::string</type>
@@ -476,7 +411,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/event/server/server_list_ping_event.h" line="120" column="18" bodyfile="include/endstone/event/server/server_list_ping_event.h" bodystart="120" bodyend="120"/>
+        <location file="include/endstone/event/server/server_list_ping_event.h" line="105" column="18" bodyfile="include/endstone/event/server/server_list_ping_event.h" bodystart="105" bodyend="105"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1ServerListPingEvent_1a2ae26402d0a7eb479d0e015af980dce9" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type><ref refid="classendstone_1_1Identifier" kindref="compound">void</ref></type>
@@ -505,7 +440,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/event/server/server_list_ping_event.h" line="127" column="10" bodyfile="include/endstone/event/server/server_list_ping_event.h" bodystart="127" bodyend="130"/>
+        <location file="include/endstone/event/server/server_list_ping_event.h" line="112" column="10" bodyfile="include/endstone/event/server/server_list_ping_event.h" bodystart="112" bodyend="115"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1ServerListPingEvent_1a72696b407d7f2d0402bd50870c3791f5" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
         <type><ref refid="classendstone_1_1Identifier" kindref="compound">int</ref></type>
@@ -523,7 +458,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/event/server/server_list_ping_event.h" line="137" column="10" bodyfile="include/endstone/event/server/server_list_ping_event.h" bodystart="137" bodyend="137"/>
+        <location file="include/endstone/event/server/server_list_ping_event.h" line="122" column="10" bodyfile="include/endstone/event/server/server_list_ping_event.h" bodystart="122" bodyend="122"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1ServerListPingEvent_1ac75b1c0ba407c0d7fa8dc21e3b9cebb8" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type><ref refid="classendstone_1_1Identifier" kindref="compound">void</ref></type>
@@ -552,7 +487,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/event/server/server_list_ping_event.h" line="144" column="10" bodyfile="include/endstone/event/server/server_list_ping_event.h" bodystart="144" bodyend="144"/>
+        <location file="include/endstone/event/server/server_list_ping_event.h" line="129" column="10" bodyfile="include/endstone/event/server/server_list_ping_event.h" bodystart="129" bodyend="129"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1ServerListPingEvent_1a835fd5622ee6629d48045756a06ce3b2" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
         <type><ref refid="classendstone_1_1Identifier" kindref="compound">int</ref></type>
@@ -570,7 +505,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/event/server/server_list_ping_event.h" line="151" column="10" bodyfile="include/endstone/event/server/server_list_ping_event.h" bodystart="151" bodyend="151"/>
+        <location file="include/endstone/event/server/server_list_ping_event.h" line="136" column="10" bodyfile="include/endstone/event/server/server_list_ping_event.h" bodystart="136" bodyend="136"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1ServerListPingEvent_1ac03b3d5005e7902a308c24e7b1a11784" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type><ref refid="classendstone_1_1Identifier" kindref="compound">void</ref></type>
@@ -599,7 +534,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/event/server/server_list_ping_event.h" line="158" column="10" bodyfile="include/endstone/event/server/server_list_ping_event.h" bodystart="158" bodyend="158"/>
+        <location file="include/endstone/event/server/server_list_ping_event.h" line="143" column="10" bodyfile="include/endstone/event/server/server_list_ping_event.h" bodystart="143" bodyend="143"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1ServerListPingEvent_1a2d880ee3bdebe42c0fcbdc6bf3642a00" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
         <type>std::string</type>
@@ -617,7 +552,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/event/server/server_list_ping_event.h" line="165" column="18" bodyfile="include/endstone/event/server/server_list_ping_event.h" bodystart="165" bodyend="165"/>
+        <location file="include/endstone/event/server/server_list_ping_event.h" line="150" column="18" bodyfile="include/endstone/event/server/server_list_ping_event.h" bodystart="150" bodyend="150"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1ServerListPingEvent_1acd8b497f6d642a9fcda052788b0d3087" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type><ref refid="classendstone_1_1Identifier" kindref="compound">void</ref></type>
@@ -646,7 +581,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/event/server/server_list_ping_event.h" line="172" column="10" bodyfile="include/endstone/event/server/server_list_ping_event.h" bodystart="172" bodyend="172"/>
+        <location file="include/endstone/event/server/server_list_ping_event.h" line="157" column="10" bodyfile="include/endstone/event/server/server_list_ping_event.h" bodystart="157" bodyend="157"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1ServerListPingEvent_1a931195e8a6f00198331002fb62cbdea1" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
         <type><ref refid="namespaceendstone_1a3185831693a75ff4595095c0fe568c2a" kindref="member">GameMode</ref></type>
@@ -664,7 +599,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/event/server/server_list_ping_event.h" line="179" column="15" bodyfile="include/endstone/event/server/server_list_ping_event.h" bodystart="179" bodyend="179"/>
+        <location file="include/endstone/event/server/server_list_ping_event.h" line="164" column="15" bodyfile="include/endstone/event/server/server_list_ping_event.h" bodystart="164" bodyend="164"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1ServerListPingEvent_1a49e07d699cfebca6d747c7e0b4495920" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type><ref refid="classendstone_1_1Identifier" kindref="compound">void</ref></type>
@@ -693,7 +628,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/event/server/server_list_ping_event.h" line="186" column="10" bodyfile="include/endstone/event/server/server_list_ping_event.h" bodystart="186" bodyend="186"/>
+        <location file="include/endstone/event/server/server_list_ping_event.h" line="171" column="10" bodyfile="include/endstone/event/server/server_list_ping_event.h" bodystart="171" bodyend="171"/>
       </memberdef>
     </sectiondef>
     <briefdescription>
@@ -761,7 +696,7 @@
         </childnode>
       </node>
     </collaborationgraph>
-    <location file="include/endstone/event/server/server_list_ping_event.h" line="30" column="1" bodyfile="include/endstone/event/server/server_list_ping_event.h" bodystart="30" bodyend="200"/>
+    <location file="include/endstone/event/server/server_list_ping_event.h" line="30" column="1" bodyfile="include/endstone/event/server/server_list_ping_event.h" bodystart="30" bodyend="184"/>
     <listofallmembers>
       <member refid="classendstone_1_1ServerListPingEvent_1a02dbb0847336aff3ed44daaa8212beaa" prot="private" virt="non-virtual"><scope>endstone::ServerListPingEvent</scope><name>address_</name></member>
       <member refid="classendstone_1_1Cancellable_1a3512b47db69c6001f5c0450051308327" prot="public" virt="virtual"><scope>endstone::ServerListPingEvent</scope><name>cancel</name></member>
@@ -775,7 +710,6 @@
       <member refid="classendstone_1_1ServerListPingEvent_1a931195e8a6f00198331002fb62cbdea1" prot="public" virt="non-virtual"><scope>endstone::ServerListPingEvent</scope><name>getGameMode</name></member>
       <member refid="classendstone_1_1ServerListPingEvent_1a2d880ee3bdebe42c0fcbdc6bf3642a00" prot="public" virt="non-virtual"><scope>endstone::ServerListPingEvent</scope><name>getLevelName</name></member>
       <member refid="classendstone_1_1ServerListPingEvent_1ad7e01f29129c5e342a38ad8a8732c96a" prot="public" virt="non-virtual"><scope>endstone::ServerListPingEvent</scope><name>getLocalPort</name></member>
-      <member refid="classendstone_1_1ServerListPingEvent_1aa68b81ed4b1a3fd074213be9c8ce9f9c" prot="public" virt="non-virtual"><scope>endstone::ServerListPingEvent</scope><name>getLocalPortV6</name></member>
       <member refid="classendstone_1_1ServerListPingEvent_1a835fd5622ee6629d48045756a06ce3b2" prot="public" virt="non-virtual"><scope>endstone::ServerListPingEvent</scope><name>getMaxPlayers</name></member>
       <member refid="classendstone_1_1ServerListPingEvent_1acb182fef4c35c59a0892be887503e20e" prot="public" virt="non-virtual"><scope>endstone::ServerListPingEvent</scope><name>getMinecraftVersionNetwork</name></member>
       <member refid="classendstone_1_1ServerListPingEvent_1a6815d44f4a92512b6af951ffeb540c01" prot="public" virt="non-virtual"><scope>endstone::ServerListPingEvent</scope><name>getMotd</name></member>
@@ -786,7 +720,6 @@
       <member refid="classendstone_1_1Cancellable_1a268b73cc5bda0fa5923336d031814faa" prot="public" virt="virtual"><scope>endstone::ServerListPingEvent</scope><name>isCancelled</name></member>
       <member refid="classendstone_1_1ServerListPingEvent_1a0445fcfd1719ff62e013ce5f499f5872" prot="private" virt="non-virtual"><scope>endstone::ServerListPingEvent</scope><name>level_name_</name></member>
       <member refid="classendstone_1_1ServerListPingEvent_1a2bb3386b5d3530ccefdff7fae10a557c" prot="private" virt="non-virtual"><scope>endstone::ServerListPingEvent</scope><name>local_port_</name></member>
-      <member refid="classendstone_1_1ServerListPingEvent_1aa04477f40872fd8c43bccd24e10eff65" prot="private" virt="non-virtual"><scope>endstone::ServerListPingEvent</scope><name>local_port_v6_</name></member>
       <member refid="classendstone_1_1ServerListPingEvent_1a5f396ee3655ee17dac3ab89758cc9de8" prot="private" virt="non-virtual"><scope>endstone::ServerListPingEvent</scope><name>max_players_</name></member>
       <member refid="classendstone_1_1ServerListPingEvent_1a8b799147a933986630505d722d9362a0" prot="private" virt="non-virtual"><scope>endstone::ServerListPingEvent</scope><name>minecraft_version_network_</name></member>
       <member refid="classendstone_1_1ServerListPingEvent_1a0dddc976593869152d0ef38a5d8daa34" prot="private" virt="non-virtual"><scope>endstone::ServerListPingEvent</scope><name>motd_</name></member>
@@ -795,12 +728,11 @@
       <member refid="classendstone_1_1Event_1a44a4ff424a8b690c01a2afe10ae68d8f" prot="public" virt="non-virtual"><scope>endstone::ServerListPingEvent</scope><name>operator=</name></member>
       <member refid="classendstone_1_1Event_1a1d7fc5400782d20be99a3636aa7f53b9" prot="public" virt="non-virtual"><scope>endstone::ServerListPingEvent</scope><name>operator=</name></member>
       <member refid="classendstone_1_1ServerListPingEvent_1a9eccbd82f7c4d756be8344ab6f30a0cb" prot="private" virt="non-virtual"><scope>endstone::ServerListPingEvent</scope><name>server_guid_</name></member>
-      <member refid="classendstone_1_1ServerListPingEvent_1aa9371239a647b337859f3f28a8f51e4c" prot="public" virt="non-virtual"><scope>endstone::ServerListPingEvent</scope><name>ServerListPingEvent</name></member>
+      <member refid="classendstone_1_1ServerListPingEvent_1a23c2eb92acf0ac889b478835efc385fd" prot="public" virt="non-virtual"><scope>endstone::ServerListPingEvent</scope><name>ServerListPingEvent</name></member>
       <member refid="classendstone_1_1Cancellable_1aa12df44bcb66924d06a689d0dd07865e" prot="public" virt="virtual"><scope>endstone::ServerListPingEvent</scope><name>setCancelled</name></member>
       <member refid="classendstone_1_1ServerListPingEvent_1a49e07d699cfebca6d747c7e0b4495920" prot="public" virt="non-virtual"><scope>endstone::ServerListPingEvent</scope><name>setGameMode</name></member>
       <member refid="classendstone_1_1ServerListPingEvent_1acd8b497f6d642a9fcda052788b0d3087" prot="public" virt="non-virtual"><scope>endstone::ServerListPingEvent</scope><name>setLevelName</name></member>
       <member refid="classendstone_1_1ServerListPingEvent_1a5da7cb54f3d9d5a97a5c9696a5a7123a" prot="public" virt="non-virtual"><scope>endstone::ServerListPingEvent</scope><name>setLocalPort</name></member>
-      <member refid="classendstone_1_1ServerListPingEvent_1a831630406c4b0d3c92fa914a26251953" prot="public" virt="non-virtual"><scope>endstone::ServerListPingEvent</scope><name>setLocalPortV6</name></member>
       <member refid="classendstone_1_1ServerListPingEvent_1ac03b3d5005e7902a308c24e7b1a11784" prot="public" virt="non-virtual"><scope>endstone::ServerListPingEvent</scope><name>setMaxPlayers</name></member>
       <member refid="classendstone_1_1ServerListPingEvent_1a2ae26402d0a7eb479d0e015af980dce9" prot="public" virt="non-virtual"><scope>endstone::ServerListPingEvent</scope><name>setMinecraftVersionNetwork</name></member>
       <member refid="classendstone_1_1ServerListPingEvent_1ad534cad4e5f078d2a49c2ece69503239" prot="public" virt="non-virtual"><scope>endstone::ServerListPingEvent</scope><name>setMotd</name></member>

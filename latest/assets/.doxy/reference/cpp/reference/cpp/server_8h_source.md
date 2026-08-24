@@ -121,8 +121,6 @@ public:
 
     [[nodiscard]] virtual int getPort() const = 0;
 
-    [[nodiscard]] virtual int getPortV6() const = 0;
-
     [[nodiscard]] virtual bool getOnlineMode() const = 0;
 
     [[nodiscard]] virtual Nullable<Player> getPlayer(std::string name) const = 0;
@@ -169,10 +167,10 @@ public:
 
     [[nodiscard]] virtual std::chrono::system_clock::time_point getStartTime() = 0;
 
-    [[nodiscard]] virtual NotNull<BossBar> createBossBar(std::string title, BarColor color, BarStyle style) const = 0;
+    [[nodiscard]] virtual NotNull<BossBar> createBossBar(std::string title, BarColor color, BarStyle style) = 0;
 
     [[nodiscard]] virtual NotNull<BossBar> createBossBar(std::string title, BarColor color, BarStyle style,
-                                                         std::vector<BarFlag> flags) const = 0;
+                                                         std::vector<BarFlag> flags) = 0;
 
     [[nodiscard]] virtual NotNull<BlockData> createBlockData(BlockTypeId type) const = 0;
 
