@@ -332,14 +332,6 @@ rip_relative = true
 rip_offset = 1
 
 [[signatures]]
-name = "_ZN34ItemStackRequestActionCraftHandler17handleCraftActionERK31ItemStackRequestActionCraftBase"
-relative = false
-extra = 0
-# The class has one virtual craft handler. The unique body checks CraftRecipeOptional (15) and CraftRecipe (12),
-# then dispatches through the request action handler for container validation.
-pattern = "55 41 57 41 56 41 55 41 54 53 48 81 EC C8 00 00 00 ? 89 ? 48 89 ? 48 8B 47 08 48 8B 80 F8 00 00 00 48 85 C0 74 12 48 8B B8 B0 00 00 00 48 8B 07 FF 50 18 41 89 C7 EB 03 45 31 FF 48 8B ? 18"
-
-[[signatures]]
 name = "_ZN19CraftHandlerEnchant18_handleCraftActionERK31ItemStackRequestActionCraftBase"
 relative = false
 extra = 0
@@ -358,8 +350,16 @@ pattern = "55 41 57 41 56 41 55 41 54 53 48 81 EC ? ? ? ? 40 B5 06 80 7E 08 0C"
 name = "_ZN29ItemStackRequestActionHandler25_getOrInitSparseContainerERK17FullContainerName"
 relative = false
 extra = 0
-# CraftHandlerEnchant::_handleCraftAction calls this for both the enchanting input and material containers.
-# The callee is the only function with this prologue and sret initialization followed by the current-screen lookup.
+# 1. anchor on CraftHandlerEnchant::_handleCraftAction (located by the recipe above); it is the only caller in the
+#    enchanting path and calls this twice
+# 2. both call sites are immediately preceded by a stack FullContainerName whose `mName` byte is set to 22
+#    (EnchantingInputContainer) and whose optional dynamic id is zeroed: `mov byte ptr [rbp-..], 16h`
+# 3. the callee is a shared_ptr returner: its body opens by zeroing the sret slot with xorps/movups
+#    (`0F 57 C0 0F 11 03`) right after its first call
+# 4. confirm identity by the body: it calls _tryGetCurrentScreenData, then
+#    ContainerScreenValidation::getOrCreateSparseContainer, then FNV-1a hashes 4 bytes and emplaces into
+#    ScreenData::mRuntimeIdSparseContainerMap
+# 5. uniqueness: the pattern matches exactly once in .text (verified against 1.26.40 at 0xbcc19c0)
 pattern = "41 57 41 56 41 54 53 48 83 EC 18 49 89 D7 49 89 F4 48 89 FB 48 89 F7 E8 ? ? ? ? 0F 57 C0 0F 11 03"
 
 [[signatures]]

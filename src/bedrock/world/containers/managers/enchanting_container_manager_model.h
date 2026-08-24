@@ -27,9 +27,12 @@ public:
     EnchantingContainerManagerModel(ContainerID container_id, Player &player, const BlockPos &block_pos);
     ~EnchantingContainerManagerModel() override = 0;
 
-    [[nodiscard]] const BlockPos &getBlockPos() const { return block_pos_; }
     [[nodiscard]] const std::vector<ItemEnchantOption> &getEnchantOptions() const { return enchant_options_; }
+
+    // Endstone begins
+    [[nodiscard]] const BlockPos &getBlockPos() const { return block_pos_; }
     [[nodiscard]] std::vector<ItemEnchantOption> &getEnchantOptions() { return enchant_options_; }
+    // Endstone ends
 
 private:
     BlockPos block_pos_;

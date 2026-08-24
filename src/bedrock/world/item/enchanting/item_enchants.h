@@ -26,8 +26,6 @@ public:
 
     [[nodiscard]] int getSlot() const { return slot_; }
     void setSlot(int slot) { slot_ = slot; }
-    [[nodiscard]] const Enchantments &getEnchantInstances() const { return item_enchants_; }
-    [[nodiscard]] Enchantments &getEnchantInstances() { return item_enchants_; }
     void setEnchantInstances(Enchantments enchantments) { item_enchants_ = std::move(enchantments); }
 
     [[nodiscard]] std::vector<EnchantmentInstance> getAllEnchants() const

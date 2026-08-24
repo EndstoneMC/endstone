@@ -19,8 +19,10 @@
 
 #include "endstone/enchantments/enchantment.h"
 #include "endstone/event/cancellable.h"
-#include "endstone/event/player/player_event.h"
+#include "endstone/event/inventory/inventory_event.h"
 #include "endstone/inventory/item_stack.h"
+#include "endstone/player.h"
+#include "endstone/util/pointers.h"
 
 namespace endstone {
 
@@ -30,21 +32,28 @@ class Block;
  * Called when a player enchants an item at an enchanting table.
  *
  * @note Cancelling the event leaves the item, the player's experience levels and the lapis lazuli untouched.
+ * @note Bedrock does not reveal a single hinted enchantment for an offer, so every enchantment the offer applies is
+ * listed in getEnchantsToAdd().
  */
-class EnchantItemEvent final : public Cancellable<PlayerEvent> {
+class EnchantItemEvent final : public Cancellable<InventoryEvent> {
 public:
     using Enchantments = std::unordered_map<const Enchantment *, int>;
 
     ENDSTONE_EVENT(EnchantItemEvent);
 
-    EnchantItemEvent(const NotNull<Player> &player, const NotNull<Block> &enchant_block, ItemStack item,
-                     int exp_level_cost, Enchantments enchants_to_add, const Enchantment *enchantment_hint,
-                     int level_hint, int which_button)
-        : Cancellable(player), enchant_block_(enchant_block), item_(std::move(item)), exp_level_cost_(exp_level_cost),
-          enchants_to_add_(std::move(enchants_to_add)), enchantment_hint_(enchantment_hint), level_hint_(level_hint),
-          which_button_(which_button)
+    EnchantItemEvent(Inventory &inventory, const NotNull<Player> &enchanter, const NotNull<Block> &enchant_block,
+                     ItemStack item, int exp_level_cost, Enchantments enchants_to_add, int which_button)
+        : Cancellable(inventory), enchanter_(enchanter), enchant_block_(enchant_block), item_(std::move(item)),
+          exp_level_cost_(exp_level_cost), enchants_to_add_(std::move(enchants_to_add)), which_button_(which_button)
     {
     }
+
+    /**
+     * Gets the player enchanting the item.
+     *
+     * @return the player enchanting the item
+     */
+    [[nodiscard]] const NotNull<Player> &getEnchanter() const { return enchanter_; }
 
     /**
      * Gets the enchanting table involved in this event.
@@ -98,40 +107,18 @@ public:
     [[nodiscard]] Enchantments &getEnchantsToAdd() { return enchants_to_add_; }
 
     /**
-     * Sets the enchantments to apply to the item.
-     *
-     * @param enchants_to_add the enchantments and their levels
-     */
-    void setEnchantsToAdd(Enchantments enchants_to_add) { enchants_to_add_ = std::move(enchants_to_add); }
-
-    /**
-     * Gets the enchantment shown as the hint for the selected option.
-     *
-     * @return the hinted enchantment, or nullptr if no hint is available
-     */
-    [[nodiscard]] const Enchantment *getEnchantmentHint() const { return enchantment_hint_; }
-
-    /**
-     * Gets the level shown for the enchantment hint.
-     *
-     * @return the hinted enchantment level
-     */
-    [[nodiscard]] int getLevelHint() const { return level_hint_; }
-
-    /**
      * Gets the selected enchanting button.
      *
      * @return the selected button, from 0 to 2
      */
-    [[nodiscard]] int getWhichButton() const { return which_button_; }
+    [[nodiscard]] int whichButton() const { return which_button_; }
 
 private:
+    NotNull<Player> enchanter_;
     NotNull<Block> enchant_block_;
     ItemStack item_;
     int exp_level_cost_;
     Enchantments enchants_to_add_;
-    const Enchantment *enchantment_hint_;
-    int level_hint_;
     int which_button_;
 };
 

@@ -159,11 +159,6 @@
     @typing.overload
     def event_handler(*, priority: EventPriority = ..., ignore_cancelled: bool = ...) -> typing.Callable[[_F], _F]: ...
 
-^endstone\.event\.EnchantItemEvent\.enchantment_hint$:
-    @property
-    def enchantment_hint(self) -> Enchantment | None:
-        \doc
-
 # Bound only so the explode block list is mutable in place; ALIASES maps every
 # reference to list[Block], so the class itself must not appear in the stubs.
 ^endstone\.block\.BlockList$:

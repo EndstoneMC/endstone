@@ -11,7 +11,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 #### Events
 
-- `EnchantItemEvent` for enchanting an item at an enchanting table, exposing the table, item, selected button, level cost, enchantments and client hint. The item, cost and enchantments are mutable; cancelling leaves the item, the player's experience levels and the lapis lazuli untouched.
+- `EnchantItemEvent` for enchanting an item at an enchanting table, exposing the enchanting inventory, the enchanter, the table, the item, the selected button, the level cost and the enchantments. The item, cost and enchantments are mutable; cancelling leaves the item, the player's experience levels and the lapis lazuli untouched. Bedrock does not reveal a single hinted enchantment for an offer, so Bukkit's `getEnchantmentHint()` and `getLevelHint()` have no counterpart - every enchantment the offer applies is listed in `enchants_to_add`.
 - `PlayerLevelChangeEvent` (`old_level`, `new_level`), `PlayerExpChangeEvent` (`amount` gained) and `PlayerPickupExperienceEvent` (`amount` the orb is worth).
 - `PlayerPickupArrowEvent` for picking up an arrow or thrown trident.
 - `PlayerArmSwingEvent` and `PlayerRiptideEvent`, both reporting the `item` in hand. Cancelling an arm swing stops the server acting on it at all, so it is neither recorded nor shown to the other players. The swinging player still sees their own arm move, because their client plays the animation without waiting for the server.

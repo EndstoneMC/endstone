@@ -1475,14 +1475,21 @@ class InventoryCloseEvent(InventoryEvent):
         The player who is closing the inventory.
         """
 
-class EnchantItemEvent(PlayerEvent, Cancellable):
+class EnchantItemEvent(InventoryEvent, Cancellable):
     """
     Called when a player enchants an item at an enchanting table.
 
-    Use `PrepareItemEnchantEvent` to hide or replace an offer before the player selects it.
-
     Cancelling the event leaves the item, the player's experience levels and the lapis lazuli untouched.
+
+    Bedrock does not reveal a single hinted enchantment for an offer, so every enchantment the offer applies is
+    listed in `enchants_to_add`.
     """
+    @property
+    def enchanter(self) -> Player:
+        """
+        The player enchanting the item.
+        """
+
     @property
     def enchant_block(self) -> Block:
         """
@@ -1513,18 +1520,6 @@ class EnchantItemEvent(PlayerEvent, Cancellable):
 
     @enchants_to_add.setter
     def enchants_to_add(self, arg1: collections.abc.Mapping[Enchantment, int]) -> None: ...
-    @property
-    def enchantment_hint(self) -> Enchantment | None:
-        """
-        The enchantment shown as the hint, or `None` if unavailable.
-        """
-
-    @property
-    def level_hint(self) -> int:
-        """
-        The level shown for the enchantment hint.
-        """
-
     @property
     def which_button(self) -> int:
         """

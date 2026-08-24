@@ -366,15 +366,7 @@ extra = 0
 pattern = "55 41 57 41 56 41 54 56 57 53 48 81 EC ? ? ? ? 48 8D AC 24 ? ? ? ? 48 C7 45 ? ? ? ? ? 48 89 D3 48 89 CE 48 89 D1 BA ? ? ? ? E8"
 
 [[signatures]]
-name = "?handleCraftAction@ItemStackRequestActionCraftHandler@@QEAA?AW4ItemStackNetResult@@AEBVItemStackRequestActionCraftBase@@@Z"
-relative = false
-extra = 0
-# The class has one virtual craft handler. Its body validates the two craft request variants and dispatches through
-# the request action handler for container validation.
-pattern = "55 41 57 41 56 41 55 41 54 56 57 53 48 81 EC ? ? ? ? 48 8D AC 24 ? ? ? ? 48 C7 85 ? ? ? ? FE FF FF FF 48 89 D3 48 89 CE 48 8B 41 08 48 8B 80 E8 00 00 00 48 85 C0 74 ? 48 8B 88 F8 00 00 00 48 8B 01 48 8B 40 10 FF 15"
-
-[[signatures]]
-name = "?_handleCraftAction@CraftHandlerEnchant@@UEAA?AW4ItemStackNetResult@@AEBVItemStackRequestActionCraftBase@@@Z"
+name = "?_handleCraftAction@CraftHandlerEnchant@@MEAA?AW4ItemStackNetResult@@AEBVItemStackRequestActionCraftBase@@@Z"
 relative = false
 extra = 0
 # 1. the enchanting strings are a DEAD END, do not start there: "InsufficientPlayerLevelToEnchant" and
@@ -405,8 +397,18 @@ pattern = "55 41 57 41 56 41 55 41 54 56 57 53 48 81 EC ? ? ? ? 48 8D AC 24 ? ? 
 name = "?_getOrInitSparseContainer@ItemStackRequestActionHandler@@QEAA?AV?$shared_ptr@VSimpleSparseContainer@@@std@@AEBUFullContainerName@@@Z"
 relative = false
 extra = 0
-# CraftHandlerEnchant::_handleCraftAction calls this for both the enchanting input and material containers.
-# The callee is the only function with this prologue and sret initialization followed by the current-screen lookup.
+# 1. anchor on CraftHandlerEnchant::_handleCraftAction (located by the recipe above); it is the only caller in the
+#    enchanting path and calls this twice
+# 2. both call sites are immediately preceded by a stack FullContainerName whose `mName` byte is set to 22
+#    (EnchantingInputContainer) and whose optional dynamic id is zeroed: `mov [rbp+..], 16h` / `mov qword ptr
+#    [rbp+..], 0`
+# 3. the callee is a shared_ptr returner: its body opens by zeroing the sret slot with xorps/movups
+#    (`0F 57 C0 41 0F 11 06`) right after its first call
+# 4. confirm identity by the body: it calls _tryGetCurrentScreenData, then
+#    ContainerScreenValidation::getOrCreateSparseContainer, then FNV-1a hashes 4 bytes and emplaces into
+#    ScreenData::mRuntimeIdSparseContainerMap
+# 5. uniqueness: the pattern matches exactly once in .text (verified against 1.26.40 at 0x14274bd00). The mangled
+#    name is also present in the PDB, so `--pdb` resolves it by name and the pattern is only the fallback
 pattern = "55 41 56 56 57 53 48 83 EC 40 48 8D 6C 24 40 48 C7 45 F8 FE FF FF FF 4C 89 C7 49 89 D6 48 89 CB E8 ? ? ? ? 0F 57 C0 41 0F 11 06"
 
 [[signatures]]

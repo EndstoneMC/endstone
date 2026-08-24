@@ -22,18 +22,11 @@ class ItemStackRequestActionCraftBase;
 class Player;
 
 class CraftHandlerEnchant : public CraftHandlerBase {
-public:
+protected:
     CraftHandlerEnchant();
     ~CraftHandlerEnchant() override = 0;
 
-    ENDSTONE_HOOK virtual ItemStackNetResult
-    _handleCraftAction(const ItemStackRequestActionCraftBase &request_action) override;
-
-    // Endstone
-    [[nodiscard]] Player &getPlayer() const
-    {
-        return player_;
-    }
+    ENDSTONE_HOOK ItemStackNetResult _handleCraftAction(const ItemStackRequestActionCraftBase &request_action) override;
 
 private:
     int enchant_cost_;

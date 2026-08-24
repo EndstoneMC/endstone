@@ -21,17 +21,9 @@
 #include "bedrock/world/item/enchanting/item_enchants.h"
 
 struct ItemEnchantOption {
-    [[nodiscard]] int getCost() const { return cost_; }
-    void setCost(int cost) { cost_ = cost; }
-    [[nodiscard]] const ItemEnchants &getEnchants() const { return enchants_; }
-    [[nodiscard]] ItemEnchants &getEnchants() { return enchants_; }
-    [[nodiscard]] const std::string &getEnchantName() const { return enchant_name_; }
-    [[nodiscard]] const RecipeNetId &getEnchantNetId() const { return enchant_net_id_; }
-
-private:
-    int cost_;
-    ItemEnchants enchants_;
-    std::string enchant_name_;
-    RecipeNetId enchant_net_id_;
+    int cost;
+    ItemEnchants enchants;
+    std::string enchant_name;
+    RecipeNetId enchant_net_id;
 };
 BEDROCK_STATIC_ASSERT_SIZE(ItemEnchantOption, 128, 120);
