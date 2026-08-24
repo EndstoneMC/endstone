@@ -5694,7 +5694,8 @@ and this project adheres to <a href="https://semver.org/spec/v2.0.0.html">Semant
 <li>Fixed writing book metadata wiping the photo attached to a page and the filtered text the server keeps beside it. Pages you did not change now keep both.</li>
 <li>Fixed <code>Enchantment.FORTUNE</code> missing from Python.</li>
 <li>Fixed <code>ServerLoadEvent</code> missing its <code>ServerEvent</code> base in Python, and <code>LoadType.RELOAD</code> never being exposed.</li>
-<li>Fixed a boss bar vanishing for a player who travelled to another dimension. The Bedrock client drops every boss bar it is showing once it rebuilds the world, so the bars a player is in are now sent again after the dimension change finishes.</li>
+<li>Fixed a boss bar vanishing for a player who travelled to another dimension. The Bedrock client drops every boss bar it is showing once it rebuilds the world, and now gets the bars a player is in sent again as soon as it asks for them.</li>
+<li>Fixed <code>BossBar.remove_player</code> hiding the bar from a player who was never added to it, and <code>BossBar.add_player</code> re-sending the bar to a player who was already in it.</li>
 <li>Fixed <code>Plugin.default_permission</code> rejecting a string or a bool (<code>"operator"</code>, <code>"not op"</code>, <code>True</code>), which individual entries in <code>Plugin.permissions</code> already accepted.</li>
 </ul>
 <h4 id="type-annotations">Type annotations<a class="headerlink" href="#type-annotations" title="Permanent link">&para;</a></h4>
