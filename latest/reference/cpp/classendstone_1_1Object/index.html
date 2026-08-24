@@ -2646,9 +2646,9 @@ For latest updates join the chat on
             
                 
                     <li class="md-nav__item">
-    <a href="#function-getclasstypeid" class="md-nav__link">
+    <a href="#function-getclassinfo" class="md-nav__link">
       <span class="md-ellipsis">
-        function getClassTypeId
+        function getClassInfo
       </span>
     </a>
 
@@ -2759,8 +2759,8 @@ For latest updates join the chat on
 <td style="text-align: left;"><a href="#function-as-22"><strong>as</strong></a> () const<br><em>Attempts to cast this object to the given type T.</em></td>
 </tr>
 <tr>
-<td style="text-align: right;">virtual <a href="../classendstone_1_1Identifier/"><strong>const</strong></a> std::type_info &amp;</td>
-<td style="text-align: left;"><a href="#function-getclasstypeid"><strong>getClassTypeId</strong></a> () const = 0<br></td>
+<td style="text-align: right;">virtual <a href="../classendstone_1_1ClassInfo/"><strong>ClassInfo</strong></a></td>
+<td style="text-align: left;"><a href="#function-getclassinfo"><strong>getClassInfo</strong></a> () const = 0<br></td>
 </tr>
 <tr>
 <td style="text-align: right;"><a href="../classendstone_1_1Identifier/"><strong>bool</strong></a></td>
@@ -2768,7 +2768,7 @@ For latest updates join the chat on
 </tr>
 <tr>
 <td style="text-align: right;">virtual <a href="../classendstone_1_1Identifier/"><strong>bool</strong></a></td>
-<td style="text-align: left;"><a href="#function-isinstanceof"><strong>isInstanceOf</strong></a> (<a href="../classendstone_1_1Identifier/"><strong>const</strong></a> std::type_info &amp; target) const = 0<br></td>
+<td style="text-align: left;"><a href="#function-isinstanceof"><strong>isInstanceOf</strong></a> (<a href="../classendstone_1_1ClassInfo/"><strong>ClassInfo</strong></a> target) const = 0<br></td>
 </tr>
 <tr>
 <td style="text-align: right;">virtual</td>
@@ -2777,7 +2777,7 @@ For latest updates join the chat on
 </tbody>
 </table>
 <h2 id="detailed-description">Detailed Description<a class="headerlink" href="#detailed-description" title="Permanent link">&para;</a></h2>
-<p>All endstone types that support runtime type narrowing (e.g., <a href="../classendstone_1_1Permissible/"><strong>Permissible</strong></a>, <a href="../classendstone_1_1ItemMeta/"><strong>ItemMeta</strong></a>) inherit from <a href="./"><strong>Object</strong></a>. Subclasses implement getClassTypeId() and isInstanceOf(), and the type hierarchy is registered with entt::meta at startup. </p>
+<p>All endstone types that support runtime type narrowing (e.g., <a href="../classendstone_1_1Permissible/"><strong>Permissible</strong></a>, <a href="../classendstone_1_1ItemMeta/"><strong>ItemMeta</strong></a>) inherit from <a href="./"><strong>Object</strong></a>. Subclasses implement getClassInfo() and isInstanceOf(), and the type hierarchy is registered with entt::meta at startup. </p>
 <h2 id="public-functions-documentation">Public Functions Documentation<a class="headerlink" href="#public-functions-documentation" title="Permanent link">&para;</a></h2>
 <h3 id="function-as-12">function as [&frac12;]<a class="headerlink" href="#function-as-12" title="Permanent link">&para;</a></h3>
 <p><em>Attempts to cast this object to the given type T.</em> 
@@ -2807,8 +2807,8 @@ For latest updates join the chat on
 <p>Pointer to this as T, or nullptr if the cast is invalid   </p>
 <hr>
 
-<h3 id="function-getclasstypeid">function getClassTypeId<a class="headerlink" href="#function-getclasstypeid" title="Permanent link">&para;</a></h3>
-<div class="language-C++ highlight"><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="k">virtual</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">type_info</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">Object</span><span class="o">::</span><span class="n">getClassTypeId</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span>
+<h3 id="function-getclassinfo">function getClassInfo<a class="headerlink" href="#function-getclassinfo" title="Permanent link">&para;</a></h3>
+<div class="language-C++ highlight"><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="k">virtual</span><span class="w"> </span><span class="n">ClassInfo</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">Object</span><span class="o">::</span><span class="n">getClassInfo</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span>
 </span></code></pre></div>
 <hr>
 
@@ -2827,7 +2827,7 @@ For latest updates join the chat on
 
 <h3 id="function-isinstanceof">function isInstanceOf<a class="headerlink" href="#function-isinstanceof" title="Permanent link">&para;</a></h3>
 <div class="language-C++ highlight"><pre><span></span><code><span id="__span-4-1"><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a><span class="k">virtual</span><span class="w"> </span><span class="kt">bool</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">Object</span><span class="o">::</span><span class="n">isInstanceOf</span><span class="w"> </span><span class="p">(</span>
-</span><span id="__span-4-2"><a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a><span class="w">    </span><span class="k">const</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">type_info</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">target</span>
+</span><span id="__span-4-2"><a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a><span class="w">    </span><span class="n">ClassInfo</span><span class="w"> </span><span class="n">target</span>
 </span><span id="__span-4-3"><a id="__codelineno-4-3" name="__codelineno-4-3" href="#__codelineno-4-3"></a><span class="p">)</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span>
 </span></code></pre></div>
 <hr>

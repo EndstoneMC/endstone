@@ -647,7 +647,7 @@
       <member refid="classendstone_1_1Object_1a798b5128ce018bbbe8ca949ba78c3db1" prot="public" virt="non-virtual"><scope>endstone::ItemMeta</scope><name>as</name></member>
       <member refid="classendstone_1_1Object_1ae0f38a62da4c186fce272145e2590cc1" prot="public" virt="non-virtual"><scope>endstone::ItemMeta</scope><name>as</name></member>
       <member refid="classendstone_1_1ItemMeta_1a27dd5152563e8c36b309a66f1bcf9bb4" prot="public" virt="pure-virtual"><scope>endstone::ItemMeta</scope><name>clone</name></member>
-      <member refid="classendstone_1_1Object_1aaaeb27e8e442e5adb772ae0d1af1c33f" prot="public" virt="pure-virtual"><scope>endstone::ItemMeta</scope><name>getClassTypeId</name></member>
+      <member refid="classendstone_1_1Object_1a3e2df17c95cf63580e95c84f783636c4" prot="public" virt="pure-virtual"><scope>endstone::ItemMeta</scope><name>getClassInfo</name></member>
       <member refid="classendstone_1_1ItemMeta_1a3892649cd822bf85b603d6a2b64b7ebd" prot="public" virt="pure-virtual"><scope>endstone::ItemMeta</scope><name>getDamage</name></member>
       <member refid="classendstone_1_1ItemMeta_1a612f7b82c6ece41678ed8881acab96ee" prot="public" virt="pure-virtual"><scope>endstone::ItemMeta</scope><name>getDisplayName</name></member>
       <member refid="classendstone_1_1ItemMeta_1a4ada54133ca59faa19c55d38b3be845f" prot="public" virt="pure-virtual"><scope>endstone::ItemMeta</scope><name>getEnchantLevel</name></member>
@@ -663,7 +663,7 @@
       <member refid="classendstone_1_1ItemMeta_1a52d6ef7084538f60809b6baff98afdfa" prot="public" virt="pure-virtual"><scope>endstone::ItemMeta</scope><name>hasLore</name></member>
       <member refid="classendstone_1_1ItemMeta_1a90cfeecd88da173df9c5b06a731ec6ed" prot="public" virt="pure-virtual"><scope>endstone::ItemMeta</scope><name>hasRepairCost</name></member>
       <member refid="classendstone_1_1Object_1ae8213ae15ad1b14e4631399c6b18960a" prot="public" virt="non-virtual"><scope>endstone::ItemMeta</scope><name>is</name></member>
-      <member refid="classendstone_1_1Object_1a20376536a5f64ef02b2569af132171d4" prot="public" virt="pure-virtual"><scope>endstone::ItemMeta</scope><name>isInstanceOf</name></member>
+      <member refid="classendstone_1_1Object_1a1f8951c4894c2b8288fd4ef500218771" prot="public" virt="pure-virtual"><scope>endstone::ItemMeta</scope><name>isInstanceOf</name></member>
       <member refid="classendstone_1_1ItemMeta_1a6b272eb7b84e7cdce4c161402d9531fe" prot="public" virt="pure-virtual"><scope>endstone::ItemMeta</scope><name>isUnbreakable</name></member>
       <member refid="classendstone_1_1ItemMeta_1ad00a6e480dbda4f8e054f48cd318756f" prot="public" virt="pure-virtual"><scope>endstone::ItemMeta</scope><name>removeEnchant</name></member>
       <member refid="classendstone_1_1ItemMeta_1ada041111e07c6434bc9ac04a0b82cd61" prot="public" virt="pure-virtual"><scope>endstone::ItemMeta</scope><name>removeEnchants</name></member>

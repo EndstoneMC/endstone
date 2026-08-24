@@ -85,10 +85,10 @@
       <member refid="classendstone_1_1Object_1a798b5128ce018bbbe8ca949ba78c3db1" prot="public" virt="non-virtual"><scope>endstone::ComplexAliasIngredient</scope><name>as</name></member>
       <member refid="classendstone_1_1Object_1ae0f38a62da4c186fce272145e2590cc1" prot="public" virt="non-virtual"><scope>endstone::ComplexAliasIngredient</scope><name>as</name></member>
       <member refid="classendstone_1_1ComplexAliasIngredient_1ab67e2fa1ee696004d4f52c7f32d6b530" prot="public" virt="pure-virtual"><scope>endstone::ComplexAliasIngredient</scope><name>getAlias</name></member>
-      <member refid="classendstone_1_1Object_1aaaeb27e8e442e5adb772ae0d1af1c33f" prot="public" virt="pure-virtual"><scope>endstone::ComplexAliasIngredient</scope><name>getClassTypeId</name></member>
+      <member refid="classendstone_1_1Object_1a3e2df17c95cf63580e95c84f783636c4" prot="public" virt="pure-virtual"><scope>endstone::ComplexAliasIngredient</scope><name>getClassInfo</name></member>
       <member refid="classendstone_1_1RecipeIngredient_1aca2eaef22d0b028c1ce697c85cf02df1" prot="public" virt="pure-virtual"><scope>endstone::ComplexAliasIngredient</scope><name>getCount</name></member>
       <member refid="classendstone_1_1Object_1ae8213ae15ad1b14e4631399c6b18960a" prot="public" virt="non-virtual"><scope>endstone::ComplexAliasIngredient</scope><name>is</name></member>
-      <member refid="classendstone_1_1Object_1a20376536a5f64ef02b2569af132171d4" prot="public" virt="pure-virtual"><scope>endstone::ComplexAliasIngredient</scope><name>isInstanceOf</name></member>
+      <member refid="classendstone_1_1Object_1a1f8951c4894c2b8288fd4ef500218771" prot="public" virt="pure-virtual"><scope>endstone::ComplexAliasIngredient</scope><name>isInstanceOf</name></member>
       <member refid="classendstone_1_1RecipeIngredient_1a66b2e4dadf5693b58412099c533fc430" prot="public" virt="pure-virtual"><scope>endstone::ComplexAliasIngredient</scope><name>test</name></member>
       <member refid="classendstone_1_1ComplexAliasIngredient_1ae1a633af695ec991cd465a7512bf3b7d" prot="public" virt="non-virtual"><scope>endstone::ComplexAliasIngredient</scope><name>~ComplexAliasIngredient</name></member>
       <member refid="classendstone_1_1Object_1adfddc886af4b1d0e09ddac7d0391b4d2" prot="public" virt="virtual"><scope>endstone::ComplexAliasIngredient</scope><name>~Object</name></member>

@@ -59,6 +59,7 @@ Here are the classes, structs, unions and interfaces with brief descriptions:
     * **class** [**ChunkEvent**](classendstone_1_1ChunkEvent.md) _Represents a_ [_**Chunk**_](classendstone_1_1Chunk.md) _related event._    
     * **class** [**ChunkLoadEvent**](classendstone_1_1ChunkLoadEvent.md) _Called when a chunk is loaded._     
     * **class** [**ChunkUnloadEvent**](classendstone_1_1ChunkUnloadEvent.md) _Called when a chunk is unloaded._     
+    * **class** [**ClassInfo**](classendstone_1_1ClassInfo.md) _A type identity that stays comparable across shared library boundaries._     
     * **class** [**Color**](classendstone_1_1Color.md) _Represents a color with red, green, blue, and alpha components._     
     * **struct** [**ColorFormat**](structendstone_1_1ColorFormat.md) _All supported color and format codes._     
     * **class** [**Colors**](classendstone_1_1Colors.md) _Provides a collection of predefined colors._     
@@ -295,6 +296,7 @@ Here are the classes, structs, unions and interfaces with brief descriptions:
     * **struct** [**formatter&lt; endstone::detail::JoinView&lt; It, Sentinel &gt; &gt;**](structstd_1_1formatter_3_01endstone_1_1detail_1_1JoinView_3_01It_00_01Sentinel_01_4_01_4.md)     
     * **struct** [**formatter&lt; endstone::nbt::Tag &gt;**](structstd_1_1formatter_3_01endstone_1_1nbt_1_1Tag_01_4.md)     
     * **struct** [**formatter&lt; endstone::nbt::escape\_view &gt;**](structstd_1_1formatter_3_01endstone_1_1nbt_1_1escape__view_01_4.md)     
+    * **struct** [**hash&lt; endstone::ClassInfo &gt;**](structstd_1_1hash_3_01endstone_1_1ClassInfo_01_4.md)     
     * **struct** [**hash&lt; endstone::Identifier&lt; T &gt; &gt;**](structstd_1_1hash_3_01endstone_1_1Identifier_3_01T_01_4_01_4.md)     
     * **struct** [**hash&lt; endstone::NotNull&lt; T &gt; &gt;**](structstd_1_1hash_3_01endstone_1_1NotNull_3_01T_01_4_01_4.md)     
     * **struct** [**hash&lt; endstone::Nullable&lt; T &gt; &gt;**](structstd_1_1hash_3_01endstone_1_1Nullable_3_01T_01_4_01_4.md)     

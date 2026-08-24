@@ -122,6 +122,8 @@
 ([**endstone**](namespaceendstone.md))
 * [**ChunkUnloadEvent**](classendstone_1_1ChunkUnloadEvent.md)
 ([**endstone**](namespaceendstone.md))
+* [**ClassInfo**](classendstone_1_1ClassInfo.md)
+([**endstone**](namespaceendstone.md))
 * [**Color**](classendstone_1_1Color.md)
 ([**endstone**](namespaceendstone.md))
 * [**ColorFormat**](structendstone_1_1ColorFormat.md)
@@ -278,6 +280,8 @@
 
 * [**HandlerList**](classendstone_1_1HandlerList.md)
 ([**endstone**](namespaceendstone.md))
+* [**hash&lt; endstone::ClassInfo &gt;**](structstd_1_1hash_3_01endstone_1_1ClassInfo_01_4.md)
+([**std**](namespacestd.md))
 * [**hash&lt; endstone::Identifier&lt; T &gt; &gt;**](structstd_1_1hash_3_01endstone_1_1Identifier_3_01T_01_4_01_4.md)
 ([**std**](namespacestd.md))
 * [**hash&lt; endstone::NotNull&lt; T &gt; &gt;**](structstd_1_1hash_3_01endstone_1_1NotNull_3_01T_01_4_01_4.md)

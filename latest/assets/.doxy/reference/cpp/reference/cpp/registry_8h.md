@@ -17,6 +17,7 @@
 * `#include <string>`
 * `#include "detail.h"`
 * `#include "identifier.h"`
+* `#include "object.h"`
 * `#include "server.h"`
 
 

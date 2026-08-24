@@ -13,12 +13,12 @@
     <includes local="yes">endstone/version.h</includes>
     <includedby refid="plugin_8h" local="yes">include/endstone/plugin/plugin.h</includedby>
     <incdepgraph>
-      <node id="23">
+      <node id="24">
         <label>endstone/check.h</label>
         <link refid="check_8h_source"/>
         <childnode refid="3" relation="include">
         </childnode>
-        <childnode refid="24" relation="include">
+        <childnode refid="25" relation="include">
         </childnode>
         <childnode refid="5" relation="include">
         </childnode>
@@ -40,7 +40,7 @@
         </childnode>
         <childnode refid="17" relation="include">
         </childnode>
-        <childnode refid="20" relation="include">
+        <childnode refid="23" relation="include">
         </childnode>
       </node>
       <node id="8">
@@ -58,7 +58,7 @@
         </childnode>
         <childnode refid="11" relation="include">
         </childnode>
-        <childnode refid="20" relation="include">
+        <childnode refid="23" relation="include">
         </childnode>
       </node>
       <node id="11">
@@ -75,15 +75,15 @@
         <childnode refid="15" relation="include">
         </childnode>
       </node>
-      <node id="30">
+      <node id="31">
         <label>endstone/event/event.h</label>
         <link refid="event_8h_source"/>
-        <childnode refid="24" relation="include">
+        <childnode refid="25" relation="include">
         </childnode>
         <childnode refid="4" relation="include">
         </childnode>
       </node>
-      <node id="31">
+      <node id="32">
         <label>endstone/event/event_priority.h</label>
         <link refid="event__priority_8h_source"/>
       </node>
@@ -112,9 +112,15 @@
       <node id="17">
         <label>endstone/object.h</label>
         <link refid="object_8h_source"/>
+        <childnode refid="18" relation="include">
+        </childnode>
+        <childnode refid="19" relation="include">
+        </childnode>
+        <childnode refid="20" relation="include">
+        </childnode>
         <childnode refid="10" relation="include">
         </childnode>
-        <childnode refid="18" relation="include">
+        <childnode refid="21" relation="include">
         </childnode>
       </node>
       <node id="15">
@@ -128,14 +134,14 @@
         </childnode>
         <childnode refid="17" relation="include">
         </childnode>
-        <childnode refid="19" relation="include">
+        <childnode refid="22" relation="include">
         </childnode>
-        <childnode refid="25" relation="include">
+        <childnode refid="26" relation="include">
         </childnode>
-        <childnode refid="20" relation="include">
+        <childnode refid="23" relation="include">
         </childnode>
       </node>
-      <node id="26">
+      <node id="27">
         <label>endstone/permissions/permission.h</label>
         <link refid="permission_8h_source"/>
         <childnode refid="2" relation="include">
@@ -144,24 +150,24 @@
         </childnode>
         <childnode refid="4" relation="include">
         </childnode>
-        <childnode refid="27" relation="include">
+        <childnode refid="28" relation="include">
         </childnode>
         <childnode refid="16" relation="include">
         </childnode>
         <childnode refid="5" relation="include">
         </childnode>
-        <childnode refid="23" relation="include">
+        <childnode refid="24" relation="include">
         </childnode>
         <childnode refid="15" relation="include">
         </childnode>
-        <childnode refid="28" relation="include">
-        </childnode>
         <childnode refid="29" relation="include">
         </childnode>
-        <childnode refid="20" relation="include">
+        <childnode refid="30" relation="include">
+        </childnode>
+        <childnode refid="23" relation="include">
         </childnode>
       </node>
-      <node id="19">
+      <node id="22">
         <label>endstone/permissions/permission_attachment_info.h</label>
         <link refid="permission__attachment__info_8h_source"/>
         <childnode refid="9" relation="include">
@@ -170,14 +176,14 @@
         </childnode>
         <childnode refid="5" relation="include">
         </childnode>
-        <childnode refid="20" relation="include">
+        <childnode refid="23" relation="include">
         </childnode>
       </node>
-      <node id="28">
+      <node id="29">
         <label>endstone/permissions/permission_default.h</label>
         <link refid="permission__default_8h_source"/>
       </node>
-      <node id="25">
+      <node id="26">
         <label>endstone/permissions/permission_level.h</label>
         <link refid="permission__level_8h_source"/>
       </node>
@@ -196,21 +202,21 @@
         </childnode>
         <childnode refid="7" relation="include">
         </childnode>
-        <childnode refid="26" relation="include">
-        </childnode>
-        <childnode refid="32" relation="include">
+        <childnode refid="27" relation="include">
         </childnode>
         <childnode refid="33" relation="include">
         </childnode>
+        <childnode refid="34" relation="include">
+        </childnode>
       </node>
-      <node id="32">
+      <node id="33">
         <label>endstone/plugin/plugin_load_order.h</label>
         <link refid="plugin__load__order_8h_source"/>
       </node>
-      <node id="29">
+      <node id="30">
         <label>endstone/plugin/plugin_manager.h</label>
         <link refid="plugin__manager_8h_source"/>
-        <childnode refid="22" relation="include">
+        <childnode refid="20" relation="include">
         </childnode>
         <childnode refid="9" relation="include">
         </childnode>
@@ -220,21 +226,21 @@
         </childnode>
         <childnode refid="6" relation="include">
         </childnode>
-        <childnode refid="30" relation="include">
-        </childnode>
         <childnode refid="31" relation="include">
         </childnode>
-        <childnode refid="25" relation="include">
+        <childnode refid="32" relation="include">
         </childnode>
-        <childnode refid="20" relation="include">
+        <childnode refid="26" relation="include">
+        </childnode>
+        <childnode refid="23" relation="include">
         </childnode>
       </node>
-      <node id="20">
+      <node id="23">
         <label>endstone/util/pointers.h</label>
         <link refid="pointers_8h_source"/>
-        <childnode refid="21" relation="include">
+        <childnode refid="18" relation="include">
         </childnode>
-        <childnode refid="22" relation="include">
+        <childnode refid="20" relation="include">
         </childnode>
         <childnode refid="9" relation="include">
         </childnode>
@@ -242,7 +248,7 @@
         </childnode>
         <childnode refid="5" relation="include">
         </childnode>
-        <childnode refid="23" relation="include">
+        <childnode refid="24" relation="include">
         </childnode>
         <childnode refid="17" relation="include">
         </childnode>
@@ -250,22 +256,25 @@
       <node id="2">
         <label>algorithm</label>
       </node>
-      <node id="21">
+      <node id="18">
         <label>cstddef</label>
       </node>
-      <node id="33">
+      <node id="19">
+        <label>cstring</label>
+      </node>
+      <node id="34">
         <label>endstone/version.h</label>
       </node>
       <node id="3">
         <label>format</label>
       </node>
-      <node id="22">
+      <node id="20">
         <label>functional</label>
       </node>
       <node id="9">
         <label>memory</label>
       </node>
-      <node id="24">
+      <node id="25">
         <label>stdexcept</label>
       </node>
       <node id="4">
@@ -274,10 +283,10 @@
       <node id="10">
         <label>type_traits</label>
       </node>
-      <node id="18">
+      <node id="21">
         <label>typeinfo</label>
       </node>
-      <node id="27">
+      <node id="28">
         <label>unordered_map</label>
       </node>
       <node id="16">
@@ -401,7 +410,7 @@
 <codeline lineno="29"><highlight class="normal"></highlight></codeline>
 <codeline lineno="33" refid="classendstone_1_1PluginDescription" refkind="compound"><highlight class="normal"></highlight><highlight class="keyword">class<sp/></highlight><highlight class="normal"><ref refid="classendstone_1_1PluginDescription" kindref="compound">PluginDescription</ref><sp/>{</highlight></codeline>
 <codeline lineno="34"><highlight class="normal"></highlight><highlight class="keyword">public</highlight><highlight class="normal">:</highlight></codeline>
-<codeline lineno="35"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classendstone_1_1PluginDescription" kindref="compound">PluginDescription</ref>(std::string<sp/><ref refid="classendstone_1_1Identifier" kindref="compound">name</ref>,<sp/>std::string<sp/>version,<sp/>std::string<sp/>description<sp/>=<sp/></highlight><highlight class="stringliteral">&quot;&quot;</highlight><highlight class="normal">,</highlight></codeline>
+<codeline lineno="35"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classendstone_1_1PluginDescription" kindref="compound">PluginDescription</ref>(std::string<sp/>name,<sp/>std::string<sp/>version,<sp/>std::string<sp/>description<sp/>=<sp/></highlight><highlight class="stringliteral">&quot;&quot;</highlight><highlight class="normal">,</highlight></codeline>
 <codeline lineno="36"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="namespaceendstone_1acbd28364660dc397ef62ea1902defe6b" kindref="member">PluginLoadOrder</ref><sp/>load<sp/>=<sp/><ref refid="namespaceendstone_1acbd28364660dc397ef62ea1902defe6baabb0b493a9cbcc1b98b45c7e69f41a52" kindref="member">PluginLoadOrder::PostWorld</ref>,<sp/>std::vector&lt;std::string&gt;<sp/>authors<sp/>=<sp/>{},</highlight></codeline>
 <codeline lineno="37"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>std::vector&lt;std::string&gt;<sp/>contributors<sp/>=<sp/>{},<sp/>std::string<sp/>website<sp/>=<sp/></highlight><highlight class="stringliteral">&quot;&quot;</highlight><highlight class="normal">,<sp/>std::string<sp/>prefix<sp/>=<sp/></highlight><highlight class="stringliteral">&quot;&quot;</highlight><highlight class="normal">,</highlight></codeline>
 <codeline lineno="38"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>std::vector&lt;std::string&gt;<sp/>provides<sp/>=<sp/>{},<sp/>std::vector&lt;std::string&gt;<sp/>depend<sp/>=<sp/>{},</highlight></codeline>
@@ -414,7 +423,7 @@
 <codeline lineno="45"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>load_before_(std::move(load_before)),<sp/>default_permission_(default_permission),<sp/>commands_(std::move(commands)),</highlight></codeline>
 <codeline lineno="46"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>permissions_(std::move(permissions))</highlight></codeline>
 <codeline lineno="47"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
-<codeline lineno="48"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>name_<sp/>=<sp/>std::move(<ref refid="classendstone_1_1Identifier" kindref="compound">name</ref>);</highlight></codeline>
+<codeline lineno="48"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>name_<sp/>=<sp/>std::move(name);</highlight></codeline>
 <codeline lineno="49"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>std::replace(name_.begin(),<sp/>name_.end(),<sp/></highlight><highlight class="charliteral">&apos;<sp/>&apos;</highlight><highlight class="normal">,<sp/></highlight><highlight class="charliteral">&apos;_&apos;</highlight><highlight class="normal">);</highlight></codeline>
 <codeline lineno="50"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>version_<sp/>=<sp/>std::move(version);</highlight></codeline>
 <codeline lineno="51"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>full_name_<sp/>=<sp/>std::format(</highlight><highlight class="stringliteral">&quot;{}<sp/>v{}&quot;</highlight><highlight class="normal">,<sp/>name_,<sp/>version_);</highlight></codeline>

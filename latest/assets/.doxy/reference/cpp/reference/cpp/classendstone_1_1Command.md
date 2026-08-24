@@ -77,12 +77,12 @@ Inherited by the following classes: [endstone::PluginCommand](classendstone_1_1P
 |   | [**Command**](#function-command) (std::string name, std::string description="", std::vector&lt; std::string &gt; usages={}, std::vector&lt; std::string &gt; aliases={}, std::vector&lt; std::string &gt; permissions={}) <br> |
 | virtual [**bool**](classendstone_1_1Identifier.md) | [**execute**](#function-execute) ([**const**](classendstone_1_1Identifier.md) [**NotNull**](classendstone_1_1NotNull.md)&lt; [**CommandSender**](classendstone_1_1CommandSender.md) &gt; & sender, [**const**](classendstone_1_1Identifier.md) std::vector&lt; std::string &gt; & args) const<br>_Executes the command, returning its success._  |
 |  std::vector&lt; std::string &gt; | [**getAliases**](#function-getaliases) () const<br>_Returns a list of aliases of this command._  |
-| virtual [**const**](classendstone_1_1Identifier.md) std::type\_info & | [**getClassTypeId**](#function-getclasstypeid) () override const<br> |
+| virtual [**ClassInfo**](classendstone_1_1ClassInfo.md) | [**getClassInfo**](#function-getclassinfo) () override const<br> |
 |  std::string | [**getDescription**](#function-getdescription) () const<br>_Gets a brief description of this command._  |
 |  std::string | [**getName**](#function-getname) () const<br>_Returns the name of this command._  |
 |  std::vector&lt; std::string &gt; | [**getPermissions**](#function-getpermissions) () const<br>_Gets the permissions required by users to be able to perform this command._  |
 |  std::vector&lt; std::string &gt; | [**getUsages**](#function-getusages) () const<br>_Returns a list of usages of this command._  |
-| virtual [**bool**](classendstone_1_1Identifier.md) | [**isInstanceOf**](#function-isinstanceof) ([**const**](classendstone_1_1Identifier.md) std::type\_info & target) override const<br> |
+| virtual [**bool**](classendstone_1_1Identifier.md) | [**isInstanceOf**](#function-isinstanceof) ([**ClassInfo**](classendstone_1_1ClassInfo.md) target) override const<br> |
 |  [**bool**](classendstone_1_1Identifier.md) | [**isRegistered**](#function-isregistered) () const<br>_Returns the current registered state of this command._  |
 |  [**bool**](classendstone_1_1Identifier.md) | [**registerTo**](#function-registerto) ([**const**](classendstone_1_1Identifier.md) [**CommandMap**](classendstone_1_1CommandMap.md) & command\_map) <br>_Registers this command to a_ [_**CommandMap**_](classendstone_1_1CommandMap.md) _._ |
 |  [**void**](classendstone_1_1Identifier.md) | [**setAliases**](#function-setaliases) (Alias... aliases) <br>_Sets the list of aliases to request on registration for this command._  |
@@ -104,9 +104,9 @@ See [endstone::Object](classendstone_1_1Object.md)
 | ---: | :--- |
 |  [**T**](classendstone_1_1Identifier.md) \* | [**as**](classendstone_1_1Object.md#function-as-12) () <br>_Attempts to cast this object to the given type T._  |
 |  [**const**](classendstone_1_1Identifier.md) [**T**](classendstone_1_1Identifier.md) \* | [**as**](classendstone_1_1Object.md#function-as-22) () const<br>_Attempts to cast this object to the given type T._  |
-| virtual [**const**](classendstone_1_1Identifier.md) std::type\_info & | [**getClassTypeId**](classendstone_1_1Object.md#function-getclasstypeid) () const = 0<br> |
+| virtual [**ClassInfo**](classendstone_1_1ClassInfo.md) | [**getClassInfo**](classendstone_1_1Object.md#function-getclassinfo) () const = 0<br> |
 |  [**bool**](classendstone_1_1Identifier.md) | [**is**](classendstone_1_1Object.md#function-is) () const<br>_Checks if this object is an instance of the given type T (or a subclass of T)._  |
-| virtual [**bool**](classendstone_1_1Identifier.md) | [**isInstanceOf**](classendstone_1_1Object.md#function-isinstanceof) ([**const**](classendstone_1_1Identifier.md) std::type\_info & target) const = 0<br> |
+| virtual [**bool**](classendstone_1_1Identifier.md) | [**isInstanceOf**](classendstone_1_1Object.md#function-isinstanceof) ([**ClassInfo**](classendstone_1_1ClassInfo.md) target) const = 0<br> |
 | virtual  | [**~Object**](classendstone_1_1Object.md#function-object) () = default<br> |
 
 
@@ -247,15 +247,15 @@ List of aliases
 
 
 
-### function getClassTypeId 
+### function getClassInfo 
 
 ```C++
-inline virtual const std::type_info & endstone::Command::getClassTypeId () override const
+inline virtual ClassInfo endstone::Command::getClassInfo () override const
 ```
 
 
 
-Implements [*endstone::Object::getClassTypeId*](classendstone_1_1Object.md#function-getclasstypeid)
+Implements [*endstone::Object::getClassInfo*](classendstone_1_1Object.md#function-getclassinfo)
 
 
 <hr>
@@ -366,7 +366,7 @@ List of usages
 
 ```C++
 inline virtual bool endstone::Command::isInstanceOf (
-    const std::type_info & target
+    ClassInfo target
 ) override const
 ```
 

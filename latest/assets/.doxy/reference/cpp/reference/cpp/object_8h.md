@@ -10,6 +10,9 @@
 
 
 
+* `#include <cstddef>`
+* `#include <cstring>`
+* `#include <functional>`
 * `#include <type_traits>`
 * `#include <typeinfo>`
 
@@ -36,7 +39,9 @@
 
 | Type | Name |
 | ---: | :--- |
+| class | [**ClassInfo**](classendstone_1_1ClassInfo.md) <br>_A type identity that stays comparable across shared library boundaries._  |
 | class | [**Object**](classendstone_1_1Object.md) <br>_Base class providing runtime type identification and safe casting._  |
+| struct | [**hash&lt; endstone::ClassInfo &gt;**](structstd_1_1hash_3_01endstone_1_1ClassInfo_01_4.md) &lt;&gt;<br> |
 
 
 

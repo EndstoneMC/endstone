@@ -9,6 +9,7 @@
     <includes local="no">string</includes>
     <includes refid="detail_8h" local="yes">detail.h</includes>
     <includes refid="identifier_8h" local="yes">identifier.h</includes>
+    <includes refid="object_8h" local="yes">object.h</includes>
     <includes refid="server_8h" local="yes">server.h</includes>
     <includedby refid="ability_8h" local="yes">include/endstone/ability.h</includedby>
     <includedby refid="actor__type_8h" local="yes">include/endstone/actor/actor_type.h</includedby>
@@ -20,32 +21,32 @@
     <includedby refid="effect__type_8h" local="yes">include/endstone/potion/effect_type.h</includedby>
     <includedby refid="potion__type_8h" local="yes">include/endstone/potion/potion_type.h</includedby>
     <incdepgraph>
-      <node id="24">
+      <node id="26">
         <label>endstone/ban/ban_entry.h</label>
         <link refid="ban__entry_8h_source"/>
-        <childnode refid="15" relation="include">
-        </childnode>
-        <childnode refid="22" relation="include">
-        </childnode>
-        <childnode refid="6" relation="include">
-        </childnode>
-        <childnode refid="19" relation="include">
-        </childnode>
-      </node>
-      <node id="23">
-        <label>endstone/ban/ban_list.h</label>
-        <link refid="ban__list_8h_source"/>
-        <childnode refid="15" relation="include">
-        </childnode>
-        <childnode refid="22" relation="include">
-        </childnode>
-        <childnode refid="6" relation="include">
-        </childnode>
-        <childnode refid="20" relation="include">
+        <childnode refid="18" relation="include">
         </childnode>
         <childnode refid="24" relation="include">
         </childnode>
-        <childnode refid="25" relation="include">
+        <childnode refid="6" relation="include">
+        </childnode>
+        <childnode refid="21" relation="include">
+        </childnode>
+      </node>
+      <node id="25">
+        <label>endstone/ban/ban_list.h</label>
+        <link refid="ban__list_8h_source"/>
+        <childnode refid="18" relation="include">
+        </childnode>
+        <childnode refid="24" relation="include">
+        </childnode>
+        <childnode refid="6" relation="include">
+        </childnode>
+        <childnode refid="22" relation="include">
+        </childnode>
+        <childnode refid="26" relation="include">
+        </childnode>
+        <childnode refid="27" relation="include">
         </childnode>
       </node>
       <node id="29">
@@ -53,23 +54,23 @@
         <link refid="ip__ban__entry_8h_source"/>
         <childnode refid="6" relation="include">
         </childnode>
-        <childnode refid="19" relation="include">
+        <childnode refid="21" relation="include">
+        </childnode>
+        <childnode refid="26" relation="include">
+        </childnode>
+      </node>
+      <node id="23">
+        <label>endstone/ban/ip_ban_list.h</label>
+        <link refid="ip__ban__list_8h_source"/>
+        <childnode refid="18" relation="include">
         </childnode>
         <childnode refid="24" relation="include">
         </childnode>
-      </node>
-      <node id="21">
-        <label>endstone/ban/ip_ban_list.h</label>
-        <link refid="ip__ban__list_8h_source"/>
-        <childnode refid="15" relation="include">
+        <childnode refid="6" relation="include">
         </childnode>
         <childnode refid="22" relation="include">
         </childnode>
-        <childnode refid="6" relation="include">
-        </childnode>
-        <childnode refid="20" relation="include">
-        </childnode>
-        <childnode refid="23" relation="include">
+        <childnode refid="25" relation="include">
         </childnode>
         <childnode refid="29" relation="include">
         </childnode>
@@ -77,13 +78,13 @@
       <node id="31">
         <label>endstone/ban/player_ban_entry.h</label>
         <link refid="player__ban__entry_8h_source"/>
-        <childnode refid="22" relation="include">
+        <childnode refid="24" relation="include">
         </childnode>
         <childnode refid="6" relation="include">
         </childnode>
-        <childnode refid="19" relation="include">
+        <childnode refid="21" relation="include">
         </childnode>
-        <childnode refid="24" relation="include">
+        <childnode refid="26" relation="include">
         </childnode>
         <childnode refid="32" relation="include">
         </childnode>
@@ -91,15 +92,15 @@
       <node id="30">
         <label>endstone/ban/player_ban_list.h</label>
         <link refid="player__ban__list_8h_source"/>
-        <childnode refid="15" relation="include">
+        <childnode refid="18" relation="include">
         </childnode>
-        <childnode refid="22" relation="include">
+        <childnode refid="24" relation="include">
         </childnode>
         <childnode refid="6" relation="include">
         </childnode>
-        <childnode refid="20" relation="include">
+        <childnode refid="22" relation="include">
         </childnode>
-        <childnode refid="23" relation="include">
+        <childnode refid="25" relation="include">
         </childnode>
         <childnode refid="31" relation="include">
         </childnode>
@@ -107,7 +108,7 @@
       <node id="34">
         <label>endstone/block/block_data.h</label>
         <link refid="block__data_8h_source"/>
-        <childnode refid="16" relation="include">
+        <childnode refid="19" relation="include">
         </childnode>
         <childnode refid="3" relation="include">
         </childnode>
@@ -139,7 +140,7 @@
         <link refid="boss__bar_8h_source"/>
         <childnode refid="6" relation="include">
         </childnode>
-        <childnode refid="20" relation="include">
+        <childnode refid="22" relation="include">
         </childnode>
         <childnode refid="41" relation="include">
         </childnode>
@@ -147,35 +148,35 @@
         </childnode>
         <childnode refid="43" relation="include">
         </childnode>
-        <childnode refid="25" relation="include">
+        <childnode refid="27" relation="include">
         </childnode>
       </node>
-      <node id="27">
+      <node id="28">
         <label>endstone/check.h</label>
         <link refid="check_8h_source"/>
         <childnode refid="3" relation="include">
         </childnode>
         <childnode refid="5" relation="include">
         </childnode>
-        <childnode refid="19" relation="include">
+        <childnode refid="21" relation="include">
         </childnode>
       </node>
       <node id="44">
         <label>endstone/command/command_map.h</label>
         <link refid="command__map_8h_source"/>
-        <childnode refid="17" relation="include">
+        <childnode refid="20" relation="include">
         </childnode>
         <childnode refid="6" relation="include">
         </childnode>
-        <childnode refid="26" relation="include">
+        <childnode refid="15" relation="include">
         </childnode>
-        <childnode refid="19" relation="include">
+        <childnode refid="21" relation="include">
         </childnode>
-        <childnode refid="20" relation="include">
+        <childnode refid="22" relation="include">
         </childnode>
         <childnode refid="45" relation="include">
         </childnode>
-        <childnode refid="25" relation="include">
+        <childnode refid="27" relation="include">
         </childnode>
       </node>
       <node id="45">
@@ -185,7 +186,7 @@
         </childnode>
         <childnode refid="6" relation="include">
         </childnode>
-        <childnode refid="19" relation="include">
+        <childnode refid="21" relation="include">
         </childnode>
         <childnode refid="46" relation="include">
         </childnode>
@@ -223,7 +224,7 @@
         <link refid="language_8h_source"/>
         <childnode refid="6" relation="include">
         </childnode>
-        <childnode refid="20" relation="include">
+        <childnode refid="22" relation="include">
         </childnode>
         <childnode refid="47" relation="include">
         </childnode>
@@ -233,15 +234,15 @@
         <link refid="translatable_8h_source"/>
         <childnode refid="6" relation="include">
         </childnode>
-        <childnode refid="19" relation="include">
+        <childnode refid="21" relation="include">
         </childnode>
-        <childnode refid="20" relation="include">
+        <childnode refid="22" relation="include">
         </childnode>
       </node>
       <node id="53">
         <label>endstone/logger.h</label>
         <link refid="logger_8h_source"/>
-        <childnode refid="16" relation="include">
+        <childnode refid="19" relation="include">
         </childnode>
         <childnode refid="3" relation="include">
         </childnode>
@@ -251,17 +252,17 @@
         </childnode>
         <childnode refid="13" relation="include">
         </childnode>
-        <childnode refid="26" relation="include">
+        <childnode refid="15" relation="include">
         </childnode>
-        <childnode refid="19" relation="include">
+        <childnode refid="21" relation="include">
         </childnode>
       </node>
       <node id="56">
         <label>endstone/map/map_canvas.h</label>
         <link refid="map__canvas_8h_source"/>
-        <childnode refid="16" relation="include">
+        <childnode refid="19" relation="include">
         </childnode>
-        <childnode refid="20" relation="include">
+        <childnode refid="22" relation="include">
         </childnode>
         <childnode refid="57" relation="include">
         </childnode>
@@ -273,13 +274,13 @@
       <node id="57">
         <label>endstone/map/map_cursor.h</label>
         <link refid="map__cursor_8h_source"/>
-        <childnode refid="16" relation="include">
+        <childnode refid="19" relation="include">
         </childnode>
         <childnode refid="6" relation="include">
         </childnode>
-        <childnode refid="19" relation="include">
+        <childnode refid="21" relation="include">
         </childnode>
-        <childnode refid="27" relation="include">
+        <childnode refid="28" relation="include">
         </childnode>
       </node>
       <node id="55">
@@ -287,19 +288,19 @@
         <link refid="map__renderer_8h_source"/>
         <childnode refid="56" relation="include">
         </childnode>
-        <childnode refid="25" relation="include">
+        <childnode refid="27" relation="include">
         </childnode>
       </node>
       <node id="54">
         <label>endstone/map/map_view.h</label>
         <link refid="map__view_8h_source"/>
-        <childnode refid="16" relation="include">
+        <childnode refid="19" relation="include">
         </childnode>
-        <childnode refid="20" relation="include">
+        <childnode refid="22" relation="include">
         </childnode>
         <childnode refid="55" relation="include">
         </childnode>
-        <childnode refid="25" relation="include">
+        <childnode refid="27" relation="include">
         </childnode>
       </node>
       <node id="46">
@@ -307,49 +308,55 @@
         <link refid="message_8h_source"/>
         <childnode refid="6" relation="include">
         </childnode>
-        <childnode refid="19" relation="include">
+        <childnode refid="21" relation="include">
         </childnode>
         <childnode refid="36" relation="include">
         </childnode>
         <childnode refid="47" relation="include">
         </childnode>
       </node>
-      <node id="28">
-        <label>endstone/object.h</label>
+      <node id="14">
+        <label>object.h</label>
         <link refid="object_8h_source"/>
-        <childnode refid="26" relation="include">
+        <childnode refid="10" relation="include">
         </childnode>
-        <childnode refid="18" relation="include">
+        <childnode refid="8" relation="include">
+        </childnode>
+        <childnode refid="4" relation="include">
+        </childnode>
+        <childnode refid="15" relation="include">
+        </childnode>
+        <childnode refid="16" relation="include">
         </childnode>
       </node>
       <node id="48">
         <label>endstone/permissions/permissible.h</label>
         <link refid="permissible_8h_source"/>
-        <childnode refid="17" relation="include">
+        <childnode refid="20" relation="include">
         </childnode>
         <childnode refid="6" relation="include">
         </childnode>
         <childnode refid="49" relation="include">
         </childnode>
-        <childnode refid="28" relation="include">
+        <childnode refid="14" relation="include">
         </childnode>
         <childnode refid="50" relation="include">
         </childnode>
         <childnode refid="51" relation="include">
         </childnode>
-        <childnode refid="25" relation="include">
+        <childnode refid="27" relation="include">
         </childnode>
       </node>
       <node id="50">
         <label>endstone/permissions/permission_attachment_info.h</label>
         <link refid="permission__attachment__info_8h_source"/>
-        <childnode refid="17" relation="include">
+        <childnode refid="20" relation="include">
         </childnode>
         <childnode refid="6" relation="include">
         </childnode>
-        <childnode refid="19" relation="include">
+        <childnode refid="21" relation="include">
         </childnode>
-        <childnode refid="25" relation="include">
+        <childnode refid="27" relation="include">
         </childnode>
       </node>
       <node id="51">
@@ -363,17 +370,17 @@
       <node id="62">
         <label>endstone/plugin/service_manager.h</label>
         <link refid="service__manager_8h_source"/>
-        <childnode refid="17" relation="include">
+        <childnode refid="20" relation="include">
         </childnode>
         <childnode refid="6" relation="include">
         </childnode>
-        <childnode refid="19" relation="include">
+        <childnode refid="21" relation="include">
         </childnode>
         <childnode refid="63" relation="include">
         </childnode>
         <childnode refid="64" relation="include">
         </childnode>
-        <childnode refid="25" relation="include">
+        <childnode refid="27" relation="include">
         </childnode>
       </node>
       <node id="64">
@@ -399,6 +406,8 @@
         </childnode>
         <childnode refid="14" relation="include">
         </childnode>
+        <childnode refid="17" relation="include">
+        </childnode>
       </node>
       <node id="66">
         <label>endstone/scoreboard/criteria.h</label>
@@ -415,9 +424,9 @@
       <node id="69">
         <label>endstone/scoreboard/objective.h</label>
         <link refid="objective_8h_source"/>
-        <childnode refid="17" relation="include">
+        <childnode refid="20" relation="include">
         </childnode>
-        <childnode refid="22" relation="include">
+        <childnode refid="24" relation="include">
         </childnode>
         <childnode refid="6" relation="include">
         </childnode>
@@ -425,7 +434,7 @@
         </childnode>
         <childnode refid="71" relation="include">
         </childnode>
-        <childnode refid="25" relation="include">
+        <childnode refid="27" relation="include">
         </childnode>
         <childnode refid="60" relation="include">
         </childnode>
@@ -437,7 +446,7 @@
       <node id="67">
         <label>endstone/scoreboard/render_type.h</label>
         <link refid="render__type_8h_source"/>
-        <childnode refid="16" relation="include">
+        <childnode refid="19" relation="include">
         </childnode>
       </node>
       <node id="71">
@@ -445,7 +454,7 @@
         <link refid="score_8h_source"/>
         <childnode refid="72" relation="include">
         </childnode>
-        <childnode refid="25" relation="include">
+        <childnode refid="27" relation="include">
         </childnode>
         <childnode refid="60" relation="include">
         </childnode>
@@ -457,19 +466,19 @@
         </childnode>
         <childnode refid="36" relation="include">
         </childnode>
-        <childnode refid="20" relation="include">
+        <childnode refid="22" relation="include">
         </childnode>
-        <childnode refid="25" relation="include">
+        <childnode refid="27" relation="include">
         </childnode>
       </node>
       <node id="65">
         <label>endstone/scoreboard/scoreboard.h</label>
         <link refid="scoreboard_8h_source"/>
-        <childnode refid="17" relation="include">
+        <childnode refid="20" relation="include">
         </childnode>
         <childnode refid="6" relation="include">
         </childnode>
-        <childnode refid="20" relation="include">
+        <childnode refid="22" relation="include">
         </childnode>
         <childnode refid="66" relation="include">
         </childnode>
@@ -479,21 +488,21 @@
         </childnode>
         <childnode refid="72" relation="include">
         </childnode>
-        <childnode refid="25" relation="include">
+        <childnode refid="27" relation="include">
         </childnode>
         <childnode refid="60" relation="include">
         </childnode>
       </node>
-      <node id="14">
+      <node id="17">
         <label>server.h</label>
         <link refid="server_8h_source"/>
-        <childnode refid="15" relation="include">
+        <childnode refid="18" relation="include">
         </childnode>
-        <childnode refid="16" relation="include">
+        <childnode refid="19" relation="include">
         </childnode>
         <childnode refid="3" relation="include">
         </childnode>
-        <childnode refid="17" relation="include">
+        <childnode refid="20" relation="include">
         </childnode>
         <childnode refid="5" relation="include">
         </childnode>
@@ -501,13 +510,13 @@
         </childnode>
         <childnode refid="13" relation="include">
         </childnode>
-        <childnode refid="18" relation="include">
-        </childnode>
-        <childnode refid="19" relation="include">
-        </childnode>
-        <childnode refid="20" relation="include">
+        <childnode refid="16" relation="include">
         </childnode>
         <childnode refid="21" relation="include">
+        </childnode>
+        <childnode refid="22" relation="include">
+        </childnode>
+        <childnode refid="23" relation="include">
         </childnode>
         <childnode refid="30" relation="include">
         </childnode>
@@ -531,9 +540,11 @@
         </childnode>
         <childnode refid="62" relation="include">
         </childnode>
+        <childnode refid="14" relation="include">
+        </childnode>
         <childnode refid="65" relation="include">
         </childnode>
-        <childnode refid="25" relation="include">
+        <childnode refid="27" relation="include">
         </childnode>
         <childnode refid="32" relation="include">
         </childnode>
@@ -541,7 +552,7 @@
       <node id="58">
         <label>endstone/util/color.h</label>
         <link refid="color_8h_source"/>
-        <childnode refid="16" relation="include">
+        <childnode refid="19" relation="include">
         </childnode>
       </node>
       <node id="37">
@@ -567,29 +578,29 @@
         </childnode>
         <childnode refid="6" relation="include">
         </childnode>
-        <childnode refid="20" relation="include">
+        <childnode refid="22" relation="include">
         </childnode>
         <childnode refid="58" relation="include">
         </childnode>
         <childnode refid="60" relation="include">
         </childnode>
       </node>
-      <node id="25">
+      <node id="27">
         <label>endstone/util/pointers.h</label>
         <link refid="pointers_8h_source"/>
         <childnode refid="10" relation="include">
         </childnode>
         <childnode refid="4" relation="include">
         </childnode>
-        <childnode refid="17" relation="include">
+        <childnode refid="20" relation="include">
         </childnode>
-        <childnode refid="26" relation="include">
+        <childnode refid="15" relation="include">
         </childnode>
-        <childnode refid="19" relation="include">
-        </childnode>
-        <childnode refid="27" relation="include">
+        <childnode refid="21" relation="include">
         </childnode>
         <childnode refid="28" relation="include">
+        </childnode>
+        <childnode refid="14" relation="include">
         </childnode>
       </node>
       <node id="60">
@@ -609,7 +620,7 @@
         </childnode>
         <childnode refid="10" relation="include">
         </childnode>
-        <childnode refid="16" relation="include">
+        <childnode refid="19" relation="include">
         </childnode>
         <childnode refid="8" relation="include">
         </childnode>
@@ -625,7 +636,7 @@
       <node id="33">
         <label>algorithm</label>
       </node>
-      <node id="15">
+      <node id="18">
         <label>chrono</label>
       </node>
       <node id="2">
@@ -634,7 +645,7 @@
       <node id="10">
         <label>cstddef</label>
       </node>
-      <node id="16">
+      <node id="19">
         <label>cstdint</label>
       </node>
       <node id="8">
@@ -655,13 +666,13 @@
       <node id="38">
         <label>iterator</label>
       </node>
-      <node id="17">
+      <node id="20">
         <label>memory</label>
       </node>
       <node id="61">
         <label>nonstd/expected.hpp</label>
       </node>
-      <node id="22">
+      <node id="24">
         <label>optional</label>
       </node>
       <node id="5">
@@ -673,10 +684,10 @@
       <node id="13">
         <label>string_view</label>
       </node>
-      <node id="26">
+      <node id="15">
         <label>type_traits</label>
       </node>
-      <node id="18">
+      <node id="16">
         <label>typeinfo</label>
       </node>
       <node id="35">
@@ -685,13 +696,13 @@
       <node id="49">
         <label>unordered_set</label>
       </node>
-      <node id="19">
+      <node id="21">
         <label>utility</label>
       </node>
       <node id="36">
         <label>variant</label>
       </node>
-      <node id="20">
+      <node id="22">
         <label>vector</label>
       </node>
     </incdepgraph>
@@ -1730,95 +1741,96 @@
 <codeline lineno="22"><highlight class="normal"></highlight></codeline>
 <codeline lineno="23"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;detail.h&quot;</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="24"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;identifier.h&quot;</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="25"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;server.h&quot;</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="26"><highlight class="normal"></highlight></codeline>
-<codeline lineno="27"><highlight class="normal"></highlight><highlight class="keyword">namespace<sp/></highlight><highlight class="normal"><ref refid="namespaceendstone" kindref="compound">endstone</ref><sp/>{</highlight></codeline>
-<codeline lineno="28"><highlight class="normal"></highlight><highlight class="keyword">namespace<sp/></highlight><highlight class="normal">python<sp/>{</highlight></codeline>
-<codeline lineno="29"><highlight class="normal"></highlight><highlight class="keyword">class<sp/></highlight><highlight class="normal">PyRegistry;</highlight></codeline>
-<codeline lineno="30"><highlight class="normal">}</highlight></codeline>
-<codeline lineno="31"><highlight class="normal"></highlight></codeline>
-<codeline lineno="38" refid="classendstone_1_1IRegistry" refkind="compound"><highlight class="normal"></highlight><highlight class="keyword">class<sp/></highlight><highlight class="normal"><ref refid="classendstone_1_1IRegistry" kindref="compound">IRegistry</ref><sp/>{</highlight></codeline>
-<codeline lineno="39"><highlight class="normal"></highlight><highlight class="keyword">public</highlight><highlight class="normal">:</highlight></codeline>
-<codeline lineno="40"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">virtual</highlight><highlight class="normal"><sp/><ref refid="classendstone_1_1IRegistry" kindref="compound">~IRegistry</ref>()<sp/>=<sp/></highlight><highlight class="keywordflow">default</highlight><highlight class="normal">;</highlight></codeline>
-<codeline lineno="41"><highlight class="normal"></highlight></codeline>
-<codeline lineno="47" refid="classendstone_1_1IRegistry_1af9fcd05fdd3d73506763e7cc923cf4cb" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>[[<ref refid="classendstone_1_1Identifier" kindref="compound">nodiscard</ref>]]<sp/></highlight><highlight class="keyword">virtual</highlight><highlight class="normal"><sp/>std::size_t<sp/><ref refid="classendstone_1_1IRegistry_1af9fcd05fdd3d73506763e7cc923cf4cb" kindref="member">size</ref>()<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>=<sp/>0;</highlight></codeline>
-<codeline lineno="48"><highlight class="normal"></highlight></codeline>
-<codeline lineno="49"><highlight class="normal"></highlight><highlight class="keyword">protected</highlight><highlight class="normal">:</highlight></codeline>
-<codeline lineno="50"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">friend</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">class<sp/></highlight><highlight class="normal">python::PyRegistry;</highlight></codeline>
-<codeline lineno="51"><highlight class="normal"><sp/><sp/><sp/><sp/>[[<ref refid="classendstone_1_1Identifier" kindref="compound">nodiscard</ref>]]<sp/></highlight><highlight class="keyword">virtual</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>*get0(std::string_view<sp/></highlight><highlight class="keywordtype">id</highlight><highlight class="normal">)<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">noexcept</highlight><highlight class="normal"><sp/>=<sp/>0;</highlight></codeline>
-<codeline lineno="52"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">virtual</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>forEach0(std::function&lt;</highlight><highlight class="keywordtype">bool</highlight><highlight class="normal">(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>*)&gt;<sp/><ref refid="classendstone_1_1Identifier" kindref="compound">func</ref>)<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>=<sp/>0;</highlight></codeline>
-<codeline lineno="53"><highlight class="normal"><sp/><sp/><sp/><sp/>[[<ref refid="classendstone_1_1Identifier" kindref="compound">nodiscard</ref>]]<sp/></highlight><highlight class="keyword">virtual</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::type_info<sp/>&amp;getTypeId()<sp/><ref refid="classendstone_1_1Identifier" kindref="compound">const</ref><sp/><ref refid="classendstone_1_1Identifier" kindref="compound">noexcept</ref><sp/>=<sp/>0;</highlight></codeline>
-<codeline lineno="54"><highlight class="normal">};</highlight></codeline>
-<codeline lineno="55"><highlight class="normal"></highlight></codeline>
-<codeline lineno="63"><highlight class="normal"><ref refid="classendstone_1_1Identifier" kindref="compound">template</ref><sp/>&lt;<ref refid="classendstone_1_1Identifier" kindref="compound">typename</ref><sp/><ref refid="classendstone_1_1Identifier" kindref="compound">T</ref>&gt;</highlight></codeline>
-<codeline lineno="64" refid="classendstone_1_1Registry" refkind="compound"><highlight class="normal"><ref refid="classendstone_1_1Identifier" kindref="compound">class</ref><sp/><ref refid="classendstone_1_1Registry" kindref="compound">Registry</ref><sp/>:<sp/><ref refid="classendstone_1_1Identifier" kindref="compound">public</ref><sp/><ref refid="classendstone_1_1IRegistry" kindref="compound">IRegistry</ref><sp/>{</highlight></codeline>
-<codeline lineno="65"><highlight class="normal"></highlight><highlight class="keyword">public</highlight><highlight class="normal">:</highlight></codeline>
-<codeline lineno="72" refid="classendstone_1_1Registry_1_1Type" refkind="compound"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">class<sp/></highlight><highlight class="normal"><ref refid="classendstone_1_1Registry_1_1Type" kindref="compound">Type</ref><sp/>{</highlight></codeline>
-<codeline lineno="73"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">public</highlight><highlight class="normal">:</highlight></codeline>
-<codeline lineno="77" refid="classendstone_1_1Registry_1_1Type_1a7d2793f0ec3a8f4e7ab9b8afbd777e82" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">using<sp/></highlight><highlight class="normal"><ref refid="classendstone_1_1Identifier" kindref="compound">Id</ref><sp/>=<sp/><ref refid="classendstone_1_1Identifier" kindref="compound">Identifier&lt;T&gt;</ref>;</highlight></codeline>
-<codeline lineno="78"><highlight class="normal"></highlight></codeline>
-<codeline lineno="79"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">virtual</highlight><highlight class="normal"><sp/><ref refid="classendstone_1_1Registry_1_1Type" kindref="compound">~Type</ref>()<sp/>=<sp/></highlight><highlight class="keywordflow">default</highlight><highlight class="normal">;</highlight></codeline>
-<codeline lineno="80"><highlight class="normal"></highlight></codeline>
-<codeline lineno="86" refid="classendstone_1_1Registry_1_1Type_1ac7979c573cb4a71caf8f0d766048e95a" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>[[<ref refid="classendstone_1_1Identifier" kindref="compound">nodiscard</ref>]]<sp/></highlight><highlight class="keyword">virtual</highlight><highlight class="normal"><sp/><ref refid="classendstone_1_1Identifier" kindref="compound">Id</ref><sp/><ref refid="classendstone_1_1Registry_1_1Type_1ac7979c573cb4a71caf8f0d766048e95a" kindref="member">getId</ref>()<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>=<sp/>0;</highlight></codeline>
-<codeline lineno="87"><highlight class="normal"></highlight></codeline>
-<codeline lineno="96" refid="classendstone_1_1Registry_1_1Type_1a3d82ceca29e75e71a8ad56c5d0f12aa7" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>[[<ref refid="classendstone_1_1Identifier" kindref="compound">nodiscard</ref>]]<sp/></highlight><highlight class="keyword">virtual</highlight><highlight class="normal"><sp/>std::string<sp/><ref refid="classendstone_1_1Registry_1_1Type_1a3d82ceca29e75e71a8ad56c5d0f12aa7" kindref="member">getTranslationKey</ref>()<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>=<sp/>0;</highlight></codeline>
-<codeline lineno="97"><highlight class="normal"></highlight></codeline>
-<codeline lineno="104" refid="classendstone_1_1Registry_1_1Type_1adb225834ec0af1fdd72f998cbee22946" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classendstone_1_1Identifier" kindref="compound">T</ref><sp/>*<ref refid="classendstone_1_1Registry_1_1Type_1adb225834ec0af1fdd72f998cbee22946" kindref="member">get</ref>(<ref refid="classendstone_1_1Identifier" kindref="compound">Id</ref><sp/></highlight><highlight class="keywordtype">id</highlight><highlight class="normal">)<sp/>{<sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>detail::getServer().getRegistry&lt;<ref refid="classendstone_1_1Identifier" kindref="compound">T</ref>&gt;().<ref refid="classendstone_1_1Registry_1_1Type_1adb225834ec0af1fdd72f998cbee22946" kindref="member">get</ref>(</highlight><highlight class="keywordtype">id</highlight><highlight class="normal">);<sp/>}</highlight></codeline>
-<codeline lineno="105"><highlight class="normal"></highlight></codeline>
-<codeline lineno="106"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/>operator==(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>Id<sp/>&amp;<ref refid="classendstone_1_1Identifier" kindref="compound">other</ref>)</highlight><highlight class="keyword"><sp/>const<sp/></highlight><highlight class="normal">{<sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>getId()<sp/>==<sp/><ref refid="classendstone_1_1Identifier" kindref="compound">other</ref>;<sp/>}</highlight></codeline>
-<codeline lineno="107"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/>operator!=(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>Id<sp/>&amp;<ref refid="classendstone_1_1Identifier" kindref="compound">other</ref>)</highlight><highlight class="keyword"><sp/>const<sp/></highlight><highlight class="normal">{<sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>!(*</highlight><highlight class="keyword">this</highlight><highlight class="normal"><sp/>==<sp/><ref refid="classendstone_1_1Identifier" kindref="compound">other</ref>);<sp/>}</highlight></codeline>
-<codeline lineno="108"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/>operator==(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>T<sp/>&amp;other)</highlight><highlight class="keyword"><sp/>const<sp/></highlight><highlight class="normal">{<sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>getId()<sp/>==<sp/>other.getId();<sp/>}</highlight></codeline>
-<codeline lineno="109"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/>operator!=(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>T<sp/>&amp;other)</highlight><highlight class="keyword"><sp/>const<sp/></highlight><highlight class="normal">{<sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>!(*</highlight><highlight class="keyword">this</highlight><highlight class="normal"><sp/>==<sp/>other);<sp/>}</highlight></codeline>
-<codeline lineno="110"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">operator</highlight><highlight class="normal"><sp/>Id()</highlight><highlight class="keyword"><sp/>const<sp/></highlight><highlight class="normal">{<sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>getId();<sp/>}</highlight></codeline>
-<codeline lineno="111"><highlight class="normal"><sp/><sp/><sp/><sp/>};</highlight></codeline>
-<codeline lineno="112"><highlight class="normal"></highlight></codeline>
-<codeline lineno="121" refid="classendstone_1_1Registry_1a97c2758ea2a49ded5abeae90e02a31a0" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">virtual</highlight><highlight class="normal"><sp/><ref refid="classendstone_1_1Identifier" kindref="compound">T</ref><sp/>*<ref refid="classendstone_1_1Registry_1a97c2758ea2a49ded5abeae90e02a31a0" kindref="member">get</ref>(<ref refid="classendstone_1_1Identifier" kindref="compound">Identifier&lt;T&gt;</ref><sp/></highlight><highlight class="keywordtype">id</highlight><highlight class="normal">)<sp/></highlight><highlight class="keyword">noexcept</highlight><highlight class="normal"><sp/>=<sp/>0;</highlight></codeline>
-<codeline lineno="122"><highlight class="normal"></highlight></codeline>
-<codeline lineno="131" refid="classendstone_1_1Registry_1a1e7e2da1521bc7755ca57cbf5bd41fda" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">virtual</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classendstone_1_1Identifier" kindref="compound">T</ref><sp/>*<ref refid="classendstone_1_1Registry_1a1e7e2da1521bc7755ca57cbf5bd41fda" kindref="member">get</ref>(<ref refid="classendstone_1_1Identifier" kindref="compound">Identifier&lt;T&gt;</ref><sp/></highlight><highlight class="keywordtype">id</highlight><highlight class="normal">)<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">noexcept</highlight><highlight class="normal"><sp/>=<sp/>0;</highlight></codeline>
-<codeline lineno="132"><highlight class="normal"></highlight></codeline>
-<codeline lineno="140" refid="classendstone_1_1Registry_1a3c9abfdf664a59b267798fd1dfc1a884" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">virtual</highlight><highlight class="normal"><sp/><ref refid="classendstone_1_1Identifier" kindref="compound">T</ref><sp/>&amp;<ref refid="classendstone_1_1Registry_1a3c9abfdf664a59b267798fd1dfc1a884" kindref="member">getOrThrow</ref>(<ref refid="classendstone_1_1Identifier" kindref="compound">Identifier&lt;T&gt;</ref><sp/></highlight><highlight class="keywordtype">id</highlight><highlight class="normal">)</highlight></codeline>
-<codeline lineno="141"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
-<codeline lineno="142"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(</highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/>*<ref refid="classendstone_1_1Identifier" kindref="compound">p</ref><sp/>=<sp/>get(</highlight><highlight class="keywordtype">id</highlight><highlight class="normal">))<sp/>{</highlight></codeline>
-<codeline lineno="143"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>*<ref refid="classendstone_1_1Identifier" kindref="compound">p</ref>;</highlight></codeline>
-<codeline lineno="144"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
-<codeline lineno="145"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">throw</highlight><highlight class="normal"><sp/>std::invalid_argument(std::format(</highlight><highlight class="stringliteral">&quot;No<sp/>registry<sp/>entry<sp/>found<sp/>for<sp/>identifier:<sp/>{}&quot;</highlight><highlight class="normal">,<sp/></highlight><highlight class="keywordtype">id</highlight><highlight class="normal">));</highlight></codeline>
-<codeline lineno="146"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
-<codeline lineno="147"><highlight class="normal"></highlight></codeline>
-<codeline lineno="155" refid="classendstone_1_1Registry_1a341f0a7dbb53815740f1c23b47ccddec" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">virtual</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classendstone_1_1Identifier" kindref="compound">T</ref><sp/>&amp;<ref refid="classendstone_1_1Registry_1a341f0a7dbb53815740f1c23b47ccddec" kindref="member">getOrThrow</ref>(<ref refid="classendstone_1_1Identifier" kindref="compound">Identifier&lt;T&gt;</ref><sp/></highlight><highlight class="keywordtype">id</highlight><highlight class="normal">)</highlight><highlight class="keyword"><sp/>const</highlight></codeline>
-<codeline lineno="156"><highlight class="keyword"><sp/><sp/><sp/><sp/></highlight><highlight class="normal">{</highlight></codeline>
-<codeline lineno="157"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(</highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/>*<ref refid="classendstone_1_1Identifier" kindref="compound">p</ref><sp/>=<sp/>get(</highlight><highlight class="keywordtype">id</highlight><highlight class="normal">))<sp/>{</highlight></codeline>
-<codeline lineno="158"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>*<ref refid="classendstone_1_1Identifier" kindref="compound">p</ref>;</highlight></codeline>
-<codeline lineno="159"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
-<codeline lineno="160"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">throw</highlight><highlight class="normal"><sp/>std::invalid_argument(std::format(</highlight><highlight class="stringliteral">&quot;No<sp/>registry<sp/>entry<sp/>found<sp/>for<sp/>identifier:<sp/>{}&quot;</highlight><highlight class="normal">,<sp/></highlight><highlight class="keywordtype">id</highlight><highlight class="normal">));</highlight></codeline>
-<codeline lineno="161"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
-<codeline lineno="162"><highlight class="normal"></highlight></codeline>
-<codeline lineno="173" refid="classendstone_1_1Registry_1ad4ccf75b2d21093309be4663cbc9e71b" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">virtual</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classendstone_1_1Registry_1ad4ccf75b2d21093309be4663cbc9e71b" kindref="member">forEach</ref>(std::function&lt;</highlight><highlight class="keywordtype">bool</highlight><highlight class="normal">(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classendstone_1_1Identifier" kindref="compound">T</ref><sp/>&amp;)&gt;<sp/><ref refid="classendstone_1_1Identifier" kindref="compound">func</ref>)<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>=<sp/>0;</highlight></codeline>
-<codeline lineno="174"><highlight class="normal"></highlight></codeline>
-<codeline lineno="175" refid="classendstone_1_1Registry_1a8fafff73ec8ea9f5d6ff286ee77b4b53" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>[[<ref refid="classendstone_1_1Identifier" kindref="compound">nodiscard</ref>]]<sp/>std::size_t<sp/><ref refid="classendstone_1_1Registry_1a8fafff73ec8ea9f5d6ff286ee77b4b53" kindref="member">size</ref>()<sp/></highlight><highlight class="keyword">const<sp/>override</highlight><highlight class="normal"><sp/>=<sp/>0;</highlight></codeline>
+<codeline lineno="25"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;object.h&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="26"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;server.h&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="27"><highlight class="normal"></highlight></codeline>
+<codeline lineno="28"><highlight class="normal"></highlight><highlight class="keyword">namespace<sp/></highlight><highlight class="normal"><ref refid="namespaceendstone" kindref="compound">endstone</ref><sp/>{</highlight></codeline>
+<codeline lineno="29"><highlight class="normal"></highlight><highlight class="keyword">namespace<sp/></highlight><highlight class="normal">python<sp/>{</highlight></codeline>
+<codeline lineno="30"><highlight class="normal"></highlight><highlight class="keyword">class<sp/></highlight><highlight class="normal">PyRegistry;</highlight></codeline>
+<codeline lineno="31"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="32"><highlight class="normal"></highlight></codeline>
+<codeline lineno="39" refid="classendstone_1_1IRegistry" refkind="compound"><highlight class="normal"></highlight><highlight class="keyword">class<sp/></highlight><highlight class="normal"><ref refid="classendstone_1_1IRegistry" kindref="compound">IRegistry</ref><sp/>{</highlight></codeline>
+<codeline lineno="40"><highlight class="normal"></highlight><highlight class="keyword">public</highlight><highlight class="normal">:</highlight></codeline>
+<codeline lineno="41"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">virtual</highlight><highlight class="normal"><sp/><ref refid="classendstone_1_1IRegistry" kindref="compound">~IRegistry</ref>()<sp/>=<sp/></highlight><highlight class="keywordflow">default</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="42"><highlight class="normal"></highlight></codeline>
+<codeline lineno="48" refid="classendstone_1_1IRegistry_1af9fcd05fdd3d73506763e7cc923cf4cb" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>[[<ref refid="classendstone_1_1Identifier" kindref="compound">nodiscard</ref>]]<sp/></highlight><highlight class="keyword">virtual</highlight><highlight class="normal"><sp/>std::size_t<sp/><ref refid="classendstone_1_1IRegistry_1af9fcd05fdd3d73506763e7cc923cf4cb" kindref="member">size</ref>()<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>=<sp/>0;</highlight></codeline>
+<codeline lineno="49"><highlight class="normal"></highlight></codeline>
+<codeline lineno="50"><highlight class="normal"></highlight><highlight class="keyword">protected</highlight><highlight class="normal">:</highlight></codeline>
+<codeline lineno="51"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">friend</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">class<sp/></highlight><highlight class="normal">python::PyRegistry;</highlight></codeline>
+<codeline lineno="52"><highlight class="normal"><sp/><sp/><sp/><sp/>[[<ref refid="classendstone_1_1Identifier" kindref="compound">nodiscard</ref>]]<sp/></highlight><highlight class="keyword">virtual</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>*get0(std::string_view<sp/></highlight><highlight class="keywordtype">id</highlight><highlight class="normal">)<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">noexcept</highlight><highlight class="normal"><sp/>=<sp/>0;</highlight></codeline>
+<codeline lineno="53"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">virtual</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>forEach0(std::function&lt;</highlight><highlight class="keywordtype">bool</highlight><highlight class="normal">(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>*)&gt;<sp/><ref refid="classendstone_1_1Identifier" kindref="compound">func</ref>)<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>=<sp/>0;</highlight></codeline>
+<codeline lineno="54"><highlight class="normal"><sp/><sp/><sp/><sp/>[[<ref refid="classendstone_1_1Identifier" kindref="compound">nodiscard</ref>]]<sp/></highlight><highlight class="keyword">virtual</highlight><highlight class="normal"><sp/><ref refid="classendstone_1_1ClassInfo" kindref="compound">ClassInfo</ref><sp/>getClassInfo()<sp/><ref refid="classendstone_1_1Identifier" kindref="compound">const</ref><sp/><ref refid="classendstone_1_1Identifier" kindref="compound">noexcept</ref><sp/>=<sp/>0;</highlight></codeline>
+<codeline lineno="55"><highlight class="normal">};</highlight></codeline>
+<codeline lineno="56"><highlight class="normal"></highlight></codeline>
+<codeline lineno="64"><highlight class="normal"><ref refid="classendstone_1_1Identifier" kindref="compound">template</ref><sp/>&lt;<ref refid="classendstone_1_1Identifier" kindref="compound">typename</ref><sp/><ref refid="classendstone_1_1Identifier" kindref="compound">T</ref>&gt;</highlight></codeline>
+<codeline lineno="65" refid="classendstone_1_1Registry" refkind="compound"><highlight class="normal"><ref refid="classendstone_1_1Identifier" kindref="compound">class</ref><sp/><ref refid="classendstone_1_1Registry" kindref="compound">Registry</ref><sp/>:<sp/><ref refid="classendstone_1_1Identifier" kindref="compound">public</ref><sp/><ref refid="classendstone_1_1IRegistry" kindref="compound">IRegistry</ref><sp/>{</highlight></codeline>
+<codeline lineno="66"><highlight class="normal"></highlight><highlight class="keyword">public</highlight><highlight class="normal">:</highlight></codeline>
+<codeline lineno="73" refid="classendstone_1_1Registry_1_1Type" refkind="compound"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">class<sp/></highlight><highlight class="normal"><ref refid="classendstone_1_1Registry_1_1Type" kindref="compound">Type</ref><sp/>{</highlight></codeline>
+<codeline lineno="74"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">public</highlight><highlight class="normal">:</highlight></codeline>
+<codeline lineno="78" refid="classendstone_1_1Registry_1_1Type_1a7d2793f0ec3a8f4e7ab9b8afbd777e82" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">using<sp/></highlight><highlight class="normal"><ref refid="classendstone_1_1Identifier" kindref="compound">Id</ref><sp/>=<sp/><ref refid="classendstone_1_1Identifier" kindref="compound">Identifier&lt;T&gt;</ref>;</highlight></codeline>
+<codeline lineno="79"><highlight class="normal"></highlight></codeline>
+<codeline lineno="80"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">virtual</highlight><highlight class="normal"><sp/><ref refid="classendstone_1_1Registry_1_1Type" kindref="compound">~Type</ref>()<sp/>=<sp/></highlight><highlight class="keywordflow">default</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="81"><highlight class="normal"></highlight></codeline>
+<codeline lineno="87" refid="classendstone_1_1Registry_1_1Type_1ac7979c573cb4a71caf8f0d766048e95a" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>[[<ref refid="classendstone_1_1Identifier" kindref="compound">nodiscard</ref>]]<sp/></highlight><highlight class="keyword">virtual</highlight><highlight class="normal"><sp/><ref refid="classendstone_1_1Identifier" kindref="compound">Id</ref><sp/><ref refid="classendstone_1_1Registry_1_1Type_1ac7979c573cb4a71caf8f0d766048e95a" kindref="member">getId</ref>()<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>=<sp/>0;</highlight></codeline>
+<codeline lineno="88"><highlight class="normal"></highlight></codeline>
+<codeline lineno="97" refid="classendstone_1_1Registry_1_1Type_1a3d82ceca29e75e71a8ad56c5d0f12aa7" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>[[<ref refid="classendstone_1_1Identifier" kindref="compound">nodiscard</ref>]]<sp/></highlight><highlight class="keyword">virtual</highlight><highlight class="normal"><sp/>std::string<sp/><ref refid="classendstone_1_1Registry_1_1Type_1a3d82ceca29e75e71a8ad56c5d0f12aa7" kindref="member">getTranslationKey</ref>()<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>=<sp/>0;</highlight></codeline>
+<codeline lineno="98"><highlight class="normal"></highlight></codeline>
+<codeline lineno="106" refid="classendstone_1_1Registry_1_1Type_1adb225834ec0af1fdd72f998cbee22946" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classendstone_1_1Identifier" kindref="compound">T</ref><sp/>*<ref refid="classendstone_1_1Registry_1_1Type_1adb225834ec0af1fdd72f998cbee22946" kindref="member">get</ref>(<ref refid="classendstone_1_1Identifier" kindref="compound">Id</ref><sp/></highlight><highlight class="keywordtype">id</highlight><highlight class="normal">)<sp/>{<sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>detail::getServer().getRegistry&lt;<ref refid="classendstone_1_1Identifier" kindref="compound">T</ref>&gt;().<ref refid="classendstone_1_1Registry_1_1Type_1adb225834ec0af1fdd72f998cbee22946" kindref="member">get</ref>(</highlight><highlight class="keywordtype">id</highlight><highlight class="normal">);<sp/>}</highlight></codeline>
+<codeline lineno="107"><highlight class="normal"></highlight></codeline>
+<codeline lineno="108"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/>operator==(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>Id<sp/>&amp;<ref refid="classendstone_1_1Identifier" kindref="compound">other</ref>)</highlight><highlight class="keyword"><sp/>const<sp/></highlight><highlight class="normal">{<sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>getId()<sp/>==<sp/><ref refid="classendstone_1_1Identifier" kindref="compound">other</ref>;<sp/>}</highlight></codeline>
+<codeline lineno="109"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/>operator!=(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>Id<sp/>&amp;<ref refid="classendstone_1_1Identifier" kindref="compound">other</ref>)</highlight><highlight class="keyword"><sp/>const<sp/></highlight><highlight class="normal">{<sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>!(*</highlight><highlight class="keyword">this</highlight><highlight class="normal"><sp/>==<sp/><ref refid="classendstone_1_1Identifier" kindref="compound">other</ref>);<sp/>}</highlight></codeline>
+<codeline lineno="110"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/>operator==(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>T<sp/>&amp;other)</highlight><highlight class="keyword"><sp/>const<sp/></highlight><highlight class="normal">{<sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>getId()<sp/>==<sp/>other.getId();<sp/>}</highlight></codeline>
+<codeline lineno="111"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/>operator!=(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>T<sp/>&amp;other)</highlight><highlight class="keyword"><sp/>const<sp/></highlight><highlight class="normal">{<sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>!(*</highlight><highlight class="keyword">this</highlight><highlight class="normal"><sp/>==<sp/>other);<sp/>}</highlight></codeline>
+<codeline lineno="112"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">operator</highlight><highlight class="normal"><sp/>Id()</highlight><highlight class="keyword"><sp/>const<sp/></highlight><highlight class="normal">{<sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>getId();<sp/>}</highlight></codeline>
+<codeline lineno="113"><highlight class="normal"><sp/><sp/><sp/><sp/>};</highlight></codeline>
+<codeline lineno="114"><highlight class="normal"></highlight></codeline>
+<codeline lineno="123" refid="classendstone_1_1Registry_1a97c2758ea2a49ded5abeae90e02a31a0" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">virtual</highlight><highlight class="normal"><sp/><ref refid="classendstone_1_1Identifier" kindref="compound">T</ref><sp/>*<ref refid="classendstone_1_1Registry_1a97c2758ea2a49ded5abeae90e02a31a0" kindref="member">get</ref>(<ref refid="classendstone_1_1Identifier" kindref="compound">Identifier&lt;T&gt;</ref><sp/></highlight><highlight class="keywordtype">id</highlight><highlight class="normal">)<sp/></highlight><highlight class="keyword">noexcept</highlight><highlight class="normal"><sp/>=<sp/>0;</highlight></codeline>
+<codeline lineno="124"><highlight class="normal"></highlight></codeline>
+<codeline lineno="133" refid="classendstone_1_1Registry_1a1e7e2da1521bc7755ca57cbf5bd41fda" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">virtual</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classendstone_1_1Identifier" kindref="compound">T</ref><sp/>*<ref refid="classendstone_1_1Registry_1a1e7e2da1521bc7755ca57cbf5bd41fda" kindref="member">get</ref>(<ref refid="classendstone_1_1Identifier" kindref="compound">Identifier&lt;T&gt;</ref><sp/></highlight><highlight class="keywordtype">id</highlight><highlight class="normal">)<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">noexcept</highlight><highlight class="normal"><sp/>=<sp/>0;</highlight></codeline>
+<codeline lineno="134"><highlight class="normal"></highlight></codeline>
+<codeline lineno="142" refid="classendstone_1_1Registry_1a3c9abfdf664a59b267798fd1dfc1a884" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">virtual</highlight><highlight class="normal"><sp/><ref refid="classendstone_1_1Identifier" kindref="compound">T</ref><sp/>&amp;<ref refid="classendstone_1_1Registry_1a3c9abfdf664a59b267798fd1dfc1a884" kindref="member">getOrThrow</ref>(<ref refid="classendstone_1_1Identifier" kindref="compound">Identifier&lt;T&gt;</ref><sp/></highlight><highlight class="keywordtype">id</highlight><highlight class="normal">)</highlight></codeline>
+<codeline lineno="143"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="144"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(</highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/>*<ref refid="classendstone_1_1Identifier" kindref="compound">p</ref><sp/>=<sp/>get(</highlight><highlight class="keywordtype">id</highlight><highlight class="normal">))<sp/>{</highlight></codeline>
+<codeline lineno="145"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>*<ref refid="classendstone_1_1Identifier" kindref="compound">p</ref>;</highlight></codeline>
+<codeline lineno="146"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="147"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">throw</highlight><highlight class="normal"><sp/>std::invalid_argument(std::format(</highlight><highlight class="stringliteral">&quot;No<sp/>registry<sp/>entry<sp/>found<sp/>for<sp/>identifier:<sp/>{}&quot;</highlight><highlight class="normal">,<sp/></highlight><highlight class="keywordtype">id</highlight><highlight class="normal">));</highlight></codeline>
+<codeline lineno="148"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="149"><highlight class="normal"></highlight></codeline>
+<codeline lineno="157" refid="classendstone_1_1Registry_1a341f0a7dbb53815740f1c23b47ccddec" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">virtual</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classendstone_1_1Identifier" kindref="compound">T</ref><sp/>&amp;<ref refid="classendstone_1_1Registry_1a341f0a7dbb53815740f1c23b47ccddec" kindref="member">getOrThrow</ref>(<ref refid="classendstone_1_1Identifier" kindref="compound">Identifier&lt;T&gt;</ref><sp/></highlight><highlight class="keywordtype">id</highlight><highlight class="normal">)</highlight><highlight class="keyword"><sp/>const</highlight></codeline>
+<codeline lineno="158"><highlight class="keyword"><sp/><sp/><sp/><sp/></highlight><highlight class="normal">{</highlight></codeline>
+<codeline lineno="159"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(</highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/>*<ref refid="classendstone_1_1Identifier" kindref="compound">p</ref><sp/>=<sp/>get(</highlight><highlight class="keywordtype">id</highlight><highlight class="normal">))<sp/>{</highlight></codeline>
+<codeline lineno="160"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>*<ref refid="classendstone_1_1Identifier" kindref="compound">p</ref>;</highlight></codeline>
+<codeline lineno="161"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="162"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">throw</highlight><highlight class="normal"><sp/>std::invalid_argument(std::format(</highlight><highlight class="stringliteral">&quot;No<sp/>registry<sp/>entry<sp/>found<sp/>for<sp/>identifier:<sp/>{}&quot;</highlight><highlight class="normal">,<sp/></highlight><highlight class="keywordtype">id</highlight><highlight class="normal">));</highlight></codeline>
+<codeline lineno="163"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="164"><highlight class="normal"></highlight></codeline>
+<codeline lineno="175" refid="classendstone_1_1Registry_1ad4ccf75b2d21093309be4663cbc9e71b" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">virtual</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classendstone_1_1Registry_1ad4ccf75b2d21093309be4663cbc9e71b" kindref="member">forEach</ref>(std::function&lt;</highlight><highlight class="keywordtype">bool</highlight><highlight class="normal">(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classendstone_1_1Identifier" kindref="compound">T</ref><sp/>&amp;)&gt;<sp/><ref refid="classendstone_1_1Identifier" kindref="compound">func</ref>)<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>=<sp/>0;</highlight></codeline>
 <codeline lineno="176"><highlight class="normal"></highlight></codeline>
-<codeline lineno="177"><highlight class="normal"></highlight><highlight class="keyword">private</highlight><highlight class="normal">:</highlight></codeline>
-<codeline lineno="178"><highlight class="normal"><sp/><sp/><sp/><sp/>[[<ref refid="classendstone_1_1Identifier" kindref="compound">nodiscard</ref>]]<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>*get0(std::string_view<sp/></highlight><highlight class="keywordtype">id</highlight><highlight class="normal">)<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">noexcept</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">override</highlight><highlight class="normal"><sp/>{<sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>get(<ref refid="classendstone_1_1Identifier" kindref="compound">Identifier&lt;T&gt;</ref>(</highlight><highlight class="keywordtype">id</highlight><highlight class="normal">));<sp/>}</highlight></codeline>
-<codeline lineno="179"><highlight class="normal"></highlight></codeline>
-<codeline lineno="180"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>forEach0(std::function&lt;</highlight><highlight class="keywordtype">bool</highlight><highlight class="normal">(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>*)&gt;<sp/><ref refid="classendstone_1_1Identifier" kindref="compound">func</ref>)</highlight><highlight class="keyword"><sp/>const<sp/>override</highlight></codeline>
-<codeline lineno="181"><highlight class="keyword"><sp/><sp/><sp/><sp/></highlight><highlight class="normal">{</highlight></codeline>
-<codeline lineno="182"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>forEach([&amp;<ref refid="classendstone_1_1Identifier" kindref="compound">func</ref>](</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classendstone_1_1Identifier" kindref="compound">T</ref><sp/>&amp;<ref refid="classendstone_1_1Identifier" kindref="compound">elem</ref>)<sp/>{<sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="classendstone_1_1Identifier" kindref="compound">func</ref>(&amp;<ref refid="classendstone_1_1Identifier" kindref="compound">elem</ref>);<sp/>});</highlight></codeline>
-<codeline lineno="183"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
-<codeline lineno="184"><highlight class="normal"></highlight></codeline>
-<codeline lineno="185"><highlight class="normal"><sp/><sp/><sp/><sp/>[[nodiscard]]<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::type_info<sp/>&amp;getTypeId()<sp/>const<sp/>noexcept</highlight><highlight class="keyword"><sp/>override<sp/></highlight><highlight class="normal">{<sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">typeid</highlight><highlight class="normal">(T);<sp/>}</highlight></codeline>
-<codeline lineno="186"><highlight class="normal">};</highlight></codeline>
-<codeline lineno="187"><highlight class="normal">}<sp/><sp/></highlight><highlight class="comment">//<sp/>namespace<sp/>endstone</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="188"><highlight class="normal"></highlight></codeline>
-<codeline lineno="189"><highlight class="normal"></highlight><highlight class="keyword">template</highlight><highlight class="normal"><sp/>&lt;</highlight><highlight class="keyword">typename</highlight><highlight class="normal"><sp/>T&gt;</highlight></codeline>
-<codeline lineno="190"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">requires</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">requires</highlight><highlight class="normal">(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>T<sp/>&amp;t)<sp/>{</highlight></codeline>
-<codeline lineno="191"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{<sp/>t.getId()<sp/>}<sp/>-&gt;<sp/>std::convertible_to&lt;endstone::Identifier&lt;T&gt;&gt;;</highlight></codeline>
-<codeline lineno="192"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
-<codeline lineno="193" refid="structstd_1_1formatter_3_01T_01_4" refkind="compound"><highlight class="normal"></highlight><highlight class="keyword">struct<sp/></highlight><highlight class="normal">std::formatter&lt;T&gt;<sp/>:<sp/>std::formatter&lt;std::string_view&gt;<sp/>{</highlight></codeline>
-<codeline lineno="194"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">template</highlight><highlight class="normal"><sp/>&lt;</highlight><highlight class="keyword">typename</highlight><highlight class="normal"><sp/>FormatContext&gt;</highlight></codeline>
-<codeline lineno="195"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/>format(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>T<sp/>&amp;val,<sp/>FormatContext<sp/>&amp;ctx)</highlight><highlight class="keyword"><sp/>const</highlight></codeline>
-<codeline lineno="196"><highlight class="keyword"><sp/><sp/><sp/><sp/></highlight><highlight class="normal">{</highlight></codeline>
-<codeline lineno="197"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>std::format_to(ctx.out(),<sp/></highlight><highlight class="stringliteral">&quot;{}&quot;</highlight><highlight class="normal">,<sp/>val.getId());</highlight></codeline>
-<codeline lineno="198"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
-<codeline lineno="199"><highlight class="normal">};</highlight></codeline>
+<codeline lineno="177" refid="classendstone_1_1Registry_1a8fafff73ec8ea9f5d6ff286ee77b4b53" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>[[<ref refid="classendstone_1_1Identifier" kindref="compound">nodiscard</ref>]]<sp/>std::size_t<sp/><ref refid="classendstone_1_1Registry_1a8fafff73ec8ea9f5d6ff286ee77b4b53" kindref="member">size</ref>()<sp/></highlight><highlight class="keyword">const<sp/>override</highlight><highlight class="normal"><sp/>=<sp/>0;</highlight></codeline>
+<codeline lineno="178"><highlight class="normal"></highlight></codeline>
+<codeline lineno="179"><highlight class="normal"></highlight><highlight class="keyword">private</highlight><highlight class="normal">:</highlight></codeline>
+<codeline lineno="180"><highlight class="normal"><sp/><sp/><sp/><sp/>[[<ref refid="classendstone_1_1Identifier" kindref="compound">nodiscard</ref>]]<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>*get0(std::string_view<sp/></highlight><highlight class="keywordtype">id</highlight><highlight class="normal">)<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">noexcept</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">override</highlight><highlight class="normal"><sp/>{<sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>get(<ref refid="classendstone_1_1Identifier" kindref="compound">Identifier&lt;T&gt;</ref>(</highlight><highlight class="keywordtype">id</highlight><highlight class="normal">));<sp/>}</highlight></codeline>
+<codeline lineno="181"><highlight class="normal"></highlight></codeline>
+<codeline lineno="182"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>forEach0(std::function&lt;</highlight><highlight class="keywordtype">bool</highlight><highlight class="normal">(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>*)&gt;<sp/><ref refid="classendstone_1_1Identifier" kindref="compound">func</ref>)</highlight><highlight class="keyword"><sp/>const<sp/>override</highlight></codeline>
+<codeline lineno="183"><highlight class="keyword"><sp/><sp/><sp/><sp/></highlight><highlight class="normal">{</highlight></codeline>
+<codeline lineno="184"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>forEach([&amp;<ref refid="classendstone_1_1Identifier" kindref="compound">func</ref>](</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classendstone_1_1Identifier" kindref="compound">T</ref><sp/>&amp;<ref refid="classendstone_1_1Identifier" kindref="compound">elem</ref>)<sp/>{<sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="classendstone_1_1Identifier" kindref="compound">func</ref>(&amp;<ref refid="classendstone_1_1Identifier" kindref="compound">elem</ref>);<sp/>});</highlight></codeline>
+<codeline lineno="185"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="186"><highlight class="normal"></highlight></codeline>
+<codeline lineno="187"><highlight class="normal"><sp/><sp/><sp/><sp/>[[nodiscard]]<sp/>ClassInfo<sp/>getClassInfo()<sp/>const<sp/>noexcept</highlight><highlight class="keyword"><sp/>override<sp/></highlight><highlight class="normal">{<sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>ClassInfo::of&lt;T&gt;();<sp/>}</highlight></codeline>
+<codeline lineno="188"><highlight class="normal">};</highlight></codeline>
+<codeline lineno="189"><highlight class="normal">}<sp/><sp/></highlight><highlight class="comment">//<sp/>namespace<sp/>endstone</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="190"><highlight class="normal"></highlight></codeline>
+<codeline lineno="191"><highlight class="normal"></highlight><highlight class="keyword">template</highlight><highlight class="normal"><sp/>&lt;</highlight><highlight class="keyword">typename</highlight><highlight class="normal"><sp/>T&gt;</highlight></codeline>
+<codeline lineno="192"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">requires</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">requires</highlight><highlight class="normal">(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>T<sp/>&amp;t)<sp/>{</highlight></codeline>
+<codeline lineno="193"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{<sp/>t.getId()<sp/>}<sp/>-&gt;<sp/>std::convertible_to&lt;endstone::Identifier&lt;T&gt;&gt;;</highlight></codeline>
+<codeline lineno="194"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="195" refid="structstd_1_1formatter_3_01T_01_4" refkind="compound"><highlight class="normal"></highlight><highlight class="keyword">struct<sp/></highlight><highlight class="normal">std::formatter&lt;T&gt;<sp/>:<sp/>std::formatter&lt;std::string_view&gt;<sp/>{</highlight></codeline>
+<codeline lineno="196"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">template</highlight><highlight class="normal"><sp/>&lt;</highlight><highlight class="keyword">typename</highlight><highlight class="normal"><sp/>FormatContext&gt;</highlight></codeline>
+<codeline lineno="197"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/>format(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>T<sp/>&amp;val,<sp/>FormatContext<sp/>&amp;ctx)</highlight><highlight class="keyword"><sp/>const</highlight></codeline>
+<codeline lineno="198"><highlight class="keyword"><sp/><sp/><sp/><sp/></highlight><highlight class="normal">{</highlight></codeline>
+<codeline lineno="199"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>std::format_to(ctx.out(),<sp/></highlight><highlight class="stringliteral">&quot;{}&quot;</highlight><highlight class="normal">,<sp/>val.getId());</highlight></codeline>
+<codeline lineno="200"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="201"><highlight class="normal">};</highlight></codeline>
     </programlisting>
     <location file="include/endstone/registry.h"/>
   </compounddef>

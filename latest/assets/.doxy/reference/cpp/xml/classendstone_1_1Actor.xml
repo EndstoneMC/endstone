@@ -700,7 +700,7 @@
       <member refid="classendstone_1_1Actor_1a7df17ed4f47907e5022b1eff1f306271" prot="public" virt="pure-virtual"><scope>endstone::Actor</scope><name>addScoreboardTag</name></member>
       <member refid="classendstone_1_1Object_1a798b5128ce018bbbe8ca949ba78c3db1" prot="public" virt="non-virtual"><scope>endstone::Actor</scope><name>as</name></member>
       <member refid="classendstone_1_1Object_1ae0f38a62da4c186fce272145e2590cc1" prot="public" virt="non-virtual"><scope>endstone::Actor</scope><name>as</name></member>
-      <member refid="classendstone_1_1Object_1aaaeb27e8e442e5adb772ae0d1af1c33f" prot="public" virt="pure-virtual"><scope>endstone::Actor</scope><name>getClassTypeId</name></member>
+      <member refid="classendstone_1_1Object_1a3e2df17c95cf63580e95c84f783636c4" prot="public" virt="pure-virtual"><scope>endstone::Actor</scope><name>getClassInfo</name></member>
       <member refid="classendstone_1_1Actor_1a408807220ded9a0004de3e6d7aac214e" prot="public" virt="pure-virtual"><scope>endstone::Actor</scope><name>getDimension</name></member>
       <member refid="classendstone_1_1Permissible_1a152d098beb17384e97f3b7aa127338bd" prot="public" virt="pure-virtual"><scope>endstone::Actor</scope><name>getEffectivePermissions</name></member>
       <member refid="classendstone_1_1Actor_1a78059bed5b1a6b23bfb2be9ac6ae81a3" prot="public" virt="pure-virtual"><scope>endstone::Actor</scope><name>getId</name></member>
@@ -720,7 +720,7 @@
       <member refid="classendstone_1_1Object_1ae8213ae15ad1b14e4631399c6b18960a" prot="public" virt="non-virtual"><scope>endstone::Actor</scope><name>is</name></member>
       <member refid="classendstone_1_1Actor_1aa099af11ae3053289f31c65c9126b50a" prot="public" virt="pure-virtual"><scope>endstone::Actor</scope><name>isDead</name></member>
       <member refid="classendstone_1_1Actor_1a876f9f220c4628b15556f2b50b103928" prot="public" virt="pure-virtual"><scope>endstone::Actor</scope><name>isInLava</name></member>
-      <member refid="classendstone_1_1Object_1a20376536a5f64ef02b2569af132171d4" prot="public" virt="pure-virtual"><scope>endstone::Actor</scope><name>isInstanceOf</name></member>
+      <member refid="classendstone_1_1Object_1a1f8951c4894c2b8288fd4ef500218771" prot="public" virt="pure-virtual"><scope>endstone::Actor</scope><name>isInstanceOf</name></member>
       <member refid="classendstone_1_1Actor_1a07d1ec2bc5458fbd0c4d60711e4ddcd1" prot="public" virt="pure-virtual"><scope>endstone::Actor</scope><name>isInWater</name></member>
       <member refid="classendstone_1_1Actor_1a26211c565a42de6f28565bed6d3c854b" prot="public" virt="pure-virtual"><scope>endstone::Actor</scope><name>isNameTagAlwaysVisible</name></member>
       <member refid="classendstone_1_1Actor_1ada87051d8b64c9df5cab73732bddf710" prot="public" virt="pure-virtual"><scope>endstone::Actor</scope><name>isNameTagVisible</name></member>

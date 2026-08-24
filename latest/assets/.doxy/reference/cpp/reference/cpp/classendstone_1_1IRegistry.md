@@ -85,7 +85,7 @@ Inherited by the following classes: [endstone::Registry](classendstone_1_1Regist
 | ---: | :--- |
 | virtual [**void**](classendstone_1_1Identifier.md) | [**forEach0**](#function-foreach0) (std::function&lt; [**bool**](classendstone_1_1Identifier.md)([**const**](classendstone_1_1Identifier.md) [**void**](classendstone_1_1Identifier.md) \*)&gt; func) const = 0<br> |
 | virtual [**const**](classendstone_1_1Identifier.md) [**void**](classendstone_1_1Identifier.md) \* | [**get0**](#function-get0) (std::string\_view id) noexcept const = 0<br> |
-| virtual [**const**](classendstone_1_1Identifier.md) std::type\_info & | [**getTypeId**](#function-gettypeid) () noexcept const = 0<br> |
+| virtual [**ClassInfo**](classendstone_1_1ClassInfo.md) | [**getClassInfo**](#function-getclassinfo) () noexcept const = 0<br> |
 
 
 
@@ -172,10 +172,10 @@ virtual const  void * endstone::IRegistry::get0 (
 
 
 
-### function getTypeId 
+### function getClassInfo 
 
 ```C++
-virtual const std::type_info & endstone::IRegistry::getTypeId () noexcept const = 0
+virtual ClassInfo endstone::IRegistry::getClassInfo () noexcept const = 0
 ```
 
 

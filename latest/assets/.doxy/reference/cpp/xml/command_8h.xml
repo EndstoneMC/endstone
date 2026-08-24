@@ -14,12 +14,12 @@
     <includedby refid="plugin__command_8h" local="yes">include/endstone/command/plugin_command.h</includedby>
     <includedby refid="plugin__description_8h" local="yes">include/endstone/plugin/plugin_description.h</includedby>
     <incdepgraph>
-      <node id="22">
+      <node id="23">
         <label>endstone/check.h</label>
         <link refid="check_8h_source"/>
         <childnode refid="10" relation="include">
         </childnode>
-        <childnode refid="23" relation="include">
+        <childnode refid="24" relation="include">
         </childnode>
         <childnode refid="4" relation="include">
         </childnode>
@@ -41,7 +41,7 @@
         </childnode>
         <childnode refid="16" relation="include">
         </childnode>
-        <childnode refid="19" relation="include">
+        <childnode refid="22" relation="include">
         </childnode>
       </node>
       <node id="6">
@@ -59,7 +59,7 @@
         </childnode>
         <childnode refid="9" relation="include">
         </childnode>
-        <childnode refid="19" relation="include">
+        <childnode refid="22" relation="include">
         </childnode>
       </node>
       <node id="9">
@@ -101,9 +101,15 @@
       <node id="16">
         <label>endstone/object.h</label>
         <link refid="object_8h_source"/>
+        <childnode refid="17" relation="include">
+        </childnode>
+        <childnode refid="18" relation="include">
+        </childnode>
+        <childnode refid="19" relation="include">
+        </childnode>
         <childnode refid="8" relation="include">
         </childnode>
-        <childnode refid="17" relation="include">
+        <childnode refid="20" relation="include">
         </childnode>
       </node>
       <node id="14">
@@ -117,14 +123,14 @@
         </childnode>
         <childnode refid="16" relation="include">
         </childnode>
-        <childnode refid="18" relation="include">
+        <childnode refid="21" relation="include">
         </childnode>
-        <childnode refid="24" relation="include">
+        <childnode refid="25" relation="include">
         </childnode>
-        <childnode refid="19" relation="include">
+        <childnode refid="22" relation="include">
         </childnode>
       </node>
-      <node id="18">
+      <node id="21">
         <label>endstone/permissions/permission_attachment_info.h</label>
         <link refid="permission__attachment__info_8h_source"/>
         <childnode refid="7" relation="include">
@@ -133,19 +139,19 @@
         </childnode>
         <childnode refid="4" relation="include">
         </childnode>
-        <childnode refid="19" relation="include">
+        <childnode refid="22" relation="include">
         </childnode>
       </node>
-      <node id="24">
+      <node id="25">
         <label>endstone/permissions/permission_level.h</label>
         <link refid="permission__level_8h_source"/>
       </node>
-      <node id="19">
+      <node id="22">
         <label>endstone/util/pointers.h</label>
         <link refid="pointers_8h_source"/>
-        <childnode refid="20" relation="include">
+        <childnode refid="17" relation="include">
         </childnode>
-        <childnode refid="21" relation="include">
+        <childnode refid="19" relation="include">
         </childnode>
         <childnode refid="7" relation="include">
         </childnode>
@@ -153,7 +159,7 @@
         </childnode>
         <childnode refid="4" relation="include">
         </childnode>
-        <childnode refid="22" relation="include">
+        <childnode refid="23" relation="include">
         </childnode>
         <childnode refid="16" relation="include">
         </childnode>
@@ -161,19 +167,22 @@
       <node id="2">
         <label>algorithm</label>
       </node>
-      <node id="20">
+      <node id="17">
         <label>cstddef</label>
+      </node>
+      <node id="18">
+        <label>cstring</label>
       </node>
       <node id="10">
         <label>format</label>
       </node>
-      <node id="21">
+      <node id="19">
         <label>functional</label>
       </node>
       <node id="7">
         <label>memory</label>
       </node>
-      <node id="23">
+      <node id="24">
         <label>stdexcept</label>
       </node>
       <node id="3">
@@ -182,7 +191,7 @@
       <node id="8">
         <label>type_traits</label>
       </node>
-      <node id="17">
+      <node id="20">
         <label>typeinfo</label>
       </node>
       <node id="15">
@@ -323,10 +332,10 @@
 <codeline lineno="28"><highlight class="normal"></highlight></codeline>
 <codeline lineno="32" refid="classendstone_1_1Command" refkind="compound"><highlight class="normal"></highlight><highlight class="keyword">class<sp/></highlight><highlight class="normal"><ref refid="classendstone_1_1Command" kindref="compound">Command</ref><sp/>:<sp/></highlight><highlight class="keyword">public</highlight><highlight class="normal"><sp/><ref refid="classendstone_1_1Object" kindref="compound">Object</ref><sp/>{</highlight></codeline>
 <codeline lineno="33"><highlight class="normal"></highlight><highlight class="keyword">public</highlight><highlight class="normal">:</highlight></codeline>
-<codeline lineno="34"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">explicit</highlight><highlight class="normal"><sp/><ref refid="classendstone_1_1Command" kindref="compound">Command</ref>(std::string<sp/><ref refid="classendstone_1_1Identifier" kindref="compound">name</ref>,<sp/>std::string<sp/>description<sp/>=<sp/></highlight><highlight class="stringliteral">&quot;&quot;</highlight><highlight class="normal">,<sp/>std::vector&lt;std::string&gt;<sp/>usages<sp/>=<sp/>{},</highlight></codeline>
+<codeline lineno="34"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">explicit</highlight><highlight class="normal"><sp/><ref refid="classendstone_1_1Command" kindref="compound">Command</ref>(std::string<sp/>name,<sp/>std::string<sp/>description<sp/>=<sp/></highlight><highlight class="stringliteral">&quot;&quot;</highlight><highlight class="normal">,<sp/>std::vector&lt;std::string&gt;<sp/>usages<sp/>=<sp/>{},</highlight></codeline>
 <codeline lineno="35"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>std::vector&lt;std::string&gt;<sp/>aliases<sp/>=<sp/>{},<sp/>std::vector&lt;std::string&gt;<sp/>permissions<sp/>=<sp/>{})</highlight></codeline>
 <codeline lineno="36"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
-<codeline lineno="37"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classendstone_1_1Command_1a66160b5ff3d7efbc62e93e122d699776" kindref="member">setName</ref>(std::move(<ref refid="classendstone_1_1Identifier" kindref="compound">name</ref>));</highlight></codeline>
+<codeline lineno="37"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classendstone_1_1Command_1a66160b5ff3d7efbc62e93e122d699776" kindref="member">setName</ref>(std::move(name));</highlight></codeline>
 <codeline lineno="38"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classendstone_1_1Command_1a1dff1fa7383c76451f28d2c131d6c77c" kindref="member">setDescription</ref>(std::move(description));</highlight></codeline>
 <codeline lineno="39"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classendstone_1_1Command_1ab73ce16a9a92a52780fd2640b5f5a91a" kindref="member">setUsages</ref>(std::move(usages));</highlight></codeline>
 <codeline lineno="40"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classendstone_1_1Command_1a79687a94cbcfbd9a07c3aa8d72afd995" kindref="member">setAliases</ref>(std::move(aliases));</highlight></codeline>
@@ -342,11 +351,11 @@
 <codeline lineno="57"><highlight class="normal"></highlight></codeline>
 <codeline lineno="63" refid="classendstone_1_1Command_1ae7306437f7a829db83548ca11288b298" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>[[<ref refid="classendstone_1_1Identifier" kindref="compound">nodiscard</ref>]]<sp/>std::string<sp/><ref refid="classendstone_1_1Command_1ae7306437f7a829db83548ca11288b298" kindref="member">getName</ref>()</highlight><highlight class="keyword"><sp/>const<sp/></highlight><highlight class="normal">{<sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>name_;<sp/>}</highlight></codeline>
 <codeline lineno="64"><highlight class="normal"></highlight></codeline>
-<codeline lineno="72" refid="classendstone_1_1Command_1a66160b5ff3d7efbc62e93e122d699776" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classendstone_1_1Command_1a66160b5ff3d7efbc62e93e122d699776" kindref="member">setName</ref>(std::string<sp/><ref refid="classendstone_1_1Identifier" kindref="compound">name</ref>)</highlight></codeline>
+<codeline lineno="72" refid="classendstone_1_1Command_1a66160b5ff3d7efbc62e93e122d699776" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classendstone_1_1Command_1a66160b5ff3d7efbc62e93e122d699776" kindref="member">setName</ref>(std::string<sp/>name)</highlight></codeline>
 <codeline lineno="73"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
 <codeline lineno="74"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(!<ref refid="classendstone_1_1Command_1a4b4bfe6350f3deae258fc5fd8e344fbf" kindref="member">isRegistered</ref>())<sp/>{</highlight></codeline>
-<codeline lineno="75"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>std::transform(<ref refid="classendstone_1_1Identifier" kindref="compound">name</ref>.begin(),<sp/><ref refid="classendstone_1_1Identifier" kindref="compound">name</ref>.end(),<sp/><ref refid="classendstone_1_1Identifier" kindref="compound">name</ref>.begin(),<sp/>[](</highlight><highlight class="keywordtype">unsigned</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal"><sp/><ref refid="classendstone_1_1Identifier" kindref="compound">c</ref>)<sp/>{<sp/>return<sp/>std::tolower(c);<sp/>});</highlight></codeline>
-<codeline lineno="76"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>name_<sp/>=<sp/>std::move(<ref refid="classendstone_1_1Identifier" kindref="compound">name</ref>);</highlight></codeline>
+<codeline lineno="75"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>std::transform(name.begin(),<sp/>name.end(),<sp/>name.begin(),<sp/>[](</highlight><highlight class="keywordtype">unsigned</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal"><sp/><ref refid="classendstone_1_1Identifier" kindref="compound">c</ref>)<sp/>{<sp/>return<sp/>std::tolower(c);<sp/>});</highlight></codeline>
+<codeline lineno="76"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>name_<sp/>=<sp/>std::move(name);</highlight></codeline>
 <codeline lineno="77"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
 <codeline lineno="78"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
 <codeline lineno="79"><highlight class="normal"></highlight></codeline>
@@ -439,10 +448,10 @@
 <codeline lineno="232"><highlight class="normal"></highlight></codeline>
 <codeline lineno="238" refid="classendstone_1_1Command_1a4b4bfe6350f3deae258fc5fd8e344fbf" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>[[<ref refid="classendstone_1_1Identifier" kindref="compound">nodiscard</ref>]]<sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="classendstone_1_1Command_1a4b4bfe6350f3deae258fc5fd8e344fbf" kindref="member">isRegistered</ref>()</highlight><highlight class="keyword"><sp/>const<sp/></highlight><highlight class="normal">{<sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>command_map_<sp/>!=<sp/></highlight><highlight class="keyword">nullptr</highlight><highlight class="normal">;<sp/>}</highlight></codeline>
 <codeline lineno="239"><highlight class="normal"></highlight></codeline>
-<codeline lineno="240"><highlight class="normal"><sp/><sp/><sp/><sp/>[[<ref refid="classendstone_1_1Identifier" kindref="compound">nodiscard</ref>]]<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::type_info<sp/>&amp;getClassTypeId()</highlight><highlight class="keyword"><sp/>const<sp/>override<sp/></highlight><highlight class="normal">{<sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">typeid</highlight><highlight class="normal">(<ref refid="classendstone_1_1Command" kindref="compound">Command</ref>);<sp/>}</highlight></codeline>
-<codeline lineno="241"><highlight class="normal"><sp/><sp/><sp/><sp/>[[nodiscard]]<sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/>isInstanceOf(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::type_info<sp/>&amp;target)</highlight><highlight class="keyword"><sp/>const<sp/>override</highlight></codeline>
+<codeline lineno="240"><highlight class="normal"><sp/><sp/><sp/><sp/>[[<ref refid="classendstone_1_1Identifier" kindref="compound">nodiscard</ref>]]<sp/><ref refid="classendstone_1_1ClassInfo" kindref="compound">ClassInfo</ref><sp/>getClassInfo()</highlight><highlight class="keyword"><sp/>const<sp/>override<sp/></highlight><highlight class="normal">{<sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>ClassInfo::of&lt;Command&gt;();<sp/>}</highlight></codeline>
+<codeline lineno="241"><highlight class="normal"><sp/><sp/><sp/><sp/>[[nodiscard]]<sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/>isInstanceOf(ClassInfo<sp/>target)</highlight><highlight class="keyword"><sp/>const<sp/>override</highlight></codeline>
 <codeline lineno="242"><highlight class="keyword"><sp/><sp/><sp/><sp/></highlight><highlight class="normal">{</highlight></codeline>
-<codeline lineno="243"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">typeid</highlight><highlight class="normal">(Command)<sp/>==<sp/>target<sp/>||<sp/></highlight><highlight class="keyword">typeid</highlight><highlight class="normal">(Object)<sp/>==<sp/>target;</highlight></codeline>
+<codeline lineno="243"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>target<sp/>==<sp/>ClassInfo::of&lt;Command&gt;()<sp/>||<sp/>target<sp/>==<sp/>ClassInfo::of&lt;Object&gt;();</highlight></codeline>
 <codeline lineno="244"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
 <codeline lineno="245"><highlight class="normal"></highlight></codeline>
 <codeline lineno="246"><highlight class="normal"></highlight><highlight class="keyword">private</highlight><highlight class="normal">:</highlight></codeline>

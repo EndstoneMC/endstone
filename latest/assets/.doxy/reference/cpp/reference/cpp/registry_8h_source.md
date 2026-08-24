@@ -32,6 +32,7 @@
 
 #include "detail.h"
 #include "identifier.h"
+#include "object.h"
 #include "server.h"
 
 namespace endstone {
@@ -49,7 +50,7 @@ protected:
     friend class python::PyRegistry;
     [[nodiscard]] virtual const void *get0(std::string_view id) const noexcept = 0;
     virtual void forEach0(std::function<bool(const void *)> func) const = 0;
-    [[nodiscard]] virtual const std::type_info &getTypeId() const noexcept = 0;
+    [[nodiscard]] virtual ClassInfo getClassInfo() const noexcept = 0;
 };
 
 template <typename T>
@@ -106,7 +107,7 @@ private:
         forEach([&func](const T &elem) { return func(&elem); });
     }
 
-    [[nodiscard]] const std::type_info &getTypeId() const noexcept override { return typeid(T); }
+    [[nodiscard]] ClassInfo getClassInfo() const noexcept override { return ClassInfo::of<T>(); }
 };
 }  // namespace endstone
 

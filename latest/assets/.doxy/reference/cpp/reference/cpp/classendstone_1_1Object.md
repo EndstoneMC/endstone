@@ -55,9 +55,9 @@ Inherited by the following classes: [endstone::BlockState](classendstone_1_1Bloc
 | ---: | :--- |
 |  [**T**](classendstone_1_1Identifier.md) \* | [**as**](#function-as-12) () <br>_Attempts to cast this object to the given type T._  |
 |  [**const**](classendstone_1_1Identifier.md) [**T**](classendstone_1_1Identifier.md) \* | [**as**](#function-as-22) () const<br>_Attempts to cast this object to the given type T._  |
-| virtual [**const**](classendstone_1_1Identifier.md) std::type\_info & | [**getClassTypeId**](#function-getclasstypeid) () const = 0<br> |
+| virtual [**ClassInfo**](classendstone_1_1ClassInfo.md) | [**getClassInfo**](#function-getclassinfo) () const = 0<br> |
 |  [**bool**](classendstone_1_1Identifier.md) | [**is**](#function-is) () const<br>_Checks if this object is an instance of the given type T (or a subclass of T)._  |
-| virtual [**bool**](classendstone_1_1Identifier.md) | [**isInstanceOf**](#function-isinstanceof) ([**const**](classendstone_1_1Identifier.md) std::type\_info & target) const = 0<br> |
+| virtual [**bool**](classendstone_1_1Identifier.md) | [**isInstanceOf**](#function-isinstanceof) ([**ClassInfo**](classendstone_1_1ClassInfo.md) target) const = 0<br> |
 | virtual  | [**~Object**](#function-object) () = default<br> |
 
 
@@ -90,7 +90,7 @@ Inherited by the following classes: [endstone::BlockState](classendstone_1_1Bloc
 ## Detailed Description
 
 
-All endstone types that support runtime type narrowing (e.g., [**Permissible**](classendstone_1_1Permissible.md), [**ItemMeta**](classendstone_1_1ItemMeta.md)) inherit from [**Object**](classendstone_1_1Object.md). Subclasses implement getClassTypeId() and isInstanceOf(), and the type hierarchy is registered with entt::meta at startup. 
+All endstone types that support runtime type narrowing (e.g., [**Permissible**](classendstone_1_1Permissible.md), [**ItemMeta**](classendstone_1_1ItemMeta.md)) inherit from [**Object**](classendstone_1_1Object.md). Subclasses implement getClassInfo() and isInstanceOf(), and the type hierarchy is registered with entt::meta at startup. 
 
 
     
@@ -171,10 +171,10 @@ Pointer to this as T, or nullptr if the cast is invalid
 
 
 
-### function getClassTypeId 
+### function getClassInfo 
 
 ```C++
-virtual const std::type_info & endstone::Object::getClassTypeId () const = 0
+virtual ClassInfo endstone::Object::getClassInfo () const = 0
 ```
 
 
@@ -221,7 +221,7 @@ inline bool endstone::Object::is () const
 
 ```C++
 virtual bool endstone::Object::isInstanceOf (
-    const std::type_info & target
+    ClassInfo target
 ) const = 0
 ```
 

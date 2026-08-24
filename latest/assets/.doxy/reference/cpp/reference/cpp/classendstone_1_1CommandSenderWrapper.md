@@ -121,7 +121,7 @@ Inherits the following classes: [endstone::CommandSender](classendstone_1_1Comma
 |   | [**CommandSenderWrapper**](#function-commandsenderwrapper) ([**const**](classendstone_1_1Identifier.md) [**NotNull**](classendstone_1_1NotNull.md)&lt; [**CommandSender**](classendstone_1_1CommandSender.md) &gt; & sender, Callback on\_message={}, Callback on\_error={}) <br> |
 | virtual [**NotNull**](classendstone_1_1NotNull.md)&lt; [**PermissionAttachment**](classendstone_1_1PermissionAttachment.md) &gt; | [**addAttachment**](#function-addattachment-12) ([**Plugin**](classendstone_1_1Plugin.md) & plugin, [**const**](classendstone_1_1Identifier.md) std::string & name, [**bool**](classendstone_1_1Identifier.md) value) override<br>_Adds a new_ [_**PermissionAttachment**_](classendstone_1_1PermissionAttachment.md) _with a single permission by name and value._ |
 | virtual [**NotNull**](classendstone_1_1NotNull.md)&lt; [**PermissionAttachment**](classendstone_1_1PermissionAttachment.md) &gt; | [**addAttachment**](#function-addattachment-22) ([**Plugin**](classendstone_1_1Plugin.md) & plugin) override<br>_Adds a new empty_ [_**PermissionAttachment**_](classendstone_1_1PermissionAttachment.md) _to this object._ |
-| virtual [**const**](classendstone_1_1Identifier.md) std::type\_info & | [**getClassTypeId**](#function-getclasstypeid) () override const<br> |
+| virtual [**ClassInfo**](classendstone_1_1ClassInfo.md) | [**getClassInfo**](#function-getclassinfo) () override const<br> |
 | virtual std::unordered\_set&lt; [**NotNull**](classendstone_1_1NotNull.md)&lt; [**PermissionAttachmentInfo**](classendstone_1_1PermissionAttachmentInfo.md) &gt; &gt; | [**getEffectivePermissions**](#function-geteffectivepermissions) () override const<br>_Gets a set containing all the permissions currently in effect by this object._  |
 | virtual std::string | [**getName**](#function-getname) () override const<br>_Gets the name of this command sender._  |
 | virtual [**PermissionLevel**](namespaceendstone.md#enum-permissionlevel) | [**getPermissionLevel**](#function-getpermissionlevel) () override const<br>_Gets the permission level of this object._  |
@@ -129,7 +129,7 @@ Inherits the following classes: [endstone::CommandSender](classendstone_1_1Comma
 |  [**const**](classendstone_1_1Identifier.md) [**NotNull**](classendstone_1_1NotNull.md)&lt; [**CommandSender**](classendstone_1_1CommandSender.md) &gt; & | [**getWrapped**](#function-getwrapped) () const<br>_Returns the wrapped_ [_**CommandSender**_](classendstone_1_1CommandSender.md) _._ |
 | virtual [**bool**](classendstone_1_1Identifier.md) | [**hasPermission**](#function-haspermission-12) (std::string name) override const<br>_Gets the value of the specified permission, if set._  |
 | virtual [**bool**](classendstone_1_1Identifier.md) | [**hasPermission**](#function-haspermission-22) ([**const**](classendstone_1_1Identifier.md) [**NotNull**](classendstone_1_1NotNull.md)&lt; [**Permission**](classendstone_1_1Permission.md) &gt; & perm) override const<br>_Gets the value of the specified permission, if set._  |
-| virtual [**bool**](classendstone_1_1Identifier.md) | [**isInstanceOf**](#function-isinstanceof) ([**const**](classendstone_1_1Identifier.md) std::type\_info & target) override const<br> |
+| virtual [**bool**](classendstone_1_1Identifier.md) | [**isInstanceOf**](#function-isinstanceof) ([**ClassInfo**](classendstone_1_1ClassInfo.md) target) override const<br> |
 | virtual [**bool**](classendstone_1_1Identifier.md) | [**isPermissionSet**](#function-ispermissionset-12) (std::string name) override const<br>_Checks if this object contains an override for the specified permission, by fully qualified name._  |
 | virtual [**bool**](classendstone_1_1Identifier.md) | [**isPermissionSet**](#function-ispermissionset-22) ([**const**](classendstone_1_1Identifier.md) [**NotNull**](classendstone_1_1NotNull.md)&lt; [**Permission**](classendstone_1_1Permission.md) &gt; & perm) override const<br>_Checks if this object contains an override for the specified_ [_**Permission**_](classendstone_1_1Permission.md) _._ |
 | virtual [**void**](classendstone_1_1Identifier.md) | [**recalculatePermissions**](#function-recalculatepermissions) () override<br>_Recalculates the permissions for this object, if the attachments have changed values._  |
@@ -178,9 +178,9 @@ See [endstone::Object](classendstone_1_1Object.md)
 | ---: | :--- |
 |  [**T**](classendstone_1_1Identifier.md) \* | [**as**](classendstone_1_1Object.md#function-as-12) () <br>_Attempts to cast this object to the given type T._  |
 |  [**const**](classendstone_1_1Identifier.md) [**T**](classendstone_1_1Identifier.md) \* | [**as**](classendstone_1_1Object.md#function-as-22) () const<br>_Attempts to cast this object to the given type T._  |
-| virtual [**const**](classendstone_1_1Identifier.md) std::type\_info & | [**getClassTypeId**](classendstone_1_1Object.md#function-getclasstypeid) () const = 0<br> |
+| virtual [**ClassInfo**](classendstone_1_1ClassInfo.md) | [**getClassInfo**](classendstone_1_1Object.md#function-getclassinfo) () const = 0<br> |
 |  [**bool**](classendstone_1_1Identifier.md) | [**is**](classendstone_1_1Object.md#function-is) () const<br>_Checks if this object is an instance of the given type T (or a subclass of T)._  |
-| virtual [**bool**](classendstone_1_1Identifier.md) | [**isInstanceOf**](classendstone_1_1Object.md#function-isinstanceof) ([**const**](classendstone_1_1Identifier.md) std::type\_info & target) const = 0<br> |
+| virtual [**bool**](classendstone_1_1Identifier.md) | [**isInstanceOf**](classendstone_1_1Object.md#function-isinstanceof) ([**ClassInfo**](classendstone_1_1ClassInfo.md) target) const = 0<br> |
 | virtual  | [**~Object**](classendstone_1_1Object.md#function-object) () = default<br> |
 
 
@@ -415,15 +415,15 @@ Implements [*endstone::Permissible::addAttachment*](classendstone_1_1Permissible
 
 
 
-### function getClassTypeId 
+### function getClassInfo 
 
 ```C++
-inline virtual const std::type_info & endstone::CommandSenderWrapper::getClassTypeId () override const
+inline virtual ClassInfo endstone::CommandSenderWrapper::getClassInfo () override const
 ```
 
 
 
-Implements [*endstone::Object::getClassTypeId*](classendstone_1_1Object.md#function-getclasstypeid)
+Implements [*endstone::Object::getClassInfo*](classendstone_1_1Object.md#function-getclassinfo)
 
 
 <hr>
@@ -645,7 +645,7 @@ Implements [*endstone::Permissible::hasPermission*](classendstone_1_1Permissible
 
 ```C++
 inline virtual bool endstone::CommandSenderWrapper::isInstanceOf (
-    const std::type_info & target
+    ClassInfo target
 ) override const
 ```
 

@@ -91,6 +91,7 @@ _Represents a button with text and an optional icon._
 | class | [**ChunkEvent**](classendstone_1_1ChunkEvent.md) <br>_Represents a_ [_**Chunk**_](classendstone_1_1Chunk.md) _related event._ |
 | class | [**ChunkLoadEvent**](classendstone_1_1ChunkLoadEvent.md) <br>_Called when a chunk is loaded._  |
 | class | [**ChunkUnloadEvent**](classendstone_1_1ChunkUnloadEvent.md) <br>_Called when a chunk is unloaded._  |
+| class | [**ClassInfo**](classendstone_1_1ClassInfo.md) <br>_A type identity that stays comparable across shared library boundaries._  |
 | class | [**Color**](classendstone_1_1Color.md) <br>_Represents a color with red, green, blue, and alpha components._  |
 | struct | [**ColorFormat**](structendstone_1_1ColorFormat.md) <br>_All supported color and format codes._  |
 | class | [**Colors**](classendstone_1_1Colors.md) <br>_Provides a collection of predefined colors._  |

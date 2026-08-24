@@ -22,36 +22,36 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/object.h" line="31" column="13"/>
+        <location file="include/endstone/object.h" line="73" column="13"/>
       </memberdef>
-      <memberdef kind="function" id="classendstone_1_1Object_1aaaeb27e8e442e5adb772ae0d1af1c33f" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
-        <type><ref refid="classendstone_1_1Identifier" kindref="compound">const</ref> std::type_info &amp;</type>
-        <definition>virtual const std::type_info &amp; endstone::Object::getClassTypeId</definition>
+      <memberdef kind="function" id="classendstone_1_1Object_1a3e2df17c95cf63580e95c84f783636c4" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
+        <type><ref refid="classendstone_1_1ClassInfo" kindref="compound">ClassInfo</ref></type>
+        <definition>virtual ClassInfo endstone::Object::getClassInfo</definition>
         <argsstring>() const =0</argsstring>
-        <name>getClassTypeId</name>
-        <qualifiedname>endstone::Object::getClassTypeId</qualifiedname>
-        <reimplementedby refid="classendstone_1_1Command_1a8fd3804b8c6367eaeda19f1f09dd6a4b">getClassTypeId</reimplementedby>
-        <reimplementedby refid="classendstone_1_1CommandSenderWrapper_1a32447f67b4a1cf445b8020fdf06518f5">getClassTypeId</reimplementedby>
-        <reimplementedby refid="classendstone_1_1PluginCommand_1a65c45d094ef0ea7700a98a53671993a7">getClassTypeId</reimplementedby>
+        <name>getClassInfo</name>
+        <qualifiedname>endstone::Object::getClassInfo</qualifiedname>
+        <reimplementedby refid="classendstone_1_1Command_1a7622c3235cba6d3cb45a7ead244cf540">getClassInfo</reimplementedby>
+        <reimplementedby refid="classendstone_1_1CommandSenderWrapper_1a23c17b8d7e94822a20b3be28409558e7">getClassInfo</reimplementedby>
+        <reimplementedby refid="classendstone_1_1PluginCommand_1a31a64a25c1ae34ec6a7a94b4875df455">getClassInfo</reimplementedby>
         <briefdescription>
         </briefdescription>
         <detaileddescription>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/object.h" line="36" column="35"/>
+        <location file="include/endstone/object.h" line="78" column="24"/>
       </memberdef>
-      <memberdef kind="function" id="classendstone_1_1Object_1a20376536a5f64ef02b2569af132171d4" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
+      <memberdef kind="function" id="classendstone_1_1Object_1a1f8951c4894c2b8288fd4ef500218771" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
         <type><ref refid="classendstone_1_1Identifier" kindref="compound">bool</ref></type>
         <definition>virtual bool endstone::Object::isInstanceOf</definition>
-        <argsstring>(const std::type_info &amp;target) const =0</argsstring>
+        <argsstring>(ClassInfo target) const =0</argsstring>
         <name>isInstanceOf</name>
         <qualifiedname>endstone::Object::isInstanceOf</qualifiedname>
-        <reimplementedby refid="classendstone_1_1Command_1a6c7a9cb698506b75ebd7190d63d2d449">isInstanceOf</reimplementedby>
-        <reimplementedby refid="classendstone_1_1CommandSenderWrapper_1a98f9818a93988f413831e2c4e9d59db6">isInstanceOf</reimplementedby>
-        <reimplementedby refid="classendstone_1_1PluginCommand_1aba5ce60603328cde8bc67878604f186c">isInstanceOf</reimplementedby>
+        <reimplementedby refid="classendstone_1_1Command_1ad30245ca66e3b8569ba3acc5994060e1">isInstanceOf</reimplementedby>
+        <reimplementedby refid="classendstone_1_1CommandSenderWrapper_1a7c322d82ca6b5adb59548c236557aac2">isInstanceOf</reimplementedby>
+        <reimplementedby refid="classendstone_1_1PluginCommand_1add69767a77da2d3b69893dfba7c4791b">isInstanceOf</reimplementedby>
         <param>
-          <type><ref refid="classendstone_1_1Identifier" kindref="compound">const</ref> std::type_info &amp;</type>
+          <type><ref refid="classendstone_1_1ClassInfo" kindref="compound">ClassInfo</ref></type>
           <declname>target</declname>
         </param>
         <briefdescription>
@@ -60,7 +60,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/object.h" line="41" column="19"/>
+        <location file="include/endstone/object.h" line="83" column="19"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1Object_1a798b5128ce018bbbe8ca949ba78c3db1" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <templateparamlist>
@@ -94,7 +94,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/object.h" line="53" column="7" bodyfile="include/endstone/object.h" bodystart="53" bodyend="59"/>
+        <location file="include/endstone/object.h" line="95" column="7" bodyfile="include/endstone/object.h" bodystart="95" bodyend="101"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1Object_1ae0f38a62da4c186fce272145e2590cc1" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
         <templateparamlist>
@@ -128,7 +128,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/object.h" line="66" column="13" bodyfile="include/endstone/object.h" bodystart="66" bodyend="72"/>
+        <location file="include/endstone/object.h" line="108" column="13" bodyfile="include/endstone/object.h" bodystart="108" bodyend="114"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1Object_1ae8213ae15ad1b14e4631399c6b18960a" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
         <templateparamlist>
@@ -161,14 +161,14 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/object.h" line="82" column="11" bodyfile="include/endstone/object.h" bodystart="82" bodyend="85"/>
+        <location file="include/endstone/object.h" line="124" column="11" bodyfile="include/endstone/object.h" bodystart="124" bodyend="127"/>
       </memberdef>
     </sectiondef>
     <briefdescription>
 <para>Base class providing runtime type identification and safe casting. </para>
     </briefdescription>
     <detaileddescription>
-<para>All endstone types that support runtime type narrowing (e.g., <ref refid="classendstone_1_1Permissible" kindref="compound">Permissible</ref>, <ref refid="classendstone_1_1ItemMeta" kindref="compound">ItemMeta</ref>) inherit from <ref refid="classendstone_1_1Object" kindref="compound">Object</ref>. Subclasses implement getClassTypeId() and isInstanceOf(), and the type hierarchy is registered with entt::meta at startup. </para>
+<para>All endstone types that support runtime type narrowing (e.g., <ref refid="classendstone_1_1Permissible" kindref="compound">Permissible</ref>, <ref refid="classendstone_1_1ItemMeta" kindref="compound">ItemMeta</ref>) inherit from <ref refid="classendstone_1_1Object" kindref="compound">Object</ref>. Subclasses implement getClassInfo() and isInstanceOf(), and the type hierarchy is registered with entt::meta at startup. </para>
     </detaileddescription>
     <inheritancegraph>
       <node id="20">
@@ -410,13 +410,13 @@
         </childnode>
       </node>
     </inheritancegraph>
-    <location file="include/endstone/object.h" line="29" column="1" bodyfile="include/endstone/object.h" bodystart="29" bodyend="86"/>
+    <location file="include/endstone/object.h" line="71" column="1" bodyfile="include/endstone/object.h" bodystart="71" bodyend="128"/>
     <listofallmembers>
       <member refid="classendstone_1_1Object_1a798b5128ce018bbbe8ca949ba78c3db1" prot="public" virt="non-virtual"><scope>endstone::Object</scope><name>as</name></member>
       <member refid="classendstone_1_1Object_1ae0f38a62da4c186fce272145e2590cc1" prot="public" virt="non-virtual"><scope>endstone::Object</scope><name>as</name></member>
-      <member refid="classendstone_1_1Object_1aaaeb27e8e442e5adb772ae0d1af1c33f" prot="public" virt="pure-virtual"><scope>endstone::Object</scope><name>getClassTypeId</name></member>
+      <member refid="classendstone_1_1Object_1a3e2df17c95cf63580e95c84f783636c4" prot="public" virt="pure-virtual"><scope>endstone::Object</scope><name>getClassInfo</name></member>
       <member refid="classendstone_1_1Object_1ae8213ae15ad1b14e4631399c6b18960a" prot="public" virt="non-virtual"><scope>endstone::Object</scope><name>is</name></member>
-      <member refid="classendstone_1_1Object_1a20376536a5f64ef02b2569af132171d4" prot="public" virt="pure-virtual"><scope>endstone::Object</scope><name>isInstanceOf</name></member>
+      <member refid="classendstone_1_1Object_1a1f8951c4894c2b8288fd4ef500218771" prot="public" virt="pure-virtual"><scope>endstone::Object</scope><name>isInstanceOf</name></member>
       <member refid="classendstone_1_1Object_1adfddc886af4b1d0e09ddac7d0391b4d2" prot="public" virt="virtual"><scope>endstone::Object</scope><name>~Object</name></member>
     </listofallmembers>
   </compounddef>

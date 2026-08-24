@@ -152,7 +152,7 @@ See [endstone::IRegistry](classendstone_1_1IRegistry.md)
 | ---: | :--- |
 | virtual [**void**](classendstone_1_1Identifier.md) | [**forEach0**](classendstone_1_1IRegistry.md#function-foreach0) (std::function&lt; [**bool**](classendstone_1_1Identifier.md)([**const**](classendstone_1_1Identifier.md) [**void**](classendstone_1_1Identifier.md) \*)&gt; func) const = 0<br> |
 | virtual [**const**](classendstone_1_1Identifier.md) [**void**](classendstone_1_1Identifier.md) \* | [**get0**](classendstone_1_1IRegistry.md#function-get0) (std::string\_view id) noexcept const = 0<br> |
-| virtual [**const**](classendstone_1_1Identifier.md) std::type\_info & | [**getTypeId**](classendstone_1_1IRegistry.md#function-gettypeid) () noexcept const = 0<br> |
+| virtual [**ClassInfo**](classendstone_1_1ClassInfo.md) | [**getClassInfo**](classendstone_1_1IRegistry.md#function-getclassinfo) () noexcept const = 0<br> |
 
 
 

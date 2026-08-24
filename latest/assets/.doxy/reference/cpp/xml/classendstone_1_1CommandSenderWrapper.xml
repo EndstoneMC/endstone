@@ -476,30 +476,30 @@
         </inbodydescription>
         <location file="include/endstone/command/command_sender_wrapper.h" line="80" column="25" bodyfile="include/endstone/command/command_sender_wrapper.h" bodystart="80" bodyend="83"/>
       </memberdef>
-      <memberdef kind="function" id="classendstone_1_1CommandSenderWrapper_1a32447f67b4a1cf445b8020fdf06518f5" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="virtual">
-        <type><ref refid="classendstone_1_1Identifier" kindref="compound">const</ref> std::type_info &amp;</type>
-        <definition>const std::type_info &amp; endstone::CommandSenderWrapper::getClassTypeId</definition>
+      <memberdef kind="function" id="classendstone_1_1CommandSenderWrapper_1a23c17b8d7e94822a20b3be28409558e7" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="virtual">
+        <type><ref refid="classendstone_1_1ClassInfo" kindref="compound">ClassInfo</ref></type>
+        <definition>ClassInfo endstone::CommandSenderWrapper::getClassInfo</definition>
         <argsstring>() const override</argsstring>
-        <name>getClassTypeId</name>
-        <qualifiedname>endstone::CommandSenderWrapper::getClassTypeId</qualifiedname>
-        <reimplements refid="classendstone_1_1Object_1aaaeb27e8e442e5adb772ae0d1af1c33f">getClassTypeId</reimplements>
+        <name>getClassInfo</name>
+        <qualifiedname>endstone::CommandSenderWrapper::getClassInfo</qualifiedname>
+        <reimplements refid="classendstone_1_1Object_1a3e2df17c95cf63580e95c84f783636c4">getClassInfo</reimplements>
         <briefdescription>
         </briefdescription>
         <detaileddescription>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/command/command_sender_wrapper.h" line="85" column="27" bodyfile="include/endstone/command/command_sender_wrapper.h" bodystart="85" bodyend="85"/>
+        <location file="include/endstone/command/command_sender_wrapper.h" line="85" column="16" bodyfile="include/endstone/command/command_sender_wrapper.h" bodystart="85" bodyend="85"/>
       </memberdef>
-      <memberdef kind="function" id="classendstone_1_1CommandSenderWrapper_1a98f9818a93988f413831e2c4e9d59db6" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="virtual">
+      <memberdef kind="function" id="classendstone_1_1CommandSenderWrapper_1a7c322d82ca6b5adb59548c236557aac2" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="virtual">
         <type><ref refid="classendstone_1_1Identifier" kindref="compound">bool</ref></type>
         <definition>bool endstone::CommandSenderWrapper::isInstanceOf</definition>
-        <argsstring>(const std::type_info &amp;target) const override</argsstring>
+        <argsstring>(ClassInfo target) const override</argsstring>
         <name>isInstanceOf</name>
         <qualifiedname>endstone::CommandSenderWrapper::isInstanceOf</qualifiedname>
-        <reimplements refid="classendstone_1_1Object_1a20376536a5f64ef02b2569af132171d4">isInstanceOf</reimplements>
+        <reimplements refid="classendstone_1_1Object_1a1f8951c4894c2b8288fd4ef500218771">isInstanceOf</reimplements>
         <param>
-          <type><ref refid="classendstone_1_1Identifier" kindref="compound">const</ref> std::type_info &amp;</type>
+          <type><ref refid="classendstone_1_1ClassInfo" kindref="compound">ClassInfo</ref></type>
           <declname>target</declname>
         </param>
         <briefdescription>
@@ -638,7 +638,7 @@
       <member refid="classendstone_1_1Object_1ae0f38a62da4c186fce272145e2590cc1" prot="public" virt="non-virtual"><scope>endstone::CommandSenderWrapper</scope><name>as</name></member>
       <member refid="classendstone_1_1CommandSenderWrapper_1aecfc3f07c79d140b40d890b7a7a2d541" prot="public" virt="non-virtual"><scope>endstone::CommandSenderWrapper</scope><name>Callback</name></member>
       <member refid="classendstone_1_1CommandSenderWrapper_1a8d69583974533115b58a1e91237eff41" prot="public" virt="non-virtual"><scope>endstone::CommandSenderWrapper</scope><name>CommandSenderWrapper</name></member>
-      <member refid="classendstone_1_1CommandSenderWrapper_1a32447f67b4a1cf445b8020fdf06518f5" prot="public" virt="virtual"><scope>endstone::CommandSenderWrapper</scope><name>getClassTypeId</name></member>
+      <member refid="classendstone_1_1CommandSenderWrapper_1a23c17b8d7e94822a20b3be28409558e7" prot="public" virt="virtual"><scope>endstone::CommandSenderWrapper</scope><name>getClassInfo</name></member>
       <member refid="classendstone_1_1CommandSenderWrapper_1a893d19787c52ca9ab9ae43663c158d2e" prot="public" virt="virtual"><scope>endstone::CommandSenderWrapper</scope><name>getEffectivePermissions</name></member>
       <member refid="classendstone_1_1CommandSenderWrapper_1af7a2f45adfa1e55eda23bd39a16d3642" prot="public" virt="virtual"><scope>endstone::CommandSenderWrapper</scope><name>getName</name></member>
       <member refid="classendstone_1_1CommandSenderWrapper_1a35ea40a86d08d2e675932a8532b1851b" prot="public" virt="virtual"><scope>endstone::CommandSenderWrapper</scope><name>getPermissionLevel</name></member>
@@ -647,7 +647,7 @@
       <member refid="classendstone_1_1CommandSenderWrapper_1aa112f1f81d557d85be8d85c264ec6038" prot="public" virt="virtual"><scope>endstone::CommandSenderWrapper</scope><name>hasPermission</name></member>
       <member refid="classendstone_1_1CommandSenderWrapper_1aeb143eeb38faebf2a26753f885f8e8f3" prot="public" virt="virtual"><scope>endstone::CommandSenderWrapper</scope><name>hasPermission</name></member>
       <member refid="classendstone_1_1Object_1ae8213ae15ad1b14e4631399c6b18960a" prot="public" virt="non-virtual"><scope>endstone::CommandSenderWrapper</scope><name>is</name></member>
-      <member refid="classendstone_1_1CommandSenderWrapper_1a98f9818a93988f413831e2c4e9d59db6" prot="public" virt="virtual"><scope>endstone::CommandSenderWrapper</scope><name>isInstanceOf</name></member>
+      <member refid="classendstone_1_1CommandSenderWrapper_1a7c322d82ca6b5adb59548c236557aac2" prot="public" virt="virtual"><scope>endstone::CommandSenderWrapper</scope><name>isInstanceOf</name></member>
       <member refid="classendstone_1_1CommandSenderWrapper_1a07e8de81fb735c7745c96cbb4d022889" prot="public" virt="virtual"><scope>endstone::CommandSenderWrapper</scope><name>isPermissionSet</name></member>
       <member refid="classendstone_1_1CommandSenderWrapper_1a80e684c56f2598bd7d63f72280b7300b" prot="public" virt="virtual"><scope>endstone::CommandSenderWrapper</scope><name>isPermissionSet</name></member>
       <member refid="classendstone_1_1CommandSenderWrapper_1a90e1149cfbcb7b6e36a73c4172f84dc5" prot="private" virt="non-virtual"><scope>endstone::CommandSenderWrapper</scope><name>on_error_</name></member>

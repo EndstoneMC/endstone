@@ -164,7 +164,7 @@
       <member refid="classendstone_1_1Object_1a798b5128ce018bbbe8ca949ba78c3db1" prot="public" virt="non-virtual"><scope>endstone::Sign</scope><name>as</name></member>
       <member refid="classendstone_1_1Object_1ae0f38a62da4c186fce272145e2590cc1" prot="public" virt="non-virtual"><scope>endstone::Sign</scope><name>as</name></member>
       <member refid="classendstone_1_1BlockState_1a810aa69e187b4a5d953aee70f3a1025b" prot="public" virt="pure-virtual"><scope>endstone::Sign</scope><name>getBlock</name></member>
-      <member refid="classendstone_1_1Object_1aaaeb27e8e442e5adb772ae0d1af1c33f" prot="public" virt="pure-virtual"><scope>endstone::Sign</scope><name>getClassTypeId</name></member>
+      <member refid="classendstone_1_1Object_1a3e2df17c95cf63580e95c84f783636c4" prot="public" virt="pure-virtual"><scope>endstone::Sign</scope><name>getClassInfo</name></member>
       <member refid="classendstone_1_1BlockState_1ac00635bd4fa22ed632cb783e620673c1" prot="public" virt="pure-virtual"><scope>endstone::Sign</scope><name>getData</name></member>
       <member refid="classendstone_1_1BlockState_1a761183a7cef8831563b40ca0da0081ed" prot="public" virt="pure-virtual"><scope>endstone::Sign</scope><name>getDimension</name></member>
       <member refid="classendstone_1_1BlockState_1a6f8f4a475c2c955b1a883877d9b4baf5" prot="public" virt="pure-virtual"><scope>endstone::Sign</scope><name>getLocation</name></member>
@@ -174,7 +174,7 @@
       <member refid="classendstone_1_1BlockState_1a26cb455d3bb6d9ab6f703d1df14c9232" prot="public" virt="pure-virtual"><scope>endstone::Sign</scope><name>getY</name></member>
       <member refid="classendstone_1_1BlockState_1a1d4ccdc3539f2d549ef3d98393bb89af" prot="public" virt="pure-virtual"><scope>endstone::Sign</scope><name>getZ</name></member>
       <member refid="classendstone_1_1Object_1ae8213ae15ad1b14e4631399c6b18960a" prot="public" virt="non-virtual"><scope>endstone::Sign</scope><name>is</name></member>
-      <member refid="classendstone_1_1Object_1a20376536a5f64ef02b2569af132171d4" prot="public" virt="pure-virtual"><scope>endstone::Sign</scope><name>isInstanceOf</name></member>
+      <member refid="classendstone_1_1Object_1a1f8951c4894c2b8288fd4ef500218771" prot="public" virt="pure-virtual"><scope>endstone::Sign</scope><name>isInstanceOf</name></member>
       <member refid="classendstone_1_1Sign_1ac454bca51b3afe8b1080cf72511f4044" prot="public" virt="pure-virtual"><scope>endstone::Sign</scope><name>isWaxed</name></member>
       <member refid="classendstone_1_1BlockState_1ac85e292da7159b3835cc3919e68c08c7" prot="public" virt="pure-virtual"><scope>endstone::Sign</scope><name>setData</name></member>
       <member refid="classendstone_1_1BlockState_1adf633410dbefd527bd7a7e423223de02" prot="public" virt="pure-virtual"><scope>endstone::Sign</scope><name>setType</name></member>

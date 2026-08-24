@@ -127,6 +127,7 @@ This inheritance list is sorted roughly, but not completely, alphabetically:
 * **class** [**endstone::BossBar**](classendstone_1_1BossBar.md) _Represents a boss bar that is displayed to players._ 
 * **class** [**endstone::Button**](classendstone_1_1Button.md) _Represents a button with text and an optional icon._ 
 * **class** [**endstone::Chunk**](classendstone_1_1Chunk.md) _Represents a chunk of blocks._ 
+* **class** [**endstone::ClassInfo**](classendstone_1_1ClassInfo.md) _A type identity that stays comparable across shared library boundaries._ 
 * **class** [**endstone::Color**](classendstone_1_1Color.md) _Represents a color with red, green, blue, and alpha components._ 
 * **class** [**endstone::Colors**](classendstone_1_1Colors.md) _Provides a collection of predefined colors._ 
 * **class** [**endstone::CommandExecutor**](classendstone_1_1CommandExecutor.md) _Represents a class which contains a single method for executing commands._     
@@ -200,6 +201,7 @@ This inheritance list is sorted roughly, but not completely, alphabetically:
 * **struct** [**endstone::detail::JoinView**](structendstone_1_1detail_1_1JoinView.md) _A lightweight, formattable view over a range that renders its elements separated by a delimiter._ 
 * **struct** [**endstone::detail::PluginDescriptionBuilder**](structendstone_1_1detail_1_1PluginDescriptionBuilder.md) 
 * **struct** [**endstone::nbt::escape\_view**](structendstone_1_1nbt_1_1escape__view.md) 
+* **struct** [**std::hash&lt; endstone::ClassInfo &gt;**](structstd_1_1hash_3_01endstone_1_1ClassInfo_01_4.md) 
 * **struct** [**std::hash&lt; endstone::Identifier&lt; T &gt; &gt;**](structstd_1_1hash_3_01endstone_1_1Identifier_3_01T_01_4_01_4.md) 
 * **struct** [**std::hash&lt; endstone::NotNull&lt; T &gt; &gt;**](structstd_1_1hash_3_01endstone_1_1NotNull_3_01T_01_4_01_4.md) 
 * **struct** [**std::hash&lt; endstone::Nullable&lt; T &gt; &gt;**](structstd_1_1hash_3_01endstone_1_1Nullable_3_01T_01_4_01_4.md) 

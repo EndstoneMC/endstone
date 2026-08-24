@@ -12,25 +12,25 @@
     <includes refid="permission_8h" local="yes">endstone/permissions/permission.h</includes>
     <includes refid="pointers_8h" local="yes">endstone/util/pointers.h</includes>
     <incdepgraph>
-      <node id="16">
+      <node id="17">
         <label>endstone/check.h</label>
         <link refid="check_8h_source"/>
-        <childnode refid="17" relation="include">
-        </childnode>
         <childnode refid="18" relation="include">
+        </childnode>
+        <childnode refid="19" relation="include">
         </childnode>
         <childnode refid="7" relation="include">
         </childnode>
       </node>
-      <node id="24">
+      <node id="25">
         <label>endstone/event/event.h</label>
         <link refid="event_8h_source"/>
-        <childnode refid="18" relation="include">
+        <childnode refid="19" relation="include">
         </childnode>
         <childnode refid="5" relation="include">
         </childnode>
       </node>
-      <node id="25">
+      <node id="26">
         <label>endstone/event/event_priority.h</label>
         <link refid="event__priority_8h_source"/>
       </node>
@@ -40,6 +40,12 @@
         <childnode refid="11" relation="include">
         </childnode>
         <childnode refid="12" relation="include">
+        </childnode>
+        <childnode refid="3" relation="include">
+        </childnode>
+        <childnode refid="13" relation="include">
+        </childnode>
+        <childnode refid="14" relation="include">
         </childnode>
       </node>
       <node id="8">
@@ -53,14 +59,14 @@
         </childnode>
         <childnode refid="10" relation="include">
         </childnode>
-        <childnode refid="13" relation="include">
+        <childnode refid="15" relation="include">
         </childnode>
-        <childnode refid="19" relation="include">
+        <childnode refid="20" relation="include">
         </childnode>
-        <childnode refid="14" relation="include">
+        <childnode refid="16" relation="include">
         </childnode>
       </node>
-      <node id="20">
+      <node id="21">
         <label>endstone/permissions/permission.h</label>
         <link refid="permission_8h_source"/>
         <childnode refid="2" relation="include">
@@ -75,15 +81,15 @@
         </childnode>
         <childnode refid="7" relation="include">
         </childnode>
-        <childnode refid="16" relation="include">
+        <childnode refid="17" relation="include">
         </childnode>
         <childnode refid="8" relation="include">
         </childnode>
-        <childnode refid="21" relation="include">
-        </childnode>
         <childnode refid="22" relation="include">
         </childnode>
-        <childnode refid="14" relation="include">
+        <childnode refid="23" relation="include">
+        </childnode>
+        <childnode refid="16" relation="include">
         </childnode>
       </node>
       <node id="1">
@@ -103,12 +109,12 @@
         </childnode>
         <childnode refid="8" relation="include">
         </childnode>
-        <childnode refid="20" relation="include">
+        <childnode refid="21" relation="include">
         </childnode>
-        <childnode refid="14" relation="include">
+        <childnode refid="16" relation="include">
         </childnode>
       </node>
-      <node id="13">
+      <node id="15">
         <label>endstone/permissions/permission_attachment_info.h</label>
         <link refid="permission__attachment__info_8h_source"/>
         <childnode refid="4" relation="include">
@@ -117,18 +123,18 @@
         </childnode>
         <childnode refid="7" relation="include">
         </childnode>
-        <childnode refid="14" relation="include">
+        <childnode refid="16" relation="include">
         </childnode>
       </node>
-      <node id="21">
+      <node id="22">
         <label>endstone/permissions/permission_default.h</label>
         <link refid="permission__default_8h_source"/>
       </node>
-      <node id="19">
+      <node id="20">
         <label>endstone/permissions/permission_level.h</label>
         <link refid="permission__level_8h_source"/>
       </node>
-      <node id="22">
+      <node id="23">
         <label>endstone/plugin/plugin_manager.h</label>
         <link refid="plugin__manager_8h_source"/>
         <childnode refid="3" relation="include">
@@ -139,31 +145,31 @@
         </childnode>
         <childnode refid="9" relation="include">
         </childnode>
-        <childnode refid="23" relation="include">
-        </childnode>
         <childnode refid="24" relation="include">
         </childnode>
         <childnode refid="25" relation="include">
         </childnode>
-        <childnode refid="19" relation="include">
+        <childnode refid="26" relation="include">
         </childnode>
-        <childnode refid="14" relation="include">
+        <childnode refid="20" relation="include">
+        </childnode>
+        <childnode refid="16" relation="include">
         </childnode>
       </node>
-      <node id="14">
+      <node id="16">
         <label>endstone/util/pointers.h</label>
         <link refid="pointers_8h_source"/>
-        <childnode refid="15" relation="include">
+        <childnode refid="11" relation="include">
         </childnode>
         <childnode refid="3" relation="include">
         </childnode>
         <childnode refid="4" relation="include">
         </childnode>
-        <childnode refid="11" relation="include">
+        <childnode refid="13" relation="include">
         </childnode>
         <childnode refid="7" relation="include">
         </childnode>
-        <childnode refid="16" relation="include">
+        <childnode refid="17" relation="include">
         </childnode>
         <childnode refid="10" relation="include">
         </childnode>
@@ -171,10 +177,13 @@
       <node id="2">
         <label>algorithm</label>
       </node>
-      <node id="15">
+      <node id="11">
         <label>cstddef</label>
       </node>
-      <node id="17">
+      <node id="12">
+        <label>cstring</label>
+      </node>
+      <node id="18">
         <label>format</label>
       </node>
       <node id="3">
@@ -183,16 +192,16 @@
       <node id="4">
         <label>memory</label>
       </node>
-      <node id="18">
+      <node id="19">
         <label>stdexcept</label>
       </node>
       <node id="5">
         <label>string</label>
       </node>
-      <node id="11">
+      <node id="13">
         <label>type_traits</label>
       </node>
-      <node id="12">
+      <node id="14">
         <label>typeinfo</label>
       </node>
       <node id="6">
@@ -204,7 +213,7 @@
       <node id="7">
         <label>utility</label>
       </node>
-      <node id="23">
+      <node id="24">
         <label>vector</label>
       </node>
     </incdepgraph>
@@ -263,10 +272,10 @@
 <codeline lineno="70"><highlight class="normal"></highlight></codeline>
 <codeline lineno="77" refid="classendstone_1_1PermissionAttachment_1ac65fe772f0d74b4c8d86838ceabea3f0" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>[[<ref refid="classendstone_1_1Identifier" kindref="compound">nodiscard</ref>]]<sp/>std::unordered_map&lt;std::string,<sp/>bool&gt;<sp/><ref refid="classendstone_1_1PermissionAttachment_1ac65fe772f0d74b4c8d86838ceabea3f0" kindref="member">getPermissions</ref>()</highlight><highlight class="keyword"><sp/>const<sp/></highlight><highlight class="normal">{<sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>permissions_;<sp/>}</highlight></codeline>
 <codeline lineno="78"><highlight class="normal"></highlight></codeline>
-<codeline lineno="85" refid="classendstone_1_1PermissionAttachment_1a6f9165a21202205b209092e59ea059d5" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classendstone_1_1PermissionAttachment_1a6f9165a21202205b209092e59ea059d5" kindref="member">setPermission</ref>(std::string<sp/><ref refid="classendstone_1_1Identifier" kindref="compound">name</ref>,<sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/>value)</highlight></codeline>
+<codeline lineno="85" refid="classendstone_1_1PermissionAttachment_1a6f9165a21202205b209092e59ea059d5" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classendstone_1_1PermissionAttachment_1a6f9165a21202205b209092e59ea059d5" kindref="member">setPermission</ref>(std::string<sp/>name,<sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/>value)</highlight></codeline>
 <codeline lineno="86"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
-<codeline lineno="87"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>std::transform(<ref refid="classendstone_1_1Identifier" kindref="compound">name</ref>.begin(),<sp/><ref refid="classendstone_1_1Identifier" kindref="compound">name</ref>.end(),<sp/><ref refid="classendstone_1_1Identifier" kindref="compound">name</ref>.begin(),<sp/>[](</highlight><highlight class="keywordtype">unsigned</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal"><sp/><ref refid="classendstone_1_1Identifier" kindref="compound">c</ref>)<sp/>{<sp/>return<sp/>std::tolower(c);<sp/>});</highlight></codeline>
-<codeline lineno="88"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>permissions_[<ref refid="classendstone_1_1Identifier" kindref="compound">name</ref>]<sp/>=<sp/>value;</highlight></codeline>
+<codeline lineno="87"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>std::transform(name.begin(),<sp/>name.end(),<sp/>name.begin(),<sp/>[](</highlight><highlight class="keywordtype">unsigned</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal"><sp/><ref refid="classendstone_1_1Identifier" kindref="compound">c</ref>)<sp/>{<sp/>return<sp/>std::tolower(c);<sp/>});</highlight></codeline>
+<codeline lineno="88"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>permissions_[name]<sp/>=<sp/>value;</highlight></codeline>
 <codeline lineno="89"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/><ref refid="classendstone_1_1Identifier" kindref="compound">permissible</ref><sp/>=<sp/>permissible_.lock())<sp/>{</highlight></codeline>
 <codeline lineno="90"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classendstone_1_1Identifier" kindref="compound">permissible</ref>-&gt;recalculatePermissions();</highlight></codeline>
 <codeline lineno="91"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
@@ -274,10 +283,10 @@
 <codeline lineno="93"><highlight class="normal"></highlight></codeline>
 <codeline lineno="100" refid="classendstone_1_1PermissionAttachment_1a035611a4a7cc50e06f905c1a9625101b" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classendstone_1_1PermissionAttachment_1a035611a4a7cc50e06f905c1a9625101b" kindref="member">setPermission</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classendstone_1_1Identifier" kindref="compound">NotNull&lt;Permission&gt;</ref><sp/>&amp;<ref refid="classendstone_1_1Identifier" kindref="compound">perm</ref>,<sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/>value)<sp/>{<sp/><ref refid="classendstone_1_1PermissionAttachment_1a035611a4a7cc50e06f905c1a9625101b" kindref="member">setPermission</ref>(<ref refid="classendstone_1_1Identifier" kindref="compound">perm</ref>-&gt;getName(),<sp/>value);<sp/>}</highlight></codeline>
 <codeline lineno="101"><highlight class="normal"></highlight></codeline>
-<codeline lineno="108" refid="classendstone_1_1PermissionAttachment_1a3a61d225f54d78fcc966d7039ee66e2b" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classendstone_1_1PermissionAttachment_1a3a61d225f54d78fcc966d7039ee66e2b" kindref="member">unsetPermission</ref>(std::string<sp/><ref refid="classendstone_1_1Identifier" kindref="compound">name</ref>)</highlight></codeline>
+<codeline lineno="108" refid="classendstone_1_1PermissionAttachment_1a3a61d225f54d78fcc966d7039ee66e2b" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classendstone_1_1PermissionAttachment_1a3a61d225f54d78fcc966d7039ee66e2b" kindref="member">unsetPermission</ref>(std::string<sp/>name)</highlight></codeline>
 <codeline lineno="109"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
-<codeline lineno="110"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>std::transform(<ref refid="classendstone_1_1Identifier" kindref="compound">name</ref>.begin(),<sp/><ref refid="classendstone_1_1Identifier" kindref="compound">name</ref>.end(),<sp/><ref refid="classendstone_1_1Identifier" kindref="compound">name</ref>.begin(),<sp/>[](</highlight><highlight class="keywordtype">unsigned</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal"><sp/><ref refid="classendstone_1_1Identifier" kindref="compound">c</ref>)<sp/>{<sp/>return<sp/>std::tolower(c);<sp/>});</highlight></codeline>
-<codeline lineno="111"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>permissions_.erase(<ref refid="classendstone_1_1Identifier" kindref="compound">name</ref>);</highlight></codeline>
+<codeline lineno="110"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>std::transform(name.begin(),<sp/>name.end(),<sp/>name.begin(),<sp/>[](</highlight><highlight class="keywordtype">unsigned</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal"><sp/><ref refid="classendstone_1_1Identifier" kindref="compound">c</ref>)<sp/>{<sp/>return<sp/>std::tolower(c);<sp/>});</highlight></codeline>
+<codeline lineno="111"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>permissions_.erase(name);</highlight></codeline>
 <codeline lineno="112"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/><ref refid="classendstone_1_1Identifier" kindref="compound">permissible</ref><sp/>=<sp/>permissible_.lock())<sp/>{</highlight></codeline>
 <codeline lineno="113"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classendstone_1_1Identifier" kindref="compound">permissible</ref>-&gt;recalculatePermissions();</highlight></codeline>
 <codeline lineno="114"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>

@@ -56,6 +56,7 @@
     <innerclass refid="classendstone_1_1ChunkEvent" prot="public">endstone::ChunkEvent</innerclass>
     <innerclass refid="classendstone_1_1ChunkLoadEvent" prot="public">endstone::ChunkLoadEvent</innerclass>
     <innerclass refid="classendstone_1_1ChunkUnloadEvent" prot="public">endstone::ChunkUnloadEvent</innerclass>
+    <innerclass refid="classendstone_1_1ClassInfo" prot="public">endstone::ClassInfo</innerclass>
     <innerclass refid="classendstone_1_1Color" prot="public">endstone::Color</innerclass>
     <innerclass refid="structendstone_1_1ColorFormat" prot="public">endstone::ColorFormat</innerclass>
     <innerclass refid="classendstone_1_1Colors" prot="public">endstone::Colors</innerclass>

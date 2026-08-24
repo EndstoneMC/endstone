@@ -5,12 +5,12 @@
     <includes refid="command__sender_8h" local="yes">endstone/command/command_sender.h</includes>
     <includes refid="pointers_8h" local="yes">endstone/util/pointers.h</includes>
     <incdepgraph>
-      <node id="20">
+      <node id="21">
         <label>endstone/check.h</label>
         <link refid="check_8h_source"/>
         <childnode refid="3" relation="include">
         </childnode>
-        <childnode refid="21" relation="include">
+        <childnode refid="22" relation="include">
         </childnode>
         <childnode refid="5" relation="include">
         </childnode>
@@ -34,7 +34,7 @@
         <link refid="proxied__command__sender_8h"/>
         <childnode refid="2" relation="include">
         </childnode>
-        <childnode refid="17" relation="include">
+        <childnode refid="20" relation="include">
         </childnode>
       </node>
       <node id="8">
@@ -66,6 +66,12 @@
         </childnode>
         <childnode refid="15" relation="include">
         </childnode>
+        <childnode refid="16" relation="include">
+        </childnode>
+        <childnode refid="17" relation="include">
+        </childnode>
+        <childnode refid="18" relation="include">
+        </childnode>
       </node>
       <node id="10">
         <label>endstone/permissions/permissible.h</label>
@@ -78,14 +84,14 @@
         </childnode>
         <childnode refid="13" relation="include">
         </childnode>
-        <childnode refid="16" relation="include">
+        <childnode refid="19" relation="include">
         </childnode>
-        <childnode refid="22" relation="include">
+        <childnode refid="23" relation="include">
         </childnode>
-        <childnode refid="17" relation="include">
+        <childnode refid="20" relation="include">
         </childnode>
       </node>
-      <node id="16">
+      <node id="19">
         <label>endstone/permissions/permission_attachment_info.h</label>
         <link refid="permission__attachment__info_8h_source"/>
         <childnode refid="11" relation="include">
@@ -94,53 +100,56 @@
         </childnode>
         <childnode refid="5" relation="include">
         </childnode>
-        <childnode refid="17" relation="include">
+        <childnode refid="20" relation="include">
         </childnode>
       </node>
-      <node id="22">
+      <node id="23">
         <label>endstone/permissions/permission_level.h</label>
         <link refid="permission__level_8h_source"/>
       </node>
-      <node id="17">
+      <node id="20">
         <label>endstone/util/pointers.h</label>
         <link refid="pointers_8h_source"/>
-        <childnode refid="18" relation="include">
+        <childnode refid="14" relation="include">
         </childnode>
-        <childnode refid="19" relation="include">
+        <childnode refid="16" relation="include">
         </childnode>
         <childnode refid="11" relation="include">
         </childnode>
-        <childnode refid="14" relation="include">
+        <childnode refid="17" relation="include">
         </childnode>
         <childnode refid="5" relation="include">
         </childnode>
-        <childnode refid="20" relation="include">
+        <childnode refid="21" relation="include">
         </childnode>
         <childnode refid="13" relation="include">
         </childnode>
       </node>
-      <node id="18">
+      <node id="14">
         <label>cstddef</label>
+      </node>
+      <node id="15">
+        <label>cstring</label>
       </node>
       <node id="3">
         <label>format</label>
       </node>
-      <node id="19">
+      <node id="16">
         <label>functional</label>
       </node>
       <node id="11">
         <label>memory</label>
       </node>
-      <node id="21">
+      <node id="22">
         <label>stdexcept</label>
       </node>
       <node id="4">
         <label>string</label>
       </node>
-      <node id="14">
+      <node id="17">
         <label>type_traits</label>
       </node>
-      <node id="15">
+      <node id="18">
         <label>typeinfo</label>
       </node>
       <node id="12">

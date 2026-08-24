@@ -32,6 +32,7 @@
 * `#include "endstone/map/map_view.h"`
 * `#include "endstone/message.h"`
 * `#include "endstone/plugin/service_manager.h"`
+* `#include "endstone/object.h"`
 * `#include "endstone/scoreboard/scoreboard.h"`
 * `#include "endstone/util/pointers.h"`
 * `#include "endstone/util/uuid.h"`

@@ -24,24 +24,50 @@
 
 #pragma once
 
+#include <cstddef>
+#include <cstring>
+#include <functional>
 #include <type_traits>
 #include <typeinfo>
 
 namespace endstone {
 
+class ClassInfo {
+public:
+    explicit ClassInfo(const std::type_info &info) noexcept : info_(&info) {}
+
+    template <typename T>
+    static ClassInfo of() noexcept
+    {
+        return ClassInfo{typeid(T)};
+    }
+
+    [[nodiscard]] const char *name() const noexcept { return info_->name(); }
+
+    [[nodiscard]] const std::type_info &info() const noexcept { return *info_; }
+
+    bool operator==(const ClassInfo &other) const noexcept
+    {
+        return info_ == other.info_ || std::strcmp(name(), other.name()) == 0;
+    }
+
+private:
+    const std::type_info *info_;
+};
+
 class Object {
 public:
     virtual ~Object() = default;
 
-    [[nodiscard]] virtual const std::type_info &getClassTypeId() const = 0;
+    [[nodiscard]] virtual ClassInfo getClassInfo() const = 0;
 
-    [[nodiscard]] virtual bool isInstanceOf(const std::type_info &target) const = 0;
+    [[nodiscard]] virtual bool isInstanceOf(ClassInfo target) const = 0;
 
     template <typename T>
         requires std::is_base_of_v<Object, T>
     T *as()
     {
-        if (isInstanceOf(typeid(T))) {
+        if (isInstanceOf(ClassInfo::of<T>())) {
             return static_cast<T *>(this);
         }
         return nullptr;
@@ -51,7 +77,7 @@ public:
         requires std::is_base_of_v<Object, T>
     const T *as() const
     {
-        if (isInstanceOf(typeid(T))) {
+        if (isInstanceOf(ClassInfo::of<T>())) {
             return static_cast<const T *>(this);
         }
         return nullptr;
@@ -61,11 +87,23 @@ public:
         requires std::is_base_of_v<Object, T>
     [[nodiscard]] bool is() const
     {
-        return isInstanceOf(typeid(T));
+        return isInstanceOf(ClassInfo::of<T>());
     }
 };
 
 }  // namespace endstone
+
+template <>
+struct std::hash<endstone::ClassInfo> {
+    std::size_t operator()(const endstone::ClassInfo &info) const noexcept
+    {
+        std::size_t hash = 5381;
+        for (const auto *ptr = info.name(); *ptr != '\0'; ++ptr) {
+            hash = hash * 33 ^ static_cast<unsigned char>(*ptr);
+        }
+        return hash;
+    }
+};
 ```
 
 

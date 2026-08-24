@@ -1,0 +1,36 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.8" xml:lang="en-US">
+  <compounddef id="structstd_1_1hash_3_01endstone_1_1ClassInfo_01_4" kind="struct" language="C++" prot="public">
+    <compoundname>std::hash&lt; endstone::ClassInfo &gt;</compoundname>
+    <templateparamlist>
+    </templateparamlist>
+    <sectiondef kind="public-func">
+      <memberdef kind="function" id="structstd_1_1hash_3_01endstone_1_1ClassInfo_01_4_1af238fb341820a2e12883880939731c43" prot="public" static="no" const="yes" explicit="no" inline="yes" noexcept="yes" virt="non-virtual">
+        <type>std::size_t</type>
+        <definition>std::size_t std::hash&lt; endstone::ClassInfo &gt;::operator()</definition>
+        <argsstring>(const endstone::ClassInfo &amp;info) const noexcept</argsstring>
+        <name>operator()</name>
+        <qualifiedname>std::hash&lt; endstone::ClassInfo &gt;::operator()</qualifiedname>
+        <param>
+          <type>const <ref refid="classendstone_1_1ClassInfo" kindref="compound">endstone::ClassInfo</ref> &amp;</type>
+          <declname>info</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/object.h" line="134" column="17" bodyfile="include/endstone/object.h" bodystart="134" bodyend="141"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="include/endstone/object.h" line="133" column="1" bodyfile="include/endstone/object.h" bodystart="133" bodyend="142"/>
+    <listofallmembers>
+      <member refid="structstd_1_1hash_3_01endstone_1_1ClassInfo_01_4_1af238fb341820a2e12883880939731c43" prot="public" virt="non-virtual"><scope>std::hash&lt; endstone::ClassInfo &gt;</scope><name>operator()</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

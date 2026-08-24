@@ -2722,9 +2722,9 @@ For latest updates join the chat on
             
                 
                     <li class="md-nav__item">
-    <a href="#function-getclasstypeid" class="md-nav__link">
+    <a href="#function-getclassinfo" class="md-nav__link">
       <span class="md-ellipsis">
-        function getClassTypeId
+        function getClassInfo
       </span>
     </a>
 
@@ -2997,8 +2997,8 @@ For latest updates join the chat on
 <td style="text-align: left;"><a href="#function-addattachment-22"><strong>addAttachment</strong></a> (<a href="../classendstone_1_1Plugin/"><strong>Plugin</strong></a> &amp; plugin) override<br><em>Adds a new empty</em> <a href="../classendstone_1_1PermissionAttachment/"><em><strong>PermissionAttachment</strong></em></a> <em>to this object.</em></td>
 </tr>
 <tr>
-<td style="text-align: right;">virtual <a href="../classendstone_1_1Identifier/"><strong>const</strong></a> std::type_info &amp;</td>
-<td style="text-align: left;"><a href="#function-getclasstypeid"><strong>getClassTypeId</strong></a> () override const<br></td>
+<td style="text-align: right;">virtual <a href="../classendstone_1_1ClassInfo/"><strong>ClassInfo</strong></a></td>
+<td style="text-align: left;"><a href="#function-getclassinfo"><strong>getClassInfo</strong></a> () override const<br></td>
 </tr>
 <tr>
 <td style="text-align: right;">virtual std::unordered_set&lt; <a href="../classendstone_1_1NotNull/"><strong>NotNull</strong></a>&lt; <a href="../classendstone_1_1PermissionAttachmentInfo/"><strong>PermissionAttachmentInfo</strong></a> &gt; &gt;</td>
@@ -3030,7 +3030,7 @@ For latest updates join the chat on
 </tr>
 <tr>
 <td style="text-align: right;">virtual <a href="../classendstone_1_1Identifier/"><strong>bool</strong></a></td>
-<td style="text-align: left;"><a href="#function-isinstanceof"><strong>isInstanceOf</strong></a> (<a href="../classendstone_1_1Identifier/"><strong>const</strong></a> std::type_info &amp; target) override const<br></td>
+<td style="text-align: left;"><a href="#function-isinstanceof"><strong>isInstanceOf</strong></a> (<a href="../classendstone_1_1ClassInfo/"><strong>ClassInfo</strong></a> target) override const<br></td>
 </tr>
 <tr>
 <td style="text-align: right;">virtual <a href="../classendstone_1_1Identifier/"><strong>bool</strong></a></td>
@@ -3165,8 +3165,8 @@ For latest updates join the chat on
 <td style="text-align: left;"><a href="../classendstone_1_1Object/#function-as-22"><strong>as</strong></a> () const<br><em>Attempts to cast this object to the given type T.</em></td>
 </tr>
 <tr>
-<td style="text-align: right;">virtual <a href="../classendstone_1_1Identifier/"><strong>const</strong></a> std::type_info &amp;</td>
-<td style="text-align: left;"><a href="../classendstone_1_1Object/#function-getclasstypeid"><strong>getClassTypeId</strong></a> () const = 0<br></td>
+<td style="text-align: right;">virtual <a href="../classendstone_1_1ClassInfo/"><strong>ClassInfo</strong></a></td>
+<td style="text-align: left;"><a href="../classendstone_1_1Object/#function-getclassinfo"><strong>getClassInfo</strong></a> () const = 0<br></td>
 </tr>
 <tr>
 <td style="text-align: right;"><a href="../classendstone_1_1Identifier/"><strong>bool</strong></a></td>
@@ -3174,7 +3174,7 @@ For latest updates join the chat on
 </tr>
 <tr>
 <td style="text-align: right;">virtual <a href="../classendstone_1_1Identifier/"><strong>bool</strong></a></td>
-<td style="text-align: left;"><a href="../classendstone_1_1Object/#function-isinstanceof"><strong>isInstanceOf</strong></a> (<a href="../classendstone_1_1Identifier/"><strong>const</strong></a> std::type_info &amp; target) const = 0<br></td>
+<td style="text-align: left;"><a href="../classendstone_1_1Object/#function-isinstanceof"><strong>isInstanceOf</strong></a> (<a href="../classendstone_1_1ClassInfo/"><strong>ClassInfo</strong></a> target) const = 0<br></td>
 </tr>
 <tr>
 <td style="text-align: right;">virtual</td>
@@ -3239,10 +3239,10 @@ For latest updates join the chat on
 <p>Implements <a href="../classendstone_1_1Permissible/#function-addattachment-22"><em>endstone::Permissible::addAttachment</em></a></p>
 <hr>
 
-<h3 id="function-getclasstypeid">function getClassTypeId<a class="headerlink" href="#function-getclasstypeid" title="Permanent link">&para;</a></h3>
-<div class="language-C++ highlight"><pre><span></span><code><span id="__span-4-1"><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a><span class="kr">inline</span><span class="w"> </span><span class="k">virtual</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">type_info</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">CommandSenderWrapper</span><span class="o">::</span><span class="n">getClassTypeId</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="k">override</span><span class="w"> </span><span class="k">const</span>
+<h3 id="function-getclassinfo">function getClassInfo<a class="headerlink" href="#function-getclassinfo" title="Permanent link">&para;</a></h3>
+<div class="language-C++ highlight"><pre><span></span><code><span id="__span-4-1"><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a><span class="kr">inline</span><span class="w"> </span><span class="k">virtual</span><span class="w"> </span><span class="n">ClassInfo</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">CommandSenderWrapper</span><span class="o">::</span><span class="n">getClassInfo</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="k">override</span><span class="w"> </span><span class="k">const</span>
 </span></code></pre></div>
-<p>Implements <a href="../classendstone_1_1Object/#function-getclasstypeid"><em>endstone::Object::getClassTypeId</em></a></p>
+<p>Implements <a href="../classendstone_1_1Object/#function-getclassinfo"><em>endstone::Object::getClassInfo</em></a></p>
 <hr>
 
 <h3 id="function-geteffectivepermissions">function getEffectivePermissions<a class="headerlink" href="#function-geteffectivepermissions" title="Permanent link">&para;</a></h3>
@@ -3323,7 +3323,7 @@ For latest updates join the chat on
 
 <h3 id="function-isinstanceof">function isInstanceOf<a class="headerlink" href="#function-isinstanceof" title="Permanent link">&para;</a></h3>
 <div class="language-C++ highlight"><pre><span></span><code><span id="__span-12-1"><a id="__codelineno-12-1" name="__codelineno-12-1" href="#__codelineno-12-1"></a><span class="kr">inline</span><span class="w"> </span><span class="k">virtual</span><span class="w"> </span><span class="kt">bool</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">CommandSenderWrapper</span><span class="o">::</span><span class="n">isInstanceOf</span><span class="w"> </span><span class="p">(</span>
-</span><span id="__span-12-2"><a id="__codelineno-12-2" name="__codelineno-12-2" href="#__codelineno-12-2"></a><span class="w">    </span><span class="k">const</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">type_info</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">target</span>
+</span><span id="__span-12-2"><a id="__codelineno-12-2" name="__codelineno-12-2" href="#__codelineno-12-2"></a><span class="w">    </span><span class="n">ClassInfo</span><span class="w"> </span><span class="n">target</span>
 </span><span id="__span-12-3"><a id="__codelineno-12-3" name="__codelineno-12-3" href="#__codelineno-12-3"></a><span class="p">)</span><span class="w"> </span><span class="k">override</span><span class="w"> </span><span class="k">const</span>
 </span></code></pre></div>
 <p>Implements <a href="../classendstone_1_1Object/#function-isinstanceof"><em>endstone::Object::isInstanceOf</em></a></p>

@@ -68,9 +68,15 @@
       <node id="10">
         <label>endstone/object.h</label>
         <link refid="object_8h_source"/>
-        <childnode refid="5" relation="include">
+        <childnode refid="2" relation="include">
         </childnode>
         <childnode refid="11" relation="include">
+        </childnode>
+        <childnode refid="3" relation="include">
+        </childnode>
+        <childnode refid="5" relation="include">
+        </childnode>
+        <childnode refid="12" relation="include">
         </childnode>
       </node>
       <node id="1">
@@ -94,6 +100,9 @@
       <node id="2">
         <label>cstddef</label>
       </node>
+      <node id="11">
+        <label>cstring</label>
+      </node>
       <node id="8">
         <label>format</label>
       </node>
@@ -109,7 +118,7 @@
       <node id="5">
         <label>type_traits</label>
       </node>
-      <node id="11">
+      <node id="12">
         <label>typeinfo</label>
       </node>
       <node id="6">

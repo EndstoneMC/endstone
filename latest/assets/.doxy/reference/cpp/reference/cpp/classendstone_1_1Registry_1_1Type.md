@@ -295,6 +295,13 @@ Pointer to the entry, or nullptr if not found.
 
 
 
+**Exception:**
+
+
+* `std::out_of_range` if no registry is present for T. 
+
+
+
 
         
 

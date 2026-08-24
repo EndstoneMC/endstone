@@ -114,7 +114,7 @@
       <member refid="classendstone_1_1Object_1ae0f38a62da4c186fce272145e2590cc1" prot="public" virt="non-virtual"><scope>endstone::ProxiedCommandSender</scope><name>as</name></member>
       <member refid="classendstone_1_1ProxiedCommandSender_1a8c828f34db5e1330837faee2c6e2ba36" prot="public" virt="pure-virtual"><scope>endstone::ProxiedCommandSender</scope><name>getCallee</name></member>
       <member refid="classendstone_1_1ProxiedCommandSender_1ad6d120eab4f0abc48ff747e94954f0a1" prot="public" virt="pure-virtual"><scope>endstone::ProxiedCommandSender</scope><name>getCaller</name></member>
-      <member refid="classendstone_1_1Object_1aaaeb27e8e442e5adb772ae0d1af1c33f" prot="public" virt="pure-virtual"><scope>endstone::ProxiedCommandSender</scope><name>getClassTypeId</name></member>
+      <member refid="classendstone_1_1Object_1a3e2df17c95cf63580e95c84f783636c4" prot="public" virt="pure-virtual"><scope>endstone::ProxiedCommandSender</scope><name>getClassInfo</name></member>
       <member refid="classendstone_1_1Permissible_1a152d098beb17384e97f3b7aa127338bd" prot="public" virt="pure-virtual"><scope>endstone::ProxiedCommandSender</scope><name>getEffectivePermissions</name></member>
       <member refid="classendstone_1_1CommandSender_1acf20807a70561a571e20d4ee3791d69e" prot="public" virt="pure-virtual"><scope>endstone::ProxiedCommandSender</scope><name>getName</name></member>
       <member refid="classendstone_1_1Permissible_1a6d78baa46215c951dc25cb5e55af085c" prot="public" virt="pure-virtual"><scope>endstone::ProxiedCommandSender</scope><name>getPermissionLevel</name></member>
@@ -122,7 +122,7 @@
       <member refid="classendstone_1_1Permissible_1ade03215666f81be410f2b058fa2c158b" prot="public" virt="pure-virtual"><scope>endstone::ProxiedCommandSender</scope><name>hasPermission</name></member>
       <member refid="classendstone_1_1Permissible_1af0f63d64c914da1e0d3b29a5083c423d" prot="public" virt="pure-virtual"><scope>endstone::ProxiedCommandSender</scope><name>hasPermission</name></member>
       <member refid="classendstone_1_1Object_1ae8213ae15ad1b14e4631399c6b18960a" prot="public" virt="non-virtual"><scope>endstone::ProxiedCommandSender</scope><name>is</name></member>
-      <member refid="classendstone_1_1Object_1a20376536a5f64ef02b2569af132171d4" prot="public" virt="pure-virtual"><scope>endstone::ProxiedCommandSender</scope><name>isInstanceOf</name></member>
+      <member refid="classendstone_1_1Object_1a1f8951c4894c2b8288fd4ef500218771" prot="public" virt="pure-virtual"><scope>endstone::ProxiedCommandSender</scope><name>isInstanceOf</name></member>
       <member refid="classendstone_1_1Permissible_1ae625f98f57116c559dc35a6cfce960d9" prot="public" virt="pure-virtual"><scope>endstone::ProxiedCommandSender</scope><name>isPermissionSet</name></member>
       <member refid="classendstone_1_1Permissible_1aee86d20869f042e6a9c191d199539e23" prot="public" virt="pure-virtual"><scope>endstone::ProxiedCommandSender</scope><name>isPermissionSet</name></member>
       <member refid="classendstone_1_1Permissible_1acbd0e4c4815db28b66ef14976f110af5" prot="public" virt="pure-virtual"><scope>endstone::ProxiedCommandSender</scope><name>recalculatePermissions</name></member>

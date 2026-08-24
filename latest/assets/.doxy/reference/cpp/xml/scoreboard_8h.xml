@@ -27,9 +27,15 @@
       <node id="23">
         <label>endstone/object.h</label>
         <link refid="object_8h_source"/>
-        <childnode refid="18" relation="include">
+        <childnode refid="16" relation="include">
         </childnode>
         <childnode refid="24" relation="include">
+        </childnode>
+        <childnode refid="17" relation="include">
+        </childnode>
+        <childnode refid="18" relation="include">
+        </childnode>
+        <childnode refid="25" relation="include">
         </childnode>
       </node>
       <node id="5">
@@ -59,7 +65,7 @@
         </childnode>
         <childnode refid="15" relation="include">
         </childnode>
-        <childnode refid="25" relation="include">
+        <childnode refid="26" relation="include">
         </childnode>
       </node>
       <node id="11">
@@ -79,7 +85,7 @@
         </childnode>
         <childnode refid="15" relation="include">
         </childnode>
-        <childnode refid="25" relation="include">
+        <childnode refid="26" relation="include">
         </childnode>
       </node>
       <node id="13">
@@ -113,7 +119,7 @@
         </childnode>
         <childnode refid="15" relation="include">
         </childnode>
-        <childnode refid="25" relation="include">
+        <childnode refid="26" relation="include">
         </childnode>
       </node>
       <node id="15">
@@ -134,14 +140,14 @@
         <childnode refid="23" relation="include">
         </childnode>
       </node>
-      <node id="25">
+      <node id="26">
         <label>endstone/util/result.h</label>
         <link refid="result_8h_source"/>
         <childnode refid="21" relation="include">
         </childnode>
         <childnode refid="3" relation="include">
         </childnode>
-        <childnode refid="26" relation="include">
+        <childnode refid="27" relation="include">
         </childnode>
       </node>
       <node id="16">
@@ -149,6 +155,9 @@
       </node>
       <node id="7">
         <label>cstdint</label>
+      </node>
+      <node id="24">
+        <label>cstring</label>
       </node>
       <node id="21">
         <label>format</label>
@@ -159,7 +168,7 @@
       <node id="2">
         <label>memory</label>
       </node>
-      <node id="26">
+      <node id="27">
         <label>nonstd/expected.hpp</label>
       </node>
       <node id="10">
@@ -174,7 +183,7 @@
       <node id="18">
         <label>type_traits</label>
       </node>
-      <node id="24">
+      <node id="25">
         <label>typeinfo</label>
       </node>
       <node id="19">
@@ -1293,14 +1302,14 @@
 <codeline lineno="34"><highlight class="normal"></highlight><highlight class="keyword">public</highlight><highlight class="normal">:</highlight></codeline>
 <codeline lineno="35"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">virtual</highlight><highlight class="normal"><sp/><ref refid="classendstone_1_1Scoreboard" kindref="compound">~Scoreboard</ref>()<sp/>=<sp/></highlight><highlight class="keywordflow">default</highlight><highlight class="normal">;</highlight></codeline>
 <codeline lineno="36"><highlight class="normal"></highlight></codeline>
-<codeline lineno="44" refid="classendstone_1_1Scoreboard_1ac28d67dd67b0cdbde4d8a209bfd9b8e0" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">virtual</highlight><highlight class="normal"><sp/><ref refid="classendstone_1_1Identifier" kindref="compound">NotNull&lt;Objective&gt;</ref><sp/><ref refid="classendstone_1_1Scoreboard_1ac28d67dd67b0cdbde4d8a209bfd9b8e0" kindref="member">addObjective</ref>(std::string<sp/><ref refid="classendstone_1_1Identifier" kindref="compound">name</ref>,<sp/><ref refid="classendstone_1_1Criteria_1a31b8a6a25a4c37fa964fc34563a882d1" kindref="member">Criteria::Type</ref><sp/><ref refid="classendstone_1_1Identifier" kindref="compound">criteria</ref>)<sp/>=<sp/>0;</highlight></codeline>
+<codeline lineno="44" refid="classendstone_1_1Scoreboard_1ac28d67dd67b0cdbde4d8a209bfd9b8e0" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">virtual</highlight><highlight class="normal"><sp/><ref refid="classendstone_1_1Identifier" kindref="compound">NotNull&lt;Objective&gt;</ref><sp/><ref refid="classendstone_1_1Scoreboard_1ac28d67dd67b0cdbde4d8a209bfd9b8e0" kindref="member">addObjective</ref>(std::string<sp/>name,<sp/><ref refid="classendstone_1_1Criteria_1a31b8a6a25a4c37fa964fc34563a882d1" kindref="member">Criteria::Type</ref><sp/><ref refid="classendstone_1_1Identifier" kindref="compound">criteria</ref>)<sp/>=<sp/>0;</highlight></codeline>
 <codeline lineno="45"><highlight class="normal"></highlight></codeline>
-<codeline lineno="54" refid="classendstone_1_1Scoreboard_1a183f9b5e5e28c7bbe946de999b559f42" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">virtual</highlight><highlight class="normal"><sp/><ref refid="classendstone_1_1Identifier" kindref="compound">NotNull&lt;Objective&gt;</ref><sp/><ref refid="classendstone_1_1Scoreboard_1a183f9b5e5e28c7bbe946de999b559f42" kindref="member">addObjective</ref>(std::string<sp/><ref refid="classendstone_1_1Identifier" kindref="compound">name</ref>,<sp/><ref refid="classendstone_1_1Criteria_1a31b8a6a25a4c37fa964fc34563a882d1" kindref="member">Criteria::Type</ref><sp/><ref refid="classendstone_1_1Identifier" kindref="compound">criteria</ref>,<sp/>std::string<sp/><ref refid="classendstone_1_1Identifier" kindref="compound">display_name</ref>)<sp/>=<sp/>0;</highlight></codeline>
+<codeline lineno="54" refid="classendstone_1_1Scoreboard_1a183f9b5e5e28c7bbe946de999b559f42" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">virtual</highlight><highlight class="normal"><sp/><ref refid="classendstone_1_1Identifier" kindref="compound">NotNull&lt;Objective&gt;</ref><sp/><ref refid="classendstone_1_1Scoreboard_1a183f9b5e5e28c7bbe946de999b559f42" kindref="member">addObjective</ref>(std::string<sp/>name,<sp/><ref refid="classendstone_1_1Criteria_1a31b8a6a25a4c37fa964fc34563a882d1" kindref="member">Criteria::Type</ref><sp/><ref refid="classendstone_1_1Identifier" kindref="compound">criteria</ref>,<sp/>std::string<sp/><ref refid="classendstone_1_1Identifier" kindref="compound">display_name</ref>)<sp/>=<sp/>0;</highlight></codeline>
 <codeline lineno="55"><highlight class="normal"></highlight></codeline>
-<codeline lineno="65" refid="classendstone_1_1Scoreboard_1a6add506e67882481da32596e6fc685fc" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">virtual</highlight><highlight class="normal"><sp/><ref refid="classendstone_1_1Identifier" kindref="compound">NotNull&lt;Objective&gt;</ref><sp/><ref refid="classendstone_1_1Scoreboard_1a6add506e67882481da32596e6fc685fc" kindref="member">addObjective</ref>(std::string<sp/><ref refid="classendstone_1_1Identifier" kindref="compound">name</ref>,<sp/><ref refid="classendstone_1_1Criteria_1a31b8a6a25a4c37fa964fc34563a882d1" kindref="member">Criteria::Type</ref><sp/><ref refid="classendstone_1_1Identifier" kindref="compound">criteria</ref>,<sp/>std::string<sp/><ref refid="classendstone_1_1Identifier" kindref="compound">display_name</ref>,</highlight></codeline>
+<codeline lineno="65" refid="classendstone_1_1Scoreboard_1a6add506e67882481da32596e6fc685fc" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">virtual</highlight><highlight class="normal"><sp/><ref refid="classendstone_1_1Identifier" kindref="compound">NotNull&lt;Objective&gt;</ref><sp/><ref refid="classendstone_1_1Scoreboard_1a6add506e67882481da32596e6fc685fc" kindref="member">addObjective</ref>(std::string<sp/>name,<sp/><ref refid="classendstone_1_1Criteria_1a31b8a6a25a4c37fa964fc34563a882d1" kindref="member">Criteria::Type</ref><sp/><ref refid="classendstone_1_1Identifier" kindref="compound">criteria</ref>,<sp/>std::string<sp/><ref refid="classendstone_1_1Identifier" kindref="compound">display_name</ref>,</highlight></codeline>
 <codeline lineno="66"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="namespaceendstone_1ae444241ed516d06f778078ee798db9e9" kindref="member">RenderType</ref><sp/><ref refid="classendstone_1_1Identifier" kindref="compound">render_type</ref>)<sp/>=<sp/>0;</highlight></codeline>
 <codeline lineno="67"><highlight class="normal"></highlight></codeline>
-<codeline lineno="74" refid="classendstone_1_1Scoreboard_1a7144f784584334542dc3b7e3cbb52103" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>[[<ref refid="classendstone_1_1Identifier" kindref="compound">nodiscard</ref>]]<sp/></highlight><highlight class="keyword">virtual</highlight><highlight class="normal"><sp/><ref refid="classendstone_1_1Identifier" kindref="compound">Nullable&lt;Objective&gt;</ref><sp/><ref refid="classendstone_1_1Scoreboard_1a7144f784584334542dc3b7e3cbb52103" kindref="member">getObjective</ref>(std::string<sp/><ref refid="classendstone_1_1Identifier" kindref="compound">name</ref>)<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>=<sp/>0;</highlight></codeline>
+<codeline lineno="74" refid="classendstone_1_1Scoreboard_1a7144f784584334542dc3b7e3cbb52103" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>[[<ref refid="classendstone_1_1Identifier" kindref="compound">nodiscard</ref>]]<sp/></highlight><highlight class="keyword">virtual</highlight><highlight class="normal"><sp/><ref refid="classendstone_1_1Identifier" kindref="compound">Nullable&lt;Objective&gt;</ref><sp/><ref refid="classendstone_1_1Scoreboard_1a7144f784584334542dc3b7e3cbb52103" kindref="member">getObjective</ref>(std::string<sp/>name)<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>=<sp/>0;</highlight></codeline>
 <codeline lineno="75"><highlight class="normal"></highlight></codeline>
 <codeline lineno="82" refid="classendstone_1_1Scoreboard_1a4999822f33999a0b9880246d6f7b3a9e" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>[[<ref refid="classendstone_1_1Identifier" kindref="compound">nodiscard</ref>]]<sp/></highlight><highlight class="keyword">virtual</highlight><highlight class="normal"><sp/><ref refid="classendstone_1_1Identifier" kindref="compound">Nullable&lt;Objective&gt;</ref><sp/><ref refid="classendstone_1_1Scoreboard_1a4999822f33999a0b9880246d6f7b3a9e" kindref="member">getObjective</ref>(<ref refid="namespaceendstone_1a5a0414cc6da27c764e22b6cb9b64aaa4" kindref="member">DisplaySlot</ref><sp/><ref refid="classendstone_1_1Identifier" kindref="compound">slot</ref>)<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>=<sp/>0;</highlight></codeline>
 <codeline lineno="83"><highlight class="normal"></highlight></codeline>

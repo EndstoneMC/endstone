@@ -60,6 +60,7 @@
 | struct | [**formatter&lt; endstone::detail::JoinView&lt; It, Sentinel &gt; &gt;**](structstd_1_1formatter_3_01endstone_1_1detail_1_1JoinView_3_01It_00_01Sentinel_01_4_01_4.md) &lt;typename It, typename Sentinel&gt;<br> |
 | struct | [**formatter&lt; endstone::nbt::Tag &gt;**](structstd_1_1formatter_3_01endstone_1_1nbt_1_1Tag_01_4.md) &lt;&gt;<br> |
 | struct | [**formatter&lt; endstone::nbt::escape\_view &gt;**](structstd_1_1formatter_3_01endstone_1_1nbt_1_1escape__view_01_4.md) &lt;&gt;<br> |
+| struct | [**hash&lt; endstone::ClassInfo &gt;**](structstd_1_1hash_3_01endstone_1_1ClassInfo_01_4.md) &lt;&gt;<br> |
 | struct | [**hash&lt; endstone::Identifier&lt; T &gt; &gt;**](structstd_1_1hash_3_01endstone_1_1Identifier_3_01T_01_4_01_4.md) &lt;typename T&gt;<br> |
 | struct | [**hash&lt; endstone::NotNull&lt; T &gt; &gt;**](structstd_1_1hash_3_01endstone_1_1NotNull_3_01T_01_4_01_4.md) &lt;class T&gt;<br> |
 | struct | [**hash&lt; endstone::Nullable&lt; T &gt; &gt;**](structstd_1_1hash_3_01endstone_1_1Nullable_3_01T_01_4_01_4.md) &lt;class T&gt;<br> |

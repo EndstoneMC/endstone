@@ -9,12 +9,12 @@
     <includes refid="command__sender_8h" local="yes">endstone/command/command_sender.h</includes>
     <includes refid="pointers_8h" local="yes">endstone/util/pointers.h</includes>
     <incdepgraph>
-      <node id="20">
+      <node id="21">
         <label>endstone/check.h</label>
         <link refid="check_8h_source"/>
         <childnode refid="7" relation="include">
         </childnode>
-        <childnode refid="21" relation="include">
+        <childnode refid="22" relation="include">
         </childnode>
         <childnode refid="5" relation="include">
         </childnode>
@@ -46,7 +46,7 @@
         </childnode>
         <childnode refid="6" relation="include">
         </childnode>
-        <childnode refid="18" relation="include">
+        <childnode refid="20" relation="include">
         </childnode>
       </node>
       <node id="10">
@@ -78,6 +78,12 @@
         </childnode>
         <childnode refid="16" relation="include">
         </childnode>
+        <childnode refid="2" relation="include">
+        </childnode>
+        <childnode refid="17" relation="include">
+        </childnode>
+        <childnode refid="18" relation="include">
+        </childnode>
       </node>
       <node id="12">
         <label>endstone/permissions/permissible.h</label>
@@ -90,14 +96,14 @@
         </childnode>
         <childnode refid="14" relation="include">
         </childnode>
-        <childnode refid="17" relation="include">
+        <childnode refid="19" relation="include">
         </childnode>
-        <childnode refid="22" relation="include">
+        <childnode refid="23" relation="include">
         </childnode>
-        <childnode refid="18" relation="include">
+        <childnode refid="20" relation="include">
         </childnode>
       </node>
-      <node id="17">
+      <node id="19">
         <label>endstone/permissions/permission_attachment_info.h</label>
         <link refid="permission__attachment__info_8h_source"/>
         <childnode refid="13" relation="include">
@@ -106,33 +112,36 @@
         </childnode>
         <childnode refid="5" relation="include">
         </childnode>
-        <childnode refid="18" relation="include">
+        <childnode refid="20" relation="include">
         </childnode>
       </node>
-      <node id="22">
+      <node id="23">
         <label>endstone/permissions/permission_level.h</label>
         <link refid="permission__level_8h_source"/>
       </node>
-      <node id="18">
+      <node id="20">
         <label>endstone/util/pointers.h</label>
         <link refid="pointers_8h_source"/>
-        <childnode refid="19" relation="include">
+        <childnode refid="15" relation="include">
         </childnode>
         <childnode refid="2" relation="include">
         </childnode>
         <childnode refid="13" relation="include">
         </childnode>
-        <childnode refid="15" relation="include">
+        <childnode refid="17" relation="include">
         </childnode>
         <childnode refid="5" relation="include">
         </childnode>
-        <childnode refid="20" relation="include">
+        <childnode refid="21" relation="include">
         </childnode>
         <childnode refid="14" relation="include">
         </childnode>
       </node>
-      <node id="19">
+      <node id="15">
         <label>cstddef</label>
+      </node>
+      <node id="16">
+        <label>cstring</label>
       </node>
       <node id="7">
         <label>format</label>
@@ -143,16 +152,16 @@
       <node id="13">
         <label>memory</label>
       </node>
-      <node id="21">
+      <node id="22">
         <label>stdexcept</label>
       </node>
       <node id="3">
         <label>string</label>
       </node>
-      <node id="15">
+      <node id="17">
         <label>type_traits</label>
       </node>
-      <node id="16">
+      <node id="18">
         <label>typeinfo</label>
       </node>
       <node id="4">
@@ -223,23 +232,23 @@
 <codeline lineno="49"><highlight class="normal"></highlight></codeline>
 <codeline lineno="50" refid="classendstone_1_1CommandSenderWrapper_1a35ea40a86d08d2e675932a8532b1851b" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>[[<ref refid="classendstone_1_1Identifier" kindref="compound">nodiscard</ref>]]<sp/><ref refid="namespaceendstone_1a5f41ada04481978d28d91ff75eac7dbb" kindref="member">PermissionLevel</ref><sp/><ref refid="classendstone_1_1CommandSenderWrapper_1a35ea40a86d08d2e675932a8532b1851b" kindref="member">getPermissionLevel</ref>()</highlight><highlight class="keyword"><sp/>const<sp/>override<sp/></highlight><highlight class="normal">{<sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>sender_-&gt;getPermissionLevel();<sp/>}</highlight></codeline>
 <codeline lineno="51"><highlight class="normal"></highlight></codeline>
-<codeline lineno="52" refid="classendstone_1_1CommandSenderWrapper_1a07e8de81fb735c7745c96cbb4d022889" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>[[<ref refid="classendstone_1_1Identifier" kindref="compound">nodiscard</ref>]]<sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="classendstone_1_1CommandSenderWrapper_1a07e8de81fb735c7745c96cbb4d022889" kindref="member">isPermissionSet</ref>(std::string<sp/><ref refid="classendstone_1_1Identifier" kindref="compound">name</ref>)</highlight><highlight class="keyword"><sp/>const<sp/>override<sp/></highlight><highlight class="normal">{<sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>sender_-&gt;isPermissionSet(<ref refid="classendstone_1_1Identifier" kindref="compound">name</ref>);<sp/>}</highlight></codeline>
+<codeline lineno="52" refid="classendstone_1_1CommandSenderWrapper_1a07e8de81fb735c7745c96cbb4d022889" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>[[<ref refid="classendstone_1_1Identifier" kindref="compound">nodiscard</ref>]]<sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="classendstone_1_1CommandSenderWrapper_1a07e8de81fb735c7745c96cbb4d022889" kindref="member">isPermissionSet</ref>(std::string<sp/>name)</highlight><highlight class="keyword"><sp/>const<sp/>override<sp/></highlight><highlight class="normal">{<sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>sender_-&gt;isPermissionSet(name);<sp/>}</highlight></codeline>
 <codeline lineno="53"><highlight class="normal"></highlight></codeline>
 <codeline lineno="54" refid="classendstone_1_1CommandSenderWrapper_1a80e684c56f2598bd7d63f72280b7300b" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>[[<ref refid="classendstone_1_1Identifier" kindref="compound">nodiscard</ref>]]<sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="classendstone_1_1CommandSenderWrapper_1a80e684c56f2598bd7d63f72280b7300b" kindref="member">isPermissionSet</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classendstone_1_1Identifier" kindref="compound">NotNull&lt;Permission&gt;</ref><sp/>&amp;<ref refid="classendstone_1_1Identifier" kindref="compound">perm</ref>)</highlight><highlight class="keyword"><sp/>const<sp/>override</highlight></codeline>
 <codeline lineno="55"><highlight class="keyword"><sp/><sp/><sp/><sp/></highlight><highlight class="normal">{</highlight></codeline>
 <codeline lineno="56"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>sender_-&gt;isPermissionSet(<ref refid="classendstone_1_1Identifier" kindref="compound">perm</ref>);</highlight></codeline>
 <codeline lineno="57"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
 <codeline lineno="58"><highlight class="normal"></highlight></codeline>
-<codeline lineno="59" refid="classendstone_1_1CommandSenderWrapper_1aa112f1f81d557d85be8d85c264ec6038" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>[[<ref refid="classendstone_1_1Identifier" kindref="compound">nodiscard</ref>]]<sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="classendstone_1_1CommandSenderWrapper_1aa112f1f81d557d85be8d85c264ec6038" kindref="member">hasPermission</ref>(std::string<sp/><ref refid="classendstone_1_1Identifier" kindref="compound">name</ref>)</highlight><highlight class="keyword"><sp/>const<sp/>override<sp/></highlight><highlight class="normal">{<sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>sender_-&gt;hasPermission(<ref refid="classendstone_1_1Identifier" kindref="compound">name</ref>);<sp/>}</highlight></codeline>
+<codeline lineno="59" refid="classendstone_1_1CommandSenderWrapper_1aa112f1f81d557d85be8d85c264ec6038" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>[[<ref refid="classendstone_1_1Identifier" kindref="compound">nodiscard</ref>]]<sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="classendstone_1_1CommandSenderWrapper_1aa112f1f81d557d85be8d85c264ec6038" kindref="member">hasPermission</ref>(std::string<sp/>name)</highlight><highlight class="keyword"><sp/>const<sp/>override<sp/></highlight><highlight class="normal">{<sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>sender_-&gt;hasPermission(name);<sp/>}</highlight></codeline>
 <codeline lineno="60"><highlight class="normal"></highlight></codeline>
 <codeline lineno="61" refid="classendstone_1_1CommandSenderWrapper_1aeb143eeb38faebf2a26753f885f8e8f3" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>[[<ref refid="classendstone_1_1Identifier" kindref="compound">nodiscard</ref>]]<sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="classendstone_1_1CommandSenderWrapper_1aeb143eeb38faebf2a26753f885f8e8f3" kindref="member">hasPermission</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classendstone_1_1Identifier" kindref="compound">NotNull&lt;Permission&gt;</ref><sp/>&amp;<ref refid="classendstone_1_1Identifier" kindref="compound">perm</ref>)</highlight><highlight class="keyword"><sp/>const<sp/>override</highlight></codeline>
 <codeline lineno="62"><highlight class="keyword"><sp/><sp/><sp/><sp/></highlight><highlight class="normal">{</highlight></codeline>
 <codeline lineno="63"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>sender_-&gt;hasPermission(<ref refid="classendstone_1_1Identifier" kindref="compound">perm</ref>);</highlight></codeline>
 <codeline lineno="64"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
 <codeline lineno="65"><highlight class="normal"></highlight></codeline>
-<codeline lineno="66" refid="classendstone_1_1CommandSenderWrapper_1a861ee1ea5dc24fab0ce1e324c62df7f0" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classendstone_1_1Identifier" kindref="compound">NotNull&lt;PermissionAttachment&gt;</ref><sp/><ref refid="classendstone_1_1CommandSenderWrapper_1a861ee1ea5dc24fab0ce1e324c62df7f0" kindref="member">addAttachment</ref>(<ref refid="classendstone_1_1Plugin" kindref="compound">Plugin</ref><sp/>&amp;<ref refid="classendstone_1_1Identifier" kindref="compound">plugin</ref>,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::string<sp/>&amp;<ref refid="classendstone_1_1Identifier" kindref="compound">name</ref>,<sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/>value)</highlight><highlight class="keyword"><sp/>override</highlight></codeline>
+<codeline lineno="66" refid="classendstone_1_1CommandSenderWrapper_1a861ee1ea5dc24fab0ce1e324c62df7f0" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classendstone_1_1Identifier" kindref="compound">NotNull&lt;PermissionAttachment&gt;</ref><sp/><ref refid="classendstone_1_1CommandSenderWrapper_1a861ee1ea5dc24fab0ce1e324c62df7f0" kindref="member">addAttachment</ref>(<ref refid="classendstone_1_1Plugin" kindref="compound">Plugin</ref><sp/>&amp;<ref refid="classendstone_1_1Identifier" kindref="compound">plugin</ref>,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::string<sp/>&amp;name,<sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/>value)</highlight><highlight class="keyword"><sp/>override</highlight></codeline>
 <codeline lineno="67"><highlight class="keyword"><sp/><sp/><sp/><sp/></highlight><highlight class="normal">{</highlight></codeline>
-<codeline lineno="68"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>sender_-&gt;addAttachment(<ref refid="classendstone_1_1Identifier" kindref="compound">plugin</ref>,<sp/><ref refid="classendstone_1_1Identifier" kindref="compound">name</ref>,<sp/>value);</highlight></codeline>
+<codeline lineno="68"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>sender_-&gt;addAttachment(<ref refid="classendstone_1_1Identifier" kindref="compound">plugin</ref>,<sp/>name,<sp/>value);</highlight></codeline>
 <codeline lineno="69"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
 <codeline lineno="70"><highlight class="normal"></highlight></codeline>
 <codeline lineno="71" refid="classendstone_1_1CommandSenderWrapper_1abe25bc7a9b0dafa5045fea40bc7a0f7b" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classendstone_1_1Identifier" kindref="compound">NotNull&lt;PermissionAttachment&gt;</ref><sp/><ref refid="classendstone_1_1CommandSenderWrapper_1abe25bc7a9b0dafa5045fea40bc7a0f7b" kindref="member">addAttachment</ref>(<ref refid="classendstone_1_1Plugin" kindref="compound">Plugin</ref><sp/>&amp;<ref refid="classendstone_1_1Identifier" kindref="compound">plugin</ref>)</highlight><highlight class="keyword"><sp/>override<sp/></highlight><highlight class="normal">{<sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>sender_-&gt;addAttachment(<ref refid="classendstone_1_1Identifier" kindref="compound">plugin</ref>);<sp/>}</highlight></codeline>
@@ -256,11 +265,11 @@
 <codeline lineno="82"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>sender_-&gt;getEffectivePermissions();</highlight></codeline>
 <codeline lineno="83"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
 <codeline lineno="84"><highlight class="normal"></highlight></codeline>
-<codeline lineno="85"><highlight class="normal"><sp/><sp/><sp/><sp/>[[<ref refid="classendstone_1_1Identifier" kindref="compound">nodiscard</ref>]]<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::type_info<sp/>&amp;getClassTypeId()</highlight><highlight class="keyword"><sp/>const<sp/>override<sp/></highlight><highlight class="normal">{<sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">typeid</highlight><highlight class="normal">(<ref refid="classendstone_1_1CommandSenderWrapper" kindref="compound">CommandSenderWrapper</ref>);<sp/>}</highlight></codeline>
-<codeline lineno="86"><highlight class="normal"><sp/><sp/><sp/><sp/>[[nodiscard]]<sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/>isInstanceOf(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::type_info<sp/>&amp;target)</highlight><highlight class="keyword"><sp/>const<sp/>override</highlight></codeline>
+<codeline lineno="85"><highlight class="normal"><sp/><sp/><sp/><sp/>[[<ref refid="classendstone_1_1Identifier" kindref="compound">nodiscard</ref>]]<sp/><ref refid="classendstone_1_1ClassInfo" kindref="compound">ClassInfo</ref><sp/>getClassInfo()</highlight><highlight class="keyword"><sp/>const<sp/>override<sp/></highlight><highlight class="normal">{<sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>ClassInfo::of&lt;CommandSenderWrapper&gt;();<sp/>}</highlight></codeline>
+<codeline lineno="86"><highlight class="normal"><sp/><sp/><sp/><sp/>[[nodiscard]]<sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/>isInstanceOf(ClassInfo<sp/>target)</highlight><highlight class="keyword"><sp/>const<sp/>override</highlight></codeline>
 <codeline lineno="87"><highlight class="keyword"><sp/><sp/><sp/><sp/></highlight><highlight class="normal">{</highlight></codeline>
-<codeline lineno="88"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">typeid</highlight><highlight class="normal">(CommandSenderWrapper)<sp/>==<sp/>target<sp/>||<sp/></highlight><highlight class="keyword">typeid</highlight><highlight class="normal">(CommandSender)<sp/>==<sp/>target<sp/>||</highlight></codeline>
-<codeline lineno="89"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">typeid</highlight><highlight class="normal">(Permissible)<sp/>==<sp/>target<sp/>||<sp/></highlight><highlight class="keyword">typeid</highlight><highlight class="normal">(Object)<sp/>==<sp/>target;</highlight></codeline>
+<codeline lineno="88"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>target<sp/>==<sp/>ClassInfo::of&lt;CommandSenderWrapper&gt;()<sp/>||<sp/>target<sp/>==<sp/>ClassInfo::of&lt;CommandSender&gt;()<sp/>||</highlight></codeline>
+<codeline lineno="89"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>target<sp/>==<sp/>ClassInfo::of&lt;Permissible&gt;()<sp/>||<sp/>target<sp/>==<sp/>ClassInfo::of&lt;Object&gt;();</highlight></codeline>
 <codeline lineno="90"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
 <codeline lineno="91"><highlight class="normal"></highlight></codeline>
 <codeline lineno="97" refid="classendstone_1_1CommandSenderWrapper_1a7fa80697d5a28fb87a0312ed2115655d" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>[[<ref refid="classendstone_1_1Identifier" kindref="compound">nodiscard</ref>]]<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classendstone_1_1Identifier" kindref="compound">NotNull&lt;CommandSender&gt;</ref><sp/>&amp;<ref refid="classendstone_1_1CommandSenderWrapper_1a7fa80697d5a28fb87a0312ed2115655d" kindref="member">getWrapped</ref>()</highlight><highlight class="keyword"><sp/>const<sp/></highlight><highlight class="normal">{<sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>sender_;<sp/>}</highlight></codeline>

@@ -47,6 +47,7 @@
 #include "endstone/map/map_view.h"
 #include "endstone/message.h"
 #include "endstone/plugin/service_manager.h"
+#include "endstone/object.h"
 #include "endstone/scoreboard/scoreboard.h"
 #include "endstone/util/pointers.h"
 #include "endstone/util/uuid.h"
@@ -183,12 +184,16 @@ public:
 
     [[nodiscard]] virtual ServiceManager &getServiceManager() const = 0;
 
-    [[nodiscard]] virtual IRegistry *_getRegistry(const std::type_info &type) const = 0;
+    [[nodiscard]] virtual IRegistry *_getRegistry(ClassInfo type) const = 0;
 
     template <typename T>
     [[nodiscard]] const Registry<T> &getRegistry() const
     {
-        return *static_cast<Registry<T> *>(_getRegistry(typeid(T)));
+        auto *registry = _getRegistry(ClassInfo::of<T>());
+        if (!registry) {
+            throw std::out_of_range{std::format("No registry is present for type: {}", ClassInfo::of<T>().name())};
+        }
+        return *static_cast<Registry<T> *>(registry);
     }
 
     [[nodiscard]] virtual MapView *getMap(std::int64_t id) const = 0;
