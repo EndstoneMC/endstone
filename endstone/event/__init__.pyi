@@ -766,7 +766,7 @@ class PlayerBucketEvent(PlayerEvent, Cancellable):
     Base class for events involving a player's bucket interaction.
     """
     @property
-    def block(self) -> Block:
+    def block(self) -> Block | None:
         """
         The block involved in this event, or `None` if unavailable.
         """
@@ -793,6 +793,8 @@ class PlayerBucketEvent(PlayerEvent, Cancellable):
     def hand(self) -> EquipmentSlot:
         """
         The hand used in this event.
+
+        This is always `EquipmentSlot.HAND`, because Bedrock does not report which hand was used for this interaction.
         """
 
     @property

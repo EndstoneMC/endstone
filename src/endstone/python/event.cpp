@@ -304,14 +304,17 @@ void init_event(py::module_ &m, py::class_<Event, PyEvent> &event)
         .def_property_readonly("hand", &PlayerBucketActorEvent::getHand, "The hand used to capture the actor.");
     py::class_<PlayerBucketEvent, PlayerEvent, ICancellable>(
         m, "PlayerBucketEvent", "Base class for events involving a player's bucket interaction.")
-        .def_property_readonly("block", &PlayerBucketEvent::getBlock, py::return_value_policy::reference,
+        .def_property_readonly("block", &PlayerBucketEvent::getBlock,
                                "The block involved in this event, or `None` if unavailable.")
-        .def_property_readonly("block_clicked", &PlayerBucketEvent::getBlockClicked, py::return_value_policy::reference,
-                               "The block clicked by the player.")
+        .def_property_readonly("block_clicked", &PlayerBucketEvent::getBlockClicked, "The block clicked by the player.")
         .def_property_readonly("block_face", &PlayerBucketEvent::getBlockFace, "The face on the clicked block.")
         .def_property_readonly("bucket", &PlayerBucketEvent::getBucket, py::return_value_policy::reference,
                                "The bucket used in this event.")
-        .def_property_readonly("hand", &PlayerBucketEvent::getHand, "The hand used in this event.")
+        .def_property_readonly("hand", &PlayerBucketEvent::getHand, R"doc(
+    The hand used in this event.
+
+    This is always `EquipmentSlot.HAND`, because Bedrock does not report which hand was used for this interaction.
+)doc")
         .def_property("item_stack", &PlayerBucketEvent::getItemStack, &PlayerBucketEvent::setItemStack,
                       "The resulting item in the player's hand, or `None` if unavailable.");
     py::class_<PlayerBucketFillEvent, PlayerBucketEvent>(m, "PlayerBucketFillEvent",

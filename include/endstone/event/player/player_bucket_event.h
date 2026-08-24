@@ -22,6 +22,7 @@
 #include "endstone/event/player/player_event.h"
 #include "endstone/inventory/equipment_slot.h"
 #include "endstone/inventory/item_stack.h"
+#include "endstone/util/pointers.h"
 
 namespace endstone {
 
@@ -33,10 +34,11 @@ class ItemType;
  */
 class PlayerBucketEvent : public Cancellable<PlayerEvent> {
 public:
-    PlayerBucketEvent(const NotNull<Player> &player, Block *block, Block &block_clicked, BlockFace block_face,
-                      const ItemType &bucket, EquipmentSlot hand, std::optional<ItemStack> item_stack)
+    PlayerBucketEvent(const NotNull<Player> &player, const Nullable<Block> &block, const NotNull<Block> &block_clicked,
+                      BlockFace block_face, const ItemType &bucket, std::optional<ItemStack> item_stack,
+                      EquipmentSlot hand)
         : Cancellable(player), block_(block), block_clicked_(block_clicked), block_face_(block_face), bucket_(bucket),
-          hand_(hand), item_stack_(std::move(item_stack))
+          item_stack_(std::move(item_stack)), hand_(hand)
     {
     }
     ~PlayerBucketEvent() override = default;
@@ -44,16 +46,16 @@ public:
     /**
      * Gets the block involved in this event.
      *
-     * @return the block involved in this event, or nullptr if unavailable
+     * @return the block involved in this event, or a null handle if unavailable
      */
-    [[nodiscard]] Block *getBlock() const { return block_; }
+    [[nodiscard]] const Nullable<Block> &getBlock() const { return block_; }
 
     /**
      * Gets the block clicked by the player.
      *
      * @return the clicked block
      */
-    [[nodiscard]] Block &getBlockClicked() const { return block_clicked_; }
+    [[nodiscard]] const NotNull<Block> &getBlockClicked() const { return block_clicked_; }
 
     /**
      * Gets the face on the clicked block.
@@ -71,6 +73,9 @@ public:
 
     /**
      * Gets the hand used in this event.
+     *
+     * @note This is always EquipmentSlot::Hand, because Bedrock does not report which hand was used for this
+     * interaction.
      *
      * @return the hand
      */
@@ -91,12 +96,12 @@ public:
     void setItemStack(std::optional<ItemStack> item_stack) { item_stack_ = std::move(item_stack); }
 
 private:
-    Block *block_;
-    Block &block_clicked_;
+    Nullable<Block> block_;
+    NotNull<Block> block_clicked_;
     BlockFace block_face_;
     const ItemType &bucket_;
-    EquipmentSlot hand_;
     std::optional<ItemStack> item_stack_;
+    EquipmentSlot hand_;
 };
 
 }  // namespace endstone
