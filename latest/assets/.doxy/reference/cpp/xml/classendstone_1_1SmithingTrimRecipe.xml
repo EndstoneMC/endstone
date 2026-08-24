@@ -98,8 +98,8 @@
       <member refid="classendstone_1_1SmithingRecipe_1aa2920c638e232a3c57db1909dc40c4c5" prot="public" virt="pure-virtual"><scope>endstone::SmithingTrimRecipe</scope><name>getAddition</name></member>
       <member refid="classendstone_1_1SmithingRecipe_1a9ed7ef19c3b78b19f2dba0847774c8f9" prot="public" virt="pure-virtual"><scope>endstone::SmithingTrimRecipe</scope><name>getBase</name></member>
       <member refid="classendstone_1_1Object_1a3e2df17c95cf63580e95c84f783636c4" prot="public" virt="pure-virtual"><scope>endstone::SmithingTrimRecipe</scope><name>getClassInfo</name></member>
+      <member refid="classendstone_1_1Recipe_1ad61757005d71bc6bf9c9addb43c75d49" prot="public" virt="pure-virtual"><scope>endstone::SmithingTrimRecipe</scope><name>getId</name></member>
       <member refid="classendstone_1_1Recipe_1ab9974a01f5e5570b0c2b9b88b9fb7b58" prot="public" virt="pure-virtual"><scope>endstone::SmithingTrimRecipe</scope><name>getIngredients</name></member>
-      <member refid="classendstone_1_1Recipe_1a7db7fc6f3cd018dc4aeb841098806a90" prot="public" virt="pure-virtual"><scope>endstone::SmithingTrimRecipe</scope><name>getRecipeId</name></member>
       <member refid="classendstone_1_1Recipe_1a4e20782db3c7f6ea868059af8f2b1cc1" prot="public" virt="pure-virtual"><scope>endstone::SmithingTrimRecipe</scope><name>getResult</name></member>
       <member refid="classendstone_1_1Recipe_1ab353c82a04f30ce3a1d89d78d1ffe043" prot="public" virt="pure-virtual"><scope>endstone::SmithingTrimRecipe</scope><name>getTag</name></member>
       <member refid="classendstone_1_1SmithingTrimRecipe_1a50bcbd929db9884a7c17f412e12ced64" prot="public" virt="pure-virtual"><scope>endstone::SmithingTrimRecipe</scope><name>getTemplate</name></member>

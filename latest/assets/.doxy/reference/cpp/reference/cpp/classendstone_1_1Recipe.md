@@ -74,8 +74,8 @@ Inherited by the following classes: [endstone::ComplexRecipe](classendstone_1_1C
 
 | Type | Name |
 | ---: | :--- |
+| virtual [**const**](classendstone_1_1Identifier.md) std::string & | [**getId**](#function-getid) () const = 0<br>_Get the identifier of this recipe, such as_ `minecraft:crafting_table` _._ |
 | virtual [**const**](classendstone_1_1Identifier.md) std::vector&lt; [**Nullable**](classendstone_1_1Nullable.md)&lt; [**RecipeIngredient**](classendstone_1_1RecipeIngredient.md) &gt; &gt; & | [**getIngredients**](#function-getingredients) () const = 0<br> |
-| virtual [**const**](classendstone_1_1Identifier.md) std::string & | [**getRecipeId**](#function-getrecipeid) () const = 0<br> |
 | virtual [**ItemStack**](classendstone_1_1ItemStack.md) | [**getResult**](#function-getresult) () const = 0<br>_Get the result of this recipe._  |
 | virtual [**const**](classendstone_1_1Identifier.md) std::string & | [**getTag**](#function-gettag) () const = 0<br>_Get the crafting station this recipe belongs to, such as_ `crafting_table` _or_`smithing_table` _._ |
 |   | [**~Recipe**](#function-recipe) () override<br> |
@@ -152,23 +152,35 @@ See [endstone::Object](classendstone_1_1Object.md)
 
 
 
-### function getIngredients 
+### function getId 
 
+_Get the identifier of this recipe, such as_ `minecraft:crafting_table` _._
 ```C++
-virtual const std::vector< Nullable < RecipeIngredient > > & endstone::Recipe::getIngredients () const = 0
+virtual const std::string & endstone::Recipe::getId () const = 0
 ```
 
 
 
 
+
+**Returns:**
+
+the recipe identifier 
+
+
+
+
+
+        
+
 <hr>
 
 
 
-### function getRecipeId 
+### function getIngredients 
 
 ```C++
-virtual const std::string & endstone::Recipe::getRecipeId () const = 0
+virtual const std::vector< Nullable < RecipeIngredient > > & endstone::Recipe::getIngredients () const = 0
 ```
 
 

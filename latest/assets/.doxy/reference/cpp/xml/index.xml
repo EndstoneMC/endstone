@@ -2812,7 +2812,7 @@
     <member refid="classendstone_1_1Recipe_1a8252ec2109ad301042cda25df98b923e" kind="function"><name>~Recipe</name></member>
     <member refid="classendstone_1_1Recipe_1a4e20782db3c7f6ea868059af8f2b1cc1" kind="function"><name>getResult</name></member>
     <member refid="classendstone_1_1Recipe_1ab9974a01f5e5570b0c2b9b88b9fb7b58" kind="function"><name>getIngredients</name></member>
-    <member refid="classendstone_1_1Recipe_1a7db7fc6f3cd018dc4aeb841098806a90" kind="function"><name>getRecipeId</name></member>
+    <member refid="classendstone_1_1Recipe_1ad61757005d71bc6bf9c9addb43c75d49" kind="function"><name>getId</name></member>
     <member refid="classendstone_1_1Recipe_1ab353c82a04f30ce3a1d89d78d1ffe043" kind="function"><name>getTag</name></member>
   </compound>
   <compound refid="classendstone_1_1RecipeIngredient" kind="class"><name>endstone::RecipeIngredient</name>

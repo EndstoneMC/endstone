@@ -5581,7 +5581,7 @@ and this project adheres to <a href="https://semver.org/spec/v2.0.0.html">Semant
 </ul>
 <h4 id="items">Items<a class="headerlink" href="#items" title="Permanent link">&para;</a></h4>
 <ul>
-<li><code>Level.recipes</code>, a snapshot of the crafting recipes the server has loaded, also reachable as <code>Server.recipes</code>. Each entry is a <code>ShapedRecipe</code>, <code>ShapelessRecipe</code>, <code>SmithingTransformRecipe</code>, <code>SmithingTrimRecipe</code> or <code>ComplexRecipe</code>, and reports its <code>recipe_id</code>, crafting <code>tag</code>, <code>result</code> and <code>ingredients</code>. Shaped recipes add <code>width</code> and <code>height</code>; smithing recipes add <code>template</code>, <code>base</code> and <code>addition</code>.</li>
+<li><code>Level.recipes</code>, a snapshot of the crafting recipes the server has loaded, also reachable as <code>Server.recipes</code>. Each entry is a <code>ShapedRecipe</code>, <code>ShapelessRecipe</code>, <code>SmithingTransformRecipe</code>, <code>SmithingTrimRecipe</code> or <code>ComplexRecipe</code>, and reports its <code>id</code>, crafting <code>tag</code>, <code>result</code> and <code>ingredients</code>. Shaped recipes add <code>width</code> and <code>height</code>; smithing recipes add <code>template</code>, <code>base</code> and <code>addition</code>.</li>
 <li><code>RecipeIngredient</code>, describing what one ingredient slot accepts, with <code>test()</code> to check an item against it and a Bedrock-specific <code>count</code>. An ingredient is an <code>ExactIngredient</code> (one item and one data value), an <code>ItemTypeIngredient</code> (an item type, any data value), an <code>ItemTagIngredient</code> (anything carrying a tag), a <code>MolangIngredient</code> (whatever a Molang expression selects), an <code>ComplexAliasIngredient</code> (anything an id that predates the item flattening stands for, such as <code>minecraft:planks</code>). A slot the recipe leaves empty is <code>None</code>.</li>
 <li><code>WritableBookMeta</code>, <code>BookMeta</code> and <code>CrossbowMeta</code> item meta types.</li>
 <li><code>PotionMeta</code> for potions, splash potions and lingering potions, with <code>meta.base_potion_type</code>.</li>
@@ -5622,7 +5622,7 @@ and this project adheres to <a href="https://semver.org/spec/v2.0.0.html">Semant
 <h3 id="changed">Changed<a class="headerlink" href="#changed" title="Permanent link">&para;</a></h3>
 <h4 id="networking">Networking<a class="headerlink" href="#networking" title="Permanent link">&para;</a></h4>
 <ul>
-<li>Packet compression now uses libdeflate instead of the vanilla zlib compressor. The wire format is unchanged standard raw deflate, so clients need no update and Snappy connections are untouched. Measured on 39.7 MB of live gameplay traffic, batches compress 4.6x faster for 0.4% more bytes on the wire. The saving shows up most on servers broadcasting to many players, since every player's batch is compressed separately.</li>
+<li>Packet compression now uses libdeflate instead of zlib, which should improve performance on busy servers.</li>
 </ul>
 <h4 id="json-payloads">JSON payloads<a class="headerlink" href="#json-payloads" title="Permanent link">&para;</a></h4>
 <ul>

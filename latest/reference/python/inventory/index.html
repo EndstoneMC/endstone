@@ -3068,9 +3068,9 @@ For latest updates join the chat on
             
                 
                     <li class="md-nav__item">
-    <a href="#endstone.inventory.Recipe.ingredients" class="md-nav__link">
+    <a href="#endstone.inventory.Recipe.id" class="md-nav__link">
       <span class="md-ellipsis">
-        <code class="doc-symbol doc-symbol-toc doc-symbol-attribute"></code>&nbsp;ingredients
+        <code class="doc-symbol doc-symbol-toc doc-symbol-attribute"></code>&nbsp;id
       </span>
     </a>
 
@@ -3081,9 +3081,9 @@ For latest updates join the chat on
             
                 
                     <li class="md-nav__item">
-    <a href="#endstone.inventory.Recipe.recipe_id" class="md-nav__link">
+    <a href="#endstone.inventory.Recipe.ingredients" class="md-nav__link">
       <span class="md-ellipsis">
-        <code class="doc-symbol doc-symbol-toc doc-symbol-attribute"></code>&nbsp;recipe_id
+        <code class="doc-symbol doc-symbol-toc doc-symbol-attribute"></code>&nbsp;ingredients
       </span>
     </a>
 
@@ -6054,9 +6054,9 @@ For latest updates join the chat on
             
                 
                     <li class="md-nav__item">
-    <a href="#endstone.inventory.Recipe.ingredients" class="md-nav__link">
+    <a href="#endstone.inventory.Recipe.id" class="md-nav__link">
       <span class="md-ellipsis">
-        <code class="doc-symbol doc-symbol-toc doc-symbol-attribute"></code>&nbsp;ingredients
+        <code class="doc-symbol doc-symbol-toc doc-symbol-attribute"></code>&nbsp;id
       </span>
     </a>
 
@@ -6067,9 +6067,9 @@ For latest updates join the chat on
             
                 
                     <li class="md-nav__item">
-    <a href="#endstone.inventory.Recipe.recipe_id" class="md-nav__link">
+    <a href="#endstone.inventory.Recipe.ingredients" class="md-nav__link">
       <span class="md-ellipsis">
-        <code class="doc-symbol doc-symbol-toc doc-symbol-attribute"></code>&nbsp;recipe_id
+        <code class="doc-symbol doc-symbol-toc doc-symbol-attribute"></code>&nbsp;ingredients
       </span>
     </a>
 
@@ -12251,6 +12251,22 @@ rendered with.</p>
       </thead>
       <tbody>
           <tr class="doc-section-item">
+            <td><code><a class="autorefs autorefs-internal" title="            id
+
+
+  
+      property
+   (endstone.inventory.Recipe.id)" href="#endstone.inventory.Recipe.id">id</a></code></td>
+            <td>
+                  <code><a class="autorefs autorefs-external" href="https://docs.python.org/3/library/stdtypes.html#str">str</a></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>The identifier of this recipe, such as <code>minecraft:crafting_table</code>.</p>
+              </div>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
             <td><code><a class="autorefs autorefs-internal" title="            ingredients
 
 
@@ -12259,22 +12275,6 @@ rendered with.</p>
    (endstone.inventory.Recipe.ingredients)" href="#endstone.inventory.Recipe.ingredients">ingredients</a></code></td>
             <td>
                   <code><a class="autorefs autorefs-external" href="https://docs.python.org/3/library/stdtypes.html#list">list</a>[<a class="autorefs autorefs-internal" title="            RecipeIngredient (endstone.inventory.RecipeIngredient)" href="#endstone.inventory.RecipeIngredient">RecipeIngredient</a> | None]</code>
-            </td>
-            <td>
-              <div class="doc-md-description">
-                
-              </div>
-            </td>
-          </tr>
-          <tr class="doc-section-item">
-            <td><code><a class="autorefs autorefs-internal" title="            recipe_id
-
-
-  
-      property
-   (endstone.inventory.Recipe.recipe_id)" href="#endstone.inventory.Recipe.recipe_id">recipe_id</a></code></td>
-            <td>
-                  <code><a class="autorefs autorefs-external" href="https://docs.python.org/3/library/stdtypes.html#str">str</a></code>
             </td>
             <td>
               <div class="doc-md-description">
@@ -12332,6 +12332,30 @@ rendered with.</p>
 
 
 
+<h4 id="endstone.inventory.Recipe.id" class="doc doc-heading">
+<code class="doc-symbol doc-symbol-heading doc-symbol-attribute"></code>            <span class="doc doc-object-name doc-attribute-name">id</span>
+
+
+  <span class="doc doc-labels">
+      <small class="doc doc-label doc-label-property"><code>property</code></small>
+  </span>
+
+<a href="#endstone.inventory.Recipe.id" class="headerlink" title="Permanent link">&para;</a></h4>
+<div class="language-python doc-signature highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="nb">id</span><span class="p">:</span> <span class="n"><a class="autorefs autorefs-external" href="https://docs.python.org/3/library/stdtypes.html#str">str</a></span>
+</span></code></pre></div>
+
+    <div class="doc doc-contents ">
+
+        <p>The identifier of this recipe, such as <code>minecraft:crafting_table</code>.</p>
+
+    </div>
+
+</div>
+
+<div class="doc doc-object doc-attribute">
+
+
+
 <h4 id="endstone.inventory.Recipe.ingredients" class="doc doc-heading">
 <code class="doc-symbol doc-symbol-heading doc-symbol-attribute"></code>            <span class="doc doc-object-name doc-attribute-name">ingredients</span>
 
@@ -12342,28 +12366,6 @@ rendered with.</p>
 
 <a href="#endstone.inventory.Recipe.ingredients" class="headerlink" title="Permanent link">&para;</a></h4>
 <div class="language-python doc-signature highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="n">ingredients</span><span class="p">:</span> <span class="n"><a class="autorefs autorefs-external" href="https://docs.python.org/3/library/stdtypes.html#list">list</a></span><span class="p">[</span><span class="n"><a class="autorefs autorefs-internal" title="            RecipeIngredient (endstone.inventory.RecipeIngredient)" href="#endstone.inventory.RecipeIngredient">RecipeIngredient</a></span> <span class="o">|</span> <span class="kc">None</span><span class="p">]</span>
-</span></code></pre></div>
-
-    <div class="doc doc-contents ">
-
-    </div>
-
-</div>
-
-<div class="doc doc-object doc-attribute">
-
-
-
-<h4 id="endstone.inventory.Recipe.recipe_id" class="doc doc-heading">
-<code class="doc-symbol doc-symbol-heading doc-symbol-attribute"></code>            <span class="doc doc-object-name doc-attribute-name">recipe_id</span>
-
-
-  <span class="doc doc-labels">
-      <small class="doc doc-label doc-label-property"><code>property</code></small>
-  </span>
-
-<a href="#endstone.inventory.Recipe.recipe_id" class="headerlink" title="Permanent link">&para;</a></h4>
-<div class="language-python doc-signature highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="n">recipe_id</span><span class="p">:</span> <span class="n"><a class="autorefs autorefs-external" href="https://docs.python.org/3/library/stdtypes.html#str">str</a></span>
 </span></code></pre></div>
 
     <div class="doc doc-contents ">

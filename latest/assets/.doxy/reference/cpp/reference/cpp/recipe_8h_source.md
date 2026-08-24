@@ -40,7 +40,7 @@ public:
 
     [[nodiscard]] virtual const std::vector<Nullable<RecipeIngredient>> &getIngredients() const = 0;
 
-    [[nodiscard]] virtual const std::string &getRecipeId() const = 0;
+    [[nodiscard]] virtual const std::string &getId() const = 0;
 
     [[nodiscard]] virtual const std::string &getTag() const = 0;
 };
