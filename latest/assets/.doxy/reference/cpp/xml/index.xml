@@ -680,7 +680,6 @@
     <member refid="classendstone_1_1ClassInfo_1a9d517276dd1b8c331ce899af48c254dd" kind="function"><name>name</name></member>
     <member refid="classendstone_1_1ClassInfo_1adf64453ab7c8ec827f01d9443021cd6f" kind="function"><name>info</name></member>
     <member refid="classendstone_1_1ClassInfo_1ae957f8f89d7bef4f1456019a747150ee" kind="function"><name>operator==</name></member>
-    <member refid="classendstone_1_1ClassInfo_1a29e99a7fb4bedb29b5b5067700ccdfd0" kind="function"><name>of</name></member>
   </compound>
   <compound refid="classendstone_1_1Color" kind="class"><name>endstone::Color</name>
     <member refid="classendstone_1_1Color_1a7c5e7653a0ede9a6e5da415ac93bcf51" kind="variable"><name>BIT_MASK</name></member>

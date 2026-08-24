@@ -73,11 +73,10 @@ public:
 
     [[maybe_unused]] [[nodiscard]] Plugin &getPlugin() const { return owner_; }
 
-    [[nodiscard]] ClassInfo getClassInfo() const override { return ClassInfo::of<PluginCommand>(); }
+    [[nodiscard]] ClassInfo getClassInfo() const override { return typeid(PluginCommand); }
     [[nodiscard]] bool isInstanceOf(ClassInfo target) const override
     {
-        return target == ClassInfo::of<PluginCommand>() || target == ClassInfo::of<Command>() ||
-               target == ClassInfo::of<Object>();
+        return target == typeid(PluginCommand) || target == typeid(Command) || target == typeid(Object);
     }
 
 private:

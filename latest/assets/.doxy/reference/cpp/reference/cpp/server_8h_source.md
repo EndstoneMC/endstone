@@ -189,9 +189,9 @@ public:
     template <typename T>
     [[nodiscard]] const Registry<T> &getRegistry() const
     {
-        auto *registry = _getRegistry(ClassInfo::of<T>());
+        auto *registry = _getRegistry(typeid(T));
         if (!registry) {
-            throw std::out_of_range{std::format("No registry is present for type: {}", ClassInfo::of<T>().name())};
+            throw std::out_of_range{std::format("No registry is present for type: {}", typeid(T).name())};
         }
         return *static_cast<Registry<T> *>(registry);
     }

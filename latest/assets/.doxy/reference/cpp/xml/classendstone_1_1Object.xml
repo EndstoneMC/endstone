@@ -22,7 +22,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/object.h" line="73" column="13"/>
+        <location file="include/endstone/object.h" line="64" column="13"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1Object_1a3e2df17c95cf63580e95c84f783636c4" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
         <type><ref refid="classendstone_1_1ClassInfo" kindref="compound">ClassInfo</ref></type>
@@ -39,7 +39,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/object.h" line="78" column="24"/>
+        <location file="include/endstone/object.h" line="69" column="24"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1Object_1a1f8951c4894c2b8288fd4ef500218771" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
         <type><ref refid="classendstone_1_1Identifier" kindref="compound">bool</ref></type>
@@ -60,7 +60,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/object.h" line="83" column="19"/>
+        <location file="include/endstone/object.h" line="74" column="19"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1Object_1a09996a819d3c34ac1aaceec65afd1b86" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
         <templateparamlist>
@@ -80,7 +80,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/object.h" line="90" column="11" bodyfile="include/endstone/object.h" bodystart="90" bodyend="93"/>
+        <location file="include/endstone/object.h" line="81" column="11" bodyfile="include/endstone/object.h" bodystart="81" bodyend="84"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1Object_1a798b5128ce018bbbe8ca949ba78c3db1" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <templateparamlist>
@@ -114,7 +114,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/object.h" line="105" column="7" bodyfile="include/endstone/object.h" bodystart="105" bodyend="111"/>
+        <location file="include/endstone/object.h" line="96" column="7" bodyfile="include/endstone/object.h" bodystart="96" bodyend="102"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1Object_1ae0f38a62da4c186fce272145e2590cc1" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
         <templateparamlist>
@@ -148,7 +148,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/object.h" line="118" column="13" bodyfile="include/endstone/object.h" bodystart="118" bodyend="124"/>
+        <location file="include/endstone/object.h" line="109" column="13" bodyfile="include/endstone/object.h" bodystart="109" bodyend="115"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1Object_1ae8213ae15ad1b14e4631399c6b18960a" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
         <templateparamlist>
@@ -181,7 +181,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/object.h" line="134" column="11" bodyfile="include/endstone/object.h" bodystart="134" bodyend="137"/>
+        <location file="include/endstone/object.h" line="125" column="11" bodyfile="include/endstone/object.h" bodystart="125" bodyend="128"/>
       </memberdef>
     </sectiondef>
     <briefdescription>
@@ -430,7 +430,7 @@
         </childnode>
       </node>
     </inheritancegraph>
-    <location file="include/endstone/object.h" line="71" column="1" bodyfile="include/endstone/object.h" bodystart="71" bodyend="138"/>
+    <location file="include/endstone/object.h" line="62" column="1" bodyfile="include/endstone/object.h" bodystart="62" bodyend="129"/>
     <listofallmembers>
       <member refid="classendstone_1_1Object_1a798b5128ce018bbbe8ca949ba78c3db1" prot="public" virt="non-virtual"><scope>endstone::Object</scope><name>as</name></member>
       <member refid="classendstone_1_1Object_1ae0f38a62da4c186fce272145e2590cc1" prot="public" virt="non-virtual"><scope>endstone::Object</scope><name>as</name></member>

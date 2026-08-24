@@ -16,11 +16,11 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/object.h" line="61" column="26" bodyfile="include/endstone/object.h" bodystart="61" bodyend="-1"/>
+        <location file="include/endstone/object.h" line="52" column="26" bodyfile="include/endstone/object.h" bodystart="52" bodyend="-1"/>
       </memberdef>
     </sectiondef>
     <sectiondef kind="public-func">
-      <memberdef kind="function" id="classendstone_1_1ClassInfo_1a8b8e0f2221b7dcf0f87e0d4fbb7d4e15" prot="public" static="no" const="no" explicit="yes" inline="yes" noexcept="yes" virt="non-virtual">
+      <memberdef kind="function" id="classendstone_1_1ClassInfo_1a8b8e0f2221b7dcf0f87e0d4fbb7d4e15" prot="public" static="no" const="no" explicit="no" inline="yes" noexcept="yes" virt="non-virtual">
         <type></type>
         <definition>endstone::ClassInfo::ClassInfo</definition>
         <argsstring>(const std::type_info &amp;info) noexcept</argsstring>
@@ -36,7 +36,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/object.h" line="34" column="14" bodyfile="include/endstone/object.h" bodystart="34" bodyend="34"/>
+        <location file="include/endstone/object.h" line="34" column="5" bodyfile="include/endstone/object.h" bodystart="34" bodyend="34"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1ClassInfo_1a9d517276dd1b8c331ce899af48c254dd" prot="public" static="no" const="yes" explicit="no" inline="yes" noexcept="yes" virt="non-virtual">
         <type><ref refid="classendstone_1_1Identifier" kindref="compound">const</ref> <ref refid="classendstone_1_1Identifier" kindref="compound">char</ref> *</type>
@@ -51,7 +51,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/object.h" line="48" column="17" bodyfile="include/endstone/object.h" bodystart="48" bodyend="48"/>
+        <location file="include/endstone/object.h" line="39" column="17" bodyfile="include/endstone/object.h" bodystart="39" bodyend="39"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1ClassInfo_1adf64453ab7c8ec827f01d9443021cd6f" prot="public" static="no" const="yes" explicit="no" inline="yes" noexcept="yes" virt="non-virtual">
         <type><ref refid="classendstone_1_1Identifier" kindref="compound">const</ref> std::type_info &amp;</type>
@@ -66,7 +66,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/object.h" line="53" column="27" bodyfile="include/endstone/object.h" bodystart="53" bodyend="53"/>
+        <location file="include/endstone/object.h" line="44" column="27" bodyfile="include/endstone/object.h" bodystart="44" bodyend="44"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1ClassInfo_1ae957f8f89d7bef4f1456019a747150ee" prot="public" static="no" const="yes" explicit="no" inline="yes" noexcept="yes" virt="non-virtual">
         <type><ref refid="classendstone_1_1Identifier" kindref="compound">bool</ref></type>
@@ -84,29 +84,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/object.h" line="55" column="10" bodyfile="include/endstone/object.h" bodystart="55" bodyend="58"/>
-      </memberdef>
-    </sectiondef>
-    <sectiondef kind="public-static-func">
-      <memberdef kind="function" id="classendstone_1_1ClassInfo_1a29e99a7fb4bedb29b5b5067700ccdfd0" prot="public" static="yes" const="no" explicit="no" inline="yes" noexcept="yes" virt="non-virtual">
-        <templateparamlist>
-          <param>
-            <type><ref refid="classendstone_1_1Identifier" kindref="compound">typename</ref> <ref refid="classendstone_1_1Identifier" kindref="compound">T</ref></type>
-          </param>
-        </templateparamlist>
-        <type><ref refid="classendstone_1_1ClassInfo" kindref="compound">ClassInfo</ref></type>
-        <definition>static ClassInfo endstone::ClassInfo::of</definition>
-        <argsstring>() noexcept</argsstring>
-        <name>of</name>
-        <qualifiedname>endstone::ClassInfo::of</qualifiedname>
-        <briefdescription>
-<para>The identity of T. </para>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
-        <location file="include/endstone/object.h" line="40" column="22" bodyfile="include/endstone/object.h" bodystart="40" bodyend="43"/>
+        <location file="include/endstone/object.h" line="46" column="10" bodyfile="include/endstone/object.h" bodystart="46" bodyend="49"/>
       </memberdef>
     </sectiondef>
     <briefdescription>
@@ -115,13 +93,12 @@
     <detaileddescription>
 <para>libc++ compares <computeroutput>std::type_info</computeroutput> by address, and a type named from more than one shared library has one typeinfo per module once those modules are built with hidden visibility, as endstone and its plugins are. Comparing the mangled name instead lets a type named in a plugin match the same type named in the runtime. </para>
     </detaileddescription>
-    <location file="include/endstone/object.h" line="32" column="1" bodyfile="include/endstone/object.h" bodystart="32" bodyend="62"/>
+    <location file="include/endstone/object.h" line="32" column="1" bodyfile="include/endstone/object.h" bodystart="32" bodyend="53"/>
     <listofallmembers>
       <member refid="classendstone_1_1ClassInfo_1a8b8e0f2221b7dcf0f87e0d4fbb7d4e15" prot="public" virt="non-virtual"><scope>endstone::ClassInfo</scope><name>ClassInfo</name></member>
       <member refid="classendstone_1_1ClassInfo_1adf64453ab7c8ec827f01d9443021cd6f" prot="public" virt="non-virtual"><scope>endstone::ClassInfo</scope><name>info</name></member>
       <member refid="classendstone_1_1ClassInfo_1ae6f823e88ff003a6fde34b04e2d66be9" prot="private" virt="non-virtual"><scope>endstone::ClassInfo</scope><name>info_</name></member>
       <member refid="classendstone_1_1ClassInfo_1a9d517276dd1b8c331ce899af48c254dd" prot="public" virt="non-virtual"><scope>endstone::ClassInfo</scope><name>name</name></member>
-      <member refid="classendstone_1_1ClassInfo_1a29e99a7fb4bedb29b5b5067700ccdfd0" prot="public" virt="non-virtual"><scope>endstone::ClassInfo</scope><name>of</name></member>
       <member refid="classendstone_1_1ClassInfo_1ae957f8f89d7bef4f1456019a747150ee" prot="public" virt="non-virtual"><scope>endstone::ClassInfo</scope><name>operator==</name></member>
     </listofallmembers>
   </compounddef>

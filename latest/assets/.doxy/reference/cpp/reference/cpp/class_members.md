@@ -1098,7 +1098,6 @@
 * **operation\_** ([**endstone::AttributeModifier**](classendstone_1_1AttributeModifier.md))
 * **OnClickCallback** ([**endstone::Button**](classendstone_1_1Button.md))
 * **on\_click\_** ([**endstone::Button**](classendstone_1_1Button.md))
-* **of** ([**endstone::ClassInfo**](classendstone_1_1ClassInfo.md))
 * **operator==** ([**endstone::ClassInfo**](classendstone_1_1ClassInfo.md), [**endstone::Color**](classendstone_1_1Color.md), [**endstone::Effect**](classendstone_1_1Effect.md), [**endstone::Identifier**](classendstone_1_1Identifier.md), [**endstone::Input**](classendstone_1_1Input.md), [**endstone::ItemStack**](classendstone_1_1ItemStack.md), [**endstone::Location**](classendstone_1_1Location.md), [**endstone::Nullable**](classendstone_1_1Nullable.md), [**endstone::Objective**](classendstone_1_1Objective.md), [**endstone::Registry::Type**](classendstone_1_1Registry_1_1Type.md), [**endstone::SocketAddress**](classendstone_1_1SocketAddress.md), [**endstone::Vector**](classendstone_1_1Vector.md))
 * **operator!=** ([**endstone::Color**](classendstone_1_1Color.md), [**endstone::Effect**](classendstone_1_1Effect.md), [**endstone::Identifier**](classendstone_1_1Identifier.md), [**endstone::ItemStack**](classendstone_1_1ItemStack.md), [**endstone::Location**](classendstone_1_1Location.md), [**endstone::Objective**](classendstone_1_1Objective.md), [**endstone::Registry::Type**](classendstone_1_1Registry_1_1Type.md), [**endstone::Vector**](classendstone_1_1Vector.md))
 * **Obfuscated** ([**endstone::ColorFormat**](structendstone_1_1ColorFormat.md))

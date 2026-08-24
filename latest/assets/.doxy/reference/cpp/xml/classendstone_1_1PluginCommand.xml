@@ -17,7 +17,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/command/plugin_command.h" line="92" column="12" bodyfile="include/endstone/command/plugin_command.h" bodystart="92" bodyend="-1"/>
+        <location file="include/endstone/command/plugin_command.h" line="91" column="12" bodyfile="include/endstone/command/plugin_command.h" bodystart="91" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="classendstone_1_1PluginCommand_1aef5719f7abca6fe15fc12cbcda4d653f" prot="private" static="no" mutable="no">
         <type><ref refid="classendstone_1_1Nullable" kindref="compound">Nullable</ref>&lt; <ref refid="classendstone_1_1CommandExecutor" kindref="compound">CommandExecutor</ref> &gt;</type>
@@ -31,7 +31,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/command/plugin_command.h" line="93" column="14" bodyfile="include/endstone/command/plugin_command.h" bodystart="93" bodyend="-1"/>
+        <location file="include/endstone/command/plugin_command.h" line="92" column="14" bodyfile="include/endstone/command/plugin_command.h" bodystart="92" bodyend="-1"/>
       </memberdef>
     </sectiondef>
     <sectiondef kind="public-func">
@@ -198,7 +198,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/command/plugin_command.h" line="85" column="11" bodyfile="include/endstone/command/plugin_command.h" bodystart="85" bodyend="89"/>
+        <location file="include/endstone/command/plugin_command.h" line="85" column="11" bodyfile="include/endstone/command/plugin_command.h" bodystart="85" bodyend="88"/>
       </memberdef>
     </sectiondef>
     <briefdescription>
@@ -242,7 +242,7 @@
         </childnode>
       </node>
     </collaborationgraph>
-    <location file="include/endstone/command/plugin_command.h" line="30" column="1" bodyfile="include/endstone/command/plugin_command.h" bodystart="30" bodyend="94"/>
+    <location file="include/endstone/command/plugin_command.h" line="30" column="1" bodyfile="include/endstone/command/plugin_command.h" bodystart="30" bodyend="93"/>
     <listofallmembers>
       <member refid="classendstone_1_1Object_1a798b5128ce018bbbe8ca949ba78c3db1" prot="public" virt="non-virtual"><scope>endstone::PluginCommand</scope><name>as</name></member>
       <member refid="classendstone_1_1Object_1ae0f38a62da4c186fce272145e2590cc1" prot="public" virt="non-virtual"><scope>endstone::PluginCommand</scope><name>as</name></member>

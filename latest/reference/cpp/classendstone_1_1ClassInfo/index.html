@@ -2596,17 +2596,6 @@ For latest updates join the chat on
 </li>
       
         <li class="md-nav__item">
-    <a href="#public-static-functions" class="md-nav__link">
-      <span class="md-ellipsis">
-        Public Static Functions
-      </span>
-    </a>
-
-    <!-- Table of contents list -->
-    
-</li>
-      
-        <li class="md-nav__item">
     <a href="#detailed-description" class="md-nav__link">
       <span class="md-ellipsis">
         Detailed Description
@@ -2686,36 +2675,6 @@ For latest updates join the chat on
     
 </li>
       
-        <li class="md-nav__item">
-    <a href="#public-static-functions-documentation" class="md-nav__link">
-      <span class="md-ellipsis">
-        Public Static Functions Documentation
-      </span>
-    </a>
-
-    <!-- Table of contents list -->
-    
-    <nav class="md-nav" aria-label="Public Static Functions Documentation">
-        <ul class="md-nav__list">
-            
-                
-                    <li class="md-nav__item">
-    <a href="#function-of" class="md-nav__link">
-      <span class="md-ellipsis">
-        function of
-      </span>
-    </a>
-
-    <!-- Table of contents list -->
-    
-</li>
-                
-            
-        </ul>
-    </nav>
-    
-</li>
-      
     </ul>
   
 </nav>
@@ -2782,26 +2741,11 @@ For latest updates join the chat on
 </tr>
 </tbody>
 </table>
-<h2 id="public-static-functions">Public Static Functions<a class="headerlink" href="#public-static-functions" title="Permanent link">&para;</a></h2>
-<table>
-<thead>
-<tr>
-<th style="text-align: right;">Type</th>
-<th style="text-align: left;">Name</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align: right;"><a href="./"><strong>ClassInfo</strong></a></td>
-<td style="text-align: left;"><a href="#function-of"><strong>of</strong></a> () noexcept<br><em>The identity of T.</em></td>
-</tr>
-</tbody>
-</table>
 <h2 id="detailed-description">Detailed Description<a class="headerlink" href="#detailed-description" title="Permanent link">&para;</a></h2>
 <p>libc++ compares <code>std::type_info</code> by address, and a type named from more than one shared library has one typeinfo per module once those modules are built with hidden visibility, as endstone and its plugins are. Comparing the mangled name instead lets a type named in a plugin match the same type named in the runtime. </p>
 <h2 id="public-functions-documentation">Public Functions Documentation<a class="headerlink" href="#public-functions-documentation" title="Permanent link">&para;</a></h2>
 <h3 id="function-classinfo">function ClassInfo<a class="headerlink" href="#function-classinfo" title="Permanent link">&para;</a></h3>
-<div class="language-C++ highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="kr">inline</span><span class="w"> </span><span class="k">explicit</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">ClassInfo</span><span class="o">::</span><span class="n">ClassInfo</span><span class="w"> </span><span class="p">(</span>
+<div class="language-C++ highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="kr">inline</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">ClassInfo</span><span class="o">::</span><span class="n">ClassInfo</span><span class="w"> </span><span class="p">(</span>
 </span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a><span class="w">    </span><span class="k">const</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">type_info</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">info</span>
 </span><span id="__span-0-3"><a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a><span class="p">)</span><span class="w"> </span><span class="k">noexcept</span>
 </span></code></pre></div>
@@ -2824,13 +2768,6 @@ For latest updates join the chat on
 </span><span id="__span-3-2"><a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a><span class="w">    </span><span class="k">const</span><span class="w">  </span><span class="n">ClassInfo</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">other</span>
 </span><span id="__span-3-3"><a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a><span class="p">)</span><span class="w"> </span><span class="k">noexcept</span><span class="w"> </span><span class="k">const</span>
 </span></code></pre></div>
-<hr>
-<h2 id="public-static-functions-documentation">Public Static Functions Documentation<a class="headerlink" href="#public-static-functions-documentation" title="Permanent link">&para;</a></h2>
-<h3 id="function-of">function of<a class="headerlink" href="#function-of" title="Permanent link">&para;</a></h3>
-<p><em>The identity of T.</em> 
-<div class="language-C++ highlight"><pre><span></span><code><span id="__span-4-1"><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a><span class="k">template</span><span class="o">&lt;</span><span class="k">typename</span><span class="w">  </span><span class="nc">T</span><span class="o">&gt;</span>
-</span><span id="__span-4-2"><a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a><span class="k">static</span><span class="w"> </span><span class="kr">inline</span><span class="w"> </span><span class="n">ClassInfo</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">ClassInfo</span><span class="o">::</span><span class="n">of</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="k">noexcept</span>
-</span></code></pre></div></p>
 <hr>
 
 <hr />

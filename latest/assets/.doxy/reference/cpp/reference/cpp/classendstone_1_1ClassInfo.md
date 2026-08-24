@@ -58,11 +58,6 @@ _A type identity that stays comparable across shared library boundaries._ [More.
 |  [**bool**](classendstone_1_1Identifier.md) | [**operator==**](#function-operator) ([**const**](classendstone_1_1Identifier.md) [**ClassInfo**](classendstone_1_1ClassInfo.md) & other) noexcept const<br> |
 
 
-## Public Static Functions
-
-| Type | Name |
-| ---: | :--- |
-|  [**ClassInfo**](classendstone_1_1ClassInfo.md) | [**of**](#function-of) () noexcept<br>_The identity of T._  |
 
 
 
@@ -104,7 +99,7 @@ libc++ compares `std::type_info` by address, and a type named from more than one
 ### function ClassInfo 
 
 ```C++
-inline explicit endstone::ClassInfo::ClassInfo (
+inline endstone::ClassInfo::ClassInfo (
     const std::type_info & info
 ) noexcept
 ```
@@ -150,23 +145,6 @@ inline const  char * endstone::ClassInfo::name () noexcept const
 inline bool endstone::ClassInfo::operator== (
     const  ClassInfo & other
 ) noexcept const
-```
-
-
-
-
-<hr>
-## Public Static Functions Documentation
-
-
-
-
-### function of 
-
-_The identity of T._ 
-```C++
-template<typename  T>
-static inline ClassInfo endstone::ClassInfo::of () noexcept
 ```
 
 

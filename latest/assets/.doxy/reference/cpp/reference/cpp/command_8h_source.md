@@ -154,10 +154,10 @@ public:
 
     [[nodiscard]] bool isRegistered() const { return command_map_ != nullptr; }
 
-    [[nodiscard]] ClassInfo getClassInfo() const override { return ClassInfo::of<Command>(); }
+    [[nodiscard]] ClassInfo getClassInfo() const override { return typeid(Command); }
     [[nodiscard]] bool isInstanceOf(ClassInfo target) const override
     {
-        return target == ClassInfo::of<Command>() || target == ClassInfo::of<Object>();
+        return target == typeid(Command) || target == typeid(Object);
     }
 
 private:

@@ -107,7 +107,7 @@ private:
         forEach([&func](const T &elem) { return func(&elem); });
     }
 
-    [[nodiscard]] ClassInfo getClassInfo() const noexcept override { return ClassInfo::of<T>(); }
+    [[nodiscard]] ClassInfo getClassInfo() const noexcept override { return typeid(T); }
 };
 }  // namespace endstone
 
