@@ -157,6 +157,7 @@ GameplayHandlerResult<CoordinatorResult> ScriptBlockGameplayHandler::handleEvent
 
             auto result = ENDSTONE_VHOOK_CALL_ORIGINAL(&ScriptBlockGameplayHandler::handleEvent2, this, event);
             if (auto *player = WeakEntityRef(arg.value().player).tryUnwrap<::Player>(); player) {
+                player->addOrRemoveComponent<endstone::core::InternalSignInteractFlagComponent>(false);
                 player->addOrRemoveComponent<endstone::core::InternalSignPlaceFlagComponent>(
                     result.return_value == CoordinatorResult::Continue &&
                     arg.value().permutation_to_place.hasProperty(BlockProperty::Sign));
