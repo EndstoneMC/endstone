@@ -14,6 +14,7 @@
 
 #include "bedrock/world/actor/mob.h"
 
+#include <cmath>
 #include <iostream>
 
 #include "bedrock/entity/components/damage_sensor_component.h"
@@ -30,20 +31,41 @@
 
 void Mob::knockback(Actor *source, float damage, float dx, float dz, const KnockbackParameters &parameters)
 {
-    const auto before = getPosDelta();
-    ENDSTONE_HOOK_CALL_ORIGINAL(&Mob::knockback, this, source, damage, dx, dz, parameters);
-    const auto after = getPosDelta();
-    auto diff = after - before;
+    auto scale = 1.0F;
+    if (parameters.extra_knockback_approach == ExtraKnockbackApproach::MultiplyReduced &&
+        parameters.extra_knockback_power > 0.0F) {
+        scale *= 1.0F + parameters.extra_knockback_power * 0.1F;
+    }
+    if (parameters.scale_with_damage) {
+        scale *= std::fmax(std::sqrt(damage), 1.0F);
+    }
+
+    const auto length = std::sqrt(dx * dx + dz * dz);
+    const auto horizontal = parameters.power.x * scale;
+    const auto raw_x = length < 0.0001F ? 0.0F : -dx / length * horizontal;
+    const auto raw_y = parameters.power.y * scale * 1.2F;
+    const auto raw_z = length < 0.0001F ? 0.0F : -dz / length * horizontal;
 
     const auto &server = endstone::core::EndstoneServer::getInstance();
     endstone::ActorKnockbackEvent e{getEndstoneActor<endstone::core::EndstoneMob>(),
                                     source == nullptr ? nullptr : source->getEndstoneActor(),
-                                    {diff.x, diff.y, diff.z}};
+                                    horizontal,
+                                    {raw_x, raw_y, raw_z}};
     server.getPluginManager().callEvent(e);
+    if (e.isCancelled()) {
+        return;
+    }
 
     const auto knockback = e.getKnockback();
-    diff = e.isCancelled() ? Vec3::ZERO : Vec3{knockback.getX(), knockback.getY(), knockback.getZ()};
-    setPosDelta(before + diff);
+    if (knockback.getX() == raw_x && knockback.getY() == raw_y && knockback.getZ() == raw_z) {
+        ENDSTONE_HOOK_CALL_ORIGINAL(&Mob::knockback, this, source, damage, dx, dz, parameters);
+        return;
+    }
+
+    auto adjusted = parameters;
+    adjusted.power.x = std::sqrt(knockback.getX() * knockback.getX() + knockback.getZ() * knockback.getZ()) / scale;
+    adjusted.power.y = knockback.getY() / 1.2F / scale;
+    ENDSTONE_HOOK_CALL_ORIGINAL(&Mob::knockback, this, source, damage, -knockback.getX(), -knockback.getZ(), adjusted);
 }
 
 // bool Mob::_hurt(const ActorDamageSource &source, float damage, bool knock, bool ignite)

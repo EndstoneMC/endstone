@@ -45,6 +45,7 @@ def test_actor_knockback(recorder: EventRecorder) -> None:
     """Verify ActorKnockbackEvent carries a three-component knockback vector."""
     for snapshot in recorder.require("ActorKnockbackEvent"):
         assert len(snapshot["knockback"]) == 3
+        assert snapshot["force"] >= 0.0
 
 
 def test_actor_teleport(recorder: EventRecorder) -> None:

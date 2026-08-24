@@ -125,10 +125,12 @@ void init_event(py::module_ &m, py::class_<Event, PyEvent> &event)
         .def_property_readonly("source", &ActorKnockbackEvent::getSource,
                                "The source actor that has caused knockback to the defender, or `None` if the "
                                "knockback is not caused by an actor.")
+        .def_property_readonly("force", &ActorKnockbackEvent::getForce, "The raw force of the knockback.")
         .def_property("knockback", &ActorKnockbackEvent::getKnockback, &ActorKnockbackEvent::setKnockback, R"doc(
     The knockback that will be applied to the entity.
 
-    Note: the getter returns a copy; changes must be applied via the setter.
+    Note: this is the knockback before the entity's knockback resistance is taken into account, and the getter
+    returns a copy; changes must be applied via the setter.
 )doc");
     py::class_<ActorPickupItemEvent, ActorEvent<Actor>, ICancellable>(m, "ActorPickupItemEvent", R"doc(
     Called when an `Actor` picks an item up from the ground.

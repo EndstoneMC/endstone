@@ -378,11 +378,18 @@ class ActorKnockbackEvent(MobEvent, Cancellable):
         """
 
     @property
+    def force(self) -> float:
+        """
+        The raw force of the knockback.
+        """
+
+    @property
     def knockback(self) -> Vector:
         """
         The knockback that will be applied to the entity.
 
-        Note: the getter returns a copy; changes must be applied via the setter.
+        Note: this is the knockback before the entity's knockback resistance is taken into account, and the getter
+        returns a copy; changes must be applied via the setter.
         """
 
     @knockback.setter

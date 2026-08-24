@@ -108,6 +108,7 @@ class ActorEventListener(EventListener):
             event,
             f"{event.actor.name} ({event.actor.type}) is knocked by {event.knockback}",
             actor_type=str(event.actor.type),
+            force=event.force,
             knockback=(event.knockback.x, event.knockback.y, event.knockback.z),
             has_source=event.source is not None,
         )

@@ -27,8 +27,8 @@ class ActorKnockbackEvent : public Cancellable<ActorEvent<Mob>> {
 public:
     ENDSTONE_EVENT(ActorKnockbackEvent);
 
-    explicit ActorKnockbackEvent(const NotNull<Mob> &mob, const Nullable<Actor> &source, Vector knockback)
-        : Cancellable(mob), source_(source), knockback_(knockback)
+    ActorKnockbackEvent(const NotNull<Mob> &mob, const Nullable<Actor> &source, const float force, Vector knockback)
+        : Cancellable(mob), source_(source), force_(force), knockback_(knockback)
     {
     }
 
@@ -40,10 +40,18 @@ public:
     [[nodiscard]] const Nullable<Actor> &getSource() const { return source_; }
 
     /**
+     * Gets the raw force of the knockback.
+     *
+     * @return the knockback force
+     */
+    [[nodiscard]] float getForce() const { return force_; }
+
+    /**
      * Gets the knockback that will be applied to the entity.
      *
      * <p>
-     * <b>Note:</b> this method returns a copy; changes must be applied via setKnockback().
+     * <b>Note:</b> this is the knockback before the entity's knockback resistance is taken into account, and this
+     * method returns a copy; changes must be applied via setKnockback().
      *
      * @return the knockback
      */
@@ -58,7 +66,7 @@ public:
 
 private:
     Nullable<Actor> source_;
-    Vector raw_knockback_;
+    float force_;
     Vector knockback_;
 };
 

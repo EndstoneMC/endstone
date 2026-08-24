@@ -141,6 +141,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - `Block.set_type`, `BlockState.type`, `Server.create_block_data` and `Inventory.contains`/`contains_at_least`/`all`/`first`/`remove` take an `Identifier` (e.g. `BlockType.AIR`). Plain `"namespace:key"` strings are still accepted.
 - `str()` on `BlockType`, `Enchantment` and `ItemType` returns a plain `"namespace:key"` string instead of the underlying `Identifier` repr.
 - **BREAKING**: `Server::createBossBar()` is no longer `const`, since the server now keeps track of the boss bars it hands out. C++ plugins holding a `const Server &` need a non-const one; Python call sites are unchanged.
+- **BREAKING**: `ActorKnockbackEvent` is called before the knockback is applied instead of after it. `knockback` is the vector Bedrock computed for this hit, before the mob's knockback resistance is taken off, and the new `force` reports the raw horizontal power behind it. Cancelling now stops Bedrock applying anything at all, the attacker's own slowdown included. Two gaps remain: only entity-sourced damage reaches the event, because explosions push their victims through a separate code path, and the event is still called a second time for the sprint or Knockback-enchantment bonus with no way to tell that call from the first.
 
 #### Platform
 
