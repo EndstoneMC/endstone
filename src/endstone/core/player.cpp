@@ -300,9 +300,10 @@ void EndstonePlayer::sendBlockUpdate(const Location &location, const BlockActorS
     const auto packet = MinecraftPackets::createPacket(MinecraftPacketIds::BlockActorData);
     auto &pk = static_cast<BlockActorDataPacket &>(*packet);
     pk.payload.pos = {location.getBlockX(), location.getBlockY(), location.getBlockZ()};
-    if (!state->serialize(pk.payload.data)) {
-        return;
-    }
+    Preconditions::checkState(state->serialize(pk.payload.data), "Unable to serialize the block entity state.");
+    pk.payload.data.putInt("x", pk.payload.pos.x);
+    pk.payload.data.putInt("y", pk.payload.pos.y);
+    pk.payload.data.putInt("z", pk.payload.pos.z);
     getHandle().sendNetworkPacket(*packet);
 }
 

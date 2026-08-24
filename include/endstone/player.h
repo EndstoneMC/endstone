@@ -22,6 +22,7 @@
 
 #include "endstone/ability.h"
 #include "endstone/actor/mob.h"
+#include "endstone/block/block_actor_state.h"
 #include "endstone/form/action_form.h"
 #include "endstone/form/message_form.h"
 #include "endstone/form/modal_form.h"
@@ -36,8 +37,6 @@
 #include "endstone/util/uuid.h"
 
 namespace endstone {
-
-class BlockActorState;
 
 /**
  * Represents a player.
