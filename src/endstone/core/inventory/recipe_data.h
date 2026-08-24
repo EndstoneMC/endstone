@@ -41,7 +41,7 @@ public:
     [[nodiscard]] const std::vector<Nullable<endstone::RecipeIngredient>> &getIngredients() const;
     [[nodiscard]] Nullable<endstone::RecipeIngredient> getIngredient(std::size_t index) const;
     [[nodiscard]] const ::Recipe &getHandle() const { return *recipe_; }
-    [[nodiscard]] const std::string &getRecipeId() const { return recipe_->getRecipeId(); }
+    [[nodiscard]] const std::string &getId() const { return recipe_->getRecipeId(); }
     [[nodiscard]] const std::string &getTag() const { return recipe_->getTag().getString(); }
 
 protected:
@@ -55,9 +55,9 @@ class EndstoneRecipeBase : public Interface, protected EndstoneRecipeData {
 public:
     explicit EndstoneRecipeBase(std::shared_ptr<const ::Recipe> recipe) : EndstoneRecipeData(std::move(recipe)) {}
 
-    [[nodiscard]] const std::type_info &getClassTypeId() const override { return typeid(Interface); }
+    [[nodiscard]] ClassInfo getClassInfo() const override { return typeid(Interface); }
 
-    [[nodiscard]] bool isInstanceOf(const std::type_info &target) const override
+    [[nodiscard]] bool isInstanceOf(ClassInfo target) const override
     {
         return core::isInstanceOf(*this, target);
     }
@@ -69,7 +69,7 @@ public:
         return EndstoneRecipeData::getIngredients();
     }
 
-    [[nodiscard]] const std::string &getRecipeId() const override { return EndstoneRecipeData::getRecipeId(); }
+    [[nodiscard]] const std::string &getId() const override { return EndstoneRecipeData::getId(); }
 
     [[nodiscard]] const std::string &getTag() const override { return EndstoneRecipeData::getTag(); }
 };

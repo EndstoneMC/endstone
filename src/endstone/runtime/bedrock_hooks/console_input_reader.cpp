@@ -14,37 +14,37 @@
 
 #include "bedrock/server/console_input_reader.h"
 
-#include <codecvt>
-#include <iostream>
-
-#include "bedrock/gameplayhandlers/block_gameplay_handler.h"
 #include "endstone/core/console/console.h"
 
 using endstone::core::EndstoneConsole;
 
-void ConsoleInputReader::startEndstone()
+namespace {
+struct ThreadProxyArgs {
+#ifndef _WIN32
+    void *thread_state;
+#endif
+    ConsoleInputReader *reader;
+};
+}  // namespace
+
+void *ConsoleInputReader::run(void *arg)
 {
-    read_console_ = false;
-    if (console_thread_.joinable()) {
-        console_thread_.join();
-    }
-    read_console_ = true;
-    console_thread_ = std::thread([this]() {
-        while (read_console_) {
-            auto line = EndstoneConsole::getInstance().readLine("> ");
-            if (line.has_value()) {
-                if (!line->empty()) {
-                    console_input_.try_enqueue(line.value());
-                    if (line.value() == "stop") {
-                        break;
-                    }
+    auto *self = static_cast<ThreadProxyArgs *>(arg)->reader;
+    while (self->read_console_) {
+        auto line = EndstoneConsole::getInstance().readLine("> ");
+        if (line.has_value()) {
+            if (!line->empty()) {
+                self->console_input_.try_enqueue(line.value());
+                if (line.value() == "stop") {
+                    break;
                 }
             }
-            else {
-                // Ctrl + C, EOF
-                console_input_.try_enqueue("stop");
-                break;
-            }
         }
-    });
+        else {
+            // Ctrl + C, EOF
+            self->console_input_.try_enqueue("stop");
+            break;
+        }
+    }
+    return nullptr;
 }

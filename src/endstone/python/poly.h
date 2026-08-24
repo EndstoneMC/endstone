@@ -21,7 +21,7 @@ namespace PYBIND11_NAMESPACE {
 /**
  * @brief Generic polymorphic type hook for all endstone::Object-derived types.
  *
- * Uses Object::getClassTypeId() to report the public API type to pybind11,
+ * Uses Object::getClassInfo() to report the public API type to pybind11,
  * enabling correct isinstance() dispatch without per-type hooks.
  */
 template <typename T>
@@ -31,7 +31,7 @@ struct polymorphic_type_hook<T, std::enable_if_t<std::is_base_of_v<endstone::Obj
         if (!src) {
             return src;
         }
-        type = &src->getClassTypeId();
+        type = &src->getClassInfo().info();
         return src;
     }
 };

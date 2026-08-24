@@ -51,6 +51,11 @@ if (NOT CMAKE_SOURCE_DIR STREQUAL PROJECT_SOURCE_DIR)
     return()
 endif ()
 
+if (CODE_COVERAGE AND CMAKE_CXX_COMPILER_ID MATCHES "(GNU|Clang)")
+    add_compile_options(-g --coverage)
+    add_link_options(--coverage)
+endif ()
+
 # Implementations
 add_subdirectory(src/endstone/python)
 add_subdirectory(src/bedrock)
@@ -60,11 +65,6 @@ add_subdirectory(src/endstone/runtime)
 # Test
 if (NOT BUILD_TESTING STREQUAL OFF)
     enable_testing()
-
-    if (CODE_COVERAGE AND CMAKE_CXX_COMPILER_ID MATCHES "(GNU|Clang)")
-        set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -g --coverage")
-        set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -g --coverage")
-    endif ()
 
     find_package(GTest REQUIRED)
     include(GoogleTest)

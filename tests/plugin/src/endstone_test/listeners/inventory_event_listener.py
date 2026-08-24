@@ -1,6 +1,7 @@
 from endstone.event import (
     EnchantItemEvent,
     InventoryCloseEvent,
+    InventoryInteractEvent,
     InventoryOpenEvent,
     event_handler,
 )
@@ -24,6 +25,16 @@ class InventoryEventListener(EventListener):
             event,
             f"{event.player.name} closed an inventory of {event.inventory.size} slots",
             player=event.player.name,
+            size=event.inventory.size,
+        )
+
+    @event_handler
+    def on_inventory_interact(self, event: InventoryInteractEvent):
+        self.record(
+            event,
+            f"{event.who_clicked.name} interacted with an inventory of {event.inventory.size} slots",
+            always_log=True,
+            player=event.who_clicked.name,
             size=event.inventory.size,
         )
 

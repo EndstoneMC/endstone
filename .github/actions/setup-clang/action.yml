@@ -15,12 +15,23 @@ runs:
       env:
         LLVM_VERSION: ${{ inputs.llvm-version }}
       run: |
-        sudo apt-get update -y -q
-        sudo apt-get install -y -q build-essential lsb-release wget software-properties-common gnupg
-        sudo wget https://apt.llvm.org/llvm.sh
-        sudo chmod +x llvm.sh
-        sudo ./llvm.sh ${LLVM_VERSION}
-        sudo apt-get install -y -q libc++-${LLVM_VERSION}-dev libc++abi-${LLVM_VERSION}-dev clang-tools-${LLVM_VERSION}
+        set -euo pipefail
+        CODENAME=$(. /etc/os-release && echo "${VERSION_CODENAME}")
+        curl -fsSL --retry 10 --retry-delay 5 --retry-all-errors \
+          https://apt.llvm.org/llvm-snapshot.gpg.key \
+          | sudo tee /etc/apt/trusted.gpg.d/apt.llvm.org.asc > /dev/null
+        echo "deb https://apt.llvm.org/${CODENAME}/ llvm-toolchain-${CODENAME}-${LLVM_VERSION} main" \
+          | sudo tee /etc/apt/sources.list.d/llvm.list > /dev/null
+        sudo apt-get update -y -q -o Acquire::Retries=10
+        sudo apt-get install -y -q -o Acquire::Retries=10 \
+          build-essential \
+          clang-${LLVM_VERSION} \
+          lld-${LLVM_VERSION} \
+          llvm-${LLVM_VERSION} \
+          libc++-${LLVM_VERSION}-dev \
+          libc++abi-${LLVM_VERSION}-dev \
+          clang-tools-${LLVM_VERSION} \
+          libclang-rt-${LLVM_VERSION}-dev
         sudo update-alternatives --install /usr/bin/clang clang /usr/bin/clang-${LLVM_VERSION} 200
         sudo update-alternatives --install /usr/bin/clang++ clang++ /usr/bin/clang++-${LLVM_VERSION} 200
         sudo update-alternatives --install /usr/bin/llvm-cov llvm-cov /usr/bin/llvm-cov-${LLVM_VERSION} 100

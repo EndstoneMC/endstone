@@ -36,7 +36,7 @@ public:
     MOCK_METHOD(endstone::Scheduler &, getScheduler, (), (const, override));
     MOCK_METHOD(endstone::ServiceManager &, getServiceManager, (), (const, override));
     MOCK_METHOD(endstone::NotNull<endstone::MetricsBase>, createMetrics, (endstone::Plugin &, int), (override));
-    MOCK_METHOD(endstone::IRegistry *, _getRegistry, (const std::type_info &), (const, override));
+    MOCK_METHOD(endstone::IRegistry *, _getRegistry, (endstone::ClassInfo), (const, override));
     MOCK_METHOD(endstone::MapView *, getMap, (std::int64_t), (const, override));
     MOCK_METHOD(endstone::MapView &, createMap, (const endstone::NotNull<endstone::Dimension> &), (const, override));
     MOCK_METHOD(endstone::Level &, getLevel, (), (const, override));
@@ -47,7 +47,6 @@ public:
     MOCK_METHOD(endstone::Nullable<endstone::Player>, getPlayer, (endstone::UUID), (const, override));
     MOCK_METHOD(endstone::Nullable<endstone::Player>, getPlayer, (std::string), (const, override));
     MOCK_METHOD(int, getPort, (), (const, override));
-    MOCK_METHOD(int, getPortV6, (), (const, override));
     MOCK_METHOD(bool, getOnlineMode, (), (const, override));
     MOCK_METHOD(void, shutdown, (), (override));
     MOCK_METHOD(void, reload, (), (override));
@@ -66,10 +65,9 @@ public:
     MOCK_METHOD(float, getAverageTickUsage, (), (override));
     MOCK_METHOD(std::chrono::system_clock::time_point, getStartTime, (), (override));
     MOCK_METHOD(endstone::NotNull<endstone::BossBar>, createBossBar,
-                (std::string, endstone::BarColor, endstone::BarStyle), (const, override));
+                (std::string, endstone::BarColor, endstone::BarStyle), (override));
     MOCK_METHOD(endstone::NotNull<endstone::BossBar>, createBossBar,
-                (std::string, endstone::BarColor, endstone::BarStyle, std::vector<endstone::BarFlag>),
-                (const, override));
+                (std::string, endstone::BarColor, endstone::BarStyle, std::vector<endstone::BarFlag>), (override));
     MOCK_METHOD(endstone::NotNull<endstone::BlockData>, createBlockData, (endstone::BlockTypeId), (const, override));
     MOCK_METHOD(endstone::NotNull<endstone::BlockData>, createBlockData, (endstone::BlockTypeId, endstone::BlockStates),
                 (const, override));

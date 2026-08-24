@@ -61,7 +61,6 @@ static std::string buildAdvertisement(std::vector<std::string> parts, const ends
     parts[7] = event.getLevelName();
     parts[8] = magic_enum::enum_name(event.getGameMode());
     parts[10] = std::to_string(event.getLocalPort());
-    parts[11] = std::to_string(event.getLocalPortV6());
 
     std::string response = parts[0];
     for (std::size_t i = 1; i < parts.size(); ++i) {
@@ -85,11 +84,9 @@ static endstone::ServerListPingEvent callServerListPingEvent(endstone::SocketAdd
     auto game_mode = n > 8 ? magic_enum::enum_cast<endstone::GameMode>(parts[8]).value_or(endstone::GameMode::Survival)
                            : endstone::GameMode::Survival;
     auto local_port = n > 10 ? std::stoi(parts[10]) : 0;
-    auto local_port_v6 = n > 11 ? std::stoi(parts[11]) : 0;
 
     endstone::ServerListPingEvent event(std::move(address), motd, network_protocol_version, minecraft_version_network,
-                                        num_players, max_players, server_guid, level_name, game_mode, local_port,
-                                        local_port_v6);
+                                        num_players, max_players, server_guid, level_name, game_mode, local_port);
 
     auto &server = endstone::core::EndstoneServer::getInstance();
     server.getPluginManager().callEvent(event);

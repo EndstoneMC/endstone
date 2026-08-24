@@ -280,12 +280,6 @@ class Server:
         The game port that the server runs on.
         """
 
-    @property
-    def port_v6(self) -> int:
-        """
-        The game port (IPv6) that the server runs on.
-        """
-
     def shutdown(self) -> None:
         """
         Shutdowns the server, stopping everything.

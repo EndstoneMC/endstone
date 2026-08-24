@@ -74,15 +74,24 @@ public:
     void applyToItem(::CompoundTag &tag) const override
     {
         Base::applyToItem(tag);
-        tag.remove(WrittenBookItem::TAG_PAGES);
+        std::unique_ptr<::ListTag> list;
         if (hasPages()) {
-            auto list = std::make_unique<::ListTag>();
-            for (const auto &page : pages_) {
+            const auto *previous = tag.getList(WrittenBookItem::TAG_PAGES);
+            list = std::make_unique<::ListTag>();
+            for (auto i = 0; i < static_cast<int>(pages_.size()); ++i) {
+                const auto *previous_page = previous && i < previous->size() ? previous->getCompound(i) : nullptr;
+                if (previous_page && previous_page->getString(WrittenBookItem::TAG_PAGE_TEXT) == pages_[i]) {
+                    list->add(previous_page->clone());
+                    continue;
+                }
                 auto page_tag = std::make_unique<::CompoundTag>();
-                page_tag->putString(WrittenBookItem::TAG_PAGE_TEXT, page);
+                page_tag->putString(WrittenBookItem::TAG_PAGE_TEXT, pages_[i]);
                 page_tag->putString(WrittenBookItem::TAG_PAGE_PHOTO_NAME, "");
                 list->add(std::move(page_tag));
             }
+        }
+        tag.remove(WrittenBookItem::TAG_PAGES);
+        if (list) {
             tag.put(WrittenBookItem::TAG_PAGES, std::move(list));
         }
     }

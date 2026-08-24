@@ -62,7 +62,7 @@ public:
     /**
      * Sets the title of the book.
      *
-     * @note Limited to 32 characters. Removes title when given std::nullopt.
+     * @note Limited to 16 characters. Removes title when given std::nullopt.
      *
      * @param title the title to set
      */

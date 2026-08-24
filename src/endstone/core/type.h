@@ -14,8 +14,6 @@
 
 #pragma once
 
-#include <typeinfo>
-
 #include "endstone/object.h"
 
 namespace endstone::core {
@@ -35,11 +33,11 @@ void registerTypes();
  * @param target The type to check against.
  * @return True if `from` is `target` or derives from `target`.
  */
-bool isTypeInstanceOf(const std::type_info &from, const std::type_info &target);
+bool isTypeInstanceOf(ClassInfo from, ClassInfo target);
 
 /**
  * @brief Checks if the given object is an instance of (or subclass of) `target`.
  */
-bool isInstanceOf(const Object &obj, const std::type_info &target);
+bool isInstanceOf(const Object &obj, ClassInfo target);
 
 }  // namespace endstone::core

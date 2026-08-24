@@ -14,7 +14,6 @@
 
 #include "endstone/core/type.h"
 
-#include <typeindex>
 #include <unordered_map>
 
 #include <entt/meta/factory.hpp>
@@ -60,13 +59,13 @@
 namespace endstone::core {
 
 namespace {
-std::unordered_map<std::type_index, entt::meta_type> MetaLookup;
+std::unordered_map<ClassInfo, entt::meta_type> MetaLookup;
 
 template <typename T>
 entt::meta_factory<T> registerType()
 {
     auto factory = entt::meta_factory<T>{};
-    MetaLookup[std::type_index(typeid(T))] = entt::resolve<T>();
+    MetaLookup[typeid(T)] = entt::resolve<T>();
     return factory;
 }
 }  // namespace
@@ -120,22 +119,22 @@ void registerTypes()
     registerType<MolangIngredient>().base<RecipeIngredient>();
 }
 
-bool isTypeInstanceOf(const std::type_info &from, const std::type_info &target)
+bool isTypeInstanceOf(ClassInfo from, ClassInfo target)
 {
     if (from == target) {
         return true;
     }
-    auto it_from = MetaLookup.find(std::type_index(from));
-    auto it_to = MetaLookup.find(std::type_index(target));
+    auto it_from = MetaLookup.find(from);
+    auto it_to = MetaLookup.find(target);
     if (it_from == MetaLookup.end() || it_to == MetaLookup.end()) {
         return false;
     }
     return it_from->second.can_cast(it_to->second);
 }
 
-bool isInstanceOf(const Object &obj, const std::type_info &target)
+bool isInstanceOf(const Object &obj, ClassInfo target)
 {
-    return isTypeInstanceOf(obj.getClassTypeId(), target);
+    return isTypeInstanceOf(obj.getClassInfo(), target);
 }
 
 }  // namespace endstone::core
