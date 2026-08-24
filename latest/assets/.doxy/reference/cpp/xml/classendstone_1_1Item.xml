@@ -304,6 +304,7 @@
       <member refid="classendstone_1_1Actor_1aa099af11ae3053289f31c65c9126b50a" prot="public" virt="pure-virtual"><scope>endstone::Item</scope><name>isDead</name></member>
       <member refid="classendstone_1_1Actor_1a876f9f220c4628b15556f2b50b103928" prot="public" virt="pure-virtual"><scope>endstone::Item</scope><name>isInLava</name></member>
       <member refid="classendstone_1_1Object_1a1f8951c4894c2b8288fd4ef500218771" prot="public" virt="pure-virtual"><scope>endstone::Item</scope><name>isInstanceOf</name></member>
+      <member refid="classendstone_1_1Object_1a09996a819d3c34ac1aaceec65afd1b86" prot="public" virt="non-virtual"><scope>endstone::Item</scope><name>isInstanceOf</name></member>
       <member refid="classendstone_1_1Actor_1a07d1ec2bc5458fbd0c4d60711e4ddcd1" prot="public" virt="pure-virtual"><scope>endstone::Item</scope><name>isInWater</name></member>
       <member refid="classendstone_1_1Actor_1a26211c565a42de6f28565bed6d3c854b" prot="public" virt="pure-virtual"><scope>endstone::Item</scope><name>isNameTagAlwaysVisible</name></member>
       <member refid="classendstone_1_1Actor_1ada87051d8b64c9df5cab73732bddf710" prot="public" virt="pure-virtual"><scope>endstone::Item</scope><name>isNameTagVisible</name></member>

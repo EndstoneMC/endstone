@@ -89,6 +89,7 @@
       <member refid="classendstone_1_1ItemTagIngredient_1a6dfd8323c891c0fd1f40eee218f919eb" prot="public" virt="pure-virtual"><scope>endstone::ItemTagIngredient</scope><name>getItemTag</name></member>
       <member refid="classendstone_1_1Object_1ae8213ae15ad1b14e4631399c6b18960a" prot="public" virt="non-virtual"><scope>endstone::ItemTagIngredient</scope><name>is</name></member>
       <member refid="classendstone_1_1Object_1a1f8951c4894c2b8288fd4ef500218771" prot="public" virt="pure-virtual"><scope>endstone::ItemTagIngredient</scope><name>isInstanceOf</name></member>
+      <member refid="classendstone_1_1Object_1a09996a819d3c34ac1aaceec65afd1b86" prot="public" virt="non-virtual"><scope>endstone::ItemTagIngredient</scope><name>isInstanceOf</name></member>
       <member refid="classendstone_1_1RecipeIngredient_1a66b2e4dadf5693b58412099c533fc430" prot="public" virt="pure-virtual"><scope>endstone::ItemTagIngredient</scope><name>test</name></member>
       <member refid="classendstone_1_1ItemTagIngredient_1a51465ac4b0a4b583c5601185c3c5820e" prot="public" virt="non-virtual"><scope>endstone::ItemTagIngredient</scope><name>~ItemTagIngredient</name></member>
       <member refid="classendstone_1_1Object_1adfddc886af4b1d0e09ddac7d0391b4d2" prot="public" virt="virtual"><scope>endstone::ItemTagIngredient</scope><name>~Object</name></member>

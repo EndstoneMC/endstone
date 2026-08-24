@@ -105,6 +105,7 @@
       <member refid="classendstone_1_1SmithingTrimRecipe_1a50bcbd929db9884a7c17f412e12ced64" prot="public" virt="pure-virtual"><scope>endstone::SmithingTrimRecipe</scope><name>getTemplate</name></member>
       <member refid="classendstone_1_1Object_1ae8213ae15ad1b14e4631399c6b18960a" prot="public" virt="non-virtual"><scope>endstone::SmithingTrimRecipe</scope><name>is</name></member>
       <member refid="classendstone_1_1Object_1a1f8951c4894c2b8288fd4ef500218771" prot="public" virt="pure-virtual"><scope>endstone::SmithingTrimRecipe</scope><name>isInstanceOf</name></member>
+      <member refid="classendstone_1_1Object_1a09996a819d3c34ac1aaceec65afd1b86" prot="public" virt="non-virtual"><scope>endstone::SmithingTrimRecipe</scope><name>isInstanceOf</name></member>
       <member refid="classendstone_1_1Object_1adfddc886af4b1d0e09ddac7d0391b4d2" prot="public" virt="virtual"><scope>endstone::SmithingTrimRecipe</scope><name>~Object</name></member>
       <member refid="classendstone_1_1Recipe_1a8252ec2109ad301042cda25df98b923e" prot="public" virt="non-virtual"><scope>endstone::SmithingTrimRecipe</scope><name>~Recipe</name></member>
       <member refid="classendstone_1_1SmithingRecipe_1a813e4b0f6778211c6bd0cf73143039f2" prot="public" virt="non-virtual"><scope>endstone::SmithingTrimRecipe</scope><name>~SmithingRecipe</name></member>

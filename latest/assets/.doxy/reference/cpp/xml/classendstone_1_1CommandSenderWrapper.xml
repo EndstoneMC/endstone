@@ -648,6 +648,7 @@
       <member refid="classendstone_1_1CommandSenderWrapper_1aeb143eeb38faebf2a26753f885f8e8f3" prot="public" virt="virtual"><scope>endstone::CommandSenderWrapper</scope><name>hasPermission</name></member>
       <member refid="classendstone_1_1Object_1ae8213ae15ad1b14e4631399c6b18960a" prot="public" virt="non-virtual"><scope>endstone::CommandSenderWrapper</scope><name>is</name></member>
       <member refid="classendstone_1_1CommandSenderWrapper_1a7c322d82ca6b5adb59548c236557aac2" prot="public" virt="virtual"><scope>endstone::CommandSenderWrapper</scope><name>isInstanceOf</name></member>
+      <member refid="classendstone_1_1Object_1a09996a819d3c34ac1aaceec65afd1b86" prot="public" virt="non-virtual" ambiguityscope="endstone::CommandSender::"><scope>endstone::CommandSenderWrapper</scope><name>isInstanceOf</name></member>
       <member refid="classendstone_1_1CommandSenderWrapper_1a07e8de81fb735c7745c96cbb4d022889" prot="public" virt="virtual"><scope>endstone::CommandSenderWrapper</scope><name>isPermissionSet</name></member>
       <member refid="classendstone_1_1CommandSenderWrapper_1a80e684c56f2598bd7d63f72280b7300b" prot="public" virt="virtual"><scope>endstone::CommandSenderWrapper</scope><name>isPermissionSet</name></member>
       <member refid="classendstone_1_1CommandSenderWrapper_1a90e1149cfbcb7b6e36a73c4172f84dc5" prot="private" virt="non-virtual"><scope>endstone::CommandSenderWrapper</scope><name>on_error_</name></member>

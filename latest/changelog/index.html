@@ -5675,6 +5675,7 @@ and this project adheres to <a href="https://semver.org/spec/v2.0.0.html">Semant
 <h4 id="api-behaviour">API behaviour<a class="headerlink" href="#api-behaviour" title="Permanent link">&para;</a></h4>
 <ul>
 <li>Fixed <code>Dimension.actors</code> and <code>Level.actors</code> leaving out connected players.</li>
+<li>Fixed cancelling <code>PlayerDropItemEvent</code> destroying the item when it was thrown from the hand.</li>
 <li>Fixed <code>PlayerBedLeaveEvent</code> only being called when a player pressed the leave button. It now also fires when morning comes, when the bed is broken or obstructed, and when the player is woken by anything else, and the <code>bed</code> block it reports is the bed being slept in rather than the respawn point.</li>
 <li>Fixed every vanilla command failing when dispatched through a <code>CommandSenderWrapper</code>, which did not report its own type.</li>
 <li>Fixed <code>str()</code> on a <code>Translatable</code> giving an object repr instead of its text.</li>

@@ -84,6 +84,7 @@
       <member refid="classendstone_1_1ExactIngredient_1aebd2187bb1fdd25ecef14a081dccc3c5" prot="public" virt="pure-virtual"><scope>endstone::ExactIngredient</scope><name>getItemStack</name></member>
       <member refid="classendstone_1_1Object_1ae8213ae15ad1b14e4631399c6b18960a" prot="public" virt="non-virtual"><scope>endstone::ExactIngredient</scope><name>is</name></member>
       <member refid="classendstone_1_1Object_1a1f8951c4894c2b8288fd4ef500218771" prot="public" virt="pure-virtual"><scope>endstone::ExactIngredient</scope><name>isInstanceOf</name></member>
+      <member refid="classendstone_1_1Object_1a09996a819d3c34ac1aaceec65afd1b86" prot="public" virt="non-virtual"><scope>endstone::ExactIngredient</scope><name>isInstanceOf</name></member>
       <member refid="classendstone_1_1RecipeIngredient_1a66b2e4dadf5693b58412099c533fc430" prot="public" virt="pure-virtual"><scope>endstone::ExactIngredient</scope><name>test</name></member>
       <member refid="classendstone_1_1ExactIngredient_1af7fc8203b94e1c56bbe91f2c58bc8593" prot="public" virt="non-virtual"><scope>endstone::ExactIngredient</scope><name>~ExactIngredient</name></member>
       <member refid="classendstone_1_1Object_1adfddc886af4b1d0e09ddac7d0391b4d2" prot="public" virt="virtual"><scope>endstone::ExactIngredient</scope><name>~Object</name></member>

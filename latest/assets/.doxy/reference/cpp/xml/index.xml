@@ -1997,6 +1997,7 @@
     <member refid="classendstone_1_1Object_1adfddc886af4b1d0e09ddac7d0391b4d2" kind="function"><name>~Object</name></member>
     <member refid="classendstone_1_1Object_1a3e2df17c95cf63580e95c84f783636c4" kind="function"><name>getClassInfo</name></member>
     <member refid="classendstone_1_1Object_1a1f8951c4894c2b8288fd4ef500218771" kind="function"><name>isInstanceOf</name></member>
+    <member refid="classendstone_1_1Object_1a09996a819d3c34ac1aaceec65afd1b86" kind="function"><name>isInstanceOf</name></member>
     <member refid="classendstone_1_1Object_1a798b5128ce018bbbe8ca949ba78c3db1" kind="function"><name>as</name></member>
     <member refid="classendstone_1_1Object_1ae0f38a62da4c186fce272145e2590cc1" kind="function"><name>as</name></member>
     <member refid="classendstone_1_1Object_1ae8213ae15ad1b14e4631399c6b18960a" kind="function"><name>is</name></member>
