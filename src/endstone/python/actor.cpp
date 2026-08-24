@@ -251,6 +251,8 @@ void init_actor(py::module_ &m, py_class<Actor> &actor, py_class<Mob> &mob)
     with a health bar (e.g. `Player`, `EnderDragon`, `Wither`, etc.) will have their bar scaled
     accordingly.
 )doc")
+        .def_property("no_damage_ticks", &Mob::getNoDamageTicks, &Mob::setNoDamageTicks,
+                      "The mob's current no-damage ticks.")
         .def("has_attribute", &Mob::hasAttribute, py::arg("attribute"),
              "Checks whether the given attribute is present on the object.")
         .def("get_attribute", &Mob::getAttribute, py::arg("attribute"),

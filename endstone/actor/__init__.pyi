@@ -234,6 +234,14 @@ class Mob(Actor):
 
     @max_health.setter
     def max_health(self, arg1: int) -> None: ...
+    @property
+    def no_damage_ticks(self) -> int:
+        """
+        The mob's current no-damage ticks.
+        """
+
+    @no_damage_ticks.setter
+    def no_damage_ticks(self, arg1: int) -> None: ...
     def has_attribute(self, attribute: Identifier[Attribute] | str) -> bool:
         """
         Checks whether the given attribute is present on the object.
