@@ -237,10 +237,10 @@ public:
      */
     [[nodiscard]] bool isRegistered() const { return command_map_ != nullptr; }
 
-    [[nodiscard]] const std::type_info &getClassTypeId() const override { return typeid(Command); }
-    [[nodiscard]] bool isInstanceOf(const std::type_info &target) const override
+    [[nodiscard]] ClassInfo getClassInfo() const override { return typeid(Command); }
+    [[nodiscard]] bool isInstanceOf(ClassInfo target) const override
     {
-        return typeid(Command) == target || typeid(Object) == target;
+        return target == typeid(Command) || target == typeid(Object);
     }
 
 private:

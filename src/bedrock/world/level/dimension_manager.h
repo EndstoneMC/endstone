@@ -39,6 +39,7 @@ public:
     std::optional<DimensionType> serverRegisterCustomDimension(std::string_view name, const mce::UUID &pack_id);
     WeakRef<Dimension> getRandomDimension(Random &random);
     WeakRef<Dimension> getOrCreateDimension(DimensionType dimension_type);
+    WeakRef<Dimension> getOrCreateDimension(std::string_view name);
     WeakRef<Dimension> getDimension(DimensionType dimension_type) const;
     DimensionType getDimensionId(std::string_view name) const;
     bool hasDimensions() const;

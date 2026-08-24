@@ -121,6 +121,15 @@ extra = 0
 pattern = "41 57 41 56 53 48 81 EC ? ? ? ? 49 89 F6 48 89 FB 48 8B 8F ? ? ? ?"
 
 [[signatures]]
+name = "_ZN13NetworkSystem23onNewIncomingConnectionERK17NetworkIdentifierONSt3__110shared_ptrI11NetworkPeerEE"
+relative = false
+extra = 0
+# 1. use NetworkSystem's RTTI vtable `_ZTV13NetworkSystem` and take the primary (offset-to-top 0) one
+# 2. Connector::ConnectionCallbacks is the first base, so onNewIncomingConnection is the 3rd slot; the four
+#    trivial port accessors sit 0x20 apart further down and pin the layout
+pattern = "55 41 57 41 56 41 55 41 54 53 48 83 EC 58 49 89 D7 49 89 F6 48 89 FB 48 8B 47 78"
+
+[[signatures]]
 name = "_ZN10BedrockLog10LogDetails7_log_vaE9LogAreaIDjPKciiS3_P13__va_list_tag"
 relative = false
 extra = 0
@@ -332,6 +341,25 @@ rip_relative = true
 rip_offset = 1
 
 [[signatures]]
+name = "_ZN18ConsoleInputReader3runEPv"
+relative = false
+extra = 0
+# BDS has no symbol for this - it is the anonymous libc++ __thread_proxy for the lambda that
+# ConsoleInputReader's constructor hands to pthread_create. The name is Endstone's own, and only has to
+# match the detour exported by libendstone_runtime.so.
+# 1. find bytes "53 74 61 72 74 69 6E 67 20 53 65 72 76 65 72 00" = "Starting Server\0" (unique); its lone
+#    data xref is a `lea` inside DedicatedServer::start (see that entry)
+# 2. the reader is constructed a few hundred bytes below, right after the Version/Branch/Commit ID banner
+#    and before server.properties is read; scan down for the only `call pthread_create` in the function
+# 3. the `lea rdx, <fn>` feeding that call is the thread entry - cut the pattern there, not on the
+#    prologue, which is the generic libc++ thread-proxy shape shared with every other std::thread lambda
+# 4. confirm the body: it tests the read-console flag at +0x50, getlines into std::cin, enqueues into the
+#    SPSCQueue at +0x40 (`cmp <reg>, 200h` = its 512-element blocks) and breaks on a 4-char "stop"
+pattern = "48 8D 15 ? ? ? ? 48 8D BC 24 ? ? ? ? 31 F6 48 89 D9 E8"
+rip_relative = true
+rip_offset = 3
+
+[[signatures]]
 name = "_ZN25CraftingDataPacketPayload11fromRecipesERK7Recipesb"
 relative = false
 extra = 0
@@ -353,6 +381,21 @@ extra = 0
 pattern = "E8 ? ? ? ? 89 C5 48 8D BC 24 ? ? ? ? E8 ? ? ? ? ? ? ? 48 89 DF"
 rip_relative = true
 rip_offset = 1
+
+[[signatures]]
+name = "_ZN16DimensionManager20getOrCreateDimensionENSt3__117basic_string_viewIcNS0_11char_traitsIcEEEE"
+relative = false
+extra = 0
+# 1. find the string "T *Bedrock::NonOwnerPointer<IDimensionFactory>::_get() const [T = IDimensionFactory]"
+#    (unique); it has six data xrefs from exactly two functions - two in
+#    _registerCustomDimensionWithFactory and four here
+# 2. this is the larger of the pair (~0x706): it opens with `id = mDimensionNameIdStore->getId(name);
+#    if (id == 0xFFFF) return {};`, looks the id up in mDimensionRegistry, and only then falls back to
+#    mDimensionFactory->create(name) / initializeDimension / registerDimension and fires
+#    mOnNewDimensionCreatedPublisher
+# 3. walk up to the prologue; rdi is the WeakRef<Dimension> sret and rsi `this`, so the store load is
+#    `mov rdi, [rsi+8]` right before the getId call and the `cmp ax, 0FFFFh` that follows it
+pattern = "55 41 57 41 56 41 55 41 54 53 48 81 EC ? ? ? ? 48 89 D3 49 89 F6 48 89 FD 48 8B 7E 08 48 89 D6 48 89 CA E8 ? ? ? ? 66 83 F8 FF"
 
 [[signatures]]
 name = "_ZN16DimensionManager29serverRegisterCustomDimensionENSt3__117basic_string_viewIcNS0_11char_traitsIcEEEERKN3mce4UUIDE"
@@ -492,29 +535,27 @@ rip_relative = true
 rip_offset = 1
 
 [[signatures]]
-name = "_ZN34ItemStackRequestActionCraftHandler17handleCraftActionERK31ItemStackRequestActionCraftBase"
+name = "_ZN20CraftHandlerCrafting18_handleCraftActionERK31ItemStackRequestActionCraftBase"
 relative = false
 extra = 0
-# 1. find bytes "33 34 49 74 65 6D 53 74 61 63 6B 52 65 71 75 65 73 74 41 63 74 69 6F 6E 43 72 61 66 74 48 61 6E 64 6C 65 72 00"
-#    = the Itanium typeinfo name "34ItemStackRequestActionCraftHandler\0" (unique); its lone data xref is
-#    _ZTI34ItemStackRequestActionCraftHandler at (that address - 8), and the lone data xref to the typeinfo
-#    is the class vtable at (that address - 8), whose first two slots are the D1/D0 destructors
-# 2. the class has exactly one virtual, so the vtable stops there; the rest of its members are emitted
-#    from the same TU and sit immediately after the destructors in .text. handleCraftAction is the large
-#    (~0x9e0) one that opens `mov rax, [rdi+8]` (mRequestActionHandler) /
-#    `mov rax, [rax+0F8h]` (mScreenValidation) / `test rax, rax` / `jz` / `mov rdi, [rax+0B0h]`
-#    (mContainerScreenValidator) / `mov rax, [rdi]` / `call qword [rax+18h]` - the
-#    ContainerScreenValidator::isCraftingImplemented dispatch that opens the body
-# 3. confirm identity in the body: it switches on `movzx eax, byte [<action>+8]`
-#    (ItemStackRequestAction::mActionType) with `cmp eax, 0Fh` (CraftRecipeOptional) and `cmp eax, 0Ch`
-#    (CraftRecipe), materialises the ItemStackNetResult immediates 7 (InvalidCraftRequest), 0Fh
-#    (RequestAlreadyInProgress) and 10h (FailedToInitSparseContainer) into one result register, and on the
-#    CraftRecipe branch dispatches `call qword [rax+38h]` on the action - vtable slot 7, getRecipeNetId
-# 4. cross-check the frame: the sibling members it sits beside are tiny (isCraftRequest, endRequestBatch,
-#    postRequest); handleCraftAction is the only one of them with a 0C8h frame and six pushes
-# 5. uniqueness: the pattern below matches exactly once in 1.26.44, and once in 1.26.33 and 1.26.40 - the
-#    two wildcarded operand bytes absorb the rbx/r14 and rbp/rbx register swaps across those builds
-pattern = "55 41 57 41 56 41 55 41 54 53 48 81 EC C8 00 00 00 ? 89 ? 48 89 ? 48 8B 47 08 48 8B 80 F8 00 00 00 48 85 C0 74 12 48 8B B8 B0 00 00 00 48 8B 07 FF 50 18 41 89 C7 EB 03 45 31 FF 48 8B ? 18"
+# 1. the class emits no RTTI descriptor here and the function carries no string, so anchor on the
+#    action-type switch that opens the body: the byte run "0F B6 46 08 83 F8 0E" =
+#    `movzx eax, byte [rsi+8]` (ItemStackRequestAction::mActionType) / `cmp eax, 0Eh` (CraftCreative)
+#    matches exactly once in .text - CraftHandlerCrafting is the only craft handler that dispatches on
+#    CraftCreative
+# 2. confirm identity: the compares that follow are `cmp eax, 0Dh` (CraftRecipeAuto, the recipe book) and
+#    `cmp eax, 0Ch` (CraftRecipe, the grid), separated by `mov bpl, 6` - the InvalidCraftRequest result
+#    the default arm falls back to
+# 3. walk back to the entry: the preceding bytes are the tail of the previous function, then
+#    `push rbp/r15/r14/r13/r12/rbx` / `sub rsp, 2B8h` / `mov r14, rsi` / `mov rbx, rdi` - the switch sits
+#    directly after, so the function starts 23 bytes before the anchor
+# 4. cross-check the body: "8D 04 85 1C 00 00 00" = `lea eax, [rax*4+1Ch]` (28 + mWorkbench*4, the first
+#    crafting slot) also matches exactly once in .text and lands inside this function, alongside the
+#    FullContainerName 0Dh (CraftingInputContainer) that feeds
+#    ItemStackRequestActionHandler::_getOrInitSparseContainer
+# 5. uniqueness: the pattern below matches exactly once in 1.26.44 and once in 1.26.40; the wildcarded
+#    operand bytes absorb the frame size and the four relative jump displacements
+pattern = "55 41 57 41 56 41 55 41 54 53 48 81 EC ? ? ? ? 49 89 F6 48 89 FB 0F B6 46 08 83 F8 0E 0F 84 ? ? ? ? 83 F8 0D 0F 84 ? ? ? ? 40 B5 06 83 F8 0C"
 
 [[signatures]]
 name = "_ZN20InventoryTransaction23executeWorldInteractionEPvR6PlayerRK15InventoryAction"
@@ -717,6 +758,22 @@ extra = 0
 pattern = "55 41 57 41 56 41 55 41 54 53 48 81 EC ? ? ? ? 45 89 CC 45 89 C6 89 CD 41 89 D5"
 
 [[signatures]]
+name = "_ZN6Player14stopSleepInBedEbb"
+relative = false
+extra = 0
+# 1. find bytes "33 20 73 74 6F 70 53 6C 65 65 70 20 62 65 64 20 70 6F 73 00" = "3 stopSleep bed pos\0"
+#    (unique)
+# 2. its lone data xref (an ActorValueValidation::_fireTelemetryEvent caller arg) is a `lea` 0x1b5 past
+#    the entry of this function
+# 3. walk up to the prologue - the nearest CC-padded entry above that `lea`
+# 4. confirm identity at the entry: the body opens on the isSleeping() dispatch (`mov rax, [rdi]` /
+#    `call qword [rax+150h]` / `test al, al` / `jz` - the early return for a player who is not sleeping),
+#    then loads the 3FE666663F19999Ah bounding-box immediate and reaches BedBlock::setOccupied /
+#    BedBlock::findWakeupPosition / BedBlockActor::stopSleepingOn
+# 5. cross-check the neighbourhood: startSleepInBed is 10B0h below it in the same TU
+pattern = "55 41 57 41 56 41 55 41 54 53 48 81 EC ? ? ? ? 89 D5 41 89 F5 49 89 FE 48 8B 07 FF 90 ? ? ? ? 84 C0 0F 84"
+
+[[signatures]]
 name = "_ZN6Player15startSleepInBedERK8BlockPosbf"
 relative = false
 extra = 0
@@ -724,6 +781,52 @@ extra = 0
 # 2. its lone data xref (a validateBlockPos label arg) is a `lea` inside this function
 # 3. walk up to the prologue
 pattern = "55 41 57 41 56 41 55 41 54 53 48 81 EC ? ? ? ? 0F 29 84 24 ? ? ? ? 89 D5 49 89 F6"
+
+[[signatures]]
+name = "_ZN6Player28setSpawnBlockRespawnPositionERK8BlockPos13DimensionType"
+relative = false
+extra = 0
+# 1. find bytes "31 20 73 65 74 53 70 61 77 6E 50 6F 69 6E 74 00" = "1 setSpawnPoint\0". It occurs exactly ONCE in
+#    read-only data and is the label BDS hands to ActorValueValidation::validateBlockPos
+# 2. take its rip-relative lea references in .text. On Windows there is exactly one and it is inside this
+#    function; on Linux there are three - Player::readAdditionalSaveData (~0x3ae0, far larger than the
+#    other two), this function (~0x2c7) and the 2-arg Player::setRespawnPosition (~0x283)
+# 3. separate the two small ones by their direct call sites, which is decisive and identical on both
+#    platforms: this function has exactly THREE direct callers (Player::setBedRespawnPosition,
+#    RespawnAnchorBlock::_trySetSpawn and SimulatedPlayer::create) and none of them references
+#    "commands.spawnpoint.success.single", whereas setRespawnPosition has exactly two and one of them does
+# 4. confirm the body: it opens by calling Actor::getPosition and Actor::getAABB, rounds the AABB's max Y
+#    through mce::Math::ceil to build a BlockPos, and builds SetSpawnPositionPacketPayload from
+#    (dimension, &mPlayerRespawnPoint.mPlayerPosition, &mPlayerRespawnPoint.mSpawnBlockPos). It returns bool,
+#    where setRespawnPosition returns void
+# 5. the pattern below starts at the function's first byte, which is also its .pdata / .eh_frame entry point
+# Verified against 1.26.44.3 (the version at the top of this file): the pattern matches EXACTLY ONCE in
+# .text, that match is the function's start address, and it resolves to the offset committed in
+# src/bedrock/symbols/.
+pattern = "55 41 57 41 56 41 54 53 48 83 EC 70 89 D5 49 89 F7"
+
+[[signatures]]
+name = "_ZN6Player18setRespawnPositionERK8BlockPos13DimensionType"
+relative = false
+extra = 0
+# 1. same anchor family as setSpawnBlockRespawnPosition above, but do not rely on it alone: on Windows this
+#    function carries no rip-relative reference to "1 setSpawnPoint" at all, and on Linux it is one of three
+#    that do
+# 2. the version-stable anchor is the caller. Find "commands.spawnpoint.success.single\0" (exactly one
+#    occurrence in read-only data); its lone referring function is SpawnPointCommand::execute
+# 3. this function is the target of a direct `call rel32` from SpawnPointCommand::execute. It has exactly TWO
+#    direct callers binary-wide - that one and ScriptModuleMinecraft::ScriptPlayer::setSpawnPoint - which is
+#    what separates it from setSpawnBlockRespawnPosition (three callers, none of them the command)
+# 4. confirm the body: unlike setSpawnBlockRespawnPosition it never calls Actor::getPosition or
+#    Actor::getAABB. It opens by comparing the incoming BlockPos and dimension against mPlayerRespawnPoint,
+#    references BlockPos::MIN and VanillaDimensions::Undefined, clears mSpawnBlockPos, and builds
+#    SetSpawnPositionPacketPayload through the (SpawnPositionType, dimension, BlockPos) ctor. It returns void
+# 5. it sits immediately after setSpawnBlockRespawnPosition in .text on both platforms - a useful sanity
+#    check, never the primary anchor
+# Verified against 1.26.44.3 (the version at the top of this file): the pattern matches EXACTLY ONCE in
+# .text, that match is the function's start address, and it resolves to the offset committed in
+# src/bedrock/symbols/.
+pattern = "55 41 57 41 56 41 54 53 48 83 EC 50 48 89 FB 8B 06"
 
 [[signatures]]
 name = "_ZN6Player17completeUsingItemEv"
@@ -997,3 +1100,39 @@ extra = 0
 # prologue through the `cvtsi2ss xmm2, ebp` / `movss xmm1, [rax+7Ch]` EXPERIENCE read that opens the
 # body; the wildcarded operands absorb the Player::EXPERIENCE lea displacement and the getAttribute call
 pattern = "55 41 57 41 56 41 54 53 48 81 EC C0 01 00 00 89 F5 48 89 FB 48 8D 35 ? ? ? ? E8 ? ? ? ? F3 0F 2A D5 F3 0F 10 48 7C"
+
+[[signatures]]
+name = "_ZN19TickingAreasManager22addTransientScopedAreaE13DimensionTypeRKNSt3__112basic_stringIcNS1_11char_traitsIcEENS1_9allocatorIcEEEEmN3mce4UUIDERK6Bounds"
+relative = false
+extra = 0
+# 1. the ELF carries no symtab, so anchor on RTTI: find the type name string that starts
+#    "N9Scripting10Reflection14MemberFunctionIXadL_ZN21ScriptModuleMinecraft24ScriptTickingAreaManager"
+#    "17createTickingArea" - it is unique and names the MemberFunction instantiation bound to that script API
+# 2. the pointers are relocated, not absolute, so walk .rela.dyn: the relocation whose addend is that
+#    string's address stores type_info::__name, so the type_info starts 8 bytes earlier; the relocation
+#    whose addend is the type_info address is the vtable's typeinfo slot
+# 3. vtable slots follow that slot - [0] and [1] are the complete and deleting destructors, so [2] is the
+#    virtual call thunk. The TARGET is the only function it calls that has exactly one caller in the image
+# 4. confirm identity from the body: it returns a 96-byte ScopedContext by sret, _Try_emplace-s the
+#    mPendingAreas map at this+24, walks the mActiveAreas tree keyed on the DimensionType argument, and
+#    takes an early-out that stores mce::UUID::EMPTY into the sret buffer and zeroes the rest when that
+#    dimension has no active list. The PendingArea it appends is 120 bytes with mEntityId = -1 and the
+#    scope byte set to 1
+# 5. cross-check: removeScopedAreas (below) sits 0x310 further on in the same TickingAreasManager cluster
+# the E8 rel32 is wildcarded; the rest is byte-identical across 1.26.40 and 1.26.44
+pattern = "55 41 57 41 56 41 55 41 54 53 48 81 EC 98 00 00 00 4D 89 CC 4C 89 44 24 10 48 89 4C 24 18 41 89 D5 49 89 F7 48 89 FB 89 54 24 0C 48 8D 7E 18 48 8D 54 24 0C 44 89 EE E8 ? ? ? ? 48 89 C5 49 8B 47 08"
+
+[[signatures]]
+name = "_ZN19TickingAreasManager17removeScopedAreasERKNSt3__16vectorIN3mce4UUIDENS0_9allocatorIS3_EEEE"
+relative = false
+extra = 0
+# 1. same RTTI walk as above, but starting from the MemberFunction type name that ends
+#    "24ScriptTickingAreaManager21removeAllTickingAreas"; its vtable slot [2] is that binding's call thunk
+# 2. that thunk calls ScriptTickingAreaManager::_removeTickingAreas - identify it as the callee with
+#    exactly two callers, the other being the removeTickingArea binding's call thunk
+# 3. _removeTickingAreas calls the TARGET, which is the callee with exactly two callers: _removeTickingAreas
+#    itself and ~ScriptTickingAreaManager
+# 4. confirm identity from the body: it walks the caller's vector<mce::UUID> (mce::UUID is 16 bytes, so the
+#    stride is 16) and drops every pending and active area whose scope byte is set and whose id matches
+# 5. cross-check: it sits 0x310 past addTransientScopedArea in the same TickingAreasManager cluster
+pattern = "55 41 57 41 56 41 55 41 54 53 48 83 EC 48 48 89 7C 24 08 0F 57 C0 0F 29 44 24 20 0F 29 44 24 10 C7 44 24 30 00 00 80 3F 4C 8B 36 48 8B 5E 08 49 39 DE 74 23"

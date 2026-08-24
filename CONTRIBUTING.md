@@ -149,7 +149,7 @@ relinks, so they can never go stale, and any failure fails the build.
 Nothing to run by hand. After changing a binding, build as usual and commit whatever appears in `git status`:
 
 ```bash
-cmake --build --preset conan-release
+cmake --build --preset conan-relwithdebinfo
 git status                 # the regenerated .pyi / __init__.py
 ```
 

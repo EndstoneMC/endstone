@@ -3,6 +3,7 @@
 
 # Build outputs
 build
+.conan2/p
 dist
 stubs
 wheelhouse

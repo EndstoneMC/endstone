@@ -1,6 +1,7 @@
 import pytest
 from endstone import Server
-from endstone.command import Command, CommandMap, CommandSender
+from endstone.command import Command, CommandMap, CommandSender, CommandSenderWrapper
+from endstone.lang import Translatable
 
 # =============================================================================
 # Fixtures
@@ -112,8 +113,41 @@ def test_register_with_metadata(command_map: CommandMap) -> None:
 def test_dispatch_an_unknown_command(
     command_map: CommandMap, sender: CommandSender
 ) -> None:
-    """Verify dispatching an unknown command line reports failure."""
-    assert command_map.dispatch(sender, "definitely_not_a_command") is False
+    """Verify an unknown command reports failure with the default message."""
+    errors = []
+    wrapper = CommandSenderWrapper(sender, on_error=errors.append)
+
+    assert command_map.dispatch(wrapper, "definitely_not_a_command value") is False
+    assert len(errors) == 1
+    assert isinstance(errors[0], Translatable)
+    assert errors[0].text == "commands.generic.unknown"
+    assert errors[0].params == ["definitely_not_a_command"]
+
+
+def test_unknown_command_message_can_be_replaced(
+    command_map: CommandMap, sender: CommandSender
+) -> None:
+    """Verify a listener can replace the unknown-command response."""
+    errors = []
+    wrapper = CommandSenderWrapper(sender, on_error=errors.append)
+
+    assert (
+        command_map.dispatch(wrapper, "/endstone_test_unknown_command_custom") is False
+    )
+    assert errors == ["Endstone Test replaced the unknown-command message"]
+
+
+def test_unknown_command_message_can_be_suppressed(
+    command_map: CommandMap, sender: CommandSender
+) -> None:
+    """Verify a listener can suppress the unknown-command response."""
+    errors = []
+    wrapper = CommandSenderWrapper(sender, on_error=errors.append)
+
+    assert (
+        command_map.dispatch(wrapper, "endstone_test_unknown_command_silent") is False
+    )
+    assert errors == []
 
 
 def test_clear_commands_exists(command_map: CommandMap) -> None:

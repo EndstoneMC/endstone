@@ -101,7 +101,7 @@ public:
 private:
     [[nodiscard]] py::object cast(const void *p) const
     {
-        auto *tinfo = py::detail::get_type_info(registry_.getTypeId());
+        auto *tinfo = py::detail::get_type_info(registry_.getClassInfo().info());
         return py::reinterpret_steal<py::object>(
             py::detail::type_caster_generic::cast(p, py::return_value_policy::reference, {}, tinfo, nullptr, nullptr));
     }

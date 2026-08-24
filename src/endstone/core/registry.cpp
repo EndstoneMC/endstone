@@ -26,6 +26,7 @@
 #include "bedrock/world/level/biome/biome.h"
 #include "bedrock/world/level/biome/registry/biome_registry.h"
 #include "bedrock/world/level/block/registry/block_type_registry.h"
+#include "endstone/core/ability.h"
 #include "endstone/core/actor/actor_type.h"
 #include "endstone/core/block/biome.h"
 #include "endstone/core/block/block_type.h"
@@ -37,6 +38,36 @@
 #include "endstone/core/server.h"
 
 namespace endstone::core {
+
+template <>
+std::vector<Identifier<Ability>> EndstoneRegistry<Ability, std::string>::identifiers() const
+{
+    std::vector<Identifier<Ability>> keys;
+    keys.reserve(EndstoneAbility::all().size());
+    for (const auto &entry : EndstoneAbility::all()) {
+        keys.emplace_back(entry.id);
+    }
+    return keys;
+}
+
+template <>
+const std::string *EndstoneRegistry<Ability, std::string>::getMinecraft(Identifier<Ability> id) const
+{
+    // cache is pre-populated, getMinecraft should not be called
+    return nullptr;
+}
+
+template <>
+std::unique_ptr<Registry<Ability>> EndstoneRegistry<Ability, std::string>::create()
+{
+    auto registry = std::make_unique<EndstoneRegistry>(
+        [](const auto &, const auto &) -> std::unique_ptr<Ability> { return nullptr; });
+
+    for (const auto &entry : EndstoneAbility::all()) {
+        registry->cache_.emplace(entry.id, std::make_unique<EndstoneAbility>(entry));
+    }
+    return registry;
+}
 
 template <>
 std::vector<Identifier<Enchantment>> EndstoneRegistry<Enchantment, Enchant>::identifiers() const

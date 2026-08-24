@@ -17,6 +17,7 @@
 #include <optional>
 #include <utility>
 
+#include "endstone/event/cancellable.h"
 #include "endstone/event/player/player_event.h"
 #include "endstone/inventory/item_stack.h"
 
@@ -24,13 +25,20 @@ namespace endstone {
 
 /**
  * Called when a player swings their arm.
+ *
+ * Cancelling stops the server acting on the swing at all. The swing is neither recorded nor shown to the other
+ * players in the dimension.
+ *
+ * @note The swinging player still sees their own arm move, because their client plays the animation without waiting
+ * for the server. The event covers swings the player starts. Swings the server drives itself, such as dropping an
+ * item, do not fire it.
  */
-class PlayerArmSwingEvent final : public PlayerEvent {
+class PlayerArmSwingEvent final : public Cancellable<PlayerEvent> {
 public:
     ENDSTONE_EVENT(PlayerArmSwingEvent);
 
     PlayerArmSwingEvent(const NotNull<Player> &player, std::optional<ItemStack> item)
-        : PlayerEvent(player), item_(std::move(item))
+        : Cancellable(player), item_(std::move(item))
     {
     }
 

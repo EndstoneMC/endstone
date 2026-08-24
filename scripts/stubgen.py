@@ -41,6 +41,17 @@ ALIASES = {
     "numpy.ndarray": "numpy.typing.NDArray",
 }
 
+# The engine only rewrites dotted names, so a bare one reaches the stub with no import behind it, and
+# pybind11_json calls its caster's type `json`. Rewrite it here, naming the JSON shapes the aliases
+# stubgen.pat declares; the composites come first so `dict[str, json]` does not decay to a bare
+# JsonValue. simplify() is the single hook that sees type text - annotations, bases and signatures,
+# never docstrings or literals.
+_REWRITES = [
+    (re.compile(r"(?:dict|collections\.abc\.Mapping)\[str, json\]"), "endstone.JsonObject"),
+    (re.compile(r"(?:list|collections\.abc\.Sequence)\[json\]"), "endstone.JsonArray"),
+    (re.compile(r"(?<![\w.])json(?![\w.])"), "endstone.JsonValue"),
+]
+
 # A namespaced value the pattern file did not claim, i.e. an Identifier constant
 # on a class its owner list does not cover.
 _UNTYPED_CONST_RE = re.compile(r"""^ +[A-Z][A-Z0-9_]*(: str)? = (['"])[\w.]+:[\w.]+\2$""", re.MULTILINE)
@@ -156,6 +167,14 @@ def main() -> None:
     opt = parser.parse_args()
 
     engine = load_engine(opt.engine)
+
+    def simplify(self, text: str, _original=engine.StubGen.simplify) -> str:
+        for pattern, replacement in _REWRITES:
+            text = pattern.sub(replacement, text)
+        return _original(self, text)
+
+    engine.StubGen.simplify = simplify
+
     patterns = engine.load_pattern_file(str(opt.pattern_file))
 
     import_root = stage(opt.source_dir, opt.extension, opt.work_dir)

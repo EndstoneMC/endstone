@@ -82,6 +82,8 @@ private:
     mutable const HashedString *last_match_;  // +40
 };
 
+bool operator<(const HashedString &lhs, const HashedString &rhs);
+
 namespace std {
 template <>
 struct hash<HashedString> {

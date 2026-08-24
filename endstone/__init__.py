@@ -1,9 +1,16 @@
+import typing
+
 import lazy_loader as lazy
+
+JsonValue: typing.TypeAlias = "JsonObject | JsonArray | str | int | float | bool | None"
+JsonObject: typing.TypeAlias = "dict[str, JsonValue]"
+JsonArray: typing.TypeAlias = "list[JsonValue]"
 
 __getattr__, __dir__, __all__ = lazy.attach(
     __name__,
     submod_attrs={
         "_python": [
+            "Ability",
             "ColorFormat",
             "GameMode",
             "GameRule",
@@ -31,6 +38,7 @@ __getattr__, __dir__, __all__ = lazy.attach(
             "lang",
             "level",
             "map",
+            "metrics",
             "nbt",
             "permissions",
             "plugin",
@@ -42,3 +50,5 @@ __getattr__, __dir__, __all__ = lazy.attach(
         "_version": ["__version__"],
     },
 )
+
+__all__.extend(["JsonArray", "JsonObject", "JsonValue"])

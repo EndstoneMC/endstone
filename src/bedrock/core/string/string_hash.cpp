@@ -95,3 +95,11 @@ bool HashedString::operator!=(const HashedString &other) const
 {
     return !(*this == other);
 }
+
+bool operator<(const HashedString &lhs, const HashedString &rhs)
+{
+    if (lhs.getHash() != rhs.getHash()) {
+        return lhs.getHash() < rhs.getHash();
+    }
+    return lhs.getString() < rhs.getString();
+}

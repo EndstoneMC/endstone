@@ -29,6 +29,7 @@ add_executable(endstone_test
         test_pointers.cpp
         test_scheduler.cpp
         test_service_manager.cpp
+        test_text_formatter.cpp
         test_thread_pool_executor.cpp
         test_uuid.cpp
         test_object.cpp

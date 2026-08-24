@@ -61,7 +61,9 @@ cannot return nullptr.
 Endstone's docs descend from Bukkit, and Paper (PaperMC) is the
 actively-maintained fork with the cleanest, most current Javadocs. When
 wording is ambiguous, copy-pasted, or missing, look up the matching class on
-**https://jd.papermc.io/paper/**:
+**https://jd.papermc.io/paper/26.2/** — the version is part of the URL, so an
+older one silently serves stale wording. `26.2` is the current line; bump it
+here when Paper moves on.
 
 - `org.bukkit.block.Block` ↔ `endstone::Block`
 - `org.bukkit.entity.Player` ↔ `endstone::Player`

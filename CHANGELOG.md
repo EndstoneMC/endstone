@@ -9,110 +9,186 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Added
 
-- Added `ActorExplodeEvent::setBlockList()` and `BlockExplodeEvent::setBlockList()`, and made their `BlockList` alias public, so the blown-up block list can be replaced wholesale from C++ as it already could from Python.
-- Added `Player.send_action_bar()` for sending a message above the player's hotbar.
-- Added `/restart` command (console-only) that gracefully restarts the server without manually relaunching.
-- Added support for custom Python events with optional cancellation.
-- Added `ActorType` to the registry API, along with the missing `ActorType.SULFUR_CUBE` constant.
-- Added an attribute API: `Mob.get_attribute()`, `Mob.has_attribute()` and `Mob.attributes` expose a living entity's attributes (health, movement speed, attack damage, etc.). Each `AttributeInstance` reports its current, base, minimum and maximum value, and takes `AttributeModifier`s at runtime.
-- Added `endstone.Identifier` for namespaced ids, so `dim.id.namespace` and `dim.id.key` are separable and a type checker can tell `Identifier[Dimension]` apart from `Identifier[ActorType]`. Plain strings are still accepted wherever an `Identifier` is required.
-- Added `BlockData.translation_key` for retrieving the translation key of a block.
-- Added `Dimension.mobs` and `Dimension.players`, mirroring Bukkit's `World#getLivingEntities()` and `World#getPlayers()`. Both narrow `Dimension.actors`, which lists everything in the dimension.
-- Added `Level.create_dimension()` for creating custom dimensions at runtime, which registers and returns an empty (void) dimension built from -64 to 320. A dimension's terrain and actors survive a restart but the registration does not, so call it again on every startup to get the same dimension back.
-- Added `WritableBookMeta`, `BookMeta` and `CrossbowMeta` item meta types.
-- Added `PotionMeta` for potions, splash potions and lingering potions, giving the `PotionType` identifiers a consumer: `meta.base_potion_type` reads and writes the potion a bottle holds. Bedrock derives a potion's effects and its colour from the base potion type, so there is no `custom_effects` or `color` as in Bukkit's `PotionMeta`.
-- Added binary NBT serialization (`dump`/`load`) with support for multiple formats.
-- Added a unified `Object.as<T>()`/`is<T>()` casting API, replacing the per-type `asPlayer()`, `asMob()`, etc. `NotNull<T>` and `Nullable<T>` carry the same pair, so a handle can be narrowed without unwrapping it: `event.getActor().as<Player>()` returns a `Nullable<Player>` that shares ownership with the original, or a null one if the actor is not a player.
-- Added a healthcheck to the Docker image so `docker ps` and Docker Compose report whether the server is actually online.
-- Added `PUID`/`PGID` environment variables to the Docker image to keep server files owned by your host user.
-- Added a `docker-compose.yml` for running the server with Docker Compose.
-- Added graceful shutdown on Linux, so stopping the server (e.g. via `docker stop`) lets the Bedrock server save the world before it exits.
-- Added `PlayerRespawnEvent.respawn_reason` (`RespawnReason.DEATH` / `RespawnReason.END_PORTAL`) so plugins can tell a normal death respawn apart from a player returning through the End exit portal.
-- Added `PlayerLevelChangeEvent`, called when a player's experience level changes, reporting `old_level` and `new_level`.
-- Added `PlayerExpChangeEvent`, called when a player gains experience, reporting the `amount` gained. It is not called when experience is reset on death.
-- Added `PlayerPickupArrowEvent`, called when a player picks up an arrow or a thrown trident from the ground. Cancelling it leaves the projectile on the ground.
-- Added `PlayerRecipeBookSettingsChangeEvent`, called when a player opens, closes or filters their recipe book, reporting `recipe_book_type`, `is_open` and `is_filtering`.
-- Added `PlayerInputEvent`, called when a player's movement input changes, and the `Input` type it carries: `is_forward`, `is_backward`, `is_left`, `is_right`, `is_jump`, `is_sneak` and `is_sprint`. Like Bukkit's event, it fires only when the input differs from the last one the player sent, not every tick.
-- Added `PlayerArmSwingEvent`, called when a player swings their arm, reporting the `item` in their hand. It follows the server's own swing handling, so it also covers swings the server drives itself, such as dropping an item.
-- Added `PlayerRiptideEvent`, called when a player activates the riptide enchantment and is propelled by their trident, reporting the `item` used. It fires only once the server has accepted the riptide, so a trident that is merely thrown does not trigger it.
-- Added `PlayerArmorStandManipulateEvent`, called when a player swaps, retrieves or places an item on an armor stand, reporting `armor_stand_item`, `player_item` and the affected `slot`. Cancelling it leaves the armor stand untouched.
-- Added `PlayerBucketActorEvent`, called when a player captures an actor in a bucket, reporting the `actor` being captured, the `original_bucket` used and the `hand` it was held in. Cancelling it leaves the actor in the world and the bucket unfilled. Bedrock only builds the filled bucket after the capture is committed, so there is no `entity_bucket` as in Bukkit's `PlayerBucketEntityEvent`.
-- Added `PlayerBucketFillEvent` and `PlayerBucketEmptyEvent`, called when a player fills or empties a bucket, together with their shared base `PlayerBucketEvent`. Each reports the `block` the liquid was taken from or placed into, the `block_clicked` and `block_face` of the interaction, the `bucket` used, the `hand` it was held in, and the `item_stack` the player ends up holding, which plugins may replace. Cancelling either leaves the world and the player's inventory untouched. Filling a bucket by milking a cow, a goat or a mooshroom is reported as a fill on the actor's own block with a `block_face` of `SELF`. Buckets emptied or filled by a dispenser are not reported, since neither event has a player.
-- Added `BlockFace.SELF`, matching Bukkit's `BlockFace.SELF`, for interactions that have no direction.
-- Added `PlayerShearActorEvent`, called when a player shears an actor, reporting the `actor` being sheared, the `item` used and the `hand` it was held in. Cancelling it leaves the actor unsheared. This is Bukkit's `PlayerShearEntityEvent`, spelled with `Actor` as everywhere else in Endstone; Bedrock rolls the shear loot table only after the interaction is committed, so there is no `drops` list to read or replace.
-- Added `ActorCollideWithActorEvent`, called when two actors collide with each other, reporting both in `actors`. This is Paper's `EntityCollideWithEntityEvent`, spelled with `Actor` as everywhere else in Endstone. Cancelling it stops the two from being pushed apart; because the server boards riders on the same code path, it also stops boats and minecarts from being boarded by walking into them. Like Paper's event, it is called before the server decides whether the collision leads to a push, so it also fires for pairs that are never pushed, and more than once per tick while a pair keeps overlapping. It is skipped entirely when no plugin is listening.
-- Added `ActorEffectEvent`, called before an effect is applied to a living entity, reporting the `action` taken (currently only `Action.ADDED`) and the `effect` involved. Cancelling it stops the effect being applied, and assigning to `effect` replaces it with a different one.
-- Added `ActorPickupItemEvent`, called when a non-player entity picks an item up from the ground, reporting the `item` and the `amount` taken. Cancelling it leaves the item on the ground. Players are covered by `PlayerPickupItemEvent`.
-- Added `ActorDismountEvent`, called when an entity stops riding another entity, reporting the `vehicle` being left. Cancelling it keeps the rider aboard.
-- Added `ActorChangeBlockEvent`, called when a mob changes a block through its own behaviour, such as a creeper exploding, an enderman picking a block up, a ravager trampling crops or a zombie breaking a door. Cancelling it leaves the block alone. Unlike Bukkit's event of the same name, it is not called for falling blocks landing or for sheep eating grass, and the resulting block state is not available.
-- Added `PlayerPickupExperienceEvent`, called when a player picks up an experience orb, reporting the `amount` the orb is worth. Cancelling it leaves the orb in the world.
-- Added `PlayerCraftItemEvent`, called when a player crafts an item from a crafting grid or the recipe book, reporting the crafted `item`, the `recipe_id` and the `amount` of crafts. Cancelling it stops the craft and leaves the ingredients untouched.
-- Added a `Container` block state for reading and modifying container blocks such as chests, barrels, hoppers, dispensers, droppers, shulker boxes and furnaces, exposing their items via `container.inventory`.
-- Added a `CreatureSpawner` block state for monster spawners: `spawned_type`, `delay`, `min_spawn_delay`, `max_spawn_delay`, `spawn_count`, `max_nearby_entities`, `required_player_range` and `spawn_range`, all matching their Bukkit counterparts.
-- Added a `Campfire` block state for the four cooking slots of a campfire, with `get_item()`/`set_item()` and `get_cook_time()`/`set_cook_time()`.
-- Added a `Lectern` block state exposing the displayed `page`. It extends `Container`, so `lectern.inventory` gives the book it holds.
-- Added a `Furnace` block state for furnaces, blast furnaces and smokers. It extends `Container`, so `furnace.inventory` gives the ingredient, fuel and result slots. Bedrock derives the total cook time from the recipe rather than storing it, so there is no `cook_time_total`.
-- Added a `Sign` block state for signs and hanging signs, with `sign.get_side(Sign.Side.FRONT)` giving that side's `lines`, `glowing_text` and `color`, and `sign.waxed` controlling whether players can still edit it. Bedrock stores a sign's text colour as a colour rather than a dye, so `color` is a `Color` where Bukkit has a `DyeColor`.
-- Added an `ItemFrame` block state for item frames and glow item frames, exposing `item`, `rotation` (a `Rotation`, in 45 degree steps) and `item_drop_chance`. The names match Bukkit's `ItemFrame`, except that item frames are blocks on Bedrock rather than entities.
-- Added a `Biome` type and `Block.biome` for reading the biome at a block. Biomes can be looked up with `Biome.get("minecraft:plains")` and enumerated via `server.get_registry(Biome)`.
-- Added an effect API: `Mob.add_effect()`, `Mob.remove_effect()`, `Mob.has_effect()`, `Mob.get_effect()` and `Mob.active_effects` apply, remove and query a living entity's status effects. Effects are described by the new `Effect` type, carrying an effect type, duration in ticks, amplifier, and ambient/particles/icon display flags.
-- Added `EffectType` and `PotionType` to the registry API, so both can be looked up by name and enumerated with `server.get_registry()`, reporting what the server actually supports. Each entry carries a `translation_key`, and the existing constants are unchanged.
-- Added a chunk loading API: `Dimension.load_chunk()`, `Dimension.unload_chunk()` and `Dimension.is_chunk_loaded()`. `load_chunk()` queues the load and pins the chunk as soon as it returns, so `is_chunk_loaded()` may still report `False` on the same tick; `unload_chunk()` releases it again so it can unload once nothing else is keeping it loaded.
-- Added `PlayerToggleSneakEvent` and `PlayerToggleSprintEvent`, fired when a player starts or stops sneaking or sprinting, with the new state in `is_sneaking`/`is_sprinting`. Both carry their Bukkit names, so a plugin ported from Spigot or Paper listens for them unchanged.
-- Added `ActorToggleSwimEvent` and `ActorToggleGlideEvent`, fired when an actor starts or stops swimming, or starts or stops gliding with an elytra, with the new state in `is_swimming`/`is_gliding`. These are Bukkit's `EntityToggleSwimEvent` and `EntityToggleGlideEvent`, spelled with `Actor` as everywhere else in Endstone.
-- Added `Mob.is_swimming`, mirroring Bukkit's `LivingEntity#isSwimming()`, alongside the existing `Mob.is_gliding`.
-- Added `Player.is_crawling`. Bukkit has no equivalent because crawling is a pose there, while on Bedrock it is a state the server tracks in its own right, and `PlayerToggleCrawlEvent` already reports it.
-- Added `PlayerToggleFlightEvent`, fired when a player starts or stops flying, with the new state in `is_flying`. Like Bukkit's event, it fires only for a player who is allowed to fly.
-- Added `PlayerToggleCrawlEvent`, fired when a player starts or stops crawling, with the new state in `is_crawling`. Bukkit has no equivalent because crawling is only a pose there, while on Bedrock it is a state the server tracks in its own right.
-- Added `Server.command_map` (`Server::getCommandMap()`), mirroring Paper's `Server#getCommandMap()`, which Bukkit leaves off the interface so plugins there resort to reflection. `CommandMap` is now available from Python with `register_command()`, `dispatch()`, `clear_commands()` and `get_command()`, so a plugin can register a command at runtime rather than declaring it up front.
-- `Command` can now be subclassed in Python to override `execute()`, the way Paper plugins subclass `Command`. Previously a Python subclass could be written but its `execute()` was never called.
+#### Events
+
+- `PlayerLevelChangeEvent` (`old_level`, `new_level`), `PlayerExpChangeEvent` (`amount` gained) and `PlayerPickupExperienceEvent` (`amount` the orb is worth).
+- `PlayerPickupArrowEvent` for picking up an arrow or thrown trident.
+- `PlayerArmSwingEvent` and `PlayerRiptideEvent`, both reporting the `item` in hand. Cancelling an arm swing stops the server acting on it at all, so it is neither recorded nor shown to the other players. The swinging player still sees their own arm move, because their client plays the animation without waiting for the server.
+- `PlayerInputEvent` for movement input changes, carrying the new `Input` type (`is_forward`, `is_backward`, `is_left`, `is_right`, `is_jump`, `is_sneak`, `is_sprint`).
+- `PlayerArmorStandManipulateEvent`, reporting `armor_stand_item`, `player_item` and `slot`.
+- `PlayerBucketActorEvent` and `PlayerShearActorEvent`, reporting the `actor`, the `original_bucket` or `item` used and the `hand`.
+- `PlayerBucketFillEvent` and `PlayerBucketEmptyEvent`, with their shared base `PlayerBucketEvent`, reporting the `block` the liquid was taken from or placed into, the `block_clicked` and `block_face` of the interaction, the `bucket` used, the `hand` it was held in, and a writable `item_stack` the player ends up holding. Cancelling either leaves the world and the player's inventory untouched. Milking a cow, a goat or a mooshroom is reported as a fill on the actor's own block with a `block_face` of `SELF`. Buckets emptied or filled by a dispenser are not reported, since neither event has a player. Bedrock does not record which hand an interaction came from, so `hand` is a best-effort guess from the item the player is holding and falls back to `HAND`; filling from or emptying into a cauldron always reports the hotbar item, so `hand` is always `HAND` there.
+- `PlayerRecipeBookSettingsChangeEvent`, reporting `recipe_book_type`, `is_open` and `is_filtering`.
+- `PlayerCraftItemEvent` for crafting in a crafting grid or straight from the recipe book, reporting the `recipe` being crafted and the `ingredients` a craft consumes plus writable `results` and `repetitions`. Ingredients are the items in the crafting grid, or the recipe's own when crafting from the recipe book, which never fills the grid. Setting `results` changes what the craft produces; cancelling blocks the craft and leaves the ingredients untouched.
+- `PlayerEditBookEvent` for editing a page of a book and quill or signing it, reporting the book metadata before and after the edit, the inventory `slot`, and whether the book is being signed. `new_book_meta` and `is_signing` are writable; both metadata properties hand back a copy, so assign to `new_book_meta` rather than editing what you read from it. A title, an author and a generation only survive when the book is being signed, because a book and quill holds none of them. Cancelling leaves the book untouched and sends the slot back to the client, so it stops showing the edit it had already drawn.
+- `PlayerSetSpawnEvent` for a player's respawn point being set, reporting the `cause` (`BED`, `RESPAWN_ANCHOR`, `COMMAND`, `PLUGIN` or `UNKNOWN`) and a writable `location`. Cancelling leaves the respawn point untouched, though `/spawnpoint` still reports success and a respawn anchor still plays its sound. It does not fire when Bedrock clears a respawn point, so `/clearspawnpoint` and breaking the bed are both silent.
+- `PlayerToggleSneakEvent`, `PlayerToggleSprintEvent`, `PlayerToggleFlightEvent` and `PlayerToggleCrawlEvent`, carrying the new state in `is_sneaking`, `is_sprinting`, `is_flying` and `is_crawling`.
+- `ActorToggleSwimEvent` and `ActorToggleGlideEvent`, carrying the new state in `is_swimming` and `is_gliding`.
+- `ActorCollideWithActorEvent`, reporting both actors in `actors`. Cancelling it also stops boats and minecarts being boarded by walking into them.
+- `ActorEffectEvent`, reporting the `action` (currently only `Action.ADDED`) and the `effect`, which can be replaced by assignment.
+- `ActorPickupItemEvent`, reporting the `item` and `amount`. Players are covered by `PlayerPickupItemEvent`.
+- `ActorDismountEvent`, reporting the `vehicle` being left.
+- `ActorChangeBlockEvent` for blocks changed by mob behaviour, such as creeper explosions, endermen, ravagers and door-breaking zombies.
+- `PlayerRespawnEvent.respawn_reason` (`RespawnReason.DEATH` / `RespawnReason.END_PORTAL`).
+- `ActorExplodeEvent::setBlockList()` and `BlockExplodeEvent::setBlockList()`, with the `BlockList` alias made public.
+- `InventoryEvent`, a base class for inventory-related events, reporting the primary `inventory` involved, and the cancellable `InventoryInteractEvent` under it, which adds the `who_clicked` player.
+- `InventoryOpenEvent` and `InventoryCloseEvent`, both reporting the `inventory` and the `player`. Cancelling an open stops the container screen from appearing at all. These cover block containers such as chests, barrels, furnaces and brewing stands; a container carried by an entity, like a chest minecart or a horse, does not fire them yet.
+- `DimensionLoadEvent` for a dimension being loaded.
+- Support for custom Python events with optional cancellation.
+
+#### Actors and players
+
+- Ability API: `Player.get_ability()` and `Player.set_ability()`, keyed by an `Ability` constant that carries its own value type. `Ability.NO_CLIP` takes a bool, `Ability.FLY_SPEED` takes a float, and in C++ swapping the two is a compile error. All twenty Bedrock abilities are covered, including the eight member permissions the client shows in its pause menu — `BUILD`, `MINE`, `DOORS_AND_SWITCHES`, `OPEN_CONTAINERS`, `ATTACK_PLAYERS`, `ATTACK_MOBS`, `OPERATOR_COMMANDS` and `TELEPORT` — every one of which the server enforces. Abilities can also be looked up with `Ability.get()` and enumerated via `server.get_registry(Ability)`. Reading an ability gives the value in effect, which spectator mode and the editor can override; writing sets the player's own value. Bedrock does not save abilities for a player whose permissions the server manages, so set them again when the player rejoins.
+- Attribute API: `Mob.get_attribute()`, `Mob.has_attribute()` and `Mob.attributes`. Each `AttributeInstance` reports its current, base, minimum and maximum value and takes `AttributeModifier`s at runtime.
+- Effect API: `Mob.add_effect()`, `Mob.remove_effect()`, `Mob.has_effect()`, `Mob.get_effect()` and `Mob.active_effects`, with the new `Effect` type carrying effect type, duration, amplifier and the ambient/particles/icon flags.
+- `Mob.is_swimming` and `Player.is_crawling`.
+- `Player.send_action_bar()` for sending a message above the hotbar.
+- `Player.respawn_location` for reading and writing where a player will respawn, or `None` when they have no valid respawn point. Bedrock does not persist yaw/pitch for a respawn point, so only the block coordinates and the dimension are kept.
+
+#### Blocks
+
+- `Container` block state for chests, barrels, hoppers, dispensers, droppers, shulker boxes and furnaces, exposing `container.inventory`.
+- `Furnace` block state for furnaces, blast furnaces and smokers, extending `Container`.
+- `Lectern` block state with the displayed `page`, extending `Container`.
+- `CreatureSpawner` block state with `spawned_type`, `delay`, `min_spawn_delay`, `max_spawn_delay`, `spawn_count`, `max_nearby_entities`, `required_player_range` and `spawn_range`.
+- `Campfire` block state with `get_item()`/`set_item()` and `get_cook_time()`/`set_cook_time()`.
+- `Sign` block state with `sign.get_side(Sign.Side.FRONT)` giving `lines`, `glowing_text` and `color`, plus `sign.waxed`.
+- `ItemFrame` block state with `item`, `rotation` and `item_drop_chance`.
+- `Biome` type and `Block.biome`, with lookup via `Biome.get()` and enumeration via `server.get_registry(Biome)`.
+- `BlockData.translation_key`.
+- `BlockFace.SELF`, matching Bukkit's `BlockFace.SELF`, for interactions that have no direction.
+
+#### Items
+
+- `Level.recipes`, a snapshot of the crafting recipes the server has loaded, also reachable as `Server.recipes`. Each entry is a `ShapedRecipe`, `ShapelessRecipe`, `SmithingTransformRecipe`, `SmithingTrimRecipe` or `ComplexRecipe`, and reports its `id`, crafting `tag`, `result` and `ingredients`. Shaped recipes add `width` and `height`; smithing recipes add `template`, `base` and `addition`.
+- `RecipeIngredient`, describing what one ingredient slot accepts, with `test()` to check an item against it and a Bedrock-specific `count`. An ingredient is an `ExactIngredient` (one item and one data value), an `ItemTypeIngredient` (an item type, any data value), an `ItemTagIngredient` (anything carrying a tag), a `MolangIngredient` (whatever a Molang expression selects), an `ComplexAliasIngredient` (anything an id that predates the item flattening stands for, such as `minecraft:planks`). A slot the recipe leaves empty is `None`.
+- `WritableBookMeta`, `BookMeta` and `CrossbowMeta` item meta types.
+- `PotionMeta` for potions, splash potions and lingering potions, with `meta.base_potion_type`.
+
+#### Level and dimensions
+
+- `Level.create_dimension()` for registering an empty (void) dimension from -64 to 320 at runtime. The registration does not survive a restart, so call it again on every startup.
+- `Dimension.mobs` and `Dimension.players`, both narrowing `Dimension.actors`.
+- Chunk loading API: `Dimension.load_chunk()`, `Dimension.unload_chunk()`, `Dimension.unload_chunk_request()`, `Dimension.is_chunk_loaded()` and `Dimension.is_chunk_generated()`, plus `Chunk.load()`, `Chunk.unload()` and `Chunk.is_loaded()`. Bedrock has no synchronous chunk load, so `load_chunk()` keeps the chunk resident from a later tick onwards and does not make it tick. `unload_chunk()` reports whether the chunk actually went away, while `unload_chunk_request()` only releases the hold.
+- Plugin chunk tickets: `Dimension.add_plugin_chunk_ticket()`, `remove_plugin_chunk_ticket()`, `remove_plugin_chunk_tickets()`, `get_plugin_chunk_tickets()` and `plugin_chunk_tickets`, with the same methods on `Chunk`. A ticket keeps a chunk loaded until it is removed or the owning plugin is disabled, and `unload_chunk()` leaves it alone.
+
+#### Commands and permissions
+
+- `UnknownCommandEvent` for undefined commands, reporting the `sender`, `command_line` and mutable `message`. Setting `message` to `None` suppresses the unknown-command response.
+- `Server.command_map`, exposing `CommandMap` to Python with `register_command()`, `dispatch()`, `clear_commands()` and `get_command()`.
+- `Command` can now be subclassed in Python to override `execute()`.
+- `/restart` command (console-only) for gracefully restarting the server.
+- `ProxiedCommandSender`, the sender a command receives when run through `/execute`. Its `caller` typed the command and receives its output, its `callee` supplies the name and execution context, and permission checks resolve against the caller.
+
+#### API and types
+
+- `endstone::Metrics` for C++ plugins, mirroring bStats' `Metrics(plugin, service_id)` and carrying all seven chart types plus `CustomChart`. The server owns what it creates and retires it on reload, so a plugin can add its charts in `onEnable` and forget the handle. One service id gets one Metrics, however many times it is asked for.
+- `endstone.metrics` chart classes are now the C++ ones, so a chart behaves identically whichever language declares it. Python plugins keep the same `SimplePie("id", callback)` usage and can still subclass `CustomChart`, whose `get_chart_data()` returns JSON.
+- nlohmann/json is part of the public C++ API, with `endstone::JsonValue`, `JsonObject` and `JsonArray` naming the three shapes (and `endstone.JsonValue` / `JsonObject` / `JsonArray` in Python). `endstone_add_plugin()` links it for you.
+- Unified `Object.as<T>()`/`is<T>()` casting API. `NotNull<T>` and `Nullable<T>` carry the same pair, so `event.getActor().as<Player>()` returns a `Nullable<Player>` sharing ownership with the original.
+- `endstone.Identifier` for namespaced ids, splitting `dim.id.namespace` from `dim.id.key` and distinguishing `Identifier[Dimension]` from `Identifier[ActorType]`. Plain strings are still accepted.
+- `ActorType`, `EffectType` and `PotionType` in the registry API, each entry carrying a `translation_key`, plus the missing `ActorType.SULFUR_CUBE` constant.
+- Binary NBT serialization (`dump`/`load`) with support for multiple formats.
+- The logger handles ANSI escape codes alongside `§` colour codes, so a plugin can log text that is already coloured. Colour sequences reach the console as written, and every escape sequence is stripped from the log file, which previously kept them verbatim.
+
+#### Server and Docker
+
+- Graceful shutdown on Linux, so `docker stop` lets the server save the world before exiting.
+- Healthcheck in the Docker image, so `docker ps` and Docker Compose report whether the server is online.
+- `PUID`/`PGID` environment variables in the Docker image.
+- A `docker-compose.yml` for running the server with Docker Compose.
 
 ### Changed
 
-- **BREAKING**: Permission attachments and permissions are handed out as smart handles. `Permissible.add_attachment()` returns one, `Permissible.effective_permissions` is a set of them, and `PluginManager.get_permission()`, `get_default_permissions()` and `permissions` hand back permissions the same way. An attachment you keep no longer stops being safe to touch when whatever it was attached to goes away: it stays readable, its `permissible` reads `None`, and `remove()` reports `False`. Python call sites are unchanged; C++ plugins use `->` where they used `.`, and pass `std::make_shared<Permission>(...)` to `addPermission()` where they passed a `std::unique_ptr`.
-- **BREAKING**: `Permissible.add_attachment()` raises `ValueError` when the permission name is empty or the plugin is disabled, instead of logging an error and handing back `None` while its signature promised an attachment. Bukkit rejects both the same way. `Permission.add_parent()` likewise raises when the permission it is called on was never registered, where it used to do nothing at all.
-- **BREAKING**: The permission subscription lists hold their subscribers weakly. A player who has disconnected drops out of them on their own once nothing else refers to them, so a plugin that holds on to one no longer has to unsubscribe it by hand. `PluginManager.get_permission_subscriptions()`, `get_default_perm_subscriptions()` and `Permission.permissibles` hand back sets of handles; holding one of those sets keeps everything in it alive, so read it and let it go.
-- **BREAKING**: `BroadcastMessageEvent.recipients` is a set of handles, so a listener can keep the set past the event.
-- **BREAKING**: `ActorExplodeEvent.block_list` and `BlockExplodeEvent.block_list` now hand back a live `BlockList` instead of a copied `list`, so `block_list.remove(block)`, `.append()`, `.pop()` and `del block_list[i]` change what actually explodes, as they do in Bukkit. Assigning a plain list still works. Note that `remove()` matches on handle identity, so pass a block taken from the list itself rather than one looked up separately.
-- **BREAKING**: Every API that handed back a raw `std::unique_ptr` now returns a smart handle whose type states whether it can be absent, matching the nullability its Bukkit counterpart documents. Six of them can be `None` and never said so before: `ItemStack.item_meta`, `ItemFactory.get_item_meta()` and `ItemFactory.as_meta_for()` (all `None` for air), `Scoreboard.get_objective()` (both overloads), `Mob.get_attribute()`, and `PlayerInteractEvent.block` (absent when the player clicked air). A type checker now flags the unchecked `None` in each. The rest - the block, block data, chunk, objective, score, boss bar and item meta accessors on `Block`, `BlockState`, `BlockType`, `Dimension`, `Location`, `BlockCommandSender`, `Objective`, `Scoreboard`, `ItemMeta` and `Server` - are `NotNull`, as are the block and damage-source accessors on the block and actor events. C++ plugins use `->` where they used `.`; Python call sites are unchanged.
-- **BREAKING**: Removed `Block::clone()`. It only existed because `std::unique_ptr<Block>` could not be copied; now that blocks are handed out as shared handles, copying the handle does the same thing.
-- **BREAKING**: Block states are handed out as smart handles too. `Block::captureState()` returns `NotNull<BlockState>` instead of `std::unique_ptr<BlockState>`, and `BlockGrowEvent::getNewState()` / `BlockPlaceEvent::getBlockReplacedState()` return `const NotNull<BlockState> &` instead of a raw reference, matching Bukkit's `@NotNull` on `Block#getState()` and `BlockPlaceEvent#getBlockReplacedState()`. A captured state can now outlive the call that made it. C++ plugins use `->` where they used `.`; Python is unchanged.
-- **BREAKING**: Actors and players are handed out as smart handles everywhere, including from events. `ActorEvent.actor`, `PlayerEvent.player`, `PlayerInteractActorEvent.actor`, `PlayerPickupItemEvent.item` and `BlockBreakEvent.player`/`BlockPlaceEvent.player` return `NotNull`; `ActorKnockbackEvent.source`, `PacketSendEvent.player` and `PacketReceiveEvent.player` return `Nullable`. `Server.online_players`, `Level.actors`, `Dimension.actors`, `BossBar.players` and `PlayerChatEvent.recipients` are lists of handles, and `Dimension.spawn_actor()` returns `Nullable`. Holding an actor past the event is now safe: touching one whose entity is gone raises instead of corrupting memory, so check `is_valid` first. C++ plugins use `->` where they used `.`.
-- **BREAKING**: The dimension accessors hand back a smart handle. `Actor::getDimension()`, `Block::getDimension()`, `BlockState::getDimension()` and `Chunk::getDimension()` return `NotNull<Dimension>`; `Level::getDimension()`, `Level::createDimension()` and `MapView::getDimension()` return `Nullable<Dimension>`; `Level::getDimensions()` returns `std::vector<NotNull<Dimension>>`. In Python these are typed `Dimension | None`, so a type checker flags the unchecked `None` that was previously hidden.
-- **BREAKING**: `Player::getScoreboard()` returns `NotNull<Scoreboard>` and `Player::setScoreboard()` takes one, while `ServiceManager::registerService()` takes `NotNull<Service>` and `get()`/`load()` return `Nullable<Service>`. In Python, `ServiceManager.load()` is typed `Service | None`, so a missing provider is visible to a type checker.
-- **BREAKING**: The command API takes the sender as a smart handle: `Command::execute()`, `CommandExecutor::onCommand()`, `PluginCommand::execute()`, `CommandMap::dispatch()`, `Server::dispatchCommand()` and `Command::testPermission()`/`testPermissionSilently()` take `NotNull<CommandSender>`, and `Server::getCommandSender()` returns `NotNull<ConsoleCommandSender>`. A C++ plugin must update the first parameter of its `onCommand` override or it will quietly stop overriding anything. Python plugins are unaffected.
-- **BREAKING**: The remaining raw-reference accessors use handles too: `Actor::teleport()`, `BossBar::addPlayer()`/`removePlayer()`, `MapRenderer::render()`, `ServiceManager::unregister()`, `Server::createMap()`, `MapView::setDimension()`, `Objective::getScoreboard()`, `Score::getScoreboard()`, `Dimension::dropItem()`, and the dimension and sender members of `DimensionEvent`, `PlayerDimensionChangeEvent`, `ScriptMessageEvent` and `ServerCommandEvent`. `Player::getAddress()` returns a reference rather than a fresh copy each call. Python call sites are unchanged.
-- **BREAKING**: The last `shared_ptr`-backed types are handles as well. `Scheduler::runTask()` and its five variants return `Nullable<Task>`; `CommandMap::registerCommand()` takes `NotNull<Command>` and `getCommand()` returns `Nullable<Command>`; `PluginCommand::setExecutor()` takes `Nullable<CommandExecutor>`, where a null handle still falls back to the owning plugin; and `MapView`'s renderer methods use `NotNull<MapRenderer>`. In Python, `Scheduler.run_task()` is typed `Task | None`.
-- **BREAKING**: `Location.dimension` holds the dimension by a weak reference, mirroring Bukkit's `Location.getWorld()`. It gives `None` when no dimension is set, the dimension when it is loaded, and raises once it has been unloaded; the new `Location.is_dimension_loaded` and `Dimension.is_valid` let you check first.
-- **BREAKING**: `Server.level` returns a `Level` and raises if the level has not been loaded yet, instead of returning `None`. Access it only once the level is available.
-- **BREAKING**: Moved `EffectType` from `endstone.effect` to `endstone.potion`, mirroring Bukkit; the `endstone.effect` module is gone. In C++ the header moved to `endstone/potion/effect_type.h`.
-- **BREAKING**: Replaced the `Dimension::Type` enum with `DimensionId`, a namespaced identifier that supports custom dimensions. Use the `Dimension.OVERWORLD`, `Dimension.NETHER` and `Dimension.THE_END` constants or look up by identifier; `Dimension.name` is now `Dimension.id`.
+#### Networking
+
+- Packet compression now uses libdeflate instead of zlib, which should improve performance on busy servers.
+
+#### JSON payloads
+
+- **BREAKING**: `ModalForm`'s submit callback receives the parsed response instead of a JSON string: a `JsonArray` in C++, a `JsonArray` (`list`) in Python. A Python handler doing `json.loads(data)` must drop the call, and a C++ one must stop parsing the string itself.
+- **BREAKING**: `Player.spawn_particle()` takes the molang variables as a `JsonObject` (a `dict` in Python), and the parameter is renamed `molang_variables_json` -> `molang_variables`. Both the rename and the type change make an old call fail rather than send the wrong payload.
+
+#### Smart handles
+
+- **BREAKING**: Every API that returned a raw `std::unique_ptr` now returns a smart handle stating whether it can be absent. `ItemStack.item_meta`, `ItemFactory.get_item_meta()`, `ItemFactory.as_meta_for()`, `Scoreboard.get_objective()`, `Mob.get_attribute()` and `PlayerInteractEvent.block` are `Nullable`; the rest are `NotNull`. C++ plugins use `->` where they used `.`; Python call sites are unchanged.
+- **BREAKING**: Actors and players are handed out as handles everywhere, including from events. `ActorEvent.actor`, `PlayerEvent.player`, `PlayerInteractActorEvent.actor`, `PlayerPickupItemEvent.item` and `BlockBreakEvent.player`/`BlockPlaceEvent.player` are `NotNull`; `ActorKnockbackEvent.source`, `PacketSendEvent.player` and `PacketReceiveEvent.player` are `Nullable`. `Server.online_players`, `Level.actors`, `Dimension.actors`, `BossBar.players` and `PlayerChatEvent.recipients` are lists of handles, and `Dimension.spawn_actor()` is `Nullable`. Touching an actor whose entity is gone raises instead of corrupting memory, so check `is_valid` first.
+- **BREAKING**: Block states are handles. `Block::captureState()` returns `NotNull<BlockState>`, and `BlockGrowEvent::getNewState()` / `BlockPlaceEvent::getBlockReplacedState()` return `const NotNull<BlockState> &`.
+- **BREAKING**: Dimension accessors are handles. `Actor::getDimension()`, `Block::getDimension()`, `BlockState::getDimension()` and `Chunk::getDimension()` return `NotNull<Dimension>`; `Level::getDimension()`, `Level::createDimension()` and `MapView::getDimension()` return `Nullable<Dimension>`; `Level::getDimensions()` returns `std::vector<NotNull<Dimension>>`.
+- **BREAKING**: The command API takes the sender as a handle: `Command::execute()`, `CommandExecutor::onCommand()`, `PluginCommand::execute()`, `CommandMap::dispatch()`, `Server::dispatchCommand()` and `Command::testPermission()`/`testPermissionSilently()` take `NotNull<CommandSender>`, and `Server::getCommandSender()` returns `NotNull<ConsoleCommandSender>`. A C++ plugin must update the first parameter of its `onCommand` override or it will quietly stop overriding anything.
+- **BREAKING**: `Scheduler::runTask()` and its five variants return `Nullable<Task>`; `CommandMap::registerCommand()` takes `NotNull<Command>` and `getCommand()` returns `Nullable<Command>`; `PluginCommand::setExecutor()` takes `Nullable<CommandExecutor>`; `MapView`'s renderer methods use `NotNull<MapRenderer>`.
+- **BREAKING**: `Player::getScoreboard()` returns `NotNull<Scoreboard>` and `Player::setScoreboard()` takes one; `ServiceManager::registerService()` takes `NotNull<Service>` and `get()`/`load()` return `Nullable<Service>`.
+- **BREAKING**: The remaining raw-reference accessors use handles: `Actor::teleport()`, `BossBar::addPlayer()`/`removePlayer()`, `MapRenderer::render()`, `ServiceManager::unregister()`, `Server::createMap()`, `MapView::setDimension()`, `Objective::getScoreboard()`, `Score::getScoreboard()`, `Dimension::dropItem()`, and the dimension and sender members of `DimensionEvent`, `PlayerDimensionChangeEvent`, `ScriptMessageEvent` and `ServerCommandEvent`. `Player::getAddress()` returns a reference rather than a copy.
+- **BREAKING**: Removed `Block::clone()`; copy the handle instead.
+- **BREAKING**: `Location.dimension` holds the dimension weakly. It gives `None` when unset, the dimension when loaded, and raises once unloaded; check with the new `Location.is_dimension_loaded` and `Dimension.is_valid`.
+- **BREAKING**: `Server.level` returns a `Level` and raises if the level has not been loaded yet, instead of returning `None`.
+
+#### Permissions
+
+- **BREAKING**: Permission attachments and permissions are handed out as handles from `Permissible.add_attachment()`, `Permissible.effective_permissions`, `PluginManager.get_permission()`, `get_default_permissions()` and `permissions`. An attachment stays readable after its permissible goes away, with `permissible` reading `None` and `remove()` reporting `False`. C++ plugins use `->` where they used `.`, and pass `std::make_shared<Permission>(...)` to `addPermission()`.
+- **BREAKING**: Permission subscription lists hold their subscribers weakly, so a disconnected player drops out on their own. `PluginManager.get_permission_subscriptions()`, `get_default_perm_subscriptions()` and `Permission.permissibles` hand back sets of handles.
+- **BREAKING**: `Permissible.add_attachment()` raises `ValueError` for an empty permission name or a disabled plugin instead of returning `None`, and `Permission.add_parent()` raises when the permission was never registered.
+
+#### API changes
+
 - **BREAKING**: Replaced `asPlayer()`, `asMob()`, `asConsole()`, `asPluginCommand()` and friends with `as<T>()`/`is<T>()` on all `CommandSender`, `Actor` and `Command` subtypes. In Python, use `isinstance()` as before.
+- **BREAKING**: Replaced the `Dimension::Type` enum with `DimensionId`, a namespaced identifier supporting custom dimensions. Use `Dimension.OVERWORLD`, `Dimension.NETHER` and `Dimension.THE_END`; `Dimension.name` is now `Dimension.id`.
+- **BREAKING**: Moved `EffectType` from `endstone.effect` to `endstone.potion`; the `endstone.effect` module is gone. In C++ the header moved to `endstone/potion/effect_type.h`.
 - **BREAKING**: `Player` no longer inherits from `OfflinePlayer`.
-- **BREAKING**: `BlockPlaceEvent.block` returns the placed block instead of the replaced block, and `block_placed_state`/`block_replaced` are renamed to `block_placed`/`block_replaced_state` to match Bukkit.
-- **BREAKING**: The Docker image stores server data in `/data` instead of `/home/endstone/bedrock_server`. Update your volume mount accordingly (e.g. `-v ./data:/data`).
-- **BREAKING**: `Block.type`, `BlockState.type` and `BlockData.type` return a `BlockType` instead of a string, matching `ItemStack.type`. It still compares equal to its `"namespace:key"` string and stringifies to it, but is no longer a `str`.
+- **BREAKING**: `Block.type`, `BlockState.type` and `BlockData.type` return a `BlockType` instead of a string. It still compares equal to its `"namespace:key"` string and stringifies to it, but is no longer a `str`.
+- **BREAKING**: `BlockPlaceEvent.block` returns the placed block instead of the replaced block, and `block_placed_state`/`block_replaced` are renamed to `block_placed`/`block_replaced_state`.
+- **BREAKING**: `ActorExplodeEvent.block_list` and `BlockExplodeEvent.block_list` hand back a live `BlockList` instead of a copy, so `remove()`, `append()`, `pop()` and `del` change what actually explodes. `remove()` matches on handle identity.
+- **BREAKING**: `BroadcastMessageEvent.recipients` is a set of handles.
+- **BREAKING**: `ActorDeathEvent` is now called for player deaths as well as every other mob. A listener that assumed it only saw non-player mobs should check `actor.type` or listen for `PlayerDeathEvent`.
+- `Block.set_type`, `BlockState.type`, `Server.create_block_data` and `Inventory.contains`/`contains_at_least`/`all`/`first`/`remove` take an `Identifier` (e.g. `BlockType.AIR`). Plain `"namespace:key"` strings are still accepted.
 - `str()` on `BlockType`, `Enchantment` and `ItemType` returns a plain `"namespace:key"` string instead of the underlying `Identifier` repr.
-- `Block.set_type`, `BlockState.type`, `Server.create_block_data` and `Inventory.contains`/`contains_at_least`/`all`/`first`/`remove` take an `Identifier` (e.g. `BlockType.AIR`) instead of a plain string, matching `ItemStack.type` and `Dimension.spawn_actor`. Plain `"namespace:key"` strings are still accepted.
-- **BREAKING**: `ActorDeathEvent` is now called when a player dies, as well as for every other mob. It previously skipped players, even though `PlayerDeathEvent` derives from it, so a listener on `ActorDeathEvent` never saw them. Bukkit's `EntityDeathEvent` receives player deaths, and this now matches. A listener that assumed it only ever saw non-player mobs should check `actor.type` or listen for `PlayerDeathEvent` instead.
+- **BREAKING**: `Server::createBossBar()` is no longer `const`, since the server now keeps track of the boss bars it hands out. C++ plugins holding a `const Server &` need a non-const one; Python call sites are unchanged.
+
+#### Platform
+
+- **BREAKING**: The Docker image stores server data in `/data` instead of `/home/endstone/bedrock_server`. Update your volume mount accordingly (e.g. `-v ./data:/data`).
+- The console prompt now appears as soon as the server starts, right after the version banner, instead of only once the world has finished loading. Commands typed while the server is still starting are queued and run once it is ready, as they already were. Endstone no longer redirects the server's stdin during startup, so anything else reading it sees the real terminal throughout.
 - Dropped Python 3.10 support (end-of-life). Minimum version is now Python 3.11.
+
+### Removed
+
+#### Networking
+
+- **BREAKING**: `Server.port_v6` and `ServerListPingEvent.local_port_v6`. A server advertises one game port; the separate IPv6 port was rarely set and has no counterpart under NetherNet, which shares a single port across both families. Use `Server.port` and `ServerListPingEvent.local_port`. The IPv6 port field in the LAN advertisement is now passed through untouched rather than being rewritten from the event.
 
 ### Fixed
 
-- Fixed the server reading freed memory when a `Permissible` was destroyed while still subscribed to a permission, such as a player who disconnected while a plugin still held on to them. The next broadcast or permission recalculation could read from an object that was already gone.
-- Fixed the default permission lists holding on to a permission that `PluginManager.remove_permission()` had already freed. As in Bukkit, removing a permission does not take it out of those lists, but it is now kept alive rather than left dangling.
-- Fixed `Permission.add_parent()` and `Permission.permissibles` reading an uninitialised field on a permission that was never registered with a plugin manager, which could return nothing or crash depending on the build.
+#### Crashes and memory
+
+- Fixed the server reading freed memory when a `Permissible` was destroyed while still subscribed to a permission, such as a player who disconnected while a plugin held on to them.
+- Fixed the server crashing on a broadcast once a player had left and rejoined. A player's permissions are now cleared when they leave, and messaging a player who is no longer on the server is a no-op.
+- Fixed the default permission lists holding on to a permission that `PluginManager.remove_permission()` had already freed.
+- Fixed `Permission.add_parent()` and `Permission.permissibles` reading an uninitialised field on a permission that was never registered with a plugin manager.
+
+#### API behaviour
+
+- Fixed `Dimension.actors` and `Level.actors` leaving out connected players.
+- Fixed cancelling `PlayerDropItemEvent` destroying the item when it was thrown from the hand.
+- Fixed `PlayerBedLeaveEvent` only being called when a player pressed the leave button. It now also fires when morning comes, when the bed is broken or obstructed, and when the player is woken by anything else, and the `bed` block it reports is the bed being slept in rather than the respawn point.
+- Fixed every vanilla command failing when dispatched through a `CommandSenderWrapper`, which did not report its own type.
+- Fixed `str()` on a `Translatable` giving an object repr instead of its text.
+- Fixed `Mob.has_attribute()` raising for a name that is not an attribute instead of answering `False`.
+- Fixed writing book metadata wiping the photo attached to a page and the filtered text the server keeps beside it. Pages you did not change now keep both.
+- Fixed `Enchantment.FORTUNE` missing from Python.
+- Fixed `ServerLoadEvent` missing its `ServerEvent` base in Python, and `LoadType.RELOAD` never being exposed.
+- Fixed a boss bar vanishing for a player who travelled to another dimension. The Bedrock client drops every boss bar it is showing once it rebuilds the world, and now gets the bars a player is in sent again as soon as it asks for them.
+- Fixed `BossBar.remove_player` hiding the bar from a player who was never added to it, and `BossBar.add_player` re-sending the bar to a player who was already in it.
+- Fixed `Plugin.default_permission` rejecting a string or a bool (`"operator"`, `"not op"`, `True`), which individual entries in `Plugin.permissions` already accepted.
+
+#### Type annotations
+
 - Fixed type annotations for `Plugin` and `event_handler`.
-- Fixed the type stubs so a type checker no longer reports errors on them. `__eq__`/`__ne__` now take `object` as the data model requires, in-place operators such as `Vector.__iadd__` accept everything their binary counterpart does and return `Self`, an optional callback is typed `Callable[...] | None`, a skin image is a `numpy.typing.NDArray`, and `Plugin.config` is a `dict[str, Any]`.
+- Fixed the type stubs so a type checker no longer reports errors on them: `__eq__`/`__ne__` take `object`, in-place operators such as `Vector.__iadd__` accept everything their binary counterpart does and return `Self`, an optional callback is typed `Callable[...] | None`, a skin image is a `numpy.typing.NDArray`, and `Plugin.config` is a `dict[str, Any]`.
 - Fixed the NBT bindings hiding what their containers hold: `ByteArrayTag(iterable)` and `IntArrayTag(iterable)` take an `Iterable[int]`, `ListTag(iterable)` an `Iterable[Tag]`, `CompoundTag(mapping)` a `dict[str, Tag]`, and `to_list()`/`to_dict()` return `list[Any]`/`dict[str, Any]`.
-- Fixed `Plugin.default_permission` rejecting a string or a bool (`"operator"`, `"not op"`, `True`), which the `default` of an individual entry in `Plugin.permissions` already accepted. Only `PermissionDefault` worked; anything else raised `TypeError`.
-- Fixed `ServerLoadEvent` missing its `ServerEvent` base in Python, so `isinstance(event, ServerEvent)` was `False`, and `LoadType.RELOAD` never being exposed even though the server fires it on `/reload`.
-- Fixed every vanilla command failing when dispatched through a `CommandSenderWrapper`. The wrapper did not report its own type, so the command origin could not be resolved from it and the command was refused as an unsupported sender before it ran.
-- Fixed `Enchantment.FORTUNE` missing from Python. The constant existed in C++ but was never bound.
-- Fixed `Mob.has_attribute()` raising for a name that is not an attribute, instead of answering `False`.
-- Fixed `Dimension.actors` and `Level.actors` leaving out connected players. Bedrock keeps players in a separate list from other entities and only the latter was read, so a player was never among the actors of the dimension they were standing in.
-- Fixed `str()` on a `Translatable` giving `<endstone._python.lang.Translatable object at 0x...>` instead of its text. Command output captured through a `CommandSenderWrapper` arrives as `Translatable`, so it was unreadable without reaching for `.text` by hand.
-- Fixed the server crashing on a broadcast once a player had left and rejoined. A plugin that holds on to a `Player` after they disconnect kept them subscribed to broadcasts, and the next chat or quit message aimed at them took the server down. A player's permissions are now cleared when they leave, as the Java edition does, and sending a message to a player who is no longer on the server is a no-op rather than an error.
+
+### Security
+
+- Rate-limited the network ping packet (`NetworkStackLatencyPacket`, id 115). Bedrock accepts it from a connection that has not logged in yet, and the shipped `packetlimitconfig.json` left it unbounded, so a single connection could flood it to exhaust the server. On startup Endstone now adds a limit for it to `packetlimitconfig.json` when one is not already present, leaving any entry you have set yourself untouched.
 
 ## [0.11.9] - 2026-08-17
 

@@ -29,32 +29,36 @@
 #include "bedrock/world/level/storage/game_rules.h"
 #include "endstone/core/actor/actor.h"
 #include "endstone/core/game_rule.h"
+#include "endstone/core/inventory/recipe_data.h"
 #include "endstone/core/level/dimension.h"
+#include "endstone/event/level/dimension_load_event.h"
 #include "endstone/level/dimension.h"
+#include "endstone/plugin/plugin_manager.h"
 
 namespace endstone::core {
 
-EndstoneLevel::EndstoneLevel(::Level &level) : server_(EndstoneServer::getInstance()), level_(level)
+EndstoneLevel::EndstoneLevel(::Level &level) : server_(EndstoneServer::getInstance()), level_(level) {}
+
+void EndstoneLevel::loadDimensions()
 {
-    // Load all vanilla dimensions on start up
-    level.getOrCreateDimension(VanillaDimensions::Overworld);
-    level.getOrCreateDimension(VanillaDimensions::Nether);
-    level.getOrCreateDimension(VanillaDimensions::TheEnd);
-    auto add_dimension = [this](::Dimension &dimension) {
-        dimensions_[dimension.getDimensionId().value] =
-            std::make_shared<EndstoneDimension>(dimension.getWeakRef(), *this);
-    };
-    level.forEachDimension([&](::Dimension &dimension) {
+    level_.getDimensionManager().getOnNewDimensionCreatedConnector().connect(
+        [&](::Dimension &dimension) { addDimension(dimension); }, Bedrock::PubSub::ConnectPosition::AtBack, nullptr);
+    level_.forEachDimension([&](::Dimension &dimension) {
         addDimension(dimension);
         return true;
     });
-    level.getDimensionManager().getOnNewDimensionCreatedConnector().connect(
-        [&](::Dimension &dimension) { addDimension(dimension); }, Bedrock::PubSub::ConnectPosition::AtBack, nullptr);
+    // Load all vanilla dimensions on start up
+    level_.getOrCreateDimension(VanillaDimensions::Overworld);
+    level_.getOrCreateDimension(VanillaDimensions::Nether);
+    level_.getOrCreateDimension(VanillaDimensions::TheEnd);
 }
 
 void EndstoneLevel::addDimension(::Dimension &dimension)
 {
-    dimensions_[dimension.getDimensionId().value] = std::make_shared<EndstoneDimension>(dimension.getWeakRef(), *this);
+    const auto handle = std::make_shared<EndstoneDimension>(dimension.getWeakRef(), *this);
+    dimensions_[dimension.getDimensionId().value] = handle;
+    DimensionLoadEvent event{handle};
+    server_.getPluginManager().callEvent(event);
 }
 
 std::string EndstoneLevel::getName() const
@@ -103,6 +107,19 @@ std::vector<NotNull<Dimension>> EndstoneLevel::getDimensions() const
     return dimensions;
 }
 
+std::vector<NotNull<Recipe>> EndstoneLevel::getRecipes() const
+{
+    std::vector<NotNull<Recipe>> recipes;
+    for (const auto &by_tag : level_.getRecipes().getRecipesAllTags()) {
+        for (const auto &by_id : by_tag.second) {
+            if (by_id.second) {
+                recipes.push_back(EndstoneRecipeData::fromMinecraft(by_id.second));
+            }
+        }
+    }
+    return recipes;
+}
+
 Nullable<Dimension> EndstoneLevel::getDimension(DimensionId id) const
 {
     for (const auto &dimension : dimensions_ | std::views::values) {
@@ -127,12 +144,17 @@ Nullable<Dimension> EndstoneLevel::createDimension(const DimensionCreator &creat
         return existing;
     }
     const std::string name{creator.getId()};
-    const auto type = level_.getDimensionManager().serverRegisterCustomDimension(name, mce::UUID::EMPTY);
-    if (!type.has_value()) {
+    auto &dimension_manager = level_.getDimensionManager();
+    if (const auto type = dimension_manager.serverRegisterCustomDimension(name, mce::UUID::EMPTY)) {
+        level_.getOrCreateDimension(type.value());
+        return getDimension(type.value());
+    }
+
+    const auto dimension = dimension_manager.getOrCreateDimension(name);
+    if (!dimension.isSet()) {
         return nullptr;
     }
-    level_.getOrCreateDimension(type.value());
-    return getDimension(type.value());
+    return getDimension(dimension.unwrap()->getDimensionId());
 }
 
 std::int64_t EndstoneLevel::getSeed() const

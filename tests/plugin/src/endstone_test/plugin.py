@@ -9,12 +9,15 @@ from endstone_test.command_executor import TestCommandExecutor
 from endstone_test.listeners import (
     ActorEventListener,
     BlockEventListener,
+    CommandEventListener,
+    InventoryEventListener,
     LevelEventListener,
     PlayerEventListener,
     ServerEventListener,
     WeatherEventListener,
 )
 from endstone_test.recorder import EventRecorder
+from endstone_test.reporting import LoggerReporter, logging_to
 
 from .tests.conftest import clear_runtime_context, set_runtime_context
 
@@ -23,6 +26,8 @@ MARKER_DEFAULT = "not player and not event"
 LISTENERS = (
     ActorEventListener,
     BlockEventListener,
+    CommandEventListener,
+    InventoryEventListener,
     LevelEventListener,
     PlayerEventListener,
     ServerEventListener,
@@ -47,6 +52,8 @@ class EndstoneTest(Plugin):
                 "/test inv (mainhand|offhand|meta)<inv_test: InvTest>",
                 "/test spawn <actor: entity_type>",
                 "/test block <block: block> [states: block_states]",
+                "/test chunk [x: int] [z: int] [radius: int]",
+                "/test chunkapi [x: int] [z: int]",
             ],
             "permissions": ["endstone_test.command.test"],
         },
@@ -116,7 +123,18 @@ class EndstoneTest(Plugin):
             server=self.server, plugin=self, recorder=self.recorder, **context
         )
         try:
-            return pytest.main(["-s", "-m", marker, "--pyargs", "endstone_test.tests"])
+            with logging_to(self.logger):
+                return pytest.main(
+                    [
+                        "-s",
+                        "--color=yes",
+                        "-m",
+                        marker,
+                        "--pyargs",
+                        "endstone_test.tests",
+                    ],
+                    plugins=[LoggerReporter(self.logger)],
+                )
         finally:
             clear_runtime_context()
             gc.collect()

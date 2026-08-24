@@ -24,6 +24,7 @@ class Level;
 namespace core {
 class EndstoneActor;
 class EndstoneLevel;
+class EndstonePacketHandler;
 class EndstonePlayer;
 class EndstoneServer;
 class EndstoneServerNetworkEventHandler;
@@ -193,6 +194,7 @@ class PackedItemUseLegacyInventoryTransaction {};
 class PackManifestFactory;
 class PackMetadata;
 class PackSettingsFactory;
+struct PageContent;
 class Particle;
 class Path;
 class PauseManager;

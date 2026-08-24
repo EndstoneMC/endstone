@@ -15,6 +15,8 @@
 #include "endstone/core/devtools/devtools.h"
 
 #include <imgui.h>
+#include <imgui_impl_glfw.h>
+#include <imgui_impl_opengl3.h>
 #include <imgui_internal.h>
 
 #include <filesystem>
@@ -30,8 +32,6 @@
 #include "bedrock/util/string_byte_output.h"
 #include "endstone/color_format.h"
 #include "endstone/core/devtools/imgui_file_browser.h"
-#include "endstone/core/devtools/imgui_impl_glfw.h"
-#include "endstone/core/devtools/imgui_impl_opengl3.h"
 #include "endstone/core/devtools/imgui_json.h"
 #include "endstone/core/devtools/vanilla_data.h"
 #include "endstone/core/logger_factory.h"
@@ -233,9 +233,6 @@ void render()
                 fs::path{runtime::get_module_pathname()}.parent_path() / "fonts" / "JetBrainsMono-Regular.ttf";
             io.Fonts->Clear();
             io.Fonts->AddFontFromFileTTF(font_path.string().c_str(), std::round(15 * x_scale));
-            io.Fonts->Build();
-            ImGui_ImplOpenGL3_DestroyFontsTexture();
-            ImGui_ImplOpenGL3_CreateFontsTexture();
             auto style = ImGuiStyle();
             style.ScaleAllSizes(x_scale);
         }

@@ -42,7 +42,7 @@ public:
     bool operator==(const PlayerBlockActions &) const;
 
 private:
-    friend class endstone::core::EndstonePlayer;
+    friend class endstone::core::EndstonePacketHandler;
     static constexpr size_t MAX_NUM_ACTIONS = 100;
     std::vector<PlayerBlockActionData> actions_;
 };

@@ -2,6 +2,7 @@ from endstone.event import (
     BlockBreakEvent,
     BlockCookEvent,
     BlockExplodeEvent,
+    BlockFormEvent,
     BlockFromToEvent,
     BlockPistonExtendEvent,
     BlockPistonRetractEvent,
@@ -41,6 +42,16 @@ class BlockEventListener(EventListener):
             f"{event.block} exploded, destroying {len(event.block_list)} block(s)",
             block_type=str(event.block.type),
             block_count=len(event.block_list),
+        )
+
+    @event_handler
+    def on_block_form(self, event: BlockFormEvent):
+        self.record(
+            event,
+            f"{event.block} formed into {event.new_state.type}",
+            block_type=str(event.block.type),
+            new_type=str(event.new_state.type),
+            xyz=(event.block.x, event.block.y, event.block.z),
         )
 
     @event_handler

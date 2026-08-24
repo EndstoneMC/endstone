@@ -13,7 +13,7 @@ from endstone.block import BlockData, BlockType
 from endstone.boss import BarColor, BarFlag, BarStyle, BossBar
 from endstone.command import CommandMap, CommandSender, ConsoleCommandSender
 from endstone.form import ActionForm, MessageForm, ModalForm
-from endstone.inventory import Inventory, ItemFactory, PlayerInventory
+from endstone.inventory import Inventory, ItemFactory, PlayerInventory, Recipe
 from endstone.lang import Language, Translatable
 from endstone.level import Dimension, Level, Location
 from endstone.map import MapView
@@ -37,6 +37,7 @@ from . import (
     lang,
     level,
     map,
+    metrics,
     nbt,
     permissions,
     plugin,
@@ -48,6 +49,7 @@ from . import (
 from ._version import __version__
 
 __all__ = [
+    "Ability",
     "ColorFormat",
     "GameMode",
     "GameRule",
@@ -76,6 +78,7 @@ __all__ = [
     "lang",
     "level",
     "map",
+    "metrics",
     "nbt",
     "permissions",
     "plugin",
@@ -86,6 +89,9 @@ __all__ = [
 ]
 
 _T = typing.TypeVar("_T")
+JsonValue: typing.TypeAlias = JsonObject | JsonArray | str | int | float | bool | None
+JsonObject: typing.TypeAlias = dict[str, JsonValue]
+JsonArray: typing.TypeAlias = list[JsonValue]
 
 class Identifier(typing.Generic[_T]):
     """
@@ -219,6 +225,12 @@ class Server:
         """
 
     @property
+    def recipes(self) -> list[Recipe]:
+        """
+        The list of crafting recipes.
+        """
+
+    @property
     def online_players(self) -> list[Player]:
         """
         A list of all currently online players.
@@ -266,12 +278,6 @@ class Server:
     def port(self) -> int:
         """
         The game port that the server runs on.
-        """
-
-    @property
-    def port_v6(self) -> int:
-        """
-        The game port (IPv6) that the server runs on.
         """
 
     def shutdown(self) -> None:
@@ -529,6 +535,20 @@ class Player(Mob):
         """
 
     @property
+    def respawn_location(self) -> Location | None:
+        """
+        The location where the player will respawn, or `None` if they don't have a valid respawn point.
+
+        Assigning `None` clears the respawn point. When a location is assigned, its dimension must be loaded.
+
+        Note:
+            Only the block coordinates and the dimension are written back; Bedrock does not persist yaw/pitch for a
+            respawn point.
+        """
+
+    @respawn_location.setter
+    def respawn_location(self, arg1: Location | None) -> None: ...
+    @property
     def is_sneaking(self) -> bool:
         """
         Whether the player is in sneak mode.
@@ -712,18 +732,20 @@ class Player(Mob):
         """
 
     @typing.overload
-    def spawn_particle(self, name: str, location: Location, molang_variables_json: str | None = None) -> None:
+    def spawn_particle(self, name: str, location: Location, molang_variables: JsonObject | None = None) -> None:
         """
         Spawns the particle at the target location.
 
         Args:
             name: The name of the particle effect to spawn.
             location: The location to spawn at.
-            molang_variables_json: The customizable molang variables that can be adjusted for this particle, in json.
+            molang_variables: The customizable molang variables that can be adjusted for this particle.
         """
 
     @typing.overload
-    def spawn_particle(self, name: str, x: float, y: float, z: float, molang_variables_json: str | None = None) -> None:
+    def spawn_particle(
+        self, name: str, x: float, y: float, z: float, molang_variables: JsonObject | None = None
+    ) -> None:
         """
         Spawns the particle at the target location.
 
@@ -732,7 +754,7 @@ class Player(Mob):
             x: The position on the x axis to spawn at.
             y: The position on the y axis to spawn at.
             z: The position on the z axis to spawn at.
-            molang_variables_json: The customizable molang variables that can be adjusted for this particle, in json.
+            molang_variables: The customizable molang variables that can be adjusted for this particle.
         """
 
     @property
@@ -829,6 +851,122 @@ class Player(Mob):
             packet_id: The packet ID to be sent.
             payload: The payload of the packet to be transmitted.
         """
+
+    @typing.overload
+    def get_ability(self, ability: Identifier[Ability[_T]]) -> _T: ...
+    @typing.overload
+    def get_ability(self, ability: str) -> bool | float:
+        """
+        Gets the value of an ability.
+
+        The value returned is the one in effect, which is not always the one that was set: while the player is
+        spectating, or has the loading screen up, or is in the editor, that state supplies its own value for some
+        abilities and it takes precedence over the player's own.
+
+        Args:
+            ability: The Minecraft ability to get.
+
+        Returns:
+            The current ability value.
+
+        Raises:
+            IndexError: If the ability does not exist.
+        """
+
+    @typing.overload
+    def set_ability(self, ability: Identifier[Ability[_T]], value: _T) -> None: ...
+    @typing.overload
+    def set_ability(self, ability: str, value: bool | float) -> None:
+        """
+        Sets the value of an ability.
+
+        Abilities are not persisted for a player whose permissions are managed by the server, so a plugin that wants a
+        value to outlast the session must set it again when the player rejoins. `Ability.MUTED`, `Ability.NO_CLIP`,
+        `Ability.PRIVILEGED_BUILDER` and `Ability.WORLD_BUILDER` are never saved at all.
+
+        Args:
+            ability: The Minecraft ability to set.
+            value: The new value, which must match the type of the ability.
+
+        Raises:
+            ValueError: If the ability does not exist or the value has the wrong type.
+        """
+
+class Ability(typing.Generic[_T]):
+    """
+    All player abilities.
+
+    `ATTACK_MOBS`, `ATTACK_PLAYERS`, `BUILD`, `DOORS_AND_SWITCHES`, `MINE`, `OPEN_CONTAINERS`, `OPERATOR_COMMANDS`
+    and `TELEPORT` are the eight member permissions the client shows in its pause menu, and the server enforces
+    every one of them.
+    """
+    def __hash__(self) -> int: ...
+    def __eq__(self, other: object) -> bool: ...
+    def __ne__(self, other: object) -> bool: ...
+    @property
+    def id(self) -> Identifier[Ability[_T]]:
+        """
+        The identifier of this ability.
+        """
+
+    @property
+    def translation_key(self) -> str:
+        """
+        The translation key of this ability.
+        """
+
+    @typing.overload
+    @staticmethod
+    def get(name: Identifier[Ability[_T]]) -> Ability[_T] | None: ...
+    @typing.overload
+    @staticmethod
+    def get(name: str) -> Ability[typing.Any] | None:
+        """
+        Attempts to get the `Ability` with the given name.
+
+        Args:
+            name: The identifier of the ability (e.g. `minecraft:noclip`).
+
+        Returns:
+            The `Ability`, or `None` if no ability with that name exists.
+        """
+
+    ATTACK_MOBS: Identifier[Ability[bool]] = "minecraft:attackmobs"
+
+    ATTACK_PLAYERS: Identifier[Ability[bool]] = "minecraft:attackplayers"
+
+    BUILD: Identifier[Ability[bool]] = "minecraft:build"
+
+    DOORS_AND_SWITCHES: Identifier[Ability[bool]] = "minecraft:doorsandswitches"
+
+    FLYING: Identifier[Ability[bool]] = "minecraft:flying"
+
+    FLY_SPEED: Identifier[Ability[float]] = "minecraft:flyspeed"
+    INSTABUILD: Identifier[Ability[bool]] = "minecraft:instabuild"
+
+    INVULNERABLE: Identifier[Ability[bool]] = "minecraft:invulnerable"
+
+    LIGHTNING: Identifier[Ability[bool]] = "minecraft:lightning"
+
+    MAY_FLY: Identifier[Ability[bool]] = "minecraft:mayfly"
+
+    MINE: Identifier[Ability[bool]] = "minecraft:mine"
+
+    MUTED: Identifier[Ability[bool]] = "minecraft:mute"
+
+    NO_CLIP: Identifier[Ability[bool]] = "minecraft:noclip"
+
+    OPEN_CONTAINERS: Identifier[Ability[bool]] = "minecraft:opencontainers"
+
+    OPERATOR_COMMANDS: Identifier[Ability[bool]] = "minecraft:op"
+
+    PRIVILEGED_BUILDER: Identifier[Ability[bool]] = "minecraft:privilegedbuilder"
+
+    TELEPORT: Identifier[Ability[bool]] = "minecraft:teleport"
+
+    VERTICAL_FLY_SPEED: Identifier[Ability[float]] = "minecraft:verticalflyspeed"
+    WALK_SPEED: Identifier[Ability[float]] = "minecraft:walkspeed"
+    WORLD_BUILDER: Identifier[Ability[bool]] = "minecraft:worldbuilder"
 
 class ColorFormat:
     """
