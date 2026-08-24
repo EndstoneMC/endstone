@@ -20,7 +20,6 @@
 #include "bedrock/world/level/block/actor/block_actor.h"
 #include "bedrock/world/level/block/actor/vanilla_block_actor.h"
 #include "bedrock/world/level/block/actor/vanilla_block_actor_factory.h"
-#include "endstone/check.h"
 
 namespace endstone::core {
 
@@ -48,59 +47,40 @@ public:
     {
         return nullptr;
     }
-    DataLoadHelperType getType() const override { return DataLoadHelperType::NewUniqueIds; }
+    DataLoadHelperType getType() const override { return DataLoadHelperType::Default; }
     bool shouldResetTime() override { return false; }
 };
-
-std::shared_ptr<::BlockActor> cloneBlockActor(::ILevel &level, const ::BlockActor &source, const ::BlockPos &position,
-                                              const ::BlockType &block)
-{
-    ::CompoundTag tag;
-    if (!source.save(tag, SaveContext::forClone())) {
-        return nullptr;
-    }
-
-    auto clone = VanillaBlockActorFactory::createBlockActor(position, block);
-    if (clone == nullptr) {
-        return nullptr;
-    }
-
-    SnapshotDataLoadHelper data_load_helper;
-    clone->load(level, tag, data_load_helper);
-    return clone;
-}
 
 }  // namespace
 
 EndstoneBlockActorState::~EndstoneBlockActorState() = default;
 
-void EndstoneBlockActorState::initializeBlockActor(::ILevel &level, ::BlockActor &block_actor,
+void EndstoneBlockActorState::initializeBlockActor(::ILevel &level, const ::BlockActor &block_actor,
                                                    const ::BlockPos &position, const ::BlockType &block,
                                                    bool use_snapshot)
 {
-    block_actor_ = &block_actor;
     if (!use_snapshot) {
         return;
     }
 
-    snapshot_ = cloneBlockActor(level, block_actor, position, block);
-    Preconditions::checkState(snapshot_ != nullptr, "Unable to create a block entity snapshot.");
-    block_actor_ = snapshot_.get();
-}
+    ::CompoundTag tag;
+    if (!block_actor.save(tag, SaveContext::forClone())) {
+        return;
+    }
 
-::BlockActor *EndstoneBlockActorState::getBlockActor() const
-{
-    return block_actor_;
-}
+    auto clone = VanillaBlockActorFactory::createBlockActor(position, block);
+    if (clone == nullptr) {
+        return;
+    }
 
-bool EndstoneBlockActorState::isSnapshot() const
-{
-    return snapshot_ != nullptr;
+    SnapshotDataLoadHelper data_load_helper;
+    clone->load(level, tag, data_load_helper);
+    snapshot_ = std::move(clone);
 }
 
 bool EndstoneBlockActorState::applyTo(::ILevel &level, ::BlockActor &block_actor) const
 {
-    if (isSnapshot()) {
+    if (snapshot_ != nullptr) {
         ::CompoundTag tag;
         if (!serializeForUpdate(tag)) {
             return false;
@@ -109,13 +89,10 @@ bool EndstoneBlockActorState::applyTo(::ILevel &level, ::BlockActor &block_actor
         SnapshotDataLoadHelper data_load_helper;
         block_actor.load(level, tag, data_load_helper);
     }
-    static_cast<::VanillaBlockActor &>(block_actor).setChanged();
+    if (block_actor.getType() != ::BlockActorType::DataDriven) {
+        static_cast<::VanillaBlockActor &>(block_actor).setChanged();
+    }
     return true;
-}
-
-bool serializeBlockActor(const ::BlockActor &block_actor, ::CompoundTag &tag)
-{
-    return block_actor.save(tag, SaveContext::forNetwork());
 }
 
 }  // namespace endstone::core

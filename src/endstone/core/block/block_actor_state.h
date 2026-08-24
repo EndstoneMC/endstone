@@ -32,16 +32,11 @@ public:
     [[nodiscard]] virtual bool serializeForUpdate(::CompoundTag &tag) const = 0;
 
 protected:
-    void initializeBlockActor(::ILevel &, ::BlockActor &, const ::BlockPos &, const ::BlockType &, bool use_snapshot);
-    [[nodiscard]] ::BlockActor *getBlockActor() const;
-    [[nodiscard]] bool isSnapshot() const;
-    bool applyTo(::ILevel &, ::BlockActor &) const;
+    void initializeBlockActor(::ILevel &level, const ::BlockActor &block_actor, const ::BlockPos &position,
+                              const ::BlockType &block, bool use_snapshot);
+    bool applyTo(::ILevel &level, ::BlockActor &block_actor) const;
 
-private:
-    ::BlockActor *block_actor_{nullptr};
     std::shared_ptr<::BlockActor> snapshot_;
 };
-
-[[nodiscard]] bool serializeBlockActor(const ::BlockActor &block_actor, ::CompoundTag &tag);
 
 }  // namespace endstone::core

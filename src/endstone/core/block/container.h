@@ -42,8 +42,11 @@ public:
 protected:
     [[nodiscard]] ::Container &getContainer() const
     {
-        auto &block_actor = static_cast<::VanillaBlockActor &>(this->template getBlockActor<::BlockActor>());
-        auto *container = block_actor.getContainer();
+        auto &block_actor = this->template getBlockActor<::BlockActor>();
+        ::Container *container = nullptr;
+        if (block_actor.getType() != ::BlockActorType::DataDriven) {
+            container = static_cast<::VanillaBlockActor &>(block_actor).getContainer();
+        }
         if (container == nullptr) {
             throw std::runtime_error("Trying to access a container block state that is no longer valid.");
         }
