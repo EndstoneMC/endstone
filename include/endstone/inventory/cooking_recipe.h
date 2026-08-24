@@ -14,14 +14,24 @@
 
 #pragma once
 
-#include "endstone/inventory/cooking_recipe.h"
+#include "endstone/inventory/recipe.h"
 
 namespace endstone {
 /**
- * Represents a furnace recipe.
+ * Represents a cooking recipe.
+ *
+ * Bedrock records neither an experience reward nor a cooking time on the recipe itself, so neither is reported here.
+ * The experience a smelt awards belongs to the input item, and the time a cook takes to the station.
  */
-class FurnaceRecipe : public CookingRecipe {
+class CookingRecipe : public Recipe {
 public:
-    ~FurnaceRecipe() override = default;
+    ~CookingRecipe() override = default;
+
+    /**
+     * Get the input choice.
+     *
+     * @return the input choice
+     */
+    [[nodiscard]] virtual Nullable<RecipeIngredient> getInputChoice() const = 0;
 };
 }  // namespace endstone

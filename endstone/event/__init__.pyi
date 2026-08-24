@@ -10,7 +10,7 @@ from endstone.actor import Actor, Item, Mob
 from endstone.block import Block, BlockFace, BlockState
 from endstone.command import CommandSender
 from endstone.damage import DamageSource
-from endstone.inventory import BookMeta, EquipmentSlot, FurnaceRecipe, Inventory, ItemStack, Recipe
+from endstone.inventory import BookMeta, CookingRecipe, EquipmentSlot, Inventory, ItemStack, Recipe
 from endstone.lang import Translatable
 from endstone.level import Chunk, Dimension, Level, Location
 from endstone.map import MapView
@@ -521,9 +521,9 @@ class BlockCookEvent(BlockEvent, Cancellable):
     @result.setter
     def result(self, arg1: ItemStack) -> None: ...
     @property
-    def recipe(self) -> FurnaceRecipe | None:
+    def recipe(self) -> CookingRecipe | None:
         """
-        The furnace recipe associated with this event, if available.
+        The cooking recipe this event is for, or `None` if the server could not resolve one.
         """
 
 class BlockGrowEvent(BlockEvent, Cancellable):

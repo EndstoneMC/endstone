@@ -12,10 +12,13 @@ from endstone.nbt import CompoundTag
 from endstone.potion import PotionType
 
 __all__ = [
+    "BlastingRecipe",
     "BookMeta",
     "BookMetaGeneration",
+    "CampfireRecipe",
     "ComplexAliasIngredient",
     "ComplexRecipe",
+    "CookingRecipe",
     "CrossbowMeta",
     "EquipmentSlot",
     "ExactIngredient",
@@ -38,6 +41,7 @@ __all__ = [
     "SmithingRecipe",
     "SmithingTransformRecipe",
     "SmithingTrimRecipe",
+    "SmokingRecipe",
     "WritableBookMeta",
 ]
 
@@ -262,7 +266,7 @@ class ComplexAliasIngredient(RecipeIngredient):
 
 class Recipe:
     """
-    Represents some type of recipe.
+    Represents some type of crafting recipe.
     """
     @property
     def result(self) -> ItemStack:
@@ -281,10 +285,7 @@ class Recipe:
     @property
     def id(self) -> str:
         """
-        The identifier of this recipe.
-
-        Bedrock does not retain the identifiers of furnace recipes after loading them, so `FurnaceRecipe` returns an empty
-        string.
+        The identifier of this recipe, such as `minecraft:crafting_table`.
         """
 
     @property
@@ -293,18 +294,38 @@ class Recipe:
         The station this recipe belongs to, such as `crafting_table` or `furnace`.
         """
 
-class FurnaceRecipe(Recipe):
+class CookingRecipe(Recipe):
     """
-    Represents a furnace recipe.
+    Represents a cooking recipe.
 
-    Bedrock uses furnace recipes for furnaces, blast furnaces, smokers, campfires and soul campfires. The recipe's `tag`
-    identifies the station that accepts it.
+    Bedrock records neither an experience reward nor a cooking time on the recipe itself, so neither is reported here.
+    The experience a smelt awards belongs to the input item, and the time a cook takes to the station.
     """
     @property
-    def input(self) -> RecipeIngredient:
+    def input_choice(self) -> RecipeIngredient | None:
         """
-        The input ingredient.
+        The input choice.
         """
+
+class BlastingRecipe(CookingRecipe):
+    """
+    Represents a blasting recipe.
+    """
+
+class CampfireRecipe(CookingRecipe):
+    """
+    Represents a campfire recipe.
+    """
+
+class FurnaceRecipe(CookingRecipe):
+    """
+    Represents a furnace recipe.
+    """
+
+class SmokingRecipe(CookingRecipe):
+    """
+    Represents a smoking recipe.
+    """
 
 class ShapedRecipe(Recipe):
     """

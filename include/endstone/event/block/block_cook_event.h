@@ -18,7 +18,7 @@
 
 #include "endstone/event/block/block_event.h"
 #include "endstone/event/cancellable.h"
-#include "endstone/inventory/furnace_recipe.h"
+#include "endstone/inventory/cooking_recipe.h"
 #include "endstone/inventory/item_stack.h"
 
 namespace endstone {
@@ -30,7 +30,7 @@ public:
     ENDSTONE_EVENT(BlockCookEvent);
 
     BlockCookEvent(const NotNull<Block> &block, ItemStack source, ItemStack result,
-                   Nullable<FurnaceRecipe> recipe = nullptr)
+                   Nullable<CookingRecipe> recipe = nullptr)
         : Cancellable(block), source_(std::move(source)), result_(std::move(result)), recipe_(std::move(recipe))
     {
     }
@@ -57,15 +57,15 @@ public:
     void setResult(ItemStack result) { result_ = std::move(result); }
 
     /**
-     * Gets the furnace recipe associated with this event.
+     * Gets the cooking recipe this event is for.
      *
-     * @return the furnace recipe, or empty if it is unavailable
+     * @return the cooking recipe, or nullptr if the server could not resolve one
      */
-    [[nodiscard]] Nullable<FurnaceRecipe> getRecipe() const { return recipe_; }
+    [[nodiscard]] Nullable<CookingRecipe> getRecipe() const { return recipe_; }
 
 private:
     ItemStack source_;
     ItemStack result_;
-    Nullable<FurnaceRecipe> recipe_;
+    Nullable<CookingRecipe> recipe_;
 };
 }  // namespace endstone

@@ -194,7 +194,7 @@ void init_event(py::module_ &m, py::class_<Event, PyEvent> &event)
         .def_property("result", &BlockCookEvent::getResult, &BlockCookEvent::setResult,
                       "The resultant `ItemStack` for this event.")
         .def_property_readonly("recipe", &BlockCookEvent::getRecipe,
-                               "The furnace recipe associated with this event, if available.");
+                               "The cooking recipe this event is for, or `None` if the server could not resolve one.");
     py::class_<BlockGrowEvent, BlockEvent, ICancellable>(m, "BlockGrowEvent", R"doc(
     Called when a block grows naturally in the world.
 

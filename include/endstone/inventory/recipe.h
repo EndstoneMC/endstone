@@ -23,7 +23,7 @@
 
 namespace endstone {
 /**
- * Represents some type of recipe.
+ * Represents some type of crafting recipe.
  */
 class Recipe : public Object {
 public:
@@ -46,12 +46,9 @@ public:
     [[nodiscard]] virtual const std::vector<Nullable<RecipeIngredient>> &getIngredients() const = 0;
 
     /**
-     * Gets the identifier of this recipe.
+     * Get the identifier of this recipe, such as `minecraft:crafting_table`.
      *
-     * Bedrock does not retain the identifiers of furnace recipes after loading them, so FurnaceRecipe returns an empty
-     * string.
-     *
-     * @return the recipe identifier, or an empty string when it is unavailable
+     * @return the recipe identifier
      */
     [[nodiscard]] virtual const std::string &getId() const = 0;
 

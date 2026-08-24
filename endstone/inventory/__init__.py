@@ -4,10 +4,13 @@ __getattr__, __dir__, __all__ = lazy.attach(
     "endstone._python",
     submod_attrs={
         "inventory": [
+            "BlastingRecipe",
             "BookMeta",
             "BookMetaGeneration",
+            "CampfireRecipe",
             "ComplexAliasIngredient",
             "ComplexRecipe",
+            "CookingRecipe",
             "CrossbowMeta",
             "EquipmentSlot",
             "ExactIngredient",
@@ -30,6 +33,7 @@ __getattr__, __dir__, __all__ = lazy.attach(
             "SmithingRecipe",
             "SmithingTransformRecipe",
             "SmithingTrimRecipe",
+            "SmokingRecipe",
             "WritableBookMeta",
         ],
     },

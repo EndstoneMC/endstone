@@ -1,33 +1,48 @@
+from collections import Counter
+
 from endstone import Server
 from endstone.inventory import (
+    BlastingRecipe,
+    CampfireRecipe,
     ExactIngredient,
     FurnaceRecipe,
     ItemStack,
     ItemTypeIngredient,
+    SmokingRecipe,
 )
 
+COOKING_RECIPE_TYPES = {
+    "blast_furnace": BlastingRecipe,
+    "campfire": CampfireRecipe,
+    "furnace": FurnaceRecipe,
+    "smoker": SmokingRecipe,
+    "soul_campfire": CampfireRecipe,
+}
 
-def test_furnace_recipes(server: Server) -> None:
-    """Verify furnace recipes expose their station, input and result."""
-    recipes = [recipe for recipe in server.recipes if isinstance(recipe, FurnaceRecipe)]
+
+def test_recipes_are_reported_once(server: Server) -> None:
+    """Verify each loaded recipe appears exactly once."""
+    counts = Counter((recipe.tag, recipe.id) for recipe in server.recipes)
+
+    assert counts
+    assert [key for key, count in counts.items() if count > 1] == []
+
+
+def test_cooking_recipes(server: Server) -> None:
+    """Verify cooking recipes expose their station, input choice and result."""
+    recipes = [recipe for recipe in server.recipes if recipe.tag in COOKING_RECIPE_TYPES]
 
     assert recipes
-    assert {recipe.tag for recipe in recipes} == {
-        "blast_furnace",
-        "campfire",
-        "furnace",
-        "smoker",
-        "soul_campfire",
-    }
+    assert {recipe.tag for recipe in recipes} == set(COOKING_RECIPE_TYPES)
 
     for recipe in recipes:
-        assert recipe.recipe_id == ""
+        assert isinstance(recipe, COOKING_RECIPE_TYPES[recipe.tag])
+        assert recipe.id
         assert recipe.result.amount > 0
         assert len(recipe.ingredients) == 1
-        assert recipe.input is not None
-        assert recipe.input.count == 1
 
-        ingredient = recipe.input
+        ingredient = recipe.input_choice
+        assert ingredient is not None
         assert isinstance(ingredient, (ExactIngredient, ItemTypeIngredient))
         if isinstance(ingredient, ExactIngredient):
             assert ingredient.test(ingredient.item_stack)

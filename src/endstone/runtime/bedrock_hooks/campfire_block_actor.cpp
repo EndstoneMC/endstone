@@ -6,10 +6,34 @@
 #include "bedrock/world/level/block_source.h"
 #include "bedrock/world/level/level.h"
 #include "endstone/core/block/block.h"
-#include "endstone/core/inventory/furnace_recipe.h"
 #include "endstone/core/inventory/item_stack.h"
+#include "endstone/core/inventory/recipe_data.h"
+#include "endstone/core/plugin/plugin_manager.h"
 #include "endstone/core/server.h"
 #include "endstone/event/block/block_cook_event.h"
+#include "endstone/inventory/cooking_recipe.h"
+
+namespace {
+endstone::Nullable<endstone::CookingRecipe> findCookingRecipe(const Recipes &recipes, const ItemStack &input,
+                                                              const HashedString &tag)
+{
+    const auto &all_tags = recipes.getRecipesAllTags();
+    const auto by_tag = all_tags.find(tag);
+    if (by_tag == all_tags.end()) {
+        return nullptr;
+    }
+    for (const auto &by_id : by_tag->second) {
+        const auto &recipe = by_id.second;
+        if (!recipe || recipe->getIngredients().empty()) {
+            continue;
+        }
+        if (recipe->itemValidForRecipe(recipe->getIngredients().front(), input)) {
+            return endstone::core::EndstoneRecipeData::fromMinecraft(recipe).as<endstone::CookingRecipe>();
+        }
+    }
+    return nullptr;
+}
+}  // namespace
 
 void CampfireBlockActor::_finishCooking(::BlockSource &region, int slot)
 {
@@ -29,16 +53,17 @@ void CampfireBlockActor::_finishCooking(::BlockSource &region, int slot)
 
         // Endstone start
         const auto &server = endstone::core::EndstoneServer::getInstance();
-        endstone::BlockCookEvent event{
-            endstone::core::EndstoneBlock::at(region, position_),
-            endstone::core::EndstoneItemStack::fromMinecraft(source),
-            endstone::core::EndstoneItemStack::fromMinecraft(result),
-            endstone::core::EndstoneFurnaceRecipe::fromMinecraft(recipes, cooking_item_[slot], tag)};
-        server.getPluginManager().callEvent(event);
-        if (event.isCancelled()) {
-            return;
+        if (server.getEndstonePluginManager().isEventRegistered<endstone::BlockCookEvent>()) {
+            endstone::BlockCookEvent event{endstone::core::EndstoneBlock::at(region, position_),
+                                           endstone::core::EndstoneItemStack::fromMinecraft(source),
+                                           endstone::core::EndstoneItemStack::fromMinecraft(result),
+                                           findCookingRecipe(recipes, source, tag)};
+            server.getPluginManager().callEvent(event);
+            if (event.isCancelled()) {
+                return;
+            }
+            result = endstone::core::EndstoneItemStack::toMinecraft(event.getResult());
         }
-        result = endstone::core::EndstoneItemStack::toMinecraft(event.getResult());
         // Endstone end
 
         region.getLevel().getSpawner().spawnItem(region, result, nullptr, Vec3(position_) + 0.5, 10);

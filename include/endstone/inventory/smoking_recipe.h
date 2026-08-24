@@ -18,10 +18,10 @@
 
 namespace endstone {
 /**
- * Represents a furnace recipe.
+ * Represents a smoking recipe.
  */
-class FurnaceRecipe : public CookingRecipe {
+class SmokingRecipe : public CookingRecipe {
 public:
-    ~FurnaceRecipe() override = default;
+    ~SmokingRecipe() override = default;
 };
 }  // namespace endstone
