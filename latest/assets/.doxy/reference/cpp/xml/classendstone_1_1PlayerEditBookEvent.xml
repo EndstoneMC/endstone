@@ -17,7 +17,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/event/player/player_edit_book_event.h" line="83" column="9" bodyfile="include/endstone/event/player/player_edit_book_event.h" bodystart="83" bodyend="-1"/>
+        <location file="include/endstone/event/player/player_edit_book_event.h" line="93" column="9" bodyfile="include/endstone/event/player/player_edit_book_event.h" bodystart="93" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="classendstone_1_1PlayerEditBookEvent_1a0017d6c958df55e8ae55ba8d4fbe6e79" prot="private" static="no" mutable="no">
         <type><ref refid="classendstone_1_1NotNull" kindref="compound">NotNull</ref>&lt; <ref refid="classendstone_1_1BookMeta" kindref="compound">BookMeta</ref> &gt;</type>
@@ -31,7 +31,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/event/player/player_edit_book_event.h" line="84" column="13" bodyfile="include/endstone/event/player/player_edit_book_event.h" bodystart="84" bodyend="-1"/>
+        <location file="include/endstone/event/player/player_edit_book_event.h" line="94" column="13" bodyfile="include/endstone/event/player/player_edit_book_event.h" bodystart="94" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="classendstone_1_1PlayerEditBookEvent_1a58b7f9640d19fcb1f51cdad27b899650" prot="private" static="no" mutable="no">
         <type><ref refid="classendstone_1_1NotNull" kindref="compound">NotNull</ref>&lt; <ref refid="classendstone_1_1BookMeta" kindref="compound">BookMeta</ref> &gt;</type>
@@ -45,7 +45,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/event/player/player_edit_book_event.h" line="85" column="13" bodyfile="include/endstone/event/player/player_edit_book_event.h" bodystart="85" bodyend="-1"/>
+        <location file="include/endstone/event/player/player_edit_book_event.h" line="95" column="13" bodyfile="include/endstone/event/player/player_edit_book_event.h" bodystart="95" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="classendstone_1_1PlayerEditBookEvent_1a303d9ce81c2079c465cdadee3822446a" prot="private" static="no" mutable="no">
         <type><ref refid="classendstone_1_1Identifier" kindref="compound">bool</ref></type>
@@ -59,7 +59,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/event/player/player_edit_book_event.h" line="86" column="10" bodyfile="include/endstone/event/player/player_edit_book_event.h" bodystart="86" bodyend="-1"/>
+        <location file="include/endstone/event/player/player_edit_book_event.h" line="96" column="10" bodyfile="include/endstone/event/player/player_edit_book_event.h" bodystart="96" bodyend="-1"/>
       </memberdef>
     </sectiondef>
     <sectiondef kind="public-func">
@@ -132,42 +132,46 @@
         </inbodydescription>
         <location file="include/endstone/event/player/player_edit_book_event.h" line="42" column="10" bodyfile="include/endstone/event/player/player_edit_book_event.h" bodystart="42" bodyend="42"/>
       </memberdef>
-      <memberdef kind="function" id="classendstone_1_1PlayerEditBookEvent_1abead36c8bdae6c55e36192e886590c24" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
-        <type><ref refid="classendstone_1_1Identifier" kindref="compound">const</ref> <ref refid="classendstone_1_1NotNull" kindref="compound">NotNull</ref>&lt; <ref refid="classendstone_1_1BookMeta" kindref="compound">BookMeta</ref> &gt; &amp;</type>
-        <definition>const NotNull&lt; BookMeta &gt; &amp; endstone::PlayerEditBookEvent::getPreviousBookMeta</definition>
+      <memberdef kind="function" id="classendstone_1_1PlayerEditBookEvent_1a8aa981605b6a21626e0293bef2fbafd3" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type><ref refid="classendstone_1_1NotNull" kindref="compound">NotNull</ref>&lt; <ref refid="classendstone_1_1BookMeta" kindref="compound">BookMeta</ref> &gt;</type>
+        <definition>NotNull&lt; BookMeta &gt; endstone::PlayerEditBookEvent::getPreviousBookMeta</definition>
         <argsstring>() const</argsstring>
         <name>getPreviousBookMeta</name>
         <qualifiedname>endstone::PlayerEditBookEvent::getPreviousBookMeta</qualifiedname>
         <briefdescription>
-<para>Gets the metadata before the edit. </para>
+<para>Gets a copy of the metadata before the edit. </para>
         </briefdescription>
         <detaileddescription>
-<para><simplesect kind="return"><para>the book metadata before the edit </para>
+<para><simplesect kind="note"><para>This is a copy: changes made to it are not written back to the book.</para>
+</simplesect>
+<simplesect kind="return"><para>the book metadata before the edit </para>
 </simplesect>
 </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/event/player/player_edit_book_event.h" line="49" column="20" bodyfile="include/endstone/event/player/player_edit_book_event.h" bodystart="49" bodyend="49"/>
+        <location file="include/endstone/event/player/player_edit_book_event.h" line="51" column="14" bodyfile="include/endstone/event/player/player_edit_book_event.h" bodystart="51" bodyend="54"/>
       </memberdef>
-      <memberdef kind="function" id="classendstone_1_1PlayerEditBookEvent_1abbbab07f5338507af631d68570c7f37d" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
-        <type><ref refid="classendstone_1_1Identifier" kindref="compound">const</ref> <ref refid="classendstone_1_1NotNull" kindref="compound">NotNull</ref>&lt; <ref refid="classendstone_1_1BookMeta" kindref="compound">BookMeta</ref> &gt; &amp;</type>
-        <definition>const NotNull&lt; BookMeta &gt; &amp; endstone::PlayerEditBookEvent::getNewBookMeta</definition>
+      <memberdef kind="function" id="classendstone_1_1PlayerEditBookEvent_1ae01902f5750810e49f81f499eac28262" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type><ref refid="classendstone_1_1NotNull" kindref="compound">NotNull</ref>&lt; <ref refid="classendstone_1_1BookMeta" kindref="compound">BookMeta</ref> &gt;</type>
+        <definition>NotNull&lt; BookMeta &gt; endstone::PlayerEditBookEvent::getNewBookMeta</definition>
         <argsstring>() const</argsstring>
         <name>getNewBookMeta</name>
         <qualifiedname>endstone::PlayerEditBookEvent::getNewBookMeta</qualifiedname>
         <briefdescription>
-<para>Gets the metadata that will be applied after the edit. </para>
+<para>Gets a copy of the metadata that the player is attempting to add to the book. </para>
         </briefdescription>
         <detaileddescription>
-<para>Changes made to it take effect.</para>
+<para><simplesect kind="note"><para>This is a copy: use <ref refid="classendstone_1_1PlayerEditBookEvent_1a84df742e7a63cb2f2c17956f467006e7" kindref="member">setNewBookMeta()</ref> to change what will actually be added to the book.</para>
+</simplesect>
+A title, an author and a generation are only written when the book is being signed. On a plain edit the book stays a book and quill, which holds none of them, and they are dropped. See <ref refid="classendstone_1_1PlayerEditBookEvent_1ae872bda3627b53d486bea898fc0a53be" kindref="member">isSigning()</ref>.</para>
 <para><simplesect kind="return"><para>the book metadata after the edit </para>
 </simplesect>
 </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/event/player/player_edit_book_event.h" line="56" column="20" bodyfile="include/endstone/event/player/player_edit_book_event.h" bodystart="56" bodyend="56"/>
+        <location file="include/endstone/event/player/player_edit_book_event.h" line="66" column="14" bodyfile="include/endstone/event/player/player_edit_book_event.h" bodystart="66" bodyend="66"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1PlayerEditBookEvent_1a84df742e7a63cb2f2c17956f467006e7" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type><ref refid="classendstone_1_1Identifier" kindref="compound">void</ref></type>
@@ -196,7 +200,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/event/player/player_edit_book_event.h" line="63" column="10" bodyfile="include/endstone/event/player/player_edit_book_event.h" bodystart="63" bodyend="66"/>
+        <location file="include/endstone/event/player/player_edit_book_event.h" line="73" column="10" bodyfile="include/endstone/event/player/player_edit_book_event.h" bodystart="73" bodyend="76"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1PlayerEditBookEvent_1ae872bda3627b53d486bea898fc0a53be" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
         <type><ref refid="classendstone_1_1Identifier" kindref="compound">bool</ref></type>
@@ -214,7 +218,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/event/player/player_edit_book_event.h" line="73" column="11" bodyfile="include/endstone/event/player/player_edit_book_event.h" bodystart="73" bodyend="73"/>
+        <location file="include/endstone/event/player/player_edit_book_event.h" line="83" column="11" bodyfile="include/endstone/event/player/player_edit_book_event.h" bodystart="83" bodyend="83"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1PlayerEditBookEvent_1a33306c08313104acddedf584e0f60dfc" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type><ref refid="classendstone_1_1Identifier" kindref="compound">void</ref></type>
@@ -243,7 +247,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/event/player/player_edit_book_event.h" line="80" column="10" bodyfile="include/endstone/event/player/player_edit_book_event.h" bodystart="80" bodyend="80"/>
+        <location file="include/endstone/event/player/player_edit_book_event.h" line="90" column="10" bodyfile="include/endstone/event/player/player_edit_book_event.h" bodystart="90" bodyend="90"/>
       </memberdef>
     </sectiondef>
     <briefdescription>
@@ -318,7 +322,7 @@
         </childnode>
       </node>
     </collaborationgraph>
-    <location file="include/endstone/event/player/player_edit_book_event.h" line="26" column="1" bodyfile="include/endstone/event/player/player_edit_book_event.h" bodystart="26" bodyend="87"/>
+    <location file="include/endstone/event/player/player_edit_book_event.h" line="26" column="1" bodyfile="include/endstone/event/player/player_edit_book_event.h" bodystart="26" bodyend="97"/>
     <listofallmembers>
       <member refid="classendstone_1_1Cancellable_1a3512b47db69c6001f5c0450051308327" prot="public" virt="virtual"><scope>endstone::PlayerEditBookEvent</scope><name>cancel</name></member>
       <member refid="classendstone_1_1PlayerEditBookEvent_1ab1ed0f44304e1df2b04e0d92b3630df8" prot="public" virt="non-virtual"><scope>endstone::PlayerEditBookEvent</scope><name>ENDSTONE_EVENT</name></member>
@@ -326,9 +330,9 @@
       <member refid="classendstone_1_1Event_1a7199136ebb40e1441bc61e29f83c3cad" prot="public" virt="non-virtual"><scope>endstone::PlayerEditBookEvent</scope><name>Event</name></member>
       <member refid="classendstone_1_1Event_1ad20bafd16e0671578e37390b95e5104c" prot="public" virt="non-virtual"><scope>endstone::PlayerEditBookEvent</scope><name>Event</name></member>
       <member refid="classendstone_1_1Event_1a826fe74f9c4195a36a364b9aeeb321bb" prot="public" virt="pure-virtual"><scope>endstone::PlayerEditBookEvent</scope><name>getEventName</name></member>
-      <member refid="classendstone_1_1PlayerEditBookEvent_1abbbab07f5338507af631d68570c7f37d" prot="public" virt="non-virtual"><scope>endstone::PlayerEditBookEvent</scope><name>getNewBookMeta</name></member>
+      <member refid="classendstone_1_1PlayerEditBookEvent_1ae01902f5750810e49f81f499eac28262" prot="public" virt="non-virtual"><scope>endstone::PlayerEditBookEvent</scope><name>getNewBookMeta</name></member>
       <member refid="classendstone_1_1PlayerEvent_1abad8f8bca3e2be851c4b37075adf2cbc" prot="public" virt="non-virtual"><scope>endstone::PlayerEditBookEvent</scope><name>getPlayer</name></member>
-      <member refid="classendstone_1_1PlayerEditBookEvent_1abead36c8bdae6c55e36192e886590c24" prot="public" virt="non-virtual"><scope>endstone::PlayerEditBookEvent</scope><name>getPreviousBookMeta</name></member>
+      <member refid="classendstone_1_1PlayerEditBookEvent_1a8aa981605b6a21626e0293bef2fbafd3" prot="public" virt="non-virtual"><scope>endstone::PlayerEditBookEvent</scope><name>getPreviousBookMeta</name></member>
       <member refid="classendstone_1_1PlayerEditBookEvent_1af71ffebeffdbd6948d0bca262fda3bf2" prot="public" virt="non-virtual"><scope>endstone::PlayerEditBookEvent</scope><name>getSlot</name></member>
       <member refid="classendstone_1_1Event_1ae89b54f63dc32b0c8797a59db69b6931" prot="public" virt="non-virtual"><scope>endstone::PlayerEditBookEvent</scope><name>isAsynchronous</name></member>
       <member refid="classendstone_1_1Cancellable_1a268b73cc5bda0fa5923336d031814faa" prot="public" virt="virtual"><scope>endstone::PlayerEditBookEvent</scope><name>isCancelled</name></member>

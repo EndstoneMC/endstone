@@ -441,7 +441,7 @@ Pages of the book must be contiguous.
 
 **Note:**
 
-The data can be up to 1024 characters in length, additional characters are truncated.
+The data can be up to 256 characters in length, additional characters are truncated.
 
 
 Pages are 1-indexed.

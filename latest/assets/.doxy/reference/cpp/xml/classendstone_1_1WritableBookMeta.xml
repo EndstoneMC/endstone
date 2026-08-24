@@ -77,7 +77,7 @@
         </briefdescription>
         <detaileddescription>
 <para>Pages of the book must be contiguous.</para>
-<para><simplesect kind="note"><para>The data can be up to 1024 characters in length, additional characters are truncated.</para>
+<para><simplesect kind="note"><para>The data can be up to 256 characters in length, additional characters are truncated.</para>
 </simplesect>
 Pages are 1-indexed.</para>
 <para><parameterlist kind="param"><parameteritem>

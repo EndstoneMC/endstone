@@ -2796,12 +2796,12 @@ For latest updates join the chat on
 <td style="text-align: left;"><a href="#function-playereditbookevent"><strong>PlayerEditBookEvent</strong></a> (<a href="../classendstone_1_1Identifier/"><strong>const</strong></a> <a href="../classendstone_1_1NotNull/"><strong>NotNull</strong></a>&lt; <a href="../classendstone_1_1Player/"><strong>Player</strong></a> &gt; &amp; player, <a href="../classendstone_1_1Identifier/"><strong>int</strong></a> slot, <a href="../classendstone_1_1Identifier/"><strong>const</strong></a> <a href="../classendstone_1_1NotNull/"><strong>NotNull</strong></a>&lt; <a href="../classendstone_1_1BookMeta/"><strong>BookMeta</strong></a> &gt; &amp; previous_book_meta, <a href="../classendstone_1_1Identifier/"><strong>const</strong></a> <a href="../classendstone_1_1NotNull/"><strong>NotNull</strong></a>&lt; <a href="../classendstone_1_1BookMeta/"><strong>BookMeta</strong></a> &gt; &amp; new_book_meta, <a href="../classendstone_1_1Identifier/"><strong>bool</strong></a> signing) <br></td>
 </tr>
 <tr>
-<td style="text-align: right;"><a href="../classendstone_1_1Identifier/"><strong>const</strong></a> <a href="../classendstone_1_1NotNull/"><strong>NotNull</strong></a>&lt; <a href="../classendstone_1_1BookMeta/"><strong>BookMeta</strong></a> &gt; &amp;</td>
-<td style="text-align: left;"><a href="#function-getnewbookmeta"><strong>getNewBookMeta</strong></a> () const<br><em>Gets the metadata that will be applied after the edit.</em></td>
+<td style="text-align: right;"><a href="../classendstone_1_1NotNull/"><strong>NotNull</strong></a>&lt; <a href="../classendstone_1_1BookMeta/"><strong>BookMeta</strong></a> &gt;</td>
+<td style="text-align: left;"><a href="#function-getnewbookmeta"><strong>getNewBookMeta</strong></a> () const<br><em>Gets a copy of the metadata that the player is attempting to add to the book.</em></td>
 </tr>
 <tr>
-<td style="text-align: right;"><a href="../classendstone_1_1Identifier/"><strong>const</strong></a> <a href="../classendstone_1_1NotNull/"><strong>NotNull</strong></a>&lt; <a href="../classendstone_1_1BookMeta/"><strong>BookMeta</strong></a> &gt; &amp;</td>
-<td style="text-align: left;"><a href="#function-getpreviousbookmeta"><strong>getPreviousBookMeta</strong></a> () const<br><em>Gets the metadata before the edit.</em></td>
+<td style="text-align: right;"><a href="../classendstone_1_1NotNull/"><strong>NotNull</strong></a>&lt; <a href="../classendstone_1_1BookMeta/"><strong>BookMeta</strong></a> &gt;</td>
+<td style="text-align: left;"><a href="#function-getpreviousbookmeta"><strong>getPreviousBookMeta</strong></a> () const<br><em>Gets a copy of the metadata before the edit.</em></td>
 </tr>
 <tr>
 <td style="text-align: right;"><a href="../classendstone_1_1Identifier/"><strong>int</strong></a></td>
@@ -2893,18 +2893,22 @@ For latest updates join the chat on
 <hr>
 
 <h3 id="function-getnewbookmeta">function getNewBookMeta<a class="headerlink" href="#function-getnewbookmeta" title="Permanent link">&para;</a></h3>
-<p><em>Gets the metadata that will be applied after the edit.</em> 
-<div class="language-C++ highlight"><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="kr">inline</span><span class="w"> </span><span class="k">const</span><span class="w">  </span><span class="n">NotNull</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">BookMeta</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">PlayerEditBookEvent</span><span class="o">::</span><span class="n">getNewBookMeta</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="k">const</span>
+<p><em>Gets a copy of the metadata that the player is attempting to add to the book.</em> 
+<div class="language-C++ highlight"><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="kr">inline</span><span class="w"> </span><span class="n">NotNull</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">BookMeta</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">PlayerEditBookEvent</span><span class="o">::</span><span class="n">getNewBookMeta</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="k">const</span>
 </span></code></pre></div></p>
-<p>Changes made to it take effect.</p>
+<p><strong>Note:</strong></p>
+<p>This is a copy: use <a href="./#function-setnewbookmeta"><strong>setNewBookMeta()</strong></a> to change what will actually be added to the book.</p>
+<p>A title, an author and a generation are only written when the book is being signed. On a plain edit the book stays a book and quill, which holds none of them, and they are dropped. See <a href="./#function-issigning"><strong>isSigning()</strong></a>.</p>
 <p><strong>Returns:</strong></p>
 <p>the book metadata after the edit </p>
 <hr>
 
 <h3 id="function-getpreviousbookmeta">function getPreviousBookMeta<a class="headerlink" href="#function-getpreviousbookmeta" title="Permanent link">&para;</a></h3>
-<p><em>Gets the metadata before the edit.</em> 
-<div class="language-C++ highlight"><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="kr">inline</span><span class="w"> </span><span class="k">const</span><span class="w">  </span><span class="n">NotNull</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">BookMeta</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">PlayerEditBookEvent</span><span class="o">::</span><span class="n">getPreviousBookMeta</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="k">const</span>
+<p><em>Gets a copy of the metadata before the edit.</em> 
+<div class="language-C++ highlight"><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="kr">inline</span><span class="w"> </span><span class="n">NotNull</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">BookMeta</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">PlayerEditBookEvent</span><span class="o">::</span><span class="n">getPreviousBookMeta</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="k">const</span>
 </span></code></pre></div></p>
+<p><strong>Note:</strong></p>
+<p>This is a copy: changes made to it are not written back to the book.</p>
 <p><strong>Returns:</strong></p>
 <p>the book metadata before the edit </p>
 <hr>

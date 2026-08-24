@@ -567,7 +567,7 @@ virtual void endstone::BookMeta::setTitle (
 
 **Note:**
 
-Limited to 32 characters. Removes title when given std::nullopt.
+Limited to 16 characters. Removes title when given std::nullopt.
 
 
 

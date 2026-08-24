@@ -95,8 +95,8 @@ Inherits the following classes: [endstone::Cancellable](classendstone_1_1Cancell
 | ---: | :--- |
 |   | [**ENDSTONE\_EVENT**](#function-endstone_event) ([**PlayerEditBookEvent**](classendstone_1_1PlayerEditBookEvent.md)) <br> |
 |   | [**PlayerEditBookEvent**](#function-playereditbookevent) ([**const**](classendstone_1_1Identifier.md) [**NotNull**](classendstone_1_1NotNull.md)&lt; [**Player**](classendstone_1_1Player.md) &gt; & player, [**int**](classendstone_1_1Identifier.md) slot, [**const**](classendstone_1_1Identifier.md) [**NotNull**](classendstone_1_1NotNull.md)&lt; [**BookMeta**](classendstone_1_1BookMeta.md) &gt; & previous\_book\_meta, [**const**](classendstone_1_1Identifier.md) [**NotNull**](classendstone_1_1NotNull.md)&lt; [**BookMeta**](classendstone_1_1BookMeta.md) &gt; & new\_book\_meta, [**bool**](classendstone_1_1Identifier.md) signing) <br> |
-|  [**const**](classendstone_1_1Identifier.md) [**NotNull**](classendstone_1_1NotNull.md)&lt; [**BookMeta**](classendstone_1_1BookMeta.md) &gt; & | [**getNewBookMeta**](#function-getnewbookmeta) () const<br>_Gets the metadata that will be applied after the edit._  |
-|  [**const**](classendstone_1_1Identifier.md) [**NotNull**](classendstone_1_1NotNull.md)&lt; [**BookMeta**](classendstone_1_1BookMeta.md) &gt; & | [**getPreviousBookMeta**](#function-getpreviousbookmeta) () const<br>_Gets the metadata before the edit._  |
+|  [**NotNull**](classendstone_1_1NotNull.md)&lt; [**BookMeta**](classendstone_1_1BookMeta.md) &gt; | [**getNewBookMeta**](#function-getnewbookmeta) () const<br>_Gets a copy of the metadata that the player is attempting to add to the book._  |
+|  [**NotNull**](classendstone_1_1NotNull.md)&lt; [**BookMeta**](classendstone_1_1BookMeta.md) &gt; | [**getPreviousBookMeta**](#function-getpreviousbookmeta) () const<br>_Gets a copy of the metadata before the edit._  |
 |  [**int**](classendstone_1_1Identifier.md) | [**getSlot**](#function-getslot) () const<br>_Gets the inventory slot containing the book._  |
 |  [**bool**](classendstone_1_1Identifier.md) | [**isSigning**](#function-issigning) () const<br>_Gets whether the book should be signed._  |
 |  [**void**](classendstone_1_1Identifier.md) | [**setNewBookMeta**](#function-setnewbookmeta) ([**const**](classendstone_1_1Identifier.md) [**NotNull**](classendstone_1_1NotNull.md)&lt; [**BookMeta**](classendstone_1_1BookMeta.md) &gt; & new\_book\_meta) <br>_Replaces the metadata that will be applied after the edit._  |
@@ -245,14 +245,21 @@ inline endstone::PlayerEditBookEvent::PlayerEditBookEvent (
 
 ### function getNewBookMeta 
 
-_Gets the metadata that will be applied after the edit._ 
+_Gets a copy of the metadata that the player is attempting to add to the book._ 
 ```C++
-inline const  NotNull < BookMeta > & endstone::PlayerEditBookEvent::getNewBookMeta () const
+inline NotNull < BookMeta > endstone::PlayerEditBookEvent::getNewBookMeta () const
 ```
 
 
 
-Changes made to it take effect.
+
+
+**Note:**
+
+This is a copy: use [**setNewBookMeta()**](classendstone_1_1PlayerEditBookEvent.md#function-setnewbookmeta) to change what will actually be added to the book.
+
+
+A title, an author and a generation are only written when the book is being signed. On a plain edit the book stays a book and quill, which holds none of them, and they are dropped. See [**isSigning()**](classendstone_1_1PlayerEditBookEvent.md#function-issigning).
 
 
 
@@ -273,11 +280,18 @@ the book metadata after the edit
 
 ### function getPreviousBookMeta 
 
-_Gets the metadata before the edit._ 
+_Gets a copy of the metadata before the edit._ 
 ```C++
-inline const  NotNull < BookMeta > & endstone::PlayerEditBookEvent::getPreviousBookMeta () const
+inline NotNull < BookMeta > endstone::PlayerEditBookEvent::getPreviousBookMeta () const
 ```
 
+
+
+
+
+**Note:**
+
+This is a copy: changes made to it are not written back to the book.
 
 
 

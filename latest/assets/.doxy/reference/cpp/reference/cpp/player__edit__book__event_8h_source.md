@@ -43,9 +43,12 @@ public:
 
     [[nodiscard]] int getSlot() const { return slot_; }
 
-    [[nodiscard]] const NotNull<BookMeta> &getPreviousBookMeta() const { return previous_book_meta_; }
+    [[nodiscard]] NotNull<BookMeta> getPreviousBookMeta() const
+    {
+        return previous_book_meta_->clone().cast<BookMeta>();
+    }
 
-    [[nodiscard]] const NotNull<BookMeta> &getNewBookMeta() const { return new_book_meta_; }
+    [[nodiscard]] NotNull<BookMeta> getNewBookMeta() const { return new_book_meta_->clone().cast<BookMeta>(); }
 
     void setNewBookMeta(const NotNull<BookMeta> &new_book_meta)
     {

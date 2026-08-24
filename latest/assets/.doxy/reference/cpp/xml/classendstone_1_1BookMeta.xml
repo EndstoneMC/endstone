@@ -99,7 +99,7 @@
 <para>Sets the title of the book. </para>
         </briefdescription>
         <detaileddescription>
-<para><simplesect kind="note"><para>Limited to 32 characters. Removes title when given std::nullopt.</para>
+<para><simplesect kind="note"><para>Limited to 16 characters. Removes title when given std::nullopt.</para>
 </simplesect>
 <parameterlist kind="param"><parameteritem>
 <parameternamelist>

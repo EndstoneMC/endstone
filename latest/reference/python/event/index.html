@@ -20246,7 +20246,7 @@ cancel the event to stop the craft instead.</p>
             </td>
             <td>
               <div class="doc-md-description">
-                <p>The book metadata that will be applied after the edit.</p>
+                <p>The book metadata that the player is attempting to add to the book.</p>
               </div>
             </td>
           </tr>
@@ -20262,7 +20262,7 @@ cancel the event to stop the craft instead.</p>
             </td>
             <td>
               <div class="doc-md-description">
-                <p>The book metadata before the edit.</p>
+                <p>A copy of the book metadata before the edit.</p>
               </div>
             </td>
           </tr>
@@ -20340,8 +20340,15 @@ cancel the event to stop the craft instead.</p>
 
     <div class="doc doc-contents ">
 
-        <p>The book metadata that will be applied after the edit.</p>
+        <p>The book metadata that the player is attempting to add to the book.</p>
 
+
+<details class="note" open>
+  <summary>Note</summary>
+  <p>Reading this gives a copy: assign to it to change what will actually be added to the book.</p>
+<p>A title, an author and a generation are only written when the book is being signed. On a plain edit the book
+stays a book and quill, which holds none of them, and they are dropped. See <code>is_signing</code>.</p>
+</details>
     </div>
 
 </div>
@@ -20364,8 +20371,13 @@ cancel the event to stop the craft instead.</p>
 
     <div class="doc doc-contents ">
 
-        <p>The book metadata before the edit.</p>
+        <p>A copy of the book metadata before the edit.</p>
 
+
+<details class="note" open>
+  <summary>Note</summary>
+  <p>This is a copy: changes made to it are not written back to the book.</p>
+</details>
     </div>
 
 </div>
