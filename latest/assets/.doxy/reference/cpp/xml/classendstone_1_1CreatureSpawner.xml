@@ -446,7 +446,6 @@
       <member refid="classendstone_1_1BlockState_1a1d4ccdc3539f2d549ef3d98393bb89af" prot="public" virt="pure-virtual"><scope>endstone::CreatureSpawner</scope><name>getZ</name></member>
       <member refid="classendstone_1_1Object_1ae8213ae15ad1b14e4631399c6b18960a" prot="public" virt="non-virtual"><scope>endstone::CreatureSpawner</scope><name>is</name></member>
       <member refid="classendstone_1_1Object_1a1f8951c4894c2b8288fd4ef500218771" prot="public" virt="pure-virtual"><scope>endstone::CreatureSpawner</scope><name>isInstanceOf</name></member>
-      <member refid="classendstone_1_1Object_1a09996a819d3c34ac1aaceec65afd1b86" prot="public" virt="non-virtual"><scope>endstone::CreatureSpawner</scope><name>isInstanceOf</name></member>
       <member refid="classendstone_1_1BlockState_1ac85e292da7159b3835cc3919e68c08c7" prot="public" virt="pure-virtual"><scope>endstone::CreatureSpawner</scope><name>setData</name></member>
       <member refid="classendstone_1_1CreatureSpawner_1abe1c50824642bb4d357040df56fc4047" prot="public" virt="pure-virtual"><scope>endstone::CreatureSpawner</scope><name>setDelay</name></member>
       <member refid="classendstone_1_1CreatureSpawner_1a457464b53d1d59971ceaafc5e6a00f4c" prot="public" virt="pure-virtual"><scope>endstone::CreatureSpawner</scope><name>setMaxNearbyEntities</name></member>

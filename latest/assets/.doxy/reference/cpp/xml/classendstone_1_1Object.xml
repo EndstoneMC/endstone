@@ -62,26 +62,6 @@
         </inbodydescription>
         <location file="include/endstone/object.h" line="74" column="19"/>
       </memberdef>
-      <memberdef kind="function" id="classendstone_1_1Object_1a09996a819d3c34ac1aaceec65afd1b86" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
-        <templateparamlist>
-          <param>
-            <type><ref refid="classendstone_1_1Identifier" kindref="compound">typename</ref> <ref refid="classendstone_1_1Identifier" kindref="compound">T</ref></type>
-          </param>
-        </templateparamlist>
-        <type><ref refid="classendstone_1_1Identifier" kindref="compound">bool</ref></type>
-        <definition>bool endstone::Object::isInstanceOf</definition>
-        <argsstring>() const</argsstring>
-        <name>isInstanceOf</name>
-        <qualifiedname>endstone::Object::isInstanceOf</qualifiedname>
-    <requiresclause>std::is_base_of_v&lt;Object, T&gt;    </requiresclause>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
-        <location file="include/endstone/object.h" line="81" column="11" bodyfile="include/endstone/object.h" bodystart="81" bodyend="84"/>
-      </memberdef>
       <memberdef kind="function" id="classendstone_1_1Object_1a798b5128ce018bbbe8ca949ba78c3db1" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <templateparamlist>
           <param>
@@ -114,7 +94,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/object.h" line="96" column="7" bodyfile="include/endstone/object.h" bodystart="96" bodyend="102"/>
+        <location file="include/endstone/object.h" line="86" column="7" bodyfile="include/endstone/object.h" bodystart="86" bodyend="92"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1Object_1ae0f38a62da4c186fce272145e2590cc1" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
         <templateparamlist>
@@ -148,7 +128,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/object.h" line="109" column="13" bodyfile="include/endstone/object.h" bodystart="109" bodyend="115"/>
+        <location file="include/endstone/object.h" line="99" column="13" bodyfile="include/endstone/object.h" bodystart="99" bodyend="105"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1Object_1ae8213ae15ad1b14e4631399c6b18960a" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
         <templateparamlist>
@@ -181,7 +161,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/object.h" line="125" column="11" bodyfile="include/endstone/object.h" bodystart="125" bodyend="128"/>
+        <location file="include/endstone/object.h" line="115" column="11" bodyfile="include/endstone/object.h" bodystart="115" bodyend="118"/>
       </memberdef>
     </sectiondef>
     <briefdescription>
@@ -430,14 +410,13 @@
         </childnode>
       </node>
     </inheritancegraph>
-    <location file="include/endstone/object.h" line="62" column="1" bodyfile="include/endstone/object.h" bodystart="62" bodyend="129"/>
+    <location file="include/endstone/object.h" line="62" column="1" bodyfile="include/endstone/object.h" bodystart="62" bodyend="119"/>
     <listofallmembers>
       <member refid="classendstone_1_1Object_1a798b5128ce018bbbe8ca949ba78c3db1" prot="public" virt="non-virtual"><scope>endstone::Object</scope><name>as</name></member>
       <member refid="classendstone_1_1Object_1ae0f38a62da4c186fce272145e2590cc1" prot="public" virt="non-virtual"><scope>endstone::Object</scope><name>as</name></member>
       <member refid="classendstone_1_1Object_1a3e2df17c95cf63580e95c84f783636c4" prot="public" virt="pure-virtual"><scope>endstone::Object</scope><name>getClassInfo</name></member>
       <member refid="classendstone_1_1Object_1ae8213ae15ad1b14e4631399c6b18960a" prot="public" virt="non-virtual"><scope>endstone::Object</scope><name>is</name></member>
       <member refid="classendstone_1_1Object_1a1f8951c4894c2b8288fd4ef500218771" prot="public" virt="pure-virtual"><scope>endstone::Object</scope><name>isInstanceOf</name></member>
-      <member refid="classendstone_1_1Object_1a09996a819d3c34ac1aaceec65afd1b86" prot="public" virt="non-virtual"><scope>endstone::Object</scope><name>isInstanceOf</name></member>
       <member refid="classendstone_1_1Object_1adfddc886af4b1d0e09ddac7d0391b4d2" prot="public" virt="virtual"><scope>endstone::Object</scope><name>~Object</name></member>
     </listofallmembers>
   </compounddef>

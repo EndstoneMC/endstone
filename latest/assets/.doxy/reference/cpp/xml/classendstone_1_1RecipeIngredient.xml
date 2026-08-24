@@ -130,7 +130,6 @@
       <member refid="classendstone_1_1RecipeIngredient_1aca2eaef22d0b028c1ce697c85cf02df1" prot="public" virt="pure-virtual"><scope>endstone::RecipeIngredient</scope><name>getCount</name></member>
       <member refid="classendstone_1_1Object_1ae8213ae15ad1b14e4631399c6b18960a" prot="public" virt="non-virtual"><scope>endstone::RecipeIngredient</scope><name>is</name></member>
       <member refid="classendstone_1_1Object_1a1f8951c4894c2b8288fd4ef500218771" prot="public" virt="pure-virtual"><scope>endstone::RecipeIngredient</scope><name>isInstanceOf</name></member>
-      <member refid="classendstone_1_1Object_1a09996a819d3c34ac1aaceec65afd1b86" prot="public" virt="non-virtual"><scope>endstone::RecipeIngredient</scope><name>isInstanceOf</name></member>
       <member refid="classendstone_1_1RecipeIngredient_1a66b2e4dadf5693b58412099c533fc430" prot="public" virt="pure-virtual"><scope>endstone::RecipeIngredient</scope><name>test</name></member>
       <member refid="classendstone_1_1Object_1adfddc886af4b1d0e09ddac7d0391b4d2" prot="public" virt="virtual"><scope>endstone::RecipeIngredient</scope><name>~Object</name></member>
       <member refid="classendstone_1_1RecipeIngredient_1a8f9690a962c133fdea8e4eaad272d5e9" prot="public" virt="non-virtual"><scope>endstone::RecipeIngredient</scope><name>~RecipeIngredient</name></member>

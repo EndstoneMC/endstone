@@ -225,7 +225,6 @@
       <member refid="classendstone_1_1ItemMeta_1a90cfeecd88da173df9c5b06a731ec6ed" prot="public" virt="pure-virtual"><scope>endstone::MapMeta</scope><name>hasRepairCost</name></member>
       <member refid="classendstone_1_1Object_1ae8213ae15ad1b14e4631399c6b18960a" prot="public" virt="non-virtual"><scope>endstone::MapMeta</scope><name>is</name></member>
       <member refid="classendstone_1_1Object_1a1f8951c4894c2b8288fd4ef500218771" prot="public" virt="pure-virtual"><scope>endstone::MapMeta</scope><name>isInstanceOf</name></member>
-      <member refid="classendstone_1_1Object_1a09996a819d3c34ac1aaceec65afd1b86" prot="public" virt="non-virtual"><scope>endstone::MapMeta</scope><name>isInstanceOf</name></member>
       <member refid="classendstone_1_1ItemMeta_1a6b272eb7b84e7cdce4c161402d9531fe" prot="public" virt="pure-virtual"><scope>endstone::MapMeta</scope><name>isUnbreakable</name></member>
       <member refid="classendstone_1_1MapMeta_1a0c1d1fc1447dcd87b0a57fc76769a209" prot="public" virt="non-virtual"><scope>endstone::MapMeta</scope><name>MapId</name></member>
       <member refid="classendstone_1_1ItemMeta_1ad00a6e480dbda4f8e054f48cd318756f" prot="public" virt="pure-virtual"><scope>endstone::MapMeta</scope><name>removeEnchant</name></member>

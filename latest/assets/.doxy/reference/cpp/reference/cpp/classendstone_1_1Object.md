@@ -57,8 +57,7 @@ Inherited by the following classes: [endstone::BlockState](classendstone_1_1Bloc
 |  [**const**](classendstone_1_1Identifier.md) [**T**](classendstone_1_1Identifier.md) \* | [**as**](#function-as-22) () const<br>_Attempts to cast this object to the given type T._  |
 | virtual [**ClassInfo**](classendstone_1_1ClassInfo.md) | [**getClassInfo**](#function-getclassinfo) () const = 0<br> |
 |  [**bool**](classendstone_1_1Identifier.md) | [**is**](#function-is) () const<br>_Checks if this object is an instance of the given type T (or a subclass of T)._  |
-| virtual [**bool**](classendstone_1_1Identifier.md) | [**isInstanceOf**](#function-isinstanceof-12) ([**ClassInfo**](classendstone_1_1ClassInfo.md) target) const = 0<br> |
-|  [**bool**](classendstone_1_1Identifier.md) | [**isInstanceOf**](#function-isinstanceof-22) () const<br> |
+| virtual [**bool**](classendstone_1_1Identifier.md) | [**isInstanceOf**](#function-isinstanceof) ([**ClassInfo**](classendstone_1_1ClassInfo.md) target) const = 0<br> |
 | virtual  | [**~Object**](#function-object) () = default<br> |
 
 
@@ -218,26 +217,12 @@ inline bool endstone::Object::is () const
 
 
 
-### function isInstanceOf [1/2]
+### function isInstanceOf 
 
 ```C++
 virtual bool endstone::Object::isInstanceOf (
     ClassInfo target
 ) const = 0
-```
-
-
-
-
-<hr>
-
-
-
-### function isInstanceOf [2/2]
-
-```C++
-template<typename  T>
-inline bool endstone::Object::isInstanceOf () const
 ```
 
 

@@ -700,7 +700,6 @@
       <member refid="classendstone_1_1Command_1a43b745e674aed0f0cfc152bb1a99c2b0" prot="public" virt="non-virtual"><scope>endstone::Command</scope><name>getUsages</name></member>
       <member refid="classendstone_1_1Object_1ae8213ae15ad1b14e4631399c6b18960a" prot="public" virt="non-virtual"><scope>endstone::Command</scope><name>is</name></member>
       <member refid="classendstone_1_1Command_1ad30245ca66e3b8569ba3acc5994060e1" prot="public" virt="virtual"><scope>endstone::Command</scope><name>isInstanceOf</name></member>
-      <member refid="classendstone_1_1Object_1a09996a819d3c34ac1aaceec65afd1b86" prot="public" virt="non-virtual" ambiguityscope="endstone::Object::"><scope>endstone::Command</scope><name>isInstanceOf</name></member>
       <member refid="classendstone_1_1Command_1a4b4bfe6350f3deae258fc5fd8e344fbf" prot="public" virt="non-virtual"><scope>endstone::Command</scope><name>isRegistered</name></member>
       <member refid="classendstone_1_1Command_1a38260b8e8868c4008945a050adddd89d" prot="private" virt="non-virtual"><scope>endstone::Command</scope><name>name_</name></member>
       <member refid="classendstone_1_1Command_1a787227a863a60818990e90ccf2a898f7" prot="private" virt="non-virtual"><scope>endstone::Command</scope><name>permissions_</name></member>

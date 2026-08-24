@@ -59,16 +59,9 @@ public:
 
     template <typename T>
         requires std::is_base_of_v<Object, T>
-    [[nodiscard]] bool isInstanceOf() const
-    {
-        return isInstanceOf(typeid(T));
-    }
-
-    template <typename T>
-        requires std::is_base_of_v<Object, T>
     T *as()
     {
-        if (isInstanceOf<T>()) {
+        if (isInstanceOf(typeid(T))) {
             return static_cast<T *>(this);
         }
         return nullptr;
@@ -78,7 +71,7 @@ public:
         requires std::is_base_of_v<Object, T>
     const T *as() const
     {
-        if (isInstanceOf<T>()) {
+        if (isInstanceOf(typeid(T))) {
             return static_cast<const T *>(this);
         }
         return nullptr;
@@ -88,7 +81,7 @@ public:
         requires std::is_base_of_v<Object, T>
     [[nodiscard]] bool is() const
     {
-        return isInstanceOf<T>();
+        return isInstanceOf(typeid(T));
     }
 };
 

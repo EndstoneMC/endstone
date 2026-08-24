@@ -72,7 +72,6 @@
       <member refid="classendstone_1_1Recipe_1ab353c82a04f30ce3a1d89d78d1ffe043" prot="public" virt="pure-virtual"><scope>endstone::ComplexRecipe</scope><name>getTag</name></member>
       <member refid="classendstone_1_1Object_1ae8213ae15ad1b14e4631399c6b18960a" prot="public" virt="non-virtual"><scope>endstone::ComplexRecipe</scope><name>is</name></member>
       <member refid="classendstone_1_1Object_1a1f8951c4894c2b8288fd4ef500218771" prot="public" virt="pure-virtual"><scope>endstone::ComplexRecipe</scope><name>isInstanceOf</name></member>
-      <member refid="classendstone_1_1Object_1a09996a819d3c34ac1aaceec65afd1b86" prot="public" virt="non-virtual"><scope>endstone::ComplexRecipe</scope><name>isInstanceOf</name></member>
       <member refid="classendstone_1_1ComplexRecipe_1ad4d503cae24033e5ab8d3397fcb63ef1" prot="public" virt="non-virtual"><scope>endstone::ComplexRecipe</scope><name>~ComplexRecipe</name></member>
       <member refid="classendstone_1_1Object_1adfddc886af4b1d0e09ddac7d0391b4d2" prot="public" virt="virtual"><scope>endstone::ComplexRecipe</scope><name>~Object</name></member>
       <member refid="classendstone_1_1Recipe_1a8252ec2109ad301042cda25df98b923e" prot="public" virt="non-virtual"><scope>endstone::ComplexRecipe</scope><name>~Recipe</name></member>

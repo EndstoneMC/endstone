@@ -259,7 +259,6 @@
       <member refid="classendstone_1_1Command_1a43b745e674aed0f0cfc152bb1a99c2b0" prot="public" virt="non-virtual"><scope>endstone::PluginCommand</scope><name>getUsages</name></member>
       <member refid="classendstone_1_1Object_1ae8213ae15ad1b14e4631399c6b18960a" prot="public" virt="non-virtual"><scope>endstone::PluginCommand</scope><name>is</name></member>
       <member refid="classendstone_1_1PluginCommand_1add69767a77da2d3b69893dfba7c4791b" prot="public" virt="virtual"><scope>endstone::PluginCommand</scope><name>isInstanceOf</name></member>
-      <member refid="classendstone_1_1Object_1a09996a819d3c34ac1aaceec65afd1b86" prot="public" virt="non-virtual" ambiguityscope="endstone::Object::"><scope>endstone::PluginCommand</scope><name>isInstanceOf</name></member>
       <member refid="classendstone_1_1Command_1a4b4bfe6350f3deae258fc5fd8e344fbf" prot="public" virt="non-virtual"><scope>endstone::PluginCommand</scope><name>isRegistered</name></member>
       <member refid="classendstone_1_1PluginCommand_1a025ba1c09032b5fa58580e5819d18ff9" prot="private" virt="non-virtual"><scope>endstone::PluginCommand</scope><name>owner_</name></member>
       <member refid="classendstone_1_1PluginCommand_1aaceb3f61ac9023104cf66875c9407e2b" prot="public" virt="non-virtual"><scope>endstone::PluginCommand</scope><name>PluginCommand</name></member>
