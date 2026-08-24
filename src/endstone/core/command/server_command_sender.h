@@ -71,9 +71,9 @@ public:
         return perm_->getEffectivePermissions();
     }
 
-    [[nodiscard]] const std::type_info &getClassTypeId() const override { return typeid(Interface); }
+    [[nodiscard]] ClassInfo getClassInfo() const override { return typeid(Interface); }
 
-    [[nodiscard]] bool isInstanceOf(const std::type_info &target) const override
+    [[nodiscard]] bool isInstanceOf(ClassInfo target) const override
     {
         return core::isInstanceOf(*this, target);
     }

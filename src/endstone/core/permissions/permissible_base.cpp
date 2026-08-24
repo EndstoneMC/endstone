@@ -179,12 +179,12 @@ std::unordered_set<NotNull<PermissionAttachmentInfo>> PermissibleBase::getEffect
     return result;
 }
 
-const std::type_info &PermissibleBase::getClassTypeId() const
+ClassInfo PermissibleBase::getClassInfo() const
 {
     return typeid(Permissible);
 }
 
-bool PermissibleBase::isInstanceOf(const std::type_info &target) const
+bool PermissibleBase::isInstanceOf(ClassInfo target) const
 {
     return core::isInstanceOf(*this, target);
 }

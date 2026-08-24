@@ -21,13 +21,9 @@
 // DbgHelp.h must be included after Windows.h
 #include <DbgHelp.h>
 #include <Psapi.h>
-#include <corecrt_io.h>
-#include <fcntl.h>
-#include <share.h>
 
 #include <chrono>
 #include <functional>
-#include <iostream>
 #include <string>
 #include <system_error>
 #include <unordered_map>
@@ -167,42 +163,6 @@ std::string get_executable_pathname()
         throw std::system_error(static_cast<int>(GetLastError()), std::system_category(), "GetModuleFileNameEx failed");
     }
     return file_name;
-}
-
-namespace {
-int stdin_fd = -1;
-int null_fd = -1;
-}  // namespace
-
-void stdin_save()
-{
-    stdin_fd = _dup(_fileno(stdin));
-}
-
-void stdin_close()
-{
-    _sopen_s(&null_fd, "NUL", _O_RDONLY, _SH_DENYNO, 0);
-    _dup2(null_fd, _fileno(stdin));
-    std::cin.clear();
-    std::wcin.clear();
-}
-
-void stdin_restore()
-{
-    if (stdin_fd < 0) {
-        return;
-    }
-    _dup2(stdin_fd, _fileno(stdin));
-    _close(stdin_fd);
-    stdin_fd = -1;
-
-    if (null_fd >= 0) {
-        _close(null_fd);
-        null_fd = -1;
-    }
-    std::cin.clear();
-    std::wcin.clear();
-    std::clearerr(stdin);
 }
 }  // namespace endstone::runtime
 

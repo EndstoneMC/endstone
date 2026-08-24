@@ -25,6 +25,7 @@
 #include "type_caster.h"
 
 namespace endstone::python {
+void init_ability(py::module_ &);
 void init_actor(py::module_ &, py_class<Actor> &actor, py_class<Mob> &mob);
 void init_attribute(py::module_ &);
 void init_ban(py::module_ &);
@@ -45,6 +46,7 @@ void init_level(py::module_ &, py::classh<Level> &level, py::classh<Dimension> &
                 py::class_<Location> &location);
 void init_logger(py::module_ &);
 void init_map(py::module_ &);
+void init_metrics(py::module_ &);
 void init_nbt(py::module_ &);
 void init_permissions(py::module_ &, py_class<Permissible> &permissible, py::classh<Permission> &permission);
 void init_player(py::module_ &, py_class<Player> &player);
@@ -119,6 +121,7 @@ PYBIND11_MODULE(_python, m)  // NOLINT(*-use-anonymous-namespace)
     auto m_lang = m.def_submodule("lang");
     auto m_level = m.def_submodule("level");
     auto m_map = m.def_submodule("map", "Classes relating to plugin handling of map displays.");
+    auto m_metrics = m.def_submodule("metrics", "Classes relating to the bStats metrics charts.");
     auto m_nbt = m.def_submodule("nbt", "Classes relating to the NBT data format.");
     auto m_permissions = m.def_submodule("permissions", "Classes relating to permissions of players.");
     auto m_plugin = m.def_submodule("plugin", "Classes relating to loading and managing plugins.");
@@ -196,6 +199,7 @@ PYBIND11_MODULE(_python, m)  // NOLINT(*-use-anonymous-namespace)
     auto location =
         py::class_<Location>(m_level, "Location", "Represents a 3-dimensional location in a dimension within a level.");
 
+    init_ability(m);
     init_attribute(m_attribute);
     init_color_format(m);
     init_damage(m_damage);
@@ -208,6 +212,7 @@ PYBIND11_MODULE(_python, m)  // NOLINT(*-use-anonymous-namespace)
     init_form(m_form);
     init_enchantments(m_enchantments);
     init_map(m_map);
+    init_metrics(m_metrics);
     init_nbt(m_nbt);
     init_potion(m_potion);
     init_inventory(m_inventory, item_stack);
@@ -217,11 +222,11 @@ PYBIND11_MODULE(_python, m)  // NOLINT(*-use-anonymous-namespace)
     // init_actor first: it registers ActorType, which CreatureSpawner's signatures refer to
     init_actor(m_actor, actor, mob);
     init_block(m_block, block);
+    init_command(m_command, command_sender);
+    init_plugin(m_plugin);
     init_level(m_level, level, dimension, location);
     init_player(m, player);
     init_boss(m_boss);
-    init_command(m_command, command_sender);
-    init_plugin(m_plugin);
     init_scheduler(m_scheduler);
     init_permissions(m_permissions, permissible, permission);
     init_registry(m);
@@ -467,7 +472,7 @@ void init_server(py::classh<Server> &server)
                 if (!type_info) {
                     return py::none();
                 }
-                auto *registry = self._getRegistry(*type_info->cpptype);
+                auto *registry = self._getRegistry(ClassInfo(*type_info->cpptype));
                 if (!registry) {
                     return py::none();
                 }
@@ -486,6 +491,7 @@ void init_server(py::classh<Server> &server)
 )doc")
         .def_property_readonly("level", &Server::getLevel, py::return_value_policy::reference_internal,
                                "The server level.")
+        .def_property_readonly("recipes", &Server::getRecipes, "The list of crafting recipes.")
         .def_property_readonly("online_players", &Server::getOnlinePlayers, "A list of all currently online players.")
         .def_property("max_players", &Server::getMaxPlayers, &Server::setMaxPlayers,
                       "The maximum amount of players which can login to this server.")
@@ -511,7 +517,6 @@ void init_server(py::classh<Server> &server)
 )doc")
         .def_property_readonly("online_mode", &Server::getOnlineMode, "Whether the Server is in online mode or not.")
         .def_property_readonly("port", &Server::getPort, "The game port that the server runs on.")
-        .def_property_readonly("port_v6", &Server::getPortV6, "The game port (IPv6) that the server runs on.")
         .def("shutdown", &Server::shutdown, "Shutdowns the server, stopping everything.")
         .def("reload", &Server::reload, "Reloads the server configuration, functions, scripts and plugins.")
         .def("reload_data", &Server::reloadData, R"doc(
@@ -563,7 +568,7 @@ void init_server(py::classh<Server> &server)
         .def_property_readonly("start_time", &Server::getStartTime, "The start time of the server.")
         .def(
             "create_boss_bar",
-            [](const Server &self, std::string title, BarColor color, BarStyle style,
+            [](Server &self, std::string title, BarColor color, BarStyle style,
                const std::optional<std::vector<BarFlag>> &flags) {
                 return self.createBossBar(std::move(title), color, style, flags.value_or(std::vector<BarFlag>()));
             },
@@ -662,6 +667,15 @@ void init_player(py::module_ &m, py_class<Player> &player)
 
     Returns:
         `True` if the command was successful, `False` otherwise.
+)doc")
+        .def_property("respawn_location", &Player::getRespawnLocation, &Player::setRespawnLocation, R"doc(
+    The location where the player will respawn, or `None` if they don't have a valid respawn point.
+
+    Assigning `None` clears the respawn point. When a location is assigned, its dimension must be loaded.
+
+    Note:
+        Only the block coordinates and the dimension are written back; Bedrock does not persist yaw/pitch for a
+        respawn point.
 )doc")
         .def("open_sign", &Player::openSign, py::arg("sign"), py::arg("side"), R"doc(
     Opens a sign editor for this player.
@@ -786,19 +800,19 @@ void init_player(py::module_ &m, py_class<Player> &player)
     This will clear the displayed title / subtitle and reset timings to their default values.
 )doc")
         .def("spawn_particle",
-             py::overload_cast<std::string, Location, std::optional<std::string>>(&Player::spawnParticle, py::const_),
-             py::arg("name"), py::arg("location").noconvert(), py::arg("molang_variables_json") = std::nullopt, R"doc(
+             py::overload_cast<std::string, Location, std::optional<JsonObject>>(&Player::spawnParticle, py::const_),
+             py::arg("name"), py::arg("location").noconvert(), py::arg("molang_variables") = std::nullopt, R"doc(
     Spawns the particle at the target location.
 
     Args:
         name: The name of the particle effect to spawn.
         location: The location to spawn at.
-        molang_variables_json: The customizable molang variables that can be adjusted for this particle, in json.
+        molang_variables: The customizable molang variables that can be adjusted for this particle.
 )doc")
         .def("spawn_particle",
-             py::overload_cast<std::string, float, float, float, std::optional<std::string>>(&Player::spawnParticle,
-                                                                                             py::const_),
-             py::arg("name"), py::arg("x"), py::arg("y"), py::arg("z"), py::arg("molang_variables_json") = std::nullopt,
+             py::overload_cast<std::string, float, float, float, std::optional<JsonObject>>(&Player::spawnParticle,
+                                                                                            py::const_),
+             py::arg("name"), py::arg("x"), py::arg("y"), py::arg("z"), py::arg("molang_variables") = std::nullopt,
              R"doc(
     Spawns the particle at the target location.
 
@@ -807,7 +821,7 @@ void init_player(py::module_ &m, py_class<Player> &player)
         x: The position on the x axis to spawn at.
         y: The position on the y axis to spawn at.
         z: The position on the z axis to spawn at.
-        molang_variables_json: The customizable molang variables that can be adjusted for this particle, in json.
+        molang_variables: The customizable molang variables that can be adjusted for this particle.
 )doc")
         .def_property_readonly(
             "ping", [](const Player &self) { return self.getPing().count(); },
@@ -855,6 +869,43 @@ void init_player(py::module_ &m, py_class<Player> &player)
     Args:
         packet_id: The packet ID to be sent.
         payload: The payload of the packet to be transmitted.
+)doc")
+        .def("get_ability", &Player::_getAbility, py::arg("ability"), R"doc(
+    Gets the value of an ability.
+
+    The value returned is the one in effect, which is not always the one that was set: while the player is
+    spectating, or has the loading screen up, or is in the editor, that state supplies its own value for some
+    abilities and it takes precedence over the player's own.
+
+    Args:
+        ability: The Minecraft ability to get.
+
+    Returns:
+        The current ability value.
+
+    Raises:
+        IndexError: If the ability does not exist.
+)doc")
+        .def(
+            "set_ability",
+            [](Player &self, Identifier<Ability> ability, AbilityValue value) {
+                if (!self._setAbility(ability, value)) {
+                    throw py::value_error(std::format("Unable to set ability {}.", ability));
+                }
+            },
+            py::arg("ability"), py::arg("value"), R"doc(
+    Sets the value of an ability.
+
+    Abilities are not persisted for a player whose permissions are managed by the server, so a plugin that wants a
+    value to outlast the session must set it again when the player rejoins. `Ability.MUTED`, `Ability.NO_CLIP`,
+    `Ability.PRIVILEGED_BUILDER` and `Ability.WORLD_BUILDER` are never saved at all.
+
+    Args:
+        ability: The Minecraft ability to set.
+        value: The new value, which must match the type of the ability.
+
+    Raises:
+        ValueError: If the ability does not exist or the value has the wrong type.
 )doc");
 }
 

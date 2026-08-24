@@ -15,7 +15,8 @@
 #include "bedrock/world/inventory/transaction/inventory_transaction.h"
 
 #include "bedrock/world/actor/player/player.h"
-#include "endstone/runtime/hook.h"
+#include "bedrock/world/container.h"
+#include "bedrock/world/item/item_stack.h"
 
 /*
 {
@@ -42,16 +43,31 @@ InventoryTransactionError InventoryTransaction::executeWorldInteraction(void *, 
     auto result = InventoryTransactionError::Unknown;
     // Slot 0: Drop
     if (action.getSlot() == 0 && !action.getFromItem() && action.getToItem()) {
+        const auto &drop = action.getToItem();
         auto randomly = (action.getSource().getFlags() & InventorySource::WorldInteraction_Random) != 0;
-        // #blameMojang: The original implementation ignores the return value of Player::drop,
-        // unconditionally marking the transaction as successful. This means even when drop is
-        // cancelled (e.g. by a plugin via PlayerDropItemEvent), the server still considers the
-        // transaction valid and the item disappears from the inventory. Our fix here only marks
-        // the transaction as successful if Player::drop returns true; otherwise we return an
-        // error so the client reverts the transaction and the item stays in the inventory.
-        if (player.drop(action.getToItem(), randomly)) {
-            result = InventoryTransactionError::NoError;
+        // #blameMojang: Player::drop only spawns the item actor. The stack itself is taken out of the
+        // slot by the item stack request the client sends alongside this transaction, and that has
+        // already been committed by the time we get here, so a refused drop (e.g. by a plugin via
+        // PlayerDropItemEvent) leaves the item nowhere and we have to hand it back to the slot it was
+        // thrown from ourselves.
+        if (!player.drop(drop, randomly)) {
+            auto &container = player.getInventory();
+            const auto slot = player.getSelectedItemSlot();
+            const auto &current = container.getItem(slot);
+            if (current.isNull()) {
+                container.setItemWithForceBalance(slot, drop, true);
+            }
+            else if (current.matchesItem(drop) && current.getCount() + drop.getCount() <= current.getMaxStackSize()) {
+                auto restored = current;
+                restored.set(current.getCount() + drop.getCount());
+                container.setItemWithForceBalance(slot, restored, true);
+            }
+            else {
+                auto leftover = drop;
+                container.addItemWithForceBalance(leftover);
+            }
         }
+        result = InventoryTransactionError::NoError;
     }
     // Slot 1: Pick up
     else if (action.getSlot() == 1 && action.getFromItem() && !action.getToItem()) {

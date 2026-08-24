@@ -37,13 +37,13 @@ public:
         Place,
         /** The event was triggered by an interaction with a sign. */
         Interact,
-        /** The event was triggered via a plugin. */
+        /** The event was triggered via a plugin with Player::openSign(). */
         Plugin,
-        /** Fallback cause for an unknown source. */
+        /** Fallback cause for any unknown cause. */
         Unknown,
     };
 
-    PlayerOpenSignEvent(const NotNull<Player> &player, Sign &sign, Sign::Side side, Cause cause)
+    PlayerOpenSignEvent(const NotNull<Player> &player, const NotNull<Sign> &sign, Sign::Side side, Cause cause)
         : Cancellable(player), sign_(sign), side_(side), cause_(cause)
     {
     }
@@ -53,7 +53,7 @@ public:
      *
      * @return the sign being opened
      */
-    [[nodiscard]] Sign &getSign() const { return sign_; }
+    [[nodiscard]] const NotNull<Sign> &getSign() const { return sign_; }
 
     /**
      * Gets the side of the sign being opened.
@@ -70,7 +70,7 @@ public:
     [[nodiscard]] Cause getCause() const { return cause_; }
 
 private:
-    Sign &sign_;
+    NotNull<Sign> sign_;
     Sign::Side side_;
     Cause cause_;
 };

@@ -97,6 +97,16 @@ void init_command(py::module &m, py_class<CommandSender> &command_sender)
 
     py_class<ConsoleCommandSender>(m, "ConsoleCommandSender", "Represents a console command sender.");
 
+    py_class<ProxiedCommandSender>(m, "ProxiedCommandSender", R"doc(
+    Represents a command sender that is running a command on behalf of another one, as `/execute` does.
+
+    Output and permissions belong to the caller, while the name and the execution context belong to the callee.
+)doc")
+        .def_property_readonly("caller", &ProxiedCommandSender::getCaller,
+                               "The `CommandSender` which triggered this proxied command.")
+        .def_property_readonly("callee", &ProxiedCommandSender::getCallee,
+                               "The `CommandSender` which is being used to call the command.");
+
     py::class_<Command, PyCommand, py::smart_holder>(
         m, "Command", "Represents a Command, which executes various tasks upon user input.")
         .def(py::init(&createCommand, &createCommandAlias), py::arg("name"), py::arg("description") = py::none(),

@@ -14,7 +14,9 @@
 
 #include "bedrock/scripting/event_handlers/script_player_gameplay_handler.h"
 
+#include <cstdint>
 #include <string_view>
+#include <unordered_map>
 
 #include "bedrock/entity/components/replay_state_component.h"
 #include "bedrock/locale/i18n.h"
@@ -24,18 +26,20 @@
 #include "bedrock/world/actor/actor.h"
 #include "bedrock/world/actor/item/item_actor.h"
 #include "bedrock/world/level/block/block.h"
+#include "endstone/block/container.h"
 #include "endstone/color_format.h"
 #include "endstone/core/block/block.h"
 #include "endstone/core/damage/damage_source.h"
+#include "endstone/core/entity/components/flag_components.h"
 #include "endstone/core/game_mode.h"
 #include "endstone/core/inventory/item_stack.h"
 #include "endstone/core/json.h"
 #include "endstone/core/message.h"
 #include "endstone/core/player.h"
-#include "endstone/core/player_open_sign.h"
 #include "endstone/core/server.h"
 #include "endstone/event/actor/player_death_event.h"
-#include "endstone/event/player/player_arm_swing_event.h"
+#include "endstone/event/inventory/inventory_close_event.h"
+#include "endstone/event/inventory/inventory_open_event.h"
 #include "endstone/event/player/player_dimension_change_event.h"
 #include "endstone/event/player/player_game_mode_change_event.h"
 #include "endstone/event/player/player_interact_actor_event.h"
@@ -46,6 +50,64 @@
 #include "endstone/runtime/vtable_hook.h"
 
 namespace {
+std::unordered_map<std::int64_t, BlockPos> open_container_positions;
+
+endstone::Nullable<endstone::Container> tryGetContainerAt(const ::Player &player, const BlockPos &block_pos)
+{
+    auto &block_source = player.getDimension().getBlockSourceFromMainChunkSource();
+    return endstone::core::EndstoneBlock::at(block_source, block_pos)->captureState().as<endstone::Container>();
+}
+
+bool handleEvent(const PlayerOpenContainerEvent &event)
+{
+    const auto *player = event.player.tryUnwrap<::Player>();
+    if (player == nullptr) {
+        return true;
+    }
+
+    const auto container = tryGetContainerAt(*player, event.block_pos);
+    if (!container) {
+        return true;
+    }
+
+    const auto &server = endstone::core::EndstoneServer::getInstance();
+    endstone::InventoryOpenEvent e{container->getInventory(),
+                                   player->getEndstoneActor<endstone::core::EndstonePlayer>()};
+    server.getPluginManager().callEvent(e);
+    if (e.isCancelled()) {
+        return false;
+    }
+
+    open_container_positions[player->getOrCreateUniqueID().raw_id] = event.block_pos;
+    return true;
+}
+
+bool handleEvent(const PlayerClosedContainerEvent &event)
+{
+    const auto *player = event.player.tryUnwrap<::Player>();
+    if (player == nullptr) {
+        return true;
+    }
+
+    const auto it = open_container_positions.find(player->getOrCreateUniqueID().raw_id);
+    if (it == open_container_positions.end()) {
+        return true;
+    }
+    const auto block_pos = it->second;
+    open_container_positions.erase(it);
+
+    const auto container = tryGetContainerAt(*player, block_pos);
+    if (!container) {
+        return true;
+    }
+
+    const auto &server = endstone::core::EndstoneServer::getInstance();
+    endstone::InventoryCloseEvent e{container->getInventory(),
+                                    player->getEndstoneActor<endstone::core::EndstonePlayer>()};
+    server.getPluginManager().callEvent(e);
+    return true;
+}
+
 bool handleEvent(const PlayerDamageEvent &event)
 {
     if (auto *player = WeakEntityRef(event.player).tryUnwrap<::Player>(); player) {
@@ -90,6 +152,7 @@ bool handleEvent(const PlayerDisconnectEvent &event)
     if (auto *player = WeakEntityRef(event.player).tryUnwrap<::Player>(); player) {
         const auto &server = endstone::core::EndstoneServer::getInstance();
         auto endstone_player = player->getEndstoneActor<endstone::core::EndstonePlayer>();
+        open_container_positions.erase(player->getOrCreateUniqueID().raw_id);
 
         endstone::Message quit_message = endstone::Translatable{
             endstone::ColorFormat::Yellow + "%multiplayer.player.left", {endstone_player->getName()}};
@@ -148,20 +211,6 @@ bool handleEvent(const PlayerDimensionChangeAfterEvent &event)
     return true;
 }
 
-bool handleEvent(const PlayerSwingStartEvent &event)
-{
-    if (const auto *player = event.player.tryUnwrap<::Player>(); player) {
-        const auto &server = endstone::core::EndstoneServer::getInstance();
-        std::optional<endstone::ItemStack> item;
-        if (!event.held_item.isNull()) {
-            item = endstone::core::EndstoneItemStack::fromMinecraft(event.held_item);
-        }
-        endstone::PlayerArmSwingEvent e{player->getEndstoneActor<endstone::core::EndstonePlayer>(), std::move(item)};
-        server.getPluginManager().callEvent(e);
-    }
-    return true;
-}
-
 bool handleEvent(const PlayerGetExperienceOrbEvent &event)
 {
     const auto &server = endstone::core::EndstoneServer::getInstance();
@@ -180,10 +229,9 @@ bool handleEvent(const PlayerGetExperienceOrbEvent &event)
     return true;
 }
 
-bool handleEvent(const PlayerInteractWithBlockBeforeEvent &event, bool &is_sign)
+bool handleEvent(const PlayerInteractWithBlockBeforeEvent &event)
 {
     if (const auto *player = WeakEntityRef(event.player).tryUnwrap<::Player>(); player) {
-        endstone::core::clearPendingOpenSignCause(*player);
         const auto &server = endstone::core::EndstoneServer::getInstance();
         auto &block_source = player->getDimension().getBlockSourceFromMainChunkSource();
         const auto block = endstone::core::EndstoneBlock::at(block_source, BlockPos(event.block_location));
@@ -203,15 +251,6 @@ bool handleEvent(const PlayerInteractWithBlockBeforeEvent &event, bool &is_sign)
         if (e.isCancelled()) {
             return false;
         }
-        is_sign = block->getMinecraftBlock().hasProperty(BlockProperty::Sign);
-    }
-    return true;
-}
-
-bool handleEvent(const PlayerInteractWithBlockAfterEvent &event)
-{
-    if (const auto *player = WeakEntityRef(event.player).tryUnwrap<::Player>(); player) {
-        endstone::core::clearPendingOpenSignCause(*player);
     }
     return true;
 }
@@ -267,8 +306,8 @@ HandlerResult ScriptPlayerGameplayHandler::handleEvent1(const PlayerGameplayEven
                       std::is_same_v<T, Details::ValueOrRef<const PlayerFormCloseEvent>> ||
                       std::is_same_v<T, Details::ValueOrRef<const ::PlayerRespawnEvent>> ||
                       std::is_same_v<T, Details::ValueOrRef<const PlayerDimensionChangeAfterEvent>> ||
-                      std::is_same_v<T, Details::ValueOrRef<const PlayerInteractWithBlockAfterEvent>> ||
-                      std::is_same_v<T, Details::ValueOrRef<const PlayerSwingStartEvent>>) {
+                      std::is_same_v<T, Details::ValueOrRef<const PlayerOpenContainerEvent>> ||
+                      std::is_same_v<T, Details::ValueOrRef<const PlayerClosedContainerEvent>>) {
             if (!handleEvent(arg.value())) {
                 return HandlerResult::BypassListeners;
             }
@@ -284,17 +323,16 @@ GameplayHandlerResult<CoordinatorResult> ScriptPlayerGameplayHandler::handleEven
     auto visitor = [&](auto &&arg) -> GameplayHandlerResult<CoordinatorResult> {
         using T = std::decay_t<decltype(arg)>;
         if constexpr (std::is_same_v<T, Details::ValueOrRef<const PlayerInteractWithBlockBeforeEvent>>) {
-            bool is_sign = false;
-            if (!handleEvent(arg.value(), is_sign)) {
+            if (!handleEvent(arg.value())) {
                 return {HandlerResult::BypassListeners, CoordinatorResult::Cancel};
             }
 
             auto result = ENDSTONE_VHOOK_CALL_ORIGINAL(&ScriptPlayerGameplayHandler::handleEvent2, this, event);
-            if (result.return_value == CoordinatorResult::Continue && is_sign) {
-                if (const auto *player = WeakEntityRef(arg.value().player).tryUnwrap<::Player>(); player) {
-                    endstone::core::setPendingOpenSignCause(*player, BlockPos(arg.value().block_location),
-                                                            endstone::core::OpenSignCause::Interact);
-                }
+            if (auto *player = WeakEntityRef(arg.value().player).tryUnwrap<::Player>(); player) {
+                auto &block_source = player->getDimension().getBlockSourceFromMainChunkSource();
+                player->addOrRemoveComponent<endstone::core::InternalSignInteractFlagComponent>(
+                    result.return_value == CoordinatorResult::Continue &&
+                    block_source.getBlock(BlockPos(arg.value().block_location)).hasProperty(BlockProperty::Sign));
             }
             return result;
         }

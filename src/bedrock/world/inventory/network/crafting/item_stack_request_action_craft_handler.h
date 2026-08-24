@@ -32,7 +32,9 @@ class ItemStackRequestActionCraftHandler {
 public:
     virtual ~ItemStackRequestActionCraftHandler() = 0;
     ItemStackRequestActionCraftHandler(ItemStackRequestActionHandler &, Player &);
-    ENDSTONE_HOOK ItemStackNetResult handleCraftAction(const ItemStackRequestActionCraftBase &request_action);
+    ItemStackNetResult handleCraftAction(const ItemStackRequestActionCraftBase &request_action);
+
+    std::vector<std::pair<ItemInstance, unsigned int>> &getCraftResults() { return craft_results_; }  // Endstone
 
 private:
     ItemStackRequestActionHandler &request_action_handler_;

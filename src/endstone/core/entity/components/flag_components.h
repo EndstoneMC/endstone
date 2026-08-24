@@ -17,6 +17,10 @@
 namespace endstone::core {
 struct InternalDisconnectFlagComponent {};
 struct InternalRemoveFlagComponent {};
+struct InternalSignInteractFlagComponent {};
+struct InternalSignOpenFlagComponent {};
+struct InternalSignPlaceFlagComponent {};
+struct InternalSpawnChangeFlagComponent {};
 struct InternalTeleportFlagComponent {};
 struct MobHurtFlagComponent {};
 }  // namespace endstone::core

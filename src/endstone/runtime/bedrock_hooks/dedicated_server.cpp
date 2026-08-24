@@ -22,16 +22,12 @@
 #include "endstone/core/devtools/devtools.h"
 #include "endstone/core/logger_factory.h"
 #include "endstone/runtime/hook.h"
-#include "endstone/runtime/runtime.h"
 
 namespace py = pybind11;
 
 DedicatedServer::ServerExitCode DedicatedServer::start(const std::string &session_id,
                                                        const Bedrock::ActivationArguments &args)
 {
-    // Save the current stdin, as it will be altered after the initialisation of python interpreter
-    endstone::runtime::stdin_save();
-
     // Initialise an isolated Python environment to avoid installing signal handlers
     // https://docs.python.org/3/c-api/init_config.html#init-isolated-conf
     PyConfig config;
@@ -44,9 +40,6 @@ DedicatedServer::ServerExitCode DedicatedServer::start(const std::string &sessio
 
     // Release the GIL
     py::gil_scoped_release release{};
-
-    // Close stdin so that the ConsoleInputReader thread exits as soon as it begins
-    endstone::runtime::stdin_close();
 
 #ifdef ENDSTONE_WITH_DEVTOOLS
     // DevTools

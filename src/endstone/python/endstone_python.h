@@ -73,6 +73,10 @@ template <>
 struct py_class<CommandSenderWrapper> {
     using type = py::classh<CommandSenderWrapper, CommandSender>;
 };
+template <>
+struct py_class<ProxiedCommandSender> {
+    using type = py::classh<ProxiedCommandSender, CommandSender>;
+};
 
 }  // namespace detail
 

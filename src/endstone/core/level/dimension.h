@@ -18,6 +18,7 @@
 #include <memory>
 #include <unordered_map>
 
+#include "bedrock/platform/uuid.h"
 #include "bedrock/world/level/dimension/dimension.h"
 #include "endstone/actor/actor.h"
 #include "endstone/actor/item.h"
@@ -42,8 +43,16 @@ public:
     [[nodiscard]] NotNull<Block> getHighestBlockAt(Location location) const override;
     [[nodiscard]] std::vector<NotNull<Chunk>> getLoadedChunks() override;
     [[nodiscard]] bool isChunkLoaded(int x, int z) const override;
+    [[nodiscard]] bool isChunkGenerated(int x, int z) const override;
     bool loadChunk(int x, int z) override;
+    bool loadChunk(int x, int z, bool generate) override;
     bool unloadChunk(int x, int z) override;
+    bool unloadChunkRequest(int x, int z) override;
+    bool addPluginChunkTicket(int x, int z, Plugin &plugin) override;
+    bool removePluginChunkTicket(int x, int z, Plugin &plugin) override;
+    void removePluginChunkTickets(Plugin &plugin) override;
+    [[nodiscard]] std::vector<Plugin *> getPluginChunkTickets(int x, int z) const override;
+    [[nodiscard]] std::unordered_map<Plugin *, std::vector<NotNull<Chunk>>> getPluginChunkTickets() const override;
     [[nodiscard]] NotNull<Item> dropItem(Location location, const ItemStack &item) override;
     [[nodiscard]] Nullable<Actor> spawnActor(Location location, ActorTypeId type) override;
     [[nodiscard]] std::vector<NotNull<Actor>> getActors() const override;
@@ -54,8 +63,18 @@ public:
     [[nodiscard]] NotNull<EndstoneDimension> self() const;
 
 private:
+    struct ChunkTicket {
+        mce::UUID area_id;
+        std::vector<Plugin *> plugins;
+        bool server_owned = false;
+    };
+
+    void checkServerThread() const;
+    mce::UUID pinChunk(int x, int z, bool generate);
+    void releaseTicket(std::unordered_map<std::uint64_t, ChunkTicket>::iterator it);
+
     WeakRef<::Dimension> dimension_;
     EndstoneLevel &level_;
-    std::unordered_map<std::uint64_t, std::shared_ptr<::LevelChunk>> loaded_chunks_;
+    std::unordered_map<std::uint64_t, ChunkTicket> chunk_tickets_;
 };
 }  // namespace endstone::core

@@ -17,6 +17,7 @@
 #include <format>
 #include <memory>
 #include <string>
+#include <unordered_map>
 #include <vector>
 
 #include "endstone/actor/actor.h"
@@ -30,6 +31,7 @@ namespace endstone {
 
 class Mob;
 class Player;
+class Plugin;
 
 class Dimension;
 using DimensionId = Identifier<Dimension>;
@@ -137,31 +139,126 @@ public:
     [[nodiscard]] virtual bool isChunkLoaded(int x, int z) const = 0;
 
     /**
-     * Requests the Chunk at the given coordinates to be loaded, and keeps it loaded until it is unloaded again.
+     * Checks if the Chunk at the given coordinates has been generated.
      *
-     * The chunk is held resident by Endstone from the moment this returns until removed with `unloadChunk()` or the
-     * server restarts. Loading itself is asynchronous: unless the chunk was already resident, it finishes on a later
-     * tick, so `isChunkLoaded()` may still report `false` immediately afterwards. Intended for keeping a handful of
-     * chunks resident; it is not suited to loading large regions.
+     * A chunk counts as generated once it is loaded or has been written to the level's chunk storage.
      *
      * @param x X-coordinate of the chunk
      * @param z Z-coordinate of the chunk
-     * @return `true` if the request was accepted, otherwise `false`
+     * @return `true` if the chunk has been generated, otherwise `false`
+     */
+    [[nodiscard]] virtual bool isChunkGenerated(int x, int z) const = 0;
+
+    /**
+     * Requests the Chunk at the given coordinates to be loaded, generating it if it does not exist yet.
+     *
+     * Equivalent to `loadChunk(x, z, true)`.
+     *
+     * @param x X-coordinate of the chunk
+     * @param z Z-coordinate of the chunk
+     * @return `true` if the chunk is now held resident, otherwise `false`
      */
     virtual bool loadChunk(int x, int z) = 0;
 
     /**
-     * Releases the hold that `loadChunk()` placed on the Chunk at the given coordinates.
+     * Requests the Chunk at the given coordinates to be loaded, and keeps it resident until it is released again.
      *
-     * This only drops Endstone's own reference; it never affects `/tickingarea`s or other holders. The chunk is unloaded
-     * once nothing else keeps it loaded (a nearby player, the spawn area, etc.), so this is a no-op in effect while the
-     * chunk is still in use.
+     * The chunk is held from the moment this returns until `unloadChunk()` or `unloadChunkRequest()` releases it, or
+     * the server restarts. Bedrock has no synchronous chunk load, so unless the chunk was already resident the load
+     * finishes on a later tick and `isChunkLoaded()` may still report `false` right afterwards. A chunk held this way
+     * stays in memory but is not ticked, and the hold never expires on its own. Intended for keeping a handful of
+     * chunks resident; it is not suited to loading large regions.
+     *
+     * The hold is not attributed to any plugin and survives that plugin being disabled. Use
+     * `addPluginChunkTicket()` for a hold that is released automatically.
      *
      * @param x X-coordinate of the chunk
      * @param z Z-coordinate of the chunk
-     * @return `true` once the hold has been released
+     * @param generate Whether to generate the chunk if it does not exist yet
+     * @return `false` if `generate` is `false` and the chunk has not been generated, or if the coordinates lie outside
+     *         the world limit, otherwise `true`
+     */
+    virtual bool loadChunk(int x, int z, bool generate) = 0;
+
+    /**
+     * Releases the hold that `loadChunk()` placed on the Chunk at the given coordinates, and unloads it if nothing else
+     * keeps it resident.
+     *
+     * A chunk kept alive by a nearby player, the spawn area, a `/tickingarea` or a plugin chunk ticket stays loaded,
+     * and this reports `false`. Unloading a chunk saves it and fires a ChunkUnloadEvent, which handlers observe before
+     * this returns.
+     *
+     * @note This also completes any chunk unloads the dimension had pending, so calling it once per chunk over a large
+     *       area is expensive. Use `unloadChunkRequest()` when releasing many chunks at once.
+     *
+     * @param x X-coordinate of the chunk
+     * @param z Z-coordinate of the chunk
+     * @return `true` if the chunk is no longer loaded, otherwise `false`
      */
     virtual bool unloadChunk(int x, int z) = 0;
+
+    /**
+     * Releases the hold that `loadChunk()` placed on the Chunk at the given coordinates, without unloading it now.
+     *
+     * The chunk is unloaded on a later tick once nothing else keeps it resident.
+     *
+     * @param x X-coordinate of the chunk
+     * @param z Z-coordinate of the chunk
+     * @return `true`
+     */
+    virtual bool unloadChunkRequest(int x, int z) = 0;
+
+    /**
+     * Adds a plugin ticket for the Chunk at the given coordinates, loading it if it is not already loaded.
+     *
+     * A plugin ticket keeps the chunk resident until it is explicitly removed or the owning plugin is disabled. A
+     * plugin may only have one ticket per chunk, but each chunk can have multiple plugin tickets. `unloadChunk()` does
+     * not remove plugin tickets.
+     *
+     * @param x X-coordinate of the chunk
+     * @param z Z-coordinate of the chunk
+     * @param plugin Plugin taking the ticket
+     * @return `true` if a plugin ticket was added, `false` if the plugin already holds one for this chunk
+     */
+    virtual bool addPluginChunkTicket(int x, int z, Plugin &plugin) = 0;
+
+    /**
+     * Removes the given plugin's ticket for the Chunk at the given coordinates.
+     *
+     * @param x X-coordinate of the chunk
+     * @param z Z-coordinate of the chunk
+     * @param plugin Plugin whose ticket to remove
+     * @return `true` if a plugin ticket was removed, `false` if the plugin holds none for this chunk
+     */
+    virtual bool removePluginChunkTicket(int x, int z, Plugin &plugin) = 0;
+
+    /**
+     * Removes every ticket the given plugin holds in this dimension.
+     *
+     * @param plugin Plugin whose tickets to remove
+     */
+    virtual void removePluginChunkTickets(Plugin &plugin) = 0;
+
+    /**
+     * Gets which plugins hold a ticket for the Chunk at the given coordinates.
+     *
+     * The returned list is a snapshot; it does not track tickets added or removed afterwards.
+     *
+     * @param x X-coordinate of the chunk
+     * @param z Z-coordinate of the chunk
+     * @return Plugins holding a ticket for the chunk
+     */
+    [[nodiscard]] virtual std::vector<Plugin *> getPluginChunkTickets(int x, int z) const = 0;
+
+    /**
+     * Gets which plugins hold tickets for which Chunks in this dimension.
+     *
+     * The returned map is a snapshot; it does not track tickets added or removed afterwards. A plugin holding no
+     * tickets is absent from it.
+     *
+     * @return Chunks each plugin holds a ticket for
+     */
+    [[nodiscard]] virtual std::unordered_map<Plugin *, std::vector<NotNull<Chunk>>> getPluginChunkTickets() const = 0;
 
     /**
      * Drops an item at the specified Location.

@@ -23,8 +23,8 @@
 #include "endstone/core/block/block_face.h"
 #include "endstone/core/block/block_snapshot.h"
 #include "endstone/core/block/block_state.h"
+#include "endstone/core/entity/components/flag_components.h"
 #include "endstone/core/player.h"
-#include "endstone/core/player_open_sign.h"
 #include "endstone/event/actor/actor_explode_event.h"
 #include "endstone/event/block/block_break_event.h"
 #include "endstone/event/block/block_explode_event.h"
@@ -51,7 +51,6 @@ bool handleEvent(const BlockTryPlaceByPlayerEvent &event)
         return true;
     }
 
-    endstone::core::clearPendingOpenSignCause(*player);
     const auto &server = endstone::core::EndstoneServer::getInstance();
     auto endstone_player = player->getEndstoneActor<endstone::core::EndstonePlayer>();
     auto &block_source = player->getDimension().getBlockSourceFromMainChunkSource();
@@ -157,12 +156,10 @@ GameplayHandlerResult<CoordinatorResult> ScriptBlockGameplayHandler::handleEvent
             }
 
             auto result = ENDSTONE_VHOOK_CALL_ORIGINAL(&ScriptBlockGameplayHandler::handleEvent2, this, event);
-            if (result.return_value == CoordinatorResult::Continue &&
-                arg.value().permutation_to_place.hasProperty(BlockProperty::Sign)) {
-                if (const auto *player = WeakEntityRef(arg.value().player).tryUnwrap<::Player>(); player) {
-                    endstone::core::setPendingOpenSignCause(*player, arg.value().pos,
-                                                            endstone::core::OpenSignCause::Place);
-                }
+            if (auto *player = WeakEntityRef(arg.value().player).tryUnwrap<::Player>(); player) {
+                player->addOrRemoveComponent<endstone::core::InternalSignPlaceFlagComponent>(
+                    result.return_value == CoordinatorResult::Continue &&
+                    arg.value().permutation_to_place.hasProperty(BlockProperty::Sign));
             }
             return result;
         }

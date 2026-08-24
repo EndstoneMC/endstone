@@ -45,6 +45,7 @@
 #include "endstone/core/devtools/devtools_command.h"
 #include "endstone/core/permissions/default_permissions.h"
 #include "endstone/core/server.h"
+#include "endstone/event/command/unknown_command_event.h"
 
 namespace endstone::core {
 
@@ -73,7 +74,11 @@ bool EndstoneCommandMap::dispatch(const NotNull<CommandSender> &sender, std::str
     std::ranges::transform(name, name.begin(), [](unsigned char c) { return std::tolower(c); });
     const auto command = getCommand(name);
     if (!command) {
-        sender->sendErrorMessage(Translatable("commands.generic.unknown", {args[0]}));
+        UnknownCommandEvent event(sender, command_line, Message{Translatable("commands.generic.unknown", {args[0]})});
+        server_.getPluginManager().callEvent(event);
+        if (const auto message = event.getMessage()) {
+            sender->sendErrorMessage(*message);
+        }
         return false;
     }
 

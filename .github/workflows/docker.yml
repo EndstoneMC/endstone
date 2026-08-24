@@ -36,6 +36,10 @@ jobs:
             echo "No new commits in the last 24h; skipping nightly build."
           fi
 
+      - name: Restore Conan cache
+        if: steps.check.outputs.build == 'true'
+        uses: ./.github/actions/conan-cache/restore
+
       - name: Set up Docker Buildx
         if: steps.check.outputs.build == 'true'
         uses: docker/setup-buildx-action@v4
@@ -57,7 +61,7 @@ jobs:
           platforms: linux/amd64
           push: true
           tags: ghcr.io/endstonemc/endstone:nightly
-          cache-from: type=gha
-          cache-to: type=gha,mode=min
+          build-contexts: |
+            conan-cache=.conan2
           secrets: |
             sentry-auth-token=${{ secrets.SENTRY_AUTH_TOKEN }}

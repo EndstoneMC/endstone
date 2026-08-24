@@ -350,7 +350,6 @@ def test_player_skin_change(recorder: EventRecorder) -> None:
         "PlayerBedLeaveEvent",
         "PlayerDeathEvent",
         "PlayerDimensionChangeEvent",
-        "PlayerArmSwingEvent",
         "PlayerExpChangeEvent",
         "PlayerInputEvent",
         "PlayerLevelChangeEvent",
@@ -372,6 +371,7 @@ def test_not_cancellable(event_name: str) -> None:
 @pytest.mark.parametrize(
     "event_name",
     [
+        "PlayerArmSwingEvent",
         "PlayerArmorStandManipulateEvent",
         "PlayerBucketActorEvent",
         "PlayerPickupArrowEvent",

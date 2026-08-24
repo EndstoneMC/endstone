@@ -16,6 +16,7 @@
 
 #include <functional>
 #include <memory>
+#include <optional>
 #include <unordered_map>
 #include <unordered_set>
 #include <variant>
@@ -72,6 +73,8 @@ public:
     void transfer(std::string host, int port) const override;
     void kick(std::string message) const override;
     bool performCommand(std::string command) const override;  // NOLINT(*-use-nodiscard)
+    [[nodiscard]] std::optional<Location> getRespawnLocation() const override;
+    void setRespawnLocation(std::optional<Location> location) override;
     void openSign(const Sign &sign, Sign::Side side) override;
     void openVirtualSign(const Location &location, Sign::Side side) override;
     [[nodiscard]] bool isSneaking() const override;
@@ -108,10 +111,9 @@ public:
     void resetTitle() const override;
     void spawnParticle(std::string name, Location location) const override;
     void spawnParticle(std::string name, float x, float y, float z) const override;
-    void spawnParticle(std::string name, Location location,
-                       std::optional<std::string> molang_variables_json) const override;
+    void spawnParticle(std::string name, Location location, std::optional<JsonObject> molang_variables) const override;
     void spawnParticle(std::string name, float x, float y, float z,
-                       std::optional<std::string> molang_variables_json) const override;
+                       std::optional<JsonObject> molang_variables) const override;
     [[nodiscard]] std::chrono::milliseconds getPing() const override;
     void updateCommands() const override;
 
@@ -128,8 +130,9 @@ public:
     void closeForm() override;
     void sendPacket(int packet_id, std::string_view payload) const override;
     void sendMap(MapView &map) override;
+    [[nodiscard]] AbilityValue _getAbility(Identifier<Ability> ability) const override;
+    bool _setAbility(Identifier<Ability> ability, AbilityValue value) override;
 
-    bool handlePacket(Packet &packet);
     void onFormClose(std::uint32_t form_id, PlayerFormCloseReason reason);
     void onFormResponse(std::uint32_t form_id, const nlohmann::json &json);
     void doFirstSpawn();
@@ -142,6 +145,7 @@ public:
 
 private:
     friend class ::ServerNetworkHandler;
+    friend class EndstonePacketHandler;
 
     struct RecipeBookSettings {
         bool filtering;

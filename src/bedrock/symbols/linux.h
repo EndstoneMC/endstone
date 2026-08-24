@@ -11,7 +11,7 @@
 
 namespace endstone::runtime {
 
-static constexpr std::array<std::pair<std::string_view, std::size_t>, 73> symbols = {{
+static constexpr std::array<std::pair<std::string_view, std::size_t>, 80> symbols = {{
     {"BlockState::StateListNode::mHead", 245468000},
     {"Enchant::mEnchants", 245294016},
     {"MobEffect::mMobEffects", 245274360},
@@ -53,11 +53,16 @@ static constexpr std::array<std::pair<std::string_view, std::size_t>, 73> symbol
     {"_ZNK15CommandRegistry26serializeAvailableCommandsEv", 160039360},
     // CommandUtils
     {"_ZN12CommandUtils12getActorNameERK5Actor", 159774800},
+    // ConsoleInputReader
+    {"_ZN18ConsoleInputReader3runEPv", 71890192},
+    // CraftHandlerCrafting
+    {"_ZN20CraftHandlerCrafting18_handleCraftActionERK31ItemStackRequestActionCraftBase", 197828768},
     // CraftingDataPacketPayload
     {"_ZN25CraftingDataPacketPayload11fromRecipesERK7Recipesb", 134785984},
     // DedicatedServer
     {"_ZN15DedicatedServer5startERKNSt3__112basic_stringIcNS0_11char_traitsIcEENS0_9allocatorIcEEEERKN7Bedrock19ActivationArgumentsE", 71550016},
     // DimensionManager
+    {"_ZN16DimensionManager20getOrCreateDimensionENSt3__117basic_string_viewIcNS0_11char_traitsIcEEEE", 202068400},
     {"_ZN16DimensionManager29serverRegisterCustomDimensionENSt3__117basic_string_viewIcNS0_11char_traitsIcEEEERKN3mce4UUIDE", 202063456},
     // Explosion
     {"_ZN9Explosion7explodeER7IRandom", 202093568},
@@ -78,8 +83,6 @@ static constexpr std::array<std::pair<std::string_view, std::size_t>, 73> symbol
     // ItemStackBase
     {"_ZN13ItemStackBase34_loadBlocksForCanPlaceOnCanDestroyERNSt3__16vectorIPK9BlockTypeNS0_9allocatorIS4_EEEERKNS0_12basic_stringIcNS0_11char_traitsIcEENS5_IcEEEE", 196858752},
     {"_ZN13ItemStackBase8_setItemEib", 196818048},
-    // ItemStackRequestActionCraftHandler
-    {"_ZN34ItemStackRequestActionCraftHandler17handleCraftActionERK31ItemStackRequestActionCraftBase", 197886512},
     // LeavesBlock
     {"_ZN11LeavesBlock10randomTickERN11BlockEvents20BlockRandomTickEventE", 199008832},
     // Level
@@ -95,13 +98,18 @@ static constexpr std::array<std::pair<std::string_view, std::size_t>, 73> symbol
     {"_ZN16MinecraftPackets12createPacketE18MinecraftPacketIds", 140175216},
     // Mob
     {"_ZN3Mob9knockbackEP5ActorfffRK19KnockbackParameters", 191349696},
+    // NetworkSystem
+    {"_ZN13NetworkSystem23onNewIncomingConnectionERK17NetworkIdentifierONSt3__110shared_ptrI11NetworkPeerEE", 140204912},
     // PistonBlockActor
     {"_ZN16PistonBlockActor4tickER11BlockSource", 207194672},
     // Player
     {"_ZN6Player10teleportToERK4Vec3biib", 188137216},
     {"_ZN6Player13addExperienceEi", 188297776},
+    {"_ZN6Player14stopSleepInBedEbb", 188148304},
     {"_ZN6Player15startSleepInBedERK8BlockPosbf", 188144032},
     {"_ZN6Player17completeUsingItemEv", 188167680},
+    {"_ZN6Player18setRespawnPositionERK8BlockPos13DimensionType", 188285872},
+    {"_ZN6Player28setSpawnBlockRespawnPositionERK8BlockPos13DimensionType", 188285152},
     {"_ZN6Player4dropERK9ItemStackb", 188279872},
     {"_ZN6Player4takeER5Actorii", 188227136},
     {"_ZN6Player9addLevelsEi", 188298880},
@@ -127,8 +135,9 @@ static constexpr std::array<std::pair<std::string_view, std::size_t>, 73> symbol
     {"_ZN12ServerPlayer8openSignERK8BlockPosb", 160355328},
     // ServerScoreboard
     {"_ZN16ServerScoreboardC2E23CommandSoftEnumRegistryP12LevelStorageN3gsl8not_nullIN7Bedrock15NonOwnerPointerI19GameplayUserManagerEEEE", 209066992},
-    // SignItem
-    {"_ZNK8SignItem6_useOnER9ItemStackR5Actor8BlockPoshRK4Vec3", 196755040},
+    // TickingAreasManager
+    {"_ZN19TickingAreasManager17removeScopedAreasERKNSt3__16vectorIN3mce4UUIDENS0_9allocatorIS3_EEEE", 209958064},
+    {"_ZN19TickingAreasManager22addTransientScopedAreaE13DimensionTypeRKNSt3__112basic_stringIcNS1_11char_traitsIcEENS1_9allocatorIcEEEEmN3mce4UUIDERK6Bounds", 209957280},
     // TridentItem
     {"_ZNK11TridentItem12releaseUsingER9ItemStackP6Playeri", 195973728},
     // WeatherManager

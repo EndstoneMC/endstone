@@ -10,7 +10,7 @@ from endstone.actor import Actor, Item, Mob
 from endstone.block import Block, BlockFace, BlockState, Sign
 from endstone.command import CommandSender
 from endstone.damage import DamageSource
-from endstone.inventory import EquipmentSlot, ItemStack
+from endstone.inventory import BookMeta, EquipmentSlot, Inventory, ItemStack, Recipe
 from endstone.lang import Translatable
 from endstone.level import Chunk, Dimension, Level, Location
 from endstone.map import MapView
@@ -51,9 +51,14 @@ __all__ = [
     "ChunkLoadEvent",
     "ChunkUnloadEvent",
     "DimensionEvent",
+    "DimensionLoadEvent",
     "Event",
     "EventPriority",
     "EventResult",
+    "InventoryCloseEvent",
+    "InventoryEvent",
+    "InventoryInteractEvent",
+    "InventoryOpenEvent",
     "LeavesDecayEvent",
     "LevelEvent",
     "MapInitializeEvent",
@@ -71,6 +76,7 @@ __all__ = [
     "PlayerDeathEvent",
     "PlayerDimensionChangeEvent",
     "PlayerDropItemEvent",
+    "PlayerEditBookEvent",
     "PlayerEmoteEvent",
     "PlayerEvent",
     "PlayerExpChangeEvent",
@@ -95,6 +101,7 @@ __all__ = [
     "PlayerRecipeBookSettingsChangeEvent",
     "PlayerRespawnEvent",
     "PlayerRiptideEvent",
+    "PlayerSetSpawnEvent",
     "PlayerShearActorEvent",
     "PlayerSkinChangeEvent",
     "PlayerTeleportEvent",
@@ -110,6 +117,7 @@ __all__ = [
     "ServerListPingEvent",
     "ServerLoadEvent",
     "ThunderChangeEvent",
+    "UnknownCommandEvent",
     "WeatherChangeEvent",
     "WeatherEvent",
     "event_handler",
@@ -631,6 +639,11 @@ class DimensionEvent(LevelEvent):
         The `Dimension` primarily involved with this event.
         """
 
+class DimensionLoadEvent(DimensionEvent):
+    """
+    Called when a dimension is loaded.
+    """
+
 class ChunkEvent(DimensionEvent):
     """
     Represents a `Chunk` related event.
@@ -651,6 +664,31 @@ class ChunkUnloadEvent(ChunkEvent):
     Called when a chunk is unloaded.
     """
 
+class UnknownCommandEvent(Event):
+    """
+    Called when a command sender executes a command that is not defined.
+    """
+    @property
+    def sender(self) -> CommandSender:
+        """
+        The command sender.
+        """
+
+    @property
+    def command_line(self) -> str:
+        """
+        The command that was sent.
+        """
+
+    @property
+    def message(self) -> str | Translatable | None:
+        """
+        The message that will be returned, or `None` if no message will be sent.
+        """
+
+    @message.setter
+    def message(self, arg1: str | Translatable | None) -> None: ...
+
 class PlayerEvent(Event):
     """
     Represents a player related event.
@@ -661,9 +699,17 @@ class PlayerEvent(Event):
         The `Player` who is involved in this event.
         """
 
-class PlayerArmSwingEvent(PlayerEvent):
+class PlayerArmSwingEvent(PlayerEvent, Cancellable):
     """
     Called when a player swings their arm.
+
+    Cancelling stops the server acting on the swing at all. The swing is neither recorded nor shown to the other
+    players in the dimension.
+
+    Note:
+        The swinging player still sees their own arm move, because their client plays the animation without waiting
+        for the server. The event covers swings the player starts. Swings the server drives itself, such as dropping
+        an item, do not fire it.
     """
     @property
     def item(self) -> ItemStack | None:
@@ -762,30 +808,6 @@ class PlayerCommandEvent(PlayerEvent, Cancellable):
     @command.setter
     def command(self, arg1: str) -> None: ...
 
-class PlayerCraftItemEvent(PlayerEvent, Cancellable):
-    """
-    Called when a player crafts an item.
-
-    If the event is cancelled the item will not be crafted and the ingredients will not be consumed.
-    """
-    @property
-    def item(self) -> ItemStack:
-        """
-        An `ItemStack` for the item being crafted.
-        """
-
-    @property
-    def recipe_id(self) -> str:
-        """
-        The identifier of the recipe used.
-        """
-
-    @property
-    def amount(self) -> int:
-        """
-        The number of times the recipe is being crafted.
-        """
-
 class PlayerDimensionChangeEvent(PlayerEvent):
     """
     Called when a player switches to another dimension.
@@ -802,6 +824,51 @@ class PlayerDimensionChangeEvent(PlayerEvent):
         The player's new dimension.
         """
 
+class PlayerCraftItemEvent(PlayerEvent, Cancellable):
+    """
+    Called when a player crafts an item, either inside a crafting grid or straight from the recipe book.
+
+    If the event is cancelled the item will not be crafted and the ingredients will not be consumed.
+    """
+    @property
+    def recipe(self) -> Recipe:
+        """
+        A copy of the current recipe on the crafting matrix.
+        """
+
+    @property
+    def ingredients(self) -> list[ItemStack]:
+        """
+        The ingredients a single craft consumes.
+
+        These are the items in the crafting grid where the player used one. Crafting from the recipe book never fills
+        the grid, so the ingredients then come from the recipe instead, and an ingredient that accepts several items
+        reports the one the recipe names rather than the one the player supplied.
+        """
+
+    @property
+    def results(self) -> list[ItemStack]:
+        """
+        The items a single craft produces.
+
+        A recipe usually produces one item, but may produce several, and an ingredient that leaves a remainder behind
+        contributes one too. Results are replaced one for one, so any beyond the number the recipe produces are ignored;
+        cancel the event to stop the craft instead.
+        """
+
+    @results.setter
+    def results(self, arg1: list[ItemStack]) -> None: ...
+    @property
+    def repetitions(self) -> int:
+        """
+        The number of times the recipe is being crafted.
+
+        This is usually 1, but is higher when a batch is crafted at once, such as a shift click in the recipe book.
+        """
+
+    @repetitions.setter
+    def repetitions(self, arg1: int) -> None: ...
+
 class PlayerDropItemEvent(PlayerEvent, Cancellable):
     """
     Called when a player drops an item from their inventory.
@@ -811,6 +878,48 @@ class PlayerDropItemEvent(PlayerEvent, Cancellable):
         """
         The `ItemStack` dropped by the player.
         """
+
+class PlayerEditBookEvent(PlayerEvent, Cancellable):
+    """
+    Called when a player edits or signs a book.
+    """
+    @property
+    def slot(self) -> int:
+        """
+        The inventory slot containing the book.
+        """
+
+    @property
+    def previous_book_meta(self) -> BookMeta:
+        """
+        A copy of the book metadata before the edit.
+
+        Note:
+            This is a copy: changes made to it are not written back to the book.
+        """
+
+    @property
+    def new_book_meta(self) -> BookMeta:
+        """
+        The book metadata that the player is attempting to add to the book.
+
+        Note:
+            Reading this gives a copy: assign to it to change what will actually be added to the book.
+
+            A title, an author and a generation are only written when the book is being signed. On a plain edit the book
+            stays a book and quill, which holds none of them, and they are dropped. See `is_signing`.
+        """
+
+    @new_book_meta.setter
+    def new_book_meta(self, arg1: BookMeta) -> None: ...
+    @property
+    def is_signing(self) -> bool:
+        """
+        Whether the player is signing the book.
+        """
+
+    @is_signing.setter
+    def is_signing(self, arg1: bool) -> None: ...
 
 class PlayerEmoteEvent(PlayerEvent, Cancellable):
     """
@@ -1240,6 +1349,51 @@ class PlayerRiptideEvent(PlayerEvent):
         An `ItemStack` for the trident being used.
         """
 
+class PlayerSetSpawnEvent(PlayerEvent, Cancellable):
+    """
+    Called when a player's spawn is set, either by themselves or otherwise.
+
+    Assigning a new `location` redirects the spawn that is about to be written; cancelling leaves the respawn point
+    untouched.
+
+    Note:
+        Only the location's block coordinates and dimension are written back; Bedrock does not persist yaw/pitch for
+        a respawn point. Cancelling stops the respawn point from changing, but not the feedback around it:
+        `/spawnpoint` still reports success and a respawn anchor still plays its sound and message, because neither
+        consults the setter. The event is not fired when Bedrock clears a respawn point, so `/clearspawnpoint` and
+        breaking the bed a player is bound to are both silent.
+    """
+    class Cause(enum.Enum):
+        """
+        The cause of the spawn change.
+        """
+
+        BED = 0
+        RESPAWN_ANCHOR = 1
+        COMMAND = 2
+        PLUGIN = 3
+        UNKNOWN = 4
+
+    BED = Cause.BED
+    RESPAWN_ANCHOR = Cause.RESPAWN_ANCHOR
+    COMMAND = Cause.COMMAND
+    PLUGIN = Cause.PLUGIN
+    UNKNOWN = Cause.UNKNOWN
+    @property
+    def cause(self) -> Cause:
+        """
+        The cause of the spawn change.
+        """
+
+    @property
+    def location(self) -> Location | None:
+        """
+        The spawn location, or `None` to remove the spawn location.
+        """
+
+    @location.setter
+    def location(self, arg1: Location | None) -> None: ...
+
 class PlayerShearActorEvent(PlayerEvent, Cancellable):
     """
     Called when a player shears an actor.
@@ -1321,6 +1475,49 @@ class PlayerPickupItemEvent(PlayerEvent, Cancellable):
     def item(self) -> Item:
         """
         The Item picked up by the entity.
+        """
+
+class InventoryEvent(Event):
+    """
+    Represents a player related inventory event.
+    """
+    @property
+    def inventory(self) -> Inventory:
+        """
+        The primary `Inventory` involved in this transaction.
+        """
+
+class InventoryInteractEvent(InventoryEvent, Cancellable):
+    """
+    An abstract base class for events that describe an interaction between a `Player` and the contents of an
+    `Inventory`.
+    """
+    @property
+    def who_clicked(self) -> Player:
+        """
+        The player who performed the click.
+        """
+
+class InventoryOpenEvent(InventoryEvent, Cancellable):
+    """
+    Called when a player opens an inventory.
+
+    If this event is cancelled, the inventory will not be opened and the player will not see the container screen.
+    """
+    @property
+    def player(self) -> Player:
+        """
+        The player who is opening the inventory.
+        """
+
+class InventoryCloseEvent(InventoryEvent):
+    """
+    Called when a player closes an inventory.
+    """
+    @property
+    def player(self) -> Player:
+        """
+        The player who is closing the inventory.
         """
 
 class ServerEvent(Event):
@@ -1530,14 +1727,6 @@ class ServerListPingEvent(ServerEvent, Cancellable):
 
     @local_port.setter
     def local_port(self, arg1: int) -> None: ...
-    @property
-    def local_port_v6(self) -> int:
-        """
-        The local port of the server for IPv6 support.
-        """
-
-    @local_port_v6.setter
-    def local_port_v6(self, arg1: int) -> None: ...
     @property
     def motd(self) -> str:
         """
