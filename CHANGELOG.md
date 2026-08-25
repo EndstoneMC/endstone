@@ -69,6 +69,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - `Dimension.mobs` and `Dimension.players`, both narrowing `Dimension.actors`.
 - Chunk loading API: `Dimension.load_chunk()`, `Dimension.unload_chunk()`, `Dimension.unload_chunk_request()`, `Dimension.is_chunk_loaded()` and `Dimension.is_chunk_generated()`, plus `Chunk.load()`, `Chunk.unload()` and `Chunk.is_loaded()`. Bedrock has no synchronous chunk load, so `load_chunk()` keeps the chunk resident from a later tick onwards and does not make it tick. `unload_chunk()` reports whether the chunk actually went away, while `unload_chunk_request()` only releases the hold.
 - Plugin chunk tickets: `Dimension.add_plugin_chunk_ticket()`, `remove_plugin_chunk_ticket()`, `remove_plugin_chunk_tickets()`, `get_plugin_chunk_tickets()` and `plugin_chunk_tickets`, with the same methods on `Chunk`. A ticket keeps a chunk loaded until it is removed or the owning plugin is disabled, and `unload_chunk()` leaves it alone.
+- `Chunk.block_actors`, the state of every block actor in a chunk — chests, signs, furnaces, spawners and the rest — mirroring Paper's `Chunk#getTileEntities()`. Reading it on a chunk that is not loaded gives an empty list rather than loading it.
 
 #### Commands and permissions
 
