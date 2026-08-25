@@ -71,6 +71,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - `Dimension.mobs` and `Dimension.players`, both narrowing `Dimension.actors`.
 - Chunk loading API: `Dimension.load_chunk()`, `Dimension.unload_chunk()`, `Dimension.unload_chunk_request()`, `Dimension.is_chunk_loaded()` and `Dimension.is_chunk_generated()`, plus `Chunk.load()`, `Chunk.unload()` and `Chunk.is_loaded()`. Bedrock has no synchronous chunk load, so `load_chunk()` keeps the chunk resident from a later tick onwards and does not make it tick. `unload_chunk()` reports whether the chunk actually went away, while `unload_chunk_request()` only releases the hold.
 - Plugin chunk tickets: `Dimension.add_plugin_chunk_ticket()`, `remove_plugin_chunk_ticket()`, `remove_plugin_chunk_tickets()`, `get_plugin_chunk_tickets()` and `plugin_chunk_tickets`, with the same methods on `Chunk`. A ticket keeps a chunk loaded until it is removed or the owning plugin is disabled, and `unload_chunk()` leaves it alone.
+- `Chunk.block_actors`, the state of every block actor in a chunk — chests, signs, furnaces, spawners and the rest — mirroring Paper's `Chunk#getTileEntities()`. Reading it on a chunk that is not loaded gives an empty list rather than loading it.
 
 #### Commands and permissions
 
@@ -179,6 +180,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Fixed a boss bar vanishing for a player who travelled to another dimension. The Bedrock client drops every boss bar it is showing once it rebuilds the world, and now gets the bars a player is in sent again as soon as it asks for them.
 - Fixed `BossBar.remove_player` hiding the bar from a player who was never added to it, and `BossBar.add_player` re-sending the bar to a player who was already in it.
 - Fixed `Plugin.default_permission` rejecting a string or a bool (`"operator"`, `"not op"`, `True`), which individual entries in `Plugin.permissions` already accepted.
+- Fixed `Block.biome` reading the wrong part of a chunk, so it reported a biome that has nothing to do with the block, and could crash the server. Introduced in 0.11.7 along with BDS 1.26.40 support.
 
 #### Type annotations
 

@@ -14,9 +14,12 @@
 
 #include "endstone/core/level/chunk.h"
 
+#include <ranges>
 #include <stdexcept>
 
 #include "bedrock/world/level/dimension/dimension.h"
+#include "endstone/core/block/block.h"
+#include "endstone/core/level/dimension.h"
 #include "endstone/core/server.h"
 #include "endstone/level/dimension.h"
 
@@ -84,6 +87,23 @@ bool EndstoneChunk::addPluginChunkTicket(Plugin &plugin)
 bool EndstoneChunk::removePluginChunkTicket(Plugin &plugin)
 {
     return getDimension()->removePluginChunkTicket(x_, z_, plugin);
+}
+
+std::vector<NotNull<BlockState>> EndstoneChunk::getBlockActors() const
+{
+    const auto dimension = getDimension().cast<EndstoneDimension>();
+    const auto chunk = dimension->getHandle().getChunkSource().getExistingChunk(ChunkPos(x_, z_));
+    if (!chunk || chunk->getState() < ChunkState::Loaded) {
+        return {};
+    }
+    auto &block_source = dimension->getHandle().getBlockSourceFromMainChunkSource();
+    const auto min_height = block_source.getMinHeight();
+    std::vector<NotNull<BlockState>> block_actors;
+    for (const auto &pos : chunk->getBlockEntities() | std::views::keys) {
+        const BlockPos block_pos{(x_ << 4) + pos.x, min_height + pos.y.getVal(), (z_ << 4) + pos.z};
+        block_actors.push_back(EndstoneBlock::at(block_source, block_pos)->captureState());
+    }
+    return block_actors;
 }
 
 std::vector<Plugin *> EndstoneChunk::getPluginChunkTickets() const

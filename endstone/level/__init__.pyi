@@ -2,7 +2,7 @@ import typing
 
 from endstone import GameRule, Identifier, Player
 from endstone.actor import Actor, ActorType, Item, Mob
-from endstone.block import Block
+from endstone.block import Block, BlockState
 from endstone.inventory import ItemStack, Recipe
 from endstone.plugin import Plugin
 from endstone.util import Vector
@@ -672,6 +672,12 @@ class Chunk:
 
         Returns:
             ``True`` if a plugin ticket was removed, ``False`` if the plugin holds none for this chunk.
+        """
+
+    @property
+    def block_actors(self) -> list[BlockState]:
+        """
+        The state of every block actor in this chunk, or an empty list if this chunk is not loaded.
         """
 
     @property
