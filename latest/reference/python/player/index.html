@@ -1601,6 +1601,32 @@ For latest updates join the chat on
             
                 
                     <li class="md-nav__item">
+    <a href="#endstone.Player.open_sign" class="md-nav__link">
+      <span class="md-ellipsis">
+        <code class="doc-symbol doc-symbol-toc doc-symbol-method"></code>&nbsp;open_sign
+      </span>
+    </a>
+
+    <!-- Table of contents list -->
+    
+</li>
+                
+            
+                
+                    <li class="md-nav__item">
+    <a href="#endstone.Player.open_virtual_sign" class="md-nav__link">
+      <span class="md-ellipsis">
+        <code class="doc-symbol doc-symbol-toc doc-symbol-method"></code>&nbsp;open_virtual_sign
+      </span>
+    </a>
+
+    <!-- Table of contents list -->
+    
+</li>
+                
+            
+                
+                    <li class="md-nav__item">
     <a href="#endstone.Player.perform_command" class="md-nav__link">
       <span class="md-ellipsis">
         <code class="doc-symbol doc-symbol-toc doc-symbol-method"></code>&nbsp;perform_command
@@ -3814,6 +3840,32 @@ For latest updates join the chat on
             
                 
                     <li class="md-nav__item">
+    <a href="#endstone.Player.open_sign" class="md-nav__link">
+      <span class="md-ellipsis">
+        <code class="doc-symbol doc-symbol-toc doc-symbol-method"></code>&nbsp;open_sign
+      </span>
+    </a>
+
+    <!-- Table of contents list -->
+    
+</li>
+                
+            
+                
+                    <li class="md-nav__item">
+    <a href="#endstone.Player.open_virtual_sign" class="md-nav__link">
+      <span class="md-ellipsis">
+        <code class="doc-symbol doc-symbol-toc doc-symbol-method"></code>&nbsp;open_virtual_sign
+      </span>
+    </a>
+
+    <!-- Table of contents list -->
+    
+</li>
+                
+            
+                
+                    <li class="md-nav__item">
     <a href="#endstone.Player.perform_command" class="md-nav__link">
       <span class="md-ellipsis">
         <code class="doc-symbol doc-symbol-toc doc-symbol-method"></code>&nbsp;perform_command
@@ -4261,6 +4313,22 @@ For latest updates join the chat on
               <td>
                 <div class="doc-md-description">
                   <p>Kicks player with custom kick message.</p>
+                </div>
+              </td>
+            </tr>
+            <tr class="doc-section-item">
+              <td><code><a class="autorefs autorefs-internal" title="            open_sign (endstone.Player.open_sign)" href="#endstone.Player.open_sign">open_sign</a></code></td>
+              <td>
+                <div class="doc-md-description">
+                  <p>Opens a sign editor for this player.</p>
+                </div>
+              </td>
+            </tr>
+            <tr class="doc-section-item">
+              <td><code><a class="autorefs autorefs-internal" title="            open_virtual_sign (endstone.Player.open_virtual_sign)" href="#endstone.Player.open_virtual_sign">open_virtual_sign</a></code></td>
+              <td>
+                <div class="doc-md-description">
+                  <p>Opens a sign editor for this player at the given block location.</p>
                 </div>
               </td>
             </tr>
@@ -5688,6 +5756,167 @@ displayed to the client.</p>
             <td>
               <div class="doc-md-description">
                 <p>Kick message.</p>
+              </div>
+            </td>
+            <td>
+                <em>required</em>
+            </td>
+          </tr>
+      </tbody>
+    </table>
+
+
+    </div>
+
+</div>
+
+<div class="doc doc-object doc-function">
+
+
+<h3 id="endstone.Player.open_sign" class="doc doc-heading">
+<code class="doc-symbol doc-symbol-heading doc-symbol-method"></code>            <span class="doc doc-object-name doc-function-name">open_sign</span>
+
+
+<a href="#endstone.Player.open_sign" class="headerlink" title="Permanent link">&para;</a></h3>
+<div class="language-python doc-signature highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="nf">open_sign</span><span class="p">(</span><span class="n">sign</span><span class="p">:</span> <span class="n"><a class="autorefs autorefs-internal" title="            Sign (endstone.block.Sign)" href="../block/#endstone.block.Sign">Sign</a></span><span class="p">,</span> <span class="n">side</span><span class="p">:</span> <span class="n"><a class="autorefs autorefs-internal" title="            Side (endstone.block.Sign.Side)" href="../block/#endstone.block.Sign.Side">Side</a></span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span>
+</span></code></pre></div>
+
+    <div class="doc doc-contents ">
+
+        <p>Opens a sign editor for this player.</p>
+<p>The sign must be placed in the same dimension as this player.</p>
+
+
+<p><span class="doc-section-title">Parameters:</span></p>
+    <table>
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Type</th>
+          <th>Description</th>
+          <th>Default</th>
+        </tr>
+      </thead>
+      <tbody>
+          <tr class="doc-section-item">
+            <td>
+                <code>sign</code>
+            </td>
+            <td>
+                  <code><a class="autorefs autorefs-internal" title="            Sign (endstone.block.Sign)" href="../block/#endstone.block.Sign">Sign</a></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>The sign to open.</p>
+              </div>
+            </td>
+            <td>
+                <em>required</em>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td>
+                <code>side</code>
+            </td>
+            <td>
+                  <code><a class="autorefs autorefs-internal" title="            Side (endstone.block.Sign.Side)" href="../block/#endstone.block.Sign.Side">Side</a></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>The side of the sign to edit.</p>
+              </div>
+            </td>
+            <td>
+                <em>required</em>
+            </td>
+          </tr>
+      </tbody>
+    </table>
+
+
+<p><span class="doc-section-title">Raises:</span></p>
+    <table>
+      <thead>
+        <tr>
+          <th>Type</th>
+          <th>Description</th>
+        </tr>
+      </thead>
+      <tbody>
+          <tr class="doc-section-item">
+            <td>
+                  <code><a class="autorefs autorefs-external" href="https://docs.python.org/3/library/exceptions.html#ValueError">ValueError</a></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>If the sign is not placed or is in another dimension.</p>
+              </div>
+            </td>
+          </tr>
+      </tbody>
+    </table>
+
+
+    </div>
+
+</div>
+
+<div class="doc doc-object doc-function">
+
+
+<h3 id="endstone.Player.open_virtual_sign" class="doc doc-heading">
+<code class="doc-symbol doc-symbol-heading doc-symbol-method"></code>            <span class="doc doc-object-name doc-function-name">open_virtual_sign</span>
+
+
+<a href="#endstone.Player.open_virtual_sign" class="headerlink" title="Permanent link">&para;</a></h3>
+<div class="language-python doc-signature highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="nf">open_virtual_sign</span><span class="p">(</span><span class="n">location</span><span class="p">:</span> <span class="n"><a class="autorefs autorefs-internal" title="            Location (endstone.level.Location)" href="../level/#endstone.level.Location">Location</a></span><span class="p">,</span> <span class="n">side</span><span class="p">:</span> <span class="n"><a class="autorefs autorefs-internal" title="            Side (endstone.block.Sign.Side)" href="../block/#endstone.block.Sign.Side">Side</a></span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span>
+</span></code></pre></div>
+
+    <div class="doc doc-contents ">
+
+        <p>Opens a sign editor for this player at the given block location.</p>
+<p>No sign has to exist in the dimension: the caller is responsible for sending the client a sign block at that
+position first. Only the block coordinates of the location are used, the client may refuse a position that is
+too far away, and <code>PlayerOpenSignEvent</code> is not called.</p>
+
+
+<p><span class="doc-section-title">Parameters:</span></p>
+    <table>
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Type</th>
+          <th>Description</th>
+          <th>Default</th>
+        </tr>
+      </thead>
+      <tbody>
+          <tr class="doc-section-item">
+            <td>
+                <code>location</code>
+            </td>
+            <td>
+                  <code><a class="autorefs autorefs-internal" title="            Location (endstone.level.Location)" href="../level/#endstone.level.Location">Location</a></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>The block location of the sign.</p>
+              </div>
+            </td>
+            <td>
+                <em>required</em>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td>
+                <code>side</code>
+            </td>
+            <td>
+                  <code><a class="autorefs autorefs-internal" title="            Side (endstone.block.Sign.Side)" href="../block/#endstone.block.Sign.Side">Side</a></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>The side of the sign to edit.</p>
               </div>
             </td>
             <td>

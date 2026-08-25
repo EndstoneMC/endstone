@@ -32,6 +32,7 @@
 
 #include "endstone/ability.h"
 #include "endstone/actor/mob.h"
+#include "endstone/block/sign.h"
 #include "endstone/form/action_form.h"
 #include "endstone/form/message_form.h"
 #include "endstone/form/modal_form.h"
@@ -75,6 +76,10 @@ public:
     [[nodiscard]] virtual std::optional<Location> getRespawnLocation() const = 0;
 
     virtual void setRespawnLocation(std::optional<Location> location) = 0;
+
+    virtual void openSign(const Sign &sign, Sign::Side side) = 0;
+
+    virtual void openVirtualSign(const Location &location, Sign::Side side) = 0;
 
     [[nodiscard]] virtual bool isSneaking() const = 0;
 

@@ -179,6 +179,7 @@
     <innerclass refid="classendstone_1_1PlayerLevelChangeEvent" prot="public">endstone::PlayerLevelChangeEvent</innerclass>
     <innerclass refid="classendstone_1_1PlayerLoginEvent" prot="public">endstone::PlayerLoginEvent</innerclass>
     <innerclass refid="classendstone_1_1PlayerMoveEvent" prot="public">endstone::PlayerMoveEvent</innerclass>
+    <innerclass refid="classendstone_1_1PlayerOpenSignEvent" prot="public">endstone::PlayerOpenSignEvent</innerclass>
     <innerclass refid="classendstone_1_1PlayerPickupArrowEvent" prot="public">endstone::PlayerPickupArrowEvent</innerclass>
     <innerclass refid="classendstone_1_1PlayerPickupExperienceEvent" prot="public">endstone::PlayerPickupExperienceEvent</innerclass>
     <innerclass refid="classendstone_1_1PlayerPickupItemEvent" prot="public">endstone::PlayerPickupItemEvent</innerclass>

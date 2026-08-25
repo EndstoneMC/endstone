@@ -186,6 +186,8 @@ Inherits the following classes: [endstone::Mob](classendstone_1_1Mob.md)
 | virtual [**bool**](classendstone_1_1Identifier.md) | [**isSneaking**](#function-issneaking) () const = 0<br>_Returns if the player is in sneak mode._  |
 | virtual [**bool**](classendstone_1_1Identifier.md) | [**isSprinting**](#function-issprinting) () const = 0<br>_Gets whether the player is sprinting or not._  |
 | virtual [**void**](classendstone_1_1Identifier.md) | [**kick**](#function-kick) (std::string message) const = 0<br>_Kicks player with custom kick message._  |
+| virtual [**void**](classendstone_1_1Identifier.md) | [**openSign**](#function-opensign) ([**const**](classendstone_1_1Identifier.md) [**Sign**](classendstone_1_1Sign.md) & sign, [**Sign::Side**](classendstone_1_1Sign.md#enum-side) side) = 0<br>_Opens a sign editor for this player._  |
+| virtual [**void**](classendstone_1_1Identifier.md) | [**openVirtualSign**](#function-openvirtualsign) ([**const**](classendstone_1_1Identifier.md) [**Location**](classendstone_1_1Location.md) & location, [**Sign::Side**](classendstone_1_1Sign.md#enum-side) side) = 0<br>_Opens a sign editor for this player at the given block location._  |
 | virtual [**bool**](classendstone_1_1Identifier.md) | [**performCommand**](#function-performcommand) (std::string command) const = 0<br>_Makes the player perform the given command._  |
 | virtual [**void**](classendstone_1_1Identifier.md) | [**playSound**](#function-playsound) ([**Location**](classendstone_1_1Location.md) location, std::string sound, [**float**](classendstone_1_1Identifier.md) volume, [**float**](classendstone_1_1Identifier.md) pitch) = 0<br>_Play a sound for a player at the location._  |
 | virtual [**void**](classendstone_1_1Identifier.md) | [**resetTitle**](#function-resettitle) () const = 0<br>_Resets the title displayed to the player._  |
@@ -1358,6 +1360,77 @@ virtual void endstone::Player::kick (
 
 
 * `message` kick message 
+
+
+
+
+        
+
+<hr>
+
+
+
+### function openSign 
+
+_Opens a sign editor for this player._ 
+```C++
+virtual void endstone::Player::openSign (
+    const  Sign & sign,
+    Sign::Side side
+) = 0
+```
+
+
+
+The sign must be placed in the same dimension as this player.
+
+
+
+
+**Parameters:**
+
+
+* `sign` the sign to open 
+* `side` the side of the sign to edit 
+
+
+
+**Exception:**
+
+
+* `std::invalid_argument` if the sign is not placed or is in another dimension 
+
+
+
+
+        
+
+<hr>
+
+
+
+### function openVirtualSign 
+
+_Opens a sign editor for this player at the given block location._ 
+```C++
+virtual void endstone::Player::openVirtualSign (
+    const  Location & location,
+    Sign::Side side
+) = 0
+```
+
+
+
+No sign has to exist in the dimension: the caller is responsible for sending the client a sign block at that position first. Only the block coordinates of the location are used, the client may refuse a position that is too far away, and [**PlayerOpenSignEvent**](classendstone_1_1PlayerOpenSignEvent.md) is not called.
+
+
+
+
+**Parameters:**
+
+
+* `location` the block location of the sign 
+* `side` the side of the sign to edit 
 
 
 

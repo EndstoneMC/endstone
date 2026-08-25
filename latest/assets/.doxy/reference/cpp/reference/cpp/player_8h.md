@@ -17,6 +17,7 @@
 * `#include <variant>`
 * `#include "endstone/ability.h"`
 * `#include "endstone/actor/mob.h"`
+* `#include "endstone/block/sign.h"`
 * `#include "endstone/form/action_form.h"`
 * `#include "endstone/form/message_form.h"`
 * `#include "endstone/form/modal_form.h"`

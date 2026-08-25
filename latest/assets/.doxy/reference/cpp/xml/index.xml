@@ -2144,6 +2144,8 @@
     <member refid="classendstone_1_1Player_1a9484ec57ceb309acfcfe4b2d61026f56" kind="function"><name>performCommand</name></member>
     <member refid="classendstone_1_1Player_1afca7774ebf09e8f3f77f0e1dc7b298ec" kind="function"><name>getRespawnLocation</name></member>
     <member refid="classendstone_1_1Player_1a5bffefb78ba5e5dea934c249a4d30229" kind="function"><name>setRespawnLocation</name></member>
+    <member refid="classendstone_1_1Player_1a04102bec12318de7017d82b071b5c720" kind="function"><name>openSign</name></member>
+    <member refid="classendstone_1_1Player_1a4cbda506defbb7b789363d4fcd68d873" kind="function"><name>openVirtualSign</name></member>
     <member refid="classendstone_1_1Player_1a5cdb79fdd152c6c6ed8f251bd1e31523" kind="function"><name>isSneaking</name></member>
     <member refid="classendstone_1_1Player_1a23622b02f067bad332947a0b9459fd0a" kind="function"><name>setSneaking</name></member>
     <member refid="classendstone_1_1Player_1abb2a1b9ae99b24fc1e80ed5f73d55646" kind="function"><name>isSprinting</name></member>
@@ -2472,6 +2474,21 @@
     <member refid="classendstone_1_1PlayerMoveEvent_1a58170572971794cd9e8fff214a2cd0cc" kind="function"><name>setFrom</name></member>
     <member refid="classendstone_1_1PlayerMoveEvent_1a4b864f9dd1062d0f2ab64af81b20513e" kind="function"><name>getTo</name></member>
     <member refid="classendstone_1_1PlayerMoveEvent_1a98f462d71a7ea0f3f0fc42203fb91a2d" kind="function"><name>setTo</name></member>
+  </compound>
+  <compound refid="classendstone_1_1PlayerOpenSignEvent" kind="class"><name>endstone::PlayerOpenSignEvent</name>
+    <member refid="classendstone_1_1PlayerOpenSignEvent_1af356874cda2603d7f58cc92b7095714b" kind="enum"><name>Cause</name></member>
+    <member refid="classendstone_1_1PlayerOpenSignEvent_1af356874cda2603d7f58cc92b7095714ba7b9cf007806ed854cd12ab800c8a982b" kind="enumvalue"><name>Place</name></member>
+    <member refid="classendstone_1_1PlayerOpenSignEvent_1af356874cda2603d7f58cc92b7095714baefbc873e4634f3db63d62377d36e5f56" kind="enumvalue"><name>Interact</name></member>
+    <member refid="classendstone_1_1PlayerOpenSignEvent_1af356874cda2603d7f58cc92b7095714ba409c1892b68cb394799262ac57f6d4f1" kind="enumvalue"><name>Plugin</name></member>
+    <member refid="classendstone_1_1PlayerOpenSignEvent_1af356874cda2603d7f58cc92b7095714ba88183b946cc5f0e8c96b2e66e1c74a7e" kind="enumvalue"><name>Unknown</name></member>
+    <member refid="classendstone_1_1PlayerOpenSignEvent_1a9af5df561187c21df9dc1c9925db123e" kind="variable"><name>sign_</name></member>
+    <member refid="classendstone_1_1PlayerOpenSignEvent_1a9b30e1439a613124c7104e99108eee1e" kind="variable"><name>side_</name></member>
+    <member refid="classendstone_1_1PlayerOpenSignEvent_1adf0becfca490bad9d549d5caec113e06" kind="variable"><name>cause_</name></member>
+    <member refid="classendstone_1_1PlayerOpenSignEvent_1aff3e0b1fa740edf46779b141e0882fe1" kind="function"><name>ENDSTONE_EVENT</name></member>
+    <member refid="classendstone_1_1PlayerOpenSignEvent_1abb03f096caed73d299d6defbd62434b7" kind="function"><name>PlayerOpenSignEvent</name></member>
+    <member refid="classendstone_1_1PlayerOpenSignEvent_1abc854463cf9dcaee8d5384191be6a19a" kind="function"><name>getSign</name></member>
+    <member refid="classendstone_1_1PlayerOpenSignEvent_1ae6f257c6cb7b03848e2a68dfd6f40edd" kind="function"><name>getSide</name></member>
+    <member refid="classendstone_1_1PlayerOpenSignEvent_1a13ad6028f51cf29ca984e40049bd50d8" kind="function"><name>getCause</name></member>
   </compound>
   <compound refid="classendstone_1_1PlayerPickupArrowEvent" kind="class"><name>endstone::PlayerPickupArrowEvent</name>
     <member refid="classendstone_1_1PlayerPickupArrowEvent_1ae064a1102fac4f0efa0d258b551e4683" kind="variable"><name>arrow_</name></member>
@@ -3761,6 +3778,8 @@
   <compound refid="player__login__event_8h" kind="file"><name>player_login_event.h</name>
   </compound>
   <compound refid="player__move__event_8h" kind="file"><name>player_move_event.h</name>
+  </compound>
+  <compound refid="player__open__sign__event_8h" kind="file"><name>player_open_sign_event.h</name>
   </compound>
   <compound refid="player__pickup__arrow__event_8h" kind="file"><name>player_pickup_arrow_event.h</name>
   </compound>

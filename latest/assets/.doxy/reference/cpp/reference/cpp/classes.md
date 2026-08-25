@@ -496,6 +496,8 @@
 ([**endstone**](namespaceendstone.md))
 * [**PlayerMoveEvent**](classendstone_1_1PlayerMoveEvent.md)
 ([**endstone**](namespaceendstone.md))
+* [**PlayerOpenSignEvent**](classendstone_1_1PlayerOpenSignEvent.md)
+([**endstone**](namespaceendstone.md))
 * [**PlayerPickupArrowEvent**](classendstone_1_1PlayerPickupArrowEvent.md)
 ([**endstone**](namespaceendstone.md))
 * [**PlayerPickupExperienceEvent**](classendstone_1_1PlayerPickupExperienceEvent.md)

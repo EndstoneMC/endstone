@@ -213,6 +213,7 @@ _Represents a button with text and an optional icon._
 | class | [**PlayerLevelChangeEvent**](classendstone_1_1PlayerLevelChangeEvent.md) <br>_Called when a player's level changes._  |
 | class | [**PlayerLoginEvent**](classendstone_1_1PlayerLoginEvent.md) <br>_Called when a player attempts to login in._  |
 | class | [**PlayerMoveEvent**](classendstone_1_1PlayerMoveEvent.md) <br>_Called when a player moves._  |
+| class | [**PlayerOpenSignEvent**](classendstone_1_1PlayerOpenSignEvent.md) <br>_Called when a player begins editing a sign's text._  |
 | class | [**PlayerPickupArrowEvent**](classendstone_1_1PlayerPickupArrowEvent.md) <br>_Called when a player picks up an arrow or a thrown trident from the ground._  |
 | class | [**PlayerPickupExperienceEvent**](classendstone_1_1PlayerPickupExperienceEvent.md) <br>_Called when a player picks up an experience orb._  |
 | class | [**PlayerPickupItemEvent**](classendstone_1_1PlayerPickupItemEvent.md) <br>_Called when a player picks an item up from the ground._  |

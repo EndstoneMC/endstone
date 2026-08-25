@@ -261,21 +261,21 @@
         </childnode>
         <childnode refid="65" relation="include">
         </childnode>
-        <childnode refid="6" relation="include">
-        </childnode>
         <childnode refid="66" relation="include">
+        </childnode>
+        <childnode refid="6" relation="include">
         </childnode>
         <childnode refid="67" relation="include">
         </childnode>
         <childnode refid="68" relation="include">
         </childnode>
-        <childnode refid="28" relation="include">
-        </childnode>
         <childnode refid="69" relation="include">
         </childnode>
-        <childnode refid="29" relation="include">
+        <childnode refid="28" relation="include">
         </childnode>
         <childnode refid="70" relation="include">
+        </childnode>
+        <childnode refid="29" relation="include">
         </childnode>
         <childnode refid="71" relation="include">
         </childnode>
@@ -284,6 +284,8 @@
         <childnode refid="73" relation="include">
         </childnode>
         <childnode refid="74" relation="include">
+        </childnode>
+        <childnode refid="75" relation="include">
         </childnode>
       </node>
       <node id="51">
@@ -345,10 +347,14 @@
         </childnode>
       </node>
       <node id="64">
+        <label>include/endstone/event/player/player_open_sign_event.h</label>
+        <link refid="player__open__sign__event_8h_source"/>
+      </node>
+      <node id="65">
         <label>include/endstone/event/player/player_pickup_arrow_event.h</label>
         <link refid="player__pickup__arrow__event_8h_source"/>
       </node>
-      <node id="65">
+      <node id="66">
         <label>include/endstone/event/player/player_pickup_experience_event.h</label>
         <link refid="player__pickup__experience__event_8h_source"/>
       </node>
@@ -360,15 +366,15 @@
         <label>include/endstone/event/player/player_portal_event.h</label>
         <link refid="player__portal__event_8h_source"/>
       </node>
-      <node id="66">
+      <node id="67">
         <label>include/endstone/event/player/player_quit_event.h</label>
         <link refid="player__quit__event_8h_source"/>
       </node>
-      <node id="67">
+      <node id="68">
         <label>include/endstone/event/player/player_recipe_book_settings_change_event.h</label>
         <link refid="player__recipe__book__settings__change__event_8h_source"/>
       </node>
-      <node id="68">
+      <node id="69">
         <label>include/endstone/event/player/player_respawn_event.h</label>
         <link refid="player__respawn__event_8h_source"/>
       </node>
@@ -376,7 +382,7 @@
         <label>include/endstone/event/player/player_riptide_event.h</label>
         <link refid="player__riptide__event_8h_source"/>
       </node>
-      <node id="69">
+      <node id="70">
         <label>include/endstone/event/player/player_set_spawn_event.h</label>
         <link refid="player__set__spawn__event_8h_source"/>
       </node>
@@ -384,7 +390,7 @@
         <label>include/endstone/event/player/player_shear_actor_event.h</label>
         <link refid="player__shear__actor__event_8h_source"/>
       </node>
-      <node id="70">
+      <node id="71">
         <label>include/endstone/event/player/player_skin_change_event.h</label>
         <link refid="player__skin__change__event_8h_source"/>
       </node>
@@ -394,19 +400,19 @@
         <childnode refid="63" relation="include">
         </childnode>
       </node>
-      <node id="71">
+      <node id="72">
         <label>include/endstone/event/player/player_toggle_crawl_event.h</label>
         <link refid="player__toggle__crawl__event_8h_source"/>
       </node>
-      <node id="72">
+      <node id="73">
         <label>include/endstone/event/player/player_toggle_flight_event.h</label>
         <link refid="player__toggle__flight__event_8h_source"/>
       </node>
-      <node id="73">
+      <node id="74">
         <label>include/endstone/event/player/player_toggle_sneak_event.h</label>
         <link refid="player__toggle__sneak__event_8h_source"/>
       </node>
-      <node id="74">
+      <node id="75">
         <label>include/endstone/event/player/player_toggle_sprint_event.h</label>
         <link refid="player__toggle__sprint__event_8h_source"/>
       </node>
@@ -426,11 +432,11 @@
         <childnode refid="17" relation="include">
         </childnode>
       </node>
-      <node id="83">
+      <node id="84">
         <label>include/endstone/inventory/complex_alias_ingredient.h</label>
         <link refid="complex__alias__ingredient_8h_source"/>
       </node>
-      <node id="76">
+      <node id="77">
         <label>include/endstone/inventory/complex_recipe.h</label>
         <link refid="complex__recipe_8h_source"/>
       </node>
@@ -481,22 +487,22 @@
         </childnode>
         <childnode refid="31" relation="include">
         </childnode>
-        <childnode refid="75" relation="include">
+        <childnode refid="76" relation="include">
         </childnode>
-        <childnode refid="82" relation="include">
+        <childnode refid="83" relation="include">
         </childnode>
         <childnode refid="7" relation="include">
         </childnode>
       </node>
-      <node id="84">
+      <node id="85">
         <label>include/endstone/inventory/item_tag_ingredient.h</label>
         <link refid="item__tag__ingredient_8h_source"/>
       </node>
-      <node id="85">
+      <node id="86">
         <label>include/endstone/inventory/item_type_ingredient.h</label>
         <link refid="item__type__ingredient_8h_source"/>
       </node>
-      <node id="86">
+      <node id="87">
         <label>include/endstone/inventory/molang_ingredient.h</label>
         <link refid="molang__ingredient_8h_source"/>
       </node>
@@ -506,12 +512,10 @@
         <childnode refid="40" relation="include">
         </childnode>
       </node>
-      <node id="75">
+      <node id="76">
         <label>include/endstone/inventory/recipe.h</label>
         <link refid="recipe_8h_source"/>
         <childnode refid="24" relation="include">
-        </childnode>
-        <childnode refid="76" relation="include">
         </childnode>
         <childnode refid="77" relation="include">
         </childnode>
@@ -519,46 +523,48 @@
         </childnode>
         <childnode refid="79" relation="include">
         </childnode>
+        <childnode refid="80" relation="include">
+        </childnode>
         <childnode refid="13" relation="include">
         </childnode>
       </node>
-      <node id="82">
+      <node id="83">
         <label>include/endstone/inventory/recipe_ingredient.h</label>
         <link refid="recipe__ingredient_8h_source"/>
-        <childnode refid="83" relation="include">
+        <childnode refid="84" relation="include">
         </childnode>
         <childnode refid="30" relation="include">
-        </childnode>
-        <childnode refid="84" relation="include">
         </childnode>
         <childnode refid="85" relation="include">
         </childnode>
         <childnode refid="86" relation="include">
         </childnode>
-        <childnode refid="75" relation="include">
+        <childnode refid="87" relation="include">
+        </childnode>
+        <childnode refid="76" relation="include">
         </childnode>
       </node>
-      <node id="77">
+      <node id="78">
         <label>include/endstone/inventory/shaped_recipe.h</label>
         <link refid="shaped__recipe_8h_source"/>
       </node>
-      <node id="78">
+      <node id="79">
         <label>include/endstone/inventory/shapeless_recipe.h</label>
         <link refid="shapeless__recipe_8h_source"/>
       </node>
-      <node id="79">
+      <node id="80">
         <label>include/endstone/inventory/smithing_recipe.h</label>
         <link refid="smithing__recipe_8h_source"/>
-        <childnode refid="80" relation="include">
-        </childnode>
         <childnode refid="81" relation="include">
         </childnode>
+        <childnode refid="82" relation="include">
+        </childnode>
       </node>
-      <node id="80">
+      <node id="81">
         <label>include/endstone/inventory/smithing_transform_recipe.h</label>
         <link refid="smithing__transform__recipe_8h_source"/>
       </node>
-      <node id="81">
+      <node id="82">
         <label>include/endstone/inventory/smithing_trim_recipe.h</label>
         <link refid="smithing__trim__recipe_8h_source"/>
       </node>
@@ -584,7 +590,7 @@
         <childnode refid="2" relation="include">
         </childnode>
       </node>
-      <node id="87">
+      <node id="88">
         <label>include/endstone/nbt/io.h</label>
         <link refid="io_8h_source"/>
         <childnode refid="2" relation="include">
@@ -595,7 +601,7 @@
         <link refid="tag_8h_source"/>
         <childnode refid="3" relation="include">
         </childnode>
-        <childnode refid="87" relation="include">
+        <childnode refid="88" relation="include">
         </childnode>
       </node>
       <node id="40">

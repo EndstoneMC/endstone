@@ -142,6 +142,7 @@ Here is a list of all files with brief descriptions:
                 * **file** [**player\_level\_change\_event.h**](player__level__change__event_8h.md)     
                 * **file** [**player\_login\_event.h**](player__login__event_8h.md)     
                 * **file** [**player\_move\_event.h**](player__move__event_8h.md)     
+                * **file** [**player\_open\_sign\_event.h**](player__open__sign__event_8h.md)     
                 * **file** [**player\_pickup\_arrow\_event.h**](player__pickup__arrow__event_8h.md)     
                 * **file** [**player\_pickup\_experience\_event.h**](player__pickup__experience__event_8h.md)     
                 * **file** [**player\_pickup\_item\_event.h**](player__pickup__item__event_8h.md)     

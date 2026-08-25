@@ -1,0 +1,303 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.8" xml:lang="en-US">
+  <compounddef id="classendstone_1_1PlayerOpenSignEvent" kind="class" language="C++" prot="public" final="yes">
+    <compoundname>endstone::PlayerOpenSignEvent</compoundname>
+    <basecompoundref refid="classendstone_1_1Cancellable" prot="public" virt="non-virtual">endstone::Cancellable&lt; PlayerEvent &gt;</basecompoundref>
+    <includes refid="player__open__sign__event_8h" local="no">endstone/event/player/player_open_sign_event.h</includes>
+    <sectiondef kind="public-type">
+      <memberdef kind="enum" id="classendstone_1_1PlayerOpenSignEvent_1af356874cda2603d7f58cc92b7095714b" prot="public" static="no" strong="yes">
+        <type></type>
+        <name>Cause</name>
+        <qualifiedname>endstone::PlayerOpenSignEvent::Cause</qualifiedname>
+        <enumvalue id="classendstone_1_1PlayerOpenSignEvent_1af356874cda2603d7f58cc92b7095714ba7b9cf007806ed854cd12ab800c8a982b" prot="public">
+          <name>Place</name>
+          <briefdescription>
+<para>The event was triggered by the placement of a sign. </para>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="classendstone_1_1PlayerOpenSignEvent_1af356874cda2603d7f58cc92b7095714baefbc873e4634f3db63d62377d36e5f56" prot="public">
+          <name>Interact</name>
+          <briefdescription>
+<para>The event was triggered by an interaction with a sign. </para>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="classendstone_1_1PlayerOpenSignEvent_1af356874cda2603d7f58cc92b7095714ba409c1892b68cb394799262ac57f6d4f1" prot="public">
+          <name>Plugin</name>
+          <briefdescription>
+<para>The event was triggered via a plugin with <ref refid="classendstone_1_1Player_1a04102bec12318de7017d82b071b5c720" kindref="member">Player::openSign()</ref>. </para>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="classendstone_1_1PlayerOpenSignEvent_1af356874cda2603d7f58cc92b7095714ba88183b946cc5f0e8c96b2e66e1c74a7e" prot="public">
+          <name>Unknown</name>
+          <briefdescription>
+<para>Fallback cause for any unknown cause. </para>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <briefdescription>
+<para>Represents the cause of the sign opening. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/event/player/player_open_sign_event.h" line="35" column="5" bodyfile="include/endstone/event/player/player_open_sign_event.h" bodystart="35" bodyend="44"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="private-attrib">
+      <memberdef kind="variable" id="classendstone_1_1PlayerOpenSignEvent_1a9af5df561187c21df9dc1c9925db123e" prot="private" static="no" mutable="no">
+        <type><ref refid="classendstone_1_1NotNull" kindref="compound">NotNull</ref>&lt; <ref refid="classendstone_1_1Sign" kindref="compound">Sign</ref> &gt;</type>
+        <definition>NotNull&lt;Sign&gt; endstone::PlayerOpenSignEvent::sign_</definition>
+        <argsstring></argsstring>
+        <name>sign_</name>
+        <qualifiedname>endstone::PlayerOpenSignEvent::sign_</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/event/player/player_open_sign_event.h" line="73" column="13" bodyfile="include/endstone/event/player/player_open_sign_event.h" bodystart="73" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classendstone_1_1PlayerOpenSignEvent_1a9b30e1439a613124c7104e99108eee1e" prot="private" static="no" mutable="no">
+        <type><ref refid="classendstone_1_1Sign_1a929cbf8d4588c069d839517313ed3afa" kindref="member">Sign::Side</ref></type>
+        <definition>Sign::Side endstone::PlayerOpenSignEvent::side_</definition>
+        <argsstring></argsstring>
+        <name>side_</name>
+        <qualifiedname>endstone::PlayerOpenSignEvent::side_</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/event/player/player_open_sign_event.h" line="74" column="16" bodyfile="include/endstone/event/player/player_open_sign_event.h" bodystart="74" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classendstone_1_1PlayerOpenSignEvent_1adf0becfca490bad9d549d5caec113e06" prot="private" static="no" mutable="no">
+        <type><ref refid="classendstone_1_1PlayerOpenSignEvent_1af356874cda2603d7f58cc92b7095714b" kindref="member">Cause</ref></type>
+        <definition>Cause endstone::PlayerOpenSignEvent::cause_</definition>
+        <argsstring></argsstring>
+        <name>cause_</name>
+        <qualifiedname>endstone::PlayerOpenSignEvent::cause_</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/event/player/player_open_sign_event.h" line="75" column="11" bodyfile="include/endstone/event/player/player_open_sign_event.h" bodystart="75" bodyend="-1"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="public-func">
+      <memberdef kind="function" id="classendstone_1_1PlayerOpenSignEvent_1aff3e0b1fa740edf46779b141e0882fe1" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>endstone::PlayerOpenSignEvent::ENDSTONE_EVENT</definition>
+        <argsstring>(PlayerOpenSignEvent)</argsstring>
+        <name>ENDSTONE_EVENT</name>
+        <qualifiedname>endstone::PlayerOpenSignEvent::ENDSTONE_EVENT</qualifiedname>
+        <param>
+          <type><ref refid="classendstone_1_1PlayerOpenSignEvent" kindref="compound">PlayerOpenSignEvent</ref></type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/event/player/player_open_sign_event.h" line="30" column="5"/>
+      </memberdef>
+      <memberdef kind="function" id="classendstone_1_1PlayerOpenSignEvent_1abb03f096caed73d299d6defbd62434b7" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type></type>
+        <definition>endstone::PlayerOpenSignEvent::PlayerOpenSignEvent</definition>
+        <argsstring>(const NotNull&lt; Player &gt; &amp;player, const NotNull&lt; Sign &gt; &amp;sign, Sign::Side side, Cause cause)</argsstring>
+        <name>PlayerOpenSignEvent</name>
+        <qualifiedname>endstone::PlayerOpenSignEvent::PlayerOpenSignEvent</qualifiedname>
+        <param>
+          <type><ref refid="classendstone_1_1Identifier" kindref="compound">const</ref> <ref refid="classendstone_1_1NotNull" kindref="compound">NotNull</ref>&lt; <ref refid="classendstone_1_1Player" kindref="compound">Player</ref> &gt; &amp;</type>
+          <declname>player</declname>
+        </param>
+        <param>
+          <type><ref refid="classendstone_1_1Identifier" kindref="compound">const</ref> <ref refid="classendstone_1_1NotNull" kindref="compound">NotNull</ref>&lt; <ref refid="classendstone_1_1Sign" kindref="compound">Sign</ref> &gt; &amp;</type>
+          <declname>sign</declname>
+        </param>
+        <param>
+          <type><ref refid="classendstone_1_1Sign_1a929cbf8d4588c069d839517313ed3afa" kindref="member">Sign::Side</ref></type>
+          <declname>side</declname>
+        </param>
+        <param>
+          <type><ref refid="classendstone_1_1PlayerOpenSignEvent_1af356874cda2603d7f58cc92b7095714b" kindref="member">Cause</ref></type>
+          <declname>cause</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/event/player/player_open_sign_event.h" line="46" column="5" bodyfile="include/endstone/event/player/player_open_sign_event.h" bodystart="46" bodyend="49"/>
+      </memberdef>
+      <memberdef kind="function" id="classendstone_1_1PlayerOpenSignEvent_1abc854463cf9dcaee8d5384191be6a19a" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type><ref refid="classendstone_1_1Identifier" kindref="compound">const</ref> <ref refid="classendstone_1_1NotNull" kindref="compound">NotNull</ref>&lt; <ref refid="classendstone_1_1Sign" kindref="compound">Sign</ref> &gt; &amp;</type>
+        <definition>const NotNull&lt; Sign &gt; &amp; endstone::PlayerOpenSignEvent::getSign</definition>
+        <argsstring>() const</argsstring>
+        <name>getSign</name>
+        <qualifiedname>endstone::PlayerOpenSignEvent::getSign</qualifiedname>
+        <briefdescription>
+<para>Gets a captured state of the sign involved in this event. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="return"><para>the sign being opened </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/event/player/player_open_sign_event.h" line="56" column="20" bodyfile="include/endstone/event/player/player_open_sign_event.h" bodystart="56" bodyend="56"/>
+      </memberdef>
+      <memberdef kind="function" id="classendstone_1_1PlayerOpenSignEvent_1ae6f257c6cb7b03848e2a68dfd6f40edd" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type><ref refid="classendstone_1_1Sign_1a929cbf8d4588c069d839517313ed3afa" kindref="member">Sign::Side</ref></type>
+        <definition>Sign::Side endstone::PlayerOpenSignEvent::getSide</definition>
+        <argsstring>() const</argsstring>
+        <name>getSide</name>
+        <qualifiedname>endstone::PlayerOpenSignEvent::getSide</qualifiedname>
+        <briefdescription>
+<para>Gets the side of the sign being opened. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="return"><para>the sign side being opened </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/event/player/player_open_sign_event.h" line="63" column="17" bodyfile="include/endstone/event/player/player_open_sign_event.h" bodystart="63" bodyend="63"/>
+      </memberdef>
+      <memberdef kind="function" id="classendstone_1_1PlayerOpenSignEvent_1a13ad6028f51cf29ca984e40049bd50d8" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type><ref refid="classendstone_1_1PlayerOpenSignEvent_1af356874cda2603d7f58cc92b7095714b" kindref="member">Cause</ref></type>
+        <definition>Cause endstone::PlayerOpenSignEvent::getCause</definition>
+        <argsstring>() const</argsstring>
+        <name>getCause</name>
+        <qualifiedname>endstone::PlayerOpenSignEvent::getCause</qualifiedname>
+        <briefdescription>
+<para>Gets the cause of the sign opening. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="return"><para>the sign opening cause </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/event/player/player_open_sign_event.h" line="70" column="12" bodyfile="include/endstone/event/player/player_open_sign_event.h" bodystart="70" bodyend="70"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+<para>Called when a player begins editing a sign&apos;s text. </para>
+    </briefdescription>
+    <detaileddescription>
+<para>Cancelling this event stops the sign editing menu from opening. </para>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="2">
+        <label>endstone::Cancellable&lt; PlayerEvent &gt;</label>
+        <link refid="classendstone_1_1Cancellable"/>
+        <childnode refid="3" relation="public-inheritance">
+        </childnode>
+        <childnode refid="5" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="4">
+        <label>endstone::Event</label>
+        <link refid="classendstone_1_1Event"/>
+      </node>
+      <node id="5">
+        <label>endstone::ICancellable</label>
+        <link refid="classendstone_1_1ICancellable"/>
+      </node>
+      <node id="3">
+        <label>endstone::PlayerEvent</label>
+        <link refid="classendstone_1_1PlayerEvent"/>
+        <childnode refid="4" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="1">
+        <label>endstone::PlayerOpenSignEvent</label>
+        <link refid="classendstone_1_1PlayerOpenSignEvent"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="2">
+        <label>endstone::Cancellable&lt; PlayerEvent &gt;</label>
+        <link refid="classendstone_1_1Cancellable"/>
+        <childnode refid="3" relation="public-inheritance">
+        </childnode>
+        <childnode refid="6" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="5">
+        <label>endstone::NotNull&lt; endstone::Player &gt;</label>
+        <link refid="classendstone_1_1NotNull"/>
+      </node>
+      <node id="4">
+        <label>endstone::Event</label>
+        <link refid="classendstone_1_1Event"/>
+      </node>
+      <node id="6">
+        <label>endstone::ICancellable</label>
+        <link refid="classendstone_1_1ICancellable"/>
+      </node>
+      <node id="3">
+        <label>endstone::PlayerEvent</label>
+        <link refid="classendstone_1_1PlayerEvent"/>
+        <childnode refid="4" relation="public-inheritance">
+        </childnode>
+        <childnode refid="5" relation="usage">
+          <edgelabel>player_</edgelabel>
+        </childnode>
+      </node>
+      <node id="1">
+        <label>endstone::PlayerOpenSignEvent</label>
+        <link refid="classendstone_1_1PlayerOpenSignEvent"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+    </collaborationgraph>
+    <location file="include/endstone/event/player/player_open_sign_event.h" line="28" column="1" bodyfile="include/endstone/event/player/player_open_sign_event.h" bodystart="28" bodyend="76"/>
+    <listofallmembers>
+      <member refid="classendstone_1_1Cancellable_1a3512b47db69c6001f5c0450051308327" prot="public" virt="virtual"><scope>endstone::PlayerOpenSignEvent</scope><name>cancel</name></member>
+      <member refid="classendstone_1_1PlayerOpenSignEvent_1af356874cda2603d7f58cc92b7095714b" prot="public" virt="non-virtual"><scope>endstone::PlayerOpenSignEvent</scope><name>Cause</name></member>
+      <member refid="classendstone_1_1PlayerOpenSignEvent_1adf0becfca490bad9d549d5caec113e06" prot="private" virt="non-virtual"><scope>endstone::PlayerOpenSignEvent</scope><name>cause_</name></member>
+      <member refid="classendstone_1_1PlayerOpenSignEvent_1aff3e0b1fa740edf46779b141e0882fe1" prot="public" virt="non-virtual"><scope>endstone::PlayerOpenSignEvent</scope><name>ENDSTONE_EVENT</name></member>
+      <member refid="classendstone_1_1Event_1a28cca8d74920493b449d035540acf023" prot="public" virt="non-virtual"><scope>endstone::PlayerOpenSignEvent</scope><name>Event</name></member>
+      <member refid="classendstone_1_1Event_1a7199136ebb40e1441bc61e29f83c3cad" prot="public" virt="non-virtual"><scope>endstone::PlayerOpenSignEvent</scope><name>Event</name></member>
+      <member refid="classendstone_1_1Event_1ad20bafd16e0671578e37390b95e5104c" prot="public" virt="non-virtual"><scope>endstone::PlayerOpenSignEvent</scope><name>Event</name></member>
+      <member refid="classendstone_1_1PlayerOpenSignEvent_1a13ad6028f51cf29ca984e40049bd50d8" prot="public" virt="non-virtual"><scope>endstone::PlayerOpenSignEvent</scope><name>getCause</name></member>
+      <member refid="classendstone_1_1Event_1a826fe74f9c4195a36a364b9aeeb321bb" prot="public" virt="pure-virtual"><scope>endstone::PlayerOpenSignEvent</scope><name>getEventName</name></member>
+      <member refid="classendstone_1_1PlayerEvent_1abad8f8bca3e2be851c4b37075adf2cbc" prot="public" virt="non-virtual"><scope>endstone::PlayerOpenSignEvent</scope><name>getPlayer</name></member>
+      <member refid="classendstone_1_1PlayerOpenSignEvent_1ae6f257c6cb7b03848e2a68dfd6f40edd" prot="public" virt="non-virtual"><scope>endstone::PlayerOpenSignEvent</scope><name>getSide</name></member>
+      <member refid="classendstone_1_1PlayerOpenSignEvent_1abc854463cf9dcaee8d5384191be6a19a" prot="public" virt="non-virtual"><scope>endstone::PlayerOpenSignEvent</scope><name>getSign</name></member>
+      <member refid="classendstone_1_1Event_1ae89b54f63dc32b0c8797a59db69b6931" prot="public" virt="non-virtual"><scope>endstone::PlayerOpenSignEvent</scope><name>isAsynchronous</name></member>
+      <member refid="classendstone_1_1Cancellable_1a268b73cc5bda0fa5923336d031814faa" prot="public" virt="virtual"><scope>endstone::PlayerOpenSignEvent</scope><name>isCancelled</name></member>
+      <member refid="classendstone_1_1Event_1a44a4ff424a8b690c01a2afe10ae68d8f" prot="public" virt="non-virtual"><scope>endstone::PlayerOpenSignEvent</scope><name>operator=</name></member>
+      <member refid="classendstone_1_1Event_1a1d7fc5400782d20be99a3636aa7f53b9" prot="public" virt="non-virtual"><scope>endstone::PlayerOpenSignEvent</scope><name>operator=</name></member>
+      <member refid="classendstone_1_1PlayerEvent_1ae0f8240e8c7c3a66281295c43b1d522a" prot="protected" virt="non-virtual"><scope>endstone::PlayerOpenSignEvent</scope><name>player_</name></member>
+      <member refid="classendstone_1_1PlayerEvent_1afee42449de6752241c5472a38f7d94a9" prot="public" virt="non-virtual"><scope>endstone::PlayerOpenSignEvent</scope><name>PlayerEvent</name></member>
+      <member refid="classendstone_1_1PlayerOpenSignEvent_1abb03f096caed73d299d6defbd62434b7" prot="public" virt="non-virtual"><scope>endstone::PlayerOpenSignEvent</scope><name>PlayerOpenSignEvent</name></member>
+      <member refid="classendstone_1_1Cancellable_1aa12df44bcb66924d06a689d0dd07865e" prot="public" virt="virtual"><scope>endstone::PlayerOpenSignEvent</scope><name>setCancelled</name></member>
+      <member refid="classendstone_1_1PlayerOpenSignEvent_1a9b30e1439a613124c7104e99108eee1e" prot="private" virt="non-virtual"><scope>endstone::PlayerOpenSignEvent</scope><name>side_</name></member>
+      <member refid="classendstone_1_1PlayerOpenSignEvent_1a9af5df561187c21df9dc1c9925db123e" prot="private" virt="non-virtual"><scope>endstone::PlayerOpenSignEvent</scope><name>sign_</name></member>
+      <member refid="classendstone_1_1Event_1a6aeaa8096baba90f8ace94106e0e05f3" prot="public" virt="virtual"><scope>endstone::PlayerOpenSignEvent</scope><name>~Event</name></member>
+      <member refid="classendstone_1_1ICancellable_1ab6d311fcaa18971f69a1b23f5a856301" prot="public" virt="virtual"><scope>endstone::PlayerOpenSignEvent</scope><name>~ICancellable</name></member>
+      <member refid="classendstone_1_1PlayerEvent_1ab31b937251b8ccc1c72c275d1c7a522b" prot="public" virt="non-virtual"><scope>endstone::PlayerOpenSignEvent</scope><name>~PlayerEvent</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

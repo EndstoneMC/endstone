@@ -181,6 +181,7 @@ Here are the classes, structs, unions and interfaces with brief descriptions:
     * **class** [**PlayerLevelChangeEvent**](classendstone_1_1PlayerLevelChangeEvent.md) _Called when a player's level changes._     
     * **class** [**PlayerLoginEvent**](classendstone_1_1PlayerLoginEvent.md) _Called when a player attempts to login in._     
     * **class** [**PlayerMoveEvent**](classendstone_1_1PlayerMoveEvent.md) _Called when a player moves._     
+    * **class** [**PlayerOpenSignEvent**](classendstone_1_1PlayerOpenSignEvent.md) _Called when a player begins editing a sign's text._     
     * **class** [**PlayerPickupArrowEvent**](classendstone_1_1PlayerPickupArrowEvent.md) _Called when a player picks up an arrow or a thrown trident from the ground._     
     * **class** [**PlayerPickupExperienceEvent**](classendstone_1_1PlayerPickupExperienceEvent.md) _Called when a player picks up an experience orb._     
     * **class** [**PlayerPickupItemEvent**](classendstone_1_1PlayerPickupItemEvent.md) _Called when a player picks an item up from the ground._     
