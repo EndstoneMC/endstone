@@ -597,6 +597,27 @@ extra = 0
 pattern = "55 41 57 41 56 41 55 41 54 53 48 81 EC E8 03 00 00 44 89 CD 48 89 D3 48 89 74 24 70 49 89 FC 48 89 0C 24 44 89 44 24 08"
 
 [[signatures]]
+name = "_ZN10ArmorStand14getInteractionER6PlayerR16ActorInteractionRK4Vec3"
+relative = false
+extra = 0
+# 1. find bytes "61 63 74 69 6F 6E 2E 69 6E 74 65 72 61 63 74 2E 61 72 6D 6F 72 73 74 61 6E 64 2E 65 71 75 69 70 00"
+#    = "action.interact.armorstand.equip\0" in .rodata (unique); it has exactly one rip-relative xref in
+#    .text - the function containing it (the .eh_frame_hdr FDE start at or below the xref) is the target
+# 2. cross-check with the sibling string "action.interact.armorstand.pose\0": its single xref lands in the
+#    same function, a few hundred bytes further on - the pose branch is the sneak path, the equip branch
+#    the item-swap path, and no other function in the binary references either string
+# 3. confirm identity from the body: it opens with a call to Actor::getInteraction, tests `al & 1` and
+#    returns early on success, then loads the level from `[r15+0x1D0]` and dispatches
+#    `call qword [rax+0x9F0]` (ILevel::isClientSide) before reaching the sneak test
+# 4. independent confirmation: the same address appears exactly once in `_ZTV10ArmorStand` (reached via
+#    RTTI - typeinfo name "10ArmorStand" -> _ZTI10ArmorStand -> the vtable that names it), at the slot
+#    Actor::getInteraction occupies
+# 5. walk back to the prologue (`push rbp/r15/r14/r13/r12/rbx`, `sub rsp, 0x138`) and cut from there
+# uniqueness: matches exactly once in 1.26.44.3, and also exactly once in 1.26.33 and 1.26.40; the two
+# wildcards are the call/jmp displacements, so no byte-identical sibling can collide
+pattern = "55 41 57 41 56 41 55 41 54 53 48 81 EC 38 01 00 00 49 89 CD 48 89 D3 49 89 F7 49 89 FE E8 ? ? ? ? 89 C5 A8 01 74 08 41 89 ED"
+
+[[signatures]]
 name = "_ZNK13CauldronBlock3useERN11BlockEvents24BlockPlayerInteractEventE"
 relative = false
 extra = 0
@@ -618,26 +639,6 @@ extra = 0
 # .text, at 0xBDFAFE0, which is the offset in the generated table
 pattern = "55 41 57 41 56 41 55 41 54 53 48 81 EC A8 02 00 00 48 89 F3 4C 8B 76"
 
-[[signatures]]
-name = "_ZN10ArmorStand14getInteractionER6PlayerR16ActorInteractionRK4Vec3"
-relative = false
-extra = 0
-# 1. find bytes "61 63 74 69 6F 6E 2E 69 6E 74 65 72 61 63 74 2E 61 72 6D 6F 72 73 74 61 6E 64 2E 65 71 75 69 70 00"
-#    = "action.interact.armorstand.equip\0" in .rodata (unique); it has exactly one rip-relative xref in
-#    .text - the function containing it (the .eh_frame_hdr FDE start at or below the xref) is the target
-# 2. cross-check with the sibling string "action.interact.armorstand.pose\0": its single xref lands in the
-#    same function, a few hundred bytes further on - the pose branch is the sneak path, the equip branch
-#    the item-swap path, and no other function in the binary references either string
-# 3. confirm identity from the body: it opens with a call to Actor::getInteraction, tests `al & 1` and
-#    returns early on success, then loads the level from `[r15+0x1D0]` and dispatches
-#    `call qword [rax+0x9F0]` (ILevel::isClientSide) before reaching the sneak test
-# 4. independent confirmation: the same address appears exactly once in `_ZTV10ArmorStand` (reached via
-#    RTTI - typeinfo name "10ArmorStand" -> _ZTI10ArmorStand -> the vtable that names it), at the slot
-#    Actor::getInteraction occupies
-# 5. walk back to the prologue (`push rbp/r15/r14/r13/r12/rbx`, `sub rsp, 0x138`) and cut from there
-# uniqueness: matches exactly once in 1.26.44.3, and also exactly once in 1.26.33 and 1.26.40; the two
-# wildcards are the call/jmp displacements, so no byte-identical sibling can collide
-pattern = "55 41 57 41 56 41 55 41 54 53 48 81 EC 38 01 00 00 49 89 CD 48 89 D3 49 89 F7 49 89 FE E8 ? ? ? ? 89 C5 A8 01 74 08 41 89 ED"
 [[signatures]]
 name = "_ZNK13CauldronBlock14setLiquidLevelER11BlockSourceRK8BlockPosi18CauldronLiquidType"
 relative = false
