@@ -47,6 +47,9 @@ public:
 
     [[nodiscard]] BlockActorType getType() const { return type_; }
 
+    static std::shared_ptr<BlockActor> loadStatic(const BlockType &, const BlockPos &, ILevel &, const CompoundTag &,
+                                                  DataLoadHelper &);
+
 protected:
     BlockPos position_;                                                                 // +8
     const BlockActorType type_;                                                         // +20

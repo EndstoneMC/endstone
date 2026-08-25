@@ -12,15 +12,12 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-#include "bedrock/world/level/block/actor/vanilla_block_actor_factory.h"
+#include "bedrock/world/level/block/actor/block_actor.h"
 
 #include "bedrock/symbol.h"
 
-namespace VanillaBlockActorFactory {
-
-std::shared_ptr<::BlockActor> createBlockActor(const ::BlockPos &pos, const ::BlockType &block)
+std::shared_ptr<BlockActor> BlockActor::loadStatic(const BlockType &block, const BlockPos &pos, ILevel &level,
+                                                   const CompoundTag &tag, DataLoadHelper &data_load_helper)
 {
-    return BEDROCK_CALL(&VanillaBlockActorFactory::createBlockActor, pos, block);
+    return BEDROCK_CALL(&BlockActor::loadStatic, block, pos, level, tag, data_load_helper);
 }
-
-}  // namespace VanillaBlockActorFactory

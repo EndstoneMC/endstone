@@ -14,7 +14,16 @@
 
 #pragma once
 
+#include <functional>
+
+class Actor;
+class CompoundTag;
+
 class InternalComponentRegistry {
 public:
-    struct ComponentInfo {};
+    struct ComponentInfo {
+        std::function<void(const CompoundTag &, CompoundTag &)> legacy_data_conversion_func_;
+        std::function<void(Actor &, const CompoundTag &)> create_and_load_component_func_;
+        std::function<void(const Actor &, CompoundTag &)> save_component_func_;
+    };
 };

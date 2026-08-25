@@ -19,7 +19,6 @@
 #include "bedrock/world/item/save_context.h"
 #include "bedrock/world/level/block/actor/block_actor.h"
 #include "bedrock/world/level/block/actor/vanilla_block_actor.h"
-#include "bedrock/world/level/block/actor/vanilla_block_actor_factory.h"
 
 namespace endstone::core {
 
@@ -68,14 +67,8 @@ void EndstoneBlockActorState::initializeBlockActor(::ILevel &level, const ::Bloc
         return;
     }
 
-    auto clone = VanillaBlockActorFactory::createBlockActor(position, block);
-    if (clone == nullptr) {
-        return;
-    }
-
     SnapshotDataLoadHelper data_load_helper;
-    clone->load(level, tag, data_load_helper);
-    snapshot_ = std::move(clone);
+    snapshot_ = ::BlockActor::loadStatic(block, position, level, tag, data_load_helper);
 }
 
 bool EndstoneBlockActorState::applyTo(::ILevel &level, ::BlockActor &block_actor) const
