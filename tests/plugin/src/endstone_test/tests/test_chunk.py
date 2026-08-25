@@ -1,5 +1,6 @@
 import pytest
 from endstone import Server
+from endstone.block import BlockState
 from endstone.level import Dimension
 from endstone.plugin import Plugin
 
@@ -123,3 +124,14 @@ def test_chunk_reports_its_own_loaded_state(server: Server) -> None:
         pytest.skip("no resident chunk")
     chunk = chunks[0]
     assert chunk.is_loaded is overworld.is_chunk_loaded(chunk.x, chunk.z)
+
+
+def test_block_actors_stay_inside_the_chunk(server: Server) -> None:
+    """Verify every state block_actors reports sits within its own chunk and matches the block there."""
+    overworld = server.level.get_dimension(Dimension.OVERWORLD)
+    for chunk in overworld.loaded_chunks[:16]:
+        for state in chunk.block_actors:
+            assert isinstance(state, BlockState)
+            assert state.x >> 4 == chunk.x
+            assert state.z >> 4 == chunk.z
+            assert state.type == overworld.get_block_at(state.x, state.y, state.z).type
