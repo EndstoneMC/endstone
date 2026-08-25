@@ -261,6 +261,7 @@
 * **getText** ([**endstone::Button**](classendstone_1_1Button.md), [**endstone::Label**](classendstone_1_1Label.md), [**endstone::Translatable**](classendstone_1_1Translatable.md))
 * **getCookTime** ([**endstone::Campfire**](classendstone_1_1Campfire.md), [**endstone::Furnace**](classendstone_1_1Furnace.md))
 * **getSize** ([**endstone::Campfire**](classendstone_1_1Campfire.md), [**endstone::Inventory**](classendstone_1_1Inventory.md))
+* **getBlockActors** ([**endstone::Chunk**](classendstone_1_1Chunk.md))
 * **getPluginChunkTickets** ([**endstone::Chunk**](classendstone_1_1Chunk.md), [**endstone::Dimension**](classendstone_1_1Dimension.md))
 * **getChunk** ([**endstone::ChunkEvent**](classendstone_1_1ChunkEvent.md))
 * **getAlpha** ([**endstone::Color**](classendstone_1_1Color.md))

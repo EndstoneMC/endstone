@@ -5592,6 +5592,7 @@ and this project adheres to <a href="https://semver.org/spec/v2.0.0.html">Semant
 <li><code>Dimension.mobs</code> and <code>Dimension.players</code>, both narrowing <code>Dimension.actors</code>.</li>
 <li>Chunk loading API: <code>Dimension.load_chunk()</code>, <code>Dimension.unload_chunk()</code>, <code>Dimension.unload_chunk_request()</code>, <code>Dimension.is_chunk_loaded()</code> and <code>Dimension.is_chunk_generated()</code>, plus <code>Chunk.load()</code>, <code>Chunk.unload()</code> and <code>Chunk.is_loaded()</code>. Bedrock has no synchronous chunk load, so <code>load_chunk()</code> keeps the chunk resident from a later tick onwards and does not make it tick. <code>unload_chunk()</code> reports whether the chunk actually went away, while <code>unload_chunk_request()</code> only releases the hold.</li>
 <li>Plugin chunk tickets: <code>Dimension.add_plugin_chunk_ticket()</code>, <code>remove_plugin_chunk_ticket()</code>, <code>remove_plugin_chunk_tickets()</code>, <code>get_plugin_chunk_tickets()</code> and <code>plugin_chunk_tickets</code>, with the same methods on <code>Chunk</code>. A ticket keeps a chunk loaded until it is removed or the owning plugin is disabled, and <code>unload_chunk()</code> leaves it alone.</li>
+<li><code>Chunk.block_actors</code>, the state of every block actor in a chunk — chests, signs, furnaces, spawners and the rest — mirroring Paper's <code>Chunk#getTileEntities()</code>. Reading it on a chunk that is not loaded gives an empty list rather than loading it.</li>
 </ul>
 <h4 id="commands-and-permissions">Commands and permissions<a class="headerlink" href="#commands-and-permissions" title="Permanent link">&para;</a></h4>
 <ul>
@@ -5697,6 +5698,7 @@ and this project adheres to <a href="https://semver.org/spec/v2.0.0.html">Semant
 <li>Fixed a boss bar vanishing for a player who travelled to another dimension. The Bedrock client drops every boss bar it is showing once it rebuilds the world, and now gets the bars a player is in sent again as soon as it asks for them.</li>
 <li>Fixed <code>BossBar.remove_player</code> hiding the bar from a player who was never added to it, and <code>BossBar.add_player</code> re-sending the bar to a player who was already in it.</li>
 <li>Fixed <code>Plugin.default_permission</code> rejecting a string or a bool (<code>"operator"</code>, <code>"not op"</code>, <code>True</code>), which individual entries in <code>Plugin.permissions</code> already accepted.</li>
+<li>Fixed <code>Block.biome</code> reading the wrong part of a chunk, so it reported a biome that has nothing to do with the block, and could crash the server. Introduced in 0.11.7 along with BDS 1.26.40 support.</li>
 </ul>
 <h4 id="type-annotations">Type annotations<a class="headerlink" href="#type-annotations" title="Permanent link">&para;</a></h4>
 <ul>

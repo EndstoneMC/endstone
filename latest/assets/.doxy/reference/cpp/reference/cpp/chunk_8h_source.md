@@ -31,6 +31,7 @@
 
 namespace endstone {
 
+class BlockState;
 class Plugin;
 
 class Chunk {
@@ -56,6 +57,8 @@ public:
     virtual bool addPluginChunkTicket(Plugin &plugin) = 0;
 
     virtual bool removePluginChunkTicket(Plugin &plugin) = 0;
+
+    [[nodiscard]] virtual std::vector<NotNull<BlockState>> getBlockActors() const = 0;
 
     [[nodiscard]] virtual std::vector<Plugin *> getPluginChunkTickets() const = 0;
 };

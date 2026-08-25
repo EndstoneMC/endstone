@@ -657,6 +657,7 @@
     <member refid="classendstone_1_1Chunk_1a76e6c5eb43fec20961854d5a44aa4430" kind="function"><name>unload</name></member>
     <member refid="classendstone_1_1Chunk_1ac1fce145e58f2ddc757ea71d2878596b" kind="function"><name>addPluginChunkTicket</name></member>
     <member refid="classendstone_1_1Chunk_1a582bd646b9010816bd2028c8a48a0423" kind="function"><name>removePluginChunkTicket</name></member>
+    <member refid="classendstone_1_1Chunk_1a2b9f3b21fe9bcf6901ca8f3425801123" kind="function"><name>getBlockActors</name></member>
     <member refid="classendstone_1_1Chunk_1aac95d98dded6d378a3cf67c18ee61aad" kind="function"><name>getPluginChunkTickets</name></member>
   </compound>
   <compound refid="classendstone_1_1ChunkEvent" kind="class"><name>endstone::ChunkEvent</name>

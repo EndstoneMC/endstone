@@ -31,7 +31,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/level/chunk.h" line="125" column="10" bodyfile="include/endstone/level/chunk.h" bodystart="125" bodyend="128"/>
+        <location file="include/endstone/level/chunk.h" line="135" column="10" bodyfile="include/endstone/level/chunk.h" bodystart="135" bodyend="138"/>
       </memberdef>
     </sectiondef>
     <briefdescription>
@@ -60,7 +60,7 @@
         <label>std::formatter&lt; std::string_view &gt;</label>
       </node>
     </collaborationgraph>
-    <location file="include/endstone/level/chunk.h" line="123" column="1" bodyfile="include/endstone/level/chunk.h" bodystart="123" bodyend="129"/>
+    <location file="include/endstone/level/chunk.h" line="133" column="1" bodyfile="include/endstone/level/chunk.h" bodystart="133" bodyend="139"/>
     <listofallmembers>
       <member refid="structstd_1_1formatter_3_01endstone_1_1Chunk_01_4_1acd57fef87911745112babaaf7cfae89d" prot="public" virt="non-virtual"><scope>std::formatter&lt; endstone::Chunk &gt;</scope><name>format</name></member>
     </listofallmembers>

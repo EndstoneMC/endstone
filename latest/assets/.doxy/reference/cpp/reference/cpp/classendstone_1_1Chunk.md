@@ -53,6 +53,7 @@ _Represents a chunk of blocks._
 | Type | Name |
 | ---: | :--- |
 | virtual [**bool**](classendstone_1_1Identifier.md) | [**addPluginChunkTicket**](#function-addpluginchunkticket) ([**Plugin**](classendstone_1_1Plugin.md) & plugin) = 0<br>_Adds a plugin ticket for this chunk, loading it if it is not already loaded._  |
+| virtual std::vector&lt; [**NotNull**](classendstone_1_1NotNull.md)&lt; [**BlockState**](classendstone_1_1BlockState.md) &gt; &gt; | [**getBlockActors**](#function-getblockactors) () const = 0<br>_Gets a list of all block actors in this chunk._  |
 | virtual [**NotNull**](classendstone_1_1NotNull.md)&lt; [**Dimension**](classendstone_1_1Dimension.md) &gt; | [**getDimension**](#function-getdimension) () const = 0<br>_Gets the dimension containing this chunk._  |
 | virtual [**Level**](classendstone_1_1Level.md) & | [**getLevel**](#function-getlevel) () const = 0<br>_Gets the level containing this chunk._  |
 | virtual std::vector&lt; [**Plugin**](classendstone_1_1Plugin.md) \* &gt; | [**getPluginChunkTickets**](#function-getpluginchunktickets) () const = 0<br>_Gets which plugins hold a ticket for this chunk._  |
@@ -120,6 +121,34 @@ virtual bool endstone::Chunk::addPluginChunkTicket (
 **Returns:**
 
 `true` if a plugin ticket was added, `false` if the plugin already holds one for this chunk 
+
+
+
+
+
+        
+
+<hr>
+
+
+
+### function getBlockActors 
+
+_Gets a list of all block actors in this chunk._ 
+```C++
+virtual std::vector< NotNull < BlockState > > endstone::Chunk::getBlockActors () const = 0
+```
+
+
+
+The returned list is a snapshot; it does not track block actors placed or broken afterwards.
+
+
+
+
+**Returns:**
+
+the state of every block actor in this chunk, or an empty list if this chunk is not loaded 
 
 
 
