@@ -7,17 +7,20 @@ find_package(concurrentqueue REQUIRED)
 find_package(cpptrace REQUIRED)
 find_package(date REQUIRED)
 find_package(EnTT REQUIRED)
+find_package(libdeflate REQUIRED)
 find_package(magic_enum REQUIRED)
 find_package(nlohmann_json REQUIRED)
 set(PYBIND11_FINDPYTHON ON)
 find_package(pybind11 CONFIG REQUIRED)
 find_package(replxx REQUIRED)
+find_package(Snappy REQUIRED)
 find_package(sentry REQUIRED)
 find_package(spdlog REQUIRED)
 find_package(tomlplusplus REQUIRED)
 find_package(zstr CONFIG REQUIRED)
 
 add_library(endstone_core
+        ability.cpp
         crash_handler.cpp
         game_mode.cpp
         game_rule.cpp
@@ -61,6 +64,7 @@ add_library(endstone_core
         command/console_command_sender.cpp
         command/minecraft_command_adapter.cpp
         command/minecraft_command_wrapper.cpp
+        command/proxied_command_sender.cpp
         command/defaults/ban_command.cpp
         command/defaults/ban_ip_command.cpp
         command/defaults/ban_list_command.cpp
@@ -85,6 +89,7 @@ add_library(endstone_core
         inventory/item_metas.cpp
         inventory/item_stack.cpp
         inventory/item_type.cpp
+        inventory/recipe_data.cpp
         inventory/player_inventory.cpp
         lang/language.cpp
         level/chunk.cpp
@@ -93,6 +98,7 @@ add_library(endstone_core
         map/map_canvas.cpp
         map/map_renderer.cpp
         map/map_view.cpp
+        network/compressed_network_peer.cpp
         network/data_packet.cpp
         permissions/default_permissions.cpp
         permissions/permissible_base.cpp
@@ -131,10 +137,12 @@ target_link_libraries(endstone_core PUBLIC
         cpptrace::cpptrace
         date::date
         EnTT::EnTT
+        libdeflate::libdeflate_static
         magic_enum::magic_enum
         nlohmann_json::nlohmann_json
         pybind11::pybind11
         replxx::replxx
+        Snappy::snappy
         sentry::sentry
         spdlog::spdlog
         tomlplusplus::tomlplusplus

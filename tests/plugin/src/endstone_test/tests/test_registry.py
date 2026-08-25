@@ -1,5 +1,5 @@
 import pytest
-from endstone import GameRule, Identifier, Server
+from endstone import Ability, GameRule, Identifier, Server
 from endstone.actor import ActorType
 from endstone.attribute import Attribute
 from endstone.block import Biome, BlockType
@@ -9,6 +9,7 @@ from endstone.potion import EffectType, PotionType
 
 # All registry types to test generically
 REGISTRY_TYPES = [
+    Ability,
     ActorType,
     Biome,
     BlockType,
@@ -26,6 +27,7 @@ UNLOCALIZED_REGISTRY_TYPES = [
 ]
 
 FULLY_EXPORTED_REGISTRY_TYPES = [
+    Ability,
     ActorType,
     EffectType,
     Enchantment,

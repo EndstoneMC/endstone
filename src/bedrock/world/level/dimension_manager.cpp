@@ -21,3 +21,10 @@ std::optional<DimensionType> DimensionManager::serverRegisterCustomDimension(std
 {
     return BEDROCK_CALL(&DimensionManager::serverRegisterCustomDimension, this, name, pack_id);
 }
+
+WeakRef<Dimension> DimensionManager::getOrCreateDimension(std::string_view name)
+{
+    return BEDROCK_CALL(static_cast<WeakRef<Dimension> (DimensionManager::*)(std::string_view)>(
+                            &DimensionManager::getOrCreateDimension),
+                        this, name);
+}

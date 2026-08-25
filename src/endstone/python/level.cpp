@@ -33,6 +33,45 @@ void init_level(py::module_ &m, py::classh<Level> &level, py::classh<Dimension> 
         .def_property_readonly("level", &Chunk::getLevel, "The level containing this chunk.",
                                py::return_value_policy::reference)
         .def_property_readonly("dimension", &Chunk::getDimension, "The dimension containing this chunk.")
+        .def_property_readonly("is_loaded", &Chunk::isLoaded, "Whether this chunk is loaded.")
+        .def("load", py::overload_cast<bool>(&Chunk::load), py::arg("generate") = true, R"doc(
+    Requests this chunk to be loaded, and keeps it resident until it is released again.
+
+    See `Dimension.load_chunk` for how the hold behaves.
+
+    Args:
+        generate: Whether to generate the chunk if it does not exist yet.
+
+    Returns:
+        ``False`` if ``generate`` is ``False`` and the chunk has not been generated, otherwise ``True``.
+)doc")
+        .def("unload", &Chunk::unload, R"doc(
+    Releases the hold that ``load`` placed on this chunk, and unloads it if nothing else keeps it resident.
+
+    Returns:
+        ``True`` if the chunk is no longer loaded, otherwise ``False``.
+)doc")
+        .def("add_plugin_chunk_ticket", &Chunk::addPluginChunkTicket, py::arg("plugin"), R"doc(
+    Adds a plugin ticket for this chunk, loading it if it is not already loaded.
+
+    Args:
+        plugin: `Plugin` taking the ticket.
+
+    Returns:
+        ``True`` if a plugin ticket was added, ``False`` if the plugin already holds one for this chunk.
+)doc")
+        .def("remove_plugin_chunk_ticket", &Chunk::removePluginChunkTicket, py::arg("plugin"), R"doc(
+    Removes the given plugin's ticket for this chunk.
+
+    Args:
+        plugin: `Plugin` whose ticket to remove.
+
+    Returns:
+        ``True`` if a plugin ticket was removed, ``False`` if the plugin holds none for this chunk.
+)doc")
+        .def_property_readonly("plugin_chunk_tickets", &Chunk::getPluginChunkTickets,
+                               "The `Plugin`s holding a ticket for this chunk.",
+                               py::return_value_policy::reference)
         .def("__repr__", [](const Chunk &self) { return std::format("{}", self); })
         .def("__str__", [](const Chunk &self) { return std::format("{}", self); });
 
@@ -111,34 +150,132 @@ void init_level(py::module_ &m, py::classh<Level> &level, py::classh<Dimension> 
     Returns:
         ``True`` if the chunk is loaded, otherwise ``False``.
 )doc")
-        .def("load_chunk", &Dimension::loadChunk, py::arg("x"), py::arg("z"), R"doc(
-    Requests the `Chunk` at the given coordinates to be loaded, and keeps it loaded until unloaded again.
+        .def("is_chunk_generated", &Dimension::isChunkGenerated, py::arg("x"), py::arg("z"), R"doc(
+    Checks if the `Chunk` at the given coordinates has been generated.
 
-    Unlike Java Edition, Bedrock has no synchronous chunk load: this registers a plugin-owned ticket for the chunk,
-    honoured on the next server tick (so the chunk may not be available right away). The chunk stays loaded until
-    ``unload_chunk`` is called or the server restarts. Intended for keeping a handful of chunks resident, not for
-    loading large regions.
+    A chunk counts as generated once it is loaded or has been written to the level's chunk storage.
 
     Args:
         x: X-coordinate of the chunk.
         z: Z-coordinate of the chunk.
 
     Returns:
-        ``True`` if the ticket was registered (or already present), otherwise ``False``.
+        ``True`` if the chunk has been generated, otherwise ``False``.
+)doc")
+        .def("load_chunk", py::overload_cast<int, int, bool>(&Dimension::loadChunk), py::arg("x"), py::arg("z"),
+             py::arg("generate") = true, R"doc(
+    Requests the `Chunk` at the given coordinates to be loaded, and keeps it resident until it is released again.
+
+    The chunk is held from the moment this returns until ``unload_chunk`` or ``unload_chunk_request`` releases it, or
+    the server restarts. Unlike Java Edition, Bedrock has no synchronous chunk load: unless the chunk was already
+    resident, the load finishes on a later tick, so ``is_chunk_loaded`` may still report ``False`` right afterwards. A
+    chunk held this way stays in memory but is not ticked, and the hold never expires on its own. Intended for keeping
+    a handful of chunks resident, not for loading large regions.
+
+    The hold is not attributed to any plugin and survives that plugin being disabled. Use ``add_plugin_chunk_ticket``
+    for a hold that is released automatically.
+
+    Args:
+        x: X-coordinate of the chunk.
+        z: Z-coordinate of the chunk.
+        generate: Whether to generate the chunk if it does not exist yet.
+
+    Returns:
+        ``False`` if ``generate`` is ``False`` and the chunk has not been generated, or if the coordinates lie outside
+        the world limit, otherwise ``True``.
+
+    Raises:
+        RuntimeError: If called from a thread other than the server thread.
 )doc")
         .def("unload_chunk", &Dimension::unloadChunk, py::arg("x"), py::arg("z"), R"doc(
-    Releases the plugin-owned ticket that ``load_chunk`` placed on the `Chunk` at the given coordinates.
+    Releases the hold that ``load_chunk`` placed on the `Chunk` at the given coordinates, and unloads it if nothing
+    else keeps it resident.
 
-    This only removes Endstone's own ticket; the chunk is unloaded once nothing else keeps it loaded (a nearby player,
-    the spawn area, etc.), so it is a no-op in effect while the chunk is still in use.
+    A chunk kept alive by a nearby player, the spawn area, a ``/tickingarea`` or a plugin chunk ticket stays loaded,
+    and this reports ``False``. Unloading a chunk saves it and fires a `ChunkUnloadEvent`, which handlers observe
+    before this returns. It also completes any chunk unloads the dimension had pending, so calling it once per chunk
+    over a large area is expensive; use ``unload_chunk_request`` when releasing many chunks at once.
 
     Args:
         x: X-coordinate of the chunk.
         z: Z-coordinate of the chunk.
 
     Returns:
-        ``True`` once the ticket has been released.
+        ``True`` if the chunk is no longer loaded, otherwise ``False``.
+
+    Raises:
+        RuntimeError: If called from a thread other than the server thread.
 )doc")
+        .def("unload_chunk_request", &Dimension::unloadChunkRequest, py::arg("x"), py::arg("z"), R"doc(
+    Releases the hold that ``load_chunk`` placed on the `Chunk` at the given coordinates, without unloading it now.
+
+    The chunk is unloaded on a later tick once nothing else keeps it resident.
+
+    Args:
+        x: X-coordinate of the chunk.
+        z: Z-coordinate of the chunk.
+
+    Returns:
+        ``True``.
+
+    Raises:
+        RuntimeError: If called from a thread other than the server thread.
+)doc")
+        .def("add_plugin_chunk_ticket", &Dimension::addPluginChunkTicket, py::arg("x"), py::arg("z"),
+             py::arg("plugin"), R"doc(
+    Adds a plugin ticket for the `Chunk` at the given coordinates, loading it if it is not already loaded.
+
+    A plugin ticket keeps the chunk resident until it is explicitly removed or the owning plugin is disabled. A plugin
+    may only have one ticket per chunk, but each chunk can have multiple plugin tickets. ``unload_chunk`` does not
+    remove plugin tickets.
+
+    Args:
+        x: X-coordinate of the chunk.
+        z: Z-coordinate of the chunk.
+        plugin: `Plugin` taking the ticket.
+
+    Returns:
+        ``True`` if a plugin ticket was added, ``False`` if the plugin already holds one for this chunk.
+
+    Raises:
+        RuntimeError: If the plugin is not enabled, or if called from a thread other than the server thread.
+)doc")
+        .def("remove_plugin_chunk_ticket", &Dimension::removePluginChunkTicket, py::arg("x"), py::arg("z"),
+             py::arg("plugin"), R"doc(
+    Removes the given plugin's ticket for the `Chunk` at the given coordinates.
+
+    Args:
+        x: X-coordinate of the chunk.
+        z: Z-coordinate of the chunk.
+        plugin: `Plugin` whose ticket to remove.
+
+    Returns:
+        ``True`` if a plugin ticket was removed, ``False`` if the plugin holds none for this chunk.
+)doc")
+        .def("remove_plugin_chunk_tickets", &Dimension::removePluginChunkTickets, py::arg("plugin"), R"doc(
+    Removes every ticket the given plugin holds in this dimension.
+
+    Args:
+        plugin: `Plugin` whose tickets to remove.
+)doc")
+        .def("get_plugin_chunk_tickets",
+             py::overload_cast<int, int>(&Dimension::getPluginChunkTickets, py::const_), py::arg("x"), py::arg("z"),
+             py::return_value_policy::reference, R"doc(
+    Gets which plugins hold a ticket for the `Chunk` at the given coordinates.
+
+    The returned list is a snapshot; it does not track tickets added or removed afterwards.
+
+    Args:
+        x: X-coordinate of the chunk.
+        z: Z-coordinate of the chunk.
+
+    Returns:
+        The `Plugin`s holding a ticket for the chunk.
+)doc")
+        .def_property_readonly("plugin_chunk_tickets",
+                               py::overload_cast<>(&Dimension::getPluginChunkTickets, py::const_),
+                               "The `Chunk`s each `Plugin` holds a ticket for, as a snapshot.",
+                               py::return_value_policy::reference_internal)
         .def("drop_item", &Dimension::dropItem, py::arg("location"), py::arg("item"), R"doc(
     Drops an item at the specified `Location`.
 
@@ -182,6 +319,7 @@ void init_level(py::module_ &m, py::classh<Level> &level, py::classh<Dimension> 
         .def_property_readonly("actors", &Level::getActors, "A list of all actors currently residing in this level.")
         .def_property("time", &Level::getTime, &Level::setTime, "The relative in-game time of this level.")
         .def_property_readonly("dimensions", &Level::getDimensions, "A list of all dimensions within this level.")
+        .def_property_readonly("recipes", &Level::getRecipes, "The list of crafting recipes.")
         .def("get_dimension", &Level::getDimension, py::arg("id"), R"doc(
     Gets the dimension with the given id.
 

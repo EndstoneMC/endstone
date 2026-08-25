@@ -3,7 +3,8 @@ import typing
 from endstone import GameRule, Identifier, Player
 from endstone.actor import Actor, ActorType, Item, Mob
 from endstone.block import Block
-from endstone.inventory import ItemStack
+from endstone.inventory import ItemStack, Recipe
+from endstone.plugin import Plugin
 from endstone.util import Vector
 
 __all__ = [
@@ -44,6 +45,12 @@ class Level:
     def dimensions(self) -> list[Dimension]:
         """
         A list of all dimensions within this level.
+        """
+
+    @property
+    def recipes(self) -> list[Recipe]:
+        """
+        The list of crafting recipes.
         """
 
     def get_dimension(self, id: Identifier[Dimension] | str) -> Dimension | None:
@@ -238,36 +245,143 @@ class Dimension:
             ``True`` if the chunk is loaded, otherwise ``False``.
         """
 
-    def load_chunk(self, x: int, z: int) -> bool:
+    def is_chunk_generated(self, x: int, z: int) -> bool:
         """
-        Requests the `Chunk` at the given coordinates to be loaded, and keeps it loaded until unloaded again.
+        Checks if the `Chunk` at the given coordinates has been generated.
 
-        Unlike Java Edition, Bedrock has no synchronous chunk load: this registers a plugin-owned ticket for the chunk,
-        honoured on the next server tick (so the chunk may not be available right away). The chunk stays loaded until
-        ``unload_chunk`` is called or the server restarts. Intended for keeping a handful of chunks resident, not for
-        loading large regions.
+        A chunk counts as generated once it is loaded or has been written to the level's chunk storage.
 
         Args:
             x: X-coordinate of the chunk.
             z: Z-coordinate of the chunk.
 
         Returns:
-            ``True`` if the ticket was registered (or already present), otherwise ``False``.
+            ``True`` if the chunk has been generated, otherwise ``False``.
+        """
+
+    def load_chunk(self, x: int, z: int, generate: bool = True) -> bool:
+        """
+        Requests the `Chunk` at the given coordinates to be loaded, and keeps it resident until it is released again.
+
+        The chunk is held from the moment this returns until ``unload_chunk`` or ``unload_chunk_request`` releases it, or
+        the server restarts. Unlike Java Edition, Bedrock has no synchronous chunk load: unless the chunk was already
+        resident, the load finishes on a later tick, so ``is_chunk_loaded`` may still report ``False`` right afterwards. A
+        chunk held this way stays in memory but is not ticked, and the hold never expires on its own. Intended for keeping
+        a handful of chunks resident, not for loading large regions.
+
+        The hold is not attributed to any plugin and survives that plugin being disabled. Use ``add_plugin_chunk_ticket``
+        for a hold that is released automatically.
+
+        Args:
+            x: X-coordinate of the chunk.
+            z: Z-coordinate of the chunk.
+            generate: Whether to generate the chunk if it does not exist yet.
+
+        Returns:
+            ``False`` if ``generate`` is ``False`` and the chunk has not been generated, or if the coordinates lie outside
+            the world limit, otherwise ``True``.
+
+        Raises:
+            RuntimeError: If called from a thread other than the server thread.
         """
 
     def unload_chunk(self, x: int, z: int) -> bool:
         """
-        Releases the plugin-owned ticket that ``load_chunk`` placed on the `Chunk` at the given coordinates.
+        Releases the hold that ``load_chunk`` placed on the `Chunk` at the given coordinates, and unloads it if nothing
+        else keeps it resident.
 
-        This only removes Endstone's own ticket; the chunk is unloaded once nothing else keeps it loaded (a nearby player,
-        the spawn area, etc.), so it is a no-op in effect while the chunk is still in use.
+        A chunk kept alive by a nearby player, the spawn area, a ``/tickingarea`` or a plugin chunk ticket stays loaded,
+        and this reports ``False``. Unloading a chunk saves it and fires a `ChunkUnloadEvent`, which handlers observe
+        before this returns. It also completes any chunk unloads the dimension had pending, so calling it once per chunk
+        over a large area is expensive; use ``unload_chunk_request`` when releasing many chunks at once.
 
         Args:
             x: X-coordinate of the chunk.
             z: Z-coordinate of the chunk.
 
         Returns:
-            ``True`` once the ticket has been released.
+            ``True`` if the chunk is no longer loaded, otherwise ``False``.
+
+        Raises:
+            RuntimeError: If called from a thread other than the server thread.
+        """
+
+    def unload_chunk_request(self, x: int, z: int) -> bool:
+        """
+        Releases the hold that ``load_chunk`` placed on the `Chunk` at the given coordinates, without unloading it now.
+
+        The chunk is unloaded on a later tick once nothing else keeps it resident.
+
+        Args:
+            x: X-coordinate of the chunk.
+            z: Z-coordinate of the chunk.
+
+        Returns:
+            ``True``.
+
+        Raises:
+            RuntimeError: If called from a thread other than the server thread.
+        """
+
+    def add_plugin_chunk_ticket(self, x: int, z: int, plugin: Plugin) -> bool:
+        """
+        Adds a plugin ticket for the `Chunk` at the given coordinates, loading it if it is not already loaded.
+
+        A plugin ticket keeps the chunk resident until it is explicitly removed or the owning plugin is disabled. A plugin
+        may only have one ticket per chunk, but each chunk can have multiple plugin tickets. ``unload_chunk`` does not
+        remove plugin tickets.
+
+        Args:
+            x: X-coordinate of the chunk.
+            z: Z-coordinate of the chunk.
+            plugin: `Plugin` taking the ticket.
+
+        Returns:
+            ``True`` if a plugin ticket was added, ``False`` if the plugin already holds one for this chunk.
+
+        Raises:
+            RuntimeError: If the plugin is not enabled, or if called from a thread other than the server thread.
+        """
+
+    def remove_plugin_chunk_ticket(self, x: int, z: int, plugin: Plugin) -> bool:
+        """
+        Removes the given plugin's ticket for the `Chunk` at the given coordinates.
+
+        Args:
+            x: X-coordinate of the chunk.
+            z: Z-coordinate of the chunk.
+            plugin: `Plugin` whose ticket to remove.
+
+        Returns:
+            ``True`` if a plugin ticket was removed, ``False`` if the plugin holds none for this chunk.
+        """
+
+    def remove_plugin_chunk_tickets(self, plugin: Plugin) -> None:
+        """
+        Removes every ticket the given plugin holds in this dimension.
+
+        Args:
+            plugin: `Plugin` whose tickets to remove.
+        """
+
+    def get_plugin_chunk_tickets(self, x: int, z: int) -> list[Plugin]:
+        """
+        Gets which plugins hold a ticket for the `Chunk` at the given coordinates.
+
+        The returned list is a snapshot; it does not track tickets added or removed afterwards.
+
+        Args:
+            x: X-coordinate of the chunk.
+            z: Z-coordinate of the chunk.
+
+        Returns:
+            The `Plugin`s holding a ticket for the chunk.
+        """
+
+    @property
+    def plugin_chunk_tickets(self) -> dict[Plugin, list[Chunk]]:
+        """
+        The `Chunk`s each `Plugin` holds a ticket for, as a snapshot.
         """
 
     def drop_item(self, location: Location, item: ItemStack) -> Item:
@@ -509,6 +623,61 @@ class Chunk:
     def dimension(self) -> Dimension:
         """
         The dimension containing this chunk.
+        """
+
+    @property
+    def is_loaded(self) -> bool:
+        """
+        Whether this chunk is loaded.
+        """
+
+    def load(self, generate: bool = True) -> bool:
+        """
+        Requests this chunk to be loaded, and keeps it resident until it is released again.
+
+        See `Dimension.load_chunk` for how the hold behaves.
+
+        Args:
+            generate: Whether to generate the chunk if it does not exist yet.
+
+        Returns:
+            ``False`` if ``generate`` is ``False`` and the chunk has not been generated, otherwise ``True``.
+        """
+
+    def unload(self) -> bool:
+        """
+        Releases the hold that ``load`` placed on this chunk, and unloads it if nothing else keeps it resident.
+
+        Returns:
+            ``True`` if the chunk is no longer loaded, otherwise ``False``.
+        """
+
+    def add_plugin_chunk_ticket(self, plugin: Plugin) -> bool:
+        """
+        Adds a plugin ticket for this chunk, loading it if it is not already loaded.
+
+        Args:
+            plugin: `Plugin` taking the ticket.
+
+        Returns:
+            ``True`` if a plugin ticket was added, ``False`` if the plugin already holds one for this chunk.
+        """
+
+    def remove_plugin_chunk_ticket(self, plugin: Plugin) -> bool:
+        """
+        Removes the given plugin's ticket for this chunk.
+
+        Args:
+            plugin: `Plugin` whose ticket to remove.
+
+        Returns:
+            ``True`` if a plugin ticket was removed, ``False`` if the plugin holds none for this chunk.
+        """
+
+    @property
+    def plugin_chunk_tickets(self) -> list[Plugin]:
+        """
+        The `Plugin`s holding a ticket for this chunk.
         """
 
 class DimensionCreator:

@@ -112,26 +112,22 @@ void EndstoneBossBar::setVisible(bool visible)
 
 void EndstoneBossBar::addPlayer(const NotNull<Player> &player)
 {
-    players_.emplace(player.get());
-    if (visible_) {
+    if (players_.emplace(player.get()).second && visible_) {
         send(BossEventUpdateType::Add, player);
     }
 }
 
 void EndstoneBossBar::removePlayer(const NotNull<Player> &player)
 {
-    players_.erase(player.get());
-    if (visible_) {
+    if (players_.erase(player.get()) > 0 && visible_) {
         send(BossEventUpdateType::Remove, player);
     }
 }
 
 void EndstoneBossBar::removeAll()
 {
-    if (visible_) {
-        for (const auto &player : getPlayers()) {
-            send(BossEventUpdateType::Remove, player);
-        }
+    for (const auto &player : getPlayers()) {
+        removePlayer(player);
     }
     players_.clear();
 }
@@ -152,6 +148,13 @@ std::vector<NotNull<Player>> EndstoneBossBar::getPlayers() const
     return players;
 }
 
+void EndstoneBossBar::update(const NotNull<Player> &player)
+{
+    if (visible_ && players_.contains(player.get())) {
+        send(BossEventUpdateType::Add, player);
+    }
+}
+
 void EndstoneBossBar::send(BossEventUpdateType event_type, const NotNull<Player> &player)
 {
     const auto *handle = player.cast<EndstonePlayer>()->tryGetHandle();
@@ -162,7 +165,7 @@ void EndstoneBossBar::send(BossEventUpdateType event_type, const NotNull<Player>
     const auto packet = MinecraftPackets::createPacket(MinecraftPacketIds::BossEvent);
     const auto pk = std::static_pointer_cast<BossEventPacket>(packet);
     pk->payload.boss_id = handle->getOrCreateUniqueID();
-    pk->payload.player_id = handle->getOrCreateUniqueID();
+    pk->payload.player_id = ActorUniqueID(0);
     pk->payload.event_type = event_type;
     pk->payload.name = title_;
     pk->payload.health_percent = progress_;

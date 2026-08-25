@@ -16,6 +16,7 @@
 
 #include <optional>
 
+#include "bedrock/bedrock.h"
 #include "bedrock/common_types.h"
 #include "bedrock/core/math/vec2.h"
 #include "bedrock/core/math/vec3.h"
@@ -89,7 +90,8 @@ protected:
 
 class VirtualCommandOrigin : public CommandOrigin {
 public:
-    VirtualCommandOrigin(const CommandOrigin &, const CommandOrigin &, const CommandPositionFloat &, int);
+    VirtualCommandOrigin(const CommandOrigin &output_receiver, const CommandOrigin &source,
+                         const CommandPositionFloat &command_position, int version);
     [[nodiscard]] CommandOrigin *getOrigin() const { return origin_.get(); }
 
 private:
@@ -99,3 +101,4 @@ private:
     CommandPositionFloat command_position_;           // +56
     int version_;                                     // +72
 };
+BEDROCK_STATIC_ASSERT_SIZE(VirtualCommandOrigin, 80, 80);

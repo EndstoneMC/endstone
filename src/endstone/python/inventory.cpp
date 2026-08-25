@@ -62,6 +62,79 @@ void init_inventory(py::module_ &m, py::class_<ItemStack> &item_stack)
         .def_static("get", &ItemType::get, py::arg("name"), "Attempts to get the `ItemType` with the given name.",
                     py::return_value_policy::reference);
 
+    py::classh<RecipeIngredient>(m, "RecipeIngredient", R"doc(
+    Represents a potential item match within a recipe. All choices within a recipe must be satisfied for it to be
+    craftable.
+)doc")
+        .def("test", &RecipeIngredient::test, py::arg("item"))
+        .def_property_readonly("count", &RecipeIngredient::getCount, R"doc(
+    How many items this ingredient consumes.
+
+    Bedrock records a count on each ingredient where Java repeats the ingredient instead.
+)doc");
+
+    py::classh<ExactIngredient, RecipeIngredient>(
+        m, "ExactIngredient", "Represents an ingredient that matches one item with one exact data value.")
+        .def_property_readonly("item_stack", &ExactIngredient::getItemStack);
+
+    py::classh<ItemTypeIngredient, RecipeIngredient>(
+        m, "ItemTypeIngredient", "Represents an ingredient that matches an item type, whatever its data value.")
+        .def_property_readonly("item_type", &ItemTypeIngredient::getItemType, py::return_value_policy::reference,
+                               "The item type that this ingredient will match.");
+
+    py::classh<ItemTagIngredient, RecipeIngredient>(m, "ItemTagIngredient",
+                                                    "Represents an ingredient that matches any item carrying a tag.")
+        .def_property_readonly("item_tag", &ItemTagIngredient::getItemTag, R"doc(
+    The item tag that this ingredient will match.
+
+    Bedrock keeps item tags server-side, so the tag is reported rather than the item types in it.
+)doc");
+
+    py::classh<MolangIngredient, RecipeIngredient>(
+        m, "MolangIngredient", "Represents an ingredient that matches the items a Molang expression selects.")
+        .def_property_readonly("expression", &MolangIngredient::getExpression,
+                               "The Molang expression that this ingredient will match.");
+
+    py::classh<ComplexAliasIngredient, RecipeIngredient>(
+        m, "ComplexAliasIngredient", "Represents an ingredient that matches any item an id stands for.")
+        .def_property_readonly("alias", &ComplexAliasIngredient::getAlias, R"doc(
+    The alias that this ingredient will match.
+
+    The id predates the item flattening, such as `minecraft:planks`, and stands for every item it was split into. It is
+    not an item tag, and the items are not reported.
+)doc");
+
+    py::classh<Recipe>(m, "Recipe", "Represents some type of crafting recipe.")
+        .def_property_readonly("result", &Recipe::getResult, "The result of this recipe.")
+        .def_property_readonly("ingredients", &Recipe::getIngredients)
+        .def_property_readonly("id", &Recipe::getId,
+                               "The identifier of this recipe, such as `minecraft:crafting_table`.")
+        .def_property_readonly("tag", &Recipe::getTag,
+                               "The crafting station this recipe belongs to, such as `crafting_table`.");
+
+    py::classh<ShapedRecipe, Recipe>(m, "ShapedRecipe", "Represents a shaped (ie normal) crafting recipe.")
+        .def_property_readonly("width", &ShapedRecipe::getWidth)
+        .def_property_readonly("height", &ShapedRecipe::getHeight);
+
+    py::classh<ShapelessRecipe, Recipe>(m, "ShapelessRecipe", R"doc(
+    Represents a shapeless recipe, where the arrangement of the ingredients on the crafting grid does not matter.
+)doc");
+
+    py::classh<ComplexRecipe, Recipe>(
+        m, "ComplexRecipe",
+        "Represents a complex recipe which has imperative server-defined behavior, eg armor dyeing.");
+
+    py::classh<SmithingRecipe, Recipe>(m, "SmithingRecipe", "Represents a smithing recipe.")
+        .def_property_readonly("base", &SmithingRecipe::getBase, "The base recipe item.")
+        .def_property_readonly("addition", &SmithingRecipe::getAddition, "The addition recipe item.");
+
+    py::classh<SmithingTransformRecipe, SmithingRecipe>(m, "SmithingTransformRecipe",
+                                                        "Represents a smithing transform recipe.")
+        .def_property_readonly("template", &SmithingTransformRecipe::getTemplate, "The template recipe item.");
+
+    py::classh<SmithingTrimRecipe, SmithingRecipe>(m, "SmithingTrimRecipe", "Represents a smithing trim recipe.")
+        .def_property_readonly("template", &SmithingTrimRecipe::getTemplate, "The template recipe item.");
+
     py::classh<ItemMeta>(m, "ItemMeta", "Represents the metadata of a generic item.")
         .def("clone", &ItemMeta::clone, R"doc(
     Creates a clone of the current metadata.
@@ -154,7 +227,7 @@ void init_inventory(py::module_ &m, py::class_<ItemStack> &item_stack)
     Sets the specified page in the book. Pages of the book must be contiguous.
 
     Note:
-        The data can be up to 1024 characters in length, additional characters are truncated.
+        The data can be up to 256 characters in length, additional characters are truncated.
 
     Pages are 1-indexed.
 

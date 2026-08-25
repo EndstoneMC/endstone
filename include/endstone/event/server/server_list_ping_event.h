@@ -32,13 +32,12 @@ public:
     ENDSTONE_EVENT(ServerListPingEvent);
     ServerListPingEvent(SocketAddress address, std::string motd, int network_protocol_version,
                         std::string minecraft_version_network, int num_players, int max_players,
-                        std::string server_guid, std::string level_name, GameMode game_mode, int local_port,
-                        int local_port_v6)
+                        std::string server_guid, std::string level_name, GameMode game_mode, int local_port)
         : Cancellable(true), address_(std::move(address)), motd_(std::move(motd)),
           network_protocol_version_(network_protocol_version),
           minecraft_version_network_(std::move(minecraft_version_network)), num_players_(num_players),
           max_players_(max_players), server_guid_(std::move(server_guid)), level_name_(std::move(level_name)),
-          game_mode_(game_mode), local_port_(local_port), local_port_v6_(local_port_v6)
+          game_mode_(game_mode), local_port_(local_port)
     {
     }
 
@@ -76,20 +75,6 @@ public:
      * @param port the local port
      */
     void setLocalPort(int port) { local_port_ = port; }
-
-    /**
-     * Get the local port of the server for IPv6 support.
-     *
-     * @return The local port for IPv6
-     */
-    [[nodiscard]] int getLocalPortV6() const { return local_port_v6_; }
-
-    /**
-     * Set the local port of the server for IPv6 support.
-     *
-     * @param port the local port for IPv6
-     */
-    void setLocalPortV6(int port) { local_port_v6_ = port; }
 
     /**
      * Get the message of the day message.
@@ -196,7 +181,6 @@ private:
     std::string level_name_;
     GameMode game_mode_;
     int local_port_;
-    int local_port_v6_;
 };
 
 }  // namespace endstone

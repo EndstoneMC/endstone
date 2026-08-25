@@ -25,5 +25,6 @@ enum class BlockFace {
     South,
     West,
     East,
+    Self,
 };
 }  // namespace endstone

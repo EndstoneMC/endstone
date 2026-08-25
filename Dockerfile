@@ -1,35 +1,20 @@
 # syntax=docker/dockerfile:1
 
 ARG PYTHON_VERSION=3.13
+ARG PYTHON_TAG=cp313
+
+FROM scratch AS conan-cache
 
 # ──────────────────────────────────────────────────────────────────────────────
 # Build stage
 #
-# Bullseye's glibc 2.31 is what tags the wheels manylinux_2_31, so keep it.
+# The same image the published wheels are built in: it carries the LLVM
+# toolchain, libc++ and the glibc 2.31 floor that tags the wheels manylinux_2_31.
 # ──────────────────────────────────────────────────────────────────────────────
-FROM python:${PYTHON_VERSION}-slim-bullseye AS builder
+FROM ghcr.io/endstonemc/manylinux_2_31_x86_64_clang20 AS builder
 
-# Install the LLVM toolchain and build dependencies.
-ARG LLVM_VERSION=20
-RUN apt-get update -y -qq \
-    && apt-get install -y -qq --no-install-recommends \
-        autoconf automake build-essential ca-certificates git gnupg libtool \
-        lsb-release software-properties-common wget \
-    && wget -q https://apt.llvm.org/llvm.sh \
-    && chmod +x llvm.sh \
-    && ./llvm.sh ${LLVM_VERSION} \
-    && apt-get install -y -qq --no-install-recommends \
-        libc++-${LLVM_VERSION}-dev libc++abi-${LLVM_VERSION}-dev clang-tools-${LLVM_VERSION} \
-    && update-alternatives --install /usr/bin/clang clang /usr/bin/clang-${LLVM_VERSION} 100 \
-    && update-alternatives --install /usr/bin/clang++ clang++ /usr/bin/clang++-${LLVM_VERSION} 100 \
-    && update-alternatives --install /usr/bin/llvm-cov llvm-cov /usr/bin/llvm-cov-${LLVM_VERSION} 100 \
-    && update-alternatives --install /usr/bin/ld ld /usr/bin/ld.lld-${LLVM_VERSION} 100 \
-    && rm -rf /var/lib/apt/lists/* llvm.sh
-
-# Set default compiler and target platform tag for Python wheels.
-ENV CC=clang \
-    CXX=clang++ \
-    AUDITWHEEL_PLAT=manylinux_2_31_x86_64 \
+ARG PYTHON_TAG
+ENV PATH=/opt/python/${PYTHON_TAG}-${PYTHON_TAG}/bin:${PATH} \
     PIP_DISABLE_PIP_VERSION_CHECK=1
 
 # Define working directory for the source code.
@@ -40,8 +25,10 @@ COPY .conanrc .conanrc
 COPY .conan2/remotes.json .conan2/remotes.json
 COPY .conan2/profiles/default .conan2/profiles/default
 COPY conanfile.py conanfile.py
-RUN python -m pip install --upgrade pip \
-    && pip install conan cmake ninja \
+RUN --mount=type=bind,from=conan-cache,target=/tmp/conan-cache \
+    python -m pip install --upgrade pip \
+    && pip install conan ninja \
+    && if [ -d /tmp/conan-cache/p ]; then cp -a /tmp/conan-cache/p .conan2/p; fi \
     && conan install . --build=missing
 
 # Copy the rest of the project files.

@@ -19,11 +19,13 @@
 #include <memory>
 #include <unordered_map>
 #include <unordered_set>
+#include <vector>
 
 #include "bedrock/core/string/string_hash.h"
 #include "bedrock/resources/resource_pack_manager.h"
 #include "bedrock/world/item/crafting/recipe.h"
 
+using RecipeMap = std::map<std::string, std::shared_ptr<Recipe>>;
 using RecipeListenerList = std::vector<std::pair<std::weak_ptr<bool>, std::function<void()>>>;
 
 class ExternalRecipeStore {
@@ -43,6 +45,8 @@ public:
     Recipes(ILevel *);
     [[nodiscard]] ItemInstance getFurnaceRecipeResult(const ItemStackBase &, const HashedString &) const;
 
+    [[nodiscard]] const std::map<HashedString, RecipeMap> &getRecipesAllTags() const { return recipes_; }
+
     [[nodiscard]] const Recipe *getRecipeByNetId(const RecipeNetId &net_id) const
     {
         if (net_id.raw_id == 0) {
@@ -55,7 +59,7 @@ public:
 private:
     ResourcePackManager *resource_pack_manager_;
     ExternalRecipeStore external_recipe_store_;
-    std::map<HashedString, std::map<std::string, std::shared_ptr<Recipe>>> recipes_;
+    std::map<HashedString, RecipeMap> recipes_;
     bool initializing_;
     std::map<ItemInstance, std::unordered_map<std::string, Recipe *>, SortItemInstanceIdAux> recipes_by_output_;
     std::unordered_map<TypedServerNetId<RecipeNetIdTag, std::uint32_t, 0U>, Recipe *> recipes_by_net_id_;

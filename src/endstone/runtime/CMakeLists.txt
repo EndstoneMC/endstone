@@ -12,11 +12,11 @@ add_library(endstone_runtime SHARED
         bedrock_hooks/batched_network_peer.cpp
         bedrock_hooks/bedrock_event_logger.cpp
         bedrock_hooks/bucket.cpp
-        bedrock_hooks/bucket_empty.cpp
         bedrock_hooks/bucketable_component.cpp
         bedrock_hooks/campfire_block_actor.cpp
         bedrock_hooks/cauldron.cpp
         bedrock_hooks/console_input_reader.cpp
+        bedrock_hooks/craft_handler_crafting.cpp
         bedrock_hooks/dedicated_server.cpp
         bedrock_hooks/explosion.cpp
         bedrock_hooks/fire_block.cpp
@@ -24,13 +24,13 @@ add_library(endstone_runtime SHARED
         bedrock_hooks/inventory_transaction.cpp
         bedrock_hooks/item.cpp
         bedrock_hooks/item_registry_manager.cpp
-        bedrock_hooks/item_stack_request_action_craft_handler.cpp
         bedrock_hooks/leaves_block.cpp
         bedrock_hooks/level.cpp
         bedrock_hooks/liquid_block.cpp
         bedrock_hooks/map_data_manager.cpp
         bedrock_hooks/minecraft_commands.cpp
         bedrock_hooks/mob.cpp
+        bedrock_hooks/network_system.cpp
         bedrock_hooks/packet.cpp
         bedrock_hooks/piston_block_actor.cpp
         bedrock_hooks/player.cpp

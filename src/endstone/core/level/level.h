@@ -37,6 +37,7 @@ public:
     [[nodiscard]] int getTime() const override;
     void setTime(int time) override;
     [[nodiscard]] std::vector<NotNull<Dimension>> getDimensions() const override;
+    [[nodiscard]] std::vector<NotNull<Recipe>> getRecipes() const override;
     [[nodiscard]] Nullable<Dimension> getDimension(DimensionId id) const override;
     [[nodiscard]] Nullable<Dimension> getDimension(DimensionType type) const;
     [[nodiscard]] Nullable<Dimension> createDimension(const DimensionCreator &creator) override;
@@ -47,6 +48,7 @@ public:
 
     [[nodiscard]] EndstoneServer &getServer() const;
     [[nodiscard]] ::Level &getHandle() const;
+    void loadDimensions();
 
 private:
     void addDimension(::Dimension &dimension);

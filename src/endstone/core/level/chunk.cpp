@@ -14,15 +14,22 @@
 
 #include "endstone/core/level/chunk.h"
 
+#include <stdexcept>
+
 #include "bedrock/world/level/dimension/dimension.h"
 #include "endstone/core/server.h"
+#include "endstone/level/dimension.h"
 
 namespace endstone::core {
 
-EndstoneChunk::EndstoneChunk(const LevelChunk &chunk) : dimension_(chunk.getDimension())
+EndstoneChunk::EndstoneChunk(WeakRef<::Dimension> dimension, int x, int z)
+    : dimension_(std::move(dimension)), x_(x), z_(z)
 {
-    x_ = chunk.getPosition().x;
-    z_ = chunk.getPosition().z;
+}
+
+EndstoneChunk::EndstoneChunk(const LevelChunk &chunk)
+    : EndstoneChunk(chunk.getDimension().getWeakRef(), chunk.getPosition().x, chunk.getPosition().z)
+{
 }
 
 int EndstoneChunk::getX() const
@@ -42,7 +49,46 @@ Level &EndstoneChunk::getLevel() const
 
 NotNull<Dimension> EndstoneChunk::getDimension() const
 {
-    return dimension_.getEndstoneDimension();
+    const auto handle = dimension_.unwrap();
+    if (!handle) {
+        throw std::runtime_error("Trying to access a dimension that is no longer valid.");
+    }
+    return handle->getEndstoneDimension();
+}
+
+bool EndstoneChunk::isLoaded() const
+{
+    return getDimension()->isChunkLoaded(x_, z_);
+}
+
+bool EndstoneChunk::load()
+{
+    return getDimension()->loadChunk(x_, z_);
+}
+
+bool EndstoneChunk::load(bool generate)
+{
+    return getDimension()->loadChunk(x_, z_, generate);
+}
+
+bool EndstoneChunk::unload()
+{
+    return getDimension()->unloadChunk(x_, z_);
+}
+
+bool EndstoneChunk::addPluginChunkTicket(Plugin &plugin)
+{
+    return getDimension()->addPluginChunkTicket(x_, z_, plugin);
+}
+
+bool EndstoneChunk::removePluginChunkTicket(Plugin &plugin)
+{
+    return getDimension()->removePluginChunkTicket(x_, z_, plugin);
+}
+
+std::vector<Plugin *> EndstoneChunk::getPluginChunkTickets() const
+{
+    return getDimension()->getPluginChunkTickets(x_, z_);
 }
 
 }  // namespace endstone::core

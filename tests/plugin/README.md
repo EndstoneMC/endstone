@@ -50,9 +50,15 @@ Some API surface needs a real client and cannot be asserted by pytest. These liv
 /test spawn <actor: entity_type>                 Dimension.spawn_actor
 /test map                                        a map drawn by ImageRenderer
 /test block <block: block> [states: block_states]
+/test chunk [x: int] [z: int]                    Dimension.load_chunk, polled across real ticks
 /test sender
 /test broadcast
 ```
+
+`/test chunk` is the only way to prove `load_chunk` actually loads. Chunk generation is tick-driven,
+and the pytest pass runs on the blocked server thread, so no tick can land during it — the pytest
+cases can only assert that the request was accepted. This subcommand loads a far chunk, then polls
+`is_chunk_loaded` once per tick and reports how many ticks it took before releasing it again.
 
 ## Project Structure
 
