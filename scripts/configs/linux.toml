@@ -1032,6 +1032,29 @@ extra = 0
 pattern = "53 48 83 EC ? 89 F2 48 89 FB 48 8B 4F"
 
 [[signatures]]
+name = "_ZN12ServerPlayer8openSignERK8BlockPosb"
+relative = false
+extra = 0
+# 1. find bytes "31 34 4F 70 65 6E 53 69 67 6E 50 61 63 6B 65 74 00" = "14OpenSignPacket\0", the Itanium
+#    typeinfo name; it survives stripping. Its lone data xref is _ZTI14OpenSignPacket + 8
+# 2. take the data xref to that typeinfo object: it is _ZTV14OpenSignPacket + 8. The vtable head
+#    (typeinfo slot - 8) has exactly one data xref, and it is inside
+#    SignBlockActor::requestToSendOpenSignPacket (the two OpenSignPacket constructors reference
+#    head + 0x10, the vptr value, instead)
+# 3. requestToSendOpenSignPacket has exactly ONE code xref, and that caller is this function
+# 4. confirm by the body: Actor::getDimensionBlockSource -> BlockSource::getBlockEntity, accepts
+#    BlockActorType 4 (Sign) through a single BlockActor::isTypeOrDerived call, which also admits the
+#    derived HangingSign (50), then SignBlockActor::getIsLockedForEditing /
+#    serverOnlySetIsLockedForEditing and EntityContext::getWeakRef before the call from step 3
+# NOTE: the Itanium build keeps getIsLockedForEditing / serverOnlySetIsLockedForEditing as real calls
+#    where clang-cl inlines both into raw member accesses, so windows.toml needs its own step 4
+# uniqueness: the anchor chain is unique (one code xref on requestToSendOpenSignPacket); the pattern
+#    below is only the prologue, so re-cut it from the address the chain lands on rather than trusting
+#    it. Chain walked in linux_server_x64 1.21.132.3 (symbols.debug); pattern verified to match
+#    exactly ONCE in the 1.26.44.3 .text, at 0x98ed400
+pattern = "55 41 57 41 56 41 54 53 48 83 EC 40 89 D5 48 89 F3 49 89 FE 48 8B BF"
+
+[[signatures]]
 name = "_ZN16ServerScoreboardC2E23CommandSoftEnumRegistryP12LevelStorageN3gsl8not_nullIN7Bedrock15NonOwnerPointerI19GameplayUserManagerEEEE"
 relative = false
 extra = 0

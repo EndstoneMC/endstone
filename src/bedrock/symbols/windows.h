@@ -11,7 +11,7 @@
 
 namespace endstone::runtime {
 
-static constexpr std::array<std::pair<std::string_view, std::size_t>, 82> symbols = {{
+static constexpr std::array<std::pair<std::string_view, std::size_t>, 83> symbols = {{
     {"BlockState::StateListNode::mHead", 211294960},
     {"Enchant::mEnchants", 211141912},
     {"MobEffect::mMobEffects", 211424880},
@@ -136,6 +136,7 @@ static constexpr std::array<std::pair<std::string_view, std::size_t>, 82> symbol
     {"?updateServerAnnouncement@ServerNetworkHandler@@QEAAXXZ", 10953072},
     // ServerPlayer
     {"?changeDimension@ServerPlayer@@UEAAXUDimensionType@@@Z", 6907440},
+    {"?openSign@ServerPlayer@@UEAAXAEBVBlockPos@@_N@Z", 6897056},
     // ServerScoreboard
     {"??0ServerScoreboard@@QEAA@VCommandSoftEnumRegistry@@PEAVLevelStorage@@V?$not_null@V?$NonOwnerPointer@VGameplayUserManager@@@Bedrock@@@gsl@@@Z", 1277104},
     // TickingAreasManager
