@@ -17,7 +17,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - `PlayerInputEvent` for movement input changes, carrying the new `Input` type (`is_forward`, `is_backward`, `is_left`, `is_right`, `is_jump`, `is_sneak`, `is_sprint`).
 - `PlayerArmorStandManipulateEvent`, reporting `armor_stand_item`, `player_item` and `slot`.
 - `PlayerBucketActorEvent` and `PlayerShearActorEvent`, reporting the `actor`, the `original_bucket` or `item` used and the `hand`.
-- `PlayerBucketFillEvent` and `PlayerBucketEmptyEvent`, with their shared base `PlayerBucketEvent`, reporting the `block` the liquid was taken from or placed into, the `block_clicked` and `block_face` of the interaction, the `bucket` used, the `hand` it was held in, and a writable `item_stack` the player ends up holding. Cancelling either leaves the world and the player's inventory untouched. Milking a cow, a goat or a mooshroom is reported as a fill on the actor's own block with a `block_face` of `SELF`. Buckets emptied or filled by a dispenser are not reported, since neither event has a player. `hand` is always `HAND`, because Bedrock does not report which hand was used for this interaction, and filling from or emptying into a cauldron always reports the hotbar item.
+- `PlayerBucketFillEvent` and `PlayerBucketEmptyEvent`, with their shared base `PlayerBucketEvent`, reporting the `block` filled from or emptied into, the `block_clicked`, the `block_face`, the `bucket` used, the `hand` and a writable `item_stack`. Cancelling either leaves the world and the player's inventory untouched. `hand` is always `HAND`. Filling from or emptying into a cauldron reports the hotbar item. Milking a cow, a goat or a mooshroom is reported as a fill on the actor's own block with a `block_face` of `SELF`. Buckets filled or emptied by a dispenser are not reported.
 - `PlayerRecipeBookSettingsChangeEvent`, reporting `recipe_book_type`, `is_open` and `is_filtering`.
 - `PlayerCraftItemEvent` for crafting in a crafting grid or straight from the recipe book, reporting the `recipe` being crafted and the `ingredients` a craft consumes plus writable `results` and `repetitions`. Ingredients are the items in the crafting grid, or the recipe's own when crafting from the recipe book, which never fills the grid. Setting `results` changes what the craft produces; cancelling blocks the craft and leaves the ingredients untouched.
 - `PlayerEditBookEvent` for editing a page of a book and quill or signing it, reporting the book metadata before and after the edit, the inventory `slot`, and whether the book is being signed. `new_book_meta` and `is_signing` are writable; both metadata properties hand back a copy, so assign to `new_book_meta` rather than editing what you read from it. A title, an author and a generation only survive when the book is being signed, because a book and quill holds none of them. Cancelling leaves the book untouched and sends the slot back to the client, so it stops showing the edit it had already drawn.
@@ -56,7 +56,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - `ItemFrame` block state with `item`, `rotation` and `item_drop_chance`.
 - `Biome` type and `Block.biome`, with lookup via `Biome.get()` and enumeration via `server.get_registry(Biome)`.
 - `BlockData.translation_key`.
-- `BlockFace.SELF`, matching Bukkit's `BlockFace.SELF`, for interactions that have no direction.
+- `BlockFace.SELF`, for interactions that have no direction.
 
 #### Items
 
