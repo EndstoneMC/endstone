@@ -43,11 +43,11 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - `Mob.is_swimming` and `Player.is_crawling`.
 - `Player.send_action_bar()` for sending a message above the hotbar.
 - `Player.respawn_location` for reading and writing where a player will respawn, or `None` when they have no valid respawn point. Bedrock does not persist yaw/pitch for a respawn point, so only the block coordinates and the dimension are kept.
-- `Player.send_block_update()`, mirroring Paper's `Player#sendBlockUpdate(Location, TileState)`, which shows a block entity state to one player at a location without changing the world for anybody else. The packet carries the block entity's saved state rather than the per-type update tag the server sends itself, so a field a block entity only adds to its own update packet - a sign's editing lock, for one - is left out.
+- `Player.send_block_update()` for showing a block entity state to one player at a location, without changing the world for anybody else.
 
 #### Blocks
 
-- `BlockActorState` block state, the common base of every block state backed by a block entity - `Container`, `Campfire`, `CreatureSpawner`, `ItemFrame` and `Sign`. Bukkit calls it `TileState`, but Bedrock calls a block entity a block actor and so does Endstone. `block_actor_state.is_snapshot` says whether the state holds an independent copy of the block entity or points at the one in the world, and `Block.capture_state()` chooses: `capture_state()` gives a snapshot, `capture_state(use_snapshot=False)` gives a state that writes straight through. Bukkit's `TileState#getPersistentDataContainer()` is not ported yet.
+- `BlockActorState` block state, the common base of `Container`, `Campfire`, `CreatureSpawner`, `ItemFrame` and `Sign`, with `is_snapshot` telling whether the state holds its own copy of the block entity or the one in the world. `Block.capture_state()` picks between them: the default gives a snapshot, `capture_state(use_snapshot=False)` gives a state that writes straight through. A persistent data container is not available on it yet.
 - `Container` block state for chests, barrels, hoppers, dispensers, droppers, shulker boxes and furnaces, exposing `container.inventory`.
 - `Furnace` block state for furnaces, blast furnaces and smokers, extending `Container`.
 - `Lectern` block state with the displayed `page`, extending `Container`.

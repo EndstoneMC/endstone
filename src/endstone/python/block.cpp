@@ -354,7 +354,8 @@ void init_block(py::module_ &m, py::classh<Block> &block)
     sign is still a sign after you capture its state.
 
     By default, a `BlockActorState` takes an independent snapshot of the block entity. Pass `False`
-    to use the block entity currently residing in the world.
+    to use the block entity currently residing in the world. A block entity that cannot be copied
+    falls back to the same, so check `is_snapshot` to see which was captured.
 
     Args:
         use_snapshot: Whether to use an independent block entity snapshot.
