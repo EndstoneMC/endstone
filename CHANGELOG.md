@@ -177,6 +177,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Fixed a boss bar vanishing for a player who travelled to another dimension. The Bedrock client drops every boss bar it is showing once it rebuilds the world, and now gets the bars a player is in sent again as soon as it asks for them.
 - Fixed `BossBar.remove_player` hiding the bar from a player who was never added to it, and `BossBar.add_player` re-sending the bar to a player who was already in it.
 - Fixed `Plugin.default_permission` rejecting a string or a bool (`"operator"`, `"not op"`, `True`), which individual entries in `Plugin.permissions` already accepted.
+- Fixed `Block.biome` reading the wrong part of a chunk, so it reported a biome that has nothing to do with the block, and could crash the server. Introduced in 0.11.7 along with BDS 1.26.40 support.
 
 #### Type annotations
 
