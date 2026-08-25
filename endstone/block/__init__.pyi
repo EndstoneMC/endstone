@@ -133,7 +133,8 @@ class Block:
         sign is still a sign after you capture its state.
 
         By default, a `BlockActorState` takes an independent snapshot of the block entity. Pass `False`
-        to use the block entity currently residing in the world.
+        to use the block entity currently residing in the world. A block entity that cannot be copied
+        falls back to the same, so check `is_snapshot` to see which was captured.
 
         Args:
             use_snapshot: Whether to use an independent block entity snapshot.
@@ -617,6 +618,8 @@ class SignSide:
 class Sign(BlockActorState):
     """
     Represents a captured state of a sign.
+
+    Changes are kept in the captured state until `update()` is called.
     """
     class Side(enum.Enum):
         """
