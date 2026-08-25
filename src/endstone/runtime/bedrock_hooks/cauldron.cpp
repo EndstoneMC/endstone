@@ -116,7 +116,7 @@ void CauldronBlock::use(BlockEvents::BlockPlayerInteractEvent &event_data) const
         else if (name.ends_with("shulker_box")) {
             reason = ChangeReason::ShulkerWash;
         }
-        else if (item->isDyeable()) {
+        else if (item->isDyeable() || name == "minecraft:wolf_armor") {
             reason = ChangeReason::ArmorWash;
         }
     }
