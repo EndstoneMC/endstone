@@ -201,12 +201,6 @@ def test_server_port(server: Server, server_properties: dict[str, str]) -> None:
     assert server.port == expected_port
 
 
-def test_server_port_v6(server: Server, server_properties: dict[str, str]) -> None:
-    """Verify server IPv6 port matches server.properties."""
-    expected_port = int(server_properties["server-portv6"])
-    assert server.port_v6 == expected_port
-
-
 def test_online_mode(server: Server, server_properties: dict[str, str]) -> None:
     """Verify online mode matches server.properties."""
     expected_online_mode = server_properties["online-mode"].lower() == "true"

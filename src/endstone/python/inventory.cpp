@@ -111,7 +111,7 @@ void init_inventory(py::module_ &m, py::class_<ItemStack> &item_stack)
 
     A value is `None` when the corresponding slot does not require an ingredient.
 )doc")
-        .def_property_readonly("recipe_id", &Recipe::getRecipeId, R"doc(
+        .def_property_readonly("id", &Recipe::getId, R"doc(
     The identifier of this recipe.
 
     Bedrock does not retain the identifiers of furnace recipes after loading them, so `FurnaceRecipe` returns an empty
@@ -243,7 +243,7 @@ void init_inventory(py::module_ &m, py::class_<ItemStack> &item_stack)
     Sets the specified page in the book. Pages of the book must be contiguous.
 
     Note:
-        The data can be up to 1024 characters in length, additional characters are truncated.
+        The data can be up to 256 characters in length, additional characters are truncated.
 
     Pages are 1-indexed.
 

@@ -121,6 +121,15 @@ extra = 0
 pattern = "41 57 41 56 53 48 81 EC ? ? ? ? 49 89 F6 48 89 FB 48 8B 8F ? ? ? ?"
 
 [[signatures]]
+name = "_ZN13NetworkSystem23onNewIncomingConnectionERK17NetworkIdentifierONSt3__110shared_ptrI11NetworkPeerEE"
+relative = false
+extra = 0
+# 1. use NetworkSystem's RTTI vtable `_ZTV13NetworkSystem` and take the primary (offset-to-top 0) one
+# 2. Connector::ConnectionCallbacks is the first base, so onNewIncomingConnection is the 3rd slot; the four
+#    trivial port accessors sit 0x20 apart further down and pin the layout
+pattern = "55 41 57 41 56 41 55 41 54 53 48 83 EC 58 49 89 D7 49 89 F6 48 89 FB 48 8B 47 78"
+
+[[signatures]]
 name = "_ZN10BedrockLog10LogDetails7_log_vaE9LogAreaIDjPKciiS3_P13__va_list_tag"
 relative = false
 extra = 0
@@ -330,6 +339,25 @@ extra = 0
 pattern = " E8 ? ? ? ? C7 44 24 ? ? ? ? ? 4C 8D 6C 24 ? 8B 74 24"
 rip_relative = true
 rip_offset = 1
+
+[[signatures]]
+name = "_ZN18ConsoleInputReader3runEPv"
+relative = false
+extra = 0
+# BDS has no symbol for this - it is the anonymous libc++ __thread_proxy for the lambda that
+# ConsoleInputReader's constructor hands to pthread_create. The name is Endstone's own, and only has to
+# match the detour exported by libendstone_runtime.so.
+# 1. find bytes "53 74 61 72 74 69 6E 67 20 53 65 72 76 65 72 00" = "Starting Server\0" (unique); its lone
+#    data xref is a `lea` inside DedicatedServer::start (see that entry)
+# 2. the reader is constructed a few hundred bytes below, right after the Version/Branch/Commit ID banner
+#    and before server.properties is read; scan down for the only `call pthread_create` in the function
+# 3. the `lea rdx, <fn>` feeding that call is the thread entry - cut the pattern there, not on the
+#    prologue, which is the generic libc++ thread-proxy shape shared with every other std::thread lambda
+# 4. confirm the body: it tests the read-console flag at +0x50, getlines into std::cin, enqueues into the
+#    SPSCQueue at +0x40 (`cmp <reg>, 200h` = its 512-element blocks) and breaks on a 4-char "stop"
+pattern = "48 8D 15 ? ? ? ? 48 8D BC 24 ? ? ? ? 31 F6 48 89 D9 E8"
+rip_relative = true
+rip_offset = 3
 
 [[signatures]]
 name = "_ZN25CraftingDataPacketPayload11fromRecipesERK7Recipesb"

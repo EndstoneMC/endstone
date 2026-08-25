@@ -276,11 +276,6 @@ void EndstoneServer::setLevel(::Level &level)
     enablePlugins(PluginLoadOrder::PostWorld);
     ServerLoadEvent event{ServerLoadEvent::LoadType::Startup};
     getPluginManager().callEvent(event);
-
-    // start accepting input
-    runtime::stdin_restore();
-    auto *server = entt::locator<DedicatedServer *>::value();
-    server->console_input_reader_->startEndstone();
 }
 
 void EndstoneServer::initRegistries()
@@ -586,11 +581,6 @@ int EndstoneServer::getPort() const
     return getRemoteConnector().getIPv4Port();
 }
 
-int EndstoneServer::getPortV6() const
-{
-    return getRemoteConnector().getIPv6Port();
-}
-
 bool EndstoneServer::getOnlineMode() const
 {
     return getServer().getMinecraft()->getServerNetworkHandler()->network_server_config_.require_trusted_authentication;
@@ -746,15 +736,29 @@ std::chrono::system_clock::time_point EndstoneServer::getStartTime()
     return start_time_;
 }
 
-NotNull<BossBar> EndstoneServer::createBossBar(std::string title, BarColor color, BarStyle style) const
+NotNull<BossBar> EndstoneServer::createBossBar(std::string title, BarColor color, BarStyle style)
 {
-    return std::make_shared<EndstoneBossBar>(std::move(title), color, style);
+    return createBossBar(std::move(title), color, style, {});
 }
 
 NotNull<BossBar> EndstoneServer::createBossBar(std::string title, BarColor color, BarStyle style,
-                                               std::vector<BarFlag> flags) const
+                                               std::vector<BarFlag> flags)
 {
-    return std::make_shared<EndstoneBossBar>(std::move(title), color, style, flags);
+    auto boss_bar = std::make_shared<EndstoneBossBar>(std::move(title), color, style, flags);
+    boss_bars_.emplace_back(boss_bar);
+    return boss_bar;
+}
+
+void EndstoneServer::updateBossBars(const NotNull<EndstonePlayer> &player)
+{
+    std::erase_if(boss_bars_, [&](const auto &boss_bar) {
+        const auto bar = boss_bar.lock();
+        if (!bar) {
+            return true;
+        }
+        bar->update(player);
+        return false;
+    });
 }
 
 NotNull<BlockData> EndstoneServer::createBlockData(BlockTypeId type) const
@@ -790,9 +794,9 @@ ServiceManager &EndstoneServer::getServiceManager() const
     return *service_manager_;
 }
 
-IRegistry *EndstoneServer::_getRegistry(const std::type_info &type) const
+IRegistry *EndstoneServer::_getRegistry(ClassInfo type) const
 {
-    const auto it = registries_.find(std::type_index(type));
+    const auto it = registries_.find(type);
     if (registries_.end() == it) {
         return nullptr;
     }

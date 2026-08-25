@@ -23,6 +23,7 @@
 #include "bedrock/network/network_identifier.h"
 #include "bedrock/network/packet/animate_packet.h"
 #include "bedrock/network/packet/book_edit_packet.h"
+#include "bedrock/network/packet/boss_event_packet.h"
 #include "bedrock/network/packet/correct_player_move_prediction_packet.h"
 #include "bedrock/network/packet/emote_packet.h"
 #include "bedrock/network/packet/mob_equipment_packet.h"
@@ -59,6 +60,7 @@
 #include "endstone/event/player/player_toggle_sprint_event.h"
 #include "endstone/inventory/item_stack.h"
 #include "endstone/inventory/meta/book_meta.h"
+#include "endstone/inventory/meta/writable_book_meta.h"
 #include "endstone/runtime/hook.h"
 #include "endstone/variant.h"
 
@@ -158,7 +160,7 @@ void EndstonePacketHandler::handle(BookEditPacket &packet)
     }
 
     const auto item = inventory.getItem(slot);
-    if (!item || item->getType().getId() != writable_book) {
+    if (!item || item->getType().getId() != writable_book || !player->getInventory().getItem(slot).hasUserData()) {
         handle();
         return;
     }
@@ -231,19 +233,22 @@ void EndstonePacketHandler::handle(BookEditPacket &packet)
     PlayerEditBookEvent e{endstone_player, slot, previous_book_meta, new_book_meta, is_signing};
     endstone_player->getServer().getPluginManager().callEvent(e);
     if (e.isCancelled()) {
+        inventory.clear(slot);
+        inventory.setItem(slot, item);
         return;
     }
 
+    const auto result_book_meta = e.getNewBookMeta();
     if (e.isSigning() != is_signing) {
         auto edited_item = *item;
         edited_item.setType(e.isSigning() ? written_book : writable_book);
-        if (edited_item.setItemMeta(e.getNewBookMeta().get().get())) {
+        if (edited_item.setItemMeta(result_book_meta.get().get())) {
             inventory.setItem(slot, std::move(edited_item));
         }
         return;
     }
 
-    const auto meta_changed = !item_factory.equals(e.getNewBookMeta().get().get(), new_book_meta.get().get());
+    const auto meta_changed = !item_factory.equals(result_book_meta.get().get(), new_book_meta.get().get());
 
     handle();
 
@@ -251,7 +256,16 @@ void EndstonePacketHandler::handle(BookEditPacket &packet)
         return;
     }
     auto edited_item = inventory.getItem(slot);
-    if (edited_item && edited_item->setItemMeta(e.getNewBookMeta().get().get())) {
+    if (!edited_item) {
+        return;
+    }
+    const auto applied_meta = edited_item->getItemMeta().as<WritableBookMeta>();
+    const auto edit_applied = edited_item->getType().getId() == (is_signing ? written_book : writable_book) &&
+                              applied_meta && applied_meta->getPages() == new_book_meta->getPages();
+    if (!edit_applied) {
+        return;
+    }
+    if (edited_item->setItemMeta(result_book_meta.get().get())) {
         inventory.setItem(slot, std::move(edited_item));
     }
 }
@@ -326,6 +340,17 @@ void EndstonePacketHandler::handle(EmotePacket &packet)
     }
     else {
         packet.payload.flags &= ~static_cast<uint8_t>(EmotePacket::Flags::MUTE_EMOTE_CHAT);
+    }
+    handle();
+}
+
+template <>
+void EndstonePacketHandler::handle(BossEventPacket &packet)
+{
+    auto *player = getPlayer();
+    if (player != nullptr && packet.payload.event_type == BossEventUpdateType::Query &&
+        packet.payload.boss_id == player->getOrCreateUniqueID()) {
+        EndstoneServer::getInstance().updateBossBars(player->getEndstoneActor<EndstonePlayer>());
     }
     handle();
 }
@@ -584,6 +609,11 @@ std::shared_ptr<Packet> MinecraftPackets::createPacket(MinecraftPacketIds id)
     }
     case MinecraftPacketIds::BookEdit: {
         using Dispatcher = EndstonePacketHandlerDispatcher<BookEditPacket>;
+        Dispatcher::set(&packet->handler_);
+        break;
+    }
+    case MinecraftPacketIds::BossEvent: {
+        using Dispatcher = EndstonePacketHandlerDispatcher<BossEventPacket>;
         Dispatcher::set(&packet->handler_);
         break;
     }

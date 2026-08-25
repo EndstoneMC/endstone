@@ -37,6 +37,7 @@
 #include "endstone/map/map_view.h"
 #include "endstone/message.h"
 #include "endstone/plugin/service_manager.h"
+#include "endstone/object.h"
 #include "endstone/scoreboard/scoreboard.h"
 #include "endstone/util/pointers.h"
 #include "endstone/util/uuid.h"
@@ -209,13 +210,6 @@ public:
     [[nodiscard]] virtual int getPort() const = 0;
 
     /**
-     * Get the game port (IPv6) that the server runs on.
-     *
-     * @return the port number of this server
-     */
-    [[nodiscard]] virtual int getPortV6() const = 0;
-
-    /**
      * Gets whether the Server is in online mode or not.
      *
      * @return `true` if the server authenticates clients, `false` otherwise
@@ -372,7 +366,7 @@ public:
      * @param style the style of the boss bar
      * @return the created boss bar
      */
-    [[nodiscard]] virtual NotNull<BossBar> createBossBar(std::string title, BarColor color, BarStyle style) const = 0;
+    [[nodiscard]] virtual NotNull<BossBar> createBossBar(std::string title, BarColor color, BarStyle style) = 0;
 
     /**
      * Creates a boss bar instance to display to players. The progress defaults to 1.0.
@@ -384,7 +378,7 @@ public:
      * @return the created boss bar
      */
     [[nodiscard]] virtual NotNull<BossBar> createBossBar(std::string title, BarColor color, BarStyle style,
-                                                         std::vector<BarFlag> flags) const = 0;
+                                                         std::vector<BarFlag> flags) = 0;
 
     /**
      * Creates a new BlockData instance for the specified block type, with all properties initialized to
@@ -435,18 +429,23 @@ public:
      *
      * @return the corresponding registry, or nullptr if not present
      */
-    [[nodiscard]] virtual IRegistry *_getRegistry(const std::type_info &type) const = 0;
+    [[nodiscard]] virtual IRegistry *_getRegistry(ClassInfo type) const = 0;
 
     /**
      * Returns the registry for the given element type.
      *
      * @tparam T The element type whose registry to retrieve.
      * @return the corresponding registry.
+     * @throws std::out_of_range if no registry is present for T.
      */
     template <typename T>
     [[nodiscard]] const Registry<T> &getRegistry() const
     {
-        return *static_cast<Registry<T> *>(_getRegistry(typeid(T)));
+        auto *registry = _getRegistry(typeid(T));
+        if (!registry) {
+            throw std::out_of_range{std::format("No registry is present for type: {}", typeid(T).name())};
+        }
+        return *static_cast<Registry<T> *>(registry);
     }
 
     /**

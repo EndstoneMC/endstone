@@ -124,7 +124,11 @@ jobs:
       - name: Generate Coverage Report
         run: |
           pip install gcovr
-          gcovr -r . --filter src/endstone_core/ --gcov-executable "llvm-cov gcov" --xml coverage.xml build/Debug
+          gcovr -r . --gcov-executable "llvm-cov gcov" \
+            --filter src/endstone/core/ --filter include/endstone/ \
+            --merge-mode-functions=merge-use-line-min \
+            --gcov-ignore-errors=no_working_dir_found \
+            --print-summary --xml coverage.xml build/Debug
 
       - name: Upload Coverage to Codecov
         uses: codecov/codecov-action@v7

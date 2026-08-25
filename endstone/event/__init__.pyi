@@ -896,13 +896,22 @@ class PlayerEditBookEvent(PlayerEvent, Cancellable):
     @property
     def previous_book_meta(self) -> BookMeta:
         """
-        The book metadata before the edit.
+        A copy of the book metadata before the edit.
+
+        Note:
+            This is a copy: changes made to it are not written back to the book.
         """
 
     @property
     def new_book_meta(self) -> BookMeta:
         """
-        The book metadata that will be applied after the edit.
+        The book metadata that the player is attempting to add to the book.
+
+        Note:
+            Reading this gives a copy: assign to it to change what will actually be added to the book.
+
+            A title, an author and a generation are only written when the book is being signed. On a plain edit the book
+            stays a book and quill, which holds none of them, and they are dropped. See `is_signing`.
         """
 
     @new_book_meta.setter
@@ -1684,14 +1693,6 @@ class ServerListPingEvent(ServerEvent, Cancellable):
 
     @local_port.setter
     def local_port(self, arg1: int) -> None: ...
-    @property
-    def local_port_v6(self) -> int:
-        """
-        The local port of the server for IPv6 support.
-        """
-
-    @local_port_v6.setter
-    def local_port_v6(self, arg1: int) -> None: ...
     @property
     def motd(self) -> str:
         """

@@ -360,10 +360,22 @@ void init_event(py::module_ &m, py::class_<Event, PyEvent> &event)
     py::class_<PlayerEditBookEvent, PlayerEvent, ICancellable>(m, "PlayerEditBookEvent",
                                                                "Called when a player edits or signs a book.")
         .def_property_readonly("slot", &PlayerEditBookEvent::getSlot, "The inventory slot containing the book.")
-        .def_property_readonly("previous_book_meta", &PlayerEditBookEvent::getPreviousBookMeta,
-                               "The book metadata before the edit.")
+        .def_property_readonly("previous_book_meta", &PlayerEditBookEvent::getPreviousBookMeta, R"doc(
+    A copy of the book metadata before the edit.
+
+    Note:
+        This is a copy: changes made to it are not written back to the book.
+)doc")
         .def_property("new_book_meta", &PlayerEditBookEvent::getNewBookMeta, &PlayerEditBookEvent::setNewBookMeta,
-                      "The book metadata that will be applied after the edit.")
+                      R"doc(
+    The book metadata that the player is attempting to add to the book.
+
+    Note:
+        Reading this gives a copy: assign to it to change what will actually be added to the book.
+
+        A title, an author and a generation are only written when the book is being signed. On a plain edit the book
+        stays a book and quill, which holds none of them, and they are dropped. See `is_signing`.
+)doc")
         .def_property("is_signing", &PlayerEditBookEvent::isSigning, &PlayerEditBookEvent::setSigning,
                       "Whether the player is signing the book.");
     py::class_<PlayerEmoteEvent, PlayerEvent, ICancellable>(m, "PlayerEmoteEvent",
@@ -683,8 +695,6 @@ void init_event(py::module_ &m, py::class_<Event, PyEvent> &event)
                       "The unique identifier of the server.")
         .def_property("local_port", &ServerListPingEvent::getLocalPort, &ServerListPingEvent::setLocalPort,
                       "The local port of the server.")
-        .def_property("local_port_v6", &ServerListPingEvent::getLocalPortV6, &ServerListPingEvent::setLocalPortV6,
-                      "The local port of the server for IPv6 support.")
         .def_property("motd", &ServerListPingEvent::getMotd, &ServerListPingEvent::setMotd,
                       "The message of the day.")
         .def_property_readonly("network_protocol_version", &ServerListPingEvent::getNetworkProtocolVersion,

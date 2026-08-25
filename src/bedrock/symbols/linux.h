@@ -11,7 +11,7 @@
 
 namespace endstone::runtime {
 
-static constexpr std::array<std::pair<std::string_view, std::size_t>, 77> symbols = {{
+static constexpr std::array<std::pair<std::string_view, std::size_t>, 79> symbols = {{
     {"BlockState::StateListNode::mHead", 245468000},
     {"Enchant::mEnchants", 245294016},
     {"MobEffect::mMobEffects", 245274360},
@@ -53,6 +53,8 @@ static constexpr std::array<std::pair<std::string_view, std::size_t>, 77> symbol
     {"_ZNK15CommandRegistry26serializeAvailableCommandsEv", 160039360},
     // CommandUtils
     {"_ZN12CommandUtils12getActorNameERK5Actor", 159774800},
+    // ConsoleInputReader
+    {"_ZN18ConsoleInputReader3runEPv", 71890192},
     // CraftHandlerCrafting
     {"_ZN20CraftHandlerCrafting18_handleCraftActionERK31ItemStackRequestActionCraftBase", 197828768},
     // CraftingDataPacketPayload
@@ -96,6 +98,8 @@ static constexpr std::array<std::pair<std::string_view, std::size_t>, 77> symbol
     {"_ZN16MinecraftPackets12createPacketE18MinecraftPacketIds", 140175216},
     // Mob
     {"_ZN3Mob9knockbackEP5ActorfffRK19KnockbackParameters", 191349696},
+    // NetworkSystem
+    {"_ZN13NetworkSystem23onNewIncomingConnectionERK17NetworkIdentifierONSt3__110shared_ptrI11NetworkPeerEE", 140204912},
     // PistonBlockActor
     {"_ZN16PistonBlockActor4tickER11BlockSource", 207194672},
     // Player

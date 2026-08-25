@@ -19,7 +19,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - `PlayerBucketActorEvent` and `PlayerShearActorEvent`, reporting the `actor`, the `original_bucket` or `item` used and the `hand`.
 - `PlayerRecipeBookSettingsChangeEvent`, reporting `recipe_book_type`, `is_open` and `is_filtering`.
 - `PlayerCraftItemEvent` for crafting in a crafting grid or straight from the recipe book, reporting the `recipe` being crafted and the `ingredients` a craft consumes plus writable `results` and `repetitions`. Ingredients are the items in the crafting grid, or the recipe's own when crafting from the recipe book, which never fills the grid. Setting `results` changes what the craft produces; cancelling blocks the craft and leaves the ingredients untouched.
-- `PlayerEditBookEvent` for editing a page of a book and quill or signing it, reporting the book metadata before and after the edit, the inventory `slot`, and whether the book is being signed. `new_book_meta` and `is_signing` are writable.
+- `PlayerEditBookEvent` for editing a page of a book and quill or signing it, reporting the book metadata before and after the edit, the inventory `slot`, and whether the book is being signed. `new_book_meta` and `is_signing` are writable; both metadata properties hand back a copy, so assign to `new_book_meta` rather than editing what you read from it. A title, an author and a generation only survive when the book is being signed, because a book and quill holds none of them. Cancelling leaves the book untouched and sends the slot back to the client, so it stops showing the edit it had already drawn.
 - `PlayerSetSpawnEvent` for a player's respawn point being set, reporting the `cause` (`BED`, `RESPAWN_ANCHOR`, `COMMAND`, `PLUGIN` or `UNKNOWN`) and a writable `location`. Cancelling leaves the respawn point untouched, though `/spawnpoint` still reports success and a respawn anchor still plays its sound. It does not fire when Bedrock clears a respawn point, so `/clearspawnpoint` and breaking the bed are both silent.
 - `PlayerToggleSneakEvent`, `PlayerToggleSprintEvent`, `PlayerToggleFlightEvent` and `PlayerToggleCrawlEvent`, carrying the new state in `is_sneaking`, `is_sprinting`, `is_flying` and `is_crawling`.
 - `ActorToggleSwimEvent` and `ActorToggleGlideEvent`, carrying the new state in `is_swimming` and `is_gliding`.
@@ -58,7 +58,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 #### Items
 
-- `Level.recipes`, a snapshot of the recipes the server has loaded, also reachable as `Server.recipes`. Each entry is a `ShapedRecipe`, `ShapelessRecipe`, `SmithingTransformRecipe`, `SmithingTrimRecipe`, `ComplexRecipe` or `FurnaceRecipe`, and reports its `recipe_id`, station `tag`, `result` and `ingredients`. Shaped recipes add `width` and `height`; smithing recipes add `template`, `base` and `addition`; furnace recipes add `input` and cover the `furnace`, `blast_furnace`, `smoker`, `campfire` and `soul_campfire` tags. `BlockCookEvent` now reports its furnace recipe when available. Bedrock does not retain furnace recipe identifiers after loading them, so their `recipe_id` is empty.
+- `Level.recipes`, a snapshot of the recipes the server has loaded, also reachable as `Server.recipes`. Each entry is a `ShapedRecipe`, `ShapelessRecipe`, `SmithingTransformRecipe`, `SmithingTrimRecipe`, `ComplexRecipe` or `FurnaceRecipe`, and reports its `id`, station `tag`, `result` and `ingredients`. Shaped recipes add `width` and `height`; smithing recipes add `template`, `base` and `addition`; furnace recipes add `input` and cover the `furnace`, `blast_furnace`, `smoker`, `campfire` and `soul_campfire` tags. `BlockCookEvent` now reports its furnace recipe when available. Bedrock does not retain furnace recipe identifiers after loading them, so their `id` is empty.
 - `RecipeIngredient`, describing what one ingredient slot accepts, with `test()` to check an item against it and a Bedrock-specific `count`. An ingredient is an `ExactIngredient` (one item and one data value), an `ItemTypeIngredient` (an item type, any data value), an `ItemTagIngredient` (anything carrying a tag), a `MolangIngredient` (whatever a Molang expression selects), an `ComplexAliasIngredient` (anything an id that predates the item flattening stands for, such as `minecraft:planks`). A slot the recipe leaves empty is `None`.
 - `WritableBookMeta`, `BookMeta` and `CrossbowMeta` item meta types.
 - `PotionMeta` for potions, splash potions and lingering potions, with `meta.base_potion_type`.
@@ -98,6 +98,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Changed
 
+#### Networking
+
+- Packet compression now uses libdeflate instead of zlib, which should improve performance on busy servers.
+
 #### JSON payloads
 
 - **BREAKING**: `ModalForm`'s submit callback receives the parsed response instead of a JSON string: a `JsonArray` in C++, a `JsonArray` (`list`) in Python. A Python handler doing `json.loads(data)` must drop the call, and a C++ one must stop parsing the string itself.
@@ -136,11 +140,19 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - **BREAKING**: `ActorDeathEvent` is now called for player deaths as well as every other mob. A listener that assumed it only saw non-player mobs should check `actor.type` or listen for `PlayerDeathEvent`.
 - `Block.set_type`, `BlockState.type`, `Server.create_block_data` and `Inventory.contains`/`contains_at_least`/`all`/`first`/`remove` take an `Identifier` (e.g. `BlockType.AIR`). Plain `"namespace:key"` strings are still accepted.
 - `str()` on `BlockType`, `Enchantment` and `ItemType` returns a plain `"namespace:key"` string instead of the underlying `Identifier` repr.
+- **BREAKING**: `Server::createBossBar()` is no longer `const`, since the server now keeps track of the boss bars it hands out. C++ plugins holding a `const Server &` need a non-const one; Python call sites are unchanged.
 
 #### Platform
 
 - **BREAKING**: The Docker image stores server data in `/data` instead of `/home/endstone/bedrock_server`. Update your volume mount accordingly (e.g. `-v ./data:/data`).
+- The console prompt now appears as soon as the server starts, right after the version banner, instead of only once the world has finished loading. Commands typed while the server is still starting are queued and run once it is ready, as they already were. Endstone no longer redirects the server's stdin during startup, so anything else reading it sees the real terminal throughout.
 - Dropped Python 3.10 support (end-of-life). Minimum version is now Python 3.11.
+
+### Removed
+
+#### Networking
+
+- **BREAKING**: `Server.port_v6` and `ServerListPingEvent.local_port_v6`. A server advertises one game port; the separate IPv6 port was rarely set and has no counterpart under NetherNet, which shares a single port across both families. Use `Server.port` and `ServerListPingEvent.local_port`. The IPv6 port field in the LAN advertisement is now passed through untouched rather than being rewritten from the event.
 
 ### Fixed
 
@@ -154,12 +166,16 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 #### API behaviour
 
 - Fixed `Dimension.actors` and `Level.actors` leaving out connected players.
+- Fixed cancelling `PlayerDropItemEvent` destroying the item when it was thrown from the hand.
 - Fixed `PlayerBedLeaveEvent` only being called when a player pressed the leave button. It now also fires when morning comes, when the bed is broken or obstructed, and when the player is woken by anything else, and the `bed` block it reports is the bed being slept in rather than the respawn point.
 - Fixed every vanilla command failing when dispatched through a `CommandSenderWrapper`, which did not report its own type.
 - Fixed `str()` on a `Translatable` giving an object repr instead of its text.
 - Fixed `Mob.has_attribute()` raising for a name that is not an attribute instead of answering `False`.
+- Fixed writing book metadata wiping the photo attached to a page and the filtered text the server keeps beside it. Pages you did not change now keep both.
 - Fixed `Enchantment.FORTUNE` missing from Python.
 - Fixed `ServerLoadEvent` missing its `ServerEvent` base in Python, and `LoadType.RELOAD` never being exposed.
+- Fixed a boss bar vanishing for a player who travelled to another dimension. The Bedrock client drops every boss bar it is showing once it rebuilds the world, and now gets the bars a player is in sent again as soon as it asks for them.
+- Fixed `BossBar.remove_player` hiding the bar from a player who was never added to it, and `BossBar.add_player` re-sending the bar to a player who was already in it.
 - Fixed `Plugin.default_permission` rejecting a string or a bool (`"operator"`, `"not op"`, `True`), which individual entries in `Plugin.permissions` already accepted.
 
 #### Type annotations

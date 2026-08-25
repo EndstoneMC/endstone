@@ -14,6 +14,7 @@
 
 #pragma once
 
+#include "bedrock/bedrock.h"
 #include "bedrock/core/threading/async.h"
 #include "bedrock/core/utility/binary_stream.h"
 #include "bedrock/forward.h"
@@ -47,6 +48,7 @@ public:
 protected:
     struct Dependencies;
     NetworkSystem(Dependencies &&);
+    ~NetworkSystem() override;
 
     Bedrock::NotNullNonOwnerPtr<NetworkSessionOwner> network_session_owner_;
     Bedrock::Threading::RecursiveMutex connections_mutex_;
@@ -59,6 +61,8 @@ public:
     [[nodiscard]] bool _isUsingNetherNetTransportLayer() const;                // Endstone: protected -> public
 
 private:
+    ENDSTONE_HOOK bool onNewIncomingConnection(const NetworkIdentifier &id,
+                                               std::shared_ptr<NetworkPeer> &&peer) override;  // Endstone: hook
     void _sendInternal(const NetworkIdentifier &id, const Packet &packet, const std::string &data);
     std::unique_ptr<RemoteConnector> remote_connector_;
     std::unique_ptr<ServerLocator> server_locator_;

@@ -53,7 +53,7 @@ public:
      *
      * @return the recipe identifier, or an empty string when it is unavailable
      */
-    [[nodiscard]] virtual const std::string &getRecipeId() const = 0;
+    [[nodiscard]] virtual const std::string &getId() const = 0;
 
     /**
      * Gets the station this recipe belongs to, such as `crafting_table`, `smithing_table` or `furnace`.
