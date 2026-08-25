@@ -14,13 +14,8 @@
 
 #pragma once
 
-namespace endstone::core {
-struct InternalDisconnectFlagComponent {};
-struct InternalRemoveFlagComponent {};
-struct InternalSignInteractFlagComponent {};
-struct InternalSignOpenFlagComponent {};
-struct InternalSignPlaceFlagComponent {};
-struct InternalSpawnChangeFlagComponent {};
-struct InternalTeleportFlagComponent {};
-struct MobHurtFlagComponent {};
-}  // namespace endstone::core
+struct DirtyTicksCounter {
+    int total_time;
+    int last_change;
+};
+static_assert(sizeof(DirtyTicksCounter) == 8);

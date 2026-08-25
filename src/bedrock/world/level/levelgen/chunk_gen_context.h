@@ -14,13 +14,27 @@
 
 #pragma once
 
-namespace endstone::core {
-struct InternalDisconnectFlagComponent {};
-struct InternalRemoveFlagComponent {};
-struct InternalSignInteractFlagComponent {};
-struct InternalSignOpenFlagComponent {};
-struct InternalSignPlaceFlagComponent {};
-struct InternalSpawnChangeFlagComponent {};
-struct InternalTeleportFlagComponent {};
-struct MobHurtFlagComponent {};
-}  // namespace endstone::core
+#include <optional>
+
+#include "bedrock/core/math/vec3.h"
+#include "bedrock/world/level/chunk_pos.h"
+#include "bedrock/world/level/dimension/dimension_type.h"
+#include "bedrock/world/level/level_seed.h"
+
+struct ChunkGenPlayerSnapshot {
+    Vec3 position;
+    float velocity_x;
+    float velocity_z;
+};
+static_assert(sizeof(ChunkGenPlayerSnapshot) == 20);
+
+struct ChunkGenContext {
+    ChunkPos chunk_position;
+    std::optional<ChunkGenPlayerSnapshot> nearest_player;
+    DimensionType dimension;
+    LevelSeed64 world_seed;
+    int concurrent_chunks;
+    int queue_depth;
+    bool was_loaded_from_disk;
+};
+static_assert(sizeof(ChunkGenContext) == 64);

@@ -17,19 +17,24 @@
 #include <array>
 #include <memory>
 #include <optional>
+#include <string>
 #include <unordered_map>
 #include <vector>
 
 #include "bedrock/bedrock.h"
 #include "bedrock/common_types.h"
+#include "bedrock/entity/weak_entity_ref.h"
 #include "bedrock/forward.h"
 #include "bedrock/platform/threading/mutex_details.h"
 #include "bedrock/platform/threading/spin_lock.h"
 #include "bedrock/world/level/block_pos.h"
 #include "bedrock/world/level/chunk/chunk_block_pos.h"
 #include "bedrock/world/level/chunk/chunk_state.h"
+#include "bedrock/world/level/chunk/dirty_ticks_counter.h"
+#include "bedrock/world/level/chunk/level_chunk_block_actor_storage.h"
 #include "bedrock/world/level/chunk/sub_chunk_storage.h"
 #include "bedrock/world/level/chunk_pos.h"
+#include "bedrock/world/level/levelgen/chunk_gen_context.h"
 #include "bedrock/world/level/tick.h"
 
 class Level;
@@ -69,6 +74,13 @@ enum class Entity : uint32_t;
 
 class LevelChunk {
 public:
+    struct Telemetry {
+        bool was_stored;
+        bool was_generated;
+        bool was_requested_inside_tick_range;
+        bool was_loaded_inside_tick_range;
+    };
+
     LevelChunk(Dimension &, const ChunkPos &, bool, SubChunkInitMode, bool);
 
     [[nodiscard]] const std::atomic<ChunkState> &getState() const;
@@ -80,6 +92,7 @@ public:
     [[nodiscard]] Dimension &getDimension() const;
     [[nodiscard]] Level &getLevel() const;
     [[nodiscard]] const Biome &getBiome(const ChunkBlockPos &pos) const;
+    [[nodiscard]] const LevelChunkBlockActorStorage &getBlockEntities() const;
 
 private:
     Bedrock::Threading::Mutex block_entity_access_lock_;
@@ -109,7 +122,6 @@ private:
     std::unique_ptr<BlockTickingQueue> tick_queue_;
     std::unique_ptr<BlockTickingQueue> random_tick_queue_;
     std::vector<SubChunk> sub_chunks_;
-    std::vector<std::unique_ptr<SpinLock>> sub_chunk_spin_locks_;
     LevelChunkBiomes biomes_;
     std::array<ColumnCachedData, 256> cached_data_;
     std::array<ChunkLocalHeight, 256> heightmap_;
@@ -119,10 +131,20 @@ private:
     std::unordered_map<std::uint16_t, std::uint16_t> biome_states_;  // opaque: <BiomeIdType, BiomeChunkState>
     bool has_cached_temperature_noise_;
     std::array<bool, 256> border_block_map_;
-    int current_instatick_;
-    std::uint32_t finalized_;  // opaque: LevelChunk::Finalization
     bool is_redstone_loaded_;
     bool owned_by_ticking_thread_;
     bool use_3d_biome_maps_;
-    // Remaining members (telemetry, entities, block entities, ...) are not reconstructed.
+    bool level_chunk_has_3d_biome_tag_;
+    int current_instatick_;
+    std::uint32_t finalized_;  // opaque: LevelChunk::Finalization
+    Telemetry telemetry_;
+    ChunkGenContext chunk_gen_context_;
+    DirtyTicksCounter full_chunk_dirty_ticks_counters_[6];
+    DirtyTicksCounter chunk_actors_dirty_ticks_counter_;
+    std::array<ChunkLocalHeight, 256> rain_heights_;
+    std::vector<WeakEntityRef> entities_;
+    std::vector<std::string> removed_actor_storage_keys_;
+    LevelChunkBlockActorStorage block_entities_;
+    // Remaining members (preserved block entities, volumes, metadata, ...) are not reconstructed.
 };
+static_assert(sizeof(LevelChunk::Telemetry) == 4);

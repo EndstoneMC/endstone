@@ -141,6 +141,7 @@ static_assert(_ITERATOR_DEBUG_LEVEL == 0,
 #include "event/player/player_level_change_event.h"
 #include "event/player/player_login_event.h"
 #include "event/player/player_move_event.h"
+#include "event/player/player_open_sign_event.h"
 #include "event/player/player_pickup_arrow_event.h"
 #include "event/player/player_pickup_experience_event.h"
 #include "event/player/player_pickup_item_event.h"

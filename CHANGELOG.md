@@ -22,6 +22,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - `PlayerCraftItemEvent` for crafting in a crafting grid or straight from the recipe book, reporting the `recipe` being crafted and the `ingredients` a craft consumes plus writable `results` and `repetitions`. Ingredients are the items in the crafting grid, or the recipe's own when crafting from the recipe book, which never fills the grid. Setting `results` changes what the craft produces; cancelling blocks the craft and leaves the ingredients untouched.
 - `PlayerEditBookEvent` for editing a page of a book and quill or signing it, reporting the book metadata before and after the edit, the inventory `slot`, and whether the book is being signed. `new_book_meta` and `is_signing` are writable; both metadata properties hand back a copy, so assign to `new_book_meta` rather than editing what you read from it. A title, an author and a generation only survive when the book is being signed, because a book and quill holds none of them. Cancelling leaves the book untouched and sends the slot back to the client, so it stops showing the edit it had already drawn.
 - `PlayerSetSpawnEvent` for a player's respawn point being set, reporting the `cause` (`BED`, `RESPAWN_ANCHOR`, `COMMAND`, `PLUGIN` or `UNKNOWN`) and a writable `location`. Cancelling leaves the respawn point untouched, though `/spawnpoint` still reports success and a respawn anchor still plays its sound. It does not fire when Bedrock clears a respawn point, so `/clearspawnpoint` and breaking the bed are both silent.
+- `PlayerOpenSignEvent` for a player beginning to edit a sign's text, reporting the `sign`, the `side` being edited and the `cause` (`PLACE`, `INTERACT`, `PLUGIN` or `UNKNOWN`). Cancelling it stops the sign editor from opening.
 - `PlayerToggleSneakEvent`, `PlayerToggleSprintEvent`, `PlayerToggleFlightEvent` and `PlayerToggleCrawlEvent`, carrying the new state in `is_sneaking`, `is_sprinting`, `is_flying` and `is_crawling`.
 - `ActorToggleSwimEvent` and `ActorToggleGlideEvent`, carrying the new state in `is_swimming` and `is_gliding`.
 - `ActorCollideWithActorEvent`, reporting both actors in `actors`. Cancelling it also stops boats and minecarts being boarded by walking into them.
@@ -44,6 +45,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - `Mob.is_swimming` and `Player.is_crawling`.
 - `Player.send_action_bar()` for sending a message above the hotbar.
 - `Player.respawn_location` for reading and writing where a player will respawn, or `None` when they have no valid respawn point. Bedrock does not persist yaw/pitch for a respawn point, so only the block coordinates and the dimension are kept.
+- `Player.open_sign()` and `Player.open_virtual_sign()` for opening a sign editor on a player's client. `open_sign()` takes a sign placed in the player's own dimension, reopens one the player is already editing, and fires `PlayerOpenSignEvent`; `open_virtual_sign()` opens the editor at any block position, with no sign required in the dimension, and fires nothing.
 
 #### Blocks
 
@@ -71,6 +73,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - `Dimension.mobs` and `Dimension.players`, both narrowing `Dimension.actors`.
 - Chunk loading API: `Dimension.load_chunk()`, `Dimension.unload_chunk()`, `Dimension.unload_chunk_request()`, `Dimension.is_chunk_loaded()` and `Dimension.is_chunk_generated()`, plus `Chunk.load()`, `Chunk.unload()` and `Chunk.is_loaded()`. Bedrock has no synchronous chunk load, so `load_chunk()` keeps the chunk resident from a later tick onwards and does not make it tick. `unload_chunk()` reports whether the chunk actually went away, while `unload_chunk_request()` only releases the hold.
 - Plugin chunk tickets: `Dimension.add_plugin_chunk_ticket()`, `remove_plugin_chunk_ticket()`, `remove_plugin_chunk_tickets()`, `get_plugin_chunk_tickets()` and `plugin_chunk_tickets`, with the same methods on `Chunk`. A ticket keeps a chunk loaded until it is removed or the owning plugin is disabled, and `unload_chunk()` leaves it alone.
+- `Chunk.block_actors`, the state of every block actor in a chunk — chests, signs, furnaces, spawners and the rest — mirroring Paper's `Chunk#getTileEntities()`. Reading it on a chunk that is not loaded gives an empty list rather than loading it.
 
 #### Commands and permissions
 
@@ -179,6 +182,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Fixed a boss bar vanishing for a player who travelled to another dimension. The Bedrock client drops every boss bar it is showing once it rebuilds the world, and now gets the bars a player is in sent again as soon as it asks for them.
 - Fixed `BossBar.remove_player` hiding the bar from a player who was never added to it, and `BossBar.add_player` re-sending the bar to a player who was already in it.
 - Fixed `Plugin.default_permission` rejecting a string or a bool (`"operator"`, `"not op"`, `True`), which individual entries in `Plugin.permissions` already accepted.
+- Fixed `Block.biome` reading the wrong part of a chunk, so it reported a biome that has nothing to do with the block, and could crash the server. Introduced in 0.11.7 along with BDS 1.26.40 support.
 
 #### Type annotations
 
