@@ -1098,11 +1098,7 @@ void EndstonePlayer::clearHiddenActors(Plugin &plugin)
 
 void EndstonePlayer::sendPlayerListRemove(const ::Player &player) const
 {
-    const auto *identifier = player.getPersistentComponent<UserEntityIdentifierComponent>();
-    if (!identifier) {
-        return;
-    }
-
+    const auto identifier = player.getPersistentComponent<UserEntityIdentifierComponent>();
     auto packet = MinecraftPackets::createPacket(MinecraftPacketIds::PlayerList);
     auto &pk = static_cast<PlayerListPacket &>(*packet);
     pk.payload.entries.emplace_back(
