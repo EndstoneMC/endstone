@@ -150,6 +150,15 @@ extra = 0
 pattern = "56 57 53 48 81 EC ? ? ? ? 48 89 D7 48 89 CE 48 8B 91 ? ? ? ? 48 8B 89 ? ? ? ? 48 39 CA 0F 85 ? ? ? ? 48 8B 4E ? 48 8D 5E ? 48 8B 01 48 8B 40 ? 48 89 DA FF 15"
 
 [[signatures]]
+name = "?onNewIncomingConnection@NetworkSystem@@EEAA_NAEBVNetworkIdentifier@@$$QEAV?$shared_ptr@VNetworkPeer@@@std@@@Z"
+relative = false
+extra = 0
+# 1. NetworkSystem's first base is Connector::ConnectionCallbacks, so its overrides sit at the head of the
+#    primary vtable: onNewIncomingConnection is the 1st slot after the destructor
+# 2. confirm by the body: it walks mConnections comparing NetworkIdentifier before building the peer chain
+pattern = "55 41 57 41 56 41 55 41 54 56 57 53 48 81 EC ? ? ? ? 48 8D AC 24 ? ? ? ? 48 C7 45 50 ? ? ? ? 4D 89 C6 48 89 D7 48 89 CE"
+
+[[signatures]]
 name = "?_log_va@LogDetails@BedrockLog@@AEAAXW4LogAreaID@@IPEBDHH1PEAD@Z"
 relative = false
 extra = 0
@@ -218,7 +227,6 @@ rip_offset = 29
 name = "?getInteraction@BucketableComponent@@QEAA?AVInteractionResult@@AEAVActor@@AEAVPlayer@@AEAVActorInteraction@@@Z"
 relative = false
 extra = 0
-# --pdb resolves this one by name; the pattern below is only the fallback for a PDB-less scan.
 # 1. find bytes "6D 69 6E 65 63 72 61 66 74 3A 77 61 74 65 72 5F 62 75 63 6B 65 74 00"
 #    = "minecraft:water_bucket\0"; it is unique and its data xref sits in the VanillaItemNames static
 #    initialiser
@@ -367,6 +375,27 @@ extra = 0
 pattern = "55 41 57 41 56 41 54 56 57 53 48 81 EC ? ? ? ? 48 8D AC 24 ? ? ? ? 48 C7 45 ? ? ? ? ? 48 89 D3 48 89 CE 48 89 D1 BA ? ? ? ? E8"
 
 [[signatures]]
+name = "?run@ConsoleInputReader@@SAPEAXPEAX@Z"
+relative = false
+extra = 0
+# BDS has no name for this in the PDB either - it is the std::thread::_Invoke instantiation for the lambda
+# ConsoleInputReader's constructor hands to _beginthreadex, and its decorated name embeds the source line
+# (ConsoleInputReader.cpp:30:46), so it must be cut as a pattern rather than looked up. The name is
+# Endstone's own and only has to match the detour exported by endstone_runtime.dll.
+# 1. find bytes "53 74 61 72 74 69 6E 67 20 53 65 72 76 65 72 00" = "Starting Server\0" (unique); its lone
+#    data xref is a `lea` inside DedicatedServer::start (see that entry)
+# 2. the reader is constructed a few hundred bytes below, right after the Version/Branch/Commit ID banner
+#    and before server.properties is read; scan down for the `call [__imp__beginthreadex]`
+# 3. the `lea r8, <fn>` feeding that call is the thread entry - three call sites share the bare
+#    `lea r8 / xor ecx / xor edx / mov r9, rbx / call` shape, so the pattern carries the two argument
+#    stores above it; do NOT cut the prologue, which 741 other thread proxies share byte for byte
+# 4. confirm the body: it reads the reader out of `[rcx]`, calls GetStdHandle(-10) then GetConsoleMode,
+#    and getlines into std::wcin
+pattern = "48 8D 85 ? ? ? ? 48 89 44 24 ? C7 44 24 ? ? ? ? ? 4C 8D 05 ? ? ? ? 31 C9 31 D2 49 89 D9 FF 15"
+rip_relative = true
+rip_offset = 23
+
+[[signatures]]
 name = "?fromRecipes@CraftingDataPacketPayload@@SA?AU1@AEBVRecipes@@_N@Z"
 relative = false
 extra = 0
@@ -391,6 +420,21 @@ extra = 0
 pattern = "E8 ? ? ? ? 89 C6 48 8D 8D ? ? ? ? E8 ? ? ? ? 48 8D 4D"
 rip_relative = true
 rip_offset = 1
+
+[[signatures]]
+name = "?getOrCreateDimension@DimensionManager@@QEAA?AV?$WeakRef@VDimension@@@@V?$basic_string_view@DU?$char_traits@D@std@@@std@@@Z"
+relative = false
+extra = 0
+# 1. find the string "T *Bedrock::NonOwnerPointer<IDimensionFactory>::_get() const [T = IDimensionFactory]"
+#    (unique); it has six data xrefs from exactly two functions - two in
+#    _registerCustomDimensionWithFactory and four here
+# 2. this is the larger of the pair (~0x71a): it opens with `id = mDimensionNameIdStore->getId(name);
+#    if (id == 0xFFFF) return {};`, looks the id up in mDimensionRegistry, and only then falls back to
+#    mDimensionFactory->create(name) / initializeDimension / registerDimension and fires
+#    mOnNewDimensionCreatedPublisher
+# 3. walk up to the prologue; confirm the `mov rcx, [rcx+8]` that loads mDimensionNameIdStore at +0x8
+#    (its only caller is the DimensionType overload, which resolves the name via NameIdStore::getName)
+pattern = "55 41 57 41 56 41 55 41 54 56 57 53 48 81 EC ? ? ? ? 48 8D AC 24 ? ? ? ? 0F 29 B5 ? ? ? ? 48 C7 85 ? ? ? ? FE FF FF FF 4C 89 C3 49 89 D4 48 89 CF 48 8B 49 08"
 
 [[signatures]]
 name = "?serverRegisterCustomDimension@DimensionManager@@QEAA?AV?$optional@UDimensionType@@@std@@V?$basic_string_view@DU?$char_traits@D@std@@@3@AEBVUUID@mce@@@Z"
@@ -446,12 +490,10 @@ rip_offset = 1
 name = "?getInteraction@InteractComponent@@QEAA?AVInteractionResult@@AEAVActor@@AEAVPlayer@@AEAVActorInteraction@@@Z"
 relative = false
 extra = 0
-# 1. the name is real, so `dump_symbols.py --pdb` resolves it outright; the steps below are the
-#    no-PDB fallback
-# 2. no usable string - the interact text lives in the behaviour pack, not the image. Anchor on the
+# 1. no usable string - the interact text lives in the behaviour pack, not the image. Anchor on the
 #    two entity type ids the telemetry branch compares against: `3D 74 0B 03 00` (cmp eax, 30B74h)
 #    and `3D 2C 0B 03 00` (cmp eax, 30B2Ch), seven bytes apart. Two sites in .text pair them
-# 3. pick the right one: getInteraction is the site that, within 0x80 bytes of the pair, does
+# 2. pick the right one: getInteraction is the site that, within 0x80 bytes of the pair, does
 #    `lea <r>, [<r>+0x48]` (Interaction::mInteractText) ahead of the ActorInteraction::setInteractText call
 # 4. confirm identity from the body: the Interaction array walk uses the 0x140 stride (sizeof(Interaction))
 #    and calls _runInteraction per candidate
@@ -472,12 +514,10 @@ pattern = "56 57 53 48 83 EC ? 41 8B 40"
 name = "?getInteraction@ArmorStand@@UEAA?AVInteractionResult@@AEAVPlayer@@AEAVActorInteraction@@AEBVVec3@@@Z"
 relative = false
 extra = 0
-# 1. the name is real, so `dump_symbols.py --pdb` resolves it outright; the steps below are the
-#    no-PDB fallback
-# 2. find bytes "61 63 74 69 6F 6E 2E 69 6E 74 65 72 61 63 74 2E 61 72 6D 6F 72 73 74 61 6E 64 2E 65 71 75 69 70 00"
+# 1. find bytes "61 63 74 69 6F 6E 2E 69 6E 74 65 72 61 63 74 2E 61 72 6D 6F 72 73 74 61 6E 64 2E 65 71 75 69 70 00"
 #    = "action.interact.armorstand.equip\0" in .rdata (unique); it has exactly one rip-relative xref in
 #    .text - the RUNTIME_FUNCTION in .pdata whose range covers that xref gives the function start
-# 3. cross-check with the sibling string "action.interact.armorstand.pose\0": its single xref lands in the
+# 2. cross-check with the sibling string "action.interact.armorstand.pose\0": its single xref lands in the
 #    same function (the sneak/pose branch), and no other function references either string
 # 4. confirm identity from the body: it calls Actor::getInteraction first, tests `byte [rsi] & 1` and
 #    takes the early-out on success, and later builds the two interact-text std::strings around
@@ -573,30 +613,27 @@ extra = 0
 pattern = "55 56 57 53 48 83 EC ? 48 8D 6C 24 ? 48 C7 45 ? ? ? ? ? 44 89 C3 89 D7"
 
 [[signatures]]
-name = "?handleCraftAction@ItemStackRequestActionCraftHandler@@QEAA?AW4ItemStackNetResult@@AEBVItemStackRequestActionCraftBase@@@Z"
+name = "?_handleCraftAction@CraftHandlerCrafting@@MEAA?AW4ItemStackNetResult@@AEBVItemStackRequestActionCraftBase@@@Z"
 relative = false
 extra = 0
-# 1. the class emits no RTTI descriptor and the function carries no string, so anchor on the member walk
-#    that opens it: find the byte run "48 8B 41 08 48 8B 80 E8 00 00 00 48 85 C0 74"
-#    = `mov rax, [rcx+8]` (mRequestActionHandler) / `mov rax, [rax+0E8h]` (mScreenValidation) /
-#    `test rax, rax` / `jz`. Exactly two functions in .text contain it, and both are members of
-#    ItemStackRequestActionCraftHandler
-# 2. tell them apart: the short one (`push rsi` / `sub rsp, 20h` / `mov rdx, [rcx+18h]` / `mov al, 1` /
-#    `cmp byte [rdx+60h], 0`) reads mCraftHandler (+18h) and CraftHandlerBase::mIsCraftRequest (+60h) -
-#    that is isCraftRequest(). The target is the other one, which continues
-#    `mov rcx, [rax+0F8h]` (mContainerScreenValidator) / `mov rax, [rcx]` / `mov rax, [rax+10h]` /
-#    `call cs:__guard_dispatch_icall_fptr` - ContainerScreenValidator::isCraftingImplemented, vtable slot 2
+# 1. the class emits no RTTI descriptor and the function carries no string, so anchor on the action-type
+#    switch that opens the body: find the byte run "0F B6 42 08 83 F8 0E" = `movzx eax, byte [rdx+8]`
+#    (ItemStackRequestAction::mActionType) / `cmp eax, 0Eh` (CraftCreative). CraftHandlerCrafting is the
+#    only craft handler that dispatches on CraftCreative
+# 2. confirm identity: the compares that follow are `cmp eax, 0Dh` (CraftRecipeAuto, the recipe book) and
+#    `cmp eax, 0Ch` (CraftRecipe, the grid), separated by `mov r15b, 6` - the InvalidCraftRequest result
+#    the default arm falls back to
 # 3. walk back to the entry: the preceding bytes are CC padding, then
-#    `push rbp/r15/r14/r13/r12/rsi/rdi/rbx` / `sub rsp, 108h` / `lea rbp, [rsp+80h]` /
-#    `mov qword [rbp+88h], -2` (the EH state slot) / `mov rbx, rdx` / `mov rsi, rcx`
-# 4. confirm identity in the body: it switches on `movzx eax, byte [rbx+8]`
-#    (ItemStackRequestAction::mActionType) with `cmp eax, 0Fh` (CraftRecipeOptional) and `cmp eax, 0Ch`
-#    (CraftRecipe), materialises the ItemStackNetResult immediates 7 (InvalidCraftRequest), 0Fh
-#    (RequestAlreadyInProgress) and 10h (FailedToInitSparseContainer) into one result register, and the
-#    CraftRecipeOptional branch allocates 0A0h bytes for the ContainerValidationCraftInputs it builds
-# 5. uniqueness: the pattern below matches exactly once in 1.26.44. It does not match 1.26.32.2 - that
-#    build has one push fewer (no r13) and a 110h frame - so re-cut it rather than porting it backwards
-pattern = "55 41 57 41 56 41 55 41 54 56 57 53 48 81 EC ? ? ? ? 48 8D AC 24 ? ? ? ? 48 C7 85 ? ? ? ? FE FF FF FF 48 89 D3 48 89 CE 48 8B 41 08 48 8B 80 E8 00 00 00 48 85 C0 74 ? 48 8B 88 F8 00 00 00 48 8B 01 48 8B 40 10 FF 15"
+#    `push rbp/r15/r14/r13/r12/rsi/rdi/rbx` / `sub rsp, 338h` / `lea rbp, [rsp+80h]` /
+#    `mov qword [rbp+2B0h], -2` (the EH state slot) / `mov rdi, rdx` / `mov rsi, rcx`
+# 4. cross-check the body: the CraftRecipe arm stores FullContainerName 0Dh (CraftingInputContainer) and
+#    calls ItemStackRequestActionHandler::_getOrInitSparseContainer, then derives the grid from
+#    `movzx ebx, byte [rsi+68h]` (CraftHandlerCrafting::mWorkbench) as `lea eax, ds:1Ch[rax*4]`
+#    (28 + mWorkbench*4, the first crafting slot) and `lea ecx, [rbx+rbx*4]` / `add ecx, 4`
+#    (mWorkbench*5 + 4, the slot count)
+# 5. it shares its prologue with ItemStackRequestActionCraftHandler::handleCraftAction, so the pattern has
+#    to run past `mov rsi, rcx` into the switch - that is where the two diverge
+pattern = "55 41 57 41 56 41 55 41 54 56 57 53 48 81 EC ? ? ? ? 48 8D AC 24 ? ? ? ? 48 C7 85 ? ? ? ? FE FF FF FF 48 89 ? 48 89 ? 0F B6 42 08 83 F8 0E 0F 84 ? ? ? ? 83 F8 0D 0F 84 ? ? ? ? 41 B7 06 83 F8 0C"
 
 [[signatures]]
 name = "?randomTick@LeavesBlock@@QEBAXAEAVBlockRandomTickEvent@BlockEvents@@@Z"
@@ -779,6 +816,74 @@ extra = 0
 # 2. its lone data xref (a validateBlockPos label arg) is a `lea` inside this function
 # 3. walk up to the prologue
 pattern = "55 41 57 41 56 41 54 56 57 53 48 81 EC ? ? ? ? 48 8D AC 24 ? ? ? ? 44 0F 29 9D ? ? ? ? 44 0F 29 95 ? ? ? ? 44 0F 29 8D ? ? ? ? 44 0F 29 45"
+
+[[signatures]]
+name = "?setSpawnBlockRespawnPosition@Player@@QEAA_NAEBVBlockPos@@UDimensionType@@@Z"
+relative = false
+extra = 0
+# 1. find bytes "31 20 73 65 74 53 70 61 77 6E 50 6F 69 6E 74 00" = "1 setSpawnPoint\0". It occurs exactly ONCE in
+#    read-only data and is the label BDS hands to ActorValueValidation::validateBlockPos
+# 2. take its rip-relative lea references in .text. On Windows there is exactly one and it is inside this
+#    function; on Linux there are three - Player::readAdditionalSaveData (~0x3ae0, far larger than the
+#    other two), this function (~0x2c7) and the 2-arg Player::setRespawnPosition (~0x283)
+# 3. separate the two small ones by their direct call sites, which is decisive and identical on both
+#    platforms: this function has exactly THREE direct callers (Player::setBedRespawnPosition,
+#    RespawnAnchorBlock::_trySetSpawn and SimulatedPlayer::create) and none of them references
+#    "commands.spawnpoint.success.single", whereas setRespawnPosition has exactly two and one of them does
+# 4. confirm the body: it opens by calling Actor::getPosition and Actor::getAABB, rounds the AABB's max Y
+#    through mce::Math::ceil to build a BlockPos, and builds SetSpawnPositionPacketPayload from
+#    (dimension, &mPlayerRespawnPoint.mPlayerPosition, &mPlayerRespawnPoint.mSpawnBlockPos). It returns bool,
+#    where setRespawnPosition returns void
+# 5. the pattern below starts at the function's first byte, which is also its .pdata / .eh_frame entry point
+# Verified against 1.26.44.3 (the version at the top of this file): the pattern matches EXACTLY ONCE in
+# .text, that match is the function's start address, and it resolves to the offset committed in
+# src/bedrock/symbols/.
+pattern = "41 57 41 56 41 54 56 57 55 53 48 81 EC A0 00 00 00 0F 29 BC 24 ? ? ? ? 0F 29 B4 24 ? ? ? ? 44 89 C5"
+
+[[signatures]]
+name = "?setRespawnPosition@Player@@QEAAXAEBVBlockPos@@UDimensionType@@@Z"
+relative = false
+extra = 0
+# NOTE: the prologue alone (`41 56 56 57 53 48 83 EC 78`) matches 1436 times in 1.26.44.3, so the pattern is
+# deliberately carried past it into the body - the `mov rsi, rcx; mov eax, [rdx]` argument setup and the
+# first `cmp eax, [rcx+mPlayerRespawnPoint]; jne` of the "did anything change?" test. The member offset and
+# the jump displacement are wildcarded so a layout shift does not break it gratuitously, while the shape
+# still pins it to one function. Do not shorten it back to the prologue: find_signature takes the lowest
+# .text hit and would bind silently.
+# 1. same anchor family as setSpawnBlockRespawnPosition above, but do not rely on it alone: on Windows this
+#    function carries no rip-relative reference to "1 setSpawnPoint" at all, and on Linux it is one of three
+#    that do
+# 2. the version-stable anchor is the caller. Find "commands.spawnpoint.success.single\0" (exactly one
+#    occurrence in read-only data); its lone referring function is SpawnPointCommand::execute
+# 3. this function is the target of a direct `call rel32` from SpawnPointCommand::execute. It has exactly TWO
+#    direct callers binary-wide - that one and ScriptModuleMinecraft::ScriptPlayer::setSpawnPoint - which is
+#    what separates it from setSpawnBlockRespawnPosition (three callers, none of them the command)
+# 4. confirm the body: unlike setSpawnBlockRespawnPosition it never calls Actor::getPosition or
+#    Actor::getAABB. It opens by comparing the incoming BlockPos and dimension against mPlayerRespawnPoint,
+#    references BlockPos::MIN and VanillaDimensions::Undefined, clears mSpawnBlockPos, and builds
+#    SetSpawnPositionPacketPayload through the (SpawnPositionType, dimension, BlockPos) ctor. It returns void
+# 5. it sits immediately after setSpawnBlockRespawnPosition in .text on both platforms - a useful sanity
+#    check, never the primary anchor
+# Verified against 1.26.44.3 (the version at the top of this file): the pattern matches EXACTLY ONCE in
+# .text, that match is the function's start address, and it resolves to the offset committed in
+# src/bedrock/symbols/.
+pattern = "41 56 56 57 53 48 83 EC 78 48 89 CE 8B 02 3B 81 ? ? 00 00 75 ?"
+
+[[signatures]]
+name = "?stopSleepInBed@Player@@UEAAX_N0@Z"
+relative = false
+extra = 0
+# 1. find bytes "33 20 73 74 6F 70 53 6C 65 65 70 20 62 65 64 20 70 6F 73 00" = "3 stopSleep bed pos\0"
+#    (unique)
+# 2. its lone data xref (an ActorValueValidation::_fireTelemetryEvent caller arg) is a `lea` 0x1c2 past
+#    the entry of this function
+# 3. walk up to the prologue - the nearest 16-aligned, CC-padded entry above that `lea`
+# 4. confirm identity at the entry: the body opens on the isSleeping() dispatch (`mov rax, [rcx]` /
+#    `mov rax, [rax+148h]` / `call cs:__guard_dispatch_icall_fptr` / `test al, al` / `jz` - the early
+#    return for a player who is not sleeping), then loads the 3FE666663F19999Ah bounding-box immediate at
+#    +0E7h and reaches BedBlock::setOccupied / BedBlock::findWakeupPosition / BedBlockActor::stopSleepingOn
+# 5. cross-check the neighbourhood: startSleepInBed sits 1550h below it in the same TU
+pattern = "55 41 57 41 56 41 55 41 54 56 57 53 48 81 EC ? ? ? ? 48 8D AC 24 ? ? ? ? 0F 29 B5 ? ? ? ? 48 C7 45 ? FE FF FF FF 44 89 C7 89 D3 48 89 CE 48 8B 01 48 8B 80 ? ? ? ? FF 15"
 
 [[signatures]]
 name = "?take@Player@@QEAA_NAEAVActor@@HH@Z"
@@ -984,8 +1089,7 @@ extra = 0
 #    LevelSoundEvent ids chosen by the riptide level, while the other arm builds a thrown_trident actor and
 #    plays the next id along
 # 4. cross-check against the vtable: the TARGET is entry 87 of TridentItem's vftable ??_7TridentItem@@6B@,
-#    one lower than Linux because the MSVC ABI spends a single slot on the deleting destructor. When a PDB
-#    is available, dump_symbols.py --pdb resolves this name directly and the pattern is only the fallback
+#    one lower than Linux because the MSVC ABI spends a single slot on the deleting destructor
 # 5. uniqueness: the pattern runs from the prologue through "mov cl, 1Eh" + call and matches exactly once
 #    in .text of 1.26.44 (and once in 1.26.32.2). No byte-identical sibling exists - no other Item override
 #    loads 1Eh into the getEnchantLevel argument
@@ -1056,3 +1160,35 @@ extra = 0
 # prologue through the `lea rdx, result` / `call Actor::getAttribute` that reads EXPERIENCE; the
 # wildcarded operands absorb the Player::EXPERIENCE lea displacement and the call target
 pattern = "55 41 57 41 56 41 54 56 57 53 48 81 EC 00 02 00 00 48 8D AC 24 80 00 00 00 44 0F 29 85 70 01 00 00 0F 29 BD 60 01 00 00 0F 29 B5 50 01 00 00 48 C7 85 48 01 00 00 FE FF FF FF 89 D7 48 89 CE 4C 8D 05 ? ? ? ? 48 8D 55 A0 E8"
+
+[[signatures]]
+name = "?addTransientScopedArea@TickingAreasManager@@QEAA?AUScopedContext@1@UDimensionType@@AEBV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@_KVUUID@mce@@AEBUBounds@@@Z"
+relative = false
+extra = 0
+# 1. find bytes "63 72 65 61 74 65 54 69 63 6B 69 6E 67 41 72 65 61 00" = "createTickingArea\0" (unique);
+#    its lone data xref sits in ScriptTickingAreaManager::bind, the script class binding that registers
+#    each API method name beside a pointer to its Scripting::Reflection::MemberFunction::call thunk
+# 2. take the thunk paired with that name in the binding table; it is the only vanilla caller of the
+#    TARGET, which it invokes once it has unpacked the script arguments
+# 3. confirm identity from the body: it _Try_emplace-s the dimension's mPendingAreas bucket and fills a
+#    PendingArea whose mEntityId is -1 and whose mScope is engaged, and it has an early-out returning a
+#    ScopedContext with mUuid = mce::UUID::EMPTY when mActiveAreas holds no entry for that dimension
+# 4. cross-check: this is the only ungated way to load a chunk nowhere near a player - the PendingArea is
+#    promoted by TickingAreasManager::update into a TickingArea whose own ChunkViewSource runs in
+#    ChunkSourceViewGenerateMode::GenerateAll, the one mode that skips ChunkTickRangeManager
+# 5. removeScopedAreas (below) sits ~0x510 further on in the same TickingAreasManager cluster
+pattern = "55 41 57 41 56 41 55 41 54 56 57 53 48 81 EC C8 00 00 00 48 8D AC 24 80 00 00 00 48 C7 45 40 FE FF FF FF 4C 89 CF 44 89 C3 48 89 D6"
+
+[[signatures]]
+name = "?removeScopedAreas@TickingAreasManager@@QEAAXAEBV?$vector@VUUID@mce@@V?$allocator@VUUID@mce@@@std@@@std@@@Z"
+relative = false
+extra = 0
+# 1. find bytes "72 65 6D 6F 76 65 41 6C 6C 54 69 63 6B 69 6E 67 41 72 65 61 73 00" = "removeAllTickingAreas\0"
+#    (unique); its lone data xref sits in ScriptTickingAreaManager::bind beside the pointer to that
+#    method's MemberFunction::call thunk
+# 2. that thunk calls ScriptTickingAreaManager::_removeTickingAreas, which calls the TARGET; the sibling
+#    "removeTickingArea" binding reaches the same _removeTickingAreas, so either name gets you there
+# 3. confirm identity from the body: it walks the caller's vector<mce::UUID> and drops every pending and
+#    active area whose mScope is engaged and whose mUID matches - that release is what unloads the chunks
+# 4. cross-check: it sits ~0x510 past addTransientScopedArea in the same TickingAreasManager cluster
+pattern = "55 41 57 41 56 41 55 41 54 56 57 53 48 81 EC 88 00 00 00 48 8D AC 24 80 00 00 00 48 C7 45 00 FE FF FF FF 48 89 D3 48 89 CE C7 45 A8"

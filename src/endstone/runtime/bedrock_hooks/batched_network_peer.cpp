@@ -252,13 +252,10 @@ VisibilityResult filterHiddenActors(const PacketHeader &header, ReadOnlyBinarySt
                  ? VisibilityResult::Drop
                  : VisibilityResult::Unchanged;
     case MinecraftPacketIds::PlayerList: {
-        auto &entries = static_cast<PlayerListPacket &>(*packet).payload.entries;
-        for (const auto &entry : entries) {
-            if (const auto *add = std::get_if<PlayerListPacketPayload::AddEntry>(&entry)) {
-                player.cachePlayerListEntry(*add);
-            }
-        }
+        auto &payload = static_cast<PlayerListPacket &>(*packet).payload;
+        player.updatePlayerListCache(payload);
 
+        auto &entries = payload.entries;
         const auto count = entries.size();
         std::erase_if(entries, [&player](const auto &entry) {
             const auto *add = std::get_if<PlayerListPacketPayload::AddEntry>(&entry);
@@ -324,11 +321,11 @@ void BatchedNetworkPeer::sendPacket(const std::string &data, Reliability reliabi
                          header.getPacketId() == MinecraftPacketIds::ResourcePackStack ||
                          header.getPacketId() == MinecraftPacketIds::MapData ||
                          header.getPacketId() == MinecraftPacketIds::SetScore;
-    const auto filterable = header.getPacketId() == MinecraftPacketIds::AddActor ||
-                            header.getPacketId() == MinecraftPacketIds::AddItemActor ||
-                            header.getPacketId() == MinecraftPacketIds::AddPainting ||
-                            header.getPacketId() == MinecraftPacketIds::AddPlayer ||
-                            header.getPacketId() == MinecraftPacketIds::PlayerList;
+    const auto filterable = header.getPacketId() == MinecraftPacketIds::PlayerList ||
+                            (server.hasHiddenActors() && (header.getPacketId() == MinecraftPacketIds::AddActor ||
+                                                          header.getPacketId() == MinecraftPacketIds::AddItemActor ||
+                                                          header.getPacketId() == MinecraftPacketIds::AddPainting ||
+                                                          header.getPacketId() == MinecraftPacketIds::AddPlayer));
     if (!patched && !filterable && !server.getEndstonePluginManager().isEventRegistered<endstone::PacketSendEvent>()) {
         ENDSTONE_HOOK_CALL_ORIGINAL(&BatchedNetworkPeer::sendPacket, this, data, reliability, compressible);
         return;

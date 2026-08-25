@@ -23,6 +23,7 @@ public:
     static const int MAX_TITLE_LENGTH = 16;
     static const int MAX_PAGE_LENGTH = 256;
     static const int MAX_PAGES = 50;
+    static const int MAX_GENERATION;
     static const std::string TAG_TITLE;
     static const std::string TAG_AUTHOR;
     static const std::string TAG_XUID;

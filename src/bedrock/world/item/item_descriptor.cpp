@@ -19,6 +19,7 @@
 #include "bedrock/bedrock.h"
 #include "bedrock/world/item/item.h"
 #include "bedrock/world/item/registry/item_registry_manager.h"
+#include "bedrock/world/level/block/bedrock_block_names.h"
 
 struct InternalItemDescriptor : ItemDescriptor::BaseDescriptor {
     InternalItemDescriptor(WeakPtr<Item> &&item, std::int16_t aux_value);
@@ -207,6 +208,17 @@ bool ItemDescriptor::isValid(bool should_resolve) const
     }
     return impl_ != nullptr;
 }
+bool ItemDescriptor::isNull() const
+{
+    if (impl_ && impl_->shouldResolve()) {
+        impl_ = std::move(impl_->resolve());
+    }
+    if (!impl_) {
+        return true;
+    }
+    return !impl_->forEachItemUntil(
+        [](const Item &item, std::int16_t) { return item.getFullNameHash() != BedrockBlockNames::Air; });
+}
 
 std::int16_t ItemDescriptor::getId() const
 {
@@ -240,6 +252,14 @@ std::string ItemDescriptor::getFullName() const
         return empty;
     }
     return impl_->getFullName();
+}
+
+ItemDescriptor::InternalType ItemDescriptor::getType() const
+{
+    if (impl_ && impl_->shouldResolve()) {
+        impl_ = std::move(impl_->resolve());
+    }
+    return impl_ ? impl_->getType() : InternalType::Invalid;
 }
 
 ItemDescriptor::ItemEntry::ItemEntry(const Item *item, std::int16_t aux_value) : item(item), aux_value(aux_value) {}

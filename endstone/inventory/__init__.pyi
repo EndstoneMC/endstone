@@ -14,16 +14,29 @@ from endstone.potion import PotionType
 __all__ = [
     "BookMeta",
     "BookMetaGeneration",
+    "ComplexAliasIngredient",
+    "ComplexRecipe",
     "CrossbowMeta",
     "EquipmentSlot",
+    "ExactIngredient",
     "Inventory",
     "ItemFactory",
     "ItemMeta",
     "ItemStack",
+    "ItemTagIngredient",
     "ItemType",
+    "ItemTypeIngredient",
     "MapMeta",
+    "MolangIngredient",
     "PlayerInventory",
     "PotionMeta",
+    "Recipe",
+    "RecipeIngredient",
+    "ShapedRecipe",
+    "ShapelessRecipe",
+    "SmithingRecipe",
+    "SmithingTransformRecipe",
+    "SmithingTrimRecipe",
     "WritableBookMeta",
 ]
 
@@ -178,6 +191,151 @@ class ItemType:
     def get(name: Identifier[ItemType] | str) -> ItemType:
         """
         Attempts to get the `ItemType` with the given name.
+        """
+
+class RecipeIngredient:
+    """
+    Represents a potential item match within a recipe. All choices within a recipe must be satisfied for it to be
+    craftable.
+    """
+    def test(self, item: ItemStack) -> bool: ...
+    @property
+    def count(self) -> int:
+        """
+        How many items this ingredient consumes.
+
+        Bedrock records a count on each ingredient where Java repeats the ingredient instead.
+        """
+
+class ExactIngredient(RecipeIngredient):
+    """
+    Represents an ingredient that matches one item with one exact data value.
+    """
+    @property
+    def item_stack(self) -> ItemStack: ...
+
+class ItemTypeIngredient(RecipeIngredient):
+    """
+    Represents an ingredient that matches an item type, whatever its data value.
+    """
+    @property
+    def item_type(self) -> ItemType:
+        """
+        The item type that this ingredient will match.
+        """
+
+class ItemTagIngredient(RecipeIngredient):
+    """
+    Represents an ingredient that matches any item carrying a tag.
+    """
+    @property
+    def item_tag(self) -> str:
+        """
+        The item tag that this ingredient will match.
+
+        Bedrock keeps item tags server-side, so the tag is reported rather than the item types in it.
+        """
+
+class MolangIngredient(RecipeIngredient):
+    """
+    Represents an ingredient that matches the items a Molang expression selects.
+    """
+    @property
+    def expression(self) -> str:
+        """
+        The Molang expression that this ingredient will match.
+        """
+
+class ComplexAliasIngredient(RecipeIngredient):
+    """
+    Represents an ingredient that matches any item an id stands for.
+    """
+    @property
+    def alias(self) -> str:
+        """
+        The alias that this ingredient will match.
+
+        The id predates the item flattening, such as `minecraft:planks`, and stands for every item it was split into. It is
+        not an item tag, and the items are not reported.
+        """
+
+class Recipe:
+    """
+    Represents some type of crafting recipe.
+    """
+    @property
+    def result(self) -> ItemStack:
+        """
+        The result of this recipe.
+        """
+
+    @property
+    def ingredients(self) -> list[RecipeIngredient | None]: ...
+    @property
+    def id(self) -> str:
+        """
+        The identifier of this recipe, such as `minecraft:crafting_table`.
+        """
+
+    @property
+    def tag(self) -> str:
+        """
+        The crafting station this recipe belongs to, such as `crafting_table`.
+        """
+
+class ShapedRecipe(Recipe):
+    """
+    Represents a shaped (ie normal) crafting recipe.
+    """
+    @property
+    def width(self) -> int: ...
+    @property
+    def height(self) -> int: ...
+
+class ShapelessRecipe(Recipe):
+    """
+    Represents a shapeless recipe, where the arrangement of the ingredients on the crafting grid does not matter.
+    """
+
+class ComplexRecipe(Recipe):
+    """
+    Represents a complex recipe which has imperative server-defined behavior, eg armor dyeing.
+    """
+
+class SmithingRecipe(Recipe):
+    """
+    Represents a smithing recipe.
+    """
+    @property
+    def base(self) -> RecipeIngredient | None:
+        """
+        The base recipe item.
+        """
+
+    @property
+    def addition(self) -> RecipeIngredient | None:
+        """
+        The addition recipe item.
+        """
+
+class SmithingTransformRecipe(SmithingRecipe):
+    """
+    Represents a smithing transform recipe.
+    """
+    @property
+    def template(self) -> RecipeIngredient | None:
+        """
+        The template recipe item.
+        """
+
+class SmithingTrimRecipe(SmithingRecipe):
+    """
+    Represents a smithing trim recipe.
+    """
+    @property
+    def template(self) -> RecipeIngredient | None:
+        """
+        The template recipe item.
         """
 
 class ItemMeta:
@@ -384,7 +542,7 @@ class WritableBookMeta(ItemMeta):
         Sets the specified page in the book. Pages of the book must be contiguous.
 
         Note:
-            The data can be up to 1024 characters in length, additional characters are truncated.
+            The data can be up to 256 characters in length, additional characters are truncated.
 
         Pages are 1-indexed.
 

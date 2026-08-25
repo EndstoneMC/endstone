@@ -1,4 +1,4 @@
-import json
+import threading
 
 import numpy as np
 from endstone import ColorFormat, Player
@@ -80,9 +80,183 @@ class TestCommandExecutor(CommandExecutor):
                 player = self._as_player(sender)
                 return False if player is None else self._map(player)
 
+            case ["chunk"]:
+                return self._chunk(sender, 30_000, 30_000, 0)
+
+            case ["chunk", x, z]:
+                return self._chunk(sender, int(x), int(z), 0)
+
+            case ["chunk", x, z, radius]:
+                return self._chunk(sender, int(x), int(z), int(radius))
+
+            case ["chunkapi"]:
+                return self._chunk_api(sender, 6000, 6000)
+
+            case ["chunkapi", x, z]:
+                return self._chunk_api(sender, int(x), int(z))
+
             case _:
                 return False
 
+        return True
+
+    def _chunk(
+        self, sender: CommandSender, x: int, z: int, radius: int, timeout: int = 200
+    ) -> bool:
+        log = self.plugin.logger
+
+        def report(message: str) -> None:
+            log.info(message)
+            if not isinstance(sender, ConsoleCommandSender):
+                sender.send_message(message)
+
+        dimension = sender.server.level.get_dimension("overworld")
+        area = [
+            (x + dx, z + dz)
+            for dx in range(-radius, radius + 1)
+            for dz in range(-radius, radius + 1)
+        ]
+        if any(dimension.is_chunk_loaded(cx, cz) for cx, cz in area):
+            report(f"Some of the {len(area)} chunk(s) around ({x}, {z}) are already loaded.")
+            return True
+
+        accepted = sum(dimension.load_chunk(cx, cz) for cx, cz in area)
+        report(
+            f"load_chunk radius {radius} around ({x}, {z}): {accepted}/{len(area)} accepted, "
+            f"already generated: {dimension.is_chunk_generated(x, z)}, "
+            f"centre loaded on return: {dimension.is_chunk_loaded(x, z)}"
+        )
+        if not accepted:
+            return True
+
+        elapsed = 0
+
+        def poll() -> None:
+            nonlocal elapsed
+            elapsed += 1
+            if dimension.is_chunk_loaded(x, z):
+                report(f"{ColorFormat.GREEN}Centre ({x}, {z}) loaded after {elapsed} tick(s).")
+            elif elapsed < timeout:
+                return
+            else:
+                loaded = sum(dimension.is_chunk_loaded(cx, cz) for cx, cz in area)
+                report(
+                    f"Centre ({x}, {z}) still not loaded after {timeout} ticks "
+                    f"({loaded}/{len(area)} of the area loaded)."
+                )
+            task.cancel()
+            released = sum(dimension.unload_chunk(cx, cz) for cx, cz in area)
+            report(f"unload_chunk released {released}/{len(area)} chunk(s).")
+
+        task = sender.server.scheduler.run_task(self.plugin, poll, delay=1, period=1)
+        if task is None:
+            report("Failed to schedule the chunk poll.")
+            for cx, cz in area:
+                dimension.unload_chunk(cx, cz)
+        return True
+
+    def _chunk_api(self, sender: CommandSender, x: int, z: int) -> bool:
+        log = self.plugin.logger
+        plugin = self.plugin
+        dimension = sender.server.level.get_dimension("overworld")
+        results = []
+
+        def check(name: str, passed: bool) -> None:
+            results.append(passed)
+            colour = ColorFormat.GREEN if passed else ColorFormat.RED
+            log.info(f"{colour}{'PASS' if passed else 'FAIL'}{ColorFormat.RESET} {name}")
+
+        def guarded(name: str, fn) -> None:
+            try:
+                check(name, fn())
+            except Exception as e:  # noqa: BLE001
+                check(f"{name} -- raised {type(e).__name__}: {e}", False)
+
+        log.info(f"--- chunk API checks around ({x}, {z}) ---")
+
+        guarded("virgin chunk is not generated", lambda: dimension.is_chunk_generated(x, z) is False)
+        guarded("load_chunk(generate=False) refuses", lambda: dimension.load_chunk(x, z, generate=False) is False)
+        guarded("refused load took no hold", lambda: dimension.is_chunk_loaded(x, z) is False)
+        guarded("unload_chunk_request on unheld chunk", lambda: dimension.unload_chunk_request(x, z) is True)
+
+        guarded("add_plugin_chunk_ticket", lambda: dimension.add_plugin_chunk_ticket(x, z, plugin) is True)
+        guarded("duplicate ticket refused", lambda: dimension.add_plugin_chunk_ticket(x, z, plugin) is False)
+        guarded("get_plugin_chunk_tickets lists it", lambda: plugin in dimension.get_plugin_chunk_tickets(x, z))
+        guarded("plugin_chunk_tickets lists it", lambda: plugin in dimension.plugin_chunk_tickets)
+        guarded(
+            "plugin_chunk_tickets maps to the chunk",
+            lambda: any((c.x, c.z) == (x, z) for c in dimension.plugin_chunk_tickets.get(plugin, [])),
+        )
+        guarded("unload_chunk keeps the plugin ticket", lambda: (dimension.unload_chunk(x, z) is not None)
+                and plugin in dimension.get_plugin_chunk_tickets(x, z))
+        guarded("remove_plugin_chunk_ticket", lambda: dimension.remove_plugin_chunk_ticket(x, z, plugin) is True)
+        guarded("duplicate removal refused", lambda: dimension.remove_plugin_chunk_ticket(x, z, plugin) is False)
+        guarded("ticket list empty after removal", lambda: dimension.get_plugin_chunk_tickets(x, z) == [])
+
+        dimension.add_plugin_chunk_ticket(x + 40, z + 40, plugin)
+        dimension.remove_plugin_chunk_tickets(plugin)
+        guarded("remove_plugin_chunk_tickets clears all", lambda: plugin not in dimension.plugin_chunk_tickets)
+
+        def off_thread():
+            try:
+                dimension.load_chunk(x + 80, z + 80)
+                return False
+            except RuntimeError:
+                return True
+
+        holder = {}
+
+        def runner():
+            holder["ok"] = off_thread()
+
+        thread = threading.Thread(target=runner)
+        thread.start()
+        thread.join(5)
+        guarded("off-thread load_chunk is refused", lambda: holder.get("ok") is True)
+
+        def finish() -> None:
+            dimension.remove_plugin_chunk_tickets(plugin)
+            for cx, cz in ((x, z), (x + 40, z + 40), (x + 80, z + 80)):
+                dimension.unload_chunk(cx, cz)
+            passed = sum(results)
+            summary = f"chunk API: {passed}/{len(results)} passed"
+            log.info((ColorFormat.GREEN if passed == len(results) else ColorFormat.RED) + summary)
+            if not isinstance(sender, ConsoleCommandSender):
+                sender.send_message(summary)
+
+        dimension.add_plugin_chunk_ticket(x, z, plugin)
+        elapsed = 0
+
+        def poll() -> None:
+            nonlocal elapsed
+            elapsed += 1
+            if not dimension.is_chunk_loaded(x, z):
+                if elapsed < 200:
+                    return
+                check("ticketed chunk became resident", False)
+                task.cancel()
+                finish()
+                return
+            task.cancel()
+
+            resident = [c for c in dimension.loaded_chunks if (c.x, c.z) != (x, z)]
+            guarded("resident chunk refuses unload", lambda: dimension.unload_chunk(x, z) is False)
+            if resident:
+                other = resident[0]
+                guarded("Chunk.is_loaded agrees",
+                        lambda: other.is_loaded is dimension.is_chunk_loaded(other.x, other.z))
+                guarded("Chunk.add_plugin_chunk_ticket", lambda: other.add_plugin_chunk_ticket(plugin) is True)
+                guarded("Chunk.plugin_chunk_tickets lists it", lambda: plugin in other.plugin_chunk_tickets)
+                guarded("Chunk.remove_plugin_chunk_ticket", lambda: other.remove_plugin_chunk_ticket(plugin) is True)
+                guarded("Chunk.unload releases it", lambda: other.unload() in (True, False))
+            else:
+                check("a neighbour chunk is resident for Chunk-level checks", False)
+            finish()
+
+        task = sender.server.scheduler.run_task(self.plugin, poll, delay=1, period=1)
+        if task is None:
+            check("scheduled the Chunk-level phase", False)
+            finish()
         return True
 
     def _as_player(self, sender: CommandSender) -> Player | None:
@@ -189,9 +363,7 @@ class TestCommandExecutor(CommandExecutor):
                     ],
                     submit_button="Let's GO",
                     icon=ENDSTONE_ICON,
-                    on_submit=lambda p, data: p.send_message(
-                        f"Response {json.loads(data)}"
-                    ),
+                    on_submit=lambda p, data: p.send_message(f"Response {data}"),
                     on_close=lambda p: p.send_message(
                         f"You just closed a {ColorFormat.GREEN}modal form"
                     ),

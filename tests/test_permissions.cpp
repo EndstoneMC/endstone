@@ -54,11 +54,8 @@ public:
         return {};
     }
 
-    [[nodiscard]] const std::type_info &getClassTypeId() const override { return typeid(Permissible); }
-    [[nodiscard]] bool isInstanceOf(const std::type_info &target) const override
-    {
-        return target == typeid(Permissible);
-    }
+    [[nodiscard]] endstone::ClassInfo getClassInfo() const override { return typeid(Permissible); }
+    [[nodiscard]] bool isInstanceOf(endstone::ClassInfo target) const override { return target == typeid(Permissible); }
 
     int recalculated = 0;
 };
@@ -165,4 +162,30 @@ TEST(PermissionTest, UnregisteredPermissionHasNoPermissibles)
     const auto perm = std::make_shared<Permission>("endstone.test");
     EXPECT_TRUE(perm->getPermissibles().empty());
     EXPECT_THROW(auto parent = perm->addParent("endstone", true), std::runtime_error);
+}
+
+TEST(PermissionAttachmentInfoTest, SnapshotSurvivesTheOwnerClearingIt)
+{
+    testing::NiceMock<MockPlugin> plugin;
+    const auto permissible = std::make_shared<FakePermissible>();
+    const NotNull<PermissionAttachment> attachment = permissible->addAttachment(plugin);
+    attachment->setPermission("endstone.test", true);
+
+    std::unordered_map<std::string, NotNull<PermissionAttachmentInfo>> owned;
+    owned.insert_or_assign(
+        "endstone.test", std::make_shared<PermissionAttachmentInfo>(permissible, "endstone.test", attachment, true));
+
+    std::unordered_set<NotNull<PermissionAttachmentInfo>> snapshot;
+    for (const auto &entry : owned) {
+        snapshot.insert(entry.second);
+    }
+
+    owned.clear();
+
+    for (const auto &info : snapshot) {
+        EXPECT_EQ(info->getPermission(), "endstone.test");
+        const auto att = info->getAttachment();
+        ASSERT_TRUE(att != nullptr);
+        EXPECT_TRUE(att->getPermissions().at("endstone.test"));
+    }
 }

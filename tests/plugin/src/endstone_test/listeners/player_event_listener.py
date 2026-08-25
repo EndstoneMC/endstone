@@ -7,9 +7,11 @@ from endstone.event import (
     PlayerBucketActorEvent,
     PlayerChatEvent,
     PlayerCommandEvent,
+    PlayerCraftItemEvent,
     PlayerDeathEvent,
     PlayerDimensionChangeEvent,
     PlayerDropItemEvent,
+    PlayerEditBookEvent,
     PlayerEmoteEvent,
     PlayerExpChangeEvent,
     PlayerGameModeChangeEvent,
@@ -32,6 +34,7 @@ from endstone.event import (
     PlayerRecipeBookSettingsChangeEvent,
     PlayerRespawnEvent,
     PlayerRiptideEvent,
+    PlayerSetSpawnEvent,
     PlayerShearActorEvent,
     PlayerSkinChangeEvent,
     PlayerTeleportEvent,
@@ -514,4 +517,42 @@ class PlayerEventListener(EventListener):
             is_flying=event.is_flying,
             player_is_flying=event.player.is_flying,
             allow_flight=event.player.allow_flight,
+        )
+
+    @event_handler
+    def on_player_craft_item(self, event: PlayerCraftItemEvent):
+        self.record(
+            event,
+            f"{event.player.name} crafts {event.recipe.id} x{event.repetitions}",
+            always_log=True,
+            player=event.player.name,
+            recipe_id=str(event.recipe.id),
+            repetitions=event.repetitions,
+            ingredients=[str(i.type) for i in event.ingredients],
+            results=[str(r.type) for r in event.results],
+        )
+
+    @event_handler
+    def on_player_edit_book(self, event: PlayerEditBookEvent):
+        self.record(
+            event,
+            f"{event.player.name} edits a book in slot {event.slot} (signing: {event.is_signing})",
+            always_log=True,
+            player=event.player.name,
+            slot=event.slot,
+            is_signing=event.is_signing,
+            previous_pages=len(event.previous_book_meta.pages),
+            new_pages=len(event.new_book_meta.pages),
+        )
+
+    @event_handler
+    def on_player_set_spawn(self, event: PlayerSetSpawnEvent):
+        self.record(
+            event,
+            f"{event.player.name} sets spawn to {event.location} ({event.cause})",
+            always_log=True,
+            player=event.player.name,
+            cause=str(event.cause),
+            xyz=(event.location.x, event.location.y, event.location.z),
+            dimension=str(event.location.dimension.id),
         )

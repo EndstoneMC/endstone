@@ -15,11 +15,13 @@
 #pragma once
 
 #include <chrono>
+#include <cstddef>
 #include <memory>
 #include <string>
 #include <thread>
 #include <typeindex>
 #include <unordered_map>
+#include <vector>
 
 #include "bedrock/core/utility/pub_sub/subscription.h"
 #include "bedrock/resources/resource_pack_repository_interface.h"
@@ -34,6 +36,7 @@
 #include "endstone/core/scheduler/scheduler.h"
 #include "endstone/core/scoreboard/scoreboard.h"
 #include "endstone/core/signal_handler.h"
+#include "endstone/core/type.h"
 #include "endstone/server.h"
 
 class RakNetConnector;
@@ -41,9 +44,10 @@ class RemoteConnector;
 class ServerInstance;
 
 namespace endstone::core {
+class EndstoneBossBar;
 class EndstoneConsoleCommandSender;
 class EndstoneIpBanList;
-class EndstoneMetrics;
+class Metrics;
 class EndstonePlayer;
 class EndstonePlayerBanList;
 class EndstoneServer : public Server {
@@ -75,8 +79,10 @@ public:
 
     [[nodiscard]] Scheduler &getScheduler() const override;
     [[nodiscard]] EndstoneScheduler &getEndstoneScheduler() const;
+    [[nodiscard]] NotNull<MetricsBase> createMetrics(Plugin &plugin, int service_id) override;
 
     [[nodiscard]] Level &getLevel() const override;
+    [[nodiscard]] std::vector<NotNull<Recipe>> getRecipes() const override;
     [[nodiscard]] EndstoneLevel *getEndstoneLevel() const;
 
     [[nodiscard]] std::vector<NotNull<Player>> getOnlinePlayers() const override;
@@ -86,7 +92,6 @@ public:
     [[nodiscard]] Nullable<Player> getPlayer(std::string name) const override;
 
     [[nodiscard]] int getPort() const override;
-    [[nodiscard]] int getPortV6() const override;
     [[nodiscard]] bool getOnlineMode() const override;
     void shutdown() override;
     void reload() override;
@@ -107,21 +112,22 @@ public:
     float getCurrentTickUsage() override;
     float getAverageTickUsage() override;
     [[nodiscard]] std::chrono::system_clock::time_point getStartTime() override;
-    [[nodiscard]] NotNull<BossBar> createBossBar(std::string title, BarColor color, BarStyle style) const override;
+    [[nodiscard]] NotNull<BossBar> createBossBar(std::string title, BarColor color, BarStyle style) override;
     [[nodiscard]] NotNull<BossBar> createBossBar(std::string title, BarColor color, BarStyle style,
-                                                 std::vector<BarFlag> flags) const override;
+                                                 std::vector<BarFlag> flags) override;
     [[nodiscard]] NotNull<BlockData> createBlockData(BlockTypeId type) const override;
     [[nodiscard]] NotNull<BlockData> createBlockData(BlockTypeId type, BlockStates block_states) const override;
     [[nodiscard]] PlayerBanList &getBanList() const override;
     [[nodiscard]] IpBanList &getIpBanList() const override;
     [[nodiscard]] ServiceManager &getServiceManager() const override;
-    [[nodiscard]] IRegistry *_getRegistry(const std::type_info &type) const override;
+    [[nodiscard]] IRegistry *_getRegistry(ClassInfo type) const override;
     [[nodiscard]] MapView *getMap(std::int64_t id) const override;
     [[nodiscard]] MapView &createMap(const NotNull<Dimension> &dimension) const override;
 
     [[nodiscard]] NotNull<EndstoneScoreboard> getPlayerBoard(const NotNull<EndstonePlayer> &player) const;
     void setPlayerBoard(const NotNull<EndstonePlayer> &player, NotNull<Scoreboard> scoreboard);
     void removePlayerBoard(const NotNull<EndstonePlayer> &player);
+    void updateBossBars(const NotNull<EndstonePlayer> &player);
 
     void tick(std::uint64_t current_tick, const std::function<void()> &tick_function);
     void init(ServerInstance &server_instance);
@@ -132,6 +138,7 @@ public:
     [[nodiscard]] bool getAllowClientPacks() const;
     [[nodiscard]] bool logCommands() const;
     [[nodiscard]] bool isServerTextEnabled(ServerTextEvent event) const;
+    [[nodiscard]] bool hasHiddenActors() const;
 
     [[nodiscard]] ServerInstance &getServer() const;
     [[nodiscard]] RemoteConnector &getRemoteConnector() const;
@@ -160,10 +167,12 @@ private:
     std::unique_ptr<EndstoneScheduler> scheduler_;
     std::unique_ptr<EndstoneCommandMap> command_map_;
     std::unique_ptr<EndstoneLevel> level_;
-    std::unordered_map<std::type_index, std::unique_ptr<IRegistry>> registries_;
+    std::unordered_map<ClassInfo, std::unique_ptr<IRegistry>> registries_;
     Nullable<EndstoneScoreboard> scoreboard_;
-    std::unique_ptr<EndstoneMetrics> metrics_;
+    std::unique_ptr<Metrics> metrics_;
+    std::unordered_map<int, NotNull<MetricsBase>> plugin_metrics_;
     std::unordered_map<UUID, NotNull<EndstoneScoreboard>> player_boards_;
+    std::vector<std::weak_ptr<EndstoneBossBar>> boss_bars_;
     std::chrono::system_clock::time_point start_time_;
     IResourcePackRepository *resource_pack_repository_ = nullptr;
     std::unordered_map<PackIdVersion, std::string> content_keys_;
@@ -175,6 +184,7 @@ private:
     float current_usage_ = 0.0F;
     float average_usage_[SharedConstants::TicksPerSecond] = {0.0F};
     // TODO(config): move the following the a separate class/struct
+    std::size_t hidden_actor_count_ = 0;
     bool allow_client_packs_ = false;
     bool log_commands_ = true;
     ServerTextSettings text_settings_;

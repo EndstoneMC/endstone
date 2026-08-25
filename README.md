@@ -120,7 +120,7 @@ We welcome contributions from the community! Whether it's bug reports, feature r
 
 - **Found a bug?** Open an [issue](https://github.com/EndstoneMC/endstone/issues)
 - **Want to contribute code?** Submit a [pull request](https://github.com/EndstoneMC/endstone/pulls)
-- **Want to support the project?** [Buy me a coffee](https://ko-fi.com/EndstoneMC)
+- **Want to support the project?** [Become a sponsor](https://github.com/sponsors/EndstoneMC)
 
 ## License
 

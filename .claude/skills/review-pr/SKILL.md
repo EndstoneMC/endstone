@@ -663,6 +663,32 @@ explanatory comments, rationale narration and "LLM notes" are all findings.
 **10.7** Draft PRs SHOULD still be reviewed, and the report MUST lead with the
 fact that they are drafts.
 
+**10.8** The PR MUST NOT declare free helper functions in a core header. This is
+cheap to check and easy to miss, because each one looks harmless on its own:
+grep `src/endstone/core/**.h` for declarations at namespace scope. Before this
+rule there were none, so any hit is the PR's.
+
+Two shapes cover almost every case:
+
+- **Converting between a bedrock type and its Endstone wrapper** belongs on the
+  wrapper as a `static fromMinecraft(...)` / `toMinecraft(...)`. That is what
+  `EndstoneItemStack`, `EndstoneSkin`, `EndstoneGameMode` and
+  `EndstoneAttributeInstance` already do, and it is what CraftBukkit does from
+  the other side - it patches `toBukkitRecipe(NamespacedKey)` onto the NMS
+  `Recipe` rather than adding a loose converter.
+- **A function used once** belongs inline at its call site, or in an anonymous
+  namespace in the `.cpp` if it is genuinely local. Hoisting it into a header
+  widens the API for no caller.
+
+*Confirmed: a recipe PR grew `makeRecipe`, `makeRecipes`, `findRecipe` and
+`makeIngredient` as free functions in two core headers. `makeRecipes` and
+`makeIngredient` had one call site each, `findRecipe` two in the same function.
+They collapsed into one `EndstoneRecipeData::fromMinecraft` pair plus an inlined
+loop, and the two `.cpp` files they lived in disappeared.*
+
+This is the review-side check for the **Helpers** rule in `add-api`; §4.13
+carries the same point for one-use lambdas inside a function.
+
 ## 11. Evidence discipline
 
 **11.1** Every finding MUST cite both sides: where it is - `path/to/file.h:42`,

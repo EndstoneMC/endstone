@@ -30,6 +30,8 @@
 #include "endstone/core/logger_factory.h"
 #include "endstone/core/player.h"
 #include "endstone/core/server.h"
+#include "endstone/level/dimension.h"
+#include "endstone/level/level.h"
 #include "endstone/event/event.h"
 #include "endstone/event/event_handler.h"
 #include "endstone/event/handler_list.h"
@@ -494,6 +496,9 @@ void EndstonePluginManager::disablePlugin(Plugin &plugin)
         plugin.getPluginLoader().disablePlugin(plugin);
         server_.getScheduler().cancelTasks(plugin);
         server_.getServiceManager().unregisterAll(plugin);
+        for (const auto &dimension : server_.getLevel().getDimensions()) {
+            dimension->removePluginChunkTickets(plugin);
+        }
         for (auto &[name, handler] : event_handlers_) {
             handler.unregister(plugin);
         }

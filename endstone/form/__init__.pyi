@@ -1,6 +1,6 @@
 import collections.abc
 
-from endstone import Player
+from endstone import JsonArray, Player
 from endstone.lang import Translatable
 
 __all__ = [
@@ -439,7 +439,7 @@ class ModalForm:
         controls: list[Dropdown | Label | Slider | StepSlider | TextInput | Toggle | Divider | Header] | None = None,
         submit_button: str | Translatable | None = None,
         icon: str | None = None,
-        on_submit: collections.abc.Callable[[Player, str], None] | None = None,
+        on_submit: collections.abc.Callable[[Player, JsonArray], None] | None = None,
         on_close: collections.abc.Callable[[Player], None] | None = None,
     ) -> None: ...
     def add_control(
@@ -458,13 +458,13 @@ class ModalForm:
     @title.setter
     def title(self, arg1: str | Translatable) -> ModalForm: ...
     @property
-    def on_submit(self) -> collections.abc.Callable[[Player, str], None]:
+    def on_submit(self) -> collections.abc.Callable[[Player, JsonArray], None]:
         """
         The on submit callback of the form.
         """
 
     @on_submit.setter
-    def on_submit(self, arg1: collections.abc.Callable[[Player, str], None]) -> ModalForm: ...
+    def on_submit(self, arg1: collections.abc.Callable[[Player, JsonArray], None]) -> ModalForm: ...
     @property
     def on_close(self) -> collections.abc.Callable[[Player], None]:
         """

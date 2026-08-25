@@ -45,7 +45,7 @@ public:
     /**
      * Sets the specified page in the book. Pages of the book must be contiguous.
      *
-     * @note The data can be up to 1024 characters in length, additional characters are truncated.
+     * @note The data can be up to 256 characters in length, additional characters are truncated.
      *
      * Pages are 1-indexed.
      *

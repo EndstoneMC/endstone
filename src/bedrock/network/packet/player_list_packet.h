@@ -63,6 +63,6 @@ class PlayerListPacket : public Packet {
 public:
     static constexpr bool SHARE_WITH_HANDLER = false;
     PlayerListPacketPayload payload;
-    SerializationMode serialization_mode{SerializationMode::SideBySide_LogOnMismatch};
+    SerializationMode serialization_mode{SerializationMode::CerealOnly};
 };
 BEDROCK_STATIC_ASSERT_SIZE(PlayerListPacket, 80, 80);

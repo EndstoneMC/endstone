@@ -2,37 +2,15 @@ import platform
 from pathlib import Path
 from typing import Any, Callable, Dict
 
+import lazy_loader as lazy
 import psutil
 
+from endstone._python.metrics import DrilldownPie, SimplePie
 from endstone.plugin import Plugin
 
 from ._arch import host_arch
-from .base import MetricsBase
-from .charts import (
-    AdvancedBarChart,
-    AdvancedPie,
-    CustomChart,
-    DrilldownPie,
-    MultiLineChart,
-    SimpleBarChart,
-    SimplePie,
-    SingleLineChart,
-)
-from .config import MetricsConfig
-
-__all__ = [
-    "Metrics",
-    "AdvancedBarChart",
-    "AdvancedPie",
-    "CustomChart",
-    "DrilldownPie",
-    "MultiLineChart",
-    "SimpleBarChart",
-    "SimplePie",
-    "SingleLineChart",
-    "MetricsBase",
-    "MetricsConfig",
-]
+from ._base import MetricsBase
+from ._config import MetricsConfig
 
 
 def _get_python_version() -> dict[str, dict[str, int]]:
@@ -114,9 +92,10 @@ class Metrics(MetricsBase):
         Args:
             service_data (Dict[str, Any]): The dict to append data to.
         """
-        if self._plugin._description is None:
+        description = self._plugin._get_description()
+        if description is None:
             raise RuntimeError("Plugin description is not available")
-        service_data["pluginVersion"] = self._plugin._description.version
+        service_data["pluginVersion"] = description.version
 
     def submit_task(self, task: Callable[[], None]) -> None:
         self._plugin.server.scheduler.run_task(self._plugin, task)
@@ -126,3 +105,20 @@ class Metrics(MetricsBase):
 
     def log_error(self, message: str, exception: Exception) -> None:
         self._plugin.logger.warning(f"{message}: {exception}")
+
+
+__getattr__, __dir__, __all__ = lazy.attach(
+    "endstone._python",
+    submod_attrs={
+        "metrics": [
+            "AdvancedBarChart",
+            "AdvancedPie",
+            "CustomChart",
+            "MultiLineChart",
+            "SimpleBarChart",
+            "SingleLineChart",
+        ]
+    },
+)
+
+__all__.extend(["DrilldownPie", "Metrics", "MetricsBase", "MetricsConfig", "SimplePie"])

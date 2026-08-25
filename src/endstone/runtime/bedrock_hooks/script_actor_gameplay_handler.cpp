@@ -20,7 +20,6 @@
 #include "endstone/core/block/block.h"
 #include "endstone/core/damage/damage_source.h"
 #include "endstone/core/entity/components/flag_components.h"
-#include "endstone/core/player.h"
 #include "endstone/core/server.h"
 #include "endstone/event/actor/actor_change_block_event.h"
 #include "endstone/event/actor/actor_damage_event.h"
@@ -46,13 +45,6 @@ bool handleEvent(const ActorDiedEvent &event)
 bool handleEvent(const ActorRemovedEvent &event)
 {
     if (auto *actor = WeakEntityRef(event.entity).tryUnwrap<::Actor>(); actor) {
-        const auto unique_id = actor->getOrCreateUniqueID().raw_id;
-        const auto runtime_id = actor->getRuntimeID().raw_id;
-        const auto &server = endstone::core::EndstoneServer::getInstance();
-        for (const auto &player : server.getOnlinePlayers()) {
-            player.cast<endstone::core::EndstonePlayer>()->removeActorVisibility(unique_id, runtime_id);
-        }
-
         if (actor->isPlayer()) {
             // Don't call for player
             return true;
