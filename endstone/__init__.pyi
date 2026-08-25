@@ -534,20 +534,6 @@ class Player(Mob):
             `True` if the command was successful, `False` otherwise.
         """
 
-    def send_block_update(self, location: Location, block_actor_state: BlockActorState) -> None:
-        """
-        Sends a block entity state change to this player.
-
-        This fakes a block entity state change for a user at the given location. This will not actually change the world
-        in any way.
-
-        The state is sent only to this player and does not update the world.
-
-        Args:
-            location: The location of the changed block.
-            block_actor_state: The new block entity state.
-        """
-
     @property
     def respawn_location(self) -> Location | None:
         """
@@ -562,6 +548,20 @@ class Player(Mob):
 
     @respawn_location.setter
     def respawn_location(self, arg1: Location | None) -> None: ...
+    def send_block_update(self, location: Location, block_actor_state: BlockActorState) -> None:
+        """
+        Sends a block entity state change to this player.
+
+        This fakes a block entity state change for a user at the given location. This will not actually change the world
+        in any way.
+
+        The state is sent only to this player and does not update the world.
+
+        Args:
+            location: The location of the changed block.
+            block_actor_state: The new block entity state.
+        """
+
     @property
     def is_sneaking(self) -> bool:
         """

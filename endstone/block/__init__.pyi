@@ -12,8 +12,8 @@ from endstone.level import Dimension, Location
 
 __all__ = [
     "Biome",
-    "BlockActorState",
     "Block",
+    "BlockActorState",
     "BlockData",
     "BlockFace",
     "BlockState",
