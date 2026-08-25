@@ -574,7 +574,7 @@ class CauldronLevelChangeEvent(BlockEvent, Cancellable):
         """
         The actor which did this, or `None`.
 
-        This is always `None`, because Bedrock does not report which actor changed a cauldron.
+        Only a player interacting with the cauldron is reported. Every other change reports `None`.
         """
 
     @property
@@ -582,7 +582,8 @@ class CauldronLevelChangeEvent(BlockEvent, Cancellable):
         """
         The reason for the change.
 
-        This is always `ChangeReason.UNKNOWN`, because Bedrock does not report why a cauldron changed.
+        Only a player interacting with the cauldron is attributed. Every other change reports
+        `ChangeReason.UNKNOWN`.
         """
 
     @property

@@ -14,7 +14,15 @@
 
 #pragma once
 
+#include "bedrock/world/level/block_pos.h"
+#include "endstone/event/block/cauldron_level_change_event.h"
+
 namespace endstone::core {
+struct InternalCauldronInteractionComponent {
+    Nullable<Actor> actor;
+    BlockPos pos;
+    CauldronLevelChangeEvent::ChangeReason reason = CauldronLevelChangeEvent::ChangeReason::Unknown;
+};
 struct InternalDisconnectFlagComponent {};
 struct InternalRemoveFlagComponent {};
 struct InternalSpawnChangeFlagComponent {};

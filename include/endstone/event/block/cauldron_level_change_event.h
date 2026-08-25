@@ -49,11 +49,11 @@ public:
         ArmorWash,
         /** A player washed a shulker box. */
         ShulkerWash,
-        /** An actor was extinguished. */
+        /** An actor was extinguished. Never reported, so such a change arrives as Unknown. */
         Extinguish,
         /** The cauldron evaporated. Bedrock never evaporates a cauldron, so this is never reported. */
         Evaporate,
-        /** The cauldron was filled by a natural fluid source, e.g. rain or dripstone. */
+        /** The cauldron was filled by rain or dripstone. Never reported, so such a change arrives as Unknown. */
         NaturalFill,
         /** The cause is unknown. */
         Unknown,
@@ -68,7 +68,7 @@ public:
     /**
      * Gets the actor which did this.
      *
-     * Bedrock does not report which actor changed a cauldron, so this is always nullptr.
+     * Only a player interacting with the cauldron is reported. Every other change reports nullptr.
      *
      * @return the actor which did this, or nullptr if there is none
      */
@@ -77,7 +77,8 @@ public:
     /**
      * Gets the reason for the change.
      *
-     * Bedrock does not report why a cauldron changed, so this is always ChangeReason::Unknown.
+     * Only a player interacting with the cauldron is attributed. Every other change reports
+     * ChangeReason::Unknown.
      *
      * @return the reason for the change
      */
