@@ -537,28 +537,6 @@ extra = 0
 pattern = "55 41 57 41 56 41 55 41 54 56 57 53 48 81 EC 78 04 00 00 48 8D AC 24 80 00 00 00 0F 29 BD E0 03 00 00 0F 29 B5 D0 03 00 00 48 C7 85 C8 03 00 00 FE FF FF FF 4C 89 CF"
 
 [[signatures]]
-name = "?use@CauldronBlock@@QEBAXAEAVBlockPlayerInteractEvent@BlockEvents@@@Z"
-relative = false
-extra = 0
-# 1. the name is real: `void CauldronBlock::use(BlockEvents::BlockPlayerInteractEvent&) const` is a declared
-#    member, so `dump_symbols.py --pdb` resolves it outright; the steps below are the no-PDB fallback
-# 2. find bytes "63 61 75 6C 64 72 6F 6E 00" = "cauldron\0" in .rdata and take the xref in the vanilla block
-#    registration that constructs CauldronBlock; from the constructor follow the single call to
-#    CauldronBlock::_addHardCodedBlockComponents - a tiny leaf whose whole body is three
-#    BlockType::_subscribeForEvent calls and nothing else
-# 3. the three member-function pointers those calls pass are CauldronBlock::onPlace, CauldronBlock::tick and
-#    the target; do not pick by call order, pick by identity in step 4
-# 4. confirm identity from the body: the target is by far the largest of the three, it is the only one that
-#    calls BlockEvents::BlockPlayerInteractEvent::setInteractionResult, it builds both the CauldronUsed and
-#    the POICauldronUsed LegacyTelemetryEvent packets, and it reaches CauldronBlock::setLiquidLevel and
-#    CauldronBlock::_explodeCauldronContents; cross-checked against the 1.21.132.3 named linux build at
-#    0x984cd20
-# 5. walk back to the prologue (`push rbp/r15/r14/r13/r12/rsi/rdi/rbx`, `sub rsp, 0x358`) and cut there
-# uniqueness: verified against the 1.26.44.3 exe this table targets - the pattern matches exactly once in
-# .text, at RVA 0x69A6250, which is the offset in the generated table
-pattern = "55 41 57 41 56 41 55 41 54 56 57 53 48 81 EC 58 03 00 00 48 8D AC 24 ? ? ? ? 0F 29 B5 ? ? ? ? 48 C7 85 ? ? ? ? ? ? ? ? 48 89 D6 48 8B 7A"
-
-[[signatures]]
 name = "?getInteraction@ArmorStand@@UEAA?AVInteractionResult@@AEAVPlayer@@AEAVActorInteraction@@AEBVVec3@@@Z"
 relative = false
 extra = 0

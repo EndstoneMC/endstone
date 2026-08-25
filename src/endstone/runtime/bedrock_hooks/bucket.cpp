@@ -18,13 +18,11 @@
 
 #include "bedrock/world/actor/actor.h"
 #include "bedrock/world/actor/player/player.h"
-#include "bedrock/world/container.h"
 #include "bedrock/world/item/bucket_fill_type.h"
 #include "bedrock/world/item/item.h"
 #include "bedrock/world/item/item_stack.h"
 #include "bedrock/world/level/block/block.h"
 #include "bedrock/world/level/block/block_descriptor.h"
-#include "bedrock/world/level/block/cauldron_block.h"
 #include "bedrock/world/level/block_pos.h"
 #include "bedrock/world/level/block_source.h"
 #include "endstone/core/block/block.h"
@@ -47,109 +45,7 @@ private:
     BucketFillType fill_type_;
 };
 
-thread_local std::optional<BlockPos> cancelled_cauldron_click;
-
 }  // namespace
-
-void CauldronBlock::use(BlockEvents::BlockPlayerInteractEvent &event_data) const
-{
-    cancelled_cauldron_click.reset();
-
-    auto &player = event_data.player;
-    const auto slot = player.getSelectedItemSlot();
-    const auto &item_stack = player.getInventory().getItem(slot);
-    const auto *item = item_stack.getItem();
-    const auto block_face = endstone::core::EndstoneBlockFace::fromBedrockFacing(event_data.face);
-    if (!item || !item->isBucket() || !block_face) {
-        ENDSTONE_HOOK_CALL_ORIGINAL(&CauldronBlock::use, this, event_data);
-        return;
-    }
-
-    static const HashedString fill_level{"fill_level"};
-    static const HashedString cauldron_liquid{"cauldron_liquid"};
-    auto &block_source = player.getDimensionBlockSource();
-    const auto &block = block_source.getBlock(event_data.pos);
-    const auto fill_type = static_cast<const BucketItemLayout &>(*item).getFillType();
-    const auto level = block.getState<int>(fill_level);
-    const auto liquid = block.getState<int>(cauldron_liquid);
-    const auto filling = fill_type == BucketFillType::Empty;
-
-    std::optional<::ItemStack> result_item;
-    if (filling && level == 6) {
-        switch (liquid) {
-        case 0:
-            result_item = ::ItemStack("minecraft:water_bucket");
-            break;
-        case 1:
-            result_item = ::ItemStack("minecraft:lava_bucket");
-            break;
-        case 2:
-            result_item = ::ItemStack("minecraft:powder_snow_bucket");
-            break;
-        default:
-            break;
-        }
-    }
-    else if ((fill_type == BucketFillType::Water || fill_type == BucketFillType::Lava ||
-              fill_type == BucketFillType::PowderSnow) &&
-             (level == 0 || (level != 6 && fill_type == BucketFillType::Water && liquid == 0))) {
-        result_item = ::ItemStack("minecraft:bucket");
-    }
-
-    if (!result_item) {
-        ENDSTONE_HOOK_CALL_ORIGINAL(&CauldronBlock::use, this, event_data);
-        return;
-    }
-
-    const auto &server = endstone::core::EndstoneServer::getInstance();
-    auto block_handle = endstone::core::EndstoneBlock::at(block_source, event_data.pos);
-    auto bucket_stack = endstone::core::EndstoneItemStack::fromMinecraft(item_stack);
-    auto cancelled = false;
-    std::optional<endstone::ItemStack> replacement;
-    if (filling) {
-        endstone::PlayerBucketFillEvent event{
-            player.getEndstoneActor<endstone::core::EndstonePlayer>(),
-            block_handle,
-            block_handle,
-            *block_face,
-            bucket_stack.getType(),
-            endstone::core::EndstoneItemStack::fromMinecraft(*result_item),
-            endstone::EquipmentSlot::Hand,
-        };
-        server.getPluginManager().callEvent(event);
-        cancelled = event.isCancelled();
-        replacement = event.getItemStack();
-    }
-    else {
-        endstone::PlayerBucketEmptyEvent event{
-            player.getEndstoneActor<endstone::core::EndstonePlayer>(),
-            block_handle,
-            block_handle,
-            *block_face,
-            bucket_stack.getType(),
-            endstone::core::EndstoneItemStack::fromMinecraft(*result_item),
-            endstone::EquipmentSlot::Hand,
-        };
-        server.getPluginManager().callEvent(event);
-        cancelled = event.isCancelled();
-        replacement = event.getItemStack();
-    }
-
-    if (cancelled) {
-        event_data.successful = false;
-        cancelled_cauldron_click = event_data.pos;
-        return;
-    }
-
-    ENDSTONE_HOOK_CALL_ORIGINAL(&CauldronBlock::use, this, event_data);
-    if (!event_data.successful.value_or(false)) {
-        return;
-    }
-    if (!replacement || endstone::core::EndstoneItemStack::toMinecraft(*replacement) != *result_item) {
-        player.getInventory().setItem(
-            slot, replacement ? endstone::core::EndstoneItemStack::toMinecraft(*replacement) : ::ItemStack::EMPTY_ITEM);
-    }
-}
 
 InteractionResult BucketItem::_useOn(::ItemStack &item_stack, ::Actor &actor, BlockPos position, FacingID face,
                                      const Vec3 &click_pos) const
@@ -157,10 +53,6 @@ InteractionResult BucketItem::_useOn(::ItemStack &item_stack, ::Actor &actor, Bl
     auto &block_source = actor.getDimensionBlockSource();
     const auto &clicked_block = block_source.getBlock(position);
     if (clicked_block.getName().getString() == "minecraft:cauldron") {
-        if (cancelled_cauldron_click == position) {
-            cancelled_cauldron_click.reset();
-            return InteractionResult::Failure();
-        }
         return ENDSTONE_HOOK_CALL_ORIGINAL(&BucketItem::_useOn, this, item_stack, actor, position, face, click_pos);
     }
 

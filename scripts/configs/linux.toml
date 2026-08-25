@@ -597,28 +597,6 @@ extra = 0
 pattern = "55 41 57 41 56 41 55 41 54 53 48 81 EC E8 03 00 00 44 89 CD 48 89 D3 48 89 74 24 70 49 89 FC 48 89 0C 24 44 89 44 24 08"
 
 [[signatures]]
-name = "_ZNK13CauldronBlock3useERN11BlockEvents24BlockPlayerInteractEventE"
-relative = false
-extra = 0
-# 1. the name is real: `void CauldronBlock::use(BlockEvents::BlockPlayerInteractEvent&) const` is a declared
-#    member, so a symbol-bearing build resolves it by name; the steps below are the no-symbol fallback
-# 2. find bytes "63 61 75 6C 64 72 6F 6E 00" = "cauldron\0" in .rodata and take the xref in the vanilla block
-#    registration that constructs CauldronBlock; from the constructor follow the single call to
-#    CauldronBlock::_addHardCodedBlockComponents - a ~0x35-byte leaf whose whole body is three
-#    BlockType::_subscribeForEvent calls and nothing else
-# 3. the three member-function pointers those calls pass are CauldronBlock::onPlace, CauldronBlock::tick and
-#    the target; do not pick by call order, pick by identity in step 4
-# 4. confirm identity from the body: the target is by far the largest of the three (~0x1F00 bytes, ~270 basic
-#    blocks against a few dozen), it is the only one that calls
-#    BlockEvents::BlockPlayerInteractEvent::setInteractionResult, it builds both the CauldronUsed and the
-#    POICauldronUsed LegacyTelemetryEvent packets, and it reaches CauldronBlock::setLiquidLevel and
-#    CauldronBlock::_explodeCauldronContents; cross-checked at 0x984cd20 in the 1.21.132.3 named build
-# 5. walk back to the prologue and cut from there
-# uniqueness: verified against the 1.26.44.3 ELF this table targets - the pattern matches exactly once in
-# .text, at 0xBDFAFE0, which is the offset in the generated table
-pattern = "55 41 57 41 56 41 55 41 54 53 48 81 EC A8 02 00 00 48 89 F3 4C 8B 76"
-
-[[signatures]]
 name = "_ZN10ArmorStand14getInteractionER6PlayerR16ActorInteractionRK4Vec3"
 relative = false
 extra = 0

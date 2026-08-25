@@ -11,7 +11,7 @@
 
 namespace endstone::runtime {
 
-static constexpr std::array<std::pair<std::string_view, std::size_t>, 81> symbols = {{
+static constexpr std::array<std::pair<std::string_view, std::size_t>, 80> symbols = {{
     {"BlockState::StateListNode::mHead", 211294960},
     {"Enchant::mEnchants", 211141912},
     {"MobEffect::mMobEffects", 211424880},
@@ -41,8 +41,6 @@ static constexpr std::array<std::pair<std::string_view, std::size_t>, 81> symbol
     {"?getInteraction@BucketableComponent@@QEAA?AVInteractionResult@@AEAVActor@@AEAVPlayer@@AEAVActorInteraction@@@Z", 38215168},
     // CampfireBlockActor
     {"?_finishCooking@CampfireBlockActor@@AEAAXAEAVBlockSource@@H@Z", 43046640},
-    // CauldronBlock
-    {"?use@CauldronBlock@@QEBAXAEAVBlockPlayerInteractEvent@BlockEvents@@@Z", 110781008},
     // Command
     {"?run@Command@@QEBAXAEBVCommandOrigin@@AEAVCommandOutput@@@Z", 19785792},
     // CommandOriginLoader
