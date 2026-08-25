@@ -14,12 +14,14 @@
 
 #pragma once
 
+#include "endstone/event/player/player_open_sign_event.h"
+
 namespace endstone::core {
 struct InternalDisconnectFlagComponent {};
+struct InternalOpenSignCauseComponent {
+    PlayerOpenSignEvent::Cause cause = PlayerOpenSignEvent::Cause::Unknown;
+};
 struct InternalRemoveFlagComponent {};
-struct InternalSignInteractFlagComponent {};
-struct InternalSignOpenFlagComponent {};
-struct InternalSignPlaceFlagComponent {};
 struct InternalSpawnChangeFlagComponent {};
 struct InternalTeleportFlagComponent {};
 struct MobHurtFlagComponent {};

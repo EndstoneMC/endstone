@@ -58,6 +58,7 @@
 #include "endstone/core/util/socket_address.h"
 #include "endstone/core/util/uuid.h"
 #include "endstone/event/player/player_join_event.h"
+#include "endstone/event/player/player_open_sign_event.h"
 #include "endstone/form/action_form.h"
 #include "endstone/form/message_form.h"
 
@@ -303,7 +304,8 @@ void EndstonePlayer::openSign(const Sign &sign, Sign::Side side)
                                       block_entity->getType() == BlockActorType::HangingSign),
                                  "Sign must be placed.");
 
-    getHandle().addOrRemoveComponent<InternalSignOpenFlagComponent>(true);
+    getHandle().getEntity().getOrAddComponent<InternalOpenSignCauseComponent>().cause =
+        PlayerOpenSignEvent::Cause::Plugin;
     getHandle().openSign(position, side == Sign::Side::Front);
 }
 
