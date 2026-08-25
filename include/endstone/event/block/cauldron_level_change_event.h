@@ -14,9 +14,6 @@
 
 #pragma once
 
-#include <memory>
-#include <utility>
-
 #include "endstone/actor/actor.h"
 #include "endstone/block/block_state.h"
 #include "endstone/event/block/block_event.h"
@@ -30,11 +27,13 @@ namespace endstone {
  *
  * If this event is cancelled, the cauldron will not change.
  */
-class CauldronLevelChangeEvent final : public Cancellable<BlockEvent> {
+class CauldronLevelChangeEvent : public Cancellable<BlockEvent> {
 public:
     ENDSTONE_EVENT(CauldronLevelChangeEvent);
 
-    /** Describes what caused the cauldron to change. */
+    /**
+     * Describes what caused the cauldron to change.
+     */
     enum class ChangeReason {
         /** A player filled a bucket from the cauldron. */
         BucketFill,
@@ -52,7 +51,7 @@ public:
         ShulkerWash,
         /** An actor was extinguished. */
         Extinguish,
-        /** The cauldron evaporated due to biome dryness. */
+        /** The cauldron evaporated. Bedrock never evaporates a cauldron, so this is never reported. */
         Evaporate,
         /** The cauldron was filled by a natural fluid source, e.g. rain or dripstone. */
         NaturalFill,
@@ -60,37 +59,43 @@ public:
         Unknown,
     };
 
-    CauldronLevelChangeEvent(std::unique_ptr<Block> block, Nullable<Actor> actor, ChangeReason reason,
-                             std::unique_ptr<BlockState> new_state)
-        : Cancellable(std::move(block)), actor_(std::move(actor)), reason_(reason), new_state_(std::move(new_state))
+    CauldronLevelChangeEvent(const NotNull<Block> &block, const Nullable<Actor> &actor, ChangeReason reason,
+                             const NotNull<BlockState> &new_state)
+        : Cancellable(block), actor_(actor), reason_(reason), new_state_(new_state)
     {
     }
 
     /**
      * Gets the actor which did this.
      *
-     * @return the responsible actor, or nullptr if there is none
+     * Bedrock does not report which actor changed a cauldron, so this is always nullptr.
+     *
+     * @return the actor which did this, or nullptr if there is none
      */
     [[nodiscard]] const Nullable<Actor> &getActor() const { return actor_; }
 
     /**
      * Gets the reason for the change.
      *
-     * @return the change reason
+     * Bedrock does not report why a cauldron changed, so this is always ChangeReason::Unknown.
+     *
+     * @return the reason for the change
      */
     [[nodiscard]] ChangeReason getReason() const { return reason_; }
 
     /**
-     * Gets the state that will replace the cauldron.
+     * Gets the state the cauldron will take.
      *
-     * @return the new block state
+     * Modifying the returned state changes what the cauldron becomes.
+     *
+     * @return the new state of the cauldron
      */
-    [[nodiscard]] BlockState &getNewState() const { return *new_state_; }
+    [[nodiscard]] const NotNull<BlockState> &getNewState() const { return new_state_; }
 
 private:
     Nullable<Actor> actor_;
     ChangeReason reason_;
-    std::unique_ptr<BlockState> new_state_;
+    NotNull<BlockState> new_state_;
 };
 
 }  // namespace endstone

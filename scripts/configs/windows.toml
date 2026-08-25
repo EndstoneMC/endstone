@@ -607,37 +607,11 @@ extra = 0
 #    ScriptBlockFluidContainerComponent setFillLevel / setFluidType / setPotionType thunks
 # 7. walk back to the prologue and cut there
 # uniqueness: verified by scanning the 1.26.44.3 .text - this pattern matches EXACTLY ONCE and
-# resolves to 0x69a9eb0 (RVA), which is the committed offset. Do not shorten it: CauldronBlock::tick
-# below and ArmorStand::getInteraction above open with the same push/sub run, and find_signature takes
-# the LOWEST .text hit, so a prologue-only pattern binds a neighbour silently. Both entries are cut
-# past `sub rsp, XX` into the argument shuffle for that reason
+# resolves to 0x69a9eb0 (RVA), which is the committed offset. Do not shorten it: CauldronBlock::use
+# and ArmorStand::getInteraction above open with the same push/sub run, and find_signature takes the
+# LOWEST .text hit, so a prologue-only pattern binds a neighbour silently; this entry is cut past
+# `sub rsp, 0x60` into the argument shuffle for that reason
 pattern = "55 41 57 41 56 41 54 56 57 53 48 83 EC 60 48 8D 6C 24 ? 48 C7 45 ? ? ? ? ? 44 89 CB"
-
-[[signatures]]
-name = "?tick@CauldronBlock@@QEBAXAEAVBlockQueuedTickEvent@BlockEvents@@@Z"
-relative = false
-extra = 0
-# 1. the name is real, so `dump_symbols.py --pdb` resolves it outright; the steps below are the
-#    no-PDB fallback
-# 2. locate CauldronBlock::setLiquidLevel first (see the entry above), then decode every E8 in .text
-#    that targets it
-# 3. tick is the only caller that reaches it TWICE from adjacent call sites (0x1a apart in 1.26.44.3 -
-#    the water-above fill writes the fill level, then the liquid type), and the only caller that opens
-#    by reading the block one above the event position (pos.y + 1) and testing its Material for water
-#    before anything else
-# 4. confirm identity independently from the tail: below those two calls it queries
-#    PointedDripstoneBlock::findStalactiteTipAboveCauldron, then getCauldronFillLiquidType, then
-#    CauldronBlock::canReceiveStalactiteDrip, then receiveStalactiteDrip, and on the water-above path
-#    it spawns the cauldron fill LevelEvent. Its single argument is a
-#    BlockEvents::BlockQueuedTickEvent& - the body reads mRegion and mPos straight out of it and never
-#    touches a Player, which is what separates it from CauldronBlock::use
-# 5. corroborate on data: within its first 0x400 bytes it references VanillaStates::FillLevel.mID
-#    three times and touches no other block state
-# 6. walk back to the prologue and cut there
-# uniqueness: verified by scanning the 1.26.44.3 .text - this pattern matches EXACTLY ONCE and
-# resolves to 0x69a5720 (RVA), which is the committed offset. See the shared-prologue warning on the
-# setLiquidLevel entry above; it applies to this pattern too
-pattern = "55 41 57 41 56 41 55 41 54 56 57 53 48 81 EC 98 00 00 00 48 8D AC 24 ? ? ? ? 44 0F 29 45 ? 0F 29 7D ? 0F 29 75 ? 48 C7 45 ? ? ? ? ? 48 89 D3"
 
 [[signatures]]
 name = "?readUserData@Item@@UEBAXAEAVItemStackBase@@AEAVIDataInput@@AEAVReadOnlyBinaryStream@@@Z"

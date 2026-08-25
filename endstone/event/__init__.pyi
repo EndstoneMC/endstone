@@ -573,18 +573,24 @@ class CauldronLevelChangeEvent(BlockEvent, Cancellable):
     def actor(self) -> Actor | None:
         """
         The actor which did this, or `None`.
+
+        This is always `None`, because Bedrock does not report which actor changed a cauldron.
         """
 
     @property
     def reason(self) -> ChangeReason:
         """
         The reason for the change.
+
+        This is always `ChangeReason.UNKNOWN`, because Bedrock does not report why a cauldron changed.
         """
 
     @property
     def new_state(self) -> BlockState:
         """
-        The new state of the cauldron.
+        The state the cauldron will take.
+
+        Modifying the returned state changes what the cauldron becomes.
         """
 
 class BlockFormEvent(BlockGrowEvent):

@@ -29,6 +29,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - `ActorPickupItemEvent`, reporting the `item` and `amount`. Players are covered by `PlayerPickupItemEvent`.
 - `ActorDismountEvent`, reporting the `vehicle` being left.
 - `ActorChangeBlockEvent` for blocks changed by mob behaviour, such as creeper explosions, endermen, ravagers and door-breaking zombies.
+- `CauldronLevelChangeEvent` for a cauldron's level or contents changing, reporting the `actor` responsible, the `reason` for the change and the `new_state` the cauldron will take, which can be modified in place. Cancelling it leaves the cauldron as it is. `actor` is always `None` and `reason` is always `UNKNOWN`. Neither an old nor a new fill level is reported.
 - `PlayerRespawnEvent.respawn_reason` (`RespawnReason.DEATH` / `RespawnReason.END_PORTAL`).
 - `ActorExplodeEvent::setBlockList()` and `BlockExplodeEvent::setBlockList()`, with the `BlockList` alias made public.
 - `InventoryEvent`, a base class for inventory-related events, reporting the primary `inventory` involved, and the cancellable `InventoryInteractEvent` under it, which adds the `who_clicked` player.

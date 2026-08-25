@@ -642,63 +642,40 @@ pattern = "55 41 57 41 56 41 55 41 54 53 48 81 EC 38 01 00 00 49 89 CD 48 89 D3 
 name = "_ZNK13CauldronBlock14setLiquidLevelER11BlockSourceRK8BlockPosi18CauldronLiquidType"
 relative = false
 extra = 0
-# 1. find bytes "6D 69 6E 65 63 72 61 66 74 3A 63 61 75 6C 64 72 6F 6E 00" = "minecraft:cauldron\0"
-#    (unique - one occurrence, in .rodata). It has exactly two rip-relative xrefs in .text; the one
-#    whose surrounding block also writes a HashedString object is the VanillaBlockTypeIds static
-#    initializer, and the .bss object it builds is VanillaBlockTypeIds::Cauldron
-# 2. do NOT try the "cauldron_liquid" / "fill_level" route the windows.toml entry uses. Both strings
-#    are short enough for libc++'s small-string optimisation, so the Linux initializer materialises
-#    them as immediates and the .rodata copies have ZERO xrefs from .text and no .rela.dyn addend
-#    pointing at them. Reach the two BlockStateVariant globals from the function instead: on Linux the
-#    state lookup is a real call, so the body passes &VanillaStates::FillLevel and
-#    &VanillaStates::CauldronLiquid by address to Block::setState<>, and the two sit 0x58 apart in .bss
-# 3. the target is the function that references Cauldron's HashedString and then both state globals.
-#    Exactly TWO places in .text do that within 0x400 bytes: this function, where the Cauldron
-#    reference sits in the first 0x40 bytes, and
-#    ServerStandInCauldronSystem::SystemImpl::_checkInsideCauldron, which is told apart because it
-#    CALLS this one. Confirm by decoding that E8
-# 4. confirm the body independently: it opens by comparing HashedString::getHash on the block's
-#    BlockLegacy name against HashedString::getHash(&VanillaBlockTypeIds::Cauldron) and returning when
-#    they differ, clamps the level into [0, 6], applies FillLevel then CauldronLiquid, calls
-#    BlockSource::setBlock through the vtable with updateFlags 3, and only when liquidLevel == 0
-#    finishes with BlockSource::getBlockEntity + BlockActor::setChanged. The Linux build leaves it out
-#    of line at roughly 0x110 bytes - by far the smallest function in the cauldron cluster
+# 1. locate CauldronBlock::use first (see the entry above), then decode every E8 in its body. The
+#    target is the callee it reaches by far the most often - 17 of the 33 call sites in the binary sit
+#    inside use, one per interaction branch
+# 2. do NOT anchor on VanillaBlockTypeIds::Cauldron the way the windows.toml entry does.
+#    "6D 69 6E 65 63 72 61 66 74 3A 63 61 75 6C 64 72 6F 6E 00" = "minecraft:cauldron\0" is unique in
+#    .rodata and the VanillaBlockTypeIds static initializer does build the HashedString from it, but
+#    that object is referenced only from registration and initializer blobs, never from the target:
+#    the body compares against a cached name-hash qword in .bss instead, so the string route dead-ends
+# 3. do NOT try the "cauldron_liquid" / "fill_level" route the windows.toml entry uses either. Both
+#    strings are short enough for libc++'s small-string optimisation, so the Linux initializer
+#    materialises them as immediates and the .rodata copies have ZERO xrefs from .text and no
+#    .rela.dyn addend pointing at them. The two BlockStateVariant globals are reachable from the
+#    function instead: on Linux the state lookup is a real call, so the body passes
+#    &VanillaStates::FillLevel and &VanillaStates::CauldronLiquid by address to Block::setState<>, and
+#    the two sit 0x58 apart in .bss
+# 4. confirm the body independently: it opens by comparing the block's BlockLegacy name hash against
+#    the cached cauldron name hash and returning when they differ, clamps the level into [0, 6],
+#    applies FillLevel then CauldronLiquid, calls BlockSource::setBlock through the vtable with
+#    updateFlags 3, and only when liquidLevel == 0 finishes with BlockSource::getBlockEntity +
+#    BlockActor::setChanged. The Linux build leaves it out of line at roughly 0x110 bytes - by far the
+#    smallest function in the cauldron cluster
 # 5. confirm by call set: it has 33 call sites in 1.26.44.3 - CauldronBlock::use / tick / onPlace /
 #    handlePrecipitation / _explodeCauldronContents / _useDyeableComponent, the receiveStalactiteDrip
-#    lambda, _checkInsideCauldron, MinecraftGameTestHelper::setFluidContainer, and the
-#    ScriptBlockFluidContainerComponent setFillLevel / setFluidType / setPotionType
+#    lambda, ServerStandInCauldronSystem::SystemImpl::_checkInsideCauldron,
+#    MinecraftGameTestHelper::setFluidContainer, and the ScriptBlockFluidContainerComponent
+#    setFillLevel / setFluidType / setPotionType
 # 6. walk back to the prologue and cut there
 # uniqueness: verified by scanning the 1.26.44.3 .text - this pattern matches EXACTLY ONCE and
-# resolves to 0xbdfdfd0, which is the committed offset. Do not shorten it: this entry and the
-# CauldronBlock::tick entry below share their first 14 bytes
-# (`55 41 57 41 56 41 55 41 54 53 48 83 EC 38`) and ArmorStand::getInteraction above opens the same
-# way; find_signature takes the LOWEST .text hit, so a prologue-only pattern binds a neighbour
-# silently. Both are cut past `sub rsp, 0x38` into the argument shuffle for that reason
+# resolves to 0xbdfdfd0, which is the committed offset. Do not shorten it: the ten-byte push run it
+# opens with is shared by most large functions in this binary, including CauldronBlock::use above and
+# ArmorStand::getInteraction, and find_signature takes the LOWEST .text hit, so a prologue-only
+# pattern binds a neighbour silently; this one is cut past `sub rsp, 0x38` into the argument shuffle
+# for that reason
 pattern = "55 41 57 41 56 41 55 41 54 53 48 83 EC 38 45 89 C7 89 CD"
-
-[[signatures]]
-name = "_ZNK13CauldronBlock4tickERN11BlockEvents20BlockQueuedTickEventE"
-relative = false
-extra = 0
-# 1. locate CauldronBlock::setLiquidLevel first (see the entry above), then decode every E8 in .text
-#    that targets it
-# 2. tick is the only caller that reaches it TWICE from adjacent call sites (0x14 apart in 1.26.44.3 -
-#    the water-above fill writes the fill level, then the liquid type), and the only caller that opens
-#    by reading the block one above the event position (pos.y + 1), calling Block::getMaterial on it
-#    and testing the result with Material::isType against the water MaterialType before anything else
-# 3. confirm identity independently from the tail: below those two calls it queries
-#    PointedDripstoneBlock::findStalactiteTipAboveCauldron, then getCauldronFillLiquidType, then
-#    CauldronBlock::canReceiveStalactiteDrip, then CauldronBlock::receiveStalactiteDrip, and on the
-#    water-above path it calls CauldronBlock::_flushCauldronEvent and _spawnCauldronEvent. Its single
-#    argument is a BlockEvents::BlockQueuedTickEvent& - the body reads mRegion and mPos straight out
-#    of it and never touches a Player, which is what separates it from CauldronBlock::use
-# 4. corroborate on data: within its first 0x400 bytes it references &VanillaStates::FillLevel twice
-#    and touches no other block state
-# 5. walk back to the prologue and cut there
-# uniqueness: verified by scanning the 1.26.44.3 .text - this pattern matches EXACTLY ONCE and
-# resolves to 0xbdfa6b0, which is the committed offset. See the shared-prologue warning on the
-# setLiquidLevel entry above; it applies to this pattern too
-pattern = "55 41 57 41 56 41 55 41 54 53 48 83 EC 38 49 89 F6 4C 8B 7E"
 
 [[signatures]]
 name = "_ZN11LeavesBlock10randomTickERN11BlockEvents20BlockRandomTickEventE"

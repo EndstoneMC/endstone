@@ -218,11 +218,21 @@ void init_event(py::module_ &m, py::class_<Event, PyEvent> &event)
         .export_values()
         .finalize();
     cauldron_level_change_event
-        .def_property_readonly("actor", &CauldronLevelChangeEvent::getActor,
-                               "The actor which did this, or `None`.")
-        .def_property_readonly("reason", &CauldronLevelChangeEvent::getReason, "The reason for the change.")
-        .def_property_readonly("new_state", &CauldronLevelChangeEvent::getNewState, py::return_value_policy::reference,
-                               "The new state of the cauldron.");
+        .def_property_readonly("actor", &CauldronLevelChangeEvent::getActor, R"doc(
+    The actor which did this, or `None`.
+
+    This is always `None`, because Bedrock does not report which actor changed a cauldron.
+)doc")
+        .def_property_readonly("reason", &CauldronLevelChangeEvent::getReason, R"doc(
+    The reason for the change.
+
+    This is always `ChangeReason.UNKNOWN`, because Bedrock does not report why a cauldron changed.
+)doc")
+        .def_property_readonly("new_state", &CauldronLevelChangeEvent::getNewState, R"doc(
+    The state the cauldron will take.
+
+    Modifying the returned state changes what the cauldron becomes.
+)doc");
     py::class_<BlockFormEvent, BlockGrowEvent>(m, "BlockFormEvent", R"doc(
     Called when a block is formed or spreads based on world conditions.
 
