@@ -18,10 +18,12 @@
 
 #include "bedrock/core/math/vec3.h"
 #include "bedrock/world/actor/actor.h"
+#include "bedrock/world/level/block/block.h"
 #include "endstone/block/block_face.h"
 #include "endstone/core/block/block_face.h"
 #include "endstone/core/block/block_snapshot.h"
 #include "endstone/core/block/block_state.h"
+#include "endstone/core/entity/components/flag_components.h"
 #include "endstone/core/player.h"
 #include "endstone/event/actor/actor_explode_event.h"
 #include "endstone/event/block/block_break_event.h"
@@ -148,8 +150,21 @@ GameplayHandlerResult<CoordinatorResult> ScriptBlockGameplayHandler::handleEvent
 {
     auto visitor = [&](auto &&arg) -> GameplayHandlerResult<CoordinatorResult> {
         using T = std::decay_t<decltype(arg)>;
-        if constexpr (std::is_same_v<T, Details::ValueOrRef<const BlockTryPlaceByPlayerEvent>> ||
-                      std::is_same_v<T, Details::ValueOrRef<const PistonActionEvent>>) {
+        if constexpr (std::is_same_v<T, Details::ValueOrRef<const BlockTryPlaceByPlayerEvent>>) {
+            if (!handleEvent(arg.value())) {
+                return {HandlerResult::BypassListeners, CoordinatorResult::Cancel};
+            }
+
+            auto result = ENDSTONE_VHOOK_CALL_ORIGINAL(&ScriptBlockGameplayHandler::handleEvent2, this, event);
+            if (auto *player = WeakEntityRef(arg.value().player).tryUnwrap<::Player>(); player) {
+                player->addOrRemoveComponent<endstone::core::InternalSignInteractFlagComponent>(false);
+                player->addOrRemoveComponent<endstone::core::InternalSignPlaceFlagComponent>(
+                    result.return_value == CoordinatorResult::Continue &&
+                    arg.value().permutation_to_place.hasProperty(BlockProperty::Sign));
+            }
+            return result;
+        }
+        else if constexpr (std::is_same_v<T, Details::ValueOrRef<const PistonActionEvent>>) {
             if (!handleEvent(arg.value())) {
                 return {HandlerResult::BypassListeners, CoordinatorResult::Cancel};
             }

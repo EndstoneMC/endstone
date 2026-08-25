@@ -37,6 +37,7 @@ public:
                  SyncedClientOptionsComponent);
     ~ServerPlayer() override = 0;
     ENDSTONE_HOOK void changeDimension(DimensionType toId) override;  // TODO(fixme): enable the hook
+    ENDSTONE_HOOK void openSign(BlockPos const &, bool) override;
 
 protected:
     PlatformType platform_type_;

@@ -1055,6 +1055,27 @@ extra = 0
 pattern = "55 56 57 48 83 EC ? 48 8D 6C 24 ? 48 C7 45 ? ? ? ? ? 89 D7 48 89 CE 48 8D 55 ? E8 ? ? ? ? 48 8B 86 ? ? ? ? 8B 48 ? 89 4D ? 48 8B 00 48 89 45 ? 8B 55 ? C7 45"
 
 [[signatures]]
+name = "?openSign@ServerPlayer@@UEAAXAEBVBlockPos@@_N@Z"
+relative = false
+extra = 0
+# 1. find bytes "4F 70 65 6E 53 69 67 6E 50 61 63 6B 65 74 00" = "OpenSignPacket\0" (unique); its lone code
+#    xref is OpenSignPacket::getName, a ~0x16-byte stub that stores the literal and the length 0x0E
+# 2. getName's lone data xref is a slot in the OpenSignPacket vftable; take data xrefs to the head of
+#    that vftable - one of them is SignBlockActor::requestToSendOpenSignPacket, the only one that stores
+#    a freshly built OpenSignPacket into an std::optional on `this` (the others are the cereal/entt
+#    type-schema helpers and make_packet<OpenSignPacket>)
+# 3. requestToSendOpenSignPacket has exactly ONE code xref, and that caller is this function
+# 4. confirm by the body: getDimensionBlockSource -> BlockSource::getChunkAt -> LevelChunk::getBlockEntity,
+#    accepts BlockActorType 4 (Sign) through a single BlockActor::isTypeOrDerived call, which also admits
+#    the derived HangingSign (50), tests an ActorUniqueID against -1 and calls ILevel::getPlayer on it,
+#    then Actor::getOrCreateUniqueID before the call from step 3
+# uniqueness: the anchor chain is unique (one code xref on requestToSendOpenSignPacket); the pattern
+#    below is only the prologue, so re-cut it from the address the chain lands on rather than trusting
+#    it. Chain walked in win32_server_x64 1.26.32.2; pattern verified to match exactly ONCE
+#    in the 1.26.44.3 .text, at 0x693da0
+pattern = "55 41 57 41 56 56 57 53 48 83 EC 48 48 8D 6C 24 ? 48 C7 45 ? ? ? ? ? 44 89 C3 48 89 D6 48 89 CF"
+
+[[signatures]]
 name = "??0ServerScoreboard@@QEAA@VCommandSoftEnumRegistry@@PEAVLevelStorage@@V?$not_null@V?$NonOwnerPointer@VGameplayUserManager@@@Bedrock@@@gsl@@@Z"
 relative = false
 extra = 0

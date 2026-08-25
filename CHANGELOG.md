@@ -21,6 +21,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - `PlayerCraftItemEvent` for crafting in a crafting grid or straight from the recipe book, reporting the `recipe` being crafted and the `ingredients` a craft consumes plus writable `results` and `repetitions`. Ingredients are the items in the crafting grid, or the recipe's own when crafting from the recipe book, which never fills the grid. Setting `results` changes what the craft produces; cancelling blocks the craft and leaves the ingredients untouched.
 - `PlayerEditBookEvent` for editing a page of a book and quill or signing it, reporting the book metadata before and after the edit, the inventory `slot`, and whether the book is being signed. `new_book_meta` and `is_signing` are writable; both metadata properties hand back a copy, so assign to `new_book_meta` rather than editing what you read from it. A title, an author and a generation only survive when the book is being signed, because a book and quill holds none of them. Cancelling leaves the book untouched and sends the slot back to the client, so it stops showing the edit it had already drawn.
 - `PlayerSetSpawnEvent` for a player's respawn point being set, reporting the `cause` (`BED`, `RESPAWN_ANCHOR`, `COMMAND`, `PLUGIN` or `UNKNOWN`) and a writable `location`. Cancelling leaves the respawn point untouched, though `/spawnpoint` still reports success and a respawn anchor still plays its sound. It does not fire when Bedrock clears a respawn point, so `/clearspawnpoint` and breaking the bed are both silent.
+- `PlayerOpenSignEvent` for a player beginning to edit a sign's text, reporting the `sign`, the `side` being edited and the `cause` (`PLACE`, `INTERACT`, `PLUGIN` or `UNKNOWN`). Cancelling it stops the sign editor from opening.
 - `PlayerToggleSneakEvent`, `PlayerToggleSprintEvent`, `PlayerToggleFlightEvent` and `PlayerToggleCrawlEvent`, carrying the new state in `is_sneaking`, `is_sprinting`, `is_flying` and `is_crawling`.
 - `ActorToggleSwimEvent` and `ActorToggleGlideEvent`, carrying the new state in `is_swimming` and `is_gliding`.
 - `ActorCollideWithActorEvent`, reporting both actors in `actors`. Cancelling it also stops boats and minecarts being boarded by walking into them.
@@ -43,6 +44,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - `Mob.is_swimming` and `Player.is_crawling`.
 - `Player.send_action_bar()` for sending a message above the hotbar.
 - `Player.respawn_location` for reading and writing where a player will respawn, or `None` when they have no valid respawn point. Bedrock does not persist yaw/pitch for a respawn point, so only the block coordinates and the dimension are kept.
+- `Player.open_sign()` and `Player.open_virtual_sign()` for opening a sign editor on a player's client. `open_sign()` takes a sign placed in the player's own dimension, reopens one the player is already editing, and fires `PlayerOpenSignEvent`; `open_virtual_sign()` opens the editor at any block position, with no sign required in the dimension, and fires nothing.
 
 #### Blocks
 

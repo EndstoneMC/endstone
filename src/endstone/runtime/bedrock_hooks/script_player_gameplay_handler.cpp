@@ -25,10 +25,12 @@
 #include "bedrock/server/server_instance.h"
 #include "bedrock/world/actor/actor.h"
 #include "bedrock/world/actor/item/item_actor.h"
+#include "bedrock/world/level/block/block.h"
 #include "endstone/block/container.h"
 #include "endstone/color_format.h"
 #include "endstone/core/block/block.h"
 #include "endstone/core/damage/damage_source.h"
+#include "endstone/core/entity/components/flag_components.h"
 #include "endstone/core/game_mode.h"
 #include "endstone/core/inventory/item_stack.h"
 #include "endstone/core/json.h"
@@ -320,9 +322,23 @@ GameplayHandlerResult<CoordinatorResult> ScriptPlayerGameplayHandler::handleEven
 {
     auto visitor = [&](auto &&arg) -> GameplayHandlerResult<CoordinatorResult> {
         using T = std::decay_t<decltype(arg)>;
-        if constexpr (std::is_same_v<T, Details::ValueOrRef<const PlayerInteractWithBlockBeforeEvent>> ||
-                      std::is_same_v<T, Details::ValueOrRef<const PlayerInteractWithEntityBeforeEvent>> ||
-                      std::is_same_v<T, Details::ValueOrRef<const PlayerGetExperienceOrbEvent>>) {
+        if constexpr (std::is_same_v<T, Details::ValueOrRef<const PlayerInteractWithBlockBeforeEvent>>) {
+            if (!handleEvent(arg.value())) {
+                return {HandlerResult::BypassListeners, CoordinatorResult::Cancel};
+            }
+
+            auto result = ENDSTONE_VHOOK_CALL_ORIGINAL(&ScriptPlayerGameplayHandler::handleEvent2, this, event);
+            if (auto *player = WeakEntityRef(arg.value().player).tryUnwrap<::Player>(); player) {
+                auto &block_source = player->getDimension().getBlockSourceFromMainChunkSource();
+                player->addOrRemoveComponent<endstone::core::InternalSignPlaceFlagComponent>(false);
+                player->addOrRemoveComponent<endstone::core::InternalSignInteractFlagComponent>(
+                    result.return_value == CoordinatorResult::Continue &&
+                    block_source.getBlock(BlockPos(arg.value().block_location)).hasProperty(BlockProperty::Sign));
+            }
+            return result;
+        }
+        else if constexpr (std::is_same_v<T, Details::ValueOrRef<const PlayerInteractWithEntityBeforeEvent>> ||
+                           std::is_same_v<T, Details::ValueOrRef<const PlayerGetExperienceOrbEvent>>) {
             if (!handleEvent(arg.value())) {
                 return {HandlerResult::BypassListeners, CoordinatorResult::Cancel};
             }
