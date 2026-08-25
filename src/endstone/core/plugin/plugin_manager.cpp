@@ -28,8 +28,6 @@
 #include <boost/algorithm/string/predicate.hpp>
 
 #include "endstone/core/logger_factory.h"
-#include "endstone/core/player.h"
-#include "endstone/core/server.h"
 #include "endstone/level/dimension.h"
 #include "endstone/level/level.h"
 #include "endstone/event/event.h"
@@ -501,11 +499,6 @@ void EndstonePluginManager::disablePlugin(Plugin &plugin)
         }
         for (auto &[name, handler] : event_handlers_) {
             handler.unregister(plugin);
-        }
-        if (auto *server = dynamic_cast<EndstoneServer *>(&server_); server && server->getEndstoneLevel()) {
-            for (const auto &player : server->getOnlinePlayers()) {
-                player.cast<EndstonePlayer>()->clearHiddenActors(plugin);
-            }
         }
     }
 }

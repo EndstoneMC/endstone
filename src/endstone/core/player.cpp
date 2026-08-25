@@ -20,7 +20,6 @@
 #include <unordered_set>
 #include <utility>
 #include <variant>
-#include <vector>
 
 #include <magic_enum/magic_enum.hpp>
 #include <nlohmann/json.hpp>
@@ -1063,36 +1062,6 @@ void EndstonePlayer::checkOpStatus()
         recalculatePermissions();
         updateCommands();
         last_op_status_ = isOp();
-    }
-}
-
-void EndstonePlayer::clearHiddenActors(Plugin &plugin)
-{
-    std::vector<std::int64_t> restored;
-    for (auto it = hidden_actors_.begin(); it != hidden_actors_.end();) {
-        auto &plugins = it->second;
-        if (!plugins.erase(&plugin) || !plugins.empty()) {
-            ++it;
-            continue;
-        }
-
-        restored.push_back(it->first);
-        it = hidden_actors_.erase(it);
-    }
-
-    for (const auto unique_id : restored) {
-        std::shared_ptr<Actor> actor;
-        if (auto *handle = getHandle().getLevel().fetchEntity(ActorUniqueID{unique_id}, false); handle) {
-            actor = handle->getEndstoneActor<Actor>();
-        }
-        if (!actor) {
-            --server_.hidden_actor_count_;
-            std::erase_if(hidden_player_runtime_ids_,
-                          [unique_id](const auto &entry) { return entry.second == unique_id; });
-            player_list_entries_.erase(unique_id);
-            continue;
-        }
-        trackAndShowActor(*actor);
     }
 }
 

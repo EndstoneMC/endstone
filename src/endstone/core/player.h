@@ -147,7 +147,6 @@ public:
     void disconnect();
     void updateAbilities() const;
     void checkOpStatus();
-    void clearHiddenActors(Plugin &plugin);
     void updatePlayerListCache(const PlayerListPacketPayload &payload);
     [[nodiscard]] bool hasHiddenActors() const;
     [[nodiscard]] bool isActorHidden(std::int64_t unique_id) const;
