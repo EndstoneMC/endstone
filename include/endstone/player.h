@@ -437,6 +437,13 @@ public:
      */
     virtual void updateCommands() const = 0;
 
+    /**
+     * Send the list of crafting recipes to the client.
+     *
+     * Generally useful after recipes have been registered or unregistered.
+     */
+    virtual void updateRecipes() const = 0;
+
     // === EntityHuman === //
     /**
      * Get the player's inventory.

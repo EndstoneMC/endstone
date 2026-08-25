@@ -107,13 +107,13 @@ std::vector<NotNull<Dimension>> EndstoneLevel::getDimensions() const
     return dimensions;
 }
 
-std::vector<NotNull<Recipe>> EndstoneLevel::getRecipes() const
+std::vector<Recipe> EndstoneLevel::getRecipes() const
 {
-    std::vector<NotNull<Recipe>> recipes;
+    std::vector<Recipe> recipes;
     for (const auto &by_tag : level_.getRecipes().getRecipesAllTags()) {
         for (const auto &by_id : by_tag.second) {
             if (by_id.second) {
-                recipes.push_back(EndstoneRecipeData::fromMinecraft(by_id.second));
+                recipes.push_back(EndstoneRecipe::fromMinecraft(by_id.second));
             }
         }
     }

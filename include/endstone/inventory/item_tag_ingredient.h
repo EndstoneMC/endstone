@@ -15,6 +15,7 @@
 #pragma once
 
 #include <string>
+#include <utility>
 
 #include "endstone/inventory/recipe_ingredient.h"
 
@@ -24,6 +25,14 @@ namespace endstone {
  */
 class ItemTagIngredient : public RecipeIngredient {
 public:
+    explicit ItemTagIngredient(std::string item_tag, int count = 1)
+        : RecipeIngredient(std::make_unique<ItemTagImpl>(std::move(item_tag), count))
+    {
+    }
+    ItemTagIngredient(const ItemTagIngredient &other) : RecipeIngredient(other) {}
+    ItemTagIngredient(ItemTagIngredient &&other) noexcept = default;
+    ItemTagIngredient &operator=(const ItemTagIngredient &other) = default;
+    ItemTagIngredient &operator=(ItemTagIngredient &&other) noexcept = default;
     ~ItemTagIngredient() override = default;
 
     /**
@@ -33,6 +42,24 @@ public:
      *
      * @return the item tag
      */
-    [[nodiscard]] virtual const std::string &getItemTag() const = 0;
+    [[nodiscard]] const std::string &getItemTag() const { return impl_->getItemTag(); }
+
+private:
+    class ItemTagImpl : public TypedImpl<ItemTagIngredient> {
+    public:
+        ItemTagImpl(std::string item_tag, int count) : item_tag_(std::move(item_tag)), count_(count) {}
+        [[nodiscard]] std::unique_ptr<Impl> clone() const override { return std::make_unique<ItemTagImpl>(*this); }
+        [[nodiscard]] bool test(const ItemStack & /*item*/) const override { return false; }
+        [[nodiscard]] int getCount() const override { return count_; }
+        [[nodiscard]] const std::string &getItemTag() const override { return item_tag_; }
+
+    private:
+        std::string item_tag_;
+        int count_;
+    };
+
+    friend class RecipeIngredient;
+    friend class core::EndstoneIngredient;
+    explicit ItemTagIngredient(std::unique_ptr<Impl> impl) : RecipeIngredient(std::move(impl)) {}
 };
 }  // namespace endstone

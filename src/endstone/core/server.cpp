@@ -57,6 +57,7 @@
 #include "endstone/core/game_rule.h"
 #include "endstone/core/inventory/item_factory.h"
 #include "endstone/core/inventory/item_type.h"
+#include "endstone/core/inventory/recipe_data.h"
 #include "endstone/core/level/chunk.h"
 #include "endstone/core/level/dimension.h"
 #include "endstone/core/level/level.h"
@@ -523,9 +524,35 @@ Level &EndstoneServer::getLevel() const
     return *level_;
 }
 
-std::vector<NotNull<Recipe>> EndstoneServer::getRecipes() const
+std::vector<Recipe> EndstoneServer::getRecipes() const
 {
     return getLevel().getRecipes();
+}
+
+bool EndstoneServer::registerRecipe(const Recipe &recipe)
+{
+    auto handle = EndstoneRecipe::toMinecraft(recipe);
+    if (!handle) {
+        return false;
+    }
+    auto &recipes = getEndstoneLevel()->getHandle().getRecipes();
+    recipes.removeRecipe(recipe.getRecipeId());
+    recipes._addItemRecipe(std::move(handle));
+    for (const auto &player : getOnlinePlayers()) {
+        player->updateRecipes();
+    }
+    return true;
+}
+
+bool EndstoneServer::unregisterRecipe(std::string recipe_id)
+{
+    if (!getEndstoneLevel()->getHandle().getRecipes().removeRecipe(recipe_id)) {
+        return false;
+    }
+    for (const auto &player : getOnlinePlayers()) {
+        player->updateRecipes();
+    }
+    return true;
 }
 
 EndstoneLevel *EndstoneServer::getEndstoneLevel() const

@@ -211,6 +211,14 @@ class ExactIngredient(RecipeIngredient):
     """
     Represents an ingredient that matches one item with one exact data value.
     """
+    def __init__(self, item: ItemStack) -> None:
+        """
+        Creates an ingredient that matches one item with one exact data value.
+
+        Args:
+            item: The item this ingredient matches.
+        """
+
     @property
     def item_stack(self) -> ItemStack: ...
 
@@ -218,6 +226,15 @@ class ItemTypeIngredient(RecipeIngredient):
     """
     Represents an ingredient that matches an item type, whatever its data value.
     """
+    def __init__(self, type: ItemType, count: int = 1) -> None:
+        """
+        Creates an ingredient that matches an item type, whatever its data value.
+
+        Args:
+            type: The item type this ingredient matches.
+            count: How many items this ingredient consumes.
+        """
+
     @property
     def item_type(self) -> ItemType:
         """
@@ -228,6 +245,15 @@ class ItemTagIngredient(RecipeIngredient):
     """
     Represents an ingredient that matches any item carrying a tag.
     """
+    def __init__(self, item_tag: str, count: int = 1) -> None:
+        """
+        Creates an ingredient that matches any item carrying a tag.
+
+        Args:
+            item_tag: The item tag this ingredient matches.
+            count: How many items this ingredient consumes.
+        """
+
     @property
     def item_tag(self) -> str:
         """
@@ -287,6 +313,25 @@ class ShapedRecipe(Recipe):
     """
     Represents a shaped (ie normal) crafting recipe.
     """
+    def __init__(
+        self,
+        recipe_id: str,
+        shape: list[str],
+        ingredients: list[tuple[str, RecipeIngredient]],
+        result: ItemStack,
+        tag: str = "crafting_table",
+    ) -> None:
+        """
+        Creates a shaped crafting recipe.
+
+        Args:
+            recipe_id: The recipe id.
+            shape: The crafting shape, one string per row.
+            ingredients: The character-to-ingredient mapping.
+            result: The result of this recipe.
+            tag: The crafting station this recipe belongs to, such as `crafting_table`.
+        """
+
     @property
     def width(self) -> int: ...
     @property
@@ -296,6 +341,18 @@ class ShapelessRecipe(Recipe):
     """
     Represents a shapeless recipe, where the arrangement of the ingredients on the crafting grid does not matter.
     """
+    def __init__(
+        self, recipe_id: str, ingredients: list[RecipeIngredient], result: ItemStack, tag: str = "crafting_table"
+    ) -> None:
+        """
+        Creates a shapeless crafting recipe.
+
+        Args:
+            recipe_id: The recipe id.
+            ingredients: The ingredients this recipe consumes.
+            result: The result of this recipe.
+            tag: The crafting station this recipe belongs to, such as `crafting_table`.
+        """
 
 class ComplexRecipe(Recipe):
     """
@@ -322,6 +379,25 @@ class SmithingTransformRecipe(SmithingRecipe):
     """
     Represents a smithing transform recipe.
     """
+    def __init__(
+        self,
+        recipe_id: str,
+        template: RecipeIngredient,
+        base: RecipeIngredient,
+        addition: RecipeIngredient,
+        result: ItemStack,
+    ) -> None:
+        """
+        Creates a smithing transform recipe.
+
+        Args:
+            recipe_id: The recipe id.
+            template: The template recipe item.
+            base: The base recipe item.
+            addition: The addition recipe item.
+            result: The result of this recipe.
+        """
+
     @property
     def template(self) -> RecipeIngredient | None:
         """
@@ -332,6 +408,19 @@ class SmithingTrimRecipe(SmithingRecipe):
     """
     Represents a smithing trim recipe.
     """
+    def __init__(
+        self, recipe_id: str, template: RecipeIngredient, base: RecipeIngredient, addition: RecipeIngredient
+    ) -> None:
+        """
+        Creates a smithing trim recipe.
+
+        Args:
+            recipe_id: The recipe id.
+            template: The template recipe item.
+            base: The base recipe item.
+            addition: The addition recipe item.
+        """
+
     @property
     def template(self) -> RecipeIngredient | None:
         """

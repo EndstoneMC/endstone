@@ -24,6 +24,10 @@ namespace endstone {
  */
 class ComplexAliasIngredient : public RecipeIngredient {
 public:
+    ComplexAliasIngredient(const ComplexAliasIngredient &other) : RecipeIngredient(other) {}
+    ComplexAliasIngredient(ComplexAliasIngredient &&other) noexcept = default;
+    ComplexAliasIngredient &operator=(const ComplexAliasIngredient &other) = default;
+    ComplexAliasIngredient &operator=(ComplexAliasIngredient &&other) noexcept = default;
     ~ComplexAliasIngredient() override = default;
 
     /**
@@ -34,6 +38,11 @@ public:
      *
      * @return the alias
      */
-    [[nodiscard]] virtual const std::string &getAlias() const = 0;
+    [[nodiscard]] const std::string &getAlias() const { return impl_->getAlias(); }
+
+private:
+    friend class RecipeIngredient;
+    friend class core::EndstoneIngredient;
+    explicit ComplexAliasIngredient(std::unique_ptr<Impl> impl) : RecipeIngredient(std::move(impl)) {}
 };
 }  // namespace endstone

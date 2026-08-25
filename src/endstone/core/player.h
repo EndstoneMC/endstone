@@ -114,6 +114,7 @@ public:
                        std::optional<JsonObject> molang_variables) const override;
     [[nodiscard]] std::chrono::milliseconds getPing() const override;
     void updateCommands() const override;
+    void updateRecipes() const override;
 
     [[nodiscard]] PlayerInventory &getInventory() const override;
     [[nodiscard]] Inventory &getEnderChest() const override;

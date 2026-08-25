@@ -230,6 +230,33 @@ class Server:
         The list of crafting recipes.
         """
 
+    def register_recipe(self, recipe: Recipe) -> bool:
+        """
+        Registers a crafting recipe.
+
+        A recipe with the same id is replaced. After a successful registration the crafting data is sent to every
+        connected player, the same way `Player.update_commands()` resends the command list.
+
+        Args:
+            recipe: The recipe to register.
+
+        Returns:
+            True on success, False if the recipe cannot be registered.
+        """
+
+    def unregister_recipe(self, recipe_id: str) -> bool:
+        """
+        Unregisters the crafting recipe with the given id.
+
+        After a successful unregistration the crafting data is sent to every connected player.
+
+        Args:
+            recipe_id: The recipe id.
+
+        Returns:
+            True if a recipe was removed.
+        """
+
     @property
     def online_players(self) -> list[Player]:
         """
@@ -768,6 +795,13 @@ class Player(Mob):
         Send the list of commands to the client.
 
         Generally useful to ensure the client has a complete list of commands after permission changes are done.
+        """
+
+    def update_recipes(self) -> None:
+        """
+        Send the list of crafting recipes to the client.
+
+        Generally useful after recipes have been registered or unregistered.
         """
 
     @property

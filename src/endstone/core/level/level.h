@@ -37,7 +37,7 @@ public:
     [[nodiscard]] int getTime() const override;
     void setTime(int time) override;
     [[nodiscard]] std::vector<NotNull<Dimension>> getDimensions() const override;
-    [[nodiscard]] std::vector<NotNull<Recipe>> getRecipes() const override;
+    [[nodiscard]] std::vector<Recipe> getRecipes() const override;
     [[nodiscard]] Nullable<Dimension> getDimension(DimensionId id) const override;
     [[nodiscard]] Nullable<Dimension> getDimension(DimensionType type) const;
     [[nodiscard]] Nullable<Dimension> createDimension(const DimensionCreator &creator) override;

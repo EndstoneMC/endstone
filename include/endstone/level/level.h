@@ -172,7 +172,7 @@ public:
      *
      * @return a list of recipes
      */
-    [[nodiscard]] virtual std::vector<NotNull<Recipe>> getRecipes() const = 0;
+    [[nodiscard]] virtual std::vector<Recipe> getRecipes() const = 0;
 };
 
 }  // namespace endstone

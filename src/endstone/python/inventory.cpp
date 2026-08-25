@@ -62,7 +62,7 @@ void init_inventory(py::module_ &m, py::class_<ItemStack> &item_stack)
         .def_static("get", &ItemType::get, py::arg("name"), "Attempts to get the `ItemType` with the given name.",
                     py::return_value_policy::reference);
 
-    py::classh<RecipeIngredient>(m, "RecipeIngredient", R"doc(
+    py::class_<RecipeIngredient>(m, "RecipeIngredient", R"doc(
     Represents a potential item match within a recipe. All choices within a recipe must be satisfied for it to be
     craftable.
 )doc")
@@ -73,29 +73,49 @@ void init_inventory(py::module_ &m, py::class_<ItemStack> &item_stack)
     Bedrock records a count on each ingredient where Java repeats the ingredient instead.
 )doc");
 
-    py::classh<ExactIngredient, RecipeIngredient>(
+    py::class_<ExactIngredient, RecipeIngredient>(
         m, "ExactIngredient", "Represents an ingredient that matches one item with one exact data value.")
+        .def(py::init<ItemStack>(), py::arg("item"), R"doc(
+    Creates an ingredient that matches one item with one exact data value.
+
+    Args:
+        item: The item this ingredient matches.
+)doc")
         .def_property_readonly("item_stack", &ExactIngredient::getItemStack);
 
-    py::classh<ItemTypeIngredient, RecipeIngredient>(
+    py::class_<ItemTypeIngredient, RecipeIngredient>(
         m, "ItemTypeIngredient", "Represents an ingredient that matches an item type, whatever its data value.")
+        .def(py::init<const ItemType &, int>(), py::arg("type"), py::arg("count") = 1, R"doc(
+    Creates an ingredient that matches an item type, whatever its data value.
+
+    Args:
+        type: The item type this ingredient matches.
+        count: How many items this ingredient consumes.
+)doc")
         .def_property_readonly("item_type", &ItemTypeIngredient::getItemType, py::return_value_policy::reference,
                                "The item type that this ingredient will match.");
 
-    py::classh<ItemTagIngredient, RecipeIngredient>(m, "ItemTagIngredient",
+    py::class_<ItemTagIngredient, RecipeIngredient>(m, "ItemTagIngredient",
                                                     "Represents an ingredient that matches any item carrying a tag.")
+        .def(py::init<std::string, int>(), py::arg("item_tag"), py::arg("count") = 1, R"doc(
+    Creates an ingredient that matches any item carrying a tag.
+
+    Args:
+        item_tag: The item tag this ingredient matches.
+        count: How many items this ingredient consumes.
+)doc")
         .def_property_readonly("item_tag", &ItemTagIngredient::getItemTag, R"doc(
     The item tag that this ingredient will match.
 
     Bedrock keeps item tags server-side, so the tag is reported rather than the item types in it.
 )doc");
 
-    py::classh<MolangIngredient, RecipeIngredient>(
+    py::class_<MolangIngredient, RecipeIngredient>(
         m, "MolangIngredient", "Represents an ingredient that matches the items a Molang expression selects.")
         .def_property_readonly("expression", &MolangIngredient::getExpression,
                                "The Molang expression that this ingredient will match.");
 
-    py::classh<ComplexAliasIngredient, RecipeIngredient>(
+    py::class_<ComplexAliasIngredient, RecipeIngredient>(
         m, "ComplexAliasIngredient", "Represents an ingredient that matches any item an id stands for.")
         .def_property_readonly("alias", &ComplexAliasIngredient::getAlias, R"doc(
     The alias that this ingredient will match.
@@ -104,36 +124,98 @@ void init_inventory(py::module_ &m, py::class_<ItemStack> &item_stack)
     not an item tag, and the items are not reported.
 )doc");
 
-    py::classh<Recipe>(m, "Recipe", "Represents some type of crafting recipe.")
+    py::class_<Recipe>(m, "Recipe", "Represents some type of crafting recipe.")
         .def_property_readonly("result", &Recipe::getResult, "The result of this recipe.")
-        .def_property_readonly("ingredients", &Recipe::getIngredients)
-        .def_property_readonly("id", &Recipe::getId,
-                               "The identifier of this recipe, such as `minecraft:crafting_table`.")
+        .def_property_readonly(
+            "ingredients",
+            [](const Recipe &self) {
+                py::typing::List<py::typing::Optional<RecipeIngredient>> out;
+                for (const auto &ingredient : self.getIngredients()) {
+                    out.append(wrap_ingredient(ingredient));
+                }
+                return out;
+            })
+        .def_property_readonly("recipe_id", &Recipe::getRecipeId)
         .def_property_readonly("tag", &Recipe::getTag,
                                "The crafting station this recipe belongs to, such as `crafting_table`.");
 
-    py::classh<ShapedRecipe, Recipe>(m, "ShapedRecipe", "Represents a shaped (ie normal) crafting recipe.")
+    py::class_<ShapedRecipe, Recipe>(m, "ShapedRecipe", "Represents a shaped (ie normal) crafting recipe.")
+        .def(py::init<std::string, std::vector<std::string>, std::vector<std::pair<char, RecipeIngredient>>, ItemStack,
+                      std::string>(),
+             py::arg("recipe_id"), py::arg("shape"), py::arg("ingredients"), py::arg("result"),
+             py::arg("tag") = "crafting_table",
+             R"doc(
+    Creates a shaped crafting recipe.
+
+    Args:
+        recipe_id: The recipe id.
+        shape: The crafting shape, one string per row.
+        ingredients: The character-to-ingredient mapping.
+        result: The result of this recipe.
+        tag: The crafting station this recipe belongs to, such as `crafting_table`.
+)doc")
         .def_property_readonly("width", &ShapedRecipe::getWidth)
         .def_property_readonly("height", &ShapedRecipe::getHeight);
 
-    py::classh<ShapelessRecipe, Recipe>(m, "ShapelessRecipe", R"doc(
+    py::class_<ShapelessRecipe, Recipe>(m, "ShapelessRecipe", R"doc(
     Represents a shapeless recipe, where the arrangement of the ingredients on the crafting grid does not matter.
+)doc")
+        .def(py::init<std::string, std::vector<RecipeIngredient>, ItemStack, std::string>(), py::arg("recipe_id"),
+             py::arg("ingredients"), py::arg("result"), py::arg("tag") = "crafting_table",
+             R"doc(
+    Creates a shapeless crafting recipe.
+
+    Args:
+        recipe_id: The recipe id.
+        ingredients: The ingredients this recipe consumes.
+        result: The result of this recipe.
+        tag: The crafting station this recipe belongs to, such as `crafting_table`.
 )doc");
 
-    py::classh<ComplexRecipe, Recipe>(
+    py::class_<ComplexRecipe, Recipe>(
         m, "ComplexRecipe",
         "Represents a complex recipe which has imperative server-defined behavior, eg armor dyeing.");
 
-    py::classh<SmithingRecipe, Recipe>(m, "SmithingRecipe", "Represents a smithing recipe.")
-        .def_property_readonly("base", &SmithingRecipe::getBase, "The base recipe item.")
-        .def_property_readonly("addition", &SmithingRecipe::getAddition, "The addition recipe item.");
+    py::class_<SmithingRecipe, Recipe>(m, "SmithingRecipe", "Represents a smithing recipe.")
+        .def_property_readonly("base", [](const SmithingRecipe &self) { return wrap_ingredient(self.getBase()); },
+                               "The base recipe item.")
+        .def_property_readonly(
+            "addition", [](const SmithingRecipe &self) { return wrap_ingredient(self.getAddition()); },
+            "The addition recipe item.");
 
-    py::classh<SmithingTransformRecipe, SmithingRecipe>(m, "SmithingTransformRecipe",
+    py::class_<SmithingTransformRecipe, SmithingRecipe>(m, "SmithingTransformRecipe",
                                                         "Represents a smithing transform recipe.")
-        .def_property_readonly("template", &SmithingTransformRecipe::getTemplate, "The template recipe item.");
+        .def(py::init<std::string, RecipeIngredient, RecipeIngredient, RecipeIngredient, ItemStack>(),
+             py::arg("recipe_id"), py::arg("template"), py::arg("base"), py::arg("addition"), py::arg("result"),
+             R"doc(
+    Creates a smithing transform recipe.
 
-    py::classh<SmithingTrimRecipe, SmithingRecipe>(m, "SmithingTrimRecipe", "Represents a smithing trim recipe.")
-        .def_property_readonly("template", &SmithingTrimRecipe::getTemplate, "The template recipe item.");
+    Args:
+        recipe_id: The recipe id.
+        template: The template recipe item.
+        base: The base recipe item.
+        addition: The addition recipe item.
+        result: The result of this recipe.
+)doc")
+        .def_property_readonly(
+            "template", [](const SmithingTransformRecipe &self) { return wrap_ingredient(self.getTemplate()); },
+            "The template recipe item.");
+
+    py::class_<SmithingTrimRecipe, SmithingRecipe>(m, "SmithingTrimRecipe", "Represents a smithing trim recipe.")
+        .def(py::init<std::string, RecipeIngredient, RecipeIngredient, RecipeIngredient>(), py::arg("recipe_id"),
+             py::arg("template"), py::arg("base"), py::arg("addition"),
+             R"doc(
+    Creates a smithing trim recipe.
+
+    Args:
+        recipe_id: The recipe id.
+        template: The template recipe item.
+        base: The base recipe item.
+        addition: The addition recipe item.
+)doc")
+        .def_property_readonly(
+            "template", [](const SmithingTrimRecipe &self) { return wrap_ingredient(self.getTemplate()); },
+            "The template recipe item.");
 
     py::classh<ItemMeta>(m, "ItemMeta", "Represents the metadata of a generic item.")
         .def("clone", &ItemMeta::clone, R"doc(

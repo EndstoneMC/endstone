@@ -23,8 +23,33 @@ namespace endstone {
  */
 class ExactIngredient : public RecipeIngredient {
 public:
+    explicit ExactIngredient(ItemStack item)
+        : RecipeIngredient(std::make_unique<ExactImpl>(std::move(item)))
+    {
+    }
+    ExactIngredient(const ExactIngredient &other) : RecipeIngredient(other) {}
+    ExactIngredient(ExactIngredient &&other) noexcept = default;
+    ExactIngredient &operator=(const ExactIngredient &other) = default;
+    ExactIngredient &operator=(ExactIngredient &&other) noexcept = default;
     ~ExactIngredient() override = default;
 
-    [[nodiscard]] virtual ItemStack getItemStack() const = 0;
+    [[nodiscard]] ItemStack getItemStack() const { return impl_->getItemStack(); }
+
+private:
+    class ExactImpl : public TypedImpl<ExactIngredient> {
+    public:
+        explicit ExactImpl(ItemStack item) : item_(std::move(item)) {}
+        [[nodiscard]] std::unique_ptr<Impl> clone() const override { return std::make_unique<ExactImpl>(*this); }
+        [[nodiscard]] bool test(const ItemStack &item) const override { return item_.isSimilar(item); }
+        [[nodiscard]] int getCount() const override { return item_.getAmount(); }
+        [[nodiscard]] ItemStack getItemStack() const override { return item_; }
+
+    private:
+        ItemStack item_;
+    };
+
+    friend class RecipeIngredient;
+    friend class core::EndstoneIngredient;
+    explicit ExactIngredient(std::unique_ptr<Impl> impl) : RecipeIngredient(std::move(impl)) {}
 };
 }  // namespace endstone

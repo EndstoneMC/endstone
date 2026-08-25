@@ -14,6 +14,7 @@
 
 #pragma once
 
+#include <string>
 #include <vector>
 
 #include "bedrock/bedrock.h"
@@ -23,13 +24,32 @@ class RecipeUnlockingRequirement {
 public:
     enum class UnlockingContext : int {
         None = 0,
-        AlwaysUnlocked = 0x1,
-        PlayerInWater = 0x2,
-        PlayerHasManyItems = 0x3,
+        AlwaysUnlocked = 1,
+        PlayerInWater = 2,
+        PlayerHasManyItems = 3,
     };
 
+    RecipeUnlockingRequirement() = default;
+    explicit RecipeUnlockingRequirement(UnlockingContext context) : context_(context) {}
+    explicit RecipeUnlockingRequirement(std::vector<RecipeIngredient> unlocking_ingredients)
+        : ingredients_(std::move(unlocking_ingredients))
+    {
+    }
+
+    [[nodiscard]] bool isUnlockable() const
+    {
+        return context_ != UnlockingContext::None || !ingredients_.empty();
+    }
+    [[nodiscard]] bool isUnlockedByContext() const { return context_ != UnlockingContext::None; }
+    [[nodiscard]] bool isUnlockedByIngredients() const { return !ingredients_.empty(); }
+    [[nodiscard]] bool canBeUnlockedByContext(UnlockingContext context) const { return context_ == context; }
+    [[nodiscard]] bool canBeUnlockedByIngredient(const RecipeIngredient &ingredient) const;
+    [[nodiscard]] UnlockingContext getUnlockingContext() const { return context_; }
+    [[nodiscard]] const std::vector<RecipeIngredient> &getUnlockingIngredients() const { return ingredients_; }
+    static UnlockingContext unlockingContextFromString(const std::string &context);
+
 private:
-    UnlockingContext context_;                   // +0
-    std::vector<RecipeIngredient> ingredients_;  // +8
+    UnlockingContext context_{UnlockingContext::None};  // +0
+    std::vector<RecipeIngredient> ingredients_;         // +8
 };
 BEDROCK_STATIC_ASSERT_SIZE(RecipeUnlockingRequirement, 32, 32);

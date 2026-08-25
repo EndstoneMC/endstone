@@ -22,6 +22,7 @@
 class HashedString {
 public:
     // NOLINTBEGIN(*-explicit-constructor)
+    HashedString() : last_match_(nullptr) {}
     HashedString(std::nullptr_t);
     HashedString(const std::string &str);
     HashedString(char const *str);

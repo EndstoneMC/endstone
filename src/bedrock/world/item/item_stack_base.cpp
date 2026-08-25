@@ -121,8 +121,8 @@ ItemDescriptor ItemStackBase::getDescriptor() const
             return std::move(block_descriptor);
         }
     }
-    else if (!item_.isNull()) {
-        return item_->buildDescriptor(aux_value_, user_data_.get());
+    if (!item_.isNull()) {
+        return ItemDescriptor(*item_.get(), aux_value_);
     }
     return ItemDescriptor();
 }

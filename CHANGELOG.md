@@ -58,7 +58,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 #### Items
 
-- `Level.recipes`, a snapshot of the crafting recipes the server has loaded, also reachable as `Server.recipes`. Each entry is a `ShapedRecipe`, `ShapelessRecipe`, `SmithingTransformRecipe`, `SmithingTrimRecipe` or `ComplexRecipe`, and reports its `id`, crafting `tag`, `result` and `ingredients`. Shaped recipes add `width` and `height`; smithing recipes add `template`, `base` and `addition`.
+- `Level.recipes`, a snapshot of the crafting recipes the server has loaded, also reachable as `Server.recipes`. Each entry is a `ShapedRecipe`, `ShapelessRecipe`, `SmithingTransformRecipe`, `SmithingTrimRecipe` or `ComplexRecipe`, and reports its `recipe_id`, crafting `tag`, `result` and `ingredients`. Shaped recipes add `width` and `height`; smithing recipes add `template`, `base` and `addition`.
+- `Server.register_recipe()` and `Server.unregister_recipe()` for adding and removing crafting recipes at runtime. A successful change resends the crafting data to every connected player. `Player.update_recipes()` resends that list to one player, the same way `Player.update_commands()` resends the command list.
 - `RecipeIngredient`, describing what one ingredient slot accepts, with `test()` to check an item against it and a Bedrock-specific `count`. An ingredient is an `ExactIngredient` (one item and one data value), an `ItemTypeIngredient` (an item type, any data value), an `ItemTagIngredient` (anything carrying a tag), a `MolangIngredient` (whatever a Molang expression selects), an `ComplexAliasIngredient` (anything an id that predates the item flattening stands for, such as `minecraft:planks`). A slot the recipe leaves empty is `None`.
 - `WritableBookMeta`, `BookMeta` and `CrossbowMeta` item meta types.
 - `PotionMeta` for potions, splash potions and lingering potions, with `meta.base_potion_type`.

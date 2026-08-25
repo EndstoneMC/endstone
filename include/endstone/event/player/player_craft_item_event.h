@@ -33,7 +33,7 @@ class PlayerCraftItemEvent final : public Cancellable<PlayerEvent> {
 public:
     ENDSTONE_EVENT(PlayerCraftItemEvent);
 
-    PlayerCraftItemEvent(const NotNull<Player> &player, NotNull<Recipe> recipe, std::vector<ItemStack> ingredients,
+    PlayerCraftItemEvent(const NotNull<Player> &player, Recipe recipe, std::vector<ItemStack> ingredients,
                          std::vector<ItemStack> results, int repetitions)
         : Cancellable(player), recipe_(std::move(recipe)), ingredients_(std::move(ingredients)),
           results_(std::move(results)), repetitions_(repetitions)
@@ -43,7 +43,7 @@ public:
     /**
      * @return A copy of the current recipe on the crafting matrix.
      */
-    [[nodiscard]] NotNull<Recipe> getRecipe() const { return recipe_; }
+    [[nodiscard]] const Recipe &getRecipe() const { return recipe_; }
 
     /**
      * Gets the ingredients a single craft consumes.
@@ -95,7 +95,7 @@ public:
     void setRepetitions(int repetitions) { repetitions_ = repetitions; }
 
 private:
-    NotNull<Recipe> recipe_;
+    Recipe recipe_;
     std::vector<ItemStack> ingredients_;
     std::vector<ItemStack> results_;
     int repetitions_;

@@ -491,7 +491,32 @@ void init_server(py::classh<Server> &server)
 )doc")
         .def_property_readonly("level", &Server::getLevel, py::return_value_policy::reference_internal,
                                "The server level.")
-        .def_property_readonly("recipes", &Server::getRecipes, "The list of crafting recipes.")
+        .def_property_readonly(
+            "recipes", [](const Server &self) { return wrap_recipes(self.getRecipes()); },
+            "The list of crafting recipes.")
+        .def("register_recipe", &Server::registerRecipe, py::arg("recipe"), R"doc(
+    Registers a crafting recipe.
+
+    A recipe with the same id is replaced. After a successful registration the crafting data is sent to every
+    connected player, the same way `Player.update_commands()` resends the command list.
+
+    Args:
+        recipe: The recipe to register.
+
+    Returns:
+        True on success, False if the recipe cannot be registered.
+)doc")
+        .def("unregister_recipe", &Server::unregisterRecipe, py::arg("recipe_id"), R"doc(
+    Unregisters the crafting recipe with the given id.
+
+    After a successful unregistration the crafting data is sent to every connected player.
+
+    Args:
+        recipe_id: The recipe id.
+
+    Returns:
+        True if a recipe was removed.
+)doc")
         .def_property_readonly("online_players", &Server::getOnlinePlayers, "A list of all currently online players.")
         .def_property("max_players", &Server::getMaxPlayers, &Server::setMaxPlayers,
                       "The maximum amount of players which can login to this server.")
@@ -807,6 +832,11 @@ void init_player(py::module_ &m, py_class<Player> &player)
     Send the list of commands to the client.
 
     Generally useful to ensure the client has a complete list of commands after permission changes are done.
+)doc")
+        .def("update_recipes", &Player::updateRecipes, R"doc(
+    Send the list of crafting recipes to the client.
+
+    Generally useful after recipes have been registered or unregistered.
 )doc")
 
         .def_property("game_mode", &Player::getGameMode, &Player::setGameMode, "The player's current `GameMode`.")

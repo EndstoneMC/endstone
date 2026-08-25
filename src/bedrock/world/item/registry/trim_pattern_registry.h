@@ -12,23 +12,26 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-#include "bedrock/world/item/item_instance.h"
+#pragma once
 
-const ItemInstance ItemInstance::EMPTY_ITEM{};
+#include <optional>
+#include <unordered_map>
 
-ItemInstance::ItemInstance(const ItemStackBase &item) : ItemStackBase(item) {}
+#include "bedrock/bedrock.h"
+#include "bedrock/core/string/string_hash.h"
 
-ItemInstance ItemInstance::fromTag(const CompoundTag &tag)
-{
-    return BEDROCK_CALL(&ItemInstance::fromTag, tag);
-}
+struct TrimPattern {
+    HashedString pattern_id;
+    HashedString item_name;
+};
+BEDROCK_STATIC_ASSERT_SIZE(TrimPattern, 96, 96);
 
-bool SortItemInstanceIdAux::operator()(const ItemInstance &lhs, const ItemInstance &rhs) const
-{
-    const auto lhs_id = lhs.getIdAux();
-    const auto rhs_id = rhs.getIdAux();
-    if (lhs_id != rhs_id) {
-        return lhs_id < rhs_id;
-    }
-    return lhs.getCount() < rhs.getCount();
-}
+class TrimPatternRegistry {
+public:
+    [[nodiscard]] std::optional<HashedString> getPatternIdByItem(const HashedString &item_id) const;
+
+private:
+    std::unordered_map<HashedString, HashedString> template_item_to_pattern_id_;
+    std::unordered_map<HashedString, HashedString> pattern_id_to_template_item_;
+};
+BEDROCK_STATIC_ASSERT_SIZE(TrimPatternRegistry, 128, 128);

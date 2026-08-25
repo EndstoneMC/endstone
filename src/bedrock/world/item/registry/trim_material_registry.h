@@ -14,14 +14,25 @@
 
 #pragma once
 
-#include "endstone/core/inventory/recipe_data.h"
-#include "endstone/inventory/shapeless_recipe.h"
+#include <optional>
+#include <string>
+#include <vector>
 
-namespace endstone::core {
+#include "bedrock/bedrock.h"
+#include "bedrock/core/string/string_hash.h"
 
-class EndstoneShapelessRecipe final : public EndstoneRecipeBase<endstone::ShapelessRecipe> {
-public:
-    using EndstoneRecipeBase::EndstoneRecipeBase;
+struct TrimMaterial {
+    HashedString material_id;
+    std::string color;
+    HashedString item_name;
 };
+BEDROCK_STATIC_ASSERT_SIZE(TrimMaterial, 128, 128);
 
-}  // namespace endstone::core
+class TrimMaterialRegistry {
+public:
+    [[nodiscard]] std::optional<TrimMaterial> getTrimMaterialByItemName(const HashedString &item_name) const;
+
+private:
+    std::vector<TrimMaterial> trim_materials_;
+};
+BEDROCK_STATIC_ASSERT_SIZE(TrimMaterialRegistry, 24, 24);

@@ -39,5 +39,5 @@ public:
     }
 
 private:
-    std::uint16_t stack_size_;
+    std::uint16_t stack_size_{0};
 };

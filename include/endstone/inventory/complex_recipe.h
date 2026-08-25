@@ -22,6 +22,15 @@ namespace endstone {
  */
 class ComplexRecipe : public Recipe {
 public:
+    ComplexRecipe(const ComplexRecipe &other) : Recipe(other) {}
+    ComplexRecipe(ComplexRecipe &&other) noexcept = default;
+    ComplexRecipe &operator=(const ComplexRecipe &other) = default;
+    ComplexRecipe &operator=(ComplexRecipe &&other) noexcept = default;
     ~ComplexRecipe() override = default;
+
+private:
+    friend class Recipe;
+    friend class core::EndstoneRecipe;
+    explicit ComplexRecipe(std::unique_ptr<Impl> impl) : Recipe(std::move(impl)) {}
 };
 }  // namespace endstone

@@ -322,7 +322,9 @@ void init_level(py::module_ &m, py::classh<Level> &level, py::classh<Dimension> 
         .def_property_readonly("actors", &Level::getActors, "A list of all actors currently residing in this level.")
         .def_property("time", &Level::getTime, &Level::setTime, "The relative in-game time of this level.")
         .def_property_readonly("dimensions", &Level::getDimensions, "A list of all dimensions within this level.")
-        .def_property_readonly("recipes", &Level::getRecipes, "The list of crafting recipes.")
+        .def_property_readonly(
+            "recipes", [](const Level &self) { return wrap_recipes(self.getRecipes()); },
+            "The list of crafting recipes.")
         .def("get_dimension", &Level::getDimension, py::arg("id"), R"doc(
     Gets the dimension with the given id.
 

@@ -16,6 +16,7 @@
 
 #include <gmock/gmock.h>
 
+#include "endstone/inventory/recipe.h"
 #include "endstone/metrics/base.h"
 #include "endstone/server.h"
 
@@ -40,7 +41,9 @@ public:
     MOCK_METHOD(endstone::MapView *, getMap, (std::int64_t), (const, override));
     MOCK_METHOD(endstone::MapView &, createMap, (const endstone::NotNull<endstone::Dimension> &), (const, override));
     MOCK_METHOD(endstone::Level &, getLevel, (), (const, override));
-    MOCK_METHOD((std::vector<endstone::NotNull<endstone::Recipe>>), getRecipes, (), (const, override));
+    MOCK_METHOD((std::vector<endstone::Recipe>), getRecipes, (), (const, override));
+    MOCK_METHOD(bool, registerRecipe, (const endstone::Recipe &), (override));
+    MOCK_METHOD(bool, unregisterRecipe, (std::string), (override));
     MOCK_METHOD((std::vector<endstone::NotNull<endstone::Player>>), getOnlinePlayers, (), (const, override));
     MOCK_METHOD(int, getMaxPlayers, (), (const, override));
     MOCK_METHOD(void, setMaxPlayers, (int), (override));

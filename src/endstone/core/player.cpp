@@ -25,6 +25,7 @@
 #include "bedrock/entity/components/user_entity_identifier_component.h"
 #include "bedrock/network/packet.h"
 #include "bedrock/network/packet/clientbound_map_item_data_packet.h"
+#include "bedrock/network/packet/crafting_data_packet.h"
 #include "bedrock/network/packet/modal_form_request_packet.h"
 #include "bedrock/network/packet/play_sound_packet.h"
 #include "bedrock/network/packet/set_title_packet.h"
@@ -608,6 +609,14 @@ void EndstonePlayer::updateCommands() const
         }
     }
     getHandle().sendNetworkPacket(packet);
+}
+
+void EndstonePlayer::updateRecipes() const
+{
+    const auto packet = MinecraftPackets::createPacket(MinecraftPacketIds::CraftingData);
+    auto &pk = static_cast<CraftingDataPacket &>(*packet);
+    pk.payload = CraftingDataPacketPayload::fromRecipes(getHandle().getLevel().getRecipes(), false);
+    getHandle().sendNetworkPacket(*packet);
 }
 
 PlayerInventory &EndstonePlayer::getInventory() const

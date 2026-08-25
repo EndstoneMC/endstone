@@ -16,6 +16,7 @@
 
 #include <cstddef>
 #include <memory>
+#include <optional>
 #include <string>
 #include <typeinfo>
 #include <utility>
@@ -24,54 +25,90 @@
 #include "bedrock/world/item/crafting/recipe.h"
 #include "bedrock/world/item/crafting/recipes.h"
 #include "endstone/core/type.h"
+#include "endstone/inventory/complex_recipe.h"
 #include "endstone/inventory/item_stack.h"
 #include "endstone/inventory/recipe.h"
 #include "endstone/inventory/recipe_ingredient.h"
+#include "endstone/inventory/shaped_recipe.h"
+#include "endstone/inventory/shapeless_recipe.h"
+#include "endstone/inventory/smithing_transform_recipe.h"
+#include "endstone/inventory/smithing_trim_recipe.h"
 
 namespace endstone::core {
 
-class EndstoneRecipeData {
+class EndstoneRecipe : public Recipe::Impl {
 public:
-    explicit EndstoneRecipeData(std::shared_ptr<const ::Recipe> recipe) : recipe_(std::move(recipe)) {}
+    explicit EndstoneRecipe(std::shared_ptr<const ::Recipe> recipe) : recipe_(std::move(recipe)) {}
 
-    static NotNull<endstone::Recipe> fromMinecraft(std::shared_ptr<const ::Recipe> recipe);
-    static Nullable<endstone::Recipe> fromMinecraft(const ::Recipes &recipes, const ::Recipe &recipe);
+    static endstone::Recipe fromMinecraft(std::shared_ptr<const ::Recipe> recipe);
+    static std::optional<endstone::Recipe> fromMinecraft(const ::Recipes &recipes, const ::Recipe &recipe);
+    static std::unique_ptr<::Recipe> toMinecraft(const Recipe &recipe);
 
-    [[nodiscard]] endstone::ItemStack getResult() const;
-    [[nodiscard]] const std::vector<Nullable<endstone::RecipeIngredient>> &getIngredients() const;
-    [[nodiscard]] Nullable<endstone::RecipeIngredient> getIngredient(std::size_t index) const;
+    [[nodiscard]] endstone::ItemStack getResult() const override;
+    [[nodiscard]] const std::vector<std::optional<endstone::RecipeIngredient>> &getIngredients() const override;
+    [[nodiscard]] std::optional<endstone::RecipeIngredient> getSmithingIngredient(std::size_t index) const override;
     [[nodiscard]] const ::Recipe &getHandle() const { return *recipe_; }
-    [[nodiscard]] const std::string &getId() const { return recipe_->getRecipeId(); }
-    [[nodiscard]] const std::string &getTag() const { return recipe_->getTag().getString(); }
+    [[nodiscard]] const std::string &getRecipeId() const override { return recipe_->getRecipeId(); }
+    [[nodiscard]] const std::string &getTag() const override { return recipe_->getTag().getString(); }
 
 protected:
-    const std::shared_ptr<const ::Recipe> recipe_;
-    mutable std::vector<Nullable<endstone::RecipeIngredient>> ingredients_;
+    std::shared_ptr<const ::Recipe> recipe_;
+    mutable std::vector<std::optional<endstone::RecipeIngredient>> ingredients_;
     mutable bool ingredients_built_ = false;
 };
 
 template <typename Interface>
-class EndstoneRecipeBase : public Interface, protected EndstoneRecipeData {
+class EndstoneRecipeBase : public EndstoneRecipe {
 public:
-    explicit EndstoneRecipeBase(std::shared_ptr<const ::Recipe> recipe) : EndstoneRecipeData(std::move(recipe)) {}
+    using EndstoneRecipe::EndstoneRecipe;
 
     [[nodiscard]] ClassInfo getClassInfo() const override { return typeid(Interface); }
 
     [[nodiscard]] bool isInstanceOf(ClassInfo target) const override
     {
-        return core::isInstanceOf(*this, target);
+        return core::isTypeInstanceOf(getClassInfo(), target);
     }
+};
 
-    [[nodiscard]] endstone::ItemStack getResult() const override { return EndstoneRecipeData::getResult(); }
+class EndstoneComplexRecipe final : public EndstoneRecipeBase<endstone::ComplexRecipe> {
+public:
+    using EndstoneRecipeBase::EndstoneRecipeBase;
+    [[nodiscard]] std::unique_ptr<Impl> clone() const override { return std::make_unique<EndstoneComplexRecipe>(*this); }
+};
 
-    [[nodiscard]] const std::vector<Nullable<endstone::RecipeIngredient>> &getIngredients() const override
+class EndstoneShapedRecipe final : public EndstoneRecipeBase<endstone::ShapedRecipe> {
+public:
+    using EndstoneRecipeBase::EndstoneRecipeBase;
+    [[nodiscard]] std::unique_ptr<Impl> clone() const override { return std::make_unique<EndstoneShapedRecipe>(*this); }
+    [[nodiscard]] int getWidth() const override { return getHandle().getWidth(); }
+    [[nodiscard]] int getHeight() const override { return getHandle().getHeight(); }
+};
+
+class EndstoneShapelessRecipe final : public EndstoneRecipeBase<endstone::ShapelessRecipe> {
+public:
+    using EndstoneRecipeBase::EndstoneRecipeBase;
+    [[nodiscard]] std::unique_ptr<Impl> clone() const override
     {
-        return EndstoneRecipeData::getIngredients();
+        return std::make_unique<EndstoneShapelessRecipe>(*this);
     }
+};
 
-    [[nodiscard]] const std::string &getId() const override { return EndstoneRecipeData::getId(); }
+class EndstoneSmithingTransformRecipe final : public EndstoneRecipeBase<endstone::SmithingTransformRecipe> {
+public:
+    using EndstoneRecipeBase::EndstoneRecipeBase;
+    [[nodiscard]] std::unique_ptr<Impl> clone() const override
+    {
+        return std::make_unique<EndstoneSmithingTransformRecipe>(*this);
+    }
+};
 
-    [[nodiscard]] const std::string &getTag() const override { return EndstoneRecipeData::getTag(); }
+class EndstoneSmithingTrimRecipe final : public EndstoneRecipeBase<endstone::SmithingTrimRecipe> {
+public:
+    using EndstoneRecipeBase::EndstoneRecipeBase;
+    [[nodiscard]] std::unique_ptr<Impl> clone() const override
+    {
+        return std::make_unique<EndstoneSmithingTrimRecipe>(*this);
+    }
 };
 
 }  // namespace endstone::core

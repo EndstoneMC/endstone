@@ -14,17 +14,18 @@
 
 #pragma once
 
-#include "endstone/core/inventory/recipe_data.h"
-#include "endstone/inventory/shaped_recipe.h"
+#include "bedrock/bedrock.h"
+#include "bedrock/core/string/string_hash.h"
 
-namespace endstone::core {
+class ItemStackBase;
 
-class EndstoneShapedRecipe final : public EndstoneRecipeBase<endstone::ShapedRecipe> {
+class ArmorTrim {
 public:
-    using EndstoneRecipeBase::EndstoneRecipeBase;
+    ArmorTrim(HashedString pattern_id, HashedString material_id);
+    static void setTrim(ItemStackBase &instance, ArmorTrim trim);
 
-    [[nodiscard]] int getWidth() const override { return getHandle().getWidth(); }
-    [[nodiscard]] int getHeight() const override { return getHandle().getHeight(); }
+private:
+    HashedString pattern_id_;
+    HashedString material_id_;
 };
-
-}  // namespace endstone::core
+BEDROCK_STATIC_ASSERT_SIZE(ArmorTrim, 96, 96);

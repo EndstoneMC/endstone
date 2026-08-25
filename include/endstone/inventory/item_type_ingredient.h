@@ -23,6 +23,14 @@ namespace endstone {
  */
 class ItemTypeIngredient : public RecipeIngredient {
 public:
+    explicit ItemTypeIngredient(const ItemType &type, int count = 1)
+        : RecipeIngredient(std::make_unique<ItemTypeImpl>(type, count))
+    {
+    }
+    ItemTypeIngredient(const ItemTypeIngredient &other) : RecipeIngredient(other) {}
+    ItemTypeIngredient(ItemTypeIngredient &&other) noexcept = default;
+    ItemTypeIngredient &operator=(const ItemTypeIngredient &other) = default;
+    ItemTypeIngredient &operator=(ItemTypeIngredient &&other) noexcept = default;
     ~ItemTypeIngredient() override = default;
 
     /**
@@ -30,6 +38,24 @@ public:
      *
      * @return the item type
      */
-    [[nodiscard]] virtual const ItemType &getItemType() const = 0;
+    [[nodiscard]] const ItemType &getItemType() const { return impl_->getItemType(); }
+
+private:
+    class ItemTypeImpl : public TypedImpl<ItemTypeIngredient> {
+    public:
+        ItemTypeImpl(const ItemType &type, int count) : type_(&type), count_(count) {}
+        [[nodiscard]] std::unique_ptr<Impl> clone() const override { return std::make_unique<ItemTypeImpl>(*this); }
+        [[nodiscard]] bool test(const ItemStack &item) const override { return item.getType() == *type_; }
+        [[nodiscard]] int getCount() const override { return count_; }
+        [[nodiscard]] const ItemType &getItemType() const override { return *type_; }
+
+    private:
+        const ItemType *type_;
+        int count_;
+    };
+
+    friend class RecipeIngredient;
+    friend class core::EndstoneIngredient;
+    explicit ItemTypeIngredient(std::unique_ptr<Impl> impl) : RecipeIngredient(std::move(impl)) {}
 };
 }  // namespace endstone

@@ -14,6 +14,30 @@
 
 #pragma once
 
-#include "bedrock/world/item/item_descriptor_count.h"
+#include <string_view>
 
-class RecipeIngredient : public ItemDescriptorCount {};
+#include "bedrock/bedrock.h"
+#include "bedrock/world/item/item_descriptor_count.h"
+#include "bedrock/world/item/vanilla_item_tag.h"
+
+class ItemInstance;
+class ReadOnlyBinaryStream;
+
+class RecipeIngredient : public ItemDescriptorCount {
+public:
+    RecipeIngredient();
+    explicit RecipeIngredient(const ItemDescriptor &, uint16_t);
+    explicit RecipeIngredient(const Block &, uint16_t);
+    explicit RecipeIngredient(const BlockType &, uint16_t);
+    explicit RecipeIngredient(const Item &, int, uint16_t);
+    explicit RecipeIngredient(const ItemTag &, uint16_t);
+    explicit RecipeIngredient(std::string_view, int, uint16_t);
+    explicit RecipeIngredient(ReadOnlyBinaryStream &);
+
+    [[nodiscard]] bool isEmpty() const;
+
+    static RecipeIngredient EMPTY_INGREDIENT;
+};
+BEDROCK_STATIC_ASSERT_SIZE(RecipeIngredient, 24, 24);
+
+ItemInstance toItemInstance(const RecipeIngredient &ingredient);

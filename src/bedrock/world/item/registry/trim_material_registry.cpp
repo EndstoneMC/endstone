@@ -12,16 +12,14 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-#pragma once
+#include "bedrock/world/item/registry/trim_material_registry.h"
 
-#include "endstone/core/inventory/recipe_data.h"
-#include "endstone/inventory/complex_recipe.h"
-
-namespace endstone::core {
-
-class EndstoneComplexRecipe final : public EndstoneRecipeBase<endstone::ComplexRecipe> {
-public:
-    using EndstoneRecipeBase::EndstoneRecipeBase;
-};
-
-}  // namespace endstone::core
+std::optional<TrimMaterial> TrimMaterialRegistry::getTrimMaterialByItemName(const HashedString &item_name) const
+{
+    for (const auto &material : trim_materials_) {
+        if (material.item_name.getHash() == item_name.getHash()) {
+            return material;
+        }
+    }
+    return std::nullopt;
+}

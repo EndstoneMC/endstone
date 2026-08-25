@@ -99,7 +99,18 @@ add_library(bedrock STATIC
         world/item/vanilla_item_tags.cpp
         world/item/written_book_item.cpp
         world/item/alchemy/potion.cpp
+        world/item/registry/armor_trim.cpp
+        world/item/registry/trim_material_registry.cpp
+        world/item/registry/trim_pattern_registry.cpp
+        world/item/crafting/recipe.cpp
+        world/item/crafting/recipe_ingredient.cpp
+        world/item/crafting/recipe_unlocking_requirement.cpp
         world/item/crafting/recipes.cpp
+        world/item/crafting/crafting_context.cpp
+        world/item/crafting/shaped_recipe.cpp
+        world/item/crafting/shapeless_recipe.cpp
+        world/item/crafting/smithing_transform_recipe.cpp
+        world/item/crafting/smithing_trim_recipe.cpp
         world/item/enchanting/enchant.cpp
         world/item/registry/creative_group_info.cpp
         world/item/registry/creative_item_entry.cpp

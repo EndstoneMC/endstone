@@ -24,6 +24,10 @@ namespace endstone {
  */
 class MolangIngredient : public RecipeIngredient {
 public:
+    MolangIngredient(const MolangIngredient &other) : RecipeIngredient(other) {}
+    MolangIngredient(MolangIngredient &&other) noexcept = default;
+    MolangIngredient &operator=(const MolangIngredient &other) = default;
+    MolangIngredient &operator=(MolangIngredient &&other) noexcept = default;
     ~MolangIngredient() override = default;
 
     /**
@@ -31,6 +35,11 @@ public:
      *
      * @return the expression
      */
-    [[nodiscard]] virtual const std::string &getExpression() const = 0;
+    [[nodiscard]] const std::string &getExpression() const { return impl_->getExpression(); }
+
+private:
+    friend class RecipeIngredient;
+    friend class core::EndstoneIngredient;
+    explicit MolangIngredient(std::unique_ptr<Impl> impl) : RecipeIngredient(std::move(impl)) {}
 };
 }  // namespace endstone

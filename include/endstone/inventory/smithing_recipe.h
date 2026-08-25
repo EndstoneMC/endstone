@@ -22,6 +22,10 @@ namespace endstone {
  */
 class SmithingRecipe : public Recipe {
 public:
+    SmithingRecipe(const SmithingRecipe &other) : Recipe(other) {}
+    SmithingRecipe(SmithingRecipe &&other) noexcept = default;
+    SmithingRecipe &operator=(const SmithingRecipe &other) = default;
+    SmithingRecipe &operator=(SmithingRecipe &&other) noexcept = default;
     ~SmithingRecipe() override = default;
 
     /**
@@ -29,13 +33,19 @@ public:
      *
      * @return base choice
      */
-    [[nodiscard]] virtual Nullable<RecipeIngredient> getBase() const = 0;
+    [[nodiscard]] std::optional<RecipeIngredient> getBase() const { return impl_->getSmithingIngredient(1); }
 
     /**
      * Get the addition recipe item.
      *
      * @return addition choice
      */
-    [[nodiscard]] virtual Nullable<RecipeIngredient> getAddition() const = 0;
+    [[nodiscard]] std::optional<RecipeIngredient> getAddition() const { return impl_->getSmithingIngredient(2); }
+
+protected:
+    friend class SmithingTransformRecipe;
+    friend class SmithingTrimRecipe;
+    friend class core::EndstoneRecipe;
+    explicit SmithingRecipe(std::unique_ptr<Impl> impl) : Recipe(std::move(impl)) {}
 };
 }  // namespace endstone

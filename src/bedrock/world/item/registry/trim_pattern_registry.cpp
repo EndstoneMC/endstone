@@ -12,23 +12,13 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-#include "bedrock/world/item/item_instance.h"
+#include "bedrock/world/item/registry/trim_pattern_registry.h"
 
-const ItemInstance ItemInstance::EMPTY_ITEM{};
-
-ItemInstance::ItemInstance(const ItemStackBase &item) : ItemStackBase(item) {}
-
-ItemInstance ItemInstance::fromTag(const CompoundTag &tag)
+std::optional<HashedString> TrimPatternRegistry::getPatternIdByItem(const HashedString &item_id) const
 {
-    return BEDROCK_CALL(&ItemInstance::fromTag, tag);
-}
-
-bool SortItemInstanceIdAux::operator()(const ItemInstance &lhs, const ItemInstance &rhs) const
-{
-    const auto lhs_id = lhs.getIdAux();
-    const auto rhs_id = rhs.getIdAux();
-    if (lhs_id != rhs_id) {
-        return lhs_id < rhs_id;
+    const auto it = template_item_to_pattern_id_.find(item_id);
+    if (it == template_item_to_pattern_id_.end()) {
+        return std::nullopt;
     }
-    return lhs.getCount() < rhs.getCount();
+    return it->second;
 }

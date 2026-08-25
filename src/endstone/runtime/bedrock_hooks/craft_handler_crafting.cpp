@@ -90,8 +90,8 @@ ItemStackNetResult CraftHandlerCrafting::_handleCraftAction(const ItemStackReque
         return ENDSTONE_HOOK_CALL_ORIGINAL(&CraftHandlerCrafting::_handleCraftAction, this, request_action);
     }
 
-    auto crafted = endstone::core::EndstoneRecipeData::fromMinecraft(player_.getLevel().getRecipes(), *recipe);
-    if (crafted == nullptr) {
+    auto crafted = endstone::core::EndstoneRecipe::fromMinecraft(player_.getLevel().getRecipes(), *recipe);
+    if (!crafted) {
         return ENDSTONE_HOOK_CALL_ORIGINAL(&CraftHandlerCrafting::_handleCraftAction, this, request_action);
     }
 
@@ -102,7 +102,7 @@ ItemStackNetResult CraftHandlerCrafting::_handleCraftAction(const ItemStackReque
     }
 
     endstone::PlayerCraftItemEvent e{player_.getEndstoneActor<endstone::core::EndstonePlayer>(),
-                                     std::move(crafted), std::move(ingredients), results,
+                                     std::move(*crafted), std::move(ingredients), results,
                                      request_action.getNumCrafts()};
     server.getPluginManager().callEvent(e);
     if (e.isCancelled()) {

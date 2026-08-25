@@ -12,23 +12,17 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-#include "bedrock/world/item/item_instance.h"
+#include "bedrock/world/item/crafting/crafting_context.h"
 
-const ItemInstance ItemInstance::EMPTY_ITEM{};
+#include "bedrock/world/level/level_interface.h"
 
-ItemInstance::ItemInstance(const ItemStackBase &item) : ItemStackBase(item) {}
-
-ItemInstance ItemInstance::fromTag(const CompoundTag &tag)
+CraftingContext::Impl::Impl(Bedrock::NotNullNonOwnerPtr<ILevel> level)
+    : trim_pattern_registry_(level->getTrimPatternRegistry()),
+      trim_material_registry_(level->getTrimMaterialRegistry())
 {
-    return BEDROCK_CALL(&ItemInstance::fromTag, tag);
 }
 
-bool SortItemInstanceIdAux::operator()(const ItemInstance &lhs, const ItemInstance &rhs) const
+CraftingContext::CraftingContext(Bedrock::NotNullNonOwnerPtr<ILevel> level)
+    : impl_(std::make_unique<Impl>(std::move(level)))
 {
-    const auto lhs_id = lhs.getIdAux();
-    const auto rhs_id = rhs.getIdAux();
-    if (lhs_id != rhs_id) {
-        return lhs_id < rhs_id;
-    }
-    return lhs.getCount() < rhs.getCount();
 }

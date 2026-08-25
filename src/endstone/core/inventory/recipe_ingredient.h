@@ -15,6 +15,7 @@
 #pragma once
 
 #include <memory>
+#include <optional>
 #include <string>
 #include <typeinfo>
 #include <utility>
@@ -27,35 +28,43 @@
 #include "endstone/inventory/item_tag_ingredient.h"
 #include "endstone/inventory/item_type_ingredient.h"
 #include "endstone/inventory/molang_ingredient.h"
-#include "endstone/util/pointers.h"
 
 namespace endstone::core {
 
-template <typename Interface>
-class EndstoneIngredientBase : public Interface {
+class EndstoneIngredient : public RecipeIngredient::Impl {
 public:
-    EndstoneIngredientBase(std::shared_ptr<const ::Recipe> recipe, const ::RecipeIngredient &ingredient)
-        : recipe_(std::move(recipe)), ingredient_(&ingredient)
+    EndstoneIngredient(std::shared_ptr<const ::Recipe> recipe, ::RecipeIngredient ingredient)
+        : recipe_(std::move(recipe)), ingredient_(std::move(ingredient))
     {
     }
+
+    [[nodiscard]] bool test(const endstone::ItemStack &item) const override;
+
+    [[nodiscard]] int getCount() const override { return static_cast<int>(ingredient_.getStackSize()); }
+
+    [[nodiscard]] const ::RecipeIngredient &getHandle() const { return ingredient_; }
+
+    static std::optional<endstone::RecipeIngredient> fromMinecraft(std::shared_ptr<const ::Recipe> recipe,
+                                                                   const ::RecipeIngredient &ingredient);
+    static const ::RecipeIngredient &getHandle(const RecipeIngredient &ingredient);
+    static ::RecipeIngredient toMinecraft(const RecipeIngredient &ingredient);
+
+protected:
+    std::shared_ptr<const ::Recipe> recipe_;
+    ::RecipeIngredient ingredient_;
+};
+
+template <typename Interface>
+class EndstoneIngredientBase : public EndstoneIngredient {
+public:
+    using EndstoneIngredient::EndstoneIngredient;
 
     [[nodiscard]] ClassInfo getClassInfo() const override { return typeid(Interface); }
 
     [[nodiscard]] bool isInstanceOf(ClassInfo target) const override
     {
-        return core::isInstanceOf(*this, target);
+        return core::isTypeInstanceOf(getClassInfo(), target);
     }
-
-    [[nodiscard]] int getCount() const override { return static_cast<int>(ingredient_->getStackSize()); }
-
-    [[nodiscard]] bool test(const endstone::ItemStack &item) const override
-    {
-        return recipe_->itemValidForRecipe(*ingredient_, EndstoneItemStack::toMinecraft(item));
-    }
-
-protected:
-    std::shared_ptr<const ::Recipe> recipe_;
-    const ::RecipeIngredient *ingredient_;
 };
 
 class EndstoneExactIngredient final : public EndstoneIngredientBase<endstone::ExactIngredient> {
@@ -65,6 +74,8 @@ public:
         : EndstoneIngredientBase(std::move(recipe), ingredient), item_(std::move(item))
     {
     }
+
+    [[nodiscard]] std::unique_ptr<Impl> clone() const override { return std::make_unique<EndstoneExactIngredient>(*this); }
 
     [[nodiscard]] endstone::ItemStack getItemStack() const override { return item_; }
 
@@ -78,6 +89,11 @@ public:
                                const endstone::ItemType &type)
         : EndstoneIngredientBase(std::move(recipe), ingredient), type_(&type)
     {
+    }
+
+    [[nodiscard]] std::unique_ptr<Impl> clone() const override
+    {
+        return std::make_unique<EndstoneItemTypeIngredient>(*this);
     }
 
     [[nodiscard]] const endstone::ItemType &getItemType() const override { return *type_; }
@@ -94,6 +110,11 @@ public:
     {
     }
 
+    [[nodiscard]] std::unique_ptr<Impl> clone() const override
+    {
+        return std::make_unique<EndstoneItemTagIngredient>(*this);
+    }
+
     [[nodiscard]] const std::string &getItemTag() const override { return item_tag_; }
 
 private:
@@ -108,6 +129,11 @@ public:
     {
     }
 
+    [[nodiscard]] std::unique_ptr<Impl> clone() const override
+    {
+        return std::make_unique<EndstoneMolangIngredient>(*this);
+    }
+
     [[nodiscard]] const std::string &getExpression() const override { return expression_; }
 
 private:
@@ -120,6 +146,11 @@ public:
                                    std::string alias)
         : EndstoneIngredientBase(std::move(recipe), ingredient), alias_(std::move(alias))
     {
+    }
+
+    [[nodiscard]] std::unique_ptr<Impl> clone() const override
+    {
+        return std::make_unique<EndstoneComplexAliasIngredient>(*this);
     }
 
     [[nodiscard]] const std::string &getAlias() const override { return alias_; }

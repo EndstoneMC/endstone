@@ -14,9 +14,12 @@
 
 #pragma once
 
+#include "bedrock/core/sem_ver/sem_version.h"
+#include "bedrock/core/string/string_hash.h"
 #include "bedrock/platform/uuid.h"
-#include "bedrock/resources/base_game_version.h"
 #include "bedrock/world/inventory/network/item_stack_net_id_variant.h"
+#include "bedrock/world/item/crafting/crafting_container.h"
+#include "bedrock/world/item/crafting/crafting_context.h"
 #include "bedrock/world/item/crafting/recipe_ingredient.h"
 #include "bedrock/world/item/crafting/recipe_unlocking_requirement.h"
 #include "bedrock/world/item/item_instance.h"
@@ -38,57 +41,80 @@ public:
 
     class Results {
     public:
+        Results() = default;
         Results(const ResultList &);
         Results(const UnloadedItemInstanceResultList &);
 
         [[nodiscard]] const ResultList &getItems() const { return results_; }
 
     private:
-        bool results_are_loaded_;            // +0
-        std::vector<ItemInstance> results_;  // +8
-        std::vector<NetworkItemInstanceDescriptor> unloaded_results_;
+        friend class Recipe;
+        bool results_are_loaded_{false};  // +0
+        ResultList results_;              // +8
+        UnloadedItemInstanceResultList unloaded_results_;
     };
 
-    virtual ~Recipe() = 0;
-    virtual std::vector<ItemInstance> const &assemble(CraftingContainer &, CraftingContext &) const = 0;
+    struct ConstructionContext {
+        std::string recipe_id;
+        Ingredients ingredients;
+        Results results;
+        HashedString tag;
+        int priority{0};
+        const mce::UUID *uuid{nullptr};
+        RecipeUnlockingRequirement unlocking_requirement;
+        SemVersion format_version;
+    };
+
+    static constexpr int SIZE_2X2 = 0;
+    static constexpr int SIZE_3X3 = 1;
+
+    Recipe(Recipe &&) = default;
+    Recipe(const Recipe &) = default;
+    virtual ~Recipe() = default;
+
+    virtual const ResultList &assemble(CraftingContainer &, CraftingContext &) const = 0;
     virtual int getCraftingSize() const = 0;
-    virtual RecipeIngredient const &getIngredient(int, int) const = 0;
+    virtual const RecipeIngredient &getIngredient(int, int) const = 0;
     virtual bool isShapeless() const = 0;
-    virtual bool matches(CraftingContainer const &, CraftingContext const &) const = 0;
+    virtual bool matches(const CraftingContainer &, const CraftingContext &) const = 0;
     virtual int size() const = 0;
-    virtual mce::UUID const &getId() const = 0;
-    virtual std::vector<ItemInstance> const &getResultItems() const = 0;
-    virtual bool isMultiRecipe() const = 0;
-    virtual bool hasDataDrivenResult() const = 0;
-    virtual bool itemValidForRecipe(ItemDescriptor const &, ItemStack const &) const = 0;
-    virtual bool itemsMatch(ItemDescriptor const &, ItemDescriptor const &) const = 0;
-    virtual bool itemsMatch(ItemDescriptor const &, ItemDescriptor const &, CompoundTag const *) const = 0;
-    virtual std::size_t getIngredientsHash() const = 0;
+    [[nodiscard]] virtual const mce::UUID &getId() const;
+    [[nodiscard]] virtual const ResultList &getResultItems() const;
+    [[nodiscard]] virtual bool isMultiRecipe() const;
+    [[nodiscard]] virtual bool hasDataDrivenResult() const;
+    [[nodiscard]] virtual bool itemValidForRecipe(const ItemDescriptor &, const ItemStack &) const;
+    [[nodiscard]] virtual bool itemsMatch(const ItemDescriptor &, const ItemDescriptor &) const;
+    [[nodiscard]] virtual bool itemsMatch(const ItemDescriptor &, const ItemDescriptor &, const CompoundTag *) const;
+    [[nodiscard]] virtual std::size_t getIngredientsHash() const;
+
+    static bool isAnyAuxValue(const ItemDescriptor &ii);
 
     [[nodiscard]] const std::string &getRecipeId() const { return recipe_id_; }
-
     [[nodiscard]] int getWidth() const { return width_; }
-
     [[nodiscard]] int getHeight() const { return height_; }
-
     [[nodiscard]] int getPriority() const { return priority_; }
-
     [[nodiscard]] const RecipeNetId &getNetId() const { return recipe_net_id_; }
-
-    [[nodiscard]] const std::vector<RecipeIngredient> &getIngredients() const { return my_ingredients_; }
-
+    [[nodiscard]] const Ingredients &getIngredients() const { return my_ingredients_; }
     [[nodiscard]] const RecipeUnlockingRequirement &getUnlockingRequirement() const { return unlocking_requirement_; }
-
     [[nodiscard]] const HashedString &getTag() const { return tag_; }
+    ConstructionContext getConstructionContext() const;
+    void setNetId(const RecipeNetId &recipe_net_id) { recipe_net_id_ = recipe_net_id; }
+    void setId(const mce::UUID &uuid) { my_id_ = uuid; }
+    void setUnlockingRequirement(RecipeUnlockingRequirement requirement)
+    {
+        unlocking_requirement_ = std::move(requirement);
+    }
+    void generateUUID();
 
 protected:
+    explicit Recipe(ConstructionContext &&);
     Recipe();
 
     std::string recipe_id_;
     mce::UUID my_id_;
-    int width_;
-    int height_;
-    int priority_;
+    int width_{0};
+    int height_{0};
+    int priority_{0};
     RecipeNetId recipe_net_id_;
     Ingredients my_ingredients_;
     Results results_;
@@ -98,3 +124,6 @@ protected:
 private:
     HashedString tag_;
 };
+BEDROCK_STATIC_ASSERT_SIZE(Recipe, 256, 256);
+BEDROCK_STATIC_ASSERT_SIZE(Recipe::Results, 56, 56);
+BEDROCK_STATIC_ASSERT_SIZE(Recipe::ConstructionContext, 232, 232);

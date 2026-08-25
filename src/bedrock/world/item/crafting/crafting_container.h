@@ -12,23 +12,22 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-#include "bedrock/world/item/item_instance.h"
+#pragma once
 
-const ItemInstance ItemInstance::EMPTY_ITEM{};
+#include <vector>
 
-ItemInstance::ItemInstance(const ItemStackBase &item) : ItemStackBase(item) {}
+#include "bedrock/bedrock.h"
+#include "bedrock/world/container.h"
+#include "bedrock/world/item/item_stack.h"
 
-ItemInstance ItemInstance::fromTag(const CompoundTag &tag)
-{
-    return BEDROCK_CALL(&ItemInstance::fromTag, tag);
-}
+class CraftingContainer : public Container {
+public:
+    [[nodiscard]] const ItemStack &getItem(int slot) const override = 0;
 
-bool SortItemInstanceIdAux::operator()(const ItemInstance &lhs, const ItemInstance &rhs) const
-{
-    const auto lhs_id = lhs.getIdAux();
-    const auto rhs_id = rhs.getIdAux();
-    if (lhs_id != rhs_id) {
-        return lhs_id < rhs_id;
-    }
-    return lhs.getCount() < rhs.getCount();
-}
+    [[nodiscard]] int getWidth() const { return width_; }
+
+private:
+    std::vector<ItemStack> items_;  // +408
+    int width_;                     // +432
+};
+BEDROCK_STATIC_ASSERT_SIZE(CraftingContainer, 440, 440);
