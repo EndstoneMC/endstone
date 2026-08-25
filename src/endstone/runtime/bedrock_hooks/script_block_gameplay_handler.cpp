@@ -61,7 +61,7 @@ bool handleEvent(const BlockTryPlaceByPlayerEvent &event)
 
     // Capture replaced block state from current world state
     auto block_at_pos = endstone::core::EndstoneBlock::at(block_source, event.pos);
-    auto replaced_state = block_at_pos->captureState();
+    auto replaced_state = block_at_pos->captureState(false);
 
     // block_against from the live world
     const auto opposite = endstone::core::EndstoneBlockFace::getOpposite(block_face);
