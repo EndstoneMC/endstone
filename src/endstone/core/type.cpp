@@ -34,9 +34,13 @@
 #include "endstone/command/command_sender.h"
 #include "endstone/command/console_command_sender.h"
 #include "endstone/command/proxied_command_sender.h"
+#include "endstone/inventory/blasting_recipe.h"
+#include "endstone/inventory/campfire_recipe.h"
 #include "endstone/inventory/complex_alias_ingredient.h"
 #include "endstone/inventory/complex_recipe.h"
+#include "endstone/inventory/cooking_recipe.h"
 #include "endstone/inventory/exact_ingredient.h"
+#include "endstone/inventory/furnace_recipe.h"
 #include "endstone/inventory/item_tag_ingredient.h"
 #include "endstone/inventory/item_type_ingredient.h"
 #include "endstone/inventory/meta/book_meta.h"
@@ -53,6 +57,7 @@
 #include "endstone/inventory/smithing_recipe.h"
 #include "endstone/inventory/smithing_transform_recipe.h"
 #include "endstone/inventory/smithing_trim_recipe.h"
+#include "endstone/inventory/smoking_recipe.h"
 #include "endstone/permissions/permissible.h"
 #include "endstone/player.h"
 
@@ -104,6 +109,11 @@ void registerTypes()
     // Recipe hierarchy
     registerType<Recipe>();
     registerType<ComplexRecipe>().base<Recipe>();
+    registerType<CookingRecipe>().base<Recipe>();
+    registerType<BlastingRecipe>().base<CookingRecipe>();
+    registerType<CampfireRecipe>().base<CookingRecipe>();
+    registerType<FurnaceRecipe>().base<CookingRecipe>();
+    registerType<SmokingRecipe>().base<CookingRecipe>();
     registerType<ShapedRecipe>().base<Recipe>();
     registerType<ShapelessRecipe>().base<Recipe>();
     registerType<SmithingRecipe>().base<Recipe>();

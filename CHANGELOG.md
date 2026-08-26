@@ -36,6 +36,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - `InventoryEvent`, a base class for inventory-related events, reporting the primary `inventory` involved, and the cancellable `InventoryInteractEvent` under it, which adds the `who_clicked` player.
 - `InventoryOpenEvent` and `InventoryCloseEvent`, both reporting the `inventory` and the `player`. Cancelling an open stops the container screen from appearing at all. These cover block containers such as chests, barrels, furnaces and brewing stands; a container carried by an entity, like a chest minecart or a horse, does not fire them yet.
 - `DimensionLoadEvent` for a dimension being loaded.
+- `BlockCookEvent.recipe`, the `CookingRecipe` the cook is running, or `None` when there is no matching recipe.
 - Support for custom Python events with optional cancellation.
 
 #### Actors and players
@@ -63,7 +64,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 #### Items
 
-- `Level.recipes`, a snapshot of the crafting recipes the server has loaded, also reachable as `Server.recipes`. Each entry is a `ShapedRecipe`, `ShapelessRecipe`, `SmithingTransformRecipe`, `SmithingTrimRecipe` or `ComplexRecipe`, and reports its `id`, crafting `tag`, `result` and `ingredients`. Shaped recipes add `width` and `height`; smithing recipes add `template`, `base` and `addition`.
+- `Level.recipes`, a snapshot of the recipes the server has loaded, also reachable as `Server.recipes`. Each entry is a `ShapedRecipe`, `ShapelessRecipe`, `SmithingTransformRecipe`, `SmithingTrimRecipe`, `ComplexRecipe` or a `CookingRecipe`, and reports its `id`, station `tag`, `result` and `ingredients`. Shaped recipes add `width` and `height`; smithing recipes add `template`, `base` and `addition`; cooking recipes add `input_choice`.
+- `CookingRecipe`, with `FurnaceRecipe`, `BlastingRecipe`, `SmokingRecipe` and `CampfireRecipe` under it for the `furnace`, `blast_furnace`, `smoker` and `campfire`/`soul_campfire` stations. Neither an experience reward nor a cooking time is reported.
 - `RecipeIngredient`, describing what one ingredient slot accepts, with `test()` to check an item against it and a Bedrock-specific `count`. An ingredient is an `ExactIngredient` (one item and one data value), an `ItemTypeIngredient` (an item type, any data value), an `ItemTagIngredient` (anything carrying a tag), a `MolangIngredient` (whatever a Molang expression selects), an `ComplexAliasIngredient` (anything an id that predates the item flattening stands for, such as `minecraft:planks`). A slot the recipe leaves empty is `None`.
 - `WritableBookMeta`, `BookMeta` and `CrossbowMeta` item meta types.
 - `PotionMeta` for potions, splash potions and lingering potions, with `meta.base_potion_type`.
