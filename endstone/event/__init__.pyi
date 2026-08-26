@@ -10,7 +10,7 @@ from endstone.actor import Actor, Item, Mob
 from endstone.block import Block, BlockFace, BlockState, Sign
 from endstone.command import CommandSender
 from endstone.damage import DamageSource
-from endstone.inventory import BookMeta, EquipmentSlot, Inventory, ItemStack, Recipe
+from endstone.inventory import BookMeta, EquipmentSlot, Inventory, ItemStack, ItemType, Recipe
 from endstone.lang import Translatable
 from endstone.level import Chunk, Dimension, Level, Location
 from endstone.map import MapView
@@ -70,6 +70,9 @@ __all__ = [
     "PlayerBedEnterEvent",
     "PlayerBedLeaveEvent",
     "PlayerBucketActorEvent",
+    "PlayerBucketEmptyEvent",
+    "PlayerBucketEvent",
+    "PlayerBucketFillEvent",
     "PlayerChatEvent",
     "PlayerCommandEvent",
     "PlayerCraftItemEvent",
@@ -758,6 +761,61 @@ class PlayerBucketActorEvent(PlayerEvent, Cancellable):
         """
         The hand used to capture the actor.
         """
+
+class PlayerBucketEvent(PlayerEvent, Cancellable):
+    """
+    Base class for events involving a player's bucket interaction.
+    """
+    @property
+    def block(self) -> Block | None:
+        """
+        The block involved in this event, or `None` if unavailable.
+        """
+
+    @property
+    def block_clicked(self) -> Block:
+        """
+        The block clicked by the player.
+        """
+
+    @property
+    def block_face(self) -> BlockFace:
+        """
+        The face on the clicked block.
+        """
+
+    @property
+    def bucket(self) -> ItemType:
+        """
+        The bucket used in this event.
+        """
+
+    @property
+    def hand(self) -> EquipmentSlot:
+        """
+        The hand used in this event.
+
+        This is always `EquipmentSlot.HAND`, because Bedrock does not report which hand was used for this interaction.
+        """
+
+    @property
+    def item_stack(self) -> ItemStack | None:
+        """
+        The resulting item in the player's hand, or `None` if unavailable.
+        """
+
+    @item_stack.setter
+    def item_stack(self, arg1: ItemStack | None) -> None: ...
+
+class PlayerBucketFillEvent(PlayerBucketEvent):
+    """
+    Called when a player fills a bucket.
+    """
+
+class PlayerBucketEmptyEvent(PlayerBucketEvent):
+    """
+    Called when a player empties a bucket.
+    """
 
 class PlayerChatEvent(PlayerEvent, Cancellable):
     """

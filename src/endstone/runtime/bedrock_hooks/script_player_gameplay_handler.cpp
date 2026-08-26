@@ -15,17 +15,24 @@
 #include "bedrock/scripting/event_handlers/script_player_gameplay_handler.h"
 
 #include <cstdint>
+#include <optional>
 #include <string_view>
 #include <unordered_map>
 
+#include "bedrock/core/string/string_hash.h"
 #include "bedrock/entity/components/replay_state_component.h"
 #include "bedrock/locale/i18n.h"
 #include "bedrock/network/packet/death_info_packet.h"
 #include "bedrock/network/packet/update_player_game_type_packet.h"
 #include "bedrock/server/server_instance.h"
+#include "bedrock/shared_types/legacy/facing.h"
 #include "bedrock/world/actor/actor.h"
 #include "bedrock/world/actor/item/item_actor.h"
+#include "bedrock/world/item/bucket_fill_type.h"
+#include "bedrock/world/item/item.h"
+#include "bedrock/world/item/item_stack.h"
 #include "bedrock/world/level/block/block.h"
+#include "bedrock/world/level/block_source.h"
 #include "endstone/block/container.h"
 #include "endstone/color_format.h"
 #include "endstone/core/block/block.h"
@@ -40,6 +47,7 @@
 #include "endstone/event/actor/player_death_event.h"
 #include "endstone/event/inventory/inventory_close_event.h"
 #include "endstone/event/inventory/inventory_open_event.h"
+#include "endstone/event/player/player_bucket_fill_event.h"
 #include "endstone/event/player/player_dimension_change_event.h"
 #include "endstone/event/player/player_game_mode_change_event.h"
 #include "endstone/event/player/player_interact_actor_event.h"
@@ -47,6 +55,7 @@
 #include "endstone/event/player/player_pickup_experience_event.h"
 #include "endstone/event/player/player_quit_event.h"
 #include "endstone/event/player/player_respawn_event.h"
+#include "endstone/inventory/equipment_slot.h"
 #include "endstone/runtime/vtable_hook.h"
 
 namespace {
@@ -56,6 +65,36 @@ endstone::Nullable<endstone::Container> tryGetContainerAt(const ::Player &player
 {
     auto &block_source = player.getDimension().getBlockSourceFromMainChunkSource();
     return endstone::core::EndstoneBlock::at(block_source, block_pos)->captureState().as<endstone::Container>();
+}
+
+class BucketItemLayout : public ::Item {
+public:
+    [[nodiscard]] BucketFillType getFillType() const { return fill_type_; }
+
+private:
+    BucketFillType fill_type_;
+};
+
+BucketFillType getBucketFillType(const ::ItemStack &item)
+{
+    const auto *minecraft_item = item.isNull() ? nullptr : item.getItem();
+    if (!minecraft_item || !minecraft_item->isBucket()) {
+        return BucketFillType::Unknown;
+    }
+    return static_cast<const BucketItemLayout &>(*minecraft_item).getFillType();
+}
+
+bool isMilkable(const ::Actor &target)
+{
+    const auto &name = target.getActorIdentifier().getCanonicalName();
+    return (name == "minecraft:cow" || name == "minecraft:goat" || name == "minecraft:mooshroom") &&
+           !const_cast<::Actor &>(target).hasComponent(HashedString("minecraft:is_baby"));
+}
+
+BlockPos getBlockPosition(const ::Actor &target)
+{
+    const auto &position = target.getPosition();
+    return {position.x, target.getAABB().min.y, position.z};
 }
 
 bool handleEvent(const PlayerOpenContainerEvent &event)
@@ -257,18 +296,80 @@ bool handleEvent(const PlayerInteractWithBlockBeforeEvent &event)
 
 bool handleEvent(const PlayerInteractWithEntityBeforeEvent &event)
 {
-    const auto *player = WeakEntityRef(event.player).tryUnwrap<::Player>();
+    auto *player = WeakEntityRef(event.player).tryUnwrap<::Player>();
     const auto *target = WeakEntityRef(event.target_entity).tryUnwrap<::Actor>();
-
-    if (player && target) {
-        const auto &server = endstone::core::EndstoneServer::getInstance();
-        endstone::PlayerInteractActorEvent e{player->getEndstoneActor<endstone::core::EndstonePlayer>(),
-                                             target->getEndstoneActor()};
-        server.getPluginManager().callEvent(e);
-        if (e.isCancelled()) {
-            return false;
-        }
+    if (!player || !target) {
+        return true;
     }
+    player->addOrRemoveComponent<endstone::core::InternalBucketFillActorComponent>(false);
+
+    const auto &server = endstone::core::EndstoneServer::getInstance();
+    endstone::PlayerInteractActorEvent e{player->getEndstoneActor<endstone::core::EndstonePlayer>(),
+                                         target->getEndstoneActor()};
+    server.getPluginManager().callEvent(e);
+    if (e.isCancelled()) {
+        return false;
+    }
+
+    if (getBucketFillType(event.item) != BucketFillType::Empty || !isMilkable(*target)) {
+        return true;
+    }
+
+    auto &block_source = target->getDimension().getBlockSourceFromMainChunkSource();
+    const auto block_position = getBlockPosition(*target);
+    auto block_clicked = endstone::core::EndstoneBlock::at(block_source, block_position);
+    auto bucket_stack = endstone::core::EndstoneItemStack::fromMinecraft(event.item);
+    const ::ItemStack milk_bucket{"minecraft:milk_bucket"};
+    endstone::PlayerBucketFillEvent bucket_event{
+        player->getEndstoneActor<endstone::core::EndstonePlayer>(),
+        block_clicked,
+        block_clicked,
+        endstone::BlockFace::Self,
+        bucket_stack.getType(),
+        endstone::core::EndstoneItemStack::fromMinecraft(milk_bucket),
+        endstone::EquipmentSlot::Hand,
+    };
+    bucket_event.setCancelled(
+        !block_source.checkBlockPermissions(*player, block_position, Facing::NOT_DEFINED, event.item, false));
+    server.getPluginManager().callEvent(bucket_event);
+    if (bucket_event.isCancelled()) {
+        player->sendInventory(false);
+        return false;
+    }
+
+    const auto &replacement = bucket_event.getItemStack();
+    const auto native = replacement && endstone::core::EndstoneItemStack::toMinecraft(*replacement) == milk_bucket;
+    player->addOrRemoveComponent<endstone::core::InternalBucketFillActorComponent>(true);
+    *player->tryGetComponent<endstone::core::InternalBucketFillActorComponent>() = {target, replacement, !native};
+    return true;
+}
+
+bool handleEvent(const PlayerInteractWithEntityAfterEvent &event)
+{
+    auto *player = WeakEntityRef(event.player).tryUnwrap<::Player>();
+    if (!player) {
+        return true;
+    }
+
+    const auto *pending = player->tryGetComponent<endstone::core::InternalBucketFillActorComponent>();
+    if (!pending) {
+        return true;
+    }
+
+    const auto *target = WeakEntityRef(event.target_entity).tryUnwrap<::Actor>();
+    if (target != pending->target) {
+        player->addOrRemoveComponent<endstone::core::InternalBucketFillActorComponent>(false);
+        return true;
+    }
+
+    const auto succeeded = getBucketFillType(event.after_item) == BucketFillType::Milk ||
+                           (player->isCreative() && event.after_item == event.before_item);
+    if (succeeded && pending->write_item_stack) {
+        const auto &replacement = pending->item_stack;
+        player->setCarriedItem(replacement ? endstone::core::EndstoneItemStack::toMinecraft(*replacement)
+                                           : ::ItemStack::EMPTY_ITEM);
+    }
+    player->addOrRemoveComponent<endstone::core::InternalBucketFillActorComponent>(false);
     return true;
 }
 
@@ -306,6 +407,7 @@ HandlerResult ScriptPlayerGameplayHandler::handleEvent1(const PlayerGameplayEven
                       std::is_same_v<T, Details::ValueOrRef<const PlayerFormCloseEvent>> ||
                       std::is_same_v<T, Details::ValueOrRef<const ::PlayerRespawnEvent>> ||
                       std::is_same_v<T, Details::ValueOrRef<const PlayerDimensionChangeAfterEvent>> ||
+                      std::is_same_v<T, Details::ValueOrRef<const PlayerInteractWithEntityAfterEvent>> ||
                       std::is_same_v<T, Details::ValueOrRef<const PlayerOpenContainerEvent>> ||
                       std::is_same_v<T, Details::ValueOrRef<const PlayerClosedContainerEvent>>) {
             if (!handleEvent(arg.value())) {

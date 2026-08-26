@@ -11,7 +11,7 @@
 
 namespace endstone::runtime {
 
-static constexpr std::array<std::pair<std::string_view, std::size_t>, 80> symbols = {{
+static constexpr std::array<std::pair<std::string_view, std::size_t>, 81> symbols = {{
     {"BlockState::StateListNode::mHead", 211294960},
     {"Enchant::mEnchants", 211141912},
     {"MobEffect::mMobEffects", 211424880},
@@ -35,6 +35,8 @@ static constexpr std::array<std::pair<std::string_view, std::size_t>, 80> symbol
     {"?tryGetStateFromLegacyData@BlockType@@QEBAPEBVBlock@@G@Z", 32421904},
     // BlockTypeRegistry
     {"?forEachBlockType@BlockTypeRegistry@@QEBAXV?$function_ref@$$A6A_NAEBVBlockType@@@Z$$A6A_N0@Z@brstd@@@Z", 42281168},
+    // BucketItem
+    {"?_useOn@BucketItem@@EEBA?AVInteractionResult@@AEAVItemStack@@AEAVActor@@VBlockPos@@EAEBVVec3@@@Z", 125431744},
     // BucketableComponent
     {"?getInteraction@BucketableComponent@@QEAA?AVInteractionResult@@AEAVActor@@AEAVPlayer@@AEAVActorInteraction@@@Z", 38215168},
     // CampfireBlockActor

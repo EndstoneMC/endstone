@@ -568,6 +568,35 @@ extra = 0
 pattern = "41 57 41 56 53 8B 42"
 
 [[signatures]]
+name = "_ZNK10BucketItem6_useOnER9ItemStackR5Actor8BlockPoshRK4Vec3"
+relative = false
+extra = 0
+# 1. the name is real: BDS declares `private: virtual InteractionResult BucketItem::_useOn(ItemStack&, Actor&,
+#    BlockPos, FacingID, const Vec3&) const`, so a symbol-bearing build resolves it by name; the steps below
+#    are the no-symbol route the shipped stripped PIE needs. No disassembly is required for any of it
+# 2. the shipped ELF keeps RTTI. Find bytes "31 30 42 75 63 6B 65 74 49 74 65 6D 00" = "10BucketItem\0" in
+#    .rodata (unique, 1.26.44.3: 0x1AEEC28) - that is _ZTS10BucketItem
+# 3. walk .rela.dyn for R_X86_64_RELATIVE entries. Exactly one addend equals the string address; its r_offset
+#    is _ZTI10BucketItem + 8. Exactly one addend equals that typeinfo address; its r_offset is
+#    _ZTV10BucketItem + 8. The vptr is _ZTV10BucketItem + 16 (past offset-to-top and typeinfo)
+# 4. the target is vptr slot 130, the last entry. Item declares 129 virtuals after its destructor, so an Item
+#    subclass vtable is exactly 131 slots (2 destructor slots + 129) and slot 130 is Item::_useOn. In
+#    1.26.44.3 _ZTV10BucketItem is 0xE6BACB0, the vptr 0xE6BACC0, and slot 130 relocates to 0xBC66BF0
+# 5. confirm the vtable is BucketItem's from its contents, independently of RTTI: slot 13 (Item::isBucket) is
+#    the 3-byte thunk `B0 01 C3` (mov al, 1; ret) and it is the only 131-slot vtable in the binary where that
+#    is true; slot 71 uniqueAuxValues is a second `B0 01 C3`; and slots 51, 81, 101 and 110
+#    (isLiquidClipItem, canUseOnSimTick, getMaxStackSize, validFishInteraction) all read mFillType at
+#    [rdi+0x1C8] - `8B 87 C8 01 00 00`, `0F B7 8F C8 01 00 00`, `66 83 BF C8 01 00 00`, `8B 87 C8 01 00 00`
+# 6. the slot arithmetic is checked against a symbol already in this table: TridentItem::releaseUsing
+#    (0xBAE5260) appears exactly once in the relocated vtable data, at slot 88, and Item declares
+#    releaseUsing as its 87th virtual - 87 + 1 extra destructor slot = 88
+# 7. cut from the prologue at 0xBC66BF0
+# uniqueness: the pattern below matches exactly once in the whole .text of 1.26.44.3, and exactly once in
+# 1.26.40.8. The prologue alone (through `sub rsp, 0x3E8`) takes 35 hits, so the register shuffle after it is
+# load-bearing - do not shorten it. It does not match 1.26.33.1, where the frame size differs
+pattern = "55 41 57 41 56 41 55 41 54 53 48 81 EC E8 03 00 00 44 89 CD 48 89 D3 48 89 74 24 70 49 89 FC 48 89 0C 24 44 89 44 24 08"
+
+[[signatures]]
 name = "_ZN10ArmorStand14getInteractionER6PlayerR16ActorInteractionRK4Vec3"
 relative = false
 extra = 0

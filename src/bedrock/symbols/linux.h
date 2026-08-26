@@ -11,7 +11,7 @@
 
 namespace endstone::runtime {
 
-static constexpr std::array<std::pair<std::string_view, std::size_t>, 80> symbols = {{
+static constexpr std::array<std::pair<std::string_view, std::size_t>, 81> symbols = {{
     {"BlockState::StateListNode::mHead", 245468000},
     {"Enchant::mEnchants", 245294016},
     {"MobEffect::mMobEffects", 245274360},
@@ -36,6 +36,8 @@ static constexpr std::array<std::pair<std::string_view, std::size_t>, 80> symbol
     {"_ZNK9BlockType25tryGetStateFromLegacyDataEt", 199383024},
     // BlockTypeRegistry
     {"_ZNK17BlockTypeRegistry16forEachBlockTypeEN5brstd12function_refIFbRK9BlockTypeES5_EE", 203856688},
+    // BucketItem
+    {"_ZNK10BucketItem6_useOnER9ItemStackR5Actor8BlockPoshRK4Vec3", 197553136},
     // BucketableComponent
     {"_ZN19BucketableComponent14getInteractionER5ActorR6PlayerR16ActorInteraction", 113911152},
     // CampfireBlockActor

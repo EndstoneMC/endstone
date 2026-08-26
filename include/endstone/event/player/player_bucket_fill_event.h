@@ -14,19 +14,17 @@
 
 #pragma once
 
-#include <optional>
+#include "endstone/event/player/player_bucket_event.h"
 
-#include "endstone/block/block_face.h"
+namespace endstone {
 
-namespace endstone::core {
-
-class EndstoneBlockFace {
+/**
+ * Called when a player fills a bucket.
+ */
+class PlayerBucketFillEvent : public PlayerBucketEvent {
 public:
-    static std::optional<BlockFace> fromBedrockFacing(int facing);
-    static int getOffsetX(BlockFace face);
-    static int getOffsetY(BlockFace face);
-    static int getOffsetZ(BlockFace face);
-    static BlockFace getOpposite(BlockFace face);
+    ENDSTONE_EVENT(PlayerBucketFillEvent);
+    using PlayerBucketEvent::PlayerBucketEvent;
 };
 
-}  // namespace endstone::core
+}  // namespace endstone
