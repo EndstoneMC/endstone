@@ -11,7 +11,7 @@
 
 namespace endstone::runtime {
 
-static constexpr std::array<std::pair<std::string_view, std::size_t>, 80> symbols = {{
+static constexpr std::array<std::pair<std::string_view, std::size_t>, 85> symbols = {{
     {"BlockState::StateListNode::mHead", 245468000},
     {"Enchant::mEnchants", 245294016},
     {"MobEffect::mMobEffects", 245274360},
@@ -36,10 +36,15 @@ static constexpr std::array<std::pair<std::string_view, std::size_t>, 80> symbol
     {"_ZNK9BlockType25tryGetStateFromLegacyDataEt", 199383024},
     // BlockTypeRegistry
     {"_ZNK17BlockTypeRegistry16forEachBlockTypeEN5brstd12function_refIFbRK9BlockTypeES5_EE", 203856688},
+    // BucketItem
+    {"_ZNK10BucketItem6_useOnER9ItemStackR5Actor8BlockPoshRK4Vec3", 197553136},
     // BucketableComponent
     {"_ZN19BucketableComponent14getInteractionER5ActorR6PlayerR16ActorInteraction", 113911152},
     // CampfireBlockActor
     {"_ZN18CampfireBlockActor14_finishCookingER11BlockSourcei", 207808544},
+    // CauldronBlock
+    {"_ZNK13CauldronBlock14setLiquidLevelER11BlockSourceRK8BlockPosi18CauldronLiquidType", 199221200},
+    {"_ZNK13CauldronBlock3useERN11BlockEvents24BlockPlayerInteractEventE", 199208928},
     // Command
     {"_ZNK7Command3runERK13CommandOriginR13CommandOutput", 160430576},
     // CommandOriginLoader
@@ -57,6 +62,8 @@ static constexpr std::array<std::pair<std::string_view, std::size_t>, 80> symbol
     {"_ZN18ConsoleInputReader3runEPv", 71890192},
     // CraftHandlerCrafting
     {"_ZN20CraftHandlerCrafting18_handleCraftActionERK31ItemStackRequestActionCraftBase", 197828768},
+    // CraftHandlerEnchant
+    {"_ZN19CraftHandlerEnchant18_handleCraftActionERK31ItemStackRequestActionCraftBase", 197838512},
     // CraftingDataPacketPayload
     {"_ZN25CraftingDataPacketPayload11fromRecipesERK7Recipesb", 134785984},
     // DedicatedServer
@@ -83,6 +90,8 @@ static constexpr std::array<std::pair<std::string_view, std::size_t>, 80> symbol
     // ItemStackBase
     {"_ZN13ItemStackBase34_loadBlocksForCanPlaceOnCanDestroyERNSt3__16vectorIPK9BlockTypeNS0_9allocatorIS4_EEEERKNS0_12basic_stringIcNS0_11char_traitsIcEENS5_IcEEEE", 196858752},
     {"_ZN13ItemStackBase8_setItemEib", 196818048},
+    // ItemStackRequestActionHandler
+    {"_ZN29ItemStackRequestActionHandler25_getOrInitSparseContainerERK17FullContainerName", 198015072},
     // LeavesBlock
     {"_ZN11LeavesBlock10randomTickERN11BlockEvents20BlockRandomTickEventE", 199008832},
     // Level

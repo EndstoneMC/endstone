@@ -20,5 +20,6 @@ enum class ItemStackNetResult : std::uint8_t {
     Success = 0,
     Error = 1,
     ActionRequestNotAllowed = 3,
+    FailedToEnchant = 37,
     CannotDropItem = 59,
 };

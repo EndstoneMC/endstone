@@ -16,6 +16,7 @@
 
 #include "bedrock/world/item/item_descriptor.h"
 #include "endstone/core/inventory/complex_recipe.h"
+#include "endstone/core/inventory/cooking_recipe.h"
 #include "endstone/core/inventory/item_stack.h"
 #include "endstone/core/inventory/recipe_ingredient.h"
 #include "endstone/core/inventory/shaped_recipe.h"
@@ -65,11 +66,24 @@ NotNull<endstone::Recipe> EndstoneRecipeData::fromMinecraft(std::shared_ptr<cons
     if (recipe->isMultiRecipe()) {
         return std::make_shared<EndstoneComplexRecipe>(std::move(recipe));
     }
-    if (recipe->getTag().getString() == "smithing_table") {
+    const auto &tag = recipe->getTag().getString();
+    if (tag == "smithing_table") {
         if (recipe->hasDataDrivenResult()) {
             return std::make_shared<EndstoneSmithingTransformRecipe>(std::move(recipe));
         }
         return std::make_shared<EndstoneSmithingTrimRecipe>(std::move(recipe));
+    }
+    if (tag == "furnace") {
+        return std::make_shared<EndstoneFurnaceRecipe>(std::move(recipe));
+    }
+    if (tag == "blast_furnace") {
+        return std::make_shared<EndstoneBlastingRecipe>(std::move(recipe));
+    }
+    if (tag == "smoker") {
+        return std::make_shared<EndstoneSmokingRecipe>(std::move(recipe));
+    }
+    if (tag == "campfire" || tag == "soul_campfire") {
+        return std::make_shared<EndstoneCampfireRecipe>(std::move(recipe));
     }
     if (recipe->isShapeless()) {
         return std::make_shared<EndstoneShapelessRecipe>(std::move(recipe));

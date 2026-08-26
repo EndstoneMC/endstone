@@ -40,6 +40,7 @@ public:
     [[nodiscard]] bool isBundle() const;
 
     [[nodiscard]] const ItemStackNetIdVariant &getItemStackNetIdVariant() const;
+    void copyItemStackNetIdVariant(const ItemStack &source);  // Endstone
 
 private:
     ItemStackNetIdVariant network_id_;

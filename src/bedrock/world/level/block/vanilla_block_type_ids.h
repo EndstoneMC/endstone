@@ -27,6 +27,7 @@ extern const HashedString Beehive;
 extern const HashedString BirchLog;
 extern const HashedString BirchWood;
 extern const HashedString CampFire;
+extern const HashedString Cauldron;
 extern const HashedString CherryLog;
 extern const HashedString CherryWood;
 extern const HashedString DarkOakLog;
