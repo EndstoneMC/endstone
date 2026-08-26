@@ -11,6 +11,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 #### Events
 
+- `EnchantItemEvent` for enchanting an item at an enchanting table, reporting the enchanting `inventory`, the `enchanter`, the `enchant_block`, the `item`, the `exp_level_cost`, the `enchants_to_add` and the `which_button` selected. The item, cost and enchantments are writable; cancelling leaves the item, the player's experience levels and the lapis lazuli untouched. It does not fire for an offer the player cannot pay for, and no enchantment hint is reported.
 - `PlayerLevelChangeEvent` (`old_level`, `new_level`), `PlayerExpChangeEvent` (`amount` gained) and `PlayerPickupExperienceEvent` (`amount` the orb is worth).
 - `PlayerPickupArrowEvent` for picking up an arrow or thrown trident.
 - `PlayerArmSwingEvent` and `PlayerRiptideEvent`, both reporting the `item` in hand. Cancelling an arm swing stops the server acting on it at all, so it is neither recorded nor shown to the other players. The swinging player still sees their own arm move, because their client plays the animation without waiting for the server.

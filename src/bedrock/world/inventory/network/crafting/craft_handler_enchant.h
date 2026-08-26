@@ -14,12 +14,23 @@
 
 #pragma once
 
-#include <cstdint>
+#include "bedrock/bedrock.h"
+#include "bedrock/world/inventory/network/crafting/craft_handler_base.h"
+#include "bedrock/world/inventory/network/item_stack_net_result.h"
 
-enum class ItemStackNetResult : std::uint8_t {
-    Success = 0,
-    Error = 1,
-    ActionRequestNotAllowed = 3,
-    FailedToEnchant = 37,
-    CannotDropItem = 59,
+class ItemStackRequestActionCraftBase;
+class Player;
+
+class CraftHandlerEnchant : public CraftHandlerBase {
+protected:
+    CraftHandlerEnchant();
+    ~CraftHandlerEnchant() override = 0;
+
+    ENDSTONE_HOOK ItemStackNetResult _handleCraftAction(const ItemStackRequestActionCraftBase &request_action) override;
+
+private:
+    int enchant_cost_;
+    Player &player_;
+    bool recalculate_options_;
 };
+BEDROCK_STATIC_ASSERT_SIZE(CraftHandlerEnchant, 128, 120);

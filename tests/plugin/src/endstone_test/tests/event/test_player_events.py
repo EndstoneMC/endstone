@@ -372,6 +372,7 @@ def test_not_cancellable(event_name: str) -> None:
     "event_name",
     [
         "PlayerArmSwingEvent",
+        "EnchantItemEvent",
         "PlayerArmorStandManipulateEvent",
         "PlayerBucketActorEvent",
         "PlayerPickupArrowEvent",

@@ -2,6 +2,7 @@
 Classes relating to handling triggered code executions.
 """
 
+import collections.abc
 import enum
 import typing
 
@@ -10,6 +11,7 @@ from endstone.actor import Actor, Item, Mob
 from endstone.block import Block, BlockFace, BlockState, Sign
 from endstone.command import CommandSender
 from endstone.damage import DamageSource
+from endstone.enchantments import Enchantment
 from endstone.inventory import BookMeta, CookingRecipe, EquipmentSlot, Inventory, ItemStack, ItemType, Recipe
 from endstone.lang import Translatable
 from endstone.level import Chunk, Dimension, Level, Location
@@ -53,6 +55,7 @@ __all__ = [
     "ChunkUnloadEvent",
     "DimensionEvent",
     "DimensionLoadEvent",
+    "EnchantItemEvent",
     "Event",
     "EventPriority",
     "EventResult",
@@ -1639,6 +1642,57 @@ class InventoryCloseEvent(InventoryEvent):
     def player(self) -> Player:
         """
         The player who is closing the inventory.
+        """
+
+class EnchantItemEvent(InventoryEvent, Cancellable):
+    """
+    Called when a player enchants an item at an enchanting table.
+
+    Cancelling the event leaves the item, the player's experience levels and the lapis lazuli untouched.
+
+    Bedrock does not reveal a single hinted enchantment for an offer, so every enchantment the offer applies is
+    listed in `enchants_to_add`.
+    """
+    @property
+    def enchanter(self) -> Player:
+        """
+        The player enchanting the item.
+        """
+
+    @property
+    def enchant_block(self) -> Block:
+        """
+        The enchanting table involved in this event.
+        """
+
+    @property
+    def item(self) -> ItemStack:
+        """
+        The item that will be enchanted.
+        """
+
+    @item.setter
+    def item(self, arg1: ItemStack) -> None: ...
+    @property
+    def exp_level_cost(self) -> int:
+        """
+        The minimum player level required by the selected option.
+        """
+
+    @exp_level_cost.setter
+    def exp_level_cost(self, arg1: int) -> None: ...
+    @property
+    def enchants_to_add(self) -> dict[Enchantment, int]:
+        """
+        A copy of the enchantments and levels that will be applied; assign it back after changes.
+        """
+
+    @enchants_to_add.setter
+    def enchants_to_add(self, arg1: collections.abc.Mapping[Enchantment, int]) -> None: ...
+    @property
+    def which_button(self) -> int:
+        """
+        The selected enchanting button, from 0 to 2.
         """
 
 class ServerEvent(Event):
