@@ -155,6 +155,8 @@ Inherits the following classes: [endstone::Mob](classendstone_1_1Mob.md)
 | ---: | :--- |
 | virtual AbilityValue | [**\_getAbility**](#function-_getability) ([**Identifier**](classendstone_1_1Identifier.md)&lt; [**Ability**](classendstone_1_1Ability.md) &gt; ability) const = 0<br>_Gets the value of an ability._  |
 | virtual [**bool**](classendstone_1_1Identifier.md) | [**\_setAbility**](#function-_setability) ([**Identifier**](classendstone_1_1Identifier.md)&lt; [**Ability**](classendstone_1_1Ability.md) &gt; ability, AbilityValue value) = 0<br>_Sets the value of an ability._  |
+| virtual [**bool**](classendstone_1_1Identifier.md) | [**canSee**](#function-cansee-12) ([**const**](classendstone_1_1Identifier.md) [**Actor**](classendstone_1_1Actor.md) & actor) const = 0<br>_Checks to see if an actor has been visually hidden from this player._  |
+| virtual [**bool**](classendstone_1_1Identifier.md) | [**canSee**](#function-cansee-22) ([**const**](classendstone_1_1Identifier.md) [**Player**](classendstone_1_1Player.md) & player) const = 0<br>_Checks to see if a player has been hidden from this player._  |
 | virtual [**void**](classendstone_1_1Identifier.md) | [**closeForm**](#function-closeform) () = 0<br>_Closes the forms that are currently open for the player._  |
 |  [**T**](classendstone_1_1Identifier.md) | [**getAbility**](#function-getability) ([**AbilityId**](classendstone_1_1AbilityId.md)&lt; [**T**](classendstone_1_1Identifier.md) &gt; ability) const<br>_Gets the value of an ability._  |
 | virtual [**const**](classendstone_1_1Identifier.md) [**SocketAddress**](classendstone_1_1SocketAddress.md) & | [**getAddress**](#function-getaddress) () const = 0<br>_Gets the socket address of this player._  |
@@ -180,6 +182,7 @@ Inherits the following classes: [endstone::Mob](classendstone_1_1Mob.md)
 | virtual std::string | [**getXuid**](#function-getxuid) () const = 0<br>_Returns the Xbox User ID (XUID) of this player._  |
 | virtual [**void**](classendstone_1_1Identifier.md) | [**giveExp**](#function-giveexp) ([**int**](classendstone_1_1Identifier.md) amount) = 0<br>_Gives the player the amount of experience specified._  |
 | virtual [**void**](classendstone_1_1Identifier.md) | [**giveExpLevels**](#function-giveexplevels) ([**int**](classendstone_1_1Identifier.md) amount) = 0<br>_Gives the player the amount of experience levels specified._  |
+| virtual [**void**](classendstone_1_1Identifier.md) | [**hideActor**](#function-hideactor) ([**Plugin**](classendstone_1_1Plugin.md) & plugin, [**Actor**](classendstone_1_1Actor.md) & actor) = 0<br>_Hides an actor from this player._  |
 | virtual [**bool**](classendstone_1_1Identifier.md) | [**isCrawling**](#function-iscrawling) () const = 0<br>_Gets whether the player is crawling or not._  |
 | virtual [**bool**](classendstone_1_1Identifier.md) | [**isFlying**](#function-isflying) () const = 0<br>_Checks to see if this player is currently flying or not._  |
 | virtual [**bool**](classendstone_1_1Identifier.md) | [**isOp**](#function-isop) () const = 0<br>_Checks if this player is a server operator._  |
@@ -192,6 +195,7 @@ Inherits the following classes: [endstone::Mob](classendstone_1_1Mob.md)
 | virtual [**void**](classendstone_1_1Identifier.md) | [**playSound**](#function-playsound) ([**Location**](classendstone_1_1Location.md) location, std::string sound, [**float**](classendstone_1_1Identifier.md) volume, [**float**](classendstone_1_1Identifier.md) pitch) = 0<br>_Play a sound for a player at the location._  |
 | virtual [**void**](classendstone_1_1Identifier.md) | [**resetTitle**](#function-resettitle) () const = 0<br>_Resets the title displayed to the player._  |
 | virtual [**void**](classendstone_1_1Identifier.md) | [**sendActionBar**](#function-sendactionbar) (std::string message) const = 0<br>_Sends this player an action bar message._  |
+| virtual [**void**](classendstone_1_1Identifier.md) | [**sendBlockChange**](#function-sendblockchange) ([**const**](classendstone_1_1Identifier.md) [**Location**](classendstone_1_1Location.md) & location, [**const**](classendstone_1_1Identifier.md) [**BlockData**](classendstone_1_1BlockData.md) & block) = 0<br>_Sends a block change to this player._  |
 | virtual [**void**](classendstone_1_1Identifier.md) | [**sendForm**](#function-sendform) (FormVariant form) = 0<br>_Sends a form to the player._  |
 | virtual [**void**](classendstone_1_1Identifier.md) | [**sendMap**](#function-sendmap) ([**MapView**](classendstone_1_1MapView.md) & map) = 0<br>_Render a map and send it to the player in its entirety._  |
 | virtual [**void**](classendstone_1_1Identifier.md) | [**sendPacket**](#function-sendpacket) ([**int**](classendstone_1_1Identifier.md) packet\_id, std::string\_view payload) const = 0<br>_Sends a packet to the player._  |
@@ -213,6 +217,7 @@ Inherits the following classes: [endstone::Mob](classendstone_1_1Mob.md)
 | virtual [**void**](classendstone_1_1Identifier.md) | [**setSneaking**](#function-setsneaking) ([**bool**](classendstone_1_1Identifier.md) sneak) = 0<br>_Sets the sneak mode of the player._  |
 | virtual [**void**](classendstone_1_1Identifier.md) | [**setSprinting**](#function-setsprinting) ([**bool**](classendstone_1_1Identifier.md) sprinting) = 0<br>_Sets whether the player is sprinting or not._  |
 | virtual [**void**](classendstone_1_1Identifier.md) | [**setWalkSpeed**](#function-setwalkspeed) ([**float**](classendstone_1_1Identifier.md) value) const = 0<br>_Sets the speed at which a client will walk._  |
+| virtual [**void**](classendstone_1_1Identifier.md) | [**showActor**](#function-showactor) ([**Plugin**](classendstone_1_1Plugin.md) & plugin, [**Actor**](classendstone_1_1Actor.md) & actor) = 0<br>_Allows this player to see an actor that was previously hidden._  |
 | virtual [**void**](classendstone_1_1Identifier.md) | [**spawnParticle**](#function-spawnparticle-14) (std::string name, [**Location**](classendstone_1_1Location.md) location) const = 0<br>_Spawns the particle at the target location._  |
 | virtual [**void**](classendstone_1_1Identifier.md) | [**spawnParticle**](#function-spawnparticle-24) (std::string name, [**float**](classendstone_1_1Identifier.md) x, [**float**](classendstone_1_1Identifier.md) y, [**float**](classendstone_1_1Identifier.md) z) const = 0<br>_Spawns the particle at the target location._  |
 | virtual [**void**](classendstone_1_1Identifier.md) | [**spawnParticle**](#function-spawnparticle-34) (std::string name, [**Location**](classendstone_1_1Location.md) location, std::optional&lt; JsonObject &gt; molang\_variables) const = 0<br>_Spawns the particle at the target location._  |
@@ -551,6 +556,74 @@ virtual bool endstone::Player::_setAbility (
 **Returns:**
 
 True if the value was accepted 
+
+
+
+
+
+        
+
+<hr>
+
+
+
+### function canSee [1/2]
+
+_Checks to see if an actor has been visually hidden from this player._ 
+```C++
+virtual bool endstone::Player::canSee (
+    const  Actor & actor
+) const = 0
+```
+
+
+
+
+
+**Parameters:**
+
+
+* `actor` [**Actor**](classendstone_1_1Actor.md) to check 
+
+
+
+**Returns:**
+
+`true` if the actor is not being hidden from this player 
+
+
+
+
+
+        
+
+<hr>
+
+
+
+### function canSee [2/2]
+
+_Checks to see if a player has been hidden from this player._ 
+```C++
+virtual bool endstone::Player::canSee (
+    const  Player & player
+) const = 0
+```
+
+
+
+
+
+**Parameters:**
+
+
+* `player` [**Player**](classendstone_1_1Player.md) to check 
+
+
+
+**Returns:**
+
+`true` if the player is not being hidden from this player 
 
 
 
@@ -1215,6 +1288,35 @@ virtual void endstone::Player::giveExpLevels (
 
 
 
+### function hideActor 
+
+_Hides an actor from this player._ 
+```C++
+virtual void endstone::Player::hideActor (
+    Plugin & plugin,
+    Actor & actor
+) = 0
+```
+
+
+
+
+
+**Parameters:**
+
+
+* `plugin` [**Plugin**](classendstone_1_1Plugin.md) that wants to hide the actor 
+* `actor` [**Actor**](classendstone_1_1Actor.md) to hide 
+
+
+
+
+        
+
+<hr>
+
+
+
 ### function isCrawling 
 
 _Gets whether the player is crawling or not._ 
@@ -1543,6 +1645,38 @@ virtual void endstone::Player::sendActionBar (
 
 
 * `message` Message to be displayed 
+
+
+
+
+        
+
+<hr>
+
+
+
+### function sendBlockChange 
+
+_Sends a block change to this player._ 
+```C++
+virtual void endstone::Player::sendBlockChange (
+    const  Location & location,
+    const  BlockData & block
+) = 0
+```
+
+
+
+This fakes a block change packet for a user at a certain location. This will not actually change the world in any way.
+
+
+
+
+**Parameters:**
+
+
+* `location` The location of the changed block 
+* `block` The new block data 
 
 
 
@@ -2159,6 +2293,38 @@ virtual void endstone::Player::setWalkSpeed (
 
 
 * `value` The new speed. 
+
+
+
+
+        
+
+<hr>
+
+
+
+### function showActor 
+
+_Allows this player to see an actor that was previously hidden._ 
+```C++
+virtual void endstone::Player::showActor (
+    Plugin & plugin,
+    Actor & actor
+) = 0
+```
+
+
+
+If another plugin had hidden the actor too, the actor will remain hidden until the other plugin calls this method too.
+
+
+
+
+**Parameters:**
+
+
+* `plugin` [**Plugin**](classendstone_1_1Plugin.md) that wants to show the actor 
+* `actor` [**Actor**](classendstone_1_1Actor.md) to show 
 
 
 

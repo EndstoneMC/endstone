@@ -7,6 +7,7 @@
     <derivedcompoundref refid="classendstone_1_1PlayerBedLeaveEvent" prot="public" virt="non-virtual">endstone::PlayerBedLeaveEvent</derivedcompoundref>
     <derivedcompoundref refid="classendstone_1_1PlayerDimensionChangeEvent" prot="public" virt="non-virtual">endstone::PlayerDimensionChangeEvent</derivedcompoundref>
     <derivedcompoundref refid="classendstone_1_1PlayerExpChangeEvent" prot="public" virt="non-virtual">endstone::PlayerExpChangeEvent</derivedcompoundref>
+    <derivedcompoundref refid="classendstone_1_1PlayerHideActorEvent" prot="public" virt="non-virtual">endstone::PlayerHideActorEvent</derivedcompoundref>
     <derivedcompoundref refid="classendstone_1_1PlayerInputEvent" prot="public" virt="non-virtual">endstone::PlayerInputEvent</derivedcompoundref>
     <derivedcompoundref refid="classendstone_1_1PlayerJoinEvent" prot="public" virt="non-virtual">endstone::PlayerJoinEvent</derivedcompoundref>
     <derivedcompoundref refid="classendstone_1_1PlayerLevelChangeEvent" prot="public" virt="non-virtual">endstone::PlayerLevelChangeEvent</derivedcompoundref>
@@ -14,6 +15,7 @@
     <derivedcompoundref refid="classendstone_1_1PlayerRecipeBookSettingsChangeEvent" prot="public" virt="non-virtual">endstone::PlayerRecipeBookSettingsChangeEvent</derivedcompoundref>
     <derivedcompoundref refid="classendstone_1_1PlayerRespawnEvent" prot="public" virt="non-virtual">endstone::PlayerRespawnEvent</derivedcompoundref>
     <derivedcompoundref refid="classendstone_1_1PlayerRiptideEvent" prot="public" virt="non-virtual">endstone::PlayerRiptideEvent</derivedcompoundref>
+    <derivedcompoundref refid="classendstone_1_1PlayerShowActorEvent" prot="public" virt="non-virtual">endstone::PlayerShowActorEvent</derivedcompoundref>
     <derivedcompoundref refid="classendstone_1_1PlayerToggleCrawlEvent" prot="public" virt="non-virtual">endstone::PlayerToggleCrawlEvent</derivedcompoundref>
     <derivedcompoundref refid="classendstone_1_1PlayerToggleFlightEvent" prot="public" virt="non-virtual">endstone::PlayerToggleFlightEvent</derivedcompoundref>
     <derivedcompoundref refid="classendstone_1_1PlayerToggleSneakEvent" prot="public" virt="non-virtual">endstone::PlayerToggleSneakEvent</derivedcompoundref>
@@ -212,6 +214,12 @@
         </childnode>
       </node>
       <node id="38">
+        <label>endstone::PlayerHideActorEvent</label>
+        <link refid="classendstone_1_1PlayerHideActorEvent"/>
+        <childnode refid="1" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="39">
         <label>endstone::PlayerInputEvent</label>
         <link refid="classendstone_1_1PlayerInputEvent"/>
         <childnode refid="1" relation="public-inheritance">
@@ -241,7 +249,7 @@
         <childnode refid="3" relation="public-inheritance">
         </childnode>
       </node>
-      <node id="39">
+      <node id="40">
         <label>endstone::PlayerJoinEvent</label>
         <link refid="classendstone_1_1PlayerJoinEvent"/>
         <childnode refid="1" relation="public-inheritance">
@@ -259,7 +267,7 @@
         <childnode refid="3" relation="public-inheritance">
         </childnode>
       </node>
-      <node id="40">
+      <node id="41">
         <label>endstone::PlayerLevelChangeEvent</label>
         <link refid="classendstone_1_1PlayerLevelChangeEvent"/>
         <childnode refid="1" relation="public-inheritance">
@@ -307,25 +315,25 @@
         <childnode refid="26" relation="public-inheritance">
         </childnode>
       </node>
-      <node id="41">
+      <node id="42">
         <label>endstone::PlayerQuitEvent</label>
         <link refid="classendstone_1_1PlayerQuitEvent"/>
         <childnode refid="1" relation="public-inheritance">
         </childnode>
       </node>
-      <node id="42">
+      <node id="43">
         <label>endstone::PlayerRecipeBookSettingsChangeEvent</label>
         <link refid="classendstone_1_1PlayerRecipeBookSettingsChangeEvent"/>
         <childnode refid="1" relation="public-inheritance">
         </childnode>
       </node>
-      <node id="43">
+      <node id="44">
         <label>endstone::PlayerRespawnEvent</label>
         <link refid="classendstone_1_1PlayerRespawnEvent"/>
         <childnode refid="1" relation="public-inheritance">
         </childnode>
       </node>
-      <node id="44">
+      <node id="45">
         <label>endstone::PlayerRiptideEvent</label>
         <link refid="classendstone_1_1PlayerRiptideEvent"/>
         <childnode refid="1" relation="public-inheritance">
@@ -343,6 +351,12 @@
         <childnode refid="3" relation="public-inheritance">
         </childnode>
       </node>
+      <node id="46">
+        <label>endstone::PlayerShowActorEvent</label>
+        <link refid="classendstone_1_1PlayerShowActorEvent"/>
+        <childnode refid="1" relation="public-inheritance">
+        </childnode>
+      </node>
       <node id="34">
         <label>endstone::PlayerSkinChangeEvent</label>
         <link refid="classendstone_1_1PlayerSkinChangeEvent"/>
@@ -355,25 +369,25 @@
         <childnode refid="24" relation="public-inheritance">
         </childnode>
       </node>
-      <node id="45">
+      <node id="47">
         <label>endstone::PlayerToggleCrawlEvent</label>
         <link refid="classendstone_1_1PlayerToggleCrawlEvent"/>
         <childnode refid="1" relation="public-inheritance">
         </childnode>
       </node>
-      <node id="46">
+      <node id="48">
         <label>endstone::PlayerToggleFlightEvent</label>
         <link refid="classendstone_1_1PlayerToggleFlightEvent"/>
         <childnode refid="1" relation="public-inheritance">
         </childnode>
       </node>
-      <node id="47">
+      <node id="49">
         <label>endstone::PlayerToggleSneakEvent</label>
         <link refid="classendstone_1_1PlayerToggleSneakEvent"/>
         <childnode refid="1" relation="public-inheritance">
         </childnode>
       </node>
-      <node id="48">
+      <node id="50">
         <label>endstone::PlayerToggleSprintEvent</label>
         <link refid="classendstone_1_1PlayerToggleSprintEvent"/>
         <childnode refid="1" relation="public-inheritance">

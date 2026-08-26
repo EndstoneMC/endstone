@@ -2201,6 +2201,11 @@
     <member refid="classendstone_1_1Player_1a9484ec57ceb309acfcfe4b2d61026f56" kind="function"><name>performCommand</name></member>
     <member refid="classendstone_1_1Player_1afca7774ebf09e8f3f77f0e1dc7b298ec" kind="function"><name>getRespawnLocation</name></member>
     <member refid="classendstone_1_1Player_1a5bffefb78ba5e5dea934c249a4d30229" kind="function"><name>setRespawnLocation</name></member>
+    <member refid="classendstone_1_1Player_1a12dbfd695a4e3868c85fcf98cfedd6ee" kind="function"><name>hideActor</name></member>
+    <member refid="classendstone_1_1Player_1a99674b8b1ef31805406c5506fb664b1e" kind="function"><name>showActor</name></member>
+    <member refid="classendstone_1_1Player_1a5043e2ef010a1da70a71c9e995ecb2eb" kind="function"><name>canSee</name></member>
+    <member refid="classendstone_1_1Player_1aa7be07ba39d551e840d0fb9dad53ec57" kind="function"><name>canSee</name></member>
+    <member refid="classendstone_1_1Player_1ada52e8714d2008cb850d0740b9dfcd40" kind="function"><name>sendBlockChange</name></member>
     <member refid="classendstone_1_1Player_1a04102bec12318de7017d82b071b5c720" kind="function"><name>openSign</name></member>
     <member refid="classendstone_1_1Player_1a4cbda506defbb7b789363d4fcd68d873" kind="function"><name>openVirtualSign</name></member>
     <member refid="classendstone_1_1Player_1a5cdb79fdd152c6c6ed8f251bd1e31523" kind="function"><name>isSneaking</name></member>
@@ -2447,6 +2452,12 @@
     <member refid="classendstone_1_1PlayerGameModeChangeEvent_1aef8569884e4cbdbabb945eef9c4ec9eb" kind="function"><name>~PlayerGameModeChangeEvent</name></member>
     <member refid="classendstone_1_1PlayerGameModeChangeEvent_1a422c30eafa2b703fd105138e45da4540" kind="function"><name>getNewGameMode</name></member>
   </compound>
+  <compound refid="classendstone_1_1PlayerHideActorEvent" kind="class"><name>endstone::PlayerHideActorEvent</name>
+    <member refid="classendstone_1_1PlayerHideActorEvent_1ab9adef69c7b00cbf27a3c9aef3e88cb5" kind="variable"><name>actor_</name></member>
+    <member refid="classendstone_1_1PlayerHideActorEvent_1a6e22c999f3cdaa58d1c4ba434b5c8dda" kind="function"><name>ENDSTONE_EVENT</name></member>
+    <member refid="classendstone_1_1PlayerHideActorEvent_1a773027f59ac06d4fa13d917798636daf" kind="function"><name>PlayerHideActorEvent</name></member>
+    <member refid="classendstone_1_1PlayerHideActorEvent_1a7771e4dcf5b7020ec0943ad5c26896ec" kind="function"><name>getActor</name></member>
+  </compound>
   <compound refid="classendstone_1_1PlayerInputEvent" kind="class"><name>endstone::PlayerInputEvent</name>
     <member refid="classendstone_1_1PlayerInputEvent_1a7e32fd166d83d33b9e2f8675565f8fa1" kind="variable"><name>input_</name></member>
     <member refid="classendstone_1_1PlayerInputEvent_1a2e9e858f6cea01ec7f2c8ab6c0e2fb3f" kind="function"><name>ENDSTONE_EVENT</name></member>
@@ -2655,6 +2666,12 @@
     <member refid="classendstone_1_1PlayerShearActorEvent_1aa735d25ec83a9cbc0aa05f336c62df37" kind="function"><name>getActor</name></member>
     <member refid="classendstone_1_1PlayerShearActorEvent_1a6fbcbcb55e30cd8e9bba8dd68f330b8e" kind="function"><name>getItem</name></member>
     <member refid="classendstone_1_1PlayerShearActorEvent_1a333ae22f12bd824a8b06ee0f187e512e" kind="function"><name>getHand</name></member>
+  </compound>
+  <compound refid="classendstone_1_1PlayerShowActorEvent" kind="class"><name>endstone::PlayerShowActorEvent</name>
+    <member refid="classendstone_1_1PlayerShowActorEvent_1a416c2f51414f3efcf2f2e445aaa2858b" kind="variable"><name>actor_</name></member>
+    <member refid="classendstone_1_1PlayerShowActorEvent_1ad329fda175fdac8ce82e953759f96718" kind="function"><name>ENDSTONE_EVENT</name></member>
+    <member refid="classendstone_1_1PlayerShowActorEvent_1a0d2eb9c74f14e839fba957525487b98a" kind="function"><name>PlayerShowActorEvent</name></member>
+    <member refid="classendstone_1_1PlayerShowActorEvent_1ab95cb15aa33a7b63e6cdec7e517a5856" kind="function"><name>getActor</name></member>
   </compound>
   <compound refid="classendstone_1_1PlayerSkinChangeEvent" kind="class"><name>endstone::PlayerSkinChangeEvent</name>
     <member refid="classendstone_1_1PlayerSkinChangeEvent_1a57dfa1e3c9e9fe052d06911c8665dae2" kind="variable"><name>new_skin_</name></member>
@@ -3853,6 +3870,8 @@
   </compound>
   <compound refid="player__game__mode__change__event_8h" kind="file"><name>player_game_mode_change_event.h</name>
   </compound>
+  <compound refid="player__hide__actor__event_8h" kind="file"><name>player_hide_actor_event.h</name>
+  </compound>
   <compound refid="player__input__event_8h" kind="file"><name>player_input_event.h</name>
   </compound>
   <compound refid="player__interact__actor__event_8h" kind="file"><name>player_interact_actor_event.h</name>
@@ -3896,6 +3915,8 @@
   <compound refid="player__set__spawn__event_8h" kind="file"><name>player_set_spawn_event.h</name>
   </compound>
   <compound refid="player__shear__actor__event_8h" kind="file"><name>player_shear_actor_event.h</name>
+  </compound>
+  <compound refid="player__show__actor__event_8h" kind="file"><name>player_show_actor_event.h</name>
   </compound>
   <compound refid="player__skin__change__event_8h" kind="file"><name>player_skin_change_event.h</name>
   </compound>

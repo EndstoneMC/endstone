@@ -210,6 +210,7 @@ _Represents a button with text and an optional icon._
 | class | [**PlayerEvent**](classendstone_1_1PlayerEvent.md) <br>_Represents a player related event._  |
 | class | [**PlayerExpChangeEvent**](classendstone_1_1PlayerExpChangeEvent.md) <br>_Called when a player's experience changes._  |
 | class | [**PlayerGameModeChangeEvent**](classendstone_1_1PlayerGameModeChangeEvent.md) <br>_Called when the GameMode of the player is changed._  |
+| class | [**PlayerHideActorEvent**](classendstone_1_1PlayerHideActorEvent.md) <br>_Called when a visible actor is hidden from a player._  |
 | class | [**PlayerInputEvent**](classendstone_1_1PlayerInputEvent.md) <br>_Called when a player sends updated input to the server._  |
 | class | [**PlayerInteractActorEvent**](classendstone_1_1PlayerInteractActorEvent.md) <br>_Called when a player right-clicks an actor._  |
 | class | [**PlayerInteractEvent**](classendstone_1_1PlayerInteractEvent.md) <br>_Called when a player interacts with an object or air._  |
@@ -233,6 +234,7 @@ _Represents a button with text and an optional icon._
 | class | [**PlayerRiptideEvent**](classendstone_1_1PlayerRiptideEvent.md) <br>_Called when a player activates the riptide enchantment, using their trident to propel them through the air._  |
 | class | [**PlayerSetSpawnEvent**](classendstone_1_1PlayerSetSpawnEvent.md) <br>_Called when a player's spawn is set, either by themselves or otherwise._  |
 | class | [**PlayerShearActorEvent**](classendstone_1_1PlayerShearActorEvent.md) <br>_Called when a player shears an_ [_**Actor**_](classendstone_1_1Actor.md) _._ |
+| class | [**PlayerShowActorEvent**](classendstone_1_1PlayerShowActorEvent.md) <br>_Called when a hidden actor is shown to a player._  |
 | class | [**PlayerSkinChangeEvent**](classendstone_1_1PlayerSkinChangeEvent.md) <br>_Called when a player changes their skin._  |
 | class | [**PlayerTeleportEvent**](classendstone_1_1PlayerTeleportEvent.md) <br>_Called when a player is teleported from one location to another._  |
 | class | [**PlayerToggleCrawlEvent**](classendstone_1_1PlayerToggleCrawlEvent.md) <br>_Called when a player toggles their crawling state._  |

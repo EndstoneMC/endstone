@@ -1,0 +1,154 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.8" xml:lang="en-US">
+  <compounddef id="classendstone_1_1PlayerHideActorEvent" kind="class" language="C++" prot="public" final="yes">
+    <compoundname>endstone::PlayerHideActorEvent</compoundname>
+    <basecompoundref refid="classendstone_1_1PlayerEvent" prot="public" virt="non-virtual">endstone::PlayerEvent</basecompoundref>
+    <includes refid="player__hide__actor__event_8h" local="no">endstone/event/player/player_hide_actor_event.h</includes>
+    <sectiondef kind="private-attrib">
+      <memberdef kind="variable" id="classendstone_1_1PlayerHideActorEvent_1ab9adef69c7b00cbf27a3c9aef3e88cb5" prot="private" static="no" mutable="no">
+        <type><ref refid="classendstone_1_1NotNull" kindref="compound">NotNull</ref>&lt; <ref refid="classendstone_1_1Actor" kindref="compound">Actor</ref> &gt;</type>
+        <definition>NotNull&lt;Actor&gt; endstone::PlayerHideActorEvent::actor_</definition>
+        <argsstring></argsstring>
+        <name>actor_</name>
+        <qualifiedname>endstone::PlayerHideActorEvent::actor_</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/event/player/player_hide_actor_event.h" line="48" column="13" bodyfile="include/endstone/event/player/player_hide_actor_event.h" bodystart="48" bodyend="-1"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="public-func">
+      <memberdef kind="function" id="classendstone_1_1PlayerHideActorEvent_1a6e22c999f3cdaa58d1c4ba434b5c8dda" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>endstone::PlayerHideActorEvent::ENDSTONE_EVENT</definition>
+        <argsstring>(PlayerHideActorEvent)</argsstring>
+        <name>ENDSTONE_EVENT</name>
+        <qualifiedname>endstone::PlayerHideActorEvent::ENDSTONE_EVENT</qualifiedname>
+        <param>
+          <type><ref refid="classendstone_1_1PlayerHideActorEvent" kindref="compound">PlayerHideActorEvent</ref></type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/event/player/player_hide_actor_event.h" line="33" column="5"/>
+      </memberdef>
+      <memberdef kind="function" id="classendstone_1_1PlayerHideActorEvent_1a773027f59ac06d4fa13d917798636daf" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type></type>
+        <definition>endstone::PlayerHideActorEvent::PlayerHideActorEvent</definition>
+        <argsstring>(const NotNull&lt; Player &gt; &amp;player, const NotNull&lt; Actor &gt; &amp;actor)</argsstring>
+        <name>PlayerHideActorEvent</name>
+        <qualifiedname>endstone::PlayerHideActorEvent::PlayerHideActorEvent</qualifiedname>
+        <param>
+          <type><ref refid="classendstone_1_1Identifier" kindref="compound">const</ref> <ref refid="classendstone_1_1NotNull" kindref="compound">NotNull</ref>&lt; <ref refid="classendstone_1_1Player" kindref="compound">Player</ref> &gt; &amp;</type>
+          <declname>player</declname>
+        </param>
+        <param>
+          <type><ref refid="classendstone_1_1Identifier" kindref="compound">const</ref> <ref refid="classendstone_1_1NotNull" kindref="compound">NotNull</ref>&lt; <ref refid="classendstone_1_1Actor" kindref="compound">Actor</ref> &gt; &amp;</type>
+          <declname>actor</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/event/player/player_hide_actor_event.h" line="35" column="5" bodyfile="include/endstone/event/player/player_hide_actor_event.h" bodystart="35" bodyend="38"/>
+      </memberdef>
+      <memberdef kind="function" id="classendstone_1_1PlayerHideActorEvent_1a7771e4dcf5b7020ec0943ad5c26896ec" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type><ref refid="classendstone_1_1Identifier" kindref="compound">const</ref> <ref refid="classendstone_1_1NotNull" kindref="compound">NotNull</ref>&lt; <ref refid="classendstone_1_1Actor" kindref="compound">Actor</ref> &gt; &amp;</type>
+        <definition>const NotNull&lt; Actor &gt; &amp; endstone::PlayerHideActorEvent::getActor</definition>
+        <argsstring>() const</argsstring>
+        <name>getActor</name>
+        <qualifiedname>endstone::PlayerHideActorEvent::getActor</qualifiedname>
+        <briefdescription>
+<para>Gets the actor hidden from the player. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="return"><para>the hidden actor </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/event/player/player_hide_actor_event.h" line="45" column="20" bodyfile="include/endstone/event/player/player_hide_actor_event.h" bodystart="45" bodyend="45"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+<para>Called when a visible actor is hidden from a player. </para>
+    </briefdescription>
+    <detaileddescription>
+<para>This event is only called when the actor&apos;s visibility status is actually changed. It is called regardless of whether the actor is within the player&apos;s tracking range.</para>
+<para><simplesect kind="see"><para><ref refid="classendstone_1_1Player_1a12dbfd695a4e3868c85fcf98cfedd6ee" kindref="member">Player::hideActor()</ref> </para>
+</simplesect>
+</para>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="3">
+        <label>endstone::Event</label>
+        <link refid="classendstone_1_1Event"/>
+      </node>
+      <node id="2">
+        <label>endstone::PlayerEvent</label>
+        <link refid="classendstone_1_1PlayerEvent"/>
+        <childnode refid="3" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="1">
+        <label>endstone::PlayerHideActorEvent</label>
+        <link refid="classendstone_1_1PlayerHideActorEvent"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="4">
+        <label>endstone::NotNull&lt; endstone::Player &gt;</label>
+        <link refid="classendstone_1_1NotNull"/>
+      </node>
+      <node id="3">
+        <label>endstone::Event</label>
+        <link refid="classendstone_1_1Event"/>
+      </node>
+      <node id="2">
+        <label>endstone::PlayerEvent</label>
+        <link refid="classendstone_1_1PlayerEvent"/>
+        <childnode refid="3" relation="public-inheritance">
+        </childnode>
+        <childnode refid="4" relation="usage">
+          <edgelabel>player_</edgelabel>
+        </childnode>
+      </node>
+      <node id="1">
+        <label>endstone::PlayerHideActorEvent</label>
+        <link refid="classendstone_1_1PlayerHideActorEvent"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+    </collaborationgraph>
+    <location file="include/endstone/event/player/player_hide_actor_event.h" line="31" column="1" bodyfile="include/endstone/event/player/player_hide_actor_event.h" bodystart="31" bodyend="49"/>
+    <listofallmembers>
+      <member refid="classendstone_1_1PlayerHideActorEvent_1ab9adef69c7b00cbf27a3c9aef3e88cb5" prot="private" virt="non-virtual"><scope>endstone::PlayerHideActorEvent</scope><name>actor_</name></member>
+      <member refid="classendstone_1_1PlayerHideActorEvent_1a6e22c999f3cdaa58d1c4ba434b5c8dda" prot="public" virt="non-virtual"><scope>endstone::PlayerHideActorEvent</scope><name>ENDSTONE_EVENT</name></member>
+      <member refid="classendstone_1_1Event_1a28cca8d74920493b449d035540acf023" prot="public" virt="non-virtual"><scope>endstone::PlayerHideActorEvent</scope><name>Event</name></member>
+      <member refid="classendstone_1_1Event_1a7199136ebb40e1441bc61e29f83c3cad" prot="public" virt="non-virtual"><scope>endstone::PlayerHideActorEvent</scope><name>Event</name></member>
+      <member refid="classendstone_1_1Event_1ad20bafd16e0671578e37390b95e5104c" prot="public" virt="non-virtual"><scope>endstone::PlayerHideActorEvent</scope><name>Event</name></member>
+      <member refid="classendstone_1_1PlayerHideActorEvent_1a7771e4dcf5b7020ec0943ad5c26896ec" prot="public" virt="non-virtual"><scope>endstone::PlayerHideActorEvent</scope><name>getActor</name></member>
+      <member refid="classendstone_1_1Event_1a826fe74f9c4195a36a364b9aeeb321bb" prot="public" virt="pure-virtual"><scope>endstone::PlayerHideActorEvent</scope><name>getEventName</name></member>
+      <member refid="classendstone_1_1PlayerEvent_1abad8f8bca3e2be851c4b37075adf2cbc" prot="public" virt="non-virtual"><scope>endstone::PlayerHideActorEvent</scope><name>getPlayer</name></member>
+      <member refid="classendstone_1_1Event_1ae89b54f63dc32b0c8797a59db69b6931" prot="public" virt="non-virtual"><scope>endstone::PlayerHideActorEvent</scope><name>isAsynchronous</name></member>
+      <member refid="classendstone_1_1Event_1a44a4ff424a8b690c01a2afe10ae68d8f" prot="public" virt="non-virtual"><scope>endstone::PlayerHideActorEvent</scope><name>operator=</name></member>
+      <member refid="classendstone_1_1Event_1a1d7fc5400782d20be99a3636aa7f53b9" prot="public" virt="non-virtual"><scope>endstone::PlayerHideActorEvent</scope><name>operator=</name></member>
+      <member refid="classendstone_1_1PlayerEvent_1ae0f8240e8c7c3a66281295c43b1d522a" prot="protected" virt="non-virtual"><scope>endstone::PlayerHideActorEvent</scope><name>player_</name></member>
+      <member refid="classendstone_1_1PlayerEvent_1afee42449de6752241c5472a38f7d94a9" prot="public" virt="non-virtual"><scope>endstone::PlayerHideActorEvent</scope><name>PlayerEvent</name></member>
+      <member refid="classendstone_1_1PlayerHideActorEvent_1a773027f59ac06d4fa13d917798636daf" prot="public" virt="non-virtual"><scope>endstone::PlayerHideActorEvent</scope><name>PlayerHideActorEvent</name></member>
+      <member refid="classendstone_1_1Event_1a6aeaa8096baba90f8ace94106e0e05f3" prot="public" virt="virtual"><scope>endstone::PlayerHideActorEvent</scope><name>~Event</name></member>
+      <member refid="classendstone_1_1PlayerEvent_1ab31b937251b8ccc1c72c275d1c7a522b" prot="public" virt="non-virtual"><scope>endstone::PlayerHideActorEvent</scope><name>~PlayerEvent</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

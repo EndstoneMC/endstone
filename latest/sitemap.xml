@@ -857,6 +857,10 @@
          <lastmod>2026-08-26</lastmod>
     </url>
     <url>
+         <loc>https://endstone.dev/latest/reference/cpp/classendstone_1_1PlayerHideActorEvent/</loc>
+         <lastmod>2026-08-26</lastmod>
+    </url>
+    <url>
          <loc>https://endstone.dev/latest/reference/cpp/classendstone_1_1PlayerInputEvent/</loc>
          <lastmod>2026-08-26</lastmod>
     </url>
@@ -946,6 +950,10 @@
     </url>
     <url>
          <loc>https://endstone.dev/latest/reference/cpp/classendstone_1_1PlayerShearActorEvent/</loc>
+         <lastmod>2026-08-26</lastmod>
+    </url>
+    <url>
+         <loc>https://endstone.dev/latest/reference/cpp/classendstone_1_1PlayerShowActorEvent/</loc>
          <lastmod>2026-08-26</lastmod>
     </url>
     <url>
@@ -2381,6 +2389,14 @@
          <lastmod>2026-08-26</lastmod>
     </url>
     <url>
+         <loc>https://endstone.dev/latest/reference/cpp/player__hide__actor__event_8h/</loc>
+         <lastmod>2026-08-26</lastmod>
+    </url>
+    <url>
+         <loc>https://endstone.dev/latest/reference/cpp/player__hide__actor__event_8h_source/</loc>
+         <lastmod>2026-08-26</lastmod>
+    </url>
+    <url>
          <loc>https://endstone.dev/latest/reference/cpp/player__input__event_8h/</loc>
          <lastmod>2026-08-26</lastmod>
     </url>
@@ -2554,6 +2570,14 @@
     </url>
     <url>
          <loc>https://endstone.dev/latest/reference/cpp/player__shear__actor__event_8h_source/</loc>
+         <lastmod>2026-08-26</lastmod>
+    </url>
+    <url>
+         <loc>https://endstone.dev/latest/reference/cpp/player__show__actor__event_8h/</loc>
+         <lastmod>2026-08-26</lastmod>
+    </url>
+    <url>
+         <loc>https://endstone.dev/latest/reference/cpp/player__show__actor__event_8h_source/</loc>
          <lastmod>2026-08-26</lastmod>
     </url>
     <url>

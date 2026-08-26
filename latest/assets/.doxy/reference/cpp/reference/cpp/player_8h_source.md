@@ -32,6 +32,7 @@
 
 #include "endstone/ability.h"
 #include "endstone/actor/mob.h"
+#include "endstone/block/block_data.h"
 #include "endstone/block/sign.h"
 #include "endstone/form/action_form.h"
 #include "endstone/form/message_form.h"
@@ -47,6 +48,8 @@
 #include "endstone/util/uuid.h"
 
 namespace endstone {
+
+class Plugin;
 
 class Player : public Mob {
 protected:
@@ -76,6 +79,16 @@ public:
     [[nodiscard]] virtual std::optional<Location> getRespawnLocation() const = 0;
 
     virtual void setRespawnLocation(std::optional<Location> location) = 0;
+
+    virtual void hideActor(Plugin &plugin, Actor &actor) = 0;
+
+    virtual void showActor(Plugin &plugin, Actor &actor) = 0;
+
+    [[nodiscard]] virtual bool canSee(const Actor &actor) const = 0;
+
+    [[nodiscard]] virtual bool canSee(const Player &player) const = 0;
+
+    virtual void sendBlockChange(const Location &location, const BlockData &block) = 0;
 
     virtual void openSign(const Sign &sign, Sign::Side side) = 0;
 

@@ -20,6 +20,7 @@
     <innerfile refid="player__event_8h">player_event.h</innerfile>
     <innerfile refid="player__exp__change__event_8h">player_exp_change_event.h</innerfile>
     <innerfile refid="player__game__mode__change__event_8h">player_game_mode_change_event.h</innerfile>
+    <innerfile refid="player__hide__actor__event_8h">player_hide_actor_event.h</innerfile>
     <innerfile refid="player__input__event_8h">player_input_event.h</innerfile>
     <innerfile refid="player__interact__actor__event_8h">player_interact_actor_event.h</innerfile>
     <innerfile refid="player__interact__event_8h">player_interact_event.h</innerfile>
@@ -42,6 +43,7 @@
     <innerfile refid="player__riptide__event_8h">player_riptide_event.h</innerfile>
     <innerfile refid="player__set__spawn__event_8h">player_set_spawn_event.h</innerfile>
     <innerfile refid="player__shear__actor__event_8h">player_shear_actor_event.h</innerfile>
+    <innerfile refid="player__show__actor__event_8h">player_show_actor_event.h</innerfile>
     <innerfile refid="player__skin__change__event_8h">player_skin_change_event.h</innerfile>
     <innerfile refid="player__teleport__event_8h">player_teleport_event.h</innerfile>
     <innerfile refid="player__toggle__crawl__event_8h">player_toggle_crawl_event.h</innerfile>
