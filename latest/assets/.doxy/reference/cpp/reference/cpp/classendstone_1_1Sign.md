@@ -14,7 +14,7 @@ _Represents a captured state of a sign._
 
 
 
-Inherits the following classes: [endstone::BlockState](classendstone_1_1BlockState.md)
+Inherits the following classes: [endstone::BlockActorState](classendstone_1_1BlockActorState.md)
 
 
 
@@ -94,6 +94,26 @@ Inherits the following classes: [endstone::BlockState](classendstone_1_1BlockSta
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 ## Public Functions
 
 | Type | Name |
@@ -101,6 +121,16 @@ Inherits the following classes: [endstone::BlockState](classendstone_1_1BlockSta
 | virtual [**SignSide**](classendstone_1_1SignSide.md) & | [**getSide**](#function-getside) ([**Side**](classendstone_1_1Sign.md#enum-side) side) const = 0<br>_Gets the side of this sign._  |
 | virtual [**bool**](classendstone_1_1Identifier.md) | [**isWaxed**](#function-iswaxed) () const = 0<br>_Gets whether this sign is waxed._  |
 | virtual [**void**](classendstone_1_1Identifier.md) | [**setWaxed**](#function-setwaxed) ([**bool**](classendstone_1_1Identifier.md) waxed) = 0<br>_Sets whether this sign is waxed._  |
+
+
+## Public Functions inherited from endstone::BlockActorState
+
+See [endstone::BlockActorState](classendstone_1_1BlockActorState.md)
+
+| Type | Name |
+| ---: | :--- |
+| virtual [**bool**](classendstone_1_1Identifier.md) | [**isSnapshot**](classendstone_1_1BlockActorState.md#function-issnapshot) () const = 0<br>_Gets whether this state is backed by an independent block entity snapshot._  |
+|   | [**~BlockActorState**](classendstone_1_1BlockActorState.md#function-blockactorstate) () override<br> |
 
 
 ## Public Functions inherited from endstone::BlockState
@@ -137,6 +167,32 @@ See [endstone::Object](classendstone_1_1Object.md)
 |  [**bool**](classendstone_1_1Identifier.md) | [**is**](classendstone_1_1Object.md#function-is) () const<br>_Checks if this object is an instance of the given type T (or a subclass of T)._  |
 | virtual [**bool**](classendstone_1_1Identifier.md) | [**isInstanceOf**](classendstone_1_1Object.md#function-isinstanceof) ([**ClassInfo**](classendstone_1_1ClassInfo.md) target) const = 0<br> |
 | virtual  | [**~Object**](classendstone_1_1Object.md#function-object) () = default<br> |
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

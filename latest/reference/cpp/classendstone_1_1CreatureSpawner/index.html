@@ -2596,6 +2596,17 @@ For latest updates join the chat on
 </li>
       
         <li class="md-nav__item">
+    <a href="#public-functions-inherited-from-endstoneblockactorstate" class="md-nav__link">
+      <span class="md-ellipsis">
+        Public Functions inherited from endstone::BlockActorState
+      </span>
+    </a>
+
+    <!-- Table of contents list -->
+    
+</li>
+      
+        <li class="md-nav__item">
     <a href="#public-functions-inherited-from-endstoneblockstate" class="md-nav__link">
       <span class="md-ellipsis">
         Public Functions inherited from endstone::BlockState
@@ -2881,7 +2892,7 @@ For latest updates join the chat on
 <ul>
 <li><code>#include &lt;endstone/block/creature_spawner.h&gt;</code></li>
 </ul>
-<p>Inherits the following classes: <a href="../classendstone_1_1BlockState/">endstone::BlockState</a></p>
+<p>Inherits the following classes: <a href="../classendstone_1_1BlockActorState/">endstone::BlockActorState</a></p>
 <h2 id="public-functions">Public Functions<a class="headerlink" href="#public-functions" title="Permanent link">&para;</a></h2>
 <table>
 <thead>
@@ -2954,6 +2965,26 @@ For latest updates join the chat on
 <tr>
 <td style="text-align: right;">virtual <a href="../classendstone_1_1Identifier/"><strong>void</strong></a></td>
 <td style="text-align: left;"><a href="#function-setspawnedtype"><strong>setSpawnedType</strong></a> (<a href="../classendstone_1_1Identifier/"><strong>ActorTypeId</strong></a> type) = 0<br><em>Sets the type of actor this spawner will spawn.</em></td>
+</tr>
+</tbody>
+</table>
+<h2 id="public-functions-inherited-from-endstoneblockactorstate">Public Functions inherited from endstone::BlockActorState<a class="headerlink" href="#public-functions-inherited-from-endstoneblockactorstate" title="Permanent link">&para;</a></h2>
+<p>See <a href="../classendstone_1_1BlockActorState/">endstone::BlockActorState</a></p>
+<table>
+<thead>
+<tr>
+<th style="text-align: right;">Type</th>
+<th style="text-align: left;">Name</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: right;">virtual <a href="../classendstone_1_1Identifier/"><strong>bool</strong></a></td>
+<td style="text-align: left;"><a href="../classendstone_1_1BlockActorState/#function-issnapshot"><strong>isSnapshot</strong></a> () const = 0<br><em>Gets whether this state is backed by an independent block entity snapshot.</em></td>
+</tr>
+<tr>
+<td style="text-align: right;"></td>
+<td style="text-align: left;"><a href="../classendstone_1_1BlockActorState/#function-blockactorstate"><strong>~BlockActorState</strong></a> () override<br></td>
 </tr>
 </tbody>
 </table>

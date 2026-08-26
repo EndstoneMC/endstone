@@ -17,7 +17,7 @@ _Represents a captured state of a block, which will not update automatically._ [
 Inherits the following classes: [endstone::Object](classendstone_1_1Object.md)
 
 
-Inherited by the following classes: [endstone::Campfire](classendstone_1_1Campfire.md),  [endstone::Container](classendstone_1_1Container.md),  [endstone::CreatureSpawner](classendstone_1_1CreatureSpawner.md),  [endstone::ItemFrame](classendstone_1_1ItemFrame.md),  [endstone::Sign](classendstone_1_1Sign.md)
+Inherited by the following classes: [endstone::BlockActorState](classendstone_1_1BlockActorState.md)
 
 
 

@@ -11,7 +11,7 @@
 
 
 * `#include <optional>`
-* `#include "endstone/block/block_state.h"`
+* `#include "endstone/block/block_actor_state.h"`
 * `#include "endstone/inventory/item_stack.h"`
 
 

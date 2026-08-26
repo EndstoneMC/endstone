@@ -14,7 +14,27 @@ _Represents a captured state of a creature spawner._
 
 
 
-Inherits the following classes: [endstone::BlockState](classendstone_1_1BlockState.md)
+Inherits the following classes: [endstone::BlockActorState](classendstone_1_1BlockActorState.md)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -111,6 +131,16 @@ Inherits the following classes: [endstone::BlockState](classendstone_1_1BlockSta
 | virtual [**void**](classendstone_1_1Identifier.md) | [**setSpawnedType**](#function-setspawnedtype) ([**ActorTypeId**](classendstone_1_1Identifier.md) type) = 0<br>_Sets the type of actor this spawner will spawn._  |
 
 
+## Public Functions inherited from endstone::BlockActorState
+
+See [endstone::BlockActorState](classendstone_1_1BlockActorState.md)
+
+| Type | Name |
+| ---: | :--- |
+| virtual [**bool**](classendstone_1_1Identifier.md) | [**isSnapshot**](classendstone_1_1BlockActorState.md#function-issnapshot) () const = 0<br>_Gets whether this state is backed by an independent block entity snapshot._  |
+|   | [**~BlockActorState**](classendstone_1_1BlockActorState.md#function-blockactorstate) () override<br> |
+
+
 ## Public Functions inherited from endstone::BlockState
 
 See [endstone::BlockState](classendstone_1_1BlockState.md)
@@ -145,6 +175,32 @@ See [endstone::Object](classendstone_1_1Object.md)
 |  [**bool**](classendstone_1_1Identifier.md) | [**is**](classendstone_1_1Object.md#function-is) () const<br>_Checks if this object is an instance of the given type T (or a subclass of T)._  |
 | virtual [**bool**](classendstone_1_1Identifier.md) | [**isInstanceOf**](classendstone_1_1Object.md#function-isinstanceof) ([**ClassInfo**](classendstone_1_1ClassInfo.md) target) const = 0<br> |
 | virtual  | [**~Object**](classendstone_1_1Object.md#function-object) () = default<br> |
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

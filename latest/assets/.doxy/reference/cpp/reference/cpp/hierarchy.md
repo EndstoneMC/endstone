@@ -18,13 +18,14 @@ This inheritance list is sorted roughly, but not completely, alphabetically:
 * **class** [**endstone::Form**](classendstone_1_1Form.md) _Represents a generic form._ 
 * **class** [**endstone::Object**](classendstone_1_1Object.md) _Base class providing runtime type identification and safe casting._     
     * **class** [**endstone::BlockState**](classendstone_1_1BlockState.md) _Represents a captured state of a block, which will not update automatically._     
-        * **class** [**endstone::Campfire**](classendstone_1_1Campfire.md) _Represents a captured state of a campfire._ 
-        * **class** [**endstone::Container**](classendstone_1_1Container.md) _Represents a captured state of a container block, such as a chest._     
-            * **class** [**endstone::Furnace**](classendstone_1_1Furnace.md) _Represents a captured state of a furnace._ 
-            * **class** [**endstone::Lectern**](classendstone_1_1Lectern.md) _Represents a captured state of a lectern._ 
-        * **class** [**endstone::CreatureSpawner**](classendstone_1_1CreatureSpawner.md) _Represents a captured state of a creature spawner._ 
-        * **class** [**endstone::ItemFrame**](classendstone_1_1ItemFrame.md) _Represents a captured state of an item frame._ 
-        * **class** [**endstone::Sign**](classendstone_1_1Sign.md) _Represents a captured state of a sign._ 
+        * **class** [**endstone::BlockActorState**](classendstone_1_1BlockActorState.md) _Represents a captured state of a block entity._     
+            * **class** [**endstone::Campfire**](classendstone_1_1Campfire.md) _Represents a captured state of a campfire._ 
+            * **class** [**endstone::Container**](classendstone_1_1Container.md) _Represents a captured state of a container block, such as a chest._     
+                * **class** [**endstone::Furnace**](classendstone_1_1Furnace.md) _Represents a captured state of a furnace._ 
+                * **class** [**endstone::Lectern**](classendstone_1_1Lectern.md) _Represents a captured state of a lectern._ 
+            * **class** [**endstone::CreatureSpawner**](classendstone_1_1CreatureSpawner.md) _Represents a captured state of a creature spawner._ 
+            * **class** [**endstone::ItemFrame**](classendstone_1_1ItemFrame.md) _Represents a captured state of an item frame._ 
+            * **class** [**endstone::Sign**](classendstone_1_1Sign.md) _Represents a captured state of a sign._ 
     * **class** [**endstone::Command**](classendstone_1_1Command.md) _Represents a_ [_**Command**_](classendstone_1_1Command.md) _, which executes various tasks upon user input._    
         * **class** [**endstone::PluginCommand**](classendstone_1_1PluginCommand.md) _Represents a_ [_**Command**_](classendstone_1_1Command.md) _belonging to a_[_**Plugin**_](classendstone_1_1Plugin.md) _._
     * **class** [**endstone::ItemMeta**](classendstone_1_1ItemMeta.md) _Represents the metadata of a generic item._     

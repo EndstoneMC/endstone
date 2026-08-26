@@ -70,6 +70,8 @@
 ([**endstone**](namespaceendstone.md))
 * [**Block**](classendstone_1_1Block.md)
 ([**endstone**](namespaceendstone.md))
+* [**BlockActorState**](classendstone_1_1BlockActorState.md)
+([**endstone**](namespaceendstone.md))
 * [**BlockBreakEvent**](classendstone_1_1BlockBreakEvent.md)
 ([**endstone**](namespaceendstone.md))
 * [**BlockCommandSender**](classendstone_1_1BlockCommandSender.md)

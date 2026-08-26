@@ -472,7 +472,11 @@
     <member refid="classendstone_1_1Block_1a390b31ef485c4b5176842bd3a59b01bc" kind="function"><name>getY</name></member>
     <member refid="classendstone_1_1Block_1a9509b72c86339e30a4b50567f6d5279c" kind="function"><name>getZ</name></member>
     <member refid="classendstone_1_1Block_1a19e164bc3cf23481d01886dfeda41c85" kind="function"><name>getLocation</name></member>
-    <member refid="classendstone_1_1Block_1adbb54e51386a34510f53584dfa26adef" kind="function"><name>captureState</name></member>
+    <member refid="classendstone_1_1Block_1adcf7f3d596166b4e6059c0d7e4834fe6" kind="function"><name>captureState</name></member>
+  </compound>
+  <compound refid="classendstone_1_1BlockActorState" kind="class"><name>endstone::BlockActorState</name>
+    <member refid="classendstone_1_1BlockActorState_1a5d1d34029ed49327ea457fddf0dad219" kind="function"><name>~BlockActorState</name></member>
+    <member refid="classendstone_1_1BlockActorState_1a794f413bc733ce889faa19fe68da454f" kind="function"><name>isSnapshot</name></member>
   </compound>
   <compound refid="classendstone_1_1BlockBreakEvent" kind="class"><name>endstone::BlockBreakEvent</name>
     <member refid="classendstone_1_1BlockBreakEvent_1a6fd9b727cc099ab5e965e970d609e160" kind="variable"><name>player_</name></member>
@@ -2201,6 +2205,7 @@
     <member refid="classendstone_1_1Player_1a9484ec57ceb309acfcfe4b2d61026f56" kind="function"><name>performCommand</name></member>
     <member refid="classendstone_1_1Player_1afca7774ebf09e8f3f77f0e1dc7b298ec" kind="function"><name>getRespawnLocation</name></member>
     <member refid="classendstone_1_1Player_1a5bffefb78ba5e5dea934c249a4d30229" kind="function"><name>setRespawnLocation</name></member>
+    <member refid="classendstone_1_1Player_1a6b68fd02c9672089f28860f1ffb2f1b7" kind="function"><name>sendBlockUpdate</name></member>
     <member refid="classendstone_1_1Player_1a12dbfd695a4e3868c85fcf98cfedd6ee" kind="function"><name>hideActor</name></member>
     <member refid="classendstone_1_1Player_1a99674b8b1ef31805406c5506fb664b1e" kind="function"><name>showActor</name></member>
     <member refid="classendstone_1_1Player_1a5043e2ef010a1da70a71c9e995ecb2eb" kind="function"><name>canSee</name></member>
@@ -3680,6 +3685,8 @@
   <compound refid="biome_8h" kind="file"><name>biome.h</name>
   </compound>
   <compound refid="block_8h" kind="file"><name>block.h</name>
+  </compound>
+  <compound refid="block__actor__state_8h" kind="file"><name>block_actor_state.h</name>
   </compound>
   <compound refid="block__data_8h" kind="file"><name>block_data.h</name>
   </compound>

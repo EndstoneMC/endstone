@@ -1,0 +1,155 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.8" xml:lang="en-US">
+  <compounddef id="classendstone_1_1BlockActorState" kind="class" language="C++" prot="public" abstract="yes">
+    <compoundname>endstone::BlockActorState</compoundname>
+    <basecompoundref refid="classendstone_1_1BlockState" prot="public" virt="non-virtual">endstone::BlockState</basecompoundref>
+    <derivedcompoundref refid="classendstone_1_1Campfire" prot="public" virt="non-virtual">endstone::Campfire</derivedcompoundref>
+    <derivedcompoundref refid="classendstone_1_1Container" prot="public" virt="non-virtual">endstone::Container</derivedcompoundref>
+    <derivedcompoundref refid="classendstone_1_1CreatureSpawner" prot="public" virt="non-virtual">endstone::CreatureSpawner</derivedcompoundref>
+    <derivedcompoundref refid="classendstone_1_1ItemFrame" prot="public" virt="non-virtual">endstone::ItemFrame</derivedcompoundref>
+    <derivedcompoundref refid="classendstone_1_1Sign" prot="public" virt="non-virtual">endstone::Sign</derivedcompoundref>
+    <includes refid="block__actor__state_8h" local="no">endstone/block/block_actor_state.h</includes>
+    <sectiondef kind="public-func">
+      <memberdef kind="function" id="classendstone_1_1BlockActorState_1a5d1d34029ed49327ea457fddf0dad219" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>endstone::BlockActorState::~BlockActorState</definition>
+        <argsstring>() override=default</argsstring>
+        <name>~BlockActorState</name>
+        <qualifiedname>endstone::BlockActorState::~BlockActorState</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/block/block_actor_state.h" line="26" column="5"/>
+      </memberdef>
+      <memberdef kind="function" id="classendstone_1_1BlockActorState_1a794f413bc733ce889faa19fe68da454f" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
+        <type><ref refid="classendstone_1_1Identifier" kindref="compound">bool</ref></type>
+        <definition>virtual bool endstone::BlockActorState::isSnapshot</definition>
+        <argsstring>() const =0</argsstring>
+        <name>isSnapshot</name>
+        <qualifiedname>endstone::BlockActorState::isSnapshot</qualifiedname>
+        <briefdescription>
+<para>Gets whether this state is backed by an independent block entity snapshot. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="return"><para><computeroutput>true</computeroutput> if this state is a snapshot, otherwise <computeroutput>false</computeroutput>. </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/block/block_actor_state.h" line="33" column="19"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+<para>Represents a captured state of a block entity. </para>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="1">
+        <label>endstone::BlockActorState</label>
+        <link refid="classendstone_1_1BlockActorState"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>endstone::BlockState</label>
+        <link refid="classendstone_1_1BlockState"/>
+        <childnode refid="3" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="4">
+        <label>endstone::Campfire</label>
+        <link refid="classendstone_1_1Campfire"/>
+        <childnode refid="1" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="5">
+        <label>endstone::Container</label>
+        <link refid="classendstone_1_1Container"/>
+        <childnode refid="1" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="8">
+        <label>endstone::CreatureSpawner</label>
+        <link refid="classendstone_1_1CreatureSpawner"/>
+        <childnode refid="1" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="6">
+        <label>endstone::Furnace</label>
+        <link refid="classendstone_1_1Furnace"/>
+        <childnode refid="5" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="9">
+        <label>endstone::ItemFrame</label>
+        <link refid="classendstone_1_1ItemFrame"/>
+        <childnode refid="1" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="7">
+        <label>endstone::Lectern</label>
+        <link refid="classendstone_1_1Lectern"/>
+        <childnode refid="5" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="3">
+        <label>endstone::Object</label>
+        <link refid="classendstone_1_1Object"/>
+      </node>
+      <node id="10">
+        <label>endstone::Sign</label>
+        <link refid="classendstone_1_1Sign"/>
+        <childnode refid="1" relation="public-inheritance">
+        </childnode>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="1">
+        <label>endstone::BlockActorState</label>
+        <link refid="classendstone_1_1BlockActorState"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>endstone::BlockState</label>
+        <link refid="classendstone_1_1BlockState"/>
+        <childnode refid="3" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="3">
+        <label>endstone::Object</label>
+        <link refid="classendstone_1_1Object"/>
+      </node>
+    </collaborationgraph>
+    <location file="include/endstone/block/block_actor_state.h" line="24" column="1" bodyfile="include/endstone/block/block_actor_state.h" bodystart="24" bodyend="34"/>
+    <listofallmembers>
+      <member refid="classendstone_1_1Object_1a798b5128ce018bbbe8ca949ba78c3db1" prot="public" virt="non-virtual"><scope>endstone::BlockActorState</scope><name>as</name></member>
+      <member refid="classendstone_1_1Object_1ae0f38a62da4c186fce272145e2590cc1" prot="public" virt="non-virtual"><scope>endstone::BlockActorState</scope><name>as</name></member>
+      <member refid="classendstone_1_1BlockState_1a810aa69e187b4a5d953aee70f3a1025b" prot="public" virt="pure-virtual"><scope>endstone::BlockActorState</scope><name>getBlock</name></member>
+      <member refid="classendstone_1_1Object_1a3e2df17c95cf63580e95c84f783636c4" prot="public" virt="pure-virtual"><scope>endstone::BlockActorState</scope><name>getClassInfo</name></member>
+      <member refid="classendstone_1_1BlockState_1ac00635bd4fa22ed632cb783e620673c1" prot="public" virt="pure-virtual"><scope>endstone::BlockActorState</scope><name>getData</name></member>
+      <member refid="classendstone_1_1BlockState_1a761183a7cef8831563b40ca0da0081ed" prot="public" virt="pure-virtual"><scope>endstone::BlockActorState</scope><name>getDimension</name></member>
+      <member refid="classendstone_1_1BlockState_1a6f8f4a475c2c955b1a883877d9b4baf5" prot="public" virt="pure-virtual"><scope>endstone::BlockActorState</scope><name>getLocation</name></member>
+      <member refid="classendstone_1_1BlockState_1aae3431979452c2b71ba615ecaa110615" prot="public" virt="pure-virtual"><scope>endstone::BlockActorState</scope><name>getType</name></member>
+      <member refid="classendstone_1_1BlockState_1a465f89196adeb9f1cb76b1425f8b1856" prot="public" virt="pure-virtual"><scope>endstone::BlockActorState</scope><name>getX</name></member>
+      <member refid="classendstone_1_1BlockState_1a26cb455d3bb6d9ab6f703d1df14c9232" prot="public" virt="pure-virtual"><scope>endstone::BlockActorState</scope><name>getY</name></member>
+      <member refid="classendstone_1_1BlockState_1a1d4ccdc3539f2d549ef3d98393bb89af" prot="public" virt="pure-virtual"><scope>endstone::BlockActorState</scope><name>getZ</name></member>
+      <member refid="classendstone_1_1Object_1ae8213ae15ad1b14e4631399c6b18960a" prot="public" virt="non-virtual"><scope>endstone::BlockActorState</scope><name>is</name></member>
+      <member refid="classendstone_1_1Object_1a1f8951c4894c2b8288fd4ef500218771" prot="public" virt="pure-virtual"><scope>endstone::BlockActorState</scope><name>isInstanceOf</name></member>
+      <member refid="classendstone_1_1BlockActorState_1a794f413bc733ce889faa19fe68da454f" prot="public" virt="pure-virtual"><scope>endstone::BlockActorState</scope><name>isSnapshot</name></member>
+      <member refid="classendstone_1_1BlockState_1ac85e292da7159b3835cc3919e68c08c7" prot="public" virt="pure-virtual"><scope>endstone::BlockActorState</scope><name>setData</name></member>
+      <member refid="classendstone_1_1BlockState_1adf633410dbefd527bd7a7e423223de02" prot="public" virt="pure-virtual"><scope>endstone::BlockActorState</scope><name>setType</name></member>
+      <member refid="classendstone_1_1BlockState_1aeaca92e63b3fa7bf37eb82e59bb9a45d" prot="public" virt="pure-virtual"><scope>endstone::BlockActorState</scope><name>update</name></member>
+      <member refid="classendstone_1_1BlockState_1a4d603b37f4b38df4151ced22c7f78331" prot="public" virt="pure-virtual"><scope>endstone::BlockActorState</scope><name>update</name></member>
+      <member refid="classendstone_1_1BlockState_1a6bb9b025f0e02b8ec732e6a74c27b599" prot="public" virt="pure-virtual"><scope>endstone::BlockActorState</scope><name>update</name></member>
+      <member refid="classendstone_1_1BlockActorState_1a5d1d34029ed49327ea457fddf0dad219" prot="public" virt="non-virtual"><scope>endstone::BlockActorState</scope><name>~BlockActorState</name></member>
+      <member refid="classendstone_1_1BlockState_1a0f5a2bfe6eb4e93737f1cb9f47b54154" prot="public" virt="non-virtual"><scope>endstone::BlockActorState</scope><name>~BlockState</name></member>
+      <member refid="classendstone_1_1Object_1adfddc886af4b1d0e09ddac7d0391b4d2" prot="public" virt="virtual"><scope>endstone::BlockActorState</scope><name>~Object</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

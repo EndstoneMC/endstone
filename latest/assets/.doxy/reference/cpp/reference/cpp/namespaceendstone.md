@@ -67,6 +67,7 @@ _Represents a button with text and an optional icon._
 | class | [**Biome**](classendstone_1_1Biome.md) <br> |
 | class | [**BlastingRecipe**](classendstone_1_1BlastingRecipe.md) <br>_Represents a blasting recipe._  |
 | class | [**Block**](classendstone_1_1Block.md) <br>_Represents a block._  |
+| class | [**BlockActorState**](classendstone_1_1BlockActorState.md) <br>_Represents a captured state of a block entity._  |
 | class | [**BlockBreakEvent**](classendstone_1_1BlockBreakEvent.md) <br>_Called when a block is broken by a player._  |
 | class | [**BlockCommandSender**](classendstone_1_1BlockCommandSender.md) <br>_Represents a block command sender._  |
 | class | [**BlockCookEvent**](classendstone_1_1BlockCookEvent.md) <br>_Called when an_ [_**ItemStack**_](classendstone_1_1ItemStack.md) _is successfully cooked in a block._ |

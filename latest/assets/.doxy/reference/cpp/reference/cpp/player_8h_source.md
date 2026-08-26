@@ -32,6 +32,7 @@
 
 #include "endstone/ability.h"
 #include "endstone/actor/mob.h"
+#include "endstone/block/block_actor_state.h"
 #include "endstone/block/block_data.h"
 #include "endstone/block/sign.h"
 #include "endstone/form/action_form.h"
@@ -79,6 +80,8 @@ public:
     [[nodiscard]] virtual std::optional<Location> getRespawnLocation() const = 0;
 
     virtual void setRespawnLocation(std::optional<Location> location) = 0;
+
+    virtual void sendBlockUpdate(const Location &location, const BlockActorState &block_actor_state) = 0;
 
     virtual void hideActor(Plugin &plugin, Actor &actor) = 0;
 

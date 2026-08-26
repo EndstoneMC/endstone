@@ -3,11 +3,7 @@
   <compounddef id="classendstone_1_1BlockState" kind="class" language="C++" prot="public" abstract="yes">
     <compoundname>endstone::BlockState</compoundname>
     <basecompoundref refid="classendstone_1_1Object" prot="public" virt="non-virtual">endstone::Object</basecompoundref>
-    <derivedcompoundref refid="classendstone_1_1Campfire" prot="public" virt="non-virtual">endstone::Campfire</derivedcompoundref>
-    <derivedcompoundref refid="classendstone_1_1Container" prot="public" virt="non-virtual">endstone::Container</derivedcompoundref>
-    <derivedcompoundref refid="classendstone_1_1CreatureSpawner" prot="public" virt="non-virtual">endstone::CreatureSpawner</derivedcompoundref>
-    <derivedcompoundref refid="classendstone_1_1ItemFrame" prot="public" virt="non-virtual">endstone::ItemFrame</derivedcompoundref>
-    <derivedcompoundref refid="classendstone_1_1Sign" prot="public" virt="non-virtual">endstone::Sign</derivedcompoundref>
+    <derivedcompoundref refid="classendstone_1_1BlockActorState" prot="public" virt="non-virtual">endstone::BlockActorState</derivedcompoundref>
     <includes refid="block__state_8h" local="no">endstone/block/block_state.h</includes>
     <sectiondef kind="public-func">
       <memberdef kind="function" id="classendstone_1_1BlockState_1a0f5a2bfe6eb4e93737f1cb9f47b54154" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
@@ -331,56 +327,62 @@
 <para>Unlike <ref refid="classendstone_1_1Block" kindref="compound">Block</ref>, which only one object can exist per coordinate, <ref refid="classendstone_1_1BlockState" kindref="compound">BlockState</ref> can exist multiple times for any given <ref refid="classendstone_1_1Block" kindref="compound">Block</ref>. Note that another plugin may change the state of the block, and you will not know, or they may change the block to another type entirely, causing your <ref refid="classendstone_1_1BlockState" kindref="compound">BlockState</ref> to become invalid. </para>
     </detaileddescription>
     <inheritancegraph>
+      <node id="3">
+        <label>endstone::BlockActorState</label>
+        <link refid="classendstone_1_1BlockActorState"/>
+        <childnode refid="1" relation="public-inheritance">
+        </childnode>
+      </node>
       <node id="1">
         <label>endstone::BlockState</label>
         <link refid="classendstone_1_1BlockState"/>
         <childnode refid="2" relation="public-inheritance">
         </childnode>
       </node>
-      <node id="3">
+      <node id="4">
         <label>endstone::Campfire</label>
         <link refid="classendstone_1_1Campfire"/>
-        <childnode refid="1" relation="public-inheritance">
-        </childnode>
-      </node>
-      <node id="4">
-        <label>endstone::Container</label>
-        <link refid="classendstone_1_1Container"/>
-        <childnode refid="1" relation="public-inheritance">
-        </childnode>
-      </node>
-      <node id="7">
-        <label>endstone::CreatureSpawner</label>
-        <link refid="classendstone_1_1CreatureSpawner"/>
-        <childnode refid="1" relation="public-inheritance">
+        <childnode refid="3" relation="public-inheritance">
         </childnode>
       </node>
       <node id="5">
-        <label>endstone::Furnace</label>
-        <link refid="classendstone_1_1Furnace"/>
-        <childnode refid="4" relation="public-inheritance">
+        <label>endstone::Container</label>
+        <link refid="classendstone_1_1Container"/>
+        <childnode refid="3" relation="public-inheritance">
         </childnode>
       </node>
       <node id="8">
-        <label>endstone::ItemFrame</label>
-        <link refid="classendstone_1_1ItemFrame"/>
-        <childnode refid="1" relation="public-inheritance">
+        <label>endstone::CreatureSpawner</label>
+        <link refid="classendstone_1_1CreatureSpawner"/>
+        <childnode refid="3" relation="public-inheritance">
         </childnode>
       </node>
       <node id="6">
+        <label>endstone::Furnace</label>
+        <link refid="classendstone_1_1Furnace"/>
+        <childnode refid="5" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="9">
+        <label>endstone::ItemFrame</label>
+        <link refid="classendstone_1_1ItemFrame"/>
+        <childnode refid="3" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="7">
         <label>endstone::Lectern</label>
         <link refid="classendstone_1_1Lectern"/>
-        <childnode refid="4" relation="public-inheritance">
+        <childnode refid="5" relation="public-inheritance">
         </childnode>
       </node>
       <node id="2">
         <label>endstone::Object</label>
         <link refid="classendstone_1_1Object"/>
       </node>
-      <node id="9">
+      <node id="10">
         <label>endstone::Sign</label>
         <link refid="classendstone_1_1Sign"/>
-        <childnode refid="1" relation="public-inheritance">
+        <childnode refid="3" relation="public-inheritance">
         </childnode>
       </node>
     </inheritancegraph>

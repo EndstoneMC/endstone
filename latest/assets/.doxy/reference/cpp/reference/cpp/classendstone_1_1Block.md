@@ -52,7 +52,7 @@ _Represents a block._ [More...](#detailed-description)
 
 | Type | Name |
 | ---: | :--- |
-| virtual [**NotNull**](classendstone_1_1NotNull.md)&lt; [**BlockState**](classendstone_1_1BlockState.md) &gt; | [**captureState**](#function-capturestate) () const = 0<br>_Captures the current state of this block._  |
+| virtual [**NotNull**](classendstone_1_1NotNull.md)&lt; [**BlockState**](classendstone_1_1BlockState.md) &gt; | [**captureState**](#function-capturestate) ([**bool**](classendstone_1_1Identifier.md) use\_snapshot=[**true**](classendstone_1_1Identifier.md)) const = 0<br>_Captures the current state of this block._  |
 | virtual [**const**](classendstone_1_1Identifier.md) [**Biome**](classendstone_1_1Biome.md) & | [**getBiome**](#function-getbiome) () const = 0<br>_Gets the biome that this block resides in._  |
 | virtual [**NotNull**](classendstone_1_1NotNull.md)&lt; [**BlockData**](classendstone_1_1BlockData.md) &gt; | [**getData**](#function-getdata) () const = 0<br>_Gets the complete block data for this block._  |
 | virtual [**NotNull**](classendstone_1_1NotNull.md)&lt; [**Dimension**](classendstone_1_1Dimension.md) &gt; | [**getDimension**](#function-getdimension) () const = 0<br>_Gets the dimension which contains this_ [_**Block**_](classendstone_1_1Block.md) _._ |
@@ -113,13 +113,22 @@ This is a live object, and only one [**Block**](classendstone_1_1Block.md) may e
 
 _Captures the current state of this block._ 
 ```C++
-virtual NotNull < BlockState > endstone::Block::captureState () const = 0
+virtual NotNull < BlockState > endstone::Block::captureState (
+    bool use_snapshot=true
+) const = 0
 ```
 
 
 
 The returned object will never be updated, and you are not guaranteed that (for example) a sign is still a sign after you capture its state.
 
+
+
+
+**Parameters:**
+
+
+* `use_snapshot` Whether a [**BlockActorState**](classendstone_1_1BlockActorState.md) should take an independent snapshot of the block entity. If `false`, the state is backed by the block entity currently residing in the world. A block entity that cannot be copied falls back to the same, so check [**BlockActorState::isSnapshot()**](classendstone_1_1BlockActorState.md#function-issnapshot) to see which was captured. 
 
 
 

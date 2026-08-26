@@ -35,6 +35,7 @@ Here are the classes, structs, unions and interfaces with brief descriptions:
     * **class** [**Biome**](classendstone_1_1Biome.md) 
     * **class** [**BlastingRecipe**](classendstone_1_1BlastingRecipe.md) _Represents a blasting recipe._     
     * **class** [**Block**](classendstone_1_1Block.md) _Represents a block._     
+    * **class** [**BlockActorState**](classendstone_1_1BlockActorState.md) _Represents a captured state of a block entity._     
     * **class** [**BlockBreakEvent**](classendstone_1_1BlockBreakEvent.md) _Called when a block is broken by a player._     
     * **class** [**BlockCommandSender**](classendstone_1_1BlockCommandSender.md) _Represents a block command sender._     
     * **class** [**BlockCookEvent**](classendstone_1_1BlockCookEvent.md) _Called when an_ [_**ItemStack**_](classendstone_1_1ItemStack.md) _is successfully cooked in a block._    

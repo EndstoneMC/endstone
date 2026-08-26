@@ -32,6 +32,7 @@
     <innerclass refid="classendstone_1_1Biome" prot="public">endstone::Biome</innerclass>
     <innerclass refid="classendstone_1_1BlastingRecipe" prot="public">endstone::BlastingRecipe</innerclass>
     <innerclass refid="classendstone_1_1Block" prot="public">endstone::Block</innerclass>
+    <innerclass refid="classendstone_1_1BlockActorState" prot="public">endstone::BlockActorState</innerclass>
     <innerclass refid="classendstone_1_1BlockBreakEvent" prot="public">endstone::BlockBreakEvent</innerclass>
     <innerclass refid="classendstone_1_1BlockCommandSender" prot="public">endstone::BlockCommandSender</innerclass>
     <innerclass refid="classendstone_1_1BlockCookEvent" prot="public">endstone::BlockCookEvent</innerclass>

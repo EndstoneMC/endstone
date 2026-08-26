@@ -285,6 +285,10 @@
          <lastmod>2026-08-26</lastmod>
     </url>
     <url>
+         <loc>https://endstone.dev/latest/reference/cpp/classendstone_1_1BlockActorState/</loc>
+         <lastmod>2026-08-26</lastmod>
+    </url>
+    <url>
          <loc>https://endstone.dev/latest/reference/cpp/classendstone_1_1BlockBreakEvent/</loc>
          <lastmod>2026-08-26</lastmod>
     </url>
@@ -1602,6 +1606,14 @@
     </url>
     <url>
          <loc>https://endstone.dev/latest/reference/cpp/block_8h_source/</loc>
+         <lastmod>2026-08-26</lastmod>
+    </url>
+    <url>
+         <loc>https://endstone.dev/latest/reference/cpp/block__actor__state_8h/</loc>
+         <lastmod>2026-08-26</lastmod>
+    </url>
+    <url>
+         <loc>https://endstone.dev/latest/reference/cpp/block__actor__state_8h_source/</loc>
          <lastmod>2026-08-26</lastmod>
     </url>
     <url>

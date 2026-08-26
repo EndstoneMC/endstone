@@ -10,7 +10,7 @@
 
 
 
-* `#include "endstone/block/block_state.h"`
+* `#include "endstone/block/block_actor_state.h"`
 * `#include "endstone/block/sign/sign_side.h"`
 
 

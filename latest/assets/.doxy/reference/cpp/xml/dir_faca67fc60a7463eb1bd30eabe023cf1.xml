@@ -5,6 +5,7 @@
     <innerdir refid="dir_a49b0d7cd186ac75e821684211f814e0">include/endstone/block/sign</innerdir>
     <innerfile refid="biome_8h">biome.h</innerfile>
     <innerfile refid="block_8h">block.h</innerfile>
+    <innerfile refid="block__actor__state_8h">block_actor_state.h</innerfile>
     <innerfile refid="block__data_8h">block_data.h</innerfile>
     <innerfile refid="block__face_8h">block_face.h</innerfile>
     <innerfile refid="block__state_8h">block_state.h</innerfile>

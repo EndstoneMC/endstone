@@ -77,7 +77,7 @@ public:
 
     [[nodiscard]] virtual Location getLocation() const = 0;
 
-    [[nodiscard]] virtual NotNull<BlockState> captureState() const = 0;
+    [[nodiscard]] virtual NotNull<BlockState> captureState(bool use_snapshot = true) const = 0;
 };
 
 }  // namespace endstone

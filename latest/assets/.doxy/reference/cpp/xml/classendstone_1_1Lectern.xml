@@ -62,9 +62,15 @@
     </detaileddescription>
     <inheritancegraph>
       <node id="3">
+        <label>endstone::BlockActorState</label>
+        <link refid="classendstone_1_1BlockActorState"/>
+        <childnode refid="4" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="4">
         <label>endstone::BlockState</label>
         <link refid="classendstone_1_1BlockState"/>
-        <childnode refid="4" relation="public-inheritance">
+        <childnode refid="5" relation="public-inheritance">
         </childnode>
       </node>
       <node id="2">
@@ -79,16 +85,22 @@
         <childnode refid="2" relation="public-inheritance">
         </childnode>
       </node>
-      <node id="4">
+      <node id="5">
         <label>endstone::Object</label>
         <link refid="classendstone_1_1Object"/>
       </node>
     </inheritancegraph>
     <collaborationgraph>
       <node id="3">
+        <label>endstone::BlockActorState</label>
+        <link refid="classendstone_1_1BlockActorState"/>
+        <childnode refid="4" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="4">
         <label>endstone::BlockState</label>
         <link refid="classendstone_1_1BlockState"/>
-        <childnode refid="4" relation="public-inheritance">
+        <childnode refid="5" relation="public-inheritance">
         </childnode>
       </node>
       <node id="2">
@@ -103,7 +115,7 @@
         <childnode refid="2" relation="public-inheritance">
         </childnode>
       </node>
-      <node id="4">
+      <node id="5">
         <label>endstone::Object</label>
         <link refid="classendstone_1_1Object"/>
       </node>
@@ -125,12 +137,14 @@
       <member refid="classendstone_1_1BlockState_1a1d4ccdc3539f2d549ef3d98393bb89af" prot="public" virt="pure-virtual"><scope>endstone::Lectern</scope><name>getZ</name></member>
       <member refid="classendstone_1_1Object_1ae8213ae15ad1b14e4631399c6b18960a" prot="public" virt="non-virtual"><scope>endstone::Lectern</scope><name>is</name></member>
       <member refid="classendstone_1_1Object_1a1f8951c4894c2b8288fd4ef500218771" prot="public" virt="pure-virtual"><scope>endstone::Lectern</scope><name>isInstanceOf</name></member>
+      <member refid="classendstone_1_1BlockActorState_1a794f413bc733ce889faa19fe68da454f" prot="public" virt="pure-virtual"><scope>endstone::Lectern</scope><name>isSnapshot</name></member>
       <member refid="classendstone_1_1BlockState_1ac85e292da7159b3835cc3919e68c08c7" prot="public" virt="pure-virtual"><scope>endstone::Lectern</scope><name>setData</name></member>
       <member refid="classendstone_1_1Lectern_1aae72972a0c33053c339e4eb9f486044a" prot="public" virt="pure-virtual"><scope>endstone::Lectern</scope><name>setPage</name></member>
       <member refid="classendstone_1_1BlockState_1adf633410dbefd527bd7a7e423223de02" prot="public" virt="pure-virtual"><scope>endstone::Lectern</scope><name>setType</name></member>
       <member refid="classendstone_1_1BlockState_1aeaca92e63b3fa7bf37eb82e59bb9a45d" prot="public" virt="pure-virtual"><scope>endstone::Lectern</scope><name>update</name></member>
       <member refid="classendstone_1_1BlockState_1a4d603b37f4b38df4151ced22c7f78331" prot="public" virt="pure-virtual"><scope>endstone::Lectern</scope><name>update</name></member>
       <member refid="classendstone_1_1BlockState_1a6bb9b025f0e02b8ec732e6a74c27b599" prot="public" virt="pure-virtual"><scope>endstone::Lectern</scope><name>update</name></member>
+      <member refid="classendstone_1_1BlockActorState_1a5d1d34029ed49327ea457fddf0dad219" prot="public" virt="non-virtual"><scope>endstone::Lectern</scope><name>~BlockActorState</name></member>
       <member refid="classendstone_1_1BlockState_1a0f5a2bfe6eb4e93737f1cb9f47b54154" prot="public" virt="non-virtual"><scope>endstone::Lectern</scope><name>~BlockState</name></member>
       <member refid="classendstone_1_1Object_1adfddc886af4b1d0e09ddac7d0391b4d2" prot="public" virt="virtual"><scope>endstone::Lectern</scope><name>~Object</name></member>
     </listofallmembers>

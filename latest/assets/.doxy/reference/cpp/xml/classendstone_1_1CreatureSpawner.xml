@@ -2,7 +2,7 @@
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.8" xml:lang="en-US">
   <compounddef id="classendstone_1_1CreatureSpawner" kind="class" language="C++" prot="public" abstract="yes">
     <compoundname>endstone::CreatureSpawner</compoundname>
-    <basecompoundref refid="classendstone_1_1BlockState" prot="public" virt="non-virtual">endstone::BlockState</basecompoundref>
+    <basecompoundref refid="classendstone_1_1BlockActorState" prot="public" virt="non-virtual">endstone::BlockActorState</basecompoundref>
     <includes refid="creature__spawner_8h" local="no">endstone/block/creature_spawner.h</includes>
     <sectiondef kind="public-func">
       <memberdef kind="function" id="classendstone_1_1CreatureSpawner_1a955b85a4b4427806286ebefb7ec4b103" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
@@ -389,9 +389,15 @@
     </detaileddescription>
     <inheritancegraph>
       <node id="2">
+        <label>endstone::BlockActorState</label>
+        <link refid="classendstone_1_1BlockActorState"/>
+        <childnode refid="3" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="3">
         <label>endstone::BlockState</label>
         <link refid="classendstone_1_1BlockState"/>
-        <childnode refid="3" relation="public-inheritance">
+        <childnode refid="4" relation="public-inheritance">
         </childnode>
       </node>
       <node id="1">
@@ -400,16 +406,22 @@
         <childnode refid="2" relation="public-inheritance">
         </childnode>
       </node>
-      <node id="3">
+      <node id="4">
         <label>endstone::Object</label>
         <link refid="classendstone_1_1Object"/>
       </node>
     </inheritancegraph>
     <collaborationgraph>
       <node id="2">
+        <label>endstone::BlockActorState</label>
+        <link refid="classendstone_1_1BlockActorState"/>
+        <childnode refid="3" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="3">
         <label>endstone::BlockState</label>
         <link refid="classendstone_1_1BlockState"/>
-        <childnode refid="3" relation="public-inheritance">
+        <childnode refid="4" relation="public-inheritance">
         </childnode>
       </node>
       <node id="1">
@@ -418,7 +430,7 @@
         <childnode refid="2" relation="public-inheritance">
         </childnode>
       </node>
-      <node id="3">
+      <node id="4">
         <label>endstone::Object</label>
         <link refid="classendstone_1_1Object"/>
       </node>
@@ -446,6 +458,7 @@
       <member refid="classendstone_1_1BlockState_1a1d4ccdc3539f2d549ef3d98393bb89af" prot="public" virt="pure-virtual"><scope>endstone::CreatureSpawner</scope><name>getZ</name></member>
       <member refid="classendstone_1_1Object_1ae8213ae15ad1b14e4631399c6b18960a" prot="public" virt="non-virtual"><scope>endstone::CreatureSpawner</scope><name>is</name></member>
       <member refid="classendstone_1_1Object_1a1f8951c4894c2b8288fd4ef500218771" prot="public" virt="pure-virtual"><scope>endstone::CreatureSpawner</scope><name>isInstanceOf</name></member>
+      <member refid="classendstone_1_1BlockActorState_1a794f413bc733ce889faa19fe68da454f" prot="public" virt="pure-virtual"><scope>endstone::CreatureSpawner</scope><name>isSnapshot</name></member>
       <member refid="classendstone_1_1BlockState_1ac85e292da7159b3835cc3919e68c08c7" prot="public" virt="pure-virtual"><scope>endstone::CreatureSpawner</scope><name>setData</name></member>
       <member refid="classendstone_1_1CreatureSpawner_1abe1c50824642bb4d357040df56fc4047" prot="public" virt="pure-virtual"><scope>endstone::CreatureSpawner</scope><name>setDelay</name></member>
       <member refid="classendstone_1_1CreatureSpawner_1a457464b53d1d59971ceaafc5e6a00f4c" prot="public" virt="pure-virtual"><scope>endstone::CreatureSpawner</scope><name>setMaxNearbyEntities</name></member>
@@ -459,6 +472,7 @@
       <member refid="classendstone_1_1BlockState_1aeaca92e63b3fa7bf37eb82e59bb9a45d" prot="public" virt="pure-virtual"><scope>endstone::CreatureSpawner</scope><name>update</name></member>
       <member refid="classendstone_1_1BlockState_1a4d603b37f4b38df4151ced22c7f78331" prot="public" virt="pure-virtual"><scope>endstone::CreatureSpawner</scope><name>update</name></member>
       <member refid="classendstone_1_1BlockState_1a6bb9b025f0e02b8ec732e6a74c27b599" prot="public" virt="pure-virtual"><scope>endstone::CreatureSpawner</scope><name>update</name></member>
+      <member refid="classendstone_1_1BlockActorState_1a5d1d34029ed49327ea457fddf0dad219" prot="public" virt="non-virtual"><scope>endstone::CreatureSpawner</scope><name>~BlockActorState</name></member>
       <member refid="classendstone_1_1BlockState_1a0f5a2bfe6eb4e93737f1cb9f47b54154" prot="public" virt="non-virtual"><scope>endstone::CreatureSpawner</scope><name>~BlockState</name></member>
       <member refid="classendstone_1_1Object_1adfddc886af4b1d0e09ddac7d0391b4d2" prot="public" virt="virtual"><scope>endstone::CreatureSpawner</scope><name>~Object</name></member>
     </listofallmembers>

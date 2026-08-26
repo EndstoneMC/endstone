@@ -11,7 +11,7 @@
 
 
 * `#include "endstone/actor/actor_type.h"`
-* `#include "endstone/block/block_state.h"`
+* `#include "endstone/block/block_actor_state.h"`
 
 
 

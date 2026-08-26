@@ -5574,10 +5574,12 @@ and this project adheres to <a href="https://semver.org/spec/v2.0.0.html">Semant
 <li><code>Mob.is_swimming</code> and <code>Player.is_crawling</code>.</li>
 <li><code>Player.send_action_bar()</code> for sending a message above the hotbar.</li>
 <li><code>Player.respawn_location</code> for reading and writing where a player will respawn, or <code>None</code> when they have no valid respawn point. Bedrock does not persist yaw/pitch for a respawn point, so only the block coordinates and the dimension are kept.</li>
+<li><code>Player.send_block_update()</code> for showing a block entity state to one player at a location, without changing the world for anybody else.</li>
 <li><code>Player.open_sign()</code> and <code>Player.open_virtual_sign()</code> for opening a sign editor on a player's client. <code>open_sign()</code> takes a sign placed in the player's own dimension, reopens one the player is already editing, and fires <code>PlayerOpenSignEvent</code>; <code>open_virtual_sign()</code> opens the editor at any block position, with no sign required in the dimension, and fires nothing.</li>
 </ul>
 <h4 id="blocks">Blocks<a class="headerlink" href="#blocks" title="Permanent link">&para;</a></h4>
 <ul>
+<li><code>BlockActorState</code> block state, the common base of <code>Container</code>, <code>Campfire</code>, <code>CreatureSpawner</code>, <code>ItemFrame</code> and <code>Sign</code>, with <code>is_snapshot</code> telling whether the state holds its own copy of the block entity or the one in the world. <code>Block.capture_state()</code> picks between them: the default gives a snapshot, <code>capture_state(use_snapshot=False)</code> gives a state that writes straight through. A persistent data container is not available on it yet.</li>
 <li><code>Container</code> block state for chests, barrels, hoppers, dispensers, droppers, shulker boxes and furnaces, exposing <code>container.inventory</code>.</li>
 <li><code>Furnace</code> block state for furnaces, blast furnaces and smokers, extending <code>Container</code>.</li>
 <li><code>Lectern</code> block state with the displayed <code>page</code>, extending <code>Container</code>.</li>
@@ -5635,6 +5637,7 @@ and this project adheres to <a href="https://semver.org/spec/v2.0.0.html">Semant
 <h4 id="networking">Networking<a class="headerlink" href="#networking" title="Permanent link">&para;</a></h4>
 <ul>
 <li>Packet compression now uses libdeflate instead of zlib, which should improve performance on busy servers.</li>
+<li><strong>BREAKING</strong>: The server no longer listens on IPv6 by default. BDS exits when it cannot bind the IPv6 game port, which many hosts and containers cannot provide. Set <code>network.ipv6</code> to <code>true</code> in <code>endstone.toml</code> to get it back; <code>server-portv6</code> in <code>server.properties</code> still chooses the port.</li>
 </ul>
 <h4 id="json-payloads">JSON payloads<a class="headerlink" href="#json-payloads" title="Permanent link">&para;</a></h4>
 <ul>
@@ -5669,6 +5672,7 @@ and this project adheres to <a href="https://semver.org/spec/v2.0.0.html">Semant
 <li><strong>BREAKING</strong>: <code>Player</code> no longer inherits from <code>OfflinePlayer</code>.</li>
 <li><strong>BREAKING</strong>: <code>Block.type</code>, <code>BlockState.type</code> and <code>BlockData.type</code> return a <code>BlockType</code> instead of a string. It still compares equal to its <code>"namespace:key"</code> string and stringifies to it, but is no longer a <code>str</code>.</li>
 <li><strong>BREAKING</strong>: <code>BlockPlaceEvent.block</code> returns the placed block instead of the replaced block, and <code>block_placed_state</code>/<code>block_replaced</code> are renamed to <code>block_placed</code>/<code>block_replaced_state</code>.</li>
+<li><strong>BREAKING</strong>: <code>Block.capture_state()</code> now captures a snapshot, matching Bukkit. Edits to the state are kept in the snapshot and only reach the world when <code>update()</code> is called. Code that sets a sign's lines and never calls <code>update()</code> still compiles and now does nothing; add the <code>update()</code> call, or capture with <code>capture_state(use_snapshot=False)</code> to keep writing straight through to the block entity.</li>
 <li><strong>BREAKING</strong>: <code>ActorExplodeEvent.block_list</code> and <code>BlockExplodeEvent.block_list</code> hand back a live <code>BlockList</code> instead of a copy, so <code>remove()</code>, <code>append()</code>, <code>pop()</code> and <code>del</code> change what actually explodes. <code>remove()</code> matches on handle identity.</li>
 <li><strong>BREAKING</strong>: <code>BroadcastMessageEvent.recipients</code> is a set of handles.</li>
 <li><strong>BREAKING</strong>: <code>ActorDeathEvent</code> is now called for player deaths as well as every other mob. A listener that assumed it only saw non-player mobs should check <code>actor.type</code> or listen for <code>PlayerDeathEvent</code>.</li>
