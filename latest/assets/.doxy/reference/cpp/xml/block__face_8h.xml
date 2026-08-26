@@ -12,21 +12,21 @@
         <link refid="block_8h_source"/>
         <childnode refid="3" relation="include">
         </childnode>
-        <childnode refid="63" relation="include">
-        </childnode>
         <childnode refid="64" relation="include">
         </childnode>
         <childnode refid="65" relation="include">
         </childnode>
         <childnode refid="66" relation="include">
         </childnode>
-        <childnode refid="69" relation="include">
+        <childnode refid="67" relation="include">
+        </childnode>
+        <childnode refid="70" relation="include">
         </childnode>
         <childnode refid="20" relation="include">
         </childnode>
         <childnode refid="21" relation="include">
         </childnode>
-        <childnode refid="77" relation="include">
+        <childnode refid="78" relation="include">
         </childnode>
       </node>
       <node id="1">
@@ -34,7 +34,7 @@
         <link refid="block__face_8h"/>
         <childnode refid="2" relation="include">
         </childnode>
-        <childnode refid="73" relation="include">
+        <childnode refid="74" relation="include">
         </childnode>
         <childnode refid="23" relation="include">
         </childnode>
@@ -55,6 +55,8 @@
         <childnode refid="10" relation="include">
         </childnode>
         <childnode refid="13" relation="include">
+        </childnode>
+        <childnode refid="63" relation="include">
         </childnode>
       </node>
       <node id="4">
@@ -93,15 +95,15 @@
         <childnode refid="12" relation="include">
         </childnode>
       </node>
-      <node id="63">
+      <node id="64">
         <label>include/endstone/command/block_command_sender.h</label>
         <link refid="block__command__sender_8h_source"/>
       </node>
-      <node id="64">
+      <node id="65">
         <label>include/endstone/event/actor/actor_change_block_event.h</label>
         <link refid="actor__change__block__event_8h_source"/>
       </node>
-      <node id="65">
+      <node id="66">
         <label>include/endstone/event/actor/actor_explode_event.h</label>
         <link refid="actor__explode__event_8h_source"/>
       </node>
@@ -109,19 +111,17 @@
         <label>include/endstone/event/actor/player_death_event.h</label>
         <link refid="player__death__event_8h_source"/>
       </node>
-      <node id="67">
+      <node id="68">
         <label>include/endstone/event/block/block_break_event.h</label>
         <link refid="block__break__event_8h_source"/>
       </node>
-      <node id="68">
+      <node id="69">
         <label>include/endstone/event/block/block_cook_event.h</label>
         <link refid="block__cook__event_8h_source"/>
       </node>
-      <node id="66">
+      <node id="67">
         <label>include/endstone/event/block/block_event.h</label>
         <link refid="block__event_8h_source"/>
-        <childnode refid="67" relation="include">
-        </childnode>
         <childnode refid="68" relation="include">
         </childnode>
         <childnode refid="69" relation="include">
@@ -130,44 +130,48 @@
         </childnode>
         <childnode refid="71" relation="include">
         </childnode>
-        <childnode refid="73" relation="include">
+        <childnode refid="72" relation="include">
+        </childnode>
+        <childnode refid="74" relation="include">
         </childnode>
         <childnode refid="13" relation="include">
+        </childnode>
+        <childnode refid="63" relation="include">
+        </childnode>
+        <childnode refid="77" relation="include">
+        </childnode>
+      </node>
+      <node id="70">
+        <label>include/endstone/event/block/block_explode_event.h</label>
+        <link refid="block__explode__event_8h_source"/>
+      </node>
+      <node id="73">
+        <label>include/endstone/event/block/block_form_event.h</label>
+        <link refid="block__form__event_8h_source"/>
+      </node>
+      <node id="71">
+        <label>include/endstone/event/block/block_from_to_event.h</label>
+        <link refid="block__from__to__event_8h_source"/>
+      </node>
+      <node id="72">
+        <label>include/endstone/event/block/block_grow_event.h</label>
+        <link refid="block__grow__event_8h_source"/>
+        <childnode refid="73" relation="include">
+        </childnode>
+      </node>
+      <node id="74">
+        <label>include/endstone/event/block/block_piston_event.h</label>
+        <link refid="block__piston__event_8h_source"/>
+        <childnode refid="75" relation="include">
         </childnode>
         <childnode refid="76" relation="include">
         </childnode>
       </node>
-      <node id="69">
-        <label>include/endstone/event/block/block_explode_event.h</label>
-        <link refid="block__explode__event_8h_source"/>
-      </node>
-      <node id="72">
-        <label>include/endstone/event/block/block_form_event.h</label>
-        <link refid="block__form__event_8h_source"/>
-      </node>
-      <node id="70">
-        <label>include/endstone/event/block/block_from_to_event.h</label>
-        <link refid="block__from__to__event_8h_source"/>
-      </node>
-      <node id="71">
-        <label>include/endstone/event/block/block_grow_event.h</label>
-        <link refid="block__grow__event_8h_source"/>
-        <childnode refid="72" relation="include">
-        </childnode>
-      </node>
-      <node id="73">
-        <label>include/endstone/event/block/block_piston_event.h</label>
-        <link refid="block__piston__event_8h_source"/>
-        <childnode refid="74" relation="include">
-        </childnode>
-        <childnode refid="75" relation="include">
-        </childnode>
-      </node>
-      <node id="74">
+      <node id="75">
         <label>include/endstone/event/block/block_piston_extend_event.h</label>
         <link refid="block__piston__extend__event_8h_source"/>
       </node>
-      <node id="75">
+      <node id="76">
         <label>include/endstone/event/block/block_piston_retract_event.h</label>
         <link refid="block__piston__retract__event_8h_source"/>
       </node>
@@ -175,23 +179,27 @@
         <label>include/endstone/event/block/block_place_event.h</label>
         <link refid="block__place__event_8h_source"/>
       </node>
-      <node id="76">
+      <node id="63">
+        <label>include/endstone/event/block/cauldron_level_change_event.h</label>
+        <link refid="cauldron__level__change__event_8h_source"/>
+      </node>
+      <node id="77">
         <label>include/endstone/event/block/leaves_decay_event.h</label>
         <link refid="leaves__decay__event_8h_source"/>
       </node>
-      <node id="79">
+      <node id="80">
         <label>include/endstone/event/chunk/chunk_event.h</label>
         <link refid="chunk__event_8h_source"/>
-        <childnode refid="80" relation="include">
-        </childnode>
         <childnode refid="81" relation="include">
         </childnode>
+        <childnode refid="82" relation="include">
+        </childnode>
       </node>
-      <node id="80">
+      <node id="81">
         <label>include/endstone/event/chunk/chunk_load_event.h</label>
         <link refid="chunk__load__event_8h_source"/>
       </node>
-      <node id="81">
+      <node id="82">
         <label>include/endstone/event/chunk/chunk_unload_event.h</label>
         <link refid="chunk__unload__event_8h_source"/>
       </node>
@@ -207,22 +215,22 @@
         <label>include/endstone/event/inventory/inventory_open_event.h</label>
         <link refid="inventory__open__event_8h_source"/>
       </node>
-      <node id="78">
+      <node id="79">
         <label>include/endstone/event/level/dimension_event.h</label>
         <link refid="dimension__event_8h_source"/>
-        <childnode refid="79" relation="include">
+        <childnode refid="80" relation="include">
         </childnode>
-        <childnode refid="82" relation="include">
+        <childnode refid="83" relation="include">
         </childnode>
       </node>
-      <node id="82">
+      <node id="83">
         <label>include/endstone/event/level/dimension_load_event.h</label>
         <link refid="dimension__load__event_8h_source"/>
       </node>
-      <node id="84">
+      <node id="85">
         <label>include/endstone/event/level/level_event.h</label>
         <link refid="level__event_8h_source"/>
-        <childnode refid="78" relation="include">
+        <childnode refid="79" relation="include">
         </childnode>
       </node>
       <node id="19">
@@ -501,36 +509,36 @@
         <label>include/endstone/event/player/player_toggle_sprint_event.h</label>
         <link refid="player__toggle__sprint__event_8h_source"/>
       </node>
-      <node id="86">
+      <node id="87">
         <label>include/endstone/event/weather/thunder_change_event.h</label>
         <link refid="thunder__change__event_8h_source"/>
       </node>
-      <node id="87">
+      <node id="88">
         <label>include/endstone/event/weather/weather_change_event.h</label>
         <link refid="weather__change__event_8h_source"/>
       </node>
-      <node id="85">
+      <node id="86">
         <label>include/endstone/event/weather/weather_event.h</label>
         <link refid="weather__event_8h_source"/>
-        <childnode refid="86" relation="include">
-        </childnode>
         <childnode refid="87" relation="include">
         </childnode>
+        <childnode refid="88" relation="include">
+        </childnode>
       </node>
-      <node id="77">
+      <node id="78">
         <label>include/endstone/level/dimension.h</label>
         <link refid="dimension_8h_source"/>
-        <childnode refid="78" relation="include">
+        <childnode refid="79" relation="include">
         </childnode>
-        <childnode refid="83" relation="include">
-        </childnode>
-      </node>
-      <node id="83">
-        <label>include/endstone/level/level.h</label>
-        <link refid="level_8h_source"/>
         <childnode refid="84" relation="include">
         </childnode>
+      </node>
+      <node id="84">
+        <label>include/endstone/level/level.h</label>
+        <link refid="level_8h_source"/>
         <childnode refid="85" relation="include">
+        </childnode>
+        <childnode refid="86" relation="include">
         </childnode>
       </node>
       <node id="12">

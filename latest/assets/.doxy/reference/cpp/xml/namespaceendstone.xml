@@ -52,6 +52,7 @@
     <innerclass refid="classendstone_1_1Button" prot="public">endstone::Button</innerclass>
     <innerclass refid="classendstone_1_1Campfire" prot="public">endstone::Campfire</innerclass>
     <innerclass refid="classendstone_1_1Cancellable" prot="public">endstone::Cancellable</innerclass>
+    <innerclass refid="classendstone_1_1CauldronLevelChangeEvent" prot="public">endstone::CauldronLevelChangeEvent</innerclass>
     <innerclass refid="classendstone_1_1Chunk" prot="public">endstone::Chunk</innerclass>
     <innerclass refid="classendstone_1_1ChunkEvent" prot="public">endstone::ChunkEvent</innerclass>
     <innerclass refid="classendstone_1_1ChunkLoadEvent" prot="public">endstone::ChunkLoadEvent</innerclass>

@@ -99,6 +99,7 @@ Here is a list of all files with brief descriptions:
                 * **file** [**block\_piston\_extend\_event.h**](block__piston__extend__event_8h.md)     
                 * **file** [**block\_piston\_retract\_event.h**](block__piston__retract__event_8h.md)     
                 * **file** [**block\_place\_event.h**](block__place__event_8h.md)     
+                * **file** [**cauldron\_level\_change\_event.h**](cauldron__level__change__event_8h.md)     
                 * **file** [**leaves\_decay\_event.h**](leaves__decay__event_8h.md)     
             * **dir** [**chunk**](dir_7eabd153c13720ffd29490c98a6f4dde.md)     
                 * **file** [**chunk\_event.h**](chunk__event_8h.md)     

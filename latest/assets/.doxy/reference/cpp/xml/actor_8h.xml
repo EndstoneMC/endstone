@@ -14,6 +14,7 @@
     <includedby refid="damage__source_8h" local="yes">include/endstone/damage/damage_source.h</includedby>
     <includedby refid="actor__collide__with__actor__event_8h" local="yes">include/endstone/event/actor/actor_collide_with_actor_event.h</includedby>
     <includedby refid="actor__event_8h" local="yes">include/endstone/event/actor/actor_event.h</includedby>
+    <includedby refid="cauldron__level__change__event_8h" local="yes">include/endstone/event/block/cauldron_level_change_event.h</includedby>
     <includedby refid="server__event_8h" local="yes">include/endstone/event/server/server_event.h</includedby>
     <includedby refid="chunk_8h" local="yes">include/endstone/level/chunk.h</includedby>
     <includedby refid="dimension_8h" local="yes">include/endstone/level/dimension.h</includedby>
@@ -780,7 +781,9 @@
         </childnode>
         <childnode refid="83" relation="include">
         </childnode>
-        <childnode refid="95" relation="include">
+        <childnode refid="84" relation="include">
+        </childnode>
+        <childnode refid="96" relation="include">
         </childnode>
         <childnode refid="5" relation="include">
         </childnode>
@@ -916,6 +919,10 @@
       <node id="24">
         <label>include/endstone/event/block/block_place_event.h</label>
         <link refid="block__place__event_8h_source"/>
+      </node>
+      <node id="83">
+        <label>include/endstone/event/block/cauldron_level_change_event.h</label>
+        <link refid="cauldron__level__change__event_8h_source"/>
       </node>
       <node id="7">
         <label>include/endstone/event/chunk/chunk_event.h</label>
@@ -1239,47 +1246,45 @@
         <label>include/endstone/event/player/player_toggle_sprint_event.h</label>
         <link refid="player__toggle__sprint__event_8h_source"/>
       </node>
-      <node id="84">
+      <node id="85">
         <label>include/endstone/event/server/broadcast_message_event.h</label>
         <link refid="broadcast__message__event_8h_source"/>
       </node>
-      <node id="85">
+      <node id="86">
         <label>include/endstone/event/server/map_initialize_event.h</label>
         <link refid="map__initialize__event_8h_source"/>
       </node>
-      <node id="86">
+      <node id="87">
         <label>include/endstone/event/server/packet_receive_event.h</label>
         <link refid="packet__receive__event_8h_source"/>
       </node>
-      <node id="87">
+      <node id="88">
         <label>include/endstone/event/server/packet_send_event.h</label>
         <link refid="packet__send__event_8h_source"/>
       </node>
-      <node id="88">
+      <node id="89">
         <label>include/endstone/event/server/plugin_disable_event.h</label>
         <link refid="plugin__disable__event_8h_source"/>
-        <childnode refid="89" relation="include">
-        </childnode>
-      </node>
-      <node id="90">
-        <label>include/endstone/event/server/plugin_enable_event.h</label>
-        <link refid="plugin__enable__event_8h_source"/>
-        <childnode refid="89" relation="include">
+        <childnode refid="90" relation="include">
         </childnode>
       </node>
       <node id="91">
+        <label>include/endstone/event/server/plugin_enable_event.h</label>
+        <link refid="plugin__enable__event_8h_source"/>
+        <childnode refid="90" relation="include">
+        </childnode>
+      </node>
+      <node id="92">
         <label>include/endstone/event/server/script_message_event.h</label>
         <link refid="script__message__event_8h_source"/>
       </node>
-      <node id="92">
+      <node id="93">
         <label>include/endstone/event/server/server_command_event.h</label>
         <link refid="server__command__event_8h_source"/>
       </node>
-      <node id="83">
+      <node id="84">
         <label>include/endstone/event/server/server_event.h</label>
         <link refid="server__event_8h_source"/>
-        <childnode refid="84" relation="include">
-        </childnode>
         <childnode refid="85" relation="include">
         </childnode>
         <childnode refid="86" relation="include">
@@ -1288,7 +1293,7 @@
         </childnode>
         <childnode refid="88" relation="include">
         </childnode>
-        <childnode refid="90" relation="include">
+        <childnode refid="89" relation="include">
         </childnode>
         <childnode refid="91" relation="include">
         </childnode>
@@ -1298,12 +1303,14 @@
         </childnode>
         <childnode refid="94" relation="include">
         </childnode>
+        <childnode refid="95" relation="include">
+        </childnode>
       </node>
-      <node id="93">
+      <node id="94">
         <label>include/endstone/event/server/server_list_ping_event.h</label>
         <link refid="server__list__ping__event_8h_source"/>
       </node>
-      <node id="94">
+      <node id="95">
         <label>include/endstone/event/server/server_load_event.h</label>
         <link refid="server__load__event_8h_source"/>
       </node>
@@ -1323,7 +1330,7 @@
         <childnode refid="15" relation="include">
         </childnode>
       </node>
-      <node id="95">
+      <node id="96">
         <label>include/endstone/level/chunk.h</label>
         <link refid="chunk_8h_source"/>
         <childnode refid="7" relation="include">
@@ -1361,7 +1368,7 @@
         <childnode refid="28" relation="include">
         </childnode>
       </node>
-      <node id="89">
+      <node id="90">
         <label>include/endstone/plugin/plugin_loader.h</label>
         <link refid="plugin__loader_8h_source"/>
       </node>

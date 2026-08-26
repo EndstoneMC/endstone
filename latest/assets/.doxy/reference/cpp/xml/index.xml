@@ -645,6 +645,28 @@
     <member refid="classendstone_1_1Cancellable_1a3512b47db69c6001f5c0450051308327" kind="function"><name>cancel</name></member>
     <member refid="classendstone_1_1Cancellable_1abd816b263a239cdacef9ca3b9c549418" kind="function"><name>isCancellable</name></member>
   </compound>
+  <compound refid="classendstone_1_1CauldronLevelChangeEvent" kind="class"><name>endstone::CauldronLevelChangeEvent</name>
+    <member refid="classendstone_1_1CauldronLevelChangeEvent_1a198e1583991585f5936b23adfe459f42" kind="enum"><name>ChangeReason</name></member>
+    <member refid="classendstone_1_1CauldronLevelChangeEvent_1a198e1583991585f5936b23adfe459f42a8fb46445062c9b265e0b71c56dd922b3" kind="enumvalue"><name>BucketFill</name></member>
+    <member refid="classendstone_1_1CauldronLevelChangeEvent_1a198e1583991585f5936b23adfe459f42a8e8bb9a806b0e693db3e7fa4e1767aaf" kind="enumvalue"><name>BucketEmpty</name></member>
+    <member refid="classendstone_1_1CauldronLevelChangeEvent_1a198e1583991585f5936b23adfe459f42a16559bce9dd1eeb850a2cca551635004" kind="enumvalue"><name>BottleFill</name></member>
+    <member refid="classendstone_1_1CauldronLevelChangeEvent_1a198e1583991585f5936b23adfe459f42a497756b86198a5f02acdabfa4b768bda" kind="enumvalue"><name>BottleEmpty</name></member>
+    <member refid="classendstone_1_1CauldronLevelChangeEvent_1a198e1583991585f5936b23adfe459f42afb3f9c3b9530d4bac93bd2bf9b19502c" kind="enumvalue"><name>BannerWash</name></member>
+    <member refid="classendstone_1_1CauldronLevelChangeEvent_1a198e1583991585f5936b23adfe459f42a53fc0f6ab9a601647d38acbef78afa47" kind="enumvalue"><name>ArmorWash</name></member>
+    <member refid="classendstone_1_1CauldronLevelChangeEvent_1a198e1583991585f5936b23adfe459f42a8f90c46badacdec43715621913107647" kind="enumvalue"><name>ShulkerWash</name></member>
+    <member refid="classendstone_1_1CauldronLevelChangeEvent_1a198e1583991585f5936b23adfe459f42aed488e704ab03a1e1874dea70c065444" kind="enumvalue"><name>Extinguish</name></member>
+    <member refid="classendstone_1_1CauldronLevelChangeEvent_1a198e1583991585f5936b23adfe459f42a79996eb434ca89cc4fa1923b110c1b23" kind="enumvalue"><name>Evaporate</name></member>
+    <member refid="classendstone_1_1CauldronLevelChangeEvent_1a198e1583991585f5936b23adfe459f42ac6990b57318a326682fb89726c17edfc" kind="enumvalue"><name>NaturalFill</name></member>
+    <member refid="classendstone_1_1CauldronLevelChangeEvent_1a198e1583991585f5936b23adfe459f42a88183b946cc5f0e8c96b2e66e1c74a7e" kind="enumvalue"><name>Unknown</name></member>
+    <member refid="classendstone_1_1CauldronLevelChangeEvent_1ab776a0c512c1777caafaaca59dfbc73e" kind="variable"><name>actor_</name></member>
+    <member refid="classendstone_1_1CauldronLevelChangeEvent_1aafd130725417f20fcffe2d330206933d" kind="variable"><name>reason_</name></member>
+    <member refid="classendstone_1_1CauldronLevelChangeEvent_1a9ba86b332ecb7f1533ec962dd6b031f2" kind="variable"><name>new_state_</name></member>
+    <member refid="classendstone_1_1CauldronLevelChangeEvent_1a63bf3d46eba9fc82960739526b757d6b" kind="function"><name>ENDSTONE_EVENT</name></member>
+    <member refid="classendstone_1_1CauldronLevelChangeEvent_1a55847a49d0ffa4e27eb7ec57ddf83eda" kind="function"><name>CauldronLevelChangeEvent</name></member>
+    <member refid="classendstone_1_1CauldronLevelChangeEvent_1a5fac52b6f55e2ec9bf623057b5a3f1b2" kind="function"><name>getActor</name></member>
+    <member refid="classendstone_1_1CauldronLevelChangeEvent_1a0aa725edeb7f9b16fc285d71e02bb37c" kind="function"><name>getReason</name></member>
+    <member refid="classendstone_1_1CauldronLevelChangeEvent_1a8a06f658996f088527eb3aadb0b4a0a7" kind="function"><name>getNewState</name></member>
+  </compound>
   <compound refid="classendstone_1_1Chunk" kind="class"><name>endstone::Chunk</name>
     <member refid="classendstone_1_1Chunk_1ac9753b865a92b8ce919a9a71d82b61d7" kind="function"><name>~Chunk</name></member>
     <member refid="classendstone_1_1Chunk_1a8f8d55f6c6a9a27772da990c6aa533b1" kind="function"><name>getX</name></member>
@@ -3717,6 +3739,8 @@
   <compound refid="block__piston__retract__event_8h" kind="file"><name>block_piston_retract_event.h</name>
   </compound>
   <compound refid="block__place__event_8h" kind="file"><name>block_place_event.h</name>
+  </compound>
+  <compound refid="cauldron__level__change__event_8h" kind="file"><name>cauldron_level_change_event.h</name>
   </compound>
   <compound refid="leaves__decay__event_8h" kind="file"><name>leaves_decay_event.h</name>
   </compound>

@@ -137,11 +137,17 @@
         <childnode refid="3" relation="public-inheritance">
         </childnode>
       </node>
+      <node id="14">
+        <label>endstone::CauldronLevelChangeEvent</label>
+        <link refid="classendstone_1_1CauldronLevelChangeEvent"/>
+        <childnode refid="3" relation="public-inheritance">
+        </childnode>
+      </node>
       <node id="2">
         <label>endstone::Event</label>
         <link refid="classendstone_1_1Event"/>
       </node>
-      <node id="14">
+      <node id="15">
         <label>endstone::LeavesDecayEvent</label>
         <link refid="classendstone_1_1LeavesDecayEvent"/>
         <childnode refid="3" relation="public-inheritance">

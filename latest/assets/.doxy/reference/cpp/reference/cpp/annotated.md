@@ -55,6 +55,7 @@ Here are the classes, structs, unions and interfaces with brief descriptions:
     * **class** [**Button**](classendstone_1_1Button.md) _Represents a button with text and an optional icon._     
     * **class** [**Campfire**](classendstone_1_1Campfire.md) _Represents a captured state of a campfire._     
     * **class** [**Cancellable**](classendstone_1_1Cancellable.md) _A type characterizing events that may be cancelled by a plugin or the server._     
+    * **class** [**CauldronLevelChangeEvent**](classendstone_1_1CauldronLevelChangeEvent.md) _Called when a cauldron's level or contents change._     
     * **class** [**Chunk**](classendstone_1_1Chunk.md) _Represents a chunk of blocks._     
     * **class** [**ChunkEvent**](classendstone_1_1ChunkEvent.md) _Represents a_ [_**Chunk**_](classendstone_1_1Chunk.md) _related event._    
     * **class** [**ChunkLoadEvent**](classendstone_1_1ChunkLoadEvent.md) _Called when a chunk is loaded._     

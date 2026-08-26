@@ -1,0 +1,364 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.8" xml:lang="en-US">
+  <compounddef id="classendstone_1_1CauldronLevelChangeEvent" kind="class" language="C++" prot="public">
+    <compoundname>endstone::CauldronLevelChangeEvent</compoundname>
+    <basecompoundref refid="classendstone_1_1Cancellable" prot="public" virt="non-virtual">endstone::Cancellable&lt; BlockEvent &gt;</basecompoundref>
+    <includes refid="cauldron__level__change__event_8h" local="no">endstone/event/block/cauldron_level_change_event.h</includes>
+    <sectiondef kind="public-type">
+      <memberdef kind="enum" id="classendstone_1_1CauldronLevelChangeEvent_1a198e1583991585f5936b23adfe459f42" prot="public" static="no" strong="yes">
+        <type></type>
+        <name>ChangeReason</name>
+        <qualifiedname>endstone::CauldronLevelChangeEvent::ChangeReason</qualifiedname>
+        <enumvalue id="classendstone_1_1CauldronLevelChangeEvent_1a198e1583991585f5936b23adfe459f42a8fb46445062c9b265e0b71c56dd922b3" prot="public">
+          <name>BucketFill</name>
+          <briefdescription>
+<para>A player filled a bucket from the cauldron. </para>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="classendstone_1_1CauldronLevelChangeEvent_1a198e1583991585f5936b23adfe459f42a8e8bb9a806b0e693db3e7fa4e1767aaf" prot="public">
+          <name>BucketEmpty</name>
+          <briefdescription>
+<para>A player emptied a bucket into the cauldron. </para>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="classendstone_1_1CauldronLevelChangeEvent_1a198e1583991585f5936b23adfe459f42a16559bce9dd1eeb850a2cca551635004" prot="public">
+          <name>BottleFill</name>
+          <briefdescription>
+<para>A player filled a bottle from the cauldron. </para>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="classendstone_1_1CauldronLevelChangeEvent_1a198e1583991585f5936b23adfe459f42a497756b86198a5f02acdabfa4b768bda" prot="public">
+          <name>BottleEmpty</name>
+          <briefdescription>
+<para>A player emptied a bottle into the cauldron. </para>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="classendstone_1_1CauldronLevelChangeEvent_1a198e1583991585f5936b23adfe459f42afb3f9c3b9530d4bac93bd2bf9b19502c" prot="public">
+          <name>BannerWash</name>
+          <briefdescription>
+<para>A player washed a banner. </para>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="classendstone_1_1CauldronLevelChangeEvent_1a198e1583991585f5936b23adfe459f42a53fc0f6ab9a601647d38acbef78afa47" prot="public">
+          <name>ArmorWash</name>
+          <briefdescription>
+<para>A player washed armor. </para>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="classendstone_1_1CauldronLevelChangeEvent_1a198e1583991585f5936b23adfe459f42a8f90c46badacdec43715621913107647" prot="public">
+          <name>ShulkerWash</name>
+          <briefdescription>
+<para>A player washed a shulker box. </para>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="classendstone_1_1CauldronLevelChangeEvent_1a198e1583991585f5936b23adfe459f42aed488e704ab03a1e1874dea70c065444" prot="public">
+          <name>Extinguish</name>
+          <briefdescription>
+<para>An actor was extinguished. </para>
+          </briefdescription>
+          <detaileddescription>
+<para>Never reported, so such a change arrives as Unknown. </para>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="classendstone_1_1CauldronLevelChangeEvent_1a198e1583991585f5936b23adfe459f42a79996eb434ca89cc4fa1923b110c1b23" prot="public">
+          <name>Evaporate</name>
+          <briefdescription>
+<para>The cauldron evaporated. </para>
+          </briefdescription>
+          <detaileddescription>
+<para>Bedrock never evaporates a cauldron, so this is never reported. </para>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="classendstone_1_1CauldronLevelChangeEvent_1a198e1583991585f5936b23adfe459f42ac6990b57318a326682fb89726c17edfc" prot="public">
+          <name>NaturalFill</name>
+          <briefdescription>
+<para>The cauldron was filled by rain or dripstone. </para>
+          </briefdescription>
+          <detaileddescription>
+<para>Never reported, so such a change arrives as Unknown. </para>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="classendstone_1_1CauldronLevelChangeEvent_1a198e1583991585f5936b23adfe459f42a88183b946cc5f0e8c96b2e66e1c74a7e" prot="public">
+          <name>Unknown</name>
+          <briefdescription>
+<para>The cause is unknown. </para>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <briefdescription>
+<para>Describes what caused the cauldron to change. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/event/block/cauldron_level_change_event.h" line="37" column="5" bodyfile="include/endstone/event/block/cauldron_level_change_event.h" bodystart="37" bodyend="60"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="private-attrib">
+      <memberdef kind="variable" id="classendstone_1_1CauldronLevelChangeEvent_1ab776a0c512c1777caafaaca59dfbc73e" prot="private" static="no" mutable="no">
+        <type><ref refid="classendstone_1_1Nullable" kindref="compound">Nullable</ref>&lt; <ref refid="classendstone_1_1Actor" kindref="compound">Actor</ref> &gt;</type>
+        <definition>Nullable&lt;Actor&gt; endstone::CauldronLevelChangeEvent::actor_</definition>
+        <argsstring></argsstring>
+        <name>actor_</name>
+        <qualifiedname>endstone::CauldronLevelChangeEvent::actor_</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/event/block/cauldron_level_change_event.h" line="97" column="14" bodyfile="include/endstone/event/block/cauldron_level_change_event.h" bodystart="97" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classendstone_1_1CauldronLevelChangeEvent_1aafd130725417f20fcffe2d330206933d" prot="private" static="no" mutable="no">
+        <type><ref refid="classendstone_1_1CauldronLevelChangeEvent_1a198e1583991585f5936b23adfe459f42" kindref="member">ChangeReason</ref></type>
+        <definition>ChangeReason endstone::CauldronLevelChangeEvent::reason_</definition>
+        <argsstring></argsstring>
+        <name>reason_</name>
+        <qualifiedname>endstone::CauldronLevelChangeEvent::reason_</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/event/block/cauldron_level_change_event.h" line="98" column="18" bodyfile="include/endstone/event/block/cauldron_level_change_event.h" bodystart="98" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classendstone_1_1CauldronLevelChangeEvent_1a9ba86b332ecb7f1533ec962dd6b031f2" prot="private" static="no" mutable="no">
+        <type><ref refid="classendstone_1_1NotNull" kindref="compound">NotNull</ref>&lt; <ref refid="classendstone_1_1BlockState" kindref="compound">BlockState</ref> &gt;</type>
+        <definition>NotNull&lt;BlockState&gt; endstone::CauldronLevelChangeEvent::new_state_</definition>
+        <argsstring></argsstring>
+        <name>new_state_</name>
+        <qualifiedname>endstone::CauldronLevelChangeEvent::new_state_</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/event/block/cauldron_level_change_event.h" line="99" column="13" bodyfile="include/endstone/event/block/cauldron_level_change_event.h" bodystart="99" bodyend="-1"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="public-func">
+      <memberdef kind="function" id="classendstone_1_1CauldronLevelChangeEvent_1a63bf3d46eba9fc82960739526b757d6b" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>endstone::CauldronLevelChangeEvent::ENDSTONE_EVENT</definition>
+        <argsstring>(CauldronLevelChangeEvent)</argsstring>
+        <name>ENDSTONE_EVENT</name>
+        <qualifiedname>endstone::CauldronLevelChangeEvent::ENDSTONE_EVENT</qualifiedname>
+        <param>
+          <type><ref refid="classendstone_1_1CauldronLevelChangeEvent" kindref="compound">CauldronLevelChangeEvent</ref></type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/event/block/cauldron_level_change_event.h" line="32" column="5"/>
+      </memberdef>
+      <memberdef kind="function" id="classendstone_1_1CauldronLevelChangeEvent_1a55847a49d0ffa4e27eb7ec57ddf83eda" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type></type>
+        <definition>endstone::CauldronLevelChangeEvent::CauldronLevelChangeEvent</definition>
+        <argsstring>(const NotNull&lt; Block &gt; &amp;block, const Nullable&lt; Actor &gt; &amp;actor, ChangeReason reason, const NotNull&lt; BlockState &gt; &amp;new_state)</argsstring>
+        <name>CauldronLevelChangeEvent</name>
+        <qualifiedname>endstone::CauldronLevelChangeEvent::CauldronLevelChangeEvent</qualifiedname>
+        <param>
+          <type><ref refid="classendstone_1_1Identifier" kindref="compound">const</ref> <ref refid="classendstone_1_1NotNull" kindref="compound">NotNull</ref>&lt; <ref refid="classendstone_1_1Block" kindref="compound">Block</ref> &gt; &amp;</type>
+          <declname>block</declname>
+        </param>
+        <param>
+          <type><ref refid="classendstone_1_1Identifier" kindref="compound">const</ref> <ref refid="classendstone_1_1Nullable" kindref="compound">Nullable</ref>&lt; <ref refid="classendstone_1_1Actor" kindref="compound">Actor</ref> &gt; &amp;</type>
+          <declname>actor</declname>
+        </param>
+        <param>
+          <type><ref refid="classendstone_1_1CauldronLevelChangeEvent_1a198e1583991585f5936b23adfe459f42" kindref="member">ChangeReason</ref></type>
+          <declname>reason</declname>
+        </param>
+        <param>
+          <type><ref refid="classendstone_1_1Identifier" kindref="compound">const</ref> <ref refid="classendstone_1_1NotNull" kindref="compound">NotNull</ref>&lt; <ref refid="classendstone_1_1BlockState" kindref="compound">BlockState</ref> &gt; &amp;</type>
+          <declname>new_state</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/event/block/cauldron_level_change_event.h" line="62" column="5" bodyfile="include/endstone/event/block/cauldron_level_change_event.h" bodystart="62" bodyend="66"/>
+      </memberdef>
+      <memberdef kind="function" id="classendstone_1_1CauldronLevelChangeEvent_1a5fac52b6f55e2ec9bf623057b5a3f1b2" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type><ref refid="classendstone_1_1Identifier" kindref="compound">const</ref> <ref refid="classendstone_1_1Nullable" kindref="compound">Nullable</ref>&lt; <ref refid="classendstone_1_1Actor" kindref="compound">Actor</ref> &gt; &amp;</type>
+        <definition>const Nullable&lt; Actor &gt; &amp; endstone::CauldronLevelChangeEvent::getActor</definition>
+        <argsstring>() const</argsstring>
+        <name>getActor</name>
+        <qualifiedname>endstone::CauldronLevelChangeEvent::getActor</qualifiedname>
+        <briefdescription>
+<para>Gets the actor which did this. </para>
+        </briefdescription>
+        <detaileddescription>
+<para>Only a player interacting with the cauldron is reported. Every other change reports nullptr.</para>
+<para><simplesect kind="return"><para>the actor which did this, or nullptr if there is none </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/event/block/cauldron_level_change_event.h" line="75" column="21" bodyfile="include/endstone/event/block/cauldron_level_change_event.h" bodystart="75" bodyend="75"/>
+      </memberdef>
+      <memberdef kind="function" id="classendstone_1_1CauldronLevelChangeEvent_1a0aa725edeb7f9b16fc285d71e02bb37c" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type><ref refid="classendstone_1_1CauldronLevelChangeEvent_1a198e1583991585f5936b23adfe459f42" kindref="member">ChangeReason</ref></type>
+        <definition>ChangeReason endstone::CauldronLevelChangeEvent::getReason</definition>
+        <argsstring>() const</argsstring>
+        <name>getReason</name>
+        <qualifiedname>endstone::CauldronLevelChangeEvent::getReason</qualifiedname>
+        <briefdescription>
+<para>Gets the reason for the change. </para>
+        </briefdescription>
+        <detaileddescription>
+<para>Only a player interacting with the cauldron is attributed. Every other change reports <ref refid="classendstone_1_1CauldronLevelChangeEvent_1a198e1583991585f5936b23adfe459f42a88183b946cc5f0e8c96b2e66e1c74a7e" kindref="member">ChangeReason::Unknown</ref>.</para>
+<para><simplesect kind="return"><para>the reason for the change </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/event/block/cauldron_level_change_event.h" line="85" column="19" bodyfile="include/endstone/event/block/cauldron_level_change_event.h" bodystart="85" bodyend="85"/>
+      </memberdef>
+      <memberdef kind="function" id="classendstone_1_1CauldronLevelChangeEvent_1a8a06f658996f088527eb3aadb0b4a0a7" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type><ref refid="classendstone_1_1Identifier" kindref="compound">const</ref> <ref refid="classendstone_1_1NotNull" kindref="compound">NotNull</ref>&lt; <ref refid="classendstone_1_1BlockState" kindref="compound">BlockState</ref> &gt; &amp;</type>
+        <definition>const NotNull&lt; BlockState &gt; &amp; endstone::CauldronLevelChangeEvent::getNewState</definition>
+        <argsstring>() const</argsstring>
+        <name>getNewState</name>
+        <qualifiedname>endstone::CauldronLevelChangeEvent::getNewState</qualifiedname>
+        <briefdescription>
+<para>Gets the state the cauldron will take. </para>
+        </briefdescription>
+        <detaileddescription>
+<para>Modifying the returned state changes what the cauldron becomes.</para>
+<para><simplesect kind="return"><para>the new state of the cauldron </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/event/block/cauldron_level_change_event.h" line="94" column="20" bodyfile="include/endstone/event/block/cauldron_level_change_event.h" bodystart="94" bodyend="94"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+<para>Called when a cauldron&apos;s level or contents change. </para>
+    </briefdescription>
+    <detaileddescription>
+<para>If this event is cancelled, the cauldron will not change. </para>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="2">
+        <label>endstone::Cancellable&lt; BlockEvent &gt;</label>
+        <link refid="classendstone_1_1Cancellable"/>
+        <childnode refid="3" relation="public-inheritance">
+        </childnode>
+        <childnode refid="5" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="3">
+        <label>endstone::BlockEvent</label>
+        <link refid="classendstone_1_1BlockEvent"/>
+        <childnode refid="4" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="1">
+        <label>endstone::CauldronLevelChangeEvent</label>
+        <link refid="classendstone_1_1CauldronLevelChangeEvent"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="4">
+        <label>endstone::Event</label>
+        <link refid="classendstone_1_1Event"/>
+      </node>
+      <node id="5">
+        <label>endstone::ICancellable</label>
+        <link refid="classendstone_1_1ICancellable"/>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="2">
+        <label>endstone::Cancellable&lt; BlockEvent &gt;</label>
+        <link refid="classendstone_1_1Cancellable"/>
+        <childnode refid="3" relation="public-inheritance">
+        </childnode>
+        <childnode refid="6" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="5">
+        <label>endstone::NotNull&lt; endstone::Block &gt;</label>
+        <link refid="classendstone_1_1NotNull"/>
+      </node>
+      <node id="3">
+        <label>endstone::BlockEvent</label>
+        <link refid="classendstone_1_1BlockEvent"/>
+        <childnode refid="4" relation="public-inheritance">
+        </childnode>
+        <childnode refid="5" relation="usage">
+          <edgelabel>block_</edgelabel>
+        </childnode>
+      </node>
+      <node id="1">
+        <label>endstone::CauldronLevelChangeEvent</label>
+        <link refid="classendstone_1_1CauldronLevelChangeEvent"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="4">
+        <label>endstone::Event</label>
+        <link refid="classendstone_1_1Event"/>
+      </node>
+      <node id="6">
+        <label>endstone::ICancellable</label>
+        <link refid="classendstone_1_1ICancellable"/>
+      </node>
+    </collaborationgraph>
+    <location file="include/endstone/event/block/cauldron_level_change_event.h" line="30" column="1" bodyfile="include/endstone/event/block/cauldron_level_change_event.h" bodystart="30" bodyend="100"/>
+    <listofallmembers>
+      <member refid="classendstone_1_1CauldronLevelChangeEvent_1ab776a0c512c1777caafaaca59dfbc73e" prot="private" virt="non-virtual"><scope>endstone::CauldronLevelChangeEvent</scope><name>actor_</name></member>
+      <member refid="classendstone_1_1BlockEvent_1a2d7d59fd58b79e945c604a2db25f1ef2" prot="protected" virt="non-virtual"><scope>endstone::CauldronLevelChangeEvent</scope><name>block_</name></member>
+      <member refid="classendstone_1_1BlockEvent_1a969b16b4036cfebd9b2c09e014dba8bd" prot="public" virt="non-virtual"><scope>endstone::CauldronLevelChangeEvent</scope><name>BlockEvent</name></member>
+      <member refid="classendstone_1_1Cancellable_1a3512b47db69c6001f5c0450051308327" prot="public" virt="virtual"><scope>endstone::CauldronLevelChangeEvent</scope><name>cancel</name></member>
+      <member refid="classendstone_1_1CauldronLevelChangeEvent_1a55847a49d0ffa4e27eb7ec57ddf83eda" prot="public" virt="non-virtual"><scope>endstone::CauldronLevelChangeEvent</scope><name>CauldronLevelChangeEvent</name></member>
+      <member refid="classendstone_1_1CauldronLevelChangeEvent_1a198e1583991585f5936b23adfe459f42" prot="public" virt="non-virtual"><scope>endstone::CauldronLevelChangeEvent</scope><name>ChangeReason</name></member>
+      <member refid="classendstone_1_1CauldronLevelChangeEvent_1a63bf3d46eba9fc82960739526b757d6b" prot="public" virt="non-virtual"><scope>endstone::CauldronLevelChangeEvent</scope><name>ENDSTONE_EVENT</name></member>
+      <member refid="classendstone_1_1Event_1a28cca8d74920493b449d035540acf023" prot="public" virt="non-virtual"><scope>endstone::CauldronLevelChangeEvent</scope><name>Event</name></member>
+      <member refid="classendstone_1_1Event_1a7199136ebb40e1441bc61e29f83c3cad" prot="public" virt="non-virtual"><scope>endstone::CauldronLevelChangeEvent</scope><name>Event</name></member>
+      <member refid="classendstone_1_1Event_1ad20bafd16e0671578e37390b95e5104c" prot="public" virt="non-virtual"><scope>endstone::CauldronLevelChangeEvent</scope><name>Event</name></member>
+      <member refid="classendstone_1_1CauldronLevelChangeEvent_1a5fac52b6f55e2ec9bf623057b5a3f1b2" prot="public" virt="non-virtual"><scope>endstone::CauldronLevelChangeEvent</scope><name>getActor</name></member>
+      <member refid="classendstone_1_1BlockEvent_1a0a96c0b3103a80ca27eaf1e0ba5d1148" prot="public" virt="non-virtual"><scope>endstone::CauldronLevelChangeEvent</scope><name>getBlock</name></member>
+      <member refid="classendstone_1_1Event_1a826fe74f9c4195a36a364b9aeeb321bb" prot="public" virt="pure-virtual"><scope>endstone::CauldronLevelChangeEvent</scope><name>getEventName</name></member>
+      <member refid="classendstone_1_1CauldronLevelChangeEvent_1a8a06f658996f088527eb3aadb0b4a0a7" prot="public" virt="non-virtual"><scope>endstone::CauldronLevelChangeEvent</scope><name>getNewState</name></member>
+      <member refid="classendstone_1_1CauldronLevelChangeEvent_1a0aa725edeb7f9b16fc285d71e02bb37c" prot="public" virt="non-virtual"><scope>endstone::CauldronLevelChangeEvent</scope><name>getReason</name></member>
+      <member refid="classendstone_1_1Event_1ae89b54f63dc32b0c8797a59db69b6931" prot="public" virt="non-virtual"><scope>endstone::CauldronLevelChangeEvent</scope><name>isAsynchronous</name></member>
+      <member refid="classendstone_1_1Cancellable_1a268b73cc5bda0fa5923336d031814faa" prot="public" virt="virtual"><scope>endstone::CauldronLevelChangeEvent</scope><name>isCancelled</name></member>
+      <member refid="classendstone_1_1CauldronLevelChangeEvent_1a9ba86b332ecb7f1533ec962dd6b031f2" prot="private" virt="non-virtual"><scope>endstone::CauldronLevelChangeEvent</scope><name>new_state_</name></member>
+      <member refid="classendstone_1_1Event_1a44a4ff424a8b690c01a2afe10ae68d8f" prot="public" virt="non-virtual"><scope>endstone::CauldronLevelChangeEvent</scope><name>operator=</name></member>
+      <member refid="classendstone_1_1Event_1a1d7fc5400782d20be99a3636aa7f53b9" prot="public" virt="non-virtual"><scope>endstone::CauldronLevelChangeEvent</scope><name>operator=</name></member>
+      <member refid="classendstone_1_1CauldronLevelChangeEvent_1aafd130725417f20fcffe2d330206933d" prot="private" virt="non-virtual"><scope>endstone::CauldronLevelChangeEvent</scope><name>reason_</name></member>
+      <member refid="classendstone_1_1Cancellable_1aa12df44bcb66924d06a689d0dd07865e" prot="public" virt="virtual"><scope>endstone::CauldronLevelChangeEvent</scope><name>setCancelled</name></member>
+      <member refid="classendstone_1_1Event_1a6aeaa8096baba90f8ace94106e0e05f3" prot="public" virt="virtual"><scope>endstone::CauldronLevelChangeEvent</scope><name>~Event</name></member>
+      <member refid="classendstone_1_1ICancellable_1ab6d311fcaa18971f69a1b23f5a856301" prot="public" virt="virtual"><scope>endstone::CauldronLevelChangeEvent</scope><name>~ICancellable</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

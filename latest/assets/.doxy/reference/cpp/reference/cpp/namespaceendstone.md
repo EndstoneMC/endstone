@@ -87,6 +87,7 @@ _Represents a button with text and an optional icon._
 | class | [**Button**](classendstone_1_1Button.md) <br>_Represents a button with text and an optional icon._  |
 | class | [**Campfire**](classendstone_1_1Campfire.md) <br>_Represents a captured state of a campfire._  |
 | class | [**Cancellable**](classendstone_1_1Cancellable.md) &lt;[**typename**](classendstone_1_1Identifier.md) EventType&gt;<br>_A type characterizing events that may be cancelled by a plugin or the server._  |
+| class | [**CauldronLevelChangeEvent**](classendstone_1_1CauldronLevelChangeEvent.md) <br>_Called when a cauldron's level or contents change._  |
 | class | [**Chunk**](classendstone_1_1Chunk.md) <br>_Represents a chunk of blocks._  |
 | class | [**ChunkEvent**](classendstone_1_1ChunkEvent.md) <br>_Represents a_ [_**Chunk**_](classendstone_1_1Chunk.md) _related event._ |
 | class | [**ChunkLoadEvent**](classendstone_1_1ChunkLoadEvent.md) <br>_Called when a chunk is loaded._  |

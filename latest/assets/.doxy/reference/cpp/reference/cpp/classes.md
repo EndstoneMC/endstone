@@ -114,6 +114,8 @@
 ([**endstone**](namespaceendstone.md))
 * [**Cancellable**](classendstone_1_1Cancellable.md)
 ([**endstone**](namespaceendstone.md))
+* [**CauldronLevelChangeEvent**](classendstone_1_1CauldronLevelChangeEvent.md)
+([**endstone**](namespaceendstone.md))
 * [**Chunk**](classendstone_1_1Chunk.md)
 ([**endstone**](namespaceendstone.md))
 * [**ChunkEvent**](classendstone_1_1ChunkEvent.md)

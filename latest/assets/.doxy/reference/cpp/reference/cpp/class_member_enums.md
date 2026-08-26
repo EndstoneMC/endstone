@@ -10,6 +10,7 @@
 
 ## c
 
+* **ChangeReason** ([**endstone::CauldronLevelChangeEvent**](classendstone_1_1CauldronLevelChangeEvent.md))
 * **Cause** ([**endstone::PlayerOpenSignEvent**](classendstone_1_1PlayerOpenSignEvent.md), [**endstone::PlayerSetSpawnEvent**](classendstone_1_1PlayerSetSpawnEvent.md))
 
 
