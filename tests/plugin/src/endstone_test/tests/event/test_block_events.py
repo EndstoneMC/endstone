@@ -39,6 +39,10 @@ def test_block_cook_is_campfire_only(recorder: EventRecorder) -> None:
         assert "campfire" in snapshot["block_type"]
         assert ":" in snapshot["source_type"]
         assert ":" in snapshot["result_type"]
+        assert snapshot["recipe_id"]
+        assert snapshot["recipe_tag"] in {"campfire", "soul_campfire"}
+        assert snapshot["recipe_input_matches"] is True
+        assert snapshot["recipe_result_type"] == snapshot["result_type"]
 
 
 def test_block_explode(recorder: EventRecorder) -> None:

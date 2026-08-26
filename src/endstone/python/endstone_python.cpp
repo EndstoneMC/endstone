@@ -722,6 +722,29 @@ void init_player(py::module_ &m, py_class<Player> &player)
         Only the block coordinates and the dimension are written back; Bedrock does not persist yaw/pitch for a
         respawn point.
 )doc")
+        .def("open_sign", &Player::openSign, py::arg("sign"), py::arg("side"), R"doc(
+    Opens a sign editor for this player.
+
+    The sign must be placed in the same dimension as this player.
+
+    Args:
+        sign: The sign to open.
+        side: The side of the sign to edit.
+
+    Raises:
+        ValueError: If the sign is not placed or is in another dimension.
+)doc")
+        .def("open_virtual_sign", &Player::openVirtualSign, py::arg("location"), py::arg("side"), R"doc(
+    Opens a sign editor for this player at the given block location.
+
+    No sign has to exist in the dimension: the caller is responsible for sending the client a sign block at that
+    position first. Only the block coordinates of the location are used, the client may refuse a position that is
+    too far away, and `PlayerOpenSignEvent` is not called.
+
+    Args:
+        location: The block location of the sign.
+        side: The side of the sign to edit.
+)doc")
         .def_property("is_sneaking", &Player::isSneaking, &Player::setSneaking, "Whether the player is in sneak mode.")
         .def_property("is_sprinting", &Player::isSprinting, &Player::setSprinting,
                       "Whether the player is sprinting or not.")

@@ -59,6 +59,11 @@ Level &LevelChunk::getLevel() const
     return level_;
 }
 
+const LevelChunkBlockActorStorage &LevelChunk::getBlockEntities() const
+{
+    return block_entities_;
+}
+
 const Biome &LevelChunk::getBiome(const ChunkBlockPos &pos) const
 {
     const BiomeRegistry &registry = level_.getBiomeRegistry();

@@ -11,7 +11,7 @@
 
 namespace endstone::runtime {
 
-static constexpr std::array<std::pair<std::string_view, std::size_t>, 79> symbols = {{
+static constexpr std::array<std::pair<std::string_view, std::size_t>, 83> symbols = {{
     {"BlockState::StateListNode::mHead", 245468000},
     {"Enchant::mEnchants", 245294016},
     {"MobEffect::mMobEffects", 245274360},
@@ -36,10 +36,15 @@ static constexpr std::array<std::pair<std::string_view, std::size_t>, 79> symbol
     {"_ZNK9BlockType25tryGetStateFromLegacyDataEt", 199383024},
     // BlockTypeRegistry
     {"_ZNK17BlockTypeRegistry16forEachBlockTypeEN5brstd12function_refIFbRK9BlockTypeES5_EE", 203856688},
+    // BucketItem
+    {"_ZNK10BucketItem6_useOnER9ItemStackR5Actor8BlockPoshRK4Vec3", 197553136},
     // BucketableComponent
     {"_ZN19BucketableComponent14getInteractionER5ActorR6PlayerR16ActorInteraction", 113911152},
     // CampfireBlockActor
     {"_ZN18CampfireBlockActor14_finishCookingER11BlockSourcei", 207808544},
+    // CauldronBlock
+    {"_ZNK13CauldronBlock14setLiquidLevelER11BlockSourceRK8BlockPosi18CauldronLiquidType", 199221200},
+    {"_ZNK13CauldronBlock3useERN11BlockEvents24BlockPlayerInteractEventE", 199208928},
     // Command
     {"_ZNK7Command3runERK13CommandOriginR13CommandOutput", 160430576},
     // CommandOriginLoader
@@ -132,6 +137,7 @@ static constexpr std::array<std::pair<std::string_view, std::size_t>, 79> symbol
     {"_ZN20ServerNetworkHandler27disconnectClientWithMessageERK17NetworkIdentifier11SubClientIdN10Connection20DisconnectFailReasonERKNSt3__112basic_stringIcNS6_11char_traitsIcEENS6_9allocatorIcEEEENS6_8optionalISC_EE", 139301376},
     // ServerPlayer
     {"_ZN12ServerPlayer15changeDimensionE13DimensionType", 160365232},
+    {"_ZN12ServerPlayer8openSignERK8BlockPosb", 160355328},
     // ServerScoreboard
     {"_ZN16ServerScoreboardC2E23CommandSoftEnumRegistryP12LevelStorageN3gsl8not_nullIN7Bedrock15NonOwnerPointerI19GameplayUserManagerEEEE", 209066992},
     // TickingAreasManager

@@ -9,7 +9,7 @@ import numpy.typing
 
 from endstone.actor import Actor, Mob
 from endstone.ban import IpBanList, PlayerBanList
-from endstone.block import BlockData, BlockType
+from endstone.block import BlockData, BlockType, Sign
 from endstone.boss import BarColor, BarFlag, BarStyle, BossBar
 from endstone.command import CommandMap, CommandSender, ConsoleCommandSender
 from endstone.form import ActionForm, MessageForm, ModalForm
@@ -605,6 +605,33 @@ class Player(Mob):
 
     @respawn_location.setter
     def respawn_location(self, arg1: Location | None) -> None: ...
+    def open_sign(self, sign: Sign, side: Sign.Side) -> None:
+        """
+        Opens a sign editor for this player.
+
+        The sign must be placed in the same dimension as this player.
+
+        Args:
+            sign: The sign to open.
+            side: The side of the sign to edit.
+
+        Raises:
+            ValueError: If the sign is not placed or is in another dimension.
+        """
+
+    def open_virtual_sign(self, location: Location, side: Sign.Side) -> None:
+        """
+        Opens a sign editor for this player at the given block location.
+
+        No sign has to exist in the dimension: the caller is responsible for sending the client a sign block at that
+        position first. Only the block coordinates of the location are used, the client may refuse a position that is
+        too far away, and `PlayerOpenSignEvent` is not called.
+
+        Args:
+            location: The block location of the sign.
+            side: The side of the sign to edit.
+        """
+
     @property
     def is_sneaking(self) -> bool:
         """

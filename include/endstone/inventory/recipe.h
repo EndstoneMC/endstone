@@ -36,6 +36,13 @@ public:
      */
     [[nodiscard]] virtual ItemStack getResult() const = 0;
 
+    /**
+     * Gets the ingredients consumed by this recipe.
+     *
+     * A value is empty when the corresponding slot does not require an ingredient.
+     *
+     * @return the recipe ingredients
+     */
     [[nodiscard]] virtual const std::vector<Nullable<RecipeIngredient>> &getIngredients() const = 0;
 
     /**
@@ -46,9 +53,9 @@ public:
     [[nodiscard]] virtual const std::string &getId() const = 0;
 
     /**
-     * Get the crafting station this recipe belongs to, such as `crafting_table` or `smithing_table`.
+     * Gets the station this recipe belongs to, such as `crafting_table`, `smithing_table` or `furnace`.
      *
-     * @return the crafting tag
+     * @return the recipe tag
      */
     [[nodiscard]] virtual const std::string &getTag() const = 0;
 };

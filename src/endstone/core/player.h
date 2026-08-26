@@ -82,6 +82,8 @@ public:
     [[nodiscard]] bool canSee(const Actor &actor) const override;
     [[nodiscard]] bool canSee(const Player &player) const override;
     void sendBlockChange(const Location &location, const BlockData &block) override;
+    void openSign(const Sign &sign, Sign::Side side) override;
+    void openVirtualSign(const Location &location, Sign::Side side) override;
     [[nodiscard]] bool isSneaking() const override;
     void setSneaking(bool sneak) override;
     [[nodiscard]] bool isSprinting() const override;
