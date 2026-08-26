@@ -2263,6 +2263,31 @@
     <member refid="classendstone_1_1PlayerBucketActorEvent_1a0237dc1e5a4c158ca0aef364c86477c8" kind="function"><name>getOriginalBucket</name></member>
     <member refid="classendstone_1_1PlayerBucketActorEvent_1a6775f10526c157537f43e15d8bd74cd9" kind="function"><name>getHand</name></member>
   </compound>
+  <compound refid="classendstone_1_1PlayerBucketEmptyEvent" kind="class"><name>endstone::PlayerBucketEmptyEvent</name>
+    <member refid="classendstone_1_1PlayerBucketEmptyEvent_1a7f6d6ae7b431caf334d18bef3362fdde" kind="function"><name>ENDSTONE_EVENT</name></member>
+    <member refid="classendstone_1_1PlayerBucketEmptyEvent_1af266015a23ee291182a37b120245a7ac" kind="function"><name>PlayerBucketEvent</name></member>
+  </compound>
+  <compound refid="classendstone_1_1PlayerBucketEvent" kind="class"><name>endstone::PlayerBucketEvent</name>
+    <member refid="classendstone_1_1PlayerBucketEvent_1ad9694978eafa85b47260f4a19490f8a5" kind="variable"><name>block_</name></member>
+    <member refid="classendstone_1_1PlayerBucketEvent_1af86911e1f83443a8e9efea75d298e4ee" kind="variable"><name>block_clicked_</name></member>
+    <member refid="classendstone_1_1PlayerBucketEvent_1a6fa48ca8745a9d0e3837bc2f68ad659f" kind="variable"><name>block_face_</name></member>
+    <member refid="classendstone_1_1PlayerBucketEvent_1a43fc6217ea9d314c1229e76a9008719e" kind="variable"><name>bucket_</name></member>
+    <member refid="classendstone_1_1PlayerBucketEvent_1a25d4dd2cd867d13755019a524b54bc39" kind="variable"><name>item_stack_</name></member>
+    <member refid="classendstone_1_1PlayerBucketEvent_1ac8a885d9a7ecd4fbc87ec27ff04af606" kind="variable"><name>hand_</name></member>
+    <member refid="classendstone_1_1PlayerBucketEvent_1af266015a23ee291182a37b120245a7ac" kind="function"><name>PlayerBucketEvent</name></member>
+    <member refid="classendstone_1_1PlayerBucketEvent_1a241625bbd15c73a6aacf081ddf6a1bc5" kind="function"><name>~PlayerBucketEvent</name></member>
+    <member refid="classendstone_1_1PlayerBucketEvent_1a87e366913a6b33a478bd1913467d051e" kind="function"><name>getBlock</name></member>
+    <member refid="classendstone_1_1PlayerBucketEvent_1a6d668e1a6f7d1d3ec501dd5c74ce33fb" kind="function"><name>getBlockClicked</name></member>
+    <member refid="classendstone_1_1PlayerBucketEvent_1a48cbb9b5308748834b8a9ba0c80ee9ec" kind="function"><name>getBlockFace</name></member>
+    <member refid="classendstone_1_1PlayerBucketEvent_1a4da5f47b6da4c98fab533cd7442e1040" kind="function"><name>getBucket</name></member>
+    <member refid="classendstone_1_1PlayerBucketEvent_1ae5392359804cac228a468f5138a66190" kind="function"><name>getHand</name></member>
+    <member refid="classendstone_1_1PlayerBucketEvent_1acabb512d350c5a3d06ce11b912ae2e5f" kind="function"><name>getItemStack</name></member>
+    <member refid="classendstone_1_1PlayerBucketEvent_1a1372b77bba34e73f7accf05d3268fba7" kind="function"><name>setItemStack</name></member>
+  </compound>
+  <compound refid="classendstone_1_1PlayerBucketFillEvent" kind="class"><name>endstone::PlayerBucketFillEvent</name>
+    <member refid="classendstone_1_1PlayerBucketFillEvent_1aa9e2def9ea2d41610d10d69840dc93d3" kind="function"><name>ENDSTONE_EVENT</name></member>
+    <member refid="classendstone_1_1PlayerBucketFillEvent_1af266015a23ee291182a37b120245a7ac" kind="function"><name>PlayerBucketEvent</name></member>
+  </compound>
   <compound refid="classendstone_1_1PlayerChatEvent" kind="class"><name>endstone::PlayerChatEvent</name>
     <member refid="classendstone_1_1PlayerChatEvent_1a5a2fadea22a0df7dcfd1e3229ace5414" kind="variable"><name>message_</name></member>
     <member refid="classendstone_1_1PlayerChatEvent_1a6f547117792397c1aa4dfeed946d6452" kind="variable"><name>format_</name></member>
@@ -3360,6 +3385,7 @@
     <member refid="namespaceendstone_1aec620d05bd961a002c83b008e178a785a263d7b2cf53802c9ed127b718c0bf9fd" kind="enumvalue"><name>South</name></member>
     <member refid="namespaceendstone_1aec620d05bd961a002c83b008e178a785abf495fc048d8d44b7f32536df5cf3930" kind="enumvalue"><name>West</name></member>
     <member refid="namespaceendstone_1aec620d05bd961a002c83b008e178a785aa99dc62d017d04cf67266593f9c3761e" kind="enumvalue"><name>East</name></member>
+    <member refid="namespaceendstone_1aec620d05bd961a002c83b008e178a785aad6e7652b1bdfb38783486c2c3d5e806" kind="enumvalue"><name>Self</name></member>
     <member refid="namespaceendstone_1a554d2e220ce8a5afd95c31e6065a75f6" kind="enum"><name>BarColor</name></member>
     <member refid="namespaceendstone_1a554d2e220ce8a5afd95c31e6065a75f6a8dc5344bc0746e1cc5abf896ca03bbdf" kind="enumvalue"><name>Pink</name></member>
     <member refid="namespaceendstone_1a554d2e220ce8a5afd95c31e6065a75f6a9594eec95be70e7b1710f730fdda33d9" kind="enumvalue"><name>Blue</name></member>
@@ -3736,6 +3762,12 @@
   <compound refid="player__bed__leave__event_8h" kind="file"><name>player_bed_leave_event.h</name>
   </compound>
   <compound refid="player__bucket__actor__event_8h" kind="file"><name>player_bucket_actor_event.h</name>
+  </compound>
+  <compound refid="player__bucket__empty__event_8h" kind="file"><name>player_bucket_empty_event.h</name>
+  </compound>
+  <compound refid="player__bucket__event_8h" kind="file"><name>player_bucket_event.h</name>
+  </compound>
+  <compound refid="player__bucket__fill__event_8h" kind="file"><name>player_bucket_fill_event.h</name>
   </compound>
   <compound refid="player__chat__event_8h" kind="file"><name>player_chat_event.h</name>
   </compound>

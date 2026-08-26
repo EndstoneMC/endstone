@@ -190,6 +190,9 @@ _Represents a button with text and an optional icon._
 | class | [**PlayerBedEnterEvent**](classendstone_1_1PlayerBedEnterEvent.md) <br>_Called when a player is almost about to enter the bed._  |
 | class | [**PlayerBedLeaveEvent**](classendstone_1_1PlayerBedLeaveEvent.md) <br>_Called when a player is leaving a bed._  |
 | class | [**PlayerBucketActorEvent**](classendstone_1_1PlayerBucketActorEvent.md) <br>_Represents an event that is called when a player captures an actor in a bucket._  |
+| class | [**PlayerBucketEmptyEvent**](classendstone_1_1PlayerBucketEmptyEvent.md) <br>_Called when a player empties a bucket._  |
+| class | [**PlayerBucketEvent**](classendstone_1_1PlayerBucketEvent.md) <br>_Provides common data for events involving a player's bucket interaction._  |
+| class | [**PlayerBucketFillEvent**](classendstone_1_1PlayerBucketFillEvent.md) <br>_Called when a player fills a bucket._  |
 | class | [**PlayerChatEvent**](classendstone_1_1PlayerChatEvent.md) <br>_Called when a player sends a chat message._  |
 | class | [**PlayerCommandEvent**](classendstone_1_1PlayerCommandEvent.md) <br>_Called whenever a player runs a command._  |
 | class | [**PlayerCraftItemEvent**](classendstone_1_1PlayerCraftItemEvent.md) <br>_Called when a player crafts an item, either inside a crafting grid or straight from the recipe book._  |
@@ -540,7 +543,8 @@ enum endstone::BlockFace {
     North,
     South,
     West,
-    East
+    East,
+    Self
 };
 ```
 

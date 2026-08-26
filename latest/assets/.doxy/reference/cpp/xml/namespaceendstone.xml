@@ -156,6 +156,9 @@
     <innerclass refid="classendstone_1_1PlayerBedEnterEvent" prot="public">endstone::PlayerBedEnterEvent</innerclass>
     <innerclass refid="classendstone_1_1PlayerBedLeaveEvent" prot="public">endstone::PlayerBedLeaveEvent</innerclass>
     <innerclass refid="classendstone_1_1PlayerBucketActorEvent" prot="public">endstone::PlayerBucketActorEvent</innerclass>
+    <innerclass refid="classendstone_1_1PlayerBucketEmptyEvent" prot="public">endstone::PlayerBucketEmptyEvent</innerclass>
+    <innerclass refid="classendstone_1_1PlayerBucketEvent" prot="public">endstone::PlayerBucketEvent</innerclass>
+    <innerclass refid="classendstone_1_1PlayerBucketFillEvent" prot="public">endstone::PlayerBucketFillEvent</innerclass>
     <innerclass refid="classendstone_1_1PlayerChatEvent" prot="public">endstone::PlayerChatEvent</innerclass>
     <innerclass refid="classendstone_1_1PlayerCommandEvent" prot="public">endstone::PlayerCommandEvent</innerclass>
     <innerclass refid="classendstone_1_1PlayerCraftItemEvent" prot="public">endstone::PlayerCraftItemEvent</innerclass>
@@ -297,6 +300,13 @@
           <detaileddescription>
           </detaileddescription>
         </enumvalue>
+        <enumvalue id="namespaceendstone_1aec620d05bd961a002c83b008e178a785aad6e7652b1bdfb38783486c2c3d5e806" prot="public">
+          <name>Self</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
         <briefdescription>
 <para>Represents the face of a block. </para>
         </briefdescription>
@@ -304,7 +314,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/block/block_face.h" line="21" column="1" bodyfile="include/endstone/block/block_face.h" bodystart="21" bodyend="28"/>
+        <location file="include/endstone/block/block_face.h" line="21" column="1" bodyfile="include/endstone/block/block_face.h" bodystart="21" bodyend="29"/>
       </memberdef>
       <memberdef kind="enum" id="namespaceendstone_1a554d2e220ce8a5afd95c31e6065a75f6" prot="public" static="no" strong="yes">
         <type></type>
