@@ -23,6 +23,7 @@ jobs:
       - name: Checkout Code
         uses: actions/checkout@v7
         with:
+          ref: develop
           fetch-depth: 0
           submodules: true
 
