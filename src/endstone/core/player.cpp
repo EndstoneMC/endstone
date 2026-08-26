@@ -29,6 +29,7 @@
 #include "bedrock/network/packet/block_actor_data_packet.h"
 #include "bedrock/network/packet/clientbound_map_item_data_packet.h"
 #include "bedrock/network/packet/modal_form_request_packet.h"
+#include "bedrock/network/packet/open_sign_packet.h"
 #include "bedrock/network/packet/play_sound_packet.h"
 #include "bedrock/network/packet/set_title_packet.h"
 #include "bedrock/network/packet/stop_sound_packet.h"
@@ -40,6 +41,7 @@
 #include "bedrock/platform/build_platform.h"
 #include "bedrock/server/server_instance.h"
 #include "bedrock/world/actor/player/player.h"
+#include "bedrock/world/level/block/actor/block_actor.h"
 #include "bedrock/world/level/dimension/vanilla_dimensions.h"
 #include "bedrock/world/level/level.h"
 #include "endstone/color_format.h"
@@ -305,6 +307,30 @@ void EndstonePlayer::sendBlockUpdate(const Location &location, const BlockActorS
     pk.payload.data.putInt("y", pk.payload.pos.y);
     pk.payload.data.putInt("z", pk.payload.pos.z);
     getHandle().sendNetworkPacket(*packet);
+void EndstonePlayer::openSign(const Sign &sign, Sign::Side side)
+{
+    Preconditions::checkArgument(&*sign.getDimension() == &*getDimension(),
+                                 "Sign must be in the same dimension as the player.");
+
+    const BlockPos position{sign.getX(), sign.getY(), sign.getZ()};
+    auto &block_source = getHandle().getDimensionBlockSource();
+    const auto *block_entity = block_source.getBlockEntity(position);
+    Preconditions::checkArgument(block_entity != nullptr &&
+                                     (block_entity->getType() == BlockActorType::Sign ||
+                                      block_entity->getType() == BlockActorType::HangingSign),
+                                 "Sign must be placed.");
+
+    getHandle().addOrRemoveComponent<InternalSignOpenFlagComponent>(true);
+    getHandle().openSign(position, side == Sign::Side::Front);
+}
+
+void EndstonePlayer::openVirtualSign(const Location &location, Sign::Side side)
+{
+    const auto packet = MinecraftPackets::createPacket(MinecraftPacketIds::OpenSign);
+    const auto open_sign = std::static_pointer_cast<OpenSignPacket>(packet);
+    open_sign->payload.pos = {location.getBlockX(), location.getBlockY(), location.getBlockZ()};
+    open_sign->payload.is_front_side = side == Sign::Side::Front;
+    getHandle().sendNetworkPacket(*open_sign);
 }
 
 bool EndstonePlayer::isSneaking() const

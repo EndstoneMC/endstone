@@ -14,6 +14,8 @@
 
 #include "bedrock/world/item/crafting/recipes.h"
 
+#include <cstdint>
+
 #include "bedrock/world/item/item.h"
 
 ItemInstance Recipes::getFurnaceRecipeResult(const ItemStackBase &item, const HashedString &tag) const
@@ -33,7 +35,7 @@ ItemInstance Recipes::getFurnaceRecipeResult(const ItemStackBase &item, const Ha
     }
 
     const auto any_id_aux =
-        item.getItem()->buildIdAux(static_cast<std::int16_t>(ItemDescriptor::ANY_AUX_VALUE), item.getUserData());
+        (static_cast<int>(static_cast<std::uint16_t>(item.getItem()->getId())) << 16) | ItemDescriptor::ANY_AUX_VALUE;
     if (const auto any = results.find(any_id_aux); any != results.end()) {
         return any->second;
     }

@@ -14,19 +14,24 @@
 
 #pragma once
 
-#include <optional>
+#include "endstone/inventory/recipe.h"
 
-#include "endstone/block/block_face.h"
-
-namespace endstone::core {
-
-class EndstoneBlockFace {
+namespace endstone {
+/**
+ * Represents a cooking recipe.
+ *
+ * Bedrock records neither an experience reward nor a cooking time on the recipe itself, so neither is reported here.
+ * The experience a smelt awards belongs to the input item, and the time a cook takes to the station.
+ */
+class CookingRecipe : public Recipe {
 public:
-    static std::optional<BlockFace> fromBedrockFacing(int facing);
-    static int getOffsetX(BlockFace face);
-    static int getOffsetY(BlockFace face);
-    static int getOffsetZ(BlockFace face);
-    static BlockFace getOpposite(BlockFace face);
-};
+    ~CookingRecipe() override = default;
 
-}  // namespace endstone::core
+    /**
+     * Get the input choice.
+     *
+     * @return the input choice
+     */
+    [[nodiscard]] virtual Nullable<RecipeIngredient> getInputChoice() const = 0;
+};
+}  // namespace endstone

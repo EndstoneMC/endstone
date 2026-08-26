@@ -150,6 +150,7 @@ class BlockFace(enum.Enum):
     SOUTH = 3
     WEST = 4
     EAST = 5
+    SELF = 6
 
 class BlockType:
     """

@@ -13,8 +13,16 @@
 // limitations under the License.
 
 #pragma once
+
+#include <optional>
+
+#include "bedrock/bedrock.h"
+#include "bedrock/common_types.h"
+#include "bedrock/core/math/vec3.h"
 #include "bedrock/world/level/block_source.h"
 #include "bedrock/world/level/level.h"
+
+class Player;
 
 namespace BlockEvents {
 enum class EventType : uint8_t {
@@ -57,4 +65,16 @@ public:
     BlockSource &region;
     Random &random;
 };
+
+class BlockPlayerInteractEvent : public BlockEventBase {
+public:
+    const BlockSource &getBlockSource() const override;
+    BlockPlayerInteractEvent(Player &, BlockPos, FacingID, std::optional<Vec3>);
+
+    Player &player;                  // Endstone: private -> public
+    std::optional<bool> successful;  // Endstone: private -> public
+    const std::optional<Vec3> hit;
+    const FacingID face;
+};
+BEDROCK_STATIC_ASSERT_SIZE(BlockPlayerInteractEvent, 56, 56);
 }  // namespace BlockEvents

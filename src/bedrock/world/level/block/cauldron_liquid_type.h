@@ -14,19 +14,9 @@
 
 #pragma once
 
-#include <optional>
-
-#include "endstone/block/block_face.h"
-
-namespace endstone::core {
-
-class EndstoneBlockFace {
-public:
-    static std::optional<BlockFace> fromBedrockFacing(int facing);
-    static int getOffsetX(BlockFace face);
-    static int getOffsetY(BlockFace face);
-    static int getOffsetZ(BlockFace face);
-    static BlockFace getOpposite(BlockFace face);
+enum class CauldronLiquidType : int {
+    Water = 0,
+    Lava = 1,
+    PowderSnow = 2,
+    Count = 3,
 };
-
-}  // namespace endstone::core

@@ -14,19 +14,14 @@
 
 #pragma once
 
-#include <optional>
+#include "endstone/inventory/cooking_recipe.h"
 
-#include "endstone/block/block_face.h"
-
-namespace endstone::core {
-
-class EndstoneBlockFace {
+namespace endstone {
+/**
+ * Represents a blasting recipe.
+ */
+class BlastingRecipe : public CookingRecipe {
 public:
-    static std::optional<BlockFace> fromBedrockFacing(int facing);
-    static int getOffsetX(BlockFace face);
-    static int getOffsetY(BlockFace face);
-    static int getOffsetZ(BlockFace face);
-    static BlockFace getOpposite(BlockFace face);
+    ~BlastingRecipe() override = default;
 };
-
-}  // namespace endstone::core
+}  // namespace endstone

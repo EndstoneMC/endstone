@@ -23,6 +23,7 @@
 #include "endstone/ability.h"
 #include "endstone/actor/mob.h"
 #include "endstone/block/block_actor_state.h"
+#include "endstone/block/sign.h"
 #include "endstone/form/action_form.h"
 #include "endstone/form/message_form.h"
 #include "endstone/form/modal_form.h"
@@ -142,6 +143,27 @@ public:
      * @param block_actor_state The new block entity state
      */
     virtual void sendBlockUpdate(const Location &location, const BlockActorState &block_actor_state) = 0;
+     * Opens a sign editor for this player.
+     *
+     * The sign must be placed in the same dimension as this player.
+     *
+     * @param sign the sign to open
+     * @param side the side of the sign to edit
+     * @throws std::invalid_argument if the sign is not placed or is in another dimension
+     */
+    virtual void openSign(const Sign &sign, Sign::Side side) = 0;
+
+    /**
+     * Opens a sign editor for this player at the given block location.
+     *
+     * No sign has to exist in the dimension: the caller is responsible for sending the client a sign block at that
+     * position first. Only the block coordinates of the location are used, the client may refuse a position that is
+     * too far away, and PlayerOpenSignEvent is not called.
+     *
+     * @param location the block location of the sign
+     * @param side the side of the sign to edit
+     */
+    virtual void openVirtualSign(const Location &location, Sign::Side side) = 0;
 
     /**
      * Returns if the player is in sneak mode.

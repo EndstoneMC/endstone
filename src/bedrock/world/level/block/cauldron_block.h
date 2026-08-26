@@ -14,19 +14,17 @@
 
 #pragma once
 
-#include <optional>
+#include "bedrock/bedrock.h"
+#include "bedrock/world/level/block/actor_block.h"
+#include "bedrock/world/level/block/block_event.h"
+#include "bedrock/world/level/block/cauldron_liquid_type.h"
 
-#include "endstone/block/block_face.h"
-
-namespace endstone::core {
-
-class EndstoneBlockFace {
+class CauldronBlock : public ActorBlock {
 public:
-    static std::optional<BlockFace> fromBedrockFacing(int facing);
-    static int getOffsetX(BlockFace face);
-    static int getOffsetY(BlockFace face);
-    static int getOffsetZ(BlockFace face);
-    static BlockFace getOpposite(BlockFace face);
-};
+    static constexpr int MIN_FILL_LEVEL = 0;
+    static constexpr int MAX_FILL_LEVEL = 6;
 
-}  // namespace endstone::core
+    ENDSTONE_HOOK void use(BlockEvents::BlockPlayerInteractEvent &event_data) const;
+    ENDSTONE_HOOK void setLiquidLevel(BlockSource &region, const BlockPos &pos, int liquid_level,
+                                      CauldronLiquidType liquid_type) const;
+};

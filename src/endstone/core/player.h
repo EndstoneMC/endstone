@@ -76,6 +76,8 @@ public:
     [[nodiscard]] std::optional<Location> getRespawnLocation() const override;
     void setRespawnLocation(std::optional<Location> location) override;
     void sendBlockUpdate(const Location &location, const BlockActorState &block_actor_state) override;
+    void openSign(const Sign &sign, Sign::Side side) override;
+    void openVirtualSign(const Location &location, Sign::Side side) override;
     [[nodiscard]] bool isSneaking() const override;
     void setSneaking(bool sneak) override;
     [[nodiscard]] bool isSprinting() const override;
