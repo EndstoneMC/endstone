@@ -1,0 +1,128 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.8" xml:lang="en-US">
+  <compounddef id="classendstone_1_1CookingRecipe" kind="class" language="C++" prot="public" abstract="yes">
+    <compoundname>endstone::CookingRecipe</compoundname>
+    <basecompoundref refid="classendstone_1_1Recipe" prot="public" virt="non-virtual">endstone::Recipe</basecompoundref>
+    <derivedcompoundref refid="classendstone_1_1BlastingRecipe" prot="public" virt="non-virtual">endstone::BlastingRecipe</derivedcompoundref>
+    <derivedcompoundref refid="classendstone_1_1CampfireRecipe" prot="public" virt="non-virtual">endstone::CampfireRecipe</derivedcompoundref>
+    <derivedcompoundref refid="classendstone_1_1FurnaceRecipe" prot="public" virt="non-virtual">endstone::FurnaceRecipe</derivedcompoundref>
+    <derivedcompoundref refid="classendstone_1_1SmokingRecipe" prot="public" virt="non-virtual">endstone::SmokingRecipe</derivedcompoundref>
+    <includes refid="cooking__recipe_8h" local="no">endstone/inventory/cooking_recipe.h</includes>
+    <sectiondef kind="public-func">
+      <memberdef kind="function" id="classendstone_1_1CookingRecipe_1af0bb231eea60f0a3808750a36ca9262d" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>endstone::CookingRecipe::~CookingRecipe</definition>
+        <argsstring>() override=default</argsstring>
+        <name>~CookingRecipe</name>
+        <qualifiedname>endstone::CookingRecipe::~CookingRecipe</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/inventory/cooking_recipe.h" line="28" column="5"/>
+      </memberdef>
+      <memberdef kind="function" id="classendstone_1_1CookingRecipe_1a086818bb7b3d1d4019dff2d6ad8ed5ba" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
+        <type><ref refid="classendstone_1_1Nullable" kindref="compound">Nullable</ref>&lt; <ref refid="classendstone_1_1RecipeIngredient" kindref="compound">RecipeIngredient</ref> &gt;</type>
+        <definition>virtual Nullable&lt; RecipeIngredient &gt; endstone::CookingRecipe::getInputChoice</definition>
+        <argsstring>() const =0</argsstring>
+        <name>getInputChoice</name>
+        <qualifiedname>endstone::CookingRecipe::getInputChoice</qualifiedname>
+        <briefdescription>
+<para>Get the input choice. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="return"><para>the input choice </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/inventory/cooking_recipe.h" line="35" column="23"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+<para>Represents a cooking recipe. </para>
+    </briefdescription>
+    <detaileddescription>
+<para>Bedrock records neither an experience reward nor a cooking time on the recipe itself, so neither is reported here. The experience a smelt awards belongs to the input item, and the time a cook takes to the station. </para>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="4">
+        <label>endstone::BlastingRecipe</label>
+        <link refid="classendstone_1_1BlastingRecipe"/>
+        <childnode refid="1" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="5">
+        <label>endstone::CampfireRecipe</label>
+        <link refid="classendstone_1_1CampfireRecipe"/>
+        <childnode refid="1" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="1">
+        <label>endstone::CookingRecipe</label>
+        <link refid="classendstone_1_1CookingRecipe"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="6">
+        <label>endstone::FurnaceRecipe</label>
+        <link refid="classendstone_1_1FurnaceRecipe"/>
+        <childnode refid="1" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="3">
+        <label>endstone::Object</label>
+        <link refid="classendstone_1_1Object"/>
+      </node>
+      <node id="2">
+        <label>endstone::Recipe</label>
+        <link refid="classendstone_1_1Recipe"/>
+        <childnode refid="3" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="7">
+        <label>endstone::SmokingRecipe</label>
+        <link refid="classendstone_1_1SmokingRecipe"/>
+        <childnode refid="1" relation="public-inheritance">
+        </childnode>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="1">
+        <label>endstone::CookingRecipe</label>
+        <link refid="classendstone_1_1CookingRecipe"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="3">
+        <label>endstone::Object</label>
+        <link refid="classendstone_1_1Object"/>
+      </node>
+      <node id="2">
+        <label>endstone::Recipe</label>
+        <link refid="classendstone_1_1Recipe"/>
+        <childnode refid="3" relation="public-inheritance">
+        </childnode>
+      </node>
+    </collaborationgraph>
+    <location file="include/endstone/inventory/cooking_recipe.h" line="26" column="1" bodyfile="include/endstone/inventory/cooking_recipe.h" bodystart="26" bodyend="36"/>
+    <listofallmembers>
+      <member refid="classendstone_1_1Object_1a798b5128ce018bbbe8ca949ba78c3db1" prot="public" virt="non-virtual"><scope>endstone::CookingRecipe</scope><name>as</name></member>
+      <member refid="classendstone_1_1Object_1ae0f38a62da4c186fce272145e2590cc1" prot="public" virt="non-virtual"><scope>endstone::CookingRecipe</scope><name>as</name></member>
+      <member refid="classendstone_1_1Object_1a3e2df17c95cf63580e95c84f783636c4" prot="public" virt="pure-virtual"><scope>endstone::CookingRecipe</scope><name>getClassInfo</name></member>
+      <member refid="classendstone_1_1Recipe_1ad61757005d71bc6bf9c9addb43c75d49" prot="public" virt="pure-virtual"><scope>endstone::CookingRecipe</scope><name>getId</name></member>
+      <member refid="classendstone_1_1Recipe_1ab9974a01f5e5570b0c2b9b88b9fb7b58" prot="public" virt="pure-virtual"><scope>endstone::CookingRecipe</scope><name>getIngredients</name></member>
+      <member refid="classendstone_1_1CookingRecipe_1a086818bb7b3d1d4019dff2d6ad8ed5ba" prot="public" virt="pure-virtual"><scope>endstone::CookingRecipe</scope><name>getInputChoice</name></member>
+      <member refid="classendstone_1_1Recipe_1a4e20782db3c7f6ea868059af8f2b1cc1" prot="public" virt="pure-virtual"><scope>endstone::CookingRecipe</scope><name>getResult</name></member>
+      <member refid="classendstone_1_1Recipe_1ab353c82a04f30ce3a1d89d78d1ffe043" prot="public" virt="pure-virtual"><scope>endstone::CookingRecipe</scope><name>getTag</name></member>
+      <member refid="classendstone_1_1Object_1ae8213ae15ad1b14e4631399c6b18960a" prot="public" virt="non-virtual"><scope>endstone::CookingRecipe</scope><name>is</name></member>
+      <member refid="classendstone_1_1Object_1a1f8951c4894c2b8288fd4ef500218771" prot="public" virt="pure-virtual"><scope>endstone::CookingRecipe</scope><name>isInstanceOf</name></member>
+      <member refid="classendstone_1_1CookingRecipe_1af0bb231eea60f0a3808750a36ca9262d" prot="public" virt="non-virtual"><scope>endstone::CookingRecipe</scope><name>~CookingRecipe</name></member>
+      <member refid="classendstone_1_1Object_1adfddc886af4b1d0e09ddac7d0391b4d2" prot="public" virt="virtual"><scope>endstone::CookingRecipe</scope><name>~Object</name></member>
+      <member refid="classendstone_1_1Recipe_1a8252ec2109ad301042cda25df98b923e" prot="public" virt="non-virtual"><scope>endstone::CookingRecipe</scope><name>~Recipe</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

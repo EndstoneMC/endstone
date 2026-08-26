@@ -17,7 +17,7 @@ _Represents some type of crafting recipe._
 Inherits the following classes: [endstone::Object](classendstone_1_1Object.md)
 
 
-Inherited by the following classes: [endstone::ComplexRecipe](classendstone_1_1ComplexRecipe.md),  [endstone::ShapedRecipe](classendstone_1_1ShapedRecipe.md),  [endstone::ShapelessRecipe](classendstone_1_1ShapelessRecipe.md),  [endstone::SmithingRecipe](classendstone_1_1SmithingRecipe.md)
+Inherited by the following classes: [endstone::ComplexRecipe](classendstone_1_1ComplexRecipe.md),  [endstone::CookingRecipe](classendstone_1_1CookingRecipe.md),  [endstone::ShapedRecipe](classendstone_1_1ShapedRecipe.md),  [endstone::ShapelessRecipe](classendstone_1_1ShapelessRecipe.md),  [endstone::SmithingRecipe](classendstone_1_1SmithingRecipe.md)
 
 
 
@@ -75,9 +75,9 @@ Inherited by the following classes: [endstone::ComplexRecipe](classendstone_1_1C
 | Type | Name |
 | ---: | :--- |
 | virtual [**const**](classendstone_1_1Identifier.md) std::string & | [**getId**](#function-getid) () const = 0<br>_Get the identifier of this recipe, such as_ `minecraft:crafting_table` _._ |
-| virtual [**const**](classendstone_1_1Identifier.md) std::vector&lt; [**Nullable**](classendstone_1_1Nullable.md)&lt; [**RecipeIngredient**](classendstone_1_1RecipeIngredient.md) &gt; &gt; & | [**getIngredients**](#function-getingredients) () const = 0<br> |
+| virtual [**const**](classendstone_1_1Identifier.md) std::vector&lt; [**Nullable**](classendstone_1_1Nullable.md)&lt; [**RecipeIngredient**](classendstone_1_1RecipeIngredient.md) &gt; &gt; & | [**getIngredients**](#function-getingredients) () const = 0<br>_Gets the ingredients consumed by this recipe._  |
 | virtual [**ItemStack**](classendstone_1_1ItemStack.md) | [**getResult**](#function-getresult) () const = 0<br>_Get the result of this recipe._  |
-| virtual [**const**](classendstone_1_1Identifier.md) std::string & | [**getTag**](#function-gettag) () const = 0<br>_Get the crafting station this recipe belongs to, such as_ `crafting_table` _or_`smithing_table` _._ |
+| virtual [**const**](classendstone_1_1Identifier.md) std::string & | [**getTag**](#function-gettag) () const = 0<br>_Gets the station this recipe belongs to, such as_ `crafting_table` _,_`smithing_table` _or_`furnace` _._ |
 |   | [**~Recipe**](#function-recipe) () override<br> |
 
 
@@ -179,12 +179,27 @@ the recipe identifier
 
 ### function getIngredients 
 
+_Gets the ingredients consumed by this recipe._ 
 ```C++
 virtual const std::vector< Nullable < RecipeIngredient > > & endstone::Recipe::getIngredients () const = 0
 ```
 
 
 
+A value is empty when the corresponding slot does not require an ingredient.
+
+
+
+
+**Returns:**
+
+the recipe ingredients 
+
+
+
+
+
+        
 
 <hr>
 
@@ -217,7 +232,7 @@ The result stack
 
 ### function getTag 
 
-_Get the crafting station this recipe belongs to, such as_ `crafting_table` _or_`smithing_table` _._
+_Gets the station this recipe belongs to, such as_ `crafting_table` _,_`smithing_table` _or_`furnace` _._
 ```C++
 virtual const std::string & endstone::Recipe::getTag () const = 0
 ```
@@ -228,7 +243,7 @@ virtual const std::string & endstone::Recipe::getTag () const = 0
 
 **Returns:**
 
-the crafting tag 
+the recipe tag 
 
 
 

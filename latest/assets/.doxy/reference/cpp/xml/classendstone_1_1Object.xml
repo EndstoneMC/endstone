@@ -177,6 +177,12 @@
         <childnode refid="19" relation="public-inheritance">
         </childnode>
       </node>
+      <node id="31">
+        <label>endstone::BlastingRecipe</label>
+        <link refid="classendstone_1_1BlastingRecipe"/>
+        <childnode refid="30" relation="public-inheritance">
+        </childnode>
+      </node>
       <node id="24">
         <label>endstone::BlockCommandSender</label>
         <link refid="classendstone_1_1BlockCommandSender"/>
@@ -201,6 +207,12 @@
         <childnode refid="2" relation="public-inheritance">
         </childnode>
       </node>
+      <node id="32">
+        <label>endstone::CampfireRecipe</label>
+        <link refid="classendstone_1_1CampfireRecipe"/>
+        <childnode refid="30" relation="public-inheritance">
+        </childnode>
+      </node>
       <node id="10">
         <label>endstone::Command</label>
         <link refid="classendstone_1_1Command"/>
@@ -219,10 +231,10 @@
         <childnode refid="19" relation="public-inheritance">
         </childnode>
       </node>
-      <node id="36">
+      <node id="41">
         <label>endstone::ComplexAliasIngredient</label>
         <link refid="classendstone_1_1ComplexAliasIngredient"/>
-        <childnode refid="35" relation="public-inheritance">
+        <childnode refid="40" relation="public-inheritance">
         </childnode>
       </node>
       <node id="29">
@@ -243,6 +255,12 @@
         <childnode refid="2" relation="public-inheritance">
         </childnode>
       </node>
+      <node id="30">
+        <label>endstone::CookingRecipe</label>
+        <link refid="classendstone_1_1CookingRecipe"/>
+        <childnode refid="28" relation="public-inheritance">
+        </childnode>
+      </node>
       <node id="7">
         <label>endstone::CreatureSpawner</label>
         <link refid="classendstone_1_1CreatureSpawner"/>
@@ -255,16 +273,22 @@
         <childnode refid="12" relation="public-inheritance">
         </childnode>
       </node>
-      <node id="37">
+      <node id="42">
         <label>endstone::ExactIngredient</label>
         <link refid="classendstone_1_1ExactIngredient"/>
-        <childnode refid="35" relation="public-inheritance">
+        <childnode refid="40" relation="public-inheritance">
         </childnode>
       </node>
       <node id="5">
         <label>endstone::Furnace</label>
         <link refid="classendstone_1_1Furnace"/>
         <childnode refid="4" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="33">
+        <label>endstone::FurnaceRecipe</label>
+        <link refid="classendstone_1_1FurnaceRecipe"/>
+        <childnode refid="30" relation="public-inheritance">
         </childnode>
       </node>
       <node id="21">
@@ -285,16 +309,16 @@
         <childnode refid="1" relation="public-inheritance">
         </childnode>
       </node>
-      <node id="38">
+      <node id="43">
         <label>endstone::ItemTagIngredient</label>
         <link refid="classendstone_1_1ItemTagIngredient"/>
-        <childnode refid="35" relation="public-inheritance">
+        <childnode refid="40" relation="public-inheritance">
         </childnode>
       </node>
-      <node id="39">
+      <node id="44">
         <label>endstone::ItemTypeIngredient</label>
         <link refid="classendstone_1_1ItemTypeIngredient"/>
-        <childnode refid="35" relation="public-inheritance">
+        <childnode refid="40" relation="public-inheritance">
         </childnode>
       </node>
       <node id="6">
@@ -315,10 +339,10 @@
         <childnode refid="20" relation="public-inheritance">
         </childnode>
       </node>
-      <node id="40">
+      <node id="45">
         <label>endstone::MolangIngredient</label>
         <link refid="classendstone_1_1MolangIngredient"/>
-        <childnode refid="35" relation="public-inheritance">
+        <childnode refid="40" relation="public-inheritance">
         </childnode>
       </node>
       <node id="1">
@@ -361,19 +385,19 @@
         <childnode refid="1" relation="public-inheritance">
         </childnode>
       </node>
-      <node id="35">
+      <node id="40">
         <label>endstone::RecipeIngredient</label>
         <link refid="classendstone_1_1RecipeIngredient"/>
         <childnode refid="1" relation="public-inheritance">
         </childnode>
       </node>
-      <node id="30">
+      <node id="35">
         <label>endstone::ShapedRecipe</label>
         <link refid="classendstone_1_1ShapedRecipe"/>
         <childnode refid="28" relation="public-inheritance">
         </childnode>
       </node>
-      <node id="31">
+      <node id="36">
         <label>endstone::ShapelessRecipe</label>
         <link refid="classendstone_1_1ShapelessRecipe"/>
         <childnode refid="28" relation="public-inheritance">
@@ -385,22 +409,28 @@
         <childnode refid="2" relation="public-inheritance">
         </childnode>
       </node>
-      <node id="32">
+      <node id="37">
         <label>endstone::SmithingRecipe</label>
         <link refid="classendstone_1_1SmithingRecipe"/>
         <childnode refid="28" relation="public-inheritance">
         </childnode>
       </node>
-      <node id="33">
+      <node id="38">
         <label>endstone::SmithingTransformRecipe</label>
         <link refid="classendstone_1_1SmithingTransformRecipe"/>
-        <childnode refid="32" relation="public-inheritance">
+        <childnode refid="37" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="39">
+        <label>endstone::SmithingTrimRecipe</label>
+        <link refid="classendstone_1_1SmithingTrimRecipe"/>
+        <childnode refid="37" relation="public-inheritance">
         </childnode>
       </node>
       <node id="34">
-        <label>endstone::SmithingTrimRecipe</label>
-        <link refid="classendstone_1_1SmithingTrimRecipe"/>
-        <childnode refid="32" relation="public-inheritance">
+        <label>endstone::SmokingRecipe</label>
+        <link refid="classendstone_1_1SmokingRecipe"/>
+        <childnode refid="30" relation="public-inheritance">
         </childnode>
       </node>
       <node id="16">

@@ -1,0 +1,94 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.8" xml:lang="en-US">
+  <compounddef id="classendstone_1_1BlastingRecipe" kind="class" language="C++" prot="public">
+    <compoundname>endstone::BlastingRecipe</compoundname>
+    <basecompoundref refid="classendstone_1_1CookingRecipe" prot="public" virt="non-virtual">endstone::CookingRecipe</basecompoundref>
+    <includes refid="blasting__recipe_8h" local="no">endstone/inventory/blasting_recipe.h</includes>
+    <sectiondef kind="public-func">
+      <memberdef kind="function" id="classendstone_1_1BlastingRecipe_1accb86fd8f04cbbf04fe8640b69bf23d4" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>endstone::BlastingRecipe::~BlastingRecipe</definition>
+        <argsstring>() override=default</argsstring>
+        <name>~BlastingRecipe</name>
+        <qualifiedname>endstone::BlastingRecipe::~BlastingRecipe</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/inventory/blasting_recipe.h" line="25" column="5"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+<para>Represents a blasting recipe. </para>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="1">
+        <label>endstone::BlastingRecipe</label>
+        <link refid="classendstone_1_1BlastingRecipe"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>endstone::CookingRecipe</label>
+        <link refid="classendstone_1_1CookingRecipe"/>
+        <childnode refid="3" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="4">
+        <label>endstone::Object</label>
+        <link refid="classendstone_1_1Object"/>
+      </node>
+      <node id="3">
+        <label>endstone::Recipe</label>
+        <link refid="classendstone_1_1Recipe"/>
+        <childnode refid="4" relation="public-inheritance">
+        </childnode>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="1">
+        <label>endstone::BlastingRecipe</label>
+        <link refid="classendstone_1_1BlastingRecipe"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>endstone::CookingRecipe</label>
+        <link refid="classendstone_1_1CookingRecipe"/>
+        <childnode refid="3" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="4">
+        <label>endstone::Object</label>
+        <link refid="classendstone_1_1Object"/>
+      </node>
+      <node id="3">
+        <label>endstone::Recipe</label>
+        <link refid="classendstone_1_1Recipe"/>
+        <childnode refid="4" relation="public-inheritance">
+        </childnode>
+      </node>
+    </collaborationgraph>
+    <location file="include/endstone/inventory/blasting_recipe.h" line="23" column="1" bodyfile="include/endstone/inventory/blasting_recipe.h" bodystart="23" bodyend="26"/>
+    <listofallmembers>
+      <member refid="classendstone_1_1Object_1a798b5128ce018bbbe8ca949ba78c3db1" prot="public" virt="non-virtual"><scope>endstone::BlastingRecipe</scope><name>as</name></member>
+      <member refid="classendstone_1_1Object_1ae0f38a62da4c186fce272145e2590cc1" prot="public" virt="non-virtual"><scope>endstone::BlastingRecipe</scope><name>as</name></member>
+      <member refid="classendstone_1_1Object_1a3e2df17c95cf63580e95c84f783636c4" prot="public" virt="pure-virtual"><scope>endstone::BlastingRecipe</scope><name>getClassInfo</name></member>
+      <member refid="classendstone_1_1Recipe_1ad61757005d71bc6bf9c9addb43c75d49" prot="public" virt="pure-virtual"><scope>endstone::BlastingRecipe</scope><name>getId</name></member>
+      <member refid="classendstone_1_1Recipe_1ab9974a01f5e5570b0c2b9b88b9fb7b58" prot="public" virt="pure-virtual"><scope>endstone::BlastingRecipe</scope><name>getIngredients</name></member>
+      <member refid="classendstone_1_1CookingRecipe_1a086818bb7b3d1d4019dff2d6ad8ed5ba" prot="public" virt="pure-virtual"><scope>endstone::BlastingRecipe</scope><name>getInputChoice</name></member>
+      <member refid="classendstone_1_1Recipe_1a4e20782db3c7f6ea868059af8f2b1cc1" prot="public" virt="pure-virtual"><scope>endstone::BlastingRecipe</scope><name>getResult</name></member>
+      <member refid="classendstone_1_1Recipe_1ab353c82a04f30ce3a1d89d78d1ffe043" prot="public" virt="pure-virtual"><scope>endstone::BlastingRecipe</scope><name>getTag</name></member>
+      <member refid="classendstone_1_1Object_1ae8213ae15ad1b14e4631399c6b18960a" prot="public" virt="non-virtual"><scope>endstone::BlastingRecipe</scope><name>is</name></member>
+      <member refid="classendstone_1_1Object_1a1f8951c4894c2b8288fd4ef500218771" prot="public" virt="pure-virtual"><scope>endstone::BlastingRecipe</scope><name>isInstanceOf</name></member>
+      <member refid="classendstone_1_1BlastingRecipe_1accb86fd8f04cbbf04fe8640b69bf23d4" prot="public" virt="non-virtual"><scope>endstone::BlastingRecipe</scope><name>~BlastingRecipe</name></member>
+      <member refid="classendstone_1_1CookingRecipe_1af0bb231eea60f0a3808750a36ca9262d" prot="public" virt="non-virtual"><scope>endstone::BlastingRecipe</scope><name>~CookingRecipe</name></member>
+      <member refid="classendstone_1_1Object_1adfddc886af4b1d0e09ddac7d0391b4d2" prot="public" virt="virtual"><scope>endstone::BlastingRecipe</scope><name>~Object</name></member>
+      <member refid="classendstone_1_1Recipe_1a8252ec2109ad301042cda25df98b923e" prot="public" virt="non-virtual"><scope>endstone::BlastingRecipe</scope><name>~Recipe</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

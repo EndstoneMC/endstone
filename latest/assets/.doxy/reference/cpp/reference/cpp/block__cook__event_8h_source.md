@@ -28,6 +28,7 @@
 
 #include "endstone/event/block/block_event.h"
 #include "endstone/event/cancellable.h"
+#include "endstone/inventory/cooking_recipe.h"
 #include "endstone/inventory/item_stack.h"
 
 namespace endstone {
@@ -35,8 +36,9 @@ class BlockCookEvent : public Cancellable<BlockEvent> {
 public:
     ENDSTONE_EVENT(BlockCookEvent);
 
-    BlockCookEvent(const NotNull<Block> &block, ItemStack source, ItemStack result)
-        : Cancellable(block), source_(std::move(source)), result_(std::move(result))
+    BlockCookEvent(const NotNull<Block> &block, ItemStack source, ItemStack result,
+                   Nullable<CookingRecipe> recipe = nullptr)
+        : Cancellable(block), source_(std::move(source)), result_(std::move(result)), recipe_(std::move(recipe))
     {
     }
 
@@ -46,9 +48,12 @@ public:
 
     void setResult(ItemStack result) { result_ = std::move(result); }
 
+    [[nodiscard]] Nullable<CookingRecipe> getRecipe() const { return recipe_; }
+
 private:
     ItemStack source_;
     ItemStack result_;
+    Nullable<CookingRecipe> recipe_;
 };
 }  // namespace endstone
 ```

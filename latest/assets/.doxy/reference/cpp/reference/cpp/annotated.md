@@ -33,6 +33,7 @@ Here are the classes, structs, unions and interfaces with brief descriptions:
     * **class** [**BanEntry**](classendstone_1_1BanEntry.md) _A single entry from a ban list._     
     * **class** [**BanList**](classendstone_1_1BanList.md) _Represents a ban list, containing bans._     
     * **class** [**Biome**](classendstone_1_1Biome.md) 
+    * **class** [**BlastingRecipe**](classendstone_1_1BlastingRecipe.md) _Represents a blasting recipe._     
     * **class** [**Block**](classendstone_1_1Block.md) _Represents a block._     
     * **class** [**BlockBreakEvent**](classendstone_1_1BlockBreakEvent.md) _Called when a block is broken by a player._     
     * **class** [**BlockCommandSender**](classendstone_1_1BlockCommandSender.md) _Represents a block command sender._     
@@ -54,6 +55,7 @@ Here are the classes, structs, unions and interfaces with brief descriptions:
     * **class** [**BroadcastMessageEvent**](classendstone_1_1BroadcastMessageEvent.md) [_**Event**_](classendstone_1_1Event.md) _triggered for server broadcast messages such as from_[_**Server::broadcast()**_](classendstone_1_1Server.md#function-broadcast) _._    
     * **class** [**Button**](classendstone_1_1Button.md) _Represents a button with text and an optional icon._     
     * **class** [**Campfire**](classendstone_1_1Campfire.md) _Represents a captured state of a campfire._     
+    * **class** [**CampfireRecipe**](classendstone_1_1CampfireRecipe.md) _Represents a campfire recipe._     
     * **class** [**Cancellable**](classendstone_1_1Cancellable.md) _A type characterizing events that may be cancelled by a plugin or the server._     
     * **class** [**CauldronLevelChangeEvent**](classendstone_1_1CauldronLevelChangeEvent.md) _Called when a cauldron's level or contents change._     
     * **class** [**Chunk**](classendstone_1_1Chunk.md) _Represents a chunk of blocks._     
@@ -74,6 +76,7 @@ Here are the classes, structs, unions and interfaces with brief descriptions:
     * **class** [**CompoundTag**](classendstone_1_1CompoundTag.md) _An NBT tag holding a set of named child tags, keyed by string._     
     * **class** [**ConsoleCommandSender**](classendstone_1_1ConsoleCommandSender.md) _Represents a console command sender._ 
     * **class** [**Container**](classendstone_1_1Container.md) _Represents a captured state of a container block, such as a chest._     
+    * **class** [**CookingRecipe**](classendstone_1_1CookingRecipe.md) _Represents a cooking recipe._     
     * **class** [**CreatureSpawner**](classendstone_1_1CreatureSpawner.md) _Represents a captured state of a creature spawner._     
     * **class** [**Criteria**](classendstone_1_1Criteria.md) _Represents a scoreboard criteria._     
     * **class** [**CrossbowMeta**](classendstone_1_1CrossbowMeta.md) _Represents the meta for a crossbow that can have a charged projectile._     
@@ -88,12 +91,14 @@ Here are the classes, structs, unions and interfaces with brief descriptions:
     * **class** [**Dropdown**](classendstone_1_1Dropdown.md) _Represents a dropdown with a set of predefined options._     
     * **class** [**Effect**](classendstone_1_1Effect.md) _Represents an effect that can be added to a_ [_**Mob**_](classendstone_1_1Mob.md) _._    
     * **class** [**EffectType**](classendstone_1_1EffectType.md) _Represents an effect type._     
+    * **class** [**EnchantItemEvent**](classendstone_1_1EnchantItemEvent.md) _Called when a player enchants an item at an enchanting table._     
     * **class** [**Enchantment**](classendstone_1_1Enchantment.md) _Represents an enchantment that may be added to armor, weapons, tools or other items._     
     * **class** [**Event**](classendstone_1_1Event.md) _Represents an event._     
     * **class** [**EventHandler**](classendstone_1_1EventHandler.md) _Represents a registered_ [_**EventHandler**_](classendstone_1_1EventHandler.md) _which associates with a_[_**Plugin**_](classendstone_1_1Plugin.md) _._    
     * **class** [**ExactIngredient**](classendstone_1_1ExactIngredient.md) _Represents an ingredient that matches one item with one exact data value._     
     * **class** [**Form**](classendstone_1_1Form.md) _Represents a generic form._     
     * **class** [**Furnace**](classendstone_1_1Furnace.md) _Represents a captured state of a furnace._     
+    * **class** [**FurnaceRecipe**](classendstone_1_1FurnaceRecipe.md) _Represents a furnace recipe._     
     * **class** [**GameRule**](classendstone_1_1GameRule.md) _Represents a game rule._     
     * **class** [**GameRuleId**](classendstone_1_1GameRuleId.md) _Represents the identifier of a game rule, carrying the type of the rule's value._     
     * **class** [**HandlerList**](classendstone_1_1HandlerList.md) _A list of event handlers._     
@@ -240,6 +245,7 @@ Here are the classes, structs, unions and interfaces with brief descriptions:
     * **class** [**SmithingRecipe**](classendstone_1_1SmithingRecipe.md) _Represents a smithing recipe._     
     * **class** [**SmithingTransformRecipe**](classendstone_1_1SmithingTransformRecipe.md) _Represents a smithing transform recipe._     
     * **class** [**SmithingTrimRecipe**](classendstone_1_1SmithingTrimRecipe.md) _Represents a smithing trim recipe._     
+    * **class** [**SmokingRecipe**](classendstone_1_1SmokingRecipe.md) _Represents a smoking recipe._     
     * **class** [**SocketAddress**](classendstone_1_1SocketAddress.md) _Represents an IP Socket Address (hostname + port number)._     
     * **class** [**StepSlider**](classendstone_1_1StepSlider.md) _Represents a step slider with a set of predefined options._     
     * **class** [**Task**](classendstone_1_1Task.md) _Represents a task being executed by the scheduler._     

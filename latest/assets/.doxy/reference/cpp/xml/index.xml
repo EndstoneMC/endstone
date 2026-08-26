@@ -452,6 +452,9 @@
   </compound>
   <compound refid="classendstone_1_1Biome" kind="class"><name>endstone::Biome</name>
   </compound>
+  <compound refid="classendstone_1_1BlastingRecipe" kind="class"><name>endstone::BlastingRecipe</name>
+    <member refid="classendstone_1_1BlastingRecipe_1accb86fd8f04cbbf04fe8640b69bf23d4" kind="function"><name>~BlastingRecipe</name></member>
+  </compound>
   <compound refid="classendstone_1_1Block" kind="class"><name>endstone::Block</name>
     <member refid="classendstone_1_1Block_1a8a7ea0b990c4c610f75cf53bd5c6647b" kind="function"><name>~Block</name></member>
     <member refid="classendstone_1_1Block_1aeaba4f4bba5f4d96265c8b127c2e10b3" kind="function"><name>getType</name></member>
@@ -484,11 +487,13 @@
   <compound refid="classendstone_1_1BlockCookEvent" kind="class"><name>endstone::BlockCookEvent</name>
     <member refid="classendstone_1_1BlockCookEvent_1a7f7f2d10f5a29913743ed93805488733" kind="variable"><name>source_</name></member>
     <member refid="classendstone_1_1BlockCookEvent_1a6cdcc8eb703aa6127446963a1e3662a4" kind="variable"><name>result_</name></member>
+    <member refid="classendstone_1_1BlockCookEvent_1aab37e5e45f810cb96e714e9772d9852c" kind="variable"><name>recipe_</name></member>
     <member refid="classendstone_1_1BlockCookEvent_1a0c022b567cdab73d5f74da17326cd88e" kind="function"><name>ENDSTONE_EVENT</name></member>
-    <member refid="classendstone_1_1BlockCookEvent_1aba8e47398af2cc9229089f6be192d719" kind="function"><name>BlockCookEvent</name></member>
+    <member refid="classendstone_1_1BlockCookEvent_1a0b301b0a702f5dcee43588b0816b2825" kind="function"><name>BlockCookEvent</name></member>
     <member refid="classendstone_1_1BlockCookEvent_1a48bbbed0ceebb9f258cb7386ad47b15e" kind="function"><name>getSource</name></member>
     <member refid="classendstone_1_1BlockCookEvent_1a0b7b3c972fa4056c0598cba0a6259b1a" kind="function"><name>getResult</name></member>
     <member refid="classendstone_1_1BlockCookEvent_1abb5195f0935e9caa43421e261728ec06" kind="function"><name>setResult</name></member>
+    <member refid="classendstone_1_1BlockCookEvent_1ac12f2cd0536c72f56f637e1129553f84" kind="function"><name>getRecipe</name></member>
   </compound>
   <compound refid="classendstone_1_1BlockData" kind="class"><name>endstone::BlockData</name>
     <member refid="classendstone_1_1BlockData_1afe42c3c7cc62c74f14f95c02e58c576e" kind="function"><name>~BlockData</name></member>
@@ -638,6 +643,9 @@
     <member refid="classendstone_1_1Campfire_1a3aba685870ee28dd84891167535fd574" kind="function"><name>setItem</name></member>
     <member refid="classendstone_1_1Campfire_1ab206115a9d2284df9cdf6b39c7548458" kind="function"><name>getCookTime</name></member>
     <member refid="classendstone_1_1Campfire_1a052534c362511e2d990cb5cbd79a1eaf" kind="function"><name>setCookTime</name></member>
+  </compound>
+  <compound refid="classendstone_1_1CampfireRecipe" kind="class"><name>endstone::CampfireRecipe</name>
+    <member refid="classendstone_1_1CampfireRecipe_1aa290c51da2639e468a94150c3f606d41" kind="function"><name>~CampfireRecipe</name></member>
   </compound>
   <compound refid="classendstone_1_1Cancellable" kind="class"><name>endstone::Cancellable</name>
     <member refid="classendstone_1_1Cancellable_1a268b73cc5bda0fa5923336d031814faa" kind="function"><name>isCancelled</name></member>
@@ -912,6 +920,10 @@
   <compound refid="classendstone_1_1Container" kind="class"><name>endstone::Container</name>
     <member refid="classendstone_1_1Container_1a9d0b9daf34f014c3e79fffeff6043758" kind="function"><name>getInventory</name></member>
   </compound>
+  <compound refid="classendstone_1_1CookingRecipe" kind="class"><name>endstone::CookingRecipe</name>
+    <member refid="classendstone_1_1CookingRecipe_1af0bb231eea60f0a3808750a36ca9262d" kind="function"><name>~CookingRecipe</name></member>
+    <member refid="classendstone_1_1CookingRecipe_1a086818bb7b3d1d4019dff2d6ad8ed5ba" kind="function"><name>getInputChoice</name></member>
+  </compound>
   <compound refid="classendstone_1_1CreatureSpawner" kind="class"><name>endstone::CreatureSpawner</name>
     <member refid="classendstone_1_1CreatureSpawner_1a955b85a4b4427806286ebefb7ec4b103" kind="function"><name>getSpawnedType</name></member>
     <member refid="classendstone_1_1CreatureSpawner_1a85b9e84f8eb3416bd832befc737cce20" kind="function"><name>setSpawnedType</name></member>
@@ -1088,6 +1100,26 @@
     <member refid="classendstone_1_1EffectType_1a99c1d88dc16a4c3e25af259303b6d45f" kind="variable"><name>Infested</name></member>
     <member refid="classendstone_1_1EffectType_1a455ec17fee0ef6334c2231c509df34f0" kind="variable"><name>RaidOmen</name></member>
     <member refid="classendstone_1_1EffectType_1a7cb484582e16e833d637f39266a26b0d" kind="variable"><name>BreathOfTheNautilus</name></member>
+  </compound>
+  <compound refid="classendstone_1_1EnchantItemEvent" kind="class"><name>endstone::EnchantItemEvent</name>
+    <member refid="classendstone_1_1EnchantItemEvent_1a76e81e222cefe3abe8091c6db5e393b3" kind="typedef"><name>Enchantments</name></member>
+    <member refid="classendstone_1_1EnchantItemEvent_1a0ce73fdb16b6f49b144f104c3eedf831" kind="variable"><name>enchanter_</name></member>
+    <member refid="classendstone_1_1EnchantItemEvent_1a9d8a7213d1ad6374d0f93188b85e37b8" kind="variable"><name>enchant_block_</name></member>
+    <member refid="classendstone_1_1EnchantItemEvent_1afabf79497d8058d993807ca472121612" kind="variable"><name>item_</name></member>
+    <member refid="classendstone_1_1EnchantItemEvent_1a824818eabf6232cd0a170adb96c4acf7" kind="variable"><name>exp_level_cost_</name></member>
+    <member refid="classendstone_1_1EnchantItemEvent_1a76b05b9908dbca18148e427736e5f2fb" kind="variable"><name>enchants_to_add_</name></member>
+    <member refid="classendstone_1_1EnchantItemEvent_1a24135e358502546d63241b3b5543b547" kind="variable"><name>which_button_</name></member>
+    <member refid="classendstone_1_1EnchantItemEvent_1a28e90ac95ff5436578e5de0bdbc3814e" kind="function"><name>ENDSTONE_EVENT</name></member>
+    <member refid="classendstone_1_1EnchantItemEvent_1a6c894fb0bd7c83d9f3c8c1e49831dbd7" kind="function"><name>EnchantItemEvent</name></member>
+    <member refid="classendstone_1_1EnchantItemEvent_1a8b76e4807521e11b6e7d22b67db7c2e5" kind="function"><name>getEnchanter</name></member>
+    <member refid="classendstone_1_1EnchantItemEvent_1a6ef436833e04a6b0f16ebb1affcb4d2c" kind="function"><name>getEnchantBlock</name></member>
+    <member refid="classendstone_1_1EnchantItemEvent_1a275a6036e30490a2ffdece7208a7b8c6" kind="function"><name>getItem</name></member>
+    <member refid="classendstone_1_1EnchantItemEvent_1a94e7c0849397966d84ab2138d5538a00" kind="function"><name>setItem</name></member>
+    <member refid="classendstone_1_1EnchantItemEvent_1a629482275693f8dc61ab3da2a81259ea" kind="function"><name>getExpLevelCost</name></member>
+    <member refid="classendstone_1_1EnchantItemEvent_1acdadb5768f160e38c286d72ed03db481" kind="function"><name>setExpLevelCost</name></member>
+    <member refid="classendstone_1_1EnchantItemEvent_1a5ca38b580cc4d4440f26759bd5d7236d" kind="function"><name>getEnchantsToAdd</name></member>
+    <member refid="classendstone_1_1EnchantItemEvent_1a4c5f362cefa5257b8198b3cdc3b96393" kind="function"><name>getEnchantsToAdd</name></member>
+    <member refid="classendstone_1_1EnchantItemEvent_1a603b95ed6a3f3d65708f0a2273c081c1" kind="function"><name>whichButton</name></member>
   </compound>
   <compound refid="classendstone_1_1Enchantment" kind="class"><name>endstone::Enchantment</name>
     <member refid="classendstone_1_1Enchantment_1ac7918f3e3cab412ff65c436a05b85889" kind="variable"><name>Protection</name></member>
@@ -1290,6 +1322,9 @@
     <member refid="classendstone_1_1Furnace_1ae92fbdb9ff61675211b5100015081588" kind="function"><name>setBurnTime</name></member>
     <member refid="classendstone_1_1Furnace_1a69f2637aff4d3baaa34e59744f4233e6" kind="function"><name>getCookTime</name></member>
     <member refid="classendstone_1_1Furnace_1a5cd7654d9be4bc543ef80e92bce8aacc" kind="function"><name>setCookTime</name></member>
+  </compound>
+  <compound refid="classendstone_1_1FurnaceRecipe" kind="class"><name>endstone::FurnaceRecipe</name>
+    <member refid="classendstone_1_1FurnaceRecipe_1a889ecb9de16517794cc3e562638cf69d" kind="function"><name>~FurnaceRecipe</name></member>
   </compound>
   <compound refid="classendstone_1_1GameRule" kind="class"><name>endstone::GameRule</name>
     <member refid="classendstone_1_1GameRule_1a826159553a9d4f87d4fae744ad622494" kind="variable"><name>CommandBlockOutput</name></member>
@@ -3155,6 +3190,9 @@
     <member refid="classendstone_1_1SmithingTrimRecipe_1a170abfa36bc685dda72e3336411fc9c7" kind="function"><name>~SmithingTrimRecipe</name></member>
     <member refid="classendstone_1_1SmithingTrimRecipe_1a50bcbd929db9884a7c17f412e12ced64" kind="function"><name>getTemplate</name></member>
   </compound>
+  <compound refid="classendstone_1_1SmokingRecipe" kind="class"><name>endstone::SmokingRecipe</name>
+    <member refid="classendstone_1_1SmokingRecipe_1a0afc7ba03bbe62251f7eb7f03c393d6d" kind="function"><name>~SmokingRecipe</name></member>
+  </compound>
   <compound refid="classendstone_1_1SocketAddress" kind="class"><name>endstone::SocketAddress</name>
     <member refid="classendstone_1_1SocketAddress_1a4fe90c360d5406ed2edd091f1f707b57" kind="variable"><name>hostname_</name></member>
     <member refid="classendstone_1_1SocketAddress_1af8cb55476a46c083d6656eb0b8f9b22c" kind="variable"><name>port_</name></member>
@@ -3754,6 +3792,8 @@
   </compound>
   <compound refid="unknown__command__event_8h" kind="file"><name>unknown_command_event.h</name>
   </compound>
+  <compound refid="enchant__item__event_8h" kind="file"><name>enchant_item_event.h</name>
+  </compound>
   <compound refid="event_8h" kind="file"><name>event.h</name>
     <member refid="event_8h_1a80b507d6ebc2a0dd5db7cabd52a9790f" kind="define"><name>ENDSTONE_EVENT</name></member>
   </compound>
@@ -3931,13 +3971,21 @@
   </compound>
   <compound refid="input_8h" kind="file"><name>input.h</name>
   </compound>
+  <compound refid="blasting__recipe_8h" kind="file"><name>blasting_recipe.h</name>
+  </compound>
+  <compound refid="campfire__recipe_8h" kind="file"><name>campfire_recipe.h</name>
+  </compound>
   <compound refid="complex__alias__ingredient_8h" kind="file"><name>complex_alias_ingredient.h</name>
   </compound>
   <compound refid="complex__recipe_8h" kind="file"><name>complex_recipe.h</name>
   </compound>
+  <compound refid="cooking__recipe_8h" kind="file"><name>cooking_recipe.h</name>
+  </compound>
   <compound refid="equipment__slot_8h" kind="file"><name>equipment_slot.h</name>
   </compound>
   <compound refid="exact__ingredient_8h" kind="file"><name>exact_ingredient.h</name>
+  </compound>
+  <compound refid="furnace__recipe_8h" kind="file"><name>furnace_recipe.h</name>
   </compound>
   <compound refid="inventory_8h" kind="file"><name>inventory.h</name>
   </compound>
@@ -3980,6 +4028,8 @@
   <compound refid="smithing__transform__recipe_8h" kind="file"><name>smithing_transform_recipe.h</name>
   </compound>
   <compound refid="smithing__trim__recipe_8h" kind="file"><name>smithing_trim_recipe.h</name>
+  </compound>
+  <compound refid="smoking__recipe_8h" kind="file"><name>smoking_recipe.h</name>
   </compound>
   <compound refid="json_8h" kind="file"><name>json.h</name>
   </compound>
@@ -4158,6 +4208,8 @@
   <compound refid="dir_035306890ec6a3fa870e30b726ac5ffc" kind="dir"><name>include/endstone/form/controls</name>
   </compound>
   <compound refid="dir_d35032eb9ca22acb8eface5f2c8b6a35" kind="dir"><name>include/endstone/damage</name>
+  </compound>
+  <compound refid="dir_93880425cc5b6b6884a20fefe96c90bf" kind="dir"><name>include/endstone/event/enchantment</name>
   </compound>
   <compound refid="dir_5154bf3e53eefb0e1f350f5612107967" kind="dir"><name>include/endstone/enchantments</name>
   </compound>

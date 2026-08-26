@@ -3,10 +3,14 @@
   <compounddef id="dir_d1e84b530b14f41e8b6f5ec1b5dee76c" kind="dir">
     <compoundname>include/endstone/inventory</compoundname>
     <innerdir refid="dir_2d728641c8c30e7cdff7ab60efc98406">include/endstone/inventory/meta</innerdir>
+    <innerfile refid="blasting__recipe_8h">blasting_recipe.h</innerfile>
+    <innerfile refid="campfire__recipe_8h">campfire_recipe.h</innerfile>
     <innerfile refid="complex__alias__ingredient_8h">complex_alias_ingredient.h</innerfile>
     <innerfile refid="complex__recipe_8h">complex_recipe.h</innerfile>
+    <innerfile refid="cooking__recipe_8h">cooking_recipe.h</innerfile>
     <innerfile refid="equipment__slot_8h">equipment_slot.h</innerfile>
     <innerfile refid="exact__ingredient_8h">exact_ingredient.h</innerfile>
+    <innerfile refid="furnace__recipe_8h">furnace_recipe.h</innerfile>
     <innerfile refid="inventory_8h">inventory.h</innerfile>
     <innerfile refid="item__factory_8h">item_factory.h</innerfile>
     <innerfile refid="item__stack_8h">item_stack.h</innerfile>
@@ -22,6 +26,7 @@
     <innerfile refid="smithing__recipe_8h">smithing_recipe.h</innerfile>
     <innerfile refid="smithing__transform__recipe_8h">smithing_transform_recipe.h</innerfile>
     <innerfile refid="smithing__trim__recipe_8h">smithing_trim_recipe.h</innerfile>
+    <innerfile refid="smoking__recipe_8h">smoking_recipe.h</innerfile>
     <briefdescription>
     </briefdescription>
     <detaileddescription>

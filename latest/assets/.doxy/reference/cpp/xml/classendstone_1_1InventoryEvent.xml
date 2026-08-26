@@ -72,11 +72,17 @@
         <childnode refid="1" relation="public-inheritance">
         </childnode>
       </node>
+      <node id="4">
+        <label>endstone::EnchantItemEvent</label>
+        <link refid="classendstone_1_1EnchantItemEvent"/>
+        <childnode refid="3" relation="public-inheritance">
+        </childnode>
+      </node>
       <node id="2">
         <label>endstone::Event</label>
         <link refid="classendstone_1_1Event"/>
       </node>
-      <node id="6">
+      <node id="7">
         <label>endstone::InventoryCloseEvent</label>
         <link refid="classendstone_1_1InventoryCloseEvent"/>
         <childnode refid="1" relation="public-inheritance">
@@ -88,13 +94,13 @@
         <childnode refid="2" relation="public-inheritance">
         </childnode>
       </node>
-      <node id="4">
+      <node id="5">
         <label>endstone::InventoryInteractEvent</label>
         <link refid="classendstone_1_1InventoryInteractEvent"/>
         <childnode refid="3" relation="public-inheritance">
         </childnode>
       </node>
-      <node id="5">
+      <node id="6">
         <label>endstone::InventoryOpenEvent</label>
         <link refid="classendstone_1_1InventoryOpenEvent"/>
         <childnode refid="3" relation="public-inheritance">

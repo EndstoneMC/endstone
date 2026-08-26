@@ -1,0 +1,461 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.8" xml:lang="en-US">
+  <compounddef id="classendstone_1_1EnchantItemEvent" kind="class" language="C++" prot="public" final="yes">
+    <compoundname>endstone::EnchantItemEvent</compoundname>
+    <basecompoundref refid="classendstone_1_1Cancellable" prot="public" virt="non-virtual">endstone::Cancellable&lt; InventoryEvent &gt;</basecompoundref>
+    <includes refid="enchant__item__event_8h" local="no">endstone/event/enchantment/enchant_item_event.h</includes>
+    <sectiondef kind="public-type">
+      <memberdef kind="typedef" id="classendstone_1_1EnchantItemEvent_1a76e81e222cefe3abe8091c6db5e393b3" prot="public" static="no">
+        <type>std::unordered_map&lt; <ref refid="classendstone_1_1Identifier" kindref="compound">const</ref> <ref refid="classendstone_1_1Enchantment" kindref="compound">Enchantment</ref> *, <ref refid="classendstone_1_1Identifier" kindref="compound">int</ref> &gt;</type>
+        <definition>using endstone::EnchantItemEvent::Enchantments =  std::unordered_map&lt;const Enchantment *, int&gt;</definition>
+        <argsstring></argsstring>
+        <name>Enchantments</name>
+        <qualifiedname>endstone::EnchantItemEvent::Enchantments</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/event/enchantment/enchant_item_event.h" line="40" column="5" bodyfile="include/endstone/event/enchantment/enchant_item_event.h" bodystart="40" bodyend="-1"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="private-attrib">
+      <memberdef kind="variable" id="classendstone_1_1EnchantItemEvent_1a0ce73fdb16b6f49b144f104c3eedf831" prot="private" static="no" mutable="no">
+        <type><ref refid="classendstone_1_1NotNull" kindref="compound">NotNull</ref>&lt; <ref refid="classendstone_1_1Player" kindref="compound">Player</ref> &gt;</type>
+        <definition>NotNull&lt;Player&gt; endstone::EnchantItemEvent::enchanter_</definition>
+        <argsstring></argsstring>
+        <name>enchanter_</name>
+        <qualifiedname>endstone::EnchantItemEvent::enchanter_</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/event/enchantment/enchant_item_event.h" line="117" column="13" bodyfile="include/endstone/event/enchantment/enchant_item_event.h" bodystart="117" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classendstone_1_1EnchantItemEvent_1a9d8a7213d1ad6374d0f93188b85e37b8" prot="private" static="no" mutable="no">
+        <type><ref refid="classendstone_1_1NotNull" kindref="compound">NotNull</ref>&lt; <ref refid="classendstone_1_1Block" kindref="compound">Block</ref> &gt;</type>
+        <definition>NotNull&lt;Block&gt; endstone::EnchantItemEvent::enchant_block_</definition>
+        <argsstring></argsstring>
+        <name>enchant_block_</name>
+        <qualifiedname>endstone::EnchantItemEvent::enchant_block_</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/event/enchantment/enchant_item_event.h" line="118" column="13" bodyfile="include/endstone/event/enchantment/enchant_item_event.h" bodystart="118" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classendstone_1_1EnchantItemEvent_1afabf79497d8058d993807ca472121612" prot="private" static="no" mutable="no">
+        <type><ref refid="classendstone_1_1ItemStack" kindref="compound">ItemStack</ref></type>
+        <definition>ItemStack endstone::EnchantItemEvent::item_</definition>
+        <argsstring></argsstring>
+        <name>item_</name>
+        <qualifiedname>endstone::EnchantItemEvent::item_</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/event/enchantment/enchant_item_event.h" line="119" column="15" bodyfile="include/endstone/event/enchantment/enchant_item_event.h" bodystart="119" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classendstone_1_1EnchantItemEvent_1a824818eabf6232cd0a170adb96c4acf7" prot="private" static="no" mutable="no">
+        <type><ref refid="classendstone_1_1Identifier" kindref="compound">int</ref></type>
+        <definition>int endstone::EnchantItemEvent::exp_level_cost_</definition>
+        <argsstring></argsstring>
+        <name>exp_level_cost_</name>
+        <qualifiedname>endstone::EnchantItemEvent::exp_level_cost_</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/event/enchantment/enchant_item_event.h" line="120" column="9" bodyfile="include/endstone/event/enchantment/enchant_item_event.h" bodystart="120" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classendstone_1_1EnchantItemEvent_1a76b05b9908dbca18148e427736e5f2fb" prot="private" static="no" mutable="no">
+        <type>Enchantments</type>
+        <definition>Enchantments endstone::EnchantItemEvent::enchants_to_add_</definition>
+        <argsstring></argsstring>
+        <name>enchants_to_add_</name>
+        <qualifiedname>endstone::EnchantItemEvent::enchants_to_add_</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/event/enchantment/enchant_item_event.h" line="121" column="18" bodyfile="include/endstone/event/enchantment/enchant_item_event.h" bodystart="121" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classendstone_1_1EnchantItemEvent_1a24135e358502546d63241b3b5543b547" prot="private" static="no" mutable="no">
+        <type><ref refid="classendstone_1_1Identifier" kindref="compound">int</ref></type>
+        <definition>int endstone::EnchantItemEvent::which_button_</definition>
+        <argsstring></argsstring>
+        <name>which_button_</name>
+        <qualifiedname>endstone::EnchantItemEvent::which_button_</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/event/enchantment/enchant_item_event.h" line="122" column="9" bodyfile="include/endstone/event/enchantment/enchant_item_event.h" bodystart="122" bodyend="-1"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="public-func">
+      <memberdef kind="function" id="classendstone_1_1EnchantItemEvent_1a28e90ac95ff5436578e5de0bdbc3814e" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>endstone::EnchantItemEvent::ENDSTONE_EVENT</definition>
+        <argsstring>(EnchantItemEvent)</argsstring>
+        <name>ENDSTONE_EVENT</name>
+        <qualifiedname>endstone::EnchantItemEvent::ENDSTONE_EVENT</qualifiedname>
+        <param>
+          <type><ref refid="classendstone_1_1EnchantItemEvent" kindref="compound">EnchantItemEvent</ref></type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/event/enchantment/enchant_item_event.h" line="42" column="5"/>
+      </memberdef>
+      <memberdef kind="function" id="classendstone_1_1EnchantItemEvent_1a6c894fb0bd7c83d9f3c8c1e49831dbd7" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type></type>
+        <definition>endstone::EnchantItemEvent::EnchantItemEvent</definition>
+        <argsstring>(Inventory &amp;inventory, const NotNull&lt; Player &gt; &amp;enchanter, const NotNull&lt; Block &gt; &amp;enchant_block, ItemStack item, int exp_level_cost, Enchantments enchants_to_add, int which_button)</argsstring>
+        <name>EnchantItemEvent</name>
+        <qualifiedname>endstone::EnchantItemEvent::EnchantItemEvent</qualifiedname>
+        <param>
+          <type><ref refid="classendstone_1_1Inventory" kindref="compound">Inventory</ref> &amp;</type>
+          <declname>inventory</declname>
+        </param>
+        <param>
+          <type><ref refid="classendstone_1_1Identifier" kindref="compound">const</ref> <ref refid="classendstone_1_1NotNull" kindref="compound">NotNull</ref>&lt; <ref refid="classendstone_1_1Player" kindref="compound">Player</ref> &gt; &amp;</type>
+          <declname>enchanter</declname>
+        </param>
+        <param>
+          <type><ref refid="classendstone_1_1Identifier" kindref="compound">const</ref> <ref refid="classendstone_1_1NotNull" kindref="compound">NotNull</ref>&lt; <ref refid="classendstone_1_1Block" kindref="compound">Block</ref> &gt; &amp;</type>
+          <declname>enchant_block</declname>
+        </param>
+        <param>
+          <type><ref refid="classendstone_1_1ItemStack" kindref="compound">ItemStack</ref></type>
+          <declname>item</declname>
+        </param>
+        <param>
+          <type><ref refid="classendstone_1_1Identifier" kindref="compound">int</ref></type>
+          <declname>exp_level_cost</declname>
+        </param>
+        <param>
+          <type>Enchantments</type>
+          <declname>enchants_to_add</declname>
+        </param>
+        <param>
+          <type><ref refid="classendstone_1_1Identifier" kindref="compound">int</ref></type>
+          <declname>which_button</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/event/enchantment/enchant_item_event.h" line="44" column="5" bodyfile="include/endstone/event/enchantment/enchant_item_event.h" bodystart="44" bodyend="49"/>
+      </memberdef>
+      <memberdef kind="function" id="classendstone_1_1EnchantItemEvent_1a8b76e4807521e11b6e7d22b67db7c2e5" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type><ref refid="classendstone_1_1Identifier" kindref="compound">const</ref> <ref refid="classendstone_1_1NotNull" kindref="compound">NotNull</ref>&lt; <ref refid="classendstone_1_1Player" kindref="compound">Player</ref> &gt; &amp;</type>
+        <definition>const NotNull&lt; Player &gt; &amp; endstone::EnchantItemEvent::getEnchanter</definition>
+        <argsstring>() const</argsstring>
+        <name>getEnchanter</name>
+        <qualifiedname>endstone::EnchantItemEvent::getEnchanter</qualifiedname>
+        <briefdescription>
+<para>Gets the player enchanting the item. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="return"><para>the player enchanting the item </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/event/enchantment/enchant_item_event.h" line="56" column="20" bodyfile="include/endstone/event/enchantment/enchant_item_event.h" bodystart="56" bodyend="56"/>
+      </memberdef>
+      <memberdef kind="function" id="classendstone_1_1EnchantItemEvent_1a6ef436833e04a6b0f16ebb1affcb4d2c" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type><ref refid="classendstone_1_1Identifier" kindref="compound">const</ref> <ref refid="classendstone_1_1NotNull" kindref="compound">NotNull</ref>&lt; <ref refid="classendstone_1_1Block" kindref="compound">Block</ref> &gt; &amp;</type>
+        <definition>const NotNull&lt; Block &gt; &amp; endstone::EnchantItemEvent::getEnchantBlock</definition>
+        <argsstring>() const</argsstring>
+        <name>getEnchantBlock</name>
+        <qualifiedname>endstone::EnchantItemEvent::getEnchantBlock</qualifiedname>
+        <briefdescription>
+<para>Gets the enchanting table involved in this event. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="return"><para>the enchanting table </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/event/enchantment/enchant_item_event.h" line="63" column="20" bodyfile="include/endstone/event/enchantment/enchant_item_event.h" bodystart="63" bodyend="63"/>
+      </memberdef>
+      <memberdef kind="function" id="classendstone_1_1EnchantItemEvent_1a275a6036e30490a2ffdece7208a7b8c6" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type><ref refid="classendstone_1_1Identifier" kindref="compound">const</ref> <ref refid="classendstone_1_1ItemStack" kindref="compound">ItemStack</ref> &amp;</type>
+        <definition>const ItemStack &amp; endstone::EnchantItemEvent::getItem</definition>
+        <argsstring>() const</argsstring>
+        <name>getItem</name>
+        <qualifiedname>endstone::EnchantItemEvent::getItem</qualifiedname>
+        <briefdescription>
+<para>Gets the item being enchanted. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="return"><para>the item being enchanted </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/event/enchantment/enchant_item_event.h" line="70" column="22" bodyfile="include/endstone/event/enchantment/enchant_item_event.h" bodystart="70" bodyend="70"/>
+      </memberdef>
+      <memberdef kind="function" id="classendstone_1_1EnchantItemEvent_1a94e7c0849397966d84ab2138d5538a00" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type><ref refid="classendstone_1_1Identifier" kindref="compound">void</ref></type>
+        <definition>void endstone::EnchantItemEvent::setItem</definition>
+        <argsstring>(ItemStack item)</argsstring>
+        <name>setItem</name>
+        <qualifiedname>endstone::EnchantItemEvent::setItem</qualifiedname>
+        <param>
+          <type><ref refid="classendstone_1_1ItemStack" kindref="compound">ItemStack</ref></type>
+          <declname>item</declname>
+        </param>
+        <briefdescription>
+<para>Sets the item to enchant. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>item</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>the item to enchant </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/event/enchantment/enchant_item_event.h" line="77" column="10" bodyfile="include/endstone/event/enchantment/enchant_item_event.h" bodystart="77" bodyend="77"/>
+      </memberdef>
+      <memberdef kind="function" id="classendstone_1_1EnchantItemEvent_1a629482275693f8dc61ab3da2a81259ea" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type><ref refid="classendstone_1_1Identifier" kindref="compound">int</ref></type>
+        <definition>int endstone::EnchantItemEvent::getExpLevelCost</definition>
+        <argsstring>() const</argsstring>
+        <name>getExpLevelCost</name>
+        <qualifiedname>endstone::EnchantItemEvent::getExpLevelCost</qualifiedname>
+        <briefdescription>
+<para>Gets the minimum player level required by the selected option. </para>
+        </briefdescription>
+        <detaileddescription>
+<para>The number of levels consumed remains determined by the selected button.</para>
+<para><simplesect kind="return"><para>the minimum required player level </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/event/enchantment/enchant_item_event.h" line="86" column="10" bodyfile="include/endstone/event/enchantment/enchant_item_event.h" bodystart="86" bodyend="86"/>
+      </memberdef>
+      <memberdef kind="function" id="classendstone_1_1EnchantItemEvent_1acdadb5768f160e38c286d72ed03db481" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type><ref refid="classendstone_1_1Identifier" kindref="compound">void</ref></type>
+        <definition>void endstone::EnchantItemEvent::setExpLevelCost</definition>
+        <argsstring>(int exp_level_cost)</argsstring>
+        <name>setExpLevelCost</name>
+        <qualifiedname>endstone::EnchantItemEvent::setExpLevelCost</qualifiedname>
+        <param>
+          <type><ref refid="classendstone_1_1Identifier" kindref="compound">int</ref></type>
+          <declname>exp_level_cost</declname>
+        </param>
+        <briefdescription>
+<para>Sets the minimum player level required by the selected option. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>exp_level_cost</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>the minimum required player level </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/event/enchantment/enchant_item_event.h" line="93" column="10" bodyfile="include/endstone/event/enchantment/enchant_item_event.h" bodystart="93" bodyend="93"/>
+      </memberdef>
+      <memberdef kind="function" id="classendstone_1_1EnchantItemEvent_1a5ca38b580cc4d4440f26759bd5d7236d" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type><ref refid="classendstone_1_1Identifier" kindref="compound">const</ref> Enchantments &amp;</type>
+        <definition>const Enchantments &amp; endstone::EnchantItemEvent::getEnchantsToAdd</definition>
+        <argsstring>() const</argsstring>
+        <name>getEnchantsToAdd</name>
+        <qualifiedname>endstone::EnchantItemEvent::getEnchantsToAdd</qualifiedname>
+        <briefdescription>
+<para>Gets the enchantments that will be applied to the item. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="return"><para>the enchantments and their levels </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/event/enchantment/enchant_item_event.h" line="100" column="25" bodyfile="include/endstone/event/enchantment/enchant_item_event.h" bodystart="100" bodyend="100"/>
+      </memberdef>
+      <memberdef kind="function" id="classendstone_1_1EnchantItemEvent_1a4c5f362cefa5257b8198b3cdc3b96393" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>Enchantments &amp;</type>
+        <definition>Enchantments &amp; endstone::EnchantItemEvent::getEnchantsToAdd</definition>
+        <argsstring>()</argsstring>
+        <name>getEnchantsToAdd</name>
+        <qualifiedname>endstone::EnchantItemEvent::getEnchantsToAdd</qualifiedname>
+        <briefdescription>
+<para>Gets the enchantments that will be applied to the item. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="return"><para>the enchantments and their levels </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/event/enchantment/enchant_item_event.h" line="107" column="19" bodyfile="include/endstone/event/enchantment/enchant_item_event.h" bodystart="107" bodyend="107"/>
+      </memberdef>
+      <memberdef kind="function" id="classendstone_1_1EnchantItemEvent_1a603b95ed6a3f3d65708f0a2273c081c1" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type><ref refid="classendstone_1_1Identifier" kindref="compound">int</ref></type>
+        <definition>int endstone::EnchantItemEvent::whichButton</definition>
+        <argsstring>() const</argsstring>
+        <name>whichButton</name>
+        <qualifiedname>endstone::EnchantItemEvent::whichButton</qualifiedname>
+        <briefdescription>
+<para>Gets the selected enchanting button. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="return"><para>the selected button, from 0 to 2 </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/event/enchantment/enchant_item_event.h" line="114" column="10" bodyfile="include/endstone/event/enchantment/enchant_item_event.h" bodystart="114" bodyend="114"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+<para>Called when a player enchants an item at an enchanting table. </para>
+    </briefdescription>
+    <detaileddescription>
+<para><simplesect kind="note"><para>Cancelling the event leaves the item, the player&apos;s experience levels and the lapis lazuli untouched. </para>
+</simplesect>
+<simplesect kind="note"><para>Bedrock does not reveal a single hinted enchantment for an offer, so every enchantment the offer applies is listed in <ref refid="classendstone_1_1EnchantItemEvent_1a4c5f362cefa5257b8198b3cdc3b96393" kindref="member">getEnchantsToAdd()</ref>. </para>
+</simplesect>
+</para>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="2">
+        <label>endstone::Cancellable&lt; InventoryEvent &gt;</label>
+        <link refid="classendstone_1_1Cancellable"/>
+        <childnode refid="3" relation="public-inheritance">
+        </childnode>
+        <childnode refid="5" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="1">
+        <label>endstone::EnchantItemEvent</label>
+        <link refid="classendstone_1_1EnchantItemEvent"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="4">
+        <label>endstone::Event</label>
+        <link refid="classendstone_1_1Event"/>
+      </node>
+      <node id="5">
+        <label>endstone::ICancellable</label>
+        <link refid="classendstone_1_1ICancellable"/>
+      </node>
+      <node id="3">
+        <label>endstone::InventoryEvent</label>
+        <link refid="classendstone_1_1InventoryEvent"/>
+        <childnode refid="4" relation="public-inheritance">
+        </childnode>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="2">
+        <label>endstone::Cancellable&lt; InventoryEvent &gt;</label>
+        <link refid="classendstone_1_1Cancellable"/>
+        <childnode refid="3" relation="public-inheritance">
+        </childnode>
+        <childnode refid="5" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="1">
+        <label>endstone::EnchantItemEvent</label>
+        <link refid="classendstone_1_1EnchantItemEvent"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="4">
+        <label>endstone::Event</label>
+        <link refid="classendstone_1_1Event"/>
+      </node>
+      <node id="5">
+        <label>endstone::ICancellable</label>
+        <link refid="classendstone_1_1ICancellable"/>
+      </node>
+      <node id="3">
+        <label>endstone::InventoryEvent</label>
+        <link refid="classendstone_1_1InventoryEvent"/>
+        <childnode refid="4" relation="public-inheritance">
+        </childnode>
+      </node>
+    </collaborationgraph>
+    <location file="include/endstone/event/enchantment/enchant_item_event.h" line="38" column="1" bodyfile="include/endstone/event/enchantment/enchant_item_event.h" bodystart="38" bodyend="123"/>
+    <listofallmembers>
+      <member refid="classendstone_1_1Cancellable_1a3512b47db69c6001f5c0450051308327" prot="public" virt="virtual"><scope>endstone::EnchantItemEvent</scope><name>cancel</name></member>
+      <member refid="classendstone_1_1EnchantItemEvent_1a9d8a7213d1ad6374d0f93188b85e37b8" prot="private" virt="non-virtual"><scope>endstone::EnchantItemEvent</scope><name>enchant_block_</name></member>
+      <member refid="classendstone_1_1EnchantItemEvent_1a0ce73fdb16b6f49b144f104c3eedf831" prot="private" virt="non-virtual"><scope>endstone::EnchantItemEvent</scope><name>enchanter_</name></member>
+      <member refid="classendstone_1_1EnchantItemEvent_1a6c894fb0bd7c83d9f3c8c1e49831dbd7" prot="public" virt="non-virtual"><scope>endstone::EnchantItemEvent</scope><name>EnchantItemEvent</name></member>
+      <member refid="classendstone_1_1EnchantItemEvent_1a76e81e222cefe3abe8091c6db5e393b3" prot="public" virt="non-virtual"><scope>endstone::EnchantItemEvent</scope><name>Enchantments</name></member>
+      <member refid="classendstone_1_1EnchantItemEvent_1a76b05b9908dbca18148e427736e5f2fb" prot="private" virt="non-virtual"><scope>endstone::EnchantItemEvent</scope><name>enchants_to_add_</name></member>
+      <member refid="classendstone_1_1EnchantItemEvent_1a28e90ac95ff5436578e5de0bdbc3814e" prot="public" virt="non-virtual"><scope>endstone::EnchantItemEvent</scope><name>ENDSTONE_EVENT</name></member>
+      <member refid="classendstone_1_1Event_1a28cca8d74920493b449d035540acf023" prot="public" virt="non-virtual"><scope>endstone::EnchantItemEvent</scope><name>Event</name></member>
+      <member refid="classendstone_1_1Event_1a7199136ebb40e1441bc61e29f83c3cad" prot="public" virt="non-virtual"><scope>endstone::EnchantItemEvent</scope><name>Event</name></member>
+      <member refid="classendstone_1_1Event_1ad20bafd16e0671578e37390b95e5104c" prot="public" virt="non-virtual"><scope>endstone::EnchantItemEvent</scope><name>Event</name></member>
+      <member refid="classendstone_1_1EnchantItemEvent_1a824818eabf6232cd0a170adb96c4acf7" prot="private" virt="non-virtual"><scope>endstone::EnchantItemEvent</scope><name>exp_level_cost_</name></member>
+      <member refid="classendstone_1_1EnchantItemEvent_1a6ef436833e04a6b0f16ebb1affcb4d2c" prot="public" virt="non-virtual"><scope>endstone::EnchantItemEvent</scope><name>getEnchantBlock</name></member>
+      <member refid="classendstone_1_1EnchantItemEvent_1a8b76e4807521e11b6e7d22b67db7c2e5" prot="public" virt="non-virtual"><scope>endstone::EnchantItemEvent</scope><name>getEnchanter</name></member>
+      <member refid="classendstone_1_1EnchantItemEvent_1a5ca38b580cc4d4440f26759bd5d7236d" prot="public" virt="non-virtual"><scope>endstone::EnchantItemEvent</scope><name>getEnchantsToAdd</name></member>
+      <member refid="classendstone_1_1EnchantItemEvent_1a4c5f362cefa5257b8198b3cdc3b96393" prot="public" virt="non-virtual"><scope>endstone::EnchantItemEvent</scope><name>getEnchantsToAdd</name></member>
+      <member refid="classendstone_1_1Event_1a826fe74f9c4195a36a364b9aeeb321bb" prot="public" virt="pure-virtual"><scope>endstone::EnchantItemEvent</scope><name>getEventName</name></member>
+      <member refid="classendstone_1_1EnchantItemEvent_1a629482275693f8dc61ab3da2a81259ea" prot="public" virt="non-virtual"><scope>endstone::EnchantItemEvent</scope><name>getExpLevelCost</name></member>
+      <member refid="classendstone_1_1InventoryEvent_1ae4d05ecd0e9f81e263ac102d48cdfcf6" prot="public" virt="non-virtual"><scope>endstone::EnchantItemEvent</scope><name>getInventory</name></member>
+      <member refid="classendstone_1_1EnchantItemEvent_1a275a6036e30490a2ffdece7208a7b8c6" prot="public" virt="non-virtual"><scope>endstone::EnchantItemEvent</scope><name>getItem</name></member>
+      <member refid="classendstone_1_1InventoryEvent_1a5e7d601191283f7541f0620a81b5f82a" prot="public" virt="non-virtual"><scope>endstone::EnchantItemEvent</scope><name>InventoryEvent</name></member>
+      <member refid="classendstone_1_1Event_1ae89b54f63dc32b0c8797a59db69b6931" prot="public" virt="non-virtual"><scope>endstone::EnchantItemEvent</scope><name>isAsynchronous</name></member>
+      <member refid="classendstone_1_1Cancellable_1a268b73cc5bda0fa5923336d031814faa" prot="public" virt="virtual"><scope>endstone::EnchantItemEvent</scope><name>isCancelled</name></member>
+      <member refid="classendstone_1_1EnchantItemEvent_1afabf79497d8058d993807ca472121612" prot="private" virt="non-virtual"><scope>endstone::EnchantItemEvent</scope><name>item_</name></member>
+      <member refid="classendstone_1_1Event_1a44a4ff424a8b690c01a2afe10ae68d8f" prot="public" virt="non-virtual"><scope>endstone::EnchantItemEvent</scope><name>operator=</name></member>
+      <member refid="classendstone_1_1Event_1a1d7fc5400782d20be99a3636aa7f53b9" prot="public" virt="non-virtual"><scope>endstone::EnchantItemEvent</scope><name>operator=</name></member>
+      <member refid="classendstone_1_1Cancellable_1aa12df44bcb66924d06a689d0dd07865e" prot="public" virt="virtual"><scope>endstone::EnchantItemEvent</scope><name>setCancelled</name></member>
+      <member refid="classendstone_1_1EnchantItemEvent_1acdadb5768f160e38c286d72ed03db481" prot="public" virt="non-virtual"><scope>endstone::EnchantItemEvent</scope><name>setExpLevelCost</name></member>
+      <member refid="classendstone_1_1EnchantItemEvent_1a94e7c0849397966d84ab2138d5538a00" prot="public" virt="non-virtual"><scope>endstone::EnchantItemEvent</scope><name>setItem</name></member>
+      <member refid="classendstone_1_1EnchantItemEvent_1a24135e358502546d63241b3b5543b547" prot="private" virt="non-virtual"><scope>endstone::EnchantItemEvent</scope><name>which_button_</name></member>
+      <member refid="classendstone_1_1EnchantItemEvent_1a603b95ed6a3f3d65708f0a2273c081c1" prot="public" virt="non-virtual"><scope>endstone::EnchantItemEvent</scope><name>whichButton</name></member>
+      <member refid="classendstone_1_1Event_1a6aeaa8096baba90f8ace94106e0e05f3" prot="public" virt="virtual"><scope>endstone::EnchantItemEvent</scope><name>~Event</name></member>
+      <member refid="classendstone_1_1ICancellable_1ab6d311fcaa18971f69a1b23f5a856301" prot="public" virt="virtual"><scope>endstone::EnchantItemEvent</scope><name>~ICancellable</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

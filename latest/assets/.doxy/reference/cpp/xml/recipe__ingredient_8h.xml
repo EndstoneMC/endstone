@@ -894,59 +894,71 @@
       </node>
     </incdepgraph>
     <invincdepgraph>
-      <node id="18">
+      <node id="11">
+        <label>include/endstone/event/block/block_cook_event.h</label>
+        <link refid="block__cook__event_8h_source"/>
+      </node>
+      <node id="24">
         <label>include/endstone/event/chunk/chunk_event.h</label>
         <link refid="chunk__event_8h_source"/>
-        <childnode refid="19" relation="include">
+        <childnode refid="25" relation="include">
         </childnode>
-        <childnode refid="20" relation="include">
+        <childnode refid="26" relation="include">
         </childnode>
       </node>
-      <node id="19">
+      <node id="25">
         <label>include/endstone/event/chunk/chunk_load_event.h</label>
         <link refid="chunk__load__event_8h_source"/>
       </node>
-      <node id="20">
+      <node id="26">
         <label>include/endstone/event/chunk/chunk_unload_event.h</label>
         <link refid="chunk__unload__event_8h_source"/>
       </node>
-      <node id="17">
+      <node id="23">
         <label>include/endstone/event/level/dimension_event.h</label>
         <link refid="dimension__event_8h_source"/>
-        <childnode refid="18" relation="include">
+        <childnode refid="24" relation="include">
         </childnode>
-        <childnode refid="21" relation="include">
+        <childnode refid="27" relation="include">
         </childnode>
       </node>
-      <node id="21">
+      <node id="27">
         <label>include/endstone/event/level/dimension_load_event.h</label>
         <link refid="dimension__load__event_8h_source"/>
       </node>
-      <node id="16">
+      <node id="22">
         <label>include/endstone/event/level/level_event.h</label>
         <link refid="level__event_8h_source"/>
-        <childnode refid="17" relation="include">
+        <childnode refid="23" relation="include">
         </childnode>
       </node>
       <node id="8">
         <label>include/endstone/event/player/player_craft_item_event.h</label>
         <link refid="player__craft__item__event_8h_source"/>
       </node>
-      <node id="23">
+      <node id="29">
         <label>include/endstone/event/weather/thunder_change_event.h</label>
         <link refid="thunder__change__event_8h_source"/>
       </node>
-      <node id="24">
+      <node id="30">
         <label>include/endstone/event/weather/weather_change_event.h</label>
         <link refid="weather__change__event_8h_source"/>
       </node>
-      <node id="22">
+      <node id="28">
         <label>include/endstone/event/weather/weather_event.h</label>
         <link refid="weather__event_8h_source"/>
-        <childnode refid="23" relation="include">
+        <childnode refid="29" relation="include">
         </childnode>
-        <childnode refid="24" relation="include">
+        <childnode refid="30" relation="include">
         </childnode>
+      </node>
+      <node id="12">
+        <label>include/endstone/inventory/blasting_recipe.h</label>
+        <link refid="blasting__recipe_8h_source"/>
+      </node>
+      <node id="13">
+        <label>include/endstone/inventory/campfire_recipe.h</label>
+        <link refid="campfire__recipe_8h_source"/>
       </node>
       <node id="2">
         <label>include/endstone/inventory/complex_alias_ingredient.h</label>
@@ -956,9 +968,27 @@
         <label>include/endstone/inventory/complex_recipe.h</label>
         <link refid="complex__recipe_8h_source"/>
       </node>
+      <node id="10">
+        <label>include/endstone/inventory/cooking_recipe.h</label>
+        <link refid="cooking__recipe_8h_source"/>
+        <childnode refid="11" relation="include">
+        </childnode>
+        <childnode refid="12" relation="include">
+        </childnode>
+        <childnode refid="13" relation="include">
+        </childnode>
+        <childnode refid="14" relation="include">
+        </childnode>
+        <childnode refid="15" relation="include">
+        </childnode>
+      </node>
       <node id="3">
         <label>include/endstone/inventory/exact_ingredient.h</label>
         <link refid="exact__ingredient_8h_source"/>
+      </node>
+      <node id="14">
+        <label>include/endstone/inventory/furnace_recipe.h</label>
+        <link refid="furnace__recipe_8h_source"/>
       </node>
       <node id="4">
         <label>include/endstone/inventory/item_tag_ingredient.h</label>
@@ -981,11 +1011,13 @@
         </childnode>
         <childnode refid="10" relation="include">
         </childnode>
-        <childnode refid="11" relation="include">
+        <childnode refid="16" relation="include">
         </childnode>
-        <childnode refid="12" relation="include">
+        <childnode refid="17" relation="include">
         </childnode>
-        <childnode refid="15" relation="include">
+        <childnode refid="18" relation="include">
+        </childnode>
+        <childnode refid="21" relation="include">
         </childnode>
       </node>
       <node id="1">
@@ -1004,36 +1036,40 @@
         <childnode refid="7" relation="include">
         </childnode>
       </node>
-      <node id="10">
+      <node id="16">
         <label>include/endstone/inventory/shaped_recipe.h</label>
         <link refid="shaped__recipe_8h_source"/>
       </node>
-      <node id="11">
+      <node id="17">
         <label>include/endstone/inventory/shapeless_recipe.h</label>
         <link refid="shapeless__recipe_8h_source"/>
       </node>
-      <node id="12">
+      <node id="18">
         <label>include/endstone/inventory/smithing_recipe.h</label>
         <link refid="smithing__recipe_8h_source"/>
-        <childnode refid="13" relation="include">
+        <childnode refid="19" relation="include">
         </childnode>
-        <childnode refid="14" relation="include">
+        <childnode refid="20" relation="include">
         </childnode>
       </node>
-      <node id="13">
+      <node id="19">
         <label>include/endstone/inventory/smithing_transform_recipe.h</label>
         <link refid="smithing__transform__recipe_8h_source"/>
       </node>
-      <node id="14">
+      <node id="20">
         <label>include/endstone/inventory/smithing_trim_recipe.h</label>
         <link refid="smithing__trim__recipe_8h_source"/>
       </node>
       <node id="15">
+        <label>include/endstone/inventory/smoking_recipe.h</label>
+        <link refid="smoking__recipe_8h_source"/>
+      </node>
+      <node id="21">
         <label>include/endstone/level/level.h</label>
         <link refid="level_8h_source"/>
-        <childnode refid="16" relation="include">
-        </childnode>
         <childnode refid="22" relation="include">
+        </childnode>
+        <childnode refid="28" relation="include">
         </childnode>
       </node>
     </invincdepgraph>

@@ -4,6 +4,7 @@
     <compoundname>endstone::Recipe</compoundname>
     <basecompoundref refid="classendstone_1_1Object" prot="public" virt="non-virtual">endstone::Object</basecompoundref>
     <derivedcompoundref refid="classendstone_1_1ComplexRecipe" prot="public" virt="non-virtual">endstone::ComplexRecipe</derivedcompoundref>
+    <derivedcompoundref refid="classendstone_1_1CookingRecipe" prot="public" virt="non-virtual">endstone::CookingRecipe</derivedcompoundref>
     <derivedcompoundref refid="classendstone_1_1ShapedRecipe" prot="public" virt="non-virtual">endstone::ShapedRecipe</derivedcompoundref>
     <derivedcompoundref refid="classendstone_1_1ShapelessRecipe" prot="public" virt="non-virtual">endstone::ShapelessRecipe</derivedcompoundref>
     <derivedcompoundref refid="classendstone_1_1SmithingRecipe" prot="public" virt="non-virtual">endstone::SmithingRecipe</derivedcompoundref>
@@ -48,12 +49,17 @@
         <name>getIngredients</name>
         <qualifiedname>endstone::Recipe::getIngredients</qualifiedname>
         <briefdescription>
+<para>Gets the ingredients consumed by this recipe. </para>
         </briefdescription>
         <detaileddescription>
+<para>A value is empty when the corresponding slot does not require an ingredient.</para>
+<para><simplesect kind="return"><para>the recipe ingredients </para>
+</simplesect>
+</para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/inventory/recipe.h" line="39" column="32"/>
+        <location file="include/endstone/inventory/recipe.h" line="46" column="32"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1Recipe_1ad61757005d71bc6bf9c9addb43c75d49" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
         <type><ref refid="classendstone_1_1Identifier" kindref="compound">const</ref> std::string &amp;</type>
@@ -71,7 +77,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/inventory/recipe.h" line="46" column="32"/>
+        <location file="include/endstone/inventory/recipe.h" line="53" column="32"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1Recipe_1ab353c82a04f30ce3a1d89d78d1ffe043" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
         <type><ref refid="classendstone_1_1Identifier" kindref="compound">const</ref> std::string &amp;</type>
@@ -80,16 +86,16 @@
         <name>getTag</name>
         <qualifiedname>endstone::Recipe::getTag</qualifiedname>
         <briefdescription>
-<para>Get the crafting station this recipe belongs to, such as <computeroutput>crafting_table</computeroutput> or <computeroutput>smithing_table</computeroutput>. </para>
+<para>Gets the station this recipe belongs to, such as <computeroutput>crafting_table</computeroutput>, <computeroutput>smithing_table</computeroutput> or <computeroutput>furnace</computeroutput>. </para>
         </briefdescription>
         <detaileddescription>
-<para><simplesect kind="return"><para>the crafting tag </para>
+<para><simplesect kind="return"><para>the recipe tag </para>
 </simplesect>
 </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/inventory/recipe.h" line="53" column="32"/>
+        <location file="include/endstone/inventory/recipe.h" line="60" column="32"/>
       </memberdef>
     </sectiondef>
     <briefdescription>
@@ -98,10 +104,34 @@
     <detaileddescription>
     </detaileddescription>
     <inheritancegraph>
+      <node id="5">
+        <label>endstone::BlastingRecipe</label>
+        <link refid="classendstone_1_1BlastingRecipe"/>
+        <childnode refid="4" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="6">
+        <label>endstone::CampfireRecipe</label>
+        <link refid="classendstone_1_1CampfireRecipe"/>
+        <childnode refid="4" relation="public-inheritance">
+        </childnode>
+      </node>
       <node id="3">
         <label>endstone::ComplexRecipe</label>
         <link refid="classendstone_1_1ComplexRecipe"/>
         <childnode refid="1" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="4">
+        <label>endstone::CookingRecipe</label>
+        <link refid="classendstone_1_1CookingRecipe"/>
+        <childnode refid="1" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="7">
+        <label>endstone::FurnaceRecipe</label>
+        <link refid="classendstone_1_1FurnaceRecipe"/>
+        <childnode refid="4" relation="public-inheritance">
         </childnode>
       </node>
       <node id="2">
@@ -114,34 +144,40 @@
         <childnode refid="2" relation="public-inheritance">
         </childnode>
       </node>
-      <node id="4">
+      <node id="9">
         <label>endstone::ShapedRecipe</label>
         <link refid="classendstone_1_1ShapedRecipe"/>
         <childnode refid="1" relation="public-inheritance">
         </childnode>
       </node>
-      <node id="5">
+      <node id="10">
         <label>endstone::ShapelessRecipe</label>
         <link refid="classendstone_1_1ShapelessRecipe"/>
         <childnode refid="1" relation="public-inheritance">
         </childnode>
       </node>
-      <node id="6">
+      <node id="11">
         <label>endstone::SmithingRecipe</label>
         <link refid="classendstone_1_1SmithingRecipe"/>
         <childnode refid="1" relation="public-inheritance">
         </childnode>
       </node>
-      <node id="7">
+      <node id="12">
         <label>endstone::SmithingTransformRecipe</label>
         <link refid="classendstone_1_1SmithingTransformRecipe"/>
-        <childnode refid="6" relation="public-inheritance">
+        <childnode refid="11" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="13">
+        <label>endstone::SmithingTrimRecipe</label>
+        <link refid="classendstone_1_1SmithingTrimRecipe"/>
+        <childnode refid="11" relation="public-inheritance">
         </childnode>
       </node>
       <node id="8">
-        <label>endstone::SmithingTrimRecipe</label>
-        <link refid="classendstone_1_1SmithingTrimRecipe"/>
-        <childnode refid="6" relation="public-inheritance">
+        <label>endstone::SmokingRecipe</label>
+        <link refid="classendstone_1_1SmokingRecipe"/>
+        <childnode refid="4" relation="public-inheritance">
         </childnode>
       </node>
     </inheritancegraph>
@@ -157,7 +193,7 @@
         </childnode>
       </node>
     </collaborationgraph>
-    <location file="include/endstone/inventory/recipe.h" line="28" column="1" bodyfile="include/endstone/inventory/recipe.h" bodystart="28" bodyend="54"/>
+    <location file="include/endstone/inventory/recipe.h" line="28" column="1" bodyfile="include/endstone/inventory/recipe.h" bodystart="28" bodyend="61"/>
     <listofallmembers>
       <member refid="classendstone_1_1Object_1a798b5128ce018bbbe8ca949ba78c3db1" prot="public" virt="non-virtual"><scope>endstone::Recipe</scope><name>as</name></member>
       <member refid="classendstone_1_1Object_1ae0f38a62da4c186fce272145e2590cc1" prot="public" virt="non-virtual"><scope>endstone::Recipe</scope><name>as</name></member>

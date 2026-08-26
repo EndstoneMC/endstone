@@ -45,6 +45,11 @@ This inheritance list is sorted roughly, but not completely, alphabetically:
             * **class** [**endstone::ProxiedCommandSender**](classendstone_1_1ProxiedCommandSender.md) _Represents a command sender that is running a command on behalf of another one, as_ `/execute` _does._
     * **class** [**endstone::Recipe**](classendstone_1_1Recipe.md) _Represents some type of crafting recipe._     
         * **class** [**endstone::ComplexRecipe**](classendstone_1_1ComplexRecipe.md) _Represents a complex recipe which has imperative server-defined behavior, eg armor dyeing._ 
+        * **class** [**endstone::CookingRecipe**](classendstone_1_1CookingRecipe.md) _Represents a cooking recipe._     
+            * **class** [**endstone::BlastingRecipe**](classendstone_1_1BlastingRecipe.md) _Represents a blasting recipe._ 
+            * **class** [**endstone::CampfireRecipe**](classendstone_1_1CampfireRecipe.md) _Represents a campfire recipe._ 
+            * **class** [**endstone::FurnaceRecipe**](classendstone_1_1FurnaceRecipe.md) _Represents a furnace recipe._ 
+            * **class** [**endstone::SmokingRecipe**](classendstone_1_1SmokingRecipe.md) _Represents a smoking recipe._ 
         * **class** [**endstone::ShapedRecipe**](classendstone_1_1ShapedRecipe.md) _Represents a shaped (ie normal) crafting recipe._ 
         * **class** [**endstone::ShapelessRecipe**](classendstone_1_1ShapelessRecipe.md) _Represents a shapeless recipe, where the arrangement of the ingredients on the crafting grid does not matter._ 
         * **class** [**endstone::SmithingRecipe**](classendstone_1_1SmithingRecipe.md) _Represents a smithing recipe._     
@@ -309,6 +314,7 @@ This inheritance list is sorted roughly, but not completely, alphabetically:
             * **class** [**endstone::ConsoleCommandSender**](classendstone_1_1ConsoleCommandSender.md) _Represents a console command sender._ 
             * **class** [**endstone::ProxiedCommandSender**](classendstone_1_1ProxiedCommandSender.md) _Represents a command sender that is running a command on behalf of another one, as_ `/execute` _does._
 * **class** **EventType**    
+    * **class** [**endstone::Cancellable**](classendstone_1_1Cancellable.md) _A type characterizing events that may be cancelled by a plugin or the server._ 
     * **class** [**endstone::Cancellable**](classendstone_1_1Cancellable.md) _A type characterizing events that may be cancelled by a plugin or the server._ 
     * **class** [**endstone::Cancellable**](classendstone_1_1Cancellable.md) _A type characterizing events that may be cancelled by a plugin or the server._ 
     * **class** [**endstone::Cancellable**](classendstone_1_1Cancellable.md) _A type characterizing events that may be cancelled by a plugin or the server._ 

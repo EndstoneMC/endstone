@@ -2657,6 +2657,19 @@ For latest updates join the chat on
             
                 
                     <li class="md-nav__item">
+    <a href="#function-getrecipe" class="md-nav__link">
+      <span class="md-ellipsis">
+        function getRecipe
+      </span>
+    </a>
+
+    <!-- Table of contents list -->
+    
+</li>
+                
+            
+                
+                    <li class="md-nav__item">
     <a href="#function-getresult" class="md-nav__link">
       <span class="md-ellipsis">
         function getResult
@@ -2750,11 +2763,15 @@ For latest updates join the chat on
 <tbody>
 <tr>
 <td style="text-align: right;"></td>
-<td style="text-align: left;"><a href="#function-blockcookevent"><strong>BlockCookEvent</strong></a> (<a href="../classendstone_1_1Identifier/"><strong>const</strong></a> <a href="../classendstone_1_1NotNull/"><strong>NotNull</strong></a>&lt; <a href="../classendstone_1_1Block/"><strong>Block</strong></a> &gt; &amp; block, <a href="../classendstone_1_1ItemStack/"><strong>ItemStack</strong></a> source, <a href="../classendstone_1_1ItemStack/"><strong>ItemStack</strong></a> result) <br></td>
+<td style="text-align: left;"><a href="#function-blockcookevent"><strong>BlockCookEvent</strong></a> (<a href="../classendstone_1_1Identifier/"><strong>const</strong></a> <a href="../classendstone_1_1NotNull/"><strong>NotNull</strong></a>&lt; <a href="../classendstone_1_1Block/"><strong>Block</strong></a> &gt; &amp; block, <a href="../classendstone_1_1ItemStack/"><strong>ItemStack</strong></a> source, <a href="../classendstone_1_1ItemStack/"><strong>ItemStack</strong></a> result, <a href="../classendstone_1_1Nullable/"><strong>Nullable</strong></a>&lt; <a href="../classendstone_1_1CookingRecipe/"><strong>CookingRecipe</strong></a> &gt; recipe=<a href="../classendstone_1_1Identifier/"><strong>nullptr</strong></a>) <br></td>
 </tr>
 <tr>
 <td style="text-align: right;"></td>
 <td style="text-align: left;"><a href="#function-endstone_event"><strong>ENDSTONE_EVENT</strong></a> (<a href="./"><strong>BlockCookEvent</strong></a>) <br></td>
+</tr>
+<tr>
+<td style="text-align: right;"><a href="../classendstone_1_1Nullable/"><strong>Nullable</strong></a>&lt; <a href="../classendstone_1_1CookingRecipe/"><strong>CookingRecipe</strong></a> &gt;</td>
+<td style="text-align: left;"><a href="#function-getrecipe"><strong>getRecipe</strong></a> () const<br><em>Gets the cooking recipe this event is for.</em></td>
 </tr>
 <tr>
 <td style="text-align: right;"><a href="../classendstone_1_1Identifier/"><strong>const</strong></a> <a href="../classendstone_1_1ItemStack/"><strong>ItemStack</strong></a> &amp;</td>
@@ -2827,8 +2844,9 @@ For latest updates join the chat on
 <div class="language-C++ highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="kr">inline</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">BlockCookEvent</span><span class="o">::</span><span class="n">BlockCookEvent</span><span class="w"> </span><span class="p">(</span>
 </span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a><span class="w">    </span><span class="k">const</span><span class="w">  </span><span class="n">NotNull</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">Block</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">block</span><span class="p">,</span>
 </span><span id="__span-0-3"><a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a><span class="w">    </span><span class="n">ItemStack</span><span class="w"> </span><span class="n">source</span><span class="p">,</span>
-</span><span id="__span-0-4"><a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a><span class="w">    </span><span class="n">ItemStack</span><span class="w"> </span><span class="n">result</span>
-</span><span id="__span-0-5"><a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a><span class="p">)</span><span class="w"> </span>
+</span><span id="__span-0-4"><a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a><span class="w">    </span><span class="n">ItemStack</span><span class="w"> </span><span class="n">result</span><span class="p">,</span>
+</span><span id="__span-0-5"><a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a><span class="w">    </span><span class="n">Nullable</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">CookingRecipe</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="n">recipe</span><span class="o">=</span><span class="nb">nullptr</span>
+</span><span id="__span-0-6"><a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a><span class="p">)</span><span class="w"> </span>
 </span></code></pre></div>
 <hr>
 
@@ -2839,9 +2857,17 @@ For latest updates join the chat on
 </span></code></pre></div>
 <hr>
 
+<h3 id="function-getrecipe">function getRecipe<a class="headerlink" href="#function-getrecipe" title="Permanent link">&para;</a></h3>
+<p><em>Gets the cooking recipe this event is for.</em> 
+<div class="language-C++ highlight"><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="kr">inline</span><span class="w"> </span><span class="n">Nullable</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">CookingRecipe</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">BlockCookEvent</span><span class="o">::</span><span class="n">getRecipe</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="k">const</span>
+</span></code></pre></div></p>
+<p><strong>Returns:</strong></p>
+<p>the cooking recipe, or nullptr if the server could not resolve one </p>
+<hr>
+
 <h3 id="function-getresult">function getResult<a class="headerlink" href="#function-getresult" title="Permanent link">&para;</a></h3>
 <p><em>Gets the resultant</em> <a href="../classendstone_1_1ItemStack/"><em><strong>ItemStack</strong></em></a> <em>for this event.</em>
-<div class="language-C++ highlight"><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="kr">inline</span><span class="w"> </span><span class="k">const</span><span class="w">  </span><span class="n">ItemStack</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">BlockCookEvent</span><span class="o">::</span><span class="n">getResult</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="k">const</span>
+<div class="language-C++ highlight"><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="kr">inline</span><span class="w"> </span><span class="k">const</span><span class="w">  </span><span class="n">ItemStack</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">BlockCookEvent</span><span class="o">::</span><span class="n">getResult</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="k">const</span>
 </span></code></pre></div></p>
 <p><strong>Returns:</strong></p>
 <p>smelting result <a href="../classendstone_1_1ItemStack/"><strong>ItemStack</strong></a> </p>
@@ -2849,7 +2875,7 @@ For latest updates join the chat on
 
 <h3 id="function-getsource">function getSource<a class="headerlink" href="#function-getsource" title="Permanent link">&para;</a></h3>
 <p><em>Gets the smelted</em> <a href="../classendstone_1_1ItemStack/"><em><strong>ItemStack</strong></em></a> <em>for this event.</em>
-<div class="language-C++ highlight"><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="kr">inline</span><span class="w"> </span><span class="k">const</span><span class="w">  </span><span class="n">ItemStack</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">BlockCookEvent</span><span class="o">::</span><span class="n">getSource</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="k">const</span>
+<div class="language-C++ highlight"><pre><span></span><code><span id="__span-4-1"><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a><span class="kr">inline</span><span class="w"> </span><span class="k">const</span><span class="w">  </span><span class="n">ItemStack</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">BlockCookEvent</span><span class="o">::</span><span class="n">getSource</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="k">const</span>
 </span></code></pre></div></p>
 <p><strong>Returns:</strong></p>
 <p>smelting source <a href="../classendstone_1_1ItemStack/"><strong>ItemStack</strong></a> </p>
@@ -2857,9 +2883,9 @@ For latest updates join the chat on
 
 <h3 id="function-setresult">function setResult<a class="headerlink" href="#function-setresult" title="Permanent link">&para;</a></h3>
 <p><em>Sets the resultant</em> <a href="../classendstone_1_1ItemStack/"><em><strong>ItemStack</strong></em></a> <em>for this event.</em>
-<div class="language-C++ highlight"><pre><span></span><code><span id="__span-4-1"><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a><span class="kr">inline</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">BlockCookEvent</span><span class="o">::</span><span class="n">setResult</span><span class="w"> </span><span class="p">(</span>
-</span><span id="__span-4-2"><a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a><span class="w">    </span><span class="n">ItemStack</span><span class="w"> </span><span class="n">result</span>
-</span><span id="__span-4-3"><a id="__codelineno-4-3" name="__codelineno-4-3" href="#__codelineno-4-3"></a><span class="p">)</span><span class="w"> </span>
+<div class="language-C++ highlight"><pre><span></span><code><span id="__span-5-1"><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a><span class="kr">inline</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">BlockCookEvent</span><span class="o">::</span><span class="n">setResult</span><span class="w"> </span><span class="p">(</span>
+</span><span id="__span-5-2"><a id="__codelineno-5-2" name="__codelineno-5-2" href="#__codelineno-5-2"></a><span class="w">    </span><span class="n">ItemStack</span><span class="w"> </span><span class="n">result</span>
+</span><span id="__span-5-3"><a id="__codelineno-5-3" name="__codelineno-5-3" href="#__codelineno-5-3"></a><span class="p">)</span><span class="w"> </span>
 </span></code></pre></div></p>
 <p><strong>Parameters:</strong></p>
 <ul>

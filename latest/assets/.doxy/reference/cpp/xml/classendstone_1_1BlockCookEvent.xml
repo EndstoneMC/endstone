@@ -17,7 +17,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/event/block/block_cook_event.h" line="58" column="15" bodyfile="include/endstone/event/block/block_cook_event.h" bodystart="58" bodyend="-1"/>
+        <location file="include/endstone/event/block/block_cook_event.h" line="67" column="15" bodyfile="include/endstone/event/block/block_cook_event.h" bodystart="67" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="classendstone_1_1BlockCookEvent_1a6cdcc8eb703aa6127446963a1e3662a4" prot="private" static="no" mutable="no">
         <type><ref refid="classendstone_1_1ItemStack" kindref="compound">ItemStack</ref></type>
@@ -31,7 +31,21 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/event/block/block_cook_event.h" line="59" column="15" bodyfile="include/endstone/event/block/block_cook_event.h" bodystart="59" bodyend="-1"/>
+        <location file="include/endstone/event/block/block_cook_event.h" line="68" column="15" bodyfile="include/endstone/event/block/block_cook_event.h" bodystart="68" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classendstone_1_1BlockCookEvent_1aab37e5e45f810cb96e714e9772d9852c" prot="private" static="no" mutable="no">
+        <type><ref refid="classendstone_1_1Nullable" kindref="compound">Nullable</ref>&lt; <ref refid="classendstone_1_1CookingRecipe" kindref="compound">CookingRecipe</ref> &gt;</type>
+        <definition>Nullable&lt;CookingRecipe&gt; endstone::BlockCookEvent::recipe_</definition>
+        <argsstring></argsstring>
+        <name>recipe_</name>
+        <qualifiedname>endstone::BlockCookEvent::recipe_</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/event/block/block_cook_event.h" line="69" column="14" bodyfile="include/endstone/event/block/block_cook_event.h" bodystart="69" bodyend="-1"/>
       </memberdef>
     </sectiondef>
     <sectiondef kind="public-func">
@@ -50,12 +64,12 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/event/block/block_cook_event.h" line="29" column="5"/>
+        <location file="include/endstone/event/block/block_cook_event.h" line="30" column="5"/>
       </memberdef>
-      <memberdef kind="function" id="classendstone_1_1BlockCookEvent_1aba8e47398af2cc9229089f6be192d719" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+      <memberdef kind="function" id="classendstone_1_1BlockCookEvent_1a0b301b0a702f5dcee43588b0816b2825" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type></type>
         <definition>endstone::BlockCookEvent::BlockCookEvent</definition>
-        <argsstring>(const NotNull&lt; Block &gt; &amp;block, ItemStack source, ItemStack result)</argsstring>
+        <argsstring>(const NotNull&lt; Block &gt; &amp;block, ItemStack source, ItemStack result, Nullable&lt; CookingRecipe &gt; recipe=nullptr)</argsstring>
         <name>BlockCookEvent</name>
         <qualifiedname>endstone::BlockCookEvent::BlockCookEvent</qualifiedname>
         <param>
@@ -70,13 +84,18 @@
           <type><ref refid="classendstone_1_1ItemStack" kindref="compound">ItemStack</ref></type>
           <declname>result</declname>
         </param>
+        <param>
+          <type><ref refid="classendstone_1_1Nullable" kindref="compound">Nullable</ref>&lt; <ref refid="classendstone_1_1CookingRecipe" kindref="compound">CookingRecipe</ref> &gt;</type>
+          <declname>recipe</declname>
+          <defval><ref refid="classendstone_1_1Identifier" kindref="compound">nullptr</ref></defval>
+        </param>
         <briefdescription>
         </briefdescription>
         <detaileddescription>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/event/block/block_cook_event.h" line="31" column="5" bodyfile="include/endstone/event/block/block_cook_event.h" bodystart="31" bodyend="34"/>
+        <location file="include/endstone/event/block/block_cook_event.h" line="32" column="5" bodyfile="include/endstone/event/block/block_cook_event.h" bodystart="32" bodyend="36"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1BlockCookEvent_1a48bbbed0ceebb9f258cb7386ad47b15e" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
         <type><ref refid="classendstone_1_1Identifier" kindref="compound">const</ref> <ref refid="classendstone_1_1ItemStack" kindref="compound">ItemStack</ref> &amp;</type>
@@ -94,7 +113,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/event/block/block_cook_event.h" line="41" column="22" bodyfile="include/endstone/event/block/block_cook_event.h" bodystart="41" bodyend="41"/>
+        <location file="include/endstone/event/block/block_cook_event.h" line="43" column="22" bodyfile="include/endstone/event/block/block_cook_event.h" bodystart="43" bodyend="43"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1BlockCookEvent_1a0b7b3c972fa4056c0598cba0a6259b1a" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
         <type><ref refid="classendstone_1_1Identifier" kindref="compound">const</ref> <ref refid="classendstone_1_1ItemStack" kindref="compound">ItemStack</ref> &amp;</type>
@@ -112,7 +131,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/event/block/block_cook_event.h" line="48" column="22" bodyfile="include/endstone/event/block/block_cook_event.h" bodystart="48" bodyend="48"/>
+        <location file="include/endstone/event/block/block_cook_event.h" line="50" column="22" bodyfile="include/endstone/event/block/block_cook_event.h" bodystart="50" bodyend="50"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1BlockCookEvent_1abb5195f0935e9caa43421e261728ec06" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type><ref refid="classendstone_1_1Identifier" kindref="compound">void</ref></type>
@@ -141,7 +160,25 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/event/block/block_cook_event.h" line="55" column="10" bodyfile="include/endstone/event/block/block_cook_event.h" bodystart="55" bodyend="55"/>
+        <location file="include/endstone/event/block/block_cook_event.h" line="57" column="10" bodyfile="include/endstone/event/block/block_cook_event.h" bodystart="57" bodyend="57"/>
+      </memberdef>
+      <memberdef kind="function" id="classendstone_1_1BlockCookEvent_1ac12f2cd0536c72f56f637e1129553f84" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type><ref refid="classendstone_1_1Nullable" kindref="compound">Nullable</ref>&lt; <ref refid="classendstone_1_1CookingRecipe" kindref="compound">CookingRecipe</ref> &gt;</type>
+        <definition>Nullable&lt; CookingRecipe &gt; endstone::BlockCookEvent::getRecipe</definition>
+        <argsstring>() const</argsstring>
+        <name>getRecipe</name>
+        <qualifiedname>endstone::BlockCookEvent::getRecipe</qualifiedname>
+        <briefdescription>
+<para>Gets the cooking recipe this event is for. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="return"><para>the cooking recipe, or nullptr if the server could not resolve one </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/event/block/block_cook_event.h" line="64" column="15" bodyfile="include/endstone/event/block/block_cook_event.h" bodystart="64" bodyend="64"/>
       </memberdef>
     </sectiondef>
     <briefdescription>
@@ -216,10 +253,10 @@
         <link refid="classendstone_1_1ICancellable"/>
       </node>
     </collaborationgraph>
-    <location file="include/endstone/event/block/block_cook_event.h" line="27" column="1" bodyfile="include/endstone/event/block/block_cook_event.h" bodystart="27" bodyend="60"/>
+    <location file="include/endstone/event/block/block_cook_event.h" line="28" column="1" bodyfile="include/endstone/event/block/block_cook_event.h" bodystart="28" bodyend="70"/>
     <listofallmembers>
       <member refid="classendstone_1_1BlockEvent_1a2d7d59fd58b79e945c604a2db25f1ef2" prot="protected" virt="non-virtual"><scope>endstone::BlockCookEvent</scope><name>block_</name></member>
-      <member refid="classendstone_1_1BlockCookEvent_1aba8e47398af2cc9229089f6be192d719" prot="public" virt="non-virtual"><scope>endstone::BlockCookEvent</scope><name>BlockCookEvent</name></member>
+      <member refid="classendstone_1_1BlockCookEvent_1a0b301b0a702f5dcee43588b0816b2825" prot="public" virt="non-virtual"><scope>endstone::BlockCookEvent</scope><name>BlockCookEvent</name></member>
       <member refid="classendstone_1_1BlockEvent_1a969b16b4036cfebd9b2c09e014dba8bd" prot="public" virt="non-virtual"><scope>endstone::BlockCookEvent</scope><name>BlockEvent</name></member>
       <member refid="classendstone_1_1Cancellable_1a3512b47db69c6001f5c0450051308327" prot="public" virt="virtual"><scope>endstone::BlockCookEvent</scope><name>cancel</name></member>
       <member refid="classendstone_1_1BlockCookEvent_1a0c022b567cdab73d5f74da17326cd88e" prot="public" virt="non-virtual"><scope>endstone::BlockCookEvent</scope><name>ENDSTONE_EVENT</name></member>
@@ -228,12 +265,14 @@
       <member refid="classendstone_1_1Event_1ad20bafd16e0671578e37390b95e5104c" prot="public" virt="non-virtual"><scope>endstone::BlockCookEvent</scope><name>Event</name></member>
       <member refid="classendstone_1_1BlockEvent_1a0a96c0b3103a80ca27eaf1e0ba5d1148" prot="public" virt="non-virtual"><scope>endstone::BlockCookEvent</scope><name>getBlock</name></member>
       <member refid="classendstone_1_1Event_1a826fe74f9c4195a36a364b9aeeb321bb" prot="public" virt="pure-virtual"><scope>endstone::BlockCookEvent</scope><name>getEventName</name></member>
+      <member refid="classendstone_1_1BlockCookEvent_1ac12f2cd0536c72f56f637e1129553f84" prot="public" virt="non-virtual"><scope>endstone::BlockCookEvent</scope><name>getRecipe</name></member>
       <member refid="classendstone_1_1BlockCookEvent_1a0b7b3c972fa4056c0598cba0a6259b1a" prot="public" virt="non-virtual"><scope>endstone::BlockCookEvent</scope><name>getResult</name></member>
       <member refid="classendstone_1_1BlockCookEvent_1a48bbbed0ceebb9f258cb7386ad47b15e" prot="public" virt="non-virtual"><scope>endstone::BlockCookEvent</scope><name>getSource</name></member>
       <member refid="classendstone_1_1Event_1ae89b54f63dc32b0c8797a59db69b6931" prot="public" virt="non-virtual"><scope>endstone::BlockCookEvent</scope><name>isAsynchronous</name></member>
       <member refid="classendstone_1_1Cancellable_1a268b73cc5bda0fa5923336d031814faa" prot="public" virt="virtual"><scope>endstone::BlockCookEvent</scope><name>isCancelled</name></member>
       <member refid="classendstone_1_1Event_1a44a4ff424a8b690c01a2afe10ae68d8f" prot="public" virt="non-virtual"><scope>endstone::BlockCookEvent</scope><name>operator=</name></member>
       <member refid="classendstone_1_1Event_1a1d7fc5400782d20be99a3636aa7f53b9" prot="public" virt="non-virtual"><scope>endstone::BlockCookEvent</scope><name>operator=</name></member>
+      <member refid="classendstone_1_1BlockCookEvent_1aab37e5e45f810cb96e714e9772d9852c" prot="private" virt="non-virtual"><scope>endstone::BlockCookEvent</scope><name>recipe_</name></member>
       <member refid="classendstone_1_1BlockCookEvent_1a6cdcc8eb703aa6127446963a1e3662a4" prot="private" virt="non-virtual"><scope>endstone::BlockCookEvent</scope><name>result_</name></member>
       <member refid="classendstone_1_1Cancellable_1aa12df44bcb66924d06a689d0dd07865e" prot="public" virt="virtual"><scope>endstone::BlockCookEvent</scope><name>setCancelled</name></member>
       <member refid="classendstone_1_1BlockCookEvent_1abb5195f0935e9caa43421e261728ec06" prot="public" virt="non-virtual"><scope>endstone::BlockCookEvent</scope><name>setResult</name></member>

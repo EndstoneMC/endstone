@@ -65,6 +65,7 @@ _Represents a button with text and an optional icon._
 | class | [**BanEntry**](classendstone_1_1BanEntry.md) <br>_A single entry from a ban list._  |
 | class | [**BanList**](classendstone_1_1BanList.md) &lt;[**typename**](classendstone_1_1Identifier.md) [**T**](classendstone_1_1Identifier.md)&gt;<br>_Represents a ban list, containing bans._  |
 | class | [**Biome**](classendstone_1_1Biome.md) <br> |
+| class | [**BlastingRecipe**](classendstone_1_1BlastingRecipe.md) <br>_Represents a blasting recipe._  |
 | class | [**Block**](classendstone_1_1Block.md) <br>_Represents a block._  |
 | class | [**BlockBreakEvent**](classendstone_1_1BlockBreakEvent.md) <br>_Called when a block is broken by a player._  |
 | class | [**BlockCommandSender**](classendstone_1_1BlockCommandSender.md) <br>_Represents a block command sender._  |
@@ -86,6 +87,7 @@ _Represents a button with text and an optional icon._
 | class | [**BroadcastMessageEvent**](classendstone_1_1BroadcastMessageEvent.md) <br>[_**Event**_](classendstone_1_1Event.md) _triggered for server broadcast messages such as from_[_**Server::broadcast()**_](classendstone_1_1Server.md#function-broadcast) _._ |
 | class | [**Button**](classendstone_1_1Button.md) <br>_Represents a button with text and an optional icon._  |
 | class | [**Campfire**](classendstone_1_1Campfire.md) <br>_Represents a captured state of a campfire._  |
+| class | [**CampfireRecipe**](classendstone_1_1CampfireRecipe.md) <br>_Represents a campfire recipe._  |
 | class | [**Cancellable**](classendstone_1_1Cancellable.md) &lt;[**typename**](classendstone_1_1Identifier.md) EventType&gt;<br>_A type characterizing events that may be cancelled by a plugin or the server._  |
 | class | [**CauldronLevelChangeEvent**](classendstone_1_1CauldronLevelChangeEvent.md) <br>_Called when a cauldron's level or contents change._  |
 | class | [**Chunk**](classendstone_1_1Chunk.md) <br>_Represents a chunk of blocks._  |
@@ -106,6 +108,7 @@ _Represents a button with text and an optional icon._
 | class | [**CompoundTag**](classendstone_1_1CompoundTag.md) <br>_An NBT tag holding a set of named child tags, keyed by string._  |
 | class | [**ConsoleCommandSender**](classendstone_1_1ConsoleCommandSender.md) <br>_Represents a console command sender._  |
 | class | [**Container**](classendstone_1_1Container.md) <br>_Represents a captured state of a container block, such as a chest._  |
+| class | [**CookingRecipe**](classendstone_1_1CookingRecipe.md) <br>_Represents a cooking recipe._  |
 | class | [**CreatureSpawner**](classendstone_1_1CreatureSpawner.md) <br>_Represents a captured state of a creature spawner._  |
 | class | [**Criteria**](classendstone_1_1Criteria.md) <br>_Represents a scoreboard criteria._  |
 | class | [**CrossbowMeta**](classendstone_1_1CrossbowMeta.md) <br>_Represents the meta for a crossbow that can have a charged projectile._  |
@@ -120,12 +123,14 @@ _Represents a button with text and an optional icon._
 | class | [**Dropdown**](classendstone_1_1Dropdown.md) <br>_Represents a dropdown with a set of predefined options._  |
 | class | [**Effect**](classendstone_1_1Effect.md) <br>_Represents an effect that can be added to a_ [_**Mob**_](classendstone_1_1Mob.md) _._ |
 | class | [**EffectType**](classendstone_1_1EffectType.md) <br>_Represents an effect type._  |
+| class | [**EnchantItemEvent**](classendstone_1_1EnchantItemEvent.md) <br>_Called when a player enchants an item at an enchanting table._  |
 | class | [**Enchantment**](classendstone_1_1Enchantment.md) <br>_Represents an enchantment that may be added to armor, weapons, tools or other items._  |
 | class | [**Event**](classendstone_1_1Event.md) <br>_Represents an event._  |
 | class | [**EventHandler**](classendstone_1_1EventHandler.md) <br>_Represents a registered_ [_**EventHandler**_](classendstone_1_1EventHandler.md) _which associates with a_[_**Plugin**_](classendstone_1_1Plugin.md) _._ |
 | class | [**ExactIngredient**](classendstone_1_1ExactIngredient.md) <br>_Represents an ingredient that matches one item with one exact data value._  |
 | class | [**Form**](classendstone_1_1Form.md) &lt;[**typename**](classendstone_1_1Identifier.md) [**T**](classendstone_1_1Identifier.md)&gt;<br>_Represents a generic form._  |
 | class | [**Furnace**](classendstone_1_1Furnace.md) <br>_Represents a captured state of a furnace._  |
+| class | [**FurnaceRecipe**](classendstone_1_1FurnaceRecipe.md) <br>_Represents a furnace recipe._  |
 | class | [**GameRule**](classendstone_1_1GameRule.md) <br>_Represents a game rule._  |
 | class | [**GameRuleId**](classendstone_1_1GameRuleId.md) &lt;[**typename**](classendstone_1_1Identifier.md) [**T**](classendstone_1_1Identifier.md)&gt;<br>_Represents the identifier of a game rule, carrying the type of the rule's value._  |
 | class | [**HandlerList**](classendstone_1_1HandlerList.md) <br>_A list of event handlers._  |
@@ -271,6 +276,7 @@ _Represents a button with text and an optional icon._
 | class | [**SmithingRecipe**](classendstone_1_1SmithingRecipe.md) <br>_Represents a smithing recipe._  |
 | class | [**SmithingTransformRecipe**](classendstone_1_1SmithingTransformRecipe.md) <br>_Represents a smithing transform recipe._  |
 | class | [**SmithingTrimRecipe**](classendstone_1_1SmithingTrimRecipe.md) <br>_Represents a smithing trim recipe._  |
+| class | [**SmokingRecipe**](classendstone_1_1SmokingRecipe.md) <br>_Represents a smoking recipe._  |
 | class | [**SocketAddress**](classendstone_1_1SocketAddress.md) <br>_Represents an IP Socket Address (hostname + port number)._  |
 | class | [**StepSlider**](classendstone_1_1StepSlider.md) <br>_Represents a step slider with a set of predefined options._  |
 | class | [**Task**](classendstone_1_1Task.md) <br>_Represents a task being executed by the scheduler._  |

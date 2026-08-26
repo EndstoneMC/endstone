@@ -9,6 +9,7 @@
     <includes refid="object_8h" local="yes">endstone/object.h</includes>
     <includedby refid="player__craft__item__event_8h" local="yes">include/endstone/event/player/player_craft_item_event.h</includedby>
     <includedby refid="complex__recipe_8h" local="yes">include/endstone/inventory/complex_recipe.h</includedby>
+    <includedby refid="cooking__recipe_8h" local="yes">include/endstone/inventory/cooking_recipe.h</includedby>
     <includedby refid="shaped__recipe_8h" local="yes">include/endstone/inventory/shaped_recipe.h</includedby>
     <includedby refid="shapeless__recipe_8h" local="yes">include/endstone/inventory/shapeless_recipe.h</includedby>
     <includedby refid="smithing__recipe_8h" local="yes">include/endstone/inventory/smithing_recipe.h</includedby>
@@ -911,63 +912,93 @@
       </node>
     </incdepgraph>
     <invincdepgraph>
-      <node id="12">
+      <node id="5">
+        <label>include/endstone/event/block/block_cook_event.h</label>
+        <link refid="block__cook__event_8h_source"/>
+      </node>
+      <node id="18">
         <label>include/endstone/event/chunk/chunk_event.h</label>
         <link refid="chunk__event_8h_source"/>
-        <childnode refid="13" relation="include">
+        <childnode refid="19" relation="include">
         </childnode>
-        <childnode refid="14" relation="include">
+        <childnode refid="20" relation="include">
         </childnode>
       </node>
-      <node id="13">
+      <node id="19">
         <label>include/endstone/event/chunk/chunk_load_event.h</label>
         <link refid="chunk__load__event_8h_source"/>
       </node>
-      <node id="14">
+      <node id="20">
         <label>include/endstone/event/chunk/chunk_unload_event.h</label>
         <link refid="chunk__unload__event_8h_source"/>
       </node>
-      <node id="11">
+      <node id="17">
         <label>include/endstone/event/level/dimension_event.h</label>
         <link refid="dimension__event_8h_source"/>
-        <childnode refid="12" relation="include">
+        <childnode refid="18" relation="include">
         </childnode>
-        <childnode refid="15" relation="include">
+        <childnode refid="21" relation="include">
         </childnode>
       </node>
-      <node id="15">
+      <node id="21">
         <label>include/endstone/event/level/dimension_load_event.h</label>
         <link refid="dimension__load__event_8h_source"/>
       </node>
-      <node id="10">
+      <node id="16">
         <label>include/endstone/event/level/level_event.h</label>
         <link refid="level__event_8h_source"/>
-        <childnode refid="11" relation="include">
+        <childnode refid="17" relation="include">
         </childnode>
       </node>
       <node id="2">
         <label>include/endstone/event/player/player_craft_item_event.h</label>
         <link refid="player__craft__item__event_8h_source"/>
       </node>
-      <node id="17">
+      <node id="23">
         <label>include/endstone/event/weather/thunder_change_event.h</label>
         <link refid="thunder__change__event_8h_source"/>
       </node>
-      <node id="18">
+      <node id="24">
         <label>include/endstone/event/weather/weather_change_event.h</label>
         <link refid="weather__change__event_8h_source"/>
       </node>
-      <node id="16">
+      <node id="22">
         <label>include/endstone/event/weather/weather_event.h</label>
         <link refid="weather__event_8h_source"/>
-        <childnode refid="17" relation="include">
+        <childnode refid="23" relation="include">
         </childnode>
-        <childnode refid="18" relation="include">
+        <childnode refid="24" relation="include">
         </childnode>
+      </node>
+      <node id="6">
+        <label>include/endstone/inventory/blasting_recipe.h</label>
+        <link refid="blasting__recipe_8h_source"/>
+      </node>
+      <node id="7">
+        <label>include/endstone/inventory/campfire_recipe.h</label>
+        <link refid="campfire__recipe_8h_source"/>
       </node>
       <node id="3">
         <label>include/endstone/inventory/complex_recipe.h</label>
         <link refid="complex__recipe_8h_source"/>
+      </node>
+      <node id="4">
+        <label>include/endstone/inventory/cooking_recipe.h</label>
+        <link refid="cooking__recipe_8h_source"/>
+        <childnode refid="5" relation="include">
+        </childnode>
+        <childnode refid="6" relation="include">
+        </childnode>
+        <childnode refid="7" relation="include">
+        </childnode>
+        <childnode refid="8" relation="include">
+        </childnode>
+        <childnode refid="9" relation="include">
+        </childnode>
+      </node>
+      <node id="8">
+        <label>include/endstone/inventory/furnace_recipe.h</label>
+        <link refid="furnace__recipe_8h_source"/>
       </node>
       <node id="1">
         <label>include/endstone/inventory/recipe.h</label>
@@ -978,43 +1009,49 @@
         </childnode>
         <childnode refid="4" relation="include">
         </childnode>
-        <childnode refid="5" relation="include">
+        <childnode refid="10" relation="include">
         </childnode>
-        <childnode refid="6" relation="include">
+        <childnode refid="11" relation="include">
         </childnode>
-        <childnode refid="9" relation="include">
+        <childnode refid="12" relation="include">
+        </childnode>
+        <childnode refid="15" relation="include">
         </childnode>
       </node>
-      <node id="4">
+      <node id="10">
         <label>include/endstone/inventory/shaped_recipe.h</label>
         <link refid="shaped__recipe_8h_source"/>
       </node>
-      <node id="5">
+      <node id="11">
         <label>include/endstone/inventory/shapeless_recipe.h</label>
         <link refid="shapeless__recipe_8h_source"/>
       </node>
-      <node id="6">
+      <node id="12">
         <label>include/endstone/inventory/smithing_recipe.h</label>
         <link refid="smithing__recipe_8h_source"/>
-        <childnode refid="7" relation="include">
+        <childnode refid="13" relation="include">
         </childnode>
-        <childnode refid="8" relation="include">
+        <childnode refid="14" relation="include">
         </childnode>
       </node>
-      <node id="7">
+      <node id="13">
         <label>include/endstone/inventory/smithing_transform_recipe.h</label>
         <link refid="smithing__transform__recipe_8h_source"/>
       </node>
-      <node id="8">
+      <node id="14">
         <label>include/endstone/inventory/smithing_trim_recipe.h</label>
         <link refid="smithing__trim__recipe_8h_source"/>
       </node>
       <node id="9">
+        <label>include/endstone/inventory/smoking_recipe.h</label>
+        <link refid="smoking__recipe_8h_source"/>
+      </node>
+      <node id="15">
         <label>include/endstone/level/level.h</label>
         <link refid="level_8h_source"/>
-        <childnode refid="10" relation="include">
-        </childnode>
         <childnode refid="16" relation="include">
+        </childnode>
+        <childnode refid="22" relation="include">
         </childnode>
       </node>
     </invincdepgraph>
@@ -1055,13 +1092,13 @@
 <codeline lineno="31"><highlight class="normal"></highlight></codeline>
 <codeline lineno="37" refid="classendstone_1_1Recipe_1a4e20782db3c7f6ea868059af8f2b1cc1" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>[[<ref refid="classendstone_1_1Identifier" kindref="compound">nodiscard</ref>]]<sp/></highlight><highlight class="keyword">virtual</highlight><highlight class="normal"><sp/><ref refid="classendstone_1_1ItemStack" kindref="compound">ItemStack</ref><sp/><ref refid="classendstone_1_1Recipe_1a4e20782db3c7f6ea868059af8f2b1cc1" kindref="member">getResult</ref>()<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>=<sp/>0;</highlight></codeline>
 <codeline lineno="38"><highlight class="normal"></highlight></codeline>
-<codeline lineno="39"><highlight class="normal"><sp/><sp/><sp/><sp/>[[<ref refid="classendstone_1_1Identifier" kindref="compound">nodiscard</ref>]]<sp/></highlight><highlight class="keyword">virtual</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::vector&lt;Nullable&lt;RecipeIngredient&gt;&gt;<sp/>&amp;getIngredients()<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>=<sp/>0;</highlight></codeline>
-<codeline lineno="40"><highlight class="normal"></highlight></codeline>
-<codeline lineno="46" refid="classendstone_1_1Recipe_1ad61757005d71bc6bf9c9addb43c75d49" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>[[<ref refid="classendstone_1_1Identifier" kindref="compound">nodiscard</ref>]]<sp/></highlight><highlight class="keyword">virtual</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::string<sp/>&amp;<ref refid="classendstone_1_1Recipe_1ad61757005d71bc6bf9c9addb43c75d49" kindref="member">getId</ref>()<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>=<sp/>0;</highlight></codeline>
+<codeline lineno="46" refid="classendstone_1_1Recipe_1ab9974a01f5e5570b0c2b9b88b9fb7b58" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>[[<ref refid="classendstone_1_1Identifier" kindref="compound">nodiscard</ref>]]<sp/></highlight><highlight class="keyword">virtual</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::vector&lt;Nullable&lt;RecipeIngredient&gt;&gt;<sp/>&amp;<ref refid="classendstone_1_1Recipe_1ab9974a01f5e5570b0c2b9b88b9fb7b58" kindref="member">getIngredients</ref>()<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>=<sp/>0;</highlight></codeline>
 <codeline lineno="47"><highlight class="normal"></highlight></codeline>
-<codeline lineno="53" refid="classendstone_1_1Recipe_1ab353c82a04f30ce3a1d89d78d1ffe043" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>[[<ref refid="classendstone_1_1Identifier" kindref="compound">nodiscard</ref>]]<sp/></highlight><highlight class="keyword">virtual</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::string<sp/>&amp;<ref refid="classendstone_1_1Recipe_1ab353c82a04f30ce3a1d89d78d1ffe043" kindref="member">getTag</ref>()<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>=<sp/>0;</highlight></codeline>
-<codeline lineno="54"><highlight class="normal">};</highlight></codeline>
-<codeline lineno="55"><highlight class="normal">}<sp/><sp/></highlight><highlight class="comment">//<sp/>namespace<sp/>endstone</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="53" refid="classendstone_1_1Recipe_1ad61757005d71bc6bf9c9addb43c75d49" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>[[<ref refid="classendstone_1_1Identifier" kindref="compound">nodiscard</ref>]]<sp/></highlight><highlight class="keyword">virtual</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::string<sp/>&amp;<ref refid="classendstone_1_1Recipe_1ad61757005d71bc6bf9c9addb43c75d49" kindref="member">getId</ref>()<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>=<sp/>0;</highlight></codeline>
+<codeline lineno="54"><highlight class="normal"></highlight></codeline>
+<codeline lineno="60" refid="classendstone_1_1Recipe_1ab353c82a04f30ce3a1d89d78d1ffe043" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>[[<ref refid="classendstone_1_1Identifier" kindref="compound">nodiscard</ref>]]<sp/></highlight><highlight class="keyword">virtual</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::string<sp/>&amp;<ref refid="classendstone_1_1Recipe_1ab353c82a04f30ce3a1d89d78d1ffe043" kindref="member">getTag</ref>()<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>=<sp/>0;</highlight></codeline>
+<codeline lineno="61"><highlight class="normal">};</highlight></codeline>
+<codeline lineno="62"><highlight class="normal">}<sp/><sp/></highlight><highlight class="comment">//<sp/>namespace<sp/>endstone</highlight><highlight class="normal"></highlight></codeline>
     </programlisting>
     <location file="include/endstone/inventory/recipe.h"/>
   </compounddef>

@@ -21,10 +21,14 @@
 
 | Type | Name |
 | ---: | :--- |
+| file | [**blasting\_recipe.h**](blasting__recipe_8h.md) <br> |
+| file | [**campfire\_recipe.h**](campfire__recipe_8h.md) <br> |
 | file | [**complex\_alias\_ingredient.h**](complex__alias__ingredient_8h.md) <br> |
 | file | [**complex\_recipe.h**](complex__recipe_8h.md) <br> |
+| file | [**cooking\_recipe.h**](cooking__recipe_8h.md) <br> |
 | file | [**equipment\_slot.h**](equipment__slot_8h.md) <br> |
 | file | [**exact\_ingredient.h**](exact__ingredient_8h.md) <br> |
+| file | [**furnace\_recipe.h**](furnace__recipe_8h.md) <br> |
 | file | [**inventory.h**](inventory_8h.md) <br> |
 | file | [**item\_factory.h**](item__factory_8h.md) <br> |
 | file | [**item\_stack.h**](item__stack_8h.md) <br> |
@@ -40,6 +44,7 @@
 | file | [**smithing\_recipe.h**](smithing__recipe_8h.md) <br> |
 | file | [**smithing\_transform\_recipe.h**](smithing__transform__recipe_8h.md) <br> |
 | file | [**smithing\_trim\_recipe.h**](smithing__trim__recipe_8h.md) <br> |
+| file | [**smoking\_recipe.h**](smoking__recipe_8h.md) <br> |
 
 
 ## Directories

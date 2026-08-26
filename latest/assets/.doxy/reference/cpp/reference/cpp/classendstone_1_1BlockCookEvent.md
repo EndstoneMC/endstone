@@ -93,8 +93,9 @@ Inherits the following classes: [endstone::Cancellable](classendstone_1_1Cancell
 
 | Type | Name |
 | ---: | :--- |
-|   | [**BlockCookEvent**](#function-blockcookevent) ([**const**](classendstone_1_1Identifier.md) [**NotNull**](classendstone_1_1NotNull.md)&lt; [**Block**](classendstone_1_1Block.md) &gt; & block, [**ItemStack**](classendstone_1_1ItemStack.md) source, [**ItemStack**](classendstone_1_1ItemStack.md) result) <br> |
+|   | [**BlockCookEvent**](#function-blockcookevent) ([**const**](classendstone_1_1Identifier.md) [**NotNull**](classendstone_1_1NotNull.md)&lt; [**Block**](classendstone_1_1Block.md) &gt; & block, [**ItemStack**](classendstone_1_1ItemStack.md) source, [**ItemStack**](classendstone_1_1ItemStack.md) result, [**Nullable**](classendstone_1_1Nullable.md)&lt; [**CookingRecipe**](classendstone_1_1CookingRecipe.md) &gt; recipe=[**nullptr**](classendstone_1_1Identifier.md)) <br> |
 |   | [**ENDSTONE\_EVENT**](#function-endstone_event) ([**BlockCookEvent**](classendstone_1_1BlockCookEvent.md)) <br> |
+|  [**Nullable**](classendstone_1_1Nullable.md)&lt; [**CookingRecipe**](classendstone_1_1CookingRecipe.md) &gt; | [**getRecipe**](#function-getrecipe) () const<br>_Gets the cooking recipe this event is for._  |
 |  [**const**](classendstone_1_1Identifier.md) [**ItemStack**](classendstone_1_1ItemStack.md) & | [**getResult**](#function-getresult) () const<br>_Gets the resultant_ [_**ItemStack**_](classendstone_1_1ItemStack.md) _for this event._ |
 |  [**const**](classendstone_1_1Identifier.md) [**ItemStack**](classendstone_1_1ItemStack.md) & | [**getSource**](#function-getsource) () const<br>_Gets the smelted_ [_**ItemStack**_](classendstone_1_1ItemStack.md) _for this event._ |
 |  [**void**](classendstone_1_1Identifier.md) | [**setResult**](#function-setresult) ([**ItemStack**](classendstone_1_1ItemStack.md) result) <br>_Sets the resultant_ [_**ItemStack**_](classendstone_1_1ItemStack.md) _for this event._ |
@@ -212,7 +213,8 @@ See [endstone::ICancellable](classendstone_1_1ICancellable.md)
 inline endstone::BlockCookEvent::BlockCookEvent (
     const  NotNull < Block > & block,
     ItemStack source,
-    ItemStack result
+    ItemStack result,
+    Nullable < CookingRecipe > recipe=nullptr
 ) 
 ```
 
@@ -233,6 +235,31 @@ endstone::BlockCookEvent::ENDSTONE_EVENT (
 
 
 
+
+<hr>
+
+
+
+### function getRecipe 
+
+_Gets the cooking recipe this event is for._ 
+```C++
+inline Nullable < CookingRecipe > endstone::BlockCookEvent::getRecipe () const
+```
+
+
+
+
+
+**Returns:**
+
+the cooking recipe, or nullptr if the server could not resolve one 
+
+
+
+
+
+        
 
 <hr>
 
