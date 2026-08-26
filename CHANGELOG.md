@@ -11,6 +11,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 #### Events
 
+- `PlayerHideActorEvent` and `PlayerShowActorEvent`, reporting the `actor` whose visibility changed. Neither fires when the actor was already hidden from, or already visible to, that player.
 - `EnchantItemEvent` for enchanting an item at an enchanting table, reporting the enchanting `inventory`, the `enchanter`, the `enchant_block`, the `item`, the `exp_level_cost`, the `enchants_to_add` and the `which_button` selected. The item, cost and enchantments are writable; cancelling leaves the item, the player's experience levels and the lapis lazuli untouched. It does not fire for an offer the player cannot pay for, and no enchantment hint is reported.
 - `PlayerLevelChangeEvent` (`old_level`, `new_level`), `PlayerExpChangeEvent` (`amount` gained) and `PlayerPickupExperienceEvent` (`amount` the orb is worth).
 - `PlayerPickupArrowEvent` for picking up an arrow or thrown trident.
@@ -42,6 +43,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 #### Actors and players
 
+- Visibility API: `Player.hide_actor()`, `Player.show_actor()` and `Player.can_see()`. Hiding is tracked per plugin: an actor stays hidden until every plugin that hid it has shown it again, and a plugin that is disabled keeps its hold. `can_see()` reports whether a plugin is hiding the actor; there is no per-actor visible-by-default flag.
+- `Player.send_block_change()` for showing one player a block that is not really there. The world itself is not changed.
 - Ability API: `Player.get_ability()` and `Player.set_ability()`, keyed by an `Ability` constant that carries its own value type. `Ability.NO_CLIP` takes a bool, `Ability.FLY_SPEED` takes a float, and in C++ swapping the two is a compile error. All twenty Bedrock abilities are covered, including the eight member permissions the client shows in its pause menu — `BUILD`, `MINE`, `DOORS_AND_SWITCHES`, `OPEN_CONTAINERS`, `ATTACK_PLAYERS`, `ATTACK_MOBS`, `OPERATOR_COMMANDS` and `TELEPORT` — every one of which the server enforces. Abilities can also be looked up with `Ability.get()` and enumerated via `server.get_registry(Ability)`. Reading an ability gives the value in effect, which spectator mode and the editor can override; writing sets the player's own value. Bedrock does not save abilities for a player whose permissions the server manages, so set them again when the player rejoins.
 - Attribute API: `Mob.get_attribute()`, `Mob.has_attribute()` and `Mob.attributes`. Each `AttributeInstance` reports its current, base, minimum and maximum value and takes `AttributeModifier`s at runtime.
 - Effect API: `Mob.add_effect()`, `Mob.remove_effect()`, `Mob.has_effect()`, `Mob.get_effect()` and `Mob.active_effects`, with the new `Effect` type carrying effect type, duration, amplifier and the ambient/particles/icon flags.

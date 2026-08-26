@@ -17,10 +17,18 @@
 #include <optional>
 #include <string>
 #include <string_view>
+#include <variant>
+#include <vector>
 
 #include "bedrock/core/sem_ver/sem_version.h"
+#include "bedrock/core/utility/binary_stream.h"
 #include "bedrock/network/packet.h"
+#include "bedrock/network/packet/add_actor_packet.h"
+#include "bedrock/network/packet/add_item_actor_packet.h"
+#include "bedrock/network/packet/add_painting_packet.h"
+#include "bedrock/network/packet/add_player_packet.h"
 #include "bedrock/network/packet/clientbound_map_item_data_packet.h"
+#include "bedrock/network/packet/player_list_packet.h"
 #include "bedrock/network/packet/resource_pack_stack_packet.h"
 #include "bedrock/network/packet/resource_packs_info_packet.h"
 #include "bedrock/network/packet/set_score_packet.h"
@@ -209,6 +217,68 @@ std::optional<std::string> downgradeSetScorePayload(std::string_view payload)
     return out.getBuffer();
 }
 
+enum class VisibilityResult {
+    Unchanged,
+    Modified,
+    Drop,
+};
+
+VisibilityResult filterHiddenActors(const PacketHeader &header, ReadOnlyBinaryStream &stream,
+                                    endstone::core::EndstonePlayer &player, std::string &filtered_payload)
+{
+    const auto &server = endstone::core::EndstoneServer::getInstance();
+    auto &network = server.getServer().getNetwork();
+    auto packet = MinecraftPackets::createPacket(header.getPacketId());
+    if (!packet ||
+        !packet->readNoHeader(stream, network.getPacketReflectionCtx(), header.getSenderSubId()).ignoreError()) {
+        return VisibilityResult::Unchanged;
+    }
+
+    switch (header.getPacketId()) {
+    case MinecraftPacketIds::AddActor:
+        return player.isActorHidden(static_cast<AddActorPacket &>(*packet).payload.entity_id.raw_id)
+                 ? VisibilityResult::Drop
+                 : VisibilityResult::Unchanged;
+    case MinecraftPacketIds::AddItemActor:
+        return player.isActorHidden(static_cast<AddItemActorPacket &>(*packet).payload.id.raw_id)
+                 ? VisibilityResult::Drop
+                 : VisibilityResult::Unchanged;
+    case MinecraftPacketIds::AddPainting:
+        return player.isActorHidden(static_cast<AddPaintingPacket &>(*packet).payload.entity_id.raw_id)
+                 ? VisibilityResult::Drop
+                 : VisibilityResult::Unchanged;
+    case MinecraftPacketIds::AddPlayer:
+        return player.isPlayerHidden(static_cast<AddPlayerPacket &>(*packet).payload.runtime_id.raw_id)
+                 ? VisibilityResult::Drop
+                 : VisibilityResult::Unchanged;
+    case MinecraftPacketIds::PlayerList: {
+        auto &payload = static_cast<PlayerListPacket &>(*packet).payload;
+        player.updatePlayerListCache(payload);
+
+        auto &entries = payload.entries;
+        const auto count = entries.size();
+        std::erase_if(entries, [&player](const auto &entry) {
+            const auto *add = std::get_if<PlayerListPacketPayload::AddEntry>(&entry);
+            return add && player.isActorHidden(add->id.raw_id);
+        });
+        if (entries.size() == count) {
+            return VisibilityResult::Unchanged;
+        }
+        if (entries.empty()) {
+            return VisibilityResult::Drop;
+        }
+
+        BinaryStream out;
+        packet->writeWithSerializationMode(out, network.getPacketReflectionCtx(),
+                                           network.getPacketOverrides().getOverrideModeForPacket(packet->getId()));
+        filtered_payload = out.getBuffer();
+        return VisibilityResult::Modified;
+    }
+    default:
+        return VisibilityResult::Unchanged;
+    }
+}
+
 void patchPacket(Packet &packet, const endstone::Nullable<endstone::Player> &player)
 {
     switch (packet.getId()) {
@@ -251,7 +321,12 @@ void BatchedNetworkPeer::sendPacket(const std::string &data, Reliability reliabi
                          header.getPacketId() == MinecraftPacketIds::ResourcePackStack ||
                          header.getPacketId() == MinecraftPacketIds::MapData ||
                          header.getPacketId() == MinecraftPacketIds::SetScore;
-    if (!patched && !server.getEndstonePluginManager().isEventRegistered<endstone::PacketSendEvent>()) {
+    const auto filterable = header.getPacketId() == MinecraftPacketIds::PlayerList ||
+                            (server.hasHiddenActors() && (header.getPacketId() == MinecraftPacketIds::AddActor ||
+                                                          header.getPacketId() == MinecraftPacketIds::AddItemActor ||
+                                                          header.getPacketId() == MinecraftPacketIds::AddPainting ||
+                                                          header.getPacketId() == MinecraftPacketIds::AddPlayer));
+    if (!patched && !filterable && !server.getEndstonePluginManager().isEventRegistered<endstone::PacketSendEvent>()) {
         ENDSTONE_HOOK_CALL_ORIGINAL(&BatchedNetworkPeer::sendPacket, this, data, reliability, compressible);
         return;
     }
@@ -268,9 +343,30 @@ void BatchedNetworkPeer::sendPacket(const std::string &data, Reliability reliabi
 
     // Create packet send event
     auto payload = stream.getView().substr(stream.getReadPointer());
+    std::string filtered_payload;
+    auto visibility = VisibilityResult::Unchanged;
+    if (filterable && player) {
+        auto &recipient = static_cast<endstone::core::EndstonePlayer &>(*player);
+        if (recipient.hasHiddenActors() || header.getPacketId() == MinecraftPacketIds::PlayerList) {
+            visibility = filterHiddenActors(header, stream, recipient, filtered_payload);
+            if (visibility == VisibilityResult::Drop) {
+                return;
+            }
+        }
+    }
+
+    if (!patched && visibility == VisibilityResult::Unchanged &&
+        !server.getEndstonePluginManager().isEventRegistered<endstone::PacketSendEvent>()) {
+        ENDSTONE_HOOK_CALL_ORIGINAL(&BatchedNetworkPeer::sendPacket, this, data, reliability, compressible);
+        return;
+    }
+
     endstone::PacketSendEvent e{player, static_cast<int>(header.getPacketId()), payload,
                                 endstone::core::EndstoneSocketAddress::fromNetworkIdentifier(id),
                                 static_cast<int>(header.getSenderSubId())};
+    if (visibility == VisibilityResult::Modified) {
+        e.setPayload(filtered_payload);
+    }
 
     // Patch specific outbound packets (deserialize -> modify -> re-serialize)
     switch (header.getPacketId()) {

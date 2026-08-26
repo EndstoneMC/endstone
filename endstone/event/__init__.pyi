@@ -88,6 +88,7 @@ __all__ = [
     "PlayerEvent",
     "PlayerExpChangeEvent",
     "PlayerGameModeChangeEvent",
+    "PlayerHideActorEvent",
     "PlayerInputEvent",
     "PlayerInteractActorEvent",
     "PlayerInteractEvent",
@@ -110,6 +111,7 @@ __all__ = [
     "PlayerRiptideEvent",
     "PlayerSetSpawnEvent",
     "PlayerShearActorEvent",
+    "PlayerShowActorEvent",
     "PlayerSkinChangeEvent",
     "PlayerTeleportEvent",
     "PlayerToggleCrawlEvent",
@@ -826,6 +828,32 @@ class PlayerBucketActorEvent(PlayerEvent, Cancellable):
     def hand(self) -> EquipmentSlot:
         """
         The hand used to capture the actor.
+        """
+
+class PlayerHideActorEvent(PlayerEvent):
+    """
+    Called when a visible actor is hidden from a player.
+
+    This event is only called when the actor's visibility status is actually changed. It is called regardless of
+    whether the actor is within the player's tracking range.
+    """
+    @property
+    def actor(self) -> Actor:
+        """
+        The actor hidden from the player.
+        """
+
+class PlayerShowActorEvent(PlayerEvent):
+    """
+    Called when a hidden actor is shown to a player.
+
+    This event is only called when the actor's visibility status is actually changed. It is called regardless of
+    whether the actor is within the player's tracking range.
+    """
+    @property
+    def actor(self) -> Actor:
+        """
+        The actor shown to the player.
         """
 
 class PlayerBucketEvent(PlayerEvent, Cancellable):

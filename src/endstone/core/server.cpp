@@ -326,6 +326,11 @@ bool EndstoneServer::isServerTextEnabled(ServerTextEvent event) const
         static_cast<std::underlying_type_t<ServerTextEvent>>(event));
 }
 
+bool EndstoneServer::hasHiddenActors() const
+{
+    return hidden_actor_count_ > 0;
+}
+
 void EndstoneServer::loadResourcePacks()
 {
     auto &repo = *resource_pack_repository_;

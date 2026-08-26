@@ -668,6 +668,51 @@ void init_player(py::module_ &m, py_class<Player> &player)
     Returns:
         `True` if the command was successful, `False` otherwise.
 )doc")
+        .def("hide_actor", &Player::hideActor, py::arg("plugin"), py::arg("actor"), R"doc(
+    Hides an actor from this player.
+
+    Args:
+        plugin: Plugin that wants to hide the actor.
+        actor: Actor to hide.
+)doc")
+        .def("show_actor", &Player::showActor, py::arg("plugin"), py::arg("actor"), R"doc(
+    Allows this player to see an actor that was previously hidden.
+
+    If another plugin had hidden the actor too, the actor will remain hidden until the other plugin calls this
+    method too.
+
+    Args:
+        plugin: Plugin that wants to show the actor.
+        actor: Actor to show.
+)doc")
+        .def("can_see", py::overload_cast<const Actor &>(&Player::canSee, py::const_), py::arg("actor"), R"doc(
+    Checks to see if an actor has been visually hidden from this player.
+
+    Args:
+        actor: Actor to check.
+
+    Returns:
+        `True` if the actor is not being hidden from this player.
+)doc")
+        .def("can_see", py::overload_cast<const Player &>(&Player::canSee, py::const_), py::arg("player"), R"doc(
+    Checks to see if a player has been hidden from this player.
+
+    Args:
+        player: Player to check.
+
+    Returns:
+        `True` if the player is not being hidden from this player.
+)doc")
+        .def("send_block_change", &Player::sendBlockChange, py::arg("location").noconvert(), py::arg("block"), R"doc(
+    Sends a block change to this player.
+
+    This fakes a block change packet for a user at a certain location. This will not actually change the
+    world in any way.
+
+    Args:
+        location: The location of the changed block.
+        block: The new block data.
+)doc")
         .def_property("respawn_location", &Player::getRespawnLocation, &Player::setRespawnLocation, R"doc(
     The location where the player will respawn, or `None` if they don't have a valid respawn point.
 

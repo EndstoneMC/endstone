@@ -338,6 +338,20 @@ void init_event(py::module_ &m, py::class_<Event, PyEvent> &event)
         .def_property_readonly("original_bucket", &PlayerBucketActorEvent::getOriginalBucket,
                                "The bucket used to capture the actor.")
         .def_property_readonly("hand", &PlayerBucketActorEvent::getHand, "The hand used to capture the actor.");
+    py::class_<PlayerHideActorEvent, PlayerEvent>(m, "PlayerHideActorEvent", R"doc(
+    Called when a visible actor is hidden from a player.
+
+    This event is only called when the actor's visibility status is actually changed. It is called regardless of
+    whether the actor is within the player's tracking range.
+)doc")
+        .def_property_readonly("actor", &PlayerHideActorEvent::getActor, "The actor hidden from the player.");
+    py::class_<PlayerShowActorEvent, PlayerEvent>(m, "PlayerShowActorEvent", R"doc(
+    Called when a hidden actor is shown to a player.
+
+    This event is only called when the actor's visibility status is actually changed. It is called regardless of
+    whether the actor is within the player's tracking range.
+)doc")
+        .def_property_readonly("actor", &PlayerShowActorEvent::getActor, "The actor shown to the player.");
     py::class_<PlayerBucketEvent, PlayerEvent, ICancellable>(
         m, "PlayerBucketEvent", "Base class for events involving a player's bucket interaction.")
         .def_property_readonly("block", &PlayerBucketEvent::getBlock,

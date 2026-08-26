@@ -22,6 +22,7 @@
 
 #include "endstone/ability.h"
 #include "endstone/actor/mob.h"
+#include "endstone/block/block_data.h"
 #include "endstone/block/sign.h"
 #include "endstone/form/action_form.h"
 #include "endstone/form/message_form.h"
@@ -37,6 +38,8 @@
 #include "endstone/util/uuid.h"
 
 namespace endstone {
+
+class Plugin;
 
 /**
  * Represents a player.
@@ -129,6 +132,52 @@ public:
      * @param location the respawn location, or std::nullopt to clear it; its dimension must be loaded when set
      */
     virtual void setRespawnLocation(std::optional<Location> location) = 0;
+
+    /**
+     * Hides an actor from this player.
+     *
+     * @param plugin Plugin that wants to hide the actor
+     * @param actor Actor to hide
+     */
+    virtual void hideActor(Plugin &plugin, Actor &actor) = 0;
+
+    /**
+     * Allows this player to see an actor that was previously hidden.
+     *
+     * If another plugin had hidden the actor too, the actor will remain hidden until the other plugin calls this
+     * method too.
+     *
+     * @param plugin Plugin that wants to show the actor
+     * @param actor Actor to show
+     */
+    virtual void showActor(Plugin &plugin, Actor &actor) = 0;
+
+    /**
+     * Checks to see if an actor has been visually hidden from this player.
+     *
+     * @param actor Actor to check
+     * @return `true` if the actor is not being hidden from this player
+     */
+    [[nodiscard]] virtual bool canSee(const Actor &actor) const = 0;
+
+    /**
+     * Checks to see if a player has been hidden from this player.
+     *
+     * @param player Player to check
+     * @return `true` if the player is not being hidden from this player
+     */
+    [[nodiscard]] virtual bool canSee(const Player &player) const = 0;
+
+    /**
+     * Sends a block change to this player.
+     *
+     * This fakes a block change packet for a user at a certain location. This will not actually change the world in
+     * any way.
+     *
+     * @param location The location of the changed block
+     * @param block The new block data
+     */
+    virtual void sendBlockChange(const Location &location, const BlockData &block) = 0;
 
     /**
      * Opens a sign editor for this player.
