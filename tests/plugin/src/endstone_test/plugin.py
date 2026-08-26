@@ -17,7 +17,7 @@ from endstone_test.listeners import (
     WeatherEventListener,
 )
 from endstone_test.recorder import EventRecorder
-from endstone_test.reporting import LoggerReporter, logging_to
+from endstone_test.reporting import logging_to
 
 from .tests.conftest import clear_runtime_context, set_runtime_context
 
@@ -132,8 +132,7 @@ class EndstoneTest(Plugin):
                         marker,
                         "--pyargs",
                         "endstone_test.tests",
-                    ],
-                    plugins=[LoggerReporter(self.logger)],
+                    ]
                 )
         finally:
             clear_runtime_context()

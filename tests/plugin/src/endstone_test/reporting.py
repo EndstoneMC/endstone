@@ -1,7 +1,9 @@
 import contextlib
 import io
+import os
+import shutil
 
-from endstone import ColorFormat, Logger
+from endstone import Logger
 
 
 class LoggerStream(io.TextIOBase):
@@ -30,42 +32,18 @@ class LoggerStream(io.TextIOBase):
         return False
 
 
-class LoggerReporter:
-    def __init__(self, logger: Logger):
-        self._logger = logger
-
-    def pytest_runtest_logreport(self, report) -> None:
-        if report.failed:
-            self._report_failure(report.nodeid, report.longrepr)
-        elif report.skipped:
-            self._logger.info(
-                f"{ColorFormat.YELLOW}SKIP{ColorFormat.RESET} {report.nodeid}"
-            )
-        elif report.when == "call":
-            self._logger.info(
-                f"{ColorFormat.GREEN}PASS{ColorFormat.RESET} {report.nodeid}"
-            )
-
-    def pytest_collectreport(self, report) -> None:
-        if report.failed:
-            self._report_failure(report.nodeid, report.longrepr)
-
-    def pytest_internalerror(self, excrepr) -> None:
-        self._report_failure("pytest internal error", excrepr)
-
-    def _report_failure(self, nodeid: str, longrepr) -> None:
-        self._logger.error(f"{ColorFormat.RED}FAIL{ColorFormat.RESET} {nodeid}")
-        crash = getattr(longrepr, "reprcrash", None)
-        message = crash.message if crash is not None else str(longrepr)
-        for line in message.splitlines():
-            self._logger.error(line)
-
-
 @contextlib.contextmanager
 def logging_to(logger: Logger):
     stream = LoggerStream(logger)
+    prefix = len(f"[00:00:00 INFO]: [{logger.name}] ")
+    columns = os.environ.get("COLUMNS")
+    os.environ["COLUMNS"] = str(max(shutil.get_terminal_size().columns - prefix, 40))
     try:
         with contextlib.redirect_stdout(stream), contextlib.redirect_stderr(stream):
             yield
     finally:
         stream.drain()
+        if columns is None:
+            os.environ.pop("COLUMNS", None)
+        else:
+            os.environ["COLUMNS"] = columns
