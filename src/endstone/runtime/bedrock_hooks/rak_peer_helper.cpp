@@ -153,27 +153,20 @@ bool handleIncomingDatagram(RakNet::RNS2RecvStruct *recv)
     return true;
 }
 
-class IPv4OnlySupport : public RakPeerHelper::IPSupportInterface {
-public:
-    explicit IPv4OnlySupport(const IPSupportInterface &inner) : inner_(inner) {}
-    [[nodiscard]] bool useIPv4Only() const override { return true; }
+struct IPSupport : RakPeerHelper::IPSupportInterface {
+    [[nodiscard]] bool useIPv4Only() const override
+    {
+        try {
+            return !toml::parse_file("endstone.toml").at_path("network.ipv6").value_or(false);
+        }
+        catch (const toml::parse_error &) {
+            return true;
+        }
+    }
     [[nodiscard]] bool useIPv6Only() const override { return false; }
-    [[nodiscard]] std::uint16_t getDefaultGamePort() const override { return inner_.getDefaultGamePort(); }
-    [[nodiscard]] std::uint16_t getDefaultGamePortv6() const override { return inner_.getDefaultGamePortv6(); }
-
-private:
-    const IPSupportInterface &inner_;
+    [[nodiscard]] std::uint16_t getDefaultGamePort() const override { return 0; }
+    [[nodiscard]] std::uint16_t getDefaultGamePortv6() const override { return 0; }
 };
-
-static bool isIPv6Enabled()
-{
-    try {
-        return toml::parse_file("endstone.toml").at_path("network.ipv6").value_or(false);
-    }
-    catch (const toml::parse_error &) {
-        return false;
-    }
-}
 
 RakNet::StartupResult RakPeerHelper::peerStartup(RakNet::RakPeerInterface *peer, const ConnectionDefinition &def,
                                                  PeerPurpose purpose)
@@ -186,13 +179,8 @@ RakNet::StartupResult RakPeerHelper::peerStartup(RakNet::RakPeerInterface *peer,
         gRakPeer = static_cast<RakNet::RakPeer *>(peer);
     }
 
-    static const bool ipv6_enabled = isIPv6Enabled();
-    if (ipv6_enabled || ip_support_ == nullptr) {
-        return ENDSTONE_HOOK_CALL_ORIGINAL(&RakPeerHelper::peerStartup, this, peer, new_def, purpose);
-    }
-
-    IPv4OnlySupport ipv4_only(*ip_support_);
-    auto *restore = std::exchange(ip_support_, &ipv4_only);
+    IPSupport ip_support;
+    auto *restore = std::exchange(ip_support_, &ip_support);
     const auto result = ENDSTONE_HOOK_CALL_ORIGINAL(&RakPeerHelper::peerStartup, this, peer, new_def, purpose);
     ip_support_ = restore;
     return result;
@@ -200,38 +188,33 @@ RakNet::StartupResult RakPeerHelper::peerStartup(RakNet::RakPeerInterface *peer,
 
 namespace RakNet {
 struct ShadowBanList {};
+
+void RakPeer::InitializeConfiguration(std::unique_ptr<ShadowBanList>)
+{
+    throw std::runtime_error("stub: RakPeer::InitializeConfiguration");
+}
+bool RakPeer::SetApplicationHandshakeCompleted(AddressOrGUID)
+{
+    throw std::runtime_error("stub: RakPeer::SetApplicationHandshakeCompleted");
+}
+void RakPeer::SetAllowUnconnectedPings(bool)
+{
+    throw std::runtime_error("stub: RakPeer::SetAllowUnconnectedPings");
+}
+bool RakPeer::GetAllowUnconnectedPings() const
+{
+    throw std::runtime_error("stub: RakPeer::GetAllowUnconnectedPings");
+}
+void RakPeer::resetMyGUID()
+{
+    throw std::runtime_error("stub: RakPeer::resetMyGUID");
+}
+unsigned int RakPeer::GetNumberOfAdapters()
+{
+    throw std::runtime_error("stub: RakPeer::GetNumberOfAdapters");
+}
+NetworkAdapter &RakPeer::GetLocalAdapter(unsigned int)
+{
+    throw std::runtime_error("stub: RakPeer::GetLocalAdapter");
+}
 }  // namespace RakNet
-
-[[noreturn]] static void rakPeerLinkStub(const char *name)
-{
-    throw std::runtime_error(std::string("RakNet::RakPeer::") + name + " is a link stub and must never be called");
-}
-
-void RakNet::RakPeer::InitializeConfiguration(std::unique_ptr<RakNet::ShadowBanList>)
-{
-    rakPeerLinkStub("InitializeConfiguration");
-}
-bool RakNet::RakPeer::SetApplicationHandshakeCompleted(RakNet::AddressOrGUID)
-{
-    rakPeerLinkStub("SetApplicationHandshakeCompleted");
-}
-void RakNet::RakPeer::SetAllowUnconnectedPings(bool)
-{
-    rakPeerLinkStub("SetAllowUnconnectedPings");
-}
-bool RakNet::RakPeer::GetAllowUnconnectedPings() const
-{
-    rakPeerLinkStub("GetAllowUnconnectedPings");
-}
-void RakNet::RakPeer::resetMyGUID()
-{
-    rakPeerLinkStub("resetMyGUID");
-}
-unsigned int RakNet::RakPeer::GetNumberOfAdapters()
-{
-    rakPeerLinkStub("GetNumberOfAdapters");
-}
-RakNet::NetworkAdapter &RakNet::RakPeer::GetLocalAdapter(unsigned int)
-{
-    rakPeerLinkStub("GetLocalAdapter");
-}
