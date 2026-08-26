@@ -14,12 +14,17 @@
 
 #pragma once
 
-#include <cstdint>
+#include "bedrock/network/packet.h"
+#include "bedrock/world/actor/actor_unique_id.h"
+#include "bedrock/world/actor/synched_actor_data.h"
 
-enum class ItemStackNetResult : std::uint8_t {
-    Success = 0,
-    Error = 1,
-    ActionRequestNotAllowed = 3,
-    FailedToEnchant = 37,
-    CannotDropItem = 59,
+struct AddItemActorPacketPayload {
+    SynchedActorData::DataList data;
+    ActorUniqueID id;
+};
+
+class AddItemActorPacket : public Packet {
+public:
+    static constexpr bool SHARE_WITH_HANDLER = false;
+    AddItemActorPacketPayload payload;
 };

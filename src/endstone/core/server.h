@@ -15,6 +15,7 @@
 #pragma once
 
 #include <chrono>
+#include <cstddef>
 #include <memory>
 #include <string>
 #include <thread>
@@ -137,6 +138,7 @@ public:
     [[nodiscard]] bool getAllowClientPacks() const;
     [[nodiscard]] bool logCommands() const;
     [[nodiscard]] bool isServerTextEnabled(ServerTextEvent event) const;
+    [[nodiscard]] bool hasHiddenActors() const;
 
     [[nodiscard]] ServerInstance &getServer() const;
     [[nodiscard]] RemoteConnector &getRemoteConnector() const;
@@ -182,6 +184,7 @@ private:
     float current_usage_ = 0.0F;
     float average_usage_[SharedConstants::TicksPerSecond] = {0.0F};
     // TODO(config): move the following the a separate class/struct
+    std::size_t hidden_actor_count_ = 0;
     bool allow_client_packs_ = false;
     bool log_commands_ = true;
     ServerTextSettings text_settings_;

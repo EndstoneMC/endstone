@@ -11,7 +11,7 @@
 
 namespace endstone::runtime {
 
-static constexpr std::array<std::pair<std::string_view, std::size_t>, 84> symbols = {{
+static constexpr std::array<std::pair<std::string_view, std::size_t>, 86> symbols = {{
     {"BlockState::StateListNode::mHead", 211294960},
     {"Enchant::mEnchants", 211141912},
     {"MobEffect::mMobEffects", 211424880},
@@ -63,6 +63,8 @@ static constexpr std::array<std::pair<std::string_view, std::size_t>, 84> symbol
     {"?run@ConsoleInputReader@@SAPEAXPEAX@Z", 997392},
     // CraftHandlerCrafting
     {"?_handleCraftAction@CraftHandlerCrafting@@MEAA?AW4ItemStackNetResult@@AEBVItemStackRequestActionCraftBase@@@Z", 150353088},
+    // CraftHandlerEnchant
+    {"?_handleCraftAction@CraftHandlerEnchant@@MEAA?AW4ItemStackNetResult@@AEBVItemStackRequestActionCraftBase@@@Z", 150363184},
     // CraftingDataPacketPayload
     {"?fromRecipes@CraftingDataPacketPayload@@SA?AU1@AEBVRecipes@@_N@Z", 39627104},
     // DedicatedServer
@@ -89,6 +91,8 @@ static constexpr std::array<std::pair<std::string_view, std::size_t>, 84> symbol
     // ItemStackBase
     {"?_loadBlocksForCanPlaceOnCanDestroy@ItemStackBase@@CA_NAEAV?$vector@PEBVBlockType@@V?$allocator@PEBVBlockType@@@std@@@std@@AEBV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@3@@Z", 29168176},
     {"?_setItem@ItemStackBase@@AEAA_NH_N@Z", 29129472},
+    // ItemStackRequestActionHandler
+    {"?_getOrInitSparseContainer@ItemStackRequestActionHandler@@QEAA?AV?$shared_ptr@VSimpleSparseContainer@@@std@@AEBUFullContainerName@@@Z", 41225808},
     // LeavesBlock
     {"?randomTick@LeavesBlock@@QEBAXAEAVBlockRandomTickEvent@BlockEvents@@@Z", 48292160},
     // Level

@@ -338,6 +338,20 @@ void init_event(py::module_ &m, py::class_<Event, PyEvent> &event)
         .def_property_readonly("original_bucket", &PlayerBucketActorEvent::getOriginalBucket,
                                "The bucket used to capture the actor.")
         .def_property_readonly("hand", &PlayerBucketActorEvent::getHand, "The hand used to capture the actor.");
+    py::class_<PlayerHideActorEvent, PlayerEvent>(m, "PlayerHideActorEvent", R"doc(
+    Called when a visible actor is hidden from a player.
+
+    This event is only called when the actor's visibility status is actually changed. It is called regardless of
+    whether the actor is within the player's tracking range.
+)doc")
+        .def_property_readonly("actor", &PlayerHideActorEvent::getActor, "The actor hidden from the player.");
+    py::class_<PlayerShowActorEvent, PlayerEvent>(m, "PlayerShowActorEvent", R"doc(
+    Called when a hidden actor is shown to a player.
+
+    This event is only called when the actor's visibility status is actually changed. It is called regardless of
+    whether the actor is within the player's tracking range.
+)doc")
+        .def_property_readonly("actor", &PlayerShowActorEvent::getActor, "The actor shown to the player.");
     py::class_<PlayerBucketEvent, PlayerEvent, ICancellable>(
         m, "PlayerBucketEvent", "Base class for events involving a player's bucket interaction.")
         .def_property_readonly("block", &PlayerBucketEvent::getBlock,
@@ -677,6 +691,31 @@ void init_event(py::module_ &m, py::class_<Event, PyEvent> &event)
     py::class_<InventoryCloseEvent, InventoryEvent>(m, "InventoryCloseEvent",
                                                     "Called when a player closes an inventory.")
         .def_property_readonly("player", &InventoryCloseEvent::getPlayer, "The player who is closing the inventory.");
+
+    // Enchantment events
+    py::class_<EnchantItemEvent, InventoryEvent, ICancellable>(m, "EnchantItemEvent", R"doc(
+    Called when a player enchants an item at an enchanting table.
+
+    Cancelling the event leaves the item, the player's experience levels and the lapis lazuli untouched.
+
+    Bedrock does not reveal a single hinted enchantment for an offer, so every enchantment the offer applies is
+    listed in `enchants_to_add`.
+)doc")
+        .def_property_readonly("enchanter", &EnchantItemEvent::getEnchanter, "The player enchanting the item.")
+        .def_property_readonly("enchant_block", &EnchantItemEvent::getEnchantBlock,
+                               "The enchanting table involved in this event.")
+        .def_property("item", &EnchantItemEvent::getItem, &EnchantItemEvent::setItem,
+                      "The item that will be enchanted.")
+        .def_property("exp_level_cost", &EnchantItemEvent::getExpLevelCost, &EnchantItemEvent::setExpLevelCost,
+                      "The minimum player level required by the selected option.")
+        .def_property(
+            "enchants_to_add", py::overload_cast<>(&EnchantItemEvent::getEnchantsToAdd, py::const_),
+            [](EnchantItemEvent &self, EnchantItemEvent::Enchantments value) {
+                self.getEnchantsToAdd() = std::move(value);
+            },
+            "A copy of the enchantments and levels that will be applied; assign it back after changes.")
+        .def_property_readonly("which_button", &EnchantItemEvent::whichButton,
+                               "The selected enchanting button, from 0 to 2.");
 
     // Server events
     py::class_<ServerEvent, Event>(m, "ServerEvent", "Represents a Server-related event.");

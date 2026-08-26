@@ -7,7 +7,7 @@ import uuid
 import numpy
 import numpy.typing
 
-from endstone.actor import Mob
+from endstone.actor import Actor, Mob
 from endstone.ban import IpBanList, PlayerBanList
 from endstone.block import BlockActorState, BlockData, BlockType, Sign
 from endstone.boss import BarColor, BarFlag, BarStyle, BossBar
@@ -17,7 +17,7 @@ from endstone.inventory import Inventory, ItemFactory, PlayerInventory, Recipe
 from endstone.lang import Language, Translatable
 from endstone.level import Dimension, Level, Location
 from endstone.map import MapView
-from endstone.plugin import PluginCommand, PluginManager, ServiceManager
+from endstone.plugin import Plugin, PluginCommand, PluginManager, ServiceManager
 from endstone.scheduler import Scheduler
 from endstone.scoreboard import Scoreboard
 from endstone.util import SocketAddress
@@ -532,6 +532,63 @@ class Player(Mob):
 
         Returns:
             `True` if the command was successful, `False` otherwise.
+        """
+
+    def hide_actor(self, plugin: Plugin, actor: Actor) -> None:
+        """
+        Hides an actor from this player.
+
+        Args:
+            plugin: Plugin that wants to hide the actor.
+            actor: Actor to hide.
+        """
+
+    def show_actor(self, plugin: Plugin, actor: Actor) -> None:
+        """
+        Allows this player to see an actor that was previously hidden.
+
+        If another plugin had hidden the actor too, the actor will remain hidden until the other plugin calls this
+        method too.
+
+        Args:
+            plugin: Plugin that wants to show the actor.
+            actor: Actor to show.
+        """
+
+    @typing.overload
+    def can_see(self, actor: Actor) -> bool:
+        """
+        Checks to see if an actor has been visually hidden from this player.
+
+        Args:
+            actor: Actor to check.
+
+        Returns:
+            `True` if the actor is not being hidden from this player.
+        """
+
+    @typing.overload
+    def can_see(self, player: Player) -> bool:
+        """
+        Checks to see if a player has been hidden from this player.
+
+        Args:
+            player: Player to check.
+
+        Returns:
+            `True` if the player is not being hidden from this player.
+        """
+
+    def send_block_change(self, location: Location, block: BlockData) -> None:
+        """
+        Sends a block change to this player.
+
+        This fakes a block change packet for a user at a certain location. This will not actually change the
+        world in any way.
+
+        Args:
+            location: The location of the changed block.
+            block: The new block data.
         """
 
     @property

@@ -14,6 +14,7 @@
 
 #pragma once
 
+#include <cstdint>
 #include <functional>
 #include <memory>
 #include <optional>
@@ -24,6 +25,7 @@
 #include <nlohmann/json.hpp>
 
 #include "bedrock/network/connection_request.h"
+#include "bedrock/network/packet/player_list_packet.h"
 #include "bedrock/network/sub_client_connection_request.h"
 #include "bedrock/world/events/player_events.h"
 #include "endstone/core/actor/mob.h"
@@ -76,6 +78,11 @@ public:
     [[nodiscard]] std::optional<Location> getRespawnLocation() const override;
     void setRespawnLocation(std::optional<Location> location) override;
     void sendBlockUpdate(const Location &location, const BlockActorState &block_actor_state) override;
+    void hideActor(Plugin &plugin, Actor &actor) override;
+    void showActor(Plugin &plugin, Actor &actor) override;
+    [[nodiscard]] bool canSee(const Actor &actor) const override;
+    [[nodiscard]] bool canSee(const Player &player) const override;
+    void sendBlockChange(const Location &location, const BlockData &block) override;
     void openSign(const Sign &sign, Sign::Side side) override;
     void openVirtualSign(const Location &location, Sign::Side side) override;
     [[nodiscard]] bool isSneaking() const override;
@@ -143,10 +150,19 @@ public:
     void disconnect();
     void updateAbilities() const;
     void checkOpStatus();
+    void updatePlayerListCache(const PlayerListPacketPayload &payload);
+    [[nodiscard]] bool hasHiddenActors() const;
+    [[nodiscard]] bool isActorHidden(std::int64_t unique_id) const;
+    [[nodiscard]] bool isPlayerHidden(std::uint64_t runtime_id) const;
 
 private:
     friend class ::ServerNetworkHandler;
     friend class EndstonePacketHandler;
+
+    void untrackAndHideActor(Actor &actor);
+    void trackAndShowActor(Actor &actor);
+    void sendPlayerListRemove(const ::Player &player) const;
+    void sendPlayerListAdd(std::int64_t unique_id) const;
 
     struct RecipeBookSettings {
         bool filtering;
@@ -170,6 +186,9 @@ private:
     std::optional<RecipeBookSettings> last_recipe_book_settings_;
     bool spawned_ = false;
     bool last_op_status_ = false;
+    std::unordered_map<std::int64_t, std::unordered_set<Plugin *>> hidden_actors_;
+    std::unordered_map<std::uint64_t, std::int64_t> hidden_player_runtime_ids_;
+    std::unordered_map<std::int64_t, PlayerListPacketPayload::AddEntry> player_list_entries_;
 };
 
 }  // namespace endstone::core

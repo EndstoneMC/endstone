@@ -16,10 +16,23 @@
 
 #include <cstdint>
 
-enum class ItemStackNetResult : std::uint8_t {
-    Success = 0,
-    Error = 1,
-    ActionRequestNotAllowed = 3,
-    FailedToEnchant = 37,
-    CannotDropItem = 59,
+#include "bedrock/common_types.h"
+#include "bedrock/network/packet.h"
+#include "bedrock/network/packet/cerealize/core/serialization_mode.h"
+#include "bedrock/world/level/block_pos.h"
+
+struct UpdateBlockPacketPayload {
+    BlockPos pos;
+    std::uint32_t layer;
+    std::uint8_t update_flags;
+    BlockRuntimeId runtime_id;
 };
+BEDROCK_STATIC_ASSERT_SIZE(UpdateBlockPacketPayload, 24, 24);
+
+class UpdateBlockPacket : public Packet {
+public:
+    static constexpr bool SHARE_WITH_HANDLER = true;
+    UpdateBlockPacketPayload payload;
+    SerializationMode serialization_mode{SerializationMode::SideBySide_LogOnMismatch};
+};
+BEDROCK_STATIC_ASSERT_SIZE(UpdateBlockPacket, 80, 72);

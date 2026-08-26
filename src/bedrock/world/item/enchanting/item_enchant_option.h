@@ -14,12 +14,16 @@
 
 #pragma once
 
-#include <cstdint>
+#include <string>
 
-enum class ItemStackNetResult : std::uint8_t {
-    Success = 0,
-    Error = 1,
-    ActionRequestNotAllowed = 3,
-    FailedToEnchant = 37,
-    CannotDropItem = 59,
+#include "bedrock/bedrock.h"
+#include "bedrock/world/item/crafting/recipe.h"
+#include "bedrock/world/item/enchanting/item_enchants.h"
+
+struct ItemEnchantOption {
+    int cost;
+    ItemEnchants enchants;
+    std::string enchant_name;
+    RecipeNetId enchant_net_id;
 };
+BEDROCK_STATIC_ASSERT_SIZE(ItemEnchantOption, 128, 120);

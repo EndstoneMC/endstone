@@ -387,6 +387,37 @@ rip_relative = true
 rip_offset = 3
 
 [[signatures]]
+name = "_ZN19CraftHandlerEnchant18_handleCraftActionERK31ItemStackRequestActionCraftBase"
+relative = false
+extra = 0
+# 1. RTTI survives here, so start from the typeinfo name "19CraftHandlerEnchant": the pointer to it is the
+#    type_info, and the pointer to that type_info is vtable[-1], giving the CraftHandlerEnchant vtable
+# 2. it holds 8 slots - the two Itanium destructors plus the six CraftHandlerBase virtuals - so slot 5 is
+#    _handleCraftAction. It opens `sub rsp, 138h` / `mov bpl, 6` / `cmp byte ptr [rsi+8], 0Ch`: a default
+#    result of 6, then a check that the request action is CraftRecipe (12)
+# 3. the action-type check is what makes the pattern unique: the prologue plus `mov bpl, 6` alone also
+#    matches CraftHandlerLoom, which is identical up to its own check of 11h. Grindstone checks 10h
+# 4. the enumerator-name strings ("FailedToEnchant", "InsufficientPlayerLevelToEnchant") are NOT usable as
+#    anchors - see the note on the windows.toml entry
+pattern = "55 41 57 41 56 41 55 41 54 53 48 81 EC ? ? ? ? 40 B5 06 80 7E 08 0C"
+
+[[signatures]]
+name = "_ZN29ItemStackRequestActionHandler25_getOrInitSparseContainerERK17FullContainerName"
+relative = false
+extra = 0
+# 1. anchor on CraftHandlerEnchant::_handleCraftAction (located by the recipe above); it is the only caller in the
+#    enchanting path and calls this twice
+# 2. both call sites are immediately preceded by a stack FullContainerName whose `mName` byte is set to 22
+#    (EnchantingInputContainer) and whose optional dynamic id is zeroed: `mov byte ptr [rbp-..], 16h`
+# 3. the callee is a shared_ptr returner: its body opens by zeroing the sret slot with xorps/movups
+#    (`0F 57 C0 0F 11 03`) right after its first call
+# 4. confirm identity by the body: it calls _tryGetCurrentScreenData, then
+#    ContainerScreenValidation::getOrCreateSparseContainer, then FNV-1a hashes 4 bytes and emplaces into
+#    ScreenData::mRuntimeIdSparseContainerMap
+# 5. uniqueness: the pattern matches exactly once in .text (verified against 1.26.40 at 0xbcc19c0)
+pattern = "41 57 41 56 41 54 53 48 83 EC 18 49 89 D7 49 89 F4 48 89 FB 48 89 F7 E8 ? ? ? ? 0F 57 C0 0F 11 03"
+
+[[signatures]]
 name = "_ZN25CraftingDataPacketPayload11fromRecipesERK7Recipesb"
 relative = false
 extra = 0

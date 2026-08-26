@@ -14,12 +14,20 @@
 
 #pragma once
 
-#include <cstdint>
+#include <string>
 
-enum class ItemStackNetResult : std::uint8_t {
-    Success = 0,
-    Error = 1,
-    ActionRequestNotAllowed = 3,
-    FailedToEnchant = 37,
-    CannotDropItem = 59,
+#include "bedrock/network/packet.h"
+#include "bedrock/platform/uuid.h"
+#include "bedrock/world/actor/actor_runtime_id.h"
+
+struct AddPlayerPacketPayload {
+    mce::UUID uuid;
+    std::string name;
+    ActorRuntimeID runtime_id;
+};
+
+class AddPlayerPacket : public Packet {
+public:
+    static constexpr bool SHARE_WITH_HANDLER = false;
+    AddPlayerPacketPayload payload;
 };

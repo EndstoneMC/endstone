@@ -423,6 +423,52 @@ rip_relative = true
 rip_offset = 23
 
 [[signatures]]
+name = "?_handleCraftAction@CraftHandlerEnchant@@MEAA?AW4ItemStackNetResult@@AEBVItemStackRequestActionCraftBase@@@Z"
+relative = false
+extra = 0
+# 1. the enchanting strings are a DEAD END, do not start there: "InsufficientPlayerLevelToEnchant" and
+#    "FailedToEnchant" are ItemStackNetResult enumerator NAMES, and each has exactly one code xref, both
+#    inside the same ~0xd3d9 cereal enum-reflection registrar that names all 68 enumerators - a formatter,
+#    not a handler. (It does pin the values: the registrar emits them in order, and indices 0 / 1 / 59
+#    match the known Success / Error / CannotDropItem, so FailedToEnchant = 37 and
+#    InsufficientPlayerLevelToEnchant = 39.)
+# 2. locate the class on the LINUX build, whose RTTI survives: find the typeinfo name
+#    "19CraftHandlerEnchant", take the pointer to it (that is the type_info), then the pointer to the
+#    type_info (that is vtable[-1]) to get the CraftHandlerEnchant vtable. It holds 8 slots - the two
+#    Itanium destructors plus the six CraftHandlerBase virtuals - so slot 5 is _handleCraftAction. It
+#    opens `sub rsp, 138h` / `mov bpl, 6` / `cmp byte ptr [rsi+8], 0Ch`: a default result of 6, then a
+#    check that the request action is CraftRecipe (12), which is the action the class handles.
+# 3. that shape discriminates it from every sibling: Grindstone checks 10h, Loom checks 11h, and
+#    Crafting / SmithingTable / Trade open on argument shuffling with no action-type check at all.
+# 4. on Windows only three functions do the same `cmp byte ptr [rdx+8], 0Ch` (argument 2) near their
+#    entry, and only this one pairs it with `mov r14b, 6` and a large frame - the other two are ~0x50-byte
+#    helpers that tail-jump straight out.
+# 5. confirm independently: this function also constructs the std::function whose _Target_type returns the
+#    _TypeDescriptor of the lambda declared inside PlayerEventCoordinator::sendPlayerEnchantedItem, i.e.
+#    the enchanted-item notification is inlined into it. The member reads agree with the reconstruction as
+#    well - mPlayer is read at +0x70 here and at +0x68 on Linux, exactly the MSVC versus Itanium
+#    base-tail-padding difference.
+pattern = "55 41 57 41 56 41 55 41 54 56 57 53 48 81 EC ? ? ? ? 48 8D AC 24 ? ? ? ? 48 C7 85 ? ? ? ? ? ? ? ? 41 B6 06 80 7A 08 0C"
+
+[[signatures]]
+name = "?_getOrInitSparseContainer@ItemStackRequestActionHandler@@QEAA?AV?$shared_ptr@VSimpleSparseContainer@@@std@@AEBUFullContainerName@@@Z"
+relative = false
+extra = 0
+# 1. anchor on CraftHandlerEnchant::_handleCraftAction (located by the recipe above); it is the only caller in the
+#    enchanting path and calls this twice
+# 2. both call sites are immediately preceded by a stack FullContainerName whose `mName` byte is set to 22
+#    (EnchantingInputContainer) and whose optional dynamic id is zeroed: `mov [rbp+..], 16h` / `mov qword ptr
+#    [rbp+..], 0`
+# 3. the callee is a shared_ptr returner: its body opens by zeroing the sret slot with xorps/movups
+#    (`0F 57 C0 41 0F 11 06`) right after its first call
+# 4. confirm identity by the body: it calls _tryGetCurrentScreenData, then
+#    ContainerScreenValidation::getOrCreateSparseContainer, then FNV-1a hashes 4 bytes and emplaces into
+#    ScreenData::mRuntimeIdSparseContainerMap
+# 5. uniqueness: the pattern matches exactly once in .text (verified against 1.26.40 at 0x14274bd00). The mangled
+#    name is also present in the PDB, so `--pdb` resolves it by name and the pattern is only the fallback
+pattern = "55 41 56 56 57 53 48 83 EC 40 48 8D 6C 24 40 48 C7 45 F8 FE FF FF FF 4C 89 C7 49 89 D6 48 89 CB E8 ? ? ? ? 0F 57 C0 41 0F 11 06"
+
+[[signatures]]
 name = "?fromRecipes@CraftingDataPacketPayload@@SA?AU1@AEBVRecipes@@_N@Z"
 relative = false
 extra = 0

@@ -14,12 +14,12 @@
 
 #pragma once
 
-#include <cstdint>
+#include <memory>
 
-enum class ItemStackNetResult : std::uint8_t {
-    Success = 0,
-    Error = 1,
-    ActionRequestNotAllowed = 3,
-    FailedToEnchant = 37,
-    CannotDropItem = 59,
+class SimpleSparseContainer;
+struct FullContainerName;
+
+class ItemStackRequestActionHandler {
+public:
+    std::shared_ptr<SimpleSparseContainer> _getOrInitSparseContainer(const FullContainerName &open_container_id);
 };
