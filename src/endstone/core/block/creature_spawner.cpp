@@ -19,8 +19,9 @@
 
 namespace endstone::core {
 
-EndstoneCreatureSpawner::EndstoneCreatureSpawner(const EndstoneBlock &block, ::MobSpawnerBlockActor &spawner)
-    : EndstoneBlockStateBase<CreatureSpawner>(block, spawner)
+EndstoneCreatureSpawner::EndstoneCreatureSpawner(const EndstoneBlock &block, ::MobSpawnerBlockActor &spawner,
+                                                 bool use_snapshot)
+    : EndstoneBlockStateBase<CreatureSpawner>(block, spawner, use_snapshot)
 {
 }
 

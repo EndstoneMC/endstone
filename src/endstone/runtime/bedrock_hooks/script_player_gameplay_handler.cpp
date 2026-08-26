@@ -65,7 +65,7 @@ std::unordered_map<std::int64_t, BlockPos> open_container_positions;
 endstone::Nullable<endstone::Container> tryGetContainerAt(const ::Player &player, const BlockPos &block_pos)
 {
     auto &block_source = player.getDimension().getBlockSourceFromMainChunkSource();
-    return endstone::core::EndstoneBlock::at(block_source, block_pos)->captureState().as<endstone::Container>();
+    return endstone::core::EndstoneBlock::at(block_source, block_pos)->captureState(false).as<endstone::Container>();
 }
 
 class BucketItemLayout : public ::Item {

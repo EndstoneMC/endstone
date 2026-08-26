@@ -14,7 +14,7 @@
 
 #pragma once
 
-#include "endstone/block/block_state.h"
+#include "endstone/block/block_actor_state.h"
 #include "endstone/block/sign/sign_side.h"
 
 namespace endstone {
@@ -22,7 +22,7 @@ namespace endstone {
 /**
  * Represents a captured state of a sign.
  */
-class Sign : public BlockState {
+class Sign : public BlockActorState {
 public:
     /**
      * Represents a side of a sign.

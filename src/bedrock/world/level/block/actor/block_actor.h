@@ -26,6 +26,7 @@
 #include "bedrock/world/level/block/block.h"
 
 class ILevel;
+class CompoundTag;
 
 class BlockActor {
 public:
@@ -41,8 +42,13 @@ public:
 
     BlockActor(BlockActorType, const BlockPos &, const std::string &);
     virtual ~BlockActor() = default;
+    virtual void load(ILevel &, const CompoundTag &, DataLoadHelper &) = 0;
+    virtual bool save(CompoundTag &, const SaveContext &) const = 0;
 
     [[nodiscard]] BlockActorType getType() const { return type_; }
+
+    static std::shared_ptr<BlockActor> loadStatic(const BlockType &, const BlockPos &, ILevel &, const CompoundTag &,
+                                                  DataLoadHelper &);
 
 protected:
     BlockPos position_;                                                                 // +8

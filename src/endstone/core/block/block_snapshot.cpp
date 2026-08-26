@@ -51,9 +51,9 @@ void EndstoneBlockSnapshot::setData(const BlockData &data, bool /*apply_physics*
     setData(data);
 }
 
-NotNull<BlockState> EndstoneBlockSnapshot::captureState() const
+NotNull<BlockState> EndstoneBlockSnapshot::captureState(bool /*use_snapshot*/) const
 {
-    return std::make_shared<EndstoneBlockState>(getDimension(), getPosition(), *placed_);
+    return std::make_shared<EndstoneBlockState>(getDimension(), getPosition(), *placed_, nullptr, false);
 }
 
 }  // namespace endstone::core

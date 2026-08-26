@@ -34,6 +34,9 @@ public:
     SaveContext();
     explicit SaveContext(SaveUseCase);
 
+    static SaveContext forNetwork();  // Endstone
+    static SaveContext forClone();    // Endstone
+
 private:
     SaveUseCase save_use_case_;
 };

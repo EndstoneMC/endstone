@@ -14,25 +14,23 @@
 
 #pragma once
 
-#include "endstone/block/block_actor_state.h"
-#include "endstone/inventory/inventory.h"
+#include "endstone/block/block_state.h"
 
 namespace endstone {
 
 /**
- * Represents a captured state of a container block, such as a chest.
+ * Represents a captured state of a block entity.
  */
-class Container : public BlockActorState {
+class BlockActorState : public BlockState {
 public:
+    ~BlockActorState() override = default;
+
     /**
-     * Gets the inventory of the block represented by this block state.
+     * Gets whether this state is backed by an independent block entity snapshot.
      *
-     * <p>
-     * If the block was changed to a different type in the meantime, the returned inventory might no longer be valid.
-     *
-     * @return the inventory of the block
+     * @return `true` if this state is a snapshot, otherwise `false`.
      */
-    [[nodiscard]] virtual Inventory &getInventory() const = 0;
+    [[nodiscard]] virtual bool isSnapshot() const = 0;
 };
 
 }  // namespace endstone

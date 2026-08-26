@@ -6,6 +6,7 @@ __getattr__, __dir__, __all__ = lazy.attach(
         "block": [
             "Biome",
             "Block",
+            "BlockActorState",
             "BlockData",
             "BlockFace",
             "BlockState",

@@ -9,7 +9,7 @@ import numpy.typing
 
 from endstone.actor import Actor, Mob
 from endstone.ban import IpBanList, PlayerBanList
-from endstone.block import BlockData, BlockType, Sign
+from endstone.block import BlockActorState, BlockData, BlockType, Sign
 from endstone.boss import BarColor, BarFlag, BarStyle, BossBar
 from endstone.command import CommandMap, CommandSender, ConsoleCommandSender
 from endstone.form import ActionForm, MessageForm, ModalForm
@@ -605,6 +605,18 @@ class Player(Mob):
 
     @respawn_location.setter
     def respawn_location(self, arg1: Location | None) -> None: ...
+    def send_block_update(self, location: Location, block_actor_state: BlockActorState) -> None:
+        """
+        Sends a block entity state change to this player.
+
+        This fakes a block entity state change for a user at the given location. This will not actually change the world
+        in any way.
+
+        The state is sent only to this player and does not update the world.
+
+        Args:
+            location: The location of the changed block.
+            block_actor_state: The new block entity state.
     def open_sign(self, sign: Sign, side: Sign.Side) -> None:
         """
         Opens a sign editor for this player.

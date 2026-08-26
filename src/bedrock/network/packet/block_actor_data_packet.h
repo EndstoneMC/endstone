@@ -14,25 +14,22 @@
 
 #pragma once
 
-#include "endstone/block/block_actor_state.h"
-#include "endstone/inventory/inventory.h"
+#include "bedrock/nbt/compound_tag.h"
+#include "bedrock/network/packet.h"
+#include "bedrock/network/packet/cerealize/core/serialization_mode.h"
+#include "bedrock/world/level/block_pos.h"
 
-namespace endstone {
-
-/**
- * Represents a captured state of a container block, such as a chest.
- */
-class Container : public BlockActorState {
-public:
-    /**
-     * Gets the inventory of the block represented by this block state.
-     *
-     * <p>
-     * If the block was changed to a different type in the meantime, the returned inventory might no longer be valid.
-     *
-     * @return the inventory of the block
-     */
-    [[nodiscard]] virtual Inventory &getInventory() const = 0;
+struct BlockActorDataPacketPayload {
+    BlockPos pos;
+    CompoundTag data;
 };
+BEDROCK_STATIC_ASSERT_SIZE(BlockActorDataPacketPayload, 40, 48);
 
-}  // namespace endstone
+class BlockActorDataPacket : public Packet {
+public:
+    static const bool SHARE_WITH_HANDLER = true;
+
+    BlockActorDataPacketPayload payload;
+    SerializationMode serialization_mode;
+};
+BEDROCK_STATIC_ASSERT_SIZE(BlockActorDataPacket, 96, 104);

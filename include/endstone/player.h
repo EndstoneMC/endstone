@@ -22,6 +22,7 @@
 
 #include "endstone/ability.h"
 #include "endstone/actor/mob.h"
+#include "endstone/block/block_actor_state.h"
 #include "endstone/block/block_data.h"
 #include "endstone/block/sign.h"
 #include "endstone/form/action_form.h"
@@ -132,6 +133,19 @@ public:
      * @param location the respawn location, or std::nullopt to clear it; its dimension must be loaded when set
      */
     virtual void setRespawnLocation(std::optional<Location> location) = 0;
+
+    /**
+     * Sends a block entity state change to this player.
+     *
+     * This fakes a block entity state change for a user at the given location. This will not actually change the world
+     * in any way.
+     *
+     * The state is sent only to this player and does not update the world.
+     *
+     * @param location The location of the changed block
+     * @param block_actor_state The new block entity state
+     */
+    virtual void sendBlockUpdate(const Location &location, const BlockActorState &block_actor_state) = 0;
 
     /**
      * Hides an actor from this player.

@@ -11,7 +11,7 @@
 
 namespace endstone::runtime {
 
-static constexpr std::array<std::pair<std::string_view, std::size_t>, 85> symbols = {{
+static constexpr std::array<std::pair<std::string_view, std::size_t>, 86> symbols = {{
     {"BlockState::StateListNode::mHead", 245468000},
     {"Enchant::mEnchants", 245294016},
     {"MobEffect::mMobEffects", 245274360},
@@ -29,6 +29,8 @@ static constexpr std::array<std::pair<std::string_view, std::size_t>, 85> symbol
     {"_ZN18BatchedNetworkPeer14_receivePacketERNSt3__112basic_stringIcNS0_11char_traitsIcEENS0_9allocatorIcEEEERKNS0_10shared_ptrINS0_6chrono10time_pointINS9_12steady_clockENS9_8durationIxNS0_5ratioILl1ELl1000000000EEEEEEEEE", 115688128},
     // BedrockLog::LogDetails
     {"_ZN10BedrockLog10LogDetails7_log_vaE9LogAreaIDjPKciiS3_P13__va_list_tag", 237069760},
+    // BlockActor
+    {"_ZN10BlockActor10loadStaticERK9BlockTypeRK8BlockPosR6ILevelRK11CompoundTagR14DataLoadHelper", 207767728},
     // BlockDescriptor::ResolveHelper
     {"_ZN15BlockDescriptor13ResolveHelper7resolveEb", 200714528},
     // BlockType

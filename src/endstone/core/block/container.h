@@ -28,8 +28,8 @@ template <typename Interface = Container>
     requires std::is_base_of_v<Container, Interface>
 class EndstoneContainerBase : public EndstoneBlockStateBase<Interface> {
 public:
-    EndstoneContainerBase(const EndstoneBlock &block, const ::BlockActor &block_actor)
-        : EndstoneBlockStateBase<Interface>(block, block_actor),
+    EndstoneContainerBase(const EndstoneBlock &block, ::BlockActor &block_actor, bool use_snapshot)
+        : EndstoneBlockStateBase<Interface>(block, block_actor, use_snapshot),
           inventory_(std::make_unique<EndstoneInventory>([this]() -> ::Container & { return getContainer(); }))
     {
     }
@@ -42,8 +42,11 @@ public:
 protected:
     [[nodiscard]] ::Container &getContainer() const
     {
-        auto &block_actor = static_cast<::VanillaBlockActor &>(this->template getBlockActor<::BlockActor>());
-        auto *container = block_actor.getContainer();
+        auto &block_actor = this->template getBlockActor<::BlockActor>();
+        ::Container *container = nullptr;
+        if (block_actor.getType() != ::BlockActorType::DataDriven) {
+            container = static_cast<::VanillaBlockActor &>(block_actor).getContainer();
+        }
         if (container == nullptr) {
             throw std::runtime_error("Trying to access a container block state that is no longer valid.");
         }

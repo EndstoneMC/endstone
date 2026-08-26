@@ -51,10 +51,12 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - `Mob.is_swimming` and `Player.is_crawling`.
 - `Player.send_action_bar()` for sending a message above the hotbar.
 - `Player.respawn_location` for reading and writing where a player will respawn, or `None` when they have no valid respawn point. Bedrock does not persist yaw/pitch for a respawn point, so only the block coordinates and the dimension are kept.
+- `Player.send_block_update()` for showing a block entity state to one player at a location, without changing the world for anybody else.
 - `Player.open_sign()` and `Player.open_virtual_sign()` for opening a sign editor on a player's client. `open_sign()` takes a sign placed in the player's own dimension, reopens one the player is already editing, and fires `PlayerOpenSignEvent`; `open_virtual_sign()` opens the editor at any block position, with no sign required in the dimension, and fires nothing.
 
 #### Blocks
 
+- `BlockActorState` block state, the common base of `Container`, `Campfire`, `CreatureSpawner`, `ItemFrame` and `Sign`, with `is_snapshot` telling whether the state holds its own copy of the block entity or the one in the world. `Block.capture_state()` picks between them: the default gives a snapshot, `capture_state(use_snapshot=False)` gives a state that writes straight through. A persistent data container is not available on it yet.
 - `Container` block state for chests, barrels, hoppers, dispensers, droppers, shulker boxes and furnaces, exposing `container.inventory`.
 - `Furnace` block state for furnaces, blast furnaces and smokers, extending `Container`.
 - `Lectern` block state with the displayed `page`, extending `Container`.
@@ -147,6 +149,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - **BREAKING**: `Player` no longer inherits from `OfflinePlayer`.
 - **BREAKING**: `Block.type`, `BlockState.type` and `BlockData.type` return a `BlockType` instead of a string. It still compares equal to its `"namespace:key"` string and stringifies to it, but is no longer a `str`.
 - **BREAKING**: `BlockPlaceEvent.block` returns the placed block instead of the replaced block, and `block_placed_state`/`block_replaced` are renamed to `block_placed`/`block_replaced_state`.
+- **BREAKING**: `Block.capture_state()` now captures a snapshot, matching Bukkit. Edits to the state are kept in the snapshot and only reach the world when `update()` is called. Code that sets a sign's lines and never calls `update()` still compiles and now does nothing; add the `update()` call, or capture with `capture_state(use_snapshot=False)` to keep writing straight through to the block entity.
 - **BREAKING**: `ActorExplodeEvent.block_list` and `BlockExplodeEvent.block_list` hand back a live `BlockList` instead of a copy, so `remove()`, `append()`, `pop()` and `del` change what actually explodes. `remove()` matches on handle identity.
 - **BREAKING**: `BroadcastMessageEvent.recipients` is a set of handles.
 - **BREAKING**: `ActorDeathEvent` is now called for player deaths as well as every other mob. A listener that assumed it only saw non-player mobs should check `actor.type` or listen for `PlayerDeathEvent`.

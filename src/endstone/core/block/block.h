@@ -39,7 +39,7 @@ public:
     [[nodiscard]] int getY() const override;
     [[nodiscard]] int getZ() const override;
     [[nodiscard]] Location getLocation() const override;
-    [[nodiscard]] NotNull<BlockState> captureState() const override;
+    [[nodiscard]] NotNull<BlockState> captureState(bool use_snapshot) const override;
 
     [[nodiscard]] BlockPos getPosition() const;
     [[nodiscard]] ::Block &getMinecraftBlock() const;

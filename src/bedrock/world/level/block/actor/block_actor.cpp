@@ -12,27 +12,12 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-#pragma once
+#include "bedrock/world/level/block/actor/block_actor.h"
 
-#include "endstone/block/block_actor_state.h"
-#include "endstone/inventory/inventory.h"
+#include "bedrock/symbol.h"
 
-namespace endstone {
-
-/**
- * Represents a captured state of a container block, such as a chest.
- */
-class Container : public BlockActorState {
-public:
-    /**
-     * Gets the inventory of the block represented by this block state.
-     *
-     * <p>
-     * If the block was changed to a different type in the meantime, the returned inventory might no longer be valid.
-     *
-     * @return the inventory of the block
-     */
-    [[nodiscard]] virtual Inventory &getInventory() const = 0;
-};
-
-}  // namespace endstone
+std::shared_ptr<BlockActor> BlockActor::loadStatic(const BlockType &block, const BlockPos &pos, ILevel &level,
+                                                   const CompoundTag &tag, DataLoadHelper &data_load_helper)
+{
+    return BEDROCK_CALL(&BlockActor::loadStatic, block, pos, level, tag, data_load_helper);
+}

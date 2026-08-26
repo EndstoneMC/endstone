@@ -41,7 +41,7 @@ public:
     [[nodiscard]] NotNull<BlockData> getData() const override;
     void setData(const BlockData &data) override;
     void setData(const BlockData &data, bool apply_physics) override;
-    [[nodiscard]] NotNull<BlockState> captureState() const override;
+    [[nodiscard]] NotNull<BlockState> captureState(bool use_snapshot) const override;
 
 private:
     ::Block *placed_;

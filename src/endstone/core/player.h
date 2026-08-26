@@ -77,6 +77,7 @@ public:
     bool performCommand(std::string command) const override;  // NOLINT(*-use-nodiscard)
     [[nodiscard]] std::optional<Location> getRespawnLocation() const override;
     void setRespawnLocation(std::optional<Location> location) override;
+    void sendBlockUpdate(const Location &location, const BlockActorState &block_actor_state) override;
     void hideActor(Plugin &plugin, Actor &actor) override;
     void showActor(Plugin &plugin, Actor &actor) override;
     [[nodiscard]] bool canSee(const Actor &actor) const override;

@@ -722,6 +722,18 @@ void init_player(py::module_ &m, py_class<Player> &player)
         Only the block coordinates and the dimension are written back; Bedrock does not persist yaw/pitch for a
         respawn point.
 )doc")
+        .def("send_block_update", &Player::sendBlockUpdate, py::arg("location").noconvert(),
+             py::arg("block_actor_state"), R"doc(
+    Sends a block entity state change to this player.
+
+    This fakes a block entity state change for a user at the given location. This will not actually change the world
+    in any way.
+
+    The state is sent only to this player and does not update the world.
+
+    Args:
+        location: The location of the changed block.
+        block_actor_state: The new block entity state.
         .def("open_sign", &Player::openSign, py::arg("sign"), py::arg("side"), R"doc(
     Opens a sign editor for this player.
 

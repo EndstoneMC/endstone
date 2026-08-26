@@ -46,7 +46,7 @@ private:
 
 class EndstoneSign : public EndstoneBlockStateBase<Sign> {
 public:
-    EndstoneSign(const EndstoneBlock &block, ::SignBlockActor &sign);
+    EndstoneSign(const EndstoneBlock &block, ::SignBlockActor &sign, bool use_snapshot);
 
     [[nodiscard]] SignSide &getSide(Side side) const override;
     [[nodiscard]] bool isWaxed() const override;
@@ -55,7 +55,7 @@ public:
 private:
     friend class EndstoneSignSide;
 
-    [[nodiscard]] ::SignBlockActor &getSign() const { return getBlockActor<::SignBlockActor>(); }
+    [[nodiscard]] ::SignBlockActor &getSign() const;
     mutable EndstoneSignSide front_;
     mutable EndstoneSignSide back_;
 };

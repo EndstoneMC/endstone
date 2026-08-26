@@ -20,8 +20,8 @@
 
 namespace endstone::core {
 
-EndstoneLectern::EndstoneLectern(const EndstoneBlock &block, ::LecternBlockActor &lectern)
-    : EndstoneContainerBase<Lectern>(block, lectern)
+EndstoneLectern::EndstoneLectern(const EndstoneBlock &block, ::LecternBlockActor &lectern, bool use_snapshot)
+    : EndstoneContainerBase<Lectern>(block, lectern, use_snapshot)
 {
 }
 

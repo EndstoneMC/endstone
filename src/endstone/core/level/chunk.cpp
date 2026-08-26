@@ -101,7 +101,7 @@ std::vector<NotNull<BlockState>> EndstoneChunk::getBlockActors() const
     std::vector<NotNull<BlockState>> block_actors;
     for (const auto &pos : chunk->getBlockEntities() | std::views::keys) {
         const BlockPos block_pos{(x_ << 4) + pos.x, min_height + pos.y.getVal(), (z_ << 4) + pos.z};
-        block_actors.push_back(EndstoneBlock::at(block_source, block_pos)->captureState());
+        block_actors.push_back(EndstoneBlock::at(block_source, block_pos)->captureState(true));
     }
     return block_actors;
 }

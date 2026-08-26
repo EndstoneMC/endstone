@@ -170,6 +170,33 @@ extra = 0
 pattern = "55 41 57 41 56 41 55 41 54 56 57 53 48 81 EC ? ? ? ? 48 8D AC 24 ? ? ? ? 48 C7 85 ? ? ? ? ? ? ? ? 4D 89 CE 44 89 85 ? ? ? ? 89 95 ? ? ? ? 48 89 CE 48 8B 95"
 
 [[signatures]]
+name = "?loadStatic@BlockActor@@SA?AV?$shared_ptr@VBlockActor@@@std@@AEBVBlockType@@AEBVBlockPos@@AEAVILevel@@AEBVCompoundTag@@AEAVDataLoadHelper@@@Z"
+relative = false
+extra = 0
+# BlockActor::loadStatic rebuilds a block actor from a saved tag. It calls the BlockActorCreationFunction
+# that BDS installs into BlockActorFactory, checks the tag's "id" against BlockType::getBlockEntityType,
+# and only then runs load() followed by the loadStatic() virtual.
+# 1. find VanillaBlockActorFactory::createBlockActor - the body that reads a one-byte block actor type out
+#    of `block`, substitutes BlockActorType::DataDriven (`mov ecx, 3Eh`) when the lookup misses, bounds-
+#    checks with `dec eax; cmp eax, 3Dh; ja <default>` and jumps through a 62-entry table. Nothing calls
+#    it; its only reference in the image is the `lea` inside VanillaGameModuleServer::configureLevel that
+#    installs it into a std::function
+# 2. from that `lea`, walk forward to the global std::function the local copy is moved into. That global
+#    is BlockActorFactory's mCreateBlockActor
+# 3. the TARGET is the one function that loads that global's callable pointer, returns an empty
+#    shared_ptr when it is null, and otherwise invokes it (through the std::function vtable, behind __guard_dispatch_icall)
+# 4. confirm the body: a `lea` of the two-character literal "id" with a hard-coded length of 2 handed to
+#    CompoundTag::get<StringTag>, a hash lookup in the idClassMap static, a comparison of the mapped
+#    BlockActorType against BlockType::getBlockEntityType(block), and then two virtual calls back to back
+#    on the freshly created actor - vtable+8 (load) immediately followed by vtable+56
+#    (the loadStatic virtual). That adjacent pair is what separates it from every other reader of the map
+# 5. cross-check the decoded address against the old named database
+# 6. uniqueness: the pattern runs from the prologue through the "id" string_view construction and the call
+#    into CompoundTag::get<StringTag>. Cut from 1.26.40 and validated against 1.26.44 - exactly one .text
+#    hit on each platform, and the hit carries the vtable pair from step 4
+pattern = "55 41 57 41 56 41 55 41 54 56 57 53 48 81 EC ? ? ? ? 48 8D AC 24 ? ? ? ? 48 C7 45 ? FE FF FF FF 48 89 CE 48 8B 0D ? ? ? ? 48 85 C9 0F 84 ? ? ? ? 49 89 D6 4C 89 4D ? 48 8B 01 48 8B 40 10 48 89 EA 4D 89 F1 FF 15 ? ? ? ? 48 83 7D ? 00 0F 84 ? ? ? ? 48 8B 8D ? ? ? ? 48 8D 05 ? ? ? ? 48 89 45 ? 48 C7 45 ? 02 00 00 00 48 8D 55 ? E8"
+
+[[signatures]]
 name = "?resolve@ResolveHelper@BlockDescriptor@@QEAAX_N@Z"
 relative = false
 extra = 0
@@ -1246,7 +1273,6 @@ extra = 0
 #    in .text of 1.26.44 (and once in 1.26.32.2). No byte-identical sibling exists - no other Item override
 #    loads 1Eh into the getEnchantLevel argument
 pattern = "55 41 57 41 56 41 55 41 54 56 57 53 48 81 EC ? ? ? ? 48 8D AC 24 ? ? ? ? 44 0F 29 85 ? ? ? ? 0F 29 BD ? ? ? ? 0F 29 B5 ? ? ? ? 48 C7 85 ? ? ? ? FE FF FF FF 4D 85 C0 0F 84 ? ? ? ? 4C 89 C6 41 80 B8 ? ? ? ? 00 0F 85 ? ? ? ? 45 89 CF 48 89 D7 48 89 CB B1 1E E8"
-
 [[signatures]]
 name = "?updateWeather@WeatherManager@@QEAAXMHMH@Z"
 relative = false

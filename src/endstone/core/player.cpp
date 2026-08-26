@@ -16,6 +16,8 @@
 
 #include <RakPeerInterface.h>
 
+#include <cstdint>
+#include <string_view>
 #include <unordered_map>
 #include <unordered_set>
 #include <utility>
@@ -26,6 +28,7 @@
 
 #include "bedrock/entity/components/user_entity_identifier_component.h"
 #include "bedrock/network/packet.h"
+#include "bedrock/network/packet/block_actor_data_packet.h"
 #include "bedrock/network/packet/clientbound_map_item_data_packet.h"
 #include "bedrock/network/packet/modal_form_request_packet.h"
 #include "bedrock/network/packet/open_sign_packet.h"
@@ -53,6 +56,7 @@
 #include "endstone/color_format.h"
 #include "endstone/core/ability.h"
 #include "endstone/core/base64.h"
+#include "endstone/core/block/block_actor_state.h"
 #include "endstone/core/entity/components/flag_components.h"
 #include "endstone/core/form/form_codec.h"
 #include "endstone/core/game_mode.h"
@@ -318,6 +322,18 @@ void EndstonePlayer::setRespawnLocation(std::optional<Location> location)
     getHandle().setRespawnPosition(BlockPos(location->getX(), location->getY(), location->getZ()), dimension_id);
 }
 
+void EndstonePlayer::sendBlockUpdate(const Location &location, const BlockActorState &block_actor_state)
+{
+    const auto *state = dynamic_cast<const EndstoneBlockActorState *>(&block_actor_state);
+    Preconditions::checkArgument(state != nullptr, "Unsupported BlockActorState implementation.");
+
+    const auto packet = MinecraftPackets::createPacket(MinecraftPacketIds::BlockActorData);
+    auto &pk = static_cast<BlockActorDataPacket &>(*packet);
+    pk.payload.pos = {location.getBlockX(), location.getBlockY(), location.getBlockZ()};
+    Preconditions::checkState(state->serialize(pk.payload.data), "Unable to serialize the block entity state.");
+    pk.payload.data.putInt("x", pk.payload.pos.x);
+    pk.payload.data.putInt("y", pk.payload.pos.y);
+    pk.payload.data.putInt("z", pk.payload.pos.z);
 void EndstonePlayer::hideActor(Plugin &plugin, Actor &actor)
 {
     Preconditions::checkArgument(plugin.isEnabled(), "Plugin ({}) attempted to hide an actor while disabled",

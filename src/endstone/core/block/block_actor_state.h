@@ -14,21 +14,29 @@
 
 #pragma once
 
-#include "bedrock/world/level/block/actor/lectern_block_actor.h"
-#include "endstone/block/lectern.h"
-#include "endstone/core/block/container.h"
+#include <memory>
+
+class BlockActor;
+class BlockPos;
+class BlockType;
+class CompoundTag;
+class ILevel;
 
 namespace endstone::core {
 
-class EndstoneLectern : public EndstoneContainerBase<Lectern> {
+class EndstoneBlockActorState {
 public:
-    EndstoneLectern(const EndstoneBlock &block, ::LecternBlockActor &lectern, bool use_snapshot);
+    virtual ~EndstoneBlockActorState();
 
-    [[nodiscard]] int getPage() const override;
-    void setPage(int page) override;
+    [[nodiscard]] virtual bool serialize(::CompoundTag &tag) const = 0;
+    [[nodiscard]] virtual bool serializeForUpdate(::CompoundTag &tag) const = 0;
 
-private:
-    [[nodiscard]] ::LecternBlockActor &getLectern() const { return getBlockActor<::LecternBlockActor>(); }
+protected:
+    void initializeBlockActor(::ILevel &level, const ::BlockActor &block_actor, const ::BlockPos &position,
+                              const ::BlockType &block, bool use_snapshot);
+    bool applyTo(::ILevel &level, ::BlockActor &block_actor) const;
+
+    std::shared_ptr<::BlockActor> snapshot_;
 };
 
 }  // namespace endstone::core

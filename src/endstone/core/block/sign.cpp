@@ -126,8 +126,8 @@ void EndstoneSignSide::setColor(Color color)
     getSign().setChanged();
 }
 
-EndstoneSign::EndstoneSign(const EndstoneBlock &block, ::SignBlockActor &sign)
-    : EndstoneBlockStateBase<Sign>(block, sign), front_(*this, ::SignTextSide::Front),
+EndstoneSign::EndstoneSign(const EndstoneBlock &block, ::SignBlockActor &sign, bool use_snapshot)
+    : EndstoneBlockStateBase<Sign>(block, sign, use_snapshot), front_(*this, ::SignTextSide::Front),
       back_(*this, ::SignTextSide::Back)
 {
 }
@@ -146,6 +146,11 @@ void EndstoneSign::setWaxed(bool waxed)
 {
     getSign().setWaxed(waxed);
     getSign().setChanged();
+}
+
+::SignBlockActor &EndstoneSign::getSign() const
+{
+    return getBlockActor<::SignBlockActor>();
 }
 
 }  // namespace endstone::core

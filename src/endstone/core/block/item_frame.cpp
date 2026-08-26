@@ -21,8 +21,8 @@
 
 namespace endstone::core {
 
-EndstoneItemFrame::EndstoneItemFrame(const EndstoneBlock &block, ::ItemFrameBlockActor &item_frame)
-    : EndstoneBlockStateBase<ItemFrame>(block, item_frame)
+EndstoneItemFrame::EndstoneItemFrame(const EndstoneBlock &block, ::ItemFrameBlockActor &item_frame, bool use_snapshot)
+    : EndstoneBlockStateBase<ItemFrame>(block, item_frame, use_snapshot)
 {
 }
 

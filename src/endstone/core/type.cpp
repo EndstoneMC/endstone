@@ -22,6 +22,7 @@
 #include "endstone/actor/actor.h"
 #include "endstone/actor/item.h"
 #include "endstone/actor/mob.h"
+#include "endstone/block/block_actor_state.h"
 #include "endstone/block/block_state.h"
 #include "endstone/block/campfire.h"
 #include "endstone/block/container.h"
@@ -98,13 +99,14 @@ void registerTypes()
 
     // BlockState hierarchy
     registerType<BlockState>();
-    registerType<Container>().base<BlockState>();
+    registerType<BlockActorState>().base<BlockState>();
+    registerType<Container>().base<BlockActorState>();
     registerType<Furnace>().base<Container>();
     registerType<Lectern>().base<Container>();
-    registerType<Campfire>().base<BlockState>();
-    registerType<CreatureSpawner>().base<BlockState>();
-    registerType<ItemFrame>().base<BlockState>();
-    registerType<Sign>().base<BlockState>();
+    registerType<Campfire>().base<BlockActorState>();
+    registerType<CreatureSpawner>().base<BlockActorState>();
+    registerType<ItemFrame>().base<BlockActorState>();
+    registerType<Sign>().base<BlockActorState>();
 
     // Recipe hierarchy
     registerType<Recipe>();

@@ -14,25 +14,16 @@
 
 #pragma once
 
-#include "endstone/block/block_actor_state.h"
-#include "endstone/inventory/inventory.h"
+#include <functional>
 
-namespace endstone {
+class Actor;
+class CompoundTag;
 
-/**
- * Represents a captured state of a container block, such as a chest.
- */
-class Container : public BlockActorState {
+class InternalComponentRegistry {
 public:
-    /**
-     * Gets the inventory of the block represented by this block state.
-     *
-     * <p>
-     * If the block was changed to a different type in the meantime, the returned inventory might no longer be valid.
-     *
-     * @return the inventory of the block
-     */
-    [[nodiscard]] virtual Inventory &getInventory() const = 0;
+    struct ComponentInfo {
+        std::function<void(const CompoundTag &, CompoundTag &)> legacy_data_conversion_func_;
+        std::function<void(Actor &, const CompoundTag &)> create_and_load_component_func_;
+        std::function<void(const Actor &, CompoundTag &)> save_component_func_;
+    };
 };
-
-}  // namespace endstone

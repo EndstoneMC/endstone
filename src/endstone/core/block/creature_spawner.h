@@ -22,7 +22,7 @@ namespace endstone::core {
 
 class EndstoneCreatureSpawner : public EndstoneBlockStateBase<CreatureSpawner> {
 public:
-    EndstoneCreatureSpawner(const EndstoneBlock &block, ::MobSpawnerBlockActor &spawner);
+    EndstoneCreatureSpawner(const EndstoneBlock &block, ::MobSpawnerBlockActor &spawner, bool use_snapshot);
 
     [[nodiscard]] const ActorType &getSpawnedType() const override;
     void setSpawnedType(ActorTypeId type) override;

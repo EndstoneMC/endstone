@@ -21,9 +21,11 @@
 #include "bedrock/world/level/block/actor/block_actor.h"
 #include "bedrock/world/level/block/block_descriptor.h"
 #include "endstone/block/block.h"
+#include "endstone/block/block_actor_state.h"
 #include "endstone/block/block_state.h"
 #include "endstone/check.h"
 #include "endstone/core/block/block.h"
+#include "endstone/core/block/block_actor_state.h"
 #include "endstone/core/block/block_data.h"
 #include "endstone/core/level/dimension.h"
 #include "endstone/core/type.h"
@@ -32,23 +34,29 @@ namespace endstone::core {
 
 template <typename Interface = BlockState>
     requires std::is_base_of_v<BlockState, Interface>
-class EndstoneBlockStateBase : public Interface {
+class EndstoneBlockStateBase : public Interface, public EndstoneBlockActorState {
 public:
     explicit EndstoneBlockStateBase(const EndstoneBlock &block)
-        : EndstoneBlockStateBase(block.getDimension(), block.getPosition(), block.getMinecraftBlock())
+        : EndstoneBlockStateBase(block.getDimension(), block.getPosition(), block.getMinecraftBlock(), nullptr, false)
     {
     }
 
-    EndstoneBlockStateBase(const EndstoneBlock &block, const ::BlockActor &block_actor)
-        : EndstoneBlockStateBase(block)
+    explicit EndstoneBlockStateBase(const EndstoneBlock &block, ::BlockActor &block_actor, bool use_snapshot)
+        : EndstoneBlockStateBase(block.getDimension(), block.getPosition(), block.getMinecraftBlock(), &block_actor,
+                                 use_snapshot)
     {
-        block_actor_type_ = block_actor.getType();
     }
 
-    explicit EndstoneBlockStateBase(NotNull<Dimension> dimension, BlockPos block_pos, const ::Block &block)
+    explicit EndstoneBlockStateBase(NotNull<Dimension> dimension, BlockPos block_pos, const ::Block &block,
+                                    ::BlockActor *block_actor, bool use_snapshot)
         : dimension_(dimension.cast<EndstoneDimension>()), block_pos_(block_pos),
           block_(const_cast<::Block *>(&block))
     {
+        if (block_actor != nullptr) {
+            block_actor_type_ = block_actor->getType();
+            initializeBlockActor(dimension_->getHandle().getBlockSourceFromMainChunkSource().getILevel(), *block_actor,
+                                 block_pos_, block_->getBlockType(), use_snapshot);
+        }
     }
 
     [[nodiscard]] ClassInfo getClassInfo() const override
@@ -111,6 +119,23 @@ public:
         return Location{getDimension(), getX(), getY(), getZ()};
     }
 
+    [[nodiscard]] bool isSnapshot() const
+    {
+        return snapshot_ != nullptr;
+    }
+
+    [[nodiscard]] bool serialize(::CompoundTag &tag) const override
+    {
+        const auto *block_actor = tryGetBlockActor();
+        return block_actor != nullptr && block_actor->save(tag, SaveContext::forNetwork());
+    }
+
+    [[nodiscard]] bool serializeForUpdate(::CompoundTag &tag) const override
+    {
+        const auto *block_actor = tryGetBlockActor();
+        return block_actor != nullptr && block_actor->save(tag, SaveContext::forClone());
+    }
+
     bool update() override
     {
         return update(false);
@@ -128,6 +153,10 @@ public:
             return false;
         }
         block->setData(*getData(), apply_physics);
+
+        if (auto *block_actor = tryGetLiveBlockActor(); block_actor != nullptr) {
+            applyTo(getBlockSource().getILevel(), *block_actor);
+        }
         return true;
     }
 
@@ -137,15 +166,29 @@ protected:
         return dimension_->getHandle().getBlockSourceFromMainChunkSource();
     }
 
+    [[nodiscard]] ::BlockActor *tryGetLiveBlockActor() const
+    {
+        auto *block_actor = getBlockSource().getBlockEntity(block_pos_);
+        if (block_actor == nullptr || !block_actor_type_.has_value() ||
+            block_actor->getType() != block_actor_type_.value()) {
+            return nullptr;
+        }
+        return block_actor;
+    }
+
+    [[nodiscard]] ::BlockActor *tryGetBlockActor() const
+    {
+        return snapshot_ != nullptr ? snapshot_.get() : tryGetLiveBlockActor();
+    }
+
     template <typename T>
     [[nodiscard]] T &getBlockActor() const
     {
-        auto *block_entity = getBlockSource().getBlockEntity(block_pos_);
-        if (block_entity == nullptr || !block_actor_type_.has_value() ||
-            block_entity->getType() != block_actor_type_.value()) {
+        auto *block_actor = tryGetBlockActor();
+        if (block_actor == nullptr) {
             throw std::runtime_error("Trying to access a block state that is no longer valid.");
         }
-        return static_cast<T &>(*block_entity);
+        return static_cast<T &>(*block_actor);
     }
 
     NotNull<EndstoneDimension> dimension_;
@@ -155,5 +198,6 @@ protected:
 };
 
 using EndstoneBlockState = EndstoneBlockStateBase<BlockState>;
+using EndstoneGenericBlockActorState = EndstoneBlockStateBase<BlockActorState>;
 
 }  // namespace endstone::core
