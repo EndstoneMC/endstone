@@ -106,11 +106,31 @@ void init_inventory(py::module_ &m, py::class_<ItemStack> &item_stack)
 
     py::classh<Recipe>(m, "Recipe", "Represents some type of crafting recipe.")
         .def_property_readonly("result", &Recipe::getResult, "The result of this recipe.")
-        .def_property_readonly("ingredients", &Recipe::getIngredients)
+        .def_property_readonly("ingredients", &Recipe::getIngredients, R"doc(
+    The ingredients consumed by this recipe.
+
+    A value is `None` when the corresponding slot does not require an ingredient.
+)doc")
         .def_property_readonly("id", &Recipe::getId,
                                "The identifier of this recipe, such as `minecraft:crafting_table`.")
         .def_property_readonly("tag", &Recipe::getTag,
-                               "The crafting station this recipe belongs to, such as `crafting_table`.");
+                               "The station this recipe belongs to, such as `crafting_table` or `furnace`.");
+
+    py::classh<CookingRecipe, Recipe>(m, "CookingRecipe", R"doc(
+    Represents a cooking recipe.
+
+    Bedrock records neither an experience reward nor a cooking time on the recipe itself, so neither is reported here.
+    The experience a smelt awards belongs to the input item, and the time a cook takes to the station.
+)doc")
+        .def_property_readonly("input_choice", &CookingRecipe::getInputChoice, "The input choice.");
+
+    py::classh<BlastingRecipe, CookingRecipe>(m, "BlastingRecipe", "Represents a blasting recipe.");
+
+    py::classh<CampfireRecipe, CookingRecipe>(m, "CampfireRecipe", "Represents a campfire recipe.");
+
+    py::classh<FurnaceRecipe, CookingRecipe>(m, "FurnaceRecipe", "Represents a furnace recipe.");
+
+    py::classh<SmokingRecipe, CookingRecipe>(m, "SmokingRecipe", "Represents a smoking recipe.");
 
     py::classh<ShapedRecipe, Recipe>(m, "ShapedRecipe", "Represents a shaped (ie normal) crafting recipe.")
         .def_property_readonly("width", &ShapedRecipe::getWidth)

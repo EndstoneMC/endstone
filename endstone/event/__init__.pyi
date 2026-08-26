@@ -8,11 +8,11 @@ import typing
 
 from endstone import GameMode, Input, Player, Skin
 from endstone.actor import Actor, Item, Mob
-from endstone.block import Block, BlockFace, BlockState
+from endstone.block import Block, BlockFace, BlockState, Sign
 from endstone.command import CommandSender
 from endstone.damage import DamageSource
 from endstone.enchantments import Enchantment
-from endstone.inventory import BookMeta, EquipmentSlot, Inventory, ItemStack, Recipe
+from endstone.inventory import BookMeta, CookingRecipe, EquipmentSlot, Inventory, ItemStack, ItemType, Recipe
 from endstone.lang import Translatable
 from endstone.level import Chunk, Dimension, Level, Location
 from endstone.map import MapView
@@ -49,6 +49,7 @@ __all__ = [
     "BlockPlaceEvent",
     "BroadcastMessageEvent",
     "Cancellable",
+    "CauldronLevelChangeEvent",
     "ChunkEvent",
     "ChunkLoadEvent",
     "ChunkUnloadEvent",
@@ -73,6 +74,9 @@ __all__ = [
     "PlayerBedEnterEvent",
     "PlayerBedLeaveEvent",
     "PlayerBucketActorEvent",
+    "PlayerBucketEmptyEvent",
+    "PlayerBucketEvent",
+    "PlayerBucketFillEvent",
     "PlayerChatEvent",
     "PlayerCommandEvent",
     "PlayerCraftItemEvent",
@@ -95,6 +99,7 @@ __all__ = [
     "PlayerLevelChangeEvent",
     "PlayerLoginEvent",
     "PlayerMoveEvent",
+    "PlayerOpenSignEvent",
     "PlayerPickupArrowEvent",
     "PlayerPickupExperienceEvent",
     "PlayerPickupItemEvent",
@@ -523,6 +528,11 @@ class BlockCookEvent(BlockEvent, Cancellable):
 
     @result.setter
     def result(self, arg1: ItemStack) -> None: ...
+    @property
+    def recipe(self) -> CookingRecipe | None:
+        """
+        The cooking recipe this event is for, or `None` if the server could not resolve one.
+        """
 
 class BlockGrowEvent(BlockEvent, Cancellable):
     """
@@ -534,6 +544,63 @@ class BlockGrowEvent(BlockEvent, Cancellable):
     def new_state(self) -> BlockState:
         """
         The new state of the block after it has grown.
+        """
+
+class CauldronLevelChangeEvent(BlockEvent, Cancellable):
+    """
+    Called when a cauldron's level or contents change.
+    """
+    class ChangeReason(enum.Enum):
+        """
+        The reason the cauldron changed.
+        """
+
+        BUCKET_FILL = 0
+        BUCKET_EMPTY = 1
+        BOTTLE_FILL = 2
+        BOTTLE_EMPTY = 3
+        BANNER_WASH = 4
+        ARMOR_WASH = 5
+        SHULKER_WASH = 6
+        EXTINGUISH = 7
+        EVAPORATE = 8
+        NATURAL_FILL = 9
+        UNKNOWN = 10
+
+    BUCKET_FILL = ChangeReason.BUCKET_FILL
+    BUCKET_EMPTY = ChangeReason.BUCKET_EMPTY
+    BOTTLE_FILL = ChangeReason.BOTTLE_FILL
+    BOTTLE_EMPTY = ChangeReason.BOTTLE_EMPTY
+    BANNER_WASH = ChangeReason.BANNER_WASH
+    ARMOR_WASH = ChangeReason.ARMOR_WASH
+    SHULKER_WASH = ChangeReason.SHULKER_WASH
+    EXTINGUISH = ChangeReason.EXTINGUISH
+    EVAPORATE = ChangeReason.EVAPORATE
+    NATURAL_FILL = ChangeReason.NATURAL_FILL
+    UNKNOWN = ChangeReason.UNKNOWN
+    @property
+    def actor(self) -> Actor | None:
+        """
+        The actor which did this, or `None`.
+
+        Only a player interacting with the cauldron is reported. Every other change reports `None`.
+        """
+
+    @property
+    def reason(self) -> ChangeReason:
+        """
+        The reason for the change.
+
+        Only a player interacting with the cauldron is attributed. Every other change reports
+        `ChangeReason.UNKNOWN`.
+        """
+
+    @property
+    def new_state(self) -> BlockState:
+        """
+        The state the cauldron will take.
+
+        Modifying the returned state changes what the cauldron becomes.
         """
 
 class BlockFormEvent(BlockGrowEvent):
@@ -760,6 +827,61 @@ class PlayerBucketActorEvent(PlayerEvent, Cancellable):
         """
         The hand used to capture the actor.
         """
+
+class PlayerBucketEvent(PlayerEvent, Cancellable):
+    """
+    Base class for events involving a player's bucket interaction.
+    """
+    @property
+    def block(self) -> Block | None:
+        """
+        The block involved in this event, or `None` if unavailable.
+        """
+
+    @property
+    def block_clicked(self) -> Block:
+        """
+        The block clicked by the player.
+        """
+
+    @property
+    def block_face(self) -> BlockFace:
+        """
+        The face on the clicked block.
+        """
+
+    @property
+    def bucket(self) -> ItemType:
+        """
+        The bucket used in this event.
+        """
+
+    @property
+    def hand(self) -> EquipmentSlot:
+        """
+        The hand used in this event.
+
+        This is always `EquipmentSlot.HAND`, because Bedrock does not report which hand was used for this interaction.
+        """
+
+    @property
+    def item_stack(self) -> ItemStack | None:
+        """
+        The resulting item in the player's hand, or `None` if unavailable.
+        """
+
+    @item_stack.setter
+    def item_stack(self, arg1: ItemStack | None) -> None: ...
+
+class PlayerBucketFillEvent(PlayerBucketEvent):
+    """
+    Called when a player fills a bucket.
+    """
+
+class PlayerBucketEmptyEvent(PlayerBucketEvent):
+    """
+    Called when a player empties a bucket.
+    """
 
 class PlayerChatEvent(PlayerEvent, Cancellable):
     """
@@ -1230,6 +1352,44 @@ class PlayerJumpEvent(PlayerMoveEvent):
     """
     Called when a player jumps.
     """
+
+class PlayerOpenSignEvent(PlayerEvent, Cancellable):
+    """
+    Called when a player begins editing a sign's text.
+
+    Cancelling this event stops the sign editing menu from opening.
+    """
+    class Cause(enum.Enum):
+        """
+        The cause of the sign opening.
+        """
+
+        PLACE = 0
+        INTERACT = 1
+        PLUGIN = 2
+        UNKNOWN = 3
+
+    PLACE = Cause.PLACE
+    INTERACT = Cause.INTERACT
+    PLUGIN = Cause.PLUGIN
+    UNKNOWN = Cause.UNKNOWN
+    @property
+    def sign(self) -> Sign:
+        """
+        A captured state of the sign involved in this event.
+        """
+
+    @property
+    def side(self) -> Sign.Side:
+        """
+        The side of the sign being opened.
+        """
+
+    @property
+    def cause(self) -> Cause:
+        """
+        The cause of the sign opening.
+        """
 
 class PlayerQuitEvent(PlayerEvent):
     """

@@ -10,8 +10,10 @@ add_library(endstone_runtime SHARED
         bedrock_hooks/armor_stand.cpp
         bedrock_hooks/batched_network_peer.cpp
         bedrock_hooks/bedrock_event_logger.cpp
+        bedrock_hooks/bucket.cpp
         bedrock_hooks/bucketable_component.cpp
         bedrock_hooks/campfire_block_actor.cpp
+        bedrock_hooks/cauldron.cpp
         bedrock_hooks/console_input_reader.cpp
         bedrock_hooks/craft_handler_crafting.cpp
         bedrock_hooks/craft_handler_enchant.cpp

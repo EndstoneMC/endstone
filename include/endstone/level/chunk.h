@@ -21,6 +21,7 @@
 
 namespace endstone {
 
+class BlockState;
 class Plugin;
 
 /**
@@ -106,6 +107,15 @@ public:
      * @return `true` if a plugin ticket was removed, `false` if the plugin holds none for this chunk
      */
     virtual bool removePluginChunkTicket(Plugin &plugin) = 0;
+
+    /**
+     * Gets a list of all block actors in this chunk.
+     *
+     * The returned list is a snapshot; it does not track block actors placed or broken afterwards.
+     *
+     * @return the state of every block actor in this chunk, or an empty list if this chunk is not loaded
+     */
+    [[nodiscard]] virtual std::vector<NotNull<BlockState>> getBlockActors() const = 0;
 
     /**
      * Gets which plugins hold a ticket for this chunk.

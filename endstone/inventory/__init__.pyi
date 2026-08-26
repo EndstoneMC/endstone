@@ -12,13 +12,17 @@ from endstone.nbt import CompoundTag
 from endstone.potion import PotionType
 
 __all__ = [
+    "BlastingRecipe",
     "BookMeta",
     "BookMetaGeneration",
+    "CampfireRecipe",
     "ComplexAliasIngredient",
     "ComplexRecipe",
+    "CookingRecipe",
     "CrossbowMeta",
     "EquipmentSlot",
     "ExactIngredient",
+    "FurnaceRecipe",
     "Inventory",
     "ItemFactory",
     "ItemMeta",
@@ -37,6 +41,7 @@ __all__ = [
     "SmithingRecipe",
     "SmithingTransformRecipe",
     "SmithingTrimRecipe",
+    "SmokingRecipe",
     "WritableBookMeta",
 ]
 
@@ -270,7 +275,13 @@ class Recipe:
         """
 
     @property
-    def ingredients(self) -> list[RecipeIngredient | None]: ...
+    def ingredients(self) -> list[RecipeIngredient | None]:
+        """
+        The ingredients consumed by this recipe.
+
+        A value is `None` when the corresponding slot does not require an ingredient.
+        """
+
     @property
     def id(self) -> str:
         """
@@ -280,8 +291,41 @@ class Recipe:
     @property
     def tag(self) -> str:
         """
-        The crafting station this recipe belongs to, such as `crafting_table`.
+        The station this recipe belongs to, such as `crafting_table` or `furnace`.
         """
+
+class CookingRecipe(Recipe):
+    """
+    Represents a cooking recipe.
+
+    Bedrock records neither an experience reward nor a cooking time on the recipe itself, so neither is reported here.
+    The experience a smelt awards belongs to the input item, and the time a cook takes to the station.
+    """
+    @property
+    def input_choice(self) -> RecipeIngredient | None:
+        """
+        The input choice.
+        """
+
+class BlastingRecipe(CookingRecipe):
+    """
+    Represents a blasting recipe.
+    """
+
+class CampfireRecipe(CookingRecipe):
+    """
+    Represents a campfire recipe.
+    """
+
+class FurnaceRecipe(CookingRecipe):
+    """
+    Represents a furnace recipe.
+    """
+
+class SmokingRecipe(CookingRecipe):
+    """
+    Represents a smoking recipe.
+    """
 
 class ShapedRecipe(Recipe):
     """

@@ -599,6 +599,35 @@ extra = 0
 pattern = "41 57 41 56 53 8B 42"
 
 [[signatures]]
+name = "_ZNK10BucketItem6_useOnER9ItemStackR5Actor8BlockPoshRK4Vec3"
+relative = false
+extra = 0
+# 1. the name is real: BDS declares `private: virtual InteractionResult BucketItem::_useOn(ItemStack&, Actor&,
+#    BlockPos, FacingID, const Vec3&) const`, so a symbol-bearing build resolves it by name; the steps below
+#    are the no-symbol route the shipped stripped PIE needs. No disassembly is required for any of it
+# 2. the shipped ELF keeps RTTI. Find bytes "31 30 42 75 63 6B 65 74 49 74 65 6D 00" = "10BucketItem\0" in
+#    .rodata (unique, 1.26.44.3: 0x1AEEC28) - that is _ZTS10BucketItem
+# 3. walk .rela.dyn for R_X86_64_RELATIVE entries. Exactly one addend equals the string address; its r_offset
+#    is _ZTI10BucketItem + 8. Exactly one addend equals that typeinfo address; its r_offset is
+#    _ZTV10BucketItem + 8. The vptr is _ZTV10BucketItem + 16 (past offset-to-top and typeinfo)
+# 4. the target is vptr slot 130, the last entry. Item declares 129 virtuals after its destructor, so an Item
+#    subclass vtable is exactly 131 slots (2 destructor slots + 129) and slot 130 is Item::_useOn. In
+#    1.26.44.3 _ZTV10BucketItem is 0xE6BACB0, the vptr 0xE6BACC0, and slot 130 relocates to 0xBC66BF0
+# 5. confirm the vtable is BucketItem's from its contents, independently of RTTI: slot 13 (Item::isBucket) is
+#    the 3-byte thunk `B0 01 C3` (mov al, 1; ret) and it is the only 131-slot vtable in the binary where that
+#    is true; slot 71 uniqueAuxValues is a second `B0 01 C3`; and slots 51, 81, 101 and 110
+#    (isLiquidClipItem, canUseOnSimTick, getMaxStackSize, validFishInteraction) all read mFillType at
+#    [rdi+0x1C8] - `8B 87 C8 01 00 00`, `0F B7 8F C8 01 00 00`, `66 83 BF C8 01 00 00`, `8B 87 C8 01 00 00`
+# 6. the slot arithmetic is checked against a symbol already in this table: TridentItem::releaseUsing
+#    (0xBAE5260) appears exactly once in the relocated vtable data, at slot 88, and Item declares
+#    releaseUsing as its 87th virtual - 87 + 1 extra destructor slot = 88
+# 7. cut from the prologue at 0xBC66BF0
+# uniqueness: the pattern below matches exactly once in the whole .text of 1.26.44.3, and exactly once in
+# 1.26.40.8. The prologue alone (through `sub rsp, 0x3E8`) takes 35 hits, so the register shuffle after it is
+# load-bearing - do not shorten it. It does not match 1.26.33.1, where the frame size differs
+pattern = "55 41 57 41 56 41 55 41 54 53 48 81 EC E8 03 00 00 44 89 CD 48 89 D3 48 89 74 24 70 49 89 FC 48 89 0C 24 44 89 44 24 08"
+
+[[signatures]]
 name = "_ZN10ArmorStand14getInteractionER6PlayerR16ActorInteractionRK4Vec3"
 relative = false
 extra = 0
@@ -618,6 +647,67 @@ extra = 0
 # uniqueness: matches exactly once in 1.26.44.3, and also exactly once in 1.26.33 and 1.26.40; the two
 # wildcards are the call/jmp displacements, so no byte-identical sibling can collide
 pattern = "55 41 57 41 56 41 55 41 54 53 48 81 EC 38 01 00 00 49 89 CD 48 89 D3 49 89 F7 49 89 FE E8 ? ? ? ? 89 C5 A8 01 74 08 41 89 ED"
+
+[[signatures]]
+name = "_ZNK13CauldronBlock3useERN11BlockEvents24BlockPlayerInteractEventE"
+relative = false
+extra = 0
+# 1. the name is real: `void CauldronBlock::use(BlockEvents::BlockPlayerInteractEvent&) const` is a declared
+#    member, so a symbol-bearing build resolves it by name; the steps below are the no-symbol fallback
+# 2. find bytes "63 61 75 6C 64 72 6F 6E 00" = "cauldron\0" in .rodata and take the xref in the vanilla block
+#    registration that constructs CauldronBlock; from the constructor follow the single call to
+#    CauldronBlock::_addHardCodedBlockComponents - a ~0x35-byte leaf whose whole body is three
+#    BlockType::_subscribeForEvent calls and nothing else
+# 3. the three member-function pointers those calls pass are CauldronBlock::onPlace, CauldronBlock::tick and
+#    the target; do not pick by call order, pick by identity in step 4
+# 4. confirm identity from the body: the target is by far the largest of the three (~0x1F00 bytes, ~270 basic
+#    blocks against a few dozen), it is the only one that calls
+#    BlockEvents::BlockPlayerInteractEvent::setInteractionResult, it builds both the CauldronUsed and the
+#    POICauldronUsed LegacyTelemetryEvent packets, and it reaches CauldronBlock::setLiquidLevel and
+#    CauldronBlock::_explodeCauldronContents; cross-checked at 0x984cd20 in the 1.21.132.3 named build
+# 5. walk back to the prologue and cut from there
+# uniqueness: verified against the 1.26.44.3 ELF this table targets - the pattern matches exactly once in
+# .text, at 0xBDFAFE0, which is the offset in the generated table
+pattern = "55 41 57 41 56 41 55 41 54 53 48 81 EC A8 02 00 00 48 89 F3 4C 8B 76"
+
+[[signatures]]
+name = "_ZNK13CauldronBlock14setLiquidLevelER11BlockSourceRK8BlockPosi18CauldronLiquidType"
+relative = false
+extra = 0
+# 1. locate CauldronBlock::use first (see the entry above), then decode every E8 in its body. The
+#    target is the callee it reaches by far the most often - 17 of the 33 call sites in the binary sit
+#    inside use, one per interaction branch
+# 2. do NOT anchor on VanillaBlockTypeIds::Cauldron the way the windows.toml entry does.
+#    "6D 69 6E 65 63 72 61 66 74 3A 63 61 75 6C 64 72 6F 6E 00" = "minecraft:cauldron\0" is unique in
+#    .rodata and the VanillaBlockTypeIds static initializer does build the HashedString from it, but
+#    that object is referenced only from registration and initializer blobs, never from the target:
+#    the body compares against a cached name-hash qword in .bss instead, so the string route dead-ends
+# 3. do NOT try the "cauldron_liquid" / "fill_level" route the windows.toml entry uses either. Both
+#    strings are short enough for libc++'s small-string optimisation, so the Linux initializer
+#    materialises them as immediates and the .rodata copies have ZERO xrefs from .text and no
+#    .rela.dyn addend pointing at them. The two BlockStateVariant globals are reachable from the
+#    function instead: on Linux the state lookup is a real call, so the body passes
+#    &VanillaStates::FillLevel and &VanillaStates::CauldronLiquid by address to Block::setState<>, and
+#    the two sit 0x58 apart in .bss
+# 4. confirm the body independently: it opens by comparing the block's BlockLegacy name hash against
+#    the cached cauldron name hash and returning when they differ, clamps the level into [0, 6],
+#    applies FillLevel then CauldronLiquid, calls BlockSource::setBlock through the vtable with
+#    updateFlags 3, and only when liquidLevel == 0 finishes with BlockSource::getBlockEntity +
+#    BlockActor::setChanged. The Linux build leaves it out of line at roughly 0x110 bytes - by far the
+#    smallest function in the cauldron cluster
+# 5. confirm by call set: it has 33 call sites in 1.26.44.3 - CauldronBlock::use / tick / onPlace /
+#    handlePrecipitation / _explodeCauldronContents / _useDyeableComponent, the receiveStalactiteDrip
+#    lambda, ServerStandInCauldronSystem::SystemImpl::_checkInsideCauldron,
+#    MinecraftGameTestHelper::setFluidContainer, and the ScriptBlockFluidContainerComponent
+#    setFillLevel / setFluidType / setPotionType
+# 6. walk back to the prologue and cut there
+# uniqueness: verified by scanning the 1.26.44.3 .text - this pattern matches EXACTLY ONCE and
+# resolves to 0xbdfdfd0, which is the committed offset. Do not shorten it: the ten-byte push run it
+# opens with is shared by most large functions in this binary, including CauldronBlock::use above and
+# ArmorStand::getInteraction, and find_signature takes the LOWEST .text hit, so a prologue-only
+# pattern binds a neighbour silently; this one is cut past `sub rsp, 0x38` into the argument shuffle
+# for that reason
+pattern = "55 41 57 41 56 41 55 41 54 53 48 83 EC 38 45 89 C7 89 CD"
 
 [[signatures]]
 name = "_ZN11LeavesBlock10randomTickERN11BlockEvents20BlockRandomTickEventE"
@@ -971,6 +1061,29 @@ extra = 0
 #    the new vtable
 # 3. confirm vs the old named DB (builds a ChangeDimensionRequest + requestPlayerChangeDimension)
 pattern = "53 48 83 EC ? 89 F2 48 89 FB 48 8B 4F"
+
+[[signatures]]
+name = "_ZN12ServerPlayer8openSignERK8BlockPosb"
+relative = false
+extra = 0
+# 1. find bytes "31 34 4F 70 65 6E 53 69 67 6E 50 61 63 6B 65 74 00" = "14OpenSignPacket\0", the Itanium
+#    typeinfo name; it survives stripping. Its lone data xref is _ZTI14OpenSignPacket + 8
+# 2. take the data xref to that typeinfo object: it is _ZTV14OpenSignPacket + 8. The vtable head
+#    (typeinfo slot - 8) has exactly one data xref, and it is inside
+#    SignBlockActor::requestToSendOpenSignPacket (the two OpenSignPacket constructors reference
+#    head + 0x10, the vptr value, instead)
+# 3. requestToSendOpenSignPacket has exactly ONE code xref, and that caller is this function
+# 4. confirm by the body: Actor::getDimensionBlockSource -> BlockSource::getBlockEntity, accepts
+#    BlockActorType 4 (Sign) through a single BlockActor::isTypeOrDerived call, which also admits the
+#    derived HangingSign (50), then SignBlockActor::getIsLockedForEditing /
+#    serverOnlySetIsLockedForEditing and EntityContext::getWeakRef before the call from step 3
+# NOTE: the Itanium build keeps getIsLockedForEditing / serverOnlySetIsLockedForEditing as real calls
+#    where clang-cl inlines both into raw member accesses, so windows.toml needs its own step 4
+# uniqueness: the anchor chain is unique (one code xref on requestToSendOpenSignPacket); the pattern
+#    below is only the prologue, so re-cut it from the address the chain lands on rather than trusting
+#    it. Chain walked in linux_server_x64 1.21.132.3 (symbols.debug); pattern verified to match
+#    exactly ONCE in the 1.26.44.3 .text, at 0x98ed400
+pattern = "55 41 57 41 56 41 54 53 48 83 EC 40 89 D5 48 89 F3 49 89 FE 48 8B BF"
 
 [[signatures]]
 name = "_ZN16ServerScoreboardC2E23CommandSoftEnumRegistryP12LevelStorageN3gsl8not_nullIN7Bedrock15NonOwnerPointerI19GameplayUserManagerEEEE"

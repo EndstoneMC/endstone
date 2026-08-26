@@ -15,6 +15,7 @@
 #pragma once
 
 #include <cstdint>
+#include <functional>
 
 #include "bedrock/shared_types/height.h"
 #include "bedrock/world/level/block_pos.h"
@@ -37,8 +38,24 @@ public:
     {
     }
 
+    bool operator==(const ChunkBlockPos &rhs) const { return x == rhs.x && y.getVal() == rhs.y.getVal() && z == rhs.z; }
+
     std::uint8_t x;
     std::uint8_t z;
     ChunkLocalHeight y;
 };
 static_assert(sizeof(ChunkBlockPos) == 4);
+
+template <>
+struct std::hash<ChunkBlockPos> {
+    std::size_t operator()(const ChunkBlockPos &pos) const noexcept
+    {
+        static std::hash<std::uint8_t> horizontal_hasher;
+        static std::hash<Height> vertical_hasher;
+        std::size_t seed = 0;
+        seed ^= horizontal_hasher(pos.x) + 0x9e3779b9 + (seed << 6) + (seed >> 2);
+        seed ^= vertical_hasher(pos.y.getVal()) + 0x9e3779b9 + (seed << 6) + (seed >> 2);
+        seed ^= horizontal_hasher(pos.z) + 0x9e3779b9 + (seed << 6) + (seed >> 2);
+        return seed;
+    }
+};

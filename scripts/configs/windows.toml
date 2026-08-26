@@ -557,6 +557,32 @@ extra = 0
 pattern = "56 57 53 48 83 EC ? 41 8B 40"
 
 [[signatures]]
+name = "?_useOn@BucketItem@@EEBA?AVInteractionResult@@AEAVItemStack@@AEAVActor@@VBlockPos@@EAEBVVec3@@@Z"
+relative = false
+extra = 0
+# 1. the name is real, so `dump_symbols.py --pdb` resolves it outright; the steps below are the no-PDB route.
+#    `E` is private-virtual, which is how BDS declares it. No PDB ships with the server, and the shipped
+#    binary carries no RTTI type descriptors, so the fallback must work from data alone
+# 2. BucketItem's vftable is findable without disassembly: read .rdata as an array of qwords and keep the
+#    ones that are image-base-relative pointers into .text. Item declares 129 virtuals after its destructor,
+#    so an Item subclass vftable is exactly 130 consecutive such slots (1 destructor slot + 129)
+# 3. identify BucketItem among them: it is the only 130-slot vftable whose slot 12 (Item::isBucket) is the
+#    3-byte thunk `B0 01 C3` (mov al, 1; ret). Confirm with the sibling overrides that all read mFillType at
+#    [rcx+0x210]: slot 50 isLiquidClipItem `8B 81 10 02 00 00`, slot 80 canUseOnSimTick
+#    `0F B7 89 10 02 00 00`, slot 100 getMaxStackSize `66 83 B9 10 02 00 00`, slot 109 validFishInteraction
+#    `8B 81 10 02 00 00`; slot 70 uniqueAuxValues is a second `B0 01 C3`
+# 4. the target is slot 129 of that vftable - the last entry, Item::_useOn. In 1.26.44.3 the vftable is at
+#    RVA 0xA7E65A0 and slot 129 holds 0x779EFC0
+# 5. the index arithmetic is checked against a symbol already in this table: TridentItem::releaseUsing
+#    (0x32CF570) occurs exactly once in .rdata, at slot 87 of a 130-slot vftable, and Item declares
+#    releaseUsing as its 87th virtual
+# 6. cut from the prologue at 0x779EFC0
+# uniqueness: this pattern matches exactly once in the whole .text of 1.26.44.3. The prologue alone (through
+# `sub rsp, 0x478`) takes 29 hits, so the xmm spills and the frame setup after it are load-bearing; do not
+# shorten it
+pattern = "55 41 57 41 56 41 55 41 54 56 57 53 48 81 EC 78 04 00 00 48 8D AC 24 80 00 00 00 0F 29 BD E0 03 00 00 0F 29 B5 D0 03 00 00 48 C7 85 C8 03 00 00 FE FF FF FF 4C 89 CF"
+
+[[signatures]]
 name = "?getInteraction@ArmorStand@@UEAA?AVInteractionResult@@AEAVPlayer@@AEAVActorInteraction@@AEBVVec3@@@Z"
 relative = false
 extra = 0
@@ -574,6 +600,65 @@ extra = 0
 # 6. walk back to the prologue (`push rbp/r15/r14/r13/r12/rsi/rdi/rbx`, `sub rsp, 0x1A8`) and cut there
 # uniqueness: matches exactly once in 1.26.44.3, and also exactly once in 1.26.32.2, 1.26.33 and 1.26.40
 pattern = "55 41 57 41 56 41 55 41 54 56 57 53 48 81 EC A8 01 00 00 48 8D AC 24 80 00 00 00 48 C7 85 20 01 00 00 FE FF FF FF 4C 89 CF 4D 89 C6 48 89 D6 48 89 CB"
+
+[[signatures]]
+name = "?use@CauldronBlock@@QEBAXAEAVBlockPlayerInteractEvent@BlockEvents@@@Z"
+relative = false
+extra = 0
+# 1. the name is real: `void CauldronBlock::use(BlockEvents::BlockPlayerInteractEvent&) const` is a declared
+#    member, so `dump_symbols.py --pdb` resolves it outright; the steps below are the no-PDB fallback
+# 2. find bytes "63 61 75 6C 64 72 6F 6E 00" = "cauldron\0" in .rdata and take the xref in the vanilla block
+#    registration that constructs CauldronBlock; from the constructor follow the single call to
+#    CauldronBlock::_addHardCodedBlockComponents - a tiny leaf whose whole body is three
+#    BlockType::_subscribeForEvent calls and nothing else
+# 3. the three member-function pointers those calls pass are CauldronBlock::onPlace, CauldronBlock::tick and
+#    the target; do not pick by call order, pick by identity in step 4
+# 4. confirm identity from the body: the target is by far the largest of the three, it is the only one that
+#    calls BlockEvents::BlockPlayerInteractEvent::setInteractionResult, it builds both the CauldronUsed and
+#    the POICauldronUsed LegacyTelemetryEvent packets, and it reaches CauldronBlock::setLiquidLevel and
+#    CauldronBlock::_explodeCauldronContents; cross-checked against the 1.21.132.3 named linux build at
+#    0x984cd20
+# 5. walk back to the prologue (`push rbp/r15/r14/r13/r12/rsi/rdi/rbx`, `sub rsp, 0x358`) and cut there
+# uniqueness: verified against the 1.26.44.3 exe this table targets - the pattern matches exactly once in
+# .text, at RVA 0x69A6250, which is the offset in the generated table
+pattern = "55 41 57 41 56 41 55 41 54 56 57 53 48 81 EC 58 03 00 00 48 8D AC 24 ? ? ? ? 0F 29 B5 ? ? ? ? 48 C7 85 ? ? ? ? ? ? ? ? 48 89 D6 48 8B 7A"
+
+[[signatures]]
+name = "?setLiquidLevel@CauldronBlock@@QEBAXAEAVBlockSource@@AEBVBlockPos@@HW4CauldronLiquidType@@@Z"
+relative = false
+extra = 0
+# 1. the name is real, so `dump_symbols.py --pdb` resolves it outright; the steps below are the
+#    no-PDB fallback (the shipped zip carries no PDB)
+# 2. find bytes "6D 69 6E 65 63 72 61 66 74 3A 63 61 75 6C 64 72 6F 6E 00" = "minecraft:cauldron\0"
+#    (unique - one occurrence, in .rdata). It has two rip-relative xrefs in .text; the one whose
+#    surrounding block also writes a HashedString object is the VanillaBlockTypeIds static
+#    initializer, and the object it builds is VanillaBlockTypeIds::Cauldron
+# 3. do the same for "63 61 75 6C 64 72 6F 6E 5F 6C 69 71 75 69 64 00" = "cauldron_liquid\0" and
+#    "66 69 6C 6C 5F 6C 65 76 65 6C 00" = "fill_level\0" (both unique; the first has exactly one
+#    .text xref). Each xref sits in the unity initializer that constructs the matching
+#    BlockStateVariant - VanillaStates::CauldronLiquid and VanillaStates::FillLevel. MSVC inlines
+#    the state lookup, so callers reference the mID field at object + 8, not the base
+# 4. the target is the function that references all three - Cauldron's hash first, then FillLevel.mID,
+#    then CauldronLiquid.mID. Exactly TWO places in .text do that in this order within 0x400 bytes:
+#    this function, where the Cauldron compare sits in the first 0x50 bytes, and
+#    ServerStandInCauldronSystem::SystemImpl::_checkInsideCauldron, which is told apart because it
+#    CALLS this one. Confirm by decoding that E8
+# 5. confirm the body independently: it opens `cmp <r>, cs:VanillaBlockTypeIds::Cauldron.mStrHash` /
+#    `jnz <return>`, clamps the level into [0, 6] with a cmovg/cmovl pair, applies FillLevel then
+#    CauldronLiquid, calls BlockSource::setBlock through the vtable with updateFlags 3, and only when
+#    liquidLevel == 0 finishes with LevelChunk::getBlockEntity + BlockActor::setChanged
+# 6. confirm by call set: it has 36 call sites in 1.26.44.3, and they are the complete list of
+#    cauldron fill-level writers - CauldronBlock::use / tick / onPlace / handlePrecipitation /
+#    _explodeCauldronContents / _useDyeableComponent, the receiveStalactiteDrip lambda,
+#    _checkInsideCauldron, MinecraftGameTestHelper::setFluidContainer, and the
+#    ScriptBlockFluidContainerComponent setFillLevel / setFluidType / setPotionType thunks
+# 7. walk back to the prologue and cut there
+# uniqueness: verified by scanning the 1.26.44.3 .text - this pattern matches EXACTLY ONCE and
+# resolves to 0x69a9eb0 (RVA), which is the committed offset. Do not shorten it: CauldronBlock::use
+# and ArmorStand::getInteraction above open with the same push/sub run, and find_signature takes the
+# LOWEST .text hit, so a prologue-only pattern binds a neighbour silently; this entry is cut past
+# `sub rsp, 0x60` into the argument shuffle for that reason
+pattern = "55 41 57 41 56 41 54 56 57 53 48 83 EC 60 48 8D 6C 24 ? 48 C7 45 ? ? ? ? ? 44 89 CB"
 
 [[signatures]]
 name = "?readUserData@Item@@UEBAXAEAVItemStackBase@@AEAVIDataInput@@AEAVReadOnlyBinaryStream@@@Z"
@@ -1099,6 +1184,27 @@ extra = 0
 # 3. read the same slot in the new DB's ServerPlayer vtable -> changeDimension@ServerPlayer
 # 4. confirm vs the old named DB (neighbouring slots should line up)
 pattern = "55 56 57 48 83 EC ? 48 8D 6C 24 ? 48 C7 45 ? ? ? ? ? 89 D7 48 89 CE 48 8D 55 ? E8 ? ? ? ? 48 8B 86 ? ? ? ? 8B 48 ? 89 4D ? 48 8B 00 48 89 45 ? 8B 55 ? C7 45"
+
+[[signatures]]
+name = "?openSign@ServerPlayer@@UEAAXAEBVBlockPos@@_N@Z"
+relative = false
+extra = 0
+# 1. find bytes "4F 70 65 6E 53 69 67 6E 50 61 63 6B 65 74 00" = "OpenSignPacket\0" (unique); its lone code
+#    xref is OpenSignPacket::getName, a ~0x16-byte stub that stores the literal and the length 0x0E
+# 2. getName's lone data xref is a slot in the OpenSignPacket vftable; take data xrefs to the head of
+#    that vftable - one of them is SignBlockActor::requestToSendOpenSignPacket, the only one that stores
+#    a freshly built OpenSignPacket into an std::optional on `this` (the others are the cereal/entt
+#    type-schema helpers and make_packet<OpenSignPacket>)
+# 3. requestToSendOpenSignPacket has exactly ONE code xref, and that caller is this function
+# 4. confirm by the body: getDimensionBlockSource -> BlockSource::getChunkAt -> LevelChunk::getBlockEntity,
+#    accepts BlockActorType 4 (Sign) through a single BlockActor::isTypeOrDerived call, which also admits
+#    the derived HangingSign (50), tests an ActorUniqueID against -1 and calls ILevel::getPlayer on it,
+#    then Actor::getOrCreateUniqueID before the call from step 3
+# uniqueness: the anchor chain is unique (one code xref on requestToSendOpenSignPacket); the pattern
+#    below is only the prologue, so re-cut it from the address the chain lands on rather than trusting
+#    it. Chain walked in win32_server_x64 1.26.32.2; pattern verified to match exactly ONCE
+#    in the 1.26.44.3 .text, at 0x693da0
+pattern = "55 41 57 41 56 56 57 53 48 83 EC 48 48 8D 6C 24 ? 48 C7 45 ? ? ? ? ? 44 89 C3 48 89 D6 48 89 CF"
 
 [[signatures]]
 name = "??0ServerScoreboard@@QEAA@VCommandSoftEnumRegistry@@PEAVLevelStorage@@V?$not_null@V?$NonOwnerPointer@VGameplayUserManager@@@Bedrock@@@gsl@@@Z"

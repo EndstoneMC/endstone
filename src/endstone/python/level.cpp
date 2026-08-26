@@ -69,6 +69,9 @@ void init_level(py::module_ &m, py::classh<Level> &level, py::classh<Dimension> 
     Returns:
         ``True`` if a plugin ticket was removed, ``False`` if the plugin holds none for this chunk.
 )doc")
+        .def_property_readonly("block_actors", &Chunk::getBlockActors,
+                               "The state of every block actor in this chunk, or an empty list if this chunk is not "
+                               "loaded.")
         .def_property_readonly("plugin_chunk_tickets", &Chunk::getPluginChunkTickets,
                                "The `Plugin`s holding a ticket for this chunk.",
                                py::return_value_policy::reference)

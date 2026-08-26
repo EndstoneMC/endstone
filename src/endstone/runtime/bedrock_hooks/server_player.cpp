@@ -14,11 +14,74 @@
 
 #include "bedrock/server/server_player.h"
 
+#include "bedrock/world/level/block/actor/block_actor.h"
+#include "bedrock/world/level/block/actor/sign_block_actor.h"
+#include "bedrock/world/level/level.h"
 #include "endstone/core/actor/actor.h"
+#include "endstone/core/block/block.h"
+#include "endstone/core/entity/components/flag_components.h"
 #include "endstone/core/level/location.h"
 #include "endstone/core/player.h"
+#include "endstone/core/plugin/plugin_manager.h"
+#include "endstone/event/player/player_open_sign_event.h"
 #include "endstone/event/player/player_portal_event.h"
 #include "endstone/runtime/hook.h"
+
+void ServerPlayer::openSign(const BlockPos &position, bool is_front_side)
+{
+    auto cause = endstone::PlayerOpenSignEvent::Cause::Unknown;
+    if (hasComponent<endstone::core::InternalSignOpenFlagComponent>()) {
+        cause = endstone::PlayerOpenSignEvent::Cause::Plugin;
+    }
+    else if (hasComponent<endstone::core::InternalSignPlaceFlagComponent>()) {
+        cause = endstone::PlayerOpenSignEvent::Cause::Place;
+    }
+    else if (hasComponent<endstone::core::InternalSignInteractFlagComponent>()) {
+        cause = endstone::PlayerOpenSignEvent::Cause::Interact;
+    }
+    addOrRemoveComponent<endstone::core::InternalSignOpenFlagComponent>(false);
+    addOrRemoveComponent<endstone::core::InternalSignPlaceFlagComponent>(false);
+    addOrRemoveComponent<endstone::core::InternalSignInteractFlagComponent>(false);
+
+    auto &block_source = getDimensionBlockSource();
+    auto *block_entity = block_source.getBlockEntity(position);
+    if (block_entity == nullptr ||
+        (block_entity->getType() != BlockActorType::Sign && block_entity->getType() != BlockActorType::HangingSign)) {
+        ENDSTONE_HOOK_CALL_ORIGINAL(&ServerPlayer::openSign, this, position, is_front_side);
+        return;
+    }
+
+    auto &sign_block_actor = static_cast<SignBlockActor &>(*block_entity);
+    const ActorUniqueID locked_for_editing_by = sign_block_actor.getLockedForEditingBy();
+    const ActorUniqueID current_player_id = getOrCreateUniqueID();
+    if (locked_for_editing_by.isValid() && locked_for_editing_by != current_player_id &&
+        getLevel().getPlayer(locked_for_editing_by) != nullptr) {
+        ENDSTONE_HOOK_CALL_ORIGINAL(&ServerPlayer::openSign, this, position, is_front_side);
+        return;
+    }
+
+    const auto &server = endstone::core::EndstoneServer::getInstance();
+    if (server.getEndstonePluginManager().isEventRegistered<endstone::PlayerOpenSignEvent>()) {
+        const auto block = endstone::core::EndstoneBlock::at(block_source, position);
+        if (const auto sign = block->captureState().as<endstone::Sign>(); sign) {
+            endstone::PlayerOpenSignEvent event{
+                getEndstoneActor<endstone::core::EndstonePlayer>(),
+                sign,
+                is_front_side ? endstone::Sign::Side::Front : endstone::Sign::Side::Back,
+                cause,
+            };
+            server.getPluginManager().callEvent(event);
+            if (event.isCancelled()) {
+                return;
+            }
+        }
+    }
+
+    if (locked_for_editing_by == current_player_id) {
+        sign_block_actor.setLockedForEditingBy(ActorUniqueID::INVALID_ID);
+    }
+    ENDSTONE_HOOK_CALL_ORIGINAL(&ServerPlayer::openSign, this, position, is_front_side);
+}
 
 void ServerPlayer::changeDimension(DimensionType to_id)
 {

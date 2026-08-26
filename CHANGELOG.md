@@ -18,10 +18,12 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - `PlayerInputEvent` for movement input changes, carrying the new `Input` type (`is_forward`, `is_backward`, `is_left`, `is_right`, `is_jump`, `is_sneak`, `is_sprint`).
 - `PlayerArmorStandManipulateEvent`, reporting `armor_stand_item`, `player_item` and `slot`.
 - `PlayerBucketActorEvent` and `PlayerShearActorEvent`, reporting the `actor`, the `original_bucket` or `item` used and the `hand`.
+- `PlayerBucketFillEvent` and `PlayerBucketEmptyEvent`, with their shared base `PlayerBucketEvent`, reporting the `block` filled from or emptied into, the `block_clicked`, the `block_face`, the `bucket` used, the `hand` and a writable `item_stack`. Cancelling either leaves the world and the player's inventory untouched. `hand` is always `HAND`. Filling from or emptying into a cauldron reports the hotbar item. Milking a cow, a goat or a mooshroom is reported as a fill on the actor's own block with a `block_face` of `SELF`. Buckets filled or emptied by a dispenser are not reported.
 - `PlayerRecipeBookSettingsChangeEvent`, reporting `recipe_book_type`, `is_open` and `is_filtering`.
 - `PlayerCraftItemEvent` for crafting in a crafting grid or straight from the recipe book, reporting the `recipe` being crafted and the `ingredients` a craft consumes plus writable `results` and `repetitions`. Ingredients are the items in the crafting grid, or the recipe's own when crafting from the recipe book, which never fills the grid. Setting `results` changes what the craft produces; cancelling blocks the craft and leaves the ingredients untouched.
 - `PlayerEditBookEvent` for editing a page of a book and quill or signing it, reporting the book metadata before and after the edit, the inventory `slot`, and whether the book is being signed. `new_book_meta` and `is_signing` are writable; both metadata properties hand back a copy, so assign to `new_book_meta` rather than editing what you read from it. A title, an author and a generation only survive when the book is being signed, because a book and quill holds none of them. Cancelling leaves the book untouched and sends the slot back to the client, so it stops showing the edit it had already drawn.
 - `PlayerSetSpawnEvent` for a player's respawn point being set, reporting the `cause` (`BED`, `RESPAWN_ANCHOR`, `COMMAND`, `PLUGIN` or `UNKNOWN`) and a writable `location`. Cancelling leaves the respawn point untouched, though `/spawnpoint` still reports success and a respawn anchor still plays its sound. It does not fire when Bedrock clears a respawn point, so `/clearspawnpoint` and breaking the bed are both silent.
+- `PlayerOpenSignEvent` for a player beginning to edit a sign's text, reporting the `sign`, the `side` being edited and the `cause` (`PLACE`, `INTERACT`, `PLUGIN` or `UNKNOWN`). Cancelling it stops the sign editor from opening.
 - `PlayerToggleSneakEvent`, `PlayerToggleSprintEvent`, `PlayerToggleFlightEvent` and `PlayerToggleCrawlEvent`, carrying the new state in `is_sneaking`, `is_sprinting`, `is_flying` and `is_crawling`.
 - `ActorToggleSwimEvent` and `ActorToggleGlideEvent`, carrying the new state in `is_swimming` and `is_gliding`.
 - `ActorCollideWithActorEvent`, reporting both actors in `actors`. Cancelling it also stops boats and minecarts being boarded by walking into them.
@@ -29,11 +31,13 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - `ActorPickupItemEvent`, reporting the `item` and `amount`. Players are covered by `PlayerPickupItemEvent`.
 - `ActorDismountEvent`, reporting the `vehicle` being left.
 - `ActorChangeBlockEvent` for blocks changed by mob behaviour, such as creeper explosions, endermen, ravagers and door-breaking zombies.
+- `CauldronLevelChangeEvent` for a cauldron's level or contents changing, reporting the `actor` responsible, the `reason` for the change and the `new_state` the cauldron will take, which can be modified in place. Cancelling it leaves the cauldron as it is. A player interacting with the cauldron is reported as `BUCKET_FILL`, `BUCKET_EMPTY`, `BOTTLE_FILL`, `BOTTLE_EMPTY`, `BANNER_WASH`, `ARMOR_WASH` or `SHULKER_WASH`. Every other change, rain, dripstone and an actor being extinguished among them, reports no `actor` and a `reason` of `UNKNOWN`, so `EXTINGUISH`, `NATURAL_FILL` and `EVAPORATE` never appear. Neither an old nor a new fill level is reported.
 - `PlayerRespawnEvent.respawn_reason` (`RespawnReason.DEATH` / `RespawnReason.END_PORTAL`).
 - `ActorExplodeEvent::setBlockList()` and `BlockExplodeEvent::setBlockList()`, with the `BlockList` alias made public.
 - `InventoryEvent`, a base class for inventory-related events, reporting the primary `inventory` involved, and the cancellable `InventoryInteractEvent` under it, which adds the `who_clicked` player.
 - `InventoryOpenEvent` and `InventoryCloseEvent`, both reporting the `inventory` and the `player`. Cancelling an open stops the container screen from appearing at all. These cover block containers such as chests, barrels, furnaces and brewing stands; a container carried by an entity, like a chest minecart or a horse, does not fire them yet.
 - `DimensionLoadEvent` for a dimension being loaded.
+- `BlockCookEvent.recipe`, the `CookingRecipe` the cook is running, or `None` when there is no matching recipe.
 - Support for custom Python events with optional cancellation.
 
 #### Actors and players
@@ -44,6 +48,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - `Mob.is_swimming` and `Player.is_crawling`.
 - `Player.send_action_bar()` for sending a message above the hotbar.
 - `Player.respawn_location` for reading and writing where a player will respawn, or `None` when they have no valid respawn point. Bedrock does not persist yaw/pitch for a respawn point, so only the block coordinates and the dimension are kept.
+- `Player.open_sign()` and `Player.open_virtual_sign()` for opening a sign editor on a player's client. `open_sign()` takes a sign placed in the player's own dimension, reopens one the player is already editing, and fires `PlayerOpenSignEvent`; `open_virtual_sign()` opens the editor at any block position, with no sign required in the dimension, and fires nothing.
 
 #### Blocks
 
@@ -56,10 +61,12 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - `ItemFrame` block state with `item`, `rotation` and `item_drop_chance`.
 - `Biome` type and `Block.biome`, with lookup via `Biome.get()` and enumeration via `server.get_registry(Biome)`.
 - `BlockData.translation_key`.
+- `BlockFace.SELF`, for interactions that have no direction.
 
 #### Items
 
-- `Level.recipes`, a snapshot of the crafting recipes the server has loaded, also reachable as `Server.recipes`. Each entry is a `ShapedRecipe`, `ShapelessRecipe`, `SmithingTransformRecipe`, `SmithingTrimRecipe` or `ComplexRecipe`, and reports its `id`, crafting `tag`, `result` and `ingredients`. Shaped recipes add `width` and `height`; smithing recipes add `template`, `base` and `addition`.
+- `Level.recipes`, a snapshot of the recipes the server has loaded, also reachable as `Server.recipes`. Each entry is a `ShapedRecipe`, `ShapelessRecipe`, `SmithingTransformRecipe`, `SmithingTrimRecipe`, `ComplexRecipe` or a `CookingRecipe`, and reports its `id`, station `tag`, `result` and `ingredients`. Shaped recipes add `width` and `height`; smithing recipes add `template`, `base` and `addition`; cooking recipes add `input_choice`.
+- `CookingRecipe`, with `FurnaceRecipe`, `BlastingRecipe`, `SmokingRecipe` and `CampfireRecipe` under it for the `furnace`, `blast_furnace`, `smoker` and `campfire`/`soul_campfire` stations. Neither an experience reward nor a cooking time is reported.
 - `RecipeIngredient`, describing what one ingredient slot accepts, with `test()` to check an item against it and a Bedrock-specific `count`. An ingredient is an `ExactIngredient` (one item and one data value), an `ItemTypeIngredient` (an item type, any data value), an `ItemTagIngredient` (anything carrying a tag), a `MolangIngredient` (whatever a Molang expression selects), an `ComplexAliasIngredient` (anything an id that predates the item flattening stands for, such as `minecraft:planks`). A slot the recipe leaves empty is `None`.
 - `WritableBookMeta`, `BookMeta` and `CrossbowMeta` item meta types.
 - `PotionMeta` for potions, splash potions and lingering potions, with `meta.base_potion_type`.
@@ -70,6 +77,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - `Dimension.mobs` and `Dimension.players`, both narrowing `Dimension.actors`.
 - Chunk loading API: `Dimension.load_chunk()`, `Dimension.unload_chunk()`, `Dimension.unload_chunk_request()`, `Dimension.is_chunk_loaded()` and `Dimension.is_chunk_generated()`, plus `Chunk.load()`, `Chunk.unload()` and `Chunk.is_loaded()`. Bedrock has no synchronous chunk load, so `load_chunk()` keeps the chunk resident from a later tick onwards and does not make it tick. `unload_chunk()` reports whether the chunk actually went away, while `unload_chunk_request()` only releases the hold.
 - Plugin chunk tickets: `Dimension.add_plugin_chunk_ticket()`, `remove_plugin_chunk_ticket()`, `remove_plugin_chunk_tickets()`, `get_plugin_chunk_tickets()` and `plugin_chunk_tickets`, with the same methods on `Chunk`. A ticket keeps a chunk loaded until it is removed or the owning plugin is disabled, and `unload_chunk()` leaves it alone.
+- `Chunk.block_actors`, the state of every block actor in a chunk — chests, signs, furnaces, spawners and the rest — mirroring Paper's `Chunk#getTileEntities()`. Reading it on a chunk that is not loaded gives an empty list rather than loading it.
 
 #### Commands and permissions
 
@@ -178,6 +186,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Fixed a boss bar vanishing for a player who travelled to another dimension. The Bedrock client drops every boss bar it is showing once it rebuilds the world, and now gets the bars a player is in sent again as soon as it asks for them.
 - Fixed `BossBar.remove_player` hiding the bar from a player who was never added to it, and `BossBar.add_player` re-sending the bar to a player who was already in it.
 - Fixed `Plugin.default_permission` rejecting a string or a bool (`"operator"`, `"not op"`, `True`), which individual entries in `Plugin.permissions` already accepted.
+- Fixed `Block.biome` reading the wrong part of a chunk, so it reported a biome that has nothing to do with the block, and could crash the server. Introduced in 0.11.7 along with BDS 1.26.40 support.
 
 #### Type annotations
 

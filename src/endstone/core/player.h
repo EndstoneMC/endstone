@@ -75,6 +75,8 @@ public:
     bool performCommand(std::string command) const override;  // NOLINT(*-use-nodiscard)
     [[nodiscard]] std::optional<Location> getRespawnLocation() const override;
     void setRespawnLocation(std::optional<Location> location) override;
+    void openSign(const Sign &sign, Sign::Side side) override;
+    void openVirtualSign(const Location &location, Sign::Side side) override;
     [[nodiscard]] bool isSneaking() const override;
     void setSneaking(bool sneak) override;
     [[nodiscard]] bool isSprinting() const override;
