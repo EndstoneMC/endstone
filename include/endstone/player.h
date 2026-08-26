@@ -143,6 +143,8 @@ public:
      * @param block_actor_state The new block entity state
      */
     virtual void sendBlockUpdate(const Location &location, const BlockActorState &block_actor_state) = 0;
+
+    /**
      * Opens a sign editor for this player.
      *
      * The sign must be placed in the same dimension as this player.
