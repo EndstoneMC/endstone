@@ -52,6 +52,7 @@
 #include "endstone/event/player/player_game_mode_change_event.h"
 #include "endstone/event/player/player_interact_actor_event.h"
 #include "endstone/event/player/player_interact_event.h"
+#include "endstone/event/player/player_open_sign_event.h"
 #include "endstone/event/player/player_pickup_experience_event.h"
 #include "endstone/event/player/player_quit_event.h"
 #include "endstone/event/player/player_respawn_event.h"
@@ -432,10 +433,14 @@ GameplayHandlerResult<CoordinatorResult> ScriptPlayerGameplayHandler::handleEven
             auto result = ENDSTONE_VHOOK_CALL_ORIGINAL(&ScriptPlayerGameplayHandler::handleEvent2, this, event);
             if (auto *player = WeakEntityRef(arg.value().player).tryUnwrap<::Player>(); player) {
                 auto &block_source = player->getDimension().getBlockSourceFromMainChunkSource();
-                player->addOrRemoveComponent<endstone::core::InternalSignPlaceFlagComponent>(false);
-                player->addOrRemoveComponent<endstone::core::InternalSignInteractFlagComponent>(
-                    result.return_value == CoordinatorResult::Continue &&
-                    block_source.getBlock(BlockPos(arg.value().block_location)).hasProperty(BlockProperty::Sign));
+                if (result.return_value == CoordinatorResult::Continue &&
+                    block_source.getBlock(BlockPos(arg.value().block_location)).hasProperty(BlockProperty::Sign)) {
+                    player->getEntity().getOrAddComponent<endstone::core::InternalOpenSignCauseComponent>().cause =
+                        endstone::PlayerOpenSignEvent::Cause::Interact;
+                }
+                else {
+                    player->getEntity().removeComponent<endstone::core::InternalOpenSignCauseComponent>();
+                }
             }
             return result;
         }

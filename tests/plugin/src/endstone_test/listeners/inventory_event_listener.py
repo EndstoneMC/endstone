@@ -1,4 +1,5 @@
 from endstone.event import (
+    EnchantItemEvent,
     InventoryCloseEvent,
     InventoryInteractEvent,
     InventoryOpenEvent,
@@ -35,4 +36,22 @@ class InventoryEventListener(EventListener):
             always_log=True,
             player=event.who_clicked.name,
             size=event.inventory.size,
+        )
+
+    @event_handler
+    def on_enchant_item(self, event: EnchantItemEvent):
+        self.record(
+            event,
+            f"{event.enchanter.name} enchants {event.item} using option "
+            f"{event.which_button}",
+            always_log=True,
+            player=event.enchanter.name,
+            block_type=str(event.enchant_block.type),
+            item_type=str(event.item.type),
+            exp_level_cost=event.exp_level_cost,
+            enchants={
+                str(enchantment.id): level
+                for enchantment, level in event.enchants_to_add.items()
+            },
+            which_button=event.which_button,
         )

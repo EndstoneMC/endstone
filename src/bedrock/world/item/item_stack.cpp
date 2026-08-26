@@ -70,3 +70,8 @@ const ItemStackNetIdVariant &ItemStack::getItemStackNetIdVariant() const
 {
     return network_id_;
 }
+
+void ItemStack::copyItemStackNetIdVariant(const ItemStack &source)
+{
+    network_id_ = source.network_id_;
+}

@@ -14,12 +14,9 @@
 
 #pragma once
 
-#include <cstdint>
+#include "bedrock/world/container.h"
 
-enum class ItemStackNetResult : std::uint8_t {
-    Success = 0,
-    Error = 1,
-    ActionRequestNotAllowed = 3,
-    FailedToEnchant = 37,
-    CannotDropItem = 59,
+class SimpleSparseContainer : public Container, public ContainerContentChangeListener {
+public:
+    ~SimpleSparseContainer() override = 0;
 };

@@ -16,6 +16,7 @@ add_library(endstone_runtime SHARED
         bedrock_hooks/cauldron.cpp
         bedrock_hooks/console_input_reader.cpp
         bedrock_hooks/craft_handler_crafting.cpp
+        bedrock_hooks/craft_handler_enchant.cpp
         bedrock_hooks/dedicated_server.cpp
         bedrock_hooks/explosion.cpp
         bedrock_hooks/fire_block.cpp

@@ -18,6 +18,7 @@
 
 #include "bedrock/world/level/block_pos.h"
 #include "endstone/event/block/cauldron_level_change_event.h"
+#include "endstone/event/player/player_open_sign_event.h"
 #include "endstone/inventory/item_stack.h"
 
 class Actor;
@@ -34,10 +35,10 @@ struct InternalCauldronInteractionComponent {
     CauldronLevelChangeEvent::ChangeReason reason = CauldronLevelChangeEvent::ChangeReason::Unknown;
 };
 struct InternalDisconnectFlagComponent {};
+struct InternalOpenSignCauseComponent {
+    PlayerOpenSignEvent::Cause cause = PlayerOpenSignEvent::Cause::Unknown;
+};
 struct InternalRemoveFlagComponent {};
-struct InternalSignInteractFlagComponent {};
-struct InternalSignOpenFlagComponent {};
-struct InternalSignPlaceFlagComponent {};
 struct InternalSpawnChangeFlagComponent {};
 struct InternalTeleportFlagComponent {};
 struct MobHurtFlagComponent {};

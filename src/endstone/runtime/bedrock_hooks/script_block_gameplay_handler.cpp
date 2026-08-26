@@ -30,6 +30,7 @@
 #include "endstone/event/block/block_explode_event.h"
 #include "endstone/event/block/block_piston_event.h"
 #include "endstone/event/block/block_place_event.h"
+#include "endstone/event/player/player_open_sign_event.h"
 #include "endstone/runtime/vtable_hook.h"
 
 namespace endstone::runtime {
@@ -157,10 +158,14 @@ GameplayHandlerResult<CoordinatorResult> ScriptBlockGameplayHandler::handleEvent
 
             auto result = ENDSTONE_VHOOK_CALL_ORIGINAL(&ScriptBlockGameplayHandler::handleEvent2, this, event);
             if (auto *player = WeakEntityRef(arg.value().player).tryUnwrap<::Player>(); player) {
-                player->addOrRemoveComponent<endstone::core::InternalSignInteractFlagComponent>(false);
-                player->addOrRemoveComponent<endstone::core::InternalSignPlaceFlagComponent>(
-                    result.return_value == CoordinatorResult::Continue &&
-                    arg.value().permutation_to_place.hasProperty(BlockProperty::Sign));
+                if (result.return_value == CoordinatorResult::Continue &&
+                    arg.value().permutation_to_place.hasProperty(BlockProperty::Sign)) {
+                    player->getEntity().getOrAddComponent<endstone::core::InternalOpenSignCauseComponent>().cause =
+                        endstone::PlayerOpenSignEvent::Cause::Place;
+                }
+                else {
+                    player->getEntity().removeComponent<endstone::core::InternalOpenSignCauseComponent>();
+                }
             }
             return result;
         }

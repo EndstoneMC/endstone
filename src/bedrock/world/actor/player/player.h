@@ -196,6 +196,10 @@ public:
 
     // Endstone begins
     BedSleepingResult getBedResult(BlockPos const &bed_pos);  // moved from startSleepInBed into separate method
+    [[nodiscard]] const std::shared_ptr<ContainerManagerModel> &getContainerManagerModelRef() const
+    {
+        return container_manager_;
+    }
     // Endstone ends
 
     std::vector<std::uint16_t> froglights;

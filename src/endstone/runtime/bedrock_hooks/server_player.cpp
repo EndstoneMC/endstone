@@ -30,18 +30,10 @@
 void ServerPlayer::openSign(const BlockPos &position, bool is_front_side)
 {
     auto cause = endstone::PlayerOpenSignEvent::Cause::Unknown;
-    if (hasComponent<endstone::core::InternalSignOpenFlagComponent>()) {
-        cause = endstone::PlayerOpenSignEvent::Cause::Plugin;
+    if (const auto *open_sign_cause = tryGetComponent<endstone::core::InternalOpenSignCauseComponent>()) {
+        cause = open_sign_cause->cause;
     }
-    else if (hasComponent<endstone::core::InternalSignPlaceFlagComponent>()) {
-        cause = endstone::PlayerOpenSignEvent::Cause::Place;
-    }
-    else if (hasComponent<endstone::core::InternalSignInteractFlagComponent>()) {
-        cause = endstone::PlayerOpenSignEvent::Cause::Interact;
-    }
-    addOrRemoveComponent<endstone::core::InternalSignOpenFlagComponent>(false);
-    addOrRemoveComponent<endstone::core::InternalSignPlaceFlagComponent>(false);
-    addOrRemoveComponent<endstone::core::InternalSignInteractFlagComponent>(false);
+    getEntity().removeComponent<endstone::core::InternalOpenSignCauseComponent>();
 
     auto &block_source = getDimensionBlockSource();
     auto *block_entity = block_source.getBlockEntity(position);
