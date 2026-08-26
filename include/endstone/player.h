@@ -178,6 +178,8 @@ public:
      * @param block The new block data
      */
     virtual void sendBlockChange(const Location &location, const BlockData &block) = 0;
+
+    /**
      * Opens a sign editor for this player.
      *
      * The sign must be placed in the same dimension as this player.
