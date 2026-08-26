@@ -617,6 +617,8 @@ class Player(Mob):
         Args:
             location: The location of the changed block.
             block_actor_state: The new block entity state.
+        """
+
     def open_sign(self, sign: Sign, side: Sign.Side) -> None:
         """
         Opens a sign editor for this player.

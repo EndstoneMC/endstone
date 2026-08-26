@@ -334,6 +334,9 @@ void EndstonePlayer::sendBlockUpdate(const Location &location, const BlockActorS
     pk.payload.data.putInt("x", pk.payload.pos.x);
     pk.payload.data.putInt("y", pk.payload.pos.y);
     pk.payload.data.putInt("z", pk.payload.pos.z);
+    getHandle().sendNetworkPacket(*packet);
+}
+
 void EndstonePlayer::hideActor(Plugin &plugin, Actor &actor)
 {
     Preconditions::checkArgument(plugin.isEnabled(), "Plugin ({}) attempted to hide an actor while disabled",
@@ -439,6 +442,8 @@ void EndstonePlayer::sendBlockChange(const Location &location, const BlockData &
     pk.payload.update_flags = static_cast<std::uint8_t>(::BlockType::UPDATE_CLIENTS);
     pk.payload.runtime_id = block.getRuntimeId();
     getHandle().sendNetworkPacket(*packet);
+}
+
 void EndstonePlayer::openSign(const Sign &sign, Sign::Side side)
 {
     Preconditions::checkArgument(&*sign.getDimension() == &*getDimension(),

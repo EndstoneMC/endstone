@@ -734,6 +734,7 @@ void init_player(py::module_ &m, py_class<Player> &player)
     Args:
         location: The location of the changed block.
         block_actor_state: The new block entity state.
+)doc")
         .def("open_sign", &Player::openSign, py::arg("sign"), py::arg("side"), R"doc(
     Opens a sign editor for this player.
 

@@ -219,7 +219,7 @@ void CauldronBlock::setLiquidLevel(BlockSource &region, const BlockPos &pos, int
     }
 
     auto block_handle = endstone::core::EndstoneBlock::at(region, pos);
-    auto new_state = block_handle->captureState();
+    auto new_state = block_handle->captureState(true);
     new_state->setData(endstone::core::EndstoneBlockData(const_cast<::Block &>(new_block)));
     endstone::CauldronLevelChangeEvent event{
         block_handle,

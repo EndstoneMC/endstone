@@ -55,7 +55,7 @@ void ServerPlayer::openSign(const BlockPos &position, bool is_front_side)
     const auto &server = endstone::core::EndstoneServer::getInstance();
     if (server.getEndstonePluginManager().isEventRegistered<endstone::PlayerOpenSignEvent>()) {
         const auto block = endstone::core::EndstoneBlock::at(block_source, position);
-        if (const auto sign = block->captureState().as<endstone::Sign>(); sign) {
+        if (const auto sign = block->captureState(true).as<endstone::Sign>(); sign) {
             endstone::PlayerOpenSignEvent event{
                 getEndstoneActor<endstone::core::EndstonePlayer>(),
                 sign,
