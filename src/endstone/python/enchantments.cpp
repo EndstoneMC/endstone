@@ -135,6 +135,18 @@ void init_enchantments(py::module_ &m)
         The `Enchantment`, or `None` if not found.
 )doc",
                     py::return_value_policy::reference);
+
+    py::class_<EnchantmentOffer>(m, "EnchantmentOffer", R"doc(
+    Represents an offer made by an enchanting table.
+
+    Bedrock stores every enchantment that selecting an offer applies rather than a single hinted enchantment.
+    Enchantments in an offer must be entries obtained from Endstone's `Enchantment` registry.
+)doc")
+        .def(py::init<EnchantmentOffer::Enchantments, int>(), py::arg("enchants"), py::arg("cost"))
+        .def_property("enchants", &EnchantmentOffer::getEnchants, &EnchantmentOffer::setEnchants,
+                      "A copy of the enchantments and levels applied by this offer; assign it back after changes.")
+        .def_property("cost", &EnchantmentOffer::getCost, &EnchantmentOffer::setCost,
+                      "The minimum player level required to select this offer.");
 }
 
 }  // namespace endstone::python

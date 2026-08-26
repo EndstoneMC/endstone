@@ -23,6 +23,7 @@ add_executable(endstone_test
         test_command_usage_parser.cpp
         test_cpp_plugin_loader.cpp
         test_effect.cpp
+        test_enchantment_offer.cpp
         test_logger_factory.cpp
         test_player_ban_list.cpp
         test_permissions.cpp

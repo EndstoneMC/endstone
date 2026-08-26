@@ -716,6 +716,26 @@ void init_event(py::module_ &m, py::class_<Event, PyEvent> &event)
             "A copy of the enchantments and levels that will be applied; assign it back after changes.")
         .def_property_readonly("which_button", &EnchantItemEvent::whichButton,
                                "The selected enchanting button, from 0 to 2.");
+    py::class_<PrepareItemEnchantEvent, InventoryEvent, ICancellable>(m, "PrepareItemEnchantEvent", R"doc(
+    Called when an enchanting table prepares offers for an item.
+
+    Set an offer to `None` to hide it, or assign a new `EnchantmentOffer` to replace it. Each offer contains every
+    enchantment that Bedrock applies when its corresponding button is selected.
+
+    This event can be called multiple times while the enchanting table is open. Cancelling it removes all
+    enchanting offers.
+)doc")
+        .def_property_readonly("enchanter", &PrepareItemEnchantEvent::getEnchanter,
+                               "The player for whom the offers are being prepared.")
+        .def_property_readonly("enchant_block", &PrepareItemEnchantEvent::getEnchantBlock,
+                               "The enchanting table involved in this event.")
+        .def_property_readonly("item", &PrepareItemEnchantEvent::getItem,
+                               "The item for which offers are being prepared.")
+        .def_property("offers", py::overload_cast<>(&PrepareItemEnchantEvent::getOffers, py::const_),
+                      &PrepareItemEnchantEvent::setOffers,
+                      "A copy of the three enchanting offers; assign it back after changes.")
+        .def_property_readonly("enchantment_bonus", &PrepareItemEnchantEvent::getEnchantmentBonus,
+                               "The enchanting bonus provided by nearby bookshelves.");
 
     // Server events
     py::class_<ServerEvent, Event>(m, "ServerEvent", "Represents a Server-related event.");

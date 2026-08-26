@@ -11,7 +11,7 @@
 
 namespace endstone::runtime {
 
-static constexpr std::array<std::pair<std::string_view, std::size_t>, 87> symbols = {{
+static constexpr std::array<std::pair<std::string_view, std::size_t>, 89> symbols = {{
     {"BlockState::StateListNode::mHead", 245468000},
     {"Enchant::mEnchants", 245294016},
     {"MobEffect::mMobEffects", 245274360},
@@ -73,6 +73,10 @@ static constexpr std::array<std::pair<std::string_view, std::size_t>, 87> symbol
     // DimensionManager
     {"_ZN16DimensionManager20getOrCreateDimensionENSt3__117basic_string_viewIcNS0_11char_traitsIcEEEE", 202068400},
     {"_ZN16DimensionManager29serverRegisterCustomDimensionENSt3__117basic_string_viewIcNS0_11char_traitsIcEEEERKN3mce4UUIDE", 202063456},
+    // EnchantUtils
+    {"_ZN12EnchantUtils20getBookCasePositionsER11BlockSourceRK4Vec3", 192038896},
+    // EnchantingContainerManagerModel
+    {"_ZN31EnchantingContainerManagerModel18recalculateOptionsEv", 187503824},
     // Explosion
     {"_ZN9Explosion7explodeER7IRandom", 202093568},
     // FurnaceBlockActor

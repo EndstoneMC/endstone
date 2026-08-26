@@ -157,6 +157,7 @@ __getattr__, __dir__, __all__ = lazy.attach(
             "PlayerToggleSprintEvent",
             "PluginDisableEvent",
             "PluginEnableEvent",
+            "PrepareItemEnchantEvent",
             "ScriptMessageEvent",
             "ServerCommandEvent",
             "ServerEvent",

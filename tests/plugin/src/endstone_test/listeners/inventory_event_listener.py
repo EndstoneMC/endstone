@@ -3,6 +3,7 @@ from endstone.event import (
     InventoryCloseEvent,
     InventoryInteractEvent,
     InventoryOpenEvent,
+    PrepareItemEnchantEvent,
     event_handler,
 )
 
@@ -54,4 +55,29 @@ class InventoryEventListener(EventListener):
                 for enchantment, level in event.enchants_to_add.items()
             },
             which_button=event.which_button,
+        )
+
+    @event_handler
+    def on_prepare_item_enchant(self, event: PrepareItemEnchantEvent):
+        self.record(
+            event,
+            f"{event.enchanter.name} prepares enchanting offers for {event.item}",
+            always_log=True,
+            player=event.enchanter.name,
+            inventory_size=event.inventory.size,
+            block_type=str(event.enchant_block.type),
+            item_type=str(event.item.type),
+            offers=[
+                None
+                if offer is None
+                else {
+                    "cost": offer.cost,
+                    "enchants": {
+                        str(enchantment.id): level
+                        for enchantment, level in offer.enchants.items()
+                    },
+                }
+                for offer in event.offers
+            ],
+            enchantment_bonus=event.enchantment_bonus,
         )
