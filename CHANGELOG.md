@@ -115,6 +115,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 #### Networking
 
 - Packet compression now uses libdeflate instead of zlib, which should improve performance on busy servers.
+- **BREAKING**: The server no longer listens on IPv6 by default. BDS exits when it cannot bind the IPv6 game port, which many hosts and containers cannot provide. Set `network.ipv6` to `true` in `endstone.toml` to get it back; `server-portv6` in `server.properties` still chooses the port.
 
 #### JSON payloads
 
