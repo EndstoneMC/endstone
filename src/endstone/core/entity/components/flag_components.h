@@ -16,6 +16,8 @@
 
 #include <optional>
 
+#include "bedrock/world/level/block_pos.h"
+#include "endstone/event/block/cauldron_level_change_event.h"
 #include "endstone/inventory/item_stack.h"
 
 class Actor;
@@ -25,6 +27,11 @@ struct InternalBucketFillActorComponent {
     const ::Actor *target = nullptr;
     std::optional<ItemStack> item_stack;
     bool write_item_stack = false;
+};
+struct InternalCauldronInteractionComponent {
+    Nullable<Actor> actor;
+    BlockPos pos;
+    CauldronLevelChangeEvent::ChangeReason reason = CauldronLevelChangeEvent::ChangeReason::Unknown;
 };
 struct InternalDisconnectFlagComponent {};
 struct InternalRemoveFlagComponent {};

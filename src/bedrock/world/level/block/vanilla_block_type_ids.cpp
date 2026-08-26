@@ -23,6 +23,7 @@ const HashedString Beehive = "minecraft:beehive";
 const HashedString BirchLog = "minecraft:birch_log";
 const HashedString BirchWood = "minecraft:birch_wood";
 const HashedString CampFire = "minecraft:campfire";
+const HashedString Cauldron = "minecraft:cauldron";
 const HashedString CherryLog = "minecraft:cherry_log";
 const HashedString CherryWood = "minecraft:cherry_wood";
 const HashedString DarkOakLog = "minecraft:dark_oak_log";

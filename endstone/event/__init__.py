@@ -87,6 +87,7 @@ __getattr__, __dir__, __all__ = lazy.attach(
             "BlockPistonRetractEvent",
             "BlockPlaceEvent",
             "BroadcastMessageEvent",
+            "CauldronLevelChangeEvent",
             "ChunkEvent",
             "ChunkLoadEvent",
             "ChunkUnloadEvent",

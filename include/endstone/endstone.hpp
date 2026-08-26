@@ -95,6 +95,7 @@ static_assert(_ITERATOR_DEBUG_LEVEL == 0,
 #include "event/block/block_piston_extend_event.h"
 #include "event/block/block_piston_retract_event.h"
 #include "event/block/block_place_event.h"
+#include "event/block/cauldron_level_change_event.h"
 #include "event/block/leaves_decay_event.h"
 #include "event/cancellable.h"
 #include "event/chunk/chunk_event.h"
