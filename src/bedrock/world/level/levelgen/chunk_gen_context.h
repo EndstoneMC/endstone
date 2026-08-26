@@ -16,17 +16,25 @@
 
 #include <optional>
 
-#include "endstone/block/block_face.h"
+#include "bedrock/core/math/vec3.h"
+#include "bedrock/world/level/chunk_pos.h"
+#include "bedrock/world/level/dimension/dimension_type.h"
+#include "bedrock/world/level/level_seed.h"
 
-namespace endstone::core {
-
-class EndstoneBlockFace {
-public:
-    static std::optional<BlockFace> fromBedrockFacing(int facing);
-    static int getOffsetX(BlockFace face);
-    static int getOffsetY(BlockFace face);
-    static int getOffsetZ(BlockFace face);
-    static BlockFace getOpposite(BlockFace face);
+struct ChunkGenPlayerSnapshot {
+    Vec3 position;
+    float velocity_x;
+    float velocity_z;
 };
+static_assert(sizeof(ChunkGenPlayerSnapshot) == 20);
 
-}  // namespace endstone::core
+struct ChunkGenContext {
+    ChunkPos chunk_position;
+    std::optional<ChunkGenPlayerSnapshot> nearest_player;
+    DimensionType dimension;
+    LevelSeed64 world_seed;
+    int concurrent_chunks;
+    int queue_depth;
+    bool was_loaded_from_disk;
+};
+static_assert(sizeof(ChunkGenContext) == 64);

@@ -14,19 +14,17 @@
 
 #pragma once
 
-#include <optional>
+#include "bedrock/bedrock.h"
+#include "bedrock/common_types.h"
 
-#include "endstone/block/block_face.h"
+class Actor;
+class BlockPos;
+class InteractionResult;
+class ItemStack;
+class Vec3;
 
-namespace endstone::core {
-
-class EndstoneBlockFace {
-public:
-    static std::optional<BlockFace> fromBedrockFacing(int facing);
-    static int getOffsetX(BlockFace face);
-    static int getOffsetY(BlockFace face);
-    static int getOffsetZ(BlockFace face);
-    static BlockFace getOpposite(BlockFace face);
+class BucketItem {
+private:
+    ENDSTONE_HOOK virtual InteractionResult _useOn(ItemStack &instance, Actor &entity, BlockPos pos, FacingID face,
+                                                   const Vec3 &click_pos) const;
 };
-
-}  // namespace endstone::core

@@ -7,10 +7,10 @@ import typing
 
 from endstone import GameMode, Input, Player, Skin
 from endstone.actor import Actor, Item, Mob
-from endstone.block import Block, BlockFace, BlockState
+from endstone.block import Block, BlockFace, BlockState, Sign
 from endstone.command import CommandSender
 from endstone.damage import DamageSource
-from endstone.inventory import BookMeta, CookingRecipe, EquipmentSlot, Inventory, ItemStack, Recipe
+from endstone.inventory import BookMeta, CookingRecipe, EquipmentSlot, Inventory, ItemStack, ItemType, Recipe
 from endstone.lang import Translatable
 from endstone.level import Chunk, Dimension, Level, Location
 from endstone.map import MapView
@@ -70,6 +70,9 @@ __all__ = [
     "PlayerBedEnterEvent",
     "PlayerBedLeaveEvent",
     "PlayerBucketActorEvent",
+    "PlayerBucketEmptyEvent",
+    "PlayerBucketEvent",
+    "PlayerBucketFillEvent",
     "PlayerChatEvent",
     "PlayerCommandEvent",
     "PlayerCraftItemEvent",
@@ -92,6 +95,7 @@ __all__ = [
     "PlayerLevelChangeEvent",
     "PlayerLoginEvent",
     "PlayerMoveEvent",
+    "PlayerOpenSignEvent",
     "PlayerPickupArrowEvent",
     "PlayerPickupExperienceEvent",
     "PlayerPickupItemEvent",
@@ -763,6 +767,61 @@ class PlayerBucketActorEvent(PlayerEvent, Cancellable):
         The hand used to capture the actor.
         """
 
+class PlayerBucketEvent(PlayerEvent, Cancellable):
+    """
+    Base class for events involving a player's bucket interaction.
+    """
+    @property
+    def block(self) -> Block | None:
+        """
+        The block involved in this event, or `None` if unavailable.
+        """
+
+    @property
+    def block_clicked(self) -> Block:
+        """
+        The block clicked by the player.
+        """
+
+    @property
+    def block_face(self) -> BlockFace:
+        """
+        The face on the clicked block.
+        """
+
+    @property
+    def bucket(self) -> ItemType:
+        """
+        The bucket used in this event.
+        """
+
+    @property
+    def hand(self) -> EquipmentSlot:
+        """
+        The hand used in this event.
+
+        This is always `EquipmentSlot.HAND`, because Bedrock does not report which hand was used for this interaction.
+        """
+
+    @property
+    def item_stack(self) -> ItemStack | None:
+        """
+        The resulting item in the player's hand, or `None` if unavailable.
+        """
+
+    @item_stack.setter
+    def item_stack(self, arg1: ItemStack | None) -> None: ...
+
+class PlayerBucketFillEvent(PlayerBucketEvent):
+    """
+    Called when a player fills a bucket.
+    """
+
+class PlayerBucketEmptyEvent(PlayerBucketEvent):
+    """
+    Called when a player empties a bucket.
+    """
+
 class PlayerChatEvent(PlayerEvent, Cancellable):
     """
     Called when a player sends a chat message.
@@ -1232,6 +1291,44 @@ class PlayerJumpEvent(PlayerMoveEvent):
     """
     Called when a player jumps.
     """
+
+class PlayerOpenSignEvent(PlayerEvent, Cancellable):
+    """
+    Called when a player begins editing a sign's text.
+
+    Cancelling this event stops the sign editing menu from opening.
+    """
+    class Cause(enum.Enum):
+        """
+        The cause of the sign opening.
+        """
+
+        PLACE = 0
+        INTERACT = 1
+        PLUGIN = 2
+        UNKNOWN = 3
+
+    PLACE = Cause.PLACE
+    INTERACT = Cause.INTERACT
+    PLUGIN = Cause.PLUGIN
+    UNKNOWN = Cause.UNKNOWN
+    @property
+    def sign(self) -> Sign:
+        """
+        A captured state of the sign involved in this event.
+        """
+
+    @property
+    def side(self) -> Sign.Side:
+        """
+        The side of the sign being opened.
+        """
+
+    @property
+    def cause(self) -> Cause:
+        """
+        The cause of the sign opening.
+        """
 
 class PlayerQuitEvent(PlayerEvent):
     """

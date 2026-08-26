@@ -304,6 +304,25 @@ void init_event(py::module_ &m, py::class_<Event, PyEvent> &event)
         .def_property_readonly("original_bucket", &PlayerBucketActorEvent::getOriginalBucket,
                                "The bucket used to capture the actor.")
         .def_property_readonly("hand", &PlayerBucketActorEvent::getHand, "The hand used to capture the actor.");
+    py::class_<PlayerBucketEvent, PlayerEvent, ICancellable>(
+        m, "PlayerBucketEvent", "Base class for events involving a player's bucket interaction.")
+        .def_property_readonly("block", &PlayerBucketEvent::getBlock,
+                               "The block involved in this event, or `None` if unavailable.")
+        .def_property_readonly("block_clicked", &PlayerBucketEvent::getBlockClicked, "The block clicked by the player.")
+        .def_property_readonly("block_face", &PlayerBucketEvent::getBlockFace, "The face on the clicked block.")
+        .def_property_readonly("bucket", &PlayerBucketEvent::getBucket, py::return_value_policy::reference,
+                               "The bucket used in this event.")
+        .def_property_readonly("hand", &PlayerBucketEvent::getHand, R"doc(
+    The hand used in this event.
+
+    This is always `EquipmentSlot.HAND`, because Bedrock does not report which hand was used for this interaction.
+)doc")
+        .def_property("item_stack", &PlayerBucketEvent::getItemStack, &PlayerBucketEvent::setItemStack,
+                      "The resulting item in the player's hand, or `None` if unavailable.");
+    py::class_<PlayerBucketFillEvent, PlayerBucketEvent>(m, "PlayerBucketFillEvent",
+                                                         "Called when a player fills a bucket.");
+    py::class_<PlayerBucketEmptyEvent, PlayerBucketEvent>(m, "PlayerBucketEmptyEvent",
+                                                          "Called when a player empties a bucket.");
     py::class_<PlayerChatEvent, PlayerEvent, ICancellable>(m, "PlayerChatEvent",
                                                            "Called when a player sends a chat message.")
         .def_property("message", &PlayerChatEvent::getMessage, &PlayerChatEvent::setMessage,
@@ -492,6 +511,25 @@ void init_event(py::module_ &m, py::class_<Event, PyEvent> &event)
         .def_property("to_location", &PlayerMoveEvent::getTo, &PlayerMoveEvent::setTo,
                       "The location that this player moved to.");
     py::class_<PlayerJumpEvent, PlayerMoveEvent>(m, "PlayerJumpEvent", "Called when a player jumps.");
+    auto player_open_sign_event = py::class_<PlayerOpenSignEvent, PlayerEvent, ICancellable>(m, "PlayerOpenSignEvent",
+                                                                                             R"doc(
+    Called when a player begins editing a sign's text.
+
+    Cancelling this event stops the sign editing menu from opening.
+)doc");
+    py::native_enum<PlayerOpenSignEvent::Cause>(player_open_sign_event, "Cause", "enum.Enum",
+                                                "The cause of the sign opening.")
+        .value("PLACE", PlayerOpenSignEvent::Cause::Place)
+        .value("INTERACT", PlayerOpenSignEvent::Cause::Interact)
+        .value("PLUGIN", PlayerOpenSignEvent::Cause::Plugin)
+        .value("UNKNOWN", PlayerOpenSignEvent::Cause::Unknown)
+        .export_values()
+        .finalize();
+    player_open_sign_event
+        .def_property_readonly("sign", &PlayerOpenSignEvent::getSign,
+                               "A captured state of the sign involved in this event.")
+        .def_property_readonly("side", &PlayerOpenSignEvent::getSide, "The side of the sign being opened.")
+        .def_property_readonly("cause", &PlayerOpenSignEvent::getCause, "The cause of the sign opening.");
     py::class_<PlayerQuitEvent, PlayerEvent>(m, "PlayerQuitEvent", "Called when a player leaves a server.")
         .def_property("quit_message", &PlayerQuitEvent::getQuitMessage, &PlayerQuitEvent::setQuitMessage,
                       "The quit message to send to all online players.");
