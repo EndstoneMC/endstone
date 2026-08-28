@@ -14,6 +14,7 @@
 
 #include "bedrock/network/batched_network_peer.h"
 
+#include <cstdint>
 #include <optional>
 #include <string>
 #include <string_view>
@@ -28,6 +29,7 @@
 #include "bedrock/network/raknet_connector.h"
 #include "bedrock/network/server_network_system.h"
 #include "bedrock/server/server_instance.h"
+#include "bedrock/shared_constants.h"
 #include "endstone/core/level/level.h"
 #include "endstone/core/map/map_view.h"
 #include "endstone/core/player.h"
@@ -204,6 +206,31 @@ std::optional<std::string> upgradeSetScorePayload(std::string_view payload)
     return out.getBuffer();
 }
 
+// #blameMojang - LoginPacket::_read discards the connection request and leaves it null whenever the
+// declared version is not the server's own, so the 2168 override has to land on the wire before the
+// packet is read. The version is the first four bytes of the payload, big endian, so patch in place.
+// TODO(1.26.50): drop with the rest of the 1.26.44 shims once 1.26.44 clients are gone.
+void upgradeLoginPayload(std::string &data, const std::size_t offset)
+{
+    if (offset + sizeof(std::int32_t) > data.size()) {
+        return;
+    }
+
+    auto *version = reinterpret_cast<std::uint8_t *>(data.data()) + offset;
+    const auto declared = static_cast<std::int32_t>((std::uint32_t{version[0]} << 24) |
+                                                    (std::uint32_t{version[1]} << 16) |
+                                                    (std::uint32_t{version[2]} << 8) | std::uint32_t{version[3]});
+    if (declared != 2168) {
+        return;
+    }
+
+    constexpr auto upgraded = static_cast<std::uint32_t>(SharedConstants::NetworkProtocolVersion);
+    version[0] = static_cast<std::uint8_t>(upgraded >> 24);
+    version[1] = static_cast<std::uint8_t>(upgraded >> 16);
+    version[2] = static_cast<std::uint8_t>(upgraded >> 8);
+    version[3] = static_cast<std::uint8_t>(upgraded);
+}
+
 void patchPacket(Packet &packet, endstone::Player *player)
 {
     switch (packet.getId()) {
@@ -340,6 +367,10 @@ NetworkPeer::DataStatus BatchedNetworkPeer::_receivePacket(std::string &out_data
         }
 
         const auto header = PacketHeader::fromRaw(result.value());
+        if (header.getPacketId() == MinecraftPacketIds::Login) {
+            upgradeLoginPayload(out_data, stream.getReadPointer());
+        }
+
         const auto &id = getId();
         endstone::core::EndstonePlayer *player = nullptr;
         if (const auto *p = network_handler->getServerPlayer(id, header.getRecipientSubId())) {
