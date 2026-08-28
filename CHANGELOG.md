@@ -11,6 +11,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 - Added support for BDS version 1.26.45. It raises the network protocol version to 2169 without changing anything on the wire, so clients on 1.26.40 through 1.26.44 are still accepted instead of being told to update.
 
+### Changed
+
+- **BREAKING**: The server no longer listens on IPv6 by default. BDS exits when it cannot bind the IPv6 game port, which many hosts and containers cannot provide. Set `network.ipv6` to `true` in `endstone.toml` to get it back; `server-portv6` in `server.properties` still chooses the port.
+
 ### Fixed
 
 - Fixed scoreboard score removals being misread by 1.26.44 clients. 1.26.44 is the one release that expects an extra byte ahead of the objective name, and it is now sent to those clients only.
