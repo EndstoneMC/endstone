@@ -7,6 +7,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [0.11.10] - 2026-08-28
+
 ### Added
 
 - Added support for BDS version 1.26.45. Clients on 1.26.40 through 1.26.44 can still join.
@@ -14,6 +16,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Changed
 
 - **BREAKING**: The server no longer listens on IPv6 by default, so Endstone runs on hosts without IPv6 support. Set the new `network.ipv6` option in `endstone.toml` to `true` to turn it back on.
+
+### Fixed
+
+- Fixed items vanishing when `PlayerDropItemEvent` is cancelled for a drop from the main hand. The item is now restored to the player's inventory.
 
 ## [0.11.9] - 2026-08-17
 
@@ -1174,7 +1180,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Basic plugin loader for C++ and Python plugins.
 - Basic command system that allows plugins to register custom commands.
 
-[Unreleased]: https://github.com/EndstoneMC/endstone/compare/v0.11.9...HEAD
+[Unreleased]: https://github.com/EndstoneMC/endstone/compare/v0.11.10...HEAD
+[0.11.10]: https://github.com/EndstoneMC/endstone/compare/v0.11.9...v0.11.10
 [0.11.9]: https://github.com/EndstoneMC/endstone/compare/v0.11.8...v0.11.9
 [0.11.8]: https://github.com/EndstoneMC/endstone/compare/v0.11.7...v0.11.8
 [0.11.7]: https://github.com/EndstoneMC/endstone/compare/v0.11.6...v0.11.7
