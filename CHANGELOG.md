@@ -7,6 +7,14 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+### Added
+
+- Added support for BDS version 1.26.45. It raises the network protocol version to 2169 without changing anything on the wire, so clients on 1.26.40 through 1.26.44 are still accepted instead of being told to update.
+
+### Fixed
+
+- Fixed scoreboard score removals being misread by 1.26.44 clients. 1.26.44 is the one release that expects an extra byte ahead of the objective name, and it is now sent to those clients only.
+
 ## [0.11.9] - 2026-08-17
 
 ### Added

@@ -16,7 +16,9 @@
 
 #include "bedrock/network/packet.h"
 #include "bedrock/network/packet/login_packet.h"
+#include "bedrock/network/packet/request_network_settings_packet.h"
 #include "bedrock/server/server_instance.h"
+#include "bedrock/shared_constants.h"
 #include "endstone/core/player.h"
 #include "endstone/core/server.h"
 #include "endstone/core/util/socket_address.h"
@@ -24,6 +26,37 @@
 #include "endstone/runtime/hook.h"
 
 namespace {
+void acceptWireCompatibleProtocol(int &client_network_version)
+{
+    if (client_network_version == 2168) {
+        client_network_version = SharedConstants::NetworkProtocolVersion;
+    }
+}
+
+class ProtocolVersionHandler : public IPacketHandlerDispatcher {
+public:
+    explicit ProtocolVersionHandler(const IPacketHandlerDispatcher &original) : original_(original) {}
+    void handle(const NetworkIdentifier &network_id, NetEventCallback &callback,
+                std::shared_ptr<Packet> &packet) const override
+    {
+        switch (packet->getId()) {
+        case MinecraftPacketIds::RequestNetworkSettings:
+            acceptWireCompatibleProtocol(
+                static_cast<RequestNetworkSettingsPacket &>(*packet).payload.client_network_version);
+            break;
+        case MinecraftPacketIds::Login:
+            acceptWireCompatibleProtocol(static_cast<LoginPacket &>(*packet).payload.client_network_version);
+            break;
+        default:
+            break;
+        }
+        original_.handle(network_id, callback, packet);
+    }
+
+private:
+    const IPacketHandlerDispatcher &original_;
+};
+
 class PlayerPacketHandler : public IPacketHandlerDispatcher {
 public:
     explicit PlayerPacketHandler(const IPacketHandlerDispatcher &original) : original_(original) {}
@@ -48,6 +81,15 @@ std::shared_ptr<Packet> MinecraftPackets::createPacket(MinecraftPacketIds id)
 {
     auto packet = ENDSTONE_HOOK_CALL_ORIGINAL(&MinecraftPackets::createPacket, id);
     switch (id) {
+    case MinecraftPacketIds::RequestNetworkSettings:
+    case MinecraftPacketIds::Login: {
+        static std::unordered_map<MinecraftPacketIds, std::unique_ptr<ProtocolVersionHandler>> handlers;
+        if (packet->handler_) {
+            handlers.emplace(id, std::make_unique<ProtocolVersionHandler>(*packet->handler_));
+            packet->handler_ = handlers[id].get();
+        }
+        break;
+    }
     case MinecraftPacketIds::PlayerEquipment:
     case MinecraftPacketIds::PlayerAction:
     case MinecraftPacketIds::PlayerSkin:

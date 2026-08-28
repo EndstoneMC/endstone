@@ -30,6 +30,6 @@ constexpr uint8_t NetworkMaxSubClients = 4;
 constexpr int NetworkDefaultMaxConnections = 200;  // Endstone: 40 -> 200
 constexpr int MajorVersion = 1;
 constexpr int MinorVersion = 26;
-constexpr int PatchVersion = 44;
-constexpr int NetworkProtocolVersion = 2168;
+constexpr int PatchVersion = 45;
+constexpr int NetworkProtocolVersion = 2169;
 }  // namespace SharedConstants

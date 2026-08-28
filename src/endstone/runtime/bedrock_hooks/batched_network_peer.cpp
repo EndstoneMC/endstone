@@ -115,11 +115,11 @@ void patchPacket(const ClientboundMapItemDataPacket &packet, endstone::core::End
     }
 }
 
-// #blameMojang - 1.26.44 writes a fixed `true` ahead of RemoveScore's objective name but left the
-// protocol version at 2168, so a 1.26.40-43 client negotiates the same version and mis-parses every
-// scoreboard removal.
-// TODO(1.26.50): drop once the protocol version moves past 2168.
-std::optional<std::string> downgradeSetScorePayload(std::string_view payload)
+// #blameMojang - 1.26.44 alone writes a fixed `true` ahead of RemoveScore's objective name. 1.26.45
+// took it back out and moved the protocol version on to 2169, so a 1.26.44 client - which we still
+// let in, its wire being identical otherwise - mis-parses every scoreboard removal without it.
+// TODO(1.26.50): drop with the 2168 handshake override once 1.26.44 clients are gone.
+std::optional<std::string> upgradeSetScorePayload(std::string_view payload)
 {
     ReadOnlyBinaryStream in{payload, false};
     auto count = in.getUnsignedVarInt().discardError();
@@ -154,10 +154,7 @@ std::optional<std::string> downgradeSetScorePayload(std::string_view payload)
         out.writeVarInt64(scoreboard_id.value(), "Scoreboard Id", nullptr);
 
         if (entry_action == ScorePacketEntryAction::Remove) {
-            auto keyed_marker = in.getBool().discardError();
-            if (!keyed_marker) {
-                return std::nullopt;
-            }
+            out.writeBool(true, "blameMojang", nullptr);
             auto has_objective_name = in.getBool().discardError();
             if (!has_objective_name) {
                 return std::nullopt;
@@ -289,15 +286,14 @@ void BatchedNetworkPeer::sendPacket(const std::string &data, Reliability reliabi
         break;
     }
     case MinecraftPacketIds::SetScore: {
-        // TODO(1.26.50): drop with downgradeSetScorePayload once the protocol version moves past 2168.
+        // TODO(1.26.50): drop with upgradeSetScorePayload once 1.26.44 clients are gone.
         if (player != nullptr) {
             SemVersion client_version;
             auto result =
                 SemVersion::fromString(player->getGameVersion(), client_version, SemVersion::ParseOption::NoWildcards);
-            if (result != SemVersion::MatchType::None && client_version >= SemVersion{1, 26, 40} &&
-                client_version < SemVersion{1, 26, 44}) {
-                if (auto downgraded = downgradeSetScorePayload(payload)) {
-                    e.setPayload(*downgraded);
+            if (result != SemVersion::MatchType::None && client_version == SemVersion{1, 26, 44}) {
+                if (auto upgraded = upgradeSetScorePayload(payload)) {
+                    e.setPayload(*upgraded);
                 }
             }
         }
