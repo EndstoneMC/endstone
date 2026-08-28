@@ -7,6 +7,14 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+### Added
+
+- Added support for BDS version 1.26.45. Clients on 1.26.40 through 1.26.44 can still join.
+
+### Changed
+
+- **BREAKING**: The server no longer listens on IPv6 by default, so Endstone runs on hosts without IPv6 support. Set the new `network.ipv6` option in `endstone.toml` to `true` to turn it back on.
+
 ## [0.11.9] - 2026-08-17
 
 ### Added

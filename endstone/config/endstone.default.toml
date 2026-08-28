@@ -7,3 +7,9 @@ log = true
 # Allow clients to use their own packs when texturepack-required is true.
 # Has no effect if texturepack-required is false.
 allow-client-packs = false
+
+[network]
+# Whether to also listen on IPv6, using the server-portv6 from server.properties.
+# Disabled by default: the server exits when it cannot bind that port, and many
+# hosts and containers have no IPv6 at all.
+ipv6 = false

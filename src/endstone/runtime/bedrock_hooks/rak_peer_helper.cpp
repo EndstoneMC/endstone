@@ -24,9 +24,11 @@
 #include <ranges>
 #include <stdexcept>
 #include <string>
+#include <utility>
 #include <vector>
 
 #include <magic_enum/magic_enum.hpp>
+#include <toml++/toml.h>
 
 #include "endstone/core/server.h"
 #include "endstone/core/util/socket_address.h"
@@ -154,6 +156,21 @@ bool handleIncomingDatagram(RakNet::RNS2RecvStruct *recv)
     return true;
 }
 
+struct IPSupport : RakPeerHelper::IPSupportInterface {
+    [[nodiscard]] bool useIPv4Only() const override
+    {
+        try {
+            return !toml::parse_file("endstone.toml").at_path("network.ipv6").value_or(false);
+        }
+        catch (const toml::parse_error &) {
+            return true;
+        }
+    }
+    [[nodiscard]] bool useIPv6Only() const override { return false; }
+    [[nodiscard]] std::uint16_t getDefaultGamePort() const override { return 0; }
+    [[nodiscard]] std::uint16_t getDefaultGamePortv6() const override { return 0; }
+};
+
 RakNet::StartupResult RakPeerHelper::peerStartup(RakNet::RakPeerInterface *peer, const ConnectionDefinition &def,
                                                  PeerPurpose purpose)
 {
@@ -164,7 +181,12 @@ RakNet::StartupResult RakPeerHelper::peerStartup(RakNet::RakPeerInterface *peer,
         peer->SetIncomingDatagramEventHandler(handleIncomingDatagram);
         gRakPeer = static_cast<RakNet::RakPeer *>(peer);
     }
-    return ENDSTONE_HOOK_CALL_ORIGINAL(&RakPeerHelper::peerStartup, this, peer, new_def, purpose);
+
+    IPSupport ip_support;
+    auto *restore = std::exchange(ip_support_, &ip_support);
+    const auto result = ENDSTONE_HOOK_CALL_ORIGINAL(&RakPeerHelper::peerStartup, this, peer, new_def, purpose);
+    ip_support_ = restore;
+    return result;
 }
 
 namespace RakNet {
