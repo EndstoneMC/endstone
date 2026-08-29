@@ -780,6 +780,12 @@ extra = 0
 pattern = "55 41 57 41 56 41 55 41 54 53 48 83 EC ? 45 89 CD 4D 89 C4 89 4C 24 ? 48 89 D3"
 
 [[signatures]]
+name = "_ZNK15LiquidBlockBase9_solidifyER11BlockSourceRK8BlockPosS4_"
+relative = false
+extra = 0
+pattern = "41 57 41 56 41 54 53 48 83 EC 28 49 89 CF 48 89 D3 49 89 F6"
+
+[[signatures]]
 name = "_ZN14MapDataManager15getMapSavedDataE13ActorUniqueID"
 relative = false
 extra = 0
