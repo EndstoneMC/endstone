@@ -19,6 +19,8 @@
 #include <variant>
 
 #include "bedrock/entity/components/user_entity_identifier_component.h"
+#include "bedrock/server/server_instance.h"
+#include "bedrock/shared_constants.h"
 #include "bedrock/network/net_event_callback.h"
 #include "bedrock/network/network_identifier.h"
 #include "bedrock/network/packet/animate_packet.h"
@@ -30,6 +32,7 @@
 #include "bedrock/network/packet/player_action_packet.h"
 #include "bedrock/network/packet/player_auth_input_packet.h"
 #include "bedrock/network/packet/player_skin_packet.h"
+#include "bedrock/network/packet/request_network_settings_packet.h"
 #include "bedrock/network/packet/set_local_player_as_initialized_packet.h"
 #include "bedrock/network/packet/set_player_inventory_options_packet.h"
 #include "bedrock/network/server_network_handler.h"
@@ -63,6 +66,37 @@
 #include "endstone/inventory/meta/writable_book_meta.h"
 #include "endstone/runtime/hook.h"
 #include "endstone/variant.h"
+
+namespace {
+// TODO(1.26.50): drop with the rest of the 1.26.44 shims once 1.26.44 clients are gone.
+void acceptWireCompatibleProtocol(int &client_network_version)
+{
+    if (client_network_version == 2168) {
+        client_network_version = SharedConstants::NetworkProtocolVersion;
+    }
+}
+
+class ProtocolVersionHandler : public IPacketHandlerDispatcher {
+public:
+    explicit ProtocolVersionHandler(const IPacketHandlerDispatcher &original) : original_(original) {}
+    void handle(const NetworkIdentifier &network_id, NetEventCallback &callback,
+                std::shared_ptr<Packet> &packet) const override
+    {
+        switch (packet->getId()) {
+        case MinecraftPacketIds::RequestNetworkSettings:
+            acceptWireCompatibleProtocol(
+                static_cast<RequestNetworkSettingsPacket &>(*packet).payload.client_network_version);
+            break;
+        default:
+            break;
+        }
+        original_.handle(network_id, callback, packet);
+    }
+
+private:
+    const IPacketHandlerDispatcher &original_;
+};
+}  // namespace
 
 namespace endstone::core {
 
@@ -630,6 +664,14 @@ std::shared_ptr<Packet> MinecraftPackets::createPacket(MinecraftPacketIds id)
     case MinecraftPacketIds::PlayerAuthInputPacket: {
         using Dispatcher = EndstonePacketHandlerDispatcher<PlayerAuthInputPacket>;
         Dispatcher::set(&packet->handler_);
+        break;
+    }
+    case MinecraftPacketIds::RequestNetworkSettings: {
+        static std::unordered_map<MinecraftPacketIds, std::unique_ptr<ProtocolVersionHandler>> handlers;
+        if (packet->handler_) {
+            handlers.emplace(id, std::make_unique<ProtocolVersionHandler>(*packet->handler_));
+            packet->handler_ = handlers[id].get();
+        }
         break;
     }
     case MinecraftPacketIds::Emote: {

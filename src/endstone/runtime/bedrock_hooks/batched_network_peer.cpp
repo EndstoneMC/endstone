@@ -14,6 +14,7 @@
 
 #include "bedrock/network/batched_network_peer.h"
 
+#include <cstdint>
 #include <optional>
 #include <string>
 #include <string_view>
@@ -36,6 +37,7 @@
 #include "bedrock/network/raknet_connector.h"
 #include "bedrock/network/server_network_system.h"
 #include "bedrock/server/server_instance.h"
+#include "bedrock/shared_constants.h"
 #include "endstone/core/entity/components/flag_components.h"
 #include "endstone/core/level/level.h"
 #include "endstone/core/map/map_view.h"
@@ -127,11 +129,11 @@ void patchPacket(const ClientboundMapItemDataPacket &packet,
     }
 }
 
-// #blameMojang - 1.26.44 writes a fixed `true` ahead of RemoveScore's objective name but left the
-// protocol version at 2168, so a 1.26.40-43 client negotiates the same version and mis-parses every
-// scoreboard removal.
-// TODO(1.26.50): drop once the protocol version moves past 2168.
-std::optional<std::string> downgradeSetScorePayload(std::string_view payload)
+// #blameMojang - 1.26.44 alone writes a fixed `true` ahead of RemoveScore's objective name. 1.26.45
+// took it back out and moved the protocol version on to 2169, so a 1.26.44 client - which we still
+// let in, its wire being identical otherwise - mis-parses every scoreboard removal without it.
+// TODO(1.26.50): drop with the 2168 handshake override once 1.26.44 clients are gone.
+std::optional<std::string> upgradeSetScorePayload(std::string_view payload)
 {
     ReadOnlyBinaryStream in{payload, false};
     auto count = in.getUnsignedVarInt().discardError();
@@ -166,10 +168,7 @@ std::optional<std::string> downgradeSetScorePayload(std::string_view payload)
         out.writeVarInt64(scoreboard_id.value(), "Scoreboard Id", nullptr);
 
         if (entry_action == ScorePacketEntryAction::Remove) {
-            auto keyed_marker = in.getBool().discardError();
-            if (!keyed_marker) {
-                return std::nullopt;
-            }
+            out.writeBool(true, "blameMojang", nullptr);
             auto has_objective_name = in.getBool().discardError();
             if (!has_objective_name) {
                 return std::nullopt;
@@ -279,6 +278,31 @@ VisibilityResult filterHiddenActors(const PacketHeader &header, ReadOnlyBinarySt
     default:
         return VisibilityResult::Unchanged;
     }
+}
+
+// #blameMojang - LoginPacket::_read discards the connection request and leaves it null whenever the
+// declared version is not the server's own, so the 2168 override has to land on the wire before the
+// packet is read. The version is the first four bytes of the payload, big endian, so patch in place.
+// TODO(1.26.50): drop with the rest of the 1.26.44 shims once 1.26.44 clients are gone.
+void upgradeLoginPayload(std::string &data, const std::size_t offset)
+{
+    if (offset + sizeof(std::int32_t) > data.size()) {
+        return;
+    }
+
+    auto *version = reinterpret_cast<std::uint8_t *>(data.data()) + offset;
+    const auto declared = static_cast<std::int32_t>((std::uint32_t{version[0]} << 24) |
+                                                    (std::uint32_t{version[1]} << 16) |
+                                                    (std::uint32_t{version[2]} << 8) | std::uint32_t{version[3]});
+    if (declared != 2168) {
+        return;
+    }
+
+    constexpr auto upgraded = static_cast<std::uint32_t>(SharedConstants::NetworkProtocolVersion);
+    version[0] = static_cast<std::uint8_t>(upgraded >> 24);
+    version[1] = static_cast<std::uint8_t>(upgraded >> 16);
+    version[2] = static_cast<std::uint8_t>(upgraded >> 8);
+    version[3] = static_cast<std::uint8_t>(upgraded);
 }
 
 void patchPacket(Packet &packet, const endstone::Nullable<endstone::Player> &player)
@@ -407,15 +431,14 @@ void BatchedNetworkPeer::sendPacket(const std::string &data, Reliability reliabi
         break;
     }
     case MinecraftPacketIds::SetScore: {
-        // TODO(1.26.50): drop with downgradeSetScorePayload once the protocol version moves past 2168.
+        // TODO(1.26.50): drop with upgradeSetScorePayload once 1.26.44 clients are gone.
         if (player) {
             SemVersion client_version;
             auto result =
                 SemVersion::fromString(player->getGameVersion(), client_version, SemVersion::ParseOption::NoWildcards);
-            if (result != SemVersion::MatchType::None && client_version >= SemVersion{1, 26, 40} &&
-                client_version < SemVersion{1, 26, 44}) {
-                if (auto downgraded = downgradeSetScorePayload(payload)) {
-                    e.setPayload(*downgraded);
+            if (result != SemVersion::MatchType::None && client_version == SemVersion{1, 26, 44}) {
+                if (auto upgraded = upgradeSetScorePayload(payload)) {
+                    e.setPayload(*upgraded);
                 }
             }
         }
@@ -466,6 +489,10 @@ NetworkPeer::DataStatus BatchedNetworkPeer::_receivePacket(std::string &out_data
         }
 
         const auto header = PacketHeader::fromRaw(result.value());
+        if (header.getPacketId() == MinecraftPacketIds::Login) {
+            upgradeLoginPayload(out_data, stream.getReadPointer());
+        }
+
         const auto &id = getId();
         endstone::Nullable<endstone::Player> player;
         if (const auto *p = network_handler->getServerPlayer(id, header.getRecipientSubId())) {

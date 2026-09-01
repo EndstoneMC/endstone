@@ -117,7 +117,6 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 #### Networking
 
 - Packet compression now uses libdeflate instead of zlib, which should improve performance on busy servers.
-- **BREAKING**: The server no longer listens on IPv6 by default. BDS exits when it cannot bind the IPv6 game port, which many hosts and containers cannot provide. Set `network.ipv6` to `true` in `endstone.toml` to get it back; `server-portv6` in `server.properties` still chooses the port.
 
 #### JSON payloads
 
@@ -184,7 +183,6 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 #### API behaviour
 
 - Fixed `Dimension.actors` and `Level.actors` leaving out connected players.
-- Fixed cancelling `PlayerDropItemEvent` destroying the item when it was thrown from the hand.
 - Fixed `PlayerBedLeaveEvent` only being called when a player pressed the leave button. It now also fires when morning comes, when the bed is broken or obstructed, and when the player is woken by anything else, and the `bed` block it reports is the bed being slept in rather than the respawn point.
 - Fixed every vanilla command failing when dispatched through a `CommandSenderWrapper`, which did not report its own type.
 - Fixed `str()` on a `Translatable` giving an object repr instead of its text.
@@ -206,6 +204,19 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Security
 
 - Rate-limited the network ping packet (`NetworkStackLatencyPacket`, id 115). Bedrock accepts it from a connection that has not logged in yet, and the shipped `packetlimitconfig.json` left it unbounded, so a single connection could flood it to exhaust the server. On startup Endstone now adds a limit for it to `packetlimitconfig.json` when one is not already present, leaving any entry you have set yourself untouched.
+## [0.11.10] - 2026-08-28
+
+### Added
+
+- Added support for BDS version 1.26.45. Clients on 1.26.40 through 1.26.44 can still join.
+
+### Changed
+
+- **BREAKING**: The server no longer listens on IPv6 by default, so Endstone runs on hosts without IPv6 support. Set the new `network.ipv6` option in `endstone.toml` to `true` to turn it back on.
+
+### Fixed
+
+- Fixed items vanishing when `PlayerDropItemEvent` is cancelled for a drop from the main hand. The item is now restored to the player's inventory.
 
 ## [0.11.9] - 2026-08-17
 
@@ -1366,7 +1377,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Basic plugin loader for C++ and Python plugins.
 - Basic command system that allows plugins to register custom commands.
 
-[Unreleased]: https://github.com/EndstoneMC/endstone/compare/v0.11.9...HEAD
+[Unreleased]: https://github.com/EndstoneMC/endstone/compare/v0.11.10...HEAD
+[0.11.10]: https://github.com/EndstoneMC/endstone/compare/v0.11.9...v0.11.10
 [0.11.9]: https://github.com/EndstoneMC/endstone/compare/v0.11.8...v0.11.9
 [0.11.8]: https://github.com/EndstoneMC/endstone/compare/v0.11.7...v0.11.8
 [0.11.7]: https://github.com/EndstoneMC/endstone/compare/v0.11.6...v0.11.7
