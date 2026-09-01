@@ -271,6 +271,14 @@ public:
             value = endstone::Identifier<T>(std::string_view(storage_));
             return true;
         }
+        // Accept the identified object itself
+        if constexpr (endstone::python::identifiable<T>) {
+            if (isinstance<T>(src)) {
+                storage_ = std::string(src.cast<const T &>().getId());
+                value = endstone::Identifier<T>(std::string_view(storage_));
+                return true;
+            }
+        }
         // Accept strings
         make_caster<std::string> str_caster;
         if (str_caster.load(src, convert)) {
