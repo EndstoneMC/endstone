@@ -2,11 +2,14 @@
 Classes relating to the specialized enhancements to ItemStacks.
 """
 
+import collections.abc
+
 from endstone import Identifier
 from endstone.inventory import ItemStack
 
 __all__ = [
     "Enchantment",
+    "EnchantmentOffer",
 ]
 
 class Enchantment:
@@ -118,3 +121,28 @@ class Enchantment:
         Returns:
             The `Enchantment`, or `None` if not found.
         """
+
+class EnchantmentOffer:
+    """
+    Represents an offer made by an enchanting table.
+
+    Bedrock stores every enchantment that selecting an offer applies rather than a single hinted enchantment.
+    Enchantments in an offer must be entries obtained from Endstone's `Enchantment` registry.
+    """
+    def __init__(self, enchants: collections.abc.Mapping[Enchantment, int], cost: int) -> None: ...
+    @property
+    def enchants(self) -> dict[Enchantment, int]:
+        """
+        A copy of the enchantments and levels applied by this offer; assign it back after changes.
+        """
+
+    @enchants.setter
+    def enchants(self, arg1: collections.abc.Mapping[Enchantment, int]) -> None: ...
+    @property
+    def cost(self) -> int:
+        """
+        The minimum player level required to select this offer, between 1 and 255.
+        """
+
+    @cost.setter
+    def cost(self, arg1: int) -> None: ...

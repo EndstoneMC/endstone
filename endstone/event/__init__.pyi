@@ -11,7 +11,7 @@ from endstone.actor import Actor, Item, Mob
 from endstone.block import Block, BlockFace, BlockState, Sign
 from endstone.command import CommandSender
 from endstone.damage import DamageSource
-from endstone.enchantments import Enchantment
+from endstone.enchantments import Enchantment, EnchantmentOffer
 from endstone.inventory import BookMeta, CookingRecipe, EquipmentSlot, Inventory, ItemStack, ItemType, Recipe
 from endstone.lang import Translatable
 from endstone.level import Chunk, Dimension, Level, Location
@@ -120,6 +120,7 @@ __all__ = [
     "PlayerToggleSprintEvent",
     "PluginDisableEvent",
     "PluginEnableEvent",
+    "PrepareItemEnchantEvent",
     "ScriptMessageEvent",
     "ServerCommandEvent",
     "ServerEvent",
@@ -1721,6 +1722,48 @@ class EnchantItemEvent(InventoryEvent, Cancellable):
     def which_button(self) -> int:
         """
         The selected enchanting button, from 0 to 2.
+        """
+
+class PrepareItemEnchantEvent(InventoryEvent, Cancellable):
+    """
+    Called when an enchanting table prepares offers for an item.
+
+    Set an offer to `None` to hide it, or assign a new `EnchantmentOffer` to replace it. Each offer contains every
+    enchantment that Bedrock applies when its corresponding button is selected.
+
+    This event can be called multiple times while the enchanting table is open. Cancelling it removes all
+    enchanting offers.
+    """
+    @property
+    def enchanter(self) -> Player:
+        """
+        The player for whom the offers are being prepared.
+        """
+
+    @property
+    def enchant_block(self) -> Block:
+        """
+        The enchanting table involved in this event.
+        """
+
+    @property
+    def item(self) -> ItemStack:
+        """
+        The item for which offers are being prepared.
+        """
+
+    @property
+    def offers(self) -> typing.Annotated[list[EnchantmentOffer | None], "FixedSize(3)"]:
+        """
+        A copy of the three enchanting offers; assign it back after changes.
+        """
+
+    @offers.setter
+    def offers(self, arg1: typing.Annotated[list[EnchantmentOffer | None], "FixedSize(3)"]) -> None: ...
+    @property
+    def enchantment_bonus(self) -> int:
+        """
+        The enchanting bonus provided by nearby bookshelves.
         """
 
 class ServerEvent(Event):

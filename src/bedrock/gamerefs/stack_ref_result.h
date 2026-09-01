@@ -17,6 +17,9 @@
 #include "bedrock/gamerefs/gamerefs_shareptr/gamerefs_shareptr.h"
 
 template <typename Type>
+class WeakRef;
+
+template <typename Type>
 class StackRefResult : public GameRefs<Type>::StackResultStorage {
 public:
     using StackRef = typename GameRefs<Type>::StackRef;

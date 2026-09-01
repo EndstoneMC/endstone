@@ -27,6 +27,7 @@ public:
     EnchantingContainerManagerModel(ContainerID container_id, Player &player, const BlockPos &block_pos);
     ~EnchantingContainerManagerModel() override = 0;
 
+    ENDSTONE_HOOK void recalculateOptions();
     [[nodiscard]] const std::vector<ItemEnchantOption> &getEnchantOptions() const { return enchant_options_; }
 
     // Endstone begins

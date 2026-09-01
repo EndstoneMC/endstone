@@ -36,6 +36,33 @@ rip_relative = true
 rip_offset = 3
 
 [[signatures]]
+name = "?recalculateOptions@EnchantingContainerManagerModel@@QEAAXXZ"
+relative = false
+extra = 0
+# 1. locate the RTTI type descriptor for `EnchantingContainerManagerModel`, then inspect the non-virtual methods that
+#    read its `enchant_options_` vector and invoke its options-changed callback
+# 2. select the method that first reads the input container, calculates the three ItemEnchantOption values and then
+#    invokes the callback; the later callback invocation distinguishes it from the model constructor
+# 3. confirm the body reads the input/material container ids 0x16/0x17 and writes the vector at the model tail
+# 4. confirm the pattern matches exactly once in the Windows 1.26.44 binary and the decompiled body matches the named
+#    Linux implementation
+pattern = "55 41 57 41 56 41 55 41 54 56 57 53 48 81 EC C8 01 00 00 48 8D AC 24 80 00 00 00 0F 29 B5 30 01 00 00 48 C7 85 28 01 00 00 FE FF FF FF 48 89 CE 48 8B 41 30 48 8B 88 D8 01 00 00"
+
+[[signatures]]
+name = "?getBookCasePositions@EnchantUtils@@YA?AV?$vector@VVec3@@V?$allocator@VVec3@@@std@@@std@@AEAVBlockSource@@AEBVVec3@@@Z"
+relative = false
+extra = 0
+# 1. locate EnchantingContainerManagerModel::recalculateOptions using the recipe above
+# 2. in its bookshelf-count path, find the direct call after the model's BlockPos is converted to Vec3 and before
+#    the returned vector is destroyed; this is the call that enumerates the nearby bookshelves
+# 3. confirm the resolved target has the `std::vector<Vec3>(BlockSource&, Vec3 const&)` return shape and matches the
+#    named Linux implementation
+# 4. confirm the call-site pattern resolves to exactly one target in the Windows 1.26.44 binary
+pattern = "48 8B 4E 30 E8 ? ? ? ? 48 8D 8D A0 00 00 00 4C 8D 45 F8 48 89 C2 E8 ? ? ? ?"
+rip_relative = true
+rip_offset = 24
+
+[[signatures]]
 name = "?getI18n@@YAAEAVI18n@@XZ"
 relative = false
 extra = 0
