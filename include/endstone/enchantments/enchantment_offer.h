@@ -36,12 +36,12 @@ public:
      * Creates an enchanting offer.
      *
      * @param enchants the enchantments and levels applied by the offer
-     * @param cost the minimum player level required to select the offer
+     * @param cost the minimum player level required to select the offer, between 1 and 255
      */
     EnchantmentOffer(Enchantments enchants, int cost) : enchants_(std::move(enchants)), cost_(cost)
     {
         validateEnchants(enchants_);
-        Preconditions::checkArgument(cost > 0, "cost must be greater than 0");
+        Preconditions::checkArgument(cost > 0 && cost <= 255, "cost must be between 1 and 255");
     }
 
     /**
@@ -72,11 +72,11 @@ public:
     /**
      * Sets the minimum player level required to select this offer.
      *
-     * @param cost the minimum required player level
+     * @param cost the minimum required player level, between 1 and 255
      */
     void setCost(int cost)
     {
-        Preconditions::checkArgument(cost > 0, "cost must be greater than 0");
+        Preconditions::checkArgument(cost > 0 && cost <= 255, "cost must be between 1 and 255");
         cost_ = cost;
     }
 

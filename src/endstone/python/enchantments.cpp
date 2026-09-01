@@ -146,7 +146,7 @@ void init_enchantments(py::module_ &m)
         .def_property("enchants", &EnchantmentOffer::getEnchants, &EnchantmentOffer::setEnchants,
                       "A copy of the enchantments and levels applied by this offer; assign it back after changes.")
         .def_property("cost", &EnchantmentOffer::getCost, &EnchantmentOffer::setCost,
-                      "The minimum player level required to select this offer.");
+                      "The minimum player level required to select this offer, between 1 and 255.");
 }
 
 }  // namespace endstone::python

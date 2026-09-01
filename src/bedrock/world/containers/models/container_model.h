@@ -50,8 +50,9 @@ public:
     virtual void switchItemExpando(int item_id) = 0;
     [[nodiscard]] virtual bool isSlotDisabled(int slot) const = 0;
     virtual void refreshContainer(bool full_refresh) = 0;
-    [[nodiscard]] virtual Container *_getContainer() const = 0;
-    [[nodiscard]] virtual int _getContainerOffset() const = 0;
-    virtual void _init() = 0;
-    virtual void _onItemChanged(int model_slot, const ItemStack &old_item, const ItemStack &new_item) = 0;
+    [[nodiscard]] virtual Container *_getContainer() const = 0;  // Endstone: protected -> public
+    [[nodiscard]] virtual int _getContainerOffset() const = 0;   // Endstone: protected -> public
+    virtual void _init() = 0;                                    // Endstone: protected -> public
+    virtual void _onItemChanged(int model_slot, const ItemStack &old_item,
+                                const ItemStack &new_item) = 0;  // Endstone: protected -> public
 };

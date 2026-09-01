@@ -141,7 +141,7 @@ class EnchantmentOffer:
     @property
     def cost(self) -> int:
         """
-        The minimum player level required to select this offer.
+        The minimum player level required to select this offer, between 1 and 255.
         """
 
     @cost.setter

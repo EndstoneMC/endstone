@@ -30,6 +30,7 @@ def test_enchantment_offer(server: Server) -> None:
         ({}, 1),
         ({"minecraft:sharpness": 0}, 1),
         ({"minecraft:sharpness": 1}, 0),
+        ({"minecraft:sharpness": 1}, 256),
     ],
 )
 def test_enchantment_offer_rejects_invalid_values(

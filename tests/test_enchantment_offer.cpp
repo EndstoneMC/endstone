@@ -72,9 +72,12 @@ TEST(EnchantmentOfferTest, RejectsInvalidValuesWithoutChangingTheOffer)
                  std::invalid_argument);
     EXPECT_THROW((endstone::EnchantmentOffer{endstone::EnchantmentOffer::Enchantments{{&sharpness, 1}}, 0}),
                  std::invalid_argument);
+    EXPECT_THROW((endstone::EnchantmentOffer{endstone::EnchantmentOffer::Enchantments{{&sharpness, 1}}, 256}),
+                 std::invalid_argument);
 
     EXPECT_THROW(offer.setEnchants({}), std::invalid_argument);
     EXPECT_THROW(offer.setCost(0), std::invalid_argument);
+    EXPECT_THROW(offer.setCost(256), std::invalid_argument);
     EXPECT_EQ(offer.getEnchants(), (endstone::EnchantmentOffer::Enchantments{{&sharpness, 3}}));
     EXPECT_EQ(offer.getCost(), 12);
 }

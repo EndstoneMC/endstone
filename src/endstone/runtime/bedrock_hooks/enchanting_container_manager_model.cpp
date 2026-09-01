@@ -20,6 +20,8 @@
 
 #include <gsl/util>
 
+#include "bedrock/network/packet.h"
+#include "bedrock/network/packet/player_enchant_options_packet.h"
 #include "bedrock/world/actor/player/player.h"
 #include "bedrock/world/containers/container_enum.h"
 #include "bedrock/world/containers/models/container_model.h"
@@ -27,6 +29,7 @@
 #include "endstone/check.h"
 #include "endstone/core/block/block.h"
 #include "endstone/core/enchantments/enchantment.h"
+#include "endstone/core/entity/components/flag_components.h"
 #include "endstone/core/inventory/inventory.h"
 #include "endstone/core/inventory/item_stack.h"
 #include "endstone/core/player.h"
@@ -152,8 +155,6 @@ bool applyOffer(ItemEnchantOption &option, const std::optional<endstone::Enchant
                 const std::optional<endstone::EnchantmentOffer> &original_offer)
 {
     if (!offer) {
-        // Bedrock represents an unavailable button with zero cost, no enchantments and an invalid recipe net id.
-        // Keep only the display metadata; the next native recalculation restores a selectable id if the offer returns.
         option.cost = 0;
         option.enchants.setEnchantInstances({});
         option.enchant_net_id = {};
@@ -169,7 +170,6 @@ bool applyOffer(ItemEnchantOption &option, const std::optional<endstone::Enchant
                 return false;
             }
             const auto type = endstone_enchantment->getHandle().getEnchantType();
-            // CraftHandlerEnchant later feeds this through ItemEnchants::addEnchants, which re-buckets every type.
             instances[0].emplace_back(type, level);
         }
         option.enchants.setEnchantInstances(std::move(instances));
@@ -190,6 +190,10 @@ void EnchantingContainerManagerModel::recalculateOptions()
         auto callback = std::exchange(options_changed_callback_, {});
         const auto restore_callback =
             gsl::finally([this, &callback] { options_changed_callback_ = std::move(callback); });
+        player_.addOrRemoveComponent<endstone::core::InternalSuppressEnchantOptionsFlagComponent>(true);
+        const auto clear_suppression = gsl::finally([this] {
+            player_.addOrRemoveComponent<endstone::core::InternalSuppressEnchantOptionsFlagComponent>(false);
+        });
         ENDSTONE_HOOK_CALL_ORIGINAL(&EnchantingContainerManagerModel::recalculateOptions, this);
     }
 
@@ -197,6 +201,9 @@ void EnchantingContainerManagerModel::recalculateOptions()
         if (options_changed_callback_) {
             options_changed_callback_(*this);
         }
+        const auto packet = MinecraftPackets::createPacket(MinecraftPacketIds::PlayerEnchantOptions);
+        static_cast<PlayerEnchantOptionsPacket &>(*packet).payload.options = enchant_options_;
+        player_.sendNetworkPacket(*packet);
     });
 
     const auto input_container_it = containers_.find(std::string(ContainerCollectionNames::EnchantingInputContainer));

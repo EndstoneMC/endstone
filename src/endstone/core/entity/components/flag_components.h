@@ -40,6 +40,7 @@ struct InternalOpenSignCauseComponent {
 };
 struct InternalRemoveFlagComponent {};
 struct InternalSpawnChangeFlagComponent {};
+struct InternalSuppressEnchantOptionsFlagComponent {};
 struct InternalTeleportFlagComponent {};
 struct MobHurtFlagComponent {};
 }  // namespace endstone::core

@@ -36,12 +36,14 @@
 #include "bedrock/network/raknet_connector.h"
 #include "bedrock/network/server_network_system.h"
 #include "bedrock/server/server_instance.h"
+#include "endstone/core/entity/components/flag_components.h"
 #include "endstone/core/level/level.h"
 #include "endstone/core/map/map_view.h"
 #include "endstone/core/player.h"
 #include "endstone/core/plugin/plugin_manager.h"
 #include "endstone/core/server.h"
 #include "endstone/core/util/socket_address.h"
+#include "endstone/event/enchantment/prepare_item_enchant_event.h"
 #include "endstone/event/server/packet_receive_event.h"
 #include "endstone/event/server/packet_send_event.h"
 #include "endstone/runtime/hook.h"
@@ -326,7 +328,10 @@ void BatchedNetworkPeer::sendPacket(const std::string &data, Reliability reliabi
                                                           header.getPacketId() == MinecraftPacketIds::AddItemActor ||
                                                           header.getPacketId() == MinecraftPacketIds::AddPainting ||
                                                           header.getPacketId() == MinecraftPacketIds::AddPlayer));
-    if (!patched && !filterable && !server.getEndstonePluginManager().isEventRegistered<endstone::PacketSendEvent>()) {
+    const auto suppressible = header.getPacketId() == MinecraftPacketIds::PlayerEnchantOptions &&
+                              server.getEndstonePluginManager().isEventRegistered<endstone::PrepareItemEnchantEvent>();
+    if (!patched && !filterable && !suppressible &&
+        !server.getEndstonePluginManager().isEventRegistered<endstone::PacketSendEvent>()) {
         ENDSTONE_HOOK_CALL_ORIGINAL(&BatchedNetworkPeer::sendPacket, this, data, reliability, compressible);
         return;
     }
@@ -339,6 +344,11 @@ void BatchedNetworkPeer::sendPacket(const std::string &data, Reliability reliabi
     endstone::Nullable<endstone::Player> player;
     if (server_player) {
         player = server_player->getEndstoneActor<endstone::core::EndstonePlayer>();
+    }
+
+    if (suppressible && server_player &&
+        server_player->hasComponent<endstone::core::InternalSuppressEnchantOptionsFlagComponent>()) {
+        return;
     }
 
     // Create packet send event
