@@ -15,6 +15,9 @@ from endstone.event import (
     ActorToggleSwimEvent,
     event_handler,
 )
+from endstone.potion import Effect
+
+from endstone_test.checks import CANCEL, MUTATE
 
 from .event_listener import EventListener
 
@@ -30,6 +33,8 @@ class ActorEventListener(EventListener):
             block_type=str(event.block.type),
             xyz=(event.block.x, event.block.y, event.block.z),
         )
+        if self.due(event, CANCEL):
+            self.cancelled(event, actor_type=str(event.actor.type))
 
     @event_handler
     def on_actor_collide_with_actor(self, event: ActorCollideWithActorEvent):
@@ -75,6 +80,8 @@ class ActorEventListener(EventListener):
             vehicle_type=str(event.vehicle.type),
             is_self_ride=event.actor.runtime_id == event.vehicle.runtime_id,
         )
+        if self.due(event, CANCEL):
+            self.cancelled(event, vehicle_type=str(event.vehicle.type))
 
     @event_handler
     def on_actor_effect(self, event: ActorEffectEvent):
@@ -89,6 +96,16 @@ class ActorEventListener(EventListener):
             amplifier=effect.amplifier,
             infinite=effect.infinite,
         )
+        if self.due(event, CANCEL):
+            self.cancelled(event, effect_type=str(effect.type))
+        elif self.due(event, MUTATE):
+            event.effect = Effect(effect.type, 600, effect.amplifier + 1)
+            self.mutated(
+                event,
+                duration_before=effect.duration,
+                duration_after=event.effect.duration,
+                amplifier_after=event.effect.amplifier,
+            )
 
     @event_handler
     def on_actor_explode(self, event: ActorExplodeEvent):
@@ -124,6 +141,8 @@ class ActorEventListener(EventListener):
             amount=event.amount,
             stack_amount=event.item.item_stack.amount,
         )
+        if self.due(event, CANCEL):
+            self.cancelled(event, item_type=str(event.item.item_stack.type))
 
     @event_handler
     def on_actor_remove(self, event: ActorRemoveEvent):

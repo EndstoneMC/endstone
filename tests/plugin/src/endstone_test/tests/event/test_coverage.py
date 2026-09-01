@@ -5,7 +5,8 @@ from endstone_test.recorder import EventRecorder
 
 def test_every_listener_registered_its_events(recorder: EventRecorder) -> None:
     """Verify the listeners declared a substantial slice of the event API."""
-    assert len(recorder.tracked) >= 75
+    events = [name for name in recorder.tracked if "/" not in name]
+    assert len(events) >= 75
 
 
 def test_no_duplicate_tracking(recorder: EventRecorder) -> None:

@@ -12,6 +12,8 @@ class EventRecorder:
         self.boss_bar: BossBar | None = None
         self._counts: dict[str, int] = {}
         self._snapshots: dict[str, list[dict]] = {}
+        self._hints: dict[str, str] = {}
+        self._order: list[str] = []
 
     def create_boss_bar(self) -> None:
         self.boss_bar = self.plugin.server.create_boss_bar(
@@ -26,8 +28,29 @@ class EventRecorder:
 
     def expect(self, event_cls: type[Event]) -> None:
         name = event_cls.__name__
+        if name not in self._counts:
+            self._order.append(name)
         self._counts.setdefault(name, 0)
         self._snapshots.setdefault(name, [])
+
+    def expect_check(self, key: str, hint: str) -> None:
+        if key not in self._counts:
+            self._order.append(key)
+        self._counts.setdefault(key, 0)
+        self._snapshots.setdefault(key, [])
+        self._hints[key] = hint
+
+    def checked(self, key: str) -> bool:
+        return self._counts.get(key, 0) > 0
+
+    def pass_check(self, key: str, **fields) -> None:
+        self._counts[key] = self._counts.get(key, 0) + 1
+        self._snapshots.setdefault(key, []).append(fields)
+        self.plugin.logger.info(
+            ColorFormat.GOLD + f"Check {key} passed! " + ColorFormat.RESET + str(fields)
+        )
+        self._refresh_boss_bar()
+        self.plugin.restock_all()
 
     def record(
         self, event: Event, summary: str = "", *, always_log: bool = False, **fields
@@ -73,10 +96,10 @@ class EventRecorder:
 
     @property
     def missing(self) -> list[str]:
-        return sorted(name for name, count in self._counts.items() if not count)
+        return [name for name in self._order if not self._counts.get(name)]
 
     def summary(self) -> str:
-        return f"{len(self.triggered)}/{len(self._counts)} events triggered"
+        return f"{len(self.triggered)}/{len(self._counts)} items exercised"
 
     def _refresh_boss_bar(self) -> None:
         if self.boss_bar is None:
@@ -91,6 +114,10 @@ class EventRecorder:
 
         missing = self.missing
         if missing:
-            self.boss_bar.title = f"Events: {triggered}/{total}, Next: {missing[0]}"
+            hint = self._hints.get(missing[0])
+            suffix = f" ({hint})" if hint else ""
+            self.boss_bar.title = (
+                f"Events: {triggered}/{total}, Next: {missing[0]}{suffix}"
+            )
         else:
-            self.boss_bar.title = "All events triggered!"
+            self.boss_bar.title = "All events and checks exercised!"

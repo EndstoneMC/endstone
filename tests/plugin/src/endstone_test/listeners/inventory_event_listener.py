@@ -1,3 +1,4 @@
+from endstone.enchantments import Enchantment, EnchantmentOffer
 from endstone.event import (
     EnchantItemEvent,
     InventoryCloseEvent,
@@ -6,6 +7,8 @@ from endstone.event import (
     PrepareItemEnchantEvent,
     event_handler,
 )
+
+from endstone_test.checks import CANCEL, MUTATE
 
 from .event_listener import EventListener
 
@@ -19,6 +22,8 @@ class InventoryEventListener(EventListener):
             player=event.player.name,
             size=event.inventory.size,
         )
+        if self.due(event, CANCEL):
+            self.cancelled(event, player=event.player.name, size=event.inventory.size)
 
     @event_handler
     def on_inventory_close(self, event: InventoryCloseEvent):
@@ -56,6 +61,20 @@ class InventoryEventListener(EventListener):
             },
             which_button=event.which_button,
         )
+        if self.due(event, CANCEL):
+            self.cancelled(event, item_type=str(event.item.type))
+        elif self.due(event, MUTATE):
+            before = event.exp_level_cost
+            event.exp_level_cost = 1
+            event.enchants_to_add = {Enchantment.UNBREAKING: 3}
+            self.mutated(
+                event,
+                cost_before=before,
+                cost_after=event.exp_level_cost,
+                enchants_after={
+                    str(e.id): level for e, level in event.enchants_to_add.items()
+                },
+            )
 
     @event_handler
     def on_prepare_item_enchant(self, event: PrepareItemEnchantEvent):
@@ -81,3 +100,9 @@ class InventoryEventListener(EventListener):
             ],
             enchantment_bonus=event.enchantment_bonus,
         )
+        if self.due(event, CANCEL):
+            self.cancelled(event, item_type=str(event.item.type))
+        elif self.due(event, MUTATE):
+            offer = EnchantmentOffer({Enchantment.UNBREAKING: 1}, 1)
+            event.offers = [offer, offer, offer]
+            self.mutated(event, costs=[o.cost for o in event.offers if o])

@@ -37,6 +37,44 @@ shows how many of the tracked events have fired (`Events: 7/75, Next: PlayerJump
 on the recorded snapshots. An event that has not been triggered yet **skips** rather than fails, so a fresh server
 is green; use the boss bar and `/test events` to see what is still unexercised.
 
+### Cancel and mutate checks
+
+Observing an event proves it fires, not that cancelling it or writing to it does anything. Those paths are tracked
+as their own progress-bar items, declared in `checks.py` as `<EventName>/cancel` and `<EventName>/mutate` with a
+hint saying how to trigger them, so the boss bar reads
+`Events: 41/96, Next: PlayerCraftItemEvent/cancel (craft anything in the 2x2 grid)`.
+
+Each check is **one-shot**: the listener applies it the first time its event fires and never again, so a cancelled
+craft or a rewritten book costs you one occurrence rather than breaking the server for the rest of the session.
+Where both a cancel and a mutate check exist, the cancel fires first and the mutate on the next occurrence. Add a
+check by declaring it in `checks.py` and calling `self.cancelled(event, ...)` or `self.mutated(event, ...)` behind
+`self.due(event, CANCEL)` in the listener that already handles the event.
+
+Checks are surfaced in the order they are declared, not alphabetically, so related ones sit together and a check
+that sets up the next one comes first. The progress bar walks that order, so following `Next:` from top to bottom
+is a workable test script.
+
+Most checks declare the **items needed to perform them** -- an enchanting table and a pickaxe for the enchanting
+checks, a bow and arrows for `PlayerPickupArrowEvent`, an ender pearl for `PlayerTeleportEvent`. You are only ever
+given the items for the check the bar is currently pointing at, so your inventory stays readable and it is obvious
+what to do next. Each item's lore carries the check key and its hint, which also puts a display name and lore
+through `ItemMeta` on the way in.
+
+You are told what to do as you go. Every two seconds the current check's short hint goes to the **action bar**
+(`[12/31] shoot the arrow and walk over it`), which also exercises `Player.send_action_bar`. The first time a
+check becomes current its full instructions go to **chat**, once, so the running commentary stays in the action
+bar and the detail does not spam you.
+
+Stocking is **self-healing**: it runs on join, every five seconds, and again whenever a check passes. If you eat
+the apple, shoot the arrows into a hole or otherwise use a trigger item without the check firing, the missing item
+is handed back so you can retry. A check whose items belong to the one before it -- the `/mutate` half of a pair --
+keeps that earlier check's items stocked.
+
+A couple of events cannot be reached with an ordinary item. Those declare a **wand**: an item named
+`endstone-test:<name>` that fires the check when you right-click it in the air. The kick wand is the clearest
+example -- the first right-click fires `PlayerKickEvent` and cancels it, so you stay connected; right-click again
+and the kick goes through, which is also how `PlayerQuitEvent` gets exercised.
+
 ### Interactive checks
 
 Some API surface needs a real client and cannot be asserted by pytest. These live behind `/test` subcommands:

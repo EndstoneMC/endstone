@@ -7,9 +7,12 @@ from endstone.event import (
     BlockPistonExtendEvent,
     BlockPistonRetractEvent,
     BlockPlaceEvent,
+    CauldronLevelChangeEvent,
     LeavesDecayEvent,
     event_handler,
 )
+
+from endstone_test.checks import CANCEL, MUTATE
 
 from .event_listener import EventListener
 
@@ -35,7 +38,9 @@ class BlockEventListener(EventListener):
             result_type=str(event.result.type),
             recipe_id=event.recipe.id if event.recipe else None,
             recipe_tag=event.recipe.tag if event.recipe else None,
-            recipe_input_matches=event.recipe.input_choice.test(event.source) if event.recipe else False,
+            recipe_input_matches=event.recipe.input_choice.test(event.source)
+            if event.recipe
+            else False,
             recipe_result_type=str(event.recipe.result.type) if event.recipe else None,
         )
 
@@ -57,6 +62,8 @@ class BlockEventListener(EventListener):
             new_type=str(event.new_state.type),
             xyz=(event.block.x, event.block.y, event.block.z),
         )
+        if self.due(event, CANCEL):
+            self.cancelled(event, block_type=str(event.block.type))
 
     @event_handler
     def on_block_from_to(self, event: BlockFromToEvent):
@@ -108,3 +115,21 @@ class BlockEventListener(EventListener):
             always_log=True,
             block_type=str(event.block.type),
         )
+
+    @event_handler
+    def on_cauldron_level_change(self, event: CauldronLevelChangeEvent):
+        self.record(
+            event,
+            f"{event.block} changes ({event.reason})",
+            always_log=True,
+            block_type=str(event.block.type),
+            new_type=str(event.new_state.type),
+            reason=str(event.reason),
+            actor_type=None if event.actor is None else str(event.actor.type),
+        )
+        if self.due(event, CANCEL):
+            self.cancelled(event, reason=str(event.reason))
+        elif self.due(event, MUTATE):
+            before = str(event.new_state.type)
+            event.new_state.type = "minecraft:cauldron"
+            self.mutated(event, before=before, after=str(event.new_state.type))

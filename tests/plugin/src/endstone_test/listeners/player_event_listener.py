@@ -5,6 +5,8 @@ from endstone.event import (
     PlayerBedEnterEvent,
     PlayerBedLeaveEvent,
     PlayerBucketActorEvent,
+    PlayerBucketEmptyEvent,
+    PlayerBucketFillEvent,
     PlayerChatEvent,
     PlayerCommandEvent,
     PlayerCraftItemEvent,
@@ -15,6 +17,7 @@ from endstone.event import (
     PlayerEmoteEvent,
     PlayerExpChangeEvent,
     PlayerGameModeChangeEvent,
+    PlayerHideActorEvent,
     PlayerInputEvent,
     PlayerInteractActorEvent,
     PlayerInteractEvent,
@@ -26,6 +29,7 @@ from endstone.event import (
     PlayerLevelChangeEvent,
     PlayerLoginEvent,
     PlayerMoveEvent,
+    PlayerOpenSignEvent,
     PlayerPickupArrowEvent,
     PlayerPickupExperienceEvent,
     PlayerPickupItemEvent,
@@ -36,6 +40,7 @@ from endstone.event import (
     PlayerRiptideEvent,
     PlayerSetSpawnEvent,
     PlayerShearActorEvent,
+    PlayerShowActorEvent,
     PlayerSkinChangeEvent,
     PlayerTeleportEvent,
     PlayerToggleCrawlEvent,
@@ -44,7 +49,11 @@ from endstone.event import (
     PlayerToggleSprintEvent,
     event_handler,
 )
+from endstone.inventory import ItemStack
 from endstone.lang import Translatable
+from endstone.potion import Effect, EffectType
+
+from endstone_test.checks import CANCEL, MUTATE, WAND_PREFIX
 
 from .event_listener import EventListener
 
@@ -93,6 +102,7 @@ class PlayerEventListener(EventListener):
             ping=player.ping,
             is_op=player.is_op,
         )
+        self.plugin.restock(player)
 
         for line in (
             "===========================",
@@ -153,6 +163,12 @@ class PlayerEventListener(EventListener):
             is_muted=event.is_muted,
         )
 
+    def fire_wand(self, player, name: str) -> None:
+        if name == "kick":
+            player.kick("endstone-test kick wand")
+        elif name == "effect":
+            player.add_effect(Effect(EffectType.SPEED, 200, 0))
+
     @event_handler
     def on_player_interact(self, event: PlayerInteractEvent):
         self.record(
@@ -167,6 +183,10 @@ class PlayerEventListener(EventListener):
             block_type=str(event.block.type) if event.has_block else None,
             block_face=str(event.block_face),
         )
+        if event.has_item and str(event.action).endswith("RIGHT_CLICK_AIR"):
+            name = event.item.item_meta.display_name or ""
+            if name.startswith(WAND_PREFIX):
+                self.fire_wand(event.player, name[len(WAND_PREFIX) :])
 
     @event_handler
     def on_player_interact_actor(self, event: PlayerInteractActorEvent):
@@ -186,6 +206,8 @@ class PlayerEventListener(EventListener):
             reason=event.reason,
         )
         event.reason = ColorFormat.BOLD + event.reason
+        if self.due(event, CANCEL):
+            self.cancelled(event, reason=event.reason)
 
     @event_handler
     def on_player_game_mode_change(self, event: PlayerGameModeChangeEvent):
@@ -234,6 +256,8 @@ class PlayerEventListener(EventListener):
             from_rot=_rot(event.from_location),
             to_rot=_rot(event.to_location),
         )
+        if self.due(event, CANCEL):
+            self.cancelled(event, to_xyz=_xyz(event.to_location))
 
     @event_handler
     def on_player_portal(self, event: PlayerPortalEvent):
@@ -414,6 +438,10 @@ class PlayerEventListener(EventListener):
             player=event.player.name,
             amount=event.amount,
         )
+        if self.due(event, MUTATE):
+            before = event.amount
+            event.amount = before * 2
+            self.mutated(event, before=before, after=event.amount)
 
     @event_handler
     def on_player_input(self, event: PlayerInputEvent):
@@ -450,6 +478,8 @@ class PlayerEventListener(EventListener):
             player=event.player.name,
             arrow_type=str(event.arrow.type),
         )
+        if self.due(event, CANCEL):
+            self.cancelled(event, arrow_type=str(event.arrow.type))
 
     @event_handler
     def on_player_pickup_experience(self, event: PlayerPickupExperienceEvent):
@@ -459,6 +489,8 @@ class PlayerEventListener(EventListener):
             player=event.player.name,
             amount=event.amount,
         )
+        if self.due(event, CANCEL):
+            self.cancelled(event, amount=event.amount)
 
     @event_handler
     def on_player_recipe_book_settings_change(
@@ -497,6 +529,8 @@ class PlayerEventListener(EventListener):
             item_type=str(event.item.type),
             hand=str(event.hand),
         )
+        if self.due(event, CANCEL):
+            self.cancelled(event, actor_type=str(event.actor.type))
 
     @event_handler
     def on_player_toggle_crawl(self, event: PlayerToggleCrawlEvent):
@@ -531,6 +565,14 @@ class PlayerEventListener(EventListener):
             ingredients=[str(i.type) for i in event.ingredients],
             results=[str(r.type) for r in event.results],
         )
+        if self.due(event, CANCEL):
+            self.cancelled(event, recipe_id=str(event.recipe.id))
+        elif self.due(event, MUTATE):
+            before = [str(r.type) for r in event.results]
+            event.results = [ItemStack("minecraft:diamond", 1)]
+            self.mutated(
+                event, before=before, after=[str(r.type) for r in event.results]
+            )
 
     @event_handler
     def on_player_edit_book(self, event: PlayerEditBookEvent):
@@ -544,6 +586,13 @@ class PlayerEventListener(EventListener):
             previous_pages=len(event.previous_book_meta.pages),
             new_pages=len(event.new_book_meta.pages),
         )
+        if self.due(event, CANCEL):
+            self.cancelled(event, slot=event.slot)
+        elif self.due(event, MUTATE):
+            meta = event.new_book_meta
+            meta.pages = ["Rewritten by endstone-test."]
+            event.new_book_meta = meta
+            self.mutated(event, pages=list(event.new_book_meta.pages))
 
     @event_handler
     def on_player_set_spawn(self, event: PlayerSetSpawnEvent):
@@ -555,4 +604,93 @@ class PlayerEventListener(EventListener):
             cause=str(event.cause),
             xyz=(event.location.x, event.location.y, event.location.z),
             dimension=str(event.location.dimension.id),
+        )
+        if self.due(event, CANCEL):
+            self.cancelled(event, cause=str(event.cause))
+        elif self.due(event, MUTATE):
+            location = event.location
+            before = location.y
+            location.y = before + 1
+            event.location = location
+            self.mutated(event, before=before, after=event.location.y)
+
+    @event_handler
+    def on_player_bucket_fill(self, event: PlayerBucketFillEvent):
+        self.record(
+            event,
+            f"{event.player.name} fills {event.bucket} from {event.block}",
+            always_log=True,
+            player=event.player.name,
+            block_type=None if event.block is None else str(event.block.type),
+            block_clicked_type=str(event.block_clicked.type),
+            block_face=str(event.block_face),
+            bucket=str(event.bucket),
+            hand=str(event.hand),
+            item_stack_type=(
+                None if event.item_stack is None else str(event.item_stack.type)
+            ),
+        )
+        if self.due(event, CANCEL):
+            self.cancelled(event, bucket=str(event.bucket))
+        elif self.due(event, MUTATE):
+            before = None if event.item_stack is None else str(event.item_stack.type)
+            event.item_stack = ItemStack("minecraft:bucket", 1)
+            self.mutated(event, before=before, after=str(event.item_stack.type))
+
+    @event_handler
+    def on_player_bucket_empty(self, event: PlayerBucketEmptyEvent):
+        self.record(
+            event,
+            f"{event.player.name} empties {event.bucket} into {event.block}",
+            always_log=True,
+            player=event.player.name,
+            block_type=None if event.block is None else str(event.block.type),
+            block_clicked_type=str(event.block_clicked.type),
+            block_face=str(event.block_face),
+            bucket=str(event.bucket),
+            hand=str(event.hand),
+            item_stack_type=(
+                None if event.item_stack is None else str(event.item_stack.type)
+            ),
+        )
+        if self.due(event, CANCEL):
+            self.cancelled(event, bucket=str(event.bucket))
+        elif self.due(event, MUTATE):
+            before = None if event.item_stack is None else str(event.item_stack.type)
+            event.item_stack = ItemStack("minecraft:water_bucket", 1)
+            self.mutated(event, before=before, after=str(event.item_stack.type))
+
+    @event_handler
+    def on_player_open_sign(self, event: PlayerOpenSignEvent):
+        self.record(
+            event,
+            f"{event.player.name} opens the {event.side} of {event.sign.block} "
+            f"({event.cause})",
+            always_log=True,
+            player=event.player.name,
+            side=str(event.side),
+            cause=str(event.cause),
+            block_type=str(event.sign.block.type),
+        )
+        if self.due(event, CANCEL):
+            self.cancelled(event, cause=str(event.cause))
+
+    @event_handler
+    def on_player_hide_actor(self, event: PlayerHideActorEvent):
+        self.record(
+            event,
+            f"{event.player.name} can no longer see {event.actor.type}",
+            always_log=True,
+            player=event.player.name,
+            actor_type=str(event.actor.type),
+        )
+
+    @event_handler
+    def on_player_show_actor(self, event: PlayerShowActorEvent):
+        self.record(
+            event,
+            f"{event.player.name} can see {event.actor.type} again",
+            always_log=True,
+            player=event.player.name,
+            actor_type=str(event.actor.type),
         )

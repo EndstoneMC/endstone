@@ -4,6 +4,8 @@ import typing
 from endstone import Server
 from endstone.event import Event
 
+from endstone_test.checks import CANCEL, MUTATE
+
 if typing.TYPE_CHECKING:
     from endstone_test.plugin import EndstoneTest
 
@@ -16,6 +18,7 @@ class EventListener:
         self.track_events()
 
     def track_events(self) -> None:
+        self.handled: set[str] = set()
         for attr_name in dir(self):
             func = getattr(self, attr_name)
             if not callable(func) or not getattr(func, "_is_event_handler", False):
@@ -27,8 +30,19 @@ class EventListener:
             assert issubclass(params[0].annotation, Event)
 
             self.recorder.expect(params[0].annotation)
+            self.handled.add(params[0].annotation.__name__)
 
     def record(
         self, event: Event, summary: str = "", *, always_log: bool = False, **fields
     ) -> None:
         self.recorder.record(event, summary, always_log=always_log, **fields)
+
+    def due(self, event: Event, action: str) -> bool:
+        return not self.recorder.checked(f"{type(event).__name__}/{action}")
+
+    def cancelled(self, event: Event, **fields) -> None:
+        event.cancel()
+        self.recorder.pass_check(f"{type(event).__name__}/{CANCEL}", **fields)
+
+    def mutated(self, event: Event, **fields) -> None:
+        self.recorder.pass_check(f"{type(event).__name__}/{MUTATE}", **fields)
