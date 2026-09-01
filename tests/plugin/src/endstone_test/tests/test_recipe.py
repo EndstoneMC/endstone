@@ -7,6 +7,7 @@ from endstone.inventory import (
     ExactIngredient,
     FurnaceRecipe,
     ItemStack,
+    ItemTagIngredient,
     ItemTypeIngredient,
     SmokingRecipe,
 )
@@ -43,8 +44,10 @@ def test_cooking_recipes(server: Server) -> None:
 
         ingredient = recipe.input_choice
         assert ingredient is not None
-        assert isinstance(ingredient, (ExactIngredient, ItemTypeIngredient))
+        assert isinstance(ingredient, (ExactIngredient, ItemTypeIngredient, ItemTagIngredient))
         if isinstance(ingredient, ExactIngredient):
             assert ingredient.test(ingredient.item_stack)
-        else:
+        elif isinstance(ingredient, ItemTypeIngredient):
             assert ingredient.test(ItemStack(ingredient.item_type))
+        else:
+            assert ingredient.item_tag
