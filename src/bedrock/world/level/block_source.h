@@ -15,6 +15,7 @@
 #pragma once
 
 #include <memory>
+#include <thread>
 
 #include "bedrock/forward.h"
 #include "bedrock/shared_types/height.h"
@@ -148,4 +149,13 @@ public:
 
     [[nodiscard]] bool isEmptyBlock(const BlockPos &pos) const;
     [[nodiscard]] const Biome &getBiome(const BlockPos &) const;
+    [[nodiscard]] bool getPublicSource() const
+    {
+        return public_source_;
+    }
+
+private:
+    const std::thread::id owner_thread_id_;
+    const bool allow_unpopulated_chunks_;
+    const bool public_source_;
 };
