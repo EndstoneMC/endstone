@@ -387,7 +387,16 @@ void init_inventory(py::module_ &m, py::class_<ItemStack> &item_stack)
     Returns:
         `True` if the two stacks are equal, ignoring the amount.
 )doc")
-        .def_property_readonly("item_meta", &ItemStack::getItemMeta, "A copy of the `ItemMeta` of this `ItemStack`.")
+        .def_property(
+            "item_meta", &ItemStack::getItemMeta,
+            [](ItemStack &self, ItemMeta *meta) {
+                if (!self.setItemMeta(meta)) {
+                    throw std::runtime_error(
+                        std::format("Unable to apply the item meta to item type: {}.", self.getType()));
+                }
+            },
+            "The `ItemMeta` of this `ItemStack`. Reading returns a copy; assigning raises if the metadata is not "
+            "applicable to this item type.")
         .def("set_item_meta", &ItemStack::setItemMeta, py::arg("meta"), R"doc(
     Set the `ItemMeta` of this `ItemStack`.
 

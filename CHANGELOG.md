@@ -77,6 +77,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - `RecipeIngredient`, describing what one ingredient slot accepts, with `test()` to check an item against it and a Bedrock-specific `count`. An ingredient is an `ExactIngredient` (one item and one data value), an `ItemTypeIngredient` (an item type, any data value), an `ItemTagIngredient` (anything carrying a tag), a `MolangIngredient` (whatever a Molang expression selects), an `ComplexAliasIngredient` (anything an id that predates the item flattening stands for, such as `minecraft:planks`). A slot the recipe leaves empty is `None`.
 - `WritableBookMeta`, `BookMeta` and `CrossbowMeta` item meta types.
 - `PotionMeta` for potions, splash potions and lingering potions, with `meta.base_potion_type`.
+- `ItemStack.item_meta` is now writable, so `item.item_meta = meta` applies the metadata. Where `set_item_meta()` reports failure by returning `False`, assigning raises if the metadata does not apply to the item type.
 
 #### Level and dimensions
 

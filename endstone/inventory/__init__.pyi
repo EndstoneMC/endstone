@@ -100,9 +100,11 @@ class ItemStack:
     @property
     def item_meta(self) -> ItemMeta | None:
         """
-        A copy of the `ItemMeta` of this `ItemStack`.
+        The `ItemMeta` of this `ItemStack`. Reading returns a copy; assigning raises if the metadata is not applicable to this item type.
         """
 
+    @item_meta.setter
+    def item_meta(self, arg1: ItemMeta) -> None: ...
     def set_item_meta(self, meta: ItemMeta) -> bool:
         """
         Set the `ItemMeta` of this `ItemStack`.
