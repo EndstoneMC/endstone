@@ -1,0 +1,228 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.8" xml:lang="en-US">
+  <compounddef id="classendstone_1_1EnchantmentOffer" kind="class" language="C++" prot="public">
+    <compoundname>endstone::EnchantmentOffer</compoundname>
+    <includes refid="enchantment__offer_8h" local="no">endstone/enchantments/enchantment_offer.h</includes>
+    <sectiondef kind="public-type">
+      <memberdef kind="typedef" id="classendstone_1_1EnchantmentOffer_1aab94e86f34ee64fd8ca8a8a6bfe47ab8" prot="public" static="no">
+        <type>std::unordered_map&lt; <ref refid="classendstone_1_1Identifier" kindref="compound">const</ref> <ref refid="classendstone_1_1Enchantment" kindref="compound">Enchantment</ref> *, <ref refid="classendstone_1_1Identifier" kindref="compound">int</ref> &gt;</type>
+        <definition>using endstone::EnchantmentOffer::Enchantments =  std::unordered_map&lt;const Enchantment *, int&gt;</definition>
+        <argsstring></argsstring>
+        <name>Enchantments</name>
+        <qualifiedname>endstone::EnchantmentOffer::Enchantments</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/enchantments/enchantment_offer.h" line="33" column="5" bodyfile="include/endstone/enchantments/enchantment_offer.h" bodystart="33" bodyend="-1"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="private-attrib">
+      <memberdef kind="variable" id="classendstone_1_1EnchantmentOffer_1aaed4a871134c9916697b9dcea78de04e" prot="private" static="no" mutable="no">
+        <type>Enchantments</type>
+        <definition>Enchantments endstone::EnchantmentOffer::enchants_</definition>
+        <argsstring></argsstring>
+        <name>enchants_</name>
+        <qualifiedname>endstone::EnchantmentOffer::enchants_</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/enchantments/enchantment_offer.h" line="93" column="18" bodyfile="include/endstone/enchantments/enchantment_offer.h" bodystart="93" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classendstone_1_1EnchantmentOffer_1abcc35c35b036f99c44430c716c9d70be" prot="private" static="no" mutable="no">
+        <type><ref refid="classendstone_1_1Identifier" kindref="compound">int</ref></type>
+        <definition>int endstone::EnchantmentOffer::cost_</definition>
+        <argsstring></argsstring>
+        <name>cost_</name>
+        <qualifiedname>endstone::EnchantmentOffer::cost_</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/enchantments/enchantment_offer.h" line="94" column="9" bodyfile="include/endstone/enchantments/enchantment_offer.h" bodystart="94" bodyend="-1"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="public-func">
+      <memberdef kind="function" id="classendstone_1_1EnchantmentOffer_1a777bdb49049de32c9d937ebe88824f33" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type></type>
+        <definition>endstone::EnchantmentOffer::EnchantmentOffer</definition>
+        <argsstring>(Enchantments enchants, int cost)</argsstring>
+        <name>EnchantmentOffer</name>
+        <qualifiedname>endstone::EnchantmentOffer::EnchantmentOffer</qualifiedname>
+        <param>
+          <type>Enchantments</type>
+          <declname>enchants</declname>
+        </param>
+        <param>
+          <type><ref refid="classendstone_1_1Identifier" kindref="compound">int</ref></type>
+          <declname>cost</declname>
+        </param>
+        <briefdescription>
+<para>Creates an enchanting offer. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>enchants</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>the enchantments and levels applied by the offer </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>cost</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>the minimum player level required to select the offer, between 1 and 255 </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/enchantments/enchantment_offer.h" line="41" column="5" bodyfile="include/endstone/enchantments/enchantment_offer.h" bodystart="41" bodyend="45"/>
+      </memberdef>
+      <memberdef kind="function" id="classendstone_1_1EnchantmentOffer_1a26cf45dedd5706788302c9d5b0620970" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type><ref refid="classendstone_1_1Identifier" kindref="compound">const</ref> Enchantments &amp;</type>
+        <definition>const Enchantments &amp; endstone::EnchantmentOffer::getEnchants</definition>
+        <argsstring>() const</argsstring>
+        <name>getEnchants</name>
+        <qualifiedname>endstone::EnchantmentOffer::getEnchants</qualifiedname>
+        <briefdescription>
+<para>Gets the enchantments applied by this offer. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="return"><para>the enchantments and their levels </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/enchantments/enchantment_offer.h" line="52" column="25" bodyfile="include/endstone/enchantments/enchantment_offer.h" bodystart="52" bodyend="52"/>
+      </memberdef>
+      <memberdef kind="function" id="classendstone_1_1EnchantmentOffer_1a6f6502f46cfc789ca726ff845afa602b" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type><ref refid="classendstone_1_1Identifier" kindref="compound">void</ref></type>
+        <definition>void endstone::EnchantmentOffer::setEnchants</definition>
+        <argsstring>(Enchantments enchants)</argsstring>
+        <name>setEnchants</name>
+        <qualifiedname>endstone::EnchantmentOffer::setEnchants</qualifiedname>
+        <param>
+          <type>Enchantments</type>
+          <declname>enchants</declname>
+        </param>
+        <briefdescription>
+<para>Sets the enchantments applied by this offer. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>enchants</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>the enchantments and their levels </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/enchantments/enchantment_offer.h" line="59" column="10" bodyfile="include/endstone/enchantments/enchantment_offer.h" bodystart="59" bodyend="63"/>
+      </memberdef>
+      <memberdef kind="function" id="classendstone_1_1EnchantmentOffer_1abd2022d0cc362999cdff6b742e744c02" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type><ref refid="classendstone_1_1Identifier" kindref="compound">int</ref></type>
+        <definition>int endstone::EnchantmentOffer::getCost</definition>
+        <argsstring>() const</argsstring>
+        <name>getCost</name>
+        <qualifiedname>endstone::EnchantmentOffer::getCost</qualifiedname>
+        <briefdescription>
+<para>Gets the minimum player level required to select this offer. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="return"><para>the minimum required player level </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/enchantments/enchantment_offer.h" line="70" column="10" bodyfile="include/endstone/enchantments/enchantment_offer.h" bodystart="70" bodyend="70"/>
+      </memberdef>
+      <memberdef kind="function" id="classendstone_1_1EnchantmentOffer_1a31ec04b0edc27e26f7009a644236b103" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type><ref refid="classendstone_1_1Identifier" kindref="compound">void</ref></type>
+        <definition>void endstone::EnchantmentOffer::setCost</definition>
+        <argsstring>(int cost)</argsstring>
+        <name>setCost</name>
+        <qualifiedname>endstone::EnchantmentOffer::setCost</qualifiedname>
+        <param>
+          <type><ref refid="classendstone_1_1Identifier" kindref="compound">int</ref></type>
+          <declname>cost</declname>
+        </param>
+        <briefdescription>
+<para>Sets the minimum player level required to select this offer. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>cost</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>the minimum required player level, between 1 and 255 </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/enchantments/enchantment_offer.h" line="77" column="10" bodyfile="include/endstone/enchantments/enchantment_offer.h" bodystart="77" bodyend="81"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="private-static-func">
+      <memberdef kind="function" id="classendstone_1_1EnchantmentOffer_1a8d8de9e9982b97dc92b2eab8de9dae03" prot="private" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type><ref refid="classendstone_1_1Identifier" kindref="compound">void</ref></type>
+        <definition>static void endstone::EnchantmentOffer::validateEnchants</definition>
+        <argsstring>(const Enchantments &amp;enchants)</argsstring>
+        <name>validateEnchants</name>
+        <qualifiedname>endstone::EnchantmentOffer::validateEnchants</qualifiedname>
+        <param>
+          <type><ref refid="classendstone_1_1Identifier" kindref="compound">const</ref> Enchantments &amp;</type>
+          <declname>enchants</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/enchantments/enchantment_offer.h" line="84" column="17" bodyfile="include/endstone/enchantments/enchantment_offer.h" bodystart="84" bodyend="91"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+<para>Represents an offer made by an enchanting table. </para>
+    </briefdescription>
+    <detaileddescription>
+<para>Bedrock stores every enchantment that selecting an offer applies rather than a single hinted enchantment. Enchantments in an offer must be entries obtained from Endstone&apos;s <ref refid="classendstone_1_1Enchantment" kindref="compound">Enchantment</ref> registry. </para>
+    </detaileddescription>
+    <location file="include/endstone/enchantments/enchantment_offer.h" line="31" column="1" bodyfile="include/endstone/enchantments/enchantment_offer.h" bodystart="31" bodyend="95"/>
+    <listofallmembers>
+      <member refid="classendstone_1_1EnchantmentOffer_1abcc35c35b036f99c44430c716c9d70be" prot="private" virt="non-virtual"><scope>endstone::EnchantmentOffer</scope><name>cost_</name></member>
+      <member refid="classendstone_1_1EnchantmentOffer_1a777bdb49049de32c9d937ebe88824f33" prot="public" virt="non-virtual"><scope>endstone::EnchantmentOffer</scope><name>EnchantmentOffer</name></member>
+      <member refid="classendstone_1_1EnchantmentOffer_1aab94e86f34ee64fd8ca8a8a6bfe47ab8" prot="public" virt="non-virtual"><scope>endstone::EnchantmentOffer</scope><name>Enchantments</name></member>
+      <member refid="classendstone_1_1EnchantmentOffer_1aaed4a871134c9916697b9dcea78de04e" prot="private" virt="non-virtual"><scope>endstone::EnchantmentOffer</scope><name>enchants_</name></member>
+      <member refid="classendstone_1_1EnchantmentOffer_1abd2022d0cc362999cdff6b742e744c02" prot="public" virt="non-virtual"><scope>endstone::EnchantmentOffer</scope><name>getCost</name></member>
+      <member refid="classendstone_1_1EnchantmentOffer_1a26cf45dedd5706788302c9d5b0620970" prot="public" virt="non-virtual"><scope>endstone::EnchantmentOffer</scope><name>getEnchants</name></member>
+      <member refid="classendstone_1_1EnchantmentOffer_1a31ec04b0edc27e26f7009a644236b103" prot="public" virt="non-virtual"><scope>endstone::EnchantmentOffer</scope><name>setCost</name></member>
+      <member refid="classendstone_1_1EnchantmentOffer_1a6f6502f46cfc789ca726ff845afa602b" prot="public" virt="non-virtual"><scope>endstone::EnchantmentOffer</scope><name>setEnchants</name></member>
+      <member refid="classendstone_1_1EnchantmentOffer_1a8d8de9e9982b97dc92b2eab8de9dae03" prot="private" virt="non-virtual"><scope>endstone::EnchantmentOffer</scope><name>validateEnchants</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

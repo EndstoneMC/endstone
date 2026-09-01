@@ -154,6 +154,7 @@ This inheritance list is sorted roughly, but not completely, alphabetically:
 * **class** [**endstone::Dropdown**](classendstone_1_1Dropdown.md) _Represents a dropdown with a set of predefined options._     
     * **class** [**endstone::StepSlider**](classendstone_1_1StepSlider.md) _Represents a step slider with a set of predefined options._ 
 * **class** [**endstone::Effect**](classendstone_1_1Effect.md) _Represents an effect that can be added to a_ [_**Mob**_](classendstone_1_1Mob.md) _._
+* **class** [**endstone::EnchantmentOffer**](classendstone_1_1EnchantmentOffer.md) _Represents an offer made by an enchanting table._ 
 * **class** [**endstone::EventHandler**](classendstone_1_1EventHandler.md) _Represents a registered_ [_**EventHandler**_](classendstone_1_1EventHandler.md) _which associates with a_[_**Plugin**_](classendstone_1_1Plugin.md) _._
 * **class** [**endstone::HandlerList**](classendstone_1_1HandlerList.md) _A list of event handlers._ 
 * **class** [**endstone::Header**](classendstone_1_1Header.md) _Represents a header with a label._ 
@@ -317,6 +318,7 @@ This inheritance list is sorted roughly, but not completely, alphabetically:
             * **class** [**endstone::ConsoleCommandSender**](classendstone_1_1ConsoleCommandSender.md) _Represents a console command sender._ 
             * **class** [**endstone::ProxiedCommandSender**](classendstone_1_1ProxiedCommandSender.md) _Represents a command sender that is running a command on behalf of another one, as_ `/execute` _does._
 * **class** **EventType**    
+    * **class** [**endstone::Cancellable**](classendstone_1_1Cancellable.md) _A type characterizing events that may be cancelled by a plugin or the server._ 
     * **class** [**endstone::Cancellable**](classendstone_1_1Cancellable.md) _A type characterizing events that may be cancelled by a plugin or the server._ 
     * **class** [**endstone::Cancellable**](classendstone_1_1Cancellable.md) _A type characterizing events that may be cancelled by a plugin or the server._ 
     * **class** [**endstone::Cancellable**](classendstone_1_1Cancellable.md) _A type characterizing events that may be cancelled by a plugin or the server._ 

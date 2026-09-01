@@ -25,7 +25,7 @@
 ## e
 
 * **EntryType** ([**endstone::BanList**](classendstone_1_1BanList.md))
-* **Enchantments** ([**endstone::EnchantItemEvent**](classendstone_1_1EnchantItemEvent.md))
+* **Enchantments** ([**endstone::EnchantItemEvent**](classendstone_1_1EnchantItemEvent.md), [**endstone::EnchantmentOffer**](classendstone_1_1EnchantmentOffer.md))
 * **element\_type** ([**endstone::NotNull**](classendstone_1_1NotNull.md), [**endstone::Nullable**](classendstone_1_1Nullable.md))
 
 
@@ -56,6 +56,7 @@
 * **OnSubmitCallback** ([**endstone::ActionForm**](classendstone_1_1ActionForm.md), [**endstone::MessageForm**](classendstone_1_1MessageForm.md), [**endstone::ModalForm**](classendstone_1_1ModalForm.md))
 * **OnClickCallback** ([**endstone::Button**](classendstone_1_1Button.md))
 * **OnCloseCallback** ([**endstone::Form**](classendstone_1_1Form.md))
+* **Offers** ([**endstone::PrepareItemEnchantEvent**](classendstone_1_1PrepareItemEnchantEvent.md))
 
 
 ## p

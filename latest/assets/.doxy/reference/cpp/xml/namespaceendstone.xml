@@ -91,6 +91,7 @@
     <innerclass refid="classendstone_1_1EffectType" prot="public">endstone::EffectType</innerclass>
     <innerclass refid="classendstone_1_1EnchantItemEvent" prot="public">endstone::EnchantItemEvent</innerclass>
     <innerclass refid="classendstone_1_1Enchantment" prot="public">endstone::Enchantment</innerclass>
+    <innerclass refid="classendstone_1_1EnchantmentOffer" prot="public">endstone::EnchantmentOffer</innerclass>
     <innerclass refid="classendstone_1_1Event" prot="public">endstone::Event</innerclass>
     <innerclass refid="classendstone_1_1EventHandler" prot="public">endstone::EventHandler</innerclass>
     <innerclass refid="classendstone_1_1ExactIngredient" prot="public">endstone::ExactIngredient</innerclass>
@@ -218,6 +219,7 @@
     <innerclass refid="classendstone_1_1PotionMeta" prot="public">endstone::PotionMeta</innerclass>
     <innerclass refid="classendstone_1_1PotionType" prot="public">endstone::PotionType</innerclass>
     <innerclass refid="classendstone_1_1Preconditions" prot="public">endstone::Preconditions</innerclass>
+    <innerclass refid="classendstone_1_1PrepareItemEnchantEvent" prot="public">endstone::PrepareItemEnchantEvent</innerclass>
     <innerclass refid="classendstone_1_1ProxiedCommandSender" prot="public">endstone::ProxiedCommandSender</innerclass>
     <innerclass refid="classendstone_1_1Recipe" prot="public">endstone::Recipe</innerclass>
     <innerclass refid="classendstone_1_1RecipeIngredient" prot="public">endstone::RecipeIngredient</innerclass>

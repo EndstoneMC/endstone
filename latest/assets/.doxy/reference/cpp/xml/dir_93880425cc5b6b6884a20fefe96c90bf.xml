@@ -3,6 +3,7 @@
   <compounddef id="dir_93880425cc5b6b6884a20fefe96c90bf" kind="dir">
     <compoundname>include/endstone/event/enchantment</compoundname>
     <innerfile refid="enchant__item__event_8h">enchant_item_event.h</innerfile>
+    <innerfile refid="prepare__item__enchant__event_8h">prepare_item_enchant_event.h</innerfile>
     <briefdescription>
     </briefdescription>
     <detaileddescription>

@@ -521,6 +521,10 @@
          <lastmod>2026-09-01</lastmod>
     </url>
     <url>
+         <loc>https://endstone.dev/latest/reference/cpp/classendstone_1_1EnchantmentOffer/</loc>
+         <lastmod>2026-09-01</lastmod>
+    </url>
+    <url>
          <loc>https://endstone.dev/latest/reference/cpp/classendstone_1_1Event/</loc>
          <lastmod>2026-09-01</lastmod>
     </url>
@@ -1022,6 +1026,10 @@
     </url>
     <url>
          <loc>https://endstone.dev/latest/reference/cpp/classendstone_1_1Preconditions/</loc>
+         <lastmod>2026-09-01</lastmod>
+    </url>
+    <url>
+         <loc>https://endstone.dev/latest/reference/cpp/classendstone_1_1PrepareItemEnchantEvent/</loc>
          <lastmod>2026-09-01</lastmod>
     </url>
     <url>
@@ -1853,6 +1861,14 @@
          <lastmod>2026-09-01</lastmod>
     </url>
     <url>
+         <loc>https://endstone.dev/latest/reference/cpp/enchantment__offer_8h/</loc>
+         <lastmod>2026-09-01</lastmod>
+    </url>
+    <url>
+         <loc>https://endstone.dev/latest/reference/cpp/enchantment__offer_8h_source/</loc>
+         <lastmod>2026-09-01</lastmod>
+    </url>
+    <url>
          <loc>https://endstone.dev/latest/reference/cpp/dir_f1d783c0ad83ee143d16e768ebca51c8/</loc>
          <lastmod>2026-09-01</lastmod>
     </url>
@@ -2186,6 +2202,14 @@
     </url>
     <url>
          <loc>https://endstone.dev/latest/reference/cpp/enchant__item__event_8h_source/</loc>
+         <lastmod>2026-09-01</lastmod>
+    </url>
+    <url>
+         <loc>https://endstone.dev/latest/reference/cpp/prepare__item__enchant__event_8h/</loc>
+         <lastmod>2026-09-01</lastmod>
+    </url>
+    <url>
+         <loc>https://endstone.dev/latest/reference/cpp/prepare__item__enchant__event_8h_source/</loc>
          <lastmod>2026-09-01</lastmod>
     </url>
     <url>

@@ -875,87 +875,89 @@
         <link refid="enchant__item__event_8h_source"/>
       </node>
       <node id="11">
+        <label>include/endstone/event/enchantment/prepare_item_enchant_event.h</label>
+        <link refid="prepare__item__enchant__event_8h_source"/>
+      </node>
+      <node id="12">
         <label>include/endstone/event/inventory/inventory_close_event.h</label>
         <link refid="inventory__close__event_8h_source"/>
       </node>
-      <node id="12">
+      <node id="13">
         <label>include/endstone/event/inventory/inventory_interact_event.h</label>
         <link refid="inventory__interact__event_8h_source"/>
       </node>
-      <node id="13">
+      <node id="14">
         <label>include/endstone/event/inventory/inventory_open_event.h</label>
         <link refid="inventory__open__event_8h_source"/>
       </node>
-      <node id="15">
+      <node id="16">
         <label>include/endstone/event/player/player_arm_swing_event.h</label>
         <link refid="player__arm__swing__event_8h_source"/>
       </node>
-      <node id="34">
+      <node id="35">
         <label>include/endstone/event/player/player_armor_stand_manipulate_event.h</label>
         <link refid="player__armor__stand__manipulate__event_8h_source"/>
       </node>
-      <node id="16">
+      <node id="17">
         <label>include/endstone/event/player/player_bed_enter_event.h</label>
         <link refid="player__bed__enter__event_8h_source"/>
       </node>
-      <node id="17">
+      <node id="18">
         <label>include/endstone/event/player/player_bed_leave_event.h</label>
         <link refid="player__bed__leave__event_8h_source"/>
       </node>
-      <node id="18">
+      <node id="19">
         <label>include/endstone/event/player/player_bucket_actor_event.h</label>
         <link refid="player__bucket__actor__event_8h_source"/>
       </node>
-      <node id="20">
+      <node id="21">
         <label>include/endstone/event/player/player_bucket_empty_event.h</label>
         <link refid="player__bucket__empty__event_8h_source"/>
       </node>
-      <node id="19">
+      <node id="20">
         <label>include/endstone/event/player/player_bucket_event.h</label>
         <link refid="player__bucket__event_8h_source"/>
-        <childnode refid="20" relation="include">
-        </childnode>
         <childnode refid="21" relation="include">
         </childnode>
+        <childnode refid="22" relation="include">
+        </childnode>
       </node>
-      <node id="21">
+      <node id="22">
         <label>include/endstone/event/player/player_bucket_fill_event.h</label>
         <link refid="player__bucket__fill__event_8h_source"/>
       </node>
-      <node id="22">
+      <node id="23">
         <label>include/endstone/event/player/player_chat_event.h</label>
         <link refid="player__chat__event_8h_source"/>
       </node>
-      <node id="23">
+      <node id="24">
         <label>include/endstone/event/player/player_command_event.h</label>
         <link refid="player__command__event_8h_source"/>
       </node>
-      <node id="24">
+      <node id="25">
         <label>include/endstone/event/player/player_craft_item_event.h</label>
         <link refid="player__craft__item__event_8h_source"/>
       </node>
-      <node id="25">
+      <node id="26">
         <label>include/endstone/event/player/player_dimension_change_event.h</label>
         <link refid="player__dimension__change__event_8h_source"/>
       </node>
-      <node id="26">
+      <node id="27">
         <label>include/endstone/event/player/player_drop_item_event.h</label>
         <link refid="player__drop__item__event_8h_source"/>
       </node>
-      <node id="27">
+      <node id="28">
         <label>include/endstone/event/player/player_edit_book_event.h</label>
         <link refid="player__edit__book__event_8h_source"/>
       </node>
-      <node id="28">
+      <node id="29">
         <label>include/endstone/event/player/player_emote_event.h</label>
         <link refid="player__emote__event_8h_source"/>
       </node>
-      <node id="14">
+      <node id="15">
         <label>include/endstone/event/player/player_event.h</label>
         <link refid="player__event_8h_source"/>
         <childnode refid="3" relation="include">
-        </childnode>
-        <childnode refid="15" relation="include">
         </childnode>
         <childnode refid="16" relation="include">
         </childnode>
@@ -965,7 +967,7 @@
         </childnode>
         <childnode refid="19" relation="include">
         </childnode>
-        <childnode refid="22" relation="include">
+        <childnode refid="20" relation="include">
         </childnode>
         <childnode refid="23" relation="include">
         </childnode>
@@ -989,7 +991,7 @@
         </childnode>
         <childnode refid="33" relation="include">
         </childnode>
-        <childnode refid="35" relation="include">
+        <childnode refid="34" relation="include">
         </childnode>
         <childnode refid="36" relation="include">
         </childnode>
@@ -1005,7 +1007,7 @@
         </childnode>
         <childnode refid="42" relation="include">
         </childnode>
-        <childnode refid="46" relation="include">
+        <childnode refid="43" relation="include">
         </childnode>
         <childnode refid="47" relation="include">
         </childnode>
@@ -1037,140 +1039,142 @@
         </childnode>
         <childnode refid="61" relation="include">
         </childnode>
+        <childnode refid="62" relation="include">
+        </childnode>
       </node>
-      <node id="29">
+      <node id="30">
         <label>include/endstone/event/player/player_exp_change_event.h</label>
         <link refid="player__exp__change__event_8h_source"/>
       </node>
-      <node id="30">
+      <node id="31">
         <label>include/endstone/event/player/player_game_mode_change_event.h</label>
         <link refid="player__game__mode__change__event_8h_source"/>
       </node>
-      <node id="31">
+      <node id="32">
         <label>include/endstone/event/player/player_hide_actor_event.h</label>
         <link refid="player__hide__actor__event_8h_source"/>
       </node>
-      <node id="32">
+      <node id="33">
         <label>include/endstone/event/player/player_input_event.h</label>
         <link refid="player__input__event_8h_source"/>
       </node>
-      <node id="33">
+      <node id="34">
         <label>include/endstone/event/player/player_interact_actor_event.h</label>
         <link refid="player__interact__actor__event_8h_source"/>
-        <childnode refid="34" relation="include">
+        <childnode refid="35" relation="include">
         </childnode>
       </node>
-      <node id="35">
+      <node id="36">
         <label>include/endstone/event/player/player_interact_event.h</label>
         <link refid="player__interact__event_8h_source"/>
       </node>
-      <node id="36">
+      <node id="37">
         <label>include/endstone/event/player/player_item_consume_event.h</label>
         <link refid="player__item__consume__event_8h_source"/>
       </node>
-      <node id="37">
+      <node id="38">
         <label>include/endstone/event/player/player_item_held_event.h</label>
         <link refid="player__item__held__event_8h_source"/>
       </node>
-      <node id="38">
+      <node id="39">
         <label>include/endstone/event/player/player_join_event.h</label>
         <link refid="player__join__event_8h_source"/>
       </node>
-      <node id="43">
+      <node id="44">
         <label>include/endstone/event/player/player_jump_event.h</label>
         <link refid="player__jump__event_8h_source"/>
       </node>
-      <node id="39">
+      <node id="40">
         <label>include/endstone/event/player/player_kick_event.h</label>
         <link refid="player__kick__event_8h_source"/>
       </node>
-      <node id="40">
+      <node id="41">
         <label>include/endstone/event/player/player_level_change_event.h</label>
         <link refid="player__level__change__event_8h_source"/>
       </node>
-      <node id="41">
+      <node id="42">
         <label>include/endstone/event/player/player_login_event.h</label>
         <link refid="player__login__event_8h_source"/>
       </node>
-      <node id="42">
+      <node id="43">
         <label>include/endstone/event/player/player_move_event.h</label>
         <link refid="player__move__event_8h_source"/>
-        <childnode refid="43" relation="include">
-        </childnode>
         <childnode refid="44" relation="include">
         </childnode>
-      </node>
-      <node id="46">
-        <label>include/endstone/event/player/player_open_sign_event.h</label>
-        <link refid="player__open__sign__event_8h_source"/>
-      </node>
-      <node id="47">
-        <label>include/endstone/event/player/player_pickup_arrow_event.h</label>
-        <link refid="player__pickup__arrow__event_8h_source"/>
-      </node>
-      <node id="48">
-        <label>include/endstone/event/player/player_pickup_experience_event.h</label>
-        <link refid="player__pickup__experience__event_8h_source"/>
-      </node>
-      <node id="49">
-        <label>include/endstone/event/player/player_pickup_item_event.h</label>
-        <link refid="player__pickup__item__event_8h_source"/>
-      </node>
-      <node id="45">
-        <label>include/endstone/event/player/player_portal_event.h</label>
-        <link refid="player__portal__event_8h_source"/>
-      </node>
-      <node id="50">
-        <label>include/endstone/event/player/player_quit_event.h</label>
-        <link refid="player__quit__event_8h_source"/>
-      </node>
-      <node id="51">
-        <label>include/endstone/event/player/player_recipe_book_settings_change_event.h</label>
-        <link refid="player__recipe__book__settings__change__event_8h_source"/>
-      </node>
-      <node id="52">
-        <label>include/endstone/event/player/player_respawn_event.h</label>
-        <link refid="player__respawn__event_8h_source"/>
-      </node>
-      <node id="53">
-        <label>include/endstone/event/player/player_riptide_event.h</label>
-        <link refid="player__riptide__event_8h_source"/>
-      </node>
-      <node id="54">
-        <label>include/endstone/event/player/player_set_spawn_event.h</label>
-        <link refid="player__set__spawn__event_8h_source"/>
-      </node>
-      <node id="55">
-        <label>include/endstone/event/player/player_shear_actor_event.h</label>
-        <link refid="player__shear__actor__event_8h_source"/>
-      </node>
-      <node id="56">
-        <label>include/endstone/event/player/player_show_actor_event.h</label>
-        <link refid="player__show__actor__event_8h_source"/>
-      </node>
-      <node id="57">
-        <label>include/endstone/event/player/player_skin_change_event.h</label>
-        <link refid="player__skin__change__event_8h_source"/>
-      </node>
-      <node id="44">
-        <label>include/endstone/event/player/player_teleport_event.h</label>
-        <link refid="player__teleport__event_8h_source"/>
         <childnode refid="45" relation="include">
         </childnode>
       </node>
+      <node id="47">
+        <label>include/endstone/event/player/player_open_sign_event.h</label>
+        <link refid="player__open__sign__event_8h_source"/>
+      </node>
+      <node id="48">
+        <label>include/endstone/event/player/player_pickup_arrow_event.h</label>
+        <link refid="player__pickup__arrow__event_8h_source"/>
+      </node>
+      <node id="49">
+        <label>include/endstone/event/player/player_pickup_experience_event.h</label>
+        <link refid="player__pickup__experience__event_8h_source"/>
+      </node>
+      <node id="50">
+        <label>include/endstone/event/player/player_pickup_item_event.h</label>
+        <link refid="player__pickup__item__event_8h_source"/>
+      </node>
+      <node id="46">
+        <label>include/endstone/event/player/player_portal_event.h</label>
+        <link refid="player__portal__event_8h_source"/>
+      </node>
+      <node id="51">
+        <label>include/endstone/event/player/player_quit_event.h</label>
+        <link refid="player__quit__event_8h_source"/>
+      </node>
+      <node id="52">
+        <label>include/endstone/event/player/player_recipe_book_settings_change_event.h</label>
+        <link refid="player__recipe__book__settings__change__event_8h_source"/>
+      </node>
+      <node id="53">
+        <label>include/endstone/event/player/player_respawn_event.h</label>
+        <link refid="player__respawn__event_8h_source"/>
+      </node>
+      <node id="54">
+        <label>include/endstone/event/player/player_riptide_event.h</label>
+        <link refid="player__riptide__event_8h_source"/>
+      </node>
+      <node id="55">
+        <label>include/endstone/event/player/player_set_spawn_event.h</label>
+        <link refid="player__set__spawn__event_8h_source"/>
+      </node>
+      <node id="56">
+        <label>include/endstone/event/player/player_shear_actor_event.h</label>
+        <link refid="player__shear__actor__event_8h_source"/>
+      </node>
+      <node id="57">
+        <label>include/endstone/event/player/player_show_actor_event.h</label>
+        <link refid="player__show__actor__event_8h_source"/>
+      </node>
       <node id="58">
+        <label>include/endstone/event/player/player_skin_change_event.h</label>
+        <link refid="player__skin__change__event_8h_source"/>
+      </node>
+      <node id="45">
+        <label>include/endstone/event/player/player_teleport_event.h</label>
+        <link refid="player__teleport__event_8h_source"/>
+        <childnode refid="46" relation="include">
+        </childnode>
+      </node>
+      <node id="59">
         <label>include/endstone/event/player/player_toggle_crawl_event.h</label>
         <link refid="player__toggle__crawl__event_8h_source"/>
       </node>
-      <node id="59">
+      <node id="60">
         <label>include/endstone/event/player/player_toggle_flight_event.h</label>
         <link refid="player__toggle__flight__event_8h_source"/>
       </node>
-      <node id="60">
+      <node id="61">
         <label>include/endstone/event/player/player_toggle_sneak_event.h</label>
         <link refid="player__toggle__sneak__event_8h_source"/>
       </node>
-      <node id="61">
+      <node id="62">
         <label>include/endstone/event/player/player_toggle_sprint_event.h</label>
         <link refid="player__toggle__sprint__event_8h_source"/>
       </node>
@@ -1188,6 +1192,8 @@
         <childnode refid="13" relation="include">
         </childnode>
         <childnode refid="14" relation="include">
+        </childnode>
+        <childnode refid="15" relation="include">
         </childnode>
       </node>
     </invincdepgraph>

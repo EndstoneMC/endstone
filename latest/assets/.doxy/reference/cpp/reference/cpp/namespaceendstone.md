@@ -126,6 +126,7 @@ _Represents a button with text and an optional icon._
 | class | [**EffectType**](classendstone_1_1EffectType.md) <br>_Represents an effect type._  |
 | class | [**EnchantItemEvent**](classendstone_1_1EnchantItemEvent.md) <br>_Called when a player enchants an item at an enchanting table._  |
 | class | [**Enchantment**](classendstone_1_1Enchantment.md) <br>_Represents an enchantment that may be added to armor, weapons, tools or other items._  |
+| class | [**EnchantmentOffer**](classendstone_1_1EnchantmentOffer.md) <br>_Represents an offer made by an enchanting table._  |
 | class | [**Event**](classendstone_1_1Event.md) <br>_Represents an event._  |
 | class | [**EventHandler**](classendstone_1_1EventHandler.md) <br>_Represents a registered_ [_**EventHandler**_](classendstone_1_1EventHandler.md) _which associates with a_[_**Plugin**_](classendstone_1_1Plugin.md) _._ |
 | class | [**ExactIngredient**](classendstone_1_1ExactIngredient.md) <br>_Represents an ingredient that matches one item with one exact data value._  |
@@ -252,6 +253,7 @@ _Represents a button with text and an optional icon._
 | class | [**PotionMeta**](classendstone_1_1PotionMeta.md) <br>_Represents the metadata for a potion item._  |
 | class | [**PotionType**](classendstone_1_1PotionType.md) <br>_Represents a potion type._  |
 | class | [**Preconditions**](classendstone_1_1Preconditions.md) <br>_Static helpers for validating method arguments and object state._  |
+| class | [**PrepareItemEnchantEvent**](classendstone_1_1PrepareItemEnchantEvent.md) <br>_Called when an enchanting table prepares offers for an item._  |
 | class | [**ProxiedCommandSender**](classendstone_1_1ProxiedCommandSender.md) <br>_Represents a command sender that is running a command on behalf of another one, as_ `/execute` _does._ |
 | class | [**Recipe**](classendstone_1_1Recipe.md) <br>_Represents some type of crafting recipe._  |
 | class | [**RecipeIngredient**](classendstone_1_1RecipeIngredient.md) <br>_Represents a potential item match within a recipe._  |

@@ -2076,6 +2076,51 @@ For latest updates join the chat on
 </li>
                 
             
+                
+                    <li class="md-nav__item">
+    <a href="#endstone.enchantments.EnchantmentOffer" class="md-nav__link">
+      <span class="md-ellipsis">
+        <code class="doc-symbol doc-symbol-toc doc-symbol-class"></code>&nbsp;EnchantmentOffer
+      </span>
+    </a>
+
+    <!-- Table of contents list -->
+    
+    <nav class="md-nav" aria-label=" EnchantmentOffer">
+        <ul class="md-nav__list">
+            
+                
+                    <li class="md-nav__item">
+    <a href="#endstone.enchantments.EnchantmentOffer.cost" class="md-nav__link">
+      <span class="md-ellipsis">
+        <code class="doc-symbol doc-symbol-toc doc-symbol-attribute"></code>&nbsp;cost
+      </span>
+    </a>
+
+    <!-- Table of contents list -->
+    
+</li>
+                
+            
+                
+                    <li class="md-nav__item">
+    <a href="#endstone.enchantments.EnchantmentOffer.enchants" class="md-nav__link">
+      <span class="md-ellipsis">
+        <code class="doc-symbol doc-symbol-toc doc-symbol-attribute"></code>&nbsp;enchants
+      </span>
+    </a>
+
+    <!-- Table of contents list -->
+    
+</li>
+                
+            
+        </ul>
+    </nav>
+    
+</li>
+                
+            
         </ul>
     </nav>
     
@@ -3985,6 +4030,51 @@ For latest updates join the chat on
 </li>
                 
             
+                
+                    <li class="md-nav__item">
+    <a href="#endstone.enchantments.EnchantmentOffer" class="md-nav__link">
+      <span class="md-ellipsis">
+        <code class="doc-symbol doc-symbol-toc doc-symbol-class"></code>&nbsp;EnchantmentOffer
+      </span>
+    </a>
+
+    <!-- Table of contents list -->
+    
+    <nav class="md-nav" aria-label=" EnchantmentOffer">
+        <ul class="md-nav__list">
+            
+                
+                    <li class="md-nav__item">
+    <a href="#endstone.enchantments.EnchantmentOffer.cost" class="md-nav__link">
+      <span class="md-ellipsis">
+        <code class="doc-symbol doc-symbol-toc doc-symbol-attribute"></code>&nbsp;cost
+      </span>
+    </a>
+
+    <!-- Table of contents list -->
+    
+</li>
+                
+            
+                
+                    <li class="md-nav__item">
+    <a href="#endstone.enchantments.EnchantmentOffer.enchants" class="md-nav__link">
+      <span class="md-ellipsis">
+        <code class="doc-symbol doc-symbol-toc doc-symbol-attribute"></code>&nbsp;enchants
+      </span>
+    </a>
+
+    <!-- Table of contents list -->
+    
+</li>
+                
+            
+        </ul>
+    </nav>
+    
+</li>
+                
+            
         </ul>
     </nav>
     
@@ -4062,6 +4152,14 @@ For latest updates join the chat on
             <td>
               <div class="doc-md-description">
                 <p>Represents an enchantment that may be added to armor, weapons, tools or other items.</p>
+              </div>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td><code><a class="autorefs autorefs-internal" title="            EnchantmentOffer (endstone.enchantments.EnchantmentOffer)" href="#endstone.enchantments.EnchantmentOffer">EnchantmentOffer</a></code></td>
+            <td>
+              <div class="doc-md-description">
+                <p>Represents an offer made by an enchanting table.</p>
               </div>
             </td>
           </tr>
@@ -6279,6 +6377,160 @@ For latest updates join the chat on
     </div>
 
 </div>
+
+
+
+  </div>
+
+    </div>
+
+</div>
+
+<div class="doc doc-object doc-class">
+
+
+
+<h3 id="endstone.enchantments.EnchantmentOffer" class="doc doc-heading">
+<code class="doc-symbol doc-symbol-heading doc-symbol-class"></code>            <span class="doc doc-object-name doc-class-name">EnchantmentOffer</span>
+
+
+<a href="#endstone.enchantments.EnchantmentOffer" class="headerlink" title="Permanent link">&para;</a></h3>
+<div class="language-python doc-signature highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="nf">EnchantmentOffer</span><span class="p">(</span>
+</span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>    <span class="n">enchants</span><span class="p">:</span> <span class="n"><a class="autorefs autorefs-external" title="collections.abc.Mapping" href="https://docs.python.org/3/library/collections.abc.html#collections.abc.Mapping">Mapping</a></span><span class="p">[</span><span class="n"><a class="autorefs autorefs-internal" title="            Enchantment (endstone.enchantments.Enchantment)" href="#endstone.enchantments.Enchantment">Enchantment</a></span><span class="p">,</span> <span class="n"><a class="autorefs autorefs-external" href="https://docs.python.org/3/library/functions.html#int">int</a></span><span class="p">],</span> <span class="n">cost</span><span class="p">:</span> <span class="n"><a class="autorefs autorefs-external" href="https://docs.python.org/3/library/functions.html#int">int</a></span>
+</span><span id="__span-0-3"><a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a><span class="p">)</span>
+</span></code></pre></div>
+
+    <div class="doc doc-contents ">
+
+
+
+        <p>Represents an offer made by an enchanting table.</p>
+<p>Bedrock stores every enchantment that selecting an offer applies rather than a single hinted enchantment.
+Enchantments in an offer must be entries obtained from Endstone's <code>Enchantment</code> registry.</p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<p><span class="doc-section-title">Attributes:</span></p>
+    <table>
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Type</th>
+          <th>Description</th>
+        </tr>
+      </thead>
+      <tbody>
+          <tr class="doc-section-item">
+            <td><code><a class="autorefs autorefs-internal" title="            cost
+
+
+  
+      property
+      writable
+   (endstone.enchantments.EnchantmentOffer.cost)" href="#endstone.enchantments.EnchantmentOffer.cost">cost</a></code></td>
+            <td>
+                  <code><a class="autorefs autorefs-external" href="https://docs.python.org/3/library/functions.html#int">int</a></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>The minimum player level required to select this offer, between 1 and 255.</p>
+              </div>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td><code><a class="autorefs autorefs-internal" title="            enchants
+
+
+  
+      property
+      writable
+   (endstone.enchantments.EnchantmentOffer.enchants)" href="#endstone.enchantments.EnchantmentOffer.enchants">enchants</a></code></td>
+            <td>
+                  <code><a class="autorefs autorefs-external" href="https://docs.python.org/3/library/stdtypes.html#dict">dict</a>[<a class="autorefs autorefs-internal" title="            Enchantment (endstone.enchantments.Enchantment)" href="#endstone.enchantments.Enchantment">Enchantment</a>, <a class="autorefs autorefs-external" href="https://docs.python.org/3/library/functions.html#int">int</a>]</code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>A copy of the enchantments and levels applied by this offer; assign it back after changes.</p>
+              </div>
+            </td>
+          </tr>
+      </tbody>
+    </table>
+
+
+
+
+<div class="doc doc-children">
+
+
+
+
+
+
+
+<div class="doc doc-object doc-attribute">
+
+
+
+<h4 id="endstone.enchantments.EnchantmentOffer.cost" class="doc doc-heading">
+<code class="doc-symbol doc-symbol-heading doc-symbol-attribute"></code>            <span class="doc doc-object-name doc-attribute-name">cost</span>
+
+
+  <span class="doc doc-labels">
+      <small class="doc doc-label doc-label-property"><code>property</code></small>
+      <small class="doc doc-label doc-label-writable"><code>writable</code></small>
+  </span>
+
+<a href="#endstone.enchantments.EnchantmentOffer.cost" class="headerlink" title="Permanent link">&para;</a></h4>
+<div class="language-python doc-signature highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="n">cost</span><span class="p">:</span> <span class="n"><a class="autorefs autorefs-external" href="https://docs.python.org/3/library/functions.html#int">int</a></span>
+</span></code></pre></div>
+
+    <div class="doc doc-contents ">
+
+        <p>The minimum player level required to select this offer, between 1 and 255.</p>
+
+    </div>
+
+</div>
+
+<div class="doc doc-object doc-attribute">
+
+
+
+<h4 id="endstone.enchantments.EnchantmentOffer.enchants" class="doc doc-heading">
+<code class="doc-symbol doc-symbol-heading doc-symbol-attribute"></code>            <span class="doc doc-object-name doc-attribute-name">enchants</span>
+
+
+  <span class="doc doc-labels">
+      <small class="doc doc-label doc-label-property"><code>property</code></small>
+      <small class="doc doc-label doc-label-writable"><code>writable</code></small>
+  </span>
+
+<a href="#endstone.enchantments.EnchantmentOffer.enchants" class="headerlink" title="Permanent link">&para;</a></h4>
+<div class="language-python doc-signature highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="n">enchants</span><span class="p">:</span> <span class="n"><a class="autorefs autorefs-external" href="https://docs.python.org/3/library/stdtypes.html#dict">dict</a></span><span class="p">[</span><span class="n"><a class="autorefs autorefs-internal" title="            Enchantment (endstone.enchantments.Enchantment)" href="#endstone.enchantments.Enchantment">Enchantment</a></span><span class="p">,</span> <span class="n"><a class="autorefs autorefs-external" href="https://docs.python.org/3/library/functions.html#int">int</a></span><span class="p">]</span>
+</span></code></pre></div>
+
+    <div class="doc doc-contents ">
+
+        <p>A copy of the enchantments and levels applied by this offer; assign it back after changes.</p>
+
+    </div>
+
+</div>
+
+
+
 
 
 

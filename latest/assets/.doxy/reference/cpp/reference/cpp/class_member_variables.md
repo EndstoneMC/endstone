@@ -101,6 +101,7 @@
 * **Channeling** ([**endstone::Enchantment**](classendstone_1_1Enchantment.md))
 * **CurseOfBinding** ([**endstone::Enchantment**](classendstone_1_1Enchantment.md))
 * **CurseOfVanishing** ([**endstone::Enchantment**](classendstone_1_1Enchantment.md))
+* **cost\_** ([**endstone::EnchantmentOffer**](classendstone_1_1EnchantmentOffer.md))
 * **cancelled\_** ([**endstone::Event**](classendstone_1_1Event.md))
 * **CommandBlockOutput** ([**endstone::GameRule**](classendstone_1_1GameRule.md))
 * **CommandBlocksEnabled** ([**endstone::GameRule**](classendstone_1_1GameRule.md))
@@ -188,16 +189,18 @@
 * **expiration\_** ([**endstone::BanEntry**](classendstone_1_1BanEntry.md))
 * **Escape** ([**endstone::ColorFormat**](structendstone_1_1ColorFormat.md))
 * **entries\_** ([**endstone::CompoundTag**](classendstone_1_1CompoundTag.md))
-* **enchant\_block\_** ([**endstone::EnchantItemEvent**](classendstone_1_1EnchantItemEvent.md))
-* **enchanter\_** ([**endstone::EnchantItemEvent**](classendstone_1_1EnchantItemEvent.md))
+* **enchant\_block\_** ([**endstone::EnchantItemEvent**](classendstone_1_1EnchantItemEvent.md), [**endstone::PrepareItemEnchantEvent**](classendstone_1_1PrepareItemEnchantEvent.md))
+* **enchanter\_** ([**endstone::EnchantItemEvent**](classendstone_1_1EnchantItemEvent.md), [**endstone::PrepareItemEnchantEvent**](classendstone_1_1PrepareItemEnchantEvent.md))
 * **enchants\_to\_add\_** ([**endstone::EnchantItemEvent**](classendstone_1_1EnchantItemEvent.md))
 * **exp\_level\_cost\_** ([**endstone::EnchantItemEvent**](classendstone_1_1EnchantItemEvent.md))
 * **Efficiency** ([**endstone::Enchantment**](classendstone_1_1Enchantment.md))
+* **enchants\_** ([**endstone::EnchantmentOffer**](classendstone_1_1EnchantmentOffer.md))
 * **event\_** ([**endstone::EventHandler**](classendstone_1_1EventHandler.md), [**endstone::HandlerList**](classendstone_1_1HandlerList.md))
 * **executor\_** ([**endstone::EventHandler**](classendstone_1_1EventHandler.md), [**endstone::PluginCommand**](classendstone_1_1PluginCommand.md))
 * **elements\_** ([**endstone::ListTag**](classendstone_1_1ListTag.md))
 * **emote\_id\_** ([**endstone::PlayerEmoteEvent**](classendstone_1_1PlayerEmoteEvent.md))
 * **enabled\_** ([**endstone::Plugin**](classendstone_1_1Plugin.md))
+* **enchantment\_bonus\_** ([**endstone::PrepareItemEnchantEvent**](classendstone_1_1PrepareItemEnchantEvent.md))
 * **end** ([**endstone::detail::JoinView**](structendstone_1_1detail_1_1JoinView.md))
 
 
@@ -270,7 +273,7 @@
 
 * **Instabuild** ([**endstone::Ability**](classendstone_1_1Ability.md))
 * **Invulnerable** ([**endstone::Ability**](classendstone_1_1Ability.md))
-* **item\_** ([**endstone::ActorPickupItemEvent**](classendstone_1_1ActorPickupItemEvent.md), [**endstone::EnchantItemEvent**](classendstone_1_1EnchantItemEvent.md), [**endstone::PlayerArmSwingEvent**](classendstone_1_1PlayerArmSwingEvent.md), [**endstone::PlayerInteractEvent**](classendstone_1_1PlayerInteractEvent.md), [**endstone::PlayerItemConsumeEvent**](classendstone_1_1PlayerItemConsumeEvent.md), [**endstone::PlayerPickupItemEvent**](classendstone_1_1PlayerPickupItemEvent.md), [**endstone::PlayerRiptideEvent**](classendstone_1_1PlayerRiptideEvent.md), [**endstone::PlayerShearActorEvent**](classendstone_1_1PlayerShearActorEvent.md))
+* **item\_** ([**endstone::ActorPickupItemEvent**](classendstone_1_1ActorPickupItemEvent.md), [**endstone::EnchantItemEvent**](classendstone_1_1EnchantItemEvent.md), [**endstone::PlayerArmSwingEvent**](classendstone_1_1PlayerArmSwingEvent.md), [**endstone::PlayerInteractEvent**](classendstone_1_1PlayerInteractEvent.md), [**endstone::PlayerItemConsumeEvent**](classendstone_1_1PlayerItemConsumeEvent.md), [**endstone::PlayerPickupItemEvent**](classendstone_1_1PlayerPickupItemEvent.md), [**endstone::PlayerRiptideEvent**](classendstone_1_1PlayerRiptideEvent.md), [**endstone::PlayerShearActorEvent**](classendstone_1_1PlayerShearActorEvent.md), [**endstone::PrepareItemEnchantEvent**](classendstone_1_1PrepareItemEnchantEvent.md))
 * **IceBomb** ([**endstone::ActorType**](classendstone_1_1ActorType.md))
 * **IronGolem** ([**endstone::ActorType**](classendstone_1_1ActorType.md))
 * **Item** ([**endstone::ActorType**](classendstone_1_1ActorType.md))
@@ -442,6 +445,7 @@
 * **original\_bucket\_** ([**endstone::PlayerBucketActorEvent**](classendstone_1_1PlayerBucketActorEvent.md))
 * **old\_level\_** ([**endstone::PlayerLevelChangeEvent**](classendstone_1_1PlayerLevelChangeEvent.md))
 * **owner\_** ([**endstone::PluginCommand**](classendstone_1_1PluginCommand.md))
+* **offers\_** ([**endstone::PrepareItemEnchantEvent**](classendstone_1_1PrepareItemEnchantEvent.md))
 
 
 ## p

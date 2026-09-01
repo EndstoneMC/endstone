@@ -1173,6 +1173,17 @@
     <member refid="classendstone_1_1Enchantment_1a037e2e31c6eb1ea2dcf82fe33dc7d89e" kind="function"><name>conflictsWith</name></member>
     <member refid="classendstone_1_1Enchantment_1a2cf0c30780f0ccb58f1ac2576c35ab35" kind="function"><name>canEnchantItem</name></member>
   </compound>
+  <compound refid="classendstone_1_1EnchantmentOffer" kind="class"><name>endstone::EnchantmentOffer</name>
+    <member refid="classendstone_1_1EnchantmentOffer_1aab94e86f34ee64fd8ca8a8a6bfe47ab8" kind="typedef"><name>Enchantments</name></member>
+    <member refid="classendstone_1_1EnchantmentOffer_1aaed4a871134c9916697b9dcea78de04e" kind="variable"><name>enchants_</name></member>
+    <member refid="classendstone_1_1EnchantmentOffer_1abcc35c35b036f99c44430c716c9d70be" kind="variable"><name>cost_</name></member>
+    <member refid="classendstone_1_1EnchantmentOffer_1a777bdb49049de32c9d937ebe88824f33" kind="function"><name>EnchantmentOffer</name></member>
+    <member refid="classendstone_1_1EnchantmentOffer_1a26cf45dedd5706788302c9d5b0620970" kind="function"><name>getEnchants</name></member>
+    <member refid="classendstone_1_1EnchantmentOffer_1a6f6502f46cfc789ca726ff845afa602b" kind="function"><name>setEnchants</name></member>
+    <member refid="classendstone_1_1EnchantmentOffer_1abd2022d0cc362999cdff6b742e744c02" kind="function"><name>getCost</name></member>
+    <member refid="classendstone_1_1EnchantmentOffer_1a31ec04b0edc27e26f7009a644236b103" kind="function"><name>setCost</name></member>
+    <member refid="classendstone_1_1EnchantmentOffer_1a8d8de9e9982b97dc92b2eab8de9dae03" kind="function"><name>validateEnchants</name></member>
+  </compound>
   <compound refid="structendstone_1_1nbt_1_1escape__view" kind="struct"><name>endstone::nbt::escape_view</name>
     <member refid="structendstone_1_1nbt_1_1escape__view_1a60c2f283c66d5aacd00e56c35518ea17" kind="variable"><name>value</name></member>
   </compound>
@@ -2926,6 +2937,23 @@
     <member refid="classendstone_1_1Preconditions_1a67ef7267ef07164ae88052ed43750426" kind="function"><name>checkArgument</name></member>
     <member refid="classendstone_1_1Preconditions_1a5fb6820ed9c6e4629a00776f25d11ef5" kind="function"><name>checkState</name></member>
   </compound>
+  <compound refid="classendstone_1_1PrepareItemEnchantEvent" kind="class"><name>endstone::PrepareItemEnchantEvent</name>
+    <member refid="classendstone_1_1PrepareItemEnchantEvent_1ad8bb6f2a0e04d3a777fa151185ef15fc" kind="typedef"><name>Offers</name></member>
+    <member refid="classendstone_1_1PrepareItemEnchantEvent_1a09f2901b80b0497d6c2d6737e44bd58d" kind="variable"><name>enchanter_</name></member>
+    <member refid="classendstone_1_1PrepareItemEnchantEvent_1af6bf30935bc34fc422e656b64e83c9a8" kind="variable"><name>enchant_block_</name></member>
+    <member refid="classendstone_1_1PrepareItemEnchantEvent_1a13dcdf67f5de993b6cbbb7d4b6b1dbb1" kind="variable"><name>item_</name></member>
+    <member refid="classendstone_1_1PrepareItemEnchantEvent_1aa2d57273da33ba9d1258e6c585c018b3" kind="variable"><name>offers_</name></member>
+    <member refid="classendstone_1_1PrepareItemEnchantEvent_1a8197a81746ebe26c01022c9abcf8bda5" kind="variable"><name>enchantment_bonus_</name></member>
+    <member refid="classendstone_1_1PrepareItemEnchantEvent_1ae90f1f8d118a7a53a5b4694d5dec0b50" kind="function"><name>ENDSTONE_EVENT</name></member>
+    <member refid="classendstone_1_1PrepareItemEnchantEvent_1a4e2850e0f823cdf0a6d6e8319736a18f" kind="function"><name>PrepareItemEnchantEvent</name></member>
+    <member refid="classendstone_1_1PrepareItemEnchantEvent_1a99633b03c11a9e2450e78917535508e6" kind="function"><name>getEnchanter</name></member>
+    <member refid="classendstone_1_1PrepareItemEnchantEvent_1ae598996133fcda0ee904aa25b34a372a" kind="function"><name>getEnchantBlock</name></member>
+    <member refid="classendstone_1_1PrepareItemEnchantEvent_1af1abaf2b0891be7b978f86c332e6f639" kind="function"><name>getItem</name></member>
+    <member refid="classendstone_1_1PrepareItemEnchantEvent_1ab61f724272223e6a1eb56c2ab0da8d3e" kind="function"><name>getOffers</name></member>
+    <member refid="classendstone_1_1PrepareItemEnchantEvent_1aacfdc41ca8306a082c33b39ed5f77778" kind="function"><name>getOffers</name></member>
+    <member refid="classendstone_1_1PrepareItemEnchantEvent_1af9dd14b14bb32768d4b0502a4a5eb506" kind="function"><name>setOffers</name></member>
+    <member refid="classendstone_1_1PrepareItemEnchantEvent_1aa80d66388b300942f0aa5ca72225533b" kind="function"><name>getEnchantmentBonus</name></member>
+  </compound>
   <compound refid="classendstone_1_1ProxiedCommandSender" kind="class"><name>endstone::ProxiedCommandSender</name>
     <member refid="classendstone_1_1ProxiedCommandSender_1ad6d120eab4f0abc48ff747e94954f0a1" kind="function"><name>getCaller</name></member>
     <member refid="classendstone_1_1ProxiedCommandSender_1a8c828f34db5e1330837faee2c6e2ba36" kind="function"><name>getCallee</name></member>
@@ -3748,6 +3776,8 @@
   </compound>
   <compound refid="enchantment_8h" kind="file"><name>enchantment.h</name>
   </compound>
+  <compound refid="enchantment__offer_8h" kind="file"><name>enchantment_offer.h</name>
+  </compound>
   <compound refid="actor__change__block__event_8h" kind="file"><name>actor_change_block_event.h</name>
   </compound>
   <compound refid="actor__collide__with__actor__event_8h" kind="file"><name>actor_collide_with_actor_event.h</name>
@@ -3817,6 +3847,8 @@
   <compound refid="unknown__command__event_8h" kind="file"><name>unknown_command_event.h</name>
   </compound>
   <compound refid="enchant__item__event_8h" kind="file"><name>enchant_item_event.h</name>
+  </compound>
+  <compound refid="prepare__item__enchant__event_8h" kind="file"><name>prepare_item_enchant_event.h</name>
   </compound>
   <compound refid="event_8h" kind="file"><name>event.h</name>
     <member refid="event_8h_1a80b507d6ebc2a0dd5db7cabd52a9790f" kind="define"><name>ENDSTONE_EVENT</name></member>
