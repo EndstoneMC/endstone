@@ -855,6 +855,26 @@ rip_relative = true
 rip_offset = 1
 
 [[signatures]]
+name = "?_solidify@LiquidBlockBase@@AEBAXAEAVBlockSource@@AEBVBlockPos@@1@Z"
+relative = false
+extra = 0
+# 1. the liquid cluster has no strings; anchor on LiquidBlockBase::emitFizzParticle - find its
+#    LevelEvent-1004 (Fizz) broadcast `mov r8w, 0x3EC; call [rip]` (bytes "66 41 B8 EC 03 FF 15"),
+#    of whose hits the real one is the ~0x243 fn that follows with an 8x smoke-particle loop at
+#    velocity ((rand - rand) * 0.8 + 2.6) * 1000 (0.8f=0x3F4CCCCD, 2.6f=0x40266666)
+# 2. emitFizzParticle has exactly three callers: LiquidBlock::_tick, LiquidBlock::_trySpreadTo (the
+#    entry above) and _solidify. _solidify is the small one (~0x2ff): it neither ticks nor spreads,
+#    it just reads BlockSource::getLiquidBlock on the changed neighbour and branches on the material
+# 3. confirm by content: a mMaterial type-6 (Lava) bail, a type-5 (Water) neighbour test, a
+#    VanillaStates::LiquidDepth state read, and BlockTypeRegistry::getDefaultBlockState called with
+#    VanillaBlockTypeIds::Obsidian / ::Cobblestone / ::Basalt (the basalt arm additionally compares the
+#    neighbour against ::BlueIce and the block below against ::SoulSoil) -> setBlock(pos, block, 3) ->
+#    emitFizzParticle unless isInstaticking
+# 4. confirm vs the old named DB (private (AEBA), args (BlockSource&, const BlockPos&, const BlockPos&),
+#    void return); the prologue below is unique in the 1.26.44 exe
+pattern = "41 56 56 57 53 48 83 EC 58 4C 89 CB"
+
+[[signatures]]
 name = "?_loadMapData@MapDataManager@@IEAAPEAVMapItemSavedData@@AEBUActorUniqueID@@@Z"
 relative = false
 extra = 0

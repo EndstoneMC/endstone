@@ -1,7 +1,33 @@
 #include "bedrock/world/level/block/liquid_block.h"
 
+#include "bedrock/util/random.h"
 #include "bedrock/world/level/block/components/block_liquid_detection_component.h"
 #include "bedrock/world/level/block_source.h"
+#include "bedrock/world/level/level.h"
+
+void LiquidBlockBase::emitFizzParticle(BlockSource &region, BlockPos const &p) const
+{
+    if (!region.getPublicSource()) {
+        return;
+    }
+
+    auto &level = region.getLevel();
+    auto &random = level.getRandom();
+    const auto a = random.nextFloat();
+    const auto b = random.nextFloat();
+    level.broadcastLocalEvent(
+        region, LevelEvent::SoundFizz,
+        {static_cast<float>(p.x) + 0.5F, static_cast<float>(p.y) + 0.5F, static_cast<float>(p.z) + 0.5F},
+        static_cast<int>(((a - b) * 0.8F + 2.6F) * 1000.0F));
+
+    for (int i = 0; i < 8; ++i) {
+        const auto x = level.getRandom().nextFloat();
+        const auto z = level.getRandom().nextFloat();
+        level.addParticle(ParticleType::Smoke,
+                          {static_cast<float>(p.x) + x, static_cast<float>(p.y) + 1.2F, static_cast<float>(p.z) + z},
+                          Vec3::ZERO, 250, nullptr, false);
+    }
+}
 
 bool LiquidBlock::_canSpreadTo(BlockSource &region, BlockPos const &pos, BlockPos const &flow_from_pos,
                                FacingID flow_from_direction) const

@@ -12,17 +12,8 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-#include "bedrock/world/level/block/states/vanilla_block_states.h"
+#pragma once
 
-namespace VanillaStateIds {
-const HashedString Age = "age";
-const HashedString Direction = "direction";
-const HashedString ExplodeBit = "explode_bit";
-const HashedString Extinguished = "extinguished";
-const HashedString FacingDirection = "facing_direction";
-const HashedString HeadPieceBit = "head_piece_bit";
-const HashedString LiquidDepth = "liquid_depth";
-const HashedString PersistentBit = "persistent_bit";
-const HashedString PortalAxis = "portal_axis";
-const HashedString UpdateBit = "update_bit";
-}  // namespace VanillaStateIds
+enum class ParticleType : int {
+    Smoke = 5,
+};

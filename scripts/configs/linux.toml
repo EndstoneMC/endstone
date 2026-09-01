@@ -780,6 +780,26 @@ extra = 0
 pattern = "55 41 57 41 56 41 55 41 54 53 48 83 EC ? 45 89 CD 4D 89 C4 89 4C 24 ? 48 89 D3"
 
 [[signatures]]
+name = "_ZNK15LiquidBlockBase9_solidifyER11BlockSourceRK8BlockPosS4_"
+relative = false
+extra = 0
+# 1. the liquid cluster has no strings; anchor on LiquidBlockBase::emitFizzParticle - the ~0x2c0 fn
+#    carrying the LevelEvent-1004 (Fizz) halfword ("EC 03") about 0xd9 bytes in, followed by an 8x
+#    smoke-particle loop at velocity ((rand - rand) * 0.8 + 2.6) * 1000 (0.8f=0x3F4CCCCD,
+#    2.6f=0x40266666), the whole body gated on a `cmp byte [rdi+0x21], 1` (BlockSource::mPublicSource)
+# 2. emitFizzParticle has exactly three callers: LiquidBlock::_tick, LiquidBlock::_trySpreadTo (the
+#    entry above) and _solidify - the only one reaching it through a single isInstaticking-guarded
+#    tail call. _solidify is also the small one (~0x2e0): it neither ticks nor spreads, it just reads
+#    IConstBlockSource::getLiquidBlock (vtable +0x30) on the changed neighbour and branches on the material
+# 3. confirm by content: a mMaterial type-6 (Lava) bail, a type-5 (Water) neighbour test, a
+#    VanillaStates::LiquidDepth state read, and BlockTypeRegistry::getDefaultBlockState called with
+#    VanillaBlockTypeIds::Obsidian / ::Cobblestone / ::Basalt (the basalt arm additionally compares the
+#    neighbour against ::BlueIce and the block below against ::SoulSoil) -> setBlock(pos, block, 3)
+# 4. confirm vs the old named DB (args (BlockSource&, const BlockPos&, const BlockPos&), void return);
+#    the prologue below is unique in the 1.26.44 bedrock_server
+pattern = "41 57 41 56 41 54 53 48 83 EC 28 49 89 CF 48 89 D3 49 89 F6"
+
+[[signatures]]
 name = "_ZN14MapDataManager15getMapSavedDataE13ActorUniqueID"
 relative = false
 extra = 0
