@@ -11,6 +11,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 #### Events
 
+- `BlockFormEvent` now fires, for lava solidifying against a neighbouring liquid: obsidian from a lava source, cobblestone from flowing lava, and basalt where lava sits between blue ice and soul soil. It reports the lava `block` and the `new_state` it will take, and is fired before the world changes, so cancelling leaves the lava as it is and plays no extinguishing effect. Snow, ice and concrete do not fire it yet.
 - `PlayerHideActorEvent` and `PlayerShowActorEvent`, reporting the `actor` whose visibility changed. Neither fires when the actor was already hidden from, or already visible to, that player.
 - `EnchantItemEvent` for enchanting an item at an enchanting table, reporting the enchanting `inventory`, the `enchanter`, the `enchant_block`, the `item`, the `exp_level_cost`, the `enchants_to_add` and the `which_button` selected. The item, cost and enchantments are writable; cancelling leaves the item, the player's experience levels and the lapis lazuli untouched. It does not fire for an offer the player cannot pay for, and no enchantment hint is reported.
 - `PlayerLevelChangeEvent` (`old_level`, `new_level`), `PlayerExpChangeEvent` (`amount` gained) and `PlayerPickupExperienceEvent` (`amount` the orb is worth).

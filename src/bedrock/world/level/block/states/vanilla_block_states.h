@@ -25,6 +25,7 @@ extern const HashedString ExplodeBit;
 extern const HashedString Extinguished;
 extern const HashedString FacingDirection;
 extern const HashedString HeadPieceBit;
+extern const HashedString LiquidDepth;
 extern const HashedString PersistentBit;
 extern const HashedString PortalAxis;
 extern const HashedString UpdateBit;

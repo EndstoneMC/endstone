@@ -21,6 +21,7 @@ const HashedString ExplodeBit = "explode_bit";
 const HashedString Extinguished = "extinguished";
 const HashedString FacingDirection = "facing_direction";
 const HashedString HeadPieceBit = "head_piece_bit";
+const HashedString LiquidDepth = "liquid_depth";
 const HashedString PersistentBit = "persistent_bit";
 const HashedString PortalAxis = "portal_axis";
 const HashedString UpdateBit = "update_bit";

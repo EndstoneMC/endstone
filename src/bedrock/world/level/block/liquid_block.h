@@ -18,6 +18,9 @@
 
 class LiquidBlockBase : public ::BlockType {
 protected:
+    void emitFizzParticle(BlockSource &region, BlockPos const &p) const;
+
+private:
     ENDSTONE_HOOK void _solidify(BlockSource &region, BlockPos const &pos, BlockPos const &changed_neighbor) const;
 };
 

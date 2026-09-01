@@ -50,6 +50,18 @@ def test_block_explode(recorder: EventRecorder) -> None:
     assert recorder.require("BlockExplodeEvent")[0]["block_count"] >= 0
 
 
+def test_block_form_is_lava_solidifying(recorder: EventRecorder) -> None:
+    """Verify BlockFormEvent reports the lava it forms from, not the block it becomes."""
+    for snapshot in recorder.require("BlockFormEvent"):
+        assert "lava" in snapshot["block_type"]
+        assert snapshot["new_type"] in {
+            "minecraft:basalt",
+            "minecraft:cobblestone",
+            "minecraft:obsidian",
+        }
+        assert len(snapshot["xyz"]) == 3
+
+
 def test_leaves_decay(recorder: EventRecorder) -> None:
     """Verify LeavesDecayEvent points at a leaves block."""
     assert "leaves" in recorder.require("LeavesDecayEvent")[0]["block_type"]
@@ -65,7 +77,7 @@ def test_piston(recorder: EventRecorder, event_name: str) -> None:
     assert snapshot["direction"]
 
 
-@pytest.mark.parametrize("event_name", ["BlockGrowEvent", "BlockFormEvent"])
+@pytest.mark.parametrize("event_name", ["BlockGrowEvent"])
 def test_never_fired_events_are_not_tracked(
     recorder: EventRecorder, event_name: str
 ) -> None:

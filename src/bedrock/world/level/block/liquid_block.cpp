@@ -1,7 +1,13 @@
 #include "bedrock/world/level/block/liquid_block.h"
 
+#include "bedrock/symbol.h"
 #include "bedrock/world/level/block/components/block_liquid_detection_component.h"
 #include "bedrock/world/level/block_source.h"
+
+void LiquidBlockBase::emitFizzParticle(BlockSource &region, BlockPos const &p) const
+{
+    BEDROCK_CALL(&LiquidBlockBase::emitFizzParticle, this, region, p);
+}
 
 bool LiquidBlock::_canSpreadTo(BlockSource &region, BlockPos const &pos, BlockPos const &flow_from_pos,
                                FacingID flow_from_direction) const
