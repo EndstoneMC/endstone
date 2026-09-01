@@ -19,7 +19,6 @@
 #include <utility>
 
 #include <gsl/util>
-#include <magic_enum/magic_enum.hpp>
 
 #include "bedrock/world/actor/player/player.h"
 #include "bedrock/world/containers/container_enum.h"
@@ -200,8 +199,7 @@ void EnchantingContainerManagerModel::recalculateOptions()
         }
     });
 
-    const auto input_container_name = std::string(magic_enum::enum_name(ContainerEnumName::EnchantingInputContainer));
-    const auto input_container_it = containers_.find(input_container_name);
+    const auto input_container_it = containers_.find(std::string(ContainerCollectionNames::EnchantingInputContainer));
     if (input_container_it == containers_.end() || input_container_it->second == nullptr) {
         return;
     }

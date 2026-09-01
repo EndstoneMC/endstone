@@ -17,6 +17,11 @@
 #include <cstdint>
 #include <optional>
 #include <string>
+#include <string_view>
+
+namespace ContainerCollectionNames {
+inline constexpr std::string_view EnchantingInputContainer = "enchanting_input_items";
+}  // namespace ContainerCollectionNames
 
 enum class ContainerEnumName : std::uint8_t {
     AnvilInputContainer = 0,
