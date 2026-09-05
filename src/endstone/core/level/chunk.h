@@ -28,6 +28,7 @@ public:
     [[nodiscard]] int getZ() const override;
     [[nodiscard]] Level &getLevel() const override;
     [[nodiscard]] NotNull<Dimension> getDimension() const override;
+    [[nodiscard]] NotNull<Block> getBlock(int x, int y, int z) const override;
     [[nodiscard]] bool isLoaded() const override;
     bool load() override;
     bool load(bool generate) override;

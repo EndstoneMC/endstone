@@ -625,6 +625,24 @@ class Chunk:
         The dimension containing this chunk.
         """
 
+    def get_block(self, x: int, y: int, z: int) -> Block:
+        """
+        Gets a block from this chunk.
+
+        This does not load the chunk. Use `load()` to request it before accessing block data.
+
+        Args:
+            x: X-coordinate within the chunk, from 0 to 15.
+            y: Y-coordinate in the dimension, from its minimum height (inclusive) to its maximum height (exclusive).
+            z: Z-coordinate within the chunk, from 0 to 15.
+
+        Returns:
+            `Block` at the given coordinates.
+
+        Raises:
+            ValueError: If the coordinates are outside these bounds.
+        """
+
     @property
     def is_loaded(self) -> bool:
         """

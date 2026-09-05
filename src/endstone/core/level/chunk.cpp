@@ -59,6 +59,18 @@ NotNull<Dimension> EndstoneChunk::getDimension() const
     return handle->getEndstoneDimension();
 }
 
+NotNull<Block> EndstoneChunk::getBlock(int x, int y, int z) const
+{
+    const auto dimension = getDimension().cast<EndstoneDimension>();
+    auto &block_source = dimension->getHandle().getBlockSourceFromMainChunkSource();
+    Preconditions::checkArgument(x >= 0 && x < 16, "x must be between 0 and 15, got {}.", x);
+    Preconditions::checkArgument(y >= block_source.getMinHeight() && y < block_source.getMaxHeight(),
+                                 "y must be between {} (inclusive) and {} (exclusive), got {}.",
+                                 block_source.getMinHeight(), block_source.getMaxHeight(), y);
+    Preconditions::checkArgument(z >= 0 && z < 16, "z must be between 0 and 15, got {}.", z);
+    return EndstoneBlock::at(block_source, BlockPos((x_ << 4) | x, y, (z_ << 4) | z));
+}
+
 bool EndstoneChunk::isLoaded() const
 {
     return getDimension()->isChunkLoaded(x_, z_);

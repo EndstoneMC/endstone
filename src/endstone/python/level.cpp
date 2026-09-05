@@ -33,6 +33,22 @@ void init_level(py::module_ &m, py::classh<Level> &level, py::classh<Dimension> 
         .def_property_readonly("level", &Chunk::getLevel, "The level containing this chunk.",
                                py::return_value_policy::reference)
         .def_property_readonly("dimension", &Chunk::getDimension, "The dimension containing this chunk.")
+        .def("get_block", &Chunk::getBlock, py::arg("x"), py::arg("y"), py::arg("z"), R"doc(
+    Gets a block from this chunk.
+
+    This does not load the chunk. Use `load()` to request it before accessing block data.
+
+    Args:
+        x: X-coordinate within the chunk, from 0 to 15.
+        y: Y-coordinate in the dimension, from its minimum height (inclusive) to its maximum height (exclusive).
+        z: Z-coordinate within the chunk, from 0 to 15.
+
+    Returns:
+        `Block` at the given coordinates.
+
+    Raises:
+        ValueError: If the coordinates are outside these bounds.
+)doc")
         .def_property_readonly("is_loaded", &Chunk::isLoaded, "Whether this chunk is loaded.")
         .def("load", py::overload_cast<bool>(&Chunk::load), py::arg("generate") = true, R"doc(
     Requests this chunk to be loaded, and keeps it resident until it is released again.

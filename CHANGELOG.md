@@ -81,6 +81,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 #### Level and dimensions
 
+- `Chunk.get_block(x, y, z)` to access a block using chunk-local `x` and `z` coordinates (0–15) and a dimension-height `y`. Coordinates outside these bounds are rejected; the chunk is not loaded automatically.
 - `Level.create_dimension()` for registering an empty (void) dimension from -64 to 320 at runtime. The registration does not survive a restart, so call it again on every startup.
 - `Dimension.mobs` and `Dimension.players`, both narrowing `Dimension.actors`.
 - Chunk loading API: `Dimension.load_chunk()`, `Dimension.unload_chunk()`, `Dimension.unload_chunk_request()`, `Dimension.is_chunk_loaded()` and `Dimension.is_chunk_generated()`, plus `Chunk.load()`, `Chunk.unload()` and `Chunk.is_loaded()`. Bedrock has no synchronous chunk load, so `load_chunk()` keeps the chunk resident from a later tick onwards and does not make it tick. `unload_chunk()` reports whether the chunk actually went away, while `unload_chunk_request()` only releases the hold.

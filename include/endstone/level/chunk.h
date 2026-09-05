@@ -21,6 +21,7 @@
 
 namespace endstone {
 
+class Block;
 class BlockState;
 class Plugin;
 
@@ -58,6 +59,19 @@ public:
      * @return Parent Dimension
      */
     [[nodiscard]] virtual NotNull<Dimension> getDimension() const = 0;
+
+    /**
+     * Gets a block from this chunk.
+     *
+     * This does not load the chunk. Use load() to request it before accessing block data.
+     *
+     * @param x X-coordinate within the chunk, from 0 to 15
+     * @param y Y-coordinate in the dimension, from its minimum height (inclusive) to its maximum height (exclusive)
+     * @param z Z-coordinate within the chunk, from 0 to 15
+     * @return Block at the given coordinates
+     * @throws std::invalid_argument if the coordinates are outside these bounds
+     */
+    [[nodiscard]] virtual NotNull<Block> getBlock(int x, int y, int z) const = 0;
 
     /**
      * Checks if this chunk is loaded.
