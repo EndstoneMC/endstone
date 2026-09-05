@@ -17,7 +17,7 @@ from endstone.event import (
     FoodLevelChangeEvent,
     event_handler,
 )
-from endstone.potion import Effect
+from endstone.potion import Effect, EffectType
 
 from endstone_test.checks import CANCEL, MUTATE
 
@@ -149,15 +149,15 @@ class ActorEventListener(EventListener):
             item is None
             and current_level is not None
             and food_level > current_level
-            and event.actor.has_effect(Effect.SATURATION)
+            and event.actor.has_effect(EffectType.SATURATION)
             and self.due(event, "remove_effect")
         ):
-            event.actor.remove_effect(Effect.SATURATION)
+            event.actor.remove_effect(EffectType.SATURATION)
             self.recorder.pass_check(
                 "FoodLevelChangeEvent/remove_effect",
                 current_level=current_level,
                 food_level=food_level,
-                has_effect=event.actor.has_effect(Effect.SATURATION),
+                has_effect=event.actor.has_effect(EffectType.SATURATION),
             )
         if (
             item_type != "minecraft:apple"
