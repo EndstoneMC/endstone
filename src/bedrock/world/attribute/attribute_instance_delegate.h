@@ -14,8 +14,15 @@
 
 #pragma once
 
+#include <optional>
+
+#include "bedrock/bedrock.h"
 #include "bedrock/forward.h"
 #include "bedrock/world/attribute/attribute_instance_handle.h"
+
+class AttributeBuff;
+class AttributeInstance;
+struct AttributeModificationContext;
 
 class AttributeInstanceDelegate {
 public:
@@ -24,7 +31,7 @@ public:
     virtual void tick(AttributeInstance &, AttributeModificationContext &) = 0;
     virtual void notify(AttributeMessageType, AttributeModificationContext &) = 0;
     virtual bool willChange(float, float, const AttributeBuff &) = 0;
-    virtual std::optional<float> change(float, float, const AttributeBuff &) = 0;
+    ENDSTONE_HOOK virtual std::optional<float> change(float, float, const AttributeBuff &) = 0;
     [[nodiscard]] virtual float getBuffValueWithModifiers(const AttributeBuff &) const = 0;
 
 protected:

@@ -67,6 +67,8 @@ public:
     ENDSTONE_HOOK void completeUsingItem();
     ENDSTONE_HOOK bool drop(const ItemStack &item, bool randomly) override;
     ENDSTONE_HOOK bool take(Actor &actor, int, int favored_slot);
+    ENDSTONE_HOOK void eat(int nutrition, float saturation_modifier);
+    ENDSTONE_HOOK void eat(const ItemStack &item);
 
     virtual void prepareRegion(ChunkSource &) = 0;
     virtual void destroyRegion() = 0;

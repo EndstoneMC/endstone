@@ -1417,3 +1417,84 @@ extra = 0
 #    active area whose mScope is engaged and whose mUID matches - that release is what unloads the chunks
 # 4. cross-check: it sits ~0x510 past addTransientScopedArea in the same TickingAreasManager cluster
 pattern = "55 41 57 41 56 41 55 41 54 56 57 53 48 81 EC 88 00 00 00 48 8D AC 24 80 00 00 00 48 C7 45 00 FE FF FF FF 48 89 D3 48 89 CE C7 45 A8"
+
+[[signatures]]
+name = "?eat@Player@@QEAAXHM@Z"
+relative = false
+extra = 0
+# 1. find "6D 69 6E 65 63 72 61 66 74 3A 70 6C 61 79 65 72 2E 68 75 6E 67 65 72 00"
+#    = "minecraft:player.hunger\0"; its static-initializer xref constructs Player::HUNGER
+# 2. among that Attribute's code xrefs, find the function adding the integer argument to hunger,
+#    clamping saturation's maximum to hunger, then adding 2 * hungerValue * saturationModifier
+# 3. its CakeBlock::_eatCake caller passes 2 and 0.1f, then reads bite_counter and compares it with 6;
+#    take the call before that block-state lookup
+# 4. confirm the target against the reference build: Player member, int/float arguments, two
+#    instantaneous buffs through AttributeInstance::addBuff, then the eating game event
+# xref call site in CakeBlock::_eatCake (unique)
+pattern = "E8 ? ? ? ? 48 8B 15 ? ? ? ? 4D 8B 46 ? 45 0F B7 8E"
+rip_relative = true
+rip_offset = 1
+
+[[signatures]]
+name = "?eat@Player@@QEAAXAEBVItemStack@@@Z"
+relative = false
+extra = 0
+# 1. locate Player::eat(int, float) using its hunger-attribute recipe above and inspect its callers
+# 2. select the caller that validates an ItemStack and obtains its food component; it emits the
+#    PlayerEatFoodEvent, reads nutrition and saturation through that component, then calls eat(int, float)
+# 3. distinguish CakeBlock::_eatCake, which passes literal 2 and 0.1f instead; confirm the ItemStack
+#    overload's argument marshalling and event-before-food ordering against the reference build
+# function prologue
+pattern = "55 41 57 41 56 41 54 56 57 53 48 81 EC ? ? ? ? 48 8D AC 24 ? ? ? ? 0F 29 B5 ? ? ? ? 48 C7 85 ? ? ? ? ? ? ? ? 80 7A ? ? 0F 85"
+
+[[signatures]]
+name = "?notify@HungerAttributeDelegate@@UEAAX_JAEAUAttributeModificationContext@@@Z"
+relative = false
+extra = 0
+# 1. locate Player::eat(int, float); the vtable stored on each stack buff is InstantaneousAttributeBuff
+# 2. inspect code xrefs to that vtable for the function that rejects nonzero message types and
+#    creative/spectator players, subtracts one saturation when positive, otherwise one hunger outside peaceful
+# 3. its two AttributeInstance::addBuff calls share the buff-cleanup epilogue and ignore the optional return;
+#    confirm the Player pointer, message/context arguments and delegate virtual slot against the reference build
+# function prologue (virtual dispatch, no direct call sites)
+pattern = "55 41 57 41 56 41 55 41 54 56 57 53 48 81 EC ? ? ? ? 48 8D AC 24 ? ? ? ? 48 C7 45 ? ? ? ? ? 4C 8B 79 ? 4D 85 FF 0F 84 ? ? ? ? 4C 89 C6 48 89 D3"
+
+[[signatures]]
+name = "?addBuff@AttributeInstance@@QEAA?AV?$optional@M@std@@AEBVAttributeBuff@@UAttributeModificationContext@@@Z"
+relative = false
+extra = 0
+# 1. locate Player::eat(int, float); follow the first call after construction of its instantaneous hunger buff
+# 2. confirm the callee branches on isInstantaneous: temporal buffs are copied into a vector; an instantaneous
+#    buff changes current_values[operand] and invokes the attribute delegate before sanitizing and marking dirty
+# 3. confirm against the reference build: AttributeInstance member, const AttributeBuff reference,
+#    AttributeModificationContext by value, and std::optional<float> through the Windows hidden return pointer
+# xref call site in Player::eat(int, float) (unique)
+pattern = "E8 ? ? ? ? 4C 8D 25 ? ? ? ? 4C 89 65 ? 4C 8B 7D ? 4D 85 FF"
+rip_relative = true
+rip_offset = 1
+
+[[signatures]]
+name = "?tick@AttributeInstance@@UEAAXUAttributeModificationContext@@@Z"
+relative = false
+extra = 0
+# 1. find the temporal-buff loop with a 0x88-byte stride, incremented life timer, and adjacent
+#    shouldBuff/isComplete virtual calls; unlike addBuff, it also erases completed vector entries
+# 2. confirm the matching function is AttributeInstance's virtual after its destructor: it evaluates
+#    each active buff through the delegate, updates current_values[operand], then ticks the delegate
+# 3. confirm against the reference build: AttributeModificationContext by value, void return,
+#    sanitization after the loop, and notification only when the final current value changed
+# function prologue (virtual dispatch, no direct call sites)
+pattern = "41 57 41 56 41 54 56 57 53 48 83 EC ? 0F 29 7C 24 ? 0F 29 74 24 ? 48 89 CE 48 89 54 24"
+
+[[signatures]]
+name = "?change@AttributeInstanceDelegate@@UEAA?AV?$optional@M@std@@MMAEBVAttributeBuff@@@Z"
+relative = false
+extra = 0
+# 1. locate HungerAttributeDelegate::notify and its vtable; after willChange's constant-true stub,
+#    change returns an engaged optional containing new_value; the next slot evaluates buff amplifiers
+# 2. confirm the shared base implementation ignores this, old_value and the buff, stores xmm3 into
+#    the hidden result pointer, sets its engaged byte, and returns that pointer
+# 3. confirm against the reference build: non-const virtual, two floats and const AttributeBuff reference;
+#    addBuff and tick call it after the tentative write and last buff read, before sanitization and dirtying
+# function body (unique leaf identified by its vtable slot, no unwind entry)
+pattern = "48 89 D0 F3 0F 11 1A C6 42 04 01 C3"

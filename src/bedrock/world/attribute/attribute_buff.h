@@ -46,7 +46,7 @@ public:
     virtual void setDurationAmplifier(std::shared_ptr<Amplifier>);
 
     [[nodiscard]] float getAmount() const;
-    [[nodiscard]] AttributeBuffType getType() const;
+    [[nodiscard]] AttributeBuffType getType() const { return type_; }
     [[nodiscard]] ActorDamageCause getCause() const;
     [[nodiscard]] const ActorDamageSource &getSource() const { return *source_; }
     [[nodiscard]] const std::optional<HurtEffectsSettings> &getHurtEffectsSettings() const
