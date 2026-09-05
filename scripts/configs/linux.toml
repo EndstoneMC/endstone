@@ -4,6 +4,84 @@ executable = "bedrock_server"
 filename = "bedrock_server"
 
 [[signatures]]
+name = "_ZN6Player3eatEif"
+relative = false
+extra = 0
+# 1. find "39 43 61 6B 65 42 6C 6F 63 6B 00" = "9CakeBlock\0" (unique); rebuild its
+#    Itanium RTTI and vtable pointers from R_X86_64_RELATIVE addends
+# 2. follow CakeBlock's interaction path to _eatCake: the helper passes 2 and 0.1f to Player::eat,
+#    then reads bite_counter and compares it with 6; take the call before that block-state lookup
+# 3. confirm the target against the reference build: Player member, int/float arguments, adds hunger,
+#    clamps saturation's maximum to hunger, then adds 2 * hungerValue * saturationModifier
+# xref call site in CakeBlock::_eatCake (unique)
+pattern = "E8 ? ? ? ? 48 8B 0D ? ? ? ? 49 8B 74 24 ? 41 0F B7 84 24"
+rip_relative = true
+rip_offset = 1
+
+[[signatures]]
+name = "_ZN6Player3eatERK9ItemStack"
+relative = false
+extra = 0
+# 1. locate Player::eat(int, float) using its cake recipe above and inspect its callers
+# 2. select the caller that validates an ItemStack and obtains its food component; it emits the
+#    PlayerEatFoodEvent, reads nutrition and saturation through that component, then calls eat(int, float)
+# 3. distinguish CakeBlock::_eatCake, which passes literal 2 and 0.1f instead; confirm the ItemStack
+#    overload's argument marshalling and event-before-food ordering against the reference build
+# function prologue
+pattern = "55 41 57 41 56 41 55 41 54 53 48 81 EC ? ? ? ? 80 7E ? ? 0F 85 ? ? ? ? 49 89 F7 48 8B 46"
+
+[[signatures]]
+name = "_ZN23HungerAttributeDelegate6notifyElR28AttributeModificationContext"
+relative = false
+extra = 0
+# 1. find "32 33 48 75 6E 67 65 72 41 74 74 72 69 62 75 74 65 44 65 6C 65 67 61 74 65 00"
+#    = "23HungerAttributeDelegate\0" (unique); rebuild its RTTI/vtable from R_X86_64_RELATIVE addends
+# 2. inspect the override after tick; it rejects nonzero messages and creative/spectator players,
+#    subtracts one saturation when positive, otherwise one hunger outside peaceful
+# 3. confirm against the reference build: Player pointer, int64 message and context reference;
+#    both AttributeInstance::addBuff calls discard their optional return and join buff cleanup
+# function prologue (virtual dispatch, no direct call sites)
+pattern = "55 41 57 41 56 41 54 53 48 81 EC ? ? ? ? 4C 8B 67 ? 4D 85 E4"
+
+[[signatures]]
+name = "_ZN17AttributeInstance7addBuffERK13AttributeBuff28AttributeModificationContext"
+relative = false
+extra = 0
+# 1. locate Player::eat(int, float); follow the first call after construction of its instantaneous hunger buff
+# 2. confirm the callee branches on isInstantaneous: temporal buffs are copied into a vector; an instantaneous
+#    buff changes current_values[operand] and invokes the attribute delegate before sanitizing and marking dirty
+# 3. confirm against the reference build: AttributeInstance member, const AttributeBuff reference,
+#    AttributeModificationContext by value, and std::optional<float> returned in rax
+# function prologue
+pattern = "55 41 57 41 56 41 55 41 54 53 50 49 89 D7 49 89 F6 48 89 FB 48 8B 06 48 89 F7"
+
+[[signatures]]
+name = "_ZN17AttributeInstance4tickE28AttributeModificationContext"
+relative = false
+extra = 0
+# 1. find "31 37 41 74 74 72 69 62 75 74 65 49 6E 73 74 61 6E 63 65 00"
+#    = "17AttributeInstance\0" (unique); rebuild its RTTI/vtable from R_X86_64_RELATIVE addends
+# 2. inspect the virtual after the destructor pair: it increments temporal-buff life timers, evaluates
+#    shouldBuff/isComplete, updates current_values[operand], and erases completed entries with stride 0x88
+# 3. confirm against the reference build: context by value, void return, then sanitization, delegate tick
+#    and notification only when the final current value changed
+# function prologue (virtual dispatch, no direct call sites)
+pattern = "41 57 41 56 41 55 41 54 53 48 83 EC ? 48 89 FB 48 89 74 24 ? F3 0F 10 47 ? 4C 8B 77"
+
+[[signatures]]
+name = "_ZN25AttributeInstanceDelegate6changeEffRK13AttributeBuff"
+relative = false
+extra = 0
+# 1. locate HungerAttributeDelegate::notify and its vtable; after willChange's constant-true stub,
+#    change returns an engaged optional containing new_value; the next slot evaluates buff amplifiers
+# 2. confirm the shared base implementation ignores this, old_value and the buff, packs xmm1 into
+#    rax's low 32 bits and sets bit 32 (the optional's engaged byte)
+# 3. confirm against the reference build: non-const virtual, two floats and const AttributeBuff reference;
+#    addBuff and tick call it after the tentative write and last buff read, before sanitization and dirtying
+# function body (unique leaf, no direct call sites)
+pattern = "66 0F 7E C9 48 B8 00 00 00 00 01 00 00 00 48 09 C8 C3"
+
+[[signatures]]
 name = "BlockState::StateListNode::mHead"
 relative = false
 extra = 0

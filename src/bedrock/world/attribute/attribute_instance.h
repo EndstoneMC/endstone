@@ -18,6 +18,7 @@
 #include <optional>
 #include <vector>
 
+#include "bedrock/bedrock.h"
 #include "bedrock/world/attribute/attribute.h"
 #include "bedrock/world/attribute/attribute_buff.h"
 #include "bedrock/world/attribute/attribute_instance_handle.h"
@@ -30,7 +31,7 @@ class BaseAttributeMap;
 class AttributeInstance {
 public:
     virtual ~AttributeInstance() = default;
-    // virtual void tick(AttributeModificationContext context);
+    ENDSTONE_HOOK virtual void tick(AttributeModificationContext context);
 
     [[nodiscard]] const Attribute *getAttribute() const;
     [[nodiscard]] float getMaxValue() const;
@@ -42,12 +43,16 @@ public:
     void setMaxValue(float max, AttributeModificationContext context);
     void setMinValue(float min, AttributeModificationContext context);
     void setCurrentValue(float value, AttributeModificationContext context);
-    std::optional<float> addBuff(const AttributeBuff &, AttributeModificationContext);
+    ENDSTONE_HOOK std::optional<float> addBuff(const AttributeBuff &, AttributeModificationContext);
     void removeBuff(const AttributeBuff &buff);
     [[nodiscard]] std::vector<AttributeModifier> getModifiers() const;
     void addModifier(const AttributeModifier &modifier, AttributeModificationContext context);
     void removeModifier(const AttributeModifier &modifier, AttributeModificationContext context);
     bool removeModifier(const mce::UUID &id, AttributeModificationContext context);
+
+    // Endstone begin
+    [[nodiscard]] AttributeInstanceDelegate *getDelegate() const { return delegate_.get(); }
+    // Endstone end
 
 private:
     friend class BaseAttributeMap;

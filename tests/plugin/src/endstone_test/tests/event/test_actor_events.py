@@ -62,6 +62,49 @@ def test_actor_explode(recorder: EventRecorder) -> None:
     assert isinstance(snapshot["y"], float)
 
 
+def test_food_level_change(recorder: EventRecorder) -> None:
+    """Verify FoodLevelChangeEvent reports a player's resultant food level."""
+    for snapshot in recorder.require("FoodLevelChangeEvent"):
+        assert snapshot["actor_type"] == "minecraft:player"
+        assert snapshot["current_level"] is not None
+        assert 0 <= snapshot["current_level"] <= 20
+        assert snapshot["food_level"] >= 0
+
+
+def test_food_level_change_item_is_optional(recorder: EventRecorder) -> None:
+    """Verify item-backed and itemless food-level changes are both reported."""
+    for snapshot in recorder.require("FoodLevelChangeEvent/item"):
+        assert snapshot["has_item"]
+        assert ":" in snapshot["item_type"]
+    for snapshot in recorder.require("FoodLevelChangeEvent/itemless"):
+        assert not snapshot["has_item"]
+        assert snapshot["item_type"] is None
+
+
+def test_food_level_change_cancel_is_meaningful(recorder: EventRecorder) -> None:
+    """Verify cancellation leaves the server's food level unchanged."""
+    for snapshot in recorder.require("FoodLevelChangeEvent/cancel"):
+        assert snapshot["item_type"] is not None
+        assert snapshot["current_level"] != snapshot["food_level"]
+        assert snapshot["outcome"]["food_level"] == snapshot["current_level"]
+
+
+def test_food_level_change_mutation_is_meaningful(recorder: EventRecorder) -> None:
+    """Verify mutation applies a one-point increase to the server's food level."""
+    for snapshot in recorder.require("FoodLevelChangeEvent/mutate"):
+        assert snapshot["item_type"] is not None
+        assert snapshot["food_level_before"] != snapshot["food_level_after"]
+        assert snapshot["food_level_after"] == snapshot["current_level"] + 1
+        assert snapshot["outcome"]["food_level"] == snapshot["food_level_after"]
+
+
+def test_food_level_change_can_remove_effect(recorder: EventRecorder) -> None:
+    """Verify removing Saturation from its food-level callback completes safely."""
+    for snapshot in recorder.require("FoodLevelChangeEvent/remove_effect"):
+        assert snapshot["food_level"] > snapshot["current_level"]
+        assert not snapshot["has_effect"]
+
+
 def test_actor_change_block(recorder: EventRecorder) -> None:
     """Verify ActorChangeBlockEvent names the actor and the block it changes."""
     snapshot = recorder.require("ActorChangeBlockEvent")[0]
@@ -150,6 +193,7 @@ def test_toggle_alternates_per_actor(recorder: EventRecorder, event_name: str) -
         "ActorCollideWithActorEvent",
         "ActorDismountEvent",
         "ActorEffectEvent",
+        "FoodLevelChangeEvent",
         "ActorPickupItemEvent",
     ],
 )

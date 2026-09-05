@@ -167,6 +167,20 @@ void init_event(py::module_ &m, py::class_<Event, PyEvent> &event)
                                                       "Called when an `Actor`'s swimming state is toggled.")
         .def_property_readonly("is_swimming", &ActorToggleSwimEvent::isSwimming,
                                "Whether the actor is now swimming or not.");
+    py::class_<FoodLevelChangeEvent, ActorEvent<Mob>, ICancellable>(m, "FoodLevelChangeEvent", R"doc(
+    Called when a player's food level changes.
+
+    If this event is cancelled, the player's food level will not change.
+)doc")
+        .def_property_readonly("actor", &FoodLevelChangeEvent::getActor, "The `Player` whose food level is changing.")
+        .def_property_readonly("item", &FoodLevelChangeEvent::getItem,
+                               "A copy of the `ItemStack` being consumed, or `None` if no item triggered the change.")
+        .def_property("food_level", &FoodLevelChangeEvent::getFoodLevel, &FoodLevelChangeEvent::setFoodLevel,
+                      R"doc(
+    Gets or sets the resultant food level the player should be set to.
+
+    A value of 20 is a full food bar and 0 is an empty one. Values below 0 are clamped to 0.
+)doc");
 
     // Block events
     py::class_<BlockEvent, Event>(m, "BlockEvent", "Represents an `Block`-related event.")

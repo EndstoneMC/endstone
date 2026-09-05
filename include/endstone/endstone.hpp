@@ -85,6 +85,7 @@ static_assert(_ITERATOR_DEBUG_LEVEL == 0,
 #include "event/actor/actor_teleport_event.h"
 #include "event/actor/actor_toggle_glide_event.h"
 #include "event/actor/actor_toggle_swim_event.h"
+#include "event/actor/food_level_change_event.h"
 #include "event/actor/player_death_event.h"
 #include "event/block/block_break_event.h"
 #include "event/block/block_cook_event.h"

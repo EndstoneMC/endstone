@@ -120,6 +120,39 @@ CHECKS = (
         "rather than filled.",
     ),
     Check(
+        "FoodLevelChangeEvent/cancel",
+        "get hungry, then eat an apple",
+        (("minecraft:apple", 4),),
+        detail="Sprint and jump until at least two food points are missing, then "
+        "eat an apple. The apple is consumed, but cancelling keeps the food bar "
+        "at the same level.",
+    ),
+    Check(
+        "FoodLevelChangeEvent/mutate",
+        "eat another apple",
+        detail="Eat another apple while still hungry. The final level is changed "
+        "before it is applied, so the bar gains exactly one food point instead "
+        "of the apple's usual four.",
+    ),
+    Check(
+        "FoodLevelChangeEvent/item",
+        "eat a food item",
+        detail="A food item should be included in the event when eating from a stack.",
+    ),
+    Check(
+        "FoodLevelChangeEvent/itemless",
+        "sprint and jump until hunger decreases",
+        detail="An exhaustion-driven food level change should report no food item.",
+    ),
+    Check(
+        "FoodLevelChangeEvent/remove_effect",
+        "apply Saturation while hungry",
+        detail="Run /effect @s saturation 3 0 while hungry. The listener removes "
+        "Saturation during the food change; the server should apply the food "
+        "level and remain stable. Run it again if the effect test cancels the "
+        "first attempt.",
+    ),
+    Check(
         "BlockFormEvent/cancel",
         "pour the lava onto water",
         (("minecraft:lava_bucket", 1), ("minecraft:water_bucket", 1)),

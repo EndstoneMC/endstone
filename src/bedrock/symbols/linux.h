@@ -11,7 +11,7 @@
 
 namespace endstone::runtime {
 
-static constexpr std::array<std::pair<std::string_view, std::size_t>, 89> symbols = {{
+static constexpr std::array<std::pair<std::string_view, std::size_t>, 95> symbols = {{
     {"BlockState::StateListNode::mHead", 245466592},
     {"Enchant::mEnchants", 245292608},
     {"MobEffect::mMobEffects", 245272952},
@@ -24,6 +24,11 @@ static constexpr std::array<std::pair<std::string_view, std::size_t>, 89> symbol
     {"_ZN12ActorFactory18createSpawnedActorERK25ActorDefinitionIdentifierP5ActorRK4Vec3RK4Vec2", 178029744},
     // ArmorStand
     {"_ZN10ArmorStand14getInteractionER6PlayerR16ActorInteractionRK4Vec3", 177684240},
+    // AttributeInstance
+    {"_ZN17AttributeInstance4tickE28AttributeModificationContext", 187755152},
+    {"_ZN17AttributeInstance7addBuffERK13AttributeBuff28AttributeModificationContext", 187753904},
+    // AttributeInstanceDelegate
+    {"_ZN25AttributeInstanceDelegate6changeEffRK13AttributeBuff", 187756656},
     // BatchedNetworkPeer
     {"_ZN18BatchedNetworkPeer10sendPacketERKNSt3__112basic_stringIcNS0_11char_traitsIcEENS0_9allocatorIcEEEEN11NetworkPeer11ReliabilityE15Compressibility", 115687520},
     {"_ZN18BatchedNetworkPeer14_receivePacketERNSt3__112basic_stringIcNS0_11char_traitsIcEENS0_9allocatorIcEEEERKNS0_10shared_ptrINS0_6chrono10time_pointINS9_12steady_clockENS9_8durationIxNS0_5ratioILl1ELl1000000000EEEEEEEEE", 115687936},
@@ -81,6 +86,8 @@ static constexpr std::array<std::pair<std::string_view, std::size_t>, 89> symbol
     {"_ZN9Explosion7explodeER7IRandom", 202092368},
     // FurnaceBlockActor
     {"_ZN17FurnaceBlockActor15getBurnDurationERK13ItemStackBasef", 207576016},
+    // HungerAttributeDelegate
+    {"_ZN23HungerAttributeDelegate6notifyElR28AttributeModificationContext", 187774048},
     // InteractComponent
     {"_ZN17InteractComponent14getInteractionER5ActorR6PlayerR16ActorInteraction", 112049168},
     // InventoryTransaction
@@ -127,6 +134,8 @@ static constexpr std::array<std::pair<std::string_view, std::size_t>, 89> symbol
     {"_ZN6Player17completeUsingItemEv", 188166480},
     {"_ZN6Player18setRespawnPositionERK8BlockPos13DimensionType", 188284672},
     {"_ZN6Player28setSpawnBlockRespawnPositionERK8BlockPos13DimensionType", 188283952},
+    {"_ZN6Player3eatERK9ItemStack", 188165648},
+    {"_ZN6Player3eatEif", 188292960},
     {"_ZN6Player4dropERK9ItemStackb", 188278672},
     {"_ZN6Player4takeER5Actorii", 188225936},
     {"_ZN6Player9addLevelsEi", 188297680},

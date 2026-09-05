@@ -11,7 +11,7 @@
 
 namespace endstone::runtime {
 
-static constexpr std::array<std::pair<std::string_view, std::size_t>, 89> symbols = {{
+static constexpr std::array<std::pair<std::string_view, std::size_t>, 95> symbols = {{
     {"BlockState::StateListNode::mHead", 211294960},
     {"Enchant::mEnchants", 211141912},
     {"MobEffect::mMobEffects", 211424880},
@@ -23,6 +23,11 @@ static constexpr std::array<std::pair<std::string_view, std::size_t>, 89> symbol
     {"?createSpawnedActor@ActorFactory@@QEAA?AV?$OwnerPtr@VEntityContext@@@@AEBUActorDefinitionIdentifier@@PEAVActor@@AEBVVec3@@AEBVVec2@@@Z", 26276384},
     // ArmorStand
     {"?getInteraction@ArmorStand@@UEAA?AVInteractionResult@@AEAVPlayer@@AEAVActorInteraction@@AEBVVec3@@@Z", 37473152},
+    // AttributeInstance
+    {"?addBuff@AttributeInstance@@QEAA?AV?$optional@M@std@@AEBVAttributeBuff@@UAttributeModificationContext@@@Z", 37125360},
+    {"?tick@AttributeInstance@@UEAAXUAttributeModificationContext@@@Z", 37127344},
+    // AttributeInstanceDelegate
+    {"?change@AttributeInstanceDelegate@@UEAA?AV?$optional@M@std@@MMAEBVAttributeBuff@@@Z", 37128304},
     // BatchedNetworkPeer
     {"?_receivePacket@BatchedNetworkPeer@@MEAA?AW4DataStatus@NetworkPeer@@AEAV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@AEBV?$shared_ptr@V?$time_point@Usteady_clock@chrono@std@@V?$duration@_JU?$ratio@$00$0DLJKMKAA@@std@@@23@@chrono@std@@@5@@Z", 16659136},
     {"?sendPacket@BatchedNetworkPeer@@UEAAXAEBV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@W4Reliability@NetworkPeer@@W4Compressibility@@@Z", 16658656},
@@ -80,6 +85,8 @@ static constexpr std::array<std::pair<std::string_view, std::size_t>, 89> symbol
     {"?explode@Explosion@@QEAA_NAEAVIRandom@@@Z", 7190560},
     // FurnaceBlockActor
     {"?getBurnDuration@FurnaceBlockActor@@SAMAEBVItemStackBase@@M@Z", 99470080},
+    // HungerAttributeDelegate
+    {"?notify@HungerAttributeDelegate@@UEAAX_JAEAUAttributeModificationContext@@@Z", 37146192},
     // InteractComponent
     {"?getInteraction@InteractComponent@@QEAA?AVInteractionResult@@AEAVActor@@AEAVPlayer@@AEAVActorInteraction@@@Z", 47664368},
     // InventoryTransaction
@@ -123,6 +130,8 @@ static constexpr std::array<std::pair<std::string_view, std::size_t>, 89> symbol
     {"?addLevels@Player@@UEAAXH@Z", 2320016},
     {"?completeUsingItem@Player@@QEAAXXZ", 2206272},
     {"?drop@Player@@UEAA_NAEBVItemStack@@_N@Z", 2302400},
+    {"?eat@Player@@QEAAXAEBVItemStack@@@Z", 2205456},
+    {"?eat@Player@@QEAAXHM@Z", 2315600},
     {"?setRespawnPosition@Player@@QEAAXAEBVBlockPos@@UDimensionType@@@Z", 2307600},
     {"?setSpawnBlockRespawnPosition@Player@@QEAA_NAEBVBlockPos@@UDimensionType@@@Z", 2306752},
     {"?startSleepInBed@Player@@UEAA?AW4BedSleepingResult@@AEBVBlockPos@@_NM@Z", 2182176},

@@ -1,3 +1,4 @@
+from endstone.attribute import Attribute
 from endstone.event import (
     ActorChangeBlockEvent,
     ActorCollideWithActorEvent,
@@ -13,6 +14,7 @@ from endstone.event import (
     ActorTeleportEvent,
     ActorToggleGlideEvent,
     ActorToggleSwimEvent,
+    FoodLevelChangeEvent,
     event_handler,
 )
 from endstone.potion import Effect
@@ -118,6 +120,84 @@ class ActorEventListener(EventListener):
             y=event.location.y,
             z=event.location.z,
         )
+
+    @event_handler
+    def on_food_level_change(self, event: FoodLevelChangeEvent):
+        item = event.item
+        hunger = event.actor.get_attribute(Attribute.PLAYER_HUNGER)
+        current_level = int(hunger.value) if hunger is not None else None
+        item_type = str(item.type) if item is not None else None
+        food_level = event.food_level
+        self.record(
+            event,
+            f"{event.actor.name}'s food level changes from "
+            f"{current_level} to {food_level}",
+            actor_type=str(event.actor.type),
+            current_level=current_level,
+            food_level=food_level,
+            has_item=item is not None,
+            item_type=item_type,
+        )
+        source = "item" if item is not None else "itemless"
+        if self.due(event, source):
+            self.recorder.pass_check(
+                f"FoodLevelChangeEvent/{source}",
+                has_item=item is not None,
+                item_type=item_type,
+            )
+        if (
+            item is None
+            and current_level is not None
+            and food_level > current_level
+            and event.actor.has_effect(Effect.SATURATION)
+            and self.due(event, "remove_effect")
+        ):
+            event.actor.remove_effect(Effect.SATURATION)
+            self.recorder.pass_check(
+                "FoodLevelChangeEvent/remove_effect",
+                current_level=current_level,
+                food_level=food_level,
+                has_effect=event.actor.has_effect(Effect.SATURATION),
+            )
+        if (
+            item_type != "minecraft:apple"
+            or current_level is None
+            or current_level >= 20
+        ):
+            return
+
+        outcome = {}
+        if self.due(event, CANCEL):
+            self.cancelled(
+                event,
+                current_level=current_level,
+                food_level=food_level,
+                item_type=item_type,
+                outcome=outcome,
+            )
+        elif self.due(event, MUTATE):
+            event.food_level = current_level + 1
+            self.mutated(
+                event,
+                current_level=current_level,
+                food_level_before=food_level,
+                food_level_after=event.food_level,
+                item_type=item_type,
+                outcome=outcome,
+            )
+        else:
+            return
+
+        player_id = event.actor.unique_id
+
+        def record_outcome():
+            player = self.server.get_player(player_id)
+            if player is not None:
+                hunger = player.get_attribute(Attribute.PLAYER_HUNGER)
+                if hunger is not None:
+                    outcome["food_level"] = int(hunger.value)
+
+        self.server.scheduler.run_task(self.plugin, record_outcome, delay=1)
 
     @event_handler
     def on_actor_knockback(self, event: ActorKnockbackEvent):
