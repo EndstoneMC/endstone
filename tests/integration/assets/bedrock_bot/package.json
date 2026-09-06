@@ -1,0 +1,17 @@
+{
+  "name": "endstone-bedrock-event-bot",
+  "private": true,
+  "version": "0.1.0",
+  "description": "Exact-version offline Bedrock client used by Endstone event tests.",
+  "license": "MIT",
+  "engines": {
+    "node": ">=18"
+  },
+  "dependencies": {
+    "bedrock-protocol": "^3.59.0",
+    "prismarine-nbt": "2.8.0"
+  },
+  "allowScripts": {
+    "raknet-native@1.2.3": true
+  }
+}

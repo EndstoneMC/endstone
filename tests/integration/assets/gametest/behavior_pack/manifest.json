@@ -1,0 +1,30 @@
+{
+  "format_version": 2,
+  "header": {
+    "name": "Endstone Event GameTests",
+    "description": "Server-side GameTest scenarios for Endstone event coverage",
+    "uuid": "7fbb4a2f-86a2-4c17-9f8d-4c7d7ce4b2d6",
+    "version": [1, 0, 0],
+    "min_engine_version": [1, 26, 0]
+  },
+  "modules": [
+    {
+      "description": "Endstone event GameTest script",
+      "type": "script",
+      "language": "javascript",
+      "entry": "scripts/main.js",
+      "uuid": "d0c7e6b6-47fc-46a9-b7a8-cf4b6e6e4f2a",
+      "version": [1, 0, 0]
+    }
+  ],
+  "dependencies": [
+    {
+      "module_name": "@minecraft/server",
+      "version": "beta"
+    },
+    {
+      "module_name": "@minecraft/server-gametest",
+      "version": "beta"
+    }
+  ]
+}

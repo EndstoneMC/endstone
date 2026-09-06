@@ -17,7 +17,6 @@ from endstone.event import (
     PlayerEmoteEvent,
     PlayerExpChangeEvent,
     PlayerGameModeChangeEvent,
-    PlayerHideActorEvent,
     PlayerInputEvent,
     PlayerInteractActorEvent,
     PlayerInteractEvent,
@@ -40,6 +39,7 @@ from endstone.event import (
     PlayerRiptideEvent,
     PlayerSetSpawnEvent,
     PlayerShearActorEvent,
+    PlayerHideActorEvent,
     PlayerShowActorEvent,
     PlayerSkinChangeEvent,
     PlayerTeleportEvent,
@@ -49,11 +49,7 @@ from endstone.event import (
     PlayerToggleSprintEvent,
     event_handler,
 )
-from endstone.inventory import ItemStack
 from endstone.lang import Translatable
-from endstone.potion import Effect, EffectType
-
-from endstone_test.checks import CANCEL, MUTATE, WAND_PREFIX
 
 from .event_listener import EventListener
 
@@ -76,6 +72,9 @@ class PlayerEventListener(EventListener):
     @event_handler
     def on_player_login(self, event: PlayerLoginEvent):
         skin = event.player.skin
+        cancelled_before = event.is_cancelled
+        if self.plugin.should_cancel_event("PlayerLoginEvent"):
+            event.cancel()
         self.record(
             event,
             ColorFormat.YELLOW + f"{event.player.name} logged in.",
@@ -84,6 +83,9 @@ class PlayerEventListener(EventListener):
             cape_id=skin.cape_id,
             skin_shape=tuple(skin.image.shape),
             has_cape=skin.cape_image is not None,
+            kick_message=event.kick_message,
+            cancelled_before=cancelled_before,
+            cancelled=event.is_cancelled,
         )
 
     @event_handler
@@ -93,6 +95,7 @@ class PlayerEventListener(EventListener):
             event,
             _as_text(self.server, event.join_message),
             player=player.name,
+            join_message=_as_text(self.server, event.join_message),
             unique_id=str(player.unique_id),
             xuid=player.xuid,
             runtime_id=player.runtime_id,
@@ -102,7 +105,6 @@ class PlayerEventListener(EventListener):
             ping=player.ping,
             is_op=player.is_op,
         )
-        self.plugin.restock(player)
 
         for line in (
             "===========================",
@@ -128,49 +130,65 @@ class PlayerEventListener(EventListener):
 
     @event_handler
     def on_player_quit(self, event: PlayerQuitEvent):
+        quit_message = _as_text(self.server, event.quit_message)
         self.record(
             event,
-            _as_text(self.server, event.quit_message),
+            quit_message,
             player=event.player.name,
+            quit_message=quit_message,
         )
 
     @event_handler
     def on_player_chat(self, event: PlayerChatEvent):
+        cancelled_before = event.is_cancelled
+        if self.plugin.should_cancel_event("PlayerChatEvent"):
+            event.cancel()
         self.record(
             event,
             f"{event.player.name} says: {event.message}",
             player=event.player.name,
             message=event.message,
+            format=event.format,
             recipient_count=len(event.recipients),
+            recipient_names=tuple(player.name for player in event.recipients),
+            cancelled_before=cancelled_before,
+            cancelled=event.is_cancelled,
         )
 
     @event_handler
     def on_player_command(self, event: PlayerCommandEvent):
+        cancelled_before = event.is_cancelled
+        if self.plugin.should_cancel_event("PlayerCommandEvent"):
+            event.cancel()
         self.record(
             event,
             f"{event.player.name} runs command: {event.command}",
             player=event.player.name,
             command=event.command,
+            cancelled_before=cancelled_before,
+            cancelled=event.is_cancelled,
         )
 
     @event_handler
     def on_player_emote(self, event: PlayerEmoteEvent):
+        cancelled_before = event.is_cancelled
+        if self.plugin.should_cancel_event("PlayerEmoteEvent"):
+            event.cancel()
         self.record(
             event,
             f"{event.player.name} sends an emote: {event.emote_id}",
             player=event.player.name,
             emote_id=event.emote_id,
             is_muted=event.is_muted,
+            cancelled_before=cancelled_before,
+            cancelled=event.is_cancelled,
         )
-
-    def fire_wand(self, player, name: str) -> None:
-        if name == "kick":
-            player.kick("endstone-test kick wand")
-        elif name == "effect":
-            player.add_effect(Effect(EffectType.SPEED, 200, 0))
 
     @event_handler
     def on_player_interact(self, event: PlayerInteractEvent):
+        cancelled_before = event.is_cancelled
+        if self.plugin.should_cancel_event("PlayerInteractEvent"):
+            event.cancel()
         self.record(
             event,
             f"{event.player.name} interact ({event.action}) with {event.block} "
@@ -182,44 +200,67 @@ class PlayerEventListener(EventListener):
             has_item=event.has_item,
             block_type=str(event.block.type) if event.has_block else None,
             block_face=str(event.block_face),
+            item_type=str(event.item.type) if event.item is not None else None,
+            clicked_position=(
+                event.clicked_position.x,
+                event.clicked_position.y,
+                event.clicked_position.z,
+            )
+            if event.clicked_position is not None
+            else None,
+            cancelled_before=cancelled_before,
+            cancelled=event.is_cancelled,
         )
-        if event.has_item and str(event.action).endswith("RIGHT_CLICK_AIR"):
-            name = event.item.item_meta.display_name or ""
-            if name.startswith(WAND_PREFIX):
-                self.fire_wand(event.player, name[len(WAND_PREFIX) :])
 
     @event_handler
     def on_player_interact_actor(self, event: PlayerInteractActorEvent):
+        cancelled_before = event.is_cancelled
+        if self.plugin.should_cancel_event("PlayerInteractActorEvent"):
+            event.cancel()
         self.record(
             event,
             f"{event.player.name} interacts with actor {event.actor.name}",
             player=event.player.name,
             actor_type=str(event.actor.type),
+            cancelled_before=cancelled_before,
+            cancelled=event.is_cancelled,
         )
 
     @event_handler
     def on_player_kick(self, event: PlayerKickEvent):
+        cancelled_before = event.is_cancelled
+        reason = event.reason
+        if self.plugin.should_cancel_event("PlayerKickEvent"):
+            event.cancel()
         self.record(
             event,
-            f"{event.player.name} has been kicked due to {event.reason}",
+            f"{event.player.name} has been kicked due to {reason}",
             player=event.player.name,
-            reason=event.reason,
+            reason=reason,
+            cancelled_before=cancelled_before,
+            cancelled=event.is_cancelled,
         )
         event.reason = ColorFormat.BOLD + event.reason
-        if self.due(event, CANCEL):
-            self.cancelled(event, reason=event.reason)
 
     @event_handler
     def on_player_game_mode_change(self, event: PlayerGameModeChangeEvent):
+        cancelled_before = event.is_cancelled
+        if self.plugin.should_cancel_event("PlayerGameModeChangeEvent"):
+            event.cancel()
         self.record(
             event,
             f"{event.player.name} changed game mode to {event.new_game_mode}",
             player=event.player.name,
             new_game_mode=str(event.new_game_mode),
+            cancelled_before=cancelled_before,
+            cancelled=event.is_cancelled,
         )
 
     @event_handler
     def on_player_jump(self, event: PlayerJumpEvent):
+        cancelled_before = event.is_cancelled
+        if self.plugin.should_cancel_event("PlayerJumpEvent"):
+            event.cancel()
         self.record(
             event,
             f"{event.player.name} {ColorFormat.YELLOW}jumps{ColorFormat.RESET} from "
@@ -229,10 +270,17 @@ class PlayerEventListener(EventListener):
             to_xyz=_xyz(event.to_location),
             from_rot=_rot(event.from_location),
             to_rot=_rot(event.to_location),
+            from_dimension=str(event.from_location.dimension.id),
+            to_dimension=str(event.to_location.dimension.id),
+            cancelled_before=cancelled_before,
+            cancelled=event.is_cancelled,
         )
 
     @event_handler
     def on_player_move(self, event: PlayerMoveEvent):
+        cancelled_before = event.is_cancelled
+        if self.plugin.should_cancel_event("PlayerMoveEvent"):
+            event.cancel()
         self.record(
             event,
             f"{event.player.name} {ColorFormat.GREEN}moves{ColorFormat.RESET} from "
@@ -242,10 +290,34 @@ class PlayerEventListener(EventListener):
             to_xyz=_xyz(event.to_location),
             from_rot=_rot(event.from_location),
             to_rot=_rot(event.to_location),
+            from_dimension=str(event.from_location.dimension.id),
+            to_dimension=str(event.to_location.dimension.id),
+            cancelled_before=cancelled_before,
+            cancelled=event.is_cancelled,
+        )
+
+    @event_handler
+    def on_player_open_sign(self, event: PlayerOpenSignEvent):
+        cancelled_before = event.is_cancelled
+        if self.plugin.should_cancel_event("PlayerOpenSignEvent"):
+            event.cancel()
+        self.record(
+            event,
+            f"{event.player.name} opens a sign ({event.side}, {event.cause})",
+            always_log=True,
+            player=event.player.name,
+            sign_type=str(event.sign.type),
+            side=str(event.side),
+            cause=str(event.cause),
+            cancelled_before=cancelled_before,
+            cancelled=event.is_cancelled,
         )
 
     @event_handler
     def on_player_teleport(self, event: PlayerTeleportEvent):
+        cancelled_before = event.is_cancelled
+        if self.plugin.should_cancel_event("PlayerTeleportEvent"):
+            event.cancel()
         self.record(
             event,
             f"{event.player.name} teleported from {event.from_location} to "
@@ -255,12 +327,15 @@ class PlayerEventListener(EventListener):
             to_xyz=_xyz(event.to_location),
             from_rot=_rot(event.from_location),
             to_rot=_rot(event.to_location),
+            cancelled_before=cancelled_before,
+            cancelled=event.is_cancelled,
         )
-        if self.due(event, CANCEL):
-            self.cancelled(event, to_xyz=_xyz(event.to_location))
 
     @event_handler
     def on_player_portal(self, event: PlayerPortalEvent):
+        cancelled_before = event.is_cancelled
+        if self.plugin.should_cancel_event("PlayerPortalEvent"):
+            event.cancel()
         self.record(
             event,
             f"{event.player.name} teleported from {event.from_location} to "
@@ -271,6 +346,10 @@ class PlayerEventListener(EventListener):
             to_xyz=_xyz(event.to_location),
             from_rot=_rot(event.from_location),
             to_rot=_rot(event.to_location),
+            from_dimension=str(event.from_location.dimension.id),
+            to_dimension=str(event.to_location.dimension.id),
+            cancelled_before=cancelled_before,
+            cancelled=event.is_cancelled,
         )
 
     @event_handler
@@ -306,16 +385,25 @@ class PlayerEventListener(EventListener):
 
     @event_handler
     def on_player_item_consume(self, event: PlayerItemConsumeEvent):
+        cancelled_before = event.is_cancelled
+        if self.plugin.should_cancel_event("PlayerItemConsumeEvent"):
+            event.cancel()
         self.record(
             event,
             f"{event.player.name} consumes {event.item}.",
             player=event.player.name,
             item_type=str(event.item.type),
+            item_amount=event.item.amount,
             hand=str(event.hand),
+            cancelled_before=cancelled_before,
+            cancelled=event.is_cancelled,
         )
 
     @event_handler
     def on_player_item_held(self, event: PlayerItemHeldEvent):
+        cancelled_before = event.is_cancelled
+        if self.plugin.should_cancel_event("PlayerItemHeldEvent"):
+            event.cancel()
         self.record(
             event,
             f"{event.player.name} changes slot from {event.previous_slot} to "
@@ -323,34 +411,52 @@ class PlayerEventListener(EventListener):
             player=event.player.name,
             previous_slot=event.previous_slot,
             new_slot=event.new_slot,
+            cancelled_before=cancelled_before,
+            cancelled=event.is_cancelled,
         )
 
     @event_handler
     def on_player_drop_item(self, event: PlayerDropItemEvent):
+        cancelled_before = event.is_cancelled
+        if self.plugin.should_cancel_event("PlayerDropItemEvent"):
+            event.cancel()
         self.record(
             event,
             f"{event.player.name} drops {event.item}.",
             player=event.player.name,
             item_type=str(event.item.type),
+            item_amount=event.item.amount,
+            cancelled_before=cancelled_before,
+            cancelled=event.is_cancelled,
         )
 
     @event_handler
     def on_player_pickup_item(self, event: PlayerPickupItemEvent):
+        cancelled_before = event.is_cancelled
+        if self.plugin.should_cancel_event("PlayerPickupItemEvent"):
+            event.cancel()
         self.record(
             event,
             f"{event.player.name} picks up {event.item} ({event.item.item_stack}).",
             player=event.player.name,
             item_type=str(event.item.item_stack.type),
+            cancelled_before=cancelled_before,
+            cancelled=event.is_cancelled,
         )
 
     @event_handler
     def on_player_bed_enter(self, event: PlayerBedEnterEvent):
+        cancelled_before = event.is_cancelled
+        if self.plugin.should_cancel_event("PlayerBedEnterEvent"):
+            event.cancel()
         self.record(
             event,
             f"{event.player.name} enters bed ({event.bed}).",
             always_log=True,
             player=event.player.name,
             bed_type=str(event.bed.type),
+            cancelled_before=cancelled_before,
+            cancelled=event.is_cancelled,
         )
 
     @event_handler
@@ -365,11 +471,35 @@ class PlayerEventListener(EventListener):
 
     @event_handler
     def on_player_skin_change(self, event: PlayerSkinChangeEvent):
+        cancelled_before = event.is_cancelled
+        if self.plugin.should_cancel_event("PlayerSkinChangeEvent"):
+            event.cancel()
         self.record(
             event,
             f"{event.player.name} changes skin to {event.new_skin.id}.",
             player=event.player.name,
             new_skin_id=event.new_skin.id,
+            skin_change_message=_as_text(self.server, event.skin_change_message),
+            cancelled_before=cancelled_before,
+            cancelled=event.is_cancelled,
+        )
+
+    @event_handler
+    def on_player_hide_actor(self, event: PlayerHideActorEvent):
+        self.record(
+            event,
+            f"{event.player.name} hides {event.actor.name} ({event.actor.type})",
+            player=event.player.name,
+            actor_type=str(event.actor.type),
+        )
+
+    @event_handler
+    def on_player_show_actor(self, event: PlayerShowActorEvent):
+        self.record(
+            event,
+            f"{event.player.name} shows {event.actor.name} ({event.actor.type})",
+            player=event.player.name,
+            actor_type=str(event.actor.type),
         )
 
     @event_handler
@@ -379,7 +509,6 @@ class PlayerEventListener(EventListener):
             f"{event.player.name} sneaking -> {event.is_sneaking}",
             player=event.player.name,
             is_sneaking=event.is_sneaking,
-            player_is_sneaking=event.player.is_sneaking,
         )
 
     @event_handler
@@ -389,21 +518,28 @@ class PlayerEventListener(EventListener):
             f"{event.player.name} sprinting -> {event.is_sprinting}",
             player=event.player.name,
             is_sprinting=event.is_sprinting,
-            player_is_sprinting=event.player.is_sprinting,
         )
 
     @event_handler
     def on_player_arm_swing(self, event: PlayerArmSwingEvent):
+        cancelled_before = event.is_cancelled
+        if self.plugin.should_cancel_event("PlayerArmSwingEvent"):
+            event.cancel()
         self.record(
             event,
             f"{event.player.name} swings their arm holding {event.item}",
             player=event.player.name,
             has_item=event.item is not None,
             item_type=str(event.item.type) if event.item is not None else None,
+            cancelled_before=cancelled_before,
+            cancelled=event.is_cancelled,
         )
 
     @event_handler
     def on_player_armor_stand_manipulate(self, event: PlayerArmorStandManipulateEvent):
+        cancelled_before = event.is_cancelled
+        if self.plugin.should_cancel_event("PlayerArmorStandManipulateEvent"):
+            event.cancel()
         self.record(
             event,
             f"{event.player.name} swaps {event.player_item} for "
@@ -414,11 +550,18 @@ class PlayerEventListener(EventListener):
             actor_type=str(event.actor.type),
             slot=str(event.slot),
             armor_stand_item_type=str(event.armor_stand_item.type),
+            armor_stand_item_amount=event.armor_stand_item.amount,
             player_item_type=str(event.player_item.type),
+            player_item_amount=event.player_item.amount,
+            cancelled_before=cancelled_before,
+            cancelled=event.is_cancelled,
         )
 
     @event_handler
     def on_player_bucket_actor(self, event: PlayerBucketActorEvent):
+        cancelled_before = event.is_cancelled
+        if self.plugin.should_cancel_event("PlayerBucketActorEvent"):
+            event.cancel()
         self.record(
             event,
             f"{event.player.name} captures {event.actor.name} "
@@ -428,6 +571,58 @@ class PlayerEventListener(EventListener):
             actor_type=str(event.actor.type),
             original_bucket_type=str(event.original_bucket.type),
             hand=str(event.hand),
+            cancelled_before=cancelled_before,
+            cancelled=event.is_cancelled,
+        )
+
+    @event_handler
+    def on_player_bucket_fill(self, event: PlayerBucketFillEvent):
+        cancelled_before = event.is_cancelled
+        if self.plugin.should_cancel_event("PlayerBucketFillEvent"):
+            event.cancel()
+        self.record(
+            event,
+            f"{event.player.name} fills {event.item_stack} from {event.block}",
+            always_log=True,
+            player=event.player.name,
+            block_type=str(event.block.type) if event.block is not None else None,
+            block_clicked_type=str(event.block_clicked.type),
+            block_face=str(event.block_face),
+            bucket_type=str(event.bucket),
+            hand=str(event.hand),
+            item_stack_type=(
+                str(event.item_stack.type) if event.item_stack is not None else None
+            ),
+            item_stack_amount=(
+                event.item_stack.amount if event.item_stack is not None else None
+            ),
+            cancelled_before=cancelled_before,
+            cancelled=event.is_cancelled,
+        )
+
+    @event_handler
+    def on_player_bucket_empty(self, event: PlayerBucketEmptyEvent):
+        cancelled_before = event.is_cancelled
+        if self.plugin.should_cancel_event("PlayerBucketEmptyEvent"):
+            event.cancel()
+        self.record(
+            event,
+            f"{event.player.name} empties {event.item_stack} into {event.block}",
+            always_log=True,
+            player=event.player.name,
+            block_type=str(event.block.type) if event.block is not None else None,
+            block_clicked_type=str(event.block_clicked.type),
+            block_face=str(event.block_face),
+            bucket_type=str(event.bucket),
+            hand=str(event.hand),
+            item_stack_type=(
+                str(event.item_stack.type) if event.item_stack is not None else None
+            ),
+            item_stack_amount=(
+                event.item_stack.amount if event.item_stack is not None else None
+            ),
+            cancelled_before=cancelled_before,
+            cancelled=event.is_cancelled,
         )
 
     @event_handler
@@ -438,10 +633,6 @@ class PlayerEventListener(EventListener):
             player=event.player.name,
             amount=event.amount,
         )
-        if self.due(event, MUTATE):
-            before = event.amount
-            event.amount = before * 2
-            self.mutated(event, before=before, after=event.amount)
 
     @event_handler
     def on_player_input(self, event: PlayerInputEvent):
@@ -472,25 +663,31 @@ class PlayerEventListener(EventListener):
 
     @event_handler
     def on_player_pickup_arrow(self, event: PlayerPickupArrowEvent):
+        cancelled_before = event.is_cancelled
+        if self.plugin.should_cancel_event("PlayerPickupArrowEvent"):
+            event.cancel()
         self.record(
             event,
             f"{event.player.name} picks up an arrow ({event.arrow.type})",
             player=event.player.name,
             arrow_type=str(event.arrow.type),
+            cancelled_before=cancelled_before,
+            cancelled=event.is_cancelled,
         )
-        if self.due(event, CANCEL):
-            self.cancelled(event, arrow_type=str(event.arrow.type))
 
     @event_handler
     def on_player_pickup_experience(self, event: PlayerPickupExperienceEvent):
+        cancelled_before = event.is_cancelled
+        if self.plugin.should_cancel_event("PlayerPickupExperienceEvent"):
+            event.cancel()
         self.record(
             event,
             f"{event.player.name} picks up an orb worth {event.amount} experience",
             player=event.player.name,
             amount=event.amount,
+            cancelled_before=cancelled_before,
+            cancelled=event.is_cancelled,
         )
-        if self.due(event, CANCEL):
-            self.cancelled(event, amount=event.amount)
 
     @event_handler
     def on_player_recipe_book_settings_change(
@@ -519,6 +716,9 @@ class PlayerEventListener(EventListener):
 
     @event_handler
     def on_player_shear_actor(self, event: PlayerShearActorEvent):
+        cancelled_before = event.is_cancelled
+        if self.plugin.should_cancel_event("PlayerShearActorEvent"):
+            event.cancel()
         self.record(
             event,
             f"{event.player.name} shears {event.actor.name} ({event.actor.type}) "
@@ -528,9 +728,9 @@ class PlayerEventListener(EventListener):
             actor_type=str(event.actor.type),
             item_type=str(event.item.type),
             hand=str(event.hand),
+            cancelled_before=cancelled_before,
+            cancelled=event.is_cancelled,
         )
-        if self.due(event, CANCEL):
-            self.cancelled(event, actor_type=str(event.actor.type))
 
     @event_handler
     def on_player_toggle_crawl(self, event: PlayerToggleCrawlEvent):
@@ -539,7 +739,6 @@ class PlayerEventListener(EventListener):
             f"{event.player.name} crawling -> {event.is_crawling}",
             player=event.player.name,
             is_crawling=event.is_crawling,
-            player_is_crawling=event.player.is_crawling,
         )
 
     @event_handler
@@ -549,12 +748,13 @@ class PlayerEventListener(EventListener):
             f"{event.player.name} flying -> {event.is_flying}",
             player=event.player.name,
             is_flying=event.is_flying,
-            player_is_flying=event.player.is_flying,
-            allow_flight=event.player.allow_flight,
         )
 
     @event_handler
     def on_player_craft_item(self, event: PlayerCraftItemEvent):
+        cancelled_before = event.is_cancelled
+        if self.plugin.should_cancel_event("PlayerCraftItemEvent"):
+            event.cancel()
         self.record(
             event,
             f"{event.player.name} crafts {event.recipe.id} x{event.repetitions}",
@@ -564,18 +764,15 @@ class PlayerEventListener(EventListener):
             repetitions=event.repetitions,
             ingredients=[str(i.type) for i in event.ingredients],
             results=[str(r.type) for r in event.results],
+            cancelled_before=cancelled_before,
+            cancelled=event.is_cancelled,
         )
-        if self.due(event, CANCEL):
-            self.cancelled(event, recipe_id=str(event.recipe.id))
-        elif self.due(event, MUTATE):
-            before = [str(r.type) for r in event.results]
-            event.results = [ItemStack("minecraft:diamond", 1)]
-            self.mutated(
-                event, before=before, after=[str(r.type) for r in event.results]
-            )
 
     @event_handler
     def on_player_edit_book(self, event: PlayerEditBookEvent):
+        cancelled_before = event.is_cancelled
+        if self.plugin.should_cancel_event("PlayerEditBookEvent"):
+            event.cancel()
         self.record(
             event,
             f"{event.player.name} edits a book in slot {event.slot} (signing: {event.is_signing})",
@@ -583,114 +780,29 @@ class PlayerEventListener(EventListener):
             player=event.player.name,
             slot=event.slot,
             is_signing=event.is_signing,
-            previous_pages=len(event.previous_book_meta.pages),
-            new_pages=len(event.new_book_meta.pages),
+            previous_pages=tuple(event.previous_book_meta.pages),
+            new_pages=tuple(event.new_book_meta.pages),
+            cancelled_before=cancelled_before,
+            cancelled=event.is_cancelled,
         )
-        if self.due(event, CANCEL):
-            self.cancelled(event, slot=event.slot)
-        elif self.due(event, MUTATE):
-            meta = event.new_book_meta
-            meta.pages = ["Rewritten by endstone-test."]
-            event.new_book_meta = meta
-            self.mutated(event, pages=list(event.new_book_meta.pages))
 
     @event_handler
     def on_player_set_spawn(self, event: PlayerSetSpawnEvent):
+        cancelled_before = event.is_cancelled
+        if self.plugin.should_cancel_event("PlayerSetSpawnEvent"):
+            event.cancel()
         self.record(
             event,
             f"{event.player.name} sets spawn to {event.location} ({event.cause})",
             always_log=True,
             player=event.player.name,
             cause=str(event.cause),
-            xyz=(event.location.x, event.location.y, event.location.z),
-            dimension=str(event.location.dimension.id),
-        )
-        if self.due(event, CANCEL):
-            self.cancelled(event, cause=str(event.cause))
-        elif self.due(event, MUTATE):
-            location = event.location
-            before = location.y
-            location.y = before + 1
-            event.location = location
-            self.mutated(event, before=before, after=event.location.y)
-
-    @event_handler
-    def on_player_bucket_fill(self, event: PlayerBucketFillEvent):
-        self.record(
-            event,
-            f"{event.player.name} fills {event.bucket} from {event.block}",
-            always_log=True,
-            player=event.player.name,
-            block_type=None if event.block is None else str(event.block.type),
-            block_clicked_type=str(event.block_clicked.type),
-            block_face=str(event.block_face),
-            bucket=str(event.bucket),
-            hand=str(event.hand),
-            item_stack_type=(
-                None if event.item_stack is None else str(event.item_stack.type)
-            ),
-        )
-        if self.due(event, CANCEL):
-            self.cancelled(event, bucket=str(event.bucket))
-        elif self.due(event, MUTATE):
-            before = None if event.item_stack is None else str(event.item_stack.type)
-            event.item_stack = ItemStack("minecraft:bucket", 1)
-            self.mutated(event, before=before, after=str(event.item_stack.type))
-
-    @event_handler
-    def on_player_bucket_empty(self, event: PlayerBucketEmptyEvent):
-        self.record(
-            event,
-            f"{event.player.name} empties {event.bucket} into {event.block}",
-            always_log=True,
-            player=event.player.name,
-            block_type=None if event.block is None else str(event.block.type),
-            block_clicked_type=str(event.block_clicked.type),
-            block_face=str(event.block_face),
-            bucket=str(event.bucket),
-            hand=str(event.hand),
-            item_stack_type=(
-                None if event.item_stack is None else str(event.item_stack.type)
-            ),
-        )
-        if self.due(event, CANCEL):
-            self.cancelled(event, bucket=str(event.bucket))
-        elif self.due(event, MUTATE):
-            before = None if event.item_stack is None else str(event.item_stack.type)
-            event.item_stack = ItemStack("minecraft:water_bucket", 1)
-            self.mutated(event, before=before, after=str(event.item_stack.type))
-
-    @event_handler
-    def on_player_open_sign(self, event: PlayerOpenSignEvent):
-        self.record(
-            event,
-            f"{event.player.name} opens the {event.side} of {event.sign.block} "
-            f"({event.cause})",
-            always_log=True,
-            player=event.player.name,
-            side=str(event.side),
-            cause=str(event.cause),
-            block_type=str(event.sign.block.type),
-        )
-        if self.due(event, CANCEL):
-            self.cancelled(event, cause=str(event.cause))
-
-    @event_handler
-    def on_player_hide_actor(self, event: PlayerHideActorEvent):
-        self.record(
-            event,
-            f"{event.player.name} can no longer see {event.actor.type}",
-            always_log=True,
-            player=event.player.name,
-            actor_type=str(event.actor.type),
-        )
-
-    @event_handler
-    def on_player_show_actor(self, event: PlayerShowActorEvent):
-        self.record(
-            event,
-            f"{event.player.name} can see {event.actor.type} again",
-            always_log=True,
-            player=event.player.name,
-            actor_type=str(event.actor.type),
+            xyz=(event.location.x, event.location.y, event.location.z)
+            if event.location is not None
+            else None,
+            dimension=str(event.location.dimension.id)
+            if event.location is not None
+            else None,
+            cancelled_before=cancelled_before,
+            cancelled=event.is_cancelled,
         )

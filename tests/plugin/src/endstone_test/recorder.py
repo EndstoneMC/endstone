@@ -40,6 +40,10 @@ class EventRecorder:
         self._snapshots.setdefault(key, [])
         self._hints[key] = hint
 
+    def has_check(self, key: str) -> bool:
+        """Return whether the embedded check suite registered this check."""
+        return key in self._hints or key in self._counts
+
     def checked(self, key: str) -> bool:
         return self._counts.get(key, 0) > 0
 
@@ -60,8 +64,9 @@ class EventRecorder:
         self._counts[name] = self._counts.get(name, 0) + 1
 
         snapshots = self._snapshots.setdefault(name, [])
-        if len(snapshots) < MAX_SNAPSHOTS:
-            snapshots.append(fields)
+        snapshots.append(fields)
+        if len(snapshots) > MAX_SNAPSHOTS:
+            del snapshots[0]
 
         if first or always_log:
             self.plugin.logger.info(
@@ -70,10 +75,18 @@ class EventRecorder:
                 + ColorFormat.RESET
                 + summary
             )
-        self._refresh_boss_bar()
+        # Asynchronous events can be delivered by a network worker. Updating the
+        # progress boss bar from that callback sends packets off the server
+        # thread, so skip this UI-only update for those events.
+        if not event.is_asynchronous:
+            self._refresh_boss_bar()
 
     def count(self, name: str) -> int:
         return self._counts.get(name, 0)
+
+    def snapshot_counts(self) -> dict[str, int]:
+        """Return a copy of all event counts at this point in time."""
+        return dict(self._counts)
 
     def snapshots(self, name: str) -> list[dict]:
         return list(self._snapshots.get(name, []))

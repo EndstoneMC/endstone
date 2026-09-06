@@ -48,6 +48,9 @@ class TestCommandExecutor(CommandExecutor):
             case ["events"]:
                 return self._events(sender)
 
+            case ["autoevents"]:
+                return self._auto_events(sender)
+
             case ["sender"]:
                 return self._sender(sender)
 
@@ -278,6 +281,15 @@ class TestCommandExecutor(CommandExecutor):
             for name in missing:
                 sender.send_message(f"  {ColorFormat.GRAY}{name}")
         self.plugin.run_event_tests(sender if isinstance(sender, Player) else None)
+        return True
+
+    def _auto_events(self, sender: CommandSender) -> bool:
+        if self.plugin.start_automated_events():
+            sender.send_message("Automated event scenarios started.")
+        else:
+            sender.send_error_message(
+                "Automated event scenarios are already running or failed to start."
+            )
         return True
 
     def _sender(self, sender: CommandSender) -> bool:

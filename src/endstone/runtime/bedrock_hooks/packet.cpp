@@ -26,6 +26,7 @@
 #include "bedrock/network/packet/boss_event_packet.h"
 #include "bedrock/network/packet/correct_player_move_prediction_packet.h"
 #include "bedrock/network/packet/emote_packet.h"
+#include "bedrock/network/packet/inventory_transaction_packet.h"
 #include "bedrock/network/packet/mob_equipment_packet.h"
 #include "bedrock/network/packet/player_action_packet.h"
 #include "bedrock/network/packet/player_auth_input_packet.h"
@@ -50,6 +51,7 @@
 #include "endstone/event/player/player_edit_book_event.h"
 #include "endstone/event/player/player_emote_event.h"
 #include "endstone/event/player/player_input_event.h"
+#include "endstone/event/player/player_interact_actor_event.h"
 #include "endstone/event/player/player_interact_event.h"
 #include "endstone/event/player/player_item_held_event.h"
 #include "endstone/event/player/player_jump_event.h"
@@ -404,6 +406,33 @@ void EndstonePacketHandler::handle(SetPlayerInventoryOptionsPacket &packet)
 }
 
 template <>
+void EndstonePacketHandler::handle(InventoryTransactionPacket &packet)
+{
+    auto *player = getPlayer();
+    if (player == nullptr) {
+        handle();
+        return;
+    }
+
+    if (const auto *transaction = std::get_if<ItemUseOnActorInventoryTransaction>(
+            &packet.payload.variant_transaction);
+        transaction != nullptr &&
+        (transaction->action_type_ == ItemUseOnActorInventoryTransaction::ActionType::Interact ||
+         transaction->action_type_ == ItemUseOnActorInventoryTransaction::ActionType::ItemInteract)) {
+        if (auto *target = player->getLevel().getRuntimeEntity(transaction->runtime_id_, false); target != nullptr) {
+            const auto endstone_player = player->getEndstoneActor<EndstonePlayer>();
+            PlayerInteractActorEvent event{endstone_player, target->getEndstoneActor()};
+            endstone_player->getServer().getPluginManager().callEvent(event);
+            if (event.isCancelled()) {
+                return;
+            }
+        }
+    }
+
+    handle();
+}
+
+template <>
 void EndstonePacketHandler::handle(PlayerAuthInputPacket &packet)
 {
     auto *player = getPlayer();
@@ -522,17 +551,21 @@ void EndstonePacketHandler::handle(PlayerAuthInputPacket &packet)
     const auto &input = packet.payload;
     const auto delta = input.pos - pos;
     const auto delta_angle = input.rot - rot;
-    const auto on_ground = player->isOnGround();
+    const auto height_offset = ActorOffset::getHeightOffset(player->getEntity());
+    const auto &block_source = player->getDimension().getBlockSourceFromMainChunkSource();
+    const BlockPos feet(input.pos.x, input.pos.y - height_offset, input.pos.z);
+    const bool client_on_ground =
+        packet.getInput(PlayerAuthInputPacket::InputData::VerticalCollision) &&
+        (block_source.isSolidBlockingBlock(feet) || block_source.isSolidBlockingBlock(feet.below()));
+    const auto on_ground = player->isOnGround() || client_on_ground;
 
     const Location from = endstone_player->getLocation();
-    const auto height_offset = ActorOffset::getHeightOffset(player->getEntity());
     const Location to{endstone_player->getDimension(),
                       input.pos.x,
                       input.pos.y - height_offset,
                       input.pos.z,
                       input.rot.x,
                       input.rot.y};
-
     if (packet.getInput(PlayerAuthInputPacket::InputData::Jumping) && on_ground && delta.y > 0.0F) {
         PlayerJumpEvent e{endstone_player, from, to};
         plugin_manager.callEvent(e);
@@ -636,6 +669,11 @@ std::shared_ptr<Packet> MinecraftPackets::createPacket(MinecraftPacketIds id)
     }
     case MinecraftPacketIds::SetLocalPlayerAsInit: {
         using Dispatcher = EndstonePacketHandlerDispatcher<SetLocalPlayerAsInitializedPacket>;
+        Dispatcher::set(&packet->handler_);
+        break;
+    }
+    case MinecraftPacketIds::InventoryTransaction: {
+        using Dispatcher = EndstonePacketHandlerDispatcher<InventoryTransactionPacket>;
         Dispatcher::set(&packet->handler_);
         break;
     }
