@@ -1,11 +1,89 @@
 import pytest
 from endstone import Server
-from endstone.block import BlockState
-from endstone.level import Dimension
+from endstone.block import Block, BlockState
+from endstone.level import Chunk, Dimension
 from endstone.plugin import Plugin
 
 FAR_CHUNK = (30_000, 30_000)
 NEVER_LOADED_CHUNK = (29_000, 29_000)
+
+
+@pytest.fixture
+def chunk(server: Server) -> Chunk:
+    chunks = server.level.get_dimension(Dimension.OVERWORLD).loaded_chunks
+    if not chunks:
+        pytest.skip("no resident chunk")
+    return chunks[0]
+
+
+@pytest.mark.parametrize("x,z", [(0, 0), (0, 15), (15, 0), (15, 15), (7, 11)])
+@pytest.mark.parametrize("y", [-64, -1, 0, 319])
+def test_get_block_uses_local_xz_and_dimension_y(chunk: Chunk, x: int, y: int, z: int) -> None:
+    block = chunk.get_block(x=x, y=y, z=z)
+    assert isinstance(block, Block)
+    assert (block.x, block.y, block.z) == (chunk.x * 16 + x, y, chunk.z * 16 + z)
+    assert block.dimension.id == chunk.dimension.id
+    expected = chunk.dimension.get_block_at(block.x, y, block.z)
+    assert block.type == expected.type
+    assert block.data.runtime_id == expected.data.runtime_id
+    assert block.data.block_states == expected.data.block_states
+
+
+@pytest.mark.parametrize("axis", ["x", "z"])
+def test_get_block_in_negative_chunks(server: Server, axis: str) -> None:
+    chunks = server.level.get_dimension(Dimension.OVERWORLD).loaded_chunks
+    chunk = next((c for c in chunks if getattr(c, axis) < 0), None)
+    if chunk is None:
+        pytest.skip(f"no resident chunk with negative {axis}")
+    block = chunk.get_block(15, -64, 15)
+    assert (block.x, block.y, block.z) == (chunk.x * 16 + 15, -64, chunk.z * 16 + 15)
+    assert block.x // 16 == chunk.x
+    assert block.z // 16 == chunk.z
+
+
+def test_get_block_returns_a_live_block(chunk: Chunk, server: Server) -> None:
+    block = chunk.get_block(7, 319, 11)
+    original = block.data
+    try:
+        block.set_data(server.create_block_data("minecraft:gold_block"), apply_physics=False)
+        assert chunk.dimension.get_block_at(block.x, block.y, block.z).type == "minecraft:gold_block"
+        chunk.dimension.get_block_at(block.x, block.y, block.z).set_data(
+            server.create_block_data("minecraft:stone"), apply_physics=False
+        )
+        assert block.type == "minecraft:stone"
+    finally:
+        block.set_data(original, apply_physics=False)
+    assert block.data.runtime_id == original.runtime_id
+    assert block.data.block_states == original.block_states
+
+
+@pytest.mark.parametrize("axis", ["x", "z"])
+@pytest.mark.parametrize("value", [-2**31, -1, 16, 2**31 - 1])
+def test_get_block_rejects_invalid_local_coordinates(chunk: Chunk, axis: str, value: int) -> None:
+    coordinates = {"x": 0, "y": 0, "z": 0}
+    coordinates[axis] = value
+    with pytest.raises(ValueError, match=axis):
+        chunk.get_block(**coordinates)
+
+
+@pytest.mark.parametrize("y", [-2**31, -65, 320, 2**31 - 1])
+def test_get_block_rejects_invalid_height(chunk: Chunk, y: int) -> None:
+    with pytest.raises(ValueError, match="y"):
+        chunk.get_block(0, y, 0)
+
+
+def test_get_block_does_not_load_the_chunk(server: Server, plugin: Plugin) -> None:
+    dimension = server.level.get_dimension(Dimension.OVERWORLD)
+    dimension.add_plugin_chunk_ticket(*FAR_CHUNK, plugin)
+    try:
+        chunk = next(c for c in dimension.plugin_chunk_tickets[plugin] if (c.x, c.z) == FAR_CHUNK)
+    finally:
+        dimension.remove_plugin_chunk_ticket(*FAR_CHUNK, plugin)
+    assert chunk.is_loaded is False
+    block = chunk.get_block(7, 64, 11)
+    assert (block.x, block.y, block.z) == (480_007, 64, 480_011)
+    assert block.type == "minecraft:air"
+    assert chunk.is_loaded is False
 
 
 def _resident_chunk_near_spawn(dimension: Dimension) -> tuple[int, int] | None:

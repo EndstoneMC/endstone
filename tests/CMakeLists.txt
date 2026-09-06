@@ -19,6 +19,7 @@ add_executable(endstone_test
         test_identifier.cpp
         test_nbt.cpp
         test_base64.cpp
+        test_chunk_load_queue.cpp
         test_command_lexer.cpp
         test_command_usage_parser.cpp
         test_cpp_plugin_loader.cpp
