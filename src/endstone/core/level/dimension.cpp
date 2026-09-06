@@ -16,6 +16,7 @@
 
 #include <algorithm>
 #include <ranges>
+#include <utility>
 
 #include "bedrock/entity/components/actor_owner_component.h"
 #include "bedrock/world/level/block/bedrock_block_names.h"
@@ -114,6 +115,56 @@ std::vector<NotNull<Chunk>> EndstoneDimension::getLoadedChunks()
     return chunks;
 }
 
+void EndstoneDimension::getChunkAtAsync(int x, int z, Plugin &plugin, std::function<void(Nullable<Chunk>)> callback,
+                                        bool generate, std::uint64_t timeout)
+{
+    checkServerThread();
+    Preconditions::checkState(isValid(), "Trying to access a dimension that is no longer valid.");
+    Preconditions::checkArgument(plugin.isEnabled(), "Plugin is not enabled.");
+    Preconditions::checkArgument(static_cast<bool>(callback), "Callback must not be empty.");
+    Preconditions::checkArgument(timeout > 0, "Timeout must be greater than zero.");
+    auto request = std::make_shared<ChunkLoadQueue::Request>(x, z, &plugin, std::move(callback), generate, timeout);
+    level_.getServer().getScheduler().runTask(plugin, [dimension = weak_from_this(), request = std::move(request)] {
+        if (const auto self = dimension.lock()) {
+            self->chunk_loads_.add(request);
+        }
+        else {
+            request->callback(nullptr);
+        }
+    });
+}
+
+void EndstoneDimension::processChunkLoads()
+{
+    chunk_loads_.process(
+        [this](ChunkLoadQueue::Request &request) -> std::optional<Nullable<Chunk>> {
+            if (!isValid()) {
+                return Nullable<Chunk>{};
+            }
+            if (request.area_id == mce::UUID::EMPTY) {
+                request.area_id = pinChunk(request.x, request.z, request.generate);
+            }
+            if (request.area_id == mce::UUID::EMPTY) {
+                return Nullable<Chunk>{};
+            }
+            if (isChunkLoaded(request.x, request.z)) {
+                return Nullable<Chunk>{std::make_shared<EndstoneChunk>(dimension_, request.x, request.z)};
+            }
+            return std::nullopt;
+        },
+        [this](mce::UUID area_id) { releaseChunkLoad(area_id); }, level_.getServer().getLogger());
+}
+
+void EndstoneDimension::cancelChunkLoads(Plugin &plugin)
+{
+    chunk_loads_.cancel(plugin, [this](mce::UUID area_id) { releaseChunkLoad(area_id); });
+}
+
+void EndstoneDimension::releaseChunkLoad(mce::UUID area_id)
+{
+    level_.getHandle().getTickingAreasMgr().removeScopedAreas({area_id});
+}
+
 bool EndstoneDimension::isChunkLoaded(int x, int z) const
 {
     const auto chunk = getHandle().getChunkSource().getExistingChunk(ChunkPos(x, z));
@@ -144,7 +195,8 @@ mce::UUID EndstoneDimension::pinChunk(int x, int z, bool generate)
 
 void EndstoneDimension::releaseTicket(std::unordered_map<std::uint64_t, ChunkTicket>::iterator it)
 {
-    if (it != chunk_tickets_.end() && it->second.plugins.empty() && !it->second.server_owned) {
+    if (it != chunk_tickets_.end() && it->second.plugins.empty() && !it->second.server_owned &&
+        !it->second.force_loaded) {
         level_.getHandle().getTickingAreasMgr().removeScopedAreas({it->second.area_id});
         chunk_tickets_.erase(it);
     }
@@ -194,14 +246,57 @@ bool EndstoneDimension::unloadChunkRequest(int x, int z)
     return true;
 }
 
+bool EndstoneDimension::isChunkForceLoaded(int x, int z) const
+{
+    checkServerThread();
+    Preconditions::checkState(isValid(), "Trying to access a dimension that is no longer valid.");
+    const auto it = chunk_tickets_.find(chunkKey(x, z));
+    return it != chunk_tickets_.end() && it->second.force_loaded;
+}
+
+void EndstoneDimension::setChunkForceLoaded(int x, int z, bool forced)
+{
+    checkServerThread();
+    Preconditions::checkState(isValid(), "Trying to access a dimension that is no longer valid.");
+    const auto key = chunkKey(x, z);
+    auto it = chunk_tickets_.find(key);
+    if (forced) {
+        if (it == chunk_tickets_.end()) {
+            const auto area_id = pinChunk(x, z, true);
+            Preconditions::checkState(area_id != mce::UUID::EMPTY, "Unable to force load chunk ({}, {}).", x, z);
+            it = chunk_tickets_.emplace(key, ChunkTicket{.area_id = area_id}).first;
+        }
+        it->second.force_loaded = true;
+    }
+    else if (it != chunk_tickets_.end()) {
+        it->second.force_loaded = false;
+        releaseTicket(it);
+    }
+}
+
+std::vector<NotNull<Chunk>> EndstoneDimension::getForceLoadedChunks() const
+{
+    checkServerThread();
+    Preconditions::checkState(isValid(), "Trying to access a dimension that is no longer valid.");
+    std::vector<NotNull<Chunk>> chunks;
+    for (const auto &[key, ticket] : chunk_tickets_) {
+        if (!ticket.force_loaded) {
+            continue;
+        }
+        const auto x = static_cast<int>(static_cast<std::uint32_t>(key >> 32));
+        const auto z = static_cast<int>(static_cast<std::uint32_t>(key));
+        chunks.emplace_back(std::make_shared<EndstoneChunk>(dimension_, x, z));
+    }
+    return chunks;
+}
+
 bool EndstoneDimension::addPluginChunkTicket(int x, int z, Plugin &plugin)
 {
     checkServerThread();
     Preconditions::checkArgument(plugin.isEnabled(), "Plugin is not enabled.");
     const auto key = chunkKey(x, z);
     auto it = chunk_tickets_.find(key);
-    if (it != chunk_tickets_.end() &&
-        std::ranges::find(it->second.plugins, &plugin) != it->second.plugins.end()) {
+    if (it != chunk_tickets_.end() && std::ranges::find(it->second.plugins, &plugin) != it->second.plugins.end()) {
         return false;
     }
     if (it == chunk_tickets_.end()) {
@@ -234,7 +329,7 @@ void EndstoneDimension::removePluginChunkTickets(Plugin &plugin)
     std::vector<mce::UUID> released;
     for (auto it = chunk_tickets_.begin(); it != chunk_tickets_.end();) {
         std::erase(it->second.plugins, &plugin);
-        if (it->second.plugins.empty() && !it->second.server_owned) {
+        if (it->second.plugins.empty() && !it->second.server_owned && !it->second.force_loaded) {
             released.push_back(it->second.area_id);
             it = chunk_tickets_.erase(it);
         }

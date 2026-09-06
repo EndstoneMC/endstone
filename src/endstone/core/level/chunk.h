@@ -29,10 +29,15 @@ public:
     [[nodiscard]] Level &getLevel() const override;
     [[nodiscard]] NotNull<Dimension> getDimension() const override;
     [[nodiscard]] NotNull<Block> getBlock(int x, int y, int z) const override;
+    [[nodiscard]] std::vector<NotNull<Actor>> getEntities() const override;
+    [[nodiscard]] bool isGenerated() const override;
+    [[nodiscard]] bool isSlimeChunk() const override;
     [[nodiscard]] bool isLoaded() const override;
     bool load() override;
     bool load(bool generate) override;
     bool unload() override;
+    [[nodiscard]] bool isForceLoaded() const override;
+    void setForceLoaded(bool forced) override;
     bool addPluginChunkTicket(Plugin &plugin) override;
     bool removePluginChunkTicket(Plugin &plugin) override;
     [[nodiscard]] std::vector<NotNull<BlockState>> getBlockActors() const override;

@@ -33,6 +33,13 @@ def test_loaded_chunks_agree_with_is_chunk_loaded(player: Player) -> None:
         assert player.dimension.is_chunk_loaded(chunk.x, chunk.z) is True
 
 
+def test_chunk_entities_include_the_player(player: Player) -> None:
+    x, z = player.location.block_x >> 4, player.location.block_z >> 4
+    chunk = next(c for c in player.dimension.loaded_chunks if (c.x, c.z) == (x, z))
+    assert player.id in {actor.id for actor in chunk.entities}
+    assert chunk.is_generated is True
+
+
 def test_block_actors_reports_a_placed_block_actor(player: Player) -> None:
     """Verify a chest placed near the player shows up in its chunk's block_actors at its own coordinates."""
     location = player.location

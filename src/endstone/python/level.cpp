@@ -37,6 +37,7 @@ void init_level(py::module_ &m, py::classh<Level> &level, py::classh<Dimension> 
     Gets a block from this chunk.
 
     This does not load the chunk. Use `load()` to request it before accessing block data.
+    The returned block is live and reflects subsequent changes at its coordinates.
 
     Args:
         x: X-coordinate within the chunk, from 0 to 15.
@@ -48,6 +49,24 @@ void init_level(py::module_ &m, py::classh<Level> &level, py::classh<Dimension> 
 
     Raises:
         ValueError: If the coordinates are outside these bounds.
+)doc")
+        .def_property_readonly("entities", &Chunk::getEntities, R"doc(
+    A list of all loaded entities in this chunk, including players.
+
+    This does not load the chunk or its entities. The returned list is a snapshot of entities whose positions
+    are in this chunk, or an empty list if this chunk is not loaded.
+)doc")
+        .def_property_readonly("is_generated", &Chunk::isGenerated, R"doc(
+    Whether this chunk has been generated.
+
+    A chunk counts as generated once it is loaded or has been written to the level's chunk storage.
+    This does not load or generate the chunk.
+)doc")
+        .def_property_readonly("is_slime_chunk", &Chunk::isSlimeChunk, R"doc(
+    Whether this chunk's coordinates qualify for slime spawning outside swamp biomes.
+
+    Bedrock's slime chunk pattern depends only on chunk coordinates, not the world seed.
+    This does not load the chunk or check other spawning conditions.
 )doc")
         .def_property_readonly("is_loaded", &Chunk::isLoaded, "Whether this chunk is loaded.")
         .def("load", py::overload_cast<bool>(&Chunk::load), py::arg("generate") = true, R"doc(
@@ -66,6 +85,17 @@ void init_level(py::module_ &m, py::classh<Level> &level, py::classh<Dimension> 
 
     Returns:
         ``True`` if the chunk is no longer loaded, otherwise ``False``.
+)doc")
+        .def_property("is_force_loaded", &Chunk::isForceLoaded, &Chunk::setForceLoaded, R"doc(
+    Gets or sets whether this chunk is force loaded.
+
+    The chunk is kept resident until force loading is disabled or the server restarts. Loading finishes on a later
+    tick and does not make the chunk tick. Disabling force loading leaves other holds and plugin tickets intact.
+    The getter reports the force-load flag even if loading has not finished yet.
+
+    Raises:
+        RuntimeError: If called outside the server thread, the dimension is no longer valid, or the chunk cannot be
+            held resident.
 )doc")
         .def("add_plugin_chunk_ticket", &Chunk::addPluginChunkTicket, py::arg("plugin"), R"doc(
     Adds a plugin ticket for this chunk, loading it if it is not already loaded.
@@ -89,8 +119,7 @@ void init_level(py::module_ &m, py::classh<Level> &level, py::classh<Dimension> 
                                "The state of every block actor in this chunk, or an empty list if this chunk is not "
                                "loaded.")
         .def_property_readonly("plugin_chunk_tickets", &Chunk::getPluginChunkTickets,
-                               "The `Plugin`s holding a ticket for this chunk.",
-                               py::return_value_policy::reference)
+                               "The `Plugin`s holding a ticket for this chunk.", py::return_value_policy::reference)
         .def("__repr__", [](const Chunk &self) { return std::format("{}", self); })
         .def("__str__", [](const Chunk &self) { return std::format("{}", self); });
 
@@ -159,6 +188,29 @@ void init_level(py::module_ &m, py::classh<Level> &level, py::classh<Dimension> 
         Highest non-empty block.
 )doc")
         .def_property_readonly("loaded_chunks", &Dimension::getLoadedChunks, "A list of all loaded `Chunk`s.")
+        .def("get_chunk_at_async", &Dimension::getChunkAtAsync, py::arg("x"), py::arg("z"), py::arg("plugin"),
+             py::arg("callback"), py::arg("generate") = true, py::arg("timeout") = 1200, R"doc(
+    Requests a chunk and calls the callback on the server thread when loading finishes.
+
+    This method returns without waiting. The callback runs on a later tick, even if the chunk is already loaded.
+    It receives `None` if generation is disabled and the chunk does not exist, loading fails, the dimension becomes
+    invalid, or the timeout expires. Disabling the plugin cancels the request without calling the callback.
+
+    A temporary hold keeps the chunk resident through the callback and is released afterwards. Use `Chunk.load()`,
+    force loading or a plugin chunk ticket inside the callback to keep it resident longer. Other holds are not changed.
+
+    Args:
+        x: X-coordinate of the chunk.
+        z: Z-coordinate of the chunk.
+        plugin: `Plugin` owning the request.
+        callback: Callback receiving the loaded chunk, or `None` on failure.
+        generate: Whether to generate the chunk if it does not exist.
+        timeout: Maximum number of server ticks to wait after loading starts, greater than zero.
+
+    Raises:
+        ValueError: If the callback is empty, the plugin is disabled, or the timeout is zero.
+        RuntimeError: If called outside the server thread or the dimension is no longer valid.
+)doc")
         .def("is_chunk_loaded", &Dimension::isChunkLoaded, py::arg("x"), py::arg("z"), R"doc(
     Checks if the `Chunk` at the given coordinates is loaded.
 
@@ -210,8 +262,8 @@ void init_level(py::module_ &m, py::classh<Level> &level, py::classh<Dimension> 
     Releases the hold that ``load_chunk`` placed on the `Chunk` at the given coordinates, and unloads it if nothing
     else keeps it resident.
 
-    A chunk kept alive by a nearby player, the spawn area, a ``/tickingarea`` or a plugin chunk ticket stays loaded,
-    and this reports ``False``. Unloading a chunk saves it and fires a `ChunkUnloadEvent`, which handlers observe
+    A chunk kept alive by force loading, a nearby player, the spawn area, a ``/tickingarea`` or a plugin chunk ticket
+    stays loaded, and this reports ``False``. Unloading a chunk saves it and fires a `ChunkUnloadEvent`, which handlers observe
     before this returns. It also completes any chunk unloads the dimension had pending, so calling it once per chunk
     over a large area is expensive; use ``unload_chunk_request`` when releasing many chunks at once.
 
@@ -240,8 +292,51 @@ void init_level(py::module_ &m, py::classh<Level> &level, py::classh<Dimension> 
     Raises:
         RuntimeError: If called from a thread other than the server thread.
 )doc")
-        .def("add_plugin_chunk_ticket", &Dimension::addPluginChunkTicket, py::arg("x"), py::arg("z"),
-             py::arg("plugin"), R"doc(
+        .def("is_chunk_force_loaded", &Dimension::isChunkForceLoaded, py::arg("x"), py::arg("z"), R"doc(
+    Checks whether the chunk at the given coordinates is force loaded.
+
+    This checks the force-load flag, not whether loading has finished. Other chunk holds and plugin tickets do not
+    set this flag.
+
+    Args:
+        x: X-coordinate of the chunk.
+        z: Z-coordinate of the chunk.
+
+    Returns:
+        Force-load status.
+
+    Raises:
+        RuntimeError: If called outside the server thread or the dimension is no longer valid.
+)doc")
+        .def("set_chunk_force_loaded", &Dimension::setChunkForceLoaded, py::arg("x"), py::arg("z"), py::arg("forced"),
+             R"doc(
+    Sets whether the chunk at the given coordinates is force loaded.
+
+    A force-loaded chunk stays resident without nearby players until force loading is disabled or the server
+    restarts. Loading finishes on a later tick and does not make the chunk tick. This hold is not owned by a plugin;
+    `unload_chunk()`, `unload_chunk_request()` and removing plugin tickets do not release it. Disabling force loading
+    leaves other holds and plugin tickets intact, and does not unload the chunk immediately.
+
+    Args:
+        x: X-coordinate of the chunk.
+        z: Z-coordinate of the chunk.
+        forced: Whether to force load the chunk.
+
+    Raises:
+        RuntimeError: If called outside the server thread, the dimension is no longer valid, or the chunk cannot be
+            held resident.
+)doc")
+        .def_property_readonly("force_loaded_chunks", &Dimension::getForceLoadedChunks, R"doc(
+    All chunks marked as force loaded in this dimension.
+
+    The returned list is a snapshot and includes chunks whose loading has not finished yet. Other chunk holds and
+    plugin tickets are not included. This does not load any chunks or change their force-load flags.
+
+    Raises:
+        RuntimeError: If called outside the server thread or the dimension is no longer valid.
+)doc")
+        .def("add_plugin_chunk_ticket", &Dimension::addPluginChunkTicket, py::arg("x"), py::arg("z"), py::arg("plugin"),
+             R"doc(
     Adds a plugin ticket for the `Chunk` at the given coordinates, loading it if it is not already loaded.
 
     A plugin ticket keeps the chunk resident until it is explicitly removed or the owning plugin is disabled. A plugin
@@ -277,9 +372,8 @@ void init_level(py::module_ &m, py::classh<Level> &level, py::classh<Dimension> 
     Args:
         plugin: `Plugin` whose tickets to remove.
 )doc")
-        .def("get_plugin_chunk_tickets",
-             py::overload_cast<int, int>(&Dimension::getPluginChunkTickets, py::const_), py::arg("x"), py::arg("z"),
-             py::return_value_policy::reference, R"doc(
+        .def("get_plugin_chunk_tickets", py::overload_cast<int, int>(&Dimension::getPluginChunkTickets, py::const_),
+             py::arg("x"), py::arg("z"), py::return_value_policy::reference, R"doc(
     Gets which plugins hold a ticket for the `Chunk` at the given coordinates.
 
     The returned list is a snapshot; it does not track tickets added or removed afterwards.
@@ -317,8 +411,7 @@ void init_level(py::module_ &m, py::classh<Level> &level, py::classh<Dimension> 
 )doc")
         .def_property_readonly("actors", &Dimension::getActors,
                                "A list of all actors currently residing in this dimension.")
-        .def_property_readonly("mobs", &Dimension::getMobs,
-                               "A list of all mobs currently residing in this dimension.")
+        .def_property_readonly("mobs", &Dimension::getMobs, "A list of all mobs currently residing in this dimension.")
         .def_property_readonly("players", &Dimension::getPlayers,
                                "A list of all players currently residing in this dimension.");
 

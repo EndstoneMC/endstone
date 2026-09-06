@@ -74,6 +74,35 @@ public:
     [[nodiscard]] virtual NotNull<Block> getBlock(int x, int y, int z) const = 0;
 
     /**
+     * Gets a list of all loaded entities in this chunk, including players.
+     *
+     * This does not load the chunk or its entities. The returned list is a snapshot.
+     *
+     * @return Entities whose positions are in this chunk, or an empty list if this chunk is not loaded
+     */
+    [[nodiscard]] virtual std::vector<NotNull<Actor>> getEntities() const = 0;
+
+    /**
+     * Checks if this chunk has been generated.
+     *
+     * A chunk counts as generated once it is loaded or has been written to the level's chunk storage.
+     * This does not load or generate the chunk.
+     *
+     * @return `true` if the chunk has been generated, otherwise `false`
+     */
+    [[nodiscard]] virtual bool isGenerated() const = 0;
+
+    /**
+     * Checks if this chunk's coordinates qualify for slime spawning outside swamp biomes.
+     *
+     * Bedrock's slime chunk pattern depends only on chunk coordinates, not the world seed.
+     * This does not load the chunk or check other spawning conditions.
+     *
+     * @return `true` if these coordinates identify a slime chunk, otherwise `false`
+     */
+    [[nodiscard]] virtual bool isSlimeChunk() const = 0;
+
+    /**
      * Checks if this chunk is loaded.
      *
      * @return `true` if the chunk is loaded, otherwise `false`
@@ -105,6 +134,28 @@ public:
      * @return `true` if the chunk is no longer loaded, otherwise `false`
      */
     virtual bool unload() = 0;
+
+    /**
+     * Checks whether this chunk is force loaded.
+     *
+     * @return Force-load status, including a load that has not finished yet
+     * @throws std::runtime_error If called outside the server thread or the dimension is no longer valid
+     * @see Dimension::isChunkForceLoaded()
+     */
+    [[nodiscard]] virtual bool isForceLoaded() const = 0;
+
+    /**
+     * Sets whether this chunk is force loaded.
+     *
+     * The chunk is kept resident until force loading is disabled or the server restarts. Loading finishes on a later
+     * tick and does not make the chunk tick. Disabling force loading leaves other holds and plugin tickets intact.
+     *
+     * @param forced Whether to force load the chunk
+     * @throws std::runtime_error If called outside the server thread, the dimension is no longer valid, or the chunk
+     *                           cannot be held resident
+     * @see Dimension::setChunkForceLoaded()
+     */
+    virtual void setForceLoaded(bool forced) = 0;
 
     /**
      * Adds a plugin ticket for this chunk, loading it if it is not already loaded.

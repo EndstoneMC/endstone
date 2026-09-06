@@ -872,6 +872,9 @@ void EndstoneServer::tick(std::uint64_t current_tick, const std::function<void()
 
     const auto start = steady_clock::now();
     // tick start
+    for (const auto &dimension : level_->getDimensions()) {
+        dimension.cast<EndstoneDimension>()->processChunkLoads();
+    }
     scheduler_->mainThreadHeartbeat(current_tick);
     tick_function();
     for (const auto &p : getOnlinePlayers()) {
