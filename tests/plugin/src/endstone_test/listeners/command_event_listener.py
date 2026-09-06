@@ -19,6 +19,7 @@ class CommandEventListener(EventListener):
             sender=event.sender.name,
             command_line=event.command_line,
             message=None if event.message is None else str(event.message),
+            message_present=event.message is not None,
         )
         if self.due(event, MUTATE):
             before = None if event.message is None else str(event.message)

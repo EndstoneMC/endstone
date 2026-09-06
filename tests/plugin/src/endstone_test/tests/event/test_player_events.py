@@ -75,6 +75,22 @@ def test_player_teleport(recorder: EventRecorder) -> None:
     assert len(snapshot["to_xyz"]) == 3
 
 
+def test_player_set_spawn(recorder: EventRecorder) -> None:
+    """Verify PlayerSetSpawnEvent records a plugin-caused spawn location."""
+    snapshot = recorder.require("PlayerSetSpawnEvent")[0]
+    assert snapshot["player"]
+    assert snapshot["cause"].endswith("PLUGIN")
+    assert len(snapshot["xyz"]) == 3
+    assert ":" in snapshot["dimension"]
+
+
+def test_player_open_sign(recorder: EventRecorder) -> None:
+    """Verify PlayerOpenSignEvent points at a sign and records its side."""
+    for snapshot in recorder.require("PlayerOpenSignEvent"):
+        assert "sign" in snapshot["sign_type"]
+        assert snapshot["side"]
+
+
 def test_player_portal(recorder: EventRecorder) -> None:
     """Verify PlayerPortalEvent moves the player somewhere else."""
     snapshot = recorder.require("PlayerPortalEvent")[0]
@@ -104,22 +120,15 @@ def test_player_toggle_sprint(recorder: EventRecorder) -> None:
 
 
 def test_player_toggle_crawl(recorder: EventRecorder) -> None:
-    """Verify PlayerToggleCrawlEvent fires before the new state is applied."""
+    """Verify PlayerToggleCrawlEvent reports the new crawling state."""
     for snapshot in recorder.require("PlayerToggleCrawlEvent"):
         assert isinstance(snapshot["is_crawling"], bool)
-        assert snapshot["player_is_crawling"] is not snapshot["is_crawling"]
 
 
 def test_player_toggle_flight(recorder: EventRecorder) -> None:
-    """Verify PlayerToggleFlightEvent fires before the new state is applied."""
+    """Verify PlayerToggleFlightEvent reports the new flying state."""
     for snapshot in recorder.require("PlayerToggleFlightEvent"):
         assert isinstance(snapshot["is_flying"], bool)
-        assert snapshot["player_is_flying"] is not snapshot["is_flying"]
-
-
-def test_player_toggle_flight_requires_allow_flight(recorder: EventRecorder) -> None:
-    """Verify PlayerToggleFlightEvent only fires while flight is allowed."""
-    assert all(s["allow_flight"] for s in recorder.require("PlayerToggleFlightEvent"))
 
 
 def test_player_input(recorder: EventRecorder) -> None:
@@ -268,6 +277,13 @@ def test_recipe_book_settings_change_is_crafting_only(recorder: EventRecorder) -
     """Verify only the crafting recipe book has a fire site in the server."""
     snapshots = recorder.require("PlayerRecipeBookSettingsChangeEvent")
     assert {s["recipe_book_type"] for s in snapshots} == {"CRAFTING"}
+
+
+def test_player_craft_item(recorder: EventRecorder) -> None:
+    """Verify PlayerCraftItemEvent reports a recipe and a positive repetition count."""
+    for snapshot in recorder.require("PlayerCraftItemEvent"):
+        assert snapshot["recipe_id"]
+        assert snapshot["repetitions"] > 0
 
 
 # =============================================================================

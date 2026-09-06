@@ -261,8 +261,9 @@ class TestCommandExecution:
 
     def test_dispatch_unknown_command(self, server: Server) -> None:
         """Test dispatching an unknown command returns False."""
+        sender = CommandSenderWrapper(server.command_sender)
         result = server.dispatch_command(
-            server.command_sender, "nonexistent_command_xyz"
+            sender, "nonexistent_command_xyz"
         )
         assert result is False
 
@@ -299,8 +300,10 @@ class TestCommandSender:
 
     def test_send_error_message(self, console_sender: ConsoleCommandSender) -> None:
         """Test send_error_message does not raise errors."""
-        # Should not raise
-        console_sender.send_error_message("Test error message from test_command.py")
+        errors = []
+        sender = CommandSenderWrapper(console_sender, on_error=errors.append)
+        sender.send_error_message("Test error message from test_command.py")
+        assert errors == ["Test error message from test_command.py"]
 
     def test_permission_level(self, console_sender: ConsoleCommandSender) -> None:
         """Test console sender has CONSOLE permission level."""
@@ -679,13 +682,15 @@ class TestCommandEdgeCases:
 
     def test_empty_command_line_dispatch(self, server: Server) -> None:
         """Test dispatching an empty command line."""
-        result = server.dispatch_command(server.command_sender, "")
+        sender = CommandSenderWrapper(server.command_sender)
+        result = server.dispatch_command(sender, "")
         # Empty command should return False
         assert result is False
 
     def test_whitespace_command_line_dispatch(self, server: Server) -> None:
         """Test dispatching a whitespace-only command line."""
-        result = server.dispatch_command(server.command_sender, "   ")
+        sender = CommandSenderWrapper(server.command_sender)
+        result = server.dispatch_command(sender, "   ")
         # Whitespace-only should return False
         assert result is False
 

@@ -1,0 +1,12 @@
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[project]
+name = "endstone-plugin-lifecycle-fixture"
+version = "0.1.0"
+description = "Minimal plugin used to test Endstone plugin lifecycle events."
+requires-python = ">=3.10"
+
+[project.entry-points."endstone"]
+plugin_lifecycle_fixture = "endstone_plugin_lifecycle_fixture:PluginLifecycleFixture"

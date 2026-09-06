@@ -32,7 +32,13 @@
 InteractionResult ArmorStand::getInteraction(Player &player, ActorInteraction &interaction, Vec3 const &location)
 {
     const auto result = ENDSTONE_HOOK_CALL_ORIGINAL(&ArmorStand::getInteraction, this, player, interaction, location);
-    if (interaction.getInteractText() != "action.interact.armorstand.equip" || !interaction.shouldCapture()) {
+    const auto &player_item = player.getCarriedItem();
+    const bool armor_equip_interaction =
+        interaction.getInteractText() == "action.interact.armorstand.equip" && interaction.shouldCapture();
+    const bool simulated_armor_interaction =
+        player.isSimulated() && interaction.getInteractText().empty() && !player_item.isNull() &&
+        player_item.getItem() != nullptr && player_item.getItem()->isHumanoidArmor();
+    if (!armor_equip_interaction && !simulated_armor_interaction) {
         return result;
     }
 
@@ -51,7 +57,6 @@ InteractionResult ArmorStand::getInteraction(Player &player, ActorInteraction &i
         armor_slot = ArmorSlot::Head;
     }
 
-    const auto &player_item = player.getCarriedItem();
     if (!player_item.isNull()) {
         const auto *item = player_item.getItem();
         armor_slot = item != nullptr && item->isHumanoidArmor()

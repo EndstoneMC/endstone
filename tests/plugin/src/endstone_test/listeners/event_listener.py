@@ -38,7 +38,13 @@ class EventListener:
         self.recorder.record(event, summary, always_log=always_log, **fields)
 
     def due(self, event: Event, action: str) -> bool:
-        return not self.recorder.checked(f"{type(event).__name__}/{action}")
+        key = f"{type(event).__name__}/{action}"
+        # The automated targeted runner intentionally skips the embedded
+        # pytest suite. In that mode no interactive check is registered, so a
+        # first event must not be cancelled or mutated merely because its
+        # check counter is zero. Full runs still register every check and keep
+        # the original one-time check behavior.
+        return self.recorder.has_check(key) and not self.recorder.checked(key)
 
     def cancelled(self, event: Event, **fields) -> None:
         event.cancel()
