@@ -156,11 +156,15 @@ def main() -> None:
     # Grafts that have a hand-written Python counterpart; must precede the detach.
     package = top.package
     top.set_member("event.event_handler", package.get_member("event.event_handler"))
-    docstring = top["plugin.Plugin"].docstring
-    top.set_member("plugin.Plugin", package.get_member("plugin.Plugin"))
-    top["plugin.Plugin"].docstring = docstring
-    # griffe reports the unresolved static base _Plugin; put_type() iterates bases.
-    top["plugin.Plugin"].bases = []
+    # Plugin is the hand-written subclass, presented flat: its own members first,
+    # then everything it inherits from the binding it replaces.
+    binding = top["plugin.Plugin"]
+    plugin = package.get_member("plugin.Plugin")
+    for name, member in binding.members.items():
+        plugin.set_member(name, member)
+    plugin.docstring = binding.docstring
+    plugin.bases = []
+    top.set_member("plugin.Plugin", plugin)
 
     # Present the extension as the package it is re-exported from; Object.path is
     # derived from the parent chain, so this renames the whole tree.

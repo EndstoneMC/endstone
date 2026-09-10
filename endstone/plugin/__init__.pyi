@@ -4,9 +4,10 @@ Classes relating to loading and managing plugins.
 
 import collections.abc
 import enum
+import pathlib
 import typing
 
-from endstone import Server
+from endstone import Logger, Server
 from endstone.command import Command, CommandExecutor
 from endstone.event import Event, EventPriority
 from endstone.permissions import Permissible, Permission, PermissionDefault, PermissionLevel
@@ -232,7 +233,7 @@ class Plugin:
     commands = None
     default_permission = None
     permissions = None
-    def __init__(self) -> typing.Any: ...
+    def __init__(self) -> None: ...
     def register_events(self, listener: object) -> None:
         """
         Registers all events defined in the given listener instance.
@@ -300,6 +301,62 @@ class Plugin:
         Raises:
             FileNotFoundError: If the specified resource cannot be found in the package.
             OSError: If an error occurs while copying or creating directories.
+        """
+
+    def on_load(self) -> None:
+        """
+        Called after a plugin is loaded but before it has been enabled.
+        """
+
+    def on_enable(self) -> None:
+        """
+        Called when this plugin is enabled
+        """
+
+    def on_disable(self) -> None:
+        """
+        Called when this plugin is disabled
+        """
+
+    @property
+    def logger(self) -> Logger:
+        """
+        Returns the plugin logger associated with this server's logger.
+        """
+
+    @property
+    def plugin_loader(self) -> PluginLoader:
+        """
+        Gets the associated PluginLoader responsible for this plugin
+        """
+
+    @property
+    def server(self) -> Server:
+        """
+        Returns the Server instance currently running this plugin
+        """
+
+    @property
+    def is_enabled(self) -> bool:
+        """
+        Returns a value indicating whether this plugin is currently enabled
+        """
+
+    @property
+    def name(self) -> str:
+        """
+        Returns the name of the plugin.
+        """
+
+    def get_command(self, name: str) -> PluginCommand:
+        """
+        Gets the command with the given name, specific to this plugin.
+        """
+
+    @property
+    def data_folder(self) -> pathlib.Path:
+        """
+        Returns the folder that the plugin data's files are located in.
         """
 
 class PluginManager:
