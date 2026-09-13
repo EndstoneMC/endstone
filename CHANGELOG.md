@@ -11,6 +11,13 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 - Fixed `Player.get_address()` returning an empty address for players connected over NetherNet, so IP bans, `PacketSendEvent` and `PacketReceiveEvent` now see the real remote address from the first packet onwards.
 - Fixed the Python type stubs for `Plugin` leaving out the members it inherits, such as `logger`, `server`, `data_folder`, `get_command` and `on_enable`, so type checkers like mypy rejected plugins that use them. The stubs have been incomplete since 0.11.9.
+- Fixed `PlayerPickupArrowEvent` never firing. `Actor.has_type()` compared the whole actor type instead of testing the category bits, so every category query returned false and neither an arrow nor a trident matched `AbstractArrow`.
+- Fixed a malformed `banned-players.json` or `banned-ips.json` leaving the server running with an empty ban list and no explanation. The reason is now logged.
+- Fixed `ItemMeta` reaching Python as the base type instead of `WritableBookMeta`, `BookMeta` or `CrossbowMeta`.
+
+### Security
+
+- Rate-limited the network ping packet (`NetworkStackLatencyPacket`, id 115). Bedrock accepts it from a connection that has not logged in yet, and the shipped `packetlimitconfig.json` left it unbounded, so a single connection could flood it to exhaust the server. On startup Endstone now adds a limit for it to `packetlimitconfig.json` when one is not already present, leaving any entry you have set yourself untouched.
 
 ## [0.11.10] - 2026-08-28
 
@@ -25,10 +32,6 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Fixed
 
 - Fixed items vanishing when `PlayerDropItemEvent` is cancelled for a drop from the main hand. The item is now restored to the player's inventory.
-
-### Security
-
-- Rate-limited the network ping packet (`NetworkStackLatencyPacket`, id 115). Bedrock accepts it from a connection that has not logged in yet, and the shipped `packetlimitconfig.json` left it unbounded, so a single connection could flood it to exhaust the server. On startup Endstone now adds a limit for it to `packetlimitconfig.json` when one is not already present, leaving any entry you have set yourself untouched.
 
 ## [0.11.9] - 2026-08-17
 
