@@ -9,6 +9,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Fixed
 
+- Fixed `Player.get_address()` returning an empty address for players connected over NetherNet, so IP bans, `PacketSendEvent` and `PacketReceiveEvent` now see the real remote address from the first packet onwards.
 - Fixed the Python type stubs for `Plugin` leaving out the members it inherits, such as `logger`, `server`, `data_folder`, `get_command` and `on_enable`, so type checkers like mypy rejected plugins that use them. The stubs have been incomplete since 0.11.9.
 
 ## [0.11.10] - 2026-08-28

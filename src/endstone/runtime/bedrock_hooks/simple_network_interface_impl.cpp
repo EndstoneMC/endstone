@@ -12,18 +12,15 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-#pragma once
+#include "bedrock/deps/nethernet/simple_network_interface_impl.h"
 
-#include "bedrock/deps/webrtc/candidate.h"
-#include "bedrock/network/network_identifier.h"
-#include "endstone/util/socket_address.h"
+#include "endstone/core/network/nethernet_address_cache.h"
+#include "endstone/runtime/hook.h"
 
-namespace endstone::core {
-
-class EndstoneSocketAddress {
-public:
-    static SocketAddress fromSystemAddress(const RakNet::SystemAddress &network_id);
-    static SocketAddress fromNetworkIdentifier(const NetworkIdentifier &network_id);
-    static SocketAddress fromWebRtcCandidate(const webrtc::Candidate &candidate);
-};
-}  // namespace endstone::core
+void NetherNet::SimpleNetworkInterfaceImpl::ReceiveFromSignalingChannel(NetworkID from, std::string_view message,
+                                                                        SignalingChannelId source_channel)
+{
+    endstone::core::NetherNetAddressCache::getInstance().addSession(from, message);
+    ENDSTONE_HOOK_CALL_ORIGINAL(&SimpleNetworkInterfaceImpl::ReceiveFromSignalingChannel, this, from, message,
+                                source_channel);
+}

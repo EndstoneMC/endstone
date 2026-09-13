@@ -827,3 +827,27 @@ extra = 0
 # 4. confirm vs the old named DB (neighbouring slots line up). The thunk's member offset (0x718 in 1.26.32)
 #    is a fragile fallback anchor - prefer the vtable slot, which cross-checks against the neighbours
 pattern = "55 41 57 41 56 56 57 53 48 81 EC ? ? ? ? 48 8D AC 24 80 00 00 00 44 0F 29 95 ? ? ? ? 44 0F 29 8D ? ? ? ? 44 0F 29 85 ? ? ? ? 0F 29 BD ? ? ? ? 0F 29 75 ? 48 C7 45 ? FE FF FF FF 0F 28 F3"
+
+[[signatures]]
+name = "?SwitchSelectedConnectionInternal@P2PTransportChannel@webrtc@@AEAAXPEAVConnection@2@W4IceSwitchReason@2@@Z"
+relative = false
+extra = 0
+# 1. find bytes "3A 20 4E 65 77 20 73 65 6C 65 63 74 65 64 20 63 6F 6E 6E 65 63 74 69 6F 6E 3A 20"
+#    = ": New selected connection: " (unique); it is the RTC_LOG line emitted when the channel commits to a
+#    candidate pair, and its lone code xref sits ~0x286 (win) / ~0x175 (linux) into the function
+# 2. walk up to the function start - on linux take the .eh_frame FDE covering the xref, on windows the .pdata
+#    RUNTIME_FUNCTION; the prologue loads `this`, the Connection* arg and the IceSwitchReason int
+# 3. confirm vs the old named DB
+pattern = "48 8B C4 48 89 58 ? 55 56 57 41 54 41 55 41 56 41 57 48 8D A8 ? ? ? ? 48 81 EC C0 09 00 00"
+
+[[signatures]]
+name = "?ReceiveFromSignalingChannel@SimpleNetworkInterfaceImpl@NetherNet@@AEAAXUNetworkID@2@V?$basic_string_view@DU?$char_traits@D@std@@@std@@W4SignalingChannelId@2@@Z"
+relative = false
+extra = 0
+# 1. find bytes "72 65 63 65 69 76 65 64 20 73 69 67 6E 61 6C 20 66 72 6F 6D 20 5B 25 73 5D 3A 20 25 2E 2A 73"
+#    = "received signal from [%s]: %.*s" (unique); it is the first log line of the function and its lone
+#    code xref sits ~0x14c (win) / ~0x76 (linux) in
+# 2. walk up to the function start - .pdata RUNTIME_FUNCTION (win) / .eh_frame FDE (linux); the body
+#    parses the signal into a variant<ConnectRequest, ConnectResponse, ConnectError, CandidateAdd>
+# 3. confirm vs the old named DB
+pattern = "55 41 57 41 56 41 55 41 54 56 57 53 48 81 EC ? ? ? ? 48 8D AC 24 80 00 00 00 48 C7 85 ? ? ? ? FE FF FF FF 44 89 8D ? ? ? ? 4C 89 C6 49 89 D7 49 89 CE 49 8B 38 49 8B 58 08"

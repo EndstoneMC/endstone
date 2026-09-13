@@ -80,6 +80,7 @@ add_library(endstone_core
         map/map_renderer.cpp
         map/map_view.cpp
         network/data_packet.cpp
+        network/nethernet_address_cache.cpp
         permissions/default_permissions.cpp
         permissions/permissible_base.cpp
         plugin/cpp_plugin_loader.cpp
