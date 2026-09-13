@@ -5761,12 +5761,14 @@ and this project adheres to <a href="https://semver.org/spec/v2.0.0.html">Semant
 <li>Fixed <code>BossBar.remove_player</code> hiding the bar from a player who was never added to it, and <code>BossBar.add_player</code> re-sending the bar to a player who was already in it.</li>
 <li>Fixed <code>Plugin.default_permission</code> rejecting a string or a bool (<code>"operator"</code>, <code>"not op"</code>, <code>True</code>), which individual entries in <code>Plugin.permissions</code> already accepted.</li>
 <li>Fixed <code>Block.biome</code> reading the wrong part of a chunk, so it reported a biome that has nothing to do with the block, and could crash the server. Introduced in 0.11.7 along with BDS 1.26.40 support.</li>
+<li>Fixed <code>Player.get_address()</code> returning an empty address for players connected over NetherNet, so IP bans, <code>PacketSendEvent</code> and <code>PacketReceiveEvent</code> now see the real remote address from the first packet onwards.</li>
 </ul>
 <h4 id="type-annotations">Type annotations<a class="headerlink" href="#type-annotations" title="Permanent link">&para;</a></h4>
 <ul>
 <li>Fixed type annotations for <code>Plugin</code> and <code>event_handler</code>.</li>
 <li>Fixed the type stubs so a type checker no longer reports errors on them: <code>__eq__</code>/<code>__ne__</code> take <code>object</code>, in-place operators such as <code>Vector.__iadd__</code> accept everything their binary counterpart does and return <code>Self</code>, an optional callback is typed <code>Callable[...] | None</code>, a skin image is a <code>numpy.typing.NDArray</code>, and <code>Plugin.config</code> is a <code>dict[str, Any]</code>.</li>
 <li>Fixed the NBT bindings hiding what their containers hold: <code>ByteArrayTag(iterable)</code> and <code>IntArrayTag(iterable)</code> take an <code>Iterable[int]</code>, <code>ListTag(iterable)</code> an <code>Iterable[Tag]</code>, <code>CompoundTag(mapping)</code> a <code>dict[str, Tag]</code>, and <code>to_list()</code>/<code>to_dict()</code> return <code>list[Any]</code>/<code>dict[str, Any]</code>.</li>
+<li>Fixed the Python type stubs for <code>Plugin</code> leaving out the members it inherits, such as <code>logger</code>, <code>server</code>, <code>data_folder</code>, <code>get_command</code> and <code>on_enable</code>, so type checkers like mypy rejected plugins that use them. The stubs have been incomplete since 0.11.9.</li>
 </ul>
 <h3 id="security">Security<a class="headerlink" href="#security" title="Permanent link">&para;</a></h3>
 <ul>
