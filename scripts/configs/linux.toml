@@ -1302,3 +1302,27 @@ extra = 0
 #    stride is 16) and drops every pending and active area whose scope byte is set and whose id matches
 # 5. cross-check: it sits 0x310 past addTransientScopedArea in the same TickingAreasManager cluster
 pattern = "55 41 57 41 56 41 55 41 54 53 48 83 EC 48 48 89 7C 24 08 0F 57 C0 0F 29 44 24 20 0F 29 44 24 10 C7 44 24 30 00 00 80 3F 4C 8B 36 48 8B 5E 08 49 39 DE 74 23"
+
+[[signatures]]
+name = "_ZN6webrtc19P2PTransportChannel32SwitchSelectedConnectionInternalEPNS_10ConnectionENS_15IceSwitchReasonE"
+relative = false
+extra = 0
+# 1. find bytes "3A 20 4E 65 77 20 73 65 6C 65 63 74 65 64 20 63 6F 6E 6E 65 63 74 69 6F 6E 3A 20"
+#    = ": New selected connection: " (unique); it is the RTC_LOG line emitted when the channel commits to a
+#    candidate pair, and its lone code xref sits ~0x286 (win) / ~0x175 (linux) into the function
+# 2. walk up to the function start - on linux take the .eh_frame FDE covering the xref, on windows the .pdata
+#    RUNTIME_FUNCTION; the prologue loads `this`, the Connection* arg and the IceSwitchReason int
+# 3. confirm vs the old named DB
+pattern = "55 41 57 41 56 41 55 41 54 53 48 81 EC ? ? ? ? 89 D5 49 89 F7 48 89 FB 4C 8B B7 ? ? ? ?"
+
+[[signatures]]
+name = "_ZN9NetherNet26SimpleNetworkInterfaceImpl27ReceiveFromSignalingChannelENS_9NetworkIDENSt3__117basic_string_viewIcNS2_11char_traitsIcEEEENS_18SignalingChannelIdE"
+relative = false
+extra = 0
+# 1. find bytes "72 65 63 65 69 76 65 64 20 73 69 67 6E 61 6C 20 66 72 6F 6D 20 5B 25 73 5D 3A 20 25 2E 2A 73"
+#    = "received signal from [%s]: %.*s" (unique); it is the first log line of the function and its lone
+#    code xref sits ~0x14c (win) / ~0x76 (linux) in
+# 2. walk up to the function start - .pdata RUNTIME_FUNCTION (win) / .eh_frame FDE (linux); the body
+#    parses the signal into a variant<ConnectRequest, ConnectResponse, ConnectError, CandidateAdd>
+# 3. confirm vs the old named DB
+pattern = "55 41 57 41 56 41 55 41 54 53 48 81 EC ? ? ? ? 89 CB 8B 84 24 ? ? ? ? B9"

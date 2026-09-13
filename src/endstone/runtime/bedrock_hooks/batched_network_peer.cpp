@@ -291,9 +291,9 @@ void upgradeLoginPayload(std::string &data, const std::size_t offset)
     }
 
     auto *version = reinterpret_cast<std::uint8_t *>(data.data()) + offset;
-    const auto declared = static_cast<std::int32_t>((std::uint32_t{version[0]} << 24) |
-                                                    (std::uint32_t{version[1]} << 16) |
-                                                    (std::uint32_t{version[2]} << 8) | std::uint32_t{version[3]});
+    const auto declared =
+        static_cast<std::int32_t>((std::uint32_t{version[0]} << 24) | (std::uint32_t{version[1]} << 16) |
+                                  (std::uint32_t{version[2]} << 8) | std::uint32_t{version[3]});
     if (declared != 2168) {
         return;
     }
@@ -395,8 +395,9 @@ void BatchedNetworkPeer::sendPacket(const std::string &data, Reliability reliabi
         return;
     }
 
-    endstone::PacketSendEvent e{player, static_cast<int>(header.getPacketId()), payload,
-                                endstone::core::EndstoneSocketAddress::fromNetworkIdentifier(id),
+    const auto address =
+        player ? player->getAddress() : endstone::core::EndstoneSocketAddress::fromNetworkIdentifier(id);
+    endstone::PacketSendEvent e{player, static_cast<int>(header.getPacketId()), payload, address,
                                 static_cast<int>(header.getSenderSubId())};
     if (visibility == VisibilityResult::Modified) {
         e.setPayload(filtered_payload);
@@ -500,8 +501,9 @@ NetworkPeer::DataStatus BatchedNetworkPeer::_receivePacket(std::string &out_data
         }
 
         const auto payload = stream.getView().substr(stream.getReadPointer());
-        endstone::PacketReceiveEvent e{player, static_cast<int>(header.getPacketId()), payload,
-                                       endstone::core::EndstoneSocketAddress::fromNetworkIdentifier(id),
+        const auto address =
+            player ? player->getAddress() : endstone::core::EndstoneSocketAddress::fromNetworkIdentifier(id);
+        endstone::PacketReceiveEvent e{player, static_cast<int>(header.getPacketId()), payload, address,
                                        static_cast<int>(header.getRecipientSubId())};
         server.getPluginManager().callEvent(e);
         if (e.isCancelled()) {

@@ -15,6 +15,7 @@
 #include "endstone/core/util/socket_address.h"
 
 #include "bedrock/server/server_instance.h"
+#include "endstone/core/network/nethernet_address_cache.h"
 #include "endstone/core/server.h"
 
 namespace endstone::core {
@@ -37,10 +38,33 @@ SocketAddress EndstoneSocketAddress::fromNetworkIdentifier(const NetworkIdentifi
     case NetworkIdentifier::Type::Address6: {
         return {network_id.getAddress(), network_id.getPort()};
     }
-    case NetworkIdentifier::Type::NetherNet:
+    case NetworkIdentifier::Type::NetherNet: {
+        return NetherNetAddressCache::getInstance().get(network_id.nether_net_id);
+    }
     case NetworkIdentifier::Type::Invalid:
     default:
         return {};
     }
+}
+
+SocketAddress EndstoneSocketAddress::fromWebRtcCandidate(const webrtc::Candidate &candidate)
+{
+    const auto &ip = candidate.address_.ip_;
+    char buffer[INET6_ADDRSTRLEN + 1] = {};
+    switch (ip.family_) {
+    case AF_INET:
+        if (!inet_ntop(AF_INET, &ip.u_.ip4, buffer, sizeof(buffer))) {
+            return {};
+        }
+        break;
+    case AF_INET6:
+        if (!inet_ntop(AF_INET6, &ip.u_.ip6, buffer, sizeof(buffer))) {
+            return {};
+        }
+        break;
+    default:
+        return {};
+    }
+    return {buffer, candidate.address_.port_};
 }
 }  // namespace endstone::core

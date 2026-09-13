@@ -14,16 +14,22 @@
 
 #pragma once
 
-#include "bedrock/deps/webrtc/candidate.h"
-#include "bedrock/network/network_identifier.h"
-#include "endstone/util/socket_address.h"
+#include <string_view>
 
-namespace endstone::core {
+#include "bedrock/bedrock.h"
+#include "bedrock/deps/nethernet/network_id.h"
 
-class EndstoneSocketAddress {
-public:
-    static SocketAddress fromSystemAddress(const RakNet::SystemAddress &network_id);
-    static SocketAddress fromNetworkIdentifier(const NetworkIdentifier &network_id);
-    static SocketAddress fromWebRtcCandidate(const webrtc::Candidate &candidate);
+namespace NetherNet {
+
+enum class SignalingChannelId {
+    WebSocket = 0,
+    Lan = 1,
 };
-}  // namespace endstone::core
+
+class SimpleNetworkInterfaceImpl {
+private:
+    ENDSTONE_HOOK void ReceiveFromSignalingChannel(NetworkID from, std::string_view message,
+                                                   SignalingChannelId source_channel);
+};
+
+}  // namespace NetherNet

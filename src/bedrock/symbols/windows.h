@@ -11,7 +11,7 @@
 
 namespace endstone::runtime {
 
-static constexpr std::array<std::pair<std::string_view, std::size_t>, 89> symbols = {{
+static constexpr std::array<std::pair<std::string_view, std::size_t>, 91> symbols = {{
     {"BlockState::StateListNode::mHead", 211294960},
     {"Enchant::mEnchants", 211141912},
     {"MobEffect::mMobEffects", 211424880},
@@ -114,6 +114,8 @@ static constexpr std::array<std::pair<std::string_view, std::size_t>, 89> symbol
     {"?createPacket@MinecraftPackets@@SA?AV?$shared_ptr@VPacket@@@std@@W4MinecraftPacketIds@@@Z", 12540224},
     // Mob
     {"?knockback@Mob@@UEAAXPEAVActor@@MMMAEBUKnockbackParameters@@@Z", 37751424},
+    // NetherNet::SimpleNetworkInterfaceImpl
+    {"?ReceiveFromSignalingChannel@SimpleNetworkInterfaceImpl@NetherNet@@AEAAXUNetworkID@2@V?$basic_string_view@DU?$char_traits@D@std@@@std@@W4SignalingChannelId@2@@Z", 18932048},
     // NetworkSystem
     {"?onNewIncomingConnection@NetworkSystem@@EEAA_NAEBVNetworkIdentifier@@$$QEAV?$shared_ptr@VNetworkPeer@@@std@@@Z", 12580960},
     // PistonBlockActor
@@ -160,6 +162,8 @@ static constexpr std::array<std::pair<std::string_view, std::size_t>, 89> symbol
     {"?updateWeather@WeatherManager@@QEAAXMHMH@Z", 19355200},
     // YAAEAVI18n
     {"?getI18n@@YAAEAVI18n@@XZ", 6057456},
+    // webrtc::P2PTransportChannel
+    {"?SwitchSelectedConnectionInternal@P2PTransportChannel@webrtc@@AEAAXPEAVConnection@2@W4IceSwitchReason@2@@Z", 170225584},
 }};
 
 }  // namespace endstone::runtime

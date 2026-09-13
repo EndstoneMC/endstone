@@ -33,6 +33,7 @@ add_library(endstone_runtime SHARED
         bedrock_hooks/minecraft_commands.cpp
         bedrock_hooks/mob.cpp
         bedrock_hooks/network_system.cpp
+        bedrock_hooks/p2p_transport_channel.cpp
         bedrock_hooks/packet.cpp
         bedrock_hooks/piston_block_actor.cpp
         bedrock_hooks/player.cpp
@@ -47,6 +48,7 @@ add_library(endstone_runtime SHARED
         bedrock_hooks/script_player_gameplay_handler.cpp
         bedrock_hooks/script_scripting_event_handler.cpp
         bedrock_hooks/script_server_network_event_handler.cpp
+        bedrock_hooks/simple_network_interface_impl.cpp
         bedrock_hooks/server_instance.cpp
         bedrock_hooks/server_network_handler.cpp
         bedrock_hooks/server_player.cpp

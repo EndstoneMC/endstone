@@ -11,7 +11,7 @@
 
 namespace endstone::runtime {
 
-static constexpr std::array<std::pair<std::string_view, std::size_t>, 89> symbols = {{
+static constexpr std::array<std::pair<std::string_view, std::size_t>, 91> symbols = {{
     {"BlockState::StateListNode::mHead", 245466592},
     {"Enchant::mEnchants", 245292608},
     {"MobEffect::mMobEffects", 245272952},
@@ -115,6 +115,8 @@ static constexpr std::array<std::pair<std::string_view, std::size_t>, 89> symbol
     {"_ZN16MinecraftPackets12createPacketE18MinecraftPacketIds", 140174016},
     // Mob
     {"_ZN3Mob9knockbackEP5ActorfffRK19KnockbackParameters", 191348496},
+    // NetherNet::SimpleNetworkInterfaceImpl
+    {"_ZN9NetherNet26SimpleNetworkInterfaceImpl27ReceiveFromSignalingChannelENS_9NetworkIDENSt3__117basic_string_viewIcNS2_11char_traitsIcEEEENS_18SignalingChannelIdE", 214988304},
     // NetworkSystem
     {"_ZN13NetworkSystem23onNewIncomingConnectionERK17NetworkIdentifierONSt3__110shared_ptrI11NetworkPeerEE", 140203712},
     // PistonBlockActor
@@ -159,6 +161,8 @@ static constexpr std::array<std::pair<std::string_view, std::size_t>, 89> symbol
     {"_ZNK11TridentItem12releaseUsingER9ItemStackP6Playeri", 195972528},
     // WeatherManager
     {"_ZN14WeatherManager13updateWeatherEfifi", 201401104},
+    // webrtc::P2PTransportChannel
+    {"_ZN6webrtc19P2PTransportChannel32SwitchSelectedConnectionInternalEPNS_10ConnectionENS_15IceSwitchReasonE", 65075872},
 }};
 
 }  // namespace endstone::runtime
