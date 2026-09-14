@@ -1,3 +1,4 @@
+import collections.abc
 import typing
 
 from endstone import GameRule, Identifier, Player
@@ -233,6 +234,38 @@ class Dimension:
         A list of all loaded `Chunk`s.
         """
 
+    def get_chunk_at_async(
+        self,
+        x: int,
+        z: int,
+        plugin: Plugin,
+        callback: collections.abc.Callable[[Chunk | None], None],
+        generate: bool = True,
+        timeout: int = 1200,
+    ) -> None:
+        """
+        Requests a chunk and calls the callback on the server thread when loading finishes.
+
+        This method returns without waiting. The callback runs on a later tick, even if the chunk is already loaded.
+        It receives `None` if generation is disabled and the chunk does not exist, loading fails, the dimension becomes
+        invalid, or the timeout expires. Disabling the plugin cancels the request without calling the callback.
+
+        A temporary hold keeps the chunk resident through the callback and is released afterwards. Use `Chunk.load()`,
+        force loading or a plugin chunk ticket inside the callback to keep it resident longer. Other holds are not changed.
+
+        Args:
+            x: X-coordinate of the chunk.
+            z: Z-coordinate of the chunk.
+            plugin: `Plugin` owning the request.
+            callback: Callback receiving the loaded chunk, or `None` on failure.
+            generate: Whether to generate the chunk if it does not exist.
+            timeout: Maximum number of server ticks to wait after loading starts, greater than zero.
+
+        Raises:
+            ValueError: If the callback is empty, the plugin is disabled, or the timeout is zero.
+            RuntimeError: If called outside the server thread or the dimension is no longer valid.
+        """
+
     def is_chunk_loaded(self, x: int, z: int) -> bool:
         """
         Checks if the `Chunk` at the given coordinates is loaded.
@@ -290,8 +323,8 @@ class Dimension:
         Releases the hold that ``load_chunk`` placed on the `Chunk` at the given coordinates, and unloads it if nothing
         else keeps it resident.
 
-        A chunk kept alive by a nearby player, the spawn area, a ``/tickingarea`` or a plugin chunk ticket stays loaded,
-        and this reports ``False``. Unloading a chunk saves it and fires a `ChunkUnloadEvent`, which handlers observe
+        A chunk kept alive by force loading, a nearby player, the spawn area, a ``/tickingarea`` or a plugin chunk ticket
+        stays loaded, and this reports ``False``. Unloading a chunk saves it and fires a `ChunkUnloadEvent`, which handlers observe
         before this returns. It also completes any chunk unloads the dimension had pending, so calling it once per chunk
         over a large area is expensive; use ``unload_chunk_request`` when releasing many chunks at once.
 
@@ -321,6 +354,55 @@ class Dimension:
 
         Raises:
             RuntimeError: If called from a thread other than the server thread.
+        """
+
+    def is_chunk_force_loaded(self, x: int, z: int) -> bool:
+        """
+        Checks whether the chunk at the given coordinates is force loaded.
+
+        This checks the force-load flag, not whether loading has finished. Other chunk holds and plugin tickets do not
+        set this flag.
+
+        Args:
+            x: X-coordinate of the chunk.
+            z: Z-coordinate of the chunk.
+
+        Returns:
+            Force-load status.
+
+        Raises:
+            RuntimeError: If called outside the server thread or the dimension is no longer valid.
+        """
+
+    def set_chunk_force_loaded(self, x: int, z: int, forced: bool) -> None:
+        """
+        Sets whether the chunk at the given coordinates is force loaded.
+
+        A force-loaded chunk stays resident without nearby players until force loading is disabled or the server
+        restarts. Loading finishes on a later tick and does not make the chunk tick. This hold is not owned by a plugin;
+        `unload_chunk()`, `unload_chunk_request()` and removing plugin tickets do not release it. Disabling force loading
+        leaves other holds and plugin tickets intact, and does not unload the chunk immediately.
+
+        Args:
+            x: X-coordinate of the chunk.
+            z: Z-coordinate of the chunk.
+            forced: Whether to force load the chunk.
+
+        Raises:
+            RuntimeError: If called outside the server thread, the dimension is no longer valid, or the chunk cannot be
+                held resident.
+        """
+
+    @property
+    def force_loaded_chunks(self) -> list[Chunk]:
+        """
+        All chunks marked as force loaded in this dimension.
+
+        The returned list is a snapshot and includes chunks whose loading has not finished yet. Other chunk holds and
+        plugin tickets are not included. This does not load any chunks or change their force-load flags.
+
+        Raises:
+            RuntimeError: If called outside the server thread or the dimension is no longer valid.
         """
 
     def add_plugin_chunk_ticket(self, x: int, z: int, plugin: Plugin) -> bool:
@@ -625,6 +707,52 @@ class Chunk:
         The dimension containing this chunk.
         """
 
+    def get_block(self, x: int, y: int, z: int) -> Block:
+        """
+        Gets a block from this chunk.
+
+        This does not load the chunk. Use `load()` to request it before accessing block data.
+        The returned block is live and reflects subsequent changes at its coordinates.
+
+        Args:
+            x: X-coordinate within the chunk, from 0 to 15.
+            y: Y-coordinate in the dimension, from its minimum height (inclusive) to its maximum height (exclusive).
+            z: Z-coordinate within the chunk, from 0 to 15.
+
+        Returns:
+            `Block` at the given coordinates.
+
+        Raises:
+            ValueError: If the coordinates are outside these bounds.
+        """
+
+    @property
+    def entities(self) -> list[Actor]:
+        """
+        A list of all loaded entities in this chunk, including players.
+
+        This does not load the chunk or its entities. The returned list is a snapshot of entities whose positions
+        are in this chunk, or an empty list if this chunk is not loaded.
+        """
+
+    @property
+    def is_generated(self) -> bool:
+        """
+        Whether this chunk has been generated.
+
+        A chunk counts as generated once it is loaded or has been written to the level's chunk storage.
+        This does not load or generate the chunk.
+        """
+
+    @property
+    def is_slime_chunk(self) -> bool:
+        """
+        Whether this chunk's coordinates qualify for slime spawning outside swamp biomes.
+
+        Bedrock's slime chunk pattern depends only on chunk coordinates, not the world seed.
+        This does not load the chunk or check other spawning conditions.
+        """
+
     @property
     def is_loaded(self) -> bool:
         """
@@ -652,6 +780,22 @@ class Chunk:
             ``True`` if the chunk is no longer loaded, otherwise ``False``.
         """
 
+    @property
+    def is_force_loaded(self) -> bool:
+        """
+        Gets or sets whether this chunk is force loaded.
+
+        The chunk is kept resident until force loading is disabled or the server restarts. Loading finishes on a later
+        tick and does not make the chunk tick. Disabling force loading leaves other holds and plugin tickets intact.
+        The getter reports the force-load flag even if loading has not finished yet.
+
+        Raises:
+            RuntimeError: If called outside the server thread, the dimension is no longer valid, or the chunk cannot be
+                held resident.
+        """
+
+    @is_force_loaded.setter
+    def is_force_loaded(self, arg1: bool) -> None: ...
     def add_plugin_chunk_ticket(self, plugin: Plugin) -> bool:
         """
         Adds a plugin ticket for this chunk, loading it if it is not already loaded.
