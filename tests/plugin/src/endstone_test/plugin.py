@@ -1,4 +1,6 @@
 import gc
+import os
+from collections.abc import Iterable
 
 import pytest
 from endstone import ColorFormat, Player
@@ -6,6 +8,7 @@ from endstone.command import Command, CommandSender
 from endstone.inventory import ItemStack
 from endstone.plugin import Plugin
 
+from endstone_test.automation import AutomatedEventRunner
 from endstone_test.checks import CHECKS, WAND_ITEMS, WAND_PREFIX
 from endstone_test.command_executor import TestCommandExecutor
 from endstone_test.listeners import (
@@ -46,6 +49,7 @@ class EndstoneTest(Plugin):
             "usages": [
                 "/test",
                 "/test events",
+                "/test autoevents",
                 "/test sender",
                 "/test broadcast",
                 "/test map",
@@ -85,6 +89,8 @@ class EndstoneTest(Plugin):
         super().__init__()
         self.recorder = EventRecorder(self)
         self.announced: dict[str, str] = {}
+        self.automated_event_runner: AutomatedEventRunner | None = None
+        self._automated_cancel_events: set[str] = set()
 
     def on_load(self) -> None:
         self.logger.info("on_load is called!")
@@ -94,22 +100,51 @@ class EndstoneTest(Plugin):
         self.logger.info(f"protocol version: {self.server.protocol_version}")
 
         self.recorder.create_boss_bar()
-        handled = set()
         for listener in LISTENERS:
-            instance = listener(self)
-            self.register_events(instance)
-            handled |= instance.handled
-        for check in CHECKS:
-            if check.key.split("/")[0] in handled:
-                self.recorder.expect_check(check.key, check.hint)
+            self.register_events(listener(self))
 
         self.get_command("test").executor = TestCommandExecutor(self)
-        self.server.scheduler.run_task(self, self.guide_all, delay=40, period=40)
-        self.run_tests()
+        if os.getenv("ENDSTONE_TEST_SKIP_PYTEST", "").strip().lower() not in {"1", "true"}:
+            self.run_tests()
+        else:
+            self.logger.info("Skipping embedded pytest suite for targeted event scenarios.")
+        if os.getenv("ENDSTONE_TEST_AUTO_EVENTS", "").strip().lower() in {"1", "true"}:
+            self.start_automated_events()
 
     def on_disable(self) -> None:
         self.logger.info("on_disable is called!")
+        self._automated_cancel_events.clear()
+        if self.automated_event_runner is not None:
+            self.automated_event_runner.cancel()
         self.recorder.remove_boss_bar()
+
+    def set_automated_cancel_events(self, event_names: Iterable[str]) -> None:
+        self._automated_cancel_events = set(event_names)
+
+    def should_cancel_event(self, event_name: str) -> bool:
+        return event_name in self._automated_cancel_events
+
+    def start_automated_events(self) -> bool:
+        if self.automated_event_runner is not None and self.automated_event_runner.running:
+            self.logger.warning("Automated event runner is already running.")
+            return False
+
+        result_path = os.getenv(
+            "ENDSTONE_TEST_RESULT_FILE", "endstone-event-test-result.json"
+        )
+        self.automated_event_runner = AutomatedEventRunner(
+            self,
+            self.recorder,
+            result_path=result_path,
+            stop_server=os.getenv("ENDSTONE_TEST_AUTO_EVENTS_STOP", "").strip().lower()
+            in {"1", "true"},
+        )
+        return self.automated_event_runner.start()
+
+    def handle_script_message(self, message_id: str, message: str) -> None:
+        """Forward GameTest control messages to the active unified runner."""
+        if self.automated_event_runner is not None:
+            self.automated_event_runner.handle_gametest_message(message_id, message)
 
     def on_command(
         self, sender: CommandSender, command: Command, args: list[str]

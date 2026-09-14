@@ -105,7 +105,13 @@ static bool handleUnconnectedPing(RakNet::RNS2RecvStruct *recv)
     char *ping_data;
     std::uint32_t ping_size;
     gRakPeer->GetOfflinePingResponse(&ping_data, &ping_size);
-    if (ping_size < 2 || (ping_data[0] << 8 | ping_data[1]) != ping_size - 2) {
+    if (ping_data == nullptr || ping_size < 2) {
+        return true;
+    }
+    const auto advertised_size =
+        static_cast<std::uint16_t>(static_cast<unsigned char>(ping_data[0]) << 8 |
+                                   static_cast<unsigned char>(ping_data[1]));
+    if (advertised_size != ping_size - 2) {
         return true;
     }
 

@@ -16,11 +16,16 @@ from .event_listener import EventListener
 class InventoryEventListener(EventListener):
     @event_handler
     def on_inventory_open(self, event: InventoryOpenEvent):
+        cancelled_before = event.is_cancelled
+        if self.plugin.should_cancel_event("InventoryOpenEvent"):
+            event.cancel()
         self.record(
             event,
             f"{event.player.name} opened an inventory of {event.inventory.size} slots",
             player=event.player.name,
             size=event.inventory.size,
+            cancelled_before=cancelled_before,
+            cancelled=event.is_cancelled,
         )
         if self.due(event, CANCEL):
             self.cancelled(event, player=event.player.name, size=event.inventory.size)
@@ -46,6 +51,9 @@ class InventoryEventListener(EventListener):
 
     @event_handler
     def on_enchant_item(self, event: EnchantItemEvent):
+        cancelled_before = event.is_cancelled
+        if self.plugin.should_cancel_event("EnchantItemEvent"):
+            event.cancel()
         self.record(
             event,
             f"{event.enchanter.name} enchants {event.item} using option "
@@ -60,6 +68,8 @@ class InventoryEventListener(EventListener):
                 for enchantment, level in event.enchants_to_add.items()
             },
             which_button=event.which_button,
+            cancelled_before=cancelled_before,
+            cancelled=event.is_cancelled,
         )
         if self.due(event, CANCEL):
             self.cancelled(event, item_type=str(event.item.type))

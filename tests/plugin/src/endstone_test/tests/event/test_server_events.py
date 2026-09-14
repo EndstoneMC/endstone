@@ -25,7 +25,7 @@ def test_server_command(recorder: EventRecorder) -> None:
 def test_plugin_enable(recorder: EventRecorder) -> None:
     """Verify PluginEnableEvent names the plugin being enabled."""
     plugins = {s["plugin"] for s in recorder.require("PluginEnableEvent")}
-    assert plugins
+    assert "test" in plugins
 
 
 def test_script_message(recorder: EventRecorder) -> None:

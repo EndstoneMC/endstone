@@ -22,6 +22,7 @@ endstone/_version.py
 __pycache__/
 *.py[cod]
 conan_provider.cmake
+node_modules/
 
 # Python virtual environment
 .venv/**

@@ -77,10 +77,10 @@ def test_piston(recorder: EventRecorder, event_name: str) -> None:
     assert snapshot["direction"]
 
 
-@pytest.mark.parametrize("event_name", ["BlockGrowEvent"])
-def test_never_fired_events_are_not_tracked(
-    recorder: EventRecorder, event_name: str
-) -> None:
-    """Verify the events with no fire site in the server are not claimed as tracked."""
-    assert event_name not in recorder.tracked
-    assert recorder.count(event_name) == 0
+def test_block_grow(recorder: EventRecorder) -> None:
+    """Verify BlockGrowEvent reports the sapling and its replacement state."""
+    for snapshot in recorder.require("BlockGrowEvent"):
+        assert "sapling" in snapshot["block_type"]
+        assert ":" in snapshot["new_type"]
+        assert snapshot["cancelled_before"] is False
+        assert isinstance(snapshot["cancelled"], bool)
