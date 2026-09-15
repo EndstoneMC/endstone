@@ -205,7 +205,7 @@ public:
     [[nodiscard]] const HashedString &getFullNameHash() const;
     [[nodiscard]] std::string getSerializedName() const;
     [[nodiscard]] const BaseGameVersion &getRequiredBaseGameVersion() const;
-    [[nodiscard]] const WeakPtr<BlockType> &getBlockType() const;
+    [[nodiscard]] const BlockType *getBlockType() const;
     [[nodiscard]] bool hasTag(const ItemTag &tag) const;
     [[nodiscard]] const std::vector<ItemTag> &getTags() const;
     Item &setMinRequiredBaseGameVersion(const BaseGameVersion &base_game_version);
@@ -254,7 +254,8 @@ protected:
     bool ignores_permission_ : 1;
     int max_use_duration_;
     BaseGameVersion min_required_base_game_version_;
-    WeakPtr<BlockType> block_type_;
+    // 1.26.51: a raw pointer, no longer a WeakPtr
+    const BlockType *block_type_;
     SharedTypes::CreativeItemCategory creative_category_;
     Item *crafting_remaining_item_;
     std::string creative_group_;  // +400

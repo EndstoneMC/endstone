@@ -249,8 +249,8 @@ const Block *ItemDescriptor::ItemEntry::getBlock() const
     if (!item) {
         return nullptr;
     }
-    const auto &block_type = item->getBlockType();
-    if (block_type.isNull()) {
+    const auto *block_type = item->getBlockType();
+    if (block_type == nullptr) {
         return nullptr;
     }
     if (aux_value == ANY_AUX_VALUE) {
