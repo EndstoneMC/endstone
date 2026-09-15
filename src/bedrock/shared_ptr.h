@@ -83,66 +83,33 @@ template <typename T>
 class WeakPtr {
 public:
     constexpr WeakPtr() noexcept = default;
-    constexpr WeakPtr(nullptr_t) noexcept {}
+    constexpr WeakPtr(nullptr_t) noexcept {}  // NOLINT(*-explicit-constructor)
 
     template <typename TDerived>
     friend class WeakPtr;
 
+    // 1.26.51 stores the object directly instead of a SharedCounter, so there is no weak count to keep.
     template <typename TDerived>
-    WeakPtr(const WeakPtr<TDerived> &other)
+    WeakPtr(const WeakPtr<TDerived> &other) noexcept  // NOLINT(*-explicit-constructor)
+        : ptr_(reinterpret_cast<T *>(other.ptr_))
     {
-        if (other.pc_) {
-            ++other.pc_->weak_count;
-        }
-        pc_ = reinterpret_cast<SharedCounter<T> *>(other.pc_);
     }
 
-    explicit WeakPtr(const SharedPtr<T> &shared_ptr) noexcept : pc_(shared_ptr.pc_)
-    {
-        if (pc_) {
-            ++pc_->weak_count;
-        }
-    }
+    explicit WeakPtr(const SharedPtr<T> &shared_ptr) noexcept : ptr_(shared_ptr.get()) {}
 
-    WeakPtr(const WeakPtr &other) noexcept
-    {
-        if (other.pc_) {
-            ++other.pc_->weak_count;
-        }
-        pc_ = other.pc_;
-    }
+    WeakPtr(const WeakPtr &other) noexcept = default;
+    ~WeakPtr() noexcept = default;
+    WeakPtr &operator=(const WeakPtr &other) noexcept = default;
 
-    ~WeakPtr() { reset(); }
+    [[nodiscard]] bool isNull() const noexcept { return ptr_ == nullptr; }
 
-    WeakPtr &operator=(const WeakPtr &other) noexcept
-    {
-        if (this != &other) {
-            if (other.pc_) {
-                ++other.pc_->weak_count;
-            }
-            reset();
-            pc_ = other.pc_;
-        }
-        return *this;
-    }
+    T *get() const noexcept { return ptr_; }
 
-    [[nodiscard]] bool isNull() const noexcept { return get() == nullptr; }
-
-    T *get() const noexcept { return pc_ ? pc_->ptr : nullptr; }
-
-    operator T *() const { return get(); }
+    operator T *() const { return get(); }  // NOLINT(*-explicit-constructor)
 
     gsl::not_null<T *> operator->() const noexcept { return get(); }
 
-    void reset() noexcept
-    {
-        if (pc_) {
-            if (--pc_->weak_count <= 0 && pc_->ptr == nullptr) {
-                delete pc_;
-            }
-            pc_ = nullptr;
-        }
-    }
+    void reset() noexcept { ptr_ = nullptr; }
 
     static WeakPtr const &null()
     {
@@ -151,5 +118,5 @@ public:
     }
 
 private:
-    SharedCounter<T> *pc_{nullptr};
+    T *ptr_{nullptr};
 };
