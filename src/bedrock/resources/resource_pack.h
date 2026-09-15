@@ -29,21 +29,26 @@ public:
     [[nodiscard]] PackManifest &getManifest() const;
 
 private:
-    bool hidden_;
-    bool error_;
-    NotNullPack pack_;
-    std::unique_ptr<PackAccessStrategy> subpack_access_strategy_;
-    PackReport pack_report_;
-    std::vector<std::shared_ptr<Pack>> sub_packs_;
-    std::vector<std::shared_ptr<ResourcePack>> sub_resource_packs_;
-    Core::HeapPathBuffer icon_path_;
-    double load_time_;
-    bool is_base_game_pack_;
-    bool is_slice_pack_;
-    ResourceSignature resource_signature_;
-    bool is_marked_for_removal_;
-    std::atomic<double> asset_read_ms_;
-    std::atomic<std::uint64_t> asset_read_bytes_;
+    // TODO(fixme): check the name - 1.26.51 moved the body behind a pointer
+    struct Body {
+        bool hidden_;
+        bool error_;
+        NotNullPack pack_;
+        std::unique_ptr<PackAccessStrategy> subpack_access_strategy_;
+        PackReport pack_report_;
+        std::vector<std::shared_ptr<Pack>> sub_packs_;
+        std::vector<std::shared_ptr<ResourcePack>> sub_resource_packs_;
+        Core::HeapPathBuffer icon_path_;
+        double load_time_;
+        bool is_base_game_pack_;
+        bool is_slice_pack_;
+        ResourceSignature resource_signature_;
+        bool is_marked_for_removal_;
+        std::atomic<double> asset_read_ms_;
+        std::atomic<std::uint64_t> asset_read_bytes_;
+    };
+
+    Body *body_;
 };
 
 using NotNullResourcePack = gsl::not_null<std::shared_ptr<ResourcePack>>;
