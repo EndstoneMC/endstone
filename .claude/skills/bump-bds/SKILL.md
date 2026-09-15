@@ -51,6 +51,37 @@ diffs as private working references only.
 
 ---
 
+# Orchestration - never wait idle
+
+Building the two IDA databases is the long pole (hours each, multi-GB). Almost
+nothing else in a bump needs one, so the database must never be the thing you are
+waiting on.
+
+- **DO launch both databases first**, via `build-ida-db` - the opening action of a
+  Scenario-B bump, not a step you reach later.
+- **DO run the entire non-IDA half while they analyse.** `lief` + `capstone` on the
+  shipped binaries settle, with no database: the protocol version; the per-class
+  vtable diff (Linux RTTI); `sizeof` for every asserted class; whether a resolved
+  offset is a real function start (`.pdata` / `.eh_frame_hdr` FDE); referenced
+  string-set identity; and cutting, replaying and uniqueness-checking byte patterns.
+- **DO order it: dumper triage -> non-IDA sweeps -> IDA.** Triage names the broken
+  entries, the sweeps clear or convict most of them, and only the string-less
+  locates genuinely need a database.
+- **DO validate any scanner of your own against the PREVIOUS binary before trusting
+  it** - every committed pattern must resolve to its known-good offset there. Until
+  it reproduces the dumper exactly, its verdicts on the new binary mean nothing.
+- **DO anchor an identity claim on a self-naming marker string** (a trace/profiler
+  literal like `<Class>::<method>`) referenced from exactly one site in both
+  versions. A windowed string-set comparison overruns into neighbouring functions
+  and will convict a correct offset.
+- **DO fan the per-symbol locates out to parallel agents** once the databases are
+  up - they are independent. There is ONE idalib worker, so agents driving idalib
+  serialise: fan out the reading and decision work, not the idalib calls.
+- **DO NOT block on the databases to start the port.** The vtable and member-layout
+  work is the larger half of a bump and is entirely RTTI-driven on Linux.
+
+---
+
 # The symbol pipeline (shared)
 
 ## How it works
@@ -1105,6 +1136,24 @@ must be right. Exploit that:
 - Only the **size driver** (largest `K`) needs a byte-exact body; confirm with
   `BEDROCK_STATIC_ASSERT_SIZE`. After a size-drift fix the driver can become a
   *different* alternative - recompute which one it is.
+- **On Linux, read the alternative count straight off the visit table - and bound
+  it by the next rip-referenced address.** libc++'s `std::visit` compiles to
+  `mov eax, dword [event+OFF]; cmp rax, -1; je <valueless>; lea rcx,[rip+TABLE];
+  call [rcx+rax*8]`, so `OFF` is the discriminant offset (a 4-byte index; `-1` is
+  `variant_npos`) and `TABLE` holds one thunk per alternative. Do **NOT** end the
+  table at "the next qword is not a code pointer" - the generated thunks of
+  neighbouring tables sit directly after it and the run reads far too long (an
+  8-alternative table measured 51). The terminator is the **next address in the
+  image that any rip-relative `lea` references**; `(next - TABLE)/8` is the count.
+  Validate the method on the PREVIOUS binary first - it must reproduce the count
+  Endstone already declares.
+- **A vtable change on a `Script*GameplayHandler` does not by itself mean variant
+  drift.** BDS adds whole new `handleEvent` overloads (a new event category) far
+  more often than it changes an existing variant. Compare the discriminant offset
+  and the bounded alternative count of the **hooked slot** across versions before
+  touching an event list; an insertion *below* the hooked ordinal changes nothing.
+  `vhook::create<N>` patches `vtable[N]` by raw index, so only insertions at or
+  above `N` can break a hook.
 - **Confirm live**: breakpoint the hooked `handleEvent`, copy `byte
   [event+OFF_real]` into `byte [event+OFF_endstone]`, and continue - if the
   `bad_variant_access` then vanishes across a full start/stop, the offset/size
