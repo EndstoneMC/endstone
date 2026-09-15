@@ -102,7 +102,8 @@ extra = 0
 #    string -> ctor -> __vftable store)
 # 2. _receivePacket is the 9th slot (offset +0x40), a few slots past sendPacket; cross-check the slot
 #    index against the old named DB
-pattern = "56 57 53 48 81 EC ? ? ? ? 48 89 D7 48 89 CE 48 8B 91 ? ? ? ? 48 8B 89 ? ? ? ? 48 39 CA 0F 85 ? ? ? ? 48 8B 4E ? 48 8D 5E ? 48 8B 01 48 8B 40 ? 48 89 DA FF 15"
+# function prologue
+pattern = "41 56 56 57 53 48 81 EC ? ? ? ? 48 89 D7 48 89 CE 48 8B 91"
 
 [[signatures]]
 name = "?_log_va@LogDetails@BedrockLog@@AEAAXW4LogAreaID@@IPEBDHH1PEAD@Z"
@@ -205,7 +206,8 @@ extra = 0
 # 1. find bytes "54 61 72 67 65 74 4F 74 68 65 72 00" = "TargetOther\0" (unique NBT key)
 # 2. its lone data xref is a `lea` inside this function
 # 3. walk up to the prologue
-pattern = "55 41 57 41 56 41 55 41 54 56 57 53 48 81 EC ? ? ? ? 48 8D AC 24 80 00 00 00 44 0F 29 95 ? ? ? ? 44 0F 29 4D ? 44 0F 29 45 ? 0F 29 7D ? 0F 29 75 ? 48 C7 45 ? FE FF FF FF 4C 89 C7 48 89 D3 48 89 CE"
+# function prologue
+pattern = "55 41 57 41 56 41 55 41 54 56 57 53 48 81 EC ? ? ? ? 48 8D AC 24 ? ? ? ? 44 0F 29 55 ? 44 0F 29 4D ? 44 0F 29 45 ? 0F 29 7D ? 0F 29 75 ? 48 C7 45 ? ? ? ? ? 4C 89 C7"
 
 [[signatures]]
 name = "?addEnumValues@CommandRegistry@@QEAAHAEBV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@AEBV?$vector@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@V?$allocator@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@2@@3@@Z"
@@ -527,7 +529,8 @@ extra = 0
 #    = "commands.generic.invalidOrigin\0" (unique)
 # 2. its lone data xref is a `lea` inside this function
 # 3. walk up to the prologue
-pattern = "55 41 57 41 56 41 55 41 54 56 57 53 48 81 EC ? ? ? ? 48 8D AC 24 80 00 00 00 0F 29 B5 ? ? ? ? 48 C7 85 ? ? ? ? FE FF FF FF 45 89 CF 4C 89 C3 48 89 D6 48 89 CF 49 8B 48 20 48 8B 01 48 8B 80 B0 00 00 00"
+# function prologue
+pattern = "55 41 57 41 56 41 55 41 54 56 57 53 48 81 EC ? ? ? ? 48 8D AC 24 ? ? ? ? 0F 29 B5 ? ? ? ? 48 C7 85 ? ? ? ? ? ? ? ? 45 89 CF 4C 89 C3"
 
 [[signatures]]
 name = "?createPacket@MinecraftPackets@@SA?AV?$shared_ptr@VPacket@@@std@@W4MinecraftPacketIds@@@Z"
@@ -737,7 +740,8 @@ extra = 0
 # 2. walk up to the prologue. The arg-shuffle after the frame setup is codegen-volatile: 1.26.20 was
 #    4C89C3/4889D6/4889CF, 1.26.30 is 4C89C7/4989D4/4889CB - re-derive per version, else the pattern
 #    false-matches an unrelated function that kept the old shuffle (the 1.26.20 pattern hit sub @0x1F5ADE0)
-pattern = "55 41 57 41 56 41 55 41 54 56 57 53 48 81 EC ? ? ? ? 48 8D AC 24 ? ? ? ? 0F 29 B5 ? ? ? ? 48 C7 85 ? ? ? ? FE FF FF FF 4D 89 CE 4C 89 C7 48 89 D6 48 89 CB 48 8B 01"
+# function prologue
+pattern = "55 41 57 41 56 41 55 41 54 56 57 53 48 81 EC ? ? ? ? 48 8D AC 24 ? ? ? ? 0F 29 B5 ? ? ? ? 48 C7 85 ? ? ? ? ? ? ? ? 4D 89 CE 4C 89 C7 48 89 D6 48 89 CB 48 8B 01"
 
 [[signatures]]
 name = "?disconnectClientWithMessage@ServerNetworkHandler@@QEAAXAEBVNetworkIdentifier@@W4SubClientId@@W4DisconnectFailReason@Connection@@AEBV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@V?$optional@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@7@@Z"
@@ -762,7 +766,8 @@ extra = 0
 #    strings/lambda names and is only unique with its trailing 00)
 # 2. its lone data xref is a `lea` inside this function
 # 3. walk up to the prologue
-pattern = "55 41 57 41 56 41 55 41 54 56 57 53 B8 ? ? ? ? E8 ? ? ? ? 48 29 C4 48 8D AC 24 80 00 00 00 0F 29 B5 ? ? ? ? 48 C7 85 ? ? ? ? FE FF FF FF 4C 89 85 ? ? ? ? 48 89 95 ? ? ? ? 48 89 8D ? ? ? ? 48 8B 0D"
+# function prologue
+pattern = "55 41 57 41 56 41 55 41 54 56 57 53 B8 ? ? ? ? E8 ? ? ? ? 48 29 C4 48 8D AC 24 ? ? ? ? 0F 29 B5 ? ? ? ? 48 C7 85 ? ? ? ? ? ? ? ? 4D 89 C5"
 
 [[signatures]]
 name = "?tryToLoadPlayer@ServerNetworkHandler@@QEAA_NAEAVServerPlayer@@AEBVConnectionRequest@@AEBUPlayerAuthenticationInfo@@@Z"
