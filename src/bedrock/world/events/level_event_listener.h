@@ -28,5 +28,10 @@ public:
     virtual EventResult onLevelTickEnd(Level &);
     virtual EventResult onLevelWeatherChange(const std::string &, bool, bool, bool, bool);
     virtual EventResult onRealmsStory(const std::string &);
+    // TODO(fixme): check the names
+    virtual void unknown10() = 0;
+    virtual void unknown11() = 0;
+    virtual void unknown12() = 0;
+    virtual void unknown13() = 0;
     virtual EventResult onEvent(const EventType &);
 };

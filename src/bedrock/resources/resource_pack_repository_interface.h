@@ -73,7 +73,12 @@ public:
         PackCategory) const = 0;
     virtual void forEachPack(const std::function<void(const ResourcePack &)> &) const = 0;
     [[nodiscard]] virtual std::vector<ResourceLocation> const &getInvalidPacks(PackType) const = 0;
+    // TODO(fixme): check the name
+    virtual void unknown47() = 0;
     [[nodiscard]] virtual std::vector<ResourceLocation> getInvalidPacks(InvalidPacksFilterGroup const &) const = 0;
+    // TODO(fixme): check the names
+    virtual void unknown49() = 0;
+    virtual void unknown50() = 0;
     virtual void deletePack(ResourceLocation const &) = 0;
     virtual void deletePackFiles(ResourceLocation const &) = 0;
     virtual void postDeletePack(ResourceLocation const &) = 0;
