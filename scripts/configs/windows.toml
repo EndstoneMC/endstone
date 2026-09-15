@@ -124,9 +124,8 @@ extra = 0
 #    terminator (unique in the binary)
 # 2. its lone data xref is a `lea` inside this function
 # 3. walk up to the prologue
-pattern = "E8 ? ? ? ? 48 8B 4D ? E8 ? ? ? ? 48 83 C6 ? 48 89 F0 48 83 C4"
-rip_relative = true
-rip_offset = 1
+# function prologue
+pattern = "55 41 57 41 56 41 55 41 54 56 57 53 48 81 EC ? ? ? ? 48 8D AC 24 ? ? ? ? 0F 29 75 ? 48 C7 45 ? ? ? ? ? 89 D0"
 
 [[signatures]]
 name = "?tryGetStateFromLegacyData@BlockType@@QEBAPEBVBlock@@G@Z"
@@ -229,7 +228,8 @@ extra = 0
 #    = "Register Command <{}> Alias <{}>\0" (unique)
 # 2. its lone data xref is a `lea` inside this function
 # 3. walk up to the prologue
-pattern = "55 41 57 41 56 41 55 41 54 56 57 53 48 81 EC ? ? ? ? 48 8D AC 24 80 00 00 00 48 C7 45 ? FE FF FF FF 49 89 CC 48 8B 42 10 48 83"
+# function prologue
+pattern = "55 41 57 41 56 41 55 41 54 56 57 53 48 81 EC ? ? ? ? 48 8D AC 24 ? ? ? ? 48 C7 45 ? ? ? ? ? 48 89 4D ? 48 8B 42"
 
 [[signatures]]
 name = "?registerCommand@CommandRegistry@@QEAAXAEBV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@PEBDW4CommandPermissionLevel@@UCommandFlag@@3@Z"
@@ -392,7 +392,7 @@ extra = 0
 #    trade ItemInstances - so the `call` right after a buyA/buyB tag lookup is the target
 # 3. confirm the callee vs the old named DB (static, takes a CompoundTag, returns an ItemInstance)
 # function prologue
-pattern = "55 41 56 56 57 53 48 81 EC ? ? ? ? 48 8D AC 24 ? ? ? ? 48 C7 45 ? ? ? ? ? 48 89 D6 49 89 CE 48 8D 3D"
+pattern = "55 41 56 56 57 53 48 81 EC ? ? ? ? 48 8D AC 24 ? ? ? ? 48 C7 45 ? ? ? ? ? 48 89 D6 49 89 CE 48 8D 7D ? 48 89 F9 E8"
 
 [[signatures]]
 name = "?lookupByName@ItemRegistry@@AEBA?AV?$WeakPtr@VItem@@@@AEAHV?$basic_string_view@DU?$char_traits@D@std@@@std@@@Z"
