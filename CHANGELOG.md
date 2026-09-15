@@ -7,6 +7,14 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+### Added
+
+- Added support for BDS version 1.26.51, which raises the network protocol version to 2193.
+
+### Removed
+
+- **BREAKING**: Removed the workarounds that let 1.26.44 clients join. BDS 1.26.51 accepts protocol 2193 only, so every player must now be on 1.26.51. The shims rewrote a 1.26.44 client's declared protocol version on the wire and repaired its scoreboard packets; neither is meaningful now that the protocol has moved on twice.
+
 ### Fixed
 
 - Fixed `Player.get_address()` returning an empty address for players connected over NetherNet, so IP bans, `PacketSendEvent` and `PacketReceiveEvent` now see the real remote address from the first packet onwards.
