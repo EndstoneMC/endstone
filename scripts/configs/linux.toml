@@ -21,7 +21,8 @@ extra = 0
 # 2. near its top initEnchants resets the Enchant::mEnchants vector (std::vector<std::unique_ptr<Enchant>>)
 #    then push_backs each enchant; that rip-relative vector load is mEnchants
 # 3. confirm vs the old named DB (also read by Enchant::isCompatibleWith)
-pattern = "48 8B 1D ? ? ? ? 48 8B 2D ? ? ? ? 49 89 EE"
+# rip-relative load in Enchant::initEnchants
+pattern = "48 8B 1D ? ? ? ? 4C 8B 3D ? ? ? ? 4D 89 FE"
 rip_relative = true
 rip_offset = 10
 
@@ -29,7 +30,12 @@ rip_offset = 10
 name = "getI18n::result"
 relative = false
 extra = 0
-pattern = "0F 29 84 24 ? ? ? ? 48 8D 35 ? ? ? ? 48 8B 05 ? ? ? ? 48 8D 7C 24"
+# 1. locate SayCommand::_sendMessage (see its entry) - it calls getI18n().get("chat.type.announcement", ...)
+# 2. the I18n singleton is reached as a pair of rip-relative refs to the SAME address: `lea rsi, [result]`
+#    (the this pointer) followed by `mov rax, [result]` (its vptr), then a call through [rax+0x88]
+# 3. confirm by reference population - the address is a .bss global read by ~150 functions
+# rip-relative load in SayCommand::_sendMessage
+pattern = "0F 29 84 24 ? ? ? ? 48 8D 35 ? ? ? ? 48 8B 05 ? ? ? ? 48 8D 7C 24 ? 48 89 E2 48 8D 4C 24"
 rip_relative = true
 rip_offset = 11
 
@@ -96,9 +102,8 @@ extra = 0
 # 1. search the ASCII bytes of "No block descriptor to resolve during deferred resolution" + a 00 terminator (unique)
 # 2. its lone data xref is a `lea` inside this function
 # 3. walk up to the prologue
-pattern = "E8 ? ? ? ? 4C 89 E7 E8 ? ? ? ? 8B 6B"
-rip_relative = true
-rip_offset = 1
+# function prologue
+pattern = "55 41 57 41 56 41 55 41 54 53 48 83 EC ? 89 F0 48 89 7C 24"
 
 [[signatures]]
 name = "_ZNK9BlockType25tryGetStateFromLegacyDataEt"
@@ -110,7 +115,8 @@ extra = 0
 #    Block CACHE - a hashtable keyed by the u16 legacy value, building the "minecraft:" name + resolving the
 #    block on a miss, so it reads like a hashtable insert/lookup (NOT a plain switch - don't reject it for that)
 # 3. confirm by behaviour, not address neighbourhood (it may sit in a cluster next to unrelated functions)
-pattern = "55 41 57 41 56 41 55 41 54 53 48 81 EC ? ? ? ? 89 F5 49 89 FE 4C 8D AF"
+# function prologue
+pattern = "55 41 57 41 56 41 55 41 54 53 48 81 EC ? ? ? ? 89 F5 49 89 FD"
 
 [[signatures]]
 name = "_ZNK9BlockType14spawnResourcesER11BlockSourceRK8BlockPosRK5BlockR7IRandomRK20ResourceDropsContextPK5Actor"
@@ -222,9 +228,8 @@ extra = 0
 # 2. it is reached from the CommandRegistry::registerOverload<...> template instances; setupOverloadRules and
 #    addPostfix are its near-unique callees
 # 3. confirm vs the old named DB
-pattern = "E8 ? ? ? ? 4C 89 E0 48 83 C4 ? 5B 41 5C 41 5D 41 5E 41 5F 5D C3 E8 ? ? ? ? 4D 89 6C 24"
-rip_relative = true
-rip_offset = 1
+# function prologue
+pattern = "55 41 57 41 56 41 55 41 54 53 48 81 EC ? ? ? ? 49 89 F6 48 89 FD 48 8B 47"
 
 [[signatures]]
 name = "_ZNK15CommandRegistry14symbolToStringENS_6SymbolE"
@@ -327,9 +332,8 @@ extra = 0
 # 2. MerchantRecipe::load reads the buyA/buyB child tags and calls this on each - the `call` right after a
 #    buyA/buyB tag lookup is the target
 # 3. confirm vs the old named DB (static, takes a CompoundTag, returns an ItemInstance)
-pattern = "E8 ? ? ? ? 4C 8D AC 24 ? ? ? ? 4C 89 EF 4C 89 F6 E8 ? ? ? ? 48 8D 05"
-rip_relative = true
-rip_offset = 1
+# function prologue (grown to unique)
+pattern = "41 57 41 56 41 54 53 48 81 EC ? ? ? ? 49 89 F6 48 89 FB 4C 8D 7C 24 ? 4C 89 FF E8 ? ? ? ? 4C 8D 25 ? ? ? ? 4C 89 64 24 ? 4C 89 FF"
 
 [[signatures]]
 name = "_ZNK12ItemRegistry12lookupByNameERiNSt3__117basic_string_viewIcNS1_11char_traitsIcEEEE"
@@ -341,7 +345,8 @@ extra = 0
 #    item id (Item::getId)
 # 4. the TARGET is that delegated call - ItemRegistry::lookupByName (the large name->item hash lookup, many callers)
 # 5. confirm vs the old named DB
-pattern = "55 41 57 41 56 41 55 41 54 53 48 81 EC ? ? ? ? 48 89 FB 4D 85 C0"
+# function prologue
+pattern = "55 41 57 41 56 41 55 41 54 53 48 81 EC ? ? ? ? 48 89 FB 4D 85 C0 74 ? 49 89 D5"
 
 [[signatures]]
 name = "_ZN13ItemStackBase34_loadBlocksForCanPlaceOnCanDestroyERNSt3__16vectorIPK9BlockTypeNS0_9allocatorIS4_EEEERKNS0_12basic_stringIcNS0_11char_traitsIcEENS5_IcEEEE"
@@ -424,7 +429,16 @@ pattern = "55 41 57 41 56 41 55 41 54 53 48 83 EC ? 45 89 CD 4D 89 C4 89 4C 24 ?
 name = "_ZN14MapDataManager15getMapSavedDataE13ActorUniqueID"
 relative = false
 extra = 0
-pattern = "55 41 57 41 56 41 55 41 54 53 48 83 EC ? 49 89 F6 48 89 FB 48 89 74 24"
+# 1. find bytes "6D 61 70 49 64 00" = "mapId\0"; take the copy that HAS code xrefs (there are two
+#    copies, one unreferenced) - one of its two referencing functions is MapDataManager's map-loading
+#    helper, which reads the mapId tag and calls LevelStorage through vtable slot 0xa8
+# 2. getMapSavedData is that helper's caller that hashes its ActorUniqueID argument: the golden-ratio
+#    constant 0x9e3779b9 + a libc++ popcount bucket walk over the unordered_map at this+0x60/+0x68,
+#    comparing the key at [node+0x10] against the uuid in rsi
+# 3. NOTE: 1.26.51 split the function - the load-and-insert tail is now the separate helper, so
+#    getMapSavedData is much smaller than in 1.26.45 and a whole-body signature match will miss it
+# function prologue
+pattern = "41 57 41 56 53 48 83 EC ? 48 89 FB 48 89 74 24 ? 4C 8B 47"
 
 [[signatures]]
 name = "_ZN17MinecraftCommands14compileCommandERK12HashedStringR13CommandOrigin17CurrentCmdVersionNSt3__18functionIFvRKNS6_12basic_stringIcNS6_11char_traitsIcEENS6_9allocatorIcEEEEEEE"
@@ -435,9 +449,8 @@ extra = 0
 #    runs: compileCommand(...) -> null-check -> CommandOutput ctor -> Command::run(cmd, ...)
 # 3. compileCommand is the FIRST call there; its returned Command* is null-checked then passed to the run call
 # 4. confirm vs the old named DB
-pattern = " E8 ? ? ? ? 48 89 44 24 ? 48 8B BC 24 ? ? ? ? 4C 39 FF"
-rip_relative = true
-rip_offset = 1
+# function prologue
+pattern = "55 41 57 41 56 41 55 41 54 53 48 81 EC ? ? ? ? 4C 89 44 24 ? 48 89 54 24 ? 49 89 F4"
 
 [[signatures]]
 name = "_ZNK17MinecraftCommands14executeCommandER14CommandContextb"
@@ -495,7 +508,8 @@ extra = 0
 # 3. confirm tick by its body: piston state machine over PistonState 0/1/2/3, stepping mProgress by +/-0.5
 #    toward 1.0f / 0.0, building a moving-block AABB and calling _moveCollidedEntities / _spawnBlocks
 # 4. confirm vs the old named DB
-pattern = "55 41 57 41 56 41 55 41 54 53 48 81 EC ? ? ? ? ? 89 ? FF 47 ? ? 89 F5"
+# function prologue (grown to unique)
+pattern = "55 41 57 41 56 41 55 41 54 53 48 81 EC ? ? ? ? 49 89 FE FF 47 ? 49 89 F5 F6 47 ? ? 74 ? 49 8B 45 ? 4C 89 EF 4C 89 F6 FF 90 ? ? ? ? 49 8B 06 4C 89 F7 4C 89 EE FF 90 ? ? ? ? 41 80 66 ? ? 41 80 BE"
 
 [[signatures]]
 name = "_ZN6Player10teleportToERK4Vec3biib"
@@ -521,10 +535,14 @@ rip_offset = 7
 name = "_ZN6Player15startSleepInBedERK8BlockPosbf"
 relative = false
 extra = 0
-# 1. find bytes "31 20 73 74 61 72 74 53 6C 65 65 70 49 6E 42 65 64 00" = "1 startSleepInBed\0" (unique)
-# 2. its lone data xref (a validateBlockPos label arg) is a `lea` inside this function
-# 3. walk up to the prologue
-pattern = "55 41 57 41 56 41 55 41 54 53 48 81 EC ? ? ? ? 0F 29 84 24 ? ? ? ? 89 D5 49 89 F6"
+# 1. startSleepInBed is virtual: read _ZTV6Player and take the slot DIRECTLY ABOVE stopSleepInBed
+#    (locate stopSleepInBed from its own entry) - the pair is adjacent in every version, though the
+#    absolute index drifts (204/205 in 1.26.45, 203/204 in 1.26.51)
+# 2. confirm by the argument shape: (BlockPos const&, bool, float) spills xmm0 with `movaps [rsp+N],
+#    xmm0`, keeps the bool in ebp (`mov ebp, edx`), then calls through [this+0x1d0]
+# 3. NOTE: the old "1 startSleepInBed" label string no longer exists in the binary - do not look for it
+# function prologue
+pattern = "55 41 57 41 56 41 55 41 54 53 48 81 EC ? ? ? ? 0F 29 84 24 ? ? ? ? 89 D5"
 
 [[signatures]]
 name = "_ZN6Player17completeUsingItemEv"
@@ -586,11 +604,12 @@ name = "_ZNK17RepositoryFactory13createSourcesERK23IResourcePackRepository"
 relative = false
 extra = 0
 # 1. RepositoryFactory's vtable is RTTI-named `_ZTV17RepositoryFactory`
-# 2. createSources is slot 1 (address-point order: deleting dtor, createSources, createIO); read the index in
-#    the old named DB to be sure
+# 2. createSources is slot 2 of the primary address point (complete dtor, deleting dtor, createSources,
+#    createIO) - the 4-slot vtable is unchanged between 1.26.45 and 1.26.51
 # 3. confirm by its body: lock AppPlatform, RepositorySourceOptions::create, make_shared<RepositorySources>
 # 4. confirm vs the old named DB
-pattern = "55 41 57 41 56 41 55 41 54 53 48 81 EC ? ? ? ? 49 89 D7 49 89 FD 48 8D 3D ? ? ? ?"
+# function prologue
+pattern = "55 41 57 41 56 41 55 41 54 53 48 81 EC ? ? ? ? 49 89 D7 48 89 FD 48 8D 3D"
 
 [[signatures]]
 name = "_ZN10SayCommand12_sendMessageERKNSt3__112basic_stringIcNS0_11char_traitsIcEENS0_9allocatorIcEEEERKNS0_8optionalIS6_EES8_RK21CommandOriginIdentityR5Level"
@@ -651,12 +670,13 @@ relative = false
 extra = 0
 # 1. find bytes "25 6D 75 6C 74 69 70 6C 61 79 65 72 2E 70 6C 61 79 65 72 2E 6C 65 66 74 00" = "%multiplayer.player.left\0"
 #    (unique); its lone data xref is in ServerNetworkHandler::_onPlayerLeft
-# 2. _onPlayerLeft refreshes the announcement when a player leaves, so updateServerAnnouncement is a this-only
-#    call below the string's use
-# 3. confirm vs the old named DB
-pattern = "E8 ? ? ? ? 80 3D ? ? ? ? ? 75 ? 4C 89 E7"
-rip_relative = true
-rip_offset = 1
+# 2. updateServerAnnouncement is the function immediately after _onPlayerLeft in .text (true in both 1.26.45
+#    and 1.26.51); _onPlayerLeft does NOT call it - it has ~8 call sites from other ServerNetworkHandler members
+# 3. confirm by its body: it bails unless [this+0x2f0] == 1, then dereferences a
+#    Bedrock::NonOwnerPointer<ILevel> (assert string "T *Bedrock::NonOwnerPointer<ILevel>::_get() const")
+# 4. confirm vs the old named DB
+# function prologue (grown to unique)
+pattern = "55 41 57 41 56 41 55 41 54 53 48 83 EC ? 80 BF ? ? ? ? ? 0F 85 ? ? ? ? 48 89 FB 0F B6 87"
 
 [[signatures]]
 name = "_ZN20ServerNetworkHandler27disconnectClientWithMessageERK17NetworkIdentifier11SubClientIdN10Connection20DisconnectFailReasonERKNSt3__112basic_stringIcNS6_11char_traitsIcEENS6_9allocatorIcEEEENS6_8optionalISC_EE"
