@@ -450,6 +450,21 @@ not the virtuals), so you diff layout without any virtual-function names.
    is the artifact, not a removal. 1.26.51 produced two such false positives
    this way, `BaseCircuitComponent` reading 55 -> 29 and `RemoteConnector`
    -56 reading 22 -> 20; both classes were completely unchanged.
+2c. **The class-level length sweep has two blind spots - close both.** The
+   usual sweep (every `_ZTS` name -> vtable length in each binary, intersected
+   with the class names Endstone declares) silently skips:
+   - **Abstract bases whose vtable is never emitted.** Their `__class_type_info`
+     is only referenced from derived `__si_class_type_info` records, so the
+     offset-0 address-point search finds nothing and the class never enters the
+     table. `ItemDescriptor::BaseDescriptor` gained a virtual in 1.26.51 and did
+     not appear in the sweep at all; only its five derivers did, each 18 -> 19.
+     So **read the sweep as "some class in this hierarchy changed"** and walk up
+     to the base Endstone actually declares.
+   - **Classes Endstone declares in a `.cpp`, not a header.** Scan `**/*.cpp`
+     alongside `**/*.h` when building the "what Endstone declares" set -
+     `InternalItemDescriptor` lives in `item_descriptor.cpp` and was invisible
+     to a header-only scan.
+
 3. **Structural fingerprint** confirms no same-count shuffle, name-free: tag each
    slot `P` = `__cxa_pure_virtual`, `T` = this-adjusting thunk (`48 83 ef` /
    `48 81 ef` = `sub rdi`), `R` = repeats previous target (shared-stub runs),
@@ -645,6 +660,29 @@ control block and fault on garbage. When that happens:
   first 8 bytes, so a getter returning `.get()` keeps working while every member
   *after* it is 8 bytes out. Silent, and it hides the real breakage.
 
+### When the crash leaves NO report: 0xC0000409 is a vtable slot shift
+
+Exit code `3221226505` / `0xC0000409` is `__fastfail`, and subcode `0xA` is
+`FAST_FAIL_GUARD_ICALL_CHECK_FAILURE` - Control Flow Guard refusing an indirect
+call whose target is not a registered function entry. That is the signature of a
+**virtual call landing on the wrong slot**: the loaded qword is a valid-looking
+address (a data table, a vtable's tail, the middle of a function) but not a CFG
+call target. An access violation would at least give you a trace; a fast-fail
+bypasses SEH, so crashpad writes nothing and `crash_reports/` stays empty.
+
+Do not reach for a debugger - **bisect with `fprintf(stderr, ...)` + `fflush`**.
+Two builds is usually enough: one marker per top-level stage to find the
+function, then one marker per statement inside it. 1.26.51's went
+`recipes -> shapeless[0] -> ing serialize` and stopped, naming
+`ItemDescriptor::serialize(Json::Value&)`'s `impl_->serialize(json)` as the bad
+dispatch in two rebuilds. Then take the concrete class the call dispatches on
+(here `InternalItemDescriptor`) straight to the Linux RTTI vtable diff.
+
+Related trap: Endstone's devtools thread dumps every block, item, recipe and
+biome at startup, so it exercises far more of the ABI than a bare boot does.
+A bump that "boots fine" with devtools off is not a bump that works - leave
+devtools on and treat its dump as the acceptance test.
+
 ### The change BDS actually makes most often
 
 **A member changing KIND at an unchanged offset**, growing 8 -> 16 and shifting
@@ -660,6 +698,36 @@ a `unique_ptr<T>` replaced by an inline `std::optional<T>` (the destructor stops
 running a deleter and starts testing an engaged flag over the value's own body),
 and a member relocated within the struct with `sizeof` unchanged - which no size
 check can ever detect.
+
+### A class can keep its name and API but move its BODY behind a pointer
+
+`sizeof` sweeps, vtable sweeps and RTTI all say "unchanged" when BDS turns a
+class into a handle - the old body becomes a separate allocation and the class
+shrinks to a single pointer. `ResourcePack` did this in 1.26.51: it stayed
+non-polymorphic, stayed named the same, and every accessor Endstone calls kept
+its signature, but `sizeof` went from a few hundred bytes to 8.
+
+**The tell is one extra `mov rax, [rax]` in a BDS function that reads through
+the object**, so diff the *chain of indirections*, not the endpoints:
+
+    1.26.45   mov r8, [rbx+0x10]   ; ResourcePack*
+              mov rax, [r8+8]      ; -> Pack*
+              mov rax, [rax]       ; -> PackManifest*
+    1.26.51   mov r8, [rbx+0x10]   ; ResourcePack*
+              mov rax, [r8]        ; -> body        <-- new hop
+              mov rax, [rax+8]     ; -> Pack*
+              mov rax, [rax]       ; -> PackManifest*
+
+Pick any BDS function that walks the class (a getter, a filter loop, a
+comparison) and read the two side by side. Confirm at runtime by dumping the
+first qwords of a live object: the handle's own tail is unrelated heap (an NT
+heap block header at `+8` says the allocation really is 8 bytes), while the
+pointer at `+0` leads to something with the *old* layout - zeroed leading bools,
+the same `shared_ptr` at `+8`, the same null `unique_ptr` at `+24`.
+
+Port it by nesting the old member list in a `Body`/`Impl` struct and leaving one
+pointer in the class; nothing else in Endstone has to change, because the
+accessors keep their signatures.
 
 ### Proof techniques that settle it quickly
 
