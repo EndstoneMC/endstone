@@ -9,11 +9,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Added
 
-- Added support for BDS version 1.26.51, which raises the network protocol version to 2193.
-
-### Removed
-
-- **BREAKING**: Removed the workarounds that let 1.26.44 clients join. BDS 1.26.51 accepts protocol 2193 only, so every player must now be on 1.26.51. The shims rewrote a 1.26.44 client's declared protocol version on the wire and repaired its scoreboard packets; neither is meaningful now that the protocol has moved on twice.
+- Added support for BDS version 1.26.51. Players must be on 1.26.51 to join; 1.26.44 clients are no longer accepted.
 
 ### Fixed
 
