@@ -67,6 +67,19 @@ waiting on.
 - **DO order it: dumper triage -> non-IDA sweeps -> IDA.** Triage names the broken
   entries, the sweeps clear or convict most of them, and only the string-less
   locates genuinely need a database.
+- **DO switch to the database the moment it is ready - it outranks your own
+  scanners.** The `lief`/`capstone` path is a stopgap for the hours the analysis
+  is running, not a preferred technique. Once a platform's `.i64` exists, take
+  xrefs, function boundaries, call graphs and identity from IDA; fall back to a
+  hand-rolled scan only for the platform whose database is still building, or for
+  a whole-binary sweep IDA has no cheap equivalent of (the per-class RTTI vtable
+  diff, the section-wide invariant counts).
+- **DO NOT trust a hand-rolled scanner's negative result.** It under-reports
+  silently and in ways that read like a real finding: a `lea`-only scan misses
+  the `movups xmm0,[rip+x]` form that materializes short string literals, and
+  folding the ModRM byte into the disp32 capture matches nothing at all. A string
+  that plainly exists but scans as unreferenced is a bug in the scanner until IDA
+  says otherwise - ask the database before concluding a locate recipe went stale.
 - **DO validate any scanner of your own against the PREVIOUS binary before trusting
   it** - every committed pattern must resolve to its known-good offset there. Until
   it reproduces the dumper exactly, its verdicts on the new binary mean nothing.
@@ -328,6 +341,23 @@ between each - see *Editing src/bedrock correctly*):
 
 ## Finding a new symbol / offset without a header diff
 
+- **A string anchor is not referenced only by `lea` - short literals arrive via
+  SSE.** A literal that fits a `std::string`'s SSO buffer is materialized with
+  `movups xmm0, [rip+disp32]` (`0F 10 05 ...`, no REX, two-byte opcode) and
+  stored with `movups [reg], xmm0` (`0F 11 ...`); longer ones come in 16-byte
+  `movups` chunks. A hand-rolled scanner that only matches `lea reg,[rip+x]`
+  (`48/4C 8D <modrm> disp32`) reports such a string as having **zero**
+  references, which reads exactly like "the string is dead" or "the recipe is
+  stale" and sends you re-anchoring a recipe that was fine. Match the `0F 10 05`
+  / `0F 11` forms too, and when a string that plainly exists scans as
+  unreferenced, ask the database for its xrefs before rewriting the recipe.
+  (1.26.51: `%multiplayer.player.left`, `Resource Repository Async Group` and
+  `Failed to resolve block "` all scanned as unreferenced for exactly this.)
+- **Also mind the ModRM byte when hand-writing a rip-relative scanner.** The
+  displacement starts *after* modrm, so the regex is
+  `[REX] <opcode> [
+%-5=] (disp32)`; folding
+  modrm into the disp32 capture silently matches nothing.
 - **Navigate by string anchor, not symbol.** To locate an unnamed function:
   take a string literal it references (an error/i18n key like
   `commands.setmaxplayers.success.lowerbound`), `find_bytes` the *ASCII hex* of
