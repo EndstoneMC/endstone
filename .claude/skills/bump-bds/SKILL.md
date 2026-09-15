@@ -437,6 +437,19 @@ not the virtuals), so you diff layout without any virtual-function names.
    concrete class (e.g. `ServerPlayer` covers `Actor -> Mob -> Player ->
    ServerPlayer`) gives the whole chain in one read. Equal length on every level
    = no net change (still verify order).
+2b. **Never end a vtable run at "the next qword is not code" - on Linux either.**
+   The Windows warning about packed vftables applies verbatim to `.data.rel.ro`:
+   when the object following a vtable is an RTTI-less function-pointer table (an
+   entt-meta / cereal type-erased manager, a dtor/copy/move/compare/hash block),
+   the run-length walk sails straight through it and reports a class as
+   dozens of slots longer than it is. The terminator is the next vtable's own
+   header - a zero `offset_to_top` slot followed by a typeinfo pointer - not the
+   first non-code qword. **Cross-check every suspicious length against the
+   DERIVED classes: a derived vtable can never be shorter than its primary
+   base's**, so if every deriver measures 29 in both versions, the base's "55"
+   is the artifact, not a removal. 1.26.51 produced two such false positives
+   this way, `BaseCircuitComponent` reading 55 -> 29 and `RemoteConnector`
+   -56 reading 22 -> 20; both classes were completely unchanged.
 3. **Structural fingerprint** confirms no same-count shuffle, name-free: tag each
    slot `P` = `__cxa_pure_virtual`, `T` = this-adjusting thunk (`48 83 ef` /
    `48 81 ef` = `sub rdi`), `R` = repeats previous target (shared-stub runs),
