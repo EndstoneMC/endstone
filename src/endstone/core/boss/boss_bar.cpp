@@ -154,8 +154,11 @@ void EndstoneBossBar::send(BossEventUpdateType event_type, Player &player)
 {
     const auto packet = MinecraftPackets::createPacket(MinecraftPacketIds::BossEvent);
     const auto pk = std::static_pointer_cast<BossEventPacket>(packet);
-    const auto &handle = static_cast<EndstonePlayer &>(player).getHandle();
-    pk->payload.boss_id = handle.getOrCreateUniqueID();
+    auto &handle = static_cast<EndstonePlayer &>(player).getHandle();
+    if (!boss_id_.isValid()) {
+        boss_id_ = handle.getLevel().getNewUniqueID();
+    }
+    pk->payload.boss_id = boss_id_;
     pk->payload.player_id = handle.getOrCreateUniqueID();
     pk->payload.event_type = event_type;
     pk->payload.name = title_;
