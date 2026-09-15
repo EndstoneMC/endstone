@@ -277,6 +277,11 @@ std::string ItemDescriptor::BaseDescriptor::toString() const
     return getFullName();
 }
 
+std::string ItemDescriptor::BaseDescriptor::unknown5() const
+{
+    return getFullName();
+}
+
 bool ItemDescriptor::BaseDescriptor::forEachItemUntil(std::function<bool(Item const &, std::int16_t)> func) const
 {
     if (const auto item = getItem(); item.item) {
