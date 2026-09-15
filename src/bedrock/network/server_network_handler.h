@@ -32,6 +32,7 @@
 #include "bedrock/network/network_identifier.h"
 #include "bedrock/network/network_server_config.h"
 #include "bedrock/network/packet/login_packet.h"
+#include "bedrock/network/player_connection_connector.h"
 #include "bedrock/network/server_network_system.h"
 #include "bedrock/network/sub_client_connection_request.h"
 #include "bedrock/network/xbox_live_user_observer.h"
@@ -50,7 +51,8 @@ class ServerNetworkHandler : public Bedrock::Threading::EnableQueueForMainThread
                              public NetEventCallback,
                              public LevelListener,
                              public Social::MultiplayerServiceObserver,
-                             public Social::XboxLiveUserObserver {
+                             public Social::XboxLiveUserObserver,
+                             public IPlayerConnectionConnector {
 public:
     ServerNetworkHandler(GameCallbacks &, const Bedrock::NonOwnerPointer<ILevel> &,
                          const std::optional<ServerConfiguration::ServerConfigurationJoinInfo> &,
@@ -114,18 +116,18 @@ protected:
         std::unordered_map<SubClientId, PlayerAuthenticationInfo> sub_client_player_info_;
         LoginState login_state_;
     };
-    std::unordered_map<NetworkIdentifier, std::unique_ptr<Client>> clients_;  // +80
+    std::unordered_map<NetworkIdentifier, std::unique_ptr<Client>> clients_;  // +88
 
 private:
-    GameCallbacks &callbacks_;  // +144
+    GameCallbacks &callbacks_;  // +152
     Bedrock::NonOwnerPointer<ILevel> level_;
-    ServerPlayerLoader player_loader_;  // +176
-    ServerNetworkSystem &network_;      // +200
+    ServerPlayerLoader player_loader_;  // +184
+    ServerNetworkSystem &network_;      // +208
     PrivateKeyManager &server_keys_;
     ServerLocator &server_locator_;
-    gsl::not_null<PacketSender *> packet_sender_;  // +224
+    gsl::not_null<PacketSender *> packet_sender_;  // +232
     AllowList &allow_list_;
-    EditorAllowList &editor_allow_list_;  // +240
+    EditorAllowList &editor_allow_list_;  // +248
     PermissionsFile *permissions_file_;
     DenyList server_deny_list_;
     NetworkServerConfig network_server_config_;
@@ -144,7 +146,7 @@ private:
     bool allow_incoming_;
     std::unique_ptr<IServerNetworkController> server_network_controller_;
     std::string server_name_;
-    int max_num_players_;  // +872
+    int max_num_players_;  // +880
     std::unordered_set<mce::UUID> known_emote_piece_id_lookup_;
     std::vector<mce::UUID> known_emote_piece_ids_;
     std::unordered_map<std::uint64_t, std::unordered_map<std::string, std::shared_ptr<ResourcePackFileUploadManager>>>
