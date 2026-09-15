@@ -50,10 +50,11 @@ private:
     IMinecraftEventing &eventing_;
     std::unique_ptr<ResourcePackManager> resource_loader_;
     std::unique_ptr<StructureManager> structure_manager_;
-    std::shared_ptr<GameModuleServer> game_module_server_;
-    // AllowList &allow_list_;
+    // TODO(fixme): check the name - a pointer member 1.26.51 added here
+    void *unknown_56_;
     PermissionsFile *permissions_file_;
     std::unique_ptr<PrivateKeyManager> server_keys_;
+    std::shared_ptr<GameModuleServer> game_module_server_;
     std::shared_ptr<MinecraftServiceKeyManager> minecraft_service_keys_;
     std::string save_game_path_;
     // Bedrock::NonOwnerPointer<Core::FilePathManager> file_path_manager_;
