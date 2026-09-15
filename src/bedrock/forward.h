@@ -95,6 +95,7 @@ class ClientNetworkSystem;
 class CommandOriginSystem;
 class CompactionStatus;
 class ComplexInventoryTransaction;
+class ContainerBlockActorComponent {};
 class ContainerManagerModel;
 class ContainerModel;
 class ContentCatalogPackSource;
