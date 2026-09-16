@@ -14,19 +14,9 @@
 
 #pragma once
 
-#include <memory>
-
-#include "bedrock/core/threading/task_group.h"
-#include "bedrock/forward.h"
-
-namespace Bedrock::Threading {
-
-class EnableQueueForThread {
-public:
-    virtual ~EnableQueueForThread() = 0;
-
-private:
-    std::unique_ptr<TaskGroup> queue_for_thread_task_group_;  // +8
+enum class TaskGroupState : int {
+    Running = 0,
+    Paused = 1,
+    Flush = 2,
+    Sync = 3,
 };
-
-}  // namespace Bedrock::Threading

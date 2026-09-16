@@ -14,19 +14,12 @@
 
 #pragma once
 
-#include <memory>
+namespace webrtc {
 
-#include "bedrock/core/threading/task_group.h"
-#include "bedrock/forward.h"
-
-namespace Bedrock::Threading {
-
-class EnableQueueForThread {
-public:
-    virtual ~EnableQueueForThread() = 0;
-
-private:
-    std::unique_ptr<TaskGroup> queue_for_thread_task_group_;  // +8
+template <class T>
+class scoped_refptr {  // NOLINT(*-identifier-naming)
+protected:
+    T *ptr_;
 };
 
-}  // namespace Bedrock::Threading
+}  // namespace webrtc

@@ -14,19 +14,14 @@
 
 #pragma once
 
-#include <memory>
+namespace NetherNet {
 
-#include "bedrock/core/threading/task_group.h"
-#include "bedrock/forward.h"
-
-namespace Bedrock::Threading {
-
-class EnableQueueForThread {
-public:
-    virtual ~EnableQueueForThread() = 0;
-
-private:
-    std::unique_ptr<TaskGroup> queue_for_thread_task_group_;  // +8
+struct ISignalingEventHandler {
+    virtual ~ISignalingEventHandler();
 };
 
-}  // namespace Bedrock::Threading
+struct ILanEventHandler {
+    virtual ~ILanEventHandler();
+};
+
+}  // namespace NetherNet

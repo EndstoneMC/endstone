@@ -23,6 +23,7 @@
 #include "bedrock/bedrock.h"
 #include "bedrock/core/resource/pack_id_version.h"
 #include "bedrock/core/threading/enable_queue_for_main_thread.h"
+#include "bedrock/core/threading/task_group.h"
 #include "bedrock/deps/json/value.h"
 #include "bedrock/forward.h"
 #include "bedrock/minecraft_app_interface.h"

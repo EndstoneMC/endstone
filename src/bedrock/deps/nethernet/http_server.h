@@ -14,19 +14,41 @@
 
 #pragma once
 
+#include <cstdint>
 #include <memory>
+#include <string>
+#include <vector>
 
+#include "bedrock/bedrock.h"
 #include "bedrock/core/threading/task_group.h"
-#include "bedrock/forward.h"
+#include "bedrock/deps/nethernet/context.h"
+#include "bedrock/deps/webrtc/sigslot.h"
 
-namespace Bedrock::Threading {
+namespace endstone::core {
+class EndstoneServer;
+}
 
-class EnableQueueForThread {
+namespace webrtc {
+class Socket;
+}
+
+namespace NetherNet {
+
+class HttpConnection;
+
+class HttpServer : public ContextProxy, public sigslot::has_slots<sigslot::single_threaded> {
 public:
-    virtual ~EnableQueueForThread() = 0;
+    ~HttpServer() override;
 
 private:
-    std::unique_ptr<TaskGroup> queue_for_thread_task_group_;  // +8
-};
+    std::uint16_t port_;
+    std::string bind_address_;
+    std::unique_ptr<webrtc::Socket> listen_socket_;
+    std::vector<std::shared_ptr<HttpConnection>> connections_;
+    TaskGroup task_group_;
 
-}  // namespace Bedrock::Threading
+    friend class endstone::core::EndstoneServer;
+};
+BEDROCK_STATIC_ASSERT_SIZE(HttpServer, 504, 416);
+
+}  // namespace NetherNet

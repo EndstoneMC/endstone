@@ -14,19 +14,24 @@
 
 #pragma once
 
-#include <memory>
+#include "bedrock/bedrock.h"
+#include "bedrock/core/utility/enable_non_owner_references.h"
+#include "bedrock/core/utility/non_owner_pointer.h"
 
-#include "bedrock/core/threading/task_group.h"
-#include "bedrock/forward.h"
+namespace NetherNet {
 
-namespace Bedrock::Threading {
-
-class EnableQueueForThread {
+class IContext : public Bedrock::EnableNonOwnerReferences {
 public:
-    virtual ~EnableQueueForThread() = 0;
-
-private:
-    std::unique_ptr<TaskGroup> queue_for_thread_task_group_;  // +8
+    ~IContext() override;
 };
 
-}  // namespace Bedrock::Threading
+class ContextProxy : IContext {
+public:
+    ~ContextProxy() override;
+
+private:
+    Bedrock::NotNullNonOwnerPtr<IContext> target_;
+};
+BEDROCK_STATIC_ASSERT_SIZE(ContextProxy, 48, 48);
+
+}  // namespace NetherNet

@@ -15,6 +15,7 @@
 #pragma once
 
 #include "bedrock/core/threading/async.h"
+#include "bedrock/core/threading/task_group.h"
 #include "bedrock/core/utility/binary_stream.h"
 #include "bedrock/forward.h"
 #include "bedrock/network/net_event_callback.h"

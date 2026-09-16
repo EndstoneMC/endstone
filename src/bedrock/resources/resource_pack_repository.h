@@ -14,6 +14,7 @@
 
 #pragma once
 
+#include "bedrock/core/threading/task_group.h"
 #include "bedrock/forward.h"
 #include "bedrock/resources/content_source_repository.h"
 #include "bedrock/resources/repository_loading.h"

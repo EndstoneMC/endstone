@@ -14,19 +14,14 @@
 
 #pragma once
 
-#include <memory>
+#include "bedrock/deps/nethernet/http_server.h"
+#include "bedrock/deps/nethernet/nethernet_transport.h"
 
-#include "bedrock/core/threading/task_group.h"
-#include "bedrock/forward.h"
+namespace NetherNet {
 
-namespace Bedrock::Threading {
-
-class EnableQueueForThread {
+class HttpSignalingServer : public HttpServer, public ISignalingInterface {
 public:
-    virtual ~EnableQueueForThread() = 0;
-
-private:
-    std::unique_ptr<TaskGroup> queue_for_thread_task_group_;  // +8
+    ~HttpSignalingServer() override;
 };
 
-}  // namespace Bedrock::Threading
+}  // namespace NetherNet

@@ -20,6 +20,7 @@
 
 #include "bedrock/core/resource/resource_helper.h"
 #include "bedrock/core/threading/lockbox.h"
+#include "bedrock/core/threading/task_group.h"
 #include "bedrock/core/utility/non_owner_pointer.h"
 #include "bedrock/platform/brstd/function_ref.h"
 #include "bedrock/resources/content_key_provider.h"
