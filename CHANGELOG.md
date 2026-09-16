@@ -7,6 +7,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [0.11.11] - 2026-09-16
+
 ### Added
 
 - Added support for BDS version 1.26.51.
@@ -28,6 +30,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Fixed a crash when a player used an empty item while a behavior pack listened to `world.beforeEvents.itemUse` (#528).
 - Fixed maps showing only the viewer's own marker (#517).
 - Fixed boss bars disappearing after a player changes dimension.
+- Fixed `Player.ping` returning a stale average on NetherNet.
+- Fixed `Location` not supporting `+` and `-` with a `Vector`, or `*` with a number.
 
 ### Security
 
@@ -1189,7 +1193,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Basic plugin loader for C++ and Python plugins.
 - Basic command system that allows plugins to register custom commands.
 
-[Unreleased]: https://github.com/EndstoneMC/endstone/compare/v0.11.10...HEAD
+[Unreleased]: https://github.com/EndstoneMC/endstone/compare/v0.11.11...HEAD
+[0.11.11]: https://github.com/EndstoneMC/endstone/compare/v0.11.10...v0.11.11
 [0.11.10]: https://github.com/EndstoneMC/endstone/compare/v0.11.9...v0.11.10
 [0.11.9]: https://github.com/EndstoneMC/endstone/compare/v0.11.8...v0.11.9
 [0.11.8]: https://github.com/EndstoneMC/endstone/compare/v0.11.7...v0.11.8
