@@ -41,6 +41,8 @@ struct ScriptModuleStartupEvent {
     ScriptModuleMinecraft::ScriptCustomSpawnRulesRegistry &spawn_rules_registry;
     ScriptModuleMinecraft::CustomCommandRegistry &custom_command_registry;
     ScriptModuleMinecraft::ScriptCustomDimensionRegistry &custom_dimension_registry;
+    // TODO(fixme): check the name - 1.26.51 appended this reference.
+    void *unknown_40_;
 };
 struct ScriptModuleShutdownEvent {};
 
