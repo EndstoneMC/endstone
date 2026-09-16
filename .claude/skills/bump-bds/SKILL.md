@@ -874,18 +874,43 @@ is only conditionally-supported and warns. Decide it once as a convention rather
 than per class. For any class that is *not* truncated, add the size assert - it
 turns this whole failure mode into a compile error.
 
-**A size delta only bites where `sizeof` is a STRIDE.** Before porting one, ask how
-Endstone reaches the class. A class it only ever holds through a pointer - `Item` and
-its subclasses (`SharedPtr<Item>` throughout the registry), `ActorDamageByBlockSource`
-(cloned into a `unique_ptr`) - can grow at the tail with no consequence at all, and
-per the `ServerLevel` note below the right move is to confirm the growth is past
-everything Endstone reads and then *stop*, not to manufacture a placeholder. A class
-stored BY VALUE in a container is the opposite: `sizeof` is the element stride, so an
-eight-byte shortfall silently misreads every element after the first. Grep for the
-owner before deciding. `AttributeInstance @ 1.26.51` grew 8 bytes purely at the tail -
-its destructor displacements were byte-identical to 1.26.45 and both value arrays
-stayed at +104 and +116 - yet it had to be fixed, because `BaseAttributeMap` keeps its
-instances in a `brstd::flat_map`'s `std::vector<AttributeInstance>`.
+**A tail-only size delta still bites wherever `sizeof` is load-bearing - check all
+THREE ways before calling one benign.** Growth past the last member Endstone reads
+looks harmless, and per the `ServerLevel` note below the right move is then to stop
+rather than manufacture a placeholder - but only after ruling out each of:
+
+1. **Stride.** A class stored BY VALUE in a container has `sizeof` as its element
+   stride, so a shortfall silently misreads every element after the first.
+   `AttributeInstance @ 1.26.51` grew 8 bytes purely at the tail - destructor
+   displacements byte-identical to 1.26.45, both value arrays still at +104 and +116 -
+   and still had to be fixed, because `BaseAttributeMap` keeps its instances in a
+   `brstd::flat_map`'s `std::vector<AttributeInstance>`.
+2. **Variant storage.** A `std::variant`'s discriminant sits immediately after
+   `max(sizeof(alt))`, so growth in the *largest* alternative - or in anything an
+   alternative holds by value - moves the index Endstone reads and lands you in
+   `bad_variant_access`. The alternative need not be the class that changed: the event
+   structs hold `ItemInstance`/`ItemStack` by value, so those types' sizes feed the
+   variant even though nothing names them as alternatives.
+3. **Base subobject.** Anything deriving the class shifts by the same delta.
+
+Only a class that fails all three - held solely through a pointer, never a variant
+alternative nor a by-value member of one - is genuinely free. `Item` and its subclasses
+(`SharedPtr<Item>` throughout the registry) and `ActorDamageByBlockSource` (events hold
+damage sources by reference or smart pointer, never by value) are the worked examples.
+Grep for the owner before deciding; do not infer it from how the class "looks".
+
+**Sweeping check (2) is cheap and worth doing every bump.** Scan `.text` for the
+libc++ visit idiom - `mov e?x, dword ptr [reg + N]` immediately followed by
+`mov e?x, 0xffffffff` - and collect the set of N. Diff that set across the two
+binaries: an offset that appears or disappears is a variant whose storage changed.
+Cross-check the per-handler view too, by walking each `Script*GameplayHandler`
+vtable and reading the offset each slot loads, then matching it against the
+`__index` offset clang reports for the variant Endstone declares
+(`-fdump-record-layouts`, taking the LAST `__index_t __index` in the record - the
+earlier ones belong to variants nested inside alternatives). 1.26.51 moved exactly
+one, `MutableLevelGameplayEvent` from +24 to +40, and left every offset <= 400
+otherwise untouched - which also proves transitively that `ItemInstance` and
+`ItemStack` did not change size, since they feed those alternatives by value.
 
 **Sweep the RAW `static_assert(sizeof(X) == N)` form too.** Not every guard uses
 `BEDROCK_STATIC_ASSERT_SIZE`; a handful of headers carry a hand-written, and therefore
