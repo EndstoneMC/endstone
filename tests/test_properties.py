@@ -1,4 +1,5 @@
 import importlib
+import logging
 
 import pytest
 
@@ -107,3 +108,80 @@ def test_merge_adds_nothing_the_second_time(properties, merge):
 
     assert merge(properties.loads(VANILLA), old) == []
     assert old.as_string() == merged
+
+
+UDP_PORTS = (
+    "server-port=19132\n"
+    "# Which IPv4 port the server should listen to.\n"
+    "\n"
+    "# server-udp-ports=\n"
+    "# Configures UDP client transport ports.\n"
+    "# Examples:\n"
+    "#   server-udp-ports=49152-49200 (internal port range only)\n"
+    "\n"
+    "transport=nethernet\n"
+)
+
+
+def test_merge_appends_new_commented_out_properties_with_their_comments(properties, merge):
+    old = properties.loads("server-port=19132\n")
+    added = merge(properties.loads(UDP_PORTS), old)
+
+    assert added == ["server-udp-ports", "transport"]
+    assert old.as_string() == (
+        "server-port=19132\n"
+        "\n"
+        "# server-udp-ports=\n"
+        "# Configures UDP client transport ports.\n"
+        "# Examples:\n"
+        "#   server-udp-ports=49152-49200 (internal port range only)\n"
+        "\n"
+        "transport=nethernet\n"
+    )
+
+
+def test_merge_keeps_properties_commented_out(properties, merge):
+    old = properties.loads("#server-port=19132\n\nserver-udp-ports=19132\n\n#transport=raknet\n")
+    merged = old.as_string()
+
+    assert merge(properties.loads(UDP_PORTS), old) == []
+    assert old.as_string() == merged
+
+
+@pytest.fixture
+def update_udp_ports(tmp_path):
+    cls = importlib.import_module("endstone.cli.base").Bootstrap
+    bootstrap = cls.__new__(cls)
+    bootstrap._server_path = tmp_path
+    bootstrap._logger = logging.getLogger("test")
+    path = tmp_path / "server.properties"
+
+    def update(text):
+        path.write_bytes(text.encode())
+        bootstrap._update_server_udp_ports()
+        return path.read_bytes().decode()
+
+    return update
+
+
+def test_udp_ports_uncomments_the_documented_line(update_udp_ports):
+    text = UDP_PORTS.replace("19132", "9025").replace("\n", "\r\n")
+    assert update_udp_ports(text) == text.replace("# server-udp-ports=\r\n", "server-udp-ports=9025\r\n")
+
+
+def test_udp_ports_appends_when_not_documented(update_udp_ports):
+    text = "server-port=9025\ntransport=nethernet\n"
+    assert update_udp_ports(text) == text + "\nserver-udp-ports=9025\n"
+
+
+@pytest.mark.parametrize(
+    "text",
+    [
+        "server-port=9025\nserver-udp-ports=9026-9029\ntransport=nethernet\n",
+        "transport=nethernet\n",
+        UDP_PORTS.replace("transport=nethernet", "transport=raknet"),
+        "server-port=9025\n",
+    ],
+)
+def test_udp_ports_left_alone(update_udp_ports, text):
+    assert update_udp_ports(text) == text
