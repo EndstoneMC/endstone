@@ -36,7 +36,7 @@ void EndstoneMapRenderer::render(MapView &map, MapCanvas &canvas, Player &player
     // Cursors
     std::vector<MapCursor> cursors;
     for (const auto &[unique_id, decoration] : map_.getDecorations()) {
-        if (unique_id.key_entity_id.raw_id != player.getId()) {
+        if (unique_id.key_entity_id.isValid() && unique_id.key_entity_id.raw_id != player.getId()) {
             continue;
         }
         cursors.emplace_back(decoration->getX(), decoration->getY(), decoration->getRot(),
