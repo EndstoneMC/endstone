@@ -1,12 +1,10 @@
-from typing import Any, Generator
-
 import pytest
 from endstone import Player
 from endstone.plugin import Plugin
 
 
 @pytest.fixture()
-def permissible(player: Player) -> Generator[Player, Any, None]:
+def permissible(player: Player) -> Player:
     is_op = player.is_op
     player.is_op = False
     yield player

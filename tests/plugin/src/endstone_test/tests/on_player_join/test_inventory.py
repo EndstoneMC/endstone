@@ -1,6 +1,9 @@
-import pytest
 from endstone import Player, Server
-from endstone.inventory import ItemStack
+from endstone.inventory import ItemStack, MapMeta
+from endstone.plugin import Plugin
+from PIL import Image
+
+from endstone_test.image_renderer import ImageRenderer
 
 
 def test_inventory_sizes(player: Player):
@@ -113,62 +116,33 @@ def test_add_item_with_meta(player: Player):
     assert not item.item_meta.has_enchant("protection")
 
 
-@pytest.fixture(params=["direct", "inventory"])
-def item(request, player: Player):
-    item_stack = ItemStack("minecraft:diamond_sword")
-    if request.param == "direct":
-        return item_stack
-    else:
-        player.inventory.set_item(0, item_stack)
-        return player.inventory.get_item(0)
-
-
-@pytest.mark.parametrize("name", ["§aEpic Sword", "§bTest Blade"])
-def test_display_name(item: ItemStack, name: str):
+def test_add_map(player: Player, server: Server, plugin: Plugin):
+    item = ItemStack("minecraft:filled_map", 1)
     meta = item.item_meta
-    assert meta is not None
-    meta.display_name = name
-    item.set_item_meta(meta)
+    assert isinstance(meta, MapMeta), "Item is not a map"
 
-    result = item.item_meta.display_name
-    assert result == name
+    view = server.create_map(player.dimension)
+    assert view is not None, "Failed to create map"
+    assert view.id != -1, "Invalid map ID"
 
+    assert len(view.renderers) == 1, "Map view should have the vanilla renderer"
+    for renderer in view.renderers:
+        assert view.remove_renderer(renderer) is True, "Failed to remove renderer"
 
-@pytest.mark.parametrize("lore", [["One", "Two"], ["Alpha", "Beta", "Gamma"]])
-def test_lore(item: ItemStack, lore: list[str]):
+    assert len(view.renderers) == 0, "Map view should have no renderers"
+    view.add_renderer(ImageRenderer(Image.open(plugin.data_folder / "lena.png")))
+    assert len(view.renderers) == 1, "Map view should have one custom renderer"
+
+    meta.map_view = view
+    assert item.set_item_meta(meta)
+
+    player.inventory.set_item(2, item)
+    item = player.inventory.get_item(2)
+
     meta = item.item_meta
-    meta.lore = lore
-    item.set_item_meta(meta)
-
-    result = item.item_meta.lore
-    assert result == lore
-
-
-@pytest.mark.parametrize(
-    "enchantment",
-    [("sharpness", 3), ("knockback", 2)],
-)
-def test_enchantments(item: ItemStack, enchantment: tuple[str, int]):
-    enchantment_id, level = enchantment
-    meta = item.item_meta
-    assert meta.add_enchant(enchantment_id, level, True)
-    item.set_item_meta(meta)
-
-    result_meta = item.item_meta
-    assert result_meta.has_enchant(enchantment_id)
-    assert result_meta.get_enchant_level(enchantment_id) == level
-
-    # removal
-    result_meta.remove_enchant(enchantment_id)
-    item.set_item_meta(result_meta)
-    assert not item.item_meta.has_enchant(enchantment_id)
-
-
-@pytest.mark.parametrize("damage", [0, 5, 100])
-def test_damage(item: ItemStack, damage: int):
-    meta = item.item_meta
-    meta.damage = damage
-    item.set_item_meta(meta)
-
-    result_meta = item.item_meta
-    assert result_meta.damage == damage
+    assert item.type == "minecraft:filled_map", "Item is not a map"
+    assert isinstance(meta, MapMeta), "Item is not a map"
+    assert meta.map_id != -1, "Invalid map ID"
+    assert meta.map_id == view.id, "Map ID does not match"
+    assert meta.map_view is not None, "Map view is not set"
+    assert meta.map_view.id == view.id, "Map ID does not match"

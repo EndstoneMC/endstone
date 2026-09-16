@@ -78,7 +78,7 @@ local_scheme = "no-local-version"
 
 [tool.pytest.ini_options]
 testpaths = ["tests"]
-addopts = ["--ignore=tests/endstone_test"]
+addopts = ["--ignore=tests/plugin"]
 
 [tool.ruff]
 line-length = 120
@@ -88,7 +88,7 @@ lint.extend-select = ["I", "E", "F"]
 skip = ["pp*"]
 # uv runs the stub generator; without it the build falls back to the target interpreter.
 before-build = "pip install uv"
-test-command = "pytest {package}/tests --ignore={package}/tests/endstone_test"
+test-command = "pytest {package}/tests --ignore={package}/tests/plugin"
 test-requires = "pytest"
 repair-wheel-command = [
     "pip install uv",
