@@ -80,8 +80,11 @@ GameplayHandlerResult<CoordinatorResult> ScriptLevelGameplayHandler::handleEvent
     MutableLevelGameplayEvent<CoordinatorResult> &event)
 {
     auto visitor = [&](auto &&arg) -> GameplayHandlerResult<CoordinatorResult> {
-        if (!handleEvent(arg.value())) {
-            return {HandlerResult::BypassListeners, CoordinatorResult::Cancel};
+        using T = std::decay_t<decltype(arg)>;
+        if constexpr (std::is_same_v<T, Details::ValueOrRef<LevelWeatherChangedEvent>>) {
+            if (!handleEvent(arg.value())) {
+                return {HandlerResult::BypassListeners, CoordinatorResult::Cancel};
+            }
         }
         return ENDSTONE_VHOOK_CALL_ORIGINAL(&ScriptLevelGameplayHandler::handleEvent2, this, event);
     };
