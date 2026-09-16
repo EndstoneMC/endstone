@@ -450,6 +450,21 @@ not the virtuals), so you diff layout without any virtual-function names.
    is the artifact, not a removal. 1.26.51 produced two such false positives
    this way, `BaseCircuitComponent` reading 55 -> 29 and `RemoteConnector`
    -56 reading 22 -> 20; both classes were completely unchanged.
+2b-net. **A length sweep cannot see a NET-ZERO change, and BDS makes them.**
+   1.26.51 removed one virtual from `Actor` (`canFreeze`) and added one to
+   `Player`, so `Actor` read 138 -> 137 and `Mob` 176 -> 175, while `Player` and
+   `ServerPlayer` read **246 and 248 in both versions** and never entered the
+   changed list. Every Player-level virtual after the insertion point was one
+   slot off; `sendNetworkPacket` landed on `sendComplexInventoryTransaction` and
+   faulted deep inside BDS the moment a player joined.
+   - **Whenever a base's length changes, re-check every deriver by ALIGNMENT,
+     not by length.** A deriver whose length is unchanged has, by definition,
+     gained exactly as many virtuals as its base lost.
+   - Better: run the per-slot `difflib.SequenceMatcher` alignment (step 4) over
+     *every* class Endstone declares and report only `insert`/`delete` opcodes.
+     It is the same walk the length sweep already does plus a 9-instruction
+     signature per slot, and it is the only sweep that catches this.
+
 2c. **The class-level length sweep has two blind spots - close both.** The
    usual sweep (every `_ZTS` name -> vtable length in each binary, intersected
    with the class names Endstone declares) silently skips:
