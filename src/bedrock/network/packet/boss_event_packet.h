@@ -21,21 +21,18 @@
 #include "bedrock/world/actor/actor_unique_id.h"
 
 struct BossEventPacketPayload {
-    const int FLAG_DARKEN{1};                // +0
-    const int FLAG_FOG{2};                   // +4
-    ActorUniqueID boss_id;                   // +8
-    ActorUniqueID player_id;                 // +16
-    BossEventUpdateType event_type;          // +24
-    Bedrock::Safety::RedactableString name;  // +32
-    float health_percent;                    // +104
-    BossBarColor color;                      // +108
-    BossBarOverlay overlay;                  // +109
+    ActorUniqueID boss_id;                   // +0
+    BossEventUpdateType event_type;          // +8
+    Bedrock::Safety::RedactableString name;  // +16
+    float health_percent;                    // +88
+    BossBarColor color;                      // +92
+    BossBarOverlay overlay;                  // +93
 };
-BEDROCK_STATIC_ASSERT_SIZE(BossEventPacketPayload, 112, 96);
+BEDROCK_STATIC_ASSERT_SIZE(BossEventPacketPayload, 96, 80);
 
 class BossEventPacket : public Packet {
 public:
     BossEventPacketPayload payload;                                       // +48
-    SerializationMode serialization_mode{SerializationMode::CerealOnly};  // +160
+    SerializationMode serialization_mode{SerializationMode::CerealOnly};  // +144
 };
-BEDROCK_STATIC_ASSERT_SIZE(BossEventPacket, 168, 152);
+BEDROCK_STATIC_ASSERT_SIZE(BossEventPacket, 152, 136);
