@@ -20,7 +20,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Fixed `ItemMeta` reaching Python as the base type instead of `WritableBookMeta`, `BookMeta` or `CrossbowMeta`.
 - Fixed the server crashing with `bad_variant_access` on Windows as soon as a player joined and an actor gameplay event fired. `MobEffectInstance` was eight bytes short in the Windows layout, so the event's discriminant was read from the wrong offset. Linux was unaffected.
 - Fixed two handles to the same scoreboard objective never comparing equal, so `objective in scoreboard.objectives` was always false and removing an objective from a list of objectives never found it.
-- Fixed explorer maps, such as the trial explorer map sold by cartographers, showing no marker for the structure they point to.
+- Fixed maps showing only the viewer's own marker. Explorer maps, such as the trial explorer map sold by cartographers, now show the structure they point to again, and players holding the same map see each other's markers as in vanilla.
 
 ### Security
 
