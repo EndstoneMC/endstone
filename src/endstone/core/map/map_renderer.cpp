@@ -18,15 +18,14 @@
 #include "endstone/player.h"
 
 namespace endstone::core {
-EndstoneMapRenderer::EndstoneMapRenderer(EndstoneMapView &map_view, MapItemSavedData &map)
-    : MapRenderer(false), map_(map)
-{
-}
+EndstoneMapRenderer::EndstoneMapRenderer() : MapRenderer(false) {}
 
 void EndstoneMapRenderer::render(MapView &map, MapCanvas &canvas, Player &player)
 {
+    auto &handle = static_cast<EndstoneMapView &>(map).getHandle();
+
     // Map
-    auto pixels = map_.getPixels();
+    auto pixels = handle.getPixels();
     for (auto x = 0; x < MapConstants::MAP_SIZE; ++x) {
         for (auto y = 0; y < MapConstants::MAP_SIZE; ++y) {
             canvas.setPixel(x, y, pixels[y * MapConstants::MAP_SIZE + x]);
@@ -35,7 +34,7 @@ void EndstoneMapRenderer::render(MapView &map, MapCanvas &canvas, Player &player
 
     // Cursors
     std::vector<MapCursor> cursors;
-    for (const auto &[unique_id, decoration] : map_.getDecorations()) {
+    for (const auto &[unique_id, decoration] : handle.getDecorations()) {
         cursors.emplace_back(decoration->getX(), decoration->getY(), decoration->getRot(),
                              static_cast<MapCursor::Type>(decoration->getImg()), true, decoration->getLabel());
     }

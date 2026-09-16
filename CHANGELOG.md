@@ -15,6 +15,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 - Fixed `Player.get_address()` returning an empty address for players connected over NetherNet, so IP bans, `PacketSendEvent` and `PacketReceiveEvent` now see the real remote address from the first packet onwards.
 - Fixed `Server.port` and `Server.port_v6` returning 0 when the server runs on NetherNet. They now return the port clients connect to, which is `server-port` from `server.properties`.
+- Fixed a `MapView` reading freed memory after Bedrock recreated or reloaded its map, which made `MapInitializeEvent` report an invalid scale such as 255 and could crash the server.
 - Fixed `Server.port_v6` returning 65535 on RakNet when IPv6 is disabled in `endstone.toml`. It now returns 0 when the server is not listening on IPv6.
 - Fixed the Python type stubs for `Plugin` leaving out the members it inherits, such as `logger`, `server`, `data_folder`, `get_command` and `on_enable`, so type checkers like mypy rejected plugins that use them. The stubs have been incomplete since 0.11.9.
 - Fixed `PlayerPickupArrowEvent` never firing. `Actor.has_type()` compared the whole actor type instead of testing the category bits, so every category query returned false and neither an arrow nor a trident matched `AbstractArrow`.

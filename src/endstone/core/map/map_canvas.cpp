@@ -60,7 +60,7 @@ void EndstoneMapCanvas::setPixel(int x, int y, std::uint32_t color)
     }
     if (buffer_[y * MapConstants::MAP_SIZE + x] != color) {
         buffer_[y * MapConstants::MAP_SIZE + x] = color;
-        map_view_.map_.setPixelDirty(x, y);
+        map_view_.getHandle().setPixelDirty(x, y);
     }
 }
 

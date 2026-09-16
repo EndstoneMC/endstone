@@ -18,10 +18,11 @@ MapItemSavedData *MapDataManager::_loadMapData(const ActorUniqueID &uuid)
     auto *map_data = ENDSTONE_HOOK_CALL_ORIGINAL(&MapDataManager::_loadMapData, this, uuid);
     if (map_data) {
         auto &server = endstone::core::EndstoneServer::getInstance();
-        auto &map = map_data->getMapView();
-        server.getEndstoneScheduler().runTask([&]() {
-            endstone::MapInitializeEvent e{map};
-            server.getPluginManager().callEvent(e);
+        server.getEndstoneScheduler().runTask([&server, id = map_data->getMapId().raw_id]() {
+            if (auto *map = server.getMap(id)) {
+                endstone::MapInitializeEvent e{*map};
+                server.getPluginManager().callEvent(e);
+            }
         });
     }
     return map_data;
@@ -33,10 +34,11 @@ MapItemSavedData *MapDataManager::getMapSavedData(const ActorUniqueID uuid)
     auto *map_data = ENDSTONE_HOOK_CALL_ORIGINAL(&MapDataManager::getMapSavedData, this, uuid);
     if (map_data && !loaded) {
         auto &server = endstone::core::EndstoneServer::getInstance();
-        auto &map = map_data->getMapView();
-        server.getEndstoneScheduler().runTask([&]() {
-            endstone::MapInitializeEvent e{map};
-            server.getPluginManager().callEvent(e);
+        server.getEndstoneScheduler().runTask([&server, id = map_data->getMapId().raw_id]() {
+            if (auto *map = server.getMap(id)) {
+                endstone::MapInitializeEvent e{*map};
+                server.getPluginManager().callEvent(e);
+            }
         });
     }
     return map_data;

@@ -33,7 +33,7 @@ struct RenderData {
 
 class EndstoneMapView : public MapView {
 public:
-    explicit EndstoneMapView(MapItemSavedData &map);
+    explicit EndstoneMapView(ActorUniqueID map_id);
     [[nodiscard]] std::int64_t getId() const override;
     [[nodiscard]] bool isVirtual() const override;
     [[nodiscard]] Scale getScale() const override;
@@ -53,6 +53,7 @@ public:
     void setLocked(bool locked) override;
 
     const RenderData &render(EndstonePlayer &player);
+    [[nodiscard]] MapItemSavedData &getHandle() const;
 
 private:
     bool isContextual() const;
@@ -64,6 +65,6 @@ private:
     std::unordered_map<std::shared_ptr<MapRenderer>,
                        std::unordered_map<std::uint64_t, std::unique_ptr<EndstoneMapCanvas>>>
         canvases_;
-    MapItemSavedData &map_;
+    ActorUniqueID map_id_;
 };
 }  // namespace endstone::core

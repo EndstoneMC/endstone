@@ -259,10 +259,11 @@ void EndstoneServer::setLevel(::Level &level)
                               [&](const MapItemSavedData &map_data) {
                                   // The map origin isn't initialized yet at this point.
                                   // Defer the event to the next tick to ensure all data is fully set.
-                                  auto &map = map_data.getMapView();
-                                  getEndstoneScheduler().runTask([&]() {
-                                      MapInitializeEvent e{map};
-                                      getPluginManager().callEvent(e);
+                                  getEndstoneScheduler().runTask([this, id = map_data.getMapId().raw_id]() {
+                                      if (auto *map = getMap(id)) {
+                                          MapInitializeEvent e{*map};
+                                          getPluginManager().callEvent(e);
+                                      }
                                   });
                               },
                               Bedrock::PubSub::ConnectPosition::AtBack, nullptr);
