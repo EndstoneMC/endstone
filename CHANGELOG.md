@@ -18,6 +18,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Fixed `PlayerPickupArrowEvent` never firing. `Actor.has_type()` compared the whole actor type instead of testing the category bits, so every category query returned false and neither an arrow nor a trident matched `AbstractArrow`.
 - Fixed a malformed `banned-players.json` or `banned-ips.json` leaving the server running with an empty ban list and no explanation. The reason is now logged.
 - Fixed `ItemMeta` reaching Python as the base type instead of `WritableBookMeta`, `BookMeta` or `CrossbowMeta`.
+- Fixed the server crashing with `bad_variant_access` on Windows as soon as a player joined and an actor gameplay event fired. `MobEffectInstance` was eight bytes short in the Windows layout, so the event's discriminant was read from the wrong offset. Linux was unaffected.
 - Fixed two handles to the same scoreboard objective never comparing equal, so `objective in scoreboard.objectives` was always false and removing an objective from a list of objectives never found it.
 
 ### Security
