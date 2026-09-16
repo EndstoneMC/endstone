@@ -1250,6 +1250,11 @@
     <member refid="classendstone_1_1Location_1acf93a3cfc2a2405ab87b4015b987be6b" kind="function"><name>operator-=</name></member>
     <member refid="classendstone_1_1Location_1aa25ef6378594a6a4565558d7859328ed" kind="function"><name>operator-=</name></member>
     <member refid="classendstone_1_1Location_1a7543fa80da847863af13f91aa989df7a" kind="function"><name>operator*=</name></member>
+    <member refid="classendstone_1_1Location_1a91fc078353797b2d9cd18979b7df9882" kind="function"><name>operator+</name></member>
+    <member refid="classendstone_1_1Location_1aa35361f1989a181f7db59b6bbf9cfd32" kind="function"><name>operator+</name></member>
+    <member refid="classendstone_1_1Location_1a771b2861ee81216e524d42259b9dba03" kind="function"><name>operator-</name></member>
+    <member refid="classendstone_1_1Location_1a0fbb8d0142a70c845a2ad2ffe56827bd" kind="function"><name>operator-</name></member>
+    <member refid="classendstone_1_1Location_1ae593d1a61d0e3ddf7340f57aee30c835" kind="function"><name>operator*</name></member>
     <member refid="classendstone_1_1Location_1a9943a7572a508035305b055a7b84a17e" kind="function"><name>zero</name></member>
     <member refid="classendstone_1_1Location_1aa911c0cc822480da2d074e742d48bfa6" kind="function"><name>operator==</name></member>
     <member refid="classendstone_1_1Location_1adc3f8a174082b40975e739d42af6dcc0" kind="function"><name>operator!=</name></member>

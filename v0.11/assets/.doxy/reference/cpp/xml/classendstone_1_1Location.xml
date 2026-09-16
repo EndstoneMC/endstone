@@ -16,7 +16,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/level/location.h" line="359" column="15" bodyfile="include/endstone/level/location.h" bodystart="359" bodyend="-1"/>
+        <location file="include/endstone/level/location.h" line="373" column="15" bodyfile="include/endstone/level/location.h" bodystart="373" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="classendstone_1_1Location_1addf87fd8f00d5d8d78932106625bd10d" prot="private" static="no" mutable="no">
         <type><ref refid="classendstone_1_1Identifier" kindref="compound">float</ref></type>
@@ -30,7 +30,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/level/location.h" line="360" column="11" bodyfile="include/endstone/level/location.h" bodystart="360" bodyend="-1"/>
+        <location file="include/endstone/level/location.h" line="374" column="11" bodyfile="include/endstone/level/location.h" bodystart="374" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="classendstone_1_1Location_1a8512a96a57f3199098960a66b853ce8f" prot="private" static="no" mutable="no">
         <type><ref refid="classendstone_1_1Identifier" kindref="compound">float</ref></type>
@@ -44,7 +44,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/level/location.h" line="361" column="11" bodyfile="include/endstone/level/location.h" bodystart="361" bodyend="-1"/>
+        <location file="include/endstone/level/location.h" line="375" column="11" bodyfile="include/endstone/level/location.h" bodystart="375" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="classendstone_1_1Location_1aaa5166e515957652d91610715bbcccde" prot="private" static="no" mutable="no">
         <type><ref refid="classendstone_1_1Identifier" kindref="compound">float</ref></type>
@@ -58,7 +58,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/level/location.h" line="362" column="11" bodyfile="include/endstone/level/location.h" bodystart="362" bodyend="-1"/>
+        <location file="include/endstone/level/location.h" line="376" column="11" bodyfile="include/endstone/level/location.h" bodystart="376" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="classendstone_1_1Location_1a37ad0c40bff7253e01685337daab888d" prot="private" static="no" mutable="no">
         <type><ref refid="classendstone_1_1Identifier" kindref="compound">float</ref></type>
@@ -72,7 +72,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/level/location.h" line="363" column="11" bodyfile="include/endstone/level/location.h" bodystart="363" bodyend="-1"/>
+        <location file="include/endstone/level/location.h" line="377" column="11" bodyfile="include/endstone/level/location.h" bodystart="377" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="classendstone_1_1Location_1ab03975ca7b7bd6374bb8c461d753682c" prot="private" static="no" mutable="no">
         <type><ref refid="classendstone_1_1Identifier" kindref="compound">float</ref></type>
@@ -86,7 +86,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/level/location.h" line="364" column="11" bodyfile="include/endstone/level/location.h" bodystart="364" bodyend="-1"/>
+        <location file="include/endstone/level/location.h" line="378" column="11" bodyfile="include/endstone/level/location.h" bodystart="378" bodyend="-1"/>
       </memberdef>
     </sectiondef>
     <sectiondef kind="public-func">
@@ -773,6 +773,103 @@
         </inbodydescription>
         <location file="include/endstone/level/location.h" line="289" column="14" bodyfile="include/endstone/level/location.h" bodystart="289" bodyend="296"/>
       </memberdef>
+      <memberdef kind="function" id="classendstone_1_1Location_1a91fc078353797b2d9cd18979b7df9882" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type><ref refid="classendstone_1_1Location" kindref="compound">Location</ref></type>
+        <definition>Location endstone::Location::operator+</definition>
+        <argsstring>(const Location &amp;other) const</argsstring>
+        <name>operator+</name>
+        <qualifiedname>endstone::Location::operator+</qualifiedname>
+        <param>
+          <type><ref refid="classendstone_1_1Identifier" kindref="compound">const</ref> <ref refid="classendstone_1_1Location" kindref="compound">Location</ref> &amp;</type>
+          <declname>other</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/level/location.h" line="298" column="14" bodyfile="include/endstone/level/location.h" bodystart="298" bodyend="298"/>
+      </memberdef>
+      <memberdef kind="function" id="classendstone_1_1Location_1aa35361f1989a181f7db59b6bbf9cfd32" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type><ref refid="classendstone_1_1Location" kindref="compound">Location</ref></type>
+        <definition>Location endstone::Location::operator+</definition>
+        <argsstring>(const Vector &amp;other) const</argsstring>
+        <name>operator+</name>
+        <qualifiedname>endstone::Location::operator+</qualifiedname>
+        <param>
+          <type><ref refid="classendstone_1_1Identifier" kindref="compound">const</ref> <ref refid="classendstone_1_1Vector" kindref="compound">Vector</ref> &amp;</type>
+          <declname>other</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/level/location.h" line="300" column="14" bodyfile="include/endstone/level/location.h" bodystart="300" bodyend="300"/>
+      </memberdef>
+      <memberdef kind="function" id="classendstone_1_1Location_1a771b2861ee81216e524d42259b9dba03" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type><ref refid="classendstone_1_1Location" kindref="compound">Location</ref></type>
+        <definition>Location endstone::Location::operator-</definition>
+        <argsstring>(const Location &amp;other) const</argsstring>
+        <name>operator-</name>
+        <qualifiedname>endstone::Location::operator-</qualifiedname>
+        <param>
+          <type><ref refid="classendstone_1_1Identifier" kindref="compound">const</ref> <ref refid="classendstone_1_1Location" kindref="compound">Location</ref> &amp;</type>
+          <declname>other</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/level/location.h" line="302" column="14" bodyfile="include/endstone/level/location.h" bodystart="302" bodyend="302"/>
+      </memberdef>
+      <memberdef kind="function" id="classendstone_1_1Location_1a0fbb8d0142a70c845a2ad2ffe56827bd" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type><ref refid="classendstone_1_1Location" kindref="compound">Location</ref></type>
+        <definition>Location endstone::Location::operator-</definition>
+        <argsstring>(const Vector &amp;other) const</argsstring>
+        <name>operator-</name>
+        <qualifiedname>endstone::Location::operator-</qualifiedname>
+        <param>
+          <type><ref refid="classendstone_1_1Identifier" kindref="compound">const</ref> <ref refid="classendstone_1_1Vector" kindref="compound">Vector</ref> &amp;</type>
+          <declname>other</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/level/location.h" line="304" column="14" bodyfile="include/endstone/level/location.h" bodystart="304" bodyend="304"/>
+      </memberdef>
+      <memberdef kind="function" id="classendstone_1_1Location_1ae593d1a61d0e3ddf7340f57aee30c835" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>std::convertible_to&lt; <ref refid="classendstone_1_1Identifier" kindref="compound">float</ref> &gt;</type>
+            <declname>T</declname>
+            <defname>T</defname>
+          </param>
+        </templateparamlist>
+        <type><ref refid="classendstone_1_1Location" kindref="compound">Location</ref></type>
+        <definition>Location endstone::Location::operator*</definition>
+        <argsstring>(T scalar) const</argsstring>
+        <name>operator*</name>
+        <qualifiedname>endstone::Location::operator*</qualifiedname>
+        <param>
+          <type><ref refid="classendstone_1_1Identifier" kindref="compound">T</ref></type>
+          <declname>scalar</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/level/location.h" line="307" column="14" bodyfile="include/endstone/level/location.h" bodystart="307" bodyend="310"/>
+      </memberdef>
       <memberdef kind="function" id="classendstone_1_1Location_1a9943a7572a508035305b055a7b84a17e" prot="public" static="no" constexpr="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type><ref refid="classendstone_1_1Identifier" kindref="compound">constexpr</ref> <ref refid="classendstone_1_1Location" kindref="compound">Location</ref> &amp;</type>
         <definition>constexpr Location &amp; endstone::Location::zero</definition>
@@ -789,7 +886,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/level/location.h" line="303" column="24" bodyfile="include/endstone/level/location.h" bodystart="303" bodyend="309"/>
+        <location file="include/endstone/level/location.h" line="317" column="24" bodyfile="include/endstone/level/location.h" bodystart="317" bodyend="323"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1Location_1aa911c0cc822480da2d074e742d48bfa6" prot="public" static="no" const="yes" explicit="no" inline="yes" noexcept="yes" virt="non-virtual">
         <type><ref refid="classendstone_1_1Identifier" kindref="compound">bool</ref></type>
@@ -807,7 +904,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/level/location.h" line="311" column="10" bodyfile="include/endstone/level/location.h" bodystart="311" bodyend="317"/>
+        <location file="include/endstone/level/location.h" line="325" column="10" bodyfile="include/endstone/level/location.h" bodystart="325" bodyend="331"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1Location_1adc3f8a174082b40975e739d42af6dcc0" prot="public" static="no" const="yes" explicit="no" inline="yes" noexcept="yes" virt="non-virtual">
         <type><ref refid="classendstone_1_1Identifier" kindref="compound">bool</ref></type>
@@ -825,7 +922,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/level/location.h" line="319" column="10" bodyfile="include/endstone/level/location.h" bodystart="319" bodyend="319"/>
+        <location file="include/endstone/level/location.h" line="333" column="10" bodyfile="include/endstone/level/location.h" bodystart="333" bodyend="333"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1Location_1a2305ecedae47fc00c3e91a287a287aee" prot="public" static="no" const="yes" explicit="no" inline="yes" noexcept="yes" virt="non-virtual">
         <type></type>
@@ -839,7 +936,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/level/location.h" line="321" column="5" bodyfile="include/endstone/level/location.h" bodystart="321" bodyend="321"/>
+        <location file="include/endstone/level/location.h" line="335" column="5" bodyfile="include/endstone/level/location.h" bodystart="335" bodyend="335"/>
       </memberdef>
     </sectiondef>
     <sectiondef kind="public-static-func">
@@ -872,7 +969,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/level/location.h" line="329" column="18" bodyfile="include/endstone/level/location.h" bodystart="329" bodyend="339"/>
+        <location file="include/endstone/level/location.h" line="343" column="18" bodyfile="include/endstone/level/location.h" bodystart="343" bodyend="353"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1Location_1a665a0371b05e4e41b01f2ca4f805238f" prot="public" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type><ref refid="classendstone_1_1Identifier" kindref="compound">float</ref></type>
@@ -903,7 +1000,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/level/location.h" line="347" column="18" bodyfile="include/endstone/level/location.h" bodystart="347" bodyend="356"/>
+        <location file="include/endstone/level/location.h" line="361" column="18" bodyfile="include/endstone/level/location.h" bodystart="361" bodyend="370"/>
       </memberdef>
     </sectiondef>
     <briefdescription>
@@ -911,7 +1008,7 @@
     </briefdescription>
     <detaileddescription>
     </detaileddescription>
-    <location file="include/endstone/level/location.h" line="33" column="1" bodyfile="include/endstone/level/location.h" bodystart="33" bodyend="365"/>
+    <location file="include/endstone/level/location.h" line="33" column="1" bodyfile="include/endstone/level/location.h" bodystart="33" bodyend="379"/>
     <listofallmembers>
       <member refid="classendstone_1_1Location_1acaf254c9147c8657abe7df69d946456f" prot="private" virt="non-virtual"><scope>endstone::Location</scope><name>dimension_</name></member>
       <member refid="classendstone_1_1Location_1a0f4172520ab11dc9b41158334e81fedc" prot="public" virt="non-virtual"><scope>endstone::Location</scope><name>distance</name></member>
@@ -934,9 +1031,14 @@
       <member refid="classendstone_1_1Location_1a34678b50303d3b04db76ed4d1b0c684b" prot="public" virt="non-virtual"><scope>endstone::Location</scope><name>normalizeYaw</name></member>
       <member refid="classendstone_1_1Location_1a2305ecedae47fc00c3e91a287a287aee" prot="public" virt="non-virtual"><scope>endstone::Location</scope><name>operator Vector</name></member>
       <member refid="classendstone_1_1Location_1adc3f8a174082b40975e739d42af6dcc0" prot="public" virt="non-virtual"><scope>endstone::Location</scope><name>operator!=</name></member>
+      <member refid="classendstone_1_1Location_1ae593d1a61d0e3ddf7340f57aee30c835" prot="public" virt="non-virtual"><scope>endstone::Location</scope><name>operator*</name></member>
       <member refid="classendstone_1_1Location_1a7543fa80da847863af13f91aa989df7a" prot="public" virt="non-virtual"><scope>endstone::Location</scope><name>operator*=</name></member>
+      <member refid="classendstone_1_1Location_1a91fc078353797b2d9cd18979b7df9882" prot="public" virt="non-virtual"><scope>endstone::Location</scope><name>operator+</name></member>
+      <member refid="classendstone_1_1Location_1aa35361f1989a181f7db59b6bbf9cfd32" prot="public" virt="non-virtual"><scope>endstone::Location</scope><name>operator+</name></member>
       <member refid="classendstone_1_1Location_1a253139f4781dfc8a8ee7c1363d7745a0" prot="public" virt="non-virtual"><scope>endstone::Location</scope><name>operator+=</name></member>
       <member refid="classendstone_1_1Location_1a1c5847e442cdbfcdef7cde89d3a36c89" prot="public" virt="non-virtual"><scope>endstone::Location</scope><name>operator+=</name></member>
+      <member refid="classendstone_1_1Location_1a771b2861ee81216e524d42259b9dba03" prot="public" virt="non-virtual"><scope>endstone::Location</scope><name>operator-</name></member>
+      <member refid="classendstone_1_1Location_1a0fbb8d0142a70c845a2ad2ffe56827bd" prot="public" virt="non-virtual"><scope>endstone::Location</scope><name>operator-</name></member>
       <member refid="classendstone_1_1Location_1acf93a3cfc2a2405ab87b4015b987be6b" prot="public" virt="non-virtual"><scope>endstone::Location</scope><name>operator-=</name></member>
       <member refid="classendstone_1_1Location_1aa25ef6378594a6a4565558d7859328ed" prot="public" virt="non-virtual"><scope>endstone::Location</scope><name>operator-=</name></member>
       <member refid="classendstone_1_1Location_1aa911c0cc822480da2d074e742d48bfa6" prot="public" virt="non-virtual"><scope>endstone::Location</scope><name>operator==</name></member>

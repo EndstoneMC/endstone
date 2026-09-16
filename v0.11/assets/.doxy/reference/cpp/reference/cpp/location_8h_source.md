@@ -169,6 +169,20 @@ public:
         return *this;
     }
 
+    Location operator+(const Location &other) const { return Location(*this) += other; }
+
+    Location operator+(const Vector &other) const { return Location(*this) += other; }
+
+    Location operator-(const Location &other) const { return Location(*this) -= other; }
+
+    Location operator-(const Vector &other) const { return Location(*this) -= other; }
+
+    template <std::convertible_to<float> T>
+    Location operator*(T scalar) const
+    {
+        return Location(*this) *= scalar;
+    }
+
     constexpr Location &zero()
     {
         x_ = 0;
