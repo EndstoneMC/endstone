@@ -1,4 +1,7 @@
 .cache/*
+.conan2/*
+!.conan2/remotes.json
+!.conan2/profiles
 .idea/*
 .venv/*
 venv/*
