@@ -11,6 +11,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 - Added support for BDS version 1.26.51. Players must be on 1.26.51 to join; 1.26.44 clients are no longer accepted. Bedrock now treats NetherNet as its only supported transport: a server left on `transport=raknet` logs a startup error saying players will not be able to connect, so check that `transport` is set to `nethernet` in `server.properties` before upgrading.
 - On a server with `transport=nethernet`, Endstone now sets `server-udp-ports` to the value of `server-port` in `server.properties` on startup when it is not set, so NetherNet connections use the port you have already opened instead of a random one. If your host gives you a range of ports, set `server-udp-ports` yourself.
+- On a server with `transport=nethernet`, Endstone now refuses to start when another process is using `server-port`, with the same error Bedrock shows on RakNet. Bedrock itself starts anyway without accepting connections by address and logs nothing.
 
 ### Fixed
 
