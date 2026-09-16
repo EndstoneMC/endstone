@@ -43,3 +43,8 @@ struct PlayerAuthenticationInfo {
     bool is_host;
     bool is_local;
 };
+
+struct ServerSupportedAuthenticationTypes {
+    bool accepts_online_auth;
+    bool accepts_self_signed_auth;
+};
