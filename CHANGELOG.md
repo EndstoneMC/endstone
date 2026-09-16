@@ -24,6 +24,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Fixed two handles to the same scoreboard objective never comparing equal, so `objective in scoreboard.objectives` was always false and removing an objective from a list of objectives never found it.
 - Fixed the server crashing when a player used an empty item while a behavior pack listened to `world.beforeEvents.itemUse`.
 - Fixed maps showing only the viewer's own marker. Explorer maps, such as the trial explorer map sold by cartographers, now show the structure they point to again, and players holding the same map see each other's markers as in vanilla.
+- Fixed a boss bar vanishing for a player who travelled to another dimension. The Bedrock client drops every boss bar it is showing once it rebuilds the world, and now gets the bars a player is in sent again as soon as it asks for them.
 
 ### Security
 

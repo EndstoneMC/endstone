@@ -14,6 +14,10 @@
 
 #include "endstone/core/boss/boss_bar.h"
 
+#include <mutex>
+#include <unordered_set>
+#include <vector>
+
 #include "bedrock/network/packet.h"
 #include "bedrock/network/packet/boss_event_packet.h"
 #include "endstone/check.h"
@@ -21,6 +25,59 @@
 #include "endstone/core/server.h"
 
 namespace endstone::core {
+
+namespace {
+// TODO(v0.12): drop once createBossBar returns a shared_ptr and the server can track bars by weak_ptr.
+struct BossBarRegistry {
+    std::mutex mutex;
+    std::unordered_set<EndstoneBossBar *> bars;
+};
+
+BossBarRegistry &getBossBarRegistry()
+{
+    static auto *registry = new BossBarRegistry();
+    return *registry;
+}
+
+struct BossBarState {
+    std::string title;
+    float progress;
+    BarColor color;
+    BarStyle style;
+};
+
+void sendBossEvent(const ::Player &handle, BossEventUpdateType event_type, const BossBarState &state)
+{
+    const auto packet = MinecraftPackets::createPacket(MinecraftPacketIds::BossEvent);
+    const auto pk = std::static_pointer_cast<BossEventPacket>(packet);
+    pk->payload.boss_id = handle.getOrCreateUniqueID();
+    pk->payload.event_type = event_type;
+    pk->payload.name = state.title;
+    pk->payload.health_percent = state.progress;
+    pk->payload.color = static_cast<BossBarColor>(state.color);
+    pk->payload.overlay = static_cast<BossBarOverlay>(state.style);
+    // BarFlag::DarkenSky / CreateFog dropped from BossEventPacket in BDS 1.26.32 (cereal-only migration)
+    handle.sendNetworkPacket(*packet);
+}
+}  // namespace
+
+EndstoneBossBar::EndstoneBossBar(std::string title, BarColor color, BarStyle style, const std::vector<BarFlag> &flags)
+    : title_(std::move(title)), color_(color), style_(style)
+{
+    for (auto const &flag : flags) {
+        flags_.set(static_cast<int>(flag));
+    }
+    auto &registry = getBossBarRegistry();
+    std::lock_guard lock(registry.mutex);
+    registry.bars.insert(this);
+}
+
+EndstoneBossBar::~EndstoneBossBar()
+{
+    auto &registry = getBossBarRegistry();
+    std::lock_guard lock(registry.mutex);
+    registry.bars.erase(this);
+}
 
 std::string EndstoneBossBar::getTitle() const
 {
@@ -150,19 +207,28 @@ std::vector<Player *> EndstoneBossBar::getPlayers() const
     return players;
 }
 
+void EndstoneBossBar::resend(Player &player)
+{
+    const auto uuid = player.getUniqueId();
+    std::vector<BossBarState> states;
+    {
+        auto &registry = getBossBarRegistry();
+        std::lock_guard lock(registry.mutex);
+        for (const auto *bar : registry.bars) {
+            if (bar->visible_ && bar->players_.contains(uuid)) {
+                states.push_back({bar->title_, bar->progress_, bar->color_, bar->style_});
+            }
+        }
+    }
+    const auto &handle = static_cast<EndstonePlayer &>(player).getHandle();
+    for (const auto &state : states) {
+        sendBossEvent(handle, BossEventUpdateType::Add, state);
+    }
+}
+
 void EndstoneBossBar::send(BossEventUpdateType event_type, Player &player)
 {
-    const auto packet = MinecraftPackets::createPacket(MinecraftPacketIds::BossEvent);
-    const auto pk = std::static_pointer_cast<BossEventPacket>(packet);
-    const auto &handle = static_cast<EndstonePlayer &>(player).getHandle();
-    pk->payload.boss_id = handle.getOrCreateUniqueID();
-    pk->payload.event_type = event_type;
-    pk->payload.name = title_;
-    pk->payload.health_percent = progress_;
-    pk->payload.color = static_cast<BossBarColor>(color_);
-    pk->payload.overlay = static_cast<BossBarOverlay>(style_);
-    // BarFlag::DarkenSky / CreateFog dropped from BossEventPacket in BDS 1.26.32 (cereal-only migration)
-    handle.sendNetworkPacket(*packet);
+    sendBossEvent(static_cast<EndstonePlayer &>(player).getHandle(), event_type, {title_, progress_, color_, style_});
 }
 
 void EndstoneBossBar::broadcast(BossEventUpdateType event_type)

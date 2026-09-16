@@ -24,6 +24,7 @@
 
 #include "bedrock/entity/components/user_entity_identifier_component.h"
 #include "bedrock/network/packet.h"
+#include "bedrock/network/packet/boss_event_packet.h"
 #include "bedrock/network/packet/clientbound_map_item_data_packet.h"
 #include "bedrock/network/packet/correct_player_move_prediction_packet.h"
 #include "bedrock/network/packet/emote_packet.h"
@@ -47,6 +48,7 @@
 #include "endstone/block/block.h"
 #include "endstone/color_format.h"
 #include "endstone/core/base64.h"
+#include "endstone/core/boss/boss_bar.h"
 #include "endstone/core/entity/components/flag_components.h"
 #include "endstone/core/form/form_codec.h"
 #include "endstone/core/game_mode.h"
@@ -733,6 +735,14 @@ bool EndstonePlayer::handlePacket(Packet &packet)
     }
     case MinecraftPacketIds::SetLocalPlayerAsInit: {
         doFirstSpawn();
+        return true;
+    }
+    case MinecraftPacketIds::BossEvent: {
+        const auto &pk = static_cast<BossEventPacket &>(packet);
+        if (pk.payload.event_type == BossEventUpdateType::Query &&
+            pk.payload.boss_id == getHandle().getOrCreateUniqueID()) {
+            EndstoneBossBar::resend(*this);
+        }
         return true;
     }
     case MinecraftPacketIds::Emote: {

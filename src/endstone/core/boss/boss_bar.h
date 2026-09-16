@@ -27,13 +27,10 @@ namespace endstone::core {
 
 class EndstoneBossBar : public BossBar {
 public:
-    EndstoneBossBar(std::string title, BarColor color, BarStyle style, const std::vector<BarFlag> &flags = {})
-        : title_(std::move(title)), color_(color), style_(style)
-    {
-        for (auto const &flag : flags) {
-            flags_.set(static_cast<int>(flag));
-        }
-    }
+    EndstoneBossBar(std::string title, BarColor color, BarStyle style, const std::vector<BarFlag> &flags = {});
+    EndstoneBossBar(const EndstoneBossBar &) = delete;
+    EndstoneBossBar &operator=(const EndstoneBossBar &) = delete;
+    ~EndstoneBossBar() override;
 
     [[nodiscard]] std::string getTitle() const override;
     void setTitle(std::string title) override;
@@ -52,6 +49,8 @@ public:
     void removePlayer(Player &player) override;
     void removeAll() override;
     [[nodiscard]] std::vector<Player *> getPlayers() const override;
+
+    static void resend(Player &player);
 
 private:
     void send(BossEventUpdateType event_type, Player &player);

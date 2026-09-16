@@ -52,7 +52,8 @@ std::shared_ptr<Packet> MinecraftPackets::createPacket(MinecraftPacketIds id)
     case MinecraftPacketIds::PlayerSkin:
     case MinecraftPacketIds::SetLocalPlayerAsInit:
     case MinecraftPacketIds::PlayerAuthInputPacket:
-    case MinecraftPacketIds::Emote: {
+    case MinecraftPacketIds::Emote:
+    case MinecraftPacketIds::BossEvent: {
         static std::unordered_map<MinecraftPacketIds, std::unique_ptr<PlayerPacketHandler>> handlers;
         if (packet->handler_) {
             handlers.emplace(id, std::make_unique<PlayerPacketHandler>(*packet->handler_));
