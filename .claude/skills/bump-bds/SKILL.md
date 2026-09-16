@@ -51,6 +51,50 @@ diffs as private working references only.
 
 ---
 
+# Orchestration - never wait idle
+
+Building the two IDA databases is the long pole (hours each, multi-GB). Almost
+nothing else in a bump needs one, so the database must never be the thing you are
+waiting on.
+
+- **DO launch both databases first**, via `build-ida-db` - the opening action of a
+  Scenario-B bump, not a step you reach later.
+- **DO run the entire non-IDA half while they analyse.** `lief` + `capstone` on the
+  shipped binaries settle, with no database: the protocol version; the per-class
+  vtable diff (Linux RTTI); `sizeof` for every asserted class; whether a resolved
+  offset is a real function start (`.pdata` / `.eh_frame_hdr` FDE); referenced
+  string-set identity; and cutting, replaying and uniqueness-checking byte patterns.
+- **DO order it: dumper triage -> non-IDA sweeps -> IDA.** Triage names the broken
+  entries, the sweeps clear or convict most of them, and only the string-less
+  locates genuinely need a database.
+- **DO switch to the database the moment it is ready - it outranks your own
+  scanners.** The `lief`/`capstone` path is a stopgap for the hours the analysis
+  is running, not a preferred technique. Once a platform's `.i64` exists, take
+  xrefs, function boundaries, call graphs and identity from IDA; fall back to a
+  hand-rolled scan only for the platform whose database is still building, or for
+  a whole-binary sweep IDA has no cheap equivalent of (the per-class RTTI vtable
+  diff, the section-wide invariant counts).
+- **DO NOT trust a hand-rolled scanner's negative result.** It under-reports
+  silently and in ways that read like a real finding: a `lea`-only scan misses
+  the `movups xmm0,[rip+x]` form that materializes short string literals, and
+  folding the ModRM byte into the disp32 capture matches nothing at all. A string
+  that plainly exists but scans as unreferenced is a bug in the scanner until IDA
+  says otherwise - ask the database before concluding a locate recipe went stale.
+- **DO validate any scanner of your own against the PREVIOUS binary before trusting
+  it** - every committed pattern must resolve to its known-good offset there. Until
+  it reproduces the dumper exactly, its verdicts on the new binary mean nothing.
+- **DO anchor an identity claim on a self-naming marker string** (a trace/profiler
+  literal like `<Class>::<method>`) referenced from exactly one site in both
+  versions. A windowed string-set comparison overruns into neighbouring functions
+  and will convict a correct offset.
+- **DO fan the per-symbol locates out to parallel agents** once the databases are
+  up - they are independent. There is ONE idalib worker, so agents driving idalib
+  serialise: fan out the reading and decision work, not the idalib calls.
+- **DO NOT block on the databases to start the port.** The vtable and member-layout
+  work is the larger half of a bump and is entirely RTTI-driven on Linux.
+
+---
+
 # The symbol pipeline (shared)
 
 ## How it works
@@ -297,6 +341,23 @@ between each - see *Editing src/bedrock correctly*):
 
 ## Finding a new symbol / offset without a header diff
 
+- **A string anchor is not referenced only by `lea` - short literals arrive via
+  SSE.** A literal that fits a `std::string`'s SSO buffer is materialized with
+  `movups xmm0, [rip+disp32]` (`0F 10 05 ...`, no REX, two-byte opcode) and
+  stored with `movups [reg], xmm0` (`0F 11 ...`); longer ones come in 16-byte
+  `movups` chunks. A hand-rolled scanner that only matches `lea reg,[rip+x]`
+  (`48/4C 8D <modrm> disp32`) reports such a string as having **zero**
+  references, which reads exactly like "the string is dead" or "the recipe is
+  stale" and sends you re-anchoring a recipe that was fine. Match the `0F 10 05`
+  / `0F 11` forms too, and when a string that plainly exists scans as
+  unreferenced, ask the database for its xrefs before rewriting the recipe.
+  (1.26.51: `%multiplayer.player.left`, `Resource Repository Async Group` and
+  `Failed to resolve block "` all scanned as unreferenced for exactly this.)
+- **Also mind the ModRM byte when hand-writing a rip-relative scanner.** The
+  displacement starts *after* modrm, so the regex is
+  `[REX] <opcode> [
+%-5=] (disp32)`; folding
+  modrm into the disp32 capture silently matches nothing.
 - **Navigate by string anchor, not symbol.** To locate an unnamed function:
   take a string literal it references (an error/i18n key like
   `commands.setmaxplayers.success.lowerbound`), `find_bytes` the *ASCII hex* of
@@ -376,6 +437,49 @@ not the virtuals), so you diff layout without any virtual-function names.
    concrete class (e.g. `ServerPlayer` covers `Actor -> Mob -> Player ->
    ServerPlayer`) gives the whole chain in one read. Equal length on every level
    = no net change (still verify order).
+2b. **Never end a vtable run at "the next qword is not code" - on Linux either.**
+   The Windows warning about packed vftables applies verbatim to `.data.rel.ro`:
+   when the object following a vtable is an RTTI-less function-pointer table (an
+   entt-meta / cereal type-erased manager, a dtor/copy/move/compare/hash block),
+   the run-length walk sails straight through it and reports a class as
+   dozens of slots longer than it is. The terminator is the next vtable's own
+   header - a zero `offset_to_top` slot followed by a typeinfo pointer - not the
+   first non-code qword. **Cross-check every suspicious length against the
+   DERIVED classes: a derived vtable can never be shorter than its primary
+   base's**, so if every deriver measures 29 in both versions, the base's "55"
+   is the artifact, not a removal. 1.26.51 produced two such false positives
+   this way, `BaseCircuitComponent` reading 55 -> 29 and `RemoteConnector`
+   -56 reading 22 -> 20; both classes were completely unchanged.
+2b-net. **A length sweep cannot see a NET-ZERO change, and BDS makes them.**
+   1.26.51 removed one virtual from `Actor` (`canFreeze`) and added one to
+   `Player`, so `Actor` read 138 -> 137 and `Mob` 176 -> 175, while `Player` and
+   `ServerPlayer` read **246 and 248 in both versions** and never entered the
+   changed list. Every Player-level virtual after the insertion point was one
+   slot off; `sendNetworkPacket` landed on `sendComplexInventoryTransaction` and
+   faulted deep inside BDS the moment a player joined.
+   - **Whenever a base's length changes, re-check every deriver by ALIGNMENT,
+     not by length.** A deriver whose length is unchanged has, by definition,
+     gained exactly as many virtuals as its base lost.
+   - Better: run the per-slot `difflib.SequenceMatcher` alignment (step 4) over
+     *every* class Endstone declares and report only `insert`/`delete` opcodes.
+     It is the same walk the length sweep already does plus a 9-instruction
+     signature per slot, and it is the only sweep that catches this.
+
+2c. **The class-level length sweep has two blind spots - close both.** The
+   usual sweep (every `_ZTS` name -> vtable length in each binary, intersected
+   with the class names Endstone declares) silently skips:
+   - **Abstract bases whose vtable is never emitted.** Their `__class_type_info`
+     is only referenced from derived `__si_class_type_info` records, so the
+     offset-0 address-point search finds nothing and the class never enters the
+     table. `ItemDescriptor::BaseDescriptor` gained a virtual in 1.26.51 and did
+     not appear in the sweep at all; only its five derivers did, each 18 -> 19.
+     So **read the sweep as "some class in this hierarchy changed"** and walk up
+     to the base Endstone actually declares.
+   - **Classes Endstone declares in a `.cpp`, not a header.** Scan `**/*.cpp`
+     alongside `**/*.h` when building the "what Endstone declares" set -
+     `InternalItemDescriptor` lives in `item_descriptor.cpp` and was invisible
+     to a header-only scan.
+
 3. **Structural fingerprint** confirms no same-count shuffle, name-free: tag each
    slot `P` = `__cxa_pure_virtual`, `T` = this-adjusting thunk (`48 83 ef` /
    `48 81 ef` = `sub rdi`), `R` = repeats previous target (shared-stub runs),
@@ -571,6 +675,29 @@ control block and fault on garbage. When that happens:
   first 8 bytes, so a getter returning `.get()` keeps working while every member
   *after* it is 8 bytes out. Silent, and it hides the real breakage.
 
+### When the crash leaves NO report: 0xC0000409 is a vtable slot shift
+
+Exit code `3221226505` / `0xC0000409` is `__fastfail`, and subcode `0xA` is
+`FAST_FAIL_GUARD_ICALL_CHECK_FAILURE` - Control Flow Guard refusing an indirect
+call whose target is not a registered function entry. That is the signature of a
+**virtual call landing on the wrong slot**: the loaded qword is a valid-looking
+address (a data table, a vtable's tail, the middle of a function) but not a CFG
+call target. An access violation would at least give you a trace; a fast-fail
+bypasses SEH, so crashpad writes nothing and `crash_reports/` stays empty.
+
+Do not reach for a debugger - **bisect with `fprintf(stderr, ...)` + `fflush`**.
+Two builds is usually enough: one marker per top-level stage to find the
+function, then one marker per statement inside it. 1.26.51's went
+`recipes -> shapeless[0] -> ing serialize` and stopped, naming
+`ItemDescriptor::serialize(Json::Value&)`'s `impl_->serialize(json)` as the bad
+dispatch in two rebuilds. Then take the concrete class the call dispatches on
+(here `InternalItemDescriptor`) straight to the Linux RTTI vtable diff.
+
+Related trap: Endstone's devtools thread dumps every block, item, recipe and
+biome at startup, so it exercises far more of the ABI than a bare boot does.
+A bump that "boots fine" with devtools off is not a bump that works - leave
+devtools on and treat its dump as the acceptance test.
+
 ### The change BDS actually makes most often
 
 **A member changing KIND at an unchanged offset**, growing 8 -> 16 and shifting
@@ -586,6 +713,36 @@ a `unique_ptr<T>` replaced by an inline `std::optional<T>` (the destructor stops
 running a deleter and starts testing an engaged flag over the value's own body),
 and a member relocated within the struct with `sizeof` unchanged - which no size
 check can ever detect.
+
+### A class can keep its name and API but move its BODY behind a pointer
+
+`sizeof` sweeps, vtable sweeps and RTTI all say "unchanged" when BDS turns a
+class into a handle - the old body becomes a separate allocation and the class
+shrinks to a single pointer. `ResourcePack` did this in 1.26.51: it stayed
+non-polymorphic, stayed named the same, and every accessor Endstone calls kept
+its signature, but `sizeof` went from a few hundred bytes to 8.
+
+**The tell is one extra `mov rax, [rax]` in a BDS function that reads through
+the object**, so diff the *chain of indirections*, not the endpoints:
+
+    1.26.45   mov r8, [rbx+0x10]   ; ResourcePack*
+              mov rax, [r8+8]      ; -> Pack*
+              mov rax, [rax]       ; -> PackManifest*
+    1.26.51   mov r8, [rbx+0x10]   ; ResourcePack*
+              mov rax, [r8]        ; -> body        <-- new hop
+              mov rax, [rax+8]     ; -> Pack*
+              mov rax, [rax]       ; -> PackManifest*
+
+Pick any BDS function that walks the class (a getter, a filter loop, a
+comparison) and read the two side by side. Confirm at runtime by dumping the
+first qwords of a live object: the handle's own tail is unrelated heap (an NT
+heap block header at `+8` says the allocation really is 8 bytes), while the
+pointer at `+0` leads to something with the *old* layout - zeroed leading bools,
+the same `shared_ptr` at `+8`, the same null `unique_ptr` at `+24`.
+
+Port it by nesting the old member list in a `Body`/`Impl` struct and leaving one
+pointer in the class; nothing else in Endstone has to change, because the
+accessors keep their signatures.
 
 ### Proof techniques that settle it quickly
 
@@ -1105,6 +1262,24 @@ must be right. Exploit that:
 - Only the **size driver** (largest `K`) needs a byte-exact body; confirm with
   `BEDROCK_STATIC_ASSERT_SIZE`. After a size-drift fix the driver can become a
   *different* alternative - recompute which one it is.
+- **On Linux, read the alternative count straight off the visit table - and bound
+  it by the next rip-referenced address.** libc++'s `std::visit` compiles to
+  `mov eax, dword [event+OFF]; cmp rax, -1; je <valueless>; lea rcx,[rip+TABLE];
+  call [rcx+rax*8]`, so `OFF` is the discriminant offset (a 4-byte index; `-1` is
+  `variant_npos`) and `TABLE` holds one thunk per alternative. Do **NOT** end the
+  table at "the next qword is not a code pointer" - the generated thunks of
+  neighbouring tables sit directly after it and the run reads far too long (an
+  8-alternative table measured 51). The terminator is the **next address in the
+  image that any rip-relative `lea` references**; `(next - TABLE)/8` is the count.
+  Validate the method on the PREVIOUS binary first - it must reproduce the count
+  Endstone already declares.
+- **A vtable change on a `Script*GameplayHandler` does not by itself mean variant
+  drift.** BDS adds whole new `handleEvent` overloads (a new event category) far
+  more often than it changes an existing variant. Compare the discriminant offset
+  and the bounded alternative count of the **hooked slot** across versions before
+  touching an event list; an insertion *below* the hooked ordinal changes nothing.
+  `vhook::create<N>` patches `vtable[N]` by raw index, so only insertions at or
+  above `N` can break a hook.
 - **Confirm live**: breakpoint the hooked `handleEvent`, copy `byte
   [event+OFF_real]` into `byte [event+OFF_endstone]`, and continue - if the
   `bad_variant_access` then vanishes across a full start/stop, the offset/size

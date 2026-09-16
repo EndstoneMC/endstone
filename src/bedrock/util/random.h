@@ -47,7 +47,6 @@ public:
     virtual double nextDouble() = 0;
     virtual double nextGaussianDouble() = 0;
     virtual void consumeCount(unsigned int) = 0;
-    virtual std::unique_ptr<IRandom> fork() = 0;
     virtual std::unique_ptr<IPositionalRandomFactory> forkPositional();
     virtual bool chance(int, int);
     virtual bool chanceOneIn(int);
@@ -73,7 +72,6 @@ public:
     double nextDouble() override;
     double nextGaussianDouble() override;
     void consumeCount(unsigned int) override;
-    std::unique_ptr<IRandom> fork() override;
 
     void reset();
     void setSeed(RandomSeed);

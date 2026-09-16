@@ -58,7 +58,7 @@ const BaseGameVersion &Item::getRequiredBaseGameVersion() const
     return min_required_base_game_version_;
 }
 
-const WeakPtr<BlockType> &Item::getBlockType() const
+const BlockType *Item::getBlockType() const
 {
     return block_type_;
 }
