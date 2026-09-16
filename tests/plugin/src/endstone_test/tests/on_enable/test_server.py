@@ -1,6 +1,8 @@
 from pathlib import Path
 
+import tomlkit
 from endstone import Server
+from endstone.cli import _properties as properties
 from endstone.level import Dimension
 from endstone.plugin import Plugin
 
@@ -33,28 +35,22 @@ def test_max_players(server: Server) -> None:
 
 
 def test_server_properties(plugin: Plugin, server: Server) -> None:
-    properties_file = Path(
-        plugin.data_folder, "..", "..", "server.properties"
-    ).resolve()
-    tests_passed = 0
-    with properties_file.open(mode="r") as file:
-        for line in file:
-            splits = line.strip().split("=", 1)
-            if len(splits) != 2:
-                continue
-            key, value = splits
-            match key:
-                case "online-mode":
-                    assert (value.lower() == "true") == server.online_mode
-                    tests_passed += 1
-                case "server-port":
-                    assert int(value) == server.port
-                    tests_passed += 1
-                case "server-portv6":
-                    assert int(value) == server.port_v6
-                    tests_passed += 1
+    server_folder = Path(plugin.data_folder, "..", "..").resolve()
+    with (server_folder / "server.properties").open(
+        encoding="utf-8", newline=""
+    ) as file:
+        props = properties.load(file)
+    with (server_folder / "endstone.toml").open(encoding="utf-8") as file:
+        ipv6 = tomlkit.load(file).get("network", {}).get("ipv6", False)
 
-    assert tests_passed == 3
+    assert props.get_bool("online-mode") == server.online_mode
+    assert props.get_int("server-port") == server.port
+    if props.get("transport", "nethernet") == "nethernet":
+        assert props.get_int("server-port") == server.port_v6
+    elif ipv6:
+        assert props.get_int("server-portv6") == server.port_v6
+    else:
+        assert server.port_v6 == 0
 
 
 def test_get_player(server: Server):

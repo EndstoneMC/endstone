@@ -553,7 +553,8 @@ int EndstoneServer::getPort() const
     if (isUsingNetherNet()) {
         return getSignalingPort();
     }
-    return getRemoteConnector().getIPv4Port();
+    const auto port = getRemoteConnector().getIPv4Port();
+    return port == 0xffff ? 0 : port;
 }
 
 int EndstoneServer::getPortV6() const
@@ -561,7 +562,8 @@ int EndstoneServer::getPortV6() const
     if (isUsingNetherNet()) {
         return getSignalingPort();
     }
-    return getRemoteConnector().getIPv6Port();
+    const auto port = getRemoteConnector().getIPv6Port();
+    return port == 0xffff ? 0 : port;
 }
 
 bool EndstoneServer::getOnlineMode() const
