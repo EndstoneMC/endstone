@@ -94,7 +94,12 @@ public:
     }
 
 private:
-    [[no_unique_address]] std::hash<std::thread::id> thread_hasher_{};
+#ifdef _MSC_VER
+    [[msvc::no_unique_address]]
+#else
+    [[no_unique_address]]
+#endif
+    std::hash<std::thread::id> thread_hasher_{};
     const std::size_t no_thread_id_;        // +0
     std::uint32_t owner_ref_count_{0};      // +8
     std::atomic<std::size_t> owner_thread_;  // +16
