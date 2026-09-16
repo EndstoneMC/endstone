@@ -14,6 +14,8 @@
 
 #pragma once
 
+#include "bedrock/bedrock.h"
+
 #include <memory>
 #include <optional>
 #include <vector>
@@ -69,5 +71,8 @@ private:
             float current_value_;
         };
     };
+    // TODO(fixme): check the name - 1.26.51 appended eight bytes here. The destructor does not touch
+    // them and both value arrays stay at +104 and +116, so the new member is a POD at the tail.
+    void *unknown_128_;
 };
-static_assert(sizeof(AttributeInstance) == 128);
+BEDROCK_STATIC_ASSERT_SIZE(AttributeInstance, 136, 136);
