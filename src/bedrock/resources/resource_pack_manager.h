@@ -32,16 +32,16 @@ private:
     std::unique_ptr<ResourcePackStack> global_stack_;                              // +160
     std::unique_ptr<ResourcePackStack> treatment_stack_;                           // +168
     std::unique_ptr<ResourcePackStack> base_game_stack_;                           // +176
-    std::shared_ptr<ResourcePackStack> full_stack_;                                // +184
-    std::unique_ptr<PackSourceReport> loading_report_;                             // +200
-    std::string locale_code_;                                                      // +208
-    bool initializing_;                                                            // +240
-    bool pending_restack_;                                                         // +241
-    bool use_global_pack_stack_;                                                   // +242
-    bool gameplay_resources_loaded_;                                               // +243
-    Bedrock::Threading::SharedMutex full_stack_access_;                            // +248
-    std::uint32_t compose_generation_;                                             // +256
-    Bedrock::NotNullNonOwnerPtr<const IContentTierManager> content_tier_manager_;  // +264
-    SemVersion full_stack_min_engine_version_DEPRECATED_DONOTUSE_;                 // +288 NOLINT
+    std::unique_ptr<ResourcePackStack> full_stack_;                                // +184
+    std::unique_ptr<PackSourceReport> loading_report_;                             // +192
+    std::string locale_code_;                                                      // +200
+    bool initializing_;                                                            // +232
+    bool pending_restack_;                                                         // +233
+    bool use_global_pack_stack_;                                                   // +234
+    bool gameplay_resources_loaded_;                                               // +235
+    std::uint32_t compose_generation_;                                             // +236
+    Bedrock::Threading::SharedMutex full_stack_access_;                            // +240
+    Bedrock::NotNullNonOwnerPtr<const IContentTierManager> content_tier_manager_;  // +248
+    SemVersion full_stack_min_engine_version_DEPRECATED_DONOTUSE_;                 // +272 NOLINT
 };
-BEDROCK_STATIC_ASSERT_SIZE(ResourcePackManager, 312, 416);
+BEDROCK_STATIC_ASSERT_SIZE(ResourcePackManager, 296, 400);
