@@ -874,6 +874,26 @@ is only conditionally-supported and warns. Decide it once as a convention rather
 than per class. For any class that is *not* truncated, add the size assert - it
 turns this whole failure mode into a compile error.
 
+**A size delta only bites where `sizeof` is a STRIDE.** Before porting one, ask how
+Endstone reaches the class. A class it only ever holds through a pointer - `Item` and
+its subclasses (`SharedPtr<Item>` throughout the registry), `ActorDamageByBlockSource`
+(cloned into a `unique_ptr`) - can grow at the tail with no consequence at all, and
+per the `ServerLevel` note below the right move is to confirm the growth is past
+everything Endstone reads and then *stop*, not to manufacture a placeholder. A class
+stored BY VALUE in a container is the opposite: `sizeof` is the element stride, so an
+eight-byte shortfall silently misreads every element after the first. Grep for the
+owner before deciding. `AttributeInstance @ 1.26.51` grew 8 bytes purely at the tail -
+its destructor displacements were byte-identical to 1.26.45 and both value arrays
+stayed at +104 and +116 - yet it had to be fixed, because `BaseAttributeMap` keeps its
+instances in a `brstd::flat_map`'s `std::vector<AttributeInstance>`.
+
+**Sweep the RAW `static_assert(sizeof(X) == N)` form too.** Not every guard uses
+`BEDROCK_STATIC_ASSERT_SIZE`; a handful of headers carry a hand-written, and therefore
+platform-blind, `static_assert` instead. A sweep that greps only the macro reports the
+class as unguarded, and you then add a *second* assert next to the stale one and get a
+build failure quoting a number you never typed. Grep both spellings, and replace the
+raw one with the macro when you touch it.
+
 Two things that make the guard weaker than it looks:
 
 - **A size assert never checks BDS.** `static_assert(sizeof(X) == N)` compares
@@ -982,6 +1002,33 @@ the `SerializationMode` accessors.
    declaration order (`ResourcePackStackPacketPayload` @ 1.26.40 registers its
    `bool` first while the constructor stores the vector first). Take names from
    the registration, offsets from the constructor.
+5b. **`protocol-docs` ships one branch per release - diff it FIRST, before opening a
+   binary.** `r26_u4` is 1.26.45, `r26_u5` is 1.26.51, and
+   `git diff origin/r26_u<prev> origin/r26_u<new> -- packets types enums` names every
+   packet and type whose wire changed in seconds. Intersect that with the headers
+   Endstone declares and you have the actionable set without a single decompile. It
+   also separates real changes from serializer churn: a release that drops the
+   unnamed `{"type": "bool", "value": true}` constants everywhere (1.26.51 did) is a
+   cereal change with no struct impact, so a packet whose whole diff is those lines -
+   `PlayerAuthInputPacket`, `InventorySource`, `InventoryTransaction` - needs nothing.
+5c. **The documented wire type gives the C++ enum's WIDTH.** cereal writes a 1-byte
+   enum as `uint8` and a 4-byte one as `uvarint32`, so protocol-docs' `"type"` is a
+   direct read of the underlying type. Validate the rule on two enums you already
+   declare, then trust it: 1.26.51's new `ItemUseInventoryTransaction` member
+   documented `"type": "uint8", "enum": "HandSlot"` proved `HandSlot` had narrowed
+   from `int`, which no size check could see (both widths give the same layout). The
+   binary's `cereal::internal::TypeSchema<HandSlot>` string confirms the member's type
+   independently - grep for it rather than inferring from the field name.
+5d. **`make_shared`'s zero-init stops at the payload's DSIZE, which settles
+   declaration order when the size cannot.** The factory zeroes `[object, dsize)`
+   using aligned 16-byte stores plus one trailing *unaligned* store, so the end of
+   that last store is the offset just past the final member. When it lands on an odd
+   offset the last-declared member is one byte wide - that alone ruled out wire order
+   for `PlaySoundPacket @ 1.26.51`, whose two new fields are documented as a `bool`
+   before the sound handle and an optional after it, but whose zero-init ends at
+   payload+73. Both orders gave `sizeof` 80 on both platforms, so nothing else
+   discriminated them.
+
 6. **Cross-check the wire with protocol-docs.** The cereal field set == the
    serialized fields; `EndstoneMC/protocol-docs` (`<branch>/packets/<Name>.json`)
    lists them in order, mapping the copy's offsets to names and flagging
