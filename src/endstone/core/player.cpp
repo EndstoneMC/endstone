@@ -526,7 +526,7 @@ std::chrono::milliseconds EndstonePlayer::getPing() const
     if (!peer) {
         return {};
     }
-    return peer->getNetworkStatus().average_ping;
+    return peer->getNetworkStatus().current_ping;
 }
 
 std::string EndstonePlayer::getLocale() const
