@@ -43,10 +43,10 @@ struct InventoryTransactionPacketPayload {
     std::variant<NormalTransactionData, InventoryMismatchData, ItemUseInventoryTransaction,
                  ItemUseOnActorInventoryTransaction, ItemReleaseInventoryTransaction>
         variant_transaction;                                   // +40
-    std::unique_ptr<ComplexInventoryTransaction> transaction;  // +312
-    bool is_client_side;                                       // +320
+    std::unique_ptr<ComplexInventoryTransaction> transaction;  // +320
+    bool is_client_side;                                       // +328
 };
-BEDROCK_STATIC_ASSERT_SIZE(InventoryTransactionPacketPayload, 328, 288);
+BEDROCK_STATIC_ASSERT_SIZE(InventoryTransactionPacketPayload, 336, 296);
 
 class InventoryTransactionPacket : public Packet {
 public:
@@ -57,9 +57,9 @@ public:
                 ActorRotationComponent &actor_rotation, bool is_aim_assist) const;
 
     InventoryTransactionPacketPayload payload;                            // +48
-    SerializationMode serialization_mode{SerializationMode::CerealOnly};  // +376
+    SerializationMode serialization_mode{SerializationMode::CerealOnly};  // +384
 
 private:
     Bedrock::Result<void> _read(ReadOnlyBinaryStream &stream) override;
 };
-BEDROCK_STATIC_ASSERT_SIZE(InventoryTransactionPacket, 384, 344);
+BEDROCK_STATIC_ASSERT_SIZE(InventoryTransactionPacket, 392, 352);

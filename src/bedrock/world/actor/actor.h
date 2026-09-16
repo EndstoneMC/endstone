@@ -213,7 +213,6 @@ public:
     virtual bool load(CompoundTag const &, DataLoadHelper &) = 0;
     [[nodiscard]] virtual HashedString const &queryEntityRenderer() const = 0;
     [[nodiscard]] virtual ActorUniqueID getSourceUniqueID() const = 0;
-    [[nodiscard]] virtual bool canFreeze() const = 0;
     [[nodiscard]] virtual AABB getLiquidAABB(MaterialType) const = 0;
     virtual void handleInsidePortal(BlockPos const &) = 0;
     [[nodiscard]] virtual bool canChangeDimensionsUsingPortal() const = 0;

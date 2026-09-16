@@ -14,6 +14,8 @@
 
 #pragma once
 
+#include <cstddef>
+#include <functional>
 #include <unordered_map>
 
 #include "bedrock/bedrock.h"
@@ -59,4 +61,12 @@ protected:
     Bedrock::PubSub::Subscription on_save_level_data_;
     std::unordered_map<ActorUniqueID, std::unique_ptr<MapItemSavedData>> map_data_;
     Bedrock::NonOwnerPointer<PacketSender> packet_sender_;
+    // 1.26.51 appended members Endstone reads none of; only their size matters, because
+    // ServerMapDataManager's second base sits right after them.
+#ifdef _WIN32
+    std::byte unknown_200_[208];
+#elif __linux__
+    std::byte unknown_160_[120];
+#endif
 };
+BEDROCK_STATIC_ASSERT_SIZE(MapDataManager, 408, 288);

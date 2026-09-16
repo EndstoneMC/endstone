@@ -158,9 +158,6 @@ public:
     [[nodiscard]] virtual bool hasCustomName() const;
     virtual void readAdditionalSaveData(CompoundTag const &tag);
     virtual void addAdditionalSaveData(CompoundTag &tag);
-    virtual void createTransactionContext(
-        std::function<void(Container &, int, const ItemStack &, const ItemStack &)> callback,
-        std::function<void()> execute);
     virtual void initializeContainerContents(BlockSource &region);
     [[nodiscard]] virtual bool isEmpty() const;
     [[nodiscard]] virtual bool isSlotDisabled(int) const;

@@ -24,6 +24,8 @@ struct IPlayerData {
     [[nodiscard]] virtual bool isAbilityEnabled(AbilitiesIndex) const = 0;
     [[nodiscard]] virtual bool isTeacher() const = 0;
     [[nodiscard]] virtual bool isOperator() const = 0;
+    // TODO(fixme): check the name - 1.26.51 added this alongside isTeacher and isOperator
+    [[nodiscard]] virtual bool unknown4() const = 0;
 };
 
 class PlayerData : public IPlayerData {

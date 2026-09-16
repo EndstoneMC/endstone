@@ -49,5 +49,6 @@ protected:
     const BlockActorType type_;                                                         // +20
     std::unique_ptr<DynamicPropertiesBlockActorComponent> dynamic_properties_;          // +24
     std::unique_ptr<RandomizableContainerBlockActorComponent> randomizable_container_;  // +32
+    std::unique_ptr<ContainerBlockActorComponent> container_;                           // +40
 };
-BEDROCK_STATIC_ASSERT_SIZE(BlockActor, 40, 40);
+BEDROCK_STATIC_ASSERT_SIZE(BlockActor, 48, 48);

@@ -14,6 +14,8 @@
 
 #pragma once
 
+#include <cstddef>
+
 #include "bedrock/world/effect/effect_duration.h"
 #include "bedrock/world/effect/mob_effect.h"
 
@@ -32,5 +34,9 @@ private:
     bool is_counter_paused_this_tick_;
     bool ambient_;
     bool effect_visible_;
+    // TODO(fixme): check the names - eight bytes BDS keeps ahead of the factor data. Endstone reads
+    // none of them, and libc++ hides them in the padding that aligns the factor data to 16, so only
+    // the MSVC layout is short without them.
+    std::byte unknown_40_[8];
     MobEffect::FactorCalculationData factor_calculation_data_;
 };

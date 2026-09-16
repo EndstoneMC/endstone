@@ -14,16 +14,11 @@
 
 #pragma once
 
-#include "bedrock/network/packet.h"
-
-struct RequestNetworkSettingsPacketPayload {
-    int client_network_version;
-};
-BEDROCK_STATIC_ASSERT_SIZE(RequestNetworkSettingsPacketPayload, 4, 4);
-
-class RequestNetworkSettingsPacket : public Packet {
+class IPlayerConnectionConnector {
 public:
-    RequestNetworkSettingsPacketPayload payload;  // +48 Windows, +44 Linux
-    SerializationMode serialization_mode;         // +52 Windows, +48 Linux
+    virtual ~IPlayerConnectionConnector() = default;
+    // TODO(fixme): check the names
+    virtual void unknown2() = 0;
+    virtual void unknown3() = 0;
 };
-BEDROCK_STATIC_ASSERT_SIZE(RequestNetworkSettingsPacket, 56, 56);
+static_assert(sizeof(IPlayerConnectionConnector) == 8);

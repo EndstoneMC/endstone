@@ -127,6 +127,8 @@ public:
     virtual void deleteContainerManager() = 0;
     virtual bool isActorRelevant(Actor const &) = 0;
     [[nodiscard]] virtual bool isTeacher() const = 0;
+    // TODO(fixme): check the name
+    virtual void unknown224() = 0;
     virtual void onSuspension() = 0;
     virtual void onLinkedSlotsChanged() = 0;
     virtual void sendInventoryTransaction(InventoryTransaction const &) const = 0;

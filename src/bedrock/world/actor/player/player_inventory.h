@@ -26,8 +26,8 @@ public:
     ~PlayerInventory() override = 0;
     void containerSizeChanged(int) override = 0;
     void containerContentChanged(int) override = 0;
-    virtual void createTransactionContext(std::function<void(Container &, int, const ItemStack &, const ItemStack &)>,
-                                          std::function<void()>);
+    // TODO(fixme): check the name
+    virtual void unknown3() = 0;
 
     [[nodiscard]] int getHotbarSize() const;
     [[nodiscard]] PlayerInventorySlotData getSelectedSlot() const;

@@ -14,7 +14,9 @@
 
 #pragma once
 
-enum class HandSlot : int {
+#include <cstdint>
+
+enum class HandSlot : std::uint8_t {
     Mainhand = 0,
     Offhand = 1,
     _count = 2,

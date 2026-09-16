@@ -7,6 +7,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+### Added
+
+- Added support for BDS version 1.26.51. Players must be on 1.26.51 to join; 1.26.44 clients are no longer accepted. Bedrock now treats NetherNet as its only supported transport: a server left on `transport=raknet` logs a startup error saying players will not be able to connect, so check that `transport` is set to `nethernet` in `server.properties` before upgrading.
+
 ### Fixed
 
 - Fixed `Player.get_address()` returning an empty address for players connected over NetherNet, so IP bans, `PacketSendEvent` and `PacketReceiveEvent` now see the real remote address from the first packet onwards.
@@ -14,6 +18,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Fixed `PlayerPickupArrowEvent` never firing. `Actor.has_type()` compared the whole actor type instead of testing the category bits, so every category query returned false and neither an arrow nor a trident matched `AbstractArrow`.
 - Fixed a malformed `banned-players.json` or `banned-ips.json` leaving the server running with an empty ban list and no explanation. The reason is now logged.
 - Fixed `ItemMeta` reaching Python as the base type instead of `WritableBookMeta`, `BookMeta` or `CrossbowMeta`.
+- Fixed the server crashing with `bad_variant_access` on Windows as soon as a player joined and an actor gameplay event fired. `MobEffectInstance` was eight bytes short in the Windows layout, so the event's discriminant was read from the wrong offset. Linux was unaffected.
+- Fixed two handles to the same scoreboard objective never comparing equal, so `objective in scoreboard.objectives` was always false and removing an objective from a list of objectives never found it.
 
 ### Security
 

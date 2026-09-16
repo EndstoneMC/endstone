@@ -96,12 +96,11 @@ void bind_registry(py::module &m, Args &&...args)
             [](const Registry<T> &self) {
                 py::list items;
                 self.forEach([&items](const T &elem) {
-                    items.append(elem);
+                    items.append(py::cast(elem, py::return_value_policy::reference));
                     return true;  // continue iteration
                 });
-                return items;
-            },
-            py::return_value_policy::reference_internal)
+                return py::iter(items);
+            })
         .def(
             "__contains__", [](const Registry<T> &self, const Identifier<T> id) { return self.get(id) != nullptr; },
             py::arg("id"));

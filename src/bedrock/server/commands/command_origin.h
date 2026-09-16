@@ -55,29 +55,31 @@ public:
     [[nodiscard]] virtual std::unique_ptr<CommandOrigin> clone() const = 0;                      // 10
     [[nodiscard]] virtual std::optional<BlockPos> getCursorHitBlockPos() const = 0;              // 11
     [[nodiscard]] virtual std::optional<Vec3> getCursorHitPos() const = 0;                       // 12
-    [[nodiscard]] virtual bool hasChatPerms() const = 0;                                         // 13
-    [[nodiscard]] virtual bool hasTellPerms() const = 0;                                         // 14
-    [[nodiscard]] virtual bool canUseAbility(AbilitiesIndex ability) const = 0;                  // 15
-    [[nodiscard]] virtual bool isWorldBuilder() const = 0;                                       // 16
-    [[nodiscard]] virtual bool canUseCommandsWithoutCheatsEnabled() const = 0;                   // 17
-    [[nodiscard]] virtual bool canChangePermissionsOfPlayer(const Player &) const = 0;           // 18
-    [[nodiscard]] virtual bool isSelectorExpansionAllowed() const = 0;                           // 19
-    [[nodiscard]] virtual const NetworkIdentifier &getSourceId() const = 0;                      // 20
-    [[nodiscard]] virtual SubClientId getSourceSubId() const = 0;                                // 21
-    [[nodiscard]] virtual const CommandOrigin &getOutputReceiver() const = 0;                    // 22
-    [[nodiscard]] virtual CommandOriginIdentity getIdentity() const = 0;                         // 23
-    [[nodiscard]] virtual CommandOriginType getOriginType() const = 0;                           // 24
-    [[nodiscard]] virtual CommandOriginData toCommandOriginData() const = 0;                     // 25
-    [[nodiscard]] virtual const mce::UUID &getUUID() const = 0;                                  // 26
-    virtual void handleCommandOutputCallback(int, std::string &&) const = 0;                     // 27
-    virtual void updateValues() = 0;                                                             // 28
-    [[nodiscard]] virtual Vec3 getExecutePosition(int, const CommandPositionFloat &) const = 0;  // 29
-    [[nodiscard]] virtual CompoundTag serialize() const = 0;                                     // 30
-    [[nodiscard]] virtual bool isValid() const = 0;                                              // 31
-    [[nodiscard]] virtual bool requiresValidLevel() const = 0;                                   // 32
+    // TODO(fixme): check the name
+    virtual void unknown13() = 0;                                                                // 13
+    [[nodiscard]] virtual bool hasChatPerms() const = 0;                                         // 14
+    [[nodiscard]] virtual bool hasTellPerms() const = 0;                                         // 15
+    [[nodiscard]] virtual bool canUseAbility(AbilitiesIndex ability) const = 0;                  // 16
+    [[nodiscard]] virtual bool isWorldBuilder() const = 0;                                       // 17
+    [[nodiscard]] virtual bool canUseCommandsWithoutCheatsEnabled() const = 0;                   // 18
+    [[nodiscard]] virtual bool canChangePermissionsOfPlayer(const Player &) const = 0;           // 19
+    [[nodiscard]] virtual bool isSelectorExpansionAllowed() const = 0;                           // 20
+    [[nodiscard]] virtual const NetworkIdentifier &getSourceId() const = 0;                      // 21
+    [[nodiscard]] virtual SubClientId getSourceSubId() const = 0;                                // 22
+    [[nodiscard]] virtual const CommandOrigin &getOutputReceiver() const = 0;                    // 23
+    [[nodiscard]] virtual CommandOriginIdentity getIdentity() const = 0;                         // 24
+    [[nodiscard]] virtual CommandOriginType getOriginType() const = 0;                           // 25
+    [[nodiscard]] virtual CommandOriginData toCommandOriginData() const = 0;                     // 26
+    [[nodiscard]] virtual const mce::UUID &getUUID() const = 0;                                  // 27
+    virtual void handleCommandOutputCallback(int, std::string &&) const = 0;                     // 28
+    virtual void updateValues() = 0;                                                             // 29
+    [[nodiscard]] virtual Vec3 getExecutePosition(int, const CommandPositionFloat &) const = 0;  // 30
+    [[nodiscard]] virtual CompoundTag serialize() const = 0;                                     // 31
+    [[nodiscard]] virtual bool isValid() const = 0;                                              // 32
+    [[nodiscard]] virtual bool requiresValidLevel() const = 0;                                   // 33
 
 protected:
-    virtual void _setUUID(const mce::UUID &uuid) = 0;  // 33
+    virtual void _setUUID(const mce::UUID &uuid) = 0;  // 34
 
 public:
     [[nodiscard]] std::shared_ptr<endstone::CommandSender> getEndstoneSender(CommandOutput &output) const;  // Endstone

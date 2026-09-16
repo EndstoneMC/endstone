@@ -458,6 +458,8 @@ public:
     virtual GameRules &getGameRules() = 0;
     [[nodiscard]] virtual bool hasStartWithMapEnabled() const = 0;
     [[nodiscard]] virtual bool isEditorWorld() const = 0;
+    // TODO(fixme): check the name
+    virtual void unknown347() = 0;
     [[nodiscard]] virtual bool getAllowAnonymousBlockDropsInEditorWorlds() const = 0;
     [[nodiscard]] virtual bool isHardcore() const = 0;
     virtual Abilities &getDefaultAbilities() = 0;
