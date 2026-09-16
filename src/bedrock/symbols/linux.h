@@ -11,7 +11,7 @@
 
 namespace endstone::runtime {
 
-static constexpr std::array<std::pair<std::string_view, std::size_t>, 63> symbols = {{
+static constexpr std::array<std::pair<std::string_view, std::size_t>, 64> symbols = {{
     {"BlockState::StateListNode::mHead", 257927632},
     {"Enchant::mEnchants", 257764288},
     {"getI18n::result", 256810296},
@@ -80,6 +80,8 @@ static constexpr std::array<std::pair<std::string_view, std::size_t>, 63> symbol
     {"_ZN16MinecraftPackets12createPacketE18MinecraftPacketIds", 144682608},
     // Mob
     {"_ZN3Mob9knockbackEP5ActorfffRK19KnockbackParameters", 199752288},
+    // NetherNet::LanThreadManager
+    {"_ZN9NetherNet16LanThreadManager24SendLanBroadcastResponseERKN6webrtc13SocketAddressENS_9NetworkIDENSt3__112basic_stringIcNS6_11char_traitsIcEENS6_9allocatorIcEEEE", 222749872},
     // NetherNet::SimpleNetworkInterfaceImpl
     {"_ZN9NetherNet26SimpleNetworkInterfaceImpl27ReceiveFromSignalingChannelENS_9NetworkIDENSt3__117basic_string_viewIcNS2_11char_traitsIcEEEENS_18SignalingChannelIdE", 222785168},
     // NetworkSystem

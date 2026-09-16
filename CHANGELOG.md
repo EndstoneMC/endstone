@@ -14,6 +14,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Fixed
 
 - Fixed `Player.get_address()` returning an empty address for players connected over NetherNet, so IP bans, `PacketSendEvent` and `PacketReceiveEvent` now see the real remote address from the first packet onwards.
+- Fixed `ServerListPingEvent` never firing when the server runs on NetherNet. It now fires when a client on the local network looks for LAN worlds, and changes to the MOTD, level name, version, player counts and game mode are shown on the client's LAN world card.
 - Fixed `Server.port` and `Server.port_v6` returning 0 when the server runs on NetherNet. They now return the port clients connect to, which is `server-port` from `server.properties`.
 - Fixed a `MapView` reading freed memory after Bedrock recreated or reloaded its map, which made `MapInitializeEvent` report an invalid scale such as 255 and could crash the server.
 - Fixed `Server.port_v6` returning 65535 on RakNet when IPv6 is disabled in `endstone.toml`. It now returns 0 when the server is not listening on IPv6.

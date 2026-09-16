@@ -25,6 +25,7 @@ add_library(bedrock STATIC
         crypto/encoding/base64.cpp
         diagnostics/log_fmt.cpp
         deps/json/value.cpp
+        deps/nethernet/network_id.cpp
         entity/gamerefs_entity/entity_context.cpp
         entity/gamerefs_entity/entity_registry.cpp
         entity/gamerefs_entity/stack_result_storage_entity.cpp

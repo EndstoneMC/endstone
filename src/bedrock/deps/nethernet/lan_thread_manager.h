@@ -15,31 +15,24 @@
 #pragma once
 
 #include <string>
-#include <variant>
 
-#include "bedrock/platform/uuid.h"
+#include "bedrock/bedrock.h"
+#include "bedrock/deps/nethernet/network_id.h"
+#include "bedrock/deps/webrtc/socket_address.h"
 
 namespace NetherNet {
-namespace P2P {
-struct NetworkID {
-    std::uint64_t value;
-    std::strong_ordering operator<=>(const NetworkID &) const = default;
-};
-static_assert(sizeof(NetworkID) == 8);
-}  // namespace P2P
 
-namespace Realms {
-struct NetworkID {
-    mce::UUID value;
-    std::strong_ordering operator<=>(const NetworkID &other) const = default;
+class ILanDiscovery {
+public:
+    ~ILanDiscovery();
+    virtual void SendLanBroadcastResponse(const webrtc::SocketAddress &destination, NetworkID from,
+                                          std::string data) = 0;
 };
-static_assert(sizeof(NetworkID) == 16);
 
-}  // namespace Realms
-
-struct NetworkID : private std::variant<std::monostate, P2P::NetworkID, Realms::NetworkID> {
-    std::strong_ordering operator<=>(const NetworkID &) const = default;
-    [[nodiscard]] std::string toString() const;
+class LanThreadManager : public ILanDiscovery {
+public:
+    ENDSTONE_HOOK void SendLanBroadcastResponse(const webrtc::SocketAddress &destination, NetworkID from,
+                                                std::string data) override;
 };
-static_assert(sizeof(NetworkID) == 24);
+
 }  // namespace NetherNet

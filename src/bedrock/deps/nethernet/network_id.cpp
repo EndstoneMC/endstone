@@ -12,19 +12,21 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-#pragma once
+#include "bedrock/deps/nethernet/network_id.h"
 
-#include "bedrock/deps/webrtc/candidate.h"
-#include "bedrock/network/network_identifier.h"
-#include "endstone/util/socket_address.h"
+namespace NetherNet {
 
-namespace endstone::core {
+std::string NetworkID::toString() const
+{
+    using Base = std::variant<std::monostate, P2P::NetworkID, Realms::NetworkID>;
+    const auto &id = static_cast<const Base &>(*this);
+    if (const auto *p2p = std::get_if<P2P::NetworkID>(&id)) {
+        return std::to_string(p2p->value);
+    }
+    if (const auto *realms = std::get_if<Realms::NetworkID>(&id)) {
+        return realms->value.asString();
+    }
+    return "";
+}
 
-class EndstoneSocketAddress {
-public:
-    static SocketAddress fromSystemAddress(const RakNet::SystemAddress &network_id);
-    static SocketAddress fromNetworkIdentifier(const NetworkIdentifier &network_id);
-    static SocketAddress fromWebRtcCandidate(const webrtc::Candidate &candidate);
-    static SocketAddress fromWebRtcSocketAddress(const webrtc::SocketAddress &address);
-};
-}  // namespace endstone::core
+}  // namespace NetherNet
