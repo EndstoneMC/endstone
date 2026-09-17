@@ -20,6 +20,7 @@
 
 #include "bedrock/network/packet.h"
 #include "bedrock/network/packet/boss_event_packet.h"
+#include "bedrock/world/level/level.h"
 #include "endstone/check.h"
 #include "endstone/core/player.h"
 #include "endstone/core/server.h"
@@ -40,6 +41,7 @@ BossBarRegistry &getBossBarRegistry()
 }
 
 struct BossBarState {
+    ActorUniqueID boss_id;
     std::string title;
     float progress;
     BarColor color;
@@ -50,7 +52,7 @@ void sendBossEvent(const ::Player &handle, BossEventUpdateType event_type, const
 {
     const auto packet = MinecraftPackets::createPacket(MinecraftPacketIds::BossEvent);
     const auto pk = std::static_pointer_cast<BossEventPacket>(packet);
-    pk->payload.boss_id = handle.getOrCreateUniqueID();
+    pk->payload.boss_id = state.boss_id;
     pk->payload.event_type = event_type;
     pk->payload.name = state.title;
     pk->payload.health_percent = state.progress;
@@ -216,7 +218,7 @@ void EndstoneBossBar::resend(Player &player)
         std::lock_guard lock(registry.mutex);
         for (const auto *bar : registry.bars) {
             if (bar->visible_ && bar->players_.contains(uuid)) {
-                states.push_back({bar->title_, bar->progress_, bar->color_, bar->style_});
+                states.push_back({bar->boss_id_, bar->title_, bar->progress_, bar->color_, bar->style_});
             }
         }
     }
@@ -228,7 +230,11 @@ void EndstoneBossBar::resend(Player &player)
 
 void EndstoneBossBar::send(BossEventUpdateType event_type, Player &player)
 {
-    sendBossEvent(static_cast<EndstonePlayer &>(player).getHandle(), event_type, {title_, progress_, color_, style_});
+    auto &handle = static_cast<EndstonePlayer &>(player).getHandle();
+    if (!boss_id_.isValid()) {
+        boss_id_ = handle.getLevel().getNewUniqueID();
+    }
+    sendBossEvent(handle, event_type, {boss_id_, title_, progress_, color_, style_});
 }
 
 void EndstoneBossBar::broadcast(BossEventUpdateType event_type)
