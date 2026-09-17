@@ -83,20 +83,20 @@ const HashedString YellowPoplarLeaves = "minecraft:yellow_poplar_leaves";
 
 namespace VanillaBlockTypeGroups {
 const std::vector<std::reference_wrapper<const HashedString>> DecayingBlocks = {
-    VanillaBlockTypeIds::OakLeaves,
-    VanillaBlockTypeIds::SpruceLeaves,
-    VanillaBlockTypeIds::BirchLeaves,
-    VanillaBlockTypeIds::JungleLeaves,
     VanillaBlockTypeIds::AcaciaLeaves,
-    VanillaBlockTypeIds::DarkOakLeaves,
-    VanillaBlockTypeIds::MangroveLeaves,
-    VanillaBlockTypeIds::CherryLeaves,
-    VanillaBlockTypeIds::PaleOakLeaves,
     VanillaBlockTypeIds::AzaleaLeaves,
     VanillaBlockTypeIds::AzaleaLeavesFlowered,
+    VanillaBlockTypeIds::BirchLeaves,
+    VanillaBlockTypeIds::CherryLeaves,
+    VanillaBlockTypeIds::DarkOakLeaves,
+    VanillaBlockTypeIds::JungleLeaves,
+    VanillaBlockTypeIds::MangroveLeaves,
+    VanillaBlockTypeIds::OakLeaves,
+    VanillaBlockTypeIds::PaleOakLeaves,
     VanillaBlockTypeIds::OrangePoplarLeaves,
     VanillaBlockTypeIds::RedPoplarLeaves,
     VanillaBlockTypeIds::YellowPoplarLeaves,
+    VanillaBlockTypeIds::SpruceLeaves,
 };
 const std::vector<std::reference_wrapper<const HashedString>> LogAndStrippedLogBlockIds = {
     VanillaBlockTypeIds::OakLog,      VanillaBlockTypeIds::StrippedOakLog,
