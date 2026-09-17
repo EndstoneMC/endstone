@@ -15,29 +15,44 @@
 #include "bedrock/world/level/block/vanilla_block_type_ids.h"
 
 namespace VanillaBlockTypeIds {
+const HashedString AcaciaLeaves = "minecraft:acacia_leaves";
 const HashedString AcaciaLog = "minecraft:acacia_log";
 const HashedString AcaciaWood = "minecraft:acacia_wood";
+const HashedString AzaleaLeaves = "minecraft:azalea_leaves";
+const HashedString AzaleaLeavesFlowered = "minecraft:azalea_leaves_flowered";
 const HashedString Bed = "minecraft:bed";
 const HashedString BeeNest = "minecraft:bee_nest";
 const HashedString Beehive = "minecraft:beehive";
+const HashedString BirchLeaves = "minecraft:birch_leaves";
 const HashedString BirchLog = "minecraft:birch_log";
 const HashedString BirchWood = "minecraft:birch_wood";
 const HashedString CampFire = "minecraft:campfire";
+const HashedString CherryLeaves = "minecraft:cherry_leaves";
 const HashedString CherryLog = "minecraft:cherry_log";
 const HashedString CherryWood = "minecraft:cherry_wood";
+const HashedString DarkOakLeaves = "minecraft:dark_oak_leaves";
 const HashedString DarkOakLog = "minecraft:dark_oak_log";
 const HashedString DarkOakWood = "minecraft:dark_oak_wood";
 const HashedString EndPortal = "minecraft:end_portal";
 const HashedString EndPortalFrame = "minecraft:end_portal_frame";
+const HashedString JungleLeaves = "minecraft:jungle_leaves";
 const HashedString JungleLog = "minecraft:jungle_log";
 const HashedString JungleWood = "minecraft:jungle_wood";
+const HashedString MangroveLeaves = "minecraft:mangrove_leaves";
 const HashedString MangroveLog = "minecraft:mangrove_log";
 const HashedString MangroveWood = "minecraft:mangrove_wood";
+const HashedString OakLeaves = "minecraft:oak_leaves";
 const HashedString OakLog = "minecraft:oak_log";
 const HashedString OakWood = "minecraft:oak_wood";
+const HashedString OrangePoplarLeaves = "minecraft:orange_poplar_leaves";
+const HashedString PaleOakLeaves = "minecraft:pale_oak_leaves";
 const HashedString PaleOakLog = "minecraft:pale_oak_log";
 const HashedString PaleOakWood = "minecraft:pale_oak_wood";
+const HashedString PoplarLog = "minecraft:poplar_log";
+const HashedString PoplarWood = "minecraft:poplar_wood";
+const HashedString RedPoplarLeaves = "minecraft:red_poplar_leaves";
 const HashedString SoulCampfire = "minecraft:soul_campfire";
+const HashedString SpruceLeaves = "minecraft:spruce_leaves";
 const HashedString SpruceLog = "minecraft:spruce_log";
 const HashedString SpruceWood = "minecraft:spruce_wood";
 const HashedString StrippedAcaciaLog = "minecraft:stripped_acacia_log";
@@ -56,14 +71,33 @@ const HashedString StrippedOakLog = "minecraft:stripped_oak_log";
 const HashedString StrippedOakWood = "minecraft:stripped_oak_wood";
 const HashedString StrippedPaleOakLog = "minecraft:stripped_pale_oak_log";
 const HashedString StrippedPaleOakWood = "minecraft:stripped_pale_oak_wood";
+const HashedString StrippedPoplarLog = "minecraft:stripped_poplar_log";
+const HashedString StrippedPoplarWood = "minecraft:stripped_poplar_wood";
 const HashedString StrippedSpruceLog = "minecraft:stripped_spruce_log";
 const HashedString StrippedSpruceWood = "minecraft:stripped_spruce_wood";
 const HashedString Tnt = "minecraft:tnt";
 const HashedString UnderwaterTnt = "minecraft:underwater_tnt";
 const HashedString WitherRose = "minecraft:wither_rose";
+const HashedString YellowPoplarLeaves = "minecraft:yellow_poplar_leaves";
 }  // namespace VanillaBlockTypeIds
 
 namespace VanillaBlockTypeGroups {
+const std::vector<std::reference_wrapper<const HashedString>> DecayingBlockIds = {
+    VanillaBlockTypeIds::OakLeaves,
+    VanillaBlockTypeIds::SpruceLeaves,
+    VanillaBlockTypeIds::BirchLeaves,
+    VanillaBlockTypeIds::JungleLeaves,
+    VanillaBlockTypeIds::AcaciaLeaves,
+    VanillaBlockTypeIds::DarkOakLeaves,
+    VanillaBlockTypeIds::MangroveLeaves,
+    VanillaBlockTypeIds::CherryLeaves,
+    VanillaBlockTypeIds::PaleOakLeaves,
+    VanillaBlockTypeIds::AzaleaLeaves,
+    VanillaBlockTypeIds::AzaleaLeavesFlowered,
+    VanillaBlockTypeIds::OrangePoplarLeaves,
+    VanillaBlockTypeIds::RedPoplarLeaves,
+    VanillaBlockTypeIds::YellowPoplarLeaves,
+};
 const std::vector<std::reference_wrapper<const HashedString>> LogAndStrippedLogBlockIds = {
     VanillaBlockTypeIds::OakLog,      VanillaBlockTypeIds::StrippedOakLog,
     VanillaBlockTypeIds::SpruceLog,   VanillaBlockTypeIds::StrippedSpruceLog,
@@ -74,6 +108,7 @@ const std::vector<std::reference_wrapper<const HashedString>> LogAndStrippedLogB
     VanillaBlockTypeIds::MangroveLog, VanillaBlockTypeIds::StrippedMangroveLog,
     VanillaBlockTypeIds::CherryLog,   VanillaBlockTypeIds::StrippedCherryLog,
     VanillaBlockTypeIds::PaleOakLog,  VanillaBlockTypeIds::StrippedPaleOakLog,
+    VanillaBlockTypeIds::PoplarLog,   VanillaBlockTypeIds::StrippedPoplarLog,
 };
 const std::vector<std::reference_wrapper<const HashedString>> TntIds = {VanillaBlockTypeIds::Tnt,
                                                                         VanillaBlockTypeIds::UnderwaterTnt};
@@ -87,5 +122,6 @@ const std::vector<std::reference_wrapper<const HashedString>> WoodAndStrippedWoo
     VanillaBlockTypeIds::MangroveWood, VanillaBlockTypeIds::StrippedMangroveWood,
     VanillaBlockTypeIds::CherryWood,   VanillaBlockTypeIds::StrippedCherryWood,
     VanillaBlockTypeIds::PaleOakWood,  VanillaBlockTypeIds::StrippedPaleOakWood,
+    VanillaBlockTypeIds::PoplarWood,   VanillaBlockTypeIds::StrippedPoplarWood,
 };
 }  // namespace VanillaBlockTypeGroups
