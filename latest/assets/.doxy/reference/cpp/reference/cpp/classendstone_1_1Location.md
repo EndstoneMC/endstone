@@ -71,12 +71,17 @@ _Represents a 3-dimensional location in a dimension within a level._
 |  [**constexpr**](classendstone_1_1Identifier.md) [**float**](classendstone_1_1Identifier.md) | [**lengthSquared**](#function-lengthsquared) () const<br>_Gets the magnitude of the location squared._  |
 |   | [**operator Vector**](#function-operator-vector) () noexcept const<br> |
 |  [**bool**](classendstone_1_1Identifier.md) | [**operator!=**](#function-operator) ([**const**](classendstone_1_1Identifier.md) [**Location**](classendstone_1_1Location.md) & other) noexcept const<br> |
-|  [**Location**](classendstone_1_1Location.md) & | [**operator\*=**](#function-operator_1) ([**T**](classendstone_1_1Identifier.md) scalar) <br> |
-|  [**Location**](classendstone_1_1Location.md) & | [**operator+=**](#function-operator_2) ([**const**](classendstone_1_1Identifier.md) [**Location**](classendstone_1_1Location.md) & other) <br> |
-|  [**Location**](classendstone_1_1Location.md) & | [**operator+=**](#function-operator_3) ([**const**](classendstone_1_1Identifier.md) [**Vector**](classendstone_1_1Vector.md) & other) <br> |
-|  [**Location**](classendstone_1_1Location.md) & | [**operator-=**](#function-operator-) ([**const**](classendstone_1_1Identifier.md) [**Location**](classendstone_1_1Location.md) & other) <br> |
-|  [**Location**](classendstone_1_1Location.md) & | [**operator-=**](#function-operator-_1) ([**const**](classendstone_1_1Identifier.md) [**Vector**](classendstone_1_1Vector.md) & other) <br> |
-|  [**bool**](classendstone_1_1Identifier.md) | [**operator==**](#function-operator_4) ([**const**](classendstone_1_1Identifier.md) [**Location**](classendstone_1_1Location.md) & other) noexcept const<br> |
+|  [**Location**](classendstone_1_1Location.md) | [**operator\***](#function-operator_1) ([**T**](classendstone_1_1Identifier.md) scalar) const<br> |
+|  [**Location**](classendstone_1_1Location.md) & | [**operator\*=**](#function-operator_2) ([**T**](classendstone_1_1Identifier.md) scalar) <br> |
+|  [**Location**](classendstone_1_1Location.md) | [**operator+**](#function-operator_3) ([**const**](classendstone_1_1Identifier.md) [**Location**](classendstone_1_1Location.md) & other) const<br> |
+|  [**Location**](classendstone_1_1Location.md) | [**operator+**](#function-operator_4) ([**const**](classendstone_1_1Identifier.md) [**Vector**](classendstone_1_1Vector.md) & other) const<br> |
+|  [**Location**](classendstone_1_1Location.md) & | [**operator+=**](#function-operator_5) ([**const**](classendstone_1_1Identifier.md) [**Location**](classendstone_1_1Location.md) & other) <br> |
+|  [**Location**](classendstone_1_1Location.md) & | [**operator+=**](#function-operator_6) ([**const**](classendstone_1_1Identifier.md) [**Vector**](classendstone_1_1Vector.md) & other) <br> |
+|  [**Location**](classendstone_1_1Location.md) | [**operator-**](#function-operator-) ([**const**](classendstone_1_1Identifier.md) [**Location**](classendstone_1_1Location.md) & other) const<br> |
+|  [**Location**](classendstone_1_1Location.md) | [**operator-**](#function-operator-_1) ([**const**](classendstone_1_1Identifier.md) [**Vector**](classendstone_1_1Vector.md) & other) const<br> |
+|  [**Location**](classendstone_1_1Location.md) & | [**operator-=**](#function-operator-_2) ([**const**](classendstone_1_1Identifier.md) [**Location**](classendstone_1_1Location.md) & other) <br> |
+|  [**Location**](classendstone_1_1Location.md) & | [**operator-=**](#function-operator-_3) ([**const**](classendstone_1_1Identifier.md) [**Vector**](classendstone_1_1Vector.md) & other) <br> |
+|  [**bool**](classendstone_1_1Identifier.md) | [**operator==**](#function-operator_7) ([**const**](classendstone_1_1Identifier.md) [**Location**](classendstone_1_1Location.md) & other) noexcept const<br> |
 |  [**void**](classendstone_1_1Identifier.md) | [**setDimension**](#function-setdimension) ([**const**](classendstone_1_1Identifier.md) [**Nullable**](classendstone_1_1Nullable.md)&lt; [**Dimension**](classendstone_1_1Dimension.md) &gt; & dimension) <br>_Sets the dimension that this location resides in._  |
 |  [**Location**](classendstone_1_1Location.md) & | [**setDirection**](#function-setdirection) ([**const**](classendstone_1_1Identifier.md) [**Vector**](classendstone_1_1Vector.md) & vector) <br>_Sets the yaw and pitch to point in the direction of the vector._  |
 |  [**void**](classendstone_1_1Identifier.md) | [**setPitch**](#function-setpitch) ([**float**](classendstone_1_1Identifier.md) pitch) <br>_Sets the pitch of this location, measured in degrees._  |
@@ -607,6 +612,22 @@ inline bool endstone::Location::operator!= (
 
 
 
+### function operator\* 
+
+```C++
+template<std::convertible_to< float > T>
+inline Location endstone::Location::operator* (
+    T scalar
+) const
+```
+
+
+
+
+<hr>
+
+
+
 ### function operator\*= 
 
 ```C++
@@ -614,6 +635,36 @@ template<std::convertible_to< float > T>
 inline Location & endstone::Location::operator*= (
     T scalar
 ) 
+```
+
+
+
+
+<hr>
+
+
+
+### function operator+ 
+
+```C++
+inline Location endstone::Location::operator+ (
+    const  Location & other
+) const
+```
+
+
+
+
+<hr>
+
+
+
+### function operator+ 
+
+```C++
+inline Location endstone::Location::operator+ (
+    const  Vector & other
+) const
 ```
 
 
@@ -644,6 +695,36 @@ inline Location & endstone::Location::operator+= (
 inline Location & endstone::Location::operator+= (
     const  Vector & other
 ) 
+```
+
+
+
+
+<hr>
+
+
+
+### function operator- 
+
+```C++
+inline Location endstone::Location::operator- (
+    const  Location & other
+) const
+```
+
+
+
+
+<hr>
+
+
+
+### function operator- 
+
+```C++
+inline Location endstone::Location::operator- (
+    const  Vector & other
+) const
 ```
 
 
