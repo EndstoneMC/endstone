@@ -14,8 +14,6 @@
 
 #pragma once
 
-#include <cstddef>
-
 #include "bedrock/core/math/vec3.h"
 #include "bedrock/core/utility/non_owner_pointer.h"
 #include "bedrock/entity/gamerefs_entity/gamerefs_entity.h"
@@ -29,6 +27,7 @@
 #include "bedrock/world/level/storage/game_rules.h"
 
 class Level;
+class WorldClock;
 
 struct LevelAddedActorEvent {
     gsl::not_null<Bedrock::NonOwnerPointer<Level>> level;  // +0
@@ -67,10 +66,9 @@ struct LevelTickingAreaFinishedLoadingEvent {
 struct LevelStartLeaveGameEvent {
     gsl::not_null<Bedrock::NonOwnerPointer<Level>> level;
 };
-// TODO(fixme): check the name - 1.26.51 added this alternative to MutableLevelGameplayEvent.
-// Endstone reads none of it, but it drives the variant's size, so only the size has to be right.
-struct UnknownLevelGameplayEvent0 {
-    std::byte unknown_[32];
+struct WorldClockRestartEvent {
+    const Bedrock::NotNullNonOwnerPtr<WorldClock> clock;
+    int new_time;
 };
 
 template <typename Return>
@@ -87,4 +85,4 @@ struct MutableLevelGameplayEvent;
 
 template <>
 struct MutableLevelGameplayEvent<CoordinatorResult>
-    : MutableEventVariant<LevelWeatherChangedEvent, UnknownLevelGameplayEvent0> {};
+    : MutableEventVariant<LevelWeatherChangedEvent, WorldClockRestartEvent> {};

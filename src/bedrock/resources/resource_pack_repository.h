@@ -40,7 +40,8 @@ public:
                            const Bedrock::NotNullNonOwnerPtr<IContentAccessibilityProvider> &content_accessibility,
                            const Bedrock::NotNullNonOwnerPtr<Core::FilePathManager> &path_manager,
                            Bedrock::NonOwnerPointer<PackCommand::IPackCommandPipeline> commands,
-                           PackSourceFactory &pack_source_factory, bool init_async,
+                           PackSourceFactory &pack_source_factory,
+                           Bedrock::NonOwnerPointer<IMinecraftEventing> minecraft_eventing, bool init_async,
                            std::unique_ptr<IRepositoryFactory> factory);
 
 private:
@@ -56,9 +57,7 @@ private:
     std::vector<PackIdVersion> service_packs_;
     PackManifestFactory &manifest_factory_;
     Bedrock::NotNullNonOwnerPtr<IContentAccessibilityProvider> content_accessibility_;
-    // TODO(fixme): check the name - 1.26.51 added this here. The destructor tears it down exactly like
-    // content_accessibility_ above: a shared control block released atomically, then a trailing pointer.
-    Bedrock::NonOwnerPointer<void *> unknown_176_;
+    Bedrock::NonOwnerPointer<IMinecraftEventing> minecraft_eventing_;
     Core::HeapPathBuffer current_world_path_;
     Core::HeapPathBuffer current_premium_world_template_path_;
     ContentKeyMap temp_cache_content_keys_;

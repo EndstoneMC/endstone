@@ -22,13 +22,13 @@ class SpinLockImpl {
     static const uint32_t LOOP_LIMIT_BEFORE_YIELD = 3000;
 
 public:
-    SpinLockImpl() : no_thread_id_(thread_hasher_(std::thread::id())), owner_thread_(no_thread_id_) {}
+    SpinLockImpl() : no_thread_id_(std::hash<std::thread::id>{}(std::thread::id())), owner_thread_(no_thread_id_) {}
 
     ~SpinLockImpl() = default;
 
     bool try_lock()
     {
-        std::size_t current_thread_id = thread_hasher_(std::this_thread::get_id());
+        std::size_t current_thread_id = _getThreadId();
 
         std::size_t expected = no_thread_id_;
         if (owner_thread_.compare_exchange_strong(expected, current_thread_id)) {
@@ -46,7 +46,7 @@ public:
 
     void lock()
     {
-        std::size_t current_thread_id = thread_hasher_(std::this_thread::get_id());
+        std::size_t current_thread_id = _getThreadId();
 
         std::size_t expected = no_thread_id_;
         if (owner_thread_.compare_exchange_strong(expected, current_thread_id)) {
@@ -78,7 +78,7 @@ public:
 
     void unlock()
     {
-        std::size_t current_thread_id = thread_hasher_(std::this_thread::get_id());
+        std::size_t current_thread_id = _getThreadId();
 
         if (owner_thread_ != current_thread_id || owner_ref_count_ == 0) {
             throw std::system_error(std::make_error_code(std::errc::operation_not_permitted));
@@ -94,12 +94,11 @@ public:
     }
 
 private:
-#ifdef _MSC_VER
-    [[msvc::no_unique_address]]
-#else
-    [[no_unique_address]]
-#endif
-    std::hash<std::thread::id> thread_hasher_{};
+    std::size_t _getThreadId()
+    {
+        return std::hash<std::thread::id>{}(std::this_thread::get_id());
+    }
+
     const std::size_t no_thread_id_;        // +0
     std::uint32_t owner_ref_count_{0};      // +8
     std::atomic<std::size_t> owner_thread_;  // +16

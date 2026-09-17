@@ -26,7 +26,8 @@
 struct PlaySoundPacketPayload {
     PlaySoundPacketPayload();
     PlaySoundPacketPayload(std::string name, const Vec3 &pos, float volume, float pitch, std::int32_t loop_count,
-                           std::optional<ServerSoundHandle> server_sound_handle);
+                           std::optional<ServerSoundHandle> server_sound_handle, bool bypass_listener_range_check,
+                           std::optional<float> playback_position_seconds);
 
     std::string name;
     NetworkBlockPosition pos;
@@ -34,10 +35,8 @@ struct PlaySoundPacketPayload {
     float pitch;
     std::int32_t loop_count;
     std::optional<ServerSoundHandle> server_sound_handle;
-    // TODO(fixme): check the names - 1.26.51 appended these two; the wire orders the bool before the
-    // sound handle, but the constructor's zero-init ends at a one-byte member, so they are declared last.
-    std::optional<float> playback_position_seconds;
     bool bypass_listener_range_check;
+    std::optional<float> playback_position_seconds;
 };
 BEDROCK_STATIC_ASSERT_SIZE(PlaySoundPacketPayload, 88, 80);
 

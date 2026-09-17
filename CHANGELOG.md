@@ -7,6 +7,11 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+### Fixed
+
+- Fixed teleporting an actor or a player to a location in another dimension, which BDS ignored. Introduced in 0.11.11 along with BDS 1.26.51 support.
+- Fixed the location a player is moved to when they travel through a portal, and the locations `PlayerPortalEvent` reports. Introduced in 0.11.11 along with BDS 1.26.51 support.
+
 ## [0.11.11] - 2026-09-16
 
 ### Added

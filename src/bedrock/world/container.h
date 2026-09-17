@@ -22,6 +22,7 @@
 #include "bedrock/core/math/vec3.h"
 #include "bedrock/core/utility/pub_sub/connector.h"
 #include "bedrock/core/utility/pub_sub/publisher.h"
+#include "bedrock/platform/brstd/copyable_function.h"
 #include "bedrock/safety/redactable_string.h"
 #include "bedrock/world/container_runtime_id.h"
 #include "bedrock/world/item/item_stack.h"
@@ -100,6 +101,7 @@ enum class ContainerType : std::int8_t {
     CHEST_BOAT = 34,
     DECORATED_POT = 35,
     CRAFTER = 36,
+    DATA_DRIVEN_CONTAINER = 37,
 };
 
 class Container {
@@ -169,7 +171,8 @@ protected:
     std::unordered_set<ContainerSizeChangeListener *> size_change_listeners_;
     std::unordered_set<ContainerCloseListener *> close_listeners_;
     PublisherWrapper removed_publisher_;
-    std::deque<std::function<void(Container &, int, const ItemStack &, const ItemStack &)>> transaction_context_stack_;
+    std::deque<brstd::copyable_function<void(Container &, int, const ItemStack &, const ItemStack &)>>
+        transaction_context_stack_;
     Bedrock::Safety::RedactableString name_;
     bool custom_name_;
     ContainerOwner container_owner_;

@@ -13,15 +13,19 @@
 // limitations under the License.
 
 #pragma once
+
+#include <string_view>
+
 #include "bedrock/core/resource/resource_helper.h"
+#include "bedrock/resources/invalid_packs.h"
 #include "bedrock/resources/invalid_packs_filter_group.h"
 #include "bedrock/resources/resource_pack_stack.h"
 
 class IContentSourceRepository {
 public:
     virtual ~IContentSourceRepository();
-    virtual void deletePackFiles(const ResourceLocation &) = 0;
+    virtual void deletePackFiles(const ResourceLocation &, std::string_view) = 0;
     virtual void postDeletePack(const ResourceLocation &) = 0;
-    [[nodiscard]] virtual std::vector<ResourceLocation> getInvalidPacks(const InvalidPacksFilterGroup &) const = 0;
+    [[nodiscard]] virtual std::vector<InvalidPack> getInvalidPacks(const InvalidPacksFilterGroup &) const = 0;
     virtual ResourcePackStack createStack(const std::vector<PackInstanceId> &) = 0;
 };

@@ -14,12 +14,14 @@
 
 #pragma once
 
+#include <string>
 #include <unordered_map>
 #include <variant>
+#include <vector>
 
 #include "bedrock/core/utility/pub_sub/publisher.h"
 
-using PackSettingValue = std::variant<float, bool, std::string>;
+using PackSettingValue = std::variant<float, bool, std::string, std::vector<std::string>>;
 struct PackSettingValueAndDefault {
     PackSettingValue value;
     PackSettingValue default_value;
@@ -31,7 +33,8 @@ public:
 private:
     const mce::UUID pack_id_;
     std::weak_ptr<Bedrock::PubSub::Publisher<
-        void(const mce::UUID &, const std::string &, const std::variant<float, bool, std::string> &),
+        void(const mce::UUID &, const std::string &,
+             const std::variant<float, bool, std::string, std::vector<std::string>> &),
         Bedrock::PubSub::ThreadModel::MultiThreaded, Bedrock::PubSub::ReturnPolicyType::Aggregate>>
         on_change_publisher_;
     PackSettingsNameValueMap name_value_map_;

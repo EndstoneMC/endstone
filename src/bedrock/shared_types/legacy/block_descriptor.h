@@ -14,11 +14,26 @@
 
 #pragma once
 
-class IPlayerConnectionConnector {
-public:
-    virtual ~IPlayerConnectionConnector() = default;
-    // TODO(fixme): check the names
-    virtual void unknown2() = 0;
-    virtual void unknown3() = 0;
+#include <cstdint>
+#include <map>
+#include <string>
+
+namespace SharedTypes::Legacy {
+struct BlockDescriptor {
+    struct Compound {
+        enum class Type : int {
+            none = 0,
+            string = 1,
+            integer = 2,
+        };
+
+        std::string string_value;
+        std::int32_t int_value;
+        Type type;
+    };
+
+    std::string name;
+    std::map<std::string, Compound> states;
+    std::string tags;
 };
-static_assert(sizeof(IPlayerConnectionConnector) == 8);
+}  // namespace SharedTypes::Legacy

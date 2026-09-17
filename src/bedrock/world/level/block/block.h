@@ -50,6 +50,7 @@ struct CachedComponentData {
 
 class Block {
 public:
+    Block(DataID data, gsl::not_null<BlockType *> old_block);
     virtual ~Block() = default;
 
     [[nodiscard]] bool hasProperty(BlockProperty) const;
@@ -83,8 +84,8 @@ public:
     [[nodiscard]] float getFriction() const;
     [[nodiscard]] float getDestroySpeed() const;
     [[nodiscard]] const HashedString &getName() const;
-    [[nodiscard]] const CompoundTag &getSerializationId() const;
-    [[nodiscard]] BlockRuntimeId getRuntimeId() const;
+    [[nodiscard]] const BlockSerializationId &getSerializationId() const;
+    [[nodiscard]] const BlockRuntimeId &getRuntimeId() const;
     [[nodiscard]] std::string toDebugString() const;
     [[nodiscard]] const BlockType &getBlockType() const;
     [[nodiscard]] const std::vector<HashedString> &getTags() const;
@@ -124,7 +125,6 @@ private:
     friend class ItemDescriptor;
 
     BlockComponentStorage components_;
-    // DataID data_;
     gsl::not_null<BlockType *> block_type_;
     CachedComponentData cached_component_data_;
     BlockComponentDirectData direct_data_;
@@ -134,7 +134,7 @@ private:
     std::uint32_t serialization_id_hash_for_network_;
     BlockRuntimeId network_id_;
     std::unique_ptr<class IClientBlockData> client_data_;
-    DataID data_;
+    const DataID data_;
     bool has_runtime_id_;
 };
 BEDROCK_STATIC_ASSERT_SIZE(Block, 296, 304);

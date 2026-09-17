@@ -91,7 +91,7 @@ void NetherNet::LanThreadManager::SendLanBroadcastResponse(const webrtc::SocketA
     auto &server = endstone::core::EndstoneServer::getInstance();
     const auto game_mode = endstone::core::EndstoneGameMode::fromMinecraft(server_data.game_type);
     endstone::ServerListPingEvent event(endstone::core::EndstoneSocketAddress::fromWebRtcSocketAddress(destination),
-                                        server_data.server_name, server_data.protocol, server_data.version,
+                                        server_data.server_name, server_data.protocol_version, server_data.app_version,
                                         server_data.num_players, server_data.max_num_players, from.toString(),
                                         server_data.level_name, game_mode, 0, 0);
     server.getPluginManager().callEvent(event);
@@ -100,7 +100,7 @@ void NetherNet::LanThreadManager::SendLanBroadcastResponse(const webrtc::SocketA
     }
 
     server_data.server_name = event.getMotd();
-    server_data.version = event.getMinecraftVersionNetwork();
+    server_data.app_version = event.getMinecraftVersionNetwork();
     server_data.level_name = event.getLevelName();
     server_data.num_players = event.getNumPlayers();
     server_data.max_num_players = event.getMaxPlayers();

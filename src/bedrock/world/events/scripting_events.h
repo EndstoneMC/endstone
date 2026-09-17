@@ -25,6 +25,10 @@
 #include "bedrock/world/level/block_pos.h"
 #include "bedrock/world/level/block_source.h"
 
+namespace ScriptModuleMinecraft {
+class ScriptCustomWorldClockRegistry;
+}
+
 enum class WatchdogTerminateReason : int {
     Hang = 0,
     StackOverflow = 1,
@@ -41,8 +45,7 @@ struct ScriptModuleStartupEvent {
     ScriptModuleMinecraft::ScriptCustomSpawnRulesRegistry &spawn_rules_registry;
     ScriptModuleMinecraft::CustomCommandRegistry &custom_command_registry;
     ScriptModuleMinecraft::ScriptCustomDimensionRegistry &custom_dimension_registry;
-    // TODO(fixme): check the name - 1.26.51 appended this reference.
-    void *unknown_40_;
+    ScriptModuleMinecraft::ScriptCustomWorldClockRegistry &custom_world_clock_registry;
 };
 struct ScriptModuleShutdownEvent {};
 

@@ -32,7 +32,7 @@ struct PlayerAuthenticationInfo {
     std::string nintendo_id;
     std::string psn_id;
     std::string tenant_id;
-    std::string mess_o_id;
+    std::string mess_user_id;
     std::string xbox_live_name;
     std::string nintendo_name;
     std::string play_station_name;

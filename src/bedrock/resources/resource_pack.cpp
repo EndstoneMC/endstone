@@ -16,5 +16,5 @@
 
 PackManifest &ResourcePack::getManifest() const
 {
-    return body_->pack_->getManifest();
+    return impl_->pack_->getManifest();
 }

@@ -21,8 +21,8 @@ void NetherNetServerLocator::ServerData::write(BinaryStream &stream) const
 {
     stream.writeByte(VERSION_NUMBER, "dataVersion", nullptr);
     stream.writeString(server_name, "name", nullptr);
-    stream.writeVarInt(protocol, "protocol", nullptr);
-    stream.writeString(version, "version", nullptr);
+    stream.writeVarInt(protocol_version, "protocol", nullptr);
+    stream.writeString(app_version, "version", nullptr);
     stream.writeString(level_name, "level", nullptr);
     stream.writeVarInt(num_players, "players", nullptr);
     stream.writeVarInt(max_num_players, "maxPlayers", nullptr);
@@ -41,7 +41,8 @@ Bedrock::Result<void> NetherNetServerLocator::ServerData::read(ReadOnlyBinaryStr
     if (!data_version.ignoreError()) {
         return BEDROCK_RETHROW(data_version);
     }
-    if (data_version.discardError().value() != VERSION_NUMBER) {
+    version = data_version.discardError().value();
+    if (version != VERSION_NUMBER) {
         return BEDROCK_NEW_ERROR(std::errc::not_supported);
     }
 
@@ -55,13 +56,13 @@ Bedrock::Result<void> NetherNetServerLocator::ServerData::read(ReadOnlyBinaryStr
     if (!protocol_result.ignoreError()) {
         return BEDROCK_RETHROW(protocol_result);
     }
-    protocol = static_cast<int>(protocol_result.discardError().value());
+    protocol_version = static_cast<std::int32_t>(protocol_result.discardError().value());
 
     auto version_result = stream.getString(stream.getLength());
     if (!version_result.ignoreError()) {
         return BEDROCK_RETHROW(version_result);
     }
-    version = std::move(version_result.discardError().value());
+    app_version = std::move(version_result.discardError().value());
 
     auto level_result = stream.getString(stream.getLength());
     if (!level_result.ignoreError()) {

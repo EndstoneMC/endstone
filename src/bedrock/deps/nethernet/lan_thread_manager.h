@@ -25,6 +25,12 @@ namespace NetherNet {
 class ILanDiscovery {
 public:
     ~ILanDiscovery();
+    virtual bool IsBroadcastDiscoveryEnabled(NetworkID) = 0;
+    virtual void DisableBroadcastDiscovery(NetworkID) = 0;
+    virtual void EnableBroadcastDiscovery(NetworkID) = 0;
+    virtual void AddLanHost(NetworkID, const std::string &, int) = 0;
+    virtual void RemoveLanHost(NetworkID) = 0;
+    virtual bool IsNetworkIdOnLan(NetworkID) = 0;
     virtual void SendLanBroadcastResponse(const webrtc::SocketAddress &destination, NetworkID from,
                                           std::string data) = 0;
 };

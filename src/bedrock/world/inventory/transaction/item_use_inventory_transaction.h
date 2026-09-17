@@ -51,7 +51,6 @@ public:
     BlockRuntimeId target_block_id_;
     FacingID face_;
     std::int32_t slot_;
-    // TODO(fixme): check the name - 1.26.51 added this between slot_ and item_
     HandSlot hand_;
     NetworkItemStackDescriptor item_;
     Vec3 from_pos_;

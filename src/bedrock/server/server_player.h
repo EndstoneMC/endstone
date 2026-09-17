@@ -32,9 +32,8 @@ public:
 
     ServerPlayer(Level &, PacketSender &, ServerNetworkSystem &, ClientBlobCache::Server::ActiveTransfersManager &,
                  GameType, bool, const NetworkIdentifier &, const SubClientId, ServerPlayer::OnPlayerLoadedCallback,
-                 mce::UUID, const std::string &, const std::string &, PlayerAuthenticationType,
-                 const PlayerAuthenticationInfo &, int, bool, EntityContext &, PlatformType, InputMode,
-                 SyncedClientOptionsComponent);
+                 mce::UUID, const std::string &, PlayerAuthenticationType, const PlayerAuthenticationInfo &, int, bool,
+                 EntityContext &, PlatformType, InputMode, SyncedClientOptionsComponent);
     ~ServerPlayer() override = 0;
     ENDSTONE_HOOK void changeDimension(DimensionType toId) override;  // TODO(fixme): enable the hook
 
@@ -51,7 +50,8 @@ private:
     uint32_t max_chunk_radius_;
     bool is_initial_player_load_happening_;
     bool is_teacher_;
-    bool local_player_initialized_;  // +3530
+    bool is_external_communication_allowed_;
+    bool local_player_initialized_;  // +3531
     bool waiting_for_ticking_areas_preload_;
     Tick prev_shield_blocking_tick_;
     uint32_t client_view_radius_;

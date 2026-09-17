@@ -26,8 +26,6 @@ public:
     ~PlayerInventory() override = 0;
     void containerSizeChanged(int) override = 0;
     void containerContentChanged(int) override = 0;
-    // TODO(fixme): check the name
-    virtual void unknown3() = 0;
 
     [[nodiscard]] int getHotbarSize() const;
     [[nodiscard]] PlayerInventorySlotData getSelectedSlot() const;

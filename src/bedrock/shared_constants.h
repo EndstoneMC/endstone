@@ -17,7 +17,7 @@
 #include <string>
 
 namespace Common {
-std::string getGameVersionString();
+const std::string &getGameVersionString();
 }  // namespace Common
 
 namespace SharedConstants {

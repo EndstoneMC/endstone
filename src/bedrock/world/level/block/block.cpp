@@ -159,12 +159,12 @@ const HashedString &Block::getName() const
     return block_type_->getName();
 }
 
-const CompoundTag &Block::getSerializationId() const
+const BlockSerializationId &Block::getSerializationId() const
 {
     return serialization_id_;
 }
 
-BlockRuntimeId Block::getRuntimeId() const
+const BlockRuntimeId &Block::getRuntimeId() const
 {
     return network_id_;
 }

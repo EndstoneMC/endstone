@@ -20,6 +20,7 @@
 #include "bedrock/core/utility/binary_stream.h"
 #include "bedrock/deps/json/value.h"
 #include "bedrock/nbt/compound_tag.h"
+#include "bedrock/platform/brstd/function_ref.h"
 #include "bedrock/world/level/block/block.h"
 #include "bedrock/world/level/block/block_type.h"
 
@@ -72,10 +73,9 @@ public:
         [[nodiscard]] virtual bool sameItem(ItemEntry const &, bool) const = 0;
         [[nodiscard]] virtual std::string getFullName() const;
         [[nodiscard]] virtual std::string toString() const;
-        // TODO(fixme): check the name - 1.26.51 added this between toString and getItem
-        [[nodiscard]] virtual std::string unknown5() const;
+        [[nodiscard]] virtual std::string getNameAndAux() const;
         [[nodiscard]] virtual ItemEntry getItem() const = 0;
-        [[nodiscard]] virtual bool forEachItemUntil(std::function<bool(Item const &, std::int16_t)> func) const;
+        [[nodiscard]] virtual bool forEachItemUntil(brstd::function_ref<bool(Item const &, std::int16_t)> func) const;
         [[nodiscard]] virtual std::map<std::string, std::string> toMap() const = 0;
         [[nodiscard]] virtual std::optional<CompoundTag> save() const = 0;
         virtual void serialize(Json::Value &val) const;

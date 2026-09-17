@@ -81,7 +81,7 @@ EndstonePlayer::EndstonePlayer(EndstoneServer &server, ::Player &player)
 {
     const auto component = player.getPersistentComponent<UserEntityIdentifierComponent>();
     uuid_ = EndstoneUUID::fromMinecraft(component->getClientUUID());
-    xuid_ = component->getXuid(false);
+    xuid_ = component->getXuid();
     address_ = EndstoneSocketAddress::fromNetworkIdentifier(component->getNetworkId());
     last_op_status_ = EndstonePlayer::isOp();
 }
@@ -993,7 +993,7 @@ void EndstonePlayer::initFromConnectionRequest(std::variant<std::reference_wrapp
             case BuildPlatform::Sony:
                 device_os_ = "PlayStation";
                 break;
-            case BuildPlatform::Nx:
+            case BuildPlatform::Nintendo:
                 device_os_ = "Switch";
                 break;
             case BuildPlatform::WindowsPhone_Deprecated:

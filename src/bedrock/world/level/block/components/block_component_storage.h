@@ -15,7 +15,9 @@
 #pragma once
 
 #include <cstdint>
+#include <functional>
 #include <memory>
+#include <vector>
 
 #include "bedrock/bedrock.h"
 #include "bedrock/core/utility/type_id.h"
@@ -25,14 +27,15 @@
 class BlockComponentEventSubscriber;
 
 class BlockComponentStorage {
-public:
     struct ComponentBase {
         virtual ~ComponentBase();
     };
 
-private:
-    brstd::flat_map<Bedrock::typeid_t<void>, std::unique_ptr<ComponentBase>> components_;
-    brstd::flat_set<Bedrock::typeid_t<void>> stateless_components_;
+    brstd::flat_map<Bedrock::typeid_t<void>, std::unique_ptr<ComponentBase>, std::less<Bedrock::typeid_t<void>>,
+                    std::vector<Bedrock::typeid_t<void>>, std::vector<std::unique_ptr<ComponentBase>>>
+        components_;
+    brstd::flat_set<Bedrock::typeid_t<void>, std::less<Bedrock::typeid_t<void>>, std::vector<Bedrock::typeid_t<void>>>
+        stateless_components_;
     bool allow_adding_components_;  // +72
     bool allow_replacement_components_;
     bool allow_try_get_components_before_finalization_;

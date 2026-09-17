@@ -310,7 +310,7 @@ extra = 0
 pattern = "55 41 57 41 56 41 55 41 54 56 57 53 48 81 EC ? ? ? ? 48 8D AC 24 ? ? ? ? 0F 29 B5 ? ? ? ? 48 C7 85 ? ? ? ? ? ? ? ? 44 88 85 ? ? ? ? 48 89 D6"
 
 [[signatures]]
-name = "?start@DedicatedServer@@QEAA?AW4ServerExitCode@1@AEBV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@AEBVActivationArguments@Bedrock@@@Z"
+name = "?start@DedicatedServer@@QEAA?AW4ServerExitCode@@AEBV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@AEBVActivationArguments@Bedrock@@@Z"
 relative = false
 extra = 0
 # 1. find bytes "53 74 61 72 74 69 6E 67 20 53 65 72 76 65 72 00" = "Starting Server\0" (unique; prefer this

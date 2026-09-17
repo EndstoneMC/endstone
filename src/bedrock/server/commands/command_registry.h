@@ -183,12 +183,14 @@ public:
         BlockStateArray = 0x100054,
         BlockStateArrayCont = 0x100055,
         ClockTimeMarkerName = 0x100056,
-        Command = 0x100057,
-        SlashCommand = 0x100058,
-        CodeBuilderArg = 0x100059,
-        CodeBuilderArgs = 0x10005a,
-        CodeBuilderSelectParam = 0x10005b,
-        CodeBuilderSelector = 0x10005c,
+        PoiTag = 0x100057,
+        PoiType = 0x100058,
+        Command = 0x100059,
+        SlashCommand = 0x10005a,
+        CodeBuilderArg = 0x10005b,
+        CodeBuilderArgs = 0x10005c,
+        CodeBuilderSelectParam = 0x10005d,
+        CodeBuilderSelector = 0x10005e,
     };
 
     class Symbol {
@@ -398,9 +400,9 @@ private:
     std::vector<Factorization> factorizations_;                                                  // +296
     std::vector<std::string> postfixes_;                                                         // +320
     std::map<std::string, std::uint32_t> enum_lookup_;                                           // +344
-    std::map<std::string, std::uint32_t> enum_value_lookup_;                                     // +360
+    std::map<std::string, std::uint64_t> enum_value_lookup_;                                     // +360
     std::map<std::string, std::uint32_t> chained_subcommand_lookup_;                             // +376
-    std::map<std::string, std::uint32_t> chained_subcommand_value_lookup_;                       // +392
+    std::map<std::string, std::uint64_t> chained_subcommand_value_lookup_;                       // +392
     std::vector<Symbol> command_symbols_;                                                        // +408
     std::map<std::string, Signature> signatures_;                                                // +432
     std::map<Bedrock::typeid_t<CommandRegistry>, std::int32_t> type_lookup_;                     // +448

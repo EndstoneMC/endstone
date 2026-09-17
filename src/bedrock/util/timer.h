@@ -42,11 +42,11 @@ private:
     float time_scale_;
     float passed_time_;
     float frame_step_alignment_remainder_;
-    float last_time_seconds_;
     float last_time_step_;
     float overflow_time_;
     int64_t last_ms_;
     int64_t last_ms_sys_time_;
+    int64_t last_time_ms_;
     float adjust_time_;
     float stepping_tick_;
     std::function<std::int64_t()> get_time_ms_callback_;

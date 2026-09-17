@@ -37,7 +37,7 @@ public:
     [[nodiscard]] std::string getPlayFabId() const;
     [[nodiscard]] mce::UUID getClientUUID() const { return client_uuid_; }
     [[nodiscard]] std::string getIdentityName() const;
-    [[nodiscard]] std::string getXuid(bool trust_self_signed) const { return trusted_player_info_.xuid; }
+    [[nodiscard]] std::string getXuid() const { return trusted_player_info_.xuid; }
 
 private:
     NetworkIdentifier network_id_;

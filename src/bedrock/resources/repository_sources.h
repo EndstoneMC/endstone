@@ -24,7 +24,7 @@ class RepositorySources {
 public:
     RepositorySources(RepositorySourceOptions &&options);
 
-private:
+protected:
     std::unique_ptr<const RepositorySourceOptions> options_;
     std::unique_ptr<CompositePackSource> pack_source_;
     std::unique_ptr<CompositePackSource> cache_pack_source_;

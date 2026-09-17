@@ -14,19 +14,18 @@
 
 #pragma once
 
-#include "bedrock/core/utility/non_owner_pointer.h"
-#include "bedrock/entity/gamerefs_entity/entity_context.h"
-#include "bedrock/gamerefs/owner_ptr.h"
-#include "bedrock/world/actor/actor.h"
-#include "bedrock/world/actor/actor_definition_identifier.h"
+#include <string>
+#include <vector>
 
-class Experiments;
-class Level;
+#include "bedrock/core/utility/hardware_memory_tier_enum.h"
 
-class ActorFactory {
-public:
-    ActorFactory(Bedrock::NotNullNonOwnerPtr<Level> level, const Experiments &experiments);
-    virtual ~ActorFactory();
-    OwnerPtr<EntityContext> createSpawnedActor(const ActorDefinitionIdentifier &identifier, Actor *spawner,
-                                               const Vec3 &position, const Vec2 &rotation);
+struct SubpackInfo {
+    std::string folder_name;
+    std::string name;
+    HardwareMemoryTier memory_tier;
+};
+
+class SubpackInfoCollection {
+private:
+    std::vector<SubpackInfo> subpack_info_;
 };

@@ -13,36 +13,45 @@
 // limitations under the License.
 
 #pragma once
+
+#include <functional>
+#include <memory>
+
 #include "bedrock/input/input_mode.h"
+#include "bedrock/world/item/equipment_slot.h"
 #include "bedrock/world/item/item_stack.h"
 #include "bedrock/world/level/block/block_type.h"
 #include "bedrock/world/level/block_pos.h"
 
 class Player;
+struct IGameModeMessenger;
+struct IGameModeTimer;
 
 class GameMode {
 public:
+    GameMode(Player &player, std::unique_ptr<IGameModeTimer> timer, std::unique_ptr<IGameModeMessenger> messenger);
     virtual ~GameMode() = 0;
     virtual bool startDestroyBlock(BlockPos const &, FacingID face, bool &) = 0;
     virtual bool destroyBlock(BlockPos const &, FacingID) = 0;
     virtual bool continueDestroyBlock(BlockPos const &, FacingID, Vec3 const &, bool &) = 0;
     virtual void stopDestroyBlock(BlockPos const &) = 0;
-    virtual void startBuildBlock(BlockPos const &, FacingID) = 0;
-    virtual bool buildBlock(BlockPos const &, FacingID, bool) = 0;
-    virtual void continueBuildBlock(BlockPos const &, FacingID) = 0;
+    virtual void startBuildBlock(BlockPos const &, FacingID, HandSlot) = 0;
+    virtual bool buildBlock(BlockPos const &, FacingID, HandSlot, bool) = 0;
+    virtual void continueBuildBlock(BlockPos const &, FacingID, HandSlot) = 0;
     virtual void stopBuildBlock() = 0;
     virtual void tick() = 0;
-    virtual float getPickRange(InputMode const &, bool) = 0;
-    virtual bool useItem(ItemStack &) = 0;
-    virtual bool useItemAsAttack(ItemStack &, Vec3 const &) = 0;
-    virtual InteractionResult useItemOn(ItemStack &, BlockPos const &, FacingID, Vec3 const &, Block const *, bool) = 0;
-    virtual bool interact(Actor &, Vec3 const &) = 0;
-    virtual bool attack(Actor &) = 0;
+    virtual float getPickRange(InputMode const &) = 0;
+    virtual bool useItem(ItemStack &, HandSlot) = 0;
+    virtual bool useItemAsAttack(ItemStack &, Vec3 const &, HandSlot) = 0;
+    virtual InteractionResult useItemOn(ItemStack &, BlockPos const &, FacingID, Vec3 const &, HandSlot, Block const *,
+                                        bool) = 0;
+    virtual bool interact(Actor &, Vec3 const &, HandSlot) = 0;
+    virtual bool attack(Actor &, Vec3 const &) = 0;
     virtual void releaseUsingItem() = 0;
     virtual void setTrialMode(bool) = 0;
     virtual bool isInTrialMode() = 0;
     virtual void registerUpsellScreenCallback(std::function<void(bool)>) = 0;
 
-private:
-    Player *player_;
+protected:
+    Player &player_;
 };

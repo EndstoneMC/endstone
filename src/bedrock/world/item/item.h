@@ -26,6 +26,7 @@
 #include "bedrock/world/actor/actor_location.h"
 #include "bedrock/world/gamemode/interaction_result.h"
 #include "bedrock/world/interactions/mining/mine_block_item_effect_type.h"
+#include "bedrock/world/item/equipment_slot.h"
 #include "bedrock/world/item/item_descriptor.h"
 #include "bedrock/world/item/item_helper.h"
 #include "bedrock/world/item/rarity.h"
@@ -64,7 +65,7 @@ public:
     virtual Item &setDescriptionId(std::string const &) = 0;
     virtual std::string const &getDescriptionId() const = 0;
     virtual int getMaxUseDuration(ItemStack const *) const = 0;
-    virtual WeakPtr<const BlockType> const &getBlockTypeForRendering() const = 0;
+    virtual const BlockType *getBlockTypeForRendering() const = 0;
     virtual bool isMusicDisk() const = 0;
     virtual void executeEvent(ItemStackBase &, std::string const &, RenderParams &) const = 0;
     virtual bool isComponentBased() const = 0;
@@ -140,9 +141,9 @@ public:
     virtual ActorDefinitionIdentifier getActorIdentifier(ItemStack const &) const = 0;
     virtual int buildIdAux(std::int16_t, CompoundTag const *) const = 0;
     virtual bool canUseOnSimTick() const = 0;
-    virtual ItemStack &use(ItemStack &, Player &) const = 0;
+    virtual ItemStack &use(ItemStack &, Player &, HandSlot) const = 0;
     virtual bool canUseAsAttack() const = 0;
-    virtual ItemStack &useAsAttack(ItemStack &itemStack, Player &, Vec3 const &) const = 0;
+    virtual ItemStack &useAsAttack(ItemStack &itemStack, Player &, Vec3 const &, HandSlot) const = 0;
     virtual Actor *createProjectileActor(BlockSource &, ItemStack const &, Vec3 const &, Vec3 const &) const = 0;
     virtual bool dispense(BlockSource &, Container &, int slot, Vec3 const &, FacingID face) const = 0;
     virtual ItemUseMethod useTimeDepleted(ItemStack &, Level *, Player *) const = 0;
@@ -188,14 +189,22 @@ public:
     virtual void playSoundIncrementally(ItemStack const &, Mob &) const = 0;
     virtual float getFurnaceXPmultiplier(ItemStackBase const &) const = 0;
     virtual bool calculatePlacePos(ItemStackBase &, Actor &, FacingID &, BlockPos &) const = 0;
-    // TODO(fixme): check the name
-    virtual void unknown127() = 0;
+
+private:
+    enum class OffhandAllowed : std::uint8_t {
+        Default = 0,
+        Yes = 1,
+        No = 2,
+    };
+
+protected:
+    [[nodiscard]] virtual std::string _getHoverTextDescription() const = 0;
 
 private:
     virtual bool _checkUseOnPermissions(Actor &, ItemStackBase &, FacingID const &, BlockPos const &) const = 0;
     virtual bool _calculatePlacePos(ItemStackBase &, Actor &, FacingID &, BlockPos &) const = 0;
     virtual bool _shouldAutoCalculatePlacePos() const = 0;
-    virtual InteractionResult _useOn(ItemStack &, Actor &, BlockPos pos, FacingID face, Vec3 const &) const = 0;
+    virtual InteractionResult _useOn(ItemStack &, Actor &, BlockPos pos, FacingID face, HandSlot, Vec3 const &) const = 0;
 
 public:
     bool operator==(const Item &other) const;
@@ -250,11 +259,9 @@ protected:
     bool explodable_ : 1;
     bool fire_resistat_ : 1;
     bool should_despawn_ : 1;
-    bool allow_offhand_ : 1;
     bool ignores_permission_ : 1;
     int max_use_duration_;
     BaseGameVersion min_required_base_game_version_;
-    // 1.26.51: a raw pointer, no longer a WeakPtr
     const BlockType *block_type_;
     SharedTypes::CreativeItemCategory creative_category_;
     Item *crafting_remaining_item_;
@@ -269,4 +276,7 @@ protected:
     std::unique_ptr<class CameraItemComponentLegacy> camera_component_legacy_;
     std::vector<std::function<void()>> on_reset_bai_callbacks_;
     std::vector<ItemTag> tags_;
+
+private:
+    OffhandAllowed allow_offhand_ : 2;
 };

@@ -14,11 +14,12 @@
 
 #pragma once
 
-#include <functional>
+#include <gsl/gsl>
 
 #include "bedrock/common_types.h"
 #include "bedrock/core/string/string_hash.h"
 #include "bedrock/nbt/nbt_io.h"
+#include "bedrock/platform/brstd/function_ref.h"
 #include "bedrock/symbol.h"
 
 class BlockState {
@@ -32,7 +33,7 @@ public:
     [[nodiscard]] const HashedString &getName() const;
     void toNBT(CompoundTag &, int) const;
     [[nodiscard]] std::optional<int> fromNBT(const CompoundTag &) const;
-    static void forEachState(std::function<bool(const BlockState &)> callback)
+    static void forEachState(brstd::function_ref<bool(const BlockState &)> callback)
     {
         static StateListNode *head = *BEDROCK_VAR(StateListNode **, "BlockState::StateListNode::mHead");
         auto *node = head;
@@ -116,10 +117,10 @@ public:
 private:
     static constexpr std::uint32_t MAX_STATE_BITS = 16;
 
-    std::uint32_t variation_count_;  // +0
-    std::uint32_t num_bits_;         // +4
-    std::uint32_t end_bit_;          // +8
-    std::uint32_t mask_;             // +12
-    BlockState *state_;              // +16
+    std::uint32_t variation_count_;            // +0
+    std::uint32_t num_bits_;                   // +4
+    std::uint32_t end_bit_;                    // +8
+    std::uint32_t mask_;                       // +12
+    gsl::not_null<const BlockState *> state_;  // +16
 };
 static_assert(sizeof(BlockStateInstance) == 24);

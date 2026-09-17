@@ -36,6 +36,7 @@
 #include "bedrock/world/level/block/actor/block_actor_type.h"
 #include "bedrock/world/level/block/block_client_prediction_overrides.h"
 #include "bedrock/world/level/block/components/block_component_storage.h"
+#include "bedrock/world/level/block/components/net_ease_block_component_storage.h"
 #include "bedrock/world/level/block/resource_drops_context.h"
 #include "bedrock/world/level/block/states/block_state.h"
 #include "bedrock/world/level/block/tint_method.h"
@@ -49,13 +50,18 @@ class Actor;
 class Block;
 class BlockActor;
 class BlockSource;
+class BlockStateGroup;
 class Container;
 class IBlockSource;
 class IConstBlockSource;
+class IResourceDropsStrategy;
 class ItemActor;
 class ItemStack;
 class ItemInstance;
 class Player;
+namespace BlockTrait {
+class IGetPlacementBlockCallback;
+}  // namespace BlockTrait
 
 enum class BlockProperty : std::uint64_t {
     None = 0x0,
@@ -96,6 +102,7 @@ enum class BlockProperty : std::uint64_t {
     CanHaltWhenClimbing = 0x400000000,
     CanDamperVibrations = 0x800000000,
     CanOccludeVibrations = 0x1000000000,
+    LegacyComparatorReadThrough = 0x2000000000,
     _entt_enum_as_bitmask
 };
 
@@ -391,23 +398,23 @@ protected:
     TintMethod tint_method_;     // +380
 
 private:
-    BlockClientPredictionOverridesSet client_prediction_overrides_;       // +381
-    NewBlockID id_;                                                       // +382
-    BaseGameVersion min_required_game_version_;                           // +384
-    std::vector<HashedString> tags_;                                      // +416
-    AABB visual_shape_;                                                   // +440
-    std::int32_t bits_used_;                                              // +464
-    std::int32_t total_bits_used_;                                        // +468
-    std::map<std::uint64_t, BlockStateInstance> states_;                  // +472
-    std::unordered_map<HashedString, std::uint64_t> state_name_map_;      // +488
-    std::vector<std::unique_ptr<Block>> block_permutations_;              // +552
-    Block *default_state_;                                                // +576
-    std::vector<std::unique_ptr<void *>> get_placement_block_callbacks_;  // +584
-    Core::Cache<std::uint16_t, const Block *> legacy_data_lookup_table_;  // +608
-    std::unique_ptr<void *> block_state_group_;                           // +680
-    std::unique_ptr<void *> resource_drops_strategy_;                     // +688
-    IntRange experience_drop_;                                            // +696
-    BlockComponentStorage net_ease_component_storage_;                    // +704
+    BlockClientPredictionOverridesSet client_prediction_overrides_;                                       // +381
+    NewBlockID id_;                                                                                       // +382
+    BaseGameVersion min_required_game_version_;                                                           // +384
+    std::vector<HashedString> tags_;                                                                      // +416
+    AABB visual_shape_;                                                                                   // +440
+    std::uint32_t bits_used_;                                                                             // +464
+    std::uint32_t total_bits_used_;                                                                       // +468
+    std::map<std::uint64_t, BlockStateInstance> states_;                                                  // +472
+    std::unordered_map<HashedString, std::uint64_t> state_name_map_;                                      // +488
+    std::vector<std::unique_ptr<Block>> block_permutations_;                                              // +552
+    const Block *default_state_;                                                                          // +576
+    std::vector<std::unique_ptr<BlockTrait::IGetPlacementBlockCallback>> get_placement_block_callbacks_;  // +584
+    Core::Cache<std::uint16_t, const Block *, const Block *> legacy_data_lookup_table_;                   // +608
+    std::unique_ptr<BlockStateGroup> block_state_group_;                                                  // +680
+    std::unique_ptr<IResourceDropsStrategy> resource_drops_strategy_;                                     // +688
+    IntRange experience_drop_;                                                                            // +696
+    NetEaseBlockComponentStorage net_ease_component_storage_;                                             // +704
 
 public:
     struct AlteredStateCollection {

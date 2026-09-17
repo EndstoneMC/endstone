@@ -17,6 +17,7 @@
 #include <string>
 #include <vector>
 
+#include "bedrock/core/container/enum_set.h"
 #include "bedrock/world/level/block/actor/block_actor.h"
 
 class BlockSource;
@@ -94,13 +95,25 @@ class VanillaBlockActor : public BlockActor,
                           public IVanillaMainBlockActorComponent,
                           public IVanillaRenderBlockActorComponent,
                           public IVanillaTickBlockActorComponent {
+    enum class Property : uint8_t {
+        Changed = 0,
+        Movable = 1,
+        ClientSideOnly = 2,
+        SaveCustomName = 3,
+        CanRenderCustomName = 4,
+        _count = 5,
+    };
+
+protected:
+    using Properties = Bedrock::EnumSet<Property, Property::_count>;
+
 public:
-    void setChanged() override { properties_.insert(BlockActor::Property::Changed); }
-    [[nodiscard]] bool isChanged() const override { return properties_.contains(BlockActor::Property::Changed); }
+    void setChanged() override { properties_.insert(Property::Changed); }
+    [[nodiscard]] bool isChanged() const override { return properties_.contains(Property::Changed); }
 
 protected:
     int tick_count_;                                    // +72
-    BlockActor::Properties properties_;                 // +76
+    Properties properties_;                             // +76
     AABB bb_;                                           // +80
     BlockActorRendererId renderer_id_;                  // +104
     ActorTerrainInterlockData terrain_interlock_data_;  // +112

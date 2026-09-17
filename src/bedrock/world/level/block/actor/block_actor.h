@@ -17,7 +17,6 @@
 #include <memory>
 #include <string>
 
-#include "bedrock/core/container/enum_set.h"
 #include "bedrock/forward.h"
 #include "bedrock/safety/redactable_string.h"
 #include "bedrock/world/actor/actor_terrain_interlock_data.h"
@@ -29,17 +28,7 @@ class ILevel;
 
 class BlockActor {
 public:
-    enum class Property : uint8_t {
-        Changed = 0,
-        Movable = 1,
-        ClientSideOnly = 2,
-        SaveCustomName = 3,
-        CanRenderCustomName = 4,
-        _count = 5,
-    };
-    using Properties = Bedrock::EnumSet<Property, Property::_count>;
-
-    BlockActor(BlockActorType, const BlockPos &, const std::string &);
+    BlockActor(BlockActorType type, const BlockPos &pos);
     virtual ~BlockActor() = default;
 
     [[nodiscard]] BlockActorType getType() const { return type_; }

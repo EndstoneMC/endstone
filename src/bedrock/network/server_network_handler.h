@@ -33,7 +33,6 @@
 #include "bedrock/network/network_identifier.h"
 #include "bedrock/network/network_server_config.h"
 #include "bedrock/network/packet/login_packet.h"
-#include "bedrock/network/player_connection_connector.h"
 #include "bedrock/network/server_network_system.h"
 #include "bedrock/network/sub_client_connection_request.h"
 #include "bedrock/network/xbox_live_user_observer.h"
@@ -47,6 +46,7 @@
 #include "bedrock/world/game_callbacks.h"
 #include "bedrock/world/level/level_interface.h"
 #include "bedrock/world/level/level_listener.h"
+#include "bedrock/world/level/player_connection_connector.h"
 
 class ServerNetworkHandler : public Bedrock::Threading::EnableQueueForMainThread,
                              public NetEventCallback,

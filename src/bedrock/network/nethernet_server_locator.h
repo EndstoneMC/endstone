@@ -27,21 +27,21 @@ class NetherNetServerLocator {
 public:
     struct ServerData {
         static constexpr std::uint8_t VERSION_NUMBER = 7;
+        std::uint8_t version;
         std::string server_name;
-        // TODO(fixme): check the names
-        int protocol;
-        std::string version;
+        std::int32_t protocol_version;
+        std::string app_version;
         std::string level_name;
         GameType game_type;
-        int num_players;
-        int max_num_players;
+        std::int32_t num_players;
+        std::int32_t max_num_players;
         bool is_editor_world;
         bool is_hardcore;
         ServerSupportedAuthenticationTypes supported_auth;
         Social::Nonce nonce;
         Social::ConnectionType connection_type;
 
-        void write(BinaryStream &stream) const;
-        Bedrock::Result<void> read(ReadOnlyBinaryStream &stream);
+        void write(BinaryStream &stream) const;                 // Endstone
+        Bedrock::Result<void> read(ReadOnlyBinaryStream &stream);  // Endstone
     };
 };

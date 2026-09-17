@@ -14,19 +14,16 @@
 
 #pragma once
 
-#include "bedrock/core/utility/non_owner_pointer.h"
-#include "bedrock/entity/gamerefs_entity/entity_context.h"
-#include "bedrock/gamerefs/owner_ptr.h"
-#include "bedrock/world/actor/actor.h"
-#include "bedrock/world/actor/actor_definition_identifier.h"
+#include "bedrock/core/utility/pub_sub/connector.h"
+#include "bedrock/network/network_identifier.h"
+#include "bedrock/world/level/block_pos.h"
+#include "bedrock/world/level/dimension/dimension_type.h"
 
-class Experiments;
-class Level;
-
-class ActorFactory {
+class IPlayerConnectionConnector {
 public:
-    ActorFactory(Bedrock::NotNullNonOwnerPtr<Level> level, const Experiments &experiments);
-    virtual ~ActorFactory();
-    OwnerPtr<EntityContext> createSpawnedActor(const ActorDefinitionIdentifier &identifier, Actor *spawner,
-                                               const Vec3 &position, const Vec2 &rotation);
+    virtual ~IPlayerConnectionConnector() = default;
+    virtual Bedrock::PubSub::Connector<void(const NetworkIdentifierWithSubId &)> &getOnPlayerNetworkDisconnectedConnector() = 0;
+    virtual Bedrock::PubSub::Connector<void(const NetworkIdentifierWithSubId &, const BlockPos &, unsigned int, DimensionType)> &
+    getOnPlayerNetworkConnectedConnector() = 0;
 };
+static_assert(sizeof(IPlayerConnectionConnector) == 8);

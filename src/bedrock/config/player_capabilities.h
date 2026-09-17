@@ -24,8 +24,7 @@ struct IPlayerData {
     [[nodiscard]] virtual bool isAbilityEnabled(AbilitiesIndex) const = 0;
     [[nodiscard]] virtual bool isTeacher() const = 0;
     [[nodiscard]] virtual bool isOperator() const = 0;
-    // TODO(fixme): check the name - 1.26.51 added this alongside isTeacher and isOperator
-    [[nodiscard]] virtual bool unknown4() const = 0;
+    [[nodiscard]] virtual bool isExternalPlayerCommunicationAllowed() const = 0;
 };
 
 class PlayerData : public IPlayerData {
@@ -34,6 +33,7 @@ public:
     bool isAbilityEnabled(AbilitiesIndex) const override;
     bool isTeacher() const override;
     bool isOperator() const override;
+    bool isExternalPlayerCommunicationAllowed() const override;
 
 private:
     Player const &player_;
@@ -41,6 +41,7 @@ private:
 
 struct ISharedController {
     virtual ~ISharedController() = 0;
+    virtual bool canMessage(IPlayerData const &) const = 0;
     virtual bool canChat(IPlayerData const &) const = 0;
     virtual bool canTell(IPlayerData const &) const = 0;
     virtual bool canOpenChat(IPlayerData const &) const = 0;

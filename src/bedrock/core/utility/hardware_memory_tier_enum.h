@@ -14,19 +14,14 @@
 
 #pragma once
 
-#include "bedrock/core/utility/non_owner_pointer.h"
-#include "bedrock/entity/gamerefs_entity/entity_context.h"
-#include "bedrock/gamerefs/owner_ptr.h"
-#include "bedrock/world/actor/actor.h"
-#include "bedrock/world/actor/actor_definition_identifier.h"
+#include <cstdint>
 
-class Experiments;
-class Level;
-
-class ActorFactory {
-public:
-    ActorFactory(Bedrock::NotNullNonOwnerPtr<Level> level, const Experiments &experiments);
-    virtual ~ActorFactory();
-    OwnerPtr<EntityContext> createSpawnedActor(const ActorDefinitionIdentifier &identifier, Actor *spawner,
-                                               const Vec3 &position, const Vec2 &rotation);
+enum class HardwareMemoryTier : std::uint8_t {
+    TIER_0 = 0,
+    TIER_1 = 1,
+    TIER_2 = 2,
+    TIER_3 = 3,
+    TIER_4 = 4,
+    TIER_5 = 5,
+    COUNT = 6,
 };
