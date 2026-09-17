@@ -441,11 +441,11 @@ extra = 0
 # 2. the reader is constructed a few hundred bytes below, right after the Version/Branch/Commit ID banner
 #    and before server.properties is read; scan down for the `call [__imp__beginthreadex]`
 # 3. the `lea r8, <fn>` feeding that call is the thread entry - three call sites share the bare
-#    `lea r8 / xor ecx / xor edx / mov r9, rbx / call` shape, so the pattern carries the two argument
+#    `lea r8 / xor ecx / xor edx / mov r9, <reg> / call` shape, so the pattern carries the two argument
 #    stores above it; do NOT cut the prologue, which 741 other thread proxies share byte for byte
 # 4. confirm the body: it reads the reader out of `[rcx]`, calls GetStdHandle(-10) then GetConsoleMode,
 #    and getlines into std::wcin
-pattern = "48 8D 85 ? ? ? ? 48 89 44 24 ? C7 44 24 ? ? ? ? ? 4C 8D 05 ? ? ? ? 31 C9 31 D2 49 89 D9 FF 15"
+pattern = "48 8D 85 ? ? ? ? 48 89 44 24 ? C7 44 24 ? ? ? ? ? 4C 8D 05 ? ? ? ? 31 C9 31 D2 49 89 ? FF 15"
 rip_relative = true
 rip_offset = 23
 
