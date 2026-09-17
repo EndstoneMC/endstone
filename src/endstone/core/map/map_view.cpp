@@ -23,14 +23,14 @@
 #include "endstone/core/server.h"
 
 namespace endstone::core {
-EndstoneMapView::EndstoneMapView(MapItemSavedData &map) : map_(map)
+EndstoneMapView::EndstoneMapView(ActorUniqueID map_id) : map_id_(map_id)
 {
-    EndstoneMapView::addRenderer(std::make_shared<EndstoneMapRenderer>(*this, map));
+    EndstoneMapView::addRenderer(std::make_shared<EndstoneMapRenderer>());
 }
 
 std::int64_t EndstoneMapView::getId() const
 {
-    return map_.getMapId().raw_id;
+    return map_id_.raw_id;
 }
 
 bool EndstoneMapView::isVirtual() const
@@ -40,44 +40,46 @@ bool EndstoneMapView::isVirtual() const
 
 MapView::Scale EndstoneMapView::getScale() const
 {
-    return static_cast<Scale>(map_.getScale());
+    return static_cast<Scale>(getHandle().getScale());
 }
 
 void EndstoneMapView::setScale(Scale scale)
 {
-    map_.setScale(static_cast<int>(scale));
+    getHandle().setScale(static_cast<int>(scale));
 }
 
 int EndstoneMapView::getCenterX() const
 {
-    return map_.getOrigin().x;
+    return getHandle().getOrigin().x;
 }
 
 int EndstoneMapView::getCenterZ() const
 {
-    return map_.getOrigin().z;
+    return getHandle().getOrigin().z;
 }
 
 void EndstoneMapView::setCenterX(const int x)
 {
-    if (map_.getOrigin().x != x) {
-        map_.origin_.x = x;
-        map_.setDirtyForSaveAndPixelData();
+    auto &map = getHandle();
+    if (map.getOrigin().x != x) {
+        map.origin_.x = x;
+        map.setDirtyForSaveAndPixelData();
     }
 }
 
 void EndstoneMapView::setCenterZ(const int z)
 {
-    if (map_.getOrigin().z != z) {
-        map_.origin_.z = z;
-        map_.setDirtyForSaveAndPixelData();
+    auto &map = getHandle();
+    if (map.getOrigin().z != z) {
+        map.origin_.z = z;
+        map.setDirtyForSaveAndPixelData();
     }
 }
 
 Nullable<Dimension> EndstoneMapView::getDimension() const
 {
     const auto *level = EndstoneServer::getInstance().getEndstoneLevel();
-    const auto dimension = level->getHandle().getDimension(map_.getDimensionId());
+    const auto dimension = level->getHandle().getDimension(getHandle().getDimensionId());
     if (!dimension.isSet()) {
         return nullptr;
     }
@@ -86,7 +88,7 @@ Nullable<Dimension> EndstoneMapView::getDimension() const
 
 void EndstoneMapView::setDimension(const NotNull<Dimension> &dimension)
 {
-    map_.setDimensionId(dimension.cast<EndstoneDimension>()->getHandle().getDimensionId());
+    getHandle().setDimensionId(dimension.cast<EndstoneDimension>()->getHandle().getDimensionId());
 }
 
 std::vector<NotNull<MapRenderer>> EndstoneMapView::getRenderers() const
@@ -117,27 +119,29 @@ bool EndstoneMapView::removeRenderer(const NotNull<MapRenderer> &renderer)
 
 bool EndstoneMapView::isUnlimitedTracking() const
 {
-    return map_.unlimited_tracking_;
+    return getHandle().unlimited_tracking_;
 }
 
 void EndstoneMapView::setUnlimitedTracking(const bool unlimited)
 {
-    if (map_.unlimited_tracking_ != unlimited) {
-        map_.unlimited_tracking_ = unlimited;
-        // map_.setDirtyForSaveAndPixelData();
+    auto &map = getHandle();
+    if (map.unlimited_tracking_ != unlimited) {
+        map.unlimited_tracking_ = unlimited;
+        // map.setDirtyForSaveAndPixelData();
     }
 }
 
 bool EndstoneMapView::isLocked() const
 {
-    return map_.isLocked();
+    return getHandle().isLocked();
 }
 
 void EndstoneMapView::setLocked(const bool locked)
 {
-    if (map_.isLocked() != locked) {
-        map_.locked_ = locked;
-        // map_.setDirtyForSaveAndPixelData();
+    auto &map = getHandle();
+    if (map.isLocked() != locked) {
+        map.locked_ = locked;
+        // map.setDirtyForSaveAndPixelData();
     }
 }
 
@@ -173,6 +177,15 @@ const RenderData &EndstoneMapView::render(const NotNull<EndstonePlayer> &player)
         }
     }
     return render;
+}
+
+MapItemSavedData &EndstoneMapView::getHandle() const
+{
+    auto *map = EndstoneServer::getInstance().getEndstoneLevel()->getHandle().getMapSavedData(map_id_);
+    if (!map) {
+        throw std::runtime_error("Trying to access a map that is no longer valid.");
+    }
+    return *map;
 }
 
 bool EndstoneMapView::isContextual() const

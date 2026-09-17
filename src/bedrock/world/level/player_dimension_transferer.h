@@ -14,7 +14,10 @@
 
 #pragma once
 
+#include "bedrock/core/utility/pub_sub/connector.h"
 #include "bedrock/forward.h"
+#include "bedrock/network/network_identifier.h"
+#include "bedrock/world/actor/actor_unique_id.h"
 #include "bedrock/world/level/dimension/dimension_type.h"
 
 struct AddLimboActorHelper;
@@ -24,6 +27,10 @@ public:
     virtual Bedrock::PubSub::Connector<void(DimensionType)> &
     getOnAnyPlayerChangeDimensionPreSuspendRegionConnector() = 0;
     virtual Bedrock::PubSub::Connector<void()> &getOnAnyPlayerChangeDimensionPrepareRegionCompleteConnector() = 0;
+    virtual Bedrock::PubSub::Connector<void(ActorUniqueID, DimensionType)> &
+    getOnAnyPlayerChangeDimensionCompleteConnector() = 0;
+    virtual Bedrock::PubSub::Connector<void(const NetworkIdentifierWithSubId &, DimensionType)> &
+    getOnPlayerLeftDimensionConnector() = 0;
 };
 
 class IPlayerDimensionTransferer : public IPlayerDimensionTransferConnector {

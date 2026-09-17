@@ -63,7 +63,7 @@ public:
     virtual bool hasPackKeyEntry(PackManifest const &, std::string const &) = 0;
     virtual const std::vector<std::string> &getSupportedLanguageCodes() = 0;
     virtual std::string const &getLanguageName(std::string const &) = 0;
-    virtual std::shared_ptr<const Localization> getLocaleFor(std::string const &) = 0;
+    virtual const std::shared_ptr<const Localization> getLocaleFor(std::string const &) = 0;
     virtual std::string const &getLocaleCodeFor(std::string const &) = 0;
     virtual gsl::not_null<std::shared_ptr<const Localization>> getCurrentLanguage() = 0;
     virtual bool languageSupportsHypenSplitting() = 0;

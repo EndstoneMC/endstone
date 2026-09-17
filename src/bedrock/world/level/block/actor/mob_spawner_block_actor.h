@@ -30,4 +30,4 @@ public:
 private:
     std::unique_ptr<BaseMobSpawner> spawner_;
 };
-BEDROCK_STATIC_ASSERT_SIZE(MobSpawnerBlockActor, 240, 216);
+BEDROCK_STATIC_ASSERT_SIZE(MobSpawnerBlockActor, 248, 224);

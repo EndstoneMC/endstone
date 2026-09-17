@@ -14,6 +14,8 @@
 
 #pragma once
 
+#include "bedrock/bedrock.h"
+
 #include <memory>
 #include <optional>
 #include <vector>
@@ -77,5 +79,6 @@ private:
             float current_value_;
         };
     };
+    bool value_changed_during_tick_;
 };
-static_assert(sizeof(AttributeInstance) == 128);
+BEDROCK_STATIC_ASSERT_SIZE(AttributeInstance, 136, 136);

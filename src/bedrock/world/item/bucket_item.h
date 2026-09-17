@@ -16,6 +16,7 @@
 
 #include "bedrock/bedrock.h"
 #include "bedrock/common_types.h"
+#include "bedrock/world/item/equipment_slot.h"
 
 class Actor;
 class BlockPos;
@@ -26,5 +27,5 @@ class Vec3;
 class BucketItem {
 private:
     ENDSTONE_HOOK virtual InteractionResult _useOn(ItemStack &instance, Actor &entity, BlockPos pos, FacingID face,
-                                                   const Vec3 &click_pos) const;
+                                                   HandSlot hand_slot, const Vec3 &click_pos) const;
 };

@@ -23,10 +23,9 @@
 #include "endstone/event/player/player_bucket_actor_event.h"
 #include "endstone/runtime/hook.h"
 
-InteractionResult BucketableComponent::getInteraction(::Actor &owner, ::Player &player, ::ActorInteraction &interaction)
+Interaction BucketableComponent::getInteraction(::Actor &owner, ::Player &player)
 {
-    const auto result =
-        ENDSTONE_HOOK_CALL_ORIGINAL(&BucketableComponent::getInteraction, this, owner, player, interaction);
+    auto result = ENDSTONE_HOOK_CALL_ORIGINAL(&BucketableComponent::getInteraction, this, owner, player);
     if (!result.isSuccessful()) {
         return result;
     }
@@ -40,7 +39,7 @@ InteractionResult BucketableComponent::getInteraction(::Actor &owner, ::Player &
     };
     server.getPluginManager().callEvent(event);
     if (event.isCancelled()) {
-        return InteractionResult::Failure();
+        return {};
     }
     return result;
 }

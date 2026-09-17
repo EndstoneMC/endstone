@@ -14,6 +14,8 @@
 
 #pragma once
 
+#include <cstddef>
+
 #include "bedrock/platform/brstd/detail/function.h"
 
 namespace brstd {
@@ -22,6 +24,7 @@ class move_only_function
     : public detail::function::function_invoke<detail::function::DerivedType::MoveOnly, Signature, false> {
 public:
     using detail::function::function_invoke<detail::function::DerivedType::MoveOnly, Signature, false>::operator();
+    move_only_function(std::nullptr_t) {}
     template <typename F>
     move_only_function(F &&f)
         requires(!std::is_same_v<move_only_function, std::remove_cvref_t<F>>)

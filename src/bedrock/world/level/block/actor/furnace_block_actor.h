@@ -70,4 +70,4 @@ private:
     bool no_drop_;
     bool needs_lit_state_fixup_;
 };
-BEDROCK_STATIC_ASSERT_SIZE(FurnaceBlockActor, 1408, 1264);
+BEDROCK_STATIC_ASSERT_SIZE(FurnaceBlockActor, 1416, 1272);

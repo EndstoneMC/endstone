@@ -169,4 +169,9 @@ Custom third-party recipes live under `recipes/` and are published to the `endst
   - Versions and sections must be linkable (reference-style links at bottom).
   - Display the release date of each version.
   - Include user-visible changes and API changes; omit internal implementation details (no refactoring notes, no internal class/struct changes).
+  - One short sentence per entry: state what changed, not why or how.
+  - Append the issue number when a fix closes an issue, e.g. `(#528)`.
+  - Do not list fixes for bugs introduced by unreleased work, such as a BDS bump in the same release.
+  - Do not list fixes with no visible effect on the release branch, such as a back-port for an API that only exists on develop.
+  - Do not add caveats that read as restrictions, such as "Only 1.26.51 clients can join" or a transport warning Bedrock logs but does not enforce.
   - Prefix breaking changes with `**BREAKING**:` in the Changed or Removed section.

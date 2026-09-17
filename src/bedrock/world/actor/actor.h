@@ -56,12 +56,12 @@
 #include "bedrock/world/actor/armor_slot.h"
 #include "bedrock/world/actor/synched_actor_data.h"
 #include "bedrock/world/effect/mob_effect_instance.h"
-#include "bedrock/world/gamemode/interaction_result.h"
 #include "bedrock/world/item/equipment_slot.h"
 #include "bedrock/world/item/item_helper.h"
 #include "bedrock/world/level/dimension/dimension.h"
 #include "endstone/actor/actor.h"
 
+class Interaction;
 class Player;
 class Level;
 
@@ -213,7 +213,6 @@ public:
     virtual bool load(CompoundTag const &, DataLoadHelper &) = 0;
     [[nodiscard]] virtual HashedString const &queryEntityRenderer() const = 0;
     [[nodiscard]] virtual ActorUniqueID getSourceUniqueID() const = 0;
-    [[nodiscard]] virtual bool canFreeze() const = 0;
     [[nodiscard]] virtual AABB getLiquidAABB(MaterialType) const = 0;
     virtual void handleInsidePortal(BlockPos const &) = 0;
     [[nodiscard]] virtual bool canChangeDimensionsUsingPortal() const = 0;
@@ -239,14 +238,14 @@ public:
     [[nodiscard]] virtual bool canObstructSpawningAndBlockPlacement() const = 0;
     virtual AnimationComponent &getAnimationComponent() = 0;
     virtual void openContainerComponent(Player &) = 0;
-    virtual bool swing(ActorSwingSource swing_source) = 0;
+    virtual bool swing(ActorSwingSource, HandSlot) = 0;
     virtual void useItem(ItemStackBase &, ItemUseMethod, bool) = 0;
     virtual void getDebugText(std::vector<std::string> &) = 0;
     [[nodiscard]] virtual float getMapDecorationRotation() const = 0;
     [[nodiscard]] virtual float getPassengerYRotation(Actor const &) const = 0;
     virtual bool add(ItemStack &) = 0;
     virtual bool drop(ItemStack const &, bool) = 0;
-    virtual InteractionResult getInteraction(Player &, ActorInteraction &, Vec3 const &) = 0;
+    virtual Interaction getInteraction(Player &, Vec3 const &) = 0;
     [[nodiscard]] virtual bool canDestroyBlock(Block const &) const = 0;
     virtual void setAuxValue(int) = 0;
     virtual void renderDebugServerState(const IOptionsReader &options) = 0;

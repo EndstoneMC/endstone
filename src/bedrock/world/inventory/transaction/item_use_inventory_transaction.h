@@ -19,6 +19,7 @@
 #include "bedrock/common_types.h"
 #include "bedrock/core/math/vec3.h"
 #include "bedrock/world/inventory/transaction/complex_inventory_transaction.h"
+#include "bedrock/world/item/equipment_slot.h"
 #include "bedrock/world/item/network_item_stack_descriptor.h"
 #include "bedrock/world/level/block_pos.h"
 
@@ -50,6 +51,7 @@ public:
     BlockRuntimeId target_block_id_;
     FacingID face_;
     std::int32_t slot_;
+    HandSlot hand_;
     NetworkItemStackDescriptor item_;
     Vec3 from_pos_;
     Vec3 click_pos_;

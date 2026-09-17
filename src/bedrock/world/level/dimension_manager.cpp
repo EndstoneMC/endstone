@@ -16,12 +16,6 @@
 
 #include "bedrock/symbol.h"
 
-std::optional<DimensionType> DimensionManager::serverRegisterCustomDimension(std::string_view name,
-                                                                             const mce::UUID &pack_id)
-{
-    return BEDROCK_CALL(&DimensionManager::serverRegisterCustomDimension, this, name, pack_id);
-}
-
 WeakRef<Dimension> DimensionManager::getOrCreateDimension(std::string_view name)
 {
     return BEDROCK_CALL(static_cast<WeakRef<Dimension> (DimensionManager::*)(std::string_view)>(

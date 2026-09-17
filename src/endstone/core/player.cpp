@@ -746,7 +746,7 @@ std::chrono::milliseconds EndstonePlayer::getPing() const
     if (!peer) {
         return {};
     }
-    return peer->getNetworkStatus().average_ping;
+    return peer->getNetworkStatus().current_ping;
 }
 
 std::string EndstonePlayer::getLocale() const
@@ -861,22 +861,22 @@ void EndstonePlayer::sendPacket(int packet_id, std::string_view payload) const
 
 void EndstonePlayer::sendMap(MapView &map)
 {
-    auto &view = static_cast<EndstoneMapView &>(map);
+    auto &handle = static_cast<EndstoneMapView &>(map).getHandle();
     auto packet = MinecraftPackets::createPacket(MinecraftPacketIds::MapData);
     auto &pk = static_cast<ClientboundMapItemDataPacket &>(*packet);
-    pk.payload.map_id = view.map_.getMapId();
-    pk.payload.scale = view.map_.getScale();
+    pk.payload.map_id = handle.getMapId();
+    pk.payload.scale = handle.getScale();
     pk.payload.start_x = 0;
     pk.payload.start_y = 0;
-    pk.payload.map_origin = view.map_.getOrigin();
-    pk.payload.dimension = view.map_.getDimensionId().value;
+    pk.payload.map_origin = handle.getOrigin();
+    pk.payload.dimension = handle.getDimensionId().value;
     pk.payload.width = MapConstants::MAP_SIZE;
     pk.payload.height = MapConstants::MAP_SIZE;
     pk.payload.type =
         ClientboundMapItemDataPacket::Type::TextureUpdate | ClientboundMapItemDataPacket::Type::DecorationUpdate;
-    pk.payload.locked = view.map_.isLocked();
+    pk.payload.locked = handle.isLocked();
 
-    for (const auto &[unique_id, decoration] : view.map_.getDecorations()) {
+    for (const auto &[unique_id, decoration] : handle.getDecorations()) {
         pk.payload.unique_ids.emplace_back(unique_id);
         pk.payload.decorations.emplace_back(decoration);
     }
@@ -1054,7 +1054,7 @@ void EndstonePlayer::initFromConnectionRequest(std::variant<std::reference_wrapp
             case BuildPlatform::Sony:
                 device_os_ = "PlayStation";
                 break;
-            case BuildPlatform::Nx:
+            case BuildPlatform::Nintendo:
                 device_os_ = "Switch";
                 break;
             case BuildPlatform::WindowsPhone_Deprecated:

@@ -36,7 +36,6 @@ public:
     Bedrock::PubSub::Connector<void(Dimension &)> &getOnNewDimensionCreatedConnector() override;
     Bedrock::PubSub::Connector<void(DimensionManager &)> &getOnReadyForCustomDimensionRegistrationConnector() override;
     void shutdown();
-    std::optional<DimensionType> serverRegisterCustomDimension(std::string_view name, const mce::UUID &pack_id);
     WeakRef<Dimension> getRandomDimension(Random &random);
     WeakRef<Dimension> getOrCreateDimension(DimensionType dimension_type);
     WeakRef<Dimension> getOrCreateDimension(std::string_view name);

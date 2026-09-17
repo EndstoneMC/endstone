@@ -14,7 +14,7 @@
 
 #pragma once
 
-enum class BuildPlatform {
+enum class BuildPlatform : int {
     Unknown = -1,
     Google = 1,
     iOS = 2,
@@ -26,7 +26,7 @@ enum class BuildPlatform {
     Dedicated = 9,
     tvOS_Deprecated = 10,
     Sony = 11,
-    Nx = 12,
+    Nintendo = 12,
     Xbox = 13,
     WindowsPhone_Deprecated = 14,
     Linux = 15,

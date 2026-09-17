@@ -25,5 +25,6 @@ public:
     static SocketAddress fromSystemAddress(const RakNet::SystemAddress &network_id);
     static SocketAddress fromNetworkIdentifier(const NetworkIdentifier &network_id);
     static SocketAddress fromWebRtcCandidate(const webrtc::Candidate &candidate);
+    static SocketAddress fromWebRtcSocketAddress(const webrtc::SocketAddress &address);
 };
 }  // namespace endstone::core

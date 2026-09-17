@@ -49,7 +49,12 @@ SocketAddress EndstoneSocketAddress::fromNetworkIdentifier(const NetworkIdentifi
 
 SocketAddress EndstoneSocketAddress::fromWebRtcCandidate(const webrtc::Candidate &candidate)
 {
-    const auto &ip = candidate.address_.ip_;
+    return fromWebRtcSocketAddress(candidate.address_);
+}
+
+SocketAddress EndstoneSocketAddress::fromWebRtcSocketAddress(const webrtc::SocketAddress &address)
+{
+    const auto &ip = address.ip_;
     char buffer[INET6_ADDRSTRLEN + 1] = {};
     switch (ip.family_) {
     case AF_INET:
@@ -65,6 +70,6 @@ SocketAddress EndstoneSocketAddress::fromWebRtcCandidate(const webrtc::Candidate
     default:
         return {};
     }
-    return {buffer, candidate.address_.port_};
+    return {buffer, address.port_};
 }
 }  // namespace endstone::core

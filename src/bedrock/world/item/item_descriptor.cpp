@@ -15,6 +15,7 @@
 #include "bedrock/world/item/item_descriptor.h"
 
 #include <map>
+#include <string>
 
 #include "bedrock/bedrock.h"
 #include "bedrock/world/item/item.h"
@@ -26,6 +27,7 @@ struct InternalItemDescriptor : ItemDescriptor::BaseDescriptor {
     [[nodiscard]] std::unique_ptr<BaseDescriptor> clone() const override;
     [[nodiscard]] bool sameItem(const ItemDescriptor::ItemEntry &, bool) const override;
     [[nodiscard]] std::string getFullName() const override;
+    [[nodiscard]] std::string getNameAndAux() const override;
     [[nodiscard]] ItemDescriptor::ItemEntry getItem() const override;
     [[nodiscard]] std::map<std::string, std::string> toMap() const override;
     [[nodiscard]] std::optional<CompoundTag> save() const override;
@@ -69,6 +71,15 @@ bool InternalItemDescriptor::sameItem(const ItemDescriptor::ItemEntry &other, bo
 std::string InternalItemDescriptor::getFullName() const
 {
     return item_entry_.item->getFullItemName();
+}
+
+std::string InternalItemDescriptor::getNameAndAux() const
+{
+    auto result = item_entry_.item->getSerializedName();
+    if (item_entry_.aux_value != ItemDescriptor::ANY_AUX_VALUE) {
+        result += ":" + std::to_string(item_entry_.aux_value);
+    }
+    return result;
 }
 
 ItemDescriptor::ItemEntry InternalItemDescriptor::getItem() const
@@ -269,8 +280,8 @@ const Block *ItemDescriptor::ItemEntry::getBlock() const
     if (!item) {
         return nullptr;
     }
-    const auto &block_type = item->getBlockType();
-    if (block_type.isNull()) {
+    const auto *block_type = item->getBlockType();
+    if (block_type == nullptr) {
         return nullptr;
     }
     if (aux_value == ANY_AUX_VALUE) {
@@ -297,7 +308,12 @@ std::string ItemDescriptor::BaseDescriptor::toString() const
     return getFullName();
 }
 
-bool ItemDescriptor::BaseDescriptor::forEachItemUntil(std::function<bool(Item const &, std::int16_t)> func) const
+std::string ItemDescriptor::BaseDescriptor::getNameAndAux() const
+{
+    return getFullName();
+}
+
+bool ItemDescriptor::BaseDescriptor::forEachItemUntil(brstd::function_ref<bool(Item const &, std::int16_t)> func) const
 {
     if (const auto item = getItem(); item.item) {
         return func(*item.item, item.aux_value);

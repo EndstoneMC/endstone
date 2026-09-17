@@ -14,8 +14,15 @@
 
 #pragma once
 
+#include <optional>
+#include <string>
+#include <string_view>
+
+#include <gsl/gsl>
+
 #include "bedrock/core/threading/async.h"
 #include "bedrock/resources/content_source_repository.h"
+#include "bedrock/resources/invalid_packs.h"
 #include "bedrock/resources/invalid_packs_filter_group.h"
 #include "bedrock/resources/pack_source.h"
 #include "bedrock/resources/pack_source_factory.h"
@@ -28,7 +35,7 @@ public:
     [[nodiscard]] virtual ResourcePack *getResourcePackOfDifferentVersionForPackId(const PackIdVersion &) const = 0;
     [[nodiscard]] virtual ResourcePack *getResourcePackForPackIdInPath(PackIdVersion const &,
                                                                        Core::Path const &) const = 0;
-    [[nodiscard]] virtual ResourcePack *getResourcePackByUUID(mce::UUID const &) const = 0;
+    [[nodiscard]] virtual std::vector<ResourcePack *> getResourcePacksByUUID(mce::UUID const &) const = 0;
     [[nodiscard]] virtual ResourcePack *getResourcePackForPackIdOwned(PackIdVersion const &) const = 0;
     [[nodiscard]] virtual std::shared_ptr<ResourcePack> getResourcePackSatisfiesPackId(PackIdVersion const &,
                                                                                        bool) const = 0;
@@ -41,7 +48,7 @@ public:
     [[nodiscard]] virtual std::shared_ptr<ResourcePack> getVanillaPack() const = 0;
     virtual bool setServicePacks(std::vector<PackIdVersion>) = 0;
     virtual void addServicePacksToStack(ResourcePackStack &) const = 0;
-    virtual void addSystemPacksToStack(ResourcePackStack &) const = 0;
+    virtual void addSystemPacksToStack(ResourcePackStack &, std::optional<std::string>) const = 0;
     virtual void addCachedResourcePacks(ContentKeyMap const *) = 0;
     virtual void addWorldResourcePacks(Core::Path const &) = 0;
     virtual void addPremiumWorldTemplateResourcePacks(Core::Path const &, ContentIdentity const &) = 0;
@@ -72,10 +79,13 @@ public:
     [[nodiscard]] virtual std::vector<gsl::not_null<std::shared_ptr<ResourcePack>>> getPacksByCategory(
         PackCategory) const = 0;
     virtual void forEachPack(const std::function<void(const ResourcePack &)> &) const = 0;
-    [[nodiscard]] virtual std::vector<ResourceLocation> const &getInvalidPacks(PackType) const = 0;
-    [[nodiscard]] virtual std::vector<ResourceLocation> getInvalidPacks(InvalidPacksFilterGroup const &) const = 0;
-    virtual void deletePack(ResourceLocation const &) = 0;
-    virtual void deletePackFiles(ResourceLocation const &) = 0;
+    [[nodiscard]] virtual std::vector<InvalidPack> const &getInvalidPacks() const = 0;
+    [[nodiscard]] virtual std::vector<InvalidPack> getInvalidPacks(PackType) const = 0;
+    [[nodiscard]] virtual std::vector<InvalidPack> getInvalidPacks(InvalidPacksFilterGroup const &) const = 0;
+    [[nodiscard]] virtual std::vector<InvalidPack> getInvalidPacks(PackOrigin) const = 0;
+    virtual void deletePacks(gsl::span<const ResourceLocation>, std::string_view) = 0;
+    virtual void deletePack(ResourceLocation const &, std::string_view) = 0;
+    virtual void deletePackFiles(ResourceLocation const &, std::string_view) = 0;
     virtual void postDeletePack(ResourceLocation const &) = 0;
     virtual void untrackInvalidPack(ResourceLocation const &) = 0;
     [[nodiscard]] virtual bool isInitialized() const = 0;

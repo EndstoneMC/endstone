@@ -25,8 +25,8 @@
 
 namespace py = pybind11;
 
-DedicatedServer::ServerExitCode DedicatedServer::start(const std::string &session_id,
-                                                       const Bedrock::ActivationArguments &args)
+ServerExitCode DedicatedServer::start(const std::string &session_id,
+                                       const Bedrock::ActivationArguments &args)
 {
     // Initialise an isolated Python environment to avoid installing signal handlers
     // https://docs.python.org/3/c-api/init_config.html#init-isolated-conf

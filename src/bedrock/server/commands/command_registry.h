@@ -183,12 +183,14 @@ public:
         BlockStateArray = 0x100054,
         BlockStateArrayCont = 0x100055,
         ClockTimeMarkerName = 0x100056,
-        Command = 0x100057,
-        SlashCommand = 0x100058,
-        CodeBuilderArg = 0x100059,
-        CodeBuilderArgs = 0x10005a,
-        CodeBuilderSelectParam = 0x10005b,
-        CodeBuilderSelector = 0x10005c,
+        PoiTag = 0x100057,
+        PoiType = 0x100058,
+        Command = 0x100059,
+        SlashCommand = 0x10005a,
+        CodeBuilderArg = 0x10005b,
+        CodeBuilderArgs = 0x10005c,
+        CodeBuilderSelectParam = 0x10005d,
+        CodeBuilderSelector = 0x10005e,
     };
 
     class Symbol {

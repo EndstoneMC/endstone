@@ -21,10 +21,7 @@
 namespace endstone::core {
 class EndstoneMapRenderer : public MapRenderer {
 public:
-    EndstoneMapRenderer(EndstoneMapView &map_view, MapItemSavedData &map);
+    EndstoneMapRenderer();
     void render(MapView &map, MapCanvas &canvas, const NotNull<Player> &player) override;
-
-private:
-    MapItemSavedData &map_;
 };
 }  // namespace endstone::core

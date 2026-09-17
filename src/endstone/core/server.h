@@ -153,6 +153,8 @@ private:
     void enablePlugin(Plugin &plugin);
     void loadResourcePacks();
     void fixServerAnnouncement();
+    [[nodiscard]] bool isUsingNetherNet() const;
+    [[nodiscard]] std::uint16_t getSignalingPort() const;
 
     ServerInstance *server_instance_{nullptr};
     Logger &logger_;

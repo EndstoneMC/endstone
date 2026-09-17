@@ -14,6 +14,7 @@
 
 #pragma once
 
+#include "bedrock/core/threading/task_group.h"
 #include "bedrock/forward.h"
 #include "bedrock/resources/content_source_repository.h"
 #include "bedrock/resources/repository_loading.h"
@@ -39,7 +40,8 @@ public:
                            const Bedrock::NotNullNonOwnerPtr<IContentAccessibilityProvider> &content_accessibility,
                            const Bedrock::NotNullNonOwnerPtr<Core::FilePathManager> &path_manager,
                            Bedrock::NonOwnerPointer<PackCommand::IPackCommandPipeline> commands,
-                           PackSourceFactory &pack_source_factory, bool init_async,
+                           PackSourceFactory &pack_source_factory,
+                           Bedrock::NonOwnerPointer<IMinecraftEventing> minecraft_eventing, bool init_async,
                            std::unique_ptr<IRepositoryFactory> factory);
 
 private:
@@ -55,6 +57,7 @@ private:
     std::vector<PackIdVersion> service_packs_;
     PackManifestFactory &manifest_factory_;
     Bedrock::NotNullNonOwnerPtr<IContentAccessibilityProvider> content_accessibility_;
+    Bedrock::NonOwnerPointer<IMinecraftEventing> minecraft_eventing_;
     Core::HeapPathBuffer current_world_path_;
     Core::HeapPathBuffer current_premium_world_template_path_;
     ContentKeyMap temp_cache_content_keys_;
@@ -65,4 +68,4 @@ private:
     ContentIdentity current_premium_world_template_identity_;
     gsl::not_null<std::unique_ptr<ResourcePackRepositoryRefreshQueue>> refresher_;
 };
-BEDROCK_STATIC_ASSERT_SIZE(ResourcePackRepository, 384, 344);
+BEDROCK_STATIC_ASSERT_SIZE(ResourcePackRepository, 408, 368);

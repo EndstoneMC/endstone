@@ -2,7 +2,7 @@ from endstone import Player, Server
 
 
 def test_run_command(player: Player):
-    assert player.perform_command("help")
+    assert player.perform_command("test sender")
 
 
 def test_run_command_as_server(player: Player, server: Server):

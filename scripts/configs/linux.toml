@@ -1,4 +1,4 @@
-version = "1.26.45"
+version = "1.26.51"
 platform = "linux"
 executable = "bedrock_server"
 filename = "bedrock_server"
@@ -21,7 +21,8 @@ extra = 0
 # 2. near its top initEnchants resets the Enchant::mEnchants vector (std::vector<std::unique_ptr<Enchant>>)
 #    then push_backs each enchant; that rip-relative vector load is mEnchants
 # 3. confirm vs the old named DB (also read by Enchant::isCompatibleWith)
-pattern = "48 8B 1D ? ? ? ? 48 8B 2D ? ? ? ? 49 89 EE"
+# rip-relative load in Enchant::initEnchants
+pattern = "48 8B 1D ? ? ? ? 4C 8B 3D ? ? ? ? 4D 89 FE"
 rip_relative = true
 rip_offset = 10
 
@@ -36,7 +37,7 @@ extra = 0
 # 3. confirm the body reads the input/material container ids 0x16/0x17 and writes the vector at the model tail
 # 4. confirm the pattern matches exactly once in the Linux 1.26.44 binary and the decompiled body matches the named
 #    Windows implementation
-pattern = "55 41 57 41 56 41 55 41 54 53 48 81 EC C8 01 00 00 48 89 FD 48 8B 47 30 48 8B B8 D0 01 00 00"
+pattern = "55 41 57 41 56 41 55 41 54 53 48 81 EC B8 0B 00 00 48 89 FB 48 8B 47 30 48 8B B8 D0 01 00 00"
 
 [[signatures]]
 name = "_ZN12EnchantUtils20getBookCasePositionsER11BlockSourceRK4Vec3"
@@ -48,15 +49,20 @@ extra = 0
 # 3. confirm the resolved target has the `std::vector<Vec3>(BlockSource&, Vec3 const&)` return shape and matches the
 #    named Windows implementation
 # 4. confirm the call-site pattern resolves to exactly one target in the Linux 1.26.44 binary
-pattern = "48 8D BC 24 38 01 00 00 48 8D 94 24 90 00 00 00 48 89 C6 E8 ? ? ? ? 48 8B BC 24 38 01 00 00"
+pattern = "48 8D BC 24 10 01 00 00 48 8D 54 24 70 48 89 C6 E8 ? ? ? ? 48 8B BC 24 10 01 00 00"
 rip_relative = true
-rip_offset = 20
+rip_offset = 17
 
 [[signatures]]
 name = "getI18n::result"
 relative = false
 extra = 0
-pattern = "0F 29 84 24 ? ? ? ? 48 8D 35 ? ? ? ? 48 8B 05 ? ? ? ? 48 8D 7C 24"
+# 1. locate SayCommand::_sendMessage (see its entry) - it calls getI18n().get("chat.type.announcement", ...)
+# 2. the I18n singleton is reached as a pair of rip-relative refs to the SAME address: `lea rsi, [result]`
+#    (the this pointer) followed by `mov rax, [result]` (its vptr), then a call through [rax+0x88]
+# 3. confirm by reference population - the address is a .bss global read by ~150 functions
+# rip-relative load in SayCommand::_sendMessage
+pattern = "0F 29 84 24 ? ? ? ? 48 8D 35 ? ? ? ? 48 8B 05 ? ? ? ? 48 8D 7C 24 ? 48 89 E2 48 8D 4C 24"
 rip_relative = true
 rip_offset = 11
 
@@ -66,12 +72,13 @@ relative = false
 extra = 0
 # 1. MobEffect::getById is always inlined as `cmp <id>, 25h` (NUM_EFFECTS-1) / `ja` / `lea <reg>, mMobEffects` /
 #    `mov <reg>, [<reg>+<id>*8]` / `test`; the lea target is the array base
-# 2. reach one such site from Actor::addEffect (see that entry), which reads mMobEffects[instance.getId()],
-#    or from any of the base's many data xrefs
+# 2. the inlined sites sit in Actor::addEffect's CALLERS, not in addEffect itself: each computes
+#    MobEffect::getById(id) and then calls Actor::addEffect ~0x29 bytes later. Decode the lea at every site
+#    and take the base they all agree on - in 1.26.51 all 14 sites resolve to the same address
 # 3. confirm vs the old named DB: the base has hundreds of xrefs, while the named MobEffect* statics the
 #    registry init writes beside it have only a handful - do NOT anchor on an init store
 # rip-relative load in an inlined MobEffect::getById, anchored on the NUM_EFFECTS bound check (unique)
-pattern = "48 83 FA 25 77 ? 48 8D 05 ? ? ? ? 48 8B 04 D0 48 85 C0"
+pattern = "48 83 F8 25 77 ? 48 8D 0D ? ? ? ? 48 8B 04 C1 48 85 C0 74 ? 80 78 0C 00"
 rip_relative = true
 rip_offset = 9
 
@@ -114,7 +121,7 @@ name = "_ZN5Actor9addEffectERK17MobEffectInstance"
 relative = false
 extra = 0
 # function prologue
-pattern = "55 41 57 41 56 41 55 41 54 53 48 81 EC 08 02 00 00 48 89 F3 48 89"
+pattern = "55 41 57 41 56 41 55 41 54 53 48 81 EC 08 02 00 00 49 89 F6 48 89 FB 8B 36"
 
 [[signatures]]
 name = "_ZN12ActorFactory18createSpawnedActorERK25ActorDefinitionIdentifierP5ActorRK4Vec3RK4Vec2"
@@ -203,9 +210,8 @@ extra = 0
 # 1. search the ASCII bytes of "No block descriptor to resolve during deferred resolution" + a 00 terminator (unique)
 # 2. its lone data xref is a `lea` inside this function
 # 3. walk up to the prologue
-pattern = "E8 ? ? ? ? 4C 89 E7 E8 ? ? ? ? 8B 6B"
-rip_relative = true
-rip_offset = 1
+# function prologue
+pattern = "55 41 57 41 56 41 55 41 54 53 48 83 EC ? 89 F0 48 89 7C 24"
 
 [[signatures]]
 name = "_ZNK9BlockType25tryGetStateFromLegacyDataEt"
@@ -217,7 +223,8 @@ extra = 0
 #    Block CACHE - a hashtable keyed by the u16 legacy value, building the "minecraft:" name + resolving the
 #    block on a miss, so it reads like a hashtable insert/lookup (NOT a plain switch - don't reject it for that)
 # 3. confirm by behaviour, not address neighbourhood (it may sit in a cluster next to unrelated functions)
-pattern = "55 41 57 41 56 41 55 41 54 53 48 81 EC ? ? ? ? 89 F5 49 89 FE 4C 8D AF"
+# function prologue
+pattern = "55 41 57 41 56 41 55 41 54 53 48 81 EC ? ? ? ? 89 F5 49 89 FD"
 
 [[signatures]]
 name = "_ZNK9BlockType14spawnResourcesER11BlockSourceRK8BlockPosRK5BlockR7IRandomRK20ResourceDropsContextPK5Actor"
@@ -247,7 +254,7 @@ rip_relative = true
 rip_offset = 1
 
 [[signatures]]
-name = "_ZN19BucketableComponent14getInteractionER5ActorR6PlayerR16ActorInteraction"
+name = "_ZN19BucketableComponent14getInteractionER5ActorR6Player"
 relative = false
 extra = 0
 # 1. find bytes "6D 69 6E 65 63 72 61 66 74 3A 77 61 74 65 72 5F 62 75 63 6B 65 74 00"
@@ -272,7 +279,7 @@ extra = 0
 # 6. uniqueness: the pattern below matches exactly once in the 1.26.33, 1.26.40 and 1.26.44 ELFs.
 #    The wildcarded operands absorb the frame size, the jnz displacement, the closure-vtable lea and
 #    the three stack displacements
-pattern = "55 41 57 41 56 41 55 41 54 53 48 81 EC ? ? 00 00 80 79 60 00 0F 85 ? ? ? ? 48 89 CB 49 89 D6 48 8D 05 ? ? ? ? 48 89 84 24 ? ? 00 00 48 89 B4 24 ? ? 00 00 48 89 94 24 ? ? 00 00 48 83 C3 20"
+pattern = "55 41 57 41 56 41 55 41 54 53 48 83 EC 18 49 89 CE 48 89 54 24 10 48 89 FB 48 8B B9 D0 01 00 00 48 8B 07"
 
 [[signatures]]
 name = "_ZN18CampfireBlockActor14_finishCookingER11BlockSourcei"
@@ -357,9 +364,8 @@ extra = 0
 # 2. it is reached from the CommandRegistry::registerOverload<...> template instances; setupOverloadRules and
 #    addPostfix are its near-unique callees
 # 3. confirm vs the old named DB
-pattern = "E8 ? ? ? ? 4C 89 E0 48 83 C4 ? 5B 41 5C 41 5D 41 5E 41 5F 5D C3 E8 ? ? ? ? 4D 89 6C 24"
-rip_relative = true
-rip_offset = 1
+# function prologue
+pattern = "55 41 57 41 56 41 55 41 54 53 48 81 EC ? ? ? ? 49 89 F6 48 89 FD 48 8B 47"
 
 [[signatures]]
 name = "_ZNK15CommandRegistry14symbolToStringENS_6SymbolE"
@@ -478,24 +484,11 @@ extra = 0
 #    if (id == 0xFFFF) return {};`, looks the id up in mDimensionRegistry, and only then falls back to
 #    mDimensionFactory->create(name) / initializeDimension / registerDimension and fires
 #    mOnNewDimensionCreatedPublisher
-# 3. walk up to the prologue; rdi is the WeakRef<Dimension> sret and rsi `this`, so the store load is
-#    `mov rdi, [rsi+8]` right before the getId call and the `cmp ax, 0FFFFh` that follows it
-pattern = "55 41 57 41 56 41 55 41 54 53 48 81 EC ? ? ? ? 48 89 D3 49 89 F6 48 89 FD 48 8B 7E 08 48 89 D6 48 89 CA E8 ? ? ? ? 66 83 F8 FF"
-
-[[signatures]]
-name = "_ZN16DimensionManager29serverRegisterCustomDimensionENSt3__117basic_string_viewIcNS0_11char_traitsIcEEEERKN3mce4UUIDE"
-relative = false
-extra = 0
-# 1. find bytes "C0 FF FF FF 40 01 00 00" = the packed DimensionDefinition height range (mHeightMinimum -64,
-#    mHeightMaximum 320) that every custom dimension is registered with; it is built as a `movabs` inside this
-#    function, just after the NameIdStore id is obtained
-# 2. walk up to the prologue: the function is `if (nameIdStore->contains(name)) return nullopt;
-#    id = nameIdStore->getOrCreateId(name); def = {-64, 320, GeneratorType::Void, id, packId};
-#    if (_registerCustomDimensionWithDimensionDefinitionGroup(name, def))
-#        _registerCustomDimensionWithFactory(name, id); return id;`
-# 3. confirm by the tail: `movabs rax, 0x100000000; or rax, rcx` - the engaged std::optional<DimensionType>
-# function prologue (call sites are all inlined copies, no E8 to anchor on)
-pattern = "55 41 57 41 56 41 54 53 48 83 EC ? 49 89 CC 48 89 D3 49 89 F6 49 89 FF 48 8B 7F ? E8"
+# 3. walk up to the prologue; rdi is the WeakRef<Dimension> sret, rsi `this` and rdx/rcx the string_view
+#    halves, so the store load is `mov rdi, [rsi+8]` right before the getId call and the `cmp ax, 0FFFFh`
+#    that follows it. The register shuffle right after the frame setup is allocator-dependent (1.26.45 used
+#    rbx, 1.26.51 uses r13), so the pattern wildcards those three bytes and matches both versions
+pattern = "55 41 57 41 56 41 55 41 54 53 48 81 EC ? ? ? ? ? ? ? 49 89 F6 48 89 FD 48 8B 7E 08 48 89 D6 48 89 CA E8 ? ? ? ? 66 83 F8 FF"
 
 [[signatures]]
 name = "_ZN9Explosion7explodeER7IRandom"
@@ -522,24 +515,33 @@ extra = 0
 pattern = "41 56 53 50 0F 57 C9 80 7F"
 
 [[signatures]]
-name = "_ZN17InteractComponent14getInteractionER5ActorR6PlayerR16ActorInteraction"
+name = "_ZN17InteractComponent14getInteractionER5ActorR6Player"
 relative = false
 extra = 0
 # 1. no usable string: the interaction's text ("action.interact.shear" and friends) is loaded from the
-#    vanilla behaviour pack, not baked into the binary. Anchor instead on the two entity type ids the
-#    telemetry branch near the end compares against - `3D 74 0B 03 00` (cmp eax, 30B74h) and
-#    `3D 2C 0B 03 00` (cmp eax, 30B2Ch), seven bytes apart. Exactly two sites in .text pair them
-# 2. pick the right one: getInteraction is the site that, within 0x80 bytes of that pair, does
-#    `lea <r>, [<r>+0x48]` and calls ActorInteraction::setInteractText with it - 0x48 is
-#    Interaction::mInteractText. The other pair belongs to a different telemetry caller
-# 3. confirm identity from the body: it walks the InteractDefinition's Interaction array with
-#    `add <r>, 0x140` (stride 320, sizeof(Interaction)) calling _runInteraction per candidate, and
-#    guards a `Bedrock::type_id<IDefinitionInstance, InteractDefinition>` lazy id with __cxa_guard_acquire
-# 4. walk back to the prologue - `push rbp/r15/r14/r13/r12/rbx`, `sub rsp, 0x228`, then the four
-#    System V argument moves (this, Actor&, Player&, ActorInteraction&) - and cut from there
-# uniqueness: the pattern below matches exactly once in 1.26.44.3, and also exactly once in
-# 1.26.40.8 and 1.26.33.1
-pattern = "55 41 57 41 56 41 55 41 54 53 48 81 EC 28 02 00 00 49 89 CE 48 89 54 24 08 49 89 F7 49 89 FD"
+#    vanilla behaviour pack, not baked into the binary. The telemetry anchor this recipe used before 1.26.51
+#    (cmp eax, 30B74h / cmp eax, 30B2Ch, seven bytes apart) is a DECOY now - _runInteraction was out-lined
+#    and took the telemetry with it, so neither remaining pair site is getInteraction. Anchor on the entt
+#    component hash instead: find bytes "4A 34 52 A3" = the InteractComponent type hash. Of the functions
+#    that reference it, exactly one also contains `add <r>, 0x140` - that ~0x1a0 one is the component-lookup
+#    wrapper, which resolves InteractComponent from the Actor and walks its Interaction vector INLINE
+# 2. inside that wrapper, the single direct `call` in the `add <r>, 0x140` loop (stride 320 =
+#    sizeof(Interaction)) is InteractComponent::_runInteraction (~0x539)
+# 3. _runInteraction has exactly two call sites: the wrapper from step 1 (the inlined copy - NOT the target)
+#    and InteractComponent::getInteraction. The target is the small (~0xc0) one, whose prologue loads the
+#    Interaction vector straight off `this` (`mov <r>, [rsi+8]` / `mov <r>, [rsi+0x10]`) rather than looking
+#    up an InteractDefinition, breaks out of the loop when the returned Interaction's callback ([sret+0x10])
+#    is non-null, and zeroes 0x60 bytes with six `movaps` on the empty path
+# 4. the argument map is sret since 1.26.51: rdi is the returned Interaction, rsi `this`, rdx the Actor&
+#    owner and rcx the Player& player; the ActorInteraction & parameter is gone. Cut from the prologue
+# 5. confirm against the Windows 1.26.51 build, whose PDB names it
+#    ?getInteraction@InteractComponent@@QEAA?AVInteraction@@AEAVActor@@AEAVPlayer@@@Z - the same body with
+#    `add r15, 0x160` (Windows sizeof(Interaction)) and a 0x50-byte zero fill
+# NOTE: in 1.26.51 this out-of-line body has no callers - the only live path inlined it into the wrapper -
+# so a detour here resolves to the right function but never fires. See the hook's own TODO
+# uniqueness: the pattern below matches exactly once in 1.26.51; it does not match 1.26.45 or earlier,
+# where _runInteraction was inlined and the function was ~0x6b3 bytes
+pattern = "55 41 57 41 56 41 55 41 54 53 50 48 89 FB 4C 8B 6E 08 48 8B 6E 10 49 39 ED"
 
 [[signatures]]
 name = "_ZNK4Item12readUserDataER13ItemStackBaseR10IDataInputR20ReadOnlyBinaryStream"
@@ -579,9 +581,8 @@ extra = 0
 # 2. MerchantRecipe::load reads the buyA/buyB child tags and calls this on each - the `call` right after a
 #    buyA/buyB tag lookup is the target
 # 3. confirm vs the old named DB (static, takes a CompoundTag, returns an ItemInstance)
-pattern = "E8 ? ? ? ? 4C 8D AC 24 ? ? ? ? 4C 89 EF 4C 89 F6 E8 ? ? ? ? 48 8D 05"
-rip_relative = true
-rip_offset = 1
+# function prologue (grown to unique)
+pattern = "41 57 41 56 41 54 53 48 81 EC ? ? ? ? 49 89 F6 48 89 FB 4C 8D 7C 24 ? 4C 89 FF E8 ? ? ? ? 4C 8D 25 ? ? ? ? 4C 89 64 24 ? 4C 89 FF"
 
 [[signatures]]
 name = "_ZNK12ItemRegistry12lookupByNameERiNSt3__117basic_string_viewIcNS1_11char_traitsIcEEEE"
@@ -593,7 +594,8 @@ extra = 0
 #    item id (Item::getId)
 # 4. the TARGET is that delegated call - ItemRegistry::lookupByName (the large name->item hash lookup, many callers)
 # 5. confirm vs the old named DB
-pattern = "55 41 57 41 56 41 55 41 54 53 48 81 EC ? ? ? ? 48 89 FB 4D 85 C0"
+# function prologue
+pattern = "55 41 57 41 56 41 55 41 54 53 48 81 EC ? ? ? ? 48 89 FB 4D 85 C0 74 ? 49 89 D5"
 
 [[signatures]]
 name = "_ZN13ItemStackBase34_loadBlocksForCanPlaceOnCanDestroyERNSt3__16vectorIPK9BlockTypeNS0_9allocatorIS4_EEEERKNS0_12basic_stringIcNS0_11char_traitsIcEENS5_IcEEEE"
@@ -653,36 +655,42 @@ extra = 0
 pattern = "41 57 41 56 53 8B 42"
 
 [[signatures]]
-name = "_ZNK10BucketItem6_useOnER9ItemStackR5Actor8BlockPoshRK4Vec3"
+name = "_ZNK10BucketItem6_useOnER9ItemStackR5Actor8BlockPosh8HandSlotRK4Vec3"
 relative = false
 extra = 0
 # 1. the name is real: BDS declares `private: virtual InteractionResult BucketItem::_useOn(ItemStack&, Actor&,
-#    BlockPos, FacingID, const Vec3&) const`, so a symbol-bearing build resolves it by name; the steps below
+#    BlockPos, FacingID, HandSlot, const Vec3&) const`, so a symbol-bearing build resolves it by name; the steps
 #    are the no-symbol route the shipped stripped PIE needs. No disassembly is required for any of it
 # 2. the shipped ELF keeps RTTI. Find bytes "31 30 42 75 63 6B 65 74 49 74 65 6D 00" = "10BucketItem\0" in
 #    .rodata (unique, 1.26.44.3: 0x1AEEC28) - that is _ZTS10BucketItem
 # 3. walk .rela.dyn for R_X86_64_RELATIVE entries. Exactly one addend equals the string address; its r_offset
 #    is _ZTI10BucketItem + 8. Exactly one addend equals that typeinfo address; its r_offset is
 #    _ZTV10BucketItem + 8. The vptr is _ZTV10BucketItem + 16 (past offset-to-top and typeinfo)
-# 4. the target is vptr slot 130, the last entry. Item declares 129 virtuals after its destructor, so an Item
-#    subclass vtable is exactly 131 slots (2 destructor slots + 129) and slot 130 is Item::_useOn. In
-#    1.26.44.3 _ZTV10BucketItem is 0xE6BACB0, the vptr 0xE6BACC0, and slot 130 relocates to 0xBC66BF0
+# 4. the target is vptr slot 131, the last entry. 1.26.51 inserted one Item virtual at slot 127, so an Item
+#    subclass vtable is exactly 132 slots (2 destructor slots + 130) and slot 131 is Item::_useOn. In
+#    1.26.51.1 _ZTV10BucketItem is 0xF27E088, the vptr 0xF27E098, and slot 131 relocates to 0xC413170
 # 5. confirm the vtable is BucketItem's from its contents, independently of RTTI: slot 13 (Item::isBucket) is
-#    the 3-byte thunk `B0 01 C3` (mov al, 1; ret) and it is the only 131-slot vtable in the binary where that
+#    the 3-byte thunk `B0 01 C3` (mov al, 1; ret) and it is the only 132-slot vtable in the binary where that
 #    is true; slot 71 uniqueAuxValues is a second `B0 01 C3`; and slots 51, 81, 101 and 110
-#    (isLiquidClipItem, canUseOnSimTick, getMaxStackSize, validFishInteraction) all read mFillType at
-#    [rdi+0x1C8] - `8B 87 C8 01 00 00`, `0F B7 8F C8 01 00 00`, `66 83 BF C8 01 00 00`, `8B 87 C8 01 00 00`
-# 6. the slot arithmetic is checked against a symbol already in this table: TridentItem::releaseUsing
-#    (0xBAE5260) appears exactly once in the relocated vtable data, at slot 88, and Item declares
-#    releaseUsing as its 87th virtual - 87 + 1 extra destructor slot = 88
-# 7. cut from the prologue at 0xBC66BF0
-# uniqueness: the pattern below matches exactly once in the whole .text of 1.26.44.3, and exactly once in
-# 1.26.40.8. The prologue alone (through `sub rsp, 0x3E8`) takes 35 hits, so the register shuffle after it is
-# load-bearing - do not shorten it. It does not match 1.26.33.1, where the frame size differs
-pattern = "55 41 57 41 56 41 55 41 54 53 48 81 EC E8 03 00 00 44 89 CD 48 89 D3 48 89 74 24 70 49 89 FC 48 89 0C 24 44 89 44 24 08"
+#    (isLiquidClipItem, canUseOnSimTick, getMaxStackSize, validFishInteraction) all read mFillType, which
+#    moved to [rdi+0x1CA] in 1.26.51 and is read as a word - `0F B7 87 CA 01 00 00`, `0F B7 8F CA 01 00 00`,
+#    `66 83 BF CA 01 00 00`, `0F B7 87 CA 01 00 00`
+# 6. the slot arithmetic is checked against a symbol already in this table: TridentItem::releaseUsing appears
+#    exactly once in the relocated vtable data, at slot 88 (the 1.26.51 insertion sits above it, at 127), and
+#    Item declares releaseUsing as its 87th virtual - 87 + 1 extra destructor slot = 88
+# 7. confirm the HandSlot parameter at the call site, not the prologue: HandSlot is a uint8_t enum, so it is
+#    passed on the stack and the register prologue is unchanged. Item::useOn's dispatch loads [vtbl+0x418] and
+#    pushes TWO stack args - the const Vec3& and the HandSlot read beside the FacingID - then `add rsp, 0x10`;
+#    1.26.45 loaded [vtbl+0x410] and pushed only the Vec3&
+# 8. cut from the prologue at 0xC413170
+# uniqueness: the pattern below matches exactly once in the whole .text of 1.26.51.1. The prologue alone
+# (through `sub rsp`) takes 34 hits, so the register shuffle after it is load-bearing - do not shorten it. The
+# frame immediate and the `mov [rsp+..], rsi` displacement are wildcarded because that store changed
+# instruction length (disp8 -> disp32), which is what broke the 1.26.45 pattern
+pattern = "55 41 57 41 56 41 55 41 54 53 48 81 EC ? ? ? ? 44 89 CD 48 89 D3 48 89 B4 24 ? ? ? ? 49 89 FC 48 89 0C 24 44 89 44 24 08"
 
 [[signatures]]
-name = "_ZN10ArmorStand14getInteractionER6PlayerR16ActorInteractionRK4Vec3"
+name = "_ZN10ArmorStand14getInteractionER6PlayerRK4Vec3"
 relative = false
 extra = 0
 # 1. find bytes "61 63 74 69 6F 6E 2E 69 6E 74 65 72 61 63 74 2E 61 72 6D 6F 72 73 74 61 6E 64 2E 65 71 75 69 70 00"
@@ -691,16 +699,21 @@ extra = 0
 # 2. cross-check with the sibling string "action.interact.armorstand.pose\0": its single xref lands in the
 #    same function, a few hundred bytes further on - the pose branch is the sneak path, the equip branch
 #    the item-swap path, and no other function in the binary references either string
-# 3. confirm identity from the body: it opens with a call to Actor::getInteraction, tests `al & 1` and
-#    returns early on success, then loads the level from `[r15+0x1D0]` and dispatches
+# 3. confirm identity from the body: the sret pointer, this, Player& and Vec3& pass straight through
+#    (rdi/rsi/rdx/rcx) into a call to Actor::getInteraction; it tests the returned Interaction's callback with
+#    `cmp qword [rbx+0x10], 0` and returns early when it is set, otherwise frees the returned interact-text
+#    string, zeroes it, then loads the level from `[r15+0x1D0]` and dispatches
 #    `call qword [rax+0x9F0]` (ILevel::isClientSide) before reaching the sneak test
 # 4. independent confirmation: the same address appears exactly once in `_ZTV10ArmorStand` (reached via
 #    RTTI - typeinfo name "10ArmorStand" -> _ZTI10ArmorStand -> the vtable that names it), at the slot
 #    Actor::getInteraction occupies
-# 5. walk back to the prologue (`push rbp/r15/r14/r13/r12/rbx`, `sub rsp, 0x138`) and cut from there
+# 5. walk back to the prologue (`push rbp/r15/r14/r13/r12/rbx`, `sub rsp, 0xA8`) and cut from there
+# uniqueness: the pattern below matches exactly once in the .text of 1.26.51. It is 1.26.51-only - the
+# signature changed (Interaction is returned via sret, the ActorInteraction & parameter is gone), so the
+# prologue shares nothing alignable with 1.26.45
 # uniqueness: matches exactly once in 1.26.44.3, and also exactly once in 1.26.33 and 1.26.40; the two
 # wildcards are the call/jmp displacements, so no byte-identical sibling can collide
-pattern = "55 41 57 41 56 41 55 41 54 53 48 81 EC 38 01 00 00 49 89 CD 48 89 D3 49 89 F7 49 89 FE E8 ? ? ? ? 89 C5 A8 01 74 08 41 89 ED"
+pattern = "55 41 57 41 56 41 55 41 54 53 48 81 EC A8 00 00 00 49 89 CC 49 89 D7 49 89 F6 48 89 FB"
 
 [[signatures]]
 name = "_ZNK13CauldronBlock3useERN11BlockEvents24BlockPlayerInteractEventE"
@@ -830,7 +843,16 @@ pattern = "41 57 41 56 41 54 53 48 83 EC 28 49 89 CF 48 89 D3 49 89 F6"
 name = "_ZN14MapDataManager15getMapSavedDataE13ActorUniqueID"
 relative = false
 extra = 0
-pattern = "55 41 57 41 56 41 55 41 54 53 48 83 EC ? 49 89 F6 48 89 FB 48 89 74 24"
+# 1. find bytes "6D 61 70 49 64 00" = "mapId\0"; take the copy that HAS code xrefs (there are two
+#    copies, one unreferenced) - one of its two referencing functions is MapDataManager's map-loading
+#    helper, which reads the mapId tag and calls LevelStorage through vtable slot 0xa8
+# 2. getMapSavedData is that helper's caller that hashes its ActorUniqueID argument: the golden-ratio
+#    constant 0x9e3779b9 + a libc++ popcount bucket walk over the unordered_map at this+0x60/+0x68,
+#    comparing the key at [node+0x10] against the uuid in rsi
+# 3. NOTE: 1.26.51 split the function - the load-and-insert tail is now the separate helper, so
+#    getMapSavedData is much smaller than in 1.26.45 and a whole-body signature match will miss it
+# function prologue
+pattern = "41 57 41 56 53 48 83 EC ? 48 89 FB 48 89 74 24 ? 4C 8B 47"
 
 [[signatures]]
 name = "_ZN17MinecraftCommands14compileCommandERK12HashedStringR13CommandOrigin17CurrentCmdVersionNSt3__18functionIFvRKNS6_12basic_stringIcNS6_11char_traitsIcEENS6_9allocatorIcEEEEEEE"
@@ -841,9 +863,8 @@ extra = 0
 #    runs: compileCommand(...) -> null-check -> CommandOutput ctor -> Command::run(cmd, ...)
 # 3. compileCommand is the FIRST call there; its returned Command* is null-checked then passed to the run call
 # 4. confirm vs the old named DB
-pattern = " E8 ? ? ? ? 48 89 44 24 ? 48 8B BC 24 ? ? ? ? 4C 39 FF"
-rip_relative = true
-rip_offset = 1
+# function prologue
+pattern = "55 41 57 41 56 41 55 41 54 53 48 81 EC ? ? ? ? 4C 89 44 24 ? 48 89 54 24 ? 49 89 F4"
 
 [[signatures]]
 name = "_ZNK17MinecraftCommands14executeCommandER14CommandContextb"
@@ -890,7 +911,8 @@ extra = 0
 # 3. confirm tick by its body: piston state machine over PistonState 0/1/2/3, stepping mProgress by +/-0.5
 #    toward 1.0f / 0.0, building a moving-block AABB and calling _moveCollidedEntities / _spawnBlocks
 # 4. confirm vs the old named DB
-pattern = "55 41 57 41 56 41 55 41 54 53 48 81 EC ? ? ? ? ? 89 ? FF 47 ? ? 89 F5"
+# function prologue (grown to unique)
+pattern = "55 41 57 41 56 41 55 41 54 53 48 81 EC ? ? ? ? 49 89 FE FF 47 ? 49 89 F5 F6 47 ? ? 74 ? 49 8B 45 ? 4C 89 EF 4C 89 F6 FF 90 ? ? ? ? 49 8B 06 4C 89 F7 4C 89 EE FF 90 ? ? ? ? 41 80 66 ? ? 41 80 BE"
 
 [[signatures]]
 name = "_ZN6Player10teleportToERK4Vec3biib"
@@ -921,10 +943,14 @@ pattern = "55 41 57 41 56 41 55 41 54 53 48 81 EC ? ? ? ? 89 D5 41 89 F5 49 89 F
 name = "_ZN6Player15startSleepInBedERK8BlockPosbf"
 relative = false
 extra = 0
-# 1. find bytes "31 20 73 74 61 72 74 53 6C 65 65 70 49 6E 42 65 64 00" = "1 startSleepInBed\0" (unique)
-# 2. its lone data xref (a validateBlockPos label arg) is a `lea` inside this function
-# 3. walk up to the prologue
-pattern = "55 41 57 41 56 41 55 41 54 53 48 81 EC ? ? ? ? 0F 29 84 24 ? ? ? ? 89 D5 49 89 F6"
+# 1. startSleepInBed is virtual: read _ZTV6Player and take the slot DIRECTLY ABOVE stopSleepInBed
+#    (locate stopSleepInBed from its own entry) - the pair is adjacent in every version, though the
+#    absolute index drifts (204/205 in 1.26.45, 203/204 in 1.26.51)
+# 2. confirm by the argument shape: (BlockPos const&, bool, float) spills xmm0 with `movaps [rsp+N],
+#    xmm0`, keeps the bool in ebp (`mov ebp, edx`), then calls through [this+0x1d0]
+# 3. NOTE: the old "1 startSleepInBed" label string no longer exists in the binary - do not look for it
+# function prologue
+pattern = "55 41 57 41 56 41 55 41 54 53 48 81 EC ? ? ? ? 0F 29 84 24 ? ? ? ? 89 D5"
 
 [[signatures]]
 name = "_ZN6Player28setSpawnBlockRespawnPositionERK8BlockPos13DimensionType"
@@ -1041,11 +1067,12 @@ name = "_ZNK17RepositoryFactory13createSourcesERK23IResourcePackRepository"
 relative = false
 extra = 0
 # 1. RepositoryFactory's vtable is RTTI-named `_ZTV17RepositoryFactory`
-# 2. createSources is slot 1 (address-point order: deleting dtor, createSources, createIO); read the index in
-#    the old named DB to be sure
+# 2. createSources is slot 2 of the primary address point (complete dtor, deleting dtor, createSources,
+#    createIO) - the 4-slot vtable is unchanged between 1.26.45 and 1.26.51
 # 3. confirm by its body: lock AppPlatform, RepositorySourceOptions::create, make_shared<RepositorySources>
 # 4. confirm vs the old named DB
-pattern = "55 41 57 41 56 41 55 41 54 53 48 81 EC ? ? ? ? 49 89 D7 49 89 FD 48 8D 3D ? ? ? ?"
+# function prologue
+pattern = "55 41 57 41 56 41 55 41 54 53 48 81 EC ? ? ? ? 49 89 D7 48 89 FD 48 8D 3D"
 
 [[signatures]]
 name = "_ZN10SayCommand12_sendMessageERKNSt3__112basic_stringIcNS0_11char_traitsIcEENS0_9allocatorIcEEEERKNS0_8optionalIS6_EES8_RK21CommandOriginIdentityR5Level"
@@ -1106,12 +1133,13 @@ relative = false
 extra = 0
 # 1. find bytes "25 6D 75 6C 74 69 70 6C 61 79 65 72 2E 70 6C 61 79 65 72 2E 6C 65 66 74 00" = "%multiplayer.player.left\0"
 #    (unique); its lone data xref is in ServerNetworkHandler::_onPlayerLeft
-# 2. _onPlayerLeft refreshes the announcement when a player leaves, so updateServerAnnouncement is a this-only
-#    call below the string's use
-# 3. confirm vs the old named DB
-pattern = "E8 ? ? ? ? 80 3D ? ? ? ? ? 75 ? 4C 89 E7"
-rip_relative = true
-rip_offset = 1
+# 2. updateServerAnnouncement is the function immediately after _onPlayerLeft in .text (true in both 1.26.45
+#    and 1.26.51); _onPlayerLeft does NOT call it - it has ~8 call sites from other ServerNetworkHandler members
+# 3. confirm by its body: it bails unless [this+0x2f0] == 1, then dereferences a
+#    Bedrock::NonOwnerPointer<ILevel> (assert string "T *Bedrock::NonOwnerPointer<ILevel>::_get() const")
+# 4. confirm vs the old named DB
+# function prologue (grown to unique)
+pattern = "55 41 57 41 56 41 55 41 54 53 48 83 EC ? 80 BF ? ? ? ? ? 0F 85 ? ? ? ? 48 89 FB 0F B6 87"
 
 [[signatures]]
 name = "_ZN20ServerNetworkHandler27disconnectClientWithMessageERK17NetworkIdentifier11SubClientIdN10Connection20DisconnectFailReasonERKNSt3__112basic_stringIcNS6_11char_traitsIcEENS6_9allocatorIcEEEENS6_8optionalISC_EE"
@@ -1326,3 +1354,18 @@ extra = 0
 #    parses the signal into a variant<ConnectRequest, ConnectResponse, ConnectError, CandidateAdd>
 # 3. confirm vs the old named DB
 pattern = "55 41 57 41 56 41 55 41 54 53 48 81 EC ? ? ? ? 89 CB 8B 84 24 ? ? ? ? B9"
+
+[[signatures]]
+name = "_ZN9NetherNet16LanThreadManager24SendLanBroadcastResponseERKN6webrtc13SocketAddressENS_9NetworkIDENSt3__112basic_stringIcNS6_11char_traitsIcEENS6_9allocatorIcEEEE"
+relative = false
+extra = 0
+# 1. find bytes "52 65 63 65 69 76 65 64 20 64 69 73 63 6F 76 65 72 79 20 72 65 71 75 65 73 74"
+#    = "Received discovery request" (unique); its lone xref is in SimpleNetworkInterfaceImpl::OnLanEvent
+#    (DiscoveryRequest), which then calls getLanDiscovery() and the ILanDiscovery virtual at [vtable+0x30]
+# 2. that slot 6 of the LanThreadManager ILanDiscovery vtable is SendLanBroadcastResponse (win) / a thunk
+#    that adjusts `this` and jumps to it (linux, secondary vtable of `N9NetherNet16LanThreadManagerE`)
+# 3. cross-check: the function is one of three xrefs to "P2P::NetworkID NetherNet::NetworkID::operator
+#    NetworkID() const" (with BroadcastTask and SendSignalingMessageTo); it checks webrtc::Thread::IsCurrent,
+#    reposts itself via a lambda when off-thread, else writes the 0x47c-capped header and calls SendToHelper
+# 4. confirm vs the old named DB
+pattern = "55 41 57 41 56 41 55 41 54 53 48 81 EC ? ? ? ? 49 89 D5 48 89 F3 49 89 FE 48 8D AC 24 ? ? ? ? 4C 8D 7F 40"

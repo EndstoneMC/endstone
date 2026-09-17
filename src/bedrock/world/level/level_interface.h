@@ -62,6 +62,7 @@
 #include "bedrock/world/gamemode/game_mode_messager.h"
 #include "bedrock/world/item/crafting/recipes.h"
 #include "bedrock/world/item/registry/item_registry_ref.h"
+#include "bedrock/world/level/actor_dimension_transfer_request.h"
 #include "bedrock/world/level/biome/glue/biome_json_document_glue_fwd.h"
 #include "bedrock/world/level/biome/registry/biome_registry.h"
 #include "bedrock/world/level/block/registry/block_type_registry.h"
@@ -110,7 +111,7 @@ public:
     virtual PortalForcer &getPortalForcer() = 0;
     virtual void requestPlayerChangeDimension(Player &, ChangeDimensionRequest &&) = 0;
     virtual Bedrock::NotNullNonOwnerPtr<PlayerDimensionTransferManager> getPlayerDimensionTransferManager() = 0;
-    virtual void entityChangeDimension(Actor &, DimensionType, std::optional<Vec3>) = 0;
+    virtual void entityChangeDimension(Actor &, const ActorDimensionTransferRequest &) = 0;
     virtual Bedrock::NotNullNonOwnerPtr<ActorDimensionTransferManager> getActorDimensionTransferManager() = 0;
     [[nodiscard]] virtual Spawner &getSpawner() const = 0;
     virtual Bedrock::NotNullNonOwnerPtr<BossEventSubscriptionManager> getBossEventSubscriptionManager() = 0;
@@ -460,6 +461,7 @@ public:
     virtual GameRules &getGameRules() = 0;
     [[nodiscard]] virtual bool hasStartWithMapEnabled() const = 0;
     [[nodiscard]] virtual bool isEditorWorld() const = 0;
+    [[nodiscard]] virtual bool isEditorTestWorld() const = 0;
     [[nodiscard]] virtual bool getAllowAnonymousBlockDropsInEditorWorlds() const = 0;
     [[nodiscard]] virtual bool isHardcore() const = 0;
     virtual Abilities &getDefaultAbilities() = 0;

@@ -17,7 +17,6 @@
 #include <memory>
 #include <string>
 
-#include "bedrock/core/container/enum_set.h"
 #include "bedrock/forward.h"
 #include "bedrock/safety/redactable_string.h"
 #include "bedrock/world/actor/actor_terrain_interlock_data.h"
@@ -30,17 +29,7 @@ class CompoundTag;
 
 class BlockActor {
 public:
-    enum class Property : uint8_t {
-        Changed = 0,
-        Movable = 1,
-        ClientSideOnly = 2,
-        SaveCustomName = 3,
-        CanRenderCustomName = 4,
-        _count = 5,
-    };
-    using Properties = Bedrock::EnumSet<Property, Property::_count>;
-
-    BlockActor(BlockActorType, const BlockPos &, const std::string &);
+    BlockActor(BlockActorType type, const BlockPos &pos);
     virtual ~BlockActor() = default;
     virtual void load(ILevel &, const CompoundTag &, DataLoadHelper &) = 0;
     virtual bool save(CompoundTag &, const SaveContext &) const = 0;
@@ -55,5 +44,6 @@ protected:
     const BlockActorType type_;                                                         // +20
     std::unique_ptr<DynamicPropertiesBlockActorComponent> dynamic_properties_;          // +24
     std::unique_ptr<RandomizableContainerBlockActorComponent> randomizable_container_;  // +32
+    std::unique_ptr<ContainerBlockActorComponent> container_;                           // +40
 };
-BEDROCK_STATIC_ASSERT_SIZE(BlockActor, 40, 40);
+BEDROCK_STATIC_ASSERT_SIZE(BlockActor, 48, 48);

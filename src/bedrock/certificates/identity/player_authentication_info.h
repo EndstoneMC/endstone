@@ -32,7 +32,7 @@ struct PlayerAuthenticationInfo {
     std::string nintendo_id;
     std::string psn_id;
     std::string tenant_id;
-    std::string mess_o_id;
+    std::string mess_user_id;
     std::string xbox_live_name;
     std::string nintendo_name;
     std::string play_station_name;
@@ -42,4 +42,9 @@ struct PlayerAuthenticationInfo {
     mce::UUID authenticated_uuid;
     bool is_host;
     bool is_local;
+};
+
+struct ServerSupportedAuthenticationTypes {
+    bool accepts_online_auth;
+    bool accepts_self_signed_auth;
 };

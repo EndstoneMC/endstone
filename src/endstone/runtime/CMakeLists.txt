@@ -26,6 +26,7 @@ add_library(endstone_runtime SHARED
         bedrock_hooks/inventory_transaction.cpp
         bedrock_hooks/item.cpp
         bedrock_hooks/item_registry_manager.cpp
+        bedrock_hooks/lan_thread_manager.cpp
         bedrock_hooks/leaves_block.cpp
         bedrock_hooks/level.cpp
         bedrock_hooks/liquid_block.cpp

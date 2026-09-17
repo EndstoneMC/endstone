@@ -196,6 +196,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Fixed `Plugin.default_permission` rejecting a string or a bool (`"operator"`, `"not op"`, `True`), which individual entries in `Plugin.permissions` already accepted.
 - Fixed `Block.biome` reading the wrong part of a chunk, so it reported a biome that has nothing to do with the block, and could crash the server. Introduced in 0.11.7 along with BDS 1.26.40 support.
 - Fixed `Player.get_address()` returning an empty address for players connected over NetherNet, so IP bans, `PacketSendEvent` and `PacketReceiveEvent` now see the real remote address from the first packet onwards.
+- Fixed teleporting an actor or a player to a location in another dimension, which BDS ignored. Introduced in 0.11.11 along with BDS 1.26.51 support.
+- Fixed the location a player is moved to when they travel through a portal, and the locations `PlayerPortalEvent` reports. Introduced in 0.11.11 along with BDS 1.26.51 support.
 
 #### Type annotations
 
@@ -203,6 +205,36 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Fixed the type stubs so a type checker no longer reports errors on them: `__eq__`/`__ne__` take `object`, in-place operators such as `Vector.__iadd__` accept everything their binary counterpart does and return `Self`, an optional callback is typed `Callable[...] | None`, a skin image is a `numpy.typing.NDArray`, and `Plugin.config` is a `dict[str, Any]`.
 - Fixed the NBT bindings hiding what their containers hold: `ByteArrayTag(iterable)` and `IntArrayTag(iterable)` take an `Iterable[int]`, `ListTag(iterable)` an `Iterable[Tag]`, `CompoundTag(mapping)` a `dict[str, Tag]`, and `to_list()`/`to_dict()` return `list[Any]`/`dict[str, Any]`.
 - Fixed the Python type stubs for `Plugin` leaving out the members it inherits, such as `logger`, `server`, `data_folder`, `get_command` and `on_enable`, so type checkers like mypy rejected plugins that use them. The stubs have been incomplete since 0.11.9.
+
+## [0.11.11] - 2026-09-16
+
+### Added
+
+- Added support for BDS version 1.26.51.
+- On NetherNet, `server-udp-ports` now defaults to `server-port` when not set.
+- On NetherNet, the server now refuses to start when `server-port` is already in use.
+
+### Fixed
+
+- Fixed updating the server leaving out new commented-out `server.properties` entries and restoring entries you had commented out.
+- Fixed `Player.get_address()` returning an empty address on NetherNet.
+- Fixed `ServerListPingEvent` not firing on NetherNet.
+- Fixed `Server.port` and `Server.port_v6` returning 0 on NetherNet.
+- Fixed a crash in `MapView` after Bedrock recreated or reloaded a map.
+- Fixed `Server.port_v6` returning 65535 on RakNet when IPv6 is disabled.
+- Fixed the Python type stubs for `Plugin` missing inherited members such as `logger` and `server`.
+- Fixed a malformed `banned-players.json` or `banned-ips.json` being ignored without a log message.
+- Fixed `WritableBookMeta`, `BookMeta` and `CrossbowMeta` reaching Python as `ItemMeta`.
+- Fixed two handles to the same scoreboard objective not comparing equal.
+- Fixed a crash when a player used an empty item while a behavior pack listened to `world.beforeEvents.itemUse` (#528).
+- Fixed maps showing only the viewer's own marker (#517).
+- Fixed boss bars disappearing after a player changes dimension.
+- Fixed `Player.ping` returning a stale average on NetherNet.
+- Fixed `Location` not supporting `+` and `-` with a `Vector`, or `*` with a number.
+
+### Security
+
+- Rate-limited `NetworkStackLatencyPacket` in `packetlimitconfig.json`.
 
 ### Security
 
@@ -212,97 +244,80 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Added
 
-- Added support for BDS version 1.26.45. Clients on 1.26.40 through 1.26.44 can still join.
+- Added support for BDS version 1.26.45.
 
 ### Changed
 
-- **BREAKING**: The server no longer listens on IPv6 by default, so Endstone runs on hosts without IPv6 support. Set the new `network.ipv6` option in `endstone.toml` to `true` to turn it back on.
+- **BREAKING**: The server no longer listens on IPv6 by default. Set `network.ipv6` to `true` in `endstone.toml` to enable it.
 
 ### Fixed
 
-- Fixed items vanishing when `PlayerDropItemEvent` is cancelled for a drop from the main hand. The item is now restored to the player's inventory.
+- Fixed items vanishing when `PlayerDropItemEvent` is cancelled for a main-hand drop (#375).
 
 ## [0.11.9] - 2026-08-17
 
 ### Added
 
-- Added support for BDS version 1.26.44. The network protocol version is unchanged at 2168, so clients that could join a 1.26.40 server can still join.
-
-- `PlayerInteractEvent` is now fired with the `LEFT_CLICK_AIR` action when a player swings at neither a block nor an actor. The action existed since the event was introduced but was never fired. Cancelling the event suppresses the swing, including its attack sound (#316).
-
+- Added support for BDS version 1.26.44.
+- `PlayerInteractEvent` now fires with the `LEFT_CLICK_AIR` action (#316).
 - `endstone.block.BlockType` is now importable from Python.
 
 ### Changed
 
-- **BREAKING**: The concrete registry classes are no longer importable from `endstone` (Python). `EnchantmentRegistry` and `ItemRegistry` are gone; obtain a registry through `Server.get_registry()` and annotate it as `Registry[T]`.
+- **BREAKING**: `EnchantmentRegistry` and `ItemRegistry` are no longer importable from `endstone` (Python). Use `Server.get_registry()`.
 
 ### Fixed
 
-- Fixed services outliving the plugin that registered them. Disabling a plugin left its services in the service manager, so after a `/reload` another plugin could still look one up and call into a plugin that is no longer running. For C++ plugins the provider's library has been unloaded by that point, so the call would crash the server. A plugin's services are now unregistered when it is disabled, as the Java edition does.
-
-- Fixed unreadable archives in `logs/`. Sessions that never logged anything are no longer archived, and archives are now written as a single clean gzip stream.
-
-- Fixed the last lines of a session going missing from `logs/`. Roughly a quarter of archives ended mid-line, usually part-way through the plugin shutdown messages. Every message is now flushed as it is written.
-
-- Fixed `Metrics` reporting the emulated architecture instead of the host's (Python), so a plugin running in an emulated container sent the wrong architecture to bStats.
-
-- Fixed ARM servers being reported to bStats as `arm64` on Windows but `aarch64` on Linux, splitting the same hardware across two entries. Both now report `aarch64`.
-
-- Fixed `from endstone import ItemRegistry` raising `AttributeError` (Python). The class bound by the server is `ItemTypeRegistry`.
-
-- Fixed scoreboard score removals being misread by clients older than 1.26.44. Those clients negotiate the same network protocol version as 1.26.44 but expect the older form, which they are now sent.
-
-- Fixed truncated or corrupt NBT being accepted as valid, and well-formed empty lists being rejected as corrupt.
-
-- Fixed `server.properties` never gaining the entries a Bedrock Dedicated Server update adds, such as `transport`, unless you deleted the file and let the server write a fresh one. New entries are now appended along with the comments documenting them, and everything already in the file is left untouched.
-
-- Fixed `Player.address` being unreadable once a player's connection has closed, so a handler that asked during disconnect got nothing back.
-
-- Fixed the server list entry losing its last two fields, currently whether the world is an editor world and whether it is hardcore, whenever a plugin listened for `ServerListPingEvent`. Any field Endstone does not itself expose is now passed through untouched.
+- Fixed a plugin's services not being unregistered when the plugin is disabled.
+- Fixed unreadable archives in `logs/`.
+- Fixed the last lines of a session missing from `logs/`.
+- Fixed `Metrics` reporting the emulated architecture instead of the host's (Python).
+- Fixed ARM servers reporting `arm64` to bStats on Windows instead of `aarch64`.
+- Fixed `from endstone import ItemRegistry` raising `AttributeError` (Python).
+- Fixed scoreboard score removals being misread by clients older than 1.26.44.
+- Fixed truncated or corrupt NBT being accepted and empty lists being rejected.
+- Fixed `server.properties` not gaining new entries after a BDS update.
+- Fixed `Player.address` being unreadable after the player's connection has closed.
+- Fixed the server list entry losing its editor world and hardcore fields when a plugin listened for `ServerListPingEvent`.
 
 ## [0.11.8] - 2026-08-07
 
 ### Fixed
 
-- Fixed a crash on Windows when reading the item charged into a crossbow, for example through its item meta. The server called into an invalid address instead of the item's loader. Introduced in 0.11.7 along with BDS 1.26.40 support.
-
-- Fixed clients timing out on the connection screen when the world's `LANBroadcast` flag is off. BDS then never publishes the server advertisement, so it answers the client's ping with an empty response, and recent clients refuse to start the connection handshake without a valid one. The advertisement is now restored on startup, using the `server-name` from `server.properties`. Note that a server in this state also starts using the LAN discovery ports (19132/19133) again, as it would have with the flag on. Servers hidden with `enable-lan-visibility=false` are advertised again as well (#423, #465).
+- Fixed a crash on Windows when reading the item charged into a crossbow.
+- Fixed clients timing out on the connection screen when the world's `LANBroadcast` flag is off. Servers with `enable-lan-visibility=false` are advertised again as well (#423, #465).
 
 ## [0.11.7] - 2026-08-05
 
 ### Added
 
 - Added support for BDS version 1.26.40.
-- Added equality comparison, hashing, and `std::format` support to `endstone::SocketAddress` (C++), so it can be used directly as a key in `std::unordered_map`/`std::unordered_set` and formatted as `hostname:port`.
+- Added equality comparison, hashing and `std::format` support to `endstone::SocketAddress` (C++).
 
 ### Changed
 
-- `/reload` now waits up to 2.5 seconds for running async tasks to finish, then logs a warning naming the plugin ("Nag author(s) ...") and proceeds, matching CraftBukkit. Previously the reload tore plugins down immediately, so a still-running async task could crash the server.
-- A shared library in `plugins/` without an entry point is now only reported as an error if its name starts with `endstone_`. `endstone_add_plugin` gives every plugin that prefix, so a prefixed file missing `ENDSTONE_PLUGIN` is still called out by name; anything else is treated as a library a plugin ships alongside itself and skipped quietly. Previously every such file produced a "Did you forget ENDSTONE_PLUGIN?" error, so plugins could not place their own libraries in the folder.
-- Log files now show the thread name instead of a numeric thread id. Threads without a name still fall back to the id.
-- `endstone_add_plugin` now builds plugins with hidden symbol visibility on Linux, so a plugin exports only its `ENDSTONE_PLUGIN` entry point, as it already did on Windows. This stops a plugin's own symbols, and those of the libraries it bundles, from colliding with the server's copies inside the BDS process. A plugin that deliberately exports more can set `CXX_VISIBILITY_PRESET default` on its target.
+- `/reload` now waits up to 2.5 seconds for running async tasks to finish.
+- A shared library in `plugins/` without an entry point is now only reported as an error if its name starts with `endstone_`.
+- Log files now show the thread name instead of the thread id.
+- `endstone_add_plugin` now builds plugins with hidden symbol visibility on Linux.
 
 ### Fixed
 
-- Fixed a resource pack being applied twice when it is both listed in `world_resource_packs.json` and present as an archive in `resource_packs/`. Archives that are already on the world's pack stack are now left alone.
-
-- Fixed memory corruption on Linux whenever a soft enum was updated, which happens every time a command's dynamic choices change. The update packet was written at the wrong offsets and overran the end of the packet.
-
-- Fixed clients being disconnected by a custom map render when the map tracks no entities. The map packet carries its decorations and their tracked actor ids as parallel lists, and the rendered cursors were replacing only the decorations, leaving the two lists at different lengths (#459).
-
-- Fixed events fired from a plugin's `on_load`, or from the `on_enable` of a plugin with `load: startup`, being rejected with "must be triggered synchronously from server thread". Both run before the server thread exists, so the main thread is now reported as the primary thread until it does, matching Spigot.
-
-- Fixed every script log line being followed by a blank line in the console and log file. Script output arrives with a trailing line break, which is now stripped before the message is logged.
-- Fixed the `endstone` launcher exiting with `Aborted!` and code 1 when the server is stopped with Ctrl+C. The launcher now lets the server handle Ctrl+C, waits for it to shut down gracefully, and reports its actual exit code.
-- Fixed `Scheduler.is_running()` returning the opposite of the truth for async tasks: `True` while the task was idle and `False` while it was actually executing.
-- Fixed a class of scheduler crashes and leaks around async tasks: a task submitted to the thread pool could be destroyed while still queued, a task cancelled at the wrong moment could still run, and tasks scheduled from another thread or from inside a task callback could leak or fire one tick early (#436).
-- Fixed cancelled tasks holding on to their callbacks until their scheduled tick; they are now released on the next tick, and before plugin libraries are unloaded on `/reload`.
-- Fixed `PluginLoader.disable_plugin` in Python enabling the plugin instead of disabling it.
-- Fixed an access-violation crash when converting NBT data containing an empty byte array to a string, for example the item NBT of a firework star (#443).
-- Fixed death messages for entity and projectile kills always showing the generic "Player died" instead of the detailed vanilla message, such as "Player was slain by Zombie". Death message overrides set on the damage source are now honored as well (#438).
-- Fixed C++ plugins failing to compile against the public headers with libc++ 18, which rejected the `std::formatter` specializations due to their declared return type (#437).
-- Fixed C++ plugin builds on Linux silently compiling against libstdc++ when Endstone is consumed via CMake FetchContent. The `endstone::endstone` target now propagates `-stdlib=libc++` to every target that links against it, so plugin projects no longer need to pass the flag themselves.
-- Fixed the public C++ headers pulling in `<Windows.h>`, which leaked macros such as `min`, `max` and `ERROR` into every plugin that includes an Endstone header. The headers now declare the two Win32 functions they need themselves, and the `endstone::endstone` target defines `NOMINMAX` and `WIN32_LEAN_AND_MEAN`, so a `<Windows.h>` the plugin includes itself stays out of the way too.
+- Fixed a resource pack being applied twice when it is both listed in `world_resource_packs.json` and present in `resource_packs/`.
+- Fixed memory corruption on Linux when a soft enum was updated.
+- Fixed clients being disconnected by a custom map render when the map tracks no entities (#459).
+- Fixed events fired from `on_load`, or from `on_enable` of a `load: startup` plugin, being rejected as asynchronous.
+- Fixed every script log line being followed by a blank line.
+- Fixed the `endstone` launcher exiting with `Aborted!` and code 1 on Ctrl+C.
+- Fixed `Scheduler.is_running()` returning the opposite value for async tasks.
+- Fixed crashes and leaks around async tasks (#436).
+- Fixed cancelled tasks holding on to their callbacks until their scheduled tick.
+- Fixed `PluginLoader.disable_plugin` enabling the plugin instead of disabling it (Python).
+- Fixed a crash when converting NBT containing an empty byte array to a string (#443).
+- Fixed death messages for entity and projectile kills showing the generic message (#438).
+- Fixed C++ plugins failing to compile with libc++ 18 (#437).
+- Fixed C++ plugins on Linux compiling against libstdc++ when Endstone is consumed via CMake FetchContent.
+- Fixed the public C++ headers including `<Windows.h>`.
 
 ## [0.11.6] - 2026-07-10
 
@@ -312,16 +327,16 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Changed
 
-- The interactive console is now enabled by default on all platforms, including Linux (previously Windows-only). Pass `--no-interactive` to disable it, for example when running under a process manager that captures stdin.
+- The interactive console is now enabled by default on all platforms. Pass `--no-interactive` to disable it.
 
 ### Fixed
 
-- Fixed the Windows standalone bundle's `start.cmd` potentially launching the Microsoft Store Python stub. Both `start.cmd` and `start.sh` now provision a uv-managed Python (`--managed-python`, downloaded on demand) into a reusable `.venv` in the server folder instead of picking up whatever interpreter happens to be on `PATH`, which also makes subsequent startups faster.
-- Fixed the interactive console (`-i`) not submitting commands under panels such as Pterodactyl. The console only accepted a line on carriage return, but web consoles send a line feed, so typed commands piled up without ever running. It now accepts either.
-- Fixed the crash reporter failing to start with `error while loading shared libraries: libc++-*.so` on Linux (e.g. under the Pterodactyl egg). The crash handler is now loaded from its bundled location instead of being copied into the server folder, so it can find its vendored `libc++` (#429).
-- Fixed custom map renderers not being called when the map had no decorations, leaving the map blank instead of showing the rendered image (#426).
-- Fixed death messages no longer showing in chat. A new vanilla game rule shifted the internal game-rule indices, so Endstone was reading the wrong rule when deciding whether to broadcast death messages (#424).
-- Fixed an access-violation crash on server shutdown when plugins were loaded, caused by plugin loaders being destroyed in the wrong order (#339).
+- Fixed `start.cmd` possibly launching the Microsoft Store Python stub.
+- Fixed the interactive console not submitting commands under panels such as Pterodactyl.
+- Fixed the crash reporter failing to start on Linux with `error while loading shared libraries: libc++-*.so` (#429).
+- Fixed custom map renderers not being called when the map had no decorations (#426).
+- Fixed death messages not showing in chat (#424).
+- Fixed a crash on server shutdown when plugins were loaded (#339).
 
 ## [0.11.5] - 2026-07-05
 
@@ -331,16 +346,16 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Changed
 
-- **BREAKING**: Standalone bundles now ship for both Windows (`endstone-<version>-windows-x86_64.zip`) and Linux (`endstone-<version>-linux-x86_64.zip`), and use [uv](https://docs.astral.sh/uv/) to provision Python on demand instead of shipping a Python interpreter. The included `start.cmd` / `start.sh` installs uv on first run if it isn't already on `PATH`, then launches the server via `uv run` against the bundled wheel. The old `bin/python/` directory is gone; the server folder (`./bedrock_server/`) is unchanged.
-- **BREAKING**: Removed `scripts/autoinstall.sh`. The Linux bundle's `start.sh` now provisions Python via uv on any distro without sudo, superseding the script's apt/dnf/pacman bootstrap.
+- **BREAKING**: Standalone bundles now ship for both Windows and Linux and provision Python with [uv](https://docs.astral.sh/uv/) instead of bundling an interpreter. The `bin/python/` directory is gone.
+- **BREAKING**: Removed `scripts/autoinstall.sh`.
 
 ### Fixed
 
-- Fixed a crash on startup when a behavior pack registered a custom command whose name contained non-ASCII characters, such as Turkish letters (#406).
-- Fixed a crash (`resource deadlock would occur`) when reloading the server or cancelling tasks while an asynchronous task scheduled with `run_task_timer_async`/`run_task_later_async` was pending. The plugin no longer fails to re-enable after `/reload` (#351).
-- Fixed scheduled tasks ignoring their delay when registered during plugin enable or `ServerLoadEvent` on a world that has already been played for a while — they now correctly wait for the requested delay instead of running immediately on the first tick (#317).
-- Fixed a use-after-free crash, reliably reproducible after `/reload`, when a client was disconnected on a connection the server was already closing — the connection-closed teardown no longer runs twice over freed objects (#395).
-- Fixed a server crash on Linux when a campfire finished cooking an item.
+- Fixed a crash on startup when a behavior pack registered a custom command with non-ASCII characters (#406).
+- Fixed a `resource deadlock would occur` crash when reloading or cancelling tasks while an async task was pending (#351).
+- Fixed scheduled tasks ignoring their delay when registered during plugin enable or `ServerLoadEvent` (#317).
+- Fixed a use-after-free crash when a client was disconnected on a connection that was already closing (#395).
+- Fixed a crash on Linux when a campfire finished cooking an item.
 
 ## [0.11.4] - 2026-05-25
 
@@ -1381,7 +1396,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Basic plugin loader for C++ and Python plugins.
 - Basic command system that allows plugins to register custom commands.
 
-[Unreleased]: https://github.com/EndstoneMC/endstone/compare/v0.11.10...HEAD
+[Unreleased]: https://github.com/EndstoneMC/endstone/compare/v0.11.11...HEAD
+[0.11.11]: https://github.com/EndstoneMC/endstone/compare/v0.11.10...v0.11.11
 [0.11.10]: https://github.com/EndstoneMC/endstone/compare/v0.11.9...v0.11.10
 [0.11.9]: https://github.com/EndstoneMC/endstone/compare/v0.11.8...v0.11.9
 [0.11.8]: https://github.com/EndstoneMC/endstone/compare/v0.11.7...v0.11.8

@@ -16,12 +16,12 @@
 
 #include "bedrock/bedrock.h"
 #include "bedrock/world/gamemode/interaction_result.h"
+#include "bedrock/world/interactions/interaction.h"
 
 class Actor;
-class ActorInteraction;
 class Player;
 
 class BucketableComponent {
 public:
-    ENDSTONE_HOOK InteractionResult getInteraction(Actor &owner, Player &player, ActorInteraction &interaction);
+    ENDSTONE_HOOK Interaction getInteraction(Actor &owner, Player &player);
 };

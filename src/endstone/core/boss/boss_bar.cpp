@@ -165,7 +165,6 @@ void EndstoneBossBar::send(BossEventUpdateType event_type, const NotNull<Player>
     const auto packet = MinecraftPackets::createPacket(MinecraftPacketIds::BossEvent);
     const auto pk = std::static_pointer_cast<BossEventPacket>(packet);
     pk->payload.boss_id = handle->getOrCreateUniqueID();
-    pk->payload.player_id = ActorUniqueID(0);
     pk->payload.event_type = event_type;
     pk->payload.name = title_;
     pk->payload.health_percent = progress_;

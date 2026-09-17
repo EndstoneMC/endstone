@@ -17,14 +17,35 @@
 #include <algorithm>
 #include <unordered_map>
 
+PackSourceReport::PackSourceReport() : impl_(std::make_unique<Impl>()) {}
+
+PackSourceReport::~PackSourceReport() = default;
+
+PackSourceReport::PackSourceReport(const PackSourceReport &rhs) : impl_(std::make_unique<Impl>(*rhs.impl_)) {}
+
+PackSourceReport::PackSourceReport(PackSourceReport &&rhs) : impl_(std::make_unique<Impl>(std::move(*rhs.impl_))) {}
+
+PackSourceReport &PackSourceReport::operator=(const PackSourceReport &rhs)
+{
+    *impl_ = *rhs.impl_;
+    return *this;
+}
+
+PackSourceReport &PackSourceReport::operator=(PackSourceReport &&rhs)
+{
+    *impl_ = std::move(*rhs.impl_);
+    return *this;
+}
+
 void PackSourceReport::addReport(PackIdVersion const &pack_id, PackReport &&report)
 {
-    reports_[pack_id] = std::move(report);
+    impl_->reports_[pack_id] = std::move(report);
 }
 
 bool PackSourceReport::hasErrors() const
 {
-    return std::any_of(reports_.begin(), reports_.end(), [](const auto &pair) {
+    const auto &reports = impl_->reports_;
+    return std::any_of(reports.begin(), reports.end(), [](const auto &pair) {
         const auto &[pack_id, report] = pair;
         return report.hasErrors();
     });
@@ -32,7 +53,7 @@ bool PackSourceReport::hasErrors() const
 
 std::unordered_map<PackIdVersion, PackReport> const &PackSourceReport::getReports() const
 {
-    return reports_;
+    return impl_->reports_;
 }
 
 void PackSource::forEachPackShared(SharedPackCallback callback)

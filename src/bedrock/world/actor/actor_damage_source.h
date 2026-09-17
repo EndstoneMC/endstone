@@ -22,6 +22,7 @@
 #include "bedrock/world/actor/actor_types.h"
 #include "bedrock/world/actor/actor_unique_id.h"
 #include "bedrock/world/level/block/block.h"
+#include "bedrock/world/level/block_pos.h"
 
 class Actor;
 
@@ -66,8 +67,8 @@ private:
 
 class ActorDamageByBlockSource : public ActorDamageSource {
 public:
-    using ActorDamageSource::ActorDamageSource;
-    ActorDamageByBlockSource(const Block &, ActorDamageCause);
+    ActorDamageByBlockSource(const Block &block, const BlockPos &block_pos, ActorDamageCause cause);
+    ActorDamageByBlockSource(const BlockPos &block_pos, ActorDamageCause cause);
     [[nodiscard]] const Block &getBlock() const;
     [[nodiscard]] bool isBlockSource() const override;
     [[nodiscard]] std::unique_ptr<ActorDamageSource> clone() const override;
@@ -76,4 +77,5 @@ public:
 
 private:
     const Block *block_;  // +16
+    const BlockPos block_pos_;
 };

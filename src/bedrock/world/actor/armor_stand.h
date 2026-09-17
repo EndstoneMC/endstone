@@ -17,9 +17,10 @@
 #include "bedrock/bedrock.h"
 #include "bedrock/forward.h"
 #include "bedrock/world/actor/mob.h"
+#include "bedrock/world/interactions/interaction.h"
 
 class ArmorStand : public Mob {
 public:
     ~ArmorStand() override;
-    ENDSTONE_HOOK InteractionResult getInteraction(Player &, ActorInteraction &, Vec3 const &) override;
+    ENDSTONE_HOOK Interaction getInteraction(Player &, Vec3 const &) override;
 };
