@@ -86,7 +86,7 @@ extern const HashedString YellowPoplarLeaves;
 }  // namespace VanillaBlockTypeIds
 
 namespace VanillaBlockTypeGroups {
-extern const std::vector<std::reference_wrapper<const HashedString>> DecayingBlockIds;
+extern const std::vector<std::reference_wrapper<const HashedString>> DecayingBlocks;
 extern const std::vector<std::reference_wrapper<const HashedString>> LogAndStrippedLogBlockIds;
 extern const std::vector<std::reference_wrapper<const HashedString>> TntIds;
 extern const std::vector<std::reference_wrapper<const HashedString>> WoodAndStrippedWoodBlockIds;
