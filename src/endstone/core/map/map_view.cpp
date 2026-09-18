@@ -1,4 +1,5 @@
 
+#include <limits>
 #include <ranges>
 #include <unordered_map>
 // Copyright (c) 2024, The Endstone Project. (https://endstone.dev) All Rights Reserved.
@@ -155,6 +156,7 @@ const RenderData &EndstoneMapView::render(EndstonePlayer &player)
 
     std::ranges::fill(render.buffer, 0);
     render.cursors.clear();
+    render.cursor_ids.clear();
 
     for (const auto &renderer : renderers_) {
         auto &canvas = *canvases_.at(renderer)
@@ -171,8 +173,17 @@ const RenderData &EndstoneMapView::render(EndstonePlayer &player)
         }
         render.buffer = canvas.getBuffer();
 
-        for (const auto &cursor : canvas.getCursors()) {
-            render.cursors.emplace_back(cursor);
+        const auto cursors = canvas.getCursors();
+        const auto &cursor_ids = canvas.getCursorIds();
+        for (std::size_t i = 0; i < cursors.size(); ++i) {
+            // A cursor a plugin renderer added has no decoration behind it, so key it off its slot.
+            // y is out of world range, so a made up id can never collide with a tracked block.
+            render.cursor_ids.push_back(i < cursor_ids.size()
+                                            ? cursor_ids[i]
+                                            : MapItemTrackedActor::UniqueId{BlockPos{
+                                                  static_cast<int>(render.cursors.size()),
+                                                  std::numeric_limits<int>::min(), 0}});
+            render.cursors.emplace_back(cursors[i]);
         }
     }
     return render;

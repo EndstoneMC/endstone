@@ -97,12 +97,15 @@ void patchPacket(const ClientboundMapItemDataPacket &packet, endstone::core::End
         }
     }
 
-    // Tracked actor ids and decorations go on the wire as parallel arrays
+    // Tracked actor ids and decorations go on the wire as parallel arrays. The client keys its
+    // decoration list by the id, replacing on a match, so every cursor needs its own id -- sharing
+    // one collapses the whole list into a single marker.
     pk.payload.unique_ids.clear();
     pk.payload.decorations.clear();
-    for (const auto &cursor : render.cursors) {
+    for (std::size_t i = 0; i < render.cursors.size(); ++i) {
+        const auto &cursor = render.cursors[i];
         if (cursor.isVisible()) {
-            pk.payload.unique_ids.emplace_back(ActorUniqueID::INVALID_ID);
+            pk.payload.unique_ids.emplace_back(render.cursor_ids[i]);
             pk.payload.decorations.emplace_back(
                 std::make_shared<MapDecoration>(static_cast<MapDecoration::Type>(cursor.getType()), cursor.getX(),
                                                 cursor.getY(), cursor.getDirection(), cursor.getCaption(),

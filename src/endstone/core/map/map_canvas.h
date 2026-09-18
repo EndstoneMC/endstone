@@ -14,6 +14,7 @@
 
 #pragma once
 
+#include "bedrock/world/level/saveddata/maps/map_item_tracked_actor.h"
 #include "endstone/map/map_canvas.h"
 
 namespace endstone::core {
@@ -32,6 +33,8 @@ public:
     [[nodiscard]] std::uint32_t getBasePixel(int x, int y) const override;
     void drawImage(int x, int y, const Image &image) override;
 
+    void setCursorIds(std::vector<MapItemTrackedActor::UniqueId> ids);
+    [[nodiscard]] const std::vector<MapItemTrackedActor::UniqueId> &getCursorIds() const;
     void setBase(const std::vector<std::uint32_t> &base);
     const std::vector<std::uint32_t> &getBuffer() const;
 
@@ -40,5 +43,6 @@ private:
     const std::vector<std::uint32_t> *base_;
     EndstoneMapView &map_view_;
     std::vector<MapCursor> cursors_;
+    std::vector<MapItemTrackedActor::UniqueId> cursor_ids_;
 };
 }  // namespace endstone::core

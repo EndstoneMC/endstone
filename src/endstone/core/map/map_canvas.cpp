@@ -36,6 +36,17 @@ std::vector<MapCursor> EndstoneMapCanvas::getCursors() const
 void EndstoneMapCanvas::setCursors(const std::vector<MapCursor> &cursors)
 {
     cursors_ = cursors;
+    cursor_ids_.clear();
+}
+
+void EndstoneMapCanvas::setCursorIds(std::vector<MapItemTrackedActor::UniqueId> ids)
+{
+    cursor_ids_ = std::move(ids);
+}
+
+const std::vector<MapItemTrackedActor::UniqueId> &EndstoneMapCanvas::getCursorIds() const
+{
+    return cursor_ids_;
 }
 
 void EndstoneMapCanvas::setPixelColor(int x, int y, Color color)

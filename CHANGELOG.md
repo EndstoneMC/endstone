@@ -14,6 +14,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Fixed poplar leaves decaying with the trunk still standing. The leaf-decay check did not count poplar logs and wood as part of a tree, and did not recognise the three poplar leaf blocks as leaves (#536).
 - Fixed the server slowing to a few ticks per second over time on worlds that contain maps. Introduced in 0.11.11.
 - Fixed `MapInitializeEvent` firing over and over for a map that was already loaded.
+- Fixed a map showing only one marker, which hid explorer map targets and the markers of other players (#517).
 
 ## [0.11.11] - 2026-09-16
 
