@@ -150,7 +150,7 @@ private:
     void fixServerAnnouncement();
     [[nodiscard]] bool isUsingNetherNet() const;
     [[nodiscard]] std::uint16_t getSignalingPort() const;
-    void applyRelayConfig() const;
+    void applyStunConfig() const;
 
     ServerInstance *server_instance_{nullptr};
     Logger &logger_;
@@ -181,7 +181,7 @@ private:
     float average_usage_[SharedConstants::TicksPerSecond] = {0.0F};
     // TODO(config): move the following the a separate class/struct
     bool allow_client_packs_ = false;
-    std::vector<NetherNet::StunRelayServer> relay_servers_;
+    std::vector<NetherNet::StunRelayServer> stun_servers_;
     bool log_commands_ = true;
     ServerTextSettings text_settings_;
     ::Bedrock::PubSub::Subscription on_gameplay_user_removed_;

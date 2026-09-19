@@ -162,16 +162,10 @@ EndstoneServer::EndstoneServer() : logger_(LoggerFactory::getLogger(""))
         allow_client_packs_ = tbl.at_path("settings.allow-client-packs").value_or(false);
         if (const auto *servers = tbl.at_path("network.stun-servers").as_array()) {
             for (const auto &node : *servers) {
-                const auto *server = node.as_table();
-                if (!server) {
-                    continue;
+                auto uri = node.value_or(std::string{});
+                if (!uri.empty()) {
+                    stun_servers_.push_back({std::move(uri), {}, {}});
                 }
-                auto uri = server->at_path("uri").value_or(std::string{});
-                if (uri.empty()) {
-                    continue;
-                }
-                relay_servers_.push_back({std::move(uri), server->at_path("username").value_or(std::string{}),
-                                          server->at_path("password").value_or(std::string{})});
             }
         }
     }
@@ -190,7 +184,7 @@ void EndstoneServer::init(ServerInstance &server_instance)
         throw std::runtime_error("Server instance already initialized.");
     }
     server_instance_ = &server_instance;
-    applyRelayConfig();
+    applyStunConfig();
     command_sender_ = std::make_shared<EndstoneConsoleCommandSender>();
     command_sender_->recalculatePermissions();
     enablePlugins(PluginLoadOrder::Startup);
@@ -904,14 +898,14 @@ std::uint16_t EndstoneServer::getSignalingPort() const
     return server.port_;
 }
 
-void EndstoneServer::applyRelayConfig() const
+void EndstoneServer::applyStunConfig() const
 {
-    if (relay_servers_.empty() || !isUsingNetherNet()) {
+    if (stun_servers_.empty() || !isUsingNetherNet()) {
         return;
     }
     const auto &connector = static_cast<const NetherNetConnector &>(getRemoteConnector());
-    connector.transport_->SetRelayConfig(relay_servers_);
-    getLogger().info("Configured {} STUN/TURN server(s) for NetherNet.", relay_servers_.size());
+    connector.transport_->SetRelayConfig(stun_servers_);
+    getLogger().info("Configured {} STUN server(s) for NetherNet.", stun_servers_.size());
 }
 
 EndstoneServer &EndstoneServer::getInstance()

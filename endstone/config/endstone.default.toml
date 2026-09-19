@@ -14,12 +14,10 @@ allow-client-packs = false
 # hosts and containers have no IPv6 at all.
 ipv6 = false
 
-# STUN/TURN servers used to discover this server's public address when it sits
-# behind NAT, such as a Docker bridge on a hosting panel. The Bedrock Dedicated
-# Server supports these but never configures any itself, so without them the only
-# address offered to a client is the private one and NetherNet clients cannot
-# connect. Only used when transport is nethernet.
-# username and password are only needed for TURN.
-stun-servers = [
-    { uri = "stun:stun.l.google.com:19302" },
-]
+# STUN servers used to discover this server's public address when it sits behind
+# NAT, such as a Docker bridge on a hosting panel. The Bedrock Dedicated Server
+# supports these but never configures any itself, so without them the only address
+# offered to a client is the private one and NetherNet clients cannot connect.
+# Traffic still goes directly to this server; these are only asked what address it
+# appears to come from. Only used when transport is nethernet.
+stun-servers = ["stun:stun.l.google.com:19302"]

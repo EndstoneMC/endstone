@@ -9,7 +9,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Added
 
-- On NetherNet, STUN and TURN servers can now be configured under `network.stun-servers` in `endstone.toml`, so a server behind NAT can tell clients its public address.
+- On NetherNet, STUN servers can now be configured under `network.stun-servers` in `endstone.toml`, so a server behind NAT can tell clients its public address.
 
 ### Fixed
 
