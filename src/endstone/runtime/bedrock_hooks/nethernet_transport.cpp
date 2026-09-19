@@ -21,6 +21,9 @@
 #include <string_view>
 #include <variant>
 
+#include <entt/locator/locator.hpp>
+
+#include "endstone/core/server.h"
 #include "endstone/runtime/hook.h"
 
 namespace {
@@ -62,6 +65,11 @@ bool addPublishedAddress(NetherNet::TransportConfiguration &config, const std::u
     range.external_address = std::string{address};
     range.external_port_offset = (published != 0 ? published : local_port) - local_port;
     config.known_mapped_address_range_count = 1;
+    if (entt::locator<endstone::core::EndstoneServer>::has_value()) {
+        endstone::core::EndstoneServer::getInstance().getLogger().info(
+            "Telling NetherNet clients to reach this server at {}:{}.", address,
+            published != 0 ? published : local_port);
+    }
     return true;
 }
 
