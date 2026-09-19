@@ -14,7 +14,9 @@
 
 #pragma once
 
+#include <cstdint>
 #include <format>
+#include <functional>
 #include <memory>
 #include <string>
 #include <unordered_map>
@@ -130,6 +132,29 @@ public:
     [[nodiscard]] virtual std::vector<NotNull<Chunk>> getLoadedChunks() = 0;
 
     /**
+     * Requests a chunk and calls the callback on the server thread when loading finishes.
+     *
+     * This method returns without waiting. The callback runs on a later tick, even if the chunk is already loaded.
+     * It receives a null handle if generation is disabled and the chunk does not exist, loading fails, the dimension
+     * becomes invalid, or the timeout expires. Disabling the plugin cancels the request without calling the callback.
+     *
+     * A temporary hold keeps the chunk resident through the callback and is released afterwards. Use Chunk::load(),
+     * force loading or a plugin chunk ticket inside the callback to keep it resident longer. Other holds are not
+     * changed.
+     *
+     * @param x X-coordinate of the chunk
+     * @param z Z-coordinate of the chunk
+     * @param plugin Plugin owning the request
+     * @param callback Callback receiving the loaded chunk, or a null handle on failure
+     * @param generate Whether to generate the chunk if it does not exist
+     * @param timeout Maximum number of server ticks to wait after loading starts, greater than zero
+     * @throws std::invalid_argument If the callback is empty, the plugin is disabled, or the timeout is zero
+     * @throws std::runtime_error If called outside the server thread or the dimension is no longer valid
+     */
+    virtual void getChunkAtAsync(int x, int z, Plugin &plugin, std::function<void(Nullable<Chunk>)> callback,
+                                 bool generate = true, std::uint64_t timeout = 1200) = 0;
+
+    /**
      * Checks if the Chunk at the given coordinates is loaded.
      *
      * @param x X-coordinate of the chunk
@@ -184,9 +209,9 @@ public:
      * Releases the hold that `loadChunk()` placed on the Chunk at the given coordinates, and unloads it if nothing else
      * keeps it resident.
      *
-     * A chunk kept alive by a nearby player, the spawn area, a `/tickingarea` or a plugin chunk ticket stays loaded,
-     * and this reports `false`. Unloading a chunk saves it and fires a ChunkUnloadEvent, which handlers observe before
-     * this returns.
+     * A chunk kept alive by force loading, a nearby player, the spawn area, a `/tickingarea` or a plugin chunk ticket
+     * stays loaded, and this reports `false`. Unloading a chunk saves it and fires a ChunkUnloadEvent, which handlers
+     * observe before this returns.
      *
      * @note This also completes any chunk unloads the dimension had pending, so calling it once per chunk over a large
      *       area is expensive. Use `unloadChunkRequest()` when releasing many chunks at once.
@@ -207,6 +232,46 @@ public:
      * @return `true`
      */
     virtual bool unloadChunkRequest(int x, int z) = 0;
+
+    /**
+     * Checks whether the chunk at the given coordinates is force loaded.
+     *
+     * This checks the force-load flag, not whether loading has finished. Other chunk holds and plugin tickets do not
+     * set this flag.
+     *
+     * @param x X-coordinate of the chunk
+     * @param z Z-coordinate of the chunk
+     * @return Force-load status
+     * @throws std::runtime_error If called outside the server thread or the dimension is no longer valid
+     */
+    [[nodiscard]] virtual bool isChunkForceLoaded(int x, int z) const = 0;
+
+    /**
+     * Sets whether the chunk at the given coordinates is force loaded.
+     *
+     * A force-loaded chunk stays resident without nearby players until force loading is disabled or the server
+     * restarts. Loading finishes on a later tick and does not make the chunk tick. This hold is not owned by a plugin;
+     * unloadChunk(), unloadChunkRequest() and removing plugin tickets do not release it. Disabling force loading
+     * leaves other holds and plugin tickets intact, and does not unload the chunk immediately.
+     *
+     * @param x X-coordinate of the chunk
+     * @param z Z-coordinate of the chunk
+     * @param forced Whether to force load the chunk
+     * @throws std::runtime_error If called outside the server thread, the dimension is no longer valid, or the chunk
+     *                           cannot be held resident
+     */
+    virtual void setChunkForceLoaded(int x, int z, bool forced) = 0;
+
+    /**
+     * Gets all chunks marked as force loaded in this dimension.
+     *
+     * The returned list is a snapshot and includes chunks whose loading has not finished yet. Other chunk holds and
+     * plugin tickets are not included. This does not load any chunks or change their force-load flags.
+     *
+     * @return Force-loaded chunks
+     * @throws std::runtime_error If called outside the server thread or the dimension is no longer valid
+     */
+    [[nodiscard]] virtual std::vector<NotNull<Chunk>> getForceLoadedChunks() const = 0;
 
     /**
      * Adds a plugin ticket for the Chunk at the given coordinates, loading it if it is not already loaded.

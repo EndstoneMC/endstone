@@ -22,6 +22,7 @@
 #include "bedrock/world/level/dimension/dimension.h"
 #include "endstone/actor/actor.h"
 #include "endstone/actor/item.h"
+#include "endstone/core/level/chunk_load_queue.h"
 #include "endstone/core/server.h"
 #include "endstone/level/dimension.h"
 
@@ -42,12 +43,17 @@ public:
     [[nodiscard]] NotNull<Block> getHighestBlockAt(int x, int z) const override;
     [[nodiscard]] NotNull<Block> getHighestBlockAt(Location location) const override;
     [[nodiscard]] std::vector<NotNull<Chunk>> getLoadedChunks() override;
+    void getChunkAtAsync(int x, int z, Plugin &plugin, std::function<void(Nullable<Chunk>)> callback,
+                         bool generate = true, std::uint64_t timeout = 1200) override;
     [[nodiscard]] bool isChunkLoaded(int x, int z) const override;
     [[nodiscard]] bool isChunkGenerated(int x, int z) const override;
     bool loadChunk(int x, int z) override;
     bool loadChunk(int x, int z, bool generate) override;
     bool unloadChunk(int x, int z) override;
     bool unloadChunkRequest(int x, int z) override;
+    [[nodiscard]] bool isChunkForceLoaded(int x, int z) const override;
+    void setChunkForceLoaded(int x, int z, bool forced) override;
+    [[nodiscard]] std::vector<NotNull<Chunk>> getForceLoadedChunks() const override;
     bool addPluginChunkTicket(int x, int z, Plugin &plugin) override;
     bool removePluginChunkTicket(int x, int z, Plugin &plugin) override;
     void removePluginChunkTickets(Plugin &plugin) override;
@@ -61,20 +67,25 @@ public:
 
     [[nodiscard]] ::Dimension &getHandle() const;
     [[nodiscard]] NotNull<EndstoneDimension> self() const;
+    void processChunkLoads();
+    virtual void cancelChunkLoads(Plugin &plugin);
 
 private:
     struct ChunkTicket {
         mce::UUID area_id;
         std::vector<Plugin *> plugins;
         bool server_owned = false;
+        bool force_loaded = false;
     };
 
     void checkServerThread() const;
     mce::UUID pinChunk(int x, int z, bool generate);
     void releaseTicket(std::unordered_map<std::uint64_t, ChunkTicket>::iterator it);
+    void releaseChunkLoad(mce::UUID area_id);
 
     WeakRef<::Dimension> dimension_;
     EndstoneLevel &level_;
     std::unordered_map<std::uint64_t, ChunkTicket> chunk_tickets_;
+    ChunkLoadQueue chunk_loads_;
 };
 }  // namespace endstone::core
