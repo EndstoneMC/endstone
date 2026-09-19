@@ -7,6 +7,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+### Added
+
+- On NetherNet, STUN and TURN servers can now be configured under `network.stun-servers` in `endstone.toml`, so a server behind NAT can tell clients its public address.
+
 ### Fixed
 
 - Fixed teleporting an actor or a player to a location in another dimension, which BDS ignored. Introduced in 0.11.11 along with BDS 1.26.51 support.
