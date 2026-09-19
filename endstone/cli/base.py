@@ -230,36 +230,6 @@ class Bootstrap:
 
         return added
 
-    def _update_server_udp_ports(self) -> None:
-        """
-        Sets server-udp-ports to server-port on NetherNet when it is not set, uncommenting the line documenting it if
-        there is one.
-        """
-        path = self.server_path / "server.properties"
-        if not path.exists():
-            return
-
-        with path.open("r", encoding="utf-8", newline="") as file:
-            props = _properties.load(file)
-
-        if props.get("transport") != "nethernet" or "server-udp-ports" in props or "server-port" not in props:
-            return
-
-        port = props["server-port"]
-        body = props.body
-        index = next((i for i in range(len(body)) if _placeholder_key(body, i) == "server-udp-ports"), None)
-        if index is None:
-            if body and not isinstance(body[-1], _properties.Whitespace):
-                props.add_blank()
-            props["server-udp-ports"] = port
-        else:
-            del body[index]
-            props.insert(index, _properties.Property("server-udp-ports", port))
-
-        with path.open("w", encoding="utf-8", newline="") as file:
-            _properties.dump(props, file)
-
-        self._logger.info(f"Set server-udp-ports to {port} in server.properties.")
 
     def _check_server_port(self) -> None:
         """
@@ -327,7 +297,6 @@ class Bootstrap:
                 tomlkit.dump(config, f)
 
         self._update_packet_limit_config()
-        self._update_server_udp_ports()
 
     def _update_packet_limit_config(self) -> None:
         path = self.server_path / "packetlimitconfig.json"
