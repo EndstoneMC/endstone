@@ -12,6 +12,8 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
+#define _CRT_SECURE_NO_WARNINGS  // std::getenv
+
 #include "bedrock/deps/nethernet/nethernet_transport.h"
 
 #include <charconv>

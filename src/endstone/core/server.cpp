@@ -197,7 +197,6 @@ void EndstoneServer::init(ServerInstance &server_instance)
         throw std::runtime_error("Server instance already initialized.");
     }
     server_instance_ = &server_instance;
-    applyStunConfig();
     command_sender_ = std::make_shared<EndstoneConsoleCommandSender>();
     command_sender_->recalculatePermissions();
     enablePlugins(PluginLoadOrder::Startup);
@@ -232,6 +231,8 @@ void EndstoneServer::setLevel(::Level &level)
     metrics_ = std::make_unique<EndstoneMetrics>(*this);  // start metrics
     loadResourcePacks();
     initRegistries();
+
+    applyStunConfig();
 
     // enable packet rate limiter
     (void)dispatchCommand(getCommandSender(), "reloadpacketlimitconfig");

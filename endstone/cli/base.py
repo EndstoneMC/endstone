@@ -289,7 +289,8 @@ class Bootstrap:
                         to_doc[key] = val
                     else:
                         # if both are tables, dive deeper
-                        if isinstance(val, tomlkit.TOMLDocument) and isinstance(to_doc[key], tomlkit.TOMLDocument):
+                        tables = (tomlkit.TOMLDocument, tomlkit.items.Table)
+                        if isinstance(val, tables) and isinstance(to_doc[key], tables):
                             migrate_config(val, to_doc[key])
 
             migrate_config(default_config, config)
