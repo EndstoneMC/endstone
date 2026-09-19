@@ -11,7 +11,7 @@
 
 namespace endstone::runtime {
 
-static constexpr std::array<std::pair<std::string_view, std::size_t>, 64> symbols = {{
+static constexpr std::array<std::pair<std::string_view, std::size_t>, 66> symbols = {{
     {"BlockState::StateListNode::mHead", 215088112},
     {"Enchant::mEnchants", 214652808},
     // Actor
@@ -79,6 +79,8 @@ static constexpr std::array<std::pair<std::string_view, std::size_t>, 64> symbol
     {"?createPacket@MinecraftPackets@@SA?AV?$shared_ptr@VPacket@@@std@@W4MinecraftPacketIds@@@Z", 9675920},
     // Mob
     {"?knockback@Mob@@UEAAXPEAVActor@@MMMAEBUKnockbackParameters@@@Z", 43937952},
+    // NetherNet
+    {"?CreateNetherNetTransportInterface@NetherNet@@YAPEAVINetherNetTransportInterface@1@AEBUNetworkID@1@AEBUTransportConfiguration@1@PEAVINetherNetTransportInterfaceCallbacks@1@@Z", 17973616},
     // NetherNet::LanThreadManager
     {"?SendLanBroadcastResponse@LanThreadManager@NetherNet@@UEAAXAEBVSocketAddress@webrtc@@UNetworkID@2@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z", 17962688},
     // NetherNet::SimpleNetworkInterfaceImpl
@@ -121,6 +123,8 @@ static constexpr std::array<std::pair<std::string_view, std::size_t>, 64> symbol
     {"?getI18n@@YAAEAVI18n@@XZ", 1146848},
     // webrtc::P2PTransportChannel
     {"?SwitchSelectedConnectionInternal@P2PTransportChannel@webrtc@@AEAAXPEAVConnection@2@W4IceSwitchReason@2@@Z", 171292176},
+    // webrtc::Port
+    {"?SendBindingErrorResponse@Port@webrtc@@UEAAXPEAVStunMessage@2@AEBVSocketAddress@2@HV?$basic_string_view@DU?$char_traits@D@std@@@std@@@Z", 171091184},
 }};
 
 }  // namespace endstone::runtime

@@ -871,3 +871,33 @@ extra = 0
 #    reposts itself via a lambda when off-thread, else writes the 0x47c-capped header and calls SendToHelper
 # 4. confirm vs the old named DB
 pattern = "55 41 57 41 56 41 55 41 54 56 57 53 48 81 EC ? ? ? ? 48 8D AC 24 80 00 00 00 48 C7 85 ? ? ? ? FE FF FF FF 4C 89 4D ? 4D 89 C7 48 89 D6 48 89 CF"
+
+[[signatures]]
+name = "?CreateNetherNetTransportInterface@NetherNet@@YAPEAVINetherNetTransportInterface@1@AEBUNetworkID@1@AEBUTransportConfiguration@1@PEAVINetherNetTransportInterfaceCallbacks@1@@Z"
+relative = false
+extra = 0
+# 1. find bytes "4E 65 74 68 65 72 4E 65 74 54 72 61 6E 73 70 6F 72 74 46 61 63 74 6F 72 79 2E 63 70 70"
+#    = "NetherNetTransportFactory.cpp" (unique); its xrefs sit inside
+#    NetherNetTransportFactory::createTransport, which fills a TransportConfiguration on the stack
+#    (signaling channel variant, udp min/max, the hard-coded false at +0xc48) and hands it to the factory
+# 2. createTransport has exactly one call that returns the INetherNetTransportInterface* it wraps in the
+#    unique_ptr it returns - that call target is CreateNetherNetTransportInterface (0x13d bytes)
+# 3. confirm: three args (const NetworkID&, const TransportConfiguration&,
+#    INetherNetTransportInterfaceCallbacks*), and exactly one code xref plus one data xref in the image
+# 4. confirm vs the old named DB
+pattern = "55 56 57 53 48 83 EC ? 48 8D 6C 24 ? 48 C7 45 ? ? ? ? ? 4C 89 C6 48 89 D7 48 89 CB 8B 05 ? ? ? ? 8B 0D ? ? ? ? 65 48 8B 14 25 ? ? ? ? 48 8B 0C CA 3B 81 ? ? ? ? 7F ? 48 8D 0D"
+
+[[signatures]]
+name = "?SendBindingErrorResponse@Port@webrtc@@UEAAXPEAVStunMessage@2@AEBVSocketAddress@2@HV?$basic_string_view@DU?$char_traits@D@std@@@std@@@Z"
+relative = false
+extra = 0
+# 1. find bytes "55 6E 61 75 74 68 6F 72 69 7A 65 64 00" = "Unauthorized\0" (STUN_ERROR_REASON_UNAUTHORIZED);
+#    its code xref is the local-ufrag-mismatch tail of webrtc::Port::GetStunMessage, which logs at LS_ERROR
+#    and then dispatches SendBindingErrorResponse through the Port vtable rather than calling it directly
+# 2. so take the vtable slot, not a call target: the function has NO direct code xref from GetStunMessage.
+#    It has exactly one code caller - TurnPort::SendBindingErrorResponse (0x6b bytes), which adds the
+#    realm/nonce attributes and tail-calls the base - plus five data xrefs, one per Port-derived vtable
+# 3. confirm: four args (StunMessage*, const SocketAddress&, int, std::string_view) and the 400/401 branch
+#    that skips AddMessageIntegrity/AddMessageIntegrity32 and runs only AddFingerprint before SendTo
+# 4. confirm vs the old named DB
+pattern = "40 55 53 56 57 41 54 41 55 41 56 41 57 48 8D AC 24 ? ? ? ? 48 81 EC ? ? ? ? 0F 29 B4 24 ? ? ? ? 48 8B 05 ? ? ? ? 48 33 C4 48 89 85 ? ? ? ? 45 8B F9"

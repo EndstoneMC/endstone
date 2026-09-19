@@ -109,4 +109,8 @@ public:
     virtual Subscription RegisterEventHandler(ILanEventHandler *) = 0;
 };
 
+ENDSTONE_HOOK INetherNetTransportInterface *CreateNetherNetTransportInterface(
+    const NetworkID &local_id, const TransportConfiguration &configuration,
+    INetherNetTransportInterfaceCallbacks *callbacks);
+
 }  // namespace NetherNet
