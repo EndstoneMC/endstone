@@ -178,6 +178,11 @@ const RenderData &EndstoneMapView::render(EndstonePlayer &player)
     return render;
 }
 
+bool EndstoneMapView::isVanilla() const
+{
+    return renderers_.size() == 1 && renderers_.front()->isEndstoneMapRenderer();
+}
+
 MapItemSavedData &EndstoneMapView::getHandle() const
 {
     auto *map = EndstoneServer::getInstance().getEndstoneLevel()->getHandle().getMapSavedData(map_id_);

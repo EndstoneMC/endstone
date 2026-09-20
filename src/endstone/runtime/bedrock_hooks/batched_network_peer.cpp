@@ -79,8 +79,8 @@ void patchPacket(const ClientboundMapItemDataPacket &packet, endstone::core::End
 {
     const auto &server = endstone::core::EndstoneServer::getInstance();
     auto *map = static_cast<endstone::core::EndstoneMapView *>(server.getMap(packet.getMapId().raw_id));
-    if (!map) {
-        return;
+    if (!map || map->isVanilla()) {
+        return;  // Nothing renders on top, so BDS already filled in the pixels and the decorations
     }
 
     auto &pk = const_cast<ClientboundMapItemDataPacket &>(packet);

@@ -20,6 +20,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Fixed the server slowing to a few ticks per second over time on worlds that contain maps. Introduced in 0.11.11.
 - Fixed `MapInitializeEvent` firing over and over for a map that was already loaded.
 - Fixed a map showing only one marker, which hid explorer map targets and the markers of other players (#517).
+- Fixed `MapView.is_virtual` always reporting `true`, even when the map has no plugin renderer.
+- Fixed decorations on a map that no plugin renders losing their colour.
 - Fixed a crash when the server saved the scoreboard after a plugin reset an entry's scores or moved a player to another scoreboard (#539).
 - Fixed unregistering a scoreboard objective leaving a stale reference to it behind.
 

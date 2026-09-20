@@ -23,5 +23,8 @@ class EndstoneMapRenderer : public MapRenderer {
 public:
     EndstoneMapRenderer();
     void render(MapView &map, MapCanvas &canvas, Player &player) override;
+
+private:
+    [[nodiscard]] bool isEndstoneMapRenderer() const override { return true; }
 };
 }  // namespace endstone::core

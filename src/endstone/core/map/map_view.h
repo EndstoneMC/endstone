@@ -53,6 +53,7 @@ public:
     void setLocked(bool locked) override;
 
     const RenderData &render(EndstonePlayer &player);
+    [[nodiscard]] bool isVanilla() const;
     [[nodiscard]] MapItemSavedData &getHandle() const;
 
 private:
