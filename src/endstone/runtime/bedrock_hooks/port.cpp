@@ -23,9 +23,12 @@ constexpr int StunErrorUnauthorized = 401;
 void webrtc::Port::SendBindingErrorResponse(StunMessage *message, const SocketAddress &addr, int error_code,
                                             std::string_view reason)
 {
-    // Every port on a shared socket sees every binding request and answers 401 to the ones meant for a
-    // sibling. That reply carries no message integrity, so the peer accepts it, drops the request it was
-    // waiting on, and never matches the answer that does arrive.
+    // #blameMojang - a peer-to-peer host never puts enough sessions on one socket to reach this, so the
+    // shared socket a dedicated server needs is untrodden ground. Every port on it sees every binding
+    // request and answers 401 to the ones meant for a sibling. That reply carries no message integrity,
+    // so the peer accepts it, drops the request it was waiting on, and never matches the answer that
+    // does arrive.
+    // Fix: say nothing, the port that owns the request still answers.
     if (error_code == StunErrorUnauthorized) {
         return;
     }
