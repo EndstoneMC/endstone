@@ -88,6 +88,7 @@ pytest tests/endstone/python
 
 ### Comments (all languages)
 - Keep comments terse and human. Default to no comment; when one is warranted, one short line.
+- Config comments (`endstone.default.toml` and friends) say what the setting does, not why it exists or how it works.
 - No multi-line explanations, rationale, design-decision narration, or parenthetical asides.
 - Do not leave "LLM notes" — comments that explain why a change was made, reference the development process, or restate what the code plainly does.
 - Match the comment density and verbosity of the surrounding or original code (e.g. a port stays as terse as its upstream).
