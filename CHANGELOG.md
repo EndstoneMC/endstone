@@ -7,6 +7,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [0.11.12] - 2026-09-20
+
 ### Added
 
 - On NetherNet, STUN servers can now be configured under `network.stun-servers` in `endstone.toml`, so a server behind NAT can tell clients its public address.
@@ -1213,7 +1215,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Basic plugin loader for C++ and Python plugins.
 - Basic command system that allows plugins to register custom commands.
 
-[Unreleased]: https://github.com/EndstoneMC/endstone/compare/v0.11.11...HEAD
+[Unreleased]: https://github.com/EndstoneMC/endstone/compare/v0.11.12...HEAD
+[0.11.12]: https://github.com/EndstoneMC/endstone/compare/v0.11.11...v0.11.12
 [0.11.11]: https://github.com/EndstoneMC/endstone/compare/v0.11.10...v0.11.11
 [0.11.10]: https://github.com/EndstoneMC/endstone/compare/v0.11.9...v0.11.10
 [0.11.9]: https://github.com/EndstoneMC/endstone/compare/v0.11.8...v0.11.9
