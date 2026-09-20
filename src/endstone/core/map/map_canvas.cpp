@@ -95,6 +95,9 @@ void EndstoneMapCanvas::drawImage(int x, int y, const Image &image)
 void EndstoneMapCanvas::setBase(const std::vector<std::uint32_t> &base)
 {
     base_ = &base;
+    // Every uint32 is a real colour, so there is no spare value to mark a pixel as never drawn.
+    // Seed the canvas with the layers below instead: a pixel the renderer skips keeps what was there.
+    buffer_ = base;
 }
 
 const std::vector<std::uint32_t> &EndstoneMapCanvas::getBuffer() const
