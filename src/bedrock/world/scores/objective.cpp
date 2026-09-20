@@ -17,6 +17,7 @@
 #include <cstdint>
 #include <stdexcept>
 #include <unordered_map>
+#include <utility>
 
 Objective::Objective(const std::string &name, const ObjectiveCriteria &criteria)
     : name_(name), criteria_(criteria), display_name_(name)
@@ -85,7 +86,7 @@ ScoreboardOperationResult Objective::_modifyPlayerScore(int &result, const Score
     case PlayerScoreSetFunction::Subtract: {
         const auto current = static_cast<std::int64_t>(score);
         const auto modified = action == PlayerScoreSetFunction::Add ? current + value : current - value;
-        if (modified != static_cast<std::int32_t>(modified)) {
+        if (!std::in_range<std::int32_t>(modified)) {
             result = score;
             return ScoreboardOperationResult::IntegerOverflow;
         }
