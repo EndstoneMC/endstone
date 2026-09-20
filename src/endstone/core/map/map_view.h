@@ -29,7 +29,6 @@ struct RenderData {
     RenderData() : buffer(MapConstants::MAP_SIZE * MapConstants::MAP_SIZE, 0) {}
     std::vector<std::uint32_t> buffer;
     std::vector<MapCursor> cursors;
-    std::vector<MapItemTrackedActor::UniqueId> cursor_ids;  // parallel to cursors
 };
 
 class EndstoneMapView : public MapView {
