@@ -45,15 +45,19 @@ IdentityDefinition::Type ScoreboardIdentityRef::getIdentityType() const
 
 bool ScoreboardIdentityRef::removeFromObjective(Scoreboard &scoreboard, Objective &objective)
 {
-    auto score = objective.getPlayerScore(scoreboard_id_);
-    if (!score.valid) {
+    if (!objective.hasScore(scoreboard_id_)) {
         return false;
     }
 
+    const ScoreboardId id = scoreboard_id_;
+    objective._resetPlayer(id);
+
     --objective_references_;
-    if (objective_references_ <= 0) {
-        scoreboard.clearScoreboardIdentity(scoreboard_id_);
+    if (getNumReferences() > 0) {
+        return true;
     }
+
+    scoreboard.clearScoreboardIdentity(id);
     return true;
 }
 

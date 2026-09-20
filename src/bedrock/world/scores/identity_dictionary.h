@@ -55,6 +55,7 @@ public:
         if (it == identity_defs_.end()) {
             return false;
         }
+        const ScoreboardId key = id;
         const auto &identity_def = it->second;
         switch (identity_def.getIdentityType()) {
         case IdentityDefinition::Type::Player:
@@ -69,7 +70,7 @@ public:
         default:
             break;
         }
-        identity_defs_.erase(id);
+        identity_defs_.erase(key);
         return true;
     }
 

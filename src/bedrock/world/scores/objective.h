@@ -62,6 +62,7 @@ private:
     friend class ScoreboardIdentityRef;
     ScoreboardOperationResult _modifyPlayerScore(int &result, const ScoreboardId &id, int value,
                                                  PlayerScoreSetFunction action);  // NOLINT
+    void _resetPlayer(const ScoreboardId &id);                                     // NOLINT
 
     std::unordered_map<ScoreboardId, int> scores_;  // +24
     const std::string name_;                        // +88

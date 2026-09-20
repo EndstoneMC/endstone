@@ -14,6 +14,7 @@
 
 #include "bedrock/world/scores/objective.h"
 
+#include <cstdint>
 #include <stdexcept>
 #include <unordered_map>
 
@@ -81,14 +82,24 @@ ScoreboardOperationResult Objective::_modifyPlayerScore(int &result, const Score
         score = value;
         break;
     case PlayerScoreSetFunction::Add:
-        score += value;
+    case PlayerScoreSetFunction::Subtract: {
+        const auto current = static_cast<std::int64_t>(score);
+        const auto modified = action == PlayerScoreSetFunction::Add ? current + value : current - value;
+        if (modified != static_cast<std::int32_t>(modified)) {
+            result = score;
+            return ScoreboardOperationResult::IntegerOverflow;
+        }
+        score = static_cast<int>(modified);
         break;
-    case PlayerScoreSetFunction::Subtract:
-        score -= value;
-        break;
+    }
     default:
         break;
     }
     result = score;
     return ScoreboardOperationResult::Success;
+}
+
+void Objective::_resetPlayer(const ScoreboardId &id)
+{
+    scores_.erase(id);
 }

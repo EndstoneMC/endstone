@@ -48,22 +48,22 @@ bool Scoreboard::removeObjective(Objective *objective)
     }
 
     const auto &name = objective->getName();
-    {
-        auto it = objectives_.find(name);
-        if (it == objectives_.end()) {
-            return false;
-        }
-        onObjectiveRemoved(*objective);
-        objectives_.erase(it);
+    auto it = objectives_.find(name);
+    if (it == objectives_.end()) {
+        return false;
     }
+    onObjectiveRemoved(*objective);
 
-    for (auto it = display_objectives_.begin(); it != display_objectives_.end();) {
-        if (&it->second.getObjective() == objective) {
-            it = display_objectives_.erase(it);
+    for (auto slot = display_objectives_.begin(); slot != display_objectives_.end();) {
+        if (&slot->second.getObjective() == objective) {
+            slot = display_objectives_.erase(slot);
             continue;
         }
-        ++it;
+        ++slot;
     }
+
+    objectives_lookup_.erase(HashedString::computeHash(name));
+    objectives_.erase(it);
     return true;
 }
 
@@ -156,8 +156,9 @@ void Scoreboard::forEachIdentityRef(std::function<void(ScoreboardIdentityRef &)>
 
 void Scoreboard::resetPlayerScore(const ScoreboardId &id)
 {
+    const ScoreboardId scoreboard_id = id;
     for (auto &[key, value] : objectives_) {
-        resetPlayerScore(id, *value);
+        resetPlayerScore(scoreboard_id, *value);
     }
 }
 
