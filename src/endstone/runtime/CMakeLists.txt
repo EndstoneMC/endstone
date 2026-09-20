@@ -25,9 +25,11 @@ add_library(endstone_runtime SHARED
         bedrock_hooks/map_data_manager.cpp
         bedrock_hooks/minecraft_commands.cpp
         bedrock_hooks/mob.cpp
+        bedrock_hooks/nethernet_transport.cpp
         bedrock_hooks/p2p_transport_channel.cpp
         bedrock_hooks/packet.cpp
         bedrock_hooks/piston_block_actor.cpp
+        bedrock_hooks/port.cpp
         bedrock_hooks/player.cpp
         bedrock_hooks/rak_peer_helper.cpp
         bedrock_hooks/resource_pack_repository.cpp

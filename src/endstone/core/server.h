@@ -19,8 +19,10 @@
 #include <string>
 #include <thread>
 #include <unordered_map>
+#include <vector>
 
 #include "bedrock/core/utility/pub_sub/subscription.h"
+#include "bedrock/deps/nethernet/nethernet_transport.h"
 #include "bedrock/resources/resource_pack_repository_interface.h"
 #include "bedrock/server/server_text_settings.h"
 #include "bedrock/shared_constants.h"
@@ -148,6 +150,7 @@ private:
     void fixServerAnnouncement();
     [[nodiscard]] bool isUsingNetherNet() const;
     [[nodiscard]] std::uint16_t getSignalingPort() const;
+    void applyStunConfig() const;
 
     ServerInstance *server_instance_{nullptr};
     Logger &logger_;
@@ -178,6 +181,7 @@ private:
     float average_usage_[SharedConstants::TicksPerSecond] = {0.0F};
     // TODO(config): move the following the a separate class/struct
     bool allow_client_packs_ = false;
+    std::vector<NetherNet::StunRelayServer> stun_servers_;
     bool log_commands_ = true;
     ServerTextSettings text_settings_;
     ::Bedrock::PubSub::Subscription on_gameplay_user_removed_;

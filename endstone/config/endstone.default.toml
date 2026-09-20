@@ -13,3 +13,7 @@ allow-client-packs = false
 # Disabled by default: the server exits when it cannot bind that port, and many
 # hosts and containers have no IPv6 at all.
 ipv6 = false
+
+# STUN servers used to discover this server's public address.
+# Only used when transport is nethernet.
+stun-servers = ["stun:stun.l.google.com:19302"]

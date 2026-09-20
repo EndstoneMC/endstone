@@ -28,20 +28,21 @@ conan install . --build=missing
 ### Activate Conan build environment (only for the manual CMake path)
 ```shell
 # Windows (cmd)
-.\build\Release\generators\conanbuild.bat
-
-# Windows (PowerShell)
-.\build\Release\generators\conanbuild.ps1
+.\build\RelWithDebInfo\generators\conanbuild.bat
 
 # Linux
-source ./build/Release/generators/conanbuild.sh
+source ./build/RelWithDebInfo/generators/conanbuild.sh
 ```
 
 ### Build with CMake
 ```shell
-cmake --preset conan-release
-cmake --build --preset conan-release
+cmake --preset conan-relwithdebinfo
+cmake --build --preset conan-relwithdebinfo
 ```
+
+> The profile builds dependencies as `Release` but the project itself as `RelWithDebInfo`
+> (`&:build_type=RelWithDebInfo`), so `conan-relwithdebinfo` is the only preset Conan generates.
+> `NDEBUG` is still defined, so the `BEDROCK_STATIC_ASSERT_SIZE` layout checks are active.
 
 ### Install from source (builds Python wheel)
 The PEP 517 backend (`conan-py-build`) runs Conan internally, so no separate `conan install` step is required:
@@ -62,7 +63,7 @@ pip install -U . -C build-dir=./build
 
 ### C++ tests (GTest)
 ```shell
-ctest --test-dir build/Release
+ctest --test-dir build/RelWithDebInfo
 ```
 
 ### Python tests
@@ -87,6 +88,7 @@ pytest tests/endstone/python
 
 ### Comments (all languages)
 - Keep comments terse and human. Default to no comment; when one is warranted, one short line.
+- Config comments (`endstone.default.toml` and friends) say what the setting does, not why it exists or how it works.
 - No multi-line explanations, rationale, design-decision narration, or parenthetical asides.
 - Do not leave "LLM notes" — comments that explain why a change was made, reference the development process, or restate what the code plainly does.
 - Match the comment density and verbosity of the surrounding or original code (e.g. a port stays as terse as its upstream).

@@ -7,8 +7,13 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+### Added
+
+- On NetherNet, STUN servers can now be configured under `network.stun-servers` in `endstone.toml`, so a server behind NAT can tell clients its public address.
+
 ### Fixed
 
+- Endstone no longer sets `server-udp-ports` on NetherNet servers, which narrowed Bedrock's UDP port window to the single port every session had to share.
 - Fixed teleporting an actor or a player to a location in another dimension, which BDS ignored. Introduced in 0.11.11 along with BDS 1.26.51 support.
 - Fixed the location a player is moved to when they travel through a portal, and the locations `PlayerPortalEvent` reports. Introduced in 0.11.11 along with BDS 1.26.51 support.
 - Fixed poplar leaves decaying with the trunk still standing. The leaf-decay check did not count poplar logs and wood as part of a tree, and did not recognise the three poplar leaf blocks as leaves (#536).
