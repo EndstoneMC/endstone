@@ -26,12 +26,16 @@ EndstoneMapMeta::EndstoneMapMeta(const ItemMeta *meta) : EndstoneItemMetaBase(me
     }
     auto *m = static_cast<const EndstoneMapMeta *>(meta);
     map_id_ = m->map_id_;
+    display_players_ = m->display_players_;
 }
 
 EndstoneMapMeta::EndstoneMapMeta(const ::CompoundTag &tag) : EndstoneItemMetaBase(tag)
 {
     if (const auto map_id = tag.getInt64(MapItem::TAG_MAP_UUID)) {
         map_id_ = map_id;
+    }
+    if (tag.get(MapItem::TAG_MAP_PLAYER_DISPLAY)) {
+        display_players_ = tag.getByte(MapItem::TAG_MAP_PLAYER_DISPLAY) != 0;
     }
 }
 
@@ -72,8 +76,12 @@ void EndstoneMapMeta::applyToItem(::CompoundTag &tag) const
 {
     EndstoneItemMetaBase::applyToItem(tag);
     tag.remove(MapItem::TAG_MAP_UUID);
+    tag.remove(MapItem::TAG_MAP_PLAYER_DISPLAY);
     if (hasMapId()) {
         tag.putInt64(MapItem::TAG_MAP_UUID, getMapId());
+    }
+    if (display_players_.has_value()) {
+        tag.putBoolean(MapItem::TAG_MAP_PLAYER_DISPLAY, display_players_.value());
     }
 }
 
@@ -89,7 +97,8 @@ bool EndstoneMapMeta::equalsCommon(const ItemMeta &meta) const
     }
     if (meta.as<MapMeta>()) {
         auto &that = static_cast<const EndstoneMapMeta &>(meta);
-        return (hasMapId() ? that.hasMapId() && map_id_ == that.map_id_ : !that.hasMapId());
+        return (hasMapId() ? that.hasMapId() && map_id_ == that.map_id_ : !that.hasMapId()) &&
+               display_players_ == that.display_players_;
     }
     return true;
 }
@@ -106,6 +115,6 @@ std::unique_ptr<ItemMeta> EndstoneMapMeta::clone() const
 
 bool EndstoneMapMeta::isMapEmpty() const
 {
-    return !hasMapId();
+    return !hasMapId() && !display_players_.has_value();
 }
 }  // namespace endstone::core

@@ -14,6 +14,8 @@
 
 #pragma once
 
+#include <optional>
+
 #include "endstone/core/inventory/meta/item_meta.h"
 #include "endstone/inventory/meta/map_meta.h"
 
@@ -40,5 +42,8 @@ private:
 
     static constexpr MapId InvalidMapId = -1;
     MapId map_id_ = InvalidMapId;
+    // Bedrock-only: a plain map hides every decoration, a locator map shows them. Carry whatever the
+    // item had so a meta round trip cannot turn one into the other.
+    std::optional<bool> display_players_;
 };
 }  // namespace endstone::core

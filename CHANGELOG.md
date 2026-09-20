@@ -23,6 +23,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Fixed `MapView.is_virtual` always reporting `true`, even when the map has no plugin renderer.
 - Fixed decorations on a map that no plugin renders losing their colour.
 - Fixed a custom map renderer blanking the map unless it painted every pixel.
+- Fixed a map item losing whether it shows markers when a plugin edited its item metadata.
 - Fixed a crash when the server saved the scoreboard after a plugin reset an entry's scores or moved a player to another scoreboard (#539).
 - Fixed unregistering a scoreboard objective leaving a stale reference to it behind.
 
