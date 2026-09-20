@@ -67,8 +67,7 @@ bool addPublishedAddress(NetherNet::TransportConfiguration &config, const std::u
     config.known_mapped_address_range_count = 1;
     if (entt::locator<endstone::core::EndstoneServer>::has_value()) {
         endstone::core::EndstoneServer::getInstance().getLogger().info(
-            "Telling NetherNet clients to reach this server at {}:{}.", address,
-            published != 0 ? published : local_port);
+            "Configured {}:{} as the mapped address for NetherNet.", address, published != 0 ? published : local_port);
     }
     return true;
 }
@@ -82,11 +81,10 @@ NetherNet::INetherNetTransportInterface *NetherNet::TransportFactoryImpl::create
     const auto *http = std::get_if<TransportConfiguration::Http>(&configuration.default_signaling_channel);
     if (http != nullptr) {
         auto &config = const_cast<TransportConfiguration &>(configuration);
-        // #blameMojang - a dedicated server runs the same NetherNet path as a player-hosted world, which
-        // is peer to peer. Every session takes its own UDP socket and only the port the first one happens
-        // to take is ever published, so a server with a single allocated port fits a single player.
-        // Fix: share one socket pinned to the signaling port. Both bounds are needed, the socket cache is
-        // bypassed when the minimum is zero.
+        // #blameMojang - BDS runs the same NetherNet code as a player hosting a world from their console.
+        // Every player who joins gets their own UDP port. Fine at home, useless on a rented server with
+        // one open port, where only the first player can get in.
+        // Fix: put every player on the signaling port. Set both bounds, a zero minimum skips the cache.
         config.min_udp_port = http->port;
         config.max_udp_port = http->port;
         config.global_udp_port = true;
