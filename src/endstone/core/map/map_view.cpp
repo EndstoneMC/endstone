@@ -169,7 +169,14 @@ const RenderData &EndstoneMapView::render(EndstonePlayer &player)
         catch (std::exception &e) {
             player.getServer().getLogger().critical("Could not render map: {}", e.what());
         }
-        render.buffer = canvas.getBuffer();
+        // A canvas keeps what it drew between renders, so a renderer that paints once still has its
+        // pixels here. Merge only what it actually painted: alpha zero means it never touched that one.
+        const auto &buffer = canvas.getBuffer();
+        for (std::size_t i = 0; i < buffer.size(); ++i) {
+            if ((buffer[i] & 0xFF000000U) != 0U) {
+                render.buffer[i] = buffer[i];
+            }
+        }
 
         for (const auto &cursor : canvas.getCursors()) {
             render.cursors.emplace_back(cursor);
