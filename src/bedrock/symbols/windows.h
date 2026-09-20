@@ -79,12 +79,12 @@ static constexpr std::array<std::pair<std::string_view, std::size_t>, 66> symbol
     {"?createPacket@MinecraftPackets@@SA?AV?$shared_ptr@VPacket@@@std@@W4MinecraftPacketIds@@@Z", 9675920},
     // Mob
     {"?knockback@Mob@@UEAAXPEAVActor@@MMMAEBUKnockbackParameters@@@Z", 43937952},
-    // NetherNet
-    {"?CreateNetherNetTransportInterface@NetherNet@@YAPEAVINetherNetTransportInterface@1@AEBUNetworkID@1@AEBUTransportConfiguration@1@PEAVINetherNetTransportInterfaceCallbacks@1@@Z", 17973616},
     // NetherNet::LanThreadManager
     {"?SendLanBroadcastResponse@LanThreadManager@NetherNet@@UEAAXAEBVSocketAddress@webrtc@@UNetworkID@2@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z", 17962688},
     // NetherNet::SimpleNetworkInterfaceImpl
     {"?ReceiveFromSignalingChannel@SimpleNetworkInterfaceImpl@NetherNet@@AEAAXUNetworkID@2@V?$basic_string_view@DU?$char_traits@D@std@@@std@@W4SignalingChannelId@2@@Z", 18010560},
+    // NetherNet::TransportFactoryImpl
+    {"?createTransportInterface@TransportFactoryImpl@NetherNet@@QEAAPEAVINetherNetTransportInterface@2@AEBUNetworkID@2@AEBUTransportConfiguration@2@PEAVINetherNetTransportInterfaceCallbacks@2@@Z", 118685776},
     // NetworkSystem
     {"?send@NetworkSystem@@QEAAXAEBVNetworkIdentifier@@AEBVPacket@@W4SubClientId@@@Z", 9687248},
     // PistonBlockActor

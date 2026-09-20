@@ -873,7 +873,8 @@ extra = 0
 pattern = "55 41 57 41 56 41 55 41 54 56 57 53 48 81 EC ? ? ? ? 48 8D AC 24 80 00 00 00 48 C7 85 ? ? ? ? FE FF FF FF 4C 89 4D ? 4D 89 C7 48 89 D6 48 89 CF"
 
 [[signatures]]
-name = "?CreateNetherNetTransportInterface@NetherNet@@YAPEAVINetherNetTransportInterface@1@AEBUNetworkID@1@AEBUTransportConfiguration@1@PEAVINetherNetTransportInterfaceCallbacks@1@@Z"
+# name is arbitrary, this is actually hooking NetherNet::`anonymous namespace'::TransportFactoryImpl
+name = "?createTransportInterface@TransportFactoryImpl@NetherNet@@QEAAPEAVINetherNetTransportInterface@2@AEBUNetworkID@2@AEBUTransportConfiguration@2@PEAVINetherNetTransportInterfaceCallbacks@2@@Z"
 relative = false
 extra = 0
 # 1. find bytes "4E 65 74 68 65 72 4E 65 74 54 72 61 6E 73 70 6F 72 74 46 61 63 74 6F 72 79 2E 63 70 70"
@@ -882,10 +883,13 @@ extra = 0
 #    (signaling channel variant, udp min/max, the hard-coded false at +0xc48) and hands it to the factory
 # 2. createTransport has exactly one call that returns the INetherNetTransportInterface* it wraps in the
 #    unique_ptr it returns - that call target is CreateNetherNetTransportInterface (0x13d bytes)
-# 3. confirm: three args (const NetworkID&, const TransportConfiguration&,
-#    INetherNetTransportInterfaceCallbacks*), and exactly one code xref plus one data xref in the image
-# 4. confirm vs the old named DB
-pattern = "55 56 57 53 48 83 EC ? 48 8D 6C 24 ? 48 C7 45 ? ? ? ? ? 4C 89 C6 48 89 D7 48 89 CB 8B 05 ? ? ? ? 8B 0D ? ? ? ? 65 48 8B 14 25 ? ? ? ? 48 8B 0C CA 3B 81 ? ? ? ? 7F ? 48 8D 0D"
+# 3. CreateNetherNetTransportInterface only forwards: it runs the getGlobalFactory magic static, locks
+#    GLOBAL_FACTORY.mMutex, and makes a single virtual call through mFactory at vtable+0x28 (slot 5),
+#    passing localID/configuration/pCallbacks straight through - that target is createTransportInterface
+# 4. confirm: four args with `this`, a mutex around a map find on the NetworkID that bumps mRef and
+#    returns impl+0x48 on a hit, and on a miss allocates 0x2b8 and runs the SimpleNetworkInterfaceImpl
+#    ctor with the configuration
+pattern = "55 41 57 41 56 41 55 41 54 56 57 53 48 83 EC ? 48 8D 6C 24 ? 48 C7 45 ? ? ? ? ? 4C 89 CB 4D 89 C7 48 89 D6"
 
 [[signatures]]
 name = "?SendBindingErrorResponse@Port@webrtc@@UEAAXPEAVStunMessage@2@AEBVSocketAddress@2@HV?$basic_string_view@DU?$char_traits@D@std@@@std@@@Z"

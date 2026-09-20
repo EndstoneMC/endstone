@@ -11,7 +11,7 @@
 
 namespace endstone::runtime {
 
-static constexpr std::array<std::pair<std::string_view, std::size_t>, 64> symbols = {{
+static constexpr std::array<std::pair<std::string_view, std::size_t>, 66> symbols = {{
     {"BlockState::StateListNode::mHead", 257927632},
     {"Enchant::mEnchants", 257764288},
     {"getI18n::result", 256810296},
@@ -84,6 +84,8 @@ static constexpr std::array<std::pair<std::string_view, std::size_t>, 64> symbol
     {"_ZN9NetherNet16LanThreadManager24SendLanBroadcastResponseERKN6webrtc13SocketAddressENS_9NetworkIDENSt3__112basic_stringIcNS6_11char_traitsIcEENS6_9allocatorIcEEEE", 222749872},
     // NetherNet::SimpleNetworkInterfaceImpl
     {"_ZN9NetherNet26SimpleNetworkInterfaceImpl27ReceiveFromSignalingChannelENS_9NetworkIDENSt3__117basic_string_viewIcNS2_11char_traitsIcEEEENS_18SignalingChannelIdE", 222785168},
+    // NetherNet::TransportFactoryImpl
+    {"_ZN9NetherNet20TransportFactoryImpl24createTransportInterfaceERKNS_9NetworkIDERKNS_22TransportConfigurationEPNS_37INetherNetTransportInterfaceCallbacksE", 223038384},
     // NetworkSystem
     {"_ZN13NetworkSystem4sendERK17NetworkIdentifierRK6Packet11SubClientId", 144723008},
     // PistonBlockActor
@@ -120,6 +122,8 @@ static constexpr std::array<std::pair<std::string_view, std::size_t>, 64> symbol
     {"_ZN14WeatherManager13updateWeatherEfifi", 209726576},
     // webrtc::P2PTransportChannel
     {"_ZN6webrtc19P2PTransportChannel32SwitchSelectedConnectionInternalEPNS_10ConnectionENS_15IceSwitchReasonE", 68701648},
+    // webrtc::Port
+    {"_ZN6webrtc4Port24SendBindingErrorResponseEPNS_11StunMessageERKNS_13SocketAddressEiNSt3__117basic_string_viewIcNS6_11char_traitsIcEEEE", 68418112},
 }};
 
 }  // namespace endstone::runtime

@@ -75,20 +75,23 @@ bool addPublishedAddress(NetherNet::TransportConfiguration &config, const std::u
 
 }  // namespace
 
-NetherNet::INetherNetTransportInterface *NetherNet::CreateNetherNetTransportInterface(
+NetherNet::INetherNetTransportInterface *NetherNet::TransportFactoryImpl::createTransportInterface(
     const NetworkID &local_id, const TransportConfiguration &configuration,
     INetherNetTransportInterfaceCallbacks *callbacks)
 {
     const auto *http = std::get_if<TransportConfiguration::Http>(&configuration.default_signaling_channel);
     if (http != nullptr) {
         auto &config = const_cast<TransportConfiguration &>(configuration);
-        // Bedrock gives every session its own UDP socket, so only the port the first one happens to take
-        // is ever published. Sharing one socket on the signaling port means a server needs that port and
-        // nothing else. Both fields are required: the socket cache is bypassed when the minimum is zero.
+        // #blameMojang - a dedicated server runs the same NetherNet path as a player-hosted world, which
+        // is peer to peer. Every session takes its own UDP socket and only the port the first one happens
+        // to take is ever published, so a server with a single allocated port fits a single player.
+        // Fix: share one socket pinned to the signaling port. Both bounds are needed, the socket cache is
+        // bypassed when the minimum is zero.
         config.min_udp_port = http->port;
         config.max_udp_port = http->port;
         config.global_udp_port = true;
         addPublishedAddress(config, http->port);
     }
-    return ENDSTONE_HOOK_CALL_ORIGINAL(&CreateNetherNetTransportInterface, local_id, configuration, callbacks);
+    return ENDSTONE_HOOK_CALL_ORIGINAL(&TransportFactoryImpl::createTransportInterface, this, local_id, configuration,
+                                       callbacks);
 }

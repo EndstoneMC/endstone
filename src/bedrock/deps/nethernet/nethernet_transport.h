@@ -109,8 +109,13 @@ public:
     virtual Subscription RegisterEventHandler(ILanEventHandler *) = 0;
 };
 
-ENDSTONE_HOOK INetherNetTransportInterface *CreateNetherNetTransportInterface(
-    const NetworkID &local_id, const TransportConfiguration &configuration,
-    INetherNetTransportInterfaceCallbacks *callbacks);
+// Endstone: the factory that builds the transport lives in an anonymous namespace, so it has no
+// symbol on either platform. We gave it an arbitrary name and pin it by byte pattern instead.
+class TransportFactoryImpl {
+public:
+    ENDSTONE_HOOK INetherNetTransportInterface *createTransportInterface(
+        const NetworkID &local_id, const TransportConfiguration &configuration,
+        INetherNetTransportInterfaceCallbacks *callbacks);
+};
 
 }  // namespace NetherNet

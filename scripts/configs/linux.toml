@@ -762,3 +762,36 @@ extra = 0
 #    reposts itself via a lambda when off-thread, else writes the 0x47c-capped header and calls SendToHelper
 # 4. confirm vs the old named DB
 pattern = "55 41 57 41 56 41 55 41 54 53 48 81 EC ? ? ? ? 49 89 D5 48 89 F3 49 89 FE 48 8D AC 24 ? ? ? ? 4C 8D 7F 40"
+
+[[signatures]]
+# name is arbitrary, this is actually hooking NetherNet::(anonymous namespace)::TransportFactoryImpl
+name = "_ZN9NetherNet20TransportFactoryImpl24createTransportInterfaceERKNS_9NetworkIDERKNS_22TransportConfigurationEPNS_37INetherNetTransportInterfaceCallbacksE"
+relative = false
+extra = 0
+# 1. find bytes "4E 39 4E 65 74 68 65 72 4E 65 74 31 32 5F 47 4C 4F 42 41 4C 5F 5F 4E 5F 31 32 30 54 72 61
+#    6E 73 70 6F 72 74 46 61 63 74 6F 72 79 49 6D 70 6C 45" = "N9NetherNet12_GLOBAL__N_120Transport
+#    FactoryImplE" (unique), the typeinfo name of the anonymous-namespace factory
+# 2. its lone data xref is the name field of the typeinfo, which starts 8 bytes earlier; that object's
+#    lone data xref in turn is the typeinfo slot of the vtable, which starts another 8 bytes earlier
+# 3. the vptr is vtable+0x10, so slot 5 is vtable+0x38: the slots run ~D1, ~D0, setLoggingLevel,
+#    suspendTransport, resumeTransport, createTransportInterface, destroyTransportInterface,
+#    createSocketFactory, the same order as windows, and +0x28 from the vptr is the slot createTransport
+#    calls
+# 4. confirm: four args with `this`, a mutex around a map find on the NetworkID that bumps mRef and
+#    returns impl+0x48 on a hit, and on a miss allocates 648 and runs the SimpleNetworkInterfaceImpl
+#    ctor with the configuration
+pattern = "55 41 57 41 56 41 55 41 54 53 48 83 EC ? 48 89 4C 24 ? 48 89 54 24 ? 49 89 F7 48 89 FB"
+
+[[signatures]]
+name = "_ZN6webrtc4Port24SendBindingErrorResponseEPNS_11StunMessageERKNS_13SocketAddressEiNSt3__117basic_string_viewIcNS6_11char_traitsIcEEEE"
+relative = false
+extra = 0
+# 1. find bytes "3A 20 72 65 61 73 6F 6E 3D 00" = ": reason=\0" (unique); its lone data xref is the
+#    LS_INFO line ": Sending STUN " << ... << ": reason=" << reason << " to " that port.cc logs from
+#    SendBindingErrorResponse, so the function containing that xref is the target
+# 2. confirm: six args, the string_view reason arriving split as pointer + length, and the 400/401
+#    branch that skips AddMessageIntegrity - clang compiles it as the unsigned test
+#    `error_code - 402 <= 0xfffffffd`, which excludes exactly 400 and 401
+# 3. confirm: the response type is 273 (STUN_BINDING_ERROR_RESPONSE) or 784 (GOOG_PING_ERROR_RESPONSE),
+#    AddFingerprint runs only for the former, and the send goes through the Port vtable at +0x90
+pattern = "55 41 57 41 56 41 55 41 54 53 48 81 EC ? ? ? ? 4D 89 CC 4D 89 C5 49 89 F7 4C 89 84 24"
