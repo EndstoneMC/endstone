@@ -62,6 +62,7 @@ private:
     BarStyle style_;
     std::bitset<2> flags_;
     bool visible_{true};
+    ActorUniqueID boss_id_;
     mutable std::unordered_set<UUID> players_;
 };
 
