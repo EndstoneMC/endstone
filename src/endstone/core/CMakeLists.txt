@@ -1,6 +1,7 @@
 cmake_minimum_required(VERSION 3.15)
 project(endstone_core LANGUAGES CXX)
 
+find_package(asio REQUIRED)
 find_package(base64 REQUIRED)
 find_package(Boost REQUIRED)
 find_package(concurrentqueue REQUIRED)
@@ -81,6 +82,7 @@ add_library(endstone_core
         map/map_view.cpp
         network/data_packet.cpp
         network/nethernet_address_cache.cpp
+        network/stun_client.cpp
         permissions/default_permissions.cpp
         permissions/permissible_base.cpp
         plugin/cpp_plugin_loader.cpp
@@ -124,6 +126,7 @@ target_link_libraries(endstone_core PUBLIC
         spdlog::spdlog
         tomlplusplus::tomlplusplus
         zstr::zstr)
+target_link_libraries(endstone_core PRIVATE asio::asio)
 target_compile_definitions(endstone_core PUBLIC PYBIND11_DETAILED_ERROR_MESSAGES)
 if (ENDSTONE_ENABLE_DEVTOOLS)
     add_subdirectory(devtools)
@@ -133,6 +136,9 @@ endif ()
 if (MSVC)
     target_link_options(endstone_core PRIVATE /DEBUG /INCREMENTAL:NO /OPT:REF /OPT:ICF)
     target_compile_options(endstone_core PRIVATE /O2 /DNDEBUG /Zi /Gy)
+endif ()
+if (WIN32)
+    target_compile_definitions(endstone_core PRIVATE _WIN32_WINNT=0x0A00)
 endif ()
 if (UNIX)
     target_link_libraries(endstone_core PUBLIC ${CMAKE_DL_LIBS})

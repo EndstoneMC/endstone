@@ -49,6 +49,7 @@ class EndstoneRecipe(ConanFile):
         cmake_layout(self)
 
     def requirements(self):
+        self.requires("asio/1.38.2")
         self.requires("base64/0.5.2")
         self.requires("boost/1.91.0")
         self.requires("concurrentqueue/1.0.4")

@@ -16,17 +16,27 @@
 
 #include "bedrock/deps/nethernet/nethernet_transport.h"
 
+#include <algorithm>
 #include <charconv>
+#include <chrono>
+#include <cstddef>
+#include <cstdint>
 #include <cstdlib>
+#include <iterator>
+#include <optional>
+#include <string>
 #include <string_view>
 #include <variant>
 
 #include <entt/locator/locator.hpp>
 
+#include "endstone/core/network/stun_client.h"
 #include "endstone/core/server.h"
 #include "endstone/runtime/hook.h"
 
 namespace {
+
+constexpr auto StunTimeout = std::chrono::seconds(2);
 
 std::string_view getEnv(const char *name)
 {
@@ -44,6 +54,51 @@ std::uint16_t parsePort(const std::string_view value)
     return static_cast<std::uint16_t>(port);
 }
 
+std::uint16_t publishedPort(const std::uint16_t local_port)
+{
+    const auto published = parsePort(getEnv("SERVER_PORT"));
+    return published != 0 ? published : local_port;
+}
+
+NetherNet::MappedAddressRange *findMapping(NetherNet::TransportConfiguration &config, const std::uint16_t local_port)
+{
+    const auto count = std::min(static_cast<std::size_t>(std::max(config.known_mapped_address_range_count, 0)),
+                                std::size(config.known_mapped_address_ranges));
+    for (std::size_t i = 0; i < count; ++i) {
+        auto &range = config.known_mapped_address_ranges[i];
+        if (local_port >= range.internal_port_min && local_port <= range.internal_port_max) {
+            return &range;
+        }
+    }
+    return nullptr;
+}
+
+// Bedrock reflects the first range that covers a port, so an operator's own public mapping wins.
+std::optional<std::uint16_t> setMappedAddress(NetherNet::TransportConfiguration &config, const std::uint16_t local_port,
+                                              const std::string &address, const std::uint16_t external_port)
+{
+    if (auto *range = findMapping(config, local_port)) {
+        if (range->external_address.has_value()) {
+            return std::nullopt;
+        }
+        range->external_address = address;
+        return static_cast<std::uint16_t>(local_port + range->external_port_offset);
+    }
+
+    const auto count = static_cast<std::size_t>(std::max(config.known_mapped_address_range_count, 0));
+    if (count >= std::size(config.known_mapped_address_ranges)) {
+        return std::nullopt;
+    }
+    auto &range = config.known_mapped_address_ranges[count];
+    range.internal_address.reset();
+    range.internal_port_min = local_port;
+    range.internal_port_max = local_port;
+    range.external_address = address;
+    range.external_port_offset = external_port - local_port;
+    config.known_mapped_address_range_count = static_cast<int>(count + 1);
+    return external_port;
+}
+
 // Hosting panels run the server behind a bridge and publish one address, which they hand to the
 // process in the environment. Advertising it is what lets a client reach a server it can already
 // see, without the operator copying an address into server.properties.
@@ -53,23 +108,41 @@ bool addPublishedAddress(NetherNet::TransportConfiguration &config, const std::u
     if (address.empty() || address == "0.0.0.0" || address == "::") {
         return false;
     }
-    if (config.known_mapped_address_range_count != 0) {
+
+    const auto port = setMappedAddress(config, local_port, std::string{address}, publishedPort(local_port));
+    if (!port) {
         return false;
     }
-
-    const auto published = parsePort(getEnv("SERVER_PORT"));
-    auto &range = config.known_mapped_address_ranges[0];
-    range.internal_address.reset();
-    range.internal_port_min = local_port;
-    range.internal_port_max = local_port;
-    range.external_address = std::string{address};
-    range.external_port_offset = (published != 0 ? published : local_port) - local_port;
-    config.known_mapped_address_range_count = 1;
     if (entt::locator<endstone::core::EndstoneServer>::has_value()) {
         endstone::core::EndstoneServer::getInstance().getLogger().info(
-            "Configured {}:{} as the mapped address for NetherNet.", address, published != 0 ? published : local_port);
+            "Configured {}:{} as the mapped address for NetherNet.", address, *port);
     }
     return true;
+}
+
+// The transport reads the mapped addresses once, when it is built, so the STUN answer has to be here first.
+void addStunAddress(NetherNet::TransportConfiguration &config, const std::uint16_t local_port)
+{
+    if (!entt::locator<endstone::core::EndstoneServer>::has_value()) {
+        return;
+    }
+    if (const auto *range = findMapping(config, local_port); range != nullptr && range->external_address.has_value()) {
+        return;
+    }
+    auto &server = endstone::core::EndstoneServer::getInstance();
+    const auto &uris = server.getStunServers();
+    if (uris.empty()) {
+        return;
+    }
+
+    const auto address = endstone::core::queryPublicAddress(uris, StunTimeout);
+    if (!address) {
+        server.getLogger().warning("Could not discover the public address for NetherNet from the STUN servers.");
+        return;
+    }
+    if (const auto port = setMappedAddress(config, local_port, *address, publishedPort(local_port))) {
+        server.getLogger().info("Discovered {}:{} as the mapped address for NetherNet.", *address, *port);
+    }
 }
 
 }  // namespace
@@ -89,6 +162,7 @@ NetherNet::INetherNetTransportInterface *NetherNet::TransportFactoryImpl::create
         config.max_udp_port = http->port;
         config.global_udp_port = true;
         addPublishedAddress(config, http->port);
+        addStunAddress(config, http->port);
     }
     return ENDSTONE_HOOK_CALL_ORIGINAL(&TransportFactoryImpl::createTransportInterface, this, local_id, configuration,
                                        callbacks);

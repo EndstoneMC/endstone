@@ -7,6 +7,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+### Fixed
+
+- Fixed `network.stun-servers` having no effect on NetherNet, which left a server behind NAT unable to discover and advertise its public address.
+
 ## [0.11.12] - 2026-09-20
 
 ### Added

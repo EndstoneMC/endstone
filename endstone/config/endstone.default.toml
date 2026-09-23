@@ -16,4 +16,4 @@ ipv6 = false
 
 # STUN servers used to discover this server's public address.
 # Only used when transport is nethernet.
-stun-servers = ["stun:stun.l.google.com:19302"]
+stun-servers = ["stun:stun.l.google.com:19302", "stun:stun.cloudflare.com:3478"]
