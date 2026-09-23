@@ -17,6 +17,7 @@
 #include <cstdarg>
 #include <cstdio>
 #include <ranges>
+#include <string_view>
 
 #include <magic_enum/magic_enum.hpp>
 
@@ -24,12 +25,18 @@
 #include "endstone/core/logger_factory.h"
 #include "endstone/logger.h"
 
-void BedrockLog::LogDetails::_log_va(LogAreaID area, unsigned int priority, const char * /*function*/, int /*line*/,
+void BedrockLog::LogDetails::_log_va(LogAreaID area, unsigned int priority, const char *function, int /*line*/,
                                      MessasgeId /*message_id*/, const char *format, va_list args)
 {
     if ((area == LogAreaID::Database || area == LogAreaID::System) &&
         priority <= static_cast<unsigned int>(Bedrock::LogLevel::Type::Info)) {
         // Suppress logs from DBStorage and from ContentLog with unknown area (mapped to System)
+        return;
+    }
+
+    if (area == LogAreaID::Server && priority == static_cast<unsigned int>(Bedrock::LogLevel::Type::Error) &&
+        function && std::string_view(function).ends_with("NotUsingNetherNet")) {
+        // Suppress the transport type error when running on RakNet
         return;
     }
 
