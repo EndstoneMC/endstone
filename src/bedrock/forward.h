@@ -311,6 +311,7 @@ enum class NoteBlockInstrument;
 enum class ParticleType;
 enum class PlatformType : int;
 enum class PlayerSleepStatus;
+enum class RedstoneLogicExecutionFlags : std::uint8_t;
 enum class ShowStoreOfferRedirectType : unsigned char;
 enum class StructureFeatureType;
 
