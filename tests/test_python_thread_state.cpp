@@ -30,7 +30,7 @@
 namespace py = pybind11;
 using namespace std::chrono_literals;
 
-TEST(PythonThreadStateTest, ReusesRetainedStateWithoutHoldingGil)
+TEST(PythonThreadStateTest, ReusesContextStateWithoutHoldingGil)
 {
     py::scoped_interpreter interpreter{};
 
@@ -43,9 +43,9 @@ TEST(PythonThreadStateTest, ReusesRetainedStateWithoutHoldingGil)
     bool callback_ready = false;
     bool contender_started = false;
     bool contender_acquired = false;
-    bool acquired_before_release = false;
-    bool retained_without_gil = false;
-    bool released_without_gil = false;
+    bool acquired_while_context_alive = false;
+    bool context_without_gil = false;
+    bool destroyed_without_gil = false;
     bool second_cycle_without_gil = false;
     bool exception_seen = false;
     bool listener_unregistered = false;
@@ -64,42 +64,42 @@ TEST(PythonThreadStateTest, ReusesRetainedStateWithoutHoldingGil)
         py::gil_scoped_release release;
 
         std::thread server_thread([&]() {
-            endstone::runtime::python::retainThreadState();
-            endstone::runtime::python::retainThreadState();
-            retained_without_gil = PyGILState_Check() == 0;
-
-            first_executor();
-            second_executor();
-            try {
-                failing_executor();
-            }
-            catch (const py::error_already_set &) {
-                exception_seen = true;
-            }
-            first_executor();
-            removable_executor();
-            removable_executor = {};
-            listener_unregistered = true;
-
-            primary_state = callback_states.front();
             {
-                std::lock_guard lock(mutex);
-                callback_ready = true;
+                endstone::runtime::python::PythonThreadContext context;
+                context_without_gil = PyGILState_Check() == 0;
+
+                first_executor();
+                second_executor();
+                try {
+                    failing_executor();
+                }
+                catch (const py::error_already_set &) {
+                    exception_seen = true;
+                }
+                first_executor();
+                removable_executor();
+                removable_executor = {};
+                listener_unregistered = true;
+
+                primary_state = callback_states.front();
+                {
+                    std::lock_guard lock(mutex);
+                    callback_ready = true;
+                }
+                condition.notify_all();
+
+                {
+                    std::unique_lock lock(mutex);
+                    condition.wait(lock, [&]() { return contender_started; });
+                    acquired_while_context_alive = condition.wait_for(lock, 5s, [&]() { return contender_acquired; });
+                }
             }
-            condition.notify_all();
+            destroyed_without_gil = PyGILState_Check() == 0;
 
             {
-                std::unique_lock lock(mutex);
-                condition.wait(lock, [&]() { return contender_started; });
-                acquired_before_release = condition.wait_for(lock, 5s, [&]() { return contender_acquired; });
+                endstone::runtime::python::PythonThreadContext context;
+                second_executor();
             }
-
-            endstone::runtime::python::releaseThreadState();
-            released_without_gil = PyGILState_Check() == 0;
-
-            endstone::runtime::python::retainThreadState();
-            second_executor();
-            endstone::runtime::python::releaseThreadState();
             second_cycle_without_gil = PyGILState_Check() == 0;
         });
 
@@ -135,10 +135,10 @@ TEST(PythonThreadStateTest, ReusesRetainedStateWithoutHoldingGil)
     EXPECT_EQ(callback_states[1], callback_states[2]);
     EXPECT_EQ(primary_state, callback_states[0]);
     EXPECT_NE(primary_state, async_state);
-    EXPECT_TRUE(retained_without_gil);
-    EXPECT_TRUE(acquired_before_release);
+    EXPECT_TRUE(context_without_gil);
+    EXPECT_TRUE(acquired_while_context_alive);
     EXPECT_TRUE(exception_seen);
     EXPECT_TRUE(listener_unregistered);
-    EXPECT_TRUE(released_without_gil);
+    EXPECT_TRUE(destroyed_without_gil);
     EXPECT_TRUE(second_cycle_without_gil);
 }

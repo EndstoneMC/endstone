@@ -14,6 +14,8 @@
 
 #include "bedrock/server/server_instance.h"
 
+#include <optional>
+
 #include <entt/locator/locator.hpp>
 
 #include "bedrock/scripting/event_handlers/script_actor_gameplay_handler.h"
@@ -121,7 +123,7 @@ class ServerInstanceLifecycleListener : ServerInstanceEventListener {
 public:
     ::EventResult onServerThreadStarted(ServerInstance &instance) override
     {
-        endstone::runtime::python::retainThreadState();
+        python_thread_context_.emplace();
         auto &level = *instance.getMinecraft()->getLevel();
         auto &server = endstone::core::EndstoneServer ::getInstance();
         hookEventHandler(*level.getActorEventCoordinator().actor_gameplay_handler);
@@ -142,7 +144,7 @@ public:
             server.disablePlugins();
         }
         entt::locator<endstone::core::EndstoneServer>::reset();
-        endstone::runtime::python::releaseThreadState();
+        python_thread_context_.reset();
         return ::EventResult::KeepGoing;
     }
 
@@ -151,6 +153,9 @@ public:
         static ServerInstanceLifecycleListener instance;
         return instance;
     }
+
+private:
+    std::optional<endstone::runtime::python::PythonThreadContext> python_thread_context_;
 };
 
 ServerInitialization::ServerInitResult ServerInstance::initializeServer(ServerInstanceInitArguments &&args)

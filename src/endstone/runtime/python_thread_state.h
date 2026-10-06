@@ -18,36 +18,17 @@
 
 namespace endstone::runtime::python {
 
-namespace detail {
-inline bool &threadStateRetained()
-{
-    static thread_local bool retained = false;
-    return retained;
-}
-}  // namespace detail
+class PythonThreadContext {
+public:
+    PythonThreadContext() = default;
 
-inline void retainThreadState()
-{
-    auto &retained = detail::threadStateRetained();
-    if (retained) {
-        return;
-    }
+    PythonThreadContext(const PythonThreadContext &) = delete;
+    PythonThreadContext &operator=(const PythonThreadContext &) = delete;
 
-    pybind11::gil_scoped_acquire gil;
-    gil.inc_ref();
-    retained = true;
-}
-
-inline void releaseThreadState()
-{
-    auto &retained = detail::threadStateRetained();
-    if (!retained) {
-        return;
-    }
-
-    pybind11::gil_scoped_acquire gil;
-    gil.dec_ref();
-    retained = false;
-}
+private:
+    // release_ restores the GIL before acquire_ releases the thread state.
+    pybind11::gil_scoped_acquire acquire_;
+    pybind11::gil_scoped_release release_;
+};
 
 }  // namespace endstone::runtime::python
