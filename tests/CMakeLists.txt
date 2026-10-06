@@ -1,6 +1,9 @@
 cmake_minimum_required(VERSION 3.15)
 project(endstone_test LANGUAGES CXX)
 
+set(PYBIND11_FINDPYTHON ON)
+find_package(pybind11 CONFIG REQUIRED)
+
 endstone_add_plugin(test_plugin test_plugin.cpp)
 set_target_properties(test_plugin PROPERTIES LIBRARY_OUTPUT_DIRECTORY "plugins")
 set_target_properties(test_plugin PROPERTIES RUNTIME_OUTPUT_DIRECTORY "plugins")
@@ -16,6 +19,7 @@ add_executable(endstone_test
         bedrock/test_spin_lock.cpp
         bedrock/test_static_optimized_string.cpp
         bedrock/test_uuid.cpp
+        test_event_handler.cpp
         test_identifier.cpp
         test_nbt.cpp
         test_base64.cpp
@@ -24,6 +28,7 @@ add_executable(endstone_test
         test_cpp_plugin_loader.cpp
         test_logger_factory.cpp
         test_player_ban_list.cpp
+        test_python_thread_state.cpp
         test_scheduler.cpp
         test_service_manager.cpp
         test_thread_pool_executor.cpp
@@ -31,7 +36,8 @@ add_executable(endstone_test
         test_vector.cpp
 )
 add_dependencies(endstone_test test_plugin)
-target_link_libraries(endstone_test PRIVATE endstone::core GTest::gtest_main GTest::gmock_main)
+target_include_directories(endstone_test PRIVATE ${CMAKE_SOURCE_DIR}/src)
+target_link_libraries(endstone_test PRIVATE endstone::core GTest::gtest_main GTest::gmock_main pybind11::embed)
 # CppPluginLoaderTest cases share the plugins/.local shadow-copy dir, whose
 # cleanup races when ctest runs them in parallel; serialize just those.
 gtest_discover_tests(endstone_test
