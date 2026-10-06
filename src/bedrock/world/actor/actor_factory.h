@@ -21,6 +21,7 @@
 #include "bedrock/world/actor/actor_definition_identifier.h"
 #include "bedrock/world/actor/actor_registry.h"
 
+class Experiments;
 class Level;
 using ActorDataMap = std::unordered_map<std::string, ActorFactoryData>;
 
@@ -32,7 +33,7 @@ public:
 
 class ActorFactory {
 public:
-    ActorFactory(Bedrock::NotNullNonOwnerPtr<Level> level);
+    ActorFactory(Bedrock::NotNullNonOwnerPtr<Level> level, const Experiments &experiments);
     virtual ~ActorFactory();
     OwnerPtr<EntityContext> createSpawnedActor(const ActorDefinitionIdentifier &identifier, Actor *spawner,
                                                const Vec3 &position, const Vec2 &rotation);

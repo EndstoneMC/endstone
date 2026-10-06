@@ -24,15 +24,16 @@
 #include "endstone/event/player/player_shear_actor_event.h"
 #include "endstone/runtime/hook.h"
 
-InteractionResult InteractComponent::getInteraction(Actor &owner, Player &player, ActorInteraction &interaction)
+// TODO(1.26.51): BDS inlined this into the component-lookup wrapper, so the out-of-line body this hook
+// detours is never called and PlayerShearActorEvent does not fire.
+Interaction InteractComponent::getInteraction(Actor &owner, Player &player)
 {
-    const auto result =
-        ENDSTONE_HOOK_CALL_ORIGINAL(&InteractComponent::getInteraction, this, owner, player, interaction);
-    if (!result.isSuccessful() || !interaction.shouldCapture()) {
+    auto result = ENDSTONE_HOOK_CALL_ORIGINAL(&InteractComponent::getInteraction, this, owner, player);
+    if (!result.isSuccessful()) {
         return result;
     }
 
-    const auto &interact_text = interaction.getInteractText();
+    const auto interact_text = result.getInteractText();
     if (interact_text != "action.interact.shear" && interact_text != "action.interact.mooshear" &&
         interact_text != "action.interact.take_sulfur_cube") {
         return result;
@@ -47,8 +48,7 @@ InteractionResult InteractComponent::getInteraction(Actor &owner, Player &player
     };
     server.getPluginManager().callEvent(event);
     if (event.isCancelled()) {
-        interaction.suppressInteraction();
-        return InteractionResult::Failure();
+        return {};
     }
     return result;
 }

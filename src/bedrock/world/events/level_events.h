@@ -28,6 +28,7 @@
 #include "bedrock/world/level/storage/game_rules.h"
 
 class Level;
+class WorldClock;
 
 struct LevelAddedActorEvent {
     gsl::not_null<Bedrock::NonOwnerPointer<Level>> level;  // +0
@@ -66,6 +67,10 @@ struct LevelTickingAreaFinishedLoadingEvent {
 struct LevelStartLeaveGameEvent {
     gsl::not_null<Bedrock::NonOwnerPointer<Level>> level;
 };
+struct WorldClockRestartEvent {
+    const Bedrock::NotNullNonOwnerPtr<WorldClock> clock;
+    int new_time;
+};
 
 template <typename Return>
 struct LevelGameplayEvent;
@@ -80,4 +85,5 @@ template <typename Return>
 struct MutableLevelGameplayEvent;
 
 template <>
-struct MutableLevelGameplayEvent<CoordinatorResult> : MutableEventVariant<LevelWeatherChangedEvent> {};
+struct MutableLevelGameplayEvent<CoordinatorResult>
+    : MutableEventVariant<LevelWeatherChangedEvent, WorldClockRestartEvent> {};

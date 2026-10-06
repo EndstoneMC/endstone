@@ -110,6 +110,7 @@ private:
     bool is_counter_paused_this_tick_;
     bool ambient_;
     bool effect_visible_;
+    bool is_leveled_;
     MobEffect::FactorCalculationData factor_calculation_data_;
 };
 

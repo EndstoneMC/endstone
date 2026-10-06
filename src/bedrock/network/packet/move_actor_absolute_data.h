@@ -38,5 +38,6 @@ public:
     std::int8_t rot_y;          // +25
     std::int8_t rot_y_head;     // +26
     std::int8_t rot_y_body;     // +27
+    std::uint64_t ticks;        // +32
 };
-BEDROCK_STATIC_ASSERT_SIZE(MoveActorAbsoluteData, 32, 32);
+BEDROCK_STATIC_ASSERT_SIZE(MoveActorAbsoluteData, 40, 40);

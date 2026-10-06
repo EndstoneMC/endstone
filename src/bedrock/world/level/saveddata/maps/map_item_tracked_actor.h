@@ -35,7 +35,7 @@ public:
     struct UniqueId {
         Type type;
         ActorUniqueID key_entity_id;
-        BlockPos key_block_pos;
+        BlockPos key_block_pos{0, 0, 0};
         UniqueId() = default;
         UniqueId(const UniqueId &) = default;
         UniqueId(const ActorUniqueID &entity_id) : type(Type::Entity), key_entity_id(entity_id) {}
@@ -43,7 +43,7 @@ public:
         UniqueId &operator=(const UniqueId &) = default;
         bool operator==(const UniqueId &other) const
         {
-            if (type == Type::BlockEntity) {
+            if (type != Type::Entity) {
                 return key_block_pos == other.key_block_pos;
             }
             return key_entity_id == other.key_entity_id;

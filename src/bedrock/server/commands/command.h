@@ -65,8 +65,8 @@ public:
 private:
     friend class endstone::core::MinecraftCommandWrapper;
     int version_ = 0;
-    CommandRegistry *registry_{nullptr};                                          // +16
-    CommandRegistry::Symbol command_symbol_;                                      // +24
+    const CommandRegistry *registry_{nullptr};                                    // +16
+    int command_symbol_{0};                                                       // +24
     CommandPermissionLevel permission_level_ = CommandPermissionLevel::Internal;  // +28
     CommandFlag flags_;                                                           // +30
 };

@@ -33,6 +33,9 @@
 #include <pybind11/pybind11.h>
 #include <toml++/toml.h>
 
+#include "bedrock/deps/nethernet/http_signaling_server.h"
+#include "bedrock/deps/nethernet/simple_network_interface_impl.h"
+#include "bedrock/network/nethernet_connector.h"
 #include "bedrock/network/server_network_handler.h"
 #include "bedrock/platform/threading/assigned_thread.h"
 #include "bedrock/server/dedicated_server.h"
@@ -64,6 +67,7 @@
 #include "endstone/core/map/map_view.h"
 #include "endstone/core/message.h"
 #include "endstone/core/metrics.h"
+#include "endstone/core/network/stun_client.h"
 #include "endstone/core/permissions/default_permissions.h"
 #include "endstone/core/player.h"
 #include "endstone/core/plugin/cpp_plugin_loader.h"
@@ -164,6 +168,19 @@ EndstoneServer::EndstoneServer() : logger_(LoggerFactory::getLogger(""))
         toml::table tbl = toml::parse_file("endstone.toml");
         log_commands_ = tbl.at_path("commands.log").value_or(true);
         allow_client_packs_ = tbl.at_path("settings.allow-client-packs").value_or(false);
+        if (const auto *servers = tbl.at_path("network.stun-servers").as_array()) {
+            for (const auto &node : *servers) {
+                auto uri = node.value_or(std::string{});
+                if (uri.empty()) {
+                    continue;
+                }
+                if (!isValidStunServer(uri)) {
+                    EndstoneServer::getLogger().error("Ignoring STUN server '{}': expected [stun:]host[:port].", uri);
+                    continue;
+                }
+                stun_servers_.push_back(std::move(uri));
+            }
+        }
     }
     catch (const toml::parse_error &err) {
         EndstoneServer::getLogger().error("Failed to parse config file: {}", err.what());
@@ -264,10 +281,11 @@ void EndstoneServer::setLevel(::Level &level)
                               [&](const MapItemSavedData &map_data) {
                                   // The map origin isn't initialized yet at this point.
                                   // Defer the event to the next tick to ensure all data is fully set.
-                                  auto &map = map_data.getMapView();
-                                  getEndstoneScheduler().runTask([&]() {
-                                      MapInitializeEvent e{map};
-                                      getPluginManager().callEvent(e);
+                                  getEndstoneScheduler().runTask([this, id = map_data.getMapId().raw_id]() {
+                                      if (auto *map = getMap(id)) {
+                                          MapInitializeEvent e{*map};
+                                          getPluginManager().callEvent(e);
+                                      }
                                   });
                               },
                               Bedrock::PubSub::ConnectPosition::AtBack, nullptr);
@@ -313,6 +331,11 @@ const std::string *EndstoneServer::getContentKey(const PackIdVersion &pack_id) c
 bool EndstoneServer::getAllowClientPacks() const
 {
     return allow_client_packs_;
+}
+
+const std::vector<std::string> &EndstoneServer::getStunServers() const
+{
+    return stun_servers_;
 }
 
 bool EndstoneServer::logCommands() const
@@ -583,7 +606,11 @@ Nullable<Player> EndstoneServer::getPlayer(std::string name) const
 
 int EndstoneServer::getPort() const
 {
-    return getRemoteConnector().getIPv4Port();
+    if (isUsingNetherNet()) {
+        return getSignalingPort();
+    }
+    const auto port = getRemoteConnector().getIPv4Port();
+    return port == 0xffff ? 0 : port;
 }
 
 bool EndstoneServer::getOnlineMode() const
@@ -902,6 +929,23 @@ RemoteConnector &EndstoneServer::getRemoteConnector() const
 RakNetConnector &EndstoneServer::getRakNetConnector() const
 {
     return static_cast<RakNetConnector &>(getRemoteConnector());
+}
+
+bool EndstoneServer::isUsingNetherNet() const
+{
+    return getServer().getMinecraft()->getServerNetworkHandler()->network_._isUsingNetherNetTransportLayer();
+}
+
+std::uint16_t EndstoneServer::getSignalingPort() const
+{
+    const auto &connector = static_cast<const NetherNetConnector &>(getRemoteConnector());
+    const auto &transport = static_cast<const NetherNet::SimpleNetworkInterfaceImpl &>(*connector.transport_);
+    const auto *signaling = transport.signaling_interface_.get();
+    if (!signaling) {
+        return 0;
+    }
+    const NetherNet::HttpServer &server = static_cast<const NetherNet::HttpSignalingServer &>(*signaling);
+    return server.port_;
 }
 
 EndstoneServer &EndstoneServer::getInstance()

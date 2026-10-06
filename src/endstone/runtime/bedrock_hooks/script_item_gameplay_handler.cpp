@@ -52,6 +52,9 @@ GameplayHandlerResult<CoordinatorResult> ScriptItemGameplayHandler::handleEvent2
             if (!handleEvent(arg.value())) {
                 return {HandlerResult::BypassListeners, CoordinatorResult::Cancel};
             }
+            if (!arg.value().item_instance) {
+                return {HandlerResult::NotifyListeners, CoordinatorResult::Continue};
+            }
         }
         return ENDSTONE_VHOOK_CALL_ORIGINAL(&ScriptItemGameplayHandler::handleEvent2, this, event);
     };

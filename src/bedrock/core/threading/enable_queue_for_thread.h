@@ -16,6 +16,7 @@
 
 #include <memory>
 
+#include "bedrock/core/threading/task_group.h"
 #include "bedrock/forward.h"
 
 namespace Bedrock::Threading {

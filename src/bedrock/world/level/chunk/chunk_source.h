@@ -70,7 +70,7 @@ public:
     virtual void flushPendingDiscardedChunkWrites() = 0;
     virtual void flushThreadBatch() = 0;
     virtual bool isWithinWorldLimit(const ChunkPos &) const = 0;
-    virtual const ChunkSourceLookupMap *getChunkMap() = 0;
+    virtual const ChunkSourceLookupMap *getChunkMap() const = 0;
     virtual const ChunkSourceLookupMap &getStorage() const = 0;
     virtual void clearDeletedEntities() = 0;
     virtual bool canCreateViews() const = 0;

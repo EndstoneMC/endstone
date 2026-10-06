@@ -20,6 +20,7 @@
 #include "bedrock/forward.h"
 #include "bedrock/minecraft_app_interface.h"
 #include "bedrock/server/console_input_reader.h"
+#include "bedrock/server/server_exit_code.h"
 #include "bedrock/world/events/server_instance_event_coordinator.h"
 
 namespace endstone::core {
@@ -28,13 +29,6 @@ class EndstoneServer;
 
 class DedicatedServer : public IMinecraftApp {
 public:
-    enum class ServerExitCode : int {
-        Success = 0,
-        PortOccupied = 1,
-        InvalidSettings = 2,
-        MissingDependency = 3,
-        RuntimeError = 4,
-    };
     DedicatedServer();
     ~DedicatedServer() override;
     ENDSTONE_HOOK ServerExitCode start(const std::string &session_id, const Bedrock::ActivationArguments &args);

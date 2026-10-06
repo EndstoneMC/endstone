@@ -85,5 +85,6 @@ enum class LogAreaID : unsigned int {
     NetherNet,
     Serialization,
     DisconnectionScreen,
+    Dimensions,
     NumLogAreas,
 };

@@ -15,11 +15,16 @@
 #pragma once
 
 #include <functional>
+#include <memory>
 #include <shared_mutex>
 #include <unordered_map>
+#include <vector>
+
+#include <gsl/gsl>
 
 #include "bedrock/core/resource/resource_helper.h"
 #include "bedrock/core/threading/lockbox.h"
+#include "bedrock/core/threading/task_group.h"
 #include "bedrock/core/utility/non_owner_pointer.h"
 #include "bedrock/platform/brstd/function_ref.h"
 #include "bedrock/resources/content_key_provider.h"
@@ -41,14 +46,24 @@ struct PackSourceOptions {
 static_assert(sizeof(PackSourceOptions) == 8);
 
 class PackSourceReport {
+    struct Impl {
+        std::unordered_map<PackIdVersion, PackReport> reports_;
+        std::vector<PackReport> orphan_reports_;
+    };
+
 public:
-    PackSourceReport() = default;
+    PackSourceReport();
+    ~PackSourceReport();
+    PackSourceReport(const PackSourceReport &rhs);
+    PackSourceReport(PackSourceReport &&rhs);
+    PackSourceReport &operator=(const PackSourceReport &rhs);
+    PackSourceReport &operator=(PackSourceReport &&rhs);
     void addReport(PackIdVersion const &pack_id, PackReport &&report);
     [[nodiscard]] bool hasErrors() const;
     [[nodiscard]] std::unordered_map<PackIdVersion, PackReport> const &getReports() const;
 
 private:
-    std::unordered_map<PackIdVersion, PackReport> reports_;
+    gsl::not_null<std::unique_ptr<Impl>> impl_;
 };
 
 struct PackSourceLoadResult {

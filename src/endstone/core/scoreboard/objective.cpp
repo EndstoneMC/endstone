@@ -197,7 +197,7 @@ NotNull<EndstoneObjective> EndstoneObjective::copy() const
 
 bool EndstoneObjective::operator==(const Objective &other) const
 {
-    return &objective_ == &static_cast<const EndstoneObjective &>(other).objective_;
+    return objective_.access() == static_cast<const EndstoneObjective &>(other).objective_.access();
 }
 
 bool EndstoneObjective::operator!=(const Objective &other) const

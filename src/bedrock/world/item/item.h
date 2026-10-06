@@ -27,6 +27,7 @@
 #include "bedrock/world/actor/actor_location.h"
 #include "bedrock/world/gamemode/interaction_result.h"
 #include "bedrock/world/interactions/mining/mine_block_item_effect_type.h"
+#include "bedrock/world/item/equipment_slot.h"
 #include "bedrock/world/item/item_descriptor.h"
 #include "bedrock/world/item/item_helper.h"
 #include "bedrock/world/item/rarity.h"
@@ -65,7 +66,7 @@ public:
     virtual Item &setDescriptionId(std::string const &) = 0;
     virtual std::string const &getDescriptionId() const = 0;
     virtual int getMaxUseDuration(ItemStack const *) const = 0;
-    virtual WeakPtr<const BlockType> const &getBlockTypeForRendering() const = 0;
+    virtual const BlockType *getBlockTypeForRendering() const = 0;
     virtual bool isMusicDisk() const = 0;
     virtual void executeEvent(ItemStackBase &, std::string const &, RenderParams &) const = 0;
     virtual bool isComponentBased() const = 0;
@@ -141,9 +142,9 @@ public:
     virtual ActorDefinitionIdentifier getActorIdentifier(ItemStack const &) const = 0;
     virtual int buildIdAux(std::int16_t, CompoundTag const *) const = 0;
     virtual bool canUseOnSimTick() const = 0;
-    virtual ItemStack &use(ItemStack &, Player &) const = 0;
+    virtual ItemStack &use(ItemStack &, Player &, HandSlot) const = 0;
     virtual bool canUseAsAttack() const = 0;
-    virtual ItemStack &useAsAttack(ItemStack &itemStack, Player &, Vec3 const &) const = 0;
+    virtual ItemStack &useAsAttack(ItemStack &itemStack, Player &, Vec3 const &, HandSlot) const = 0;
     virtual Actor *createProjectileActor(BlockSource &, ItemStack const &, Vec3 const &, Vec3 const &) const = 0;
     virtual bool dispense(BlockSource &, Container &, int slot, Vec3 const &, FacingID face) const = 0;
     virtual ItemUseMethod useTimeDepleted(ItemStack &, Level *, Player *) const = 0;
@@ -191,10 +192,20 @@ public:
     virtual bool calculatePlacePos(ItemStackBase &, Actor &, FacingID &, BlockPos &) const = 0;
 
 private:
+    enum class OffhandAllowed : std::uint8_t {
+        Default = 0,
+        Yes = 1,
+        No = 2,
+    };
+
+protected:
+    [[nodiscard]] virtual std::string _getHoverTextDescription() const = 0;
+
+private:
     virtual bool _checkUseOnPermissions(Actor &, ItemStackBase &, FacingID const &, BlockPos const &) const = 0;
     virtual bool _calculatePlacePos(ItemStackBase &, Actor &, FacingID &, BlockPos &) const = 0;
     virtual bool _shouldAutoCalculatePlacePos() const = 0;
-    virtual InteractionResult _useOn(ItemStack &, Actor &, BlockPos pos, FacingID face, Vec3 const &) const = 0;
+    virtual InteractionResult _useOn(ItemStack &, Actor &, BlockPos pos, FacingID face, HandSlot, Vec3 const &) const = 0;
 
 public:
     bool operator==(const Item &other) const;
@@ -204,7 +215,7 @@ public:
     [[nodiscard]] const HashedString &getFullNameHash() const;
     [[nodiscard]] std::string getSerializedName() const;
     [[nodiscard]] const BaseGameVersion &getRequiredBaseGameVersion() const;
-    [[nodiscard]] const WeakPtr<BlockType> &getBlockType() const;
+    [[nodiscard]] const BlockType *getBlockType() const;
     [[nodiscard]] bool hasTag(const ItemTag &tag) const;
     [[nodiscard]] const std::vector<ItemTag> &getTags() const;
     Item &setMinRequiredBaseGameVersion(const BaseGameVersion &base_game_version);
@@ -249,11 +260,10 @@ protected:
     bool explodable_ : 1;
     bool fire_resistat_ : 1;
     bool should_despawn_ : 1;
-    bool allow_offhand_ : 1;
     bool ignores_permission_ : 1;
     int max_use_duration_;
     BaseGameVersion min_required_base_game_version_;
-    WeakPtr<BlockType> block_type_;
+    const BlockType *block_type_;
     SharedTypes::CreativeItemCategory creative_category_;
     Item *crafting_remaining_item_;
     std::string creative_group_;  // +400
@@ -267,6 +277,9 @@ protected:
     std::unique_ptr<class CameraItemComponentLegacy> camera_component_legacy_;
     std::vector<std::function<void()>> on_reset_bai_callbacks_;
     std::vector<ItemTag> tags_;
+
+private:
+    OffhandAllowed allow_offhand_ : 2;
 };
 
-BEDROCK_STATIC_ASSERT_SIZE(Item, 528, 456);
+BEDROCK_STATIC_ASSERT_SIZE(Item, 536, 464);

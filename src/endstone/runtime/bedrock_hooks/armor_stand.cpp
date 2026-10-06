@@ -29,10 +29,10 @@
 #include "endstone/event/player/player_armor_stand_manipulate_event.h"
 #include "endstone/runtime/hook.h"
 
-InteractionResult ArmorStand::getInteraction(Player &player, ActorInteraction &interaction, Vec3 const &location)
+Interaction ArmorStand::getInteraction(Player &player, Vec3 const &location)
 {
-    const auto result = ENDSTONE_HOOK_CALL_ORIGINAL(&ArmorStand::getInteraction, this, player, interaction, location);
-    if (interaction.getInteractText() != "action.interact.armorstand.equip" || !interaction.shouldCapture()) {
+    auto result = ENDSTONE_HOOK_CALL_ORIGINAL(&ArmorStand::getInteraction, this, player, location);
+    if (result.getInteractText() != "action.interact.armorstand.equip" || !result.isSuccessful()) {
         return result;
     }
 
@@ -91,8 +91,7 @@ InteractionResult ArmorStand::getInteraction(Player &player, ActorInteraction &i
     };
     server.getPluginManager().callEvent(event);
     if (event.isCancelled()) {
-        interaction.suppressInteraction();
-        return InteractionResult::Failure();
+        return {};
     }
     return result;
 }

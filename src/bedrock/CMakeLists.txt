@@ -25,6 +25,7 @@ add_library(bedrock STATIC
         crypto/encoding/base64.cpp
         diagnostics/log_fmt.cpp
         deps/json/value.cpp
+        deps/nethernet/network_id.cpp
         entity/gamerefs_entity/entity_context.cpp
         entity/gamerefs_entity/entity_registry.cpp
         entity/gamerefs_entity/stack_result_storage_entity.cpp
@@ -38,6 +39,7 @@ add_library(bedrock STATIC
         nbt/tag.cpp
         network/base_connection_request.cpp
         network/connection_request.cpp
+        network/nethernet_server_locator.cpp
         network/network_identifier.cpp
         network/packet/types/world/actor/serialized_abilities_data.cpp
         network/packet/crafting_data_packet.cpp

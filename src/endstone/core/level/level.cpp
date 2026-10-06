@@ -143,13 +143,10 @@ Nullable<Dimension> EndstoneLevel::createDimension(const DimensionCreator &creat
     if (auto existing = getDimension(creator.getId())) {
         return existing;
     }
+    // TODO(1.26.51): BDS no longer emits DimensionManager::serverRegisterCustomDimension, so a dimension that is
+    // not already registered cannot be created until the registration sequence is reimplemented.
     const std::string name{creator.getId()};
     auto &dimension_manager = level_.getDimensionManager();
-    if (const auto type = dimension_manager.serverRegisterCustomDimension(name, mce::UUID::EMPTY)) {
-        level_.getOrCreateDimension(type.value());
-        return getDimension(type.value());
-    }
-
     const auto dimension = dimension_manager.getOrCreateDimension(name);
     if (!dimension.isSet()) {
         return nullptr;

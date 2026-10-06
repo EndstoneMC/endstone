@@ -20,15 +20,13 @@
 #include "bedrock/core/math/vec3.h"
 #include "bedrock/util/rotation_command_utils.h"
 #include "bedrock/world/actor/actor.h"
-#include "bedrock/world/actor/actor_types.h"
 #include "bedrock/world/level/change_dimension_request.h"
 
-class TeleportData {
-public:
+struct TeleportData {
     Vec3 destination;
     bool should_stop_riding;
     int cause;
-    ActorType entity_type;
+    int entity_type;
 };
 
 class TeleportTarget {
@@ -42,5 +40,5 @@ class TeleportCommand {
 public:
     static TeleportTarget computeTarget(Actor &, Vec3, Vec3 *, DimensionType,
                                         std::optional<RotationCommandUtils::RotationData> const &, int);
-    static void applyTarget(Actor &, TeleportTarget, bool);
+    static void applyTarget(Actor &, TeleportTarget, int, bool);
 };

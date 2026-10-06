@@ -19,12 +19,33 @@
 #include <unordered_map>
 #include <variant>
 
+#include <gsl/gsl>
+
 #include "bedrock/bedrock.h"
 #include "bedrock/platform/threading/spin_lock.h"
+#include "bedrock/shared_types/legacy/block_descriptor.h"
 #include "bedrock/world/level/block/block.h"
+#include "bedrock/world/level/block/states/block_state.h"
+
+class ExpressionNode;
 
 class BlockDescriptor {
-    enum class CompareType : std::uint32_t {
+public:
+    using CompoundProxy = SharedTypes::Legacy::BlockDescriptor::Compound;
+
+    struct State {
+        HashedString name;
+        CompoundProxy state;
+    };
+
+    class ResolvedState {
+    private:
+        gsl::not_null<const BlockState *> block_state_;
+        int value_;
+    };
+
+private:
+    enum CompareType : unsigned int {
         AnyTag = 0x0,
         BlockName = 0x1,
         States = 0x2,
@@ -44,18 +65,18 @@ public:
     [[nodiscard]] Block const *tryGetBlockNoLogging() const;
 
 private:
-    ResolveHelper resolve_helper_;         // +0
-    HashedString block_name_;              // +8
-    bool is_complex_alias_;                // +56
-    std::shared_ptr<void *> tags_;         // +64  void*=ExpressionNode
-    std::vector<void *> states_;           // +80  void*=BlockDescriptor::State
-    std::vector<void *> resolved_states_;  // +104 void*=BlockDescriptor::State
-    CompareType compare_type_;             // +128
-    bool content_log_on_error_;            // +132
-    Block *block_;                         // +140
-    bool valid_;                           // +144
-    bool is_deferred_;                     // +145
-    SpinLock lock_;                        // +152
+    ResolveHelper resolve_helper_;                // +0
+    HashedString block_name_;                     // +8
+    bool is_complex_alias_;                       // +56
+    std::shared_ptr<ExpressionNode> tags_;        // +64
+    std::vector<State> states_;                   // +80
+    std::vector<ResolvedState> resolved_states_;  // +104
+    CompareType compare_type_;                    // +128
+    bool content_log_on_error_;                   // +132
+    const Block *block_;                          // +140
+    bool valid_;                                  // +144
+    bool is_deferred_;                            // +145
+    SpinLock lock_;                               // +152
 };
 
 namespace ScriptModuleMinecraft::ScriptBlockUtils {

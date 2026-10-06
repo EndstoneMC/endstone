@@ -68,6 +68,7 @@ private:
     std::string original_version_;
     PackIdVersion identity_;
     PackType pack_type_;
+    PackOrigin pack_origin_;
     bool was_upgraded_;
     bool attempted_upgrade_;
 };

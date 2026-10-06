@@ -26,15 +26,19 @@ add_library(endstone_runtime SHARED
         bedrock_hooks/inventory_transaction.cpp
         bedrock_hooks/item.cpp
         bedrock_hooks/item_registry_manager.cpp
+        bedrock_hooks/lan_thread_manager.cpp
         bedrock_hooks/leaves_block.cpp
         bedrock_hooks/level.cpp
         bedrock_hooks/liquid_block.cpp
         bedrock_hooks/map_data_manager.cpp
         bedrock_hooks/minecraft_commands.cpp
         bedrock_hooks/mob.cpp
+        bedrock_hooks/nethernet_transport.cpp
         bedrock_hooks/network_system.cpp
+        bedrock_hooks/p2p_transport_channel.cpp
         bedrock_hooks/packet.cpp
         bedrock_hooks/piston_block_actor.cpp
+        bedrock_hooks/port.cpp
         bedrock_hooks/player.cpp
         bedrock_hooks/pushable_by_entity_utility.cpp
         bedrock_hooks/rak_peer_helper.cpp
@@ -47,6 +51,7 @@ add_library(endstone_runtime SHARED
         bedrock_hooks/script_player_gameplay_handler.cpp
         bedrock_hooks/script_scripting_event_handler.cpp
         bedrock_hooks/script_server_network_event_handler.cpp
+        bedrock_hooks/simple_network_interface_impl.cpp
         bedrock_hooks/server_instance.cpp
         bedrock_hooks/server_network_handler.cpp
         bedrock_hooks/server_player.cpp

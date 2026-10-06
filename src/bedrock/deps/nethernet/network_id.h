@@ -14,6 +14,7 @@
 
 #pragma once
 
+#include <string>
 #include <variant>
 
 #include "bedrock/platform/uuid.h"
@@ -36,8 +37,11 @@ static_assert(sizeof(NetworkID) == 16);
 
 }  // namespace Realms
 
+using RAWNETWORKID = unsigned long long;
+
 struct NetworkID : private std::variant<std::monostate, P2P::NetworkID, Realms::NetworkID> {
     std::strong_ordering operator<=>(const NetworkID &) const = default;
+    [[nodiscard]] std::string toString() const;
 };
 static_assert(sizeof(NetworkID) == 24);
 }  // namespace NetherNet

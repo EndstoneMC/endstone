@@ -394,7 +394,7 @@ int ItemStackBase::getIdAux() const
 
 bool ItemStackBase::isBlock() const
 {
-    return !item_.isNull() && !item_->getBlockType().isNull();
+    return !item_.isNull() && item_->getBlockType() != nullptr;
 }
 
 bool ItemStackBase::isValid_DeprecatedSeeComment() const
@@ -564,9 +564,9 @@ void ItemStackBase::init(const BlockType &block, const int count)
 
 void ItemStackBase::init(const Item &item, int count, int aux_value, const CompoundTag *user_data, bool do_remap)
 {
-    const auto &block_type = item.getBlockType();
+    const auto *block_type = item.getBlockType();
     const auto id = item.getId();
-    if (!block_type.isNull()) {
+    if (block_type != nullptr) {
         if (id < ItemRegistry::START_ITEM_ID) {
             if (aux_value == ItemDescriptor::ANY_AUX_VALUE) {
                 block_ = &block_type->getRenderBlock();

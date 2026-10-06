@@ -107,3 +107,42 @@ def test_merge_adds_nothing_the_second_time(properties, merge):
 
     assert merge(properties.loads(VANILLA), old) == []
     assert old.as_string() == merged
+
+
+UDP_PORTS = (
+    "server-port=19132\n"
+    "# Which IPv4 port the server should listen to.\n"
+    "\n"
+    "# server-udp-ports=\n"
+    "# Configures UDP client transport ports.\n"
+    "# Examples:\n"
+    "#   server-udp-ports=49152-49200 (internal port range only)\n"
+    "\n"
+    "transport=nethernet\n"
+)
+
+
+def test_merge_appends_new_commented_out_properties_with_their_comments(properties, merge):
+    old = properties.loads("server-port=19132\n")
+    added = merge(properties.loads(UDP_PORTS), old)
+
+    assert added == ["server-udp-ports", "transport"]
+    assert old.as_string() == (
+        "server-port=19132\n"
+        "\n"
+        "# server-udp-ports=\n"
+        "# Configures UDP client transport ports.\n"
+        "# Examples:\n"
+        "#   server-udp-ports=49152-49200 (internal port range only)\n"
+        "\n"
+        "transport=nethernet\n"
+    )
+
+
+def test_merge_keeps_properties_commented_out(properties, merge):
+    old = properties.loads("#server-port=19132\n\nserver-udp-ports=19132\n\n#transport=raknet\n")
+    merged = old.as_string()
+
+    assert merge(properties.loads(UDP_PORTS), old) == []
+    assert old.as_string() == merged
+

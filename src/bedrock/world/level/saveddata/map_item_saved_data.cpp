@@ -90,7 +90,7 @@ endstone::core::EndstoneMapView &MapItemSavedData::getMapView() const
     static std::unordered_map<ActorUniqueID, std::unique_ptr<endstone::core::EndstoneMapView>> map_views;
     auto it = map_views.find(map_id_);
     if (it == map_views.end()) {
-        auto map_view = std::make_unique<endstone::core::EndstoneMapView>(const_cast<MapItemSavedData &>(*this));
+        auto map_view = std::make_unique<endstone::core::EndstoneMapView>(map_id_);
         it = map_views.emplace(map_id_, std::move(map_view)).first;
     }
     return *it->second;

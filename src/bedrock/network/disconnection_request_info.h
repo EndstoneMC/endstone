@@ -164,7 +164,9 @@ enum class DisconnectFailReason : int {
     HostAcceptsNoTypeOfAuth = 145,
     NotAuthenticatedFastFail = 146,
     EditorNotAllowed = 147,
-    MAX_DISCONNECT_FAIL_REASON = 148,
+    MissingStructureData = 148,
+    UnsupportedTransport = 149,
+    MAX_DISCONNECT_FAIL_REASON = 150,
 };
 
 enum class DisconnectionStage : unsigned int {

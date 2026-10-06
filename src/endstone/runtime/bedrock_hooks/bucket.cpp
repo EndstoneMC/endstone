@@ -48,18 +48,18 @@ private:
 }  // namespace
 
 InteractionResult BucketItem::_useOn(::ItemStack &item_stack, ::Actor &actor, BlockPos position, FacingID face,
-                                     const Vec3 &click_pos) const
+                                     HandSlot hand_slot, const Vec3 &click_pos) const
 {
     auto &block_source = actor.getDimensionBlockSource();
     const auto &clicked_block = block_source.getBlock(position);
     if (clicked_block.getName().getString() == "minecraft:cauldron") {
-        return ENDSTONE_HOOK_CALL_ORIGINAL(&BucketItem::_useOn, this, item_stack, actor, position, face, click_pos);
+        return ENDSTONE_HOOK_CALL_ORIGINAL(&BucketItem::_useOn, this, item_stack, actor, position, face, hand_slot, click_pos);
     }
 
     const auto *item = item_stack.getItem();
     const auto block_face = endstone::core::EndstoneBlockFace::fromBedrockFacing(face);
     if (!item || !item->isBucket() || !block_face || !actor.isPlayer()) {
-        return ENDSTONE_HOOK_CALL_ORIGINAL(&BucketItem::_useOn, this, item_stack, actor, position, face, click_pos);
+        return ENDSTONE_HOOK_CALL_ORIGINAL(&BucketItem::_useOn, this, item_stack, actor, position, face, hand_slot, click_pos);
     }
 
     auto &player = static_cast<::Player &>(actor);
@@ -81,7 +81,7 @@ InteractionResult BucketItem::_useOn(::ItemStack &item_stack, ::Actor &actor, Bl
                                                                       : "minecraft:lava_bucket");
         }
         if (!result_item) {
-            return ENDSTONE_HOOK_CALL_ORIGINAL(&BucketItem::_useOn, this, item_stack, actor, position, face, click_pos);
+            return ENDSTONE_HOOK_CALL_ORIGINAL(&BucketItem::_useOn, this, item_stack, actor, position, face, hand_slot, click_pos);
         }
 
         auto block_handle = endstone::core::EndstoneBlock::at(block_source, position);
@@ -127,7 +127,7 @@ InteractionResult BucketItem::_useOn(::ItemStack &item_stack, ::Actor &actor, Bl
                 !target_block.getBlockType().canBeBuiltOver(target_block, block_source, empty_position) &&
                 !(fluid_block &&
                   target_block.getBlockType().canFillAtPos(block_source, empty_position, *fluid_block))) {
-                return ENDSTONE_HOOK_CALL_ORIGINAL(&BucketItem::_useOn, this, item_stack, actor, position, face,
+                return ENDSTONE_HOOK_CALL_ORIGINAL(&BucketItem::_useOn, this, item_stack, actor, position, face, hand_slot,
                                                    click_pos);
             }
         }
@@ -147,7 +147,7 @@ InteractionResult BucketItem::_useOn(::ItemStack &item_stack, ::Actor &actor, Bl
         replacement = event.getItemStack();
     }
     else {
-        return ENDSTONE_HOOK_CALL_ORIGINAL(&BucketItem::_useOn, this, item_stack, actor, position, face, click_pos);
+        return ENDSTONE_HOOK_CALL_ORIGINAL(&BucketItem::_useOn, this, item_stack, actor, position, face, hand_slot, click_pos);
     }
 
     if (cancelled) {
@@ -155,7 +155,7 @@ InteractionResult BucketItem::_useOn(::ItemStack &item_stack, ::Actor &actor, Bl
     }
 
     const auto result =
-        ENDSTONE_HOOK_CALL_ORIGINAL(&BucketItem::_useOn, this, item_stack, actor, position, face, click_pos);
+        ENDSTONE_HOOK_CALL_ORIGINAL(&BucketItem::_useOn, this, item_stack, actor, position, face, hand_slot, click_pos);
     if (result.isSuccessful() &&
         (!replacement || endstone::core::EndstoneItemStack::toMinecraft(*replacement) != *result_item)) {
         item_stack.setUserData(nullptr);

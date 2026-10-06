@@ -588,15 +588,30 @@ class Properties(MutableMapping):
         Args:
             item: The item to append.
         """
-        self._ensure_trailing_newline()
+        self.insert(len(self._body), item)
+
+    def insert(self, index: int, item: _Item) -> None:
+        """Insert an item that already exists before ``index``.
+
+        Behaves like `append`, but at any position in the body.
+
+        Args:
+            index: The body position to insert before.
+            item: The item to insert.
+        """
+        if index >= len(self._body):
+            self._ensure_trailing_newline()
         if isinstance(item, Property):
             if item._newline != self._newline:
                 item._newline = self._newline
                 item._dirty = True
-            self._index[item.key] = item
         else:
             item._raw = item._raw.rstrip("\r\n") + self._newline
-        self._body.append(item)
+        self._body.insert(index, item)
+        if isinstance(item, Property):
+            self._index[item.key] = next(
+                p for p in reversed(self._body) if isinstance(p, Property) and p.key == item.key
+            )
 
     def add_comment(self, text: str, *, marker: str = "#", newline: str | None = None) -> None:
         """Append a comment line to the end of the document.

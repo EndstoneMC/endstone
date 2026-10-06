@@ -15,13 +15,11 @@
 #include "bedrock/network/batched_network_peer.h"
 
 #include <cstdint>
-#include <optional>
+#include <limits>
 #include <string>
-#include <string_view>
 #include <variant>
 #include <vector>
 
-#include "bedrock/core/sem_ver/sem_version.h"
 #include "bedrock/core/utility/binary_stream.h"
 #include "bedrock/network/packet.h"
 #include "bedrock/network/packet/add_actor_packet.h"
@@ -32,12 +30,10 @@
 #include "bedrock/network/packet/player_list_packet.h"
 #include "bedrock/network/packet/resource_pack_stack_packet.h"
 #include "bedrock/network/packet/resource_packs_info_packet.h"
-#include "bedrock/network/packet/set_score_packet.h"
 #include "bedrock/network/packet/start_game_packet.h"
 #include "bedrock/network/raknet_connector.h"
 #include "bedrock/network/server_network_system.h"
 #include "bedrock/server/server_instance.h"
-#include "bedrock/shared_constants.h"
 #include "endstone/core/entity/components/flag_components.h"
 #include "endstone/core/level/level.h"
 #include "endstone/core/map/map_view.h"
@@ -83,13 +79,20 @@ void patchPacket(const ResourcePackStackPacket &packet)
     }
 }
 
+// Bedrock keys map decorations by tracked actor and replaces on a match; Java keys them by slot.
+// The client rebuilds its list from every packet, so a slot works here too -- at an impossible y.
+MapItemTrackedActor::UniqueId decorationKey(std::size_t slot)
+{
+    return BlockPos{static_cast<int>(slot), std::numeric_limits<int>::min(), 0};
+}
+
 void patchPacket(const ClientboundMapItemDataPacket &packet,
                  const endstone::NotNull<endstone::core::EndstonePlayer> &player)
 {
     const auto &server = endstone::core::EndstoneServer::getInstance();
     auto *map = static_cast<endstone::core::EndstoneMapView *>(server.getMap(packet.getMapId().raw_id));
-    if (!map) {
-        return;
+    if (!map || map->isVanilla()) {
+        return;  // Nothing renders on top, so BDS already filled in the pixels and the decorations
     }
 
     auto &pk = const_cast<ClientboundMapItemDataPacket &>(packet);
@@ -114,12 +117,12 @@ void patchPacket(const ClientboundMapItemDataPacket &packet,
         }
     }
 
-    // Tracked actor ids and decorations go on the wire as parallel arrays
+    // Tracked actor ids and decorations go on the wire as parallel arrays.
     pk.payload.unique_ids.clear();
     pk.payload.decorations.clear();
     for (const auto &cursor : render.cursors) {
         if (cursor.isVisible()) {
-            pk.payload.unique_ids.emplace_back(ActorUniqueID::INVALID_ID);
+            pk.payload.unique_ids.emplace_back(decorationKey(pk.payload.decorations.size()));
             pk.payload.decorations.emplace_back(
                 std::make_shared<MapDecoration>(static_cast<MapDecoration::Type>(cursor.getType()), cursor.getX(),
                                                 cursor.getY(), cursor.getDirection(), cursor.getCaption(),
@@ -127,95 +130,6 @@ void patchPacket(const ClientboundMapItemDataPacket &packet,
                                                 ));
         }
     }
-}
-
-// #blameMojang - 1.26.44 alone writes a fixed `true` ahead of RemoveScore's objective name. 1.26.45
-// took it back out and moved the protocol version on to 2169, so a 1.26.44 client - which we still
-// let in, its wire being identical otherwise - mis-parses every scoreboard removal without it.
-// TODO(1.26.50): drop with the 2168 handshake override once 1.26.44 clients are gone.
-std::optional<std::string> upgradeSetScorePayload(std::string_view payload)
-{
-    ReadOnlyBinaryStream in{payload, false};
-    auto count = in.getUnsignedVarInt().discardError();
-    if (!count) {
-        return std::nullopt;
-    }
-
-    BinaryStream out;
-    out.writeUnsignedVarInt(count.value(), "Score Info", nullptr);
-
-    for (unsigned int i = 0; i < count.value(); ++i) {
-        auto action = in.getUnsignedVarInt().discardError();
-        if (!action) {
-            return std::nullopt;
-        }
-        const auto entry_action = static_cast<ScorePacketEntryAction>(action.value());
-        if (entry_action > ScorePacketEntryAction::ChangeFakePlayer) {
-            return std::nullopt;
-        }
-        out.writeUnsignedVarInt(action.value(), "Action", nullptr);
-
-        auto action_name = in.getString(32).discardError();
-        if (!action_name) {
-            return std::nullopt;
-        }
-        out.writeString(action_name.value(), "Action", nullptr);
-
-        auto scoreboard_id = in.getVarInt64().discardError();
-        if (!scoreboard_id) {
-            return std::nullopt;
-        }
-        out.writeVarInt64(scoreboard_id.value(), "Scoreboard Id", nullptr);
-
-        if (entry_action == ScorePacketEntryAction::Remove) {
-            out.writeBool(true, "blameMojang", nullptr);
-            auto has_objective_name = in.getBool().discardError();
-            if (!has_objective_name) {
-                return std::nullopt;
-            }
-            out.writeBool(has_objective_name.value(), "Objective Name", nullptr);
-            if (has_objective_name.value()) {
-                auto objective_name = in.getString(in.getUnreadLength()).discardError();
-                if (!objective_name) {
-                    return std::nullopt;
-                }
-                out.writeString(objective_name.value(), "Objective Name", nullptr);
-            }
-            continue;
-        }
-
-        auto objective_name = in.getString(in.getUnreadLength()).discardError();
-        if (!objective_name) {
-            return std::nullopt;
-        }
-        out.writeString(objective_name.value(), "Objective Name", nullptr);
-
-        auto score_value = in.getSignedInt().discardError();
-        if (!score_value) {
-            return std::nullopt;
-        }
-        out.writeSignedInt(score_value.value(), "Score Value", nullptr);
-
-        if (entry_action == ScorePacketEntryAction::ChangeFakePlayer) {
-            auto fake_player_name = in.getString(in.getUnreadLength()).discardError();
-            if (!fake_player_name) {
-                return std::nullopt;
-            }
-            out.writeString(fake_player_name.value(), "Fake Player Name", nullptr);
-        }
-        else {
-            auto unique_id = in.getVarInt64().discardError();
-            if (!unique_id) {
-                return std::nullopt;
-            }
-            out.writeVarInt64(unique_id.value(), "Player Unique Id", nullptr);
-        }
-    }
-
-    if (in.getUnreadLength() != 0) {
-        return std::nullopt;
-    }
-    return out.getBuffer();
 }
 
 enum class VisibilityResult {
@@ -280,31 +194,6 @@ VisibilityResult filterHiddenActors(const PacketHeader &header, ReadOnlyBinarySt
     }
 }
 
-// #blameMojang - LoginPacket::_read discards the connection request and leaves it null whenever the
-// declared version is not the server's own, so the 2168 override has to land on the wire before the
-// packet is read. The version is the first four bytes of the payload, big endian, so patch in place.
-// TODO(1.26.50): drop with the rest of the 1.26.44 shims once 1.26.44 clients are gone.
-void upgradeLoginPayload(std::string &data, const std::size_t offset)
-{
-    if (offset + sizeof(std::int32_t) > data.size()) {
-        return;
-    }
-
-    auto *version = reinterpret_cast<std::uint8_t *>(data.data()) + offset;
-    const auto declared = static_cast<std::int32_t>((std::uint32_t{version[0]} << 24) |
-                                                    (std::uint32_t{version[1]} << 16) |
-                                                    (std::uint32_t{version[2]} << 8) | std::uint32_t{version[3]});
-    if (declared != 2168) {
-        return;
-    }
-
-    constexpr auto upgraded = static_cast<std::uint32_t>(SharedConstants::NetworkProtocolVersion);
-    version[0] = static_cast<std::uint8_t>(upgraded >> 24);
-    version[1] = static_cast<std::uint8_t>(upgraded >> 16);
-    version[2] = static_cast<std::uint8_t>(upgraded >> 8);
-    version[3] = static_cast<std::uint8_t>(upgraded);
-}
-
 void patchPacket(Packet &packet, const endstone::Nullable<endstone::Player> &player)
 {
     switch (packet.getId()) {
@@ -345,8 +234,7 @@ void BatchedNetworkPeer::sendPacket(const std::string &data, Reliability reliabi
     const auto patched = header.getPacketId() == MinecraftPacketIds::StartGame ||
                          header.getPacketId() == MinecraftPacketIds::ResourcePacksInfo ||
                          header.getPacketId() == MinecraftPacketIds::ResourcePackStack ||
-                         header.getPacketId() == MinecraftPacketIds::MapData ||
-                         header.getPacketId() == MinecraftPacketIds::SetScore;
+                         header.getPacketId() == MinecraftPacketIds::MapData;
     const auto filterable = header.getPacketId() == MinecraftPacketIds::PlayerList ||
                             (server.hasHiddenActors() && (header.getPacketId() == MinecraftPacketIds::AddActor ||
                                                           header.getPacketId() == MinecraftPacketIds::AddItemActor ||
@@ -395,8 +283,9 @@ void BatchedNetworkPeer::sendPacket(const std::string &data, Reliability reliabi
         return;
     }
 
-    endstone::PacketSendEvent e{player, static_cast<int>(header.getPacketId()), payload,
-                                endstone::core::EndstoneSocketAddress::fromNetworkIdentifier(id),
+    const auto address =
+        player ? player->getAddress() : endstone::core::EndstoneSocketAddress::fromNetworkIdentifier(id);
+    endstone::PacketSendEvent e{player, static_cast<int>(header.getPacketId()), payload, address,
                                 static_cast<int>(header.getSenderSubId())};
     if (visibility == VisibilityResult::Modified) {
         e.setPayload(filtered_payload);
@@ -428,20 +317,6 @@ void BatchedNetworkPeer::sendPacket(const std::string &data, Reliability reliabi
         packet->writeWithSerializationMode(out, network.getPacketReflectionCtx(),
                                            network.getPacketOverrides().getOverrideModeForPacket(packet->getId()));
         e.setPayload(out.getBuffer());
-        break;
-    }
-    case MinecraftPacketIds::SetScore: {
-        // TODO(1.26.50): drop with upgradeSetScorePayload once 1.26.44 clients are gone.
-        if (player) {
-            SemVersion client_version;
-            auto result =
-                SemVersion::fromString(player->getGameVersion(), client_version, SemVersion::ParseOption::NoWildcards);
-            if (result != SemVersion::MatchType::None && client_version == SemVersion{1, 26, 44}) {
-                if (auto upgraded = upgradeSetScorePayload(payload)) {
-                    e.setPayload(*upgraded);
-                }
-            }
-        }
         break;
     }
     default:
@@ -489,9 +364,6 @@ NetworkPeer::DataStatus BatchedNetworkPeer::_receivePacket(std::string &out_data
         }
 
         const auto header = PacketHeader::fromRaw(result.value());
-        if (header.getPacketId() == MinecraftPacketIds::Login) {
-            upgradeLoginPayload(out_data, stream.getReadPointer());
-        }
 
         const auto &id = getId();
         endstone::Nullable<endstone::Player> player;
@@ -500,8 +372,9 @@ NetworkPeer::DataStatus BatchedNetworkPeer::_receivePacket(std::string &out_data
         }
 
         const auto payload = stream.getView().substr(stream.getReadPointer());
-        endstone::PacketReceiveEvent e{player, static_cast<int>(header.getPacketId()), payload,
-                                       endstone::core::EndstoneSocketAddress::fromNetworkIdentifier(id),
+        const auto address =
+            player ? player->getAddress() : endstone::core::EndstoneSocketAddress::fromNetworkIdentifier(id);
+        endstone::PacketReceiveEvent e{player, static_cast<int>(header.getPacketId()), payload, address,
                                        static_cast<int>(header.getRecipientSubId())};
         server.getPluginManager().callEvent(e);
         if (e.isCancelled()) {

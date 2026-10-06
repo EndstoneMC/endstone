@@ -43,6 +43,8 @@ public:
     AnimatedImageData(const AnimatedImageData &);
     AnimatedImageData(persona::AnimatedTextureType, persona::AnimationExpression, const mce::Image &, float);
     AnimatedImageData &operator=(const AnimatedImageData &);
+    AnimatedImageData(AnimatedImageData &&);
+    AnimatedImageData &operator=(AnimatedImageData &&);
     persona::AnimatedTextureType type;
     persona::AnimationExpression animation_expression;
     mce::Image image;

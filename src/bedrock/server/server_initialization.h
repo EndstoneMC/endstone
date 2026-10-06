@@ -14,14 +14,18 @@
 
 #pragma once
 
+#include <memory>
+
 #include "bedrock/bedrock.h"
+#include "bedrock/core/threading/async.h"
+
+class ServerNetworkSystem;
 
 namespace ServerInitialization {
 
 struct ServerInitResult {
-    // Two shared-pointer-shaped pairs. Kept opaque and trivially copyable: Endstone only forwards the
-    // value, and destroying it here would release refcounts this layer does not own.
-    void *unknown_0_[4];
+    Bedrock::Threading::SharedAsync<bool> initialized;
+    Bedrock::Threading::SharedAsync<std::shared_ptr<ServerNetworkSystem>> network_system;
 };
 BEDROCK_STATIC_ASSERT_SIZE(ServerInitResult, 32, 32);
 

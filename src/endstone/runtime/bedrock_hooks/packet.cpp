@@ -30,11 +30,9 @@
 #include "bedrock/network/packet/player_action_packet.h"
 #include "bedrock/network/packet/player_auth_input_packet.h"
 #include "bedrock/network/packet/player_skin_packet.h"
-#include "bedrock/network/packet/request_network_settings_packet.h"
 #include "bedrock/network/packet/set_local_player_as_initialized_packet.h"
 #include "bedrock/network/packet/set_player_inventory_options_packet.h"
 #include "bedrock/network/server_network_handler.h"
-#include "bedrock/shared_constants.h"
 #include "bedrock/world/actor/provider/actor_offset.h"
 #include "bedrock/world/level/dimension/dimension.h"
 #include "endstone/block/block.h"
@@ -98,16 +96,6 @@ private:
     ServerPlayer *player_ = nullptr;
 };
 
-// TODO(1.26.50): drop with the rest of the 1.26.44 shims once 1.26.44 clients are gone.
-template <>
-void EndstonePacketHandler::handle(RequestNetworkSettingsPacket &packet)
-{
-    if (packet.payload.client_network_version == 2168) {
-        packet.payload.client_network_version = SharedConstants::NetworkProtocolVersion;
-    }
-    handle();
-}
-
 template <>
 void EndstonePacketHandler::handle(AnimatePacket &packet)
 {
@@ -125,7 +113,7 @@ void EndstonePacketHandler::handle(AnimatePacket &packet)
     if (e.isCancelled()) {
         return;
     }
-    player->swing(packet.payload.swing_source.value_or(ActorSwingSource::None));
+    player->swing(packet.payload.swing_source.value_or(ActorSwingSource::None), HandSlot::Mainhand);
     player->getDimension().sendPacketForEntity(*player, packet, player);
 }
 
@@ -641,11 +629,6 @@ std::shared_ptr<Packet> MinecraftPackets::createPacket(MinecraftPacketIds id)
     }
     case MinecraftPacketIds::PlayerAuthInputPacket: {
         using Dispatcher = EndstonePacketHandlerDispatcher<PlayerAuthInputPacket>;
-        Dispatcher::set(&packet->handler_);
-        break;
-    }
-    case MinecraftPacketIds::RequestNetworkSettings: {
-        using Dispatcher = EndstonePacketHandlerDispatcher<RequestNetworkSettingsPacket>;
         Dispatcher::set(&packet->handler_);
         break;
     }

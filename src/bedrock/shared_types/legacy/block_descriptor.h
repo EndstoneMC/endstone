@@ -14,16 +14,26 @@
 
 #pragma once
 
-#include "bedrock/network/packet.h"
+#include <cstdint>
+#include <map>
+#include <string>
 
-struct RequestNetworkSettingsPacketPayload {
-    int client_network_version;
-};
-BEDROCK_STATIC_ASSERT_SIZE(RequestNetworkSettingsPacketPayload, 4, 4);
+namespace SharedTypes::Legacy {
+struct BlockDescriptor {
+    struct Compound {
+        enum class Type : int {
+            none = 0,
+            string = 1,
+            integer = 2,
+        };
 
-class RequestNetworkSettingsPacket : public Packet {
-public:
-    RequestNetworkSettingsPacketPayload payload;  // +48 Windows, +44 Linux
-    SerializationMode serialization_mode;         // +52 Windows, +48 Linux
+        std::string string_value;
+        std::int32_t int_value;
+        Type type;
+    };
+
+    std::string name;
+    std::map<std::string, Compound> states;
+    std::string tags;
 };
-BEDROCK_STATIC_ASSERT_SIZE(RequestNetworkSettingsPacket, 56, 56);
+}  // namespace SharedTypes::Legacy

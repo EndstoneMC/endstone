@@ -18,6 +18,7 @@
 #include <unordered_map>
 #include <vector>
 
+#include "bedrock/core/threading/task_group.h"
 #include "bedrock/forward.h"
 #include "bedrock/gamerefs/owner_ptr.h"
 #include "bedrock/network/packet.h"

@@ -38,6 +38,6 @@ struct MovementInterpolatorComponent {
     int head_yaw_steps;
     bool must_be_completed;
     bool player_control_server_vehicle;
-    static constexpr int MAX_LERP_STEPS = 3;
+    static constexpr int MIN_LERP_STEPS = 3;
 };
 static_assert(sizeof(MovementInterpolatorComponent) == 40);

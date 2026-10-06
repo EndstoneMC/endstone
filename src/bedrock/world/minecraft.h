@@ -51,9 +51,8 @@ private:
     std::unique_ptr<ResourcePackManager> resource_loader_;
     std::unique_ptr<StructureManager> structure_manager_;
     std::shared_ptr<GameModuleServer> game_module_server_;
-    // AllowList &allow_list_;
     PermissionsFile *permissions_file_;
-    std::unique_ptr<PrivateKeyManager> server_keys_;
+    std::shared_ptr<PrivateKeyManager> server_keys_;
     std::shared_ptr<MinecraftServiceKeyManager> minecraft_service_keys_;
     std::string save_game_path_;
     // Bedrock::NonOwnerPointer<Core::FilePathManager> file_path_manager_;
@@ -72,7 +71,7 @@ private:
     Timer &sim_timer_;
     Timer &real_timer_;
     ClientOrServerNetworkSystemRef network_;
-    PacketSender *packet_sender_;
+    PacketSender &packet_sender_;
     SubClientId client_sub_id_;
     std::unique_ptr<Impl> impl_;
     OwnerPtr<EntityRegistry> entity_registry_;

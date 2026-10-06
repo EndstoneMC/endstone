@@ -49,6 +49,10 @@ cmake --preset conan-relwithdebinfo
 cmake --build --preset conan-relwithdebinfo
 ```
 
+> The profile builds dependencies as `Release` but the project itself as `RelWithDebInfo`
+> (`&:build_type=RelWithDebInfo`), so `conan-relwithdebinfo` is the only preset Conan generates.
+> `NDEBUG` is still defined, so the `BEDROCK_STATIC_ASSERT_SIZE` layout checks are active.
+
 ### Install from source (builds Python wheel)
 The PEP 517 backend (`conan-py-build`) runs Conan internally, so no separate `conan install` step is required:
 
@@ -123,6 +127,7 @@ These run against the installed wheel, so reinstall (`pip install -U . -C build-
 - This applies to new code and to code you touch. Leave existing comments alone unless the change makes them wrong.
 - Never leave "LLM notes" — comments that explain why a change was made, reference the development process, or restate what the code plainly does.
 - When explicitly asked for a comment: one short line, terse and human. No multi-line explanations, rationale, design-decision narration, or parenthetical asides. Match the density of the surrounding or original code (e.g. a port stays as terse as its upstream).
+- Config comments (`endstone.default.toml` and friends) say what the setting does, not why it exists or how it works.
 
 ## Architecture
 
@@ -169,4 +174,9 @@ Custom third-party recipes live under `recipes/` and are published to the `endst
   - Versions and sections must be linkable (reference-style links at bottom).
   - Display the release date of each version.
   - Include user-visible changes and API changes; omit internal implementation details (no refactoring notes, no internal class/struct changes).
+  - One short sentence per entry: state what changed, not why or how.
+  - Append the issue number when a fix closes an issue, e.g. `(#528)`.
+  - Do not list fixes for bugs introduced by unreleased work, such as a BDS bump in the same release.
+  - Do not list fixes with no visible effect on the release branch, such as a back-port for an API that only exists on develop.
+  - Do not add caveats that read as restrictions, such as "Only 1.26.51 clients can join" or a transport warning Bedrock logs but does not enforce.
   - Prefix breaking changes with `**BREAKING**:` in the Changed or Removed section.

@@ -45,6 +45,13 @@ enum class ItemRegistrationOrder : std::uint8_t {
     Unified = 1,
 };
 
+enum class ItemRegistrationState : std::uint8_t {
+    Uninitialized = 0,
+    RegisteringItems = 1,
+    ItemsRegistered = 2,
+    Initialized = 3,
+};
+
 class ItemRegistry : public std::enable_shared_from_this<ItemRegistry> {
 public:
     static const std::int16_t START_ITEM_ID = 256;
@@ -86,7 +93,7 @@ private:
     std::unordered_map<ItemTag, std::unordered_set<const Item *>> tag_to_items_map_;
     std::unordered_set<const Item *> const empty_item_set_;
     bool server_initializing_creative_items_;
-    bool is_initialized_;
+    ItemRegistrationState item_registration_state_;
     std::function<void(ItemRegistryRef)> extra_item_init_callback_;
     std::unique_ptr<Bedrock::PubSub::PublisherPtr<void(), Bedrock::PubSub::ThreadModel::MultiThreaded>>
         finished_init_server_publisher_;

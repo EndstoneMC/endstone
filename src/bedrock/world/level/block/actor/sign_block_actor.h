@@ -115,4 +115,4 @@ private:
     bool is_local_profanity_filter_enabled_;
 };
 BEDROCK_STATIC_ASSERT_SIZE(SignBlockActor::Text, 408, 336);
-BEDROCK_STATIC_ASSERT_SIZE(SignBlockActor, 424, 416);
+BEDROCK_STATIC_ASSERT_SIZE(SignBlockActor, 432, 424);

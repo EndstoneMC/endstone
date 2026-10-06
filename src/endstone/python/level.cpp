@@ -450,6 +450,11 @@ void init_level(py::module_ &m, py::classh<Level> &level, py::classh<Dimension> 
         .def(py::self -= py::self)
         .def(py::self -= Vector())
         .def(py::self *= float())
+        .def(py::self + py::self)
+        .def(py::self + Vector())
+        .def(py::self - py::self)
+        .def(py::self - Vector())
+        .def(py::self * float())
         .def("zero", &Location::zero, "Zero this location's components. Not world-aware.",
              py::return_value_policy::reference)
         .def(py::self == py::self)

@@ -34,4 +34,4 @@ private:
     int total_pages_;
     ItemStack book_;
 };
-BEDROCK_STATIC_ASSERT_SIZE(LecternBlockActor, 800, 688);
+BEDROCK_STATIC_ASSERT_SIZE(LecternBlockActor, 808, 696);

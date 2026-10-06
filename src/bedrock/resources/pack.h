@@ -16,13 +16,15 @@
 
 #include <functional>
 #include <map>
+#include <vector>
 
+#include "bedrock/core/resource/pack_id_version.h"
 #include "bedrock/core/utility/enable_non_owner_references.h"
 #include "bedrock/core/utility/non_owner_pointer.h"
 #include "bedrock/forward.h"
 #include "bedrock/resources/pack_access_strategy.h"
-#include "bedrock/resources/pack_command_pipeline.h"
 #include "bedrock/resources/pack_manifest.h"
+#include "bedrock/resources/subpack_info_collection.h"
 
 class IPackIOProvider {
 public:
@@ -32,10 +34,12 @@ public:
     [[nodiscard]] virtual Core::Path getOnDiskScratchPath() const = 0;
     [[nodiscard]] virtual std::unique_ptr<IPackIOProvider> clone() const = 0;
     [[nodiscard]] virtual std::shared_ptr<Core::FileHandlePool> getArchiveHandlePool() const = 0;
+    [[nodiscard]] virtual I18n &getLoc() const = 0;
 };
 
 class Pack {
 public:
+    using UpgradeLegacyDependencies = std::vector<PackIdVersion>;
     ~Pack();
     [[nodiscard]] PackManifest const &getManifest() const;
     PackManifest &getManifest();
@@ -43,9 +47,9 @@ public:
 private:
     std::unique_ptr<PackManifest> manifest_;
     std::unique_ptr<PackAccessStrategy> access_strategy_;
-    std::unique_ptr<SubpackInfoCollection> subpack_info_stack_;
+    SubpackInfoCollection subpack_info_stack_;
     std::unique_ptr<PackMetadata> metadata_;
-    std::unique_ptr<const PackCommand::UpgradeLegacyDependencies> dependencies_upgrade_;
+    std::unique_ptr<const std::vector<PackIdVersion>> dependencies_upgrade_;
     std::uint8_t revision_;
 };
 

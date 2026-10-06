@@ -138,7 +138,7 @@ class BlockSource : public IBlockSource,
                     public std::enable_shared_from_this<BlockSource> {
 public:
     explicit BlockSource(ChunkSource &, bool, bool);
-    BlockSource(Level &, Dimension &, ChunkSource &, bool, bool, bool);
+    BlockSource(Level &, Dimension &, ChunkSource &, bool, bool, bool, bool);
     BlockSource(ILevel &, ChunkSource &, bool, bool);
 
     using IConstBlockSource::getBlockEntity;

@@ -19,35 +19,50 @@
 #include "bedrock/core/string/string_hash.h"
 
 namespace VanillaBlockTypeIds {
+extern const HashedString AcaciaLeaves;
 extern const HashedString AcaciaLog;
 extern const HashedString AcaciaWood;
+extern const HashedString AzaleaLeaves;
+extern const HashedString AzaleaLeavesFlowered;
 extern const HashedString Basalt;
 extern const HashedString Bed;
 extern const HashedString BeeNest;
 extern const HashedString Beehive;
+extern const HashedString BirchLeaves;
 extern const HashedString BirchLog;
 extern const HashedString BirchWood;
 extern const HashedString BlueIce;
 extern const HashedString CampFire;
 extern const HashedString Cauldron;
+extern const HashedString CherryLeaves;
 extern const HashedString CherryLog;
 extern const HashedString CherryWood;
 extern const HashedString Cobblestone;
+extern const HashedString DarkOakLeaves;
 extern const HashedString DarkOakLog;
 extern const HashedString DarkOakWood;
 extern const HashedString EndPortal;
 extern const HashedString EndPortalFrame;
+extern const HashedString JungleLeaves;
 extern const HashedString JungleLog;
 extern const HashedString JungleWood;
+extern const HashedString MangroveLeaves;
 extern const HashedString MangroveLog;
 extern const HashedString MangroveWood;
+extern const HashedString OakLeaves;
 extern const HashedString OakLog;
 extern const HashedString OakWood;
 extern const HashedString Obsidian;
+extern const HashedString OrangePoplarLeaves;
+extern const HashedString PaleOakLeaves;
 extern const HashedString PaleOakLog;
 extern const HashedString PaleOakWood;
+extern const HashedString PoplarLog;
+extern const HashedString PoplarWood;
+extern const HashedString RedPoplarLeaves;
 extern const HashedString SoulCampfire;
 extern const HashedString SoulSoil;
+extern const HashedString SpruceLeaves;
 extern const HashedString SpruceLog;
 extern const HashedString SpruceWood;
 extern const HashedString StrippedAcaciaLog;
@@ -66,14 +81,18 @@ extern const HashedString StrippedOakLog;
 extern const HashedString StrippedOakWood;
 extern const HashedString StrippedPaleOakLog;
 extern const HashedString StrippedPaleOakWood;
+extern const HashedString StrippedPoplarLog;
+extern const HashedString StrippedPoplarWood;
 extern const HashedString StrippedSpruceLog;
 extern const HashedString StrippedSpruceWood;
 extern const HashedString Tnt;
 extern const HashedString UnderwaterTnt;
 extern const HashedString WitherRose;
+extern const HashedString YellowPoplarLeaves;
 }  // namespace VanillaBlockTypeIds
 
 namespace VanillaBlockTypeGroups {
+extern const std::vector<std::reference_wrapper<const HashedString>> DecayingBlocks;
 extern const std::vector<std::reference_wrapper<const HashedString>> LogAndStrippedLogBlockIds;
 extern const std::vector<std::reference_wrapper<const HashedString>> TntIds;
 extern const std::vector<std::reference_wrapper<const HashedString>> WoodAndStrippedWoodBlockIds;

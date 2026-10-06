@@ -46,7 +46,7 @@ void LeavesBlock::randomTick(BlockEvents::BlockRandomTickEvent &event_data)
                             nearby.getBlockType().anyOf(VanillaBlockTypeGroups::WoodAndStrippedWoodBlockIds)) {
                             check_buffer[(xo + WO) * WW + (yo + WO) * W + (zo + WO)] = 0;
                         }
-                        else if (nearby.hasProperty(BlockProperty::Leaves)) {
+                        else if (nearby.getBlockType().anyOf(VanillaBlockTypeGroups::DecayingBlocks)) {
                             check_buffer[(xo + WO) * WW + (yo + WO) * W + (zo + WO)] = -2;
                         }
                         else {

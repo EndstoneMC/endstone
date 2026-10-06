@@ -21,6 +21,7 @@
 #include "bedrock/entity/weak_entity_ref.h"
 #include "bedrock/server/commands/command_utils.h"
 #include "bedrock/world/actor/provider/actor_offset.h"
+#include "bedrock/world/level/actor_dimension_transfer_request.h"
 #include "bedrock/world/level/dimension/vanilla_dimensions.h"
 #include "endstone/actor/actor.h"
 #include "endstone/core/level/dimension.h"
@@ -178,7 +179,9 @@ public:
         const NotNull<Dimension> location_dimension = location.getDimension();
         if (location_dimension != getDimension()) {
             const auto to_dimension = location_dimension.cast<EndstoneDimension>()->getHandle().getDimensionId();
-            getHandle().getLevel().entityChangeDimension(getHandle(), to_dimension, to_location);
+            const ActorDimensionTransferRequest request{getHandle().getDimensionId(), to_dimension, to_location,
+                                                        ActorDimensionTransferRequest::TargetPolicy::LegacyAuto};
+            getHandle().getLevel().entityChangeDimension(getHandle(), request);
         }
         else {
             getHandle().teleportTo(to_location, true, 3, 1, false);

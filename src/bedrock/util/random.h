@@ -14,7 +14,9 @@
 
 #pragma once
 
+#include <cstdint>
 #include <memory>
+#include <optional>
 #include <string>
 
 #include <glm/glm.hpp>
@@ -40,6 +42,7 @@ public:
     virtual ~IRandom() = default;
     virtual int nextInt() = 0;
     virtual int nextInt(int) = 0;
+    int nextInt(int, int);
     int nextIntInclusive(int, int);
     virtual int64_t nextLong() = 0;
     virtual bool nextBoolean() = 0;
@@ -47,7 +50,6 @@ public:
     virtual double nextDouble() = 0;
     virtual double nextGaussianDouble() = 0;
     virtual void consumeCount(unsigned int) = 0;
-    virtual std::unique_ptr<IRandom> fork() = 0;
     virtual std::unique_ptr<IPositionalRandomFactory> forkPositional();
     virtual bool chance(int, int);
     virtual bool chanceOneIn(int);
@@ -59,11 +61,14 @@ public:
 };
 
 class Random : public IRandom {
+public:
     using result_type = uint32_t;
 
-public:
-    Random();
+    static Random &getThreadLocal();
     Random(RandomSeed, bool);
+    static Random createSeedable(RandomSeed, bool);
+    static Random createSeedable();
+    Random(Random &&);
 
     int nextInt() override;
     int nextInt(int) override;
@@ -73,17 +78,15 @@ public:
     double nextDouble() override;
     double nextGaussianDouble() override;
     void consumeCount(unsigned int) override;
-    std::unique_ptr<IRandom> fork() override;
 
     void reset();
     void setSeed(RandomSeed);
     [[nodiscard]] RandomSeed getSeed() const;
-    void clone(const Random &);
+    [[nodiscard]] Random clone() const;
     static result_type max();
     static result_type min();
     result_type operator()();
     int operator()(int);
-    int nextInt(int, int);
     uint32_t nextUnsignedInt();
     uint32_t nextUnsignedInt(unsigned int);
     unsigned char nextUnsignedChar();
@@ -99,8 +102,10 @@ public:
     glm::vec3 nextVec3(float);
     glm::vec3 nextGaussianVec3();
     [[nodiscard]] bool isFixedToConstant() const;
-    static Random &getThreadLocal();
 
 private:
-    Bedrock::Application::ThreadOwner<Core::Random> random_;  // +8
+    std::optional<Core::Random> owned_random_;  // +8
+    Bedrock::Application::ThreadOwner<Core::Random &> random_;
+
+    Random();
 };

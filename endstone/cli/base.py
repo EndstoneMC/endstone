@@ -5,7 +5,9 @@ import json
 import logging
 import os
 import platform
+import re
 import shutil
+import socket
 import subprocess
 import sys
 import tempfile
@@ -31,6 +33,22 @@ _SERVER_PROPERTY_OVERRIDES = {
 
 # NetworkStackLatencyPacket, left unbounded by the shipped packetlimitconfig.json.
 _PING_PACKET_ID = 115
+
+_COMMENTED_OUT_PROPERTY = re.compile(r"([A-Za-z0-9._-]+)=")
+
+
+def _commented_out_key(item: object) -> Union[str, None]:
+    if not isinstance(item, _properties.Comment):
+        return None
+    match = _COMMENTED_OUT_PROPERTY.match(item.text)
+    return match.group(1) if match else None
+
+
+def _placeholder_key(body: list, index: int) -> Union[str, None]:
+    # A commented-out property opens its block, unlike the examples inside another property's comments.
+    if index > 0 and not isinstance(body[index - 1], _properties.Whitespace):
+        return None
+    return _commented_out_key(body[index])
 
 
 class Bootstrap:
@@ -182,17 +200,21 @@ class Bootstrap:
     @staticmethod
     def _merge_server_properties(defaults: _properties.Properties, props: _properties.Properties) -> list[str]:
         """
-        Appends every property in defaults that props lacks, along with the comments documenting it, which the Bedrock
-        Dedicated Server writes below the property rather than above it.
+        Appends every property in defaults that props lacks, set or commented out, along with the comments documenting
+        it, which the Bedrock Dedicated Server writes below the property rather than above it.
         """
+        present = set(props)
+        present.update(key for item in props.body if (key := _commented_out_key(item)))
+
         added = []
         body = defaults.body
         for i, item in enumerate(body):
-            if not isinstance(item, _properties.Property) or item.key in props:
+            key = item.key if isinstance(item, _properties.Property) else _placeholder_key(body, i)
+            if key is None or key in present:
                 continue
 
-            if item.key in _SERVER_PROPERTY_OVERRIDES:
-                item.value = _SERVER_PROPERTY_OVERRIDES[item.key]
+            if isinstance(item, _properties.Property) and key in _SERVER_PROPERTY_OVERRIDES:
+                item.value = _SERVER_PROPERTY_OVERRIDES[key]
 
             if props.body and not isinstance(props.body[-1], _properties.Whitespace):
                 props.add_blank()
@@ -203,9 +225,45 @@ class Bootstrap:
                     break
                 props.append(trailing)
 
-            added.append(item.key)
+            present.add(key)
+            added.append(key)
 
         return added
+
+
+    def _check_server_port(self) -> None:
+        """
+        Exits when the NetherNet signaling port is taken, which the Bedrock Dedicated Server does not report.
+        """
+        path = self.server_path / "server.properties"
+        if not path.exists():
+            return
+
+        with path.open("r", encoding="utf-8", newline="") as file:
+            props = _properties.load(file)
+
+        if props.get("transport") != "nethernet":
+            return
+
+        port = props.get_int("server-port", 19132)
+        host = props.get("server-ip", "").strip()
+        if host:
+            family = socket.AF_INET6 if ":" in host else socket.AF_INET
+            dualstack = False
+        else:
+            dualstack = socket.has_dualstack_ipv6()
+            family = socket.AF_INET6 if dualstack else socket.AF_INET
+
+        try:
+            socket.create_server((host, port), family=family, dualstack_ipv6=dualstack).close()
+        except OSError as e:
+            if e.errno != errno.EADDRINUSE:
+                return
+            self._logger.error(
+                f"Port [{port}] may be in use by another process. Free up port and re-run program or adjust "
+                "server.properties file to use alternate ports for server"
+            )
+            sys.exit(1)
 
     def _prepare(self) -> None:
         # ensure the plugin folder exists
@@ -231,7 +289,8 @@ class Bootstrap:
                         to_doc[key] = val
                     else:
                         # if both are tables, dive deeper
-                        if isinstance(val, tomlkit.TOMLDocument) and isinstance(to_doc[key], tomlkit.TOMLDocument):
+                        tables = (tomlkit.TOMLDocument, tomlkit.items.Table)
+                        if isinstance(val, tables) and isinstance(to_doc[key], tables):
                             migrate_config(val, to_doc[key])  # type: ignore[arg-type]
 
             migrate_config(default_config, config)
@@ -341,6 +400,7 @@ class Bootstrap:
         self._install()
         self._validate()
         self._prepare()
+        self._check_server_port()
         return self._run()
 
     @property

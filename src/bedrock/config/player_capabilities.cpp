@@ -33,4 +33,9 @@ bool PlayerData::isOperator() const
     return player_.getPlayerPermissionLevel() >= PlayerPermissionLevel::Operator;
 }
 
+bool PlayerData::isExternalPlayerCommunicationAllowed() const
+{
+    return player_.isExternalCommunicationAllowed();
+}
+
 }  // namespace PlayerCapabilities

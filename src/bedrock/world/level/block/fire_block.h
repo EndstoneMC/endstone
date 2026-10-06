@@ -25,7 +25,8 @@ public:
     static constexpr int HUMID_BURN_CHANCE_OFFSET = 50;
     FireBlock(const std::string &, int);
 
-    void checkBurn(BlockSource &region, const BlockPos &pos, int chance, IRandom &random, int age) const;
+    void checkBurn(BlockSource &region, const BlockPos &pos, int chance, IRandom &random, int age,
+                   const BlockPos &fire_pos) const;
 
 private:
     bool _trySpawnSoulFire(BlockSource &, const BlockPos &) const;
