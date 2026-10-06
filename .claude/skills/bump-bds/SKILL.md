@@ -158,6 +158,10 @@ succeeds, unless any TU actually consumes the missing name - then `consteval`
      Endstone's `src/bedrock/` *declaration* (`__FUNCDNAME__` derives from it),
      not the config alone.
    - **Linux only** -> stale byte pattern; re-extract it (see Gotchas).
+   - **A Windows fallback hit for an ordinary named function** means the PDB no
+     longer has that name. The function may have been split, renamed or inlined,
+     so a pattern under the old name can land on a different function. Find what
+     replaced it and hook that instead (1.26.51 `_loadMapData`, #537).
 
 ---
 

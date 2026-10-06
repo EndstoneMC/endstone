@@ -178,8 +178,7 @@ void EndstoneBossBar::addPlayer(Player &player)
 
 void EndstoneBossBar::removePlayer(Player &player)
 {
-    players_.erase(player.getUniqueId());
-    if (visible_) {
+    if (players_.erase(player.getUniqueId()) > 0 && visible_) {
         send(BossEventUpdateType::Remove, player);
     }
 }

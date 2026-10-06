@@ -21,6 +21,25 @@
 
 namespace endstone::core {
 
+namespace {
+
+std::size_t escapeSequenceEnd(spdlog::string_view_t input, std::size_t begin)
+{
+    auto i = begin + 1;
+    if (i >= input.size() || input[i] != '[') {
+        return i;
+    }
+    for (++i; i < input.size(); ++i) {
+        const auto c = static_cast<unsigned char>(input[i]);
+        if (c >= 0x40 && c <= 0x7E) {
+            return i + 1;
+        }
+    }
+    return input.size();
+}
+
+}  // namespace
+
 void TextFormatter::format(const spdlog::details::log_msg &msg, const tm &, spdlog::memory_buf_t &dest)
 {
 
@@ -42,6 +61,14 @@ void TextFormatter::format(const spdlog::details::log_msg &msg, const tm &, spdl
                     }
                 }
             }
+        }
+        else if (input[i] == '\x1b') {
+            // Pass through ANSI select graphic rendition sequences, drop every other escape sequence
+            const auto end = escapeSequenceEnd(input, i);
+            if (should_do_colors_ && input[end - 1] == 'm') {
+                spdlog::details::fmt_helper::append_string_view({input.data() + i, end - i}, dest);
+            }
+            i = end - 1;
         }
         else {
             // Append the current character to the result if it's not part of a color code

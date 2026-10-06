@@ -1,4 +1,4 @@
-version = "1.26.51"
+version = "1.26.52"
 platform = "windows"
 executable = "bedrock_server.exe"
 filename = "bedrock_server"
@@ -490,17 +490,23 @@ rip_relative = true
 rip_offset = 1
 
 [[signatures]]
-name = "?_loadMapData@MapDataManager@@IEAAPEAVMapItemSavedData@@AEBUActorUniqueID@@@Z"
+name = "?_publishMapData@MapDataManager@@IEAAPEAVMapItemSavedData@@AEBUActorUniqueID@@V?$unique_ptr@VMapItemSavedData@@U?$default_delete@VMapItemSavedData@@@std@@@std@@@Z"
 relative = false
 extra = 0
-# 1. find bytes "6D 61 70 5F 00" = "map_\0"; its data xref(s) land in MapItemSavedData::getSerializationKey
-#    (the only function that references it - it prepends "map_" to the stringified ActorUniqueID)
-# 2. getSerializationKey has exactly two callers: MapItemSavedData::save (writes) and _loadMapData (reads)
-#    - _loadMapData is the one that, right after the key call, feeds it to LevelStorage::loadData then
-#    NbtIo::readOrGetEmpty and constructs + deserializes a MapItemSavedData (emplacing it into mMapData)
-# 3. confirm the callee vs the old named DB (member, takes an ActorUniqueID&, returns MapItemSavedData*)
-# function prologue
-pattern = "55 41 57 41 56 56 57 53 48 81 EC ? ? ? ? 48 8D AC 24 ? ? ? ? 48 C7 45 ? ? ? ? ? 49 89 D7 0F 57 C0 0F 29 45"
+# 1. find bytes "6D 61 70 49 64 00" = "mapId\0" (one copy in .rdata); its only code xref is a `lea` in
+#    _deserializeMapData, which loads "map_<id>" through LevelStorage and returns the map as a unique_ptr
+#    through the sret pointer in rdx (`mov r15, rdx` in its prologue)
+# 2. _deserializeMapData has three callers: getMapSavedData, the vector createMapSavedData (an inlined
+#    getMapSavedData) and loadMapDataForDeferredPublish; in getMapSavedData the call right after it,
+#    with (this, &uuid, &unique_ptr), is _publishMapData
+# 3. confirm: _publishMapData has three callers - those getMapSavedData and createMapSavedData sites, and
+#    publishDeferredMapData, whose only caller is Level::_subTick; it emplaces into mMapData (this+0x70),
+#    tests mPreviewIncomplete (byte +0x19) before MapItem::renderBiomePreviewMap, and returns the
+#    inserted map, or null
+# call site in MapDataManager::getMapSavedData (unique)
+pattern = "E8 ? ? ? ? 48 89 D9 48 89 FA 49 89 F0 E8 ? ? ? ? 48 8B 4C 24"
+rip_relative = true
+rip_offset = 15
 
 [[signatures]]
 name = "?compileCommand@MinecraftCommands@@QEAAPEAVCommand@@AEBVHashedString@@AEAVCommandOrigin@@W4CurrentCmdVersion@@V?$function@$$A6AXAEBV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z@std@@@Z"
