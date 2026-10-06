@@ -27,7 +27,7 @@ BlockTypeId EndstoneBlockType::getId() const
 
 std::string EndstoneBlockType::getTranslationKey() const
 {
-    return block_type_.getDescriptionId();
+    return block_type_.buildDescriptionId(block_type_.getDefaultState());
 }
 
 bool EndstoneBlockType::hasItemType() const
