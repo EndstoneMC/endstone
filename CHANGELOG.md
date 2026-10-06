@@ -11,7 +11,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 #### Events
 
-- `BlockFormEvent` now fires, for lava solidifying against a neighbouring liquid: obsidian from a lava source, cobblestone from flowing lava, and basalt where lava sits between blue ice and soul soil. It reports the lava `block` and the `new_state` it will take, and is fired before the world changes, so cancelling leaves the lava as it is and plays no extinguishing effect. Snow, ice and concrete do not fire it yet.
+- `BlockFormEvent` now fires, for lava solidifying against a neighbouring liquid: obsidian from a lava source, cobblestone from flowing lava, and basalt where lava sits between blue ice and soul soil. It reports the lava `block` and the `new_state` it will take, and is fired before the world changes, so cancelling leaves the lava as it is and plays no extinguishing effect. Snow, ice and concrete do not fire it yet, and neither does lava that solidifies while a chunk is still streaming in.
 - `PlayerHideActorEvent` and `PlayerShowActorEvent`, reporting the `actor` whose visibility changed. Neither fires when the actor was already hidden from, or already visible to, that player.
 - `EnchantItemEvent` for enchanting an item at an enchanting table, reporting the enchanting `inventory`, the `enchanter`, the `enchant_block`, the `item`, the `exp_level_cost`, the `enchants_to_add` and the `which_button` selected. The item, cost and enchantments are writable; cancelling leaves the item, the player's experience levels and the lapis lazuli untouched. It does not fire for an offer the player cannot pay for, and no enchantment hint is reported.
 - `PrepareItemEnchantEvent` for inspecting, replacing or hiding the three offers prepared by an enchanting table. It reports the enchanting `inventory`, the `enchanter`, the `enchant_block`, the `item`, the nearby-bookshelf `enchantment_bonus`, and the complete enchantment set and cost for each offer. Offer costs must be between 1 and 255, the range the client accepts. Cancelling removes every offer, and neither a cancellation nor an edited offer is preceded by the vanilla offers reaching the client.
@@ -77,6 +77,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - `RecipeIngredient`, describing what one ingredient slot accepts, with `test()` to check an item against it and a Bedrock-specific `count`. An ingredient is an `ExactIngredient` (one item and one data value), an `ItemTypeIngredient` (an item type, any data value), an `ItemTagIngredient` (anything carrying a tag), a `MolangIngredient` (whatever a Molang expression selects), an `ComplexAliasIngredient` (anything an id that predates the item flattening stands for, such as `minecraft:planks`). A slot the recipe leaves empty is `None`.
 - `WritableBookMeta`, `BookMeta` and `CrossbowMeta` item meta types.
 - `PotionMeta` for potions, splash potions and lingering potions, with `meta.base_potion_type`.
+- `ItemStack.item_meta` is now writable, so `item.item_meta = meta` applies the metadata. Where `set_item_meta()` reports failure by returning `False`, assigning raises if the metadata does not apply to the item type.
 
 #### Level and dimensions
 
@@ -100,7 +101,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - `endstone.metrics` chart classes are now the C++ ones, so a chart behaves identically whichever language declares it. Python plugins keep the same `SimplePie("id", callback)` usage and can still subclass `CustomChart`, whose `get_chart_data()` returns JSON.
 - nlohmann/json is part of the public C++ API, with `endstone::JsonValue`, `JsonObject` and `JsonArray` naming the three shapes (and `endstone.JsonValue` / `JsonObject` / `JsonArray` in Python). `endstone_add_plugin()` links it for you.
 - Unified `Object.as<T>()`/`is<T>()` casting API. `NotNull<T>` and `Nullable<T>` carry the same pair, so `event.getActor().as<Player>()` returns a `Nullable<Player>` sharing ownership with the original.
-- `endstone.Identifier` for namespaced ids, splitting `dim.id.namespace` from `dim.id.key` and distinguishing `Identifier[Dimension]` from `Identifier[ActorType]`. Plain strings are still accepted.
+- `endstone.Identifier` for namespaced ids, splitting `dim.id.namespace` from `dim.id.key` and distinguishing `Identifier[Dimension]` from `Identifier[ActorType]`. Plain strings are still accepted, and so is the registry entry itself, so `ItemStack(item_type)` works alongside `ItemStack("minecraft:beef")`.
 - `ActorType`, `EffectType` and `PotionType` in the registry API, each entry carrying a `translation_key`, plus the missing `ActorType.SULFUR_CUBE` constant.
 - Binary NBT serialization (`dump`/`load`) with support for multiple formats.
 

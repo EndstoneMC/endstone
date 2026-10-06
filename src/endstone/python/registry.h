@@ -24,6 +24,11 @@ namespace py = pybind11;
 
 namespace endstone::python {
 
+template <typename T>
+concept identifiable = requires { sizeof(T); } && requires(const T &t) {
+    { t.getId() } -> std::convertible_to<Identifier<T>>;
+};
+
 struct PyIdentifier {
     std::string namespace_;
     std::string key_;

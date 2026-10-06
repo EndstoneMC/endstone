@@ -171,7 +171,7 @@ class EndstoneTest(Plugin):
                 item = ItemStack(item_id, amount)
                 meta = item.item_meta
                 meta.lore = [pending.key, pending.hint]
-                item.item_meta = meta
+                item.set_item_meta(meta)
                 player.inventory.add_item(item)
 
         if pending.wand is not None:
@@ -186,7 +186,7 @@ class EndstoneTest(Plugin):
                 meta = item.item_meta
                 meta.display_name = name
                 meta.lore = [pending.key, pending.hint]
-                item.item_meta = meta
+                item.set_item_meta(meta)
                 player.inventory.add_item(item)
 
     def run_tests(self, player: Player | None = None) -> int:

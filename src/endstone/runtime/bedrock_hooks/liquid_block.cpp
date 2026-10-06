@@ -47,7 +47,8 @@ void LiquidBlockBase::_solidify(BlockSource &region, BlockPos const &pos, BlockP
              .getDefaultState();
 
     // Endstone begins
-    if (server.getEndstonePluginManager().isEventRegistered<endstone::BlockFormEvent>()) {
+    if (server.getEndstonePluginManager().isEventRegistered<endstone::BlockFormEvent>() &&
+        !region.isInstaticking(pos)) {
         const auto new_state =
             std::make_shared<endstone::core::EndstoneBlockSnapshot>(region, pos, *placed)->captureState(true);
         endstone::BlockFormEvent event{endstone::core::EndstoneBlock::at(region, pos), new_state};
