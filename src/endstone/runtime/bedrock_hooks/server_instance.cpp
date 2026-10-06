@@ -17,6 +17,7 @@
 #include <optional>
 
 #include <entt/locator/locator.hpp>
+#include <pybind11/pybind11.h>
 
 #include "bedrock/scripting/event_handlers/script_actor_gameplay_handler.h"
 #include "bedrock/scripting/event_handlers/script_block_gameplay_handler.h"
@@ -28,9 +29,9 @@
 #include "endstone/core/server.h"
 #include "endstone/detail.h"
 #include "endstone/runtime/hook.h"
-#include "endstone/runtime/python_thread_state.h"
 #include "endstone/runtime/vtable_hook.h"
 
+namespace py = pybind11;
 namespace vhook = endstone::runtime::vhook;
 
 template <typename T>
@@ -123,7 +124,9 @@ class ServerInstanceLifecycleListener : ServerInstanceEventListener {
 public:
     ::EventResult onServerThreadStarted(ServerInstance &instance) override
     {
-        python_thread_context_.emplace();
+        // Keep a PyThreadState for the server thread so Python callbacks reuse it instead of creating one per call
+        gil_.emplace();
+        no_gil_.emplace();
         auto &level = *instance.getMinecraft()->getLevel();
         auto &server = endstone::core::EndstoneServer ::getInstance();
         hookEventHandler(*level.getActorEventCoordinator().actor_gameplay_handler);
@@ -144,7 +147,8 @@ public:
             server.disablePlugins();
         }
         entt::locator<endstone::core::EndstoneServer>::reset();
-        python_thread_context_.reset();
+        no_gil_.reset();
+        gil_.reset();
         return ::EventResult::KeepGoing;
     }
 
@@ -155,7 +159,8 @@ public:
     }
 
 private:
-    std::optional<endstone::runtime::python::PythonThreadContext> python_thread_context_;
+    std::optional<py::gil_scoped_acquire> gil_;
+    std::optional<py::gil_scoped_release> no_gil_;
 };
 
 ServerInitialization::ServerInitResult ServerInstance::initializeServer(ServerInstanceInitArguments &&args)
