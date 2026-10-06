@@ -15,6 +15,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Changed
 
 - Operators can run cheat commands such as `/give` and `/tp` without turning on cheats for the world.
+- Improved the performance of Python callbacks on the server thread.
+- Python thread-local and context-variable state now persists across callbacks on the server thread.
 
 ### Fixed
 
