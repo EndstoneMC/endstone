@@ -26,6 +26,7 @@
 #include "endstone/core/server.h"
 #include "endstone/detail.h"
 #include "endstone/runtime/hook.h"
+#include "endstone/runtime/python_thread_state.h"
 #include "endstone/runtime/vtable_hook.h"
 
 namespace vhook = endstone::runtime::vhook;
@@ -120,6 +121,7 @@ class ServerInstanceLifecycleListener : ServerInstanceEventListener {
 public:
     ::EventResult onServerThreadStarted(ServerInstance &instance) override
     {
+        endstone::runtime::python::retainThreadState();
         auto &level = *instance.getMinecraft()->getLevel();
         auto &server = endstone::core::EndstoneServer ::getInstance();
         hookEventHandler(*level.getActorEventCoordinator().actor_gameplay_handler);
@@ -140,6 +142,7 @@ public:
             server.disablePlugins();
         }
         entt::locator<endstone::core::EndstoneServer>::reset();
+        endstone::runtime::python::releaseThreadState();
         return ::EventResult::KeepGoing;
     }
 
