@@ -12,6 +12,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Added support for BDS version 1.26.52.
 - The logger handles ANSI escape codes alongside `§` colour codes, so a plugin can log text that is already coloured. Colour sequences reach the console as written, and every escape sequence is stripped from the log file, which previously kept them verbatim.
 
+### Changed
+
+- Operators can run cheat commands such as `/give` and `/tp` without turning on cheats for the world.
+
 ### Fixed
 
 - Fixed `network.stun-servers` having no effect on NetherNet, which left a server behind NAT unable to discover and advertise its public address.

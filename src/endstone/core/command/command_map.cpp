@@ -50,7 +50,22 @@ namespace endstone::core {
 EndstoneCommandMap::EndstoneCommandMap(EndstoneServer &server) : server_(server)
 {
     unregisterCommand("reload");
+    allowCommandsWithoutCheats();
     setDefaultCommands();
+}
+
+void EndstoneCommandMap::allowCommandsWithoutCheats()
+{
+    // Like Paper, permissions decide who may run a command, not whether the world has cheats on.
+    auto &registry = getHandle().getRegistry();
+    for (auto &signature : registry.signatures_ | std::views::values) {
+        signature.flags |= CommandCheatFlag::NotCheat;
+    }
+    for (auto &value : registry.constrained_values_) {
+        std::erase_if(value.constraints, [&](auto index) {
+            return registry.semantic_constraints_[index] == SemanticConstraint::RequiresCheatsEnabled;
+        });
+    }
 }
 
 bool EndstoneCommandMap::dispatch(CommandSender &sender, std::string command_line) const
