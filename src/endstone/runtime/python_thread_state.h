@@ -14,7 +14,7 @@
 
 #pragma once
 
-#include <pybind11/gil.h>
+#include <pybind11/pybind11.h>
 
 namespace endstone::runtime::python {
 
