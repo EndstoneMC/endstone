@@ -118,6 +118,8 @@ Plugin *CppPluginLoader::loadPlugin(std::string file)
                      "API version: {}, but the server has an incompatible API version: {}.",
                      plugin->getDescription().getName(), plugin->getDescription().getAPIVersion(),
                      supported_api_version);
+        delete plugin;
+        CLOSE_LIBRARY(module);
         return nullptr;
     }
 
