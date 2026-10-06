@@ -71,7 +71,7 @@ static constexpr std::array<std::pair<std::string_view, std::size_t>, 66> symbol
     // LiquidBlock
     {"?_trySpreadTo@LiquidBlock@@IEBAXAEAVBlockSource@@AEBVBlockPos@@H1E@Z", 146138496},
     // MapDataManager
-    {"?_loadMapData@MapDataManager@@IEAAPEAVMapItemSavedData@@AEBUActorUniqueID@@@Z", 8750416},
+    {"?_publishMapData@MapDataManager@@IEAAPEAVMapItemSavedData@@AEBUActorUniqueID@@V?$unique_ptr@VMapItemSavedData@@U?$default_delete@VMapItemSavedData@@@std@@@std@@@Z", 8751648},
     // MinecraftCommands
     {"?compileCommand@MinecraftCommands@@QEAAPEAVCommand@@AEBVHashedString@@AEAVCommandOrigin@@W4CurrentCmdVersion@@V?$function@$$A6AXAEBV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z@std@@@Z", 4099168},
     {"?executeCommand@MinecraftCommands@@QEBA?AUMCRESULT@@AEAVCommandContext@@_N@Z", 4039904},

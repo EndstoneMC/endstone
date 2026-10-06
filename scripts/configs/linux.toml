@@ -426,19 +426,25 @@ extra = 0
 pattern = "55 41 57 41 56 41 55 41 54 53 48 83 EC ? 45 89 CD 4D 89 C4 89 4C 24 ? 48 89 D3"
 
 [[signatures]]
-name = "_ZN14MapDataManager15getMapSavedDataE13ActorUniqueID"
+name = "_ZN14MapDataManager15_publishMapDataERK13ActorUniqueIDNSt3__110unique_ptrI16MapItemSavedDataNS3_14default_deleteIS5_EEEE"
 relative = false
 extra = 0
 # 1. find bytes "6D 61 70 49 64 00" = "mapId\0"; take the copy that HAS code xrefs (there are two
-#    copies, one unreferenced) - one of its two referencing functions is MapDataManager's map-loading
-#    helper, which reads the mapId tag and calls LevelStorage through vtable slot 0xa8
-# 2. getMapSavedData is that helper's caller that hashes its ActorUniqueID argument: the golden-ratio
-#    constant 0x9e3779b9 + a libc++ popcount bucket walk over the unordered_map at this+0x60/+0x68,
-#    comparing the key at [node+0x10] against the uuid in rsi
-# 3. NOTE: 1.26.51 split the function - the load-and-insert tail is now the separate helper, so
-#    getMapSavedData is much smaller than in 1.26.45 and a whole-body signature match will miss it
-# function prologue
-pattern = "41 57 41 56 53 48 83 EC ? 48 89 FB 48 89 74 24 ? 4C 8B 47"
+#    copies, one unreferenced) - of its two referencing functions, _deserializeMapData is the one that
+#    calls LevelStorage through vtable slot 0xa8 and returns the map as a unique_ptr through the sret in rdi
+#    (the other is MapItemSavedData::deserialize, which stores the tag at this+8 and tail-calls _deserializeData)
+# 2. _deserializeMapData has exactly two callers: getMapSavedData (hashes the uuid with 0x9e3779b9 and walks
+#    the unordered_map at this+0x60/+0x68) and loadMapDataForDeferredPublish; in getMapSavedData the call
+#    right after it, with (this, &uuid, &unique_ptr), is _publishMapData
+# 3. confirm: _publishMapData has exactly two callers - getMapSavedData and publishDeferredMapData, which
+#    locks a mutex, swaps out the deferred maps and publishes each; publishDeferredMapData's only caller is
+#    Level::_subTick (Level vtable slot 411, called directly by ServerLevel::_subTick). It emplaces into
+#    mMapData, tests mPreviewIncomplete (byte +0x19) before rendering the biome preview, and returns the
+#    inserted map, or null
+# call site in MapDataManager::getMapSavedData (unique)
+pattern = "E8 ? ? ? ? 48 89 DF 4C 89 FE 4C 89 F2 E8 ? ? ? ? 48 8B 1C 24"
+rip_relative = true
+rip_offset = 15
 
 [[signatures]]
 name = "_ZN17MinecraftCommands14compileCommandERK12HashedStringR13CommandOrigin17CurrentCmdVersionNSt3__18functionIFvRKNS6_12basic_stringIcNS6_11char_traitsIcEENS6_9allocatorIcEEEEEEE"
