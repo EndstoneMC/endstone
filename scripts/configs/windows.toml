@@ -185,6 +185,20 @@ extra = 0
 pattern = "55 41 57 41 56 41 55 41 54 56 57 53 48 81 EC ? ? ? ? 48 8D AC 24 ? ? ? ? 48 C7 85 ? ? ? ? ? ? ? ? 45 89 C6 48 89 D7"
 
 [[signatures]]
+name = "?update@CircuitSceneGraph@@QEAAXPEAVBlockSource@@@Z"
+relative = false
+extra = 0
+# 1. find the RTTI type descriptor ".?AVPoweredBlockComponent@@" and follow its complete object locator to the
+#    PoweredBlockComponent vtable
+# 2. exactly two functions lea that vtable: CircuitSystem::create<PoweredBlockComponent> (~0x2aa) and
+#    CircuitSceneGraph::update, the huge one (~0x685d) that inlines the whole remove/add/relationship pass
+# 3. confirm update by its head walking mPendingRemoves at this+0x180/0x188, and by its relationship pass
+#    looking up mPowerAssociationMap at this+0x80 and calling removeSource through vtable slot +0x60
+# 4. confirm vs the old named DB (member, takes BlockSource*, returns void)
+# function prologue
+pattern = "55 41 57 41 56 41 55 41 54 56 57 53 48 81 EC ? ? ? ? 48 8D AC 24 ? ? ? ? 0F 29 BD ? ? ? ? 0F 29 B5 ? ? ? ? 48 C7 85 ? ? ? ? FE FF FF FF 48 89 95 ? ? ? ? 49 89 CC 48 8B 81 80 01 00 00 48 89 85 ? ? ? ? 48 3B 81 88 01 00 00"
+
+[[signatures]]
 name = "?run@Command@@QEBAXAEBVCommandOrigin@@AEAVCommandOutput@@@Z"
 relative = false
 extra = 0

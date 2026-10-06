@@ -28,6 +28,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Fixed the server slowing down over time on Windows as maps are loaded (#537).
 - Fixed `MapInitializeEvent` not firing on Windows for maps loaded from the world.
 - Fixed `MapInitializeEvent` not firing on Linux for a map inside a chest or other container when its chunk loads.
+- Fixed redstone using more memory and getting slower over time when a block next to a torch, repeater or lever is broken and replaced again and again, such as by a piston clock.
 
 ## [0.11.12] - 2026-09-20
 

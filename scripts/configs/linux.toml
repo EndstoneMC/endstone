@@ -160,6 +160,21 @@ extra = 0
 pattern = "55 41 57 41 56 41 55 41 54 53 48 81 EC ? ? ? ? 89 D5 49 89 F6 48 89 FB 48 8B 06 48 89 F7 31 F6"
 
 [[signatures]]
+name = "_ZN17CircuitSceneGraph6updateEP11BlockSource"
+relative = false
+extra = 0
+# 1. find the typeinfo name "21PoweredBlockComponent\0"; the typeinfo whose name pointer relocates to it is
+#    _ZTI21PoweredBlockComponent, and the vtable whose slot -1 relocates to that typeinfo is
+#    _ZTV21PoweredBlockComponent
+# 2. three functions lea the vtable address point: two small ones (~0x69, ~0x1f5) and
+#    CircuitSceneGraph::update, the huge one (~0x683e) that inlines the whole remove/add/relationship pass
+# 3. confirm update: CircuitSystem::updateDependencies (~0x16) calls it on this+8 and then clears the bool at
+#    +0x128, and update's head walks mPendingRemoves at this+0xf0/0xf8
+# 4. confirm vs the old named DB
+# function prologue
+pattern = "55 41 57 41 56 41 55 41 54 53 48 81 EC ? ? ? ? 48 89 B4 24 ? ? ? ? 48 89 FB 48 8B 87 F0 00 00 00 48 89 44 24 ? 48 3B 87 F8 00 00 00"
+
+[[signatures]]
 name = "_ZNK7Command3runERK13CommandOriginR13CommandOutput"
 relative = false
 extra = 0
