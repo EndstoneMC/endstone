@@ -10,10 +10,17 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Added
 
 - Added support for BDS version 1.26.52.
+- The logger handles ANSI escape codes alongside `§` colour codes, so a plugin can log text that is already coloured. Colour sequences reach the console as written, and every escape sequence is stripped from the log file, which previously kept them verbatim.
 
 ### Fixed
 
 - Fixed `network.stun-servers` having no effect on NetherNet, which left a server behind NAT unable to discover and advertise its public address.
+- Fixed a C++ plugin rejected for an incompatible API version staying loaded.
+- Fixed `PlayerDropItemEvent` firing for a player who has not finished joining.
+- Fixed `Dimension.actors` and `Level.actors` leaving out connected players.
+- Fixed `BlockType.translation_key` returning a key the client cannot translate.
+- Fixed Python raising a generic `TypeError` instead of the intended error when a colour, image or UUID argument has an invalid value.
+- Fixed `BossBar.remove_player` hiding the bar from a player who was never added to it.
 
 ## [0.11.12] - 2026-09-20
 
