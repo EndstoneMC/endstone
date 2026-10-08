@@ -254,7 +254,7 @@ NetworkPeer::DataStatus BatchedNetworkPeer::_receivePacket(std::string &out_data
 
         const auto &id = getId();
         endstone::core::EndstonePlayer *player = nullptr;
-        if (const auto *p = network_handler->getServerPlayer(id, header.getRecipientSubId())) {
+        if (const auto *p = network_handler->getServerPlayer(id, header.getSenderSubId())) {
             player = &p->getEndstoneActor<endstone::core::EndstonePlayer>();
         }
 
@@ -262,7 +262,7 @@ NetworkPeer::DataStatus BatchedNetworkPeer::_receivePacket(std::string &out_data
         const auto address =
             player ? player->getAddress() : endstone::core::EndstoneSocketAddress::fromNetworkIdentifier(id);
         endstone::PacketReceiveEvent e{player, static_cast<int>(header.getPacketId()), payload, address,
-                                       static_cast<int>(header.getRecipientSubId())};
+                                       static_cast<int>(header.getSenderSubId())};
         server.getPluginManager().callEvent(e);
         if (e.isCancelled()) {
             continue;
