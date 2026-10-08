@@ -556,6 +556,12 @@ void EndstonePluginManager::registerEvent(std::string event, std::function<void(
     }
 }
 
+bool EndstonePluginManager::isEventRegistered(const std::string_view event) const
+{
+    const auto it = event_handlers_.find(event);
+    return it != event_handlers_.end() && !it->second.getHandlers().empty();
+}
+
 Permission *EndstonePluginManager::getPermission(std::string name) const
 {
     std::ranges::transform(name, name.begin(), [](unsigned char c) { return std::tolower(c); });

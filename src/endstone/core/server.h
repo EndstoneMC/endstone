@@ -64,6 +64,7 @@ public:
     [[nodiscard]] Language &getLanguage() const override;
     [[nodiscard]] EndstoneCommandMap &getCommandMap() const;
     [[nodiscard]] PluginManager &getPluginManager() const override;
+    [[nodiscard]] EndstonePluginManager &getEndstonePluginManager() const;
     [[nodiscard]] PluginCommand *getPluginCommand(std::string name) const override;
     [[nodiscard]] ConsoleCommandSender &getCommandSender() const override;
     [[nodiscard]] std::shared_ptr<ConsoleCommandSender> getCommandSenderPtr() const;

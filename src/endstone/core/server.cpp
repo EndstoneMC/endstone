@@ -432,6 +432,11 @@ PluginManager &EndstoneServer::getPluginManager() const
     return *plugin_manager_;
 }
 
+EndstonePluginManager &EndstoneServer::getEndstonePluginManager() const
+{
+    return *plugin_manager_;
+}
+
 PluginCommand *EndstoneServer::getPluginCommand(std::string name) const
 {
     if (auto command = command_map_->getCommand(name)) {

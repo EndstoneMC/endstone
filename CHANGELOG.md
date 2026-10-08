@@ -7,6 +7,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+### Changed
+
+- Improved the performance of sending and receiving packets when no plugin listens for `PacketSendEvent` or `PacketReceiveEvent`.
+
 ### Fixed
 
 - Fixed a packet sent from a `PacketSendEvent` handler replacing the packet that was being sent.

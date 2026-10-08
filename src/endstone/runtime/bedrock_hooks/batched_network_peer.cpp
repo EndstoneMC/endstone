@@ -31,6 +31,7 @@
 #include "endstone/core/level/level.h"
 #include "endstone/core/map/map_view.h"
 #include "endstone/core/player.h"
+#include "endstone/core/plugin/plugin_manager.h"
 #include "endstone/core/server.h"
 #include "endstone/core/util/socket_address.h"
 #include "endstone/event/server/packet_receive_event.h"
@@ -144,11 +145,25 @@ void patchPacket(Packet &packet, endstone::Player *player)
         break;
     }
 }
+
+bool isPatched(MinecraftPacketIds id)
+{
+    return id == MinecraftPacketIds::StartGame || id == MinecraftPacketIds::ResourcePacksInfo ||
+           id == MinecraftPacketIds::ResourcePackStack || id == MinecraftPacketIds::MapData;
+}
 }  // namespace
 
 void BatchedNetworkPeer::sendPacket(const std::string &data, Reliability reliability, Compressibility compressible)
 {
     const auto &server = endstone::core::EndstoneServer::getInstance();
+    ReadOnlyBinaryStream peek(data, false);
+    if (const auto result = peek.getUnsignedVarInt().discardError();
+        result && !isPatched(PacketHeader::fromRaw(result.value()).getPacketId()) &&
+        !server.getEndstonePluginManager().isEventRegistered<endstone::PacketSendEvent>()) {
+        ENDSTONE_HOOK_CALL_ORIGINAL(&BatchedNetworkPeer::sendPacket, this, data, reliability, compressible);
+        return;
+    }
+
     auto &network = server.getServer().getNetwork();
     // A packet a plugin sends from here would overwrite data, which sendToMultiple then sends to the next player
     auto buffer = network.send_stream_.getAndReleaseData();
@@ -236,6 +251,10 @@ NetworkPeer::DataStatus BatchedNetworkPeer::_receivePacket(std::string &out_data
                                                            const PacketRecvTimepointPtr &timepoint_ptr)
 {
     const auto &server = endstone::core::EndstoneServer::getInstance();
+    if (!server.getEndstonePluginManager().isEventRegistered<endstone::PacketReceiveEvent>()) {
+        return ENDSTONE_HOOK_CALL_ORIGINAL(&BatchedNetworkPeer::_receivePacket, this, out_data, timepoint_ptr);
+    }
+
     auto network_handler = server.getServer().getMinecraft()->getServerNetworkHandler();
     while (true) {
         const auto status =

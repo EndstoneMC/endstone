@@ -16,6 +16,7 @@
 
 #include <memory>
 #include <string>
+#include <string_view>
 #include <unordered_map>
 #include <unordered_set>
 #include <vector>
@@ -60,6 +61,13 @@ public:
     void callEvent(Event &event) override;
     void registerEvent(std::string event, std::function<void(Event &)> executor, EventPriority priority, Plugin &plugin,
                        bool ignore_cancelled) override;
+    [[nodiscard]] bool isEventRegistered(std::string_view event) const;
+
+    template <typename EventType>
+    [[nodiscard]] bool isEventRegistered() const
+    {
+        return isEventRegistered(EventType::NAME);
+    }
 
     /** Permission system */
     [[nodiscard]] Permission *getPermission(std::string name) const override;
@@ -84,6 +92,14 @@ private:
         T, boost::multi_index::indexed_by<boost::multi_index::sequenced<>,
                                           boost::multi_index::hashed_unique<boost::multi_index::identity<T>>>>;
 
+    struct StringHash {
+        using is_transparent = void;  // NOLINT(readability-identifier-naming)
+        [[nodiscard]] std::size_t operator()(std::string_view name) const noexcept
+        {
+            return std::hash<std::string_view>{}(name);
+        }
+    };
+
     Plugin *loadPlugin(Plugin &plugin);
     std::vector<Plugin *> loadPlugins(std::vector<Plugin *>);
     void initPlugin(Plugin &plugin, PluginLoader &loader, const std::filesystem::path &base_folder);
@@ -94,7 +110,7 @@ private:
     std::vector<std::unique_ptr<PluginLoader>> plugin_loaders_;
     std::vector<Plugin *> plugins_;
     std::unordered_map<std::string, Plugin *> lookup_names_;
-    std::unordered_map<std::string, HandlerList> event_handlers_;
+    std::unordered_map<std::string, HandlerList, StringHash, std::equal_to<>> event_handlers_;
     std::unordered_map<std::string, std::unique_ptr<Permission>> permissions_;
     std::unordered_map<PermissionLevel, linked_hash_set<Permission *>> default_perms_;
     std::unordered_map<std::string, std::unordered_map<Permissible *, bool>> perm_subs_;
