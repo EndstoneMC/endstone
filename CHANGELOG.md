@@ -7,6 +7,11 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+### Fixed
+
+- Fixed a packet sent from a `PacketSendEvent` handler replacing the packet that was being sent.
+- Fixed `PacketSendEvent` reporting the wrong player and sub-client ID for packets sent to a split-screen player.
+
 ## [0.11.13] - 2026-10-06
 
 ### Added

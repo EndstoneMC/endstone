@@ -200,6 +200,15 @@ void BinaryStream::reset()
     setReadPointer(0);
 }
 
+std::string BinaryStream::getAndReleaseData()
+{
+    std::string result;
+    result.swap(buffer_);
+    view_ = buffer_;
+    reset();
+    return result;
+}
+
 void BinaryStream::writeBool(bool value, char const *doc_field_name, char const *doc_field_notes)
 {
     writeByte(value ? 1 : 0, doc_field_name, nullptr);

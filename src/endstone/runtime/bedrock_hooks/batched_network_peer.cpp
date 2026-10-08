@@ -16,6 +16,7 @@
 
 #include <cstdint>
 #include <limits>
+#include <optional>
 #include <string>
 
 #include "bedrock/network/packet.h"
@@ -156,25 +157,21 @@ void BatchedNetworkPeer::sendPacket(const std::string &data, Reliability reliabi
 
     // Parse packet header
     auto header = PacketHeader::fromRaw(result.value());
+    const auto payload_offset = stream.getReadPointer();
     const auto &id = getId();
 
     // Get player object - if exists
     const auto &server = endstone::core::EndstoneServer::getInstance();
     const auto *server_player =
-        server.getServer().getMinecraft()->getServerNetworkHandler()->getServerPlayer(id, header.getSenderSubId());
+        server.getServer().getMinecraft()->getServerNetworkHandler()->getServerPlayer(id, header.getRecipientSubId());
     endstone::Player *player = nullptr;
     if (server_player) {
         player = &server_player->getEndstoneActor<endstone::core::EndstonePlayer>();
     }
 
-    // Create packet send event
-    auto payload = stream.getView().substr(stream.getReadPointer());
-    const auto address =
-        player ? player->getAddress() : endstone::core::EndstoneSocketAddress::fromNetworkIdentifier(id);
-    endstone::PacketSendEvent e{player, static_cast<int>(header.getPacketId()), payload, address,
-                                static_cast<int>(header.getSenderSubId())};
-
     // Patch specific outbound packets (deserialize -> modify -> re-serialize)
+    auto &network = server.getServer().getNetwork();
+    std::optional<std::string> patched_payload;
     switch (header.getPacketId()) {
     case MinecraftPacketIds::StartGame:
     case MinecraftPacketIds::ResourcePacksInfo:
@@ -187,7 +184,6 @@ void BatchedNetworkPeer::sendPacket(const std::string &data, Reliability reliabi
             return;
         }
 
-        auto &network = server.getServer().getNetwork();
         if (!packet->readNoHeader(stream, network.getPacketReflectionCtx(), header.getSenderSubId()).ignoreError()) {
             server.getLogger().critical("BatchedNetworkPeer::sendPacket: Failed to parse packet with id: {}",
                                         static_cast<int>(packet->getId()));
@@ -199,29 +195,44 @@ void BatchedNetworkPeer::sendPacket(const std::string &data, Reliability reliabi
         BinaryStream out;
         packet->writeWithSerializationMode(out, network.getPacketReflectionCtx(),
                                            network.getPacketOverrides().getOverrideModeForPacket(packet->getId()));
-        e.setPayload(out.getBuffer());
+        patched_payload = out.getAndReleaseData();
         break;
     }
     default:
         break;
     }
 
-    server.getPluginManager().callEvent(e);
-    if (e.isCancelled()) {
-        return;
+    // data is the send stream's buffer: a send from a handler overwrites it and sendToMultiple reuses it
+    auto buffer = network.send_stream_.getAndReleaseData();
+
+    // Create packet send event
+    const auto payload = std::string_view(buffer).substr(payload_offset);
+    const auto address =
+        player ? player->getAddress() : endstone::core::EndstoneSocketAddress::fromNetworkIdentifier(id);
+    endstone::PacketSendEvent e{player, static_cast<int>(header.getPacketId()), payload, address,
+                                static_cast<int>(header.getRecipientSubId())};
+    if (patched_payload) {
+        e.setPayload(*patched_payload);
     }
 
-    if (e.getPayload().data() != payload.data()) {
-        BinaryStream out;
-        header.write(out);
-        const auto new_payload = e.getPayload();
-        const auto *bytes = reinterpret_cast<const unsigned char *>(new_payload.data());
-        out.writeRawBytes({bytes, bytes + new_payload.size()}, nullptr, nullptr);
-        ENDSTONE_HOOK_CALL_ORIGINAL(&BatchedNetworkPeer::sendPacket, this, out.getBuffer(), reliability, compressible);
+    server.getPluginManager().callEvent(e);
+    if (!e.isCancelled()) {
+        if (e.getPayload().data() != payload.data()) {
+            BinaryStream out;
+            header.write(out);
+            const auto new_payload = e.getPayload();
+            const auto *bytes = reinterpret_cast<const unsigned char *>(new_payload.data());
+            out.writeRawBytes({bytes, bytes + new_payload.size()}, nullptr, nullptr);
+            ENDSTONE_HOOK_CALL_ORIGINAL(&BatchedNetworkPeer::sendPacket, this, out.getBuffer(), reliability,
+                                        compressible);
+        }
+        else {
+            ENDSTONE_HOOK_CALL_ORIGINAL(&BatchedNetworkPeer::sendPacket, this, buffer, reliability, compressible);
+        }
     }
-    else {
-        ENDSTONE_HOOK_CALL_ORIGINAL(&BatchedNetworkPeer::sendPacket, this, data, reliability, compressible);
-    }
+
+    network.send_stream_.getAndReleaseData();
+    network.send_buffer_ = std::move(buffer);
 }
 
 NetworkPeer::DataStatus BatchedNetworkPeer::_receivePacket(std::string &out_data,
