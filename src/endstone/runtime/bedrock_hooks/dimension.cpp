@@ -30,6 +30,13 @@
 #include "bedrock/world/level/level.h"
 #include "endstone/runtime/hook.h"
 
+#ifdef ENDSTONE_VERIFY_PERF
+#include <chrono>
+#include <cstdint>
+
+#include "endstone/core/server.h"
+#endif
+
 namespace {
 struct ActiveUser {
     std::optional<EntityContext> entity;
@@ -78,6 +85,54 @@ Player *resolve(ActiveUser &user, bool include_removed)
     }
     return include_removed || !user.player->isRemoved() ? user.player : nullptr;
 }
+
+#ifdef ENDSTONE_VERIFY_PERF
+struct VerifyCount {
+    std::uint64_t checks = 0;
+    std::uint64_t divergences = 0;
+};
+VerifyCount for_each_player_count;
+VerifyCount send_packet_count;
+VerifyCount active_player_count;
+int divergence_details = 0;
+auto last_verify_report = std::chrono::steady_clock::now();
+
+bool logDivergence(VerifyCount &count)
+{
+    ++count.divergences;
+    return divergence_details++ < 50;
+}
+
+void reportVerify()
+{
+    const auto now = std::chrono::steady_clock::now();
+    if (now - last_verify_report < std::chrono::seconds(30)) {
+        return;
+    }
+    last_verify_report = now;
+    endstone::core::EndstoneServer::getInstance().getLogger().info(
+        "[verify] Dimension::forEachPlayer {}/{}, Dimension::sendPacketForEntity {}/{}, "
+        "Level::getActivePlayerCount {}/{} (divergences/checks)",
+        for_each_player_count.divergences, for_each_player_count.checks, send_packet_count.divergences,
+        send_packet_count.checks, active_player_count.divergences, active_player_count.checks);
+}
+
+std::ptrdiff_t firstDifference(const std::vector<Player *> &vanilla, const std::vector<Player *> &fast)
+{
+    return std::ranges::mismatch(vanilla, fast).in1 - vanilla.begin();
+}
+
+std::vector<Player *> snapshotPlayers(std::vector<ActiveUser> &users, DimensionType id)
+{
+    std::vector<Player *> players;
+    for (auto &user : users) {
+        if (auto *player = resolve(user, false); player != nullptr && player->getDimensionId() == id) {
+            players.push_back(player);
+        }
+    }
+    return players;
+}
+#endif
 }  // namespace
 
 void Dimension::sendPacketForEntity(const Actor &actor, const Packet &packet, const Player *except)
@@ -91,6 +146,9 @@ void Dimension::sendPacketForEntity(const Actor &actor, const Packet &packet, co
     }
     const auto id = actor_id->unique_id;
     std::vector<NetworkIdentifierWithSubId> recipients;
+#ifdef ENDSTONE_VERIFY_PERF
+    std::vector<Player *> fast;
+#endif
     auto fallback = false;
     forEachPlayer([&](Player &player) {
         if (&player == except) {
@@ -106,6 +164,9 @@ void Dimension::sendPacketForEntity(const Actor &actor, const Packet &packet, co
         }
         if (const auto *user = player.tryGetComponent<UserEntityIdentifierComponent>()) {
             recipients.push_back({user->getNetworkId(), user->getSubClientId()});
+#ifdef ENDSTONE_VERIFY_PERF
+            fast.push_back(&player);
+#endif
         }
         return true;
     });
@@ -113,7 +174,27 @@ void Dimension::sendPacketForEntity(const Actor &actor, const Packet &packet, co
         ENDSTONE_HOOK_CALL_ORIGINAL(&Dimension::sendPacketForEntity, this, actor, packet, except);
         return;
     }
+#ifdef ENDSTONE_VERIFY_PERF
+    std::vector<Player *> vanilla;
+    forEachPlayer([&](Player &player) {
+        if (&player != except && player.tryGetComponent<UserEntityIdentifierComponent>() != nullptr &&
+            player.isActorRelevant(actor)) {
+            vanilla.push_back(&player);
+        }
+        return true;
+    });
+    ++send_packet_count.checks;
+    if (fast != vanilla && logDivergence(send_packet_count)) {
+        endstone::core::EndstoneServer::getInstance().getLogger().warning(
+            "[verify] Dimension::sendPacketForEntity diverged for actor {}: vanilla sends to {} players, the fast "
+            "path to {}, first difference at index {}",
+            id.raw_id, vanilla.size(), fast.size(), firstDifference(vanilla, fast));
+    }
+    reportVerify();
+    ENDSTONE_HOOK_CALL_ORIGINAL(&Dimension::sendPacketForEntity, this, actor, packet, except);
+#else
     getLevel().getPacketSender()->sendToClients(recipients, packet);
+#endif
 }
 
 void Dimension::forEachPlayer(brstd::function_ref<bool(Player &)> callback) const
@@ -125,6 +206,24 @@ void Dimension::forEachPlayer(brstd::function_ref<bool(Player &)> callback) cons
         ENDSTONE_HOOK_CALL_ORIGINAL(&Dimension::forEachPlayer, this, callback);
         return;
     }
+#ifdef ENDSTONE_VERIFY_PERF
+    std::vector<Player *> vanilla;
+    auto record = [&vanilla](Player &player) {
+        vanilla.push_back(&player);
+        return true;
+    };
+    ENDSTONE_HOOK_CALL_ORIGINAL(&Dimension::forEachPlayer, this, brstd::function_ref<bool(Player &)>(record));
+    const auto fast = snapshotPlayers(*users, getDimensionId());
+    ++for_each_player_count.checks;
+    if (fast != vanilla && logDivergence(for_each_player_count)) {
+        endstone::core::EndstoneServer::getInstance().getLogger().warning(
+            "[verify] Dimension::forEachPlayer diverged in dimension {}: vanilla visited {} players, the snapshot {}, "
+            "first difference at index {}",
+            getDimensionId().value, vanilla.size(), fast.size(), firstDifference(vanilla, fast));
+    }
+    reportVerify();
+    ENDSTONE_HOOK_CALL_ORIGINAL(&Dimension::forEachPlayer, this, callback);
+#else
     const auto id = getDimensionId();
     ++snapshot.depth;
     const auto leave = gsl::finally([] { --snapshot.depth; });
@@ -134,6 +233,7 @@ void Dimension::forEachPlayer(brstd::function_ref<bool(Player &)> callback) cons
             break;
         }
     }
+#endif
 }
 
 int Level::getActivePlayerCount() const
@@ -142,5 +242,18 @@ int Level::getActivePlayerCount() const
     if (!users) {
         return ENDSTONE_HOOK_CALL_ORIGINAL(&Level::getActivePlayerCount, this);
     }
+#ifdef ENDSTONE_VERIFY_PERF
+    const auto fast =
+        static_cast<int>(std::ranges::count_if(*users, [](auto &user) { return resolve(user, true) != nullptr; }));
+    const auto vanilla = ENDSTONE_HOOK_CALL_ORIGINAL(&Level::getActivePlayerCount, this);
+    ++active_player_count.checks;
+    if (fast != vanilla && logDivergence(active_player_count)) {
+        endstone::core::EndstoneServer::getInstance().getLogger().warning(
+            "[verify] Level::getActivePlayerCount diverged: vanilla {}, the snapshot {}", vanilla, fast);
+    }
+    reportVerify();
+    return vanilla;
+#else
     return static_cast<int>(std::ranges::count_if(*users, [](auto &user) { return resolve(user, true) != nullptr; }));
+#endif
 }

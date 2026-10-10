@@ -20,9 +20,21 @@
 #include "bedrock/world/level/dimension/chunk_build_order_policy.h"
 #include "endstone/runtime/hook.h"
 
+#ifdef ENDSTONE_VERIFY_PERF
+#include <chrono>
+#include <cstdint>
+
+#include "endstone/core/server.h"
+#endif
+
 namespace {
 thread_local bool processing_player_networking = false;
 std::vector<ChunkBuildOrderPolicy *> pending_influence_updates;
+#ifdef ENDSTONE_VERIFY_PERF
+std::uint64_t deferred_influence_updates = 0;
+std::uint64_t flushed_influence_updates = 0;
+auto last_influence_summary = std::chrono::steady_clock::now();
+#endif
 }  // namespace
 
 void PlayerTickManager::processPlayerNetworking(const Tick &current_tick)
@@ -36,6 +48,15 @@ void PlayerTickManager::processPlayerNetworking(const Tick &current_tick)
     for (auto *policy : pending_influence_updates) {
         policy->updateInfluences();
     }
+#ifdef ENDSTONE_VERIFY_PERF
+    flushed_influence_updates += pending_influence_updates.size();
+    if (const auto now = std::chrono::steady_clock::now(); now - last_influence_summary >= std::chrono::seconds(30)) {
+        last_influence_summary = now;
+        endstone::core::EndstoneServer::getInstance().getLogger().info(
+            "[verify] influences: deferred calls {}, flushed calls {}", deferred_influence_updates,
+            flushed_influence_updates);
+    }
+#endif
     pending_influence_updates.clear();
 }
 
@@ -45,6 +66,9 @@ void ChunkBuildOrderPolicy::updateInfluences()
         ENDSTONE_HOOK_CALL_ORIGINAL(&ChunkBuildOrderPolicy::updateInfluences, this);
         return;
     }
+#ifdef ENDSTONE_VERIFY_PERF
+    ++deferred_influence_updates;
+#endif
     if (std::ranges::find(pending_influence_updates, this) == pending_influence_updates.end()) {
         pending_influence_updates.push_back(this);
     }

@@ -31,6 +31,13 @@
 #include "endstone/event/player/player_portal_event.h"
 #include "endstone/runtime/hook.h"
 
+#ifdef ENDSTONE_VERIFY_PERF
+#include <algorithm>
+#include <chrono>
+#include <format>
+#include <string>
+#endif
+
 namespace {
 using ChunkQueue = std::unordered_map<ChunkPositionAndDimension, std::weak_ptr<LevelChunk>>;
 
@@ -47,6 +54,15 @@ struct ParkedChunk {
 
 using ParkedChunks = std::unordered_map<ChunkPositionAndDimension, ParkedChunk>;
 
+#ifdef ENDSTONE_VERIFY_PERF
+struct VerifyCandidate {
+    ChunkPositionAndDimension key;
+    std::int64_t distance;
+    bool parked;
+    bool ready;
+};
+#endif
+
 struct ParkedChunksComponent {
     ParkedChunksComponent() = default;
     ParkedChunksComponent(const ParkedChunksComponent &) = delete;
@@ -59,6 +75,9 @@ struct ParkedChunksComponent {
     ParkedChunks parked;
     std::unordered_set<ChunkPositionAndDimension> sendable;
     std::size_t loaded_cursor = 0;
+#ifdef ENDSTONE_VERIFY_PERF
+    std::vector<VerifyCandidate> verify_candidates;
+#endif
 };
 
 enum class QueueHashCheck {
@@ -132,6 +151,151 @@ void recheckAll(ParkedChunksComponent &component, ChunkQueue &queue, ChunkSource
         it = recheck(component, queue, source, it);
     }
 }
+
+#ifdef ENDSTONE_VERIFY_PERF
+#ifdef _WIN32
+constexpr std::size_t OWNED_BY_TICKING_THREAD_OFFSET = 0x10d2;
+#else
+constexpr std::size_t OWNED_BY_TICKING_THREAD_OFFSET = 0x110a;
+#endif
+
+struct VerifyStats {
+    std::uint64_t parked_checked = 0;
+    std::uint64_t missed_sends = 0;
+    std::uint64_t sends_checked = 0;
+    std::uint64_t tie_reorders = 0;
+    std::uint64_t order_divergences = 0;
+    std::uint64_t details = 0;
+    std::chrono::steady_clock::time_point last_summary = std::chrono::steady_clock::now();
+};
+VerifyStats verify_stats;
+
+// Same test as NetworkChunkPublisher::_sendQueuedChunk
+bool isVanillaSendable(ChunkSource &source, const ChunkPos &pos)
+{
+    const auto chunk = source.getExistingChunk(pos);
+    return chunk && *(reinterpret_cast<const std::uint8_t *>(chunk.get()) + OWNED_BY_TICKING_THREAD_OFFSET) == 1 &&
+           chunk->getState() == ChunkState::Loaded;
+}
+
+void verifyDetail(const std::string &message)
+{
+    if (verify_stats.details >= 50) {
+        return;
+    }
+    ++verify_stats.details;
+    endstone::core::EndstoneServer::getInstance().getLogger().warning("[verify] #{} {}", verify_stats.details,
+                                                                      message);
+}
+
+void verifySummary()
+{
+    const auto now = std::chrono::steady_clock::now();
+    if (now - verify_stats.last_summary < std::chrono::seconds(30)) {
+        return;
+    }
+    verify_stats.last_summary = now;
+    endstone::core::EndstoneServer::getInstance().getLogger().info(
+        "[verify] publisher: parked checked {}, missed sends {}, sends checked {}, equal-distance reorders {}, "
+        "order divergences {}",
+        verify_stats.parked_checked, verify_stats.missed_sends, verify_stats.sends_checked, verify_stats.tie_reorders,
+        verify_stats.order_divergences);
+}
+
+std::string describe(const std::vector<const VerifyCandidate *> &candidates)
+{
+    std::string out;
+    for (const auto *c : candidates) {
+        out += std::format("{}({}, {}) d2={}{}", out.empty() ? "" : ", ", c->key.pos.x, c->key.pos.z, c->distance,
+                           c->parked ? " parked" : "");
+    }
+    return out.empty() ? "nothing" : out;
+}
+
+// Runs right before vanilla's publish loop: what that loop would see without parking.
+void verifySnapshot(ServerPlayer &player, ParkedChunksComponent &component, const ChunkQueue &queue,
+                    ChunkSource &source, DimensionType dimension)
+{
+    const auto center = ChunkPos(component.publisher->last_chunk_update_position_);
+    auto distance = [&](const ChunkPos &pos) {
+        const auto dx = static_cast<std::int64_t>(pos.x) - center.x;
+        const auto dz = static_cast<std::int64_t>(pos.z) - center.z;
+        return dx * dx + dz * dz;
+    };
+    auto &candidates = component.verify_candidates;
+    candidates.clear();
+    for (const auto &[key, chunk] : queue) {
+        if (!chunk.expired() && key.type == dimension) {
+            candidates.push_back({key, distance(key.pos), false, isVanillaSendable(source, key.pos)});
+        }
+    }
+    for (const auto &[key, parked] : component.parked) {
+        if (parked.node.mapped().expired() || key.type != dimension) {
+            continue;
+        }
+        if (const auto it = queue.find(key); it != queue.end() && !it->second.expired()) {
+            continue;
+        }
+        ++verify_stats.parked_checked;
+        const auto ready = isVanillaSendable(source, key.pos);
+        if (ready) {
+            ++verify_stats.missed_sends;
+            verifyDetail(std::format("missed send: {} chunk ({}, {}) dim {} parked as {}", player.getName(), key.pos.x,
+                                     key.pos.z, key.type.value,
+                                     parked.state == QueuedChunkState::OutOfView ? "OutOfView" : "NotLoaded"));
+        }
+        candidates.push_back({key, distance(key.pos), true, ready});
+    }
+    std::ranges::stable_sort(candidates, {}, &VerifyCandidate::distance);
+}
+
+// Runs on the next call: queue entries gone since the snapshot are the ones vanilla's loop sent.
+void verifySends(ServerPlayer &player, ParkedChunksComponent &component, const ChunkQueue &queue)
+{
+    auto &candidates = component.verify_candidates;
+    std::vector<const VerifyCandidate *> sent;
+    for (const auto &c : candidates) {
+        if (!c.parked && !queue.contains(c.key)) {
+            sent.push_back(&c);
+        }
+    }
+    if (!sent.empty()) {
+        verify_stats.sends_checked += sent.size();
+        std::vector<const VerifyCandidate *> expected;
+        for (const auto &c : candidates) {
+            if (c.ready && expected.size() < sent.size()) {
+                expected.push_back(&c);
+            }
+        }
+        auto contains = [](const auto &list, const VerifyCandidate *c) {
+            return std::ranges::find(list, c) != list.end();
+        };
+        const auto same = expected.size() == sent.size() &&
+                          std::ranges::all_of(sent, [&](const auto *c) { return contains(expected, c); });
+        if (!same) {
+            auto tie = expected.size() == sent.size();
+            if (tie) {
+                const auto boundary = expected.back()->distance;
+                tie = std::ranges::all_of(sent,
+                                          [&](const auto *c) {
+                                              return contains(expected, c) || (c->ready && c->distance == boundary);
+                                          }) &&
+                      std::ranges::all_of(expected,
+                                          [&](const auto *c) { return contains(sent, c) || c->distance == boundary; });
+            }
+            if (tie) {
+                ++verify_stats.tie_reorders;
+            }
+            else {
+                ++verify_stats.order_divergences;
+                verifyDetail(std::format("send order: {} sent {} but vanilla would send {}", player.getName(),
+                                         describe(sent), describe(expected)));
+            }
+        }
+    }
+    candidates.clear();
+}
+#endif
 }  // namespace
 
 void ServerPlayer::_updateChunkPublisherView(const Vec3 &position, float min_distance)
@@ -178,6 +342,9 @@ void ServerPlayer::_updateChunkPublisherView(const Vec3 &position, float min_dis
                             loaded_chunks.begin() + static_cast<std::ptrdiff_t>(loaded_chunks_seen - loaded_chunks_begin));
         loaded_chunks_begin = loaded_chunks_seen;
         loaded_chunks_seen = loaded_chunks_begin + loaded_chunks.size();
+#ifdef ENDSTONE_VERIFY_PERF
+        verifySummary();
+#endif
     }
 
     auto &component = getEntity().getOrAddComponent<ParkedChunksComponent>();
@@ -186,6 +353,9 @@ void ServerPlayer::_updateChunkPublisherView(const Vec3 &position, float min_dis
         component.publisher = publisher;
         component.loaded_cursor = loaded_chunks_begin + loaded_chunks.size();
     }
+#ifdef ENDSTONE_VERIFY_PERF
+    verifySends(*this, component, queue);
+#endif
     if (component.source != source || previous_radius == 0) {
         for (auto it = component.parked.begin(); it != component.parked.end();) {
             it = unpark(component, queue, it);
@@ -236,6 +406,9 @@ void ServerPlayer::_updateChunkPublisherView(const Vec3 &position, float min_dis
             parked->second = ParkedChunk{std::move(node), state};
         }
     }
+#ifdef ENDSTONE_VERIFY_PERF
+    verifySnapshot(*this, component, queue, *source, dimension);
+#endif
 }
 
 void ServerPlayer::changeDimension(DimensionType to_id)
