@@ -14,12 +14,16 @@
 
 #include "bedrock/network/batched_network_peer.h"
 
+#include <array>
 #include <cstdint>
 #include <limits>
+#include <memory>
 #include <string>
+#include <unordered_map>
 
 #include <gsl/util>
 
+#include "bedrock/entity/weak_entity_ref.h"
 #include "bedrock/network/packet.h"
 #include "bedrock/network/packet/clientbound_map_item_data_packet.h"
 #include "bedrock/network/packet/resource_pack_stack_packet.h"
@@ -28,6 +32,7 @@
 #include "bedrock/network/raknet_connector.h"
 #include "bedrock/network/server_network_system.h"
 #include "bedrock/server/server_instance.h"
+#include "bedrock/server/server_player.h"
 #include "endstone/core/level/level.h"
 #include "endstone/core/map/map_view.h"
 #include "endstone/core/player.h"
@@ -151,6 +156,61 @@ bool isPatched(MinecraftPacketIds id)
     return id == MinecraftPacketIds::StartGame || id == MinecraftPacketIds::ResourcePacksInfo ||
            id == MinecraftPacketIds::ResourcePackStack || id == MinecraftPacketIds::MapData;
 }
+
+struct PeerInfo {
+    std::weak_ptr<BatchedNetworkPeer> peer;
+    NetworkIdentifier id;
+    std::array<WeakEntityRef, 4> players;
+};
+
+PeerInfo *getPeerInfo(const BatchedNetworkPeer &peer)
+{
+    static std::unordered_map<const BatchedNetworkPeer *, PeerInfo> peers;
+    if (const auto it = peers.find(&peer); it != peers.end() && !it->second.peer.expired()) {
+        return &it->second;
+    }
+
+    std::erase_if(peers, [](const auto &entry) { return entry.second.peer.expired(); });
+    const auto &server = endstone::core::EndstoneServer::getInstance();
+    for (const auto &connection : server.getServer().getNetwork().getConnections()) {
+        if (connection->batched_peer.lock().get() == &peer) {
+            return &peers.insert_or_assign(&peer, PeerInfo{.peer = connection->batched_peer, .id = connection->id})
+                        .first->second;
+        }
+    }
+    return nullptr;
+}
+
+const NetworkIdentifier &getId(const PeerInfo *info)
+{
+    static const NetworkIdentifier invalid = [] {
+        NetworkIdentifier id{};
+        id.type = NetworkIdentifier::Type::Invalid;
+        return id;
+    }();
+    return info ? info->id : invalid;
+}
+
+ServerPlayer *getServerPlayer(PeerInfo *info, SubClientId sub_id)
+{
+    if (!info) {
+        return nullptr;
+    }
+
+    const auto index = static_cast<std::size_t>(sub_id);
+    if (index < info->players.size()) {
+        if (auto *player = info->players[index].tryUnwrap<::Player>()) {
+            return static_cast<ServerPlayer *>(player);
+        }
+    }
+
+    const auto &server = endstone::core::EndstoneServer::getInstance();
+    auto *player = server.getServer().getMinecraft()->getServerNetworkHandler()->getServerPlayer(info->id, sub_id);
+    if (player && index < info->players.size()) {
+        info->players[index] = player->getWeakEntity();
+    }
+    return player;
+}
 }  // namespace
 
 void BatchedNetworkPeer::sendPacket(const std::string &data, Reliability reliability, Compressibility compressible)
@@ -181,11 +241,11 @@ void BatchedNetworkPeer::sendPacket(const std::string &data, Reliability reliabi
 
     // Parse packet header
     auto header = PacketHeader::fromRaw(result.value());
-    const auto &id = getId();
+    auto *info = getPeerInfo(*this);
+    const auto &id = getId(info);
 
     // Get player object - if exists
-    const auto *server_player =
-        server.getServer().getMinecraft()->getServerNetworkHandler()->getServerPlayer(id, header.getRecipientSubId());
+    const auto *server_player = getServerPlayer(info, header.getRecipientSubId());
     endstone::Player *player = nullptr;
     if (server_player) {
         player = &server_player->getEndstoneActor<endstone::core::EndstonePlayer>();
@@ -255,7 +315,6 @@ NetworkPeer::DataStatus BatchedNetworkPeer::_receivePacket(std::string &out_data
         return ENDSTONE_HOOK_CALL_ORIGINAL(&BatchedNetworkPeer::_receivePacket, this, out_data, timepoint_ptr);
     }
 
-    auto network_handler = server.getServer().getMinecraft()->getServerNetworkHandler();
     while (true) {
         const auto status =
             ENDSTONE_HOOK_CALL_ORIGINAL(&BatchedNetworkPeer::_receivePacket, this, out_data, timepoint_ptr);
@@ -271,9 +330,10 @@ NetworkPeer::DataStatus BatchedNetworkPeer::_receivePacket(std::string &out_data
 
         const auto header = PacketHeader::fromRaw(result.value());
 
-        const auto &id = getId();
+        auto *info = getPeerInfo(*this);
+        const auto &id = getId(info);
         endstone::core::EndstonePlayer *player = nullptr;
-        if (const auto *p = network_handler->getServerPlayer(id, header.getSenderSubId())) {
+        if (const auto *p = getServerPlayer(info, header.getSenderSubId())) {
             player = &p->getEndstoneActor<endstone::core::EndstonePlayer>();
         }
 
@@ -296,24 +356,4 @@ NetworkPeer::DataStatus BatchedNetworkPeer::_receivePacket(std::string &out_data
         out_data.append(e.getPayload().data(), e.getPayload().size());
         return status;
     }
-}
-
-const NetworkIdentifier &BatchedNetworkPeer::getId() const
-{
-    // The innermost peer is transport-specific, so find the connection we belong to instead.
-    static const NetworkIdentifier invalid = [] {
-        NetworkIdentifier id{};
-        id.type = NetworkIdentifier::Type::Invalid;
-        return id;
-    }();
-
-    const auto &server = endstone::core::EndstoneServer::getInstance();
-    for (const auto &connection : server.getServer().getNetwork().getConnections()) {
-        for (const auto *peer = connection->peer.get(); peer != nullptr; peer = peer->peer_.get()) {
-            if (peer == this) {
-                return connection->id;
-            }
-        }
-    }
-    return invalid;
 }

@@ -29,7 +29,4 @@ public:
 protected:
     ENDSTONE_HOOK DataStatus _receivePacket(std::string &out_data,
                                             const PacketRecvTimepointPtr &timepoint_ptr) override;
-
-private:
-    [[nodiscard]] const NetworkIdentifier &getId() const;  // Endstone
 };
