@@ -482,25 +482,15 @@ rip_relative = true
 rip_offset = 1
 
 [[signatures]]
-name = "LevelChunk::tickImpl::lightning_seed_store"
-relative = false
-extra = 6
-# 1. find the LCG step constant 5F F3 6E 3C (add ecx, imm32) inside LevelChunk::tickImpl; the function steps one global
-#    32-bit seed (x = 3x + 0x3C6EF35F) at exactly three sites: lightning, the weather column and the random-tick loop
-# 2. take the lightning site: add ecx,0x3C6EF35F; xchg [rip+X],ecx; mov ecx,[rip+X], reached only when nextInt(100000) == 0
-# 3. confirm the xchg (87) stores to the same rip-relative global that the very next mov reloads, so the old value
-#    it returns is discarded
-pattern = "81 C1 5F F3 6E 3C 87 0D ? ? ? ? 8B 0D ? ? ? ? 89 CA"
-
-[[signatures]]
 name = "LevelChunk::tickImpl::random_tick_seed_store"
 relative = false
 extra = 5
-# 1. find the LCG step constant 5F F3 6E 3C (add eax, imm32) inside LevelChunk::tickImpl; the function steps one global
-#    32-bit seed (x = 3x + 0x3C6EF35F) at exactly three sites: lightning, the weather column and the random-tick loop
-# 2. take the random-tick site: add eax,0x3C6EF35F; xchg [rip+X],eax; mov eax,[rip+X]; sar eax,2, inside the sample loop
-# 3. confirm the xchg (87) stores to the same rip-relative global that the very next mov reloads, so the old value
-#    it returns is discarded
+# 1. find the LCG step constant 5F F3 6E 3C (add eax, imm32) inside LevelChunk::tickImpl; the function steps
+#    one global 32-bit seed (x = 3x + 0x3C6EF35F) at two sites, lightning and the random-tick sample loop
+#    (the weather column's xchg writes a per-chunk field instead)
+# 2. take the random-tick site: add eax,0x3C6EF35F; xchg [rip+X],eax; then the reload of the same global
+# 3. confirm the xchg (87) stores to the same rip-relative global that the very next mov reloads, so the old
+#    value it returns is discarded
 pattern = "05 5F F3 6E 3C 87 05 ? ? ? ? 8B 05 ? ? ? ? C1 F8 02"
 
 [[signatures]]

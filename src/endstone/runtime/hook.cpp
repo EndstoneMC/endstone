@@ -172,7 +172,6 @@ void install()
     // Only the server thread writes the random-tick seed and the next instruction reloads it, so a plain mov replaces
     // the locked xchg.
     static constexpr std::array unlocked_stores = {
-        std::string_view{"LevelChunk::tickImpl::lightning_seed_store"},
         std::string_view{"LevelChunk::tickImpl::random_tick_seed_store"},
     };
     for (const auto name : unlocked_stores) {
