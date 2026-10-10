@@ -42,6 +42,7 @@
 #include "bedrock/world/inventory/transaction/inventory_transaction_manager.h"
 #include "bedrock/world/item/item_group.h"
 #include "bedrock/world/level/game_type.h"
+#include "bedrock/world/level/levelgen/structure/structure_feature_type.h"
 #include "bedrock/world/player_ui_container.h"
 
 class PlayerRespawnRandomizer;

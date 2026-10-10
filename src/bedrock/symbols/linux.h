@@ -11,7 +11,7 @@
 
 namespace endstone::runtime {
 
-static constexpr std::array<std::pair<std::string_view, std::size_t>, 71> symbols = {{
+static constexpr std::array<std::pair<std::string_view, std::size_t>, 74> symbols = {{
     {"BlockState::StateListNode::mHead", 257928656},
     {"Enchant::mEnchants", 257765312},
     {"getI18n::result", 256811320},
@@ -56,6 +56,9 @@ static constexpr std::array<std::pair<std::string_view, std::size_t>, 71> symbol
     {"DBChunkStorage::_hasChunk::cache_cap", 219434551},
     // DedicatedServer
     {"_ZN15DedicatedServer5startERKNSt3__112basic_stringIcNS0_11char_traitsIcEENS0_9allocatorIcEEEERKN7Bedrock19ActivationArgumentsE", 75250608},
+    // Dimension
+    {"_ZNK9Dimension13forEachPlayerEN5brstd12function_refIFbR6PlayerES4_EE", 211178112},
+    {"_ZN9Dimension19sendPacketForEntityERK5ActorRK6PacketPK6Player", 211196912},
     // Explosion
     {"_ZN9Explosion7explodeER7IRandom", 210160320},
     // FurnaceBlockActor
@@ -74,6 +77,7 @@ static constexpr std::array<std::pair<std::string_view, std::size_t>, 71> symbol
     // LeavesBlock
     {"_ZN11LeavesBlock10randomTickERN11BlockEvents20BlockRandomTickEventE", 207061616},
     // Level
+    {"_ZNK5Level20getActivePlayerCountEv", 210367168},
     {"_ZN5Level4tickEv", 210335488},
     // LevelChunk
     {"LevelChunk::tickImpl::random_tick_seed_store", 211703565},

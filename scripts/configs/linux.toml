@@ -33,6 +33,33 @@ extra = 9
 pattern = "49 81 BE ? ? ? ? 2F 75 00 00"
 
 [[signatures]]
+name = "_ZN9Dimension19sendPacketForEntityERK5ActorRK6PacketPK6Player"
+relative = false
+extra = 0
+# 1. locate the Dimension vtable (see Dimension::forEachPlayer); sendPacketForEntity is slot 5 (+0x28)
+# 2. confirm the body: clears the vector at this+0x3e8, passes a function_ref to this vtable +0x58 (forEachPlayer),
+#    then calls the level's (this+0xa0) vtable +0xa48 (getPacketSender) and that vtable +0x40 (sendToClients)
+# 3. confirm vs the old named DB
+# function prologue
+pattern = "41 57 41 56 53 48 83 EC 30 48 89 D3 49 89 FE 48 89 4C 24 08 4C 8D BF E8 03 00 00"
+
+[[signatures]]
+name = "_ZNK9Dimension13forEachPlayerEN5brstd12function_refIFbR6PlayerES4_EE"
+relative = false
+extra = -331
+# 1. find bytes "31 38 4F 76 65 72 77 6F 72 6C 64 44 69 6D 65 6E 73 69 6F 6E 00" = "18OverworldDimension\0" (the RTTI
+#    name); the R_X86_64_RELATIVE reloc whose addend is that string is type_info+8, and the reloc whose addend is
+#    that type_info is the vtable's type_info slot - the address point is the next qword
+# 2. forEachPlayer is slot 11 (+0x58), shared by every Dimension vtable
+# 3. confirm by its body: reads the level from this+0xa0, calls its vtable +0xa28 (getActiveUsers), steps 0x18-byte
+#    weak refs with the lock inlined, calls Player::tryGetFromEntity(ctx, false) (`xor esi, esi`) and inlines the
+#    DimensionTypeComponent lookup (0xaf993816) before calling the function_ref
+# 4. a near-identical function follows it, so the pattern anchors on the tryGetFromEntity call and the
+#    DimensionTypeComponent lookup, 0x14b bytes into the function
+# 5. confirm vs the old named DB
+pattern = "4C 89 E7 31 F6 E8 ? ? ? ? 48 85 C0 0F 84 ? ? ? ? 48 8B 50 10 8B 48 18 48 8B 72 38 48 8B 7A 40"
+
+[[signatures]]
 name = "Enchant::mEnchants"
 relative = false
 extra = 0
@@ -46,6 +73,18 @@ extra = 0
 pattern = "48 8B 1D ? ? ? ? 4C 8B 3D ? ? ? ? 4D 89 FE"
 rip_relative = true
 rip_offset = 10
+
+[[signatures]]
+name = "_ZNK5Level20getActivePlayerCountEv"
+relative = false
+extra = 0
+# 1. find bytes "31 31 53 65 72 76 65 72 4C 65 76 65 6C 00" = "11ServerLevel\0" (the RTTI name) and walk to its vtable as
+#    for Dimension::forEachPlayer; getActivePlayerCount is slot 221 (+0x6e8)
+# 2. confirm the body: loads the GameplayUserManager from this+0x418 and calls its forEachActivePlayer variant that
+#    passes include_removed = true (`mov esi, 1` before Player::tryGetFromEntity) with a counting std::function
+# 3. confirm vs the old named DB
+# function prologue
+pattern = "41 56 53 48 83 EC 48 48 8B BF 18 04 00 00 48 C7 44 24 08 00 00 00 00 48 8D 05 ? ? ? ? 48 89 44 24 10"
 
 [[signatures]]
 name = "getI18n::result"

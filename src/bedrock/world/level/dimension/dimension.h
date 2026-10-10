@@ -22,6 +22,7 @@
 #include "bedrock/forward.h"
 #include "bedrock/gamerefs/owner_ptr.h"
 #include "bedrock/network/packet.h"
+#include "bedrock/platform/brstd/function_ref.h"
 #include "bedrock/platform/brstd/move_only_function.h"
 #include "bedrock/world/actor/actor_unique_id.h"
 #include "bedrock/world/level/biome/registry/biome_registry.h"
@@ -54,7 +55,7 @@ public:
     virtual BiomeRegistry &getBiomeRegistry() = 0;
     [[nodiscard]] virtual BiomeRegistry const &getBiomeRegistry() const = 0;
     virtual Vec3 translatePosAcrossDimension(Vec3 const &, DimensionType) = 0;
-    virtual void forEachPlayer(std::function<bool(Player &)>) = 0;
+    virtual void forEachPlayer(brstd::function_ref<bool(Player &)>) const = 0;
     virtual Actor *fetchEntity(ActorUniqueID, bool) = 0;
     [[nodiscard]] virtual BlockSource &getBlockSourceFromMainChunkSource() const = 0;
     virtual void buildPlayersForPositionPacket(const BlockPos &, const Player *,
@@ -70,6 +71,9 @@ class Dimension : public IDimension,
                   public std::enable_shared_from_this<Dimension> {
 public:
     Dimension(ILevel &, DimensionType, DimensionHeightRange, Scheduler &, std::string);
+    ~Dimension() override;
+    ENDSTONE_HOOK void sendPacketForEntity(const Actor &actor, const Packet &packet, const Player *except) override;
+    ENDSTONE_HOOK void forEachPlayer(brstd::function_ref<bool(Player &)> callback) const override;
 
     virtual void init(const br::worldgen::StructureSetRegistry &) = 0;
     virtual void tick() = 0;

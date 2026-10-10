@@ -313,7 +313,6 @@ enum class PlatformType : int;
 enum class PlayerSleepStatus;
 enum class RedstoneLogicExecutionFlags : std::uint8_t;
 enum class ShowStoreOfferRedirectType : unsigned char;
-enum class StructureFeatureType;
 
 // Nested Classes and Namespaces
 class BlockSourceVisitor {

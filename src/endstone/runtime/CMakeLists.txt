@@ -14,6 +14,7 @@ add_library(endstone_runtime SHARED
         bedrock_hooks/circuit_scene_graph.cpp
         bedrock_hooks/console_input_reader.cpp
         bedrock_hooks/dedicated_server.cpp
+        bedrock_hooks/dimension.cpp
         bedrock_hooks/explosion.cpp
         bedrock_hooks/fire_block.cpp
         bedrock_hooks/inventory_transaction.cpp

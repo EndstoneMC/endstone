@@ -26,6 +26,7 @@ public:
     ENDSTONE_HOOK void tick() override;
     // ENDSTONE_HOOK void onChunkDiscarded(LevelChunk &);
     // ENDSTONE_HOOK void onChunkLoaded(ChunkSource &, LevelChunk &);
+    [[nodiscard]] ENDSTONE_HOOK int getActivePlayerCount() const override;
 
     virtual ArmorTrimUnloader *getArmorTrimUnloader() = 0;
     [[nodiscard]] virtual const PlayerSleepManager &getPlayerSleepManager() const = 0;

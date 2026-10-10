@@ -41,6 +41,34 @@ extra = 9
 pattern = "49 81 BD ? ? ? ? 30 75 00 00 0F 82"
 
 [[signatures]]
+name = "?forEachPlayer@Dimension@@UEBAXV?$function_ref@$$A6A_NAEAVPlayer@@@Z$$A6A_N0@Z@brstd@@@Z"
+relative = false
+extra = 0
+# 1. find bytes "48 8B 80 20 0A 00 00 FF 15" (load of Level vtable +0xa20, getActiveUsers, then a CFG call); the
+#    candidates are getActiveUsers' callers
+# 2. pick the ~0xcd one that reads the level from this+0xc0, steps a vector of 0x18-byte weak refs, calls
+#    StackResultStorageEntity's ctor, Player::tryGetFromEntity(ctx, false) and Actor::getDimensionId, compares the
+#    result with this+0x1a0 and calls the function_ref ([rsi] with [rsi+8]), stopping when it returns false
+# 3. confirm it is slot 10 (+0x50) of every Dimension vtable and has no direct callers
+# 4. confirm vs the old named DB
+# function prologue
+pattern = "41 57 41 56 41 54 56 57 53 48 83 EC 48 48 89 D6 48 89 CF 48 8B 05 ? ? ? ? 48 31 E0 48 89 44 24 40 48 8B 89 C0 00 00 00 48 8B 01"
+
+[[signatures]]
+name = "?sendPacketForEntity@Dimension@@UEAAXAEBVActor@@AEBVPacket@@PEBVPlayer@@@Z"
+relative = false
+extra = 0
+# 1. locate Dimension::forEachPlayer (see its entry); sendPacketForEntity is slot 4 (+0x20) of the same vtables
+# 2. confirm the ~0xd2 body: clears the vector at this+0x3f0, passes a function_ref to this vtable +0x50
+#    (forEachPlayer), then calls the level's (this+0xc0) vtable +0xa40 (getPacketSender) and that vtable +0x38
+#    (sendToClients) with the vector
+# 3. the lambda it passes skips the excluded player and players without a UserEntityIdentifierComponent, then
+#    asks this vtable +0x118 (isActorRelevantForPlayer) before appending the player's network id
+# 4. confirm vs the old named DB
+# function prologue
+pattern = "56 57 53 48 83 EC 60 4C 89 C6 48 89 CB 48 8B 05 ? ? ? ? 48 31 E0"
+
+[[signatures]]
 name = "Enchant::mEnchants"
 relative = false
 extra = 0
@@ -125,6 +153,20 @@ extra = 0
 #    index against the old named DB
 # function prologue
 pattern = "41 56 56 57 53 48 81 EC ? ? ? ? 48 89 D7 48 89 CE 48 8B 91"
+
+[[signatures]]
+name = "?getActivePlayerCount@Level@@UEBAHXZ"
+relative = false
+extra = 0
+# 1. find GameplayUserManager::_forEachActivePlayer: the ~0x11a function that walks [this+8, this+0x10) in 0x18-byte
+#    weak refs, calls StackResultStorageEntity's ctor and Player::tryGetFromEntity(ctx, r8b), then the std::function's
+#    _Do_call (impl vtable +0x10) until it returns false, and destroys the std::function at the end
+# 2. getActivePlayerCount is the ~0x45 caller that loads the GameplayUserManager from this+0x458, passes a
+#    std::function whose _Do_call is `inc qword [rcx+8]; mov al, 1` with r8b = 1, and returns the low dword of the count
+# 3. confirm it is Level vtable slot +0x6e0, right before getActiveUsersCount
+# 4. confirm vs the old named DB
+# function prologue
+pattern = "48 83 EC 68 48 8B 89 58 04 00 00 48 C7 44 24 20 00 00 00 00 48 8D 05 ? ? ? ? 48 89 44 24 28"
 
 [[signatures]]
 name = "?_log_va@LogDetails@BedrockLog@@AEAAXW4LogAreaID@@IPEBDHH1PEAD@Z"
