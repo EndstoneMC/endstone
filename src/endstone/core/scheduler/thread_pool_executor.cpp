@@ -15,47 +15,52 @@
 #include "endstone/core/scheduler/thread_pool_executor.h"
 
 #include <algorithm>
-#include <chrono>
 
 namespace endstone::core {
 
-ThreadPoolExecutor::ThreadPoolExecutor(size_t thread_count) : done(false)
-{
-    thread_count = std::max<std::size_t>(thread_count, 1);
-    for (size_t i = 0; i < thread_count; ++i) {
-        threads.emplace_back(&ThreadPoolExecutor::worker, this);
-    }
-}
+ThreadPoolExecutor::ThreadPoolExecutor(size_t max_threads) : max_threads_(std::max<std::size_t>(max_threads, 1)) {}
 
 ThreadPoolExecutor::~ThreadPoolExecutor()
 {
-    done = true;
-    condition.notify_all();
-    for (auto &thread : threads) {
+    {
+        std::lock_guard lock{mutex_};
+        done_ = true;
+    }
+    condition_.notify_all();
+    for (auto &thread : threads_) {
         if (thread.joinable()) {
             thread.join();
         }
     }
 }
 
+void ThreadPoolExecutor::enqueue(std::function<void()> task)
+{
+    std::lock_guard lock{mutex_};
+    tasks_.push(std::move(task));
+    if (!done_ && tasks_.size() > idle_ && threads_.size() < max_threads_) {
+        threads_.emplace_back(&ThreadPoolExecutor::worker, this);
+    }
+    condition_.notify_one();
+}
+
 void ThreadPoolExecutor::worker()
 {
-    while (!done) {
-        std::function<void()> task;
-        if (tasks.try_dequeue(task)) {
-            task();
-            task = {};
+    std::unique_lock lock{mutex_};
+    while (true) {
+        ++idle_;
+        condition_.wait(lock, [this] { return done_ || !tasks_.empty(); });
+        --idle_;
+        if (tasks_.empty()) {
+            return;
         }
-        else {
-            std::unique_lock<std::mutex> lock(mutex);
-            condition.wait_for(lock, std::chrono::milliseconds(10));
-        }
-    }
 
-    // Process remaining tasks
-    std::function<void()> task;
-    while (tasks.try_dequeue(task)) {
+        auto task = std::move(tasks_.front());
+        tasks_.pop();
+        lock.unlock();
         task();
+        task = {};
+        lock.lock();
     }
 }
 }  // namespace endstone::core
