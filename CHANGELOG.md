@@ -28,6 +28,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Fixed MSPT leaving out network and other work outside the level tick, and rounding to whole milliseconds.
 - Fixed the hidden DevTools window using CPU on Windows.
 - Fixed `/status` freezing the server for a moment on Windows.
+- Fixed the scheduler's idle threads using CPU.
 
 ## [0.11.13] - 2026-10-06
 
