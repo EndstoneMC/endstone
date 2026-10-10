@@ -23,6 +23,9 @@ class EndstoneRecipe(ConanFile):
         "fPIC": True,
         "boost/*:header_only": True,
         "date/*:header_only": True,
+        "mimalloc/*:shared": True,
+        "mimalloc/*:override": True,
+        "mimalloc/*:inject": True,
         "raknet/*:minecraft_version": "r26u3",
         "spdlog/*:use_std_fmt": True,
     }
@@ -74,6 +77,7 @@ class EndstoneRecipe(ConanFile):
             self.requires("detours/cci.20220630")
         elif self.settings.os == "Linux":
             self.requires("libelf/0.8.13")
+            self.requires("mimalloc/3.5.1")
 
         if self._with_devtools:
             self.requires("glfw/3.4")
@@ -108,6 +112,9 @@ class EndstoneRecipe(ConanFile):
             tc.variables["ENDSTONE_ENABLE_DEVTOOLS"] = True
         sentry_bin = os.path.join(self.dependencies["sentry-native"].package_folder, "bin")
         tc.variables["SENTRY_NATIVE_BIN_DIR"] = sentry_bin.replace("\\", "/")
+        if self.settings.os == "Linux":
+            mimalloc_lib = os.path.join(self.dependencies["mimalloc"].package_folder, "lib", "libmimalloc.so")
+            tc.variables["MIMALLOC_LIBRARY"] = os.path.realpath(mimalloc_lib)
         tc.generate()
 
     def build(self):
