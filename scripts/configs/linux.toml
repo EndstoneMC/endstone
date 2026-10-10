@@ -535,6 +535,29 @@ extra = 0
 pattern = "55 41 57 41 56 41 55 41 54 53 48 81 EC ? ? ? ? 89 CD 48 89 D3 49 89 F6 49 89 FF 48 8D 7C 24 ?"
 
 [[signatures]]
+name = "_ZN28OverworldGeneratorMultinoise21chunkPosNeedsBlendingERK8ChunkPos"
+relative = false
+extra = 0
+# 1. find bytes "32 38 4F 76 65 72 77 6F 72 6C 64 47 65 6E 65 72 61 74 6F 72 4D 75 6C 74 69 6E 6F 69 73 65 00" =
+#    "28OverworldGeneratorMultinoise\0" (the RTTI name, unique); the R_X86_64_RELATIVE reloc whose addend is that
+#    string is type_info+8, and the reloc whose addend is that type_info is the vtable's type_info slot - the address
+#    point is the next qword
+# 2. chunkPosNeedsBlending is the slot right after canLaunchTasks (slot 39 in 1.26.52); _clearBlendingCache is the
+#    next slot
+# 3. confirm by its body: loads the blender factory from this+0xca8, calls the factory's get-or-create with the
+#    ChunkPos, releases the returned shared_ptr and returns (ptr != nullptr)
+pattern = "41 56 53 48 83 EC 18 48 89 F2 48 8B B7 ? ? ? ? 48 8D 7C 24 08 E8 ? ? ? ? 4C 8B 74 24 08"
+
+[[signatures]]
+name = "_ZN28OverworldGeneratorMultinoise19_clearBlendingCacheEv"
+relative = false
+extra = 0
+# 1. the slot after chunkPosNeedsBlending in the OverworldGeneratorMultinoise vtable (see above)
+# 2. confirm by its body: a two-instruction thunk that loads the blender factory from this+0xca8 into rdi and jmps
+#    to the factory's cache-free function, which has no other caller
+pattern = "48 8B BF A8 0C 00 00 E9"
+
+[[signatures]]
 name = "_ZN16PistonBlockActor4tickER11BlockSource"
 relative = false
 extra = 0

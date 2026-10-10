@@ -80,6 +80,9 @@ public:
     virtual bool canLaunchTasks() const = 0;
     virtual bool chunkPosNeedsBlending(const ChunkPos &) = 0;
 
+protected:
+    virtual void _clearBlendingCache();
+
 private:
     int chunk_side_;
     Level *level_;

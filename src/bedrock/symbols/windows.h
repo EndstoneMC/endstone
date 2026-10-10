@@ -11,7 +11,7 @@
 
 namespace endstone::runtime {
 
-static constexpr std::array<std::pair<std::string_view, std::size_t>, 68> symbols = {{
+static constexpr std::array<std::pair<std::string_view, std::size_t>, 70> symbols = {{
     {"BlockState::StateListNode::mHead", 215092208},
     {"Enchant::mEnchants", 214656904},
     // Actor
@@ -91,6 +91,9 @@ static constexpr std::array<std::pair<std::string_view, std::size_t>, 68> symbol
     {"?createTransportInterface@TransportFactoryImpl@NetherNet@@QEAAPEAVINetherNetTransportInterface@2@AEBUNetworkID@2@AEBUTransportConfiguration@2@PEAVINetherNetTransportInterfaceCallbacks@2@@Z", 118686800},
     // NetworkSystem
     {"?send@NetworkSystem@@QEAAXAEBVNetworkIdentifier@@AEBVPacket@@W4SubClientId@@@Z", 9687248},
+    // OverworldGeneratorMultinoise
+    {"?chunkPosNeedsBlending@OverworldGeneratorMultinoise@@UEAA_NAEBVChunkPos@@@Z", 136582160},
+    {"?_clearBlendingCache@OverworldGeneratorMultinoise@@EEAAXXZ", 136497392},
     // PistonBlockActor
     {"?tick@PistonBlockActor@@UEAAXAEAVBlockSource@@@Z", 75967552},
     // Player

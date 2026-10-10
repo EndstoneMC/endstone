@@ -599,6 +599,27 @@ rip_relative = true
 rip_offset = 17
 
 [[signatures]]
+name = "?chunkPosNeedsBlending@OverworldGeneratorMultinoise@@UEAA_NAEBVChunkPos@@@Z"
+relative = false
+extra = 0
+# 1. find bytes "48 8B 89 60 0D 00 00 E9" (mov rcx,[rcx+0xd60]; jmp), the _clearBlendingCache thunk below; its lone
+#    data xref is a slot of the OverworldGeneratorMultinoise vtable
+# 2. chunkPosNeedsBlending is the slot just before it, right after canLaunchTasks (slot 38 in 1.26.52)
+# 3. confirm by its body: loads the blender factory from this+0xd60, calls the factory's get-or-create with the
+#    ChunkPos, releases the returned shared_ptr and returns (ptr != nullptr)
+pattern = "56 57 48 83 EC 38 49 89 D0 48 8B 05 ? ? ? ? 48 31 E0 48 89 44 24 30 48 8B 89 ? ? ? ? 48 8D 54 24 20 E8 ? ? ? ? 48 8B 7C 24 20"
+
+[[signatures]]
+name = "?_clearBlendingCache@OverworldGeneratorMultinoise@@EEAAXXZ"
+relative = false
+extra = 0
+# 1. find bytes "48 8B 89 60 0D 00 00 E9" (unique); it is the slot after chunkPosNeedsBlending in the
+#    OverworldGeneratorMultinoise vtable
+# 2. confirm by its body: a two-instruction thunk that loads the blender factory from this+0xd60 into rcx and jmps
+#    to the factory's cache-free function, which has no other caller
+pattern = "48 8B 89 60 0D 00 00 E9"
+
+[[signatures]]
 name = "?tick@PistonBlockActor@@UEAAXAEAVBlockSource@@@Z"
 relative = false
 extra = 0
