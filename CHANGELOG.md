@@ -14,6 +14,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Changed
 
 - Improved the performance of sending and receiving packets when no plugin listens for `PacketSendEvent` or `PacketReceiveEvent`.
+- Improved the performance of `PacketSendEvent` and `PacketReceiveEvent` on servers with many players.
 - Dropped Python 3.10 support (end-of-life). Minimum version is now Python 3.11.
 
 ### Fixed
