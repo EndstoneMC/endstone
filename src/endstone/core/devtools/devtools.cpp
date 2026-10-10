@@ -219,6 +219,11 @@ void render()
     gFileBrowser->SetPwd(data_dir);
 
     while (!glfwWindowShouldClose(gWindow)) {
+        if (!glfwGetWindowAttrib(gWindow, GLFW_VISIBLE)) {
+            glfwWaitEvents();
+            continue;
+        }
+
         // Poll and handle events (inputs, window resize, etc.)
         glfwPollEvents();
 
@@ -419,6 +424,7 @@ void show()
 {
     if (gWindow) {
         glfwShowWindow(gWindow);
+        glfwPostEmptyEvent();
     }
     else {
         gLogger.error("DevTools is currently unavailable.");

@@ -26,6 +26,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Fixed `PacketSendEvent` reporting the wrong player and sub-client ID for packets sent to a split-screen player.
 - Fixed `PacketReceiveEvent` reporting the wrong player and sub-client ID for packets sent by a split-screen player.
 - Fixed MSPT leaving out network and other work outside the level tick, and rounding to whole milliseconds.
+- Fixed the hidden DevTools window using CPU on Windows.
 
 ## [0.11.13] - 2026-10-06
 
