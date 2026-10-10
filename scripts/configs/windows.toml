@@ -182,6 +182,28 @@ extra = 0
 pattern = "48 83 EC 68 48 8B 89 58 04 00 00 48 C7 44 24 20 00 00 00 00 48 8D 05 ? ? ? ? 48 89 44 24 28"
 
 [[signatures]]
+name = "?tickImpl@LevelChunk@@AEAAXAEAVBlockSource@@AEBUTick@@V?$function@$$A6AXXZ@std@@@Z"
+relative = false
+extra = 0
+# 1. find the LCG step constant 5F F3 6E 3C (add reg, imm32); the only function holding it is LevelChunk::tickImpl
+# 2. take the start of that function from .pdata
+# 3. confirm the prologue tests mReadOnly (cmp byte [rcx+0x82], 0) and then try-locks the block-entity mutex
+# 4. confirm the std::function argument (r9) is invoked through its impl vtable +0x10 right after the
+#    Level::isClientSide check (Level vtable +0x9e8) - that is the spawner callback
+# function prologue
+pattern = "55 41 57 41 56 41 55 41 54 56 57 53 48 81 EC ? ? ? ? 48 8D AC 24 ? ? ? ? 44 0F 29 8D ? ? ? ? 44 0F 29 85 ? ? ? ? 0F 29 BD ? ? ? ? 0F 29 B5 ? ? ? ? 48 C7 85 ? ? ? ? FE FF FF FF 4C 89 CE 4C 89 45 ? 80 B9 82 00 00 00 00 0F 85"
+
+[[signatures]]
+name = "LevelChunk::tickImpl::seed"
+relative = false
+extra = 0
+# 1. locate LevelChunk::tickImpl::random_tick_seed_store (see that entry)
+# 2. the mov right after its xchg reloads the seed global; resolve that rip-relative load
+pattern = "05 5F F3 6E 3C 87 05 ? ? ? ? 8B 05 ? ? ? ? C1 F8 02"
+rip_relative = true
+rip_offset = 13
+
+[[signatures]]
 name = "?_log_va@LogDetails@BedrockLog@@AEAAXW4LogAreaID@@IPEBDHH1PEAD@Z"
 relative = false
 extra = 0

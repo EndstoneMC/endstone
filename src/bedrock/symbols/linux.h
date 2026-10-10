@@ -11,7 +11,7 @@
 
 namespace endstone::runtime {
 
-static constexpr std::array<std::pair<std::string_view, std::size_t>, 81> symbols = {{
+static constexpr std::array<std::pair<std::string_view, std::size_t>, 83> symbols = {{
     {"BlockState::StateListNode::mHead", 257928656},
     {"Enchant::mEnchants", 257765312},
     {"getI18n::result", 256811320},
@@ -82,6 +82,8 @@ static constexpr std::array<std::pair<std::string_view, std::size_t>, 81> symbol
     {"_ZNK5Level20getActivePlayerCountEv", 210367168},
     {"_ZN5Level4tickEv", 210335488},
     // LevelChunk
+    {"_ZN10LevelChunk8tickImplER11BlockSourceRK4TickNSt3__18functionIFvvEEE", 211691840},
+    {"LevelChunk::tickImpl::seed", 256134984},
     {"LevelChunk::tickImpl::random_tick_seed_store", 211703565},
     // LiquidBlock
     {"_ZNK11LiquidBlock12_trySpreadToER11BlockSourceRK8BlockPosiS4_h", 206816800},

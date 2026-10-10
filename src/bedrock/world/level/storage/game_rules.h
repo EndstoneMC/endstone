@@ -47,6 +47,7 @@ public:
         const auto *value = std::get_if<bool>(&value_);
         return value != nullptr && *value;
     }
+    [[nodiscard]] const Value &getValue() const { return value_; }
 
 private:
     bool should_save_;
@@ -78,6 +79,13 @@ class GameRules : public Bedrock::EnableNonOwnerReferences {
     using WorldPolicyMap = std::map<HashedString, GameRule>;
 
 public:
+    [[nodiscard]] const GameRule *getRule(GameRuleId id) const
+    {
+        if (id >= 0 && id < game_rules_.size()) {
+            return &game_rules_[id];
+        }
+        return nullptr;
+    }
     [[nodiscard]] bool getBool(GameRuleId id, bool default_value) const
     {
         if (id >= 0 && id < game_rules_.size()) {

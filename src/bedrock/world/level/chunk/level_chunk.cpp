@@ -53,3 +53,8 @@ Level &LevelChunk::getLevel() const
 {
     return level_;
 }
+
+buffer_span<SubChunk> LevelChunk::getAllSubChunks() const
+{
+    return sub_chunks_;
+}

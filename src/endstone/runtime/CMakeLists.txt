@@ -23,6 +23,7 @@ add_library(endstone_runtime SHARED
         bedrock_hooks/lan_thread_manager.cpp
         bedrock_hooks/leaves_block.cpp
         bedrock_hooks/level.cpp
+        bedrock_hooks/level_chunk.cpp
         bedrock_hooks/liquid_block.cpp
         bedrock_hooks/main_chunk_source.cpp
         bedrock_hooks/map_data_manager.cpp

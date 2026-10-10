@@ -14,17 +14,23 @@
 
 #pragma once
 
+#include <functional>
+#include <memory>
 #include <optional>
 #include <vector>
 
+#include "bedrock/bedrock.h"
+#include "bedrock/core/utility/buffer_span.h"
 #include "bedrock/forward.h"
 #include "bedrock/platform/threading/mutex_details.h"
 #include "bedrock/platform/threading/spin_lock.h"
 #include "bedrock/world/level/block_pos.h"
 #include "bedrock/world/level/chunk/chunk_state.h"
+#include "bedrock/world/level/chunk/sub_chunk.h"
 #include "bedrock/world/level/chunk_pos.h"
 #include "bedrock/world/level/tick.h"
 
+class BlockSource;
 class Level;
 class Dimension;
 class ChunkSource;
@@ -53,8 +59,11 @@ public:
     [[nodiscard]] ChunkSource *getGenerator() const;
     [[nodiscard]] Dimension &getDimension() const;
     [[nodiscard]] Level &getLevel() const;
+    [[nodiscard]] buffer_span<SubChunk> getAllSubChunks() const;
 
 private:
+    ENDSTONE_HOOK void tickImpl(BlockSource &tick_region, const Tick &tick, std::function<void()> spawner_callback);
+
     Bedrock::Threading::Mutex block_entity_access_lock_;
     Level &level_;
     Dimension &dimension_;
@@ -79,5 +88,8 @@ private:
     SpinLock cached_data_state_spin_lock_;
     SpinLock client_request_heightmap_adjust_spin_lock_;
     Tick last_tick_;
+    std::unique_ptr<BlockTickingQueue> tick_queue_;
+    std::unique_ptr<BlockTickingQueue> random_tick_queue_;
+    std::vector<SubChunk> sub_chunks_;
     // ...
 };
