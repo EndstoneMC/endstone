@@ -11,7 +11,7 @@
 
 namespace endstone::runtime {
 
-static constexpr std::array<std::pair<std::string_view, std::size_t>, 67> symbols = {{
+static constexpr std::array<std::pair<std::string_view, std::size_t>, 68> symbols = {{
     {"BlockState::StateListNode::mHead", 257928656},
     {"Enchant::mEnchants", 257765312},
     {"getI18n::result", 256811320},
@@ -73,6 +73,8 @@ static constexpr std::array<std::pair<std::string_view, std::size_t>, 67> symbol
     {"_ZN5Level4tickEv", 210335488},
     // LiquidBlock
     {"_ZNK11LiquidBlock12_trySpreadToER11BlockSourceRK8BlockPosiS4_h", 206816800},
+    // MainChunkSource
+    {"_ZN15MainChunkSource14getRandomChunkER6Random", 211855728},
     // MapDataManager
     {"_ZN14MapDataManager15_publishMapDataERK13ActorUniqueIDNSt3__110unique_ptrI16MapItemSavedDataNS3_14default_deleteIS5_EEEE", 210029376},
     // MinecraftCommands

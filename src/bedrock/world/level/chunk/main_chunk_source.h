@@ -18,5 +18,5 @@
 
 class MainChunkSource : public ChunkSource {
 public:
-    ENDSTONE_HOOK_WIN32 std::shared_ptr<LevelChunk> getRandomChunk(Random &random) override;
+    ENDSTONE_HOOK std::shared_ptr<LevelChunk> getRandomChunk(Random &random) override;
 };

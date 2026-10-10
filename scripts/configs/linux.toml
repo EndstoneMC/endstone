@@ -441,6 +441,23 @@ extra = 0
 pattern = "55 41 57 41 56 41 55 41 54 53 48 83 EC ? 45 89 CD 4D 89 C4 89 4C 24 ? 48 89 D3"
 
 [[signatures]]
+name = "_ZN15MainChunkSource14getRandomChunkER6Random"
+relative = false
+extra = 0
+# 1. find bytes "31 35 4D 61 69 6E 43 68 75 6E 6B 53 6F 75 72 63 65 00" = "15MainChunkSource\0" (the RTTI name,
+#    unique); the R_X86_64_RELATIVE reloc whose addend is that string is type_info+8, and the reloc whose addend
+#    is that type_info is the vtable's type_info slot - the address point is the next qword
+# 2. getRandomChunk is slot 5 (+0x28) of that vtable: D1, D0, then ChunkSource::shutdown and isShutdownDone (tiny
+#    stubs shared by every ChunkSource vtable), getExistingChunk (a ChunkPos hash lookup with the 0x9e3779b9
+#    hash-combine on this+0x70), then getRandomChunk
+# 3. confirm by its body: sret in rdi, this in rsi; it reads the chunk map size at this+0x88 and returns an empty
+#    shared_ptr when it is 0, calls Random vtable +0x18 (nextInt(int)), walks the singly-linked node list from
+#    this+0x80 to the drawn index, locks the weak_ptr at node+0x18/+0x20 and returns the chunk only if its load
+#    state byte is >= 0xB (ChunkState::Loaded)
+# 4. confirm vs the old named DB
+pattern = "41 56 53 50 49 89 F6 48 89 FB 48 8B B6 88 00 00 00 48 85 F6 0F 84 ? ? ? ? 48 8B 02 48 89 D7 FF 50 18 4D 8B B6 80 00 00 00"
+
+[[signatures]]
 name = "_ZN14MapDataManager15_publishMapDataERK13ActorUniqueIDNSt3__110unique_ptrI16MapItemSavedDataNS3_14default_deleteIS5_EEEE"
 relative = false
 extra = 0
