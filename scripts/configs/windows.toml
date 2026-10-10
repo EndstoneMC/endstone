@@ -504,6 +504,19 @@ rip_relative = true
 rip_offset = 1
 
 [[signatures]]
+name = "?getRandomChunk@MainChunkSource@@UEAA?AV?$shared_ptr@VLevelChunk@@@std@@AEAVRandom@@@Z"
+relative = false
+extra = 0
+# 1. MainChunkSource's vtable is the one whose slot 4 (+0x20) is a ~0x158 fn that reads the chunk map size at
+#    this+0x80, returns an empty shared_ptr when it is 0, and otherwise calls Random vtable +8 (nextInt(int))
+# 2. confirm the body: it walks the map's node list from this+0x78 to the drawn index, locks the weak_ptr at
+#    node+0x18/+0x20, and returns the chunk only if byte [chunk+0xf0] >= 0xB (ChunkState::Loaded)
+# 3. its caller is LevelChunkSaveManagerProxy::getRandomChunk (~0x7b), reached from
+#    LevelChunkSaveManager::_findRandomChunkToSave, which loops up to 20 picks (`cmp r15d, 0x13`)
+# 4. confirm vs the old named DB
+pattern = "56 57 48 83 EC 28 48 89 D6 48 8B 91 80 00 00 00 48 85 D2 74 ? 48 89 CF 49 8B 00 48 8B 40 08 4C 89 C1 FF 15 ? ? ? ? 48 63 D0 48 8B 4F 78 48 8B 09 85 D2 78 ? 74 ?"
+
+[[signatures]]
 name = "?_publishMapData@MapDataManager@@IEAAPEAVMapItemSavedData@@AEBUActorUniqueID@@V?$unique_ptr@VMapItemSavedData@@U?$default_delete@VMapItemSavedData@@@std@@@std@@@Z"
 relative = false
 extra = 0
