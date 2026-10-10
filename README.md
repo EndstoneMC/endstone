@@ -79,7 +79,7 @@ class MyPlugin(Plugin):
 
 ## Installation
 
-Requires Python 3.10+ on Windows 10+ or Linux (Ubuntu 22.04+, Debian 12+).
+Requires Python 3.11+ on Windows 10+ or Linux (Ubuntu 22.04+, Debian 12+).
 
 ### Using pip (recommended)
 

@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 # /// script
-# requires-python = ">=3.10"
+# requires-python = ">=3.11"
 # dependencies = [
 #     "griffe>=2.1,<3",
 #     "lazy-loader",
