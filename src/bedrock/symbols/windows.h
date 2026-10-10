@@ -11,7 +11,7 @@
 
 namespace endstone::runtime {
 
-static constexpr std::array<std::pair<std::string_view, std::size_t>, 70> symbols = {{
+static constexpr std::array<std::pair<std::string_view, std::size_t>, 72> symbols = {{
     {"BlockState::StateListNode::mHead", 215092208},
     {"Enchant::mEnchants", 214656904},
     // Actor
@@ -70,6 +70,9 @@ static constexpr std::array<std::pair<std::string_view, std::size_t>, 70> symbol
     {"?randomTick@LeavesBlock@@QEBAXAEAVBlockRandomTickEvent@BlockEvents@@@Z", 50197040},
     // Level
     {"?tick@Level@@UEAAXXZ", 8175568},
+    // LevelChunk
+    {"LevelChunk::tickImpl::lightning_seed_store", 10464153},
+    {"LevelChunk::tickImpl::random_tick_seed_store", 10469373},
     // LiquidBlock
     {"?_trySpreadTo@LiquidBlock@@IEBAXAEAVBlockSource@@AEBVBlockPos@@H1E@Z", 146138496},
     // MainChunkSource
