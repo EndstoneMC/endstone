@@ -12,6 +12,9 @@ VANILLA = (
     "client-side-chunk-generation-enabled=true\n"
     "# If true, the server will inform clients that they can generate chunks.\n"
     "\n"
+    "view-distance=32\n"
+    "# The maximum allowed view distance in number of chunks.\n"
+    "\n"
     "transport=raknet\n"
 )
 
@@ -79,15 +82,18 @@ def test_merge_appends_new_properties_with_their_comments(properties, merge):
     old = properties.loads("server-name=My Cool Server\n# Used as the server name\n\nmax-players=42\n")
     added = merge(properties.loads(VANILLA), old)
 
-    assert added == ["client-side-chunk-generation-enabled", "transport"]
+    assert added == ["client-side-chunk-generation-enabled", "view-distance", "transport"]
     assert old.as_string() == (
         "server-name=My Cool Server\n"
         "# Used as the server name\n"
         "\n"
         "max-players=42\n"
         "\n"
-        "client-side-chunk-generation-enabled=false\n"
+        "client-side-chunk-generation-enabled=true\n"
         "# If true, the server will inform clients that they can generate chunks.\n"
+        "\n"
+        "view-distance=10\n"
+        "# The maximum allowed view distance in number of chunks.\n"
         "\n"
         "transport=raknet\n"
     )

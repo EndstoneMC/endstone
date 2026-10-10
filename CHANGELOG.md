@@ -16,6 +16,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Improved the performance of sending and receiving packets when no plugin listens for `PacketSendEvent` or `PacketReceiveEvent`.
 - Improved server performance when many chunks are loaded, such as when players are spread out across the world.
 - Linux servers now use mimalloc as the memory allocator unless `LD_PRELOAD` names another allocator or `libc.so.6`.
+- New servers now default to a `view-distance` of 10 in `server.properties`.
+- New servers now keep the vanilla default `client-side-chunk-generation-enabled=true`.
 - Dropped Python 3.10 support (end-of-life). Minimum version is now Python 3.11.
 
 ### Fixed

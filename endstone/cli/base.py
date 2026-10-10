@@ -28,7 +28,7 @@ from endstone.cli import _properties
 # server.properties entries where Endstone's default differs from Mojang's.
 _SERVER_PROPERTY_OVERRIDES = {
     "server-name": "Endstone Server",
-    "client-side-chunk-generation-enabled": False,
+    "view-distance": 10,
 }
 
 # NetworkStackLatencyPacket, left unbounded by the shipped packetlimitconfig.json.
