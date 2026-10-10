@@ -17,7 +17,6 @@
 #include <chrono>
 #include <memory>
 #include <mutex>
-#include <optional>
 #include <string>
 #include <thread>
 #include <unordered_map>
@@ -36,8 +35,6 @@
 #include "endstone/core/scheduler/scheduler.h"
 #include "endstone/core/scoreboard/scoreboard.h"
 #include "endstone/core/signal_handler.h"
-#include "endstone/core/util/rolling_average.h"
-#include "endstone/core/util/tick_times.h"
 #include "endstone/server.h"
 
 class RakNetConnector;
@@ -179,13 +176,11 @@ private:
     IResourcePackRepository *resource_pack_repository_ = nullptr;
     std::unordered_map<PackIdVersion, std::string> content_keys_;
     mutable std::mutex stats_lock_;
-    std::chrono::nanoseconds current_tick_time_{0};
-    TickTimes tick_times_{100};
-    RollingAverage tps_1m_{60, SharedConstants::TicksPerSecond};
-    RollingAverage tps_5m_{300, SharedConstants::TicksPerSecond};
+    float current_mspt_ = 0.0F;
+    float average_mspt_[SharedConstants::TicksPerSecond] = {};
+    std::size_t tick_index_ = 0;
     std::chrono::steady_clock::time_point tick_start_;
     bool tick_pending_ = false;
-    std::optional<std::chrono::steady_clock::time_point> tps_sample_start_;
     // TODO(config): move the following the a separate class/struct
     bool allow_client_packs_ = false;
     std::vector<std::string> stun_servers_;

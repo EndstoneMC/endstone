@@ -21,7 +21,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Fixed a packet sent from a `PacketSendEvent` handler replacing the packet that was being sent.
 - Fixed `PacketSendEvent` reporting the wrong player and sub-client ID for packets sent to a split-screen player.
 - Fixed `PacketReceiveEvent` reporting the wrong player and sub-client ID for packets sent by a split-screen player.
-- Fixed MSPT and TPS being inaccurate: MSPT left out network and other work outside the level tick and was rounded to whole milliseconds, and TPS was estimated from MSPT instead of measured.
+- Fixed MSPT leaving out network and other work outside the level tick, and rounding to whole milliseconds.
 
 ## [0.11.13] - 2026-10-06
 

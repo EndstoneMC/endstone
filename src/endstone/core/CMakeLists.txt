@@ -104,9 +104,7 @@ add_library(endstone_core
         spdlog/spdlog_adapter.cpp
         spdlog/text_formatter.cpp
         spdlog/thread_formatter.cpp
-        util/rolling_average.cpp
         util/socket_address.cpp
-        util/tick_times.cpp
         util/uuid.cpp
 )
 add_library(endstone::core ALIAS endstone_core)
