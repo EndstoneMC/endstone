@@ -140,6 +140,18 @@ public:
         return ::EventResult::KeepGoing;
     }
 
+    ::EventResult onServerUpdateStart(ServerInstance &instance) override
+    {
+        endstone::core::EndstoneServer::getInstance().startTick();
+        return ::EventResult::KeepGoing;
+    }
+
+    ::EventResult onServerUpdateEnd(ServerInstance &instance) override
+    {
+        endstone::core::EndstoneServer::getInstance().endTick();
+        return ::EventResult::KeepGoing;
+    }
+
     ::EventResult onServerThreadStopped(ServerInstance &instance) override
     {
         if (entt::locator<endstone::core::EndstoneServer>::has_value()) {

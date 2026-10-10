@@ -710,35 +710,36 @@ std::shared_ptr<Scoreboard> EndstoneServer::createScoreboard()
 
 float EndstoneServer::getCurrentMillisecondsPerTick()
 {
-    return current_mspt_;
+    std::scoped_lock lock(stats_lock_);
+    return std::chrono::duration<float, std::milli>(current_tick_time_).count();
 }
 
 float EndstoneServer::getAverageMillisecondsPerTick()
 {
-    return std::accumulate(average_mspt_, average_mspt_ + SharedConstants::TicksPerSecond, 0.0F) /
-           SharedConstants::TicksPerSecond;
+    std::scoped_lock lock(stats_lock_);
+    return static_cast<float>(tick_times_.getAverage().count());
 }
 
 float EndstoneServer::getCurrentTicksPerSecond()
 {
-    return current_tps_;
+    std::scoped_lock lock(stats_lock_);
+    return std::min(1.0F * SharedConstants::TicksPerSecond, static_cast<float>(tps_1m_.getAverage()));
 }
 
 float EndstoneServer::getAverageTicksPerSecond()
 {
-    return std::accumulate(average_tps_, average_tps_ + SharedConstants::TicksPerSecond, 0.0F) /
-           SharedConstants::TicksPerSecond;
+    std::scoped_lock lock(stats_lock_);
+    return std::min(1.0F * SharedConstants::TicksPerSecond, static_cast<float>(tps_5m_.getAverage()));
 }
 
 float EndstoneServer::getCurrentTickUsage()
 {
-    return current_usage_;
+    return std::min(1.0F, getCurrentMillisecondsPerTick() / SharedConstants::MilliSecondsPerTick);
 }
 
 float EndstoneServer::getAverageTickUsage()
 {
-    return std::accumulate(average_usage_, average_usage_ + SharedConstants::TicksPerSecond, 0.0F) /
-           SharedConstants::TicksPerSecond;
+    return std::min(1.0F, getAverageMillisecondsPerTick() / SharedConstants::MilliSecondsPerTick);
 }
 
 std::chrono::system_clock::time_point EndstoneServer::getStartTime()
@@ -856,29 +857,50 @@ void EndstoneServer::removePlayerBoard(EndstonePlayer &player)
     player_boards_.erase(player.getUniqueId());
 }
 
+void EndstoneServer::startTick()
+{
+    tick_start_ = std::chrono::steady_clock::now();
+}
+
 void EndstoneServer::tick(std::uint64_t current_tick, const std::function<void()> &tick_function)
 {
-    using std::chrono::milliseconds;
-    using std::chrono::steady_clock;
+    // A frame can run several ticks, so the previous one ends where this one starts
+    endTick();
 
-    const auto start = steady_clock::now();
-    // tick start
+    if (current_tick % SharedConstants::TicksPerSecond == 0) {
+        const auto now = std::chrono::steady_clock::now();
+        std::scoped_lock lock(stats_lock_);
+        if (tps_sample_start_) {
+            const auto elapsed = now - *tps_sample_start_;
+            const auto tps = SharedConstants::TicksPerSecond / std::chrono::duration<double>(elapsed).count();
+            tps_1m_.add(tps, elapsed);
+            tps_5m_.add(tps, elapsed);
+        }
+        tps_sample_start_ = now;
+    }
+
     scheduler_->mainThreadHeartbeat(current_tick);
     tick_function();
     for (const auto &p : getOnlinePlayers()) {
         auto *player = static_cast<EndstonePlayer *>(p);
         player->checkOpStatus();
     }
-    // tick end
-    const auto end = steady_clock::now();
+    tick_pending_ = true;
+}
 
-    current_mspt_ = static_cast<float>(duration_cast<milliseconds>(end - start).count());
-    current_tps_ = std::min(1.0F * SharedConstants::TicksPerSecond, 1000.0F / std::max(1.0F, current_mspt_));
-    current_usage_ = std::min(1.0F, current_mspt_ / SharedConstants::MilliSecondsPerTick);
-    const auto idx = current_tick % SharedConstants::TicksPerSecond;
-    average_mspt_[idx] = current_mspt_;
-    average_tps_[idx] = current_tps_;
-    average_usage_[idx] = current_usage_;
+void EndstoneServer::endTick()
+{
+    if (!tick_pending_) {
+        return;
+    }
+    const auto end = std::chrono::steady_clock::now();
+    const std::chrono::nanoseconds tick_time = end - tick_start_;
+    tick_start_ = end;
+    tick_pending_ = false;
+
+    std::scoped_lock lock(stats_lock_);
+    current_tick_time_ = tick_time;
+    tick_times_.add(tick_time);
 }
 
 ServerInstance &EndstoneServer::getServer() const

@@ -16,6 +16,8 @@
 
 #include <chrono>
 #include <memory>
+#include <mutex>
+#include <optional>
 #include <string>
 #include <thread>
 #include <unordered_map>
@@ -34,6 +36,8 @@
 #include "endstone/core/scheduler/scheduler.h"
 #include "endstone/core/scoreboard/scoreboard.h"
 #include "endstone/core/signal_handler.h"
+#include "endstone/core/util/rolling_average.h"
+#include "endstone/core/util/tick_times.h"
 #include "endstone/server.h"
 
 class RakNetConnector;
@@ -125,7 +129,9 @@ public:
     void setPlayerBoard(EndstonePlayer &player, Scoreboard &scoreboard);
     void removePlayerBoard(EndstonePlayer &player);
 
+    void startTick();
     void tick(std::uint64_t current_tick, const std::function<void()> &tick_function);
+    void endTick();
     void init(ServerInstance &server_instance);
     void setLevel(::Level &level);
     void initRegistries();
@@ -172,13 +178,14 @@ private:
     std::chrono::system_clock::time_point start_time_;
     IResourcePackRepository *resource_pack_repository_ = nullptr;
     std::unordered_map<PackIdVersion, std::string> content_keys_;
-    int tick_counter_ = 0;
-    float current_mspt_ = SharedConstants::MilliSecondsPerTick * 1.0F;
-    float average_mspt_[SharedConstants::TicksPerSecond] = {SharedConstants::MilliSecondsPerTick};
-    float current_tps_ = SharedConstants::TicksPerSecond * 1.0F;
-    float average_tps_[SharedConstants::TicksPerSecond] = {SharedConstants::TicksPerSecond};
-    float current_usage_ = 0.0F;
-    float average_usage_[SharedConstants::TicksPerSecond] = {0.0F};
+    mutable std::mutex stats_lock_;
+    std::chrono::nanoseconds current_tick_time_{0};
+    TickTimes tick_times_{100};
+    RollingAverage tps_1m_{60, SharedConstants::TicksPerSecond};
+    RollingAverage tps_5m_{300, SharedConstants::TicksPerSecond};
+    std::chrono::steady_clock::time_point tick_start_;
+    bool tick_pending_ = false;
+    std::optional<std::chrono::steady_clock::time_point> tps_sample_start_;
     // TODO(config): move the following the a separate class/struct
     bool allow_client_packs_ = false;
     std::vector<std::string> stun_servers_;
