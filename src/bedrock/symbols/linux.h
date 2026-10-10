@@ -11,7 +11,7 @@
 
 namespace endstone::runtime {
 
-static constexpr std::array<std::pair<std::string_view, std::size_t>, 77> symbols = {{
+static constexpr std::array<std::pair<std::string_view, std::size_t>, 81> symbols = {{
     {"BlockState::StateListNode::mHead", 257928656},
     {"Enchant::mEnchants", 257765312},
     {"getI18n::result", 256811320},
@@ -113,6 +113,9 @@ static constexpr std::array<std::pair<std::string_view, std::size_t>, 77> symbol
     {"_ZN6Player17completeUsingItemEv", 196329648},
     {"_ZN6Player4dropERK9ItemStackb", 196441152},
     {"_ZN6Player4takeER5Actorii", 196390032},
+    // PlayerLocationSender
+    {"_ZN20PlayerLocationSender25_shouldSendPositionPacketERK4Vec313DimensionTypebRKNSt3__18optionalIS0_EERKNS_18PlayerLocationDataEf", 209778816},
+    {"_ZN20PlayerLocationSender24_forEachClientPlayerPairERKNSt3__16vectorI13WeakEntityRefNS0_9allocatorIS2_EEEENS0_8functionIFvRK29UserEntityIdentifierComponentRK6PlayerSE_EEE", 209777232},
     // PlayerTickManager
     {"_ZN17PlayerTickManager23processPlayerNetworkingERK4Tick", 209786096},
     // RakNet::RNS2_Windows_Linux_360
@@ -137,6 +140,10 @@ static constexpr std::array<std::pair<std::string_view, std::size_t>, 77> symbol
     {"_ZN12ServerPlayer15changeDimensionE13DimensionType", 166161184},
     // ServerScoreboard
     {"_ZN16ServerScoreboardC2E23CommandSoftEnumRegistryP12LevelStorageN3gsl8not_nullIN7Bedrock15NonOwnerPointerI19GameplayUserManagerEEEE", 217580848},
+    // ServerWaypoint
+    {"_ZN14ServerWaypoint6updateERK6Player", 187406736},
+    // VanillaWaypointManager
+    {"_ZN22VanillaWaypointManager6updateER6PlayerR16ServerLocatorBarb", 196116976},
     // WeatherManager
     {"_ZN14WeatherManager13updateWeatherEfifi", 209727632},
     // webrtc::P2PTransportChannel

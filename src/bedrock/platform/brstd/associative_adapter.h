@@ -15,6 +15,7 @@
 #pragma once
 
 #include <algorithm>
+#include <utility>
 
 namespace brstd {
 
@@ -212,6 +213,24 @@ public:
             return const_iterator(it, containers_.values.begin() + offset);
         }
         return end();
+    }
+
+    [[nodiscard]] const key_container_type &keys() const noexcept { return containers_.keys; }
+
+    [[nodiscard]] const mapped_container_type &values() const noexcept { return containers_.values; }
+
+    containers extract() &&
+    {
+        auto result = std::move(containers_);
+        containers_.keys.clear();
+        containers_.values.clear();
+        return result;
+    }
+
+    void replace(key_container_type &&key_cont, mapped_container_type &&mapped_cont)
+    {
+        containers_.keys = std::move(key_cont);
+        containers_.values = std::move(mapped_cont);
     }
 
 private:

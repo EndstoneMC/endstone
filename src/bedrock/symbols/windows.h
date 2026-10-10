@@ -11,7 +11,7 @@
 
 namespace endstone::runtime {
 
-static constexpr std::array<std::pair<std::string_view, std::size_t>, 77> symbols = {{
+static constexpr std::array<std::pair<std::string_view, std::size_t>, 81> symbols = {{
     {"BlockState::StateListNode::mHead", 215092208},
     {"Enchant::mEnchants", 214656904},
     // Actor
@@ -112,6 +112,9 @@ static constexpr std::array<std::pair<std::string_view, std::size_t>, 77> symbol
     {"?stopSleepInBed@Player@@UEAAX_N0@Z", 2767280},
     {"?take@Player@@QEAA_NAEAVActor@@HH@Z", 2837264},
     {"?teleportTo@Player@@UEAAXAEBVVec3@@_NHH1@Z", 2755600},
+    // PlayerLocationSender
+    {"?_shouldSendPositionPacket@PlayerLocationSender@@AEBA_NAEBVVec3@@AEBUDimensionType@@_NAEBV?$optional@VVec3@@@std@@AEBUPlayerLocationData@1@@Z", 8815008},
+    {"?_forEachClientPlayerPair@PlayerLocationSender@@AEAAXAEBV?$vector@VWeakEntityRef@@V?$allocator@VWeakEntityRef@@@std@@@std@@V?$function@$$A6AXAEBVUserEntityIdentifierComponent@@AEBVPlayer@@1@Z@3@@Z", 8814288},
     // PlayerTickManager
     {"?processPlayerNetworking@PlayerTickManager@@QEAAXAEBUTick@@@Z", 74985136},
     // RakNet::RNS2_Windows_Linux_360
@@ -136,6 +139,10 @@ static constexpr std::array<std::pair<std::string_view, std::size_t>, 77> symbol
     {"?changeDimension@ServerPlayer@@UEAAXUDimensionType@@@Z", 7705664},
     // ServerScoreboard
     {"??0ServerScoreboard@@QEAA@VCommandSoftEnumRegistry@@PEAVLevelStorage@@V?$not_null@V?$NonOwnerPointer@VGameplayUserManager@@@Bedrock@@@gsl@@@Z", 2095792},
+    // ServerWaypoint
+    {"?update@ServerWaypoint@@UEAAXAEBVPlayer@@@Z", 13700320},
+    // VanillaWaypointManager
+    {"?update@VanillaWaypointManager@@QEAAXAEAVPlayer@@AEAVServerLocatorBar@@_N@Z", 38459712},
     // WeatherManager
     {"?updateWeather@WeatherManager@@QEAAXMHMH@Z", 18477376},
     // YAAEAVI18n

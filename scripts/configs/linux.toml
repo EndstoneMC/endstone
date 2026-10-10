@@ -101,6 +101,29 @@ extra = 0
 pattern = "41 56 53 48 83 EC 48 48 8B BF 18 04 00 00 48 C7 44 24 08 00 00 00 00 48 8D 05 ? ? ? ? 48 89 44 24 10"
 
 [[signatures]]
+name = "_ZN20PlayerLocationSender24_forEachClientPlayerPairERKNSt3__16vectorI13WeakEntityRefNS0_9allocatorIS2_EEEENS0_8functionIFvRK29UserEntityIdentifierComponentRK6PlayerSE_EEE"
+relative = false
+extra = 0
+# 1. find the RTTI name containing "20PlayerLocationSender35checkPlayerPairsAndMaybeSendPackets" (a
+#    std::__function::__func); the code that leas its vtable address point (and the sendPacketsHidingAllPlayers
+#    twin) is Level::_subTick
+# 2. right after each lea, _subTick passes the functor in rdx to one direct call: that callee is this function
+# 3. confirm the body: rdi is never read, rsi is the users vector walked in a nested loop, and the functor is
+#    called through its vtable per pair
+pattern = "55 41 57 41 56 41 55 41 54 53 48 83 EC 68 48 89 54 24 60 4C 8B 3E 4C 8B 66 08"
+
+[[signatures]]
+name = "_ZN20PlayerLocationSender25_shouldSendPositionPacketERK4Vec313DimensionTypebRKNSt3__18optionalIS0_EERKNS_18PlayerLocationDataEf"
+relative = false
+extra = 0
+# 1. the checkPlayerPairsAndMaybeSendPackets __func's operator() (vtable slot 6) calls this twice
+# 2. confirm the body: there is no this; the caller loads the simulation distance (sender+0x78) into xmm0 and
+#    passes the dimension by value in esi. It starts with `cmp byte ptr [r8+0xC], 1` (the new data's position)
+#    and calls atan2f and fmodf through the PLT
+# 3. confirm vs the Windows twin
+pattern = "41 80 78 0C 01 75 6E 84 D2 74 08 41 3B 70 10 74 19 EB 62 31 C0 41 80 78 14 00"
+
+[[signatures]]
 name = "_ZN17PlayerTickManager23processPlayerNetworkingERK4Tick"
 relative = false
 extra = 0
@@ -124,6 +147,30 @@ extra = 0
 # 3. preReplicationTick calls it through vtable +0x7b8; confirm vs the old named DB
 # function prologue
 pattern = "55 41 57 41 56 41 55 41 54 53 48 81 EC ? ? ? ? F3 0F 11 84 24 ? ? ? ? 48 89 FB"
+
+[[signatures]]
+name = "_ZN14ServerWaypoint6updateERK6Player"
+relative = false
+extra = 0
+# 1. find the RTTI name "14ServerWaypoint"; update is slot 9 (+0x48) of its vtable
+# 2. cross-check: slot 9 of the "20ServerEntityWaypoint" vtable (ServerEntityWaypoint::update) ends with a `jmp`
+#    to it
+# 3. confirm the body: it walks the texture vector at this+0x60 in 0x30-byte steps comparing cvtsi2ss bounds with
+#    the viewer distance, then calls the virtual at +0x58 (calculateIsVisible)
+pattern = "55 41 57 41 56 41 54 53 48 83 EC 60 49 89 F6 48 89 FB 4C 8B 67 60 48 8B 47 68"
+
+[[signatures]]
+name = "_ZN22VanillaWaypointManager6updateER6PlayerR16ServerLocatorBarb"
+relative = false
+extra = 0
+# 1. find the RTTI names "14ServerWaypoint", "20ServerEntityWaypoint" and "20ServerPlayerWaypoint"; the function
+#    that leas all three vtable address points in turn (the inlined player waypoint constructor) and calls
+#    ServerWaypointGroup::getAllHandlesWithActorID is VanillaWaypointManager::update
+# 2. confirm: its only caller is ServerPlayer::normalTick, which passes ecx = (gamerule 17 == 1) and calls
+#    ServerLocatorBar::update next; the body compares that flag with byte [rdi+0x10] and calls the Level virtuals
+#    at +0xA00 (getPlayerList) and +0x1F8 (fetchEntity)
+# 3. confirm vs the Windows twin
+pattern = "55 41 57 41 56 41 55 41 54 53 48 81 EC 68 01 00 00 49 89 F4 49 89 FD 38 4F 10"
 
 [[signatures]]
 name = "getI18n::result"

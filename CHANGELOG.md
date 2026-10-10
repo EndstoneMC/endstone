@@ -18,6 +18,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Improved server performance when players explore with client-side chunk generation enabled.
 - Reduced the cost of random block ticks.
 - Improved server performance with many players online.
+- Reduced the cost of the locator bar with many players online.
 - Improved server performance while many players wait for new terrain to load, such as after joining or teleporting.
 - Linux servers now use mimalloc as the memory allocator unless `LD_PRELOAD` names another allocator or `libc.so.6`.
 - New servers now default to a `view-distance` of 10 in `server.properties`.

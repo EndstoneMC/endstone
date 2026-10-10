@@ -193,6 +193,30 @@ extra = 0
 pattern = "55 41 57 41 56 41 55 41 54 56 57 53 48 81 EC ? ? ? ? 48 8D AC 24 ? ? ? ? 48 C7 85 ? ? ? ? ? ? ? ? 4D 89 CE 44 89 85 ? ? ? ? 89 95 ? ? ? ? 48 89 CE 48 8B 95"
 
 [[signatures]]
+name = "?_forEachClientPlayerPair@PlayerLocationSender@@AEAAXAEBV?$vector@VWeakEntityRef@@V?$allocator@VWeakEntityRef@@@std@@@std@@V?$function@$$A6AXAEBVUserEntityIdentifierComponent@@AEBVPlayer@@1@Z@3@@Z"
+relative = false
+extra = 0
+# 1. find bytes "4C 65 76 65 6C 20 2D 20 73 75 62 74 69 63 6B 00" = "Level - subtick\0"; its xref is in Level::_subTick
+# 2. after the gamerule 17 check there (`imul eax, eax, 0x8AF8AF8B; cmp eax, 0x12`), _subTick makes two direct
+#    calls to one function, each with r8 = a std::function whose impl vtable is lea'd just before; the second
+#    follows the loop over the gameplay users that calls _updatePlayerData. That callee is this function
+# 3. confirm the body: rcx is never read; it walks the vector in rdx in a nested loop (the outer one looks up
+#    UserEntityIdentifierComponent, hash 0x0B845379), calls the functor's slot +0x10 per pair and slot +0x20 at
+#    the end
+pattern = "55 41 57 41 56 41 55 41 54 56 57 53 48 81 EC 88 00 00 00 48 8D AC 24 80 00 00 00 48 C7 45 00 FE FF FF FF 4C 89 C6 48 8B 3A"
+
+[[signatures]]
+name = "?_shouldSendPositionPacket@PlayerLocationSender@@AEBA_NAEBVVec3@@AEBUDimensionType@@_NAEBV?$optional@VVec3@@@std@@AEBUPlayerLocationData@1@@Z"
+relative = false
+extra = 0
+# 1. the check-pairs functor _subTick passes to _forEachClientPlayerPair has a large _Do_call (impl vtable slot
+#    +0x10); the callee it calls twice with six arguments is _shouldSendPositionPacket
+# 2. confirm the body: it tests byte [arg6+0xC] == 1, compares the distance with the float at this+0x78, uses
+#    432.0 and 2304.0, and calls atan2f and fmodf
+# 3. confirm vs the old named DB
+pattern = "48 81 EC 98 00 00 00 44 0F 29 A4 24 80 00 00 00 44 0F 29 5C 24 70 44 0F 29 54 24 60 44 0F 29 4C 24 50 44 0F 29 44 24 40 0F 29 7C 24 30 0F 29 74 24 20 48 8B 84 24 C8 00 00 00"
+
+[[signatures]]
 name = "?processPlayerNetworking@PlayerTickManager@@QEAAXAEBUTick@@@Z"
 relative = false
 extra = 0
@@ -964,6 +988,31 @@ extra = 0
 # 3. preReplicationTick calls it through ServerPlayer vtable +0x7b0; confirm vs the old named DB
 # function prologue
 pattern = "55 41 57 41 56 41 55 41 54 56 57 53 48 81 EC ? ? ? ? 48 8D AC 24 ? ? ? ? 44 0F 29 85 ? ? ? ? 0F 29 BD ? ? ? ? 0F 29 B5 ? ? ? ? 48 C7 85 ? ? ? ? FE FF FF FF 0F 28 F2 48 89 CE"
+
+[[signatures]]
+name = "?update@ServerWaypoint@@UEAAXAEBVPlayer@@@Z"
+relative = false
+extra = 0
+# 1. VanillaWaypointManager::update (see below) builds each player waypoint inline and stores three vtables in
+#    turn: ServerWaypoint, ServerEntityWaypoint, ServerPlayerWaypoint. update is slot 8 (+0x40) of the first
+# 2. cross-check: slot 8 of the second vtable (ServerEntityWaypoint::update) ends with a `jmp` to it
+# 3. confirm the body: it walks the texture vector at this+0x70 in 0x38-byte steps comparing cvtsi2ss bounds with
+#    the viewer distance, calls setTexturePath, then the virtual at +0x50 (calculateIsVisible) and
+#    `or byte ptr [rsi+0x88], 2`
+pattern = "55 41 57 41 56 41 55 41 54 56 57 53 48 81 EC B8 00 00 00 48 8D AC 24 80 00 00 00 48 C7 45 30 FE FF FF FF 49 89 D5 48 89 CE"
+
+[[signatures]]
+name = "?update@VanillaWaypointManager@@QEAAXAEAVPlayer@@AEAVServerLocatorBar@@_N@Z"
+relative = false
+extra = 0
+# 1. find bytes "74 65 78 74 75 72 65 73 2F 75 69 2F 6C 6F 63 61 74 6F 72 5F 62 61 72 5F 64 6F 74 5F 30" =
+#    "textures/ui/locator_bar_dot_0"; the function that loads it and its _1.._3 siblings with movaps/movups is
+#    VanillaWaypointManager::update
+# 2. confirm: its only caller is ServerPlayer::normalTick, which passes r9b = (gamerule 17 == 1) and calls
+#    ServerLocatorBar::update next; the body compares that flag with byte [rcx+0x10] and calls the Level virtuals
+#    at +0x9F8 (getPlayerList) and +0x1F0 (fetchEntity)
+# 3. confirm vs the old named DB
+pattern = "55 41 57 41 56 41 55 41 54 56 57 53 48 81 EC 78 02 00 00 48 8D AC 24 80 00 00 00 0F 29 BD E0 01 00 00 0F 29 B5 D0 01 00 00 48 C7 85 C8 01 00 00 FE FF FF FF 49 89 D7"
 
 [[signatures]]
 name = "?updateWeather@WeatherManager@@QEAAXMHMH@Z"

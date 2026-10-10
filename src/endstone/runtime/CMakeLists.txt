@@ -32,10 +32,11 @@ add_library(endstone_runtime SHARED
         bedrock_hooks/p2p_transport_channel.cpp
         bedrock_hooks/packet.cpp
         bedrock_hooks/piston_block_actor.cpp
+        bedrock_hooks/player_location_sender.cpp
+        bedrock_hooks/player_tick_manager.cpp
         bedrock_hooks/port.cpp
         bedrock_hooks/player.cpp
         bedrock_hooks/rak_peer_helper.cpp
-        bedrock_hooks/player_tick_manager.cpp
         bedrock_hooks/resource_pack_repository.cpp
         bedrock_hooks/say_command.cpp
         bedrock_hooks/script_actor_gameplay_handler.cpp
@@ -45,10 +46,12 @@ add_library(endstone_runtime SHARED
         bedrock_hooks/script_player_gameplay_handler.cpp
         bedrock_hooks/script_scripting_event_handler.cpp
         bedrock_hooks/script_server_network_event_handler.cpp
+        bedrock_hooks/server_waypoint.cpp
         bedrock_hooks/simple_network_interface_impl.cpp
         bedrock_hooks/server_instance.cpp
         bedrock_hooks/server_network_handler.cpp
         bedrock_hooks/server_player.cpp
+        bedrock_hooks/vanilla_waypoint_manager.cpp
         bedrock_hooks/weather_manager.cpp
         main.cpp
         hook.cpp
