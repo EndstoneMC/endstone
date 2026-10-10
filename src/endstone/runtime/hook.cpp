@@ -169,21 +169,30 @@ void install()
         }
     }
 
-    // Only the server thread writes the random-tick seed and the next instruction reloads it, so a plain mov replaces
-    // the locked xchg.
-    static constexpr std::array unlocked_stores = {
-        std::string_view{"LevelChunk::tickImpl::random_tick_seed_store"},
+    struct BytePatch {
+        std::string_view name;
+        unsigned char expected;
+        unsigned char value;
     };
-    for (const auto name : unlocked_stores) {
-        const auto it = targets.find(std::string(name));
+    static constexpr std::array byte_patches = {
+        // Only the server thread writes the random-tick seed and the next instruction reloads it, so a plain mov
+        // replaces the locked xchg.
+        BytePatch{"LevelChunk::tickImpl::random_tick_seed_store", 0x87, 0x89},
+        // Spread players overflow these caches every few seconds and BDS then wipes them whole, so raise both caps
+        // from 10,000 and 30,000 entries to about a million.
+        BytePatch{"ChunkBlenderFactory::getOrCreateChunkBlender::cache_cap", 0x00, 0x10},
+        BytePatch{"DBChunkStorage::_hasChunk::cache_cap", 0x00, 0x10},
+    };
+    for (const auto &patch : byte_patches) {
+        const auto it = targets.find(std::string(patch.name));
         if (it == targets.end()) {
-            throw std::runtime_error(std::format("Unable to find target instruction: {}.", name));
+            throw std::runtime_error(std::format("Unable to find target instruction: {}.", patch.name));
         }
         auto *target = static_cast<unsigned char *>(it->second);
-        if (*target != 0x87) {
-            throw std::runtime_error(std::format("Unexpected instruction at {}.", name));
+        if (*target != patch.expected) {
+            throw std::runtime_error(std::format("Unexpected instruction at {}.", patch.name));
         }
-        write_code_byte(target, 0x89);
+        write_code_byte(target, patch.value);
     }
 }
 

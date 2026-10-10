@@ -32,6 +32,8 @@ static constexpr std::array<std::pair<std::string_view, std::size_t>, 71> symbol
     {"?forEachBlockType@BlockTypeRegistry@@QEBAXV?$function_ref@$$A6A_NAEBVBlockType@@@Z$$A6A_N0@Z@brstd@@@Z", 26979856},
     // CampfireBlockActor
     {"?_finishCooking@CampfireBlockActor@@AEAAXAEAVBlockSource@@H@Z", 32663744},
+    // ChunkBlenderFactory
+    {"ChunkBlenderFactory::getOrCreateChunkBlender::cache_cap", 136197791},
     // CircuitSceneGraph
     {"?update@CircuitSceneGraph@@QEAAXPEAVBlockSource@@@Z", 79488960},
     // Command
@@ -49,6 +51,8 @@ static constexpr std::array<std::pair<std::string_view, std::size_t>, 71> symbol
     {"?getActorName@CommandUtils@@YA?AV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@AEBVActor@@@Z", 4035184},
     // CraftingDataPacketPayload
     {"?fromRecipes@CraftingDataPacketPayload@@SA?AU1@AEBVRecipes@@_N@Z", 51739264},
+    // DBChunkStorage
+    {"DBChunkStorage::_hasChunk::cache_cap", 13403472},
     // DedicatedServer
     {"?start@DedicatedServer@@QEAA?AW4ServerExitCode@@AEBV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@AEBVActivationArguments@Bedrock@@@Z", 501616},
     // Explosion
@@ -93,9 +97,6 @@ static constexpr std::array<std::pair<std::string_view, std::size_t>, 71> symbol
     {"?createTransportInterface@TransportFactoryImpl@NetherNet@@QEAAPEAVINetherNetTransportInterface@2@AEBUNetworkID@2@AEBUTransportConfiguration@2@PEAVINetherNetTransportInterfaceCallbacks@2@@Z", 118686800},
     // NetworkSystem
     {"?send@NetworkSystem@@QEAAXAEBVNetworkIdentifier@@AEBVPacket@@W4SubClientId@@@Z", 9687248},
-    // OverworldGeneratorMultinoise
-    {"?chunkPosNeedsBlending@OverworldGeneratorMultinoise@@UEAA_NAEBVChunkPos@@@Z", 136582160},
-    {"?_clearBlendingCache@OverworldGeneratorMultinoise@@EEAAXXZ", 136497392},
     // PistonBlockActor
     {"?tick@PistonBlockActor@@UEAAXAEAVBlockSource@@@Z", 75967552},
     // Player

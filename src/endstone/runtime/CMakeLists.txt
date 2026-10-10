@@ -24,7 +24,6 @@ add_library(endstone_runtime SHARED
         bedrock_hooks/level.cpp
         bedrock_hooks/liquid_block.cpp
         bedrock_hooks/main_chunk_source.cpp
-        bedrock_hooks/overworld_generator_multinoise.cpp
         bedrock_hooks/map_data_manager.cpp
         bedrock_hooks/minecraft_commands.cpp
         bedrock_hooks/mob.cpp

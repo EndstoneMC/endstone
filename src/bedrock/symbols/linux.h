@@ -33,6 +33,8 @@ static constexpr std::array<std::pair<std::string_view, std::size_t>, 71> symbol
     {"_ZNK17BlockTypeRegistry16forEachBlockTypeEN5brstd12function_refIFbRK9BlockTypeES5_EE", 213118704},
     // CampfireBlockActor
     {"_ZN18CampfireBlockActor14_finishCookingER11BlockSourcei", 216526928},
+    // ChunkBlenderFactory
+    {"ChunkBlenderFactory::getOrCreateChunkBlender::cache_cap", 85314623},
     // CircuitSceneGraph
     {"_ZN17CircuitSceneGraph6updateEP11BlockSource", 218431056},
     // Command
@@ -50,6 +52,8 @@ static constexpr std::array<std::pair<std::string_view, std::size_t>, 71> symbol
     {"_ZN12CommandUtils12getActorNameERK5Actor", 164348688},
     // CraftingDataPacketPayload
     {"_ZN25CraftingDataPacketPayload11fromRecipesERK7Recipesb", 140477760},
+    // DBChunkStorage
+    {"DBChunkStorage::_hasChunk::cache_cap", 219434551},
     // DedicatedServer
     {"_ZN15DedicatedServer5startERKNSt3__112basic_stringIcNS0_11char_traitsIcEENS0_9allocatorIcEEEERKN7Bedrock19ActivationArgumentsE", 75250608},
     // Explosion
@@ -94,9 +98,6 @@ static constexpr std::array<std::pair<std::string_view, std::size_t>, 71> symbol
     {"_ZN9NetherNet20TransportFactoryImpl24createTransportInterfaceERKNS_9NetworkIDERKNS_22TransportConfigurationEPNS_37INetherNetTransportInterfaceCallbacksE", 223039440},
     // NetworkSystem
     {"_ZN13NetworkSystem4sendERK17NetworkIdentifierRK6Packet11SubClientId", 144724016},
-    // OverworldGeneratorMultinoise
-    {"_ZN28OverworldGeneratorMultinoise21chunkPosNeedsBlendingERK8ChunkPos", 85538880},
-    {"_ZN28OverworldGeneratorMultinoise19_clearBlendingCacheEv", 85486208},
     // PistonBlockActor
     {"_ZN16PistonBlockActor4tickER11BlockSource", 216116560},
     // Player

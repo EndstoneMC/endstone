@@ -20,6 +20,27 @@ rip_relative = true
 rip_offset = 3
 
 [[signatures]]
+name = "ChunkBlenderFactory::getOrCreateChunkBlender::cache_cap"
+relative = false
+extra = 6
+# 1. in ChunkBlenderFactory::getOrCreateChunkBlender, reached from OverworldGeneratorMultinoise::chunkPosNeedsBlending
+#    (the generator vtable slot after canLaunchTasks), find the per-ChunkPos blender cache's size compare against
+#    10000 (0x2710; Linux compares 9999 with jbe), right after the cache insert and before the whole-cache wipe; it is
+#    the only such immediate in the function
+# 2. the entry is the third byte of that imm32; raising it from 0x00 raises the cap
+pattern = "48 81 7E ? 10 27 00 00 0F 82"
+
+[[signatures]]
+name = "DBChunkStorage::_hasChunk::cache_cap"
+relative = false
+extra = 9
+# 1. in DBChunkStorage::_hasChunk, reached from the DBChunkStorage.cpp:321 blending-data lambda, find the chunk-
+#    existence cache's size compare against 30000 (0x7530; Linux compares 29999 with jbe), right after the cache
+#    insert and before the whole-cache wipe; it is the only such immediate in the function
+# 2. the entry is the third byte of that imm32; raising it from 0x00 raises the cap
+pattern = "49 81 BD ? ? ? ? 30 75 00 00 0F 82"
+
+[[signatures]]
 name = "Enchant::mEnchants"
 relative = false
 extra = 0
@@ -609,27 +630,6 @@ extra = 0
 pattern = "48 8B 4E ? 48 83 C1 ? 48 83 C4 ? 5B 5D 5F 5E E9 ? ? ? ?"
 rip_relative = true
 rip_offset = 17
-
-[[signatures]]
-name = "?chunkPosNeedsBlending@OverworldGeneratorMultinoise@@UEAA_NAEBVChunkPos@@@Z"
-relative = false
-extra = 0
-# 1. find bytes "48 8B 89 60 0D 00 00 E9" (mov rcx,[rcx+0xd60]; jmp), the _clearBlendingCache thunk below; its lone
-#    data xref is a slot of the OverworldGeneratorMultinoise vtable
-# 2. chunkPosNeedsBlending is the slot just before it, right after canLaunchTasks (slot 38 in 1.26.52)
-# 3. confirm by its body: loads the blender factory from this+0xd60, calls the factory's get-or-create with the
-#    ChunkPos, releases the returned shared_ptr and returns (ptr != nullptr)
-pattern = "56 57 48 83 EC 38 49 89 D0 48 8B 05 ? ? ? ? 48 31 E0 48 89 44 24 30 48 8B 89 ? ? ? ? 48 8D 54 24 20 E8 ? ? ? ? 48 8B 7C 24 20"
-
-[[signatures]]
-name = "?_clearBlendingCache@OverworldGeneratorMultinoise@@EEAAXXZ"
-relative = false
-extra = 0
-# 1. find bytes "48 8B 89 60 0D 00 00 E9" (unique); it is the slot after chunkPosNeedsBlending in the
-#    OverworldGeneratorMultinoise vtable
-# 2. confirm by its body: a two-instruction thunk that loads the blender factory from this+0xd60 into rcx and jmps
-#    to the factory's cache-free function, which has no other caller
-pattern = "48 8B 89 60 0D 00 00 E9"
 
 [[signatures]]
 name = "?tick@PistonBlockActor@@UEAAXAEAVBlockSource@@@Z"
