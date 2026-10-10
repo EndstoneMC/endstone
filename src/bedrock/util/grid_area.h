@@ -14,22 +14,18 @@
 
 #pragma once
 
-#include <cstdint>
+#include <functional>
+#include <memory>
 
-struct Tick {
-    explicit Tick(const uint64_t tick_id) : tick_id(tick_id) {};
-    Tick() = default;
+#include <gsl/gsl>
 
-    bool operator==(const Tick &other) const { return tick_id == other.tick_id; }
+class LevelChunk;
 
-    bool operator!=(const Tick &other) const { return !(*this == other); }
+template <typename Elem>
+class GridArea;
 
-    Tick operator+(int value) const
-    {
-        Tick result;
-        result.tick_id = this->tick_id + value;
-        return result;
-    }
-
-    std::uint64_t tick_id;
+template <>
+class GridArea<std::shared_ptr<LevelChunk>> {
+public:
+    using AddCallback = std::function<void(gsl::span<std::shared_ptr<LevelChunk>>)>;
 };

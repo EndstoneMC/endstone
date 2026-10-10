@@ -40,6 +40,8 @@ public:
     ENDSTONE_HOOK void changeDimension(DimensionType toId) override;  // TODO(fixme): enable the hook
 
 protected:
+    [[nodiscard]] virtual int _getSpawnChunkLimit() const = 0;
+    ENDSTONE_HOOK virtual void _updateChunkPublisherView(const Vec3 &position, float min_distance);
     PlatformType platform_type_;
     std::string language_code_;
 
@@ -62,8 +64,6 @@ private:
     std::optional<PlayerPartyInfo> party_info_;
     int remaining_structure_refresh_ticks_;
     StructureFeatureType current_structure_feature_;
-    // ...
-};
     struct NearbyActor {
         enum class State : int {
             Unknown = 0,
@@ -77,9 +77,11 @@ private:
         Actor *temp_actor;
     };
     std::unordered_map<ActorUniqueID, NearbyActor> nearby_actors_;
+    // ...
 
 public:
     [[nodiscard]] const std::unordered_map<ActorUniqueID, NearbyActor> &getNearbyActors() const  // Endstone
     {
         return nearby_actors_;
     }
+};

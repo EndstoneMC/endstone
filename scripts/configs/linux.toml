@@ -23,6 +23,20 @@ extra = 6
 pattern = "48 81 7D ? 0F 27 00 00 76"
 
 [[signatures]]
+name = "_ZN21ChunkBuildOrderPolicy16updateInfluencesEv"
+relative = false
+extra = 0
+# 1. find bytes "32 31 43 68 75 6E 6B 42 75 69 6C 64 4F 72 64 65 72 50 6F 6C 69 63 79 00" =
+#    "21ChunkBuildOrderPolicy\0" (the RTTI name) and walk type_info to the vtable address point
+# 2. updateInfluences is slot 7 (+0x38): D1, D0, getChunkRebuildPriority, registerForUpdates,
+#    unregisterForUpdates, setPlayerInfluence, setTickingAreaInfluence, updateInfluences
+# 3. confirm the body: copies the influence map (singly-linked list from this+0x18) into a fresh vector of
+#    24-byte entries, then swaps it in under a SpinLock that yields after 3000 spins
+# 4. confirm vs the old named DB
+# function prologue
+pattern = "55 41 57 41 56 41 55 41 54 53 48 83 EC ? 48 89 7C 24 ? 48 8B 4F 18 48 85 C9"
+
+[[signatures]]
 name = "DBChunkStorage::_hasChunk::cache_cap"
 relative = false
 extra = 9
@@ -85,6 +99,31 @@ extra = 0
 # 3. confirm vs the old named DB
 # function prologue
 pattern = "41 56 53 48 83 EC 48 48 8B BF 18 04 00 00 48 C7 44 24 08 00 00 00 00 48 8D 05 ? ? ? ? 48 89 44 24 10"
+
+[[signatures]]
+name = "_ZN17PlayerTickManager23processPlayerNetworkingERK4Tick"
+relative = false
+extra = 0
+# 1. find "T *Bedrock::NonOwnerPointer<GameplayUserManager>::_get() const [T = GameplayUserManager]" and the
+#    DimensionManager twin; processPlayerNetworking is the one function that leas each of them four times
+# 2. confirm the body: it alternates DimensionManager::forEachDimension and
+#    GameplayUserManager::forEachActiveGameplayUser (four calls); the second std::function's operator() calls
+#    PlayerTickProxy vtable +0x10 (preReplicationTick)
+# 3. confirm vs the old named DB
+# function prologue
+pattern = "41 57 41 56 53 48 81 EC ? ? ? ? 48 89 F3 49 89 FE 48 83 3F 00 75 ? 48 8D 3D"
+
+[[signatures]]
+name = "_ZN12ServerPlayer25_updateChunkPublisherViewERK4Vec3f"
+relative = false
+extra = 0
+# 1. ServerPlayer's vtable is RTTI-named `_ZTV12ServerPlayer`; _updateChunkPublisherView is its last slot (247,
+#    +0x7b8), one of the two virtuals ServerPlayer adds to Player's
+# 2. confirm the body: vtable +0x28 and +0x38 on the chunk build order policy at [[ChunkViewSource+0x28]+0x3a8],
+#    then the 16-block move check before ChunkViewSource::move and the NetworkChunkPublisherUpdatePacket send
+# 3. preReplicationTick calls it through vtable +0x7b8; confirm vs the old named DB
+# function prologue
+pattern = "55 41 57 41 56 41 55 41 54 53 48 81 EC ? ? ? ? F3 0F 11 84 24 ? ? ? ? 48 89 FB"
 
 [[signatures]]
 name = "getI18n::result"

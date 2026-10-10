@@ -14,22 +14,12 @@
 
 #pragma once
 
-#include <cstdint>
+#include "bedrock/bedrock.h"
+#include "bedrock/world/level/tick.h"
 
-struct Tick {
-    explicit Tick(const uint64_t tick_id) : tick_id(tick_id) {};
-    Tick() = default;
-
-    bool operator==(const Tick &other) const { return tick_id == other.tick_id; }
-
-    bool operator!=(const Tick &other) const { return !(*this == other); }
-
-    Tick operator+(int value) const
-    {
-        Tick result;
-        result.tick_id = this->tick_id + value;
-        return result;
-    }
-
-    std::uint64_t tick_id;
+class PlayerTickManager {
+public:
+    ~PlayerTickManager();
+    void tick(const Tick &current_tick);
+    ENDSTONE_HOOK void processPlayerNetworking(const Tick &current_tick);
 };

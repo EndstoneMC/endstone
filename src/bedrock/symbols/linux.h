@@ -11,7 +11,7 @@
 
 namespace endstone::runtime {
 
-static constexpr std::array<std::pair<std::string_view, std::size_t>, 74> symbols = {{
+static constexpr std::array<std::pair<std::string_view, std::size_t>, 77> symbols = {{
     {"BlockState::StateListNode::mHead", 257928656},
     {"Enchant::mEnchants", 257765312},
     {"getI18n::result", 256811320},
@@ -35,6 +35,8 @@ static constexpr std::array<std::pair<std::string_view, std::size_t>, 74> symbol
     {"_ZN18CampfireBlockActor14_finishCookingER11BlockSourcei", 216526928},
     // ChunkBlenderFactory
     {"ChunkBlenderFactory::getOrCreateChunkBlender::cache_cap", 85314623},
+    // ChunkBuildOrderPolicy
+    {"_ZN21ChunkBuildOrderPolicy16updateInfluencesEv", 211141408},
     // CircuitSceneGraph
     {"_ZN17CircuitSceneGraph6updateEP11BlockSource", 218431056},
     // Command
@@ -111,6 +113,8 @@ static constexpr std::array<std::pair<std::string_view, std::size_t>, 74> symbol
     {"_ZN6Player17completeUsingItemEv", 196329648},
     {"_ZN6Player4dropERK9ItemStackb", 196441152},
     {"_ZN6Player4takeER5Actorii", 196390032},
+    // PlayerTickManager
+    {"_ZN17PlayerTickManager23processPlayerNetworkingERK4Tick", 209786096},
     // RakNet::RNS2_Windows_Linux_360
     {"_ZN6RakNet22RNS2_Windows_Linux_36027Send_Windows_Linux_360NoVDPEiPNS_19RNS2_SendParametersEPKcj", 224307824},
     // RakPeerHelper
@@ -129,6 +133,7 @@ static constexpr std::array<std::pair<std::string_view, std::size_t>, 74> symbol
     {"_ZN20ServerNetworkHandler24updateServerAnnouncementEv", 143740992},
     {"_ZN20ServerNetworkHandler27disconnectClientWithMessageERK17NetworkIdentifier11SubClientIdN10Connection20DisconnectFailReasonERKNSt3__112basic_stringIcNS6_11char_traitsIcEENS6_9allocatorIcEEEENS6_8optionalISC_EE", 143675360},
     // ServerPlayer
+    {"_ZN12ServerPlayer25_updateChunkPublisherViewERK4Vec3f", 166125232},
     {"_ZN12ServerPlayer15changeDimensionE13DimensionType", 166161184},
     // ServerScoreboard
     {"_ZN16ServerScoreboardC2E23CommandSoftEnumRegistryP12LevelStorageN3gsl8not_nullIN7Bedrock15NonOwnerPointerI19GameplayUserManagerEEEE", 217580848},

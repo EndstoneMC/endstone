@@ -31,6 +31,19 @@ extra = 6
 pattern = "48 81 7E ? 10 27 00 00 0F 82"
 
 [[signatures]]
+name = "?updateInfluences@ChunkBuildOrderPolicy@@UEAAXXZ"
+relative = false
+extra = 0
+# 1. _updateChunkPublisherView@ServerPlayer calls vtable +0x20 then +0x30 on the policy at
+#    [[ChunkViewSource+0x28]+0x3b0]. Its vtable is the one lea'd by exactly three functions: the Dimension ctor,
+#    Dimension::_createChunkBuildOrderPolicy and ~ChunkBuildOrderPolicy. updateInfluences is slot 6 (+0x30)
+# 2. confirm the body: copies the influence map into a fresh vector of 24-byte entries, then swaps it in under
+#    a SpinLock (`mov ecx, 0xbb8` spins, then _Thrd_yield) and frees the old vector
+# 3. confirm vs the old named DB
+# function prologue
+pattern = "55 41 57 41 56 41 55 41 54 56 57 53 48 83 EC 68 48 8D 6C 24 60 48 C7 45 00 FE FF FF FF 48 89 CE 0F 57 C0 0F 29 45 E0 48 C7 45 F0 00 00 00 00"
+
+[[signatures]]
 name = "DBChunkStorage::_hasChunk::cache_cap"
 relative = false
 extra = 9
@@ -178,6 +191,19 @@ extra = 0
 #    -> _log_va (two log_va overloads exist; take the one the thunk calls)
 # 3. confirm each hop vs the old named DB
 pattern = "55 41 57 41 56 41 55 41 54 56 57 53 48 81 EC ? ? ? ? 48 8D AC 24 ? ? ? ? 48 C7 85 ? ? ? ? ? ? ? ? 4D 89 CE 44 89 85 ? ? ? ? 89 95 ? ? ? ? 48 89 CE 48 8B 95"
+
+[[signatures]]
+name = "?processPlayerNetworking@PlayerTickManager@@QEAAXAEBUTick@@@Z"
+relative = false
+extra = 0
+# 1. find "T *Bedrock::NonOwnerPointer<GameplayUserManager>::_get() const [T = GameplayUserManager]" and the
+#    DimensionManager twin; processPlayerNetworking leas each of them four times
+# 2. confirm the body: it alternates DimensionManager::forEachDimension and
+#    GameplayUserManager::forEachActiveGameplayUser (four calls); the second lambda calls
+#    PlayerTickProxy::preReplicationTick
+# 3. confirm vs the old named DB
+# function prologue
+pattern = "56 57 48 81 EC ? ? ? ? 48 89 D6 48 89 CF 48 83 39 00"
 
 [[signatures]]
 name = "?resolve@ResolveHelper@BlockDescriptor@@QEAAX_N@Z"
@@ -926,6 +952,18 @@ extra = 0
 # 3. confirm vs the old named DB (ctor args: CommandSoftEnumRegistry, LevelStorage*, not_null<NonOwnerPointer<GameplayUserManager>>); caller_count 1 = ServerLevel::_initializeScoreboard. Size ballooned 0x3d4 -> 0x3032 from the inlining
 # function prologue
 pattern = "55 41 57 41 56 41 55 41 54 56 57 53 48 81 EC ? ? ? ? 48 8D AC 24 ? ? ? ? 0F 29 BD ? ? ? ? 0F 29 B5 ? ? ? ? 48 C7 85 ? ? ? ? ? ? ? ? 4C 89 8D ? ? ? ? 4C 89 C6 48 89 CF"
+
+[[signatures]]
+name = "?_updateChunkPublisherView@ServerPlayer@@MEAAXAEBVVec3@@M@Z"
+relative = false
+extra = 0
+# 1. find "NetworkChunkPublisherUpdatePacket" and follow getName to the packet's vtable; of the functions that
+#    lea it (dtor, make_packet, cereal/entt glue), this is the one that also calls ChunkViewSource::move
+# 2. confirm the body: look direction from the SIN table, then vtable +0x20 and +0x30 on the chunk build order
+#    policy at [[ChunkViewSource+0x28]+0x3b0], then the 16-block move check before ChunkViewSource::move
+# 3. preReplicationTick calls it through ServerPlayer vtable +0x7b0; confirm vs the old named DB
+# function prologue
+pattern = "55 41 57 41 56 41 55 41 54 56 57 53 48 81 EC ? ? ? ? 48 8D AC 24 ? ? ? ? 44 0F 29 85 ? ? ? ? 0F 29 BD ? ? ? ? 0F 29 B5 ? ? ? ? 48 C7 85 ? ? ? ? FE FF FF FF 0F 28 F2 48 89 CE"
 
 [[signatures]]
 name = "?updateWeather@WeatherManager@@QEAAXMHMH@Z"

@@ -11,7 +11,7 @@
 
 namespace endstone::runtime {
 
-static constexpr std::array<std::pair<std::string_view, std::size_t>, 74> symbols = {{
+static constexpr std::array<std::pair<std::string_view, std::size_t>, 77> symbols = {{
     {"BlockState::StateListNode::mHead", 215092208},
     {"Enchant::mEnchants", 214656904},
     // Actor
@@ -34,6 +34,8 @@ static constexpr std::array<std::pair<std::string_view, std::size_t>, 74> symbol
     {"?_finishCooking@CampfireBlockActor@@AEAAXAEAVBlockSource@@H@Z", 32663744},
     // ChunkBlenderFactory
     {"ChunkBlenderFactory::getOrCreateChunkBlender::cache_cap", 136197791},
+    // ChunkBuildOrderPolicy
+    {"?updateInfluences@ChunkBuildOrderPolicy@@UEAAXXZ", 25656400},
     // CircuitSceneGraph
     {"?update@CircuitSceneGraph@@QEAAXPEAVBlockSource@@@Z", 79488960},
     // Command
@@ -110,6 +112,8 @@ static constexpr std::array<std::pair<std::string_view, std::size_t>, 74> symbol
     {"?stopSleepInBed@Player@@UEAAX_N0@Z", 2767280},
     {"?take@Player@@QEAA_NAEAVActor@@HH@Z", 2837264},
     {"?teleportTo@Player@@UEAAXAEBVVec3@@_NHH1@Z", 2755600},
+    // PlayerTickManager
+    {"?processPlayerNetworking@PlayerTickManager@@QEAAXAEBUTick@@@Z", 74985136},
     // RakNet::RNS2_Windows_Linux_360
     {"?Send_Windows_Linux_360NoVDP@RNS2_Windows_Linux_360@RakNet@@KAHHPEAURNS2_SendParameters@2@PEBDI@Z", 54713712},
     // RakPeerHelper
@@ -128,6 +132,7 @@ static constexpr std::array<std::pair<std::string_view, std::size_t>, 74> symbol
     {"?tryToLoadPlayer@ServerNetworkHandler@@QEAA_NAEAVServerPlayer@@AEBVConnectionRequest@@AEBUPlayerAuthenticationInfo@@@Z", 10094224},
     {"?updateServerAnnouncement@ServerNetworkHandler@@QEAAXXZ", 9978160},
     // ServerPlayer
+    {"?_updateChunkPublisherView@ServerPlayer@@MEAAXAEBVVec3@@M@Z", 7667264},
     {"?changeDimension@ServerPlayer@@UEAAXUDimensionType@@@Z", 7705664},
     // ServerScoreboard
     {"??0ServerScoreboard@@QEAA@VCommandSoftEnumRegistry@@PEAVLevelStorage@@V?$not_null@V?$NonOwnerPointer@VGameplayUserManager@@@Bedrock@@@gsl@@@Z", 2095792},
