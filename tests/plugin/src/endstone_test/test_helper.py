@@ -2,11 +2,12 @@ import pytest
 
 
 class FixtureInjection:
-    def __init__(self, **kwargs):
-        for name, obj in kwargs.items():
-            setattr(
-                self, name, pytest.fixture(scope="session")(self._create_fixture(obj))
-            )
+    def __new__(cls, **kwargs):
+        fixtures = {
+            name: staticmethod(pytest.fixture(scope="session", name=name)(cls._create_fixture(obj)))
+            for name, obj in kwargs.items()
+        }
+        return super().__new__(type(cls.__name__, (cls,), fixtures))
 
     @staticmethod
     def _create_fixture(obj):
