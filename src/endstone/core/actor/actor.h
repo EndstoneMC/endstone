@@ -166,7 +166,7 @@ public:
 
     [[nodiscard]] Dimension &getDimension() const override
     {
-        return *getLevel().getDimension(getHandle().getDimension().getName());
+        return getHandle().getDimension().getEndstoneDimension();
     }
 
     void setRotation(float yaw, float pitch) override { getHandle().setRotationWrapped({pitch, yaw}); }
