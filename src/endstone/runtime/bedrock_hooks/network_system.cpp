@@ -39,11 +39,8 @@ bool NetworkSystem::onNewIncomingConnection(const NetworkIdentifier &id, std::sh
         return true;
     }
 
-    auto *slot = &connection.peer;
-    while (*slot && *slot != batched) {
-        slot = &(*slot)->peer_;
-    }
-    if (!*slot || batched->peer_ != compressed) {
+    const auto *top = connection.peer.get();
+    if (batched->peer_ != compressed || (top != batched.get() && top->peer_ != batched)) {
         endstone::core::EndstoneServer::getInstance().getLogger().error("Unable to splice the peer chain of {}.",
                                                                         id.getAddress());
         return true;
@@ -56,6 +53,7 @@ bool NetworkSystem::onNewIncomingConnection(const NetworkIdentifier &id, std::sh
         std::make_shared<endstone::core::EndstoneBatchedNetworkPeer>(connection.id, new_compressed, batched);
     connection.compressed_peer = new_compressed;
     connection.batched_peer = new_batched;
-    *slot = std::move(new_batched);
+    // Leaves out PacketTraceNetworkPeer, which nothing on the server reads
+    connection.peer = std::move(new_batched);
     return true;
 }
