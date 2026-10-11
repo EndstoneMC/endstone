@@ -14,6 +14,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Changed
 
 - Improved the performance of sending and receiving packets when no plugin listens for `PacketSendEvent` or `PacketReceiveEvent`.
+- Improved the performance of packet compression.
 - Improved server performance when many chunks are loaded, such as when players are spread out across the world.
 - Improved server performance when players explore with client-side chunk generation enabled.
 - Reduced the cost of random block ticks.

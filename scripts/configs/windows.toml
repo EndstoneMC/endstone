@@ -737,6 +737,18 @@ rip_relative = true
 rip_offset = 17
 
 [[signatures]]
+name = "?onNewIncomingConnection@NetworkSystem@@EEAA_NAEBVNetworkIdentifier@@$$QEAV?$shared_ptr@VNetworkPeer@@@std@@@Z"
+relative = false
+extra = 0
+# 1. find bytes "42 61 74 63 68 65 64 20 4E 65 74 77 6F 72 6B 20 54 61 73 6B 47 72 6F 75 70 00"
+#    = "Batched Network TaskGroup\0" (unique); its lone xref is in BatchedNetworkPeer's ctor, whose only caller is
+#    NetworkConnection's ctor
+# 2. NetworkConnection's ctor has two callers, onNewIncomingConnection and onNewOutgoingConnection; both sit in
+#    NetworkSystem's primary vtable right after the destructor, and incoming is the earlier slot
+# 3. confirm vs the old named DB: it walks mConnections comparing NetworkIdentifier before building the connection
+pattern = "55 41 57 41 56 41 55 41 54 56 57 53 48 81 EC ? ? ? ? 48 8D AC 24 ? ? ? ? 48 C7 45 50 ? ? ? ? 4D 89 C6 48 89 D7 48 89 CE 48 8D 99 ? ? ? ? 48 8B 81 ? ? ? ? 48 8B 91 ? ? ? ? 48 39 C2"
+
+[[signatures]]
 name = "?tick@PistonBlockActor@@UEAAXAEAVBlockSource@@@Z"
 relative = false
 extra = 0
