@@ -14,9 +14,12 @@
 
 #include "bedrock/world/level/chunk/level_chunk.h"
 
+#include <xmmintrin.h>
+
 #include <algorithm>
 #include <array>
 #include <cstdint>
+#include <cstdlib>
 #include <functional>
 #include <variant>
 
@@ -84,23 +87,17 @@ void warmRandomTicks(const LevelChunk &chunk)
     auto seed = *seed_global;
     for (std::uint32_t i = 0; i < total; ++i) {
         seed = seed * 3 + 0x3C6EF35F;
-#ifdef _WIN32
-        const auto shifted = static_cast<std::int32_t>(seed) >> 2;
-        const auto value = static_cast<std::uint32_t>(shifted < 0 ? -shifted : shifted);
+        // long is 32-bit on Windows, 64-bit on Linux
+        const auto value = std::abs(static_cast<long>(seed) >> 2);  // NOLINT(*-runtime-int)
         const auto x = value & 15;
         const auto z = (value >> 8) & 15;
         const auto y = static_cast<std::uint32_t>(static_cast<int>((value >> 16) & 0xFFFF) % height);
-#else
-        const auto x = (seed >> 2) & 15;
-        const auto z = (seed >> 10) & 15;
-        const auto y = static_cast<std::uint32_t>(static_cast<int>((seed >> 18) & 0xFFFF) % height);
-#endif
         if ((y >> 4) >= sub_chunks.size()) {
             continue;
         }
         records[n] = &sub_chunks[y >> 4];
         indices[n] = static_cast<std::uint16_t>((x << 8) | (z << 4) | (y & 15));
-        __builtin_prefetch(&records[n]->blocks_read_ptr_[0]);
+        _mm_prefetch(reinterpret_cast<const char *>(&records[n]->blocks_read_ptr_[0]), _MM_HINT_T0);
         ++n;
     }
 
@@ -108,7 +105,7 @@ void warmRandomTicks(const LevelChunk &chunk)
     for (std::uint32_t k = 0; k < n; ++k) {
         storages[k] = records[k]->blocks_read_ptr_[0];
         if (storages[k]) {
-            __builtin_prefetch(storages[k]);
+            _mm_prefetch(reinterpret_cast<const char *>(storages[k]), _MM_HINT_T0);
         }
     }
 
@@ -119,7 +116,7 @@ void warmRandomTicks(const LevelChunk &chunk)
 
     for (std::uint32_t k = 0; k < n; ++k) {
         if (blocks[k]) {
-            __builtin_prefetch(&blocks[k]->getBlockType().getEventManager());
+            _mm_prefetch(reinterpret_cast<const char *>(&blocks[k]->getBlockType().getEventManager()), _MM_HINT_T0);
         }
     }
 }
@@ -130,7 +127,9 @@ void LevelChunk::tickImpl(BlockSource &tick_region, const Tick &tick, std::funct
     // Vanilla runs the random-tick loop shortly after the spawner, so warm the lines it is about to read.
     ENDSTONE_HOOK_CALL_ORIGINAL(&LevelChunk::tickImpl, this, tick_region, tick,
                                 std::function<void()>([this, &spawner_callback] {
-                                    spawner_callback();
+                                    if (spawner_callback) {
+                                        spawner_callback();
+                                    }
                                     warmRandomTicks(*this);
                                 }));
 }
