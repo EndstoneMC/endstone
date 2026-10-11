@@ -11,7 +11,7 @@
 
 namespace endstone::runtime {
 
-static constexpr std::array<std::pair<std::string_view, std::size_t>, 84> symbols = {{
+static constexpr std::array<std::pair<std::string_view, std::size_t>, 82> symbols = {{
     {"BlockState::StateListNode::mHead", 257928656},
     {"Enchant::mEnchants", 257765312},
     {"getI18n::result", 256811320},
@@ -19,9 +19,6 @@ static constexpr std::array<std::pair<std::string_view, std::size_t>, 84> symbol
     {"_ZN5Actor10teleportToERK4Vec3biib", 187569008},
     // ActorFactory
     {"_ZN12ActorFactory18createSpawnedActorERK25ActorDefinitionIdentifierP5ActorRK4Vec3RK4Vec2", 183846448},
-    // BatchedNetworkPeer
-    {"_ZN18BatchedNetworkPeer10sendPacketERKNSt3__112basic_stringIcNS0_11char_traitsIcEENS0_9allocatorIcEEEEN11NetworkPeer11ReliabilityE15Compressibility", 145217872},
-    {"_ZN18BatchedNetworkPeer14_receivePacketERNSt3__112basic_stringIcNS0_11char_traitsIcEENS0_9allocatorIcEEEERKNS0_10shared_ptrINS0_6chrono10time_pointINS9_12steady_clockENS9_8durationIxNS0_5ratioILl1ELl1000000000EEEEEEEEE", 145218288},
     // BedrockLog::LogDetails
     {"_ZN10BedrockLog10LogDetails7_log_vaE9LogAreaIDjPKciiS3_P13__va_list_tag", 249278320},
     // BlockDescriptor::ResolveHelper

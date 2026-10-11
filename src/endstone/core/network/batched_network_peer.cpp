@@ -12,11 +12,12 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-#include "bedrock/network/batched_network_peer.h"
+#include "endstone/core/network/batched_network_peer.h"
 
 #include <cstdint>
 #include <limits>
 #include <string>
+#include <utility>
 
 #include <gsl/util>
 
@@ -25,7 +26,6 @@
 #include "bedrock/network/packet/resource_pack_stack_packet.h"
 #include "bedrock/network/packet/resource_packs_info_packet.h"
 #include "bedrock/network/packet/start_game_packet.h"
-#include "bedrock/network/raknet_connector.h"
 #include "bedrock/network/server_network_system.h"
 #include "bedrock/server/server_instance.h"
 #include "endstone/core/level/level.h"
@@ -36,7 +36,6 @@
 #include "endstone/core/util/socket_address.h"
 #include "endstone/event/server/packet_receive_event.h"
 #include "endstone/event/server/packet_send_event.h"
-#include "endstone/runtime/hook.h"
 
 namespace {
 void patchPacket(const StartGamePacket &packet)
@@ -153,14 +152,29 @@ bool isPatched(MinecraftPacketIds id)
 }
 }  // namespace
 
-void BatchedNetworkPeer::sendPacket(const std::string &data, Reliability reliability, Compressibility compressible)
+namespace endstone::core {
+
+EndstoneBatchedNetworkPeer::EndstoneBatchedNetworkPeer(NetworkIdentifier id, std::shared_ptr<NetworkPeer> peer,
+                                                       std::shared_ptr<::BatchedNetworkPeer> async_peer)
+    : id_(std::move(id)), async_peer_(std::move(async_peer))
 {
-    const auto &server = endstone::core::EndstoneServer::getInstance();
+    peer_ = std::move(peer);
+    compressible_bytes_ = 0;
+    incoming_data_.emplace(incoming_data_buffer_, false);
+    sent_packets_ = 0;
+    async_enabled_ = false;
+    async_peer_->async_enabled_ = true;
+}
+
+void EndstoneBatchedNetworkPeer::sendPacket(const std::string &data, Reliability /*reliability*/,
+                                            Compressibility compressible)
+{
+    const auto &server = EndstoneServer::getInstance();
     ReadOnlyBinaryStream peek(data, false);
     if (const auto result = peek.getUnsignedVarInt().discardError();
         result && !isPatched(PacketHeader::fromRaw(result.value()).getPacketId()) &&
-        !server.getEndstonePluginManager().isEventRegistered<endstone::PacketSendEvent>()) {
-        ENDSTONE_HOOK_CALL_ORIGINAL(&BatchedNetworkPeer::sendPacket, this, data, reliability, compressible);
+        !server.getEndstonePluginManager().isEventRegistered<PacketSendEvent>()) {
+        writePacket(data, compressible);
         return;
     }
 
@@ -181,22 +195,20 @@ void BatchedNetworkPeer::sendPacket(const std::string &data, Reliability reliabi
 
     // Parse packet header
     auto header = PacketHeader::fromRaw(result.value());
-    const auto &id = getId();
 
     // Get player object - if exists
     const auto *server_player =
-        server.getServer().getMinecraft()->getServerNetworkHandler()->getServerPlayer(id, header.getRecipientSubId());
+        server.getServer().getMinecraft()->getServerNetworkHandler()->getServerPlayer(id_, header.getRecipientSubId());
     endstone::Player *player = nullptr;
     if (server_player) {
-        player = &server_player->getEndstoneActor<endstone::core::EndstonePlayer>();
+        player = &server_player->getEndstoneActor<EndstonePlayer>();
     }
 
     // Create packet send event
     auto payload = stream.getView().substr(stream.getReadPointer());
-    const auto address =
-        player ? player->getAddress() : endstone::core::EndstoneSocketAddress::fromNetworkIdentifier(id);
-    endstone::PacketSendEvent e{player, static_cast<int>(header.getPacketId()), payload, address,
-                                static_cast<int>(header.getRecipientSubId())};
+    const auto address = player ? player->getAddress() : EndstoneSocketAddress::fromNetworkIdentifier(id_);
+    PacketSendEvent e{player, static_cast<int>(header.getPacketId()), payload, address,
+                      static_cast<int>(header.getRecipientSubId())};
 
     // Patch specific outbound packets (deserialize -> modify -> re-serialize)
     switch (header.getPacketId()) {
@@ -240,25 +252,66 @@ void BatchedNetworkPeer::sendPacket(const std::string &data, Reliability reliabi
         const auto new_payload = e.getPayload();
         const auto *bytes = reinterpret_cast<const unsigned char *>(new_payload.data());
         out.writeRawBytes({bytes, bytes + new_payload.size()}, nullptr, nullptr);
-        ENDSTONE_HOOK_CALL_ORIGINAL(&BatchedNetworkPeer::sendPacket, this, out.getBuffer(), reliability, compressible);
+        writePacket(out.getBuffer(), compressible);
     }
     else {
-        ENDSTONE_HOOK_CALL_ORIGINAL(&BatchedNetworkPeer::sendPacket, this, buffer, reliability, compressible);
+        writePacket(buffer, compressible);
     }
 }
 
-NetworkPeer::DataStatus BatchedNetworkPeer::_receivePacket(std::string &out_data,
-                                                           const PacketRecvTimepointPtr &timepoint_ptr)
+NetworkPeer::NetworkStatus EndstoneBatchedNetworkPeer::getNetworkStatus() const
 {
-    const auto &server = endstone::core::EndstoneServer::getInstance();
-    if (!server.getEndstonePluginManager().isEventRegistered<endstone::PacketReceiveEvent>()) {
-        return ENDSTONE_HOOK_CALL_ORIGINAL(&BatchedNetworkPeer::_receivePacket, this, out_data, timepoint_ptr);
+    return peer_->getNetworkStatus();
+}
+
+void EndstoneBatchedNetworkPeer::update()
+{
+    flush({});
+    if (peer_) {
+        peer_->update();
+    }
+}
+
+void EndstoneBatchedNetworkPeer::flush(std::function<void()> &&callback)
+{
+    if (async_enabled_) {
+        // The peer BDS built queues the batch on its TaskGroup, which sends it on the network worker
+        const auto &batch = outgoing_data_.getBuffer();
+        const auto *bytes = reinterpret_cast<const unsigned char *>(batch.data());
+        async_peer_->outgoing_data_.writeRawBytes({bytes, bytes + batch.size()}, nullptr, nullptr);
+        async_peer_->compressible_bytes_ = compressible_bytes_;
+        outgoing_data_.reset();
+        compressible_bytes_ = 0;
+        async_peer_->flush(std::move(callback));
+        return;
+    }
+
+    const auto data = outgoing_data_.getAndReleaseData();
+    if (data.empty()) {
+        if (callback) {
+            callback();
+        }
+        return;
+    }
+
+    peer_->sendPacket(data, Reliability::ReliableOrdered, getCompressibleState(data.size()));
+    if (callback) {
+        callback();
+    }
+    compressible_bytes_ = 0;
+}
+
+NetworkPeer::DataStatus EndstoneBatchedNetworkPeer::_receivePacket(std::string &out_data,
+                                                                   const PacketRecvTimepointPtr &timepoint_ptr)
+{
+    const auto &server = EndstoneServer::getInstance();
+    if (!server.getEndstonePluginManager().isEventRegistered<PacketReceiveEvent>()) {
+        return readPacket(out_data, timepoint_ptr);
     }
 
     auto network_handler = server.getServer().getMinecraft()->getServerNetworkHandler();
     while (true) {
-        const auto status =
-            ENDSTONE_HOOK_CALL_ORIGINAL(&BatchedNetworkPeer::_receivePacket, this, out_data, timepoint_ptr);
+        const auto status = readPacket(out_data, timepoint_ptr);
         if (status != DataStatus::HasData) {
             return status;
         }
@@ -271,17 +324,15 @@ NetworkPeer::DataStatus BatchedNetworkPeer::_receivePacket(std::string &out_data
 
         const auto header = PacketHeader::fromRaw(result.value());
 
-        const auto &id = getId();
-        endstone::core::EndstonePlayer *player = nullptr;
-        if (const auto *p = network_handler->getServerPlayer(id, header.getSenderSubId())) {
-            player = &p->getEndstoneActor<endstone::core::EndstonePlayer>();
+        EndstonePlayer *player = nullptr;
+        if (const auto *p = network_handler->getServerPlayer(id_, header.getSenderSubId())) {
+            player = &p->getEndstoneActor<EndstonePlayer>();
         }
 
         const auto payload = stream.getView().substr(stream.getReadPointer());
-        const auto address =
-            player ? player->getAddress() : endstone::core::EndstoneSocketAddress::fromNetworkIdentifier(id);
-        endstone::PacketReceiveEvent e{player, static_cast<int>(header.getPacketId()), payload, address,
-                                       static_cast<int>(header.getSenderSubId())};
+        const auto address = player ? player->getAddress() : EndstoneSocketAddress::fromNetworkIdentifier(id_);
+        PacketReceiveEvent e{player, static_cast<int>(header.getPacketId()), payload, address,
+                             static_cast<int>(header.getSenderSubId())};
         server.getPluginManager().callEvent(e);
         if (e.isCancelled()) {
             continue;
@@ -298,22 +349,59 @@ NetworkPeer::DataStatus BatchedNetworkPeer::_receivePacket(std::string &out_data
     }
 }
 
-const NetworkIdentifier &BatchedNetworkPeer::getId() const
+void EndstoneBatchedNetworkPeer::writePacket(std::string_view data, Compressibility compressible)
 {
-    // The innermost peer is transport-specific, so find the connection we belong to instead.
-    static const NetworkIdentifier invalid = [] {
-        NetworkIdentifier id{};
-        id.type = NetworkIdentifier::Type::Invalid;
-        return id;
-    }();
+    outgoing_data_.writeString(data, nullptr, nullptr);
+    if (compressible == Compressibility::Compressible) {
+        compressible_bytes_ += data.size();
+    }
+    if (getCompressibleState(outgoing_data_.getBuffer().size()) == Compressibility::Incompressible) {
+        flush({});
+    }
+}
 
-    const auto &server = endstone::core::EndstoneServer::getInstance();
-    for (const auto &connection : server.getServer().getNetwork().getConnections()) {
-        for (const auto *peer = connection->peer.get(); peer != nullptr; peer = peer->peer_.get()) {
-            if (peer == this) {
-                return connection->id;
+NetworkPeer::DataStatus EndstoneBatchedNetworkPeer::readPacket(std::string &out_data,
+                                                               const PacketRecvTimepointPtr &timepoint_ptr)
+{
+    if (incoming_data_->getUnreadLength() == 0) {
+        if (const auto status = peer_->_receivePacket(incoming_data_buffer_, timepoint_ptr);
+            status != DataStatus::HasData) {
+            return status;
+        }
+        if (incoming_data_buffer_.empty()) {
+            return DataStatus::BrokenData;
+        }
+        incoming_data_.emplace(incoming_data_buffer_, false);
+    }
+
+    auto status = DataStatus::NoData;
+    if (incoming_data_->getUnreadLength() != 0) {
+        out_data.clear();
+        if (const auto length = incoming_data_->getUnsignedVarInt().discardError()) {
+            const auto start = incoming_data_->getReadPointer();
+            if (length.value() > incoming_data_->getUnreadLength()) {
+                incoming_data_->setReadPointer(incoming_data_->getLength());
+            }
+            else {
+                out_data.assign(incoming_data_->getView().substr(start, length.value()));
+                incoming_data_->setReadPointer(start + length.value());
             }
         }
+        status = DataStatus::HasData;
     }
-    return invalid;
+
+    if (incoming_data_->hasOverflowed()) {
+        incoming_data_buffer_.clear();
+        incoming_data_.emplace(incoming_data_buffer_, false);
+        return DataStatus::BrokenData;
+    }
+    return status;
 }
+
+Compressibility EndstoneBatchedNetworkPeer::getCompressibleState(std::size_t data_to_send) const
+{
+    const auto ratio = static_cast<float>(compressible_bytes_) / static_cast<float>(data_to_send);
+    return ratio <= 0.2F ? Compressibility::Incompressible : Compressibility::Compressible;
+}
+
+}  // namespace endstone::core

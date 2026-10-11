@@ -1689,6 +1689,15 @@ only a tiny `.dynsym`), so every Linux entry is pattern-resolved too.
   real `struct` too (mirror the layout), replace every use, delete the orphaned
   alias header. Editing only the config `name` is not enough - `__FUNCDNAME__`
   comes from the declaration.
+- **The network peer chain is spliced, not hooked.** `onNewIncomingConnection`
+  swaps BDS's compressed and batched peers for Endstone subclasses, so BDS's own
+  code for those layers never runs. Each bump: check the size asserts, the field
+  offsets BDS writes through the connection's typed weak pointers (the inlined
+  compression-enable store in the network-settings handler, found by its 10 MiB
+  `0xA00000` immediate, and the async-flush flag store in `enableAsyncFlush`),
+  the chain order in `NetworkConnection`'s ctor, and diff the decompiled
+  `sendPacket`/`_receivePacket`/`flush` against the reimplementations - a BDS
+  behaviour change there must be mirrored by hand.
 - Removing a class is a **multi-file cascade**: also remove its
   `src/endstone/runtime/bedrock_hooks/*.cpp` hook, the `CMakeLists.txt` source
   entries, the `[[signatures]]` blocks in both configs, the generated

@@ -17,8 +17,10 @@
 #include <memory>
 #include <utility>
 
+#include "bedrock/network/batched_network_peer.h"
 #include "bedrock/network/compressed_network_peer.h"
 #include "bedrock/network/network_connection.h"
+#include "endstone/core/network/batched_network_peer.h"
 #include "endstone/core/network/compressed_network_peer.h"
 #include "endstone/core/server.h"
 #include "endstone/runtime/hook.h"
@@ -32,22 +34,28 @@ bool NetworkSystem::onNewIncomingConnection(const NetworkIdentifier &id, std::sh
     // BDS appends the new connection, while a lookup by id can find a closing one with the same id
     auto &connection = *connections_.back();
     const auto compressed = connection.compressed_peer.lock();
-    if (!compressed) {
+    const auto batched = connection.batched_peer.lock();
+    if (!compressed || !batched) {
         return true;
     }
 
     auto *slot = &connection.peer;
-    while (*slot && *slot != compressed) {
+    while (*slot && *slot != batched) {
         slot = &(*slot)->peer_;
     }
-    if (!*slot) {
+    if (!*slot || batched->peer_ != compressed) {
         endstone::core::EndstoneServer::getInstance().getLogger().error("Unable to splice the peer chain of {}.",
                                                                         id.getAddress());
         return true;
     }
 
-    auto replacement = std::make_shared<endstone::core::EndstoneCompressedNetworkPeer>(compressed->peer_, *compressed);
-    *slot = replacement;
-    connection.compressed_peer = replacement;
+    auto new_compressed =
+        std::make_shared<endstone::core::EndstoneCompressedNetworkPeer>(compressed->peer_, *compressed);
+    batched->peer_ = new_compressed;
+    auto new_batched =
+        std::make_shared<endstone::core::EndstoneBatchedNetworkPeer>(connection.id, new_compressed, batched);
+    connection.compressed_peer = new_compressed;
+    connection.batched_peer = new_batched;
+    *slot = std::move(new_batched);
     return true;
 }
