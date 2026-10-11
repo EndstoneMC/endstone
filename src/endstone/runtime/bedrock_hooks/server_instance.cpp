@@ -19,6 +19,8 @@
 #include <entt/locator/locator.hpp>
 #include <pybind11/pybind11.h>
 
+#include "bedrock/core/threading/worker_pool.h"
+#include "bedrock/core/utility/non_owner_pointer.h"
 #include "bedrock/scripting/event_handlers/script_actor_gameplay_handler.h"
 #include "bedrock/scripting/event_handlers/script_block_gameplay_handler.h"
 #include "bedrock/scripting/event_handlers/script_item_gameplay_handler.h"
@@ -175,12 +177,26 @@ private:
     std::optional<py::gil_scoped_release> no_gil_;
 };
 
+namespace {
+// Let any queued task wake an idle chunk generation worker, not only 50 ms of backlog per busy worker.
+void patchAsyncWorkerPoolMinBacklog(endstone::core::EndstoneServer &server)
+{
+    auto &async = *BEDROCK_VAR(Bedrock::NonOwnerPointer<WorkerPool> *, "MinecraftWorkerPool::ASYNC");
+    if (!async || async->min_backlog_duration_seconds_ != 0.05F) {
+        server.getLogger().warning("Unexpected async worker pool, leaving its wake threshold unchanged.");
+        return;
+    }
+    async->min_backlog_duration_seconds_ = 0.0F;
+}
+}  // namespace
+
 ServerInitialization::ServerInitResult ServerInstance::initializeServer(ServerInstanceInitArguments &&args)
 {
     auto result = ENDSTONE_HOOK_CALL_ORIGINAL(&ServerInstance::initializeServer, this,
                                               std::forward<ServerInstanceInitArguments>(args));
     auto &server = endstone::core::EndstoneServer::getInstance();
     server.init(*this);
+    patchAsyncWorkerPoolMinBacklog(server);
     getEventCoordinator()->registerListener(&ServerInstanceLifecycleListener::getInstance());
     return result;
 }

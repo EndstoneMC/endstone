@@ -666,6 +666,20 @@ extra = 0
 pattern = "53 48 89 FB 81 FE ? ? ? ? 77 ?"
 
 [[signatures]]
+name = "MinecraftWorkerPool::ASYNC"
+relative = false
+extra = -16
+# 1. find "Streaming Pool\0"; its xref is in MinecraftWorkerPool::createSingletons, which moves the first
+#    createWorkerPool result into this global (a Bedrock::NonOwnerPointer<WorkerPool>; the raw WorkerPool* sits
+#    at +0x10)
+# 2. take the read of that pointer in ChunkSource::checkAndLaunchChunkGenerationTasks, where the async pool's
+#    worker count (end - begin of the workers vector at +0x20/+0x28) sets the 2n / 6n task caps
+# 3. resolve the rip-relative load and subtract 16 to reach the NonOwnerPointer itself
+pattern = "48 8B 05 ? ? ? ? 48 8B 48 28 48 2B 48 20 48 C1 E9 03 01 C9"
+rip_relative = true
+rip_offset = 3
+
+[[signatures]]
 name = "_ZN3Mob9knockbackEP5ActorfffRK19KnockbackParameters"
 relative = false
 extra = 0

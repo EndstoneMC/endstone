@@ -62,6 +62,7 @@ class AsyncJoinTaskManager {};
 class AutoCompleteInformation;
 class AutomationBehaviorTreeGroup;
 class BackgroundTaskBase;
+class BackgroundWorker;
 class BaseLightTextureImageBuilder;
 class BasicTimer {};
 class BehaviorFactory;

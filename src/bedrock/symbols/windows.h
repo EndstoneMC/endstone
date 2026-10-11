@@ -91,6 +91,8 @@ static constexpr std::array<std::pair<std::string_view, std::size_t>, 82> symbol
     {"?executeCommand@MinecraftCommands@@QEBA?AUMCRESULT@@AEAVCommandContext@@_N@Z", 4039904},
     // MinecraftPackets
     {"?createPacket@MinecraftPackets@@SA?AV?$shared_ptr@VPacket@@@std@@W4MinecraftPacketIds@@@Z", 9675920},
+    // MinecraftWorkerPool
+    {"MinecraftWorkerPool::ASYNC", 214123464},
     // Mob
     {"?knockback@Mob@@UEAAXPEAVActor@@MMMAEBUKnockbackParameters@@@Z", 43938096},
     // NetherNet::LanThreadManager

@@ -92,6 +92,8 @@ static constexpr std::array<std::pair<std::string_view, std::size_t>, 82> symbol
     {"_ZNK17MinecraftCommands14executeCommandER14CommandContextb", 164353584},
     // MinecraftPackets
     {"_ZN16MinecraftPackets12createPacketE18MinecraftPacketIds", 144683616},
+    // MinecraftWorkerPool
+    {"MinecraftWorkerPool::ASYNC", 258114960},
     // Mob
     {"_ZN3Mob9knockbackEP5ActorfffRK19KnockbackParameters", 199753344},
     // NetherNet::LanThreadManager

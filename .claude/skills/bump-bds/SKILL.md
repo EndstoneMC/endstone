@@ -1698,6 +1698,11 @@ only a tiny `.dynsym`), so every Linux entry is pattern-resolved too.
   the chain order in `NetworkConnection`'s ctor, and diff the decompiled
   `sendPacket`/`_receivePacket`/`flush` against the reimplementations - a BDS
   behaviour change there must be mirrored by hand.
+- **The async worker pool's wake threshold is written at startup.** Each bump:
+  check that `WorkerPool::min_backlog_duration_seconds_` is still at `+0xfc`
+  (Windows) / `+0xcc` (Linux), that both pool ctors still store `0.05F`
+  (`0x3D4CCCCD`), and that `MinecraftWorkerPool::ASYNC` still resolves. A miss
+  logs one warning at startup and leaves vanilla's threshold.
 - Removing a class is a **multi-file cascade**: also remove its
   `src/endstone/runtime/bedrock_hooks/*.cpp` hook, the `CMakeLists.txt` source
   entries, the `[[signatures]]` blocks in both configs, the generated
