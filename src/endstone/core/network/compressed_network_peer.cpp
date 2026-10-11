@@ -26,6 +26,9 @@ namespace {
 constexpr int kStoreLevel = 0;
 constexpr int kCompressLevel = 6;
 constexpr std::size_t kMinInflateGuess = 1024;
+
+// One per thread, so a large batch does not stay allocated in every connection
+thread_local std::string send_scratch;
 }  // namespace
 
 void EndstoneCompressedNetworkPeer::CompressorDeleter::operator()(libdeflate_compressor *p) const
@@ -113,39 +116,40 @@ void EndstoneCompressedNetworkPeer::sendPacket(const std::string &data, Reliabil
     const auto compress = compressible != Compressibility::Incompressible && threshold != 0 && data.size() >= threshold;
     const auto prefix = hybrid_compression_enabled_ ? CompressionHeader::SIZE : 0;
 
+    auto &out = send_scratch;
     CompressionHeader header;
     if (!compress) {
         if (hybrid_compression_enabled_) {
-            send_buffer_.resize(prefix);
-            send_buffer_.append(data);
+            out.resize(prefix);
+            out.append(data);
         }
-        else if (!deflate(data, kStoreLevel, send_buffer_, prefix)) {
+        else if (!deflate(data, kStoreLevel, out, prefix)) {
             return;
         }
     }
     else if (network_settings_.compression_algorithm == PacketCompressionAlgorithm::Snappy) {
-        send_buffer_.resize(prefix + snappy::MaxCompressedLength(data.size()));
+        out.resize(prefix + snappy::MaxCompressedLength(data.size()));
         std::size_t written = 0;
-        snappy::RawCompress(data.data(), data.size(), send_buffer_.data() + prefix, &written);
-        send_buffer_.resize(prefix + written);
+        snappy::RawCompress(data.data(), data.size(), out.data() + prefix, &written);
+        out.resize(prefix + written);
         header.setCompressed(PacketCompressionAlgorithm::Snappy);
     }
     else {
-        if (!deflate(data, kCompressLevel, send_buffer_, prefix)) {
+        if (!deflate(data, kCompressLevel, out, prefix)) {
             return;
         }
         header.setCompressed(PacketCompressionAlgorithm::ZLib);
     }
 
     if (prefix != 0) {
-        if (header.isCompressed() && send_buffer_.size() - prefix >= data.size()) {
+        if (header.isCompressed() && out.size() - prefix >= data.size()) {
             header = {};
-            send_buffer_.resize(prefix);
-            send_buffer_.append(data);
+            out.resize(prefix);
+            out.append(data);
         }
-        send_buffer_.front() = static_cast<char>(header.getRaw());
+        out.front() = static_cast<char>(header.getRaw());
     }
-    peer_->sendPacket(send_buffer_, reliability, compressible);
+    peer_->sendPacket(out, reliability, compressible);
 }
 
 NetworkPeer::DataStatus EndstoneCompressedNetworkPeer::_receivePacket(std::string &out_data,

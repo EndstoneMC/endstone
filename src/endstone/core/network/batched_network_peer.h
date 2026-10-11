@@ -40,7 +40,7 @@ protected:
 private:
     void writePacket(std::string_view data, Compressibility compressible);
     [[nodiscard]] DataStatus readPacket(std::string &out_data, const PacketRecvTimepointPtr &timepoint_ptr);
-    [[nodiscard]] Compressibility getCompressibleState(std::size_t data_to_send) const;
+    [[nodiscard]] ::BatchedNetworkPeer &batchingPeer();
 
     NetworkIdentifier id_;
     std::shared_ptr<::BatchedNetworkPeer> async_peer_;

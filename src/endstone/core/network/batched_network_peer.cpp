@@ -14,6 +14,7 @@
 
 #include "endstone/core/network/batched_network_peer.h"
 
+#include <array>
 #include <cstdint>
 #include <limits>
 #include <string>
@@ -150,6 +151,28 @@ bool isPatched(MinecraftPacketIds id)
     return id == MinecraftPacketIds::StartGame || id == MinecraftPacketIds::ResourcePacksInfo ||
            id == MinecraftPacketIds::ResourcePackStack || id == MinecraftPacketIds::MapData;
 }
+
+Compressibility getCompressibleState(std::size_t compressible_bytes, std::size_t data_to_send)
+{
+    const auto ratio = static_cast<float>(compressible_bytes) / static_cast<float>(data_to_send);
+    return ratio <= 0.2F ? Compressibility::Incompressible : Compressibility::Compressible;
+}
+
+// BinaryStream::writeString without virtual calls, which would reach BDS's code on the stream BDS built
+void appendString(BinaryStream &stream, std::string_view data)
+{
+    std::array<unsigned char, 5> length{};
+    std::size_t size = 0;
+    auto value = static_cast<std::uint32_t>(data.size());
+    while (value > 0x7F) {
+        length[size++] = static_cast<unsigned char>(value | 0x80);
+        value >>= 7;
+    }
+    length[size++] = static_cast<unsigned char>(value);
+    stream.writeRawBytes({length.data(), length.data() + size}, nullptr, nullptr);
+    const auto *bytes = reinterpret_cast<const unsigned char *>(data.data());
+    stream.writeRawBytes({bytes, bytes + data.size()}, nullptr, nullptr);
+}
 }  // namespace
 
 namespace endstone::core {
@@ -276,13 +299,7 @@ void EndstoneBatchedNetworkPeer::flush(std::function<void()> &&callback)
 {
     if (async_enabled_) {
         // The peer BDS built queues the batch on its TaskGroup, which sends it on the network worker
-        const auto &batch = outgoing_data_.getBuffer();
-        const auto *bytes = reinterpret_cast<const unsigned char *>(batch.data());
-        async_peer_->outgoing_data_.writeRawBytes({bytes, bytes + batch.size()}, nullptr, nullptr);
-        async_peer_->compressible_bytes_ = compressible_bytes_;
-        outgoing_data_.reset();
-        compressible_bytes_ = 0;
-        async_peer_->flush(std::move(callback));
+        batchingPeer().flush(std::move(callback));
         return;
     }
 
@@ -294,7 +311,7 @@ void EndstoneBatchedNetworkPeer::flush(std::function<void()> &&callback)
         return;
     }
 
-    peer_->sendPacket(data, Reliability::ReliableOrdered, getCompressibleState(data.size()));
+    peer_->sendPacket(data, Reliability::ReliableOrdered, getCompressibleState(compressible_bytes_, data.size()));
     if (callback) {
         callback();
     }
@@ -351,11 +368,13 @@ NetworkPeer::DataStatus EndstoneBatchedNetworkPeer::_receivePacket(std::string &
 
 void EndstoneBatchedNetworkPeer::writePacket(std::string_view data, Compressibility compressible)
 {
-    outgoing_data_.writeString(data, nullptr, nullptr);
+    auto &batch = batchingPeer();
+    appendString(batch.outgoing_data_, data);
     if (compressible == Compressibility::Compressible) {
-        compressible_bytes_ += data.size();
+        batch.compressible_bytes_ += data.size();
     }
-    if (getCompressibleState(outgoing_data_.getBuffer().size()) == Compressibility::Incompressible) {
+    if (getCompressibleState(batch.compressible_bytes_, batch.outgoing_data_.getBuffer().size()) ==
+        Compressibility::Incompressible) {
         flush({});
     }
 }
@@ -398,10 +417,20 @@ NetworkPeer::DataStatus EndstoneBatchedNetworkPeer::readPacket(std::string &out_
     return status;
 }
 
-Compressibility EndstoneBatchedNetworkPeer::getCompressibleState(std::size_t data_to_send) const
+::BatchedNetworkPeer &EndstoneBatchedNetworkPeer::batchingPeer()
 {
-    const auto ratio = static_cast<float>(compressible_bytes_) / static_cast<float>(data_to_send);
-    return ratio <= 0.2F ? Compressibility::Incompressible : Compressibility::Compressible;
+    if (!async_enabled_) {
+        return *this;
+    }
+    if (!outgoing_data_.getBuffer().empty()) {
+        // Hand over what was batched before BDS switched the connection to async flushing
+        const auto pending = outgoing_data_.getAndReleaseData();
+        const auto *bytes = reinterpret_cast<const unsigned char *>(pending.data());
+        async_peer_->outgoing_data_.writeRawBytes({bytes, bytes + pending.size()}, nullptr, nullptr);
+        async_peer_->compressible_bytes_ += compressible_bytes_;
+        compressible_bytes_ = 0;
+    }
+    return *async_peer_;
 }
 
 }  // namespace endstone::core
