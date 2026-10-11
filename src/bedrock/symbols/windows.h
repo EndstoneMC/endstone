@@ -83,7 +83,6 @@ static constexpr std::array<std::pair<std::string_view, std::size_t>, 83> symbol
     // LevelChunk
     {"LevelChunk::tickImpl::seed", 212470256},
     {"?tickImpl@LevelChunk@@AEAAXAEAVBlockSource@@AEBUTick@@V?$function@$$A6AXXZ@std@@@Z", 10459296},
-    {"LevelChunk::tickImpl::random_tick_seed_store", 10469373},
     // LiquidBlock
     {"?_trySpreadTo@LiquidBlock@@IEBAXAEAVBlockSource@@AEBVBlockPos@@H1E@Z", 146138496},
     // MainChunkSource

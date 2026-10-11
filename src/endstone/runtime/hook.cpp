@@ -175,9 +175,6 @@ void install()
         unsigned char value;
     };
     static constexpr std::array byte_patches = {
-        // Only the server thread writes the random-tick seed and the next instruction reloads it, so a plain mov
-        // replaces the locked xchg.
-        BytePatch{"LevelChunk::tickImpl::random_tick_seed_store", 0x87, 0x89},
         // Spread players overflow these caches every few seconds and BDS then wipes them whole, so raise both caps
         // from 10,000 and 30,000 entries to about a million.
         BytePatch{"ChunkBlenderFactory::getOrCreateChunkBlender::cache_cap", 0x00, 0x10},

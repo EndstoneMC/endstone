@@ -104,8 +104,11 @@ pattern = "41 56 53 48 83 EC 48 48 8B BF 18 04 00 00 48 C7 44 24 08 00 00 00 00 
 name = "LevelChunk::tickImpl::seed"
 relative = false
 extra = 0
-# 1. locate LevelChunk::tickImpl::random_tick_seed_store (see that entry)
-# 2. the mov right after its xchg reloads the seed global; resolve that rip-relative load
+# 1. find the LCG step constant 5F F3 6E 3C (add eax, imm32) inside LevelChunk::tickImpl; the function steps
+#    one global 32-bit seed (x = 3x + 0x3C6EF35F) at two sites, lightning and the random-tick sample loop
+#    (the weather column's xchg writes a per-chunk field instead)
+# 2. take the random-tick site: add eax,0x3C6EF35F; xchg [rip+X],eax; then the reload of the same global
+# 3. confirm the xchg and the mov right after it address the same global; resolve that rip-relative load
 pattern = "05 5F F3 6E 3C 87 05 ? ? ? ? 8B 1D ? ? ? ? 89 D9"
 rip_relative = true
 rip_offset = 13
@@ -591,18 +594,6 @@ extra = 0
 pattern = "E8 ? ? ? ? 48 8B 7B ? 48 85 FF 74 ? ? ? ? FF 90"
 rip_relative = true
 rip_offset = 1
-
-[[signatures]]
-name = "LevelChunk::tickImpl::random_tick_seed_store"
-relative = false
-extra = 5
-# 1. find the LCG step constant 5F F3 6E 3C (add eax, imm32) inside LevelChunk::tickImpl; the function steps
-#    one global 32-bit seed (x = 3x + 0x3C6EF35F) at two sites, lightning and the random-tick sample loop
-#    (the weather column's xchg writes a per-chunk field instead)
-# 2. take the random-tick site: add eax,0x3C6EF35F; xchg [rip+X],eax; then the reload of the same global
-# 3. confirm the xchg (87) stores to the same rip-relative global that the very next mov reloads, so the old
-#    value it returns is discarded
-pattern = "05 5F F3 6E 3C 87 05 ? ? ? ? 8B 1D ? ? ? ? 89 D9"
 
 [[signatures]]
 name = "_ZNK11LiquidBlock12_trySpreadToER11BlockSourceRK8BlockPosiS4_h"
