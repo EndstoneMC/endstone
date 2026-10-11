@@ -14,7 +14,6 @@
 
 #include "endstone/core/network/batched_network_peer.h"
 
-#include <array>
 #include <cstdint>
 #include <limits>
 #include <string>
@@ -156,22 +155,6 @@ Compressibility getCompressibleState(std::size_t compressible_bytes, std::size_t
 {
     const auto ratio = static_cast<float>(compressible_bytes) / static_cast<float>(data_to_send);
     return ratio <= 0.2F ? Compressibility::Incompressible : Compressibility::Compressible;
-}
-
-// BinaryStream::writeString without virtual calls, which would reach BDS's code on the stream BDS built
-void appendString(BinaryStream &stream, std::string_view data)
-{
-    std::array<unsigned char, 5> length{};
-    std::size_t size = 0;
-    auto value = static_cast<std::uint32_t>(data.size());
-    while (value > 0x7F) {
-        length[size++] = static_cast<unsigned char>(value | 0x80);
-        value >>= 7;
-    }
-    length[size++] = static_cast<unsigned char>(value);
-    stream.writeRawBytes({length.data(), length.data() + size}, nullptr, nullptr);
-    const auto *bytes = reinterpret_cast<const unsigned char *>(data.data());
-    stream.writeRawBytes({bytes, bytes + data.size()}, nullptr, nullptr);
 }
 }  // namespace
 
@@ -369,7 +352,7 @@ NetworkPeer::DataStatus EndstoneBatchedNetworkPeer::_receivePacket(std::string &
 void EndstoneBatchedNetworkPeer::writePacket(std::string_view data, Compressibility compressible)
 {
     auto &batch = batchingPeer();
-    appendString(batch.outgoing_data_, data);
+    batch.outgoing_data_.writeString(data, nullptr, nullptr);
     if (compressible == Compressibility::Compressible) {
         batch.compressible_bytes_ += data.size();
     }
