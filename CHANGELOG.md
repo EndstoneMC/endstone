@@ -7,6 +7,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [0.11.14] - 2026-10-12
+
 ### Added
 
 - Added support for Python 3.15.
@@ -1275,7 +1277,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Basic plugin loader for C++ and Python plugins.
 - Basic command system that allows plugins to register custom commands.
 
-[Unreleased]: https://github.com/EndstoneMC/endstone/compare/v0.11.13...HEAD
+[Unreleased]: https://github.com/EndstoneMC/endstone/compare/v0.11.14...HEAD
+[0.11.14]: https://github.com/EndstoneMC/endstone/compare/v0.11.13...v0.11.14
 [0.11.13]: https://github.com/EndstoneMC/endstone/compare/v0.11.12...v0.11.13
 [0.11.12]: https://github.com/EndstoneMC/endstone/compare/v0.11.11...v0.11.12
 [0.11.11]: https://github.com/EndstoneMC/endstone/compare/v0.11.10...v0.11.11
