@@ -21,11 +21,14 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Improved server performance with many players online.
 - Reduced the cost of the locator bar with many players online.
 - Improved server performance while many players wait for new terrain to load, such as after joining or teleporting.
-- New terrain now generates on all available worker threads, so players see the world load faster.
+- Improved how quickly new terrain generates.
 - Linux servers now use mimalloc as the memory allocator unless `LD_PRELOAD` names another allocator or `libc.so.6`.
 - New servers now default to a `view-distance` of 10 in `server.properties`.
 - New servers now keep the vanilla default `client-side-chunk-generation-enabled=true`.
-- Dropped Python 3.10 support (end-of-life). Minimum version is now Python 3.11.
+
+### Removed
+
+- **BREAKING**: Dropped support for Python 3.10.
 
 ### Fixed
 
