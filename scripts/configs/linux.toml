@@ -37,6 +37,15 @@ extra = 0
 pattern = "55 41 57 41 56 41 55 41 54 53 48 83 EC ? 48 89 7C 24 ? 48 8B 4F 18 48 85 C9"
 
 [[signatures]]
+name = "ChunkSource::checkAndLaunchChunkGenerationTasks::worker_shift"
+relative = false
+extra = 18
+# 1. in ChunkSource::checkAndLaunchChunkGenerationTasks, take the read of MinecraftWorkerPool::ASYNC whose worker
+#    count (end - begin of the workers vector at +0x20/+0x28, `shr rcx, 3`) sets the 2n / 6n task caps
+# 2. the entry is the shift count; lowering it from 3 to 1 multiplies both caps by 4
+pattern = "48 8B 05 ? ? ? ? 48 8B 48 28 48 2B 48 20 48 C1 E9 03 01 C9"
+
+[[signatures]]
 name = "DBChunkStorage::_hasChunk::cache_cap"
 relative = false
 extra = 9

@@ -11,9 +11,14 @@
 
 namespace endstone::runtime {
 
-static constexpr std::array<std::pair<std::string_view, std::size_t>, 82> symbols = {{
+static constexpr std::array<std::pair<std::string_view, std::size_t>, 83> symbols = {{
     {"BlockState::StateListNode::mHead", 215092208},
+    {"ChunkBlenderFactory::getOrCreateChunkBlender::cache_cap", 136197791},
+    {"ChunkSource::checkAndLaunchChunkGenerationTasks::worker_shift", 10345836},
+    {"DBChunkStorage::_hasChunk::cache_cap", 13403472},
     {"Enchant::mEnchants", 214656904},
+    {"LevelChunk::tickImpl::seed", 212470256},
+    {"MinecraftWorkerPool::ASYNC", 214123464},
     // Actor
     {"?teleportTo@Actor@@UEAAXAEBVVec3@@_NHH1@Z", 13861632},
     // ActorFactory
@@ -29,8 +34,6 @@ static constexpr std::array<std::pair<std::string_view, std::size_t>, 82> symbol
     {"?forEachBlockType@BlockTypeRegistry@@QEBAXV?$function_ref@$$A6A_NAEBVBlockType@@@Z$$A6A_N0@Z@brstd@@@Z", 26979856},
     // CampfireBlockActor
     {"?_finishCooking@CampfireBlockActor@@AEAAXAEAVBlockSource@@H@Z", 32663744},
-    // ChunkBlenderFactory
-    {"ChunkBlenderFactory::getOrCreateChunkBlender::cache_cap", 136197791},
     // ChunkBuildOrderPolicy
     {"?updateInfluences@ChunkBuildOrderPolicy@@UEAAXXZ", 25656400},
     // CircuitSceneGraph
@@ -50,13 +53,11 @@ static constexpr std::array<std::pair<std::string_view, std::size_t>, 82> symbol
     {"?getActorName@CommandUtils@@YA?AV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@AEBVActor@@@Z", 4035184},
     // CraftingDataPacketPayload
     {"?fromRecipes@CraftingDataPacketPayload@@SA?AU1@AEBVRecipes@@_N@Z", 51739264},
-    // DBChunkStorage
-    {"DBChunkStorage::_hasChunk::cache_cap", 13403472},
     // DedicatedServer
     {"?start@DedicatedServer@@QEAA?AW4ServerExitCode@@AEBV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@AEBVActivationArguments@Bedrock@@@Z", 501616},
     // Dimension
-    {"?sendPacketForEntity@Dimension@@UEAAXAEBVActor@@AEBVPacket@@PEBVPlayer@@@Z", 25720592},
     {"?forEachPlayer@Dimension@@UEBAXV?$function_ref@$$A6A_NAEAVPlayer@@@Z$$A6A_N0@Z@brstd@@@Z", 25702448},
+    {"?sendPacketForEntity@Dimension@@UEAAXAEBVActor@@AEBVPacket@@PEBVPlayer@@@Z", 25720592},
     // Explosion
     {"?explode@Explosion@@QEAA_NAEAVIRandom@@@Z", 7952016},
     // FurnaceBlockActor
@@ -78,7 +79,6 @@ static constexpr std::array<std::pair<std::string_view, std::size_t>, 82> symbol
     {"?getActivePlayerCount@Level@@UEBAHXZ", 8211872},
     {"?tick@Level@@UEAAXXZ", 8175568},
     // LevelChunk
-    {"LevelChunk::tickImpl::seed", 212470256},
     {"?tickImpl@LevelChunk@@AEAAXAEAVBlockSource@@AEBUTick@@V?$function@$$A6AXXZ@std@@@Z", 10459296},
     // LiquidBlock
     {"?_trySpreadTo@LiquidBlock@@IEBAXAEAVBlockSource@@AEBVBlockPos@@H1E@Z", 146138496},
@@ -91,8 +91,6 @@ static constexpr std::array<std::pair<std::string_view, std::size_t>, 82> symbol
     {"?executeCommand@MinecraftCommands@@QEBA?AUMCRESULT@@AEAVCommandContext@@_N@Z", 4039904},
     // MinecraftPackets
     {"?createPacket@MinecraftPackets@@SA?AV?$shared_ptr@VPacket@@@std@@W4MinecraftPacketIds@@@Z", 9675920},
-    // MinecraftWorkerPool
-    {"MinecraftWorkerPool::ASYNC", 214123464},
     // Mob
     {"?knockback@Mob@@UEAAXPEAVActor@@MMMAEBUKnockbackParameters@@@Z", 43938096},
     // NetherNet::LanThreadManager
@@ -114,8 +112,8 @@ static constexpr std::array<std::pair<std::string_view, std::size_t>, 82> symbol
     {"?take@Player@@QEAA_NAEAVActor@@HH@Z", 2837264},
     {"?teleportTo@Player@@UEAAXAEBVVec3@@_NHH1@Z", 2755600},
     // PlayerLocationSender
-    {"?_shouldSendPositionPacket@PlayerLocationSender@@AEBA_NAEBVVec3@@AEBUDimensionType@@_NAEBV?$optional@VVec3@@@std@@AEBUPlayerLocationData@1@@Z", 8815008},
     {"?_forEachClientPlayerPair@PlayerLocationSender@@AEAAXAEBV?$vector@VWeakEntityRef@@V?$allocator@VWeakEntityRef@@@std@@@std@@V?$function@$$A6AXAEBVUserEntityIdentifierComponent@@AEBVPlayer@@1@Z@3@@Z", 8814288},
+    {"?_shouldSendPositionPacket@PlayerLocationSender@@AEBA_NAEBVVec3@@AEBUDimensionType@@_NAEBV?$optional@VVec3@@@std@@AEBUPlayerLocationData@1@@Z", 8815008},
     // PlayerTickManager
     {"?processPlayerNetworking@PlayerTickManager@@QEAAXAEBUTick@@@Z", 74985136},
     // RakNet::RNS2_Windows_Linux_360
