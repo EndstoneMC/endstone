@@ -31,6 +31,21 @@ extra = 6
 pattern = "48 81 7E ? 10 27 00 00 0F 82"
 
 [[signatures]]
+name = "?getChunkRebuildPriority@ChunkBuildOrderPolicy@@UEBAHAEBVChunkPos@@@Z"
+relative = false
+extra = 0
+# 1. find ChunkBuildOrderPolicy's vtable as for ?updateInfluences@ChunkBuildOrderPolicy@@UEAAXXZ (the one lea'd by
+#    the Dimension ctor, Dimension::_createChunkBuildOrderPolicy and ~ChunkBuildOrderPolicy); getChunkRebuildPriority
+#    is slot 1 (+0x8)
+# 2. confirm the body: FNV-1a of _Thrd_id, then the SpinLock at +0x48 (`mov rax, [rsi+0x48]; lock cmpxchg [rsi+0x58]`,
+#    refcount at +0x50, 3000 spins then _Thrd_yield), then the minimum over the 24-byte influences in [+0x60, +0x68):
+#    players by distance and facing (3 sqrtss, 4 divss), ticking-area boxes and circles, 0 for any other type; INT_MAX
+#    is returned as 0
+# 3. confirm vs the old named DB
+# function prologue
+pattern = "55 41 57 41 56 56 57 53 48 81 EC D8 00 00 00 48 8D AC 24 80 00 00 00 44 0F 29 7D 40 44 0F 29 75 30 44 0F 29 6D 20 44 0F 29 65 10 44 0F 29 5D 00 44 0F 29 55 F0 44 0F 29 4D E0 44 0F 29 45 D0 0F 29 7D C0 0F 29 75 B0 48 C7 45 A8 FE FF FF FF 48 89 D7 48 89 CE E8 ? ? ? ? 89 C1 44 0F B6 C0 0F B6 D4 C1 E8 10 C1 E9 18"
+
+[[signatures]]
 name = "?updateInfluences@ChunkBuildOrderPolicy@@UEAAXXZ"
 relative = false
 extra = 0

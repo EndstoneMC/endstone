@@ -11,7 +11,7 @@
 
 namespace endstone::runtime {
 
-static constexpr std::array<std::pair<std::string_view, std::size_t>, 83> symbols = {{
+static constexpr std::array<std::pair<std::string_view, std::size_t>, 84> symbols = {{
     {"BlockState::StateListNode::mHead", 257928656},
     {"ChunkBlenderFactory::getOrCreateChunkBlender::cache_cap", 85314623},
     {"ChunkSource::checkAndLaunchChunkGenerationTasks::worker_shift", 211996558},
@@ -37,6 +37,7 @@ static constexpr std::array<std::pair<std::string_view, std::size_t>, 83> symbol
     {"_ZN18CampfireBlockActor14_finishCookingER11BlockSourcei", 216526928},
     // ChunkBuildOrderPolicy
     {"_ZN21ChunkBuildOrderPolicy16updateInfluencesEv", 211141408},
+    {"_ZNK21ChunkBuildOrderPolicy23getChunkRebuildPriorityERK8ChunkPos", 211140112},
     // CircuitSceneGraph
     {"_ZN17CircuitSceneGraph6updateEP11BlockSource", 218431056},
     // Command
