@@ -1,5 +1,10 @@
 #include "bedrock/world/level/block/actor/piston_block_actor.h"
 
+#include <utility>
+
+#include <gsl/util>
+
+#include "bedrock/shared_types/legacy/facing.h"
 #include "bedrock/world/level/block/states/vanilla_block_states.h"
 #include "bedrock/world/level/block_source.h"
 #include "bedrock/world/level/dimension/dimension.h"
@@ -54,7 +59,8 @@ void PistonBlockActor::tick(BlockSource &region)
         const auto &server = endstone::core::EndstoneServer::getInstance();
         auto block = endstone::core::EndstoneBlock::at(region, position_);
         auto face = endstone::BlockFace::Down;
-        switch (block->getMinecraftBlock().getState<FacingID>(VanillaStateIds::FacingDirection)) {
+        const auto facing = block->getMinecraftBlock().getState<FacingID>(VanillaStateIds::FacingDirection);
+        switch (facing) {
         case 1:
             face = endstone::BlockFace::Up;
             break;
@@ -74,8 +80,40 @@ void PistonBlockActor::tick(BlockSource &region)
             break;
         }
 
+        endstone::BlockPistonEvent::BlockList blocks;
+        if ((extending || sticky_) && facing < Facing::MAX) {
+            const auto state = state_;
+            const auto new_state = new_state_;
+            auto attached_blocks = std::exchange(attached_blocks_, {});
+            auto break_blocks = std::exchange(break_blocks_, {});
+            const auto restore = gsl::finally([&] {
+                state_ = state;
+                new_state_ = new_state;
+                attached_blocks_ = std::move(attached_blocks);
+                break_blocks_ = std::move(break_blocks);
+            });
+            new_state_ = extending ? PistonState::Expanding : PistonState::Retracting;
+            if (retracting) {
+                state_ = PistonState::Retracting;
+            }
+            const BlockPos direction(endstone::core::EndstoneBlockFace::getOffsetX(face),
+                                     endstone::core::EndstoneBlockFace::getOffsetY(face),
+                                     endstone::core::EndstoneBlockFace::getOffsetZ(face));
+            const auto movement_direction = extending ? facing : Facing::OPPOSITE_FACING[facing];
+            if (_attachedBlockWalker(region, position_ + direction * (extending ? 1 : 2), facing, movement_direction) &&
+                attached_blocks_.size() <= 12) {
+                blocks.reserve(attached_blocks_.size() + break_blocks_.size());
+                for (const auto &pos : attached_blocks_) {
+                    blocks.emplace_back(endstone::core::EndstoneBlock::at(region, pos));
+                }
+                for (const auto &pos : break_blocks_) {
+                    blocks.emplace_back(endstone::core::EndstoneBlock::at(region, pos));
+                }
+            }
+        }
+
         if (extending) {
-            endstone::BlockPistonExtendEvent e(std::move(block), face);
+            endstone::BlockPistonExtendEvent e(block, face, std::move(blocks));
             server.getPluginManager().callEvent(e);
             if (e.isCancelled()) {
                 // We mark the new state with a value that the original function does not recognise.
@@ -85,7 +123,8 @@ void PistonBlockActor::tick(BlockSource &region)
             }
         }
         else {
-            endstone::BlockPistonRetractEvent e(std::move(block), endstone::core::EndstoneBlockFace::getOpposite(face));
+            endstone::BlockPistonRetractEvent e(block, endstone::core::EndstoneBlockFace::getOpposite(face),
+                                                std::move(blocks));
             server.getPluginManager().callEvent(e);
             if (e.isCancelled()) {
                 new_state_ = static_cast<PistonState>(PistonStateEx::RetractingCancelled);

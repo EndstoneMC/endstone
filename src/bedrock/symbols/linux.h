@@ -11,7 +11,7 @@
 
 namespace endstone::runtime {
 
-static constexpr std::array<std::pair<std::string_view, std::size_t>, 93> symbols = {{
+static constexpr std::array<std::pair<std::string_view, std::size_t>, 94> symbols = {{
     {"BlockState::StateListNode::mHead", 257928656},
     {"Enchant::mEnchants", 257765312},
     {"MobEffect::mMobEffects", 257859136},
@@ -123,6 +123,7 @@ static constexpr std::array<std::pair<std::string_view, std::size_t>, 93> symbol
     // NetworkSystem
     {"_ZN13NetworkSystem23onNewIncomingConnectionERK17NetworkIdentifierONSt3__110shared_ptrI11NetworkPeerEE", 144717856},
     // PistonBlockActor
+    {"_ZN16PistonBlockActor20_attachedBlockWalkerER11BlockSourceRK8BlockPoshh", 216128832},
     {"_ZN16PistonBlockActor4tickER11BlockSource", 216116560},
     // Player
     {"_ZN6Player10teleportToERK4Vec3biib", 196298240},

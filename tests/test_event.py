@@ -1,4 +1,12 @@
-from endstone.event import Cancellable, Event
+import pytest
+
+from endstone.event import BlockPistonEvent, BlockPistonExtendEvent, BlockPistonRetractEvent, Cancellable, Event
+
+
+@pytest.mark.parametrize("event_type", [BlockPistonExtendEvent, BlockPistonRetractEvent])
+def test_piston_blocks_are_inherited_and_read_only(event_type):
+    assert event_type.blocks is BlockPistonEvent.blocks
+    assert event_type.blocks.fset is None
 
 
 class CustomEvent(Event):

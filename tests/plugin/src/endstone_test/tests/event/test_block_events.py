@@ -75,6 +75,12 @@ def test_piston(recorder: EventRecorder, event_name: str) -> None:
     snapshot = recorder.require(event_name)[0]
     assert "piston" in snapshot["block_type"]
     assert snapshot["direction"]
+    assert snapshot["blocks_copy_isolated"]
+    assert len(snapshot["blocks"]) == len(snapshot["block_types"])
+    assert len(snapshot["blocks"]) == len(set(snapshot["blocks"]))
+    assert snapshot["xyz"] not in snapshot["blocks"]
+    assert all(len(position) == 3 for position in snapshot["blocks"])
+    assert all(block_type != "minecraft:air" for block_type in snapshot["block_types"])
 
 
 @pytest.mark.parametrize("event_name", ["BlockGrowEvent"])

@@ -644,6 +644,12 @@ class BlockPistonEvent(BlockEvent, Cancellable):
         The direction in which the piston will operate.
         """
 
+    @property
+    def blocks(self) -> list[Block]:
+        """
+        A copy of the blocks that will be moved or broken, at their original positions, excluding the piston and its arm.
+        """
+
 class BlockPistonExtendEvent(BlockPistonEvent):
     """
     Called when a piston extends.

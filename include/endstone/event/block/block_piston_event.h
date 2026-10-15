@@ -16,6 +16,7 @@
 
 #include <memory>
 #include <utility>
+#include <vector>
 
 #include "endstone/block/block_face.h"
 #include "endstone/event/block/block_event.h"
@@ -28,8 +29,10 @@ namespace endstone {
  */
 class BlockPistonEvent : public Cancellable<BlockEvent> {
 public:
-    explicit BlockPistonEvent(const NotNull<Block> &block, BlockFace direction)
-        : Cancellable(block), direction_(direction)
+    using BlockList = std::vector<NotNull<Block>>;
+
+    explicit BlockPistonEvent(const NotNull<Block> &block, BlockFace direction, BlockList blocks = {})
+        : Cancellable(block), direction_(direction), blocks_(std::move(blocks))
     {
     }
 
@@ -40,8 +43,16 @@ public:
      */
     [[nodiscard]] BlockFace getDirection() const { return direction_; }
 
+    /**
+     * Gets the blocks that will be moved or broken by the piston, at their original positions.
+     *
+     * @return The affected blocks, excluding the piston and its arm.
+     */
+    [[nodiscard]] const BlockList &getBlocks() const { return blocks_; }
+
 private:
     BlockFace direction_;
+    BlockList blocks_;
 };
 
 }  // namespace endstone
