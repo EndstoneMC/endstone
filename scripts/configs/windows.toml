@@ -943,6 +943,18 @@ extra = 0
 pattern = "55 41 57 41 56 56 57 53 48 81 EC ? ? ? ? 48 8D AC 24 ? ? ? ? 44 0F 29 8D ? ? ? ? 44 0F 29 85 ? ? ? ? 0F 29 BD ? ? ? ? 0F 29 B5 ? ? ? ? 48 C7 85 ? ? ? ? ? ? ? ? 0F 28 F3 0F 28 FA 48 89 D7"
 
 [[signatures]]
+name = "?_attachedBlockWalker@PistonBlockActor@@AEAA_NAEAVBlockSource@@AEBVBlockPos@@EE@Z"
+relative = false
+extra = 0
+rip_relative = true
+rip_offset = 1
+# 1. Follow tick's expanding arm to the checker that clears the attached and broken block vectors.
+# 2. The checker calls this walker immediately before testing success and the 12-block limit.
+# 3. Confirm recursive piston movement and slime/honey branches against the named reference.
+# xref call site in PistonBlockActor::_checkAttachedBlocks (unique)
+pattern = "E8 ? ? ? ? 84 C0 74 ? 48 8B 87 ? ? ? ? 48 2B 87 ? ? ? ? 48 C1 F8"
+
+[[signatures]]
 name = "?tick@PistonBlockActor@@UEAAXAEAVBlockSource@@@Z"
 relative = false
 extra = 0

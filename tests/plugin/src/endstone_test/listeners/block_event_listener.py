@@ -4,6 +4,7 @@ from endstone.event import (
     BlockExplodeEvent,
     BlockFormEvent,
     BlockFromToEvent,
+    BlockPistonEvent,
     BlockPistonExtendEvent,
     BlockPistonRetractEvent,
     BlockPlaceEvent,
@@ -89,22 +90,27 @@ class BlockEventListener(EventListener):
 
     @event_handler
     def on_piston_extend(self, event: BlockPistonExtendEvent):
-        self.record(
-            event,
-            f"Piston ({event.block}) extends towards {event.direction}",
-            always_log=True,
-            block_type=str(event.block.type),
-            direction=str(event.direction),
-        )
+        self.record_piston(event, "extends")
 
     @event_handler
     def on_piston_retract(self, event: BlockPistonRetractEvent):
+        self.record_piston(event, "retracts")
+
+    def record_piston(self, event: BlockPistonEvent, action: str) -> None:
+        blocks = [(block.x, block.y, block.z) for block in event.blocks]
+        block_types = [str(block.type) for block in event.blocks]
+        copied_blocks = event.blocks
+        copied_blocks.clear()
         self.record(
             event,
-            f"Piston ({event.block}) retracts towards {event.direction}",
+            f"Piston ({event.block}) {action} towards {event.direction}",
             always_log=True,
             block_type=str(event.block.type),
             direction=str(event.direction),
+            xyz=(event.block.x, event.block.y, event.block.z),
+            blocks=blocks,
+            block_types=block_types,
+            blocks_copy_isolated=len(event.blocks) == len(blocks),
         )
 
     @event_handler

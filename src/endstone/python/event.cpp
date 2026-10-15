@@ -260,7 +260,10 @@ void init_event(py::module_ &m, py::class_<Event, PyEvent> &event)
     py::class_<BlockPistonEvent, BlockEvent, ICancellable>(m, "BlockPistonEvent",
                                                            "Called when a piston block is triggered.")
         .def_property_readonly("direction", &BlockPistonEvent::getDirection,
-                               "The direction in which the piston will operate.");
+                               "The direction in which the piston will operate.")
+        .def_property_readonly("blocks", &BlockPistonEvent::getBlocks, py::return_value_policy::copy,
+                               "A copy of the blocks that will be moved or broken, at their original positions, "
+                               "excluding the piston and its arm.");
     py::class_<BlockPistonExtendEvent, BlockPistonEvent>(m, "BlockPistonExtendEvent", "Called when a piston extends.");
     py::class_<BlockPistonRetractEvent, BlockPistonEvent>(m, "BlockPistonRetractEvent",
                                                           "Called when a piston retracts.");

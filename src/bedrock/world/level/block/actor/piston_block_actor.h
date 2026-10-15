@@ -14,6 +14,9 @@
 
 #pragma once
 
+#include <optional>
+#include <vector>
+
 #include "bedrock/world/level/block/actor/vanilla_block_actor.h"
 
 enum class PistonState : char {
@@ -28,9 +31,10 @@ public:
     ENDSTONE_HOOK void tick(BlockSource &region) override;
 
 private:
+    bool _attachedBlockWalker(BlockSource &region, const BlockPos &pos, FacingID facing, FacingID movement_direction);
     void _tryFixupStickyPistonArm(BlockSource &region);
 
-    bool sticky_;  // +216
+    bool sticky_;
     float progress_;
     float last_progress_;
     bool was_pushed_backward_by_a_non_sticky_piston_;
@@ -44,3 +48,4 @@ private:
     std::optional<std::vector<BlockPos>> future_client_attached_blocks_;
     std::vector<BlockPos> break_blocks_;
 };
+BEDROCK_STATIC_ASSERT_SIZE(PistonBlockActor, 344, 320);
