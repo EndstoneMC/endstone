@@ -136,7 +136,9 @@ public:
         hookEventHandler(*level.getItemEventCoordinator().item_gameplay_handler);
         hookEventHandler(*level.getLevelEventCoordinator().level_gameplay_handler);
         hookEventHandler(*level.getServerPlayerEventCoordinator().player_gameplay_handler);
-        hookEventHandler(*level.getScriptingEventCoordinator().scripting_event_handler);
+        if (const auto &handler = level.getScriptingEventCoordinator().scripting_event_handler) {
+            hookEventHandler(*handler);
+        }
         hookEventHandler(*level.getServerNetworkEventCoordinator().server_network_event_handler);
         server.setLevel(level);
         return ::EventResult::KeepGoing;
