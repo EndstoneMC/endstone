@@ -18,6 +18,22 @@
 
 using endstone::core::CommandUsageParser;
 
+TEST(BanCommandGrammarTest, ParsesStringTargetAndOptionalStringReason)
+{
+    for (const auto *usage : {"/ban <name: str> [reason: str]", "/ban-ip <target: str> [reason: str]"}) {
+        CommandUsageParser parser(usage);
+        const auto result = parser.parse();
+        ASSERT_TRUE(result.has_value());
+        const auto &[name, parameters] = result.value();
+        ASSERT_EQ(parameters.size(), 2);
+        EXPECT_EQ(parameters[0].type, "str");
+        EXPECT_FALSE(parameters[0].optional);
+        EXPECT_EQ(parameters[1].name, "reason");
+        EXPECT_EQ(parameters[1].type, "str");
+        EXPECT_TRUE(parameters[1].optional);
+    }
+}
+
 // Define the fixture class
 class ParserTest : public ::testing::Test {
 protected:
