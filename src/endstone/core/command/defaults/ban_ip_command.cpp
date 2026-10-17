@@ -37,7 +37,7 @@ namespace endstone::core {
 BanIpCommand::BanIpCommand() : EndstoneCommand("ban-ip")
 {
     setDescription("commands.banip.description");
-    setUsages("/ban-ip <address: str> [reason: message]", "/ban-ip <name: player> [reason: message]");
+    setUsages("/ban-ip <target: str> [reason: message]");
     setPermissions("endstone.command.banip");
 }
 

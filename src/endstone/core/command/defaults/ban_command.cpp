@@ -24,7 +24,7 @@ namespace endstone::core {
 BanCommand::BanCommand() : EndstoneCommand("ban")
 {
     setDescription("commands.ban.description");
-    setUsages("/ban <name: str> [reason: message]", "/ban <name: player> [reason: message]");
+    setUsages("/ban <name: str> [reason: message]");
     setPermissions("endstone.command.ban");
 }
 
