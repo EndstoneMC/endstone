@@ -7,6 +7,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+### Fixed
+
+- Fixed `/ban`, `/ban-ip` and plugin commands with an optional `message` argument sending an ambiguous command syntax to clients (#554).
+
 ## [0.11.14] - 2026-10-12
 
 ### Added

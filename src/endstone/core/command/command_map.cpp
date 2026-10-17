@@ -397,6 +397,9 @@ bool EndstoneCommandMap::registerCommand(std::shared_ptr<Command> command)
                     break;  // early stop if any of the param in the usage is invalid
                 }
                 data.chained_subcommand_symbol = static_cast<int>(it->second);
+                if (parameter.type == "message") {
+                    data.is_optional = false;
+                }
             }
             param_data.push_back(data);
         }
