@@ -908,6 +908,14 @@ class PacketSendEvent(ServerEvent, Cancellable):
     Called when the server sends a packet to a connected client.
     """
     @property
+    def is_cancelled(self) -> bool:
+        """
+        Gets or sets the cancellation state of this event. A cancelled event will not be executed in the server, but will still pass to other plugins.
+        """
+
+    @is_cancelled.setter
+    def is_cancelled(self, arg1: bool) -> None: ...
+    @property
     def packet_id(self) -> int:
         """
         Gets the ID of the packet.

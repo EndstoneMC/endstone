@@ -352,6 +352,9 @@ void init_event(py::module_ &m, py::class_<Event> &event)
 
     py::class_<PacketSendEvent, ServerEvent, ICancellable>(
         m, "PacketSendEvent", "Called when the server sends a packet to a connected client.")
+        .def_property("is_cancelled", &PacketSendEvent::isCancelled, &PacketSendEvent::setCancelled,
+                      "Gets or sets the cancellation state of this event. A cancelled event will not be executed in "
+                      "the server, but will still pass to other plugins.")
         .def_property_readonly("packet_id", &PacketSendEvent::getPacketId, "Gets the ID of the packet.")
         .def_property(
             "payload", [](const PacketSendEvent &self) { return py::bytes(self.getPayload()); },

@@ -9,6 +9,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Fixed
 
+- Fixed excessive overhead when Python plugins read or set `PacketSendEvent.is_cancelled`.
 - Fixed the server crashing on startup when `enable-script=false` is set in `server.properties` (#553).
 - Fixed `/ban`, `/ban-ip` and plugin commands with an optional `message` argument sending an ambiguous command syntax to clients (#554).
 
