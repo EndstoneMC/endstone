@@ -179,6 +179,8 @@ void install()
         // from 10,000 and 30,000 entries to about a million.
         BytePatch{"ChunkBlenderFactory::getOrCreateChunkBlender::cache_cap", 0x00, 0x10},
         BytePatch{"DBChunkStorage::_hasChunk::cache_cap", 0x00, 0x10},
+        // Keep 8n to 24n chunk generation tasks in flight instead of 2n to 6n.
+        BytePatch{"ChunkSource::checkAndLaunchChunkGenerationTasks::worker_shift", 0x03, 0x01},
     };
     for (const auto &patch : byte_patches) {
         const auto it = targets.find(std::string(patch.name));

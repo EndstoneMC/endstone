@@ -23,6 +23,22 @@ extra = 6
 pattern = "48 81 7D ? 0F 27 00 00 76"
 
 [[signatures]]
+name = "_ZNK21ChunkBuildOrderPolicy23getChunkRebuildPriorityERK8ChunkPos"
+relative = false
+extra = 0
+# 1. find bytes "32 31 43 68 75 6E 6B 42 75 69 6C 64 4F 72 64 65 72 50 6F 6C 69 63 79 00" =
+#    "21ChunkBuildOrderPolicy\0" (the RTTI name) and walk type_info to the vtable address point
+# 2. getChunkRebuildPriority is slot 2 (+0x10): D1, D0, getChunkRebuildPriority, registerForUpdates,
+#    unregisterForUpdates, setPlayerInfluence, setTickingAreaInfluence, updateInfluences
+# 3. confirm the body: the SpinLock at +0x30 (`mov rax, [rbx+0x30]; lock cmpxchg [rbx+0x40]`, refcount at +0x38,
+#    3000 spins then yield), then the minimum over the 24-byte influences in [+0x48, +0x50): players by distance and
+#    facing (divps for both normalisations), ticking-area boxes and circles, 0 for any other type; INT_MAX is
+#    returned as 0
+# 4. confirm vs the old named DB
+# function prologue
+pattern = "55 41 57 41 56 53 50 49 89 F7 48 89 FB E8 ? ? ? ? 49 89 C6 48 8B 43 30 F0 4C 0F B1 73 40 74 ? B9 B8 0B 00 00"
+
+[[signatures]]
 name = "_ZN21ChunkBuildOrderPolicy16updateInfluencesEv"
 relative = false
 extra = 0
@@ -35,6 +51,15 @@ extra = 0
 # 4. confirm vs the old named DB
 # function prologue
 pattern = "55 41 57 41 56 41 55 41 54 53 48 83 EC ? 48 89 7C 24 ? 48 8B 4F 18 48 85 C9"
+
+[[signatures]]
+name = "ChunkSource::checkAndLaunchChunkGenerationTasks::worker_shift"
+relative = false
+extra = 18
+# 1. in ChunkSource::checkAndLaunchChunkGenerationTasks, take the read of MinecraftWorkerPool::ASYNC whose worker
+#    count (end - begin of the workers vector at +0x20/+0x28, `shr rcx, 3`) sets the 2n / 6n task caps
+# 2. the entry is the shift count; lowering it from 3 to 1 multiplies both caps by 4
+pattern = "48 8B 05 ? ? ? ? 48 8B 48 28 48 2B 48 20 48 C1 E9 03 01 C9"
 
 [[signatures]]
 name = "DBChunkStorage::_hasChunk::cache_cap"
