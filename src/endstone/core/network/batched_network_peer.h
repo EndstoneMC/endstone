@@ -14,15 +14,21 @@
 
 #pragma once
 
+#include <array>
 #include <functional>
 #include <memory>
 #include <string>
 #include <string_view>
 
+#include "bedrock/common_types.h"
+#include "bedrock/entity/weak_entity_ref.h"
 #include "bedrock/network/batched_network_peer.h"
 #include "bedrock/network/network_identifier.h"
+#include "bedrock/shared_constants.h"
 
 namespace endstone::core {
+
+class EndstonePlayer;
 
 class EndstoneBatchedNetworkPeer : public ::BatchedNetworkPeer {
 public:
@@ -41,9 +47,11 @@ private:
     void writePacket(std::string_view data, Compressibility compressible);
     [[nodiscard]] DataStatus readPacket(std::string &out_data, const PacketRecvTimepointPtr &timepoint_ptr);
     [[nodiscard]] ::BatchedNetworkPeer &batchingPeer();
+    [[nodiscard]] EndstonePlayer *getPlayer(SubClientId sub_id);
 
     NetworkIdentifier id_;
     std::shared_ptr<::BatchedNetworkPeer> async_peer_;
+    std::array<WeakEntityRef, SharedConstants::NetworkMaxSubClients> players_;
 };
 
 }  // namespace endstone::core
