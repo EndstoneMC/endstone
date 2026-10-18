@@ -22,7 +22,7 @@ import tomlkit
 from packaging.version import Version
 from rich.progress import BarColumn, DownloadColumn, Progress, TextColumn, TimeRemainingColumn
 
-from endstone import __minecraft_version__
+from endstone import __minecraft_version__, __version__
 from endstone.cli import _properties
 
 # server.properties entries where Endstone's default differs from Mojang's.
@@ -363,7 +363,7 @@ class Bootstrap:
         self._download(self.server_path)
 
     def _update(self) -> None:
-        current_version = Version("0.0.0")
+        current_version: Version | None = None
         supported_version = self.minecraft_version
 
         version_file = self.server_path / "version.txt"
@@ -374,26 +374,40 @@ class Bootstrap:
         if current_version == supported_version:
             return
 
-        if current_version > supported_version:
+        if current_version is not None and current_version > supported_version:
             raise RuntimeError(
                 f"A newer version of Bedrock Dedicated Server (v{current_version}) "
                 f"is found in {str(self.executable_path.parent)}. Please update your Endstone server."
             )
 
-        if not self._no_confirm:
-            update = click.confirm(
+        if current_version is None:
+            prompt = (
+                f"Bedrock Dedicated Server of an unknown version is found in {str(self.executable_path.parent)}. "
+                f"Would you like to install v{supported_version} now?"
+            )
+        else:
+            prompt = (
                 f"An older version of Bedrock Dedicated Server (v{current_version}) "
                 f"is found in {str(self.executable_path.parent)}. "
-                f"Would you like to update to v{self.minecraft_version} now?",
-                default=True,
+                f"Would you like to update to v{supported_version} now?"
             )
+
+        if not self._no_confirm:
+            update = click.confirm(prompt, default=True)
         else:
             update = True
 
         if not update:
+            self._logger.error(
+                f"Endstone v{__version__} only runs Bedrock Dedicated Server v{supported_version}. "
+                "To run another version, install the Endstone release that supports it."
+            )
             sys.exit(1)
 
-        self._logger.info(f"Updating server from v{current_version} to v{self.minecraft_version}...")
+        if current_version is None:
+            self._logger.info(f"Installing server v{supported_version}...")
+        else:
+            self._logger.info(f"Updating server from v{current_version} to v{supported_version}...")
         self._download(self.server_path)
 
     def run(self) -> int:
