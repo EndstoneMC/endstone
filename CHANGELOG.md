@@ -7,6 +7,11 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+### Changed
+
+- Improved the performance of cancellation checks and updates in Python event handlers.
+- Each cancellable Python event class now defines its own cancellation properties and methods.
+
 ### Fixed
 
 - Fixed the server crashing on startup when `enable-script=false` is set in `server.properties` (#553).

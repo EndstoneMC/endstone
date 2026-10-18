@@ -196,6 +196,27 @@ class ActorDamageEvent(MobEvent, Cancellable):
     Called when an Actor is damaged.
     """
     @property
+    def cancelled(self) -> bool:
+        """
+        Gets or sets the cancellation state of this event. A cancelled event will not be executed in the server, but will still pass to other plugins. [Warning] Deprecated: Use is_cancelled instead.
+        """
+
+    @cancelled.setter
+    def cancelled(self, arg1: bool) -> None: ...
+    @property
+    def is_cancelled(self) -> bool:
+        """
+        Gets or sets the cancellation state of this event. A cancelled event will not be executed in the server, but will still pass to other plugins.
+        """
+
+    @is_cancelled.setter
+    def is_cancelled(self, arg1: bool) -> None: ...
+    def cancel(self) -> None:
+        """
+        Cancel this event. A cancelled event will not be executed in the server, but will still pass to other plugins.
+        """
+
+    @property
     def damage(self) -> float:
         """
         Gets or sets the amount of damage caused by the event
@@ -243,6 +264,27 @@ class ActorExplodeEvent(ActorEvent, Cancellable):
     Called when an Actor explodes.
     """
     @property
+    def cancelled(self) -> bool:
+        """
+        Gets or sets the cancellation state of this event. A cancelled event will not be executed in the server, but will still pass to other plugins. [Warning] Deprecated: Use is_cancelled instead.
+        """
+
+    @cancelled.setter
+    def cancelled(self, arg1: bool) -> None: ...
+    @property
+    def is_cancelled(self) -> bool:
+        """
+        Gets or sets the cancellation state of this event. A cancelled event will not be executed in the server, but will still pass to other plugins.
+        """
+
+    @is_cancelled.setter
+    def is_cancelled(self, arg1: bool) -> None: ...
+    def cancel(self) -> None:
+        """
+        Cancel this event. A cancelled event will not be executed in the server, but will still pass to other plugins.
+        """
+
+    @property
     def location(self) -> Location:
         """
         Returns the location where the explosion happened.
@@ -261,6 +303,27 @@ class ActorKnockbackEvent(MobEvent, Cancellable):
     """
     Called when a living entity receives knockback.
     """
+    @property
+    def cancelled(self) -> bool:
+        """
+        Gets or sets the cancellation state of this event. A cancelled event will not be executed in the server, but will still pass to other plugins. [Warning] Deprecated: Use is_cancelled instead.
+        """
+
+    @cancelled.setter
+    def cancelled(self, arg1: bool) -> None: ...
+    @property
+    def is_cancelled(self) -> bool:
+        """
+        Gets or sets the cancellation state of this event. A cancelled event will not be executed in the server, but will still pass to other plugins.
+        """
+
+    @is_cancelled.setter
+    def is_cancelled(self, arg1: bool) -> None: ...
+    def cancel(self) -> None:
+        """
+        Cancel this event. A cancelled event will not be executed in the server, but will still pass to other plugins.
+        """
+
     @property
     def source(self) -> Actor:
         """
@@ -285,11 +348,52 @@ class ActorSpawnEvent(ActorEvent, Cancellable):
     """
     Called when an Actor is spawned into a world.
     """
+    @property
+    def cancelled(self) -> bool:
+        """
+        Gets or sets the cancellation state of this event. A cancelled event will not be executed in the server, but will still pass to other plugins. [Warning] Deprecated: Use is_cancelled instead.
+        """
+
+    @cancelled.setter
+    def cancelled(self, arg1: bool) -> None: ...
+    @property
+    def is_cancelled(self) -> bool:
+        """
+        Gets or sets the cancellation state of this event. A cancelled event will not be executed in the server, but will still pass to other plugins.
+        """
+
+    @is_cancelled.setter
+    def is_cancelled(self, arg1: bool) -> None: ...
+    def cancel(self) -> None:
+        """
+        Cancel this event. A cancelled event will not be executed in the server, but will still pass to other plugins.
+        """
 
 class ActorTeleportEvent(ActorEvent, Cancellable):
     """
     Called when a non-player entity is teleported from one location to another.
     """
+    @property
+    def cancelled(self) -> bool:
+        """
+        Gets or sets the cancellation state of this event. A cancelled event will not be executed in the server, but will still pass to other plugins. [Warning] Deprecated: Use is_cancelled instead.
+        """
+
+    @cancelled.setter
+    def cancelled(self, arg1: bool) -> None: ...
+    @property
+    def is_cancelled(self) -> bool:
+        """
+        Gets or sets the cancellation state of this event. A cancelled event will not be executed in the server, but will still pass to other plugins.
+        """
+
+    @is_cancelled.setter
+    def is_cancelled(self, arg1: bool) -> None: ...
+    def cancel(self) -> None:
+        """
+        Cancel this event. A cancelled event will not be executed in the server, but will still pass to other plugins.
+        """
+
     @property
     def from_location(self) -> Location:
         """
@@ -322,6 +426,27 @@ class BlockBreakEvent(BlockEvent, Cancellable):
     Called when a block is broken by a player.
     """
     @property
+    def cancelled(self) -> bool:
+        """
+        Gets or sets the cancellation state of this event. A cancelled event will not be executed in the server, but will still pass to other plugins. [Warning] Deprecated: Use is_cancelled instead.
+        """
+
+    @cancelled.setter
+    def cancelled(self, arg1: bool) -> None: ...
+    @property
+    def is_cancelled(self) -> bool:
+        """
+        Gets or sets the cancellation state of this event. A cancelled event will not be executed in the server, but will still pass to other plugins.
+        """
+
+    @is_cancelled.setter
+    def is_cancelled(self, arg1: bool) -> None: ...
+    def cancel(self) -> None:
+        """
+        Cancel this event. A cancelled event will not be executed in the server, but will still pass to other plugins.
+        """
+
+    @property
     def player(self) -> Player:
         """
         Gets the Player that is breaking the block involved in this event.
@@ -331,6 +456,27 @@ class BlockExplodeEvent(BlockEvent, Cancellable):
     """
     Called when a block explodes.
     """
+    @property
+    def cancelled(self) -> bool:
+        """
+        Gets or sets the cancellation state of this event. A cancelled event will not be executed in the server, but will still pass to other plugins. [Warning] Deprecated: Use is_cancelled instead.
+        """
+
+    @cancelled.setter
+    def cancelled(self, arg1: bool) -> None: ...
+    @property
+    def is_cancelled(self) -> bool:
+        """
+        Gets or sets the cancellation state of this event. A cancelled event will not be executed in the server, but will still pass to other plugins.
+        """
+
+    @is_cancelled.setter
+    def is_cancelled(self, arg1: bool) -> None: ...
+    def cancel(self) -> None:
+        """
+        Cancel this event. A cancelled event will not be executed in the server, but will still pass to other plugins.
+        """
+
     @property
     def block_list(self) -> list[Block]:
         """
@@ -344,6 +490,27 @@ class BlockCookEvent(BlockEvent, Cancellable):
     """
     Called when an ItemStack is successfully cooked in a block.
     """
+    @property
+    def cancelled(self) -> bool:
+        """
+        Gets or sets the cancellation state of this event. A cancelled event will not be executed in the server, but will still pass to other plugins. [Warning] Deprecated: Use is_cancelled instead.
+        """
+
+    @cancelled.setter
+    def cancelled(self, arg1: bool) -> None: ...
+    @property
+    def is_cancelled(self) -> bool:
+        """
+        Gets or sets the cancellation state of this event. A cancelled event will not be executed in the server, but will still pass to other plugins.
+        """
+
+    @is_cancelled.setter
+    def is_cancelled(self, arg1: bool) -> None: ...
+    def cancel(self) -> None:
+        """
+        Cancel this event. A cancelled event will not be executed in the server, but will still pass to other plugins.
+        """
+
     @property
     def source(self) -> ItemStack:
         """
@@ -365,6 +532,27 @@ class BlockGrowEvent(BlockEvent, Cancellable):
     If a Block Grow event is cancelled, the block will not grow.
     """
     @property
+    def cancelled(self) -> bool:
+        """
+        Gets or sets the cancellation state of this event. A cancelled event will not be executed in the server, but will still pass to other plugins. [Warning] Deprecated: Use is_cancelled instead.
+        """
+
+    @cancelled.setter
+    def cancelled(self, arg1: bool) -> None: ...
+    @property
+    def is_cancelled(self) -> bool:
+        """
+        Gets or sets the cancellation state of this event. A cancelled event will not be executed in the server, but will still pass to other plugins.
+        """
+
+    @is_cancelled.setter
+    def is_cancelled(self, arg1: bool) -> None: ...
+    def cancel(self) -> None:
+        """
+        Cancel this event. A cancelled event will not be executed in the server, but will still pass to other plugins.
+        """
+
+    @property
     def new_state(self) -> BlockState:
         """
         Gets the state of the block where it will form or spread to.
@@ -375,12 +563,53 @@ class BlockFormEvent(BlockGrowEvent):
     Called when a block is formed or spreads based on world conditions.
     If a Block Form event is cancelled, the block will not be formed.
     """
+    @property
+    def cancelled(self) -> bool:
+        """
+        Gets or sets the cancellation state of this event. A cancelled event will not be executed in the server, but will still pass to other plugins. [Warning] Deprecated: Use is_cancelled instead.
+        """
+
+    @cancelled.setter
+    def cancelled(self, arg1: bool) -> None: ...
+    @property
+    def is_cancelled(self) -> bool:
+        """
+        Gets or sets the cancellation state of this event. A cancelled event will not be executed in the server, but will still pass to other plugins.
+        """
+
+    @is_cancelled.setter
+    def is_cancelled(self, arg1: bool) -> None: ...
+    def cancel(self) -> None:
+        """
+        Cancel this event. A cancelled event will not be executed in the server, but will still pass to other plugins.
+        """
 
 class BlockFromToEvent(BlockEvent, Cancellable):
     """
     Represents events with a source block and a destination block, currently only applies to liquid (lava and water) and teleporting dragon eggs.
     If a Block From To event is cancelled, the block will not move (the liquid will not flow).
     """
+    @property
+    def cancelled(self) -> bool:
+        """
+        Gets or sets the cancellation state of this event. A cancelled event will not be executed in the server, but will still pass to other plugins. [Warning] Deprecated: Use is_cancelled instead.
+        """
+
+    @cancelled.setter
+    def cancelled(self, arg1: bool) -> None: ...
+    @property
+    def is_cancelled(self) -> bool:
+        """
+        Gets or sets the cancellation state of this event. A cancelled event will not be executed in the server, but will still pass to other plugins.
+        """
+
+    @is_cancelled.setter
+    def is_cancelled(self, arg1: bool) -> None: ...
+    def cancel(self) -> None:
+        """
+        Cancel this event. A cancelled event will not be executed in the server, but will still pass to other plugins.
+        """
+
     @property
     def to_block(self) -> Block:
         """
@@ -392,6 +621,27 @@ class BlockPistonEvent(BlockEvent, Cancellable):
     Called when a piston block is triggered
     """
     @property
+    def cancelled(self) -> bool:
+        """
+        Gets or sets the cancellation state of this event. A cancelled event will not be executed in the server, but will still pass to other plugins. [Warning] Deprecated: Use is_cancelled instead.
+        """
+
+    @cancelled.setter
+    def cancelled(self, arg1: bool) -> None: ...
+    @property
+    def is_cancelled(self) -> bool:
+        """
+        Gets or sets the cancellation state of this event. A cancelled event will not be executed in the server, but will still pass to other plugins.
+        """
+
+    @is_cancelled.setter
+    def is_cancelled(self, arg1: bool) -> None: ...
+    def cancel(self) -> None:
+        """
+        Cancel this event. A cancelled event will not be executed in the server, but will still pass to other plugins.
+        """
+
+    @property
     def direction(self) -> BlockFace:
         """
         Return the direction in which the piston will operate.
@@ -401,16 +651,77 @@ class BlockPistonExtendEvent(BlockPistonEvent):
     """
     Called when a piston extends.
     """
+    @property
+    def cancelled(self) -> bool:
+        """
+        Gets or sets the cancellation state of this event. A cancelled event will not be executed in the server, but will still pass to other plugins. [Warning] Deprecated: Use is_cancelled instead.
+        """
+
+    @cancelled.setter
+    def cancelled(self, arg1: bool) -> None: ...
+    @property
+    def is_cancelled(self) -> bool:
+        """
+        Gets or sets the cancellation state of this event. A cancelled event will not be executed in the server, but will still pass to other plugins.
+        """
+
+    @is_cancelled.setter
+    def is_cancelled(self, arg1: bool) -> None: ...
+    def cancel(self) -> None:
+        """
+        Cancel this event. A cancelled event will not be executed in the server, but will still pass to other plugins.
+        """
 
 class BlockPistonRetractEvent(BlockPistonEvent):
     """
     Called when a piston retracts.
     """
+    @property
+    def cancelled(self) -> bool:
+        """
+        Gets or sets the cancellation state of this event. A cancelled event will not be executed in the server, but will still pass to other plugins. [Warning] Deprecated: Use is_cancelled instead.
+        """
+
+    @cancelled.setter
+    def cancelled(self, arg1: bool) -> None: ...
+    @property
+    def is_cancelled(self) -> bool:
+        """
+        Gets or sets the cancellation state of this event. A cancelled event will not be executed in the server, but will still pass to other plugins.
+        """
+
+    @is_cancelled.setter
+    def is_cancelled(self, arg1: bool) -> None: ...
+    def cancel(self) -> None:
+        """
+        Cancel this event. A cancelled event will not be executed in the server, but will still pass to other plugins.
+        """
 
 class BlockPlaceEvent(BlockEvent, Cancellable):
     """
     Called when a block is placed by a player.
     """
+    @property
+    def cancelled(self) -> bool:
+        """
+        Gets or sets the cancellation state of this event. A cancelled event will not be executed in the server, but will still pass to other plugins. [Warning] Deprecated: Use is_cancelled instead.
+        """
+
+    @cancelled.setter
+    def cancelled(self, arg1: bool) -> None: ...
+    @property
+    def is_cancelled(self) -> bool:
+        """
+        Gets or sets the cancellation state of this event. A cancelled event will not be executed in the server, but will still pass to other plugins.
+        """
+
+    @is_cancelled.setter
+    def is_cancelled(self, arg1: bool) -> None: ...
+    def cancel(self) -> None:
+        """
+        Cancel this event. A cancelled event will not be executed in the server, but will still pass to other plugins.
+        """
+
     @property
     def player(self) -> Player:
         """
@@ -440,6 +751,26 @@ class LeavesDecayEvent(BlockEvent, Cancellable):
     Called when leaves are decaying naturally.
     If a Leaves Decay event is cancelled, the leaves will not decay.
     """
+    @property
+    def cancelled(self) -> bool:
+        """
+        Gets or sets the cancellation state of this event. A cancelled event will not be executed in the server, but will still pass to other plugins. [Warning] Deprecated: Use is_cancelled instead.
+        """
+
+    @cancelled.setter
+    def cancelled(self, arg1: bool) -> None: ...
+    @property
+    def is_cancelled(self) -> bool:
+        """
+        Gets or sets the cancellation state of this event. A cancelled event will not be executed in the server, but will still pass to other plugins.
+        """
+
+    @is_cancelled.setter
+    def is_cancelled(self, arg1: bool) -> None: ...
+    def cancel(self) -> None:
+        """
+        Cancel this event. A cancelled event will not be executed in the server, but will still pass to other plugins.
+        """
 
 class LevelEvent(Event):
     """
@@ -496,6 +827,27 @@ class PlayerBedEnterEvent(PlayerEvent, Cancellable):
     Called when a player is almost about to enter the bed.
     """
     @property
+    def cancelled(self) -> bool:
+        """
+        Gets or sets the cancellation state of this event. A cancelled event will not be executed in the server, but will still pass to other plugins. [Warning] Deprecated: Use is_cancelled instead.
+        """
+
+    @cancelled.setter
+    def cancelled(self, arg1: bool) -> None: ...
+    @property
+    def is_cancelled(self) -> bool:
+        """
+        Gets or sets the cancellation state of this event. A cancelled event will not be executed in the server, but will still pass to other plugins.
+        """
+
+    @is_cancelled.setter
+    def is_cancelled(self, arg1: bool) -> None: ...
+    def cancel(self) -> None:
+        """
+        Cancel this event. A cancelled event will not be executed in the server, but will still pass to other plugins.
+        """
+
+    @property
     def bed(self) -> Block:
         """
         Returns the bed block involved in this event.
@@ -515,6 +867,27 @@ class PlayerChatEvent(PlayerEvent, Cancellable):
     """
     Called when a player sends a chat message.
     """
+    @property
+    def cancelled(self) -> bool:
+        """
+        Gets or sets the cancellation state of this event. A cancelled event will not be executed in the server, but will still pass to other plugins. [Warning] Deprecated: Use is_cancelled instead.
+        """
+
+    @cancelled.setter
+    def cancelled(self, arg1: bool) -> None: ...
+    @property
+    def is_cancelled(self) -> bool:
+        """
+        Gets or sets the cancellation state of this event. A cancelled event will not be executed in the server, but will still pass to other plugins.
+        """
+
+    @is_cancelled.setter
+    def is_cancelled(self, arg1: bool) -> None: ...
+    def cancel(self) -> None:
+        """
+        Cancel this event. A cancelled event will not be executed in the server, but will still pass to other plugins.
+        """
+
     @property
     def message(self) -> str:
         """
@@ -550,6 +923,27 @@ class PlayerCommandEvent(PlayerEvent, Cancellable):
     Called whenever a player runs a command.
     """
     @property
+    def cancelled(self) -> bool:
+        """
+        Gets or sets the cancellation state of this event. A cancelled event will not be executed in the server, but will still pass to other plugins. [Warning] Deprecated: Use is_cancelled instead.
+        """
+
+    @cancelled.setter
+    def cancelled(self, arg1: bool) -> None: ...
+    @property
+    def is_cancelled(self) -> bool:
+        """
+        Gets or sets the cancellation state of this event. A cancelled event will not be executed in the server, but will still pass to other plugins.
+        """
+
+    @is_cancelled.setter
+    def is_cancelled(self, arg1: bool) -> None: ...
+    def cancel(self) -> None:
+        """
+        Cancel this event. A cancelled event will not be executed in the server, but will still pass to other plugins.
+        """
+
+    @property
     def command(self) -> str:
         """
         Gets or sets the command that the player will send.
@@ -579,6 +973,27 @@ class PlayerDropItemEvent(PlayerEvent, Cancellable):
     Called when a player drops an item from their inventory
     """
     @property
+    def cancelled(self) -> bool:
+        """
+        Gets or sets the cancellation state of this event. A cancelled event will not be executed in the server, but will still pass to other plugins. [Warning] Deprecated: Use is_cancelled instead.
+        """
+
+    @cancelled.setter
+    def cancelled(self, arg1: bool) -> None: ...
+    @property
+    def is_cancelled(self) -> bool:
+        """
+        Gets or sets the cancellation state of this event. A cancelled event will not be executed in the server, but will still pass to other plugins.
+        """
+
+    @is_cancelled.setter
+    def is_cancelled(self, arg1: bool) -> None: ...
+    def cancel(self) -> None:
+        """
+        Cancel this event. A cancelled event will not be executed in the server, but will still pass to other plugins.
+        """
+
+    @property
     def item(self) -> ItemStack:
         """
         Gets the ItemStack dropped by the player
@@ -588,6 +1003,27 @@ class PlayerEmoteEvent(PlayerEvent, Cancellable):
     """
     Called when a player uses and emote
     """
+    @property
+    def cancelled(self) -> bool:
+        """
+        Gets or sets the cancellation state of this event. A cancelled event will not be executed in the server, but will still pass to other plugins. [Warning] Deprecated: Use is_cancelled instead.
+        """
+
+    @cancelled.setter
+    def cancelled(self, arg1: bool) -> None: ...
+    @property
+    def is_cancelled(self) -> bool:
+        """
+        Gets or sets the cancellation state of this event. A cancelled event will not be executed in the server, but will still pass to other plugins.
+        """
+
+    @is_cancelled.setter
+    def is_cancelled(self, arg1: bool) -> None: ...
+    def cancel(self) -> None:
+        """
+        Cancel this event. A cancelled event will not be executed in the server, but will still pass to other plugins.
+        """
+
     @property
     def emote_id(self) -> str:
         """
@@ -608,6 +1044,27 @@ class PlayerGameModeChangeEvent(PlayerEvent, Cancellable):
     Called when the GameMode of the player is changed.
     """
     @property
+    def cancelled(self) -> bool:
+        """
+        Gets or sets the cancellation state of this event. A cancelled event will not be executed in the server, but will still pass to other plugins. [Warning] Deprecated: Use is_cancelled instead.
+        """
+
+    @cancelled.setter
+    def cancelled(self, arg1: bool) -> None: ...
+    @property
+    def is_cancelled(self) -> bool:
+        """
+        Gets or sets the cancellation state of this event. A cancelled event will not be executed in the server, but will still pass to other plugins.
+        """
+
+    @is_cancelled.setter
+    def is_cancelled(self, arg1: bool) -> None: ...
+    def cancel(self) -> None:
+        """
+        Cancel this event. A cancelled event will not be executed in the server, but will still pass to other plugins.
+        """
+
+    @property
     def new_game_mode(self) -> GameMode:
         """
         Gets the GameMode the player is switched to.
@@ -617,6 +1074,27 @@ class PlayerInteractEvent(PlayerEvent, Cancellable):
     """
     Represents an event that is called when a player interacts with an object or air.
     """
+    @property
+    def cancelled(self) -> bool:
+        """
+        Gets or sets the cancellation state of this event. A cancelled event will not be executed in the server, but will still pass to other plugins. [Warning] Deprecated: Use is_cancelled instead.
+        """
+
+    @cancelled.setter
+    def cancelled(self, arg1: bool) -> None: ...
+    @property
+    def is_cancelled(self) -> bool:
+        """
+        Gets or sets the cancellation state of this event. A cancelled event will not be executed in the server, but will still pass to other plugins.
+        """
+
+    @is_cancelled.setter
+    def is_cancelled(self, arg1: bool) -> None: ...
+    def cancel(self) -> None:
+        """
+        Cancel this event. A cancelled event will not be executed in the server, but will still pass to other plugins.
+        """
+
     class Action(enum.Enum):
         LEFT_CLICK_BLOCK = 0
         RIGHT_CLICK_BLOCK = 1
@@ -674,6 +1152,27 @@ class PlayerInteractActorEvent(PlayerEvent, Cancellable):
     Represents an event that is called when a player right-clicks an actor.
     """
     @property
+    def cancelled(self) -> bool:
+        """
+        Gets or sets the cancellation state of this event. A cancelled event will not be executed in the server, but will still pass to other plugins. [Warning] Deprecated: Use is_cancelled instead.
+        """
+
+    @cancelled.setter
+    def cancelled(self, arg1: bool) -> None: ...
+    @property
+    def is_cancelled(self) -> bool:
+        """
+        Gets or sets the cancellation state of this event. A cancelled event will not be executed in the server, but will still pass to other plugins.
+        """
+
+    @is_cancelled.setter
+    def is_cancelled(self, arg1: bool) -> None: ...
+    def cancel(self) -> None:
+        """
+        Cancel this event. A cancelled event will not be executed in the server, but will still pass to other plugins.
+        """
+
+    @property
     def actor(self) -> Actor:
         """
         Gets the actor that was right-clicked by the player.
@@ -683,6 +1182,27 @@ class PlayerItemConsumeEvent(PlayerEvent, Cancellable):
     """
     Called when a player is finishing consuming an item (food, potion, milk bucket).
     """
+    @property
+    def cancelled(self) -> bool:
+        """
+        Gets or sets the cancellation state of this event. A cancelled event will not be executed in the server, but will still pass to other plugins. [Warning] Deprecated: Use is_cancelled instead.
+        """
+
+    @cancelled.setter
+    def cancelled(self, arg1: bool) -> None: ...
+    @property
+    def is_cancelled(self) -> bool:
+        """
+        Gets or sets the cancellation state of this event. A cancelled event will not be executed in the server, but will still pass to other plugins.
+        """
+
+    @is_cancelled.setter
+    def is_cancelled(self, arg1: bool) -> None: ...
+    def cancel(self) -> None:
+        """
+        Cancel this event. A cancelled event will not be executed in the server, but will still pass to other plugins.
+        """
+
     @property
     def item(self) -> ItemStack:
         """
@@ -699,6 +1219,27 @@ class PlayerItemHeldEvent(PlayerEvent, Cancellable):
     """
     Called when a player changes their currently held item.
     """
+    @property
+    def cancelled(self) -> bool:
+        """
+        Gets or sets the cancellation state of this event. A cancelled event will not be executed in the server, but will still pass to other plugins. [Warning] Deprecated: Use is_cancelled instead.
+        """
+
+    @cancelled.setter
+    def cancelled(self, arg1: bool) -> None: ...
+    @property
+    def is_cancelled(self) -> bool:
+        """
+        Gets or sets the cancellation state of this event. A cancelled event will not be executed in the server, but will still pass to other plugins.
+        """
+
+    @is_cancelled.setter
+    def is_cancelled(self, arg1: bool) -> None: ...
+    def cancel(self) -> None:
+        """
+        Cancel this event. A cancelled event will not be executed in the server, but will still pass to other plugins.
+        """
+
     @property
     def new_slot(self) -> int:
         """
@@ -729,6 +1270,27 @@ class PlayerKickEvent(PlayerEvent, Cancellable):
     Called when a player gets kicked from the server
     """
     @property
+    def cancelled(self) -> bool:
+        """
+        Gets or sets the cancellation state of this event. A cancelled event will not be executed in the server, but will still pass to other plugins. [Warning] Deprecated: Use is_cancelled instead.
+        """
+
+    @cancelled.setter
+    def cancelled(self, arg1: bool) -> None: ...
+    @property
+    def is_cancelled(self) -> bool:
+        """
+        Gets or sets the cancellation state of this event. A cancelled event will not be executed in the server, but will still pass to other plugins.
+        """
+
+    @is_cancelled.setter
+    def is_cancelled(self, arg1: bool) -> None: ...
+    def cancel(self) -> None:
+        """
+        Cancel this event. A cancelled event will not be executed in the server, but will still pass to other plugins.
+        """
+
+    @property
     def reason(self) -> str:
         """
         Gets or sets the reason why the player is getting kicked
@@ -742,6 +1304,27 @@ class PlayerLoginEvent(PlayerEvent, Cancellable):
     Called when a player attempts to login in.
     """
     @property
+    def cancelled(self) -> bool:
+        """
+        Gets or sets the cancellation state of this event. A cancelled event will not be executed in the server, but will still pass to other plugins. [Warning] Deprecated: Use is_cancelled instead.
+        """
+
+    @cancelled.setter
+    def cancelled(self, arg1: bool) -> None: ...
+    @property
+    def is_cancelled(self) -> bool:
+        """
+        Gets or sets the cancellation state of this event. A cancelled event will not be executed in the server, but will still pass to other plugins.
+        """
+
+    @is_cancelled.setter
+    def is_cancelled(self, arg1: bool) -> None: ...
+    def cancel(self) -> None:
+        """
+        Cancel this event. A cancelled event will not be executed in the server, but will still pass to other plugins.
+        """
+
+    @property
     def kick_message(self) -> str:
         """
         Gets or sets kick message to display if event is cancelled
@@ -754,6 +1337,27 @@ class PlayerMoveEvent(PlayerEvent, Cancellable):
     """
     Called when a player moves.
     """
+    @property
+    def cancelled(self) -> bool:
+        """
+        Gets or sets the cancellation state of this event. A cancelled event will not be executed in the server, but will still pass to other plugins. [Warning] Deprecated: Use is_cancelled instead.
+        """
+
+    @cancelled.setter
+    def cancelled(self, arg1: bool) -> None: ...
+    @property
+    def is_cancelled(self) -> bool:
+        """
+        Gets or sets the cancellation state of this event. A cancelled event will not be executed in the server, but will still pass to other plugins.
+        """
+
+    @is_cancelled.setter
+    def is_cancelled(self, arg1: bool) -> None: ...
+    def cancel(self) -> None:
+        """
+        Cancel this event. A cancelled event will not be executed in the server, but will still pass to other plugins.
+        """
+
     @property
     def from_location(self) -> Location:
         """
@@ -775,6 +1379,26 @@ class PlayerJumpEvent(PlayerMoveEvent):
     """
     Called when a player jumps.
     """
+    @property
+    def cancelled(self) -> bool:
+        """
+        Gets or sets the cancellation state of this event. A cancelled event will not be executed in the server, but will still pass to other plugins. [Warning] Deprecated: Use is_cancelled instead.
+        """
+
+    @cancelled.setter
+    def cancelled(self, arg1: bool) -> None: ...
+    @property
+    def is_cancelled(self) -> bool:
+        """
+        Gets or sets the cancellation state of this event. A cancelled event will not be executed in the server, but will still pass to other plugins.
+        """
+
+    @is_cancelled.setter
+    def is_cancelled(self, arg1: bool) -> None: ...
+    def cancel(self) -> None:
+        """
+        Cancel this event. A cancelled event will not be executed in the server, but will still pass to other plugins.
+        """
 
 class PlayerQuitEvent(PlayerEvent):
     """
@@ -799,6 +1423,27 @@ class PlayerSkinChangeEvent(PlayerEvent, Cancellable):
     Called when a player changes their skin.
     """
     @property
+    def cancelled(self) -> bool:
+        """
+        Gets or sets the cancellation state of this event. A cancelled event will not be executed in the server, but will still pass to other plugins. [Warning] Deprecated: Use is_cancelled instead.
+        """
+
+    @cancelled.setter
+    def cancelled(self, arg1: bool) -> None: ...
+    @property
+    def is_cancelled(self) -> bool:
+        """
+        Gets or sets the cancellation state of this event. A cancelled event will not be executed in the server, but will still pass to other plugins.
+        """
+
+    @is_cancelled.setter
+    def is_cancelled(self, arg1: bool) -> None: ...
+    def cancel(self) -> None:
+        """
+        Cancel this event. A cancelled event will not be executed in the server, but will still pass to other plugins.
+        """
+
+    @property
     def new_skin(self) -> Skin:
         """
         Gets the player's new skin.
@@ -817,16 +1462,77 @@ class PlayerTeleportEvent(PlayerMoveEvent):
     """
     Called when a player is teleported from one location to another.
     """
+    @property
+    def cancelled(self) -> bool:
+        """
+        Gets or sets the cancellation state of this event. A cancelled event will not be executed in the server, but will still pass to other plugins. [Warning] Deprecated: Use is_cancelled instead.
+        """
+
+    @cancelled.setter
+    def cancelled(self, arg1: bool) -> None: ...
+    @property
+    def is_cancelled(self) -> bool:
+        """
+        Gets or sets the cancellation state of this event. A cancelled event will not be executed in the server, but will still pass to other plugins.
+        """
+
+    @is_cancelled.setter
+    def is_cancelled(self, arg1: bool) -> None: ...
+    def cancel(self) -> None:
+        """
+        Cancel this event. A cancelled event will not be executed in the server, but will still pass to other plugins.
+        """
 
 class PlayerPortalEvent(PlayerTeleportEvent):
     """
     Called when a player is about to teleport because it is in contact with a portal.
     """
+    @property
+    def cancelled(self) -> bool:
+        """
+        Gets or sets the cancellation state of this event. A cancelled event will not be executed in the server, but will still pass to other plugins. [Warning] Deprecated: Use is_cancelled instead.
+        """
+
+    @cancelled.setter
+    def cancelled(self, arg1: bool) -> None: ...
+    @property
+    def is_cancelled(self) -> bool:
+        """
+        Gets or sets the cancellation state of this event. A cancelled event will not be executed in the server, but will still pass to other plugins.
+        """
+
+    @is_cancelled.setter
+    def is_cancelled(self, arg1: bool) -> None: ...
+    def cancel(self) -> None:
+        """
+        Cancel this event. A cancelled event will not be executed in the server, but will still pass to other plugins.
+        """
 
 class PlayerPickupItemEvent(PlayerEvent, Cancellable):
     """
     Called when a player picks an item up from the ground.
     """
+    @property
+    def cancelled(self) -> bool:
+        """
+        Gets or sets the cancellation state of this event. A cancelled event will not be executed in the server, but will still pass to other plugins. [Warning] Deprecated: Use is_cancelled instead.
+        """
+
+    @cancelled.setter
+    def cancelled(self, arg1: bool) -> None: ...
+    @property
+    def is_cancelled(self) -> bool:
+        """
+        Gets or sets the cancellation state of this event. A cancelled event will not be executed in the server, but will still pass to other plugins.
+        """
+
+    @is_cancelled.setter
+    def is_cancelled(self, arg1: bool) -> None: ...
+    def cancel(self) -> None:
+        """
+        Cancel this event. A cancelled event will not be executed in the server, but will still pass to other plugins.
+        """
+
     @property
     def item(self) -> Item:
         """
@@ -842,6 +1548,27 @@ class BroadcastMessageEvent(ServerEvent, Cancellable):
     """
     Event triggered for server broadcast messages such as from Server.broadcast
     """
+    @property
+    def cancelled(self) -> bool:
+        """
+        Gets or sets the cancellation state of this event. A cancelled event will not be executed in the server, but will still pass to other plugins. [Warning] Deprecated: Use is_cancelled instead.
+        """
+
+    @cancelled.setter
+    def cancelled(self, arg1: bool) -> None: ...
+    @property
+    def is_cancelled(self) -> bool:
+        """
+        Gets or sets the cancellation state of this event. A cancelled event will not be executed in the server, but will still pass to other plugins.
+        """
+
+    @is_cancelled.setter
+    def is_cancelled(self, arg1: bool) -> None: ...
+    def cancel(self) -> None:
+        """
+        Cancel this event. A cancelled event will not be executed in the server, but will still pass to other plugins.
+        """
+
     @property
     def message(self) -> str | Translatable:
         """
@@ -870,6 +1597,27 @@ class PacketReceiveEvent(ServerEvent, Cancellable):
     """
     Called when the server receives a packet from a connected client.
     """
+    @property
+    def cancelled(self) -> bool:
+        """
+        Gets or sets the cancellation state of this event. A cancelled event will not be executed in the server, but will still pass to other plugins. [Warning] Deprecated: Use is_cancelled instead.
+        """
+
+    @cancelled.setter
+    def cancelled(self, arg1: bool) -> None: ...
+    @property
+    def is_cancelled(self) -> bool:
+        """
+        Gets or sets the cancellation state of this event. A cancelled event will not be executed in the server, but will still pass to other plugins.
+        """
+
+    @is_cancelled.setter
+    def is_cancelled(self, arg1: bool) -> None: ...
+    def cancel(self) -> None:
+        """
+        Cancel this event. A cancelled event will not be executed in the server, but will still pass to other plugins.
+        """
+
     @property
     def packet_id(self) -> int:
         """
@@ -907,6 +1655,27 @@ class PacketSendEvent(ServerEvent, Cancellable):
     """
     Called when the server sends a packet to a connected client.
     """
+    @property
+    def cancelled(self) -> bool:
+        """
+        Gets or sets the cancellation state of this event. A cancelled event will not be executed in the server, but will still pass to other plugins. [Warning] Deprecated: Use is_cancelled instead.
+        """
+
+    @cancelled.setter
+    def cancelled(self, arg1: bool) -> None: ...
+    @property
+    def is_cancelled(self) -> bool:
+        """
+        Gets or sets the cancellation state of this event. A cancelled event will not be executed in the server, but will still pass to other plugins.
+        """
+
+    @is_cancelled.setter
+    def is_cancelled(self, arg1: bool) -> None: ...
+    def cancel(self) -> None:
+        """
+        Cancel this event. A cancelled event will not be executed in the server, but will still pass to other plugins.
+        """
+
     @property
     def packet_id(self) -> int:
         """
@@ -959,6 +1728,27 @@ class ScriptMessageEvent(ServerEvent, Cancellable):
     Called when a message is sent by `/scriptevent` command
     """
     @property
+    def cancelled(self) -> bool:
+        """
+        Gets or sets the cancellation state of this event. A cancelled event will not be executed in the server, but will still pass to other plugins. [Warning] Deprecated: Use is_cancelled instead.
+        """
+
+    @cancelled.setter
+    def cancelled(self, arg1: bool) -> None: ...
+    @property
+    def is_cancelled(self) -> bool:
+        """
+        Gets or sets the cancellation state of this event. A cancelled event will not be executed in the server, but will still pass to other plugins.
+        """
+
+    @is_cancelled.setter
+    def is_cancelled(self, arg1: bool) -> None: ...
+    def cancel(self) -> None:
+        """
+        Cancel this event. A cancelled event will not be executed in the server, but will still pass to other plugins.
+        """
+
+    @property
     def message_id(self) -> str:
         """
         Get the message id to send.
@@ -981,6 +1771,27 @@ class ServerCommandEvent(ServerEvent, Cancellable):
     Called when the console runs a command, early in the process.
     """
     @property
+    def cancelled(self) -> bool:
+        """
+        Gets or sets the cancellation state of this event. A cancelled event will not be executed in the server, but will still pass to other plugins. [Warning] Deprecated: Use is_cancelled instead.
+        """
+
+    @cancelled.setter
+    def cancelled(self, arg1: bool) -> None: ...
+    @property
+    def is_cancelled(self) -> bool:
+        """
+        Gets or sets the cancellation state of this event. A cancelled event will not be executed in the server, but will still pass to other plugins.
+        """
+
+    @is_cancelled.setter
+    def is_cancelled(self, arg1: bool) -> None: ...
+    def cancel(self) -> None:
+        """
+        Cancel this event. A cancelled event will not be executed in the server, but will still pass to other plugins.
+        """
+
+    @property
     def sender(self) -> CommandSender:
         """
         Get the command sender.
@@ -999,6 +1810,27 @@ class ServerListPingEvent(ServerEvent, Cancellable):
     """
     Called when a server ping is coming in.
     """
+    @property
+    def cancelled(self) -> bool:
+        """
+        Gets or sets the cancellation state of this event. A cancelled event will not be executed in the server, but will still pass to other plugins. [Warning] Deprecated: Use is_cancelled instead.
+        """
+
+    @cancelled.setter
+    def cancelled(self, arg1: bool) -> None: ...
+    @property
+    def is_cancelled(self) -> bool:
+        """
+        Gets or sets the cancellation state of this event. A cancelled event will not be executed in the server, but will still pass to other plugins.
+        """
+
+    @is_cancelled.setter
+    def is_cancelled(self, arg1: bool) -> None: ...
+    def cancel(self) -> None:
+        """
+        Cancel this event. A cancelled event will not be executed in the server, but will still pass to other plugins.
+        """
+
     @property
     def address(self) -> SocketAddress:
         """
@@ -1110,6 +1942,27 @@ class ThunderChangeEvent(WeatherEvent, Cancellable):
     Called when the thunder state in a world is changing.
     """
     @property
+    def cancelled(self) -> bool:
+        """
+        Gets or sets the cancellation state of this event. A cancelled event will not be executed in the server, but will still pass to other plugins. [Warning] Deprecated: Use is_cancelled instead.
+        """
+
+    @cancelled.setter
+    def cancelled(self, arg1: bool) -> None: ...
+    @property
+    def is_cancelled(self) -> bool:
+        """
+        Gets or sets the cancellation state of this event. A cancelled event will not be executed in the server, but will still pass to other plugins.
+        """
+
+    @is_cancelled.setter
+    def is_cancelled(self, arg1: bool) -> None: ...
+    def cancel(self) -> None:
+        """
+        Cancel this event. A cancelled event will not be executed in the server, but will still pass to other plugins.
+        """
+
+    @property
     def to_thunder_state(self) -> bool:
         """
         Gets the state of thunder that the world is being set to
@@ -1119,6 +1972,27 @@ class WeatherChangeEvent(WeatherEvent, Cancellable):
     """
     Called when the weather (rain) state in a world is changing.
     """
+    @property
+    def cancelled(self) -> bool:
+        """
+        Gets or sets the cancellation state of this event. A cancelled event will not be executed in the server, but will still pass to other plugins. [Warning] Deprecated: Use is_cancelled instead.
+        """
+
+    @cancelled.setter
+    def cancelled(self, arg1: bool) -> None: ...
+    @property
+    def is_cancelled(self) -> bool:
+        """
+        Gets or sets the cancellation state of this event. A cancelled event will not be executed in the server, but will still pass to other plugins.
+        """
+
+    @is_cancelled.setter
+    def is_cancelled(self, arg1: bool) -> None: ...
+    def cancel(self) -> None:
+        """
+        Cancel this event. A cancelled event will not be executed in the server, but will still pass to other plugins.
+        """
+
     @property
     def to_weather_state(self) -> bool:
         """
