@@ -48,6 +48,8 @@ class EndstoneTest(Plugin):
         super().__init__()
         self.tracked_events: dict[str, int] = {}
         self.boss_bar: BossBar | None = None
+        self.extra_boss_bars: list[BossBar] = []
+        self.boss_bar_ticks = 0
 
     def on_load(self) -> None:
         self.logger.info("on_load is called!")
@@ -59,6 +61,13 @@ class EndstoneTest(Plugin):
         self.boss_bar = self.server.create_boss_bar(
             "", BarColor.GREEN, BarStyle.SEGMENTED_10
         )
+        self.extra_boss_bars = [
+            self.server.create_boss_bar("Boss bar A", BarColor.RED, BarStyle.SOLID),
+            self.server.create_boss_bar(
+                "Boss bar B", BarColor.BLUE, BarStyle.SEGMENTED_6
+            ),
+        ]
+        self.server.scheduler.run_task(self, self.update_boss_bars, delay=20, period=20)
         self.register_events(ActorEventListener(self))
         self.register_events(BlockEventListener(self))
         self.register_events(LevelEventListener(self))
@@ -72,6 +81,21 @@ class EndstoneTest(Plugin):
     def on_disable(self) -> None:
         self.logger.info("on_disable is called!")
         self.boss_bar.remove_all()
+        for boss_bar in self.extra_boss_bars:
+            boss_bar.remove_all()
+
+    def update_boss_bars(self) -> None:
+        self.boss_bar_ticks += 1
+        colors = list(BarColor)
+        for i, boss_bar in enumerate(self.extra_boss_bars):
+            boss_bar.progress = ((self.boss_bar_ticks + i * 5) % 11) / 10
+            boss_bar.title = f"Boss bar {'AB'[i]}: {boss_bar.progress:.0%}"
+
+        bar_a, bar_b = self.extra_boss_bars
+        if self.boss_bar_ticks % 5 == 0:
+            bar_a.color = colors[(self.boss_bar_ticks // 5) % len(colors)]
+        if self.boss_bar_ticks % 10 == 0:
+            bar_b.is_visible = not bar_b.is_visible
 
     def run_tests(self, name: str, **kwargs):
         return pytest.main(
