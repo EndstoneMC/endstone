@@ -125,6 +125,8 @@ class PlayerEventListener(EventListener):
 
         if self.recorder.boss_bar is not None:
             self.recorder.boss_bar.add_player(player)
+        for boss_bar in self.plugin.extra_boss_bars:
+            boss_bar.add_player(player)
 
     @event_handler
     def on_player_quit(self, event: PlayerQuitEvent):

@@ -20,6 +20,68 @@ rip_relative = true
 rip_offset = 3
 
 [[signatures]]
+name = "ChunkBlenderFactory::getOrCreateChunkBlender::cache_cap"
+relative = false
+extra = 6
+# 1. in ChunkBlenderFactory::getOrCreateChunkBlender, reached from OverworldGeneratorMultinoise::chunkPosNeedsBlending
+#    (the generator vtable slot after canLaunchTasks), find the per-ChunkPos blender cache's size compare against
+#    10000 (0x2710; Linux compares 9999 with jbe), right after the cache insert and before the whole-cache wipe; it is
+#    the only such immediate in the function
+# 2. the entry is the third byte of that imm32; raising it from 0x00 raises the cap
+pattern = "48 81 7E ? 10 27 00 00 0F 82"
+
+[[signatures]]
+name = "?updateInfluences@ChunkBuildOrderPolicy@@UEAAXXZ"
+relative = false
+extra = 0
+# 1. _updateChunkPublisherView@ServerPlayer calls vtable +0x20 then +0x30 on the policy at
+#    [[ChunkViewSource+0x28]+0x3b0]. Its vtable is the one lea'd by exactly three functions: the Dimension ctor,
+#    Dimension::_createChunkBuildOrderPolicy and ~ChunkBuildOrderPolicy. updateInfluences is slot 6 (+0x30)
+# 2. confirm the body: copies the influence map into a fresh vector of 24-byte entries, then swaps it in under
+#    a SpinLock (`mov ecx, 0xbb8` spins, then _Thrd_yield) and frees the old vector
+# 3. confirm vs the old named DB
+# function prologue
+pattern = "55 41 57 41 56 41 55 41 54 56 57 53 48 83 EC 68 48 8D 6C 24 60 48 C7 45 00 FE FF FF FF 48 89 CE 0F 57 C0 0F 29 45 E0 48 C7 45 F0 00 00 00 00"
+
+[[signatures]]
+name = "DBChunkStorage::_hasChunk::cache_cap"
+relative = false
+extra = 9
+# 1. in DBChunkStorage::_hasChunk, reached from the DBChunkStorage.cpp:321 blending-data lambda, find the chunk-
+#    existence cache's size compare against 30000 (0x7530; Linux compares 29999 with jbe), right after the cache
+#    insert and before the whole-cache wipe; it is the only such immediate in the function
+# 2. the entry is the third byte of that imm32; raising it from 0x00 raises the cap
+pattern = "49 81 BD ? ? ? ? 30 75 00 00 0F 82"
+
+[[signatures]]
+name = "?forEachPlayer@Dimension@@UEBAXV?$function_ref@$$A6A_NAEAVPlayer@@@Z$$A6A_N0@Z@brstd@@@Z"
+relative = false
+extra = 0
+# 1. find bytes "48 8B 80 20 0A 00 00 FF 15" (load of Level vtable +0xa20, getActiveUsers, then a CFG call); the
+#    candidates are getActiveUsers' callers
+# 2. pick the ~0xcd one that reads the level from this+0xc0, steps a vector of 0x18-byte weak refs, calls
+#    StackResultStorageEntity's ctor, Player::tryGetFromEntity(ctx, false) and Actor::getDimensionId, compares the
+#    result with this+0x1a0 and calls the function_ref ([rsi] with [rsi+8]), stopping when it returns false
+# 3. confirm it is slot 10 (+0x50) of every Dimension vtable and has no direct callers
+# 4. confirm vs the old named DB
+# function prologue
+pattern = "41 57 41 56 41 54 56 57 53 48 83 EC 48 48 89 D6 48 89 CF 48 8B 05 ? ? ? ? 48 31 E0 48 89 44 24 40 48 8B 89 C0 00 00 00 48 8B 01"
+
+[[signatures]]
+name = "?sendPacketForEntity@Dimension@@UEAAXAEBVActor@@AEBVPacket@@PEBVPlayer@@@Z"
+relative = false
+extra = 0
+# 1. locate Dimension::forEachPlayer (see its entry); sendPacketForEntity is slot 4 (+0x20) of the same vtables
+# 2. confirm the ~0xd2 body: clears the vector at this+0x3f0, passes a function_ref to this vtable +0x50
+#    (forEachPlayer), then calls the level's (this+0xc0) vtable +0xa40 (getPacketSender) and that vtable +0x38
+#    (sendToClients) with the vector
+# 3. the lambda it passes skips the excluded player and players without a UserEntityIdentifierComponent, then
+#    asks this vtable +0x118 (isActorRelevantForPlayer) before appending the player's network id
+# 4. confirm vs the old named DB
+# function prologue
+pattern = "56 57 53 48 83 EC 60 4C 89 C6 48 89 CB 48 8B 05 ? ? ? ? 48 31 E0"
+
+[[signatures]]
 name = "Enchant::mEnchants"
 relative = false
 extra = 0
@@ -154,35 +216,55 @@ extra = 0
 pattern = "55 41 57 41 56 41 55 41 54 56 57 53 48 81 EC ? ? ? ? 48 8D AC 24 ? ? ? ? 48 C7 45 ? FE FF FF FF 4C 89 CF 4C 89 C3 48 89 D6 49 89 CE 4C 8B"
 
 [[signatures]]
-name = "?sendPacket@BatchedNetworkPeer@@UEAAXAEBV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@W4Reliability@NetworkPeer@@W4Compressibility@@@Z"
+name = "?getActivePlayerCount@Level@@UEBAHXZ"
 relative = false
 extra = 0
-# 1. find bytes "42 61 74 63 68 65 64 20 4E 65 74 77 6F 72 6B 20 54 61 73 6B 47 72 6F 75 70 00"
-#    = "Batched Network TaskGroup\0" (unique); its lone xref is the make_unique<TaskGroup> name arg inside
-#    BatchedNetworkPeer::BatchedNetworkPeer (the ctor)
-# 2. the ctor's first member store `this->__vftable = &BatchedNetworkPeer::vftable` gives the vtable
-# 3. sendPacket is the 2nd slot (offset +0x08); cross-check the slot index against the old named DB.
-pattern = "55 41 57 41 56 41 55 41 54 56 57 53 48 83 EC ? 48 8D 6C 24 ? 48 C7 45 ? FE FF FF FF 44 89 CB 48 89 D7 48 89 CE 48 83 C1 18"
+# 1. find GameplayUserManager::_forEachActivePlayer: the ~0x11a function that walks [this+8, this+0x10) in 0x18-byte
+#    weak refs, calls StackResultStorageEntity's ctor and Player::tryGetFromEntity(ctx, r8b), then the std::function's
+#    _Do_call (impl vtable +0x10) until it returns false, and destroys the std::function at the end
+# 2. getActivePlayerCount is the ~0x45 caller that loads the GameplayUserManager from this+0x458, passes a
+#    std::function whose _Do_call is `inc qword [rcx+8]; mov al, 1` with r8b = 1, and returns the low dword of the count
+# 3. confirm it is Level vtable slot +0x6e0, right before getActiveUsersCount
+# 4. confirm vs the old named DB
+# function prologue
+pattern = "48 83 EC 68 48 8B 89 58 04 00 00 48 C7 44 24 20 00 00 00 00 48 8D 05 ? ? ? ? 48 89 44 24 28"
 
 [[signatures]]
-name = "?_receivePacket@BatchedNetworkPeer@@MEAA?AW4DataStatus@NetworkPeer@@AEAV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@AEBV?$shared_ptr@V?$time_point@Usteady_clock@chrono@std@@V?$duration@_JU?$ratio@$00$0DLJKMKAA@@std@@@23@@chrono@std@@@5@@Z"
+name = "?tickImpl@LevelChunk@@AEAAXAEAVBlockSource@@AEBUTick@@V?$function@$$A6AXXZ@std@@@Z"
 relative = false
 extra = 0
-# 1. reach BatchedNetworkPeer's vtable the same way as sendPacket above (the "Batched Network TaskGroup"
-#    string -> ctor -> __vftable store)
-# 2. _receivePacket is the 9th slot (offset +0x40), a few slots past sendPacket; cross-check the slot
-#    index against the old named DB
+# 1. find the LCG step constant 5F F3 6E 3C (add reg, imm32); the only function holding it is LevelChunk::tickImpl
+# 2. take the start of that function from .pdata
+# 3. confirm the prologue tests mReadOnly (cmp byte [rcx+0x82], 0) and then try-locks the block-entity mutex
+# 4. confirm the std::function argument (r9) is invoked through its impl vtable +0x10 right after the
+#    Level::isClientSide check (Level vtable +0x9e8) - that is the spawner callback
 # function prologue
-pattern = "41 56 56 57 53 48 81 EC ? ? ? ? 48 89 D7 48 89 CE 48 8B 91"
+pattern = "55 41 57 41 56 41 55 41 54 56 57 53 48 81 EC ? ? ? ? 48 8D AC 24 ? ? ? ? 44 0F 29 8D ? ? ? ? 44 0F 29 85 ? ? ? ? 0F 29 BD ? ? ? ? 0F 29 B5 ? ? ? ? 48 C7 85 ? ? ? ? FE FF FF FF 4C 89 CE 4C 89 45 ? 80 B9 82 00 00 00 00 0F 85"
+
+[[signatures]]
+name = "LevelChunk::tickImpl::seed"
+relative = false
+extra = 0
+# 1. find the LCG step constant 5F F3 6E 3C (add eax, imm32) inside LevelChunk::tickImpl; the function steps
+#    one global 32-bit seed (x = 3x + 0x3C6EF35F) at two sites, lightning and the random-tick sample loop
+#    (the weather column's xchg writes a per-chunk field instead)
+# 2. take the random-tick site: add eax,0x3C6EF35F; xchg [rip+X],eax; then the reload of the same global
+# 3. confirm the xchg and the mov right after it address the same global; resolve that rip-relative load
+pattern = "05 5F F3 6E 3C 87 05 ? ? ? ? 8B 05 ? ? ? ? C1 F8 02"
+rip_relative = true
+rip_offset = 13
 
 [[signatures]]
 name = "?onNewIncomingConnection@NetworkSystem@@EEAA_NAEBVNetworkIdentifier@@$$QEAV?$shared_ptr@VNetworkPeer@@@std@@@Z"
 relative = false
 extra = 0
-# 1. NetworkSystem's first base is Connector::ConnectionCallbacks, so its overrides sit at the head of the
-#    primary vtable: onNewIncomingConnection is the 1st slot after the destructor
-# 2. confirm by the body: it walks mConnections comparing NetworkIdentifier before building the peer chain
-pattern = "55 41 57 41 56 41 55 41 54 56 57 53 48 81 EC ? ? ? ? 48 8D AC 24 ? ? ? ? 48 C7 45 50 ? ? ? ? 4D 89 C6 48 89 D7 48 89 CE"
+# 1. find bytes "42 61 74 63 68 65 64 20 4E 65 74 77 6F 72 6B 20 54 61 73 6B 47 72 6F 75 70 00"
+#    = "Batched Network TaskGroup\0" (unique); its lone xref is in BatchedNetworkPeer's ctor, whose only caller is
+#    NetworkConnection's ctor
+# 2. NetworkConnection's ctor has two callers, onNewIncomingConnection and onNewOutgoingConnection; both sit in
+#    NetworkSystem's primary vtable right after the destructor, and incoming is the earlier slot
+# 3. confirm vs the old named DB: it walks mConnections comparing NetworkIdentifier before building the connection
+pattern = "55 41 57 41 56 41 55 41 54 56 57 53 48 81 EC ? ? ? ? 48 8D AC 24 ? ? ? ? 48 C7 45 50 ? ? ? ? 4D 89 C6 48 89 D7 48 89 CE 48 8D 99 ? ? ? ? 48 8B 81 ? ? ? ? 48 8B 91 ? ? ? ? 48 39 C2"
 
 [[signatures]]
 name = "?_log_va@LogDetails@BedrockLog@@AEAAXW4LogAreaID@@IPEBDHH1PEAD@Z"
@@ -194,6 +276,43 @@ extra = 0
 #    -> _log_va (two log_va overloads exist; take the one the thunk calls)
 # 3. confirm each hop vs the old named DB
 pattern = "55 41 57 41 56 41 55 41 54 56 57 53 48 81 EC ? ? ? ? 48 8D AC 24 ? ? ? ? 48 C7 85 ? ? ? ? ? ? ? ? 4D 89 CE 44 89 85 ? ? ? ? 89 95 ? ? ? ? 48 89 CE 48 8B 95"
+
+[[signatures]]
+name = "?_forEachClientPlayerPair@PlayerLocationSender@@AEAAXAEBV?$vector@VWeakEntityRef@@V?$allocator@VWeakEntityRef@@@std@@@std@@V?$function@$$A6AXAEBVUserEntityIdentifierComponent@@AEBVPlayer@@1@Z@3@@Z"
+relative = false
+extra = 0
+# 1. find bytes "4C 65 76 65 6C 20 2D 20 73 75 62 74 69 63 6B 00" = "Level - subtick\0"; its xref is in Level::_subTick
+# 2. after the gamerule 17 check there (`imul eax, eax, 0x8AF8AF8B; cmp eax, 0x12`), _subTick makes two direct
+#    calls to one function, each with r8 = a std::function whose impl vtable is lea'd just before; the second
+#    follows the loop over the gameplay users that calls _updatePlayerData. That callee is this function
+# 3. confirm the body: rcx is never read; it walks the vector in rdx in a nested loop (the outer one looks up
+#    UserEntityIdentifierComponent, hash 0x0B845379), calls the functor's slot +0x10 per pair and slot +0x20 at
+#    the end
+pattern = "55 41 57 41 56 41 55 41 54 56 57 53 48 81 EC 88 00 00 00 48 8D AC 24 80 00 00 00 48 C7 45 00 FE FF FF FF 4C 89 C6 48 8B 3A"
+
+[[signatures]]
+name = "?_shouldSendPositionPacket@PlayerLocationSender@@AEBA_NAEBVVec3@@AEBUDimensionType@@_NAEBV?$optional@VVec3@@@std@@AEBUPlayerLocationData@1@@Z"
+relative = false
+extra = 0
+# 1. the check-pairs functor _subTick passes to _forEachClientPlayerPair has a large _Do_call (impl vtable slot
+#    +0x10); the callee it calls twice with six arguments is _shouldSendPositionPacket
+# 2. confirm the body: it tests byte [arg6+0xC] == 1, compares the distance with the float at this+0x78, uses
+#    432.0 and 2304.0, and calls atan2f and fmodf
+# 3. confirm vs the old named DB
+pattern = "48 81 EC 98 00 00 00 44 0F 29 A4 24 80 00 00 00 44 0F 29 5C 24 70 44 0F 29 54 24 60 44 0F 29 4C 24 50 44 0F 29 44 24 40 0F 29 7C 24 30 0F 29 74 24 20 48 8B 84 24 C8 00 00 00"
+
+[[signatures]]
+name = "?processPlayerNetworking@PlayerTickManager@@QEAAXAEBUTick@@@Z"
+relative = false
+extra = 0
+# 1. find "T *Bedrock::NonOwnerPointer<GameplayUserManager>::_get() const [T = GameplayUserManager]" and the
+#    DimensionManager twin; processPlayerNetworking leas each of them four times
+# 2. confirm the body: it alternates DimensionManager::forEachDimension and
+#    GameplayUserManager::forEachActiveGameplayUser (four calls); the second lambda calls
+#    PlayerTickProxy::preReplicationTick
+# 3. confirm vs the old named DB
+# function prologue
+pattern = "56 57 48 81 EC ? ? ? ? 48 89 D6 48 89 CF 48 83 39 00"
 
 [[signatures]]
 name = "?loadStatic@BlockActor@@SA?AV?$shared_ptr@VBlockActor@@@std@@AEBVBlockType@@AEBVBlockPos@@AEAVILevel@@AEBVCompoundTag@@AEAVDataLoadHelper@@@Z"
@@ -311,6 +430,20 @@ extra = 0
 #    getCampfireTag is a tiny one-of-two selector; _addFurnaceRecipeResults registers recipes)
 # 3. confirm the shape vs the old named DB
 pattern = "55 41 57 41 56 41 55 41 54 56 57 53 48 81 EC ? ? ? ? 48 8D AC 24 ? ? ? ? 48 C7 85 ? ? ? ? ? ? ? ? 45 89 C6 48 89 D7"
+
+[[signatures]]
+name = "?update@CircuitSceneGraph@@QEAAXPEAVBlockSource@@@Z"
+relative = false
+extra = 0
+# 1. find the RTTI type descriptor ".?AVPoweredBlockComponent@@" and follow its complete object locator to the
+#    PoweredBlockComponent vtable
+# 2. exactly two functions lea that vtable: CircuitSystem::create<PoweredBlockComponent> (~0x2aa) and
+#    CircuitSceneGraph::update, the huge one (~0x685d) that inlines the whole remove/add/relationship pass
+# 3. confirm update by its head walking mPendingRemoves at this+0x180/0x188, and by its relationship pass
+#    looking up mPowerAssociationMap at this+0x80 and calling removeSource through vtable slot +0x60
+# 4. confirm vs the old named DB (member, takes BlockSource*, returns void)
+# function prologue
+pattern = "55 41 57 41 56 41 55 41 54 56 57 53 48 81 EC ? ? ? ? 48 8D AC 24 ? ? ? ? 0F 29 BD ? ? ? ? 0F 29 B5 ? ? ? ? 48 C7 85 ? ? ? ? FE FF FF FF 48 89 95 ? ? ? ? 49 89 CC 48 8B 81 80 01 00 00 48 89 85 ? ? ? ? 48 3B 81 88 01 00 00"
 
 [[signatures]]
 name = "?run@Command@@QEBAXAEBVCommandOrigin@@AEAVCommandOutput@@@Z"
@@ -860,6 +993,38 @@ rip_relative = true
 rip_offset = 1
 
 [[signatures]]
+name = "?getRandomChunk@MainChunkSource@@UEAA?AV?$shared_ptr@VLevelChunk@@@std@@AEAVRandom@@@Z"
+relative = false
+extra = 0
+# 1. MainChunkSource's vtable is the one whose slot 4 (+0x20) is a ~0x158 fn that reads the chunk map size at
+#    this+0x80, returns an empty shared_ptr when it is 0, and otherwise calls Random vtable +8 (nextInt(int))
+# 2. confirm the body: it walks the map's node list from this+0x78 to the drawn index, locks the weak_ptr at
+#    node+0x18/+0x20, and returns the chunk only if byte [chunk+0xf0] >= 0xB (ChunkState::Loaded)
+# 3. its caller is LevelChunkSaveManagerProxy::getRandomChunk (~0x7b), reached from
+#    LevelChunkSaveManager::_findRandomChunkToSave, which loops up to 20 picks (`cmp r15d, 0x13`)
+# 4. confirm vs the old named DB
+pattern = "56 57 48 83 EC 28 48 89 D6 48 8B 91 80 00 00 00 48 85 D2 74 ? 48 89 CF 49 8B 00 48 8B 40 08 4C 89 C1 FF 15 ? ? ? ? 48 63 D0 48 8B 4F 78 48 8B 09 85 D2 78 ? 74 ?"
+
+[[signatures]]
+name = "?_publishMapData@MapDataManager@@IEAAPEAVMapItemSavedData@@AEBUActorUniqueID@@V?$unique_ptr@VMapItemSavedData@@U?$default_delete@VMapItemSavedData@@@std@@@std@@@Z"
+relative = false
+extra = 0
+# 1. find bytes "6D 61 70 49 64 00" = "mapId\0" (one copy in .rdata); its only code xref is a `lea` in
+#    _deserializeMapData, which loads "map_<id>" through LevelStorage and returns the map as a unique_ptr
+#    through the sret pointer in rdx (`mov r15, rdx` in its prologue)
+# 2. _deserializeMapData has three callers: getMapSavedData, the vector createMapSavedData (an inlined
+#    getMapSavedData) and loadMapDataForDeferredPublish; in getMapSavedData the call right after it,
+#    with (this, &uuid, &unique_ptr), is _publishMapData
+# 3. confirm: _publishMapData has three callers - those getMapSavedData and createMapSavedData sites, and
+#    publishDeferredMapData, whose only caller is Level::_subTick; it emplaces into mMapData (this+0x70),
+#    tests mPreviewIncomplete (byte +0x19) before MapItem::renderBiomePreviewMap, and returns the
+#    inserted map, or null
+# call site in MapDataManager::getMapSavedData (unique)
+pattern = "E8 ? ? ? ? 48 89 D9 48 89 FA 49 89 F0 E8 ? ? ? ? 48 8B 4C 24"
+rip_relative = true
+rip_offset = 15
+
+[[signatures]]
 name = "?_solidify@LiquidBlockBase@@AEBAXAEAVBlockSource@@AEBVBlockPos@@1@Z"
 relative = false
 extra = 0
@@ -878,19 +1043,6 @@ extra = 0
 # 4. confirm vs the old named DB (private (AEBA), args (BlockSource&, const BlockPos&, const BlockPos&),
 #    void return); the prologue below is unique in the 1.26.44 exe
 pattern = "41 56 56 57 53 48 83 EC 58 4C 89 CB"
-
-[[signatures]]
-name = "?_loadMapData@MapDataManager@@IEAAPEAVMapItemSavedData@@AEBUActorUniqueID@@@Z"
-relative = false
-extra = 0
-# 1. find bytes "6D 61 70 5F 00" = "map_\0"; its data xref(s) land in MapItemSavedData::getSerializationKey
-#    (the only function that references it - it prepends "map_" to the stringified ActorUniqueID)
-# 2. getSerializationKey has exactly two callers: MapItemSavedData::save (writes) and _loadMapData (reads)
-#    - _loadMapData is the one that, right after the key call, feeds it to LevelStorage::loadData then
-#    NbtIo::readOrGetEmpty and constructs + deserializes a MapItemSavedData (emplacing it into mMapData)
-# 3. confirm the callee vs the old named DB (member, takes an ActorUniqueID&, returns MapItemSavedData*)
-# function prologue
-pattern = "55 41 57 41 56 56 57 53 48 81 EC ? ? ? ? 48 8D AC 24 ? ? ? ? 48 C7 45 ? ? ? ? ? 49 89 D7 0F 57 C0 0F 29 45"
 
 [[signatures]]
 name = "?compileCommand@MinecraftCommands@@QEAAPEAVCommand@@AEBVHashedString@@AEAVCommandOrigin@@W4CurrentCmdVersion@@V?$function@$$A6AXAEBV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z@std@@@Z"
@@ -929,6 +1081,20 @@ extra = 0
 #    this function (the big MinecraftPacketIds -> packet factory)
 # 4. confirm vs the old named DB
 pattern = "56 48 83 EC ? 48 89 CE 81 FA ? ? ? ? 77 ? 89 D0 48 8D 0D ? ? ? ? 48 63 04 81 48 01 C8 FF E0 0F 57 C0 0F 11 06 48 89 F0 48 83 C4 ? 5E C3 48 89 F1 E8 ? ? ? ? EB ? 48 89 F1 E8"
+
+[[signatures]]
+name = "MinecraftWorkerPool::ASYNC"
+relative = false
+extra = -16
+# 1. find bytes "53 74 72 65 61 6D 69 6E 67 20 50 6F 6F 6C 00" = "Streaming Pool\0"; its xref is in
+#    MinecraftWorkerPool::createSingletons, which moves the first createWorkerPool result into this global
+#    (a Bedrock::NonOwnerPointer<WorkerPool>; the raw WorkerPool* sits at +0x10)
+# 2. take the read of that pointer in ChunkSource::checkAndLaunchChunkGenerationTasks, where the async pool's
+#    worker count (end - begin of the workers vector at +0x20/+0x28) sets the 2n / 6n task caps
+# 3. resolve the rip-relative load and subtract 16 to reach the NonOwnerPointer itself
+pattern = "48 8B 05 ? ? ? ? 48 8B 78 28 48 2B 78 20 48 C1 EF 03 01 FF 44 8D 34 7F"
+rip_relative = true
+rip_offset = 3
 
 [[signatures]]
 name = "?knockback@Mob@@UEAAXPEAVActor@@MMMAEBUKnockbackParameters@@@Z"
@@ -1282,6 +1448,43 @@ extra = 0
 pattern = "55 41 57 41 56 41 55 41 54 56 57 53 48 81 EC ? ? ? ? 48 8D AC 24 ? ? ? ? 0F 29 BD ? ? ? ? 0F 29 B5 ? ? ? ? 48 C7 85 ? ? ? ? ? ? ? ? 4C 89 8D ? ? ? ? 4C 89 C6 48 89 CF"
 
 [[signatures]]
+name = "?_updateChunkPublisherView@ServerPlayer@@MEAAXAEBVVec3@@M@Z"
+relative = false
+extra = 0
+# 1. find "NetworkChunkPublisherUpdatePacket" and follow getName to the packet's vtable; of the functions that
+#    lea it (dtor, make_packet, cereal/entt glue), this is the one that also calls ChunkViewSource::move
+# 2. confirm the body: look direction from the SIN table, then vtable +0x20 and +0x30 on the chunk build order
+#    policy at [[ChunkViewSource+0x28]+0x3b0], then the 16-block move check before ChunkViewSource::move
+# 3. preReplicationTick calls it through ServerPlayer vtable +0x7b0; confirm vs the old named DB
+# function prologue
+pattern = "55 41 57 41 56 41 55 41 54 56 57 53 48 81 EC ? ? ? ? 48 8D AC 24 ? ? ? ? 44 0F 29 85 ? ? ? ? 0F 29 BD ? ? ? ? 0F 29 B5 ? ? ? ? 48 C7 85 ? ? ? ? FE FF FF FF 0F 28 F2 48 89 CE"
+
+[[signatures]]
+name = "?update@ServerWaypoint@@UEAAXAEBVPlayer@@@Z"
+relative = false
+extra = 0
+# 1. VanillaWaypointManager::update (see below) builds each player waypoint inline and stores three vtables in
+#    turn: ServerWaypoint, ServerEntityWaypoint, ServerPlayerWaypoint. update is slot 8 (+0x40) of the first
+# 2. cross-check: slot 8 of the second vtable (ServerEntityWaypoint::update) ends with a `jmp` to it
+# 3. confirm the body: it walks the texture vector at this+0x70 in 0x38-byte steps comparing cvtsi2ss bounds with
+#    the viewer distance, calls setTexturePath, then the virtual at +0x50 (calculateIsVisible) and
+#    `or byte ptr [rsi+0x88], 2`
+pattern = "55 41 57 41 56 41 55 41 54 56 57 53 48 81 EC B8 00 00 00 48 8D AC 24 80 00 00 00 48 C7 45 30 FE FF FF FF 49 89 D5 48 89 CE"
+
+[[signatures]]
+name = "?update@VanillaWaypointManager@@QEAAXAEAVPlayer@@AEAVServerLocatorBar@@_N@Z"
+relative = false
+extra = 0
+# 1. find bytes "74 65 78 74 75 72 65 73 2F 75 69 2F 6C 6F 63 61 74 6F 72 5F 62 61 72 5F 64 6F 74 5F 30" =
+#    "textures/ui/locator_bar_dot_0"; the function that loads it and its _1.._3 siblings with movaps/movups is
+#    VanillaWaypointManager::update
+# 2. confirm: its only caller is ServerPlayer::normalTick, which passes r9b = (gamerule 17 == 1) and calls
+#    ServerLocatorBar::update next; the body compares that flag with byte [rcx+0x10] and calls the Level virtuals
+#    at +0x9F8 (getPlayerList) and +0x1F0 (fetchEntity)
+# 3. confirm vs the old named DB
+pattern = "55 41 57 41 56 41 55 41 54 56 57 53 48 81 EC 78 02 00 00 48 8D AC 24 80 00 00 00 0F 29 BD E0 01 00 00 0F 29 B5 D0 01 00 00 48 C7 85 C8 01 00 00 FE FF FF FF 49 89 D7"
+
+[[signatures]]
 name = "?releaseUsing@TridentItem@@UEBAXAEAVItemStack@@PEAVPlayer@@H@Z"
 relative = false
 extra = 0
@@ -1306,6 +1509,7 @@ extra = 0
 #    in .text of 1.26.44 (and once in 1.26.32.2). No byte-identical sibling exists - no other Item override
 #    loads 1Eh into the getEnchantLevel argument
 pattern = "55 41 57 41 56 41 55 41 54 56 57 53 48 81 EC ? ? ? ? 48 8D AC 24 ? ? ? ? 44 0F 29 85 ? ? ? ? 0F 29 BD ? ? ? ? 0F 29 B5 ? ? ? ? 48 C7 85 ? ? ? ? FE FF FF FF 4D 85 C0 0F 84 ? ? ? ? 4C 89 C6 41 80 B8 ? ? ? ? 00 0F 85 ? ? ? ? 45 89 CF 48 89 D7 48 89 CB B1 1E E8"
+
 [[signatures]]
 name = "?updateWeather@WeatherManager@@QEAAXMHMH@Z"
 relative = false

@@ -14,10 +14,51 @@
 
 #include "endstone/core/boss/boss_bar.h"
 
+#include <algorithm>
+#include <memory>
+
 #include "bedrock/network/packet.h"
+#include "bedrock/network/packet/add_actor_packet.h"
 #include "bedrock/network/packet/boss_event_packet.h"
+#include "bedrock/network/packet/remove_actor_packet.h"
+#include "bedrock/world/actor/actor_data_ids.h"
+#include "bedrock/world/actor/actor_flags.h"
+#include "bedrock/world/actor/synched_actor_data.h"
+#include "bedrock/world/level/block_source.h"
+#include "bedrock/world/level/level.h"
 #include "endstone/check.h"
 #include "endstone/core/player.h"
+
+namespace {
+// The client ignores boss events for an actor it does not know.
+void sendAddActor(const ::Player &handle, ActorUniqueID actor_id, ActorRuntimeID actor_runtime_id)
+{
+    const auto packet = MinecraftPackets::createPacket(MinecraftPacketIds::AddActor);
+    auto &payload = std::static_pointer_cast<AddActorPacket>(packet)->payload;
+    payload.entity_id = actor_id;
+    payload.runtime_id = actor_runtime_id;
+    payload.actor_type = "minecraft:creeper";
+    const auto &region = handle.getDimensionBlockSource();
+    const auto &pos = handle.getPosition();
+    payload.pos = {pos.x,
+                   std::clamp(pos.y - 10.0F, static_cast<float>(region.getMinHeight()),
+                              static_cast<float>(region.getMaxHeight() - 1)),
+                   pos.z};
+    payload.data.data.emplace_back(std::make_unique<DataItem2<SynchedActorData::TypeInt64>>(
+        DataItemType::Int64, static_cast<DataItem::ID>(ActorDataIDs::RESERVED_0),
+        SynchedActorData::TypeInt64{1} << static_cast<int>(ActorFlags::INVISIBLE)));
+    payload.data.data.emplace_back(std::make_unique<DataItem2<SynchedActorData::TypeFloat>>(
+        DataItemType::Float, static_cast<DataItem::ID>(ActorDataIDs::RESERVED_038), 0.0F));
+    handle.sendNetworkPacket(*packet);
+}
+
+void sendRemoveActor(const ::Player &handle, ActorUniqueID actor_id)
+{
+    const auto packet = MinecraftPackets::createPacket(MinecraftPacketIds::RemoveActor);
+    std::static_pointer_cast<RemoveActorPacket>(packet)->payload.entity_id = actor_id;
+    handle.sendNetworkPacket(*packet);
+}
+}  // namespace
 
 namespace endstone::core {
 
@@ -148,23 +189,30 @@ std::vector<NotNull<Player>> EndstoneBossBar::getPlayers() const
     return players;
 }
 
-void EndstoneBossBar::update(const NotNull<Player> &player)
+void EndstoneBossBar::update(const NotNull<Player> &player, ActorUniqueID boss_id)
 {
-    if (visible_ && players_.contains(player.get())) {
+    if (visible_ && actor_id_ == boss_id && players_.contains(player.get())) {
         send(BossEventUpdateType::Add, player);
     }
 }
 
 void EndstoneBossBar::send(BossEventUpdateType event_type, const NotNull<Player> &player)
 {
-    const auto *handle = player.cast<EndstonePlayer>()->tryGetHandle();
+    auto *handle = player.cast<EndstonePlayer>()->tryGetHandle();
     if (!handle) {
         return;
+    }
+    if (!actor_id_.isValid()) {
+        actor_id_ = handle->getLevel().getNewUniqueID();
+        actor_runtime_id_ = handle->getLevel().getNextRuntimeID();
+    }
+    if (event_type == BossEventUpdateType::Add) {
+        sendAddActor(*handle, actor_id_, actor_runtime_id_);
     }
 
     const auto packet = MinecraftPackets::createPacket(MinecraftPacketIds::BossEvent);
     const auto pk = std::static_pointer_cast<BossEventPacket>(packet);
-    pk->payload.boss_id = handle->getOrCreateUniqueID();
+    pk->payload.boss_id = actor_id_;
     pk->payload.event_type = event_type;
     pk->payload.name = title_;
     pk->payload.health_percent = progress_;
@@ -172,6 +220,10 @@ void EndstoneBossBar::send(BossEventUpdateType event_type, const NotNull<Player>
     pk->payload.overlay = static_cast<BossBarOverlay>(style_);
     // BarFlag::DarkenSky / CreateFog dropped from BossEventPacket in BDS 1.26.32 (cereal-only migration)
     handle->sendNetworkPacket(*packet);
+
+    if (event_type == BossEventUpdateType::Remove) {
+        sendRemoveActor(*handle, actor_id_);
+    }
 }
 
 void EndstoneBossBar::broadcast(BossEventUpdateType event_type)

@@ -158,6 +158,10 @@ succeeds, unless any TU actually consumes the missing name - then `consteval`
      Endstone's `src/bedrock/` *declaration* (`__FUNCDNAME__` derives from it),
      not the config alone.
    - **Linux only** -> stale byte pattern; re-extract it (see Gotchas).
+   - **A Windows fallback hit for an ordinary named function** means the PDB no
+     longer has that name. The function may have been split, renamed or inlined,
+     so a pattern under the old name can land on a different function. Find what
+     replaced it and hook that instead (1.26.51 `_loadMapData`, #537).
 
 ---
 
@@ -1685,6 +1689,20 @@ only a tiny `.dynsym`), so every Linux entry is pattern-resolved too.
   real `struct` too (mirror the layout), replace every use, delete the orphaned
   alias header. Editing only the config `name` is not enough - `__FUNCDNAME__`
   comes from the declaration.
+- **The network peer chain is spliced, not hooked.** `onNewIncomingConnection`
+  swaps BDS's compressed and batched peers for Endstone subclasses, so BDS's own
+  code for those layers never runs. Each bump: check the size asserts, the field
+  offsets BDS writes through the connection's typed weak pointers (the inlined
+  compression-enable store in the network-settings handler, found by its 10 MiB
+  `0xA00000` immediate, and the async-flush flag store in `enableAsyncFlush`),
+  the chain order in `NetworkConnection`'s ctor, and diff the decompiled
+  `sendPacket`/`_receivePacket`/`flush` against the reimplementations - a BDS
+  behaviour change there must be mirrored by hand.
+- **The async worker pool's wake threshold is written at startup.** Each bump:
+  check that `WorkerPool::min_backlog_duration_seconds_` is still at `+0xfc`
+  (Windows) / `+0xcc` (Linux), that both pool ctors still store `0.05F`
+  (`0x3D4CCCCD`), and that `MinecraftWorkerPool::ASYNC` still resolves. A miss
+  logs one warning at startup and leaves vanilla's threshold.
 - Removing a class is a **multi-file cascade**: also remove its
   `src/endstone/runtime/bedrock_hooks/*.cpp` hook, the `CMakeLists.txt` source
   entries, the `[[signatures]]` blocks in both configs, the generated

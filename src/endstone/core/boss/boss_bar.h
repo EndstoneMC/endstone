@@ -22,6 +22,8 @@
 #include <utility>
 
 #include "bedrock/network/packet/boss_event_packet.h"
+#include "bedrock/world/actor/actor_runtime_id.h"
+#include "bedrock/world/actor/actor_unique_id.h"
 #include "endstone/boss/boss_bar.h"
 
 namespace endstone::core {
@@ -54,7 +56,7 @@ public:
     void removeAll() override;
     [[nodiscard]] std::vector<NotNull<Player>> getPlayers() const override;
 
-    void update(const NotNull<Player> &player);
+    void update(const NotNull<Player> &player, ActorUniqueID boss_id);
 
 private:
     void send(BossEventUpdateType event_type, const NotNull<Player> &player);
@@ -66,6 +68,8 @@ private:
     BarStyle style_;
     std::bitset<2> flags_;
     bool visible_{true};
+    ActorUniqueID actor_id_;
+    ActorRuntimeID actor_runtime_id_;
     mutable std::set<std::weak_ptr<Player>, std::owner_less<std::weak_ptr<Player>>> players_;
 };
 

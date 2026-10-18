@@ -17,11 +17,13 @@
 #include <memory>
 #include <optional>
 #include <string>
+#include <unordered_map>
 
 #include "bedrock/bedrock.h"
 #include "bedrock/certificates/identity/game_server_token.h"
 #include "bedrock/core/utility/callback_token.h"
 #include "bedrock/network/server_network_system.h"
+#include "bedrock/world/actor/actor_unique_id.h"
 #include "bedrock/world/actor/player/player.h"
 #include "bedrock/world/actor/player/player_party_info.h"
 #include "bedrock/world/inventory/inventory_menu.h"
@@ -39,6 +41,8 @@ public:
     ENDSTONE_HOOK void openSign(BlockPos const &, bool) override;
 
 protected:
+    [[nodiscard]] virtual int _getSpawnChunkLimit() const = 0;
+    ENDSTONE_HOOK virtual void _updateChunkPublisherView(const Vec3 &position, float min_distance);
     PlatformType platform_type_;
     std::string language_code_;
 
@@ -61,5 +65,24 @@ private:
     std::optional<PlayerPartyInfo> party_info_;
     int remaining_structure_refresh_ticks_;
     StructureFeatureType current_structure_feature_;
+    struct NearbyActor {
+        enum class State : int {
+            Unknown = 0,
+            New = 1,
+            Exist = 2,
+            DidExist = 3,
+        };
+        NearbyActor();
+        bool is_autonomous;
+        State state;
+        Actor *temp_actor;
+    };
+    std::unordered_map<ActorUniqueID, NearbyActor> nearby_actors_;
     // ...
+
+public:
+    [[nodiscard]] const std::unordered_map<ActorUniqueID, NearbyActor> &getNearbyActors() const  // Endstone
+    {
+        return nearby_actors_;
+    }
 };

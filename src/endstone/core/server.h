@@ -17,6 +17,7 @@
 #include <chrono>
 #include <cstddef>
 #include <memory>
+#include <mutex>
 #include <string>
 #include <thread>
 #include <typeindex>
@@ -27,6 +28,7 @@
 #include "bedrock/resources/resource_pack_repository_interface.h"
 #include "bedrock/server/server_text_settings.h"
 #include "bedrock/shared_constants.h"
+#include "bedrock/world/actor/actor_unique_id.h"
 #include "endstone/core/command/command_map.h"
 #include "endstone/core/crash_handler.h"
 #include "endstone/core/lang/language.h"
@@ -127,9 +129,11 @@ public:
     [[nodiscard]] NotNull<EndstoneScoreboard> getPlayerBoard(const NotNull<EndstonePlayer> &player) const;
     void setPlayerBoard(const NotNull<EndstonePlayer> &player, NotNull<Scoreboard> scoreboard);
     void removePlayerBoard(const NotNull<EndstonePlayer> &player);
-    void updateBossBars(const NotNull<EndstonePlayer> &player);
+    void updateBossBars(const NotNull<EndstonePlayer> &player, ActorUniqueID boss_id);
 
+    void startTick();
     void tick(std::uint64_t current_tick, const std::function<void()> &tick_function);
+    void endTick();
     void init(ServerInstance &server_instance);
     void setLevel(::Level &level);
     void initRegistries();
@@ -179,13 +183,12 @@ private:
     std::chrono::system_clock::time_point start_time_;
     IResourcePackRepository *resource_pack_repository_ = nullptr;
     std::unordered_map<PackIdVersion, std::string> content_keys_;
-    int tick_counter_ = 0;
-    float current_mspt_ = SharedConstants::MilliSecondsPerTick * 1.0F;
-    float average_mspt_[SharedConstants::TicksPerSecond] = {SharedConstants::MilliSecondsPerTick};
-    float current_tps_ = SharedConstants::TicksPerSecond * 1.0F;
-    float average_tps_[SharedConstants::TicksPerSecond] = {SharedConstants::TicksPerSecond};
-    float current_usage_ = 0.0F;
-    float average_usage_[SharedConstants::TicksPerSecond] = {0.0F};
+    mutable std::mutex stats_lock_;
+    float current_mspt_ = 0.0F;
+    float average_mspt_[SharedConstants::TicksPerSecond] = {};
+    std::size_t tick_index_ = 0;
+    std::chrono::steady_clock::time_point tick_start_;
+    bool tick_pending_ = false;
     // TODO(config): move the following the a separate class/struct
     std::size_t hidden_actor_count_ = 0;
     bool allow_client_packs_ = false;

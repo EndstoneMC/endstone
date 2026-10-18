@@ -14,21 +14,19 @@
 
 #pragma once
 
-#include <atomic>
 #include <condition_variable>
 #include <functional>
 #include <future>
 #include <mutex>
+#include <queue>
 #include <thread>
 #include <vector>
-
-#include <moodycamel/concurrentqueue.h>
 
 namespace endstone::core {
 
 class ThreadPoolExecutor {
 public:
-    explicit ThreadPoolExecutor(size_t threadCount = std::thread::hardware_concurrency());
+    explicit ThreadPoolExecutor(size_t max_threads = 32);
     ~ThreadPoolExecutor();
 
     template <typename Func, typename... Args>
@@ -40,19 +38,21 @@ public:
             std::bind(std::forward<Func>(func), std::forward<Args>(args)...));
 
         auto result = task->get_future();
-        tasks.enqueue([task]() { (*task)(); });
-        condition.notify_one();
+        enqueue([task]() { (*task)(); });
         return result;
     }
 
 private:
+    void enqueue(std::function<void()> task);
     void worker();
 
-    std::vector<std::thread> threads;
-    moodycamel::ConcurrentQueue<std::function<void()>> tasks;
-    std::atomic<bool> done;
-    std::mutex mutex;
-    std::condition_variable condition;
+    std::vector<std::thread> threads_;
+    std::queue<std::function<void()>> tasks_;
+    size_t max_threads_;
+    size_t idle_ = 0;
+    bool done_ = false;
+    std::mutex mutex_;
+    std::condition_variable condition_;
 };
 
 }  // namespace endstone::core

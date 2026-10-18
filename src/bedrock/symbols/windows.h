@@ -11,7 +11,7 @@
 
 namespace endstone::runtime {
 
-static constexpr std::array<std::pair<std::string_view, std::size_t>, 93> symbols = {{
+static constexpr std::array<std::pair<std::string_view, std::size_t>, 108> symbols = {{
     {"BlockState::StateListNode::mHead", 215092208},
     {"Enchant::mEnchants", 214656904},
     {"MobEffect::mMobEffects", 214658168},
@@ -23,9 +23,6 @@ static constexpr std::array<std::pair<std::string_view, std::size_t>, 93> symbol
     {"?createSpawnedActor@ActorFactory@@QEAA?AV?$OwnerPtr@VEntityContext@@@@AEBUActorDefinitionIdentifier@@PEAVActor@@AEBVVec3@@AEBVVec2@@@Z", 30318048},
     // ArmorStand
     {"?getInteraction@ArmorStand@@UEAA?AVInteraction@@AEAVPlayer@@AEBVVec3@@@Z", 43736608},
-    // BatchedNetworkPeer
-    {"?_receivePacket@BatchedNetworkPeer@@MEAA?AW4DataStatus@NetworkPeer@@AEAV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@AEBV?$shared_ptr@V?$time_point@Usteady_clock@chrono@std@@V?$duration@_JU?$ratio@$00$0DLJKMKAA@@std@@@23@@chrono@std@@@5@@Z", 11073456},
-    {"?sendPacket@BatchedNetworkPeer@@UEAAXAEBV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@W4Reliability@NetworkPeer@@W4Compressibility@@@Z", 11072976},
     // BedrockLog::LogDetails
     {"?_log_va@LogDetails@BedrockLog@@AEAAXW4LogAreaID@@IPEBDHH1PEAD@Z", 2546192},
     // BlockActor
@@ -46,6 +43,12 @@ static constexpr std::array<std::pair<std::string_view, std::size_t>, 93> symbol
     // CauldronBlock
     {"?setLiquidLevel@CauldronBlock@@QEBAXAEAVBlockSource@@AEBVBlockPos@@HW4CauldronLiquidType@@@Z", 27546224},
     {"?use@CauldronBlock@@QEBAXAEAVBlockPlayerInteractEvent@BlockEvents@@@Z", 27530720},
+    // ChunkBlenderFactory
+    {"ChunkBlenderFactory::getOrCreateChunkBlender::cache_cap", 136197791},
+    // ChunkBuildOrderPolicy
+    {"?updateInfluences@ChunkBuildOrderPolicy@@UEAAXXZ", 25656400},
+    // CircuitSceneGraph
+    {"?update@CircuitSceneGraph@@QEAAXPEAVBlockSource@@@Z", 79488960},
     // Command
     {"?run@Command@@QEBAXAEBVCommandOrigin@@AEAVCommandOutput@@@Z", 18863632},
     // CommandOriginLoader
@@ -67,8 +70,13 @@ static constexpr std::array<std::pair<std::string_view, std::size_t>, 93> symbol
     {"?_handleCraftAction@CraftHandlerEnchant@@MEAA?AW4ItemStackNetResult@@AEBVItemStackRequestActionCraftBase@@@Z", 74323360},
     // CraftingDataPacketPayload
     {"?fromRecipes@CraftingDataPacketPayload@@SA?AU1@AEBVRecipes@@_N@Z", 51739264},
+    // DBChunkStorage
+    {"DBChunkStorage::_hasChunk::cache_cap", 13403472},
     // DedicatedServer
     {"?start@DedicatedServer@@QEAA?AW4ServerExitCode@@AEBV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@AEBVActivationArguments@Bedrock@@@Z", 501616},
+    // Dimension
+    {"?forEachPlayer@Dimension@@UEBAXV?$function_ref@$$A6A_NAEAVPlayer@@@Z$$A6A_N0@Z@brstd@@@Z", 25702448},
+    {"?sendPacketForEntity@Dimension@@UEAAXAEBVActor@@AEBVPacket@@PEBVPlayer@@@Z", 25720592},
     // DimensionManager
     {"?getOrCreateDimension@DimensionManager@@QEAA?AV?$WeakRef@VDimension@@@@V?$basic_string_view@DU?$char_traits@D@std@@@std@@@Z", 7911072},
     // EnchantUtils
@@ -99,18 +107,26 @@ static constexpr std::array<std::pair<std::string_view, std::size_t>, 93> symbol
     // LeavesBlock
     {"?randomTick@LeavesBlock@@QEBAXAEAVBlockRandomTickEvent@BlockEvents@@@Z", 50197040},
     // Level
+    {"?getActivePlayerCount@Level@@UEBAHXZ", 8211872},
     {"?tick@Level@@UEAAXXZ", 8175568},
+    // LevelChunk
+    {"?tickImpl@LevelChunk@@AEAAXAEAVBlockSource@@AEBUTick@@V?$function@$$A6AXXZ@std@@@Z", 10459296},
+    {"LevelChunk::tickImpl::seed", 212470256},
     // LiquidBlock
     {"?_trySpreadTo@LiquidBlock@@IEBAXAEAVBlockSource@@AEBVBlockPos@@H1E@Z", 146138496},
     // LiquidBlockBase
     {"?_solidify@LiquidBlockBase@@AEBAXAEAVBlockSource@@AEBVBlockPos@@1@Z", 146149264},
+    // MainChunkSource
+    {"?getRandomChunk@MainChunkSource@@UEAA?AV?$shared_ptr@VLevelChunk@@@std@@AEAVRandom@@@Z", 59628224},
     // MapDataManager
-    {"?_loadMapData@MapDataManager@@IEAAPEAVMapItemSavedData@@AEBUActorUniqueID@@@Z", 8750416},
+    {"?_publishMapData@MapDataManager@@IEAAPEAVMapItemSavedData@@AEBUActorUniqueID@@V?$unique_ptr@VMapItemSavedData@@U?$default_delete@VMapItemSavedData@@@std@@@std@@@Z", 8751648},
     // MinecraftCommands
     {"?compileCommand@MinecraftCommands@@QEAAPEAVCommand@@AEBVHashedString@@AEAVCommandOrigin@@W4CurrentCmdVersion@@V?$function@$$A6AXAEBV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z@std@@@Z", 4099168},
     {"?executeCommand@MinecraftCommands@@QEBA?AUMCRESULT@@AEAVCommandContext@@_N@Z", 4039904},
     // MinecraftPackets
     {"?createPacket@MinecraftPackets@@SA?AV?$shared_ptr@VPacket@@@std@@W4MinecraftPacketIds@@@Z", 9675920},
+    // MinecraftWorkerPool
+    {"MinecraftWorkerPool::ASYNC", 214123464},
     // Mob
     {"?knockback@Mob@@UEAAXPEAVActor@@MMMAEBUKnockbackParameters@@@Z", 43938096},
     // NetherNet::LanThreadManager
@@ -134,6 +150,11 @@ static constexpr std::array<std::pair<std::string_view, std::size_t>, 93> symbol
     {"?stopSleepInBed@Player@@UEAAX_N0@Z", 2767280},
     {"?take@Player@@QEAA_NAEAVActor@@HH@Z", 2837264},
     {"?teleportTo@Player@@UEAAXAEBVVec3@@_NHH1@Z", 2755600},
+    // PlayerLocationSender
+    {"?_forEachClientPlayerPair@PlayerLocationSender@@AEAAXAEBV?$vector@VWeakEntityRef@@V?$allocator@VWeakEntityRef@@@std@@@std@@V?$function@$$A6AXAEBVUserEntityIdentifierComponent@@AEBVPlayer@@1@Z@3@@Z", 8814288},
+    {"?_shouldSendPositionPacket@PlayerLocationSender@@AEBA_NAEBVVec3@@AEBUDimensionType@@_NAEBV?$optional@VVec3@@@std@@AEBUPlayerLocationData@1@@Z", 8815008},
+    // PlayerTickManager
+    {"?processPlayerNetworking@PlayerTickManager@@QEAAXAEBUTick@@@Z", 74985136},
     // PushableByEntityUtility
     {"?push@PushableByEntityUtility@@YAXAEAVActor@@0_N@Z", 49945936},
     // RakPeerHelper
@@ -152,15 +173,20 @@ static constexpr std::array<std::pair<std::string_view, std::size_t>, 93> symbol
     {"?tryToLoadPlayer@ServerNetworkHandler@@QEAA_NAEAVServerPlayer@@AEBVConnectionRequest@@AEBUPlayerAuthenticationInfo@@@Z", 10094224},
     {"?updateServerAnnouncement@ServerNetworkHandler@@QEAAXXZ", 9978160},
     // ServerPlayer
+    {"?_updateChunkPublisherView@ServerPlayer@@MEAAXAEBVVec3@@M@Z", 7667264},
     {"?changeDimension@ServerPlayer@@UEAAXUDimensionType@@@Z", 7705664},
     {"?openSign@ServerPlayer@@UEAAXAEBVBlockPos@@_N@Z", 7695104},
     // ServerScoreboard
     {"??0ServerScoreboard@@QEAA@VCommandSoftEnumRegistry@@PEAVLevelStorage@@V?$not_null@V?$NonOwnerPointer@VGameplayUserManager@@@Bedrock@@@gsl@@@Z", 2095792},
+    // ServerWaypoint
+    {"?update@ServerWaypoint@@UEAAXAEBVPlayer@@@Z", 13700320},
     // TickingAreasManager
     {"?addTransientScopedArea@TickingAreasManager@@QEAA?AUScopedContext@1@UDimensionType@@AEBV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@_KVUUID@mce@@AEBUBounds@@@Z", 50256208},
     {"?removeScopedAreas@TickingAreasManager@@QEAAXAEBV?$vector@VUUID@mce@@V?$allocator@VUUID@mce@@@std@@@std@@@Z", 50257024},
     // TridentItem
     {"?releaseUsing@TridentItem@@UEBAXAEAVItemStack@@PEAVPlayer@@H@Z", 33188624},
+    // VanillaWaypointManager
+    {"?update@VanillaWaypointManager@@QEAAXAEAVPlayer@@AEAVServerLocatorBar@@_N@Z", 38459712},
     // WeatherManager
     {"?updateWeather@WeatherManager@@QEAAXMHMH@Z", 18477376},
     // YAAEAVI18n

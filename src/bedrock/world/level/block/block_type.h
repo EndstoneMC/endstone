@@ -35,6 +35,7 @@
 #include "bedrock/world/item/item_category.h"
 #include "bedrock/world/level/block/actor/block_actor_type.h"
 #include "bedrock/world/level/block/block_client_prediction_overrides.h"
+#include "bedrock/world/level/block/block_event_manager.h"
 #include "bedrock/world/level/block/components/block_component_storage.h"
 #include "bedrock/world/level/block/components/net_ease_block_component_storage.h"
 #include "bedrock/world/level/block/resource_drops_context.h"
@@ -331,6 +332,7 @@ public:
     [[nodiscard]] bool requiresCorrectToolForDrops() const;
     [[nodiscard]] bool isSolid() const;
     [[nodiscard]] float getThickness() const;
+    [[nodiscard]] const BlockEvents::BlockEventManager &getEventManager() const;
     void spawnResources(BlockSource &region, const BlockPos &pos, const Block &block, IRandom &randomize,
                         const ResourceDropsContext &resource_drops_context, const Actor *actor_context) const;
     ResourceDrops getResourceDrops(const Block &block, IRandom &random,
@@ -432,4 +434,5 @@ public:
 
 private:
     std::vector<std::shared_ptr<AlteredStateCollection>> altered_state_collections_;  // +800
+    BlockEvents::BlockEventManager event_manager_;                                    // +824
 };

@@ -91,3 +91,8 @@ const Biome &LevelChunk::getBiome(const ChunkBlockPos &pos) const
     // Fallback: the dimension's default biome.
     return *registry.lookupById(dimension_.getDefaultBiomeId());
 }
+
+buffer_span<SubChunk> LevelChunk::getAllSubChunks() const
+{
+    return sub_chunks_;
+}

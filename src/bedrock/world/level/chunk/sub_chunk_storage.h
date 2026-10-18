@@ -17,6 +17,7 @@
 #include <cstdint>
 
 class Biome;
+class Block;
 
 template <typename T>
 class SubChunkStorage;
@@ -29,4 +30,13 @@ public:
     virtual bool isPaletteUniform(const Biome &) const = 0;
     [[nodiscard]] virtual const Biome &getElement(std::uint16_t) const = 0;
     // Remaining virtuals (trySetElement, getElementTypeCapacity, ...) are not reconstructed.
+};
+
+template <>
+class SubChunkStorage<Block> {
+public:
+    virtual ~SubChunkStorage();
+    [[nodiscard]] virtual bool isUniform(const Block &) const = 0;
+    [[nodiscard]] virtual bool isPaletteUniform(const Block &) const = 0;
+    [[nodiscard]] virtual const Block &getElement(std::uint16_t) const = 0;
 };

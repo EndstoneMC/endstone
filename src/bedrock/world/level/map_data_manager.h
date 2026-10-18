@@ -34,7 +34,7 @@ public:
     virtual ~MapDataManager() = default;
     virtual void registerOnGameplayUserAddedSubscription(IGameplayUserManagerConnector &);
     void registerOnSaveLevelDataSubscription(ILevelStorageManagerConnector &level_storage_manager_connector);
-    ENDSTONE_HOOK_LINUX MapItemSavedData *getMapSavedData(const ActorUniqueID uuid);
+    MapItemSavedData *getMapSavedData(const ActorUniqueID uuid);
     [[nodiscard]] const size_t getMapDataMapSize() const;
     MapItemSavedData &createMapSavedData(const ActorUniqueID &uuid, const BlockPos &origin, DimensionType dimension,
                                          int return_scale_level);
@@ -54,7 +54,10 @@ public:
 
 protected:
     virtual void _copyAndLockMap(const ActorUniqueID original_map_uuid, const ActorUniqueID new_map_uuid);
-    ENDSTONE_HOOK_WIN32 MapItemSavedData *_loadMapData(const ActorUniqueID &uuid);
+    MapItemSavedData *_loadMapData(const ActorUniqueID &uuid);
+    std::unique_ptr<MapItemSavedData> _deserializeMapData(const ActorUniqueID &uuid);
+    ENDSTONE_HOOK MapItemSavedData *_publishMapData(const ActorUniqueID &uuid,
+                                                    std::unique_ptr<MapItemSavedData> loaded_map);
     void _onSaveLevelData(LevelStorage &level_storage);
     DimensionManager &dimension_manager_;
     LevelStorage *level_storage_;

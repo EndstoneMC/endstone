@@ -15,9 +15,9 @@
 #ifdef _WIN32
 
 #include <Windows.h>
-// Psapi.h must be included after Windows.h
+// ProcessSnapshot.h and Psapi.h must be included after Windows.h
+#include <ProcessSnapshot.h>
 #include <Psapi.h>
-#include <TlHelp32.h>
 
 #include <string>
 #include <string_view>
@@ -33,27 +33,19 @@ std::string_view get_platform()
 
 std::size_t get_thread_count()
 {
-    DWORD process_id = GetCurrentProcessId();
-    HANDLE snapshot = CreateToolhelp32Snapshot(TH32CS_SNAPTHREAD, 0);
-    if (snapshot == INVALID_HANDLE_VALUE) {
-        throw std::system_error(static_cast<int>(GetLastError()), std::system_category(),
-                                "CreateToolhelp32Snapshot failed");
+    HPSS snapshot = nullptr;
+    DWORD error = PssCaptureSnapshot(GetCurrentProcess(), PSS_CAPTURE_THREADS, 0, &snapshot);
+    if (error != ERROR_SUCCESS) {
+        throw std::system_error(static_cast<int>(error), std::system_category(), "PssCaptureSnapshot failed");
     }
 
-    THREADENTRY32 te32;
-    te32.dwSize = sizeof(THREADENTRY32);
-    if (!Thread32First(snapshot, &te32)) {
-        throw std::system_error(static_cast<int>(GetLastError()), std::system_category(), "Thread32First failed");
+    PSS_THREAD_INFORMATION info;
+    error = PssQuerySnapshot(snapshot, PSS_QUERY_THREAD_INFORMATION, &info, sizeof(info));
+    PssFreeSnapshot(GetCurrentProcess(), snapshot);
+    if (error != ERROR_SUCCESS) {
+        throw std::system_error(static_cast<int>(error), std::system_category(), "PssQuerySnapshot failed");
     }
-
-    int thread_count = 0;
-    do {
-        if (te32.th32OwnerProcessID == process_id) {
-            ++thread_count;
-        }
-    } while (Thread32Next(snapshot, &te32));
-    CloseHandle(snapshot);
-    return thread_count;
+    return info.ThreadsCaptured;
 }
 std::size_t get_used_physical_memory()
 {

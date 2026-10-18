@@ -69,6 +69,11 @@ float BlockType::getThickness() const
     return thickness_;
 }
 
+const BlockEvents::BlockEventManager &BlockType::getEventManager() const
+{
+    return event_manager_;
+}
+
 void BlockType::spawnResources(BlockSource &region, const BlockPos &pos, const Block &block, IRandom &randomize,
                                const ResourceDropsContext &resource_drops_context, const Actor *actor_context) const
 {

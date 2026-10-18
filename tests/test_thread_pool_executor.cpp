@@ -12,6 +12,8 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
+#include <atomic>
+
 #include <gtest/gtest.h>
 
 #include "endstone/core/scheduler/thread_pool_executor.h"
@@ -117,4 +119,42 @@ TEST(ThreadPoolExecutorTest, ManyTasks)
     }
 
     EXPECT_EQ(counter.load(), task_count);
+}
+
+// Test if idle workers are woken for each new task
+TEST(ThreadPoolExecutorTest, WakesIdleWorkers)
+{
+    ThreadPoolExecutor executor(2);
+    for (int i = 0; i < 1000; ++i) {
+        auto future = executor.submit([i]() { return i; });
+        ASSERT_EQ(future.wait_for(std::chrono::seconds(5)), std::future_status::ready);
+        EXPECT_EQ(future.get(), i);
+    }
+}
+
+// Test if blocking tasks run concurrently up to the default thread limit
+TEST(ThreadPoolExecutorTest, BlockingTasksRunConcurrently)
+{
+    ThreadPoolExecutor executor;
+    const int task_count = 32;
+    std::mutex mutex;
+    std::condition_variable condition;
+    int started = 0;
+
+    auto task = [&]() {
+        std::unique_lock lock{mutex};
+        ++started;
+        condition.notify_all();
+        return condition.wait_for(lock, std::chrono::seconds(5), [&]() { return started == task_count; });
+    };
+
+    std::vector<std::future<bool>> futures;
+    futures.reserve(task_count);
+    for (int i = 0; i < task_count; ++i) {
+        futures.push_back(executor.submit(task));
+    }
+
+    for (auto &future : futures) {
+        EXPECT_TRUE(future.get());
+    }
 }

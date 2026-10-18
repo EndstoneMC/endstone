@@ -15,7 +15,10 @@
 #pragma once
 
 struct DirtyTicksCounter {
-    int total_time;
-    int last_change;
+    DirtyTicksCounter();
+
+protected:
+    int total_time_;
+    int last_change_;
 };
 static_assert(sizeof(DirtyTicksCounter) == 8);

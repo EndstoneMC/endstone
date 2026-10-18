@@ -24,8 +24,9 @@
 
 Bedrock's official addon and script APIs let you add content, but can hardly modify core gameplay. Custom servers like
 PocketMine and Nukkit offer that control, but sacrifice vanilla features. Endstone gives you both: cancellable events,
-packet control, and deep gameplay access with full vanilla compatibility. Think of it as Paper for Bedrock. If you've
-ever wished Bedrock servers had the same modding power as Java Edition, this is it.
+packet control, and deep gameplay access with full vanilla compatibility. It's also the fastest way to run a vanilla
+Bedrock server, with over 2x the TPS of BDS under heavy load. Think of it as Paper for Bedrock. If you've ever wished
+Bedrock servers had the same modding power as Java Edition, this is it.
 
 ## Quick Start
 
@@ -59,6 +60,9 @@ class MyPlugin(Plugin):
 [Python](https://github.com/EndstoneMC/python-plugin-template) | [C++](https://github.com/EndstoneMC/cpp-plugin-template)
 
 ## Features
+
+- **High performance** - Major optimizations to chunk loading, terrain generation, networking, and more, all without
+  changing vanilla gameplay. Over 2x the TPS of vanilla BDS with 100 players online. See the [benchmarks](BENCHMARK.md).
 
 - **Cross-platform** - Runs natively on both Windows and Linux without emulation, making deployment flexible and
   straightforward.

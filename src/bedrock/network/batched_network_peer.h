@@ -14,22 +14,39 @@
 
 #pragma once
 
-#include <chrono>
+#include <atomic>
+#include <cstddef>
+#include <cstdint>
+#include <functional>
+#include <memory>
+#include <optional>
+#include <string>
 
 #include "bedrock/bedrock.h"
-#include "network_identifier.h"
-#include "network_peer.h"
+#include "bedrock/core/threading/spsc_queue.h"
+#include "bedrock/core/threading/task_group.h"
+#include "bedrock/core/utility/binary_stream.h"
+#include "bedrock/network/network_peer.h"
 
 class BatchedNetworkPeer : public NetworkPeer {
-public:
-    ~BatchedNetworkPeer() override;
-    ENDSTONE_HOOK void sendPacket(const std::string &data, Reliability reliability,
-                                  Compressibility compressible) override;
-
-protected:
-    ENDSTONE_HOOK DataStatus _receivePacket(std::string &out_data,
-                                            const PacketRecvTimepointPtr &timepoint_ptr) override;
-
 private:
-    [[nodiscard]] const NetworkIdentifier &getId() const;  // Endstone
+    struct DataCallback {
+        std::string data;
+        Compressibility compressible;
+        std::function<void()> callback;
+    };
+
+    BinaryStream outgoing_data_;
+    std::size_t compressible_bytes_;
+    std::string incoming_data_buffer_;
+    std::optional<ReadOnlyBinaryStream> incoming_data_;
+    std::unique_ptr<TaskGroup> task_group_;
+    SPSCQueue<DataCallback, 512> send_queue_;
+    std::atomic_bool task_running_;
+    std::atomic<std::uint64_t> queued_packets_;
+    std::uint64_t sent_packets_;
+    bool async_enabled_;
+
+    friend class endstone::core::EndstoneBatchedNetworkPeer;  // Endstone
 };
+BEDROCK_STATIC_ASSERT_SIZE(BatchedNetworkPeer, 344, 320);

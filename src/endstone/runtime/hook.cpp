@@ -16,17 +16,46 @@
 
 #include <funchook.h>
 
+#include <array>
+#include <cstdint>
 #include <format>
 #include <string>
+#include <string_view>
 #include <system_error>
 #include <unordered_map>
 
 #include <spdlog/spdlog.h>
 
+#ifdef _WIN32
+#include <Windows.h>
+#else
+#include <sys/mman.h>
+#include <unistd.h>
+#endif
+
 #include "bedrock/symbol.h"
 #include "endstone/core/platform.h"
 
 namespace endstone::runtime::hook {
+namespace {
+void write_code_byte(unsigned char *target, unsigned char value)
+{
+#ifdef _WIN32
+    DWORD old_protect;
+    VirtualProtect(target, 1, PAGE_EXECUTE_READWRITE, &old_protect);
+    *target = value;
+    VirtualProtect(target, 1, old_protect, &old_protect);
+    FlushInstructionCache(GetCurrentProcess(), target, 1);
+#else
+    const auto page_size = static_cast<std::uintptr_t>(sysconf(_SC_PAGESIZE));
+    auto *page = reinterpret_cast<void *>(reinterpret_cast<std::uintptr_t>(target) & ~(page_size - 1));
+    mprotect(page, page_size, PROT_READ | PROT_WRITE | PROT_EXEC);
+    *target = value;
+    mprotect(page, page_size, PROT_READ | PROT_EXEC);
+#endif
+}
+}  // namespace
+
 namespace details {
 /**
  * @brief Mapping of hooked targets to their original implementations.
@@ -138,6 +167,29 @@ void install()
         else {
             throw std::runtime_error(std::format("Unable to find target function for detour: {}.", name));
         }
+    }
+
+    struct BytePatch {
+        std::string_view name;
+        unsigned char expected;
+        unsigned char value;
+    };
+    static constexpr std::array byte_patches = {
+        // Spread players overflow these caches every few seconds and BDS then wipes them whole, so raise both caps
+        // from 10,000 and 30,000 entries to about a million.
+        BytePatch{"ChunkBlenderFactory::getOrCreateChunkBlender::cache_cap", 0x00, 0x10},
+        BytePatch{"DBChunkStorage::_hasChunk::cache_cap", 0x00, 0x10},
+    };
+    for (const auto &patch : byte_patches) {
+        const auto it = targets.find(std::string(patch.name));
+        if (it == targets.end()) {
+            throw std::runtime_error(std::format("Unable to find target instruction: {}.", patch.name));
+        }
+        auto *target = static_cast<unsigned char *>(it->second);
+        if (*target != patch.expected) {
+            throw std::runtime_error(std::format("Unexpected instruction at {}.", patch.name));
+        }
+        write_code_byte(target, patch.value);
     }
 }
 

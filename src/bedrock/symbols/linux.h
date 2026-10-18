@@ -11,7 +11,7 @@
 
 namespace endstone::runtime {
 
-static constexpr std::array<std::pair<std::string_view, std::size_t>, 93> symbols = {{
+static constexpr std::array<std::pair<std::string_view, std::size_t>, 108> symbols = {{
     {"BlockState::StateListNode::mHead", 257928656},
     {"Enchant::mEnchants", 257765312},
     {"MobEffect::mMobEffects", 257859136},
@@ -24,9 +24,6 @@ static constexpr std::array<std::pair<std::string_view, std::size_t>, 93> symbol
     {"_ZN12ActorFactory18createSpawnedActorERK25ActorDefinitionIdentifierP5ActorRK4Vec3RK4Vec2", 183846448},
     // ArmorStand
     {"_ZN10ArmorStand14getInteractionER6PlayerRK4Vec3", 199565872},
-    // BatchedNetworkPeer
-    {"_ZN18BatchedNetworkPeer10sendPacketERKNSt3__112basic_stringIcNS0_11char_traitsIcEENS0_9allocatorIcEEEEN11NetworkPeer11ReliabilityE15Compressibility", 145217872},
-    {"_ZN18BatchedNetworkPeer14_receivePacketERNSt3__112basic_stringIcNS0_11char_traitsIcEENS0_9allocatorIcEEEERKNS0_10shared_ptrINS0_6chrono10time_pointINS9_12steady_clockENS9_8durationIxNS0_5ratioILl1ELl1000000000EEEEEEEEE", 145218288},
     // BedrockLog::LogDetails
     {"_ZN10BedrockLog10LogDetails7_log_vaE9LogAreaIDjPKciiS3_P13__va_list_tag", 249278320},
     // BlockActor
@@ -47,6 +44,12 @@ static constexpr std::array<std::pair<std::string_view, std::size_t>, 93> symbol
     // CauldronBlock
     {"_ZNK13CauldronBlock14setLiquidLevelER11BlockSourceRK8BlockPosi18CauldronLiquidType", 207269312},
     {"_ZNK13CauldronBlock3useERN11BlockEvents24BlockPlayerInteractEventE", 207257152},
+    // ChunkBlenderFactory
+    {"ChunkBlenderFactory::getOrCreateChunkBlender::cache_cap", 85314623},
+    // ChunkBuildOrderPolicy
+    {"_ZN21ChunkBuildOrderPolicy16updateInfluencesEv", 211141408},
+    // CircuitSceneGraph
+    {"_ZN17CircuitSceneGraph6updateEP11BlockSource", 218431056},
     // Command
     {"_ZNK7Command3runERK13CommandOriginR13CommandOutput", 164686560},
     // CommandOriginLoader
@@ -68,8 +71,13 @@ static constexpr std::array<std::pair<std::string_view, std::size_t>, 93> symbol
     {"_ZN19CraftHandlerEnchant18_handleCraftActionERK31ItemStackRequestActionCraftBase", 205860912},
     // CraftingDataPacketPayload
     {"_ZN25CraftingDataPacketPayload11fromRecipesERK7Recipesb", 140477760},
+    // DBChunkStorage
+    {"DBChunkStorage::_hasChunk::cache_cap", 219434551},
     // DedicatedServer
     {"_ZN15DedicatedServer5startERKNSt3__112basic_stringIcNS0_11char_traitsIcEENS0_9allocatorIcEEEERKN7Bedrock19ActivationArgumentsE", 75250608},
+    // Dimension
+    {"_ZN9Dimension19sendPacketForEntityERK5ActorRK6PacketPK6Player", 211196912},
+    {"_ZNK9Dimension13forEachPlayerEN5brstd12function_refIFbR6PlayerES4_EE", 211178112},
     // DimensionManager
     {"_ZN16DimensionManager20getOrCreateDimensionENSt3__117basic_string_viewIcNS0_11char_traitsIcEEEE", 210126592},
     // EnchantUtils
@@ -101,17 +109,25 @@ static constexpr std::array<std::pair<std::string_view, std::size_t>, 93> symbol
     {"_ZN11LeavesBlock10randomTickERN11BlockEvents20BlockRandomTickEventE", 207061616},
     // Level
     {"_ZN5Level4tickEv", 210335488},
+    {"_ZNK5Level20getActivePlayerCountEv", 210367168},
+    // LevelChunk
+    {"LevelChunk::tickImpl::seed", 256134984},
+    {"_ZN10LevelChunk8tickImplER11BlockSourceRK4TickNSt3__18functionIFvvEEE", 211691840},
     // LiquidBlock
     {"_ZNK11LiquidBlock12_trySpreadToER11BlockSourceRK8BlockPosiS4_h", 206816800},
     // LiquidBlockBase
     {"_ZNK15LiquidBlockBase9_solidifyER11BlockSourceRK8BlockPosS4_", 206828320},
+    // MainChunkSource
+    {"_ZN15MainChunkSource14getRandomChunkER6Random", 211855728},
     // MapDataManager
-    {"_ZN14MapDataManager15getMapSavedDataE13ActorUniqueID", 210022496},
+    {"_ZN14MapDataManager15_publishMapDataERK13ActorUniqueIDNSt3__110unique_ptrI16MapItemSavedDataNS3_14default_deleteIS5_EEEE", 210029376},
     // MinecraftCommands
     {"_ZN17MinecraftCommands14compileCommandERK12HashedStringR13CommandOrigin17CurrentCmdVersionNSt3__18functionIFvRKNS6_12basic_stringIcNS6_11char_traitsIcEENS6_9allocatorIcEEEEEEE", 164403008},
     {"_ZNK17MinecraftCommands14executeCommandER14CommandContextb", 164353584},
     // MinecraftPackets
     {"_ZN16MinecraftPackets12createPacketE18MinecraftPacketIds", 144683616},
+    // MinecraftWorkerPool
+    {"MinecraftWorkerPool::ASYNC", 258114960},
     // Mob
     {"_ZN3Mob9knockbackEP5ActorfffRK19KnockbackParameters", 199753344},
     // NetherNet::LanThreadManager
@@ -135,6 +151,11 @@ static constexpr std::array<std::pair<std::string_view, std::size_t>, 93> symbol
     {"_ZN6Player4dropERK9ItemStackb", 196441152},
     {"_ZN6Player4takeER5Actorii", 196390032},
     {"_ZN6Player9addLevelsEi", 196461040},
+    // PlayerLocationSender
+    {"_ZN20PlayerLocationSender24_forEachClientPlayerPairERKNSt3__16vectorI13WeakEntityRefNS0_9allocatorIS2_EEEENS0_8functionIFvRK29UserEntityIdentifierComponentRK6PlayerSE_EEE", 209777232},
+    {"_ZN20PlayerLocationSender25_shouldSendPositionPacketERK4Vec313DimensionTypebRKNSt3__18optionalIS0_EERKNS_18PlayerLocationDataEf", 209778816},
+    // PlayerTickManager
+    {"_ZN17PlayerTickManager23processPlayerNetworkingERK4Tick", 209786096},
     // PushableByEntityUtility
     {"_ZN23PushableByEntityUtility4pushER5ActorS1_b", 119571952},
     // RakPeerHelper
@@ -154,14 +175,19 @@ static constexpr std::array<std::pair<std::string_view, std::size_t>, 93> symbol
     {"_ZN20ServerNetworkHandler27disconnectClientWithMessageERK17NetworkIdentifier11SubClientIdN10Connection20DisconnectFailReasonERKNSt3__112basic_stringIcNS6_11char_traitsIcEENS6_9allocatorIcEEEENS6_8optionalISC_EE", 143675360},
     // ServerPlayer
     {"_ZN12ServerPlayer15changeDimensionE13DimensionType", 166161184},
+    {"_ZN12ServerPlayer25_updateChunkPublisherViewERK4Vec3f", 166125232},
     {"_ZN12ServerPlayer8openSignERK8BlockPosb", 166150720},
     // ServerScoreboard
     {"_ZN16ServerScoreboardC2E23CommandSoftEnumRegistryP12LevelStorageN3gsl8not_nullIN7Bedrock15NonOwnerPointerI19GameplayUserManagerEEEE", 217580848},
+    // ServerWaypoint
+    {"_ZN14ServerWaypoint6updateERK6Player", 187406736},
     // TickingAreasManager
     {"_ZN19TickingAreasManager17removeScopedAreasERKNSt3__16vectorIN3mce4UUIDENS0_9allocatorIS3_EEEE", 218697344},
     {"_ZN19TickingAreasManager22addTransientScopedAreaE13DimensionTypeRKNSt3__112basic_stringIcNS1_11char_traitsIcEENS1_9allocatorIcEEEEmN3mce4UUIDERK6Bounds", 218696560},
     // TridentItem
     {"_ZNK11TridentItem12releaseUsingER9ItemStackP6Playeri", 203971104},
+    // VanillaWaypointManager
+    {"_ZN22VanillaWaypointManager6updateER6PlayerR16ServerLocatorBarb", 196116976},
     // WeatherManager
     {"_ZN14WeatherManager13updateWeatherEfifi", 209727632},
     // webrtc::P2PTransportChannel

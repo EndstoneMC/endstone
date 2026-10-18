@@ -15,6 +15,7 @@
 #pragma once
 
 #include <array>
+#include <functional>
 #include <memory>
 #include <optional>
 #include <string>
@@ -23,6 +24,7 @@
 
 #include "bedrock/bedrock.h"
 #include "bedrock/common_types.h"
+#include "bedrock/core/utility/buffer_span.h"
 #include "bedrock/entity/weak_entity_ref.h"
 #include "bedrock/forward.h"
 #include "bedrock/platform/threading/mutex_details.h"
@@ -32,11 +34,13 @@
 #include "bedrock/world/level/chunk/chunk_state.h"
 #include "bedrock/world/level/chunk/dirty_ticks_counter.h"
 #include "bedrock/world/level/chunk/level_chunk_block_actor_storage.h"
+#include "bedrock/world/level/chunk/sub_chunk.h"
 #include "bedrock/world/level/chunk/sub_chunk_storage.h"
 #include "bedrock/world/level/chunk_pos.h"
 #include "bedrock/world/level/levelgen/chunk_gen_context.h"
 #include "bedrock/world/level/tick.h"
 
+class BlockSource;
 class Level;
 class Dimension;
 class ChunkSource;
@@ -93,8 +97,11 @@ public:
     [[nodiscard]] Level &getLevel() const;
     [[nodiscard]] const Biome &getBiome(const ChunkBlockPos &pos) const;
     [[nodiscard]] const LevelChunkBlockActorStorage &getBlockEntities() const;
+    [[nodiscard]] buffer_span<SubChunk> getAllSubChunks() const;
 
 private:
+    ENDSTONE_HOOK void tickImpl(BlockSource &tick_region, const Tick &tick, std::function<void()> spawner_callback);
+
     Bedrock::Threading::Mutex block_entity_access_lock_;
     Level &level_;
     Dimension &dimension_;

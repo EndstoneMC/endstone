@@ -16,8 +16,7 @@
 
 #include <cstdint>
 
-class Tick {
-public:
+struct Tick {
     explicit Tick(const uint64_t tick_id) : tick_id(tick_id) {};
     Tick() = default;
 

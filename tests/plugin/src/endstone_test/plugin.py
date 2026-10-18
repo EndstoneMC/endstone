@@ -2,6 +2,7 @@ import gc
 
 import pytest
 from endstone import ColorFormat, Player
+from endstone.boss import BarColor, BarStyle, BossBar
 from endstone.command import Command, CommandSender
 from endstone.inventory import ItemStack
 from endstone.plugin import Plugin
@@ -85,6 +86,8 @@ class EndstoneTest(Plugin):
         super().__init__()
         self.recorder = EventRecorder(self)
         self.announced: dict[str, str] = {}
+        self.extra_boss_bars: list[BossBar] = []
+        self.boss_bar_ticks = 0
 
     def on_load(self) -> None:
         self.logger.info("on_load is called!")
@@ -94,6 +97,13 @@ class EndstoneTest(Plugin):
         self.logger.info(f"protocol version: {self.server.protocol_version}")
 
         self.recorder.create_boss_bar()
+        self.extra_boss_bars = [
+            self.server.create_boss_bar("Boss bar A", BarColor.RED, BarStyle.SOLID),
+            self.server.create_boss_bar(
+                "Boss bar B", BarColor.BLUE, BarStyle.SEGMENTED_6
+            ),
+        ]
+        self.server.scheduler.run_task(self, self.update_boss_bars, delay=20, period=20)
         handled = set()
         for listener in LISTENERS:
             instance = listener(self)
@@ -110,6 +120,21 @@ class EndstoneTest(Plugin):
     def on_disable(self) -> None:
         self.logger.info("on_disable is called!")
         self.recorder.remove_boss_bar()
+        for boss_bar in self.extra_boss_bars:
+            boss_bar.remove_all()
+
+    def update_boss_bars(self) -> None:
+        self.boss_bar_ticks += 1
+        colors = list(BarColor)
+        for i, boss_bar in enumerate(self.extra_boss_bars):
+            boss_bar.progress = ((self.boss_bar_ticks + i * 5) % 11) / 10
+            boss_bar.title = f"Boss bar {'AB'[i]}: {boss_bar.progress:.0%}"
+
+        bar_a, bar_b = self.extra_boss_bars
+        if self.boss_bar_ticks % 5 == 0:
+            bar_a.color = colors[(self.boss_bar_ticks // 5) % len(colors)]
+        if self.boss_bar_ticks % 10 == 0:
+            bar_b.is_visible = not bar_b.is_visible
 
     def on_command(
         self, sender: CommandSender, command: Command, args: list[str]

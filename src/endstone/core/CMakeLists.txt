@@ -100,6 +100,7 @@ add_library(endstone_core
         map/map_canvas.cpp
         map/map_renderer.cpp
         map/map_view.cpp
+        network/batched_network_peer.cpp
         network/compressed_network_peer.cpp
         network/data_packet.cpp
         network/nethernet_address_cache.cpp

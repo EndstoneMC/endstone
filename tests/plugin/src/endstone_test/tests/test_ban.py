@@ -614,6 +614,35 @@ class TestBanCommandIntegration:
         assert entry is not None
         assert reason in entry.reason
 
+    @pytest.mark.parametrize("reason", [None, "reason", ":hello: reason is here"])
+    def test_ban_command_reason(
+        self, server: Server, player_ban_list: PlayerBanList, reason: str | None
+    ) -> None:
+        """Test the ban command with and without a reason."""
+        player_name = "player name 123"
+        suffix = f" {reason}" if reason is not None else ""
+        server.dispatch_command(server.command_sender, f'ban "{player_name}"{suffix}')
+
+        assert player_ban_list.is_banned(player_name)
+        entry = player_ban_list.get_ban_entry(player_name)
+        assert entry is not None
+        assert entry.name == player_name
+        assert entry.reason == (reason or "Banned by an operator.")
+
+    @pytest.mark.parametrize("reason", [None, "reason", "reason with spaces"])
+    def test_ban_ip_command_reason(
+        self, server: Server, ip_ban_list: IpBanList, reason: str | None
+    ) -> None:
+        """Test the ban-ip command with and without a reason."""
+        address = "192.0.2.123"
+        suffix = f" {reason}" if reason is not None else ""
+        server.dispatch_command(server.command_sender, f"ban-ip {address}{suffix}")
+
+        assert ip_ban_list.is_banned(address)
+        entry = ip_ban_list.get_ban_entry(address)
+        assert entry is not None
+        assert entry.reason == (reason or "Banned by an operator.")
+
 
 # =============================================================================
 # Section 12: Edge Cases and Error Handling

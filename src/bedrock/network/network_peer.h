@@ -18,6 +18,7 @@
 #include <functional>
 
 namespace endstone::core {
+class EndstoneBatchedNetworkPeer;     // Endstone
 class EndstoneCompressedNetworkPeer;  // Endstone
 }  // namespace endstone::core
 
@@ -114,7 +115,7 @@ protected:
     virtual DataStatus _receivePacket(std::string &out_data, const PacketRecvTimepointPtr &timepoint_ptr) = 0;
     std::shared_ptr<NetworkPeer> peer_;
 
-    friend class BatchedNetworkPeer;                             // Endstone
     friend class NetworkSystem;                                  // Endstone
+    friend class endstone::core::EndstoneBatchedNetworkPeer;     // Endstone
     friend class endstone::core::EndstoneCompressedNetworkPeer;  // Endstone
 };

@@ -9,16 +9,17 @@ find_package(tomlplusplus REQUIRED)
 add_library(endstone_runtime SHARED
         bedrock_hooks/actor.cpp
         bedrock_hooks/armor_stand.cpp
-        bedrock_hooks/batched_network_peer.cpp
         bedrock_hooks/bedrock_event_logger.cpp
         bedrock_hooks/bucket.cpp
         bedrock_hooks/bucketable_component.cpp
         bedrock_hooks/campfire_block_actor.cpp
         bedrock_hooks/cauldron.cpp
+        bedrock_hooks/circuit_scene_graph.cpp
         bedrock_hooks/console_input_reader.cpp
         bedrock_hooks/craft_handler_crafting.cpp
         bedrock_hooks/craft_handler_enchant.cpp
         bedrock_hooks/dedicated_server.cpp
+        bedrock_hooks/dimension.cpp
         bedrock_hooks/enchanting_container_manager_model.cpp
         bedrock_hooks/explosion.cpp
         bedrock_hooks/fire_block.cpp
@@ -29,7 +30,9 @@ add_library(endstone_runtime SHARED
         bedrock_hooks/lan_thread_manager.cpp
         bedrock_hooks/leaves_block.cpp
         bedrock_hooks/level.cpp
+        bedrock_hooks/level_chunk.cpp
         bedrock_hooks/liquid_block.cpp
+        bedrock_hooks/main_chunk_source.cpp
         bedrock_hooks/map_data_manager.cpp
         bedrock_hooks/minecraft_commands.cpp
         bedrock_hooks/mob.cpp
@@ -38,6 +41,8 @@ add_library(endstone_runtime SHARED
         bedrock_hooks/p2p_transport_channel.cpp
         bedrock_hooks/packet.cpp
         bedrock_hooks/piston_block_actor.cpp
+        bedrock_hooks/player_location_sender.cpp
+        bedrock_hooks/player_tick_manager.cpp
         bedrock_hooks/port.cpp
         bedrock_hooks/player.cpp
         bedrock_hooks/pushable_by_entity_utility.cpp
@@ -51,11 +56,13 @@ add_library(endstone_runtime SHARED
         bedrock_hooks/script_player_gameplay_handler.cpp
         bedrock_hooks/script_scripting_event_handler.cpp
         bedrock_hooks/script_server_network_event_handler.cpp
+        bedrock_hooks/server_waypoint.cpp
         bedrock_hooks/simple_network_interface_impl.cpp
         bedrock_hooks/server_instance.cpp
         bedrock_hooks/server_network_handler.cpp
         bedrock_hooks/server_player.cpp
         bedrock_hooks/trident_item.cpp
+        bedrock_hooks/vanilla_waypoint_manager.cpp
         bedrock_hooks/weather_manager.cpp
         main.cpp
         hook.cpp
@@ -106,6 +113,7 @@ if (WIN32)
 endif ()
 if (UNIX)
     install(TARGETS endstone_runtime LIBRARY DESTINATION "endstone" COMPONENT endstone_wheel OPTIONAL)
+    install(FILES "${MIMALLOC_LIBRARY}" DESTINATION "endstone" RENAME "libmimalloc.so" COMPONENT endstone_wheel)
     if (ENDSTONE_SEPARATE_DEBUG_INFO)
         install(FILES "$<TARGET_FILE_DIR:endstone_runtime>/endstone_runtime.dbg" DESTINATION "endstone" COMPONENT endstone_wheel OPTIONAL)
     endif ()

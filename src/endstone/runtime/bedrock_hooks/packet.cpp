@@ -348,9 +348,9 @@ template <>
 void EndstonePacketHandler::handle(BossEventPacket &packet)
 {
     auto *player = getPlayer();
-    if (player != nullptr && packet.payload.event_type == BossEventUpdateType::Query &&
-        packet.payload.boss_id == player->getOrCreateUniqueID()) {
-        EndstoneServer::getInstance().updateBossBars(player->getEndstoneActor<EndstonePlayer>());
+    if (player != nullptr && packet.payload.event_type == BossEventUpdateType::Query) {
+        EndstoneServer::getInstance().updateBossBars(player->getEndstoneActor<EndstonePlayer>(),
+                                                     packet.payload.boss_id);
     }
     handle();
 }

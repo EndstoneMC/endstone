@@ -14,8 +14,13 @@
 
 #include "bedrock/server/server_instance.h"
 
-#include <entt/locator/locator.hpp>
+#include <optional>
 
+#include <entt/locator/locator.hpp>
+#include <pybind11/pybind11.h>
+
+#include "bedrock/core/threading/worker_pool.h"
+#include "bedrock/core/utility/non_owner_pointer.h"
 #include "bedrock/scripting/event_handlers/script_actor_gameplay_handler.h"
 #include "bedrock/scripting/event_handlers/script_block_gameplay_handler.h"
 #include "bedrock/scripting/event_handlers/script_item_gameplay_handler.h"
@@ -28,6 +33,7 @@
 #include "endstone/runtime/hook.h"
 #include "endstone/runtime/vtable_hook.h"
 
+namespace py = pybind11;
 namespace vhook = endstone::runtime::vhook;
 
 template <typename T>
@@ -117,6 +123,9 @@ class ServerInstanceLifecycleListener : ServerInstanceEventListener {
 public:
     ::EventResult onServerThreadStarted(ServerInstance &instance) override
     {
+        // Keep a PyThreadState for the server thread so Python callbacks reuse it instead of creating one per call
+        gil_.emplace();
+        no_gil_.emplace();
         auto &level = *instance.getMinecraft()->getLevel();
         auto &server = endstone::core::EndstoneServer ::getInstance();
         hookEventHandler(*level.getActorEventCoordinator().actor_gameplay_handler);
@@ -124,9 +133,23 @@ public:
         hookEventHandler(*level.getItemEventCoordinator().item_gameplay_handler);
         hookEventHandler(*level.getLevelEventCoordinator().level_gameplay_handler);
         hookEventHandler(*level.getServerPlayerEventCoordinator().player_gameplay_handler);
-        hookEventHandler(*level.getScriptingEventCoordinator().scripting_event_handler);
+        if (const auto &handler = level.getScriptingEventCoordinator().scripting_event_handler) {
+            hookEventHandler(*handler);
+        }
         hookEventHandler(*level.getServerNetworkEventCoordinator().server_network_event_handler);
         server.setLevel(level);
+        return ::EventResult::KeepGoing;
+    }
+
+    ::EventResult onServerUpdateStart(ServerInstance &instance) override
+    {
+        endstone::core::EndstoneServer::getInstance().startTick();
+        return ::EventResult::KeepGoing;
+    }
+
+    ::EventResult onServerUpdateEnd(ServerInstance &instance) override
+    {
+        endstone::core::EndstoneServer::getInstance().endTick();
         return ::EventResult::KeepGoing;
     }
 
@@ -137,6 +160,8 @@ public:
             server.disablePlugins();
         }
         entt::locator<endstone::core::EndstoneServer>::reset();
+        no_gil_.reset();
+        gil_.reset();
         return ::EventResult::KeepGoing;
     }
 
@@ -145,7 +170,24 @@ public:
         static ServerInstanceLifecycleListener instance;
         return instance;
     }
+
+private:
+    std::optional<py::gil_scoped_acquire> gil_;
+    std::optional<py::gil_scoped_release> no_gil_;
 };
+
+namespace {
+// Let any queued task wake an idle chunk generation worker, not only 50 ms of backlog per busy worker.
+void patchAsyncWorkerPoolMinBacklog(endstone::core::EndstoneServer &server)
+{
+    auto &async = *BEDROCK_VAR(Bedrock::NonOwnerPointer<WorkerPool> *, "MinecraftWorkerPool::ASYNC");
+    if (!async || async->min_backlog_duration_seconds_ != 0.05F) {
+        server.getLogger().warning("Unexpected async worker pool, leaving its wake threshold unchanged.");
+        return;
+    }
+    async->min_backlog_duration_seconds_ = 0.0F;
+}
+}  // namespace
 
 ServerInitialization::ServerInitResult ServerInstance::initializeServer(ServerInstanceInitArguments &&args)
 {
@@ -153,6 +195,7 @@ ServerInitialization::ServerInitResult ServerInstance::initializeServer(ServerIn
                                               std::forward<ServerInstanceInitArguments>(args));
     auto &server = endstone::core::EndstoneServer::getInstance();
     server.init(*this);
+    patchAsyncWorkerPoolMinBacklog(server);
     getEventCoordinator()->registerListener(&ServerInstanceLifecycleListener::getInstance());
     return result;
 }

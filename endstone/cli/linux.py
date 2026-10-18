@@ -1,8 +1,10 @@
 import os
+import re
 import signal
 import stat
 import subprocess
 import sysconfig
+from pathlib import Path
 
 from .base import Bootstrap
 
@@ -25,9 +27,19 @@ class LinuxBootstrap(Bootstrap):
         return "libendstone_runtime.so"
 
     @property
+    def _mimalloc_path(self) -> Path:
+        return self._endstone_runtime_path.with_name("libmimalloc.so")
+
+    @property
     def _endstone_runtime_env(self) -> dict[str, str]:
         env = super()._endstone_runtime_env
-        env["LD_PRELOAD"] = str(self._endstone_runtime_path.absolute())
+        preload = [p for p in re.split(r"[ :]", env.get("LD_PRELOAD", "")) if p]
+        names = [Path(p).name for p in preload]
+        # a preloaded allocator, or libc.so.6 for glibc, replaces the bundled one
+        if not any("malloc" in n or n.startswith("libc.so") for n in names):
+            preload.append(str(self._mimalloc_path))
+        preload.append(str(self._endstone_runtime_path))
+        env["LD_PRELOAD"] = ":".join(preload)
         env["LD_LIBRARY_PATH"] = str(sysconfig.get_config_var("LIBDIR"))
         return env
 
