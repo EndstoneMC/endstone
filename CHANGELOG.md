@@ -19,6 +19,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Fixed `/ban`, `/ban-ip` and plugin commands with an optional `message` argument sending an ambiguous command syntax to clients (#554).
 - Fixed `ServerListPingEvent` not being called when the server's ping response is 128 bytes or longer, such as with a long `server-name` (#556).
 - Fixed the launcher reporting a BDS without `version.txt` as `v0.0.0` and exiting without a message when the update prompt is declined (#545).
+- Fixed showing more than one boss bar to a player at a time (#525).
 
 ## [0.11.14] - 2026-10-12
 

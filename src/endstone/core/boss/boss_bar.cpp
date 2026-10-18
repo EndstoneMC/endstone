@@ -14,12 +14,22 @@
 
 #include "endstone/core/boss/boss_bar.h"
 
+#include <algorithm>
+#include <memory>
 #include <mutex>
+#include <optional>
 #include <unordered_set>
 #include <vector>
 
 #include "bedrock/network/packet.h"
+#include "bedrock/network/packet/add_actor_packet.h"
 #include "bedrock/network/packet/boss_event_packet.h"
+#include "bedrock/network/packet/remove_actor_packet.h"
+#include "bedrock/world/actor/actor_data_ids.h"
+#include "bedrock/world/actor/actor_flags.h"
+#include "bedrock/world/actor/synched_actor_data.h"
+#include "bedrock/world/level/block_source.h"
+#include "bedrock/world/level/level.h"
 #include "endstone/check.h"
 #include "endstone/core/player.h"
 #include "endstone/core/server.h"
@@ -40,17 +50,52 @@ BossBarRegistry &getBossBarRegistry()
 }
 
 struct BossBarState {
+    ActorUniqueID actor_id;
+    ActorRuntimeID actor_runtime_id;
     std::string title;
     float progress;
     BarColor color;
     BarStyle style;
 };
 
+// The client ignores boss events for an actor it does not know.
+void sendAddActor(const ::Player &handle, const BossBarState &state)
+{
+    const auto packet = MinecraftPackets::createPacket(MinecraftPacketIds::AddActor);
+    auto &payload = std::static_pointer_cast<AddActorPacket>(packet)->payload;
+    payload.entity_id = state.actor_id;
+    payload.runtime_id = state.actor_runtime_id;
+    payload.actor_type = "minecraft:creeper";
+    const auto &region = handle.getDimensionBlockSource();
+    const auto &pos = handle.getPosition();
+    payload.pos = {pos.x,
+                   std::clamp(pos.y - 10.0F, static_cast<float>(region.getMinHeight()),
+                              static_cast<float>(region.getMaxHeight() - 1)),
+                   pos.z};
+    payload.data.data.emplace_back(std::make_unique<DataItem2<SynchedActorData::TypeInt64>>(
+        DataItemType::Int64, static_cast<DataItem::ID>(ActorDataIDs::RESERVED_0),
+        SynchedActorData::TypeInt64{1} << static_cast<int>(ActorFlags::INVISIBLE)));
+    payload.data.data.emplace_back(std::make_unique<DataItem2<SynchedActorData::TypeFloat>>(
+        DataItemType::Float, static_cast<DataItem::ID>(ActorDataIDs::RESERVED_038), 0.0F));
+    handle.sendNetworkPacket(*packet);
+}
+
+void sendRemoveActor(const ::Player &handle, const BossBarState &state)
+{
+    const auto packet = MinecraftPackets::createPacket(MinecraftPacketIds::RemoveActor);
+    std::static_pointer_cast<RemoveActorPacket>(packet)->payload.entity_id = state.actor_id;
+    handle.sendNetworkPacket(*packet);
+}
+
 void sendBossEvent(const ::Player &handle, BossEventUpdateType event_type, const BossBarState &state)
 {
+    if (event_type == BossEventUpdateType::Add) {
+        sendAddActor(handle, state);
+    }
+
     const auto packet = MinecraftPackets::createPacket(MinecraftPacketIds::BossEvent);
     const auto pk = std::static_pointer_cast<BossEventPacket>(packet);
-    pk->payload.boss_id = handle.getOrCreateUniqueID();
+    pk->payload.boss_id = state.actor_id;
     pk->payload.event_type = event_type;
     pk->payload.name = state.title;
     pk->payload.health_percent = state.progress;
@@ -58,6 +103,10 @@ void sendBossEvent(const ::Player &handle, BossEventUpdateType event_type, const
     pk->payload.overlay = static_cast<BossBarOverlay>(state.style);
     // BarFlag::DarkenSky / CreateFog dropped from BossEventPacket in BDS 1.26.32 (cereal-only migration)
     handle.sendNetworkPacket(*packet);
+
+    if (event_type == BossEventUpdateType::Remove) {
+        sendRemoveActor(handle, state);
+    }
 }
 }  // namespace
 
@@ -206,28 +255,33 @@ std::vector<Player *> EndstoneBossBar::getPlayers() const
     return players;
 }
 
-void EndstoneBossBar::resend(Player &player)
+void EndstoneBossBar::resend(Player &player, ActorUniqueID boss_id)
 {
     const auto uuid = player.getUniqueId();
-    std::vector<BossBarState> states;
+    std::optional<BossBarState> state;
     {
         auto &registry = getBossBarRegistry();
         std::lock_guard lock(registry.mutex);
         for (const auto *bar : registry.bars) {
-            if (bar->visible_ && bar->players_.contains(uuid)) {
-                states.push_back({bar->title_, bar->progress_, bar->color_, bar->style_});
+            if (bar->actor_id_ == boss_id && bar->visible_ && bar->players_.contains(uuid)) {
+                state = {bar->actor_id_, bar->actor_runtime_id_, bar->title_, bar->progress_, bar->color_, bar->style_};
+                break;
             }
         }
     }
-    const auto &handle = static_cast<EndstonePlayer &>(player).getHandle();
-    for (const auto &state : states) {
-        sendBossEvent(handle, BossEventUpdateType::Add, state);
+    if (state) {
+        sendBossEvent(static_cast<EndstonePlayer &>(player).getHandle(), BossEventUpdateType::Add, *state);
     }
 }
 
 void EndstoneBossBar::send(BossEventUpdateType event_type, Player &player)
 {
-    sendBossEvent(static_cast<EndstonePlayer &>(player).getHandle(), event_type, {title_, progress_, color_, style_});
+    auto &handle = static_cast<EndstonePlayer &>(player).getHandle();
+    if (!actor_id_.isValid()) {
+        actor_id_ = handle.getLevel().getNewUniqueID();
+        actor_runtime_id_ = handle.getLevel().getNextRuntimeID();
+    }
+    sendBossEvent(handle, event_type, {actor_id_, actor_runtime_id_, title_, progress_, color_, style_});
 }
 
 void EndstoneBossBar::broadcast(BossEventUpdateType event_type)

@@ -14,6 +14,12 @@
 
 #pragma once
 
+#include <cmath>
+#include <limits>
+#include <memory>
+#include <type_traits>
+#include <vector>
+
 #include <gsl/gsl>
 
 #include "bedrock/core/math/vec3.h"
@@ -51,6 +57,25 @@ template <typename T>
 class DataItem2 : public DataItem {
 public:
     DataItem2(DataItemType type, ID id, const T &data) : type_(type), id_(id), data(data) {}
+    [[nodiscard]] ID getId() const override { return id_; }
+    [[nodiscard]] DataItemType getType() const override { return type_; }
+    [[nodiscard]] bool isDataEqual(const DataItem &rhs) const override
+    {
+        if (getType() != rhs.getType()) {
+            return false;
+        }
+        const auto &other = static_cast<const DataItem2 &>(rhs).data;
+        if constexpr (std::is_floating_point_v<T>) {
+            return std::fabs(data - other) <= std::numeric_limits<T>::epsilon();
+        }
+        else {
+            return data == other;
+        }
+    }
+    [[nodiscard]] std::unique_ptr<DataItem> clone() const override
+    {
+        return std::make_unique<DataItem2>(type_, id_, data);
+    }
 
 private:
     const DataItemType type_;
@@ -70,6 +95,10 @@ public:
     using TypeVec3 = Vec3;
     using DataList = std::vector<std::unique_ptr<DataItem>>;
     using ID = DataItem::ID;
+
+    struct CopyableDataList {
+        DataList data;
+    };
 
     [[nodiscard]] TypeInt8 getInt8(ID) const;
     [[nodiscard]] TypeShort getShort(ID) const;

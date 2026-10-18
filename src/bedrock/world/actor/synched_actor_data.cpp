@@ -18,6 +18,8 @@
 #include "bedrock/nbt/compound_tag.h"
 #include "bedrock/world/level/block_pos.h"
 
+DataItem::~DataItem() = default;
+
 SynchedActorData::TypeInt8 SynchedActorData::getInt8(ID id) const
 {
     if (!hasData(id)) {

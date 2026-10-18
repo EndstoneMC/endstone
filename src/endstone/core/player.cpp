@@ -739,9 +739,8 @@ bool EndstonePlayer::handlePacket(Packet &packet)
     }
     case MinecraftPacketIds::BossEvent: {
         const auto &pk = static_cast<BossEventPacket &>(packet);
-        if (pk.payload.event_type == BossEventUpdateType::Query &&
-            pk.payload.boss_id == getHandle().getOrCreateUniqueID()) {
-            EndstoneBossBar::resend(*this);
+        if (pk.payload.event_type == BossEventUpdateType::Query) {
+            EndstoneBossBar::resend(*this, pk.payload.boss_id);
         }
         return true;
     }
