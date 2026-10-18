@@ -11,6 +11,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 - Fixed the server crashing on startup when `enable-script=false` is set in `server.properties` (#553).
 - Fixed `/ban`, `/ban-ip` and plugin commands with an optional `message` argument sending an ambiguous command syntax to clients (#554).
+- Fixed `ServerListPingEvent` not being called when the server's ping response is 128 bytes or longer, such as with a long `server-name` (#556).
 
 ## [0.11.14] - 2026-10-12
 
