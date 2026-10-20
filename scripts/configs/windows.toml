@@ -1590,6 +1590,19 @@ extra = 0
 pattern = "55 56 57 48 81 EC ? ? ? ? 48 8D AC 24 ? ? ? ? 0F 29 75 ? 48 C7 45 ? FE FF FF FF 48 89 CE 48 8D 05 ? ? ? ? 48 89 45 ? 48 89 4D ? 48 8D 7D ? 48 89 7D ? 48 83 B9 ? ? ? ? 00"
 
 [[signatures]]
+name = "?sendNetworkPacket@ServerPlayer@@UEBAXAEAVPacket@@@Z"
+relative = false
+extra = 0
+# 1. take the ServerPlayer vftable (ServerPlayer::openSign, already located, is one of its slots); slot 228 (+0x720) is
+#    the target, the slot Player::sendNetworkPacket occupies, which ItemStackNetManagerServer::_processQueue calls
+#    through `call [rax+720h]` to send its ItemStackResponsePacket
+# 2. confirm from the body: looks up the UserEntityIdentifierComponent pool by its entt hash 0x0B845379 and tail-calls
+#    the PacketSender in `this` through its vtable
+# 3. cut at the prologue (`push rsi`, `mov r8, rdx`)
+# uniqueness: matches exactly once in 1.26.51 and 1.26.52
+pattern = "56 49 89 D0 48 89 C8 48 8B 89 ? ? ? ? 4C 8B 48 10 8B 40 18 41 8B 51 50 4D 8B 51 48 44 29 D2 C1 EA 03 FF CA 81 E2 79 53 84 0B"
+
+[[signatures]]
 name = "??0ServerScoreboard@@QEAA@VCommandSoftEnumRegistry@@PEAVLevelStorage@@V?$not_null@V?$NonOwnerPointer@VGameplayUserManager@@@Bedrock@@@gsl@@@Z"
 relative = false
 extra = 0

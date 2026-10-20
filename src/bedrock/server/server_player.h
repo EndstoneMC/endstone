@@ -40,6 +40,7 @@ public:
     ENDSTONE_HOOK void changeDimension(DimensionType toId) override;  // TODO(fixme): enable the hook
     ENDSTONE_HOOK void openSign(BlockPos const &, bool) override;
     void initiateContainerClose();
+    ENDSTONE_HOOK void sendNetworkPacket(Packet &packet) const override;
 
 protected:
     [[nodiscard]] virtual int _getSpawnChunkLimit() const = 0;

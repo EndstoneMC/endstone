@@ -20,6 +20,9 @@
 #include <unordered_set>
 #include <vector>
 
+#include "bedrock/network/packet.h"
+#include "bedrock/network/packet/inventory_slot_packet.h"
+#include "bedrock/network/packet/item_stack_response_packet.h"
 #include "bedrock/server/network_chunk_publisher.h"
 #include "bedrock/world/level/block/actor/block_actor.h"
 #include "bedrock/world/level/block/actor/sign_block_actor.h"
@@ -320,4 +323,46 @@ void ServerPlayer::changeDimension(DimensionType to_id)
     // request.to_position = Vec3::ZERO;
     // _setDimensionTransitionComponent(getDimensionId(), to_id, 300);
     // getLevel().requestPlayerChangeDimension(*this, std::move(request));
+}
+
+void ServerPlayer::sendNetworkPacket(Packet &packet) const
+{
+    ENDSTONE_HOOK_CALL_ORIGINAL(&ServerPlayer::sendNetworkPacket, this, packet);
+    auto &self = const_cast<ServerPlayer &>(*this);
+    if (packet.getId() != MinecraftPacketIds::ItemStackResponse ||
+        !self.hasComponent<endstone::core::InternalCraftResultReplacedFlagComponent>()) {
+        return;
+    }
+    self.addOrRemoveComponent<endstone::core::InternalCraftResultReplacedFlagComponent>(false);
+
+    const auto send = [this](ContainerID container_id, int slot, const ::ItemStack &item) {
+        const auto slot_packet = MinecraftPackets::createPacket(MinecraftPacketIds::InventorySlot);
+        static_cast<InventorySlotPacket &>(*slot_packet).payload = InventorySlotPacketPayload(container_id, slot, item);
+        sendNetworkPacket(*slot_packet);
+    };
+    for (const auto &response : static_cast<ItemStackResponsePacket &>(packet).payload.responses) {
+        if (response.result != ItemStackNetResult::Success) {
+            continue;
+        }
+        for (const auto &container : response.containers) {
+            for (const auto &slot_info : container.slots) {
+                switch (container.full_container_name.name) {
+                case ContainerEnumName::CombinedHotbarAndInventoryContainer:
+                case ContainerEnumName::HotbarContainer:
+                case ContainerEnumName::InventoryContainer:
+                    send(CONTAINER_ID_INVENTORY, slot_info.slot, getInventory().getItem(slot_info.slot));
+                    break;
+                case ContainerEnumName::CraftingInputContainer:
+                case ContainerEnumName::CreatedOutputContainer:
+                case ContainerEnumName::CursorContainer:
+                case ContainerEnumName::EnchantingInputContainer:
+                case ContainerEnumName::EnchantingMaterialContainer:
+                    send(CONTAINER_ID_PLAYER_ONLY_UI, slot_info.slot, getPlayerUIContainer().getItem(slot_info.slot));
+                    break;
+                default:
+                    break;
+                }
+            }
+        }
+    }
 }

@@ -11,7 +11,7 @@
 
 namespace endstone::runtime {
 
-static constexpr std::array<std::pair<std::string_view, std::size_t>, 119> symbols = {{
+static constexpr std::array<std::pair<std::string_view, std::size_t>, 120> symbols = {{
     {"BlockState::StateListNode::mHead", 215092208},
     {"Enchant::mEnchants", 214656904},
     {"MobEffect::mMobEffects", 214658168},
@@ -187,6 +187,7 @@ static constexpr std::array<std::pair<std::string_view, std::size_t>, 119> symbo
     {"?changeDimension@ServerPlayer@@UEAAXUDimensionType@@@Z", 7705664},
     {"?initiateContainerClose@ServerPlayer@@QEAAXXZ", 7696304},
     {"?openSign@ServerPlayer@@UEAAXAEBVBlockPos@@_N@Z", 7695104},
+    {"?sendNetworkPacket@ServerPlayer@@UEBAXAEAVPacket@@@Z", 7692304},
     // ServerScoreboard
     {"??0ServerScoreboard@@QEAA@VCommandSoftEnumRegistry@@PEAVLevelStorage@@V?$not_null@V?$NonOwnerPointer@VGameplayUserManager@@@Bedrock@@@gsl@@@Z", 2095792},
     // ServerWaypoint

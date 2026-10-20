@@ -39,6 +39,7 @@ struct InternalCauldronInteractionComponent {
     bool has_result = false;
     std::optional<ItemStack> result;
 };
+struct InternalCraftResultReplacedFlagComponent {};
 struct InternalDisconnectFlagComponent {};
 struct InternalEntityContainerOpenFlagComponent {};
 struct InternalExperienceOrbPickupCancelledFlagComponent {};

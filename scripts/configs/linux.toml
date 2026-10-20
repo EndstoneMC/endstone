@@ -1549,6 +1549,18 @@ extra = 0
 pattern = "41 56 53 48 83 EC 78 49 89 FE 48 8D 05 ? ? ? ? 48 89 44 24 10 48 89 7C 24 18 48 8D 7C 24 10 48 89 7C 24 30 49 83 BE ? ? ? ? 00 0F 84"
 
 [[signatures]]
+name = "_ZNK12ServerPlayer17sendNetworkPacketER6Packet"
+relative = false
+extra = 0
+# 1. RTTI survives here: _ZTV12ServerPlayer is named. Slot 229 from the address point (+0x728) is the target, one after
+#    the Windows slot because the Itanium vtable holds two destructor entries
+# 2. confirm from the body: looks up the UserEntityIdentifierComponent pool by its entt hash 0x0B845379 and calls the
+#    PacketSender at `this + 0x7A0` through its vtable +0x30
+# 3. cut at the prologue (`mov rdx, rsi`, `mov rax, rdi`)
+# uniqueness: matches exactly once in 1.26.51 and 1.26.52
+pattern = "48 89 F2 48 89 F8 48 8B BF ? ? ? ? 48 8B 48 10 8B 40 18 8B 71 40 4C 8B 41 38 44 29 C6 C1 EE 03 FF CE 81 E6 79 53 84 0B"
+
+[[signatures]]
 name = "_ZN16ServerScoreboardC2E23CommandSoftEnumRegistryP12LevelStorageN3gsl8not_nullIN7Bedrock15NonOwnerPointerI19GameplayUserManagerEEEE"
 relative = false
 extra = 0

@@ -17,7 +17,8 @@
 InventorySlotPacketPayload::InventorySlotPacketPayload(ContainerID id, int slot, const ItemStack &item)
     : inventory_id(id), slot(slot), item(item)
 {
-    if (this->item.getItem() != nullptr && this->item.getStackSize() > 0 && !this->item.isNull()) {
+    if (this->item.isValid(true) && this->item.getItem() != nullptr && !this->item.isNull() &&
+        this->item.getStackSize() > 0) {
         this->item.setIncludeNetIds(true);
     }
 }
