@@ -14,6 +14,10 @@
 
 #pragma once
 
+#include <cstddef>
+#include <string>
+#include <utility>
+
 #include "bedrock/world/item/written_book_item.h"
 #include "endstone/core/inventory/meta/item_meta.h"
 
@@ -104,12 +108,21 @@ public:
     }
 
 protected:
+    static std::string truncateCharacters(std::string text, std::size_t limit)
+    {
+        std::size_t count = 0;
+        for (std::size_t i = 0; i < text.size(); ++i) {
+            if ((static_cast<unsigned char>(text[i]) & 0xC0) != 0x80 && count++ == limit) {
+                text.resize(i);
+                break;
+            }
+        }
+        return text;
+    }
+
     static std::string validatePage(std::string page)
     {
-        if (static_cast<int>(page.size()) > WrittenBookItem::MAX_PAGE_LENGTH) {
-            page.resize(WrittenBookItem::MAX_PAGE_LENGTH);
-        }
-        return page;
+        return truncateCharacters(std::move(page), WrittenBookItem::MAX_PAGE_LENGTH);
     }
 
     void internalAddPage(std::string page)

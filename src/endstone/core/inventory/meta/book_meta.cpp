@@ -63,10 +63,7 @@ void EndstoneBookMeta::setTitle(std::optional<std::string> title)
         title_.clear();
         return;
     }
-    if (static_cast<int>(title->size()) > WrittenBookItem::MAX_TITLE_LENGTH) {
-        title->resize(WrittenBookItem::MAX_TITLE_LENGTH);
-    }
-    title_ = std::move(*title);
+    title_ = truncateCharacters(std::move(*title), WrittenBookItem::MAX_TITLE_LENGTH);
 }
 
 bool EndstoneBookMeta::hasAuthor() const
