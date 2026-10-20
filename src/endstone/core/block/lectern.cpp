@@ -16,7 +16,7 @@
 
 #include <algorithm>
 
-#include "endstone/check.h"
+#include "bedrock/world/item/written_book_item.h"
 
 namespace endstone::core {
 
@@ -32,10 +32,10 @@ int EndstoneLectern::getPage() const
 
 void EndstoneLectern::setPage(int page)
 {
-    Preconditions::checkArgument(page >= 0, "Page must not be negative, got {}.", page);
-    // BDS keeps the page within the book it holds; a lectern with no book has no pages to turn to
-    const auto total_pages = getLectern().getTotalPages();
-    getLectern().setPage(total_pages > 0 ? std::min(page, total_pages - 1) : 0);
+    const auto &book = getLectern().getBook();
+    const auto *pages = book.hasUserData() ? book.getUserData()->getList(WrittenBookItem::TAG_PAGES) : nullptr;
+    const auto page_count = pages != nullptr ? static_cast<int>(pages->size()) : 0;
+    getLectern().setPage(std::clamp(page, 0, std::max(page_count - 1, 0)));
     getLectern().setChanged();
 }
 
