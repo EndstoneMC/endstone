@@ -439,6 +439,9 @@ Language &EndstoneServer::getLanguage() const
 
 EndstoneCommandMap &EndstoneServer::getCommandMap() const
 {
+    if (!command_map_) {
+        throw std::runtime_error("Level has not been loaded yet.");
+    }
     return *command_map_;
 }
 
@@ -454,6 +457,9 @@ EndstonePluginManager &EndstoneServer::getEndstonePluginManager() const
 
 Nullable<PluginCommand> EndstoneServer::getPluginCommand(std::string name) const
 {
+    if (!command_map_) {
+        return nullptr;
+    }
     if (auto command = command_map_->getCommand(name); command && command->is<PluginCommand>()) {
         return command.cast<PluginCommand>();
     }
@@ -467,7 +473,7 @@ NotNull<ConsoleCommandSender> EndstoneServer::getCommandSender() const
 
 bool EndstoneServer::dispatchCommand(const NotNull<CommandSender> &sender, std::string command_line) const
 {
-    return command_map_->dispatch(sender, std::move(command_line));
+    return getCommandMap().dispatch(sender, std::move(command_line));
 }
 
 void EndstoneServer::loadPlugins()
@@ -565,6 +571,9 @@ EndstoneLevel *EndstoneServer::getEndstoneLevel() const
 std::vector<NotNull<Player>> EndstoneServer::getOnlinePlayers() const
 {
     std::vector<NotNull<Player>> result;
+    if (!level_) {
+        return result;
+    }
     level_->getHandle().forEachPlayer([&](const ::Player &player) {
         result.emplace_back(player.getEndstoneActor<EndstonePlayer>());
         return true;
@@ -585,6 +594,9 @@ void EndstoneServer::setMaxPlayers(int max_players)
 
 Nullable<Player> EndstoneServer::getPlayer(UUID id) const
 {
+    if (!level_) {
+        return nullptr;
+    }
     if (auto *player = level_->getHandle().getPlayer(EndstoneUUID::toMinecraft(id))) {
         return player->getEndstoneActor<EndstonePlayer>();
     }
@@ -594,6 +606,9 @@ Nullable<Player> EndstoneServer::getPlayer(UUID id) const
 Nullable<Player> EndstoneServer::getPlayer(std::string name) const
 {
     Nullable<Player> result;
+    if (!level_) {
+        return result;
+    }
     level_->getHandle().forEachPlayer([&](const ::Player &player) {
         auto endstone_player = player.getEndstoneActor<EndstonePlayer>();
         if (boost::iequals(endstone_player->getName(), name)) {
@@ -628,7 +643,7 @@ void EndstoneServer::shutdown()
 
 void EndstoneServer::reload()
 {
-    command_map_->clearCommands();
+    getCommandMap().clearCommands();
 
     // Wait for at most 2.5 seconds for plugins to close their async tasks
     plugin_manager_->disablePlugins();
@@ -662,8 +677,9 @@ void EndstoneServer::reload()
 
 void EndstoneServer::reloadData()
 {
+    auto &level = static_cast<EndstoneLevel &>(getLevel()).getHandle();
     server_instance_->onRequestResourceReload();
-    level_->getHandle().loadFunctionManager();
+    level.loadFunctionManager();
     initRegistries();
 }
 
@@ -725,9 +741,10 @@ Nullable<Scoreboard> EndstoneServer::getScoreboard() const
 
 NotNull<Scoreboard> EndstoneServer::createScoreboard()
 {
+    auto &level = static_cast<EndstoneLevel &>(getLevel()).getHandle();
     auto registry = CommandSoftEnumRegistry();
-    auto board = std::make_unique<ServerScoreboard>(registry, nullptr, level_->getHandle().getGameplayUserManager());
-    board->setPacketSender(level_->getHandle().getPacketSender());
+    auto board = std::make_unique<ServerScoreboard>(registry, nullptr, level.getGameplayUserManager());
+    board->setPacketSender(level.getPacketSender());
     return EndstoneScoreboard::create(std::move(board));
 }
 
@@ -848,6 +865,9 @@ IRegistry *EndstoneServer::_getRegistry(ClassInfo type) const
 
 MapView *EndstoneServer::getMap(std::int64_t id) const
 {
+    if (!level_) {
+        return nullptr;
+    }
     const auto *saved_data = level_->getHandle().getMapSavedData(ActorUniqueID(id));
     if (!saved_data) {
         return nullptr;
