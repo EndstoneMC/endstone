@@ -899,9 +899,9 @@ void init_player(py::module_ &m, py_class<Player> &player)
 )doc")
 
         .def_property("game_mode", &Player::getGameMode, &Player::setGameMode, "The player's current `GameMode`.")
-        .def_property_readonly("inventory", &Player::getInventory, py::return_value_policy::reference,
+        .def_property_readonly("inventory", &Player::getInventory, py::return_value_policy::reference_internal,
                                "The player's inventory. This also contains the armor slots.")
-        .def_property_readonly("ender_chest", &Player::getEnderChest, py::return_value_policy::reference,
+        .def_property_readonly("ender_chest", &Player::getEnderChest, py::return_value_policy::reference_internal,
                                "The player's `EnderChest` inventory.")
         .def_property_readonly("locale", &Player::getLocale, "The player's current locale.")
         .def_property_readonly("device_os", &Player::getDeviceOS,

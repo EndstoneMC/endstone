@@ -193,6 +193,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Fixed the server crashing when a plugin kept the sender of a command run through `/execute` or a command block and used it after the command had finished.
 - Fixed the server crashing when a plugin kept the chunk of a `ChunkLoadEvent` or `ChunkUnloadEvent` and used it later.
 - Fixed the server crashing when a plugin kept `BlockFromToEvent.to_block` or the bed of a `PlayerBedEnterEvent` or `PlayerBedLeaveEvent` and used it later.
+- Fixed `Player.inventory` and `Player.ender_chest` crashing the server when used after the player left.
 
 #### API behaviour
 
