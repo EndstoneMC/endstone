@@ -23,6 +23,7 @@
 #include "bedrock/world/actor/player/player.h"
 #include "bedrock/world/container.h"
 #include "bedrock/world/item/bucket_fill_type.h"
+#include "bedrock/world/item/bucket_item_layout.h"
 #include "bedrock/world/item/item.h"
 #include "bedrock/world/item/item_stack.h"
 #include "bedrock/world/level/block/block.h"
@@ -76,14 +77,6 @@ void replaceAcquired(::Player &player, const std::vector<::ItemStack> &before, c
     }
     player.add(replacement);
 }
-
-class BucketItemLayout : public ::Item {
-public:
-    [[nodiscard]] BucketFillType getFillType() const { return fill_type_; }
-
-private:
-    BucketFillType fill_type_;
-};
 
 }  // namespace
 

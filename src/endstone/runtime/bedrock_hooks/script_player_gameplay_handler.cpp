@@ -31,6 +31,7 @@
 #include "bedrock/world/actor/actor.h"
 #include "bedrock/world/actor/item/item_actor.h"
 #include "bedrock/world/item/bucket_fill_type.h"
+#include "bedrock/world/item/bucket_item_layout.h"
 #include "bedrock/world/item/item.h"
 #include "bedrock/world/item/item_stack.h"
 #include "bedrock/world/level/block/block.h"
@@ -96,14 +97,6 @@ void callInventoryCloseEvent(const ::Player &player, endstone::Inventory &invent
     endstone::InventoryCloseEvent e{inventory, player.getEndstoneActor<endstone::core::EndstonePlayer>()};
     server.getPluginManager().callEvent(e);
 }
-
-class BucketItemLayout : public ::Item {
-public:
-    [[nodiscard]] BucketFillType getFillType() const { return fill_type_; }
-
-private:
-    BucketFillType fill_type_;
-};
 
 BucketFillType getBucketFillType(const ::ItemStack &item)
 {
