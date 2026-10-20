@@ -25,5 +25,6 @@ public:
         FromPlayer = 3,
     };
 
+    ENDSTONE_HOOK void playerTouch(Player &player) override;
     static void spawnOrbs(BlockSource &block_source, const Vec3 &pos, int xp_value, DropType drop_type, Player *owner);
 };

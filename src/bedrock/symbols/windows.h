@@ -11,13 +11,14 @@
 
 namespace endstone::runtime {
 
-static constexpr std::array<std::pair<std::string_view, std::size_t>, 116> symbols = {{
+static constexpr std::array<std::pair<std::string_view, std::size_t>, 118> symbols = {{
     {"BlockState::StateListNode::mHead", 215092208},
     {"Enchant::mEnchants", 214656904},
     {"MobEffect::mMobEffects", 214658168},
     {"Potion::mPotionsById", 214697112},
     // Actor
     {"?addEffect@Actor@@QEAAXAEBVMobEffectInstance@@@Z", 13995136},
+    {"?remove@Actor@@UEAAXXZ", 13811808},
     {"?teleportTo@Actor@@UEAAXAEBVVec3@@_NHH1@Z", 13861632},
     // ActorFactory
     {"?createSpawnedActor@ActorFactory@@QEAA?AV?$OwnerPtr@VEntityContext@@@@AEBUActorDefinitionIdentifier@@PEAVActor@@AEBVVec3@@AEBVVec2@@@Z", 30318048},
@@ -89,6 +90,8 @@ static constexpr std::array<std::pair<std::string_view, std::size_t>, 116> symbo
     {"?getBookCasePositions@EnchantUtils@@YA?AV?$vector@VVec3@@V?$allocator@VVec3@@@std@@@std@@AEAVBlockSource@@AEBVVec3@@@Z", 28727456},
     // EnchantingContainerManagerModel
     {"?recalculateOptions@EnchantingContainerManagerModel@@QEAAXXZ", 50037872},
+    // ExperienceOrb
+    {"?playerTouch@ExperienceOrb@@UEAAXAEAVPlayer@@@Z", 49930768},
     // Explosion
     {"?explode@Explosion@@QEAA_NAEAVIRandom@@@Z", 7952016},
     // FurnaceBlockActor

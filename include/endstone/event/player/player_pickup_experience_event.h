@@ -22,7 +22,7 @@ namespace endstone {
 /**
  * Called when a player picks up an experience orb.
  *
- * Cancelling the event stops the player from gaining the experience, but the orb is still removed.
+ * Cancelling the event stops the pickup: the player gains no experience and the orb stays.
  */
 class PlayerPickupExperienceEvent : public Cancellable<PlayerEvent> {
 public:

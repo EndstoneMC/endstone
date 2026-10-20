@@ -304,11 +304,12 @@ bool handleEvent(const PlayerGetExperienceOrbEvent &event)
         return true;
     }
 
-    if (const auto *player = WeakEntityRef(event.player).tryUnwrap<::Player>(); player) {
+    if (auto *player = WeakEntityRef(event.player).tryUnwrap<::Player>(); player) {
         endstone::PlayerPickupExperienceEvent e{player->getEndstoneActor<endstone::core::EndstonePlayer>(),
                                                 event.experience_value};
         server.getPluginManager().callEvent(e);
         if (e.isCancelled()) {
+            player->addOrRemoveComponent<endstone::core::InternalExperienceOrbPickupCancelledFlagComponent>(true);
             return false;
         }
     }

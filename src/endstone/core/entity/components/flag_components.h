@@ -39,6 +39,7 @@ struct InternalCauldronInteractionComponent {
 };
 struct InternalDisconnectFlagComponent {};
 struct InternalEntityContainerOpenFlagComponent {};
+struct InternalExperienceOrbPickupCancelledFlagComponent {};
 struct InternalLoginCancelledFlagComponent {};
 struct InternalOpenContainerComponent {
     std::variant<BlockPos, ActorUniqueID> owner;

@@ -11,7 +11,7 @@
 
 namespace endstone::runtime {
 
-static constexpr std::array<std::pair<std::string_view, std::size_t>, 116> symbols = {{
+static constexpr std::array<std::pair<std::string_view, std::size_t>, 118> symbols = {{
     {"BlockState::StateListNode::mHead", 257928656},
     {"Enchant::mEnchants", 257765312},
     {"MobEffect::mMobEffects", 257859136},
@@ -19,6 +19,7 @@ static constexpr std::array<std::pair<std::string_view, std::size_t>, 116> symbo
     {"getI18n::result", 256811320},
     // Actor
     {"_ZN5Actor10teleportToERK4Vec3biib", 187569008},
+    {"_ZN5Actor6removeEv", 187521008},
     {"_ZN5Actor9addEffectERK17MobEffectInstance", 187711248},
     // ActorFactory
     {"_ZN12ActorFactory18createSpawnedActorERK25ActorDefinitionIdentifierP5ActorRK4Vec3RK4Vec2", 183846448},
@@ -90,6 +91,8 @@ static constexpr std::array<std::pair<std::string_view, std::size_t>, 116> symbo
     {"_ZN12EnchantUtils20getBookCasePositionsER11BlockSourceRK4Vec3", 200420688},
     // EnchantingContainerManagerModel
     {"_ZN31EnchantingContainerManagerModel18recalculateOptionsEv", 195606736},
+    // ExperienceOrb
+    {"_ZN13ExperienceOrb11playerTouchER6Player", 196685712},
     // Explosion
     {"_ZN9Explosion7explodeER7IRandom", 210160320},
     // FurnaceBlockActor

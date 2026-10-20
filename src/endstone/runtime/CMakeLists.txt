@@ -22,6 +22,7 @@ add_library(endstone_runtime SHARED
         bedrock_hooks/dedicated_server.cpp
         bedrock_hooks/dimension.cpp
         bedrock_hooks/enchanting_container_manager_model.cpp
+        bedrock_hooks/experience_orb.cpp
         bedrock_hooks/explosion.cpp
         bedrock_hooks/fire_block.cpp
         bedrock_hooks/interact_component.cpp

@@ -295,6 +295,19 @@ extra = 0
 pattern = "55 41 57 41 56 41 55 41 54 53 48 81 EC 08 02 00 00 49 89 F6 48 89 FB 8B 36"
 
 [[signatures]]
+name = "_ZN5Actor6removeEv"
+relative = false
+extra = 0
+# 1. RTTI survives here: _ZTV5Actor is named. Slot 12 from the address point (+0x60) is the target, one after the
+#    Windows slot because the Itanium vtable holds two destructor entries; ExperienceOrb::playerTouch calls it
+#    through `call [rax+60h]` at its end
+# 2. confirm from the body: returns at once when `byte [rdi+251h]` (mRemoved) is set, then looks up the
+#    DwellerComponent pool by its entt hash 0x629EF917
+# 3. cut at the prologue (`push r15/r14/r13/r12/rbx`, `sub rsp, 0x20`)
+# uniqueness: matches exactly once in 1.26.51 and 1.26.52
+pattern = "41 57 41 56 41 55 41 54 53 48 83 EC 20 80 BF ? ? ? ? 00 0F 85 ? ? ? ? 48 89 FB 48 8B 4F 10 8B 47 18 48 8B 71 38 4C 8B 41 40 49 29 F0 49 C1 E8 03 41 8D 50 FF 81 E2 17 F9 9E 62"
+
+[[signatures]]
 name = "_ZN12ActorFactory18createSpawnedActorERK25ActorDefinitionIdentifierP5ActorRK4Vec3RK4Vec2"
 relative = false
 extra = 0
@@ -982,6 +995,21 @@ extra = 0
 # uniqueness: matches exactly once in 1.26.44.3, and also exactly once in 1.26.33 and 1.26.40; the two
 # wildcards are the call/jmp displacements, so no byte-identical sibling can collide
 pattern = "55 41 57 41 56 41 55 41 54 53 48 81 EC A8 00 00 00 49 89 CC 49 89 D7 49 89 F6 48 89 FB"
+
+[[signatures]]
+name = "_ZN13ExperienceOrb11playerTouchER6Player"
+relative = false
+extra = 0
+# 1. RTTI survives here: find the typeinfo name "13ExperienceOrb" in .rodata; the pointer to it is
+#    _ZTI13ExperienceOrb, and the vtable whose [-1] is that typeinfo is _ZTV13ExperienceOrb
+# 2. slot 39 from the address point (+0x138) is the target - the slot Actor::playerTouch occupies, one after the
+#    Windows slot because the Itanium vtable holds two destructor entries
+# 3. confirm from the body: early returns on ILevel::isClientSide (vtable +0x9F0) and on a dead player (Actor
+#    vtable +0x178), then `cmp dword [rbx+0x3A4], 0` (mRandomPickupValue) guarding a nextInt roll, the
+#    PlayerGetExperienceOrbEvent post, and remove() at the end
+# 4. cut at the prologue (`push rbp/r15/r14/r13/r12/rbx`, `sub rsp, 0x128`)
+# uniqueness: matches exactly once in 1.26.51 and 1.26.52
+pattern = "55 41 57 41 56 41 55 41 54 53 48 81 EC ? ? ? ? 49 89 F6 48 89 FB 4C 8B BE ? ? ? ? 49 8B 07 4C 89 FF FF 90 ? ? ? ? 84 C0 0F 85"
 
 [[signatures]]
 name = "_ZNK13CauldronBlock3useERN11BlockEvents24BlockPlayerInteractEventE"

@@ -204,6 +204,19 @@ extra = 0
 pattern = "55 41 57 41 56 41 55 41 54 56 57 53 48 81 EC 48 02 00 00 48 8D AC 24 80 00 00 00 48 C7 85 C0 01 00 00 FE FF FF FF 49 89 D5 48 89 CE 8B 12"
 
 [[signatures]]
+name = "?remove@Actor@@UEAAXXZ"
+relative = false
+extra = 0
+# 1. take any actor vftable, e.g. ExperienceOrb's (the data xref to ExperienceOrb::playerTouch is its slot 38);
+#    slot 11 (+0x58) is Actor::remove, which ExperienceOrb::playerTouch calls through `call [rax+58h]` at its end
+# 2. confirm from the body: returns at once when `byte [rcx+269h]` (mRemoved) is set, then looks up the
+#    DwellerComponent pool by its entt hash 0x629EF917, and ends by setting mRemoved and emplacing
+#    ActorRemovedFlagComponent (hash 0x4434E84F)
+# 3. cut at the prologue (`push r15/r14/rsi/rdi/rbx`, `sub rsp, 0x60`)
+# uniqueness: matches exactly once in 1.26.51 and 1.26.52
+pattern = "41 57 41 56 56 57 53 48 83 EC 60 80 B9 ? ? ? ? 00 0F 85 ? ? ? ? 48 89 CE 48 8B 51 10 8B 41 18 4C 8B 4A 48 4C 8B 52 50 4D 29 CA 49 C1 EA 03 41 8D 4A FF 81 E1 17 F9 9E 62"
+
+[[signatures]]
 name = "?createSpawnedActor@ActorFactory@@QEAA?AV?$OwnerPtr@VEntityContext@@@@AEBUActorDefinitionIdentifier@@PEAVActor@@AEBVVec3@@AEBVVec2@@@Z"
 relative = false
 extra = 0
@@ -862,6 +875,24 @@ extra = 0
 # 6. walk back to the prologue (`push rbp/r15/r14/r13/r12/rsi/rdi/rbx`, `sub rsp, 0x1A8`) and cut there
 # uniqueness: matches exactly once in 1.26.44.3, and also exactly once in 1.26.32.2, 1.26.33 and 1.26.40
 pattern = "55 41 57 41 56 41 55 41 54 56 57 53 48 81 EC C8 00 00 00 48 8D AC 24 80 00 00 00 48 C7 45 40 FE FF FF FF 4D 89 CE 4C 89 C3 48 89 D6"
+
+[[signatures]]
+name = "?playerTouch@ExperienceOrb@@UEAAXAEAVPlayer@@@Z"
+relative = false
+extra = 0
+# 1. in the vanilla actor registry builder (VanillaActorRegistry's buildVanillaActorData), the ActorFactoryData
+#    entry for ActorType 0x45 (ExperienceOrb; `mov [..], 45h` twice right after the lea) takes the address of
+#    createActorFromClass<ExperienceOrb>, which allocates 0x3C8 bytes and calls the ExperienceOrb constructor
+# 2. the constructor stores the ExperienceOrb vftable right after Actor::Actor; its slot 38 (+0x130), the slot
+#    Actor::playerTouch occupies, is the target
+# 3. confirm from the body: early returns on ILevel::isClientSide (vtable +0x9E8) and on a dead player (Actor
+#    vtable +0x170), a `nextInt(mRandomPickupValue)` roll from ILevel::getRandom when the field at +0x3C4 is set,
+#    then PlayerGetExperienceOrbEvent (variant index 6) posted through
+#    _processEvent<PlayerGameplayHandler, PlayerGameplayEvent<CoordinatorResult>>, and remove() through vtable
+#    +0x58 at the end
+# 4. cut at the prologue (`push rbp/r15/r14/r13/r12/rsi/rdi/rbx`, `sub rsp, 0x158`)
+# uniqueness: matches exactly once in 1.26.51 and 1.26.52
+pattern = "55 41 57 41 56 41 55 41 54 56 57 53 48 81 EC ? ? ? ? 48 8D AC 24 ? ? ? ? 48 C7 85 ? ? ? ? ? ? ? ? 48 89 D7 48 89 CE 48 8B 9A"
 
 [[signatures]]
 name = "?use@CauldronBlock@@QEBAXAEAVBlockPlayerInteractEvent@BlockEvents@@@Z"
