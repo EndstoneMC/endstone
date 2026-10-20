@@ -211,6 +211,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Fixed `ItemStack.set_item_meta()` accepting an item meta that belongs to a different kind of item.
 - Fixed assigning `ItemStack.type` leaving the item unchanged.
 - Fixed `Server.dispatch_command()` rejecting the sender a command received from `/execute` or a command block.
+- Fixed a malformed form response logging a callback error instead of closing the form.
 - Fixed `str()` on a `Vector` ending in a stray comma.
 - Fixed `Colors::BLACK` being a fully transparent red.
 - Fixed setting `Player.scoreboard` sending nothing to the client, so the old board stayed on screen and the new one never appeared.
