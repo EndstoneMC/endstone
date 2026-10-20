@@ -286,10 +286,28 @@ void init_inventory(py::module_ &m, py::class_<ItemStack> &item_stack)
         .value("COPY_OF_COPY", BookMeta::Generation::CopyOfCopy)
         .finalize();
 
-    py::classh<BookMeta, WritableBookMeta>(m, "BookMeta",
-                                            "Represents the meta for a written book that can have a title, an author, and pages.")
+    py::classh<BookMeta, WritableBookMeta>(
+        m, "BookMeta", "Represents the meta for a written book that can have a title, an author, and pages.")
         .def_property_readonly("has_title", &BookMeta::hasTitle, "Whether the book has a title.")
-        .def_property("title", &BookMeta::getTitle, &BookMeta::setTitle, "The title of the book.")
+        .def_property(
+            "title", &BookMeta::getTitle,
+            [](BookMeta &self, std::optional<std::string> title) {
+                if (!self.setTitle(std::move(title))) {
+                    throw std::invalid_argument("A book title is limited to 16 characters.");
+                }
+            },
+            "The title of the book. Assigning a title longer than 16 characters raises.")
+        .def("set_title", &BookMeta::setTitle, py::arg("title"), R"doc(
+    Sets the title of the book.
+
+    Limited to 16 characters. Removes the title when given `None`.
+
+    Args:
+        title: The title to set.
+
+    Returns:
+        `True` if the title was set.
+)doc")
         .def_property_readonly("has_author", &BookMeta::hasAuthor, "Whether the book has an author.")
         .def_property("author", &BookMeta::getAuthor, &BookMeta::setAuthor, "The author of the book.")
         .def_property_readonly("has_generation", &BookMeta::hasGeneration, "Whether the book has a generation level.")

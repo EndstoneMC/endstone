@@ -65,8 +65,9 @@ public:
      * @note Limited to 16 characters. Removes title when given std::nullopt.
      *
      * @param title the title to set
+     * @return `true` if the title was set
      */
-    virtual void setTitle(std::optional<std::string> title) = 0;
+    virtual bool setTitle(std::optional<std::string> title) = 0;
 
     /**
      * Checks for the existence of an author in the book.

@@ -640,11 +640,24 @@ class BookMeta(WritableBookMeta):
     @property
     def title(self) -> str:
         """
-        The title of the book.
+        The title of the book. Assigning a title longer than 16 characters raises.
         """
 
     @title.setter
     def title(self, arg1: str | None) -> None: ...
+    def set_title(self, title: str | None) -> bool:
+        """
+        Sets the title of the book.
+
+        Limited to 16 characters. Removes the title when given `None`.
+
+        Args:
+            title: The title to set.
+
+        Returns:
+            `True` if the title was set.
+        """
+
     @property
     def has_author(self) -> bool:
         """

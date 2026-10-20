@@ -141,6 +141,36 @@ def test_clearing_the_title() -> None:
     assert meta.has_title is False
 
 
+def test_title_of_sixteen_multibyte_characters_is_accepted() -> None:
+    """Verify the title limit counts characters, not bytes."""
+    meta = ItemStack("minecraft:written_book").item_meta
+    assert meta.set_title("€" * 16) is True
+    assert meta.title == "€" * 16
+
+
+def test_set_title_rejects_a_title_over_sixteen_characters() -> None:
+    """Verify set_title refuses a long title and keeps the current one."""
+    meta = ItemStack("minecraft:written_book").item_meta
+    meta.title = "Kept"
+    assert meta.set_title("x" * 17) is False
+    assert meta.title == "Kept"
+
+
+def test_assigning_a_title_over_sixteen_characters_raises() -> None:
+    """Verify assigning a long title raises instead of cutting it."""
+    meta = ItemStack("minecraft:written_book").item_meta
+    with pytest.raises(ValueError):
+        meta.title = "x" * 17
+
+
+def test_set_title_none_clears_the_title() -> None:
+    """Verify set_title(None) removes the title and reports success."""
+    meta = ItemStack("minecraft:written_book").item_meta
+    meta.title = "The Book"
+    assert meta.set_title(None) is True
+    assert meta.has_title is False
+
+
 # =============================================================================
 # Section 4: CrossbowMeta
 # =============================================================================

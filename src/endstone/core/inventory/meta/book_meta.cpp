@@ -57,13 +57,17 @@ std::string EndstoneBookMeta::getTitle() const
     return title_;
 }
 
-void EndstoneBookMeta::setTitle(std::optional<std::string> title)
+bool EndstoneBookMeta::setTitle(std::optional<std::string> title)
 {
     if (!title.has_value()) {
         title_.clear();
-        return;
+        return true;
     }
-    title_ = truncateCharacters(std::move(*title), WrittenBookItem::MAX_TITLE_LENGTH);
+    if (truncateCharacters(*title, WrittenBookItem::MAX_TITLE_LENGTH).size() != title->size()) {
+        return false;
+    }
+    title_ = std::move(*title);
+    return true;
 }
 
 bool EndstoneBookMeta::hasAuthor() const

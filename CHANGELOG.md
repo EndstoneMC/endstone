@@ -159,6 +159,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - **BREAKING**: `ActorDeathEvent` is now called for player deaths as well as every other mob. A listener that assumed it only saw non-player mobs should check `actor.type` or listen for `PlayerDeathEvent`.
 - `Block.set_type`, `BlockState.type`, `Server.create_block_data` and `Inventory.contains`/`contains_at_least`/`all`/`first`/`remove` take an `Identifier` (e.g. `BlockType.AIR`). Plain `"namespace:key"` strings are still accepted.
 - `str()` on `BlockType`, `Enchantment` and `ItemType` returns a plain `"namespace:key"` string instead of the underlying `Identifier` repr.
+- `BookMeta::setTitle()` returns `false` and keeps the current title when the new one is longer than 16 characters, instead of cutting it.
 - **BREAKING**: `Server::createBossBar()` is no longer `const`, since the server now keeps track of the boss bars it hands out. C++ plugins holding a `const Server &` need a non-const one; Python call sites are unchanged.
 - **BREAKING**: The `endstone.metrics.charts`, `endstone.metrics.base` and `endstone.metrics.config` modules are gone; import the chart classes and `Metrics` from `endstone.metrics`.
 
