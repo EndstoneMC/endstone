@@ -11,7 +11,7 @@
 
 namespace endstone::runtime {
 
-static constexpr std::array<std::pair<std::string_view, std::size_t>, 108> symbols = {{
+static constexpr std::array<std::pair<std::string_view, std::size_t>, 112> symbols = {{
     {"BlockState::StateListNode::mHead", 257928656},
     {"Enchant::mEnchants", 257765312},
     {"MobEffect::mMobEffects", 257859136},
@@ -80,6 +80,8 @@ static constexpr std::array<std::pair<std::string_view, std::size_t>, 108> symbo
     {"_ZNK9Dimension13forEachPlayerEN5brstd12function_refIFbR6PlayerES4_EE", 211178112},
     // DimensionManager
     {"_ZN16DimensionManager20getOrCreateDimensionENSt3__117basic_string_viewIcNS0_11char_traitsIcEEEE", 210126592},
+    {"_ZN16DimensionManager35_registerCustomDimensionWithFactoryENSt3__117basic_string_viewIcNS0_11char_traitsIcEEEE13DimensionType", 210124368},
+    {"_ZN16DimensionManager46_registerDimensionWithDimensionDefinitionGroupENSt3__117basic_string_viewIcNS0_11char_traitsIcEEEERKN24DimensionDefinitionGroup19DimensionDefinitionE", 210125792},
     // EnchantUtils
     {"_ZN12EnchantUtils20getBookCasePositionsER11BlockSourceRK4Vec3", 200420688},
     // EnchantingContainerManagerModel
@@ -186,6 +188,9 @@ static constexpr std::array<std::pair<std::string_view, std::size_t>, 108> symbo
     {"_ZN19TickingAreasManager22addTransientScopedAreaE13DimensionTypeRKNSt3__112basic_stringIcNS1_11char_traitsIcEENS1_9allocatorIcEEEEmN3mce4UUIDERK6Bounds", 218696560},
     // TridentItem
     {"_ZNK11TridentItem12releaseUsingER9ItemStackP6Playeri", 203971104},
+    // Util::NameIdStore
+    {"_ZN4Util11NameIdStoreI15DimensionIdTypeE13getOrCreateIdENSt3__117basic_string_viewIcNS3_11char_traitsIcEEEE", 210121792},
+    {"_ZNK4Util11NameIdStoreI15DimensionIdTypeE8containsENSt3__117basic_string_viewIcNS3_11char_traitsIcEEEE", 210121504},
     // VanillaWaypointManager
     {"_ZN22VanillaWaypointManager6updateER6PlayerR16ServerLocatorBarb", 196116976},
     // WeatherManager

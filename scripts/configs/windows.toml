@@ -663,6 +663,67 @@ extra = 0
 pattern = "55 41 57 41 56 41 55 41 54 56 57 53 48 81 EC ? ? ? ? 48 8D AC 24 ? ? ? ? 0F 29 B5 ? ? ? ? 48 C7 85 ? ? ? ? FE FF FF FF 4C 89 C3 49 89 D4 48 89 CF 48 8B 49 08"
 
 [[signatures]]
+name = "?_registerCustomDimensionWithFactory@DimensionManager@@AEAAXV?$basic_string_view@DU?$char_traits@D@std@@@std@@UDimensionType@@@Z"
+relative = false
+extra = 0
+# 1. find bytes "C0 FF FF FF 80 01 00 00 05 00 00 00 03 00 00 00" (unique) = the DimensionDefinition head
+#    {min y -64, height range 384, GeneratorType::Void, VanillaDimensions::Undefined} that a custom dimension is
+#    registered with
+# 2. its xrefs are inlined copies of DimensionManager::serverRegisterCustomDimension (the script custom dimension
+#    registry and the editor's custom dimension service); each copy calls, in order, NameIdStore::contains,
+#    NameIdStore::getOrCreateId, _registerDimensionWithDimensionDefinitionGroup and, when that returns true,
+#    _registerCustomDimensionWithFactory
+# 3. this is the fourth call; it takes the name and the DimensionType the store handed out
+# function prologue
+pattern = "55 41 57 41 56 41 55 41 54 56 57 53 48 81 EC ? ? ? ? 48 8D AC 24 ? ? ? ? 48 C7 85 ? ? ? ? ? ? ? ? 0F 57 C0 0F 29 85 ? ? ? ? 0F 29 85 ? ? ? ? 48 8B 5A"
+
+[[signatures]]
+name = "?_registerDimensionWithDimensionDefinitionGroup@DimensionManager@@AEAA_NV?$basic_string_view@DU?$char_traits@D@std@@@std@@AEBUDimensionDefinition@DimensionDefinitionGroup@@@Z"
+relative = false
+extra = 0
+# 1. find bytes "C0 FF FF FF 80 01 00 00 05 00 00 00 03 00 00 00" (unique) = the DimensionDefinition head
+#    {min y -64, height range 384, GeneratorType::Void, VanillaDimensions::Undefined} that a custom dimension is
+#    registered with
+# 2. its xrefs are inlined copies of DimensionManager::serverRegisterCustomDimension (the script custom dimension
+#    registry and the editor's custom dimension service); each copy calls, in order, NameIdStore::contains,
+#    NameIdStore::getOrCreateId, _registerDimensionWithDimensionDefinitionGroup and, when that returns true,
+#    _registerCustomDimensionWithFactory
+# 3. this is the third call; it strlen()s the name and try_emplaces the definition into
+#    mDimensionDefinitionGroup's map, returning whether the name was new
+# function prologue
+pattern = "55 41 57 41 56 41 55 41 54 56 57 53 48 83 EC ? 48 8D 6C 24 ? 48 C7 45 ? ? ? ? ? 4C 89 C6 48 89 CF 48 8B 1A"
+
+[[signatures]]
+name = "?contains@?$NameIdStore@UDimensionIdType@@@Util@@QEBA_NV?$basic_string_view@DU?$char_traits@D@std@@@std@@@Z"
+relative = false
+extra = 0
+# 1. find bytes "C0 FF FF FF 80 01 00 00 05 00 00 00 03 00 00 00" (unique) = the DimensionDefinition head
+#    {min y -64, height range 384, GeneratorType::Void, VanillaDimensions::Undefined} that a custom dimension is
+#    registered with
+# 2. its xrefs are inlined copies of DimensionManager::serverRegisterCustomDimension (the script custom dimension
+#    registry and the editor's custom dimension service); each copy calls, in order, NameIdStore::contains,
+#    NameIdStore::getOrCreateId, _registerDimensionWithDimensionDefinitionGroup and, when that returns true,
+#    _registerCustomDimensionWithFactory
+# 3. this is the first call, on mDimensionNameIdStore (DimensionManager+0x8)
+# function prologue
+pattern = "41 57 41 56 41 55 41 54 56 57 55 53 48 83 EC ? 48 89 CB 48 8B 3A"
+
+[[signatures]]
+name = "?getOrCreateId@?$NameIdStore@UDimensionIdType@@@Util@@QEAA?AUDimensionIdType@@V?$basic_string_view@DU?$char_traits@D@std@@@std@@@Z"
+relative = false
+extra = 0
+# 1. find bytes "C0 FF FF FF 80 01 00 00 05 00 00 00 03 00 00 00" (unique) = the DimensionDefinition head
+#    {min y -64, height range 384, GeneratorType::Void, VanillaDimensions::Undefined} that a custom dimension is
+#    registered with
+# 2. its xrefs are inlined copies of DimensionManager::serverRegisterCustomDimension (the script custom dimension
+#    registry and the editor's custom dimension service); each copy calls, in order, NameIdStore::contains,
+#    NameIdStore::getOrCreateId, _registerDimensionWithDimensionDefinitionGroup and, when that returns true,
+#    _registerCustomDimensionWithFactory
+# 3. this is the second call, on mDimensionNameIdStore; its 16-bit result becomes the DimensionType
+# function prologue
+pattern = "55 41 57 41 56 41 55 41 54 56 57 53 48 81 EC ? ? ? ? 48 8D AC 24 ? ? ? ? 48 C7 45 ? ? ? ? ? 4C 89 C6 48 89 55 ? 49 89 CE"
+
+[[signatures]]
 name = "?explode@Explosion@@QEAA_NAEAVIRandom@@@Z"
 relative = false
 extra = 0

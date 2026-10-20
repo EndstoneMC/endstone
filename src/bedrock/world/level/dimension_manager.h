@@ -14,12 +14,20 @@
 
 #pragma once
 
+#include <memory>
 #include <optional>
 #include <string_view>
 
+#include <gsl/pointers>
+
+#include "bedrock/common_types.h"
+#include "bedrock/core/utility/non_owner_pointer.h"
 #include "bedrock/core/utility/pub_sub/connector.h"
+#include "bedrock/forward.h"
 #include "bedrock/platform/uuid.h"
+#include "bedrock/util/name_id_store.h"
 #include "bedrock/world/level/dimension/dimension.h"
+#include "bedrock/world/level/dimension/dimension_definition_group.h"
 
 class DimensionManager;
 
@@ -36,6 +44,15 @@ public:
     Bedrock::PubSub::Connector<void(Dimension &)> &getOnNewDimensionCreatedConnector() override;
     Bedrock::PubSub::Connector<void(DimensionManager &)> &getOnReadyForCustomDimensionRegistrationConnector() override;
     void shutdown();
+    std::optional<DimensionType> serverRegisterCustomDimension(std::string_view name,
+                                                               DimensionDefinitionGroup::DimensionDefinition &json_def);
+
+private:
+    bool _registerDimensionWithDimensionDefinitionGroup(std::string_view name,
+                                                        const DimensionDefinitionGroup::DimensionDefinition &json_def);
+    void _registerCustomDimensionWithFactory(std::string_view name, const DimensionType type);
+
+public:
     WeakRef<Dimension> getRandomDimension(Random &random);
     WeakRef<Dimension> getOrCreateDimension(DimensionType dimension_type);
     WeakRef<Dimension> getOrCreateDimension(std::string_view name);
@@ -45,4 +62,12 @@ public:
     int getNumDimensions() const;
     void forEachDimension(std::function<bool(Dimension &)> callback);
     void forEachDimension(std::function<bool(const Dimension &)> callback) const;
+    DimensionDefinitionGroup &getDimensionDefinitionGroup() { return dimension_definition_group_; }
+
+private:
+    gsl::not_null<std::unique_ptr<Util::NameIdStore<DimensionIdType>>> dimension_name_id_store_;
+    gsl::not_null<std::unique_ptr<DimensionRegistry>> dimension_registry_;
+    const Bedrock::NotNullNonOwnerPtr<IDimensionFactory> dimension_factory_;
+    DimensionDefinitionGroup dimension_definition_group_;
+    // ...
 };

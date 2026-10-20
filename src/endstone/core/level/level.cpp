@@ -19,11 +19,15 @@
 #include <stdexcept>
 
 #include "bedrock/entity/gamerefs_entity/gamerefs_entity.h"
+#include "bedrock/network/packet.h"
+#include "bedrock/network/packet/dimension_data_packet.h"
 #include "bedrock/network/packet_sender.h"
 #include "bedrock/platform/uuid.h"
 #include "bedrock/world/level/dimension/dimension.h"
+#include "bedrock/world/level/dimension/dimension_definition_group.h"
 #include "bedrock/world/level/dimension/vanilla_dimensions.h"
 #include "bedrock/world/level/dimension_manager.h"
+#include "bedrock/world/level/generator_type.h"
 #include "bedrock/world/level/level.h"
 #include "bedrock/world/level/storage/game_rule_utils.h"
 #include "bedrock/world/level/storage/game_rules.h"
@@ -143,10 +147,22 @@ Nullable<Dimension> EndstoneLevel::createDimension(const DimensionCreator &creat
     if (auto existing = getDimension(creator.getId())) {
         return existing;
     }
-    // TODO(1.26.51): BDS no longer emits DimensionManager::serverRegisterCustomDimension, so a dimension that is
-    // not already registered cannot be created until the registration sequence is reimplemented.
     const std::string name{creator.getId()};
     auto &dimension_manager = level_.getDimensionManager();
+    DimensionDefinitionGroup::DimensionDefinition definition{
+        .min_y = -64,
+        .height_range = 384,
+        .generator_type = GeneratorType::Void,
+        .dimension_type = VanillaDimensions::Undefined,
+        .pack_id = mce::UUID::EMPTY,
+        .default_biome = "minecraft:ocean",
+    };
+    if (dimension_manager.serverRegisterCustomDimension(name, definition)) {
+        auto packet = MinecraftPackets::createPacket(MinecraftPacketIds::DimensionDataPacket);
+        auto &pk = static_cast<DimensionDataPacket &>(*packet);
+        pk.payload.dimension_definition_group = dimension_manager.getDimensionDefinitionGroup();
+        level_.getPacketSender()->sendBroadcast(*packet);
+    }
     const auto dimension = dimension_manager.getOrCreateDimension(name);
     if (!dimension.isSet()) {
         return nullptr;

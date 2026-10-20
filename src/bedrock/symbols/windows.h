@@ -11,7 +11,7 @@
 
 namespace endstone::runtime {
 
-static constexpr std::array<std::pair<std::string_view, std::size_t>, 108> symbols = {{
+static constexpr std::array<std::pair<std::string_view, std::size_t>, 112> symbols = {{
     {"BlockState::StateListNode::mHead", 215092208},
     {"Enchant::mEnchants", 214656904},
     {"MobEffect::mMobEffects", 214658168},
@@ -78,6 +78,8 @@ static constexpr std::array<std::pair<std::string_view, std::size_t>, 108> symbo
     {"?forEachPlayer@Dimension@@UEBAXV?$function_ref@$$A6A_NAEAVPlayer@@@Z$$A6A_N0@Z@brstd@@@Z", 25702448},
     {"?sendPacketForEntity@Dimension@@UEAAXAEBVActor@@AEBVPacket@@PEBVPlayer@@@Z", 25720592},
     // DimensionManager
+    {"?_registerCustomDimensionWithFactory@DimensionManager@@AEAAXV?$basic_string_view@DU?$char_traits@D@std@@@std@@UDimensionType@@@Z", 7907152},
+    {"?_registerDimensionWithDimensionDefinitionGroup@DimensionManager@@AEAA_NV?$basic_string_view@DU?$char_traits@D@std@@@std@@AEBUDimensionDefinition@DimensionDefinitionGroup@@@Z", 7909536},
     {"?getOrCreateDimension@DimensionManager@@QEAA?AV?$WeakRef@VDimension@@@@V?$basic_string_view@DU?$char_traits@D@std@@@std@@@Z", 7911072},
     // EnchantUtils
     {"?getBookCasePositions@EnchantUtils@@YA?AV?$vector@VVec3@@V?$allocator@VVec3@@@std@@@std@@AEAVBlockSource@@AEBVVec3@@@Z", 28727456},
@@ -185,6 +187,9 @@ static constexpr std::array<std::pair<std::string_view, std::size_t>, 108> symbo
     {"?removeScopedAreas@TickingAreasManager@@QEAAXAEBV?$vector@VUUID@mce@@V?$allocator@VUUID@mce@@@std@@@std@@@Z", 50257024},
     // TridentItem
     {"?releaseUsing@TridentItem@@UEBAXAEAVItemStack@@PEAVPlayer@@H@Z", 33188624},
+    // Util::NameIdStore
+    {"?contains@?$NameIdStore@UDimensionIdType@@@Util@@QEBA_NV?$basic_string_view@DU?$char_traits@D@std@@@std@@@Z", 7902672},
+    {"?getOrCreateId@?$NameIdStore@UDimensionIdType@@@Util@@QEAA?AUDimensionIdType@@V?$basic_string_view@DU?$char_traits@D@std@@@std@@@Z", 7903440},
     // VanillaWaypointManager
     {"?update@VanillaWaypointManager@@QEAAXAEAVPlayer@@AEAVServerLocatorBar@@_N@Z", 38459712},
     // WeatherManager

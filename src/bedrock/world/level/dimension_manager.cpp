@@ -16,6 +16,31 @@
 
 #include "bedrock/symbol.h"
 
+std::optional<DimensionType> DimensionManager::serverRegisterCustomDimension(
+    std::string_view name, DimensionDefinitionGroup::DimensionDefinition &json_def)
+{
+    if (dimension_name_id_store_->contains(name)) {
+        return std::nullopt;
+    }
+    const DimensionType type{dimension_name_id_store_->getOrCreateId(name).value};
+    json_def.dimension_type = type;
+    if (_registerDimensionWithDimensionDefinitionGroup(name, json_def)) {
+        _registerCustomDimensionWithFactory(name, type);
+    }
+    return type;
+}
+
+bool DimensionManager::_registerDimensionWithDimensionDefinitionGroup(
+    std::string_view name, const DimensionDefinitionGroup::DimensionDefinition &json_def)
+{
+    return BEDROCK_CALL(&DimensionManager::_registerDimensionWithDimensionDefinitionGroup, this, name, json_def);
+}
+
+void DimensionManager::_registerCustomDimensionWithFactory(std::string_view name, const DimensionType type)
+{
+    BEDROCK_CALL(&DimensionManager::_registerCustomDimensionWithFactory, this, name, type);
+}
+
 WeakRef<Dimension> DimensionManager::getOrCreateDimension(std::string_view name)
 {
     return BEDROCK_CALL(static_cast<WeakRef<Dimension> (DimensionManager::*)(std::string_view)>(
