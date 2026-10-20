@@ -14,6 +14,7 @@
 
 #pragma once
 
+#include <cstdint>
 #include <memory>
 #include <utility>
 #include <vector>
@@ -33,6 +34,7 @@ public:
     virtual ~ItemStackRequestActionCraftHandler() = 0;
     ItemStackRequestActionCraftHandler(ItemStackRequestActionHandler &, Player &);
     ItemStackNetResult handleCraftAction(const ItemStackRequestActionCraftBase &request_action);
+    ItemStackNetResult _initCraftResults(const std::vector<ItemInstance> &results, std::uint8_t num_crafts);
 
     std::vector<std::pair<ItemInstance, unsigned int>> &getCraftResults() { return craft_results_; }  // Endstone
 

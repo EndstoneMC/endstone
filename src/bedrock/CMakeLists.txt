@@ -95,6 +95,7 @@ add_library(bedrock STATIC
         world/attribute/attribute_modifier.cpp
         world/effect/mob_effect.cpp
         world/inventory/network/crafting/craft_handler_base.cpp
+        world/inventory/network/crafting/item_stack_request_action_craft_handler.cpp
         world/inventory/network/item_stack_net_id_variant.cpp
         world/inventory/network/item_stack_request_action_handler.cpp
         world/inventory/transaction/inventory_source.cpp

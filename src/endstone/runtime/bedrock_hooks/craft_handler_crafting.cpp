@@ -149,26 +149,30 @@ ItemStackNetResult CraftHandlerCrafting::_handleCraftAction(const ItemStackReque
     if (result == ItemStackNetResult::Success && e.getResults() != results) {
         auto &craft_results = craft_request_handler_.getCraftResults();
         if (craft_results.empty() && deferred_craft_count_ != 0) {
-            std::vector<std::pair<ItemInstance, unsigned int>> deferred;
+            std::vector<ItemInstance> replacements;
+            replacements.reserve(e.getResults().size());
             for (const auto &replacement : e.getResults()) {
-                ItemInstance item(endstone::core::EndstoneItemStack::toMinecraft(replacement));
-                if (item.isNull() || item.getCount() == 0) {
-                    return ItemStackNetResult::ActionRequestNotAllowed;
-                }
-                const auto remaining = (deferred_craft_count_ - 1) * item.getCount();
-                deferred.emplace_back(std::move(item), remaining);
+                replacements.emplace_back(endstone::core::EndstoneItemStack::toMinecraft(replacement));
             }
-            if (deferred.empty()) {
-                return ItemStackNetResult::ActionRequestNotAllowed;
-            }
-            craft_results = std::move(deferred);
+            const auto initialized = craft_request_handler_._initCraftResults(replacements, deferred_craft_count_);
             deferred_craft_count_ = 0;
+            if (initialized != ItemStackNetResult::Success) {
+                return initialized;
+            }
         }
         else {
             const auto replaced = std::min(e.getResults().size(), craft_results.size());
+            std::vector<ItemInstance> replacements;
+            replacements.reserve(replaced);
             for (std::size_t i = 0; i < replaced; ++i) {
-                craft_results[i].first =
-                    ItemInstance(endstone::core::EndstoneItemStack::toMinecraft(e.getResults()[i]));
+                ItemInstance replacement(endstone::core::EndstoneItemStack::toMinecraft(e.getResults()[i]));
+                if (!replacement) {
+                    return ItemStackNetResult::InvalidCraftResultItem;
+                }
+                replacements.push_back(std::move(replacement));
+            }
+            for (std::size_t i = 0; i < replaced; ++i) {
+                craft_results[i].first = replacements[i];
             }
         }
         resendCraftedSlots(player_, e.getResults());
