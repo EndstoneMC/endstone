@@ -121,8 +121,9 @@ void init_event(py::module_ &m, py::class_<Event, PyEvent> &event)
         m, "ActorDismountEvent", "Called when an `Actor` stops riding another `Actor`.")
         .def_property_readonly("vehicle", &ActorDismountEvent::getVehicle, "The actor that is being dismounted.");
     bind_event<ActorChangeBlockEvent, ActorEvent<Actor>, ICancellable>(m, "ActorChangeBlockEvent", R"doc(
-    Called when an `Actor` changes a block through its own behaviour, such as a creeper exploding, an
-    enderman picking a block up, a ravager trampling crops or a zombie breaking a door.
+    Called when an `Actor` changes a block through its own behaviour, such as an enderman picking a block
+    up, a ravager breaking crops, farmland being trampled or a zombie breaking a door. Explosions are
+    covered by `ActorExplodeEvent`.
 
     Unlike Bukkit's equivalent, this covers only the mob griefing paths. It is not called for falling
     blocks landing or for sheep eating grass, and the resulting block state is not available.

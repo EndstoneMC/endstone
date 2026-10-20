@@ -33,7 +33,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - `ActorEffectEvent`, reporting the `action` (currently only `Action.ADDED`) and the `effect`, whose duration, amplifier and display options can be changed by assignment.
 - `ActorPickupItemEvent`, reporting the `item` and `amount`. Players are covered by `PlayerPickupItemEvent`.
 - `ActorDismountEvent`, reporting the `vehicle` being left.
-- `ActorChangeBlockEvent` for blocks changed by mob behaviour, such as creeper explosions, endermen, ravagers and door-breaking zombies.
+- `ActorChangeBlockEvent` for blocks changed by mob behaviour, such as endermen, ravagers, farmland trampling and door-breaking zombies.
 - `CauldronLevelChangeEvent` for a cauldron's level or contents changing, reporting the `actor` responsible, the `reason` for the change and the `new_state` the cauldron will take, which can be modified in place. Cancelling it leaves the cauldron as it is. A player interacting with the cauldron is reported as `BUCKET_FILL`, `BUCKET_EMPTY`, `BOTTLE_FILL`, `BOTTLE_EMPTY`, `BANNER_WASH`, `ARMOR_WASH` or `SHULKER_WASH`. Every other change, rain, dripstone and an actor being extinguished among them, reports no `actor` and a `reason` of `UNKNOWN`, so `EXTINGUISH`, `NATURAL_FILL` and `EVAPORATE` never appear. Neither an old nor a new fill level is reported.
 - `PlayerRespawnEvent.respawn_reason` (`RespawnReason.DEATH` / `RespawnReason.END_PORTAL`).
 - `ActorExplodeEvent::setBlockList()` and `BlockExplodeEvent::setBlockList()`, with the `BlockList` alias made public.

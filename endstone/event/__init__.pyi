@@ -451,8 +451,9 @@ class ActorDismountEvent(ActorEvent, Cancellable):
 
 class ActorChangeBlockEvent(ActorEvent, Cancellable):
     """
-    Called when an `Actor` changes a block through its own behaviour, such as a creeper exploding, an
-    enderman picking a block up, a ravager trampling crops or a zombie breaking a door.
+    Called when an `Actor` changes a block through its own behaviour, such as an enderman picking a block
+    up, a ravager breaking crops, farmland being trampled or a zombie breaking a door. Explosions are
+    covered by `ActorExplodeEvent`.
 
     Unlike Bukkit's equivalent, this covers only the mob griefing paths. It is not called for falling
     blocks landing or for sheep eating grass, and the resulting block state is not available.
