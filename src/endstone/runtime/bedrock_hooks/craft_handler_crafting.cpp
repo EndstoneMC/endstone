@@ -20,6 +20,8 @@
 #include <utility>
 #include <vector>
 
+#include "bedrock/network/packet.h"
+#include "bedrock/network/packet/inventory_slot_packet.h"
 #include "bedrock/world/actor/player/player.h"
 #include "bedrock/world/inventory/network/crafting/item_stack_request_action_craft.h"
 #include "bedrock/world/inventory/network/crafting/item_stack_request_action_craft_handler.h"
@@ -31,6 +33,41 @@
 #include "endstone/core/server.h"
 #include "endstone/event/player/player_craft_item_event.h"
 #include "endstone/runtime/hook.h"
+
+namespace {
+void resendCraftedSlots(const ::Player &player, std::vector<endstone::ItemStack> results)
+{
+    auto &server = endstone::core::EndstoneServer::getInstance();
+    server.getEndstoneScheduler().runTask(
+        [&server, id = player.getEndstoneActor<endstone::core::EndstonePlayer>()->getUniqueId(),
+         results = std::move(results)]() {
+            const auto target = server.getPlayer(id);
+            if (!target) {
+                return;
+            }
+            auto &handle = static_cast<endstone::core::EndstonePlayer &>(*target).getHandle();
+            const auto crafted = [&results](const ::ItemStack &item) {
+                return !item.isNull() && std::ranges::any_of(results, [&item](const endstone::ItemStack &result) {
+                    return item.matchesItem(endstone::core::EndstoneItemStack::toMinecraft(result));
+                });
+            };
+            const auto send = [&handle](ContainerID container, int slot, const ::ItemStack &item) {
+                const auto packet = MinecraftPackets::createPacket(MinecraftPacketIds::InventorySlot);
+                static_cast<InventorySlotPacket &>(*packet).payload = InventorySlotPacketPayload(container, slot, item);
+                handle.sendNetworkPacket(*packet);
+            };
+            auto &inventory = handle.getInventory();
+            for (auto i = 0; i < inventory.getContainerSize(); ++i) {
+                if (const auto &item = inventory.getItem(i); crafted(item)) {
+                    send(CONTAINER_ID_INVENTORY, i, item);
+                }
+            }
+            if (const auto &cursor = handle.getPlayerUIContainer().getItem(0); crafted(cursor)) {
+                send(CONTAINER_ID_PLAYER_ONLY_UI, 0, cursor);
+            }
+        });
+}
+}  // namespace
 
 ItemStackNetResult CraftHandlerCrafting::_handleCraftAction(const ItemStackRequestActionCraftBase &request_action)
 {
@@ -118,6 +155,7 @@ ItemStackNetResult CraftHandlerCrafting::_handleCraftAction(const ItemStackReque
         for (std::size_t i = 0; i < replaced; ++i) {
             craft_results[i].first = ItemInstance(endstone::core::EndstoneItemStack::toMinecraft(e.getResults()[i]));
         }
+        resendCraftedSlots(player_, e.getResults());
     }
     return result;
 }
