@@ -106,8 +106,8 @@ void init_event(py::module_ &m, py::class_<Event, PyEvent> &event)
     auto actor_effect_event = bind_event<ActorEffectEvent, ActorEvent<Mob>, ICancellable>(m, "ActorEffectEvent", R"doc(
     Called when an effect on a `Mob` changes.
 
-    This is fired before the change is applied. Cancelling the event prevents it, and the effect may be
-    replaced with a different one by assigning to `effect`.
+    This is fired before the change is applied. Cancelling the event prevents it. Assigning to `effect` may
+    change the duration, amplifier and display options of the effect, but not its type.
 )doc");
     py::native_enum<ActorEffectEvent::Action>(actor_effect_event, "Action", "enum.Enum",
                                               "An enum to specify how the effect changed.")
@@ -116,7 +116,7 @@ void init_event(py::module_ &m, py::class_<Event, PyEvent> &event)
         .finalize();
     actor_effect_event.def_property_readonly("action", &ActorEffectEvent::getAction, "How the effect changed.")
         .def_property("effect", &ActorEffectEvent::getEffect, &ActorEffectEvent::setEffect,
-                      "The effect involved in this event.");
+                      "The effect involved in this event. Assigning an effect of another type raises `ValueError`.");
     bind_event<ActorDismountEvent, ActorEvent<Actor>, ICancellable>(
         m, "ActorDismountEvent", "Called when an `Actor` stops riding another `Actor`.")
         .def_property_readonly("vehicle", &ActorDismountEvent::getVehicle, "The actor that is being dismounted.");

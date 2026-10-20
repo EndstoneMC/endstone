@@ -379,8 +379,8 @@ class ActorEffectEvent(MobEvent, Cancellable):
     """
     Called when an effect on a `Mob` changes.
 
-    This is fired before the change is applied. Cancelling the event prevents it, and the effect may be
-    replaced with a different one by assigning to `effect`.
+    This is fired before the change is applied. Cancelling the event prevents it. Assigning to `effect` may
+    change the duration, amplifier and display options of the effect, but not its type.
     """
     @property
     def is_cancelled(self) -> bool:
@@ -416,7 +416,7 @@ class ActorEffectEvent(MobEvent, Cancellable):
     @property
     def effect(self) -> Effect:
         """
-        The effect involved in this event.
+        The effect involved in this event. Assigning an effect of another type raises `ValueError`.
         """
 
     @effect.setter

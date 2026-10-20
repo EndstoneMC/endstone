@@ -17,6 +17,7 @@
 #include <utility>
 
 #include "endstone/actor/mob.h"
+#include "endstone/check.h"
 #include "endstone/event/actor/actor_event.h"
 #include "endstone/event/cancellable.h"
 #include "endstone/potion/effect.h"
@@ -26,8 +27,8 @@ namespace endstone {
 /**
  * Called when an effect on a Mob changes.
  *
- * This is fired before the change is applied. Cancelling the event prevents it, and the effect may be replaced with
- * a different one via setEffect.
+ * This is fired before the change is applied. Cancelling the event prevents it. setEffect may change the duration,
+ * amplifier and display options of the effect, but not its type.
  */
 class ActorEffectEvent : public Cancellable<ActorEvent<Mob>> {
 public:
@@ -62,9 +63,16 @@ public:
     /**
      * Sets the effect involved in this event.
      *
-     * @param effect the effect to apply instead
+     * @param effect the effect to apply instead, of the same type
+     * @throws std::invalid_argument if the effect is of a different type
      */
-    void setEffect(Effect effect) { effect_ = std::move(effect); }
+    void setEffect(Effect effect)
+    {
+        Preconditions::checkArgument(effect.getType() == effect_.getType(),
+                                     "Cannot change the effect type from {} to {}.", effect_.getType(),
+                                     effect.getType());
+        effect_ = std::move(effect);
+    }
 
 private:
     Action action_;

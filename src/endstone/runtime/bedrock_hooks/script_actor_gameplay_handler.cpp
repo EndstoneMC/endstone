@@ -109,12 +109,10 @@ bool handleEvent(::ActorAddEffectEvent &event)
 
     if (e.getEffect() != effect) {
         const auto &new_effect = e.getEffect();
-        if (const auto *mob_effect = ::MobEffect::getByName(std::string{new_effect.getType().getKey()}); mob_effect) {
-            event.mob_effect =
-                ::MobEffectInstance{mob_effect->getId(),       ::EffectDuration{new_effect.getDuration().value_or(-1)},
-                                    new_effect.getAmplifier(), new_effect.isAmbient(),
-                                    new_effect.hasParticles(), new_effect.hasIcon()};
-        }
+        event.mob_effect =
+            ::MobEffectInstance{event.mob_effect.getId(),  ::EffectDuration{new_effect.getDuration().value_or(-1)},
+                                new_effect.getAmplifier(), new_effect.isAmbient(),
+                                new_effect.hasParticles(), new_effect.hasIcon()};
     }
     return true;
 }
