@@ -306,3 +306,59 @@ def test_base_potion_type_alone_is_applied_to_a_potion() -> None:
     meta.base_potion_type = "minecraft:potion_type:swiftness"
     assert potion.set_item_meta(meta) is True
     assert potion.item_meta.base_potion_type == "minecraft:potion_type:swiftness"
+
+
+# =============================================================================
+# Section 7: Changing the item type
+# =============================================================================
+
+
+def test_set_type_to_air_empties_the_stack() -> None:
+    """Verify setting the type to air empties the stack, as Paper does."""
+    item = ItemStack("minecraft:diamond", 5)
+    item.type = "minecraft:air"
+    assert item.type == "minecraft:air"
+    assert item.amount == 0
+
+
+def test_set_type_on_an_empty_stack_gives_one_item() -> None:
+    """Verify an empty stack given a type holds one item of it."""
+    item = ItemStack("minecraft:diamond", 5)
+    item.type = "minecraft:air"
+    item.type = "minecraft:emerald"
+    assert item.type == "minecraft:emerald"
+    assert item.amount == 1
+
+
+def test_set_type_to_the_same_type_keeps_the_stack() -> None:
+    """Verify setting the type a stack already has leaves it alone."""
+    item = ItemStack("minecraft:writable_book")
+    meta = item.item_meta
+    meta.pages = ["kept"]
+    item.set_item_meta(meta)
+    item.type = "minecraft:writable_book"
+    assert item.item_meta.pages == ["kept"]
+
+
+def test_set_type_drops_data_the_new_type_cannot_hold() -> None:
+    """Verify data only the old type's meta holds is dropped and shared data stays."""
+    item = ItemStack("minecraft:writable_book", 3)
+    meta = item.item_meta
+    meta.pages = ["gone"]
+    meta.display_name = "Kept"
+    item.set_item_meta(meta)
+    item.type = "minecraft:diamond_sword"
+    assert item.type == "minecraft:diamond_sword"
+    assert item.amount == 3
+    assert "pages" not in item.nbt
+    assert item.item_meta.display_name == "Kept"
+
+
+def test_set_type_keeps_data_the_new_type_shares() -> None:
+    """Verify pages stay when a book and quill becomes a written book."""
+    item = ItemStack("minecraft:writable_book")
+    meta = item.item_meta
+    meta.pages = ["shared"]
+    item.set_item_meta(meta)
+    item.type = "minecraft:written_book"
+    assert item.item_meta.pages == ["shared"]

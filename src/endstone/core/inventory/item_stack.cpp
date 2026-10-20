@@ -47,13 +47,41 @@ const ItemType &EndstoneItemStack::getType() const
 
 void EndstoneItemStack::setType(ItemTypeId type)
 {
-    const auto *item_type = ItemType::get(type);
-    Preconditions::checkArgument(item_type != nullptr, "Unknown item type: {}", type);
+    if (getType() == type) {
+        return;
+    }
+    if (type == ItemType::Air) {
+        item_ = ItemInstance();
+        return;
+    }
+    Preconditions::checkArgument(ItemType::get(type) != nullptr, "Unknown item type: {}", type);
+    if (item_.isNull()) {
+        item_ = ItemInstance(std::string(type), 1, 0, nullptr);
+        return;
+    }
+    const auto old_type = getType().getId();
     auto user_data = item_.hasUserData() ? item_.getUserData()->clone() : nullptr;
     item_.reinit(std::string(type), getAmount(), getData());
     if (user_data) {
         item_.setUserData(std::move(user_data));
     }
+    if (hasItemMeta()) {
+        adjustTagForItemMeta(old_type);
+    }
+}
+
+void EndstoneItemStack::adjustTagForItemMeta(ItemTypeId old_type)
+{
+    const auto old_meta = EndstoneItemFactory::instance().getItemMeta(old_type);
+    const auto new_meta = getItemMeta();
+    auto tag = item_.getUserData()->clone();
+    if (old_meta) {
+        old_meta->getExtras().applyToItem(*tag);
+    }
+    if (new_meta) {
+        new_meta->getExtras().applyToItem(*tag);
+    }
+    item_.setUserData(tag->isEmpty() ? nullptr : std::move(tag));
 }
 
 int EndstoneItemStack::getAmount() const

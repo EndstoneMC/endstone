@@ -50,6 +50,8 @@ public:
     static bool setItemMeta(ItemStackBase *item, const ItemMeta *meta);
 
 private:
+    void adjustTagForItemMeta(ItemTypeId old_type);
+
     ItemInstance item_;
 };
 
