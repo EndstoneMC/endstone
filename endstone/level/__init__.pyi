@@ -355,6 +355,9 @@ class Dimension:
 
         Returns:
             ``True`` if a plugin ticket was removed, ``False`` if the plugin holds none for this chunk.
+
+        Raises:
+            RuntimeError: If called from a thread other than the server thread.
         """
 
     def remove_plugin_chunk_tickets(self, plugin: Plugin) -> None:
@@ -363,6 +366,9 @@ class Dimension:
 
         Args:
             plugin: `Plugin` whose tickets to remove.
+
+        Raises:
+            RuntimeError: If called from a thread other than the server thread.
         """
 
     def get_plugin_chunk_tickets(self, x: int, z: int) -> list[Plugin]:

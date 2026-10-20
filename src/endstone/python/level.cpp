@@ -256,12 +256,18 @@ void init_level(py::module_ &m, py::classh<Level> &level, py::classh<Dimension> 
 
     Returns:
         ``True`` if a plugin ticket was removed, ``False`` if the plugin holds none for this chunk.
+
+    Raises:
+        RuntimeError: If called from a thread other than the server thread.
 )doc")
         .def("remove_plugin_chunk_tickets", &Dimension::removePluginChunkTickets, py::arg("plugin"), R"doc(
     Removes every ticket the given plugin holds in this dimension.
 
     Args:
         plugin: `Plugin` whose tickets to remove.
+
+    Raises:
+        RuntimeError: If called from a thread other than the server thread.
 )doc")
         .def("get_plugin_chunk_tickets",
              py::overload_cast<int, int>(&Dimension::getPluginChunkTickets, py::const_), py::arg("x"), py::arg("z"),

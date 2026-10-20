@@ -157,6 +157,7 @@ bool EndstoneDimension::loadChunk(int x, int z)
 
 bool EndstoneDimension::loadChunk(int x, int z, bool generate)
 {
+    checkServerThread();
     const auto key = chunkKey(x, z);
     auto it = chunk_tickets_.find(key);
     if (it == chunk_tickets_.end()) {
@@ -231,6 +232,7 @@ bool EndstoneDimension::removePluginChunkTicket(int x, int z, Plugin &plugin)
 
 void EndstoneDimension::removePluginChunkTickets(Plugin &plugin)
 {
+    checkServerThread();
     std::vector<mce::UUID> released;
     for (auto it = chunk_tickets_.begin(); it != chunk_tickets_.end();) {
         std::erase(it->second.plugins, &plugin);
