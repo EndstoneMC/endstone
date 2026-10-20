@@ -117,7 +117,7 @@ InteractionResult BucketItem::_useOn(::ItemStack &item_stack, ::Actor &actor, Bl
         }
 
         auto empty_position = position;
-        if (!fluid_block || !water_content ||
+        if (!fluid_block || !water_content || clicked_block.getMaterial().isSolid() ||
             !clicked_block.getBlockType().canFillAtPos(block_source, position, *fluid_block)) {
             empty_position = position.offset(endstone::core::EndstoneBlockFace::getOffsetX(*block_face),
                                              endstone::core::EndstoneBlockFace::getOffsetY(*block_face),
