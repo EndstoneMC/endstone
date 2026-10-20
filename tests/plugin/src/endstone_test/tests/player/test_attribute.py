@@ -115,10 +115,9 @@ def test_value_is_read_only(player: Player) -> None:
 
 
 def test_an_unknown_attribute(player: Player) -> None:
-    """Verify an unknown name answers has_attribute False and makes get_attribute raise."""
+    """Verify an unknown name answers has_attribute False and get_attribute None."""
     assert player.has_attribute("minecraft:not_an_attribute") is False
-    with pytest.raises(RuntimeError):
-        player.get_attribute("minecraft:not_an_attribute")
+    assert player.get_attribute("minecraft:not_an_attribute") is None
 
 
 def test_attributes_are_attribute_instances(player: Player) -> None:

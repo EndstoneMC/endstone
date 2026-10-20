@@ -80,7 +80,11 @@ public:
 
     [[nodiscard]] Nullable<AttributeInstance> getAttribute(AttributeId id) override
     {
-        return std::make_shared<EndstoneAttributeInstance>(Base::getHandle().getMutableAttribute({id}));
+        auto attribute = Base::getHandle().getMutableAttribute({id});
+        if (!attribute.isValid()) {
+            return nullptr;
+        }
+        return std::make_shared<EndstoneAttributeInstance>(attribute);
     }
 
     [[nodiscard]] std::vector<NotNull<AttributeInstance>> getAttributes() override
