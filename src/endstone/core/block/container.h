@@ -34,6 +34,12 @@ public:
     {
     }
 
+    EndstoneContainerBase(const EndstoneBlock &block, ::BlockActor &block_actor, bool use_snapshot,
+                          std::unique_ptr<Inventory> inventory)
+        : EndstoneBlockStateBase<Interface>(block, block_actor, use_snapshot), inventory_(std::move(inventory))
+    {
+    }
+
     [[nodiscard]] Inventory &getInventory() const override
     {
         return *inventory_;
@@ -54,7 +60,7 @@ protected:
     }
 
 private:
-    std::unique_ptr<EndstoneInventory> inventory_;
+    std::unique_ptr<Inventory> inventory_;
 };
 
 using EndstoneContainer = EndstoneContainerBase<Container>;

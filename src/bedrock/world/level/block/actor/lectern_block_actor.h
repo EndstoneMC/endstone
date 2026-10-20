@@ -23,6 +23,8 @@ class LecternBlockActor : public VanillaBlockActor, public Container {
 public:
     static constexpr BlockActorType TypeId = BlockActorType::Lectern;
 
+    void setItemFromBlock(int slot, const ItemStack &item);
+
     // Endstone
     [[nodiscard]] int getPage() const { return page_; }
     void setPage(int page) { page_ = page; }

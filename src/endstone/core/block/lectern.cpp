@@ -16,12 +16,14 @@
 
 #include <algorithm>
 
-#include "bedrock/world/item/written_book_item.h"
+#include "endstone/core/inventory/lectern_inventory.h"
 
 namespace endstone::core {
 
 EndstoneLectern::EndstoneLectern(const EndstoneBlock &block, ::LecternBlockActor &lectern, bool use_snapshot)
-    : EndstoneContainerBase<Lectern>(block, lectern, use_snapshot)
+    : EndstoneContainerBase<Lectern>(
+          block, lectern, use_snapshot,
+          std::make_unique<EndstoneLecternInventory>([this]() -> ::LecternBlockActor & { return getLectern(); }))
 {
 }
 
@@ -32,10 +34,8 @@ int EndstoneLectern::getPage() const
 
 void EndstoneLectern::setPage(int page)
 {
-    const auto &book = getLectern().getBook();
-    const auto *pages = book.hasUserData() ? book.getUserData()->getList(WrittenBookItem::TAG_PAGES) : nullptr;
-    const auto page_count = pages != nullptr ? static_cast<int>(pages->size()) : 0;
-    getLectern().setPage(std::clamp(page, 0, std::max(page_count - 1, 0)));
+    const auto total_pages = getLectern().getTotalPages();
+    getLectern().setPage(std::clamp(page, 0, std::max(total_pages - 1, 0)));
     getLectern().setChanged();
 }
 
