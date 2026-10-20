@@ -221,49 +221,46 @@ void EndstoneScheduler::mainThreadHeartbeat(std::uint64_t current_tick)
         std::push_heap(queue.begin(), queue.end(), cmp_);
     }
 
-    auto it = queue_.begin();
-    while (it != queue_.end()) {
-        auto tick = it->first;
+    while (!queue_.empty() && queue_.begin()->first <= current_tick) {
+        const auto it = queue_.begin();
         auto &queue = it->second;
-
-        if (tick > current_tick) {
-            break;
+        std::pop_heap(queue.begin(), queue.end(), cmp_);
+        const auto task = std::move(queue.back());
+        queue.pop_back();
+        if (queue.empty()) {
+            queue_.erase(it);
         }
 
-        for (const auto &task : queue) {
-            if (task->isCancelled()) {
-                if (task->isSync()) {
-                    removeTask(task->getTaskId());
-                }
-                continue;
-            }
-
-            if (task->isSync()) {
-                current_task_.store(task->getTaskId(), std::memory_order_release);
-                try {
-                    task->run();
-                }
-                catch (std::exception &e) {
-                    server_.getLogger().error("Could not execute task with id {}: {}", task->getTaskId(), e.what());
-                }
-                current_task_.store(0, std::memory_order_release);
-            }
-            else {
-                executor_.submit([task]() { task->run(); });
-            }
-
-            if (!task->isCancelled() && task->getPeriod() > 0) {  // repeating task
-                task->setNextRun(current_tick + task->getPeriod());
-                pending_.enqueue(task);
-                continue;
-            }
-
+        if (task->isCancelled()) {
             if (task->isSync()) {
                 removeTask(task->getTaskId());
             }
+            continue;
         }
 
-        it = queue_.erase(it);
+        if (task->isSync()) {
+            current_task_.store(task->getTaskId(), std::memory_order_release);
+            try {
+                task->run();
+            }
+            catch (std::exception &e) {
+                server_.getLogger().error("Could not execute task with id {}: {}", task->getTaskId(), e.what());
+            }
+            current_task_.store(0, std::memory_order_release);
+        }
+        else {
+            executor_.submit([task]() { task->run(); });
+        }
+
+        if (!task->isCancelled() && task->getPeriod() > 0) {  // repeating task
+            task->setNextRun(current_tick + task->getPeriod());
+            pending_.enqueue(task);
+            continue;
+        }
+
+        if (task->isSync()) {
+            removeTask(task->getTaskId());
+        }
     }
 }
 
