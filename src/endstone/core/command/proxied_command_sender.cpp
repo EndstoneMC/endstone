@@ -19,14 +19,14 @@
 namespace endstone::core {
 
 EndstoneProxiedCommandSender::EndstoneProxiedCommandSender(const VirtualCommandOrigin &origin,
-                                                           std::shared_ptr<CommandOutput *> output)
+                                                           std::weak_ptr<CommandOutput> output)
     : origin_(origin.clone()), output_(std::move(output))
 {
 }
 
 void EndstoneProxiedCommandSender::sendMessage(const Message &message) const
 {
-    auto *output = *output_;
+    const auto output = output_.lock();
     if (!output) {
         getCaller()->sendMessage(message);
         return;
@@ -41,7 +41,7 @@ void EndstoneProxiedCommandSender::sendMessage(const Message &message) const
 
 void EndstoneProxiedCommandSender::sendErrorMessage(const Message &message) const
 {
-    auto *output = *output_;
+    const auto output = output_.lock();
     if (!output) {
         getCaller()->sendErrorMessage(message);
         return;

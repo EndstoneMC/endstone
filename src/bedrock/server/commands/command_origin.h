@@ -84,7 +84,7 @@ protected:
 
 public:
     [[nodiscard]] endstone::NotNull<endstone::CommandSender> getEndstoneSender(
-        std::shared_ptr<CommandOutput *> output) const;  // Endstone
+        std::weak_ptr<CommandOutput> output) const;  // Endstone
 
 protected:
     mce::UUID uuid_;

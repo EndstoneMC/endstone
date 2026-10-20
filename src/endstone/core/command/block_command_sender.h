@@ -22,7 +22,7 @@
 namespace endstone::core {
 class EndstoneBlockCommandSender : public ServerCommandSender<BlockCommandSender> {
 public:
-    EndstoneBlockCommandSender(const CommandOrigin &origin, std::shared_ptr<CommandOutput *> output);
+    EndstoneBlockCommandSender(const CommandOrigin &origin, std::weak_ptr<CommandOutput> output);
 
     void sendMessage(const Message &message) const override;
     void sendErrorMessage(const Message &message) const override;
@@ -34,7 +34,7 @@ public:
 
 private:
     std::unique_ptr<CommandOrigin> origin_;
-    std::shared_ptr<CommandOutput *> output_;
+    std::weak_ptr<CommandOutput> output_;
 };
 
 }  // namespace endstone::core

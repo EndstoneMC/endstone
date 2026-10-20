@@ -40,15 +40,14 @@ public:
 };
 }  // namespace
 
-EndstoneBlockCommandSender::EndstoneBlockCommandSender(const CommandOrigin &origin,
-                                                       std::shared_ptr<CommandOutput *> output)
+EndstoneBlockCommandSender::EndstoneBlockCommandSender(const CommandOrigin &origin, std::weak_ptr<CommandOutput> output)
     : ServerCommandSender(BlockPermissionBase::instance()), origin_(origin.clone()), output_(std::move(output))
 {
 }
 
 void EndstoneBlockCommandSender::sendMessage(const Message &message) const
 {
-    auto *output = *output_;
+    const auto output = output_.lock();
     if (!output) {
         return;
     }
@@ -62,7 +61,7 @@ void EndstoneBlockCommandSender::sendMessage(const Message &message) const
 
 void EndstoneBlockCommandSender::sendErrorMessage(const Message &message) const
 {
-    auto *output = *output_;
+    const auto output = output_.lock();
     if (!output) {
         return;
     }

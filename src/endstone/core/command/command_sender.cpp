@@ -24,8 +24,7 @@
 #include "endstone/core/player.h"
 #include "endstone/core/server.h"
 
-endstone::NotNull<endstone::CommandSender> CommandOrigin::getEndstoneSender(
-    std::shared_ptr<CommandOutput *> output) const
+endstone::NotNull<endstone::CommandSender> CommandOrigin::getEndstoneSender(std::weak_ptr<CommandOutput> output) const
 {
     auto &server = endstone::core::EndstoneServer::getInstance();
     switch (getOriginType()) {

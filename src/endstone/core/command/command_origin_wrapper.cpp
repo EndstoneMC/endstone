@@ -18,14 +18,14 @@
 
 namespace endstone::core {
 
-CommandOriginWrapper::CommandOriginWrapper(const CommandOrigin &origin, std::shared_ptr<CommandOutput *> output)
+CommandOriginWrapper::CommandOriginWrapper(const CommandOrigin &origin, std::weak_ptr<CommandOutput> output)
     : origin_(origin.clone()), output_(std::move(output))
 {
 }
 
 void CommandOriginWrapper::sendMessage(const Message &message) const
 {
-    auto *output = *output_;
+    const auto output = output_.lock();
     if (!output) {
         return;
     }
@@ -39,7 +39,7 @@ void CommandOriginWrapper::sendMessage(const Message &message) const
 
 void CommandOriginWrapper::sendErrorMessage(const Message &message) const
 {
-    auto *output = *output_;
+    const auto output = output_.lock();
     if (!output) {
         return;
     }

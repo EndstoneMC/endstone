@@ -23,7 +23,7 @@ namespace endstone::core {
 
 class EndstoneProxiedCommandSender : public ServerCommandSender<ProxiedCommandSender> {
 public:
-    EndstoneProxiedCommandSender(const VirtualCommandOrigin &origin, std::shared_ptr<CommandOutput *> output);
+    EndstoneProxiedCommandSender(const VirtualCommandOrigin &origin, std::weak_ptr<CommandOutput> output);
 
     void sendMessage(const Message &message) const override;
     void sendErrorMessage(const Message &message) const override;
@@ -46,7 +46,7 @@ public:
 
 private:
     std::unique_ptr<CommandOrigin> origin_;
-    std::shared_ptr<CommandOutput *> output_;
+    std::weak_ptr<CommandOutput> output_;
 };
 
 }  // namespace endstone::core
