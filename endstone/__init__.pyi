@@ -616,7 +616,8 @@ class Player(Mob):
         Sends a block entity state change to this player.
 
         This fakes a block entity state change for a user at the given location. This will not actually change the world
-        in any way.
+        in any way. The Windows client applies the update to the block entity it has at that location, and ignores it if
+        it has none there.
 
         The state is sent only to this player and does not update the world.
 
