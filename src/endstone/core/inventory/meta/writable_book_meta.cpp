@@ -20,8 +20,7 @@ EndstoneWritableBookMeta::EndstoneWritableBookMeta(const ItemMeta *meta) : Base(
     if (!meta || !meta->as<WritableBookMeta>()) {
         return;
     }
-    auto *m = static_cast<const EndstoneWritableBookMeta *>(meta);
-    pages_ = m->pages_;
+    pages_ = static_cast<const WritableBookMeta *>(meta)->getPages();
 }
 
 EndstoneWritableBookMeta::EndstoneWritableBookMeta(const ::CompoundTag &tag) : Base(tag) {}

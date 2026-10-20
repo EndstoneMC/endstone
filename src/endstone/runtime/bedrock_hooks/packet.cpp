@@ -242,7 +242,8 @@ void EndstonePacketHandler::handle(BookEditPacket &packet)
     if (e.isSigning() != is_signing) {
         auto edited_item = *item;
         edited_item.setType(e.isSigning() ? written_book : writable_book);
-        if (edited_item.setItemMeta(result_book_meta.get().get())) {
+        const auto edited_meta = item_factory.asMetaFor(result_book_meta.get().get(), edited_item.getType().getId());
+        if (edited_meta && edited_item.setItemMeta(edited_meta.get().get())) {
             inventory.setItem(slot, std::move(edited_item));
         }
         return;
@@ -265,7 +266,8 @@ void EndstonePacketHandler::handle(BookEditPacket &packet)
     if (!edit_applied) {
         return;
     }
-    if (edited_item->setItemMeta(result_book_meta.get().get())) {
+    const auto edited_meta = item_factory.asMetaFor(result_book_meta.get().get(), edited_item->getType().getId());
+    if (edited_meta && edited_item->setItemMeta(edited_meta.get().get())) {
         inventory.setItem(slot, std::move(edited_item));
     }
 }
