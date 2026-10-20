@@ -209,6 +209,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Fixed `Server.dispatch_command()` rejecting the sender a command received from `/execute` or a command block.
 - Fixed `str()` on a `Vector` ending in a stray comma.
 - Fixed `Colors::BLACK` being a fully transparent red.
+- Fixed a plugin loaded at STARTUP crashing the server when its `on_enable` used the online players, maps, scoreboards or commands; the command map and `dispatch_command()` raise until the level has loaded, because Bedrock registers its commands only when the server starts hosting.
 
 #### Type annotations
 

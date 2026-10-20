@@ -438,8 +438,12 @@ void init_server(py::classh<Server> &server)
                                "The current language interface used by the server for translations.")
         .def_property_readonly("plugin_manager", &Server::getPluginManager, py::return_value_policy::reference,
                                "The plugin manager for interfacing with plugins.")
-        .def_property_readonly("command_map", &Server::getCommandMap, py::return_value_policy::reference,
-                               "The command map for registering and looking up commands.")
+        .def_property_readonly("command_map", &Server::getCommandMap, py::return_value_policy::reference, R"doc(
+    The command map for registering and looking up commands.
+
+    Raises:
+        RuntimeError: If the level has not loaded yet, as in the `on_enable` of a plugin loaded at STARTUP.
+)doc")
         .def("get_plugin_command", &Server::getPluginCommand, py::arg("name"), R"doc(
     Gets a `PluginCommand` with the given name or alias.
 
@@ -460,6 +464,9 @@ void init_server(py::classh<Server> &server)
 
     Returns:
         `True` if execution is successful, `False` otherwise.
+
+    Raises:
+        RuntimeError: If the level has not loaded yet, as in the `on_enable` of a plugin loaded at STARTUP.
 )doc")
         .def_property_readonly("scheduler", &Server::getScheduler, py::return_value_policy::reference,
                                "The scheduler for managing scheduled events.")

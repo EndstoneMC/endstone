@@ -162,6 +162,9 @@ class Server:
     def command_map(self) -> CommandMap:
         """
         The command map for registering and looking up commands.
+
+        Raises:
+            RuntimeError: If the level has not loaded yet, as in the `on_enable` of a plugin loaded at STARTUP.
         """
 
     def get_plugin_command(self, name: str) -> PluginCommand | None:
@@ -191,6 +194,9 @@ class Server:
 
         Returns:
             `True` if execution is successful, `False` otherwise.
+
+        Raises:
+            RuntimeError: If the level has not loaded yet, as in the `on_enable` of a plugin loaded at STARTUP.
         """
 
     @property
