@@ -63,7 +63,7 @@ private:
 
     std::unordered_map<std::uint64_t, RenderData> render_cache_;
     std::vector<NotNull<MapRenderer>> renderers_;
-    std::unordered_map<NotNull<MapRenderer>, std::unordered_map<std::uint64_t, std::unique_ptr<EndstoneMapCanvas>>>
+    std::unordered_map<NotNull<MapRenderer>, std::unordered_map<std::uint64_t, std::shared_ptr<EndstoneMapCanvas>>>
         canvases_;
     ActorUniqueID map_id_;
 };

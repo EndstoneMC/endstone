@@ -101,7 +101,7 @@ void EndstoneMapView::addRenderer(NotNull<MapRenderer> renderer)
     auto it = std::ranges::find_if(renderers_, [&](const auto &r) { return renderer == r; });
     if (it == renderers_.end()) {
         renderers_.emplace_back(renderer);
-        canvases_[renderer] = std::unordered_map<std::uint64_t, std::unique_ptr<EndstoneMapCanvas>>();
+        canvases_[renderer] = std::unordered_map<std::uint64_t, std::shared_ptr<EndstoneMapCanvas>>();
         renderer->initialize(*this);
     }
 }
@@ -157,11 +157,18 @@ const RenderData &EndstoneMapView::render(const NotNull<EndstonePlayer> &player)
     std::ranges::fill(render.buffer, 0);
     render.cursors.clear();
 
-    for (const auto &renderer : renderers_) {
-        auto &canvas = *canvases_.at(renderer)
-                            .emplace(renderer->isContextual() ? player->getId() : ActorUniqueID::INVALID_ID.raw_id,
-                                     std::make_unique<EndstoneMapCanvas>(*this))
-                            .first->second;
+    const auto renderers = renderers_;
+    for (const auto &renderer : renderers) {
+        const auto it = canvases_.find(renderer);
+        if (it == canvases_.end()) {
+            continue;
+        }
+        const auto canvas_ptr =
+            it->second
+                .emplace(renderer->isContextual() ? player->getId() : ActorUniqueID::INVALID_ID.raw_id,
+                         std::make_shared<EndstoneMapCanvas>(*this))
+                .first->second;
+        auto &canvas = *canvas_ptr;
 
         canvas.setBase(render.buffer);
         try {
