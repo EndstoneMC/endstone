@@ -102,7 +102,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - nlohmann/json is part of the public C++ API, with `endstone::JsonValue`, `JsonObject` and `JsonArray` naming the three shapes (and `endstone.JsonValue` / `JsonObject` / `JsonArray` in Python). `endstone_add_plugin()` links it for you.
 - Unified `Object.as<T>()`/`is<T>()` casting API. `NotNull<T>` and `Nullable<T>` carry the same pair, so `event.getActor().as<Player>()` returns a `Nullable<Player>` sharing ownership with the original.
 - `endstone.Identifier` for namespaced ids, splitting `dim.id.namespace` from `dim.id.key` and distinguishing `Identifier[Dimension]` from `Identifier[ActorType]`. Plain strings are still accepted, and so is the registry entry itself, so `ItemStack(item_type)` works alongside `ItemStack("minecraft:beef")`.
-- `ActorType`, `EffectType` and `PotionType` in the registry API, each entry carrying a `translation_key`, plus the missing `ActorType.SULFUR_CUBE` constant.
+- `ActorType`, `EffectType` and `PotionType` in the registry API, each entry carrying a `translation_key`, plus the missing `ActorType.SULFUR_CUBE` and `ActorType.CUSHION` constants.
 - Binary NBT serialization (`dump`/`load`) with support for multiple formats.
 
 #### Server and Docker

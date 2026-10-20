@@ -312,6 +312,7 @@ class ActorType:
     COW: Identifier[ActorType] = "minecraft:cow"
     CREAKING: Identifier[ActorType] = "minecraft:creaking"
     CREEPER: Identifier[ActorType] = "minecraft:creeper"
+    CUSHION: Identifier[ActorType] = "minecraft:cushion"
     DOLPHIN: Identifier[ActorType] = "minecraft:dolphin"
     DONKEY: Identifier[ActorType] = "minecraft:donkey"
     DRAGON_FIREBALL: Identifier[ActorType] = "minecraft:dragon_fireball"

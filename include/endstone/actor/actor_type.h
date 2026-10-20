@@ -137,6 +137,7 @@ public:
     static constexpr auto ChestBoat = ActorTypeId::minecraft("chest_boat");
     static constexpr auto ChestMinecart = ActorTypeId::minecraft("chest_minecart");
     static constexpr auto CommandBlockMinecart = ActorTypeId::minecraft("command_block_minecart");
+    static constexpr auto Cushion = ActorTypeId::minecraft("cushion");
     static constexpr auto DragonFireball = ActorTypeId::minecraft("dragon_fireball");
     static constexpr auto Egg = ActorTypeId::minecraft("egg");
     static constexpr auto EnderCrystal = ActorTypeId::minecraft("ender_crystal");
