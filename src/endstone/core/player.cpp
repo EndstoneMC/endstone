@@ -16,6 +16,7 @@
 
 #include <RakPeerInterface.h>
 
+#include <algorithm>
 #include <cstdint>
 #include <string_view>
 #include <unordered_map>
@@ -49,6 +50,7 @@
 #include "bedrock/platform/build_platform.h"
 #include "bedrock/server/server_instance.h"
 #include "bedrock/world/actor/player/player.h"
+#include "bedrock/world/actor/player/player_list_entry.h"
 #include "bedrock/world/level/block/block_type.h"
 #include "bedrock/world/level/block/actor/block_actor.h"
 #include "bedrock/world/level/dimension/vanilla_dimensions.h"
@@ -403,9 +405,9 @@ void EndstonePlayer::showActor(Plugin &plugin, Actor &actor)
 void EndstonePlayer::trackAndShowActor(Actor &actor)
 {
     --server_.hidden_actor_count_;
-    if (dynamic_cast<const EndstonePlayer *>(&actor)) {
+    if (const auto *player = dynamic_cast<const EndstonePlayer *>(&actor)) {
         hidden_player_runtime_ids_.erase(actor.getRuntimeId());
-        sendPlayerListAdd(actor.getId());
+        sendPlayerListAdd(player->getHandle());
     }
 
     auto *handle = getHandle().getLevel().fetchEntity(ActorUniqueID{actor.getId()}, false);
@@ -1093,7 +1095,6 @@ void EndstonePlayer::disconnect()
     server_.hidden_actor_count_ -= hidden_actors_.size();
     hidden_actors_.clear();
     hidden_player_runtime_ids_.clear();
-    player_list_entries_.clear();
 }
 
 void EndstonePlayer::updateAbilities() const
@@ -1124,30 +1125,34 @@ void EndstonePlayer::sendPlayerListRemove(const ::Player &player) const
     getHandle().sendNetworkPacket(*packet);
 }
 
-void EndstonePlayer::sendPlayerListAdd(const std::int64_t unique_id) const
+void EndstonePlayer::sendPlayerListAdd(const ::Player &player) const
 {
-    const auto it = player_list_entries_.find(unique_id);
-    if (it == player_list_entries_.end()) {
+    const auto identifier = player.getPersistentComponent<UserEntityIdentifierComponent>();
+    const auto &player_list = getHandle().getLevel().getPlayerList();
+    const auto it = std::ranges::find(player_list, identifier->getClientUUID(),
+                                      [](const auto &pair) -> const mce::UUID & { return pair.first; });
+    if (it == player_list.end()) {
         return;
     }
 
+    const auto &entry = it->second;
     auto packet = MinecraftPackets::createPacket(MinecraftPacketIds::PlayerList);
     auto &pk = static_cast<PlayerListPacket &>(*packet);
-    pk.payload.entries.emplace_back(it->second);
+    pk.payload.entries.emplace_back(PlayerListPacketPayload::AddEntry{
+        .action = PlayerListPacketType::Add,
+        .uuid = entry.uuid,
+        .id = entry.id,
+        .name = entry.name,
+        .xuid = entry.xuid,
+        .platform_online_id = entry.platform_online_id,
+        .build_platform = entry.build_platform,
+        .skin = entry.skin,
+        .is_teacher = entry.is_teacher,
+        .is_host = entry.is_host,
+        .is_sub_client = entry.is_sub_client,
+        .color = entry.color,
+    });
     getHandle().sendNetworkPacket(*packet);
-}
-
-void EndstonePlayer::updatePlayerListCache(const PlayerListPacketPayload &payload)
-{
-    for (const auto &entry : payload.entries) {
-        if (const auto *add = std::get_if<PlayerListPacketPayload::AddEntry>(&entry); add) {
-            player_list_entries_.insert_or_assign(add->id.raw_id, *add);
-            continue;
-        }
-
-        const auto &uuid = std::get<PlayerListPacketPayload::RemoveEntry>(entry).uuid;
-        std::erase_if(player_list_entries_, [&uuid](const auto &cached) { return cached.second.uuid == uuid; });
-    }
 }
 
 bool EndstonePlayer::hasHiddenActors() const

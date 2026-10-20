@@ -168,10 +168,7 @@ VisibilityResult filterHiddenActors(const PacketHeader &header, ReadOnlyBinarySt
                  ? VisibilityResult::Drop
                  : VisibilityResult::Unchanged;
     case MinecraftPacketIds::PlayerList: {
-        auto &payload = static_cast<PlayerListPacket &>(*packet).payload;
-        player.updatePlayerListCache(payload);
-
-        auto &entries = payload.entries;
+        auto &entries = static_cast<PlayerListPacket &>(*packet).payload.entries;
         const auto count = entries.size();
         std::erase_if(entries, [&player](const auto &entry) {
             const auto *add = std::get_if<PlayerListPacketPayload::AddEntry>(&entry);
@@ -226,10 +223,10 @@ bool isPatched(MinecraftPacketIds id)
 
 bool isFilterable(MinecraftPacketIds id)
 {
-    return id == MinecraftPacketIds::PlayerList ||
-           (endstone::core::EndstoneServer::getInstance().hasHiddenActors() &&
-            (id == MinecraftPacketIds::AddActor || id == MinecraftPacketIds::AddItemActor ||
-             id == MinecraftPacketIds::AddPainting || id == MinecraftPacketIds::AddPlayer));
+    return endstone::core::EndstoneServer::getInstance().hasHiddenActors() &&
+           (id == MinecraftPacketIds::AddActor || id == MinecraftPacketIds::AddItemActor ||
+            id == MinecraftPacketIds::AddPainting || id == MinecraftPacketIds::AddPlayer ||
+            id == MinecraftPacketIds::PlayerList);
 }
 
 bool isSuppressible(MinecraftPacketIds id)
@@ -303,8 +300,7 @@ void EndstoneBatchedNetworkPeer::sendPacket(const std::string &data, Reliability
     auto payload = stream.getView().substr(stream.getReadPointer());
     std::string filtered_payload;
     auto visibility = VisibilityResult::Unchanged;
-    if (isFilterable(header.getPacketId()) && player &&
-        (player->hasHiddenActors() || header.getPacketId() == MinecraftPacketIds::PlayerList)) {
+    if (isFilterable(header.getPacketId()) && player && player->hasHiddenActors()) {
         visibility = filterHiddenActors(header, stream, *player, filtered_payload);
         if (visibility == VisibilityResult::Drop) {
             return;

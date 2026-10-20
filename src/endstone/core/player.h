@@ -25,7 +25,6 @@
 #include <nlohmann/json.hpp>
 
 #include "bedrock/network/connection_request.h"
-#include "bedrock/network/packet/player_list_packet.h"
 #include "bedrock/network/sub_client_connection_request.h"
 #include "bedrock/world/events/player_events.h"
 #include "endstone/core/actor/mob.h"
@@ -150,7 +149,6 @@ public:
     void disconnect();
     void updateAbilities() const;
     void checkOpStatus();
-    void updatePlayerListCache(const PlayerListPacketPayload &payload);
     [[nodiscard]] bool hasHiddenActors() const;
     [[nodiscard]] bool isActorHidden(std::int64_t unique_id) const;
     [[nodiscard]] bool isPlayerHidden(std::uint64_t runtime_id) const;
@@ -162,7 +160,7 @@ private:
     void untrackAndHideActor(Actor &actor);
     void trackAndShowActor(Actor &actor);
     void sendPlayerListRemove(const ::Player &player) const;
-    void sendPlayerListAdd(std::int64_t unique_id) const;
+    void sendPlayerListAdd(const ::Player &player) const;
 
     struct RecipeBookSettings {
         bool filtering;
@@ -188,7 +186,6 @@ private:
     bool last_op_status_ = false;
     std::unordered_map<std::int64_t, std::unordered_set<Plugin *>> hidden_actors_;
     std::unordered_map<std::uint64_t, std::int64_t> hidden_player_runtime_ids_;
-    std::unordered_map<std::int64_t, PlayerListPacketPayload::AddEntry> player_list_entries_;
 };
 
 }  // namespace endstone::core
