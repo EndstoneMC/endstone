@@ -91,8 +91,9 @@ bool handleEvent(::ActorAddEffectEvent &event)
         return true;
     }
 
+    const endstone::EffectId type{endstone::EffectId::Minecraft, event.mob_effect.getResourceName()};
     const endstone::Effect effect{
-        endstone::EffectId{endstone::EffectId::Minecraft, event.mob_effect.getResourceName()},
+        type,
         event.mob_effect.getDuration().getValue(),
         event.mob_effect.getAmplifier(),
         event.mob_effect.isAmbient(),
@@ -101,20 +102,9 @@ bool handleEvent(::ActorAddEffectEvent &event)
     };
 
     endstone::ActorEffectEvent e{mob->getEndstoneActor<endstone::core::EndstoneMob>(),
-                                 endstone::ActorEffectEvent::Action::Added, effect};
+                                 endstone::ActorEffectEvent::Action::Added, type, std::nullopt, effect};
     server.getPluginManager().callEvent(e);
-    if (e.isCancelled()) {
-        return false;
-    }
-
-    if (e.getEffect() != effect) {
-        const auto &new_effect = e.getEffect();
-        event.mob_effect =
-            ::MobEffectInstance{event.mob_effect.getId(),  ::EffectDuration{new_effect.getDuration().value_or(-1)},
-                                new_effect.getAmplifier(), new_effect.isAmbient(),
-                                new_effect.hasParticles(), new_effect.hasIcon()};
-    }
-    return true;
+    return !e.isCancelled();
 }
 
 bool handleEvent(::ActorBeforeAcquireItemEvent &event)

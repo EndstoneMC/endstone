@@ -30,7 +30,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - `PlayerToggleSneakEvent`, `PlayerToggleSprintEvent`, `PlayerToggleFlightEvent` and `PlayerToggleCrawlEvent`, carrying the new state in `is_sneaking`, `is_sprinting`, `is_flying` and `is_crawling`.
 - `ActorToggleSwimEvent` and `ActorToggleGlideEvent`, carrying the new state in `is_swimming` and `is_gliding`.
 - `ActorCollideWithActorEvent`, reporting both actors in `actors`. Cancelling it also stops boats and minecarts being boarded by walking into them.
-- `ActorEffectEvent`, reporting the `action` (currently only `Action.ADDED`) and the `effect`, whose duration, amplifier and display options can be changed by assignment.
+- `ActorEffectEvent`, reporting the `action` (currently only `Action.ADDED`), the `old_effect` and `new_effect` and the `modified_type`; cancelling it prevents the change.
 - `ActorPickupItemEvent`, reporting the `item` and `amount`. Players are covered by `PlayerPickupItemEvent`.
 - `ActorDismountEvent`, reporting the `vehicle` being left.
 - `ActorChangeBlockEvent` for blocks changed by mob behaviour, such as endermen, ravagers, farmland trampling and door-breaking zombies.

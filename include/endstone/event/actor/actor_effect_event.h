@@ -14,69 +14,76 @@
 
 #pragma once
 
+#include <optional>
 #include <utility>
 
 #include "endstone/actor/mob.h"
-#include "endstone/check.h"
 #include "endstone/event/actor/actor_event.h"
 #include "endstone/event/cancellable.h"
 #include "endstone/potion/effect.h"
+#include "endstone/potion/effect_type.h"
 
 namespace endstone {
 
 /**
- * Called when an effect on a Mob changes.
+ * Called when an effect is modified on a Mob.
  *
- * This is fired before the change is applied. Cancelling the event prevents it. setEffect may change the duration,
- * amplifier and display options of the effect, but not its type.
+ * If the event is cancelled, no change will be made on the mob.
  */
 class ActorEffectEvent : public Cancellable<ActorEvent<Mob>> {
 public:
     /**
-     * An enum to specify how the effect changed.
+     * An enum to specify the action to be performed.
      */
     enum class Action {
+        /**
+         * When the effect is added because the mob didn't have its type.
+         */
         Added,
     };
 
     ENDSTONE_EVENT(ActorEffectEvent);
 
-    explicit ActorEffectEvent(const NotNull<Mob> &mob, Action action, Effect effect)
-        : Cancellable(mob), action_(action), effect_(std::move(effect))
+    explicit ActorEffectEvent(const NotNull<Mob> &mob, Action action, EffectId modified_type,
+                              std::optional<Effect> old_effect, std::optional<Effect> new_effect)
+        : Cancellable(mob), action_(action), modified_type_(std::move(modified_type)),
+          old_effect_(std::move(old_effect)), new_effect_(std::move(new_effect))
     {
     }
 
     /**
-     * Gets how the effect changed.
+     * Gets the action which will be performed on the effect type.
      *
-     * @return the action taken on the effect
+     * @return An action to be performed on the effect type.
      */
     [[nodiscard]] Action getAction() const { return action_; }
 
     /**
-     * Gets the effect involved in this event.
+     * Gets the modified effect type.
      *
-     * @return the effect
+     * @return The effect type which will be modified on the mob.
      */
-    [[nodiscard]] const Effect &getEffect() const { return effect_; }
+    [[nodiscard]] EffectId getModifiedType() const { return modified_type_; }
 
     /**
-     * Sets the effect involved in this event.
+     * Gets the old effect of the changed type, which will be removed.
      *
-     * @param effect the effect to apply instead, of the same type
-     * @throws std::invalid_argument if the effect is of a different type
+     * @return The old effect, or std::nullopt if the mob did not have the changed effect type.
      */
-    void setEffect(Effect effect)
-    {
-        Preconditions::checkArgument(effect.getType() == effect_.getType(),
-                                     "Cannot change the effect type from {} to {}.", effect_.getType(),
-                                     effect.getType());
-        effect_ = std::move(effect);
-    }
+    [[nodiscard]] const std::optional<Effect> &getOldEffect() const { return old_effect_; }
+
+    /**
+     * Gets the new effect of the changed type to be applied.
+     *
+     * @return The new effect, or std::nullopt if the effect of the changed type will be removed.
+     */
+    [[nodiscard]] const std::optional<Effect> &getNewEffect() const { return new_effect_; }
 
 private:
     Action action_;
-    Effect effect_;
+    EffectId modified_type_;
+    std::optional<Effect> old_effect_;
+    std::optional<Effect> new_effect_;
 };
 
 }  // namespace endstone

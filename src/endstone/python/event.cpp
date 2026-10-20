@@ -104,19 +104,26 @@ void init_event(py::module_ &m, py::class_<Event, PyEvent> &event)
                       &ActorExplodeEvent::setBlockList, py::return_value_policy::reference_internal,
                       "The list of blocks that would have been removed or were removed from the explosion event.");
     auto actor_effect_event = bind_event<ActorEffectEvent, ActorEvent<Mob>, ICancellable>(m, "ActorEffectEvent", R"doc(
-    Called when an effect on a `Mob` changes.
+    Called when an effect is modified on a `Mob`.
 
-    This is fired before the change is applied. Cancelling the event prevents it. Assigning to `effect` may
-    change the duration, amplifier and display options of the effect, but not its type.
+    If the event is cancelled, no change will be made on the mob.
 )doc");
     py::native_enum<ActorEffectEvent::Action>(actor_effect_event, "Action", "enum.Enum",
-                                              "An enum to specify how the effect changed.")
+                                              "An enum to specify the action to be performed.")
         .value("ADDED", ActorEffectEvent::Action::Added)
         .export_values()
         .finalize();
-    actor_effect_event.def_property_readonly("action", &ActorEffectEvent::getAction, "How the effect changed.")
-        .def_property("effect", &ActorEffectEvent::getEffect, &ActorEffectEvent::setEffect,
-                      "The effect involved in this event. Assigning an effect of another type raises `ValueError`.");
+    actor_effect_event
+        .def_property_readonly("action", &ActorEffectEvent::getAction,
+                               "The action which will be performed on the effect type.")
+        .def_property_readonly("modified_type", &ActorEffectEvent::getModifiedType,
+                               "The effect type which will be modified on the mob.")
+        .def_property_readonly("old_effect", &ActorEffectEvent::getOldEffect,
+                               "The old effect of the changed type, which will be removed, or `None` if the mob did "
+                               "not have the changed effect type.")
+        .def_property_readonly("new_effect", &ActorEffectEvent::getNewEffect,
+                               "The new effect of the changed type to be applied, or `None` if the effect of the "
+                               "changed type will be removed.");
     bind_event<ActorDismountEvent, ActorEvent<Actor>, ICancellable>(
         m, "ActorDismountEvent", "Called when an `Actor` stops riding another `Actor`.")
         .def_property_readonly("vehicle", &ActorDismountEvent::getVehicle, "The actor that is being dismounted.");

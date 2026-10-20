@@ -6,7 +6,7 @@ import collections.abc
 import enum
 import typing
 
-from endstone import GameMode, Input, Player, Skin
+from endstone import GameMode, Identifier, Input, Player, Skin
 from endstone.actor import Actor, Item, Mob
 from endstone.block import Block, BlockFace, BlockState, Sign
 from endstone.command import CommandSender
@@ -17,7 +17,7 @@ from endstone.lang import Translatable
 from endstone.level import Chunk, Dimension, Level, Location
 from endstone.map import MapView
 from endstone.plugin import Plugin
-from endstone.potion import Effect
+from endstone.potion import Effect, EffectType
 from endstone.util import SocketAddress, Vector
 
 __all__ = [
@@ -377,10 +377,9 @@ class ActorExplodeEvent(ActorEvent, Cancellable):
 
 class ActorEffectEvent(MobEvent, Cancellable):
     """
-    Called when an effect on a `Mob` changes.
+    Called when an effect is modified on a `Mob`.
 
-    This is fired before the change is applied. Cancelling the event prevents it. Assigning to `effect` may
-    change the duration, amplifier and display options of the effect, but not its type.
+    If the event is cancelled, no change will be made on the mob.
     """
     @property
     def is_cancelled(self) -> bool:
@@ -401,7 +400,7 @@ class ActorEffectEvent(MobEvent, Cancellable):
 
     class Action(enum.Enum):
         """
-        An enum to specify how the effect changed.
+        An enum to specify the action to be performed.
         """
 
         ADDED = 0
@@ -410,17 +409,26 @@ class ActorEffectEvent(MobEvent, Cancellable):
     @property
     def action(self) -> Action:
         """
-        How the effect changed.
+        The action which will be performed on the effect type.
         """
 
     @property
-    def effect(self) -> Effect:
+    def modified_type(self) -> Identifier[EffectType]:
         """
-        The effect involved in this event. Assigning an effect of another type raises `ValueError`.
+        The effect type which will be modified on the mob.
         """
 
-    @effect.setter
-    def effect(self, arg1: Effect) -> None: ...
+    @property
+    def old_effect(self) -> Effect | None:
+        """
+        The old effect of the changed type, which will be removed, or `None` if the mob did not have the changed effect type.
+        """
+
+    @property
+    def new_effect(self) -> Effect | None:
+        """
+        The new effect of the changed type to be applied, or `None` if the effect of the changed type will be removed.
+        """
 
 class ActorDismountEvent(ActorEvent, Cancellable):
     """
