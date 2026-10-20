@@ -36,6 +36,8 @@ struct InternalCauldronInteractionComponent {
     BlockPos pos;
     CauldronLevelChangeEvent::ChangeReason reason = CauldronLevelChangeEvent::ChangeReason::Unknown;
     bool handled = false;
+    bool has_result = false;
+    std::optional<ItemStack> result;
 };
 struct InternalDisconnectFlagComponent {};
 struct InternalEntityContainerOpenFlagComponent {};

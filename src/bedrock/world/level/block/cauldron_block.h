@@ -19,6 +19,9 @@
 #include "bedrock/world/level/block/block_event.h"
 #include "bedrock/world/level/block/cauldron_liquid_type.h"
 
+class ItemStack;
+class Player;
+
 class CauldronBlock : public ActorBlock {
 public:
     static constexpr int MIN_FILL_LEVEL = 0;
@@ -27,4 +30,7 @@ public:
     ENDSTONE_HOOK void use(BlockEvents::BlockPlayerInteractEvent &event_data) const;
     ENDSTONE_HOOK void setLiquidLevel(BlockSource &region, const BlockPos &pos, int liquid_level,
                                       CauldronLiquidType liquid_type) const;
+
+private:
+    ENDSTONE_HOOK static void _useInventory(Player &player, ItemStack &current, ItemStack &replace_with, int use_count);
 };

@@ -11,7 +11,7 @@
 
 namespace endstone::runtime {
 
-static constexpr std::array<std::pair<std::string_view, std::size_t>, 118> symbols = {{
+static constexpr std::array<std::pair<std::string_view, std::size_t>, 119> symbols = {{
     {"BlockState::StateListNode::mHead", 215092208},
     {"Enchant::mEnchants", 214656904},
     {"MobEffect::mMobEffects", 214658168},
@@ -42,6 +42,7 @@ static constexpr std::array<std::pair<std::string_view, std::size_t>, 118> symbo
     // CampfireBlockActor
     {"?_finishCooking@CampfireBlockActor@@AEAAXAEAVBlockSource@@H@Z", 32663744},
     // CauldronBlock
+    {"?_useInventory@CauldronBlock@@CAXAEAVPlayer@@AEAVItemStack@@1H@Z", 27547520},
     {"?setLiquidLevel@CauldronBlock@@QEBAXAEAVBlockSource@@AEBVBlockPos@@HW4CauldronLiquidType@@@Z", 27546224},
     {"?use@CauldronBlock@@QEBAXAEAVBlockPlayerInteractEvent@BlockEvents@@@Z", 27530720},
     // ChunkBlenderFactory

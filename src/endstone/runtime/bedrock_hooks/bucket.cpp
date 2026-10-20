@@ -15,7 +15,6 @@
 #include "bedrock/world/item/bucket_item.h"
 
 #include <optional>
-#include <vector>
 
 #include "bedrock/world/actor/actor.h"
 #include "bedrock/world/actor/player/player.h"
@@ -36,42 +35,7 @@
 #include "endstone/event/player/player_bucket_fill_event.h"
 #include "endstone/inventory/equipment_slot.h"
 #include "endstone/runtime/hook.h"
-
-namespace {
-
-std::vector<::ItemStack> inventoryOf(::Player &player)
-{
-    auto &inventory = player.getInventory();
-    std::vector<::ItemStack> items;
-    items.reserve(inventory.getContainerSize());
-    for (auto i = 0; i < inventory.getContainerSize(); ++i) {
-        items.push_back(inventory.getItem(i));
-    }
-    return items;
-}
-
-void replaceAcquired(::Player &player, const std::vector<::ItemStack> &before, const ::ItemStack &acquired,
-                     ::ItemStack replacement)
-{
-    auto &inventory = player.getInventory();
-    for (auto i = 0; i < static_cast<int>(before.size()); ++i) {
-        if (const auto &item = inventory.getItem(i); item != before[i] && item.matchesItem(acquired)) {
-            inventory.setItem(i, before[i]);
-            break;
-        }
-    }
-    if (replacement.isNull()) {
-        return;
-    }
-    for (auto i = 0; i < inventory.getContainerSize(); ++i) {
-        if (inventory.getItem(i).matchesItem(replacement)) {
-            return;
-        }
-    }
-    player.add(replacement);
-}
-
-}  // namespace
+#include "endstone/runtime/item_utils.h"
 
 InteractionResult BucketItem::_useOn(::ItemStack &item_stack, ::Actor &actor, BlockPos position, FacingID face,
                                      HandSlot hand_slot, const Vec3 &click_pos) const
@@ -180,15 +144,10 @@ InteractionResult BucketItem::_useOn(::ItemStack &item_stack, ::Actor &actor, Bl
     const auto replaced = !replacement || endstone::core::EndstoneItemStack::toMinecraft(*replacement) != *result_item;
     const auto split =
         replaced && fill_type == BucketFillType::Empty && !player.isCreative() && item_stack.getCount() > 1;
-    const auto swap_acquired = replaced && fill_type == BucketFillType::Empty && player.isCreative();
     std::optional<::ItemStack> stack;
     if (split) {
         stack = item_stack;
         item_stack.set(1);
-    }
-    std::vector<::ItemStack> before;
-    if (swap_acquired) {
-        before = inventoryOf(player);
     }
 
     const auto result =
@@ -205,10 +164,12 @@ InteractionResult BucketItem::_useOn(::ItemStack &item_stack, ::Actor &actor, Bl
             player.drop(filled, false);
         }
     }
-    else if (swap_acquired) {
+    else if (fill_type == BucketFillType::Empty && player.isCreative()) {
         if (result.isSuccessful()) {
-            replaceAcquired(player, before, *result_item,
-                            replacement ? endstone::core::EndstoneItemStack::toMinecraft(*replacement) : ::ItemStack{});
+            auto filled = replacement ? endstone::core::EndstoneItemStack::toMinecraft(*replacement) : ::ItemStack{};
+            if (!endstone::runtime::inventoryContains(player, filled)) {
+                player.add(filled);
+            }
         }
     }
     else if (result.isSuccessful() && replaced) {

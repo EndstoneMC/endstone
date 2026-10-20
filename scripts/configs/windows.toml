@@ -895,6 +895,22 @@ extra = 0
 pattern = "55 41 57 41 56 41 55 41 54 56 57 53 48 81 EC ? ? ? ? 48 8D AC 24 ? ? ? ? 48 C7 85 ? ? ? ? ? ? ? ? 48 89 D7 48 89 CE 48 8B 9A"
 
 [[signatures]]
+name = "?_useInventory@CauldronBlock@@CAXAEAVPlayer@@AEAVItemStack@@1H@Z"
+relative = false
+extra = 0
+# 1. locate CauldronBlock::use first (see the entry below); it calls the target at 17 sites with the player in
+#    rcx, the held ItemStack in rdx, the replacement ItemStack in r8 and the use count in r9d
+# 2. confirm from the body: it takes no `this`, compares the held item's name hash against
+#    VanillaItemNames::GlassBottle and VanillaItemNames::Bucket and posts an ActorUseItemEvent (variant index
+#    19) for each, then reads the Instabuild ability (index 11) through the ability layers; with it set the
+#    stack is left alone, otherwise ItemStackBase::set(count - useCount) shrinks it; the replacement is then
+#    added through the inventory (and dropped when it does not fit) or, when the stack ran out, assigned to the
+#    held slot
+# 3. cut at the prologue (`push rbp/r15/r14/r13/r12/rsi/rdi/rbx`, `sub rsp, 0x2A8`)
+# uniqueness: matches exactly once in 1.26.32, 1.26.36, 1.26.40, 1.26.51 and 1.26.52
+pattern = "55 41 57 41 56 41 55 41 54 56 57 53 48 81 EC A8 02 00 00 48 8D AC 24 80 00 00 00 48 C7 85 20 02 00 00 FE FF FF FF 45 89 CE 4C 89 C7 48 89 D3 48 89 CE 48 8B 42 08 48 85 C0 0F 84 ? ? ? ? 4C 8B 38 4D 85 FF 0F 84 ? ? ? ? 49 8B 87 ? ? ? ? 48 3B 05"
+
+[[signatures]]
 name = "?use@CauldronBlock@@QEBAXAEAVBlockPlayerInteractEvent@BlockEvents@@@Z"
 relative = false
 extra = 0
