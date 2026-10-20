@@ -16,13 +16,18 @@
 
 #include <cstdint>
 #include <cstring>
+#include <stdexcept>
 #include <string>
+#include <utility>
 
 #include <boost/uuid/name_generator_sha1.hpp>
 #include <boost/uuid/string_generator.hpp>
 #include <boost/uuid/uuid.hpp>
 
+#include "bedrock/core/string/string_hash.h"
+#include "bedrock/entity/weak_entity_ref.h"
 #include "bedrock/platform/uuid.h"
+#include "bedrock/world/actor/actor.h"
 #include "bedrock/world/attribute/attribute_instance.h"
 #include "bedrock/world/attribute/mutable_attribute_with_context.h"
 #include "endstone/attribute/attribute_instance.h"
@@ -32,40 +37,46 @@ namespace endstone::core {
 
 class EndstoneAttributeInstance : public AttributeInstance {
 public:
-    explicit EndstoneAttributeInstance(::MutableAttributeWithContext handle) : handle_(handle)
+    EndstoneAttributeInstance(WeakEntityRef entity, HashedString name)
+        : entity_(std::move(entity)), name_(std::move(name))
     {
-        Preconditions::checkState(handle_.isValid(), "Attribute not found.");
     }
 
-    [[nodiscard]] AttributeId getType() const override
-    {
-        return handle_.instance->getAttribute()->getName().getString();
-    }
+    [[nodiscard]] AttributeId getType() const override { return name_.getString(); }
 
     [[nodiscard]] float getBaseValue() const override
     {
-        return handle_.instance->getDefaultValue(static_cast<int>(AttributeOperands::OPERAND_CURRENT));
+        return getHandle().instance->getDefaultValue(static_cast<int>(AttributeOperands::OPERAND_CURRENT));
     }
 
     void setBaseValue(float value) override
     {
-        handle_.instance->setDefaultValue(value, static_cast<int>(AttributeOperands::OPERAND_CURRENT), handle_.context);
+        const auto handle = getHandle();
+        handle.instance->setDefaultValue(value, static_cast<int>(AttributeOperands::OPERAND_CURRENT), handle.context);
     }
 
-    [[nodiscard]] float getMinValue() const override { return handle_.instance->getMinValue(); }
+    [[nodiscard]] float getMinValue() const override { return getHandle().instance->getMinValue(); }
 
-    void setMinValue(float value) override { handle_.instance->setMinValue(value, handle_.context); }
+    void setMinValue(float value) override
+    {
+        const auto handle = getHandle();
+        handle.instance->setMinValue(value, handle.context);
+    }
 
-    [[nodiscard]] float getMaxValue() const override { return handle_.instance->getMaxValue(); }
+    [[nodiscard]] float getMaxValue() const override { return getHandle().instance->getMaxValue(); }
 
-    void setMaxValue(float value) override { handle_.instance->setMaxValue(value, handle_.context); }
+    void setMaxValue(float value) override
+    {
+        const auto handle = getHandle();
+        handle.instance->setMaxValue(value, handle.context);
+    }
 
-    [[nodiscard]] float getValue() const override { return handle_.instance->getCurrentValue(); }
+    [[nodiscard]] float getValue() const override { return getHandle().instance->getCurrentValue(); }
 
     [[nodiscard]] std::vector<AttributeModifier> getModifiers() const override
     {
         std::vector<AttributeModifier> modifiers;
-        for (const auto &modifier : handle_.instance->getModifiers()) {
+        for (const auto &modifier : getHandle().instance->getModifiers()) {
             modifiers.push_back(fromMinecraft(modifier));
         }
         return modifiers;
@@ -73,7 +84,7 @@ public:
 
     [[nodiscard]] std::optional<AttributeModifier> getModifier(AttributeModifierId id) const override
     {
-        for (const auto &modifier : handle_.instance->getModifiers()) {
+        for (const auto &modifier : getHandle().instance->getModifiers()) {
             if (AttributeModifierId{modifier.getName()} == id) {
                 return fromMinecraft(modifier);
             }
@@ -83,22 +94,36 @@ public:
 
     void addModifier(const AttributeModifier &modifier) override
     {
-        handle_.instance->addModifier(toMinecraft(modifier, /*serializable=*/true), handle_.context);
+        const auto handle = getHandle();
+        handle.instance->addModifier(toMinecraft(modifier, /*serializable=*/true), handle.context);
     }
 
     void addTransientModifier(const AttributeModifier &modifier) override
     {
-        handle_.instance->addModifier(toMinecraft(modifier, /*serializable=*/false), handle_.context);
+        const auto handle = getHandle();
+        handle.instance->addModifier(toMinecraft(modifier, /*serializable=*/false), handle.context);
     }
 
     void removeModifier(const AttributeModifier &modifier) override { removeModifier(modifier.getId()); }
 
     void removeModifier(AttributeModifierId id) override
     {
-        handle_.instance->removeModifier(idToMinecraftUuid(id), handle_.context);
+        const auto handle = getHandle();
+        handle.instance->removeModifier(idToMinecraftUuid(id), handle.context);
     }
 
 private:
+    [[nodiscard]] ::MutableAttributeWithContext getHandle() const
+    {
+        auto *actor = entity_.tryUnwrap<::Actor>(true);
+        if (!actor) {
+            throw std::runtime_error("Trying to access an actor that is no longer valid.");
+        }
+        auto handle = actor->getMutableAttribute(name_);
+        Preconditions::checkState(handle.isValid(), "Attribute not found.");
+        return handle;
+    }
+
     static AttributeModifier::Operation fromMinecraft(AttributeModifierOperation operation)
     {
         switch (operation) {
@@ -165,7 +190,8 @@ private:
         return ::mce::UUID{high, low};
     }
 
-    ::MutableAttributeWithContext handle_;
+    WeakEntityRef entity_;
+    HashedString name_;
 };
 
 }  // namespace endstone::core

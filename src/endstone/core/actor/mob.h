@@ -84,7 +84,8 @@ public:
         if (!attribute.isValid()) {
             return nullptr;
         }
-        return std::make_shared<EndstoneAttributeInstance>(attribute);
+        return std::make_shared<EndstoneAttributeInstance>(Base::getHandle().getWeakEntity(),
+                                                           attribute.instance->getAttribute()->getName());
     }
 
     [[nodiscard]] std::vector<NotNull<AttributeInstance>> getAttributes() override
@@ -92,7 +93,8 @@ public:
         std::vector<NotNull<AttributeInstance>> attributes;
         auto component = Base::getHandle().template getPersistentComponent<AttributesComponent>();
         for (auto &attribute : component->attributes.getAttributes()) {
-            attributes.emplace_back(std::make_shared<EndstoneAttributeInstance>(attribute));
+            attributes.emplace_back(std::make_shared<EndstoneAttributeInstance>(
+                Base::getHandle().getWeakEntity(), attribute.instance->getAttribute()->getName()));
         }
         return attributes;
     }
