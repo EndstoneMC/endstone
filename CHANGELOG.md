@@ -103,6 +103,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Unified `Object.as<T>()`/`is<T>()` casting API. `NotNull<T>` and `Nullable<T>` carry the same pair, so `event.getActor().as<Player>()` returns a `Nullable<Player>` sharing ownership with the original.
 - `endstone.Identifier` for namespaced ids, splitting `dim.id.namespace` from `dim.id.key` and distinguishing `Identifier[Dimension]` from `Identifier[ActorType]`. Plain strings are still accepted, and so is the registry entry itself, so `ItemStack(item_type)` works alongside `ItemStack("minecraft:beef")`.
 - `ActorType`, `EffectType` and `PotionType` in the registry API, each entry carrying a `translation_key`, plus the missing `ActorType.SULFUR_CUBE` and `ActorType.CUSHION` constants.
+- Game rule API: `Level.get_game_rule()`, `Level.set_game_rule()` and `Level.has_game_rule()`, keyed by a typed `GameRule` constant such as `GameRule.DO_FIRE_TICK`, covering every rule in the `GameRule` registry.
 - Binary NBT serialization (`dump`/`load`) with support for multiple formats.
 
 #### Server and Docker
@@ -158,6 +159,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - `Block.set_type`, `BlockState.type`, `Server.create_block_data` and `Inventory.contains`/`contains_at_least`/`all`/`first`/`remove` take an `Identifier` (e.g. `BlockType.AIR`). Plain `"namespace:key"` strings are still accepted.
 - `str()` on `BlockType`, `Enchantment` and `ItemType` returns a plain `"namespace:key"` string instead of the underlying `Identifier` repr.
 - **BREAKING**: `Server::createBossBar()` is no longer `const`, since the server now keeps track of the boss bars it hands out. C++ plugins holding a `const Server &` need a non-const one; Python call sites are unchanged.
+- **BREAKING**: The `endstone.metrics.charts`, `endstone.metrics.base` and `endstone.metrics.config` modules are gone; import the chart classes and `Metrics` from `endstone.metrics`.
 
 #### Platform
 
