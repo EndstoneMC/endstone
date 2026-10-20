@@ -134,7 +134,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - **BREAKING**: The command API takes the sender as a handle: `Command::execute()`, `CommandExecutor::onCommand()`, `PluginCommand::execute()`, `CommandMap::dispatch()`, `Server::dispatchCommand()` and `Command::testPermission()`/`testPermissionSilently()` take `NotNull<CommandSender>`, and `Server::getCommandSender()` returns `NotNull<ConsoleCommandSender>`. A C++ plugin must update the first parameter of its `onCommand` override or it will quietly stop overriding anything.
 - **BREAKING**: `Scheduler::runTask()` and its five variants return `Nullable<Task>`; `CommandMap::registerCommand()` takes `NotNull<Command>` and `getCommand()` returns `Nullable<Command>`; `PluginCommand::setExecutor()` takes `Nullable<CommandExecutor>`; `MapView`'s renderer methods use `NotNull<MapRenderer>`.
 - **BREAKING**: `Player::getScoreboard()` returns `NotNull<Scoreboard>` and `Player::setScoreboard()` takes one; `ServiceManager::registerService()` takes `NotNull<Service>` and `get()`/`load()` return `Nullable<Service>`.
-- **BREAKING**: The remaining raw-reference accessors use handles: `Actor::teleport()`, `BossBar::addPlayer()`/`removePlayer()`, `MapRenderer::render()`, `ServiceManager::unregister()`, `Server::createMap()`, `MapView::setDimension()`, `Objective::getScoreboard()`, `Score::getObjective()`, `Score::getScoreboard()`, `Dimension::dropItem()`, and the dimension and sender members of `DimensionEvent`, `PlayerDimensionChangeEvent`, `ScriptMessageEvent` and `ServerCommandEvent`. `Player::getAddress()` returns a reference rather than a copy.
+- **BREAKING**: The remaining raw-reference accessors use handles: `Actor::teleport()`, `BossBar::addPlayer()`/`removePlayer()`, `MapRenderer::render()`, `ServiceManager::unregister()`, `Server::createMap()`, `MapView::setDimension()`, `Objective::getScoreboard()`, `Score::getObjective()`, `Score::getScoreboard()`, `Dimension::dropItem()`, `ChunkEvent::getChunk()`, and the dimension and sender members of `DimensionEvent`, `PlayerDimensionChangeEvent`, `ScriptMessageEvent` and `ServerCommandEvent`. `Player::getAddress()` returns a reference rather than a copy.
 - **BREAKING**: Removed `Block::clone()`; copy the handle instead.
 - **BREAKING**: `Location.dimension` holds the dimension weakly. It gives `None` when unset, the dimension when loaded, and raises once unloaded; check with the new `Location.is_dimension_loaded` and `Dimension.is_valid`.
 - **BREAKING**: `Server.level` returns a `Level` and raises if the level has not been loaded yet, instead of returning `None`.
@@ -191,6 +191,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Fixed a Linux server that could hang instead of stopping on Ctrl+C or `docker stop`.
 - Fixed `Score.objective` reading freed memory once the `Score` it came from was dropped.
 - Fixed the server crashing when a plugin kept the sender of a command run through `/execute` or a command block and used it after the command had finished.
+- Fixed the server crashing when a plugin kept the chunk of a `ChunkLoadEvent` or `ChunkUnloadEvent` and used it later.
 
 #### API behaviour
 

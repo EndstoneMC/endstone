@@ -308,8 +308,7 @@ void init_event(py::module_ &m, py::class_<Event, PyEvent> &event)
 
     // Chunk events
     bind_event<ChunkEvent, DimensionEvent>(m, "ChunkEvent", "Represents a `Chunk` related event.")
-        .def_property_readonly("chunk", &ChunkEvent::getChunk, py::return_value_policy::reference,
-                               "The `Chunk` being loaded/unloaded.");
+        .def_property_readonly("chunk", &ChunkEvent::getChunk, "The `Chunk` being loaded/unloaded.");
     bind_event<ChunkLoadEvent, ChunkEvent>(m, "ChunkLoadEvent", "Called when a chunk is loaded.");
     bind_event<ChunkUnloadEvent, ChunkEvent>(m, "ChunkUnloadEvent", "Called when a chunk is unloaded.");
 

@@ -25,7 +25,7 @@ class ChunkUnloadEvent : public ChunkEvent {
 public:
     ENDSTONE_EVENT(ChunkUnloadEvent);
 
-    explicit ChunkUnloadEvent(Chunk &chunk) : ChunkEvent(chunk) {}
+    explicit ChunkUnloadEvent(const NotNull<Chunk> &chunk) : ChunkEvent(chunk) {}
     ~ChunkUnloadEvent() override = default;
 };
 

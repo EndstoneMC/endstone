@@ -265,18 +265,16 @@ void EndstoneServer::setLevel(::Level &level)
                 if (const auto dimension = level_->getDimension(lc.getDimension().getDimensionId())) {
                     static_cast<EndstoneDimension &>(*dimension).onChunkLoaded(lc);
                 }
-                const auto chunk = std::make_unique<EndstoneChunk>(lc);
-                ChunkLoadEvent e(*chunk);
-                getPluginManager().callEvent(e);
+                const auto e = std::make_shared<ChunkLoadEvent>(std::make_shared<EndstoneChunk>(lc));
+                getPluginManager().callEvent(*e);
             }
         },
         Bedrock::PubSub::ConnectPosition::AtBack, nullptr);
 
     on_chunk_unload_ = level.getLevelChunkEventManager()->getOnChunkDiscardedConnector().connect(
         [&](LevelChunk &lc) -> void {
-            const auto chunk = std::make_unique<EndstoneChunk>(lc);
-            ChunkUnloadEvent e(*chunk);
-            getPluginManager().callEvent(e);
+            const auto e = std::make_shared<ChunkUnloadEvent>(std::make_shared<EndstoneChunk>(lc));
+            getPluginManager().callEvent(*e);
         },
         Bedrock::PubSub::ConnectPosition::AtBack, nullptr);
 
