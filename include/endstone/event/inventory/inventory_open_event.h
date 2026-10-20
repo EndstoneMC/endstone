@@ -31,7 +31,7 @@ class InventoryOpenEvent : public Cancellable<InventoryEvent> {
 public:
     ENDSTONE_EVENT(InventoryOpenEvent);
 
-    InventoryOpenEvent(Inventory &inventory, const NotNull<Player> &player)
+    InventoryOpenEvent(const NotNull<Inventory> &inventory, const NotNull<Player> &player)
         : Cancellable(inventory), player_(player) {};
 
     /**

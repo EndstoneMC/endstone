@@ -41,8 +41,9 @@ public:
 
     ENDSTONE_EVENT(EnchantItemEvent);
 
-    EnchantItemEvent(Inventory &inventory, const NotNull<Player> &enchanter, const NotNull<Block> &enchant_block,
-                     ItemStack item, int exp_level_cost, Enchantments enchants_to_add, int which_button)
+    EnchantItemEvent(const NotNull<Inventory> &inventory, const NotNull<Player> &enchanter,
+                     const NotNull<Block> &enchant_block, ItemStack item, int exp_level_cost,
+                     Enchantments enchants_to_add, int which_button)
         : Cancellable(inventory), enchanter_(enchanter), enchant_block_(enchant_block), item_(std::move(item)),
           exp_level_cost_(exp_level_cost), enchants_to_add_(std::move(enchants_to_add)), which_button_(which_button)
     {

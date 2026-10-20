@@ -17,7 +17,7 @@
 #include "bedrock/world/actor/player/player.h"
 #include "bedrock/world/level/level.h"
 #include "endstone/core/entity/components/flag_components.h"
-#include "endstone/core/inventory/inventory.h"
+#include "endstone/core/inventory/actor_inventory.h"
 #include "endstone/core/player.h"
 #include "endstone/core/server.h"
 #include "endstone/event/inventory/inventory_open_event.h"
@@ -43,10 +43,11 @@ bool ContainerComponent::openContainer(Actor &container_actor, Player &player)
     }
     unpackLootTable(player.getLevel(), player.getDimensionId(), container_actor);
 
-    endstone::core::EndstoneInventory inventory{[this]() -> ::Container & { return container_; }};
-    endstone::InventoryOpenEvent e{inventory, player.getEndstoneActor<endstone::core::EndstonePlayer>()};
-    endstone::core::EndstoneServer::getInstance().getPluginManager().callEvent(e);
-    if (e.isCancelled()) {
+    const auto e = std::make_shared<endstone::InventoryOpenEvent>(
+        std::make_shared<endstone::core::EndstoneActorInventory>(container_actor.getWeakEntity()),
+        player.getEndstoneActor<endstone::core::EndstonePlayer>());
+    endstone::core::EndstoneServer::getInstance().getPluginManager().callEvent(*e);
+    if (e->isCancelled()) {
         containerClosed(player);
         return false;
     }

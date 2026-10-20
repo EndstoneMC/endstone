@@ -686,7 +686,7 @@ void init_event(py::module_ &m, py::class_<Event, PyEvent> &event)
 
     // Inventory events
     bind_event<InventoryEvent, Event>(m, "InventoryEvent", "Represents a player related inventory event.")
-        .def_property_readonly("inventory", &InventoryEvent::getInventory, py::return_value_policy::reference,
+        .def_property_readonly("inventory", &InventoryEvent::getInventory,
                                "The primary `Inventory` involved in this transaction.");
     bind_event<InventoryInteractEvent, InventoryEvent, ICancellable>(m, "InventoryInteractEvent", R"doc(
     An abstract base class for events that describe an interaction between a `Player` and the contents of an

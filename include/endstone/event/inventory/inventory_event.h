@@ -16,6 +16,7 @@
 
 #include "endstone/event/event.h"
 #include "endstone/inventory/inventory.h"
+#include "endstone/util/pointers.h"
 
 namespace endstone {
 
@@ -24,17 +25,17 @@ namespace endstone {
  */
 class InventoryEvent : public Event {
 public:
-    explicit InventoryEvent(Inventory &inventory) : inventory_(inventory) {};
+    explicit InventoryEvent(const NotNull<Inventory> &inventory) : inventory_(inventory) {};
 
     /**
      * Gets the primary Inventory involved in this transaction.
      *
      * @return The primary inventory
      */
-    [[nodiscard]] Inventory &getInventory() const { return inventory_; }
+    [[nodiscard]] const NotNull<Inventory> &getInventory() const { return inventory_; }
 
 private:
-    Inventory &inventory_;
+    NotNull<Inventory> inventory_;
 };
 
 }  // namespace endstone

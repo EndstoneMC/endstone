@@ -26,7 +26,7 @@ namespace endstone {
  */
 class InventoryInteractEvent : public Cancellable<InventoryEvent> {
 public:
-    InventoryInteractEvent(Inventory &inventory, const NotNull<Player> &who_clicked)
+    InventoryInteractEvent(const NotNull<Inventory> &inventory, const NotNull<Player> &who_clicked)
         : Cancellable(inventory), who_clicked_(who_clicked) {};
 
     /**

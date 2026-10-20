@@ -44,8 +44,8 @@ public:
 
     ENDSTONE_EVENT(PrepareItemEnchantEvent);
 
-    PrepareItemEnchantEvent(Inventory &inventory, const NotNull<Player> &enchanter, const NotNull<Block> &enchant_block,
-                            ItemStack item, Offers offers, int enchantment_bonus)
+    PrepareItemEnchantEvent(const NotNull<Inventory> &inventory, const NotNull<Player> &enchanter,
+                            const NotNull<Block> &enchant_block, ItemStack item, Offers offers, int enchantment_bonus)
         : Cancellable(inventory), enchanter_(enchanter), enchant_block_(enchant_block), item_(std::move(item)),
           offers_(std::move(offers)), enchantment_bonus_(enchantment_bonus)
     {

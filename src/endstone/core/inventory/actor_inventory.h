@@ -1,0 +1,48 @@
+// Copyright (c) 2024, The Endstone Project. (https://endstone.dev) All Rights Reserved.
+//
+// Licensed under the Apache License, Version 2.0 (the "License");
+// you may not use this file except in compliance with the License.
+// You may obtain a copy of the License at
+//
+//     http://www.apache.org/licenses/LICENSE-2.0
+//
+// Unless required by applicable law or agreed to in writing, software
+// distributed under the License is distributed on an "AS IS" BASIS,
+// WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+// See the License for the specific language governing permissions and
+// limitations under the License.
+
+#pragma once
+
+#include <stdexcept>
+#include <utility>
+
+#include "bedrock/entity/components/container_component.h"
+#include "bedrock/entity/weak_entity_ref.h"
+#include "bedrock/world/actor/actor.h"
+#include "endstone/core/inventory/inventory.h"
+
+namespace endstone::core {
+
+class EndstoneActorInventory : public EndstoneInventoryBase<Inventory> {
+public:
+    explicit EndstoneActorInventory(WeakEntityRef actor) : actor_(std::move(actor)) {}
+
+private:
+    [[nodiscard]] ::Container &getContainer() const override
+    {
+        auto *actor = actor_.tryUnwrap<::Actor>(true);
+        if (actor == nullptr) {
+            throw std::runtime_error("Trying to access an actor that is no longer valid.");
+        }
+        const auto *component = std::as_const(actor->getEntity()).tryGetComponent<ContainerComponent>();
+        if (component == nullptr) {
+            throw std::runtime_error("Trying to access an actor that is no longer valid.");
+        }
+        return *const_cast<ContainerComponent *>(component)->_getRawContainerPtr();
+    }
+
+    WeakEntityRef actor_;
+};
+
+}  // namespace endstone::core

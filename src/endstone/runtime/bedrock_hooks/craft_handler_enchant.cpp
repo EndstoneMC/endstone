@@ -16,6 +16,8 @@
 
 #include <algorithm>
 #include <iterator>
+#include <memory>
+#include <stdexcept>
 #include <utility>
 
 #include "bedrock/world/actor/player/player.h"
@@ -117,25 +119,28 @@ ItemStackNetResult CraftHandlerEnchant::_handleCraftAction(const ItemStackReques
     const auto original_cost = option->cost;
     const auto original_enchants_to_add = enchants_to_add;
 
-    endstone::core::EndstoneInventory inventory{[&]() -> ::Container & { return *input_container; }};
-    endstone::EnchantItemEvent event{
-        inventory,
-        player_.getEndstoneActor<endstone::core::EndstonePlayer>(),
-        endstone::core::EndstoneBlock::at(player_.getDimensionBlockSource(), model.getBlockPos()),
-        original_item,
-        original_cost,
-        std::move(enchants_to_add),
-        which_button,
-    };
-    server.getPluginManager().callEvent(event);
-    if (event.isCancelled() || event.getEnchantsToAdd().empty()) {
+    const std::shared_ptr<::Container> container(input_container.get(), [](::Container *) {});
+    const auto inventory = std::make_shared<endstone::core::EndstoneInventory>(
+        [weak = std::weak_ptr<::Container>(container)]() -> ::Container & {
+            const auto locked = weak.lock();
+            if (!locked) {
+                throw std::runtime_error("Trying to access an inventory that is no longer valid.");
+            }
+            return *locked;
+        });
+    const auto event = std::make_shared<endstone::EnchantItemEvent>(
+        inventory, player_.getEndstoneActor<endstone::core::EndstonePlayer>(),
+        endstone::core::EndstoneBlock::at(player_.getDimensionBlockSource(), model.getBlockPos()), original_item,
+        original_cost, std::move(enchants_to_add), which_button);
+    server.getPluginManager().callEvent(*event);
+    if (event->isCancelled() || event->getEnchantsToAdd().empty()) {
         return ItemStackNetResult::FailedToEnchant;
     }
 
-    option->cost = event.getExpLevelCost();
-    if (event.getEnchantsToAdd() != original_enchants_to_add) {
+    option->cost = event->getExpLevelCost();
+    if (event->getEnchantsToAdd() != original_enchants_to_add) {
         ItemEnchants::Enchantments instances;
-        for (const auto &[enchantment, level] : event.getEnchantsToAdd()) {
+        for (const auto &[enchantment, level] : event->getEnchantsToAdd()) {
             if (enchantment == nullptr) {
                 continue;
             }
@@ -146,7 +151,7 @@ ItemStackNetResult CraftHandlerEnchant::_handleCraftAction(const ItemStackReques
         option->enchants.setEnchantInstances(std::move(instances));
     }
 
-    const auto &item = event.getItem();
+    const auto &item = event->getItem();
     const auto replaced = item.getType() != original_item.getType() || item.getAmount() != original_item.getAmount() ||
                           item.getData() != original_item.getData() || item.getNbt() != original_item.getNbt();
     if (replaced) {
@@ -160,7 +165,7 @@ ItemStackNetResult CraftHandlerEnchant::_handleCraftAction(const ItemStackReques
         auto &craft_results = craft_request_handler_.getCraftResults();
         if (!craft_results.empty()) {
             craft_results.front().first = ItemInstance(
-                endstone::core::EndstoneItemStack::toMinecraft(enchantReplacement(item, event.getEnchantsToAdd())));
+                endstone::core::EndstoneItemStack::toMinecraft(enchantReplacement(item, event->getEnchantsToAdd())));
             player_.addOrRemoveComponent<endstone::core::InternalCraftResultReplacedFlagComponent>(true);
         }
     }

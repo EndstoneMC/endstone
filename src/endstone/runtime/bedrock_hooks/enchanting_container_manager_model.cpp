@@ -224,27 +224,24 @@ void EnchantingContainerManagerModel::recalculateOptions()
     }
     const auto original_offers = offers;
 
-    EndstoneContainerModelInventory inventory{input_container};
-    endstone::PrepareItemEnchantEvent event{
-        inventory,
+    const auto event = std::make_shared<endstone::PrepareItemEnchantEvent>(
+        std::make_shared<EndstoneContainerModelInventory>(input_container),
         player_.getEndstoneActor<endstone::core::EndstonePlayer>(),
         endstone::core::EndstoneBlock::at(player_.getDimensionBlockSource(), block_pos_),
-        endstone::core::EndstoneItemStack::fromMinecraft(input),
-        std::move(offers),
+        endstone::core::EndstoneItemStack::fromMinecraft(input), std::move(offers),
         static_cast<int>(
             EnchantUtils::getBookCasePositions(player_.getDimensionBlockSource(), static_cast<Vec3>(block_pos_))
-                .size()),
-    };
-    server.getPluginManager().callEvent(event);
+                .size()));
+    server.getPluginManager().callEvent(*event);
 
-    if (event.isCancelled()) {
+    if (event->isCancelled()) {
         enchant_options_.clear();
     }
-    else if (!areSameOffers(event.getOffers(), original_offers)) {
+    else if (!areSameOffers(event->getOffers(), original_offers)) {
         auto updated_options = enchant_options_;
-        for (std::size_t i = 0; i < event.getOffers().size(); ++i) {
-            if (!isSameOffer(event.getOffers()[i], original_offers[i]) &&
-                !applyOffer(updated_options[i], event.getOffers()[i], original_offers[i])) {
+        for (std::size_t i = 0; i < event->getOffers().size(); ++i) {
+            if (!isSameOffer(event->getOffers()[i], original_offers[i]) &&
+                !applyOffer(updated_options[i], event->getOffers()[i], original_offers[i])) {
                 return;
             }
         }

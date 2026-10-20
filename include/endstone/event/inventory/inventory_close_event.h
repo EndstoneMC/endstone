@@ -27,7 +27,7 @@ class InventoryCloseEvent : public InventoryEvent {
 public:
     ENDSTONE_EVENT(InventoryCloseEvent);
 
-    InventoryCloseEvent(Inventory &inventory, const NotNull<Player> &player)
+    InventoryCloseEvent(const NotNull<Inventory> &inventory, const NotNull<Player> &player)
         : InventoryEvent(inventory), player_(player) {};
 
     /**
