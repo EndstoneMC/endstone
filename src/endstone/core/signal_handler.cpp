@@ -14,6 +14,7 @@
 
 #include "endstone/core/signal_handler.h"
 
+#include <atomic>
 #include <csignal>
 
 #include <entt/locator/locator.hpp>
@@ -26,6 +27,10 @@
 
 namespace endstone::core {
 namespace {
+std::atomic<bool> shutdown_requested{false};
+static_assert(std::atomic<bool>::is_always_lock_free);
+
+#ifdef _WIN32
 void request_server_shutdown()
 {
     if (entt::locator<EndstoneServer>::has_value()) {
@@ -34,7 +39,6 @@ void request_server_shutdown()
     }
 }
 
-#ifdef _WIN32
 BOOL WINAPI console_ctrl_handler(DWORD event)
 {
     switch (event) {
@@ -66,7 +70,7 @@ void console_signal_handler(int signal)
 #ifdef __linux__
 void console_signal_handler(int signum, siginfo_t *info, void *ctx)
 {
-    request_server_shutdown();
+    shutdown_requested.store(true);
 }
 #endif
 }  // namespace
@@ -87,6 +91,11 @@ SignalHandler::SignalHandler()
     sigaction(SIGINT, &action, nullptr);
     sigaction(SIGTERM, &action, nullptr);
 #endif
+}
+
+bool SignalHandler::consumeShutdownRequest()
+{
+    return shutdown_requested.exchange(false);
 }
 
 SignalHandler::~SignalHandler()

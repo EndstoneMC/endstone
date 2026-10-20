@@ -22,6 +22,8 @@ class SignalHandler {
 public:
     SignalHandler();
     ~SignalHandler();
+
+    [[nodiscard]] static bool consumeShutdownRequest();
 };
 
 }  // namespace endstone::core

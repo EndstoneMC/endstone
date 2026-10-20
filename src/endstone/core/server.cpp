@@ -934,6 +934,9 @@ void EndstoneServer::tick(std::uint64_t current_tick, const std::function<void()
     // A frame can run several ticks, so the previous one ends where this one starts
     endTick();
 
+    if (SignalHandler::consumeShutdownRequest()) {
+        shutdown();
+    }
     scheduler_->mainThreadHeartbeat(current_tick);
     tick_function();
     for (const auto &p : getOnlinePlayers()) {

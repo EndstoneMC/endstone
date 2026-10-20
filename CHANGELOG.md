@@ -182,6 +182,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Fixed the server crashing on a broadcast once a player had left and rejoined. A player's permissions are now cleared when they leave, and messaging a player who is no longer on the server is a no-op.
 - Fixed the default permission lists holding on to a permission that `PluginManager.remove_permission()` had already freed.
 - Fixed `Permission.add_parent()` and `Permission.permissibles` reading an uninitialised field on a permission that was never registered with a plugin manager.
+- Fixed a Linux server that could hang instead of stopping on Ctrl+C or `docker stop`.
 
 #### API behaviour
 
