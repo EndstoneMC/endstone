@@ -45,7 +45,7 @@ public:
     /**
      * Sets the specified page in the book. Pages of the book must be contiguous.
      *
-     * @note The data can be up to 256 characters in length, additional characters are truncated.
+     * @note The data can be up to 256 bytes in length, additional text is truncated.
      *
      * Pages are 1-indexed.
      *
@@ -64,7 +64,7 @@ public:
     /**
      * Clears the existing book pages, and sets the book to use the provided pages.
      *
-     * @note Maximum 50 pages with 256 characters per page.
+     * @note Maximum 50 pages with 256 bytes per page.
      *
      * @param pages A list of pages to set the book to use
      */
@@ -77,7 +77,7 @@ public:
     /**
      * Clears the existing book pages, and sets the book to use the provided pages.
      *
-     * @note Maximum 50 pages with 256 characters per page.
+     * @note Maximum 50 pages with 256 bytes per page.
      *
      * @param pages A list of strings, each being a page
      */
@@ -86,7 +86,7 @@ public:
     /**
      * Adds new pages to the end of the book.
      *
-     * @note Up to a maximum of 50 pages with 256 characters per page.
+     * @note Up to a maximum of 50 pages with 256 bytes per page.
      *
      * @param pages A list of strings, each being a page
      */
@@ -99,7 +99,7 @@ public:
     /**
      * Adds new pages to the end of the book.
      *
-     * @note Up to a maximum of 50 pages with 256 characters per page.
+     * @note Up to a maximum of 50 pages with 256 bytes per page.
      *
      * @param pages A list of strings, each being a page
      */

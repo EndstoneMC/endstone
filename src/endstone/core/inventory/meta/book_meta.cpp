@@ -63,11 +63,16 @@ bool EndstoneBookMeta::setTitle(std::optional<std::string> title)
         title_.clear();
         return true;
     }
-    if (truncateCharacters(*title, WrittenBookItem::MAX_TITLE_LENGTH).size() != title->size()) {
+    if (title->size() > static_cast<std::size_t>(WrittenBookItem::MAX_TITLE_LENGTH)) {
         return false;
     }
     title_ = std::move(*title);
     return true;
+}
+
+void EndstoneBookMeta::setTitleUnchecked(std::string title)
+{
+    title_ = std::move(title);
 }
 
 bool EndstoneBookMeta::hasAuthor() const

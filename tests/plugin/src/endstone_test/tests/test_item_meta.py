@@ -141,14 +141,16 @@ def test_clearing_the_title() -> None:
     assert meta.has_title is False
 
 
-def test_title_of_sixteen_multibyte_characters_is_accepted() -> None:
-    """Verify the title limit counts characters, not bytes."""
+def test_title_limit_counts_bytes() -> None:
+    """Verify the title limit counts UTF-8 bytes, as BDS does."""
     meta = ItemStack("minecraft:written_book").item_meta
-    assert meta.set_title("€" * 16) is True
-    assert meta.title == "€" * 16
+    assert meta.set_title("x" * 16) is True
+    assert meta.title == "x" * 16
+    assert meta.set_title("€" * 6) is False
+    assert meta.title == "x" * 16
 
 
-def test_set_title_rejects_a_title_over_sixteen_characters() -> None:
+def test_set_title_rejects_a_title_over_sixteen_bytes() -> None:
     """Verify set_title refuses a long title and keeps the current one."""
     meta = ItemStack("minecraft:written_book").item_meta
     meta.title = "Kept"
@@ -156,7 +158,7 @@ def test_set_title_rejects_a_title_over_sixteen_characters() -> None:
     assert meta.title == "Kept"
 
 
-def test_assigning_a_title_over_sixteen_characters_raises() -> None:
+def test_assigning_a_title_over_sixteen_bytes_raises() -> None:
     """Verify assigning a long title raises instead of cutting it."""
     meta = ItemStack("minecraft:written_book").item_meta
     with pytest.raises(ValueError):

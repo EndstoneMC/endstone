@@ -39,6 +39,7 @@
 #include "endstone/color_format.h"
 #include "endstone/core/entity/components/flag_components.h"
 #include "endstone/core/inventory/item_factory.h"
+#include "endstone/core/inventory/meta/book_meta.h"
 #include "endstone/core/player.h"
 #include "endstone/core/server.h"
 #include "endstone/core/skin.h"
@@ -222,7 +223,7 @@ void EndstonePacketHandler::handle(BookEditPacket &packet)
                        }
                    },
                    [&](const BookEditAction::Finalize &action) {
-                       new_book_meta->setTitle(action.title);
+                       static_cast<EndstoneBookMeta &>(*new_book_meta).setTitleUnchecked(action.title);
                        new_book_meta->setAuthor(action.author);
                        new_book_meta->setGeneration(BookMeta::Generation::Original);
                    },

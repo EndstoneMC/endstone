@@ -108,21 +108,16 @@ public:
     }
 
 protected:
-    static std::string truncateCharacters(std::string text, std::size_t limit)
-    {
-        std::size_t count = 0;
-        for (std::size_t i = 0; i < text.size(); ++i) {
-            if ((static_cast<unsigned char>(text[i]) & 0xC0) != 0x80 && count++ == limit) {
-                text.resize(i);
-                break;
-            }
-        }
-        return text;
-    }
-
     static std::string validatePage(std::string page)
     {
-        return truncateCharacters(std::move(page), WrittenBookItem::MAX_PAGE_LENGTH);
+        if (page.size() > static_cast<std::size_t>(WrittenBookItem::MAX_PAGE_LENGTH)) {
+            std::size_t length = WrittenBookItem::MAX_PAGE_LENGTH;
+            while (length > 0 && (static_cast<unsigned char>(page[length]) & 0xC0) == 0x80) {
+                --length;
+            }
+            page.resize(length);
+        }
+        return page;
     }
 
     void internalAddPage(std::string page)

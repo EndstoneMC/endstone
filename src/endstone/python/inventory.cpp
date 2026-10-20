@@ -229,7 +229,8 @@ void init_inventory(py::module_ &m, py::class_<ItemStack> &item_stack)
         .def_property("map_view", &MapMeta::getMapView, &MapMeta::setMapView, py::return_value_policy::reference,
                       "The map view associated with this map item.");
 
-    py::classh<WritableBookMeta, ItemMeta>(m, "WritableBookMeta", "Represents the meta for a writable book that can have pages.")
+    py::classh<WritableBookMeta, ItemMeta>(m, "WritableBookMeta",
+                                           "Represents the meta for a writable book that can have pages.")
         .def_property_readonly("has_pages", &WritableBookMeta::hasPages, "Whether the book has pages.")
         .def("get_page", &WritableBookMeta::getPage, py::arg("page"), R"doc(
     Gets the specified page in the book. The given page must exist.
@@ -247,7 +248,7 @@ void init_inventory(py::module_ &m, py::class_<ItemStack> &item_stack)
     Sets the specified page in the book. Pages of the book must be contiguous.
 
     Note:
-        The data can be up to 256 characters in length, additional characters are truncated.
+        The data can be up to 256 bytes in length, additional text is truncated.
 
     Pages are 1-indexed.
 
@@ -273,7 +274,7 @@ void init_inventory(py::module_ &m, py::class_<ItemStack> &item_stack)
     Adds new pages to the end of the book.
 
     Note:
-        Up to a maximum of 50 pages with 256 characters per page.
+        Up to a maximum of 50 pages with 256 bytes per page.
 
     Args:
         pages: A list of strings, each being a page.
@@ -293,14 +294,14 @@ void init_inventory(py::module_ &m, py::class_<ItemStack> &item_stack)
             "title", &BookMeta::getTitle,
             [](BookMeta &self, std::optional<std::string> title) {
                 if (!self.setTitle(std::move(title))) {
-                    throw std::invalid_argument("A book title is limited to 16 characters.");
+                    throw std::invalid_argument("A book title is limited to 16 bytes.");
                 }
             },
-            "The title of the book. Assigning a title longer than 16 characters raises.")
+            "The title of the book. Assigning a title longer than 16 bytes raises.")
         .def("set_title", &BookMeta::setTitle, py::arg("title"), R"doc(
     Sets the title of the book.
 
-    Limited to 16 characters. Removes the title when given `None`.
+    Limited to 16 bytes. Removes the title when given `None`.
 
     Args:
         title: The title to set.

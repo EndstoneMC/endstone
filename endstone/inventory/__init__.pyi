@@ -588,7 +588,7 @@ class WritableBookMeta(ItemMeta):
         Sets the specified page in the book. Pages of the book must be contiguous.
 
         Note:
-            The data can be up to 256 characters in length, additional characters are truncated.
+            The data can be up to 256 bytes in length, additional text is truncated.
 
         Pages are 1-indexed.
 
@@ -610,7 +610,7 @@ class WritableBookMeta(ItemMeta):
         Adds new pages to the end of the book.
 
         Note:
-            Up to a maximum of 50 pages with 256 characters per page.
+            Up to a maximum of 50 pages with 256 bytes per page.
 
         Args:
             pages: A list of strings, each being a page.
@@ -640,7 +640,7 @@ class BookMeta(WritableBookMeta):
     @property
     def title(self) -> str:
         """
-        The title of the book. Assigning a title longer than 16 characters raises.
+        The title of the book. Assigning a title longer than 16 bytes raises.
         """
 
     @title.setter
@@ -649,7 +649,7 @@ class BookMeta(WritableBookMeta):
         """
         Sets the title of the book.
 
-        Limited to 16 characters. Removes the title when given `None`.
+        Limited to 16 bytes. Removes the title when given `None`.
 
         Args:
             title: The title to set.

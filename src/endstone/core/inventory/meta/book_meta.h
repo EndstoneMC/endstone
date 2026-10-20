@@ -28,6 +28,7 @@ public:
     [[nodiscard]] bool hasTitle() const override;
     [[nodiscard]] std::string getTitle() const override;
     bool setTitle(std::optional<std::string> title) override;
+    void setTitleUnchecked(std::string title);
     [[nodiscard]] bool hasAuthor() const override;
     [[nodiscard]] std::string getAuthor() const override;
     void setAuthor(std::optional<std::string> author) override;
