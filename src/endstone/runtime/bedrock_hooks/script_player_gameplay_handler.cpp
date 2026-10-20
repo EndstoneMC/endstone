@@ -122,29 +122,31 @@ bool handleEvent(const PlayerOpenContainerEvent &event)
     return true;
 }
 
-bool handleEvent(const PlayerClosedContainerEvent &event)
+void closeOpenContainer(const ::Player &player)
 {
-    const auto *player = event.player.tryUnwrap<::Player>();
-    if (player == nullptr) {
-        return true;
-    }
-
-    const auto it = open_container_positions.find(player->getOrCreateUniqueID().raw_id);
+    const auto it = open_container_positions.find(player.getOrCreateUniqueID().raw_id);
     if (it == open_container_positions.end()) {
-        return true;
+        return;
     }
     const auto block_pos = it->second;
     open_container_positions.erase(it);
 
-    const auto container = tryGetContainerAt(*player, block_pos);
+    const auto container = tryGetContainerAt(player, block_pos);
     if (!container) {
-        return true;
+        return;
     }
 
     const auto &server = endstone::core::EndstoneServer::getInstance();
     endstone::InventoryCloseEvent e{container->getInventory(),
-                                    player->getEndstoneActor<endstone::core::EndstonePlayer>()};
+                                    player.getEndstoneActor<endstone::core::EndstonePlayer>()};
     server.getPluginManager().callEvent(e);
+}
+
+bool handleEvent(const PlayerClosedContainerEvent &event)
+{
+    if (const auto *player = event.player.tryUnwrap<::Player>(); player) {
+        closeOpenContainer(*player);
+    }
     return true;
 }
 
@@ -192,11 +194,12 @@ bool handleEvent(const PlayerDisconnectEvent &event)
     if (auto *player = WeakEntityRef(event.player).tryUnwrap<::Player>(); player) {
         const auto &server = endstone::core::EndstoneServer::getInstance();
         auto endstone_player = player->getEndstoneActor<endstone::core::EndstonePlayer>();
-        open_container_positions.erase(player->getOrCreateUniqueID().raw_id);
         if (player->hasComponent<endstone::core::InternalLoginCancelledFlagComponent>()) {
+            open_container_positions.erase(player->getOrCreateUniqueID().raw_id);
             endstone_player->disconnect();
             return true;
         }
+        closeOpenContainer(*player);
 
         endstone::Message quit_message = endstone::Translatable{
             endstone::ColorFormat::Yellow + "%multiplayer.player.left", {endstone_player->getName()}};
