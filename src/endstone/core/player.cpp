@@ -18,7 +18,6 @@
 
 #include <algorithm>
 #include <cstdint>
-#include <functional>
 #include <string_view>
 #include <unordered_map>
 #include <unordered_set>
@@ -969,51 +968,21 @@ void EndstonePlayer::onFormResponse(std::uint32_t form_id, const nlohmann::json 
         return;
     }
 
-    std::function<void()> submit;
+    std::variant<std::monostate, int, JsonArray> response;
     try {
         std::visit(overloaded{
-                       [&](const MessageForm &form) {
-                           const int selection = json.get<bool>() ? 0 : 1;
-                           submit = [&form, this, selection] {
-                               if (const auto callback = form.getOnSubmit()) {
-                                   callback(self(), selection);
-                               }
-                           };
-                       },
-                       [&](const ActionForm &form) {
-                           const int selection = json.get<int>();
-                           submit = [&form, this, selection] {
-                               if (const auto callback = form.getOnSubmit()) {
-                                   callback(self(), selection);
-                               }
-                               int index = 0;
-                               for (const auto &controls = form.getControls(); const auto &control : controls) {
-                                   if (std::holds_alternative<Button>(control)) {
-                                       if (index == selection) {
-                                           if (const auto on_click = std::get<Button>(control).getOnClick()) {
-                                               on_click(self());
-                                           }
-                                           break;
-                                       }
-                                       ++index;
-                                   }
-                               }
-                           };
-                       },
-                       [&](const ModalForm &form) {
-                           auto values = json.get<JsonArray>();
-                           submit = [&form, this, values = std::move(values)] {
-                               if (auto callback = form.getOnSubmit()) {
-                                   callback(self(), values);
-                               }
-                           };
-                       },
+                       [&](const MessageForm &) { response = json.get<bool>() ? 0 : 1; },
+                       [&](const ActionForm &) { response = json.get<int>(); },
+                       [&](const ModalForm &) { response = json.get<JsonArray>(); },
                    },
                    form_variant);
     }
     catch (const nlohmann::json::exception &e) {
         getServer().getLogger().debug("Closing form {} of {} after a malformed response: {}", form_id, getName(),
                                       e.what());
+    }
+
+    if (std::holds_alternative<std::monostate>(response)) {
         try {
             std::visit(overloaded{[this](auto &&form) {
                            if (const auto callback = form.getOnClose()) {
@@ -1022,15 +991,44 @@ void EndstonePlayer::onFormResponse(std::uint32_t form_id, const nlohmann::json 
                        }},
                        form_variant);
         }
-        catch (std::exception &close_error) {
-            getServer().getLogger().error("Error occurred when calling a on close callback of a form: {}",
-                                          close_error.what());
+        catch (std::exception &e) {
+            getServer().getLogger().error("Error occurred when calling a on close callback of a form: {}", e.what());
         }
         return;
     }
 
     try {
-        submit();
+        std::visit(overloaded{
+                       [&](const MessageForm &form) {
+                           if (const auto callback = form.getOnSubmit()) {
+                               callback(self(), std::get<int>(response));
+                           }
+                       },
+                       [&](const ActionForm &form) {
+                           const auto selection = std::get<int>(response);
+                           if (const auto callback = form.getOnSubmit()) {
+                               callback(self(), selection);
+                           }
+                           int index = 0;
+                           for (const auto &controls = form.getControls(); const auto &control : controls) {
+                               if (std::holds_alternative<Button>(control)) {
+                                   if (index == selection) {
+                                       if (const auto on_click = std::get<Button>(control).getOnClick()) {
+                                           on_click(self());
+                                       }
+                                       break;
+                                   }
+                                   ++index;
+                               }
+                           }
+                       },
+                       [&](const ModalForm &form) {
+                           if (auto callback = form.getOnSubmit()) {
+                               callback(self(), std::get<JsonArray>(response));
+                           }
+                       },
+                   },
+                   form_variant);
     }
     catch (std::exception &e) {
         getServer().getLogger().error("Error occurred when calling a on submit callback of a form: {}", e.what());
