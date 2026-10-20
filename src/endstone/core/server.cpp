@@ -682,7 +682,6 @@ void EndstoneServer::reloadData()
     auto &level = static_cast<EndstoneLevel &>(getLevel()).getHandle();
     server_instance_->onRequestResourceReload();
     level.loadFunctionManager();
-    initRegistries();
 }
 
 void EndstoneServer::broadcast(const Message &message, const std::string &permission) const
