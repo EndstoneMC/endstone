@@ -618,7 +618,17 @@ void EndstonePluginManager::removePermission(const NotNull<Permission> &perm)
 void EndstonePluginManager::removePermission(std::string name)
 {
     std::ranges::transform(name, name.begin(), [](unsigned char c) { return std::tolower(c); });
-    permissions_.erase(name);
+    const auto it = permissions_.find(name);
+    if (it == permissions_.end()) {
+        return;
+    }
+    const auto perm = it->second;
+    permissions_.erase(it);
+    for (const auto level : {PermissionLevel::Default, PermissionLevel::Operator, PermissionLevel::Console}) {
+        if (default_perms_.at(level).get<1>().erase(perm) > 0) {
+            dirtyPermissibles(level);
+        }
+    }
 }
 
 std::vector<NotNull<Permission>> EndstonePluginManager::getDefaultPermissions(PermissionLevel level) const
