@@ -170,6 +170,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Removed
 
+#### Events
+
+- **BREAKING**: The deprecated `event.cancelled` property. Use `event.is_cancelled` or `event.cancel()`.
+
 #### Networking
 
 - **BREAKING**: `Server.port_v6` and `ServerListPingEvent.local_port_v6`. A server advertises one game port; the separate IPv6 port was rarely set and has no counterpart under NetherNet, which shares a single port across both families. Use `Server.port` and `ServerListPingEvent.local_port`. The IPv6 port field in the LAN advertisement is now passed through untouched rather than being rewritten from the event.
