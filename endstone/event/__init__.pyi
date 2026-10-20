@@ -2484,7 +2484,7 @@ class PlayerPickupExperienceEvent(PlayerEvent, Cancellable):
     """
     Called when a player picks up an experience orb.
 
-    Cancelling the event leaves the orb in the world.
+    Cancelling the event stops the player from gaining the experience, but the orb is still removed.
     """
     @property
     def is_cancelled(self) -> bool:

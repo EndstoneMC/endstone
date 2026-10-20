@@ -677,7 +677,7 @@ void init_event(py::module_ &m, py::class_<Event, PyEvent> &event)
     bind_event<PlayerPickupExperienceEvent, PlayerEvent, ICancellable>(m, "PlayerPickupExperienceEvent", R"doc(
     Called when a player picks up an experience orb.
 
-    Cancelling the event leaves the orb in the world.
+    Cancelling the event stops the player from gaining the experience, but the orb is still removed.
 )doc")
         .def_property_readonly("amount", &PlayerPickupExperienceEvent::getAmount,
                                "The amount of experience the orb is worth.");
