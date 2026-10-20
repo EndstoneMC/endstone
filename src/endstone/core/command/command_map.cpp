@@ -210,19 +210,11 @@ void EndstoneCommandMap::unregisterCommand(std::string name)
     }
 
     // Remove enums introduced by custom commands
-    if (custom_commands_.contains(name)) {
-        for (const auto &overload : signature->overloads) {
-            for (const auto &param : overload.params) {
-                if (param.param_type != CommandParameterDataType::Enum || !param.enum_name_or_postfix) {
-                    continue;
-                }
-                if (std::string_view(param.enum_name_or_postfix) == "Boolean" ||
-                    std::string_view(param.enum_name_or_postfix) == "Block") {
-                    continue;
-                }
-                clearEnumValues(param.enum_name_or_postfix);
-            }
+    if (const auto it = custom_enums_.find(name); it != custom_enums_.end()) {
+        for (const auto &enum_name : it->second) {
+            clearEnumValues(enum_name);
         }
+        custom_enums_.erase(it);
     }
 
     // TODO: remove enum value constraints for name in enum name CommandName
@@ -356,6 +348,7 @@ bool EndstoneCommandMap::registerCommand(NotNull<Command> command)
 
                 // Add enum
                 auto symbol = registry.addEnumValues(enum_name_final, parameter.values);
+                custom_enums_[name].push_back(enum_name_final);
 
                 // Check if the enum has been added
                 auto it = registry.enum_lookup_.find(enum_name_final);

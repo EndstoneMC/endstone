@@ -46,6 +46,7 @@ private:
     EndstoneServer &server_;
     std::recursive_mutex mutex_;
     std::unordered_map<std::string, NotNull<Command>> custom_commands_;
+    std::unordered_map<std::string, std::vector<std::string>> custom_enums_;
 
     static const std::unordered_map<std::string, CommandRegistry::HardNonTerminal> TYPE_SYMBOLS;
 };
