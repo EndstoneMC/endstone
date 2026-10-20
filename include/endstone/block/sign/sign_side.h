@@ -53,7 +53,7 @@ public:
      * For example, `setLine(0, "Line One")` will set the first line to "Line One".
      *
      * @param index the index of the line to set, between 0 and 3
-     * @param line the new text to set
+     * @param line the new text to set, dropping anything after a line break
      */
     virtual void setLine(int index, std::string line) = 0;
 

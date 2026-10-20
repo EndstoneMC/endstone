@@ -262,7 +262,7 @@ void init_block(py::module_ &m, py::classh<Block> &block)
 
     Args:
         index: The index of the line to set, between 0 and 3.
-        line: The new text to set.
+        line: The new text to set. Anything after a line break is dropped.
 )doc")
         .def_property("glowing_text", &SignSide::isGlowingText, &SignSide::setGlowingText,
                       "Whether this side of the sign has glowing text.")

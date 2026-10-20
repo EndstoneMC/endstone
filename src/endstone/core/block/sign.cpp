@@ -99,6 +99,7 @@ void EndstoneSignSide::setLine(int index, std::string line)
     Preconditions::checkArgument(index >= 0 && index < ::SignBlockActor::NUM_LINES,
                                  "Line index must be between 0 and {}, got {}.", ::SignBlockActor::NUM_LINES - 1,
                                  index);
+    line.resize(std::min(line.size(), line.find('\n')));
     auto lines = getLines();
     lines[index] = std::move(line);
     getSign().setMessageForServerScripingOnly(side_, joinLines(lines), {});
