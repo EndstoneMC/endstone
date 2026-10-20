@@ -15,6 +15,7 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
+#include "bedrock/world/item/map_constants.h"
 #include "endstone/core/level/dimension.h"
 #include "endstone/core/map/map_canvas.h"
 #include "endstone/core/map/map_renderer.h"
@@ -111,6 +112,13 @@ bool EndstoneMapView::removeRenderer(const NotNull<MapRenderer> &renderer)
     auto it = std::ranges::find_if(renderers_, [&](const auto &r) { return renderer == r; });
     if (it != renderers_.end()) {
         renderers_.erase(it);
+        for (const auto &[id, canvas] : canvases_.at(renderer)) {
+            for (auto x = 0; x < MapConstants::MAP_SIZE; ++x) {
+                for (auto y = 0; y < MapConstants::MAP_SIZE; ++y) {
+                    canvas->setPixel(x, y, 0);
+                }
+            }
+        }
         canvases_.erase(renderer);
         return true;
     }
