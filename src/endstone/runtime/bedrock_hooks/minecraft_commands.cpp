@@ -33,13 +33,13 @@ MCRESULT MinecraftCommands::executeCommand(CommandContext &ctx, bool suppress_ou
         auto command_line = ctx.getCommand();
         auto player = ctx.getOrigin().getEntity()->getEndstoneActor<endstone::core::EndstonePlayer>();
 
-        endstone::PlayerCommandEvent e(player, command_line);
-        server.getPluginManager().callEvent(e);
-        if (e.isCancelled()) {
+        const auto e = std::make_shared<endstone::PlayerCommandEvent>(player, command_line);
+        server.getPluginManager().callEvent(*e);
+        if (e->isCancelled()) {
             return MCRESULT_CommandsDisabled;
         }
 
-        command_line = e.getCommand();
+        command_line = e->getCommand();
         if (server.logCommands()) {
             server.getLogger().info("{} issued server command: {}", player->getName(), command_line);
         }
@@ -52,13 +52,13 @@ MCRESULT MinecraftCommands::executeCommand(CommandContext &ctx, bool suppress_ou
         auto command_line = ctx.getCommand();
         auto console = server.getCommandSender();
 
-        endstone::ServerCommandEvent e(console, command_line);
-        server.getPluginManager().callEvent(e);
-        if (e.isCancelled()) {
+        const auto e = std::make_shared<endstone::ServerCommandEvent>(console, command_line);
+        server.getPluginManager().callEvent(*e);
+        if (e->isCancelled()) {
             return MCRESULT_CommandsDisabled;
         }
 
-        command_line = e.getCommand();
+        command_line = e->getCommand();
         if (server.dispatchCommand(console, command_line)) {
             return MCRESULT_Success;
         }

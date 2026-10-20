@@ -77,13 +77,13 @@ std::optional<SpawnPosition> fire_set_spawn_event(Player &player, const BlockPos
             endstone::Location{server.getEndstoneLevel()->getDimension(dimension), position.x, position.y, position.z};
     }
 
-    endstone::PlayerSetSpawnEvent event{endstone_player, cause, std::move(location)};
-    server.getPluginManager().callEvent(event);
-    if (event.isCancelled()) {
+    const auto event = std::make_shared<endstone::PlayerSetSpawnEvent>(endstone_player, cause, std::move(location));
+    server.getPluginManager().callEvent(*event);
+    if (event->isCancelled()) {
         return std::nullopt;
     }
 
-    return get_spawn_position(event.getLocation(), SpawnPosition{position, dimension});
+    return get_spawn_position(event->getLocation(), SpawnPosition{position, dimension});
 }
 
 }  // namespace
@@ -102,13 +102,13 @@ void Player::teleportTo(const Vec3 &pos, bool should_stop_riding, int cause, int
     const auto &server = endstone::core::EndstoneServer::getInstance();
     auto player = getEndstoneActor<endstone::core::EndstonePlayer>();
     const endstone::Location to{player->getDimension(), pos.x, pos.y, pos.z, getRotation().x, getRotation().y};
-    endstone::PlayerTeleportEvent e{player, player->getLocation(), to};
-    server.getPluginManager().callEvent(e);
-    if (e.isCancelled()) {
+    const auto e = std::make_shared<endstone::PlayerTeleportEvent>(player, player->getLocation(), to);
+    server.getPluginManager().callEvent(*e);
+    if (e->isCancelled()) {
         return;
     }
 
-    auto final_pos = Vec3(e.getTo().getX(), e.getTo().getY(), e.getTo().getZ());
+    auto final_pos = Vec3(e->getTo().getX(), e->getTo().getY(), e->getTo().getZ());
     ENDSTONE_HOOK_CALL_ORIGINAL(&Player::teleportTo, this, final_pos, should_stop_riding, cause, entity_type,
                                 keep_velocity);
 }
@@ -120,9 +120,10 @@ void Player::completeUsingItem()
     const auto hand = inventory_->getSelectedSlot().container_id == CONTAINER_ID_INVENTORY
                         ? endstone::EquipmentSlot::Hand
                         : endstone::EquipmentSlot::OffHand;
-    endstone::PlayerItemConsumeEvent e{getEndstoneActor<endstone::core::EndstonePlayer>(), std::move(item), hand};
-    server.getPluginManager().callEvent(e);
-    if (e.isCancelled()) {
+    const auto e = std::make_shared<endstone::PlayerItemConsumeEvent>(
+        getEndstoneActor<endstone::core::EndstonePlayer>(), std::move(item), hand);
+    server.getPluginManager().callEvent(*e);
+    if (e->isCancelled()) {
         setStatusFlag(ActorFlags::USINGITEM, false);
         item_in_use_.clearItemInUse(getEntity());
         return;
@@ -137,9 +138,9 @@ bool Player::drop(const ItemStack &item, bool randomly)
     auto player = getEndstoneActor<endstone::core::EndstonePlayer>();
     if (isAlive() && isPlayerInitialized()) {
         const auto drop = endstone::core::EndstoneItemStack::fromMinecraft(item);
-        endstone::PlayerDropItemEvent e(player, drop);
-        server.getPluginManager().callEvent(e);
-        if (e.isCancelled()) {
+        const auto e = std::make_shared<endstone::PlayerDropItemEvent>(player, drop);
+        server.getPluginManager().callEvent(*e);
+        if (e->isCancelled()) {
             return false;
         }
     }
@@ -149,9 +150,10 @@ bool Player::drop(const ItemStack &item, bool randomly)
 void Player::addExperience(int amount)
 {
     const auto &server = endstone::core::EndstoneServer::getInstance();
-    endstone::PlayerExpChangeEvent e{getEndstoneActor<endstone::core::EndstonePlayer>(), amount};
-    server.getPluginManager().callEvent(e);
-    ENDSTONE_HOOK_CALL_ORIGINAL(&Player::addExperience, this, e.getAmount());
+    const auto e =
+        std::make_shared<endstone::PlayerExpChangeEvent>(getEndstoneActor<endstone::core::EndstonePlayer>(), amount);
+    server.getPluginManager().callEvent(*e);
+    ENDSTONE_HOOK_CALL_ORIGINAL(&Player::addExperience, this, e->getAmount());
 }
 
 void Player::addLevels(int levels)
@@ -163,8 +165,9 @@ void Player::addLevels(int levels)
         return;
     }
     const auto &server = endstone::core::EndstoneServer::getInstance();
-    endstone::PlayerLevelChangeEvent e{getEndstoneActor<endstone::core::EndstonePlayer>(), old_level, new_level};
-    server.getPluginManager().callEvent(e);
+    const auto e = std::make_shared<endstone::PlayerLevelChangeEvent>(
+        getEndstoneActor<endstone::core::EndstonePlayer>(), old_level, new_level);
+    server.getPluginManager().callEvent(*e);
 }
 
 bool Player::take(Actor &actor, int unknown, int favored_slot)
@@ -178,9 +181,9 @@ bool Player::take(Actor &actor, int unknown, int favored_slot)
         const auto &server = endstone::core::EndstoneServer::getInstance();
         auto player = getEndstoneActor<endstone::core::EndstonePlayer>();
         auto item = actor.getEndstoneActor<endstone::core::EndstoneItem>();
-        endstone::PlayerPickupItemEvent e(player, item);
-        server.getPluginManager().callEvent(e);
-        if (e.isCancelled()) {
+        const auto e = std::make_shared<endstone::PlayerPickupItemEvent>(player, item);
+        server.getPluginManager().callEvent(*e);
+        if (e->isCancelled()) {
             return false;
         }
     }
@@ -188,9 +191,9 @@ bool Player::take(Actor &actor, int unknown, int favored_slot)
         const auto &server = endstone::core::EndstoneServer::getInstance();
         auto player = getEndstoneActor<endstone::core::EndstonePlayer>();
         auto arrow = actor.getEndstoneActor();
-        endstone::PlayerPickupArrowEvent e(player, arrow);
-        server.getPluginManager().callEvent(e);
-        if (e.isCancelled()) {
+        const auto e = std::make_shared<endstone::PlayerPickupArrowEvent>(player, arrow);
+        server.getPluginManager().callEvent(*e);
+        if (e->isCancelled()) {
             return false;
         }
     }

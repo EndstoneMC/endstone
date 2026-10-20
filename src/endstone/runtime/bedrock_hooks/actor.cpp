@@ -38,13 +38,13 @@ void Actor::teleportTo(const Vec3 &pos, bool should_stop_riding, int cause, int 
         auto &server = EndstoneServer::getInstance();
         auto actor = getEndstoneActor();
         endstone::Location to{actor->getDimension(), pos.x, pos.y, pos.z, getRotation().x, getRotation().y};
-        endstone::ActorTeleportEvent e{actor, actor->getLocation(), to};
-        server.getPluginManager().callEvent(e);
+        const auto e = std::make_shared<endstone::ActorTeleportEvent>(actor, actor->getLocation(), to);
+        server.getPluginManager().callEvent(*e);
 
-        if (e.isCancelled()) {
+        if (e->isCancelled()) {
             return;
         }
-        position = {e.getTo().getX(), e.getTo().getY(), e.getTo().getZ()};
+        position = {e->getTo().getX(), e->getTo().getY(), e->getTo().getZ()};
     }
     ENDSTONE_HOOK_CALL_ORIGINAL(&Actor::teleportTo, this, position, should_stop_riding, cause, entity_type,
                                 keep_velocity);

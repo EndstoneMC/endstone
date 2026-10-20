@@ -101,9 +101,9 @@ void LeavesBlock::_die(BlockSource &region, const BlockPos &pos) /*const*/
     // Endstone begins
     const auto &server = endstone::core::EndstoneServer::getInstance();
     if (server.getEndstonePluginManager().isEventRegistered<endstone::LeavesDecayEvent>()) {
-        endstone::LeavesDecayEvent event(endstone::core::EndstoneBlock::at(region, pos));
-        server.getPluginManager().callEvent(event);
-        if (event.isCancelled()) {
+        const auto event = std::make_shared<endstone::LeavesDecayEvent>(endstone::core::EndstoneBlock::at(region, pos));
+        server.getPluginManager().callEvent(*event);
+        if (event->isCancelled()) {
             return;
         }
     }

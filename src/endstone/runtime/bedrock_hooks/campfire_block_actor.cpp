@@ -46,15 +46,15 @@ void CampfireBlockActor::_finishCooking(::BlockSource &region, int slot)
                 }
             }
 
-            endstone::BlockCookEvent event{endstone::core::EndstoneBlock::at(region, position_),
-                                           endstone::core::EndstoneItemStack::fromMinecraft(source),
-                                           endstone::core::EndstoneItemStack::fromMinecraft(result),
-                                           std::move(cooking_recipe)};
-            server.getPluginManager().callEvent(event);
-            if (event.isCancelled()) {
+            const auto event = std::make_shared<endstone::BlockCookEvent>(
+                endstone::core::EndstoneBlock::at(region, position_),
+                endstone::core::EndstoneItemStack::fromMinecraft(source),
+                endstone::core::EndstoneItemStack::fromMinecraft(result), std::move(cooking_recipe));
+            server.getPluginManager().callEvent(*event);
+            if (event->isCancelled()) {
                 return;
             }
-            result = endstone::core::EndstoneItemStack::toMinecraft(event.getResult());
+            result = endstone::core::EndstoneItemStack::toMinecraft(event->getResult());
         }
         // Endstone end
 

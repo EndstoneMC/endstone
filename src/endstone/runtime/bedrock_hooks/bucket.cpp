@@ -73,18 +73,13 @@ InteractionResult BucketItem::_useOn(::ItemStack &item_stack, ::Actor &actor, Bl
         }
 
         auto block_handle = endstone::core::EndstoneBlock::at(block_source, position);
-        endstone::PlayerBucketFillEvent event{
-            player.getEndstoneActor<endstone::core::EndstonePlayer>(),
-            block_handle,
-            block_handle,
-            *block_face,
-            bucket_stack.getType(),
-            endstone::core::EndstoneItemStack::fromMinecraft(*result_item),
-            endstone::EquipmentSlot::Hand,
-        };
-        server.getPluginManager().callEvent(event);
-        cancelled = event.isCancelled();
-        replacement = event.getItemStack();
+        const auto event = std::make_shared<endstone::PlayerBucketFillEvent>(
+            player.getEndstoneActor<endstone::core::EndstonePlayer>(), block_handle, block_handle, *block_face,
+            bucket_stack.getType(), endstone::core::EndstoneItemStack::fromMinecraft(*result_item),
+            endstone::EquipmentSlot::Hand);
+        server.getPluginManager().callEvent(*event);
+        cancelled = event->isCancelled();
+        replacement = event->getItemStack();
     }
     else if (fill_type != BucketFillType::Unknown && fill_type != BucketFillType::Milk) {
         const auto water_content =
@@ -127,18 +122,14 @@ InteractionResult BucketItem::_useOn(::ItemStack &item_stack, ::Actor &actor, Bl
         }
 
         result_item = ::ItemStack("minecraft:bucket");
-        endstone::PlayerBucketEmptyEvent event{
+        const auto event = std::make_shared<endstone::PlayerBucketEmptyEvent>(
             player.getEndstoneActor<endstone::core::EndstonePlayer>(),
             endstone::core::EndstoneBlock::at(block_source, empty_position),
-            endstone::core::EndstoneBlock::at(block_source, position),
-            *block_face,
-            bucket_stack.getType(),
-            endstone::core::EndstoneItemStack::fromMinecraft(*result_item),
-            endstone::EquipmentSlot::Hand,
-        };
-        server.getPluginManager().callEvent(event);
-        cancelled = event.isCancelled();
-        replacement = event.getItemStack();
+            endstone::core::EndstoneBlock::at(block_source, position), *block_face, bucket_stack.getType(),
+            endstone::core::EndstoneItemStack::fromMinecraft(*result_item), endstone::EquipmentSlot::Hand);
+        server.getPluginManager().callEvent(*event);
+        cancelled = event->isCancelled();
+        replacement = event->getItemStack();
     }
     else {
         return ENDSTONE_HOOK_CALL_ORIGINAL(&BucketItem::_useOn, this, item_stack, actor, position, face, hand_slot, click_pos);

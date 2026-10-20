@@ -26,9 +26,9 @@ void WeatherManager::updateWeather(float rain_level, int rain_time, float lightn
         auto is_raining = weather_manager_proxy_->getRainLevel() > 0;
         auto will_be_raining = rain_level > 0;
         if (is_raining != will_be_raining) {
-            endstone::WeatherChangeEvent e(*level, will_be_raining);
-            server.getPluginManager().callEvent(e);
-            if (e.isCancelled()) {
+            const auto e = std::make_shared<endstone::WeatherChangeEvent>(*level, will_be_raining);
+            server.getPluginManager().callEvent(*e);
+            if (e->isCancelled()) {
                 rain_level = weather_manager_proxy_->getRainLevel();
             }
         }
@@ -36,9 +36,9 @@ void WeatherManager::updateWeather(float rain_level, int rain_time, float lightn
         auto is_lightning = weather_manager_proxy_->getLightningLevel() > 0;
         auto will_be_lightning = lightning_level > 0;
         if (is_lightning != will_be_lightning) {
-            endstone::ThunderChangeEvent e(*level, will_be_lightning);
-            server.getPluginManager().callEvent(e);
-            if (e.isCancelled()) {
+            const auto e = std::make_shared<endstone::ThunderChangeEvent>(*level, will_be_lightning);
+            server.getPluginManager().callEvent(*e);
+            if (e->isCancelled()) {
                 lightning_level = weather_manager_proxy_->getLightningLevel();
             }
         }

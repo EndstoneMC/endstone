@@ -89,9 +89,10 @@ bool EndstoneCommandMap::dispatch(const NotNull<CommandSender> &sender, std::str
     std::ranges::transform(name, name.begin(), [](unsigned char c) { return std::tolower(c); });
     const auto command = getCommand(name);
     if (!command) {
-        UnknownCommandEvent event(sender, command_line, Message{Translatable("commands.generic.unknown", {args[0]})});
-        server_.getPluginManager().callEvent(event);
-        if (const auto message = event.getMessage()) {
+        const auto event = std::make_shared<UnknownCommandEvent>(
+            sender, command_line, Message{Translatable("commands.generic.unknown", {args[0]})});
+        server_.getPluginManager().callEvent(*event);
+        if (const auto message = event->getMessage()) {
             sender->sendErrorMessage(*message);
         }
         return false;

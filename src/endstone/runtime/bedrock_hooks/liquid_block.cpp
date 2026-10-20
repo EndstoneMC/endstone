@@ -51,9 +51,10 @@ void LiquidBlockBase::_solidify(BlockSource &region, BlockPos const &pos, BlockP
         !region.isInstaticking(pos)) {
         const auto new_state =
             std::make_shared<endstone::core::EndstoneBlockSnapshot>(region, pos, *placed)->captureState(true);
-        endstone::BlockFormEvent event{endstone::core::EndstoneBlock::at(region, pos), new_state};
-        server.getPluginManager().callEvent(event);
-        if (event.isCancelled()) {
+        const auto event =
+            std::make_shared<endstone::BlockFormEvent>(endstone::core::EndstoneBlock::at(region, pos), new_state);
+        server.getPluginManager().callEvent(*event);
+        if (event->isCancelled()) {
             return;
         }
         placed = &static_cast<const endstone::core::EndstoneBlockData &>(*new_state->getData()).getHandle();
@@ -72,10 +73,10 @@ void LiquidBlock::_trySpreadTo(BlockSource &region, BlockPos const &pos, int nei
     const auto &server = endstone::core::EndstoneServer::getInstance();
     if (server.getEndstonePluginManager().isEventRegistered<endstone::BlockFromToEvent>() &&
         _canSpreadTo(region, pos, flow_from_pos, flow_from_direction) && !region.isInstaticking(pos)) {
-        endstone::BlockFromToEvent event(endstone::core::EndstoneBlock::at(region, flow_from_pos),
-                                         endstone::core::EndstoneBlock::at(region, pos));
-        server.getPluginManager().callEvent(event);
-        if (event.isCancelled()) {
+        const auto event = std::make_shared<endstone::BlockFromToEvent>(
+            endstone::core::EndstoneBlock::at(region, flow_from_pos), endstone::core::EndstoneBlock::at(region, pos));
+        server.getPluginManager().callEvent(*event);
+        if (event->isCancelled()) {
             return;
         }
     }

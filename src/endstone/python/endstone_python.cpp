@@ -35,7 +35,7 @@ void init_color_format(py::module_ &);
 void init_command(py::module &, py_class<CommandSender> &command_sender);
 void init_damage(py::module_ &);
 void init_enchantments(py::module_ &);
-void init_event(py::module_ &, py::class_<Event, PyEvent> &event);
+void init_event(py::module_ &, py::classh<Event, PyEvent> &event);
 void init_form(py::module_ &);
 void init_game_mode(py::module_ &);
 void init_game_rule(py::module_ &);
@@ -167,7 +167,7 @@ PYBIND11_MODULE(_python, m)  // NOLINT(*-use-anonymous-namespace)
 
     // Forward declaration, see:
     // https://pybind11.readthedocs.io/en/stable/advanced/misc.html#avoiding-c-types-in-docstrings
-    auto event = py::class_<Event, PyEvent>(m_event, "Event", "Represents an event.");
+    auto event = py::classh<Event, PyEvent>(m_event, "Event", "Represents an event.");
     auto permissible = py_class<Permissible>(
         m_permissions, "Permissible",
         "Represents an object that may become a server operator and can be assigned permissions.");

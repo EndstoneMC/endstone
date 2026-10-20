@@ -314,10 +314,15 @@ void EndstoneBatchedNetworkPeer::sendPacket(const std::string &data, Reliability
     }
 
     const auto address = player ? player->getAddress() : EndstoneSocketAddress::fromNetworkIdentifier(id_);
-    PacketSendEvent e{player, static_cast<int>(header.getPacketId()), payload, address,
-                      static_cast<int>(header.getRecipientSubId())};
+    const auto e = std::make_shared<PacketSendEvent>(player, static_cast<int>(header.getPacketId()), payload, address,
+                                                     static_cast<int>(header.getRecipientSubId()));
+    const auto keep_payload = gsl::finally([&e] {
+        if (e.use_count() > 1) {
+            e->setPayload(std::string(e->getPayload()));
+        }
+    });
     if (visibility == VisibilityResult::Modified) {
-        e.setPayload(filtered_payload);
+        e->setPayload(filtered_payload);
     }
 
     // Patch specific outbound packets (deserialize -> modify -> re-serialize)
@@ -344,22 +349,22 @@ void EndstoneBatchedNetworkPeer::sendPacket(const std::string &data, Reliability
         BinaryStream out;
         packet->writeWithSerializationMode(out, network.getPacketReflectionCtx(),
                                            network.getPacketOverrides().getOverrideModeForPacket(packet->getId()));
-        e.setPayload(out.getBuffer());
+        e->setPayload(out.getBuffer());
         break;
     }
     default:
         break;
     }
 
-    server.getPluginManager().callEvent(e);
-    if (e.isCancelled()) {
+    server.getPluginManager().callEvent(*e);
+    if (e->isCancelled()) {
         return;
     }
 
-    if (e.getPayload().data() != payload.data()) {
+    if (e->getPayload().data() != payload.data()) {
         BinaryStream out;
         header.write(out);
-        const auto new_payload = e.getPayload();
+        const auto new_payload = e->getPayload();
         const auto *bytes = reinterpret_cast<const unsigned char *>(new_payload.data());
         out.writeRawBytes({bytes, bytes + new_payload.size()}, nullptr, nullptr);
         writePacket(out.getBuffer(), compressible);
@@ -430,20 +435,25 @@ NetworkPeer::DataStatus EndstoneBatchedNetworkPeer::_receivePacket(std::string &
 
         const auto payload = stream.getView().substr(stream.getReadPointer());
         const auto address = player ? player->getAddress() : EndstoneSocketAddress::fromNetworkIdentifier(id_);
-        PacketReceiveEvent e{player, static_cast<int>(header.getPacketId()), payload, address,
-                             static_cast<int>(header.getSenderSubId())};
-        server.getPluginManager().callEvent(e);
-        if (e.isCancelled()) {
+        const auto e = std::make_shared<PacketReceiveEvent>(player, static_cast<int>(header.getPacketId()), payload,
+                                                            address, static_cast<int>(header.getSenderSubId()));
+        const auto keep_payload = gsl::finally([&e] {
+            if (e.use_count() > 1) {
+                e->setPayload(std::string(e->getPayload()));
+            }
+        });
+        server.getPluginManager().callEvent(*e);
+        if (e->isCancelled()) {
             continue;
         }
 
-        if (e.getPayload().data() == payload.data()) {
+        if (e->getPayload().data() == payload.data()) {
             return status;  // Nothing to do, the packet is the same, return immediately
         }
 
         // Plugins have changed the payload, keep header and replace the rest
         out_data.resize(stream.getReadPointer());
-        out_data.append(e.getPayload().data(), e.getPayload().size());
+        out_data.append(e->getPayload().data(), e->getPayload().size());
         return status;
     }
 }

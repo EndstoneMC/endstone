@@ -203,11 +203,11 @@ bool handleEvent(const PlayerDamageEvent &event)
             auto death_cause_message = event.damage_source->getDeathMessage(player->getName(), player);
             endstone::Message death_message =
                 endstone::Translatable(death_cause_message.first, death_cause_message.second);
-            endstone::PlayerDeathEvent e{endstone_player,
-                                         std::make_shared<endstone::core::EndstoneDamageSource>(*event.damage_source),
-                                         death_message};
-            server.getPluginManager().callEvent(e);
-            death_message = e.getDeathMessage().value_or("");
+            const auto e = std::make_shared<endstone::PlayerDeathEvent>(
+                endstone_player, std::make_shared<endstone::core::EndstoneDamageSource>(*event.damage_source),
+                death_message);
+            server.getPluginManager().callEvent(*e);
+            death_message = e->getDeathMessage().value_or("");
 
             // Send death info
             // TODO(refactor): use ActorDamageSource::setDeathMessageOverride
@@ -241,11 +241,11 @@ bool handleEvent(const PlayerDisconnectEvent &event)
 
         endstone::Message quit_message = endstone::Translatable{
             endstone::ColorFormat::Yellow + "%multiplayer.player.left", {endstone_player->getName()}};
-        endstone::PlayerQuitEvent e{endstone_player, quit_message};
-        server.getPluginManager().callEvent(e);
+        const auto e = std::make_shared<endstone::PlayerQuitEvent>(endstone_player, quit_message);
+        server.getPluginManager().callEvent(*e);
         endstone_player->disconnect();
 
-        quit_message = e.getQuitMessage().value_or("");
+        quit_message = e->getQuitMessage().value_or("");
         if (server.isServerTextEnabled(ServerTextEvent::PlayerConnection) &&
             (!std::holds_alternative<std::string>(quit_message) || !std::get<std::string>(quit_message).empty())) {
             server.broadcastMessage(quit_message);
@@ -276,8 +276,9 @@ bool handleEvent(const ::PlayerRespawnEvent &event)
         const auto &server = endstone::core::EndstoneServer::getInstance();
         const auto reason = player->isRespawningFromTheEnd() ? endstone::PlayerRespawnEvent::RespawnReason::EndPortal
                                                              : endstone::PlayerRespawnEvent::RespawnReason::Death;
-        endstone::PlayerRespawnEvent e{player->getEndstoneActor<endstone::core::EndstonePlayer>(), reason};
-        server.getPluginManager().callEvent(e);
+        const auto e = std::make_shared<endstone::PlayerRespawnEvent>(
+            player->getEndstoneActor<endstone::core::EndstonePlayer>(), reason);
+        server.getPluginManager().callEvent(*e);
     }
     return true;
 }
@@ -286,12 +287,11 @@ bool handleEvent(const PlayerDimensionChangeAfterEvent &event)
 {
     if (const auto *player = WeakEntityRef(event.player).tryUnwrap<::Player>(); player) {
         const auto &server = endstone::core::EndstoneServer::getInstance();
-        endstone::PlayerDimensionChangeEvent e{
+        const auto e = std::make_shared<endstone::PlayerDimensionChangeEvent>(
             player->getEndstoneActor<endstone::core::EndstonePlayer>(),
             server.getEndstoneLevel()->getDimension(event.from_dimension),
-            server.getEndstoneLevel()->getDimension(event.to_dimension),
-        };
-        server.getPluginManager().callEvent(e);
+            server.getEndstoneLevel()->getDimension(event.to_dimension));
+        server.getPluginManager().callEvent(*e);
     }
     return true;
 }
@@ -304,10 +304,10 @@ bool handleEvent(const PlayerGetExperienceOrbEvent &event)
     }
 
     if (auto *player = WeakEntityRef(event.player).tryUnwrap<::Player>(); player) {
-        endstone::PlayerPickupExperienceEvent e{player->getEndstoneActor<endstone::core::EndstonePlayer>(),
-                                                event.experience_value};
-        server.getPluginManager().callEvent(e);
-        if (e.isCancelled()) {
+        const auto e = std::make_shared<endstone::PlayerPickupExperienceEvent>(
+            player->getEndstoneActor<endstone::core::EndstonePlayer>(), event.experience_value);
+        server.getPluginManager().callEvent(*e);
+        if (e->isCancelled()) {
             player->addOrRemoveComponent<endstone::core::InternalExperienceOrbPickupCancelledFlagComponent>(true);
             return false;
         }
@@ -325,20 +325,17 @@ bool handleEvent(const PlayerInteractWithBlockBeforeEvent &event)
         if (!event.item.isNull()) {
             item_stack = endstone::core::EndstoneItemStack::fromMinecraft(event.item);
         }
-        endstone::PlayerInteractEvent e{
+        const auto e = std::make_shared<endstone::PlayerInteractEvent>(
             player->getEndstoneActor<endstone::core::EndstonePlayer>(),
-            endstone::PlayerInteractEvent::Action::RightClickBlock,
-            std::move(item_stack),
-            block.get(),
+            endstone::PlayerInteractEvent::Action::RightClickBlock, std::move(item_stack), block.get(),
             static_cast<endstone::BlockFace>(event.block_face),
             endstone::Vector{
                 event.face_location.x - event.block_location.x,
                 event.face_location.y - event.block_location.y,
                 event.face_location.z - event.block_location.z,
-            },
-        };
-        server.getPluginManager().callEvent(e);
-        if (e.isCancelled()) {
+            });
+        server.getPluginManager().callEvent(*e);
+        if (e->isCancelled()) {
             return false;
         }
     }
@@ -355,10 +352,10 @@ bool handleEvent(const PlayerInteractWithEntityBeforeEvent &event)
     player->addOrRemoveComponent<endstone::core::InternalBucketFillActorComponent>(false);
 
     const auto &server = endstone::core::EndstoneServer::getInstance();
-    endstone::PlayerInteractActorEvent e{player->getEndstoneActor<endstone::core::EndstonePlayer>(),
-                                         target->getEndstoneActor()};
-    server.getPluginManager().callEvent(e);
-    if (e.isCancelled()) {
+    const auto e = std::make_shared<endstone::PlayerInteractActorEvent>(
+        player->getEndstoneActor<endstone::core::EndstonePlayer>(), target->getEndstoneActor());
+    server.getPluginManager().callEvent(*e);
+    if (e->isCancelled()) {
         return false;
     }
 
@@ -371,24 +368,19 @@ bool handleEvent(const PlayerInteractWithEntityBeforeEvent &event)
     auto block_clicked = endstone::core::EndstoneBlock::at(block_source, block_position);
     auto bucket_stack = endstone::core::EndstoneItemStack::fromMinecraft(event.item);
     const ::ItemStack milk_bucket{"minecraft:milk_bucket"};
-    endstone::PlayerBucketFillEvent bucket_event{
-        player->getEndstoneActor<endstone::core::EndstonePlayer>(),
-        block_clicked,
-        block_clicked,
-        endstone::BlockFace::Self,
-        bucket_stack.getType(),
-        endstone::core::EndstoneItemStack::fromMinecraft(milk_bucket),
-        endstone::EquipmentSlot::Hand,
-    };
-    bucket_event.setCancelled(
+    const auto bucket_event = std::make_shared<endstone::PlayerBucketFillEvent>(
+        player->getEndstoneActor<endstone::core::EndstonePlayer>(), block_clicked, block_clicked,
+        endstone::BlockFace::Self, bucket_stack.getType(),
+        endstone::core::EndstoneItemStack::fromMinecraft(milk_bucket), endstone::EquipmentSlot::Hand);
+    bucket_event->setCancelled(
         !block_source.checkBlockPermissions(*player, block_position, Facing::NOT_DEFINED, event.item, false));
-    server.getPluginManager().callEvent(bucket_event);
-    if (bucket_event.isCancelled()) {
+    server.getPluginManager().callEvent(*bucket_event);
+    if (bucket_event->isCancelled()) {
         player->sendInventory(false);
         return false;
     }
 
-    const auto &replacement = bucket_event.getItemStack();
+    const auto &replacement = bucket_event->getItemStack();
     const auto native = replacement && endstone::core::EndstoneItemStack::toMinecraft(*replacement) == milk_bucket;
     player->addOrRemoveComponent<endstone::core::InternalBucketFillActorComponent>(true);
     *player->tryGetComponent<endstone::core::InternalBucketFillActorComponent>() = {target, replacement, !native};
@@ -428,10 +420,11 @@ bool handleEvent(::PlayerGameModeChangeEvent &event)
 {
     if (auto *player = event.player.tryUnwrap<::Player>(); player) {
         const auto &server = endstone::core::EndstoneServer::getInstance();
-        endstone::PlayerGameModeChangeEvent e{player->getEndstoneActor<endstone::core::EndstonePlayer>(),
-                                              endstone::core::EndstoneGameMode::fromMinecraft(event.to_game_mode)};
-        server.getPluginManager().callEvent(e);
-        if (e.isCancelled()) {
+        const auto e = std::make_shared<endstone::PlayerGameModeChangeEvent>(
+            player->getEndstoneActor<endstone::core::EndstonePlayer>(),
+            endstone::core::EndstoneGameMode::fromMinecraft(event.to_game_mode));
+        server.getPluginManager().callEvent(*e);
+        if (e->isCancelled()) {
             const auto packet = MinecraftPackets::createPacket(MinecraftPacketIds::UpdatePlayerGameType);
             const auto pk = std::static_pointer_cast<UpdatePlayerGameTypePacket>(packet);
             pk->payload.player_game_type = event.from_game_mode;

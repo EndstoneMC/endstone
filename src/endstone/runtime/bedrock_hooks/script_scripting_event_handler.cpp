@@ -35,9 +35,9 @@ bool handleEvent(const ScriptCommandMessageEvent &event)
         }
     }
 
-    endstone::ScriptMessageEvent e{event.message_id, event.message_value, sender};
-    server.getPluginManager().callEvent(e);
-    return !e.isCancelled();
+    const auto e = std::make_shared<endstone::ScriptMessageEvent>(event.message_id, event.message_value, sender);
+    server.getPluginManager().callEvent(*e);
+    return !e->isCancelled();
 }
 
 }  // namespace

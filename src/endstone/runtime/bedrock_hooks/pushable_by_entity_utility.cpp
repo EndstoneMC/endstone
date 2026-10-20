@@ -24,10 +24,10 @@ void PushableByEntityUtility::push(Actor &owner, Actor &other, bool push_self_on
 {
     const auto &server = endstone::core::EndstoneServer::getInstance();
     if (server.getEndstonePluginManager().isEventRegistered<endstone::ActorCollideWithActorEvent>()) {
-        endstone::ActorCollideWithActorEvent event{owner.getEndstoneActor<endstone::Actor>(),
-                                                   other.getEndstoneActor<endstone::Actor>()};
-        server.getPluginManager().callEvent(event);
-        if (event.isCancelled()) {
+        const auto event = std::make_shared<endstone::ActorCollideWithActorEvent>(
+            owner.getEndstoneActor<endstone::Actor>(), other.getEndstoneActor<endstone::Actor>());
+        server.getPluginManager().callEvent(*event);
+        if (event->isCancelled()) {
             return;
         }
     }

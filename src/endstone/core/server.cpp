@@ -286,8 +286,8 @@ void EndstoneServer::setLevel(::Level &level)
                                   // Defer the event to the next tick to ensure all data is fully set.
                                   getEndstoneScheduler().runTask([this, id = map_data.getMapId().raw_id]() {
                                       if (auto *map = getMap(id)) {
-                                          MapInitializeEvent e{*map};
-                                          getPluginManager().callEvent(e);
+                                          const auto e = std::make_shared<MapInitializeEvent>(*map);
+                                          getPluginManager().callEvent(*e);
                                       }
                                   });
                               },
@@ -295,8 +295,8 @@ void EndstoneServer::setLevel(::Level &level)
 
     fixServerAnnouncement();
     enablePlugins(PluginLoadOrder::PostWorld);
-    ServerLoadEvent event{ServerLoadEvent::LoadType::Startup};
-    getPluginManager().callEvent(event);
+    const auto event = std::make_shared<ServerLoadEvent>(ServerLoadEvent::LoadType::Startup);
+    getPluginManager().callEvent(*event);
 }
 
 void EndstoneServer::initRegistries()
@@ -668,8 +668,8 @@ void EndstoneServer::reload()
     loadPlugins();
     enablePlugins(PluginLoadOrder::Startup);
     enablePlugins(PluginLoadOrder::PostWorld);
-    ServerLoadEvent event{ServerLoadEvent::LoadType::Reload};
-    getPluginManager().callEvent(event);
+    const auto event = std::make_shared<ServerLoadEvent>(ServerLoadEvent::LoadType::Reload);
+    getPluginManager().callEvent(*event);
 
     // sync commands
     for (const auto &player : getOnlinePlayers()) {
@@ -693,15 +693,15 @@ void EndstoneServer::broadcast(const Message &message, const std::string &permis
         }
     }
 
-    BroadcastMessageEvent event{!isPrimaryThread(), message, recipients};
-    getPluginManager().callEvent(event);
+    const auto event = std::make_shared<BroadcastMessageEvent>(!isPrimaryThread(), message, recipients);
+    getPluginManager().callEvent(*event);
 
-    if (event.isCancelled()) {
+    if (event->isCancelled()) {
         return;
     }
 
     for (const auto &recipient : recipients) {
-        recipient->sendMessage(event.getMessage());
+        recipient->sendMessage(event->getMessage());
     }
 }
 

@@ -45,9 +45,10 @@ bool handleEvent(const ActorDiedEvent &event)
 {
     if (const auto *mob = event.entity.tryUnwrap<::Mob>(); mob) {
         const auto &server = endstone::core::EndstoneServer::getInstance();
-        endstone::ActorDeathEvent e{mob->getEndstoneActor<endstone::core::EndstoneMob>(),
-                                    std::make_shared<endstone::core::EndstoneDamageSource>(*event.source)};
-        server.getPluginManager().callEvent(e);
+        const auto e = std::make_shared<endstone::ActorDeathEvent>(
+            mob->getEndstoneActor<endstone::core::EndstoneMob>(),
+            std::make_shared<endstone::core::EndstoneDamageSource>(*event.source));
+        server.getPluginManager().callEvent(*e);
     }
     return true;
 }
@@ -88,8 +89,8 @@ bool handleEvent(const ActorRemovedEvent &event)
             return true;
         }
 
-        endstone::ActorRemoveEvent e{actor->getEndstoneActor()};
-        endstone::core::EndstoneServer::getInstance().getPluginManager().callEvent(e);
+        const auto e = std::make_shared<endstone::ActorRemoveEvent>(actor->getEndstoneActor());
+        endstone::core::EndstoneServer::getInstance().getPluginManager().callEvent(*e);
         closeInventoryViewers(*actor);
     }
     return true;
@@ -100,13 +101,14 @@ bool handleEvent(::ActorBeforeHurtEvent &event)
     const auto &source = event.source;
     const auto &server = endstone::core::EndstoneServer::getInstance();
     auto mob = event.entity.getEndstoneActor<endstone::core::EndstoneMob>();
-    endstone::ActorDamageEvent e{mob, std::make_shared<endstone::core::EndstoneDamageSource>(source), event.damage};
-    server.getPluginManager().callEvent(e);
-    if (e.isCancelled()) {
+    const auto e = std::make_shared<endstone::ActorDamageEvent>(
+        mob, std::make_shared<endstone::core::EndstoneDamageSource>(source), event.damage);
+    server.getPluginManager().callEvent(*e);
+    if (e->isCancelled()) {
         return false;
     }
-    if (e.getDamage() != event.damage) {
-        event.damage = e.getDamage();
+    if (e->getDamage() != event.damage) {
+        event.damage = e->getDamage();
         event.was_modified = true;
     }
     return true;
@@ -134,10 +136,11 @@ bool handleEvent(::ActorAddEffectEvent &event)
         event.mob_effect.displaysOnScreenTextureAnimation(),
     };
 
-    endstone::ActorEffectEvent e{mob->getEndstoneActor<endstone::core::EndstoneMob>(),
-                                 endstone::ActorEffectEvent::Action::Added, type, std::nullopt, effect};
-    server.getPluginManager().callEvent(e);
-    return !e.isCancelled();
+    const auto e = std::make_shared<endstone::ActorEffectEvent>(mob->getEndstoneActor<endstone::core::EndstoneMob>(),
+                                                                endstone::ActorEffectEvent::Action::Added, type,
+                                                                std::nullopt, effect);
+    server.getPluginManager().callEvent(*e);
+    return !e->isCancelled();
 }
 
 bool handleEvent(::ActorBeforeAcquireItemEvent &event)
@@ -153,11 +156,11 @@ bool handleEvent(::ActorBeforeAcquireItemEvent &event)
         return true;
     }
 
-    endstone::ActorPickupItemEvent e{event.actor.getEndstoneActor(),
-                                     event.item.getEndstoneActor<endstone::core::EndstoneItem>(),
-                                     event.amount_acquired};
-    server.getPluginManager().callEvent(e);
-    return !e.isCancelled();
+    const auto e = std::make_shared<endstone::ActorPickupItemEvent>(
+        event.actor.getEndstoneActor(), event.item.getEndstoneActor<endstone::core::EndstoneItem>(),
+        event.amount_acquired);
+    server.getPluginManager().callEvent(*e);
+    return !e->isCancelled();
 }
 
 bool handleEvent(const ActorStopRidingEvent &event)
@@ -173,9 +176,10 @@ bool handleEvent(const ActorStopRidingEvent &event)
         return true;
     }
 
-    endstone::ActorDismountEvent e{passenger->getEndstoneActor(), vehicle->getEndstoneActor()};
-    server.getPluginManager().callEvent(e);
-    return !e.isCancelled();
+    const auto e =
+        std::make_shared<endstone::ActorDismountEvent>(passenger->getEndstoneActor(), vehicle->getEndstoneActor());
+    server.getPluginManager().callEvent(*e);
+    return !e->isCancelled();
 }
 
 bool handleEvent(const ActorGriefingBlockEvent &event)
@@ -190,10 +194,10 @@ bool handleEvent(const ActorGriefingBlockEvent &event)
         return true;
     }
 
-    endstone::ActorChangeBlockEvent e{
-        actor->getEndstoneActor(), endstone::core::EndstoneBlock::at(**event.block_source_handle, BlockPos(event.pos))};
-    server.getPluginManager().callEvent(e);
-    return !e.isCancelled();
+    const auto e = std::make_shared<endstone::ActorChangeBlockEvent>(
+        actor->getEndstoneActor(), endstone::core::EndstoneBlock::at(**event.block_source_handle, BlockPos(event.pos)));
+    server.getPluginManager().callEvent(*e);
+    return !e->isCancelled();
 }
 }  // namespace
 

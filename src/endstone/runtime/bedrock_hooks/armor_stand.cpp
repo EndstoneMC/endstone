@@ -98,16 +98,13 @@ Interaction ArmorStand::getInteraction(Player &player, Vec3 const &location)
 
         const auto &armor_stand_item =
             armor_slot.has_value() ? armor_stand->getArmor(*armor_slot) : armor_stand->getCarriedItem();
-        endstone::PlayerArmorStandManipulateEvent event{
-            player->getEndstoneActor<endstone::core::EndstonePlayer>(),
-            armor_stand->getEndstoneActor(),
+        const auto event = std::make_shared<endstone::PlayerArmorStandManipulateEvent>(
+            player->getEndstoneActor<endstone::core::EndstonePlayer>(), armor_stand->getEndstoneActor(),
             endstone::core::EndstoneItemStack::fromMinecraft(armor_stand_item),
-            endstone::core::EndstoneItemStack::fromMinecraft(player_item),
-            slot,
-        };
+            endstone::core::EndstoneItemStack::fromMinecraft(player_item), slot);
         const auto &server = endstone::core::EndstoneServer::getInstance();
-        server.getPluginManager().callEvent(event);
-        if (event.isCancelled()) {
+        server.getPluginManager().callEvent(*event);
+        if (event->isCancelled()) {
             return;
         }
         callback();

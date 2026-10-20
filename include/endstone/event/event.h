@@ -14,6 +14,7 @@
 
 #pragma once
 
+#include <memory>
 #include <stdexcept>
 #include <string>
 
@@ -41,7 +42,7 @@ enum class EventResult {
 /**
  * Represents an event.
  */
-class Event {
+class Event : public std::enable_shared_from_this<Event> {
 public:
     explicit Event(bool async = false) : async_(async) {};
     Event(const Event &) = delete;

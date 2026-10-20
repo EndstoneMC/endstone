@@ -70,9 +70,10 @@ bool handleEvent(const BlockTryPlaceByPlayerEvent &event)
     const auto opposite = endstone::core::EndstoneBlockFace::getOpposite(block_face);
     auto block_against = block_at_pos->getRelative(opposite);
 
-    endstone::BlockPlaceEvent e{std::move(block_placed), replaced_state, std::move(block_against), endstone_player};
-    server.getPluginManager().callEvent(e);
-    if (e.isCancelled()) {
+    const auto e = std::make_shared<endstone::BlockPlaceEvent>(std::move(block_placed), replaced_state,
+                                                               std::move(block_against), endstone_player);
+    server.getPluginManager().callEvent(*e);
+    if (e->isCancelled()) {
         return false;
     }
     return true;
@@ -91,13 +92,14 @@ bool handleEvent(ExplosionStartedEvent &event)
 
     if (source) {
         auto actor = source->getEndstoneActor<>();
-        endstone::ActorExplodeEvent e{actor, actor->getLocation(), std::move(block_list)};
-        server.getPluginManager().callEvent(e);
-        if (e.isCancelled()) {
+        const auto e =
+            std::make_shared<endstone::ActorExplodeEvent>(actor, actor->getLocation(), std::move(block_list));
+        server.getPluginManager().callEvent(*e);
+        if (e->isCancelled()) {
             return false;
         }
         event.blocks.clear();
-        for (const auto &block : e.getBlockList()) {
+        for (const auto &block : e->getBlockList()) {
             event.blocks.emplace(block->getX(), block->getY(), block->getZ());
         }
     }
@@ -108,14 +110,14 @@ bool handleEvent(ExplosionStartedEvent &event)
             server.getLogger().critical("BlockExplodeEvent: invalid explosion position");
             return true;
         }
-        endstone::BlockExplodeEvent e{endstone::core::EndstoneBlock::at(block_source, BlockPos(pos.value())),
-                                      std::move(block_list)};
-        server.getPluginManager().callEvent(e);
-        if (e.isCancelled()) {
+        const auto e = std::make_shared<endstone::BlockExplodeEvent>(
+            endstone::core::EndstoneBlock::at(block_source, BlockPos(pos.value())), std::move(block_list));
+        server.getPluginManager().callEvent(*e);
+        if (e->isCancelled()) {
             return false;
         }
         event.blocks.clear();
-        for (const auto &block : e.getBlockList()) {
+        for (const auto &block : e->getBlockList()) {
             event.blocks.emplace(block->getX(), block->getY(), block->getZ());
         }
     }
@@ -133,10 +135,11 @@ bool handleEvent(BlockTryDestroyByPlayerEvent &event)
             }
         }
 
-        endstone::BlockBreakEvent e{endstone::core::EndstoneBlock::at(block_source, event.pos),
-                                    player->getEndstoneActor<endstone::core::EndstonePlayer>()};
-        server.getPluginManager().callEvent(e);
-        if (e.isCancelled()) {
+        const auto e =
+            std::make_shared<endstone::BlockBreakEvent>(endstone::core::EndstoneBlock::at(block_source, event.pos),
+                                                        player->getEndstoneActor<endstone::core::EndstonePlayer>());
+        server.getPluginManager().callEvent(*e);
+        if (e->isCancelled()) {
             return false;
         }
         // update here as plugins may change the player inventory during the event handling

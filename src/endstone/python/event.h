@@ -27,7 +27,7 @@ namespace py = pybind11;
 
 namespace endstone::python {
 
-class PyEvent : public Event, public ICancellable {
+class PyEvent : public Event, public ICancellable, public py::trampoline_self_life_support {
 public:
     using Event::Event;
     [[nodiscard]] std::string getEventName() const override

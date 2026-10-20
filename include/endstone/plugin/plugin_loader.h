@@ -115,8 +115,8 @@ public:
                 plugin.getLogger().error(e.what());
                 return;
             }
-            PluginEnableEvent event(plugin);
-            server_.getPluginManager().callEvent(event);
+            const auto event = std::make_shared<PluginEnableEvent>(plugin);
+            server_.getPluginManager().callEvent(*event);
         }
     }
 
@@ -139,8 +139,8 @@ public:
                 plugin.getLogger().error(e.what());
                 return;
             }
-            PluginDisableEvent event(plugin);
-            server_.getPluginManager().callEvent(event);
+            const auto event = std::make_shared<PluginDisableEvent>(plugin);
+            server_.getPluginManager().callEvent(*event);
         }
     }
 

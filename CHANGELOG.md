@@ -197,6 +197,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Fixed a `Task` from `Scheduler.get_pending_tasks()` reading freed memory once the task had run.
 - Fixed the server crashing when `Server.reload()` was called from a scheduled task.
 - Fixed the server crashing when a plugin used an `ItemType`, `BlockType` or other registry entry it had kept from before a reload.
+- Fixed the server crashing when a plugin kept an event and used it after its handler returned.
 
 #### API behaviour
 

@@ -62,21 +62,21 @@ GameplayHandlerResult<CoordinatorResult> handleEvent(ChatEvent &event,
     // call endstone's chat event before the script api
     const auto original_player = player->getEndstoneActor<endstone::core::EndstonePlayer>();
     const auto original_message = event.message;
-    endstone::PlayerChatEvent e{original_player, event.message, recipients};
-    auto original_format = e.getFormat();
-    const auto original_recipients = e.getRecipients();
+    const auto e = std::make_shared<endstone::PlayerChatEvent>(original_player, event.message, recipients);
+    auto original_format = e->getFormat();
+    const auto original_recipients = e->getRecipients();
 
-    server.getPluginManager().callEvent(e);
-    if (e.isCancelled()) {
+    server.getPluginManager().callEvent(*e);
+    if (e->isCancelled()) {
         return CANCEL;
     }
 
     // check if the format is valid
     std::string message;
     try {
-        const auto name = e.getPlayer()->getName();
-        const auto content = e.getMessage();
-        message = std::vformat(e.getFormat(), std::make_format_args(name, content));
+        const auto name = e->getPlayer()->getName();
+        const auto content = e->getMessage();
+        message = std::vformat(e->getFormat(), std::make_format_args(name, content));
     }
     catch (const std::exception & /*e*/) {
         server.getLogger().error("Invalid format string encountered in PlayerChatEvent.");
@@ -84,15 +84,15 @@ GameplayHandlerResult<CoordinatorResult> handleEvent(ChatEvent &event,
     }
 
     // call scripting api chat events
-    event.message = e.getMessage();
+    event.message = e->getMessage();
     auto result = original();
     if (result.return_value != CoordinatorResult::Continue) {
         return result;
     }
 
     // Format has been changed, send formatted messages as raw and cancel the original event to avoid double sending
-    if (e.getFormat() != original_format) {
-        for (const auto &recipient : e.getRecipients()) {
+    if (e->getFormat() != original_format) {
+        for (const auto &recipient : e->getRecipients()) {
             recipient->sendMessage(message);
         }
         server.getLogger().info(message);
@@ -101,11 +101,11 @@ GameplayHandlerResult<CoordinatorResult> handleEvent(ChatEvent &event,
 
     // Message, sender or recipients have been changed, send new text messages and cancel the original event to avoid
     // double sending
-    const auto final_recipients = e.getRecipients();
+    const auto final_recipients = e->getRecipients();
     const auto recipients_changed = !std::ranges::equal(
         final_recipients, original_recipients, [](const auto &a, const auto &b) { return a.get() == b.get(); });
-    if (e.getMessage() != original_message || e.getPlayer() != original_player || recipients_changed) {
-        player = &e.getPlayer().cast<endstone::core::EndstonePlayer>()->getHandle();
+    if (e->getMessage() != original_message || e->getPlayer() != original_player || recipients_changed) {
+        player = &e->getPlayer().cast<endstone::core::EndstonePlayer>()->getHandle();
         for (const auto &recipient : final_recipients) {
             auto *handle = recipient.cast<endstone::core::EndstonePlayer>()->tryGetHandle();
             if (!handle) {
@@ -116,7 +116,7 @@ GameplayHandlerResult<CoordinatorResult> handleEvent(ChatEvent &event,
             pk.payload = {
                 .xuid = player->getXuid(),
                 .platform_id = player->getPlatformOnlineId(),
-                .body = TextPacketPayload::AuthorAndMessage{TextPacketType::Chat, player->getName(), e.getMessage()}};
+                .body = TextPacketPayload::AuthorAndMessage{TextPacketType::Chat, player->getName(), e->getMessage()}};
             handle->sendNetworkPacket(*packet);
         }
         server.getLogger().info(message);

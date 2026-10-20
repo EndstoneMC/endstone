@@ -42,14 +42,12 @@ Interaction BucketableComponent::getInteraction(::Actor &owner, ::Player &player
         auto *player = player_ref.tryUnwrap<::Player>();
         if (owner != nullptr && player != nullptr) {
             const auto &server = endstone::core::EndstoneServer::getInstance();
-            endstone::PlayerBucketActorEvent event{
-                player->getEndstoneActor<endstone::core::EndstonePlayer>(),
-                owner->getEndstoneActor(),
+            const auto event = std::make_shared<endstone::PlayerBucketActorEvent>(
+                player->getEndstoneActor<endstone::core::EndstonePlayer>(), owner->getEndstoneActor(),
                 endstone::core::EndstoneItemStack::fromMinecraft(player->getCarriedItem()),
-                endstone::EquipmentSlot::Hand,
-            };
-            server.getPluginManager().callEvent(event);
-            if (event.isCancelled()) {
+                endstone::EquipmentSlot::Hand);
+            server.getPluginManager().callEvent(*event);
+            if (event->isCancelled()) {
                 return;
             }
         }

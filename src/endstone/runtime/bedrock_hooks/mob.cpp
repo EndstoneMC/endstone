@@ -36,13 +36,13 @@ void Mob::knockback(Actor *source, float damage, float dx, float dz, const Knock
     auto diff = after - before;
 
     const auto &server = endstone::core::EndstoneServer::getInstance();
-    endstone::ActorKnockbackEvent e{getEndstoneActor<endstone::core::EndstoneMob>(),
-                                    source == nullptr ? nullptr : source->getEndstoneActor(),
-                                    {diff.x, diff.y, diff.z}};
-    server.getPluginManager().callEvent(e);
+    const auto e = std::make_shared<endstone::ActorKnockbackEvent>(
+        getEndstoneActor<endstone::core::EndstoneMob>(), source == nullptr ? nullptr : source->getEndstoneActor(),
+        endstone::Vector{diff.x, diff.y, diff.z});
+    server.getPluginManager().callEvent(*e);
 
-    const auto knockback = e.getKnockback();
-    diff = e.isCancelled() ? Vec3::ZERO : Vec3{knockback.getX(), knockback.getY(), knockback.getZ()};
+    const auto knockback = e->getKnockback();
+    diff = e->isCancelled() ? Vec3::ZERO : Vec3{knockback.getX(), knockback.getY(), knockback.getZ()};
     setPosDelta(before + diff);
 }
 

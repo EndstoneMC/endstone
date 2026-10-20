@@ -75,9 +75,9 @@ void PistonBlockActor::tick(BlockSource &region)
         }
 
         if (extending) {
-            endstone::BlockPistonExtendEvent e(std::move(block), face);
-            server.getPluginManager().callEvent(e);
-            if (e.isCancelled()) {
+            const auto e = std::make_shared<endstone::BlockPistonExtendEvent>(std::move(block), face);
+            server.getPluginManager().callEvent(*e);
+            if (e->isCancelled()) {
                 // We mark the new state with a value that the original function does not recognise.
                 // The vanilla logic sees an unknown state and simply does nothing (i.e., no block‐moving).
                 // Yes, this can be pretty hacky, I know.
@@ -85,9 +85,10 @@ void PistonBlockActor::tick(BlockSource &region)
             }
         }
         else {
-            endstone::BlockPistonRetractEvent e(std::move(block), endstone::core::EndstoneBlockFace::getOpposite(face));
-            server.getPluginManager().callEvent(e);
-            if (e.isCancelled()) {
+            const auto e = std::make_shared<endstone::BlockPistonRetractEvent>(
+                std::move(block), endstone::core::EndstoneBlockFace::getOpposite(face));
+            server.getPluginManager().callEvent(*e);
+            if (e->isCancelled()) {
                 new_state_ = static_cast<PistonState>(PistonStateEx::RetractingCancelled);
             }
         }

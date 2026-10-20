@@ -72,8 +72,8 @@ static std::string buildAdvertisement(std::vector<std::string> parts, const ends
     return response;
 }
 
-static endstone::ServerListPingEvent callServerListPingEvent(endstone::SocketAddress address,
-                                                             const std::vector<std::string> &parts)
+static std::shared_ptr<endstone::ServerListPingEvent> callServerListPingEvent(endstone::SocketAddress address,
+                                                                              const std::vector<std::string> &parts)
 {
     const auto n = parts.size();
     auto motd = n > 1 ? parts[1] : "";
@@ -87,11 +87,12 @@ static endstone::ServerListPingEvent callServerListPingEvent(endstone::SocketAdd
                            : endstone::GameMode::Survival;
     auto local_port = n > 10 ? std::stoi(parts[10]) : 0;
 
-    endstone::ServerListPingEvent event(std::move(address), motd, network_protocol_version, minecraft_version_network,
-                                        num_players, max_players, server_guid, level_name, game_mode, local_port);
+    const auto event = std::make_shared<endstone::ServerListPingEvent>(
+        std::move(address), motd, network_protocol_version, minecraft_version_network, num_players, max_players,
+        server_guid, level_name, game_mode, local_port);
 
     auto &server = endstone::core::EndstoneServer::getInstance();
-    server.getPluginManager().callEvent(event);
+    server.getPluginManager().callEvent(*event);
     return event;
 }
 
@@ -113,8 +114,8 @@ static bool handleUnconnectedPing(RakNet::RNS2RecvStruct *recv)
     // call ServerListPingEvent with the default offline ping response
     auto address = endstone::core::EndstoneSocketAddress::fromSystemAddress(recv->systemAddress);
     auto parts = splitAdvertisement(std::string_view(ping_data + 2, ping_size - 2));
-    auto event = callServerListPingEvent(address, parts);
-    if (event.isCancelled()) {
+    const auto event = callServerListPingEvent(address, parts);
+    if (event->isCancelled()) {
         return false;
     }
 
@@ -128,7 +129,7 @@ static bool handleUnconnectedPing(RakNet::RNS2RecvStruct *recv)
     is.Read(remoteGuid);
 
     // prepare ping response
-    auto response = buildAdvertisement(std::move(parts), event);
+    auto response = buildAdvertisement(std::move(parts), *event);
     RakNet::BitStream os;
     os.Write(static_cast<RakNet::MessageID>(ID_UNCONNECTED_PONG));
     os.Write(sendPingTime);

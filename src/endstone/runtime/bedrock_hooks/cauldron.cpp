@@ -12,9 +12,8 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-#include "bedrock/world/level/block/cauldron_block.h"
-
 #include <algorithm>
+#include <memory>
 #include <optional>
 #include <string_view>
 
@@ -26,6 +25,7 @@
 #include "bedrock/world/item/item.h"
 #include "bedrock/world/item/item_stack.h"
 #include "bedrock/world/level/block/block.h"
+#include "bedrock/world/level/block/cauldron_block.h"
 #include "bedrock/world/level/block/vanilla_block_type_ids.h"
 #include "bedrock/world/level/block_source.h"
 #include "bedrock/world/level/level.h"
@@ -131,44 +131,35 @@ void CauldronBlock::use(BlockEvents::BlockPlayerInteractEvent &event_data) const
         auto bucket_stack = endstone::core::EndstoneItemStack::fromMinecraft(item_stack);
         auto cancelled = false;
         if (filling) {
-            endstone::PlayerBucketFillEvent event{
-                player.getEndstoneActor<endstone::core::EndstonePlayer>(),
-                block_handle,
-                block_handle,
-                *block_face,
-                bucket_stack.getType(),
-                endstone::core::EndstoneItemStack::fromMinecraft(*result_item),
-                endstone::EquipmentSlot::Hand,
-            };
-            server.getPluginManager().callEvent(event);
-            cancelled = event.isCancelled();
-            replacement = event.getItemStack();
+            const auto event = std::make_shared<endstone::PlayerBucketFillEvent>(
+                player.getEndstoneActor<endstone::core::EndstonePlayer>(), block_handle, block_handle, *block_face,
+                bucket_stack.getType(), endstone::core::EndstoneItemStack::fromMinecraft(*result_item),
+                endstone::EquipmentSlot::Hand);
+            server.getPluginManager().callEvent(*event);
+            cancelled = event->isCancelled();
+            replacement = event->getItemStack();
         }
         else {
-            endstone::PlayerBucketEmptyEvent event{
-                player.getEndstoneActor<endstone::core::EndstonePlayer>(),
-                block_handle,
-                block_handle,
-                *block_face,
-                bucket_stack.getType(),
-                endstone::core::EndstoneItemStack::fromMinecraft(*result_item),
-                endstone::EquipmentSlot::Hand,
-            };
-            server.getPluginManager().callEvent(event);
-            cancelled = event.isCancelled();
-            replacement = event.getItemStack();
+            const auto event = std::make_shared<endstone::PlayerBucketEmptyEvent>(
+                player.getEndstoneActor<endstone::core::EndstonePlayer>(), block_handle, block_handle, *block_face,
+                bucket_stack.getType(), endstone::core::EndstoneItemStack::fromMinecraft(*result_item),
+                endstone::EquipmentSlot::Hand);
+            server.getPluginManager().callEvent(*event);
+            cancelled = event->isCancelled();
+            replacement = event->getItemStack();
         }
         if (cancelled) {
             return;
         }
     }
 
-    std::optional<endstone::CauldronLevelChangeEvent> level_event;
+    std::shared_ptr<endstone::CauldronLevelChangeEvent> level_event;
     if (new_block && server.getEndstonePluginManager().isEventRegistered<endstone::CauldronLevelChangeEvent>()) {
         auto block_handle = endstone::core::EndstoneBlock::at(player.getDimensionBlockSource(), event_data.pos);
         auto new_state = block_handle->captureState(true);
         new_state->setData(endstone::core::EndstoneBlockData(const_cast<::Block &>(*new_block)));
-        level_event.emplace(block_handle, player.getEndstoneActor<endstone::core::EndstonePlayer>(), reason, new_state);
+        level_event = std::make_shared<endstone::CauldronLevelChangeEvent>(
+            block_handle, player.getEndstoneActor<endstone::core::EndstonePlayer>(), reason, new_state);
         server.getPluginManager().callEvent(*level_event);
         if (level_event->isCancelled()) {
             event_data.successful = true;
@@ -268,21 +259,16 @@ void CauldronBlock::setLiquidLevel(BlockSource &region, const BlockPos &pos, int
     auto block_handle = endstone::core::EndstoneBlock::at(region, pos);
     auto new_state = block_handle->captureState(true);
     new_state->setData(endstone::core::EndstoneBlockData(const_cast<::Block &>(new_block)));
-    endstone::CauldronLevelChangeEvent event{
-        block_handle,
-        actor,
-        reason,
-        new_state,
-    };
-    server.getPluginManager().callEvent(event);
-    if (event.isCancelled()) {
+    const auto event = std::make_shared<endstone::CauldronLevelChangeEvent>(block_handle, actor, reason, new_state);
+    server.getPluginManager().callEvent(*event);
+    if (event->isCancelled()) {
         return;
     }
 
     const auto &final_block =
-        static_cast<const endstone::core::EndstoneBlockData &>(*event.getNewState()->getData()).getHandle();
+        static_cast<const endstone::core::EndstoneBlockData &>(*event->getNewState()->getData()).getHandle();
     if (final_block.getName() != VanillaBlockTypeIds::Cauldron) {
-        event.getNewState()->update(true);
+        event->getNewState()->update(true);
         return;
     }
     ENDSTONE_HOOK_CALL_ORIGINAL(&CauldronBlock::setLiquidLevel, this, region, pos,

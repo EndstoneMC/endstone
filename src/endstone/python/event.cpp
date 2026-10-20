@@ -26,7 +26,7 @@ namespace endstone::python {
 template <typename T, typename... Bases, typename... Args>
 static auto bind_event(py::module_ &m, const char *name, Args &&...args)
 {
-    auto cls = py::class_<T, Bases...>(m, name, std::forward<Args>(args)...);
+    auto cls = py::classh<T, Bases...>(m, name, std::forward<Args>(args)...);
     if constexpr (std::is_base_of_v<ICancellable, T>) {
         cls.def_property("is_cancelled", &ICancellable::isCancelled, &ICancellable::setCancelled, R"doc(
     The cancellation state of this event.
@@ -42,7 +42,7 @@ static auto bind_event(py::module_ &m, const char *name, Args &&...args)
     return cls;
 }
 
-void init_event(py::module_ &m, py::class_<Event, PyEvent> &event)
+void init_event(py::module_ &m, py::classh<Event, PyEvent> &event)
 {
     py::native_enum<EventResult>(
         m, "EventResult", "enum.Enum",
@@ -204,7 +204,7 @@ void init_event(py::module_ &m, py::class_<Event, PyEvent> &event)
                       "The list of blocks that would have been removed or were removed from the explosion event.");
     bind_event<BlockCookEvent, BlockEvent, ICancellable>(
         m, "BlockCookEvent", "Called when an `ItemStack` is successfully cooked in a block.")
-        .def_property_readonly("source", &BlockCookEvent::getSource, py::return_value_policy::reference,
+        .def_property_readonly("source", &BlockCookEvent::getSource, py::return_value_policy::reference_internal,
                                "The smelted (source) `ItemStack` for this event.")
         .def_property("result", &BlockCookEvent::getResult, &BlockCookEvent::setResult,
                       "The resultant `ItemStack` for this event.")
@@ -438,7 +438,7 @@ void init_event(py::module_ &m, py::class_<Event, PyEvent> &event)
 )doc");
     bind_event<PlayerDropItemEvent, PlayerEvent, ICancellable>(
         m, "PlayerDropItemEvent", "Called when a player drops an item from their inventory.")
-        .def_property_readonly("item", &PlayerDropItemEvent::getItem, py::return_value_policy::reference,
+        .def_property_readonly("item", &PlayerDropItemEvent::getItem, py::return_value_policy::reference_internal,
                                "The `ItemStack` dropped by the player.");
     bind_event<PlayerEditBookEvent, PlayerEvent, ICancellable>(m, "PlayerEditBookEvent",
                                                                "Called when a player edits or signs a book.")

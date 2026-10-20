@@ -101,21 +101,21 @@ ItemStackNetResult CraftHandlerCrafting::_handleCraftAction(const ItemStackReque
         results.push_back(endstone::core::EndstoneItemStack::fromMinecraft(ItemStack(result)));
     }
 
-    endstone::PlayerCraftItemEvent e{player_.getEndstoneActor<endstone::core::EndstonePlayer>(),
-                                     std::move(crafted), std::move(ingredients), results,
-                                     request_action.getNumCrafts()};
-    server.getPluginManager().callEvent(e);
-    if (e.isCancelled()) {
+    const auto e = std::make_shared<endstone::PlayerCraftItemEvent>(
+        player_.getEndstoneActor<endstone::core::EndstonePlayer>(), std::move(crafted), std::move(ingredients), results,
+        request_action.getNumCrafts());
+    server.getPluginManager().callEvent(*e);
+    if (e->isCancelled()) {
         return ItemStackNetResult::ActionRequestNotAllowed;
     }
 
     const auto result = ENDSTONE_HOOK_CALL_ORIGINAL(&CraftHandlerCrafting::_handleCraftAction, this, request_action);
-    if (result == ItemStackNetResult::Success && e.getResults() != results) {
+    if (result == ItemStackNetResult::Success && e->getResults() != results) {
         auto &craft_results = craft_request_handler_.getCraftResults();
         if (craft_results.empty() && deferred_craft_count_ != 0) {
             std::vector<ItemInstance> replacements;
-            replacements.reserve(e.getResults().size());
-            for (const auto &replacement : e.getResults()) {
+            replacements.reserve(e->getResults().size());
+            for (const auto &replacement : e->getResults()) {
                 replacements.emplace_back(endstone::core::EndstoneItemStack::toMinecraft(replacement));
             }
             const auto initialized = craft_request_handler_._initCraftResults(replacements, deferred_craft_count_);
@@ -125,11 +125,11 @@ ItemStackNetResult CraftHandlerCrafting::_handleCraftAction(const ItemStackReque
             }
         }
         else {
-            const auto replaced = std::min(e.getResults().size(), craft_results.size());
+            const auto replaced = std::min(e->getResults().size(), craft_results.size());
             std::vector<ItemInstance> replacements;
             replacements.reserve(replaced);
             for (std::size_t i = 0; i < replaced; ++i) {
-                ItemInstance replacement(endstone::core::EndstoneItemStack::toMinecraft(e.getResults()[i]));
+                ItemInstance replacement(endstone::core::EndstoneItemStack::toMinecraft(e->getResults()[i]));
                 if (!replacement) {
                     return ItemStackNetResult::InvalidCraftResultItem;
                 }

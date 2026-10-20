@@ -70,14 +70,11 @@ void ServerPlayer::openSign(const BlockPos &position, bool is_front_side)
     if (server.getEndstonePluginManager().isEventRegistered<endstone::PlayerOpenSignEvent>()) {
         const auto block = endstone::core::EndstoneBlock::at(block_source, position);
         if (const auto sign = block->captureState(true).as<endstone::Sign>(); sign) {
-            endstone::PlayerOpenSignEvent event{
-                getEndstoneActor<endstone::core::EndstonePlayer>(),
-                sign,
-                is_front_side ? endstone::Sign::Side::Front : endstone::Sign::Side::Back,
-                cause,
-            };
-            server.getPluginManager().callEvent(event);
-            if (event.isCancelled()) {
+            const auto event = std::make_shared<endstone::PlayerOpenSignEvent>(
+                getEndstoneActor<endstone::core::EndstonePlayer>(), sign,
+                is_front_side ? endstone::Sign::Side::Front : endstone::Sign::Side::Back, cause);
+            server.getPluginManager().callEvent(*event);
+            if (event->isCancelled()) {
                 return;
             }
         }
@@ -313,9 +310,9 @@ void ServerPlayer::changeDimension(DimensionType to_id)
     const auto from_location =
         endstone::core::EndstoneLocation::toEndstone(request.from_position, request.from_dimension);
     const auto to_location = endstone::core::EndstoneLocation::toEndstone(request.to_position, request.to_dimension);
-    endstone::PlayerPortalEvent e(player, from_location, to_location);
-    server.getPluginManager().callEvent(e);
-    if (e.isCancelled()) {
+    const auto e = std::make_shared<endstone::PlayerPortalEvent>(player, from_location, to_location);
+    server.getPluginManager().callEvent(*e);
+    if (e->isCancelled()) {
         return;
     }
 
