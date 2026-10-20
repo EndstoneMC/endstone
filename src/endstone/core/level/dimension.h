@@ -31,7 +31,6 @@ namespace endstone::core {
 class EndstoneDimension : public Dimension, public std::enable_shared_from_this<EndstoneDimension> {
 public:
     explicit EndstoneDimension(WeakRef<::Dimension> dimension, EndstoneLevel &level);
-    ~EndstoneDimension() override = default;
     [[nodiscard]] DimensionId getId() const override;
     [[nodiscard]] std::string getTranslationKey() const override;
     [[nodiscard]] Level &getLevel() const override;
