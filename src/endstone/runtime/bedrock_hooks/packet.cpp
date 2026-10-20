@@ -383,7 +383,9 @@ void EndstonePacketHandler::handle(PlayerAuthInputPacket &packet)
         return;
     }
     const auto endstone_player = player->getEndstoneActor<EndstonePlayer>();
-    auto &plugin_manager = endstone_player->getServer().getPluginManager();
+    auto &server = static_cast<EndstoneServer &>(endstone_player->getServer());
+    auto &plugin_manager = server.getPluginManager();
+    const auto &listeners = server.getEndstonePluginManager();
 
     const Input player_input{
         packet.getInput(PlayerAuthInputPacket::InputData::Up),
@@ -397,23 +399,28 @@ void EndstonePacketHandler::handle(PlayerAuthInputPacket &packet)
     const bool input_changed = endstone_player->last_input_ != player_input;
     endstone_player->last_input_ = player_input;
 
-    if (packet.getInput(PlayerAuthInputPacket::InputData::StartSprinting) && !player->isSprinting()) {
+    if (packet.getInput(PlayerAuthInputPacket::InputData::StartSprinting) && !player->isSprinting() &&
+        listeners.isEventRegistered<PlayerToggleSprintEvent>()) {
         const auto e = std::make_shared<PlayerToggleSprintEvent>(endstone_player, true);
         plugin_manager.callEvent(*e);
     }
-    if (packet.getInput(PlayerAuthInputPacket::InputData::StopSprinting) && player->isSprinting()) {
+    if (packet.getInput(PlayerAuthInputPacket::InputData::StopSprinting) && player->isSprinting() &&
+        listeners.isEventRegistered<PlayerToggleSprintEvent>()) {
         const auto e = std::make_shared<PlayerToggleSprintEvent>(endstone_player, false);
         plugin_manager.callEvent(*e);
     }
-    if (packet.getInput(PlayerAuthInputPacket::InputData::StartSneaking) && !player->isSneaking()) {
+    if (packet.getInput(PlayerAuthInputPacket::InputData::StartSneaking) && !player->isSneaking() &&
+        listeners.isEventRegistered<PlayerToggleSneakEvent>()) {
         const auto e = std::make_shared<PlayerToggleSneakEvent>(endstone_player, true);
         plugin_manager.callEvent(*e);
     }
-    if (packet.getInput(PlayerAuthInputPacket::InputData::StopSneaking) && player->isSneaking()) {
+    if (packet.getInput(PlayerAuthInputPacket::InputData::StopSneaking) && player->isSneaking() &&
+        listeners.isEventRegistered<PlayerToggleSneakEvent>()) {
         const auto e = std::make_shared<PlayerToggleSneakEvent>(endstone_player, false);
         plugin_manager.callEvent(*e);
     }
-    if (packet.getInput(PlayerAuthInputPacket::InputData::MissedSwing)) {
+    if (packet.getInput(PlayerAuthInputPacket::InputData::MissedSwing) &&
+        listeners.isEventRegistered<PlayerInteractEvent>()) {
         const auto e = std::make_shared<PlayerInteractEvent>(endstone_player, PlayerInteractEvent::Action::LeftClickAir,
                                                              endstone_player->getInventory().getItemInMainHand(),
                                                              nullptr, BlockFace::South, std::nullopt);
@@ -422,41 +429,47 @@ void EndstonePacketHandler::handle(PlayerAuthInputPacket &packet)
             packet.setInput(PlayerAuthInputPacket::InputData::MissedSwing, false);
         }
     }
-    if (packet.getInput(PlayerAuthInputPacket::InputData::StartSwimming) && !player->isSwimming()) {
+    if (packet.getInput(PlayerAuthInputPacket::InputData::StartSwimming) && !player->isSwimming() &&
+        listeners.isEventRegistered<ActorToggleSwimEvent>()) {
         const auto e = std::make_shared<ActorToggleSwimEvent>(endstone_player, true);
         plugin_manager.callEvent(*e);
     }
-    if (packet.getInput(PlayerAuthInputPacket::InputData::StopSwimming) && player->isSwimming()) {
+    if (packet.getInput(PlayerAuthInputPacket::InputData::StopSwimming) && player->isSwimming() &&
+        listeners.isEventRegistered<ActorToggleSwimEvent>()) {
         const auto e = std::make_shared<ActorToggleSwimEvent>(endstone_player, false);
         plugin_manager.callEvent(*e);
     }
-    if (packet.getInput(PlayerAuthInputPacket::InputData::StartGliding) && !player->isGliding()) {
+    if (packet.getInput(PlayerAuthInputPacket::InputData::StartGliding) && !player->isGliding() &&
+        listeners.isEventRegistered<ActorToggleGlideEvent>()) {
         const auto e = std::make_shared<ActorToggleGlideEvent>(endstone_player, true);
         plugin_manager.callEvent(*e);
     }
-    if (packet.getInput(PlayerAuthInputPacket::InputData::StopGliding) && player->isGliding()) {
+    if (packet.getInput(PlayerAuthInputPacket::InputData::StopGliding) && player->isGliding() &&
+        listeners.isEventRegistered<ActorToggleGlideEvent>()) {
         const auto e = std::make_shared<ActorToggleGlideEvent>(endstone_player, false);
         plugin_manager.callEvent(*e);
     }
-    if (packet.getInput(PlayerAuthInputPacket::InputData::StartCrawling) && !player->isCrawling()) {
+    if (packet.getInput(PlayerAuthInputPacket::InputData::StartCrawling) && !player->isCrawling() &&
+        listeners.isEventRegistered<PlayerToggleCrawlEvent>()) {
         const auto e = std::make_shared<PlayerToggleCrawlEvent>(endstone_player, true);
         plugin_manager.callEvent(*e);
     }
-    if (packet.getInput(PlayerAuthInputPacket::InputData::StopCrawling) && player->isCrawling()) {
+    if (packet.getInput(PlayerAuthInputPacket::InputData::StopCrawling) && player->isCrawling() &&
+        listeners.isEventRegistered<PlayerToggleCrawlEvent>()) {
         const auto e = std::make_shared<PlayerToggleCrawlEvent>(endstone_player, false);
         plugin_manager.callEvent(*e);
     }
     if (packet.getInput(PlayerAuthInputPacket::InputData::StartFlying) && endstone_player->getAllowFlight() &&
-        !player->isFlying()) {
+        !player->isFlying() && listeners.isEventRegistered<PlayerToggleFlightEvent>()) {
         const auto e = std::make_shared<PlayerToggleFlightEvent>(endstone_player, true);
         plugin_manager.callEvent(*e);
     }
     if (packet.getInput(PlayerAuthInputPacket::InputData::StopFlying) && endstone_player->getAllowFlight() &&
-        player->isFlying()) {
+        player->isFlying() && listeners.isEventRegistered<PlayerToggleFlightEvent>()) {
         const auto e = std::make_shared<PlayerToggleFlightEvent>(endstone_player, false);
         plugin_manager.callEvent(*e);
     }
-    if (input_changed) {
+    if (input_changed && listeners.isEventRegistered<PlayerInputEvent>()) {
         const auto e = std::make_shared<PlayerInputEvent>(endstone_player, player_input);
         plugin_manager.callEvent(*e);
     }
@@ -464,7 +477,8 @@ void EndstonePacketHandler::handle(PlayerAuthInputPacket &packet)
     auto &actions = packet.payload.player_block_actions.actions_;
     for (auto it = actions.begin(); it != actions.end();) {
         const auto &action = *it;
-        if (action.player_action_type == PlayerActionType::StartDestroyBlock) {
+        if (action.player_action_type == PlayerActionType::StartDestroyBlock &&
+            listeners.isEventRegistered<PlayerInteractEvent>()) {
             const auto item = endstone_player->getInventory().getItemInMainHand();
             const auto block = endstone_player->getDimension()->getBlockAt(action.pos.x, action.pos.y, action.pos.z);
             const auto e =
@@ -495,7 +509,8 @@ void EndstonePacketHandler::handle(PlayerAuthInputPacket &packet)
                       input.rot.x,
                       input.rot.y};
 
-    if (packet.getInput(PlayerAuthInputPacket::InputData::Jumping) && on_ground && delta.y > 0.0F) {
+    if (packet.getInput(PlayerAuthInputPacket::InputData::Jumping) && on_ground && delta.y > 0.0F &&
+        listeners.isEventRegistered<PlayerJumpEvent>()) {
         const auto e = std::make_shared<PlayerJumpEvent>(endstone_player, from, to);
         plugin_manager.callEvent(*e);
         if (e->isCancelled()) {
@@ -506,7 +521,8 @@ void EndstonePacketHandler::handle(PlayerAuthInputPacket &packet)
     }
 
     // Prevent intensive event calls on tiny movement using the thresholds from Spigot
-    if (delta.lengthSquared() > 1.0F / 256 || delta_angle.lengthSquared() > 10.0F) {
+    if ((delta.lengthSquared() > 1.0F / 256 || delta_angle.lengthSquared() > 10.0F) &&
+        listeners.isEventRegistered<PlayerMoveEvent>()) {
         const auto e = std::make_shared<PlayerMoveEvent>(endstone_player, from, to);
         plugin_manager.callEvent(*e);
         if (e->isCancelled()) {
