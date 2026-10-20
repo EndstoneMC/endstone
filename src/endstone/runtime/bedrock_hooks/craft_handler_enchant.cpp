@@ -18,6 +18,8 @@
 #include <iterator>
 #include <utility>
 
+#include "bedrock/network/packet.h"
+#include "bedrock/network/packet/inventory_slot_packet.h"
 #include "bedrock/world/actor/player/player.h"
 #include "bedrock/world/containers/container_enum.h"
 #include "bedrock/world/containers/managers/enchanting_container_manager_model.h"
@@ -32,7 +34,59 @@
 #include "endstone/core/player.h"
 #include "endstone/core/server.h"
 #include "endstone/event/enchantment/enchant_item_event.h"
+#include "endstone/inventory/item_type.h"
+#include "endstone/inventory/meta/item_meta.h"
 #include "endstone/runtime/hook.h"
+
+namespace {
+endstone::ItemStack enchantReplacement(endstone::ItemStack item,
+                                       const endstone::EnchantItemEvent::Enchantments &enchants)
+{
+    if (item.getType().getId() == endstone::ItemTypeId::minecraft("book")) {
+        item.setType(endstone::ItemTypeId::minecraft("enchanted_book"));
+    }
+    if (const auto meta = item.getItemMeta()) {
+        for (const auto &[enchantment, level] : enchants) {
+            if (enchantment != nullptr) {
+                (void)meta->addEnchant(enchantment->getId(), level, true);
+            }
+        }
+        item.setItemMeta(meta.get().get());
+    }
+    return item;
+}
+
+void resendEnchantedSlots(const ::Player &player, ::ItemStack enchanted)
+{
+    auto &server = endstone::core::EndstoneServer::getInstance();
+    server.getEndstoneScheduler().runTask(
+        [&server, id = player.getEndstoneActor<endstone::core::EndstonePlayer>()->getUniqueId(),
+         enchanted = std::move(enchanted)]() {
+            const auto target = server.getPlayer(id);
+            if (!target) {
+                return;
+            }
+            auto &handle = static_cast<endstone::core::EndstonePlayer &>(*target).getHandle();
+            const auto send = [&handle](ContainerID container, int slot, const ::ItemStack &item) {
+                const auto packet = MinecraftPackets::createPacket(MinecraftPacketIds::InventorySlot);
+                static_cast<InventorySlotPacket &>(*packet).payload = InventorySlotPacketPayload(container, slot, item);
+                handle.sendNetworkPacket(*packet);
+            };
+            auto &inventory = handle.getInventory();
+            for (auto i = 0; i < inventory.getContainerSize(); ++i) {
+                if (const auto &item = inventory.getItem(i); !item.isNull() && item.matchesItem(enchanted)) {
+                    send(CONTAINER_ID_INVENTORY, i, item);
+                }
+            }
+            const auto &player_ui = handle.getPlayerUIContainer();
+            for (const auto slot : {0, 14}) {
+                if (const auto &item = player_ui.getItem(slot); !item.isNull() && item.matchesItem(enchanted)) {
+                    send(CONTAINER_ID_PLAYER_ONLY_UI, slot, item);
+                }
+            }
+        });
+}
+}  // namespace
 
 ItemStackNetResult CraftHandlerEnchant::_handleCraftAction(const ItemStackRequestActionCraftBase &request_action)
 {
@@ -125,11 +179,22 @@ ItemStackNetResult CraftHandlerEnchant::_handleCraftAction(const ItemStackReques
     }
 
     const auto &item = event.getItem();
-    if (item.getType() != original_item.getType() || item.getAmount() != original_item.getAmount() ||
-        item.getData() != original_item.getData() || item.getNbt() != original_item.getNbt()) {
-        auto enchanted_item = endstone::core::EndstoneItemStack::toMinecraft(item);
-        enchanted_item.copyItemStackNetIdVariant(input);
-        input_container->setItem(14, enchanted_item);
+    const auto replaced = item.getType() != original_item.getType() || item.getAmount() != original_item.getAmount() ||
+                          item.getData() != original_item.getData() || item.getNbt() != original_item.getNbt();
+    if (replaced) {
+        auto replacement = endstone::core::EndstoneItemStack::toMinecraft(item);
+        replacement.copyItemStackNetIdVariant(input);
+        input_container->setItem(14, replacement);
     }
-    return ENDSTONE_HOOK_CALL_ORIGINAL(&CraftHandlerEnchant::_handleCraftAction, this, request_action);
+
+    const auto result = ENDSTONE_HOOK_CALL_ORIGINAL(&CraftHandlerEnchant::_handleCraftAction, this, request_action);
+    if (replaced && result == ItemStackNetResult::Success) {
+        auto &craft_results = craft_request_handler_.getCraftResults();
+        if (!craft_results.empty()) {
+            craft_results.front().first = ItemInstance(
+                endstone::core::EndstoneItemStack::toMinecraft(enchantReplacement(item, event.getEnchantsToAdd())));
+            resendEnchantedSlots(player_, ::ItemStack(craft_results.front().first));
+        }
+    }
+    return result;
 }
