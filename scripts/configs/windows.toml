@@ -416,6 +416,43 @@ extra = 0
 pattern = "41 57 41 56 41 55 41 54 56 57 55 53 48 83 EC 28 4C 89 CF 4C 89 C3"
 
 [[signatures]]
+name = "?canOpenContainer@ContainerComponent@@QEBA_NAEBVActor@@AEAVPlayer@@@Z"
+relative = false
+extra = 0
+# 1. locate ContainerComponent::openContainer (see that entry); the first call in its body is this function
+# 2. confirm from the body: Player::canUseAbility(player, 3) (OpenContainers), ILevel::isClientSide, Actor::isAlive,
+#    the mRestrictToOwner owner check, and Player::canUseOperatorBlocks for container type 16
+# 3. cut at the prologue (`push r14/rsi/rdi/rbx`, `sub rsp, 0x38`)
+# uniqueness: matches exactly once in 1.26.51 and 1.26.52
+pattern = "41 56 56 57 53 48 83 EC 38 4C 89 C6 48 89 D3 48 89 CF 48 8B 05 ? ? ? ? 48 31 E0 48 89 44 24 30 4C 89 C1 B2 03 E8 ? ? ? ? 84 C0 0F 84"
+
+[[signatures]]
+name = "?openContainer@ContainerComponent@@QEAA_NAEAVActor@@AEAVPlayer@@@Z"
+relative = false
+extra = 0
+# 1. find `mov rcx, 400000401h` (48 B9 01 04 00 00 04 00 00 00), a bitmask of the container types that post
+#    PlayerOpenContainerEvent; it occurs once, in this function, a few bytes after `mov ecx, 11100h`
+# 2. confirm from the body: canOpenContainer first, then the inlined loot-table fill
+#    (Util::LootTableUtils::fillContainer), PlayerOpenContainerEvent (variant index 16) through
+#    _processEvent<PlayerGameplayHandler, PlayerGameplayEvent<void>>, and GameEventRegistry::containerOpen for
+#    container types 34 and 10. Actor::openContainerComponent tail-calls it with the entt stride 512 (`shl 9`)
+# 3. cut at the prologue (`push rbp/r15/r14/r13/r12/rsi/rdi/rbx`, `sub rsp, 0xAA8`)
+# uniqueness: matches exactly once in 1.26.51 and 1.26.52
+pattern = "55 41 57 41 56 41 55 41 54 56 57 53 48 81 EC ? ? ? ? 48 8D AC 24 ? ? ? ? 0F 29 BD ? ? ? ? 0F 29 B5 ? ? ? ? 48 C7 85 ? ? ? ? FE FF FF FF 4C 89 C6 48 89 D7 49 89 CE E8"
+
+[[signatures]]
+name = "?unpackLootTable@ContainerComponent@@QEAAXAEAVLevel@@UDimensionType@@AEAVActor@@@Z"
+relative = false
+extra = 0
+# 1. Util::LootTableUtils::fillContainer has few callers; the one passing `this + 0x10` (mContainer) and
+#    `this + 0x1D8` (mLootTable) that is not ContainerComponent::openContainer is this function
+# 2. confirm from the body: ILevel::isClientSide, an empty mLootTable return, a Crypto::Random seed when
+#    mLootTableSeed is zero, a Random seeded from it, fillContainer, and mLootTable cleared
+# 3. cut at the prologue (`push r15/r14/rsi/rdi/rbx`, `sub rsp, 0xA50`)
+# uniqueness: matches exactly once in 1.26.51 and 1.26.52
+pattern = "41 57 41 56 56 57 53 48 81 EC ? ? ? ? 4D 89 CE 44 89 C3 48 89 D7 48 89 CE 48 8B 02 48 8B 80 ? ? ? ? 48 89 D1 FF 15 ? ? ? ? 84 C0 0F 85 ? ? ? ? 48 83 BE ? ? ? ? 00"
+
+[[signatures]]
 name = "?_finishCooking@CampfireBlockActor@@AEAAXAEAVBlockSource@@H@Z"
 relative = false
 extra = 0
@@ -1491,6 +1528,19 @@ extra = 0
 #    it. Chain walked in win32_server_x64 1.26.32.2; pattern verified to match exactly ONCE
 #    in the 1.26.44.3 .text, at 0x693da0
 pattern = "55 41 57 41 56 56 57 53 48 83 EC 58 48 8D 6C 24 50 48 C7 45 00 FE FF FF FF 44 89 C3 48 89 D6 48 89 CF"
+
+[[signatures]]
+name = "?initiateContainerClose@ServerPlayer@@QEAAXXZ"
+relative = false
+extra = 0
+# 1. find the string "ServerPlayer::initiateContainerClose - server initiating closing container"; it is copied
+#    in the std::function lambda the target hands to ItemStackNetManagerServer::tryCloseContainerScreen
+# 2. the lambda's _Func_impl vftable has one code xref that stores it into a local std::function; the function
+#    holding it, which returns early when mContainerManager (`cmp qword [rcx+5A0h], 0`) is null, is the target.
+#    Its only caller is LevelContainerModel::containerRemoved
+# 3. cut at the prologue (`push rbp/rsi/rdi`, `sub rsp, 0xD0`)
+# uniqueness: matches exactly once in 1.26.51 and 1.26.52
+pattern = "55 56 57 48 81 EC ? ? ? ? 48 8D AC 24 ? ? ? ? 0F 29 75 ? 48 C7 45 ? FE FF FF FF 48 89 CE 48 8D 05 ? ? ? ? 48 89 45 ? 48 89 4D ? 48 8D 7D ? 48 89 7D ? 48 83 B9 ? ? ? ? 00"
 
 [[signatures]]
 name = "??0ServerScoreboard@@QEAA@VCommandSoftEnumRegistry@@PEAVLevelStorage@@V?$not_null@V?$NonOwnerPointer@VGameplayUserManager@@@Bedrock@@@gsl@@@Z"

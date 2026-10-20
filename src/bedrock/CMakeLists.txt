@@ -26,6 +26,7 @@ add_library(bedrock STATIC
         diagnostics/log_fmt.cpp
         deps/json/value.cpp
         deps/nethernet/network_id.cpp
+        entity/components/container_component.cpp
         entity/gamerefs_entity/entity_context.cpp
         entity/gamerefs_entity/entity_registry.cpp
         entity/gamerefs_entity/stack_result_storage_entity.cpp
@@ -58,6 +59,7 @@ add_library(bedrock STATIC
         resources/resource_pack_manager.cpp
         resources/resource_pack_stack.cpp
         server/server_instance.cpp
+        server/server_player.cpp
         server/commands/command.cpp
         server/commands/command_origin.cpp
         server/commands/command_origin_loader.cpp

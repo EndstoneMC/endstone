@@ -11,7 +11,7 @@
 
 namespace endstone::runtime {
 
-static constexpr std::array<std::pair<std::string_view, std::size_t>, 112> symbols = {{
+static constexpr std::array<std::pair<std::string_view, std::size_t>, 116> symbols = {{
     {"BlockState::StateListNode::mHead", 257928656},
     {"Enchant::mEnchants", 257765312},
     {"MobEffect::mMobEffects", 257859136},
@@ -65,6 +65,10 @@ static constexpr std::array<std::pair<std::string_view, std::size_t>, 112> symbo
     {"_ZN12CommandUtils12getActorNameERK5Actor", 164348688},
     // ConsoleInputReader
     {"_ZN18ConsoleInputReader3runEPv", 75586224},
+    // ContainerComponent
+    {"_ZN18ContainerComponent13openContainerER5ActorR6Player", 117855952},
+    {"_ZN18ContainerComponent15unpackLootTableER5Level13DimensionTypeR5Actor", 117857936},
+    {"_ZNK18ContainerComponent16canOpenContainerERK5ActorR6Player", 117855760},
     // CraftHandlerCrafting
     {"_ZN20CraftHandlerCrafting18_handleCraftActionERK31ItemStackRequestActionCraftBase", 206062416},
     // CraftHandlerEnchant
@@ -177,6 +181,7 @@ static constexpr std::array<std::pair<std::string_view, std::size_t>, 112> symbo
     {"_ZN20ServerNetworkHandler27disconnectClientWithMessageERK17NetworkIdentifier11SubClientIdN10Connection20DisconnectFailReasonERKNSt3__112basic_stringIcNS6_11char_traitsIcEENS6_9allocatorIcEEEENS6_8optionalISC_EE", 143675360},
     // ServerPlayer
     {"_ZN12ServerPlayer15changeDimensionE13DimensionType", 166161184},
+    {"_ZN12ServerPlayer22initiateContainerCloseEv", 166151968},
     {"_ZN12ServerPlayer25_updateChunkPublisherViewERK4Vec3f", 166125232},
     {"_ZN12ServerPlayer8openSignERK8BlockPosb", 166150720},
     // ServerScoreboard

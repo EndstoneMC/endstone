@@ -434,6 +434,43 @@ extra = 0
 pattern = "55 41 57 41 56 41 55 41 54 53 48 83 EC 18 49 89 CE 48 89 54 24 10 48 89 FB 48 8B B9 D0 01 00 00 48 8B 07"
 
 [[signatures]]
+name = "_ZNK18ContainerComponent16canOpenContainerERK5ActorR6Player"
+relative = false
+extra = 0
+# 1. locate ContainerComponent::openContainer (see that entry); the first call in its body is this function
+# 2. confirm from the body: Player::canUseAbility(player, 3) (OpenContainers), then ILevel::isClientSide through
+#    vtable +0x9F0 on the container actor's level
+# 3. cut at the prologue (`push r15/r14/r12/rbx/rax`)
+# uniqueness: matches exactly once in 1.26.51 and 1.26.52
+pattern = "41 57 41 56 41 54 53 50 48 89 D3 49 89 F7 49 89 FE 48 89 D7 BE 03 00 00 00 E8 ? ? ? ? 84 C0 0F 84 ? ? ? ? 49 8B BF ? ? ? ? 48 8B 07 FF 90"
+
+[[signatures]]
+name = "_ZN18ContainerComponent13openContainerER5ActorR6Player"
+relative = false
+extra = 0
+# 1. find `movabs rcx, 400000401h` (48 B9 01 04 00 00 04 00 00 00), the bitmask of the container types that post
+#    PlayerOpenContainerEvent as CONTAINER; it occurs once, in this function
+# 2. confirm from the body: canOpenContainer first, the inlined loot-table fill on `this + 0x180`/`+0x198`,
+#    PlayerOpenContainerEvent (variant index 16), and the containerOpen game event for container types 34 and 10.
+#    Actor::openContainerComponent tail-calls it with the entt stride 416 (`imul 1A0h`)
+# 3. cut at the prologue (`push rbp/r15/r14/r13/r12/rbx`, `sub rsp, 0xA68`)
+# uniqueness: matches exactly once in 1.26.51 and 1.26.52
+pattern = "55 41 57 41 56 41 55 41 54 53 48 81 EC ? ? ? ? 48 89 D3 49 89 F6 49 89 FF E8 ? ? ? ? 89 C5 84 C0 0F 84 ? ? ? ? 4C 8B A3 ? ? ? ? 48 8B 4B 10 8B 43 18"
+
+[[signatures]]
+name = "_ZN18ContainerComponent15unpackLootTableER5Level13DimensionTypeR5Actor"
+relative = false
+extra = 0
+# 1. the loot-table fill callee shared with ContainerComponent::openContainer has one other caller that reads
+#    `this + 0x180` (mLootTable) and `this + 0x198` (mLootTableSeed); that caller, laid out right after
+#    openContainer, is this function
+# 2. confirm from the body: ILevel::isClientSide through vtable +0x9F0, an empty mLootTable return, a
+#    Crypto::Random seed when mLootTableSeed is zero, the fill, and mLootTable cleared
+# 3. cut at the prologue (`push rbp/r15/r14/rbx`, `sub rsp, 0xA08`)
+# uniqueness: matches exactly once in 1.26.51 and 1.26.52
+pattern = "55 41 57 41 56 53 48 81 EC ? ? ? ? 49 89 CE 89 D5 49 89 F7 48 89 FB 48 8B 06 48 89 F7 FF 90 ? ? ? ? 84 C0 0F 85 ? ? ? ? 0F B6 83 80 01 00 00"
+
+[[signatures]]
 name = "_ZN18CampfireBlockActor14_finishCookingER11BlockSourcei"
 relative = false
 extra = 0
@@ -1454,6 +1491,19 @@ extra = 0
 #    it. Chain walked in linux_server_x64 1.21.132.3 (symbols.debug); pattern verified to match
 #    exactly ONCE in the 1.26.44.3 .text, at 0x98ed400
 pattern = "55 41 57 41 56 41 54 53 48 83 EC 40 89 D5 48 89 F3 49 89 FE 48 8B BF"
+
+[[signatures]]
+name = "_ZN12ServerPlayer22initiateContainerCloseEv"
+relative = false
+extra = 0
+# 1. RTTI survives here: the vtable of the std::function holding the lambda,
+#    _ZTVNSt3__110__function6__funcIZN12ServerPlayer22initiateContainerCloseEvE3$_0NS_9allocatorIS3_EEFvvEEE, is named
+# 2. its address point (+0x10) is referenced from three functions; the one that returns early when
+#    mContainerManager (`cmp qword [r14+558h], 0`) is null and otherwise passes mItemStackNetManager
+#    (`[r14+0A00h]`) and the std::function to ItemStackNetManagerServer::tryCloseContainerScreen is the target
+# 3. cut at the prologue (`push r14/rbx`, `sub rsp, 0x78`)
+# uniqueness: matches exactly once in 1.26.51 and 1.26.52
+pattern = "41 56 53 48 83 EC 78 49 89 FE 48 8D 05 ? ? ? ? 48 89 44 24 10 48 89 7C 24 18 48 8D 7C 24 10 48 89 7C 24 30 49 83 BE ? ? ? ? 00 0F 84"
 
 [[signatures]]
 name = "_ZN16ServerScoreboardC2E23CommandSoftEnumRegistryP12LevelStorageN3gsl8not_nullIN7Bedrock15NonOwnerPointerI19GameplayUserManagerEEEE"

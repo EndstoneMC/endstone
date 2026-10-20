@@ -11,7 +11,7 @@
 
 namespace endstone::runtime {
 
-static constexpr std::array<std::pair<std::string_view, std::size_t>, 112> symbols = {{
+static constexpr std::array<std::pair<std::string_view, std::size_t>, 116> symbols = {{
     {"BlockState::StateListNode::mHead", 215092208},
     {"Enchant::mEnchants", 214656904},
     {"MobEffect::mMobEffects", 214658168},
@@ -64,6 +64,10 @@ static constexpr std::array<std::pair<std::string_view, std::size_t>, 112> symbo
     {"?getActorName@CommandUtils@@YA?AV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@AEBVActor@@@Z", 4035184},
     // ConsoleInputReader
     {"?run@ConsoleInputReader@@SAPEAXPEAX@Z", 996736},
+    // ContainerComponent
+    {"?canOpenContainer@ContainerComponent@@QEBA_NAEBVActor@@AEAVPlayer@@@Z", 28931808},
+    {"?openContainer@ContainerComponent@@QEAA_NAEAVActor@@AEAVPlayer@@@Z", 28932064},
+    {"?unpackLootTable@ContainerComponent@@QEAAXAEAVLevel@@UDimensionType@@AEAVActor@@@Z", 28934592},
     // CraftHandlerCrafting
     {"?_handleCraftAction@CraftHandlerCrafting@@MEAA?AW4ItemStackNetResult@@AEBVItemStackRequestActionCraftBase@@@Z", 74313776},
     // CraftHandlerEnchant
@@ -177,6 +181,7 @@ static constexpr std::array<std::pair<std::string_view, std::size_t>, 112> symbo
     // ServerPlayer
     {"?_updateChunkPublisherView@ServerPlayer@@MEAAXAEBVVec3@@M@Z", 7667264},
     {"?changeDimension@ServerPlayer@@UEAAXUDimensionType@@@Z", 7705664},
+    {"?initiateContainerClose@ServerPlayer@@QEAAXXZ", 7696304},
     {"?openSign@ServerPlayer@@UEAAXAEBVBlockPos@@_N@Z", 7695104},
     // ServerScoreboard
     {"??0ServerScoreboard@@QEAA@VCommandSoftEnumRegistry@@PEAVLevelStorage@@V?$not_null@V?$NonOwnerPointer@VGameplayUserManager@@@Bedrock@@@gsl@@@Z", 2095792},

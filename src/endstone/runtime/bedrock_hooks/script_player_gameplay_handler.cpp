@@ -17,9 +17,11 @@
 #include <cstdint>
 #include <optional>
 #include <string_view>
-#include <unordered_map>
+#include <utility>
+#include <variant>
 
 #include "bedrock/core/string/string_hash.h"
+#include "bedrock/entity/components/container_component.h"
 #include "bedrock/entity/components/replay_state_component.h"
 #include "bedrock/locale/i18n.h"
 #include "bedrock/network/packet/death_info_packet.h"
@@ -39,6 +41,7 @@
 #include "endstone/core/damage/damage_source.h"
 #include "endstone/core/entity/components/flag_components.h"
 #include "endstone/core/game_mode.h"
+#include "endstone/core/inventory/inventory.h"
 #include "endstone/core/inventory/item_stack.h"
 #include "endstone/core/json.h"
 #include "endstone/core/message.h"
@@ -60,12 +63,38 @@
 #include "endstone/runtime/vtable_hook.h"
 
 namespace {
-std::unordered_map<std::int64_t, BlockPos> open_container_positions;
-
 endstone::Nullable<endstone::Container> tryGetContainerAt(const ::Player &player, const BlockPos &block_pos)
 {
     auto &block_source = player.getDimension().getBlockSourceFromMainChunkSource();
     return endstone::core::EndstoneBlock::at(block_source, block_pos)->captureState(false).as<endstone::Container>();
+}
+
+::Container *tryGetEntityContainer(const ::Player &player, const ActorUniqueID &entity_unique_id)
+{
+    auto *actor = player.getLevel().fetchEntity(entity_unique_id, false);
+    if (actor == nullptr) {
+        return nullptr;
+    }
+    const auto *component = std::as_const(actor->getEntity()).tryGetComponent<ContainerComponent>();
+    if (component == nullptr) {
+        return nullptr;
+    }
+    return const_cast<ContainerComponent *>(component)->_getRawContainerPtr();
+}
+
+bool callInventoryOpenEvent(const ::Player &player, endstone::Inventory &inventory)
+{
+    const auto &server = endstone::core::EndstoneServer::getInstance();
+    endstone::InventoryOpenEvent e{inventory, player.getEndstoneActor<endstone::core::EndstonePlayer>()};
+    server.getPluginManager().callEvent(e);
+    return !e.isCancelled();
+}
+
+void callInventoryCloseEvent(const ::Player &player, endstone::Inventory &inventory)
+{
+    const auto &server = endstone::core::EndstoneServer::getInstance();
+    endstone::InventoryCloseEvent e{inventory, player.getEndstoneActor<endstone::core::EndstonePlayer>()};
+    server.getPluginManager().callEvent(e);
 }
 
 class BucketItemLayout : public ::Item {
@@ -100,8 +129,24 @@ BlockPos getBlockPosition(const ::Actor &target)
 
 bool handleEvent(const PlayerOpenContainerEvent &event)
 {
-    const auto *player = event.player.tryUnwrap<::Player>();
+    auto *player = WeakEntityRef(event.player).tryUnwrap<::Player>();
     if (player == nullptr) {
+        return true;
+    }
+
+    if (event.entity_unique_id.isValid()) {
+        if (!player->hasComponent<endstone::core::InternalEntityContainerOpenFlagComponent>()) {
+            auto *container = tryGetEntityContainer(*player, event.entity_unique_id);
+            if (container == nullptr) {
+                return true;
+            }
+            endstone::core::EndstoneInventory inventory{[container]() -> ::Container & { return *container; }};
+            if (!callInventoryOpenEvent(*player, inventory)) {
+                return false;
+            }
+        }
+        player->getEntity().getOrAddComponent<endstone::core::InternalOpenContainerComponent>().owner =
+            event.entity_unique_id;
         return true;
     }
 
@@ -109,42 +154,37 @@ bool handleEvent(const PlayerOpenContainerEvent &event)
     if (!container) {
         return true;
     }
-
-    const auto &server = endstone::core::EndstoneServer::getInstance();
-    endstone::InventoryOpenEvent e{container->getInventory(),
-                                   player->getEndstoneActor<endstone::core::EndstonePlayer>()};
-    server.getPluginManager().callEvent(e);
-    if (e.isCancelled()) {
+    if (!callInventoryOpenEvent(*player, container->getInventory())) {
         return false;
     }
-
-    open_container_positions[player->getOrCreateUniqueID().raw_id] = event.block_pos;
+    player->getEntity().getOrAddComponent<endstone::core::InternalOpenContainerComponent>().owner = event.block_pos;
     return true;
 }
 
-void closeOpenContainer(const ::Player &player)
+void closeOpenContainer(::Player &player)
 {
-    const auto it = open_container_positions.find(player.getOrCreateUniqueID().raw_id);
-    if (it == open_container_positions.end()) {
+    const auto *open = player.getEntity().tryGetComponent<endstone::core::InternalOpenContainerComponent>();
+    if (open == nullptr) {
         return;
     }
-    const auto block_pos = it->second;
-    open_container_positions.erase(it);
+    const auto owner = open->owner;
+    player.getEntity().removeComponent<endstone::core::InternalOpenContainerComponent>();
 
-    const auto container = tryGetContainerAt(player, block_pos);
-    if (!container) {
+    if (const auto *block_pos = std::get_if<BlockPos>(&owner)) {
+        if (const auto container = tryGetContainerAt(player, *block_pos)) {
+            callInventoryCloseEvent(player, container->getInventory());
+        }
         return;
     }
-
-    const auto &server = endstone::core::EndstoneServer::getInstance();
-    endstone::InventoryCloseEvent e{container->getInventory(),
-                                    player.getEndstoneActor<endstone::core::EndstonePlayer>()};
-    server.getPluginManager().callEvent(e);
+    if (auto *container = tryGetEntityContainer(player, std::get<ActorUniqueID>(owner))) {
+        endstone::core::EndstoneInventory inventory{[container]() -> ::Container & { return *container; }};
+        callInventoryCloseEvent(player, inventory);
+    }
 }
 
 bool handleEvent(const PlayerClosedContainerEvent &event)
 {
-    if (const auto *player = event.player.tryUnwrap<::Player>(); player) {
+    if (auto *player = WeakEntityRef(event.player).tryUnwrap<::Player>(); player) {
         closeOpenContainer(*player);
     }
     return true;
@@ -195,7 +235,6 @@ bool handleEvent(const PlayerDisconnectEvent &event)
         const auto &server = endstone::core::EndstoneServer::getInstance();
         auto endstone_player = player->getEndstoneActor<endstone::core::EndstonePlayer>();
         if (player->hasComponent<endstone::core::InternalLoginCancelledFlagComponent>()) {
-            open_container_positions.erase(player->getOrCreateUniqueID().raw_id);
             endstone_player->disconnect();
             return true;
         }

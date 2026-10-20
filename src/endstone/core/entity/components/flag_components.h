@@ -15,7 +15,9 @@
 #pragma once
 
 #include <optional>
+#include <variant>
 
+#include "bedrock/world/actor/actor_unique_id.h"
 #include "bedrock/world/level/block_pos.h"
 #include "endstone/event/block/cauldron_level_change_event.h"
 #include "endstone/event/player/player_open_sign_event.h"
@@ -36,7 +38,11 @@ struct InternalCauldronInteractionComponent {
     bool handled = false;
 };
 struct InternalDisconnectFlagComponent {};
+struct InternalEntityContainerOpenFlagComponent {};
 struct InternalLoginCancelledFlagComponent {};
+struct InternalOpenContainerComponent {
+    std::variant<BlockPos, ActorUniqueID> owner;
+};
 struct InternalOpenSignCauseComponent {
     PlayerOpenSignEvent::Cause cause = PlayerOpenSignEvent::Cause::Unknown;
 };

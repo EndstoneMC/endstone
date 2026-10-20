@@ -39,6 +39,7 @@ public:
     ~ServerPlayer() override = 0;
     ENDSTONE_HOOK void changeDimension(DimensionType toId) override;  // TODO(fixme): enable the hook
     ENDSTONE_HOOK void openSign(BlockPos const &, bool) override;
+    void initiateContainerClose();
 
 protected:
     [[nodiscard]] virtual int _getSpawnChunkLimit() const = 0;

@@ -14,12 +14,21 @@
 
 #include "bedrock/scripting/event_handlers/script_actor_gameplay_handler.h"
 
+#include <utility>
+#include <variant>
+
+#include "bedrock/entity/components/container_component.h"
+#include "bedrock/server/server_player.h"
 #include "bedrock/world/actor/actor.h"
+#include "bedrock/world/actor/player/player.h"
+#include "bedrock/world/level/level.h"
 #include "endstone/core/actor/item.h"
 #include "endstone/core/actor/mob.h"
 #include "endstone/core/block/block.h"
 #include "endstone/core/damage/damage_source.h"
 #include "endstone/core/entity/components/flag_components.h"
+#include "endstone/core/inventory/inventory.h"
+#include "endstone/core/player.h"
 #include "endstone/core/server.h"
 #include "endstone/event/actor/actor_change_block_event.h"
 #include "endstone/event/actor/actor_damage_event.h"
@@ -28,6 +37,7 @@
 #include "endstone/event/actor/actor_effect_event.h"
 #include "endstone/event/actor/actor_pickup_item_event.h"
 #include "endstone/event/actor/actor_remove_event.h"
+#include "endstone/event/inventory/inventory_close_event.h"
 #include "endstone/runtime/vtable_hook.h"
 
 namespace {
@@ -40,6 +50,29 @@ bool handleEvent(const ActorDiedEvent &event)
         server.getPluginManager().callEvent(e);
     }
     return true;
+}
+
+void closeInventoryViewers(::Actor &actor)
+{
+    const auto *component = std::as_const(actor.getEntity()).tryGetComponent<ContainerComponent>();
+    if (component == nullptr) {
+        return;
+    }
+    auto *container = const_cast<ContainerComponent *>(component)->_getRawContainerPtr();
+    const auto id = actor.getOrCreateUniqueID();
+    actor.getLevel().forEachPlayer([&](::Player &player) {
+        const auto *open = player.getEntity().tryGetComponent<endstone::core::InternalOpenContainerComponent>();
+        const auto *owner = open == nullptr ? nullptr : std::get_if<ActorUniqueID>(&open->owner);
+        if (owner == nullptr || *owner != id) {
+            return true;
+        }
+        player.getEntity().removeComponent<endstone::core::InternalOpenContainerComponent>();
+        endstone::core::EndstoneInventory inventory{[container]() -> ::Container & { return *container; }};
+        endstone::InventoryCloseEvent e{inventory, player.getEndstoneActor<endstone::core::EndstonePlayer>()};
+        endstone::core::EndstoneServer::getInstance().getPluginManager().callEvent(e);
+        static_cast<ServerPlayer &>(player).initiateContainerClose();
+        return true;
+    });
 }
 
 bool handleEvent(const ActorRemovedEvent &event)
@@ -58,6 +91,7 @@ bool handleEvent(const ActorRemovedEvent &event)
 
         endstone::ActorRemoveEvent e{actor->getEndstoneActor()};
         endstone::core::EndstoneServer::getInstance().getPluginManager().callEvent(e);
+        closeInventoryViewers(*actor);
     }
     return true;
 }
