@@ -270,8 +270,7 @@ void init_event(py::module_ &m, py::class_<Event, PyEvent> &event)
 
     If a Block From To event is cancelled, the block will not move (the liquid will not flow).
 )doc")
-        .def_property_readonly("to_block", &BlockFromToEvent::getToBlock, py::return_value_policy::reference,
-                               "The faced `Block`.");
+        .def_property_readonly("to_block", &BlockFromToEvent::getToBlock, "The faced `Block`.");
     bind_event<BlockPistonEvent, BlockEvent, ICancellable>(m, "BlockPistonEvent",
                                                            "Called when a piston block is triggered.")
         .def_property_readonly("direction", &BlockPistonEvent::getDirection,
@@ -338,12 +337,10 @@ void init_event(py::module_ &m, py::class_<Event, PyEvent> &event)
     auto player_bed_enter_event = bind_event<PlayerBedEnterEvent, PlayerEvent, ICancellable>(
         m, "PlayerBedEnterEvent", "Called when a player is almost about to enter the bed.");
     player_bed_enter_event.def_property_readonly("bed", &PlayerBedEnterEvent::getBed,
-                                                 py::return_value_policy::reference,
                                                  "The bed block involved in this event.");
 
     bind_event<PlayerBedLeaveEvent, PlayerEvent>(m, "PlayerBedLeaveEvent", "Called when a player is leaving a bed.")
-        .def_property_readonly("bed", &PlayerBedLeaveEvent::getBed, py::return_value_policy::reference,
-                               "The bed block involved in this event.");
+        .def_property_readonly("bed", &PlayerBedLeaveEvent::getBed, "The bed block involved in this event.");
     bind_event<PlayerBucketActorEvent, PlayerEvent, ICancellable>(m, "PlayerBucketActorEvent",
                                                                   "Called when a player captures an actor in a bucket.")
         .def_property_readonly("actor", &PlayerBucketActorEvent::getActor, "The actor being captured.")

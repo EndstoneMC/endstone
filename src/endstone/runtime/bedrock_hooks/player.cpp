@@ -246,9 +246,9 @@ BedSleepingResult Player::startSleepInBed(BlockPos const &bed_block_pos, bool a2
         auto player = getEndstoneActor<endstone::core::EndstonePlayer>();
         const auto block = endstone::core::EndstoneBlock::at(getDimensionBlockSource(), bed_block_pos);
 
-        endstone::PlayerBedEnterEvent e(player, *block);
-        server.getPluginManager().callEvent(e);
-        if (e.isCancelled()) {
+        const auto e = std::make_shared<endstone::PlayerBedEnterEvent>(player, block);
+        server.getPluginManager().callEvent(*e);
+        if (e->isCancelled()) {
             return BedSleepingResult::OTHER_PROBLEM;
         }
     }
@@ -265,8 +265,8 @@ void Player::stopSleepInBed(bool forceful_wake_up, bool update_level_list)
             entity_data.getPosition(static_cast<SynchedActorData::ID>(ActorDataIDs::BED_POSITION));
         const auto block = endstone::core::EndstoneBlock::at(getDimensionBlockSource(), bed_position);
 
-        endstone::PlayerBedLeaveEvent e(player, *block);
-        server.getPluginManager().callEvent(e);
+        const auto e = std::make_shared<endstone::PlayerBedLeaveEvent>(player, block);
+        server.getPluginManager().callEvent(*e);
     }
 
     ENDSTONE_HOOK_CALL_ORIGINAL(&Player::stopSleepInBed, this, forceful_wake_up, update_level_list);

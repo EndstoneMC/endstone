@@ -26,7 +26,10 @@ namespace endstone {
 class PlayerBedLeaveEvent final : public PlayerEvent {
 public:
     ENDSTONE_EVENT(PlayerBedLeaveEvent);
-    explicit PlayerBedLeaveEvent(const NotNull<Player> &player, Block &bed) : PlayerEvent(player), bed_(bed) {}
+    explicit PlayerBedLeaveEvent(const NotNull<Player> &player, const NotNull<Block> &bed)
+        : PlayerEvent(player), bed_(bed)
+    {
+    }
     ~PlayerBedLeaveEvent() override = default;
 
     /**
@@ -34,10 +37,10 @@ public:
      *
      * @return The bed block involved in this event.
      */
-    [[nodiscard]] Block &getBed() const { return bed_; }
+    [[nodiscard]] const NotNull<Block> &getBed() const { return bed_; }
 
 private:
-    Block &bed_;
+    NotNull<Block> bed_;
 };
 
 }  // namespace endstone

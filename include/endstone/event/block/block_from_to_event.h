@@ -40,7 +40,7 @@ public:
      *
      * @return The faced Block
      */
-    [[nodiscard]] Block &getToBlock() const { return *to_; }
+    [[nodiscard]] const NotNull<Block> &getToBlock() const { return to_; }
 
 protected:
     NotNull<Block> to_;
