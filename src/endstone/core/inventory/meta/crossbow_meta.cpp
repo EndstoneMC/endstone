@@ -78,6 +78,11 @@ bool EndstoneCrossbowMeta::isEmpty() const
     return EndstoneItemMetaBase::isEmpty() && isCrossbowEmpty();
 }
 
+bool EndstoneCrossbowMeta::applicableTo(ItemTypeId type) const
+{
+    return type == ItemTypeId::minecraft("crossbow");
+}
+
 bool EndstoneCrossbowMeta::equalsCommon(const ItemMeta &meta) const
 {
     if (!EndstoneItemMetaBase<CrossbowMeta>::equalsCommon(meta)) {

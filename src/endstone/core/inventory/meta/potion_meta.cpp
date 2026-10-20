@@ -64,6 +64,17 @@ void EndstonePotionMeta::setBasePotionType(const std::optional<PotionId> type)
     base_potion_type_ = potion->getNameId();
 }
 
+bool EndstonePotionMeta::isEmpty() const
+{
+    return EndstoneItemMetaBase::isEmpty() && isPotionEmpty();
+}
+
+bool EndstonePotionMeta::applicableTo(ItemTypeId type) const
+{
+    return type == ItemTypeId::minecraft("potion") || type == ItemTypeId::minecraft("splash_potion") ||
+           type == ItemTypeId::minecraft("lingering_potion");
+}
+
 void EndstonePotionMeta::applyBasePotionType(::ItemStackBase &item) const
 {
     if (!hasBasePotionType()) {

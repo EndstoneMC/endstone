@@ -189,7 +189,7 @@ bool EndstoneItemStack::setItemMeta(ItemStackBase *item, const ItemMeta *meta)
         return false;
     }
 
-    if (EndstoneItemFactory::instance().equals(meta, nullptr)) {
+    if (meta == nullptr) {
         item->setUserData(nullptr);
         return true;
     }
@@ -197,6 +197,11 @@ bool EndstoneItemStack::setItemMeta(ItemStackBase *item, const ItemMeta *meta)
     const auto &type = getType(item);
     if (!EndstoneItemFactory::instance().isApplicable(meta, type)) {
         return false;
+    }
+
+    if (EndstoneItemFactory::instance().equals(meta, nullptr)) {
+        item->setUserData(nullptr);
+        return true;
     }
 
     const auto item_meta = EndstoneItemFactory::instance().asMetaFor(meta, type);
@@ -211,7 +216,7 @@ bool EndstoneItemStack::setItemMeta(ItemStackBase *item, const ItemMeta *meta)
     if (auto &m = item_meta->getExtras(); !m.isEmpty()) {
         auto tag = item->hasUserData() ? item->getUserData()->clone() : std::make_unique<::CompoundTag>();
         m.applyToItem(*tag);
-        item->setUserData(std::move(tag));
+        item->setUserData(tag->isEmpty() ? nullptr : std::move(tag));
     }
 
     return true;
