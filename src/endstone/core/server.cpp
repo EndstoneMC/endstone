@@ -804,6 +804,7 @@ NotNull<BossBar> EndstoneServer::createBossBar(std::string title, BarColor color
 NotNull<BossBar> EndstoneServer::createBossBar(std::string title, BarColor color, BarStyle style,
                                                std::vector<BarFlag> flags)
 {
+    Preconditions::checkState(isPrimaryThread(), "Boss bars can only be created from the server thread.");
     auto boss_bar = std::make_shared<EndstoneBossBar>(std::move(title), color, style, flags);
     boss_bars_.emplace_back(boss_bar);
     return boss_bar;
