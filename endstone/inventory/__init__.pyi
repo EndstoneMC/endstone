@@ -2,6 +2,7 @@
 Classes relating to player inventories and item interactions.
 """
 
+import collections.abc
 import enum
 import typing
 
@@ -1048,6 +1049,11 @@ class Inventory:
     def __setitem__(self, index: int, item: ItemStack | None) -> None:
         """
         Stores the ItemStack at the given index of the inventory.
+        """
+
+    def __iter__(self) -> collections.abc.Iterator:
+        """
+        Iterates over every slot of the inventory. Empty slots are `None`.
         """
 
     @typing.overload

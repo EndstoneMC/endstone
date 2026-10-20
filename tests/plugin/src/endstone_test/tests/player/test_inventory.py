@@ -361,3 +361,19 @@ def test_ender_chest_lacks_the_player_only_members(player: Player, member: str) 
     """Verify the hand and hotbar members belong to PlayerInventory alone."""
     assert hasattr(player.inventory, member)
     assert not hasattr(player.ender_chest, member)
+
+
+def test_iterating_an_inventory_visits_every_slot(player: Player):
+    player.inventory.clear()
+    player.inventory.set_item(3, ItemStack("minecraft:diamond", 2))
+    items = list(player.inventory)
+    assert len(items) == player.inventory.size
+    assert items[3] is not None and items[3].type == "minecraft:diamond"
+    assert items[0] is None
+
+
+def test_indexing_past_the_end_raises_index_error(player: Player):
+    with pytest.raises(IndexError):
+        player.inventory[player.inventory.size]
+    with pytest.raises(IndexError):
+        player.inventory[-1] = ItemStack("minecraft:stone")

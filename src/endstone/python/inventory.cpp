@@ -634,10 +634,27 @@ void init_inventory(py::module_ &m, py::class_<ItemStack> &item_stack)
 )doc")
         .def("clear", py::overload_cast<>(&Inventory::clear), "Clears out the whole `Inventory`.")
         .def("__len__", &Inventory::getSize, "Returns the size of the inventory.")
-        .def("__getitem__", &Inventory::getItem, py::arg("index"),
-             "Returns the ItemStack found in the slot at the given index.")
-        .def("__setitem__", &Inventory::setItem, py::arg("index"), py::arg("item"),
-             "Stores the ItemStack at the given index of the inventory.")
+        .def(
+            "__getitem__",
+            [](const Inventory &self, int index) {
+                if (index < 0 || index >= self.getSize()) {
+                    throw py::index_error("inventory index out of range");
+                }
+                return self.getItem(index);
+            },
+            py::arg("index"), "Returns the ItemStack found in the slot at the given index.")
+        .def(
+            "__setitem__",
+            [](Inventory &self, int index, std::optional<ItemStack> item) {
+                if (index < 0 || index >= self.getSize()) {
+                    throw py::index_error("inventory index out of range");
+                }
+                self.setItem(index, std::move(item));
+            },
+            py::arg("index"), py::arg("item"), "Stores the ItemStack at the given index of the inventory.")
+        .def(
+            "__iter__", [](const Inventory &self) { return py::iter(py::cast(self.getContents())); },
+            "Iterates over every slot of the inventory. Empty slots are `None`.")
         .def("__contains__", py::overload_cast<const ItemStack &>(&Inventory::contains, py::const_), py::arg("item"),
              "Checks if the inventory contains any ItemStacks with the given ItemStack.")
         .def("__contains__", py::overload_cast<ItemTypeId>(&Inventory::contains, py::const_), py::arg("type"),
