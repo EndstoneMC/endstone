@@ -27,7 +27,9 @@
 
 #include <boost/algorithm/string/predicate.hpp>
 
+#include "endstone/core/level/level.h"
 #include "endstone/core/logger_factory.h"
+#include "endstone/core/server.h"
 #include "endstone/level/dimension.h"
 #include "endstone/level/level.h"
 #include "endstone/event/event.h"
@@ -494,8 +496,10 @@ void EndstonePluginManager::disablePlugin(Plugin &plugin)
         plugin.getPluginLoader().disablePlugin(plugin);
         server_.getScheduler().cancelTasks(plugin);
         server_.getServiceManager().unregisterAll(plugin);
-        for (const auto &dimension : server_.getLevel().getDimensions()) {
-            dimension->removePluginChunkTickets(plugin);
+        if (const auto *level = static_cast<EndstoneServer &>(server_).getEndstoneLevel()) {
+            for (const auto &dimension : level->getDimensions()) {
+                dimension->removePluginChunkTickets(plugin);
+            }
         }
         for (auto &[name, handler] : event_handlers_) {
             handler.unregister(plugin);
