@@ -16,7 +16,6 @@
 
 #include <algorithm>
 #include <ranges>
-#include <tuple>
 
 #include "bedrock/entity/components/actor_owner_component.h"
 #include "bedrock/world/level/block/bedrock_block_names.h"
@@ -47,25 +46,11 @@ mce::UUID nextAreaId()
     return {endstone_area_id_prefix, ++counter};
 }
 
-void abandonChunkHold(std::shared_ptr<LevelChunk> chunk)
-{
-    std::ignore = new std::shared_ptr<LevelChunk>(std::move(chunk));
-}
-
 }  // namespace
 
 EndstoneDimension::EndstoneDimension(WeakRef<::Dimension> dimension, EndstoneLevel &level)
     : dimension_(std::move(dimension)), level_(level)
 {
-}
-
-EndstoneDimension::~EndstoneDimension()
-{
-    for (auto &ticket : chunk_tickets_ | std::views::values) {
-        if (ticket.chunk) {
-            abandonChunkHold(std::move(ticket.chunk));
-        }
-    }
 }
 
 DimensionId EndstoneDimension::getId() const
@@ -180,7 +165,7 @@ void EndstoneDimension::onChunkLoaded(const LevelChunk &chunk)
 {
     const auto &pos = chunk.getPosition();
     const auto it = chunk_tickets_.find(chunkKey(pos.x, pos.z));
-    if (it == chunk_tickets_.end() || !it->second.server_owned || it->second.chunk) {
+    if (leaving_game_ || it == chunk_tickets_.end() || !it->second.server_owned || it->second.chunk) {
         return;
     }
     it->second.chunk = getHandle().getChunkSource().getExistingChunk(pos);
@@ -195,6 +180,9 @@ bool EndstoneDimension::loadChunk(int x, int z)
 bool EndstoneDimension::loadChunk(int x, int z, bool generate)
 {
     checkServerThread();
+    if (leaving_game_) {
+        return false;
+    }
     auto it = chunk_tickets_.try_emplace(chunkKey(x, z)).first;
     auto &ticket = it->second;
     const auto was_owned = ticket.server_owned;
@@ -236,6 +224,14 @@ bool EndstoneDimension::unloadChunkRequest(int x, int z)
         syncTicket(it, x, z, false);
     }
     return true;
+}
+
+void EndstoneDimension::onStartLeaveGame()
+{
+    leaving_game_ = true;
+    for (auto &ticket : chunk_tickets_ | std::views::values) {
+        ticket.chunk.reset();
+    }
 }
 
 bool EndstoneDimension::addPluginChunkTicket(int x, int z, Plugin &plugin)

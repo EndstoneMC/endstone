@@ -19,6 +19,7 @@
 #include "bedrock/world/events/level_events.h"
 #include "endstone/core/actor/actor.h"
 #include "endstone/core/entity/components/flag_components.h"
+#include "endstone/core/level/dimension.h"
 #include "endstone/core/server.h"
 #include "endstone/event/actor/actor_spawn_event.h"
 #include "endstone/runtime/vtable_hook.h"
@@ -38,6 +39,13 @@ bool handleEvent(const LevelAddedActorEvent &event)
     return true;
 }
 
+void handleEvent(const LevelStartLeaveGameEvent & /*event*/)
+{
+    for (const auto &dimension : endstone::core::EndstoneServer::getInstance().getLevel().getDimensions()) {
+        static_cast<endstone::core::EndstoneDimension &>(*dimension).onStartLeaveGame();
+    }
+}
+
 }  // namespace
 
 HandlerResult ScriptLevelGameplayHandler::handleEvent1(LevelGameplayEvent<void> const &event)
@@ -48,6 +56,9 @@ HandlerResult ScriptLevelGameplayHandler::handleEvent1(LevelGameplayEvent<void> 
             if (!handleEvent(arg.value())) {
                 return HandlerResult::BypassListeners;
             }
+        }
+        else if constexpr (std::is_same_v<T, Details::ValueOrRef<const LevelStartLeaveGameEvent>>) {
+            handleEvent(arg.value());
         }
         return ENDSTONE_VHOOK_CALL_ORIGINAL(&ScriptLevelGameplayHandler::handleEvent1, this, event);
     };
