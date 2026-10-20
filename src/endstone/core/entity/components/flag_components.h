@@ -35,6 +35,7 @@ struct InternalCauldronInteractionComponent {
     CauldronLevelChangeEvent::ChangeReason reason = CauldronLevelChangeEvent::ChangeReason::Unknown;
 };
 struct InternalDisconnectFlagComponent {};
+struct InternalLoginCancelledFlagComponent {};
 struct InternalOpenSignCauseComponent {
     PlayerOpenSignEvent::Cause cause = PlayerOpenSignEvent::Cause::Unknown;
 };

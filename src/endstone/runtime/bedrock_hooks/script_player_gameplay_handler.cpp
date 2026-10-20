@@ -193,6 +193,10 @@ bool handleEvent(const PlayerDisconnectEvent &event)
         const auto &server = endstone::core::EndstoneServer::getInstance();
         auto endstone_player = player->getEndstoneActor<endstone::core::EndstonePlayer>();
         open_container_positions.erase(player->getOrCreateUniqueID().raw_id);
+        if (player->hasComponent<endstone::core::InternalLoginCancelledFlagComponent>()) {
+            endstone_player->disconnect();
+            return true;
+        }
 
         endstone::Message quit_message = endstone::Translatable{
             endstone::ColorFormat::Yellow + "%multiplayer.player.left", {endstone_player->getName()}};

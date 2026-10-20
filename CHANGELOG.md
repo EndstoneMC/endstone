@@ -196,6 +196,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Fixed `Plugin.default_permission` rejecting a string or a bool (`"operator"`, `"not op"`, `True`), which individual entries in `Plugin.permissions` already accepted.
 - Fixed `Plugin.default_permission` never reaching the entries in `Plugin.permissions` that set no `default` of their own.
 - Fixed `PlayerChatEvent.message` and `PlayerChatEvent.player` being ignored unless the format was changed as well.
+- Fixed a cancelled `PlayerLoginEvent` still calling `PlayerQuitEvent` and announcing that the player left.
 - Fixed `Block.biome` reading the wrong part of a chunk, so it reported a biome that has nothing to do with the block, and could crash the server. Introduced in 0.11.7 along with BDS 1.26.40 support.
 
 #### Type annotations
