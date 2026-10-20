@@ -320,6 +320,7 @@ bool EndstoneCommandMap::registerCommand(NotNull<Command> command)
 
         bool success = true;
         std::vector<CommandParameterData> param_data;
+        std::vector<std::string> usage_enums;
         for (const auto &parameter : parameters) {
             auto data = CommandParameterData({0}, &CommandRegistry::ParseRuleFor<MinecraftCommandAdapter>::instance,
                                              parameter.name.c_str(), CommandParameterDataType::Basic, nullptr, nullptr,
@@ -349,7 +350,7 @@ bool EndstoneCommandMap::registerCommand(NotNull<Command> command)
 
                 // Add enum
                 auto symbol = registry.addEnumValues(enum_name_final, parameter.values);
-                created_enums.push_back(enum_name_final);
+                usage_enums.push_back(enum_name_final);
 
                 // Check if the enum has been added
                 auto it = registry.enum_lookup_.find(enum_name_final);
@@ -407,6 +408,12 @@ bool EndstoneCommandMap::registerCommand(NotNull<Command> command)
 
         if (success) {
             pending_param_data.push_back(param_data);
+            created_enums.insert(created_enums.end(), usage_enums.begin(), usage_enums.end());
+        }
+        else {
+            for (const auto &enum_name : usage_enums) {
+                clearEnumValues(enum_name);
+            }
         }
     }
 
