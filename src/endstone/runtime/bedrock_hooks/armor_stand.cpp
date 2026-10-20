@@ -16,6 +16,7 @@
 
 #include <optional>
 
+#include "bedrock/entity/weak_entity_ref.h"
 #include "bedrock/world/actor/actor_interaction.h"
 #include "bedrock/world/actor/armor_slot.h"
 #include "bedrock/world/actor/player/player.h"
@@ -36,62 +37,80 @@ Interaction ArmorStand::getInteraction(Player &player, Vec3 const &location)
         return result;
     }
 
-    const auto height = location.y - getPosition().y;
-    std::optional<ArmorSlot> armor_slot;
-    if (height >= 0.1F && height < 0.55F) {
-        armor_slot = ArmorSlot::Feet;
-    }
-    else if (height >= 0.9F && height < 1.6F) {
-        armor_slot = ArmorSlot::Torso;
-    }
-    else if (height >= 0.4F && height < 1.2F) {
-        armor_slot = ArmorSlot::Legs;
-    }
-    else if (height >= 1.6F) {
-        armor_slot = ArmorSlot::Head;
-    }
-
-    const auto &player_item = player.getCarriedItem();
-    if (!player_item.isNull()) {
-        const auto *item = player_item.getItem();
-        armor_slot = item != nullptr && item->isHumanoidArmor()
-                       ? std::optional{static_cast<const HumanoidArmorItem *>(item)->slot_}
-                       : std::nullopt;
-    }
-
-    auto slot = endstone::EquipmentSlot::Hand;
-    switch (armor_slot.value_or(ArmorSlot::_count)) {
-    case ArmorSlot::Head:
-        slot = endstone::EquipmentSlot::Head;
-        break;
-    case ArmorSlot::Torso:
-        slot = endstone::EquipmentSlot::Chest;
-        break;
-    case ArmorSlot::Legs:
-        slot = endstone::EquipmentSlot::Legs;
-        break;
-    case ArmorSlot::Feet:
-        slot = endstone::EquipmentSlot::Feet;
-        break;
-    case ArmorSlot::Body:
-        slot = endstone::EquipmentSlot::Body;
-        break;
-    default:
-        break;
-    }
-
-    const auto &armor_stand_item = armor_slot.has_value() ? getArmor(*armor_slot) : getCarriedItem();
     const auto &server = endstone::core::EndstoneServer::getInstance();
-    endstone::PlayerArmorStandManipulateEvent event{
-        player.getEndstoneActor<endstone::core::EndstonePlayer>(),
-        getEndstoneActor(),
-        endstone::core::EndstoneItemStack::fromMinecraft(armor_stand_item),
-        endstone::core::EndstoneItemStack::fromMinecraft(player_item),
-        slot,
-    };
-    server.getPluginManager().callEvent(event);
-    if (event.isCancelled()) {
-        return {};
+    if (!server.getEndstonePluginManager().isEventRegistered<endstone::PlayerArmorStandManipulateEvent>()) {
+        return result;
     }
+
+    result.wrapCallback([armor_stand_ref = WeakEntityRef(getWeakEntity()),
+                         player_ref = WeakEntityRef(player.getWeakEntity()),
+                         location](Interaction::ExecutionCallback &callback) {
+        auto *actor = armor_stand_ref.tryUnwrap<::Actor>();
+        auto *player = player_ref.tryUnwrap<::Player>();
+        if (actor == nullptr || player == nullptr) {
+            callback();
+            return;
+        }
+        auto *armor_stand = static_cast<ArmorStand *>(actor);
+        const auto height = location.y - armor_stand->getPosition().y;
+        std::optional<ArmorSlot> armor_slot;
+        if (height >= 0.1F && height < 0.55F) {
+            armor_slot = ArmorSlot::Feet;
+        }
+        else if (height >= 0.9F && height < 1.6F) {
+            armor_slot = ArmorSlot::Torso;
+        }
+        else if (height >= 0.4F && height < 1.2F) {
+            armor_slot = ArmorSlot::Legs;
+        }
+        else if (height >= 1.6F) {
+            armor_slot = ArmorSlot::Head;
+        }
+
+        const auto &player_item = player->getCarriedItem();
+        if (!player_item.isNull()) {
+            const auto *item = player_item.getItem();
+            armor_slot = item != nullptr && item->isHumanoidArmor()
+                           ? std::optional{static_cast<const HumanoidArmorItem *>(item)->slot_}
+                           : std::nullopt;
+        }
+
+        auto slot = endstone::EquipmentSlot::Hand;
+        switch (armor_slot.value_or(ArmorSlot::_count)) {
+        case ArmorSlot::Head:
+            slot = endstone::EquipmentSlot::Head;
+            break;
+        case ArmorSlot::Torso:
+            slot = endstone::EquipmentSlot::Chest;
+            break;
+        case ArmorSlot::Legs:
+            slot = endstone::EquipmentSlot::Legs;
+            break;
+        case ArmorSlot::Feet:
+            slot = endstone::EquipmentSlot::Feet;
+            break;
+        case ArmorSlot::Body:
+            slot = endstone::EquipmentSlot::Body;
+            break;
+        default:
+            break;
+        }
+
+        const auto &armor_stand_item =
+            armor_slot.has_value() ? armor_stand->getArmor(*armor_slot) : armor_stand->getCarriedItem();
+        endstone::PlayerArmorStandManipulateEvent event{
+            player->getEndstoneActor<endstone::core::EndstonePlayer>(),
+            armor_stand->getEndstoneActor(),
+            endstone::core::EndstoneItemStack::fromMinecraft(armor_stand_item),
+            endstone::core::EndstoneItemStack::fromMinecraft(player_item),
+            slot,
+        };
+        const auto &server = endstone::core::EndstoneServer::getInstance();
+        server.getPluginManager().callEvent(event);
+        if (event.isCancelled()) {
+            return;
+        }
+        callback();
+    });
     return result;
 }

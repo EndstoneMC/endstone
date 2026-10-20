@@ -14,6 +14,7 @@
 
 #include "bedrock/entity/components/interact_component.h"
 
+#include "bedrock/entity/weak_entity_ref.h"
 #include "bedrock/world/actor/actor.h"
 #include "bedrock/world/actor/actor_interaction.h"
 #include "bedrock/world/actor/player/player.h"
@@ -24,8 +25,6 @@
 #include "endstone/event/player/player_shear_actor_event.h"
 #include "endstone/runtime/hook.h"
 
-// TODO(1.26.51): BDS inlined this into the component-lookup wrapper, so the out-of-line body this hook
-// detours is never called and PlayerShearActorEvent does not fire.
 Interaction InteractComponent::getInteraction(Actor &owner, Player &player)
 {
     auto result = ENDSTONE_HOOK_CALL_ORIGINAL(&InteractComponent::getInteraction, this, owner, player);
@@ -40,15 +39,28 @@ Interaction InteractComponent::getInteraction(Actor &owner, Player &player)
     }
 
     const auto &server = endstone::core::EndstoneServer::getInstance();
-    endstone::PlayerShearActorEvent event{
-        player.getEndstoneActor<endstone::core::EndstonePlayer>(),
-        owner.getEndstoneActor(),
-        endstone::core::EndstoneItemStack::fromMinecraft(player.getCarriedItem()),
-        endstone::EquipmentSlot::Hand,
-    };
-    server.getPluginManager().callEvent(event);
-    if (event.isCancelled()) {
-        return {};
+    if (!server.getEndstonePluginManager().isEventRegistered<endstone::PlayerShearActorEvent>()) {
+        return result;
     }
+
+    result.wrapCallback([owner_ref = WeakEntityRef(owner.getWeakEntity()),
+                         player_ref = WeakEntityRef(player.getWeakEntity())](Interaction::ExecutionCallback &callback) {
+        auto *owner = owner_ref.tryUnwrap<::Actor>();
+        auto *player = player_ref.tryUnwrap<::Player>();
+        if (owner != nullptr && player != nullptr) {
+            const auto &server = endstone::core::EndstoneServer::getInstance();
+            endstone::PlayerShearActorEvent event{
+                player->getEndstoneActor<endstone::core::EndstonePlayer>(),
+                owner->getEndstoneActor(),
+                endstone::core::EndstoneItemStack::fromMinecraft(player->getCarriedItem()),
+                endstone::EquipmentSlot::Hand,
+            };
+            server.getPluginManager().callEvent(event);
+            if (event.isCancelled()) {
+                return;
+            }
+        }
+        callback();
+    });
     return result;
 }

@@ -14,6 +14,7 @@
 
 #include "bedrock/entity/components/bucketable_component.h"
 
+#include "bedrock/entity/weak_entity_ref.h"
 #include "bedrock/world/actor/actor.h"
 #include "bedrock/world/actor/player/player.h"
 #include "bedrock/world/item/item_stack.h"
@@ -31,15 +32,28 @@ Interaction BucketableComponent::getInteraction(::Actor &owner, ::Player &player
     }
 
     const auto &server = endstone::core::EndstoneServer::getInstance();
-    endstone::PlayerBucketActorEvent event{
-        player.getEndstoneActor<endstone::core::EndstonePlayer>(),
-        owner.getEndstoneActor(),
-        endstone::core::EndstoneItemStack::fromMinecraft(player.getCarriedItem()),
-        endstone::EquipmentSlot::Hand,
-    };
-    server.getPluginManager().callEvent(event);
-    if (event.isCancelled()) {
-        return {};
+    if (!server.getEndstonePluginManager().isEventRegistered<endstone::PlayerBucketActorEvent>()) {
+        return result;
     }
+
+    result.wrapCallback([owner_ref = WeakEntityRef(owner.getWeakEntity()),
+                         player_ref = WeakEntityRef(player.getWeakEntity())](Interaction::ExecutionCallback &callback) {
+        auto *owner = owner_ref.tryUnwrap<::Actor>();
+        auto *player = player_ref.tryUnwrap<::Player>();
+        if (owner != nullptr && player != nullptr) {
+            const auto &server = endstone::core::EndstoneServer::getInstance();
+            endstone::PlayerBucketActorEvent event{
+                player->getEndstoneActor<endstone::core::EndstonePlayer>(),
+                owner->getEndstoneActor(),
+                endstone::core::EndstoneItemStack::fromMinecraft(player->getCarriedItem()),
+                endstone::EquipmentSlot::Hand,
+            };
+            server.getPluginManager().callEvent(event);
+            if (event.isCancelled()) {
+                return;
+            }
+        }
+        callback();
+    });
     return result;
 }

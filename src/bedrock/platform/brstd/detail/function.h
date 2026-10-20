@@ -117,7 +117,7 @@ private:
         static void copy_to(const storage &from, storage &to)
         {
             if constexpr (HeapTarget) {
-                to.heap_target = ::new T(*target(from));
+                to.heap_target = ::new T(*static_cast<const T *>(from.heap_target));
             }
             else {
                 ::new (target(to)) T(*static_cast<T *>(target(from)));
@@ -138,8 +138,8 @@ private:
         static void destroy(storage &self)
         {
             if constexpr (HeapTarget) {
-                delete target(self);
-                target(self) = nullptr;
+                delete static_cast<T *>(self.heap_target);
+                self.heap_target = nullptr;
             }
             else {
                 static_cast<T *>(target(self))->~T();
@@ -184,16 +184,69 @@ class function_base;
 template <typename Base>
 class function_base<DerivedType::MoveOnly, Base> : public Base {
 public:
-    ~function_base()
+    function_base() = default;
+    function_base(const function_base &) = delete;
+    function_base &operator=(const function_base &) = delete;
+
+    function_base(function_base &&other) noexcept { take(other); }
+
+    function_base &operator=(function_base &&other) noexcept
+    {
+        if (this != &other) {
+            reset();
+            take(other);
+        }
+        return *this;
+    }
+
+    ~function_base() { reset(); }
+
+protected:
+    void reset() noexcept
     {
         if (auto *vfptr = Base::storage_.vfptr) {
             vfptr->destroy(Base::storage_);
+            Base::storage_.vfptr = nullptr;
+        }
+    }
+
+    void take(function_base &other) noexcept
+    {
+        if (auto *vfptr = other.storage_.vfptr) {
+            vfptr->move_to(other.storage_, Base::storage_);
+            Base::storage_.vfptr = vfptr;
+            other.storage_.vfptr = nullptr;
         }
     }
 };
 
 template <typename Base>
-class function_base<DerivedType::Copyable, Base> : public function_base<DerivedType::MoveOnly, Base> {};
+class function_base<DerivedType::Copyable, Base> : public function_base<DerivedType::MoveOnly, Base> {
+public:
+    function_base() = default;
+    function_base(function_base &&) noexcept = default;
+    function_base &operator=(function_base &&) noexcept = default;
+
+    function_base(const function_base &other) { copy(other); }
+
+    function_base &operator=(const function_base &other)
+    {
+        if (this != &other) {
+            this->reset();
+            copy(other);
+        }
+        return *this;
+    }
+
+private:
+    void copy(const function_base &other)
+    {
+        if (auto *vfptr = other.storage_.vfptr) {
+            vfptr->copy_to(other.storage_, Base::storage_);
+            Base::storage_.vfptr = vfptr;
+        }
+    }
+};
 
 template <DerivedType, typename Signature, bool OverrideCallOperatorModifiers>
 class function_invoke_base;

@@ -15,6 +15,7 @@
 #pragma once
 
 #include <string_view>
+#include <utility>
 
 #include "bedrock/core/string/static_optimized_string.h"
 #include "bedrock/platform/brstd/move_only_function.h"
@@ -24,9 +25,17 @@ public:
     using ExecutionCallback = brstd::move_only_function<void()>;  // Endstone: BDS spells it `void() &&`
 
     Interaction() = default;  // Endstone: BDS spells this Interaction::Failure()
-    [[nodiscard]] bool isSuccessful() const { return !interact_text_.view().empty(); }
+    [[nodiscard]] bool isSuccessful() const { return static_cast<bool>(callback_); }
     [[nodiscard]] bool shouldSwing() const { return swing_; }
     [[nodiscard]] std::string_view getInteractText() const { return interact_text_.view(); }
+
+    template <typename Wrapper>
+    void wrapCallback(Wrapper wrapper)  // Endstone
+    {
+        callback_ = [callback = std::move(callback_), wrapper = std::move(wrapper)]() mutable {
+            wrapper(callback);
+        };
+    }
 
 private:
     Bedrock::StaticOptimizedString interact_text_;

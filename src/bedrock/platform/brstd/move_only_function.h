@@ -24,6 +24,7 @@ class move_only_function
     : public detail::function::function_invoke<detail::function::DerivedType::MoveOnly, Signature, false> {
 public:
     using detail::function::function_invoke<detail::function::DerivedType::MoveOnly, Signature, false>::operator();
+    using detail::function::function_invoke<detail::function::DerivedType::MoveOnly, Signature, false>::operator bool;
     move_only_function(std::nullptr_t) {}
     template <typename F>
     move_only_function(F &&f)
