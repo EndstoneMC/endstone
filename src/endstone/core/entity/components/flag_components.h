@@ -33,6 +33,7 @@ struct InternalCauldronInteractionComponent {
     Nullable<Actor> actor;
     BlockPos pos;
     CauldronLevelChangeEvent::ChangeReason reason = CauldronLevelChangeEvent::ChangeReason::Unknown;
+    bool handled = false;
 };
 struct InternalDisconnectFlagComponent {};
 struct InternalLoginCancelledFlagComponent {};

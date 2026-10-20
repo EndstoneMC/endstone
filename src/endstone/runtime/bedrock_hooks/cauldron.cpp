@@ -92,6 +92,7 @@ void CauldronBlock::use(BlockEvents::BlockPlayerInteractEvent &event_data) const
     using ChangeReason = endstone::CauldronLevelChangeEvent::ChangeReason;
 
     auto &player = event_data.player;
+    const auto &server = endstone::core::EndstoneServer::getInstance();
     const auto slot = player.getSelectedItemSlot();
     const auto &item_stack = player.getInventory().getItem(slot);
     const auto *item = item_stack.getItem();
@@ -100,7 +101,9 @@ void CauldronBlock::use(BlockEvents::BlockPlayerInteractEvent &event_data) const
     auto reason = ChangeReason::Unknown;
     auto filling = false;
     std::optional<::ItemStack> result_item;
-    if (item && item->isBucket()) {
+    const ::Block *new_block = nullptr;
+    const auto bucket = item && item->isBucket();
+    if (bucket) {
         static const HashedString fill_level{"fill_level"};
         static const HashedString cauldron_liquid{"cauldron_liquid"};
         const auto &block = player.getDimensionBlockSource().getBlock(event_data.pos);
@@ -133,6 +136,17 @@ void CauldronBlock::use(BlockEvents::BlockPlayerInteractEvent &event_data) const
                 result_item = ::ItemStack("minecraft:bucket");
             }
         }
+        if (result_item) {
+            auto new_liquid = CauldronLiquidType::Water;
+            if (fill_type == BucketFillType::Lava) {
+                new_liquid = CauldronLiquidType::Lava;
+            }
+            else if (fill_type == BucketFillType::PowderSnow) {
+                new_liquid = CauldronLiquidType::PowderSnow;
+            }
+            const auto &leveled = *block.setState<int>(fill_level, filling ? MIN_FILL_LEVEL : MAX_FILL_LEVEL);
+            new_block = &*leveled.setState<int>(cauldron_liquid, static_cast<int>(new_liquid));
+        }
     }
     else if (item) {
         const std::string_view name = item->getFullItemName();
@@ -156,7 +170,6 @@ void CauldronBlock::use(BlockEvents::BlockPlayerInteractEvent &event_data) const
 
     std::optional<endstone::ItemStack> replacement;
     if (result_item) {
-        const auto &server = endstone::core::EndstoneServer::getInstance();
         auto block_handle = endstone::core::EndstoneBlock::at(player.getDimensionBlockSource(), event_data.pos);
         auto bucket_stack = endstone::core::EndstoneItemStack::fromMinecraft(item_stack);
         auto cancelled = false;
@@ -194,6 +207,19 @@ void CauldronBlock::use(BlockEvents::BlockPlayerInteractEvent &event_data) const
         }
     }
 
+    std::optional<endstone::CauldronLevelChangeEvent> level_event;
+    if (new_block && server.getEndstonePluginManager().isEventRegistered<endstone::CauldronLevelChangeEvent>()) {
+        auto block_handle = endstone::core::EndstoneBlock::at(player.getDimensionBlockSource(), event_data.pos);
+        auto new_state = block_handle->captureState(true);
+        new_state->setData(endstone::core::EndstoneBlockData(const_cast<::Block &>(*new_block)));
+        level_event.emplace(block_handle, player.getEndstoneActor<endstone::core::EndstonePlayer>(), reason, new_state);
+        server.getPluginManager().callEvent(*level_event);
+        if (level_event->isCancelled()) {
+            event_data.successful = true;
+            return;
+        }
+    }
+
     const auto replaced =
         result_item && (!replacement || endstone::core::EndstoneItemStack::toMinecraft(*replacement) != *result_item);
     const auto split = replaced && filling && !player.isCreative() && item_stack.getCount() > 1;
@@ -216,8 +242,23 @@ void CauldronBlock::use(BlockEvents::BlockPlayerInteractEvent &event_data) const
         interaction.actor = player.getEndstoneActor<endstone::core::EndstonePlayer>();
         interaction.pos = event_data.pos;
         interaction.reason = reason;
+        interaction.handled = bucket;
     }
     ENDSTONE_HOOK_CALL_ORIGINAL(&CauldronBlock::use, this, event_data);
+    if (level_event && event_data.successful.value_or(false)) {
+        static const HashedString fill_level{"fill_level"};
+        static const HashedString cauldron_liquid{"cauldron_liquid"};
+        auto &region = player.getDimensionBlockSource();
+        const auto &final_block =
+            static_cast<const endstone::core::EndstoneBlockData &>(*level_event->getNewState()->getData()).getHandle();
+        if (final_block.getName() != VanillaBlockTypeIds::Cauldron) {
+            level_event->getNewState()->update(true);
+        }
+        else if (final_block.getRuntimeId() != region.getBlock(event_data.pos).getRuntimeId()) {
+            setLiquidLevel(region, event_data.pos, final_block.getState<int>(fill_level),
+                           static_cast<CauldronLiquidType>(final_block.getState<int>(cauldron_liquid)));
+        }
+    }
     if (level_entity) {
         level_entity->removeComponent<endstone::core::InternalCauldronInteractionComponent>();
     }
@@ -258,6 +299,21 @@ void CauldronBlock::setLiquidLevel(BlockSource &region, const BlockPos &pos, int
         return;
     }
 
+    endstone::Nullable<endstone::Actor> actor;
+    auto reason = endstone::CauldronLevelChangeEvent::ChangeReason::Unknown;
+    if (auto level_entity = region.getLevel().getLevelEntity().unwrap(); level_entity) {
+        const auto *interaction = level_entity->tryGetComponent<endstone::core::InternalCauldronInteractionComponent>();
+        if (interaction && interaction->pos == pos) {
+            if (interaction->handled) {
+                ENDSTONE_HOOK_CALL_ORIGINAL(&CauldronBlock::setLiquidLevel, this, region, pos, liquid_level,
+                                            liquid_type);
+                return;
+            }
+            actor = interaction->actor;
+            reason = interaction->reason;
+        }
+    }
+
     const auto &block = region.getBlock(pos);
     if (block.getName() != VanillaBlockTypeIds::Cauldron) {
         ENDSTONE_HOOK_CALL_ORIGINAL(&CauldronBlock::setLiquidLevel, this, region, pos, liquid_level, liquid_type);
@@ -272,17 +328,6 @@ void CauldronBlock::setLiquidLevel(BlockSource &region, const BlockPos &pos, int
     if (new_block.getRuntimeId() == block.getRuntimeId()) {
         ENDSTONE_HOOK_CALL_ORIGINAL(&CauldronBlock::setLiquidLevel, this, region, pos, liquid_level, liquid_type);
         return;
-    }
-
-    endstone::Nullable<endstone::Actor> actor;
-    auto reason = endstone::CauldronLevelChangeEvent::ChangeReason::Unknown;
-    if (auto level_entity = region.getLevel().getLevelEntity().unwrap(); level_entity) {
-        const auto *interaction =
-            level_entity->tryGetComponent<endstone::core::InternalCauldronInteractionComponent>();
-        if (interaction && interaction->pos == pos) {
-            actor = interaction->actor;
-            reason = interaction->reason;
-        }
     }
 
     auto block_handle = endstone::core::EndstoneBlock::at(region, pos);
