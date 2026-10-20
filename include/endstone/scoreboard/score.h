@@ -64,7 +64,7 @@ public:
      *
      * @return the owning objective
      */
-    [[nodiscard]] virtual Objective &getObjective() const = 0;
+    [[nodiscard]] virtual NotNull<Objective> getObjective() const = 0;
 
     /**
      * Gets the scoreboard for the associated objective.

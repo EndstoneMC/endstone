@@ -68,9 +68,9 @@ bool EndstoneScore::isScoreSet() const
     return id.isValid() && objective_->objective_->hasScore(id);
 }
 
-Objective &EndstoneScore::getObjective() const
+NotNull<Objective> EndstoneScore::getObjective() const
 {
-    return *objective_;
+    return objective_;
 }
 
 NotNull<Scoreboard> EndstoneScore::getScoreboard() const

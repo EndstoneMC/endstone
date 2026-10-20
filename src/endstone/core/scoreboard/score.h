@@ -31,7 +31,7 @@ public:
     [[nodiscard]] int getValue() const override;
     void setValue(int score) override;
     [[nodiscard]] bool isScoreSet() const override;
-    [[nodiscard]] Objective &getObjective() const override;
+    [[nodiscard]] NotNull<Objective> getObjective() const override;
     [[nodiscard]] NotNull<Scoreboard> getScoreboard() const override;
 
 private:

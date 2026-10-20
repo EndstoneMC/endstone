@@ -64,8 +64,7 @@ void init_scoreboard(py::module_ &m)
         .def_property("value", &Score::getValue, &Score::setValue, "The current score.")
         .def_property_readonly("is_score_set", &Score::isScoreSet,
                                "`True` if this score has been set at any point in time.")
-        .def_property_readonly("objective", &Score::getObjective, "The `Objective` being tracked by this `Score`.",
-                               py::return_value_policy::reference)
+        .def_property_readonly("objective", &Score::getObjective, "The `Objective` being tracked by this `Score`.")
         .def_property_readonly("scoreboard", &Score::getScoreboard, "The scoreboard for the associated objective.");
 
     objective.def_property_readonly("name", &Objective::getName, "The name of this `Objective`.")
