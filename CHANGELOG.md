@@ -34,6 +34,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - `ActorPickupItemEvent`, reporting the `item` and `amount`. Players are covered by `PlayerPickupItemEvent`.
 - `ActorDismountEvent`, reporting the `vehicle` being left.
 - `ActorChangeBlockEvent` for blocks changed by mob behaviour, such as endermen, ravagers, farmland trampling and door-breaking zombies.
+- `PlayerChatEvent.recipients` can be assigned to choose who receives a chat message.
 - `CauldronLevelChangeEvent` for a cauldron's level or contents changing, reporting the `actor` responsible, the `reason` for the change and the `new_state` the cauldron will take, which can be modified in place. Cancelling it leaves the cauldron as it is. A player interacting with the cauldron is reported as `BUCKET_FILL`, `BUCKET_EMPTY`, `BOTTLE_FILL`, `BOTTLE_EMPTY`, `BANNER_WASH`, `ARMOR_WASH` or `SHULKER_WASH`. Every other change, rain, dripstone and an actor being extinguished among them, reports no `actor` and a `reason` of `UNKNOWN`, so `EXTINGUISH`, `NATURAL_FILL` and `EVAPORATE` never appear. Neither an old nor a new fill level is reported.
 - `PlayerRespawnEvent.respawn_reason` (`RespawnReason.DEATH` / `RespawnReason.END_PORTAL`).
 - `ActorExplodeEvent::setBlockList()` and `BlockExplodeEvent::setBlockList()`, with the `BlockList` alias made public.
@@ -194,6 +195,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Fixed `BossBar.add_player` re-sending the bar to a player who was already in it.
 - Fixed `Plugin.default_permission` rejecting a string or a bool (`"operator"`, `"not op"`, `True`), which individual entries in `Plugin.permissions` already accepted.
 - Fixed `Plugin.default_permission` never reaching the entries in `Plugin.permissions` that set no `default` of their own.
+- Fixed `PlayerChatEvent.message` and `PlayerChatEvent.player` being ignored unless the format was changed as well.
 - Fixed `Block.biome` reading the wrong part of a chunk, so it reported a biome that has nothing to do with the block, and could crash the server. Introduced in 0.11.7 along with BDS 1.26.40 support.
 
 #### Type annotations

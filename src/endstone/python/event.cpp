@@ -395,8 +395,12 @@ void init_event(py::module_ &m, py::class_<Event, PyEvent> &event)
 
     See the format string syntax at https://en.cppreference.com/w/cpp/utility/format/spec.html.
 )doc")
-        .def_property_readonly("recipients", &PlayerChatEvent::getRecipients,
-                               "The set of `Player`s who will see this chat message.");
+        .def_property("recipients", &PlayerChatEvent::getRecipients, &PlayerChatEvent::setRecipients, R"doc(
+    The `Player`s who will see this chat message.
+
+    Assign a new list to change who receives it. The list this returns is a copy, so changing it in place has no
+    effect.
+)doc");
     bind_event<PlayerCommandEvent, PlayerEvent, ICancellable>(m, "PlayerCommandEvent",
                                                               "Called whenever a player runs a command.")
         .def_property("command", &PlayerCommandEvent::getCommand, &PlayerCommandEvent::setCommand,

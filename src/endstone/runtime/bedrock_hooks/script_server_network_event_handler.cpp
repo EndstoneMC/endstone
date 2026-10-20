@@ -14,6 +14,7 @@
 
 #include "bedrock/scripting/event_handlers/script_server_network_event_handler.h"
 
+#include <algorithm>
 #include <format>
 
 #include "bedrock/network/packet/text_packet.h"
@@ -59,8 +60,11 @@ GameplayHandlerResult<CoordinatorResult> handleEvent(ChatEvent &event,
     }
 
     // call endstone's chat event before the script api
-    endstone::PlayerChatEvent e{player->getEndstoneActor<endstone::core::EndstonePlayer>(), event.message, recipients};
+    const auto original_player = player->getEndstoneActor<endstone::core::EndstonePlayer>();
+    const auto original_message = event.message;
+    endstone::PlayerChatEvent e{original_player, event.message, recipients};
     auto original_format = e.getFormat();
+    const auto original_recipients = e.getRecipients();
 
     server.getPluginManager().callEvent(e);
     if (e.isCancelled()) {
@@ -95,10 +99,14 @@ GameplayHandlerResult<CoordinatorResult> handleEvent(ChatEvent &event,
         return CANCEL;
     }
 
-    // Message has been changed, send new text messages and cancel the original event to avoid double sending
-    if (e.getMessage() != event.message) {
+    // Message, sender or recipients have been changed, send new text messages and cancel the original event to avoid
+    // double sending
+    const auto final_recipients = e.getRecipients();
+    const auto recipients_changed = !std::ranges::equal(
+        final_recipients, original_recipients, [](const auto &a, const auto &b) { return a.get() == b.get(); });
+    if (e.getMessage() != original_message || e.getPlayer() != original_player || recipients_changed) {
         player = &e.getPlayer().cast<endstone::core::EndstonePlayer>()->getHandle();
-        for (const auto &recipient : e.getRecipients()) {
+        for (const auto &recipient : final_recipients) {
             auto *handle = recipient.cast<endstone::core::EndstonePlayer>()->tryGetHandle();
             if (!handle) {
                 continue;
@@ -111,6 +119,7 @@ GameplayHandlerResult<CoordinatorResult> handleEvent(ChatEvent &event,
                 .body = TextPacketPayload::AuthorAndMessage{TextPacketType::Chat, player->getName(), e.getMessage()}};
             handle->sendNetworkPacket(*packet);
         }
+        server.getLogger().info(message);
         return CANCEL;
     }
 

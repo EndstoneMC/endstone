@@ -1440,8 +1440,14 @@ class PlayerChatEvent(PlayerEvent, Cancellable):
     @property
     def recipients(self) -> list[Player]:
         """
-        The set of `Player`s who will see this chat message.
+        The `Player`s who will see this chat message.
+
+        Assign a new list to change who receives it. The list this returns is a copy, so changing it in place has no
+        effect.
         """
+
+    @recipients.setter
+    def recipients(self, arg1: list[Player]) -> None: ...
 
 class PlayerCommandEvent(PlayerEvent, Cancellable):
     """

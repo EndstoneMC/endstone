@@ -88,6 +88,13 @@ public:
         return recipients_.value();
     }
 
+    /**
+     * Sets the players this chat message will be displayed to.
+     *
+     * @param recipients The players who will see this chat message
+     */
+    void setRecipients(std::vector<NotNull<Player>> recipients) { recipients_ = std::move(recipients); }
+
 private:
     std::string message_;
     std::string format_;
