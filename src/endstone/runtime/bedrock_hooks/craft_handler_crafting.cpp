@@ -151,9 +151,28 @@ ItemStackNetResult CraftHandlerCrafting::_handleCraftAction(const ItemStackReque
     const auto result = ENDSTONE_HOOK_CALL_ORIGINAL(&CraftHandlerCrafting::_handleCraftAction, this, request_action);
     if (result == ItemStackNetResult::Success && e.getResults() != results) {
         auto &craft_results = craft_request_handler_.getCraftResults();
-        const auto replaced = std::min(e.getResults().size(), craft_results.size());
-        for (std::size_t i = 0; i < replaced; ++i) {
-            craft_results[i].first = ItemInstance(endstone::core::EndstoneItemStack::toMinecraft(e.getResults()[i]));
+        if (craft_results.empty() && deferred_craft_count_ != 0) {
+            std::vector<std::pair<ItemInstance, unsigned int>> deferred;
+            for (const auto &replacement : e.getResults()) {
+                ItemInstance item(endstone::core::EndstoneItemStack::toMinecraft(replacement));
+                if (item.isNull() || item.getCount() == 0) {
+                    return ItemStackNetResult::ActionRequestNotAllowed;
+                }
+                const auto remaining = (deferred_craft_count_ - 1) * item.getCount();
+                deferred.emplace_back(std::move(item), remaining);
+            }
+            if (deferred.empty()) {
+                return ItemStackNetResult::ActionRequestNotAllowed;
+            }
+            craft_results = std::move(deferred);
+            deferred_craft_count_ = 0;
+        }
+        else {
+            const auto replaced = std::min(e.getResults().size(), craft_results.size());
+            for (std::size_t i = 0; i < replaced; ++i) {
+                craft_results[i].first =
+                    ItemInstance(endstone::core::EndstoneItemStack::toMinecraft(e.getResults()[i]));
+            }
         }
         resendCraftedSlots(player_, e.getResults());
     }
