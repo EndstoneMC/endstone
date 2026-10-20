@@ -472,14 +472,8 @@ void EndstonePacketHandler::handle(PlayerAuthInputPacket &packet)
         if (action.player_action_type == PlayerActionType::StartDestroyBlock) {
             const auto item = endstone_player->getInventory().getItemInMainHand();
             const auto block = endstone_player->getDimension()->getBlockAt(action.pos.x, action.pos.y, action.pos.z);
-            PlayerInteractEvent e{
-                endstone_player,
-                PlayerInteractEvent::Action::LeftClickBlock,
-                item,
-                block,
-                static_cast<BlockFace>(action.facing),
-                Vector{action.pos.x, action.pos.y, action.pos.z},
-            };
+            PlayerInteractEvent e(endstone_player, PlayerInteractEvent::Action::LeftClickBlock, item, block,
+                                  static_cast<BlockFace>(action.facing), std::nullopt);
             plugin_manager.callEvent(e);
             if (e.isCancelled()) {
                 it = actions.erase(it);

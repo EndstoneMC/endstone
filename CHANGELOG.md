@@ -194,6 +194,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 #### API behaviour
 
 - Fixed `PlayerBedLeaveEvent` only being called when a player pressed the leave button. It now also fires when morning comes, when the bed is broken or obstructed, and when the player is woken by anything else, and the `bed` block it reports is the bed being slept in rather than the respawn point.
+- Fixed `PlayerInteractEvent.clicked_position` reporting world coordinates for `RIGHT_CLICK_BLOCK` instead of the position within the block, and the block's own coordinates for `LEFT_CLICK_BLOCK`, where it is now `None`.
 - Fixed every vanilla command failing when dispatched through a `CommandSenderWrapper`, which did not report its own type.
 - Fixed `str()` on a `Translatable` giving an object repr instead of its text.
 - Fixed `Mob.has_attribute()` raising for a name that is not an attribute instead of answering `False`.
