@@ -74,11 +74,13 @@ def _to_permission_default(value: Any) -> PermissionDefault:
     return value
 
 
-def _build_permissions(permissions: dict[str, Any]) -> list[Permission]:
+def _build_permissions(permissions: dict[str, Any], default_permission: PermissionDefault | None) -> list[Permission]:
     results = []
     for name, permission in permissions.items():
         if "default" in permission:
             permission["default"] = _to_permission_default(permission["default"])
+        elif default_permission is not None:
+            permission["default"] = default_permission
 
         permission = Permission(name, **permission)
         results.append(permission)
@@ -241,7 +243,7 @@ class PythonPluginLoader(PluginLoader):
         commands = _build_commands(commands)
 
         permissions = cls_attr.pop("permissions", {})
-        permissions = _build_permissions(permissions)
+        permissions = _build_permissions(permissions, default_permission)
 
         plugin_description = PluginDescription(
             name=name,

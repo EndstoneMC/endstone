@@ -17,6 +17,7 @@
 #include <algorithm>
 #include <filesystem>
 #include <functional>
+#include <optional>
 #include <set>
 #include <string>
 #include <unordered_map>
@@ -265,12 +266,15 @@ public:
         return *this;
     }
 
-    [[nodiscard]] Permission build() const { return Permission(name_, description_, default_value_, children_); }
+    [[nodiscard]] Permission build(PermissionDefault fallback = Permission::DefaultPermission) const
+    {
+        return Permission(name_, description_, default_value_.value_or(fallback), children_);
+    }
 
 private:
     std::string name_;
     std::string description_;
-    PermissionDefault default_value_ = Permission::DefaultPermission;
+    std::optional<PermissionDefault> default_value_;
     std::unordered_map<std::string, bool> children_ = {};
 };
 
@@ -336,7 +340,7 @@ private:
         std::vector<Permission> result;
         result.reserve(permissions.size());
         for (const auto &pair : permissions) {
-            result.push_back(pair.second.build());
+            result.push_back(pair.second.build(default_permission));
         }
         return result;
     }
