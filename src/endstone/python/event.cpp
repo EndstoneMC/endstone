@@ -429,10 +429,13 @@ void init_event(py::module_ &m, py::class_<Event, PyEvent> &event)
 
     A recipe usually produces one item, but may produce several, and an ingredient that leaves a remainder behind
     contributes one too. Results are replaced one for one, so any beyond the number the recipe produces are ignored;
-    cancel the event to stop the craft instead.
+    cancel the event to stop the craft instead. A result may be a different item, but its amount must match the
+    amount the recipe produces in its place.
+
+    Raises:
+        ValueError: if a result's amount differs from the recipe's.
 )doc")
-        .def_property("repetitions", &PlayerCraftItemEvent::getRepetitions, &PlayerCraftItemEvent::setRepetitions,
-                      R"doc(
+        .def_property_readonly("repetitions", &PlayerCraftItemEvent::getRepetitions, R"doc(
     The number of times the recipe is being crafted.
 
     This is usually 1, but is higher when a batch is crafted at once, such as a shift click in the recipe book.

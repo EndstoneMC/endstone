@@ -16,7 +16,6 @@
 
 #include <algorithm>
 #include <cstddef>
-#include <cstdint>
 #include <utility>
 #include <vector>
 
@@ -145,8 +144,6 @@ ItemStackNetResult CraftHandlerCrafting::_handleCraftAction(const ItemStackReque
     if (e.isCancelled()) {
         return ItemStackNetResult::ActionRequestNotAllowed;
     }
-    const_cast<ItemStackRequestActionCraftBase &>(request_action)
-        .setNumCrafts(static_cast<std::uint8_t>(std::clamp(e.getRepetitions(), 0, 255)));
 
     const auto result = ENDSTONE_HOOK_CALL_ORIGINAL(&CraftHandlerCrafting::_handleCraftAction, this, request_action);
     if (result == ItemStackNetResult::Success && e.getResults() != results) {

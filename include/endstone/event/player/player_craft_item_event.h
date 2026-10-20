@@ -14,9 +14,11 @@
 
 #pragma once
 
+#include <cstddef>
 #include <utility>
 #include <vector>
 
+#include "endstone/check.h"
 #include "endstone/event/cancellable.h"
 #include "endstone/event/player/player_event.h"
 #include "endstone/inventory/item_stack.h"
@@ -69,12 +71,23 @@ public:
     /**
      * Sets the items a single craft produces.
      *
+     * A result may be a different item, but its amount must match the amount the recipe produces in its place.
+     *
      * @note Results are replaced one for one, so any beyond the number the recipe produces are ignored. Cancel the
      * event to stop the craft instead.
      *
      * @param results the items the craft should produce
+     * @throws std::invalid_argument if a result's amount differs from the recipe's
      */
-    void setResults(std::vector<ItemStack> results) { results_ = std::move(results); }
+    void setResults(std::vector<ItemStack> results)
+    {
+        for (std::size_t i = 0; i < results.size() && i < results_.size(); ++i) {
+            Preconditions::checkArgument(results[i].getAmount() == results_[i].getAmount(),
+                                         "Result {} must have an amount of {}, got {}.", i, results_[i].getAmount(),
+                                         results[i].getAmount());
+        }
+        results_ = std::move(results);
+    }
 
     /**
      * Gets the number of times the recipe is being crafted.
@@ -84,15 +97,6 @@ public:
      * @return the number of times the recipe is being crafted
      */
     [[nodiscard]] int getRepetitions() const { return repetitions_; }
-
-    /**
-     * Sets the number of times the recipe is being crafted.
-     *
-     * @note Values are clamped to the 0-255 range the server accepts.
-     *
-     * @param repetitions the number of times the recipe is being crafted
-     */
-    void setRepetitions(int repetitions) { repetitions_ = repetitions; }
 
 private:
     NotNull<Recipe> recipe_;

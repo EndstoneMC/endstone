@@ -1541,7 +1541,11 @@ class PlayerCraftItemEvent(PlayerEvent, Cancellable):
 
         A recipe usually produces one item, but may produce several, and an ingredient that leaves a remainder behind
         contributes one too. Results are replaced one for one, so any beyond the number the recipe produces are ignored;
-        cancel the event to stop the craft instead.
+        cancel the event to stop the craft instead. A result may be a different item, but its amount must match the
+        amount the recipe produces in its place.
+
+        Raises:
+            ValueError: if a result's amount differs from the recipe's.
         """
 
     @results.setter
@@ -1553,9 +1557,6 @@ class PlayerCraftItemEvent(PlayerEvent, Cancellable):
 
         This is usually 1, but is higher when a batch is crafted at once, such as a shift click in the recipe book.
         """
-
-    @repetitions.setter
-    def repetitions(self, arg1: int) -> None: ...
 
 class PlayerDropItemEvent(PlayerEvent, Cancellable):
     """
