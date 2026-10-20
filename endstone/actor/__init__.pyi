@@ -98,6 +98,9 @@ class Actor(CommandSender):
 
         Returns:
             `True` if the teleport was successful.
+
+        Raises:
+            ValueError: If the location has no dimension.
         """
 
     @typing.overload

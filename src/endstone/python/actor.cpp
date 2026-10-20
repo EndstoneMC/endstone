@@ -193,6 +193,9 @@ void init_actor(py::module_ &m, py_class<Actor> &actor, py_class<Mob> &mob)
 
     Returns:
         `True` if the teleport was successful.
+
+    Raises:
+        ValueError: If the location has no dimension.
 )doc")
         .def("teleport", py::overload_cast<const NotNull<Actor> &>(&Actor::teleport), py::arg("target"), R"doc(
     Teleports this actor to the target `Actor`.

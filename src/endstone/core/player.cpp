@@ -211,13 +211,15 @@ void EndstonePlayer::remove()
 
 bool EndstonePlayer::teleport(const Location &location)
 {
+    const auto dimension = location.getDimension();
+    Preconditions::checkArgument(static_cast<bool>(dimension), "Location has no dimension.");
     if (getHealth() == 0 || getHandle().isRemoved()) {
         return false;
     }
 
     setRotation(location.getYaw(), location.getPitch());
     Vec3 to_location{location.getX(), location.getY(), location.getZ()};
-    const NotNull<Dimension> location_dimension = location.getDimension();
+    const NotNull<Dimension> location_dimension = dimension;
     if (location_dimension != getDimension()) {
         auto current_location = getLocation();
         Vec3 from_location{current_location.getX(), current_location.getY(), current_location.getZ()};

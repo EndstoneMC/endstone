@@ -24,6 +24,7 @@
 #include "bedrock/world/level/actor_dimension_transfer_request.h"
 #include "bedrock/world/level/dimension/vanilla_dimensions.h"
 #include "endstone/actor/actor.h"
+#include "endstone/check.h"
 #include "endstone/core/level/dimension.h"
 #include "endstone/core/permissions/permissible_base.h"
 #include "endstone/core/server.h"
@@ -170,13 +171,15 @@ public:
 
     bool teleport(const Location &location) override
     {
+        const auto dimension = location.getDimension();
+        Preconditions::checkArgument(static_cast<bool>(dimension), "Location has no dimension.");
         if (getHandle().isRemoved()) {
             return false;
         }
 
         setRotation(location.getYaw(), location.getPitch());
         Vec3 to_location{location.getX(), location.getY(), location.getZ()};
-        const NotNull<Dimension> location_dimension = location.getDimension();
+        const NotNull<Dimension> location_dimension = dimension;
         if (location_dimension != getDimension()) {
             const auto to_dimension = location_dimension.cast<EndstoneDimension>()->getHandle().getDimensionId();
             const ActorDimensionTransferRequest request{getHandle().getDimensionId(), to_dimension, to_location,

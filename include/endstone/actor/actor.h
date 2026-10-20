@@ -108,6 +108,7 @@ public:
      *
      * @param location New location to teleport this actor to
      * @return `true` if the teleport was successful.
+     * @throws std::invalid_argument if the location has no dimension
      */
     virtual bool teleport(const Location &location) = 0;
 
