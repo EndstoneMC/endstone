@@ -48,7 +48,7 @@ public:
 
 private:
     std::string hostname_;
-    std::uint32_t port_;
+    std::uint32_t port_ = 0;
 };
 
 }  // namespace endstone

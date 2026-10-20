@@ -237,10 +237,10 @@ public:
     /**
      * The color white.
      */
-    static constexpr auto WHITE = Color(Color::DEFAULT_ALPHA, 255, 255, 255);
+    static constexpr auto WHITE = Color(255, 255, 255);
     /**
      * The color black.
      */
-    static constexpr auto BLACK = Color(Color::DEFAULT_ALPHA, 0, 0, 0);
+    static constexpr auto BLACK = Color(0, 0, 0);
 };
 }  // namespace endstone

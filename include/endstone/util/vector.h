@@ -577,6 +577,6 @@ struct std::formatter<endstone::Vector> : std::formatter<std::string_view> {
     template <typename FormatContext>
     auto format(const endstone::Vector &self, FormatContext &ctx) const
     {
-        return std::format_to(ctx.out(), "{},{},{},", self.getX(), self.getY(), self.getZ());
+        return std::format_to(ctx.out(), "{},{},{}", self.getX(), self.getY(), self.getZ());
     }
 };

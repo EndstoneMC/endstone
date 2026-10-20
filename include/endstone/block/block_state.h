@@ -109,7 +109,7 @@ public:
     [[nodiscard]] virtual Location getLocation() const = 0;
 
     /**
-     * Attempts to update the block represented by this state, setting it to yhe new values as defined by this
+     * Attempts to update the block represented by this state, setting it to the new values as defined by this
      * state. <p> This has the same effect as calling update(false). That is to say, this will not modify the state of a
      * block if it is no longer the same type as it was when this state was taken. It will return `false` in this
      * eventuality.
