@@ -202,7 +202,6 @@ void CauldronBlock::use(BlockEvents::BlockPlayerInteractEvent &event_data) const
             replacement = event.getItemStack();
         }
         if (cancelled) {
-            event_data.successful = true;
             return;
         }
     }

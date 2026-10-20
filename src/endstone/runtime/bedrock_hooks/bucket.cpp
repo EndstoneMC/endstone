@@ -85,9 +85,6 @@ InteractionResult BucketItem::_useOn(::ItemStack &item_stack, ::Actor &actor, Bl
 {
     auto &block_source = actor.getDimensionBlockSource();
     const auto &clicked_block = block_source.getBlock(position);
-    if (clicked_block.getName().getString() == "minecraft:cauldron") {
-        return ENDSTONE_HOOK_CALL_ORIGINAL(&BucketItem::_useOn, this, item_stack, actor, position, face, hand_slot, click_pos);
-    }
 
     const auto *item = item_stack.getItem();
     const auto block_face = endstone::core::EndstoneBlockFace::fromBedrockFacing(face);
