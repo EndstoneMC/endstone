@@ -69,6 +69,17 @@ def test_register_a_taken_name(command_map: CommandMap) -> None:
     assert command_map.register_command(RecordingCommand("test")) is False
 
 
+def test_register_a_mixed_case_command_with_an_enum(command_map: CommandMap) -> None:
+    """Verify a mixed-case command with an enum argument registers under its lowercased name."""
+    command = RecordingCommand(
+        "Endstone_Test_MixedCase",
+        usages=["/endstone_test_mixedcase (on|off)<state: EndstoneTestMixedState>"],
+    )
+    assert command.name == "endstone_test_mixedcase"
+    assert command_map.register_command(command) is True
+    assert command_map.get_command("ENDSTONE_TEST_MIXEDCASE") is not None
+
+
 def test_python_subclass_execute_is_called(
     command_map: CommandMap, sender: CommandSender
 ) -> None:

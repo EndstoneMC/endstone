@@ -303,6 +303,7 @@ bool EndstoneCommandMap::registerCommand(NotNull<Command> command)
         usages.push_back("/" + name);
     }
     std::vector<std::vector<CommandParameterData>> pending_param_data;
+    std::vector<std::string> created_enums;
     for (const auto &usage : usages) {
         auto parser = CommandUsageParser(usage);
         auto result = parser.parse();
@@ -348,7 +349,7 @@ bool EndstoneCommandMap::registerCommand(NotNull<Command> command)
 
                 // Add enum
                 auto symbol = registry.addEnumValues(enum_name_final, parameter.values);
-                custom_enums_[name].push_back(enum_name_final);
+                created_enums.push_back(enum_name_final);
 
                 // Check if the enum has been added
                 auto it = registry.enum_lookup_.find(enum_name_final);
@@ -418,6 +419,9 @@ bool EndstoneCommandMap::registerCommand(NotNull<Command> command)
     registry.registerCommand(name, command->getDescription().c_str(), CommandPermissionLevel::Any,
                              CommandCheatFlag::NotCheat, CommandUsageFlag::Normal);
     custom_commands_.emplace(name, command);
+    auto enum_key = name;
+    std::ranges::transform(enum_key, enum_key.begin(), [](unsigned char c) { return std::tolower(c); });
+    custom_enums_[enum_key] = std::move(created_enums);
     for (const auto &alias : pending_aliases) {
         registry.registerAlias(name, alias);
         custom_commands_.emplace(alias, command);
