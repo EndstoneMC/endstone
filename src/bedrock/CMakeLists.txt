@@ -102,6 +102,8 @@ add_library(bedrock STATIC
         world/item/item_stack_base.cpp
         world/item/save_context.cpp
         world/item/vanilla_item_tags.cpp
+        world/item/page_content.cpp
+        world/item/writable_book_item.cpp
         world/item/written_book_item.cpp
         world/item/alchemy/potion.cpp
         world/item/crafting/recipes.cpp

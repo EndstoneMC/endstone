@@ -70,11 +70,6 @@ bool EndstoneBookMeta::setTitle(std::optional<std::string> title)
     return true;
 }
 
-void EndstoneBookMeta::setTitleUnchecked(std::string title)
-{
-    title_ = std::move(title);
-}
-
 bool EndstoneBookMeta::hasAuthor() const
 {
     return !author_.empty();

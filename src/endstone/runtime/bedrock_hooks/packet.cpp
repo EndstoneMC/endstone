@@ -34,12 +34,13 @@
 #include "bedrock/network/packet/set_player_inventory_options_packet.h"
 #include "bedrock/network/server_network_handler.h"
 #include "bedrock/world/actor/provider/actor_offset.h"
+#include "bedrock/world/item/writable_book_item.h"
 #include "bedrock/world/level/dimension/dimension.h"
 #include "endstone/block/block.h"
 #include "endstone/color_format.h"
 #include "endstone/core/entity/components/flag_components.h"
 #include "endstone/core/inventory/item_factory.h"
-#include "endstone/core/inventory/meta/book_meta.h"
+#include "endstone/core/inventory/item_stack.h"
 #include "endstone/core/player.h"
 #include "endstone/core/server.h"
 #include "endstone/core/skin.h"
@@ -146,7 +147,6 @@ void EndstonePacketHandler::handle(BookEditPacket &packet)
 {
     constexpr auto writable_book = ItemTypeId::minecraft("writable_book");
     constexpr auto written_book = ItemTypeId::minecraft("written_book");
-    constexpr int max_page_count = 50;
 
     const auto *player = getPlayer();
     if (player == nullptr) {
@@ -169,66 +169,47 @@ void EndstonePacketHandler::handle(BookEditPacket &packet)
     auto &item_factory = EndstoneItemFactory::instance();
     const auto meta = item->getItemMeta();
     const auto previous_book_meta = item_factory.asMetaFor(meta.get().get(), written_book).as<BookMeta>();
-    const auto new_book_meta = item_factory.asMetaFor(meta.get().get(), written_book).as<BookMeta>();
-    if (!previous_book_meta || !new_book_meta) {
+    if (!previous_book_meta) {
         handle();
         return;
     }
 
+    auto edited_book = player->getInventory().getItem(slot);
+    const auto page_of = [](const auto &action) {
+        PageContent page;
+        page.text = action.page_text;
+        page.photo_name = action.photo_name;
+        return page;
+    };
     std::visit(overloaded{
                    [&](const BookEditAction::ReplacePage &action) {
-                       if (action.page_index < 0 || action.page_index >= max_page_count) {
-                           return;
+                       if (action.page_index >= 0) {
+                           WritableBookItem::replacePage(edited_book, action.page_index, page_of(action));
                        }
-                       auto pages = new_book_meta->getPages();
-                       if (action.page_index >= static_cast<int>(pages.size())) {
-                           pages.resize(action.page_index);
-                           pages.emplace_back(action.page_text);
-                       }
-                       else {
-                           pages[action.page_index] = action.page_text;
-                       }
-                       new_book_meta->setPages(std::move(pages));
                    },
                    [&](const BookEditAction::AddPage &action) {
-                       if (action.page_index < 0 || action.page_index >= max_page_count) {
-                           return;
+                       if (action.page_index >= 0) {
+                           WritableBookItem::addPageAt(edited_book, action.page_index, page_of(action));
                        }
-                       auto pages = new_book_meta->getPages();
-                       if (static_cast<int>(pages.size()) >= max_page_count) {
-                           return;
-                       }
-                       if (action.page_index >= static_cast<int>(pages.size())) {
-                           pages.resize(action.page_index);
-                           pages.emplace_back(action.page_text);
-                       }
-                       else {
-                           pages.insert(pages.begin() + action.page_index, action.page_text);
-                       }
-                       new_book_meta->setPages(std::move(pages));
                    },
                    [&](const BookEditAction::DeletePage &action) {
-                       auto pages = new_book_meta->getPages();
-                       if (action.page_index >= 0 && action.page_index < static_cast<int>(pages.size())) {
-                           pages.erase(pages.begin() + action.page_index);
-                           new_book_meta->setPages(std::move(pages));
-                       }
+                       WritableBookItem::deletePage(edited_book, action.page_index);
                    },
                    [&](const BookEditAction::SwapPages &action) {
-                       auto pages = new_book_meta->getPages();
-                       if (action.page_index >= 0 && action.page_index < static_cast<int>(pages.size()) &&
-                           action.swap_with_index >= 0 && action.swap_with_index < static_cast<int>(pages.size())) {
-                           std::swap(pages[action.page_index], pages[action.swap_with_index]);
-                           new_book_meta->setPages(std::move(pages));
-                       }
+                       WritableBookItem::swapPages(edited_book, action.page_index, action.swap_with_index);
                    },
                    [&](const BookEditAction::Finalize &action) {
-                       static_cast<EndstoneBookMeta &>(*new_book_meta).setTitleUnchecked(action.title);
-                       new_book_meta->setAuthor(action.author);
-                       new_book_meta->setGeneration(BookMeta::Generation::Original);
+                       WritableBookItem::signBook(edited_book, action.title, std::nullopt, action.author, std::nullopt,
+                                                  action.xuid);
                    },
                },
                packet.payload.operation);
+    const auto new_book_meta =
+        item_factory.asMetaFor(EndstoneItemStack::getItemMeta(&edited_book).get().get(), written_book).as<BookMeta>();
+    if (!new_book_meta) {
+        handle();
+        return;
+    }
     const auto is_signing = std::holds_alternative<BookEditAction::Finalize>(packet.payload.operation);
 
     PlayerEditBookEvent e{endstone_player, slot, previous_book_meta, new_book_meta, is_signing};

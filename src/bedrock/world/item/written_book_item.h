@@ -14,9 +14,12 @@
 
 #pragma once
 
+#include <string>
 #include <string_view>
+#include <vector>
 
 #include "bedrock/world/item/item.h"
+#include "bedrock/world/item/page_content.h"
 
 class WrittenBookItem : public Item {
 public:
@@ -31,6 +34,11 @@ public:
     static const std::string TAG_PAGE_TEXT;
     static const std::string TAG_GENERATION;
     static const std::string TAG_PAGE_PHOTO_NAME;
+    static const std::string TAG_PAGE_FILTERED_TEXT;
+    static const std::string TAG_PAGE_FILTERED_PHOTO_NAME;
+
+    static int getPageCount(const ItemStackBase &book);
+    static std::vector<PageContent> getPages(const ItemStackBase &book);
 
     using Item::Item;
 };
