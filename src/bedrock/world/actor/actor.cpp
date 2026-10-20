@@ -47,8 +47,6 @@
 #include "bedrock/world/level/dimension/vanilla_dimensions.h"
 #include "bedrock/world/level/level.h"
 
-Actor::~Actor() = default;
-
 bool Actor::getStatusFlag(ActorFlags flag) const
 {
     return SynchedActorDataAccess::getActorFlag(entity_context_, flag);
