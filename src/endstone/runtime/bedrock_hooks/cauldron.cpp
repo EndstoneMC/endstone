@@ -17,6 +17,7 @@
 #include <algorithm>
 #include <optional>
 #include <string_view>
+#include <vector>
 
 #include "bedrock/entity/gamerefs_entity/gamerefs_entity.h"
 #include "bedrock/world/actor/player/player.h"
@@ -43,6 +44,38 @@
 #include "endstone/runtime/hook.h"
 
 namespace {
+
+std::vector<::ItemStack> inventoryOf(::Player &player)
+{
+    auto &inventory = player.getInventory();
+    std::vector<::ItemStack> items;
+    items.reserve(inventory.getContainerSize());
+    for (auto i = 0; i < inventory.getContainerSize(); ++i) {
+        items.push_back(inventory.getItem(i));
+    }
+    return items;
+}
+
+void replaceAcquired(::Player &player, const std::vector<::ItemStack> &before, const ::ItemStack &acquired,
+                     ::ItemStack replacement)
+{
+    auto &inventory = player.getInventory();
+    for (auto i = 0; i < static_cast<int>(before.size()); ++i) {
+        if (const auto &item = inventory.getItem(i); item != before[i] && item.matchesItem(acquired)) {
+            inventory.setItem(i, before[i]);
+            break;
+        }
+    }
+    if (replacement.isNull()) {
+        return;
+    }
+    for (auto i = 0; i < inventory.getContainerSize(); ++i) {
+        if (inventory.getItem(i).matchesItem(replacement)) {
+            return;
+        }
+    }
+    player.add(replacement);
+}
 
 class BucketItemLayout : public ::Item {
 public:
@@ -161,6 +194,22 @@ void CauldronBlock::use(BlockEvents::BlockPlayerInteractEvent &event_data) const
         }
     }
 
+    const auto replaced =
+        result_item && (!replacement || endstone::core::EndstoneItemStack::toMinecraft(*replacement) != *result_item);
+    const auto split = replaced && filling && !player.isCreative() && item_stack.getCount() > 1;
+    const auto swap_acquired = replaced && player.isCreative();
+    std::optional<::ItemStack> stack;
+    if (split) {
+        stack = item_stack;
+        auto single = item_stack;
+        single.set(1);
+        player.getInventory().setItem(slot, single);
+    }
+    std::vector<::ItemStack> before;
+    if (swap_acquired) {
+        before = inventoryOf(player);
+    }
+
     auto level_entity = player.getLevel().getLevelEntity().unwrap();
     if (level_entity) {
         auto &interaction = level_entity->getOrAddComponent<endstone::core::InternalCauldronInteractionComponent>();
@@ -173,10 +222,28 @@ void CauldronBlock::use(BlockEvents::BlockPlayerInteractEvent &event_data) const
         level_entity->removeComponent<endstone::core::InternalCauldronInteractionComponent>();
     }
 
-    if (!result_item || !event_data.successful.value_or(false)) {
+    const auto successful = result_item && event_data.successful.value_or(false);
+    if (split) {
+        if (!successful) {
+            player.getInventory().setItem(slot, *stack);
+            return;
+        }
+        stack->set(stack->getCount() - 1);
+        player.getInventory().setItem(slot, *stack);
+        auto filled = replacement ? endstone::core::EndstoneItemStack::toMinecraft(*replacement) : ::ItemStack{};
+        if (!filled.isNull() && !player.add(filled)) {
+            player.drop(filled, false);
+        }
         return;
     }
-    if (!replacement || endstone::core::EndstoneItemStack::toMinecraft(*replacement) != *result_item) {
+    if (swap_acquired) {
+        if (successful) {
+            replaceAcquired(player, before, *result_item,
+                            replacement ? endstone::core::EndstoneItemStack::toMinecraft(*replacement) : ::ItemStack{});
+        }
+        return;
+    }
+    if (successful && replaced) {
         player.getInventory().setItem(
             slot, replacement ? endstone::core::EndstoneItemStack::toMinecraft(*replacement) : ::ItemStack::EMPTY_ITEM);
     }
