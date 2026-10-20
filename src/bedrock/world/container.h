@@ -163,6 +163,7 @@ public:
     virtual void initializeContainerContents(BlockSource &region);
     [[nodiscard]] virtual bool isEmpty() const;
     [[nodiscard]] virtual bool isSlotDisabled(int) const;
+    [[nodiscard]] ContainerType getGameplayContainerType() const { return gameplay_container_type_; }
 
 protected:
     ContainerType container_type_;

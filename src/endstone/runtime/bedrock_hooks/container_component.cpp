@@ -28,6 +28,19 @@ bool ContainerComponent::openContainer(Actor &container_actor, Player &player)
     if (!canOpenContainer(container_actor, player)) {
         return false;
     }
+    switch (container_.getGameplayContainerType()) {
+    case ContainerType::INVENTORY:
+    case ContainerType::CONTAINER:
+    case ContainerType::HOPPER:
+    case ContainerType::MINECART_CHEST:
+    case ContainerType::MINECART_HOPPER:
+    case ContainerType::HORSE:
+    case ContainerType::COMMAND_BLOCK:
+    case ContainerType::CHEST_BOAT:
+        break;
+    default:
+        return ENDSTONE_HOOK_CALL_ORIGINAL(&ContainerComponent::openContainer, this, container_actor, player);
+    }
     unpackLootTable(player.getLevel(), player.getDimensionId(), container_actor);
 
     endstone::core::EndstoneInventory inventory{[this]() -> ::Container & { return container_; }};
