@@ -35,7 +35,7 @@ public:
      *
      * @param plugin the reference to the plugin scheduling task
      * @param task the task to be run
-     * @return a Task that contains the id number, a null handle if the task is empty
+     * @return a Task that contains the id number, a null handle if the task is empty or the plugin is disabled
      */
     virtual Nullable<Task> runTask(Plugin &plugin, std::function<void()> task) = 0;
 
@@ -45,7 +45,7 @@ public:
      * @param plugin the reference to the plugin scheduling task
      * @param task the task to be run
      * @param delay the ticks to wait before running the task
-     * @return a Task that contains the id number, a null handle if the task is empty
+     * @return a Task that contains the id number, a null handle if the task is empty or the plugin is disabled
      */
     virtual Nullable<Task> runTaskLater(Plugin &plugin, std::function<void()> task, std::uint64_t delay) = 0;
 
@@ -57,7 +57,7 @@ public:
      * @param task the task to be run
      * @param delay the ticks to wait before running the task
      * @param period the ticks to wait between runs
-     * @return a Task that contains the id number, a null handle if the task is empty
+     * @return a Task that contains the id number, a null handle if the task is empty or the plugin is disabled
      */
     virtual Nullable<Task> runTaskTimer(Plugin &plugin, std::function<void()> task, std::uint64_t delay,
                                         std::uint64_t period) = 0;
@@ -68,7 +68,7 @@ public:
      *
      * @param plugin the reference to the plugin scheduling task
      * @param task the task to be run
-     * @return a Task that contains the id number, a null handle if the task is empty
+     * @return a Task that contains the id number, a null handle if the task is empty or the plugin is disabled
      */
     virtual Nullable<Task> runTaskAsync(Plugin &plugin, std::function<void()> task) = 0;
 
@@ -79,7 +79,7 @@ public:
      * @param plugin the reference to the plugin scheduling task
      * @param task the task to be run
      * @param delay the ticks to wait before running the task
-     * @return a Task that contains the id number, a null handle if the task is empty
+     * @return a Task that contains the id number, a null handle if the task is empty or the plugin is disabled
      */
     virtual Nullable<Task> runTaskLaterAsync(Plugin &plugin, std::function<void()> task, std::uint64_t delay) = 0;
 
@@ -92,7 +92,7 @@ public:
      * @param task the task to be run
      * @param delay the ticks to wait before running the task
      * @param period the ticks to wait between runs
-     * @return a Task that contains the id number, a null handle if the task is empty
+     * @return a Task that contains the id number, a null handle if the task is empty or the plugin is disabled
      */
     virtual Nullable<Task> runTaskTimerAsync(Plugin &plugin, std::function<void()> task, std::uint64_t delay,
                                              std::uint64_t period) = 0;

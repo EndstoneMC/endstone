@@ -52,17 +52,17 @@ class Scheduler:
         self, plugin: Plugin, task: collections.abc.Callable[[], None], delay: int = 0, period: int = 0
     ) -> Task | None:
         """
-        Returns a task that will be executed repeatedly (and synchronously) until cancelled, starting after the
-        specified number of server ticks.
+        Returns a task that will be executed synchronously after the specified number of server ticks, and then
+        every `period` ticks until cancelled if `period` is greater than 0.
 
         Args:
             plugin: The reference to the plugin scheduling the task.
             task: The task to be run.
             delay: The ticks to wait before running the task.
-            period: The ticks to wait between runs.
+            period: The ticks to wait between runs, or 0 to run the task once.
 
         Returns:
-            A `Task` that contains the id number, `None` if the task is empty.
+            A `Task` that contains the id number, `None` if the task is empty or the plugin is disabled.
         """
 
     def cancel_task(self, id: int) -> None:
