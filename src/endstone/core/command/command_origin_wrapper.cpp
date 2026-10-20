@@ -18,44 +18,57 @@
 
 namespace endstone::core {
 
-CommandOriginWrapper::CommandOriginWrapper(const CommandOrigin &origin, CommandOutput &output)
-    : origin_(origin), output_(output)
+CommandOriginWrapper::CommandOriginWrapper(const CommandOrigin &origin, std::shared_ptr<CommandOutput *> output)
+    : origin_(origin.clone()), output_(std::move(output))
 {
 }
 
 void CommandOriginWrapper::sendMessage(const Message &message) const
 {
+    auto *output = *output_;
+    if (!output) {
+        return;
+    }
     const auto tr = EndstoneMessage::toTranslatable(message);
     std::vector<CommandOutputParameter> params;
     for (const auto &param : tr.getParameters()) {
         params.emplace_back(param);
     }
-    output_.forceOutput(tr.getText(), params);
+    output->forceOutput(tr.getText(), params);
 }
 
 void CommandOriginWrapper::sendErrorMessage(const Message &message) const
 {
+    auto *output = *output_;
+    if (!output) {
+        return;
+    }
     const auto tr = EndstoneMessage::toTranslatable(message);
     std::vector<CommandOutputParameter> params;
     for (const auto &param : tr.getParameters()) {
         params.emplace_back(param);
     }
-    output_.error(tr.getText(), params);
+    output->error(tr.getText(), params);
 }
 
 std::string CommandOriginWrapper::getName() const
 {
-    return origin_.getName();
+    return origin_->getName();
 }
 
 PermissionLevel CommandOriginWrapper::getPermissionLevel() const
 {
-    if (origin_.getPermissionsLevel() >= CommandPermissionLevel::Host) {
+    if (origin_->getPermissionsLevel() >= CommandPermissionLevel::Host) {
         return PermissionLevel::Console;
     }
-    if (origin_.getPermissionsLevel() > CommandPermissionLevel::Any) {
+    if (origin_->getPermissionsLevel() > CommandPermissionLevel::Any) {
         return PermissionLevel::Operator;
     }
     return PermissionLevel::Default;
+}
+
+const CommandOrigin &CommandOriginWrapper::getOrigin() const
+{
+    return *origin_;
 }
 }  // namespace endstone::core

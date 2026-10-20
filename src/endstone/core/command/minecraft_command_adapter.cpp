@@ -32,8 +32,18 @@ void MinecraftCommandAdapter::execute(const CommandOrigin &origin, CommandOutput
         throw std::runtime_error("Command not found");
     }
 
-    auto sender = origin.getEndstoneSender(output);
-    if (command->execute(sender, args_)) {
+    auto output_slot = std::make_shared<CommandOutput *>(&output);
+    auto sender = origin.getEndstoneSender(output_slot);
+    bool success = false;
+    try {
+        success = command->execute(sender, args_);
+    }
+    catch (...) {
+        *output_slot = nullptr;
+        throw;
+    }
+    *output_slot = nullptr;
+    if (success) {
         output.success();
     }
 }

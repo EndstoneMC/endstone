@@ -40,34 +40,43 @@ public:
 };
 }  // namespace
 
-EndstoneBlockCommandSender::EndstoneBlockCommandSender(const CommandOrigin &origin, CommandOutput &output)
-    : ServerCommandSender(BlockPermissionBase::instance()), origin_(origin), output_(output)
+EndstoneBlockCommandSender::EndstoneBlockCommandSender(const CommandOrigin &origin,
+                                                       std::shared_ptr<CommandOutput *> output)
+    : ServerCommandSender(BlockPermissionBase::instance()), origin_(origin.clone()), output_(std::move(output))
 {
 }
 
 void EndstoneBlockCommandSender::sendMessage(const Message &message) const
 {
+    auto *output = *output_;
+    if (!output) {
+        return;
+    }
     const auto tr = EndstoneMessage::toTranslatable(message);
     std::vector<CommandOutputParameter> params;
     for (const auto &param : tr.getParameters()) {
         params.emplace_back(param);
     }
-    output_.forceOutput(tr.getText(), params);
+    output->forceOutput(tr.getText(), params);
 }
 
 void EndstoneBlockCommandSender::sendErrorMessage(const Message &message) const
 {
+    auto *output = *output_;
+    if (!output) {
+        return;
+    }
     const auto tr = EndstoneMessage::toTranslatable(message);
     std::vector<CommandOutputParameter> params;
     for (const auto &param : tr.getParameters()) {
         params.emplace_back(param);
     }
-    output_.error(tr.getText(), params);
+    output->error(tr.getText(), params);
 }
 
 std::string EndstoneBlockCommandSender::getName() const
 {
-    return origin_.getName();
+    return origin_->getName();
 }
 
 PermissionLevel EndstoneBlockCommandSender::getPermissionLevel() const
@@ -77,6 +86,11 @@ PermissionLevel EndstoneBlockCommandSender::getPermissionLevel() const
 
 NotNull<Block> EndstoneBlockCommandSender::getBlock() const
 {
-    return EndstoneBlock::at(origin_.getDimension()->getBlockSourceFromMainChunkSource(), origin_.getBlockPosition());
+    return EndstoneBlock::at(origin_->getDimension()->getBlockSourceFromMainChunkSource(), origin_->getBlockPosition());
+}
+
+const CommandOrigin &EndstoneBlockCommandSender::getOrigin() const
+{
+    return *origin_;
 }
 }  // namespace endstone::core

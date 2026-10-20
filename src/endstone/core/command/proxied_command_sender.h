@@ -23,7 +23,7 @@ namespace endstone::core {
 
 class EndstoneProxiedCommandSender : public ServerCommandSender<ProxiedCommandSender> {
 public:
-    EndstoneProxiedCommandSender(const VirtualCommandOrigin &origin, CommandOutput &output);
+    EndstoneProxiedCommandSender(const VirtualCommandOrigin &origin, std::shared_ptr<CommandOutput *> output);
 
     void sendMessage(const Message &message) const override;
     void sendErrorMessage(const Message &message) const override;
@@ -42,9 +42,11 @@ public:
     void recalculatePermissions() override;
     [[nodiscard]] std::unordered_set<NotNull<PermissionAttachmentInfo>> getEffectivePermissions() const override;
 
+    [[nodiscard]] const VirtualCommandOrigin &getOrigin() const;
+
 private:
-    const VirtualCommandOrigin &origin_;
-    CommandOutput &output_;
+    std::unique_ptr<CommandOrigin> origin_;
+    std::shared_ptr<CommandOutput *> output_;
 };
 
 }  // namespace endstone::core

@@ -24,7 +24,8 @@
 #include "endstone/core/player.h"
 #include "endstone/core/server.h"
 
-endstone::NotNull<endstone::CommandSender> CommandOrigin::getEndstoneSender(CommandOutput &output) const
+endstone::NotNull<endstone::CommandSender> CommandOrigin::getEndstoneSender(
+    std::shared_ptr<CommandOutput *> output) const
 {
     auto &server = endstone::core::EndstoneServer::getInstance();
     switch (getOriginType()) {
@@ -33,20 +34,24 @@ endstone::NotNull<endstone::CommandSender> CommandOrigin::getEndstoneSender(Comm
     }
     case CommandOriginType::Player:
     case CommandOriginType::Entity: {
-        return getEntity()->getEndstoneActor();
+        auto *entity = getEntity();
+        if (!entity) {
+            throw std::runtime_error("Trying to access an actor that is no longer valid.");
+        }
+        return entity->getEndstoneActor();
     }
     case CommandOriginType::CommandBlock: {
-        return std::make_shared<endstone::core::EndstoneBlockCommandSender>(*this, output);
+        return std::make_shared<endstone::core::EndstoneBlockCommandSender>(*this, std::move(output));
     }
     case CommandOriginType::Virtual: {
         return std::make_shared<endstone::core::EndstoneProxiedCommandSender>(
-            static_cast<const VirtualCommandOrigin &>(*this), output);
+            static_cast<const VirtualCommandOrigin &>(*this), std::move(output));
     }
     case CommandOriginType::MinecartCommandBlock:
         // TODO(permission): add CommandMinecart
     default: {
         // Fallback to command origin via a wrapper for unsupported types
-        auto sender = std::make_shared<endstone::core::CommandOriginWrapper>(*this, output);
+        auto sender = std::make_shared<endstone::core::CommandOriginWrapper>(*this, std::move(output));
         sender->recalculatePermissions();
         return sender;
     }

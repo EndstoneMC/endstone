@@ -184,6 +184,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Fixed `Permission.add_parent()` and `Permission.permissibles` reading an uninitialised field on a permission that was never registered with a plugin manager.
 - Fixed a Linux server that could hang instead of stopping on Ctrl+C or `docker stop`.
 - Fixed `Score.objective` reading freed memory once the `Score` it came from was dropped.
+- Fixed the server crashing when a plugin kept the sender of a command run through `/execute` or a command block and used it after the command had finished.
 
 #### API behaviour
 
@@ -201,6 +202,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Fixed a cancelled `PlayerLoginEvent` still calling `PlayerQuitEvent` and announcing that the player left.
 - Fixed `Block.biome` reading the wrong part of a chunk, so it reported a biome that has nothing to do with the block, and could crash the server. Introduced in 0.11.7 along with BDS 1.26.40 support.
 - Fixed `ItemStack.set_item_meta()` accepting a `MapMeta` for an item that is not a filled map.
+- Fixed `Server.dispatch_command()` rejecting the sender a command received from `/execute` or a command block.
 
 #### Type annotations
 

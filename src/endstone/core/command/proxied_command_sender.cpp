@@ -18,44 +18,60 @@
 
 namespace endstone::core {
 
-EndstoneProxiedCommandSender::EndstoneProxiedCommandSender(const VirtualCommandOrigin &origin, CommandOutput &output)
-    : origin_(origin), output_(output)
+EndstoneProxiedCommandSender::EndstoneProxiedCommandSender(const VirtualCommandOrigin &origin,
+                                                           std::shared_ptr<CommandOutput *> output)
+    : origin_(origin.clone()), output_(std::move(output))
 {
 }
 
 void EndstoneProxiedCommandSender::sendMessage(const Message &message) const
 {
+    auto *output = *output_;
+    if (!output) {
+        getCaller()->sendMessage(message);
+        return;
+    }
     const auto tr = EndstoneMessage::toTranslatable(message);
     std::vector<CommandOutputParameter> params;
     for (const auto &param : tr.getParameters()) {
         params.emplace_back(param);
     }
-    output_.forceOutput(tr.getText(), params);
+    output->forceOutput(tr.getText(), params);
 }
 
 void EndstoneProxiedCommandSender::sendErrorMessage(const Message &message) const
 {
+    auto *output = *output_;
+    if (!output) {
+        getCaller()->sendErrorMessage(message);
+        return;
+    }
     const auto tr = EndstoneMessage::toTranslatable(message);
     std::vector<CommandOutputParameter> params;
     for (const auto &param : tr.getParameters()) {
         params.emplace_back(param);
     }
-    output_.error(tr.getText(), params);
+    output->error(tr.getText(), params);
 }
 
 std::string EndstoneProxiedCommandSender::getName() const
 {
-    return origin_.getName();
+    return origin_->getName();
 }
 
 NotNull<CommandSender> EndstoneProxiedCommandSender::getCaller() const
 {
-    return origin_.getOutputReceiver().getEndstoneSender(output_);
+    return getOrigin().getOutputReceiver().getEndstoneSender(output_);
 }
 
 NotNull<CommandSender> EndstoneProxiedCommandSender::getCallee() const
 {
-    return origin_.getOrigin()->getEndstoneSender(output_);
+    return getOrigin().getOrigin()->getEndstoneSender(output_);
+}
+
+const VirtualCommandOrigin &EndstoneProxiedCommandSender::getOrigin() const
+{
+    return static_cast<const VirtualCommandOrigin &>(*origin_);
 }
 
 PermissionLevel EndstoneProxiedCommandSender::getPermissionLevel() const

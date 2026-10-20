@@ -21,6 +21,9 @@
 #include "bedrock/server/commands/minecraft_commands.h"
 #include "endstone/command/command_sender_wrapper.h"
 #include "endstone/command/console_command_sender.h"
+#include "endstone/core/command/block_command_sender.h"
+#include "endstone/core/command/command_origin_wrapper.h"
+#include "endstone/core/command/proxied_command_sender.h"
 #include "endstone/core/permissions/default_permissions.h"
 #include "endstone/core/server.h"
 #include "endstone/player.h"
@@ -98,6 +101,15 @@ std::unique_ptr<CommandOrigin> MinecraftCommandWrapper::getCommandOrigin(const N
 {
     if (const auto *wrapper = sender->as<CommandSenderWrapper>(); wrapper) {
         return getCommandOrigin(wrapper->getWrapped());
+    }
+    if (const auto *proxied = dynamic_cast<const EndstoneProxiedCommandSender *>(&*sender); proxied) {
+        return proxied->getOrigin().clone();
+    }
+    if (const auto *block = dynamic_cast<const EndstoneBlockCommandSender *>(&*sender); block) {
+        return block->getOrigin().clone();
+    }
+    if (const auto *origin_wrapper = dynamic_cast<const CommandOriginWrapper *>(&*sender); origin_wrapper) {
+        return origin_wrapper->getOrigin().clone();
     }
 
     const auto *level = EndstoneServer::getInstance().getEndstoneLevel();
