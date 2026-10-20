@@ -215,7 +215,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Fixed a malformed form response logging a callback error instead of closing the form.
 - Fixed `str()` on a `Vector` ending in a stray comma.
 - Fixed `Colors::BLACK` being a fully transparent red.
-- Fixed setting `Player.scoreboard` sending nothing to the client, so the old board stayed on screen and the new one never appeared.
+- Fixed setting `Player.scoreboard` sending nothing to the client.
 - Fixed vanilla commands such as `/summon` resolving the wrong entity type after `/reload` when a plugin command takes an `entity_type` argument.
 - Fixed the server crashing when a plugin enabled at STARTUP used online players, maps, scoreboards or commands.
 
