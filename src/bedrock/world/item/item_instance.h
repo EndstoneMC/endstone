@@ -21,6 +21,10 @@ public:
     static const ItemInstance EMPTY_ITEM;
     ItemInstance() = default;
     explicit ItemInstance(const ItemStackBase &);
+    explicit ItemInstance(std::string_view name, int count, int aux_value, const CompoundTag *user_data);
+    explicit ItemInstance(const Item &item, int count, int aux_value, const CompoundTag *user_data);
+    void reinit(const Item &item, int count, int aux_value) override;
+    void reinit(std::string_view name, int count, int aux_value) override;
     static ItemInstance fromTag(const CompoundTag &tag);
 };
 

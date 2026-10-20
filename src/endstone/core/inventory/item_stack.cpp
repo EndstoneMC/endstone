@@ -49,7 +49,11 @@ void EndstoneItemStack::setType(ItemTypeId type)
 {
     const auto *item_type = ItemType::get(type);
     Preconditions::checkArgument(item_type != nullptr, "Unknown item type: {}", type);
+    auto user_data = item_.hasUserData() ? item_.getUserData()->clone() : nullptr;
     item_.reinit(std::string(type), getAmount(), getData());
+    if (user_data) {
+        item_.setUserData(std::move(user_data));
+    }
 }
 
 int EndstoneItemStack::getAmount() const

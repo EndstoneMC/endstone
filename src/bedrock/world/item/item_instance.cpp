@@ -18,6 +18,26 @@ const ItemInstance ItemInstance::EMPTY_ITEM{};
 
 ItemInstance::ItemInstance(const ItemStackBase &item) : ItemStackBase(item) {}
 
+ItemInstance::ItemInstance(std::string_view name, int count, int aux_value, const CompoundTag *user_data)
+    : ItemStackBase(name, count, aux_value, user_data)
+{
+}
+
+ItemInstance::ItemInstance(const Item &item, int count, int aux_value, const CompoundTag *user_data)
+    : ItemStackBase(item, count, aux_value, user_data)
+{
+}
+
+void ItemInstance::reinit(const Item &item, int count, int aux_value)
+{
+    ItemStackBase::operator=(ItemInstance(item, count, aux_value, nullptr));
+}
+
+void ItemInstance::reinit(std::string_view name, int count, int aux_value)
+{
+    ItemStackBase::operator=(ItemInstance(name, count, aux_value, nullptr));
+}
+
 ItemInstance ItemInstance::fromTag(const CompoundTag &tag)
 {
     return BEDROCK_CALL(&ItemInstance::fromTag, tag);
