@@ -804,22 +804,29 @@ NotNull<BossBar> EndstoneServer::createBossBar(std::string title, BarColor color
 NotNull<BossBar> EndstoneServer::createBossBar(std::string title, BarColor color, BarStyle style,
                                                std::vector<BarFlag> flags)
 {
-    Preconditions::checkState(isPrimaryThread(), "Boss bars can only be created from the server thread.");
     auto boss_bar = std::make_shared<EndstoneBossBar>(std::move(title), color, style, flags);
+    std::scoped_lock lock(boss_bars_lock_);
     boss_bars_.emplace_back(boss_bar);
     return boss_bar;
 }
 
 void EndstoneServer::updateBossBars(const NotNull<EndstonePlayer> &player, ActorUniqueID boss_id)
 {
-    std::erase_if(boss_bars_, [&](const auto &boss_bar) {
-        const auto bar = boss_bar.lock();
-        if (!bar) {
-            return true;
-        }
+    std::vector<std::shared_ptr<EndstoneBossBar>> bars;
+    {
+        std::scoped_lock lock(boss_bars_lock_);
+        std::erase_if(boss_bars_, [&](const auto &boss_bar) {
+            auto bar = boss_bar.lock();
+            if (!bar) {
+                return true;
+            }
+            bars.emplace_back(std::move(bar));
+            return false;
+        });
+    }
+    for (const auto &bar : bars) {
         bar->update(player, boss_id);
-        return false;
-    });
+    }
 }
 
 NotNull<BlockData> EndstoneServer::createBlockData(BlockTypeId type) const

@@ -180,6 +180,7 @@ private:
     std::unordered_map<int, NotNull<MetricsBase>> plugin_metrics_;
     std::unordered_map<UUID, NotNull<EndstoneScoreboard>> player_boards_;
     std::vector<std::weak_ptr<EndstoneBossBar>> boss_bars_;
+    std::mutex boss_bars_lock_;
     std::chrono::system_clock::time_point start_time_;
     IResourcePackRepository *resource_pack_repository_ = nullptr;
     std::unordered_map<PackIdVersion, std::string> content_keys_;
