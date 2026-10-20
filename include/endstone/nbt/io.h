@@ -233,6 +233,9 @@ inline void write_string(std::string &out, const std::string &str, std::endian b
         write_varint(out, static_cast<std::uint32_t>(str.size()));
     }
     else {
+        if (str.size() > 0xFFFF) {
+            throw std::length_error("nbt::dump: string longer than 65535 bytes");
+        }
         write_value<std::uint16_t>(out, static_cast<std::uint16_t>(str.size()), byte_order);
     }
     write_bytes(out, str.data(), str.size());
@@ -352,8 +355,13 @@ inline void write_tag_payload(std::string &out, const Tag &tag, std::endian byte
 
 // ---- payload read (recursive) ----
 
-inline Tag read_tag_payload(std::string_view &in, Type type, std::endian byte_order, bool network)
+inline constexpr int max_depth = 512;
+
+inline Tag read_tag_payload(std::string_view &in, Type type, std::endian byte_order, bool network, int depth = 0)
 {
+    if (depth > max_depth) {
+        throw std::runtime_error("nbt::load: tag nested too deeply");
+    }
     switch (type) {
     case Type::End:
         return Tag{};
@@ -381,6 +389,9 @@ inline Tag read_tag_payload(std::string_view &in, Type type, std::endian byte_or
         auto len = read_length(in, byte_order, network);
         if (len < 0) {
             throw std::runtime_error("nbt::load: negative ByteArray length");
+        }
+        if (in.size() < static_cast<std::size_t>(len)) {
+            throw std::runtime_error("nbt::load: unexpected end of ByteArray data");
         }
         endstone::ByteArrayTag::storage_type vec(static_cast<std::size_t>(len));
         if (len > 0) {
@@ -410,9 +421,12 @@ inline Tag read_tag_payload(std::string_view &in, Type type, std::endian byte_or
         if (len < 0) {
             throw std::runtime_error("nbt::load: negative List length");
         }
+        if (elem_type == Type::End && len > 0) {
+            throw std::runtime_error("nbt::load: non-empty List of End tags");
+        }
         endstone::ListTag lt;
         for (std::int32_t i = 0; i < len; ++i) {
-            lt.emplace_back(read_tag_payload(in, elem_type, byte_order, network));
+            lt.emplace_back(read_tag_payload(in, elem_type, byte_order, network, depth + 1));
         }
         return Tag{std::move(lt)};
     }
@@ -424,7 +438,7 @@ inline Tag read_tag_payload(std::string_view &in, Type type, std::endian byte_or
                 break;
             }
             auto key = read_string(in, byte_order, network);
-            ct.insert_or_assign(key, read_tag_payload(in, entry_type, byte_order, network));
+            ct.insert_or_assign(key, read_tag_payload(in, entry_type, byte_order, network, depth + 1));
         }
         return Tag{std::move(ct)};
     }
@@ -442,12 +456,16 @@ inline Tag read_tag_payload(std::string_view &in, Type type, std::endian byte_or
  * @param tag The tag to serialize.
  * @param byte_order Byte order: std::endian::little (Bedrock) or std::endian::big (Java).
  * @param network If `true`, use Bedrock network varint encoding for lengths and Int/Long values.
- * @return Binary NBT data as [type:1][name:""][payload].
+ * @return Binary NBT data as [type:1][name:""][payload], or the type byte alone for an End tag.
+ * @throws std::length_error If a string is longer than 65535 bytes and `network` is `false`.
  */
 inline std::string dump(const Tag &tag, std::endian byte_order = std::endian::little, bool network = false)
 {
     std::string out;
     out.push_back(static_cast<char>(static_cast<std::uint8_t>(tag.type())));
+    if (tag.type() == Type::End) {
+        return out;
+    }
     detail::write_string(out, {}, byte_order, network);
     detail::write_tag_payload(out, tag, byte_order, network);
     return out;
@@ -460,13 +478,17 @@ inline std::string dump(const Tag &tag, std::endian byte_order = std::endian::li
  * @param name The root tag name (e.g. "" for Bedrock `level.dat`, or a descriptive name).
  * @param byte_order Byte order: std::endian::little (Bedrock) or std::endian::big (Java).
  * @param network If `true`, use Bedrock network varint encoding for lengths and Int/Long values.
- * @return Binary NBT data as [type:1][name:string][payload].
+ * @return Binary NBT data as [type:1][name:string][payload], or the type byte alone for an End tag.
+ * @throws std::length_error If a string is longer than 65535 bytes and `network` is `false`.
  */
 inline std::string dump(const Tag &tag, const std::string &name, std::endian byte_order = std::endian::little,
                         bool network = false)
 {
     std::string out;
     out.push_back(static_cast<char>(static_cast<std::uint8_t>(tag.type())));
+    if (tag.type() == Type::End) {
+        return out;
+    }
     detail::write_string(out, name, byte_order, network);
     detail::write_tag_payload(out, tag, byte_order, network);
     return out;
@@ -475,7 +497,7 @@ inline std::string dump(const Tag &tag, const std::string &name, std::endian byt
 /**
  * Deserialize binary NBT data into a Tag, populating the root tag name.
  *
- * @param data Binary NBT data. Consumed from front via string_view.
+ * @param data Binary NBT data. Bytes after the root tag are ignored.
  * @param[out] name The deserialized root tag name.
  * @param byte_order Byte order used in the binary data.
  * @param network If `true`, expect Bedrock network varint encoding.

@@ -836,3 +836,29 @@ def test_compound_tag_self_assignment():
     inner = a["b"]
     assert len(inner) == 1
     assert inner["a"] == 1
+
+
+def test_dump_rejects_string_longer_than_65535_bytes():
+    tag = StringTag("x" * 65536)
+    with pytest.raises(ValueError):
+        tag.dump()
+    assert load(tag.dump(network=True), network=True)[0] == tag
+
+
+def test_load_rejects_byte_array_longer_than_input():
+    data = bytes([7, 0, 0]) + (0x7FFFFFFF).to_bytes(4, "little")
+    with pytest.raises(RuntimeError):
+        load(data)
+
+
+def test_load_rejects_non_empty_list_of_end_tags():
+    data = bytes([9, 0, 0, 0]) + (0x7FFFFFFF).to_bytes(4, "little")
+    with pytest.raises(RuntimeError):
+        load(data)
+
+
+def test_load_rejects_deeply_nested_tags():
+    nested = (bytes([9]) + (1).to_bytes(4, "little")) * 600
+    data = bytes([9, 0, 0]) + nested + bytes([0]) + (0).to_bytes(4, "little")
+    with pytest.raises(RuntimeError):
+        load(data)
