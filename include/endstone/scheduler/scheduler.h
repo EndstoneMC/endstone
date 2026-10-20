@@ -135,7 +135,7 @@ public:
      *
      * @return Pending tasks
      */
-    virtual std::vector<Task *> getPendingTasks() = 0;
+    virtual std::vector<NotNull<Task>> getPendingTasks() = 0;
 };
 
 }  // namespace endstone

@@ -46,7 +46,7 @@ public:
     void cancelTasks(Plugin &plugin) override;
     bool isRunning(TaskId id) override;
     bool isQueued(TaskId id) override;
-    std::vector<Task *> getPendingTasks() override;
+    std::vector<NotNull<Task>> getPendingTasks() override;
 
     Nullable<Task> runTask(std::function<void()> task);
     void addTask(std::shared_ptr<EndstoneTask> task);

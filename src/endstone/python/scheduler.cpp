@@ -73,7 +73,7 @@ void init_scheduler(py::module &m)
     Returns:
         `True` if the task is queued to be run.
 )doc")
-        .def("get_pending_tasks", &Scheduler::getPendingTasks, py::return_value_policy::reference_internal, R"doc(
+        .def("get_pending_tasks", &Scheduler::getPendingTasks, R"doc(
     Returns a list of all pending tasks.
 
     The ordering of the tasks is NOT related to their order of execution.

@@ -153,15 +153,15 @@ bool EndstoneScheduler::isQueued(TaskId id)
     return tasks_.find(id) != tasks_.end();
 }
 
-std::vector<Task *> EndstoneScheduler::getPendingTasks()
+std::vector<NotNull<Task>> EndstoneScheduler::getPendingTasks()
 {
-    std::vector<Task *> pending;
+    std::vector<NotNull<Task>> pending;
     std::lock_guard lock{tasks_mtx_};
     for (const auto &[id, task] : tasks_) {
         if (task->isCancelled()) {
             continue;
         }
-        pending.push_back(task.get());
+        pending.emplace_back(task);
     }
     return pending;
 }
