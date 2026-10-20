@@ -16,6 +16,7 @@
 
 #include <algorithm>
 #include <ranges>
+#include <tuple>
 
 #include "bedrock/entity/components/actor_owner_component.h"
 #include "bedrock/world/level/block/bedrock_block_names.h"
@@ -46,11 +47,25 @@ mce::UUID nextAreaId()
     return {endstone_area_id_prefix, ++counter};
 }
 
+void abandonChunkHold(std::shared_ptr<LevelChunk> chunk)
+{
+    std::ignore = new std::shared_ptr<LevelChunk>(std::move(chunk));
+}
+
 }  // namespace
 
 EndstoneDimension::EndstoneDimension(WeakRef<::Dimension> dimension, EndstoneLevel &level)
     : dimension_(std::move(dimension)), level_(level)
 {
+}
+
+EndstoneDimension::~EndstoneDimension()
+{
+    for (auto &ticket : chunk_tickets_ | std::views::values) {
+        if (ticket.chunk) {
+            abandonChunkHold(std::move(ticket.chunk));
+        }
+    }
 }
 
 DimensionId EndstoneDimension::getId() const
@@ -142,12 +157,34 @@ mce::UUID EndstoneDimension::pinChunk(int x, int z, bool generate)
     return context.uuid;
 }
 
-void EndstoneDimension::releaseTicket(std::unordered_map<std::uint64_t, ChunkTicket>::iterator it)
+bool EndstoneDimension::syncTicket(ChunkTickets::iterator it, int x, int z, bool generate)
 {
-    if (it != chunk_tickets_.end() && it->second.plugins.empty() && !it->second.server_owned) {
-        level_.getHandle().getTickingAreasMgr().removeScopedAreas({it->second.area_id});
+    auto &ticket = it->second;
+    const auto needs_area = !ticket.plugins.empty() || (ticket.server_owned && !ticket.chunk);
+    if (!needs_area && ticket.area_id != mce::UUID::EMPTY) {
+        level_.getHandle().getTickingAreasMgr().removeScopedAreas({ticket.area_id});
+        ticket.area_id = mce::UUID::EMPTY;
+    }
+    auto pinned = true;
+    if (needs_area && ticket.area_id == mce::UUID::EMPTY) {
+        ticket.area_id = pinChunk(x, z, generate);
+        pinned = ticket.area_id != mce::UUID::EMPTY;
+    }
+    if (ticket.area_id == mce::UUID::EMPTY && !ticket.chunk) {
         chunk_tickets_.erase(it);
     }
+    return pinned;
+}
+
+void EndstoneDimension::onChunkLoaded(const LevelChunk &chunk)
+{
+    const auto &pos = chunk.getPosition();
+    const auto it = chunk_tickets_.find(chunkKey(pos.x, pos.z));
+    if (it == chunk_tickets_.end() || !it->second.server_owned || it->second.chunk) {
+        return;
+    }
+    it->second.chunk = getHandle().getChunkSource().getExistingChunk(pos);
+    syncTicket(it, pos.x, pos.z, false);
 }
 
 bool EndstoneDimension::loadChunk(int x, int z)
@@ -158,25 +195,30 @@ bool EndstoneDimension::loadChunk(int x, int z)
 bool EndstoneDimension::loadChunk(int x, int z, bool generate)
 {
     checkServerThread();
-    const auto key = chunkKey(x, z);
-    auto it = chunk_tickets_.find(key);
-    if (it == chunk_tickets_.end()) {
-        const auto area_id = pinChunk(x, z, generate);
-        if (area_id == mce::UUID::EMPTY) {
-            return false;
-        }
-        it = chunk_tickets_.emplace(key, ChunkTicket{.area_id = area_id}).first;
+    auto it = chunk_tickets_.try_emplace(chunkKey(x, z)).first;
+    auto &ticket = it->second;
+    const auto was_owned = ticket.server_owned;
+    ticket.server_owned = true;
+    if (!ticket.chunk && isChunkLoaded(x, z)) {
+        ticket.chunk = getHandle().getChunkSource().getExistingChunk(ChunkPos(x, z));
     }
-    it->second.server_owned = true;
+    if (!syncTicket(it, x, z, generate)) {
+        it = chunk_tickets_.find(chunkKey(x, z));
+        if (it != chunk_tickets_.end()) {
+            it->second.server_owned = was_owned;
+            syncTicket(it, x, z, generate);
+        }
+        return false;
+    }
     return true;
 }
 
 bool EndstoneDimension::unloadChunk(int x, int z)
 {
     checkServerThread();
-    const auto was_loaded = isChunkLoaded(x, z);
+    const auto loaded = isChunkLoaded(x, z);
     unloadChunkRequest(x, z);
-    if (!was_loaded) {
+    if (!loaded) {
         return true;
     }
     getHandle().flushLevelChunkGarbageCollector();
@@ -190,7 +232,8 @@ bool EndstoneDimension::unloadChunkRequest(int x, int z)
     const auto it = chunk_tickets_.find(chunkKey(x, z));
     if (it != chunk_tickets_.end()) {
         it->second.server_owned = false;
-        releaseTicket(it);
+        it->second.chunk.reset();
+        syncTicket(it, x, z, false);
     }
     return true;
 }
@@ -199,20 +242,20 @@ bool EndstoneDimension::addPluginChunkTicket(int x, int z, Plugin &plugin)
 {
     checkServerThread();
     Preconditions::checkArgument(plugin.isEnabled(), "Plugin is not enabled.");
-    const auto key = chunkKey(x, z);
-    auto it = chunk_tickets_.find(key);
-    if (it != chunk_tickets_.end() &&
-        std::ranges::find(it->second.plugins, &plugin) != it->second.plugins.end()) {
+    auto it = chunk_tickets_.try_emplace(chunkKey(x, z)).first;
+    auto &plugins = it->second.plugins;
+    if (std::ranges::find(plugins, &plugin) != plugins.end()) {
         return false;
     }
-    if (it == chunk_tickets_.end()) {
-        const auto area_id = pinChunk(x, z, true);
-        if (area_id == mce::UUID::EMPTY) {
-            return false;
+    plugins.push_back(&plugin);
+    if (!syncTicket(it, x, z, true)) {
+        it = chunk_tickets_.find(chunkKey(x, z));
+        if (it != chunk_tickets_.end()) {
+            std::erase(it->second.plugins, &plugin);
+            syncTicket(it, x, z, true);
         }
-        it = chunk_tickets_.emplace(key, ChunkTicket{.area_id = area_id}).first;
+        return false;
     }
-    it->second.plugins.push_back(&plugin);
     return true;
 }
 
@@ -226,7 +269,7 @@ bool EndstoneDimension::removePluginChunkTicket(int x, int z, Plugin &plugin)
     if (std::erase(it->second.plugins, &plugin) == 0) {
         return false;
     }
-    releaseTicket(it);
+    syncTicket(it, x, z, false);
     return true;
 }
 
@@ -235,9 +278,17 @@ void EndstoneDimension::removePluginChunkTickets(Plugin &plugin)
     checkServerThread();
     std::vector<mce::UUID> released;
     for (auto it = chunk_tickets_.begin(); it != chunk_tickets_.end();) {
-        std::erase(it->second.plugins, &plugin);
-        if (it->second.plugins.empty() && !it->second.server_owned) {
-            released.push_back(it->second.area_id);
+        auto &ticket = it->second;
+        if (std::erase(ticket.plugins, &plugin) == 0 || !ticket.plugins.empty() ||
+            (ticket.server_owned && !ticket.chunk)) {
+            ++it;
+            continue;
+        }
+        if (ticket.area_id != mce::UUID::EMPTY) {
+            released.push_back(ticket.area_id);
+            ticket.area_id = mce::UUID::EMPTY;
+        }
+        if (!ticket.chunk) {
             it = chunk_tickets_.erase(it);
         }
         else {

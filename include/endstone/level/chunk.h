@@ -86,10 +86,9 @@ public:
     virtual bool load(bool generate) = 0;
 
     /**
-     * Releases the hold that `load()` placed on this chunk. It unloads no earlier than the next tick, once nothing else
-     * keeps it resident.
+     * Releases the hold that `load()` placed on this chunk, and unloads it if nothing else keeps it loaded.
      *
-     * @return `true` if the chunk is not loaded when this returns, otherwise `false`
+     * @return `true` if the chunk is not loaded when this returns, `false` if something else keeps it loaded
      */
     virtual bool unload() = 0;
 

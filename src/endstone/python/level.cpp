@@ -46,11 +46,10 @@ void init_level(py::module_ &m, py::classh<Level> &level, py::classh<Dimension> 
         ``False`` if ``generate`` is ``False`` and the chunk has not been generated, otherwise ``True``.
 )doc")
         .def("unload", &Chunk::unload, R"doc(
-    Releases the hold that ``load`` placed on this chunk. It unloads no earlier than the next tick, once nothing else
-    keeps it resident.
+    Releases the hold that ``load`` placed on this chunk, and unloads it if nothing else keeps it loaded.
 
     Returns:
-        ``True`` if the chunk is not loaded when this returns, otherwise ``False``.
+        ``True`` if the chunk is not loaded when this returns, ``False`` if something else keeps it loaded.
 )doc")
         .def("add_plugin_chunk_ticket", &Chunk::addPluginChunkTicket, py::arg("plugin"), R"doc(
     Adds a plugin ticket for this chunk, loading it if it is not already loaded.
@@ -192,21 +191,20 @@ void init_level(py::module_ &m, py::classh<Level> &level, py::classh<Dimension> 
         RuntimeError: If called from a thread other than the server thread.
 )doc")
         .def("unload_chunk", &Dimension::unloadChunk, py::arg("x"), py::arg("z"), R"doc(
-    Releases the hold that ``load_chunk`` placed on the `Chunk` at the given coordinates, and completes the chunk
-    unloads the dimension already had pending.
+    Releases the hold that ``load_chunk`` placed on the `Chunk` at the given coordinates, and unloads the chunk if
+    nothing else keeps it loaded.
 
-    Bedrock lets go of a chunk no earlier than the next tick, so a chunk that only ``load_chunk`` held is still loaded
-    when this returns, and this reports ``False``. It unloads on a later tick once nothing else keeps it resident, such
-    as a nearby player, the spawn area, a ``/tickingarea`` or a plugin chunk ticket. Unloading saves the chunk and
-    fires a `ChunkUnloadEvent`. Completing the pending unloads makes this expensive to call once per chunk over a
-    large area; use ``unload_chunk_request`` when releasing many chunks at once.
+    Unloading saves the chunk and fires a `ChunkUnloadEvent` before this returns. A chunk that something else keeps
+    resident, such as a nearby player, a ``/tickingarea`` or a plugin chunk ticket, stays loaded. Unloading completes
+    every unload the dimension has pending, which makes this expensive to call once per chunk over a large area; use
+    ``unload_chunk_request`` when releasing many chunks at once.
 
     Args:
         x: X-coordinate of the chunk.
         z: Z-coordinate of the chunk.
 
     Returns:
-        ``True`` if the chunk is not loaded when this returns, otherwise ``False``.
+        ``True`` if the chunk is not loaded when this returns, ``False`` if something else keeps it loaded.
 
     Raises:
         RuntimeError: If called from a thread other than the server thread.

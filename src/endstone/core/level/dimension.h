@@ -31,7 +31,7 @@ namespace endstone::core {
 class EndstoneDimension : public Dimension, public std::enable_shared_from_this<EndstoneDimension> {
 public:
     explicit EndstoneDimension(WeakRef<::Dimension> dimension, EndstoneLevel &level);
-    ~EndstoneDimension() override = default;
+    ~EndstoneDimension() override;
     [[nodiscard]] DimensionId getId() const override;
     [[nodiscard]] std::string getTranslationKey() const override;
     [[nodiscard]] Level &getLevel() const override;
@@ -62,19 +62,23 @@ public:
     [[nodiscard]] ::Dimension &getHandle() const;
     [[nodiscard]] NotNull<EndstoneDimension> self() const;
 
+    void onChunkLoaded(const LevelChunk &chunk);
+
 private:
     struct ChunkTicket {
         mce::UUID area_id;
+        std::shared_ptr<LevelChunk> chunk;
         std::vector<Plugin *> plugins;
         bool server_owned = false;
     };
+    using ChunkTickets = std::unordered_map<std::uint64_t, ChunkTicket>;
 
     void checkServerThread() const;
     mce::UUID pinChunk(int x, int z, bool generate);
-    void releaseTicket(std::unordered_map<std::uint64_t, ChunkTicket>::iterator it);
+    bool syncTicket(ChunkTickets::iterator it, int x, int z, bool generate);
 
     WeakRef<::Dimension> dimension_;
     EndstoneLevel &level_;
-    std::unordered_map<std::uint64_t, ChunkTicket> chunk_tickets_;
+    ChunkTickets chunk_tickets_;
 };
 }  // namespace endstone::core

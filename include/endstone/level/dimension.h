@@ -181,20 +181,18 @@ public:
     virtual bool loadChunk(int x, int z, bool generate) = 0;
 
     /**
-     * Releases the hold that `loadChunk()` placed on the Chunk at the given coordinates, and completes the chunk
-     * unloads the dimension already had pending.
+     * Releases the hold that `loadChunk()` placed on the Chunk at the given coordinates, and unloads the chunk if
+     * nothing else keeps it loaded.
      *
-     * Bedrock lets go of a chunk no earlier than the next tick, so a chunk that only `loadChunk()` held is still loaded
-     * when this returns, and this reports `false`. It unloads on a later tick once nothing else keeps it resident, such
-     * as a nearby player, the spawn area, a `/tickingarea` or a plugin chunk ticket. Unloading saves the chunk and
-     * fires a ChunkUnloadEvent.
+     * Unloading saves the chunk and fires a ChunkUnloadEvent before this returns. A chunk that something else keeps
+     * resident, such as a nearby player, a `/tickingarea` or a plugin chunk ticket, stays loaded.
      *
-     * @note Completing the pending unloads makes this expensive to call once per chunk over a large area. Use
-     *       `unloadChunkRequest()` when releasing many chunks at once.
+     * @note Unloading completes every unload the dimension has pending, which makes this expensive to call once per
+     *       chunk over a large area. Use `unloadChunkRequest()` when releasing many chunks at once.
      *
      * @param x X-coordinate of the chunk
      * @param z Z-coordinate of the chunk
-     * @return `true` if the chunk is not loaded when this returns, otherwise `false`
+     * @return `true` if the chunk is not loaded when this returns, `false` if something else keeps it loaded
      */
     virtual bool unloadChunk(int x, int z) = 0;
 
