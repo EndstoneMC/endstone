@@ -40,6 +40,9 @@ public:
         : Cancellable(player), recipe_(std::move(recipe)), ingredients_(std::move(ingredients)),
           results_(std::move(results)), repetitions_(repetitions)
     {
+        for (const auto &result : results_) {
+            amounts_.push_back(result.getAmount());
+        }
     }
 
     /**
@@ -81,9 +84,9 @@ public:
      */
     void setResults(std::vector<ItemStack> results)
     {
-        for (std::size_t i = 0; i < results.size() && i < results_.size(); ++i) {
-            Preconditions::checkArgument(results[i].getAmount() == results_[i].getAmount(),
-                                         "Result {} must have an amount of {}, got {}.", i, results_[i].getAmount(),
+        for (std::size_t i = 0; i < results.size() && i < amounts_.size(); ++i) {
+            Preconditions::checkArgument(results[i].getAmount() == amounts_[i],
+                                         "Result {} must have an amount of {}, got {}.", i, amounts_[i],
                                          results[i].getAmount());
         }
         results_ = std::move(results);
@@ -103,6 +106,7 @@ private:
     std::vector<ItemStack> ingredients_;
     std::vector<ItemStack> results_;
     int repetitions_;
+    std::vector<int> amounts_;
 };
 
 }  // namespace endstone
