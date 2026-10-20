@@ -212,6 +212,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Fixed `Server.dispatch_command()` rejecting the sender a command received from `/execute` or a command block.
 - Fixed `str()` on a `Vector` ending in a stray comma.
 - Fixed `Colors::BLACK` being a fully transparent red.
+- Fixed setting `Player.scoreboard` sending nothing to the client, so the old board stayed on screen and the new one never appeared.
 - Fixed vanilla commands such as `/summon` resolving the wrong entity type after `/reload` when a plugin command takes an `entity_type` argument.
 - Fixed the server crashing when a plugin enabled at STARTUP used online players, maps, scoreboards or commands.
 
