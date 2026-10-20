@@ -217,3 +217,60 @@ def test_remove_enchants() -> None:
     meta.remove_enchants()
     assert meta.has_enchants is False
     assert meta.enchants == {}
+
+
+# =============================================================================
+# Section 6: Applying meta to another item type
+# =============================================================================
+
+
+def test_meta_of_another_item_type_is_not_applicable() -> None:
+    """Verify a CrossbowMeta carrying data is rejected by a sword."""
+    meta = ItemStack("minecraft:crossbow").item_meta
+    meta.charged_projectile = ItemStack("minecraft:arrow", 1)
+    sword = ItemStack("minecraft:diamond_sword")
+    assert sword.set_item_meta(meta) is False
+
+
+def test_empty_meta_of_another_item_type_clears_the_item() -> None:
+    """Verify an empty CrossbowMeta on a sword clears the sword's data, as an empty meta of any type does."""
+    sword = ItemStack("minecraft:diamond_sword")
+    named = sword.item_meta
+    named.display_name = "Blade"
+    assert sword.set_item_meta(named) is True
+    assert sword.set_item_meta(ItemStack("minecraft:crossbow").item_meta) is True
+    assert sword.item_meta.has_display_name is False
+
+
+def test_book_meta_is_not_applicable_to_a_writable_book() -> None:
+    """Verify a signed book's meta is rejected by a book and quill."""
+    meta = ItemStack("minecraft:written_book").item_meta
+    meta.title = "Title"
+    assert ItemStack("minecraft:writable_book").set_item_meta(meta) is False
+
+
+def test_writable_book_meta_is_applicable_to_a_writable_book() -> None:
+    """Verify a book and quill takes its own meta."""
+    meta = ItemStack("minecraft:writable_book").item_meta
+    meta.add_page("page")
+    book = ItemStack("minecraft:writable_book")
+    assert book.set_item_meta(meta) is True
+    assert book.item_meta.pages == ["page"]
+
+
+def test_plain_item_meta_is_applicable_to_a_crossbow() -> None:
+    """Verify the plain ItemMeta applies to an item with a specialised meta type."""
+    meta = ItemStack("minecraft:diamond_sword").item_meta
+    meta.display_name = "Bow"
+    crossbow = ItemStack("minecraft:crossbow")
+    assert crossbow.set_item_meta(meta) is True
+    assert crossbow.item_meta.display_name == "Bow"
+
+
+def test_base_potion_type_alone_is_applied_to_a_potion() -> None:
+    """Verify a PotionMeta that only sets the base potion type changes the potion."""
+    potion = ItemStack("minecraft:potion")
+    meta = potion.item_meta
+    meta.base_potion_type = "minecraft:potion_type:swiftness"
+    assert potion.set_item_meta(meta) is True
+    assert potion.item_meta.base_potion_type == "minecraft:potion_type:swiftness"

@@ -33,7 +33,6 @@ public:
 
     void applyToItem(::CompoundTag &tag) const override;
     [[nodiscard]] bool isEmpty() const override;
-    [[nodiscard]] bool applicableTo(ItemTypeId type) const override;
     [[nodiscard]] bool equalsCommon(const ItemMeta &meta) const override;
     [[nodiscard]] bool notUncommon(const ItemMeta &meta) const override;
     [[nodiscard]] NotNull<ItemMeta> clone() const override;

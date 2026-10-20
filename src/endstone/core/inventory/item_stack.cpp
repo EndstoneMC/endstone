@@ -189,7 +189,7 @@ bool EndstoneItemStack::setItemMeta(ItemStackBase *item, const ItemMeta *meta)
         return false;
     }
 
-    if (meta == nullptr) {
+    if (EndstoneItemFactory::instance().equals(meta, nullptr)) {
         item->setUserData(nullptr);
         return true;
     }
@@ -197,11 +197,6 @@ bool EndstoneItemStack::setItemMeta(ItemStackBase *item, const ItemMeta *meta)
     const auto &type = getType(item);
     if (!EndstoneItemFactory::instance().isApplicable(meta, type)) {
         return false;
-    }
-
-    if (EndstoneItemFactory::instance().equals(meta, nullptr)) {
-        item->setUserData(nullptr);
-        return true;
     }
 
     const auto item_meta = EndstoneItemFactory::instance().asMetaFor(meta, type);

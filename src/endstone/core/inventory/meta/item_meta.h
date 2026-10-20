@@ -23,6 +23,7 @@
 #include "bedrock/world/item/enchanting/enchant.h"
 #include "bedrock/world/item/item.h"
 #include "endstone/core/enchantments/enchantment.h"
+#include "endstone/core/inventory/item_metas.h"
 #include "endstone/core/nbt.h"
 #include "endstone/core/type.h"
 #include "endstone/inventory/item_type.h"
@@ -43,6 +44,8 @@ template <typename Interface>
     requires std::is_base_of_v<ItemMeta, Interface>
 class EndstoneItemMetaBase : public Interface, public ItemMetaExtras {
 public:
+    using InterfaceType = Interface;
+
     explicit EndstoneItemMetaBase(const ItemMeta *meta)
     {
         if (meta == nullptr) {
@@ -226,7 +229,18 @@ public:
         }
     }
 
-    [[nodiscard]] bool applicableTo(ItemTypeId type) const override { return type != ItemType::Air; }
+    [[nodiscard]] bool applicableTo(ItemTypeId type) const override
+    {
+        if (type == ItemType::Air) {
+            return false;
+        }
+        if constexpr (std::is_same_v<Interface, ItemMeta>) {
+            return true;
+        }
+        else {
+            return EndstoneItemMetas::getItemMetaDetails(type).getMetaType() == typeid(Interface);
+        }
+    }
 
     [[nodiscard]] bool equalsCommon(const ItemMeta &meta) const override
     {

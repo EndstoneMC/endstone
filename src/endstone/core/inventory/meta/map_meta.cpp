@@ -90,11 +90,6 @@ bool EndstoneMapMeta::isEmpty() const
     return EndstoneItemMetaBase::isEmpty() && isMapEmpty();
 }
 
-bool EndstoneMapMeta::applicableTo(ItemTypeId type) const
-{
-    return type == ItemTypeId::minecraft("filled_map");
-}
-
 bool EndstoneMapMeta::equalsCommon(const ItemMeta &meta) const
 {
     if (!EndstoneItemMetaBase<MapMeta>::equalsCommon(meta)) {

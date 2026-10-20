@@ -102,11 +102,6 @@ public:
 
     [[nodiscard]] bool isEmpty() const override { return Base::isEmpty() && isPagesEmpty(); }
 
-    [[nodiscard]] bool applicableTo(ItemTypeId type) const override
-    {
-        return type == ItemTypeId::minecraft("written_book") || type == ItemTypeId::minecraft("writable_book");
-    }
-
     [[nodiscard]] NotNull<ItemMeta> clone() const override
     {
         return std::make_shared<Derived>(static_cast<const Derived &>(*this));

@@ -17,6 +17,7 @@
 #include <functional>
 #include <memory>
 #include <string>
+#include <typeindex>
 #include <unordered_map>
 #include <utility>
 
@@ -34,6 +35,7 @@ public:
         {
             ItemMetaDetails details;
             if constexpr (std::is_same_v<T, void>) {
+                details.meta_type_ = typeid(void);
                 details.from_item_stack_ = [](const ::ItemStackBase &) -> Nullable<ItemMeta> {
                     return nullptr;
                 };
@@ -42,6 +44,7 @@ public:
                 };
             }
             else {
+                details.meta_type_ = typeid(typename T::InterfaceType);
                 details.from_item_stack_ = [](const ::ItemStackBase &stack) -> Nullable<ItemMeta> {
                     static auto empty_tag = std::make_unique<::CompoundTag>();
                     const auto *tag = stack.hasUserData() ? stack.getUserData() : empty_tag.get();
@@ -64,7 +67,10 @@ public:
             return from_item_meta_(type, meta);
         }
 
+        [[nodiscard]] std::type_index getMetaType() const { return meta_type_; }
+
     private:
+        std::type_index meta_type_{typeid(void)};
         std::function<Nullable<ItemMeta>(const ::ItemStackBase &)> from_item_stack_;
         std::function<Nullable<ItemMeta>(ItemTypeId, const ItemMeta *)> from_item_meta_;
     };
