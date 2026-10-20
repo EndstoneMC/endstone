@@ -22,7 +22,10 @@
 
 struct BlockLiquidDetectionComponent {
     DetectionRule water_detection_rule;
-    static bool canContainLiquid(const Block &block);
+    static bool canContainLiquid(const Block &block)
+    {
+        return block.getDirectData().getWaterDetectionRule().can_contain_liquid;
+    }
     static bool isLiquidBlocking(const Block &block)
     {
         return block.getDirectData().getWaterDetectionRule().on_liquid_touches == BLOCKING;

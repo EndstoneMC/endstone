@@ -24,6 +24,7 @@
 #include "bedrock/world/item/item_stack.h"
 #include "bedrock/world/level/block/block.h"
 #include "bedrock/world/level/block/block_descriptor.h"
+#include "bedrock/world/level/block/components/block_liquid_detection_component.h"
 #include "bedrock/world/level/block_pos.h"
 #include "bedrock/world/level/block_source.h"
 #include "endstone/core/block/block.h"
@@ -103,9 +104,15 @@ InteractionResult BucketItem::_useOn(::ItemStack &item_stack, ::Actor &actor, Bl
                     .tryGetBlockNoLogging();
         }
 
+        const auto &clicked_name = clicked_block.getName().getString();
+        const auto fish_bucket = fill_type == BucketFillType::Fish || fill_type == BucketFillType::Salmon ||
+                                 fill_type == BucketFillType::Tropicalfish || fill_type == BucketFillType::Pufferfish;
+        const auto fills_clicked =
+            (fish_bucket && (clicked_name == "minecraft:water" || clicked_name == "minecraft:flowing_water")) ||
+            (fill_type == BucketFillType::Water && BlockLiquidDetectionComponent::canContainLiquid(clicked_block));
+
         auto empty_position = position;
-        if (!fluid_block || !water_content || clicked_block.getMaterial().isSolid() ||
-            !clicked_block.getBlockType().canFillAtPos(block_source, position, *fluid_block)) {
+        if (!fills_clicked) {
             empty_position = position.offset(endstone::core::EndstoneBlockFace::getOffsetX(*block_face),
                                              endstone::core::EndstoneBlockFace::getOffsetY(*block_face),
                                              endstone::core::EndstoneBlockFace::getOffsetZ(*block_face));
