@@ -34,6 +34,7 @@
 #include "endstone/player.h"
 #include "permissions/permissible_base.h"
 
+class Packet;
 class Player;
 class ServerNetworkHandler;
 
@@ -159,6 +160,7 @@ private:
     friend class ::ServerNetworkHandler;
     friend class EndstonePacketHandler;
 
+    void sendNetworkPacket(std::shared_ptr<::Packet> packet) const;
     void untrackAndHideActor(const NotNull<Actor> &actor);
     void trackAndShowActor(const NotNull<Actor> &actor);
     void sendPlayerListRemove(const ::Player &player) const;

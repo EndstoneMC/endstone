@@ -16,12 +16,15 @@
 
 #include <chrono>
 #include <cstddef>
+#include <functional>
 #include <memory>
 #include <mutex>
 #include <string>
 #include <thread>
+#include <type_traits>
 #include <typeindex>
 #include <unordered_map>
+#include <utility>
 #include <vector>
 
 #include "bedrock/core/utility/pub_sub/subscription.h"
@@ -103,6 +106,20 @@ public:
     void broadcastMessage(const Message &message) const override;
 
     [[nodiscard]] bool isPrimaryThread() const override;
+
+    template <typename Sender>
+    bool deferToServerThread(Sender &sender, std::type_identity_t<std::function<void(Sender &)>> deliver) const
+    {
+        if (isPrimaryThread()) {
+            return false;
+        }
+        getEndstoneScheduler().runTask([weak = sender.weak_from_this(), deliver = std::move(deliver)] {
+            if (const auto strong = weak.lock()) {
+                deliver(static_cast<Sender &>(*strong));
+            }
+        });
+        return true;
+    }
 
     [[nodiscard]] ItemFactory &getItemFactory() const override;
     [[nodiscard]] Nullable<Scoreboard> getScoreboard() const override;

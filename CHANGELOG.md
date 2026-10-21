@@ -165,6 +165,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - **BREAKING**: `Server::createBossBar()` is no longer `const`, since the server now keeps track of the boss bars it hands out. C++ plugins holding a `const Server &` need a non-const one; Python call sites are unchanged.
 - **BREAKING**: The `endstone.metrics.charts`, `endstone.metrics.base` and `endstone.metrics.config` modules are gone; import the chart classes and `Metrics` from `endstone.metrics`.
 - A plugin's commands are registered as it is enabled, so a plugin enabled at `STARTUP` can look up and dispatch them from `on_enable`.
+- `Player.kick()` called from another thread raises an error, as in Paper.
 
 #### Platform
 
@@ -189,7 +190,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Fixed a `MapRenderer` that removed itself from its `MapView` inside `render()` crashing the server.
 - Fixed the server reading freed memory when a `Permissible` was destroyed while still subscribed to a permission, such as a player who disconnected while a plugin held on to them.
 - Fixed the server crashing on a broadcast once a player had left and rejoined. A player's permissions are now cleared when they leave, and messaging a player who is no longer on the server is a no-op.
-- Fixed the server crashing when a plugin broadcast a message from another thread.
+- Fixed the server crashing when a plugin messaged players or sent them titles, sounds, forms or packets from another thread.
 - Fixed a crash when a permission removed with `PluginManager.remove_permission()` was still in a default permission list.
 - Fixed `Permission.add_parent()` and `Permission.permissibles` reading an uninitialised field on a permission that was never registered with a plugin manager.
 - Fixed a Linux server that could hang instead of stopping on Ctrl+C or `docker stop`.

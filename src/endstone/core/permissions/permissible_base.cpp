@@ -15,9 +15,12 @@
 #include "endstone/core/permissions/permissible_base.h"
 
 #include <memory>
+#include <mutex>
 #include <ranges>
+#include <shared_mutex>
 #include <unordered_map>
 #include <unordered_set>
+#include <utility>
 
 #include <entt/locator/locator.hpp>
 
@@ -42,6 +45,7 @@ PermissionLevel PermissibleBase::getPermissionLevel() const
 bool PermissibleBase::isPermissionSet(std::string name) const
 {
     std::ranges::transform(name, name.begin(), [](unsigned char c) { return std::tolower(c); });
+    std::shared_lock lock(permissions_mtx_);
     return permissions_.contains(name);
 }
 
@@ -53,24 +57,39 @@ bool PermissibleBase::isPermissionSet(const NotNull<Permission> &perm) const
 bool PermissibleBase::hasPermission(std::string name) const
 {
     std::ranges::transform(name, name.begin(), [](unsigned char c) { return std::tolower(c); });
-    if (isPermissionSet(name)) {
-        return permissions_.find(name)->second->getValue();
+    {
+        std::shared_lock lock(permissions_mtx_);
+        if (const auto it = permissions_.find(name); it != permissions_.end()) {
+            return it->second->getValue();
+        }
     }
 
     if (const auto perm = getPluginManager()->getPermission(name)) {
-        return hasPermission(perm->getDefault(), getPermissionLevel());
+        return hasPermission(perm->getDefault(), getCurrentPermissionLevel());
     }
-    return hasPermission(Permission::DefaultPermission, getPermissionLevel());
+    return hasPermission(Permission::DefaultPermission, getCurrentPermissionLevel());
 }
 
 bool PermissibleBase::hasPermission(const NotNull<Permission> &perm) const
 {
     auto name = perm->getName();
     std::ranges::transform(name, name.begin(), [](unsigned char c) { return std::tolower(c); });
-    if (isPermissionSet(name)) {
-        return permissions_.find(name)->second->getValue();
+    {
+        std::shared_lock lock(permissions_mtx_);
+        if (const auto it = permissions_.find(name); it != permissions_.end()) {
+            return it->second->getValue();
+        }
     }
-    return hasPermission(perm->getDefault(), getPermissionLevel());
+    return hasPermission(perm->getDefault(), getCurrentPermissionLevel());
+}
+
+PermissionLevel PermissibleBase::getCurrentPermissionLevel() const
+{
+    if (entt::locator<EndstoneServer>::has_value() && !EndstoneServer::getInstance().isPrimaryThread()) {
+        std::shared_lock lock(permissions_mtx_);
+        return recalculated_level_;
+    }
+    return getPermissionLevel();
 }
 
 bool PermissibleBase::hasPermission(PermissionDefault default_value, PermissionLevel level)
@@ -107,20 +126,28 @@ NotNull<PermissionAttachment> PermissibleBase::addAttachment(const NotNull<Plugi
     Preconditions::checkArgument(plugin->isEnabled(), "Could not add PermissionAttachment: plugin {} is disabled.",
                                  plugin->getName());
 
-    const auto &result = attachments_.emplace_back(std::make_shared<PermissionAttachment>(plugin, getParent()));
+    const NotNull<PermissionAttachment> result = std::make_shared<PermissionAttachment>(plugin, getParent());
+    {
+        std::unique_lock lock(permissions_mtx_);
+        attachments_.push_back(result);
+    }
     recalculatePermissions();
     return result;
 }
 
 bool PermissibleBase::removeAttachment(const NotNull<PermissionAttachment> &attachment)
 {
-    const auto it = std::ranges::find(attachments_, attachment);
-    if (it == attachments_.end()) {
-        return false;
+    Nullable<PermissionAttachment> found;
+    {
+        std::unique_lock lock(permissions_mtx_);
+        const auto it = std::ranges::find(attachments_, attachment);
+        if (it == attachments_.end()) {
+            return false;
+        }
+        found = *it;
+        attachments_.erase(it);
     }
-
-    const auto removed = *it;
-    attachments_.erase(it);
+    const NotNull<PermissionAttachment> removed = found;
     if (const auto callback = removed->getRemovalCallback()) {
         callback(removed);
     }
@@ -130,11 +157,16 @@ bool PermissibleBase::removeAttachment(const NotNull<PermissionAttachment> &atta
 
 void PermissibleBase::recalculatePermissions()
 {
-    clearPermissions();
+    decltype(permissions_) removed;
+    std::unique_lock lock(permissions_mtx_);
+    removed = takePermissions();
+    if (!entt::locator<EndstoneServer>::has_value() || EndstoneServer::getInstance().isPrimaryThread()) {
+        recalculated_level_ = getPermissionLevel();
+    }
     const auto parent = getParent();
     auto *plugin_manager = getPluginManager();
-    const auto defaults = plugin_manager->getDefaultPermissions(getPermissionLevel());
-    plugin_manager->subscribeToDefaultPerms(getPermissionLevel(), parent);
+    const auto defaults = plugin_manager->getDefaultPermissions(recalculated_level_);
+    plugin_manager->subscribeToDefaultPerms(recalculated_level_, parent);
 
     for (const auto &perm : defaults) {
         auto name = perm->getName();
@@ -174,6 +206,7 @@ void PermissibleBase::calculateChildPermissions(const std::unordered_map<std::st
 std::unordered_set<NotNull<PermissionAttachmentInfo>> PermissibleBase::getEffectivePermissions() const
 {
     std::unordered_set<NotNull<PermissionAttachmentInfo>> result;
+    std::shared_lock lock(permissions_mtx_);
     for (const auto &entry : permissions_) {
         result.insert(entry.second);
     }
@@ -192,6 +225,13 @@ bool PermissibleBase::isInstanceOf(ClassInfo target) const
 
 void PermissibleBase::clearPermissions()
 {
+    decltype(permissions_) removed;
+    std::unique_lock lock(permissions_mtx_);
+    removed = takePermissions();
+}
+
+std::unordered_map<std::string, NotNull<PermissionAttachmentInfo>> PermissibleBase::takePermissions()
+{
     auto *plugin_manager = getPluginManager();
     if (const auto parent = tryGetParent(); plugin_manager && parent) {
         const NotNull<Permissible> handle = parent;
@@ -202,7 +242,7 @@ void PermissibleBase::clearPermissions()
         plugin_manager->unsubscribeFromDefaultPerms(PermissionLevel::Operator, handle);
         plugin_manager->unsubscribeFromDefaultPerms(PermissionLevel::Console, handle);
     }
-    permissions_.clear();
+    return std::exchange(permissions_, {});
 }
 
 Nullable<Permissible> PermissibleBase::tryGetParent() const

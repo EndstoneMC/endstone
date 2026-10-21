@@ -15,6 +15,7 @@
 #pragma once
 
 #include <memory>
+#include <shared_mutex>
 #include <string>
 #include <unordered_map>
 #include <unordered_set>
@@ -57,11 +58,15 @@ private:
     [[nodiscard]] static PluginManager *getPluginManager();
     [[nodiscard]] Nullable<Permissible> tryGetParent() const;
     [[nodiscard]] NotNull<Permissible> getParent() const;
+    std::unordered_map<std::string, NotNull<PermissionAttachmentInfo>> takePermissions();
     void calculateChildPermissions(const std::unordered_map<std::string, bool> &children, bool invert,
                                    const Nullable<PermissionAttachment> &attachment);
     [[nodiscard]] static bool hasPermission(PermissionDefault default_value, PermissionLevel level);
+    [[nodiscard]] PermissionLevel getCurrentPermissionLevel() const;
     Permissible *opable_;
     std::vector<NotNull<PermissionAttachment>> attachments_;
     std::unordered_map<std::string, NotNull<PermissionAttachmentInfo>> permissions_;
+    PermissionLevel recalculated_level_ = PermissionLevel::Default;
+    mutable std::shared_mutex permissions_mtx_;
 };
 }  // namespace endstone::core

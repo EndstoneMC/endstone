@@ -15,6 +15,7 @@
 #include "endstone/core/command/proxied_command_sender.h"
 
 #include "endstone/core/message.h"
+#include "endstone/core/server.h"
 
 namespace endstone::core {
 
@@ -26,6 +27,10 @@ EndstoneProxiedCommandSender::EndstoneProxiedCommandSender(const VirtualCommandO
 
 void EndstoneProxiedCommandSender::sendMessage(const Message &message) const
 {
+    if (EndstoneServer::getInstance().deferToServerThread(
+            *this, [message](const EndstoneProxiedCommandSender &sender) { sender.sendMessage(message); })) {
+        return;
+    }
     const auto output = output_.lock();
     if (!output) {
         getCaller()->sendMessage(message);
@@ -41,6 +46,10 @@ void EndstoneProxiedCommandSender::sendMessage(const Message &message) const
 
 void EndstoneProxiedCommandSender::sendErrorMessage(const Message &message) const
 {
+    if (EndstoneServer::getInstance().deferToServerThread(
+            *this, [message](const EndstoneProxiedCommandSender &sender) { sender.sendErrorMessage(message); })) {
+        return;
+    }
     const auto output = output_.lock();
     if (!output) {
         getCaller()->sendErrorMessage(message);

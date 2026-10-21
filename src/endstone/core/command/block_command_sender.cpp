@@ -47,6 +47,10 @@ EndstoneBlockCommandSender::EndstoneBlockCommandSender(const CommandOrigin &orig
 
 void EndstoneBlockCommandSender::sendMessage(const Message &message) const
 {
+    if (EndstoneServer::getInstance().deferToServerThread(
+            *this, [message](const EndstoneBlockCommandSender &sender) { sender.sendMessage(message); })) {
+        return;
+    }
     const auto output = output_.lock();
     if (!output) {
         return;
@@ -61,6 +65,10 @@ void EndstoneBlockCommandSender::sendMessage(const Message &message) const
 
 void EndstoneBlockCommandSender::sendErrorMessage(const Message &message) const
 {
+    if (EndstoneServer::getInstance().deferToServerThread(
+            *this, [message](const EndstoneBlockCommandSender &sender) { sender.sendErrorMessage(message); })) {
+        return;
+    }
     const auto output = output_.lock();
     if (!output) {
         return;

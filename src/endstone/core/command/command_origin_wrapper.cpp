@@ -15,6 +15,7 @@
 #include "endstone/core/command/command_origin_wrapper.h"
 
 #include "endstone/core/message.h"
+#include "endstone/core/server.h"
 
 namespace endstone::core {
 
@@ -25,6 +26,10 @@ CommandOriginWrapper::CommandOriginWrapper(const CommandOrigin &origin, std::wea
 
 void CommandOriginWrapper::sendMessage(const Message &message) const
 {
+    if (EndstoneServer::getInstance().deferToServerThread(
+            *this, [message](const CommandOriginWrapper &sender) { sender.sendMessage(message); })) {
+        return;
+    }
     const auto output = output_.lock();
     if (!output) {
         return;
@@ -39,6 +44,10 @@ void CommandOriginWrapper::sendMessage(const Message &message) const
 
 void CommandOriginWrapper::sendErrorMessage(const Message &message) const
 {
+    if (EndstoneServer::getInstance().deferToServerThread(
+            *this, [message](const CommandOriginWrapper &sender) { sender.sendErrorMessage(message); })) {
+        return;
+    }
     const auto output = output_.lock();
     if (!output) {
         return;

@@ -18,6 +18,9 @@
 
 #include <algorithm>
 #include <cstdint>
+#include <memory>
+#include <stdexcept>
+#include <string>
 #include <string_view>
 #include <unordered_map>
 #include <unordered_set>
@@ -163,6 +166,9 @@ void EndstonePlayer::sendMessage(const Message &message) const
 {
     Preconditions::checkArgument(!std::visit([](const auto &msg) { return msg.empty(); }, message),
                                  "Message must not be empty");
+    if (server_.deferToServerThread(*this, [message](const EndstonePlayer &player) { player.sendMessage(message); })) {
+        return;
+    }
     if (!tryGetHandle()) {
         return;
     }
@@ -279,11 +285,14 @@ void EndstonePlayer::transfer(std::string host, int port) const
     auto pk = std::static_pointer_cast<TransferPacket>(packet);
     pk->payload.destination = std::move(host);
     pk->payload.destination_port = port;
-    getHandle().sendNetworkPacket(*packet);
+    sendNetworkPacket(packet);
 }
 
 void EndstonePlayer::kick(std::string message) const
 {
+    if (!server_.isPrimaryThread()) {
+        throw std::runtime_error("Asynchronous player kick!");
+    }
     auto *component = getHandle().tryGetComponent<UserEntityIdentifierComponent>();
     server_.getServer().getMinecraft()->getServerNetworkHandler()->disconnectClientWithMessage(
         component->getNetworkId(), component->getSubClientId(), Connection::DisconnectFailReason::Kicked, message,
@@ -339,7 +348,7 @@ void EndstonePlayer::sendBlockUpdate(const Location &location, const BlockActorS
     pk.payload.data.putInt("x", pk.payload.pos.x);
     pk.payload.data.putInt("y", pk.payload.pos.y);
     pk.payload.data.putInt("z", pk.payload.pos.z);
-    getHandle().sendNetworkPacket(*packet);
+    sendNetworkPacket(packet);
 }
 
 void EndstonePlayer::hideActor(const NotNull<Plugin> &plugin, const NotNull<Actor> &actor)
@@ -446,7 +455,7 @@ void EndstonePlayer::sendBlockChange(const Location &location, const BlockData &
     pk.payload.layer = 0;
     pk.payload.update_flags = static_cast<std::uint8_t>(::BlockType::UPDATE_CLIENTS);
     pk.payload.runtime_id = block.getRuntimeId();
-    getHandle().sendNetworkPacket(*packet);
+    sendNetworkPacket(packet);
 }
 
 void EndstonePlayer::openSign(const Sign &sign, Sign::Side side)
@@ -473,7 +482,7 @@ void EndstonePlayer::openVirtualSign(const Location &location, Sign::Side side)
     const auto open_sign = std::static_pointer_cast<OpenSignPacket>(packet);
     open_sign->payload.pos = {location.getBlockX(), location.getBlockY(), location.getBlockZ()};
     open_sign->payload.is_front_side = side == Sign::Side::Front;
-    getHandle().sendNetworkPacket(*open_sign);
+    sendNetworkPacket(open_sign);
 }
 
 bool EndstonePlayer::isSneaking() const
@@ -505,7 +514,7 @@ void EndstonePlayer::playSound(Location location, std::string sound, float volum
                        static_cast<int>(location.getZ())};
     pk->payload.volume = volume;
     pk->payload.pitch = pitch;
-    getHandle().sendNetworkPacket(*packet);
+    sendNetworkPacket(packet);
 }
 
 void EndstonePlayer::stopSound(std::string sound)
@@ -513,7 +522,7 @@ void EndstonePlayer::stopSound(std::string sound)
     const auto packet = MinecraftPackets::createPacket(MinecraftPacketIds::StopSound);
     const auto pk = std::static_pointer_cast<StopSoundPacket>(packet);
     pk->payload.name = sound;
-    getHandle().sendNetworkPacket(*packet);
+    sendNetworkPacket(packet);
 }
 
 void EndstonePlayer::stopAllSounds()
@@ -521,7 +530,7 @@ void EndstonePlayer::stopAllSounds()
     const auto packet = MinecraftPackets::createPacket(MinecraftPacketIds::StopSound);
     const auto pk = std::static_pointer_cast<StopSoundPacket>(packet);
     pk->payload.stop_all = true;
-    getHandle().sendNetworkPacket(*packet);
+    sendNetworkPacket(packet);
 }
 
 void EndstonePlayer::giveExp(int amount)
@@ -641,7 +650,7 @@ void EndstonePlayer::sendActionBar(std::string message) const
     auto pk = std::static_pointer_cast<SetTitlePacket>(packet);
     pk->payload.type = SetTitlePacketPayload::TitleType::Actionbar;
     pk->payload.title_text = std::move(message);
-    getHandle().sendNetworkPacket(*packet);
+    sendNetworkPacket(packet);
 }
 
 void EndstonePlayer::sendPopup(std::string message) const
@@ -649,7 +658,7 @@ void EndstonePlayer::sendPopup(std::string message) const
     auto packet = MinecraftPackets::createPacket(MinecraftPacketIds::Text);
     auto &pk = static_cast<TextPacket &>(*packet);
     pk.payload = {.body = TextPacketPayload::MessageAndParams{TextPacketType::Popup, message, {}}};
-    getHandle().sendNetworkPacket(*packet);
+    sendNetworkPacket(packet);
 }
 
 void EndstonePlayer::sendTip(std::string message) const
@@ -657,7 +666,7 @@ void EndstonePlayer::sendTip(std::string message) const
     auto packet = MinecraftPackets::createPacket(MinecraftPacketIds::Text);
     auto &pk = static_cast<TextPacket &>(*packet);
     pk.payload = {.body = TextPacketPayload::MessageOnly{TextPacketType::Tip, message}};
-    getHandle().sendNetworkPacket(*packet);
+    sendNetworkPacket(packet);
 }
 
 void EndstonePlayer::sendToast(std::string title, std::string content) const
@@ -666,7 +675,7 @@ void EndstonePlayer::sendToast(std::string title, std::string content) const
     auto pk = std::static_pointer_cast<ToastRequestPacket>(packet);
     pk->payload.title = std::move(title);
     pk->payload.content = std::move(content);
-    getHandle().sendNetworkPacket(*packet);
+    sendNetworkPacket(packet);
 }
 
 void EndstonePlayer::sendTitle(std::string title, std::string subtitle) const
@@ -684,7 +693,7 @@ void EndstonePlayer::sendTitle(std::string title, std::string subtitle, int fade
         pk->payload.fade_in_time = fade_in;
         pk->payload.stay_time = stay;
         pk->payload.fade_out_time = fade_out;
-        getHandle().sendNetworkPacket(*packet);
+        sendNetworkPacket(packet);
     }
     {
         auto packet = MinecraftPackets::createPacket(MinecraftPacketIds::SetTitle);
@@ -694,7 +703,7 @@ void EndstonePlayer::sendTitle(std::string title, std::string subtitle, int fade
         pk->payload.fade_in_time = fade_in;
         pk->payload.stay_time = stay;
         pk->payload.fade_out_time = fade_out;
-        getHandle().sendNetworkPacket(*packet);
+        sendNetworkPacket(packet);
     }
 }
 
@@ -703,7 +712,7 @@ void EndstonePlayer::resetTitle() const
     auto packet = MinecraftPackets::createPacket(MinecraftPacketIds::SetTitle);
     auto pk = std::static_pointer_cast<SetTitlePacket>(packet);
     pk->payload.type = SetTitlePacketPayload::TitleType::Reset;
-    getHandle().sendNetworkPacket(*packet);
+    sendNetworkPacket(packet);
 }
 
 void EndstonePlayer::spawnParticle(std::string name, Location location) const
@@ -725,6 +734,13 @@ void EndstonePlayer::spawnParticle(std::string name, Location location,
 void EndstonePlayer::spawnParticle(std::string name, float x, float y, float z,
                                    std::optional<JsonObject> molang_variables) const
 {
+    if (server_.deferToServerThread(*this, [name, x, y, z, molang_variables](const EndstonePlayer &player) {
+            if (player.tryGetHandle()) {
+                player.spawnParticle(name, x, y, z, molang_variables);
+            }
+        })) {
+        return;
+    }
     BinaryStream stream;
     stream.writeByte(getHandle().getDimension().getDimensionId().value, "Dimension Id", nullptr);
     stream.writeVarInt64(-1, "Actor Unique ID", nullptr);  // -1 = self
@@ -761,6 +777,13 @@ std::string EndstonePlayer::getLocale() const
 
 void EndstonePlayer::updateCommands() const
 {
+    if (server_.deferToServerThread(*this, [](const EndstonePlayer &player) {
+            if (player.tryGetHandle()) {
+                player.updateCommands();
+            }
+        })) {
+        return;
+    }
     const auto &command_map = server_.getCommandMap();
     const auto &registry = command_map.getHandle().getRegistry();
     AvailableCommandsPacket packet = registry.serializeAvailableCommands();
@@ -848,6 +871,13 @@ Skin EndstonePlayer::getSkin() const
 
 void EndstonePlayer::sendForm(FormVariant form)
 {
+    if (server_.deferToServerThread(*this, [form](EndstonePlayer &player) {
+            if (player.tryGetHandle()) {
+                player.sendForm(form);
+            }
+        })) {
+        return;
+    }
     if (isDead()) {
         return;
     }
@@ -861,6 +891,13 @@ void EndstonePlayer::sendForm(FormVariant form)
 
 void EndstonePlayer::closeForm()
 {
+    if (server_.deferToServerThread(*this, [](EndstonePlayer &player) {
+            if (player.tryGetHandle()) {
+                player.closeForm();
+            }
+        })) {
+        return;
+    }
     auto packet = MinecraftPackets::createPacket(MinecraftPacketIds::ClientboundCloseScreen);
     getHandle().sendNetworkPacket(*packet);
     forms_.clear();
@@ -868,12 +905,26 @@ void EndstonePlayer::closeForm()
 
 void EndstonePlayer::sendPacket(int packet_id, std::string_view payload) const
 {
+    if (server_.deferToServerThread(*this, [packet_id, data = std::string(payload)](const EndstonePlayer &player) {
+            if (player.tryGetHandle()) {
+                player.sendPacket(packet_id, data);
+            }
+        })) {
+        return;
+    }
     DataPacket pk(packet_id, payload);
     getHandle().sendNetworkPacket(pk);
 }
 
 void EndstonePlayer::sendMap(MapView &map)
 {
+    if (server_.deferToServerThread(*this, [map = &map](EndstonePlayer &player) {
+            if (player.tryGetHandle()) {
+                player.sendMap(*map);
+            }
+        })) {
+        return;
+    }
     auto &handle = static_cast<EndstoneMapView &>(map).getHandle();
     auto packet = MinecraftPackets::createPacket(MinecraftPacketIds::MapData);
     auto &pk = static_cast<ClientboundMapItemDataPacket &>(*packet);
@@ -1137,6 +1188,18 @@ void EndstonePlayer::disconnect()
     server_.hidden_actor_count_ -= hidden_actors_.size();
     hidden_actors_.clear();
     hidden_player_runtime_ids_.clear();
+}
+
+void EndstonePlayer::sendNetworkPacket(std::shared_ptr<::Packet> packet) const
+{
+    if (server_.deferToServerThread(*this, [packet](const EndstonePlayer &player) {
+            if (player.tryGetHandle()) {
+                player.sendNetworkPacket(packet);
+            }
+        })) {
+        return;
+    }
+    getHandle().sendNetworkPacket(*packet);
 }
 
 void EndstonePlayer::updateAbilities() const

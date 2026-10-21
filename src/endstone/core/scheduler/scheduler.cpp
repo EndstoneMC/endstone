@@ -361,6 +361,9 @@ bool EndstoneScheduler::TaskComparator::operator()(const std::shared_ptr<Endston
     if (lhs->getNextRun() != rhs->getNextRun()) {
         return lhs->getNextRun() > rhs->getNextRun();
     }
-    return lhs->getCreatedAt() > rhs->getCreatedAt();
+    if (lhs->getCreatedAt() != rhs->getCreatedAt()) {
+        return lhs->getCreatedAt() > rhs->getCreatedAt();
+    }
+    return lhs->getTaskId() > rhs->getTaskId();
 }
 }  // namespace endstone::core

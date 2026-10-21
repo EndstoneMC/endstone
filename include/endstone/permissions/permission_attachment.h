@@ -17,6 +17,7 @@
 #include <algorithm>
 #include <functional>
 #include <memory>
+#include <mutex>
 #include <string>
 #include <unordered_map>
 #include <utility>
@@ -74,7 +75,11 @@ public:
      *
      * @return Copy of all permissions and values expressed by this attachment
      */
-    [[nodiscard]] std::unordered_map<std::string, bool> getPermissions() const { return permissions_; }
+    [[nodiscard]] std::unordered_map<std::string, bool> getPermissions() const
+    {
+        std::lock_guard lock(permissions_mtx_);
+        return permissions_;
+    }
 
     /**
      * Sets a permission to the given value, by its fully qualified name.
@@ -85,7 +90,10 @@ public:
     void setPermission(std::string name, bool value)
     {
         std::transform(name.begin(), name.end(), name.begin(), [](unsigned char c) { return std::tolower(c); });
-        permissions_[name] = value;
+        {
+            std::lock_guard lock(permissions_mtx_);
+            permissions_[name] = value;
+        }
         if (const auto permissible = permissible_.lock()) {
             permissible->recalculatePermissions();
         }
@@ -108,7 +116,10 @@ public:
     void unsetPermission(std::string name)
     {
         std::transform(name.begin(), name.end(), name.begin(), [](unsigned char c) { return std::tolower(c); });
-        permissions_.erase(name);
+        {
+            std::lock_guard lock(permissions_mtx_);
+            permissions_.erase(name);
+        }
         if (const auto permissible = permissible_.lock()) {
             permissible->recalculatePermissions();
         }
@@ -141,6 +152,7 @@ public:
 private:
     PermissionRemovedExecutor removed_;
     std::unordered_map<std::string, bool> permissions_;
+    mutable std::mutex permissions_mtx_;
     std::weak_ptr<Permissible> permissible_;
     std::weak_ptr<Plugin> plugin_;
 };
