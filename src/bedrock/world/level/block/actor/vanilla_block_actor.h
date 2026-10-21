@@ -107,11 +107,6 @@ class VanillaBlockActor : public BlockActor,
 protected:
     using Properties = Bedrock::EnumSet<Property, Property::_count>;
 
-public:
-    void setChanged() override { properties_.insert(Property::Changed); }
-    [[nodiscard]] bool isChanged() const override { return properties_.contains(Property::Changed); }
-
-protected:
     int tick_count_;                                    // +72
     Properties properties_;                             // +76
     AABB bb_;                                           // +80

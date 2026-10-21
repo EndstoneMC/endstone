@@ -62,6 +62,6 @@ void CampfireBlockActor::_finishCooking(::BlockSource &region, int slot)
         region.postGameEvent(nullptr, GameEventRegistry::blockChange, position_, nullptr);
         cooking_item_[slot].setNull(std::nullopt);
         cooking_time_[slot] = 0;
-        VanillaBlockActor::setChanged();
+        setChanged();
     }
 }
