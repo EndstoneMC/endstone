@@ -232,6 +232,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Fixed the server crashing when a plugin enabled at STARTUP used online players, maps, scoreboards or commands.
 - Fixed `Player.skin` returning the skin a player joined with after they changed it.
 - Fixed cancelling `PlayerSkinChangeEvent` reverting the player to the skin they joined with instead of their current one.
+- Fixed NetherNet servers showing up in the LAN tab when `enable-lan-visibility` is `false` or the world's `LANBroadcast` flag is off.
 
 #### Type annotations
 

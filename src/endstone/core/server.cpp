@@ -210,7 +210,7 @@ void EndstoneServer::init(ServerInstance &server_instance)
 void EndstoneServer::fixServerAnnouncement()
 {
     const auto handler = getServer().getMinecraft()->getServerNetworkHandler();
-    if (!handler || !handler->server_name_.empty()) {
+    if (!handler || isUsingNetherNet() || !handler->server_name_.empty()) {
         return;
     }
 
