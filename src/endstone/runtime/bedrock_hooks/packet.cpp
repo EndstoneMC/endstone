@@ -14,6 +14,7 @@
 
 #include "bedrock/network/packet.h"
 
+#include <algorithm>
 #include <memory>
 #include <utility>
 #include <variant>
@@ -33,9 +34,11 @@
 #include "bedrock/network/packet/set_local_player_as_initialized_packet.h"
 #include "bedrock/network/packet/set_player_inventory_options_packet.h"
 #include "bedrock/network/server_network_handler.h"
+#include "bedrock/world/actor/player/player_list_entry.h"
 #include "bedrock/world/actor/provider/actor_offset.h"
 #include "bedrock/world/item/writable_book_item.h"
 #include "bedrock/world/level/dimension/dimension.h"
+#include "bedrock/world/level/level.h"
 #include "endstone/block/block.h"
 #include "endstone/color_format.h"
 #include "endstone/core/entity/components/flag_components.h"
@@ -277,7 +280,10 @@ void EndstonePacketHandler::handle(PlayerSkinPacket &packet)
             auto new_packet = MinecraftPackets::createPacket(MinecraftPacketIds::PlayerSkin);
             auto &new_pk = static_cast<PlayerSkinPacket &>(*new_packet);
             new_pk.payload.uuid = packet.payload.uuid;
-            new_pk.payload.skin = player->getSkin();
+            const auto &player_list = player->getLevel().getPlayerList();
+            const auto it = std::ranges::find(player_list, packet.payload.uuid,
+                                              [](const auto &pair) -> const mce::UUID & { return pair.first; });
+            new_pk.payload.skin = it != player_list.end() ? it->second.skin : player->getSkin();
             new_pk.payload.localized_new_skin_name = packet.payload.localized_old_skin_name;
             new_pk.payload.localized_old_skin_name = packet.payload.localized_new_skin_name;
             player->sendNetworkPacket(new_pk);

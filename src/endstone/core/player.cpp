@@ -835,7 +835,15 @@ std::string EndstonePlayer::getGameVersion() const
 
 Skin EndstonePlayer::getSkin() const
 {
-    return EndstoneSkin::fromMinecraft(getHandle().getSkin());
+    const auto &player = getHandle();
+    const auto *component = player.tryGetComponent<UserEntityIdentifierComponent>();
+    const auto &player_list = player.getLevel().getPlayerList();
+    const auto it = std::ranges::find(player_list, component->getClientUUID(),
+                                      [](const auto &pair) -> const mce::UUID & { return pair.first; });
+    if (it != player_list.end()) {
+        return EndstoneSkin::fromMinecraft(it->second.skin);
+    }
+    return EndstoneSkin::fromMinecraft(player.getSkin());
 }
 
 void EndstonePlayer::sendForm(FormVariant form)

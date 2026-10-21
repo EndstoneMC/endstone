@@ -227,6 +227,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Fixed setting `Player.scoreboard` sending nothing to the client.
 - Fixed vanilla commands such as `/summon` resolving the wrong entity type after `/reload` when a plugin command takes an `entity_type` argument.
 - Fixed the server crashing when a plugin enabled at STARTUP used online players, maps, scoreboards or commands.
+- Fixed `Player.skin` returning the skin a player joined with after they changed it.
+- Fixed cancelling `PlayerSkinChangeEvent` reverting the player to the skin they joined with instead of their current one.
 
 #### Type annotations
 
