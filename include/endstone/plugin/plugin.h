@@ -17,6 +17,7 @@
 #include <algorithm>
 #include <filesystem>
 #include <functional>
+#include <memory>
 #include <optional>
 #include <set>
 #include <string>
@@ -40,7 +41,7 @@ class EndstonePluginManager;
 /**
  * Represents a Plugin.
  */
-class Plugin : public CommandExecutor {
+class Plugin : public CommandExecutor, public std::enable_shared_from_this<Plugin> {
 public:
     Plugin() = default;
     Plugin(const Plugin &) = delete;
@@ -147,7 +148,7 @@ public:
     {
         getServer().getPluginManager().registerEvent(
             EventType::NAME, [func, &instance](Event &e) { (instance.*func)(static_cast<EventType &>(e)); }, priority,
-            *this, ignore_cancelled);
+            shared_from_this(), ignore_cancelled);
     }
 
     /**
@@ -162,7 +163,7 @@ public:
                        bool ignore_cancelled = false)
     {
         getServer().getPluginManager().registerEvent(
-            EventType::NAME, [func](Event &e) { func(static_cast<EventType &>(e)); }, priority, *this,
+            EventType::NAME, [func](Event &e) { func(static_cast<EventType &>(e)); }, priority, shared_from_this(),
             ignore_cancelled);
     }
 

@@ -15,7 +15,9 @@
 #include "endstone/core/level/dimension.h"
 
 #include <algorithm>
+#include <memory>
 #include <ranges>
+#include <utility>
 
 #include "bedrock/entity/components/actor_owner_component.h"
 #include "bedrock/world/level/block/bedrock_block_names.h"
@@ -38,6 +40,13 @@ constexpr std::uint64_t endstone_area_id_prefix = 0x656E6473746F6E65ULL;  // "en
 std::uint64_t chunkKey(int x, int z)
 {
     return static_cast<std::uint64_t>(static_cast<std::uint32_t>(x)) << 32 | static_cast<std::uint32_t>(z);
+}
+
+auto isTicketOf(const NotNull<Plugin> &plugin)
+{
+    return [&plugin](const std::weak_ptr<Plugin> &ticket) {
+        return ticket.lock() == plugin.get();
+    };
 }
 
 mce::UUID nextAreaId()
@@ -234,20 +243,20 @@ void EndstoneDimension::onStartLeaveGame()
     }
 }
 
-bool EndstoneDimension::addPluginChunkTicket(int x, int z, Plugin &plugin)
+bool EndstoneDimension::addPluginChunkTicket(int x, int z, const NotNull<Plugin> &plugin)
 {
     checkServerThread();
-    Preconditions::checkArgument(plugin.isEnabled(), "Plugin is not enabled.");
+    Preconditions::checkArgument(plugin->isEnabled(), "Plugin is not enabled.");
     auto it = chunk_tickets_.try_emplace(chunkKey(x, z)).first;
     auto &plugins = it->second.plugins;
-    if (std::ranges::find(plugins, &plugin) != plugins.end()) {
+    if (std::ranges::any_of(plugins, isTicketOf(plugin))) {
         return false;
     }
-    plugins.push_back(&plugin);
+    plugins.emplace_back(plugin.get());
     if (!syncTicket(it, x, z, true)) {
         it = chunk_tickets_.find(chunkKey(x, z));
         if (it != chunk_tickets_.end()) {
-            std::erase(it->second.plugins, &plugin);
+            std::erase_if(it->second.plugins, isTicketOf(plugin));
             syncTicket(it, x, z, true);
         }
         return false;
@@ -255,27 +264,27 @@ bool EndstoneDimension::addPluginChunkTicket(int x, int z, Plugin &plugin)
     return true;
 }
 
-bool EndstoneDimension::removePluginChunkTicket(int x, int z, Plugin &plugin)
+bool EndstoneDimension::removePluginChunkTicket(int x, int z, const NotNull<Plugin> &plugin)
 {
     checkServerThread();
     const auto it = chunk_tickets_.find(chunkKey(x, z));
     if (it == chunk_tickets_.end()) {
         return false;
     }
-    if (std::erase(it->second.plugins, &plugin) == 0) {
+    if (std::erase_if(it->second.plugins, isTicketOf(plugin)) == 0) {
         return false;
     }
     syncTicket(it, x, z, false);
     return true;
 }
 
-void EndstoneDimension::removePluginChunkTickets(Plugin &plugin)
+void EndstoneDimension::removePluginChunkTickets(const NotNull<Plugin> &plugin)
 {
     checkServerThread();
     std::vector<mce::UUID> released;
     for (auto it = chunk_tickets_.begin(); it != chunk_tickets_.end();) {
         auto &ticket = it->second;
-        if (std::erase(ticket.plugins, &plugin) == 0 || !ticket.plugins.empty() ||
+        if (std::erase_if(ticket.plugins, isTicketOf(plugin)) == 0 || !ticket.plugins.empty() ||
             (ticket.server_owned && !ticket.chunk)) {
             ++it;
             continue;
@@ -296,26 +305,34 @@ void EndstoneDimension::removePluginChunkTickets(Plugin &plugin)
     }
 }
 
-std::vector<Plugin *> EndstoneDimension::getPluginChunkTickets(int x, int z) const
+std::vector<NotNull<Plugin>> EndstoneDimension::getPluginChunkTickets(int x, int z) const
 {
     const auto it = chunk_tickets_.find(chunkKey(x, z));
     if (it == chunk_tickets_.end()) {
         return {};
     }
-    return it->second.plugins;
+    std::vector<NotNull<Plugin>> plugins;
+    for (const auto &weak : it->second.plugins) {
+        if (auto plugin = weak.lock()) {
+            plugins.emplace_back(std::move(plugin));
+        }
+    }
+    return plugins;
 }
 
-std::unordered_map<Plugin *, std::vector<NotNull<Chunk>>> EndstoneDimension::getPluginChunkTickets() const
+std::unordered_map<NotNull<Plugin>, std::vector<NotNull<Chunk>>> EndstoneDimension::getPluginChunkTickets() const
 {
-    std::unordered_map<Plugin *, std::vector<NotNull<Chunk>>> result;
+    std::unordered_map<NotNull<Plugin>, std::vector<NotNull<Chunk>>> result;
     for (const auto &[key, ticket] : chunk_tickets_) {
         if (ticket.plugins.empty()) {
             continue;
         }
         const auto x = static_cast<int>(static_cast<std::uint32_t>(key >> 32));
         const auto z = static_cast<int>(static_cast<std::uint32_t>(key));
-        for (auto *plugin : ticket.plugins) {
-            result[plugin].emplace_back(std::make_shared<EndstoneChunk>(dimension_, x, z));
+        for (const auto &weak : ticket.plugins) {
+            if (auto plugin = weak.lock()) {
+                result[std::move(plugin)].emplace_back(std::make_shared<EndstoneChunk>(dimension_, x, z));
+            }
         }
     }
     return result;

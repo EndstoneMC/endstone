@@ -14,9 +14,13 @@
 
 #include "endstone/core/plugin/cpp_plugin_loader.h"
 
+#include <cstdint>
 #include <filesystem>
 #include <format>
+#include <memory>
 #include <regex>
+#include <system_error>
+#include <utility>
 namespace fs = std::filesystem;
 
 #include "endstone/core/logger_factory.h"
@@ -39,6 +43,18 @@ namespace fs = std::filesystem;
 
 namespace endstone::core {
 
+namespace {
+struct PluginDeleter {
+    std::shared_ptr<void> module;
+
+    void operator()(const Plugin *plugin)
+    {
+        delete plugin;
+        module.reset();
+    }
+};
+}  // namespace
+
 CppPluginLoader::CppPluginLoader(Server &server) : PluginLoader(server)
 {
     // prepare the temp folder
@@ -55,13 +71,14 @@ CppPluginLoader::CppPluginLoader(Server &server) : PluginLoader(server)
         const auto &file = entry.path();
         for (const auto &pattern : CppPluginLoader::getPluginFileFilters()) {
             if (std::regex r(pattern); std::regex_search(file.string(), r)) {
-                remove(file);
+                std::error_code ec;
+                remove(file, ec);
             }
         }
     }
 }
 
-Plugin *CppPluginLoader::loadPlugin(std::string file)
+Nullable<Plugin> CppPluginLoader::loadPlugin(std::string file)
 {
     auto &logger = server_.getLogger();
     auto path = absolute(fs::path(file));
@@ -73,8 +90,10 @@ Plugin *CppPluginLoader::loadPlugin(std::string file)
     }
 
     // Make a shadow copy
+    static std::uint64_t loads = 0;
     auto hash = std::hash<std::string>{}(path.string());
-    fs::path temp_path = prefix_ / (std::format("{}-{:016x}", path.stem().string(), hash) + path.extension().string());
+    fs::path temp_path =
+        prefix_ / (std::format("{}-{:016x}-{}", path.stem().string(), hash, loads++) + path.extension().string());
     try {
         copy_file(path, temp_path, fs::copy_options::overwrite_existing);
     }
@@ -123,13 +142,20 @@ Plugin *CppPluginLoader::loadPlugin(std::string file)
         return nullptr;
     }
 
-    return plugins_
-        .emplace_back(plugin,
-                      [module](const Plugin *plugin) {
-                          delete plugin;
-                          CLOSE_LIBRARY(module);
-                      })
-        .get();
+    std::shared_ptr<void> module_ref(module, [temp_path](auto *handle) {
+        CLOSE_LIBRARY(handle);
+        std::error_code ec;
+        fs::remove(temp_path, ec);
+    });
+    return std::shared_ptr<Plugin>(plugin, PluginDeleter{std::move(module_ref)});
+}
+
+std::shared_ptr<void> CppPluginLoader::getModule(const NotNull<Plugin> &plugin)
+{
+    if (const auto *deleter = std::get_deleter<PluginDeleter>(plugin.get())) {
+        return deleter->module;
+    }
+    return nullptr;
 }
 
 std::vector<std::string> CppPluginLoader::getPluginFileFilters() const

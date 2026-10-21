@@ -41,8 +41,8 @@ protected:
     std::shared_ptr<Service> medium_priority_service_;
     std::shared_ptr<Service> low_priority_service_;
 
-    MockPlugin plugin1;
-    MockPlugin plugin2;
+    std::shared_ptr<MockPlugin> plugin1 = std::make_shared<MockPlugin>();
+    std::shared_ptr<MockPlugin> plugin2 = std::make_shared<MockPlugin>();
 
     void SetUp() override
     {

@@ -36,12 +36,12 @@ public:
     [[nodiscard]] bool hasPermission(std::string) const override { return false; }
     [[nodiscard]] bool hasPermission(const NotNull<Permission> &) const override { return false; }
 
-    NotNull<PermissionAttachment> addAttachment(Plugin &plugin, const std::string &, bool) override
+    NotNull<PermissionAttachment> addAttachment(const NotNull<Plugin> &plugin, const std::string &, bool) override
     {
         return addAttachment(plugin);
     }
 
-    NotNull<PermissionAttachment> addAttachment(Plugin &plugin) override
+    NotNull<PermissionAttachment> addAttachment(const NotNull<Plugin> &plugin) override
     {
         return std::make_shared<PermissionAttachment>(plugin, shared_from_this());
     }
@@ -115,7 +115,7 @@ TEST(PermissionSubscriptionTest, UnsubscribeRemovesPermissible)
 
 TEST(PermissionAttachmentTest, DoesNotKeepPermissibleAlive)
 {
-    testing::NiceMock<MockPlugin> plugin;
+    const auto plugin = std::make_shared<testing::NiceMock<MockPlugin>>();
     auto permissible = std::make_shared<FakePermissible>();
     const std::weak_ptr<Permissible> weak = permissible;
     const NotNull<PermissionAttachment> attachment = permissible->addAttachment(plugin);
@@ -128,7 +128,7 @@ TEST(PermissionAttachmentTest, DoesNotKeepPermissibleAlive)
 
 TEST(PermissionAttachmentTest, SurvivesItsPermissible)
 {
-    testing::NiceMock<MockPlugin> plugin;
+    const auto plugin = std::make_shared<testing::NiceMock<MockPlugin>>();
     auto permissible = std::make_shared<FakePermissible>();
     const NotNull<PermissionAttachment> attachment = permissible->addAttachment(plugin);
     attachment->setPermission("endstone.test", true);
@@ -140,7 +140,7 @@ TEST(PermissionAttachmentTest, SurvivesItsPermissible)
 
 TEST(PermissionAttachmentTest, StackAllocatedRemoveReturnsFalse)
 {
-    testing::NiceMock<MockPlugin> plugin;
+    const auto plugin = std::make_shared<testing::NiceMock<MockPlugin>>();
     const auto permissible = std::make_shared<FakePermissible>();
     PermissionAttachment attachment{plugin, permissible};
     EXPECT_FALSE(attachment.remove());
@@ -166,7 +166,7 @@ TEST(PermissionTest, UnregisteredPermissionHasNoPermissibles)
 
 TEST(PermissionAttachmentInfoTest, SnapshotSurvivesTheOwnerClearingIt)
 {
-    testing::NiceMock<MockPlugin> plugin;
+    const auto plugin = std::make_shared<testing::NiceMock<MockPlugin>>();
     const auto permissible = std::make_shared<FakePermissible>();
     const NotNull<PermissionAttachment> attachment = permissible->addAttachment(plugin);
     attachment->setPermission("endstone.test", true);

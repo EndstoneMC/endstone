@@ -18,6 +18,7 @@
 #include <functional>
 #include <memory>
 #include <optional>
+#include <set>
 #include <unordered_map>
 #include <unordered_set>
 #include <variant>
@@ -48,8 +49,9 @@ public:
     [[nodiscard]] bool isPermissionSet(const NotNull<Permission> &perm) const override;
     [[nodiscard]] bool hasPermission(std::string name) const override;
     [[nodiscard]] bool hasPermission(const NotNull<Permission> &perm) const override;
-    NotNull<PermissionAttachment> addAttachment(Plugin &plugin, const std::string &name, bool value) override;
-    NotNull<PermissionAttachment> addAttachment(Plugin &plugin) override;
+    NotNull<PermissionAttachment> addAttachment(const NotNull<Plugin> &plugin, const std::string &name,
+                                                bool value) override;
+    NotNull<PermissionAttachment> addAttachment(const NotNull<Plugin> &plugin) override;
     bool removeAttachment(const NotNull<PermissionAttachment> &attachment) override;
     void recalculatePermissions() override;
     [[nodiscard]] std::unordered_set<NotNull<PermissionAttachmentInfo>> getEffectivePermissions() const override;
@@ -77,8 +79,8 @@ public:
     [[nodiscard]] std::optional<Location> getRespawnLocation() const override;
     void setRespawnLocation(std::optional<Location> location) override;
     void sendBlockUpdate(const Location &location, const BlockActorState &block_actor_state) override;
-    void hideActor(Plugin &plugin, Actor &actor) override;
-    void showActor(Plugin &plugin, Actor &actor) override;
+    void hideActor(const NotNull<Plugin> &plugin, const NotNull<Actor> &actor) override;
+    void showActor(const NotNull<Plugin> &plugin, const NotNull<Actor> &actor) override;
     [[nodiscard]] bool canSee(const Actor &actor) const override;
     [[nodiscard]] bool canSee(const Player &player) const override;
     void sendBlockChange(const Location &location, const BlockData &block) override;
@@ -157,8 +159,8 @@ private:
     friend class ::ServerNetworkHandler;
     friend class EndstonePacketHandler;
 
-    void untrackAndHideActor(Actor &actor);
-    void trackAndShowActor(Actor &actor);
+    void untrackAndHideActor(const NotNull<Actor> &actor);
+    void trackAndShowActor(const NotNull<Actor> &actor);
     void sendPlayerListRemove(const ::Player &player) const;
     void sendPlayerListAdd(const ::Player &player) const;
 
@@ -184,7 +186,7 @@ private:
     std::optional<RecipeBookSettings> last_recipe_book_settings_;
     bool spawned_ = false;
     bool last_op_status_ = false;
-    std::unordered_map<std::int64_t, std::unordered_set<Plugin *>> hidden_actors_;
+    std::unordered_map<std::int64_t, std::set<std::weak_ptr<Plugin>, std::owner_less<>>> hidden_actors_;
     std::unordered_map<std::uint64_t, std::int64_t> hidden_player_runtime_ids_;
 };
 

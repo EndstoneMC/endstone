@@ -42,12 +42,12 @@ PythonPluginLoader::~PythonPluginLoader()
     obj_.release();
 }
 
-Plugin *PythonPluginLoader::loadPlugin(std::string file)
+Nullable<Plugin> PythonPluginLoader::loadPlugin(std::string file)
 {
     return pimpl()->loadPlugin(file);
 }
 
-std::vector<Plugin *> PythonPluginLoader::loadPlugins(std::string directory)
+std::vector<NotNull<Plugin>> PythonPluginLoader::loadPlugins(std::string directory)
 {
     return pimpl()->loadPlugins(directory);
 }
@@ -57,12 +57,12 @@ std::vector<std::string> PythonPluginLoader::getPluginFileFilters() const
     return pimpl()->getPluginFileFilters();
 }
 
-void PythonPluginLoader::enablePlugin(Plugin &plugin) const
+void PythonPluginLoader::enablePlugin(const NotNull<Plugin> &plugin) const
 {
     pimpl()->enablePlugin(plugin);
 }
 
-void PythonPluginLoader::disablePlugin(Plugin &plugin) const
+void PythonPluginLoader::disablePlugin(const NotNull<Plugin> &plugin) const
 {
     pimpl()->disablePlugin(plugin);
 }

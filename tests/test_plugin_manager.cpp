@@ -12,6 +12,8 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
+#include <memory>
+
 #include <gmock/gmock.h>
 #include <gtest/gtest.h>
 
@@ -28,11 +30,11 @@ protected:
     void SetUp() override
     {
         ON_CALL(server_, isPrimaryThread()).WillByDefault(testing::Return(true));
-        plugin_.setEnabled(true);
+        plugin_->setEnabled(true);
     }
 
     testing::NiceMock<MockServer> server_;
-    MockPlugin plugin_;
+    std::shared_ptr<MockPlugin> plugin_ = std::make_shared<MockPlugin>();
     EndstonePluginManager manager_{server_};
 };
 

@@ -79,12 +79,12 @@ bool EndstoneChunk::unload()
     return getDimension()->unloadChunk(x_, z_);
 }
 
-bool EndstoneChunk::addPluginChunkTicket(Plugin &plugin)
+bool EndstoneChunk::addPluginChunkTicket(const NotNull<Plugin> &plugin)
 {
     return getDimension()->addPluginChunkTicket(x_, z_, plugin);
 }
 
-bool EndstoneChunk::removePluginChunkTicket(Plugin &plugin)
+bool EndstoneChunk::removePluginChunkTicket(const NotNull<Plugin> &plugin)
 {
     return getDimension()->removePluginChunkTicket(x_, z_, plugin);
 }
@@ -106,7 +106,7 @@ std::vector<NotNull<BlockState>> EndstoneChunk::getBlockActors() const
     return block_actors;
 }
 
-std::vector<Plugin *> EndstoneChunk::getPluginChunkTickets() const
+std::vector<NotNull<Plugin>> EndstoneChunk::getPluginChunkTickets() const
 {
     return getDimension()->getPluginChunkTickets(x_, z_);
 }

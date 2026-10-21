@@ -478,7 +478,7 @@ public:
      * @param service_id the id of the service, found at https://bstats.org/what-is-my-plugin-id
      * @return the metrics backend
      */
-    [[nodiscard]] virtual NotNull<MetricsBase> createMetrics(Plugin &plugin, int service_id) = 0;
+    [[nodiscard]] virtual NotNull<MetricsBase> createMetrics(const NotNull<Plugin> &plugin, int service_id) = 0;
 
     /**
      * Get the list of crafting recipes.

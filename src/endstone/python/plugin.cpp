@@ -44,10 +44,10 @@ class PyPluginLoader : public PluginLoader, public py::trampoline_self_life_supp
 public:
     using PluginLoader::PluginLoader;
 
-    [[nodiscard]] Plugin *loadPlugin(std::string file) override
+    [[nodiscard]] Nullable<Plugin> loadPlugin(std::string file) override
     {
         try {
-            PYBIND11_OVERRIDE_PURE_NAME(Plugin *, PluginLoader, "load_plugin", loadPlugin, file);
+            PYBIND11_OVERRIDE_PURE_NAME(Nullable<Plugin>, PluginLoader, "load_plugin", loadPlugin, file);
         }
         catch (std::exception &e) {
             server_.getLogger().error("Error occurred when trying to load plugins in '{}': {}", file, e.what());
@@ -55,10 +55,11 @@ public:
         }
     }
 
-    std::vector<Plugin *> loadPlugins(std::string directory) override
+    std::vector<NotNull<Plugin>> loadPlugins(std::string directory) override
     {
         try {
-            PYBIND11_OVERRIDE_PURE_NAME(std::vector<Plugin *>, PluginLoader, "load_plugins", loadPlugins, directory);
+            PYBIND11_OVERRIDE_PURE_NAME(std::vector<NotNull<Plugin>>, PluginLoader, "load_plugins", loadPlugins,
+                                        directory);
         }
         catch (std::exception &e) {
             server_.getLogger().error("Error occurred when trying to load plugins in '{}': {}", directory, e.what());
@@ -68,14 +69,14 @@ public:
 
     [[nodiscard]] std::vector<std::string> getPluginFileFilters() const override { return {"\\.whl"}; }
 
-    void enablePlugin(Plugin &plugin) const override
+    void enablePlugin(const NotNull<Plugin> &plugin) const override
     {
-        PYBIND11_OVERRIDE_NAME(void, PluginLoader, "enable_plugin", enablePlugin, std::ref(plugin));
+        PYBIND11_OVERRIDE_NAME(void, PluginLoader, "enable_plugin", enablePlugin, plugin);
     }
 
-    void disablePlugin(Plugin &plugin) const override
+    void disablePlugin(const NotNull<Plugin> &plugin) const override
     {
-        PYBIND11_OVERRIDE_NAME(void, PluginLoader, "disable_plugin", disablePlugin, std::ref(plugin));
+        PYBIND11_OVERRIDE_NAME(void, PluginLoader, "disable_plugin", disablePlugin, plugin);
     }
 };
 
@@ -202,7 +203,7 @@ void init_plugin(py::module &m)
 
     plugin_loader  //
         .def(py::init<Server &>(), py::arg("server"))
-        .def("load_plugin", &PluginLoader::loadPlugin, py::arg("file"), py::return_value_policy::reference, R"doc(
+        .def("load_plugin", &PluginLoader::loadPlugin, py::arg("file"), R"doc(
     Loads the plugin contained in the specified file.
 
     Args:
@@ -211,8 +212,7 @@ void init_plugin(py::module &m)
     Returns:
         `Plugin` that was contained in the specified file, or `None` if unsuccessful.
 )doc")
-        .def("load_plugins", &PluginLoader::loadPlugins, py::arg("directory"),
-             py::return_value_policy::reference_internal, R"doc(
+        .def("load_plugins", &PluginLoader::loadPlugins, py::arg("directory"), R"doc(
     Loads the plugin contained within the specified directory.
 
     Args:
@@ -244,7 +244,7 @@ void init_plugin(py::module &m)
 
     py::classh<PluginManager>(m, "PluginManager",
                               "Represents a plugin manager that handles all plugins from the `Server`.")
-        .def("get_plugin", &PluginManager::getPlugin, py::arg("name"), py::return_value_policy::reference, R"doc(
+        .def("get_plugin", &PluginManager::getPlugin, py::arg("name"), R"doc(
     Checks if the given plugin is loaded and returns it when applicable.
 
     Please note that the name of the plugin is case-sensitive.
@@ -268,7 +268,8 @@ void init_plugin(py::module &m)
     Returns:
         `True` if the plugin is enabled, otherwise `False`.
 )doc")
-        .def("is_plugin_enabled", py::overload_cast<Plugin *>(&PluginManager::isPluginEnabled, py::const_),
+        .def("is_plugin_enabled",
+             py::overload_cast<const Nullable<Plugin> &>(&PluginManager::isPluginEnabled, py::const_),
              py::arg("plugin"), R"doc(
     Checks if the given plugin is enabled or not.
 
@@ -278,7 +279,7 @@ void init_plugin(py::module &m)
     Returns:
         `True` if the plugin is enabled, otherwise `False`.
 )doc")
-        .def("load_plugin", &PluginManager::loadPlugin, py::arg("file"), py::return_value_policy::reference, R"doc(
+        .def("load_plugin", &PluginManager::loadPlugin, py::arg("file"), R"doc(
     Loads the plugin in the specified file.
 
     File must be valid according to the current enabled `Plugin` interfaces.
@@ -290,7 +291,7 @@ void init_plugin(py::module &m)
         The `Plugin` loaded, or `None` if it was invalid.
 )doc")
         .def("load_plugins", py::overload_cast<std::string>(&PluginManager::loadPlugins), py::arg("directory"),
-             py::return_value_policy::reference_internal, R"doc(
+             R"doc(
     Loads the plugin contained within the specified directory.
 
     Args:
@@ -300,7 +301,7 @@ void init_plugin(py::module &m)
         A list of all plugins loaded.
 )doc")
         .def("load_plugins", py::overload_cast<std::vector<std::string>>(&PluginManager::loadPlugins), py::arg("files"),
-             py::return_value_policy::reference_internal, R"doc(
+             R"doc(
     Loads the plugins in the list of the files.
 
     Args:
@@ -337,7 +338,7 @@ void init_plugin(py::module &m)
         .def(
             "register_event",
             [](PluginManager &self, std::string event, const std::function<void(Event *)> &executor,
-               EventPriority priority, Plugin &plugin, bool ignore_cancelled) {
+               EventPriority priority, const NotNull<Plugin> &plugin, bool ignore_cancelled) {
                 self.registerEvent(
                     std::move(event), [executor](Event &e) { executor(&e); }, priority, plugin, ignore_cancelled);
             },
@@ -461,7 +462,8 @@ void init_plugin(py::module &m)
         .def_property("executor", &PluginCommand::getExecutor,
                       py::cpp_function(&PluginCommand::setExecutor, py::keep_alive<1, 2>()),
                       py::return_value_policy::reference, "The `CommandExecutor` to run when parsing this command.")
-        .def_property_readonly("plugin", &PluginCommand::getPlugin, "The owner of this `PluginCommand`.");
+        .def_property_readonly("plugin", &PluginCommand::getPlugin,
+                               "The owner of this `PluginCommand`, or `None` if the plugin has been unloaded.");
 
     py::native_enum<ServicePriority>(m, "ServicePriority", "enum.IntEnum",
                                      "Represents various priorities of a provider.")

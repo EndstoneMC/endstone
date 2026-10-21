@@ -24,6 +24,7 @@
 #include "endstone/logger.h"
 #include "endstone/plugin/plugin.h"
 #include "endstone/server.h"
+#include "endstone/util/pointers.h"
 
 namespace endstone {
 
@@ -44,7 +45,7 @@ public:
      * @param file File to attempt to load
      * @return Plugin that was contained in the specified file, or nullptr if unsuccessful
      */
-    [[nodiscard]] virtual Plugin *loadPlugin(std::string file) = 0;
+    [[nodiscard]] virtual Nullable<Plugin> loadPlugin(std::string file) = 0;
 
     /**
      * Loads the plugin contained within the specified directory.
@@ -52,7 +53,7 @@ public:
      * @param directory Directory to check for plugins
      * @return A list of all plugins loaded
      */
-    [[nodiscard]] virtual std::vector<Plugin *> loadPlugins(std::string directory)
+    [[nodiscard]] virtual std::vector<NotNull<Plugin>> loadPlugins(std::string directory)
     {
         auto &logger = server_.getLogger();
 
@@ -69,7 +70,7 @@ public:
             return {};
         }
 
-        std::vector<Plugin *> loaded_plugins;
+        std::vector<NotNull<Plugin>> loaded_plugins;
 
         for (const auto &entry : std::filesystem::directory_iterator(dir)) {
             if (!is_regular_file(entry.status())) {
@@ -79,8 +80,8 @@ public:
             const auto &file = entry.path();
             for (const auto &pattern : getPluginFileFilters()) {
                 if (std::regex r(pattern); std::regex_search(file.string(), r)) {
-                    if (auto *plugin = loadPlugin(file.string())) {
-                        loaded_plugins.push_back(plugin);
+                    if (auto plugin = loadPlugin(file.string())) {
+                        loaded_plugins.emplace_back(plugin);
                     }
                 }
             }
@@ -103,16 +104,16 @@ public:
      *
      * @param plugin Plugin to enable
      */
-    virtual void enablePlugin(Plugin &plugin) const
+    virtual void enablePlugin(const NotNull<Plugin> &plugin) const
     {
-        if (!plugin.isEnabled()) {
-            plugin.getLogger().info("Enabling {}", plugin.getDescription().getFullName());
+        if (!plugin->isEnabled()) {
+            plugin->getLogger().info("Enabling {}", plugin->getDescription().getFullName());
             try {
-                plugin.setEnabled(true);
+                plugin->setEnabled(true);
             }
             catch (std::exception &e) {
-                plugin.getLogger().error("Error occurred when enabling {}.", plugin.getDescription().getFullName());
-                plugin.getLogger().error(e.what());
+                plugin->getLogger().error("Error occurred when enabling {}.", plugin->getDescription().getFullName());
+                plugin->getLogger().error(e.what());
                 return;
             }
             const auto event = std::make_shared<PluginEnableEvent>(plugin);
@@ -127,16 +128,16 @@ public:
      *
      * @param plugin Plugin to disable
      */
-    virtual void disablePlugin(Plugin &plugin) const
+    virtual void disablePlugin(const NotNull<Plugin> &plugin) const
     {
-        if (plugin.isEnabled()) {
-            plugin.getLogger().info("Disabling {}", plugin.getDescription().getFullName());
+        if (plugin->isEnabled()) {
+            plugin->getLogger().info("Disabling {}", plugin->getDescription().getFullName());
             try {
-                plugin.setEnabled(false);
+                plugin->setEnabled(false);
             }
             catch (std::exception &e) {
-                plugin.getLogger().error("Error occurred when disabling {}.", plugin.getDescription().getFullName());
-                plugin.getLogger().error(e.what());
+                plugin->getLogger().error("Error occurred when disabling {}.", plugin->getDescription().getFullName());
+                plugin->getLogger().error(e.what());
                 return;
             }
             const auto event = std::make_shared<PluginDisableEvent>(plugin);

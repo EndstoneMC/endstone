@@ -219,7 +219,7 @@ public:
      * @param plugin Plugin taking the ticket
      * @return `true` if a plugin ticket was added, `false` if the plugin already holds one for this chunk
      */
-    virtual bool addPluginChunkTicket(int x, int z, Plugin &plugin) = 0;
+    virtual bool addPluginChunkTicket(int x, int z, const NotNull<Plugin> &plugin) = 0;
 
     /**
      * Removes the given plugin's ticket for the Chunk at the given coordinates.
@@ -229,14 +229,14 @@ public:
      * @param plugin Plugin whose ticket to remove
      * @return `true` if a plugin ticket was removed, `false` if the plugin holds none for this chunk
      */
-    virtual bool removePluginChunkTicket(int x, int z, Plugin &plugin) = 0;
+    virtual bool removePluginChunkTicket(int x, int z, const NotNull<Plugin> &plugin) = 0;
 
     /**
      * Removes every ticket the given plugin holds in this dimension.
      *
      * @param plugin Plugin whose tickets to remove
      */
-    virtual void removePluginChunkTickets(Plugin &plugin) = 0;
+    virtual void removePluginChunkTickets(const NotNull<Plugin> &plugin) = 0;
 
     /**
      * Gets which plugins hold a ticket for the Chunk at the given coordinates.
@@ -247,7 +247,7 @@ public:
      * @param z Z-coordinate of the chunk
      * @return Plugins holding a ticket for the chunk
      */
-    [[nodiscard]] virtual std::vector<Plugin *> getPluginChunkTickets(int x, int z) const = 0;
+    [[nodiscard]] virtual std::vector<NotNull<Plugin>> getPluginChunkTickets(int x, int z) const = 0;
 
     /**
      * Gets which plugins hold tickets for which Chunks in this dimension.
@@ -257,7 +257,8 @@ public:
      *
      * @return Chunks each plugin holds a ticket for
      */
-    [[nodiscard]] virtual std::unordered_map<Plugin *, std::vector<NotNull<Chunk>>> getPluginChunkTickets() const = 0;
+    [[nodiscard]] virtual std::unordered_map<NotNull<Plugin>, std::vector<NotNull<Chunk>>> getPluginChunkTickets()
+        const = 0;
 
     /**
      * Drops an item at the specified Location.

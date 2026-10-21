@@ -14,6 +14,7 @@
 
 #pragma once
 
+#include <filesystem>
 #include <memory>
 #include <string>
 #include <vector>
@@ -25,12 +26,12 @@ namespace endstone::core {
 class CppPluginLoader : public PluginLoader {
 public:
     explicit CppPluginLoader(Server &server);
-    [[nodiscard]] Plugin *loadPlugin(std::string file) override;
+    [[nodiscard]] Nullable<Plugin> loadPlugin(std::string file) override;
     [[nodiscard]] std::vector<std::string> getPluginFileFilters() const override;
+    [[nodiscard]] static std::shared_ptr<void> getModule(const NotNull<Plugin> &plugin);
 
 private:
     std::filesystem::path prefix_;
-    std::vector<std::unique_ptr<Plugin, std::function<void(Plugin *)>>> plugins_;
 };
 
 }  // namespace endstone::core

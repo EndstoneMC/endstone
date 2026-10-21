@@ -27,11 +27,11 @@ public:
     explicit PythonPluginLoader(Server &server);
     ~PythonPluginLoader() override;
 
-    [[nodiscard]] Plugin *loadPlugin(std::string file) override;
-    [[nodiscard]] std::vector<Plugin *> loadPlugins(std::string directory) override;
+    [[nodiscard]] Nullable<Plugin> loadPlugin(std::string file) override;
+    [[nodiscard]] std::vector<NotNull<Plugin>> loadPlugins(std::string directory) override;
     [[nodiscard]] std::vector<std::string> getPluginFileFilters() const override;
-    void enablePlugin(Plugin &plugin) const override;
-    void disablePlugin(Plugin &plugin) const override;
+    void enablePlugin(const NotNull<Plugin> &plugin) const override;
+    void disablePlugin(const NotNull<Plugin> &plugin) const override;
 
 private:
     [[nodiscard]] PluginLoader *pimpl() const;

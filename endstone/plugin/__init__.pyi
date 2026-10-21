@@ -37,7 +37,7 @@ class PluginLoader:
     Represents a plugin loader, which handles direct access to specific types of plugins.
     """
     def __init__(self, server: Server) -> None: ...
-    def load_plugin(self, file: str) -> Plugin:
+    def load_plugin(self, file: str) -> Plugin | None:
         """
         Loads the plugin contained in the specified file.
 
@@ -104,9 +104,9 @@ class PluginCommand(Command):
     @executor.setter
     def executor(self, arg1: CommandExecutor | None) -> None: ...
     @property
-    def plugin(self) -> Plugin:
+    def plugin(self) -> Plugin | None:
         """
-        The owner of this `PluginCommand`.
+        The owner of this `PluginCommand`, or `None` if the plugin has been unloaded.
         """
 
 class PluginDescription:
@@ -397,7 +397,7 @@ class PluginManager:
     """
     Represents a plugin manager that handles all plugins from the `Server`.
     """
-    def get_plugin(self, name: str) -> Plugin:
+    def get_plugin(self, name: str) -> Plugin | None:
         """
         Checks if the given plugin is loaded and returns it when applicable.
 
@@ -431,7 +431,7 @@ class PluginManager:
         """
 
     @typing.overload
-    def is_plugin_enabled(self, plugin: Plugin) -> bool:
+    def is_plugin_enabled(self, plugin: Plugin | None) -> bool:
         """
         Checks if the given plugin is enabled or not.
 
@@ -442,7 +442,7 @@ class PluginManager:
             `True` if the plugin is enabled, otherwise `False`.
         """
 
-    def load_plugin(self, file: str) -> Plugin:
+    def load_plugin(self, file: str) -> Plugin | None:
         """
         Loads the plugin in the specified file.
 

@@ -34,17 +34,17 @@ using PermissionRemovedExecutor = std::function<void(const NotNull<PermissionAtt
  */
 class PermissionAttachment : public std::enable_shared_from_this<PermissionAttachment> {
 public:
-    PermissionAttachment(Plugin &plugin, const NotNull<Permissible> &permissible)
-        : permissible_(permissible.get()), plugin_(plugin)
+    PermissionAttachment(const NotNull<Plugin> &plugin, const NotNull<Permissible> &permissible)
+        : permissible_(permissible.get()), plugin_(plugin.get())
     {
     }
 
     /**
      * Gets the plugin responsible for this attachment.
      *
-     * @return Plugin responsible for this permission attachment
+     * @return Plugin responsible for this permission attachment, or a null handle if the plugin has been unloaded
      */
-    [[nodiscard]] Plugin &getPlugin() const { return plugin_; }
+    [[nodiscard]] Nullable<Plugin> getPlugin() const { return plugin_.lock(); }
 
     /**
      * Sets an executor to be called for when this attachment is removed from a Permissible. May be empty.
@@ -142,7 +142,7 @@ private:
     PermissionRemovedExecutor removed_;
     std::unordered_map<std::string, bool> permissions_;
     std::weak_ptr<Permissible> permissible_;
-    Plugin &plugin_;
+    std::weak_ptr<Plugin> plugin_;
 };
 
 }  // namespace endstone

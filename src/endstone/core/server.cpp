@@ -502,23 +502,23 @@ void EndstoneServer::enablePlugins(PluginLoadOrder type)
     }
 
     auto plugins = plugin_manager_->getPlugins();
-    for (auto *plugin : plugins) {
+    for (const auto &plugin : plugins) {
         if (!plugin->isEnabled() && plugin->getDescription().getLoad() == type) {
-            enablePlugin(*plugin);
+            enablePlugin(plugin);
         }
     }
 }
 
-void EndstoneServer::enablePlugin(Plugin &plugin)
+void EndstoneServer::enablePlugin(const NotNull<Plugin> &plugin)
 {
-    auto perms = plugin.getDescription().getPermissions();
+    auto perms = plugin->getDescription().getPermissions();
     for (const auto &perm : perms) {
         if (!plugin_manager_->getPermission(perm.getName())) {
             plugin_manager_->addPermission(std::make_shared<Permission>(perm));
         }
         else {
             getLogger().error("Plugin {} tried to register permission '{}' that was already registered.",
-                              plugin.getDescription().getFullName(), perm.getName());
+                              plugin->getDescription().getFullName(), perm.getName());
         }
     }
     plugin_manager_->dirtyPermissibles(PermissionLevel::Default);
@@ -537,12 +537,12 @@ Scheduler &EndstoneServer::getScheduler() const
     return *scheduler_;
 }
 
-NotNull<MetricsBase> EndstoneServer::createMetrics(Plugin &plugin, int service_id)
+NotNull<MetricsBase> EndstoneServer::createMetrics(const NotNull<Plugin> &plugin, int service_id)
 {
     auto it = plugin_metrics_.find(service_id);
     if (it == plugin_metrics_.end()) {
         plugin_metrics_.emplace(service_id,
-                                std::make_shared<Metrics>(*this, "endstone.metrics", "Metrics", &plugin, service_id));
+                                std::make_shared<Metrics>(*this, "endstone.metrics", "Metrics", plugin, service_id));
     }
     return plugin_metrics_.at(service_id);
 }

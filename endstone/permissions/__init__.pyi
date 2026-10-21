@@ -232,9 +232,9 @@ class PermissionAttachment:
     """
     def __init__(self, plugin: Plugin, permissible: Permissible) -> None: ...
     @property
-    def plugin(self) -> Plugin:
+    def plugin(self) -> Plugin | None:
         """
-        The plugin responsible for this permission attachment.
+        The plugin responsible for this permission attachment, or `None` if the plugin has been unloaded.
         """
 
     def remove(self) -> bool:

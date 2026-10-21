@@ -28,13 +28,14 @@ bool EndstoneAsyncTask::isSync() const
 
 void EndstoneAsyncTask::run()
 {
+    const auto owner = getOwner();
     auto thread_id = std::this_thread::get_id();
     {
         std::lock_guard lock{mutex_};
-        if (isCancelled()) {
+        if (isCancelled() || !owner) {
             return;
         }
-        workers_.push_back({thread_id, getTaskId(), getOwner()});
+        workers_.push_back({thread_id, getTaskId(), owner});
     }
 
     std::optional<std::string> exception;
@@ -43,11 +44,12 @@ void EndstoneAsyncTask::run()
     }
     catch (std::exception &e) {
         exception = e.what();
-        getOwner()->getLogger().warning("Plugin {} generated an exception while executing task {}: {}",
-                                        getOwner()->getName(), getTaskId(), e.what());
+        owner->getLogger().warning("Plugin {} generated an exception while executing task {}: {}", owner->getName(),
+                                   getTaskId(), e.what());
     }
 
     bool finished = false;
+    std::function<void()> task;
     {
         std::lock_guard lock{mutex_};
         bool removed = false;
@@ -63,16 +65,19 @@ void EndstoneAsyncTask::run()
         if (!removed) {
             std::ostringstream tid;
             tid << thread_id;
-            getOwner()->getLogger().error(std::format("Unable to remove worker {} on task {} for {}", tid.str(),
-                                                      getTaskId(), getOwner()->getDescription().getFullName()));
+            owner->getLogger().error(std::format("Unable to remove worker {} on task {} for {}", tid.str(), getTaskId(),
+                                                 owner->getDescription().getFullName()));
             if (exception.has_value()) {
-                getOwner()->getLogger().error(*exception);
+                owner->getLogger().error(*exception);
             }
         }
 
         // The last worker is responsible for removing ourselves from the scheduler task list once the
         // task is done (one-shot) or has been cancelled while still running.
         finished = workers_.empty() && (getPeriod() == 0 || isCancelled());
+        if (finished) {
+            task = takeTask();
+        }
     }
 
     // Remove ourselves outside the lock: removeTask() takes the scheduler's tasks_mtx_, which must
@@ -84,12 +89,16 @@ void EndstoneAsyncTask::run()
 
 void EndstoneAsyncTask::doCancel()
 {
-    EndstoneTask::doCancel();
     bool idle;
+    std::function<void()> task;
     {
         std::lock_guard lock{mutex_};
+        EndstoneTask::doCancel();
         // Do not remove the task unless we are idle; a running worker will remove it when it finishes.
         idle = workers_.empty();
+        if (idle) {
+            task = takeTask();
+        }
     }
     // Remove ourselves outside the lock: removeTask() takes the scheduler's tasks_mtx_, which must
     // never be held together with our own mutex_ (the cancel path takes them in the opposite order).

@@ -23,7 +23,7 @@ namespace endstone::core {
 struct EndstoneWorker {
     std::thread::id thread_id;
     TaskId task_id;
-    Plugin *owner_;
+    Nullable<Plugin> owner_;
 };
 
 }  // namespace endstone::core

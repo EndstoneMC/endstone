@@ -99,13 +99,13 @@ bool EndstoneProxiedCommandSender::hasPermission(const NotNull<Permission> &perm
     return getCaller()->hasPermission(perm);
 }
 
-NotNull<PermissionAttachment> EndstoneProxiedCommandSender::addAttachment(Plugin &plugin, const std::string &name,
-                                                                         bool value)
+NotNull<PermissionAttachment> EndstoneProxiedCommandSender::addAttachment(const NotNull<Plugin> &plugin,
+                                                                          const std::string &name, bool value)
 {
     return getCaller()->addAttachment(plugin, name, value);
 }
 
-NotNull<PermissionAttachment> EndstoneProxiedCommandSender::addAttachment(Plugin &plugin)
+NotNull<PermissionAttachment> EndstoneProxiedCommandSender::addAttachment(const NotNull<Plugin> &plugin)
 {
     return getCaller()->addAttachment(plugin);
 }

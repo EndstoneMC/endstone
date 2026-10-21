@@ -19,18 +19,18 @@
 
 namespace endstone::core {
 
-void EndstoneServiceManager::registerService(std::string name, NotNull<Service> provider, const Plugin &plugin,
+void EndstoneServiceManager::registerService(std::string name, NotNull<Service> provider, const NotNull<Plugin> &plugin,
                                              ServicePriority priority)
 {
     std::lock_guard lock(mutex_);
     auto &registered = providers_[name];
 
-    RegisteredServiceProvider new_provider(name, std::move(provider), priority, const_cast<Plugin &>(plugin));
+    RegisteredServiceProvider new_provider(name, std::move(provider), priority, plugin);
     const auto position = std::ranges::lower_bound(registered, new_provider, std::greater{});
     registered.insert(position, std::move(new_provider));
 }
 
-void EndstoneServiceManager::unregisterAll(const Plugin &plugin)
+void EndstoneServiceManager::unregisterAll(const NotNull<Plugin> &plugin)
 {
     std::lock_guard lock(mutex_);
 
@@ -38,9 +38,8 @@ void EndstoneServiceManager::unregisterAll(const Plugin &plugin)
         auto &services = it->second;
 
         // Remove entries from the current plugin
-        std::erase_if(services, [&plugin](const RegisteredServiceProvider &provider) {
-            return &provider.getPlugin() == &plugin;
-        });
+        std::erase_if(services,
+                      [&plugin](const RegisteredServiceProvider &provider) { return provider.getPlugin() == plugin; });
 
         if (services.empty()) {
             it = providers_.erase(it);

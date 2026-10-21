@@ -45,23 +45,23 @@ public:
 
     /** Plugin loading */
     void registerLoader(std::unique_ptr<PluginLoader> loader) override;
-    [[nodiscard]] Plugin *getPlugin(const std::string &name) const override;
-    [[nodiscard]] std::vector<Plugin *> getPlugins() const override;
+    [[nodiscard]] Nullable<Plugin> getPlugin(const std::string &name) const override;
+    [[nodiscard]] std::vector<NotNull<Plugin>> getPlugins() const override;
     [[nodiscard]] bool isPluginEnabled(const std::string &name) const override;
-    bool isPluginEnabled(Plugin *plugin) const override;
-    Plugin *loadPlugin(std::string file) override;
-    std::vector<Plugin *> loadPlugins(std::string directory) override;
-    std::vector<Plugin *> loadPlugins(std::vector<std::string> files) override;
-    void enablePlugin(Plugin &plugin) const override;
+    bool isPluginEnabled(const Nullable<Plugin> &plugin) const override;
+    Nullable<Plugin> loadPlugin(std::string file) override;
+    std::vector<NotNull<Plugin>> loadPlugins(std::string directory) override;
+    std::vector<NotNull<Plugin>> loadPlugins(std::vector<std::string> files) override;
+    void enablePlugin(const NotNull<Plugin> &plugin) const override;
     void enablePlugins() const override;
-    void disablePlugin(Plugin &plugin) override;
+    void disablePlugin(const NotNull<Plugin> &plugin) override;
     void disablePlugins() override;
     void clearPlugins() override;
 
     /** Event system */
     void callEvent(Event &event) override;
-    void registerEvent(std::string event, std::function<void(Event &)> executor, EventPriority priority, Plugin &plugin,
-                       bool ignore_cancelled) override;
+    void registerEvent(std::string event, std::function<void(Event &)> executor, EventPriority priority,
+                       const NotNull<Plugin> &plugin, bool ignore_cancelled) override;
     [[nodiscard]] bool isEventRegistered(std::string_view event) const;
 
     template <typename EventType>
@@ -104,8 +104,8 @@ private:
         }
     };
 
-    Plugin *loadPlugin(Plugin &plugin);
-    std::vector<Plugin *> loadPlugins(std::vector<Plugin *>);
+    Nullable<Plugin> loadPlugin(const NotNull<Plugin> &plugin);
+    std::vector<NotNull<Plugin>> loadPlugins(const std::vector<NotNull<Plugin>> &candidates);
     void initPlugin(Plugin &plugin, PluginLoader &loader, const std::filesystem::path &base_folder);
     using PermissibleSubscriptions = std::set<std::weak_ptr<Permissible>, std::owner_less<std::weak_ptr<Permissible>>>;
     void calculatePermissionDefault(const NotNull<Permission> &perm);
@@ -113,8 +113,8 @@ private:
     [[nodiscard]] PluginLoader *resolvePluginLoader(const std::string &file) const;
     Server &server_;
     std::vector<std::unique_ptr<PluginLoader>> plugin_loaders_;
-    std::vector<Plugin *> plugins_;
-    std::unordered_map<std::string, Plugin *> lookup_names_;
+    std::vector<NotNull<Plugin>> plugins_;
+    std::unordered_map<std::string, NotNull<Plugin>> lookup_names_;
     std::unordered_map<std::string, HandlerList, StringHash, std::equal_to<>> event_handlers_;
     std::unordered_map<std::string, NotNull<Permission>> permissions_;
     std::unordered_map<PermissionLevel, linked_hash_set<NotNull<Permission>>> default_perms_;

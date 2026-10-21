@@ -2912,9 +2912,9 @@ class PluginEnableEvent(ServerEvent):
     Called when a plugin is enabled.
     """
     @property
-    def plugin(self) -> Plugin:
+    def plugin(self) -> Plugin | None:
         """
-        The `Plugin` involved in this event.
+        The `Plugin` involved in this event, or `None` if the plugin has been unloaded.
         """
 
 class PluginDisableEvent(ServerEvent):
@@ -2922,9 +2922,9 @@ class PluginDisableEvent(ServerEvent):
     Called when a plugin is disabled.
     """
     @property
-    def plugin(self) -> Plugin:
+    def plugin(self) -> Plugin | None:
         """
-        The `Plugin` involved in this event.
+        The `Plugin` involved in this event, or `None` if the plugin has been unloaded.
         """
 
 class ScriptMessageEvent(ServerEvent, Cancellable):

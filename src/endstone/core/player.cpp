@@ -133,12 +133,13 @@ bool EndstonePlayer::hasPermission(const NotNull<Permission> &perm) const
     return perm_->hasPermission(perm);
 }
 
-NotNull<PermissionAttachment> EndstonePlayer::addAttachment(Plugin &plugin, const std::string &name, bool value)
+NotNull<PermissionAttachment> EndstonePlayer::addAttachment(const NotNull<Plugin> &plugin, const std::string &name,
+                                                            bool value)
 {
     return perm_->addAttachment(plugin, name, value);
 }
 
-NotNull<PermissionAttachment> EndstonePlayer::addAttachment(Plugin &plugin)
+NotNull<PermissionAttachment> EndstonePlayer::addAttachment(const NotNull<Plugin> &plugin)
 {
     return perm_->addAttachment(plugin);
 }
@@ -341,21 +342,21 @@ void EndstonePlayer::sendBlockUpdate(const Location &location, const BlockActorS
     getHandle().sendNetworkPacket(*packet);
 }
 
-void EndstonePlayer::hideActor(Plugin &plugin, Actor &actor)
+void EndstonePlayer::hideActor(const NotNull<Plugin> &plugin, const NotNull<Actor> &actor)
 {
-    Preconditions::checkArgument(plugin.isEnabled(), "Plugin ({}) attempted to hide an actor while disabled",
-                                 plugin.getName());
-    if (actor.getId() == getId()) {
+    Preconditions::checkArgument(plugin->isEnabled(), "Plugin ({}) attempted to hide an actor while disabled",
+                                 plugin->getName());
+    if (actor->getId() == getId()) {
         return;
     }
 
-    auto &plugins = hidden_actors_[actor.getId()];
-    if (plugins.contains(&plugin)) {
+    auto &plugins = hidden_actors_[actor->getId()];
+    if (plugins.contains(plugin.get())) {
         return;
     }
 
     const bool was_hidden = !plugins.empty();
-    plugins.insert(&plugin);
+    plugins.insert(plugin.get());
     if (was_hidden) {
         return;
     }
@@ -363,37 +364,36 @@ void EndstonePlayer::hideActor(Plugin &plugin, Actor &actor)
     untrackAndHideActor(actor);
 }
 
-void EndstonePlayer::untrackAndHideActor(Actor &actor)
+void EndstonePlayer::untrackAndHideActor(const NotNull<Actor> &actor)
 {
     ++server_.hidden_actor_count_;
-    if (const auto *player = dynamic_cast<const EndstonePlayer *>(&actor)) {
-        hidden_player_runtime_ids_[actor.getRuntimeId()] = actor.getId();
+    if (const auto *player = dynamic_cast<const EndstonePlayer *>(&*actor)) {
+        hidden_player_runtime_ids_[actor->getRuntimeId()] = actor->getId();
         sendPlayerListRemove(player->getHandle());
     }
 
     auto packet = MinecraftPackets::createPacket(MinecraftPacketIds::RemoveActor);
     auto &pk = static_cast<RemoveActorPacket &>(*packet);
-    pk.payload.entity_id = ActorUniqueID{actor.getId()};
+    pk.payload.entity_id = ActorUniqueID{actor->getId()};
     getHandle().sendNetworkPacket(*packet);
 
-    const auto event =
-        std::make_shared<PlayerHideActorEvent>(self(), std::static_pointer_cast<Actor>(actor.shared_from_this()));
+    const auto event = std::make_shared<PlayerHideActorEvent>(self(), actor);
     server_.getPluginManager().callEvent(*event);
 }
 
-void EndstonePlayer::showActor(Plugin &plugin, Actor &actor)
+void EndstonePlayer::showActor(const NotNull<Plugin> &plugin, const NotNull<Actor> &actor)
 {
-    if (actor.getId() == getId()) {
+    if (actor->getId() == getId()) {
         return;
     }
 
-    auto it = hidden_actors_.find(actor.getId());
+    auto it = hidden_actors_.find(actor->getId());
     if (it == hidden_actors_.end()) {
         return;
     }
 
     auto &plugins = it->second;
-    if (!plugins.erase(&plugin)) {
+    if (!plugins.erase(std::weak_ptr<Plugin>(plugin.get()))) {
         return;
     }
 
@@ -405,23 +405,22 @@ void EndstonePlayer::showActor(Plugin &plugin, Actor &actor)
     trackAndShowActor(actor);
 }
 
-void EndstonePlayer::trackAndShowActor(Actor &actor)
+void EndstonePlayer::trackAndShowActor(const NotNull<Actor> &actor)
 {
     --server_.hidden_actor_count_;
-    if (const auto *player = dynamic_cast<const EndstonePlayer *>(&actor)) {
-        hidden_player_runtime_ids_.erase(actor.getRuntimeId());
+    if (const auto *player = dynamic_cast<const EndstonePlayer *>(&*actor)) {
+        hidden_player_runtime_ids_.erase(actor->getRuntimeId());
         sendPlayerListAdd(player->getHandle());
     }
 
-    auto *handle = getHandle().getLevel().fetchEntity(ActorUniqueID{actor.getId()}, false);
+    auto *handle = getHandle().getLevel().fetchEntity(ActorUniqueID{actor->getId()}, false);
     if (handle && handle->getDimensionId() == getHandle().getDimensionId() && getHandle().isActorRelevant(*handle)) {
         if (auto packet = handle->tryCreateAddActorPacket(); packet) {
             getHandle().sendNetworkPacket(*packet);
         }
     }
 
-    const auto event =
-        std::make_shared<PlayerShowActorEvent>(self(), std::static_pointer_cast<Actor>(actor.shared_from_this()));
+    const auto event = std::make_shared<PlayerShowActorEvent>(self(), actor);
     server_.getPluginManager().callEvent(*event);
 }
 

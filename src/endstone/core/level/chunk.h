@@ -32,10 +32,10 @@ public:
     bool load() override;
     bool load(bool generate) override;
     bool unload() override;
-    bool addPluginChunkTicket(Plugin &plugin) override;
-    bool removePluginChunkTicket(Plugin &plugin) override;
+    bool addPluginChunkTicket(const NotNull<Plugin> &plugin) override;
+    bool removePluginChunkTicket(const NotNull<Plugin> &plugin) override;
     [[nodiscard]] std::vector<NotNull<BlockState>> getBlockActors() const override;
-    [[nodiscard]] std::vector<Plugin *> getPluginChunkTickets() const override;
+    [[nodiscard]] std::vector<NotNull<Plugin>> getPluginChunkTickets() const override;
 
 private:
     WeakRef<::Dimension> dimension_;

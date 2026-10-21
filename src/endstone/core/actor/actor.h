@@ -82,12 +82,13 @@ public:
         return ActorPermissibleBase::get().hasPermission(perm);
     }
 
-    NotNull<PermissionAttachment> addAttachment(Plugin &plugin, const std::string &name, bool value) override
+    NotNull<PermissionAttachment> addAttachment(const NotNull<Plugin> &plugin, const std::string &name,
+                                                bool value) override
     {
         return ActorPermissibleBase::get().addAttachment(plugin, name, value);
     }
 
-    NotNull<PermissionAttachment> addAttachment(Plugin &plugin) override
+    NotNull<PermissionAttachment> addAttachment(const NotNull<Plugin> &plugin) override
     {
         return ActorPermissibleBase::get().addAttachment(plugin);
     }

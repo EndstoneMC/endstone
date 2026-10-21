@@ -154,7 +154,7 @@ public:
      * @param plugin Plugin that wants to hide the actor
      * @param actor Actor to hide
      */
-    virtual void hideActor(Plugin &plugin, Actor &actor) = 0;
+    virtual void hideActor(const NotNull<Plugin> &plugin, const NotNull<Actor> &actor) = 0;
 
     /**
      * Allows this player to see an actor that was previously hidden.
@@ -165,7 +165,7 @@ public:
      * @param plugin Plugin that wants to show the actor
      * @param actor Actor to show
      */
-    virtual void showActor(Plugin &plugin, Actor &actor) = 0;
+    virtual void showActor(const NotNull<Plugin> &plugin, const NotNull<Actor> &actor) = 0;
 
     /**
      * Checks to see if an actor has been visually hidden from this player.

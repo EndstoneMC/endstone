@@ -77,13 +77,13 @@ public:
      *
      * @param plugin Plugin to remove
      */
-    void unregister(const Plugin &plugin)
+    void unregister(const NotNull<Plugin> &plugin)
     {
         std::lock_guard lock(mtx_);
         for (auto &[priority, vector] : handlers_) {
             vector.erase(
                 std::remove_if(vector.begin(), vector.end(),
-                               [&](const std::unique_ptr<EventHandler> &h) { return &h->getPlugin() == &plugin; }),
+                               [&](const std::unique_ptr<EventHandler> &h) { return h->getPlugin() == plugin; }),
                 vector.end());
             valid_ = false;
         }

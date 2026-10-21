@@ -81,7 +81,7 @@ public:
 
     [[nodiscard]] Scheduler &getScheduler() const override;
     [[nodiscard]] EndstoneScheduler &getEndstoneScheduler() const;
-    [[nodiscard]] NotNull<MetricsBase> createMetrics(Plugin &plugin, int service_id) override;
+    [[nodiscard]] NotNull<MetricsBase> createMetrics(const NotNull<Plugin> &plugin, int service_id) override;
 
     [[nodiscard]] Level &getLevel() const override;
     [[nodiscard]] std::vector<NotNull<Recipe>> getRecipes() const override;
@@ -155,7 +155,7 @@ public:
 
 private:
     friend class EndstonePlayer;
-    void enablePlugin(Plugin &plugin);
+    void enablePlugin(const NotNull<Plugin> &plugin);
     void loadResourcePacks();
     void fixServerAnnouncement();
     [[nodiscard]] bool isUsingNetherNet() const;

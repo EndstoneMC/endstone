@@ -85,7 +85,8 @@ public:
      * @return The PermissionAttachment that was just created
      * @throws std::invalid_argument if the name is empty or the plugin is disabled
      */
-    virtual NotNull<PermissionAttachment> addAttachment(Plugin &plugin, const std::string &name, bool value) = 0;
+    virtual NotNull<PermissionAttachment> addAttachment(const NotNull<Plugin> &plugin, const std::string &name,
+                                                        bool value) = 0;
 
     /**
      * Adds a new empty PermissionAttachment to this object.
@@ -94,7 +95,7 @@ public:
      * @return The PermissionAttachment that was just created
      * @throws std::invalid_argument if the plugin is disabled
      */
-    virtual NotNull<PermissionAttachment> addAttachment(Plugin &plugin) = 0;
+    virtual NotNull<PermissionAttachment> addAttachment(const NotNull<Plugin> &plugin) = 0;
 
     /**
      * Removes the given PermissionAttachment from this object.

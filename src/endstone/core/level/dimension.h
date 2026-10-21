@@ -47,11 +47,12 @@ public:
     bool loadChunk(int x, int z, bool generate) override;
     bool unloadChunk(int x, int z) override;
     bool unloadChunkRequest(int x, int z) override;
-    bool addPluginChunkTicket(int x, int z, Plugin &plugin) override;
-    bool removePluginChunkTicket(int x, int z, Plugin &plugin) override;
-    void removePluginChunkTickets(Plugin &plugin) override;
-    [[nodiscard]] std::vector<Plugin *> getPluginChunkTickets(int x, int z) const override;
-    [[nodiscard]] std::unordered_map<Plugin *, std::vector<NotNull<Chunk>>> getPluginChunkTickets() const override;
+    bool addPluginChunkTicket(int x, int z, const NotNull<Plugin> &plugin) override;
+    bool removePluginChunkTicket(int x, int z, const NotNull<Plugin> &plugin) override;
+    void removePluginChunkTickets(const NotNull<Plugin> &plugin) override;
+    [[nodiscard]] std::vector<NotNull<Plugin>> getPluginChunkTickets(int x, int z) const override;
+    [[nodiscard]] std::unordered_map<NotNull<Plugin>, std::vector<NotNull<Chunk>>> getPluginChunkTickets()
+        const override;
     [[nodiscard]] NotNull<Item> dropItem(Location location, const ItemStack &item) override;
     [[nodiscard]] Nullable<Actor> spawnActor(Location location, ActorTypeId type) override;
     [[nodiscard]] std::vector<NotNull<Actor>> getActors() const override;
@@ -68,7 +69,7 @@ private:
     struct ChunkTicket {
         mce::UUID area_id;
         std::shared_ptr<LevelChunk> chunk;
-        std::vector<Plugin *> plugins;
+        std::vector<std::weak_ptr<Plugin>> plugins;
         bool server_owned = false;
     };
     using ChunkTickets = std::unordered_map<std::uint64_t, ChunkTicket>;

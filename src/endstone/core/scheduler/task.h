@@ -17,6 +17,7 @@
 #include <atomic>
 #include <chrono>
 #include <functional>
+#include <memory>
 
 #include "endstone/plugin/plugin.h"
 #include "endstone/scheduler/scheduler.h"
@@ -32,16 +33,17 @@ public:
     using CreatedAt = std::chrono::time_point<TaskClock>;
 
     EndstoneTask(EndstoneScheduler &scheduler, std::function<void()> task, TaskId id, std::uint64_t period);
-    EndstoneTask(EndstoneScheduler &scheduler, Plugin &plugin, std::function<void()> task, TaskId id,
+    EndstoneTask(EndstoneScheduler &scheduler, const NotNull<Plugin> &plugin, std::function<void()> task, TaskId id,
                  std::uint64_t period);
     ~EndstoneTask() override = default;
     [[nodiscard]] TaskId getTaskId() const override;
-    [[nodiscard]] Plugin *getOwner() const override;
+    [[nodiscard]] Nullable<Plugin> getOwner() const override;
     [[nodiscard]] bool isSync() const override;
     [[nodiscard]] bool isCancelled() const override;
     void cancel() override;
     virtual void run();
     virtual void doCancel();
+    void release();
 
     EndstoneScheduler &getScheduler() const;
     [[nodiscard]] CreatedAt getCreatedAt() const;
@@ -50,9 +52,13 @@ public:
     [[nodiscard]] std::uint64_t getNextRun() const;
     void setNextRun(std::uint64_t next_run);
 
+protected:
+    std::function<void()> takeTask();
+
 private:
     EndstoneScheduler &scheduler_;
-    Plugin *plugin_{nullptr};
+    std::shared_ptr<void> module_;
+    std::weak_ptr<Plugin> plugin_;
     std::function<void()> task_;
     TaskId id_;
     CreatedAt created_at_{TaskClock::now()};

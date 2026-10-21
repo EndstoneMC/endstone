@@ -34,16 +34,18 @@ class EndstoneScheduler : public Scheduler {
 public:
     explicit EndstoneScheduler(Server &server);
     ~EndstoneScheduler() override = default;
-    Nullable<Task> runTask(Plugin &plugin, std::function<void()> task) override;
-    Nullable<Task> runTaskLater(Plugin &plugin, std::function<void()> task, std::uint64_t delay) override;
-    Nullable<Task> runTaskTimer(Plugin &plugin, std::function<void()> task, std::uint64_t delay,
+    Nullable<Task> runTask(const NotNull<Plugin> &plugin, std::function<void()> task) override;
+    Nullable<Task> runTaskLater(const NotNull<Plugin> &plugin, std::function<void()> task,
+                                std::uint64_t delay) override;
+    Nullable<Task> runTaskTimer(const NotNull<Plugin> &plugin, std::function<void()> task, std::uint64_t delay,
                                 std::uint64_t period) override;
-    Nullable<Task> runTaskAsync(Plugin &plugin, std::function<void()> task) override;
-    Nullable<Task> runTaskLaterAsync(Plugin &plugin, std::function<void()> task, std::uint64_t delay) override;
-    Nullable<Task> runTaskTimerAsync(Plugin &plugin, std::function<void()> task, std::uint64_t delay,
+    Nullable<Task> runTaskAsync(const NotNull<Plugin> &plugin, std::function<void()> task) override;
+    Nullable<Task> runTaskLaterAsync(const NotNull<Plugin> &plugin, std::function<void()> task,
+                                     std::uint64_t delay) override;
+    Nullable<Task> runTaskTimerAsync(const NotNull<Plugin> &plugin, std::function<void()> task, std::uint64_t delay,
                                      std::uint64_t period) override;
     void cancelTask(TaskId id) override;
-    void cancelTasks(Plugin &plugin) override;
+    void cancelTasks(const NotNull<Plugin> &plugin) override;
     bool isRunning(TaskId id) override;
     bool isQueued(TaskId id) override;
     std::vector<NotNull<Task>> getPendingTasks() override;

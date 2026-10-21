@@ -98,7 +98,7 @@ public:
      * @param plugin Plugin taking the ticket
      * @return `true` if a plugin ticket was added, `false` if the plugin already holds one for this chunk
      */
-    virtual bool addPluginChunkTicket(Plugin &plugin) = 0;
+    virtual bool addPluginChunkTicket(const NotNull<Plugin> &plugin) = 0;
 
     /**
      * Removes the given plugin's ticket for this chunk.
@@ -106,7 +106,7 @@ public:
      * @param plugin Plugin whose ticket to remove
      * @return `true` if a plugin ticket was removed, `false` if the plugin holds none for this chunk
      */
-    virtual bool removePluginChunkTicket(Plugin &plugin) = 0;
+    virtual bool removePluginChunkTicket(const NotNull<Plugin> &plugin) = 0;
 
     /**
      * Gets a list of all block actors in this chunk.
@@ -124,7 +124,7 @@ public:
      *
      * @return Plugins holding a ticket for this chunk
      */
-    [[nodiscard]] virtual std::vector<Plugin *> getPluginChunkTickets() const = 0;
+    [[nodiscard]] virtual std::vector<NotNull<Plugin>> getPluginChunkTickets() const = 0;
 };
 
 }  // namespace endstone

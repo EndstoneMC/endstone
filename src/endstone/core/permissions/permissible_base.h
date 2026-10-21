@@ -43,8 +43,9 @@ public:
     [[nodiscard]] bool isPermissionSet(const NotNull<Permission> &perm) const override;
     [[nodiscard]] bool hasPermission(std::string name) const override;
     [[nodiscard]] bool hasPermission(const NotNull<Permission> &perm) const override;
-    NotNull<PermissionAttachment> addAttachment(Plugin &plugin, const std::string &name, bool value) override;
-    NotNull<PermissionAttachment> addAttachment(Plugin &plugin) override;
+    NotNull<PermissionAttachment> addAttachment(const NotNull<Plugin> &plugin, const std::string &name,
+                                                bool value) override;
+    NotNull<PermissionAttachment> addAttachment(const NotNull<Plugin> &plugin) override;
     bool removeAttachment(const NotNull<PermissionAttachment> &attachment) override;
     void recalculatePermissions() override;
     [[nodiscard]] std::unordered_set<NotNull<PermissionAttachmentInfo>> getEffectivePermissions() const override;

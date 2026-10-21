@@ -17,6 +17,7 @@
 #include "endstone/event/event.h"
 #include "endstone/event/server/server_event.h"
 #include "endstone/plugin/plugin.h"
+#include "endstone/util/pointers.h"
 
 namespace endstone {
 
@@ -26,16 +27,16 @@ namespace endstone {
 class PluginDisableEvent : public ServerEvent {
 public:
     ENDSTONE_EVENT(PluginDisableEvent);
-    explicit PluginDisableEvent(Plugin &plugin) : plugin_(plugin) {}
+    explicit PluginDisableEvent(const NotNull<Plugin> &plugin) : plugin_(plugin.get()) {}
 
     /**
      * Gets the plugin involved in this event.
      *
-     * @return Plugin for this event
+     * @return Plugin for this event, or a null handle if the plugin has been unloaded
      */
-    [[nodiscard]] Plugin &getPlugin() const { return plugin_; }
+    [[nodiscard]] Nullable<Plugin> getPlugin() const { return plugin_.lock(); }
 
 private:
-    Plugin &plugin_;
+    std::weak_ptr<Plugin> plugin_;
 };
 }  // namespace endstone

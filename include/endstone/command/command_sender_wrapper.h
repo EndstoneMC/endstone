@@ -63,12 +63,16 @@ public:
         return sender_->hasPermission(perm);
     }
 
-    NotNull<PermissionAttachment> addAttachment(Plugin &plugin, const std::string &name, bool value) override
+    NotNull<PermissionAttachment> addAttachment(const NotNull<Plugin> &plugin, const std::string &name,
+                                                bool value) override
     {
         return sender_->addAttachment(plugin, name, value);
     }
 
-    NotNull<PermissionAttachment> addAttachment(Plugin &plugin) override { return sender_->addAttachment(plugin); }
+    NotNull<PermissionAttachment> addAttachment(const NotNull<Plugin> &plugin) override
+    {
+        return sender_->addAttachment(plugin);
+    }
 
     bool removeAttachment(const NotNull<PermissionAttachment> &attachment) override
     {

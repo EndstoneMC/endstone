@@ -57,14 +57,14 @@ public:
      * @param name Name of the plugin to check
      * @return Plugin if it exists, otherwise nullptr
      */
-    [[nodiscard]] virtual Plugin *getPlugin(const std::string &name) const = 0;
+    [[nodiscard]] virtual Nullable<Plugin> getPlugin(const std::string &name) const = 0;
 
     /**
      * Gets a list of all currently loaded plugins.
      *
      * @return List of Plugins
      */
-    [[nodiscard]] virtual std::vector<Plugin *> getPlugins() const = 0;
+    [[nodiscard]] virtual std::vector<NotNull<Plugin>> getPlugins() const = 0;
 
     /**
      * Checks if the given plugin is enabled or not.
@@ -82,7 +82,7 @@ public:
      * @param plugin Plugin to check
      * @return true if the plugin is enabled, otherwise false
      */
-    [[nodiscard]] virtual bool isPluginEnabled(Plugin *plugin) const = 0;
+    [[nodiscard]] virtual bool isPluginEnabled(const Nullable<Plugin> &plugin) const = 0;
 
     /**
      * Loads the plugin in the specified file.
@@ -92,7 +92,7 @@ public:
      * @param file File containing the plugin to load
      * @return The Plugin loaded, or nullptr if it was invalid
      */
-    virtual Plugin *loadPlugin(std::string file) = 0;
+    virtual Nullable<Plugin> loadPlugin(std::string file) = 0;
 
     /**
      * Loads the plugin contained within the specified directory.
@@ -100,7 +100,7 @@ public:
      * @param directory Directory to check for plugins
      * @return A list of all plugins loaded
      */
-    virtual std::vector<Plugin *> loadPlugins(std::string directory) = 0;
+    virtual std::vector<NotNull<Plugin>> loadPlugins(std::string directory) = 0;
 
     /**
      * Loads the plugins in the list of the files.
@@ -108,7 +108,7 @@ public:
      * @param files List of files containing plugins to load
      * @return A list of all plugins loaded
      */
-    virtual std::vector<Plugin *> loadPlugins(std::vector<std::string> files) = 0;
+    virtual std::vector<NotNull<Plugin>> loadPlugins(std::vector<std::string> files) = 0;
 
     /**
      * Enables the specified plugin.
@@ -117,7 +117,7 @@ public:
      *
      * @param plugin Plugin to enable
      */
-    virtual void enablePlugin(Plugin &plugin) const = 0;
+    virtual void enablePlugin(const NotNull<Plugin> &plugin) const = 0;
 
     /**
      * Enable all the loaded plugins.
@@ -131,7 +131,7 @@ public:
      *
      * @param plugin Plugin to disable
      */
-    virtual void disablePlugin(Plugin &plugin) = 0;
+    virtual void disablePlugin(const NotNull<Plugin> &plugin) = 0;
 
     /**
      * Disables all the loaded plugins.
@@ -161,7 +161,7 @@ public:
      *     cancelled
      */
     virtual void registerEvent(std::string event, std::function<void(Event &)> executor, EventPriority priority,
-                               Plugin &plugin, bool ignore_cancelled) = 0;
+                               const NotNull<Plugin> &plugin, bool ignore_cancelled) = 0;
 
     /**
      * Gets a Permission from its fully qualified name.

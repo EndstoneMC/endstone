@@ -21,28 +21,29 @@
 namespace endstone::core {
 
 namespace {
-Result<void> validate(const Plugin &plugin, const std::function<void()> &task)
+Result<void> validate(const NotNull<Plugin> &plugin, const std::function<void()> &task)
 {
-    ENDSTONE_CHECKF(task, "Plugin {} attempted to register an empty task", plugin.getName());
-    ENDSTONE_CHECKF(plugin.isEnabled(), "Plugin {} attempted to register task while disabled", plugin.getName());
+    ENDSTONE_CHECKF(task, "Plugin {} attempted to register an empty task", plugin->getName());
+    ENDSTONE_CHECKF(plugin->isEnabled(), "Plugin {} attempted to register task while disabled", plugin->getName());
     return {};
 }
 }  // namespace
 
 EndstoneScheduler::EndstoneScheduler(Server &server) : server_(server) {}
 
-Nullable<Task> EndstoneScheduler::runTask(Plugin &plugin, std::function<void()> task)
+Nullable<Task> EndstoneScheduler::runTask(const NotNull<Plugin> &plugin, std::function<void()> task)
 {
     return runTaskLater(plugin, task, 0);
 }
 
-Nullable<Task> EndstoneScheduler::runTaskLater(Plugin &plugin, std::function<void()> task, std::uint64_t delay)
+Nullable<Task> EndstoneScheduler::runTaskLater(const NotNull<Plugin> &plugin, std::function<void()> task,
+                                               std::uint64_t delay)
 {
     return runTaskTimer(plugin, task, delay, 0);
 }
 
-Nullable<Task> EndstoneScheduler::runTaskTimer(Plugin &plugin, std::function<void()> task, std::uint64_t delay,
-                                               std::uint64_t period)
+Nullable<Task> EndstoneScheduler::runTaskTimer(const NotNull<Plugin> &plugin, std::function<void()> task,
+                                               std::uint64_t delay, std::uint64_t period)
 {
     if (!validate(plugin, task)) {
         return nullptr;
@@ -54,18 +55,19 @@ Nullable<Task> EndstoneScheduler::runTaskTimer(Plugin &plugin, std::function<voi
     return t;
 }
 
-Nullable<Task> EndstoneScheduler::runTaskAsync(Plugin &plugin, std::function<void()> task)
+Nullable<Task> EndstoneScheduler::runTaskAsync(const NotNull<Plugin> &plugin, std::function<void()> task)
 {
     return runTaskLaterAsync(plugin, task, 0);
 }
 
-Nullable<Task> EndstoneScheduler::runTaskLaterAsync(Plugin &plugin, std::function<void()> task, std::uint64_t delay)
+Nullable<Task> EndstoneScheduler::runTaskLaterAsync(const NotNull<Plugin> &plugin, std::function<void()> task,
+                                                    std::uint64_t delay)
 {
     return runTaskTimerAsync(plugin, task, delay, 0);
 }
 
-Nullable<Task> EndstoneScheduler::runTaskTimerAsync(Plugin &plugin, std::function<void()> task, std::uint64_t delay,
-                                                    std::uint64_t period)
+Nullable<Task> EndstoneScheduler::runTaskTimerAsync(const NotNull<Plugin> &plugin, std::function<void()> task,
+                                                    std::uint64_t delay, std::uint64_t period)
 {
     if (!validate(plugin, task)) {
         return nullptr;
@@ -99,13 +101,13 @@ void EndstoneScheduler::cancelTask(TaskId id)
     has_cancelled_tasks_.store(true, std::memory_order_release);
 }
 
-void EndstoneScheduler::cancelTasks(Plugin &plugin)
+void EndstoneScheduler::cancelTasks(const NotNull<Plugin> &plugin)
 {
     std::vector<std::shared_ptr<EndstoneTask>> cancelling;
     {
         std::lock_guard lock{tasks_mtx_};
         for (auto it = tasks_.begin(); it != tasks_.end();) {
-            if (it->second->getOwner() != &plugin) {
+            if (it->second->getOwner() != plugin) {
                 ++it;
                 continue;
             }
@@ -211,6 +213,9 @@ void EndstoneScheduler::mainThreadHeartbeat(std::uint64_t current_tick)
     std::shared_ptr<EndstoneTask> pending_task;
     while (pending_.try_dequeue(pending_task)) {
         if (pending_task->isCancelled()) {
+            if (pending_task->isSync()) {
+                pending_task->release();
+            }
             continue;
         }
 
@@ -233,6 +238,7 @@ void EndstoneScheduler::mainThreadHeartbeat(std::uint64_t current_tick)
         if (task->isCancelled()) {
             if (task->isSync()) {
                 removeTask(task->getTaskId());
+                task->release();
             }
             continue;
         }
@@ -259,6 +265,7 @@ void EndstoneScheduler::mainThreadHeartbeat(std::uint64_t current_tick)
 
         if (task->isSync()) {
             removeTask(task->getTaskId());
+            task->release();
         }
     }
 }
@@ -274,6 +281,9 @@ void EndstoneScheduler::removeCancelledTasks()
         if (!task->isCancelled()) {
             pending.push_back(std::move(task));
         }
+        else if (task->isSync()) {
+            task->release();
+        }
     }
     task.reset();
     for (auto &pending_task : pending) {
@@ -282,7 +292,15 @@ void EndstoneScheduler::removeCancelledTasks()
 
     for (auto it = queue_.begin(); it != queue_.end();) {
         auto &tasks = it->second;
-        std::erase_if(tasks, [](const auto &queued) { return queued->isCancelled(); });
+        std::erase_if(tasks, [](const auto &queued) {
+            if (!queued->isCancelled()) {
+                return false;
+            }
+            if (queued->isSync()) {
+                queued->release();
+            }
+            return true;
+        });
         if (tasks.empty()) {
             it = queue_.erase(it);
         }

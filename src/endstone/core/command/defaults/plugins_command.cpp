@@ -47,7 +47,7 @@ std::string PluginsCommand::getPluginList() const
     auto plugins = server.getPluginManager().getPlugins();
 
     int i = 0;
-    for (auto *plugin : plugins) {
+    for (const auto &plugin : plugins) {
         if (i > 0) {
             ss << ColorFormat::White;
             ss << ", ";

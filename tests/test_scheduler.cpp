@@ -30,7 +30,7 @@ protected:
     // Set Up
     void SetUp() override
     {
-        plugin_.setEnabled(true);
+        plugin_->setEnabled(true);
         scheduler_ = std::make_unique<endstone::core::EndstoneScheduler>(server_);
         tick_count_ = 0;
     }
@@ -40,11 +40,11 @@ protected:
     {
         tick_count_ = 0;
         scheduler_.reset();
-        plugin_.setEnabled(false);
+        plugin_->setEnabled(false);
     }
 
     MockServer server_;
-    MockPlugin plugin_;
+    std::shared_ptr<MockPlugin> plugin_ = std::make_shared<MockPlugin>();
     std::unique_ptr<endstone::core::EndstoneScheduler> scheduler_;
     std::uint64_t tick_count_;
 };

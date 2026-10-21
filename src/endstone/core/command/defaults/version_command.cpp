@@ -46,7 +46,7 @@ bool VersionCommand::execute(const NotNull<CommandSender> &sender, const std::ve
                        [](unsigned char c) { return std::tolower(c); });
 
         auto plugins = server.getPluginManager().getPlugins();
-        for (auto *plugin : plugins) {
+        for (const auto &plugin : plugins) {
             auto name = plugin->getName();
             std::transform(name.begin(), name.end(), name.begin(), [](unsigned char c) { return std::tolower(c); });
 

@@ -44,7 +44,7 @@ public:
      * @param plugin plugin associated with the service
      * @param priority priority of the provider
      */
-    virtual void registerService(std::string name, NotNull<Service> provider, const Plugin &plugin,
+    virtual void registerService(std::string name, NotNull<Service> provider, const NotNull<Plugin> &plugin,
                                  ServicePriority priority) = 0;
 
     /**
@@ -52,7 +52,7 @@ public:
      *
      * @param plugin The plugin
      */
-    virtual void unregisterAll(const Plugin &plugin) = 0;
+    virtual void unregisterAll(const NotNull<Plugin> &plugin) = 0;
 
     /**
      * Unregister a particular provider for a particular service.

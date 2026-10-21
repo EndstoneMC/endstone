@@ -91,8 +91,13 @@ EndstonePluginManager::EndstonePluginManager(Server &server) : server_(server)
 
 EndstonePluginManager::~EndstonePluginManager()
 {
+    lookup_names_.clear();
+    event_handlers_.clear();
     while (!plugin_loaders_.empty()) {
         plugin_loaders_.pop_back();
+    }
+    while (!plugins_.empty()) {
+        plugins_.pop_back();
     }
 }
 
@@ -101,7 +106,7 @@ void EndstonePluginManager::registerLoader(std::unique_ptr<PluginLoader> loader)
     plugin_loaders_.push_back(std::move(loader));
 }
 
-Plugin *EndstonePluginManager::getPlugin(const std::string &name) const
+Nullable<Plugin> EndstonePluginManager::getPlugin(const std::string &name) const
 {
     auto it = lookup_names_.find(name);
     if (it != lookup_names_.end()) {
@@ -110,14 +115,9 @@ Plugin *EndstonePluginManager::getPlugin(const std::string &name) const
     return nullptr;
 }
 
-std::vector<Plugin *> EndstonePluginManager::getPlugins() const
+std::vector<NotNull<Plugin>> EndstonePluginManager::getPlugins() const
 {
-    std::vector<Plugin *> plugins;
-    plugins.reserve(plugins_.size());
-    for (const auto &plugin : plugins_) {
-        plugins.push_back(plugin);
-    }
-    return plugins;
+    return plugins_;
 }
 
 bool EndstonePluginManager::isPluginEnabled(const std::string &name) const
@@ -125,13 +125,13 @@ bool EndstonePluginManager::isPluginEnabled(const std::string &name) const
     return isPluginEnabled(getPlugin(name));
 }
 
-bool EndstonePluginManager::isPluginEnabled(Plugin *plugin) const
+bool EndstonePluginManager::isPluginEnabled(const Nullable<Plugin> &plugin) const
 {
     if (!plugin) {
         return false;
     }
 
-    const auto it = std::ranges::find_if(plugins_, [plugin](const auto &p) { return p == plugin; });
+    const auto it = std::ranges::find_if(plugins_, [&plugin](const auto &p) { return p == plugin; });
     return it != plugins_.end() && plugin->isEnabled();
 }
 
@@ -161,26 +161,23 @@ void EndstonePluginManager::initPlugin(Plugin &plugin, PluginLoader &loader, con
     plugin.data_folder_ = base_folder / plugin_name;
 }
 
-Plugin *EndstonePluginManager::loadPlugin(std::string file)
+Nullable<Plugin> EndstonePluginManager::loadPlugin(std::string file)
 {
     auto *loader = resolvePluginLoader(file);
     if (!loader) {
         return nullptr;
     }
-    auto *plugin = loader->loadPlugin(file);
+    const auto plugin = loader->loadPlugin(file);
     if (!plugin) {
         return nullptr;
     }
     initPlugin(*plugin, *loader, fs::path(file).parent_path());  // dependency injection
-    if (!loadPlugin(*plugin)) {
-        return nullptr;
-    }
-    return plugin;
+    return loadPlugin(NotNull<Plugin>(plugin));
 }
 
-Plugin *EndstonePluginManager::loadPlugin(Plugin &plugin)
+Nullable<Plugin> EndstonePluginManager::loadPlugin(const NotNull<Plugin> &plugin)
 {
-    const auto &description = plugin.getDescription();
+    const auto &description = plugin->getDescription();
     auto plugin_name = description.getName();
     const static std::regex valid_name{"^[a-z0-9_]+$"};
     if (!std::regex_match(plugin_name, valid_name)) {
@@ -210,7 +207,7 @@ Plugin *EndstonePluginManager::loadPlugin(Plugin &plugin)
     }
 
     for (const auto &depend : description.getDepend()) {
-        if (const auto *dependency = server_.getPluginManager().getPlugin(depend); !dependency) {
+        if (const auto dependency = server_.getPluginManager().getPlugin(depend); !dependency) {
             server_.getLogger().error("Could not load plugin '{}': Unknown dependency '{}'. Please download and "
                                       "install it to run this plugin.",
                                       plugin_name, depend);
@@ -218,26 +215,26 @@ Plugin *EndstonePluginManager::loadPlugin(Plugin &plugin)
         }
     }
 
-    plugin.getLogger().info("Loading {}", plugin.getDescription().getFullName());
+    plugin->getLogger().info("Loading {}", plugin->getDescription().getFullName());
     try {
-        plugin.onLoad();
+        plugin->onLoad();
     }
     catch (std::exception &e) {
-        plugin.getLogger().error("Error occurred when loading {}", plugin.getDescription().getFullName());
-        plugin.getLogger().error(e.what());
+        plugin->getLogger().error("Error occurred when loading {}", plugin->getDescription().getFullName());
+        plugin->getLogger().error(e.what());
         return nullptr;
     }
 
     // All checks passed, add to the plugin list and lookup map
-    plugins_.push_back(&plugin);
-    lookup_names_[plugin.getDescription().getName()] = &plugin;
-    for (const auto &provide : plugin.getDescription().getProvides()) {
-        lookup_names_.emplace(provide, &plugin);
+    plugins_.push_back(plugin);
+    lookup_names_.insert_or_assign(plugin->getDescription().getName(), plugin);
+    for (const auto &provide : plugin->getDescription().getProvides()) {
+        lookup_names_.emplace(provide, plugin);
     }
-    return &plugin;
+    return plugin;
 }
 
-std::vector<Plugin *> EndstonePluginManager::loadPlugins(std::string directory)
+std::vector<NotNull<Plugin>> EndstonePluginManager::loadPlugins(std::string directory)
 {
     // Create a copy of the current plugin loaders.
     // This is necessary because some plugins might register new loaders during their `onLoad` phase,
@@ -247,13 +244,9 @@ std::vector<Plugin *> EndstonePluginManager::loadPlugins(std::string directory)
         loaders.emplace_back(plugin_loader.get());
     }
 
-    std::vector<Plugin *> plugins;
+    std::vector<NotNull<Plugin>> plugins;
     for (const auto &loader : loaders) {
-        auto result = loader->loadPlugins(directory);
-        for (auto *plugin : result) {
-            if (!plugin) {
-                continue;
-            }
+        for (const auto &plugin : loader->loadPlugins(directory)) {
             initPlugin(*plugin, *loader, directory);  // dependency injection
             plugins.push_back(plugin);
         }
@@ -261,38 +254,34 @@ std::vector<Plugin *> EndstonePluginManager::loadPlugins(std::string directory)
     return loadPlugins(plugins);
 }
 
-std::vector<Plugin *> EndstonePluginManager::loadPlugins(std::vector<std::string> files)
+std::vector<NotNull<Plugin>> EndstonePluginManager::loadPlugins(std::vector<std::string> files)
 {
-    std::vector<Plugin *> plugins;
+    std::vector<NotNull<Plugin>> plugins;
     for (const auto &file : files) {
         auto *loader = resolvePluginLoader(file);
         if (!loader) {
             continue;
         }
-        auto *plugin = loader->loadPlugin(file);
+        const auto plugin = loader->loadPlugin(file);
         if (!plugin) {
             continue;
         }
         initPlugin(*plugin, *loader, fs::path(file).parent_path());  // dependency injection
-        plugins.push_back(plugin);
+        plugins.emplace_back(plugin);
     }
     return loadPlugins(plugins);
 }
 
-std::vector<Plugin *> EndstonePluginManager::loadPlugins(std::vector<Plugin *> candidates)
+std::vector<NotNull<Plugin>> EndstonePluginManager::loadPlugins(const std::vector<NotNull<Plugin>> &candidates)
 {
-    std::vector<Plugin *> result;
-    std::unordered_map<std::string, Plugin *> plugins;
+    std::vector<NotNull<Plugin>> result;
+    std::unordered_map<std::string, NotNull<Plugin>> plugins;
     std::vector<std::string> loaded_plugins;
     std::unordered_map<std::string, std::string> plugins_provided;
     std::unordered_map<std::string, std::vector<std::string>> dependencies;
     std::unordered_map<std::string, std::vector<std::string>> soft_dependencies;
 
-    for (auto *candidate : candidates) {
-        if (!candidate) {
-            continue;
-        }
-
+    for (const auto &candidate : candidates) {
         const auto &description = candidate->getDescription();
 
         // Check if two plugins have the same name
@@ -300,7 +289,7 @@ std::vector<Plugin *> EndstonePluginManager::loadPlugins(std::vector<Plugin *> c
             server_.getLogger().error("Ambiguous plugin name '{}', which is the name of another plugin.",
                                       description.getName());
         }
-        plugins[description.getName()] = candidate;
+        plugins.insert_or_assign(description.getName(), candidate);
 
         // Check if the plugin's name is one of the provides of another plugin
         if (auto it = plugins_provided.find(description.getName()); it != plugins_provided.end()) {
@@ -369,7 +358,7 @@ std::vector<Plugin *> EndstonePluginManager::loadPlugins(std::vector<Plugin *> c
         // Iterate over the current plugins.
         for (auto it = plugins.begin(); it != plugins.end();) {
             const auto &plugin_name = it->first;
-            auto *plugin = it->second;
+            const auto plugin = it->second;
 
             // Check hard dependencies: remove those already loaded.
             bool unknown_dependency = false;
@@ -425,7 +414,7 @@ std::vector<Plugin *> EndstonePluginManager::loadPlugins(std::vector<Plugin *> c
                 plugins.contains(plugin_name)) {
                 missing_dependency = false;
                 // we are clear to load!
-                if (auto *loaded_plugin = loadPlugin(*plugin)) {
+                if (const auto loaded_plugin = loadPlugin(plugin)) {
                     result.push_back(loaded_plugin);
                     loaded_plugins.push_back(plugin_name);
                     auto provides = loaded_plugin->getDescription().getProvides();
@@ -442,14 +431,13 @@ std::vector<Plugin *> EndstonePluginManager::loadPlugins(std::vector<Plugin *> c
             // Try a second pass: load plugins that have no hard dependencies (ignoring soft dependencies).
             for (auto it = plugins.begin(); it != plugins.end();) {
                 const auto &plugin_name = it->first;
-                auto *plugin = it->second;
+                const auto plugin = it->second;
 
                 if (!dependencies.contains(plugin_name)) {
                     soft_dependencies.erase(plugin_name);
                     missing_dependency = false;
 
-                    auto *loaded_plugin = loadPlugin(*plugin);
-                    if (loaded_plugin != nullptr) {
+                    if (const auto loaded_plugin = loadPlugin(plugin)) {
                         result.push_back(loaded_plugin);
                         loaded_plugins.push_back(plugin_name);
                         auto provides = loaded_plugin->getDescription().getProvides();
@@ -476,24 +464,24 @@ std::vector<Plugin *> EndstonePluginManager::loadPlugins(std::vector<Plugin *> c
     return result;
 }
 
-void EndstonePluginManager::enablePlugin(Plugin &plugin) const
+void EndstonePluginManager::enablePlugin(const NotNull<Plugin> &plugin) const
 {
-    if (!plugin.isEnabled()) {
-        plugin.getPluginLoader().enablePlugin(plugin);
+    if (!plugin->isEnabled()) {
+        plugin->getPluginLoader().enablePlugin(plugin);
     }
 }
 
 void EndstonePluginManager::enablePlugins() const
 {
     for (const auto &plugin : plugins_) {
-        enablePlugin(*plugin);
+        enablePlugin(plugin);
     }
 }
 
-void EndstonePluginManager::disablePlugin(Plugin &plugin)
+void EndstonePluginManager::disablePlugin(const NotNull<Plugin> &plugin)
 {
-    if (plugin.isEnabled()) {
-        plugin.getPluginLoader().disablePlugin(plugin);
+    if (plugin->isEnabled()) {
+        plugin->getPluginLoader().disablePlugin(plugin);
         server_.getScheduler().cancelTasks(plugin);
         server_.getServiceManager().unregisterAll(plugin);
         if (const auto *level = static_cast<EndstoneServer &>(server_).getEndstoneLevel()) {
@@ -510,20 +498,22 @@ void EndstonePluginManager::disablePlugin(Plugin &plugin)
 void EndstonePluginManager::disablePlugins()
 {
     for (auto it = plugins_.rbegin(); it != plugins_.rend(); ++it) {
-        disablePlugin(**it);
+        disablePlugin(*it);
     }
 }
 
 void EndstonePluginManager::clearPlugins()
 {
     disablePlugins();
-    plugins_.clear();
     lookup_names_.clear();
     // TODO: recreate dependency graph
     event_handlers_.clear();
 
     while (!plugin_loaders_.empty()) {
         plugin_loaders_.pop_back();
+    }
+    while (!plugins_.empty()) {
+        plugins_.pop_back();
     }
 
     permissions_.clear();
@@ -546,8 +536,8 @@ void EndstonePluginManager::callEvent(Event &event)
 
     auto &handler_list = event_handlers_.emplace(event.getEventName(), event.getEventName()).first->second;
     for (const auto &handler : handler_list.getHandlers()) {
-        auto &plugin = handler->getPlugin();
-        if (!plugin.isEnabled()) {
+        const auto plugin = handler->getPlugin();
+        if (!plugin || !plugin->isEnabled()) {
             continue;
         }
 
@@ -556,17 +546,17 @@ void EndstonePluginManager::callEvent(Event &event)
         }
         catch (std::exception &e) {
             server_.getLogger().error("Could not pass event {} to plugin {}. {}", event.getEventName(),
-                                      plugin.getDescription().getFullName(), e.what());
+                                      plugin->getDescription().getFullName(), e.what());
         }
     }
 }
 
 void EndstonePluginManager::registerEvent(std::string event, std::function<void(Event &)> executor,
-                                          EventPriority priority, Plugin &plugin, bool ignore_cancelled)
+                                          EventPriority priority, const NotNull<Plugin> &plugin, bool ignore_cancelled)
 {
-    if (!plugin.isEnabled()) {
+    if (!plugin->isEnabled()) {
         server_.getLogger().error("Plugin {} attempted to register listener for event {} while not enabled.",
-                                  plugin.getDescription().getFullName(), event);
+                                  plugin->getDescription().getFullName(), event);
         return;
     }
 
@@ -575,7 +565,7 @@ void EndstonePluginManager::registerEvent(std::string event, std::function<void(
         std::make_unique<EventHandler>(event, executor, priority, plugin, ignore_cancelled));
     if (!handler) {
         server_.getLogger().error("Plugin {} failed to register listener for event {}: Handler type mismatch",
-                                  plugin.getDescription().getFullName(), event);
+                                  plugin->getDescription().getFullName(), event);
         return;
     }
 }

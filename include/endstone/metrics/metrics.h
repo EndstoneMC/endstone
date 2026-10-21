@@ -46,7 +46,10 @@ public:
      * @param plugin the plugin these metrics belong to
      * @param service_id the id of the service, found at https://bstats.org/what-is-my-plugin-id
      */
-    Metrics(Plugin &plugin, int service_id) : impl_(plugin.getServer().createMetrics(plugin, service_id)) {}
+    Metrics(const NotNull<Plugin> &plugin, int service_id)
+        : impl_(plugin->getServer().createMetrics(plugin, service_id))
+    {
+    }
 
     /**
      * Adds a custom chart.

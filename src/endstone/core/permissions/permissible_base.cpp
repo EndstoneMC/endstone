@@ -91,7 +91,8 @@ bool PermissibleBase::hasPermission(PermissionDefault default_value, PermissionL
     }
 }
 
-NotNull<PermissionAttachment> PermissibleBase::addAttachment(Plugin &plugin, const std::string &name, bool value)
+NotNull<PermissionAttachment> PermissibleBase::addAttachment(const NotNull<Plugin> &plugin, const std::string &name,
+                                                             bool value)
 {
     Preconditions::checkArgument(!name.empty(), "Could not add PermissionAttachment: permission name cannot be empty.");
 
@@ -101,10 +102,10 @@ NotNull<PermissionAttachment> PermissibleBase::addAttachment(Plugin &plugin, con
     return result;
 }
 
-NotNull<PermissionAttachment> PermissibleBase::addAttachment(Plugin &plugin)
+NotNull<PermissionAttachment> PermissibleBase::addAttachment(const NotNull<Plugin> &plugin)
 {
-    Preconditions::checkArgument(plugin.isEnabled(), "Could not add PermissionAttachment: plugin {} is disabled.",
-                                 plugin.getName());
+    Preconditions::checkArgument(plugin->isEnabled(), "Could not add PermissionAttachment: plugin {} is disabled.",
+                                 plugin->getName());
 
     const auto &result = attachments_.emplace_back(std::make_shared<PermissionAttachment>(plugin, getParent()));
     recalculatePermissions();

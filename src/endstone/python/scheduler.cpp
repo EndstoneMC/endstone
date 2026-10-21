@@ -22,8 +22,9 @@ void init_scheduler(py::module &m)
 {
     py::class_<Task, std::shared_ptr<Task>>(m, "Task", "Represents a task being executed by the scheduler.")
         .def_property_readonly("task_id", &Task::getTaskId, "The task id number.")
-        .def_property_readonly("owner", &Task::getOwner, py::return_value_policy::reference,
-                               "The `Plugin` that owns this task.")
+        .def_property_readonly("owner", &Task::getOwner,
+                               "The `Plugin` that owns this task, or `None` if the server scheduled it or the plugin "
+                               "has been unloaded, as by `/reload`.")
         .def_property_readonly("is_sync", &Task::isSync, "`True` if the task is run by the server thread.")
         .def_property_readonly("is_cancelled", &Task::isCancelled, "`True` if this task has been cancelled.")
         .def("cancel", &Task::cancel, "Attempts to cancel this task.");

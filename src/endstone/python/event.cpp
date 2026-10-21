@@ -804,12 +804,12 @@ void init_event(py::module_ &m, py::classh<Event, PyEvent> &event)
 )doc");
 
     bind_event<PluginEnableEvent, ServerEvent>(m, "PluginEnableEvent", "Called when a plugin is enabled.")
-        .def_property_readonly("plugin", &PluginEnableEvent::getPlugin, py::return_value_policy::reference,
-                               "The `Plugin` involved in this event.");
+        .def_property_readonly("plugin", &PluginEnableEvent::getPlugin,
+                               "The `Plugin` involved in this event, or `None` if the plugin has been unloaded.");
 
     bind_event<PluginDisableEvent, ServerEvent>(m, "PluginDisableEvent", "Called when a plugin is disabled.")
-        .def_property_readonly("plugin", &PluginDisableEvent::getPlugin, py::return_value_policy::reference,
-                               "The `Plugin` involved in this event.");
+        .def_property_readonly("plugin", &PluginDisableEvent::getPlugin,
+                               "The `Plugin` involved in this event, or `None` if the plugin has been unloaded.");
 
     bind_event<ScriptMessageEvent, ServerEvent, ICancellable>(
         m, "ScriptMessageEvent", "Called when a message is sent by the `/scriptevent` command.")

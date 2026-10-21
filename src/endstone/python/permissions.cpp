@@ -78,9 +78,11 @@ void init_permissions(py::module_ &m, py_class<Permissible> &permissible, py::cl
 
     py::classh<PermissionAttachment>(m, "PermissionAttachment",
                                      "Holds information about a permission attachment on a `Permissible` object.")
-        .def(py::init<Plugin &, const NotNull<Permissible> &>(), py::arg("plugin"), py::arg("permissible"))
-        .def_property_readonly("plugin", &PermissionAttachment::getPlugin, py::return_value_policy::reference,
-                               "The plugin responsible for this permission attachment.")
+        .def(py::init<const NotNull<Plugin> &, const NotNull<Permissible> &>(), py::arg("plugin"),
+             py::arg("permissible"))
+        .def_property_readonly(
+            "plugin", &PermissionAttachment::getPlugin,
+            "The plugin responsible for this permission attachment, or `None` if the plugin has been unloaded.")
         .def("remove", &PermissionAttachment::remove, R"doc(
     Removes this attachment from its registered `Permissible`.
 
@@ -197,7 +199,8 @@ void init_permissions(py::module_ &m, py_class<Permissible> &permissible, py::cl
     Returns:
         Value of the permission.
 )doc")
-        .def("add_attachment", py::overload_cast<Plugin &, const std::string &, bool>(&Permissible::addAttachment),
+        .def("add_attachment",
+             py::overload_cast<const NotNull<Plugin> &, const std::string &, bool>(&Permissible::addAttachment),
              py::arg("plugin"), py::arg("name"), py::arg("value"), R"doc(
     Adds a new `PermissionAttachment` with a single permission by name and value.
 
@@ -209,7 +212,8 @@ void init_permissions(py::module_ &m, py_class<Permissible> &permissible, py::cl
     Returns:
         The `PermissionAttachment` that was just created.
 )doc")
-        .def("add_attachment", py::overload_cast<Plugin &>(&Permissible::addAttachment), py::arg("plugin"), R"doc(
+        .def("add_attachment", py::overload_cast<const NotNull<Plugin> &>(&Permissible::addAttachment),
+             py::arg("plugin"), R"doc(
     Adds a new empty `PermissionAttachment` to this object.
 
     Args:

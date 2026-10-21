@@ -187,14 +187,14 @@ void EndstoneCommandMap::setPluginCommands()
 {
     const auto plugins = server_.getPluginManager().getPlugins();
     std::vector<std::string> plugin_names;
-    for (auto *plugin : plugins) {
+    for (const auto &plugin : plugins) {
         auto name = plugin->getName();
         std::ranges::transform(name, name.begin(), [](unsigned char c) { return std::tolower(c); });
         plugin_names.emplace_back(name);
 
         auto commands = plugin->getDescription().getCommands();
         for (const auto &command : commands) {
-            registerCommand<PluginCommand>(command, *plugin);
+            registerCommand<PluginCommand>(command, plugin);
         }
     }
     clearEnumValues("PluginName");

@@ -16,6 +16,7 @@
 
 #include <functional>
 #include <map>
+#include <memory>
 #include <string>
 #include <utility>
 #include <vector>
@@ -23,6 +24,7 @@
 #include "endstone/event/event.h"
 #include "endstone/event/event_priority.h"
 #include "endstone/plugin/plugin.h"
+#include "endstone/util/pointers.h"
 
 namespace endstone {
 
@@ -31,9 +33,9 @@ namespace endstone {
  */
 class EventHandler {
 public:
-    EventHandler(std::string event, std::function<void(Event &)> executor, EventPriority priority, Plugin &plugin,
-                 bool ignore_cancelled)
-        : event_(std::move(event)), executor_(std::move(executor)), priority_(priority), plugin_(plugin),
+    EventHandler(std::string event, std::function<void(Event &)> executor, EventPriority priority,
+                 const NotNull<Plugin> &plugin, bool ignore_cancelled)
+        : event_(std::move(event)), executor_(std::move(executor)), priority_(priority), plugin_(plugin.get()),
           ignore_cancelled_(ignore_cancelled)
     {
     }
@@ -41,9 +43,9 @@ public:
     /**
      * Gets the plugin for this registration.
      *
-     * @return Registered Plugin
+     * @return Registered Plugin, or a null handle if the plugin has been unloaded
      */
-    [[nodiscard]] Plugin &getPlugin() const { return plugin_; }
+    [[nodiscard]] Nullable<Plugin> getPlugin() const { return plugin_.lock(); }
     /**
      * Gets the priority for this registration.
      *
@@ -85,7 +87,7 @@ private:
     std::string event_;
     std::function<void(Event &)> executor_;
     EventPriority priority_;
-    Plugin &plugin_;
+    std::weak_ptr<Plugin> plugin_;
     bool ignore_cancelled_;
 };
 

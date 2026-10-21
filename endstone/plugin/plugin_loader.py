@@ -119,7 +119,7 @@ class PythonPluginLoader(PluginLoader):
                     if directory.startswith("endstone_") or directory.startswith("~"):
                         shutil.rmtree(os.path.join(site_dir, directory))
 
-    def load_plugin(self, file: str) -> Plugin | None:  # type: ignore[override]
+    def load_plugin(self, file: str) -> Plugin | None:
         env = os.environ.copy()
         env.pop("LD_PRELOAD", "")
 

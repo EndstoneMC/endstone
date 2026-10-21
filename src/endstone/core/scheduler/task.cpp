@@ -16,6 +16,7 @@
 
 #include <utility>
 
+#include "endstone/core/plugin/cpp_plugin_loader.h"
 #include "endstone/core/scheduler/scheduler.h"
 
 namespace endstone::core {
@@ -25,11 +26,12 @@ EndstoneTask::EndstoneTask(EndstoneScheduler &scheduler, std::function<void()> t
 {
 }
 
-EndstoneTask::EndstoneTask(EndstoneScheduler &scheduler, Plugin &plugin, std::function<void()> task, TaskId id,
-                           std::uint64_t period)
+EndstoneTask::EndstoneTask(EndstoneScheduler &scheduler, const NotNull<Plugin> &plugin, std::function<void()> task,
+                           TaskId id, std::uint64_t period)
     : EndstoneTask(scheduler, std::move(task), id, period)
 {
-    plugin_ = &plugin;
+    module_ = CppPluginLoader::getModule(plugin);
+    plugin_ = plugin.get();
 }
 
 TaskId EndstoneTask::getTaskId() const
@@ -37,9 +39,9 @@ TaskId EndstoneTask::getTaskId() const
     return id_;
 }
 
-Plugin *EndstoneTask::getOwner() const
+Nullable<Plugin> EndstoneTask::getOwner() const
 {
-    return plugin_;
+    return plugin_.lock();
 }
 
 bool EndstoneTask::isSync() const
@@ -59,6 +61,7 @@ void EndstoneTask::cancel()
 
 void EndstoneTask::run()
 {
+    const auto owner = plugin_.lock();
     if (task_) {
         task_();
     }
@@ -67,6 +70,16 @@ void EndstoneTask::run()
 void EndstoneTask::doCancel()
 {
     cancelled_.store(true, std::memory_order_release);
+}
+
+void EndstoneTask::release()
+{
+    task_ = nullptr;
+}
+
+std::function<void()> EndstoneTask::takeTask()
+{
+    return std::exchange(task_, nullptr);
 }
 
 EndstoneScheduler &EndstoneTask::getScheduler() const

@@ -14,6 +14,8 @@
 
 #pragma once
 
+#include <format>
+#include <memory>
 #include <stdexcept>
 #include <string>
 #include <vector>
@@ -21,6 +23,7 @@
 #include "endstone/command/command.h"
 #include "endstone/command/command_executor.h"
 #include "endstone/plugin/plugin.h"
+#include "endstone/util/pointers.h"
 
 namespace endstone {
 
@@ -29,13 +32,18 @@ namespace endstone {
  */
 class PluginCommand : public Command {
 public:
-    PluginCommand(const Command &command, Plugin &owner) : Command(command), owner_(owner) {}
+    PluginCommand(const Command &command, const NotNull<Plugin> &owner) : Command(command), owner_(owner.get()) {}
 
     bool execute(const NotNull<CommandSender> &sender, const std::vector<std::string> &args) const override
     {
-        if (!owner_.isEnabled()) {
-            sender->sendMessage("Cannot execute command '{}' in plugin {}. Plugin is disabled.", getName(),
-                                getPlugin().getDescription().getFullName());
+        const auto owner = getPlugin();
+        if (!owner) {
+            sender->sendMessage("Cannot execute command '{}' - plugin is disabled.", getName());
+            return false;
+        }
+        if (!owner->isEnabled()) {
+            sender->sendMessage("Cannot execute command '{}' in plugin {} - plugin is disabled.", getName(),
+                                owner->getDescription().getFullName());
             return false;
         }
 
@@ -47,9 +55,9 @@ public:
             return getExecutor().onCommand(sender, *this, args);
         }
         catch (std::exception &e) {
-            getPlugin().getLogger().error("Unhandled exception executing command '{}' in plugin {}", getName(),
-                                          owner_.getDescription().getFullName());
-            getPlugin().getLogger().error(e.what());
+            owner->getLogger().error("Unhandled exception executing command '{}' in plugin {}", getName(),
+                                     owner->getDescription().getFullName());
+            owner->getLogger().error(e.what());
             return false;
         }
     }
@@ -71,15 +79,19 @@ public:
         if (executor_) {
             return *executor_;
         }
-        return owner_;
+        const auto owner = getPlugin();
+        if (!owner) {
+            throw std::runtime_error(std::format("Cannot execute command '{}' - plugin is disabled.", getName()));
+        }
+        return *owner;
     }
 
     /**
      * Gets the owner of this PluginCommand.
      *
-     * @return Plugin that owns this command
+     * @return Plugin that owns this command, or a null handle if the plugin has been unloaded
      */
-    [[maybe_unused]] [[nodiscard]] Plugin &getPlugin() const { return owner_; }
+    [[maybe_unused]] [[nodiscard]] Nullable<Plugin> getPlugin() const { return owner_.lock(); }
 
     [[nodiscard]] ClassInfo getClassInfo() const override { return typeid(PluginCommand); }
     [[nodiscard]] bool isInstanceOf(ClassInfo target) const override
@@ -88,7 +100,7 @@ public:
     }
 
 private:
-    Plugin &owner_;
+    std::weak_ptr<Plugin> owner_;
     Nullable<CommandExecutor> executor_;
 };
 }  // namespace endstone

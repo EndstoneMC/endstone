@@ -17,6 +17,7 @@
 #include <cstdint>
 
 #include "endstone/plugin/plugin.h"
+#include "endstone/util/pointers.h"
 
 namespace endstone {
 
@@ -39,9 +40,10 @@ public:
     /**
      * Returns the Plugin that owns this task.
      *
-     * @return The Plugin that owns the task
+     * @return The Plugin that owns the task, or a null handle if the server scheduled it or the plugin has been
+     *         unloaded
      */
-    [[nodiscard]] virtual Plugin *getOwner() const = 0;
+    [[nodiscard]] virtual Nullable<Plugin> getOwner() const = 0;
 
     /**
      * Returns true if the Task is a sync task.

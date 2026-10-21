@@ -22,9 +22,9 @@ class Task:
         """
 
     @property
-    def owner(self) -> Plugin:
+    def owner(self) -> Plugin | None:
         """
-        The `Plugin` that owns this task.
+        The `Plugin` that owns this task, or `None` if the server scheduled it or the plugin has been unloaded, as by `/reload`.
         """
 
     @property

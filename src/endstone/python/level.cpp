@@ -73,8 +73,7 @@ void init_level(py::module_ &m, py::classh<Level> &level, py::classh<Dimension> 
                                "The state of every block actor in this chunk, or an empty list if this chunk is not "
                                "loaded.")
         .def_property_readonly("plugin_chunk_tickets", &Chunk::getPluginChunkTickets,
-                               "The `Plugin`s holding a ticket for this chunk.",
-                               py::return_value_policy::reference)
+                               "The `Plugin`s holding a ticket for this chunk.")
         .def("__repr__", [](const Chunk &self) { return std::format("{}", self); })
         .def("__str__", [](const Chunk &self) { return std::format("{}", self); });
 
@@ -269,7 +268,7 @@ void init_level(py::module_ &m, py::classh<Level> &level, py::classh<Dimension> 
 )doc")
         .def("get_plugin_chunk_tickets",
              py::overload_cast<int, int>(&Dimension::getPluginChunkTickets, py::const_), py::arg("x"), py::arg("z"),
-             py::return_value_policy::reference, R"doc(
+             R"doc(
     Gets which plugins hold a ticket for the `Chunk` at the given coordinates.
 
     The returned list is a snapshot; it does not track tickets added or removed afterwards.
@@ -283,8 +282,7 @@ void init_level(py::module_ &m, py::classh<Level> &level, py::classh<Dimension> 
 )doc")
         .def_property_readonly("plugin_chunk_tickets",
                                py::overload_cast<>(&Dimension::getPluginChunkTickets, py::const_),
-                               "The `Chunk`s each `Plugin` holds a ticket for, as a snapshot.",
-                               py::return_value_policy::reference_internal)
+                               "The `Chunk`s each `Plugin` holds a ticket for, as a snapshot.")
         .def("drop_item", &Dimension::dropItem, py::arg("location"), py::arg("item"), R"doc(
     Drops an item at the specified `Location`.
 

@@ -14,6 +14,7 @@
 
 #pragma once
 
+#include <memory>
 #include <mutex>
 #include <unordered_map>
 #include <vector>
@@ -28,14 +29,14 @@ namespace endstone::core {
 class RegisteredServiceProvider {
 public:
     RegisteredServiceProvider(const std::string &name, NotNull<Service> provider, ServicePriority priority,
-                              Plugin &plugin)
-        : name_(name), plugin_(plugin), provider_(std::move(provider)), priority_(priority)
+                              const NotNull<Plugin> &plugin)
+        : name_(name), plugin_(plugin.get()), provider_(std::move(provider)), priority_(priority)
     {
     }
 
     [[nodiscard]] std::string getName() const { return name_; }
 
-    [[nodiscard]] Plugin &getPlugin() const { return plugin_; }
+    [[nodiscard]] Nullable<Plugin> getPlugin() const { return plugin_.lock(); }
 
     [[nodiscard]] NotNull<Service> getProvider() const { return provider_; }
 
@@ -58,16 +59,16 @@ public:
 
 private:
     std::string name_;
-    std::reference_wrapper<Plugin> plugin_;
+    std::weak_ptr<Plugin> plugin_;
     NotNull<Service> provider_;
     ServicePriority priority_;
 };
 
 class EndstoneServiceManager : public ServiceManager {
 public:
-    void registerService(std::string name, NotNull<Service> provider, const Plugin &plugin,
+    void registerService(std::string name, NotNull<Service> provider, const NotNull<Plugin> &plugin,
                          ServicePriority priority) override;
-    void unregisterAll(const Plugin &plugin) override;
+    void unregisterAll(const NotNull<Plugin> &plugin) override;
     void unregister(std::string name, const NotNull<Service> &provider) override;
     void unregister(const NotNull<Service> &provider) override;
     Nullable<Service> get(std::string name) const override;
