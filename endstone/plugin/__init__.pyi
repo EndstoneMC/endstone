@@ -96,9 +96,9 @@ class PluginCommand(Command):
     Represents a Command belonging to a Plugin.
     """
     @property
-    def executor(self) -> CommandExecutor:
+    def executor(self) -> CommandExecutor | None:
         """
-        The `CommandExecutor` to run when parsing this command.
+        The `CommandExecutor` to run when parsing this command, the owning plugin when none is set, or `None` if none is set and the plugin has been unloaded.
         """
 
     @executor.setter

@@ -460,7 +460,8 @@ void init_plugin(py::module &m)
     plugin_command
         .def_property("executor", &PluginCommand::getExecutor,
                       py::cpp_function(&PluginCommand::setExecutor, py::keep_alive<1, 2>()),
-                      py::return_value_policy::reference, "The `CommandExecutor` to run when parsing this command.")
+                      "The `CommandExecutor` to run when parsing this command, the owning plugin when none is set, "
+                      "or `None` if none is set and the plugin has been unloaded.")
         .def_property_readonly("plugin", &PluginCommand::getPlugin,
                                "The owner of this `PluginCommand`, or `None` if the plugin has been unloaded.");
 

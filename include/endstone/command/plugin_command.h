@@ -14,7 +14,6 @@
 
 #pragma once
 
-#include <format>
 #include <memory>
 #include <stdexcept>
 #include <string>
@@ -52,7 +51,7 @@ public:
         }
 
         try {
-            return getExecutor().onCommand(sender, *this, args);
+            return getExecutor()->onCommand(sender, *this, args);
         }
         catch (std::exception &e) {
             owner->getLogger().error("Unhandled exception executing command '{}' in plugin {}", getName(),
@@ -72,18 +71,15 @@ public:
     /**
      * Gets the CommandExecutor associated with this command.
      *
-     * @return CommandExecutor object linked to this command
+     * @return CommandExecutor object linked to this command, the owning plugin when none is set, or a null handle if
+     *         none is set and the owning plugin has been unloaded
      */
-    [[nodiscard]] virtual CommandExecutor &getExecutor() const
+    [[nodiscard]] virtual Nullable<CommandExecutor> getExecutor() const
     {
         if (executor_) {
-            return *executor_;
+            return executor_;
         }
-        const auto owner = getPlugin();
-        if (!owner) {
-            throw std::runtime_error(std::format("Cannot execute command '{}' - plugin is disabled.", getName()));
-        }
-        return *owner;
+        return getPlugin();
     }
 
     /**
