@@ -33,7 +33,7 @@ namespace endstone {
  */
 class EventHandler {
 public:
-    EventHandler(std::string event, std::function<void(Event &)> executor, EventPriority priority,
+    EventHandler(std::string event, std::function<void(const NotNull<Event> &)> executor, EventPriority priority,
                  const NotNull<Plugin> &plugin, bool ignore_cancelled)
         : event_(std::move(event)), executor_(std::move(executor)), priority_(priority), plugin_(plugin.get()),
           ignore_cancelled_(ignore_cancelled)
@@ -65,12 +65,12 @@ public:
      *
      * @param event The event
      */
-    void callEvent(Event &event) const
+    void callEvent(const NotNull<Event> &event) const
     {
-        if (event.getEventName() != event_) {
+        if (event->getEventName() != event_) {
             return;
         }
-        if (event.isCancellable() && event.isCancelled() && isIgnoreCancelled()) {
+        if (event->isCancellable() && event->isCancelled() && isIgnoreCancelled()) {
             return;
         }
         executor_(event);
@@ -85,7 +85,7 @@ public:
 
 private:
     std::string event_;
-    std::function<void(Event &)> executor_;
+    std::function<void(const NotNull<Event> &)> executor_;
     EventPriority priority_;
     std::weak_ptr<Plugin> plugin_;
     bool ignore_cancelled_;

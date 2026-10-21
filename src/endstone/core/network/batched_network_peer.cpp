@@ -357,7 +357,7 @@ void EndstoneBatchedNetworkPeer::sendPacket(const std::string &data, Reliability
         break;
     }
 
-    server.getPluginManager().callEvent(*e);
+    server.getPluginManager().callEvent(e);
     if (e->isCancelled()) {
         return;
     }
@@ -443,7 +443,7 @@ NetworkPeer::DataStatus EndstoneBatchedNetworkPeer::_receivePacket(std::string &
                 e->setPayload(std::string(e->getPayload()));
             }
         });
-        server.getPluginManager().callEvent(*e);
+        server.getPluginManager().callEvent(e);
         if (e->isCancelled()) {
             continue;
         }

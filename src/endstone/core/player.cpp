@@ -378,7 +378,7 @@ void EndstonePlayer::untrackAndHideActor(const NotNull<Actor> &actor)
     getHandle().sendNetworkPacket(*packet);
 
     const auto event = std::make_shared<PlayerHideActorEvent>(self(), actor);
-    server_.getPluginManager().callEvent(*event);
+    server_.getPluginManager().callEvent(event);
 }
 
 void EndstonePlayer::showActor(const NotNull<Plugin> &plugin, const NotNull<Actor> &actor)
@@ -421,7 +421,7 @@ void EndstonePlayer::trackAndShowActor(const NotNull<Actor> &actor)
     }
 
     const auto event = std::make_shared<PlayerShowActorEvent>(self(), actor);
-    server_.getPluginManager().callEvent(*event);
+    server_.getPluginManager().callEvent(event);
 }
 
 bool EndstonePlayer::canSee(const Actor &actor) const
@@ -1046,7 +1046,7 @@ void EndstonePlayer::doFirstSpawn()
     const auto &server = static_cast<EndstoneServer &>(getServer());
     Message join_message = Translatable(ColorFormat::Yellow + "%multiplayer.player.joined", {getName()});
     const auto e = std::make_shared<PlayerJoinEvent>(self(), join_message);
-    server.getPluginManager().callEvent(*e);
+    server.getPluginManager().callEvent(e);
     join_message = e->getJoinMessage().value_or("");
     if (server.isServerTextEnabled(ServerTextEvent::PlayerConnection) &&
         (!std::holds_alternative<std::string>(join_message) || !std::get<std::string>(join_message).empty())) {

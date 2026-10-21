@@ -117,7 +117,7 @@ public:
                 return;
             }
             const auto event = std::make_shared<PluginEnableEvent>(plugin);
-            server_.getPluginManager().callEvent(*event);
+            server_.getPluginManager().callEvent(event);
         }
     }
 
@@ -141,7 +141,7 @@ public:
                 return;
             }
             const auto event = std::make_shared<PluginDisableEvent>(plugin);
-            server_.getPluginManager().callEvent(*event);
+            server_.getPluginManager().callEvent(event);
         }
     }
 

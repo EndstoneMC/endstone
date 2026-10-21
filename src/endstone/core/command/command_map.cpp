@@ -91,7 +91,7 @@ bool EndstoneCommandMap::dispatch(const NotNull<CommandSender> &sender, std::str
     if (!command) {
         const auto event = std::make_shared<UnknownCommandEvent>(
             sender, command_line, Message{Translatable("commands.generic.unknown", {args[0]})});
-        server_.getPluginManager().callEvent(*event);
+        server_.getPluginManager().callEvent(event);
         if (const auto message = event->getMessage()) {
             sender->sendErrorMessage(*message);
         }

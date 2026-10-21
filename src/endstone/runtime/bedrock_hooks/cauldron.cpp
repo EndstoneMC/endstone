@@ -135,7 +135,7 @@ void CauldronBlock::use(BlockEvents::BlockPlayerInteractEvent &event_data) const
                 player.getEndstoneActor<endstone::core::EndstonePlayer>(), block_handle, block_handle, *block_face,
                 bucket_stack.getType(), endstone::core::EndstoneItemStack::fromMinecraft(*result_item),
                 endstone::EquipmentSlot::Hand);
-            server.getPluginManager().callEvent(*event);
+            server.getPluginManager().callEvent(event);
             cancelled = event->isCancelled();
             replacement = event->getItemStack();
         }
@@ -144,7 +144,7 @@ void CauldronBlock::use(BlockEvents::BlockPlayerInteractEvent &event_data) const
                 player.getEndstoneActor<endstone::core::EndstonePlayer>(), block_handle, block_handle, *block_face,
                 bucket_stack.getType(), endstone::core::EndstoneItemStack::fromMinecraft(*result_item),
                 endstone::EquipmentSlot::Hand);
-            server.getPluginManager().callEvent(*event);
+            server.getPluginManager().callEvent(event);
             cancelled = event->isCancelled();
             replacement = event->getItemStack();
         }
@@ -160,7 +160,7 @@ void CauldronBlock::use(BlockEvents::BlockPlayerInteractEvent &event_data) const
         new_state->setData(endstone::core::EndstoneBlockData(const_cast<::Block &>(*new_block)));
         level_event = std::make_shared<endstone::CauldronLevelChangeEvent>(
             block_handle, player.getEndstoneActor<endstone::core::EndstonePlayer>(), reason, new_state);
-        server.getPluginManager().callEvent(*level_event);
+        server.getPluginManager().callEvent(level_event);
         if (level_event->isCancelled()) {
             event_data.successful = true;
             return;
@@ -260,7 +260,7 @@ void CauldronBlock::setLiquidLevel(BlockSource &region, const BlockPos &pos, int
     auto new_state = block_handle->captureState(true);
     new_state->setData(endstone::core::EndstoneBlockData(const_cast<::Block &>(new_block)));
     const auto event = std::make_shared<endstone::CauldronLevelChangeEvent>(block_handle, actor, reason, new_state);
-    server.getPluginManager().callEvent(*event);
+    server.getPluginManager().callEvent(event);
     if (event->isCancelled()) {
         return;
     }

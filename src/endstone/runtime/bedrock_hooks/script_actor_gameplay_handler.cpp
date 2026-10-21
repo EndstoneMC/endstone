@@ -48,7 +48,7 @@ bool handleEvent(const ActorDiedEvent &event)
         const auto e = std::make_shared<endstone::ActorDeathEvent>(
             mob->getEndstoneActor<endstone::core::EndstoneMob>(),
             std::make_shared<endstone::core::EndstoneDamageSource>(*event.source));
-        server.getPluginManager().callEvent(*e);
+        server.getPluginManager().callEvent(e);
     }
     return true;
 }
@@ -69,7 +69,7 @@ void closeInventoryViewers(::Actor &actor)
         player.getEntity().removeComponent<endstone::core::InternalOpenContainerComponent>();
         const auto e = std::make_shared<endstone::InventoryCloseEvent>(
             inventory, player.getEndstoneActor<endstone::core::EndstonePlayer>());
-        endstone::core::EndstoneServer::getInstance().getPluginManager().callEvent(*e);
+        endstone::core::EndstoneServer::getInstance().getPluginManager().callEvent(e);
         static_cast<ServerPlayer &>(player).initiateContainerClose();
         return true;
     });
@@ -90,7 +90,7 @@ bool handleEvent(const ActorRemovedEvent &event)
         }
 
         const auto e = std::make_shared<endstone::ActorRemoveEvent>(actor->getEndstoneActor());
-        endstone::core::EndstoneServer::getInstance().getPluginManager().callEvent(*e);
+        endstone::core::EndstoneServer::getInstance().getPluginManager().callEvent(e);
         closeInventoryViewers(*actor);
     }
     return true;
@@ -103,7 +103,7 @@ bool handleEvent(::ActorBeforeHurtEvent &event)
     auto mob = event.entity.getEndstoneActor<endstone::core::EndstoneMob>();
     const auto e = std::make_shared<endstone::ActorDamageEvent>(
         mob, std::make_shared<endstone::core::EndstoneDamageSource>(source), event.damage);
-    server.getPluginManager().callEvent(*e);
+    server.getPluginManager().callEvent(e);
     if (e->isCancelled()) {
         return false;
     }
@@ -139,7 +139,7 @@ bool handleEvent(::ActorAddEffectEvent &event)
     const auto e = std::make_shared<endstone::ActorEffectEvent>(mob->getEndstoneActor<endstone::core::EndstoneMob>(),
                                                                 endstone::ActorEffectEvent::Action::Added, type,
                                                                 std::nullopt, effect);
-    server.getPluginManager().callEvent(*e);
+    server.getPluginManager().callEvent(e);
     return !e->isCancelled();
 }
 
@@ -159,7 +159,7 @@ bool handleEvent(::ActorBeforeAcquireItemEvent &event)
     const auto e = std::make_shared<endstone::ActorPickupItemEvent>(
         event.actor.getEndstoneActor(), event.item.getEndstoneActor<endstone::core::EndstoneItem>(),
         event.amount_acquired);
-    server.getPluginManager().callEvent(*e);
+    server.getPluginManager().callEvent(e);
     return !e->isCancelled();
 }
 
@@ -178,7 +178,7 @@ bool handleEvent(const ActorStopRidingEvent &event)
 
     const auto e =
         std::make_shared<endstone::ActorDismountEvent>(passenger->getEndstoneActor(), vehicle->getEndstoneActor());
-    server.getPluginManager().callEvent(*e);
+    server.getPluginManager().callEvent(e);
     return !e->isCancelled();
 }
 
@@ -196,7 +196,7 @@ bool handleEvent(const ActorGriefingBlockEvent &event)
 
     const auto e = std::make_shared<endstone::ActorChangeBlockEvent>(
         actor->getEndstoneActor(), endstone::core::EndstoneBlock::at(**event.block_source_handle, BlockPos(event.pos)));
-    server.getPluginManager().callEvent(*e);
+    server.getPluginManager().callEvent(e);
     return !e->isCancelled();
 }
 }  // namespace

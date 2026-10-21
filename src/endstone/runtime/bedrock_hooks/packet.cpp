@@ -112,7 +112,7 @@ void EndstonePacketHandler::handle(AnimatePacket &packet)
     const auto endstone_player = player->getEndstoneActor<EndstonePlayer>();
     const auto e =
         std::make_shared<PlayerArmSwingEvent>(endstone_player, endstone_player->getInventory().getItemInMainHand());
-    endstone_player->getServer().getPluginManager().callEvent(*e);
+    endstone_player->getServer().getPluginManager().callEvent(e);
     if (e->isCancelled()) {
         return;
     }
@@ -135,7 +135,7 @@ void EndstonePacketHandler::handle(MobEquipmentPacket &packet)
         return;
     }
     const auto e = std::make_shared<PlayerItemHeldEvent>(endstone_player, from_slot, to_slot);
-    endstone_player->getServer().getPluginManager().callEvent(*e);
+    endstone_player->getServer().getPluginManager().callEvent(e);
     if (e->isCancelled()) {
         endstone_player->getInventory().setHeldItemSlot(from_slot);
         return;
@@ -215,7 +215,7 @@ void EndstonePacketHandler::handle(BookEditPacket &packet)
 
     const auto e =
         std::make_shared<PlayerEditBookEvent>(endstone_player, slot, previous_book_meta, new_book_meta, is_signing);
-    endstone_player->getServer().getPluginManager().callEvent(*e);
+    endstone_player->getServer().getPluginManager().callEvent(e);
     if (e->isCancelled()) {
         inventory.clear(slot);
         inventory.setItem(slot, item);
@@ -272,7 +272,7 @@ void EndstonePacketHandler::handle(PlayerSkinPacket &packet)
                                                    {endstone_player->getName()});
         const auto e = std::make_shared<PlayerSkinChangeEvent>(
             endstone_player, EndstoneSkin::fromMinecraft(packet.payload.skin), skin_change_message);
-        server.getPluginManager().callEvent(*e);
+        server.getPluginManager().callEvent(e);
         if (e->isCancelled()) {
             auto new_packet = MinecraftPackets::createPacket(MinecraftPacketIds::PlayerSkin);
             auto &new_pk = static_cast<PlayerSkinPacket &>(*new_packet);
@@ -319,7 +319,7 @@ void EndstonePacketHandler::handle(EmotePacket &packet)
     const auto endstone_player = player->getEndstoneActor<EndstonePlayer>();
     const auto e =
         std::make_shared<PlayerEmoteEvent>(endstone_player, packet.payload.piece_id, packet.isEmoteChatMuted());
-    endstone_player->getServer().getPluginManager().callEvent(*e);
+    endstone_player->getServer().getPluginManager().callEvent(e);
     if (e->isCancelled()) {
         return;
     }
@@ -371,7 +371,7 @@ void EndstonePacketHandler::handle(SetPlayerInventoryOptionsPacket &packet)
 
     const auto e = std::make_shared<PlayerRecipeBookSettingsChangeEvent>(
         endstone_player, PlayerRecipeBookSettingsChangeEvent::RecipeBookType::Crafting, is_open, options.filtering);
-    endstone_player->getServer().getPluginManager().callEvent(*e);
+    endstone_player->getServer().getPluginManager().callEvent(e);
     handle();
 }
 
@@ -402,29 +402,29 @@ void EndstonePacketHandler::handle(PlayerAuthInputPacket &packet)
     if (packet.getInput(PlayerAuthInputPacket::InputData::StartSprinting) && !player->isSprinting() &&
         listeners.isEventRegistered<PlayerToggleSprintEvent>()) {
         const auto e = std::make_shared<PlayerToggleSprintEvent>(endstone_player, true);
-        plugin_manager.callEvent(*e);
+        plugin_manager.callEvent(e);
     }
     if (packet.getInput(PlayerAuthInputPacket::InputData::StopSprinting) && player->isSprinting() &&
         listeners.isEventRegistered<PlayerToggleSprintEvent>()) {
         const auto e = std::make_shared<PlayerToggleSprintEvent>(endstone_player, false);
-        plugin_manager.callEvent(*e);
+        plugin_manager.callEvent(e);
     }
     if (packet.getInput(PlayerAuthInputPacket::InputData::StartSneaking) && !player->isSneaking() &&
         listeners.isEventRegistered<PlayerToggleSneakEvent>()) {
         const auto e = std::make_shared<PlayerToggleSneakEvent>(endstone_player, true);
-        plugin_manager.callEvent(*e);
+        plugin_manager.callEvent(e);
     }
     if (packet.getInput(PlayerAuthInputPacket::InputData::StopSneaking) && player->isSneaking() &&
         listeners.isEventRegistered<PlayerToggleSneakEvent>()) {
         const auto e = std::make_shared<PlayerToggleSneakEvent>(endstone_player, false);
-        plugin_manager.callEvent(*e);
+        plugin_manager.callEvent(e);
     }
     if (packet.getInput(PlayerAuthInputPacket::InputData::MissedSwing) &&
         listeners.isEventRegistered<PlayerInteractEvent>()) {
         const auto e = std::make_shared<PlayerInteractEvent>(endstone_player, PlayerInteractEvent::Action::LeftClickAir,
                                                              endstone_player->getInventory().getItemInMainHand(),
                                                              nullptr, BlockFace::South, std::nullopt);
-        plugin_manager.callEvent(*e);
+        plugin_manager.callEvent(e);
         if (e->isCancelled()) {
             packet.setInput(PlayerAuthInputPacket::InputData::MissedSwing, false);
         }
@@ -432,46 +432,46 @@ void EndstonePacketHandler::handle(PlayerAuthInputPacket &packet)
     if (packet.getInput(PlayerAuthInputPacket::InputData::StartSwimming) && !player->isSwimming() &&
         listeners.isEventRegistered<ActorToggleSwimEvent>()) {
         const auto e = std::make_shared<ActorToggleSwimEvent>(endstone_player, true);
-        plugin_manager.callEvent(*e);
+        plugin_manager.callEvent(e);
     }
     if (packet.getInput(PlayerAuthInputPacket::InputData::StopSwimming) && player->isSwimming() &&
         listeners.isEventRegistered<ActorToggleSwimEvent>()) {
         const auto e = std::make_shared<ActorToggleSwimEvent>(endstone_player, false);
-        plugin_manager.callEvent(*e);
+        plugin_manager.callEvent(e);
     }
     if (packet.getInput(PlayerAuthInputPacket::InputData::StartGliding) && !player->isGliding() &&
         listeners.isEventRegistered<ActorToggleGlideEvent>()) {
         const auto e = std::make_shared<ActorToggleGlideEvent>(endstone_player, true);
-        plugin_manager.callEvent(*e);
+        plugin_manager.callEvent(e);
     }
     if (packet.getInput(PlayerAuthInputPacket::InputData::StopGliding) && player->isGliding() &&
         listeners.isEventRegistered<ActorToggleGlideEvent>()) {
         const auto e = std::make_shared<ActorToggleGlideEvent>(endstone_player, false);
-        plugin_manager.callEvent(*e);
+        plugin_manager.callEvent(e);
     }
     if (packet.getInput(PlayerAuthInputPacket::InputData::StartCrawling) && !player->isCrawling() &&
         listeners.isEventRegistered<PlayerToggleCrawlEvent>()) {
         const auto e = std::make_shared<PlayerToggleCrawlEvent>(endstone_player, true);
-        plugin_manager.callEvent(*e);
+        plugin_manager.callEvent(e);
     }
     if (packet.getInput(PlayerAuthInputPacket::InputData::StopCrawling) && player->isCrawling() &&
         listeners.isEventRegistered<PlayerToggleCrawlEvent>()) {
         const auto e = std::make_shared<PlayerToggleCrawlEvent>(endstone_player, false);
-        plugin_manager.callEvent(*e);
+        plugin_manager.callEvent(e);
     }
     if (packet.getInput(PlayerAuthInputPacket::InputData::StartFlying) && endstone_player->getAllowFlight() &&
         !player->isFlying() && listeners.isEventRegistered<PlayerToggleFlightEvent>()) {
         const auto e = std::make_shared<PlayerToggleFlightEvent>(endstone_player, true);
-        plugin_manager.callEvent(*e);
+        plugin_manager.callEvent(e);
     }
     if (packet.getInput(PlayerAuthInputPacket::InputData::StopFlying) && endstone_player->getAllowFlight() &&
         player->isFlying() && listeners.isEventRegistered<PlayerToggleFlightEvent>()) {
         const auto e = std::make_shared<PlayerToggleFlightEvent>(endstone_player, false);
-        plugin_manager.callEvent(*e);
+        plugin_manager.callEvent(e);
     }
     if (input_changed && listeners.isEventRegistered<PlayerInputEvent>()) {
         const auto e = std::make_shared<PlayerInputEvent>(endstone_player, player_input);
-        plugin_manager.callEvent(*e);
+        plugin_manager.callEvent(e);
     }
 
     auto &actions = packet.payload.player_block_actions.actions_;
@@ -484,7 +484,7 @@ void EndstonePacketHandler::handle(PlayerAuthInputPacket &packet)
             const auto e =
                 std::make_shared<PlayerInteractEvent>(endstone_player, PlayerInteractEvent::Action::LeftClickBlock,
                                                       item, block, static_cast<BlockFace>(action.facing), std::nullopt);
-            plugin_manager.callEvent(*e);
+            plugin_manager.callEvent(e);
             if (e->isCancelled()) {
                 it = actions.erase(it);
                 continue;
@@ -512,7 +512,7 @@ void EndstonePacketHandler::handle(PlayerAuthInputPacket &packet)
     if (packet.getInput(PlayerAuthInputPacket::InputData::Jumping) && on_ground && delta.y > 0.0F &&
         listeners.isEventRegistered<PlayerJumpEvent>()) {
         const auto e = std::make_shared<PlayerJumpEvent>(endstone_player, from, to);
-        plugin_manager.callEvent(*e);
+        plugin_manager.callEvent(e);
         if (e->isCancelled()) {
             player->addOrRemoveComponent<InternalTeleportFlagComponent>(true);
             endstone_player->teleport(from);
@@ -524,7 +524,7 @@ void EndstonePacketHandler::handle(PlayerAuthInputPacket &packet)
     if ((delta.lengthSquared() > 1.0F / 256 || delta_angle.lengthSquared() > 10.0F) &&
         listeners.isEventRegistered<PlayerMoveEvent>()) {
         const auto e = std::make_shared<PlayerMoveEvent>(endstone_player, from, to);
-        plugin_manager.callEvent(*e);
+        plugin_manager.callEvent(e);
         if (e->isCancelled()) {
             if (delta_angle.lengthSquared() > 0.0F) {
                 player->addOrRemoveComponent<InternalTeleportFlagComponent>(true);

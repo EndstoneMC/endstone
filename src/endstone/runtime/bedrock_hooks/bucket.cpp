@@ -77,7 +77,7 @@ InteractionResult BucketItem::_useOn(::ItemStack &item_stack, ::Actor &actor, Bl
             player.getEndstoneActor<endstone::core::EndstonePlayer>(), block_handle, block_handle, *block_face,
             bucket_stack.getType(), endstone::core::EndstoneItemStack::fromMinecraft(*result_item),
             endstone::EquipmentSlot::Hand);
-        server.getPluginManager().callEvent(*event);
+        server.getPluginManager().callEvent(event);
         cancelled = event->isCancelled();
         replacement = event->getItemStack();
     }
@@ -127,7 +127,7 @@ InteractionResult BucketItem::_useOn(::ItemStack &item_stack, ::Actor &actor, Bl
             endstone::core::EndstoneBlock::at(block_source, empty_position),
             endstone::core::EndstoneBlock::at(block_source, position), *block_face, bucket_stack.getType(),
             endstone::core::EndstoneItemStack::fromMinecraft(*result_item), endstone::EquipmentSlot::Hand);
-        server.getPluginManager().callEvent(*event);
+        server.getPluginManager().callEvent(event);
         cancelled = event->isCancelled();
         replacement = event->getItemStack();
     }

@@ -43,7 +43,7 @@ void ServerNetworkHandler::disconnectClientWithMessage(const NetworkIdentifier &
             auto kick_message = getI18n().get(message, nullptr);
             const auto e = std::make_shared<endstone::PlayerKickEvent>(
                 player->getEndstoneActor<endstone::core::EndstonePlayer>(), kick_message);
-            server.getPluginManager().callEvent(*e);
+            server.getPluginManager().callEvent(e);
             if (e->isCancelled()) {
                 return;
             }
@@ -74,7 +74,7 @@ bool ServerNetworkHandler::tryToLoadPlayer(ServerPlayer &server_player, const Co
     endstone_player->initFromConnectionRequest(connection_request);
 
     const auto e = std::make_shared<endstone::PlayerLoginEvent>(endstone_player);
-    server.getPluginManager().callEvent(*e);
+    server.getPluginManager().callEvent(e);
     if (e->isCancelled()) {
         server_player.addOrRemoveComponent<endstone::core::InternalLoginCancelledFlagComponent>(true);
         const auto identifier = server_player.getPersistentComponent<UserEntityIdentifierComponent>();

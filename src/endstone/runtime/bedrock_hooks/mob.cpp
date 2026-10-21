@@ -39,7 +39,7 @@ void Mob::knockback(Actor *source, float damage, float dx, float dz, const Knock
     const auto e = std::make_shared<endstone::ActorKnockbackEvent>(
         getEndstoneActor<endstone::core::EndstoneMob>(), source == nullptr ? nullptr : source->getEndstoneActor(),
         endstone::Vector{diff.x, diff.y, diff.z});
-    server.getPluginManager().callEvent(*e);
+    server.getPluginManager().callEvent(e);
 
     const auto knockback = e->getKnockback();
     diff = e->isCancelled() ? Vec3::ZERO : Vec3{knockback.getX(), knockback.getY(), knockback.getZ()};

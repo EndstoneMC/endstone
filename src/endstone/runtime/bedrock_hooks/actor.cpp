@@ -39,7 +39,7 @@ void Actor::teleportTo(const Vec3 &pos, bool should_stop_riding, int cause, int 
         auto actor = getEndstoneActor();
         endstone::Location to{actor->getDimension(), pos.x, pos.y, pos.z, getRotation().x, getRotation().y};
         const auto e = std::make_shared<endstone::ActorTeleportEvent>(actor, actor->getLocation(), to);
-        server.getPluginManager().callEvent(*e);
+        server.getPluginManager().callEvent(e);
 
         if (e->isCancelled()) {
             return;

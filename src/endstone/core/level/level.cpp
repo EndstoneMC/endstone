@@ -62,7 +62,7 @@ void EndstoneLevel::addDimension(::Dimension &dimension)
     const auto handle = std::make_shared<EndstoneDimension>(dimension.getWeakRef(), *this);
     dimensions_[dimension.getDimensionId().value] = handle;
     const auto event = std::make_shared<DimensionLoadEvent>(handle);
-    server_.getPluginManager().callEvent(*event);
+    server_.getPluginManager().callEvent(event);
 }
 
 std::string EndstoneLevel::getName() const

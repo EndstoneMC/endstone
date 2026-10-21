@@ -46,7 +46,7 @@ Interaction BucketableComponent::getInteraction(::Actor &owner, ::Player &player
                 player->getEndstoneActor<endstone::core::EndstonePlayer>(), owner->getEndstoneActor(),
                 endstone::core::EndstoneItemStack::fromMinecraft(player->getCarriedItem()),
                 endstone::EquipmentSlot::Hand);
-            server.getPluginManager().callEvent(*event);
+            server.getPluginManager().callEvent(event);
             if (event->isCancelled()) {
                 return;
             }

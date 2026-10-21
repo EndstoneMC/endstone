@@ -14,7 +14,7 @@ MapItemSavedData *MapDataManager::_publishMapData(const ActorUniqueID &uuid,
         server.getEndstoneScheduler().runTask([&server, id = uuid.raw_id]() {
             if (auto *map = server.getMap(id)) {
                 const auto e = std::make_shared<endstone::MapInitializeEvent>(*map);
-                server.getPluginManager().callEvent(*e);
+                server.getPluginManager().callEvent(e);
             }
         });
     }

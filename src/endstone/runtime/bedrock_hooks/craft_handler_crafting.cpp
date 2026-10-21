@@ -104,7 +104,7 @@ ItemStackNetResult CraftHandlerCrafting::_handleCraftAction(const ItemStackReque
     const auto e = std::make_shared<endstone::PlayerCraftItemEvent>(
         player_.getEndstoneActor<endstone::core::EndstonePlayer>(), std::move(crafted), std::move(ingredients), results,
         request_action.getNumCrafts());
-    server.getPluginManager().callEvent(*e);
+    server.getPluginManager().callEvent(e);
     if (e->isCancelled()) {
         return ItemStackNetResult::ActionRequestNotAllowed;
     }

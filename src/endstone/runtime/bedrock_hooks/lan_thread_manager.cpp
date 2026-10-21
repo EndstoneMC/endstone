@@ -94,7 +94,7 @@ void NetherNet::LanThreadManager::SendLanBroadcastResponse(const webrtc::SocketA
         endstone::core::EndstoneSocketAddress::fromWebRtcSocketAddress(destination), server_data.server_name,
         server_data.protocol_version, server_data.app_version, server_data.num_players, server_data.max_num_players,
         from.toString(), server_data.level_name, game_mode, 0);
-    server.getPluginManager().callEvent(*event);
+    server.getPluginManager().callEvent(event);
     if (event->isCancelled()) {
         return;
     }

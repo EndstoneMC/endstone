@@ -33,5 +33,5 @@ void TridentItem::releaseUsing(ItemStack &item_stack, Player *player, int durati
     const auto &server = endstone::core::EndstoneServer::getInstance();
     const auto e = std::make_shared<endstone::PlayerRiptideEvent>(
         player->getEndstoneActor<endstone::core::EndstonePlayer>(), item);
-    server.getPluginManager().callEvent(*e);
+    server.getPluginManager().callEvent(e);
 }

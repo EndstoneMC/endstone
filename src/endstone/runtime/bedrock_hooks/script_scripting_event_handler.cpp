@@ -36,7 +36,7 @@ bool handleEvent(const ScriptCommandMessageEvent &event)
     }
 
     const auto e = std::make_shared<endstone::ScriptMessageEvent>(event.message_id, event.message_value, sender);
-    server.getPluginManager().callEvent(*e);
+    server.getPluginManager().callEvent(e);
     return !e->isCancelled();
 }
 

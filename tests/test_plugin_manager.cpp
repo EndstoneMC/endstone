@@ -42,14 +42,14 @@ TEST_F(PluginManagerTest, IsEventRegistered)
 {
     EXPECT_FALSE(manager_.isEventRegistered<PacketSendEvent>());
 
-    manager_.registerEvent(PacketSendEvent::NAME, [](Event &) {}, EventPriority::Normal, plugin_, false);
+    manager_.registerEvent(PacketSendEvent::NAME, [](const NotNull<Event> &) {}, EventPriority::Normal, plugin_, false);
     EXPECT_TRUE(manager_.isEventRegistered<PacketSendEvent>());
     EXPECT_FALSE(manager_.isEventRegistered<PacketReceiveEvent>());
 }
 
 TEST_F(PluginManagerTest, IsEventRegisteredAfterCallWithoutHandlers)
 {
-    PacketReceiveEvent e{nullptr, 0, {}, SocketAddress{}, 0};
+    const auto e = std::make_shared<PacketReceiveEvent>(nullptr, 0, std::string_view{}, SocketAddress{}, 0);
     manager_.callEvent(e);
     EXPECT_FALSE(manager_.isEventRegistered<PacketReceiveEvent>());
 }

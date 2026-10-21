@@ -78,7 +78,7 @@ std::optional<SpawnPosition> fire_set_spawn_event(Player &player, const BlockPos
     }
 
     const auto event = std::make_shared<endstone::PlayerSetSpawnEvent>(endstone_player, cause, std::move(location));
-    server.getPluginManager().callEvent(*event);
+    server.getPluginManager().callEvent(event);
     if (event->isCancelled()) {
         return std::nullopt;
     }
@@ -103,7 +103,7 @@ void Player::teleportTo(const Vec3 &pos, bool should_stop_riding, int cause, int
     auto player = getEndstoneActor<endstone::core::EndstonePlayer>();
     const endstone::Location to{player->getDimension(), pos.x, pos.y, pos.z, getRotation().x, getRotation().y};
     const auto e = std::make_shared<endstone::PlayerTeleportEvent>(player, player->getLocation(), to);
-    server.getPluginManager().callEvent(*e);
+    server.getPluginManager().callEvent(e);
     if (e->isCancelled()) {
         return;
     }
@@ -122,7 +122,7 @@ void Player::completeUsingItem()
                         : endstone::EquipmentSlot::OffHand;
     const auto e = std::make_shared<endstone::PlayerItemConsumeEvent>(
         getEndstoneActor<endstone::core::EndstonePlayer>(), std::move(item), hand);
-    server.getPluginManager().callEvent(*e);
+    server.getPluginManager().callEvent(e);
     if (e->isCancelled()) {
         setStatusFlag(ActorFlags::USINGITEM, false);
         item_in_use_.clearItemInUse(getEntity());
@@ -139,7 +139,7 @@ bool Player::drop(const ItemStack &item, bool randomly)
     if (isAlive() && isPlayerInitialized()) {
         const auto drop = endstone::core::EndstoneItemStack::fromMinecraft(item);
         const auto e = std::make_shared<endstone::PlayerDropItemEvent>(player, drop);
-        server.getPluginManager().callEvent(*e);
+        server.getPluginManager().callEvent(e);
         if (e->isCancelled()) {
             return false;
         }
@@ -152,7 +152,7 @@ void Player::addExperience(int amount)
     const auto &server = endstone::core::EndstoneServer::getInstance();
     const auto e =
         std::make_shared<endstone::PlayerExpChangeEvent>(getEndstoneActor<endstone::core::EndstonePlayer>(), amount);
-    server.getPluginManager().callEvent(*e);
+    server.getPluginManager().callEvent(e);
     ENDSTONE_HOOK_CALL_ORIGINAL(&Player::addExperience, this, e->getAmount());
 }
 
@@ -167,7 +167,7 @@ void Player::addLevels(int levels)
     const auto &server = endstone::core::EndstoneServer::getInstance();
     const auto e = std::make_shared<endstone::PlayerLevelChangeEvent>(
         getEndstoneActor<endstone::core::EndstonePlayer>(), old_level, new_level);
-    server.getPluginManager().callEvent(*e);
+    server.getPluginManager().callEvent(e);
 }
 
 bool Player::take(Actor &actor, int unknown, int favored_slot)
@@ -182,7 +182,7 @@ bool Player::take(Actor &actor, int unknown, int favored_slot)
         auto player = getEndstoneActor<endstone::core::EndstonePlayer>();
         auto item = actor.getEndstoneActor<endstone::core::EndstoneItem>();
         const auto e = std::make_shared<endstone::PlayerPickupItemEvent>(player, item);
-        server.getPluginManager().callEvent(*e);
+        server.getPluginManager().callEvent(e);
         if (e->isCancelled()) {
             return false;
         }
@@ -192,7 +192,7 @@ bool Player::take(Actor &actor, int unknown, int favored_slot)
         auto player = getEndstoneActor<endstone::core::EndstonePlayer>();
         auto arrow = actor.getEndstoneActor();
         const auto e = std::make_shared<endstone::PlayerPickupArrowEvent>(player, arrow);
-        server.getPluginManager().callEvent(*e);
+        server.getPluginManager().callEvent(e);
         if (e->isCancelled()) {
             return false;
         }
@@ -250,7 +250,7 @@ BedSleepingResult Player::startSleepInBed(BlockPos const &bed_block_pos, bool a2
         const auto block = endstone::core::EndstoneBlock::at(getDimensionBlockSource(), bed_block_pos);
 
         const auto e = std::make_shared<endstone::PlayerBedEnterEvent>(player, block);
-        server.getPluginManager().callEvent(*e);
+        server.getPluginManager().callEvent(e);
         if (e->isCancelled()) {
             return BedSleepingResult::OTHER_PROBLEM;
         }
@@ -269,7 +269,7 @@ void Player::stopSleepInBed(bool forceful_wake_up, bool update_level_list)
         const auto block = endstone::core::EndstoneBlock::at(getDimensionBlockSource(), bed_position);
 
         const auto e = std::make_shared<endstone::PlayerBedLeaveEvent>(player, block);
-        server.getPluginManager().callEvent(*e);
+        server.getPluginManager().callEvent(e);
     }
 
     ENDSTONE_HOOK_CALL_ORIGINAL(&Player::stopSleepInBed, this, forceful_wake_up, update_level_list);

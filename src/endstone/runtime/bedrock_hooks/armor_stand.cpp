@@ -103,7 +103,7 @@ Interaction ArmorStand::getInteraction(Player &player, Vec3 const &location)
             endstone::core::EndstoneItemStack::fromMinecraft(armor_stand_item),
             endstone::core::EndstoneItemStack::fromMinecraft(player_item), slot);
         const auto &server = endstone::core::EndstoneServer::getInstance();
-        server.getPluginManager().callEvent(*event);
+        server.getPluginManager().callEvent(event);
         if (event->isCancelled()) {
             return;
         }

@@ -53,7 +53,7 @@ void LiquidBlockBase::_solidify(BlockSource &region, BlockPos const &pos, BlockP
             std::make_shared<endstone::core::EndstoneBlockSnapshot>(region, pos, *placed)->captureState(true);
         const auto event =
             std::make_shared<endstone::BlockFormEvent>(endstone::core::EndstoneBlock::at(region, pos), new_state);
-        server.getPluginManager().callEvent(*event);
+        server.getPluginManager().callEvent(event);
         if (event->isCancelled()) {
             return;
         }
@@ -75,7 +75,7 @@ void LiquidBlock::_trySpreadTo(BlockSource &region, BlockPos const &pos, int nei
         _canSpreadTo(region, pos, flow_from_pos, flow_from_direction) && !region.isInstaticking(pos)) {
         const auto event = std::make_shared<endstone::BlockFromToEvent>(
             endstone::core::EndstoneBlock::at(region, flow_from_pos), endstone::core::EndstoneBlock::at(region, pos));
-        server.getPluginManager().callEvent(*event);
+        server.getPluginManager().callEvent(event);
         if (event->isCancelled()) {
             return;
         }

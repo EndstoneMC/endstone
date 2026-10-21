@@ -337,10 +337,9 @@ void init_plugin(py::module &m)
 )doc")
         .def(
             "register_event",
-            [](PluginManager &self, std::string event, const std::function<void(Event *)> &executor,
+            [](PluginManager &self, std::string event, const std::function<void(const NotNull<Event> &)> &executor,
                EventPriority priority, const NotNull<Plugin> &plugin, bool ignore_cancelled) {
-                self.registerEvent(
-                    std::move(event), [executor](Event &e) { executor(&e); }, priority, plugin, ignore_cancelled);
+                self.registerEvent(std::move(event), executor, priority, plugin, ignore_cancelled);
             },
             py::arg("name"), py::arg("executor"), py::arg("priority"), py::arg("plugin"), py::arg("ignore_cancelled"),
             R"doc(

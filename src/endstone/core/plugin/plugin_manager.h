@@ -59,8 +59,8 @@ public:
     void clearPlugins() override;
 
     /** Event system */
-    void callEvent(Event &event) override;
-    void registerEvent(std::string event, std::function<void(Event &)> executor, EventPriority priority,
+    void callEvent(const NotNull<Event> &event) override;
+    void registerEvent(std::string event, std::function<void(const NotNull<Event> &)> executor, EventPriority priority,
                        const NotNull<Plugin> &plugin, bool ignore_cancelled) override;
     [[nodiscard]] bool isEventRegistered(std::string_view event) const;
 

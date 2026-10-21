@@ -94,7 +94,7 @@ bool callInventoryOpenEvent(const ::Player &player, const endstone::NotNull<ends
     const auto &server = endstone::core::EndstoneServer::getInstance();
     const auto e = std::make_shared<endstone::InventoryOpenEvent>(
         inventory, player.getEndstoneActor<endstone::core::EndstonePlayer>());
-    server.getPluginManager().callEvent(*e);
+    server.getPluginManager().callEvent(e);
     return !e->isCancelled();
 }
 
@@ -103,7 +103,7 @@ void callInventoryCloseEvent(const ::Player &player, const endstone::NotNull<end
     const auto &server = endstone::core::EndstoneServer::getInstance();
     const auto e = std::make_shared<endstone::InventoryCloseEvent>(
         inventory, player.getEndstoneActor<endstone::core::EndstonePlayer>());
-    server.getPluginManager().callEvent(*e);
+    server.getPluginManager().callEvent(e);
 }
 
 BucketFillType getBucketFillType(const ::ItemStack &item)
@@ -206,7 +206,7 @@ bool handleEvent(const PlayerDamageEvent &event)
             const auto e = std::make_shared<endstone::PlayerDeathEvent>(
                 endstone_player, std::make_shared<endstone::core::EndstoneDamageSource>(*event.damage_source),
                 death_message);
-            server.getPluginManager().callEvent(*e);
+            server.getPluginManager().callEvent(e);
             death_message = e->getDeathMessage().value_or("");
 
             // Send death info
@@ -242,7 +242,7 @@ bool handleEvent(const PlayerDisconnectEvent &event)
         endstone::Message quit_message = endstone::Translatable{
             endstone::ColorFormat::Yellow + "%multiplayer.player.left", {endstone_player->getName()}};
         const auto e = std::make_shared<endstone::PlayerQuitEvent>(endstone_player, quit_message);
-        server.getPluginManager().callEvent(*e);
+        server.getPluginManager().callEvent(e);
         endstone_player->disconnect();
 
         quit_message = e->getQuitMessage().value_or("");
@@ -278,7 +278,7 @@ bool handleEvent(const ::PlayerRespawnEvent &event)
                                                              : endstone::PlayerRespawnEvent::RespawnReason::Death;
         const auto e = std::make_shared<endstone::PlayerRespawnEvent>(
             player->getEndstoneActor<endstone::core::EndstonePlayer>(), reason);
-        server.getPluginManager().callEvent(*e);
+        server.getPluginManager().callEvent(e);
     }
     return true;
 }
@@ -291,7 +291,7 @@ bool handleEvent(const PlayerDimensionChangeAfterEvent &event)
             player->getEndstoneActor<endstone::core::EndstonePlayer>(),
             server.getEndstoneLevel()->getDimension(event.from_dimension),
             server.getEndstoneLevel()->getDimension(event.to_dimension));
-        server.getPluginManager().callEvent(*e);
+        server.getPluginManager().callEvent(e);
     }
     return true;
 }
@@ -306,7 +306,7 @@ bool handleEvent(const PlayerGetExperienceOrbEvent &event)
     if (auto *player = WeakEntityRef(event.player).tryUnwrap<::Player>(); player) {
         const auto e = std::make_shared<endstone::PlayerPickupExperienceEvent>(
             player->getEndstoneActor<endstone::core::EndstonePlayer>(), event.experience_value);
-        server.getPluginManager().callEvent(*e);
+        server.getPluginManager().callEvent(e);
         if (e->isCancelled()) {
             player->addOrRemoveComponent<endstone::core::InternalExperienceOrbPickupCancelledFlagComponent>(true);
             return false;
@@ -334,7 +334,7 @@ bool handleEvent(const PlayerInteractWithBlockBeforeEvent &event)
                 event.face_location.y - event.block_location.y,
                 event.face_location.z - event.block_location.z,
             });
-        server.getPluginManager().callEvent(*e);
+        server.getPluginManager().callEvent(e);
         if (e->isCancelled()) {
             return false;
         }
@@ -354,7 +354,7 @@ bool handleEvent(const PlayerInteractWithEntityBeforeEvent &event)
     const auto &server = endstone::core::EndstoneServer::getInstance();
     const auto e = std::make_shared<endstone::PlayerInteractActorEvent>(
         player->getEndstoneActor<endstone::core::EndstonePlayer>(), target->getEndstoneActor());
-    server.getPluginManager().callEvent(*e);
+    server.getPluginManager().callEvent(e);
     if (e->isCancelled()) {
         return false;
     }
@@ -374,7 +374,7 @@ bool handleEvent(const PlayerInteractWithEntityBeforeEvent &event)
         endstone::core::EndstoneItemStack::fromMinecraft(milk_bucket), endstone::EquipmentSlot::Hand);
     bucket_event->setCancelled(
         !block_source.checkBlockPermissions(*player, block_position, Facing::NOT_DEFINED, event.item, false));
-    server.getPluginManager().callEvent(*bucket_event);
+    server.getPluginManager().callEvent(bucket_event);
     if (bucket_event->isCancelled()) {
         player->sendInventory(false);
         return false;
@@ -423,7 +423,7 @@ bool handleEvent(::PlayerGameModeChangeEvent &event)
         const auto e = std::make_shared<endstone::PlayerGameModeChangeEvent>(
             player->getEndstoneActor<endstone::core::EndstonePlayer>(),
             endstone::core::EndstoneGameMode::fromMinecraft(event.to_game_mode));
-        server.getPluginManager().callEvent(*e);
+        server.getPluginManager().callEvent(e);
         if (e->isCancelled()) {
             const auto packet = MinecraftPackets::createPacket(MinecraftPacketIds::UpdatePlayerGameType);
             const auto pk = std::static_pointer_cast<UpdatePlayerGameTypePacket>(packet);

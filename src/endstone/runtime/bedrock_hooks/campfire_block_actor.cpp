@@ -50,7 +50,7 @@ void CampfireBlockActor::_finishCooking(::BlockSource &region, int slot)
                 endstone::core::EndstoneBlock::at(region, position_),
                 endstone::core::EndstoneItemStack::fromMinecraft(source),
                 endstone::core::EndstoneItemStack::fromMinecraft(result), std::move(cooking_recipe));
-            server.getPluginManager().callEvent(*event);
+            server.getPluginManager().callEvent(event);
             if (event->isCancelled()) {
                 return;
             }

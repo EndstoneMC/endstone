@@ -30,7 +30,7 @@ bool handleEvent(const LevelAddedActorEvent &event)
     if (auto *actor = WeakEntityRef(event.actor).tryUnwrap<::Actor>(); actor && !actor->isPlayer()) {
         const auto &server = endstone::core::EndstoneServer::getInstance();
         const auto e = std::make_shared<endstone::ActorSpawnEvent>(actor->getEndstoneActor());
-        server.getPluginManager().callEvent(*e);
+        server.getPluginManager().callEvent(e);
         if (e->isCancelled()) {
             actor->addOrRemoveComponent<endstone::core::InternalRemoveFlagComponent>(true);
             actor->despawn();

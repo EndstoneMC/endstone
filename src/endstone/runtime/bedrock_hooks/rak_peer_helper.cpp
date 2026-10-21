@@ -92,7 +92,7 @@ static std::shared_ptr<endstone::ServerListPingEvent> callServerListPingEvent(en
         server_guid, level_name, game_mode, local_port);
 
     auto &server = endstone::core::EndstoneServer::getInstance();
-    server.getPluginManager().callEvent(*event);
+    server.getPluginManager().callEvent(event);
     return event;
 }
 

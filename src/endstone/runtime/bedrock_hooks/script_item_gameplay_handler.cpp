@@ -31,7 +31,7 @@ bool handleEvent(ItemUseEvent &event)
             player->getEndstoneActor<endstone::core::EndstonePlayer>(),
             endstone::PlayerInteractEvent::Action::RightClickAir,
             endstone::core::EndstoneItemStack::fromMinecraft(item), nullptr, endstone::BlockFace::South, std::nullopt);
-        server.getPluginManager().callEvent(*e);
+        server.getPluginManager().callEvent(e);
         if (e->isCancelled()) {
             return false;
         }

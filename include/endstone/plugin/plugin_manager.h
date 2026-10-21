@@ -148,7 +148,7 @@ public:
      *
      * @param event Event to be called
      */
-    virtual void callEvent(Event &event) = 0;
+    virtual void callEvent(const NotNull<Event> &event) = 0;
 
     /**
      * Registers the given event.
@@ -160,8 +160,8 @@ public:
      * @param ignore_cancelled Do not call executor if event was already
      *     cancelled
      */
-    virtual void registerEvent(std::string event, std::function<void(Event &)> executor, EventPriority priority,
-                               const NotNull<Plugin> &plugin, bool ignore_cancelled) = 0;
+    virtual void registerEvent(std::string event, std::function<void(const NotNull<Event> &)> executor,
+                               EventPriority priority, const NotNull<Plugin> &plugin, bool ignore_cancelled) = 0;
 
     /**
      * Gets a Permission from its fully qualified name.

@@ -46,7 +46,7 @@ bool ContainerComponent::openContainer(Actor &container_actor, Player &player)
     const auto e = std::make_shared<endstone::InventoryOpenEvent>(
         std::make_shared<endstone::core::EndstoneActorInventory>(container_actor.getWeakEntity()),
         player.getEndstoneActor<endstone::core::EndstonePlayer>());
-    endstone::core::EndstoneServer::getInstance().getPluginManager().callEvent(*e);
+    endstone::core::EndstoneServer::getInstance().getPluginManager().callEvent(e);
     if (e->isCancelled()) {
         containerClosed(player);
         return false;

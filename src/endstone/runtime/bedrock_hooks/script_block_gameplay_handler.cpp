@@ -72,7 +72,7 @@ bool handleEvent(const BlockTryPlaceByPlayerEvent &event)
 
     const auto e = std::make_shared<endstone::BlockPlaceEvent>(std::move(block_placed), replaced_state,
                                                                std::move(block_against), endstone_player);
-    server.getPluginManager().callEvent(*e);
+    server.getPluginManager().callEvent(e);
     if (e->isCancelled()) {
         return false;
     }
@@ -94,7 +94,7 @@ bool handleEvent(ExplosionStartedEvent &event)
         auto actor = source->getEndstoneActor<>();
         const auto e =
             std::make_shared<endstone::ActorExplodeEvent>(actor, actor->getLocation(), std::move(block_list));
-        server.getPluginManager().callEvent(*e);
+        server.getPluginManager().callEvent(e);
         if (e->isCancelled()) {
             return false;
         }
@@ -112,7 +112,7 @@ bool handleEvent(ExplosionStartedEvent &event)
         }
         const auto e = std::make_shared<endstone::BlockExplodeEvent>(
             endstone::core::EndstoneBlock::at(block_source, BlockPos(pos.value())), std::move(block_list));
-        server.getPluginManager().callEvent(*e);
+        server.getPluginManager().callEvent(e);
         if (e->isCancelled()) {
             return false;
         }
@@ -138,7 +138,7 @@ bool handleEvent(BlockTryDestroyByPlayerEvent &event)
         const auto e =
             std::make_shared<endstone::BlockBreakEvent>(endstone::core::EndstoneBlock::at(block_source, event.pos),
                                                         player->getEndstoneActor<endstone::core::EndstonePlayer>());
-        server.getPluginManager().callEvent(*e);
+        server.getPluginManager().callEvent(e);
         if (e->isCancelled()) {
             return false;
         }

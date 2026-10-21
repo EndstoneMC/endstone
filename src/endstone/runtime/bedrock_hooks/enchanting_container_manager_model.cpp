@@ -232,7 +232,7 @@ void EnchantingContainerManagerModel::recalculateOptions()
         static_cast<int>(
             EnchantUtils::getBookCasePositions(player_.getDimensionBlockSource(), static_cast<Vec3>(block_pos_))
                 .size()));
-    server.getPluginManager().callEvent(*event);
+    server.getPluginManager().callEvent(event);
 
     if (event->isCancelled()) {
         enchant_options_.clear();

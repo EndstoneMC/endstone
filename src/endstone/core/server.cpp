@@ -266,7 +266,7 @@ void EndstoneServer::setLevel(::Level &level)
                     static_cast<EndstoneDimension &>(*dimension).onChunkLoaded(lc);
                 }
                 const auto e = std::make_shared<ChunkLoadEvent>(std::make_shared<EndstoneChunk>(lc));
-                getPluginManager().callEvent(*e);
+                getPluginManager().callEvent(e);
             }
         },
         Bedrock::PubSub::ConnectPosition::AtBack, nullptr);
@@ -274,7 +274,7 @@ void EndstoneServer::setLevel(::Level &level)
     on_chunk_unload_ = level.getLevelChunkEventManager()->getOnChunkDiscardedConnector().connect(
         [&](LevelChunk &lc) -> void {
             const auto e = std::make_shared<ChunkUnloadEvent>(std::make_shared<EndstoneChunk>(lc));
-            getPluginManager().callEvent(*e);
+            getPluginManager().callEvent(e);
         },
         Bedrock::PubSub::ConnectPosition::AtBack, nullptr);
 
@@ -287,7 +287,7 @@ void EndstoneServer::setLevel(::Level &level)
                                   getEndstoneScheduler().runTask([this, id = map_data.getMapId().raw_id]() {
                                       if (auto *map = getMap(id)) {
                                           const auto e = std::make_shared<MapInitializeEvent>(*map);
-                                          getPluginManager().callEvent(*e);
+                                          getPluginManager().callEvent(e);
                                       }
                                   });
                               },
@@ -296,7 +296,7 @@ void EndstoneServer::setLevel(::Level &level)
     fixServerAnnouncement();
     enablePlugins(PluginLoadOrder::PostWorld);
     const auto event = std::make_shared<ServerLoadEvent>(ServerLoadEvent::LoadType::Startup);
-    getPluginManager().callEvent(*event);
+    getPluginManager().callEvent(event);
 }
 
 void EndstoneServer::initRegistries()
@@ -669,7 +669,7 @@ void EndstoneServer::reload()
     enablePlugins(PluginLoadOrder::Startup);
     enablePlugins(PluginLoadOrder::PostWorld);
     const auto event = std::make_shared<ServerLoadEvent>(ServerLoadEvent::LoadType::Reload);
-    getPluginManager().callEvent(*event);
+    getPluginManager().callEvent(event);
 
     // sync commands
     for (const auto &player : getOnlinePlayers()) {
@@ -694,7 +694,7 @@ void EndstoneServer::broadcast(const Message &message, const std::string &permis
     }
 
     const auto event = std::make_shared<BroadcastMessageEvent>(!isPrimaryThread(), message, recipients);
-    getPluginManager().callEvent(*event);
+    getPluginManager().callEvent(event);
 
     if (event->isCancelled()) {
         return;

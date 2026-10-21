@@ -132,7 +132,7 @@ ItemStackNetResult CraftHandlerEnchant::_handleCraftAction(const ItemStackReques
         inventory, player_.getEndstoneActor<endstone::core::EndstonePlayer>(),
         endstone::core::EndstoneBlock::at(player_.getDimensionBlockSource(), model.getBlockPos()), original_item,
         original_cost, std::move(enchants_to_add), which_button);
-    server.getPluginManager().callEvent(*event);
+    server.getPluginManager().callEvent(event);
     if (event->isCancelled() || event->getEnchantsToAdd().empty()) {
         return ItemStackNetResult::FailedToEnchant;
     }

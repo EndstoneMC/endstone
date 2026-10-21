@@ -66,7 +66,7 @@ GameplayHandlerResult<CoordinatorResult> handleEvent(ChatEvent &event,
     auto original_format = e->getFormat();
     const auto original_recipients = e->getRecipients();
 
-    server.getPluginManager().callEvent(*e);
+    server.getPluginManager().callEvent(e);
     if (e->isCancelled()) {
         return CANCEL;
     }

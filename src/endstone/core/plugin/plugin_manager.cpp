@@ -525,19 +525,19 @@ void EndstonePluginManager::clearPlugins()
     default_perms_[PermissionLevel::Console].clear();
 }
 
-void EndstonePluginManager::callEvent(Event &event)
+void EndstonePluginManager::callEvent(const NotNull<Event> &event)
 {
-    if (event.isAsynchronous() && server_.isPrimaryThread()) {
-        server_.getLogger().error("{} cannot be triggered asynchronously from server thread.", event.getEventName());
+    if (event->isAsynchronous() && server_.isPrimaryThread()) {
+        server_.getLogger().error("{} cannot be triggered asynchronously from server thread.", event->getEventName());
         return;
     }
 
-    if (!event.isAsynchronous() && !server_.isPrimaryThread()) {
-        server_.getLogger().error("{} must be triggered synchronously from server thread.", event.getEventName());
+    if (!event->isAsynchronous() && !server_.isPrimaryThread()) {
+        server_.getLogger().error("{} must be triggered synchronously from server thread.", event->getEventName());
         return;
     }
 
-    auto &handler_list = event_handlers_.emplace(event.getEventName(), event.getEventName()).first->second;
+    auto &handler_list = event_handlers_.emplace(event->getEventName(), event->getEventName()).first->second;
     for (const auto &handler : handler_list.getHandlers()) {
         const auto plugin = handler->getPlugin();
         if (!plugin || !plugin->isEnabled()) {
@@ -548,13 +548,13 @@ void EndstonePluginManager::callEvent(Event &event)
             handler->callEvent(event);
         }
         catch (std::exception &e) {
-            server_.getLogger().error("Could not pass event {} to plugin {}. {}", event.getEventName(),
+            server_.getLogger().error("Could not pass event {} to plugin {}. {}", event->getEventName(),
                                       plugin->getDescription().getFullName(), e.what());
         }
     }
 }
 
-void EndstonePluginManager::registerEvent(std::string event, std::function<void(Event &)> executor,
+void EndstonePluginManager::registerEvent(std::string event, std::function<void(const NotNull<Event> &)> executor,
                                           EventPriority priority, const NotNull<Plugin> &plugin, bool ignore_cancelled)
 {
     if (!plugin->isEnabled()) {

@@ -34,7 +34,7 @@ MCRESULT MinecraftCommands::executeCommand(CommandContext &ctx, bool suppress_ou
         auto player = ctx.getOrigin().getEntity()->getEndstoneActor<endstone::core::EndstonePlayer>();
 
         const auto e = std::make_shared<endstone::PlayerCommandEvent>(player, command_line);
-        server.getPluginManager().callEvent(*e);
+        server.getPluginManager().callEvent(e);
         if (e->isCancelled()) {
             return MCRESULT_CommandsDisabled;
         }
@@ -53,7 +53,7 @@ MCRESULT MinecraftCommands::executeCommand(CommandContext &ctx, bool suppress_ou
         auto console = server.getCommandSender();
 
         const auto e = std::make_shared<endstone::ServerCommandEvent>(console, command_line);
-        server.getPluginManager().callEvent(*e);
+        server.getPluginManager().callEvent(e);
         if (e->isCancelled()) {
             return MCRESULT_CommandsDisabled;
         }
