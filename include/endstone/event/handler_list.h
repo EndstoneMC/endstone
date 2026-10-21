@@ -24,6 +24,7 @@
 
 #include "endstone/event/event_handler.h"
 #include "endstone/event/event_priority.h"
+#include "endstone/util/pointers.h"
 
 namespace endstone {
 
@@ -38,9 +39,9 @@ public:
      * Register a new handler.
      *
      * @param handler Event handler to register
-     * @return the pointer to the registered handler
+     * @return The registered handler, or a null handle if it handles a different event
      */
-    EventHandler *registerHandler(std::unique_ptr<EventHandler> handler)
+    Nullable<EventHandler> registerHandler(const NotNull<EventHandler> &handler)
     {
         if (handler->getEventType() != event_) {
             return nullptr;
@@ -48,45 +49,55 @@ public:
 
         std::lock_guard lock(mtx_);
         valid_ = false;
-        auto &vector =
-            handlers_.emplace(handler->getPriority(), std::vector<std::unique_ptr<EventHandler>>{}).first->second;
-        auto &it = vector.emplace_back(std::move(handler));
-        return it.get();
+        handlers_.emplace(handler->getPriority(), std::vector<NotNull<EventHandler>>{}).first->second.push_back(handler);
+        return handler;
     }
 
     /**
      * Remove a handler from a specific order slot.
      *
      * @param handler Event handler to remove
+     * @return The handlers this list no longer holds, for the caller to release once it holds no lock
      */
-    void unregister(const EventHandler &handler)
+    [[nodiscard]] std::vector<NotNull<EventHandler>> unregister(const EventHandler &handler)
     {
+        std::vector<NotNull<EventHandler>> removed;
         std::lock_guard lock(mtx_);
-        auto &vector =
-            handlers_.emplace(handler.getPriority(), std::vector<std::unique_ptr<EventHandler>>{}).first->second;
-        const auto it = std::find_if(vector.begin(), vector.end(),
-                                     [&](const std::unique_ptr<EventHandler> &h) { return h.get() == &handler; });
-        if (it != vector.end()) {
-            valid_ = false;
-            vector.erase(it);
+        const auto slot = handlers_.find(handler.getPriority());
+        if (slot == handlers_.end()) {
+            return removed;
         }
+        auto &vector = slot->second;
+        const auto it = std::find_if(vector.begin(), vector.end(),
+                                     [&](const NotNull<EventHandler> &h) { return &*h == &handler; });
+        if (it != vector.end()) {
+            removed.push_back(*it);
+            vector.erase(it);
+            dropBaked(removed);
+        }
+        return removed;
     }
 
     /**
      * Remove a specific plugin's handlers from this handler.
      *
      * @param plugin Plugin to remove
+     * @return The handlers this list no longer holds, for the caller to release once it holds no lock
      */
-    void unregister(const NotNull<Plugin> &plugin)
+    [[nodiscard]] std::vector<NotNull<EventHandler>> unregister(const NotNull<Plugin> &plugin)
     {
+        std::vector<NotNull<EventHandler>> removed;
         std::lock_guard lock(mtx_);
         for (auto &[priority, vector] : handlers_) {
-            vector.erase(
-                std::remove_if(vector.begin(), vector.end(),
-                               [&](const std::unique_ptr<EventHandler> &h) { return h->getPlugin() == plugin; }),
-                vector.end());
-            valid_ = false;
+            const auto first = std::stable_partition(
+                vector.begin(), vector.end(), [&](const NotNull<EventHandler> &h) { return h->getPlugin() != plugin; });
+            removed.insert(removed.end(), first, vector.end());
+            vector.erase(first, vector.end());
         }
+        if (!removed.empty()) {
+            dropBaked(removed);
+        }
+        return removed;
     }
 
     /**
@@ -108,7 +119,7 @@ public:
      *
      * @return the array of registered handlers
      */
-    std::vector<EventHandler *> getHandlers() const
+    std::vector<NotNull<EventHandler>> getHandlers() const
     {
         std::lock_guard lock(mtx_);
         if (!valid_) {
@@ -118,6 +129,13 @@ public:
     }
 
 protected:
+    void dropBaked(std::vector<NotNull<EventHandler>> &removed)
+    {
+        removed.insert(removed.end(), baked_handlers_.begin(), baked_handlers_.end());
+        baked_handlers_.clear();
+        valid_ = false;
+    }
+
     void bake() const
     {
         if (valid_) {
@@ -127,7 +145,7 @@ protected:
         baked_handlers_.clear();
         for (const auto &[priority, vector] : handlers_) {
             for (const auto &handler : vector) {
-                baked_handlers_.push_back(handler.get());
+                baked_handlers_.push_back(handler);
             }
         }
         valid_ = true;
@@ -135,8 +153,8 @@ protected:
 
 private:
     mutable std::mutex mtx_;
-    std::map<EventPriority, std::vector<std::unique_ptr<EventHandler>>> handlers_;
-    mutable std::vector<EventHandler *> baked_handlers_;
+    std::map<EventPriority, std::vector<NotNull<EventHandler>>> handlers_;
+    mutable std::vector<NotNull<EventHandler>> baked_handlers_;
     mutable bool valid_{false};
     std::string event_;
 };

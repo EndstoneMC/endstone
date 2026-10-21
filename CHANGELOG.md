@@ -200,6 +200,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Fixed the server crashing when a plugin used an `ItemType`, `BlockType` or other registry entry it had kept from before a reload.
 - Fixed the server crashing when a plugin kept an event and used it after its handler returned.
 - Fixed the server crashing when a plugin read the plugin of a `PermissionAttachment` or the owner of a `Task` after `/reload`.
+- Fixed the server crashing when a client refreshed the server list while `/reload` ran or a plugin was being disabled.
 
 #### API behaviour
 

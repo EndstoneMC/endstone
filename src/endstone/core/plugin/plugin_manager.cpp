@@ -91,7 +91,13 @@ EndstonePluginManager::EndstonePluginManager(Server &server) : server_(server)
 EndstonePluginManager::~EndstonePluginManager()
 {
     lookup_names_.clear();
-    event_handlers_.clear();
+    {
+        decltype(event_handlers_) handlers;
+        {
+            std::unique_lock lock(event_handlers_mtx_);
+            handlers.swap(event_handlers_);
+        }
+    }
     while (!plugin_loaders_.empty()) {
         plugin_loaders_.pop_back();
     }
@@ -492,8 +498,13 @@ void EndstonePluginManager::disablePlugin(const NotNull<Plugin> &plugin)
         for (const auto &dimension : dimensions) {
             dimension->removePluginChunkTickets(plugin);
         }
-        for (auto &[name, handler] : event_handlers_) {
-            handler.unregister(plugin);
+        std::vector<NotNull<EventHandler>> removed;
+        {
+            std::shared_lock lock(event_handlers_mtx_);
+            for (auto &[name, handler] : event_handlers_) {
+                auto handlers = handler.unregister(plugin);
+                removed.insert(removed.end(), handlers.begin(), handlers.end());
+            }
         }
     }
 }
@@ -510,7 +521,13 @@ void EndstonePluginManager::clearPlugins()
     disablePlugins();
     lookup_names_.clear();
     // TODO: recreate dependency graph
-    event_handlers_.clear();
+    {
+        decltype(event_handlers_) handlers;
+        {
+            std::unique_lock lock(event_handlers_mtx_);
+            handlers.swap(event_handlers_);
+        }
+    }
 
     while (!plugin_loaders_.empty()) {
         plugin_loaders_.pop_back();
@@ -537,8 +554,24 @@ void EndstonePluginManager::callEvent(const NotNull<Event> &event)
         return;
     }
 
-    auto &handler_list = event_handlers_.emplace(event->getEventName(), event->getEventName()).first->second;
-    for (const auto &handler : handler_list.getHandlers()) {
+    const auto name = event->getEventName();
+    std::vector<NotNull<Plugin>> owners;
+    std::vector<NotNull<EventHandler>> handlers;
+    {
+        std::shared_lock lock(event_handlers_mtx_);
+        const auto it = event_handlers_.find(name);
+        if (it == event_handlers_.end()) {
+            return;
+        }
+        handlers = it->second.getHandlers();
+        for (const auto &handler : handlers) {
+            if (auto owner = handler->getPlugin()) {
+                owners.emplace_back(std::move(owner));
+            }
+        }
+    }
+
+    for (const auto &handler : handlers) {
         const auto plugin = handler->getPlugin();
         if (!plugin || !plugin->isEnabled()) {
             continue;
@@ -563,10 +596,14 @@ void EndstonePluginManager::registerEvent(std::string event, std::function<void(
         return;
     }
 
-    auto &handler_list = event_handlers_.emplace(event, event).first->second;
-    const auto *handler = handler_list.registerHandler(
-        std::make_unique<EventHandler>(event, executor, priority, plugin, ignore_cancelled));
-    if (!handler) {
+    const NotNull<EventHandler> handler =
+        std::make_shared<EventHandler>(event, executor, priority, plugin, ignore_cancelled);
+    Nullable<EventHandler> registered;
+    {
+        std::unique_lock lock(event_handlers_mtx_);
+        registered = event_handlers_.emplace(event, event).first->second.registerHandler(handler);
+    }
+    if (!registered) {
         server_.getLogger().error("Plugin {} failed to register listener for event {}: Handler type mismatch",
                                   plugin->getDescription().getFullName(), event);
         return;
@@ -575,6 +612,7 @@ void EndstonePluginManager::registerEvent(std::string event, std::function<void(
 
 bool EndstonePluginManager::isEventRegistered(const std::string_view event) const
 {
+    std::shared_lock lock(event_handlers_mtx_);
     const auto it = event_handlers_.find(event);
     return it != event_handlers_.end() && !it->second.empty();
 }

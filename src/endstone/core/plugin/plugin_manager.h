@@ -16,6 +16,7 @@
 
 #include <memory>
 #include <set>
+#include <shared_mutex>
 #include <string>
 #include <string_view>
 #include <unordered_map>
@@ -116,6 +117,7 @@ private:
     std::vector<NotNull<Plugin>> plugins_;
     std::unordered_map<std::string, NotNull<Plugin>> lookup_names_;
     std::unordered_map<std::string, HandlerList, StringHash, std::equal_to<>> event_handlers_;
+    mutable std::shared_mutex event_handlers_mtx_;
     std::unordered_map<std::string, NotNull<Permission>> permissions_;
     std::unordered_map<PermissionLevel, linked_hash_set<NotNull<Permission>>> default_perms_;
     mutable std::unordered_map<std::string, PermissibleSubscriptions> perm_subs_;
