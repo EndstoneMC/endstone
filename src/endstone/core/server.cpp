@@ -660,6 +660,9 @@ void EndstoneServer::reload()
     }
     scheduler.removeCancelledTasks();
 
+    for (const auto &metrics : plugin_metrics_ | std::views::values) {
+        metrics->shutdown();
+    }
     plugin_metrics_.clear();
     plugin_manager_->clearPlugins();
     reloadData();
