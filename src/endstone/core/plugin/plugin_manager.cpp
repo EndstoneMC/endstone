@@ -100,6 +100,10 @@ EndstonePluginManager::~EndstonePluginManager()
             handlers.swap(event_handlers_);
         }
     }
+    permissions_.clear();
+    default_perms_[PermissionLevel::Default].clear();
+    default_perms_[PermissionLevel::Operator].clear();
+    default_perms_[PermissionLevel::Console].clear();
     while (!plugin_loaders_.empty()) {
         plugin_loaders_.pop_back();
     }
@@ -541,17 +545,17 @@ void EndstonePluginManager::clearPlugins()
         }
     }
 
+    permissions_.clear();
+    default_perms_[PermissionLevel::Default].clear();
+    default_perms_[PermissionLevel::Operator].clear();
+    default_perms_[PermissionLevel::Console].clear();
+
     while (!plugin_loaders_.empty()) {
         plugin_loaders_.pop_back();
     }
     while (!plugins_.empty()) {
         plugins_.pop_back();
     }
-
-    permissions_.clear();
-    default_perms_[PermissionLevel::Default].clear();
-    default_perms_[PermissionLevel::Operator].clear();
-    default_perms_[PermissionLevel::Console].clear();
 }
 
 void EndstonePluginManager::callEvent(const NotNull<Event> &event)
