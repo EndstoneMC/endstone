@@ -33,7 +33,7 @@ enum Name : size_t {
 };
 
 }  // namespace CorrectionType
-using CorrectionTypeBitset = std::bitset<2UL>;
+using CorrectionTypeBitset = std::bitset<CorrectionType::Size>;
 
 class Actor;
 

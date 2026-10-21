@@ -21,6 +21,8 @@
 #include <string>
 #include <utility>
 
+#include <magic_enum/magic_enum.hpp>
+
 #include "bedrock/network/packet/boss_event_packet.h"
 #include "bedrock/world/actor/actor_runtime_id.h"
 #include "bedrock/world/actor/actor_unique_id.h"
@@ -66,7 +68,7 @@ private:
     float progress_{1.0F};
     BarColor color_;
     BarStyle style_;
-    std::bitset<2> flags_;
+    std::bitset<magic_enum::enum_count<BarFlag>()> flags_;
     bool visible_{true};
     ActorUniqueID actor_id_;
     ActorRuntimeID actor_runtime_id_;

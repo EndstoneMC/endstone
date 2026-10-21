@@ -18,6 +18,7 @@
 
 #include "bedrock/forward.h"
 #include "bedrock/world/actor/actor.h"
+#include "bedrock/world/actor/armor_slot.h"
 #include "bedrock/world/actor/hurt_effects_settings.h"
 #include "bedrock/world/actor/knockback_parameters.h"
 #include "bedrock/world/item/clock_sprite_calculator.h"
@@ -63,10 +64,11 @@ public:
     virtual bool isAlliedTo(Mob *) const = 0;
     virtual bool doHurtTarget(Actor *, ActorDamageCause const &) = 0;
     virtual int getArmorValue() = 0;
-    virtual void hurtArmorSlots(ActorDamageSource const &, int, std::bitset<4>) = 0;
+    virtual void hurtArmorSlots(ActorDamageSource const &, int,
+                                std::bitset<static_cast<std::size_t>(ArmorSlot::_count)>) = 0;
     virtual void setDamagedArmor(ArmorSlot, ItemStack const &) = 0;
-    virtual void sendArmorDamage(std::bitset<4>) = 0;
-    virtual void sendArmor(std::bitset<4>) = 0;
+    virtual void sendArmorDamage(std::bitset<static_cast<std::size_t>(ArmorSlot::_count)>) = 0;
+    virtual void sendArmor(std::bitset<static_cast<std::size_t>(ArmorSlot::_count)>) = 0;
     [[nodiscard]] virtual std::vector<ItemStack const *> getAllHandEquipment() const = 0;
     [[nodiscard]] virtual std::vector<ItemStack const *> getAllEquipment() const = 0;
     virtual void dropEquipmentOnDeath(ActorDamageSource const &, int) = 0;
