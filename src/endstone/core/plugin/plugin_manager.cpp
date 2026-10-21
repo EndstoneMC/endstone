@@ -730,6 +730,7 @@ void EndstonePluginManager::subscribeToPermission(std::string permission, const 
 {
     auto &name = permission;
     std::ranges::transform(name, name.begin(), [](unsigned char c) { return std::tolower(c); });
+    std::lock_guard lock(subs_mtx_);
     perm_subs_[name].insert(permissible.get());
 }
 
@@ -737,6 +738,7 @@ void EndstonePluginManager::unsubscribeFromPermission(std::string permission, co
 {
     auto &name = permission;
     std::ranges::transform(name, name.begin(), [](unsigned char c) { return std::tolower(c); });
+    std::lock_guard lock(subs_mtx_);
     if (const auto it = perm_subs_.find(name); it != perm_subs_.end()) {
         it->second.erase(permissible.get());
         if (it->second.empty()) {
@@ -749,25 +751,28 @@ std::unordered_set<NotNull<Permissible>> EndstonePluginManager::getPermissionSub
 {
     auto &name = permission;
     std::ranges::transform(name, name.begin(), [](unsigned char c) { return std::tolower(c); });
-    const auto it = perm_subs_.find(name);
-    if (it == perm_subs_.end()) {
-        return {};
-    }
-
-    auto subs = lockAndPrune(it->second);
-    if (it->second.empty()) {
-        perm_subs_.erase(it);
+    std::unordered_set<NotNull<Permissible>> subs;
+    {
+        std::lock_guard lock(subs_mtx_);
+        if (const auto it = perm_subs_.find(name); it != perm_subs_.end()) {
+            subs = lockAndPrune(it->second);
+            if (it->second.empty()) {
+                perm_subs_.erase(it);
+            }
+        }
     }
     return subs;
 }
 
 void EndstonePluginManager::subscribeToDefaultPerms(PermissionLevel level, const NotNull<Permissible> &permissible)
 {
+    std::lock_guard lock(subs_mtx_);
     def_subs_[level].insert(permissible.get());
 }
 
 void EndstonePluginManager::unsubscribeFromDefaultPerms(PermissionLevel level, const NotNull<Permissible> &permissible)
 {
+    std::lock_guard lock(subs_mtx_);
     if (const auto it = def_subs_.find(level); it != def_subs_.end()) {
         it->second.erase(permissible.get());
         if (it->second.empty()) {
@@ -778,14 +783,15 @@ void EndstonePluginManager::unsubscribeFromDefaultPerms(PermissionLevel level, c
 
 std::unordered_set<NotNull<Permissible>> EndstonePluginManager::getDefaultPermSubscriptions(PermissionLevel level) const
 {
-    const auto it = def_subs_.find(level);
-    if (it == def_subs_.end()) {
-        return {};
-    }
-
-    auto subs = lockAndPrune(it->second);
-    if (it->second.empty()) {
-        def_subs_.erase(it);
+    std::unordered_set<NotNull<Permissible>> subs;
+    {
+        std::lock_guard lock(subs_mtx_);
+        if (const auto it = def_subs_.find(level); it != def_subs_.end()) {
+            subs = lockAndPrune(it->second);
+            if (it->second.empty()) {
+                def_subs_.erase(it);
+            }
+        }
     }
     return subs;
 }

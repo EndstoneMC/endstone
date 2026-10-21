@@ -189,6 +189,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Fixed a `MapRenderer` that removed itself from its `MapView` inside `render()` crashing the server.
 - Fixed the server reading freed memory when a `Permissible` was destroyed while still subscribed to a permission, such as a player who disconnected while a plugin held on to them.
 - Fixed the server crashing on a broadcast once a player had left and rejoined. A player's permissions are now cleared when they leave, and messaging a player who is no longer on the server is a no-op.
+- Fixed the server crashing when a plugin broadcast a message from another thread.
 - Fixed a crash when a permission removed with `PluginManager.remove_permission()` was still in a default permission list.
 - Fixed `Permission.add_parent()` and `Permission.permissibles` reading an uninitialised field on a permission that was never registered with a plugin manager.
 - Fixed a Linux server that could hang instead of stopping on Ctrl+C or `docker stop`.

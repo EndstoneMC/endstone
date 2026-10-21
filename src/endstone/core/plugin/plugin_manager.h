@@ -15,6 +15,7 @@
 #pragma once
 
 #include <memory>
+#include <mutex>
 #include <set>
 #include <shared_mutex>
 #include <string>
@@ -123,6 +124,7 @@ private:
     std::unordered_map<PermissionLevel, linked_hash_set<NotNull<Permission>>> default_perms_;
     mutable std::unordered_map<std::string, PermissibleSubscriptions> perm_subs_;
     mutable std::unordered_map<PermissionLevel, PermissibleSubscriptions> def_subs_;
+    mutable std::mutex subs_mtx_;
 };
 
 }  // namespace core
