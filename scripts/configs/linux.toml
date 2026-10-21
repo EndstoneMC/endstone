@@ -796,33 +796,17 @@ extra = 0
 pattern = "41 56 53 50 0F 57 C9 80 7F"
 
 [[signatures]]
-name = "_ZN17InteractComponent14getInteractionER5ActorR6Player"
+name = "_ZN17InteractComponent15_runInteractionER5ActorRK22InteractionDescriptionR6Player"
 relative = false
 extra = 0
-# 1. no usable string: the interaction's text ("action.interact.shear" and friends) is loaded from the
-#    vanilla behaviour pack, not baked into the binary. The telemetry anchor this recipe used before 1.26.51
-#    (cmp eax, 30B74h / cmp eax, 30B2Ch, seven bytes apart) is a DECOY now - _runInteraction was out-lined
-#    and took the telemetry with it, so neither remaining pair site is getInteraction. Anchor on the entt
-#    component hash instead: find bytes "4A 34 52 A3" = the InteractComponent type hash. Of the functions
-#    that reference it, exactly one also contains `add <r>, 0x140` - that ~0x1a0 one is the component-lookup
-#    wrapper, which resolves InteractComponent from the Actor and walks its Interaction vector INLINE
-# 2. inside that wrapper, the single direct `call` in the `add <r>, 0x140` loop (stride 320 =
-#    sizeof(Interaction)) is InteractComponent::_runInteraction (~0x539)
-# 3. _runInteraction has exactly two call sites: the wrapper from step 1 (the inlined copy - NOT the target)
-#    and InteractComponent::getInteraction. The target is the small (~0xc0) one, whose prologue loads the
-#    Interaction vector straight off `this` (`mov <r>, [rsi+8]` / `mov <r>, [rsi+0x10]`) rather than looking
-#    up an InteractDefinition, breaks out of the loop when the returned Interaction's callback ([sret+0x10])
-#    is non-null, and zeroes 0x60 bytes with six `movaps` on the empty path
-# 4. the argument map is sret since 1.26.51: rdi is the returned Interaction, rsi `this`, rdx the Actor&
-#    owner and rcx the Player& player; the ActorInteraction & parameter is gone. Cut from the prologue
-# 5. confirm against the Windows 1.26.51 build, whose PDB names it
-#    ?getInteraction@InteractComponent@@QEAA?AVInteraction@@AEAVActor@@AEAVPlayer@@@Z - the same body with
-#    `add r15, 0x160` (Windows sizeof(Interaction)) and a 0x50-byte zero fill
-# NOTE: in 1.26.51 this out-of-line body has no callers - the only live path inlined it into the wrapper -
-# so a detour here resolves to the right function but never fires. See the hook's own TODO
-# uniqueness: the pattern below matches exactly once in 1.26.51; it does not match 1.26.45 or earlier,
-# where _runInteraction was inlined and the function was ~0x6b3 bytes
-pattern = "55 41 57 41 56 41 55 41 54 53 50 48 89 FB 4C 8B 6E 08 48 8B 6E 10 49 39 ED"
+# 1. find bytes "4A 34 52 A3" = the InteractComponent type hash. Of the functions that reference it, exactly one
+#    also contains `add <r>, 0x140` (sizeof(InteractionDescription)) - the one that looks InteractComponent up on
+#    the Actor and walks its InteractionDescription vector inline
+# 2. the single direct `call` in that loop is _runInteraction (~0x539): rdi is the returned Interaction, rsi
+#    `this`, rdx the Actor& owner, rcx the InteractionDescription& and r8 the Player&
+# 3. confirm against the Windows build, whose PDB names it: both open with the cooldown checks
+#    `cmp dword ptr [rcx], 0` on the InteractionDescription and `cmp word ptr [rbp+0], 0` on `this`
+pattern = "55 41 57 41 56 41 55 41 54 53 48 81 EC 88 02 00 00 4D 89 C4 49 89 CF 49 89 D5 48 89 F5 48 89 FB 83 39 00 7E 0B 66 83 7D 00 00 0F 8F"
 
 [[signatures]]
 name = "_ZNK4Item12readUserDataER13ItemStackBaseR10IDataInputR20ReadOnlyBinaryStream"

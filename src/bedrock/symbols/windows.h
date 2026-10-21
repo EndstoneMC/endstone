@@ -98,7 +98,7 @@ static constexpr std::array<std::pair<std::string_view, std::size_t>, 120> symbo
     // FurnaceBlockActor
     {"?getBurnDuration@FurnaceBlockActor@@SAMAEBVItemStackBase@@M@Z", 92219952},
     // InteractComponent
-    {"?getInteraction@InteractComponent@@QEAA?AVInteraction@@AEAVActor@@AEAVPlayer@@@Z", 29325584},
+    {"?_runInteraction@InteractComponent@@AEAA?AVInteraction@@AEAVActor@@AEBVInteractionDescription@@AEAVPlayer@@@Z", 29325840},
     // InventoryTransaction
     {"?executeWorldInteraction@InventoryTransaction@@SA?AW4InventoryTransactionError@@PEAXAEAVPlayer@@AEBVInventoryAction@@@Z", 44609088},
     // Item

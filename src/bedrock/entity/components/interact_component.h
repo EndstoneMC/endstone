@@ -19,9 +19,10 @@
 #include "bedrock/world/interactions/interaction.h"
 
 class Actor;
+class InteractionDescription;
 class Player;
 
 class InteractComponent {
-public:
-    ENDSTONE_HOOK Interaction getInteraction(Actor &owner, Player &player);
+private:
+    ENDSTONE_HOOK Interaction _runInteraction(Actor &owner, const InteractionDescription &desc, Player &player);
 };

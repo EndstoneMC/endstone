@@ -808,21 +808,17 @@ rip_relative = true
 rip_offset = 1
 
 [[signatures]]
-name = "?getInteraction@InteractComponent@@QEAA?AVInteraction@@AEAVActor@@AEAVPlayer@@@Z"
+name = "?_runInteraction@InteractComponent@@AEAA?AVInteraction@@AEAVActor@@AEBVInteractionDescription@@AEAVPlayer@@@Z"
 relative = false
 extra = 0
-# 1. no usable string - the interact text lives in the behaviour pack, not the image. Anchor on the
-#    two entity type ids the telemetry branch compares against: `3D 74 0B 03 00` (cmp eax, 30B74h)
-#    and `3D 2C 0B 03 00` (cmp eax, 30B2Ch), seven bytes apart. Two sites in .text pair them
-# 2. pick the right one: getInteraction is the site that, within 0x80 bytes of the pair, does
-#    `lea <r>, [<r>+0x48]` (Interaction::mInteractText) ahead of the ActorInteraction::setInteractText call
-# 4. confirm identity from the body: the Interaction array walk uses the 0x140 stride (sizeof(Interaction))
-#    and calls _runInteraction per candidate
-# 5. walk back to the prologue - `push rbp/r15/r14/r13/r12/rsi/rdi/rbx`, `sub rsp, 0x288`,
-#    `lea rbp, [rsp+0x80]`, then the xmm6 spill and the SEH scope marker - and cut from there
-# uniqueness: matches exactly once in 1.26.44.3 and once in 1.26.40.8. In 1.26.33.1 the same bytes
-# match twice, so re-derive rather than reuse if the version floor moves back
-pattern = "55 41 57 41 56 41 55 41 54 56 57 53 48 83 EC 38 48 8D 6C 24 30 48 C7 45 00 FE FF FF FF 48 89 D6 4C 8B 79 08"
+# 1. find bytes "4A 34 52 A3" = the InteractComponent type hash. The ~0x10a function that both masks and compares
+#    with it (`and <r>, 0A352344Ah` / `cmp dword ptr [...], 0A352344Ah`) looks InteractComponent up on the Actor;
+#    its one direct `call` is InteractComponent::getInteraction
+# 2. getInteraction walks its InteractionDescription vector with `add r15, 0x160`; the one direct `call` in that
+#    loop is _runInteraction (~0x5c8): rcx is `this`, rdx the returned Interaction, r8 the Actor& owner, r9 the
+#    InteractionDescription& and the Player& is on the stack
+# 3. confirm vs the old named DB
+pattern = "55 41 57 41 56 41 54 56 57 53 48 81 EC D0 02 00 00 48 8D AC 24 80 00 00 00 0F 29 B5 ? ? ? ? 48 C7 85 ? ? ? ? FE FF FF FF 4C 89 CF 4C 89 C3 48 89 D6 49 89 CE"
 
 [[signatures]]
 # name is arbitrary, this is actually hooking a lambda function

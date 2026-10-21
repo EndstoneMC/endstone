@@ -99,7 +99,7 @@ static constexpr std::array<std::pair<std::string_view, std::size_t>, 120> symbo
     // FurnaceBlockActor
     {"_ZN17FurnaceBlockActor15getBurnDurationERK13ItemStackBasef", 216339024},
     // InteractComponent
-    {"_ZN17InteractComponent14getInteractionER5ActorR6Player", 116553632},
+    {"_ZN17InteractComponent15_runInteractionER5ActorRK22InteractionDescriptionR6Player", 116553824},
     // InventoryTransaction
     {"_ZN20InventoryTransaction23executeWorldInteractionEPvR6PlayerRK15InventoryAction", 205812144},
     // Item
