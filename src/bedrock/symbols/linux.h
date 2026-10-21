@@ -11,7 +11,7 @@
 
 namespace endstone::runtime {
 
-static constexpr std::array<std::pair<std::string_view, std::size_t>, 120> symbols = {{
+static constexpr std::array<std::pair<std::string_view, std::size_t>, 121> symbols = {{
     {"BlockState::StateListNode::mHead", 257928656},
     {"Enchant::mEnchants", 257765312},
     {"MobEffect::mMobEffects", 257859136},
@@ -193,6 +193,8 @@ static constexpr std::array<std::pair<std::string_view, std::size_t>, 120> symbo
     {"_ZN16ServerScoreboardC2E23CommandSoftEnumRegistryP12LevelStorageN3gsl8not_nullIN7Bedrock15NonOwnerPointerI19GameplayUserManagerEEEE", 217580848},
     // ServerWaypoint
     {"_ZN14ServerWaypoint6updateERK6Player", 187406736},
+    // ShareableComponent
+    {"_ZNK18ShareableComponent16getCountToPickUpERK5ActorRK9ItemStack", 114913904},
     // TickingAreasManager
     {"_ZN19TickingAreasManager17removeScopedAreasERKNSt3__16vectorIN3mce4UUIDENS0_9allocatorIS3_EEEE", 218697344},
     {"_ZN19TickingAreasManager22addTransientScopedAreaE13DimensionTypeRKNSt3__112basic_stringIcNS1_11char_traitsIcEENS1_9allocatorIcEEEEmN3mce4UUIDERK6Bounds", 218696560},

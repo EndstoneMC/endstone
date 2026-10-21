@@ -29,8 +29,8 @@ class ActorPickupItemEvent : public Cancellable<ActorEvent<Actor>> {
 public:
     ENDSTONE_EVENT(ActorPickupItemEvent);
 
-    explicit ActorPickupItemEvent(const NotNull<Actor> &actor, const NotNull<Item> &item, int amount)
-        : Cancellable(actor), item_(item), amount_(amount)
+    explicit ActorPickupItemEvent(const NotNull<Actor> &actor, const NotNull<Item> &item, int remaining)
+        : Cancellable(actor), item_(item), remaining_(remaining)
     {
     }
 
@@ -42,15 +42,19 @@ public:
     [[nodiscard]] const NotNull<Item> &getItem() const { return item_; }
 
     /**
-     * Gets the number of items that will be picked up from the stack.
+     * Gets the amount remaining on the ground, if any.
      *
-     * @return the amount picked up
+     * It is the stack size minus what the actor takes, as its pickup rules decide (such as a piglin's shareables).
+     * A hopper minecart takes what fits in the first slot with room for it, and its next pull calls another event for
+     * the rest. A mob that takes the whole stack leaves 0.
+     *
+     * @return amount remaining on the ground
      */
-    [[nodiscard]] int getAmount() const { return amount_; }
+    [[nodiscard]] int getRemaining() const { return remaining_; }
 
 private:
     NotNull<Item> item_;
-    int amount_;
+    int remaining_;
 };
 
 }  // namespace endstone

@@ -1760,3 +1760,17 @@ extra = 0
 # 3. confirm: the response type is 273 (STUN_BINDING_ERROR_RESPONSE) or 784 (GOOG_PING_ERROR_RESPONSE),
 #    AddFingerprint runs only for the former, and the send goes through the Port vtable at +0x90
 pattern = "55 41 57 41 56 41 55 41 54 53 48 81 EC ? ? ? ? 4D 89 CC 4D 89 C5 49 89 F7 4C 89 84 24"
+
+[[signatures]]
+name = "_ZNK18ShareableComponent16getCountToPickUpERK5ActorRK9ItemStack"
+relative = false
+extra = 0
+# 1. find bytes "9F CB FF DD" (type hash 0xDDFFCB9F of the empty ShareableComponent); the hit with the full
+#    hash-table probe sits in PickupItemsGoal::tick (vtable _ZTV15PickupItemsGoal, the 0x1711-byte slot)
+# 2. in that function the mob's ShareableComponent lookup stores &unk_F454E1A when present; its only call that
+#    receives the mob and the ground item stack before the shareable item lookup is getCountToPickUp
+# 3. confirm as on Windows: reads the ShareableDefinition from the actor's definitions, matches the stack with
+#    ItemDescriptor::sameItem and returns the smallest of the stack count, the entry's maxAmount (+0x18) minus the
+#    carried count, and the entry's pickupLimit (+0x1c), the last two only when set
+# 4. function prologue; matches exactly once in the 1.26.52.3 .text
+pattern = "55 41 57 41 56 41 55 41 54 53 48 83 EC ? 49 89 D7 48 89 F3 4C 8B B6"

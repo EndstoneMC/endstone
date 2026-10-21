@@ -11,7 +11,7 @@
 
 namespace endstone::runtime {
 
-static constexpr std::array<std::pair<std::string_view, std::size_t>, 120> symbols = {{
+static constexpr std::array<std::pair<std::string_view, std::size_t>, 121> symbols = {{
     {"BlockState::StateListNode::mHead", 215092208},
     {"Enchant::mEnchants", 214656904},
     {"MobEffect::mMobEffects", 214658168},
@@ -192,6 +192,8 @@ static constexpr std::array<std::pair<std::string_view, std::size_t>, 120> symbo
     {"??0ServerScoreboard@@QEAA@VCommandSoftEnumRegistry@@PEAVLevelStorage@@V?$not_null@V?$NonOwnerPointer@VGameplayUserManager@@@Bedrock@@@gsl@@@Z", 2095792},
     // ServerWaypoint
     {"?update@ServerWaypoint@@UEAAXAEBVPlayer@@@Z", 13700320},
+    // ShareableComponent
+    {"?getCountToPickUp@ShareableComponent@@QEBAHAEBVActor@@AEBVItemStack@@@Z", 37938048},
     // TickingAreasManager
     {"?addTransientScopedArea@TickingAreasManager@@QEAA?AUScopedContext@1@UDimensionType@@AEBV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@_KVUUID@mce@@AEBUBounds@@@Z", 50256208},
     {"?removeScopedAreas@TickingAreasManager@@QEAAXAEBV?$vector@VUUID@mce@@V?$allocator@VUUID@mce@@@std@@@std@@@Z", 50257024},

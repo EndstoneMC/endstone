@@ -68,7 +68,11 @@ public:
     [[nodiscard]] bool isBlock() const;
     [[nodiscard]] bool isValid_DeprecatedSeeComment() const;
     explicit operator bool() const;
+    [[nodiscard]] bool isStackable() const;
     [[nodiscard]] std::uint8_t getMaxStackSize() const;
+    [[nodiscard]] bool isStackable(const ItemStackBase &other) const;
+    [[nodiscard]] bool isDamaged() const;
+    [[nodiscard]] bool isDamageableItem() const;
     [[nodiscard]] std::int16_t getDamageValue() const;
     [[nodiscard]] bool hasDamageValue() const;
     void removeDamageValue();

@@ -27,6 +27,7 @@ add_library(bedrock STATIC
         deps/json/value.cpp
         deps/nethernet/network_id.cpp
         entity/components/container_component.cpp
+        entity/components/shareable_component.cpp
         entity/gamerefs_entity/entity_context.cpp
         entity/gamerefs_entity/entity_registry.cpp
         entity/gamerefs_entity/stack_result_storage_entity.cpp

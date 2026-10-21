@@ -407,12 +407,48 @@ ItemStackBase::operator bool() const
     return isValid_DeprecatedSeeComment() && !item_.isNull() && !isNull() && count_ != 0;
 }
 
+bool ItemStackBase::isStackable() const
+{
+    if (item_.isNull()) {
+        return true;
+    }
+    return getMaxStackSize() > 1 && (!isDamageableItem() || !isDamaged());
+}
+
 std::uint8_t ItemStackBase::getMaxStackSize() const
 {
     if (item_.isNull()) {
         return -1;
     }
     return item_->getMaxStackSize(getDescriptor());
+}
+
+bool ItemStackBase::isStackable(const ItemStackBase &other) const
+{
+    if (getItem() != other.getItem() || !other.isStackable()) {
+        return false;
+    }
+    if (!other.item_.isNull() && other.item_->isStackedByData() && getAuxValue() != other.getAuxValue()) {
+        return false;
+    }
+    return hasSameUserData(other) && can_destroy_hash_ == other.can_destroy_hash_ &&
+           can_place_on_hash_ == other.can_place_on_hash_ && blocking_tick_ == other.blocking_tick_;
+}
+
+bool ItemStackBase::isDamaged() const
+{
+    return isDamageableItem() && getDamageValue() > 0;
+}
+
+bool ItemStackBase::isDamageableItem() const
+{
+    if (item_.isNull() || !item_->isDamageable()) {
+        return false;
+    }
+    if (const auto *tag = hasUserData() ? getUserData()->getByteTag(TAG_UNBREAKABLE) : nullptr; tag && tag->data != 0) {
+        return false;
+    }
+    return true;
 }
 
 std::int16_t ItemStackBase::getDamageValue() const

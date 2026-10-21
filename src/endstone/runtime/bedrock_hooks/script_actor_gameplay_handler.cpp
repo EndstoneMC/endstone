@@ -14,10 +14,13 @@
 
 #include "bedrock/scripting/event_handlers/script_actor_gameplay_handler.h"
 
+#include <algorithm>
 #include <utility>
 #include <variant>
 
 #include "bedrock/entity/components/container_component.h"
+#include "bedrock/entity/components/hopper_component.h"
+#include "bedrock/entity/components/shareable_component.h"
 #include "bedrock/server/server_player.h"
 #include "bedrock/world/actor/actor.h"
 #include "bedrock/world/actor/player/player.h"
@@ -143,6 +146,25 @@ bool handleEvent(::ActorAddEffectEvent &event)
     return !e->isCancelled();
 }
 
+int countToMoveIn(const Container &container, const ItemStack &item)
+{
+    const int count = item.getCount();
+    for (int slot = 0; slot < container.getContainerSize(); ++slot) {
+        const auto &existing = container.getItem(slot);
+        if (!existing) {
+            return count;
+        }
+        if (!existing.isStackable(item) || existing.getCount() == existing.getMaxStackSize()) {
+            continue;
+        }
+        if (count + existing.getCount() <= existing.getMaxStackSize()) {
+            return count;
+        }
+        return existing.getMaxStackSize() - existing.getCount();
+    }
+    return 0;
+}
+
 bool handleEvent(::ActorBeforeAcquireItemEvent &event)
 {
     if (event.acquire_method != ItemAcquisitionMethod::PickedUp || event.actor.isPlayer() ||
@@ -156,9 +178,20 @@ bool handleEvent(::ActorBeforeAcquireItemEvent &event)
         return true;
     }
 
-    const auto e = std::make_shared<endstone::ActorPickupItemEvent>(
-        event.actor.getEndstoneActor(), event.item.getEndstoneActor<endstone::core::EndstoneItem>(),
-        event.amount_acquired);
+    auto item = event.item.getEndstoneActor<endstone::core::EndstoneItem>();
+    const auto &stack = item->getHandle().getItemStack();
+    const int count = stack.getCount();
+    auto taken = event.amount_acquired;
+    if (auto *container = event.actor.tryGetComponent<ContainerComponent>();
+        container && event.actor.hasComponent<HopperComponent>()) {
+        taken = countToMoveIn(*container->_getRawContainerPtr(), stack);
+    }
+    else if (event.actor.hasComponent<ShareableComponent>()) {
+        taken = ShareableComponent{}.getCountToPickUp(event.actor, stack);
+    }
+    taken = std::clamp(taken, 0, count);
+    const auto e =
+        std::make_shared<endstone::ActorPickupItemEvent>(event.actor.getEndstoneActor(), item, count - taken);
     server.getPluginManager().callEvent(e);
     return !e->isCancelled();
 }

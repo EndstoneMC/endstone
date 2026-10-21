@@ -557,9 +557,13 @@ class ActorPickupItemEvent(ActorEvent, Cancellable):
         """
 
     @property
-    def amount(self) -> int:
+    def remaining(self) -> int:
         """
-        The number of items that will be picked up from the stack.
+        The amount remaining on the ground, if any.
+
+        It is the stack size minus what the actor takes, as its pickup rules decide (such as a piglin's shareables).
+        A hopper minecart takes what fits in the first slot with room for it, and its next pull calls another event for
+        the rest. A mob that takes the whole stack leaves 0.
         """
 
 class ActorRemoveEvent(ActorEvent):

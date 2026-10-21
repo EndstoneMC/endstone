@@ -152,8 +152,13 @@ void init_event(py::module_ &m, py::classh<Event, PyEvent> &event)
     This is not called for players; see `PlayerPickupItemEvent` instead.
 )doc")
         .def_property_readonly("item", &ActorPickupItemEvent::getItem, "The Item picked up by the actor.")
-        .def_property_readonly("amount", &ActorPickupItemEvent::getAmount,
-                               "The number of items that will be picked up from the stack.");
+        .def_property_readonly("remaining", &ActorPickupItemEvent::getRemaining, R"doc(
+    The amount remaining on the ground, if any.
+
+    It is the stack size minus what the actor takes, as its pickup rules decide (such as a piglin's shareables).
+    A hopper minecart takes what fits in the first slot with room for it, and its next pull calls another event for
+    the rest. A mob that takes the whole stack leaves 0.
+)doc");
     bind_event<ActorRemoveEvent, ActorEvent<Actor>>(m, "ActorRemoveEvent", R"doc(
     Called when an `Actor` is removed.
 
