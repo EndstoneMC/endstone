@@ -19,6 +19,7 @@
 #include <memory>
 #include <ranges>
 #include <regex>
+#include <stdexcept>
 #include <string>
 #include <unordered_map>
 #include <unordered_set>
@@ -27,14 +28,12 @@
 
 #include <boost/algorithm/string/predicate.hpp>
 
-#include "endstone/core/level/level.h"
 #include "endstone/core/logger_factory.h"
-#include "endstone/core/server.h"
-#include "endstone/level/dimension.h"
-#include "endstone/level/level.h"
 #include "endstone/event/event.h"
 #include "endstone/event/event_handler.h"
 #include "endstone/event/handler_list.h"
+#include "endstone/level/dimension.h"
+#include "endstone/level/level.h"
 #include "endstone/plugin/plugin.h"
 #include "endstone/plugin/plugin_loader.h"
 #include "endstone/scheduler/scheduler.h"
@@ -484,10 +483,14 @@ void EndstonePluginManager::disablePlugin(const NotNull<Plugin> &plugin)
         plugin->getPluginLoader().disablePlugin(plugin);
         server_.getScheduler().cancelTasks(plugin);
         server_.getServiceManager().unregisterAll(plugin);
-        if (const auto *level = static_cast<EndstoneServer &>(server_).getEndstoneLevel()) {
-            for (const auto &dimension : level->getDimensions()) {
-                dimension->removePluginChunkTickets(plugin);
-            }
+        std::vector<NotNull<Dimension>> dimensions;
+        try {
+            dimensions = server_.getLevel().getDimensions();
+        }
+        catch (const std::runtime_error &) {
+        }
+        for (const auto &dimension : dimensions) {
+            dimension->removePluginChunkTickets(plugin);
         }
         for (auto &[name, handler] : event_handlers_) {
             handler.unregister(plugin);
