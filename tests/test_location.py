@@ -41,11 +41,21 @@ def test_block_coordinates_floor_towards_negative_infinity() -> None:
 
 
 def test_is_not_a_vector_subclass() -> None:
-    """Verify a location is its own type and does not support vector arithmetic."""
+    """Verify a location is its own type."""
     location = Location(None, 1.0, 2.0, 3.0)
     assert not isinstance(location, Vector)
-    with pytest.raises(TypeError):
-        location + Vector(1.0, 1.0, 1.0)
+
+
+def test_vector_arithmetic_returns_a_location() -> None:
+    """Verify adding or subtracting a Vector gives a Location that keeps the rotation."""
+    location = Location(None, 1.0, 2.0, 3.0, 10.0, 20.0)
+    moved = location + Vector(1.0, 1.0, 1.0)
+    assert isinstance(moved, Location)
+    assert (moved.x, moved.y, moved.z) == (2.0, 3.0, 4.0)
+    assert (moved.pitch, moved.yaw) == (10.0, 20.0)
+    back = moved - Vector(1.0, 1.0, 1.0)
+    assert isinstance(back, Location)
+    assert (back.x, back.y, back.z) == (1.0, 2.0, 3.0)
 
 
 def test_is_unhashable() -> None:
