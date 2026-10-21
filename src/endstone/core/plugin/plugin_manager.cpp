@@ -28,6 +28,8 @@
 
 #include <boost/algorithm/string/predicate.hpp>
 
+#include "endstone/command/command_map.h"
+#include "endstone/command/plugin_command.h"
 #include "endstone/core/logger_factory.h"
 #include "endstone/event/event.h"
 #include "endstone/event/event_handler.h"
@@ -471,9 +473,19 @@ std::vector<NotNull<Plugin>> EndstonePluginManager::loadPlugins(const std::vecto
 
 void EndstonePluginManager::enablePlugin(const NotNull<Plugin> &plugin) const
 {
-    if (!plugin->isEnabled()) {
-        plugin->getPluginLoader().enablePlugin(plugin);
+    if (plugin->isEnabled()) {
+        return;
     }
+    auto &command_map = server_.getCommandMap();
+    for (const auto &command : plugin->getDescription().getCommands()) {
+        if (const auto existing = command_map.getCommand(command.getName());
+            existing && existing->getName() == command.getName() && existing->is<PluginCommand>() &&
+            existing.cast<PluginCommand>()->getPlugin() == plugin) {
+            continue;
+        }
+        command_map.registerCommand<PluginCommand>(command, plugin);
+    }
+    plugin->getPluginLoader().enablePlugin(plugin);
 }
 
 void EndstonePluginManager::enablePlugins() const

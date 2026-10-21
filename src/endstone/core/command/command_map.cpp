@@ -20,6 +20,7 @@
 #include <ranges>
 #include <string>
 #include <unordered_map>
+#include <utility>
 #include <vector>
 
 #include <boost/algorithm/string.hpp>
@@ -27,7 +28,6 @@
 #include "bedrock/locale/i18n.h"
 #include "bedrock/server/commands/command_registry.h"
 #include "bedrock/server/server_instance.h"
-#include "endstone/command/plugin_command.h"
 #include "endstone/core/command/command_usage_parser.h"
 #include "endstone/core/command/defaults/ban_command.h"
 #include "endstone/core/command/defaults/ban_ip_command.h"
@@ -51,9 +51,47 @@ namespace endstone::core {
 
 EndstoneCommandMap::EndstoneCommandMap(EndstoneServer &server) : server_(server)
 {
+    setDefaultCommands();
+}
+
+void EndstoneCommandMap::attach()
+{
+    std::lock_guard lock(mutex_);
     unregisterCommand("reload");
     allowCommandsWithoutCheats();
-    setDefaultCommands();
+    attached_ = true;
+
+    for (const auto &command : std::exchange(deferred_commands_, {})) {
+        std::erase_if(custom_commands_, [&](const auto &entry) { return entry.second.get() == command.get(); });
+        if (!registerCommand(command)) {
+            command->unregisterFrom(*this);
+        }
+    }
+}
+
+bool EndstoneCommandMap::registerDeferred(NotNull<Command> command)
+{
+    auto name = command->getName();
+    if (getCommand(name) != nullptr) {
+        server_.getLogger().error("Unable to register command '{}' as it already exists.", name);
+        return false;
+    }
+
+    std::vector<std::string> pending_aliases;
+    for (const auto &alias : command->getAliases()) {
+        if (getCommand(alias) == nullptr) {
+            pending_aliases.push_back(alias);
+        }
+    }
+
+    custom_commands_.emplace(name, command);
+    for (const auto &alias : pending_aliases) {
+        custom_commands_.emplace(alias, command);
+    }
+    command->setAliases(pending_aliases);
+    command->registerTo(*this);
+    deferred_commands_.push_back(command);
+    return true;
 }
 
 void EndstoneCommandMap::allowCommandsWithoutCheats()
@@ -98,6 +136,16 @@ bool EndstoneCommandMap::dispatch(const NotNull<CommandSender> &sender, std::str
         return false;
     }
 
+    if (!attached_) {
+        try {
+            return command->execute(sender, std::vector(args.begin() + 1, args.end()));
+        }
+        catch (const std::exception &e) {
+            server_.getLogger().error("Unhandled exception executing '{}': {}", command_line, e.what());
+            return false;
+        }
+    }
+
     if (!custom_commands_.contains(name)) {
         // This is a vanilla command
         try {
@@ -136,9 +184,12 @@ void EndstoneCommandMap::clearCommands()
     std::lock_guard lock(mutex_);
     for (const auto &command : custom_commands_ | std::views::values) {
         command->unregisterFrom(*this);
-        unregisterCommand(command->getName());
+        if (attached_) {
+            unregisterCommand(command->getName());
+        }
     }
     custom_commands_.clear();
+    deferred_commands_.clear();
     setDefaultCommands();
 }
 
@@ -148,6 +199,10 @@ Nullable<Command> EndstoneCommandMap::getCommand(std::string name) const
     // Try to find the custom command we've registered
     if (const auto it = custom_commands_.find(name); it != custom_commands_.end()) {
         return it->second;
+    }
+
+    if (!attached_) {
+        return nullptr;
     }
 
     // Custom command not found, let's find it in CommandRegistry
@@ -183,7 +238,7 @@ void EndstoneCommandMap::setDefaultCommands()
 #endif
 }
 
-void EndstoneCommandMap::setPluginCommands()
+void EndstoneCommandMap::setPluginNames()
 {
     const auto plugins = server_.getPluginManager().getPlugins();
     std::vector<std::string> plugin_names;
@@ -191,11 +246,6 @@ void EndstoneCommandMap::setPluginCommands()
         auto name = plugin->getName();
         std::ranges::transform(name, name.begin(), [](unsigned char c) { return std::tolower(c); });
         plugin_names.emplace_back(name);
-
-        auto commands = plugin->getDescription().getCommands();
-        for (const auto &command : commands) {
-            registerCommand<PluginCommand>(command, plugin);
-        }
     }
     clearEnumValues("PluginName");
     getHandle().getRegistry().addEnumValues("PluginName", plugin_names);
@@ -276,12 +326,17 @@ void EndstoneCommandMap::removeEnumValueFromExisting(const std::string &enum_nam
 bool EndstoneCommandMap::registerCommand(NotNull<Command> command)
 {
     std::lock_guard lock(mutex_);
-    auto &registry = getHandle().getRegistry();
 
     if (command.get() == nullptr) {
         server_.getLogger().error("Unable to register a null command.");
         return false;
     }
+
+    if (!attached_) {
+        return registerDeferred(command);
+    }
+
+    auto &registry = getHandle().getRegistry();
 
     // Check if the command name is available
     auto name = command->getName();

@@ -163,6 +163,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - `BookMeta::setTitle()` returns `false` and keeps the current title when the new one is longer than 16 bytes, instead of cutting it.
 - **BREAKING**: `Server::createBossBar()` is no longer `const`, since the server now keeps track of the boss bars it hands out. C++ plugins holding a `const Server &` need a non-const one; Python call sites are unchanged.
 - **BREAKING**: The `endstone.metrics.charts`, `endstone.metrics.base` and `endstone.metrics.config` modules are gone; import the chart classes and `Metrics` from `endstone.metrics`.
+- A plugin's commands are registered as it is enabled, so a plugin enabled at `STARTUP` can look up and dispatch them from `on_enable`.
 
 #### Platform
 

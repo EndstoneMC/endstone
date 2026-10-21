@@ -16,6 +16,7 @@
 
 #include <mutex>
 #include <unordered_map>
+#include <vector>
 
 #include "bedrock/server/commands/minecraft_commands.h"
 #include "endstone/command/command.h"
@@ -36,8 +37,10 @@ public:
 
 private:
     friend class EndstoneServer;
+    void attach();
+    bool registerDeferred(NotNull<Command> command);
     void setDefaultCommands();
-    void setPluginCommands();
+    void setPluginNames();
     void allowCommandsWithoutCheats();
     void unregisterCommand(std::string name);
     void clearEnumValues(const std::string &enum_name);
@@ -46,6 +49,8 @@ private:
     EndstoneServer &server_;
     std::recursive_mutex mutex_;
     std::unordered_map<std::string, NotNull<Command>> custom_commands_;
+    std::vector<NotNull<Command>> deferred_commands_;
+    bool attached_ = false;
     std::unordered_map<std::string, std::vector<std::string>> custom_enums_;
 
     static const std::unordered_map<std::string, CommandRegistry::HardNonTerminal> TYPE_SYMBOLS;

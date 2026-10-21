@@ -164,6 +164,7 @@ EndstoneServer::EndstoneServer() : logger_(LoggerFactory::getLogger(""))
     plugin_manager_ = std::make_unique<EndstonePluginManager>(*this);
     service_manager_ = std::make_unique<EndstoneServiceManager>();
     scheduler_ = std::make_unique<EndstoneScheduler>(*this);
+    command_map_ = std::make_unique<EndstoneCommandMap>(*this);
     start_time_ = std::chrono::system_clock::now();
 
     try {
@@ -230,7 +231,7 @@ void EndstoneServer::setLevel(::Level &level)
     level_ = std::make_unique<EndstoneLevel>(level);
     level_->loadDimensions();
     scoreboard_ = EndstoneScoreboard::create(level.getScoreboard());
-    command_map_ = std::make_unique<EndstoneCommandMap>(*this);
+    command_map_->attach();
     metrics_ = std::make_unique<Metrics>(*this, "endstone._metrics", "EndstoneMetrics", std::ref<Server>(*this));
     loadResourcePacks();
     initRegistries();
@@ -441,9 +442,6 @@ Language &EndstoneServer::getLanguage() const
 
 EndstoneCommandMap &EndstoneServer::getCommandMap() const
 {
-    if (!command_map_) {
-        throw std::runtime_error("Level has not been loaded yet.");
-    }
     return *command_map_;
 }
 
@@ -459,9 +457,6 @@ EndstonePluginManager &EndstoneServer::getEndstonePluginManager() const
 
 Nullable<PluginCommand> EndstoneServer::getPluginCommand(std::string name) const
 {
-    if (!command_map_) {
-        return nullptr;
-    }
     if (auto command = command_map_->getCommand(name); command && command->is<PluginCommand>()) {
         return command.cast<PluginCommand>();
     }
@@ -496,7 +491,7 @@ void EndstoneServer::loadPlugins()
 void EndstoneServer::enablePlugins(PluginLoadOrder type)
 {
     if (type == PluginLoadOrder::PostWorld) {
-        command_map_->setPluginCommands();
+        command_map_->setPluginNames();
         DefaultPermissions::registerCorePermissions();
         MinecraftDefaultPermissions::registerCorePermissions();
     }
@@ -645,6 +640,9 @@ void EndstoneServer::shutdown()
 
 void EndstoneServer::reload()
 {
+    if (!level_) {
+        throw std::runtime_error("Level has not been loaded yet.");
+    }
     getCommandMap().clearCommands();
 
     // Wait for at most 2.5 seconds for plugins to close their async tasks
