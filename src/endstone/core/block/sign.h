@@ -14,6 +14,7 @@
 
 #pragma once
 
+#include <array>
 #include <string>
 #include <vector>
 
@@ -38,16 +39,21 @@ public:
     void setColor(Color color) override;
 
 private:
+    friend class EndstoneSign;
+
     [[nodiscard]] ::SignBlockActor &getSign() const;
 
     const EndstoneSign &sign_;
     ::SignTextSide side_;
+    std::array<std::string, ::SignBlockActor::NUM_LINES> raw_lines_;
 };
 
 class EndstoneSign : public EndstoneBlockStateBase<Sign> {
 public:
     EndstoneSign(const EndstoneBlock &block, ::SignBlockActor &sign, bool use_snapshot);
 
+    using EndstoneBlockStateBase::update;
+    bool update(bool force, bool apply_physics) override;
     [[nodiscard]] SignSide &getSide(Side side) const override;
     [[nodiscard]] bool isWaxed() const override;
     void setWaxed(bool waxed) override;

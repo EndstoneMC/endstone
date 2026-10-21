@@ -593,7 +593,8 @@ class SignSide:
 
         Args:
             index: The index of the line to set, between 0 and 3.
-            line: The new text to set. Anything after a line break is dropped.
+            line: The new text to set. Bedrock stores only the text before a line break. A snapshot returns the full
+                line until `update()`.
         """
 
     @property

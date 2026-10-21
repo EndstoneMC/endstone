@@ -262,7 +262,8 @@ void init_block(py::module_ &m, py::classh<Block> &block)
 
     Args:
         index: The index of the line to set, between 0 and 3.
-        line: The new text to set. Anything after a line break is dropped.
+        line: The new text to set. Bedrock stores only the text before a line break. A snapshot returns the full
+            line until `update()`.
 )doc")
         .def_property("glowing_text", &SignSide::isGlowingText, &SignSide::setGlowingText,
                       "Whether this side of the sign has glowing text.")

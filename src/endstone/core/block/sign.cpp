@@ -83,7 +83,15 @@ EndstoneSignSide::EndstoneSignSide(const EndstoneSign &sign, ::SignTextSide side
 
 std::vector<std::string> EndstoneSignSide::getLines() const
 {
-    return splitLines(getSign().getMessage(side_));
+    auto lines = splitLines(getSign().getMessage(side_));
+    for (std::size_t i = 0; i < raw_lines_.size(); ++i) {
+        const auto &raw = raw_lines_[i];
+        if (raw.size() > lines[i].size() && raw.compare(0, lines[i].size(), lines[i]) == 0 &&
+            raw[lines[i].size()] == '\n') {
+            lines[i] = raw;
+        }
+    }
+    return lines;
 }
 
 std::string EndstoneSignSide::getLine(int index) const
@@ -99,9 +107,9 @@ void EndstoneSignSide::setLine(int index, std::string line)
     Preconditions::checkArgument(index >= 0 && index < ::SignBlockActor::NUM_LINES,
                                  "Line index must be between 0 and {}, got {}.", ::SignBlockActor::NUM_LINES - 1,
                                  index);
-    line.resize(std::min(line.size(), line.find('\n')));
-    auto lines = getLines();
-    lines[index] = std::move(line);
+    auto lines = splitLines(getSign().getMessage(side_));
+    lines[index] = line.substr(0, line.find('\n'));
+    raw_lines_[index] = sign_.isSnapshot() ? std::move(line) : std::string{};
     getSign().setMessageForServerScripingOnly(side_, joinLines(lines), {});
 }
 
@@ -131,6 +139,16 @@ EndstoneSign::EndstoneSign(const EndstoneBlock &block, ::SignBlockActor &sign, b
     : EndstoneBlockStateBase<Sign>(block, sign, use_snapshot), front_(*this, ::SignTextSide::Front),
       back_(*this, ::SignTextSide::Back)
 {
+}
+
+bool EndstoneSign::update(bool force, bool apply_physics)
+{
+    if (!EndstoneBlockStateBase::update(force, apply_physics)) {
+        return false;
+    }
+    front_.raw_lines_.fill({});
+    back_.raw_lines_.fill({});
+    return true;
 }
 
 SignSide &EndstoneSign::getSide(Side side) const
