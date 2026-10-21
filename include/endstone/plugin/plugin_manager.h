@@ -18,6 +18,7 @@
 #include <memory>
 #include <string>
 #include <unordered_set>
+#include <utility>
 #include <vector>
 
 #include "endstone/event/event.h"
@@ -151,7 +152,30 @@ public:
     virtual void callEvent(const NotNull<Event> &event) = 0;
 
     /**
-     * Registers the given event.
+     * Registers the given event with an executor that receives the event by reference.
+     *
+     * The reference is valid only for the duration of the call. A listener that needs the event's data afterwards
+     * copies that data.
+     *
+     * @param event Event name to register
+     * @param executor EventExecutor to register
+     * @param priority Priority of this event
+     * @param plugin Plugin to register
+     * @param ignore_cancelled Do not call executor if event was already
+     *     cancelled
+     */
+    void registerEvent(std::string event, std::function<void(Event &)> executor, EventPriority priority,
+                       const NotNull<Plugin> &plugin, bool ignore_cancelled)
+    {
+        registerEvent(
+            std::move(event), [executor = std::move(executor)](const NotNull<Event> &e) { executor(*e); }, priority,
+            plugin, ignore_cancelled);
+    }
+
+    /**
+     * Registers the given event with an executor that receives the event's handle.
+     *
+     * The executor may keep the handle, and the event stays valid for as long as it is held.
      *
      * @param event Event name to register
      * @param executor EventExecutor to register

@@ -61,6 +61,7 @@ public:
 
     /** Event system */
     void callEvent(const NotNull<Event> &event) override;
+    using PluginManager::registerEvent;
     void registerEvent(std::string event, std::function<void(const NotNull<Event> &)> executor, EventPriority priority,
                        const NotNull<Plugin> &plugin, bool ignore_cancelled) override;
     [[nodiscard]] bool isEventRegistered(std::string_view event) const;

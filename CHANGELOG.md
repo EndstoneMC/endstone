@@ -106,6 +106,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - `ActorType`, `EffectType` and `PotionType` in the registry API, each entry carrying a `translation_key`, plus the missing `ActorType.SULFUR_CUBE` and `ActorType.CUSHION` constants.
 - Game rule API: `Level.get_game_rule()`, `Level.set_game_rule()` and `Level.has_game_rule()`, keyed by a typed `GameRule` constant such as `GameRule.DO_FIRE_TICK`, covering every rule in the `GameRule` registry.
 - Binary NBT serialization (`dump`/`load`) with support for multiple formats.
+- `PluginManager::registerEvent()` also takes an executor that receives the event's `NotNull<Event>`, for a listener that keeps the event after it returns.
 
 #### Server and Docker
 
@@ -135,7 +136,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - **BREAKING**: `Scheduler::runTask()` and its five variants return `Nullable<Task>` and `Scheduler::getPendingTasks()` returns `std::vector<NotNull<Task>>`; `CommandMap::registerCommand()` takes `NotNull<Command>` and `getCommand()` returns `Nullable<Command>`; `PluginCommand::setExecutor()` takes and `PluginCommand::getExecutor()` returns `Nullable<CommandExecutor>`; `MapView`'s renderer methods use `NotNull<MapRenderer>`.
 - **BREAKING**: `Player::getScoreboard()` returns `NotNull<Scoreboard>` and `Player::setScoreboard()` takes one; `ServiceManager::registerService()` takes `NotNull<Service>` and `get()`/`load()` return `Nullable<Service>`.
 - **BREAKING**: The remaining raw-reference accessors use handles: `Actor::teleport()`, `Player::hideActor()`/`showActor()`, `BossBar::addPlayer()`/`removePlayer()`, `MapRenderer::render()`, `ServiceManager::unregister()`, `Server::createMap()`, `MapView::setDimension()`, `Objective::getScoreboard()`, `Score::getObjective()`, `Score::getScoreboard()`, `Dimension::dropItem()`, `ChunkEvent::getChunk()`, `BlockFromToEvent::getToBlock()`, `PlayerBedEnterEvent::getBed()`, `PlayerBedLeaveEvent::getBed()`, and the dimension and sender members of `DimensionEvent`, `PlayerDimensionChangeEvent`, `ScriptMessageEvent` and `ServerCommandEvent`. `Player::getAddress()` returns a reference rather than a copy. Every API that takes a plugin takes a `NotNull<Plugin>`, `PluginManager` and `PluginLoader` hand plugins out as handles, and `Task::getOwner()`, `PermissionAttachment::getPlugin()`, `PluginCommand::getPlugin()`, `PluginEnableEvent::getPlugin()`, `PluginDisableEvent::getPlugin()` and `EventHandler::getPlugin()` return `Nullable<Plugin>`, empty (`None` in Python) once the plugin is gone.
-- **BREAKING**: `PluginManager::callEvent()` takes a `NotNull<Event>`, and an executor passed to `PluginManager::registerEvent()` receives one.
+- **BREAKING**: `PluginManager::callEvent()` takes a `NotNull<Event>`.
 - **BREAKING**: Removed `Block::clone()`; copy the handle instead.
 - **BREAKING**: `Location.dimension` holds the dimension weakly. It gives `None` when unset, the dimension when loaded, and raises once unloaded; check with the new `Location.is_dimension_loaded` and `Dimension.is_valid`.
 - **BREAKING**: `Server.level` returns a `Level` and raises if the level has not been loaded yet, instead of returning `None`.

@@ -13,6 +13,8 @@
 // limitations under the License.
 
 #include <memory>
+#include <string>
+#include <vector>
 
 #include <gmock/gmock.h>
 #include <gtest/gtest.h>
@@ -45,6 +47,30 @@ TEST_F(PluginManagerTest, IsEventRegistered)
     manager_.registerEvent(PacketSendEvent::NAME, [](const NotNull<Event> &) {}, EventPriority::Normal, plugin_, false);
     EXPECT_TRUE(manager_.isEventRegistered<PacketSendEvent>());
     EXPECT_FALSE(manager_.isEventRegistered<PacketReceiveEvent>());
+}
+
+TEST_F(PluginManagerTest, RegisterEventByReference)
+{
+    std::vector<std::string> received;
+    manager_.registerEvent(
+        PacketReceiveEvent::NAME, [&received](Event &e) { received.push_back(e.getEventName()); },
+        EventPriority::Normal, plugin_, false);
+
+    const auto e = std::make_shared<PacketReceiveEvent>(nullptr, 0, std::string_view{}, SocketAddress{}, 0);
+    manager_.callEvent(e);
+    EXPECT_EQ(received, std::vector<std::string>{PacketReceiveEvent::NAME});
+}
+
+TEST_F(PluginManagerTest, RegisterEventByHandle)
+{
+    std::shared_ptr<Event> kept;
+    manager_.registerEvent(
+        PacketReceiveEvent::NAME, [&kept](const NotNull<Event> &e) { kept = e.get(); }, EventPriority::Normal, plugin_,
+        false);
+
+    const auto e = std::make_shared<PacketReceiveEvent>(nullptr, 0, std::string_view{}, SocketAddress{}, 0);
+    manager_.callEvent(e);
+    EXPECT_EQ(kept.get(), e.get());
 }
 
 TEST_F(PluginManagerTest, IsEventRegisteredAfterCallWithoutHandlers)

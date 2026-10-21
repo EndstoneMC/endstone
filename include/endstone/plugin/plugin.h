@@ -147,8 +147,7 @@ public:
                        bool ignore_cancelled = false)
     {
         getServer().getPluginManager().registerEvent(
-            EventType::NAME,
-            [func, &instance](const NotNull<Event> &e) { (instance.*func)(static_cast<EventType &>(*e)); }, priority,
+            EventType::NAME, [func, &instance](Event &e) { (instance.*func)(static_cast<EventType &>(e)); }, priority,
             shared_from_this(), ignore_cancelled);
     }
 
@@ -164,8 +163,8 @@ public:
                        bool ignore_cancelled = false)
     {
         getServer().getPluginManager().registerEvent(
-            EventType::NAME, [func](const NotNull<Event> &e) { func(static_cast<EventType &>(*e)); }, priority,
-            shared_from_this(), ignore_cancelled);
+            EventType::NAME, [func](Event &e) { func(static_cast<EventType &>(e)); }, priority, shared_from_this(),
+            ignore_cancelled);
     }
 
 protected:
