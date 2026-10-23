@@ -14,15 +14,31 @@
 
 #pragma once
 
+#include <cstdarg>
+
 #include "bedrock/bedrock.h"
 #include "bedrock/core/utility/enable_non_owner_references.h"
 #include "bedrock/core/utility/non_owner_pointer.h"
 
 namespace NetherNet {
 
+class ILanDiscovery;
+class RtcThreadManager;
+struct GlobalConfiguration;
+enum class LogSeverity : int;
+
 class IContext : public Bedrock::EnableNonOwnerReferences {
 public:
     ~IContext() override;
+    [[nodiscard]] virtual const RtcThreadManager &getSignalThread() const = 0;
+    [[nodiscard]] virtual const RtcThreadManager &getNetworkThread() const = 0;
+    [[nodiscard]] virtual const RtcThreadManager &getWorkerThread() const = 0;
+    virtual ILanDiscovery &getLanDiscovery() = 0;
+    virtual void onSuspend() = 0;
+    virtual void onResume() = 0;
+    [[nodiscard]] virtual const GlobalConfiguration &getGlobalConfig() const = 0;
+    virtual void _logMessage(LogSeverity, const char *, va_list) const = 0;
+    virtual void setLoggingLevel(LogSeverity) = 0;
 };
 
 class ContextProxy : IContext {

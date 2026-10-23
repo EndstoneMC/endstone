@@ -79,12 +79,16 @@ std::string toHex(const std::string_view bytes)
 void NetherNet::LanThreadManager::SendLanBroadcastResponse(const webrtc::SocketAddress &destination, NetworkID from,
                                                            std::string data)
 {
+#ifdef _WIN32
+    constexpr auto send_lan_broadcast_response = &ILanDiscovery::SendLanBroadcastResponse;
+#else
+    constexpr auto send_lan_broadcast_response = &LanThreadManager::SendLanBroadcastResponse;
+#endif
     const auto bytes = fromHex(data).value_or("");
     ReadOnlyBinaryStream input(bytes, false);
     NetherNetServerLocator::ServerData server_data;
     if (!server_data.read(input).ignoreError()) {
-        ENDSTONE_HOOK_CALL_ORIGINAL(&LanThreadManager::SendLanBroadcastResponse, this, destination, from,
-                                    std::move(data));
+        ENDSTONE_HOOK_CALL_ORIGINAL(send_lan_broadcast_response, this, destination, from, std::move(data));
         return;
     }
 
@@ -114,11 +118,9 @@ void NetherNet::LanThreadManager::SendLanBroadcastResponse(const webrtc::SocketA
     if (response.size() > MAX_APPLICATION_DATA_LENGTH) {
         server.getLogger().warning("LAN discovery response is {} bytes, exceeding the {} byte limit.",
                                    response.size(), MAX_APPLICATION_DATA_LENGTH);
-        ENDSTONE_HOOK_CALL_ORIGINAL(&LanThreadManager::SendLanBroadcastResponse, this, destination, from,
-                                    std::move(data));
+        ENDSTONE_HOOK_CALL_ORIGINAL(send_lan_broadcast_response, this, destination, from, std::move(data));
         return;
     }
 
-    ENDSTONE_HOOK_CALL_ORIGINAL(&LanThreadManager::SendLanBroadcastResponse, this, destination, from,
-                                std::move(response));
+    ENDSTONE_HOOK_CALL_ORIGINAL(send_lan_broadcast_response, this, destination, from, std::move(response));
 }

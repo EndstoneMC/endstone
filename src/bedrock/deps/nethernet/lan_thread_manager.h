@@ -17,8 +17,14 @@
 #include <string>
 
 #include "bedrock/bedrock.h"
+#include "bedrock/core/utility/pub_sub/subscription.h"
+#include "bedrock/deps/nethernet/context.h"
+#include "bedrock/deps/nethernet/events.h"
 #include "bedrock/deps/nethernet/network_id.h"
+#include "bedrock/deps/nethernet/run_loop.h"
+#include "bedrock/deps/webrtc/sigslot.h"
 #include "bedrock/deps/webrtc/socket_address.h"
+#include "bedrock/deps/webrtc/thread.h"
 
 namespace NetherNet {
 
@@ -33,10 +39,25 @@ public:
     virtual bool IsNetworkIdOnLan(NetworkID) = 0;
     virtual void SendLanBroadcastResponse(const webrtc::SocketAddress &destination, NetworkID from,
                                           std::string data) = 0;
+    virtual void SendSignalingMessageTo(NetworkID, NetworkID, std::string) = 0;
+    virtual Bedrock::PubSub::Subscription RegisterEventHandler(ILanEventHandler *) = 0;
+    virtual void Suspend() = 0;
+    virtual void Resume() = 0;
 };
 
-class LanThreadManager : public ILanDiscovery {
+class LanThreadManager : ContextProxy,
+                         RunLoop::Controller,
+                         webrtc::Thread,
+                         public sigslot::has_slots<sigslot::single_threaded>,
+                         public ILanDiscovery {
 public:
+    ~LanThreadManager() override;
+    Bedrock::PubSub::Subscription RegisterEventHandler(ILanEventHandler *handler) override;
+    bool IsBroadcastDiscoveryEnabled(NetworkID id) override;
+    void EnableBroadcastDiscovery(NetworkID id) override;
+    void DisableBroadcastDiscovery(NetworkID id) override;
+    void AddLanHost(NetworkID remote, const std::string &ip_str, int port) override;
+    void RemoveLanHost(NetworkID remote) override;
     ENDSTONE_HOOK void SendLanBroadcastResponse(const webrtc::SocketAddress &destination, NetworkID from,
                                                 std::string data) override;
 };
