@@ -14,6 +14,7 @@
 
 #pragma once
 
+#include <bitset>
 #include <cstdint>
 #include <functional>
 #include <memory>
@@ -26,6 +27,7 @@
 #include <nlohmann/json.hpp>
 
 #include "bedrock/network/connection_request.h"
+#include "bedrock/network/packet/player_auth_input_packet.h"
 #include "bedrock/network/sub_client_connection_request.h"
 #include "bedrock/world/events/player_events.h"
 #include "endstone/core/actor/mob.h"
@@ -151,6 +153,7 @@ public:
                                        request);
     void disconnect();
     void updateAbilities() const;
+    void clearPinnedInput();
     void checkOpStatus();
     [[nodiscard]] bool hasHiddenActors() const;
     [[nodiscard]] bool isActorHidden(std::int64_t unique_id) const;
@@ -185,6 +188,9 @@ private:
     std::uint32_t form_ids_ = 0xffff;  // Set to a large value to avoid collision with forms created by script api
     std::unordered_map<std::uint32_t, FormVariant> forms_;
     Input last_input_;
+    std::bitset<PlayerAuthInputPacket::InputData::INPUT_NUM> pinned_input_;
+    std::bitset<PlayerAuthInputPacket::InputData::INPUT_NUM> pinned_input_value_;
+    bool accepted_sneak_ = false;
     std::optional<RecipeBookSettings> last_recipe_book_settings_;
     bool spawned_ = false;
     bool last_op_status_ = false;

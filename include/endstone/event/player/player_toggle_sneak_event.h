@@ -14,6 +14,7 @@
 
 #pragma once
 
+#include "endstone/event/cancellable.h"
 #include "endstone/event/player/player_event.h"
 
 namespace endstone {
@@ -21,10 +22,10 @@ namespace endstone {
 /**
  * Called when a player toggles their sneaking state.
  */
-class PlayerToggleSneakEvent final : public PlayerEvent {
+class PlayerToggleSneakEvent final : public Cancellable<PlayerEvent> {
 public:
     ENDSTONE_EVENT(PlayerToggleSneakEvent);
-    explicit PlayerToggleSneakEvent(const NotNull<Player> &player, bool sneaking) : PlayerEvent(player), sneaking_(sneaking) {}
+    explicit PlayerToggleSneakEvent(const NotNull<Player> &player, bool sneaking) : Cancellable(player), sneaking_(sneaking) {}
 
     /**
      * Returns whether the player is now sneaking or not.

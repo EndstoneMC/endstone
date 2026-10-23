@@ -508,8 +508,8 @@ void init_event(py::module_ &m, py::classh<Event, PyEvent> &event)
         m, "PlayerItemHeldEvent", "Called when a player changes their currently held item.")
         .def_property_readonly("new_slot", &PlayerItemHeldEvent::getNewSlot, "The new held slot index.")
         .def_property_readonly("previous_slot", &PlayerItemHeldEvent::getPreviousSlot, "The previous held slot index.");
-    bind_event<PlayerToggleSneakEvent, PlayerEvent>(m, "PlayerToggleSneakEvent",
-                                                    "Called when a player toggles their sneaking state.")
+    bind_event<PlayerToggleSneakEvent, PlayerEvent, ICancellable>(m, "PlayerToggleSneakEvent",
+                                                                  "Called when a player toggles their sneaking state.")
         .def_property_readonly("is_sneaking", &PlayerToggleSneakEvent::isSneaking,
                                "Whether the player is now sneaking or not.");
     bind_event<PlayerToggleSprintEvent, PlayerEvent>(m, "PlayerToggleSprintEvent",
@@ -520,8 +520,8 @@ void init_event(py::module_ &m, py::classh<Event, PyEvent> &event)
                                                     "Called when a player toggles their crawling state.")
         .def_property_readonly("is_crawling", &PlayerToggleCrawlEvent::isCrawling,
                                "Whether the player is now crawling or not.");
-    bind_event<PlayerToggleFlightEvent, PlayerEvent>(m, "PlayerToggleFlightEvent",
-                                                     "Called when a player toggles their flying state.")
+    bind_event<PlayerToggleFlightEvent, PlayerEvent, ICancellable>(m, "PlayerToggleFlightEvent",
+                                                                   "Called when a player toggles their flying state.")
         .def_property_readonly("is_flying", &PlayerToggleFlightEvent::isFlying,
                                "Whether the player is now flying or not.");
     bind_event<PlayerJoinEvent, PlayerEvent>(m, "PlayerJoinEvent", "Called when a player joins a server.")

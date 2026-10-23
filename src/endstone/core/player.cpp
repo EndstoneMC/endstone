@@ -1210,6 +1210,13 @@ void EndstonePlayer::updateAbilities() const
     getHandle().sendNetworkPacket(*packet);
 }
 
+void EndstonePlayer::clearPinnedInput()
+{
+    pinned_input_.reset();
+    pinned_input_value_.reset();
+    accepted_sneak_ = last_input_.isSneak();
+}
+
 void EndstonePlayer::checkOpStatus()
 {
     // TODO(fixme): replace me with client_player_permissions_publisher in PermissionsHandler

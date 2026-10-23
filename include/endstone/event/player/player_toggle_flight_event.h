@@ -14,6 +14,7 @@
 
 #pragma once
 
+#include "endstone/event/cancellable.h"
 #include "endstone/event/player/player_event.h"
 
 namespace endstone {
@@ -21,11 +22,11 @@ namespace endstone {
 /**
  * Called when a player toggles their flying state.
  */
-class PlayerToggleFlightEvent final : public PlayerEvent {
+class PlayerToggleFlightEvent final : public Cancellable<PlayerEvent> {
 public:
     ENDSTONE_EVENT(PlayerToggleFlightEvent)
 
-    explicit PlayerToggleFlightEvent(const NotNull<Player> &player, bool flying) : PlayerEvent(player), flying_(flying)
+    explicit PlayerToggleFlightEvent(const NotNull<Player> &player, bool flying) : Cancellable(player), flying_(flying)
     {
     }
 

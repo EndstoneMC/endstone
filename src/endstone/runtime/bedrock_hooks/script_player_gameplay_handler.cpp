@@ -273,6 +273,7 @@ bool handleEvent(const PlayerFormCloseEvent &event)
 bool handleEvent(const ::PlayerRespawnEvent &event)
 {
     if (const auto *player = WeakEntityRef(event.player).tryUnwrap<::Player>(); player) {
+        player->getEndstoneActor<endstone::core::EndstonePlayer>()->clearPinnedInput();
         const auto &server = endstone::core::EndstoneServer::getInstance();
         const auto reason = player->isRespawningFromTheEnd() ? endstone::PlayerRespawnEvent::RespawnReason::EndPortal
                                                              : endstone::PlayerRespawnEvent::RespawnReason::Death;
@@ -286,6 +287,7 @@ bool handleEvent(const ::PlayerRespawnEvent &event)
 bool handleEvent(const PlayerDimensionChangeAfterEvent &event)
 {
     if (const auto *player = WeakEntityRef(event.player).tryUnwrap<::Player>(); player) {
+        player->getEndstoneActor<endstone::core::EndstonePlayer>()->clearPinnedInput();
         const auto &server = endstone::core::EndstoneServer::getInstance();
         const auto e = std::make_shared<endstone::PlayerDimensionChangeEvent>(
             player->getEndstoneActor<endstone::core::EndstonePlayer>(),

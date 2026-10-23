@@ -1887,10 +1887,27 @@ class PlayerItemHeldEvent(PlayerEvent, Cancellable):
         The previous held slot index.
         """
 
-class PlayerToggleSneakEvent(PlayerEvent):
+class PlayerToggleSneakEvent(PlayerEvent, Cancellable):
     """
     Called when a player toggles their sneaking state.
     """
+    @property
+    def is_cancelled(self) -> bool:
+        """
+        The cancellation state of this event.
+
+        A cancelled event will not be executed in the server, but will still pass to other plugins.
+        """
+
+    @is_cancelled.setter
+    def is_cancelled(self, arg1: bool) -> None: ...
+    def cancel(self) -> None:
+        """
+        Cancel this event.
+
+        A cancelled event will not be executed in the server, but will still pass to other plugins.
+        """
+
     @property
     def is_sneaking(self) -> bool:
         """
@@ -1917,10 +1934,27 @@ class PlayerToggleCrawlEvent(PlayerEvent):
         Whether the player is now crawling or not.
         """
 
-class PlayerToggleFlightEvent(PlayerEvent):
+class PlayerToggleFlightEvent(PlayerEvent, Cancellable):
     """
     Called when a player toggles their flying state.
     """
+    @property
+    def is_cancelled(self) -> bool:
+        """
+        The cancellation state of this event.
+
+        A cancelled event will not be executed in the server, but will still pass to other plugins.
+        """
+
+    @is_cancelled.setter
+    def is_cancelled(self, arg1: bool) -> None: ...
+    def cancel(self) -> None:
+        """
+        Cancel this event.
+
+        A cancelled event will not be executed in the server, but will still pass to other plugins.
+        """
+
     @property
     def is_flying(self) -> bool:
         """

@@ -28,6 +28,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - `PlayerSetSpawnEvent` for a player's respawn point being set, reporting the `cause` (`BED`, `RESPAWN_ANCHOR`, `COMMAND`, `PLUGIN` or `UNKNOWN`) and a writable `location`. Cancelling leaves the respawn point untouched, though `/spawnpoint` still reports success and a respawn anchor still plays its sound. It does not fire when Bedrock clears a respawn point, so `/clearspawnpoint` and breaking the bed are both silent.
 - `PlayerOpenSignEvent` for a player beginning to edit a sign's text, reporting the `sign`, the `side` being edited and the `cause` (`PLACE`, `INTERACT`, `PLUGIN` or `UNKNOWN`). Cancelling it stops the sign editor from opening.
 - `PlayerToggleSneakEvent`, `PlayerToggleSprintEvent`, `PlayerToggleFlightEvent` and `PlayerToggleCrawlEvent`, carrying the new state in `is_sneaking`, `is_sprinting`, `is_flying` and `is_crawling`.
+- `PlayerToggleSneakEvent` and `PlayerToggleFlightEvent` can be cancelled, as in Paper.
 - `ActorToggleSwimEvent` and `ActorToggleGlideEvent`, carrying the new state in `is_swimming` and `is_gliding`.
 - `ActorCollideWithActorEvent`, reporting both actors in `actors`. Cancelling it also stops boats and minecarts being boarded by walking into them.
 - `ActorEffectEvent`, reporting the `action` (currently only `Action.ADDED`), the `old_effect` and `new_effect` and the `modified_type`; cancelling it prevents the change.

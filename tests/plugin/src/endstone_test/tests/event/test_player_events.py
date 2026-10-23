@@ -342,7 +342,6 @@ def test_player_skin_change(recorder: EventRecorder) -> None:
 @pytest.mark.parametrize(
     "event_name",
     [
-        "PlayerToggleSneakEvent",
         "PlayerToggleSprintEvent",
         "PlayerJoinEvent",
         "PlayerQuitEvent",
@@ -356,7 +355,6 @@ def test_player_skin_change(recorder: EventRecorder) -> None:
         "PlayerRecipeBookSettingsChangeEvent",
         "PlayerRiptideEvent",
         "PlayerToggleCrawlEvent",
-        "PlayerToggleFlightEvent",
     ],
 )
 def test_not_cancellable(event_name: str) -> None:
@@ -385,6 +383,8 @@ def test_prepare_item_enchant_is_an_inventory_event() -> None:
         "PlayerPickupArrowEvent",
         "PlayerPickupExperienceEvent",
         "PlayerShearActorEvent",
+        "PlayerToggleFlightEvent",
+        "PlayerToggleSneakEvent",
     ],
 )
 def test_cancellable(event_name: str) -> None:

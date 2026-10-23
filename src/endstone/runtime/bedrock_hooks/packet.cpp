@@ -20,6 +20,7 @@
 #include <variant>
 
 #include "bedrock/entity/components/user_entity_identifier_component.h"
+#include "bedrock/entity/components/vanilla_client_gameplay_component.h"
 #include "bedrock/network/net_event_callback.h"
 #include "bedrock/network/network_identifier.h"
 #include "bedrock/network/packet/animate_packet.h"
@@ -403,8 +404,17 @@ void EndstonePacketHandler::handle(PlayerAuthInputPacket &packet)
         packet.getInput(PlayerAuthInputPacket::InputData::Sprinting),
     };
     const bool input_changed = endstone_player->last_input_ != player_input;
+    const bool sneak_changed = endstone_player->last_input_.isSneak() != player_input.isSneak();
     endstone_player->last_input_ = player_input;
 
+    auto &pinned = endstone_player->pinned_input_;
+    auto &pinned_value = endstone_player->pinned_input_value_;
+    pinned &= packet.payload.input_data ^ pinned_value;
+
+    if (input_changed && listeners.isEventRegistered<PlayerInputEvent>()) {
+        const auto e = std::make_shared<PlayerInputEvent>(endstone_player, player_input);
+        plugin_manager.callEvent(e);
+    }
     if (packet.getInput(PlayerAuthInputPacket::InputData::StartSprinting) && !player->isSprinting() &&
         listeners.isEventRegistered<PlayerToggleSprintEvent>()) {
         const auto e = std::make_shared<PlayerToggleSprintEvent>(endstone_player, true);
@@ -415,15 +425,19 @@ void EndstonePacketHandler::handle(PlayerAuthInputPacket &packet)
         const auto e = std::make_shared<PlayerToggleSprintEvent>(endstone_player, false);
         plugin_manager.callEvent(e);
     }
-    if (packet.getInput(PlayerAuthInputPacket::InputData::StartSneaking) && !player->isSneaking() &&
-        listeners.isEventRegistered<PlayerToggleSneakEvent>()) {
-        const auto e = std::make_shared<PlayerToggleSneakEvent>(endstone_player, true);
-        plugin_manager.callEvent(e);
-    }
-    if (packet.getInput(PlayerAuthInputPacket::InputData::StopSneaking) && player->isSneaking() &&
-        listeners.isEventRegistered<PlayerToggleSneakEvent>()) {
-        const auto e = std::make_shared<PlayerToggleSneakEvent>(endstone_player, false);
-        plugin_manager.callEvent(e);
+    if (sneak_changed) {
+        auto accepted = player_input.isSneak();
+        if (listeners.isEventRegistered<PlayerToggleSneakEvent>()) {
+            const auto e = std::make_shared<PlayerToggleSneakEvent>(endstone_player, accepted);
+            plugin_manager.callEvent(e);
+            if (e->isCancelled()) {
+                accepted = endstone_player->accepted_sneak_;
+                pinned.set(PlayerAuthInputPacket::InputData::SneakDown).set(PlayerAuthInputPacket::InputData::Sneaking);
+                pinned_value.set(PlayerAuthInputPacket::InputData::SneakDown, accepted)
+                    .set(PlayerAuthInputPacket::InputData::Sneaking, accepted);
+            }
+        }
+        endstone_player->accepted_sneak_ = accepted;
     }
     if (packet.getInput(PlayerAuthInputPacket::InputData::MissedSwing) &&
         listeners.isEventRegistered<PlayerInteractEvent>()) {
@@ -469,16 +483,33 @@ void EndstonePacketHandler::handle(PlayerAuthInputPacket &packet)
         !player->isFlying() && listeners.isEventRegistered<PlayerToggleFlightEvent>()) {
         const auto e = std::make_shared<PlayerToggleFlightEvent>(endstone_player, true);
         plugin_manager.callEvent(e);
+        if (e->isCancelled()) {
+            packet.setInput(PlayerAuthInputPacket::InputData::StartFlying, false);
+            pinned.set(PlayerAuthInputPacket::InputData::JumpDown).set(PlayerAuthInputPacket::InputData::ChangeHeight);
+            pinned_value.reset(PlayerAuthInputPacket::InputData::JumpDown)
+                .reset(PlayerAuthInputPacket::InputData::ChangeHeight);
+            if (auto *gameplay = player->tryGetComponent<VanillaClientGameplayComponent>(); gameplay != nullptr) {
+                gameplay->jump_trigger_time = 0;
+            }
+            endstone_player->updateAbilities();
+        }
     }
     if (packet.getInput(PlayerAuthInputPacket::InputData::StopFlying) && endstone_player->getAllowFlight() &&
         player->isFlying() && listeners.isEventRegistered<PlayerToggleFlightEvent>()) {
         const auto e = std::make_shared<PlayerToggleFlightEvent>(endstone_player, false);
         plugin_manager.callEvent(e);
+        if (e->isCancelled()) {
+            packet.setInput(PlayerAuthInputPacket::InputData::StopFlying, false);
+            pinned.set(PlayerAuthInputPacket::InputData::JumpDown).set(PlayerAuthInputPacket::InputData::ChangeHeight);
+            pinned_value.reset(PlayerAuthInputPacket::InputData::JumpDown)
+                .reset(PlayerAuthInputPacket::InputData::ChangeHeight);
+            if (auto *gameplay = player->tryGetComponent<VanillaClientGameplayComponent>(); gameplay != nullptr) {
+                gameplay->jump_trigger_time = 0;
+            }
+            endstone_player->updateAbilities();
+        }
     }
-    if (input_changed && listeners.isEventRegistered<PlayerInputEvent>()) {
-        const auto e = std::make_shared<PlayerInputEvent>(endstone_player, player_input);
-        plugin_manager.callEvent(e);
-    }
+    packet.payload.input_data = (packet.payload.input_data & ~pinned) | (pinned_value & pinned);
 
     auto &actions = packet.payload.player_block_actions.actions_;
     for (auto it = actions.begin(); it != actions.end();) {
