@@ -253,9 +253,22 @@ class Mob(Actor):
         Gets all attribute instances from the object. This instance will be backed directly to the object and any changes will be visible at once.
         """
 
-    def add_effect(self, effect: Effect) -> None:
+    def add_effect(self, effect: Effect) -> bool:
         """
-        Adds the given potion effect to this entity. Only one effect of any given type may be active at any one time; an existing effect of the same type will be overwritten.
+        Adds the given potion effect to this entity.
+
+        Only one effect of any given type may be active at any one time. If this entity already has an effect of the
+        same type, its amplifier and duration are only replaced when the given effect has a higher amplifier, or the
+        same amplifier and a longer duration.
+
+        Args:
+            effect: Effect to be added.
+
+        Returns:
+            `True` if the effect could be added.
+
+        Raises:
+            RuntimeError: If called from a thread other than the server thread.
         """
 
     def remove_effect(self, type: Identifier[EffectType] | str) -> None:

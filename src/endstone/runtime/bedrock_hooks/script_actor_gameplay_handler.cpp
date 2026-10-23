@@ -132,7 +132,7 @@ bool handleEvent(::ActorAddEffectEvent &event)
     const endstone::EffectId type{endstone::EffectId::Minecraft, event.mob_effect.getResourceName()};
     const endstone::Effect effect{
         type,
-        event.mob_effect.getDuration().getValue(),
+        event.mob_effect.getDuration().getValue().value_or(endstone::Effect::InfiniteDuration),
         event.mob_effect.getAmplifier(),
         event.mob_effect.isAmbient(),
         event.mob_effect.isEffectVisible(),

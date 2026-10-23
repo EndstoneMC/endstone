@@ -23,27 +23,28 @@ void init_potion(py::module_ &m)
     auto effect_type = def_registry_type(py::class_<EffectType>(m, "EffectType", "Represents an effect type."));
 
     py::class_<Effect>(m, "Effect", "Represents an effect that can be added to a `Mob`.")
-        .def(py::init<EffectId, std::optional<int>, int, bool, bool, bool>(), py::arg("type"), py::arg("duration"),
+        .def(py::init<EffectId, int, int, bool, bool, bool>(), py::arg("type"), py::arg("duration"),
              py::arg("amplifier"), py::arg("ambient") = false, py::arg("particles") = true, py::arg("icon") = true,
-             "Creates an effect. A duration of None represents an infinite duration.")
+             "Creates an effect. A duration of `INFINITE_DURATION` represents an infinite duration.")
         .def(py::self == py::self)  // NOLINT(misc-redundant-expression)
         .def(py::self != py::self)  // NOLINT(misc-redundant-expression)
         .def("__repr__",
              [](const Effect &self) {
-                 const auto duration =
-                     self.isInfinite() ? std::string("infinite") : std::to_string(self.getDuration().value());
-                 return std::format("Effect(type='{}', duration={}, amplifier={})", self.getType(), duration,
+                 return std::format("Effect(type='{}', duration={}, amplifier={})", self.getType(), self.getDuration(),
                                     self.getAmplifier());
              })
         .def_property_readonly("type", &Effect::getType, "Gets the type of this effect.")
-        .def_property_readonly("duration", &Effect::getDuration,
-                               "Gets the duration of this effect in ticks, or None if this effect is infinite.")
+        .def_property_readonly(
+            "duration", &Effect::getDuration,
+            "Gets the duration of this effect in ticks, or `INFINITE_DURATION` if this effect is infinite.")
         .def_property_readonly("infinite", &Effect::isInfinite, "Whether this effect has an infinite duration.")
         .def_property_readonly("amplifier", &Effect::getAmplifier, "Gets the amplifier of this effect.")
         .def_property_readonly("ambient", &Effect::isAmbient,
                                "Whether this effect produces more, translucent, particles.")
         .def_property_readonly("particles", &Effect::hasParticles, "Whether this effect has particles.")
-        .def_property_readonly("icon", &Effect::hasIcon, "Whether this effect has an icon.");
+        .def_property_readonly("icon", &Effect::hasIcon, "Whether this effect has an icon.")
+        .def_property_readonly_static("INFINITE_DURATION", constant(Effect::InfiniteDuration),
+                                      "A constant denoting infinite effect duration.");
 
     effect_type.def_property_readonly("id", &EffectType::getId, "The identifier of this effect type.")
         .def_property_readonly("translation_key", &EffectType::getTranslationKey,
@@ -97,7 +98,7 @@ void init_potion(py::module_ &m)
         .def_property_readonly_static("SLOW_FALLING", id(EffectType::SlowFalling), "Slows entity fall rate.")
         .def_property_readonly_static("BAD_OMEN", id(EffectType::BadOmen),
                                       "Triggers an ominous event when the player enters a village or trial chambers.")
-        .def_property_readonly_static("VILLAGE_HERO", id(EffectType::VillageHero),
+        .def_property_readonly_static("HERO_OF_THE_VILLAGE", id(EffectType::HeroOfTheVillage),
                                       "Reduces the cost of villager trades.")
         .def_property_readonly_static("DARKNESS", id(EffectType::Darkness),
                                       "Causes the player's vision to dim occasionally.")
@@ -132,8 +133,8 @@ void init_potion(py::module_ &m)
         .def_property_readonly_static("LONG_MUNDANE", id(PotionType::LongMundane))
         .def_property_readonly_static("THICK", id(PotionType::Thick))
         .def_property_readonly_static("AWKWARD", id(PotionType::Awkward))
-        .def_property_readonly_static("NIGHTVISION", id(PotionType::Nightvision))
-        .def_property_readonly_static("LONG_NIGHTVISION", id(PotionType::LongNightvision))
+        .def_property_readonly_static("NIGHT_VISION", id(PotionType::NightVision))
+        .def_property_readonly_static("LONG_NIGHT_VISION", id(PotionType::LongNightVision))
         .def_property_readonly_static("INVISIBILITY", id(PotionType::Invisibility))
         .def_property_readonly_static("LONG_INVISIBILITY", id(PotionType::LongInvisibility))
         .def_property_readonly_static("LEAPING", id(PotionType::Leaping))

@@ -72,13 +72,13 @@ def test_active_effects(mob: Player) -> None:
 
 
 def test_infinite_effect(mob: Player) -> None:
-    """Verify an effect applied with no duration never expires."""
-    mob.add_effect(Effect(EffectType.NIGHT_VISION, None, 0))
+    """Verify an effect applied with an infinite duration never expires."""
+    mob.add_effect(Effect(EffectType.NIGHT_VISION, Effect.INFINITE_DURATION, 0))
 
     effect = mob.get_effect(EffectType.NIGHT_VISION)
     assert effect is not None
     assert effect.infinite is True
-    assert effect.duration is None
+    assert effect.duration == Effect.INFINITE_DURATION
 
 
 def test_reapplying_replaces_the_effect(mob: Player) -> None:

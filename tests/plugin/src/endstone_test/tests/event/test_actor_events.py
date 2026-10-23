@@ -1,4 +1,5 @@
 import pytest
+from endstone.potion import Effect
 
 from endstone_test.recorder import EventRecorder
 
@@ -98,9 +99,9 @@ def test_actor_effect_is_only_ever_added(recorder: EventRecorder) -> None:
 
 
 def test_actor_effect_duration_matches_infinite(recorder: EventRecorder) -> None:
-    """Verify an infinite effect reports no duration and a finite one does."""
+    """Verify an infinite effect reports INFINITE_DURATION and a finite one does not."""
     for snapshot in recorder.require("ActorEffectEvent"):
-        assert (snapshot["duration"] is None) == snapshot["infinite"]
+        assert (snapshot["duration"] == Effect.INFINITE_DURATION) == snapshot["infinite"]
 
 
 def test_actor_pickup_item(recorder: EventRecorder) -> None:

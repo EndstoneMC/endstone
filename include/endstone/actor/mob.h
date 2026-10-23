@@ -98,11 +98,14 @@ public:
      * Adds the given Effect to this entity.
      *
      * Only one effect of any given type may be active at any one time. If this entity already has an effect of the
-     * same type, it will be overwritten with the new one.
+     * same type, its amplifier and duration are only replaced when the given effect has a higher amplifier, or the
+     * same amplifier and a longer duration.
      *
      * @param effect Effect to be added
+     * @return whether the effect could be added
+     * @throws std::runtime_error if called from a thread other than the server thread
      */
-    virtual void addEffect(const Effect &effect) = 0;
+    virtual bool addEffect(const Effect &effect) = 0;
 
     /**
      * Removes any effects of the given type that are present on this entity.

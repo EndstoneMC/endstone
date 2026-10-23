@@ -14,7 +14,6 @@
 
 #pragma once
 
-#include <optional>
 #include <string>
 
 #include "endstone/potion/effect_type.h"
@@ -30,17 +29,21 @@ namespace endstone {
 class Effect {
 public:
     /**
+     * A constant denoting infinite effect duration.
+     */
+    static constexpr int InfiniteDuration = -1;
+
+    /**
      * Creates an effect.
      *
      * @param type effect type
-     * @param duration measured in ticks, or std::nullopt for an infinite duration, see Effect::getDuration
+     * @param duration measured in ticks, see Effect::getDuration
      * @param amplifier the amplifier for the effect, see Effect::getAmplifier
      * @param ambient the ambient status, see Effect::isAmbient
      * @param particles the particle status, see Effect::hasParticles
      * @param icon the icon status, see Effect::hasIcon
      */
-    Effect(EffectId type, std::optional<int> duration, int amplifier, bool ambient = false, bool particles = true,
-           bool icon = true)
+    Effect(EffectId type, int duration, int amplifier, bool ambient = false, bool particles = true, bool icon = true)
         : type_(std::string(type)), duration_(duration), amplifier_(amplifier), ambient_(ambient),
           particles_(particles), icon_(icon)
     {
@@ -62,11 +65,11 @@ public:
     [[nodiscard]] EffectId getType() const noexcept { return EffectId{type_}; }
 
     /**
-     * Gets the duration of this effect, in ticks.
+     * Returns the duration (in ticks) that this effect will run for when applied to a Mob.
      *
-     * @return the duration in ticks, or std::nullopt if this effect is infinite
+     * @return The duration of the effect, or Effect::InfiniteDuration if this effect is infinite
      */
-    [[nodiscard]] constexpr std::optional<int> getDuration() const noexcept { return duration_; }
+    [[nodiscard]] constexpr int getDuration() const noexcept { return duration_; }
 
     /**
      * Returns whether this effect has an infinite duration.
@@ -75,7 +78,7 @@ public:
      *
      * @return whether this effect is infinite
      */
-    [[nodiscard]] constexpr bool isInfinite() const noexcept { return !duration_.has_value(); }
+    [[nodiscard]] constexpr bool isInfinite() const noexcept { return duration_ == InfiniteDuration; }
 
     /**
      * Gets the amplifier of this effect.
@@ -110,7 +113,7 @@ public:
 
 private:
     std::string type_;
-    std::optional<int> duration_;
+    int duration_;
     int amplifier_;
     bool ambient_;
     bool particles_;

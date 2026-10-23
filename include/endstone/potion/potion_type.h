@@ -34,8 +34,8 @@ public:
     static constexpr auto LongMundane = PotionId(Minecraft, "long_mundane");
     static constexpr auto Thick = PotionId(Minecraft, "thick");
     static constexpr auto Awkward = PotionId(Minecraft, "awkward");
-    static constexpr auto Nightvision = PotionId(Minecraft, "nightvision");
-    static constexpr auto LongNightvision = PotionId(Minecraft, "long_nightvision");
+    static constexpr auto NightVision = PotionId(Minecraft, "nightvision");
+    static constexpr auto LongNightVision = PotionId(Minecraft, "long_nightvision");
     static constexpr auto Invisibility = PotionId(Minecraft, "invisibility");
     static constexpr auto LongInvisibility = PotionId(Minecraft, "long_invisibility");
     static constexpr auto Leaping = PotionId(Minecraft, "leaping");

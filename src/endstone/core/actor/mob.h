@@ -99,15 +99,18 @@ public:
         return attributes;
     }
 
-    void addEffect(const Effect &effect) override
+    bool addEffect(const Effect &effect) override
     {
+        Preconditions::checkState(Base::getServer().isPrimaryThread(),
+                                  "Effects can only be added from the server thread.");
         const auto *mob_effect = ::MobEffect::getByName(std::string{effect.getType().getKey()});
         Preconditions::checkArgument(mob_effect != nullptr, "Unknown effect type: {}", effect.getType());
-        const ::MobEffectInstance instance{
-            mob_effect->getId(),   ::EffectDuration{effect.getDuration().value_or(-1)},  // -1 == infinite
-            effect.getAmplifier(), effect.isAmbient(),
-            effect.hasParticles(), effect.hasIcon()};
+        const ::MobEffectInstance instance{mob_effect->getId(),   ::EffectDuration{effect.getDuration()},
+                                           effect.getAmplifier(), effect.isAmbient(),
+                                           effect.hasParticles(), effect.hasIcon()};
+        const auto before = getEffect(effect.getType());
         Base::getHandle().addEffect(instance);
+        return getEffect(effect.getType()) != before;
     }
 
     void removeEffect(EffectId type) override
@@ -133,7 +136,7 @@ public:
 
         return Effect{
             EffectId{EffectId::Minecraft, instance->getResourceName()},
-            instance->getDuration().getValue(),
+            instance->getDuration().getValue().value_or(Effect::InfiniteDuration),
             instance->getAmplifier(),
             instance->isAmbient(),
             instance->isEffectVisible(),
@@ -149,8 +152,9 @@ public:
                 continue;
             }
             effects.emplace_back(EffectId{EffectId::Minecraft, instance.getResourceName()},
-                                 instance.getDuration().getValue(), instance.getAmplifier(), instance.isAmbient(),
-                                 instance.isEffectVisible(), instance.displaysOnScreenTextureAnimation());
+                                 instance.getDuration().getValue().value_or(Effect::InfiniteDuration),
+                                 instance.getAmplifier(), instance.isAmbient(), instance.isEffectVisible(),
+                                 instance.displaysOnScreenTextureAnimation());
         }
         return effects;
     }

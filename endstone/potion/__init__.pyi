@@ -69,7 +69,7 @@ class EffectType:
     CONDUIT_POWER: Identifier[EffectType] = "minecraft:conduit_power"
     SLOW_FALLING: Identifier[EffectType] = "minecraft:slow_falling"
     BAD_OMEN: Identifier[EffectType] = "minecraft:bad_omen"
-    VILLAGE_HERO: Identifier[EffectType] = "minecraft:village_hero"
+    HERO_OF_THE_VILLAGE: Identifier[EffectType] = "minecraft:village_hero"
     DARKNESS: Identifier[EffectType] = "minecraft:darkness"
     TRIAL_OMEN: Identifier[EffectType] = "minecraft:trial_omen"
     WIND_CHARGED: Identifier[EffectType] = "minecraft:wind_charged"
@@ -86,14 +86,14 @@ class Effect:
     def __init__(
         self,
         type: Identifier[EffectType] | str,
-        duration: int | None,
+        duration: int,
         amplifier: int,
         ambient: bool = False,
         particles: bool = True,
         icon: bool = True,
     ) -> None:
         """
-        Creates an effect. A duration of None represents an infinite duration.
+        Creates an effect. A duration of `INFINITE_DURATION` represents an infinite duration.
         """
 
     def __eq__(self, other: object) -> bool: ...
@@ -105,9 +105,9 @@ class Effect:
         """
 
     @property
-    def duration(self) -> int | None:
+    def duration(self) -> int:
         """
-        Gets the duration of this effect in ticks, or None if this effect is infinite.
+        Gets the duration of this effect in ticks, or `INFINITE_DURATION` if this effect is infinite.
         """
 
     @property
@@ -139,6 +139,8 @@ class Effect:
         """
         Whether this effect has an icon.
         """
+
+    INFINITE_DURATION: int = -1
 
 class PotionType:
     """
@@ -176,8 +178,8 @@ class PotionType:
     LONG_MUNDANE: Identifier[PotionType] = "minecraft:potion_type:long_mundane"
     THICK: Identifier[PotionType] = "minecraft:potion_type:thick"
     AWKWARD: Identifier[PotionType] = "minecraft:potion_type:awkward"
-    NIGHTVISION: Identifier[PotionType] = "minecraft:potion_type:nightvision"
-    LONG_NIGHTVISION: Identifier[PotionType] = "minecraft:potion_type:long_nightvision"
+    NIGHT_VISION: Identifier[PotionType] = "minecraft:potion_type:nightvision"
+    LONG_NIGHT_VISION: Identifier[PotionType] = "minecraft:potion_type:long_nightvision"
     INVISIBILITY: Identifier[PotionType] = "minecraft:potion_type:invisibility"
     LONG_INVISIBILITY: Identifier[PotionType] = "minecraft:potion_type:long_invisibility"
     LEAPING: Identifier[PotionType] = "minecraft:potion_type:leaping"

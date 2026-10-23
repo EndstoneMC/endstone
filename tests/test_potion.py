@@ -29,10 +29,11 @@ def test_effect_display_defaults() -> None:
     assert effect.icon is True
 
 
-def test_effect_is_infinite_without_a_duration() -> None:
-    """Verify a duration of None means the effect never expires."""
-    effect = Effect(EffectType.NIGHT_VISION, None, 0)
-    assert effect.duration is None
+def test_effect_is_infinite_with_an_infinite_duration() -> None:
+    """Verify a duration of INFINITE_DURATION means the effect never expires."""
+    assert Effect.INFINITE_DURATION == -1
+    effect = Effect(EffectType.NIGHT_VISION, Effect.INFINITE_DURATION, 0)
+    assert effect.duration == Effect.INFINITE_DURATION
     assert effect.infinite is True
     assert Effect(EffectType.NIGHT_VISION, 100, 0).infinite is False
 
@@ -112,7 +113,7 @@ def test_effect_type_constants() -> None:
         constant = getattr(EffectType, name)
         assert isinstance(constant, Identifier)
         assert constant.namespace == "minecraft"
-        assert constant.key == name.lower()
+        assert constant.key == {"HERO_OF_THE_VILLAGE": "village_hero"}.get(name, name.lower())
 
 
 def test_potion_type_constants() -> None:

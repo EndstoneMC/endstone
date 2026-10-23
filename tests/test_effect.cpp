@@ -14,6 +14,7 @@
 
 #include "endstone/potion/effect.h"
 
+#include <optional>
 #include <string>
 
 #include <gtest/gtest.h>
@@ -68,11 +69,11 @@ TEST(EffectTest, DefaultsAndAccessors)
     EXPECT_TRUE(effect.hasIcon());
 }
 
-TEST(EffectTest, InfiniteWhenDurationIsNullopt)
+TEST(EffectTest, InfiniteWhenDurationIsInfiniteDuration)
 {
-    const Effect effect{EffectType::NightVision, std::nullopt, 0};
+    const Effect effect{EffectType::NightVision, Effect::InfiniteDuration, 0};
     EXPECT_TRUE(effect.isInfinite());
-    EXPECT_FALSE(effect.getDuration().has_value());
+    EXPECT_EQ(effect.getDuration(), -1);
 }
 
 TEST(EffectTest, EqualityNormalisesTheNamespace)
