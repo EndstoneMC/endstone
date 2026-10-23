@@ -14,9 +14,12 @@
 
 #pragma once
 
+#include <string>
+
 #include "bedrock/bedrock.h"
 #include "bedrock/common_types.h"
 #include "bedrock/world/item/equipment_slot.h"
+#include "bedrock/world/item/item.h"
 
 class Actor;
 class BlockPos;
@@ -24,8 +27,11 @@ class InteractionResult;
 class ItemStack;
 class Vec3;
 
-class BucketItem {
+class BucketItem : public Item {
+public:
+    Item &setIconInfo(const std::string &, int) override;
+
 private:
-    ENDSTONE_HOOK virtual InteractionResult _useOn(ItemStack &instance, Actor &entity, BlockPos pos, FacingID face,
-                                                   HandSlot hand_slot, const Vec3 &click_pos) const;
+    ENDSTONE_HOOK InteractionResult _useOn(ItemStack &instance, Actor &entity, BlockPos pos, FacingID face,
+                                           HandSlot hand_slot, const Vec3 &click_pos) const override;
 };
