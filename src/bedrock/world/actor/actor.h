@@ -308,6 +308,7 @@ public:
     void setRotationWrapped(const Vec2 &);
     [[nodiscard]] ActorRuntimeID getRuntimeID() const;
     [[nodiscard]] ActorUniqueID getOrCreateUniqueID() const;
+    [[nodiscard]] ActorUniqueID getTargetId() const { return target_id_; }
     [[nodiscard]] Actor *getVehicle() const;
     [[nodiscard]] bool isRiding() const;
     void stopRiding(bool exit_from_passenger, bool actor_is_being_destroyed, bool switching_vehicles,
