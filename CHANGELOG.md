@@ -54,17 +54,17 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - `Player.send_action_bar()` for sending a message above the hotbar.
 - `Player.respawn_location` for reading and writing where a player will respawn, or `None` when they have no valid respawn point. Bedrock does not persist yaw/pitch for a respawn point, so only the block coordinates and the dimension are kept.
 - `Player.send_block_update()` for showing a block entity state to one player at a location, without changing the world for anybody else.
-- `Player.open_sign()` and `Player.open_virtual_sign()` for opening a sign editor on a player's client. `open_sign()` takes a sign placed in the player's own dimension, reopens one the player is already editing, and fires `PlayerOpenSignEvent`; `open_virtual_sign()` opens the editor at any block position, with no sign required in the dimension, and fires nothing.
+- `Player.open_sign()` and `Player.open_virtual_sign()` for opening a sign editor on a player's client. `open_sign()` takes a sign placed in the player's own dimension, reopens one the player is already editing, and fires `PlayerOpenSignEvent`; `open_virtual_sign(position, side)` opens the editor at a block position in the player's dimension, with no sign required there, and fires nothing.
 
 #### Blocks
 
-- `BlockActorState` block state, the common base of `Container`, `Campfire`, `CreatureSpawner`, `ItemFrame` and `Sign`, with `is_snapshot` telling whether the state holds its own copy of the block entity or the one in the world. `Block.capture_state()` picks between them: the default gives a snapshot, `capture_state(use_snapshot=False)` gives a state that writes straight through. A persistent data container is not available on it yet.
+- `BlockActorState` block state, the common base of `Container`, `Campfire`, `CreatureSpawner`, `ItemFrame`, `Lectern` and `Sign`, with `is_snapshot` telling whether the state holds its own copy of the block entity or the one in the world. `Block.capture_state()` picks between them: the default gives a snapshot, `capture_state(use_snapshot=False)` gives a state that writes straight through. A persistent data container is not available on it yet.
 - `Container` block state for chests, barrels, hoppers, dispensers, droppers, shulker boxes and furnaces, exposing `container.inventory`.
 - `Furnace` block state for furnaces, blast furnaces and smokers, extending `Container`.
-- `Lectern` block state with the displayed `page`, extending `Container`.
+- `Lectern` block state with the displayed `page` and an `inventory` holding the book.
 - `CreatureSpawner` block state with `spawned_type`, `delay`, `min_spawn_delay`, `max_spawn_delay`, `spawn_count`, `max_nearby_entities`, `required_player_range` and `spawn_range`.
 - `Campfire` block state with `get_item()`/`set_item()` and `get_cook_time()`/`set_cook_time()`.
-- `Sign` block state with `sign.get_side(Sign.Side.FRONT)` giving `lines`, `glowing_text` and `color`, plus `sign.waxed`.
+- `Sign` block state with the `Side` enum (`FRONT`, `BACK`) and `sign.get_side(Side.FRONT)` giving `lines`, `glowing_text` and `color`, plus `sign.waxed`.
 - `ItemFrame` block state with `item`, `rotation` and `item_drop_chance`.
 - `Biome` type and `Block.biome`, with lookup via `Biome.get()` and enumeration via `server.get_registry(Biome)`.
 - `BlockData.translation_key`.

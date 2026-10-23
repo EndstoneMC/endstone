@@ -132,6 +132,15 @@
 ^endstone\.\w+\.(?P<owner>ActorType|Attribute|BlockType|Dimension|EffectType|Enchantment|ItemType|PotionType)\.(?P<name>[A-Z][A-Z0-9_]*)$:
     \from endstone import Identifier
     \name: Identifier[\owner] = \value
+^endstone\.block\.CreatureSpawner\.spawned_type$:
+    \from endstone import Identifier
+    \from endstone.actor import ActorType
+    @property
+    def spawned_type(self) -> ActorType | None:
+        \doc
+
+    @spawned_type.setter
+    def spawned_type(self, arg1: Identifier[ActorType] | str | None) -> None: ...
 ^endstone\.level\.__prefix__$:
     \import typing
     \from endstone import GameRule, Identifier

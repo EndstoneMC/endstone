@@ -182,7 +182,11 @@ void init_block(py::module_ &m, py::classh<Block> &block)
     py::classh<CreatureSpawner, BlockActorState>(m, "CreatureSpawner",
                                                  "Represents a captured state of a creature spawner.")
         .def_property("spawned_type", &CreatureSpawner::getSpawnedType, &CreatureSpawner::setSpawnedType,
-                      py::return_value_policy::reference, "The type of actor this spawner will spawn.")
+                      py::return_value_policy::reference, R"doc(
+    The type of actor this spawner will spawn, or `None` if it is not set.
+
+    Assign `None` to clear it. Assigning replaces any spawn potentials the spawner holds.
+)doc")
         .def_property("delay", &CreatureSpawner::getDelay, &CreatureSpawner::setDelay,
                       "The delay until the spawner spawns the next batch of actors, in ticks.")
         .def_property("min_spawn_delay", &CreatureSpawner::getMinSpawnDelay, &CreatureSpawner::setMinSpawnDelay,
@@ -200,11 +204,17 @@ void init_block(py::module_ &m, py::classh<Block> &block)
         .def_property("spawn_range", &CreatureSpawner::getSpawnRange, &CreatureSpawner::setSpawnRange,
                       "The radius around the spawner in which actors are spawned, in blocks.");
 
-    py::classh<Lectern, Container>(m, "Lectern", "Represents a captured state of a lectern.")
+    py::classh<Lectern, BlockActorState>(m, "Lectern", "Represents a captured state of a lectern.")
         .def_property("page", &Lectern::getPage, &Lectern::setPage, R"doc(
     The page currently displayed on the lectern.
 
     The page is 0-indexed, and is clamped to the number of pages in the book the lectern holds.
+)doc")
+        .def_property_readonly("inventory", &Lectern::getInventory, py::return_value_policy::reference_internal, R"doc(
+    The inventory of the block represented by this block state.
+
+    If the block was changed to a different type in the meantime, the returned inventory might no
+    longer be valid.
 )doc");
 
     py::classh<Furnace, Container>(m, "Furnace", R"doc(
@@ -228,8 +238,8 @@ void init_block(py::module_ &m, py::classh<Block> &block)
         .def_property("item", &ItemFrame::getItem, &ItemFrame::setItem, R"doc(
     The item in this frame.
 
-    Reading this returns a defensive copy of the item, or `None` if the frame is empty. Assign
-    `None` to empty the frame.
+    Reading this returns a defensive copy of the item, or an empty stack (air with an amount of 0)
+    if the frame is empty. Assign `None` to empty the frame.
 
     Assigning resets the rotation of the frame, as placing an item in a frame does in-game.
 )doc")
@@ -274,16 +284,16 @@ void init_block(py::module_ &m, py::classh<Block> &block)
     `Color` where Bukkit has a `DyeColor`.
 )doc");
 
+    py::native_enum<Side>(m, "Side", "enum.Enum", "Represents the side of a sign.")
+        .value("FRONT", Side::Front)
+        .value("BACK", Side::Back)
+        .finalize();
+
     auto sign = py::classh<Sign, BlockActorState>(m, "Sign", R"doc(
     Represents a captured state of a sign.
 
     Changes are kept in the captured state until `update()` is called.
 )doc");
-
-    py::native_enum<Sign::Side>(sign, "Side", "enum.Enum", "Represents a side of a sign.")
-        .value("FRONT", Sign::Side::Front)
-        .value("BACK", Sign::Side::Back)
-        .finalize();
 
     sign.def("get_side", &Sign::getSide, py::arg("side"), py::return_value_policy::reference_internal, R"doc(
     Gets the side of this sign.

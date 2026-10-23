@@ -26,7 +26,7 @@ class EndstoneItemFrame : public EndstoneBlockStateBase<ItemFrame> {
 public:
     EndstoneItemFrame(const EndstoneBlock &block, ::ItemFrameBlockActor &item_frame, bool use_snapshot);
 
-    [[nodiscard]] std::optional<ItemStack> getItem() const override;
+    [[nodiscard]] ItemStack getItem() const override;
     void setItem(const std::optional<ItemStack> &item) override;
     [[nodiscard]] float getItemDropChance() const override;
     void setItemDropChance(float chance) override;

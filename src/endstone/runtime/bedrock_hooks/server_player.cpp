@@ -75,7 +75,7 @@ void ServerPlayer::openSign(const BlockPos &position, bool is_front_side)
         if (const auto sign = block->captureState(true).as<endstone::Sign>(); sign) {
             const auto event = std::make_shared<endstone::PlayerOpenSignEvent>(
                 getEndstoneActor<endstone::core::EndstonePlayer>(), sign,
-                is_front_side ? endstone::Sign::Side::Front : endstone::Sign::Side::Back, cause);
+                is_front_side ? endstone::Side::Front : endstone::Side::Back, cause);
             server.getPluginManager().callEvent(event);
             if (event->isCancelled()) {
                 return;

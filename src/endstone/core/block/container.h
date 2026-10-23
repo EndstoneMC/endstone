@@ -25,7 +25,7 @@
 namespace endstone::core {
 
 template <typename Interface = Container>
-    requires std::is_base_of_v<Container, Interface>
+    requires std::is_base_of_v<BlockActorState, Interface>
 class EndstoneContainerBase : public EndstoneBlockStateBase<Interface> {
 public:
     EndstoneContainerBase(const EndstoneBlock &block, ::BlockActor &block_actor, bool use_snapshot)

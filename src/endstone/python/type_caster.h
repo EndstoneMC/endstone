@@ -310,6 +310,40 @@ private:
     std::string storage_;
 };
 
+template <typename T>
+class type_caster<std::optional<endstone::Identifier<T>>> {
+    using value_conv = make_caster<endstone::Identifier<T>>;
+
+public:
+    bool load(handle src, bool convert)
+    {
+        if (!src) {
+            return false;
+        }
+        if (src.is_none()) {
+            return true;
+        }
+        if (!inner_.load(src, convert)) {
+            return false;
+        }
+        value.emplace(cast_op<endstone::Identifier<T>>(inner_));
+        return true;
+    }
+
+    static handle cast(const std::optional<endstone::Identifier<T>> &src, return_value_policy policy, handle parent)
+    {
+        if (!src) {
+            return none().release();
+        }
+        return value_conv::cast(*src, policy, parent);
+    }
+
+    PYBIND11_TYPE_CASTER(std::optional<endstone::Identifier<T>>, value_conv::name | make_caster<none>::name);
+
+private:
+    value_conv inner_;
+};
+
 template <>
 class type_caster<endstone::nbt::Tag> {
 public:

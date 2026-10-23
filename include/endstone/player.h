@@ -25,6 +25,7 @@
 #include "endstone/block/block_actor_state.h"
 #include "endstone/block/block_data.h"
 #include "endstone/block/sign.h"
+#include "endstone/block/sign/side.h"
 #include "endstone/form/action_form.h"
 #include "endstone/form/message_form.h"
 #include "endstone/form/modal_form.h"
@@ -37,6 +38,7 @@
 #include "endstone/skin.h"
 #include "endstone/util/socket_address.h"
 #include "endstone/util/uuid.h"
+#include "endstone/util/vector.h"
 
 namespace endstone {
 
@@ -203,19 +205,19 @@ public:
      * @param side the side of the sign to edit
      * @throws std::invalid_argument if the sign is not placed or is in another dimension
      */
-    virtual void openSign(const Sign &sign, Sign::Side side) = 0;
+    virtual void openSign(const Sign &sign, Side side) = 0;
 
     /**
-     * Opens a sign editor for this player at the given block location.
+     * Opens a sign editor for this player at the given block position in the player's dimension.
      *
      * No sign has to exist in the dimension: the caller is responsible for sending the client a sign block at that
-     * position first. Only the block coordinates of the location are used, the client may refuse a position that is
-     * too far away, and PlayerOpenSignEvent is not called.
+     * position first, for example with sendBlockChange() and sendBlockUpdate(). Only the block coordinates of the
+     * position are used, the client may refuse a position that is too far away, and PlayerOpenSignEvent is not called.
      *
-     * @param location the block location of the sign
+     * @param position the block position where the client has a sign placed
      * @param side the side of the sign to edit
      */
-    virtual void openVirtualSign(const Location &location, Sign::Side side) = 0;
+    virtual void openVirtualSign(const Vector &position, Side side) = 0;
 
     /**
      * Returns if the player is in sneak mode.

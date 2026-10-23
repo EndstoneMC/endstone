@@ -26,13 +26,9 @@ EndstoneItemFrame::EndstoneItemFrame(const EndstoneBlock &block, ::ItemFrameBloc
 {
 }
 
-std::optional<ItemStack> EndstoneItemFrame::getItem() const
+ItemStack EndstoneItemFrame::getItem() const
 {
-    const auto &item = getItemFrame().getFramedItem();
-    if (item.isNull()) {
-        return std::nullopt;
-    }
-    return EndstoneItemStack::fromMinecraft(item);
+    return EndstoneItemStack::fromMinecraft(getItemFrame().getFramedItem());
 }
 
 void EndstoneItemFrame::setItem(const std::optional<ItemStack> &item)

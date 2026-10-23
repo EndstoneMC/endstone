@@ -14,6 +14,8 @@
 
 #pragma once
 
+#include <optional>
+
 #include "endstone/actor/actor_type.h"
 #include "endstone/block/block_actor_state.h"
 
@@ -27,16 +29,18 @@ public:
     /**
      * Gets the type of actor this spawner will spawn.
      *
-     * @return the type of actor
+     * @return the type of actor, or nullptr if it is not set
      */
-    [[nodiscard]] virtual const ActorType &getSpawnedType() const = 0;
+    [[nodiscard]] virtual const ActorType *getSpawnedType() const = 0;
 
     /**
      * Sets the type of actor this spawner will spawn.
      *
-     * @param type the type of actor (e.g. `minecraft:zombie`)
+     * This replaces any spawn potentials the spawner holds.
+     *
+     * @param type the type of actor (e.g. `minecraft:zombie`), or `std::nullopt` to clear it
      */
-    virtual void setSpawnedType(ActorTypeId type) = 0;
+    virtual void setSpawnedType(std::optional<ActorTypeId> type) = 0;
 
     /**
      * Gets the delay until the spawner spawns the next batch of actors.

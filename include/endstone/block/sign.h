@@ -15,6 +15,7 @@
 #pragma once
 
 #include "endstone/block/block_actor_state.h"
+#include "endstone/block/sign/side.h"
 #include "endstone/block/sign/sign_side.h"
 
 namespace endstone {
@@ -24,21 +25,6 @@ namespace endstone {
  */
 class Sign : public BlockActorState {
 public:
-    /**
-     * Represents a side of a sign.
-     */
-    enum class Side {
-        /**
-         * The front side of the sign.
-         */
-        Front = 0,
-
-        /**
-         * The back side of the sign.
-         */
-        Back = 1,
-    };
-
     /**
      * Gets the side of this sign.
      *

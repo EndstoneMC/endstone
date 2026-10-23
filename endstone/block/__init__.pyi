@@ -24,6 +24,7 @@ __all__ = [
     "Furnace",
     "ItemFrame",
     "Lectern",
+    "Side",
     "Sign",
     "SignSide",
 ]
@@ -421,13 +422,15 @@ class CreatureSpawner(BlockActorState):
     Represents a captured state of a creature spawner.
     """
     @property
-    def spawned_type(self) -> ActorType:
+    def spawned_type(self) -> ActorType | None:
         """
-        The type of actor this spawner will spawn.
+        The type of actor this spawner will spawn, or `None` if it is not set.
+
+        Assign `None` to clear it. Assigning replaces any spawn potentials the spawner holds.
         """
 
     @spawned_type.setter
-    def spawned_type(self, arg1: Identifier[ActorType] | str) -> None: ...
+    def spawned_type(self, arg1: Identifier[ActorType] | str | None) -> None: ...
     @property
     def delay(self) -> int:
         """
@@ -485,7 +488,7 @@ class CreatureSpawner(BlockActorState):
     @spawn_range.setter
     def spawn_range(self, arg1: int) -> None: ...
 
-class Lectern(Container):
+class Lectern(BlockActorState):
     """
     Represents a captured state of a lectern.
     """
@@ -499,6 +502,14 @@ class Lectern(Container):
 
     @page.setter
     def page(self, arg1: int) -> None: ...
+    @property
+    def inventory(self) -> Inventory:
+        """
+        The inventory of the block represented by this block state.
+
+        If the block was changed to a different type in the meantime, the returned inventory might no
+        longer be valid.
+        """
 
 class Furnace(Container):
     """
@@ -531,12 +542,12 @@ class ItemFrame(BlockActorState):
     Represents a captured state of an item frame.
     """
     @property
-    def item(self) -> ItemStack | None:
+    def item(self) -> ItemStack:
         """
         The item in this frame.
 
-        Reading this returns a defensive copy of the item, or `None` if the frame is empty. Assign
-        `None` to empty the frame.
+        Reading this returns a defensive copy of the item, or an empty stack (air with an amount of 0)
+        if the frame is empty. Assign `None` to empty the frame.
 
         Assigning resets the rotation of the frame, as placing an item in a frame does in-game.
         """
@@ -617,20 +628,20 @@ class SignSide:
     @color.setter
     def color(self, arg1: tuple[int, ...]) -> None: ...
 
+class Side(enum.Enum):
+    """
+    Represents the side of a sign.
+    """
+
+    FRONT = 0
+    BACK = 1
+
 class Sign(BlockActorState):
     """
     Represents a captured state of a sign.
 
     Changes are kept in the captured state until `update()` is called.
     """
-    class Side(enum.Enum):
-        """
-        Represents a side of a sign.
-        """
-
-        FRONT = 0
-        BACK = 1
-
     def get_side(self, side: Side) -> SignSide:
         """
         Gets the side of this sign.

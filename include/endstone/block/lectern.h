@@ -14,14 +14,15 @@
 
 #pragma once
 
-#include "endstone/block/container.h"
+#include "endstone/block/block_actor_state.h"
+#include "endstone/inventory/inventory.h"
 
 namespace endstone {
 
 /**
  * Represents a captured state of a lectern.
  */
-class Lectern : public Container {
+class Lectern : public BlockActorState {
 public:
     /**
      * Gets the page currently displayed on the lectern.
@@ -42,6 +43,15 @@ public:
      * @param page the page
      */
     virtual void setPage(int page) = 0;
+
+    /**
+     * Gets the inventory of the block represented by this block state.
+     *
+     * If the block was changed to a different type in the meantime, the returned inventory might no longer be valid.
+     *
+     * @return the inventory of the block
+     */
+    [[nodiscard]] virtual Inventory &getInventory() const = 0;
 };
 
 }  // namespace endstone

@@ -14,6 +14,10 @@
 
 #include "endstone/core/block/creature_spawner.h"
 
+#include <string>
+
+#include "bedrock/nbt/compound_tag.h"
+#include "bedrock/world/item/save_context.h"
 #include "endstone/check.h"
 #include "endstone/core/server.h"
 
@@ -25,17 +29,55 @@ EndstoneCreatureSpawner::EndstoneCreatureSpawner(const EndstoneBlock &block, ::M
 {
 }
 
-const ActorType &EndstoneCreatureSpawner::getSpawnedType() const
+bool EndstoneCreatureSpawner::update(bool force, bool apply_physics)
 {
-    const auto &id = getSpawner().getSpawner().getEntityId();
-    return EndstoneServer::getInstance().getRegistry<ActorType>().getOrThrow(id.getCanonicalName());
+    if (!EndstoneBlockStateBase::update(force, apply_physics)) {
+        return false;
+    }
+    auto *live = tryGetLiveBlockActor();
+    if (isSnapshot() && live != nullptr && getEntityIdentifier(getSpawner()).empty()) {
+        static_cast<::MobSpawnerBlockActor &>(*live).getSpawner().setEntityId(ActorDefinitionIdentifier());
+    }
+    return true;
 }
 
-void EndstoneCreatureSpawner::setSpawnedType(ActorTypeId type)
+const ActorType *EndstoneCreatureSpawner::getSpawnedType() const
 {
-    Preconditions::checkArgument(ActorType::get(type) != nullptr, "Unknown actor type: {}", type);
-    getSpawner().getSpawner().setEntityId(ActorDefinitionIdentifier(std::string(type)));
-    getSpawner().setChanged();
+    return EndstoneServer::getInstance().getRegistry<ActorType>().get(getEntityIdentifier(getSpawner()));
+}
+
+void EndstoneCreatureSpawner::setSpawnedType(std::optional<ActorTypeId> type)
+{
+    if (type.has_value()) {
+        Preconditions::checkArgument(ActorType::get(*type) != nullptr, "Unknown actor type: {}", *type);
+    }
+    auto &spawner = getSpawner();
+    ::CompoundTag tag;
+    Preconditions::checkState(spawner.save(tag, SaveContext::forClone()), "Unable to save the spawner.");
+    tag.remove("SpawnPotentials");
+    if (type.has_value()) {
+        tag.putString("EntityIdentifier", std::string(*type));
+        if (auto *spawn_data = tag.getCompound("SpawnData"); spawn_data != nullptr) {
+            spawn_data->putString("TypeId", std::string(*type));
+        }
+    }
+    else {
+        tag.remove("SpawnData");
+    }
+    load(getBlockSource().getILevel(), spawner, tag);
+    if (!type.has_value()) {
+        spawner.getSpawner().setEntityId(ActorDefinitionIdentifier());
+    }
+    spawner.setChanged();
+}
+
+std::string EndstoneCreatureSpawner::getEntityIdentifier(const ::MobSpawnerBlockActor &spawner)
+{
+    ::CompoundTag tag;
+    if (!spawner.save(tag, SaveContext::forClone())) {
+        return {};
+    }
+    return tag.getString("EntityIdentifier");
 }
 
 int EndstoneCreatureSpawner::getDelay() const

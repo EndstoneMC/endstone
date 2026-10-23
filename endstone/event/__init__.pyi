@@ -8,7 +8,7 @@ import typing
 
 from endstone import GameMode, Identifier, Input, Player, Skin
 from endstone.actor import Actor, Item, Mob
-from endstone.block import Block, BlockFace, BlockState, Sign
+from endstone.block import Block, BlockFace, BlockState, Side, Sign
 from endstone.command import CommandSender
 from endstone.damage import DamageSource
 from endstone.enchantments import Enchantment, EnchantmentOffer
@@ -2202,7 +2202,7 @@ class PlayerOpenSignEvent(PlayerEvent, Cancellable):
         """
 
     @property
-    def side(self) -> Sign.Side:
+    def side(self) -> Side:
         """
         The side of the sign being opened.
         """

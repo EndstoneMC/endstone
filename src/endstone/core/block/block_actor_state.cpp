@@ -78,14 +78,18 @@ bool EndstoneBlockActorState::applyTo(::ILevel &level, ::BlockActor &block_actor
         if (!serializeForUpdate(tag)) {
             return false;
         }
-
-        SnapshotDataLoadHelper data_load_helper;
-        block_actor.load(level, tag, data_load_helper);
+        load(level, block_actor, tag);
     }
     if (block_actor.getType() != ::BlockActorType::DataDriven) {
         static_cast<::VanillaBlockActor &>(block_actor).setChanged();
     }
     return true;
+}
+
+void EndstoneBlockActorState::load(::ILevel &level, ::BlockActor &block_actor, const ::CompoundTag &tag)
+{
+    SnapshotDataLoadHelper data_load_helper;
+    block_actor.load(level, tag, data_load_helper);
 }
 
 }  // namespace endstone::core

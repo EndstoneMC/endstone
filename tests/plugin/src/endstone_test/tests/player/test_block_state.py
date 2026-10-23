@@ -9,6 +9,7 @@ from endstone.block import (
     Furnace,
     ItemFrame,
     Lectern,
+    Side,
     Sign,
     SignSide,
 )
@@ -140,10 +141,10 @@ def test_furnace_has_no_cook_time_total(place) -> None:
 
 
 def test_lectern(place) -> None:
-    """Verify a lectern captures a Lectern, which is a Container."""
+    """Verify a lectern captures a Lectern, which is not a Container."""
     state = place("minecraft:lectern").capture_state()
     assert isinstance(state, Lectern)
-    assert isinstance(state, Container)
+    assert not isinstance(state, Container)
     assert state.page == 0
 
 
@@ -234,7 +235,7 @@ def test_item_frame(place, block_type: str) -> None:
     """Verify an item frame captures an ItemFrame."""
     state = place(block_type).capture_state()
     assert isinstance(state, ItemFrame)
-    assert state.item is None
+    assert state.item.type == "minecraft:air"
     assert 0.0 <= state.item_drop_chance <= 1.0
 
 
@@ -246,7 +247,7 @@ def test_item_frame_item(place) -> None:
     assert state.item is not state.item
 
     state.item = None
-    assert state.item is None
+    assert state.item.type == "minecraft:air"
 
 
 def test_item_frame_rotation(place) -> None:
@@ -283,20 +284,20 @@ def test_sign(place) -> None:
     """Verify a sign captures a Sign with a front and a back side."""
     state = place("minecraft:standing_sign").capture_state()
     assert isinstance(state, Sign)
-    assert isinstance(state.get_side(Sign.Side.FRONT), SignSide)
-    assert isinstance(state.get_side(Sign.Side.BACK), SignSide)
+    assert isinstance(state.get_side(Side.FRONT), SignSide)
+    assert isinstance(state.get_side(Side.BACK), SignSide)
 
 
 def test_sign_side_enum_is_not_exported_onto_the_class() -> None:
-    """Verify Sign.Side has no export_values, unlike Operation and RespawnReason."""
-    assert [member.name for member in Sign.Side] == ["FRONT", "BACK"]
+    """Verify Side has no export_values, unlike Operation and RespawnReason."""
+    assert [member.name for member in Side] == ["FRONT", "BACK"]
     assert not hasattr(Sign, "FRONT")
     assert not hasattr(Sign, "BACK")
 
 
 def test_sign_lines(place) -> None:
     """Verify each of the four lines on a side round-trips."""
-    side = place("minecraft:standing_sign").capture_state().get_side(Sign.Side.FRONT)
+    side = place("minecraft:standing_sign").capture_state().get_side(Side.FRONT)
     for index in range(4):
         side.set_line(index, f"line {index}")
     assert side.lines == [f"line {index}" for index in range(4)]
@@ -306,20 +307,20 @@ def test_sign_lines(place) -> None:
 def test_sign_sides_are_independent(place) -> None:
     """Verify writing the front of a sign leaves the back alone."""
     state = place("minecraft:standing_sign").capture_state()
-    state.get_side(Sign.Side.FRONT).set_line(0, "front")
-    assert state.get_side(Sign.Side.BACK).get_line(0) == ""
+    state.get_side(Side.FRONT).set_line(0, "front")
+    assert state.get_side(Side.BACK).get_line(0) == ""
 
 
 def test_sign_glowing_text(place) -> None:
     """Verify the glowing text flag round-trips."""
-    side = place("minecraft:standing_sign").capture_state().get_side(Sign.Side.FRONT)
+    side = place("minecraft:standing_sign").capture_state().get_side(Side.FRONT)
     side.glowing_text = True
     assert side.glowing_text is True
 
 
 def test_sign_color_reads_back_as_rgba(place) -> None:
     """Verify a sign colour is written as RGB or RGBA and always read back as RGBA."""
-    side = place("minecraft:standing_sign").capture_state().get_side(Sign.Side.FRONT)
+    side = place("minecraft:standing_sign").capture_state().get_side(Side.FRONT)
     side.color = (255, 0, 0)
     assert side.color == (255, 0, 0, 255)
 
@@ -330,7 +331,7 @@ def test_sign_color_reads_back_as_rgba(place) -> None:
 @pytest.mark.parametrize("color", [(1, 2), (1, 2, 3, 4, 5)])
 def test_sign_color_rejects_a_bad_length(place, color: tuple) -> None:
     """Verify a colour must have three or four components."""
-    side = place("minecraft:standing_sign").capture_state().get_side(Sign.Side.FRONT)
+    side = place("minecraft:standing_sign").capture_state().get_side(Side.FRONT)
     with pytest.raises(ValueError) as err_info:
         side.color = color
     assert str(err_info.value) == "Color tuple must have length 3 or 4"

@@ -30,9 +30,10 @@ public:
     /**
      * Gets the item in this frame.
      *
-     * @return a defensive copy of the item in this item frame, or `std::nullopt` if the frame is empty
+     * @return a defensive copy of the item in this item frame, or an empty stack (air with an amount of 0) if the
+     * frame is empty
      */
-    [[nodiscard]] virtual std::optional<ItemStack> getItem() const = 0;
+    [[nodiscard]] virtual ItemStack getItem() const = 0;
 
     /**
      * Sets the item in this frame.

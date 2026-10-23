@@ -52,6 +52,7 @@ static_assert(_ITERATOR_DEBUG_LEVEL == 0,
 #include "block/item_frame.h"
 #include "block/lectern.h"
 #include "block/sign.h"
+#include "block/sign/side.h"
 #include "block/sign/sign_side.h"
 #include "boss/bar_color.h"
 #include "boss/bar_flag.h"

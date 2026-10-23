@@ -43,7 +43,7 @@ public:
         Unknown,
     };
 
-    PlayerOpenSignEvent(const NotNull<Player> &player, const NotNull<Sign> &sign, Sign::Side side, Cause cause)
+    PlayerOpenSignEvent(const NotNull<Player> &player, const NotNull<Sign> &sign, Side side, Cause cause)
         : Cancellable(player), sign_(sign), side_(side), cause_(cause)
     {
     }
@@ -60,7 +60,7 @@ public:
      *
      * @return the sign side being opened
      */
-    [[nodiscard]] Sign::Side getSide() const { return side_; }
+    [[nodiscard]] Side getSide() const { return side_; }
 
     /**
      * Gets the cause of the sign opening.
@@ -71,7 +71,7 @@ public:
 
 private:
     NotNull<Sign> sign_;
-    Sign::Side side_;
+    Side side_;
     Cause cause_;
 };
 

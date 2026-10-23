@@ -102,7 +102,7 @@ void registerTypes()
     registerType<BlockActorState>().base<BlockState>();
     registerType<Container>().base<BlockActorState>();
     registerType<Furnace>().base<Container>();
-    registerType<Lectern>().base<Container>();
+    registerType<Lectern>().base<BlockActorState>();
     registerType<Campfire>().base<BlockActorState>();
     registerType<CreatureSpawner>().base<BlockActorState>();
     registerType<ItemFrame>().base<BlockActorState>();

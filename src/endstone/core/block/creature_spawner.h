@@ -14,6 +14,8 @@
 
 #pragma once
 
+#include <string>
+
 #include "bedrock/world/level/block/actor/mob_spawner_block_actor.h"
 #include "endstone/block/creature_spawner.h"
 #include "endstone/core/block/block_state.h"
@@ -24,8 +26,11 @@ class EndstoneCreatureSpawner : public EndstoneBlockStateBase<CreatureSpawner> {
 public:
     EndstoneCreatureSpawner(const EndstoneBlock &block, ::MobSpawnerBlockActor &spawner, bool use_snapshot);
 
-    [[nodiscard]] const ActorType &getSpawnedType() const override;
-    void setSpawnedType(ActorTypeId type) override;
+    using EndstoneBlockStateBase::update;
+    bool update(bool force, bool apply_physics) override;
+
+    [[nodiscard]] const ActorType *getSpawnedType() const override;
+    void setSpawnedType(std::optional<ActorTypeId> type) override;
     [[nodiscard]] int getDelay() const override;
     void setDelay(int delay) override;
     [[nodiscard]] int getMinSpawnDelay() const override;
@@ -43,6 +48,7 @@ public:
 
 private:
     [[nodiscard]] ::MobSpawnerBlockActor &getSpawner() const { return getBlockActor<::MobSpawnerBlockActor>(); }
+    [[nodiscard]] static std::string getEntityIdentifier(const ::MobSpawnerBlockActor &spawner);
 };
 
 }  // namespace endstone::core

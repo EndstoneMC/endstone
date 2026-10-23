@@ -458,7 +458,7 @@ void EndstonePlayer::sendBlockChange(const Location &location, const BlockData &
     sendNetworkPacket(packet);
 }
 
-void EndstonePlayer::openSign(const Sign &sign, Sign::Side side)
+void EndstonePlayer::openSign(const Sign &sign, Side side)
 {
     Preconditions::checkArgument(&*sign.getDimension() == &*getDimension(),
                                  "Sign must be in the same dimension as the player.");
@@ -473,15 +473,15 @@ void EndstonePlayer::openSign(const Sign &sign, Sign::Side side)
 
     getHandle().getEntity().getOrAddComponent<InternalOpenSignCauseComponent>().cause =
         PlayerOpenSignEvent::Cause::Plugin;
-    getHandle().openSign(position, side == Sign::Side::Front);
+    getHandle().openSign(position, side == Side::Front);
 }
 
-void EndstonePlayer::openVirtualSign(const Location &location, Sign::Side side)
+void EndstonePlayer::openVirtualSign(const Vector &position, Side side)
 {
     const auto packet = MinecraftPackets::createPacket(MinecraftPacketIds::OpenSign);
     const auto open_sign = std::static_pointer_cast<OpenSignPacket>(packet);
-    open_sign->payload.pos = {location.getBlockX(), location.getBlockY(), location.getBlockZ()};
-    open_sign->payload.is_front_side = side == Sign::Side::Front;
+    open_sign->payload.pos = {position.getBlockX(), position.getBlockY(), position.getBlockZ()};
+    open_sign->payload.is_front_side = side == Side::Front;
     sendNetworkPacket(open_sign);
 }
 

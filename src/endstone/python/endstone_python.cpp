@@ -758,15 +758,16 @@ void init_player(py::module_ &m, py_class<Player> &player)
     Raises:
         ValueError: If the sign is not placed or is in another dimension.
 )doc")
-        .def("open_virtual_sign", &Player::openVirtualSign, py::arg("location"), py::arg("side"), R"doc(
-    Opens a sign editor for this player at the given block location.
+        .def("open_virtual_sign", &Player::openVirtualSign, py::arg("position"), py::arg("side"), R"doc(
+    Opens a sign editor for this player at the given block position in the player's dimension.
 
     No sign has to exist in the dimension: the caller is responsible for sending the client a sign block at that
-    position first. Only the block coordinates of the location are used, the client may refuse a position that is
-    too far away, and `PlayerOpenSignEvent` is not called.
+    position first, for example with `send_block_change()` and `send_block_update()`. Only the block coordinates of
+    the position are used, the client may refuse a position that is too far away, and `PlayerOpenSignEvent` is not
+    called.
 
     Args:
-        location: The block location of the sign.
+        position: The block position where the client has a sign placed.
         side: The side of the sign to edit.
 )doc")
         .def_property("is_sneaking", &Player::isSneaking, &Player::setSneaking, "Whether the player is in sneak mode.")

@@ -9,7 +9,7 @@ import numpy.typing
 
 from endstone.actor import Actor, Mob
 from endstone.ban import IpBanList, PlayerBanList
-from endstone.block import BlockActorState, BlockData, BlockType, Sign
+from endstone.block import BlockActorState, BlockData, BlockType, Side, Sign
 from endstone.boss import BarColor, BarFlag, BarStyle, BossBar
 from endstone.command import CommandMap, CommandSender, ConsoleCommandSender
 from endstone.form import ActionForm, MessageForm, ModalForm
@@ -20,7 +20,7 @@ from endstone.map import MapView
 from endstone.plugin import Plugin, PluginCommand, PluginManager, ServiceManager
 from endstone.scheduler import Scheduler
 from endstone.scoreboard import Scoreboard
-from endstone.util import SocketAddress
+from endstone.util import SocketAddress, Vector
 
 from . import (
     actor,
@@ -626,7 +626,7 @@ class Player(Mob):
             block_actor_state: The new block entity state.
         """
 
-    def open_sign(self, sign: Sign, side: Sign.Side) -> None:
+    def open_sign(self, sign: Sign, side: Side) -> None:
         """
         Opens a sign editor for this player.
 
@@ -640,16 +640,17 @@ class Player(Mob):
             ValueError: If the sign is not placed or is in another dimension.
         """
 
-    def open_virtual_sign(self, location: Location, side: Sign.Side) -> None:
+    def open_virtual_sign(self, position: Vector, side: Side) -> None:
         """
-        Opens a sign editor for this player at the given block location.
+        Opens a sign editor for this player at the given block position in the player's dimension.
 
         No sign has to exist in the dimension: the caller is responsible for sending the client a sign block at that
-        position first. Only the block coordinates of the location are used, the client may refuse a position that is
-        too far away, and `PlayerOpenSignEvent` is not called.
+        position first, for example with `send_block_change()` and `send_block_update()`. Only the block coordinates of
+        the position are used, the client may refuse a position that is too far away, and `PlayerOpenSignEvent` is not
+        called.
 
         Args:
-            location: The block location of the sign.
+            position: The block position where the client has a sign placed.
             side: The side of the sign to edit.
         """
 
