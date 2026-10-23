@@ -25,6 +25,9 @@ enum class PistonState : char {
 
 class PistonBlockActor : public VanillaBlockActor {
 public:
+    void load(ILevel &, const CompoundTag &, DataLoadHelper &) override;
+    bool save(CompoundTag &, const SaveContext &) const override;
+    bool saveItemInstanceData(CompoundTag &) const override;
     ENDSTONE_HOOK void tick(BlockSource &region) override;
 
 private:

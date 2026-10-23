@@ -107,6 +107,62 @@ class VanillaBlockActor : public BlockActor,
 protected:
     using Properties = Bedrock::EnumSet<Property, Property::_count>;
 
+public:
+    void loadStatic() override;
+    void load(ILevel &, const CompoundTag &, DataLoadHelper &) override;
+    bool save(CompoundTag &, const SaveContext &) const override;
+    BlockActor &getBlockActor() override;
+    [[nodiscard]] const BlockActor &getBlockActor() const override;
+    [[nodiscard]] const BlockPos &getBlockActorPosition() const override;
+    [[nodiscard]] BlockActorType getBlockActorType() const override;
+    [[nodiscard]] BlockActorRendererId getRendererId() const override;
+    [[nodiscard]] bool isPermanentlyRendered() const override;
+    [[nodiscard]] bool isWithinRenderDistance(const Vec3 &) const override;
+    [[nodiscard]] bool hasAlphaLayer() const override;
+    float getShadowRadius(BlockSource &) const override;
+    [[nodiscard]] bool isInWorld() const override;
+    IVanillaRenderBlockActorComponent *getCrackEntity(BlockSource &, const BlockPos &) override;
+    [[nodiscard]] const AABB &getAABB() const override;
+    void setAABB(const AABB &) override;
+    ActorTerrainInterlockData &getEntityTerrainInterlockData() override;
+    [[nodiscard]] const ActorTerrainInterlockData &getEntityTerrainInterlockDataConst() const override;
+    void tick(BlockSource &) override;
+    [[nodiscard]] int getTickCount() const override;
+    Container *getContainer() override;
+    [[nodiscard]] const Container *getContainer() const override;
+    void eraseLootTable() override;
+    [[nodiscard]] std::string getName() const override;
+    std::string getImmersiveReaderText(BlockSource &) override;
+    [[nodiscard]] bool canRenderCustomName() const override;
+    [[nodiscard]] bool hasCustomName() const override;
+    [[nodiscard]] const Bedrock::Safety::RedactableString &getCustomName() const override;
+    void setCustomName(const Bedrock::Safety::RedactableString &) override;
+    [[nodiscard]] bool isCustomNameSaved() const override;
+    [[nodiscard]] Bedrock::Safety::RedactableString getDisplayName() const override;
+    [[nodiscard]] bool hasFilteredNameTag() const override;
+    [[nodiscard]] std::string getFilteredNameTag() const override;
+    void setFilteredNameTag(const std::string &) override;
+    [[nodiscard]] std::vector<std::string> getUgcStrings(const CompoundTag &) const override;
+    [[nodiscard]] std::vector<std::string> getFilteredUgcStrings(const CompoundTag &) const override;
+    void setUgcStrings(CompoundTag &, const std::vector<std::string> &) const override;
+    void setFilteredUgcStrings(CompoundTag &, const std::vector<std::string> &) const override;
+    [[nodiscard]] bool validateData(const CompoundTag &) const override;
+    void fixupOnLoad(LevelChunk &) override;
+    void setChanged() override { properties_.insert(Property::Changed); }
+    [[nodiscard]] bool isChanged() const override { return properties_.contains(Property::Changed); }
+    void onChanged(BlockSource &) override;
+
+protected:
+    void _resetAABB() override;
+    void _setCanRenderCustomName(bool) override;
+    void _setCustomNameSaved(bool) override;
+    [[nodiscard]] const IVanillaRenderBlockActorComponent *_getRenderComponent() const override;
+    IVanillaRenderBlockActorComponent *_getRenderComponent() override;
+    [[nodiscard]] const IVanillaTickBlockActorComponent *_getTickComponent() const override;
+    IVanillaTickBlockActorComponent *_getTickComponent() override;
+    [[nodiscard]] const IVanillaMainBlockActorComponent *_getMainComponent() const override;
+    IVanillaMainBlockActorComponent *_getMainComponent() override;
+
     int tick_count_;                                    // +72
     Properties properties_;                             // +76
     AABB bb_;                                           // +80

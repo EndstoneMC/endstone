@@ -19,5 +19,7 @@
 std::shared_ptr<BlockActor> BlockActor::loadStatic(const BlockType &block, const BlockPos &pos, ILevel &level,
                                                    const CompoundTag &tag, DataLoadHelper &data_load_helper)
 {
-    return BEDROCK_CALL(&BlockActor::loadStatic, block, pos, level, tag, data_load_helper);
+    using LoadStatic = std::shared_ptr<BlockActor> (*)(const BlockType &, const BlockPos &, ILevel &,
+                                                       const CompoundTag &, DataLoadHelper &);
+    return BEDROCK_CALL(static_cast<LoadStatic>(&BlockActor::loadStatic), block, pos, level, tag, data_load_helper);
 }
