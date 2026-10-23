@@ -157,6 +157,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - **BREAKING**: `Block.capture_state()` now captures a snapshot, matching Bukkit. Edits to the state are kept in the snapshot and only reach the world when `update()` is called. Code that sets a sign's lines and never calls `update()` still compiles and now does nothing; add the `update()` call, or capture with `capture_state(use_snapshot=False)` to keep writing straight through to the block entity.
 - **BREAKING**: `ActorExplodeEvent.block_list` and `BlockExplodeEvent.block_list` hand back a live `BlockList` instead of a copy, so `remove()`, `append()`, `pop()` and `del` change what actually explodes. `remove()` matches on handle identity.
 - **BREAKING**: `PlayerChatEvent.recipients` and `BroadcastMessageEvent.recipients` are live, mutable sets of handles.
+- **BREAKING**: `PluginManager::addPermission()` throws `std::invalid_argument` instead of `std::runtime_error` for a permission that is already defined, and `add_permission()` raises `ValueError` instead of `RuntimeError`, as in Paper.
 - **BREAKING**: `AttributeInstance.type` is replaced by `AttributeInstance.attribute`, which returns an `Attribute`, and an `AttributeModifier` is identified by its `key` instead of a name and a UUID.
 - **BREAKING**: `PotionType.NIGHTVISION` and `PotionType.LONG_NIGHTVISION` are renamed `NIGHT_VISION` and `LONG_NIGHT_VISION`, as in Paper.
 - **BREAKING**: `PlayerJumpEvent` no longer extends `PlayerMoveEvent`, and its `to_location` is read-only, as in Paper.

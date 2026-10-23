@@ -24,9 +24,10 @@ public:
     explicit EndstoneCrossbowMeta(const ItemMeta *meta);
     explicit EndstoneCrossbowMeta(const ::CompoundTag &tag);
 
-    [[nodiscard]] bool hasChargedProjectile() const override;
-    [[nodiscard]] std::optional<ItemStack> getChargedProjectile() const override;
-    void setChargedProjectile(std::optional<ItemStack> projectile) override;
+    [[nodiscard]] bool hasChargedProjectiles() const override;
+    [[nodiscard]] std::vector<ItemStack> getChargedProjectiles() const override;
+    void setChargedProjectiles(std::vector<ItemStack> projectiles) override;
+    void addChargedProjectile(const ItemStack &item) override;
 
     void applyToItem(::CompoundTag &tag) const override;
     [[nodiscard]] bool isEmpty() const override;

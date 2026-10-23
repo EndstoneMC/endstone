@@ -648,7 +648,7 @@ NotNull<Permission> EndstonePluginManager::addPermission(NotNull<Permission> per
     auto name = perm->getName();
     std::ranges::transform(name, name.begin(), [](unsigned char c) { return std::tolower(c); });
     if (permissions_.contains(name)) {
-        throw std::runtime_error("The permission '" + name + "' is already defined.");
+        throw std::invalid_argument("The permission " + name + " is already defined!");
     }
 
     perm->init(*this);

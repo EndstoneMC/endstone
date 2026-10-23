@@ -314,12 +314,31 @@ void init_inventory(py::module_ &m, py::class_<ItemStack> &item_stack)
         .def_property_readonly("has_generation", &BookMeta::hasGeneration, "Whether the book has a generation level.")
         .def_property("generation", &BookMeta::getGeneration, &BookMeta::setGeneration, "The generation of the book.");
 
-    py::classh<CrossbowMeta, ItemMeta>(m, "CrossbowMeta",
-                                        "Represents the meta for a crossbow that can have a charged projectile.")
-        .def_property_readonly("has_charged_projectile", &CrossbowMeta::hasChargedProjectile,
-                               "Whether the crossbow has a charged projectile.")
-        .def_property("charged_projectile", &CrossbowMeta::getChargedProjectile, &CrossbowMeta::setChargedProjectile,
-                      "The charged projectile, or `None` if none.");
+    py::classh<CrossbowMeta, ItemMeta>(m, "CrossbowMeta", R"doc(
+    Represents the meta for a crossbow that can have charged projectiles.
+
+    A Bedrock crossbow holds at most one charged projectile.
+)doc")
+        .def_property_readonly("has_charged_projectiles", &CrossbowMeta::hasChargedProjectiles,
+                               "Whether the item has any charged projectiles.")
+        .def_property("charged_projectiles", &CrossbowMeta::getChargedProjectiles, &CrossbowMeta::setChargedProjectiles,
+                      R"doc(
+    The projectiles charged on this item, at most one.
+
+    Setting an empty list removes all projectiles.
+
+    Raises:
+        ValueError: If one of the projectiles is empty, or if more than one projectile is given.
+)doc")
+        .def("add_charged_projectile", &CrossbowMeta::addChargedProjectile, py::arg("item"), R"doc(
+    Adds a charged projectile to this item.
+
+    Args:
+        item: The projectile to add.
+
+    Raises:
+        ValueError: If the projectile is empty, or if the item already has a charged projectile.
+)doc");
 
     py::classh<PotionMeta, ItemMeta>(m, "PotionMeta", R"doc(
     Represents the metadata for a potion item.

@@ -690,22 +690,39 @@ class BookMeta(WritableBookMeta):
 
 class CrossbowMeta(ItemMeta):
     """
-    Represents the meta for a crossbow that can have a charged projectile.
+    Represents the meta for a crossbow that can have charged projectiles.
+
+    A Bedrock crossbow holds at most one charged projectile.
     """
     @property
-    def has_charged_projectile(self) -> bool:
+    def has_charged_projectiles(self) -> bool:
         """
-        Whether the crossbow has a charged projectile.
+        Whether the item has any charged projectiles.
         """
 
     @property
-    def charged_projectile(self) -> ItemStack | None:
+    def charged_projectiles(self) -> list[ItemStack]:
         """
-        The charged projectile, or `None` if none.
+        The projectiles charged on this item, at most one.
+
+        Setting an empty list removes all projectiles.
+
+        Raises:
+            ValueError: If one of the projectiles is empty, or if more than one projectile is given.
         """
 
-    @charged_projectile.setter
-    def charged_projectile(self, arg1: ItemStack | None) -> None: ...
+    @charged_projectiles.setter
+    def charged_projectiles(self, arg1: list[ItemStack]) -> None: ...
+    def add_charged_projectile(self, item: ItemStack) -> None:
+        """
+        Adds a charged projectile to this item.
+
+        Args:
+            item: The projectile to add.
+
+        Raises:
+            ValueError: If the projectile is empty, or if the item already has a charged projectile.
+        """
 
 class PotionMeta(ItemMeta):
     """

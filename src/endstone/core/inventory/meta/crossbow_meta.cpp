@@ -14,6 +14,8 @@
 
 #include "endstone/core/inventory/meta/crossbow_meta.h"
 
+#include <stdexcept>
+
 #include "bedrock/world/item/item_instance.h"
 #include "endstone/core/inventory/item_stack.h"
 
@@ -24,7 +26,7 @@ EndstoneCrossbowMeta::EndstoneCrossbowMeta(const ItemMeta *meta) : EndstoneItemM
         return;
     }
     auto *crossbow = static_cast<const EndstoneCrossbowMeta *>(meta);
-    if (crossbow->hasChargedProjectile()) {
+    if (crossbow->hasChargedProjectiles()) {
         charged_projectile_ = crossbow->charged_projectile_;
     }
 }
@@ -39,26 +41,43 @@ EndstoneCrossbowMeta::EndstoneCrossbowMeta(const ::CompoundTag &tag) : EndstoneI
     }
 }
 
-bool EndstoneCrossbowMeta::hasChargedProjectile() const
+bool EndstoneCrossbowMeta::hasChargedProjectiles() const
 {
     return charged_projectile_.has_value();
 }
 
-std::optional<ItemStack> EndstoneCrossbowMeta::getChargedProjectile() const
+std::vector<ItemStack> EndstoneCrossbowMeta::getChargedProjectiles() const
 {
-    return charged_projectile_;
+    if (!charged_projectile_.has_value()) {
+        return {};
+    }
+    return {*charged_projectile_};
 }
 
-void EndstoneCrossbowMeta::setChargedProjectile(std::optional<ItemStack> projectile)
+void EndstoneCrossbowMeta::setChargedProjectiles(std::vector<ItemStack> projectiles)
 {
-    charged_projectile_ = std::move(projectile);
+    charged_projectile_.reset();
+    for (const auto &projectile : projectiles) {
+        addChargedProjectile(projectile);
+    }
+}
+
+void EndstoneCrossbowMeta::addChargedProjectile(const ItemStack &item)
+{
+    if (item.getAmount() <= 0) {
+        throw std::invalid_argument("Item cannot be empty");
+    }
+    if (charged_projectile_.has_value()) {
+        throw std::invalid_argument("A crossbow can only hold one charged projectile");
+    }
+    charged_projectile_ = item;
 }
 
 void EndstoneCrossbowMeta::applyToItem(::CompoundTag &tag) const
 {
     EndstoneItemMetaBase::applyToItem(tag);
     tag.remove(ItemStackBase::TAG_CHARGED_ITEM);
-    if (hasChargedProjectile()) {
+    if (hasChargedProjectiles()) {
         auto minecraft_item = EndstoneItemStack::toMinecraft(*charged_projectile_);
         if (!minecraft_item.isNull()) {
             auto compound = std::make_unique<::CompoundTag>();
@@ -85,9 +104,9 @@ bool EndstoneCrossbowMeta::equalsCommon(const ItemMeta &meta) const
     }
     if (meta.as<CrossbowMeta>()) {
         auto &that = static_cast<const EndstoneCrossbowMeta &>(meta);
-        return (hasChargedProjectile() ? that.hasChargedProjectile()
+        return (hasChargedProjectiles() ? that.hasChargedProjectiles()
                                              && charged_projectile_ == that.charged_projectile_
-                                       : !that.hasChargedProjectile());
+                                       : !that.hasChargedProjectiles());
     }
     return true;
 }
@@ -104,6 +123,6 @@ NotNull<ItemMeta> EndstoneCrossbowMeta::clone() const
 
 bool EndstoneCrossbowMeta::isCrossbowEmpty() const
 {
-    return !hasChargedProjectile();
+    return !hasChargedProjectiles();
 }
 }  // namespace endstone::core

@@ -178,31 +178,26 @@ def test_set_title_none_clears_the_title() -> None:
 # =============================================================================
 
 
-def test_charged_projectile_round_trip() -> None:
+def test_charged_projectiles_round_trip() -> None:
     """Verify a crossbow keeps the single projectile charged into it."""
     item = ItemStack("minecraft:crossbow")
     meta = item.item_meta
-    assert meta.has_charged_projectile is False
-    assert meta.charged_projectile is None
+    assert meta.has_charged_projectiles is False
+    assert meta.charged_projectiles == []
 
-    meta.charged_projectile = ItemStack("minecraft:arrow")
+    meta.charged_projectiles = [ItemStack("minecraft:arrow")]
     item.set_item_meta(meta)
 
-    assert item.item_meta.has_charged_projectile is True
-    assert item.item_meta.charged_projectile.type == "minecraft:arrow"
+    assert item.item_meta.has_charged_projectiles is True
+    assert item.item_meta.charged_projectiles[0].type == "minecraft:arrow"
 
 
-def test_clearing_the_charged_projectile() -> None:
-    """Verify assigning None discharges the crossbow."""
+def test_clearing_the_charged_projectiles() -> None:
+    """Verify assigning an empty list discharges the crossbow."""
     meta = ItemStack("minecraft:crossbow").item_meta
-    meta.charged_projectile = ItemStack("minecraft:arrow")
-    meta.charged_projectile = None
-    assert meta.has_charged_projectile is False
-
-
-def test_crossbow_has_no_plural_accessor() -> None:
-    """Verify Bedrock's single-projectile crossbow has no Bukkit-style list."""
-    assert not hasattr(ItemStack("minecraft:crossbow").item_meta, "charged_projectiles")
+    meta.charged_projectiles = [ItemStack("minecraft:arrow")]
+    meta.charged_projectiles = []
+    assert meta.has_charged_projectiles is False
 
 
 # =============================================================================
@@ -259,7 +254,7 @@ def test_remove_enchants() -> None:
 def test_meta_of_another_item_type_is_not_applicable() -> None:
     """Verify a CrossbowMeta carrying data is rejected by a sword."""
     meta = ItemStack("minecraft:crossbow").item_meta
-    meta.charged_projectile = ItemStack("minecraft:arrow", 1)
+    meta.charged_projectiles = [ItemStack("minecraft:arrow", 1)]
     sword = ItemStack("minecraft:diamond_sword")
     assert sword.set_item_meta(meta) is False
 

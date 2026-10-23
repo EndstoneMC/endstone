@@ -200,7 +200,7 @@ public:
      *
      * @param perm Permission to add
      * @return The newly added permission.
-     * @throws std::runtime_error if a permission with the same name is already defined.
+     * @throws std::invalid_argument if a permission with the same name is already defined.
      */
     virtual NotNull<Permission> addPermission(NotNull<Permission> perm) = 0;
 

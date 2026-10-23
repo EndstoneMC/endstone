@@ -14,35 +14,50 @@
 
 #pragma once
 
-#include <optional>
+#include <vector>
 
 #include "endstone/inventory/meta/item_meta.h"
 
 namespace endstone {
 /**
- * Represents the meta for a crossbow that can have a charged projectile.
+ * Represents the meta for a crossbow that can have charged projectiles.
+ *
+ * A Bedrock crossbow holds at most one charged projectile.
  */
 class CrossbowMeta : public ItemMeta {
 public:
     /**
-     * Returns whether the crossbow has a charged projectile.
+     * Returns whether the item has any charged projectiles.
      *
-     * @return whether a charged projectile is present
+     * @return whether charged projectiles are present
      */
-    [[nodiscard]] virtual bool hasChargedProjectile() const = 0;
+    [[nodiscard]] virtual bool hasChargedProjectiles() const = 0;
 
     /**
-     * Returns the charged projectile, or std::nullopt if none.
+     * Returns a list of the projectiles charged on this item.
      *
-     * @return the charged projectile
+     * The list holds at most one projectile.
+     *
+     * @return charged projectiles
      */
-    [[nodiscard]] virtual std::optional<ItemStack> getChargedProjectile() const = 0;
+    [[nodiscard]] virtual std::vector<ItemStack> getChargedProjectiles() const = 0;
 
     /**
-     * Sets the charged projectile. Pass std::nullopt to clear.
+     * Sets the projectiles charged on this item.
      *
-     * @param projectile the projectile to set, or std::nullopt to clear
+     * Removes all projectiles when given an empty list.
+     *
+     * @param projectiles the projectiles to set
+     * @throws std::invalid_argument if one of the projectiles is empty, or if more than one projectile is given
      */
-    virtual void setChargedProjectile(std::optional<ItemStack> projectile) = 0;
+    virtual void setChargedProjectiles(std::vector<ItemStack> projectiles) = 0;
+
+    /**
+     * Adds a charged projectile to this item.
+     *
+     * @param item projectile
+     * @throws std::invalid_argument if the projectile is empty, or if the item already has a charged projectile
+     */
+    virtual void addChargedProjectile(const ItemStack &item) = 0;
 };
 }  // namespace endstone
