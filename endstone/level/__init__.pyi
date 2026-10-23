@@ -89,7 +89,7 @@ class Level:
         The Seed for this level.
         """
 
-    def has_game_rule(self, rule: Identifier[GameRule] | str) -> bool:
+    def is_game_rule(self, rule: Identifier[GameRule] | str) -> bool:
         """
         Checks if a game rule exists.
 
@@ -101,11 +101,11 @@ class Level:
         """
 
     @typing.overload
-    def get_game_rule(self, rule: Identifier[GameRule[_T]]) -> _T: ...
+    def get_game_rule_value(self, rule: Identifier[GameRule[_T]]) -> _T: ...
     @typing.overload
-    def get_game_rule(self, rule: str) -> bool | int | float:
+    def get_game_rule_value(self, rule: str) -> bool | int | float:
         """
-        Gets the value of a game rule.
+        Get the current value for a given game rule.
 
         Args:
             rule: The Minecraft game rule to get.
@@ -114,22 +114,25 @@ class Level:
             The current game rule value.
 
         Raises:
-            IndexError: If the game rule does not exist.
+            ValueError: If the game rule does not exist.
         """
 
     @typing.overload
-    def set_game_rule(self, rule: Identifier[GameRule[_T]], value: _T) -> None: ...
+    def set_game_rule(self, rule: Identifier[GameRule[_T]], value: _T) -> bool: ...
     @typing.overload
-    def set_game_rule(self, rule: str, value: bool | float) -> None:
+    def set_game_rule(self, rule: str, value: bool | float) -> bool:
         """
-        Sets the value of a game rule.
+        Set the given game rule's new value.
 
         Args:
             rule: The Minecraft game rule to set.
             value: The new value, which must match the type of the game rule.
 
+        Returns:
+            `True` if the value was set, `False` if the game rule does not exist.
+
         Raises:
-            ValueError: If the game rule does not exist or the value has the wrong type.
+            ValueError: If the value has the wrong type or is rejected by the game rule.
         """
 
 class Dimension:

@@ -42,8 +42,8 @@ public:
     [[nodiscard]] Nullable<Dimension> getDimension(DimensionType type) const;
     [[nodiscard]] Nullable<Dimension> createDimension(const DimensionCreator &creator) override;
     [[nodiscard]] std::int64_t getSeed() const override;
-    [[nodiscard]] bool _hasGameRule(Identifier<GameRule> rule) const override;
-    [[nodiscard]] GameRuleValue _getGameRule(Identifier<GameRule> rule) const override;
+    [[nodiscard]] bool _isGameRule(Identifier<GameRule> rule) const override;
+    [[nodiscard]] GameRuleValue _getGameRuleValue(Identifier<GameRule> rule) const override;
     bool _setGameRule(Identifier<GameRule> rule, GameRuleValue value) override;
 
     [[nodiscard]] EndstoneServer &getServer() const;

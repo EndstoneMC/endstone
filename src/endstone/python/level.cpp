@@ -354,7 +354,7 @@ void init_level(py::module_ &m, py::classh<Level> &level, py::classh<Dimension> 
         The newly created (or existing) `Dimension`, or `None` if it could not be created.
 )doc")
         .def_property_readonly("seed", &Level::getSeed, "The Seed for this level.")
-        .def("has_game_rule", &Level::_hasGameRule, py::arg("rule"), R"doc(
+        .def("is_game_rule", &Level::_isGameRule, py::arg("rule"), R"doc(
     Checks if a game rule exists.
 
     Args:
@@ -363,8 +363,8 @@ void init_level(py::module_ &m, py::classh<Level> &level, py::classh<Dimension> 
     Returns:
         `True` if the game rule exists.
 )doc")
-        .def("get_game_rule", &Level::_getGameRule, py::arg("rule"), R"doc(
-    Gets the value of a game rule.
+        .def("get_game_rule_value", &Level::_getGameRuleValue, py::arg("rule"), R"doc(
+    Get the current value for a given game rule.
 
     Args:
         rule: The Minecraft game rule to get.
@@ -373,24 +373,22 @@ void init_level(py::module_ &m, py::classh<Level> &level, py::classh<Dimension> 
         The current game rule value.
 
     Raises:
-        IndexError: If the game rule does not exist.
+        ValueError: If the game rule does not exist.
 )doc")
         .def(
             "set_game_rule",
-            [](Level &self, Identifier<GameRule> rule, GameRuleValue value) {
-                if (!self._setGameRule(rule, std::move(value))) {
-                    throw py::value_error(std::format("Unable to set game rule {}.", rule));
-                }
-            },
-            py::arg("rule"), py::arg("value"), R"doc(
-    Sets the value of a game rule.
+            &Level::_setGameRule, py::arg("rule"), py::arg("value"), R"doc(
+    Set the given game rule's new value.
 
     Args:
         rule: The Minecraft game rule to set.
         value: The new value, which must match the type of the game rule.
 
+    Returns:
+        `True` if the value was set, `False` if the game rule does not exist.
+
     Raises:
-        ValueError: If the game rule does not exist or the value has the wrong type.
+        ValueError: If the value has the wrong type or is rejected by the game rule.
 )doc");
 
     location

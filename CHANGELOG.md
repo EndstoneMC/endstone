@@ -103,7 +103,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Unified `Object.as<T>()`/`is<T>()` casting API. `NotNull<T>` and `Nullable<T>` carry the same pair, so `event.getActor().as<Player>()` returns a `Nullable<Player>` sharing ownership with the original.
 - `endstone.Identifier` for namespaced ids, splitting `dim.id.namespace` from `dim.id.key` and distinguishing `Identifier[Dimension]` from `Identifier[ActorType]`. Plain strings are still accepted, and so is the registry entry itself, so `ItemStack(item_type)` works alongside `ItemStack("minecraft:beef")`.
 - `ActorType`, `EffectType` and `PotionType` in the registry API, each entry carrying a `translation_key`, plus the missing `ActorType.SULFUR_CUBE` and `ActorType.CUSHION` constants.
-- Game rule API: `Level.get_game_rule()`, `Level.set_game_rule()` and `Level.has_game_rule()`, keyed by a typed `GameRule` constant such as `GameRule.DO_FIRE_TICK`, covering every rule in the `GameRule` registry.
+- Game rule API: `Level.get_game_rule_value()`, `Level.set_game_rule()` and `Level.is_game_rule()`, keyed by a typed `GameRule` constant such as `GameRule.DO_FIRE_TICK`, covering every rule in the `GameRule` registry.
 - Binary NBT serialization (`dump`/`load`) with support for multiple formats.
 - `PluginManager::registerEvent()` also takes an executor that receives the event's `NotNull<Event>`, for a listener that keeps the event after it returns.
 

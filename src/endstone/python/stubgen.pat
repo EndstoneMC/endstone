@@ -149,18 +149,18 @@
 # The bindings take a bare Identifier<GameRule>, so the value type has to come
 # back from the rule. The fallback is str alone: widening it to Identifier[GameRule]
 # would swallow the typed overload and lose the value check on assignment.
-^endstone\.level\.Level\.get_game_rule$:
+^endstone\.level\.Level\.get_game_rule_value$:
     @typing.overload
-    def get_game_rule(self, rule: Identifier[GameRule[_T]]) -> _T: ...
+    def get_game_rule_value(self, rule: Identifier[GameRule[_T]]) -> _T: ...
     @typing.overload
-    def get_game_rule(self, rule: str) -> bool | int | float:
+    def get_game_rule_value(self, rule: str) -> bool | int | float:
         \doc
 
 ^endstone\.level\.Level\.set_game_rule$:
     @typing.overload
-    def set_game_rule(self, rule: Identifier[GameRule[_T]], value: _T) -> None: ...
+    def set_game_rule(self, rule: Identifier[GameRule[_T]], value: _T) -> bool: ...
     @typing.overload
-    def set_game_rule(self, rule: str, value: bool | int | float) -> None:
+    def set_game_rule(self, rule: str, value: bool | int | float) -> bool:
         \doc
 
 ^endstone\.event\.__prefix__$:

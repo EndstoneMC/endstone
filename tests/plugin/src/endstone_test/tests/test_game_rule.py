@@ -15,7 +15,7 @@ def level(server: Server) -> Level:
 @pytest.fixture(scope="function", autouse=True)
 def restore_game_rules(level: Level):
     touched = [BOOL_RULE, INT_RULE, GameRule.SEND_COMMAND_FEEDBACK]
-    saved = {rule: level.get_game_rule(rule) for rule in touched}
+    saved = {rule: level.get_game_rule_value(rule) for rule in touched}
 
     level.set_game_rule(GameRule.SEND_COMMAND_FEEDBACK, True)
 
@@ -42,17 +42,17 @@ def run_command(server: Server, command_line: str) -> list[str]:
 # =============================================================================
 
 
-def test_has_game_rule(level: Level) -> None:
+def test_is_game_rule(level: Level) -> None:
     """A known rule is present, an unknown one is not."""
-    assert level.has_game_rule(BOOL_RULE)
-    assert level.has_game_rule(INT_RULE)
-    assert not level.has_game_rule("minecraft:not_a_game_rule")
+    assert level.is_game_rule(BOOL_RULE)
+    assert level.is_game_rule(INT_RULE)
+    assert not level.is_game_rule("minecraft:not_a_game_rule")
 
 
 def test_value_types(level: Level) -> None:
     """A bool rule reads as bool, an int rule as int."""
-    assert isinstance(level.get_game_rule(BOOL_RULE), bool)
-    value = level.get_game_rule(INT_RULE)
+    assert isinstance(level.get_game_rule_value(BOOL_RULE), bool)
+    value = level.get_game_rule_value(INT_RULE)
     assert isinstance(value, int) and not isinstance(value, bool)
 
 
@@ -65,8 +65,8 @@ def test_every_registered_rule_is_readable(server: Server, level: Level) -> None
     assert len(registry) > 0
 
     for rule in registry:
-        assert level.has_game_rule(rule.id)
-        assert isinstance(level.get_game_rule(str(rule.id)), (bool, int, float))
+        assert level.is_game_rule(rule.id)
+        assert isinstance(level.get_game_rule_value(str(rule.id)), (bool, int, float))
 
 
 # =============================================================================
@@ -78,18 +78,18 @@ def test_every_registered_rule_is_readable(server: Server, level: Level) -> None
 def test_command_set_is_visible_to_api_bool(
     server: Server, level: Level, value: bool
 ) -> None:
-    """`/gamerule` on a bool rule is observed by `get_game_rule`."""
+    """`/gamerule` on a bool rule is observed by `get_game_rule_value`."""
     run_command(server, f"gamerule dofiretick {str(value).lower()}")
-    assert level.get_game_rule(BOOL_RULE) is value
+    assert level.get_game_rule_value(BOOL_RULE) is value
 
 
 @pytest.mark.parametrize("value", [3, 7])
 def test_command_set_is_visible_to_api_int(
     server: Server, level: Level, value: int
 ) -> None:
-    """`/gamerule` on an int rule is observed by `get_game_rule`."""
+    """`/gamerule` on an int rule is observed by `get_game_rule_value`."""
     run_command(server, f"gamerule spawnradius {value}")
-    assert level.get_game_rule(INT_RULE) == value
+    assert level.get_game_rule_value(INT_RULE) == value
 
 
 # =============================================================================
@@ -103,7 +103,7 @@ def test_api_set_is_visible_to_command_bool(
 ) -> None:
     """`set_game_rule` on a bool rule is observed by a `/gamerule` query."""
     level.set_game_rule(BOOL_RULE, value)
-    assert level.get_game_rule(BOOL_RULE) is value
+    assert level.get_game_rule_value(BOOL_RULE) is value
 
     output = " ".join(run_command(server, "gamerule dofiretick")).lower()
     assert str(value).lower() in output, f"query returned {output!r}"
@@ -115,7 +115,7 @@ def test_api_set_is_visible_to_command_int(
 ) -> None:
     """`set_game_rule` on an int rule is observed by a `/gamerule` query."""
     level.set_game_rule(INT_RULE, value)
-    assert level.get_game_rule(INT_RULE) == value
+    assert level.get_game_rule_value(INT_RULE) == value
 
     output = " ".join(run_command(server, "gamerule spawnradius"))
     assert str(value) in output, f"query returned {output!r}"
@@ -128,13 +128,13 @@ def test_api_set_is_visible_to_command_int(
 
 def test_api_round_trip_survives_a_flip(level: Level) -> None:
     """Writing a rule twice through the API lands both times."""
-    original = level.get_game_rule(BOOL_RULE)
+    original = level.get_game_rule_value(BOOL_RULE)
 
     level.set_game_rule(BOOL_RULE, not original)
-    assert level.get_game_rule(BOOL_RULE) is (not original)
+    assert level.get_game_rule_value(BOOL_RULE) is (not original)
 
     level.set_game_rule(BOOL_RULE, original)
-    assert level.get_game_rule(BOOL_RULE) is original
+    assert level.get_game_rule_value(BOOL_RULE) is original
 
 
 def test_set_does_not_disturb_other_rules(server: Server, level: Level) -> None:
@@ -144,12 +144,12 @@ def test_set_does_not_disturb_other_rules(server: Server, level: Level) -> None:
     level's rule array, so a bad index would silently write to a neighbour.
     """
     names = [str(rule.id) for rule in server.get_registry(GameRule)]
-    before = {name: level.get_game_rule(name) for name in names}
+    before = {name: level.get_game_rule_value(name) for name in names}
 
     target = str(BOOL_RULE)
     level.set_game_rule(BOOL_RULE, not before[target])
 
-    after = {name: level.get_game_rule(name) for name in names}
+    after = {name: level.get_game_rule_value(name) for name in names}
     changed = {name for name in names if after[name] != before[name]}
     assert changed == {target}
 
@@ -161,14 +161,13 @@ def test_set_does_not_disturb_other_rules(server: Server, level: Level) -> None:
 
 def test_get_unknown_rule_raises(level: Level) -> None:
     """Reading a rule that does not exist raises rather than returning a default."""
-    with pytest.raises(IndexError):
-        level.get_game_rule("minecraft:not_a_game_rule")
-
-
-def test_set_unknown_rule_raises(level: Level) -> None:
-    """Writing a rule that does not exist raises."""
     with pytest.raises(ValueError):
-        level.set_game_rule("minecraft:not_a_game_rule", True)
+        level.get_game_rule_value("minecraft:not_a_game_rule")
+
+
+def test_set_unknown_rule_returns_false(level: Level) -> None:
+    """Writing a rule that does not exist is reported as not set."""
+    assert level.set_game_rule("minecraft:not_a_game_rule", True) is False
 
 
 def test_set_wrong_value_type_raises(level: Level) -> None:

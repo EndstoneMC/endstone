@@ -108,7 +108,7 @@ public:
      * @param rule The Minecraft game rule to check
      * @return True if the game rule exists
      */
-    [[nodiscard]] virtual bool _hasGameRule(Identifier<GameRule> rule) const = 0;
+    [[nodiscard]] virtual bool _isGameRule(Identifier<GameRule> rule) const = 0;
 
     /**
      * Checks if a game rule exists.
@@ -118,48 +118,52 @@ public:
      * @return True if the game rule exists
      */
     template <typename T>
-    [[nodiscard]] bool hasGameRule(GameRuleId<T> rule) const
+    [[nodiscard]] bool isGameRule(GameRuleId<T> rule) const
     {
-        return _hasGameRule(rule);
+        return _isGameRule(rule);
     }
 
     /**
-     * Gets the value of a game rule.
+     * Get the current value for a given game rule.
      *
      * @param rule The Minecraft game rule to get
      * @return The current game rule value
+     * @throws std::invalid_argument if the game rule does not exist
      */
-    [[nodiscard]] virtual GameRuleValue _getGameRule(Identifier<GameRule> rule) const = 0;
+    [[nodiscard]] virtual GameRuleValue _getGameRuleValue(Identifier<GameRule> rule) const = 0;
 
     /**
-     * Gets the value of a game rule.
+     * Get the current value for a given game rule.
      *
      * @tparam T The type of the game rule's value.
      * @param rule The Minecraft game rule to get
      * @return The current game rule value
+     * @throws std::invalid_argument if the game rule does not exist
      */
     template <typename T>
-    [[nodiscard]] T getGameRule(GameRuleId<T> rule) const
+    [[nodiscard]] T getGameRuleValue(GameRuleId<T> rule) const
     {
-        return std::get<T>(_getGameRule(rule));
+        return std::get<T>(_getGameRuleValue(rule));
     }
 
     /**
-     * Sets the value of a game rule.
+     * Set the given game rule's new value.
      *
      * @param rule The Minecraft game rule to set
      * @param value The new value
-     * @return True if the value was accepted
+     * @return True if the value was set, false if the game rule does not exist
+     * @throws std::invalid_argument if the value has the wrong type or is rejected by the game rule
      */
     virtual bool _setGameRule(Identifier<GameRule> rule, GameRuleValue value) = 0;
 
     /**
-     * Sets the value of a game rule.
+     * Set the given game rule's new value.
      *
      * @tparam T The type of the game rule's value.
      * @param rule The Minecraft game rule to set
      * @param value The new value
-     * @return True if the value was accepted
+     * @return True if the value was set, false if the game rule does not exist
+     * @throws std::invalid_argument if the value is rejected by the game rule
      */
     template <typename T>
     bool setGameRule(GameRuleId<T> rule, T value)

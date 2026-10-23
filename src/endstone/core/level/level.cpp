@@ -15,6 +15,7 @@
 #include "endstone/core/level/level.h"
 
 #include <cstdlib>
+#include <format>
 #include <ranges>
 #include <stdexcept>
 
@@ -175,16 +176,16 @@ std::int64_t EndstoneLevel::getSeed() const
     return level_.getLevelSeed64();
 }
 
-bool EndstoneLevel::_hasGameRule(Identifier<GameRule> rule) const
+bool EndstoneLevel::_isGameRule(Identifier<GameRule> rule) const
 {
     return server_.getRegistry<GameRule>().get(rule) != nullptr;
 }
 
-GameRuleValue EndstoneLevel::_getGameRule(Identifier<GameRule> rule) const
+GameRuleValue EndstoneLevel::_getGameRuleValue(Identifier<GameRule> rule) const
 {
     const auto *entry = server_.getRegistry<GameRule>().get(rule);
     if (entry == nullptr) {
-        throw std::out_of_range("Game rule is not available.");
+        throw std::invalid_argument(std::format("Unknown gamerule: {}", rule));
     }
 
     const auto *game_rule = &static_cast<const EndstoneGameRule *>(entry)->getHandle();
@@ -218,7 +219,11 @@ bool EndstoneLevel::_setGameRule(Identifier<GameRule> rule, GameRuleValue value)
         GameRuleUtils::setGameRule(level_, id, native_value, nullptr, false);
     }
     catch (const std::bad_variant_access &) {
-        return false;
+        throw std::invalid_argument(std::format("Invalid value for gamerule {}", rule));
+    }
+    const auto expected = std::visit([](auto &&v) -> ::GameRule::Value { return v; }, value);
+    if (!game_rule->compareValue(expected)) {
+        throw std::invalid_argument(std::format("Invalid value for gamerule {}", rule));
     }
     return true;
 }

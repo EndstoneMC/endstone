@@ -1159,7 +1159,7 @@ class GameRule(typing.Generic[_T]):
 
     COMMAND_BLOCK_OUTPUT: Identifier[GameRule[bool]] = "minecraft:commandblockoutput"
     COMMAND_BLOCKS_ENABLED: Identifier[GameRule[bool]] = "minecraft:commandblocksenabled"
-    DO_DAY_LIGHT_CYCLE: Identifier[GameRule[bool]] = "minecraft:dodaylightcycle"
+    DO_DAYLIGHT_CYCLE: Identifier[GameRule[bool]] = "minecraft:dodaylightcycle"
     DO_ENTITY_DROPS: Identifier[GameRule[bool]] = "minecraft:doentitydrops"
     DO_FIRE_TICK: Identifier[GameRule[bool]] = "minecraft:dofiretick"
     DO_IMMEDIATE_RESPAWN: Identifier[GameRule[bool]] = "minecraft:doimmediaterespawn"

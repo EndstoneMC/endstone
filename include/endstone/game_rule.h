@@ -46,7 +46,7 @@ public:
     /** Whether command blocks can execute commands. */
     static constexpr auto CommandBlocksEnabled = GameRuleId<bool>::minecraft("commandblocksenabled");
     /** Whether the day and night cycles progress. */
-    static constexpr auto DoDayLightCycle = GameRuleId<bool>::minecraft("dodaylightcycle");
+    static constexpr auto DoDaylightCycle = GameRuleId<bool>::minecraft("dodaylightcycle");
     /** Whether non-mob entities drop items. */
     static constexpr auto DoEntityDrops = GameRuleId<bool>::minecraft("doentitydrops");
     /** Whether fire spreads. */
