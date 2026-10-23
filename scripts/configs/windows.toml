@@ -4,6 +4,121 @@ executable = "bedrock_server.exe"
 filename = "bedrock_server"
 
 [[signatures]]
+name = "?findPath@Level@@UEAA?AV?$unique_ptr@VPath@@U?$default_delete@VPath@@@std@@@std@@AEAVActor@@HHHAEAVNavigationComponent@@@Z"
+relative = false
+extra = 0
+# 1. find "Minecraft update" + 00 (unique); in Minecraft::update follow the GameSession tick call after onBeforeSimTick
+#    under the mGameSession check.
+# 2. in GameSession::tick, the call after the level/getTearingDown checks and before network handlers onTick is
+#    Level::tick.
+# 3. use Level::tick data references to identify both primary Level vtables; coordinate findPath is slot 128 (+0x400);
+#    recheck virtual order on a bump.
+# 4. confirm integer coordinates become floats with +0.5/+0.05/+0.5, followed by finder construction and its
+#    float-coordinate search call.
+# 5. compare with named Level::findPath: RCX=this, RDX=unique_ptr return storage, R8=Actor&, R9D=x and stack
+#    y/z/NavigationComponent&; retain the owning return.
+pattern = "55 41 57 41 56 41 55 41 54 56 57 53 48 81 EC ? ? ? ? 48 8D AC 24 ? ? ? ? 44 0F 29 8D ? ? ? ? 44 0F 29 85 ? ? ? ? 0F 29 BD ? ? ? ? 0F 29 B5 ? ? ? ? 48 C7 85 ? ? ? ? FE FF FF FF 44 89 CB 4C 89 C7"
+
+[[signatures]]
+name = "?stop@SleepGoal@@QEAAXXZ"
+relative = false
+extra = 0
+# 1. find "minecraft:behavior.sleep" + 00 (nonunique); choose the 88-byte behavior definition construction, not its
+#    upgrader or serializer.
+# 2. follow definition-vptr slot 0 to the factory allocating a 352-byte goal; its constructor sets owner +0xc0 and
+#    controls +0x28=7, identifying the goal vptr.
+# 3. stop is goal slot 5 (+0x28); confirm wake flag 77, the native failure helper and movement-stop cleanup resetting
+#    attempts +0x30.
+# 4. compare this-only void return and cleanup flow with the named SleepGoal::stop reference; recheck goal slots and
+#    member offsets on a bump.
+pattern = "41 56 56 57 55 53 48 83 EC ? 44 0F 29 44 24 ? 0F 29 7C 24 ? 0F 29 74 24 ? 48 89 CE 48 8B 81 C0 00 00 00"
+
+[[signatures]]
+name = "?canUse@SleepGoal@@QEAA_NXZ"
+relative = false
+extra = 0
+# 1. find "minecraft:behavior.sleep" + 00 (nonunique); choose the 88-byte behavior definition construction, not its
+#    upgrader or serializer.
+# 2. follow definition-vptr slot 0 to the 352-byte goal factory; constructor owner +0xc0 and controls +0x28=7 identify
+#    the goal vptr.
+# 3. canUse is goal slot 1 (+0x8); confirm base eligibility, riding byte +0x140, owned-POI virtual +0x98 with type 0 and
+#    bed position +0xf0.
+# 4. compare this-only bool return and owned-bed preparation with named SleepGoal::canUse; recheck virtual order and
+#    offsets on a bump.
+pattern = "55 41 57 41 56 41 54 56 57 53 48 83 EC ? 48 8D 6C 24 ? 48 C7 45 ? FE FF FF FF 48 89 CE E8 ? ? ? ? 84 C0"
+
+[[signatures]]
+name = "?_findTarget@NearestAttackableTargetGoal@@QEAA?AUActorUniqueID@@PEAPEBUMobDescriptor@@@Z"
+relative = false
+extra = 0
+# 1. find "minecraft:behavior.nearest_attackable_target" + 00 (nonunique); select behavior definition construction, not
+#    an upgrader or serializer.
+# 2. follow definition-vptr slot 0 to the factory allocating a 248-byte goal; constructor owner +0x30, target ID
+#    +0x80=-1 and controls +0x28=1 identify the goal vptr.
+# 3. _findTarget is goal slot 12 (+0x60); its caller supplies RDX=hidden ActorUniqueID buffer and R8=descriptor output,
+#    then writes ID +0x80 and descriptor +0x88.
+# 4. confirm candidate vector +0x68..0x70, 0x68-byte stride, radius +0x40 and collection constant 256; compare args,
+#    selection and return buffer with the named reference.
+pattern = "55 41 57 41 56 41 55 41 54 56 57 53 48 83 EC ? 48 8D 6C 24 ? 48 C7 45 ? FE FF FF FF 4C 89 45 ? 48 89 55 ? 48 89 CB 48 8B 41 68 48 8B 49 70"
+
+[[signatures]]
+name = "?canUse@RandomStrollGoal@@QEAA_NXZ"
+relative = false
+extra = -304
+# 1. find "minecraft:behavior.random_stroll" + 00 (nonunique); select behavior definition construction, not its upgrader
+#    or serializer.
+# 2. follow definition-vptr slot 0 to the 104-byte goal factory; constructor owner +0x30 and controls +0x28=3 identify
+#    the goal vptr.
+# 3. canUse is slot 1 (+0x8); confirm component key 0xbb725ebe, interval +0x44 and tail call through goal virtual +0x58.
+# 4. anchor the unique slot-2 body that returns byte +0x60 xor 1; canUse is 0x130 bytes earlier here, so remeasure extra
+#    on every bump; its early prologue collides.
+# 5. compare the component/interval gate and this-only bool return with named RandomStrollGoal::canUse.
+pattern = "0F B6 41 60 34 01 C3"
+
+[[signatures]]
+name = "?canContinue@RandomStrollGoal@@QEAA_NXZ"
+relative = false
+extra = 0
+# 1. find "minecraft:behavior.random_stroll" + 00 (nonunique); select behavior definition construction, not its upgrader
+#    or serializer.
+# 2. follow definition-vptr slot 0 to the 104-byte goal factory; constructor owner +0x30 and controls +0x28=3 identify
+#    the goal vptr.
+# 3. canContinue is slot 2 (+0x10); confirm its unique byte +0x60 xor 1 body and the adjacent slot-1 component key
+#    0xbb725ebe/interval +0x44 gate.
+# 4. compare the this-only bool leaf with named RandomStrollGoal::canContinue; recheck slot order and the
+#    canUse-to-canContinue delta on every bump.
+pattern = "0F B6 41 60 34 01 C3"
+
+[[signatures]]
+name = "?canUse@RandomLookAroundGoal@@QEAA_NXZ"
+relative = false
+extra = 0
+# 1. find "minecraft:behavior.random_look_around" + 00 (nonunique); choose behavior definition construction, not its
+#    upgrader or serializer.
+# 2. follow definition-vptr slot 0 to the 96-byte goal factory; yaw -180/+180, duration 20/40 and owner +0x48 identify
+#    the constructor and goal vptr.
+# 3. canUse is slot 1 (+0x8); confirm the random float compared against probability +0x40; slot 2 checks signed counter
+#    +0x50 >= 0.
+# 4. compare the random-source calls, probability comparison and this-only bool return with named
+#    RandomLookAroundGoal::canUse; recheck virtual order on a bump.
+pattern = "56 48 83 EC ? 48 89 CE 48 8B 41 48 48 8B 88 D8 01 00 00 48 8B 01 48 8B 80 68 0A 00 00 FF 15 ? ? ? ? 48 8B 08 48 8B 51 28 48 89 C1 48 89 D0 FF 15 ? ? ? ? F3 0F 10 4E 40 0F 2E C8 0F 97 C0"
+
+[[signatures]]
+name = "?canContinue@RandomLookAroundGoal@@QEAA_NXZ"
+relative = false
+extra = 0
+# 1. find "minecraft:behavior.random_look_around" + 00 (nonunique); choose behavior definition construction, not its
+#    upgrader or serializer.
+# 2. follow definition-vptr slot 0 to the 96-byte goal factory; yaw -180/+180, duration 20/40 and owner +0x48 identify
+#    the constructor and goal vptr.
+# 3. canContinue is slot 2 (+0x10); confirm signed counter +0x50 >= 0 and the neighboring slot-1
+#    random-float/probability +0x40 comparison.
+# 4. compare the signed comparison and this-only bool return with named RandomLookAroundGoal::canContinue; recheck slot
+#    order and offsets on a bump.
+pattern = "83 79 50 00 0F 99 C0 C3"
+
+
+[[signatures]]
 name = "BlockState::StateListNode::mHead"
 relative = false
 extra = 0
