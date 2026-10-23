@@ -1,7 +1,7 @@
 import math
 
 import pytest
-from endstone import Identifier, Player
+from endstone import Player
 from endstone.attribute import Attribute, AttributeInstance, AttributeModifier
 
 
@@ -32,17 +32,17 @@ def test_set_max_value(player: Player) -> None:
 def test_attribute(player: Player) -> None:
     attr = player.get_attribute(Attribute.HEALTH)
     assert attr is not None
-    assert attr.type == "minecraft:health"
+    assert attr.attribute == "minecraft:health"
     assert player.has_attribute(Attribute.HEALTH)
 
     modifier = AttributeModifier("test:test", 2.0, AttributeModifier.Operation.ADD)
     attr.add_modifier(modifier)
     assert len(attr.modifiers) == 1
-    assert attr.get_modifier(modifier.id) is not None
+    assert attr.get_modifier(modifier.key) is not None
 
     attr.remove_modifier(modifier)
     assert len(attr.modifiers) == 0
-    assert attr.get_modifier(modifier.id) is None
+    assert attr.get_modifier(modifier.key) is None
 
 
 def test_attribute_remove_by_id(player: Player) -> None:
@@ -55,7 +55,7 @@ def test_attribute_remove_by_id(player: Player) -> None:
     attr.add_transient_modifier(modifier)
     assert len(attr.modifiers) == 1
 
-    attr.remove_modifier(modifier.id)
+    attr.remove_modifier(modifier.key)
     assert len(attr.modifiers) == 0
 
 
@@ -69,11 +69,11 @@ def test_attributes_present(player: Player) -> None:
 # =============================================================================
 
 
-def test_type_is_an_identifier(player: Player) -> None:
-    """Verify AttributeInstance.type is an Identifier, not an Attribute object."""
+def test_attribute_is_an_attribute(player: Player) -> None:
+    """Verify AttributeInstance.attribute is an Attribute object, not an Identifier."""
     health = player.get_attribute(Attribute.HEALTH)
-    assert isinstance(health.type, Identifier)
-    assert health.type == "minecraft:health"
+    assert isinstance(health.attribute, Attribute)
+    assert health.attribute == "minecraft:health"
 
 
 def test_base_min_and_max_are_distinct(player: Player) -> None:
@@ -125,7 +125,7 @@ def test_attributes_are_attribute_instances(player: Player) -> None:
     assert len(player.attributes) > 0
     for attribute in player.attributes:
         assert isinstance(attribute, AttributeInstance)
-        assert isinstance(attribute.type, Identifier)
+        assert isinstance(attribute.attribute, Attribute)
 
 
 # =============================================================================
@@ -138,13 +138,13 @@ def attack_damage(player: Player) -> AttributeInstance:
     """Strip any modifier this test added, before and after."""
     instance = player.get_attribute(Attribute.ATTACK_DAMAGE)
     for modifier in list(instance.modifiers):
-        if modifier.id == "endstone:test_modifier":
+        if modifier.key == "endstone:test_modifier":
             instance.remove_modifier(modifier)
 
     yield instance
 
     for modifier in list(instance.modifiers):
-        if modifier.id == "endstone:test_modifier":
+        if modifier.key == "endstone:test_modifier":
             instance.remove_modifier(modifier)
     assert instance.get_modifier("endstone:test_modifier") is None
 

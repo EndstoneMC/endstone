@@ -29,11 +29,11 @@ public:
     virtual ~AttributeInstance() = default;
 
     /**
-     * The attribute type pertaining to this instance.
+     * The attribute pertaining to this instance.
      *
-     * @return the attribute type
+     * @return the attribute
      */
-    [[nodiscard]] virtual AttributeId getType() const = 0;
+    [[nodiscard]] virtual const Attribute &getAttribute() const = 0;
 
     /**
      * Base value of this instance before modifiers are applied.
@@ -102,12 +102,12 @@ public:
     [[nodiscard]] virtual std::vector<AttributeModifier> getModifiers() const = 0;
 
     /**
-     * Gets the modifier with the corresponding id.
+     * Gets the modifier with the corresponding key.
      *
-     * @param id the id of the modifier
-     * @return the modifier, or std::nullopt if no modifier with the given id is present
+     * @param key the key of the modifier
+     * @return the modifier, or std::nullopt if no modifier with the given key is present
      */
-    [[nodiscard]] virtual std::optional<AttributeModifier> getModifier(AttributeModifierId id) const = 0;
+    [[nodiscard]] virtual std::optional<AttributeModifier> getModifier(AttributeModifierId key) const = 0;
 
     /**
      * Add a modifier to this instance.
@@ -131,10 +131,10 @@ public:
     virtual void removeModifier(const AttributeModifier &modifier) = 0;
 
     /**
-     * Remove a modifier with the corresponding id from this instance.
+     * Remove a modifier with the corresponding key from this instance.
      *
-     * @param id the id of the modifier to remove
+     * @param key the key of the modifier to remove
      */
-    virtual void removeModifier(AttributeModifierId id) = 0;
+    virtual void removeModifier(AttributeModifierId key) = 0;
 };
 }  // namespace endstone

@@ -58,21 +58,21 @@ public:
     /**
      * Construct a new attribute modifier.
      *
-     * @param id the id of the modifier
+     * @param key the key of the modifier
      * @param amount the amount by which the modifier applies its operation
      * @param operation the operation to apply
      */
-    AttributeModifier(AttributeModifierId id, float amount, Operation operation)
-        : id_(std::string(id)), amount_(amount), operation_(operation)
+    AttributeModifier(AttributeModifierId key, float amount, Operation operation)
+        : key_(std::string(key)), amount_(amount), operation_(operation)
     {
     }
 
     /**
-     * Get the id of this modifier.
+     * Get the key of this modifier.
      *
-     * @return id
+     * @return key
      */
-    [[nodiscard]] AttributeModifierId getId() const { return AttributeModifierId{id_}; }
+    [[nodiscard]] AttributeModifierId getKey() const { return AttributeModifierId{key_}; }
 
     /**
      * Get the amount by which this modifier will apply its operation.
@@ -89,7 +89,7 @@ public:
     [[nodiscard]] Operation getOperation() const { return operation_; }
 
 private:
-    std::string id_;
+    std::string key_;
     float amount_;
     Operation operation_;
 };

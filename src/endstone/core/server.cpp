@@ -48,6 +48,7 @@
 #include "bedrock/world/level/block/block_descriptor.h"
 #include "bedrock/world/scores/server_scoreboard.h"
 #include "endstone/actor/actor_type.h"
+#include "endstone/attribute/attribute.h"
 #include "endstone/color_format.h"
 #include "endstone/command/plugin_command.h"
 #include "endstone/core/ban/ip_ban_list.h"
@@ -304,6 +305,7 @@ void EndstoneServer::initRegistries()
 {
     registries_[typeid(Ability)] = EndstoneRegistry<Ability, std::string>::create();
     registries_[typeid(ActorType)] = EndstoneRegistry<ActorType, std::string>::create();
+    registries_[typeid(Attribute)] = EndstoneRegistry<Attribute, std::string>::create();
     registries_[typeid(Biome)] = EndstoneRegistry<Biome, ::Biome>::create();
     registries_[typeid(BlockType)] = EndstoneRegistry<BlockType, ::BlockType>::create();
     registries_[typeid(EffectType)] = EndstoneRegistry<EffectType, ::MobEffect>::create();

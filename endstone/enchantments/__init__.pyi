@@ -111,7 +111,7 @@ class Enchantment:
         """
 
     @staticmethod
-    def get(name: Identifier[Enchantment] | str) -> Enchantment:
+    def get(name: Identifier[Enchantment] | str) -> Enchantment | None:
         """
         Look up a registry entry by identifier.
 

@@ -15,8 +15,34 @@ __all__ = [
 
 class Attribute:
     """
-    All attribute types.
+    Represents a type of attribute which may be present on a `Mob`.
     """
+    def __hash__(self) -> int: ...
+    def __eq__(self, other: object) -> bool: ...
+    def __ne__(self, other: object) -> bool: ...
+    @property
+    def id(self) -> Identifier[Attribute]:
+        """
+        The identifier of this attribute.
+        """
+
+    @property
+    def translation_key(self) -> str:
+        """
+        Raises, as Bedrock attributes carry no translation key.
+        """
+
+    @staticmethod
+    def get(name: Identifier[Attribute] | str) -> Attribute | None:
+        """
+        Attempts to get the `Attribute` with the given name.
+
+        Args:
+            name: The identifier of the attribute (e.g. `minecraft:health`).
+
+        Returns:
+            The `Attribute`, or `None` if no attribute with that name exists.
+        """
 
     HEALTH: Identifier[Attribute] = "minecraft:health"
     FOLLOW_RANGE: Identifier[Attribute] = "minecraft:follow_range"
@@ -27,7 +53,7 @@ class Attribute:
     ATTACK_DAMAGE: Identifier[Attribute] = "minecraft:attack_damage"
     ABSORPTION: Identifier[Attribute] = "minecraft:absorption"
     LUCK: Identifier[Attribute] = "minecraft:luck"
-    JUMP_STRENGTH: Identifier[Attribute] = "minecraft:jump_strength"
+    JUMP_STRENGTH: Identifier[Attribute] = "minecraft:horse.jump_strength"
     PLAYER_HUNGER: Identifier[Attribute] = "minecraft:player.hunger"
     PLAYER_SATURATION: Identifier[Attribute] = "minecraft:player.saturation"
     PLAYER_EXHAUSTION: Identifier[Attribute] = "minecraft:player.exhaustion"
@@ -39,7 +65,7 @@ class AttributeModifier:
     """
     Represents an attribute modifier.
     """
-    def __init__(self, id: Identifier[AttributeModifier] | str, amount: float, operation: Operation) -> None: ...
+    def __init__(self, key: Identifier[AttributeModifier] | str, amount: float, operation: Operation) -> None: ...
 
     class Operation(enum.Enum):
         """
@@ -87,9 +113,9 @@ class AttributeModifier:
     """
 
     @property
-    def id(self) -> Identifier[AttributeModifier]:
+    def key(self) -> Identifier[AttributeModifier]:
         """
-        The id of this modifier.
+        The key of this modifier.
         """
 
     @property
@@ -109,9 +135,9 @@ class AttributeInstance:
     Represents a mutable instance of an attribute and its associated modifiers and values.
     """
     @property
-    def type(self) -> Identifier[Attribute]:
+    def attribute(self) -> Attribute:
         """
-        The attribute type pertaining to this instance.
+        The attribute pertaining to this instance.
         """
 
     @property
@@ -150,15 +176,15 @@ class AttributeInstance:
         All modifiers present on this instance.
         """
 
-    def get_modifier(self, id: Identifier[AttributeModifier] | str) -> AttributeModifier | None:
+    def get_modifier(self, key: Identifier[AttributeModifier] | str) -> AttributeModifier | None:
         """
-        Gets the modifier with the corresponding id.
+        Gets the modifier with the corresponding key.
 
         Args:
-            id: The id of the modifier.
+            key: The key of the modifier.
 
         Returns:
-            The modifier, or ``None`` if no modifier with the given id is present.
+            The modifier, or ``None`` if no modifier with the given key is present.
         """
 
     def add_modifier(self, modifier: AttributeModifier) -> None:
@@ -187,10 +213,10 @@ class AttributeInstance:
         """
 
     @typing.overload
-    def remove_modifier(self, id: Identifier[AttributeModifier] | str) -> None:
+    def remove_modifier(self, key: Identifier[AttributeModifier] | str) -> None:
         """
-        Remove a modifier with the corresponding id from this instance.
+        Remove a modifier with the corresponding key from this instance.
 
         Args:
-            id: The id of the modifier to remove.
+            key: The key of the modifier to remove.
         """

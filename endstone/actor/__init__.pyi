@@ -450,7 +450,7 @@ class ActorType:
         """
 
     @staticmethod
-    def get(name: Identifier[ActorType] | str) -> ActorType:
+    def get(name: Identifier[ActorType] | str) -> ActorType | None:
         """
         Attempts to get the `ActorType` with the given name.
         """

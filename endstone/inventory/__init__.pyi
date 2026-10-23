@@ -196,7 +196,7 @@ class ItemType:
         """
 
     @staticmethod
-    def get(name: Identifier[ItemType] | str) -> ItemType:
+    def get(name: Identifier[ItemType] | str) -> ItemType | None:
         """
         Attempts to get the `ItemType` with the given name.
         """

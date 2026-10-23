@@ -89,8 +89,8 @@ public:
         /**
          * Get the translation key, suitable for use in a translation component.
          *
-         * Bedrock does not localize every registry. `Biome` and `GameRule` have no translation key at all, and
-         * asking either for one raises.
+         * Bedrock does not localize every registry. `Attribute`, `Biome` and `GameRule` have no translation key at
+         * all, and asking any of them for one raises.
          *
          * @return the translation key
          */

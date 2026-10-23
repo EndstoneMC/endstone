@@ -30,7 +30,7 @@ class EffectType:
         """
 
     @staticmethod
-    def get(name: Identifier[EffectType] | str) -> EffectType:
+    def get(name: Identifier[EffectType] | str) -> EffectType | None:
         """
         Attempts to get the `EffectType` with the given name.
 
@@ -162,7 +162,7 @@ class PotionType:
         """
 
     @staticmethod
-    def get(name: Identifier[PotionType] | str) -> PotionType:
+    def get(name: Identifier[PotionType] | str) -> PotionType | None:
         """
         Attempts to get the `PotionType` with the given name.
 

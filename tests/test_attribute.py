@@ -13,7 +13,7 @@ ATTRIBUTES = {
     "ATTACK_DAMAGE": "minecraft:attack_damage",
     "ABSORPTION": "minecraft:absorption",
     "LUCK": "minecraft:luck",
-    "JUMP_STRENGTH": "minecraft:jump_strength",
+    "JUMP_STRENGTH": "minecraft:horse.jump_strength",
     "PLAYER_HUNGER": "minecraft:player.hunger",
     "PLAYER_SATURATION": "minecraft:player.saturation",
     "PLAYER_EXHAUSTION": "minecraft:player.exhaustion",
@@ -67,30 +67,30 @@ def test_operation_shorthand(name: str) -> None:
 
 
 def test_modifier_construction() -> None:
-    """Verify a modifier keeps the id, amount and operation it was built with."""
+    """Verify a modifier keeps the key, amount and operation it was built with."""
     modifier = AttributeModifier("endstone:boost", 1.5, AttributeModifier.Operation.ADD)
-    assert modifier.id == "endstone:boost"
+    assert modifier.key == "endstone:boost"
     assert abs(modifier.amount - 1.5) <= 0.00001
     assert modifier.operation == AttributeModifier.Operation.ADD
 
 
-def test_modifier_id_defaults_to_minecraft_namespace() -> None:
-    """Verify a bare modifier id is placed in the minecraft namespace."""
+def test_modifier_key_defaults_to_minecraft_namespace() -> None:
+    """Verify a bare modifier key is placed in the minecraft namespace."""
     modifier = AttributeModifier("boost", 1.0, AttributeModifier.MULTIPLY_BASE)
-    assert modifier.id.namespace == "minecraft"
-    assert modifier.id.key == "boost"
+    assert modifier.key.namespace == "minecraft"
+    assert modifier.key.key == "boost"
 
 
 def test_modifier_accepts_an_identifier() -> None:
     """Verify a modifier can be built from an Identifier as well as a string."""
     modifier = AttributeModifier(Identifier("endstone", "boost"), -2.0, AttributeModifier.CAP)
-    assert modifier.id == "endstone:boost"
+    assert modifier.key == "endstone:boost"
     assert abs(modifier.amount + 2.0) <= 0.00001
 
 
-def test_modifier_id_survives_the_source_string() -> None:
-    """Verify a modifier owns its id rather than viewing the caller's string."""
+def test_modifier_key_survives_the_source_string() -> None:
+    """Verify a modifier owns its key rather than viewing the caller's string."""
     name = "endstone:temporary"
     modifier = AttributeModifier(name, 1.0, AttributeModifier.ADD)
     del name
-    assert modifier.id == "endstone:temporary"
+    assert modifier.key == "endstone:temporary"

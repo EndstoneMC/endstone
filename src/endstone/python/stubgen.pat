@@ -80,6 +80,11 @@
 ^endstone\.Ability\.(?P<name>[A-Z][A-Z0-9_]*)$:
     \name: Identifier[Ability[bool]] = \value
 
+^endstone\.[a-z]+\.(?P<name>ActorType|Attribute|Biome|BlockType|EffectType|Enchantment|ItemType|PotionType)\.get$:
+    @staticmethod
+    def get(name: Identifier[\name] | str) -> \name | None:
+        \doc
+
 ^endstone\.Player\.get_ability$:
     @typing.overload
     def get_ability(self, ability: Identifier[Ability[_T]]) -> _T: ...

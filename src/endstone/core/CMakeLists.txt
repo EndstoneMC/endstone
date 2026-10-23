@@ -40,6 +40,7 @@ add_library(endstone_core
         actor/actor.cpp
         actor/actor_type.cpp
         actor/item.cpp
+        attribute/attribute.cpp
         ban/ip_ban_list.cpp
         ban/player_ban_list.cpp
         block/biome.cpp

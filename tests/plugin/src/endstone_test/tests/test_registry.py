@@ -11,6 +11,7 @@ from endstone.potion import EffectType, PotionType
 REGISTRY_TYPES = [
     Ability,
     ActorType,
+    Attribute,
     Biome,
     BlockType,
     EffectType,
@@ -22,6 +23,7 @@ REGISTRY_TYPES = [
 
 # Bedrock ships no lang keys for these, so asking for a translation key raises.
 UNLOCALIZED_REGISTRY_TYPES = [
+    Attribute,
     Biome,
     GameRule,
 ]
@@ -168,12 +170,6 @@ def test_registry_is_available(server: Server, registry_type):
     registry = server.get_registry(registry_type)
     assert registry is not None
     assert len(registry) > 0
-
-
-@pytest.mark.parametrize("not_a_registry", [Attribute], ids=lambda t: t.__name__)
-def test_constant_holders_have_no_registry(server: Server, not_a_registry):
-    """Verify a constants-only type has no registry behind it."""
-    assert server.get_registry(not_a_registry) is None
 
 
 def test_str_is_the_plain_namespaced_id(server: Server):

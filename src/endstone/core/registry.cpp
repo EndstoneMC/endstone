@@ -28,6 +28,7 @@
 #include "bedrock/world/level/block/registry/block_type_registry.h"
 #include "endstone/core/ability.h"
 #include "endstone/core/actor/actor_type.h"
+#include "endstone/core/attribute/attribute.h"
 #include "endstone/core/block/biome.h"
 #include "endstone/core/block/block_type.h"
 #include "endstone/core/enchantments/enchantment.h"
@@ -177,6 +178,35 @@ std::unique_ptr<Registry<ActorType>> EndstoneRegistry<ActorType, std::string>::c
     const auto &level = server.getEndstoneLevel()->getHandle();
     for (const auto &name : level.getActorFactory().generateActorIdentifierList()) {
         registry->cache_.emplace(ActorTypeId(name), std::make_unique<EndstoneActorType>(name));
+    }
+    return registry;
+}
+
+template <>
+std::vector<Identifier<Attribute>> EndstoneRegistry<Attribute, std::string>::identifiers() const
+{
+    std::vector<Identifier<Attribute>> keys;
+    keys.reserve(EndstoneAttribute::all().size());
+    for (const auto &id : EndstoneAttribute::all()) {
+        keys.emplace_back(id);
+    }
+    return keys;
+}
+
+template <>
+const std::string *EndstoneRegistry<Attribute, std::string>::getMinecraft(Identifier<Attribute> id) const
+{
+    return nullptr;
+}
+
+template <>
+std::unique_ptr<Registry<Attribute>> EndstoneRegistry<Attribute, std::string>::create()
+{
+    auto registry = std::make_unique<EndstoneRegistry>(
+        [](const auto &, const auto &) -> std::unique_ptr<Attribute> { return nullptr; });
+
+    for (const auto &id : EndstoneAttribute::all()) {
+        registry->cache_.emplace(id, std::make_unique<EndstoneAttribute>(id));
     }
     return registry;
 }

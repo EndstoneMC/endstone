@@ -188,7 +188,7 @@ class BlockType:
         """
 
     @staticmethod
-    def get(name: Identifier[BlockType] | str) -> BlockType:
+    def get(name: Identifier[BlockType] | str) -> BlockType | None:
         """
         Attempts to get the `BlockType` with the given name.
 
@@ -250,7 +250,7 @@ class Biome:
         """
 
     @staticmethod
-    def get(name: Identifier[Biome] | str) -> Biome:
+    def get(name: Identifier[Biome] | str) -> Biome | None:
         """
         Attempts to get the `Biome` with the given name.
 

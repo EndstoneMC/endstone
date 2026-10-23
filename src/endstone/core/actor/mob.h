@@ -80,21 +80,27 @@ public:
 
     [[nodiscard]] Nullable<AttributeInstance> getAttribute(AttributeId id) override
     {
-        auto attribute = Base::getHandle().getMutableAttribute({id});
-        if (!attribute.isValid()) {
+        const auto *attribute = Base::server_.template getRegistry<Attribute>().get(id);
+        if (attribute == nullptr) {
             return nullptr;
         }
-        return std::make_shared<EndstoneAttributeInstance>(Base::getHandle().getWeakEntity(),
-                                                           attribute.instance->getAttribute()->getName());
+        auto instance = Base::getHandle().getMutableAttribute({id});
+        if (!instance.isValid()) {
+            return nullptr;
+        }
+        return std::make_shared<EndstoneAttributeInstance>(
+            Base::getHandle().getWeakEntity(), instance.instance->getAttribute()->getName(), *attribute);
     }
 
     [[nodiscard]] std::vector<NotNull<AttributeInstance>> getAttributes() override
     {
+        const auto &registry = Base::server_.template getRegistry<Attribute>();
         std::vector<NotNull<AttributeInstance>> attributes;
         auto component = Base::getHandle().template getPersistentComponent<AttributesComponent>();
-        for (auto &attribute : component->attributes.getAttributes()) {
+        for (auto &instance : component->attributes.getAttributes()) {
+            const auto &attribute = registry.getOrThrow(instance.instance->getAttribute()->getName().getString());
             attributes.emplace_back(std::make_shared<EndstoneAttributeInstance>(
-                Base::getHandle().getWeakEntity(), attribute.instance->getAttribute()->getName()));
+                Base::getHandle().getWeakEntity(), instance.instance->getAttribute()->getName(), attribute));
         }
         return attributes;
     }

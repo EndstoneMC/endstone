@@ -14,14 +14,15 @@
 
 #pragma once
 
-#include "endstone/identifier.h"
+#include "endstone/registry.h"
 
 namespace endstone {
-using AttributeId = Identifier<class Attribute>;
+class Attribute;
+using AttributeId = Identifier<Attribute>;
 /**
- * All attribute types.
+ * Represents a type of attribute which may be present on a Mob.
  */
-class Attribute {
+class Attribute : public Registry<Attribute>::Type {
 public:
     /** Health of an entity. */
     static constexpr auto Health = AttributeId::minecraft("health");
@@ -51,7 +52,7 @@ public:
     static constexpr auto Luck = AttributeId::minecraft("luck");
 
     /** Strength with which an entity will jump. */
-    static constexpr auto JumpStrength = AttributeId::minecraft("jump_strength");
+    static constexpr auto JumpStrength = AttributeId::minecraft("horse.jump_strength");
 
     /** Hunger level of a player. */
     static constexpr auto PlayerHunger = AttributeId::minecraft("player.hunger");

@@ -19,7 +19,21 @@ namespace py = pybind11;
 namespace endstone::python {
 void init_attribute(py::module_ &m)
 {
-    py::class_<Attribute>(m, "Attribute", "All attribute types.")
+    def_registry_type(
+        py::class_<Attribute>(m, "Attribute", "Represents a type of attribute which may be present on a `Mob`."))
+        .def_property_readonly("id", &Attribute::getId, "The identifier of this attribute.")
+        .def_property_readonly("translation_key", &Attribute::getTranslationKey,
+                               "Raises, as Bedrock attributes carry no translation key.")
+        .def_static("get", &Attribute::get, py::arg("name"), R"doc(
+    Attempts to get the `Attribute` with the given name.
+
+    Args:
+        name: The identifier of the attribute (e.g. `minecraft:health`).
+
+    Returns:
+        The `Attribute`, or `None` if no attribute with that name exists.
+)doc",
+                    py::return_value_policy::reference)
         .def_property_readonly_static("HEALTH", id(Attribute::Health), "Health of an entity.")
         .def_property_readonly_static("FOLLOW_RANGE", id(Attribute::FollowRange),
                                       "Range at which an entity will follow others.")
@@ -63,9 +77,9 @@ void init_attribute(py::module_ &m)
         .finalize();
 
     modifier
-        .def(py::init<AttributeModifierId, float, AttributeModifier::Operation>(), py::arg("id"), py::arg("amount"),
+        .def(py::init<AttributeModifierId, float, AttributeModifier::Operation>(), py::arg("key"), py::arg("amount"),
              py::arg("operation"))
-        .def_property_readonly("id", &AttributeModifier::getId, "The id of this modifier.")
+        .def_property_readonly("key", &AttributeModifier::getKey, "The key of this modifier.")
         .def_property_readonly("amount", &AttributeModifier::getAmount,
                                "The amount by which this modifier will apply its operation.")
         .def_property_readonly("operation", &AttributeModifier::getOperation,
@@ -74,7 +88,8 @@ void init_attribute(py::module_ &m)
     py::classh<AttributeInstance>(
         m, "AttributeInstance",
         "Represents a mutable instance of an attribute and its associated modifiers and values.")
-        .def_property_readonly("type", &AttributeInstance::getType, "The attribute type pertaining to this instance.")
+        .def_property_readonly("attribute", &AttributeInstance::getAttribute, py::return_value_policy::reference,
+                               "The attribute pertaining to this instance.")
         .def_property("base_value", &AttributeInstance::getBaseValue, &AttributeInstance::setBaseValue,
                       "Base value of this instance before modifiers are applied.")
         .def_property("min_value", &AttributeInstance::getMinValue, &AttributeInstance::setMinValue,
@@ -84,14 +99,14 @@ void init_attribute(py::module_ &m)
         .def_property_readonly("value", &AttributeInstance::getValue,
                                "The value of this instance after all associated modifiers have been applied.")
         .def_property_readonly("modifiers", &AttributeInstance::getModifiers, "All modifiers present on this instance.")
-        .def("get_modifier", &AttributeInstance::getModifier, py::arg("id"), R"doc(
-    Gets the modifier with the corresponding id.
+        .def("get_modifier", &AttributeInstance::getModifier, py::arg("key"), R"doc(
+    Gets the modifier with the corresponding key.
 
     Args:
-        id: The id of the modifier.
+        key: The key of the modifier.
 
     Returns:
-        The modifier, or ``None`` if no modifier with the given id is present.
+        The modifier, or ``None`` if no modifier with the given key is present.
 )doc")
         .def("add_modifier", &AttributeInstance::addModifier, py::arg("modifier"), R"doc(
     Add a modifier to this instance.
@@ -113,11 +128,11 @@ void init_attribute(py::module_ &m)
         modifier: Modifier to remove.
 )doc")
         .def("remove_modifier", py::overload_cast<AttributeModifierId>(&AttributeInstance::removeModifier),
-             py::arg("id"), R"doc(
-    Remove a modifier with the corresponding id from this instance.
+             py::arg("key"), R"doc(
+    Remove a modifier with the corresponding key from this instance.
 
     Args:
-        id: The id of the modifier to remove.
+        key: The key of the modifier to remove.
 )doc");
 }
 }  // namespace endstone::python

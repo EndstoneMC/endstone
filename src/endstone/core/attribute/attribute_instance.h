@@ -37,12 +37,12 @@ namespace endstone::core {
 
 class EndstoneAttributeInstance : public AttributeInstance {
 public:
-    EndstoneAttributeInstance(WeakEntityRef entity, HashedString name)
-        : entity_(std::move(entity)), name_(std::move(name))
+    EndstoneAttributeInstance(WeakEntityRef entity, HashedString name, const Attribute &attribute)
+        : entity_(std::move(entity)), name_(std::move(name)), attribute_(attribute)
     {
     }
 
-    [[nodiscard]] AttributeId getType() const override { return name_.getString(); }
+    [[nodiscard]] const Attribute &getAttribute() const override { return attribute_; }
 
     [[nodiscard]] float getBaseValue() const override
     {
@@ -82,10 +82,10 @@ public:
         return modifiers;
     }
 
-    [[nodiscard]] std::optional<AttributeModifier> getModifier(AttributeModifierId id) const override
+    [[nodiscard]] std::optional<AttributeModifier> getModifier(AttributeModifierId key) const override
     {
         for (const auto &modifier : getHandle().instance->getModifiers()) {
-            if (AttributeModifierId{modifier.getName()} == id) {
+            if (AttributeModifierId{modifier.getName()} == key) {
                 return fromMinecraft(modifier);
             }
         }
@@ -104,12 +104,17 @@ public:
         handle.instance->addModifier(toMinecraft(modifier, /*serializable=*/false), handle.context);
     }
 
-    void removeModifier(const AttributeModifier &modifier) override { removeModifier(modifier.getId()); }
+    void removeModifier(const AttributeModifier &modifier) override { removeModifier(modifier.getKey()); }
 
-    void removeModifier(AttributeModifierId id) override
+    void removeModifier(AttributeModifierId key) override
     {
         const auto handle = getHandle();
-        handle.instance->removeModifier(idToMinecraftUuid(id), handle.context);
+        for (const auto &modifier : handle.instance->getModifiers()) {
+            if (AttributeModifierId{modifier.getName()} == key) {
+                handle.instance->removeModifier(modifier.getId(), handle.context);
+                return;
+            }
+        }
     }
 
 private:
@@ -167,9 +172,9 @@ private:
     // (addModifier vs addTransientModifier), mirroring Bukkit.
     static ::AttributeModifier toMinecraft(const AttributeModifier &modifier, bool serializable)
     {
-        const auto id = modifier.getId();
-        return {idToMinecraftUuid(id),
-                std::string(id),
+        const auto key = modifier.getKey();
+        return {idToMinecraftUuid(key),
+                std::string(key),
                 modifier.getAmount(),
                 toMinecraft(modifier.getOperation()),
                 AttributeOperands::OPERAND_CURRENT,
@@ -192,6 +197,7 @@ private:
 
     WeakEntityRef entity_;
     HashedString name_;
+    const Attribute &attribute_;
 };
 
 }  // namespace endstone::core
