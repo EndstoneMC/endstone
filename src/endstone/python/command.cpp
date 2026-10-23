@@ -62,6 +62,9 @@ PyCommand createCommandAlias(const std::string &name, const std::optional<std::s
 
 void init_command(py::module &m, py_class<CommandSender> &command_sender)
 {
+    bind_set<std::unordered_set<NotNull<CommandSender>>>(
+        m, "CommandSenderSet", "A mutable set of command senders, backed by the event that owns it.");
+
     command_sender
         .def(
             "send_message", [](const CommandSender &self, const Message &message) { self.sendMessage(message); },

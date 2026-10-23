@@ -633,6 +633,9 @@ void init_server(py::classh<Server> &server)
 
 void init_player(py::module_ &m, py_class<Player> &player)
 {
+    bind_set<std::unordered_set<NotNull<Player>>>(m, "PlayerSet",
+                                                  "A mutable set of players, backed by the event that owns it.");
+
     py::class_<Skin>(m, "Skin", "Represents a player skin.")
         .def(py::init<std::string, Image, std::optional<std::string>, std::optional<Image>>(), py::arg("id"),
              py::arg("image"), py::arg("cape_id") = py::none(), py::arg("cape_image") = py::none())

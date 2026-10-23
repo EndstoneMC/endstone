@@ -35,6 +35,8 @@ ALIASES = {
     # An opaque std::vector bound so Python can mutate the event's list in place; devs
     # should still see and use it as a plain list.
     "endstone.block.BlockList": "list[endstone.block.Block]",
+    "endstone.PlayerSet": "set[endstone.Player]",
+    "endstone.command.CommandSenderSet": "set[endstone.command.CommandSender]",
     "typing.SupportsFloat": "float",
     "typing.SupportsInt": "int",
     # pybind11 puts py::array_t<T>'s dtype in ndarray's shape slot.

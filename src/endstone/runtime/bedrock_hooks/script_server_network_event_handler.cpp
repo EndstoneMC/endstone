@@ -14,8 +14,8 @@
 
 #include "bedrock/scripting/event_handlers/script_server_network_event_handler.h"
 
-#include <algorithm>
 #include <format>
+#include <unordered_set>
 
 #include "bedrock/network/packet/text_packet.h"
 #include "endstone/core/player.h"
@@ -48,12 +48,12 @@ GameplayHandlerResult<CoordinatorResult> handleEvent(ChatEvent &event,
 
     const auto &server = endstone::core::EndstoneServer::getInstance();
     // populate recipient list
-    std::optional<std::vector<endstone::NotNull<endstone::Player>>> recipients = std::nullopt;
+    std::optional<std::unordered_set<endstone::NotNull<endstone::Player>>> recipients = std::nullopt;
     if (event.targets.has_value()) {
-        auto r = std::vector<endstone::NotNull<endstone::Player>>();
+        auto r = std::unordered_set<endstone::NotNull<endstone::Player>>();
         for (const auto &weak_ref : event.targets.value()) {
             if (const auto *receipt = WeakEntityRef(weak_ref).tryUnwrap<::Player>(); receipt) {
-                r.emplace_back(receipt->getEndstoneActor<endstone::core::EndstonePlayer>());
+                r.emplace(receipt->getEndstoneActor<endstone::core::EndstonePlayer>());
             }
         }
         recipients = r;
@@ -101,10 +101,9 @@ GameplayHandlerResult<CoordinatorResult> handleEvent(ChatEvent &event,
 
     // Message, sender or recipients have been changed, send new text messages and cancel the original event to avoid
     // double sending
-    const auto final_recipients = e->getRecipients();
-    const auto recipients_changed = !std::ranges::equal(
-        final_recipients, original_recipients, [](const auto &a, const auto &b) { return a.get() == b.get(); });
-    if (e->getMessage() != original_message || e->getPlayer() != original_player || recipients_changed) {
+    const auto &final_recipients = e->getRecipients();
+    if (e->getMessage() != original_message || e->getPlayer() != original_player ||
+        final_recipients != original_recipients) {
         player = &e->getPlayer().cast<endstone::core::EndstonePlayer>()->getHandle();
         for (const auto &recipient : final_recipients) {
             auto *handle = recipient.cast<endstone::core::EndstonePlayer>()->tryGetHandle();

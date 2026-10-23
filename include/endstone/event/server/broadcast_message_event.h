@@ -59,6 +59,13 @@ public:
      */
     [[nodiscard]] const std::unordered_set<NotNull<CommandSender>> &getRecipients() const { return recipients_; }
 
+    /**
+     * Gets a set of recipients that this broadcast message will be displayed to.
+     *
+     * @return All CommandSenders who will see this broadcast message
+     */
+    [[nodiscard]] std::unordered_set<NotNull<CommandSender>> &getRecipients() { return recipients_; }
+
 private:
     Message message_;
     std::unordered_set<NotNull<CommandSender>> recipients_;

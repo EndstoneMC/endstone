@@ -16,8 +16,8 @@
 
 #include <optional>
 #include <string>
+#include <unordered_set>
 #include <utility>
-#include <vector>
 
 #include "endstone/event/cancellable.h"
 #include "endstone/event/player/player_event.h"
@@ -30,7 +30,8 @@ namespace endstone {
 class PlayerChatEvent final : public Cancellable<PlayerEvent> {
 public:
     ENDSTONE_EVENT(PlayerChatEvent);
-    explicit PlayerChatEvent(const NotNull<Player> &player, std::string message, std::optional<std::vector<NotNull<Player>>> recipients,
+    explicit PlayerChatEvent(const NotNull<Player> &player, std::string message,
+                             std::optional<std::unordered_set<NotNull<Player>>> recipients,
                              std::string format = "<{0}> {1}")
         : Cancellable(player), message_(std::move(message)), format_(std::move(format)),
           recipients_(std::move(recipients))
@@ -78,27 +79,39 @@ public:
     /**
      * Gets a set of recipients that this chat message will be displayed to.
      *
+     * The set returned may auto-populate on access.
+     *
      * @return All Players who will see this chat message
      */
-    [[nodiscard]] std::vector<NotNull<Player>> getRecipients() const
+    [[nodiscard]] const std::unordered_set<NotNull<Player>> &getRecipients() const
     {
         if (!recipients_) {
-            recipients_ = player_->getServer().getOnlinePlayers();
+            const auto players = player_->getServer().getOnlinePlayers();
+            recipients_.emplace(players.begin(), players.end());
         }
         return recipients_.value();
     }
 
     /**
-     * Sets the players this chat message will be displayed to.
+     * Gets a set of recipients that this chat message will be displayed to.
      *
-     * @param recipients The players who will see this chat message
+     * The set returned may auto-populate on access.
+     *
+     * @return All Players who will see this chat message
      */
-    void setRecipients(std::vector<NotNull<Player>> recipients) { recipients_ = std::move(recipients); }
+    [[nodiscard]] std::unordered_set<NotNull<Player>> &getRecipients()
+    {
+        if (!recipients_) {
+            const auto players = player_->getServer().getOnlinePlayers();
+            recipients_.emplace(players.begin(), players.end());
+        }
+        return recipients_.value();
+    }
 
 private:
     std::string message_;
     std::string format_;
-    mutable std::optional<std::vector<NotNull<Player>>> recipients_;
+    mutable std::optional<std::unordered_set<NotNull<Player>>> recipients_;
 };
 
 }  // namespace endstone

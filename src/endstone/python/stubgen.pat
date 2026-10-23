@@ -162,4 +162,6 @@
 # Bound only so the explode block list is mutable in place; ALIASES maps every
 # reference to list[Block], so the class itself must not appear in the stubs.
 ^endstone\.block\.BlockList$:
+^endstone\.PlayerSet$:
+^endstone\.command\.CommandSenderSet$:
 

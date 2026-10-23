@@ -396,11 +396,11 @@ void init_event(py::module_ &m, py::classh<Event, PyEvent> &event)
 
     See the format string syntax at https://en.cppreference.com/w/cpp/utility/format/spec.html.
 )doc")
-        .def_property("recipients", &PlayerChatEvent::getRecipients, &PlayerChatEvent::setRecipients, R"doc(
-    The `Player`s who will see this chat message.
+        .def_property_readonly("recipients", py::overload_cast<>(&PlayerChatEvent::getRecipients),
+                               py::return_value_policy::reference_internal, R"doc(
+    The set of `Player`s who will see this chat message.
 
-    Assign a new list to change who receives it. The list this returns is a copy, so changing it in place has no
-    effect.
+    The set may auto-populate on access.
 )doc");
     bind_event<PlayerCommandEvent, PlayerEvent, ICancellable>(m, "PlayerCommandEvent",
                                                               "Called whenever a player runs a command.")
@@ -763,7 +763,8 @@ void init_event(py::module_ &m, py::classh<Event, PyEvent> &event)
 )doc")
         .def_property("message", &BroadcastMessageEvent::getMessage, &BroadcastMessageEvent::setMessage,
                       "The message to broadcast.")
-        .def_property_readonly("recipients", &BroadcastMessageEvent::getRecipients,
+        .def_property_readonly("recipients", py::overload_cast<>(&BroadcastMessageEvent::getRecipients),
+                               py::return_value_policy::reference_internal,
                                "The set of `CommandSender`s who will see this broadcast message.");
     bind_event<MapInitializeEvent, ServerEvent>(m, "MapInitializeEvent", "Called when a map is initialized.")
         .def_property_readonly("map", &MapInitializeEvent::getMap, py::return_value_policy::reference,

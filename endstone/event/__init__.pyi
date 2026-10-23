@@ -1442,16 +1442,12 @@ class PlayerChatEvent(PlayerEvent, Cancellable):
     @format.setter
     def format(self, arg1: str) -> None: ...
     @property
-    def recipients(self) -> list[Player]:
+    def recipients(self) -> set[Player]:
         """
-        The `Player`s who will see this chat message.
+        The set of `Player`s who will see this chat message.
 
-        Assign a new list to change who receives it. The list this returns is a copy, so changing it in place has no
-        effect.
+        The set may auto-populate on access.
         """
-
-    @recipients.setter
-    def recipients(self, arg1: list[Player]) -> None: ...
 
 class PlayerCommandEvent(PlayerEvent, Cancellable):
     """

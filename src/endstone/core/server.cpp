@@ -701,7 +701,7 @@ void EndstoneServer::broadcast(const Message &message, const std::string &permis
         return;
     }
 
-    for (const auto &recipient : recipients) {
+    for (const auto &recipient : event->getRecipients()) {
         recipient->sendMessage(event->getMessage());
     }
 }
