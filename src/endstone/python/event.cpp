@@ -673,8 +673,15 @@ void init_event(py::module_ &m, py::classh<Event, PyEvent> &event)
                       "The message to send to all online players for this skin change.");
     bind_event<PlayerTeleportEvent, PlayerMoveEvent>(
         m, "PlayerTeleportEvent", "Called when a player is teleported from one location to another.");
-    bind_event<PlayerPortalEvent, PlayerTeleportEvent>(
-        m, "PlayerPortalEvent", "Called when a player is about to teleport because it is in contact with a portal.");
+    bind_event<PlayerPortalEvent, PlayerTeleportEvent>(m, "PlayerPortalEvent", R"doc(
+    Called when a player is about to teleport because it is in contact with a portal.
+
+    For a nether portal, the destination is initially the player's position scaled for the target dimension: the point
+    the server starts its search for an exit portal from. The player is placed in the closest exit portal to it, and
+    one is built near it if there is none. Setting a different destination moves that search.
+
+    For an end portal, the destination is the exact location the player is sent to.
+)doc");
     bind_event<PlayerPickupArrowEvent, PlayerEvent, ICancellable>(
         m, "PlayerPickupArrowEvent", "Called when a player picks up an arrow or a thrown trident from the ground.")
         .def_property_readonly("arrow", &PlayerPickupArrowEvent::getArrow, "The arrow picked up by the player.");

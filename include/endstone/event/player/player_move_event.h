@@ -16,6 +16,7 @@
 
 #include <utility>
 
+#include "endstone/check.h"
 #include "endstone/event/cancellable.h"
 #include "endstone/event/player/player_event.h"
 #include "endstone/level/location.h"
@@ -46,8 +47,13 @@ public:
      * Sets the location to mark as where the player moved from.
      *
      * @param from New location to mark as the players previous location
+     * @throws std::invalid_argument if the location has no dimension
      */
-    void setFrom(const Location &from) { from_ = from; }
+    void setFrom(const Location &from)
+    {
+        Preconditions::checkArgument(static_cast<bool>(from.getDimension()), "Location has no dimension.");
+        from_ = from;
+    }
 
     /**
      * Gets the location this player moved to.
@@ -60,8 +66,13 @@ public:
      * Sets the location that this player will move to.
      *
      * @param to New Location this player will move to
+     * @throws std::invalid_argument if the location has no dimension
      */
-    void setTo(const Location &to) { to_ = to; }
+    void setTo(const Location &to)
+    {
+        Preconditions::checkArgument(static_cast<bool>(to.getDimension()), "Location has no dimension.");
+        to_ = to;
+    }
 
     Location from_;
     Location to_;

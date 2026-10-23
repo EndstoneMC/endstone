@@ -304,16 +304,18 @@ void Actor::_setDimensionTransitionComponent(DimensionType from_id, DimensionTyp
 {
     auto axis = PortalAxis::Unknown;
     if ((from_id == VanillaDimensions::Nether || to_id == VanillaDimensions::Nether) &&
-        from_id != VanillaDimensions::TheEnd) {
+        to_id != VanillaDimensions::TheEnd) {
         const auto component = getPersistentComponent<PortalCooldownDurationComponent>();
         component->current_portal_cooldown_ticks = portal_cooldown;
         if (component->portal_block_pos != BlockPos::MAX) {
             const auto &portal = getDimensionBlockSource().getBlock(component->portal_block_pos);
             axis = portal.getState<PortalAxis>(VanillaStateIds::PortalAxis);
+            component->portal_block_pos = BlockPos::MAX;
         }
     }
     auto &component = entity_context_.getOrAddComponent<DimensionTransitionComponent>();
     component.portal_entrance_position = getPosition();
+    component.portal_entrance_dimension = from_id;
     component.portal_entrance_axis = axis;
     component.existing_target_position.reset();
 }

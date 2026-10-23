@@ -165,6 +165,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - **BREAKING**: The `endstone.metrics.charts`, `endstone.metrics.base` and `endstone.metrics.config` modules are gone; import the chart classes and `Metrics` from `endstone.metrics`.
 - A plugin's commands are registered as it is enabled, so a plugin enabled at `STARTUP` can look up and dispatch them from `on_enable`.
 - `Player.kick()` called from another thread raises an error, as in Paper.
+- `PlayerMoveEvent.from_location` and `to_location` reject a location without a dimension, as in Paper.
 
 #### Platform
 
@@ -222,6 +223,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Fixed `Plugin.default_permission` never reaching the entries in `Plugin.permissions` that set no `default` of their own.
 - Fixed `PlayerChatEvent.message` and `PlayerChatEvent.player` being ignored unless the format was changed as well.
 - Fixed adding or removing recipients in `PlayerChatEvent.recipients` or `BroadcastMessageEvent.recipients` having no effect on who receives the message.
+- Fixed `PlayerPortalEvent.to_location` being ignored, so a trip through a nether portal now looks for or builds its exit portal at the location a listener sets, as in Paper.
 - Fixed a cancelled `PlayerLoginEvent` still calling `PlayerQuitEvent` and announcing that the player left.
 - Fixed `Block.biome` reading the wrong part of a chunk, so it reported a biome that has nothing to do with the block, and could crash the server. Introduced in 0.11.7 along with BDS 1.26.40 support.
 - Fixed `ItemStack.set_item_meta()` accepting an item meta that belongs to a different kind of item.

@@ -20,6 +20,7 @@
 #include <unordered_set>
 #include <vector>
 
+#include "bedrock/entity/components/dimension_transition_component.h"
 #include "bedrock/network/packet.h"
 #include "bedrock/network/packet/inventory_slot_packet.h"
 #include "bedrock/network/packet/item_stack_response_packet.h"
@@ -29,10 +30,12 @@
 #include "bedrock/world/level/chunk/chunk_view_source.h"
 #include "bedrock/world/level/chunk/level_chunk.h"
 #include "bedrock/world/level/chunk/level_chunk_event_manager.h"
+#include "bedrock/world/level/dimension/vanilla_dimensions.h"
 #include "bedrock/world/level/level.h"
 #include "endstone/core/actor/actor.h"
 #include "endstone/core/block/block.h"
 #include "endstone/core/entity/components/flag_components.h"
+#include "endstone/core/level/dimension.h"
 #include "endstone/core/level/location.h"
 #include "endstone/core/player.h"
 #include "endstone/core/plugin/plugin_manager.h"
@@ -307,19 +310,50 @@ void ServerPlayer::changeDimension(DimensionType to_id)
         getLevel().getPlayerDimensionTransferManager()->getPlayerDimensionTransferConnector())
         .setTransitionLocation(*this, request, *to_dimension.unwrap());
 
+    const auto finds_exit_portal =
+        request.from_dimension != VanillaDimensions::TheEnd && request.to_dimension != VanillaDimensions::TheEnd;
+    const auto search_start =
+        finds_exit_portal
+            ? to_dimension.unwrap()->translatePosAcrossDimension(request.from_position, request.from_dimension)
+            : request.to_position;
     const auto from_location =
         endstone::core::EndstoneLocation::toEndstone(request.from_position, request.from_dimension);
-    const auto to_location = endstone::core::EndstoneLocation::toEndstone(request.to_position, request.to_dimension);
+    const auto to_location = endstone::core::EndstoneLocation::toEndstone(search_start, request.to_dimension);
     const auto e = std::make_shared<endstone::PlayerPortalEvent>(player, from_location, to_location);
     server.getPluginManager().callEvent(e);
-    if (e->isCancelled()) {
+    if (e->isCancelled() || !e->getTo().isDimensionLoaded() || !isAlive()) {
         return;
     }
 
-    ENDSTONE_HOOK_CALL_ORIGINAL(&ServerPlayer::changeDimension, this, to_id);
-    // request.to_position = Vec3::ZERO;
-    // _setDimensionTransitionComponent(getDimensionId(), to_id, 300);
-    // getLevel().requestPlayerChangeDimension(*this, std::move(request));
+    const auto &to = e->getTo();
+    if (to == to_location) {
+        ENDSTONE_HOOK_CALL_ORIGINAL(&ServerPlayer::changeDimension, this, to_id);
+        return;
+    }
+
+    const endstone::NotNull<endstone::Dimension> to_endstone_dimension = to.getDimension();
+    const auto target_id =
+        to_endstone_dimension.cast<endstone::core::EndstoneDimension>()->getHandle().getDimensionId();
+    const Vec3 target{to.getX(), to.getY(), to.getZ()};
+    if (!finds_exit_portal) {
+        if (target_id == request.from_dimension) {
+            addOrRemoveComponent<endstone::core::InternalTeleportFlagComponent>(true);
+        }
+        player->teleport(to);
+        return;
+    }
+
+    _setDimensionTransitionComponent(request.from_dimension, target_id, 300);
+    auto &transition = getEntity().getOrAddComponent<DimensionTransitionComponent>();
+    transition.portal_entrance_position = target;
+    transition.portal_entrance_dimension = target_id;
+    if (target_id == request.from_dimension) {
+        addOrRemoveComponent<endstone::core::InternalTeleportFlagComponent>(true);
+        teleportTo(target, true, 3, 1, false);
+        return;
+    }
+    getLevel().requestPlayerChangeDimension(
+        *this, ChangeDimensionRequest(request.from_dimension, target_id, request.from_position, target, false, false));
 }
 
 void ServerPlayer::sendNetworkPacket(Packet &packet) const

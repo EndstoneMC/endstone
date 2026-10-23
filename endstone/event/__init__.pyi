@@ -2436,6 +2436,12 @@ class PlayerTeleportEvent(PlayerMoveEvent):
 class PlayerPortalEvent(PlayerTeleportEvent):
     """
     Called when a player is about to teleport because it is in contact with a portal.
+
+    For a nether portal, the destination is initially the player's position scaled for the target dimension: the point
+    the server starts its search for an exit portal from. The player is placed in the closest exit portal to it, and
+    one is built near it if there is none. Setting a different destination moves that search.
+
+    For an end portal, the destination is the exact location the player is sent to.
     """
     @property
     def is_cancelled(self) -> bool:
