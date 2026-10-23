@@ -21,10 +21,7 @@ public:
     CommandSoftEnumRegistry() = default;
     explicit CommandSoftEnumRegistry(CommandRegistry *registry) : registry_(registry) {}
 
-#ifdef __linux__
-    CommandSoftEnumRegistry(const CommandSoftEnumRegistry &other) { registry_ = other.registry_; };
-    CommandSoftEnumRegistry &operator=(const CommandSoftEnumRegistry &other) = default;
-#endif
+    ~CommandSoftEnumRegistry();
 
 private:
     CommandRegistry *registry_ = nullptr;

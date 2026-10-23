@@ -66,6 +66,7 @@ add_library(bedrock STATIC
         server/commands/command_origin_loader.cpp
         server/commands/command_output.cpp
         server/commands/command_registry.cpp
+        server/commands/command_soft_enum_registry.cpp
         server/commands/command_utils.cpp
         server/commands/minecraft_commands.cpp
         server/commands/standard/teleport_command.cpp
