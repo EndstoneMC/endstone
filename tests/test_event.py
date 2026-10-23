@@ -1,4 +1,4 @@
-from endstone.event import Cancellable, Event
+from endstone.event import Cancellable, Event, PlayerChatEvent, PlayerJoinEvent
 
 
 class CustomEvent(Event):
@@ -19,6 +19,8 @@ class TestCustomEvent:
     def test_not_cancellable(self):
         event = CustomEvent()
         assert not hasattr(event, "cancel")
+        assert not isinstance(event, Cancellable)
+        assert not issubclass(CustomEvent, Cancellable)
 
     def test_not_async(self):
         event = CustomEvent()
@@ -37,6 +39,8 @@ class TestCancellableCustomEvent:
     def test_is_cancellable(self):
         event = CancellableCustomEvent()
         assert hasattr(event, "cancel")
+        assert isinstance(event, Cancellable)
+        assert issubclass(CancellableCustomEvent, Cancellable)
 
     def test_default_not_cancelled(self):
         event = CancellableCustomEvent()
@@ -63,3 +67,15 @@ class TestCancellableCustomEvent:
         assert event.is_asynchronous
         event.cancel()
         assert event.is_cancelled
+
+
+class TestBuiltinEvents:
+    def test_cancellable(self):
+        assert issubclass(PlayerChatEvent, Cancellable)
+
+    def test_not_cancellable(self):
+        assert not issubclass(PlayerJoinEvent, Cancellable)
+
+    def test_custom_cancellable_is_not_a_builtin(self):
+        assert not issubclass(CancellableCustomEvent, PlayerChatEvent)
+        assert not isinstance(CancellableCustomEvent(), PlayerChatEvent)

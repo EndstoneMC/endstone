@@ -3,6 +3,8 @@ from typing import TypeVar, overload
 
 import lazy_loader as lazy
 
+from endstone._python.event import Cancellable as _Cancellable
+from endstone._python.event import Event as _Event
 from endstone._python.event import EventPriority
 
 _F = TypeVar("_F", bound=Callable[..., None])
@@ -29,7 +31,19 @@ def event_handler(func=None, *, priority: EventPriority = EventPriority.NORMAL, 
     return decorator
 
 
-class Cancellable:
+class _CancellableMeta(type(_Event)):
+    def __instancecheck__(cls, instance):
+        if cls is Cancellable and isinstance(instance, _Cancellable):
+            return True
+        return super().__instancecheck__(instance)
+
+    def __subclasscheck__(cls, subclass):
+        if cls is Cancellable and issubclass(subclass, _Cancellable):
+            return True
+        return super().__subclasscheck__(subclass)
+
+
+class Cancellable(metaclass=_CancellableMeta):
     """
     Represents an event that may be cancelled by a plugin or the server.
     """
