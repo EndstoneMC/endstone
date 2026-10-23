@@ -24,6 +24,9 @@ class EndstoneFurnace : public EndstoneContainerBase<Furnace> {
 public:
     EndstoneFurnace(const EndstoneBlock &block, ::FurnaceBlockActor &furnace, bool use_snapshot);
 
+    using EndstoneContainerBase::update;
+    bool update(bool force, bool apply_physics) override;
+
     [[nodiscard]] int getBurnTime() const override;
     void setBurnTime(int burn_time) override;
     [[nodiscard]] int getCookTime() const override;

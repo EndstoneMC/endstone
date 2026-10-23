@@ -25,6 +25,10 @@
 #include "bedrock/world/item/item_stack.h"
 #include "bedrock/world/level/block/actor/vanilla_block_actor.h"
 
+namespace endstone::core {
+class EndstoneFurnace;  // Endstone
+}  // namespace endstone::core
+
 class FurnaceBlockActor : public VanillaBlockActor, public Container {
 public:
     static constexpr BlockActorType TypeId = BlockActorType::Furnace;
@@ -44,6 +48,8 @@ public:
     [[nodiscard]] const ItemInstance &getLastFuelItem() const { return last_fuel_item_; }
 
 private:
+    friend class endstone::core::EndstoneFurnace;  // Endstone
+
     enum : unsigned int {
         SLOT_INGREDIENT = 0,
         SLOT_FUEL = 1,

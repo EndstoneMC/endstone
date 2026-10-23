@@ -135,6 +135,7 @@ add_library(bedrock STATIC
         world/level/block/block_type.cpp
         world/level/block/campfire_block.cpp
         world/level/block/fire_block.cpp
+        world/level/block/furnace_block.cpp
         world/level/block/liquid_block.cpp
         world/level/block/resource_drops_context.cpp
         world/level/block/vanilla_block_type_ids.cpp
