@@ -268,7 +268,7 @@ protected:
 
 public:
     virtual void readAdditionalSaveData(CompoundTag const &, DataLoadHelper &) = 0;
-    virtual void addAdditionalSaveData(CompoundTag &) = 0;
+    virtual void addAdditionalSaveData(CompoundTag &) const = 0;
 
 public:
     Actor(ILevel &, EntityContext &);

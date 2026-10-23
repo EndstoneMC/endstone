@@ -25,7 +25,7 @@ public:
     ItemActor(ActorDefinitionGroup *, const ActorDefinitionIdentifier &, EntityContext &);
     void reloadHardcoded(ActorInitializationMethod, const VariantParameterList &) override = 0;
     ~ItemActor() override;
-    virtual void postNormalTick();
+    void postNormalTick();
     void playerTouch(Player &) override;
     std::unique_ptr<Packet> tryCreateAddActorPacket() override;
     ActorUniqueID getSourceUniqueID() const override;
@@ -36,7 +36,7 @@ public:
 
 protected:
     ActorHurtResult _hurt(const ActorDamageSource &, float, bool, bool) override;
-    virtual void addAdditionalSaveData(CompoundTag &) const;
+    void addAdditionalSaveData(CompoundTag &) const override;
     void readAdditionalSaveData(const CompoundTag &, DataLoadHelper &) override;
 
 public:
