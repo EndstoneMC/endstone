@@ -11,7 +11,7 @@
 
 namespace endstone::runtime {
 
-static constexpr std::array<std::pair<std::string_view, std::size_t>, 121> symbols = {{
+static constexpr std::array<std::pair<std::string_view, std::size_t>, 120> symbols = {{
     {"BlockState::StateListNode::mHead", 257928656},
     {"Enchant::mEnchants", 257765312},
     {"MobEffect::mMobEffects", 257859136},
@@ -163,7 +163,6 @@ static constexpr std::array<std::pair<std::string_view, std::size_t>, 121> symbo
     {"_ZN6Player9addLevelsEi", 196461040},
     // PlayerLocationSender
     {"_ZN20PlayerLocationSender24_forEachClientPlayerPairERKNSt3__16vectorI13WeakEntityRefNS0_9allocatorIS2_EEEENS0_8functionIFvRK29UserEntityIdentifierComponentRK6PlayerSE_EEE", 209777232},
-    {"_ZN20PlayerLocationSender25_shouldSendPositionPacketERK4Vec313DimensionTypebRKNSt3__18optionalIS0_EERKNS_18PlayerLocationDataEf", 209778816},
     // PlayerTickManager
     {"_ZN17PlayerTickManager23processPlayerNetworkingERK4Tick", 209786096},
     // PushableByEntityUtility

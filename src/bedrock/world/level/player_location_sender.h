@@ -54,18 +54,11 @@ private:
     void _updatePlayerData(const Player &player);
     void _checkPlayerPairAndMaybeSendPacket(const UserEntityIdentifierComponent &user_identifier,
                                             const Player &viewing_player, const Player &observed_player);
-#ifdef _WIN32
     [[nodiscard]] bool _shouldSendPositionPacket(const Vec3 &viewing_player_position,
                                                  const DimensionType &viewing_player_dimension,
                                                  bool viewing_player_is_spectator,
                                                  const OptionalPosition &observed_player_pos_prev,
                                                  const PlayerLocationData &observed_player_position_new) const;
-#elif __linux__
-    [[nodiscard]] static bool _shouldSendPositionPacket(
-        const Vec3 &viewing_player_position, DimensionType viewing_player_dimension, bool viewing_player_is_spectator,
-        const OptionalPosition &observed_player_pos_prev, const PlayerLocationData &observed_player_position_new,
-        float simulation_distance);  // Endstone: LTO promoted the parameters
-#endif
     void _setCurrentPlayerLocationData(const ActorUniqueID &player_id, const PlayerLocationData &data);
     struct ActorUniqueIDCompare {
         bool operator()(const ActorUniqueID &lhs, const ActorUniqueID &rhs) const;
