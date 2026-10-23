@@ -46,7 +46,7 @@ class EntityId {
 
 public:
     EntityId() = default;
-    EntityId(const EntityId &) = default;
+    constexpr EntityId(const EntityId &other) : raw_id_(other.raw_id_) {}
 
 private:
     underlying_type raw_id_ = -1;
