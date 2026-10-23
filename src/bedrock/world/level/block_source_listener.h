@@ -14,6 +14,7 @@
 
 #pragma once
 
+#include "bedrock/forward.h"
 #include "bedrock/world/level/block_pos.h"
 
 enum class BlockChangedEventTarget : std::uint8_t {
@@ -21,6 +22,9 @@ enum class BlockChangedEventTarget : std::uint8_t {
     NeighborBlock = 1,
 };
 
+class Actor;
+class Block;
+class BlockActor;
 class BlockSource;
 
 class BlockSourceListener {

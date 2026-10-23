@@ -14,30 +14,48 @@
 
 #pragma once
 
+#include "bedrock/world/level/block_source_listener.h"
 #include "bedrock/world/level/gameplay_user_manager.h"
 #include "bedrock/world/level/level_interface.h"
+#include "bedrock/world/level/world_registries_provider.h"
 
 namespace endstone::core {
 class EndstoneServer;
 }
 
-class Level : public ILevel {
+class Level : public ILevel, public BlockSourceListener, public IWorldRegistriesProvider {
 public:
+    ~Level() override;
+    [[nodiscard]] ActorDefinitionGroup *getEntityDefinitions() const override;
+    virtual ArmorTrimUnloader *getArmorTrimUnloader() = 0;
+    [[nodiscard]] const BiomeRegistry &getBiomeRegistry() const override;
+    BiomeRegistry &getBiomeRegistry() override;
+    [[nodiscard]] const BlockPalette &getBlockPalette() const override;
+    BlockPalette &getBlockPalette() override;
+    [[nodiscard]] const FeatureRegistry &getFeatureRegistry() const override;
+    FeatureRegistry &getFeatureRegistry() override;
+    [[nodiscard]] const FeatureTypeFactory &getFeatureTypeFactory() const override;
+    FeatureTypeFactory &getFeatureTypeFactory() override;
+    [[nodiscard]] const JigsawStructureRegistry &getJigsawStructureRegistry() const override;
+    JigsawStructureRegistry &getJigsawStructureRegistry() override;
+    [[nodiscard]] const StructureSpawnRegistry &getStructureSpawnRegistry() const override;
+    StructureSpawnRegistry &getStructureSpawnRegistry() override;
+    [[nodiscard]] const Bedrock::NotNullNonOwnerPtr<StructureManager> getStructureManager() const override;
+    Bedrock::NotNullNonOwnerPtr<StructureManager> getStructureManager() override;
+    [[nodiscard]] const BiomeComponentFactory &getBiomeComponentFactory() const override;
+    BiomeComponentFactory &getBiomeComponentFactory() override;
+    [[nodiscard]] const SurfaceBuilderRegistry &getSurfaceBuilderRegistry() const override;
+    SurfaceBuilderRegistry &getSurfaceBuilderRegistry() override;
+    [[nodiscard]] const DimensionOwnerFactory &getDimensionFactory() const override;
+    DimensionOwnerFactory &getDimensionFactory() override;
     ENDSTONE_HOOK void tick() override;
     // ENDSTONE_HOOK void onChunkDiscarded(LevelChunk &);
     // ENDSTONE_HOOK void onChunkLoaded(ChunkSource &, LevelChunk &);
-    [[nodiscard]] ENDSTONE_HOOK int getActivePlayerCount() const override;
-
-    virtual ArmorTrimUnloader *getArmorTrimUnloader() = 0;
     [[nodiscard]] virtual const PlayerSleepManager &getPlayerSleepManager() const = 0;
     virtual PlayerSleepManager &getPlayerSleepManager() = 0;
-
-    // #blameMojang - Linux build has extra virtual methods not in Windows build.
-    // Same class, different vtable layout per platform. Why? Ask Mojang.
-#ifdef __linux__
-    virtual void onSourceCreated(BlockSource &) = 0;
-    virtual void onSourceDestroyed(BlockSource &) = 0;
-#endif
+    [[nodiscard]] ENDSTONE_HOOK int getActivePlayerCount() const override;
+    void onSourceCreated(BlockSource &) override;
+    void onSourceDestroyed(BlockSource &) override;
 
 protected:
     virtual void _subTick() = 0;
