@@ -2117,9 +2117,12 @@ class PlayerMoveEvent(PlayerEvent, Cancellable):
     @to_location.setter
     def to_location(self, arg1: Location) -> None: ...
 
-class PlayerJumpEvent(PlayerMoveEvent):
+class PlayerJumpEvent(PlayerEvent, Cancellable):
     """
     Called when a player jumps.
+
+    If this event is cancelled, the player will be moved back to the location given by `from_location`. This will not
+    call an event.
     """
     @property
     def is_cancelled(self) -> bool:
@@ -2136,6 +2139,23 @@ class PlayerJumpEvent(PlayerMoveEvent):
         Cancel this event.
 
         A cancelled event will not be executed in the server, but will still pass to other plugins.
+        """
+
+    @property
+    def from_location(self) -> Location:
+        """
+        The location this player jumped from.
+        """
+
+    @from_location.setter
+    def from_location(self, arg1: Location) -> None: ...
+    @property
+    def to_location(self) -> Location:
+        """
+        The location this player jumped to.
+
+        This information is based on what the client sends, it typically has little relation to the arc of the jump at any
+        given point.
         """
 
 class PlayerOpenSignEvent(PlayerEvent, Cancellable):

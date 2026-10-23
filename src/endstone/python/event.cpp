@@ -576,7 +576,20 @@ void init_event(py::module_ &m, py::classh<Event, PyEvent> &event)
                       "The location that this player moved from.")
         .def_property("to_location", &PlayerMoveEvent::getTo, &PlayerMoveEvent::setTo,
                       "The location that this player moved to.");
-    bind_event<PlayerJumpEvent, PlayerMoveEvent>(m, "PlayerJumpEvent", "Called when a player jumps.");
+    bind_event<PlayerJumpEvent, PlayerEvent, ICancellable>(m, "PlayerJumpEvent", R"doc(
+    Called when a player jumps.
+
+    If this event is cancelled, the player will be moved back to the location given by `from_location`. This will not
+    call an event.
+)doc")
+        .def_property("from_location", &PlayerJumpEvent::getFrom, &PlayerJumpEvent::setFrom,
+                      "The location this player jumped from.")
+        .def_property_readonly("to_location", &PlayerJumpEvent::getTo, py::return_value_policy::copy, R"doc(
+    The location this player jumped to.
+
+    This information is based on what the client sends, it typically has little relation to the arc of the jump at any
+    given point.
+)doc");
     auto player_open_sign_event = bind_event<PlayerOpenSignEvent, PlayerEvent, ICancellable>(m, "PlayerOpenSignEvent",
                                                                                              R"doc(
     Called when a player begins editing a sign's text.

@@ -157,6 +157,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - **BREAKING**: `Block.capture_state()` now captures a snapshot, matching Bukkit. Edits to the state are kept in the snapshot and only reach the world when `update()` is called. Code that sets a sign's lines and never calls `update()` still compiles and now does nothing; add the `update()` call, or capture with `capture_state(use_snapshot=False)` to keep writing straight through to the block entity.
 - **BREAKING**: `ActorExplodeEvent.block_list` and `BlockExplodeEvent.block_list` hand back a live `BlockList` instead of a copy, so `remove()`, `append()`, `pop()` and `del` change what actually explodes. `remove()` matches on handle identity.
 - **BREAKING**: `PlayerChatEvent.recipients` and `BroadcastMessageEvent.recipients` are live, mutable sets of handles.
+- **BREAKING**: `PlayerJumpEvent` no longer extends `PlayerMoveEvent`, and its `to_location` is read-only, as in Paper.
 - **BREAKING**: `ActorDeathEvent` is now called for player deaths as well as every other mob. A listener that assumed it only saw non-player mobs should check `actor.type` or listen for `PlayerDeathEvent`.
 - `Block.set_type`, `BlockState.type`, `Server.create_block_data` and `Inventory.contains`/`contains_at_least`/`all`/`first`/`remove` take an `Identifier` (e.g. `BlockType.AIR`). Plain `"namespace:key"` strings are still accepted.
 - `str()` on `BlockType`, `Enchantment` and `ItemType` returns a plain `"namespace:key"` string instead of the underlying `Identifier` repr.
@@ -223,6 +224,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Fixed `Plugin.default_permission` never reaching the entries in `Plugin.permissions` that set no `default` of their own.
 - Fixed `PlayerChatEvent.message` and `PlayerChatEvent.player` being ignored unless the format was changed as well.
 - Fixed adding or removing recipients in `PlayerChatEvent.recipients` or `BroadcastMessageEvent.recipients` having no effect on who receives the message.
+- Fixed a cancelled `PlayerJumpEvent` ignoring the `from_location` a listener set.
 - Fixed `PlayerPortalEvent.to_location` being ignored, so a trip through a nether portal now looks for or builds its exit portal at the location a listener sets, as in Paper.
 - Fixed a cancelled `PlayerLoginEvent` still calling `PlayerQuitEvent` and announcing that the player left.
 - Fixed `Block.biome` reading the wrong part of a chunk, so it reported a biome that has nothing to do with the block, and could crash the server. Introduced in 0.11.7 along with BDS 1.26.40 support.

@@ -520,8 +520,10 @@ void EndstonePacketHandler::handle(PlayerAuthInputPacket &packet)
         const auto e = std::make_shared<PlayerJumpEvent>(endstone_player, from, to);
         plugin_manager.callEvent(e);
         if (e->isCancelled()) {
+            const auto &back = e->getFrom();
             player->addOrRemoveComponent<InternalTeleportFlagComponent>(true);
-            endstone_player->teleport(from);
+            endstone_player->teleport({endstone_player->getDimension(), back.getX(), back.getY(), back.getZ(),
+                                       back.getPitch(), back.getYaw()});
             return;
         }
     }
