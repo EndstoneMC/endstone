@@ -28,6 +28,7 @@
 #include <thread>
 #include <unordered_map>
 #include <unordered_set>
+#include <utility>
 
 #include <boost/algorithm/string.hpp>
 #include <entt/locator/locator.hpp>
@@ -36,6 +37,9 @@
 
 #include "bedrock/deps/nethernet/http_signaling_server.h"
 #include "bedrock/deps/nethernet/simple_network_interface_impl.h"
+#include "bedrock/entity/components/actor_data_flag_component.h"
+#include "bedrock/entity/components/actor_type_flag_component.h"
+#include "bedrock/entity/components/actor_unique_id_component.h"
 #include "bedrock/network/nethernet_connector.h"
 #include "bedrock/network/server_network_handler.h"
 #include "bedrock/platform/threading/assigned_thread.h"
@@ -66,6 +70,7 @@
 #include "endstone/core/message.h"
 #include "endstone/core/metrics.h"
 #include "endstone/core/network/stun_client.h"
+#include "endstone/core/perf/mob_ai_capabilities.h"
 #include "endstone/core/permissions/default_permissions.h"
 #include "endstone/core/player.h"
 #include "endstone/core/plugin/cpp_plugin_loader.h"
@@ -159,7 +164,8 @@ EndstoneServer::EndstoneServer() : logger_(LoggerFactory::getLogger(""))
     start_time_ = std::chrono::system_clock::now();
 
     try {
-        toml::table tbl = toml::parse_file("endstone.toml");
+        startup_config_ = toml::parse_file("endstone.toml");
+        const auto &tbl = *startup_config_;
         log_commands_ = tbl.at_path("commands.log").value_or(true);
         allow_client_packs_ = tbl.at_path("settings.allow-client-packs").value_or(false);
         if (const auto *servers = tbl.at_path("network.stun-servers").as_array()) {
@@ -225,6 +231,8 @@ void EndstoneServer::setLevel(::Level &level)
     metrics_ = std::make_unique<EndstoneMetrics>(*this);  // start metrics
     loadResourcePacks();
     initRegistries();
+    mob_ai_state_.clear();
+    initializeMobAiPolicies();
 
     // enable packet rate limiter
     (void)dispatchCommand(getCommandSender(), "reloadpacketlimitconfig");
@@ -644,6 +652,48 @@ void EndstoneServer::reloadData()
     initRegistries();
 }
 
+void EndstoneServer::initializeMobAiPolicies()
+{
+    const auto config = std::exchange(startup_config_, std::nullopt);
+    if (!config) {
+        return;
+    }
+    const auto result = mob_ai_policies_.initialize(*config);
+    if (!result) {
+        getLogger().error("[Perf] Mob AI policies were not loaded: {}", result.error());
+    }
+    else {
+        getLogger().info("[Perf] Mob AI policies loaded.");
+    }
+}
+
+void EndstoneServer::recordMobAiActivity(const ::Actor &actor)
+{
+    if (!mob_ai_policies_.isEnabled() || actor.isRemoved() || actor.isClientSide() || actor.isPlayer()) {
+        return;
+    }
+    const auto *id = actor.tryGetComponent<ActorUniqueIDComponent>();
+    const auto *type = actor.tryGetComponent<ActorTypeComponent>();
+    if (!id || id->unique_id.raw_id == -1 || !type || !actor.tryGetComponent<ActorDataFlagComponent>()) {
+        return;
+    }
+    const auto &identifier = actor.getActorIdentifier().getCanonicalName();
+    const auto decision = mob_ai_policies_.resolve(identifier);
+    if (hasMobAiActivityCapability(identifier, type->type, decision)) {
+        mob_ai_state_.recordActivity(id->unique_id.raw_id, actor.getLevel().getCurrentServerTick().tick_id);
+    }
+}
+
+void EndstoneServer::removeMobAiState(const ::Actor &actor)
+{
+    if (!mob_ai_policies_.isEnabled()) {
+        return;
+    }
+    if (const auto *id = actor.tryGetComponent<ActorUniqueIDComponent>(); id && id->unique_id.raw_id != -1) {
+        mob_ai_state_.erase(id->unique_id.raw_id);
+    }
+}
+
 void EndstoneServer::broadcast(const Message &message, const std::string &permission) const
 {
     std::unordered_set<const CommandSender *> recipients;
@@ -877,6 +927,7 @@ void EndstoneServer::tick(std::uint64_t current_tick, const std::function<void()
     // A frame can run several ticks, so the previous one ends where this one starts
     endTick();
 
+    mob_ai_state_.prune(current_tick);
     scheduler_->mainThreadHeartbeat(current_tick);
     tick_function();
     for (const auto &p : getOnlinePlayers()) {

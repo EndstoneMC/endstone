@@ -11,7 +11,7 @@
 
 namespace endstone::runtime {
 
-static constexpr std::array<std::pair<std::string_view, std::size_t>, 82> symbols = {{
+static constexpr std::array<std::pair<std::string_view, std::size_t>, 90> symbols = {{
     {"BlockState::StateListNode::mHead", 215092208},
     {"Enchant::mEnchants", 214656904},
     // Actor
@@ -75,6 +75,7 @@ static constexpr std::array<std::pair<std::string_view, std::size_t>, 82> symbol
     // LeavesBlock
     {"?randomTick@LeavesBlock@@QEBAXAEAVBlockRandomTickEvent@BlockEvents@@@Z", 50197040},
     // Level
+    {"?findPath@Level@@UEAA?AV?$unique_ptr@VPath@@U?$default_delete@VPath@@@std@@@std@@AEAVActor@@HHHAEAVNavigationComponent@@@Z", 8184736},
     {"?getActivePlayerCount@Level@@UEBAHXZ", 8211872},
     {"?tick@Level@@UEAAXXZ", 8175568},
     // LevelChunk
@@ -95,6 +96,8 @@ static constexpr std::array<std::pair<std::string_view, std::size_t>, 82> symbol
     {"MinecraftWorkerPool::ASYNC", 214123464},
     // Mob
     {"?knockback@Mob@@UEAAXPEAVActor@@MMMAEBUKnockbackParameters@@@Z", 43938096},
+    // NearestAttackableTargetGoal
+    {"?_findTarget@NearestAttackableTargetGoal@@QEAA?AUActorUniqueID@@PEAPEBUMobDescriptor@@@Z", 151247936},
     // NetherNet::LanThreadManager
     {"?SendLanBroadcastResponse@LanThreadManager@NetherNet@@UEAAXAEBVSocketAddress@webrtc@@UNetworkID@2@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z", 17962688},
     // NetherNet::SimpleNetworkInterfaceImpl
@@ -122,6 +125,12 @@ static constexpr std::array<std::pair<std::string_view, std::size_t>, 82> symbol
     {"?Send_Windows_Linux_360NoVDP@RNS2_Windows_Linux_360@RakNet@@KAHHPEAURNS2_SendParameters@2@PEBDI@Z", 54713712},
     // RakPeerHelper
     {"?peerStartup@RakPeerHelper@@QEAA?AW4StartupResult@RakNet@@PEAVRakPeerInterface@3@AEBUConnectionDefinition@@W4PeerPurpose@1@@Z", 9799424},
+    // RandomLookAroundGoal
+    {"?canContinue@RandomLookAroundGoal@@QEAA_NXZ", 166393312},
+    {"?canUse@RandomLookAroundGoal@@QEAA_NXZ", 166393120},
+    // RandomStrollGoal
+    {"?canContinue@RandomStrollGoal@@QEAA_NXZ", 151181840},
+    {"?canUse@RandomStrollGoal@@QEAA_NXZ", 151181536},
     // RepositoryFactory
     {"?createSources@RepositoryFactory@@UEBA?AV?$shared_ptr@VRepositorySources@@@std@@AEBVIResourcePackRepository@@@Z", 13101168},
     // SayCommand
@@ -142,6 +151,9 @@ static constexpr std::array<std::pair<std::string_view, std::size_t>, 82> symbol
     {"??0ServerScoreboard@@QEAA@VCommandSoftEnumRegistry@@PEAVLevelStorage@@V?$not_null@V?$NonOwnerPointer@VGameplayUserManager@@@Bedrock@@@gsl@@@Z", 2095792},
     // ServerWaypoint
     {"?update@ServerWaypoint@@UEAAXAEBVPlayer@@@Z", 13700320},
+    // SleepGoal
+    {"?canUse@SleepGoal@@QEAA_NXZ", 167710448},
+    {"?stop@SleepGoal@@QEAAXXZ", 167711968},
     // VanillaWaypointManager
     {"?update@VanillaWaypointManager@@QEAAXAEAVPlayer@@AEAVServerLocatorBar@@_N@Z", 38459712},
     // WeatherManager
