@@ -31,6 +31,7 @@ protected:
     template <typename EntityContextT, typename... Components>
     friend class ViewT;
     friend class EntityContext;
+    friend class StrictEntityContext;
     friend class OwnerStorageEntity;
     using EntityInvokeCallbackFunc = std::function<void(EntityId)>;
     void _destroyEntity(EntityContext entity);

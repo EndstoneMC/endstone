@@ -23,10 +23,11 @@ public:
         : registry_(registry), entt_registry_(registry.registry_), entity_(entity_id)
     {
     }
-    EntityContext(const EntityContext &other) = default;
-    EntityContext(EntityContext &&) = default;
-    EntityContext &operator=(const EntityContext &) = delete;
-    EntityContext &operator=(EntityContext &&) = delete;
+    EntityContext(const EntityContext &);
+    EntityContext(EntityContext &&);
+    ~EntityContext();
+    EntityContext &operator=(const EntityContext &);
+    EntityContext &operator=(EntityContext &&);
 
     [[nodiscard]] bool isValid() const;
 
@@ -65,11 +66,12 @@ public:
 
 protected:
     friend class EntityRegistry;
+    friend class StrictEntityContext;
     friend class WeakStorageEntity;
 
     [[nodiscard]] EntityId _getEntityId() const { return entity_; }
 
-    [[nodiscard]] std::uint32_t _getRegistryId() const { return entity_; }
+    [[nodiscard]] std::uint32_t _getRegistryId() const { return registry_.id_; }
 
     EntityRegistry &registry_;     // +0
     EnTTRegistry &entt_registry_;  // +8

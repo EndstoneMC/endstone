@@ -14,6 +14,12 @@
 
 #include "bedrock/entity/gamerefs_entity/gamerefs_entity.h"
 
+EntityContext::EntityContext(const EntityContext &) = default;
+
+EntityContext::EntityContext(EntityContext &&) = default;
+
+EntityContext::~EntityContext() = default;
+
 bool EntityContext::isValid() const
 {
     return entt_registry_.valid(entity_);

@@ -14,14 +14,31 @@
 
 #pragma once
 
+#include <cstdint>
+
 #include "bedrock/entity/entity_id.h"
+
+class EntityContext;
+class EntityRegistry;
 
 class StrictEntityContext {
 public:
+    StrictEntityContext();
+    StrictEntityContext(const EntityRegistry &, EntityId);
+    StrictEntityContext(const EntityContext &);
+    StrictEntityContext(const StrictEntityContext &);
+    StrictEntityContext(StrictEntityContext &&);
+    ~StrictEntityContext();
+    StrictEntityContext &operator=(const StrictEntityContext &);
+    StrictEntityContext &operator=(StrictEntityContext &&other);
+    bool operator==(const StrictEntityContext &other) const;
+    bool operator!=(const StrictEntityContext &other) const;
     [[nodiscard]] bool isNull() const { return entity_id_ == entt::null; }
     [[nodiscard]] EntityId _getEntityId() const { return entity_id_; }
 
-private:
+protected:
+    [[nodiscard]] std::uint32_t _getRegistryId() const { return registry_id_; }
+
     EntityId entity_id_;         // +0
     std::uint32_t registry_id_;  // +4
 };
