@@ -17,16 +17,19 @@
 #include <string_view>
 
 #include "bedrock/bedrock.h"
+#include "bedrock/deps/webrtc/port_interface.h"
+#include "bedrock/deps/webrtc/sigslot.h"
 
 namespace webrtc {
 
 class SocketAddress;
 class StunMessage;
 
-class Port {
+class Port : public PortInterface, public sigslot::has_slots<sigslot::single_threaded> {
 public:
-    ENDSTONE_HOOK virtual void SendBindingErrorResponse(StunMessage *message, const SocketAddress &addr,
-                                                        int error_code, std::string_view reason);
+    ~Port() override;
+    ENDSTONE_HOOK void SendBindingErrorResponse(StunMessage *message, const SocketAddress &addr, int error_code,
+                                                std::string_view reason) override;
 };
 
 }  // namespace webrtc
