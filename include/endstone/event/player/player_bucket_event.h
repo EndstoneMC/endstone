@@ -34,7 +34,7 @@ class ItemType;
  */
 class PlayerBucketEvent : public Cancellable<PlayerEvent> {
 public:
-    PlayerBucketEvent(const NotNull<Player> &player, const Nullable<Block> &block, const NotNull<Block> &block_clicked,
+    PlayerBucketEvent(const NotNull<Player> &player, const NotNull<Block> &block, const NotNull<Block> &block_clicked,
                       BlockFace block_face, const ItemType &bucket, std::optional<ItemStack> item_stack,
                       EquipmentSlot hand)
         : Cancellable(player), block_(block), block_clicked_(block_clicked), block_face_(block_face), bucket_(bucket),
@@ -46,9 +46,9 @@ public:
     /**
      * Gets the block involved in this event.
      *
-     * @return the block involved in this event, or a null handle if unavailable
+     * @return the block involved in this event
      */
-    [[nodiscard]] const Nullable<Block> &getBlock() const { return block_; }
+    [[nodiscard]] const NotNull<Block> &getBlock() const { return block_; }
 
     /**
      * Gets the block clicked by the player.
@@ -96,7 +96,7 @@ public:
     void setItemStack(std::optional<ItemStack> item_stack) { item_stack_ = std::move(item_stack); }
 
 private:
-    Nullable<Block> block_;
+    NotNull<Block> block_;
     NotNull<Block> block_clicked_;
     BlockFace block_face_;
     const ItemType &bucket_;

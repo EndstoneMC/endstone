@@ -26,20 +26,20 @@ class ActorDismountEvent : public Cancellable<ActorEvent<Actor>> {
 public:
     ENDSTONE_EVENT(ActorDismountEvent);
 
-    explicit ActorDismountEvent(const NotNull<Actor> &actor, const NotNull<Actor> &vehicle)
-        : Cancellable(actor), vehicle_(vehicle)
+    explicit ActorDismountEvent(const NotNull<Actor> &actor, const NotNull<Actor> &dismounted)
+        : Cancellable(actor), dismounted_(dismounted)
     {
     }
 
     /**
-     * Gets the actor that is being dismounted.
+     * Gets the actor which will no longer be ridden.
      *
-     * @return the vehicle
+     * @return dismounted actor
      */
-    [[nodiscard]] const NotNull<Actor> &getVehicle() const { return vehicle_; }
+    [[nodiscard]] const NotNull<Actor> &getDismounted() const { return dismounted_; }
 
 private:
-    NotNull<Actor> vehicle_;
+    NotNull<Actor> dismounted_;
 };
 
 }  // namespace endstone

@@ -74,14 +74,14 @@ class ActorEventListener(EventListener):
         self.record(
             event,
             f"{event.actor.name} ({event.actor.type}) dismounts "
-            f"{event.vehicle.name} ({event.vehicle.type})",
+            f"{event.dismounted.name} ({event.dismounted.type})",
             always_log=True,
             actor_type=str(event.actor.type),
-            vehicle_type=str(event.vehicle.type),
-            is_self_ride=event.actor.runtime_id == event.vehicle.runtime_id,
+            vehicle_type=str(event.dismounted.type),
+            is_self_ride=event.actor.runtime_id == event.dismounted.runtime_id,
         )
         if self.due(event, CANCEL):
-            self.cancelled(event, vehicle_type=str(event.vehicle.type))
+            self.cancelled(event, vehicle_type=str(event.dismounted.type))
 
     @event_handler
     def on_actor_effect(self, event: ActorEffectEvent):

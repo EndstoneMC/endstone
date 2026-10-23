@@ -59,14 +59,14 @@ CHECKS = (
         "barrel should refuse to open.",
     ),
     Check(
-        "PlayerCraftItemEvent/cancel",
+        "CraftItemEvent/cancel",
         "craft sticks from the planks",
         (("minecraft:oak_planks", 8),),
         detail="Open your inventory and craft sticks from the planks in the 2x2 "
         "grid. The craft is blocked and the planks stay where they are.",
     ),
     Check(
-        "PlayerCraftItemEvent/mutate",
+        "CraftItemEvent/mutate",
         "craft sticks in the 2x2 grid again",
         detail="Craft once more. The result is replaced with a diamond.",
     ),

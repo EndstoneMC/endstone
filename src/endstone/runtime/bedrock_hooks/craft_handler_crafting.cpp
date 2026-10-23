@@ -16,26 +16,33 @@
 
 #include <algorithm>
 #include <cstddef>
+#include <memory>
+#include <optional>
+#include <stdexcept>
 #include <utility>
 #include <vector>
 
 #include "bedrock/world/actor/player/player.h"
+#include "bedrock/world/containers/container_enum.h"
 #include "bedrock/world/inventory/network/crafting/item_stack_request_action_craft.h"
 #include "bedrock/world/inventory/network/crafting/item_stack_request_action_craft_handler.h"
+#include "bedrock/world/inventory/network/item_stack_request_action_handler.h"
 #include "bedrock/world/item/crafting/recipes.h"
 #include "bedrock/world/level/level.h"
+#include "bedrock/world/simple_sparse_container.h"
 #include "endstone/core/entity/components/flag_components.h"
+#include "endstone/core/inventory/inventory.h"
 #include "endstone/core/inventory/item_stack.h"
 #include "endstone/core/inventory/recipe_data.h"
 #include "endstone/core/player.h"
 #include "endstone/core/server.h"
-#include "endstone/event/player/player_craft_item_event.h"
+#include "endstone/event/inventory/craft_item_event.h"
 #include "endstone/runtime/hook.h"
 
 ItemStackNetResult CraftHandlerCrafting::_handleCraftAction(const ItemStackRequestActionCraftBase &request_action)
 {
     const auto &server = endstone::core::EndstoneServer::getInstance();
-    if (!server.getEndstonePluginManager().isEventRegistered<endstone::PlayerCraftItemEvent>()) {
+    if (!server.getEndstonePluginManager().isEventRegistered<endstone::CraftItemEvent>()) {
         return ENDSTONE_HOOK_CALL_ORIGINAL(&CraftHandlerCrafting::_handleCraftAction, this, request_action);
     }
 
@@ -101,9 +108,22 @@ ItemStackNetResult CraftHandlerCrafting::_handleCraftAction(const ItemStackReque
         results.push_back(endstone::core::EndstoneItemStack::fromMinecraft(ItemStack(result)));
     }
 
-    const auto e = std::make_shared<endstone::PlayerCraftItemEvent>(
-        player_.getEndstoneActor<endstone::core::EndstonePlayer>(), std::move(crafted), std::move(ingredients), results,
-        request_action.getNumCrafts());
+    const auto grid = craft_request_handler_.getActionHandler()._getOrInitSparseContainer(
+        FullContainerName{ContainerEnumName::CraftingInputContainer, std::nullopt});
+    const std::shared_ptr<::Container> container =
+        grid ? std::shared_ptr<::Container>(grid)
+             : std::shared_ptr<::Container>(&player_.getPlayerUIContainer(), [](::Container *) {});
+    const auto inventory = std::make_shared<endstone::core::EndstoneInventory>(
+        [weak = std::weak_ptr<::Container>(container)]() -> ::Container & {
+            const auto locked = weak.lock();
+            if (!locked) {
+                throw std::runtime_error("Trying to access an inventory that is no longer valid.");
+            }
+            return *locked;
+        });
+    const auto e = std::make_shared<endstone::CraftItemEvent>(
+        inventory, player_.getEndstoneActor<endstone::core::EndstonePlayer>(), std::move(crafted),
+        std::move(ingredients), results, request_action.getNumCrafts());
     server.getPluginManager().callEvent(e);
     if (e->isCancelled()) {
         return ItemStackNetResult::ActionRequestNotAllowed;

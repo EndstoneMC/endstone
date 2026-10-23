@@ -1,5 +1,6 @@
 from endstone import ColorFormat
 from endstone.event import (
+    CraftItemEvent,
     PlayerArmorStandManipulateEvent,
     PlayerArmSwingEvent,
     PlayerBedEnterEvent,
@@ -9,7 +10,6 @@ from endstone.event import (
     PlayerBucketFillEvent,
     PlayerChatEvent,
     PlayerCommandEvent,
-    PlayerCraftItemEvent,
     PlayerDeathEvent,
     PlayerDimensionChangeEvent,
     PlayerDropItemEvent,
@@ -556,12 +556,12 @@ class PlayerEventListener(EventListener):
         )
 
     @event_handler
-    def on_player_craft_item(self, event: PlayerCraftItemEvent):
+    def on_craft_item(self, event: CraftItemEvent):
         self.record(
             event,
-            f"{event.player.name} crafts {event.recipe.id} x{event.repetitions}",
+            f"{event.who_clicked.name} crafts {event.recipe.id} x{event.repetitions}",
             always_log=True,
-            player=event.player.name,
+            player=event.who_clicked.name,
             recipe_id=str(event.recipe.id),
             repetitions=event.repetitions,
             ingredients=[str(i.type) for i in event.ingredients],

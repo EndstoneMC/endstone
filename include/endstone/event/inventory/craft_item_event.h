@@ -19,8 +19,7 @@
 #include <vector>
 
 #include "endstone/check.h"
-#include "endstone/event/cancellable.h"
-#include "endstone/event/player/player_event.h"
+#include "endstone/event/inventory/inventory_interact_event.h"
 #include "endstone/inventory/item_stack.h"
 #include "endstone/inventory/recipe.h"
 
@@ -29,16 +28,19 @@ namespace endstone {
 /**
  * Called when a player crafts an item, either inside a crafting grid or straight from the recipe book.
  *
+ * getInventory() is the player's UI container, which holds the crafting grid: slots 28 to 31 for the 2x2 grid of the
+ * inventory screen and slots 32 to 40 for the 3x3 grid of a crafting table.
+ *
  * @note If the event is cancelled the item will not be crafted and the ingredients will not be consumed.
  */
-class PlayerCraftItemEvent final : public Cancellable<PlayerEvent> {
+class CraftItemEvent final : public InventoryInteractEvent {
 public:
-    ENDSTONE_EVENT(PlayerCraftItemEvent);
+    ENDSTONE_EVENT(CraftItemEvent);
 
-    PlayerCraftItemEvent(const NotNull<Player> &player, NotNull<Recipe> recipe, std::vector<ItemStack> ingredients,
-                         std::vector<ItemStack> results, int repetitions)
-        : Cancellable(player), recipe_(std::move(recipe)), ingredients_(std::move(ingredients)),
-          results_(std::move(results)), repetitions_(repetitions)
+    CraftItemEvent(const NotNull<Inventory> &inventory, const NotNull<Player> &who_clicked, NotNull<Recipe> recipe,
+                   std::vector<ItemStack> ingredients, std::vector<ItemStack> results, int repetitions)
+        : InventoryInteractEvent(inventory, who_clicked), recipe_(std::move(recipe)),
+          ingredients_(std::move(ingredients)), results_(std::move(results)), repetitions_(repetitions)
     {
         for (const auto &result : results_) {
             amounts_.push_back(result.getAmount());

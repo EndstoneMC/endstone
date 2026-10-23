@@ -126,7 +126,8 @@ void init_event(py::module_ &m, py::classh<Event, PyEvent> &event)
                                "changed type will be removed.");
     bind_event<ActorDismountEvent, ActorEvent<Actor>, ICancellable>(
         m, "ActorDismountEvent", "Called when an `Actor` stops riding another `Actor`.")
-        .def_property_readonly("vehicle", &ActorDismountEvent::getVehicle, "The actor that is being dismounted.");
+        .def_property_readonly("dismounted", &ActorDismountEvent::getDismounted,
+                               "The actor which will no longer be ridden.");
     bind_event<ActorChangeBlockEvent, ActorEvent<Actor>, ICancellable>(m, "ActorChangeBlockEvent", R"doc(
     Called when an `Actor` changes a block through its own behaviour, such as an enderman picking a block
     up, a ravager breaking crops, farmland being trampled or a zombie breaking a door. Explosions are
@@ -368,8 +369,7 @@ void init_event(py::module_ &m, py::classh<Event, PyEvent> &event)
         .def_property_readonly("actor", &PlayerShowActorEvent::getActor, "The actor shown to the player.");
     bind_event<PlayerBucketEvent, PlayerEvent, ICancellable>(
         m, "PlayerBucketEvent", "Base class for events involving a player's bucket interaction.")
-        .def_property_readonly("block", &PlayerBucketEvent::getBlock,
-                               "The block involved in this event, or `None` if unavailable.")
+        .def_property_readonly("block", &PlayerBucketEvent::getBlock, "The block involved in this event.")
         .def_property_readonly("block_clicked", &PlayerBucketEvent::getBlockClicked, "The block clicked by the player.")
         .def_property_readonly("block_face", &PlayerBucketEvent::getBlockFace, "The face on the clicked block.")
         .def_property_readonly("bucket", &PlayerBucketEvent::getBucket, py::return_value_policy::reference,
@@ -411,36 +411,6 @@ void init_event(py::module_ &m, py::classh<Event, PyEvent> &event)
         .def_property_readonly("from_dimension", &PlayerDimensionChangeEvent::getFrom,
                                "The player's previous dimension.")
         .def_property_readonly("to_dimension", &PlayerDimensionChangeEvent::getTo, "The player's new dimension.");
-    bind_event<PlayerCraftItemEvent, PlayerEvent, ICancellable>(m, "PlayerCraftItemEvent", R"doc(
-    Called when a player crafts an item, either inside a crafting grid or straight from the recipe book.
-
-    If the event is cancelled the item will not be crafted and the ingredients will not be consumed.
-)doc")
-        .def_property_readonly("recipe", &PlayerCraftItemEvent::getRecipe,
-                               "A copy of the current recipe on the crafting matrix.")
-        .def_property_readonly("ingredients", &PlayerCraftItemEvent::getIngredients, R"doc(
-    The ingredients a single craft consumes.
-
-    These are the items in the crafting grid where the player used one. Crafting from the recipe book never fills
-    the grid, so the ingredients then come from the recipe instead, and an ingredient that accepts several items
-    reports the one the recipe names rather than the one the player supplied.
-)doc")
-        .def_property("results", &PlayerCraftItemEvent::getResults, &PlayerCraftItemEvent::setResults, R"doc(
-    The items a single craft produces.
-
-    A recipe usually produces one item, but may produce several, and an ingredient that leaves a remainder behind
-    contributes one too. Results are replaced one for one, so any beyond the number the recipe produces are ignored;
-    cancel the event to stop the craft instead. A result may be a different item, but its amount must match the
-    amount the recipe produces in its place.
-
-    Raises:
-        ValueError: if a result's amount differs from the recipe's.
-)doc")
-        .def_property_readonly("repetitions", &PlayerCraftItemEvent::getRepetitions, R"doc(
-    The number of times the recipe is being crafted.
-
-    This is usually 1, but is higher when a batch is crafted at once, such as a shift click in the recipe book.
-)doc");
     bind_event<PlayerDropItemEvent, PlayerEvent, ICancellable>(
         m, "PlayerDropItemEvent", "Called when a player drops an item from their inventory.")
         .def_property_readonly("item", &PlayerDropItemEvent::getItem, py::return_value_policy::reference_internal,
@@ -728,6 +698,39 @@ void init_event(py::module_ &m, py::classh<Event, PyEvent> &event)
     bind_event<InventoryCloseEvent, InventoryEvent>(m, "InventoryCloseEvent",
                                                     "Called when a player closes an inventory.")
         .def_property_readonly("player", &InventoryCloseEvent::getPlayer, "The player who is closing the inventory.");
+    bind_event<CraftItemEvent, InventoryInteractEvent>(m, "CraftItemEvent", R"doc(
+    Called when a player crafts an item, either inside a crafting grid or straight from the recipe book.
+
+    The `inventory` is the player's UI container, which holds the crafting grid: slots 28 to 31 for the 2x2 grid of
+    the inventory screen and slots 32 to 40 for the 3x3 grid of a crafting table.
+
+    If the event is cancelled the item will not be crafted and the ingredients will not be consumed.
+)doc")
+        .def_property_readonly("recipe", &CraftItemEvent::getRecipe,
+                               "A copy of the current recipe on the crafting matrix.")
+        .def_property_readonly("ingredients", &CraftItemEvent::getIngredients, R"doc(
+    The ingredients a single craft consumes.
+
+    These are the items in the crafting grid where the player used one. Crafting from the recipe book never fills
+    the grid, so the ingredients then come from the recipe instead, and an ingredient that accepts several items
+    reports the one the recipe names rather than the one the player supplied.
+)doc")
+        .def_property("results", &CraftItemEvent::getResults, &CraftItemEvent::setResults, R"doc(
+    The items a single craft produces.
+
+    A recipe usually produces one item, but may produce several, and an ingredient that leaves a remainder behind
+    contributes one too. Results are replaced one for one, so any beyond the number the recipe produces are ignored;
+    cancel the event to stop the craft instead. A result may be a different item, but its amount must match the
+    amount the recipe produces in its place.
+
+    Raises:
+        ValueError: if a result's amount differs from the recipe's.
+)doc")
+        .def_property_readonly("repetitions", &CraftItemEvent::getRepetitions, R"doc(
+    The number of times the recipe is being crafted.
+
+    This is usually 1, but is higher when a batch is crafted at once, such as a shift click in the recipe book.
+)doc");
 
     // Enchantment events
     bind_event<EnchantItemEvent, InventoryEvent, ICancellable>(m, "EnchantItemEvent", R"doc(

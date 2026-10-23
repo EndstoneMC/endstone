@@ -42,7 +42,7 @@ is green; use the boss bar and `/test events` to see what is still unexercised.
 Observing an event proves it fires, not that cancelling it or writing to it does anything. Those paths are tracked
 as their own progress-bar items, declared in `checks.py` as `<EventName>/cancel` and `<EventName>/mutate` with a
 hint saying how to trigger them, so the boss bar reads
-`Events: 41/96, Next: PlayerCraftItemEvent/cancel (craft anything in the 2x2 grid)`.
+`Events: 41/96, Next: CraftItemEvent/cancel (craft anything in the 2x2 grid)`.
 
 Each check is **one-shot**: the listener applies it the first time its event fires and never again, so a cancelled
 craft or a rewritten book costs you one occurrence rather than breaking the server for the rest of the session.

@@ -53,6 +53,7 @@ __all__ = [
     "ChunkEvent",
     "ChunkLoadEvent",
     "ChunkUnloadEvent",
+    "CraftItemEvent",
     "DimensionEvent",
     "DimensionLoadEvent",
     "EnchantItemEvent",
@@ -79,7 +80,6 @@ __all__ = [
     "PlayerBucketFillEvent",
     "PlayerChatEvent",
     "PlayerCommandEvent",
-    "PlayerCraftItemEvent",
     "PlayerDeathEvent",
     "PlayerDimensionChangeEvent",
     "PlayerDropItemEvent",
@@ -452,9 +452,9 @@ class ActorDismountEvent(ActorEvent, Cancellable):
         """
 
     @property
-    def vehicle(self) -> Actor:
+    def dismounted(self) -> Actor:
         """
-        The actor that is being dismounted.
+        The actor which will no longer be ridden.
         """
 
 class ActorChangeBlockEvent(ActorEvent, Cancellable):
@@ -1312,9 +1312,9 @@ class PlayerBucketEvent(PlayerEvent, Cancellable):
         """
 
     @property
-    def block(self) -> Block | None:
+    def block(self) -> Block:
         """
-        The block involved in this event, or `None` if unavailable.
+        The block involved in this event.
         """
 
     @property
@@ -1493,69 +1493,6 @@ class PlayerDimensionChangeEvent(PlayerEvent):
     def to_dimension(self) -> Dimension:
         """
         The player's new dimension.
-        """
-
-class PlayerCraftItemEvent(PlayerEvent, Cancellable):
-    """
-    Called when a player crafts an item, either inside a crafting grid or straight from the recipe book.
-
-    If the event is cancelled the item will not be crafted and the ingredients will not be consumed.
-    """
-    @property
-    def is_cancelled(self) -> bool:
-        """
-        The cancellation state of this event.
-
-        A cancelled event will not be executed in the server, but will still pass to other plugins.
-        """
-
-    @is_cancelled.setter
-    def is_cancelled(self, arg1: bool) -> None: ...
-    def cancel(self) -> None:
-        """
-        Cancel this event.
-
-        A cancelled event will not be executed in the server, but will still pass to other plugins.
-        """
-
-    @property
-    def recipe(self) -> Recipe:
-        """
-        A copy of the current recipe on the crafting matrix.
-        """
-
-    @property
-    def ingredients(self) -> list[ItemStack]:
-        """
-        The ingredients a single craft consumes.
-
-        These are the items in the crafting grid where the player used one. Crafting from the recipe book never fills
-        the grid, so the ingredients then come from the recipe instead, and an ingredient that accepts several items
-        reports the one the recipe names rather than the one the player supplied.
-        """
-
-    @property
-    def results(self) -> list[ItemStack]:
-        """
-        The items a single craft produces.
-
-        A recipe usually produces one item, but may produce several, and an ingredient that leaves a remainder behind
-        contributes one too. Results are replaced one for one, so any beyond the number the recipe produces are ignored;
-        cancel the event to stop the craft instead. A result may be a different item, but its amount must match the
-        amount the recipe produces in its place.
-
-        Raises:
-            ValueError: if a result's amount differs from the recipe's.
-        """
-
-    @results.setter
-    def results(self, arg1: list[ItemStack]) -> None: ...
-    @property
-    def repetitions(self) -> int:
-        """
-        The number of times the recipe is being crafted.
-
-        This is usually 1, but is higher when a batch is crafted at once, such as a shift click in the recipe book.
         """
 
 class PlayerDropItemEvent(PlayerEvent, Cancellable):
@@ -2638,6 +2575,72 @@ class InventoryCloseEvent(InventoryEvent):
     def player(self) -> Player:
         """
         The player who is closing the inventory.
+        """
+
+class CraftItemEvent(InventoryInteractEvent):
+    """
+    Called when a player crafts an item, either inside a crafting grid or straight from the recipe book.
+
+    The `inventory` is the player's UI container, which holds the crafting grid: slots 28 to 31 for the 2x2 grid of
+    the inventory screen and slots 32 to 40 for the 3x3 grid of a crafting table.
+
+    If the event is cancelled the item will not be crafted and the ingredients will not be consumed.
+    """
+    @property
+    def is_cancelled(self) -> bool:
+        """
+        The cancellation state of this event.
+
+        A cancelled event will not be executed in the server, but will still pass to other plugins.
+        """
+
+    @is_cancelled.setter
+    def is_cancelled(self, arg1: bool) -> None: ...
+    def cancel(self) -> None:
+        """
+        Cancel this event.
+
+        A cancelled event will not be executed in the server, but will still pass to other plugins.
+        """
+
+    @property
+    def recipe(self) -> Recipe:
+        """
+        A copy of the current recipe on the crafting matrix.
+        """
+
+    @property
+    def ingredients(self) -> list[ItemStack]:
+        """
+        The ingredients a single craft consumes.
+
+        These are the items in the crafting grid where the player used one. Crafting from the recipe book never fills
+        the grid, so the ingredients then come from the recipe instead, and an ingredient that accepts several items
+        reports the one the recipe names rather than the one the player supplied.
+        """
+
+    @property
+    def results(self) -> list[ItemStack]:
+        """
+        The items a single craft produces.
+
+        A recipe usually produces one item, but may produce several, and an ingredient that leaves a remainder behind
+        contributes one too. Results are replaced one for one, so any beyond the number the recipe produces are ignored;
+        cancel the event to stop the craft instead. A result may be a different item, but its amount must match the
+        amount the recipe produces in its place.
+
+        Raises:
+            ValueError: if a result's amount differs from the recipe's.
+        """
+
+    @results.setter
+    def results(self, arg1: list[ItemStack]) -> None: ...
+    @property
+    def repetitions(self) -> int:
+        """
+        The number of times the recipe is being crafted.
+
+        This is usually 1, but is higher when a batch is crafted at once, such as a shift click in the recipe book.
         """
 
 class EnchantItemEvent(InventoryEvent, Cancellable):
