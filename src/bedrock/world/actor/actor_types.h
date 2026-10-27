@@ -176,6 +176,8 @@ enum class ActorType : int {
     CamelHusk = 152 | Undead | Animal,
     SulfurCube = 153 | PathfinderMob,
     Cushion = 154,
+    Frostbite = 155 | ZombieMonster,
+    IceBall = 156 | Projectile,
 };
 
 constexpr ActorType operator&(const ActorType lhs, const ActorType rhs)
