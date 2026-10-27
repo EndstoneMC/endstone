@@ -17,6 +17,7 @@
 #include <RakPeerInterface.h>
 
 #include <algorithm>
+#include <functional>
 #include <unordered_map>
 #include <unordered_set>
 
@@ -911,16 +912,24 @@ void EndstonePlayer::onFormResponse(std::uint32_t form_id, const nlohmann::json 
     auto form_variant = std::move(it->second);
     forms_.erase(it);
 
-    if (!isDead()) {
-        try {
-            std::visit(overloaded{
-                           [&](const MessageForm &form) {
+    if (isDead()) {
+        return;
+    }
+
+    std::function<void()> submit;
+    try {
+        std::visit(overloaded{
+                       [&](const MessageForm &form) {
+                           const int selection = json.get<bool>() ? 0 : 1;
+                           submit = [&form, this, selection] {
                                if (const auto callback = form.getOnSubmit()) {
-                                   callback(this, json.get<bool>() ? 0 : 1);
+                                   callback(this, selection);
                                }
-                           },
-                           [&](const ActionForm &form) {
-                               const int selection = json.get<int>();
+                           };
+                       },
+                       [&](const ActionForm &form) {
+                           const int selection = json.get<int>();
+                           submit = [&form, this, selection] {
                                if (const auto callback = form.getOnSubmit()) {
                                    callback(this, selection);
                                }
@@ -936,18 +945,42 @@ void EndstonePlayer::onFormResponse(std::uint32_t form_id, const nlohmann::json 
                                        ++index;
                                    }
                                }
-                           },
-                           [&](const ModalForm &form) {
-                               if (auto callback = form.getOnSubmit()) {
-                                   callback(this, json.dump());
-                               }
-                           },
+                           };
                        },
+                       [&](const ModalForm &form) {
+                           auto values = nlohmann::json(json.get<std::vector<nlohmann::json>>()).dump();
+                           submit = [&form, this, values = std::move(values)] {
+                               if (auto callback = form.getOnSubmit()) {
+                                   callback(this, values);
+                               }
+                           };
+                       },
+                   },
+                   form_variant);
+    }
+    catch (const nlohmann::json::exception &e) {
+        getServer().getLogger().debug("Closing form {} of {} after a malformed response: {}", form_id, getName(),
+                                      e.what());
+        try {
+            std::visit(overloaded{[this](auto &&form) {
+                           if (const auto callback = form.getOnClose()) {
+                               callback(this);
+                           }
+                       }},
                        form_variant);
         }
-        catch (std::exception &e) {
-            getServer().getLogger().error("Error occurred when calling a on submit callback of a form: {}", e.what());
+        catch (std::exception &close_error) {
+            getServer().getLogger().error("Error occurred when calling a on close callback of a form: {}",
+                                          close_error.what());
         }
+        return;
+    }
+
+    try {
+        submit();
+    }
+    catch (std::exception &e) {
+        getServer().getLogger().error("Error occurred when calling a on submit callback of a form: {}", e.what());
     }
 }
 
