@@ -137,6 +137,8 @@ public:
     virtual PlayerEventCoordinator &getPlayerEventCoordinator() = 0;
     [[nodiscard]] virtual bool isSimulated() const = 0;
     [[nodiscard]] virtual std::string getXuid() const = 0;
+    // TODO(fixme): check the name
+    virtual void unknown233() = 0;
     [[nodiscard]] virtual PlayerMovementSettings const &getMovementSettings() const = 0;
     [[nodiscard]] virtual std::optional<PlayerPartyInfo> getPartyInfo_UNTRUSTED() const = 0;
     virtual void requestMissingSubChunk(SubChunkPos const &) = 0;

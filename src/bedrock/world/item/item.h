@@ -188,6 +188,8 @@ public:
     virtual bool canBeCharged() const = 0;
     virtual void playSoundIncrementally(ItemStack const &, Mob &) const = 0;
     virtual float getFurnaceXPmultiplier(ItemStackBase const &) const = 0;
+    // TODO(fixme): check the name
+    virtual void unknown126() = 0;
     virtual bool calculatePlacePos(ItemStackBase &, Actor &, FacingID &, BlockPos &) const = 0;
 
 private:
