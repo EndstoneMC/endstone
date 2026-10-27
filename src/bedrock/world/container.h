@@ -164,8 +164,7 @@ public:
     virtual void initializeContainerContents(BlockSource &region);
     [[nodiscard]] virtual bool isEmpty() const;
     [[nodiscard]] virtual bool isSlotDisabled(int) const;
-    // TODO(fixme): check the name
-    virtual void unknown44();
+    virtual void receiveContainerLifetimes(DynamicContainerTracker const &);
 
 protected:
     ContainerType container_type_;

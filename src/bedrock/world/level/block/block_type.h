@@ -204,8 +204,7 @@ public:
     virtual void movedByPiston(BlockSource &, BlockPos const &) const = 0;
     virtual void onStructureBlockPlace(BlockSource &, BlockPos const &) const = 0;
     virtual void setupRedstoneComponent(BlockSource &, BlockPos const &) const = 0;
-    // TODO(fixme): check the name
-    [[nodiscard]] virtual bool unknown57() const = 0;
+    [[nodiscard]] virtual bool requiresLegacyRedstoneSetup() const = 0;
     [[nodiscard]] virtual bool isPreservingMediumWhenPlaced(BlockType const *) const = 0;
     [[nodiscard]] virtual bool isFilteredOut(BlockRenderLayer) const = 0;
     [[nodiscard]] virtual bool canRenderSelectionOverlay(BlockRenderLayer) const = 0;

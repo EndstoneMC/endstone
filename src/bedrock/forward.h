@@ -310,6 +310,7 @@ enum class FertilizerType;
 enum class InHandUpdateType : std::int8_t;
 enum class ItemColor : std::int8_t;
 enum class ItemCooldownType : unsigned char;
+enum class ItemTransformType;
 enum class JsonBetaState;
 enum class LevelChunkFormat : std::int8_t;
 enum class LevelEvent;
