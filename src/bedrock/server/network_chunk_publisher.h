@@ -45,7 +45,8 @@ struct ChunkPositionAndDimension {
     bool is_biome_override;
     bool operator==(const ChunkPositionAndDimension &rhs) const
     {
-        return pos.x == rhs.pos.x && pos.z == rhs.pos.z && type == rhs.type;
+        return pos.x == rhs.pos.x && pos.z == rhs.pos.z && type == rhs.type &&
+               is_biome_override == rhs.is_biome_override;
     }
 };
 
@@ -59,6 +60,7 @@ struct hash<ChunkPositionAndDimension> {  // NOLINT
         seed ^= hasher(key.pos.x) + 0x9e3779b9 + (seed << 6) + (seed >> 2);
         seed ^= hasher(key.pos.z) + 0x9e3779b9 + (seed << 6) + (seed >> 2);
         seed ^= hasher(key.type.value) + 0x9e3779b9 + (seed << 6) + (seed >> 2);
+        seed ^= std::hash<bool>{}(key.is_biome_override) + 0x9e3779b9 + (seed << 6) + (seed >> 2);
         return seed;
     }
 };

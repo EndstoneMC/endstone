@@ -64,7 +64,7 @@ private:
     bool overrides_player_appearance_;
     std::string profile_hash_;
 };
-static_assert(sizeof(SerializedSkinImpl) == 528);
+BEDROCK_STATIC_ASSERT_SIZE(SerializedSkinImpl, 528, 448);
 
 const mce::Image &SerializedSkinRef::getImageData() const
 {
