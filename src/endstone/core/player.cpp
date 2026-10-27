@@ -16,6 +16,7 @@
 
 #include <RakPeerInterface.h>
 
+#include <algorithm>
 #include <unordered_map>
 #include <unordered_set>
 
@@ -43,6 +44,7 @@
 #include "bedrock/platform/build_platform.h"
 #include "bedrock/server/server_instance.h"
 #include "bedrock/world/actor/player/player.h"
+#include "bedrock/world/actor/player/player_list_entry.h"
 #include "bedrock/world/actor/provider/actor_offset.h"
 #include "bedrock/world/level/level.h"
 #include "endstone/block/block.h"
@@ -610,7 +612,15 @@ std::string EndstonePlayer::getGameVersion() const
 
 Skin EndstonePlayer::getSkin() const
 {
-    return EndstoneSkin::fromMinecraft(getHandle().getSkin());
+    const auto &player = getHandle();
+    const auto component = player.getPersistentComponent<UserEntityIdentifierComponent>();
+    const auto &player_list = player.getLevel().getPlayerList();
+    const auto it = std::ranges::find(player_list, component->getClientUUID(),
+                                      [](const auto &pair) -> const mce::UUID & { return pair.first; });
+    if (it != player_list.end()) {
+        return EndstoneSkin::fromMinecraft(it->second.skin);
+    }
+    return EndstoneSkin::fromMinecraft(player.getSkin());
 }
 
 void EndstonePlayer::sendForm(FormVariant form)
@@ -717,7 +727,10 @@ bool EndstonePlayer::handlePacket(Packet &packet)
                 auto new_packet = MinecraftPackets::createPacket(MinecraftPacketIds::PlayerSkin);
                 auto &new_pk = static_cast<PlayerSkinPacket &>(*new_packet);
                 new_pk.payload.uuid = pk.payload.uuid;
-                new_pk.payload.skin = getHandle().getSkin();
+                const auto &player_list = getHandle().getLevel().getPlayerList();
+                const auto it = std::ranges::find(player_list, pk.payload.uuid,
+                                                  [](const auto &pair) -> const mce::UUID & { return pair.first; });
+                new_pk.payload.skin = it != player_list.end() ? it->second.skin : getHandle().getSkin();
                 new_pk.payload.localized_new_skin_name = pk.payload.localized_old_skin_name;
                 new_pk.payload.localized_old_skin_name = pk.payload.localized_new_skin_name;
                 getHandle().sendNetworkPacket(new_pk);
