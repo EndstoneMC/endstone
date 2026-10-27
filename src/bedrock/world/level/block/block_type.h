@@ -104,6 +104,7 @@ enum class BlockProperty : std::uint64_t {
     CanDamperVibrations = 0x800000000,
     CanOccludeVibrations = 0x1000000000,
     LegacyComparatorReadThrough = 0x2000000000,
+    HasAlignedPlacement = 0x4000000000,
     _entt_enum_as_bitmask
 };
 
@@ -267,6 +268,7 @@ public:
     [[nodiscard]] virtual Flip getFaceFlip(FacingID, Block const &) const = 0;
     virtual void animateTickBedrockLegacy(BlockAnimateTickData const &) const = 0;
     virtual void animateTick(BlockAnimateTickData const &) const = 0;
+    [[nodiscard]] virtual Brightness getLightEmission(Block const &) const = 0;
     // [[nodiscard]] virtual BlockType &init() = 0;
     [[nodiscard]] virtual Block const *tryLegacyUpgrade(DataID) const = 0;
     [[nodiscard]] virtual bool dealsContactDamage(Actor const &, Block const &, bool) const = 0;
@@ -289,7 +291,6 @@ public:
     [[nodiscard]] virtual const HashedString &getCullingLayer() const = 0;
     [[nodiscard]] virtual float getBounciness(IConstBlockSource const &, BlockPos const &) const = 0;
     [[nodiscard]] virtual Brightness getLight(Block const &) const = 0;
-    [[nodiscard]] virtual Brightness getLightEmission(Block const &) const = 0;
     [[nodiscard]] virtual Brightness getEmissiveBrightness(Block const &) const = 0;
     [[nodiscard]] virtual mce::Color getMapColor(BlockSource &, BlockPos const &, Block const &) const = 0;
     [[nodiscard]] virtual Block const &getInitialDefaultState() = 0;
