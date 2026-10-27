@@ -41,7 +41,6 @@ public:
 
 private:
     std::string id_;
-    std::string play_fab_id_;
     std::string full_id_;
     std::string resource_patch_;
     std::string default_geometry_name_;
@@ -63,7 +62,9 @@ private:
     bool is_persona_cape_on_classic_skin_;
     bool is_primary_user_;
     bool overrides_player_appearance_;
+    std::string profile_hash_;
 };
+static_assert(sizeof(SerializedSkinImpl) == 528);
 
 const mce::Image &SerializedSkinRef::getImageData() const
 {
