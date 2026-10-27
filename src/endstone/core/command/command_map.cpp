@@ -203,19 +203,11 @@ void EndstoneCommandMap::unregisterCommand(std::string name)
     }
 
     // Remove enums introduced by custom commands
-    if (custom_commands_.contains(name)) {
-        for (const auto &overload : signature->overloads) {
-            for (const auto &param : overload.params) {
-                if (param.param_type != CommandParameterDataType::Enum || !param.enum_name_or_postfix) {
-                    continue;
-                }
-                if (std::string_view(param.enum_name_or_postfix) == "Boolean" ||
-                    std::string_view(param.enum_name_or_postfix) == "Block") {
-                    continue;
-                }
-                clearEnumValues(param.enum_name_or_postfix);
-            }
+    if (const auto it = custom_enums_.find(name); it != custom_enums_.end()) {
+        for (const auto &enum_name : it->second) {
+            clearEnumValues(enum_name);
         }
+        custom_enums_.erase(it);
     }
 
     // TODO: remove enum value constraints for name in enum name CommandName
@@ -304,6 +296,7 @@ bool EndstoneCommandMap::registerCommand(std::shared_ptr<Command> command)
         usages.push_back("/" + name);
     }
     std::vector<std::vector<CommandParameterData>> pending_param_data;
+    std::vector<std::string> created_enums;
     for (const auto &usage : usages) {
         auto parser = CommandUsageParser(usage);
         auto result = parser.parse();
@@ -320,6 +313,7 @@ bool EndstoneCommandMap::registerCommand(std::shared_ptr<Command> command)
 
         bool success = true;
         std::vector<CommandParameterData> param_data;
+        std::vector<std::string> usage_enums;
         for (const auto &parameter : parameters) {
             auto data = CommandParameterData({0}, &CommandRegistry::ParseRuleFor<MinecraftCommandAdapter>::instance,
                                              parameter.name.c_str(), CommandParameterDataType::Basic, nullptr, nullptr,
@@ -349,6 +343,7 @@ bool EndstoneCommandMap::registerCommand(std::shared_ptr<Command> command)
 
                 // Add enum
                 auto symbol = registry.addEnumValues(enum_name_final, parameter.values);
+                usage_enums.push_back(enum_name_final);
 
                 // Check if the enum has been added
                 auto it = registry.enum_lookup_.find(enum_name_final);
@@ -406,6 +401,12 @@ bool EndstoneCommandMap::registerCommand(std::shared_ptr<Command> command)
 
         if (success) {
             pending_param_data.push_back(param_data);
+            created_enums.insert(created_enums.end(), usage_enums.begin(), usage_enums.end());
+        }
+        else {
+            for (const auto &enum_name : usage_enums) {
+                clearEnumValues(enum_name);
+            }
         }
     }
 
@@ -418,6 +419,9 @@ bool EndstoneCommandMap::registerCommand(std::shared_ptr<Command> command)
     registry.registerCommand(name, command->getDescription().c_str(), CommandPermissionLevel::Any,
                              CommandCheatFlag::NotCheat, CommandUsageFlag::Normal);
     custom_commands_.emplace(name, command);
+    auto enum_key = name;
+    std::ranges::transform(enum_key, enum_key.begin(), [](unsigned char c) { return std::tolower(c); });
+    custom_enums_[enum_key] = std::move(created_enums);
     for (const auto &alias : pending_aliases) {
         registry.registerAlias(name, alias);
         custom_commands_.emplace(alias, command);
