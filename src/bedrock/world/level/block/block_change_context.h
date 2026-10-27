@@ -21,6 +21,7 @@
 #include "bedrock/world/level/block_pos.h"
 
 class Actor;
+class Block;
 
 struct EnvironmentChangeContext {
     EnvironmentChangeContext() = default;
@@ -42,7 +43,13 @@ enum class StatelessBlockChangeContext : std::uint8_t {
     MultiBlock = 4,
     ExtraBlock = 5,
     DelayedMultiBlock = 6,
-    Count = 7,
+    SupportLost = 7,
+    Count = 8,
+};
+
+class NeighborChangeHistory {
+    const Block *previous_permutation_;
+    const Block *block_permutation_;
 };
 
 using BlockChangeContextSource =
@@ -61,5 +68,7 @@ public:
 
 private:
     BlockChangeContextSource context_source_;
+    int command_version_ = 0;
     bool tick_scheduling_enabled_ = true;
+    std::optional<NeighborChangeHistory> neighbor_change_history_;
 };

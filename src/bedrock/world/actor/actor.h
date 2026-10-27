@@ -243,7 +243,7 @@ public:
     [[nodiscard]] virtual float getPassengerYRotation(Actor const &) const = 0;
     virtual bool add(ItemStack &) = 0;
     virtual bool drop(ItemStack const &, bool) = 0;
-    virtual Interaction getInteraction(Player &, Vec3 const &) = 0;
+    virtual Interaction getInteraction(Player &, Vec3 const &, HandSlot) = 0;
     [[nodiscard]] virtual bool canDestroyBlock(Block const &) const = 0;
     virtual void setAuxValue(int) = 0;
     virtual void renderDebugServerState(const IOptionsReader &options) = 0;
@@ -377,7 +377,6 @@ protected:
 private:
     mutable EntityContext entity_context_;  // +8
     VariantParameterList init_params_;
-    bool unknown_68_;
     std::string custom_init_event_name_;
     ActorInitializationMethod init_method_;
     bool force_init_method_to_spawn_on_reload_;
