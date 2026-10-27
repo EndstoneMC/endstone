@@ -102,6 +102,7 @@ enum class ContainerType : std::int8_t {
     DECORATED_POT = 35,
     CRAFTER = 36,
     DATA_DRIVEN_CONTAINER = 37,
+    RESERVED_CONTAINER_TYPE = 38,
 };
 
 class Container {
@@ -163,6 +164,8 @@ public:
     virtual void initializeContainerContents(BlockSource &region);
     [[nodiscard]] virtual bool isEmpty() const;
     [[nodiscard]] virtual bool isSlotDisabled(int) const;
+    // TODO(fixme): check the name
+    virtual void unknown44();
 
 protected:
     ContainerType container_type_;
