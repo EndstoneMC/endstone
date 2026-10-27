@@ -13,7 +13,7 @@ bool LiquidBlock::_canSpreadTo(BlockSource &region, BlockPos const &pos, BlockPo
         return false;
     }
     const auto &material = region.getLiquidBlock(pos).getMaterial();
-    if (material == getMaterial() || material.isType(MaterialType::Lava)) {
+    if (material.getType() == getMaterial().getType() || material.isType(MaterialType::Lava)) {
         return false;
     }
     return !_isLiquidBlocking(region, pos, flow_from_pos, flow_from_direction);

@@ -363,7 +363,7 @@ public:
     std::string description_id;  // +8
 
 private:
-    const Material &material_;                             // +40
+    Material material_;                                    // +40
     BlockComponentStorage components_;                     // +48
     NameInfo name_info_;                                   // +144
     BlockProperty properties_;                             // +304
