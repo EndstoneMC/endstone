@@ -36,6 +36,7 @@ struct BuiltInMobComponents {
     gsl::not_null<DeathTickingComponent *> death_ticking_component;
     gsl::not_null<MobAnimationComponent *> mob_animation_component;
     gsl::not_null<MobHurtTimeComponent *> mob_hurt_time_component;
+    gsl::not_null<MobWalkAnimationComponent *> mob_walk_animation_component;
 };
 
 class Mob : public Actor {
@@ -122,6 +123,7 @@ protected:
 private:
     bool has_bound_origin_;
     MobSpawnMethod spawn_method_;
+    bool unknown_mob_byte_;
     bool create_ai_on_reload_;
     ActorUniqueID caravan_head_;
     ActorUniqueID caravan_tail_;

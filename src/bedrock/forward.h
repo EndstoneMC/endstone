@@ -184,6 +184,7 @@ class MinecraftGameTest {};
 class MinecraftServiceKeyManager;
 class MobAnimationComponent;
 class MobHurtTimeComponent;
+class MobWalkAnimationComponent;
 class MolangPackSettingsCache;
 class MolangVariable;
 class MoveInputComponent;
