@@ -791,7 +791,7 @@ bool EndstonePlayer::handlePacket(Packet &packet)
                     item,
                     block.get(),
                     static_cast<BlockFace>(action.facing),
-                    Vector{action.pos.x, action.pos.y, action.pos.z},
+                    std::nullopt,
                 };
                 getServer().getPluginManager().callEvent(e);
                 if (e.isCancelled()) {
