@@ -222,12 +222,7 @@ void PlayerLocationSender::_forEachClientPlayerPair(
     };
 
     const auto should_send = [&](const Player &viewer, const OptionalPosition &prev, const PlayerLocationData &data) {
-#ifdef _WIN32
         return sender->_shouldSendPositionPacket(viewer.getPosition(), viewer_dimension, false, prev, data);
-#elif __linux__
-        return _shouldSendPositionPacket(viewer.getPosition(), viewer_dimension, false, prev, data,
-                                         sender->simulation_distance_);
-#endif
     };
 
     const auto hide_pair = [&](const UserEntityIdentifierComponent &user, const Player &viewer,
