@@ -29,15 +29,11 @@ namespace endstone::core {
 class EndstoneServer;
 }
 
-namespace Bedrock::Http {
-class LibHttpClientInstance;
-}
-
 struct NetherNetConnector : RemoteConnector, NetherNet::INetherNetTransportInterfaceCallbacks {
     ~NetherNetConnector() override;
 
 private:
-    const std::shared_ptr<Bedrock::Http::LibHttpClientInstance> http_library_;
+    const std::shared_ptr<void> http_library_;
     const NetherNet::NetworkID network_id_;
     std::unique_ptr<NetherNet::INetherNetTransportInterface,
                     std::function<void(NetherNet::INetherNetTransportInterface *)>>

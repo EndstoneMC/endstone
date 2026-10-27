@@ -17,6 +17,7 @@
 #include <memory>
 
 #include "bedrock/bedrock.h"
+#include "bedrock/core/utility/enable_non_owner_references.h"
 #include "bedrock/forward.h"
 #include "bedrock/network/connection_definition.h"
 #include "bedrock/network/connector.h"
@@ -26,7 +27,7 @@ class RemoteConnector : public Connector,
                         public NetworkEnableDisableListener,
                         public Bedrock::EnableNonOwnerReferences {
 public:
-    RemoteConnector(ConnectionCallbacks &, const Bedrock::NonOwnerPointer<AppPlatform> &);
+    RemoteConnector(ConnectionCallbacks &, IsNetworkAllowed);
     virtual bool host(const ConnectionDefinition &, const PrivateKeyManager &) = 0;
     virtual bool connect(const Social::GameConnectionInfo &, const Social::GameConnectionInfo &,
                          std::shared_ptr<NetherNet::IIdentityAssertionGenerator>) = 0;

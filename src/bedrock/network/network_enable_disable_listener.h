@@ -24,13 +24,15 @@ class NetworkEnableDisableListener {
     };
 
 public:
-    NetworkEnableDisableListener(brstd::copyable_function<bool() const>);
+    using IsNetworkAllowed = brstd::copyable_function<bool() const>;
+
+    NetworkEnableDisableListener(IsNetworkAllowed);
     virtual ~NetworkEnableDisableListener() = default;
 
 private:
     virtual void _onDisable() = 0;
     virtual void _onEnable() = 0;
     State state_;                                                // +8
-    brstd::copyable_function<bool() const> is_network_allowed_;  // +16
+    IsNetworkAllowed is_network_allowed_;                        // +16
 };
 static_assert(sizeof(NetworkEnableDisableListener) == 80);
