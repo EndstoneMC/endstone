@@ -125,10 +125,11 @@ private:
     ServerPlayerLoader player_loader_;  // +184
     ServerNetworkSystem &network_;      // +208
     PrivateKeyManager &server_keys_;
+    gsl::not_null<std::unique_ptr<ServerAudioContentRegistrationHandler>> server_audio_content_registration_handler_;
     ServerLocator &server_locator_;
-    gsl::not_null<PacketSender *> packet_sender_;  // +232
+    gsl::not_null<PacketSender *> packet_sender_;  // +240
     AllowList &allow_list_;
-    EditorAllowList &editor_allow_list_;  // +248
+    EditorAllowList &editor_allow_list_;  // +256
     PermissionsFile *permissions_file_;
     DenyList server_deny_list_;
     NetworkServerConfig network_server_config_;
@@ -147,7 +148,7 @@ private:
     bool allow_incoming_;
     std::unique_ptr<IServerNetworkController> server_network_controller_;
     std::string server_name_;
-    int max_num_players_;  // +880
+    int max_num_players_;  // +968
     std::unordered_set<mce::UUID> known_emote_piece_id_lookup_;
     std::vector<mce::UUID> known_emote_piece_ids_;
     std::unordered_map<std::uint64_t, std::unordered_map<std::string, std::shared_ptr<ResourcePackFileUploadManager>>>

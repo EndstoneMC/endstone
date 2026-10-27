@@ -248,6 +248,7 @@ class ScriptDeferredFlushTracker;
 class ScriptPackSettingsCache;
 class SearchQuery;
 class Seasons {};
+class ServerAudioContentRegistrationHandler;
 class ServerConnectionAuthValidator;
 class ServerInstanceEventHandler;
 class ServerLocator;
