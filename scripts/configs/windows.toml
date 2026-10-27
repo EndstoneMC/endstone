@@ -1091,3 +1091,14 @@ extra = 0
 #    that skips AddMessageIntegrity/AddMessageIntegrity32 and runs only AddFingerprint before SendTo
 # 4. confirm vs the old named DB
 pattern = "40 55 53 56 57 41 54 41 55 41 56 41 57 48 8D AC 24 ? ? ? ? 48 81 EC ? ? ? ? 0F 29 B4 24 ? ? ? ? 48 8B 05 ? ? ? ? 48 33 C4 48 89 85 ? ? ? ? 45 8B F9"
+
+[[signatures]]
+name = "?getMetadata@SimpleNetworkInterfaceImpl@NetherNet@@CA?AV?$Result@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@Verror_code@2@@Bedrock@@AEBVHttpMetadataProvider@12@@Z"
+relative = false
+extra = 0
+# 1. find bytes "61 70 70 6C 69 63 61 74 69 6F 6E 2F 73 64 70" = "application/sdp" and "Expected /v1/join/{networkId}" (unique);
+#    both are in NetherNet::HttpSignalingServer::onRequest, which routes `GET /v1/join` to a callable stored at this+0x290
+# 2. that call is `rax = [this+0x290]; rcx = result slot; rdx = this+0x290; call [rax+0x10]`, vtable slot 2 of the callable
+# 3. slot 2 is this function (the `$_0` lambda of the SimpleNetworkInterfaceImpl ctor, invoked through brstd::function): it calls the object at [[callable+8]+0x50] to write the ServerData members ("maxPlayers", "gameType") and returns Bedrock::Result<std::string>
+# function prologue (grown to unique)
+pattern = "55 56 57 53 48 81 EC ? ? ? ? 48 8D AC 24 ? ? ? ? 48 C7 85 ? ? ? ? ? ? ? ? 48 89 CE 48 8B 42"

@@ -979,3 +979,13 @@ extra = 0
 # 3. confirm: the response type is 273 (STUN_BINDING_ERROR_RESPONSE) or 784 (GOOG_PING_ERROR_RESPONSE),
 #    AddFingerprint runs only for the former, and the send goes through the Port vtable at +0x90
 pattern = "55 41 57 41 56 41 55 41 54 53 48 81 EC ? ? ? ? 4D 89 CC 4D 89 C6 49 89 F7"
+
+[[signatures]]
+name = "_ZN9NetherNet26SimpleNetworkInterfaceImpl11getMetadataERKNS0_20HttpMetadataProviderE"
+relative = false
+extra = 0
+# 1. find bytes "41 70 70 6C 69 63 61 74 69 6F 6E 2F 73 64 70" = "application/sdp"; also "Expected /v1/join/{networkId}" (unique); both are in NetherNet::HttpSignalingServer::onRequest
+# 2. the `GET /v1/join` branch does `rax = [this+0x220]; rdi = result slot; rsi = this+0x220; call [rax+0x10]`, vtable slot 2 of the callable
+# 3. slot 2 is this function (the `$_0` lambda of the SimpleNetworkInterfaceImpl ctor, invoked through brstd::function): it calls the object at [[callable+8]+0x50] to write the ServerData members ("maxPlayers", "gameType") and returns Bedrock::Result<std::string>
+# function prologue (grown to unique)
+pattern = "55 41 57 41 56 41 55 41 54 53 48 81 EC ? ? ? ? 48 89 FB 48 8B 46 08 48 8B 70"
