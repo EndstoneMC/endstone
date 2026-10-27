@@ -74,6 +74,7 @@ bool ServerNetworkHandler::tryToLoadPlayer(ServerPlayer &server_player, const Co
     endstone::PlayerLoginEvent e{endstone_player};
     server.getPluginManager().callEvent(e);
     if (e.isCancelled()) {
+        server_player.addOrRemoveComponent<endstone::core::InternalLoginCancelledFlagComponent>(true);
         const auto identifier = server_player.getPersistentComponent<UserEntityIdentifierComponent>();
         disconnect(identifier->getNetworkId(), identifier->getSubClientId(), e.getKickMessage());
     }
