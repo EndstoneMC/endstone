@@ -279,7 +279,18 @@ enum class MinecraftPacketIds : int {
     PartyDestinationCookieResponse = 350,
     SetPlayerFurnaceOptions = 351,
     RecordStarted = 352,
-    EndId = 353,
+    ClientboundMatchmakingState = 353,
+    // TODO(fixme): check the name
+    ServerboundStonecutterSetRecipe = 354,
+    // TODO(fixme): check the name
+    ClientboundStonecutterSetRecipe = 355,
+    ServerboundMatchmakingCancel = 356,
+    // TODO(fixme): check the name
+    SetPassengerOfBlock = 357,
+    ServerboundCursorItemDrag = 358,
+    ClientboundPlayAudioContent = 359,
+    ServerboundRegisterAudioContent = 360,
+    EndId = 361,
 };
 
 class NetEventCallback;

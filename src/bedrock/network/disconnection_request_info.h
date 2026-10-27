@@ -166,7 +166,8 @@ enum class DisconnectFailReason : int {
     EditorNotAllowed = 147,
     MissingStructureData = 148,
     UnsupportedTransport = 149,
-    MAX_DISCONNECT_FAIL_REASON = 150,
+    SubClientLoginNotBound = 150,
+    MAX_DISCONNECT_FAIL_REASON = 151,
 };
 
 enum class DisconnectionStage : unsigned int {
