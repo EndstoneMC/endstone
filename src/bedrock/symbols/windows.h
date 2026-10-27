@@ -11,7 +11,7 @@
 
 namespace endstone::runtime {
 
-static constexpr std::array<std::pair<std::string_view, std::size_t>, 80> symbols = {{
+static constexpr std::array<std::pair<std::string_view, std::size_t>, 81> symbols = {{
     {"BlockState::StateListNode::mHead", 223875200},
     {"ChunkBlenderFactory::getOrCreateChunkBlender::cache_cap", 140104298},
     {"DBChunkStorage::_hasChunk::cache_cap", 57742576},
@@ -29,7 +29,6 @@ static constexpr std::array<std::pair<std::string_view, std::size_t>, 80> symbol
     // BlockType
     {"?spawnResources@BlockType@@QEBAXAEAVBlockSource@@AEBVBlockPos@@AEBVBlock@@AEAVIRandom@@AEBUResourceDropsContext@@PEBVActor@@@Z", 24481424},
     {"?tryGetStateFromLegacyData@BlockType@@QEBAPEBVBlock@@G@Z", 24472704},
-    // BlockTypeRegistry
     // CampfireBlockActor
     {"?_finishCooking@CampfireBlockActor@@AEAAXAEAVBlockSource@@H@Z", 31781232},
     // ChunkBuildOrderPolicy
@@ -59,6 +58,7 @@ static constexpr std::array<std::pair<std::string_view, std::size_t>, 80> symbol
     // Explosion
     {"?explode@Explosion@@QEAA_NAEAVIRandom@@@Z", 14830464},
     // FurnaceBlockActor
+    {"?getItemBurnDuration@FurnaceBlockActor@@SAMAEBVItem@@M@Z", 106599088},
     // InventoryTransaction
     {"?executeWorldInteraction@InventoryTransaction@@SA?AW4InventoryTransactionError@@PEAXAEAVPlayer@@AEBVInventoryAction@@@Z", 77429824},
     // Item

@@ -11,13 +11,14 @@
 
 namespace endstone::runtime {
 
-static constexpr std::array<std::pair<std::string_view, std::size_t>, 80> symbols = {{
+static constexpr std::array<std::pair<std::string_view, std::size_t>, 81> symbols = {{
     {"BlockState::StateListNode::mHead", 267359568},
     {"ChunkBlenderFactory::getOrCreateChunkBlender::cache_cap", 86839560},
     {"DBChunkStorage::_hasChunk::cache_cap", 225495850},
     {"Enchant::mEnchants", 267193248},
     {"LevelChunk::tickImpl::seed", 265501440},
     {"MinecraftWorkerPool::ASYNC", 267549328},
+    {"_ZN17FurnaceBlockActor17getItemBurnDurationERK4Itemf", 222359904},
     {"getI18n::result", 266199248},
     // Actor
     {"_ZN5Actor10teleportToERK4Vec3biib", 188386448},
@@ -30,7 +31,6 @@ static constexpr std::array<std::pair<std::string_view, std::size_t>, 80> symbol
     // BlockType
     {"_ZNK9BlockType14spawnResourcesER11BlockSourceRK8BlockPosRK5BlockR7IRandomRK20ResourceDropsContextPK5Actor", 213354384},
     {"_ZNK9BlockType25tryGetStateFromLegacyDataEt", 213346064},
-    // BlockTypeRegistry
     // CampfireBlockActor
     {"_ZN18CampfireBlockActor14_finishCookingER11BlockSourcei", 222596128},
     // ChunkBuildOrderPolicy
@@ -59,7 +59,6 @@ static constexpr std::array<std::pair<std::string_view, std::size_t>, 80> symbol
     {"_ZNK9Dimension13forEachPlayerEN5brstd12function_refIFbR6PlayerES4_EE", 217172336},
     // Explosion
     {"_ZN9Explosion7explodeER7IRandom", 216021920},
-    // FurnaceBlockActor
     // InventoryTransaction
     {"_ZN20InventoryTransaction23executeWorldInteractionEPvR6PlayerRK15InventoryAction", 211731936},
     // Item

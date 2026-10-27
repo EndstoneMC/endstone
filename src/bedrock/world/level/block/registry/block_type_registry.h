@@ -14,6 +14,10 @@
 
 #pragma once
 
+#include <map>
+#include <memory>
+
+#include "bedrock/core/string/string_hash.h"
 #include "bedrock/platform/brstd/function_ref.h"
 #include "bedrock/shared_ptr.h"
 #include "bedrock/world/level/block/block_type.h"
@@ -21,4 +25,7 @@
 class BlockTypeRegistry {
 public:
     void forEachBlockType(brstd::function_ref<bool(BlockType const &)> callback) const;
+
+private:
+    std::map<HashedString, std::unique_ptr<BlockType>> block_lookup_map_;
 };

@@ -280,19 +280,6 @@ rip_relative = true
 rip_offset = 1
 
 [[signatures]]
-name = "_ZNK17BlockTypeRegistry16forEachBlockTypeEN5brstd12function_refIFbRK9BlockTypeES5_EE"
-relative = false
-extra = 0
-# 1. find bytes "6D 69 6E 65 63 72 61 66 74 3A 6D 6F 76 69 6E 67 62 6C 6F 63 6B 00" = "minecraft:movingblock\0"
-#    (take the xref in MinecraftCommands::initBlockEnum, not the one in VanillaItems::registerItems)
-# 2. in initBlockEnum that string is copied right after the forEachBlockType call, so the `call` just before
-#    the copy is the target (a function_ref is passed by reference)
-# 3. confirm vs the old named DB
-pattern = "E8 ? ? ? ? ? ? ? 4C 8B BB ? ? ? ? 48 89 DF"
-rip_relative = true
-rip_offset = 1
-
-[[signatures]]
 name = "_ZN18CampfireBlockActor14_finishCookingER11BlockSourcei"
 relative = false
 extra = 0
@@ -461,15 +448,17 @@ rip_relative = true
 rip_offset = 1
 
 [[signatures]]
-name = "_ZN17FurnaceBlockActor15getBurnDurationERK13ItemStackBasef"
+name = "_ZN17FurnaceBlockActor17getItemBurnDurationERK4Itemf"
 relative = false
 extra = 0
-# 1. find bytes "6D 69 6E 65 63 72 61 66 74 3A 66 75 65 6C 00" = "minecraft:fuel\0" (unique); on linux it is
-#    referenced directly inside getBurnDuration (the FuelItemComponent identifier, built inline)
-# 2. among the "minecraft:fuel" referrers, getBurnDuration is the small one (~0x117) returning
-#    fmaxf(1.0, burnInterval * componentDuration / 10.0)
-# 3. confirm vs the old named DB (static, takes ItemStackBase& + float, returns float)
-pattern = "41 56 53 50 0F 57 C9 80 7F"
+# 1. find bytes "6D 69 6E 65 63 72 61 66 74 3A 66 75 65 6C 00" = "minecraft:fuel\0" (unique); its xrefs are the
+#    functions that fetch the item's FuelItemComponent, each calling the same static helper when the item has none
+# 2. among those callers take the small bool one that checks the ItemStackBase, then Item::isComponentBased, then
+#    getComponent("minecraft:fuel"), computes fmaxf(1.0, 200 * duration / 10), and otherwise calls the helper with 200.0
+#    the call target is getItemBurnDuration: a ~0x3a9 function that compares the block type name hash against
+#    dozens of VanillaBlockTypeIds globals and returns 0.5 / 1.5 / 80 / 20 / 0.25 multiples of the burn interval
+# 3. confirm the target vs the old named DB (static, takes const Item& + float, returns float)
+pattern = "41 56 53 48 83 EC 18 48 8B 9F 38 01 00 00 F3 0F 10 97 68 01 00 00 48 85 DB 0F 84 ? ? ? ? 0F 28 C8 48 8B 83 C8 00 00 00 0F 57 C0"
 
 [[signatures]]
 name = "_ZNK4Item12readUserDataER13ItemStackBaseR10IDataInputR20ReadOnlyBinaryStream"
