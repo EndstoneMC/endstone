@@ -157,6 +157,17 @@ EndstoneServer::EndstoneServer() : logger_(LoggerFactory::getLogger(""))
     plugin_manager_ = std::make_unique<EndstonePluginManager>(*this);
     service_manager_ = std::make_unique<EndstoneServiceManager>();
     scheduler_ = std::make_unique<EndstoneScheduler>(*this);
+    command_map_ = std::make_unique<EndstoneCommandMap>(*this);
+    plugin_manager_->setBeforeEnable([this](Plugin &plugin) {
+        for (const auto &command : plugin.getDescription().getCommands()) {
+            if (const auto existing = command_map_->getCommand(command.getName());
+                existing && existing->getName() == command.getName() && existing->asPluginCommand() &&
+                &existing->asPluginCommand()->getPlugin() == &plugin) {
+                continue;
+            }
+            command_map_->registerCommand(std::make_shared<PluginCommand>(command, plugin));
+        }
+    });
     start_time_ = std::chrono::system_clock::now();
 
     try {
@@ -222,7 +233,7 @@ void EndstoneServer::setLevel(::Level &level)
     }
     level_ = std::make_unique<EndstoneLevel>(level);
     scoreboard_ = std::make_unique<EndstoneScoreboard>(level.getScoreboard());
-    command_map_ = std::make_unique<EndstoneCommandMap>(*this);
+    command_map_->attach();
     metrics_ = std::make_unique<EndstoneMetrics>(*this);  // start metrics
     loadResourcePacks();
     initRegistries();
@@ -480,7 +491,7 @@ void EndstoneServer::loadPlugins()
 void EndstoneServer::enablePlugins(PluginLoadOrder type)
 {
     if (type == PluginLoadOrder::PostWorld) {
-        command_map_->setPluginCommands();
+        command_map_->setPluginNames();
         DefaultPermissions::registerCorePermissions();
         MinecraftDefaultPermissions::registerCorePermissions();
     }
@@ -607,6 +618,9 @@ void EndstoneServer::shutdown()
 
 void EndstoneServer::reload()
 {
+    if (!level_) {
+        throw std::runtime_error("Level has not been loaded yet.");
+    }
     command_map_->clearCommands();
 
     // Wait for at most 2.5 seconds for plugins to close their async tasks
