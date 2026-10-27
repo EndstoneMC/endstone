@@ -289,14 +289,32 @@ struct PlayerHotbarSelectedSlotChangeEvent {
 };
 static_assert(sizeof(PlayerHotbarSelectedSlotChangeEvent) == 184);
 
-// TODO(fixme): check the name
-struct UnknownPlayerEvent5 {};
-// TODO(fixme): check the name
-struct UnknownPlayerEvent36 {};
-// TODO(fixme): check the name
-struct UnknownPlayerEvent37 {};
-// TODO(fixme): check the name
-struct UnknownPlayerEvent8 {};
+struct PlayerCraftRecipeAfterEvent {
+    WeakEntityRef player;
+    ItemStack item;
+    WeakRef<Dimension> dimension;
+    std::optional<BlockPos> block_pos;
+};
+static_assert(sizeof(PlayerCraftRecipeAfterEvent) == 208);
+
+struct PlayerCursorItemGrabEvent {
+    WeakEntityRef player;
+    ItemStack item;
+};
+static_assert(sizeof(PlayerCursorItemGrabEvent) == 176);
+
+struct PlayerCursorItemReleaseEvent {
+    WeakEntityRef player;
+    ItemStack item;
+};
+static_assert(sizeof(PlayerCursorItemReleaseEvent) == 176);
+
+struct PlayerItemAttackEntityBeforeEvent {
+    WeakRef<EntityContext> player;
+    WeakRef<EntityContext> target_entity;
+    std::optional<Vec3> aim_direction;
+};
+static_assert(sizeof(PlayerItemAttackEntityBeforeEvent) == 64);
 
 template <typename Return>
 struct PlayerGameplayEvent;
@@ -305,23 +323,24 @@ template <>
 struct PlayerGameplayEvent<void>
     : ConstEventVariant<
           PlayerSkinLoadedClientEvent, PlayerAddEvent, PlayerAddExpEvent, PlayerAddLevelEvent, PlayerArmorExchangeEvent,
-          UnknownPlayerEvent5, PlayerDestroyBlockEvent, PlayerUseNameTagEvent, PlayerDropItemEvent, PlayerEatFoodEvent,
-          PlayerDamageEvent, PlayerDisconnectEvent, PlayerFormCloseEvent, PlayerFormResponseEvent,
+          PlayerCraftRecipeAfterEvent, PlayerDestroyBlockEvent, PlayerUseNameTagEvent, PlayerDropItemEvent,
+          PlayerEatFoodEvent, PlayerDamageEvent, PlayerDisconnectEvent, PlayerFormCloseEvent, PlayerFormResponseEvent,
           PlayerDataDrivenScreenClosedEvent, PlayerInputModeChangeEvent, PlayerInitialSpawnEvent,
           PlayerOpenContainerEvent, PlayerOpenedContainerEvent, PlayerCloseContainerEvent, PlayerClosedContainerEvent,
           PlayerHasInvalidContainerEvent, PlayerShootArrowEvent, PlayerSwingStartEvent, PlayerRespawnEvent,
           PlayerSleepStateChangeEvent, PlayerStopLoadingEvent, PlayerUpdateInteractionEvent,
           PlayerSelectedItemChangedEvent, PlayerDimensionChangeBeforeEvent, PlayerDimensionChangeAfterEvent,
           PlayerInteractWithEntityAfterEvent, PlayerInteractWithBlockAfterEvent, PlayerEmoteEvent,
-          PlayerScriptInputEvent, PlayerInventoryItemChangeEvent, UnknownPlayerEvent36, UnknownPlayerEvent37,
-          PlayerHotbarSelectedSlotChangeEvent, PlayerInputPermissionCategoryChangeEvent> {};
+          PlayerScriptInputEvent, PlayerInventoryItemChangeEvent, PlayerCursorItemGrabEvent,
+          PlayerCursorItemReleaseEvent, PlayerHotbarSelectedSlotChangeEvent, PlayerInputPermissionCategoryChangeEvent> {
+};
 static_assert(sizeof(PlayerGameplayEvent<void>) == 384);
 
 template <>
 struct PlayerGameplayEvent<CoordinatorResult>
     : ConstEventVariant<PlayerMeCommandEvent, PlayerSayCommandEvent, PlayerTellCommandEvent, PlayerTellRawCommandEvent,
                         PlayerTitleCommandEvent, PlayerTitleRawCommandEvent, PlayerGetExperienceOrbEvent,
-                        PlayerInteractEvent, UnknownPlayerEvent8, PlayerInteractWithEntityBeforeEvent,
+                        PlayerInteractEvent, PlayerItemAttackEntityBeforeEvent, PlayerInteractWithEntityBeforeEvent,
                         PlayerInteractWithBlockBeforeEvent> {};
 BEDROCK_STATIC_ASSERT_SIZE(PlayerGameplayEvent<CoordinatorResult>, 232, 232);
 
