@@ -39,5 +39,7 @@ protected:
     std::unique_ptr<DynamicPropertiesBlockActorComponent> dynamic_properties_;          // +24
     std::unique_ptr<RandomizableContainerBlockActorComponent> randomizable_container_;  // +32
     std::unique_ptr<ContainerBlockActorComponent> container_;                           // +40
+    // TODO(fixme): check the name
+    std::unique_ptr<UnknownBlockActorComponent> unknown_30_;                            // +48
 };
-BEDROCK_STATIC_ASSERT_SIZE(BlockActor, 48, 48);
+BEDROCK_STATIC_ASSERT_SIZE(BlockActor, 56, 56);

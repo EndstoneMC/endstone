@@ -286,6 +286,7 @@ class TradeTables;
 class TrimMaterialRegistry;
 class TrimPatternRegistry;
 class TrustedSkinHelper;
+class UnknownBlockActorComponent {};
 class VolumeEntityManagerServer;
 class WorkerPool;
 class WorldClockRegistry;
