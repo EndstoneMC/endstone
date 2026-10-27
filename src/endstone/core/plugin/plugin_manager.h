@@ -54,6 +54,7 @@ public:
     std::vector<Plugin *> loadPlugins(std::vector<std::string> files) override;
     void enablePlugin(Plugin &plugin) const override;
     void enablePlugins() const override;
+    // TODO(fixme): remove in v0.12, where enablePlugin registers commands through Server::getCommandMap
     void setBeforeEnable(std::function<void(Plugin &)> before_enable);
     void disablePlugin(Plugin &plugin) override;
     void disablePlugins() override;

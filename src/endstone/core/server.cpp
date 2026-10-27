@@ -158,6 +158,7 @@ EndstoneServer::EndstoneServer() : logger_(LoggerFactory::getLogger(""))
     service_manager_ = std::make_unique<EndstoneServiceManager>();
     scheduler_ = std::make_unique<EndstoneScheduler>(*this);
     command_map_ = std::make_unique<EndstoneCommandMap>(*this);
+    // TODO(fixme): remove in v0.12, where enablePlugin registers commands through Server::getCommandMap
     plugin_manager_->setBeforeEnable([this](Plugin &plugin) {
         for (const auto &command : plugin.getDescription().getCommands()) {
             if (const auto existing = command_map_->getCommand(command.getName());
