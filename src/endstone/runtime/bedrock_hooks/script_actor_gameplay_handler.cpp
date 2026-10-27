@@ -27,7 +27,7 @@
 namespace {
 bool handleEvent(const ActorKilledEvent &event)
 {
-    if (const auto *mob = WeakEntityRef(event.actor_context).tryUnwrap<::Mob>(); mob && !mob->isPlayer()) {
+    if (const auto *mob = WeakEntityRef(event.actor_context).tryUnwrap<::Mob>(); mob) {
         const auto &server = endstone::core::EndstoneServer::getInstance();
         endstone::ActorDeathEvent e{mob->getEndstoneActor<endstone::core::EndstoneMob>(),
                                     std::make_unique<endstone::core::EndstoneDamageSource>(*event.source)};
