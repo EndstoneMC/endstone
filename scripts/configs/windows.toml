@@ -65,7 +65,7 @@ extra = 0
 # 3. confirm it is slot 10 (+0x50) of every Dimension vtable and has no direct callers
 # 4. confirm vs the old named DB
 # function prologue
-pattern = "41 57 41 56 41 54 56 57 53 48 83 EC 48 48 89 D6 48 89 CF 48 8B 05 ? ? ? ? 48 31 E0 48 89 44 24 40 48 8B 89 C0 00 00 00 48 8B 01"
+pattern = "41 57 41 56 41 54 56 57 53 48 83 EC 48 48 89 D6 48 89 CF 48 8B 05 ? ? ? ? 48 31 E0 48 89 44 24 ? 48 8B 89 ? ? ? ? 48 8B 01 48 8B 80 ? ? ? ? FF 15 ? ? ? ? 48 8B 18 4C 8B 60 ? 4C 39 E3 74 ? 4C 8D 74 24 ? EB ? 0F 1F 40 ? 48 83 C3 18 4C 39 E3 74 ? 4C 89 F1 48 89 DA E8 ? ? ? ? 80 7C 24 ? 00 74 ? 4C 89 F1 31 D2"
 
 [[signatures]]
 name = "?sendPacketForEntity@Dimension@@UEAAXAEBVActor@@AEBVPacket@@PEBVPlayer@@@Z"
@@ -109,18 +109,18 @@ extra = 0
 # anchored on a CALL SITE, and any candidate MUST be confirmed by its call-closure marker strings
 # ("pack.description", "pack.name", the locale table "da_DK de_DE el_GR es_ES ...") - never by pattern
 # shape, size or alignment, which all silently agreed with the wrong address.
-# 1. find bytes "63 6F 6D 6D 61 6E 64 73 2E 67 69 76 65 2E 73 75 63 63 65 73 73 00"
-#    = "commands.give.success\0" (unique); its lone data xref is inside GiveCommand::execute (~0x1754)
-# 2. inside it find bytes "48 B9 69 74 65 6D 2E 61 69 72" = `mov rcx, 'item.air'` (unique binary-wide,
-#    as is the `mov rcx, 'air.name'` right after it) - that pair is the SSO literal "item.air.name" being
-#    built for getI18n().get("item.air.name", ...); the `call getI18n` sits 0x2d bytes above it, and the
-#    pattern below spans call -> literal, resolving through the E8 rel32
-# 3. confirm the decoded target: a ~0x7b fn that thread-safe-initializes a static and returns its fixed
-#    address (Init_thread_header/footer + atexit), whose lone non-CRT callee is I18nImpl::I18nImpl (~0x42a)
-# 4. confirm THAT ctor holds "pack.description" and "pack.name" directly, and reaches the locale table
-#    ("da_DK de_DE el_GR es_ES ...") deeper in its closure - the sibling accessors reach none of these
+# 1. find bytes "63 6F 6D 6D 61 6E 64 73 2E 67 69 76 65 2E 73 75 63 63 65 73 73 00" = "commands.give.success\0"
+#    (unique); its lone data xref is inside GiveCommand::execute (~0x1754)
+# 2. inside it find bytes "48 B9 69 74 65 6D 2E 61 69 72" = `mov rcx, 'item.air'` (unique binary-wide, as is the `mov
+#    rcx, 'air.name'` right after it) - that pair is the SSO literal "item.air.name" being built for
+#    getI18n().get("item.air.name", ...); the `call getI18n` sits 0x2e bytes above it (a 1-byte nop (90) follows the
+#    call in 1.26.60), and the pattern below spans call -> literal, resolving through the E8 rel32
+# 3. confirm the decoded target: a ~0x7b fn that thread-safe-initializes a static and returns its fixed address
+#    (Init_thread_header/footer + atexit), whose lone non-CRT callee is I18nImpl::I18nImpl (~0x42a)
+# 4. confirm THAT ctor holds "pack.description" and "pack.name" directly, and reaches the locale table ("da_DK de_DE
+#    el_GR es_ES ...") deeper in its closure - the sibling accessors reach none of these
 # 5. confirm vs the old named DB (returns I18n&, i.e. the static I18nImpl)
-pattern = "E8 ? ? ? ? 0F 57 C0 0F 29 45 ? 48 C7 85 ? ? ? ? 00 00 00 00 48 C7 85 ? ? ? ? 0D 00 00 00 48 C7 85 ? ? ? ? 0F 00 00 00 48 B9 69 74 65 6D 2E 61 69 72"
+pattern = "E8 ? ? ? ? 90 0F 57 C0 0F 29 45 ? 48 C7 85 ? ? ? ? 00 00 00 00 48 C7 85 ? ? ? ? 0D 00 00 00 48 C7 85 ? ? ? ? 0F 00 00 00 48 B9 69 74 65 6D 2E 61 69 72"
 rip_relative = true
 rip_offset = 1
 
@@ -157,7 +157,7 @@ extra = 0
 # 3. confirm it is Level vtable slot +0x6e0, right before getActiveUsersCount
 # 4. confirm vs the old named DB
 # function prologue
-pattern = "48 83 EC 68 48 8B 89 58 04 00 00 48 C7 44 24 20 00 00 00 00 48 8D 05 ? ? ? ? 48 89 44 24 28"
+pattern = "48 83 EC 68 48 8B 89 ? ? ? ? 48 C7 44 24 20 00 00 00 00 48 8D 05 ? ? ? ? 48 89 44 24 28 48 8D 44 24 20"
 
 [[signatures]]
 name = "?tickImpl@LevelChunk@@AEAAXAEAVBlockSource@@AEBUTick@@V?$function@$$A6AXXZ@std@@@Z"
@@ -169,7 +169,7 @@ extra = 0
 # 4. confirm the std::function argument (r9) is invoked through its impl vtable +0x10 right after the
 #    Level::isClientSide check (Level vtable +0x9e8) - that is the spawner callback
 # function prologue
-pattern = "55 41 57 41 56 41 55 41 54 56 57 53 48 81 EC ? ? ? ? 48 8D AC 24 ? ? ? ? 44 0F 29 8D ? ? ? ? 44 0F 29 85 ? ? ? ? 0F 29 BD ? ? ? ? 0F 29 B5 ? ? ? ? 48 C7 85 ? ? ? ? FE FF FF FF 4C 89 CE 4C 89 45 ? 80 B9 82 00 00 00 00 0F 85"
+pattern = "55 41 57 41 56 41 55 41 54 56 57 53 48 81 EC ? ? ? ? 48 8D AC 24 ? ? ? ? 44 0F 29 95 ? ? ? ? 44 0F 29 8D ? ? ? ? 44 0F 29 85 ? ? ? ? 66 0F 7F BD 10 02 00 00"
 
 [[signatures]]
 name = "LevelChunk::tickImpl::seed"
@@ -188,12 +188,12 @@ rip_offset = 13
 name = "?_log_va@LogDetails@BedrockLog@@AEAAXW4LogAreaID@@IPEBDHH1PEAD@Z"
 relative = false
 extra = 0
-# 1. find "Starting Server" (the message logged by start@DedicatedServer); its xref is the `lea` at that
-#    log call, and the `call` after the arg-setup targets Bedrock::Diagnostics::log
-# 2. walk its single-call forwarders down: Diagnostics::log -> a 5-byte jmp thunk -> BedrockLog::log_va
-#    -> _log_va (two log_va overloads exist; take the one the thunk calls)
-# 3. confirm each hop vs the old named DB
-pattern = "55 41 57 41 56 41 55 41 54 56 57 53 48 81 EC ? ? ? ? 48 8D AC 24 ? ? ? ? 48 C7 85 ? ? ? ? ? ? ? ? 4D 89 CE 44 89 85 ? ? ? ? 89 95 ? ? ? ? 48 89 CE 48 8B 95"
+# 1. find "Starting Server" (the message logged by start@DedicatedServer); its xref is the `lea` at that log call, and
+#    the `call` after the arg-setup targets Bedrock::Diagnostics::log
+# 2. find _log_va by the timestamp-divisor constants 0x346dc5d63886594b / 0x20c49ba5e353f7cf / 0xd6bf94d5e57a42bd plus
+#    the string '{}:{:03}' (the forwarder chain from Diagnostics::log was restructured in 1.26.60)
+# 3. confirm vs the old named DB
+pattern = "55 41 57 41 56 41 55 41 54 56 57 53 48 81 EC ? ? ? ? 48 8D AC 24 ? ? ? ? 48 C7 85 ? ? ? ? FE FF FF FF 4D 89 CE 44 89 C7 41 89 D5 48 89 CE"
 
 [[signatures]]
 name = "?_forEachClientPlayerPair@PlayerLocationSender@@AEAAXAEBV?$vector@VWeakEntityRef@@V?$allocator@VWeakEntityRef@@@std@@@std@@V?$function@$$A6AXAEBVUserEntityIdentifierComponent@@AEBVPlayer@@1@Z@3@@Z"
@@ -206,7 +206,7 @@ extra = 0
 # 3. confirm the body: rcx is never read; it walks the vector in rdx in a nested loop (the outer one looks up
 #    UserEntityIdentifierComponent, hash 0x0B845379), calls the functor's slot +0x10 per pair and slot +0x20 at
 #    the end
-pattern = "55 41 57 41 56 41 55 41 54 56 57 53 48 81 EC 88 00 00 00 48 8D AC 24 80 00 00 00 48 C7 45 00 FE FF FF FF 4C 89 C6 48 8B 3A"
+pattern = "55 41 57 41 56 41 55 41 54 56 57 53 48 81 EC ? ? ? ? 48 8D AC 24 ? ? ? ? 48 C7 45 ? FE FF FF FF 4C 89 45 ? 48 8B 3A"
 
 [[signatures]]
 name = "?_shouldSendPositionPacket@PlayerLocationSender@@AEBA_NAEBVVec3@@AEBUDimensionType@@_NAEBV?$optional@VVec3@@@std@@AEBUPlayerLocationData@1@@Z"
@@ -217,20 +217,17 @@ extra = 0
 # 2. confirm the body: it tests byte [arg6+0xC] == 1, compares the distance with the float at this+0x78, uses
 #    432.0 and 2304.0, and calls atan2f and fmodf
 # 3. confirm vs the old named DB
-pattern = "48 81 EC 98 00 00 00 44 0F 29 A4 24 80 00 00 00 44 0F 29 5C 24 70 44 0F 29 54 24 60 44 0F 29 4C 24 50 44 0F 29 44 24 40 0F 29 7C 24 30 0F 29 74 24 20 48 8B 84 24 C8 00 00 00"
+pattern = "48 83 EC 78 44 0F 29 54 24 ? 44 0F 29 4C 24 ? 44 0F 29 44 24 ? 0F 29 7C 24 ? 0F 29 74 24 ? 48 8B 84 24 ? ? ? ?"
 
 [[signatures]]
 name = "?processPlayerNetworking@PlayerTickManager@@QEAAXAEBUTick@@@Z"
 relative = false
 extra = 0
-# 1. find "T *Bedrock::NonOwnerPointer<GameplayUserManager>::_get() const [T = GameplayUserManager]" and the
-#    DimensionManager twin; processPlayerNetworking leas each of them four times
-# 2. confirm the body: it alternates DimensionManager::forEachDimension and
-#    GameplayUserManager::forEachActiveGameplayUser (four calls); the second lambda calls
-#    PlayerTickProxy::preReplicationTick
-# 3. confirm vs the old named DB
+# 1. NonOwnerPointer assert strings are gone in 1.26.60; take Level::_subTick ("Level - subtick"), its call after the
+#    second _forEachClientPlayerPair to a ~115 B wrapper that tail-calls this
+# 2. confirm: four calls alternating two helpers
 # function prologue
-pattern = "56 57 48 81 EC ? ? ? ? 48 89 D6 48 89 CF 48 83 39 00"
+pattern = "56 57 48 81 EC ? ? ? ? 48 89 D6 48 89 CF 48 8B 01"
 
 [[signatures]]
 name = "?resolve@ResolveHelper@BlockDescriptor@@QEAAX_N@Z"
@@ -253,7 +250,7 @@ extra = 0
 #    data value, returns a const Block*)
 # 3. confirm the callee vs the old named DB (size/args/return-shape)
 # function prologue
-pattern = "55 41 57 41 56 41 55 41 54 56 57 53 48 81 EC ? ? ? ? 48 8D AC 24 ? ? ? ? 48 C7 45 ? ? ? ? ? 89 D7 48 89 CE 44 0F B7 F2"
+pattern = "55 41 57 41 56 41 55 41 54 56 57 53 48 81 EC ? ? ? ? 48 8D AC 24 ? ? ? ? 48 C7 45 ? ? ? ? ? 89 D7 48 89 CE 44 0F B7 E2"
 
 [[signatures]]
 name = "?spawnResources@BlockType@@QEBAXAEAVBlockSource@@AEBVBlockPos@@AEBVBlock@@AEAVIRandom@@AEBUResourceDropsContext@@PEBVActor@@@Z"
@@ -267,9 +264,7 @@ extra = 0
 #    (cvtepi32_ps on pos->x, separate load of pos->z) - other callers pass an actor's float position -
 #    and follows spawnOrbs with a guarded indirect call (the ResourceDropsContext visitor)
 # 3. confirm the shape vs the old named DB
-pattern = "E8 ? ? ? ? 48 8B 7F ? 0F 57 C0 0F 29 44 24"
-rip_relative = true
-rip_offset = 1
+pattern = "55 41 57 41 56 41 55 41 54 56 57 53 48 83 EC ? 48 8D 6C 24 ? 48 C7 45 ? ? ? ? ? 4C 89 CF 4C 89 C6 48 89 D3 49 89 CE 4C 8B BD ? ? ? ?"
 
 [[signatures]]
 name = "?forEachBlockType@BlockTypeRegistry@@QEBAXV?$function_ref@$$A6A_NAEBVBlockType@@@Z$$A6A_N0@Z@brstd@@@Z"
@@ -312,7 +307,7 @@ extra = 0
 #    looking up mPowerAssociationMap at this+0x80 and calling removeSource through vtable slot +0x60
 # 4. confirm vs the old named DB (member, takes BlockSource*, returns void)
 # function prologue
-pattern = "55 41 57 41 56 41 55 41 54 56 57 53 48 81 EC ? ? ? ? 48 8D AC 24 ? ? ? ? 0F 29 BD ? ? ? ? 0F 29 B5 ? ? ? ? 48 C7 85 ? ? ? ? FE FF FF FF 48 89 95 ? ? ? ? 49 89 CC 48 8B 81 80 01 00 00 48 89 85 ? ? ? ? 48 3B 81 88 01 00 00"
+pattern = "55 41 57 41 56 41 55 41 54 56 57 53 48 81 EC ? ? ? ? 48 8D AC 24 ? ? ? ? 66 44 0F 7F 9D 70 02 00 00"
 
 [[signatures]]
 name = "?run@Command@@QEBAXAEBVCommandOrigin@@AEAVCommandOutput@@@Z"
@@ -323,9 +318,7 @@ extra = 0
 #    also uses is shared, so pick the .editorLocked one)
 # 2. its lone data xref is a `lea` inside this function
 # 3. walk up to the prologue
-pattern = "E8 ? ? ? ? 8B 85 ? ? ? ? 85 C0 48 8D 0D"
-rip_relative = true
-rip_offset = 1
+pattern = "55 41 57 41 56 41 55 41 54 56 57 53 48 81 EC ? ? ? ? 48 8D AC 24 ? ? ? ? 48 C7 85 ? ? ? ? FE FF FF FF 4D 89 C4 48 89 D7 48 89 CB 4C 8B 71 10"
 
 [[signatures]]
 name = "?load@CommandOriginLoader@@SA?AV?$unique_ptr@VCommandOrigin@@U?$default_delete@VCommandOrigin@@@std@@@std@@AEBVCompoundTag@@AEAVServerLevel@@@Z"
@@ -358,7 +351,7 @@ extra = 0
 # 2. its lone data xref is a `lea` inside this function
 # 3. walk up to the prologue
 # function prologue
-pattern = "55 41 57 41 56 41 55 41 54 56 57 53 48 81 EC ? ? ? ? 48 8D AC 24 ? ? ? ? 48 C7 45 ? ? ? ? ? 48 89 4D ? 48 8B 42"
+pattern = "55 41 57 41 56 41 55 41 54 56 57 53 48 81 EC ? ? ? ? 48 8D AC 24 ? ? ? ? 48 C7 45 60 FE FF FF FF 49 89 CC 48 8B 42 10"
 
 [[signatures]]
 name = "?registerCommand@CommandRegistry@@QEAAXAEBV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@PEBDW4CommandPermissionLevel@@UCommandFlag@@3@Z"
@@ -368,9 +361,7 @@ extra = 0
 #    (the trailing 00 is essential - without it this is a prefix of registerAlias's superset string; unique)
 # 2. its lone data xref is a `lea` inside this function
 # 3. walk up to the prologue
-pattern = "4C 8D 05 ? ? ? ? 48 8D 95 ? ? ? ? 48 8B 8D ? ? ? ? 41 B1 ? E8 ? ? ? ? 48 8B 85"
-rip_relative = true
-rip_offset = 25
+pattern = "55 41 57 41 56 41 55 41 54 56 57 53 48 81 EC ? ? ? ? 48 8D AC 24 ? ? ? ? 48 C7 85 ? ? ? ? FE FF FF FF 4C 89 45 D8 48 89 D7"
 
 [[signatures]]
 name = "?registerOverloadInternal@CommandRegistry@@AEAAXAEAUSignature@1@AEAUOverload@1@@Z"
@@ -437,7 +428,7 @@ extra = 0
 # 3. instead reach it from the Recipes walk: it is the large function constructing the payload's 11
 #    vectors in sequence, tail-called from the CraftingDataPacket(CraftingDataPacketPayload) ctor
 # 4. decompile to confirm it is the builder and not that ctor - both take the payload type
-pattern = "55 41 57 41 56 41 55 41 54 56 57 53 48 81 EC ? ? ? ? 48 8D AC 24 ? ? ? ? 0F 29 B5 ? ? ? ? 48 C7 85 ? ? ? ? ? ? ? ? 44 88 85 ? ? ? ? 48 89 D6"
+pattern = "55 41 57 41 56 41 55 41 54 56 57 53 48 81 EC ? ? ? ? 48 8D AC 24 ? ? ? ? 0F 29 B5 ? ? ? ? 48 C7 85 ? ? ? ? ? ? ? ? 44 88 85 ? ? ? ? 48 89 D6 48 89 CB"
 
 [[signatures]]
 name = "?start@DedicatedServer@@QEAA?AW4ServerExitCode@@AEBV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@AEBVActivationArguments@Bedrock@@@Z"
@@ -463,9 +454,7 @@ extra = 0
 #    (the full-param overload also calls it, right before freeing the Explosion's vectors - the byte
 #    pattern below matches that second call site)
 # 4. confirm the callee vs the old named DB (member of Explosion, takes IRandom&, returns bool)
-pattern = "E8 ? ? ? ? 89 C6 48 8B 4D ? 48 85 C9 74 ? 48 8B 55 ? 48 29 CA 48 81 FA"
-rip_relative = true
-rip_offset = 1
+pattern = "55 41 57 41 56 41 55 41 54 56 57 53 48 81 EC ? ? ? ? 48 8D AC 24 ? ? ? ? 44 0F 29 BD ? ? ? ? 44 0F 29 B5 ? ? ? ? 44 0F 29 AD ? ? ? ? 44 0F 29 A5 ? ? ? ? 44 0F 29 9D ? ? ? ? 44 0F 29 95 ? ? ? ? 44 0F 29 8D ? ? ? ? 44 0F 29 85 ? ? ? ? 0F 29 BD ? ? ? ? 0F 29 B5 ? ? ? ? 48 C7 85 ? ? ? ? FE FF FF FF F3 0F 10 41 0C"
 
 [[signatures]]
 name = "?getBurnDuration@FurnaceBlockActor@@SAMAEBVItemStackBase@@M@Z"
@@ -488,7 +477,12 @@ rip_offset = 1
 name = "?executeWorldInteraction@InventoryTransaction@@SA?AW4InventoryTransactionError@@PEAXAEAVPlayer@@AEBVInventoryAction@@@Z"
 relative = false
 extra = 0
-pattern = "56 57 53 48 83 EC ? 41 8B 40"
+# 1. find the lambda vtable run of InventoryTransaction::getExecuteFunction (Linux: RTTI
+#    '..getExecuteFunctionERK15InventorySource..$_5'; Windows: 6-slot vtables [dtor, dtor, operator(), ...] in a run
+#    with sizes ~65,44,418,40,274,212,171)
+# 2. the target is operator() (slot 2 Windows / slot 6 Linux) of the 6th lambda ($_5), the one switching on action+0xc
+#    and testing two item slots
+pattern = "56 57 53 48 83 EC ? 4C 89 C6 41 8B 40 ?"
 
 [[signatures]]
 name = "?readUserData@Item@@UEBAXAEAVItemStackBase@@AEAVIDataInput@@AEAVReadOnlyBinaryStream@@@Z"
@@ -503,19 +497,20 @@ extra = 0
 #    vtables); in that vtable readUserData sits two slots below hasCustomHoverName, past
 #    Item::buildEffectDescriptionName - cross-check the slot index against the old named DB
 # 4. confirm vs the old named DB (Item virtual; the lone code caller of the base is ShieldItem::readUserData)
-pattern = "55 41 57 41 56 41 54 56 57 53 48 81 EC ? ? ? ? 48 8D AC 24 ? ? ? ? 48 C7 45 ? ? ? ? ? 4D 89 CE 4C 89 C7 48 89 D6 4C 89 C1 E8 ? ? ? ? 66 85 C0 0F 84 ? ? ? ? 0F B7 C0 3D"
+pattern = "55 41 57 41 56 41 55 41 54 56 57 53 48 81 EC ? ? ? ? 48 8D AC 24 ? ? ? ? 48 C7 45 ? ? ? ? ? 4D 89 CE 4C 89 C7 48 89 D6"
 
 [[signatures]]
 name = "?fromTag@ItemInstance@@SA?AV1@AEBVCompoundTag@@@Z"
 relative = false
 extra = 0
-# 1. find bytes "62 75 79 41 00" = "buyA\0" and "62 75 79 42 00" = "buyB\0" (both unique, both xref into
-#    the caller MerchantRecipe::load - that pair pins the function)
-# 2. landmark: MerchantRecipe::load reads the "buyA"/"buyB" child tags and calls this on each to build the
-#    trade ItemInstances - so the `call` right after a buyA/buyB tag lookup is the target
+# 1. find bytes "62 75 79 41 00" = "buyA\0" and "62 75 79 42 00" = "buyB\0" (both unique, both xref into the caller
+#    MerchantRecipe::load - that pair pins the function)
+# 2. landmark: MerchantRecipe::load reads the "buyA"/"buyB" child tags and calls this on each to build the trade
+#    ItemInstances - so the `call` right after a buyA/buyB tag lookup is the target; 1.26.60 has one call per tag (2
+#    sites, same target) and fromTag's small ctor callee is inlined (body ~0x1cb)
 # 3. confirm the callee vs the old named DB (static, takes a CompoundTag, returns an ItemInstance)
 # function prologue
-pattern = "55 41 56 56 57 53 48 81 EC ? ? ? ? 48 8D AC 24 ? ? ? ? 48 C7 45 ? ? ? ? ? 48 89 D6 49 89 CE 48 8D 7D ? 48 89 F9 E8"
+pattern = "55 41 57 41 56 56 57 53 48 81 EC ? ? ? ? 48 8D AC 24 ? ? ? ? 48 C7 45 ? ? ? ? ? 48 89 D6 49 89 CF 4C 8D 35 ? ? ? ?"
 
 [[signatures]]
 name = "?lookupByName@ItemRegistry@@AEBA?AV?$WeakPtr@VItem@@@@AEAHV?$basic_string_view@DU?$char_traits@D@std@@@std@@@Z"
@@ -593,9 +588,7 @@ extra = 0
 # 5. confirm vs the old named DB (distinctive body: brackets the virtual _subTick between
 #    LevelEventCoordinator::sendLevelTickStart/End, then writes getOptimizationVersion()->tickID into the
 #    entt CurrentTickComponent)
-pattern = "E8 ? ? ? ? 48 8B 4E ? 48 85 C9 74 ? 48 8B 41"
-rip_relative = true
-rip_offset = 1
+pattern = "55 56 57 53 48 81 EC ? ? ? ? 48 8D AC 24 ? ? ? ? 48 C7 45 30 FE FF FF FF 48 89 CF 8B 05"
 
 [[signatures]]
 name = "?_trySpreadTo@LiquidBlock@@IEBAXAEAVBlockSource@@AEBVBlockPos@@H1E@Z"
@@ -615,9 +608,7 @@ extra = 0
 #    type-6 bail, _isLiquidBlocking, lava->emitFizzParticle, spread-tail setBlock
 # 4. confirm vs the old named DB: protected (IEBA), args (BlockSource&, const BlockPos&, int, const
 #    BlockPos&, uchar), void return
-pattern = "E8 ? ? ? ? 41 39 FC 74 ? 41 39 FD 75 ?"
-rip_relative = true
-rip_offset = 1
+pattern = "41 57 41 56 41 54 56 57 55 53 48 83 EC 70 44 89 CD"
 
 [[signatures]]
 name = "?getRandomChunk@MainChunkSource@@UEAA?AV?$shared_ptr@VLevelChunk@@@std@@AEAVRandom@@@Z"
@@ -699,7 +690,7 @@ extra = -16
 # 2. take the read of that pointer in ChunkSource::checkAndLaunchChunkGenerationTasks, where the async pool's
 #    worker count (end - begin of the workers vector at +0x20/+0x28) sets the 2n / 6n task caps
 # 3. resolve the rip-relative load and subtract 16 to reach the NonOwnerPointer itself
-pattern = "48 8B 05 ? ? ? ? 48 8B 78 28 48 2B 78 20 48 C1 EF 03 01 FF 44 8D 34 7F"
+pattern = "48 8B 05 ? ? ? ? 4C 8B 60 28 4C 2B 60 20 49 C1 EC 03 45 01 E4 48 8B 46 40"
 rip_relative = true
 rip_offset = 3
 
@@ -713,7 +704,7 @@ extra = 0
 #    teleportTo's slot)
 # 3. read the same slot in the new vtable -> Mob::knockback (ServerPlayer::knockback is a 5-byte thunk to it)
 # function prologue (grown to unique)
-pattern = "55 41 57 41 56 56 57 53 48 81 EC ? ? ? ? 48 8D AC 24 ? ? ? ? 44 0F 29 8D ? ? ? ? 44 0F 29 85 ? ? ? ? 0F 29 BD ? ? ? ? 0F 29 B5 ? ? ? ? 48 C7 85 ? ? ? ? ? ? ? ? 0F 28 F3 0F 28 FA 48 89 D7"
+pattern = "55 41 57 41 56 56 57 53 48 81 EC ? ? ? ? 48 8D AC 24 ? ? ? ? 44 0F 29 95 ? ? ? ?"
 
 [[signatures]]
 name = "?send@NetworkSystem@@QEAAXAEBVNetworkIdentifier@@AEBVPacket@@W4SubClientId@@@Z"
@@ -724,21 +715,19 @@ extra = 0
 # 2. tell them apart (name-independent): sendToMultiple loops over an id vector (back-edge); this one
 #    (send) is straight-line for a single id
 # 3. confirm by diffing both vs the old named DB
-pattern = "48 8B 4E ? 48 83 C1 ? 48 83 C4 ? 5B 5D 5F 5E E9 ? ? ? ?"
-rip_relative = true
-rip_offset = 17
+pattern = "55 41 57 41 56 41 55 41 54 56 57 53 48 81 EC ? ? ? ? 48 8D AC 24 ? ? ? ? 48 C7 85 ? ? ? ? ? ? ? ? 45 89 CD 4C 89 C6"
 
 [[signatures]]
 name = "?onNewIncomingConnection@NetworkSystem@@EEAA_NAEBVNetworkIdentifier@@$$QEAV?$shared_ptr@VNetworkPeer@@@std@@@Z"
 relative = false
 extra = 0
-# 1. find bytes "42 61 74 63 68 65 64 20 4E 65 74 77 6F 72 6B 20 54 61 73 6B 47 72 6F 75 70 00"
-#    = "Batched Network TaskGroup\0" (unique); its lone xref is in BatchedNetworkPeer's ctor, whose only caller is
-#    NetworkConnection's ctor
+# 1. find bytes "42 61 74 63 68 65 64 20 4E 65 74 77 6F 72 6B 20 54 61 73 6B 47 72 6F 75 70 00" = "Batched Network
+#    TaskGroup\0" (unique); its lone xref is in BatchedNetworkPeer's ctor, whose only caller is NetworkConnection's ctor
 # 2. NetworkConnection's ctor has two callers, onNewIncomingConnection and onNewOutgoingConnection; both sit in
 #    NetworkSystem's primary vtable right after the destructor, and incoming is the earlier slot
 # 3. confirm vs the old named DB: it walks mConnections comparing NetworkIdentifier before building the connection
-pattern = "55 41 57 41 56 41 55 41 54 56 57 53 48 81 EC ? ? ? ? 48 8D AC 24 ? ? ? ? 48 C7 45 50 ? ? ? ? 4D 89 C6 48 89 D7 48 89 CE 48 8D 99 ? ? ? ? 48 8B 81 ? ? ? ? 48 8B 91 ? ? ? ? 48 39 C2"
+# 4. 1.26.60 gave the function a trailing 4th argument (r9)
+pattern = "55 41 57 41 56 41 55 41 54 56 57 53 48 81 EC ? ? ? ? 48 8D AC 24 ? ? ? ? 48 C7 45 70 ? ? ? ? 4C 89 4D 60"
 
 [[signatures]]
 name = "?tick@PistonBlockActor@@UEAAXAEAVBlockSource@@@Z"
@@ -761,7 +750,7 @@ extra = 0
 # 5. skip the string route - the piston block ids are runtime-init HashedStrings (referenced only by block
 #    registration as stack temps), so string -> global -> tick never connects; the vtable scan is the way
 # function prologue
-pattern = "55 41 57 41 56 41 55 41 54 56 57 53 48 81 EC ? ? ? ? 48 8D AC 24 ? ? ? ? 44 0F 29 8D ? ? ? ? 44 0F 29 85 ? ? ? ? 0F 29 BD ? ? ? ? 0F 29 B5 ? ? ? ? 48 C7 85 ? ? ? ? ? ? ? ? 48 89 CE FF 41"
+pattern = "55 41 57 41 56 41 55 41 54 56 57 53 48 81 EC ? ? ? ? 48 8D AC 24 ? ? ? ? 66 0F 7F B5 B0 01 00 00"
 
 [[signatures]]
 name = "?completeUsingItem@Player@@QEAAXXZ"
@@ -778,7 +767,7 @@ extra = 0
 #    ItemEventCoordinator::sendEvent and ends by calling Player::stopUsingItem)
 # 4. confirm vs the old named DB (Player member, no args, returns void)
 # function prologue
-pattern = "55 41 57 41 56 41 55 41 54 56 57 53 48 81 EC ? ? ? ? 48 8D AC 24 ? ? ? ? 48 C7 85 ? ? ? ? ? ? ? ? 48 89 CE 48 8D B9 ? ? ? ? 48 8D 9D ? ? ? ? 48 89 D9 E8 ? ? ? ? 4C 8D 35 ? ? ? ? 4C 89 B5 ? ? ? ? 48 89 D9 48 89 FA E8 ? ? ? ? 48 8B 46 ? 4C 8B 68 ? 4D 85 ED 74"
+pattern = "55 41 57 41 56 41 55 41 54 56 57 53 48 81 EC ? ? ? ? 48 8D AC 24 ? ? ? ? 0F 29 B5 ? ? ? ? 48 C7 85 ? ? ? ? FE FF FF FF 48 89 CE 48 8D 91 ? ? ? ?"
 
 [[signatures]]
 name = "?drop@Player@@UEAA_NAEBVItemStack@@_N@Z"
@@ -801,7 +790,7 @@ extra = 0
 # 2. its lone data xref (a validateBlockPos label arg) is a `lea` inside this function
 # 3. walk up to the prologue
 # function prologue
-pattern = "55 41 57 41 56 41 54 56 57 53 48 81 EC ? ? ? ? 48 8D AC 24 ? ? ? ? 44 0F 29 9D ? ? ? ? 44 0F 29 95 ? ? ? ? 44 0F 29 8D ? ? ? ? 44 0F 29 85"
+pattern = "55 41 57 41 56 41 54 56 57 53 48 81 EC ? ? ? ? 48 8D AC 24 ? ? ? ? 44 0F 29 9D ? ? ? ? 44 0F 29 95 ? ? ? ? 44 0F 29 8D ? ? ? ? 44 0F 29 45 ?"
 
 [[signatures]]
 name = "?stopSleepInBed@Player@@UEAAX_N0@Z"
@@ -827,9 +816,7 @@ extra = 0
 #    and the picked-up actor, builds the packet and sends it via the picked-up actor's block-source/level
 #    visitor (it also reads VanillaItemNames::Arrow and fires ActorEventCoordinator::sendEvent)
 # 4. confirm vs the old named DB (Player member, args (Actor&, int, int), returns bool)
-pattern = "E8 ? ? ? ? 84 C0 74 ? 48 8B 06 48 8B 40 ? 48 89 F1 FF 15 ? ? ? ? 48 8D 05"
-rip_relative = true
-rip_offset = 1
+pattern = "55 41 57 41 56 41 55 41 54 56 57 53 48 81 EC ? ? ? ? 48 8D AC 24 ? ? ? ? 48 C7 85 ? ? ? ? FE FF FF FF 44 89 CB 48 89 D6 48 89 CF 48 8B 89 ? ? ? ?"
 
 [[signatures]]
 name = "?teleportTo@Player@@UEAAXAEBVVec3@@_NHH1@Z"
@@ -838,7 +825,7 @@ extra = 0
 # 1. find bytes "33 20 50 6C 61 79 65 72 20 74 65 6C 65 70 6F 72 74 54 6F 00" = "3 Player teleportTo\0" (unique)
 # 2. its lone data xref (a validateVec3Position label arg) is a `lea` inside this function
 # 3. walk up to the prologue
-pattern = "55 41 57 41 56 41 54 56 57 53 48 81 EC ? ? ? ? 48 8D AC 24 ? ? ? ? 44 0F 29 9D ? ? ? ? 44 0F 29 95 ? ? ? ? 44 0F 29 8D ? ? ? ? 66 44 0F 7F 85 ? ? 00 00"
+pattern = "55 41 57 41 56 41 54 56 57 53 48 81 EC ? ? ? ? 48 8D AC 24 ? ? ? ? 44 0F 29 8D ? ? ? ? 44 0F 29 85 ? ? ? ? 66 0F 7F BD ? ? 00 00"
 
 [[signatures]]
 name = "?Send_Windows_Linux_360NoVDP@RNS2_Windows_Linux_360@RakNet@@KAHHPEAURNS2_SendParameters@2@PEBDI@Z"
@@ -866,18 +853,18 @@ rip_offset = 1
 name = "?createSources@RepositoryFactory@@UEBA?AV?$shared_ptr@VRepositorySources@@@std@@AEBVIResourcePackRepository@@@Z"
 relative = false
 extra = 0
-# 1. reach the ResourcePackRepository ctor via the unique string "Resource Repository Async Group" (the
-#    async TaskGroup name); its lone data xref is a `lea` inside that ctor
-# 2. in the ctor, when the supplied IRepositoryFactory arg is null, it `operator new(8)` a default
-#    RepositoryFactory, stores &RepositoryFactory::vftable into it (-> mFactory), then immediately makes a
-#    virtual call through that vtable's SLOT 1 to build the shared_ptr<RepositorySources> that becomes
-#    mSources - that callee is createSources
-# 3. so take RepositoryFactory's vtable (slot 0 = the deleting dtor, may show ICF-folded with an unrelated
-#    empty dtor; slot 1 = createSources; slot 2 = createIO@RepositoryFactory); slot 1 is the target
-# 4. confirm by its body: lock_shared ServiceLocator<AppPlatform>, RepositorySourceOptions::create(
-#    repository, platform), then make_shared<RepositorySources>(options); confirm vs the old named DB
+# 1. reach the ResourcePackRepository ctor via the unique string "Resource Repository Async Group" (the async TaskGroup
+#    name); its lone data xref is a `lea` inside that ctor
+# 2. in the ctor, when the supplied IRepositoryFactory arg is null, it `operator new(8)` a default RepositoryFactory,
+#    stores &RepositoryFactory::vftable into it (-> mFactory), then immediately makes a virtual call through that
+#    vtable's SLOT 1 to build the shared_ptr<RepositorySources> that becomes mSources - that callee is createSources
+# 3. take RepositoryFactory's 3-slot vtable (the lea right after operator new in the ctor): slot 0 = the deleting dtor
+#    (may show ICF-folded with an unrelated empty dtor), slot 1 = createSources, slot 2 = createIO@RepositoryFactory;
+#    slot 1 is the target
+# 4. confirm by its body: lock_shared ServiceLocator<AppPlatform>, RepositorySourceOptions::create(repository,
+#    platform), then make_shared<RepositorySources>(options); confirm vs the old named DB
 # function prologue
-pattern = "55 41 57 41 56 41 54 56 57 53 48 81 EC ? ? ? ? 48 8D AC 24 ? ? ? ? 0F 29 B5 ? ? ? ? 48 C7 85 ? ? ? ? ? ? ? ? 4C 89 C3 48 89 D6 48 8D 3D"
+pattern = "55 56 57 53 48 81 EC ? ? ? ? 48 8D AC 24 ? ? ? ? 0F 29 B5 ? ? ? ? 48 C7 85 ? ? ? ? FE FF FF FF 4C 89 C7 48 89 D6 48 8D 1D ? ? ? ? 48 89 D9 E8 ? ? ? ?"
 
 [[signatures]]
 name = "?_sendMessage@SayCommand@@CAXAEBV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@AEBV?$optional@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@3@0AEBUCommandOriginIdentity@@AEAVLevel@@@Z"
@@ -914,20 +901,21 @@ extra = 0
 #    4C89C3/4889D6/4889CF, 1.26.30 is 4C89C7/4989D4/4889CB - re-derive per version, else the pattern
 #    false-matches an unrelated function that kept the old shuffle (the 1.26.20 pattern hit sub @0x1F5ADE0)
 # function prologue
-pattern = "55 41 57 41 56 41 55 41 54 56 57 53 48 81 EC ? ? ? ? 48 8D AC 24 ? ? ? ? 0F 29 B5 ? ? ? ? 48 C7 85 ? ? ? ? ? ? ? ? 4D 89 CE 4C 89 C7 48 89 D6 48 89 CB 48 8B 01"
+pattern = "55 41 57 41 56 41 55 41 54 56 57 53 48 81 EC ? ? ? ? 48 8D AC 24 ? ? ? ? 0F 29 B5 ? ? ? ? 48 C7 85 ? ? ? ? ? ? ? ? 4C 89 CE 4C 89 C7 49 89 D6 48 89 CB 48 8B 01"
 
 [[signatures]]
 name = "?disconnectClientWithMessage@ServerNetworkHandler@@QEAAXAEBVNetworkIdentifier@@W4SubClientId@@W4DisconnectFailReason@Connection@@AEBV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@V?$optional@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@7@@Z"
 relative = false
 extra = 0
-# 1. find bytes "25 73 20 68 61 73 20 62 65 65 6E 20 6B 69 63 6B 65 64 20 66 6F 72 20 66 6C 6F 6F 64 69 6E 67 20 74 68 65 20 63 68 61 74 2E 00"
-#    = "%s has been kicked for flooding the chat." (unique); its lone xref is in the chat-flood lambda,
-#    where it is lea'd as the FORMAT string for a Bedrock::Diagnostics::log call - NOT the disconnect itself
-# 2. disconnectClientWithMessage is the next handler this-call BELOW that log call (~0x56 down): it loads
-#    the handler this-ptr from a stack slot, sets rdx = the NetworkIdentifier and r9d = a DisconnectFailReason imm
-# 3. confirm vs the old named DB
+# 1. find bytes "7B 7D 20 68 61 73 20 62 65 65 6E 20 6B 69 63 6B 65 64 20 66 6F 72 20 66 6C 6F 6F 64 69 6E 67 20 74 68
+#    65 20 63 68 61 74 2E 00" = "{} has been kicked for flooding the chat.\0" (unique); its lone xref is in the
+#    chat-flood lambda, where it is lea'd as the FORMAT string for a Bedrock::Diagnostics::log call - NOT the disconnect
+#    itself
+# 2. disconnectClientWithMessage is the next handler this-call BELOW that log call (~0x56 down): it loads the handler
+#    this-ptr from a stack slot, sets rdx = the NetworkIdentifier and r9d = a DisconnectFailReason imm
+# 3. confirm vs the old named DB; the "(via command)" variant calls the neighbour 0xb74860 instead
 # function prologue
-pattern = "55 41 57 41 56 41 55 41 54 56 57 53 48 81 EC ? ? ? ? 48 8D AC 24 ? ? ? ? 48 C7 85 ? ? ? ? ? ? ? ? 44 89 8D ? ? ? ? 44 88 85 ? ? ? ? 48 89 95"
+pattern = "55 41 57 41 56 41 55 41 54 56 57 53 48 81 EC ? ? ? ? 48 8D AC 24 ? ? ? ? 48 C7 85 ? ? ? ? ? ? ? ? 44 89 8D ? ? ? ? 45"
 
 [[signatures]]
 name = "?initializeServer@ServerInstance@@QEAA?AUServerInitResult@ServerInitialization@@$$QEAUServerInstanceInitArguments@@@Z"
@@ -939,7 +927,7 @@ extra = 0
 # 2. its lone data xref is a `lea` inside this function
 # 3. walk up to the prologue
 # function prologue
-pattern = "55 41 57 41 56 41 55 41 54 56 57 53 B8 ? ? ? ? E8 ? ? ? ? 48 29 C4 48 8D AC 24 ? ? ? ? 0F 29 B5 ? ? ? ? 48 C7 85 ? ? ? ? ? ? ? ? 4D 89 C5"
+pattern = "55 41 57 41 56 41 55 41 54 56 57 53 B8 ? ? ? ? E8 ? ? ? ? 48 29 C4 48 8D AC 24 ? ? ? ? 0F 29 B5 ? ? ? ? 48 C7 85 ? ? ? ? FE FF FF FF 4C 89 C3 48 89 95 ? ? ? ?"
 
 [[signatures]]
 name = "?tryToLoadPlayer@ServerNetworkHandler@@QEAA_NAEAVServerPlayer@@AEBVConnectionRequest@@AEBUPlayerAuthenticationInfo@@@Z"
@@ -948,7 +936,7 @@ extra = 0
 # 1. find bytes "6D 69 6E 65 63 72 61 66 74 3A 70 6C 61 79 65 72 2E 30 00" = "minecraft:player.0\0" (unique)
 # 2. its data xrefs (both of them) are `lea`s inside this function
 # 3. walk up to the prologue
-pattern = "55 41 57 41 56 41 55 41 54 56 57 53 48 81 EC ? ? ? ? 48 8D AC 24 80 00 00 00 48 C7 45 ? FE FF FF FF 4D 89 CE 4C 89 C7 48 89 D6 49 89 CF 48 81 C1"
+pattern = "55 41 57 41 56 41 55 41 54 56 57 53 48 81 EC ? ? ? ? 48 8D AC 24 ? ? ? ? 48 C7 45 40 ? ? ? ? 4C 89 C7 48 89 D6 49 89 CE"
 
 [[signatures]]
 name = "?updateServerAnnouncement@ServerNetworkHandler@@QEAAXXZ"
@@ -963,7 +951,7 @@ extra = 0
 #    call (just above _sendLevelData/_sendAdditionalLevelData)
 # 4. confirm vs the old named DB
 # function prologue
-pattern = "55 41 57 41 56 41 55 41 54 56 57 53 48 81 EC ? ? ? ? 48 8D AC 24 ? ? ? ? 48 C7 85 ? ? ? ? ? ? ? ? 80 B9 ? ? ? ? ? 0F 85"
+pattern = "55 41 57 41 56 41 55 41 54 56 57 53 48 81 EC ? ? ? ? 48 8D AC 24 ? ? ? ? 48 C7 85 ? ? ? ? ? ? ? ? 80 B9 ? ? ? ? 01 0F 85 ? ? ? ? 48"
 
 [[signatures]]
 name = "?changeDimension@ServerPlayer@@UEAAXUDimensionType@@@Z"
@@ -992,19 +980,21 @@ extra = 0
 #    read ("DisplayObjectives" / "LastUniqueID" / "dummy" default criteria)
 # 3. confirm vs the old named DB (ctor args: CommandSoftEnumRegistry, LevelStorage*, not_null<NonOwnerPointer<GameplayUserManager>>); caller_count 1 = ServerLevel::_initializeScoreboard. Size ballooned 0x3d4 -> 0x3032 from the inlining
 # function prologue
-pattern = "55 41 57 41 56 41 55 41 54 56 57 53 48 81 EC ? ? ? ? 48 8D AC 24 ? ? ? ? 0F 29 BD ? ? ? ? 0F 29 B5 ? ? ? ? 48 C7 85 ? ? ? ? ? ? ? ? 4C 89 8D ? ? ? ? 4C 89 C6 48 89 CF"
+pattern = "55 41 57 41 56 41 55 41 54 56 57 53 48 81 EC ? ? ? ? 48 8D AC 24 ? ? ? ? 0F 29 BD ? ? ? ? 0F 29 B5 ? ? ? ? 48 C7 85 ? ? ? ? FE FF FF FF 4C 89 4D 40 4C 89 C6"
 
 [[signatures]]
 name = "?_updateChunkPublisherView@ServerPlayer@@MEAAXAEBVVec3@@M@Z"
 relative = false
 extra = 0
-# 1. find "NetworkChunkPublisherUpdatePacket" and follow getName to the packet's vtable; of the functions that
-#    lea it (dtor, make_packet, cereal/entt glue), this is the one that also calls ChunkViewSource::move
-# 2. confirm the body: look direction from the SIN table, then vtable +0x20 and +0x30 on the chunk build order
-#    policy at [[ChunkViewSource+0x28]+0x3b0], then the 16-block move check before ChunkViewSource::move
-# 3. preReplicationTick calls it through ServerPlayer vtable +0x7b0; confirm vs the old named DB
+# 1. find "NetworkChunkPublisherUpdatePacket" and follow getName to the packet's vtable; of the functions that lea it
+#    (dtor, make_packet, cereal/entt glue), this is the one that also calls ChunkViewSource::move
+# 2. confirm the body: look direction from the SIN table, then vtable +0x20 and +0x30 on the chunk build order policy at
+#    [[ChunkViewSource+0x28]+0x3b0], then the 16-block move check before ChunkViewSource::move
+# 3. in 1.26.60 the vtable slot (ServerPlayer, last) is a 444 B front half calling an outlined body that refs the packet
+#    vtable; take the slot, not the outlined body; preReplicationTick calls it through ServerPlayer vtable +0x7b0;
+#    confirm vs the old named DB
 # function prologue
-pattern = "55 41 57 41 56 41 55 41 54 56 57 53 48 81 EC ? ? ? ? 48 8D AC 24 ? ? ? ? 44 0F 29 85 ? ? ? ? 0F 29 BD ? ? ? ? 0F 29 B5 ? ? ? ? 48 C7 85 ? ? ? ? FE FF FF FF 0F 28 F2 48 89 CE"
+pattern = "56 57 55 53 48 81 EC ? ? ? ? 44 0F 29 8C 24 ? ? ? ? 44 0F 29 44 24 ? 0F 29 7C 24 ? 0F 29 74 24 ? 0F 28 F2"
 
 [[signatures]]
 name = "?update@ServerWaypoint@@UEAAXAEBVPlayer@@@Z"
@@ -1016,7 +1006,7 @@ extra = 0
 # 3. confirm the body: it walks the texture vector at this+0x70 in 0x38-byte steps comparing cvtsi2ss bounds with
 #    the viewer distance, calls setTexturePath, then the virtual at +0x50 (calculateIsVisible) and
 #    `or byte ptr [rsi+0x88], 2`
-pattern = "55 41 57 41 56 41 55 41 54 56 57 53 48 81 EC B8 00 00 00 48 8D AC 24 80 00 00 00 48 C7 45 30 FE FF FF FF 49 89 D5 48 89 CE"
+pattern = "55 41 57 41 56 41 55 41 54 56 57 53 48 81 EC ? ? ? ? 48 8D AC 24 ? ? ? ? 48 C7 45 ? FE FF FF FF 49 89 D4 48 89 CE"
 
 [[signatures]]
 name = "?update@VanillaWaypointManager@@QEAAXAEAVPlayer@@AEAVServerLocatorBar@@_N@Z"
@@ -1029,7 +1019,7 @@ extra = 0
 #    ServerLocatorBar::update next; the body compares that flag with byte [rcx+0x10] and calls the Level virtuals
 #    at +0x9F8 (getPlayerList) and +0x1F0 (fetchEntity)
 # 3. confirm vs the old named DB
-pattern = "55 41 57 41 56 41 55 41 54 56 57 53 48 81 EC 78 02 00 00 48 8D AC 24 80 00 00 00 0F 29 BD E0 01 00 00 0F 29 B5 D0 01 00 00 48 C7 85 C8 01 00 00 FE FF FF FF 49 89 D7"
+pattern = "55 41 57 41 56 41 55 41 54 56 57 53 48 81 EC ? ? ? ? 48 8D AC 24 ? ? ? ? 44 0F 29 8D ? ? ? ? 44 0F 29 85 ? ? ? ? 0F 29 BD ? ? ? ? 0F 29 B5 ? ? ? ? 48 C7 85 ? ? ? ? FE FF FF FF 49 89 D7 49 89 CC"
 
 [[signatures]]
 name = "?updateWeather@WeatherManager@@QEAAXMHMH@Z"
@@ -1043,7 +1033,7 @@ extra = 0
 # 4. confirm vs the old named DB (neighbouring slots line up). The thunk's member offset (0x718 in 1.26.32)
 #    is a fragile fallback anchor - prefer the vtable slot, which cross-checks against the neighbours
 # function prologue
-pattern = "55 41 57 41 56 56 57 53 48 81 EC ? ? ? ? 48 8D AC 24 ? ? ? ? 44 0F 29 95 ? ? ? ? 44 0F 29 8D ? ? ? ? 44 0F 29 85 ? ? ? ? 0F 29 7D"
+pattern = "55 56 57 53 48 81 EC ? ? ? ? 48 8D AC 24 ? ? ? ? 44 0F 29 95"
 
 [[signatures]]
 name = "?SwitchSelectedConnectionInternal@P2PTransportChannel@webrtc@@AEAAXPEAVConnection@2@W4IceSwitchReason@2@@Z"
@@ -1067,22 +1057,21 @@ extra = 0
 # 2. walk up to the function start - .pdata RUNTIME_FUNCTION (win) / .eh_frame FDE (linux); the body
 #    parses the signal into a variant<ConnectRequest, ConnectResponse, ConnectError, CandidateAdd>
 # 3. confirm vs the old named DB
-pattern = "55 41 57 41 56 41 55 41 54 56 57 53 48 81 EC ? ? ? ? 48 8D AC 24 80 00 00 00 48 C7 85 ? ? ? ? FE FF FF FF 44 89 8D ? ? ? ? 4C 89 C6 49 89 D7 49 89 CE 49 8B 38 49 8B 58 08"
+pattern = "55 41 57 41 56 41 55 41 54 56 57 53 48 81 EC ? ? ? ? 48 8D AC 24 ? ? ? ? 48 C7 85 ? ? ? ? ? ? ? ? 45 89 CF 4C 89 C6"
 
 [[signatures]]
 name = "?SendLanBroadcastResponse@LanThreadManager@NetherNet@@UEAAXAEBVSocketAddress@webrtc@@UNetworkID@2@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z"
 relative = false
 extra = 0
-# 1. find bytes "52 65 63 65 69 76 65 64 20 64 69 73 63 6F 76 65 72 79 20 72 65 71 75 65 73 74"
-#    = "Received discovery request" (unique); its lone xref is in SimpleNetworkInterfaceImpl::OnLanEvent
-#    (DiscoveryRequest), which then calls getLanDiscovery() and the ILanDiscovery virtual at [vtable+0x30]
-# 2. that slot 6 of the LanThreadManager ILanDiscovery vtable is SendLanBroadcastResponse (win) / a thunk
-#    that adjusts `this` and jumps to it (linux, secondary vtable of `N9NetherNet16LanThreadManagerE`)
-# 3. cross-check: the function is one of three xrefs to "P2P::NetworkID NetherNet::NetworkID::operator
-#    NetworkID() const" (with BroadcastTask and SendSignalingMessageTo); it checks webrtc::Thread::IsCurrent,
-#    reposts itself via a lambda when off-thread, else writes the 0x47c-capped header and calls SendToHelper
+# 1. find bytes "52 65 63 65 69 76 65 64 20 64 69 73 63 6F 76 65 72 79 20 72 65 71 75 65 73 74" = "Received discovery
+#    request" (unique); its lone xref is in SimpleNetworkInterfaceImpl::OnLanEvent (DiscoveryRequest), which then calls
+#    getLanDiscovery() and the ILanDiscovery virtual at [vtable+0x30]
+# 2. that slot 6 of the LanThreadManager ILanDiscovery vtable is SendLanBroadcastResponse (win) / a thunk that adjusts
+#    `this` and jumps to it (linux, secondary vtable of `N9NetherNet16LanThreadManagerE`)
+# 3. 1.26.60 moved the NetworkID.cpp assert strings out of this function; confirm by vtable slot 6 and by the
+#    neighbouring slots matching the old ones by size
 # 4. confirm vs the old named DB
-pattern = "55 41 57 41 56 41 55 41 54 56 57 53 48 81 EC ? ? ? ? 48 8D AC 24 80 00 00 00 48 C7 85 ? ? ? ? FE FF FF FF 4C 89 4D ? 4D 89 C7 48 89 D6 48 89 CF"
+pattern = "55 41 57 41 56 41 55 41 54 56 57 53 48 81 EC ? ? ? ? 48 8D AC 24 ? ? ? ? 48 C7 85 ? ? ? ? ? ? ? ? 4C 89 8D ? ? ? ? 4D 89 C7 48 89 D6"
 
 [[signatures]]
 # name is arbitrary, this is actually hooking NetherNet::`anonymous namespace'::TransportFactoryImpl
