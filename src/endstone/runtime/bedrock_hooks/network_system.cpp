@@ -15,6 +15,7 @@
 #include "bedrock/network/network_system.h"
 
 #include <memory>
+#include <optional>
 #include <utility>
 
 #include "bedrock/network/batched_network_peer.h"
@@ -25,9 +26,11 @@
 #include "endstone/core/server.h"
 #include "endstone/runtime/hook.h"
 
-bool NetworkSystem::onNewIncomingConnection(const NetworkIdentifier &id, std::shared_ptr<NetworkPeer> &&peer)
+bool NetworkSystem::onNewIncomingConnection(const NetworkIdentifier &id, std::shared_ptr<NetworkPeer> &&peer,
+                                            std::optional<WebKey> web_key)
 {
-    if (!ENDSTONE_HOOK_CALL_ORIGINAL(&NetworkSystem::onNewIncomingConnection, this, id, std::move(peer))) {
+    if (!ENDSTONE_HOOK_CALL_ORIGINAL(&NetworkSystem::onNewIncomingConnection, this, id, std::move(peer),
+                                     std::move(web_key))) {
         return false;
     }
 

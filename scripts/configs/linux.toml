@@ -138,7 +138,7 @@ extra = 0
 pattern = "55 41 57 41 56 41 55 41 54 53 48 83 EC 68 48 89 54 24 ? 4C 8B 26"
 
 [[signatures]]
-name = "_ZN20PlayerLocationSender25_shouldSendPositionPacketERK4Vec313DimensionTypebRKNSt3__18optionalIS0_EERKNS_18PlayerLocationDataEf"
+name = "_ZNK20PlayerLocationSender25_shouldSendPositionPacketERK4Vec3RK13DimensionTypebRKNSt3__18optionalIS0_EERKNS_18PlayerLocationDataE"
 relative = false
 extra = 0
 # 1. the checkPlayerPairsAndMaybeSendPackets __func's operator() (vtable slot 6) calls this twice
@@ -448,7 +448,7 @@ rip_relative = true
 rip_offset = 1
 
 [[signatures]]
-name = "_ZN17FurnaceBlockActor17getItemBurnDurationERK4Itemf"
+name = "_ZN17FurnaceBlockActor19getItemBurnDurationERK4Itemf"
 relative = false
 extra = 0
 # 1. find bytes "6D 69 6E 65 63 72 61 66 74 3A 66 75 65 6C 00" = "minecraft:fuel\0" (unique); its xrefs are the
@@ -679,7 +679,7 @@ extra = 0
 pattern = "55 41 57 41 56 41 55 41 54 53 48 83 EC 38 89 CD 48 89 D3 49 89 F6 49 89 FF 48 8B 05"
 
 [[signatures]]
-name = "_ZN13NetworkSystem23onNewIncomingConnectionERK17NetworkIdentifierONSt3__110shared_ptrI11NetworkPeerEE"
+name = "_ZN13NetworkSystem23onNewIncomingConnectionERK17NetworkIdentifierONSt3__110shared_ptrI11NetworkPeerEENS3_8optionalI6WebKeyEE"
 relative = false
 extra = 0
 # 1. use NetworkSystem's RTTI vtable `_ZTV13NetworkSystem` and take the primary (offset-to-top 0) one

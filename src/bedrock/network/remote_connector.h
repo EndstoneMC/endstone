@@ -16,6 +16,7 @@
 
 #include <memory>
 
+#include "bedrock/bedrock.h"
 #include "bedrock/forward.h"
 #include "bedrock/network/connection_definition.h"
 #include "bedrock/network/connector.h"
@@ -38,4 +39,4 @@ public:
     virtual bool setApplicationHandshakeCompleted(const NetworkIdentifier &) = 0;
     virtual void setDisableLanSignaling(bool) = 0;
 };
-static_assert(sizeof(RemoteConnector) == 80);
+BEDROCK_STATIC_ASSERT_SIZE(RemoteConnector, 120, 128);

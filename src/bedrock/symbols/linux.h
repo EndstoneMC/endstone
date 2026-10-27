@@ -18,7 +18,6 @@ static constexpr std::array<std::pair<std::string_view, std::size_t>, 81> symbol
     {"Enchant::mEnchants", 267193248},
     {"LevelChunk::tickImpl::seed", 265501440},
     {"MinecraftWorkerPool::ASYNC", 267549328},
-    {"_ZN17FurnaceBlockActor17getItemBurnDurationERK4Itemf", 222359904},
     {"getI18n::result", 266199248},
     // Actor
     {"_ZN5Actor10teleportToERK4Vec3biib", 188386448},
@@ -59,6 +58,8 @@ static constexpr std::array<std::pair<std::string_view, std::size_t>, 81> symbol
     {"_ZNK9Dimension13forEachPlayerEN5brstd12function_refIFbR6PlayerES4_EE", 217172336},
     // Explosion
     {"_ZN9Explosion7explodeER7IRandom", 216021920},
+    // FurnaceBlockActor
+    {"_ZN17FurnaceBlockActor19getItemBurnDurationERK4Itemf", 222359904},
     // InventoryTransaction
     {"_ZN20InventoryTransaction23executeWorldInteractionEPvR6PlayerRK15InventoryAction", 211731936},
     // Item
@@ -97,7 +98,7 @@ static constexpr std::array<std::pair<std::string_view, std::size_t>, 81> symbol
     // NetherNet::TransportFactoryImpl
     {"_ZN9NetherNet20TransportFactoryImpl24createTransportInterfaceERKNS_9NetworkIDERKNS_22TransportConfigurationEPNS_37INetherNetTransportInterfaceCallbacksE", 229387072},
     // NetworkSystem
-    {"_ZN13NetworkSystem23onNewIncomingConnectionERK17NetworkIdentifierONSt3__110shared_ptrI11NetworkPeerEE", 147988560},
+    {"_ZN13NetworkSystem23onNewIncomingConnectionERK17NetworkIdentifierONSt3__110shared_ptrI11NetworkPeerEENS3_8optionalI6WebKeyEE", 147988560},
     {"_ZN13NetworkSystem4sendERK17NetworkIdentifierRK6Packet11SubClientId", 147886720},
     // PistonBlockActor
     {"_ZN16PistonBlockActor4tickER11BlockSource", 222125824},
@@ -110,7 +111,7 @@ static constexpr std::array<std::pair<std::string_view, std::size_t>, 81> symbol
     {"_ZN6Player4takeER5Actorii", 198085440},
     // PlayerLocationSender
     {"_ZN20PlayerLocationSender24_forEachClientPlayerPairERKNSt3__16vectorI13WeakEntityRefNS0_9allocatorIS2_EEEENS0_8functionIFvRK29UserEntityIdentifierComponentRK6PlayerSE_EEE", 215938800},
-    {"_ZN20PlayerLocationSender25_shouldSendPositionPacketERK4Vec313DimensionTypebRKNSt3__18optionalIS0_EERKNS_18PlayerLocationDataEf", 215940032},
+    {"_ZNK20PlayerLocationSender25_shouldSendPositionPacketERK4Vec3RK13DimensionTypebRKNSt3__18optionalIS0_EERKNS_18PlayerLocationDataE", 215940032},
     // PlayerTickManager
     {"_ZN17PlayerTickManager23processPlayerNetworkingERK4Tick", 215649536},
     // RakNet::RNS2_Windows_Linux_360

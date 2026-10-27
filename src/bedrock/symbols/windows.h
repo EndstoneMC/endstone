@@ -97,7 +97,7 @@ static constexpr std::array<std::pair<std::string_view, std::size_t>, 81> symbol
     // NetherNet::TransportFactoryImpl
     {"?createTransportInterface@TransportFactoryImpl@NetherNet@@QEAAPEAVINetherNetTransportInterface@2@AEBUNetworkID@2@AEBUTransportConfiguration@2@PEAVINetherNetTransportInterfaceCallbacks@2@@Z", 121922368},
     // NetworkSystem
-    {"?onNewIncomingConnection@NetworkSystem@@EEAA_NAEBVNetworkIdentifier@@$$QEAV?$shared_ptr@VNetworkPeer@@@std@@@Z", 12733808},
+    {"?onNewIncomingConnection@NetworkSystem@@EEAA_NAEBVNetworkIdentifier@@$$QEAV?$shared_ptr@VNetworkPeer@@@std@@V?$optional@VWebKey@@@4@@Z", 12733808},
     {"?send@NetworkSystem@@QEAAXAEBVNetworkIdentifier@@AEBVPacket@@W4SubClientId@@@Z", 12601200},
     // PistonBlockActor
     {"?tick@PistonBlockActor@@UEAAXAEAVBlockSource@@@Z", 77468928},
