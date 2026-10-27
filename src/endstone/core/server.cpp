@@ -37,6 +37,7 @@
 #include "bedrock/deps/nethernet/http_signaling_server.h"
 #include "bedrock/deps/nethernet/simple_network_interface_impl.h"
 #include "bedrock/network/nethernet_connector.h"
+#include "bedrock/network/packet/remove_objective_packet.h"
 #include "bedrock/network/server_network_handler.h"
 #include "bedrock/platform/threading/assigned_thread.h"
 #include "bedrock/server/dedicated_server.h"
@@ -849,8 +850,17 @@ void EndstoneServer::setPlayerBoard(EndstonePlayer &player, Scoreboard &scoreboa
     // remove player from the old board
     getPlayerBoard(player).resetScores(&player);
 
-    // add player to the new board
-    new_board.onPlayerJoined(player.getHandle());
+    std::unordered_set<const ::Objective *> removed;
+    for (const auto &slot : old_board.getDisplayObjectiveSlotNames()) {
+        const auto *display = old_board.getDisplayObjective(slot);
+        if (!display || !display->isValid() || !removed.insert(&display->getObjective()).second) {
+            continue;
+        }
+        const auto packet = MinecraftPackets::createPacket(MinecraftPacketIds::RemoveObjective);
+        std::static_pointer_cast<RemoveObjectivePacket>(packet)->payload.objective_name =
+            display->getObjective().getName();
+        player.getHandle().sendNetworkPacket(*packet);
+    }
 
     // update tracking records
     if (&scoreboard == scoreboard_.get()) {
@@ -860,6 +870,9 @@ void EndstoneServer::setPlayerBoard(EndstonePlayer &player, Scoreboard &scoreboa
         player_boards_[player.getUniqueId()] =
             std::static_pointer_cast<EndstoneScoreboard>(scoreboard.shared_from_this());
     }
+
+    // add player to the new board
+    new_board.onPlayerJoined(player.getHandle());
 }
 
 void EndstoneServer::removePlayerBoard(EndstonePlayer &player)
