@@ -42,6 +42,7 @@ class ServerNetworkSystem;
 struct ChunkPositionAndDimension {
     ChunkPos pos;
     DimensionType type;
+    bool is_biome_override;
     bool operator==(const ChunkPositionAndDimension &rhs) const
     {
         return pos.x == rhs.pos.x && pos.z == rhs.pos.z && type == rhs.type;

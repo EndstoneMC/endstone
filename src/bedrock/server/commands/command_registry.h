@@ -389,6 +389,7 @@ private:
     std::function<void(Packet const &)> network_update_callback_;                                // +0
     ScoreboardScoreAccessor get_score_for_objective_;                                            // +56
     bool is_edu_mode_;                                                                           // +128
+    bool is_code_builder_enabled_;                                                               // +129
     std::vector<ParseRule> rules_;                                                               // +136
     using ParseTableMap = std::map<std::uint32_t, ParseTable>;                                   //
     ParseTableMap parse_tables_;                                                                 // +160
