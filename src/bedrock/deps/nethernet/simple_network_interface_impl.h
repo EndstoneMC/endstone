@@ -68,8 +68,7 @@ private:
     std::unique_ptr<NetworkSessionManager> network_session_manager_;
     webrtc::scoped_refptr<webrtc::PeerConnectionFactory> peer_connection_factory_;
     std::mutex api_level_mutex_;
-    // TODO(fixme): check the name
-    std::mutex unknown_mutex_;
+    std::mutex rtc_config_mutex_;
     // TODO(fixme): webrtc::PeerConnectionInterface::RTCConfiguration
 #ifdef _WIN32
     std::byte rtc_config_[416];

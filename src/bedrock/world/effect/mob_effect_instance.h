@@ -31,8 +31,7 @@ private:
     std::optional<EffectDuration> duration_normal_;
     std::optional<EffectDuration> duration_hard_;
     int amplifier_;
-    // TODO(fixme): check the name
-    std::vector<MobEffectInstance> stored_effects_;
+    std::vector<MobEffectInstance> effects_;
     bool display_on_screen_texture_animation_;
     bool is_counter_paused_this_tick_;
     bool ambient_;

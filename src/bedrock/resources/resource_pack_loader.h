@@ -24,9 +24,9 @@
 
 class ResourcePackLoader : public ResourceLoaderBase {
 private:
-    std::unique_ptr<ResourcePackStack> full_stack_;       // +88
-    std::uint64_t unknown_60_[2];                         // +96
-    alignas(std::max_align_t) std::byte unknown_70_[64];  // +112
-    alignas(std::max_align_t) std::byte unknown_b0_[64];  // +176
+    std::unique_ptr<ResourcePackStack> full_stack_;                   // +88
+    std::uint64_t weak_this_[2];                                      // +96
+    alignas(std::max_align_t) std::byte category_file_mapping_[64];   // +112
+    alignas(std::max_align_t) std::byte merge_strategy_factory_[64];  // +176
 };
 BEDROCK_STATIC_ASSERT_SIZE(ResourcePackLoader, 240, 240);

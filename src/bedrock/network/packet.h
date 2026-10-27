@@ -280,12 +280,9 @@ enum class MinecraftPacketIds : int {
     SetPlayerFurnaceOptions = 351,
     RecordStarted = 352,
     ClientboundMatchmakingState = 353,
-    // TODO(fixme): check the name
     ServerboundStonecutterSetRecipe = 354,
-    // TODO(fixme): check the name
     ClientboundStonecutterSetRecipe = 355,
     ServerboundMatchmakingCancel = 356,
-    // TODO(fixme): check the name
     SetPassengerOfBlock = 357,
     ServerboundCursorItemDrag = 358,
     ClientboundPlayAudioContent = 359,

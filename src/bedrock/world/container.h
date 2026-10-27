@@ -102,7 +102,7 @@ enum class ContainerType : std::int8_t {
     DECORATED_POT = 35,
     CRAFTER = 36,
     DATA_DRIVEN_CONTAINER = 37,
-    RESERVED_CONTAINER_TYPE = 38,
+    DISC_PRESS = 38,
 };
 
 class Container {
