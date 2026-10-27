@@ -32,9 +32,9 @@ public:
     virtual EventResult onLevelTickEnd(Level &);
     virtual EventResult onLevelWeatherChange(const std::string &, bool, bool, bool, bool);
     virtual EventResult onRealmsStory(const std::string &);
-    virtual EventResult onWorldClockTimeModified(const Bedrock::NotNullNonOwnerPtr<WorldClock>);
-    virtual EventResult onWorldClockPaused(const Bedrock::NotNullNonOwnerPtr<WorldClock>);
-    virtual EventResult onWorldClockResumed(const Bedrock::NotNullNonOwnerPtr<WorldClock>);
-    virtual EventResult onWorldClockTimeMarker(const Bedrock::NotNullNonOwnerPtr<WorldClock>, const std::string &);
+    virtual EventResult onWorldClockTimeModified(gsl::not_null<WorldClock *>);
+    virtual EventResult onWorldClockPaused(gsl::not_null<WorldClock *>);
+    virtual EventResult onWorldClockResumed(gsl::not_null<WorldClock *>);
+    virtual EventResult onWorldClockTimeMarker(gsl::not_null<WorldClock *>, const std::string &);
     virtual EventResult onEvent(const EventType &);
 };

@@ -145,7 +145,7 @@ public:
     virtual void setBehaviorCommandStatus(const std::string &, BehaviorStatus) = 0;
     virtual void setRemotePlayerTicked(bool) = 0;
     virtual std::unique_ptr<ISparseContainerSetListener> createSparseContainerListener() = 0;
-    virtual void addChunksToQueue(std::vector<ChunkPos> const &) = 0;
+    virtual void addChunksToQueue(std::vector<ChunkPos> const &, bool) = 0;
 
 protected:
     virtual void onMovePlayerPacketNormal(Vec3 const &, Vec2 const &, float) = 0;

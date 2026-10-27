@@ -25,8 +25,8 @@ class Minecraft;
 class IMinecraftApp {
 public:
     virtual ~IMinecraftApp() = default;
-    [[nodiscard]] virtual Bedrock::NonOwnerPointer<EDUSystems> getEDUSystems() = 0;
-    [[nodiscard]] virtual Bedrock::NonOwnerPointer<const EDUSystems> getEDUSystems() const = 0;
+    [[nodiscard]] virtual Bedrock::NonOwnerPointer<EduSystems> getEduSystems() = 0;
+    [[nodiscard]] virtual Bedrock::NonOwnerPointer<const EduSystems> getEduSystems() const = 0;
     [[nodiscard]] virtual std::shared_ptr<OptionRegistry> getPrimaryUserOptions() = 0;
     [[nodiscard]] virtual std::shared_ptr<const OptionRegistry> getPrimaryUserOptions() const = 0;
     [[nodiscard]] virtual Bedrock::NotNullNonOwnerPtr<Minecraft> getPrimaryMinecraft() = 0;

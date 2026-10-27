@@ -37,7 +37,7 @@ public:
     virtual void stopDestroyBlock(BlockPos const &) = 0;
     virtual void startBuildBlock(BlockPos const &, FacingID, HandSlot) = 0;
     virtual bool buildBlock(BlockPos const &, FacingID, HandSlot, bool) = 0;
-    virtual void continueBuildBlock(BlockPos const &, FacingID, HandSlot) = 0;
+    virtual void continueBuildBlock(BlockPos const &, FacingID, HandSlot, float) = 0;
     virtual void stopBuildBlock() = 0;
     virtual void tick() = 0;
     virtual float getPickRange(InputMode const &) = 0;

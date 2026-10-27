@@ -85,13 +85,17 @@
 #include "bedrock/world/level/storage/level_storage.h"
 #include "bedrock/world/scores/scoreboard.h"
 
+namespace ServerInitialization {
+class IServerInitializer;
+}
+
 using DimensionOwnerFactory = OwnerPtrFactory<Dimension, DerivedDimensionArguments &&>;
 
 class ILevel : public Bedrock::EnableNonOwnerReferences {
 public:
     ~ILevel() override = default;
     virtual bool initialize(std::string const &, LevelSettings const &, Experiments const &, std::string const *,
-                            OptionalResolvedBiomeDataReference) = 0;
+                            OptionalResolvedBiomeDataReference, ServerInitialization::IServerInitializer *) = 0;
     virtual void startLeaveGame() = 0;
     virtual bool isLeaveGameDone() = 0;
     [[nodiscard]] virtual bool isDimensionTypeActive(DimensionType) const = 0;
@@ -350,7 +354,7 @@ public:
     virtual void registerTemporaryPointer(_TickPtr &) = 0;
     virtual void unregisterTemporaryPointer(_TickPtr &) = 0;
     virtual Bedrock::NotNullNonOwnerPtr<TempEPtrManager> getTempEPtrManager() = 0;
-    virtual bool destroyBlock(BlockSource &, BlockPos const &, bool, const BlockChangeContext &) = 0;
+    virtual bool destroyBlock(BlockSource &, BlockPos const &, bool, const BlockChangeContext &, BlockDestroySound) = 0;
     virtual Bedrock::NotNullNonOwnerPtr<LevelBlockDestroyer> getLevelBlockDestroyer() = 0;
     virtual void upgradeStorageVersion(StorageVersion) = 0;
     virtual void suspendAndSave() = 0;
