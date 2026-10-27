@@ -642,7 +642,6 @@ void EndstoneServer::reloadData()
 {
     server_instance_->onRequestResourceReload();
     level_->getHandle().loadFunctionManager();
-    initRegistries();
 }
 
 void EndstoneServer::broadcast(const Message &message, const std::string &permission) const
