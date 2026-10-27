@@ -70,7 +70,8 @@ class Metrics(MetricsBase):
             log_response_status_text=self._config.log_response_status_text_enabled,
         )
 
-        self.add_custom_chart(SimplePie("endstone_version", lambda: self._plugin.server.version))
+        server = plugin.server
+        self.add_custom_chart(SimplePie("endstone_version", lambda: server.version))
         self.add_custom_chart(DrilldownPie("python_version", _get_python_version))
 
     @property
