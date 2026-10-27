@@ -26,6 +26,7 @@
 #include "bedrock/platform/threading/spin_lock.h"
 #include "bedrock/world/level/block_pos.h"
 #include "bedrock/world/level/chunk/chunk_state.h"
+#include "bedrock/world/level/chunk/neighbor_changed_queue.h"
 #include "bedrock/world/level/chunk/sub_chunk.h"
 #include "bedrock/world/level/chunk_pos.h"
 #include "bedrock/world/level/tick.h"
@@ -34,6 +35,7 @@ class BlockSource;
 class Level;
 class Dimension;
 class ChunkSource;
+class BlockNamedTickEventManager;
 
 enum class SubChunkInitMode : int {
     All = 0,
@@ -90,6 +92,8 @@ private:
     Tick last_tick_;
     std::unique_ptr<BlockTickingQueue> tick_queue_;
     std::unique_ptr<BlockTickingQueue> random_tick_queue_;
+    std::unique_ptr<BlockNamedTickEventManager> block_named_tick_event_manager_;
+    NeighborChangedQueue neighbor_changed_queue_;
     std::vector<SubChunk> sub_chunks_;
     // ...
 };
