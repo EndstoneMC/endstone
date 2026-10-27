@@ -15,6 +15,7 @@
 #pragma once
 
 #include "bedrock/game_version.h"
+#include "bedrock/options/education_options.h"
 #include "bedrock/world/level/storage/experiment_storage.h"
 #include "bedrock/world/level/storage/storage_version.h"
 #include "bedrock/world/level/storage/world_template_level_data.h"
@@ -28,7 +29,7 @@ struct AdventureSettings {
 };
 static_assert(sizeof(AdventureSettings) == 5);
 
-class LevelData {
+class LevelData : public IEducationOptions {
 public:
     explicit LevelData(const bool);
     LevelData(const CompoundTag &);
