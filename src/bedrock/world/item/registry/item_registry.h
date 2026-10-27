@@ -40,11 +40,6 @@ enum class ItemVersion : int {
     None = 2,
 };
 
-enum class ItemRegistrationOrder : std::uint8_t {
-    SplitByVersion = 0,
-    Unified = 1,
-};
-
 enum class ItemRegistrationState : std::uint8_t {
     Uninitialized = 0,
     RegisteringItems = 1,
@@ -101,7 +96,6 @@ private:
     ItemRegistryMap dead_item_registry_;
     bool add_to_pre_registry_;                                                               // +936
     std::unordered_map<HashedString, SharedPtr<Item>> hardcoded_vanilla_item_pre_registry_;  // +944
-    ItemRegistrationOrder item_registration_order_;
     BaseGameVersion world_base_game_version_;
     bool check_for_item_world_compatibility_;
     std::shared_ptr<std::mutex> compatibility_check_mutex_;
