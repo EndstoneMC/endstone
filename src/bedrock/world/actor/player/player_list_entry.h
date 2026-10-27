@@ -44,6 +44,8 @@ public:
     mce::UUID uuid;
     std::string name;
     std::string xuid;
+    // TODO(fixme): check the name
+    std::string playfab_id;
     std::string platform_online_id;
     BuildPlatform build_platform;
     SerializedSkinRef skin;
@@ -55,4 +57,4 @@ public:
 private:
     PlayerListEntry(const PlayerListEntry &);
 };
-BEDROCK_STATIC_ASSERT_SIZE(PlayerListEntry, 168, 144);
+BEDROCK_STATIC_ASSERT_SIZE(PlayerListEntry, 200, 168);
