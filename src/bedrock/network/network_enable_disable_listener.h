@@ -14,7 +14,7 @@
 
 #pragma once
 
-#include "bedrock/platform/brstd/move_only_function.h"
+#include "bedrock/platform/brstd/copyable_function.h"
 
 class NetworkEnableDisableListener {
     enum class State : int {
@@ -24,14 +24,13 @@ class NetworkEnableDisableListener {
     };
 
 public:
-    NetworkEnableDisableListener(brstd::move_only_function<void()> &&);
+    NetworkEnableDisableListener(brstd::copyable_function<bool() const>);
     virtual ~NetworkEnableDisableListener() = default;
 
 private:
     virtual void _onDisable() = 0;
     virtual void _onEnable() = 0;
-    State state_;  // +8
-    // TODO(fixme): check the name
-    brstd::move_only_function<void()> callback_;  // +16
+    State state_;                                                // +8
+    brstd::copyable_function<bool() const> is_network_allowed_;  // +16
 };
 static_assert(sizeof(NetworkEnableDisableListener) == 80);

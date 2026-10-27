@@ -75,7 +75,7 @@ private:
     Scheduler &main_thread_;
 
 public:                           // Endstone: private -> public
-    std::string receive_buffer_;  // +312
+    std::string receive_buffer_;  // +336
     std::string send_buffer_;
     BinaryStream send_stream_;
 
@@ -93,8 +93,8 @@ private:
     bool websockets_enabled_;
     NetworkSettingOptions network_setting_options_;
     bool raw_recording_enabled_;
-    gsl::not_null<std::unique_ptr<cereal::ReflectionCtx>> reflection_ctx_;             // +552
-    gsl::not_null<std::unique_ptr<IPacketSerializationController>> packet_overrides_;  // +560
+    gsl::not_null<std::unique_ptr<cereal::ReflectionCtx>> reflection_ctx_;             // +560
+    gsl::not_null<std::unique_ptr<IPacketSerializationController>> packet_overrides_;  // +568
     gsl::not_null<std::unique_ptr<
         Bedrock::PubSub::Publisher<void(const Json::Value &), Bedrock::PubSub::ThreadModel::MultiThreaded,
                                    Bedrock::PubSub::ReturnPolicyType::Aggregate>>>

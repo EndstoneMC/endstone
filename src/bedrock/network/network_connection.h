@@ -16,9 +16,11 @@
 
 #include <array>
 #include <bitset>
+#include <optional>
 #include <queue>
 
 #include "bedrock/bedrock.h"
+#include "bedrock/certificates/web_key.h"
 #include "bedrock/network/disconnection_request_info.h"
 #include "bedrock/network/network_identifier.h"
 #include "bedrock/network/network_peer.h"
@@ -69,4 +71,5 @@ private:
     bool encryption_disabled_;
     Connection::DisconnectFailReason should_close_connection_reason_;
     std::shared_ptr<IPacketSecurityController> packet_security_controller_;
+    std::optional<WebKey> identity_public_key_;
 };
