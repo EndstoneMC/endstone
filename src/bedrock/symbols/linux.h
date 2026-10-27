@@ -24,7 +24,7 @@ static constexpr std::array<std::pair<std::string_view, std::size_t>, 81> symbol
     // ActorFactory
     {"_ZN12ActorFactory18createSpawnedActorERK25ActorDefinitionIdentifierP5ActorRK4Vec3RK4Vec2", 187940800},
     // BedrockLog::LogDetails
-    {"_ZN10BedrockLog10LogDetails7_log_vaE9LogAreaIDjPKciiS3_P13__va_list_tag", 258471808},
+    {"_ZN10BedrockLog10LogDetails4_logE9LogAreaIDjPKciiNSt3__112basic_stringIcNS4_11char_traitsIcEENS4_9allocatorIcEEEE", 258472016},
     // BlockDescriptor::ResolveHelper
     {"_ZN15BlockDescriptor13ResolveHelper7resolveEb", 214553104},
     // BlockType

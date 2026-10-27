@@ -230,17 +230,15 @@ extra = 0
 pattern = "55 41 57 41 56 41 55 41 54 53 48 83 EC 58 49 89 CE 49 89 D7 49 89 F4 48 89 FB 48 8D 7C 24 ?"
 
 [[signatures]]
-name = "_ZN10BedrockLog10LogDetails7_log_vaE9LogAreaIDjPKciiS3_P13__va_list_tag"
+name = "_ZN10BedrockLog10LogDetails4_logE9LogAreaIDjPKciiNSt3__112basic_stringIcNS4_11char_traitsIcEENS4_9allocatorIcEEEE"
 relative = false
 extra = 0
 # 1. find "Server stop requested." (a message logged through the diagnostic chain); its xref is the `lea` at
 #    that log call, and the `call` after the arg-setup targets Bedrock::Diagnostics::log
-# 2. walk its single-call forwarders down: Diagnostics::log -> a jmp thunk -> BedrockLog::log_va -> _log_va
-#    (two log_va overloads exist; take the one the thunk calls)
+# 2. walk its single-call forwarders down: Diagnostics::log -> a jmp thunk -> BedrockLog::log_va -> _log_va -> _log
+#    (the sink that takes the already formatted std::string)
 # 3. confirm each hop vs the old named DB (the "{}:{:03}" formatter is the tell)
-pattern = "E8 ? ? ? ? 48 83 C4 ? FF 43"
-rip_relative = true
-rip_offset = 1
+pattern = "55 41 57 41 56 41 55 41 54 53 48 81 EC ? ? ? ? 4C 89 8C 24 ? ? ? ? 4C 89 84 24 ? ? ? ? 48 89 8C 24 ? ? ? ? 89 54 24 ? 89 74 24 ? 49 89 FF 48 8B BC 24 ? ? ? ?"
 
 [[signatures]]
 name = "_ZN15BlockDescriptor13ResolveHelper7resolveEb"

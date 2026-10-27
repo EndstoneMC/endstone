@@ -185,13 +185,14 @@ rip_relative = true
 rip_offset = 13
 
 [[signatures]]
-name = "?_log_va@LogDetails@BedrockLog@@AEAAXW4LogAreaID@@IPEBDHH1PEAD@Z"
+name = "?_log@LogDetails@BedrockLog@@AEAAXW4LogAreaID@@IPEBDHHV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z"
 relative = false
 extra = 0
 # 1. find "Starting Server" (the message logged by start@DedicatedServer); its xref is the `lea` at that log call, and
 #    the `call` after the arg-setup targets Bedrock::Diagnostics::log
-# 2. find _log_va by the timestamp-divisor constants 0x346dc5d63886594b / 0x20c49ba5e353f7cf / 0xd6bf94d5e57a42bd plus
-#    the string '{}:{:03}' (the forwarder chain from Diagnostics::log was restructured in 1.26.60)
+# 2. walk the forwarder chain log_va / log_fmt down to _log: the sink that takes the already formatted std::string;
+#    _log is also found by the timestamp-divisor constants 0x346dc5d63886594b / 0x20c49ba5e353f7cf / 0xd6bf94d5e57a42bd
+#    plus the string '{}:{:03}'
 # 3. confirm vs the old named DB
 pattern = "55 41 57 41 56 41 55 41 54 56 57 53 48 81 EC ? ? ? ? 48 8D AC 24 ? ? ? ? 48 C7 85 ? ? ? ? FE FF FF FF 4D 89 CE 44 89 C7 41 89 D5 48 89 CE"
 

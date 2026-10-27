@@ -23,7 +23,7 @@ static constexpr std::array<std::pair<std::string_view, std::size_t>, 81> symbol
     // ActorFactory
     {"?createSpawnedActor@ActorFactory@@QEAA?AV?$OwnerPtr@VEntityContext@@@@AEBUActorDefinitionIdentifier@@PEAVActor@@AEBVVec3@@AEBVVec2@@@Z", 28352080},
     // BedrockLog::LogDetails
-    {"?_log_va@LogDetails@BedrockLog@@AEAAXW4LogAreaID@@IPEBDHH1PEAD@Z", 2800816},
+    {"?_log@LogDetails@BedrockLog@@AEAAXW4LogAreaID@@IPEBDHHV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z", 2800816},
     // BlockDescriptor::ResolveHelper
     {"?resolve@ResolveHelper@BlockDescriptor@@QEAAX_N@Z", 49230272},
     // BlockType
