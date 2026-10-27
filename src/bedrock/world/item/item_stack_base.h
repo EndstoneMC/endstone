@@ -46,6 +46,8 @@ public:
     virtual void reinit(std::string_view name, int count, int aux_value);
     [[nodiscard]] ItemDescriptor getDescriptor() const;
     virtual void setNull(std::optional<std::string>);
+    // TODO(fixme): check the name
+    [[nodiscard]] virtual bool unknown6() const;
     [[nodiscard]] virtual std::string toString() const;
     [[nodiscard]] virtual std::string toDebugString() const;
 

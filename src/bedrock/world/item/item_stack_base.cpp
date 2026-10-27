@@ -146,6 +146,11 @@ void ItemStackBase::setNull(std::optional<std::string> reason)
     _updateCompareHashes();
 }
 
+bool ItemStackBase::unknown6() const
+{
+    return static_cast<bool>(*this);
+}
+
 std::string ItemStackBase::toString() const
 {
     std::stringstream ss;
