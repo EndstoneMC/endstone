@@ -117,6 +117,7 @@ class EducationLevelSettings;
 class EducationOptions;
 class EducationSettingsManager;
 class EDUSystems;
+class EntityStorageBlockActorComponent {};
 class EntitySystems;
 class EquipmentSlot;
 class Experiments;
@@ -288,12 +289,12 @@ class TradeTables;
 class TrimMaterialRegistry;
 class TrimPatternRegistry;
 class TrustedSkinHelper;
-class UnknownBlockActorComponent {};
 class VolumeEntityManagerServer;
 class WorkerPool;
 class WorldClockRegistry;
 class WorldGenerator;
 class WorldHistoryPackSource;
+class WorldSaveAndExitPackTelemetryData {};
 class WorldSessionEndPoint {};
 
 // Enums

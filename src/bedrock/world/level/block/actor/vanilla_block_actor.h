@@ -118,5 +118,5 @@ protected:
     BlockActorRendererId renderer_id_;                  // +112
     ActorTerrainInterlockData terrain_interlock_data_;  // +120
     Bedrock::Safety::RedactableString custom_name_;     // +144
-    std::string filtered_custom_name_;                  // +200
+    std::string filtered_custom_name_;                  // +216
 };
