@@ -315,7 +315,7 @@ enum class ItemCooldownType : unsigned char;
 enum class ItemTransformType;
 enum class JsonBetaState;
 enum class LevelChunkFormat : std::int8_t;
-enum class LevelEvent;
+enum class LevelEvent : short;
 enum class NewInteractionModel : int;
 enum class NoteBlockInstrument;
 enum class ParticleType;
