@@ -15,6 +15,7 @@
 #pragma once
 
 #include <bitset>
+#include <optional>
 
 #include "bedrock/forward.h"
 #include "bedrock/world/actor/actor.h"
@@ -22,6 +23,7 @@
 #include "bedrock/world/actor/knockback_parameters.h"
 #include "bedrock/world/item/clock_sprite_calculator.h"
 #include "bedrock/world/item/compass_sprite_calculator.h"
+#include "bedrock/world/item/equipment_slot.h"
 
 enum class MobSpawnMethod : std::uint8_t {
     Unknown = 0,
@@ -115,7 +117,7 @@ protected:
     int swing_time_;
     BuiltInMobComponents built_in_mob_components_;
     float movement_component_current_speed_;
-    bool swinging_;
+    std::optional<HandSlot> swinging_hand_;
     bool surface_mob_;
     bool naturally_spawned_;
     bool wants_to_be_jockey_;
@@ -123,7 +125,6 @@ protected:
 private:
     bool has_bound_origin_;
     MobSpawnMethod spawn_method_;
-    bool unknown_mob_byte_;
     bool create_ai_on_reload_;
     ActorUniqueID caravan_head_;
     ActorUniqueID caravan_tail_;

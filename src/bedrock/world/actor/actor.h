@@ -468,8 +468,6 @@ protected:
     int last_hurt_by_mob_timestamp_;
     bool is_predictable_projectile_;
     bool is_rendering_in_ui_;
-    bool is_on_screen_;
-    bool update_bones_and_effects_;
     bool update_effects_;
 
 private:
