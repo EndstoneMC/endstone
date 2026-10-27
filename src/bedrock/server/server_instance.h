@@ -14,6 +14,10 @@
 
 #pragma once
 
+#include <array>
+#include <cstdint>
+#include <optional>
+
 #include "bedrock/app_platform_listener.h"
 #include "bedrock/core/file/storage_area_state_listener.h"
 #include "bedrock/core/threading/spsc_queue.h"
@@ -97,6 +101,10 @@ private:
     ServiceRegistrationToken<ServerInstance> service_registration_token_;
     bool has_scheduled_leave_game_;
     bool critical_disk_error_telemetry_sent_;
+    // TODO(fixme): check the name
+    std::optional<std::array<std::uint64_t, 3>> unknown_optional_;
+    // TODO(fixme): check the name
+    bool unknown_flag_;
     std::unique_ptr<Editor::IEditorManager> editor_manager_;
     Bedrock::NonOwnerPointer<CDNConfig> cdn_config_;
     Bedrock::NonOwnerPointer<ServerTextSettings> server_text_settings_;
