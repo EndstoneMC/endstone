@@ -15,6 +15,7 @@
 #pragma once
 
 #include <chrono>
+#include <cstdint>
 #include <memory>
 #include <string>
 
@@ -48,6 +49,8 @@ private:
 
     GameCallbacks &game_callbacks_;
     IMinecraftEventing &eventing_;
+    // TODO(fixme): check the name
+    std::uint64_t unknown_28_;
     std::unique_ptr<ResourcePackManager> resource_loader_;
     std::unique_ptr<StructureManager> structure_manager_;
     std::shared_ptr<GameModuleServer> game_module_server_;
