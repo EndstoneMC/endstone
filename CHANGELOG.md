@@ -19,6 +19,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Improved the performance of cancellation checks and updates in Python event handlers.
 - Each cancellable Python event class now defines its own cancellation properties and methods.
 - Improved the performance of `PacketSendEvent` and `PacketReceiveEvent` on servers with many players.
+- Improved the performance of liquid spreading when no plugin listens to `BlockFromToEvent`.
 
 ### Fixed
 
