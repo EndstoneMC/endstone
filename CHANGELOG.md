@@ -7,6 +7,13 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [0.11.15] - 2026-10-28
+
+### Added
+
+- Added support for BDS version 1.26.60.
+- `ServerListPingEvent` is now called for NetherNet signaling pings, so plugins can change what a NetherNet client sees.
+
 ### Changed
 
 - Improved the performance of cancellation checks and updates in Python event handlers.
@@ -20,6 +27,16 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Fixed `ServerListPingEvent` not being called when the server's ping response is 128 bytes or longer, such as with a long `server-name` (#556).
 - Fixed the launcher reporting a BDS without `version.txt` as `v0.0.0` and exiting without a message when the update prompt is declined (#545).
 - Fixed showing more than one boss bar to a player at a time (#525).
+- Fixed the server crashing when `Server.reload()` is called from inside a scheduled task.
+- Fixed a player whose `PlayerLoginEvent` was cancelled being announced as having left the game.
+- Fixed `PlayerInteractEvent.clicked_position` reporting world coordinates on a right click; it is now the position within the block, and `None` on a left click.
+- Fixed `Player.skin` returning the skin a player joined with after they change it.
+- Fixed `Player.scoreboard` sending nothing to the player, leaving the old scoreboard on screen.
+- Fixed a malformed form response logging a callback error instead of closing the form.
+- Fixed registry entries such as `ItemType` and `BlockType` becoming invalid after `/reload`.
+- Fixed plugins that create a bStats `Metrics` never being freed on `/reload`.
+- Fixed unregistering a plugin command clearing enum values it did not create.
+- Fixed plugins loaded at `STARTUP` being unable to register or dispatch commands.
 
 ## [0.11.14] - 2026-10-12
 
@@ -1291,7 +1308,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Basic plugin loader for C++ and Python plugins.
 - Basic command system that allows plugins to register custom commands.
 
-[Unreleased]: https://github.com/EndstoneMC/endstone/compare/v0.11.14...HEAD
+[Unreleased]: https://github.com/EndstoneMC/endstone/compare/v0.11.15...HEAD
+[0.11.15]: https://github.com/EndstoneMC/endstone/compare/v0.11.14...v0.11.15
 [0.11.14]: https://github.com/EndstoneMC/endstone/compare/v0.11.13...v0.11.14
 [0.11.13]: https://github.com/EndstoneMC/endstone/compare/v0.11.12...v0.11.13
 [0.11.12]: https://github.com/EndstoneMC/endstone/compare/v0.11.11...v0.11.12
