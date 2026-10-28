@@ -36,6 +36,7 @@ public:
     explicit FurnaceBlockActor(const BlockPos &pos);
 
     static float getBurnDuration(class ItemStackBase const &item_instance, float burn_interval);
+    static float getItemBurnDuration(class Item const &item, float burn_interval);
 
     [[nodiscard]] int getLitTime() const { return lit_time_; }
     void setLitTime(int value) { lit_time_ = value; }
@@ -76,4 +77,4 @@ private:
     bool no_drop_;
     bool needs_lit_state_fixup_;
 };
-BEDROCK_STATIC_ASSERT_SIZE(FurnaceBlockActor, 1416, 1272);
+BEDROCK_STATIC_ASSERT_SIZE(FurnaceBlockActor, 1424, 1280);

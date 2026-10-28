@@ -25,9 +25,9 @@
 #include "endstone/event/player/player_shear_actor_event.h"
 #include "endstone/runtime/hook.h"
 
-Interaction InteractComponent::_runInteraction(Actor &owner, const InteractionDescription &desc, Player &player)
+Interaction InteractComponent::_runInteraction(Actor &owner, const InteractionDescription &desc, Player &player, HandSlot hand)
 {
-    auto result = ENDSTONE_HOOK_CALL_ORIGINAL(&InteractComponent::_runInteraction, this, owner, desc, player);
+    auto result = ENDSTONE_HOOK_CALL_ORIGINAL(&InteractComponent::_runInteraction, this, owner, desc, player, hand);
     if (!result.isSuccessful()) {
         return result;
     }

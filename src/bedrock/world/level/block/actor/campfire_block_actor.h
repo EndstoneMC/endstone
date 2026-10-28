@@ -36,4 +36,4 @@ private:
     bool was_lit_;
     int next_smoke_particle_tick_;
 };
-BEDROCK_STATIC_ASSERT_SIZE(CampfireBlockActor, 776, 752);
+BEDROCK_STATIC_ASSERT_SIZE(CampfireBlockActor, 784, 760);

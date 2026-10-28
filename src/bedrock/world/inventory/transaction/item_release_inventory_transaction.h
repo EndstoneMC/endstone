@@ -18,6 +18,7 @@
 
 #include "bedrock/core/math/vec3.h"
 #include "bedrock/world/inventory/transaction/complex_inventory_transaction.h"
+#include "bedrock/world/item/equipment_slot.h"
 #include "bedrock/world/item/network_item_stack_descriptor.h"
 
 class ItemReleaseInventoryTransaction : public ComplexInventoryTransaction {
@@ -31,4 +32,6 @@ public:
     std::int32_t slot_;
     NetworkItemStackDescriptor item_;
     Vec3 from_pos_;
+    HandSlot hand_;
 };
+BEDROCK_STATIC_ASSERT_SIZE(ItemReleaseInventoryTransaction, 224, 184);

@@ -14,10 +14,7 @@
 
 #pragma once
 
-struct ActorWalkAnimationComponent {
-    float walk_anim_speed_multiplier;
-    float walk_anim_speed_old;
-    float walk_anim_speed;
-    float walk_anim_pos;
-    float movement_this_tick;
+class IEducationOptions {
+public:
+    virtual ~IEducationOptions() = default;
 };

@@ -14,9 +14,32 @@
 
 #include "bedrock/world/level/block/actor/furnace_block_actor.h"
 
+#include <algorithm>
+#include <cstddef>
+
+#include "bedrock/core/string/string_hash.h"
 #include "bedrock/symbol.h"
+#include "bedrock/world/item/item.h"
+#include "bedrock/world/item/item_stack_base.h"
 
 float FurnaceBlockActor::getBurnDuration(ItemStackBase const &item_instance, float burn_interval)
 {
-    return BEDROCK_CALL(&FurnaceBlockActor::getBurnDuration, item_instance, burn_interval);
+    if (!item_instance) {
+        return 0.0F;
+    }
+
+    const auto *item = item_instance.getItem();
+    if (item->isComponentBased()) {
+        static const HashedString fuel_identifier("minecraft:fuel");
+        if (const auto *fuel = item->getComponent(fuel_identifier)) {
+            const auto duration = *reinterpret_cast<const float *>(reinterpret_cast<const std::byte *>(fuel) + 16);
+            return std::max(1.0F, burn_interval * duration / 10.0F);
+        }
+    }
+    return getItemBurnDuration(*item, burn_interval);
+}
+
+float FurnaceBlockActor::getItemBurnDuration(Item const &item, float burn_interval)
+{
+    return BEDROCK_CALL(&FurnaceBlockActor::getItemBurnDuration, item, burn_interval);
 }

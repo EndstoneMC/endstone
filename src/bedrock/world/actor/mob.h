@@ -15,6 +15,7 @@
 #pragma once
 
 #include <bitset>
+#include <optional>
 
 #include "bedrock/forward.h"
 #include "bedrock/world/actor/actor.h"
@@ -23,6 +24,7 @@
 #include "bedrock/world/actor/knockback_parameters.h"
 #include "bedrock/world/item/clock_sprite_calculator.h"
 #include "bedrock/world/item/compass_sprite_calculator.h"
+#include "bedrock/world/item/equipment_slot.h"
 
 enum class MobSpawnMethod : std::uint8_t {
     Unknown = 0,
@@ -37,6 +39,7 @@ struct BuiltInMobComponents {
     gsl::not_null<DeathTickingComponent *> death_ticking_component;
     gsl::not_null<MobAnimationComponent *> mob_animation_component;
     gsl::not_null<MobHurtTimeComponent *> mob_hurt_time_component;
+    gsl::not_null<MobWalkAnimationComponent *> mob_walk_animation_component;
 };
 
 class Mob : public Actor {
@@ -116,7 +119,7 @@ protected:
     int swing_time_;
     BuiltInMobComponents built_in_mob_components_;
     float movement_component_current_speed_;
-    bool swinging_;
+    std::optional<HandSlot> swinging_hand_;
     bool surface_mob_;
     bool naturally_spawned_;
     bool wants_to_be_jockey_;

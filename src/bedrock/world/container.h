@@ -102,6 +102,7 @@ enum class ContainerType : std::int8_t {
     DECORATED_POT = 35,
     CRAFTER = 36,
     DATA_DRIVEN_CONTAINER = 37,
+    DISC_PRESS = 38,
 };
 
 class Container {
@@ -164,6 +165,7 @@ public:
     [[nodiscard]] virtual bool isEmpty() const;
     [[nodiscard]] virtual bool isSlotDisabled(int) const;
     [[nodiscard]] ContainerType getGameplayContainerType() const { return gameplay_container_type_; }
+    virtual void receiveContainerLifetimes(DynamicContainerTracker const &);
 
 protected:
     ContainerType container_type_;

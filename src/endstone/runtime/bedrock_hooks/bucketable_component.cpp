@@ -24,9 +24,9 @@
 #include "endstone/event/player/player_bucket_actor_event.h"
 #include "endstone/runtime/hook.h"
 
-Interaction BucketableComponent::getInteraction(::Actor &owner, ::Player &player)
+Interaction BucketableComponent::getInteraction(::Actor &owner, ::Player &player, HandSlot hand)
 {
-    auto result = ENDSTONE_HOOK_CALL_ORIGINAL(&BucketableComponent::getInteraction, this, owner, player);
+    auto result = ENDSTONE_HOOK_CALL_ORIGINAL(&BucketableComponent::getInteraction, this, owner, player, hand);
     if (!result.isSuccessful()) {
         return result;
     }

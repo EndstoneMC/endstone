@@ -157,6 +157,7 @@ enum class ActorDataIDs : uint8_t {
     AIM_ASSIST_PRIORITY_ACTOR_ID = 138,
     RESERVED_139 = 139,
     NAMEPLATE_RENDER_DISTANCE_MAX = 140,
-    Count = 141,
+    INTERACTION_RESULT = 141,
+    Count = 142,
 };
 // NOLINTEND(*-identifier-naming)

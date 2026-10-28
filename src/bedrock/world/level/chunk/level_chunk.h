@@ -34,6 +34,7 @@
 #include "bedrock/world/level/chunk/chunk_state.h"
 #include "bedrock/world/level/chunk/dirty_ticks_counter.h"
 #include "bedrock/world/level/chunk/level_chunk_block_actor_storage.h"
+#include "bedrock/world/level/chunk/neighbor_changed_queue.h"
 #include "bedrock/world/level/chunk/sub_chunk.h"
 #include "bedrock/world/level/chunk/sub_chunk_storage.h"
 #include "bedrock/world/level/chunk_pos.h"
@@ -63,6 +64,7 @@ struct ColumnCachedData {
     int water_color;
 };
 static_assert(sizeof(ColumnCachedData) == 8);
+class BlockNamedTickEventManager;
 
 enum class SubChunkInitMode : int {
     All = 0,
@@ -128,6 +130,8 @@ private:
     Tick last_tick_;
     std::unique_ptr<BlockTickingQueue> tick_queue_;
     std::unique_ptr<BlockTickingQueue> random_tick_queue_;
+    std::unique_ptr<BlockNamedTickEventManager> block_named_tick_event_manager_;
+    NeighborChangedQueue neighbor_changed_queue_;
     std::vector<SubChunk> sub_chunks_;
     LevelChunkBiomes biomes_;
     std::array<ColumnCachedData, 256> cached_data_;

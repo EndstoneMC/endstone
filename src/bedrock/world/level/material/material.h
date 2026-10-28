@@ -25,8 +25,6 @@ class Material {
 
 public:
     explicit Material(MaterialType, Material::Settings);
-    bool operator==(const Material &rhs) const { return this == &rhs; }
-    bool operator!=(const Material &rhs) const { return !(*this == rhs); }
     [[nodiscard]] bool isType(MaterialType type) const { return type == type_; }
     [[nodiscard]] bool isSolidBlocking() const { return !never_buildable_ && blocks_motions_; }
     [[nodiscard]] bool isLiquid() const { return liquid_; }
@@ -48,11 +46,11 @@ public:
 
 private:
     MaterialType type_;
-    bool never_buildable_;
-    bool liquid_;
-    bool blocks_motions_;
-    bool blocks_precipitation_;
-    bool solid_;
-    bool super_hot_;
+    bool never_buildable_ : 1;
+    bool liquid_ : 1;
+    bool blocks_motions_ : 1;
+    bool blocks_precipitation_ : 1;
+    bool solid_ : 1;
+    bool super_hot_ : 1;
 };
-static_assert(sizeof(Material) == 7);
+static_assert(sizeof(Material) == 2);

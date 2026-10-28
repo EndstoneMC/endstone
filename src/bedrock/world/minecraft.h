@@ -48,7 +48,7 @@ private:
 
     GameCallbacks &game_callbacks_;
     IMinecraftEventing &eventing_;
-    std::unique_ptr<ResourcePackManager> resource_loader_;
+    OwnerPtr<ResourcePackManager> resource_loader_;
     std::unique_ptr<StructureManager> structure_manager_;
     std::shared_ptr<GameModuleServer> game_module_server_;
     PermissionsFile *permissions_file_;

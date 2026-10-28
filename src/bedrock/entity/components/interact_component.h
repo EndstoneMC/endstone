@@ -17,6 +17,7 @@
 #include "bedrock/bedrock.h"
 #include "bedrock/world/gamemode/interaction_result.h"
 #include "bedrock/world/interactions/interaction.h"
+#include "bedrock/world/item/equipment_slot.h"
 
 class Actor;
 class InteractionDescription;
@@ -24,5 +25,5 @@ class Player;
 
 class InteractComponent {
 private:
-    ENDSTONE_HOOK Interaction _runInteraction(Actor &owner, const InteractionDescription &desc, Player &player);
+    ENDSTONE_HOOK Interaction _runInteraction(Actor &owner, const InteractionDescription &desc, Player &player, HandSlot hand);
 };

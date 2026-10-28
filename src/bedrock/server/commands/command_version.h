@@ -20,7 +20,10 @@ enum class CurrentCmdVersion : std::int32_t {
     ClonePartialBedBlockFix = 50,
     TeleportEntityDimensionPositionFix = 51,
     TimeOfCommandOverloads = 52,
-    Latest = 52,
+    RedstoneCircuitStateChangeFix = 53,
+    TimeCommandPreventNegativeTime = 54,
+    TimeCommandClocksRelease = 55,
+    Latest = 55,
 };
 
 struct CommandVersion {

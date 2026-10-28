@@ -14,6 +14,9 @@
 
 #pragma once
 
+#include <optional>
+#include <vector>
+
 #include "bedrock/app_platform_listener.h"
 #include "bedrock/core/file/storage_area_state_listener.h"
 #include "bedrock/core/threading/spsc_queue.h"
@@ -96,6 +99,7 @@ private:
     bool flagged_for_early_destruction_;
     ServiceRegistrationToken<ServerInstance> service_registration_token_;
     bool has_scheduled_leave_game_;
+    std::optional<std::vector<WorldSaveAndExitPackTelemetryData>> world_save_and_exit_pack_telemetry_;
     bool critical_disk_error_telemetry_sent_;
     std::unique_ptr<Editor::IEditorManager> editor_manager_;
     Bedrock::NonOwnerPointer<CDNConfig> cdn_config_;

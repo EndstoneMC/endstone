@@ -30,9 +30,9 @@
 #include "endstone/event/player/player_armor_stand_manipulate_event.h"
 #include "endstone/runtime/hook.h"
 
-Interaction ArmorStand::getInteraction(Player &player, Vec3 const &location)
+Interaction ArmorStand::getInteraction(Player &player, Vec3 const &location, HandSlot hand)
 {
-    auto result = ENDSTONE_HOOK_CALL_ORIGINAL(&ArmorStand::getInteraction, this, player, location);
+    auto result = ENDSTONE_HOOK_CALL_ORIGINAL(&ArmorStand::getInteraction, this, player, location, hand);
     if (result.getInteractText() != "action.interact.armorstand.equip" || !result.isSuccessful()) {
         return result;
     }

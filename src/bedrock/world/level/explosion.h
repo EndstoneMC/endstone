@@ -17,6 +17,7 @@
 #include <optional>
 #include <unordered_set>
 
+#include "bedrock/bedrock.h"
 #include "bedrock/shared_types/legacy/level_event.h"
 #include "bedrock/shared_types/legacy/level_sound_event.h"
 #include "bedrock/world/actor/actor_unique_id.h"
@@ -51,3 +52,4 @@ private:
     std::optional<int> total_damage_override_;
     float knockback_scaling_;
 };
+BEDROCK_STATIC_ASSERT_SIZE(Explosion, 136, 112);

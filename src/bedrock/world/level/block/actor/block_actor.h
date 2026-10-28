@@ -73,7 +73,8 @@ protected:
     [[nodiscard]] virtual const IVanillaMainBlockActorComponent *_getMainComponent() const = 0;
     virtual IVanillaMainBlockActorComponent *_getMainComponent() = 0;
     std::unique_ptr<DynamicPropertiesBlockActorComponent> dynamic_properties_;          // +24
-    std::unique_ptr<RandomizableContainerBlockActorComponent> randomizable_container_;  // +32
-    std::unique_ptr<ContainerBlockActorComponent> container_;                           // +40
+    std::unique_ptr<EntityStorageBlockActorComponent> entity_storage_;                  // +32
+    std::unique_ptr<RandomizableContainerBlockActorComponent> randomizable_container_;  // +40
+    std::unique_ptr<ContainerBlockActorComponent> container_;                           // +48
 };
-BEDROCK_STATIC_ASSERT_SIZE(BlockActor, 48, 48);
+BEDROCK_STATIC_ASSERT_SIZE(BlockActor, 56, 56);

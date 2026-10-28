@@ -19,6 +19,7 @@
 #include <string>
 #include <vector>
 
+#include "bedrock/bedrock.h"
 #include "bedrock/world/effect/effect_duration.h"
 #include "bedrock/world/effect/mob_effect.h"
 
@@ -106,6 +107,7 @@ private:
     std::optional<EffectDuration> duration_normal_;
     std::optional<EffectDuration> duration_hard_;
     int amplifier_;
+    std::vector<MobEffectInstance> effects_;
     bool display_on_screen_texture_animation_;
     bool is_counter_paused_this_tick_;
     bool ambient_;
@@ -113,6 +115,8 @@ private:
     bool is_leveled_;
     MobEffect::FactorCalculationData factor_calculation_data_;
 };
+
+BEDROCK_STATIC_ASSERT_SIZE(MobEffectInstance, 168, 160);
 
 inline const MobEffectInstance MobEffectInstance::NO_EFFECT;
 

@@ -50,4 +50,4 @@ private:
     WeakEntityRef display_entity_;
     bool ignore_lighting_;
 };
-BEDROCK_STATIC_ASSERT_SIZE(ItemFrameBlockActor, 504, 480);
+BEDROCK_STATIC_ASSERT_SIZE(ItemFrameBlockActor, 512, 488);

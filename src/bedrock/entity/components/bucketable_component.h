@@ -17,11 +17,12 @@
 #include "bedrock/bedrock.h"
 #include "bedrock/world/gamemode/interaction_result.h"
 #include "bedrock/world/interactions/interaction.h"
+#include "bedrock/world/item/equipment_slot.h"
 
 class Actor;
 class Player;
 
 class BucketableComponent {
 public:
-    ENDSTONE_HOOK Interaction getInteraction(Actor &owner, Player &player);
+    ENDSTONE_HOOK Interaction getInteraction(Actor &owner, Player &player, HandSlot hand);
 };

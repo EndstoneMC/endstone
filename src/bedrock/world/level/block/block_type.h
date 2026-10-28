@@ -32,6 +32,7 @@
 #include "bedrock/util/random.h"
 #include "bedrock/world/direction.h"
 #include "bedrock/world/flip.h"
+#include "bedrock/world/item/equipment_slot.h"
 #include "bedrock/world/item/item_category.h"
 #include "bedrock/world/level/block/actor/block_actor_type.h"
 #include "bedrock/world/level/block/block_client_prediction_overrides.h"
@@ -104,6 +105,7 @@ enum class BlockProperty : std::uint64_t {
     CanDamperVibrations = 0x800000000,
     CanOccludeVibrations = 0x1000000000,
     LegacyComparatorReadThrough = 0x2000000000,
+    HasAlignedPlacement = 0x4000000000,
     _entt_enum_as_bitmask
 };
 
@@ -204,6 +206,7 @@ public:
     virtual void movedByPiston(BlockSource &, BlockPos const &) const = 0;
     virtual void onStructureBlockPlace(BlockSource &, BlockPos const &) const = 0;
     virtual void setupRedstoneComponent(BlockSource &, BlockPos const &) const = 0;
+    [[nodiscard]] virtual bool requiresLegacyRedstoneSetup() const = 0;
     [[nodiscard]] virtual bool isPreservingMediumWhenPlaced(BlockType const *) const = 0;
     [[nodiscard]] virtual bool isFilteredOut(BlockRenderLayer) const = 0;
     [[nodiscard]] virtual bool canRenderSelectionOverlay(BlockRenderLayer) const = 0;
@@ -218,7 +221,7 @@ public:
     [[nodiscard]] virtual bool mayPlaceOn(BlockSource &, BlockPos const &) const = 0;
     [[nodiscard]] virtual bool tryToPlace(BlockSource &, BlockPos const &, Block const &,
                                           ActorBlockSyncMessage const *) const = 0;
-    [[nodiscard]] virtual bool tryToTill(BlockSource &, BlockPos const &, Actor &, ItemStack &) const = 0;
+    [[nodiscard]] virtual bool tryToTill(BlockSource &, BlockPos const &, Actor &, ItemStack &, HandSlot) const = 0;
     [[nodiscard]] virtual bool breaksFallingBlocks(Block const &, BaseGameVersion) const = 0;
     virtual void destroy(BlockSource &, BlockPos const &, Block const &, Actor *) const = 0;
     [[nodiscard]] virtual bool getIgnoresDestroyPermissions(Actor &, BlockPos const &) const = 0;
@@ -266,6 +269,7 @@ public:
     [[nodiscard]] virtual Flip getFaceFlip(FacingID, Block const &) const = 0;
     virtual void animateTickBedrockLegacy(BlockAnimateTickData const &) const = 0;
     virtual void animateTick(BlockAnimateTickData const &) const = 0;
+    [[nodiscard]] virtual Brightness getLightEmission(Block const &) const = 0;
     // [[nodiscard]] virtual BlockType &init() = 0;
     [[nodiscard]] virtual Block const *tryLegacyUpgrade(DataID) const = 0;
     [[nodiscard]] virtual bool dealsContactDamage(Actor const &, Block const &, bool) const = 0;
@@ -288,7 +292,6 @@ public:
     [[nodiscard]] virtual const HashedString &getCullingLayer() const = 0;
     [[nodiscard]] virtual float getBounciness(IConstBlockSource const &, BlockPos const &) const = 0;
     [[nodiscard]] virtual Brightness getLight(Block const &) const = 0;
-    [[nodiscard]] virtual Brightness getLightEmission(Block const &) const = 0;
     [[nodiscard]] virtual Brightness getEmissiveBrightness(Block const &) const = 0;
     [[nodiscard]] virtual mce::Color getMapColor(BlockSource &, BlockPos const &, Block const &) const = 0;
     [[nodiscard]] virtual Block const &getInitialDefaultState() = 0;
@@ -361,7 +364,7 @@ public:
     std::string description_id;  // +8
 
 private:
-    const Material &material_;                             // +40
+    Material material_;                                    // +40
     BlockComponentStorage components_;                     // +48
     NameInfo name_info_;                                   // +144
     BlockProperty properties_;                             // +304
