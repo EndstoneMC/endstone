@@ -38,7 +38,7 @@ void CampfireBlockActor::_finishCooking(::BlockSource &region, int slot)
                 for (const auto &by_id : by_tag->second) {
                     const auto &recipe = by_id.second;
                     if (recipe && !recipe->getIngredients().empty() &&
-                        recipe->itemValidForRecipe(recipe->getIngredients().front(), source)) {
+                        recipe->itemValidForRecipe(recipe->getIngredients().front(), source, nullptr)) {
                         cooking_recipe =
                             endstone::core::EndstoneRecipeData::fromMinecraft(recipe).as<endstone::CookingRecipe>();
                         break;

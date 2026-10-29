@@ -50,7 +50,7 @@ public:
 
     [[nodiscard]] bool test(const endstone::ItemStack &item) const override
     {
-        return recipe_->itemValidForRecipe(*ingredient_, EndstoneItemStack::toMinecraft(item));
+        return recipe_->itemValidForRecipe(*ingredient_, EndstoneItemStack::toMinecraft(item), nullptr);
     }
 
 protected:

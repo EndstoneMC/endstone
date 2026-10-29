@@ -60,7 +60,7 @@ public:
     virtual std::vector<ItemInstance> const &getResultItems() const = 0;
     virtual bool isMultiRecipe() const = 0;
     virtual bool hasDataDrivenResult() const = 0;
-    virtual bool itemValidForRecipe(ItemDescriptor const &, ItemStack const &) const = 0;
+    virtual bool itemValidForRecipe(ItemDescriptor const &, ItemStack const &, CraftingContext const *) const = 0;
     virtual bool itemsMatch(ItemDescriptor const &, ItemDescriptor const &) const = 0;
     virtual bool itemsMatch(ItemDescriptor const &, ItemDescriptor const &, CompoundTag const *) const = 0;
     virtual std::size_t getIngredientsHash() const = 0;

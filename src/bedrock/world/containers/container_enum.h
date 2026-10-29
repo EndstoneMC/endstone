@@ -91,6 +91,10 @@ enum class ContainerEnumName : std::uint8_t {
     RecipeFoodContainer = 64,
     RecipeBlocksContainer = 65,
     RecipeFurnaceItemsContainer = 66,
+    DiscPressBlockContainer = 67,
+    DiscPressDyeContainer = 68,
+    DiscPressDiscContainer = 69,
+    DiscPressResultPreviewContainer = 70,
 };
 
 using ContainerNameDynamicID = std::uint32_t;

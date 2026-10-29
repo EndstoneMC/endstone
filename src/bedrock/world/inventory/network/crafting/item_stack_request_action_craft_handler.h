@@ -16,6 +16,7 @@
 
 #include <cstdint>
 #include <memory>
+#include <optional>
 #include <utility>
 #include <vector>
 
@@ -23,6 +24,7 @@
 #include "bedrock/world/inventory/network/crafting/item_stack_request_action_craft.h"
 #include "bedrock/world/inventory/network/item_stack_net_result.h"
 #include "bedrock/world/item/item_instance.h"
+#include "bedrock/world/item/item_stack.h"
 
 class CraftHandlerBase;
 class ItemStackRequestActionHandler;
@@ -48,5 +50,6 @@ private:
     bool is_craft_request_;
     std::shared_ptr<SimpleSparseContainer> created_output_sparse_container_;
     std::vector<std::pair<ItemInstance, unsigned int>> craft_results_;
+    std::optional<ItemStack> pending_craft_recipe_item_;
 };
-BEDROCK_STATIC_ASSERT_SIZE(ItemStackRequestActionCraftHandler, 80, 80);
+BEDROCK_STATIC_ASSERT_SIZE(ItemStackRequestActionCraftHandler, 240, 240);

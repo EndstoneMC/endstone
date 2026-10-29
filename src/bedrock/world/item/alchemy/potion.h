@@ -62,7 +62,8 @@ public:
         WEAVING = 27,
         OOZING = 28,
         INFESTED = 29,
-        BASE = 30,
+        FREEZING = 30,
+        BASE = 31,
     };
 
     static constexpr int MAX_POTIONS = 64;

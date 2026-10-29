@@ -43,8 +43,9 @@ enum class ItemStackRequestActionType : std::uint8_t {
     CraftRecipeOptional = 15,
     CraftRepairAndDisenchant = 16,
     CraftLoom = 17,
-    CraftNonImplemented_DEPRECATEDASKTYLAING = 18,
-    CraftResults_DEPRECATEDASKTYLAING = 19,
+    CraftDiscPress = 18,
+    CraftNonImplemented_DEPRECATEDASKTYLAING = 19,
+    CraftResults_DEPRECATEDASKTYLAING = 20,
 };
 
 class ItemStackRequestAction {
