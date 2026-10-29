@@ -76,5 +76,7 @@ public:
     static constexpr auto Weaving = PotionId(Minecraft, "weaving");
     static constexpr auto Oozing = PotionId(Minecraft, "oozing");
     static constexpr auto Infested = PotionId(Minecraft, "infested");
+    static constexpr auto Freezing = PotionId(Minecraft, "freezing");
+    static constexpr auto LongFreezing = PotionId(Minecraft, "long_freezing");
 };
 }  // namespace endstone

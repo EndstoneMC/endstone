@@ -214,5 +214,10 @@ public:
      * Prevents the rider's oxygen bar from depleting while riding a nautilus or zombie nautilus.
      */
     static constexpr auto BreathOfTheNautilus = EffectId::minecraft("breath_of_the_nautilus");
+
+    /**
+     * Gradually freezes the entity and lowers its jump height.
+     */
+    static constexpr auto Freezing = EffectId::minecraft("freezing");
 };
 }  // namespace endstone

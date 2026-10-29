@@ -149,6 +149,7 @@ public:
     static constexpr auto FireworksRocket = ActorTypeId::minecraft("fireworks_rocket");
     static constexpr auto FishingHook = ActorTypeId::minecraft("fishing_hook");
     static constexpr auto HopperMinecart = ActorTypeId::minecraft("hopper_minecart");
+    static constexpr auto IceBall = ActorTypeId::minecraft("ice_ball");
     static constexpr auto IceBomb = ActorTypeId::minecraft("ice_bomb");
     static constexpr auto Item = ActorTypeId::minecraft("item");
     static constexpr auto LeashKnot = ActorTypeId::minecraft("leash_knot");

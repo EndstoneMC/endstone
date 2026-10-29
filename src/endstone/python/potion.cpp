@@ -112,7 +112,9 @@ void init_potion(py::module_ &m)
                                       "Triggers a raid when a player enters a village.")
         .def_property_readonly_static(
             "BREATH_OF_THE_NAUTILUS", id(EffectType::BreathOfTheNautilus),
-            "Prevents the rider's oxygen bar from depleting while riding a nautilus or zombie nautilus.");
+            "Prevents the rider's oxygen bar from depleting while riding a nautilus or zombie nautilus.")
+        .def_property_readonly_static("FREEZING", id(EffectType::Freezing),
+                                      "Gradually freezes the entity and lowers its jump height.");
 
     def_registry_type(py::class_<PotionType>(m, "PotionType", "Represents a potion type."))
         .def_property_readonly("id", &PotionType::getId, "The identifier of this potion type.")
@@ -174,6 +176,8 @@ void init_potion(py::module_ &m)
         .def_property_readonly_static("WIND_CHARGED", id(PotionType::WindCharged))
         .def_property_readonly_static("WEAVING", id(PotionType::Weaving))
         .def_property_readonly_static("OOZING", id(PotionType::Oozing))
-        .def_property_readonly_static("INFESTED", id(PotionType::Infested));
+        .def_property_readonly_static("INFESTED", id(PotionType::Infested))
+        .def_property_readonly_static("FREEZING", id(PotionType::Freezing))
+        .def_property_readonly_static("LONG_FREEZING", id(PotionType::LongFreezing));
 }
 }  // namespace endstone::python

@@ -359,6 +359,7 @@ class ActorType:
     HOPPER_MINECART: Identifier[ActorType] = "minecraft:hopper_minecart"
     HORSE: Identifier[ActorType] = "minecraft:horse"
     HUSK: Identifier[ActorType] = "minecraft:husk"
+    ICE_BALL: Identifier[ActorType] = "minecraft:ice_ball"
     ICE_BOMB: Identifier[ActorType] = "minecraft:ice_bomb"
     IRON_GOLEM: Identifier[ActorType] = "minecraft:iron_golem"
     ITEM: Identifier[ActorType] = "minecraft:item"

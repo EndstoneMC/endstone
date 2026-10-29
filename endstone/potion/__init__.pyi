@@ -78,6 +78,7 @@ class EffectType:
     INFESTED: Identifier[EffectType] = "minecraft:infested"
     RAID_OMEN: Identifier[EffectType] = "minecraft:raid_omen"
     BREATH_OF_THE_NAUTILUS: Identifier[EffectType] = "minecraft:breath_of_the_nautilus"
+    FREEZING: Identifier[EffectType] = "minecraft:freezing"
 
 class Effect:
     """
@@ -220,3 +221,5 @@ class PotionType:
     WEAVING: Identifier[PotionType] = "minecraft:potion_type:weaving"
     OOZING: Identifier[PotionType] = "minecraft:potion_type:oozing"
     INFESTED: Identifier[PotionType] = "minecraft:potion_type:infested"
+    FREEZING: Identifier[PotionType] = "minecraft:potion_type:freezing"
+    LONG_FREEZING: Identifier[PotionType] = "minecraft:potion_type:long_freezing"
