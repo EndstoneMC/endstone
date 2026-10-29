@@ -153,6 +153,8 @@ Nullable<Dimension> EndstoneLevel::createDimension(const DimensionCreator &creat
     DimensionDefinitionGroup::DimensionDefinition definition{
         .min_y = -64,
         .height_range = 384,
+        .cloud_height = 128,
+        .render_clouds = false,
         .generator_type = GeneratorType::Void,
         .dimension_type = VanillaDimensions::Undefined,
         .pack_id = mce::UUID::EMPTY,
