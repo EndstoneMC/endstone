@@ -32,5 +32,6 @@ public:
                                       CauldronLiquidType liquid_type) const;
 
 private:
-    ENDSTONE_HOOK void _useInventory(Player &player, ItemStack &current, ItemStack &replace_with, int use_count) const;
+    ENDSTONE_HOOK static void _useInventory(Player &player, ItemStack &current, ItemStack &replace_with,
+                                            int use_count) /*const*/;  // Endstone: non-static const -> static
 };

@@ -197,14 +197,13 @@ void CauldronBlock::use(BlockEvents::BlockPlayerInteractEvent &event_data) const
     }
 }
 
-void CauldronBlock::_useInventory(::Player &player, ::ItemStack &current, ::ItemStack &replace_with,
-                                  int use_count) const
+void CauldronBlock::_useInventory(::Player &player, ::ItemStack &current, ::ItemStack &replace_with, int use_count)
 {
     auto level_entity = player.getLevel().getLevelEntity().unwrap();
     const auto *interaction =
         level_entity ? level_entity->tryGetComponent<endstone::core::InternalCauldronInteractionComponent>() : nullptr;
     if (!interaction || !interaction->has_result) {
-        ENDSTONE_HOOK_CALL_ORIGINAL(&CauldronBlock::_useInventory, this, player, current, replace_with, use_count);
+        ENDSTONE_HOOK_CALL_ORIGINAL(&CauldronBlock::_useInventory, player, current, replace_with, use_count);
         return;
     }
 
@@ -214,7 +213,7 @@ void CauldronBlock::_useInventory(::Player &player, ::ItemStack &current, ::Item
         endstone::runtime::inventoryContains(player, filled)) {
         filled = ::ItemStack{};
     }
-    ENDSTONE_HOOK_CALL_ORIGINAL(&CauldronBlock::_useInventory, this, player, current, filled, use_count);
+    ENDSTONE_HOOK_CALL_ORIGINAL(&CauldronBlock::_useInventory, player, current, filled, use_count);
 }
 
 void CauldronBlock::setLiquidLevel(BlockSource &region, const BlockPos &pos, int liquid_level,

@@ -965,11 +965,11 @@ extra = 0
 pattern = "55 41 57 41 56 41 55 41 54 53 48 81 EC ? ? ? ? 49 89 F6 48 89 FB 4C 8B BE ? ? ? ? 49 8B 07 4C 89 FF FF 90 ? ? ? ? 84 C0 0F 85"
 
 [[signatures]]
-name = "_ZNK13CauldronBlock13_useInventoryER6PlayerR9ItemStackS3_i"
+name = "_ZN13CauldronBlock13_useInventoryER6PlayerR9ItemStackS3_i"
 relative = false
 extra = 0
 # 1. locate CauldronBlock::use first (see the entry below); the target is its callee that takes (player, held
-#    ItemStack, replacement ItemStack, use count) with the block in rdi, the player in rsi and the held stack in rdx
+#    ItemStack, replacement ItemStack, use count) in rdi, rsi, rdx and ecx (no block pointer)
 # 2. confirm from the body: the held item's name hash is compared against the cached GlassBottle and Bucket
 #    HashedStrings in .bss, each match posting an ActorUseItemEvent (variant index 19), then the Instabuild
 #    ability (index 11) is read through the ability layers and ItemStackBase::set(count - useCount) runs unless

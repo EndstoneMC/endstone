@@ -45,7 +45,7 @@ static constexpr std::array<std::pair<std::string_view, std::size_t>, 122> symbo
     // CampfireBlockActor
     {"_ZN18CampfireBlockActor14_finishCookingER11BlockSourcei", 222596128},
     // CauldronBlock
-    {"_ZNK13CauldronBlock13_useInventoryER6PlayerR9ItemStackS3_i", 213180976},
+    {"_ZN13CauldronBlock13_useInventoryER6PlayerR9ItemStackS3_i", 213180976},
     {"_ZNK13CauldronBlock14setLiquidLevelER11BlockSourceRK8BlockPosi18CauldronLiquidType", 213179440},
     {"_ZNK13CauldronBlock3useERN11BlockEvents24BlockPlayerInteractEventE", 213166816},
     // ChunkBuildOrderPolicy
