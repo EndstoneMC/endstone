@@ -18,5 +18,5 @@ enum class CauldronLiquidType : int {
     Water = 0,
     Lava = 1,
     PowderSnow = 2,
-    Count = 3,
+    _count = 3,
 };

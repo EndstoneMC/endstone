@@ -57,7 +57,7 @@ public:
     WeakRef<Dimension> getOrCreateDimension(DimensionType dimension_type);
     WeakRef<Dimension> getOrCreateDimension(std::string_view name);
     WeakRef<Dimension> getDimension(DimensionType dimension_type) const;
-    DimensionType getDimensionId(std::string_view name) const;
+    DimensionType getDimensionType(std::string_view name) const;
     bool hasDimensions() const;
     int getNumDimensions() const;
     void forEachDimension(std::function<bool(Dimension &)> callback);

@@ -150,7 +150,7 @@ private:
     std::uint32_t finalized_;  // opaque: LevelChunk::Finalization
     Telemetry telemetry_;
     ChunkGenContext chunk_gen_context_;
-    DirtyTicksCounter full_chunk_dirty_ticks_counters_[6];
+    DirtyTicksCounter full_chunk_dirty_ticks_counters_[8];
     DirtyTicksCounter chunk_actors_dirty_ticks_counter_;
     std::array<ChunkLocalHeight, 256> rain_heights_;
     std::vector<WeakEntityRef> entities_;

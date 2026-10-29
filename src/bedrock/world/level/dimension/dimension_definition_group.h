@@ -27,6 +27,8 @@ public:
     struct DimensionDefinition {
         int min_y;
         int height_range;
+        int cloud_height;
+        bool render_clouds;
         GeneratorType generator_type;
         DimensionType dimension_type;
         mce::UUID pack_id;
@@ -41,5 +43,5 @@ public:
 private:
     std::map<std::string, DimensionDefinition> dimension_definitions_;
 };
-BEDROCK_STATIC_ASSERT_SIZE(DimensionDefinitionGroup::DimensionDefinition, 64, 56);
+BEDROCK_STATIC_ASSERT_SIZE(DimensionDefinitionGroup::DimensionDefinition, 72, 64);
 BEDROCK_STATIC_ASSERT_SIZE(DimensionDefinitionGroup, 16, 24);
