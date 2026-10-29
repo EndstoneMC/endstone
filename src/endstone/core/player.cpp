@@ -1256,6 +1256,7 @@ void EndstonePlayer::sendPlayerListAdd(const ::Player &player) const
         .id = entry.id,
         .name = entry.name,
         .xuid = entry.xuid,
+        .playfab_id = entry.playfab_id,
         .platform_online_id = entry.platform_online_id,
         .build_platform = entry.build_platform,
         .skin = entry.skin,

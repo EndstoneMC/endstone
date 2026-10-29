@@ -44,6 +44,7 @@ struct PlayerListPacketPayload {
         ActorUniqueID id;
         std::string name;
         std::string xuid;
+        std::string playfab_id;
         std::string platform_online_id;
         BuildPlatform build_platform;
         SerializedSkinRef skin;
@@ -56,7 +57,7 @@ struct PlayerListPacketPayload {
     std::vector<std::variant<RemoveEntry, AddEntry>> entries;
 };
 BEDROCK_STATIC_ASSERT_SIZE(PlayerListPacketPayload::RemoveEntry, 24, 24);
-BEDROCK_STATIC_ASSERT_SIZE(PlayerListPacketPayload::AddEntry, 176, 152);
+BEDROCK_STATIC_ASSERT_SIZE(PlayerListPacketPayload::AddEntry, 208, 176);
 BEDROCK_STATIC_ASSERT_SIZE(PlayerListPacketPayload, 24, 24);
 
 class PlayerListPacket : public Packet {

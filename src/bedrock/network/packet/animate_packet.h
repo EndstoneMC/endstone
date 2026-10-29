@@ -22,6 +22,7 @@
 #include "bedrock/network/packet/cerealize/core/serialization_mode.h"
 #include "bedrock/world/actor/actor_runtime_id.h"
 #include "bedrock/world/actor/actor_swing_source.h"
+#include "bedrock/world/item/equipment_slot.h"
 
 struct AnimatePacketPayload {
     enum class Action : std::uint8_t {
@@ -36,6 +37,7 @@ struct AnimatePacketPayload {
     Action action;                                 // +8
     float data;                                    // +12
     std::optional<ActorSwingSource> swing_source;  // +16
+    HandSlot hand_slot;                            // +18
 };
 BEDROCK_STATIC_ASSERT_SIZE(AnimatePacketPayload, 24, 24);
 
