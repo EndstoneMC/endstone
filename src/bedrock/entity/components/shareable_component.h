@@ -14,16 +14,51 @@
 
 #pragma once
 
+#include <string>
+#include <vector>
+
 #include <entt/core/type_info.hpp>
+
+#include "bedrock/bedrock.h"
+#include "bedrock/world/item/item_descriptor.h"
 
 class Actor;
 class ItemStack;
 
+struct Shareable {
+    Shareable();
+    ItemDescriptor item_descriptor;
+    int want_amount;
+    int surplus_amount;
+    int max_amount;
+    int pickup_limit;
+    int craft_into_item;
+    int craft_into_item_aux;
+    int item_priority;
+    bool admire;
+    bool barter;
+    bool stored_in_inventory;
+    bool consume_item;
+    bool pickup_only;
+    bool singular_pickup;
+    void setItem(const std::string &);
+    void setCraftInto(const std::string &name);
+};
+BEDROCK_STATIC_ASSERT_SIZE(Shareable, 56, 56);
+
 class ShareableComponent {
 public:
     [[nodiscard]] int getCountToPickUp(const Actor &actor, const ItemStack &item) const;
+
+private:
+    std::vector<Shareable> items_;
+    bool share_all_items_;
+    int all_item_want_amount_;
+    int all_item_surplus_amount_;
+    int all_item_max_amount_;
+    bool singular_pickup_;
 };
-static_assert(sizeof(ShareableComponent) == 1);
+BEDROCK_STATIC_ASSERT_SIZE(ShareableComponent, 48, 48);
 #if defined __clang__ || defined __GNUC__
 static_assert(entt::type_hash<ShareableComponent>::value() == 0xDDFFCB9F);
 #endif
