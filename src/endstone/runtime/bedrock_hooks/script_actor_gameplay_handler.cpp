@@ -186,8 +186,8 @@ bool handleEvent(::ActorBeforeAcquireItemEvent &event)
         container && event.actor.hasComponent<HopperComponent>()) {
         taken = countToMoveIn(*container->_getRawContainerPtr(), stack);
     }
-    else if (event.actor.hasComponent<ShareableComponent>()) {
-        taken = ShareableComponent{}.getCountToPickUp(event.actor, stack);
+    else if (const auto *shareable = event.actor.tryGetComponent<ShareableComponent>()) {
+        taken = shareable->getCountToPickUp(event.actor, stack);
     }
     taken = std::clamp(taken, 0, count);
     const auto e =
