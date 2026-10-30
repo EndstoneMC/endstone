@@ -4,47 +4,20 @@
 #include <cstdint>
 #include <cstring>
 
-#include "bedrock/symbol.h"
-
-namespace {
-#ifdef _WIN32
-constexpr std::size_t sleep_goal_vtable = 0xB0B17E0;
-#else
-constexpr std::size_t sleep_goal_vtable = 0xF7C0170;
-#endif
-
-bool hasVtable(const void *goal, std::size_t vtable)
-{
-    const void *actual_vtable;
-    std::memcpy(&actual_vtable, goal, sizeof(actual_vtable));
-    return actual_vtable == static_cast<char *>(endstone::runtime::get_executable_base()) + vtable;
-}
-
-Actor *readActor(const void *goal, std::size_t vtable, std::size_t owner_offset)
-{
-    if (!hasVtable(goal, vtable)) {
-        return nullptr;
-    }
-    Actor *actor;
-    std::memcpy(&actor, static_cast<const char *>(goal) + owner_offset, sizeof(actor));
-    return actor;
-}
-}  // namespace
-
 Actor *SleepGoal::tryGetActor() const
 {
 #ifdef _WIN32
-    return readActor(this, sleep_goal_vtable, 0xC0);
+    constexpr std::size_t offset = 0xC0;
 #else
-    return readActor(this, sleep_goal_vtable, 0xB8);
+    constexpr std::size_t offset = 0xB8;
 #endif
+    Actor *actor;
+    std::memcpy(&actor, reinterpret_cast<const char *>(this) + offset, sizeof(actor));
+    return actor;
 }
 
 bool SleepGoal::hasFailedNavigation() const
 {
-    if (!hasVtable(this, sleep_goal_vtable)) {
-        return false;
-    }
 #ifdef _WIN32
     constexpr std::size_t attempts_offset = 0x30;
     constexpr std::size_t limit_offset = 0x38;
@@ -71,26 +44,35 @@ bool SleepGoal::hasFailedNavigation() const
 Actor *NearestAttackableTargetGoal::tryGetActor() const
 {
 #ifdef _WIN32
-    return readActor(this, 0xB0B0530, 0x30);
+    constexpr std::size_t offset = 0x30;
 #else
-    return readActor(this, 0xFAEF4A8, 0x28);
+    constexpr std::size_t offset = 0x28;
 #endif
+    Actor *actor;
+    std::memcpy(&actor, reinterpret_cast<const char *>(this) + offset, sizeof(actor));
+    return actor;
 }
 
 Actor *RandomStrollGoal::tryGetActor() const
 {
 #ifdef _WIN32
-    return readActor(this, 0xAED7240, 0x30);
+    constexpr std::size_t offset = 0x30;
 #else
-    return readActor(this, 0xFAF4330, 0x28);
+    constexpr std::size_t offset = 0x28;
 #endif
+    Actor *actor;
+    std::memcpy(&actor, reinterpret_cast<const char *>(this) + offset, sizeof(actor));
+    return actor;
 }
 
 Actor *RandomLookAroundGoal::tryGetActor() const
 {
 #ifdef _WIN32
-    return readActor(this, 0xB0AC460, 0x48);
+    constexpr std::size_t offset = 0x48;
 #else
-    return readActor(this, 0xF776E40, 0x40);
+    constexpr std::size_t offset = 0x40;
 #endif
+    Actor *actor;
+    std::memcpy(&actor, reinterpret_cast<const char *>(this) + offset, sizeof(actor));
+    return actor;
 }
