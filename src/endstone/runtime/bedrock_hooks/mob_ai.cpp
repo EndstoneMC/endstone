@@ -1,4 +1,7 @@
-#include "bedrock/world/actor/ai/goal/mob_ai_goals.h"
+#include "bedrock/world/actor/ai/goal/nearest_attackable_target_goal.h"
+#include "bedrock/world/actor/ai/goal/random_look_around_goal.h"
+#include "bedrock/world/actor/ai/goal/random_stroll_goal.h"
+#include "bedrock/world/actor/ai/goal/sleep_goal.h"
 
 #include <array>
 #include <cmath>
@@ -15,6 +18,7 @@
 #include "bedrock/entity/components/offsets_component.h"
 #include "bedrock/entity/components/state_vector_component.h"
 #include "bedrock/world/actor/actor.h"
+#include "bedrock/world/actor/mob.h"
 #include "bedrock/world/actor/player/player.h"
 #include "bedrock/world/actor/provider/actor_riding.h"
 #include "bedrock/world/level/dimension/dimension.h"

@@ -76,7 +76,6 @@ add_library(bedrock STATIC
         world/actor/actor_damage_source.cpp
         world/actor/actor_definition_identifier.cpp
         world/actor/actor_factory.cpp
-        world/actor/ai/goal/mob_ai_goals.cpp
         world/actor/mob.cpp
         world/actor/synched_actor_data.cpp
         world/actor/item/item_actor.cpp
@@ -147,7 +146,6 @@ if (MSVC)
     target_compile_options(bedrock PRIVATE /O2 /DNDEBUG /Zi /Gy)
 endif ()
 if (UNIX)
-    set_source_files_properties(world/actor/ai/goal/mob_ai_goals.cpp PROPERTIES COMPILE_OPTIONS "-fvisibility=hidden")
     target_link_options(bedrock PRIVATE -g)
     target_compile_options(bedrock PRIVATE -O2 -DNDEBUG -g -fms-extensions)
 endif ()
