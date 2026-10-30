@@ -44,7 +44,8 @@ extra = 0
 # 3. confirm the real body: scans 0x68-byte records at this+0x60..0x68 for the maximum float at record+0x40,
 #    collects candidates with owner this+0x28 and constant 256; no result writes null through RSI and returns -1
 # 4. compare with the previously verified body; recheck the slot and RDI=goal, RSI=output argument flow on a bump
-pattern = "55 41 57 41 56 41 55 41 54 53 48 83 EC 28 48 89 F3 49 89 FE 48 8B 47 60 48 8B 4F 68"
+# function prologue
+pattern = "55 41 57 41 56 41 55 41 54 53 48 83 EC ? 48 89 74 24 ? 49 89 FE 48 8B 47 60 48 8B 4F 68"
 
 [[signatures]]
 name = "_ZN16RandomStrollGoal6canUseEv"
@@ -76,10 +77,11 @@ extra = 0
 # 1. find bytes "32 30 52 61 6E 64 6F 6D 4C 6F 6F 6B 41 72 6F 75 6E 64 47 6F 61 6C 00"
 #    = "20RandomLookAroundGoal\0" (the RTTI name); walk the relative relocations through type_info
 #    to the primary vtable address point, as for SleepGoal::canUse
-# 2. canUse is slot 2 (+0x10); confirm owner at this+0x40, calls through owner+0x1d0 vtable +0xa70 and
+# 2. canUse is slot 2 (+0x10); confirm owner at this+0x40, calls through owner+0x1f0 vtable +0xa70 and
 #    the returned object's vtable +0x30, then returns whether float this+0x38 exceeds the returned float
 # 3. compare with the previously verified body; recheck slot order and member offsets on a bump
-pattern = "53 48 89 FB 48 8B 47 40 48 8B B8 D0 01 00 00 48 8B 07 FF 90 70 0A 00 00 48 8B 08 48 89 C7 FF 51 30 F3 0F 10 4B 38 0F 2E C8 0F 97 C0"
+# function prologue
+pattern = "53 48 89 FB 48 8B 47 40 48 8B B8 ? 01 00 00 48 8B 07 FF 90 70 0A 00 00 48 8B 08 48 89 C7 FF 51 30 F3 0F 10 4B 38 0F 2E C8 0F 97 C0 5B"
 
 [[signatures]]
 name = "_ZN20RandomLookAroundGoal11canContinueEv"

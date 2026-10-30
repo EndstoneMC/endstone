@@ -8,9 +8,9 @@
 
 namespace {
 #ifdef _WIN32
-constexpr std::size_t sleep_goal_vtable = 0xA994440;
+constexpr std::size_t sleep_goal_vtable = 0xB0B17E0;
 #else
-constexpr std::size_t sleep_goal_vtable = 0xEEFC570;
+constexpr std::size_t sleep_goal_vtable = 0xF7C0170;
 #endif
 
 bool hasVtable(const void *goal, std::size_t vtable)
@@ -71,26 +71,26 @@ bool SleepGoal::hasFailedNavigation() const
 Actor *NearestAttackableTargetGoal::tryGetActor() const
 {
 #ifdef _WIN32
-    return readActor(this, 0xA961300, 0x30);
+    return readActor(this, 0xB0B0530, 0x30);
 #else
-    return readActor(this, 0xF242670, 0x28);
+    return readActor(this, 0xFAEF4A8, 0x28);
 #endif
 }
 
 Actor *RandomStrollGoal::tryGetActor() const
 {
 #ifdef _WIN32
-    return readActor(this, 0xA960EC0, 0x30);
+    return readActor(this, 0xAED7240, 0x30);
 #else
-    return readActor(this, 0xF242178, 0x28);
+    return readActor(this, 0xFAF4330, 0x28);
 #endif
 }
 
 Actor *RandomLookAroundGoal::tryGetActor() const
 {
 #ifdef _WIN32
-    return readActor(this, 0xA98F7F0, 0x48);
+    return readActor(this, 0xB0AC460, 0x48);
 #else
-    return readActor(this, 0xEEE7378, 0x40);
+    return readActor(this, 0xF776E40, 0x40);
 #endif
 }

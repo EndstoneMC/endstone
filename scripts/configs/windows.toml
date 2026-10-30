@@ -17,7 +17,8 @@ extra = 0
 #    float-coordinate search call.
 # 5. compare with named Level::findPath: RCX=this, RDX=unique_ptr return storage, R8=Actor&, R9D=x and stack
 #    y/z/NavigationComponent&; retain the owning return.
-pattern = "55 41 57 41 56 41 55 41 54 56 57 53 48 81 EC ? ? ? ? 48 8D AC 24 ? ? ? ? 44 0F 29 8D ? ? ? ? 44 0F 29 85 ? ? ? ? 0F 29 BD ? ? ? ? 0F 29 B5 ? ? ? ? 48 C7 85 ? ? ? ? FE FF FF FF 44 89 CB 4C 89 C7"
+# function prologue
+pattern = "55 41 57 41 56 41 55 41 54 56 57 53 48 81 EC ? ? ? ? 48 8D AC 24 ? ? ? ? 44 0F 29 85 ? ? ? ? 0F 29 BD ? ? ? ? 0F 29 B5 ? ? ? ? 48 C7 85 ? ? ? ? FE FF FF FF 44 89 CB 4C 89 C7 48 89 D6"
 
 [[signatures]]
 name = "?stop@SleepGoal@@QEAAXXZ"
@@ -45,7 +46,8 @@ extra = 0
 #    bed position +0xf0.
 # 4. compare this-only bool return and owned-bed preparation with named SleepGoal::canUse; recheck virtual order and
 #    offsets on a bump.
-pattern = "55 41 57 41 56 41 54 56 57 53 48 83 EC ? 48 8D 6C 24 ? 48 C7 45 ? FE FF FF FF 48 89 CE E8 ? ? ? ? 84 C0"
+# function prologue
+pattern = "55 41 57 41 56 56 57 53 48 83 EC ? 48 8D 6C 24 ? 48 C7 45 ? FE FF FF FF 48 89 CE E8 ? ? ? ? 84 C0 74 ? 80 BE 40 01 00 00 00"
 
 [[signatures]]
 name = "?_findTarget@NearestAttackableTargetGoal@@QEAA?AUActorUniqueID@@PEAPEBUMobDescriptor@@@Z"
@@ -101,7 +103,8 @@ extra = 0
 #    +0x50 >= 0.
 # 4. compare the random-source calls, probability comparison and this-only bool return with named
 #    RandomLookAroundGoal::canUse; recheck virtual order on a bump.
-pattern = "56 48 83 EC ? 48 89 CE 48 8B 41 48 48 8B 88 D8 01 00 00 48 8B 01 48 8B 80 68 0A 00 00 FF 15 ? ? ? ? 48 8B 08 48 8B 51 28 48 89 C1 48 89 D0 FF 15 ? ? ? ? F3 0F 10 4E 40 0F 2E C8 0F 97 C0"
+# function prologue
+pattern = "56 48 83 EC ? 48 89 CE 48 8B 41 48 48 8B 88 ? ? 00 00 48 8B 01 48 8B 80 68 0A 00 00 FF 15 ? ? ? ? 48 8B 08 48 8B 51 28 48 89 C1 48 89 D0 FF 15 ? ? ? ? F3 0F 10 4E 40 0F 2E C8 0F 97 C0 48 83 C4 20"
 
 [[signatures]]
 name = "?canContinue@RandomLookAroundGoal@@QEAA_NXZ"
