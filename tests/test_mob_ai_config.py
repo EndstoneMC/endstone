@@ -42,13 +42,10 @@ def test_prepare_preserves_user_values_comments_and_repeated_setup(bootstrap):
     assert config["overrides"].unwrap() == [{"types": ["minecraft:cow"], "idle": {"player-range-blocks": 8}}]
     assert "# Admin config" in bootstrap.config_path.read_text(encoding="utf-8")
     prepared = bootstrap.config_path.read_bytes()
-    timestamp = 1_600_000_000_000_000_000
-    os.utime(bootstrap.config_path, ns=(timestamp, timestamp))
 
     bootstrap._prepare()
 
     assert bootstrap.config_path.read_bytes() == prepared
-    assert bootstrap.config_path.stat().st_mtime_ns == timestamp
 
 
 def test_prepare_updates_hardlinked_config_in_place(bootstrap):

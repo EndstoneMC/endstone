@@ -6,12 +6,12 @@ import logging
 import os
 import platform
 import re
+import shutil
 import socket
 import subprocess
 import sys
 import tempfile
 import zipfile
-from collections.abc import MutableMapping
 from pathlib import Path
 from typing import Union
 
@@ -271,30 +271,29 @@ class Bootstrap:
 
         # create or update the config file
         ref = importlib_resources.files("endstone") / "config" / "endstone.default.toml"
-        default_config = tomlkit.parse(ref.read_text(encoding="utf-8"))
+        if not self.config_path.exists():
+            with importlib_resources.as_file(ref) as path:
+                shutil.copy(path, self.config_path)
+        else:
+            with importlib_resources.as_file(ref) as path:
+                with open(path, "r", encoding="utf-8") as f:
+                    default_config = tomlkit.load(f)
 
-        original = None
-        config = default_config
-        if self.config_path.exists():
-            with self.config_path.open("r", encoding="utf-8", newline="") as f:
-                original = f.read()
-            config = tomlkit.parse(original)
+            with open(self.config_path, "r", encoding="utf-8") as f:
+                config = tomlkit.load(f)
 
-        def migrate_config(from_doc: MutableMapping, to_doc: MutableMapping) -> None:
-            for key, val in from_doc.items():
-                if key not in to_doc:
-                    if isinstance(to_doc, tomlkit.items.InlineTable) and isinstance(val, MutableMapping):
-                        to_doc[key] = val.unwrap()
-                    else:
+            def migrate_config(from_doc: tomlkit.TOMLDocument, to_doc: tomlkit.TOMLDocument) -> None:
+                for key, val in from_doc.items():
+                    if key not in to_doc:
                         to_doc[key] = val
-                elif isinstance(val, MutableMapping) and isinstance(to_doc[key], MutableMapping):
-                    migrate_config(val, to_doc[key])
+                    else:
+                        tables = (tomlkit.TOMLDocument, tomlkit.items.Table)
+                        if isinstance(val, tables) and isinstance(to_doc[key], tables):
+                            migrate_config(val, to_doc[key])
 
-        migrate_config(default_config, config)
-        updated = tomlkit.dumps(config)
-        if updated != original:
-            with self.config_path.open("w", encoding="utf-8", newline="") as f:
-                f.write(updated)
+            migrate_config(default_config, config)
+            with open(self.config_path, "w", encoding="utf-8") as f:
+                tomlkit.dump(config, f)
 
         self._update_packet_limit_config()
 

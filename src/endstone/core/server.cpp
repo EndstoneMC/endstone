@@ -28,7 +28,6 @@
 #include <thread>
 #include <unordered_map>
 #include <unordered_set>
-#include <utility>
 
 #include <boost/algorithm/string.hpp>
 #include <entt/locator/locator.hpp>
@@ -177,8 +176,7 @@ EndstoneServer::EndstoneServer() : logger_(LoggerFactory::getLogger(""))
     start_time_ = std::chrono::system_clock::now();
 
     try {
-        startup_config_ = toml::parse_file("endstone.toml");
-        const auto &tbl = *startup_config_;
+        const auto tbl = toml::parse_file("endstone.toml");
         log_commands_ = tbl.at_path("commands.log").value_or(true);
         allow_client_packs_ = tbl.at_path("settings.allow-client-packs").value_or(false);
         if (const auto *servers = tbl.at_path("network.stun-servers").as_array()) {
@@ -193,6 +191,13 @@ EndstoneServer::EndstoneServer() : logger_(LoggerFactory::getLogger(""))
                 }
                 stun_servers_.push_back(std::move(uri));
             }
+        }
+        const auto result = mob_ai_policies_.initialize(tbl);
+        if (!result) {
+            getLogger().error("[Perf] Mob AI policies were not loaded: {}", result.error());
+        }
+        else {
+            getLogger().info("[Perf] Mob AI policies loaded.");
         }
     }
     catch (const toml::parse_error &err) {
@@ -245,7 +250,6 @@ void EndstoneServer::setLevel(::Level &level)
     loadResourcePacks();
     initRegistries();
     mob_ai_state_.clear();
-    initializeMobAiPolicies();
 
     // enable packet rate limiter
     (void)dispatchCommand(getCommandSender(), "reloadpacketlimitconfig");
@@ -665,21 +669,6 @@ void EndstoneServer::reloadData()
 {
     server_instance_->onRequestResourceReload();
     level_->getHandle().loadFunctionManager();
-}
-
-void EndstoneServer::initializeMobAiPolicies()
-{
-    const auto config = std::exchange(startup_config_, std::nullopt);
-    if (!config) {
-        return;
-    }
-    const auto result = mob_ai_policies_.initialize(*config);
-    if (!result) {
-        getLogger().error("[Perf] Mob AI policies were not loaded: {}", result.error());
-    }
-    else {
-        getLogger().info("[Perf] Mob AI policies loaded.");
-    }
 }
 
 void EndstoneServer::recordMobAiActivity(const ::Actor &actor)

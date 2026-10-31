@@ -17,13 +17,10 @@
 #include <chrono>
 #include <memory>
 #include <mutex>
-#include <optional>
 #include <string>
 #include <thread>
 #include <unordered_map>
 #include <vector>
-
-#include <toml++/toml.h>
 
 #include "bedrock/core/utility/pub_sub/subscription.h"
 #include "bedrock/resources/resource_pack_repository_interface.h"
@@ -161,7 +158,6 @@ private:
     void enablePlugin(Plugin &plugin);
     void loadResourcePacks();
     void fixServerAnnouncement();
-    void initializeMobAiPolicies();
     [[nodiscard]] bool isUsingNetherNet() const;
     [[nodiscard]] std::uint16_t getSignalingPort() const;
 
@@ -178,7 +174,6 @@ private:
     std::unique_ptr<EndstoneScheduler> scheduler_;
     std::unique_ptr<EndstoneCommandMap> command_map_;
     std::unique_ptr<EndstoneLevel> level_;
-    std::optional<toml::table> startup_config_;
     MobAiPolicies mob_ai_policies_;
     MobAiState mob_ai_state_;
     std::unordered_map<std::string, std::unique_ptr<IRegistry>> registries_;
