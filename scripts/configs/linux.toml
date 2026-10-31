@@ -4,6 +4,95 @@ executable = "bedrock_server"
 filename = "bedrock_server"
 
 [[signatures]]
+name = "_ZN10PathFinder8findPathER5Actoriiif"
+relative = false
+extra = 0
+# 1. follow ServerLevel's point-path wrapper to the synchronous path-finder call
+# 2. confirm the named PathFinder::findPath: RDI=unique_ptr return storage, RSI=this, RDX=Actor& and XMM0=maximum distance
+pattern = "41 57 41 56 53 48 81 EC ? ? ? ? F3 0F 11 44 24 ? F3 0F 2A C9 49 89 F6"
+
+[[signatures]]
+name = "_ZN9SleepGoal4stopEv"
+relative = false
+extra = 0
+# 1. locate SleepGoal's primary vtable through RTTI; stop is slot 6 (+0x30)
+# 2. confirm owner at this+0xb8 and movement cleanup resets attempts at this+0x28
+pattern = "55 41 57 41 56 41 55 41 54 53 48 83 EC ? 48 89 FB 48 8B 87 B8 00 00 00 48 8B 78 10"
+
+[[signatures]]
+name = "_ZN9SleepGoal6canUseEv"
+relative = false
+extra = 0
+# 1. find bytes "39 53 6C 65 65 70 47 6F 61 6C 00" = "9SleepGoal\0" (the RTTI name); the
+#    R_X86_64_RELATIVE addend pointing to it is type_info+8; find a type_info reference preceded by zero
+#    offset-to-top and followed by executable slots; the address point is the qword after that reference
+# 2. canUse is slot 2 (+0x10); confirm owner at this+0xb8 and a call through the goal's vtable +0xa0
+#    with a return buffer and explicit argument zero; after locking its output, copy output+0x80..0x88
+#    to this+0xe8..0xf0, then calculate position and facing fields
+# 3. compare with the previously verified body; recheck slot order and member offsets on a bump
+pattern = "55 41 57 41 56 41 54 53 48 83 EC ? 48 89 FB E8 ? ? ? ? 84 C0 74 ? 80 BB 38 01 00 00 00"
+
+[[signatures]]
+name = "_ZN27NearestAttackableTargetGoal11_findTargetEPPK13MobDescriptor"
+relative = false
+extra = 0
+# 1. find bytes "32 37 4E 65 61 72 65 73 74 41 74 74 61 63 6B 61 62 6C 65 54 61 72 67 65 74 47 6F 61 6C 00"
+#    = "27NearestAttackableTargetGoal\0" (the RTTI name); walk the relative relocations through type_info
+#    to the primary vtable address point, as for SleepGoal::canUse
+# 2. _findTarget is slot 13 (+0x68); _selectTarget calls this slot with a local MobDescriptor const* output,
+#    then stores the ActorUniqueID from RAX at this+0x78 and the output at this+0x80
+# 3. confirm the real body: scans 0x68-byte records at this+0x60..0x68 for the maximum float at record+0x40,
+#    collects candidates with owner this+0x28 and constant 256; no result writes null through RSI and returns -1
+# 4. compare with the previously verified body; recheck the slot and RDI=goal, RSI=output argument flow on a bump
+# function prologue
+pattern = "55 41 57 41 56 41 55 41 54 53 48 83 EC ? 48 89 74 24 ? 49 89 FE 48 8B 47 60 48 8B 4F 68"
+
+[[signatures]]
+name = "_ZN16RandomStrollGoal6canUseEv"
+relative = false
+extra = 0
+# 1. find bytes "31 36 52 61 6E 64 6F 6D 53 74 72 6F 6C 6C 47 6F 61 6C 00" = "16RandomStrollGoal\0"
+#    (the RTTI name); walk the relative relocations through type_info to the primary vtable address point,
+#    as for SleepGoal::canUse
+# 2. canUse is slot 2 (+0x10); confirm owner at this+0x28 and component lookup 0xbb725ebe, followed by
+#    the this+0x3c random-interval gate and a tail call through this vtable +0x60
+# 3. compare with the previously verified body; recheck slot order and member offsets on a bump
+pattern = "53 48 8B 47 28 48 8B 50 10 8B 48 18 48 8B 72 38 4C 8B 42 40 49 29 F0"
+
+[[signatures]]
+name = "_ZN16RandomStrollGoal11canContinueEv"
+relative = false
+extra = 256
+# 1. locate the RandomStrollGoal vtable as for RandomStrollGoal::canUse; canContinue is slot 3 (+0x18)
+# 2. confirm the seven-byte body loads byte this+0x58, XORs it with 1 and returns; tick writes that same byte
+# 3. the body occurs twice in .text, so anchor on canUse and remeasure extra = canContinue - canUse on every
+#    bump (currently 0x100); confirm the adjusted result is the slot-3 function start in .eh_frame_hdr
+# 4. compare with the previously verified body
+pattern = "53 48 8B 47 28 48 8B 50 10 8B 48 18 48 8B 72 38 4C 8B 42 40 49 29 F0"
+
+[[signatures]]
+name = "_ZN20RandomLookAroundGoal6canUseEv"
+relative = false
+extra = 0
+# 1. find bytes "32 30 52 61 6E 64 6F 6D 4C 6F 6F 6B 41 72 6F 75 6E 64 47 6F 61 6C 00"
+#    = "20RandomLookAroundGoal\0" (the RTTI name); walk the relative relocations through type_info
+#    to the primary vtable address point, as for SleepGoal::canUse
+# 2. canUse is slot 2 (+0x10); confirm owner at this+0x40, calls through owner+0x1f0 vtable +0xa70 and
+#    the returned object's vtable +0x30, then returns whether float this+0x38 exceeds the returned float
+# 3. compare with the previously verified body; recheck slot order and member offsets on a bump
+# function prologue
+pattern = "53 48 89 FB 48 8B 47 40 48 8B B8 ? 01 00 00 48 8B 07 FF 90 70 0A 00 00 48 8B 08 48 89 C7 FF 51 30 F3 0F 10 4B 38 0F 2E C8 0F 97 C0 5B"
+
+[[signatures]]
+name = "_ZN20RandomLookAroundGoal11canContinueEv"
+relative = false
+extra = 0
+# 1. locate the RandomLookAroundGoal vtable as for RandomLookAroundGoal::canUse; canContinue is slot 3 (+0x18)
+# 2. confirm the body returns whether signed dword this+0x48 is nonnegative; tick decrements that same counter
+# 3. compare with the previously verified body; recheck slot order and member offsets on a bump
+pattern = "83 7F 48 00 0F 99 C0 C3"
+
+[[signatures]]
 name = "BlockState::StateListNode::mHead"
 relative = false
 extra = 0

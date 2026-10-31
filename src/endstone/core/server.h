@@ -30,6 +30,8 @@
 #include "endstone/core/crash_handler.h"
 #include "endstone/core/lang/language.h"
 #include "endstone/core/level/level.h"
+#include "endstone/core/perf/mob_ai.h"
+#include "endstone/core/perf/mob_ai_state.h"
 #include "endstone/core/plugin/plugin_manager.h"
 #include "endstone/core/plugin/service_manager.h"
 #include "endstone/core/scheduler/scheduler.h"
@@ -131,6 +133,10 @@ public:
     void endTick();
     void init(ServerInstance &server_instance);
     void setLevel(::Level &level);
+    [[nodiscard]] const MobAiPolicies &getMobAiPolicies() const { return mob_ai_policies_; }
+    [[nodiscard]] MobAiState &getMobAiState() { return mob_ai_state_; }
+    void recordMobAiActivity(const ::Actor &actor);
+    void removeMobAiState(const ::Actor &actor);
     void initRegistries();
     void setResourcePackRepository(IResourcePackRepository &repo);
     [[nodiscard]] const std::string *getContentKey(const PackIdVersion &pack_id) const;
@@ -168,6 +174,8 @@ private:
     std::unique_ptr<EndstoneScheduler> scheduler_;
     std::unique_ptr<EndstoneCommandMap> command_map_;
     std::unique_ptr<EndstoneLevel> level_;
+    MobAiPolicies mob_ai_policies_;
+    MobAiState mob_ai_state_;
     std::unordered_map<std::string, std::unique_ptr<IRegistry>> registries_;
     std::shared_ptr<EndstoneScoreboard> scoreboard_;
     std::unique_ptr<EndstoneMetrics> metrics_;
