@@ -36,7 +36,7 @@ bool EndstoneFurnace::update(bool force, bool apply_physics)
     if (swaps_lit) {
         furnace->no_drop_ = true;
     }
-    const auto updated = EndstoneContainerBase::update(force, apply_physics);
+    const auto updated = EndstoneContainerBase::update(force || swaps_lit, apply_physics);
     if (swaps_lit) {
         furnace->no_drop_ = false;
     }
