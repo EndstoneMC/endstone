@@ -11,7 +11,7 @@
 
 namespace endstone::runtime {
 
-static constexpr std::array<std::pair<std::string_view, std::size_t>, 82> symbols = {{
+static constexpr std::array<std::pair<std::string_view, std::size_t>, 83> symbols = {{
     {"BlockState::StateListNode::mHead", 223875200},
     {"ChunkBlenderFactory::getOrCreateChunkBlender::cache_cap", 140104298},
     {"DBChunkStorage::_hasChunk::cache_cap", 57742576},
@@ -60,6 +60,7 @@ static constexpr std::array<std::pair<std::string_view, std::size_t>, 82> symbol
     // FurnaceBlockActor
     {"?getItemBurnDuration@FurnaceBlockActor@@SAMAEBVItem@@M@Z", 106599088},
     // InventoryTransaction
+    {"?executeFull@InventoryTransaction@@QEBA?AW4InventoryTransactionError@@AEAVPlayer@@_N@Z", 77380752},
     {"?executeWorldInteraction@InventoryTransaction@@SA?AW4InventoryTransactionError@@PEAXAEAVPlayer@@AEBVInventoryAction@@@Z", 77429824},
     // Item
     {"?readUserData@Item@@UEBAXAEAVItemStackBase@@AEAVIDataInput@@AEAVReadOnlyBinaryStream@@@Z", 24695568},
