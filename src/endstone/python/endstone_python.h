@@ -19,6 +19,7 @@
 #include <memory>
 #include <optional>
 #include <stdexcept>
+#include <string>
 #include <vector>
 
 #include <pybind11/chrono.h>
@@ -182,6 +183,14 @@ py::class_<Set> bind_set(py::handle scope, const char *name, const char *doc)
     const auto snapshot = [](const py::handle &value) {
         return py::set(py::reinterpret_borrow<py::object>(value));
     };
+    const auto load = [name](const py::handle &value) {
+        auto item = try_load<T>(value);
+        if (!item.has_value()) {
+            throw py::type_error(py::cast<std::string>(py::str("{} cannot hold an object of type {}")
+                                                           .format(name, py::type::handle_of(value).attr("__name__"))));
+        }
+        return std::move(*item);
+    };
     auto cls = py::class_<Set>(scope, name, doc);
     cls.def("__len__", [](const Set &self) { return self.size(); })
         .def(
@@ -245,10 +254,10 @@ py::class_<Set> bind_set(py::handle scope, const char *name, const char *doc)
             },
             py::arg("other"))
         .def("update",
-             [snapshot](Set &self, const py::args &others) {
+             [snapshot, load](Set &self, const py::args &others) {
                  for (const auto &other : others) {
                      for (const auto &value : snapshot(other)) {
-                         self.insert(py::cast<T>(value));
+                         self.insert(load(value));
                      }
                  }
              })
@@ -274,9 +283,9 @@ py::class_<Set> bind_set(py::handle scope, const char *name, const char *doc)
              })
         .def(
             "symmetric_difference_update",
-            [snapshot](Set &self, const py::object &other) {
+            [snapshot, load](Set &self, const py::object &other) {
                 for (const auto &value : snapshot(other)) {
-                    const auto item = py::cast<T>(value);
+                    const auto item = load(value);
                     if (self.erase(item) == 0) {
                         self.insert(item);
                     }
