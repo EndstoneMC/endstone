@@ -125,6 +125,7 @@ add_library(bedrock STATIC
         world/level/explosion.cpp
         world/level/level.cpp
         world/level/player_location_sender.cpp
+        world/level/portal_forcer.cpp
         world/level/storage/game_rule_utils.cpp
         world/level/storage/game_rules.cpp
         world/level/weather.cpp

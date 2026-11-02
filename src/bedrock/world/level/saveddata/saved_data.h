@@ -16,15 +16,22 @@
 
 #include <string>
 
+#include "bedrock/bedrock.h"
+
 class CompoundTag;
 
 class SavedData {
 public:
-    virtual ~SavedData() = 0;
-    virtual void deserialize(CompoundTag const &) = 0;
-    virtual void serialize(CompoundTag const &) = 0;
+    SavedData(const std::string &id);
+    virtual ~SavedData();
+    virtual void deserialize(const CompoundTag &) = 0;
+    virtual void serialize(CompoundTag &) const = 0;
+    void setDirty(bool dirt);
+    [[nodiscard]] bool isDirty() const;
+    [[nodiscard]] const std::string &getId() const;
 
 private:
     bool dirty_;
     std::string id_;
 };
+BEDROCK_STATIC_ASSERT_SIZE(SavedData, 48, 40);

@@ -360,7 +360,7 @@ class FilePathManager;
 class FileStorageArea;
 class FileSystem;
 class LevelStorageResult;
-class Random {};
+class Random;
 class StorageAreaState;
 }  // namespace Core
 namespace ClientBlobCache {

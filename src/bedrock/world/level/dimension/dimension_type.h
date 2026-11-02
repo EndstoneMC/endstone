@@ -14,10 +14,18 @@
 
 #pragma once
 
+#include <cstddef>
+#include <functional>
+
 struct DimensionType {
     int value;
 
     bool operator==(const DimensionType &other) const { return value == other.value; }
 
     bool operator!=(const DimensionType &other) const { return !(*this == other); }
+};
+
+template <>
+struct std::hash<DimensionType> {
+    std::size_t operator()(const DimensionType &key) const noexcept { return std::hash<int>{}(key.value); }
 };

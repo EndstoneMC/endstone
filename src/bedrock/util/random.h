@@ -21,44 +21,12 @@
 
 #include <glm/glm.hpp>
 
+#include "bedrock/bedrock.h"
+#include "bedrock/core/math/random.h"
 #include "bedrock/core/utility/enable_non_owner_references.h"
 #include "bedrock/forward.h"
 #include "bedrock/util/thread_owner.h"
 #include "bedrock/world/level/block_pos.h"
-
-using RandomSeed = unsigned int;
-
-class IRandom;
-class IPositionalRandomFactory {
-public:
-    virtual ~IPositionalRandomFactory() = default;
-    [[nodiscard]] virtual std::unique_ptr<IRandom> forBlockPos(const BlockPos &) const = 0;
-    [[nodiscard]] virtual std::unique_ptr<IRandom> forString(const std::string &) const = 0;
-};
-static_assert(sizeof(IPositionalRandomFactory) == 8);
-
-class IRandom {
-public:
-    virtual ~IRandom() = default;
-    virtual int nextInt() = 0;
-    virtual int nextInt(int) = 0;
-    int nextInt(int, int);
-    int nextIntInclusive(int, int);
-    virtual int64_t nextLong() = 0;
-    virtual bool nextBoolean() = 0;
-    virtual float nextFloat() = 0;
-    virtual double nextDouble() = 0;
-    virtual double nextGaussianDouble() = 0;
-    virtual void consumeCount(unsigned int) = 0;
-    virtual std::unique_ptr<IPositionalRandomFactory> forkPositional();
-    virtual bool chance(int, int);
-    virtual bool chanceOneIn(int);
-    virtual bool chanceAllButOneIn(int);
-    virtual bool chanceFloatLessThan(float);
-    virtual bool chanceFloatLessOrEqual(float);
-    virtual bool chanceFloatGreaterThan(float);
-    virtual bool chanceFloatGreaterOrEqual(float);
-};
 
 class Random : public IRandom {
 public:
@@ -109,3 +77,4 @@ private:
 
     Random();
 };
+BEDROCK_STATIC_ASSERT_SIZE(Random, 2560, 2560);

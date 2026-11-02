@@ -32,6 +32,7 @@
 #include "bedrock/world/level/chunk/level_chunk_event_manager.h"
 #include "bedrock/world/level/dimension/vanilla_dimensions.h"
 #include "bedrock/world/level/level.h"
+#include "bedrock/world/level/portal_forcer.h"
 #include "endstone/core/actor/actor.h"
 #include "endstone/core/block/block.h"
 #include "endstone/core/entity/components/flag_components.h"
@@ -345,15 +346,38 @@ void ServerPlayer::changeDimension(DimensionType to_id)
 
     _setDimensionTransitionComponent(request.from_dimension, target_id, 300);
     auto &transition = getEntity().getOrAddComponent<DimensionTransitionComponent>();
-    transition.portal_entrance_position = target;
+    auto entrance = target;
+    const auto &portal_forcer = getLevel().getPortalForcer();
+    BlockPos exit_block_pos;
+    if (const auto exit_record = portal_forcer._findPortal(target_id, BlockPos(target),
+                                                           PortalForcer::PORTAL_SEARCH_RADIUS, exit_block_pos)) {
+        BlockPos source_block_pos;
+        const auto source_record = portal_forcer._findPortal(transition.portal_entrance_dimension,
+                                                             BlockPos(transition.portal_entrance_position),
+                                                             PortalForcer::PORTAL_SEARCH_RADIUS, source_block_pos);
+        const auto normalized =
+            source_record
+                ? PortalForcer::_getNormalizedPortalPosition(transition.portal_entrance_position, *source_record)
+                : 0.5F;
+        Vec3 position;
+        auto axis = PortalAxis::Unknown;
+        PortalForcer::_applyNormalizedPortalPosition(position, axis, normalized, *exit_record);
+        BlockPos found_block_pos;
+        if (portal_forcer._findPortal(target_id, BlockPos(position), PortalForcer::PORTAL_SEARCH_RADIUS,
+                                      found_block_pos) == exit_record) {
+            entrance = position;
+        }
+    }
+    transition.portal_entrance_position = entrance;
     transition.portal_entrance_dimension = target_id;
     if (target_id == request.from_dimension) {
         addOrRemoveComponent<endstone::core::InternalTeleportFlagComponent>(true);
-        teleportTo(target, true, 3, 1, false);
+        teleportTo(entrance, true, 3, 1, false);
         return;
     }
     getLevel().requestPlayerChangeDimension(
-        *this, ChangeDimensionRequest(request.from_dimension, target_id, request.from_position, target, false, false));
+        *this,
+        ChangeDimensionRequest(request.from_dimension, target_id, request.from_position, entrance, false, false));
 }
 
 void ServerPlayer::sendNetworkPacket(Packet &packet) const

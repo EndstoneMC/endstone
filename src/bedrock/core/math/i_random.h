@@ -1,0 +1,53 @@
+// Copyright (c) 2024, The Endstone Project. (https://endstone.dev) All Rights Reserved.
+//
+// Licensed under the Apache License, Version 2.0 (the "License");
+// you may not use this file except in compliance with the License.
+// You may obtain a copy of the License at
+//
+//     http://www.apache.org/licenses/LICENSE-2.0
+//
+// Unless required by applicable law or agreed to in writing, software
+// distributed under the License is distributed on an "AS IS" BASIS,
+// WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+// See the License for the specific language governing permissions and
+// limitations under the License.
+
+#pragma once
+
+#include <cstdint>
+#include <memory>
+#include <string>
+
+class BlockPos;
+class IRandom;
+
+class IPositionalRandomFactory {
+public:
+    virtual ~IPositionalRandomFactory() = default;
+    [[nodiscard]] virtual std::unique_ptr<IRandom> forBlockPos(const BlockPos &) const = 0;
+    [[nodiscard]] virtual std::unique_ptr<IRandom> forString(const std::string &) const = 0;
+};
+static_assert(sizeof(IPositionalRandomFactory) == 8);
+
+class IRandom {
+public:
+    virtual ~IRandom() = default;
+    virtual int nextInt() = 0;
+    virtual int nextInt(int) = 0;
+    int nextInt(int, int);
+    int nextIntInclusive(int, int);
+    virtual int64_t nextLong() = 0;
+    virtual bool nextBoolean() = 0;
+    virtual float nextFloat() = 0;
+    virtual double nextDouble() = 0;
+    virtual double nextGaussianDouble() = 0;
+    virtual void consumeCount(unsigned int) = 0;
+    virtual std::unique_ptr<IPositionalRandomFactory> forkPositional();
+    virtual bool chance(int, int);
+    virtual bool chanceOneIn(int);
+    virtual bool chanceAllButOneIn(int);
+    virtual bool chanceFloatLessThan(float);
+    virtual bool chanceFloatLessOrEqual(float);
+    virtual bool chanceFloatGreaterThan(float);
+    virtual bool chanceFloatGreaterOrEqual(float);
+};
