@@ -288,11 +288,13 @@ def test_sign(place) -> None:
     assert isinstance(state.get_side(Side.BACK), SignSide)
 
 
-def test_sign_side_enum_is_not_exported_onto_the_class() -> None:
+def test_sign_side_enum_is_not_exported_onto_the_module() -> None:
     """Verify Side has no export_values, unlike Operation and RespawnReason."""
+    import endstone.block
+
     assert [member.name for member in Side] == ["FRONT", "BACK"]
-    assert not hasattr(Sign, "FRONT")
-    assert not hasattr(Sign, "BACK")
+    assert not hasattr(endstone.block, "FRONT")
+    assert not hasattr(endstone.block, "BACK")
 
 
 def test_sign_lines(place) -> None:
