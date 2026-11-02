@@ -21,6 +21,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Fixed `Plugin.save_resources()` mangling resource paths that contain `;` or `:`.
 - Fixed installing a plugin wheel hanging the server when its standard input is a pipe.
 - Fixed a freshly installed plugin wheel not being importable until the server restarted.
+- Fixed the `ItemStack` constructor raising `RuntimeError` instead of `ValueError` for an amount outside 1 to 255.
 
 ## [0.11.15] - 2026-10-28
 
