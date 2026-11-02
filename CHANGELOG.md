@@ -248,6 +248,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Fixed `Button.icon = None` raising instead of clearing the icon.
 - Fixed adding or subtracting `Location`s from different dimensions silently giving a meaningless result instead of raising `ValueError`.
 - Fixed the `MapCursor` constructor accepting a direction outside 0 to 15.
+- Fixed `Item.thrower` reading `0` instead of `None` after being cleared.
 - Fixed a malformed form response logging a callback error instead of closing the form.
 - Fixed `str()` on a `Vector` ending in a stray comma.
 - Fixed `Colors::BLACK` being a fully transparent red.

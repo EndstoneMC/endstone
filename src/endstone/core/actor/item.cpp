@@ -58,7 +58,10 @@ std::optional<std::int64_t> EndstoneItem::getThrower() const
 {
     const auto &data = getHandle().entity_data;
     if (data.hasData(static_cast<SynchedActorData::ID>(ActorDataIDs::OWNER))) {
-        return data.getInt64(static_cast<SynchedActorData::ID>(ActorDataIDs::OWNER));
+        if (const auto thrower = data.getInt64(static_cast<SynchedActorData::ID>(ActorDataIDs::OWNER));
+            thrower != 0 && thrower != -1) {
+            return thrower;
+        }
     }
     return std::nullopt;
 }
