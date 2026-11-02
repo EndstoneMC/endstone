@@ -19,11 +19,9 @@ struct MobDescriptor {
     std::int32_t must_see_forget_ticks_;
     std::int32_t priority_;
     std::int32_t cooldown_in_ticks_;
-#ifdef _WIN32
     std::uint32_t unknown_100_;  // +0x64; trailing field in the 104-byte descriptor
-#else
-    std::byte unknown_76_[28];   // +0x4c; trailing storage in the 104-byte descriptor
-#endif
 };
 
 BEDROCK_STATIC_ASSERT_SIZE(MobDescriptor, 104, 104);
+static_assert(offsetof(MobDescriptor, max_distance_) == 0x40);
+static_assert(offsetof(MobDescriptor, cooldown_in_ticks_) == 0x60);

@@ -12,8 +12,7 @@ public:
     [[nodiscard]] Mob *tryGetActor() const { return mob_; }
     [[nodiscard]] bool hasFailedNavigation() const
     {
-        return !reached_target_ && travel_ticks_ > 0 &&
-               (cooldown_counter_ != 0 || travel_ticks_ > give_up_ticks_);
+        return !reached_target_ && (cooldown_counter_ != 0 || travel_ticks_ > give_up_ticks_);
     }
 
 private:
