@@ -108,7 +108,7 @@ def test_effect_accepts_an_empty_type_but_cannot_read_it_back() -> None:
 def test_effect_type_constants() -> None:
     """Verify every effect type constant is an identifier in the minecraft namespace."""
     names = [name for name in dir(EffectType) if name.isupper()]
-    assert len(names) == 37
+    assert len(names) == 38
     for name in names:
         constant = getattr(EffectType, name)
         assert isinstance(constant, Identifier)
@@ -119,7 +119,7 @@ def test_effect_type_constants() -> None:
 def test_potion_type_constants() -> None:
     """Verify every potion type constant lives under the potion_type namespace."""
     names = [name for name in dir(PotionType) if name.isupper()]
-    assert len(names) == 47
+    assert len(names) == 49
     for name in names:
         constant = getattr(PotionType, name)
         assert isinstance(constant, Identifier)
