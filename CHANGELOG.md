@@ -7,6 +7,21 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+### Fixed
+
+- Fixed cancelling `PlayerDropItemEvent` on Linux doubling the stack the player tried to drop.
+- Fixed setting `score_tag` on an actor other than a player crashing the server.
+- Fixed `ItemStack` equality and `is_similar()` ignoring the data value, so a water bottle equalled an invisibility potion.
+- Fixed `ModalForm.controls` returning copies, so changing a control it handed out had no effect on the form.
+- Fixed `Button.icon = None` raising instead of clearing the icon.
+- Fixed adding or subtracting `Location`s from different dimensions silently giving a meaningless result instead of raising `ValueError`.
+- Fixed the `MapCursor` constructor accepting a direction outside 0 to 15.
+- Fixed `Item.thrower` reading `0` instead of `None` after being cleared.
+- Fixed `Plugin.save_resources()` failing when the resource sits in a folder that does not exist in the data folder yet.
+- Fixed `Plugin.save_resources()` mangling resource paths that contain `;` or `:`.
+- Fixed installing a plugin wheel hanging the server when its standard input is a pipe.
+- Fixed a freshly installed plugin wheel not being importable until the server restarted.
+
 ## [0.11.15] - 2026-10-28
 
 ### Added
