@@ -74,7 +74,7 @@ public:
      * @param icon The path or URL to the icon file.
      * @return A reference to the current button.
      */
-    Button &setIcon(std::string icon)
+    Button &setIcon(std::optional<std::string> icon)
     {
         icon_ = std::move(icon);
         return *this;

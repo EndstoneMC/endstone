@@ -244,6 +244,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Fixed `Server.dispatch_command()` rejecting the sender a command received from `/execute` or a command block.
 - Fixed `ItemStack` equality and `is_similar()` ignoring the data value, so a water bottle equalled an invisibility potion.
 - Fixed the `ItemStack` constructor raising `RuntimeError` instead of `ValueError` for an amount outside 1 to 255.
+- Fixed `ModalForm.controls` returning copies, so changing a control it handed out had no effect on the form.
+- Fixed `Button.icon = None` raising instead of clearing the icon.
 - Fixed a malformed form response logging a callback error instead of closing the form.
 - Fixed `str()` on a `Vector` ending in a stray comma.
 - Fixed `Colors::BLACK` being a fully transparent red.
