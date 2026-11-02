@@ -254,6 +254,18 @@ class MapCanvas:
             The color.
         """
 
+    def get_base_pixel_color(self, x: int, y: int) -> tuple[int, ...]:
+        """
+        Get a pixel from the layers below this canvas.
+
+        Args:
+            x: The x coordinate, from 0 to 127.
+            y: The y coordinate, from 0 to 127.
+
+        Returns:
+            The color.
+        """
+
     def set_pixel(self, x: int, y: int, color: int) -> None:
         """
         Draw a pixel to the canvas.
@@ -293,6 +305,12 @@ class MapRenderer:
     def __init__(self, is_contextual: bool = False) -> None:
         """
         Initialize the map renderer base with the given contextual status.
+        """
+
+    @property
+    def is_contextual(self) -> bool:
+        """
+        Whether this renderer is contextual, i.e. has different canvases for different players.
         """
 
     def initialize(self, view: MapView) -> None:

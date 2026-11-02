@@ -103,6 +103,16 @@ void init_map(py::module_ &m)
     Returns:
         The color.
 )doc")
+        .def("get_base_pixel_color", &MapCanvas::getBasePixelColor, py::arg("x"), py::arg("y"), R"doc(
+    Get a pixel from the layers below this canvas.
+
+    Args:
+        x: The x coordinate, from 0 to 127.
+        y: The y coordinate, from 0 to 127.
+
+    Returns:
+        The color.
+)doc")
         .def("set_pixel", &MapCanvas::setPixel, py::arg("x"), py::arg("y"), py::arg("color"), R"doc(
     Draw a pixel to the canvas.
 
@@ -133,6 +143,9 @@ void init_map(py::module_ &m)
     py::class_<MapRenderer, PyMapRenderer, py::smart_holder>(m, "MapRenderer", "Represents a renderer for a map.")
         .def(py::init<bool>(), py::arg("is_contextual") = false,
              "Initialize the map renderer base with the given contextual status.")
+        .def_property_readonly("is_contextual", &MapRenderer::isContextual, R"doc(
+    Whether this renderer is contextual, i.e. has different canvases for different players.
+)doc")
         .def("initialize", &MapRenderer::initialize, py::arg("view"), R"doc(
     Initialize this `MapRenderer` for the given map.
 

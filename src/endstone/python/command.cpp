@@ -110,7 +110,7 @@ void init_command(py::module &m, py_class<CommandSender> &command_sender)
         .def_property_readonly("callee", &ProxiedCommandSender::getCallee,
                                "The `CommandSender` which is being used to call the command.");
 
-    py::class_<Command, PyCommand, py::smart_holder>(
+    auto command = py::class_<Command, PyCommand, py::smart_holder>(
         m, "Command", "Represents a Command, which executes various tasks upon user input.")
         .def(py::init(&createCommand, &createCommandAlias), py::arg("name"), py::arg("description") = py::none(),
              py::arg("usages") = py::none(), py::arg("aliases") = py::none(), py::arg("permissions") = py::none())
@@ -194,6 +194,26 @@ void init_command(py::module &m, py_class<CommandSender> &command_sender)
 
     Returns:
         The command with the specified name, `None` if a command with that label doesn't exist.
+)doc");
+
+    command
+        .def("register_to", &Command::registerTo, py::arg("command_map"), R"doc(
+    Registers this command to a `CommandMap`.
+
+    Args:
+        command_map: The `CommandMap` to register to.
+
+    Returns:
+        `True` if the registration was successful, `False` otherwise.
+)doc")
+        .def("unregister_from", &Command::unregisterFrom, py::arg("command_map"), R"doc(
+    Unregisters this command from a `CommandMap`.
+
+    Args:
+        command_map: The `CommandMap` to unregister from.
+
+    Returns:
+        `True` if the unregistration was successful, `False` otherwise.
 )doc");
 
     py::class_<CommandExecutor, PyCommandExecutor, py::smart_holder>(

@@ -7,7 +7,7 @@ import enum
 import typing
 
 from endstone import GameMode, Identifier, Input, Player, Skin
-from endstone.actor import Actor, Item, Mob
+from endstone.actor import Actor, ActorType, Item, Mob
 from endstone.block import Block, BlockFace, BlockState, Side, Sign
 from endstone.command import CommandSender
 from endstone.damage import DamageSource
@@ -227,6 +227,12 @@ class ActorEvent(Event):
         The `Actor` which is involved in this event.
         """
 
+    @property
+    def actor_type(self) -> ActorType:
+        """
+        The `ActorType` of the `Actor` involved in this event.
+        """
+
 class MobEvent(Event):
     """
     Represents an `Mob`-related event.
@@ -235,6 +241,12 @@ class MobEvent(Event):
     def actor(self) -> Mob:
         """
         The `Mob` which is involved in this event.
+        """
+
+    @property
+    def actor_type(self) -> ActorType:
+        """
+        The `ActorType` of the `Mob` involved in this event.
         """
 
 class ActorCollideWithActorEvent(Event, Cancellable):

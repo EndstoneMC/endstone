@@ -361,6 +361,18 @@ void init_plugin(py::module &m)
     Returns:
         `Permission`, or `None` if none.
 )doc")
+        .def("add_permission", &PluginManager::addPermission, py::arg("perm"), R"doc(
+    Adds a `Permission` to this plugin manager.
+
+    Args:
+        perm: Permission to add.
+
+    Returns:
+        The newly added permission.
+
+    Raises:
+        ValueError: If a permission with the same name is already defined.
+)doc")
         .def("remove_permission", py::overload_cast<const NotNull<Permission> &>(&PluginManager::removePermission),
              py::arg("perm"),
              R"doc(

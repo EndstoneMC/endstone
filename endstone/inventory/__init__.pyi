@@ -467,6 +467,17 @@ class ItemMeta:
             The level that the specified enchantment has, or 0 if none.
         """
 
+    def has_conflicting_enchant(self, id: Identifier[Enchantment] | str) -> bool:
+        """
+        Checks if the specified enchantment conflicts with any enchantments in this `ItemMeta`.
+
+        Args:
+            id: Enchantment id to test.
+
+        Returns:
+            `True` if the enchantment conflicts, `False` otherwise.
+        """
+
     @property
     def enchants(self) -> dict[Enchantment, int]:
         """

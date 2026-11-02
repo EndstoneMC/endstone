@@ -552,6 +552,20 @@ class PluginManager:
             `Permission`, or `None` if none.
         """
 
+    def add_permission(self, perm: Permission) -> Permission:
+        """
+        Adds a `Permission` to this plugin manager.
+
+        Args:
+            perm: Permission to add.
+
+        Returns:
+            The newly added permission.
+
+        Raises:
+            ValueError: If a permission with the same name is already defined.
+        """
+
     @typing.overload
     def remove_permission(self, perm: Permission) -> None:
         """

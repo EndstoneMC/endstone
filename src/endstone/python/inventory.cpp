@@ -189,6 +189,15 @@ void init_inventory(py::module_ &m, py::class_<ItemStack> &item_stack)
     Returns:
         The level that the specified enchantment has, or 0 if none.
 )doc")
+        .def("has_conflicting_enchant", &ItemMeta::hasConflictingEnchant, py::arg("id"), R"doc(
+    Checks if the specified enchantment conflicts with any enchantments in this `ItemMeta`.
+
+    Args:
+        id: Enchantment id to test.
+
+    Returns:
+        `True` if the enchantment conflicts, `False` otherwise.
+)doc")
         .def_property_readonly("enchants", &ItemMeta::getEnchants, R"doc(
     Returns a copy of the enchantments in this `ItemMeta`.
 

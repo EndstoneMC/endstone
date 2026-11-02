@@ -387,6 +387,18 @@ void init_logger(py::module &m)
         .def(
             "critical", [](const Logger &self, const std::string_view message) { self.log(Logger::Critical, message); },
             py::arg("message"), "Log a message at the `CRITICAL` level.")
+        .def(
+            "log",
+            [](const Logger &self, const Logger::Level level, const std::string_view message) {
+                self.log(level, message);
+            },
+            py::arg("level"), py::arg("message"), R"doc(
+    Log a message at the given level.
+
+    Args:
+        level: The level at which the message should be logged.
+        message: The message to log.
+)doc")
         .def_property_readonly("name", &Logger::getName, "The name of this `Logger` instance.");
 }
 
@@ -468,6 +480,8 @@ void init_server(py::classh<Server> &server)
     Raises:
         RuntimeError: If the level has not loaded yet, as in the `on_enable` of a plugin loaded at STARTUP.
 )doc")
+        .def_property_readonly("is_primary_thread", &Server::isPrimaryThread,
+                               "`True` if the current thread matches the expected primary server thread, `False` otherwise.")
         .def_property_readonly("scheduler", &Server::getScheduler, py::return_value_policy::reference,
                                "The scheduler for managing scheduled events.")
         .def_property_readonly("service_manager", &Server::getServiceManager, py::return_value_policy::reference,

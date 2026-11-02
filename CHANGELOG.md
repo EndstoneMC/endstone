@@ -43,6 +43,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - `DimensionLoadEvent` for a dimension being loaded.
 - `BlockCookEvent.recipe`, the `CookingRecipe` the cook is running, or `None` when there is no matching recipe.
 - Support for custom Python events with optional cancellation.
+- `ActorEvent.actor_type` and `MobEvent.actor_type`, the `ActorType` of the actor involved.
 
 #### Actors and players
 
@@ -79,6 +80,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - `WritableBookMeta`, `BookMeta` and `CrossbowMeta` item meta types.
 - `PotionMeta` for potions, splash potions and lingering potions, with `meta.base_potion_type`.
 - `ItemStack.item_meta` is now writable, so `item.item_meta = meta` applies the metadata. Where `set_item_meta()` reports failure by returning `False`, assigning raises if the metadata does not apply to the item type.
+- `ItemMeta.has_conflicting_enchant()`, `MapCanvas.get_base_pixel_color()` and `MapRenderer.is_contextual`.
 
 #### Level and dimensions
 
@@ -95,6 +97,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - `Command` can now be subclassed in Python to override `execute()`.
 - `/restart` command (console-only) for gracefully restarting the server.
 - `ProxiedCommandSender`, the sender a command receives when run through `/execute`. Its `caller` typed the command and receives its output, its `callee` supplies the name and execution context, and permission checks resolve against the caller.
+- `Command.register_to()` and `Command.unregister_from()`, and `PluginManager.add_permission()`.
 
 #### API and types
 
@@ -108,6 +111,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Game rule API: `Level.get_game_rule_value()`, `Level.set_game_rule()` and `Level.is_game_rule()`, keyed by a typed `GameRule` constant such as `GameRule.DO_FIRE_TICK`, covering every rule in the `GameRule` registry.
 - Binary NBT serialization (`dump`/`load`) with support for multiple formats.
 - `PluginManager::registerEvent()` also takes an executor that receives the event's `NotNull<Event>`, for a listener that keeps the event after it returns.
+- `Server.is_primary_thread` and `Logger.log(level, message)`.
 
 #### Server and Docker
 

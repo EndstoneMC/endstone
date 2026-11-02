@@ -200,6 +200,12 @@ class Server:
         """
 
     @property
+    def is_primary_thread(self) -> bool:
+        """
+        `True` if the current thread matches the expected primary server thread, `False` otherwise.
+        """
+
+    @property
     def scheduler(self) -> Scheduler:
         """
         The scheduler for managing scheduled events.
@@ -1330,6 +1336,15 @@ class Logger:
     def critical(self, message: str) -> None:
         """
         Log a message at the `CRITICAL` level.
+        """
+
+    def log(self, level: Level, message: str) -> None:
+        """
+        Log a message at the given level.
+
+        Args:
+            level: The level at which the message should be logged.
+            message: The message to log.
         """
 
     @property

@@ -195,6 +195,28 @@ class Command:
         The current registered state of this command.
         """
 
+    def register_to(self, command_map: CommandMap) -> bool:
+        """
+        Registers this command to a `CommandMap`.
+
+        Args:
+            command_map: The `CommandMap` to register to.
+
+        Returns:
+            `True` if the registration was successful, `False` otherwise.
+        """
+
+    def unregister_from(self, command_map: CommandMap) -> bool:
+        """
+        Unregisters this command from a `CommandMap`.
+
+        Args:
+            command_map: The `CommandMap` to unregister from.
+
+        Returns:
+            `True` if the unregistration was successful, `False` otherwise.
+        """
+
 class CommandMap:
     """
     Represents a command map that manages all commands of the Server.

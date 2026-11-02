@@ -63,9 +63,13 @@ void init_event(py::module_ &m, py::classh<Event, PyEvent> &event)
 
     // Actor events
     bind_event<ActorEvent<Actor>, Event>(m, "ActorEvent", "Represents an `Actor`-related event.")
-        .def_property_readonly("actor", &ActorEvent<Actor>::getActor, "The `Actor` which is involved in this event.");
+        .def_property_readonly("actor", &ActorEvent<Actor>::getActor, "The `Actor` which is involved in this event.")
+        .def_property_readonly("actor_type", &ActorEvent<Actor>::getActorType, py::return_value_policy::reference,
+                               "The `ActorType` of the `Actor` involved in this event.");
     bind_event<ActorEvent<Mob>, Event>(m, "MobEvent", "Represents an `Mob`-related event.")
-        .def_property_readonly("actor", &ActorEvent<Mob>::getActor, "The `Mob` which is involved in this event.");
+        .def_property_readonly("actor", &ActorEvent<Mob>::getActor, "The `Mob` which is involved in this event.")
+        .def_property_readonly("actor_type", &ActorEvent<Mob>::getActorType, py::return_value_policy::reference,
+                               "The `ActorType` of the `Mob` involved in this event.");
     bind_event<ActorCollideWithActorEvent, Event, ICancellable>(m, "ActorCollideWithActorEvent", R"doc(
     Called when two actors collide with each other.
 
