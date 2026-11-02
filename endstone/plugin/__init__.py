@@ -1,5 +1,4 @@
 import inspect
-import os
 import shutil
 from pathlib import Path
 
@@ -163,10 +162,10 @@ class Plugin(_Plugin):
             FileNotFoundError: If the specified resource cannot be found in the package.
             OSError: If an error occurs while copying or creating directories.
         """
-        path = path.replace(os.pathsep, "/")
+        path = path.replace("\\", "/")
         out_path = Path(self.data_folder) / path
         if not out_path.exists() or replace:
-            out_path.parent.mkdir(exist_ok=True)
+            out_path.parent.mkdir(parents=True, exist_ok=True)
             resource = files(self.__class__.__module__).joinpath(path)
             with as_file(resource) as f:
                 shutil.copy(f, out_path)
