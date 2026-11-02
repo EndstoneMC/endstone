@@ -151,6 +151,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - **BREAKING**: Permission attachments and permissions are handed out as handles from `Permissible.add_attachment()`, `Permissible.effective_permissions`, `PluginManager.get_permission()`, `get_default_permissions()` and `permissions`. An attachment stays readable after its permissible goes away, with `permissible` reading `None` and `remove()` reporting `False`. C++ plugins use `->` where they used `.`, and pass `std::make_shared<Permission>(...)` to `addPermission()`.
 - **BREAKING**: Permission subscription lists hold their subscribers weakly, so a disconnected player drops out on their own. `PluginManager.get_permission_subscriptions()`, `get_default_perm_subscriptions()` and `Permission.permissibles` hand back sets of handles.
 - **BREAKING**: `Permissible.add_attachment()` raises `ValueError` for an empty permission name or a disabled plugin instead of returning `None`, and `Permission.add_parent()` raises when the permission was never registered.
+- **BREAKING**: `Permission.children` returns a live `PermissionChildren` mapping instead of a `dict` copy, so editing it and calling `recalculate_permissibles()` takes effect. Code that needs a real `dict` must wrap it in `dict()`, and it can no longer be passed as the `children` argument of `Permission` directly.
 
 #### API changes
 
