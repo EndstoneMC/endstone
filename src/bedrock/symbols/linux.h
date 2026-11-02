@@ -11,7 +11,7 @@
 
 namespace endstone::runtime {
 
-static constexpr std::array<std::pair<std::string_view, std::size_t>, 122> symbols = {{
+static constexpr std::array<std::pair<std::string_view, std::size_t>, 123> symbols = {{
     {"BlockState::StateListNode::mHead", 267359568},
     {"ChunkBlenderFactory::getOrCreateChunkBlender::cache_cap", 86839560},
     {"DBChunkStorage::_hasChunk::cache_cap", 225495850},
@@ -100,6 +100,7 @@ static constexpr std::array<std::pair<std::string_view, std::size_t>, 122> symbo
     {"_ZN17InteractComponent15_runInteractionER5ActorRK22InteractionDescriptionR6Player8HandSlot", 118634384},
     // InventoryTransaction
     {"_ZN20InventoryTransaction23executeWorldInteractionEPvR6PlayerRK15InventoryAction", 211731936},
+    {"_ZNK20InventoryTransaction11executeFullER6Playerb", 211688816},
     // Item
     {"_ZNK4Item12readUserDataER13ItemStackBaseR10IDataInputR20ReadOnlyBinaryStream", 210916816},
     // ItemFrameBlockActor

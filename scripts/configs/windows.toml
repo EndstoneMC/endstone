@@ -783,6 +783,15 @@ extra = 0
 pattern = "55 41 57 41 56 41 54 56 57 53 48 81 EC D0 02 00 00 48 8D AC 24 80 00 00 00 0F 29 B5 ? ? ? ? 48 C7 85 ? ? ? ? FE FF FF FF 4C 89 CF 4C 89 C3 48 89 D6 49 89 CE"
 
 [[signatures]]
+name = "?executeFull@InventoryTransaction@@QEBA?AW4InventoryTransactionError@@AEAVPlayer@@_N@Z"
+relative = false
+extra = 0
+# 1. find the lambda vtable run of InventoryTransaction::getExecuteFunction (see executeWorldInteraction below)
+# 2. the vtable run has two data xrefs: a 14-byte stub and one giant function (~0x1375). The giant one is executeFull:
+#    rcx is the transaction, rdx the Player&, r8b is_sender_authority, and it walks the action map at this+0x50
+pattern = "55 41 57 41 56 41 55 41 54 56 57 53 48 81 EC ? ? 00 00 48 8D AC 24 80 00 00 00 0F 29 B5 ? ? 00 00 48 C7 85 ? ? 00 00 FE FF FF FF 44 89 C3 49 89 CD 48 89 55 ? 48 8B 8A ? ? 00 00"
+
+[[signatures]]
 # name is arbitrary, this is actually hooking a lambda function
 name = "?executeWorldInteraction@InventoryTransaction@@SA?AW4InventoryTransactionError@@PEAXAEAVPlayer@@AEBVInventoryAction@@@Z"
 relative = false
