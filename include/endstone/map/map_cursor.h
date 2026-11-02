@@ -68,8 +68,9 @@ public:
      * @param caption cursor caption
      */
     MapCursor(std::int8_t x, std::int8_t y, std::int8_t direction, Type type, bool visible, std::string caption = "")
-        : x_(x), y_(y), direction_(direction), visible_(visible), caption_(std::move(caption)), type_(type)
+        : x_(x), y_(y), visible_(visible), caption_(std::move(caption)), type_(type)
     {
+        setDirection(direction);
     }
 
     /**
