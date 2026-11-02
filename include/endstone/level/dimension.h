@@ -338,6 +338,26 @@ inline float Location::distanceSquared(const Location &other) const
     return ((x_ - other.x_) * (x_ - other.x_)) + ((y_ - other.y_) * (y_ - other.y_)) +
            ((z_ - other.z_) * (z_ - other.z_));
 }
+
+inline Location &Location::operator+=(const Location &other)
+{
+    Preconditions::checkArgument(getDimension() == other.getDimension(),
+                                 "Cannot add Locations of differing dimensions.");
+    x_ += other.x_;
+    y_ += other.y_;
+    z_ += other.z_;
+    return *this;
+}
+
+inline Location &Location::operator-=(const Location &other)
+{
+    Preconditions::checkArgument(getDimension() == other.getDimension(),
+                                 "Cannot subtract Locations of differing dimensions.");
+    x_ -= other.x_;
+    y_ -= other.y_;
+    z_ -= other.z_;
+    return *this;
+}
 }  // namespace endstone
 
 template <>
