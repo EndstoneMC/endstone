@@ -195,7 +195,7 @@ class Actor(CommandSender):
     @property
     def score_tag(self) -> str:
         """
-        The current score tag of the actor.
+        The current score tag of the actor. Only players have one; setting it on any other actor has no effect.
         """
 
     @score_tag.setter

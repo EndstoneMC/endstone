@@ -223,6 +223,8 @@ public:
     /**
      * Sets the score tag for the actor.
      *
+     * Only players have a score tag. On any other actor this has no effect.
+     *
      * @param score The new score tag to set.
      */
     virtual void setScoreTag(std::string score) = 0;
