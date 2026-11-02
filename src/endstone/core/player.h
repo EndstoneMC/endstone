@@ -191,6 +191,7 @@ private:
     std::bitset<PlayerAuthInputPacket::InputData::INPUT_NUM> pinned_input_;
     std::bitset<PlayerAuthInputPacket::InputData::INPUT_NUM> pinned_input_value_;
     bool accepted_sneak_ = false;
+    int jump_pinned_inputs_ = 0;
     std::optional<RecipeBookSettings> last_recipe_book_settings_;
     bool spawned_ = false;
     bool last_op_status_ = false;

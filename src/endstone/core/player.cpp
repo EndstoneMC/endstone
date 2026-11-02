@@ -1215,6 +1215,7 @@ void EndstonePlayer::clearPinnedInput()
     pinned_input_.reset();
     pinned_input_value_.reset();
     accepted_sneak_ = last_input_.isSneak();
+    jump_pinned_inputs_ = 0;
 }
 
 void EndstonePlayer::checkOpStatus()

@@ -20,7 +20,6 @@
 #include <variant>
 
 #include "bedrock/entity/components/user_entity_identifier_component.h"
-#include "bedrock/entity/components/vanilla_client_gameplay_component.h"
 #include "bedrock/network/net_event_callback.h"
 #include "bedrock/network/network_identifier.h"
 #include "bedrock/network/packet/animate_packet.h"
@@ -71,6 +70,10 @@
 #include "endstone/variant.h"
 
 namespace endstone::core {
+
+namespace {
+constexpr int JumpTriggerTime = 7;
+}  // namespace
 
 class EndstonePacketHandler {
 public:
@@ -409,7 +412,13 @@ void EndstonePacketHandler::handle(PlayerAuthInputPacket &packet)
 
     auto &pinned = endstone_player->pinned_input_;
     auto &pinned_value = endstone_player->pinned_input_value_;
-    pinned &= packet.payload.input_data ^ pinned_value;
+    auto released = pinned & ~(packet.payload.input_data ^ pinned_value);
+    if (endstone_player->jump_pinned_inputs_ > 0) {
+        --endstone_player->jump_pinned_inputs_;
+        released.reset(PlayerAuthInputPacket::InputData::JumpDown)
+            .reset(PlayerAuthInputPacket::InputData::ChangeHeight);
+    }
+    pinned &= ~released;
 
     if (input_changed && listeners.isEventRegistered<PlayerInputEvent>()) {
         const auto e = std::make_shared<PlayerInputEvent>(endstone_player, player_input);
@@ -488,9 +497,7 @@ void EndstonePacketHandler::handle(PlayerAuthInputPacket &packet)
             pinned.set(PlayerAuthInputPacket::InputData::JumpDown).set(PlayerAuthInputPacket::InputData::ChangeHeight);
             pinned_value.reset(PlayerAuthInputPacket::InputData::JumpDown)
                 .reset(PlayerAuthInputPacket::InputData::ChangeHeight);
-            if (auto *gameplay = player->tryGetComponent<VanillaClientGameplayComponent>(); gameplay != nullptr) {
-                gameplay->jump_trigger_time = 0;
-            }
+            endstone_player->jump_pinned_inputs_ = JumpTriggerTime;
             endstone_player->updateAbilities();
         }
     }
@@ -503,9 +510,7 @@ void EndstonePacketHandler::handle(PlayerAuthInputPacket &packet)
             pinned.set(PlayerAuthInputPacket::InputData::JumpDown).set(PlayerAuthInputPacket::InputData::ChangeHeight);
             pinned_value.reset(PlayerAuthInputPacket::InputData::JumpDown)
                 .reset(PlayerAuthInputPacket::InputData::ChangeHeight);
-            if (auto *gameplay = player->tryGetComponent<VanillaClientGameplayComponent>(); gameplay != nullptr) {
-                gameplay->jump_trigger_time = 0;
-            }
+            endstone_player->jump_pinned_inputs_ = JumpTriggerTime;
             endstone_player->updateAbilities();
         }
     }
