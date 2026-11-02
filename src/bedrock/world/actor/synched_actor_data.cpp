@@ -102,6 +102,9 @@ void SynchedActorDataEntityWrapper::set<SynchedActorData::TypeInt8>(SynchedActor
                                                                     const SynchedActorData::TypeInt8 &value)
 {
     auto data = _get();
+    if (!data->hasData(id)) {
+        return;
+    }
     auto &item = data->_get(id);
     if (item.getType() != DataItemType::Byte) {
         return;
@@ -118,6 +121,9 @@ void SynchedActorDataEntityWrapper::set<SynchedActorData::TypeInt64>(SynchedActo
                                                                      const SynchedActorData::TypeInt64 &value)
 {
     auto data = _get();
+    if (!data->hasData(id)) {
+        return;
+    }
     auto &item = data->_get(id);
     if (item.getType() != DataItemType::Int64) {
         return;
@@ -133,6 +139,9 @@ template <>
 void SynchedActorDataEntityWrapper::set<std::string>(SynchedActorData::ID id, const std::string &value)
 {
     auto data = _get();
+    if (!data->hasData(id)) {
+        return;
+    }
     auto &item = data->_get(id);
     if (item.getType() != DataItemType::String) {
         return;
@@ -148,6 +157,9 @@ template <>
 void SynchedActorDataEntityWrapper::set<BlockPos>(SynchedActorData::ID id, const BlockPos &value)
 {
     auto data = _get();
+    if (!data->hasData(id)) {
+        return;
+    }
     auto &item = data->_get(id);
     if (item.getType() != DataItemType::Pos) {
         return;
