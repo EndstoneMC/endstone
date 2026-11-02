@@ -135,7 +135,7 @@ bool EndstoneItemStack::isSimilar(const Impl &other) const
     if (&item_ == &rhs.item_) {
         return true;
     }
-    if (getType() != rhs.getType()) {
+    if (getType() != rhs.getType() || getData() != rhs.getData()) {
         return false;
     }
     return hasItemMeta() ? rhs.hasItemMeta() && item_.getUserData()->equals(*rhs.item_.getUserData())
