@@ -195,6 +195,7 @@ nav:
       - Create your first plugin: tutorials/create-your-first-plugin.md
       - Install your plugin: tutorials/install-your-plugin.md
       - Use color codes: tutorials/use-color-codes.md
+      - Configure mob AI: tutorials/mob-ai.md
       - Register commands: tutorials/register-commands.md
       - Register event listeners: tutorials/register-event-listeners.md
       - Schedule tasks: tutorials/schedule-tasks.md

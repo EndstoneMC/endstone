@@ -11,7 +11,7 @@
 
 namespace endstone::runtime {
 
-static constexpr std::array<std::pair<std::string_view, std::size_t>, 82> symbols = {{
+static constexpr std::array<std::pair<std::string_view, std::size_t>, 90> symbols = {{
     {"BlockState::StateListNode::mHead", 267359568},
     {"ChunkBlenderFactory::getOrCreateChunkBlender::cache_cap", 86839560},
     {"DBChunkStorage::_hasChunk::cache_cap", 225495850},
@@ -91,6 +91,8 @@ static constexpr std::array<std::pair<std::string_view, std::size_t>, 82> symbol
     {"_ZN16MinecraftPackets12createPacketE18MinecraftPacketIds", 147948832},
     // Mob
     {"_ZN3Mob9knockbackEP5ActorfffRK19KnockbackParameters", 201184064},
+    // NearestAttackableTargetGoal
+    {"_ZN27NearestAttackableTargetGoal11_findTargetEPPK13MobDescriptor", 200479728},
     // NetherNet::LanThreadManager
     {"_ZN9NetherNet16LanThreadManager24SendLanBroadcastResponseERKN6webrtc13SocketAddressENS_9NetworkIDENSt3__112basic_stringIcNS6_11char_traitsIcEENS6_9allocatorIcEEEE", 229100736},
     // NetherNet::SimpleNetworkInterfaceImpl
@@ -101,6 +103,8 @@ static constexpr std::array<std::pair<std::string_view, std::size_t>, 82> symbol
     // NetworkSystem
     {"_ZN13NetworkSystem23onNewIncomingConnectionERK17NetworkIdentifierONSt3__110shared_ptrI11NetworkPeerEENS3_8optionalI6WebKeyEE", 147988560},
     {"_ZN13NetworkSystem4sendERK17NetworkIdentifierRK6Packet11SubClientId", 147886720},
+    // PathFinder
+    {"_ZN10PathFinder8findPathER5Actoriiif", 226059952},
     // PistonBlockActor
     {"_ZN16PistonBlockActor4tickER11BlockSource", 222125824},
     // Player
@@ -119,6 +123,12 @@ static constexpr std::array<std::pair<std::string_view, std::size_t>, 82> symbol
     {"_ZN6RakNet22RNS2_Windows_Linux_36027Send_Windows_Linux_360NoVDPEiPNS_19RNS2_SendParametersEPKcj", 230709584},
     // RakPeerHelper
     {"_ZN13RakPeerHelper11peerStartupEPN6RakNet16RakPeerInterfaceERK20ConnectionDefinitionNS_11PeerPurposeE", 147446256},
+    // RandomLookAroundGoal
+    {"_ZN20RandomLookAroundGoal11canContinueEv", 89199168},
+    {"_ZN20RandomLookAroundGoal6canUseEv", 89199088},
+    // RandomStrollGoal
+    {"_ZN16RandomStrollGoal11canContinueEv", 200923568},
+    {"_ZN16RandomStrollGoal6canUseEv", 200923312},
     // RepositoryFactory
     {"_ZNK17RepositoryFactory13createSourcesERK23IResourcePackRepository", 165136656},
     // SayCommand
@@ -139,6 +149,9 @@ static constexpr std::array<std::pair<std::string_view, std::size_t>, 82> symbol
     {"_ZN16ServerScoreboardC2E23CommandSoftEnumRegistryP12LevelStorageN3gsl8not_nullIN7Bedrock15NonOwnerPointerI19GameplayUserManagerEEEE", 223878368},
     // ServerWaypoint
     {"_ZN14ServerWaypoint6updateERK6Player", 188236240},
+    // SleepGoal
+    {"_ZN9SleepGoal4stopEv", 95435616},
+    {"_ZN9SleepGoal6canUseEv", 95434240},
     // VanillaWaypointManager
     {"_ZN22VanillaWaypointManager6updateER6PlayerR16ServerLocatorBarb", 197831712},
     // WeatherManager

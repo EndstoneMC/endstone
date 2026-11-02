@@ -285,10 +285,8 @@ class Bootstrap:
             def migrate_config(from_doc: tomlkit.TOMLDocument, to_doc: tomlkit.TOMLDocument) -> None:
                 for key, val in from_doc.items():
                     if key not in to_doc:
-                        # if the user hasn’t set it, copy it (with comments!)
                         to_doc[key] = val
                     else:
-                        # if both are tables, dive deeper
                         tables = (tomlkit.TOMLDocument, tomlkit.items.Table)
                         if isinstance(val, tables) and isinstance(to_doc[key], tables):
                             migrate_config(val, to_doc[key])

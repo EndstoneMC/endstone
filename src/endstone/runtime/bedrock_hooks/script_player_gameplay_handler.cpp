@@ -184,6 +184,7 @@ bool handleEvent(const PlayerInteractWithEntityBeforeEvent &event)
     const auto *target = WeakEntityRef(event.target_entity).tryUnwrap<::Actor>();
 
     if (player && target) {
+        endstone::core::EndstoneServer::getInstance().recordMobAiActivity(*target);
         const auto &server = endstone::core::EndstoneServer::getInstance();
         endstone::PlayerInteractActorEvent e{player->getEndstoneActor<endstone::core::EndstonePlayer>(),
                                              target->getEndstoneActor()};

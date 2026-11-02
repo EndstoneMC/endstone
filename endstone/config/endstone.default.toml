@@ -17,3 +17,22 @@ ipv6 = false
 # STUN servers used to discover this server's public address.
 # Only used when transport is nethernet.
 stun-servers = ["stun:stun.l.google.com:19302", "stun:stun.cloudflare.com:3478"]
+
+[mob-ai]
+# Changes require a server restart.
+# Enable mob AI controls.
+enabled = false
+
+[mob-ai.idle]
+enabled = true
+player-range-blocks = 32
+disable-random-stroll = true
+disable-random-look-around = true
+
+[mob-ai.target-search]
+enabled = true
+player-range-blocks = 32
+interval-ticks = 20
+
+[mob-ai.villagers]
+sleep-failure-skip-night = false

@@ -89,6 +89,8 @@ add_library(endstone_core
         network/stun_client.cpp
         permissions/default_permissions.cpp
         permissions/permissible_base.cpp
+        perf/mob_ai.cpp
+        perf/mob_ai_state.cpp
         plugin/cpp_plugin_loader.cpp
         plugin/plugin_manager.cpp
         plugin/python_plugin_loader.cpp

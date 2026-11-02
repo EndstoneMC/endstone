@@ -27,6 +27,11 @@ public:
     // ENDSTONE_HOOK void onChunkDiscarded(LevelChunk &);
     // ENDSTONE_HOOK void onChunkLoaded(ChunkSource &, LevelChunk &);
     [[nodiscard]] ENDSTONE_HOOK int getActivePlayerCount() const override;
+#ifdef _WIN32
+    using ILevel::findPath;
+    ENDSTONE_HOOK std::unique_ptr<Path> findPath(Actor &actor, int x, int y, int z,
+                                                 NavigationComponent &navigation) override;
+#endif
 
     virtual ArmorTrimUnloader *getArmorTrimUnloader() = 0;
     [[nodiscard]] virtual const PlayerSleepManager &getPlayerSleepManager() const = 0;
