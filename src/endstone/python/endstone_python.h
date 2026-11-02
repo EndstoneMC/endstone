@@ -116,7 +116,11 @@ Class def_registry_type(Class cls)
         .def(py::self == py::self)  // NOLINT(misc-redundant-expression)
         .def(py::self != py::self)  // NOLINT(misc-redundant-expression)
         .def(py::self == std::string_view())
-        .def(py::self != std::string_view());
+        .def(py::self != std::string_view())
+        .def("__eq__", [](const T &self, const PyIdentifier &id) { return std::string(self.getId()) == id.str(); },
+             py::is_operator())
+        .def("__ne__", [](const T &self, const PyIdentifier &id) { return std::string(self.getId()) != id.str(); },
+             py::is_operator());
     return cls;
 }
 
