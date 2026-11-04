@@ -9,6 +9,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Added
 
+- Added support for BDS version 1.26.61.
+
 #### Events
 
 - `BlockFormEvent` now fires, for lava solidifying against a neighbouring liquid: obsidian from a lava source, cobblestone from flowing lava, and basalt where lava sits between blue ice and soul soil. It reports the lava `block` and the `new_state` it will take, and is fired before the world changes, so cancelling leaves the lava as it is and plays no extinguishing effect. Snow, ice and concrete do not fire it yet, and neither does lava that solidifies while a chunk is still streaming in.
