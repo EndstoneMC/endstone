@@ -130,7 +130,10 @@ asio::awaitable<void> HttpServer::_serve(tcp::socket socket)
     constexpr std::size_t max_request_size = 64 * 1024;
     std::error_code ec;
     HttpRequest request;
-    request.remote_address = socket.remote_endpoint(ec).address().to_string();
+    const auto remote = socket.remote_endpoint(ec).address();
+    request.remote_address = remote.is_v6() && remote.to_v6().is_v4_mapped()
+                                 ? asio::ip::make_address_v4(asio::ip::v4_mapped, remote.to_v6()).to_string()
+                                 : remote.to_string();
 
     std::string buffer;
     char chunk[4096];

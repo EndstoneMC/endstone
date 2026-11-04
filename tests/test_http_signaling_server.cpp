@@ -74,7 +74,7 @@ protected:
                 if (cancel_metadata) {
                     return std::nullopt;
                 }
-                return request.remote_address.empty() ? "" : R"({"name":"test"})";
+                return request.remote_address == "127.0.0.1" ? R"({"name":"test"})" : request.remote_address;
             });
         ASSERT_FALSE(server->start());
         server->RegisterEventHandler(&handler);
