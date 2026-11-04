@@ -199,7 +199,7 @@ static constexpr std::array<std::pair<std::string_view, std::size_t>, 122> symbo
     {"?releaseUsing@TridentItem@@UEBAXAEAVItemStack@@PEAVPlayer@@H@Z", 31949776},
     // UDimensionIdType::?$NameIdStore
     {"?contains@?$NameIdStore@UDimensionIdType@@@Util@@QEBA_NV?$basic_string_view@DU?$char_traits@D@std@@@std@@@Z", 14786080},
-    {"?getOrCreateId@?$NameIdStore@UDimensionIdType@@@Util@@QEAA?AUDimensionIdType@@V?$basic_string_view@DU?$char_traits@D@std@@@std@@@Z", 57317280},
+    {"?getOrCreateId@?$NameIdStore@UDimensionIdType@@@Util@@QEAA?AUDimensionIdType@@V?$basic_string_view@DU?$char_traits@D@std@@@std@@@Z", 14786800},
     // VanillaWaypointManager
     {"?update@VanillaWaypointManager@@QEAAXAEAVPlayer@@AEAVServerLocatorBar@@_N@Z", 62434128},
     // WeatherManager
