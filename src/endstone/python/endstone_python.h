@@ -40,6 +40,7 @@
 PYBIND11_MAKE_OPAQUE(std::vector<endstone::NotNull<endstone::Block>>)
 PYBIND11_MAKE_OPAQUE(std::unordered_set<endstone::NotNull<endstone::Player>>)
 PYBIND11_MAKE_OPAQUE(std::unordered_set<endstone::NotNull<endstone::CommandSender>>)
+PYBIND11_MAKE_OPAQUE(std::unordered_map<std::string, bool>)
 
 namespace py = pybind11;
 

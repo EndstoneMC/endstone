@@ -8,7 +8,6 @@ __getattr__, __dir__, __all__ = lazy.attach(
             "Permission",
             "PermissionAttachment",
             "PermissionAttachmentInfo",
-            "PermissionChildren",
             "PermissionDefault",
             "PermissionLevel",
         ],

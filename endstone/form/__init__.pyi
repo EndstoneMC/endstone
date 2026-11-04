@@ -256,7 +256,7 @@ class Button:
         """
 
     @icon.setter
-    def icon(self, arg1: str) -> Button: ...
+    def icon(self, arg1: str | None) -> Button: ...
     @property
     def on_click(self) -> collections.abc.Callable[[Player], None]:
         """

@@ -1,5 +1,3 @@
-
-#include <unordered_map>
 // Copyright (c) 2024, The Endstone Project. (https://endstone.dev) All Rights Reserved.
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
@@ -13,6 +11,11 @@
 // WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 // See the License for the specific language governing permissions and
 // limitations under the License.
+
+#include <unordered_map>
+
+#include <pybind11/operators.h>
+#include <pybind11/typing.h>
 
 #include "endstone_python.h"
 
@@ -29,148 +32,34 @@ Permission createPermission(std::string name, const std::optional<std::string> &
     return Permission(std::move(name), description.value_or(""), default_value.value_or(Permission::DefaultPermission),
                       children.value_or(std::unordered_map<std::string, bool>{}));
 }
-
-class PermissionChildren {
-public:
-    explicit PermissionChildren(Permission &permission) : permission_(&permission) {}
-
-    [[nodiscard]] std::unordered_map<std::string, bool> &map() const { return permission_->getChildren(); }
-
-    [[nodiscard]] py::dict snapshot() const
-    {
-        py::dict result;
-        for (const auto &[key, value] : map()) {
-            result[py::str(key)] = py::bool_(value);
-        }
-        return result;
-    }
-
-    [[nodiscard]] bool &at(const std::string &key) const
-    {
-        const auto it = map().find(key);
-        if (it == map().end()) {
-            throw py::key_error(key);
-        }
-        return it->second;
-    }
-
-private:
-    Permission *permission_;
-};
-
-py::object permissionChildrenEquals(const PermissionChildren &self, const py::object &other)
-{
-    if (py::isinstance<PermissionChildren>(other)) {
-        return py::bool_(self.map() == other.cast<const PermissionChildren &>().map());
-    }
-    if (py::isinstance(other, py::module_::import("collections.abc").attr("Mapping"))) {
-        return py::bool_(self.snapshot().equal(py::dict(other)));
-    }
-    return py::reinterpret_borrow<py::object>(Py_NotImplemented);
-}
-
-void bindPermissionChildren(py::module_ &m)
-{
-    auto children = py::class_<PermissionChildren>(m, "PermissionChildren", R"doc(
-    A live mapping of the child permission names to their values.
-
-    Changes made to this mapping are applied to the permission directly. After modifying it, call
-    `Permission.recalculate_permissibles()` to recalculate all `Permissibles`.
-)doc");
-    children  //
-        .def("__len__", [](const PermissionChildren &self) { return self.map().size(); })
-        .def("__iter__", [](const PermissionChildren &self) { return py::iter(self.snapshot().attr("keys")()); })
-        .def(
-            "__contains__",
-            [](const PermissionChildren &self, const py::object &key) {
-                return py::isinstance<py::str>(key) && self.map().contains(key.cast<std::string>());
-            },
-            py::arg("key"))
-        .def(
-            "__getitem__", [](const PermissionChildren &self, const std::string &key) { return self.at(key); },
-            py::arg("key"))
-        .def(
-            "__setitem__",
-            [](const PermissionChildren &self, const std::string &key, bool value) { self.map()[key] = value; },
-            py::arg("key"), py::arg("value"))
-        .def(
-            "__delitem__",
-            [](const PermissionChildren &self, const std::string &key) {
-                static_cast<void>(self.at(key));
-                self.map().erase(key);
-            },
-            py::arg("key"))
-        .def("__eq__", &permissionChildrenEquals, py::arg("other"), py::is_operator())
-        .def(
-            "__ne__",
-            [](const PermissionChildren &self, const py::object &other) -> py::object {
-                const auto equal = permissionChildrenEquals(self, other);
-                if (equal.is(py::reinterpret_borrow<py::object>(Py_NotImplemented))) {
-                    return equal;
-                }
-                return py::bool_(!equal.cast<bool>());
-            },
-            py::arg("other"), py::is_operator())
-        .def("__repr__", [](const PermissionChildren &self) { return py::repr(self.snapshot()).cast<std::string>(); })
-        .def("keys", [](const PermissionChildren &self) { return self.snapshot().attr("keys")(); })
-        .def("values", [](const PermissionChildren &self) { return self.snapshot().attr("values")(); })
-        .def("items", [](const PermissionChildren &self) { return self.snapshot().attr("items")(); })
-        .def(
-            "get",
-            [](const PermissionChildren &self, const std::string &key, const py::object &default_value) -> py::object {
-                if (const auto it = self.map().find(key); it != self.map().end()) {
-                    return py::bool_(it->second);
-                }
-                return default_value;
-            },
-            py::arg("key"), py::arg("default") = py::none())
-        .def(
-            "pop",
-            [](const PermissionChildren &self, const std::string &key) {
-                const auto value = self.at(key);
-                self.map().erase(key);
-                return value;
-            },
-            py::arg("key"))
-        .def(
-            "pop",
-            [](const PermissionChildren &self, const std::string &key, const py::object &default_value) -> py::object {
-                if (const auto it = self.map().find(key); it != self.map().end()) {
-                    const auto value = it->second;
-                    self.map().erase(it);
-                    return py::bool_(value);
-                }
-                return default_value;
-            },
-            py::arg("key"), py::arg("default"))
-        .def(
-            "update",
-            [](const PermissionChildren &self, const py::object &other, const py::kwargs &kwargs) {
-                py::dict merged;
-                if (!other.is_none()) {
-                    merged.attr("update")(other);
-                }
-                merged.attr("update")(kwargs);
-                auto entries = merged.cast<std::unordered_map<std::string, bool>>();
-                for (const auto &[key, value] : entries) {
-                    self.map()[key] = value;
-                }
-            },
-            py::arg("other") = py::none())
-        .def("clear", [](const PermissionChildren &self) { self.map().clear(); });
-    py::module_::import("collections.abc").attr("MutableMapping").attr("register")(children);
-}
 }  // namespace
 
 void init_permissions(py::module_ &m, py_class<Permissible> &permissible, py::classh<Permission> &permission)
 {
-    bindPermissionChildren(m);
+    py::bind_map<std::unordered_map<std::string, bool>>(m, "PermissionMap", R"doc(
+    A live mapping of permission names to their values.
+
+    Changes made to a mapping handed out by a `Permission` are applied to the permission directly. After modifying it,
+    call `Permission.recalculate_permissibles()` to recalculate all `Permissibles`.
+)doc")
+        .def(py::init([](const py::dict &other) {
+                 std::unordered_map<std::string, bool> result;
+                 for (const auto &item : other) {
+                     result[py::cast<std::string>(item.first)] = py::cast<bool>(item.second);
+                 }
+                 return result;
+             }),
+             py::arg("other"))
+        .def(py::self == py::self)
+        .def(py::self != py::self);
+    py::implicitly_convertible<py::dict, std::unordered_map<std::string, bool>>();
     permission  //
         .def(py::init(&createPermission), py::arg("name"), py::arg("description") = py::none(),
              py::arg("default") = py::none(), py::arg("children") = py::none())
         .def_property_readonly("name", &Permission::getName, "The unique fully qualified name of this `Permission`.")
         .def_property_readonly(
-            "children", [](Permission &self) { return PermissionChildren(self); }, py::keep_alive<0, 1>(),
+            "children", [](Permission &self) -> std::unordered_map<std::string, bool> & { return self.getChildren(); },
+            py::return_value_policy::reference_internal,
             R"doc(
     The children of this permission.
 
@@ -224,7 +113,16 @@ void init_permissions(py::module_ &m, py_class<Permissible> &permissible, py::cl
 )doc")
         .def_property_readonly("permissible", &PermissionAttachment::getPermissible,
                                "The `Permissible` that this is attached to, or `None` if it no longer exists.")
-        .def_property_readonly("permissions", &PermissionAttachment::getPermissions, R"doc(
+        .def_property_readonly(
+            "permissions",
+            [](const PermissionAttachment &self) {
+                py::typing::Dict<std::string, bool> result;
+                for (const auto &[name, value] : self.getPermissions()) {
+                    result[py::str(name)] = value;
+                }
+                return result;
+            },
+            R"doc(
     A copy of all set permissions and values contained within this attachment.
 
     This map may be modified but will not affect the attachment, as it is a copy.

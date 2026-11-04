@@ -13,7 +13,6 @@ __all__ = [
     "Permission",
     "PermissionAttachment",
     "PermissionAttachmentInfo",
-    "PermissionChildren",
     "PermissionDefault",
     "PermissionLevel",
 ]
@@ -146,33 +145,6 @@ class Permissible:
         A set containing all the permissions currently in effect by this object.
         """
 
-class PermissionChildren(collections.abc.MutableMapping[str, bool]):
-    """
-    A live mapping of the child permission names to their values.
-
-    Changes made to this mapping are applied to the permission directly. After modifying it, call
-    `Permission.recalculate_permissibles()` to recalculate all `Permissibles`.
-    """
-
-    def __len__(self) -> int: ...
-    def __iter__(self) -> collections.abc.Iterator[str]: ...
-    def __contains__(self, key: object) -> bool: ...
-    def __getitem__(self, key: str) -> bool: ...
-    def __setitem__(self, key: str, value: bool) -> None: ...
-    def __delitem__(self, key: str) -> None: ...
-    def __eq__(self, other: object) -> bool: ...
-    def __ne__(self, other: object) -> bool: ...
-    def keys(self) -> collections.abc.KeysView[str]: ...
-    def values(self) -> collections.abc.ValuesView[bool]: ...
-    def items(self) -> collections.abc.ItemsView[str, bool]: ...
-    def get(self, key: str, default: typing.Any = None) -> typing.Any: ...
-    @typing.overload
-    def pop(self, key: str) -> bool: ...
-    @typing.overload
-    def pop(self, key: str, default: typing.Any) -> typing.Any: ...
-    def update(self, other: typing.Any = None, **kwargs: typing.Any) -> None: ...
-    def clear(self) -> None: ...
-
 class Permission:
     """
     Represents a unique permission that may be attached to a `Permissible`
@@ -182,7 +154,7 @@ class Permission:
         name: str,
         description: str | None = None,
         default: PermissionDefault | None = None,
-        children: collections.abc.Mapping[str, bool] | None = None,
+        children: dict[str, bool] | None = None,
         *args: typing.Any,
         **kwargs: typing.Any,
     ) -> None: ...
@@ -193,7 +165,7 @@ class Permission:
         """
 
     @property
-    def children(self) -> PermissionChildren:
+    def children(self) -> dict[str, bool]:
         """
         The children of this permission.
 
