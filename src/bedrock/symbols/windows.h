@@ -11,7 +11,7 @@
 
 namespace endstone::runtime {
 
-static constexpr std::array<std::pair<std::string_view, std::size_t>, 123> symbols = {{
+static constexpr std::array<std::pair<std::string_view, std::size_t>, 122> symbols = {{
     {"BlockState::StateListNode::mHead", 223875200},
     {"ChunkBlenderFactory::getOrCreateChunkBlender::cache_cap", 140104298},
     {"DBChunkStorage::_hasChunk::cache_cap", 57742576},
@@ -208,8 +208,6 @@ static constexpr std::array<std::pair<std::string_view, std::size_t>, 123> symbo
     {"?getI18n@@YAAEAVI18n@@XZ", 1204016},
     // webrtc::P2PTransportChannel
     {"?SwitchSelectedConnectionInternal@P2PTransportChannel@webrtc@@AEAAXPEAVConnection@2@W4IceSwitchReason@2@@Z", 178643472},
-    // webrtc::Port
-    {"?SendBindingErrorResponse@Port@webrtc@@UEAAXPEAVStunMessage@2@AEBVSocketAddress@2@HV?$basic_string_view@DU?$char_traits@D@std@@@std@@@Z", 178442480},
 }};
 
 }  // namespace endstone::runtime

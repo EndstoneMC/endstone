@@ -45,7 +45,6 @@ add_library(endstone_runtime SHARED
         bedrock_hooks/piston_block_actor.cpp
         bedrock_hooks/player_location_sender.cpp
         bedrock_hooks/player_tick_manager.cpp
-        bedrock_hooks/port.cpp
         bedrock_hooks/player.cpp
         bedrock_hooks/pushable_by_entity_utility.cpp
         bedrock_hooks/rak_peer_helper.cpp
