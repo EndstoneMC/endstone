@@ -1,4 +1,5 @@
 import json
+import os
 import sys
 import threading
 
@@ -18,6 +19,7 @@ from endstone_test.harness import Context, scenario
 from endstone_test.plugin import HARNESS_STARTS
 
 UNKNOWN = "endstone_test_no_such_command"
+NETHERNET = os.environ.get("ENDSTONE_TEST_TRANSPORT") == "nethernet"
 
 
 def unknown_message(name: str) -> str:
@@ -315,7 +317,7 @@ def signaling_host(event) -> dict:
     return {"host": event.address.hostname}
 
 
-@scenario("server.signaling_ping.normal")
+@scenario("server.signaling_ping.normal", enabled=NETHERNET)
 async def signaling_ping_normal(ctx: Context) -> None:
     ping = ctx.capture(ServerListPingEvent, extra=signaling_host)
     reply = await ctx.call("signaling_ping")
@@ -331,7 +333,7 @@ async def signaling_ping_normal(ctx: Context) -> None:
     assert metadata["maxPlayers"] == event["max_players"] == ctx.server.max_players
 
 
-@scenario("server.signaling_ping.cancel")
+@scenario("server.signaling_ping.cancel", enabled=NETHERNET)
 async def signaling_ping_cancel(ctx: Context) -> None:
     ping = ctx.capture(ServerListPingEvent, cancel=True)
     reply = await ctx.call("signaling_ping")
@@ -339,7 +341,7 @@ async def signaling_ping_cancel(ctx: Context) -> None:
     assert reply is None, f"a cancelled signaling ping was still answered: {reply}"
 
 
-@scenario("server.signaling_ping.mutate")
+@scenario("server.signaling_ping.mutate", enabled=NETHERNET)
 async def signaling_ping_mutate(ctx: Context) -> None:
     def rewrite(event) -> None:
         event.motd = "endstone-test motd"

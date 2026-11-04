@@ -33,6 +33,7 @@ CONTROL_ENV = "ENDSTONE_TEST_CONTROL"
 RUN_ID_ENV = "ENDSTONE_TEST_RUN_ID"
 CRASH_ENV = "ENDSTONE_TEST_CRASH"
 API_GATE_ENV = "ENDSTONE_TEST_API_GATE"
+TRANSPORT_ENV = "ENDSTONE_TEST_TRANSPORT"
 API_GATE_MODES = ("enforce", "report", "off")
 FIXTURE_PLUGIN = Path("fixtures") / "endstone-test-fixture"
 ADDON_PLUGIN = Path("fixtures") / "endstone-test-addon"
@@ -870,6 +871,7 @@ class Run:
         if self.args.crash_test:
             env[CRASH_ENV] = "1"
         env[API_GATE_ENV] = self.args.api_gate
+        env[TRANSPORT_ENV] = self.args.transport
 
         command = [
             str(venv_endstone(self.args.workdir / "venv")),
