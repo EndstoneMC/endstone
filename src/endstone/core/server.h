@@ -157,13 +157,13 @@ public:
     void setResourcePackRepository(IResourcePackRepository &repo);
     [[nodiscard]] const std::string *getContentKey(const PackIdVersion &pack_id) const;
     [[nodiscard]] bool getAllowClientPacks() const;
-    [[nodiscard]] const std::vector<std::string> &getStunServers() const;
     [[nodiscard]] bool logCommands() const;
     [[nodiscard]] bool isServerTextEnabled(ServerTextEvent event) const;
     [[nodiscard]] bool hasHiddenActors() const;
 
     [[nodiscard]] ServerInstance &getServer() const;
     [[nodiscard]] RemoteConnector &getRemoteConnector() const;
+    [[nodiscard]] bool isUsingNetherNet() const;
     // Only valid on the RakNet transport.
     [[nodiscard]] RakNetConnector &getRakNetConnector() const;
 
@@ -175,7 +175,6 @@ private:
     void enablePlugin(const NotNull<Plugin> &plugin);
     void loadResourcePacks();
     void fixServerAnnouncement();
-    [[nodiscard]] bool isUsingNetherNet() const;
     [[nodiscard]] std::uint16_t getSignalingPort() const;
 
     ServerInstance *server_instance_{nullptr};
@@ -210,7 +209,6 @@ private:
     // TODO(config): move the following the a separate class/struct
     std::size_t hidden_actor_count_ = 0;
     bool allow_client_packs_ = false;
-    std::vector<std::string> stun_servers_;
     bool log_commands_ = true;
     ServerTextSettings text_settings_;
     ::Bedrock::PubSub::Subscription on_gameplay_user_removed_;

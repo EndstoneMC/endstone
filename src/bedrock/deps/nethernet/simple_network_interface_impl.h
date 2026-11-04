@@ -33,6 +33,8 @@ namespace endstone::core {
 class EndstoneServer;
 }
 
+class ServerInstanceLifecycleListener;
+
 namespace webrtc {
 class PeerConnectionFactory;
 }
@@ -54,13 +56,8 @@ public:
     ~SimpleNetworkInterfaceImpl() override;
 
 private:
-    // TODO(fixme): check the name
-    class HttpMetadataProvider;
-
     ENDSTONE_HOOK void ReceiveFromSignalingChannel(NetworkID from, std::string_view message,
                                                    SignalingChannelId source_channel);
-    // TODO(fixme): check the name
-    ENDSTONE_HOOK static Bedrock::Result<std::string> getMetadata(const HttpMetadataProvider &provider);
 
     std::atomic<unsigned int> ref_;
     INetherNetTransportInterfaceCallbacks *callbacks_;
@@ -79,7 +76,9 @@ private:
     bool disable_trickle_ice_;
     std::shared_ptr<ISignalingInterface> signaling_interface_;
 
+    friend class TransportFactoryImpl;
     friend class endstone::core::EndstoneServer;
+    friend class ::ServerInstanceLifecycleListener;
 };
 
 }  // namespace NetherNet

@@ -104,8 +104,9 @@ add_library(endstone_core
         network/batched_network_peer.cpp
         network/compressed_network_peer.cpp
         network/data_packet.cpp
+        network/http_server.cpp
+        network/http_signaling_server.cpp
         network/nethernet_address_cache.cpp
-        network/stun_client.cpp
         permissions/default_permissions.cpp
         permissions/permissible_base.cpp
         plugin/cpp_plugin_loader.cpp
@@ -153,7 +154,7 @@ target_link_libraries(endstone_core PUBLIC
         spdlog::spdlog
         tomlplusplus::tomlplusplus
         zstr::zstr)
-target_link_libraries(endstone_core PRIVATE asio::asio)
+target_link_libraries(endstone_core PUBLIC asio::asio)
 target_compile_definitions(endstone_core PUBLIC PYBIND11_DETAILED_ERROR_MESSAGES)
 if (ENDSTONE_ENABLE_DEVTOOLS)
     add_subdirectory(devtools)

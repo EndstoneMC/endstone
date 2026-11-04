@@ -21,6 +21,8 @@
 
 #include "bedrock/core/threading/worker_pool.h"
 #include "bedrock/core/utility/non_owner_pointer.h"
+#include "bedrock/deps/nethernet/simple_network_interface_impl.h"
+#include "bedrock/network/nethernet_connector.h"
 #include "bedrock/scripting/event_handlers/script_actor_gameplay_handler.h"
 #include "bedrock/scripting/event_handlers/script_block_gameplay_handler.h"
 #include "bedrock/scripting/event_handlers/script_item_gameplay_handler.h"
@@ -28,6 +30,7 @@
 #include "bedrock/scripting/event_handlers/script_player_gameplay_handler.h"
 #include "bedrock/scripting/event_handlers/script_scripting_event_handler.h"
 #include "bedrock/scripting/event_handlers/script_server_network_event_handler.h"
+#include "endstone/core/network/http_signaling_server.h"
 #include "endstone/core/server.h"
 #include "endstone/detail.h"
 #include "endstone/runtime/hook.h"
@@ -157,6 +160,14 @@ public:
     {
         if (entt::locator<endstone::core::EndstoneServer>::has_value()) {
             auto &server = endstone::core::EndstoneServer::getInstance();
+            if (server.isUsingNetherNet()) {
+                const auto &connector = static_cast<const NetherNetConnector &>(server.getRemoteConnector());
+                const auto &transport =
+                    static_cast<const NetherNet::SimpleNetworkInterfaceImpl &>(*connector.transport_);
+                if (transport.signaling_interface_) {
+                    static_cast<endstone::core::EndstoneHttpSignalingServer &>(*transport.signaling_interface_).stop();
+                }
+            }
             server.disablePlugins();
         }
         entt::locator<endstone::core::EndstoneServer>::reset();

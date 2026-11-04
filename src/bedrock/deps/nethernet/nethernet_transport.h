@@ -23,6 +23,7 @@
 #include <vector>
 
 #include "bedrock/bedrock.h"
+#include "bedrock/core/threading/async.h"
 #include "bedrock/core/utility/pub_sub/subscription.h"
 #include "bedrock/deps/nethernet/events.h"
 #include "bedrock/deps/nethernet/nethernet_shared_constants.h"
@@ -77,12 +78,14 @@ public:
     virtual ~INetherNetTransportInterfaceCallbacks();
 };
 
+using Subscription = Bedrock::PubSub::Subscription;
+
 class ISignalingInterface {
 public:
-    virtual ~ISignalingInterface();
+    virtual ~ISignalingInterface() = default;
+    virtual Bedrock::Threading::Async<ESessionError> SendSignal(NetworkID, NetworkID, const std::string &) = 0;
+    virtual Subscription RegisterEventHandler(ISignalingEventHandler *) = 0;
 };
-
-using Subscription = Bedrock::PubSub::Subscription;
 
 class INetherNetTransportInterface {
 public:

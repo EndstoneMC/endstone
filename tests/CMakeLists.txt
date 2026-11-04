@@ -23,6 +23,7 @@ add_executable(endstone_test
         test_command_usage_parser.cpp
         test_cpp_plugin_loader.cpp
         test_effect.cpp
+        test_http_signaling_server.cpp
         test_enchantment_offer.cpp
         test_logger_factory.cpp
         test_player_ban_list.cpp
@@ -38,7 +39,8 @@ add_executable(endstone_test
         test_vector.cpp
 )
 add_dependencies(endstone_test test_plugin)
-target_link_libraries(endstone_test PRIVATE endstone::core GTest::gtest_main GTest::gmock_main)
+find_package(asio REQUIRED)
+target_link_libraries(endstone_test PRIVATE endstone::core asio::asio GTest::gtest_main GTest::gmock_main)
 # CppPluginLoaderTest cases share the plugins/.local shadow-copy dir, whose
 # cleanup races when ctest runs them in parallel; serialize just those.
 gtest_discover_tests(endstone_test

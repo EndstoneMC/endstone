@@ -29,6 +29,8 @@ namespace endstone::core {
 class EndstoneServer;
 }
 
+class ServerInstanceLifecycleListener;
+
 struct NetherNetConnector : RemoteConnector, NetherNet::INetherNetTransportInterfaceCallbacks {
     ~NetherNetConnector() override;
 
@@ -40,4 +42,5 @@ private:
         transport_;
 
     friend class endstone::core::EndstoneServer;
+    friend class ::ServerInstanceLifecycleListener;
 };

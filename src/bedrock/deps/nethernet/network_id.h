@@ -14,6 +14,8 @@
 
 #pragma once
 
+#include <compare>
+#include <cstdint>
 #include <string>
 #include <variant>
 
@@ -22,6 +24,7 @@
 namespace NetherNet {
 namespace P2P {
 struct NetworkID {
+    explicit NetworkID(std::uint64_t value) : value(value) {}
     std::uint64_t value;
     std::strong_ordering operator<=>(const NetworkID &) const = default;
 };
@@ -40,6 +43,8 @@ static_assert(sizeof(NetworkID) == 16);
 using RAWNETWORKID = unsigned long long;
 
 struct NetworkID : private std::variant<std::monostate, P2P::NetworkID, Realms::NetworkID> {
+    NetworkID() = default;
+    NetworkID(const P2P::NetworkID &id) : variant(id) {}
     std::strong_ordering operator<=>(const NetworkID &) const = default;
     [[nodiscard]] std::string toString() const;
 };

@@ -11,7 +11,7 @@
 
 namespace endstone::runtime {
 
-static constexpr std::array<std::pair<std::string_view, std::size_t>, 122> symbols = {{
+static constexpr std::array<std::pair<std::string_view, std::size_t>, 121> symbols = {{
     {"BlockState::StateListNode::mHead", 267359760},
     {"ChunkBlenderFactory::getOrCreateChunkBlender::cache_cap", 86839560},
     {"DBChunkStorage::_hasChunk::cache_cap", 225495866},
@@ -139,7 +139,6 @@ static constexpr std::array<std::pair<std::string_view, std::size_t>, 122> symbo
     // NetherNet::LanThreadManager
     {"_ZN9NetherNet16LanThreadManager24SendLanBroadcastResponseERKN6webrtc13SocketAddressENS_9NetworkIDENSt3__112basic_stringIcNS6_11char_traitsIcEENS6_9allocatorIcEEEE", 229100752},
     // NetherNet::SimpleNetworkInterfaceImpl
-    {"_ZN9NetherNet26SimpleNetworkInterfaceImpl11getMetadataERKNS0_20HttpMetadataProviderE", 229282368},
     {"_ZN9NetherNet26SimpleNetworkInterfaceImpl27ReceiveFromSignalingChannelENS_9NetworkIDENSt3__117basic_string_viewIcNS2_11char_traitsIcEEEENS_18SignalingChannelIdE", 229133424},
     // NetherNet::TransportFactoryImpl
     {"_ZN9NetherNet20TransportFactoryImpl24createTransportInterfaceERKNS_9NetworkIDERKNS_22TransportConfigurationEPNS_37INetherNetTransportInterfaceCallbacksE", 229387088},

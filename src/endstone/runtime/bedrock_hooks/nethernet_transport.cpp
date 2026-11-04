@@ -12,158 +12,98 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-#define _CRT_SECURE_NO_WARNINGS  // std::getenv
-
 #include "bedrock/deps/nethernet/nethernet_transport.h"
 
-#include <algorithm>
-#include <charconv>
-#include <chrono>
-#include <cstddef>
-#include <cstdint>
-#include <cstdlib>
-#include <iterator>
+#include <format>
+#include <memory>
 #include <optional>
 #include <string>
-#include <string_view>
+#include <utility>
 #include <variant>
 
-#include <entt/locator/locator.hpp>
+#include <nlohmann/json.hpp>
 
-#include "endstone/core/network/stun_client.h"
+#include "bedrock/deps/nethernet/simple_network_interface_impl.h"
+#include "bedrock/network/server_network_handler.h"
+#include "bedrock/server/server_instance.h"
+#include "bedrock/shared_constants.h"
+#include "bedrock/world/level/level.h"
+#include "endstone/core/game_mode.h"
+#include "endstone/core/level/level.h"
+#include "endstone/core/logger_factory.h"
+#include "endstone/core/network/http_signaling_server.h"
 #include "endstone/core/server.h"
+#include "endstone/event/server/server_list_ping_event.h"
 #include "endstone/runtime/hook.h"
-
-namespace {
-
-constexpr auto StunTimeout = std::chrono::seconds(2);
-
-std::string_view getEnv(const char *name)
-{
-    const char *value = std::getenv(name);
-    return value != nullptr ? std::string_view{value} : std::string_view{};
-}
-
-std::uint16_t parsePort(const std::string_view value)
-{
-    unsigned int port = 0;
-    const auto [ptr, ec] = std::from_chars(value.data(), value.data() + value.size(), port);
-    if (ec != std::errc{} || ptr != value.data() + value.size() || port == 0 || port > 0xffff) {
-        return 0;
-    }
-    return static_cast<std::uint16_t>(port);
-}
-
-std::uint16_t publishedPort(const std::uint16_t local_port)
-{
-    const auto published = parsePort(getEnv("SERVER_PORT"));
-    return published != 0 ? published : local_port;
-}
-
-NetherNet::MappedAddressRange *findMapping(NetherNet::TransportConfiguration &config, const std::uint16_t local_port)
-{
-    const auto count = std::min(static_cast<std::size_t>(std::max(config.known_mapped_address_range_count, 0)),
-                                std::size(config.known_mapped_address_ranges));
-    for (std::size_t i = 0; i < count; ++i) {
-        auto &range = config.known_mapped_address_ranges[i];
-        if (local_port >= range.internal_port_min && local_port <= range.internal_port_max) {
-            return &range;
-        }
-    }
-    return nullptr;
-}
-
-// Bedrock reflects the first range that covers a port, so an operator's own public mapping wins.
-std::optional<std::uint16_t> setMappedAddress(NetherNet::TransportConfiguration &config, const std::uint16_t local_port,
-                                              const std::string &address, const std::uint16_t external_port)
-{
-    if (auto *range = findMapping(config, local_port)) {
-        if (range->external_address.has_value()) {
-            return std::nullopt;
-        }
-        range->external_address = address;
-        return static_cast<std::uint16_t>(local_port + range->external_port_offset);
-    }
-
-    const auto count = static_cast<std::size_t>(std::max(config.known_mapped_address_range_count, 0));
-    if (count >= std::size(config.known_mapped_address_ranges)) {
-        return std::nullopt;
-    }
-    auto &range = config.known_mapped_address_ranges[count];
-    range.internal_address.reset();
-    range.internal_port_min = local_port;
-    range.internal_port_max = local_port;
-    range.external_address = address;
-    range.external_port_offset = external_port - local_port;
-    config.known_mapped_address_range_count = static_cast<int>(count + 1);
-    return external_port;
-}
-
-// Hosting panels run the server behind a bridge and publish one address, which they hand to the
-// process in the environment. Advertising it is what lets a client reach a server it can already
-// see, without the operator copying an address into server.properties.
-bool addPublishedAddress(NetherNet::TransportConfiguration &config, const std::uint16_t local_port)
-{
-    const auto address = getEnv("SERVER_IP");
-    if (address.empty() || address == "0.0.0.0" || address == "::") {
-        return false;
-    }
-
-    const auto port = setMappedAddress(config, local_port, std::string{address}, publishedPort(local_port));
-    if (!port) {
-        return false;
-    }
-    if (entt::locator<endstone::core::EndstoneServer>::has_value()) {
-        endstone::core::EndstoneServer::getInstance().getLogger().info(
-            "Configured {}:{} as the mapped address for NetherNet.", address, *port);
-    }
-    return true;
-}
-
-// The transport reads the mapped addresses once, when it is built, so the STUN answer has to be here first.
-void addStunAddress(NetherNet::TransportConfiguration &config, const std::uint16_t local_port)
-{
-    if (!entt::locator<endstone::core::EndstoneServer>::has_value()) {
-        return;
-    }
-    if (const auto *range = findMapping(config, local_port); range != nullptr && range->external_address.has_value()) {
-        return;
-    }
-    auto &server = endstone::core::EndstoneServer::getInstance();
-    const auto &uris = server.getStunServers();
-    if (uris.empty()) {
-        return;
-    }
-
-    const auto address = endstone::core::queryPublicAddress(uris, StunTimeout);
-    if (!address) {
-        server.getLogger().warning("Could not discover the public address for NetherNet from the STUN servers.");
-        return;
-    }
-    if (const auto port = setMappedAddress(config, local_port, *address, publishedPort(local_port))) {
-        server.getLogger().info("Discovered {}:{} as the mapped address for NetherNet.", *address, *port);
-    }
-}
-
-}  // namespace
 
 NetherNet::INetherNetTransportInterface *NetherNet::TransportFactoryImpl::createTransportInterface(
     const NetworkID &local_id, const TransportConfiguration &configuration,
     INetherNetTransportInterfaceCallbacks *callbacks)
 {
     const auto *http = std::get_if<TransportConfiguration::Http>(&configuration.default_signaling_channel);
-    if (http != nullptr) {
-        auto &config = const_cast<TransportConfiguration &>(configuration);
+    if (http == nullptr) {
+        return ENDSTONE_HOOK_CALL_ORIGINAL(&TransportFactoryImpl::createTransportInterface, this, local_id,
+                                           configuration, callbacks);
+    }
+
+    auto &config = const_cast<TransportConfiguration &>(configuration);
+    const auto port = http->port;
+    auto bind_address = http->bind_address;
+    config.default_signaling_channel = std::monostate{};
+    if (config.max_udp_port == 0 && !config.global_udp_port) {
         // #blameMojang - BDS runs the same NetherNet code as a player hosting a world from their console.
         // Every player who joins gets their own UDP port. Fine at home, useless on a rented server with
         // one open port, where only the first player can get in.
         // Fix: put every player on the signaling port. Set both bounds, a zero minimum skips the cache.
-        config.min_udp_port = http->port;
-        config.max_udp_port = http->port;
+        config.min_udp_port = port;
+        config.max_udp_port = port;
         config.global_udp_port = true;
-        addPublishedAddress(config, http->port);
-        addStunAddress(config, http->port);
     }
-    return ENDSTONE_HOOK_CALL_ORIGINAL(&TransportFactoryImpl::createTransportInterface, this, local_id, configuration,
-                                       callbacks);
+
+    auto *transport = ENDSTONE_HOOK_CALL_ORIGINAL(&TransportFactoryImpl::createTransportInterface, this, local_id,
+                                                  configuration, callbacks);
+    auto *impl = static_cast<NetherNet::SimpleNetworkInterfaceImpl *>(transport);
+    if (transport == nullptr || impl->signaling_interface_) {
+        return transport;
+    }
+
+    auto signaling_server = std::make_shared<endstone::core::EndstoneHttpSignalingServer>(
+        port, std::move(bind_address), [](const endstone::core::HttpRequest &request) -> std::optional<std::string> {
+            auto &server = endstone::core::EndstoneServer::getInstance();
+            const auto handler = server.getServer().getMinecraft()->getServerNetworkHandler();
+            if (handler->server_name_.empty()) {
+                return "";
+            }
+            auto &level = *server.getEndstoneLevel();
+            const auto game_mode =
+                endstone::core::EndstoneGameMode::fromMinecraft(level.getHandle().getDefaultGameType());
+            const auto event = std::make_shared<endstone::ServerListPingEvent>(
+                endstone::SocketAddress{request.remote_address, 0}, handler->server_name_, server.getProtocolVersion(),
+                std::format("{}.{}.{}", SharedConstants::MajorVersion, SharedConstants::MinorVersion,
+                            SharedConstants::PatchVersion),
+                static_cast<int>(server.getOnlinePlayers().size()), server.getMaxPlayers(), "", level.getName(),
+                game_mode, 0);
+            server.getPluginManager().callEvent(event);
+            if (event->isCancelled()) {
+                return std::nullopt;
+            }
+            return nlohmann::ordered_json{
+                {"name", event->getMotd()},
+                {"protocol", event->getNetworkProtocolVersion()},
+                {"version", event->getMinecraftVersionNetwork()},
+                {"level", event->getLevelName()},
+                {"players", event->getNumPlayers()},
+                {"maxPlayers", event->getMaxPlayers()},
+                {"gameType", static_cast<int>(endstone::core::EndstoneGameMode::toMinecraft(event->getGameMode()))},
+            }
+                .dump();
+        });
+    transport->SetSignalingInterface(signaling_server);
+    if (const auto error = signaling_server->start()) {
+        endstone::core::LoggerFactory::getLogger("NetherNet")
+            .error("NetherNet could not listen on port {} for signaling: {}", port, error.message());
+        transport->SetSignalingInterface(nullptr);
+        return transport;
+    }
+    return transport;
 }

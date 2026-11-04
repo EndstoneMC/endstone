@@ -194,6 +194,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 #### Networking
 
+- The `network.stun-servers` setting in `endstone.toml`. NetherNet servers now advertise the address players connect to.
 - **BREAKING**: `Server.port_v6` and `ServerListPingEvent.local_port_v6`. A server advertises one game port; the separate IPv6 port was rarely set and has no counterpart under NetherNet, which shares a single port across both families. Use `Server.port` and `ServerListPingEvent.local_port`. The IPv6 port field in the LAN advertisement is now passed through untouched rather than being rewritten from the event.
 
 ### Fixed
@@ -265,6 +266,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Fixed `Player.skin` returning the skin a player joined with after they changed it.
 - Fixed cancelling `PlayerSkinChangeEvent` reverting the player to the skin they joined with instead of their current one.
 - Fixed NetherNet servers showing up in the LAN tab when `enable-lan-visibility` is `false` or the world's `LANBroadcast` flag is off.
+- Fixed a NetherNet server on Linux refusing to start with its port in use when restarted right after stopping.
+- Fixed `ServerListPingEvent.address` being empty for a NetherNet server-list ping.
+- Fixed a cancelled `ServerListPingEvent` answering a NetherNet server-list ping with an error instead of not answering.
 
 #### Type annotations
 

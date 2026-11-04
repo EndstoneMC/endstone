@@ -11,7 +11,7 @@
 
 namespace endstone::runtime {
 
-static constexpr std::array<std::pair<std::string_view, std::size_t>, 122> symbols = {{
+static constexpr std::array<std::pair<std::string_view, std::size_t>, 121> symbols = {{
     {"BlockState::StateListNode::mHead", 223875200},
     {"ChunkBlenderFactory::getOrCreateChunkBlender::cache_cap", 140104458},
     {"DBChunkStorage::_hasChunk::cache_cap", 57742736},
@@ -139,7 +139,6 @@ static constexpr std::array<std::pair<std::string_view, std::size_t>, 122> symbo
     {"?SendLanBroadcastResponse@LanThreadManager@NetherNet@@UEAAXAEBVSocketAddress@webrtc@@UNetworkID@2@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z", 17740336},
     // NetherNet::SimpleNetworkInterfaceImpl
     {"?ReceiveFromSignalingChannel@SimpleNetworkInterfaceImpl@NetherNet@@AEAAXUNetworkID@2@V?$basic_string_view@DU?$char_traits@D@std@@@std@@W4SignalingChannelId@2@@Z", 17785024},
-    {"?getMetadata@SimpleNetworkInterfaceImpl@NetherNet@@CA?AV?$Result@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@Verror_code@2@@Bedrock@@AEBVHttpMetadataProvider@12@@Z", 17931680},
     // NetherNet::TransportFactoryImpl
     {"?createTransportInterface@TransportFactoryImpl@NetherNet@@QEAAPEAVINetherNetTransportInterface@2@AEBUNetworkID@2@AEBUTransportConfiguration@2@PEAVINetherNetTransportInterfaceCallbacks@2@@Z", 121922528},
     // NetworkSystem
