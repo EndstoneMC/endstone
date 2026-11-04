@@ -1,4 +1,4 @@
-version = "1.26.60"
+version = "1.26.61"
 platform = "windows"
 executable = "bedrock_server.exe"
 filename = "bedrock_server"

@@ -7,6 +7,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+### Added
+
+- Added support for BDS version 1.26.61.
+
 ### Fixed
 
 - Fixed cancelling `PlayerDropItemEvent` on Linux doubling the stack the player tried to drop.
