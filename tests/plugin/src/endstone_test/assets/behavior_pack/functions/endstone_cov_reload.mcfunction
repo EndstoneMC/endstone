@@ -1,0 +1,1 @@
+say endstone_cov

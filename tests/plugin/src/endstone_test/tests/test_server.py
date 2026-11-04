@@ -21,7 +21,7 @@ def server_properties(plugin: Plugin) -> dict[str, str]:
     ).resolve()
     properties = {}
 
-    with properties_file.open(mode="r") as file:
+    with properties_file.open(mode="r", encoding="utf-8") as file:
         for line in file:
             line = line.strip()
             if not line or line.startswith("#"):

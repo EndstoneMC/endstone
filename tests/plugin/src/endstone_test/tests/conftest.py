@@ -33,7 +33,7 @@ def _make_fixture(name):
 server = _make_fixture("server")
 plugin = _make_fixture("plugin")
 player = _make_fixture("player")
-recorder = _make_fixture("recorder")
+plot = _make_fixture("plot")
 
 
 # =============================================================================
@@ -43,16 +43,12 @@ recorder = _make_fixture("recorder")
 
 MARKERS_BY_PACKAGE = {
     "endstone_test.tests.player.": "player",
-    "endstone_test.tests.event.": "event",
 }
 
 
 def pytest_configure(config):
     config.addinivalue_line(
         "markers", "player: tests that require a player to be connected"
-    )
-    config.addinivalue_line(
-        "markers", "event: tests that assert on events recorded during play"
     )
 
 

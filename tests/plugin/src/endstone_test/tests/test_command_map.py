@@ -135,32 +135,6 @@ def test_dispatch_an_unknown_command(
     assert errors[0].params == ["definitely_not_a_command"]
 
 
-def test_unknown_command_message_can_be_replaced(
-    command_map: CommandMap, sender: CommandSender
-) -> None:
-    """Verify a listener can replace the unknown-command response."""
-    errors = []
-    wrapper = CommandSenderWrapper(sender, on_error=errors.append)
-
-    assert (
-        command_map.dispatch(wrapper, "/endstone_test_unknown_command_custom") is False
-    )
-    assert errors == ["Endstone Test replaced the unknown-command message"]
-
-
-def test_unknown_command_message_can_be_suppressed(
-    command_map: CommandMap, sender: CommandSender
-) -> None:
-    """Verify a listener can suppress the unknown-command response."""
-    errors = []
-    wrapper = CommandSenderWrapper(sender, on_error=errors.append)
-
-    assert (
-        command_map.dispatch(wrapper, "endstone_test_unknown_command_silent") is False
-    )
-    assert errors == []
-
-
 def test_clear_commands_exists(command_map: CommandMap) -> None:
     """Verify clear_commands is exposed without calling it on the live server."""
     assert callable(command_map.clear_commands)

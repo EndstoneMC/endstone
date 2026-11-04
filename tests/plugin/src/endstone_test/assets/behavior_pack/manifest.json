@@ -1,0 +1,25 @@
+{
+  "format_version": 2,
+  "header": {
+    "name": "endstone-test",
+    "description": "Script listeners the endstone-test scenarios observe",
+    "uuid": "152817cd-443f-4ccc-8598-ee7044522a42",
+    "version": [1, 0, 0],
+    "min_engine_version": [1, 21, 0]
+  },
+  "modules": [
+    {
+      "type": "script",
+      "language": "javascript",
+      "uuid": "4585dcd0-21e7-440b-b23e-1cb20862cf2d",
+      "version": [1, 0, 0],
+      "entry": "scripts/main.js"
+    }
+  ],
+  "dependencies": [
+    {
+      "module_name": "@minecraft/server",
+      "version": "1.11.0"
+    }
+  ]
+}

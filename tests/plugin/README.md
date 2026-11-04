@@ -1,162 +1,173 @@
 # endstone-test
 
-An Endstone plugin that runs pytest-based tests against a live Bedrock Dedicated Server to verify API functionality.
+An Endstone plugin that tests the API against a live Bedrock Dedicated Server, plus the runner that drives it
+unattended.
 
-## Overview
+## Running the harness
 
-This plugin is used for runtime testing of the Endstone API. Unlike the unit tests under `tests/`, which run in
-isolation against the built wheel, these tests execute inside a running server, so they can verify actual API
-behaviour against the Bedrock Dedicated Server.
-
-## Installation
-
-Install the plugin as a Python package from the project root:
+The runner builds a scratch server from a wheel and a BDS zip, starts it, runs every scenario and exits non-zero on
+any failure. Run it by its path; the example is relative to the repository root:
 
 ```shell
-pip install -e tests/plugin
+uv run --no-project --python 3.13 python tests/plugin/src/endstone_test/runner.py \
+    --wheel wheelhouse/endstone-<version>-cp313-cp313-win_amd64.whl \
+    --bds-zip ~/.bedrock_server/windows/bedrock-server-1.26.61.1.zip \
+    --workdir C:/esh \
+    --extra ../endstone-client
 ```
 
-The plugin will be automatically discovered and loaded by Endstone on server startup.
+It only needs the standard library to start. It creates `<workdir>/venv` with the wheel, this plugin, the fixture
+plugin in `fixtures/` and the extras, extracts the zip into `<workdir>/server`, writes `version.txt` so the launcher
+does not download, sets a flat world, `online-mode=false`, `allow-list=false` and `transport=raknet` on `--port`
+(default 19600, IPv6 on port + 1, the control channel on port + 2), then re-runs itself from the venv. Every Python
+it starts runs with `PYTHONSAFEPATH=1` in the workdir, so the checkout's `endstone/` source package never shadows
+the wheel, whatever the current directory. On Windows the workdir must be short: BDS ships paths of about 150
+characters.
 
-## Usage
+| Option | Effect |
+|--------|--------|
+| `--select <glob>` | Run only matching scenarios. A selected run is partial: skips and missing coverage do not fail it. |
+| `--extra <package>` | Install another package into the venv: a requirement, a project directory, a wheel, or a wheel glob (the newest match wins). Repeatable. |
+| `--find-links <dir>` | A directory of wheels that dependencies may resolve from. Repeatable. |
+| `--pytest-file <file>` | Run only this file of `tests/` in the pytest passes, such as `test_chunk.py` or `player/test_ability.py::test_x`. Repeatable. Implies `--select "pytest.*"` unless you select scenarios yourself. |
+| `--pytest-args=<args>` | Extra pytest arguments as one string, such as `--pytest-args="-k chunk -x"`. Write it with `=`, since the value starts with a dash. Also implies `--select "pytest.*"`. |
+| `--timeout`, `--hang-timeout` | Wall-clock limit for the run, and for silence from the plugin. |
+| `--crash-test` | Enable `harness.crash`, which crashes the server on purpose. |
+| `--api-gate {enforce,report,off}` | Record which public API members run in the server and add `api_coverage` to the result. `enforce` (the default) fails a full run when a member never ran and has no reason in `NOT_AUTOMATABLE` in `harness/api_manifest.py`; `report` only reports; `off` does not record. |
+| `--verbose` | Echo the server log. |
 
-The suite is split into three passes, selected by a pytest marker:
+A project directory given to `--extra` is reinstalled on every run, together with the packages it takes from a
+local path in `[tool.uv.sources]`. `endstone-client` takes its bedrock-protocol binding that way, so
+`--extra ../endstone-client` also installs the newest build of
+`../bedrock-protocol/wheelhouse/bedrock_protocol-*.whl`. A wheel given directly is reinstalled
+too, so a rebuild with an unchanged version is still picked up.
 
-| Pass | Marker | When it runs |
-|------|--------|--------------|
-| Server | `not player and not event` | Automatically, when the plugin is enabled |
-| Player | `player` | When a **player** runs `/test` |
-| Event | `event` | When anyone runs `/test events` |
+The result is `<workdir>/results-<run id>.json` and the server log is `<workdir>/logs/<run id>.log`. Each scenario's
+entry holds `status`, `detail`, `ticks`, `wall`, the captured `events`, and whatever the scenario put in `ctx.info`
+under `info`. A control-channel line the runner cannot read (unparsable, or over its 256 MB limit) fails the scenario
+that was running and is listed under `control_errors`. A full run fails
+when a scenario fails, errors, crashes, never runs or skips, when pytest skips a test, when the log shows
+`Could not pass event`, `Could not execute task`, `Unhandled exception`, a traceback or a crash banner, or when an
+event path has neither a scenario nor a reason in the coverage manifest. After a crash the runner charges it to the
+scenario that was running, restarts the server and carries on with the scenarios that are left, for as many crashes
+as it takes; `--max-restarts` (default 3) only limits server lives in a row that end before any scenario finishes.
 
-The marker is applied automatically from the package a test lives in, so put a test in the right directory rather
-than marking it by hand.
+## How it works
 
-Events cannot be constructed from Python and listeners cannot be unregistered, so event coverage works differently:
-a single set of listeners is registered once at startup and records a snapshot of every event it sees. A boss bar
-shows how many of the tracked events have fired (`Events: 7/75, Next: PlayerJumpEvent`), and the event tests assert
-on the recorded snapshots. An event that has not been triggered yet **skips** rather than fails, so a fresh server
-is green; use the boss bar and `/test events` to see what is still unexercised.
+Without `ENDSTONE_TEST_CONTROL` the plugin behaves as before: it runs the server pytest pass on enable and offers
+`/test`. With it, the plugin connects to the runner, reports its scenarios and the coverage manifest, and runs the
+plan the runner sends back.
 
-### Cancel and mutate checks
+- **Scenarios** (`scenarios/`) are async functions resumed once per server tick. They await `ctx.ticks(n)`,
+  `ctx.until(predicate, timeout)` and calls into the runner, and never block the server thread. Each has a tick
+  budget, and one with `plot=True` gets a cleared 16x24x16 box on a stone floor inside a ticking area.
+- **Captures** (`ctx.capture(EventClass, where, cancel=, mutate=)`) record every matching event while the scenario
+  runs. Cancelling and mutating happen inside the handler, and each event is snapshotted field by field. Every
+  captured event is also checked against the invariants in `harness/fields.py`. Deaths and respawns are journaled
+  whether or not a scenario captures them, and the cross-event checks there run when each scenario ends.
+- **World access without a player.** The behavior pack in `assets/behavior_pack` is installed into the scratch world;
+  `/scriptevent endstone_test:setblock` and `endstone_test:explode` reach it. The fixture plugin
+  `endstone-test-fixture` exists to be disabled and enabled again.
+- **Paths.** A scenario declares which paths it covers, `normal`, `cancel` or `mutate`, and asserts what the game did:
+  the block that formed, the weather `/weather query` reports, the line the console printed. `harness/manifest.py`
+  requires `normal` for every event, `cancel` for a cancellable one and `mutate` for one with a setter, unless it
+  states why a path cannot be automated.
+- **The runner** (`runner.py`) owns the server process, the log watch, the bots and the CPU sampler. The plugin asks
+  it to type console commands, return the log lines written between two marks, start, drive and close bots, and
+  sample the server thread.
+- **The pytest suites** under `tests/` run as the `pytest.server` and `pytest.player` scenarios, and their exit code
+  is the scenario's verdict.
 
-Observing an event proves it fires, not that cancelling it or writing to it does anything. Those paths are tracked
-as their own progress-bar items, declared in `checks.py` as `<EventName>/cancel` and `<EventName>/mutate` with a
-hint saying how to trigger them, so the boss bar reads
-`Events: 41/96, Next: CraftItemEvent/cancel (craft anything in the 2x2 grid)`.
+### Bots
 
-Each check is **one-shot**: the listener applies it the first time its event fires and never again, so a cancelled
-craft or a rewritten book costs you one occurrence rather than breaking the server for the rest of the session.
-Where both a cancel and a mutate check exist, the cancel fires first and the mutate on the next occurrence. Add a
-check by declaring it in `checks.py` and calling `self.cancelled(event, ...)` or `self.mutated(event, ...)` behind
-`self.due(event, CANCEL)` in the listener that already handles the event.
+Player scenarios drive bots through `await ctx.bot(name)` and `bot.call("local_player.jump")`. The runner resolves
+the dotted method on the bot's `endstone_client.ClientInstance` (only its `@action` methods) and returns its JSON.
+`Bots` in `runner.py` is the only code that knows the client library; without `--extra` pointing at the client,
+bot scenarios skip, which fails a full run.
 
-Checks are surfaced in the order they are declared, not alphabetically, so related ones sit together and a check
-that sets up the next one comes first. The progress bar walks that order, so following `Next:` from top to bottom
-is a workable test script.
+### Server thread CPU
 
-Most checks declare the **items needed to perform them** -- an enchanting table and a pickaxe for the enchanting
-checks, a bow and arrows for `PlayerPickupArrowEvent`, an ender pearl for `PlayerTeleportEvent`. You are only ever
-given the items for the check the bar is currently pointing at, so your inventory stays readable and it is obvious
-what to do next. Each item's lore carries the check key and its hint, which also puts a display name and lore
-through `ItemMeta` on the way in.
+`await ctx.call("perf.start")` and `await ctx.call("perf.stop")` sample the CPU the server thread spends per
+wall-clock second. The thread is the one the plugin's tasks run on; without the plugin, the thread BDS names
+`MC_SERVER` (the lowest-numbered one on Linux, where its children inherit the name). Windows reads exact cycle
+counts rather than thread times, which only advance at clock interrupts; Linux reads `schedstat`.
 
-You are told what to do as you go. Every two seconds the current check's short hint goes to the **action bar**
-(`[12/31] shoot the arrow and walk over it`), which also exercises `Player.send_action_bar`. The first time a
-check becomes current its full instructions go to **chat**, once, so the running commentary stays in the action
-bar and the detail does not spam you.
+`--bench` measures a join storm without the plugin, so builds that cannot load it compare too:
 
-Stocking is **self-healing**: it runs on join, every five seconds, and again whenever a check passes. If you eat
-the apple, shoot the arrows into a hole or otherwise use a trigger item without the check firing, the missing item
-is handed back so you can retry. A check whose items belong to the one before it -- the `/mutate` half of a pair --
-keeps that earlier check's items stocked.
+```shell
+... runner.py --wheel <endstone.whl> --bds-zip <zip> --workdir C:/esb --port 19610 --bench --bots 50
+... runner.py --wheel <any wheel> --bds-zip <zip> --workdir C:/esv --port 19620 --bench --bots 50 --vanilla
+```
 
-A couple of events cannot be reached with an ordinary item. Those declare a **wand**: an item named
-`endstone-test:<name>` that fires the check when you right-click it in the air. The kick wand is the clearest
-example -- the first right-click fires `PlayerKickEvent` and cancels it, so you stay connected; right-click again
-and the kick goes through, which is also how `PlayerQuitEvent` gets exercised.
+It waits for `Server started.`, samples the idle server, joins every bot at once, samples again, and writes
+`<workdir>/bench-<run id>.json`. `--vanilla` runs the zip's `bedrock_server` directly; the wheel still provides
+the runner's venv and the bots.
 
-### Interactive checks
+## Writing a scenario
 
-Some API surface needs a real client and cannot be asserted by pytest. These live behind `/test` subcommands:
+```python
+@scenario("weather.rain.cancel", covers={WeatherChangeEvent: "cancel"})
+async def rain_cancel(ctx: Context) -> None:
+    rain = ctx.capture(WeatherChangeEvent, cancel=True)
+    ctx.run("weather rain")
+    await ctx.until(lambda: rain.count, what="WeatherChangeEvent")
+    await ctx.ticks(40)
+    assert weather(ctx) == "clear"
+```
+
+Assert on the game, not on the event: a cancel scenario checks the world and, once bots exist, what the client was
+sent. Reading back a setter proves nothing.
+
+A scenario may `/reload` the server. The reloaded plugin connects to the runner again and runs the interrupted
+scenario from the start, so keep what the first run did in `ctx.stash`, a dict that survives the reload and is
+cleared when the scenario ends. Harness setup is safe to repeat: the plot field's ticking area is reused if it
+already exists. Once that scenario ends, the runner stops the server and runs the rest in a fresh one, since a reload
+leaves state behind that later scenarios should not inherit; `--keep-reloaded-server` turns that off.
+
+## Manual checks
+
+Some API surface needs human eyes. These stay behind `/test`:
 
 ```
-/test                                            run the pytest suite
-/test events                                     event checklist, then the event tests
+/test                                            run the pytest suite (the player pass when a player runs it)
 /test form <message|action|modal>                MessageForm / ActionForm / ModalForm and every control
 /test player <toast|title|actionbar|kick|particle|sound>
 /test inv <mainhand|offhand|meta>                PlayerInventory hand slots and ItemMeta
 /test spawn <actor: entity_type>                 Dimension.spawn_actor
 /test map                                        a map drawn by ImageRenderer
 /test block <block: block> [states: block_states]
-/test chunk [x: int] [z: int]                    Dimension.load_chunk, polled across real ticks
 /test sender
-/test broadcast
 ```
 
-`/test chunk` is the only way to prove `load_chunk` actually loads. Chunk generation is tick-driven,
-and the pytest pass runs on the blocked server thread, so no tick can land during it — the pytest
-cases can only assert that the request was accepted. This subcommand loads a far chunk, then polls
-`is_chunk_loaded` once per tick and reports how many ticks it took before releasing it again.
+## Writing tests
 
-## Project Structure
+The pytest suites have the live server through fixtures: `server`, `plugin`, `plot`, and `player` in the player pass.
+A test needing a connected player goes in `tests/player/`. There is no API to unregister a listener, so never register
+one inside a test.
 
-```
-tests/plugin/
-├── pyproject.toml                    # Package configuration
-├── README.md
-└── src/
-    └── endstone_test/
-        ├── __init__.py
-        ├── plugin.py                 # Plugin entry point and the three pytest passes
-        ├── command_executor.py       # The interactive /test subcommands
-        ├── recorder.py               # EventRecorder: snapshots, boss bar, skip-if-untriggered
-        ├── image_renderer.py         # MapRenderer drawing a generated test pattern
-        ├── listeners/                # One listener per event category, feeding the recorder
-        │   ├── event_listener.py     # Base class; declares the events it tracks
-        │   ├── actor_event_listener.py
-        │   ├── block_event_listener.py
-        │   ├── level_event_listener.py
-        │   ├── player_event_listener.py
-        │   ├── server_event_listener.py
-        │   └── weather_event_listener.py
-        └── tests/
-            ├── conftest.py           # Runtime-context fixtures and marker assignment
-            ├── *.py                  # Server tests, no player required
-            ├── player/               # Tests needing a connected player
-            └── event/                # Tests asserting on recorded events
-```
-
-## Writing Tests
-
-Tests use pytest and have access to the live server through fixtures:
+The server thread is blocked while pytest runs, so no tick passes during a test. A chunk the server pass loads
+itself with `load_chunk` is held but never ticks: `setblock` there fails and `spawn_actor` returns `None`. Use the
+`plot` fixture for anything that needs a live spot. It is the harness plot reserved for the pass: a 16 x 24 x 16 box of
+air on a stone floor, inside a ticking area, cleared before the pass.
 
 ```python
-from endstone import Server
-
-def test_server_name(server: Server) -> None:
-    """Verify server name is 'Endstone'."""
-    assert server.name == "Endstone"
+def test_mob_attribute(server, plot):
+    overworld = server.level.get_dimension("overworld")
+    x, y, z = plot.pos(*plot.middle)          # world coordinates of a spot in the plot
+    pig = overworld.spawn_actor(Location(overworld, x + 0.5, y, z + 0.5), "minecraft:pig")
+    try:
+        ...
+    finally:
+        pig.remove()
 ```
 
-### Available Fixtures
+`plot.pos(dx, dy, dz)` gives world coordinates, `plot.at(...)` the same as an `"x y z"` command argument, and
+`plot.volume` a selector argument covering the box. Each pass gets its own plot, shared by every test in it, so stay
+inside the box and clean up what you spawn. Outside the harness (`/test` in game) there is no plot, and tests that ask
+for it skip.
 
-- `server` — the Endstone `Server` instance
-- `plugin` — the `EndstoneTest` plugin instance
-- `player` — the player who ran `/test` (only in the player pass)
-- `recorder` — the `EventRecorder` holding what every listener has seen
+Run a single file or test quickly with `--pytest-file`, for example:
 
-A fixture that is not available for the current pass skips the test rather than failing it.
-
-### Conventions
-
-- Put a test needing a connected player in `tests/player/`, and one asserting on an event in `tests/event/`.
-- Clean up after yourself. Prefer a yield-fixture that restores state before **and** after, and asserts the
-  post-state, over restoring inline.
-- There is no API to unregister an event listener, so never register one inside a test — each `/test` run would
-  stack another copy. Register once at module level, guarded by a flag.
-- Use `recorder.require("SomeEvent")` in an event test: it returns the recorded snapshots, or skips when the event
-  has not fired yet.
-
-## Dependencies
-
-- `pytest` — test framework
+```shell
+... runner.py --wheel <whl> --bds-zip <zip> --workdir C:/esh --pytest-file test_plot.py --pytest-args="-v"
+```

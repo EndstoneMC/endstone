@@ -17,10 +17,13 @@ def test_player_in_online_players(player: Player, server: Server):
     assert server.get_player(player.unique_id) is player
 
 
-def test_player_xuid(player: Player):
-    """Verify the player has a non-empty Xbox User ID."""
+def test_player_xuid(server: Server, player: Player):
+    """Verify the player has an Xbox User ID exactly when the server authenticates players."""
     assert isinstance(player.xuid, str)
-    assert len(player.xuid) > 0
+    assert (len(player.xuid) > 0) == server.online_mode, (
+        player.xuid,
+        server.online_mode,
+    )
 
 
 def test_player_unique_id(player: Player):

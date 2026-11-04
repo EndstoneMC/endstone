@@ -1,0 +1,11 @@
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[project]
+name = "endstone-test-addon"
+version = "0.12.0"
+description = "A POSTWORLD plugin the endstone-test fixture enables from its STARTUP on_enable."
+
+[project.entry-points."endstone"]
+test-addon = "endstone_test_addon:TestAddon"

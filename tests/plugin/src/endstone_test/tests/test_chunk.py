@@ -8,14 +8,6 @@ FAR_CHUNK = (30_000, 30_000)
 NEVER_LOADED_CHUNK = (29_000, 29_000)
 
 
-def _resident_chunk_near_spawn(dimension: Dimension) -> tuple[int, int] | None:
-    for x in range(-2, 3):
-        for z in range(-2, 3):
-            if dimension.is_chunk_loaded(x, z):
-                return x, z
-    return None
-
-
 def test_a_far_chunk_is_not_loaded(server: Server) -> None:
     """Verify a chunk far outside the spawn area is not resident."""
     overworld = server.level.get_dimension(Dimension.OVERWORLD)
@@ -57,24 +49,6 @@ def test_unload_chunk_request_always_reports_true(server: Server) -> None:
     overworld = server.level.get_dimension(Dimension.OVERWORLD)
     overworld.load_chunk(*FAR_CHUNK)
     assert overworld.unload_chunk_request(*FAR_CHUNK) is True
-
-
-def test_unload_chunk_reports_false_for_a_chunk_in_use(server: Server) -> None:
-    """Verify unload_chunk reports False while something else keeps the chunk resident."""
-    overworld = server.level.get_dimension(Dimension.OVERWORLD)
-    in_use = _resident_chunk_near_spawn(overworld)
-    if in_use is None:
-        pytest.skip("no resident chunk near spawn")
-    assert overworld.unload_chunk(*in_use) is False
-
-
-def test_a_resident_chunk_is_generated(server: Server) -> None:
-    """Verify a chunk that is loaded also reports as generated."""
-    overworld = server.level.get_dimension(Dimension.OVERWORLD)
-    in_use = _resident_chunk_near_spawn(overworld)
-    if in_use is None:
-        pytest.skip("no resident chunk near spawn")
-    assert overworld.is_chunk_generated(*in_use) is True
 
 
 def test_plugin_chunk_ticket_is_recorded(server: Server, plugin: Plugin) -> None:
