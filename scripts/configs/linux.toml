@@ -976,20 +976,6 @@ extra = 0
 pattern = "55 41 57 41 56 41 55 41 54 53 48 83 EC 58 48 89 4C 24 50 48 89"
 
 [[signatures]]
-name = "_ZN6webrtc4Port24SendBindingErrorResponseEPNS_11StunMessageERKNS_13SocketAddressEiNSt3__117basic_string_viewIcNS6_11char_traitsIcEEEE"
-relative = false
-extra = 0
-# 1. find bytes "3A 20 72 65 61 73 6F 6E 3D 00" = ": reason=\0" (unique); its lone data xref is the
-#    LS_INFO line ": Sending STUN " << ... << ": reason=" << reason << " to " that port.cc logs from
-#    SendBindingErrorResponse, so the function containing that xref is the target
-# 2. confirm: six args, the string_view reason arriving split as pointer + length, and the 400/401
-#    branch that skips AddMessageIntegrity - clang compiles it as the unsigned test
-#    `error_code - 402 <= 0xfffffffd`, which excludes exactly 400 and 401
-# 3. confirm: the response type is 273 (STUN_BINDING_ERROR_RESPONSE) or 784 (GOOG_PING_ERROR_RESPONSE),
-#    AddFingerprint runs only for the former, and the send goes through the Port vtable at +0x90
-pattern = "55 41 57 41 56 41 55 41 54 53 48 81 EC ? ? ? ? 4D 89 CC 4D 89 C6 49 89 F7"
-
-[[signatures]]
 name = "_ZN9NetherNet26SimpleNetworkInterfaceImpl11getMetadataERKNS0_20HttpMetadataProviderE"
 relative = false
 extra = 0

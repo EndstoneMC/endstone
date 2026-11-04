@@ -11,7 +11,7 @@
 
 namespace endstone::runtime {
 
-static constexpr std::array<std::pair<std::string_view, std::size_t>, 83> symbols = {{
+static constexpr std::array<std::pair<std::string_view, std::size_t>, 82> symbols = {{
     {"BlockState::StateListNode::mHead", 267359568},
     {"ChunkBlenderFactory::getOrCreateChunkBlender::cache_cap", 86839560},
     {"DBChunkStorage::_hasChunk::cache_cap", 225495850},
@@ -146,8 +146,6 @@ static constexpr std::array<std::pair<std::string_view, std::size_t>, 83> symbol
     {"_ZN14WeatherManager13updateWeatherEfifi", 215614816},
     // webrtc::P2PTransportChannel
     {"_ZN6webrtc19P2PTransportChannel32SwitchSelectedConnectionInternalEPNS_10ConnectionENS_15IceSwitchReasonE", 70614720},
-    // webrtc::Port
-    {"_ZN6webrtc4Port24SendBindingErrorResponseEPNS_11StunMessageERKNS_13SocketAddressEiNSt3__117basic_string_viewIcNS6_11char_traitsIcEEEE", 70334528},
 }};
 
 }  // namespace endstone::runtime
