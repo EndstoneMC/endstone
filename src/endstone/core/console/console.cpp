@@ -82,6 +82,9 @@ std::optional<std::string> EndstoneConsole::readLine(const std::string &prompt)
         if (!std::cin.good()) {
             return std::nullopt;
         }
+        if (line.ends_with('\r')) {
+            line.pop_back();
+        }
     }
     return line;
 }
