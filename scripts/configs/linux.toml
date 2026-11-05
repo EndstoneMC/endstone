@@ -1436,6 +1436,18 @@ extra = 0
 pattern = "55 41 57 41 56 41 55 41 54 53 48 81 EC ? ? ? ? 48 89 D3 48 89 BC 24 ? ? ? ? 48 8B 82 ? ? ? ? 48 C7 82 ? ? ? ? 00 00 00 00"
 
 [[signatures]]
+name = "_ZNK26MinecraftServiceKeyManager9tryGetKeyERKNSt3__112basic_stringIcNS0_11char_traitsIcEENS0_9allocatorIcEEEE"
+relative = false
+extra = 0
+# 1. in GameServerToken::_validate, the call after the audience check that takes the token's key id is tryGetKey;
+#    it is also called from nowhere else
+# 2. tryGetKey takes mDataMutex (this+0x118) shared, looks the kid up in mTrustedKeys (this+0x1f8) and copies the hit
+#    out as an optional<WebKey>
+# 3. confirm vs the old named DB
+# function prologue
+pattern = "55 41 57 41 56 41 54 53 48 83 EC 10 49 89 D7 49 89 F4 48 89 FB 4C 8D B6 18 01 00 00"
+
+[[signatures]]
 name = "_ZN20ServerNetworkHandler15tryToLoadPlayerER12ServerPlayerRK17ConnectionRequestRK24PlayerAuthenticationInfo"
 relative = false
 extra = 0

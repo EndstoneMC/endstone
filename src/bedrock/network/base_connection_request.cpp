@@ -21,6 +21,16 @@ Json::Value BaseConnectionRequest::getData(const std::string &key) const
     return raw_token_->getData().get(key, Json::nullValue);
 }
 
+PlayerAuthenticationType BaseConnectionRequest::getAuthenticationType() const
+{
+    return authentication_type_;
+}
+
+const RawGameServerToken &BaseConnectionRequest::_getGameServerToken() const
+{
+    return unverified_game_server_token_;
+}
+
 const WebToken &BaseConnectionRequest::_getRawRequest() const
 {
     return *raw_token_;

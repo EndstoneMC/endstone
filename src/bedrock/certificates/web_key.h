@@ -15,19 +15,23 @@
 #pragma once
 
 #include <string>
+#include <utility>
 
 #include "bedrock/bedrock.h"
-
-namespace Crypto::Asymmetric {
-enum class System : int;
-}
+#include "bedrock/crypto/asymmetric/asymmetric.h"
 
 class WebKey {
 public:
+    static WebKey fromRawPublicKey(std::string public_key, Crypto::Asymmetric::System type)
+    {
+        return {type, std::move(public_key)};
+    }
     [[nodiscard]] const std::string &getPublicKey() const;
     [[nodiscard]] Crypto::Asymmetric::System getType() const;
 
 private:
+    WebKey(Crypto::Asymmetric::System type, std::string public_key) : type_(type), public_key_(std::move(public_key)) {}
+
     Crypto::Asymmetric::System type_;
     std::string public_key_;
 };

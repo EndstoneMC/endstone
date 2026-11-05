@@ -11,7 +11,7 @@
 
 namespace endstone::runtime {
 
-static constexpr std::array<std::pair<std::string_view, std::size_t>, 121> symbols = {{
+static constexpr std::array<std::pair<std::string_view, std::size_t>, 122> symbols = {{
     {"BlockState::StateListNode::mHead", 223875200},
     {"ChunkBlenderFactory::getOrCreateChunkBlender::cache_cap", 140104458},
     {"DBChunkStorage::_hasChunk::cache_cap", 57742736},
@@ -133,6 +133,8 @@ static constexpr std::array<std::pair<std::string_view, std::size_t>, 121> symbo
     {"?executeCommand@MinecraftCommands@@QEBA?AUMCRESULT@@AEAVCommandContext@@_N@Z", 15821088},
     // MinecraftPackets
     {"?createPacket@MinecraftPackets@@SA?AV?$shared_ptr@VPacket@@@std@@W4MinecraftPacketIds@@@Z", 12684784},
+    // MinecraftServiceKeyManager
+    {"?tryGetKey@MinecraftServiceKeyManager@@QEBA?AV?$optional@VWebKey@@@std@@AEBV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@3@@Z", 21275872},
     // Mob
     {"?knockback@Mob@@UEAAXPEAVActor@@MMMAEBUKnockbackParameters@@@Z", 45392272},
     // NetherNet::LanThreadManager
