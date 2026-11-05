@@ -28,6 +28,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Fixed `Plugin.save_resources()` failing when the resource sits in a folder that does not exist in the data folder yet.
 - Fixed `Plugin.save_resources()` mangling resource paths that contain `;` or `:`.
 - Fixed installing a plugin wheel hanging the server when its standard input is a pipe.
+- Fixed console commands piped in with Windows line endings being reported as unknown commands.
 - Fixed a freshly installed plugin wheel not being importable until the server restarted.
 - Fixed the `ItemStack` constructor raising `RuntimeError` instead of `ValueError` for an amount outside 1 to 255.
 - Fixed `Skin.id` cutting the end off a skin id that does not end with the cape id.
