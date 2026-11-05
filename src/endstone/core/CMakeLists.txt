@@ -115,6 +115,7 @@ add_library(endstone_core
         plugin/service_manager.cpp
         potion/effect_type.cpp
         potion/potion_type.cpp
+        proxy/endgate.cpp
         scheduler/async_task.cpp
         scheduler/scheduler.cpp
         scheduler/task.cpp

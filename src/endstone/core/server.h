@@ -160,6 +160,17 @@ public:
     [[nodiscard]] bool logCommands() const;
     [[nodiscard]] bool isServerTextEnabled(ServerTextEvent event) const;
     [[nodiscard]] bool hasHiddenActors() const;
+    /**
+     * @see io.papermc.paper.configuration.GlobalConfiguration.Proxies.Velocity#enabled
+     */
+    [[nodiscard]] bool isEndgateEnabled() const;
+
+    /**
+     * Returns endgate's forwarding key as its base64 SPKI, the key id endgate signs with, or nothing until it loads.
+     *
+     * @see io.papermc.paper.configuration.GlobalConfiguration.Proxies.Velocity#secret
+     */
+    [[nodiscard]] const std::string &getEndgateForwardingKey() const;
 
     [[nodiscard]] ServerInstance &getServer() const;
     [[nodiscard]] RemoteConnector &getRemoteConnector() const;
@@ -210,6 +221,9 @@ private:
     std::size_t hidden_actor_count_ = 0;
     bool allow_client_packs_ = false;
     bool log_commands_ = true;
+    bool endgate_enabled_ = false;
+    std::string endgate_forwarding_key_file_ = "keys/forwarding_key.pem";
+    std::string endgate_forwarding_key_;
     ServerTextSettings text_settings_;
     ::Bedrock::PubSub::Subscription on_gameplay_user_removed_;
     ::Bedrock::PubSub::Subscription on_chunk_load_;

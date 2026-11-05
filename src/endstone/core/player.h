@@ -151,6 +151,7 @@ public:
     void initFromConnectionRequest(std::variant<std::reference_wrapper<const ::ConnectionRequest>,
                                                 std::reference_wrapper<const ::SubClientConnectionRequest>>
                                        request);
+    void setForwardedAddress(std::string hostname);
     void disconnect();
     void updateAbilities() const;
     void clearPinnedInput();

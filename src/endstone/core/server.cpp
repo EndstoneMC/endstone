@@ -52,6 +52,7 @@
 #include "endstone/command/plugin_command.h"
 #include "endstone/core/ban/ip_ban_list.h"
 #include "endstone/core/ban/player_ban_list.h"
+#include "endstone/core/base64.h"
 #include "endstone/core/block/biome.h"
 #include "endstone/core/block/block_data.h"
 #include "endstone/core/block/block_type.h"
@@ -171,6 +172,9 @@ EndstoneServer::EndstoneServer() : logger_(LoggerFactory::getLogger(""))
         toml::table tbl = toml::parse_file("endstone.toml");
         log_commands_ = tbl.at_path("commands.log").value_or(true);
         allow_client_packs_ = tbl.at_path("settings.allow-client-packs").value_or(false);
+        endgate_enabled_ = tbl.at_path("proxies.endgate.enabled").value_or(false);
+        endgate_forwarding_key_file_ =
+            tbl.at_path("proxies.endgate.forwarding-key-file").value_or(endgate_forwarding_key_file_);
     }
     catch (const toml::parse_error &err) {
         EndstoneServer::getLogger().error("Failed to parse config file: {}", err.what());
@@ -190,6 +194,34 @@ void EndstoneServer::init(ServerInstance &server_instance)
     command_sender_ = std::make_shared<EndstoneConsoleCommandSender>();
     command_sender_->recalculatePermissions();
     enablePlugins(PluginLoadOrder::Startup);
+    if (endgate_enabled_) {
+        std::ifstream file(endgate_forwarding_key_file_);
+        std::string key;
+        for (std::string line; std::getline(file, line);) {
+            boost::algorithm::trim(line);
+            if (!line.starts_with("-----")) {
+                key += line;
+            }
+        }
+        constexpr std::string_view p384_spki_prefix(
+            "\x30\x76\x30\x10\x06\x07\x2A\x86\x48\xCE\x3D\x02\x01\x06\x05\x2B\x81\x04\x00\x22\x03\x62\x00\x04", 24);
+        const auto der = base64_decode<std::string>(key);
+        if (!file.is_open()) {
+            EndstoneServer::getLogger().error("endgate is enabled, but no forwarding key was found at {0}. Copy "
+                                              "keys/forwarding_key.pem from endgate to {0}. Stopping the server.",
+                                              endgate_forwarding_key_file_);
+            shutdown();
+        }
+        else if (!der || der->size() != 120 || !der->starts_with(p384_spki_prefix)) {
+            EndstoneServer::getLogger().error("endgate is enabled, but {0} is not a P-384 public key. Copy "
+                                              "keys/forwarding_key.pem from endgate to {0} again. Stopping the server.",
+                                              endgate_forwarding_key_file_);
+            shutdown();
+        }
+        else {
+            endgate_forwarding_key_ = key;
+        }
+    }
 }
 
 // #blameMojang - MCPE-240610: BDS skips the server advertisement when the level's LANBroadcast flag is off,
@@ -334,6 +366,16 @@ bool EndstoneServer::isServerTextEnabled(ServerTextEvent event) const
 {
     return text_settings_.getEnabledServerTextEvents().test(
         static_cast<std::underlying_type_t<ServerTextEvent>>(event));
+}
+
+bool EndstoneServer::isEndgateEnabled() const
+{
+    return endgate_enabled_;
+}
+
+const std::string &EndstoneServer::getEndgateForwardingKey() const
+{
+    return endgate_forwarding_key_;
 }
 
 bool EndstoneServer::hasHiddenActors() const

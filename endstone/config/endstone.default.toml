@@ -13,3 +13,9 @@ allow-client-packs = false
 # Disabled by default: the server exits when it cannot bind that port, and many
 # hosts and containers have no IPv6 at all.
 ipv6 = false
+
+[proxies.endgate]
+# Only accept players who join through endgate.
+enabled = false
+# The file holding endgate's forwarding key, copied from keys/forwarding_key.pem in endgate's folder.
+forwarding-key-file = "keys/forwarding_key.pem"

@@ -279,6 +279,11 @@ const SocketAddress &EndstonePlayer::getAddress() const
     return address_;
 }
 
+void EndstonePlayer::setForwardedAddress(std::string hostname)
+{
+    address_ = SocketAddress(std::move(hostname), address_.getPort());
+}
+
 void EndstonePlayer::transfer(std::string host, int port) const
 {
     auto packet = MinecraftPackets::createPacket(MinecraftPacketIds::Transfer);

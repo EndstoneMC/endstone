@@ -14,6 +14,8 @@
 
 #include "bedrock/network/server_network_handler.h"
 
+#include <format>
+
 #include <magic_enum/magic_enum.hpp>
 
 #include "bedrock/locale/i18n.h"
@@ -21,6 +23,7 @@
 #include "bedrock/server/server_instance.h"
 #include "endstone/core/entity/components/flag_components.h"
 #include "endstone/core/player.h"
+#include "endstone/core/proxy/endgate.h"
 #include "endstone/core/server.h"
 #include "endstone/core/util/socket_address.h"
 #include "endstone/core/util/uuid.h"
@@ -71,6 +74,11 @@ bool ServerNetworkHandler::tryToLoadPlayer(ServerPlayer &server_player, const Co
                                                         connection_request, player_info);
     const auto &server = endstone::core::EndstoneServer::getInstance();
     auto endstone_player = server_player.getEndstoneActor<endstone::core::EndstonePlayer>();
+    if (server.isEndgateEnabled()) {
+        if (const auto player_info = endstone::core::EndgateProxy::readPlayerInfo(connection_request)) {
+            endstone_player->setForwardedAddress(endstone::core::EndgateProxy::readAddress(*player_info));
+        }
+    }
     endstone_player->initFromConnectionRequest(connection_request);
 
     const auto e = std::make_shared<endstone::PlayerLoginEvent>(endstone_player);
@@ -138,15 +146,8 @@ void ServerNetworkHandler::disconnect(NetworkIdentifier const &network_id, SubCl
 std::optional<PlayerAuthenticationInfo> ServerNetworkHandler::_validateLoginPacket(const NetworkIdentifier &source,
                                                                                    const LoginPacket &packet)
 {
-    // Check for IP-bans
     const auto &server = endstone::core::EndstoneServer::getInstance();
-    auto address = endstone::core::EndstoneSocketAddress::fromNetworkIdentifier(source);
     auto network_handler = server.getServer().getMinecraft()->getServerNetworkHandler();
-    if (server.getIpBanList().isBanned(address.getHostname())) {
-        network_handler->disconnect(source, SubClientId::PrimaryClient, "You have been IP banned from this server.");
-        return std::nullopt;
-    }
-
     if (!packet.payload.connection_request) {
         return std::nullopt;
     }
@@ -155,6 +156,35 @@ std::optional<PlayerAuthenticationInfo> ServerNetworkHandler::_validateLoginPack
     auto auth_info = ENDSTONE_HOOK_CALL_ORIGINAL(&ServerNetworkHandler::_validateLoginPacket, this, source, packet);
     if (!auth_info) {
         return auth_info;
+    }
+
+    auto address = endstone::core::EndstoneSocketAddress::fromNetworkIdentifier(source);
+    if (server.isEndgateEnabled()) {
+        const auto &request = *packet.payload.connection_request;
+        const auto player_info = endstone::core::EndgateProxy::readPlayerInfo(request);
+        if (!player_info) {
+            network_handler->disconnect(source, SubClientId::PrimaryClient,
+                                        "This server requires you to connect with endgate.");
+            return std::nullopt;
+        }
+        if (!endstone::core::EndgateProxy::checkIntegrity(request)) {
+            network_handler->disconnect(source, SubClientId::PrimaryClient, "Unable to verify player details");
+            return std::nullopt;
+        }
+        const auto version = player_info->at("version").get<int>();
+        if (version > endstone::core::EndgateProxy::MaxSupportedForwardingVersion) {
+            network_handler->disconnect(source, SubClientId::PrimaryClient,
+                                        std::format("Unsupported forwarding version {}, wanted upto {}", version,
+                                                    endstone::core::EndgateProxy::MaxSupportedForwardingVersion));
+            return std::nullopt;
+        }
+        address = endstone::SocketAddress(endstone::core::EndgateProxy::readAddress(*player_info), address.getPort());
+    }
+
+    // Check for IP-bans
+    if (server.getIpBanList().isBanned(address.getHostname())) {
+        network_handler->disconnect(source, SubClientId::PrimaryClient, "You have been IP banned from this server.");
+        return std::nullopt;
     }
 
     const auto &info = *auth_info;

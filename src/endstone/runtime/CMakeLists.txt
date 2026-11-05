@@ -37,6 +37,7 @@ add_library(endstone_runtime SHARED
         bedrock_hooks/main_chunk_source.cpp
         bedrock_hooks/map_data_manager.cpp
         bedrock_hooks/minecraft_commands.cpp
+        bedrock_hooks/minecraft_service_key_manager.cpp
         bedrock_hooks/mob.cpp
         bedrock_hooks/nethernet_transport.cpp
         bedrock_hooks/network_system.cpp
