@@ -55,8 +55,8 @@ public:
     [[nodiscard]] static std::optional<nlohmann::json> readPlayerInfo(const ::ConnectionRequest &request);
 
     /**
-     * Checks that the login token was signed with endgate's forwarding key, which BDS has already verified the
-     * signature against.
+     * Checks that the login token names endgate's forwarding key and isn't self-signed, so BDS verifies its signature
+     * against that key.
      *
      * @see com.destroystokyo.paper.proxy.VelocityProxy#checkIntegrity
      */

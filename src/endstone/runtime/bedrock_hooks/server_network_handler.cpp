@@ -152,16 +152,10 @@ std::optional<PlayerAuthenticationInfo> ServerNetworkHandler::_validateLoginPack
         return std::nullopt;
     }
 
-    // Run the original logics first so invalid login attempts will be rejected right away.
-    auto auth_info = ENDSTONE_HOOK_CALL_ORIGINAL(&ServerNetworkHandler::_validateLoginPacket, this, source, packet);
-    if (!auth_info) {
-        return auth_info;
-    }
-
-    auto address = endstone::core::EndstoneSocketAddress::fromNetworkIdentifier(source);
+    std::optional<nlohmann::json> player_info;
     if (server.isEndgateEnabled()) {
         const auto &request = *packet.payload.connection_request;
-        const auto player_info = endstone::core::EndgateProxy::readPlayerInfo(request);
+        player_info = endstone::core::EndgateProxy::readPlayerInfo(request);
         if (!player_info) {
             network_handler->disconnect(source, SubClientId::PrimaryClient,
                                         "This server requires you to connect with endgate.");
@@ -178,6 +172,16 @@ std::optional<PlayerAuthenticationInfo> ServerNetworkHandler::_validateLoginPack
                                                     endstone::core::EndgateProxy::MaxSupportedForwardingVersion));
             return std::nullopt;
         }
+    }
+
+    // Run the original logics before the ban checks so invalid login attempts will be rejected right away.
+    auto auth_info = ENDSTONE_HOOK_CALL_ORIGINAL(&ServerNetworkHandler::_validateLoginPacket, this, source, packet);
+    if (!auth_info) {
+        return auth_info;
+    }
+
+    auto address = endstone::core::EndstoneSocketAddress::fromNetworkIdentifier(source);
+    if (player_info) {
         address = endstone::SocketAddress(endstone::core::EndgateProxy::readAddress(*player_info), address.getPort());
     }
 
