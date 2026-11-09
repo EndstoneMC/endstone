@@ -177,7 +177,6 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - `BookMeta::setTitle()` returns `false` and keeps the current title when the new one is longer than 16 bytes, instead of cutting it.
 - **BREAKING**: `Server::createBossBar()` is no longer `const`, since the server now keeps track of the boss bars it hands out. C++ plugins holding a `const Server &` need a non-const one; Python call sites are unchanged.
 - **BREAKING**: The `endstone.metrics.charts`, `endstone.metrics.base` and `endstone.metrics.config` modules are gone; import the chart classes and `Metrics` from `endstone.metrics`.
-- A plugin's commands are registered as it is enabled, so a plugin enabled at `STARTUP` can look up and dispatch them from `on_enable`.
 - `Player.kick()` called from another thread raises an error, as in Paper.
 - `PlayerMoveEvent.from_location` and `to_location` reject a location without a dimension, as in Paper.
 
@@ -216,18 +215,14 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Fixed the server crashing when a plugin kept `BlockFromToEvent.to_block` or the bed of a `PlayerBedEnterEvent` or `PlayerBedLeaveEvent` and used it later.
 - Fixed `Player.inventory` and `Player.ender_chest` crashing the server when used after the player left.
 - Fixed a `Task` from `Scheduler.get_pending_tasks()` reading freed memory once the task had run.
-- Fixed the server crashing when `Server.reload()` was called from a scheduled task.
-- Fixed the server crashing when a plugin used an `ItemType`, `BlockType` or other registry entry it had kept from before a reload.
 - Fixed the server crashing when a plugin kept an event and used it after its handler returned.
 - Fixed the server crashing when a plugin read the plugin of a `PermissionAttachment` or the owner of a `Task` after `/reload`.
 - Fixed the server crashing when a client refreshed the server list while `/reload` ran or a plugin was being disabled.
-- Fixed plugins that use bStats metrics never being freed after `/reload`.
 
 #### API behaviour
 
 - Fixed cancelling `PlayerDropItemEvent` on Linux doubling the stack the player tried to drop.
 - Fixed `PlayerBedLeaveEvent` only being called when a player pressed the leave button. It now also fires when morning comes, when the bed is broken or obstructed, and when the player is woken by anything else, and the `bed` block it reports is the bed being slept in rather than the respawn point.
-- Fixed `PlayerInteractEvent.clicked_position` reporting world coordinates for `RIGHT_CLICK_BLOCK` instead of the position within the block, and the block's own coordinates for `LEFT_CLICK_BLOCK`, where it is now `None`.
 - Fixed every vanilla command failing when dispatched through a `CommandSenderWrapper`, which did not report its own type.
 - Fixed `str()` on a `Translatable` giving an object repr instead of its text.
 - Fixed `Mob.has_attribute()` raising for a name that is not an attribute instead of answering `False`.
@@ -242,7 +237,6 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Fixed adding or removing recipients in `PlayerChatEvent.recipients` or `BroadcastMessageEvent.recipients` having no effect on who receives the message.
 - Fixed a cancelled `PlayerJumpEvent` ignoring the `from_location` a listener set.
 - Fixed `PlayerPortalEvent.to_location` being ignored, so a trip through a nether portal now looks for or builds its exit portal at the location a listener sets, as in Paper.
-- Fixed a cancelled `PlayerLoginEvent` still calling `PlayerQuitEvent` and announcing that the player left.
 - Fixed `Block.biome` reading the wrong part of a chunk, so it reported a biome that has nothing to do with the block, and could crash the server. Introduced in 0.11.7 along with BDS 1.26.40 support.
 - Fixed `ItemStack.set_item_meta()` accepting an item meta that belongs to a different kind of item.
 - Fixed assigning `ItemStack.type` leaving the item unchanged.
@@ -259,13 +253,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Fixed installing a plugin wheel hanging the server when its standard input is a pipe.
 - Fixed console commands piped in with Windows line endings being reported as unknown commands.
 - Fixed a freshly installed plugin wheel not being importable until the server restarted.
-- Fixed a malformed form response logging a callback error instead of closing the form.
 - Fixed `str()` on a `Vector` ending in a stray comma.
 - Fixed `Colors::BLACK` being a fully transparent red.
-- Fixed setting `Player.scoreboard` sending nothing to the client.
-- Fixed vanilla commands such as `/summon` resolving the wrong entity type after `/reload` when a plugin command takes an `entity_type` argument.
 - Fixed the server crashing when a plugin enabled at STARTUP used online players, maps, scoreboards or commands.
-- Fixed `Player.skin` returning the skin a player joined with after they changed it.
 - Fixed cancelling `PlayerSkinChangeEvent` reverting the player to the skin they joined with instead of their current one.
 - Fixed NetherNet servers showing up in the LAN tab when `enable-lan-visibility` is `false` or the world's `LANBroadcast` flag is off.
 - Fixed a NetherNet server on Linux refusing to start with its port in use when restarted right after stopping.
