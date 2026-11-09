@@ -116,13 +116,6 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - `PluginManager::registerEvent()` also takes an executor that receives the event's `NotNull<Event>`, for a listener that keeps the event after it returns.
 - `Server.is_primary_thread` and `Logger.log(level, message)`.
 
-#### Server and Docker
-
-- Graceful shutdown on Linux, so `docker stop` lets the server save the world before exiting.
-- Healthcheck in the Docker image, so `docker ps` and Docker Compose report whether the server is online.
-- `PUID`/`PGID` environment variables in the Docker image.
-- A `docker-compose.yml` for running the server with Docker Compose.
-
 ### Changed
 
 #### JSON payloads
@@ -170,7 +163,6 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - **BREAKING**: `ActorDeathEvent` is now called for player deaths as well as every other mob. A listener that assumed it only saw non-player mobs should check `actor.type` or listen for `PlayerDeathEvent`.
 - `Block.set_type`, `BlockState.type`, `Server.create_block_data` and `Inventory.contains`/`contains_at_least`/`all`/`first`/`remove` take an `Identifier` (e.g. `BlockType.AIR`). Plain `"namespace:key"` strings are still accepted.
 - `str()` on `BlockType`, `Enchantment` and `ItemType` returns a plain `"namespace:key"` string instead of the underlying `Identifier` repr.
-- `BookMeta::setTitle()` returns `false` and keeps the current title when the new one is longer than 16 bytes, instead of cutting it.
 - **BREAKING**: `Server::createBossBar()` is no longer `const`, since the server now keeps track of the boss bars it hands out. C++ plugins holding a `const Server &` need a non-const one; Python call sites are unchanged.
 - **BREAKING**: The `endstone.metrics.charts`, `endstone.metrics.base` and `endstone.metrics.config` modules are gone; import the chart classes and `Metrics` from `endstone.metrics`.
 - `Player.kick()` called from another thread raises an error, as in Paper.
@@ -178,10 +170,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 #### Platform
 
-- **BREAKING**: The Docker image stores server data in `/data` instead of `/home/endstone/bedrock_server`. Update your volume mount accordingly (e.g. `-v ./data:/data`).
 - The console prompt now appears as soon as the server starts, right after the version banner, instead of only once the world has finished loading. Commands typed while the server is still starting are queued and run once it is ready, as they already were. Endstone no longer redirects the server's stdin during startup, so anything else reading it sees the real terminal throughout.
-- Dropped Python 3.10 support (end-of-life). Minimum version is now Python 3.11.
 - The server now stops at startup when `endstone.toml` cannot be parsed, instead of running with default settings.
+- Improved the performance of `PacketSendEvent`, `PacketReceiveEvent`, `BlockFromToEvent` and `LeavesDecayEvent` while no plugin listens to them.
 
 ### Removed
 
@@ -222,9 +213,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Fixed `PlayerBedLeaveEvent` only being called when a player pressed the leave button. It now also fires when morning comes, when the bed is broken or obstructed, and when the player is woken by anything else, and the `bed` block it reports is the bed being slept in rather than the respawn point.
 - Fixed every vanilla command failing when dispatched through a `CommandSenderWrapper`, which did not report its own type.
 - Fixed `str()` on a `Translatable` giving an object repr instead of its text.
-- Fixed `Mob.has_attribute()` raising for a name that is not an attribute instead of answering `False`.
 - Fixed iterating an `Inventory`, such as `for item in inventory` or `list(inventory)`, never ending, and `inventory[index]` returning `None` instead of raising `IndexError` for an index that is out of range.
-- Fixed writing book metadata wiping the photo attached to a page and the filtered text the server keeps beside it. Pages you did not change now keep both.
 - Fixed `Enchantment.FORTUNE` missing from Python.
 - Fixed `ServerLoadEvent` missing its `ServerEvent` base in Python, and `LoadType.RELOAD` never being exposed.
 - Fixed `BossBar.add_player` re-sending the bar to a player who was already in it.
@@ -234,7 +223,6 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Fixed adding or removing recipients in `PlayerChatEvent.recipients` or `BroadcastMessageEvent.recipients` having no effect on who receives the message.
 - Fixed a cancelled `PlayerJumpEvent` ignoring the `from_location` a listener set.
 - Fixed `PlayerPortalEvent.to_location` being ignored, so a trip through a nether portal now looks for or builds its exit portal at the location a listener sets, as in Paper.
-- Fixed `Block.biome` reading the wrong part of a chunk, so it reported a biome that has nothing to do with the block, and could crash the server. Introduced in 0.11.7 along with BDS 1.26.40 support.
 - Fixed `ItemStack.set_item_meta()` accepting an item meta that belongs to a different kind of item.
 - Fixed assigning `ItemStack.type` leaving the item unchanged.
 - Fixed `Server.dispatch_command()` rejecting the sender a command received from `/execute` or a command block.
