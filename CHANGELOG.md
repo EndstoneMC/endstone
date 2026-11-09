@@ -125,10 +125,6 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Changed
 
-#### Networking
-
-- Packet compression now uses libdeflate instead of zlib, which should improve performance on busy servers.
-
 #### JSON payloads
 
 - **BREAKING**: `ModalForm`'s submit callback receives the parsed response instead of a JSON string: a `JsonArray` in C++, a `JsonArray` (`list`) in Python. A Python handler doing `json.loads(data)` must drop the call, and a C++ one must stop parsing the string itself.
