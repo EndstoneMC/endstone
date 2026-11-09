@@ -516,8 +516,8 @@ void init_event(py::module_ &m, py::classh<Event, PyEvent> &event)
                                                                   "Called when a player toggles their sneaking state.")
         .def_property_readonly("is_sneaking", &PlayerToggleSneakEvent::isSneaking,
                                "Whether the player is now sneaking or not.");
-    bind_event<PlayerToggleSprintEvent, PlayerEvent>(m, "PlayerToggleSprintEvent",
-                                                     "Called when a player toggles their sprinting state.")
+    bind_event<PlayerToggleSprintEvent, PlayerEvent, ICancellable>(
+        m, "PlayerToggleSprintEvent", "Called when a player toggles their sprinting state.")
         .def_property_readonly("is_sprinting", &PlayerToggleSprintEvent::isSprinting,
                                "Whether the player is now sprinting or not.");
     bind_event<PlayerToggleCrawlEvent, PlayerEvent>(m, "PlayerToggleCrawlEvent",

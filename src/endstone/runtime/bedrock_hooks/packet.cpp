@@ -424,15 +424,29 @@ void EndstonePacketHandler::handle(PlayerAuthInputPacket &packet)
         const auto e = std::make_shared<PlayerInputEvent>(endstone_player, player_input);
         plugin_manager.callEvent(e);
     }
+    if (pinned.test(PlayerAuthInputPacket::InputData::Sprinting)) {
+        packet.setInput(PlayerAuthInputPacket::InputData::StartSprinting, false);
+        packet.setInput(PlayerAuthInputPacket::InputData::StopSprinting, false);
+    }
     if (packet.getInput(PlayerAuthInputPacket::InputData::StartSprinting) && !player->isSprinting() &&
         listeners.isEventRegistered<PlayerToggleSprintEvent>()) {
         const auto e = std::make_shared<PlayerToggleSprintEvent>(endstone_player, true);
         plugin_manager.callEvent(e);
+        if (e->isCancelled()) {
+            packet.setInput(PlayerAuthInputPacket::InputData::StartSprinting, false);
+            pinned.set(PlayerAuthInputPacket::InputData::Sprinting);
+            pinned_value.set(PlayerAuthInputPacket::InputData::Sprinting, player->isSprinting());
+        }
     }
     if (packet.getInput(PlayerAuthInputPacket::InputData::StopSprinting) && player->isSprinting() &&
         listeners.isEventRegistered<PlayerToggleSprintEvent>()) {
         const auto e = std::make_shared<PlayerToggleSprintEvent>(endstone_player, false);
         plugin_manager.callEvent(e);
+        if (e->isCancelled()) {
+            packet.setInput(PlayerAuthInputPacket::InputData::StopSprinting, false);
+            pinned.set(PlayerAuthInputPacket::InputData::Sprinting);
+            pinned_value.set(PlayerAuthInputPacket::InputData::Sprinting, player->isSprinting());
+        }
     }
     if (sneak_changed) {
         auto accepted = player_input.isSneak();

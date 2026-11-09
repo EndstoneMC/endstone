@@ -14,6 +14,7 @@
 
 #pragma once
 
+#include "endstone/event/cancellable.h"
 #include "endstone/event/player/player_event.h"
 
 namespace endstone {
@@ -21,10 +22,10 @@ namespace endstone {
 /**
  * Called when a player toggles their sprinting state.
  */
-class PlayerToggleSprintEvent final : public PlayerEvent {
+class PlayerToggleSprintEvent final : public Cancellable<PlayerEvent> {
 public:
     ENDSTONE_EVENT(PlayerToggleSprintEvent);
-    explicit PlayerToggleSprintEvent(const NotNull<Player> &player, bool sprinting) : PlayerEvent(player), sprinting_(sprinting) {}
+    explicit PlayerToggleSprintEvent(const NotNull<Player> &player, bool sprinting) : Cancellable(player), sprinting_(sprinting) {}
 
     /**
      * Returns whether the player is now sprinting or not.
