@@ -221,6 +221,7 @@ private:
     std::size_t hidden_actor_count_ = 0;
     bool allow_client_packs_ = false;
     bool log_commands_ = true;
+    bool config_invalid_ = false;
     bool endgate_enabled_ = false;
     std::string endgate_forwarding_key_file_ = "keys/forwarding_key.pem";
     std::string endgate_forwarding_key_;

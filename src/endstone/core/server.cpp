@@ -178,9 +178,12 @@ EndstoneServer::EndstoneServer() : logger_(LoggerFactory::getLogger(""))
     }
     catch (const toml::parse_error &err) {
         EndstoneServer::getLogger().error("Failed to parse config file: {}", err.what());
+        config_invalid_ = std::filesystem::exists("endstone.toml");
     }
 
-    loadPlugins();
+    if (!config_invalid_) {
+        loadPlugins();
+    }
 }
 
 EndstoneServer::~EndstoneServer() = default;
@@ -193,6 +196,12 @@ void EndstoneServer::init(ServerInstance &server_instance)
     server_instance_ = &server_instance;
     command_sender_ = std::make_shared<EndstoneConsoleCommandSender>();
     command_sender_->recalculatePermissions();
+    if (config_invalid_) {
+        EndstoneServer::getLogger().error("endstone.toml could not be parsed. Fix it and start the server again. "
+                                          "Stopping the server.");
+        shutdown();
+        return;
+    }
     enablePlugins(PluginLoadOrder::Startup);
     if (endgate_enabled_) {
         std::ifstream file(endgate_forwarding_key_file_);

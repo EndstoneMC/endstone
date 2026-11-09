@@ -181,6 +181,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - **BREAKING**: The Docker image stores server data in `/data` instead of `/home/endstone/bedrock_server`. Update your volume mount accordingly (e.g. `-v ./data:/data`).
 - The console prompt now appears as soon as the server starts, right after the version banner, instead of only once the world has finished loading. Commands typed while the server is still starting are queued and run once it is ready, as they already were. Endstone no longer redirects the server's stdin during startup, so anything else reading it sees the real terminal throughout.
 - Dropped Python 3.10 support (end-of-life). Minimum version is now Python 3.11.
+- The server now stops at startup when `endstone.toml` cannot be parsed, instead of running with default settings.
 
 ### Removed
 
