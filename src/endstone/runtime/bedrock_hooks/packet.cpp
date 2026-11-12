@@ -361,27 +361,19 @@ void EndstonePacketHandler::handle(SetPlayerInventoryOptionsPacket &packet)
         return;
     }
     const auto endstone_player = player->getEndstoneActor<EndstonePlayer>();
-    const auto &options = packet.payload.inventory_options;
-    const EndstonePlayer::RecipeBookSettings settings{
-        .filtering = options.filtering,
-        .inventory_layout = static_cast<int>(options.layout_inv),
-        .crafting_layout = static_cast<int>(options.layout_craft),
-    };
-    const auto settings_changed = endstone_player->last_recipe_book_settings_.has_value() &&
-                                *endstone_player->last_recipe_book_settings_ != settings;
-    endstone_player->last_recipe_book_settings_ = settings;
-    if (!settings_changed) {
+    auto &server = static_cast<EndstoneServer &>(endstone_player->getServer());
+    if (!server.getEndstonePluginManager().isEventRegistered<PlayerRecipeBookSettingsChangeEvent>()) {
         handle();
         return;
     }
-
+    const auto &options = packet.payload.inventory_options;
     const auto is_open =
         options.layout_inv == InventoryLayout::Default || options.layout_inv == InventoryLayout::RecipeBookOnly ||
         options.layout_craft == InventoryLayout::Default || options.layout_craft == InventoryLayout::RecipeBookOnly;
 
     const auto e = std::make_shared<PlayerRecipeBookSettingsChangeEvent>(
         endstone_player, PlayerRecipeBookSettingsChangeEvent::RecipeBookType::Crafting, is_open, options.filtering);
-    endstone_player->getServer().getPluginManager().callEvent(e);
+    server.getPluginManager().callEvent(e);
     handle();
 }
 

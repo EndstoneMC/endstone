@@ -1457,11 +1457,9 @@ async def recipe_book_settings(ctx: Context) -> None:
         event = changes.events[n]
         assert (event["is_open"], event["is_filtering"]) == (is_open, filtering), (n, settings, event)
         assert event["recipe_book_type"] == "CRAFTING"
-    index = await mark(bot)
     await bot.call("local_player.set_recipe_book_settings", **steps[-1][0])
-    await barrier(ctx, bot, index)
-    await ctx.ticks(5)
-    assert changes.count == len(steps), "sending the settings it already had raised another event"
+    await ctx.until(lambda: changes.count == len(steps) + 1, timeout=40, what="the repeated settings")
+    assert (changes.events[-1]["is_open"], changes.events[-1]["is_filtering"]) == (False, True), changes.events[-1]
 
 
 def server_slots(player) -> list:

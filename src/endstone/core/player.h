@@ -173,14 +173,6 @@ private:
     void sendPlayerListRemove(const ::Player &player) const;
     void sendPlayerListAdd(const ::Player &player) const;
 
-    struct RecipeBookSettings {
-        bool filtering;
-        int inventory_layout;
-        int crafting_layout;
-
-        bool operator==(const RecipeBookSettings &) const = default;
-    };
-
     std::shared_ptr<PermissibleBase> perm_;
     std::unique_ptr<EndstonePlayerInventory> inventory_;
     std::unique_ptr<EndstoneInventory> ender_chest_;
@@ -197,7 +189,6 @@ private:
     std::bitset<PlayerAuthInputPacket::InputData::INPUT_NUM> pinned_input_value_;
     bool accepted_sneak_ = false;
     int jump_pinned_inputs_ = 0;
-    std::optional<RecipeBookSettings> last_recipe_book_settings_;
     bool spawned_ = false;
     bool last_op_status_ = false;
     std::unordered_map<std::int64_t, std::set<std::weak_ptr<Plugin>, std::owner_less<>>> hidden_actors_;
