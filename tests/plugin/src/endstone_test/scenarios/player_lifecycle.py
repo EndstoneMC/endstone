@@ -1366,32 +1366,40 @@ async def setspawn_bed(ctx: Context) -> None:
 async def setspawn_anchor(ctx: Context) -> None:
     spawn = ctx.capture(PlayerSetSpawnEvent, named("LcSpawnA"))
     bot, player = await join(ctx, "LcSpawnA", op=True)
-    ctx.run("execute in nether run tp LcSpawnA 1000.5 100 1000.5")
-    await ctx.until(
-        lambda: str(player.location.dimension.id) == "minecraft:nether",
-        timeout=200,
-        what="the player in the nether",
-    )
-    await ctx.ticks(60)
-    ctx.run("execute in nether run fill 998 98 998 1004 98 1004 glass")
-    ctx.run(
-        'execute in nether run setblock 1002 99 1000 respawn_anchor ["respawn_anchor_charge"=1]'
-    )
     nether = ctx.server.level.get_dimension("nether")
-    await ctx.until(
-        lambda: (
+    ctx.run("execute in nether run tickingarea add 992 0 992 1007 0 1007 lcanchor true")
+
+    def built() -> bool:
+        ctx.command("execute in nether run fill 998 98 998 1004 98 1004 glass")
+        ctx.command(
+            'execute in nether run setblock 1002 99 1000 respawn_anchor ["respawn_anchor_charge"=1]'
+        )
+        return (
             str(nether.get_block_at(1002, 99, 1000).type) == "minecraft:respawn_anchor"
-        ),
-        timeout=100,
-        what="the anchor",
-    )
-    await ctx.ticks(40)
-    await bot.call("game_mode.use_item_on", [1002, 99, 1000], 1)
-    await ctx.until(lambda: spawn.count, timeout=100, what="the anchor spawn")
-    assert spawn.events[0]["cause"] == "RESPAWN_ANCHOR", spawn.events[0]
-    stored = player.respawn_location
-    assert stored is not None and str(stored.dimension.id) == "minecraft:nether", stored
-    ctx.run("execute in nether run setblock 1002 99 1000 air")
-    await ctx.until(
-        lambda: player.respawn_location is None, timeout=60, what="the broken anchor"
-    )
+            and str(nether.get_block_at(1000, 98, 1000).type) == "minecraft:glass"
+        )
+
+    try:
+        await ctx.until(built, timeout=400, what="the anchor and floor")
+        ctx.run("execute in nether run tp LcSpawnA 1000.5 99 1000.5")
+        await ctx.until(
+            lambda: str(player.location.dimension.id) == "minecraft:nether",
+            timeout=200,
+            what="the player in the nether",
+        )
+        await ctx.ticks(40)
+        await bot.call("game_mode.use_item_on", [1002, 99, 1000], 1)
+        await ctx.until(lambda: spawn.count, timeout=100, what="the anchor spawn")
+        assert spawn.events[0]["cause"] == "RESPAWN_ANCHOR", spawn.events[0]
+        stored = player.respawn_location
+        assert stored is not None and str(stored.dimension.id) == "minecraft:nether", (
+            stored
+        )
+        ctx.run("execute in nether run setblock 1002 99 1000 air")
+        await ctx.until(
+            lambda: player.respawn_location is None,
+            timeout=60,
+            what="the broken anchor",
+        )
+    finally:
+        ctx.command("execute in nether run tickingarea remove lcanchor")
