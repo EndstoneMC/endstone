@@ -50,7 +50,7 @@ public:
     bool isQueued(TaskId id) override;
     std::vector<NotNull<Task>> getPendingTasks() override;
 
-    Nullable<Task> runTask(std::function<void()> task);
+    Nullable<Task> runTask(std::function<void()> task, std::uint64_t delay = 0);
     void addTask(std::shared_ptr<EndstoneTask> task);
     void mainThreadHeartbeat(std::uint64_t current_tick);
     void removeTask(TaskId id);

@@ -292,9 +292,6 @@ void EndstoneServer::setLevel(::Level &level)
     on_chunk_load_ = level.getLevelChunkEventManager()->getOnChunkLoadedConnector().connect(
         [&](ChunkSource & /*chunk_source*/, LevelChunk &lc, int /*closest_player_distance_squared*/) -> void {
             if (lc.getState() >= ChunkState::Loaded) {
-                if (const auto dimension = level_->getDimension(lc.getDimension().getDimensionId())) {
-                    static_cast<EndstoneDimension &>(*dimension).onChunkLoaded(lc);
-                }
                 const auto e = std::make_shared<ChunkLoadEvent>(std::make_shared<EndstoneChunk>(lc));
                 getPluginManager().callEvent(e);
             }

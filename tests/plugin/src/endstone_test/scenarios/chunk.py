@@ -88,6 +88,17 @@ async def load_chunk(ctx: Context) -> None:
         what="load_chunk to load the chunk",
     )
     assert load.count == 1, load.events
+    for nx, nz in (
+        (cx - 1, cz - 1),
+        (cx + 1, cz + 1),
+        (cx - 1, cz + 1),
+        (cx + 1, cz - 1),
+    ):
+        await ctx.until(
+            lambda: dimension.is_chunk_loaded(nx, nz),
+            timeout=400,
+            what=f"load_chunk to hold the neighbouring chunk {nx},{nz}",
+        )
     await ctx.ticks(2)
     floor = dimension.get_block_at(cx * 16, -61, cz * 16)
     assert str(floor.type) == "minecraft:grass_block", floor
@@ -106,6 +117,37 @@ async def load_chunk(ctx: Context) -> None:
     assert ctx.info["loaded_after_return"] is False, ctx.info
     assert unload.count == 1, ctx.info
     assert dimension.unload_chunk(cx, cz) is True, "unload_chunk on an unloaded chunk"
+
+
+@scenario("chunk.load_chunk_expires", covers={ChunkUnloadEvent: "normal"}, budget=3000)
+async def load_chunk_expires(ctx: Context) -> None:
+    cx, cz = 1925, 1925
+    dimension = ctx.overworld
+    assert not dimension.is_chunk_loaded(cx, cz)
+    unload = ctx.capture(ChunkUnloadEvent, chunk_at(cx, cz))
+    assert dimension.load_chunk(cx, cz) is True
+    await ctx.until(
+        lambda: dimension.is_chunk_loaded(cx, cz),
+        timeout=200,
+        what="load_chunk to load the chunk",
+    )
+    await ctx.ticks(400)
+    assert dimension.is_chunk_loaded(cx, cz), "the hold expired before 600 ticks"
+    assert dimension.load_chunk(cx, cz) is True
+    await ctx.ticks(400)
+    assert dimension.is_chunk_loaded(cx, cz), "load_chunk did not restart the timeout"
+    await ctx.until(
+        lambda: not dimension.is_chunk_loaded(cx, cz),
+        timeout=1500,
+        what="the hold to expire",
+    )
+    assert unload.count == 1, unload.events
+    for nx, nz in ((cx - 1, cz - 1), (cx + 1, cz + 1)):
+        await ctx.until(
+            lambda: not dimension.is_chunk_loaded(nx, nz),
+            timeout=600,
+            what=f"the neighbouring chunk {nx},{nz} to unload",
+        )
 
 
 @scenario("chunk.held_at_stop", budget=600)

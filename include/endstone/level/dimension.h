@@ -163,11 +163,12 @@ public:
     /**
      * Requests the Chunk at the given coordinates to be loaded, and keeps it resident until it is released again.
      *
-     * The chunk is held from the moment this returns until `unloadChunk()` or `unloadChunkRequest()` releases it, or
-     * the server restarts. Bedrock has no synchronous chunk load, so unless the chunk was already resident the load
-     * finishes on a later tick and `isChunkLoaded()` may still report `false` right afterwards. A chunk held this way
-     * stays in memory but is not ticked, and the hold never expires on its own. Intended for keeping a handful of
-     * chunks resident; it is not suited to loading large regions.
+     * The chunk and the eight chunks around it are held, and tick, from the moment this returns until `unloadChunk()`
+     * or `unloadChunkRequest()` releases them, 600 ticks pass, or the server restarts. Calling this again for the same
+     * chunk restarts the 600 ticks. Bedrock has no synchronous chunk load, so unless the chunk was already resident the
+     * load finishes on a later tick and `isChunkLoaded()` may still report `false` right afterwards. Once the hold is
+     * released the chunks unload unless something else keeps them resident. Intended for keeping a handful of chunks
+     * resident; it is not suited to loading large regions.
      *
      * The hold is not attributed to any plugin and survives that plugin being disabled. Use
      * `addPluginChunkTicket()` for a hold that is released automatically.
@@ -210,9 +211,10 @@ public:
     /**
      * Adds a plugin ticket for the Chunk at the given coordinates, loading it if it is not already loaded.
      *
-     * A plugin ticket keeps the chunk resident until it is explicitly removed or the owning plugin is disabled. A
-     * plugin may only have one ticket per chunk, but each chunk can have multiple plugin tickets. `unloadChunk()` does
-     * not remove plugin tickets.
+     * A plugin ticket keeps the chunk resident and ticking until it is explicitly removed or the owning plugin is
+     * disabled. Unlike `loadChunk()`, it covers only the chunk itself. A plugin
+     * may only have one ticket per chunk, but each chunk can have multiple plugin tickets. `unloadChunk()` does not
+     * remove plugin tickets.
      *
      * @param x X-coordinate of the chunk
      * @param z Z-coordinate of the chunk

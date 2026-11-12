@@ -24,8 +24,7 @@
 #include "endstone/actor/item.h"
 #include "endstone/core/server.h"
 #include "endstone/level/dimension.h"
-
-class LevelChunk;
+#include "endstone/scheduler/task.h"
 
 namespace endstone::core {
 class EndstoneDimension : public Dimension, public std::enable_shared_from_this<EndstoneDimension> {
@@ -62,25 +61,22 @@ public:
     [[nodiscard]] ::Dimension &getHandle() const;
     [[nodiscard]] NotNull<EndstoneDimension> self() const;
 
-    void onChunkLoaded(const LevelChunk &chunk);
-    void onStartLeaveGame();
-
 private:
     struct ChunkTicket {
-        mce::UUID area_id;
-        std::shared_ptr<LevelChunk> chunk;
+        mce::UUID plugin_area_id;
+        mce::UUID hold_area_id;
         std::vector<std::weak_ptr<Plugin>> plugins;
         bool server_owned = false;
+        TaskId hold_task = 0;
     };
     using ChunkTickets = std::unordered_map<std::uint64_t, ChunkTicket>;
 
     void checkServerThread() const;
-    mce::UUID pinChunk(int x, int z, bool generate);
+    mce::UUID pinChunk(int x, int z, int radius, bool generate);
     bool syncTicket(ChunkTickets::iterator it, int x, int z, bool generate);
 
     WeakRef<::Dimension> dimension_;
     EndstoneLevel &level_;
     ChunkTickets chunk_tickets_;
-    bool leaving_game_ = false;
 };
 }  // namespace endstone::core

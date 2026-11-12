@@ -168,13 +168,13 @@ std::vector<NotNull<Task>> EndstoneScheduler::getPendingTasks()
     return pending;
 }
 
-Nullable<Task> EndstoneScheduler::runTask(std::function<void()> task)
+Nullable<Task> EndstoneScheduler::runTask(std::function<void()> task, std::uint64_t delay)
 {
     if (!task) {
         return nullptr;
     }
     auto t = std::make_shared<EndstoneTask>(*this, task, nextId(), 0);
-    t->setNextRun(current_tick_.load(std::memory_order_acquire));
+    t->setNextRun(current_tick_.load(std::memory_order_acquire) + delay);
     addTask(t);
     return t;
 }

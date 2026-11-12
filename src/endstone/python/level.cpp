@@ -168,11 +168,12 @@ void init_level(py::module_ &m, py::classh<Level> &level, py::classh<Dimension> 
              py::arg("generate") = true, R"doc(
     Requests the `Chunk` at the given coordinates to be loaded, and keeps it resident until it is released again.
 
-    The chunk is held from the moment this returns until ``unload_chunk`` or ``unload_chunk_request`` releases it, or
-    the server restarts. Unlike Java Edition, Bedrock has no synchronous chunk load: unless the chunk was already
-    resident, the load finishes on a later tick, so ``is_chunk_loaded`` may still report ``False`` right afterwards. A
-    chunk held this way stays in memory but is not ticked, and the hold never expires on its own. Intended for keeping
-    a handful of chunks resident, not for loading large regions.
+    The chunk and the eight chunks around it are held, and tick, from the moment this returns until ``unload_chunk`` or
+    ``unload_chunk_request`` releases them, 600 ticks pass, or the server restarts. Calling this again for the same
+    chunk restarts the 600 ticks. Unlike Java Edition, Bedrock has no synchronous chunk load: unless the chunk was
+    already resident, the load finishes on a later tick, so ``is_chunk_loaded`` may still report ``False`` right
+    afterwards. Once the hold is released the chunks unload unless something else keeps them resident. Intended for
+    keeping a handful of chunks resident, not for loading large regions.
 
     The hold is not attributed to any plugin and survives that plugin being disabled. Use ``add_plugin_chunk_ticket``
     for a hold that is released automatically.
@@ -227,9 +228,9 @@ void init_level(py::module_ &m, py::classh<Level> &level, py::classh<Dimension> 
              py::arg("plugin"), R"doc(
     Adds a plugin ticket for the `Chunk` at the given coordinates, loading it if it is not already loaded.
 
-    A plugin ticket keeps the chunk resident until it is explicitly removed or the owning plugin is disabled. A plugin
-    may only have one ticket per chunk, but each chunk can have multiple plugin tickets. ``unload_chunk`` does not
-    remove plugin tickets.
+    A plugin ticket keeps the chunk resident and ticking until it is explicitly removed or the owning plugin is
+    disabled. Unlike ``load_chunk``, it covers only the chunk itself. A plugin may only have one ticket per chunk, but
+    each chunk can have multiple plugin tickets. ``unload_chunk`` does not remove plugin tickets.
 
     Args:
         x: X-coordinate of the chunk.
