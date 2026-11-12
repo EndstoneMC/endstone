@@ -16,6 +16,7 @@
 
 #include "bedrock/entity/components/actor_owner_component.h"
 #include "bedrock/entity/gamerefs_entity/gamerefs_entity.h"
+#include "bedrock/world/actor/actor_environment.h"
 #include "bedrock/world/level/level.h"
 #include "endstone/core/entity/components/flag_components.h"
 #include "endstone/core/plugin/plugin_manager.h"
@@ -42,6 +43,15 @@ void ServerStandInCauldronSystem::SystemImpl::_checkInsideCauldron(ActorOwnerCom
     interaction.source = &actor;
     interaction.reason = endstone::CauldronLevelChangeEvent::ChangeReason::Extinguish;
     interaction.any_pos = true;
+    auto &entity = actor.getEntity();
+    const auto was_in_water = ActorEnvironment::getIsInWater(entity);
+    const auto fall_distance = actor.getFallDistance();
     ENDSTONE_HOOK_CALL_ORIGINAL(&ServerStandInCauldronSystem::SystemImpl::_checkInsideCauldron, owner);
+    if (level_entity->getOrAddComponent<endstone::core::InternalCauldronInteractionComponent>().cancelled) {
+        if (!was_in_water) {
+            entity.removeComponent<WasInWaterFlagComponent>();
+        }
+        actor.setFallDistance(fall_distance);
+    }
     level_entity->removeComponent<endstone::core::InternalCauldronInteractionComponent>();
 }

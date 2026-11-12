@@ -252,13 +252,14 @@ void init_event(py::module_ &m, py::classh<Event, PyEvent> &event)
         .def_property_readonly("actor", &CauldronLevelChangeEvent::getActor, R"doc(
     The actor which did this, or `None`.
 
-    Only a player interacting with the cauldron is reported. Every other change reports `None`.
+    A player interacting with the cauldron or an actor being extinguished is reported. Every other change
+    reports `None`.
 )doc")
         .def_property_readonly("reason", &CauldronLevelChangeEvent::getReason, R"doc(
     The reason for the change.
 
-    Only a player interacting with the cauldron is attributed. Every other change reports
-    `ChangeReason.UNKNOWN`.
+    A player interacting with the cauldron, an actor being extinguished and a natural fill are attributed.
+    Every other change reports `ChangeReason.UNKNOWN`.
 )doc")
         .def_property_readonly("new_state", &CauldronLevelChangeEvent::getNewState, R"doc(
     The state the cauldron will take.

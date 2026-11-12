@@ -57,7 +57,9 @@ public:
     const BlockPos pos;
 };
 
-class BlockQueuedTickEvent;
+class BlockQueuedTickEvent : public BlockEventBase {
+    // ...
+};
 
 class BlockRandomTickEvent : public BlockEventBase {
 public:

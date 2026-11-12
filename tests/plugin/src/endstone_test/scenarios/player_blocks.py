@@ -1367,6 +1367,30 @@ async def cauldron_shulker_wash(ctx: Context) -> None:
     assert server_slot(player, 0) == ("minecraft:undyed_shulker_box", 1), server_slot(player, 0)
 
 
+@scenario(
+    "blocks.cauldron.interaction_cancel",
+    covers={CauldronLevelChangeEvent: "cancel"},
+    plot=True,
+    budget=BUDGET,
+)
+async def cauldron_interaction_cancel(ctx: Context) -> None:
+    bot, player = await join(ctx, "bkCauIC")
+    changed = ctx.capture(CauldronLevelChangeEvent, cancel=True)
+    for item, level, held in (
+        ("glass_bottle", 6, ("minecraft:glass_bottle", 1)),
+        ("potion", 0, ("minecraft:potion", 1)),
+        ("red_shulker_box", 6, ("minecraft:red_shulker_box", 1)),
+    ):
+        before = changed.count
+        at = await with_cauldron(ctx, bot, "bkCauIC", item, level=level)
+        await click_cauldron(ctx, bot, at, ticks=20)
+        assert changed.count > before, f"{item} raised no CauldronLevelChangeEvent"
+        assert cauldron_state(ctx, at) == (level, "water"), f"{item}: {cauldron_state(ctx, at)}"
+        assert server_slot(player, 0) == held, f"a cancelled {item} left the player holding {server_slot(player, 0)}"
+        assert await client_slot(bot, 0) == held, f"{item}: the client holds {await client_slot(bot, 0)}"
+        assert server_slot(player, 1) == ("minecraft:air", 0), f"{item}: slot 1 gained {server_slot(player, 1)}"
+
+
 @scenario("blocks.cauldron.no_change", covers={CauldronLevelChangeEvent: "normal"}, plot=True, budget=BUDGET)
 async def cauldron_no_change(ctx: Context) -> None:
     bot, player = await join(ctx, "bkNoCau")
@@ -1394,11 +1418,54 @@ async def cauldron_full_bucket(ctx: Context) -> None:
     at = await with_cauldron(ctx, bot, "bkCauFull", "water_bucket", level=6)
     await click_cauldron(ctx, bot, at, ticks=20)
     assert cauldron_state(ctx, at) == (6, "water")
-    levels = [e["new_level"] for e in changed.events]
-    assert (changed.count, emptied.count) == (0, 0), (
-        f"a water bucket on a full cauldron changes nothing, yet it raised {changed.count} "
-        f"CauldronLevelChangeEvents (levels {levels}) and {emptied.count} PlayerBucketEmptyEvents"
-    )
+    assert (changed.count, emptied.count) == (1, 1), (changed.events, emptied.events)
+    assert changed.events[0]["reason"] == "BUCKET_EMPTY", changed.events[0]
+    assert server_slot(player, 0) == ("minecraft:bucket", 1), server_slot(player, 0)
+
+
+@scenario(
+    "blocks.cauldron.bucket_other_contents", covers={CauldronLevelChangeEvent: "normal"}, plot=True, budget=BUDGET
+)
+async def cauldron_bucket_other_contents(ctx: Context) -> None:
+    bot, player = await join(ctx, "bkCauOth")
+    changed = ctx.capture(CauldronLevelChangeEvent, extra=new_state)
+    emptied = ctx.capture(PlayerBucketEmptyEvent, mine("bkCauOth"))
+    at = await with_cauldron(ctx, bot, "bkCauOth", "water_bucket", level=6, liquid="lava")
+    await click_cauldron(ctx, bot, at, ticks=20)
+    assert (changed.count, emptied.count) == (1, 1), (changed.events, emptied.events)
+    assert changed.events[0]["reason"] == "BUCKET_EMPTY", changed.events[0]
+    assert changed.events[0]["new_level"] == 0, changed.events[0]
+    assert cauldron_state(ctx, at)[0] == 0, cauldron_state(ctx, at)
+
+
+@scenario("blocks.cauldron.bucket_underwater", covers={CauldronLevelChangeEvent: "normal"}, plot=True, budget=BUDGET)
+async def cauldron_bucket_underwater(ctx: Context) -> None:
+    bot, player = await join(ctx, "bkCauUW")
+    changed = ctx.capture(CauldronLevelChangeEvent, extra=new_state)
+    emptied = ctx.capture(PlayerBucketEmptyEvent, mine("bkCauUW"))
+    at = await with_cauldron(ctx, bot, "bkCauUW", "water_bucket", level=3)
+    ctx.run(f"setblock {at[0]} {at[1] + 1} {at[2]} water")
+    await ctx.ticks(20)
+    assert changed.count == 0, changed.events
+    await click_cauldron(ctx, bot, at, ticks=20)
+    assert emptied.count == 0, emptied.events
+    assert changed.count == 1, changed.events
+    assert changed.events[0]["reason"] == "UNKNOWN", changed.events[0]
+    assert changed.events[0]["who"] == "bkCauUW", changed.events[0]
+    assert cauldron_state(ctx, at) == (6, "water"), cauldron_state(ctx, at)
+    assert server_slot(player, 0) == ("minecraft:water_bucket", 1), server_slot(player, 0)
+
+
+@scenario("blocks.cauldron.dye_add", covers={CauldronLevelChangeEvent: "normal"}, plot=True, budget=BUDGET)
+async def cauldron_dye_add(ctx: Context) -> None:
+    bot, player = await join(ctx, "bkCauDye")
+    changed = ctx.capture(CauldronLevelChangeEvent, extra=new_state)
+    at = await with_cauldron(ctx, bot, "bkCauDye", "red_dye", level=3)
+    await click_cauldron(ctx, bot, at, ticks=20)
+    assert changed.count == 1, changed.events
+    assert changed.events[0]["reason"] == "UNKNOWN", changed.events[0]
+    assert changed.events[0]["new_level"] == 3, changed.events[0]
+    assert changed.events[0]["who"] == "bkCauDye", changed.events[0]
 
 
 def sign_lines(ctx: Context, at, side: str = "FRONT") -> list[str]:
@@ -1809,6 +1876,18 @@ async def sign_set_line_newline(ctx: Context) -> None:
     assert side.lines[1] == "" and side.lines[2] == "c", side.lines
 
 
+async def burning_chicken_into(ctx: Context, at) -> None:
+    x, y, z = ctx.plot.pos(8, 0, 8)
+    volume = ctx.plot.volume
+    ctx.run(f"setblock {x} {y - 1} {z} netherrack")
+    ctx.run(f"setblock {x} {y} {z} fire")
+    ctx.run(f"summon chicken {x + 0.5} {y} {z + 0.5}")
+    ctx.run(f"effect @e[type=chicken,{volume}] slowness 120 255 true")
+    await ctx.ticks(20)
+    ctx.run(f"tp @e[type=chicken,{volume}] {at[0] + 0.5} {at[1] + 0.3} {at[2] + 0.5}")
+    ctx.run(f"setblock {x} {y} {z} air")
+
+
 @scenario(
     "blocks.cauldron.extinguish",
     covers={CauldronLevelChangeEvent: "normal"},
@@ -1825,13 +1904,11 @@ async def cauldron_extinguish(ctx: Context) -> None:
         },
     )
     at = await with_cauldron(ctx, bot, "bkCauX", "bucket", level=3)
-    ctx.run(f"summon cow {at[0] + 0.5} {at[1]} {at[2] + 0.5}")
-    ctx.run("effect @e[type=cow,c=1] slowness 120 255 true")
-    ctx.run("damage @e[type=cow,c=1] 1 fire")
+    await burning_chicken_into(ctx, at)
     await ctx.until(lambda: changed.count, timeout=40, what="CauldronLevelChangeEvent")
     change = changed.events[0]
     assert change["reason"] == "EXTINGUISH", change["reason"]
-    assert change["who_type"] == "minecraft:cow", change
+    assert change["who_type"] == "minecraft:chicken", change
     assert coords(change["block"]) == at
     assert (change["new_level"], change["new_liquid"]) == (2, "water"), change
     await ctx.until(
@@ -1839,3 +1916,48 @@ async def cauldron_extinguish(ctx: Context) -> None:
         timeout=40,
         what="the cauldron to lower",
     )
+
+
+@scenario(
+    "blocks.cauldron.extinguish_cancel",
+    covers={CauldronLevelChangeEvent: "cancel"},
+    plot=True,
+    budget=BUDGET,
+)
+async def cauldron_extinguish_cancel(ctx: Context) -> None:
+    bot, _ = await join(ctx, "bkCauXC")
+    changed = ctx.capture(CauldronLevelChangeEvent, cancel=True)
+    at = await with_cauldron(ctx, bot, "bkCauXC", "bucket", level=3)
+    await burning_chicken_into(ctx, at)
+    await ctx.until(lambda: changed.count, timeout=40, what="CauldronLevelChangeEvent")
+    await ctx.ticks(20)
+    assert changed.events[0]["reason"] == "EXTINGUISH", changed.events[0]["reason"]
+    assert cauldron_state(ctx, at) == (3, "water"), cauldron_state(ctx, at)
+
+
+@scenario("blocks.cauldron.water_above", covers={CauldronLevelChangeEvent: "normal"}, plot=True, budget=BUDGET)
+async def cauldron_water_above(ctx: Context) -> None:
+    bot, _ = await join(ctx, "bkCauWA")
+    changed = ctx.capture(CauldronLevelChangeEvent, extra=new_state)
+    at = await with_cauldron(ctx, bot, "bkCauWA", "bucket", level=0)
+    ctx.run(f"setblock {at[0]} {at[1] + 1} {at[2]} water")
+    await ctx.until(lambda: changed.count, timeout=40, what="CauldronLevelChangeEvent")
+    await ctx.ticks(20)
+    assert changed.count == 1, changed.events
+    event = changed.events[0]
+    assert event["reason"] == "NATURAL_FILL" and event["who"] is None, event
+    assert (event["new_level"], event["new_liquid"]) == (6, "water"), event
+    assert cauldron_state(ctx, at) == (6, "water"), cauldron_state(ctx, at)
+
+
+@scenario("blocks.cauldron.water_above_cancel", covers={CauldronLevelChangeEvent: "cancel"}, plot=True, budget=BUDGET)
+async def cauldron_water_above_cancel(ctx: Context) -> None:
+    bot, _ = await join(ctx, "bkCauWAC")
+    changed = ctx.capture(CauldronLevelChangeEvent, cancel=True)
+    at = await with_cauldron(ctx, bot, "bkCauWAC", "bucket", level=0)
+    ctx.run(f"setblock {at[0]} {at[1] + 1} {at[2]} water")
+    await ctx.until(lambda: changed.count, timeout=40, what="CauldronLevelChangeEvent")
+    await ctx.ticks(20)
+    reasons = {e["reason"] for e in changed.events}
+    assert reasons == {"NATURAL_FILL"}, changed.events
+    assert cauldron_state(ctx, at)[0] == 0, cauldron_state(ctx, at)

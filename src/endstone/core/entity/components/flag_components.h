@@ -40,6 +40,9 @@ struct InternalCauldronInteractionComponent {
     BlockPos pos;
     CauldronLevelChangeEvent::ChangeReason reason = CauldronLevelChangeEvent::ChangeReason::Unknown;
     bool any_pos = false;
+    bool cancelled = false;
+    bool refill = false;
+    bool skip = false;
     bool handled = false;
     bool has_result = false;
     std::optional<ItemStack> result;

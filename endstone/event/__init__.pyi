@@ -890,7 +890,8 @@ class CauldronLevelChangeEvent(BlockEvent, Cancellable):
         """
         The actor which did this, or `None`.
 
-        Only a player interacting with the cauldron is reported. Every other change reports `None`.
+        A player interacting with the cauldron or an actor being extinguished is reported. Every other change
+        reports `None`.
         """
 
     @property
@@ -898,8 +899,8 @@ class CauldronLevelChangeEvent(BlockEvent, Cancellable):
         """
         The reason for the change.
 
-        Only a player interacting with the cauldron is attributed. Every other change reports
-        `ChangeReason.UNKNOWN`.
+        A player interacting with the cauldron, an actor being extinguished and a natural fill are attributed.
+        Every other change reports `ChangeReason.UNKNOWN`.
         """
 
     @property
