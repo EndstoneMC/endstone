@@ -1,0 +1,55 @@
+---
+paths:
+  - ".github/ISSUE_TEMPLATE/**"
+---
+
+# Roadmap
+
+- The roadmap is the public GitHub org project #1 "endstone" (`gh project view 1 --owner EndstoneMC`), linked to EndstoneMC/endstone; `product-lead` decides its content and `project-manager` edits it.
+- The other repos have their own private roadmap projects under the same rules: endgate 3, spyglass 4, endweave 5, scripting-nodejs 6, bedrock-dumper 7, docs 8 and bedrock-protocol 9.
+- Start a new repo's roadmap with `copyProjectV2` from project 1, which copies the fields, views with their grouping and sorting, and workflows, but not the README or short description; then replace Phase and Area, and link the repo with `linkProjectV2ToRepository`.
+- Every roadmap project's fields are Status (Todo, Design, Ready, In Progress, Done), Phase, Priority (High, Medium, Low), Size (S, M, L, XL), Estimate (maintainer days), Area, Start Date and Target Date; add no other field without `product-lead`.
+- Phase is an iteration field with one iteration per phase, titled `<N>. <theme>` and running from its Start Date to its Target Date with no gap to the next; an item with no Phase is unplanned.
+- Ship each phase as one minor release with a fixed scope and a Target Date; move an item that will miss the date to a later phase, never the date.
+- Ship one minor per Bedrock content release, a drop or a feature release, on the BDS current at its cutoff, with its Target Date 7 days before the content release's expected date and its feature cutoff 7 days before the Target.
+- Take each phase's content-release date from RE's cadence calendar at its Start Date, never from a Preview's age; re-date a phase that has not started when that date moves, and never re-date a started one.
+- Ship the content release once, on the newest minor only, as a patch within 7 days of the BDS, after its port passes QA and 24 hours on UAT; stop BDS bumps on the older line at the new minor's X.Y.0.
+- Ship each BDS hotfix as a patch on the newest released minor within 7 days, after QA and 24 hours on UAT.
+- Never tag a minor on a BDS older than the live client; when Mojang ships before the Target, the minor carries the new BDS once its port passes QA and 24 hours on UAT.
+- Plan at most four phases ahead; leave everything further out as a draft with no Phase.
+- Size a phase from measured velocity, leaving room for the BDS upgrades its window will bring.
+- Plan up to about 15 maintainer feature-days a phase (S 1 day, M 2-4, L 5-10), shaped like 1 L + 2 M + 2 S, plus at most 2 outside PRs at about 1 maintainer day each.
+- Order each phase's cut-first list so it frees at least 5 feature-days, and write the phase's Goal for the scope left after it.
+- At each Target, measure the size-days the phase delivered, merged and gate-green, and set the next phase's committed scope to that figure.
+- Cap a phase's new BDS symbols at about 10 per platform; book only the maintainer's review of RE checks in the budget, since RE agent time sits outside it.
+- Admit an item to a phase only when its API design is approved and the BDS support it needs is confirmed.
+- Count an outside PR only when, by the Start Date, it is rebased, re-cut on the current BDS, green on every CI job and has its tests in `scenarios/`; otherwise move it out, never absorb it.
+- Admit an item that needs new drop content only to the first minor built on that drop, once the content is in the drop's Preview at its Start Date.
+- Put at most one L item in a phase and no XL; split an XL item first.
+- Close a phase's scope at its Start Date; a new feature request goes to a later phase, and fixes are not roadmap items.
+- Give every phase exit criteria: its items merged, `validate-change` green on Windows, Linux and NetherNet, and docs and CHANGELOG done.
+- Run each phase in three stages, staggered so one phase is designed while the one before it is built: design and RE checks during the previous phase, due at the Start Date; development from the Start Date to the feature cutoff, 14 days before its content release; then the release gate until the Target Date, 7 days before it: `validate-change` on Windows, Linux and NetherNet in QA and the candidate's acceptance on UAT, per `environments.md`, on the BDS current at the cutoff.
+- When qa-lead costs the release gate at more than 7 days, move the feature cutoff earlier, never the Target.
+- When a release gate fails, keep the Target Date on the board, ship when the gate passes, and keep the next phase's dates.
+- From the feature cutoff to the tag, take only fixes and release work on `vX.Y`, and keep new API on `feat/<x>` branches.
+- Give each phase a `Release vX.Y.0` draft item spanning its release gate.
+- Area options are set by `product-lead` from the `include/endstone/` packages, plus one for server-admin UX.
+- The release target is the issue's milestone, named `vX.Y.0` as in EndstoneMC/endstone; give an item in another EndstoneMC repo a milestone of the same name.
+- The ETA is Target Date and Start Date marks when work begins; both live only in the project, and milestones carry no due date.
+- State ETAs, phases and target dates only on the project, never in an issue, PR, commit, release note or doc, so a moved date changes in one place.
+- Write project 1's README, drafts and status updates for server admins and plugin developers, since anyone can read them; put no internal plan ids such as `A69` in titles or bodies.
+- Mark an item's place in its phase's cut-first list with a last body line such as "If the phase runs short, this is the first item to move to a later phase."
+- Keep an unscheduled idea as a draft item, and convert it to an issue in the owning repo when it gets a milestone.
+- Give every roadmap issue the org issue type Feature, and split a feature larger than one PR into sub-issues.
+- Keep one item per feature; link bugs and PRs to their Feature issue instead of adding them to the board.
+- Status is Todo when an item is added, Design while its `design-feature` proposal and RE check run, Ready once both pass, In Progress once a linked PR is open, and Done when the issue closes or the PR merges.
+- Pass `-L 1000` to `gh project item-list` and `-L 100` to `gh project field-list`; the default of 30 truncates silently.
+- Resolve project, field, option and item ids by name from `--format json` before each edit; `gh project item-edit` takes the project node id and sets one field per call.
+- Option and iteration ids change when an option or iteration is recreated; edit them with `updateProjectV2Field` by sending back each existing `id`, then re-list the items to confirm their values held.
+- Send at most 10 mutations per `gh api graphql` request, since about 25 returns 502, and write the item id mapping after each batch, since draft creation is not idempotent.
+- Read Phase, Start Date and Target Date through `gh api graphql`; `gh project item-list` omits them for items that have none.
+- Edit Phase with `updateProjectV2Field` and `iterationConfiguration: {startDate, duration, iterations: [{id, title, startDate, duration}]}`.
+- Read Phase's iterations with `node(id:) { ... on ProjectV2IterationField { configuration { iterations { id title startDate duration } } } }`; `gh project field-list` does not show them.
+- Use `gh api graphql` where `gh project` has no command: `convertProjectV2DraftIssueItemToIssue`, `updateIssueIssueType`, `addSubIssue` and `addBlockedBy`.
+- Create fields, views with their layout, filter and visible fields, and status updates through `gh api graphql`; set view grouping, sorting, board columns, field sums, roadmap dates and markers, Insights charts and built-in workflows through Claude in Chrome in the user's browser, since the API cannot.
+- `createProjectV2View` takes no filter, so set it with `updateProjectV2View`; a roadmap view rejects `visibleFieldIds`, and the issue Type field is missing from `fields` until it is unhidden in the UI.

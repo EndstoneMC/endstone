@@ -1,0 +1,42 @@
+---
+paths:
+  - "src/endstone/core/**"
+---
+
+# Core
+
+- Resolve the BDS object on every access from an identity (id, position plus dimension, `WeakEntityRef`); never cache `BlockSource`, `Container`, `BlockActor`, `MapItemSavedData` or `LevelChunk` pointers or references in a wrapper.
+- Throw `std::runtime_error("Trying to access a <thing> that is no longer valid.")` from `getHandle()` when the identity no longer resolves; re-check the type on resolve.
+- Hold `ActorUniqueID`, not `MapItemSavedData&`, in long-lived wrappers such as `EndstoneMapView`; capture ids in deferred tasks.
+- Hold a `weak_ptr` and hand out a non-owning `shared_ptr` for a handle that must outlive its owner; never leak, add `*Unchecked` setters or patch pointer slots.
+- New core types take handles in signatures and never derive `enable_shared_from_this`.
+- Core fan-outs over plugin-held objects (broadcast, `dirtyPermissibles`, new loops) tolerate a dead `EndstonePlayer`: sends no-op, `isOp()` returns the last known status, identity getters still throw.
+- Hand objects to Python as `shared_ptr` with shared holders.
+- Delegate xuid and uuid state to the BDS component; never duplicate it in the wrapper.
+- Track a BDS-owned `CommandOutput` with a non-owning `shared_ptr` in the adapter and a `weak_ptr` in senders.
+- Pass a BDS sentinel through under an API constant (`Effect::InfiniteDuration`) instead of translating it.
+- Put converters between a bedrock type and its Endstone wrapper on the wrapper as `static fromMinecraft(...)` and `toMinecraft(...)`.
+- Create registries once in `setLevel`/`initRegistries`, keep them for the server's lifetime and hand entries out by reference; never rebuild them in `reloadData()`.
+- Add a registry wrapper as an `EndstoneRegistry<Endstone*, ::BdsType>` specialisation in `registry.cpp` whose `create()` pre-populates the cache, register it in `server.cpp` (`registries_[typeid(X)]`), and hold `const ::BdsType&` in the wrapper.
+- Derive polymorphic trees exposed to Python from `endstone::Object` so `polymorphic_type_hook` downcasts.
+- Copy a packet event's payload when the event outlives dispatch (`use_count() > 1`).
+- Resync a cancelled action through a vanilla path (forced set, correction packet, teleport), never raw bytes; a cancelled command is not logged.
+- Send a correction packet for a cancelled position-only move and a teleport for a cancelled jump or rotation.
+- Return a cancelled dropped item to its slot; patch a cancelled book edit only if the slot holds the predicted stack, clearing it before setting.
+- Suppress knockback and the invulnerability bypass for cancelled damage.
+- Build the command map at startup, before `STARTUP` plugins load.
+- Record a plugin command's enums only once registration succeeds, key them in lower case, and on unregister erase only the ones the plugin created.
+- Make `PluginCommand::getExecutor()` return the set executor, else the owning plugin, else a null handle.
+- Keep a removed permission in the default lists; `removePermission` only erases it from the registry.
+- Store only weak references to plugins; `EndstonePluginManager` and the loaders are the sole strong owners.
+- On plugin disable and before `clearPlugins()` in `reload()`, release everything holding plugin-supplied code (functions, services, charts, tasks, handlers) and call `unregisterAll(plugin)` on the service manager.
+- Destroy plugin loaders in reverse load order.
+- Never include `core/server.h` from `plugin_manager.cpp` or anything linked into the GTest binary; use the public `Server` interface.
+- Never throw out of core code BDS called, never `std::abort()`, and never fall off the end of a non-void function.
+- Treat `Dimension::loadChunk` as asynchronous; never assert `is_chunk_loaded()` right after it.
+- Read `ChunkSource::LoadMode::None` as "do not load".
+- Scan players separately from `ActorManager::mEntities`; BDS keeps them in a vector that an actor scan misses.
+- Test an NBT key with `contains()`, never `if (tag.getInt(k))`, which is false for a valid zero.
+- Look up recipes by id verbatim, trying the `minecraft:`-composed id and then the bare key.
+- Never auto-activate behavior packs; activate resource packs by enumerating BDS's own repository in `loadResourcePacks()`.
+- Match Paper's control flow, ordering, return values, exceptions and cancel semantics when implementing behaviour, adapting only where Bedrock forces it, and add no helper Paper lacks.
