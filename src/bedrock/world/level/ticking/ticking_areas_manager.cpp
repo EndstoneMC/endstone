@@ -28,3 +28,8 @@ void TickingAreasManager::removeScopedAreas(const std::vector<mce::UUID> &uuids)
 {
     BEDROCK_CALL(&TickingAreasManager::removeScopedAreas, this, uuids);
 }
+
+void TickingAreasManager::update(Level &level, LevelStorage &level_storage)
+{
+    BEDROCK_CALL(&TickingAreasManager::update, this, level, level_storage);
+}

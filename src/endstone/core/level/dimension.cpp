@@ -226,10 +226,13 @@ bool EndstoneDimension::loadChunk(int x, int z, bool generate)
 bool EndstoneDimension::unloadChunk(int x, int z)
 {
     checkServerThread();
-    const auto loaded = isChunkLoaded(x, z);
-    unloadChunkRequest(x, z);
-    if (!loaded) {
+    if (!isChunkLoaded(x, z)) {
         return true;
+    }
+    unloadChunkRequest(x, z);
+    auto &level = level_.getHandle();
+    if (level.hasLevelStorage()) {
+        level.getTickingAreasMgr().update(level, level.getLevelStorage());
     }
     getHandle().flushLevelChunkGarbageCollector();
     return !isChunkLoaded(x, z);

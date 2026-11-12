@@ -11,7 +11,7 @@
 
 namespace endstone::runtime {
 
-static constexpr std::array<std::pair<std::string_view, std::size_t>, 132> symbols = {{
+static constexpr std::array<std::pair<std::string_view, std::size_t>, 133> symbols = {{
     {"BlockState::StateListNode::mHead", 223883584},
     {"CauldronBlock::receiveStalactiteDrip::lambda_0", 110887680},
     {"ChunkBlenderFactory::getOrCreateChunkBlender::cache_cap", 140106330},
@@ -212,6 +212,7 @@ static constexpr std::array<std::pair<std::string_view, std::size_t>, 132> symbo
     // TickingAreasManager
     {"?addTransientScopedArea@TickingAreasManager@@QEAA?AUScopedContext@1@UDimensionType@@AEBV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@_KVUUID@mce@@AEBUBounds@@@Z", 53344848},
     {"?removeScopedAreas@TickingAreasManager@@QEAAXAEBV?$vector@VUUID@mce@@V?$allocator@VUUID@mce@@@std@@@std@@@Z", 53345968},
+    {"?update@TickingAreasManager@@QEAAXAEAVLevel@@AEAVLevelStorage@@@Z", 53335792},
     // TridentItem
     {"?releaseUsing@TridentItem@@UEBAXAEAVItemStack@@PEAVPlayer@@H@Z", 31954240},
     // UDimensionIdType::?$NameIdStore

@@ -1694,6 +1694,21 @@ extra = 0
 pattern = "55 41 57 41 56 41 55 41 54 53 48 83 EC 38 49 89 FD 0F 57 C0 0F 29 44 24 10"
 
 [[signatures]]
+name = "_ZN19TickingAreasManager6updateER5LevelR12LevelStorage"
+relative = false
+extra = 0
+# function prologue
+# 1. find Level::tick; it calls the TARGET once, only when the level has a LevelStorage (hasLevelStorage), and the
+#    TARGET has no other caller
+# 2. confirm from the body: it inlines the pending-area adds, the split of removed areas from live ones, the
+#    updateAndCenter pass over the active areas and the preload check; removeScopedAreas (above) only flags an area as
+#    removed and this function erases it
+# 3. cut at the prologue through the two argument moves into rbp and the stack
+# 4. identity check: the same pattern lands on 0xD69A980 in 1.26.60
+# uniqueness: matches exactly once in the 1.26.63.1 .text, at an .eh_frame_hdr initial_location (0xD69B380)
+pattern = "55 41 57 41 56 41 55 41 54 53 48 81 EC 28 01 00 00 48 89 D5 48 89 B4 24 B8 00 00 00"
+
+[[signatures]]
 name = "_ZN6webrtc19P2PTransportChannel32SwitchSelectedConnectionInternalEPNS_10ConnectionENS_15IceSwitchReasonE"
 relative = false
 extra = 0

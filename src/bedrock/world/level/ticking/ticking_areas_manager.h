@@ -23,6 +23,9 @@
 #include "bedrock/util/bounds.h"
 #include "bedrock/world/level/dimension/dimension_type.h"
 
+class Level;
+class LevelStorage;
+
 class TickingAreasManager {
 public:
     struct ScopedContext {
@@ -36,5 +39,6 @@ public:
     ScopedContext addTransientScopedArea(DimensionType dimension, const std::string &name, std::uint64_t scope,
                                          mce::UUID uuid, const Bounds &bounds);
     void removeScopedAreas(const std::vector<mce::UUID> &uuids);
+    void update(Level &level, LevelStorage &level_storage);
 };
 BEDROCK_STATIC_ASSERT_SIZE(TickingAreasManager::ScopedContext, 104, 96);
