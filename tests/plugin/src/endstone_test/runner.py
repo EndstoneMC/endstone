@@ -1098,10 +1098,13 @@ class Run:
                 self.reloaded_by = self.current
                 self.lives[-1]["reloaded_by"] = self.current
                 log(f"the plugin was reloaded during {self.current}")
+            scenarios = self.remaining
+            if self.restart_after_reload:
+                scenarios = [self.current] if self.current in self.remaining else []
             self.send(
                 {
                     "type": "plan",
-                    "scenarios": self.remaining,
+                    "scenarios": scenarios,
                     "full": self.full,
                     "pytest": self.pytest,
                 }
