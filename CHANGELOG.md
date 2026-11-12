@@ -247,6 +247,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Fixed `Colors::BLACK` being a fully transparent red.
 - Fixed the server crashing when a plugin enabled at STARTUP used online players, maps, scoreboards or commands.
 - Fixed cancelling `PlayerSkinChangeEvent` reverting the player to the skin they joined with instead of their current one.
+- Fixed `Skin.id` cutting the end off a skin id that does not end with the cape id.
 - Fixed NetherNet servers showing up in the LAN tab when `enable-lan-visibility` is `false` or the world's `LANBroadcast` flag is off.
 - Fixed a NetherNet server on Linux refusing to start with its port in use when restarted right after stopping.
 - Fixed `ServerListPingEvent.address` being empty for a NetherNet server-list ping.

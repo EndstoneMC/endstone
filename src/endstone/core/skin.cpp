@@ -27,7 +27,7 @@ Skin EndstoneSkin::fromMinecraft(const SerializedSkinRef &skin)
     }
 
     auto skin_id = skin.getId();
-    if (cape_id.has_value() && skin_id.size() > cape_id->size()) {
+    if (cape_id.has_value() && skin_id.size() > cape_id->size() && skin_id.ends_with(*cape_id)) {
         skin_id = skin_id.substr(0, skin_id.size() - cape_id->size());
     }
 
