@@ -141,6 +141,7 @@ def test_submission_wraps_each_chart_and_drops_the_empty_ones(submitted) -> None
     payload = submitted[0]
     assert payload["platformKey"] == "platformValue"
     assert payload["serverUUID"] == str(metrics._server_uuid)
+    assert payload["metricsVersion"] == MetricsBase.METRICS_VERSION
     assert payload["service"]["id"] == 1
     assert payload["service"]["pluginVersion"] == "1.2.3"
     assert sorted(payload["service"]["customCharts"], key=lambda c: c["chartId"]) == [

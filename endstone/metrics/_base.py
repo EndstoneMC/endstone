@@ -23,7 +23,7 @@ class MetricsBase(ABC):
         REPORT_URL (str): The URL to which data is reported.
     """
 
-    METRICS_VERSION = "3.0.3"
+    METRICS_VERSION = "3.2.1"
     REPORT_URL = "https://bStats.org/api/v2/data/{platform}"
 
     def __init__(
@@ -153,7 +153,7 @@ class MetricsBase(ABC):
         await asyncio.sleep(second_delay)
 
         while self.enabled and self.service_enabled:
-            self._submit_data()
+            self.submit_task(self._submit_data)
             await asyncio.sleep(30 * 60)
 
     @final
@@ -186,6 +186,7 @@ class MetricsBase(ABC):
         service_data["customCharts"] = chart_data
         platform_data["service"] = service_data
         platform_data["serverUUID"] = str(self._server_uuid)
+        platform_data["metricsVersion"] = self.METRICS_VERSION
 
         def send_callback(fut: concurrent.futures.Future[Any]) -> None:
             try:
