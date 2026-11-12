@@ -324,6 +324,7 @@ enum class NewInteractionModel : int;
 enum class NoteBlockInstrument;
 enum class PlatformType : int;
 enum class PlayerSleepStatus;
+enum class PotionType : int;
 enum class RedstoneLogicExecutionFlags : std::uint8_t;
 enum class ShowStoreOfferRedirectType : unsigned char;
 
