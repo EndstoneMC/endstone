@@ -8,7 +8,6 @@ CANCELLABLE = [
     "ActorDismountEvent",
     "ActorEffectEvent",
     "ActorPickupItemEvent",
-    "ActorToggleGlideEvent",
     "EnchantItemEvent",
     "PlayerArmSwingEvent",
     "PlayerArmorStandManipulateEvent",
@@ -23,6 +22,7 @@ CANCELLABLE = [
 ]
 
 NOT_CANCELLABLE = [
+    "ActorToggleGlideEvent",
     "ActorToggleSwimEvent",
     "PlayerBedLeaveEvent",
     "PlayerDeathEvent",

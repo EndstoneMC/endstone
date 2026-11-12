@@ -189,7 +189,7 @@ void init_event(py::module_ &m, py::classh<Event, PyEvent> &event)
                       "The location that this actor moved from.")
         .def_property("to_location", &ActorTeleportEvent::getTo, &ActorTeleportEvent::setTo,
                       "The location that this actor moved to.");
-    bind_event<ActorToggleGlideEvent, ActorEvent<Mob>, ICancellable>(
+    bind_event<ActorToggleGlideEvent, ActorEvent<Mob>>(
         m, "ActorToggleGlideEvent", "Called when an `Actor`'s gliding state is toggled with an elytra.")
         .def_property_readonly("is_gliding", &ActorToggleGlideEvent::isGliding,
                                "Whether the actor is now gliding or not.");

@@ -658,27 +658,10 @@ class ActorTeleportEvent(ActorEvent, Cancellable):
     @to_location.setter
     def to_location(self, arg1: Location) -> None: ...
 
-class ActorToggleGlideEvent(MobEvent, Cancellable):
+class ActorToggleGlideEvent(MobEvent):
     """
     Called when an `Actor`'s gliding state is toggled with an elytra.
     """
-    @property
-    def is_cancelled(self) -> bool:
-        """
-        The cancellation state of this event.
-
-        A cancelled event will not be executed in the server, but will still pass to other plugins.
-        """
-
-    @is_cancelled.setter
-    def is_cancelled(self, arg1: bool) -> None: ...
-    def cancel(self) -> None:
-        """
-        Cancel this event.
-
-        A cancelled event will not be executed in the server, but will still pass to other plugins.
-        """
-
     @property
     def is_gliding(self) -> bool:
         """
