@@ -441,11 +441,6 @@ MutableAttributeWithContext Actor::getMutableAttribute(const HashedString &name)
     return component->attributes.getMutableInstanceWithContext(name);
 }
 
-void Actor::addEffect(const MobEffectInstance &effect)
-{
-    BEDROCK_CALL(&Actor::addEffect, this, effect);
-}
-
 void Actor::removeEffect(int effect_id)
 {
     // Same lookup as getEffect, but on the mutable component so the slot can be cleared in place.

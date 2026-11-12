@@ -37,7 +37,6 @@
 #include "endstone/event/actor/actor_damage_event.h"
 #include "endstone/event/actor/actor_death_event.h"
 #include "endstone/event/actor/actor_dismount_event.h"
-#include "endstone/event/actor/actor_effect_event.h"
 #include "endstone/event/actor/actor_pickup_item_event.h"
 #include "endstone/event/actor/actor_remove_event.h"
 #include "endstone/event/inventory/inventory_close_event.h"
@@ -128,38 +127,6 @@ bool handleEvent(::ActorBeforeHurtEvent &event)
         event.was_modified = true;
     }
     return true;
-}
-
-bool handleEvent(::ActorAddEffectEvent &event)
-{
-    const auto &server = endstone::core::EndstoneServer::getInstance();
-    if (!server.getEndstonePluginManager().isEventRegistered<endstone::ActorEffectEvent>()) {
-        return true;
-    }
-
-    auto *mob = WeakEntityRef(event.entity).tryUnwrap<::Mob>();
-    if (!mob) {
-        return true;
-    }
-
-    const endstone::EffectId type{endstone::EffectId::Minecraft, event.mob_effect.getResourceName()};
-    const endstone::Effect effect{
-        type,
-        event.mob_effect.getDuration().getValue().value_or(endstone::Effect::InfiniteDuration),
-        event.mob_effect.getAmplifier(),
-        event.mob_effect.isAmbient(),
-        event.mob_effect.isEffectVisible(),
-        event.mob_effect.displaysOnScreenTextureAnimation(),
-    };
-
-    auto endstone_mob = mob->getEndstoneActor<endstone::core::EndstoneMob>();
-    auto old_effect = endstone_mob->getEffect(type);
-    const auto action =
-        old_effect ? endstone::ActorEffectEvent::Action::Changed : endstone::ActorEffectEvent::Action::Added;
-    const auto e =
-        std::make_shared<endstone::ActorEffectEvent>(endstone_mob, action, type, std::move(old_effect), effect);
-    server.getPluginManager().callEvent(e);
-    return !e->isCancelled();
 }
 
 int countToMoveIn(const Container &container, const ItemStack &item)
@@ -288,7 +255,6 @@ GameplayHandlerResult<CoordinatorResult> ScriptActorGameplayHandler::handleEvent
     auto visitor = [&](auto &&arg) -> GameplayHandlerResult<CoordinatorResult> {
         using T = std::decay_t<decltype(arg)>;
         if constexpr (std::is_same_v<T, Details::ValueOrRef<::ActorBeforeHurtEvent>> ||
-                      std::is_same_v<T, Details::ValueOrRef<::ActorAddEffectEvent>> ||
                       std::is_same_v<T, Details::ValueOrRef<::ActorBeforeAcquireItemEvent>>) {
             if (!handleEvent(arg.value())) {
                 return {HandlerResult::BypassListeners, CoordinatorResult::Cancel};

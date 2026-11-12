@@ -16,11 +16,15 @@
 
 #include "bedrock/entity/components/actor_definition_identifier_component.h"
 #include "bedrock/entity/utilities/rotation_utility.h"
+#include "bedrock/entity/weak_entity_ref.h"
+#include "bedrock/world/actor/mob.h"
 #include "bedrock/world/actor/player/player.h"
+#include "bedrock/world/effect/mob_effect_instance.h"
 #include "endstone/core/actor/actor.h"
 #include "endstone/core/actor/mob.h"
 #include "endstone/core/player.h"
 #include "endstone/core/server.h"
+#include "endstone/event/actor/actor_effect_event.h"
 #include "endstone/event/actor/actor_remove_event.h"
 #include "endstone/event/actor/actor_teleport_event.h"
 #include "endstone/runtime/hook.h"
@@ -48,4 +52,41 @@ void Actor::teleportTo(const Vec3 &pos, bool should_stop_riding, int cause, int 
     }
     ENDSTONE_HOOK_CALL_ORIGINAL(&Actor::teleportTo, this, position, should_stop_riding, cause, entity_type,
                                 keep_velocity);
+}
+
+void Actor::addEffect(const MobEffectInstance &effect)
+{
+    const auto &server = EndstoneServer::getInstance();
+    if (!server.getEndstonePluginManager().isEventRegistered<endstone::ActorEffectEvent>()) {
+        ENDSTONE_HOOK_CALL_ORIGINAL(&Actor::addEffect, this, effect);
+        return;
+    }
+
+    auto *mob = WeakEntityRef(getWeakEntity()).tryUnwrap<::Mob>();
+    if (!mob || !canBeAffected(effect.getId())) {
+        ENDSTONE_HOOK_CALL_ORIGINAL(&Actor::addEffect, this, effect);
+        return;
+    }
+
+    const endstone::EffectId type{endstone::EffectId::Minecraft, effect.getResourceName()};
+    const endstone::Effect new_effect{
+        type,
+        effect.getDuration().getValue().value_or(endstone::Effect::InfiniteDuration),
+        effect.getAmplifier(),
+        effect.isAmbient(),
+        effect.isEffectVisible(),
+        effect.displaysOnScreenTextureAnimation(),
+    };
+
+    auto endstone_mob = mob->getEndstoneActor<EndstoneMob>();
+    auto old_effect = endstone_mob->getEffect(type);
+    const auto action =
+        old_effect ? endstone::ActorEffectEvent::Action::Changed : endstone::ActorEffectEvent::Action::Added;
+    const auto e =
+        std::make_shared<endstone::ActorEffectEvent>(endstone_mob, action, type, std::move(old_effect), new_effect);
+    server.getPluginManager().callEvent(e);
+    if (e->isCancelled()) {
+        return;
+    }
+    ENDSTONE_HOOK_CALL_ORIGINAL(&Actor::addEffect, this, effect);
 }

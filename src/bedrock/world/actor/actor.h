@@ -327,7 +327,7 @@ public:
     void setScoreTag(const std::string &);
     [[nodiscard]] const AttributeInstance *getAttribute(const HashedString &name) const;      // Endstone
     [[nodiscard]] MutableAttributeWithContext getMutableAttribute(const HashedString &name);  // Endstone
-    void addEffect(const MobEffectInstance &effect);
+    ENDSTONE_HOOK void addEffect(const MobEffectInstance &effect);
     void removeEffect(int effect_id);
     [[nodiscard]] const MobEffectInstanceList &getAllEffects() const;
     [[nodiscard]] const MobEffectInstance *getEffect(const MobEffect &effect) const;
