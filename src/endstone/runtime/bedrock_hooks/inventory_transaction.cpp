@@ -17,6 +17,10 @@
 #include "bedrock/world/actor/player/player.h"
 #include "bedrock/world/container.h"
 #include "bedrock/world/item/item_stack.h"
+#include "endstone/runtime/hook.h"
+
+#include <utility>
+#include <vector>
 
 /*
 {
@@ -37,6 +41,45 @@
 }
 */
 
+namespace {
+thread_local int execute_depth = 0;
+thread_local std::vector<std::pair<int, ItemStack>> pending_restores;
+
+void restore(Player &player, int slot, const ItemStack &drop)
+{
+    auto &container = player.getInventory();
+    const auto &current = container.getItem(slot);
+    if (current.isNull()) {
+        container.setItemWithForceBalance(slot, drop, true);
+    }
+    else if (current.matchesItem(drop) && current.getCount() + drop.getCount() <= current.getMaxStackSize()) {
+        auto restored = current;
+        restored.set(current.getCount() + drop.getCount());
+        container.setItemWithForceBalance(slot, restored, true);
+    }
+    else {
+        auto leftover = drop;
+        container.addItemWithForceBalance(leftover);
+    }
+}
+}  // namespace
+
+InventoryTransactionError InventoryTransaction::executeFull(Player &player, bool is_sender_authority) const
+{
+    ++execute_depth;
+    auto result = ENDSTONE_HOOK_CALL_ORIGINAL(&InventoryTransaction::executeFull, this, player, is_sender_authority);
+    if (--execute_depth == 0) {
+        auto restores = std::move(pending_restores);
+        pending_restores.clear();
+        if (result == InventoryTransactionError::NoError) {
+            for (const auto &[slot, drop] : restores) {
+                restore(player, slot, drop);
+            }
+        }
+    }
+    return result;
+}
+
 InventoryTransactionError InventoryTransaction::executeWorldInteraction(void *, Player &player,
                                                                         const InventoryAction &action)
 {
@@ -45,26 +88,14 @@ InventoryTransactionError InventoryTransaction::executeWorldInteraction(void *, 
     if (action.getSlot() == 0 && !action.getFromItem() && action.getToItem()) {
         const auto &drop = action.getToItem();
         auto randomly = (action.getSource().getFlags() & InventorySource::WorldInteraction_Random) != 0;
-        // #blameMojang: Player::drop only spawns the item actor. The stack itself is taken out of the
-        // slot by the item stack request the client sends alongside this transaction, and that has
-        // already been committed by the time we get here, so a refused drop (e.g. by a plugin via
-        // PlayerDropItemEvent) leaves the item nowhere and we have to hand it back to the slot it was
-        // thrown from ourselves.
+        // #blameMojang: ContainerInventory may run before or after this action, so restore once executeFull is done
         if (!player.drop(drop, randomly)) {
-            auto &container = player.getInventory();
             const auto slot = player.getSelectedItemSlot();
-            const auto &current = container.getItem(slot);
-            if (current.isNull()) {
-                container.setItemWithForceBalance(slot, drop, true);
-            }
-            else if (current.matchesItem(drop) && current.getCount() + drop.getCount() <= current.getMaxStackSize()) {
-                auto restored = current;
-                restored.set(current.getCount() + drop.getCount());
-                container.setItemWithForceBalance(slot, restored, true);
+            if (execute_depth > 0) {
+                pending_restores.emplace_back(slot, drop);
             }
             else {
-                auto leftover = drop;
-                container.addItemWithForceBalance(leftover);
+                restore(player, slot, drop);
             }
         }
         result = InventoryTransactionError::NoError;

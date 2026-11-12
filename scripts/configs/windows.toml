@@ -1,4 +1,4 @@
-version = "1.26.60"
+version = "1.26.63"
 platform = "windows"
 executable = "bedrock_server.exe"
 filename = "bedrock_server"
@@ -778,6 +778,15 @@ extra = 0
 pattern = "55 41 57 41 56 41 54 56 57 53 48 81 EC ? ? ? ? 48 8D AC 24 ? ? ? ? 44 0F 29 9D ? ? ? ? 44 0F 29 95 ? ? ? ? 44 0F 29 8D ? ? ? ? 44 0F 29 45 ?"
 
 [[signatures]]
+name = "?executeFull@InventoryTransaction@@QEBA?AW4InventoryTransactionError@@AEAVPlayer@@_N@Z"
+relative = false
+extra = 0
+# 1. find the lambda vtable run of InventoryTransaction::getExecuteFunction (see executeWorldInteraction below)
+# 2. the vtable run has two data xrefs: a 14-byte stub and one giant function (~0x1375). The giant one is executeFull:
+#    rcx is the transaction, rdx the Player&, r8b is_sender_authority, and it walks the action map at this+0x50
+pattern = "55 41 57 41 56 41 55 41 54 56 57 53 48 81 EC ? ? 00 00 48 8D AC 24 80 00 00 00 0F 29 B5 ? ? 00 00 48 C7 85 ? ? 00 00 FE FF FF FF 44 89 C3 49 89 CD 48 89 55 ? 48 8B 8A ? ? 00 00"
+
+[[signatures]]
 name = "?stopSleepInBed@Player@@UEAAX_N0@Z"
 relative = false
 extra = 0
@@ -1076,21 +1085,6 @@ extra = 0
 #    returns impl+0x48 on a hit, and on a miss allocates 0x2b8 and runs the SimpleNetworkInterfaceImpl
 #    ctor with the configuration
 pattern = "55 41 57 41 56 41 55 41 54 56 57 53 48 83 EC ? 48 8D 6C 24 ? 48 C7 45 ? ? ? ? ? 4C 89 CB 4D 89 C7 48 89 D6"
-
-[[signatures]]
-name = "?SendBindingErrorResponse@Port@webrtc@@UEAAXPEAVStunMessage@2@AEBVSocketAddress@2@HV?$basic_string_view@DU?$char_traits@D@std@@@std@@@Z"
-relative = false
-extra = 0
-# 1. find bytes "55 6E 61 75 74 68 6F 72 69 7A 65 64 00" = "Unauthorized\0" (STUN_ERROR_REASON_UNAUTHORIZED);
-#    its code xref is the local-ufrag-mismatch tail of webrtc::Port::GetStunMessage, which logs at LS_ERROR
-#    and then dispatches SendBindingErrorResponse through the Port vtable rather than calling it directly
-# 2. so take the vtable slot, not a call target: the function has NO direct code xref from GetStunMessage.
-#    It has exactly one code caller - TurnPort::SendBindingErrorResponse (0x6b bytes), which adds the
-#    realm/nonce attributes and tail-calls the base - plus five data xrefs, one per Port-derived vtable
-# 3. confirm: four args (StunMessage*, const SocketAddress&, int, std::string_view) and the 400/401 branch
-#    that skips AddMessageIntegrity/AddMessageIntegrity32 and runs only AddFingerprint before SendTo
-# 4. confirm vs the old named DB
-pattern = "40 55 53 56 57 41 54 41 55 41 56 41 57 48 8D AC 24 ? ? ? ? 48 81 EC ? ? ? ? 0F 29 B4 24 ? ? ? ? 48 8B 05 ? ? ? ? 48 33 C4 48 89 85 ? ? ? ? 45 8B F9"
 
 [[signatures]]
 name = "?getMetadata@SimpleNetworkInterfaceImpl@NetherNet@@CA?AV?$Result@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@Verror_code@2@@Bedrock@@AEBVHttpMetadataProvider@12@@Z"

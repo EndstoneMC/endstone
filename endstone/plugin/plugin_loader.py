@@ -131,7 +131,11 @@ class PythonPluginLoader(PluginLoader):
                 "--disable-pip-version-check",
             ],
             env=env,
+            stdin=subprocess.DEVNULL,
         )
+        importlib.invalidate_caches()
+        for site_dir in site.getsitepackages(prefixes=[self._prefix]):
+            site.addsitedir(site_dir)
 
         eps = distribution(dist_name).entry_points.select(group="endstone")
         for ep in eps:

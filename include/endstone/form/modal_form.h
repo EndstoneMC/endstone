@@ -58,7 +58,7 @@ public:
      *
      * @return A list of controls in the modal form.
      */
-    [[nodiscard]] std::vector<Control> getControls() const { return controls_; }
+    [[nodiscard]] const std::vector<Control> &getControls() const { return controls_; }
 
     /**
      * @brief Sets the controls of the modal form.

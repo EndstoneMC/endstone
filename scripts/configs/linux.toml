@@ -1,4 +1,4 @@
-version = "1.26.60"
+version = "1.26.63"
 platform = "linux"
 executable = "bedrock_server"
 filename = "bedrock_server"
@@ -877,6 +877,15 @@ extra = 0
 pattern = "55 41 57 41 56 41 55 41 54 53 48 81 EC ? ? ? ? 4D 89 C6 89 4C 24 0C"
 
 [[signatures]]
+name = "_ZNK20InventoryTransaction11executeFullER6Playerb"
+relative = false
+extra = 0
+# 1. find the lambda vtable run of InventoryTransaction::getExecuteFunction (see executeWorldInteraction below)
+# 2. the one function that loads those vtables (~0x10f5, unique xref into the run) is executeFull: rdi is the
+#    transaction, rsi the Player&, dl is_sender_authority, and it walks the action map at this+0x20
+pattern = "55 41 57 41 56 41 55 41 54 53 48 81 EC ? 00 00 00 89 D3 49 89 FC 48 89 74 24 ? 48 8B BE ? ? 00 00 48 8B 07 FF 90 ? ? 00 00 89 5C 24 ?"
+
+[[signatures]]
 name = "_ZN12ServerPlayer15changeDimensionE13DimensionType"
 relative = false
 extra = 0
@@ -965,20 +974,6 @@ extra = 0
 #    returns impl+0x48 on a hit, and on a miss allocates 648 and runs the SimpleNetworkInterfaceImpl
 #    ctor with the configuration
 pattern = "55 41 57 41 56 41 55 41 54 53 48 83 EC 58 48 89 4C 24 50 48 89"
-
-[[signatures]]
-name = "_ZN6webrtc4Port24SendBindingErrorResponseEPNS_11StunMessageERKNS_13SocketAddressEiNSt3__117basic_string_viewIcNS6_11char_traitsIcEEEE"
-relative = false
-extra = 0
-# 1. find bytes "3A 20 72 65 61 73 6F 6E 3D 00" = ": reason=\0" (unique); its lone data xref is the
-#    LS_INFO line ": Sending STUN " << ... << ": reason=" << reason << " to " that port.cc logs from
-#    SendBindingErrorResponse, so the function containing that xref is the target
-# 2. confirm: six args, the string_view reason arriving split as pointer + length, and the 400/401
-#    branch that skips AddMessageIntegrity - clang compiles it as the unsigned test
-#    `error_code - 402 <= 0xfffffffd`, which excludes exactly 400 and 401
-# 3. confirm: the response type is 273 (STUN_BINDING_ERROR_RESPONSE) or 784 (GOOG_PING_ERROR_RESPONSE),
-#    AddFingerprint runs only for the former, and the send goes through the Port vtable at +0x90
-pattern = "55 41 57 41 56 41 55 41 54 53 48 81 EC ? ? ? ? 4D 89 CC 4D 89 C6 49 89 F7"
 
 [[signatures]]
 name = "_ZN9NetherNet26SimpleNetworkInterfaceImpl11getMetadataERKNS0_20HttpMetadataProviderE"

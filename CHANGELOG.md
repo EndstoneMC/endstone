@@ -7,6 +7,33 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+### Added
+
+- Added support for BDS version 1.26.63.
+
+### Fixed
+
+- Fixed cancelling `PlayerDropItemEvent` on Linux doubling the stack the player tried to drop.
+- Fixed setting `score_tag` on an actor other than a player crashing the server.
+- Fixed `ItemStack` equality and `is_similar()` ignoring the data value, so a water bottle equalled an invisibility potion.
+- Fixed `ModalForm.controls` returning copies, so changing a control it handed out had no effect on the form.
+- Fixed `Button.icon = None` raising instead of clearing the icon.
+- Fixed adding or subtracting `Location`s from different dimensions silently giving a meaningless result instead of raising `ValueError`.
+- Fixed the `MapCursor` constructor accepting a direction outside 0 to 15.
+- Fixed `Item.thrower` reading `0` instead of `None` after being cleared.
+- Fixed `Plugin.save_resources()` failing when the resource sits in a folder that does not exist in the data folder yet.
+- Fixed `Plugin.save_resources()` mangling resource paths that contain `;` or `:`.
+- Fixed installing a plugin wheel hanging the server when its standard input is a pipe.
+- Fixed a freshly installed plugin wheel not being importable until the server restarted.
+- Fixed the `ItemStack` constructor raising `RuntimeError` instead of `ValueError` for an amount outside 1 to 255.
+
+## [0.11.15] - 2026-10-28
+
+### Added
+
+- Added support for BDS version 1.26.60.
+- `ServerListPingEvent` is now called for NetherNet signaling pings, so plugins can change what a NetherNet client sees.
+
 ### Changed
 
 - Improved the performance of cancellation checks and updates in Python event handlers.
@@ -20,6 +47,16 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Fixed `ServerListPingEvent` not being called when the server's ping response is 128 bytes or longer, such as with a long `server-name` (#556).
 - Fixed the launcher reporting a BDS without `version.txt` as `v0.0.0` and exiting without a message when the update prompt is declined (#545).
 - Fixed showing more than one boss bar to a player at a time (#525).
+- Fixed the server crashing when `Server.reload()` is called from inside a scheduled task.
+- Fixed a player whose `PlayerLoginEvent` was cancelled being announced as having left the game.
+- Fixed `PlayerInteractEvent.clicked_position` reporting world coordinates on a right click; it is now the position within the block, and `None` on a left click.
+- Fixed `Player.skin` returning the skin a player joined with after they change it.
+- Fixed `Player.scoreboard` sending nothing to the player, leaving the old scoreboard on screen.
+- Fixed a malformed form response logging a callback error instead of closing the form.
+- Fixed registry entries such as `ItemType` and `BlockType` becoming invalid after `/reload`.
+- Fixed plugins that create a bStats `Metrics` never being freed on `/reload`.
+- Fixed unregistering a plugin command clearing enum values it did not create.
+- Fixed plugins loaded at `STARTUP` being unable to register or dispatch commands.
 
 ## [0.11.14] - 2026-10-12
 
@@ -1291,7 +1328,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Basic plugin loader for C++ and Python plugins.
 - Basic command system that allows plugins to register custom commands.
 
-[Unreleased]: https://github.com/EndstoneMC/endstone/compare/v0.11.14...HEAD
+[Unreleased]: https://github.com/EndstoneMC/endstone/compare/v0.11.15...HEAD
+[0.11.15]: https://github.com/EndstoneMC/endstone/compare/v0.11.14...v0.11.15
 [0.11.14]: https://github.com/EndstoneMC/endstone/compare/v0.11.13...v0.11.14
 [0.11.13]: https://github.com/EndstoneMC/endstone/compare/v0.11.12...v0.11.13
 [0.11.12]: https://github.com/EndstoneMC/endstone/compare/v0.11.11...v0.11.12
