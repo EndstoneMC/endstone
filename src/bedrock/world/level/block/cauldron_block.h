@@ -27,6 +27,9 @@ public:
     static constexpr int MIN_FILL_LEVEL = 0;
     static constexpr int MAX_FILL_LEVEL = 6;
 
+    ENDSTONE_HOOK void tick(BlockEvents::BlockQueuedTickEvent &event_data) const;
+    ENDSTONE_HOOK void handlePrecipitation(BlockSource &region, const BlockPos &pos, float temperature,
+                                           float rain_intensity) const override;
     ENDSTONE_HOOK void use(BlockEvents::BlockPlayerInteractEvent &event_data) const;
     ENDSTONE_HOOK void setLiquidLevel(BlockSource &region, const BlockPos &pos, int liquid_level,
                                       CauldronLiquidType liquid_type) const;

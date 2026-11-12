@@ -36,8 +36,10 @@ struct InternalBucketFillActorComponent {
 struct InternalChangedDimensionFlagComponent {};
 struct InternalCauldronInteractionComponent {
     Nullable<Actor> actor;
+    ::Actor *source = nullptr;
     BlockPos pos;
     CauldronLevelChangeEvent::ChangeReason reason = CauldronLevelChangeEvent::ChangeReason::Unknown;
+    bool any_pos = false;
     bool handled = false;
     bool has_result = false;
     std::optional<ItemStack> result;

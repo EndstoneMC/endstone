@@ -57,6 +57,8 @@ public:
     const BlockPos pos;
 };
 
+class BlockQueuedTickEvent;
+
 class BlockRandomTickEvent : public BlockEventBase {
 public:
     static constexpr EventType Type = EventType::RandomTick;

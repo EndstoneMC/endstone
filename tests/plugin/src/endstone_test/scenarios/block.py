@@ -225,12 +225,35 @@ async def cauldron_normal(ctx: Context) -> None:
     change = ctx.capture(CauldronLevelChangeEvent, at_cauldron(ctx))
     at = await dispense_water(ctx, change)
     event = change.events[0]
-    assert event["actor"] is None and event["reason"] == "UNKNOWN", event
+    assert event["actor"] is None and event["reason"] == "NATURAL_FILL", event
     data = event["new_state"]["data"]
     assert '"cauldron_liquid"="water"' in data and '"fill_level"=0' not in data, event[
         "new_state"
     ]
     assert holds_water(ctx, at), ctx.info
+
+
+@scenario(
+    "block.cauldron.rain",
+    covers={CauldronLevelChangeEvent: "normal"},
+    plot=True,
+    budget=300,
+)
+async def cauldron_rain(ctx: Context) -> None:
+    change = ctx.capture(CauldronLevelChangeEvent, at_cauldron(ctx))
+    at = ctx.plot.at(*CAULDRON)
+    ctx.run(f"setblock {at} cauldron")
+    ctx.run("weather rain")
+    ctx.run("gamerule randomtickspeed 4096")
+    try:
+        await ctx.until(
+            lambda: change.count, timeout=200, what="CauldronLevelChangeEvent"
+        )
+    finally:
+        ctx.run("gamerule randomtickspeed 1")
+        ctx.run("weather clear")
+    event = change.events[0]
+    assert event["actor"] is None and event["reason"] == "NATURAL_FILL", event
 
 
 @scenario(

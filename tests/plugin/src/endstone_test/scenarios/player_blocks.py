@@ -1807,3 +1807,35 @@ async def sign_set_line_newline(ctx: Context) -> None:
     side.set_line(2, "c")
     assert len(side.lines) == 4, f"a line containing a newline made the sign hold {len(side.lines)} lines: {side.lines}"
     assert side.lines[1] == "" and side.lines[2] == "c", side.lines
+
+
+@scenario(
+    "blocks.cauldron.extinguish",
+    covers={CauldronLevelChangeEvent: "normal"},
+    plot=True,
+    budget=BUDGET,
+)
+async def cauldron_extinguish(ctx: Context) -> None:
+    bot, _ = await join(ctx, "bkCauX")
+    changed = ctx.capture(
+        CauldronLevelChangeEvent,
+        extra=lambda event: {
+            **new_state(event),
+            "who_type": None if event.actor is None else str(event.actor.type),
+        },
+    )
+    at = await with_cauldron(ctx, bot, "bkCauX", "bucket", level=3)
+    ctx.run(f"summon cow {at[0] + 0.5} {at[1]} {at[2] + 0.5}")
+    ctx.run("effect @e[type=cow,c=1] slowness 120 255 true")
+    ctx.run("damage @e[type=cow,c=1] 1 fire")
+    await ctx.until(lambda: changed.count, timeout=40, what="CauldronLevelChangeEvent")
+    change = changed.events[0]
+    assert change["reason"] == "EXTINGUISH", change["reason"]
+    assert change["who_type"] == "minecraft:cow", change
+    assert coords(change["block"]) == at
+    assert (change["new_level"], change["new_liquid"]) == (2, "water"), change
+    await ctx.until(
+        lambda: cauldron_state(ctx, at) == (2, "water"),
+        timeout=40,
+        what="the cauldron to lower",
+    )

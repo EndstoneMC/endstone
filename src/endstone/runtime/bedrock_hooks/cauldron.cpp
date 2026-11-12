@@ -34,6 +34,7 @@
 #include "endstone/core/block/block_face.h"
 #include "endstone/core/entity/components/flag_components.h"
 #include "endstone/core/inventory/item_stack.h"
+#include "endstone/core/level/level.h"
 #include "endstone/core/player.h"
 #include "endstone/core/plugin/plugin_manager.h"
 #include "endstone/core/server.h"
@@ -197,6 +198,40 @@ void CauldronBlock::use(BlockEvents::BlockPlayerInteractEvent &event_data) const
     }
 }
 
+void CauldronBlock::tick(BlockEvents::BlockQueuedTickEvent &event_data) const
+{
+    const auto &server = endstone::core::EndstoneServer::getInstance();
+    auto level_entity = server.getEndstoneLevel()->getHandle().getLevelEntity().unwrap();
+    if (!level_entity || !server.getEndstonePluginManager().isEventRegistered<endstone::CauldronLevelChangeEvent>()) {
+        ENDSTONE_HOOK_CALL_ORIGINAL(&CauldronBlock::tick, this, event_data);
+        return;
+    }
+
+    auto &interaction = level_entity->getOrAddComponent<endstone::core::InternalCauldronInteractionComponent>();
+    interaction.reason = endstone::CauldronLevelChangeEvent::ChangeReason::NaturalFill;
+    interaction.any_pos = true;
+    ENDSTONE_HOOK_CALL_ORIGINAL(&CauldronBlock::tick, this, event_data);
+    level_entity->removeComponent<endstone::core::InternalCauldronInteractionComponent>();
+}
+
+void CauldronBlock::handlePrecipitation(BlockSource &region, const BlockPos &pos, float temperature,
+                                        float rain_intensity) const
+{
+    const auto &server = endstone::core::EndstoneServer::getInstance();
+    auto level_entity = region.getLevel().getLevelEntity().unwrap();
+    if (!level_entity || !server.getEndstonePluginManager().isEventRegistered<endstone::CauldronLevelChangeEvent>()) {
+        ENDSTONE_HOOK_CALL_ORIGINAL(&CauldronBlock::handlePrecipitation, this, region, pos, temperature,
+                                    rain_intensity);
+        return;
+    }
+
+    auto &interaction = level_entity->getOrAddComponent<endstone::core::InternalCauldronInteractionComponent>();
+    interaction.reason = endstone::CauldronLevelChangeEvent::ChangeReason::NaturalFill;
+    interaction.any_pos = true;
+    ENDSTONE_HOOK_CALL_ORIGINAL(&CauldronBlock::handlePrecipitation, this, region, pos, temperature, rain_intensity);
+    level_entity->removeComponent<endstone::core::InternalCauldronInteractionComponent>();
+}
+
 void CauldronBlock::_useInventory(::Player &player, ::ItemStack &current, ::ItemStack &replace_with, int use_count)
 {
     auto level_entity = player.getLevel().getLevelEntity().unwrap();
@@ -229,13 +264,13 @@ void CauldronBlock::setLiquidLevel(BlockSource &region, const BlockPos &pos, int
     auto reason = endstone::CauldronLevelChangeEvent::ChangeReason::Unknown;
     if (auto level_entity = region.getLevel().getLevelEntity().unwrap(); level_entity) {
         const auto *interaction = level_entity->tryGetComponent<endstone::core::InternalCauldronInteractionComponent>();
-        if (interaction && interaction->pos == pos) {
+        if (interaction && (interaction->any_pos || interaction->pos == pos)) {
             if (interaction->handled) {
                 ENDSTONE_HOOK_CALL_ORIGINAL(&CauldronBlock::setLiquidLevel, this, region, pos, liquid_level,
                                             liquid_type);
                 return;
             }
-            actor = interaction->actor;
+            actor = interaction->source ? interaction->source->getEndstoneActor<endstone::Actor>() : interaction->actor;
             reason = interaction->reason;
         }
     }
