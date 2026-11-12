@@ -45,6 +45,7 @@ public:
     void setRequiredPlayerRange(int range) override;
     [[nodiscard]] int getSpawnRange() const override;
     void setSpawnRange(int range) override;
+    [[nodiscard]] bool isActivated() const override;
     void resetTimer() override;
 
 private:

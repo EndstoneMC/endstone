@@ -873,3 +873,51 @@ async def spawner_reset_timer(ctx: Context) -> None:
     spawner.delay = 5
     spawner.reset_timer()
     assert spawner.delay == 300, spawner.delay
+
+
+@scenario("block.spawner.is_activated", plot=True, budget=1200)
+async def spawner_is_activated(ctx: Context) -> None:
+    """is_activated needs an active spawner and a player in range who can interact with entities."""
+    ctx.run(f"setblock {ctx.plot.at(*LECTERN)} mob_spawner")
+    spawner = ctx.overworld.get_block_at(*ctx.plot.pos(*LECTERN)).capture_state()
+    spawner.spawned_type = "minecraft:zombie"
+    spawner.required_player_range = 16
+    assert spawner.update(True)
+
+    def activated() -> bool:
+        return (
+            ctx.overworld.get_block_at(*ctx.plot.pos(*LECTERN))
+            .capture_state()
+            .is_activated
+        )
+
+    await ctx.bot("SpawnerWatcher")
+    player = ctx.server.get_player("SpawnerWatcher")
+    assert player is not None
+    x, y, z = ctx.plot.pos(LECTERN[0] + 3, 0, LECTERN[2])
+    ctx.run("gamemode survival SpawnerWatcher")
+    ctx.run(f"tp SpawnerWatcher {x + 0.5} {y} {z + 0.5}")
+    await ctx.until(
+        lambda: activated(),
+        timeout=60,
+        what="the spawner to be activated by a nearby player",
+    )
+    ctx.run("gamemode creative SpawnerWatcher")
+    await ctx.ticks(5)
+    assert activated(), "a creative player must still activate the spawner"
+    ctx.run("gamemode spectator SpawnerWatcher")
+    await ctx.until(
+        lambda: not activated(),
+        timeout=40,
+        what="a spectator to stop activating the spawner",
+    )
+    ctx.run("gamemode survival SpawnerWatcher")
+    await ctx.until(
+        lambda: activated(), timeout=40, what="the spawner to be activated again"
+    )
+    ctx.run(f"tp SpawnerWatcher {x + 0.5} {y + 60} {z + 0.5}")
+    await ctx.until(
+        lambda: not activated(),
+        timeout=60,
+        what="the spawner to deactivate out of range",
+    )

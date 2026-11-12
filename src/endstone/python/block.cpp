@@ -219,6 +219,8 @@ void init_block(py::module_ &m, py::classh<Block> &block)
                       "How far away a player must be for the spawner to be active, in blocks.")
         .def_property("spawn_range", &CreatureSpawner::getSpawnRange, &CreatureSpawner::setSpawnRange,
                       "The radius around the spawner in which actors are spawned, in blocks.")
+        .def_property_readonly("is_activated", &CreatureSpawner::isActivated,
+                               "Whether the spawner is activated, that is, whether it will run its spawn logic.")
         .def("reset_timer", &CreatureSpawner::resetTimer,
              "Resets the spawner's delay, drawing a new one between the minimum and maximum spawn delay.");
 

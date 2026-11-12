@@ -55,6 +55,7 @@ public:
     void setRequiredPlayerRange(int value) { required_player_range_ = value; }
     [[nodiscard]] int getSpawnRange() const { return spawn_range_; }
     void setSpawnRange(int value) { spawn_range_ = value; }
+    [[nodiscard]] bool isActive() const { return active_; }
     // Endstone
     void delay(BlockSource &source) { _delay(source); }
 

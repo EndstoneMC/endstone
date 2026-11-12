@@ -143,6 +143,15 @@ public:
     virtual void setSpawnRange(int range) = 0;
 
     /**
+     * Gets whether the spawner is activated, that is, whether it will run its spawn logic.
+     *
+     * A spawner is activated when it is active and a player is within its required player range.
+     *
+     * @return `true` if the spawner is activated
+     */
+    [[nodiscard]] virtual bool isActivated() const = 0;
+
+    /**
      * Resets the spawner's delay, drawing a new one between the minimum and maximum spawn delay.
      */
     virtual void resetTimer() = 0;

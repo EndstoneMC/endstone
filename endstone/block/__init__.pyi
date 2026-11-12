@@ -510,6 +510,12 @@ class CreatureSpawner(BlockActorState):
 
     @spawn_range.setter
     def spawn_range(self, arg1: int) -> None: ...
+    @property
+    def is_activated(self) -> bool:
+        """
+        Whether the spawner is activated, that is, whether it will run its spawn logic.
+        """
+
     def reset_timer(self) -> None:
         """
         Resets the spawner's delay, drawing a new one between the minimum and maximum spawn delay.

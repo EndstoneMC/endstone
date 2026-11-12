@@ -67,7 +67,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - `Container` block state for chests, barrels, hoppers, dispensers, droppers, shulker boxes and furnaces, exposing `container.custom_name`, `container.inventory`, which edits the block at once, and `container.snapshot_inventory`, which edits the captured copy until `update()`.
 - `Furnace` block state for furnaces, blast furnaces and smokers, extending `Container`.
 - `Lectern` block state with the displayed `page` and an `inventory` holding the book, which edits the block at once, plus a `snapshot_inventory` for the captured copy.
-- `CreatureSpawner` block state with `spawned_type`, `delay`, `min_spawn_delay`, `max_spawn_delay`, `spawn_count`, `max_nearby_entities`, `required_player_range` and `spawn_range`, plus `reset_timer()`.
+- `CreatureSpawner` block state with `spawned_type`, `delay`, `min_spawn_delay`, `max_spawn_delay`, `spawn_count`, `max_nearby_entities`, `required_player_range` and `spawn_range`, plus `is_activated` and `reset_timer()`.
 - `Campfire` block state with `get_item()`/`set_item()` and `get_cook_time()`/`set_cook_time()`.
 - `Sign` block state with the `Side` enum (`FRONT`, `BACK`) and `sign.get_side(Side.FRONT)` giving `lines`, `glowing_text` and `color`, plus `sign.waxed` and `sign.get_target_side(player)`.
 - `ItemFrame` block state with `item`, `rotation` and `item_drop_chance`.

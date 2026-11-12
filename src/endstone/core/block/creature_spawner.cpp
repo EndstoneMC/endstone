@@ -14,10 +14,13 @@
 
 #include "endstone/core/block/creature_spawner.h"
 
+#include <limits>
 #include <string>
 
 #include "bedrock/nbt/compound_tag.h"
+#include "bedrock/world/actor/player/player.h"
 #include "bedrock/world/item/save_context.h"
+#include "bedrock/world/level/dimension/dimension.h"
 #include "endstone/check.h"
 #include "endstone/core/server.h"
 
@@ -160,6 +163,34 @@ void EndstoneCreatureSpawner::setSpawnRange(int range)
 {
     getSpawner().getSpawner().setSpawnRange(range);
     getSpawner().setChanged();
+}
+
+bool EndstoneCreatureSpawner::isActivated() const
+{
+    const auto &spawner = getSpawner().getSpawner();
+    if (!spawner.isActive()) {
+        return false;
+    }
+    const auto range = spawner.getRequiredPlayerRange();
+    const auto limit = range < 0 ? std::numeric_limits<float>::max() : static_cast<float>(range * range);
+    const Vec3 centre{static_cast<float>(block_pos_.x) + 0.5F, static_cast<float>(block_pos_.y) + 0.5F,
+                      static_cast<float>(block_pos_.z) + 0.5F};
+    auto found = false;
+    dimension_->getHandle().forEachPlayer([&](::Player &player) {
+        if (!player.canInteractWithOtherEntitiesInGame()) {
+            return true;
+        }
+        const auto &position = player.getPosition();
+        const auto dx = position.x - centre.x;
+        const auto dy = position.y - centre.y;
+        const auto dz = position.z - centre.z;
+        if (dx * dx + dy * dy + dz * dz < limit) {
+            found = true;
+            return false;
+        }
+        return true;
+    });
+    return found;
 }
 
 void EndstoneCreatureSpawner::resetTimer()
