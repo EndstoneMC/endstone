@@ -159,17 +159,20 @@ async def move_mutate(ctx: Context) -> None:
     await bot.call("local_player.move_to", [start[0] + 6, start[1], start[2]])
     await ctx.until(lambda: moves.count >= 1, timeout=100, what="PlayerMoveEvent")
     await ctx.until(
-        lambda: flat(where(player), target) < 0.3, timeout=40, what="the player to reach the mutated to_location"
+        lambda: (
+            flat(where(player), target) < 0.3
+            and abs(where(player)[1] - target[1]) < 0.1
+        ),
+        timeout=40,
+        what="the player to reach the mutated to_location",
     )
-    seen = await poll(
-        ctx,
-        lambda: bot_position(bot),
-        lambda p: flat(p, target) < 0.3,
-        what="the client to be moved to to_location",
-    )
-    assert abs(seen[1] - target[1]) < 0.1, seen
+    eye = target[1] + 1.62
     moved = await packets(bot, "MovePlayerPacket", index)
-    assert any(flat(vec(p["packet"]["pos"]), target) < 0.5 for p in moved), moved
+    assert any(
+        flat(vec(p["packet"]["pos"]), target) < 0.5
+        and abs(vec(p["packet"]["pos"])[1] - eye) < 0.1
+        for p in moved
+    ), moved
 
 
 @scenario("movement.jump.normal", covers={PlayerJumpEvent: "normal"}, plot=True, budget=BUDGET)
@@ -269,11 +272,8 @@ async def input_normal(ctx: Context) -> None:
     await step("unsneak", "local_player.set_sneaking", set(), False)
     await step("forward for sprint", "local_player.set_move_vector", {"forward"}, 0.0, 1.0)
     await step("sprint", "local_player.set_sprinting", {"forward", "sprint"}, True)
-    await step("stop", "local_player.stop_moving", set())
-    before = inputs.count
-    await bot.call("local_player.set_sprinting", False)
-    await ctx.ticks(10)
-    assert inputs.count == before, "releasing the sprint key while standing still changed no input"
+    await step("stop", "local_player.stop_moving", {"sprint"})
+    await step("release sprint", "local_player.set_sprinting", set(), False)
 
 
 def before(attr: str):
@@ -365,10 +365,34 @@ def before_actor(attr: str):
 
 @scenario("movement.toggle.crawl", covers={PlayerToggleCrawlEvent: "normal"}, plot=True, budget=BUDGET)
 async def toggle_crawl(ctx: Context) -> None:
-    bot, player, start = await join(ctx, "mvcrawl")
+    bot, player, start = await join(ctx, "mvcrawl", dx=3)
     toggles = ctx.capture(PlayerToggleCrawlEvent, mine("mvcrawl"), extra=before("is_crawling"))
-    await bot.call("local_player.set_crawling", True)
+    ctx.run("replaceitem entity mvcrawl slot.armor.chest 0 elytra")
+    cx, cy, cz = (math.floor(v) for v in start)
+    ctx.run(f"setblock {cx - 1} {cy} {cz} stone")
+    ctx.run(f"fill {cx + 1} {cy + 1} {cz} {cx + 4} {cy + 1} {cz} stone")
+    await ctx.ticks(10)
+    ctx.run(f"tp mvcrawl {cx - 0.5} {cy + 1} {cz + 0.5}")
+    await poll(
+        ctx,
+        lambda: bot_position(bot),
+        lambda p: (
+            flat(p, (cx - 0.5, 0.0, cz + 0.5)) < 0.1 and abs(p[1] - (cy + 1)) < 0.05
+        ),
+        what="the client to see the teleport onto the ledge",
+    )
+    await ctx.ticks(10)
+    await bot.call("local_player.set_rotation", 0.0, -90.0)
+    await bot.call("local_player.set_move_vector", 0.0, 1.0)
+    await poll(
+        ctx,
+        lambda: bot_position(bot),
+        lambda p: p[1] < cy + 1 - 0.01,
+        what="the bot to step off the ledge",
+    )
+    await bot.call("local_player.set_gliding", True)
     await ctx.until(lambda: toggles.count, timeout=40, what="the crawl toggle")
+    await bot.call("local_player.stop_moving")
     await ctx.ticks(10)
     assert toggles.count == 1, toggles.events
     assert toggles.events[0]["is_crawling"] is True and toggles.events[0]["before"] is False
@@ -622,6 +646,17 @@ def sneak_flag(found: list[dict], runtime_id: int) -> bool | None:
     return None
 
 
+def sprint_flag(found: list[dict], runtime_id: int) -> bool | None:
+    for entry in reversed(found):
+        packet = entry["packet"]
+        if packet["id"] != runtime_id:
+            continue
+        for item in packet["packed_items"]["data"]:
+            if item["id"] in (0, "RESERVED_0"):
+                return bool(item["payload"]["value"] >> 3 & 1)
+    return None
+
+
 def flying_bit(found: list[dict]) -> bool | None:
     for entry in reversed(found):
         for layer in entry["packet"]["data"]["layers"]:
@@ -694,6 +729,53 @@ async def toggle_sneak_stop_cancel(ctx: Context) -> None:
     await bot.call("local_player.set_sneaking", False)
     await ctx.until(lambda: again.count == 2, timeout=40, what="the release to fire")
     await ctx.until(lambda: not player.is_sneaking, timeout=40, what="the player to stand once the key was pressed again")
+
+
+@scenario(
+    "movement.toggle.sprint_cancel",
+    covers={PlayerToggleSprintEvent: "cancel"},
+    plot=True,
+    budget=BUDGET,
+)
+async def toggle_sprint_cancel(ctx: Context) -> None:
+    bot, player, start = await join(ctx, "mvsprno", dx=2)
+    toggles = ctx.capture(
+        PlayerToggleSprintEvent,
+        mine("mvsprno"),
+        cancel=True,
+        extra=before("is_sprinting"),
+    )
+    index = await mark(bot)
+    await bot.call("local_player.set_sprinting", True)
+    await bot.call("local_player.set_move_vector", 0.0, 1.0)
+    await ctx.until(lambda: toggles.count, timeout=40, what="the sprint toggle")
+    held = await states(ctx, lambda: player.is_sprinting, 30)
+    assert held == {False}, f"a cancelled sprint still made the server sprint: {held}"
+    assert toggles.count == 1, f"holding the sprint key fired again: {toggles.events}"
+    assert (
+        toggles.events[0]["is_sprinting"] is True
+        and toggles.events[0]["before"] is False
+    )
+    found = await packets(bot, "SetActorDataPacket", index)
+    ctx.info["set_actor_data_after_cancel"] = len(found)
+    flag = sprint_flag(found, player.runtime_id)
+    assert flag is False, (
+        f"the client was not sent SPRINTING clear after the cancel: {found[-3:]}"
+    )
+    await bot.call("local_player.stop_moving")
+    await bot.call("local_player.set_sprinting", False)
+    await ctx.ticks(10)
+    assert not player.is_sprinting
+    ctx.release(toggles)
+    again = ctx.capture(PlayerToggleSprintEvent, mine("mvsprno"))
+    await bot.call("local_player.set_sprinting", True)
+    await bot.call("local_player.set_move_vector", 0.0, 1.0)
+    await ctx.until(lambda: again.count, timeout=40, what="a later sprint to fire")
+    await ctx.until(
+        lambda: player.is_sprinting,
+        timeout=40,
+        what="the player to sprint once not cancelled",
+    )
 
 
 @scenario("movement.flight.cancel", covers={PlayerToggleFlightEvent: "cancel"}, plot=True, budget=BUDGET)
