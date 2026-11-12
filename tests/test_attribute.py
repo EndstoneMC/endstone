@@ -94,3 +94,14 @@ def test_modifier_key_survives_the_source_string() -> None:
     modifier = AttributeModifier(name, 1.0, AttributeModifier.ADD)
     del name
     assert modifier.key == "endstone:temporary"
+
+
+def test_attribute_modifier_equality_and_hash() -> None:
+    """Verify modifiers compare and hash by key, amount and operation."""
+    a = AttributeModifier("endstone:boost", 1.5, AttributeModifier.ADD)
+    assert a == AttributeModifier("endstone:boost", 1.5, AttributeModifier.ADD)
+    assert hash(a) == hash(AttributeModifier("endstone:boost", 1.5, AttributeModifier.ADD))
+    assert a != AttributeModifier("endstone:boost", 2.0, AttributeModifier.ADD)
+    assert a != AttributeModifier("endstone:other", 1.5, AttributeModifier.ADD)
+    assert a != AttributeModifier("endstone:boost", 1.5, AttributeModifier.MULTIPLY)
+    assert len({a, AttributeModifier("endstone:boost", 1.5, AttributeModifier.ADD)}) == 1

@@ -27,9 +27,11 @@ void ExperienceOrb::playerTouch(Player &player)
 {
     touched_orb = this;
     touching_player = &player;
+    player.addOrRemoveComponent<endstone::core::InternalExperienceOrbPickupFlagComponent>(true);
     ENDSTONE_HOOK_CALL_ORIGINAL(&ExperienceOrb::playerTouch, this, player);
     touched_orb = nullptr;
     touching_player = nullptr;
+    player.addOrRemoveComponent<endstone::core::InternalExperienceOrbPickupFlagComponent>(false);
     player.addOrRemoveComponent<endstone::core::InternalExperienceOrbPickupCancelledFlagComponent>(false);
 }
 

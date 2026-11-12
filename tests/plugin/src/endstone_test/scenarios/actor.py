@@ -272,15 +272,23 @@ async def effect_fields(ctx: Context) -> None:
 
 @scenario("actor.effect.readd", covers={ActorEffectEvent: "normal"}, plot=True)
 async def effect_readd(ctx: Context) -> None:
-    """Re-adding an effect the mob already has changes it without an ADDED event."""
+    """Re-adding an effect the mob already has reports CHANGED with the old effect."""
     target = await pig(ctx)
     effect = ctx.capture(ActorEffectEvent, plot_filter(ctx, "minecraft:pig"))
     ctx.run(f"effect @e[type=pig,{ctx.plot.volume}] speed 30 1")
     await ctx.until(lambda: effect.count, timeout=20, what="ActorEffectEvent")
+    seen: list[tuple] = []
+    ctx.capture(
+        ActorEffectEvent,
+        plot_filter(ctx, "minecraft:pig"),
+        mutate=lambda e: seen.append(
+            (e.action.name, e.old_effect.amplifier, e.new_effect.amplifier)
+        ),
+    )
     ctx.run(f"effect @e[type=pig,{ctx.plot.volume}] speed 30 4")
-    await ctx.ticks(5)
-    ctx.info["events"] = effect.events
-    assert effect.count == 1, effect.events
+    await ctx.until(lambda: seen, timeout=20, what="ActorEffectEvent")
+    ctx.info["events"] = seen
+    assert seen == [("CHANGED", 1, 4)], seen
     assert target.get_effect(EffectType.SPEED).amplifier == 4
 
 

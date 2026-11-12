@@ -734,8 +734,17 @@ void init_player(py::module_ &m, py_class<Player> &player)
         location: The location of the changed block.
         block: The new block data.
 )doc")
+        .def_property_readonly("current_input", &Player::getCurrentInput, R"doc(
+    The current movement input, as last provided by the player.
+
+    Note:
+        This may not always be consistent with the current movement of the player.
+)doc")
         .def_property("respawn_location", &Player::getRespawnLocation, &Player::setRespawnLocation, R"doc(
-    The location where the player will respawn, or `None` if they don't have a valid respawn point.
+    The location where the player will respawn, or `None` if they have no respawn point or the bed or respawn anchor that set it is gone.
+
+    Reading it loads, and may generate, the chunk of the respawn block to validate it, so it must be accessed on the
+    server thread.
 
     Assigning `None` clears the respawn point. When a location is assigned, its dimension must be loaded.
 
@@ -970,8 +979,11 @@ void init_player(py::module_ &m, py_class<Player> &player)
         .def(
             "set_ability",
             [](Player &self, Identifier<Ability> ability, AbilityValue value) {
-                if (!self._setAbility(ability, value)) {
-                    throw py::value_error(std::format("Unable to set ability {}.", ability));
+                try {
+                    self._setAbility(ability, value);
+                }
+                catch (const std::invalid_argument &e) {
+                    throw py::type_error(e.what());
                 }
             },
             py::arg("ability"), py::arg("value"), R"doc(
@@ -986,7 +998,8 @@ void init_player(py::module_ &m, py_class<Player> &player)
         value: The new value, which must match the type of the ability.
 
     Raises:
-        ValueError: If the ability does not exist or the value has the wrong type.
+        IndexError: If the ability does not exist.
+        TypeError: If the value has the wrong type.
 )doc");
 }
 

@@ -367,8 +367,8 @@ void EndstonePacketHandler::handle(SetPlayerInventoryOptionsPacket &packet)
         .inventory_layout = static_cast<int>(options.layout_inv),
         .crafting_layout = static_cast<int>(options.layout_craft),
     };
-    const auto settings_changed =
-        !endstone_player->last_recipe_book_settings_ || *endstone_player->last_recipe_book_settings_ != settings;
+    const auto settings_changed = endstone_player->last_recipe_book_settings_.has_value() &&
+                                *endstone_player->last_recipe_book_settings_ != settings;
     endstone_player->last_recipe_book_settings_ = settings;
     if (!settings_changed) {
         handle();
@@ -486,11 +486,21 @@ void EndstonePacketHandler::handle(PlayerAuthInputPacket &packet)
         listeners.isEventRegistered<ActorToggleGlideEvent>()) {
         const auto e = std::make_shared<ActorToggleGlideEvent>(endstone_player, true);
         plugin_manager.callEvent(e);
+        if (e->isCancelled()) {
+            packet.setInput(PlayerAuthInputPacket::InputData::StartGliding, false);
+            player->setStatusFlag(ActorFlags::GLIDING, true);
+            player->setStatusFlag(ActorFlags::GLIDING, false);
+        }
     }
     if (packet.getInput(PlayerAuthInputPacket::InputData::StopGliding) && player->isGliding() &&
         listeners.isEventRegistered<ActorToggleGlideEvent>()) {
         const auto e = std::make_shared<ActorToggleGlideEvent>(endstone_player, false);
         plugin_manager.callEvent(e);
+        if (e->isCancelled()) {
+            packet.setInput(PlayerAuthInputPacket::InputData::StopGliding, false);
+            player->setStatusFlag(ActorFlags::GLIDING, false);
+            player->setStatusFlag(ActorFlags::GLIDING, true);
+        }
     }
     if (packet.getInput(PlayerAuthInputPacket::InputData::StartCrawling) && !player->isCrawling() &&
         listeners.isEventRegistered<PlayerToggleCrawlEvent>()) {

@@ -108,11 +108,28 @@ public:
     virtual bool addEffect(const Effect &effect) = 0;
 
     /**
+     * Attempts to add all of the given Effects to this entity.
+     *
+     * @param effects the effects to add
+     * @return whether all of the effects could be added
+     * @throws std::runtime_error if called from a thread other than the server thread
+     * @see addEffect(const Effect &)
+     */
+    virtual bool addEffects(const std::vector<Effect> &effects) = 0;
+
+    /**
      * Removes any effects of the given type that are present on this entity.
      *
      * @param type the effect type to remove
      */
     virtual void removeEffect(EffectId type) = 0;
+
+    /**
+     * Removes all effects that are currently active on this entity.
+     *
+     * @return whether any effect was removed
+     */
+    virtual bool clearActiveEffects() = 0;
 
     /**
      * Returns whether the entity already has an existing effect of the given type applied to it.

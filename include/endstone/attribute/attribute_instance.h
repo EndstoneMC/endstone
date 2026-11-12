@@ -113,6 +113,7 @@ public:
      * Add a modifier to this instance.
      *
      * @param modifier to add
+     * @throws std::invalid_argument if a modifier with the same key is already applied
      */
     virtual void addModifier(const AttributeModifier &modifier) = 0;
 
@@ -120,6 +121,7 @@ public:
      * Add a transient modifier to this instance. Transient modifiers are not persisted (saved with the NBT data).
      *
      * @param modifier to add
+     * @throws std::invalid_argument if a modifier with the same key is already applied
      */
     virtual void addTransientModifier(const AttributeModifier &modifier) = 0;
 

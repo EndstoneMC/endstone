@@ -19,7 +19,7 @@
 namespace endstone {
 
 /**
- * Called when a player's experience changes.
+ * Called when a player gains experience by picking up an experience orb.
  */
 class PlayerExpChangeEvent final : public PlayerEvent {
 public:

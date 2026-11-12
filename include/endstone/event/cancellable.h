@@ -75,6 +75,6 @@ public:
     void cancel() final { setCancelled(true); }
 
 private:
-    [[nodiscard]] bool isCancellable() const final { return true; }
+    [[nodiscard]] bool isCancellable() const override { return true; }
 };
 }  // namespace endstone

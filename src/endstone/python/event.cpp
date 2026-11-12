@@ -115,6 +115,7 @@ void init_event(py::module_ &m, py::classh<Event, PyEvent> &event)
     py::native_enum<ActorEffectEvent::Action>(actor_effect_event, "Action", "enum.Enum",
                                               "An enum to specify the action to be performed.")
         .value("ADDED", ActorEffectEvent::Action::Added)
+        .value("CHANGED", ActorEffectEvent::Action::Changed)
         .export_values()
         .finalize();
     actor_effect_event
@@ -131,7 +132,10 @@ void init_event(py::module_ &m, py::classh<Event, PyEvent> &event)
     bind_event<ActorDismountEvent, ActorEvent<Actor>, ICancellable>(
         m, "ActorDismountEvent", "Called when an `Actor` stops riding another `Actor`.")
         .def_property_readonly("dismounted", &ActorDismountEvent::getDismounted,
-                               "The actor which will no longer be ridden.");
+                               "The actor which will no longer be ridden.")
+        .def_property_readonly("is_cancellable", &ActorDismountEvent::isCancellable,
+                               "Whether cancelling this event will keep the actor mounted. Dismounts forced by the "
+                               "server, such as when the actor is destroyed, ignore cancellation.");
     bind_event<ActorChangeBlockEvent, ActorEvent<Actor>, ICancellable>(m, "ActorChangeBlockEvent", R"doc(
     Called when an `Actor` changes a block through its own behaviour, such as an enderman picking a block
     up, a ravager breaking crops, farmland being trampled or a zombie breaking a door. Explosions are
@@ -185,7 +189,7 @@ void init_event(py::module_ &m, py::classh<Event, PyEvent> &event)
                       "The location that this actor moved from.")
         .def_property("to_location", &ActorTeleportEvent::getTo, &ActorTeleportEvent::setTo,
                       "The location that this actor moved to.");
-    bind_event<ActorToggleGlideEvent, ActorEvent<Mob>>(
+    bind_event<ActorToggleGlideEvent, ActorEvent<Mob>, ICancellable>(
         m, "ActorToggleGlideEvent", "Called when an `Actor`'s gliding state is toggled with an elytra.")
         .def_property_readonly("is_gliding", &ActorToggleGlideEvent::isGliding,
                                "Whether the actor is now gliding or not.");
@@ -750,8 +754,12 @@ void init_event(py::module_ &m, py::classh<Event, PyEvent> &event)
                                "The enchanting table involved in this event.")
         .def_property("item", &EnchantItemEvent::getItem, &EnchantItemEvent::setItem,
                       "The item that will be enchanted.")
-        .def_property("exp_level_cost", &EnchantItemEvent::getExpLevelCost, &EnchantItemEvent::setExpLevelCost,
-                      "The minimum player level required by the selected option.")
+        .def_property("exp_level_cost", &EnchantItemEvent::getExpLevelCost, &EnchantItemEvent::setExpLevelCost, R"doc(
+    The minimum player level required by the selected option.
+
+    Raises:
+        ValueError: If set to a level that is not greater than 0.
+)doc")
         .def_property(
             "enchants_to_add", py::overload_cast<>(&EnchantItemEvent::getEnchantsToAdd, py::const_),
             [](EnchantItemEvent &self, EnchantItemEvent::Enchantments value) {

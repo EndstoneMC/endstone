@@ -95,12 +95,16 @@ public:
     void addModifier(const AttributeModifier &modifier) override
     {
         const auto handle = getHandle();
+        Preconditions::checkArgument(!getModifier(modifier.getKey()).has_value(),
+                                     "Modifier is already applied on this attribute!");
         handle.instance->addModifier(toMinecraft(modifier, /*serializable=*/true), handle.context);
     }
 
     void addTransientModifier(const AttributeModifier &modifier) override
     {
         const auto handle = getHandle();
+        Preconditions::checkArgument(!getModifier(modifier.getKey()).has_value(),
+                                     "Modifier is already applied on this attribute!");
         handle.instance->addModifier(toMinecraft(modifier, /*serializable=*/false), handle.context);
     }
 

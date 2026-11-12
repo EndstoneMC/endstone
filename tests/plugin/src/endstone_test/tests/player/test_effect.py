@@ -127,3 +127,43 @@ def test_remove_an_unknown_effect(mob: Player) -> None:
 def test_has_an_unknown_effect(mob: Player) -> None:
     """Verify asking about an unknown effect type reports absence."""
     assert mob.has_effect("minecraft:not_an_effect") is False
+
+
+# =============================================================================
+# Section 4: Bulk helpers
+# =============================================================================
+
+
+def test_add_effects(mob: Player) -> None:
+    """Verify several effects are applied at once and success is reported."""
+    assert (
+        mob.add_effects(
+            [Effect(EffectType.SPEED, 200, 0), Effect(EffectType.REGENERATION, 200, 0)]
+        )
+        is True
+    )
+    assert mob.has_effect(EffectType.SPEED) is True
+    assert mob.has_effect(EffectType.REGENERATION) is True
+
+
+def test_add_effects_reports_a_rejected_effect(mob: Player) -> None:
+    """Verify one refused effect makes the whole call report failure."""
+    mob.add_effect(Effect(EffectType.SPEED, 200, 1))
+    assert (
+        mob.add_effects(
+            [Effect(EffectType.SPEED, 100, 0), Effect(EffectType.REGENERATION, 200, 0)]
+        )
+        is False
+    )
+    assert mob.has_effect(EffectType.REGENERATION) is True
+
+
+def test_clear_active_effects(mob: Player) -> None:
+    """Verify clearing removes every effect and reports whether any was removed."""
+    assert mob.clear_active_effects() is False
+
+    mob.add_effects(
+        [Effect(EffectType.SPEED, 200, 0), Effect(EffectType.REGENERATION, 200, 0)]
+    )
+    assert mob.clear_active_effects() is True
+    assert mob.active_effects == []

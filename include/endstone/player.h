@@ -30,6 +30,7 @@
 #include "endstone/form/message_form.h"
 #include "endstone/form/modal_form.h"
 #include "endstone/game_mode.h"
+#include "endstone/input.h"
 #include "endstone/inventory/player_inventory.h"
 #include "endstone/json.h"
 #include "endstone/level/location.h"
@@ -120,10 +121,22 @@ public:
     virtual bool performCommand(std::string command) const = 0;  // NOLINT(*-use-nodiscard)
 
     /**
+     * Gets the current movement input, as last provided by the player.
+     *
+     * @note This may not always be consistent with the current movement of the player.
+     * @return the current input
+     */
+    [[nodiscard]] virtual Input getCurrentInput() const = 0;
+
+    /**
      * Gets the location where the player will spawn.
      *
+     * The location is validated by loading, and generating if needed, the chunk of the respawn block, so this must be
+     * called on the server thread.
+     *
      * @note Bedrock does not persist yaw/pitch for a respawn point, so both are 0 on the returned location.
-     * @return the respawn location, or std::nullopt if the player has no valid respawn point
+     * @return the respawn location, or std::nullopt if the player has no respawn point or the bed or respawn anchor
+     * that set it is gone
      */
     [[nodiscard]] virtual std::optional<Location> getRespawnLocation() const = 0;
 
@@ -643,9 +656,10 @@ public:
      *
      * @param ability The Minecraft ability to set
      * @param value The new value
-     * @return True if the value was accepted
+     * @throws std::out_of_range if the ability is not available
+     * @throws std::invalid_argument if the value type does not match the ability
      */
-    virtual bool _setAbility(Identifier<Ability> ability, AbilityValue value) = 0;
+    virtual void _setAbility(Identifier<Ability> ability, AbilityValue value) = 0;
 
     /**
      * Sets the value of an ability.
@@ -657,12 +671,12 @@ public:
      * @tparam T The type of the ability's value.
      * @param ability The Minecraft ability to set
      * @param value The new value
-     * @return True if the value was accepted
+     * @throws std::out_of_range if the ability is not available
      */
     template <typename T>
-    bool setAbility(AbilityId<T> ability, T value)
+    void setAbility(AbilityId<T> ability, T value)
     {
-        return _setAbility(ability, value);
+        _setAbility(ability, value);
     }
 };
 

@@ -35,7 +35,6 @@
 #include "endstone/event/player/player_drop_item_event.h"
 #include "endstone/event/player/player_exp_change_event.h"
 #include "endstone/event/player/player_item_consume_event.h"
-#include "endstone/event/player/player_level_change_event.h"
 #include "endstone/event/player/player_pickup_arrow_event.h"
 #include "endstone/event/player/player_pickup_item_event.h"
 #include "endstone/event/player/player_set_spawn_event.h"
@@ -149,25 +148,15 @@ bool Player::drop(const ItemStack &item, bool randomly)
 
 void Player::addExperience(int amount)
 {
+    if (!hasComponent<endstone::core::InternalExperienceOrbPickupFlagComponent>()) {
+        ENDSTONE_HOOK_CALL_ORIGINAL(&Player::addExperience, this, amount);
+        return;
+    }
     const auto &server = endstone::core::EndstoneServer::getInstance();
     const auto e =
         std::make_shared<endstone::PlayerExpChangeEvent>(getEndstoneActor<endstone::core::EndstonePlayer>(), amount);
     server.getPluginManager().callEvent(e);
     ENDSTONE_HOOK_CALL_ORIGINAL(&Player::addExperience, this, e->getAmount());
-}
-
-void Player::addLevels(int levels)
-{
-    const auto old_level = getPlayerLevel();
-    ENDSTONE_HOOK_CALL_ORIGINAL(&Player::addLevels, this, levels);
-    const auto new_level = getPlayerLevel();
-    if (old_level == new_level) {
-        return;
-    }
-    const auto &server = endstone::core::EndstoneServer::getInstance();
-    const auto e = std::make_shared<endstone::PlayerLevelChangeEvent>(
-        getEndstoneActor<endstone::core::EndstonePlayer>(), old_level, new_level);
-    server.getPluginManager().callEvent(e);
 }
 
 bool Player::take(Actor &actor, int unknown, int favored_slot)
@@ -283,18 +272,12 @@ bool Player::setSpawnBlockRespawnPosition(const BlockPos &spawn_block_position, 
     }
 
     auto cause = endstone::PlayerSetSpawnEvent::Cause::Unknown;
-    if (hasComponent<endstone::core::InternalSpawnChangeFlagComponent>()) {
-        addOrRemoveComponent<endstone::core::InternalSpawnChangeFlagComponent>(false);
-        cause = endstone::PlayerSetSpawnEvent::Cause::Plugin;
+    const auto block_name = getDimensionBlockSource().getBlock(spawn_block_position).getName().getString();
+    if (block_name == "minecraft:bed") {
+        cause = endstone::PlayerSetSpawnEvent::Cause::Bed;
     }
-    else {
-        const auto block_name = getDimensionBlockSource().getBlock(spawn_block_position).getName().getString();
-        if (block_name == "minecraft:bed") {
-            cause = endstone::PlayerSetSpawnEvent::Cause::Bed;
-        }
-        else if (block_name == "minecraft:respawn_anchor") {
-            cause = endstone::PlayerSetSpawnEvent::Cause::RespawnAnchor;
-        }
+    else if (block_name == "minecraft:respawn_anchor") {
+        cause = endstone::PlayerSetSpawnEvent::Cause::RespawnAnchor;
     }
 
     const auto position = fire_set_spawn_event(*this, spawn_block_position, dimension, cause);
@@ -317,10 +300,10 @@ void Player::setRespawnPosition(const BlockPos &respawn_position, DimensionType 
         return;
     }
 
-    auto cause = endstone::PlayerSetSpawnEvent::Cause::Command;
-    if (hasComponent<endstone::core::InternalSpawnChangeFlagComponent>()) {
-        addOrRemoveComponent<endstone::core::InternalSpawnChangeFlagComponent>(false);
-        cause = endstone::PlayerSetSpawnEvent::Cause::Plugin;
+    auto cause = endstone::PlayerSetSpawnEvent::Cause::Plugin;
+    const auto level_entity = getLevel().getLevelEntity().unwrap();
+    if (level_entity && level_entity->hasComponent<endstone::core::InternalSpawnPointCommandFlagComponent>()) {
+        cause = endstone::PlayerSetSpawnEvent::Cause::Command;
     }
 
     const auto position = fire_set_spawn_event(*this, respawn_position, dimension, cause);

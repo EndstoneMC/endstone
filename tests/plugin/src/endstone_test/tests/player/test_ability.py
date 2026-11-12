@@ -121,13 +121,13 @@ def test_get_unknown_ability_raises(player: Player) -> None:
 
 def test_set_unknown_ability_raises(player: Player) -> None:
     """Writing an ability that does not exist raises."""
-    with pytest.raises(ValueError):
+    with pytest.raises(IndexError):
         player.set_ability("minecraft:not_an_ability", True)
 
 
 def test_set_wrong_value_type_raises(player: Player) -> None:
     """A value whose type does not match the ability is rejected."""
-    with pytest.raises(ValueError):
+    with pytest.raises(TypeError):
         player.set_ability(FLOAT_ABILITY, True)
-    with pytest.raises(ValueError):
+    with pytest.raises(TypeError):
         player.set_ability(BOOL_ABILITY, 0.5)

@@ -108,10 +108,10 @@ def _effect(event, fields, history):
     effect = event.new_effect
     assert namespaced(effect.type)
     assert str(effect.type) == str(event.modified_type)
-    assert event.old_effect is None
+    assert (event.old_effect is None) == (event.action.name == "ADDED")
     assert effect.amplifier >= 0
     assert (effect.duration == __import__('endstone.potion', fromlist=['Effect']).Effect.INFINITE_DURATION) == effect.infinite
-    assert event.action.name == "ADDED"
+    assert event.action.name in ("ADDED", "CHANGED")
 
 
 @check("ActorPickupItemEvent")

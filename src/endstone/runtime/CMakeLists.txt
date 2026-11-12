@@ -8,6 +8,7 @@ find_package(tomlplusplus REQUIRED)
 
 add_library(endstone_runtime SHARED
         bedrock_hooks/actor.cpp
+        bedrock_hooks/actor_dimension_transferer.cpp
         bedrock_hooks/armor_stand.cpp
         bedrock_hooks/bedrock_event_logger.cpp
         bedrock_hooks/bucket.cpp
@@ -60,6 +61,7 @@ add_library(endstone_runtime SHARED
         bedrock_hooks/script_server_network_event_handler.cpp
         bedrock_hooks/server_waypoint.cpp
         bedrock_hooks/simple_network_interface_impl.cpp
+        bedrock_hooks/spawn_point_command.cpp
         bedrock_hooks/server_instance.cpp
         bedrock_hooks/server_network_handler.cpp
         bedrock_hooks/server_player.cpp

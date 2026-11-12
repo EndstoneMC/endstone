@@ -191,3 +191,33 @@ def test_transient_modifier_applies(attack_damage: AttributeInstance) -> None:
     modifier = AttributeModifier("endstone:test_modifier", 3.0, AttributeModifier.ADD)
     attack_damage.add_transient_modifier(modifier)
     assert attack_damage.get_modifier("endstone:test_modifier") is not None
+
+
+def test_duplicate_modifier_is_rejected(attack_damage: AttributeInstance) -> None:
+    """Verify adding a modifier whose key is already applied raises ValueError."""
+    modifier = AttributeModifier("endstone:test_modifier", 2.0, AttributeModifier.ADD)
+    attack_damage.add_modifier(modifier)
+    with pytest.raises(ValueError):
+        attack_damage.add_modifier(modifier)
+    with pytest.raises(ValueError):
+        attack_damage.add_transient_modifier(
+            AttributeModifier("endstone:test_modifier", 5.0, AttributeModifier.MULTIPLY)
+        )
+    assert len(attack_damage.modifiers) == 1
+
+
+def test_modifier_equality(attack_damage: AttributeInstance) -> None:
+    """Verify modifiers compare and hash by key, amount and operation."""
+    modifier = AttributeModifier("endstone:test_modifier", 2.0, AttributeModifier.ADD)
+    attack_damage.add_modifier(modifier)
+    applied = attack_damage.get_modifier("endstone:test_modifier")
+    assert applied == modifier
+    assert hash(applied) == hash(modifier)
+    assert applied != AttributeModifier(
+        "endstone:test_modifier", 3.0, AttributeModifier.ADD
+    )
+    assert applied != AttributeModifier("endstone:other", 2.0, AttributeModifier.ADD)
+    assert applied != AttributeModifier(
+        "endstone:test_modifier", 2.0, AttributeModifier.MULTIPLY
+    )
+    assert len({applied, modifier}) == 1

@@ -17,6 +17,7 @@
 #include <unordered_map>
 #include <utility>
 
+#include "endstone/check.h"
 #include "endstone/enchantments/enchantment.h"
 #include "endstone/event/cancellable.h"
 #include "endstone/event/inventory/inventory_event.h"
@@ -90,8 +91,13 @@ public:
      * Sets the minimum player level required by the selected option.
      *
      * @param exp_level_cost the minimum required player level
+     * @throws std::invalid_argument if the level is not greater than 0
      */
-    void setExpLevelCost(int exp_level_cost) { exp_level_cost_ = exp_level_cost; }
+    void setExpLevelCost(int exp_level_cost)
+    {
+        Preconditions::checkArgument(exp_level_cost > 0, "The cost must be greater than 0!");
+        exp_level_cost_ = exp_level_cost;
+    }
 
     /**
      * Gets the enchantments that will be applied to the item.

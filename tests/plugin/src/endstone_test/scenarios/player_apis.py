@@ -261,6 +261,20 @@ async def sign_dimension(ctx: Context) -> None:
     assert opened.count == 0, opened.events
 
 
+@scenario("apis.current_input", plot=True, budget=BUDGET)
+async def current_input(ctx: Context) -> None:
+    bot, player = await into_plot(ctx, "ApInput")
+    idle = player.current_input
+    assert not (
+        idle.is_forward
+        or idle.is_backward
+        or idle.is_left
+        or idle.is_right
+        or idle.is_jump
+        or idle.is_sprint
+    )
+
+
 @scenario("apis.respawn_location", plot=True, budget=BUDGET)
 async def respawn_location(ctx: Context) -> None:
     bot, player = await into_plot(ctx, "ApSpawn", op=True)
@@ -359,12 +373,16 @@ async def abilities_speed(ctx: Context) -> None:
     player.set_ability(Ability.VERTICAL_FLY_SPEED, 2.0)
     await abilities_until(ctx, bot, since, lambda update: near(update["vertical_fly_speed"], 2.0), "vertical fly speed 2.0")
     since = await mark(bot)
-    for bad in ((Ability.BUILD, 0.5), (Ability.FLY_SPEED, True), ("minecraft:nonsense", True)):
+    for bad, error in (
+        ((Ability.BUILD, 0.5), TypeError),
+        ((Ability.FLY_SPEED, True), TypeError),
+        (("minecraft:nonsense", True), IndexError),
+    ):
         try:
             player.set_ability(*bad)
-        except ValueError:
+        except error:
             continue
-        raise AssertionError(f"set_ability{bad} did not raise ValueError")
+        raise AssertionError(f"set_ability{bad} did not raise {error.__name__}")
     await settle(ctx, player, bot, since)
     assert not await got(bot, "UpdateAbilitiesPacket", since), "a rejected set_ability still reached the client"
 

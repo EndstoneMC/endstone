@@ -20,6 +20,7 @@
 
 #include "bedrock/entity/components/container_component.h"
 #include "bedrock/entity/components/hopper_component.h"
+#include "bedrock/entity/components/is_being_teleported_flag_component.h"
 #include "bedrock/entity/components/shareable_component.h"
 #include "bedrock/server/server_player.h"
 #include "bedrock/world/actor/actor.h"
@@ -87,14 +88,25 @@ bool handleEvent(const ActorRemovedEvent &event)
             return true;
         }
 
+        const auto &server = endstone::core::EndstoneServer::getInstance();
+        const bool changed_dimension = actor->hasComponent<endstone::core::InternalChangedDimensionFlagComponent>();
+        if (server.hasHiddenActors() && !changed_dimension) {
+            const auto endstone_actor = actor->getEndstoneActor();
+            for (const auto &viewer : server.getOnlinePlayers()) {
+                static_cast<endstone::core::EndstonePlayer &>(*viewer).onEntityRemove(*endstone_actor);
+            }
+        }
+
         if (actor->hasComponent<endstone::core::InternalRemoveFlagComponent>()) {
             // Don't call if the entity is removed before it is even spawned (when the spawn event is cancelled)
             actor->addOrRemoveComponent<endstone::core::InternalRemoveFlagComponent>(false);
             return true;
         }
 
-        const auto e = std::make_shared<endstone::ActorRemoveEvent>(actor->getEndstoneActor());
-        endstone::core::EndstoneServer::getInstance().getPluginManager().callEvent(e);
+        if (!changed_dimension) {
+            const auto e = std::make_shared<endstone::ActorRemoveEvent>(actor->getEndstoneActor());
+            endstone::core::EndstoneServer::getInstance().getPluginManager().callEvent(e);
+        }
         closeInventoryViewers(*actor);
     }
     return true;
@@ -140,9 +152,12 @@ bool handleEvent(::ActorAddEffectEvent &event)
         event.mob_effect.displaysOnScreenTextureAnimation(),
     };
 
-    const auto e = std::make_shared<endstone::ActorEffectEvent>(mob->getEndstoneActor<endstone::core::EndstoneMob>(),
-                                                                endstone::ActorEffectEvent::Action::Added, type,
-                                                                std::nullopt, effect);
+    auto endstone_mob = mob->getEndstoneActor<endstone::core::EndstoneMob>();
+    auto old_effect = endstone_mob->getEffect(type);
+    const auto action =
+        old_effect ? endstone::ActorEffectEvent::Action::Changed : endstone::ActorEffectEvent::Action::Added;
+    const auto e =
+        std::make_shared<endstone::ActorEffectEvent>(endstone_mob, action, type, std::move(old_effect), effect);
     server.getPluginManager().callEvent(e);
     return !e->isCancelled();
 }
@@ -210,8 +225,9 @@ bool handleEvent(const ActorStopRidingEvent &event)
         return true;
     }
 
-    const auto e =
-        std::make_shared<endstone::ActorDismountEvent>(passenger->getEndstoneActor(), vehicle->getEndstoneActor());
+    const auto e = std::make_shared<endstone::ActorDismountEvent>(
+        passenger->getEndstoneActor(), vehicle->getEndstoneActor(),
+        !event.actor_is_being_destroyed && !passenger->hasComponent<IsBeingTeleportedFlagComponent>());
     server.getPluginManager().callEvent(e);
     return !e->isCancelled();
 }

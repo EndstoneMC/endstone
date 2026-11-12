@@ -159,8 +159,12 @@ async def login_cancel(ctx: Context) -> None:
     assert joined.count == 0, joined.events
     assert kicked.count == 0, "a login refusal ran through PlayerKickEvent"
     after = await barrier(ctx, {observer: since})
-    assert left.count == 0, f"PlayerQuitEvent fired for a player who never joined: {left.events}"
-    assert after["LcLoginCO"] == [], f"the observer heard a quit message for a player who never joined: {after}"
+    assert left.count == 0, (
+        f"PlayerQuitEvent fired for a player who never joined: {left.events}"
+    )
+    assert after["LcLoginCO"] == [], (
+        f"the observer heard a quit message for a player who never joined: {after}"
+    )
 
 
 @scenario("lifecycle.login.mutate", covers={PlayerLoginEvent: "mutate"}, budget=1500)
@@ -355,7 +359,9 @@ async def chat_cancel(ctx: Context) -> None:
     assert after == {"LcChatCA": [], "LcChatCB": [], "LcChatCC": []}, after
 
 
-@scenario("lifecycle.chat.mutate_message", covers={PlayerChatEvent: "mutate"}, budget=1500)
+@scenario(
+    "lifecycle.chat.mutate_message", covers={PlayerChatEvent: "mutate"}, budget=1500
+)
 async def chat_mutate_message(ctx: Context) -> None:
     chat = ctx.capture(
         PlayerChatEvent,
@@ -372,7 +378,9 @@ async def chat_mutate_message(ctx: Context) -> None:
         assert lines == [expected], (name, lines)
 
 
-@scenario("lifecycle.chat.mutate_format", covers={PlayerChatEvent: "mutate"}, budget=1500)
+@scenario(
+    "lifecycle.chat.mutate_format", covers={PlayerChatEvent: "mutate"}, budget=1500
+)
 async def chat_mutate_format(ctx: Context) -> None:
     chat = ctx.capture(
         PlayerChatEvent,
@@ -389,7 +397,9 @@ async def chat_mutate_format(ctx: Context) -> None:
         assert lines == [expected], (name, lines)
 
 
-@scenario("lifecycle.chat.mutate_player", covers={PlayerChatEvent: "mutate"}, budget=1500)
+@scenario(
+    "lifecycle.chat.mutate_player", covers={PlayerChatEvent: "mutate"}, budget=1500
+)
 async def chat_mutate_player(ctx: Context) -> None:
     def impersonate(e) -> None:
         e.player = ctx.server.get_player("LcChatPC")
@@ -416,11 +426,17 @@ async def chat_recipients(ctx: Context) -> None:
     await ctx.until(lambda: chat.count, timeout=40, what="PlayerChatEvent")
     after = await barrier(ctx, since)
     assert after == {"LcChatRA": [], "LcChatRB": [], "LcChatRC": []}, after
-    assert sorted(p["name"] for p in chat.events[0]["recipients"]) == ["LcChatRA", "LcChatRB", "LcChatRC"]
+    assert sorted(p["name"] for p in chat.events[0]["recipients"]) == [
+        "LcChatRA",
+        "LcChatRB",
+        "LcChatRC",
+    ]
     assert chat.events[0]["after"]["recipients"] == [], chat.events[0]["after"]
 
 
-@scenario("lifecycle.command.normal", covers={PlayerCommandEvent: "normal"}, budget=1500)
+@scenario(
+    "lifecycle.command.normal", covers={PlayerCommandEvent: "normal"}, budget=1500
+)
 async def command_normal(ctx: Context) -> None:
     command = ctx.capture(PlayerCommandEvent, named("LcCmdN"))
     bot, player = await join(ctx, "LcCmdN", op=True)
@@ -432,7 +448,9 @@ async def command_normal(ctx: Context) -> None:
     assert command.events[0]["command"] == "/gamemode creative"
 
 
-@scenario("lifecycle.command.cancel", covers={PlayerCommandEvent: "cancel"}, budget=1500)
+@scenario(
+    "lifecycle.command.cancel", covers={PlayerCommandEvent: "cancel"}, budget=1500
+)
 async def command_cancel(ctx: Context) -> None:
     command = ctx.capture(PlayerCommandEvent, named("LcCmdC"), cancel=True)
     changed = ctx.capture(PlayerGameModeChangeEvent, named("LcCmdC"))
@@ -447,7 +465,9 @@ async def command_cancel(ctx: Context) -> None:
     assert not any("gamemode" in str(line) for line in lines), lines
 
 
-@scenario("lifecycle.command.mutate", covers={PlayerCommandEvent: "mutate"}, budget=1500)
+@scenario(
+    "lifecycle.command.mutate", covers={PlayerCommandEvent: "mutate"}, budget=1500
+)
 async def command_mutate(ctx: Context) -> None:
     ctx.capture(
         PlayerCommandEvent,
@@ -487,8 +507,8 @@ async def unknown_command_normal(ctx: Context) -> None:
         "params": ["lcunknownn"],
     }
     assert ("obj", f"{SECTION}c%commands.generic.unknown", ["lcunknownn"]) in got
-    console = ctx.command("lcunknownn from the console")
-    assert not console.success
+    await ctx.console("lcunknownn from the console")
+    await ctx.until(lambda: unknown.count == 2, what="the console UnknownCommandEvent")
     assert unknown.count == 2, unknown.events
     assert unknown.events[1]["sender"]["sender"] == "Server", unknown.events[1]
 
@@ -684,7 +704,12 @@ async def death_mutate(ctx: Context) -> None:
     assert after["LcDeathMO"] == [], after
 
 
-@scenario("lifecycle.respawn.normal", covers={PlayerRespawnEvent: "normal"}, plot=True, budget=1500)
+@scenario(
+    "lifecycle.respawn.normal",
+    covers={PlayerRespawnEvent: "normal"},
+    plot=True,
+    budget=1500,
+)
 async def respawn_normal(ctx: Context) -> None:
     respawn = ctx.capture(PlayerRespawnEvent, named("LcRespawn"))
     death = ctx.capture(PlayerDeathEvent, named("LcRespawn"))
@@ -709,19 +734,28 @@ async def respawn_normal(ctx: Context) -> None:
     assert player.health > 0
     assert near(xyz(player), home, 0.6), (xyz(player), home)
     await bot_arrives(ctx, bot, home, "the spawn point", 0.6)
-    assert not await bot.call("local_player.is_dead"), "the client still sees itself dead"
+    assert not await bot.call("local_player.is_dead"), (
+        "the client still sees itself dead"
+    )
 
 
 async def spawn_packets(ctx: Context, bot, since: int) -> list[dict]:
     for _ in range(60):
-        packets = await bot.call("get_received_packets", "SetSpawnPositionPacket", since)
+        packets = await bot.call(
+            "get_received_packets", "SetSpawnPositionPacket", since
+        )
         if packets:
             return packets
         await ctx.ticks(1)
     return []
 
 
-@scenario("lifecycle.setspawn.normal", covers={PlayerSetSpawnEvent: "normal"}, plot=True, budget=1500)
+@scenario(
+    "lifecycle.setspawn.normal",
+    covers={PlayerSetSpawnEvent: "normal"},
+    plot=True,
+    budget=1500,
+)
 async def setspawn_normal(ctx: Context) -> None:
     spawn = ctx.capture(PlayerSetSpawnEvent, named("LcSpawnN"))
     bot, player = await join(ctx, "LcSpawnN", op=True)
@@ -734,7 +768,9 @@ async def setspawn_normal(ctx: Context) -> None:
     assert [first["location"][k] for k in "xyz"] == [float(c) for c in cell], first
     assert first["location"]["dimension"] == "minecraft:overworld"
     stored = player.respawn_location
-    assert stored is not None and [int(stored.x), int(stored.y), int(stored.z)] == list(cell)
+    assert stored is not None and [int(stored.x), int(stored.y), int(stored.z)] == list(
+        cell
+    )
     assert result.success
     packets = await spawn_packets(ctx, bot, since)
     assert packets, "the client was not told about the new spawn"
@@ -746,7 +782,12 @@ async def setspawn_normal(ctx: Context) -> None:
     assert [int(stored.x), int(stored.y), int(stored.z)] == list(other)
 
 
-@scenario("lifecycle.setspawn.cancel", covers={PlayerSetSpawnEvent: "cancel"}, plot=True, budget=1500)
+@scenario(
+    "lifecycle.setspawn.cancel",
+    covers={PlayerSetSpawnEvent: "cancel"},
+    plot=True,
+    budget=1500,
+)
 async def setspawn_cancel(ctx: Context) -> None:
     spawn = ctx.capture(PlayerSetSpawnEvent, named("LcSpawnC"), cancel=True)
     bot, player = await join(ctx, "LcSpawnC", op=True)
@@ -758,12 +799,19 @@ async def setspawn_cancel(ctx: Context) -> None:
     assert result.success, result.output
     assert player.respawn_location == before, (before, player.respawn_location)
     assert not await bot.call("get_received_packets", "SetSpawnPositionPacket", since)
-    player.respawn_location = Location(ctx.overworld, *[float(c) for c in ctx.plot.pos(9, 0, 9)])
+    player.respawn_location = Location(
+        ctx.overworld, *[float(c) for c in ctx.plot.pos(9, 0, 9)]
+    )
     await ctx.until(lambda: spawn.count == 2, timeout=40, what="the plugin spawn")
     assert player.respawn_location == before, (before, player.respawn_location)
 
 
-@scenario("lifecycle.setspawn.mutate", covers={PlayerSetSpawnEvent: "mutate"}, plot=True, budget=1500)
+@scenario(
+    "lifecycle.setspawn.mutate",
+    covers={PlayerSetSpawnEvent: "mutate"},
+    plot=True,
+    budget=1500,
+)
 async def setspawn_mutate(ctx: Context) -> None:
     target = [float(c) for c in ctx.plot.pos(12, 0, 12)]
     spawn = ctx.capture(
@@ -776,10 +824,16 @@ async def setspawn_mutate(ctx: Context) -> None:
     ctx.run(f"spawnpoint LcSpawnM {ctx.plot.at(4, 0, 4)}")
     await ctx.until(lambda: spawn.count, timeout=40, what="the command spawn")
     stored = player.respawn_location
-    assert [int(stored.x), int(stored.y), int(stored.z)] == [int(c) for c in target], stored
+    assert [int(stored.x), int(stored.y), int(stored.z)] == [int(c) for c in target], (
+        stored
+    )
     packets = await spawn_packets(ctx, bot, since)
     assert packets, "the client was not told about the new spawn"
-    assert packets[-1]["packet"]["pos"] == {"x": int(target[0]), "y": int(target[1]), "z": int(target[2])}, packets
+    assert packets[-1]["packet"]["pos"] == {
+        "x": int(target[0]),
+        "y": int(target[1]),
+        "z": int(target[2]),
+    }, packets
 
 
 @scenario("lifecycle.setspawn.clear", plot=True, budget=1500)
@@ -790,11 +844,20 @@ async def setspawn_clear(ctx: Context) -> None:
     await ctx.until(lambda: spawn.count, timeout=40, what="the command spawn")
     assert player.respawn_location is not None
     ctx.run("clearspawnpoint LcSpawnX")
-    await ctx.until(lambda: player.respawn_location is None, timeout=40, what="a cleared spawn")
-    assert spawn.count == 1, f"/clearspawnpoint fired PlayerSetSpawnEvent: {spawn.events[1:]}"
+    await ctx.until(
+        lambda: player.respawn_location is None, timeout=40, what="a cleared spawn"
+    )
+    assert spawn.count == 1, (
+        f"/clearspawnpoint fired PlayerSetSpawnEvent: {spawn.events[1:]}"
+    )
 
 
-@scenario("lifecycle.teleport.normal", covers={PlayerTeleportEvent: "normal"}, plot=True, budget=1500)
+@scenario(
+    "lifecycle.teleport.normal",
+    covers={PlayerTeleportEvent: "normal"},
+    plot=True,
+    budget=1500,
+)
 async def teleport_normal(ctx: Context) -> None:
     bot, player, start = await stand_in_plot(ctx, "LcTpN")
     teleport = ctx.capture(PlayerTeleportEvent, named("LcTpN"))
@@ -815,7 +878,12 @@ async def teleport_normal(ctx: Context) -> None:
     await bot_arrives(ctx, bot, api, "the API target")
 
 
-@scenario("lifecycle.teleport.cancel", covers={PlayerTeleportEvent: "cancel"}, plot=True, budget=1500)
+@scenario(
+    "lifecycle.teleport.cancel",
+    covers={PlayerTeleportEvent: "cancel"},
+    plot=True,
+    budget=1500,
+)
 async def teleport_cancel(ctx: Context) -> None:
     bot, player, start = await stand_in_plot(ctx, "LcTpC")
     teleport = ctx.capture(PlayerTeleportEvent, named("LcTpC"), cancel=True)
@@ -830,7 +898,12 @@ async def teleport_cancel(ctx: Context) -> None:
     assert near(await bot_position(bot), start, 0.5), await bot_position(bot)
 
 
-@scenario("lifecycle.teleport.mutate", covers={PlayerTeleportEvent: "mutate"}, plot=True, budget=1500)
+@scenario(
+    "lifecycle.teleport.mutate",
+    covers={PlayerTeleportEvent: "mutate"},
+    plot=True,
+    budget=1500,
+)
 async def teleport_mutate(ctx: Context) -> None:
     bot, player, _ = await stand_in_plot(ctx, "LcTpM")
     landing = [float(c) + 0.5 for c in ctx.plot.pos(13, 0, 13)]
@@ -845,7 +918,12 @@ async def teleport_mutate(ctx: Context) -> None:
     assert near(xyz(player), landing, 0.5), xyz(player)
 
 
-@scenario("lifecycle.dimension.normal", covers={PlayerDimensionChangeEvent: "normal"}, plot=True, budget=3000)
+@scenario(
+    "lifecycle.dimension.normal",
+    covers={PlayerDimensionChangeEvent: "normal"},
+    plot=True,
+    budget=3000,
+)
 async def dimension_normal(ctx: Context) -> None:
     bot, player, _ = await stand_in_plot(ctx, "LcDim")
     changed = ctx.capture(PlayerDimensionChangeEvent, named("LcDim"))
@@ -873,24 +951,20 @@ def drop_orb(ctx: Context, where) -> None:
     ctx.run(f"summon xp_orb {where[0]} {where[1]} {where[2]}")
 
 
-@scenario("lifecycle.exp.normal", covers={PlayerExpChangeEvent: "normal"}, plot=True, budget=1500)
-async def exp_normal(ctx: Context) -> None:
+@scenario("lifecycle.exp.not_orb", plot=True, budget=1500)
+async def exp_not_orb(ctx: Context) -> None:
     exp = ctx.capture(PlayerExpChangeEvent, named("LcExpN"))
     bot, player, _ = await stand_in_plot(ctx, "LcExpN")
     ctx.run("xp 5 LcExpN")
-    await ctx.until(lambda: exp.count, timeout=40, what="the /xp event")
-    assert exp.events[0]["amount"] == 5
-    assert player.total_exp == 5, player.total_exp
+    await ctx.until(lambda: player.total_exp == 5, timeout=40, what="the /xp gain")
     player.give_exp(7)
-    await ctx.until(lambda: exp.count == 2, timeout=40, what="the API event")
-    assert exp.events[1]["amount"] == 7
     assert player.total_exp == 12, player.total_exp
-    refused = ctx.command("xp -5 LcExpN")
-    assert not refused.success and exp.count == 2, (refused.output, exp.events)
     player.give_exp(-4)
-    await ctx.until(lambda: exp.count == 3, timeout=40, what="the negative API event")
-    assert exp.events[2]["amount"] == -4
     assert player.total_exp == 8, player.total_exp
+    await ctx.ticks(10)
+    assert exp.count == 0, (
+        f"PlayerExpChangeEvent fired for something other than an orb pickup: {exp.events}"
+    )
 
 
 @scenario(
@@ -913,7 +987,12 @@ async def exp_pickup(ctx: Context) -> None:
     assert not orbs_near(ctx, where), "the picked up orb is still there"
 
 
-@scenario("lifecycle.exp.pickup_cancel", covers={PlayerPickupExperienceEvent: "cancel"}, plot=True, budget=1500)
+@scenario(
+    "lifecycle.exp.pickup_cancel",
+    covers={PlayerPickupExperienceEvent: "cancel"},
+    plot=True,
+    budget=1500,
+)
 async def exp_pickup_cancel(ctx: Context) -> None:
     pickup = ctx.capture(PlayerPickupExperienceEvent, named("LcExpC"), cancel=True)
     exp = ctx.capture(PlayerExpChangeEvent, named("LcExpC"))
@@ -927,7 +1006,12 @@ async def exp_pickup_cancel(ctx: Context) -> None:
         await ctx.ticks(1)
 
 
-@scenario("lifecycle.exp.mutate", covers={PlayerExpChangeEvent: "mutate"}, plot=True, budget=1500)
+@scenario(
+    "lifecycle.exp.mutate",
+    covers={PlayerExpChangeEvent: "mutate"},
+    plot=True,
+    budget=1500,
+)
 async def exp_mutate(ctx: Context) -> None:
     exp = ctx.capture(
         PlayerExpChangeEvent,
@@ -935,26 +1019,32 @@ async def exp_mutate(ctx: Context) -> None:
         mutate=lambda e: setattr(e, "amount", 9),
     )
     bot, player, where = await stand_in_plot(ctx, "LcExpM")
-    ctx.run("xp 2 LcExpM")
-    await ctx.until(lambda: exp.count, timeout=40, what="the /xp event")
-    assert exp.events[0]["amount"] == 2 and exp.events[0]["after"]["amount"] == 9
-    assert player.total_exp == 9, player.total_exp
     drop_orb(ctx, where)
-    await ctx.until(lambda: exp.count == 2, timeout=200, what="the orb event")
-    assert player.total_exp == 18, player.total_exp
+    await ctx.until(lambda: exp.count, timeout=200, what="the orb event")
+    assert exp.events[0]["after"]["amount"] == 9
+    assert player.total_exp == 9, player.total_exp
 
 
-@scenario("lifecycle.level.normal", covers={PlayerLevelChangeEvent: "normal"}, plot=True, budget=1500)
+@scenario(
+    "lifecycle.level.normal",
+    covers={PlayerLevelChangeEvent: "normal"},
+    plot=True,
+    budget=1500,
+)
 async def level_normal(ctx: Context) -> None:
     level = ctx.capture(PlayerLevelChangeEvent, named("LcLevel"))
     bot, player, _ = await stand_in_plot(ctx, "LcLevel")
     ctx.run("xp 3L LcLevel")
     await ctx.until(lambda: level.count, timeout=40, what="the /xp levels event")
-    assert (level.events[-1]["old_level"], level.events[-1]["new_level"]) == (0, 3), level.events
+    assert (level.events[-1]["old_level"], level.events[-1]["new_level"]) == (0, 3), (
+        level.events
+    )
     assert player.exp_level == 3
     seen = level.count
     player.give_exp(2000)
-    await ctx.until(lambda: player.exp_level > 3, timeout=40, what="points turned to levels")
+    await ctx.until(
+        lambda: player.exp_level > 3, timeout=40, what="points turned to levels"
+    )
     gained = level.events[seen:]
     assert gained, "gaining levels through points fired no PlayerLevelChangeEvent"
     assert gained[0]["old_level"] == 3
@@ -964,7 +1054,9 @@ async def level_normal(ctx: Context) -> None:
     seen = level.count
     ctx.run("xp -2L LcLevel")
     await ctx.until(lambda: level.count > seen, timeout=40, what="the level loss")
-    assert level.events[-1]["new_level"] == level.events[-1]["old_level"] - 2, level.events[-1]
+    assert level.events[-1]["new_level"] == level.events[-1]["old_level"] - 2, (
+        level.events[-1]
+    )
 
 
 @scenario("lifecycle.chat.recipients_discard", budget=1500)
@@ -979,7 +1071,9 @@ async def chat_recipients_discard(ctx: Context) -> None:
         except KeyError:
             pass
         else:
-            raise AssertionError("remove() of a player no longer in the set did not raise KeyError")
+            raise AssertionError(
+                "remove() of a player no longer in the set did not raise KeyError"
+            )
         assert b not in e.recipients and len(e.recipients) == 2
 
     chat = ctx.capture(PlayerChatEvent, named("LcChatDA"), mutate=drop)
@@ -989,9 +1083,14 @@ async def chat_recipients_discard(ctx: Context) -> None:
     await ctx.until(lambda: chat.count, timeout=40, what="PlayerChatEvent")
     after = await barrier(ctx, since)
     expected = ("chat", "LcChatDA", "not for b")
-    assert after == {"LcChatDA": [expected], "LcChatDB": [], "LcChatDC": [expected]}, after
+    assert after == {"LcChatDA": [expected], "LcChatDB": [], "LcChatDC": [expected]}, (
+        after
+    )
     assert chat.error is None, chat.error
-    assert sorted(p["name"] for p in chat.events[0]["after"]["recipients"]) == ["LcChatDA", "LcChatDC"]
+    assert sorted(p["name"] for p in chat.events[0]["after"]["recipients"]) == [
+        "LcChatDA",
+        "LcChatDC",
+    ]
 
 
 @scenario("lifecycle.chat.recipients_add", budget=1500)
@@ -1025,7 +1124,9 @@ async def broadcast_recipients(ctx: Context) -> None:
         assert b in e.recipients and ctx.server.command_sender in e.recipients
         e.recipients.discard(b)
 
-    broadcast = ctx.capture(BroadcastMessageEvent, lambda e: e.message == text, mutate=drop)
+    broadcast = ctx.capture(
+        BroadcastMessageEvent, lambda e: e.message == text, mutate=drop
+    )
     a, _ = await join(ctx, "LcBcRA")
     b, _ = await join(ctx, "LcBcRB")
     since = {bot: await mark(bot) for bot in (a, b)}
@@ -1035,9 +1136,11 @@ async def broadcast_recipients(ctx: Context) -> None:
     assert any(text in line for line in lines), lines
     after = await barrier(ctx, since)
     assert after == {"LcBcRA": [("raw", text)], "LcBcRB": []}, after
-    names = sorted(r["sender"] if "sender" in r else r["name"] for r in broadcast.events[0]["after"]["recipients"])
+    names = sorted(
+        r["sender"] if "sender" in r else r["name"]
+        for r in broadcast.events[0]["after"]["recipients"]
+    )
     assert "LcBcRB" not in names and "LcBcRA" in names, names
-
 
 
 @scenario("lifecycle.chat.recipients_set_api", budget=1500)
@@ -1062,8 +1165,17 @@ async def chat_recipients_set_api(ctx: Context) -> None:
         seen["or"] = (r | {a}) == {a, b, c}
         seen["and"] = (r & {a, b}) == {a, b}
         seen["xor"] = (r ^ {a}) == {b, c}
-        seen["subset"] = r.issubset({a, b, c}) and r.issuperset({a}) and r <= {a, b, c} and not r < {a, b, c}
-        seen["union"] = r.union([a]) == {a, b, c} and r.difference({c}) == {a, b} and r.intersection({c}) == {c}
+        seen["subset"] = (
+            r.issubset({a, b, c})
+            and r.issuperset({a})
+            and r <= {a, b, c}
+            and not r < {a, b, c}
+        )
+        seen["union"] = (
+            r.union([a]) == {a, b, c}
+            and r.difference({c}) == {a, b}
+            and r.intersection({c}) == {c}
+        )
         try:
             for player in r:
                 r.discard(player)
@@ -1098,7 +1210,9 @@ async def chat_recipients_set_api(ctx: Context) -> None:
     assert chat.error is None, chat.error
     ctx.info["seen"] = seen
     expected = ("chat", "LcChatSA", "set api")
-    assert after == {"LcChatSA": [expected], "LcChatSB": [], "LcChatSC": [expected]}, after
+    assert after == {"LcChatSA": [expected], "LcChatSB": [], "LcChatSC": [expected]}, (
+        after
+    )
     assert seen == {
         "mutable_set": True,
         "equal": True,
@@ -1132,12 +1246,16 @@ async def broadcast_recipients_set_api(ctx: Context) -> None:
         b = ctx.server.get_player("LcBcSB")
         staff = {b}
         rest = e.recipients - staff
-        seen["minus"] = type(rest) is set and b not in rest and ctx.server.command_sender in rest
+        seen["minus"] = (
+            type(rest) is set and b not in rest and ctx.server.command_sender in rest
+        )
         seen["copy"] = e.recipients.copy() == set(e.recipients)
         recipients = e.recipients
         recipients -= staff
 
-    broadcast = ctx.capture(BroadcastMessageEvent, lambda e: e.message == text, mutate=probe)
+    broadcast = ctx.capture(
+        BroadcastMessageEvent, lambda e: e.message == text, mutate=probe
+    )
     a, _ = await join(ctx, "LcBcSA")
     b, _ = await join(ctx, "LcBcSB")
     since = {bot: await mark(bot) for bot in (a, b)}
@@ -1148,13 +1266,15 @@ async def broadcast_recipients_set_api(ctx: Context) -> None:
     assert after == {"LcBcSA": [("raw", text)], "LcBcSB": []}, after
 
 
-
 def foreign_element_errors(recipients) -> dict:
     errors = {}
     for label, call in (
         ("add", lambda: recipients.add("nobody")),
         ("update", lambda: recipients.update(["nobody"])),
-        ("symmetric_difference_update", lambda: recipients.symmetric_difference_update(["nobody"])),
+        (
+            "symmetric_difference_update",
+            lambda: recipients.symmetric_difference_update(["nobody"]),
+        ),
         ("ior", lambda: recipients.__ior__({"nobody"})),
     ):
         try:
@@ -1199,9 +1319,79 @@ async def broadcast_recipients_set_types(ctx: Context) -> None:
     def probe(e) -> None:
         seen.update(foreign_element_errors(e.recipients))
 
-    broadcast = ctx.capture(BroadcastMessageEvent, lambda e: e.message == text, mutate=probe)
+    broadcast = ctx.capture(
+        BroadcastMessageEvent, lambda e: e.message == text, mutate=probe
+    )
     a, _ = await join(ctx, "LcBcTA")
     ctx.server.broadcast_message(text)
     await ctx.until(lambda: broadcast.count, timeout=40, what="BroadcastMessageEvent")
     assert broadcast.error is None, broadcast.error
     assert seen == FOREIGN_ELEMENT_ERRORS, seen
+
+
+@scenario(
+    "lifecycle.setspawn.bed",
+    covers={PlayerSetSpawnEvent: "normal"},
+    plot=True,
+    budget=1500,
+)
+async def setspawn_bed(ctx: Context) -> None:
+    from endstone_test.scenarios.player_blocks import bed_halves, made_bed
+
+    spawn = ctx.capture(PlayerSetSpawnEvent, named("LcSpawnB"))
+    bot, player = await join(ctx, "LcSpawnB", op=True)
+    ctx.run("time set midnight")
+    try:
+        halves = await made_bed(ctx, bot, player, "LcSpawnB")
+        assert player.respawn_location is None
+        await bot.call("game_mode.use_item_on", list(halves[0]), 1)
+        await ctx.until(lambda: spawn.count, timeout=60, what="the bed spawn")
+        assert spawn.events[0]["cause"] == "BED", spawn.events[0]
+        stored = player.respawn_location
+        assert stored is not None, "a slept-in bed gave no respawn location"
+        await bot.call("local_player.stop_sleeping")
+        for half in halves:
+            ctx.run(f"setblock {half[0]} {half[1]} {half[2]} air")
+        await ctx.until(
+            lambda: not bed_halves(ctx, halves[0]), timeout=60, what="the bed to go"
+        )
+        assert player.respawn_location is None, player.respawn_location
+    finally:
+        ctx.run("time set day")
+
+
+@scenario(
+    "lifecycle.setspawn.anchor", covers={PlayerSetSpawnEvent: "normal"}, budget=1500
+)
+async def setspawn_anchor(ctx: Context) -> None:
+    spawn = ctx.capture(PlayerSetSpawnEvent, named("LcSpawnA"))
+    bot, player = await join(ctx, "LcSpawnA", op=True)
+    ctx.run("execute in nether run tp LcSpawnA 1000.5 100 1000.5")
+    await ctx.until(
+        lambda: str(player.location.dimension.id) == "minecraft:nether",
+        timeout=200,
+        what="the player in the nether",
+    )
+    await ctx.ticks(60)
+    ctx.run("execute in nether run fill 998 98 998 1004 98 1004 glass")
+    ctx.run(
+        'execute in nether run setblock 1002 99 1000 respawn_anchor ["respawn_anchor_charge"=1]'
+    )
+    nether = ctx.server.level.get_dimension("nether")
+    await ctx.until(
+        lambda: (
+            str(nether.get_block_at(1002, 99, 1000).type) == "minecraft:respawn_anchor"
+        ),
+        timeout=100,
+        what="the anchor",
+    )
+    await ctx.ticks(40)
+    await bot.call("game_mode.use_item_on", [1002, 99, 1000], 1)
+    await ctx.until(lambda: spawn.count, timeout=100, what="the anchor spawn")
+    assert spawn.events[0]["cause"] == "RESPAWN_ANCHOR", spawn.events[0]
+    stored = player.respawn_location
+    assert stored is not None and str(stored.dimension.id) == "minecraft:nether", stored
+    ctx.run("execute in nether run setblock 1002 99 1000 air")
+    await ctx.until(
+        lambda: player.respawn_location is None, timeout=60, what="the broken anchor"
+    )

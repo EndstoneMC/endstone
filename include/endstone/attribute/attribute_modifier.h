@@ -88,6 +88,13 @@ public:
      */
     [[nodiscard]] Operation getOperation() const { return operation_; }
 
+    [[nodiscard]] bool operator==(const AttributeModifier &other) const
+    {
+        return key_ == other.key_ && amount_ == other.amount_ && operation_ == other.operation_;
+    }
+
+    [[nodiscard]] bool operator!=(const AttributeModifier &other) const { return !(*this == other); }
+
 private:
     std::string key_;
     float amount_;

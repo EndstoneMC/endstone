@@ -282,8 +282,22 @@ void init_actor(py::module_ &m, py_class<Actor> &actor, py_class<Mob> &mob)
     Raises:
         RuntimeError: If called from a thread other than the server thread.
 )doc")
+        .def("add_effects", &Mob::addEffects, py::arg("effects"), R"doc(
+    Attempts to add all of the given potion effects to this entity.
+
+    Args:
+        effects: The effects to add.
+
+    Returns:
+        `True` if all of the effects could be added.
+
+    Raises:
+        RuntimeError: If called from a thread other than the server thread.
+)doc")
         .def("remove_effect", &Mob::removeEffect, py::arg("type"),
              "Removes any effects of the given type that are present on this entity.")
+        .def("clear_active_effects", &Mob::clearActiveEffects,
+             "Removes all effects that are currently active on this entity. Returns `True` if any effect was removed.")
         .def("has_effect", &Mob::hasEffect, py::arg("type"),
              "Returns whether the entity already has an existing effect of the given type applied to it.")
         .def("get_effect", &Mob::getEffect, py::arg("type"),

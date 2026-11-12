@@ -643,6 +643,87 @@ def carried(player, item: str) -> int:
     return sum(i.amount for i in player.inventory.contents if i is not None and str(i.type) == item)
 
 
+WATER_HOLDERS = {
+    "waterlogged slab": 'stone_block_slab ["minecraft:vertical_half"="bottom"]',
+    "kelp": "kelp",
+}
+
+
+@scenario(
+    "blocks.bucket.fill.liquid_layer",
+    covers={PlayerBucketFillEvent: "normal"},
+    plot=True,
+    budget=BUDGET,
+)
+async def bucket_fill_liquid_layer(ctx: Context) -> None:
+    bot, player = await join(ctx, "bkFillL")
+    filled = ctx.capture(PlayerBucketFillEvent, mine("bkFillL"), extra=bucket_id)
+    for label, holder in WATER_HOLDERS.items():
+        at = await with_liquid(ctx, bot, "bkFillL", "water")
+        ctx.run(f"setblock {at[0]} {at[1]} {at[2]} {holder} replace")
+        await ctx.until(
+            lambda: type_at(ctx, at) != "minecraft:water",
+            timeout=20,
+            what=f"the {label}",
+        )
+        await seen_by(ctx, bot, at)
+        before = filled.count
+        await bot.call("game_mode.use_item_on", list(at), 1)
+        await ctx.until(
+            lambda: filled.count > before,
+            timeout=40,
+            what=f"PlayerBucketFillEvent for the {label}",
+        )
+        await ctx.until(
+            lambda: server_slot(player, 0) == ("minecraft:water_bucket", 1),
+            timeout=40,
+            what=f"the {label} water",
+        )
+        await ctx.ticks(5)
+        assert filled.count == before + 1, filled.events[before:]
+        event = filled.events[before]
+        assert coords(event["block"]) == at and coords(event["block_clicked"]) == at, (
+            event
+        )
+        assert event["item_stack"] == {"type": "minecraft:water_bucket", "amount": 1}, (
+            event["item_stack"]
+        )
+
+
+@scenario(
+    "blocks.bucket.fill.liquid_layer_cancel",
+    covers={PlayerBucketFillEvent: "cancel"},
+    plot=True,
+    budget=BUDGET,
+)
+async def bucket_fill_liquid_layer_cancel(ctx: Context) -> None:
+    bot, player = await join(ctx, "bkFillLN")
+    filled = ctx.capture(PlayerBucketFillEvent, mine("bkFillLN"), cancel=True)
+    for label, holder in WATER_HOLDERS.items():
+        at = await with_liquid(ctx, bot, "bkFillLN", "water")
+        ctx.run(f"setblock {at[0]} {at[1]} {at[2]} {holder} replace")
+        await ctx.until(
+            lambda: type_at(ctx, at) != "minecraft:water",
+            timeout=20,
+            what=f"the {label}",
+        )
+        await seen_by(ctx, bot, at)
+        held = type_at(ctx, at)
+        before = filled.count
+        await bot.call("game_mode.use_item_on", list(at), 1)
+        await ctx.until(
+            lambda: filled.count > before,
+            timeout=40,
+            what=f"PlayerBucketFillEvent for the {label}",
+        )
+        await ctx.ticks(20)
+        assert type_at(ctx, at) == held, f"a cancelled fill changed the {label}"
+        assert server_slot(player, 0) == ("minecraft:bucket", 1), (
+            "a cancelled fill still changed the bucket"
+        )
+        assert await client_slot(bot, 0) == ("minecraft:bucket", 1)
+
+
 @scenario(
     "blocks.bucket.fill.creative",
     covers={PlayerBucketFillEvent: "normal"},

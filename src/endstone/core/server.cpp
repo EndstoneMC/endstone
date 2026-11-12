@@ -995,6 +995,7 @@ void EndstoneServer::tick(std::uint64_t current_tick, const std::function<void()
     tick_function();
     for (const auto &p : getOnlinePlayers()) {
         p.cast<EndstonePlayer>()->checkOpStatus();
+        p.cast<EndstonePlayer>()->checkLevelChange();
     }
     tick_pending_ = true;
 }

@@ -83,7 +83,12 @@ void init_attribute(py::module_ &m)
         .def_property_readonly("amount", &AttributeModifier::getAmount,
                                "The amount by which this modifier will apply its operation.")
         .def_property_readonly("operation", &AttributeModifier::getOperation,
-                               "The operation this modifier will apply.");
+                               "The operation this modifier will apply.")
+        .def(py::self == py::self)  // NOLINT(misc-redundant-expression)
+        .def(py::self != py::self)  // NOLINT(misc-redundant-expression)
+        .def("__hash__", [](const AttributeModifier &self) {
+            return py::hash(py::make_tuple(std::string(self.getKey()), self.getAmount(), self.getOperation()));
+        });
 
     py::classh<AttributeInstance>(
         m, "AttributeInstance",
@@ -113,12 +118,18 @@ void init_attribute(py::module_ &m)
 
     Args:
         modifier: Modifier to add.
+
+    Raises:
+        ValueError: If a modifier with the same key is already applied on this instance.
 )doc")
         .def("add_transient_modifier", &AttributeInstance::addTransientModifier, py::arg("modifier"), R"doc(
     Add a transient modifier to this instance. Transient modifiers are not persisted (saved with the NBT data).
 
     Args:
         modifier: Modifier to add.
+
+    Raises:
+        ValueError: If a modifier with the same key is already applied on this instance.
 )doc")
         .def("remove_modifier", py::overload_cast<const AttributeModifier &>(&AttributeInstance::removeModifier),
              py::arg("modifier"), R"doc(

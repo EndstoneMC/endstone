@@ -888,9 +888,20 @@ async def enchant_apply_mutate_enchants(ctx: Context) -> None:
 @scenario("inventory.enchant.apply_mutate_cost", covers={EnchantItemEvent: "mutate"}, plot=True, budget=BUDGET)
 async def enchant_apply_mutate_cost(ctx: Context) -> None:
     bot, player, prepare, enchant = await enchant_setup(ctx, "invmodcost")
-    enchant.mutate = lambda e: setattr(e, "exp_level_cost", 31)
+    rejected = []
+
+    def mutate(e):
+        for cost in (0, -1):
+            try:
+                e.exp_level_cost = cost
+            except ValueError:
+                rejected.append(cost)
+        e.exp_level_cost = 31
+
+    enchant.mutate = mutate
     request = await bot.call("item_stack_net_manager.enchant", 0)
     reply = await verdict(ctx, bot, request)
+    assert rejected == [0, -1], rejected
     await ctx.ticks(5)
     await finish(ctx, bot)
     assert reply["result"] != "SUCCESS", "an offer now costing more levels than the player has was still bought"

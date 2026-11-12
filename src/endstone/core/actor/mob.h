@@ -119,11 +119,29 @@ public:
         return getEffect(effect.getType()) != before;
     }
 
+    bool addEffects(const std::vector<Effect> &effects) override
+    {
+        bool success = true;
+        for (const auto &effect : effects) {
+            success &= addEffect(effect);
+        }
+        return success;
+    }
+
     void removeEffect(EffectId type) override
     {
         const auto *mob_effect = ::MobEffect::getByName(std::string{type.getKey()});
         Preconditions::checkArgument(mob_effect != nullptr, "Unknown effect type: {}", type);
         Base::getHandle().removeEffect(static_cast<int>(mob_effect->getId()));
+    }
+
+    bool clearActiveEffects() override
+    {
+        const auto effects = getActiveEffects();
+        for (const auto &effect : effects) {
+            removeEffect(effect.getType());
+        }
+        return !effects.empty();
     }
 
     [[nodiscard]] bool hasEffect(EffectId type) const override { return getEffect(type).has_value(); }

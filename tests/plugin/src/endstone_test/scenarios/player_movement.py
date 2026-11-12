@@ -408,6 +408,48 @@ async def glide_normal(ctx: Context) -> None:
     ctx.info["gliding_after"] = player.is_gliding
 
 
+@scenario(
+    "movement.glide.cancel",
+    covers={ActorToggleGlideEvent: "cancel"},
+    plot=True,
+    budget=BUDGET,
+)
+async def glide_cancel(ctx: Context) -> None:
+    bot, player, start = await join(ctx, "mvglideno")
+    ctx.run("replaceitem entity mvglideno slot.armor.chest 0 elytra")
+    x, y, z = ctx.plot.pos(8, 0, 8)
+    ctx.run(f"tp mvglideno {x + 0.5} {y + 15} {z + 0.5}")
+    await ctx.until(
+        lambda: not player.is_on_ground,
+        timeout=20,
+        what="the player to leave the ground",
+    )
+    toggles = ctx.capture(
+        ActorToggleGlideEvent,
+        lambda e: e.actor.name == "mvglideno",
+        cancel=True,
+        extra=before_actor("is_gliding"),
+    )
+    await bot.call("local_player.set_gliding", True)
+    await ctx.until(lambda: toggles.count, timeout=40, what="the glide toggle")
+    held = await states(ctx, lambda: player.is_gliding, 30)
+    assert held == {False}, f"a cancelled glide still made the server glide: {held}"
+    assert toggles.count == 1, toggles.events
+    assert (
+        toggles.events[0]["is_gliding"] is True and toggles.events[0]["before"] is False
+    )
+    ctx.release(toggles)
+    again = ctx.capture(ActorToggleGlideEvent, lambda e: e.actor.name == "mvglideno")
+    await bot.call("local_player.set_gliding", False)
+    await bot.call("local_player.set_gliding", True)
+    await ctx.until(lambda: again.count, timeout=40, what="a later glide to fire")
+    await ctx.until(
+        lambda: player.is_gliding,
+        timeout=40,
+        what="the player to glide once not cancelled",
+    )
+
+
 @scenario("movement.riptide.normal", covers={PlayerRiptideEvent: "normal"}, plot=True, budget=BUDGET)
 async def riptide_normal(ctx: Context) -> None:
     bot, player, start = await join(ctx, "mvtrident")

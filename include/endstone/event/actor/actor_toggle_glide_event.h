@@ -16,17 +16,18 @@
 
 #include "endstone/actor/mob.h"
 #include "endstone/event/actor/actor_event.h"
+#include "endstone/event/cancellable.h"
 
 namespace endstone {
 
 /**
  * Called when an Actor's gliding state is toggled with an elytra.
  */
-class ActorToggleGlideEvent final : public ActorEvent<Mob> {
+class ActorToggleGlideEvent final : public Cancellable<ActorEvent<Mob>> {
 public:
     ENDSTONE_EVENT(ActorToggleGlideEvent)
 
-    explicit ActorToggleGlideEvent(const NotNull<Mob> &actor, bool gliding) : ActorEvent(actor), gliding_(gliding) {}
+    explicit ActorToggleGlideEvent(const NotNull<Mob> &actor, bool gliding) : Cancellable(actor), gliding_(gliding) {}
 
     /**
      * Returns whether the actor is now gliding or not.

@@ -33,6 +33,7 @@ struct InternalBucketFillActorComponent {
     std::optional<ItemStack> item_stack;
     bool write_item_stack = false;
 };
+struct InternalChangedDimensionFlagComponent {};
 struct InternalCauldronInteractionComponent {
     Nullable<Actor> actor;
     BlockPos pos;
@@ -45,6 +46,7 @@ struct InternalCraftResultReplacedFlagComponent {};
 struct InternalDisconnectFlagComponent {};
 struct InternalEntityContainerOpenFlagComponent {};
 struct InternalExperienceOrbPickupCancelledFlagComponent {};
+struct InternalExperienceOrbPickupFlagComponent {};
 struct InternalLoginCancelledFlagComponent {};
 struct InternalOpenContainerComponent {
     std::variant<BlockPos, ActorUniqueID> owner;
@@ -54,7 +56,7 @@ struct InternalOpenSignCauseComponent {
     PlayerOpenSignEvent::Cause cause = PlayerOpenSignEvent::Cause::Unknown;
 };
 struct InternalRemoveFlagComponent {};
-struct InternalSpawnChangeFlagComponent {};
+struct InternalSpawnPointCommandFlagComponent {};
 struct InternalSuppressEnchantOptionsFlagComponent {};
 struct InternalTeleportFlagComponent {};
 struct MobHurtFlagComponent {};

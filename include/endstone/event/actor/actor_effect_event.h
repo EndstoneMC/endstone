@@ -40,6 +40,10 @@ public:
          * When the effect is added because the mob didn't have its type.
          */
         Added,
+        /**
+         * When the effect is changed because the mob already had its type.
+         */
+        Changed,
     };
 
     ENDSTONE_EVENT(ActorEffectEvent);

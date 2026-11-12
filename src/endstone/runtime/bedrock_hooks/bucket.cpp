@@ -59,14 +59,18 @@ InteractionResult BucketItem::_useOn(::ItemStack &item_stack, ::Actor &actor, Bl
     std::optional<endstone::ItemStack> replacement;
     if (fill_type == BucketFillType::Empty) {
         static const HashedString liquid_depth{"liquid_depth"};
-        const auto &block_name = clicked_block.getName().getString();
-        if (block_name == "minecraft:powder_snow") {
+        const auto &clicked_name = clicked_block.getName().getString();
+        const auto &liquid_block = clicked_name == "minecraft:water" || clicked_name == "minecraft:lava"
+                                     ? clicked_block
+                                     : block_source.getLiquidBlock(position);
+        const auto &liquid_name = liquid_block.getName().getString();
+        if (clicked_name == "minecraft:powder_snow") {
             result_item = ::ItemStack("minecraft:powder_snow_bucket");
         }
-        else if ((block_name == "minecraft:water" || block_name == "minecraft:lava") &&
-                 clicked_block.getState<int>(liquid_depth) == 0) {
-            result_item = ::ItemStack(block_name == "minecraft:water" ? "minecraft:water_bucket"
-                                                                      : "minecraft:lava_bucket");
+        else if ((liquid_name == "minecraft:water" || liquid_name == "minecraft:lava") &&
+                 liquid_block.getState<int>(liquid_depth) == 0) {
+            result_item = ::ItemStack(liquid_name == "minecraft:water" ? "minecraft:water_bucket"
+                                                                       : "minecraft:lava_bucket");
         }
         if (!result_item) {
             return ENDSTONE_HOOK_CALL_ORIGINAL(&BucketItem::_useOn, this, item_stack, actor, position, face, hand_slot, click_pos);

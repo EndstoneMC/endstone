@@ -26,10 +26,27 @@ class ActorDismountEvent : public Cancellable<ActorEvent<Actor>> {
 public:
     ENDSTONE_EVENT(ActorDismountEvent);
 
-    explicit ActorDismountEvent(const NotNull<Actor> &actor, const NotNull<Actor> &dismounted)
-        : Cancellable(actor), dismounted_(dismounted)
+    explicit ActorDismountEvent(const NotNull<Actor> &actor, const NotNull<Actor> &dismounted, bool cancellable = true)
+        : Cancellable(actor), dismounted_(dismounted), cancellable_(cancellable)
     {
     }
+
+    void setCancelled(bool cancel) override
+    {
+        if (cancel && !cancellable_) {
+            return;
+        }
+        Cancellable::setCancelled(cancel);
+    }
+
+    /**
+     * Gets whether this dismount can be cancelled.
+     *
+     * Dismounts forced by the server, such as when the actor is destroyed, ignore cancellation.
+     *
+     * @return `true` if cancelling this event will keep the actor mounted
+     */
+    [[nodiscard]] bool isCancellable() const override { return cancellable_; }
 
     /**
      * Gets the actor which will no longer be ridden.
@@ -40,6 +57,7 @@ public:
 
 private:
     NotNull<Actor> dismounted_;
+    bool cancellable_;
 };
 
 }  // namespace endstone

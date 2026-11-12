@@ -79,6 +79,7 @@ public:
     void transfer(std::string host, int port) const override;
     void kick(std::string message) const override;
     bool performCommand(std::string command) const override;  // NOLINT(*-use-nodiscard)
+    [[nodiscard]] Input getCurrentInput() const override;
     [[nodiscard]] std::optional<Location> getRespawnLocation() const override;
     void setRespawnLocation(std::optional<Location> location) override;
     void sendBlockUpdate(const Location &location, const BlockActorState &block_actor_state) override;
@@ -143,7 +144,7 @@ public:
     void sendPacket(int packet_id, std::string_view payload) const override;
     void sendMap(MapView &map) override;
     [[nodiscard]] AbilityValue _getAbility(Identifier<Ability> ability) const override;
-    bool _setAbility(Identifier<Ability> ability, AbilityValue value) override;
+    void _setAbility(Identifier<Ability> ability, AbilityValue value) override;
 
     void onFormClose(std::uint32_t form_id, PlayerFormCloseReason reason);
     void onFormResponse(std::uint32_t form_id, const nlohmann::json &json);
@@ -156,6 +157,8 @@ public:
     void updateAbilities() const;
     void clearPinnedInput();
     void checkOpStatus();
+    void checkLevelChange();
+    void onEntityRemove(const Actor &actor);
     [[nodiscard]] bool hasHiddenActors() const;
     [[nodiscard]] bool isActorHidden(std::int64_t unique_id) const;
     [[nodiscard]] bool isPlayerHidden(std::uint64_t runtime_id) const;
@@ -189,6 +192,7 @@ private:
     std::uint32_t form_ids_ = 0xffff;  // Set to a large value to avoid collision with forms created by script api
     std::unordered_map<std::uint32_t, FormVariant> forms_;
     Input last_input_;
+    int old_level_ = -1;
     std::bitset<PlayerAuthInputPacket::InputData::INPUT_NUM> pinned_input_;
     std::bitset<PlayerAuthInputPacket::InputData::INPUT_NUM> pinned_input_value_;
     bool accepted_sneak_ = false;

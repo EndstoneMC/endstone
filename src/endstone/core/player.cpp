@@ -85,6 +85,7 @@
 #include "endstone/event/player/player_item_held_event.h"
 #include "endstone/event/player/player_join_event.h"
 #include "endstone/event/player/player_jump_event.h"
+#include "endstone/event/player/player_level_change_event.h"
 #include "endstone/event/player/player_move_event.h"
 #include "endstone/event/player/player_open_sign_event.h"
 #include "endstone/event/player/player_recipe_book_settings_change_event.h"
@@ -309,6 +310,11 @@ bool EndstonePlayer::performCommand(std::string command) const
     return server_.dispatchCommand(self(), command);
 }
 
+Input EndstonePlayer::getCurrentInput() const
+{
+    return last_input_;
+}
+
 std::optional<Location> EndstonePlayer::getRespawnLocation() const
 {
     const auto &point = getHandle().getPlayerRespawnPoint();
@@ -320,13 +326,21 @@ std::optional<Location> EndstonePlayer::getRespawnLocation() const
     if (!dimension) {
         return std::nullopt;
     }
+    if (point.spawn_block_pos != BlockPos::MIN) {
+        const auto &spawn_block = point.spawn_block_pos;
+        auto &handle = dimension.cast<EndstoneDimension>()->getHandle();
+        dimension->loadChunk(spawn_block.x >> 4, spawn_block.z >> 4);
+        auto &region = handle.getBlockSourceFromMainChunkSource();
+        if (!region.getBlock(spawn_block).getBlockType().canSpawnAt(region, spawn_block)) {
+            return std::nullopt;
+        }
+    }
     return Location{dimension, point.player_position.x, point.player_position.y, point.player_position.z};
 }
 
 void EndstonePlayer::setRespawnLocation(std::optional<Location> location)
 {
     if (!location) {
-        getHandle().addOrRemoveComponent<InternalSpawnChangeFlagComponent>(true);
         getHandle().setRespawnPosition(BlockPos::MIN, VanillaDimensions::Undefined);
         return;
     }
@@ -337,7 +351,6 @@ void EndstonePlayer::setRespawnLocation(std::optional<Location> location)
 
     const auto dimension = location->getDimension();
     const auto dimension_id = static_cast<const EndstoneDimension &>(dimension.value()).getHandle().getDimensionId();
-    getHandle().addOrRemoveComponent<InternalSpawnChangeFlagComponent>(true);
     getHandle().setRespawnPosition(BlockPos(location->getX(), location->getY(), location->getZ()), dimension_id);
 }
 
@@ -974,23 +987,22 @@ AbilityValue EndstonePlayer::_getAbility(const Identifier<Ability> ability) cons
     throw std::runtime_error("Ability holds no value type.");
 }
 
-bool EndstonePlayer::_setAbility(const Identifier<Ability> ability, AbilityValue value)
+void EndstonePlayer::_setAbility(const Identifier<Ability> ability, AbilityValue value)
 {
     const auto *entry = server_.getRegistry<Ability>().get(ability);
     if (entry == nullptr) {
-        return false;
+        throw std::out_of_range("Ability is not available.");
     }
 
     const auto index = static_cast<const EndstoneAbility *>(entry)->getIndex();
     auto &abilities = getHandle().getAbilities();
     const auto expected = std::holds_alternative<bool>(value) ? ::Ability::Type::Bool : ::Ability::Type::Float;
     if (abilities.getAbility(index).getType() != expected) {
-        return false;
+        throw std::invalid_argument("Ability value type does not match.");
     }
 
     std::visit([&abilities, index](auto &&v) { abilities.setAbility(index, v); }, value);
     updateAbilities();
-    return true;
 }
 
 void EndstonePlayer::onFormClose(std::uint32_t form_id, PlayerFormCloseReason /*reason*/)
@@ -1193,6 +1205,11 @@ void EndstonePlayer::disconnect()
     server_.hidden_actor_count_ -= hidden_actors_.size();
     hidden_actors_.clear();
     hidden_player_runtime_ids_.clear();
+    if (server_.hasHiddenActors()) {
+        for (const auto &viewer : server_.getOnlinePlayers()) {
+            static_cast<EndstonePlayer &>(*viewer).onEntityRemove(*this);
+        }
+    }
 }
 
 void EndstonePlayer::sendNetworkPacket(std::shared_ptr<::Packet> packet) const
@@ -1221,6 +1238,20 @@ void EndstonePlayer::clearPinnedInput()
     pinned_input_value_.reset();
     accepted_sneak_ = last_input_.isSneak();
     jump_pinned_inputs_ = 0;
+}
+
+void EndstonePlayer::checkLevelChange()
+{
+    const auto level = getHandle().getPlayerLevel();
+    if (old_level_ == -1) {
+        old_level_ = level;
+    }
+
+    if (old_level_ != level) {
+        const auto e = std::make_shared<PlayerLevelChangeEvent>(self(), old_level_, level);
+        server_.getPluginManager().callEvent(e);
+        old_level_ = level;
+    }
 }
 
 void EndstonePlayer::checkOpStatus()
@@ -1272,6 +1303,17 @@ void EndstonePlayer::sendPlayerListAdd(const ::Player &player) const
         .color = entry.color,
     });
     getHandle().sendNetworkPacket(*packet);
+}
+
+void EndstonePlayer::onEntityRemove(const Actor &actor)
+{
+    if (const auto it = hidden_actors_.find(actor.getId()); it != hidden_actors_.end()) {
+        hidden_actors_.erase(it);
+        --server_.hidden_actor_count_;
+    }
+    if (dynamic_cast<const EndstonePlayer *>(&actor) != nullptr) {
+        hidden_player_runtime_ids_.erase(actor.getRuntimeId());
+    }
 }
 
 bool EndstonePlayer::hasHiddenActors() const
