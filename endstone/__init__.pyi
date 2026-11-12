@@ -162,9 +162,6 @@ class Server:
     def command_map(self) -> CommandMap:
         """
         The command map for registering and looking up commands.
-
-        Raises:
-            RuntimeError: If the level has not loaded yet, as in the `on_enable` of a plugin loaded at STARTUP.
         """
 
     def get_plugin_command(self, name: str) -> PluginCommand | None:
@@ -193,10 +190,10 @@ class Server:
             command_line: The command + arguments.
 
         Returns:
-            `True` if execution is successful, `False` otherwise.
+            `True` if the command was found and run, `False` if no such command exists.
 
         Raises:
-            RuntimeError: If the level has not loaded yet, as in the `on_enable` of a plugin loaded at STARTUP.
+            RuntimeError: If called from a thread other than the primary server thread.
         """
 
     @property
@@ -604,9 +601,21 @@ class Player(Mob):
         """
 
     @property
+    def current_input(self) -> Input:
+        """
+        The current movement input, as last provided by the player.
+
+        Note:
+            This may not always be consistent with the current movement of the player.
+        """
+
+    @property
     def respawn_location(self) -> Location | None:
         """
-        The location where the player will respawn, or `None` if they don't have a valid respawn point.
+        The location where the player will respawn, or `None` if they have no respawn point or the bed or respawn anchor that set it is gone.
+
+        Reading it loads, and may generate, the chunk of the respawn block to validate it, so it must be accessed on the
+        server thread.
 
         Assigning `None` clears the respawn point. When a location is assigned, its dimension must be loaded.
 
@@ -1001,7 +1010,8 @@ class Player(Mob):
             value: The new value, which must match the type of the ability.
 
         Raises:
-            ValueError: If the ability does not exist or the value has the wrong type.
+            IndexError: If the ability does not exist.
+            TypeError: If the value has the wrong type.
         """
 
 class Ability(typing.Generic[_T]):

@@ -5,7 +5,7 @@ Classes relating to the blocks in a world, including special states.
 import enum
 import typing
 
-from endstone import Identifier, Rotation
+from endstone import Identifier, Player, Rotation
 from endstone.actor import ActorType
 from endstone.inventory import Inventory, ItemStack
 from endstone.level import Dimension, Location
@@ -365,7 +365,29 @@ class Container(BlockActorState):
 
         If the block was changed to a different type in the meantime, the returned inventory might no
         longer be valid.
+
+        Modifications to the returned inventory apply to the block at once, without a call to `update()`.
         """
+
+    @property
+    def snapshot_inventory(self) -> Inventory:
+        """
+        The captured inventory snapshot of this container.
+
+        The returned inventory is not linked to the block. Modifications to it do not apply to the block
+        until `update()` is called.
+        """
+
+    @property
+    def custom_name(self) -> str | None:
+        """
+        Gets or sets the custom name of this container, or `None` if it has none.
+
+        Setting an empty name or `None` clears the custom name.
+        """
+
+    @custom_name.setter
+    def custom_name(self, arg1: str | None) -> None: ...
 
 class Campfire(BlockActorState):
     """
@@ -442,7 +464,7 @@ class CreatureSpawner(BlockActorState):
     @property
     def min_spawn_delay(self) -> int:
         """
-        The minimum delay the spawner will wait between spawns, in ticks.
+        The minimum delay the spawner will wait between spawns, in ticks. Must not exceed `max_spawn_delay`.
         """
 
     @min_spawn_delay.setter
@@ -451,6 +473,7 @@ class CreatureSpawner(BlockActorState):
     def max_spawn_delay(self) -> int:
         """
         The maximum delay the spawner will wait between spawns, in ticks.
+        Must be at least 1 and at least `min_spawn_delay`.
         """
 
     @max_spawn_delay.setter
@@ -487,6 +510,10 @@ class CreatureSpawner(BlockActorState):
 
     @spawn_range.setter
     def spawn_range(self, arg1: int) -> None: ...
+    def reset_timer(self) -> None:
+        """
+        Resets the spawner's delay, drawing a new one between the minimum and maximum spawn delay.
+        """
 
 class Lectern(BlockActorState):
     """
@@ -509,6 +536,17 @@ class Lectern(BlockActorState):
 
         If the block was changed to a different type in the meantime, the returned inventory might no
         longer be valid.
+
+        Modifications to the returned inventory apply to the block at once, without a call to `update()`.
+        """
+
+    @property
+    def snapshot_inventory(self) -> Inventory:
+        """
+        The captured inventory snapshot of this lectern.
+
+        The returned inventory is not linked to the block. Modifications to it do not apply to the block
+        until `update()` is called.
         """
 
 class Furnace(Container):
@@ -642,6 +680,17 @@ class Sign(BlockActorState):
 
     Changes are kept in the captured state until `update()` is called.
     """
+    def get_target_side(self, player: Player) -> SignSide:
+        """
+        Gets the side of this sign that the given player is facing.
+
+        Args:
+            player: The player.
+
+        Returns:
+            The side of the sign that faces the player.
+        """
+
     def get_side(self, side: Side) -> SignSide:
         """
         Gets the side of this sign.

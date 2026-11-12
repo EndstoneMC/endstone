@@ -130,6 +130,10 @@ class AttributeModifier:
         The operation this modifier will apply.
         """
 
+    def __eq__(self, other: object) -> bool: ...
+    def __hash__(self) -> int: ...
+    def __ne__(self, other: object) -> bool: ...
+
 class AttributeInstance:
     """
     Represents a mutable instance of an attribute and its associated modifiers and values.
@@ -193,6 +197,9 @@ class AttributeInstance:
 
         Args:
             modifier: Modifier to add.
+
+        Raises:
+            ValueError: If a modifier with the same key is already applied on this instance.
         """
 
     def add_transient_modifier(self, modifier: AttributeModifier) -> None:
@@ -201,6 +208,9 @@ class AttributeInstance:
 
         Args:
             modifier: Modifier to add.
+
+        Raises:
+            ValueError: If a modifier with the same key is already applied on this instance.
         """
 
     @typing.overload

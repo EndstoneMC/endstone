@@ -416,8 +416,10 @@ class ActorEffectEvent(MobEvent, Cancellable):
         """
 
         ADDED = 0
+        CHANGED = 1
 
     ADDED = Action.ADDED
+    CHANGED = Action.CHANGED
     @property
     def action(self) -> Action:
         """
@@ -467,6 +469,12 @@ class ActorDismountEvent(ActorEvent, Cancellable):
     def dismounted(self) -> Actor:
         """
         The actor which will no longer be ridden.
+        """
+
+    @property
+    def is_cancellable(self) -> bool:
+        """
+        Whether cancelling this event will keep the actor mounted. Dismounts forced by the server, such as when the actor is destroyed, ignore cancellation.
         """
 
 class ActorChangeBlockEvent(ActorEvent, Cancellable):
@@ -650,10 +658,27 @@ class ActorTeleportEvent(ActorEvent, Cancellable):
     @to_location.setter
     def to_location(self, arg1: Location) -> None: ...
 
-class ActorToggleGlideEvent(MobEvent):
+class ActorToggleGlideEvent(MobEvent, Cancellable):
     """
     Called when an `Actor`'s gliding state is toggled with an elytra.
     """
+    @property
+    def is_cancelled(self) -> bool:
+        """
+        The cancellation state of this event.
+
+        A cancelled event will not be executed in the server, but will still pass to other plugins.
+        """
+
+    @is_cancelled.setter
+    def is_cancelled(self, arg1: bool) -> None: ...
+    def cancel(self) -> None:
+        """
+        Cancel this event.
+
+        A cancelled event will not be executed in the server, but will still pass to other plugins.
+        """
+
     @property
     def is_gliding(self) -> bool:
         """
@@ -2756,6 +2781,9 @@ class EnchantItemEvent(InventoryEvent, Cancellable):
     def exp_level_cost(self) -> int:
         """
         The minimum player level required by the selected option.
+
+        Raises:
+            ValueError: If set to a level that is not greater than 0.
         """
 
     @exp_level_cost.setter

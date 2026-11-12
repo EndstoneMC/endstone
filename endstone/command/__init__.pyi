@@ -221,15 +221,31 @@ class CommandMap:
     """
     Represents a command map that manages all commands of the Server.
     """
+    @typing.overload
     def register_command(self, command: Command) -> bool:
         """
-        Registers a command.
+        Registers a command, using the lowercased plugin name as the fallback prefix for a `PluginCommand` and `endstone` otherwise.
 
         Args:
             command: The command to register.
 
         Returns:
-            `True` on success, `False` if a command with the same name is already registered.
+            `True` if the command was registered under its own name, `False` if the name was already taken.
+        """
+
+    @typing.overload
+    def register_command(self, fallback_prefix: str, command: Command) -> bool:
+        """
+        Registers a command under its name and under `fallback_prefix:name`.
+
+        If the name is already taken, the command is only reachable as `fallback_prefix:name` and its name changes to that. Its aliases are registered the same way, and an alias that is already taken is dropped. A `fallback_prefix:name` that another command already holds is taken over. Built-in Endstone commands use the fallback prefix `endstone`.
+
+        Args:
+            fallback_prefix: A prefix which is prepended to the command name for a unique address.
+            command: The command to register.
+
+        Returns:
+            `True` if the command was registered under its own name, `False` if the name was already taken.
         """
 
     def dispatch(self, sender: CommandSender, command_line: str) -> bool:
@@ -241,7 +257,7 @@ class CommandMap:
             command_line: The command and its arguments, e.g. "/test abc 123".
 
         Returns:
-            `True` if the execution was successful, `False` otherwise.
+            `True` if the command was found and run, `False` if no such command exists.
         """
 
     def clear_commands(self) -> None:

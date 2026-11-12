@@ -650,7 +650,7 @@ class BookMeta(WritableBookMeta):
         """
 
     @property
-    def title(self) -> str:
+    def title(self) -> str | None:
         """
         The title of the book. Assigning a title longer than 16 bytes raises.
         """
@@ -677,7 +677,7 @@ class BookMeta(WritableBookMeta):
         """
 
     @property
-    def author(self) -> str:
+    def author(self) -> str | None:
         """
         The author of the book.
         """
