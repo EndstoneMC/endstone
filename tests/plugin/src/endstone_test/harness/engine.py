@@ -228,7 +228,9 @@ class Context:
             on_message=lambda m: result.messages.append(self.text(m)),
             on_error=lambda m: result.errors.append(self.text(m)),
         )
-        result.success = self.server.dispatch_command(sender, line)
+        result.success = (
+            self.server.dispatch_command(sender, line) and not result.errors
+        )
         return result
 
     def run(self, line: str) -> CommandResult:
