@@ -212,7 +212,7 @@ def prepare(args: argparse.Namespace) -> None:
                 workdir,
             )
 
-    server = workdir / "server"
+    server: Path = args.server_dir
     executable = server / ("bedrock_server.exe" if WINDOWS else "bedrock_server")
     marker = server / ".bds-zip"
     source = Path(args.bds_zip).name
@@ -221,7 +221,7 @@ def prepare(args: argparse.Namespace) -> None:
             longest = max(len(name) for name in archive.namelist())
             if WINDOWS and len(str(server)) + longest >= 259:
                 raise SystemExit(
-                    f"--workdir is too long for BDS's {longest}-character paths; use a short one like C:/esh"
+                    f"--server-dir is too long for BDS's {longest}-character paths; use a short one"
                 )
             log(f"extracting {args.bds_zip} into {server}")
             archive.extractall(server)
@@ -325,9 +325,16 @@ LEAVE_TIMEOUT = 15
 
 
 class Bots:
-    def __init__(self, host: str, port: int, transport: str = "raknet"):
+    def __init__(
+        self,
+        host: str,
+        port: int,
+        transport: str = "raknet",
+        protocol: int | None = None,
+    ):
         self.address = (host, port)
         self.transport = transport
+        self.protocol = protocol
         self.bots: dict[str, object] = {}
 
     async def spawn(self, name: str) -> dict:
@@ -346,10 +353,19 @@ class Bots:
         try:
             if self.transport == "nethernet":
                 await asyncio.wait_for(
-                    bot.connect_nethernet(f"http://{self.address[0]}:{self.address[1]}"), CONNECT_TIMEOUT
+                    bot.connect_nethernet(
+                        f"http://{self.address[0]}:{self.address[1]}",
+                        protocol=self.protocol,
+                    ),
+                    CONNECT_TIMEOUT,
                 )
             else:
-                await asyncio.wait_for(bot.connect_to_third_party_server(*self.address), CONNECT_TIMEOUT)
+                await asyncio.wait_for(
+                    bot.connect_to_third_party_server(
+                        *self.address, protocol=self.protocol
+                    ),
+                    CONNECT_TIMEOUT,
+                )
             await bot.wait_for_player_ready()
         except BaseException:
             await asyncio.wait_for(bot.request_leave_game(), LEAVE_TIMEOUT)
@@ -778,7 +794,7 @@ class Run:
             args.run_id
             or datetime.datetime.now().strftime("%Y%m%d-%H%M%S-") + uuid.uuid4().hex[:6]
         )
-        self.server_dir: Path = args.workdir / "server"
+        self.server_dir: Path = args.server_dir
         self.pytest = pytest_options(args)
         if self.pytest["targets"] or self.pytest["args"]:
             args.select = args.select or ["pytest.*"]
@@ -788,7 +804,7 @@ class Run:
         self.reloaded_by: str | None = None
         self.restart_after_reload = False
         self.deadline = time.monotonic() + args.timeout
-        self.bots = Bots("127.0.0.1", args.port, args.transport)
+        self.bots = Bots("127.0.0.1", args.port, args.transport, args.protocol)
         self.calls: set[asyncio.Task] = set()
         self.log_path = args.workdir / "logs" / f"{self.run_id}.log"
 
@@ -1409,8 +1425,8 @@ class Bench:
             args.run_id
             or datetime.datetime.now().strftime("%Y%m%d-%H%M%S-") + uuid.uuid4().hex[:6]
         )
-        self.server_dir: Path = args.workdir / "server"
-        self.bots = Bots("127.0.0.1", args.port, args.transport)
+        self.server_dir: Path = args.server_dir
+        self.bots = Bots("127.0.0.1", args.port, args.transport, args.protocol)
         self.started = asyncio.Event()
         self.joins: list[dict] = []
 
@@ -1551,6 +1567,11 @@ def parse_args(argv: list[str]) -> argparse.Namespace:
         help="scratch directory for the venv and server",
     )
     parser.add_argument(
+        "--server-dir",
+        type=Path,
+        help="directory the server runs in (default: <workdir>/server)",
+    )
+    parser.add_argument(
         "--plugin",
         type=Path,
         default=default_plugin,
@@ -1652,6 +1673,11 @@ def parse_args(argv: list[str]) -> argparse.Namespace:
         help="record which API members run; enforce fails a full run on any missing member, report only reports, "
         "off does not record",
     )
+    parser.add_argument(
+        "--protocol",
+        type=int,
+        help="network protocol the bots connect with, instead of detecting it",
+    )
     parser.add_argument("--run-id")
     parser.add_argument("--verbose", action="store_true", help="echo the server log")
     args = parser.parse_args(argv)
@@ -1659,7 +1685,9 @@ def parse_args(argv: list[str]) -> argparse.Namespace:
         parser.error(
             "--plugin is required when the runner is not started from the endstone-test source tree"
         )
-    for name in ("wheel", "bds_zip", "workdir", "plugin"):
+    if args.server_dir is None:
+        args.server_dir = args.workdir / "server"
+    for name in ("wheel", "bds_zip", "workdir", "server_dir", "plugin"):
         setattr(args, name, getattr(args, name).resolve())
     return args
 
