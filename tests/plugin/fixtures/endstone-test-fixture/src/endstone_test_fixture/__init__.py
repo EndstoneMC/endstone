@@ -13,6 +13,10 @@ class TestFixture(Plugin):
             "usages": ["/fixturecmd <actor: entity_type>", "/fixturecmd place <block: block>"],
             "permissions": ["test_fixture.command.fixturecmd"],
         },
+        "sharedcmd": {
+            "description": "A command both fixture plugins register",
+            "usages": ["/sharedcmd [word: str]"],
+        },
         "status": {
             "description": "A command named like one of Endstone's own, which must stay Endstone's",
             "usages": ["/status"],

@@ -15,6 +15,7 @@
 #pragma once
 
 #include <mutex>
+#include <optional>
 #include <string>
 #include <unordered_map>
 #include <vector>
@@ -31,7 +32,9 @@ public:
     explicit EndstoneCommandMap(EndstoneServer &server);
     using CommandMap::registerCommand;
     bool registerCommand(NotNull<Command> command) override;
+    bool registerCommand(std::string fallback_prefix, NotNull<Command> command) override;
     bool dispatch(const NotNull<CommandSender> &sender, std::string command_line) const override;
+    [[nodiscard]] std::optional<bool> tryDispatch(const NotNull<CommandSender> &sender, std::string command_line) const;
     void clearCommands() override;
     [[nodiscard]] Nullable<Command> getCommand(std::string name) const override;
     [[nodiscard]] ::MinecraftCommands &getHandle() const;
@@ -39,7 +42,20 @@ public:
 private:
     friend class EndstoneServer;
     void attach();
-    bool registerDeferred(NotNull<Command> command);
+    struct Claim {
+        std::string name;
+        std::vector<std::string> aliases;
+        std::vector<std::string> prefixed;
+    };
+    struct DeferredCommand {
+        std::string fallback_prefix;
+        std::string label;
+        std::vector<std::string> aliases;
+        NotNull<Command> command;
+    };
+    bool registerDeferred(const std::string &fallback_prefix, NotNull<Command> command);
+    [[nodiscard]] std::optional<Claim> claimNames(const std::string &fallback_prefix,
+                                                  const NotNull<Command> &command) const;
     void setDefaultCommands();
     void setPluginNames();
     void allowCommandsWithoutCheats();
@@ -48,9 +64,10 @@ private:
     void removeEnumValueFromExisting(const std::string &enum_name, const std::string &enum_value);
 
     EndstoneServer &server_;
-    std::recursive_mutex mutex_;
+    mutable std::recursive_mutex mutex_;
     std::unordered_map<std::string, NotNull<Command>> custom_commands_;
-    std::vector<NotNull<Command>> deferred_commands_;
+    std::vector<DeferredCommand> deferred_commands_;
+    mutable std::unordered_map<std::string, NotNull<Command>> vanilla_commands_;
     bool attached_ = false;
     std::unordered_map<std::string, std::vector<std::string>> custom_enums_;
 

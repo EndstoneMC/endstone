@@ -22,6 +22,7 @@
 
 #include "endstone/color_format.h"
 #include "endstone/core/server.h"
+#include "endstone/player.h"
 
 namespace endstone::core {
 
@@ -48,6 +49,10 @@ bool RestartCommand::execute(const NotNull<CommandSender> &sender, const std::ve
         auto now = std::chrono::system_clock::now();
         auto epoch = std::chrono::duration_cast<std::chrono::seconds>(now.time_since_epoch()).count();
         marker << epoch;
+    }
+
+    for (const auto &player : server.getOnlinePlayers()) {
+        player->kick("Server is restarting");
     }
 
     server.shutdown();

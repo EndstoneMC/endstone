@@ -10,6 +10,10 @@ class TestAddon(Plugin):
             "description": "A command of a plugin that another plugin enables early",
             "usages": ["/addoncmd [word: str]"],
         },
+        "sharedcmd": {
+            "description": "A command both fixture plugins register",
+            "usages": ["/sharedcmd [word: str]"],
+        },
     }
 
     def __init__(self):

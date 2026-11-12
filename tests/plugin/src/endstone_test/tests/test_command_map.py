@@ -1,7 +1,6 @@
 import pytest
 from endstone import Server
 from endstone.command import Command, CommandMap, CommandSender, CommandSenderWrapper
-from endstone.lang import Translatable
 
 # =============================================================================
 # Fixtures
@@ -124,15 +123,45 @@ def test_register_with_metadata(command_map: CommandMap) -> None:
 def test_dispatch_an_unknown_command(
     command_map: CommandMap, sender: CommandSender
 ) -> None:
-    """Verify an unknown command reports failure with the default message."""
+    """Verify CommandMap.dispatch reports an unknown command silently."""
     errors = []
     wrapper = CommandSenderWrapper(sender, on_error=errors.append)
 
     assert command_map.dispatch(wrapper, "definitely_not_a_command value") is False
-    assert len(errors) == 1
-    assert isinstance(errors[0], Translatable)
-    assert errors[0].text == "commands.generic.unknown"
-    assert errors[0].params == ["definitely_not_a_command"]
+    assert errors == []
+
+
+def test_server_dispatch_an_unknown_command(
+    server: Server, sender: CommandSender
+) -> None:
+    """Verify Server.dispatch_command reports an unknown command silently."""
+    errors = []
+    wrapper = CommandSenderWrapper(sender, on_error=errors.append)
+
+    assert server.dispatch_command(wrapper, "definitely_not_a_command value") is False
+    assert errors == []
+
+
+class FailingCommand(Command):
+    def execute(self, sender: CommandSender, args: list[str]) -> bool:
+        return False
+
+
+def test_dispatch_a_failing_command_is_handled(
+    command_map: CommandMap, server: Server, sender: CommandSender
+) -> None:
+    """Verify dispatch returns True for a found command whose execute() fails."""
+    command = FailingCommand("endstone_test_failing")
+    assert command_map.register_command(command) is True
+
+    assert command_map.dispatch(sender, "endstone_test_failing") is True
+    assert server.dispatch_command(sender, "endstone_test_failing") is True
+    command.unregister_from(command_map)
+
+
+def test_get_a_vanilla_command_is_stable(command_map: CommandMap) -> None:
+    """Verify get_command hands back the same object for a vanilla command."""
+    assert command_map.get_command("say") is command_map.get_command("say")
 
 
 def test_clear_commands_exists(command_map: CommandMap) -> None:

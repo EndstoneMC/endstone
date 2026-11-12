@@ -482,9 +482,14 @@ void EndstonePluginManager::enablePlugin(const NotNull<Plugin> &plugin) const
     }
     auto &command_map = server_.getCommandMap();
     for (const auto &command : plugin->getDescription().getCommands()) {
-        if (const auto existing = command_map.getCommand(command.getName());
-            existing && existing->getName() == command.getName() && existing->is<PluginCommand>() &&
-            existing.cast<PluginCommand>()->getPlugin() == plugin) {
+        auto prefix = plugin->getName();
+        std::ranges::transform(prefix, prefix.begin(), [](unsigned char c) { return std::tolower(c); });
+        const auto owned = [&](const std::string &name) {
+            const auto existing = command_map.getCommand(name);
+            return existing && existing->getName() == name && existing->is<PluginCommand>() &&
+                   existing.cast<PluginCommand>()->getPlugin() == plugin;
+        };
+        if (owned(command.getName()) || owned(prefix + ":" + command.getName())) {
             continue;
         }
         command_map.registerCommand<PluginCommand>(command, plugin);

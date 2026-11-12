@@ -48,6 +48,7 @@
 #include "bedrock/world/scores/server_scoreboard.h"
 #include "endstone/actor/actor_type.h"
 #include "endstone/attribute/attribute.h"
+#include "endstone/check.h"
 #include "endstone/color_format.h"
 #include "endstone/command/plugin_command.h"
 #include "endstone/core/ban/ip_ban_list.h"
@@ -504,6 +505,7 @@ NotNull<ConsoleCommandSender> EndstoneServer::getCommandSender() const
 
 bool EndstoneServer::dispatchCommand(const NotNull<CommandSender> &sender, std::string command_line) const
 {
+    Preconditions::checkState(isPrimaryThread(), "Command Dispatched Async: {}", command_line);
     return getCommandMap().dispatch(sender, std::move(command_line));
 }
 

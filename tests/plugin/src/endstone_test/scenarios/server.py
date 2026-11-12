@@ -22,44 +22,12 @@ UNKNOWN = "endstone_test_no_such_command"
 NETHERNET = os.environ.get("ENDSTONE_TEST_TRANSPORT") == "nethernet"
 
 
-def unknown_message(name: str) -> str:
-    return f"Unknown command: {name}. Please check that the command exists and that you have permission to use it."
-
-
-@scenario("command.unknown.normal", covers={UnknownCommandEvent: "normal"})
-async def unknown_normal(ctx: Context) -> None:
+@scenario("command.unknown.dispatch")
+async def unknown_dispatch(ctx: Context) -> None:
     unknown = ctx.capture(UnknownCommandEvent)
     result = ctx.command(f"{UNKNOWN} first second")
     assert not result.success
-    assert unknown.count == 1, unknown.events
-    event = unknown.events[0]
-    assert event["command_line"] == f"{UNKNOWN} first second"
-    assert event["sender"]["sender"] == ctx.server.command_sender.name
-    assert result.errors == [unknown_message(UNKNOWN)], result.errors
-    assert result.messages == []
-
-
-@scenario("command.unknown.mutate", covers={UnknownCommandEvent: "mutate"})
-async def unknown_mutate(ctx: Context) -> None:
-    unknown = ctx.capture(
-        UnknownCommandEvent,
-        mutate=lambda e: setattr(e, "message", "Rewritten by endstone-test."),
-    )
-    result = ctx.command(UNKNOWN)
-    assert unknown.count == 1
-    assert result.success is False, "dispatching an unknown command reported success"
-    assert result.errors == ["Rewritten by endstone-test."], result.errors
-
-
-@scenario("command.unknown.suppress", covers={UnknownCommandEvent: "mutate"})
-async def unknown_suppress(ctx: Context) -> None:
-    unknown = ctx.capture(
-        UnknownCommandEvent, mutate=lambda e: setattr(e, "message", None)
-    )
-    result = ctx.command(UNKNOWN)
-    assert unknown.count == 1
-    assert result.success is False, "dispatching an unknown command reported success"
-    assert unknown.events[0]["after"]["message"] is None
+    assert unknown.count == 0, unknown.events
     assert result.errors == [] and result.messages == [], result.output
 
 
@@ -77,6 +45,30 @@ async def unknown_console(ctx: Context) -> None:
     )
     assert unknown.events[0]["command_line"] == f"{UNKNOWN} from the console"
     assert unknown.events[0]["sender"]["class"] == "ConsoleCommandSender"
+
+
+@scenario("command.unknown.mutate", covers={UnknownCommandEvent: "mutate"})
+async def unknown_mutate(ctx: Context) -> None:
+    unknown = ctx.capture(
+        UnknownCommandEvent,
+        where=lambda e: e.command_line.startswith(UNKNOWN),
+        mutate=lambda e: setattr(e, "message", "Rewritten by endstone-test."),
+    )
+    await ctx.console(UNKNOWN)
+    await ctx.until(lambda: unknown.count, what="UnknownCommandEvent")
+    assert unknown.events[0]["after"]["message"] == "Rewritten by endstone-test."
+
+
+@scenario("command.unknown.suppress", covers={UnknownCommandEvent: "mutate"})
+async def unknown_suppress(ctx: Context) -> None:
+    unknown = ctx.capture(
+        UnknownCommandEvent,
+        where=lambda e: e.command_line.startswith(UNKNOWN),
+        mutate=lambda e: setattr(e, "message", None),
+    )
+    await ctx.console(UNKNOWN)
+    await ctx.until(lambda: unknown.count, what="UnknownCommandEvent")
+    assert unknown.events[0]["after"]["message"] is None
 
 
 @scenario("command.console.normal", covers={ServerCommandEvent: "normal"}, plot=True)

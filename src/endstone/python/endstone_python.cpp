@@ -452,9 +452,6 @@ void init_server(py::classh<Server> &server)
                                "The plugin manager for interfacing with plugins.")
         .def_property_readonly("command_map", &Server::getCommandMap, py::return_value_policy::reference, R"doc(
     The command map for registering and looking up commands.
-
-    Raises:
-        RuntimeError: If the level has not loaded yet, as in the `on_enable` of a plugin loaded at STARTUP.
 )doc")
         .def("get_plugin_command", &Server::getPluginCommand, py::arg("name"), R"doc(
     Gets a `PluginCommand` with the given name or alias.
@@ -475,10 +472,10 @@ void init_server(py::classh<Server> &server)
         command_line: The command + arguments.
 
     Returns:
-        `True` if execution is successful, `False` otherwise.
+        `True` if the command was found and run, `False` if no such command exists.
 
     Raises:
-        RuntimeError: If the level has not loaded yet, as in the `on_enable` of a plugin loaded at STARTUP.
+        RuntimeError: If called from a thread other than the primary server thread.
 )doc")
         .def_property_readonly("is_primary_thread", &Server::isPrimaryThread,
                                "`True` if the current thread matches the expected primary server thread, `False` otherwise.")

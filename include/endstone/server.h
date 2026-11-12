@@ -130,7 +130,6 @@ public:
      * Gets the command map for registering and looking up commands.
      *
      * @return the command map of this Server instance
-     * @throws std::runtime_error if the level has not loaded yet, as in the onEnable() of a plugin loaded at STARTUP
      */
     [[nodiscard]] virtual CommandMap &getCommandMap() const = 0;
 
@@ -154,8 +153,8 @@ public:
      *
      * @param sender the apparent sender of the command
      * @param command_line the command + arguments.
-     * @return `true` if execution is successful, `false` otherwise
-     * @throws std::runtime_error if the level has not loaded yet, as in the onEnable() of a plugin loaded at STARTUP
+     * @return `true` if the command was found and run, `false` if no such command exists
+     * @throws std::runtime_error if called from a thread other than the primary server thread
      */
     [[nodiscard]] virtual bool dispatchCommand(const NotNull<CommandSender> &sender,
                                                std::string command_line) const = 0;

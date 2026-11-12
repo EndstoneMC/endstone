@@ -14,11 +14,16 @@
 
 #include "bedrock/server/commands/minecraft_commands.h"
 
+#include <optional>
+#include <string>
+
 #include "bedrock/world/actor/actor.h"
 #include "bedrock/world/actor/player/player.h"
+#include "endstone/core/command/command_map.h"
 #include "endstone/core/command/console_command_sender.h"
 #include "endstone/core/player.h"
 #include "endstone/core/server.h"
+#include "endstone/event/command/unknown_command_event.h"
 #include "endstone/event/player/player_command_event.h"
 #include "endstone/event/server/server_command_event.h"
 #include "endstone/runtime/hook.h"
@@ -28,9 +33,11 @@ using endstone::core::EndstoneServer;
 MCRESULT MinecraftCommands::executeCommand(CommandContext &ctx, bool suppress_output) const
 {
     const auto &server = EndstoneServer::getInstance();
+    std::optional<endstone::NotNull<endstone::CommandSender>> sender;
+    std::string command_line;
     switch (ctx.getOrigin().getOriginType()) {
     case CommandOriginType::Player: {
-        auto command_line = ctx.getCommand();
+        command_line = ctx.getCommand();
         auto player = ctx.getOrigin().getEntity()->getEndstoneActor<endstone::core::EndstonePlayer>();
 
         const auto e = std::make_shared<endstone::PlayerCommandEvent>(player, command_line);
@@ -43,13 +50,11 @@ MCRESULT MinecraftCommands::executeCommand(CommandContext &ctx, bool suppress_ou
         if (server.logCommands()) {
             server.getLogger().info("{} issued server command: {}", player->getName(), command_line);
         }
-        if (server.dispatchCommand(player, command_line)) {
-            return MCRESULT_Success;
-        }
-        return MCRESULT_CommandNotFound;
+        sender = player;
+        break;
     }
     case CommandOriginType::DedicatedServer: {
-        auto command_line = ctx.getCommand();
+        command_line = ctx.getCommand();
         auto console = server.getCommandSender();
 
         const auto e = std::make_shared<endstone::ServerCommandEvent>(console, command_line);
@@ -59,15 +64,32 @@ MCRESULT MinecraftCommands::executeCommand(CommandContext &ctx, bool suppress_ou
         }
 
         command_line = e->getCommand();
-        if (server.dispatchCommand(console, command_line)) {
-            return MCRESULT_Success;
-        }
-        return MCRESULT_CommandNotFound;
-    }
-    default:
+        sender = console;
         break;
     }
+    default:
+        // For other types of sender we don't support yet, fallback to the original dispatching route
+        return ENDSTONE_HOOK_CALL_ORIGINAL(&MinecraftCommands::executeCommand, this, ctx, suppress_output);
+    }
 
-    // For other types of sender we don't support yet, fallback to the original dispatching route
-    return ENDSTONE_HOOK_CALL_ORIGINAL(&MinecraftCommands::executeCommand, this, ctx, suppress_output);
+    if (const auto handled = server.getCommandMap().tryDispatch(*sender, command_line)) {
+        return *handled ? MCRESULT_Success : MCRESULT_CommandNotFound;
+    }
+
+    if (command_line.starts_with('/')) {
+        command_line.erase(0, 1);
+    }
+    endstone::Message message{
+        endstone::Translatable("commands.generic.unknown", {command_line.substr(0, command_line.find(' '))})};
+    if (server.getEndstonePluginManager().isEventRegistered<endstone::UnknownCommandEvent>()) {
+        const auto event = std::make_shared<endstone::UnknownCommandEvent>(*sender, command_line, std::move(message));
+        server.getPluginManager().callEvent(event);
+        if (const auto result = event->getMessage()) {
+            (*sender)->sendErrorMessage(*result);
+        }
+    }
+    else {
+        (*sender)->sendErrorMessage(message);
+    }
+    return MCRESULT_CommandNotFound;
 }

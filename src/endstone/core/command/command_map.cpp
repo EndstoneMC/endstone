@@ -17,6 +17,7 @@
 #include <algorithm>
 #include <cctype>
 #include <format>
+#include <optional>
 #include <ranges>
 #include <string>
 #include <unordered_map>
@@ -28,6 +29,7 @@
 #include "bedrock/locale/i18n.h"
 #include "bedrock/server/commands/command_registry.h"
 #include "bedrock/server/server_instance.h"
+#include "endstone/command/plugin_command.h"
 #include "endstone/core/command/command_usage_parser.h"
 #include "endstone/core/command/defaults/ban_command.h"
 #include "endstone/core/command/defaults/ban_ip_command.h"
@@ -61,37 +63,73 @@ void EndstoneCommandMap::attach()
     allowCommandsWithoutCheats();
     attached_ = true;
 
-    for (const auto &command : std::exchange(deferred_commands_, {})) {
+    for (auto &deferred : std::exchange(deferred_commands_, {})) {
+        const auto &command = deferred.command;
         std::erase_if(custom_commands_, [&](const auto &entry) { return entry.second.get() == command.get(); });
-        if (!registerCommand(command)) {
-            command->unregisterFrom(*this);
-        }
+        command->unregisterFrom(*this);
+        command->setName(deferred.label);
+        command->setAliases(deferred.aliases);
+        registerCommand(deferred.fallback_prefix, command);
     }
 }
 
-bool EndstoneCommandMap::registerDeferred(NotNull<Command> command)
+bool EndstoneCommandMap::registerDeferred(const std::string &fallback_prefix, NotNull<Command> command)
 {
-    auto name = command->getName();
-    if (getCommand(name) != nullptr) {
-        server_.getLogger().error("Unable to register command '{}' as it already exists.", name);
+    const auto label = command->getName();
+    const auto aliases = command->getAliases();
+    const auto claim = claimNames(fallback_prefix, command);
+    if (!claim) {
         return false;
     }
 
-    std::vector<std::string> pending_aliases;
-    for (const auto &alias : command->getAliases()) {
-        if (getCommand(alias) == nullptr) {
-            pending_aliases.push_back(alias);
-        }
-    }
-
-    custom_commands_.emplace(name, command);
-    for (const auto &alias : pending_aliases) {
+    custom_commands_.emplace(claim->name, command);
+    for (const auto &alias : claim->aliases) {
         custom_commands_.emplace(alias, command);
     }
-    command->setAliases(pending_aliases);
+    for (const auto &alias : claim->prefixed) {
+        custom_commands_.insert_or_assign(alias, command);
+    }
+    command->setName(claim->name);
+    command->setAliases(claim->aliases);
     command->registerTo(*this);
-    deferred_commands_.push_back(command);
-    return true;
+    deferred_commands_.push_back({fallback_prefix, label, aliases, command});
+    return claim->name == boost::to_lower_copy(boost::trim_copy(label));
+}
+
+std::optional<EndstoneCommandMap::Claim> EndstoneCommandMap::claimNames(const std::string &fallback_prefix,
+                                                                        const NotNull<Command> &command) const
+{
+    const auto label = boost::to_lower_copy(boost::trim_copy(command->getName()));
+    const auto qualified_label = fallback_prefix + ":" + label;
+    const auto is_name = [&](const std::string &key) {
+        const auto held = getCommand(key);
+        return held != nullptr && held->getName() == key;
+    };
+    const bool label_free = getCommand(label) == nullptr;
+    const bool qualified_label_is_name = is_name(qualified_label);
+    if (!label_free && qualified_label_is_name) {
+        server_.getLogger().error("Unable to register command '{}' as it already exists.", label);
+        return std::nullopt;
+    }
+
+    Claim claim;
+    claim.name = label_free ? label : qualified_label;
+    if (qualified_label != claim.name && !qualified_label_is_name) {
+        claim.prefixed.push_back(qualified_label);
+    }
+    for (auto alias : command->getAliases()) {
+        alias = boost::to_lower_copy(boost::trim_copy(alias));
+        const auto qualified_alias = fallback_prefix + ":" + alias;
+        if (alias != label && getCommand(alias) == nullptr &&
+            std::ranges::find(claim.aliases, alias) == claim.aliases.end()) {
+            claim.aliases.push_back(alias);
+        }
+        if (qualified_alias != claim.name && !is_name(qualified_alias) &&
+            std::ranges::find(claim.prefixed, qualified_alias) == claim.prefixed.end()) {
+            claim.prefixed.push_back(qualified_alias);
+        }
+    }
+    return claim;
 }
 
 void EndstoneCommandMap::allowCommandsWithoutCheats()
@@ -110,6 +148,12 @@ void EndstoneCommandMap::allowCommandsWithoutCheats()
 
 bool EndstoneCommandMap::dispatch(const NotNull<CommandSender> &sender, std::string command_line) const
 {
+    return tryDispatch(sender, std::move(command_line)).has_value();
+}
+
+std::optional<bool> EndstoneCommandMap::tryDispatch(const NotNull<CommandSender> &sender,
+                                                    std::string command_line) const
+{
     if (!command_line.empty() && command_line[0] == '/') {
         // remove the leading slash if present
         command_line = command_line.substr(1);
@@ -119,7 +163,7 @@ bool EndstoneCommandMap::dispatch(const NotNull<CommandSender> &sender, std::str
     std::vector<std::string> args;
     split(args, command_line, boost::is_any_of(" "), boost::token_compress_on);
     if (args.empty()) {
-        return false;
+        return std::nullopt;
     }
 
     // get the command by name
@@ -127,13 +171,7 @@ bool EndstoneCommandMap::dispatch(const NotNull<CommandSender> &sender, std::str
     std::ranges::transform(name, name.begin(), [](unsigned char c) { return std::tolower(c); });
     const auto command = getCommand(name);
     if (!command) {
-        const auto event = std::make_shared<UnknownCommandEvent>(
-            sender, command_line, Message{Translatable("commands.generic.unknown", {args[0]})});
-        server_.getPluginManager().callEvent(event);
-        if (const auto message = event->getMessage()) {
-            sender->sendErrorMessage(*message);
-        }
-        return false;
+        return std::nullopt;
     }
 
     if (!attached_) {
@@ -208,8 +246,13 @@ Nullable<Command> EndstoneCommandMap::getCommand(std::string name) const
     // Custom command not found, let's find it in CommandRegistry
     const auto &registry = getHandle().getRegistry();
     if (const auto *signature = registry.findCommand(name)) {
+        std::lock_guard lock(mutex_);
+        if (const auto it = vanilla_commands_.find(signature->name); it != vanilla_commands_.end()) {
+            return it->second;
+        }
         auto command = std::make_shared<MinecraftCommandWrapper>(getHandle(), *signature);
         command->registerTo(*this);
+        vanilla_commands_.emplace(signature->name, command);
         return command;
     }
     return nullptr;
@@ -325,6 +368,17 @@ void EndstoneCommandMap::removeEnumValueFromExisting(const std::string &enum_nam
 
 bool EndstoneCommandMap::registerCommand(NotNull<Command> command)
 {
+    std::string fallback_prefix = "endstone";
+    if (command->is<PluginCommand>()) {
+        if (const auto plugin = command.cast<PluginCommand>()->getPlugin()) {
+            fallback_prefix = plugin->getName();
+        }
+    }
+    return registerCommand(std::move(fallback_prefix), command);
+}
+
+bool EndstoneCommandMap::registerCommand(std::string fallback_prefix, NotNull<Command> command)
+{
     std::lock_guard lock(mutex_);
 
     if (command.get() == nullptr) {
@@ -332,25 +386,19 @@ bool EndstoneCommandMap::registerCommand(NotNull<Command> command)
         return false;
     }
 
+    boost::trim(fallback_prefix);
+    std::ranges::transform(fallback_prefix, fallback_prefix.begin(), [](unsigned char c) { return std::tolower(c); });
+
     if (!attached_) {
-        return registerDeferred(command);
+        return registerDeferred(fallback_prefix, command);
     }
 
     auto &registry = getHandle().getRegistry();
 
-    // Check if the command name is available
-    auto name = command->getName();
-    if (getCommand(name) != nullptr) {
-        server_.getLogger().error("Unable to register command '{}' as it already exists.", name);
-        return false;  // the name was registered and is not an alias, we don't replace it
-    }
-
-    // Check for available aliases
-    std::vector<std::string> pending_aliases;
-    for (const auto &alias : command->getAliases()) {
-        if (getCommand(alias) == nullptr) {
-            pending_aliases.push_back(alias);
-        }
+    const auto name = command->getName();
+    const auto claim = claimNames(fallback_prefix, command);
+    if (!claim) {
+        return false;
     }
 
     // Check for available usages
@@ -479,23 +527,30 @@ bool EndstoneCommandMap::registerCommand(NotNull<Command> command)
     }
 
     // Actual registration starts from here
-    registry.registerCommand(name, command->getDescription().c_str(), CommandPermissionLevel::Any,
+    registry.registerCommand(claim->name, command->getDescription().c_str(), CommandPermissionLevel::Any,
                              CommandCheatFlag::NotCheat, CommandUsageFlag::Normal);
-    custom_commands_.emplace(name, command);
-    auto enum_key = name;
-    std::ranges::transform(enum_key, enum_key.begin(), [](unsigned char c) { return std::tolower(c); });
-    custom_enums_[enum_key] = std::move(created_enums);
-    for (const auto &alias : pending_aliases) {
-        registry.registerAlias(name, alias);
+    custom_commands_.emplace(claim->name, command);
+    custom_enums_[claim->name] = std::move(created_enums);
+    for (const auto &alias : claim->aliases) {
+        registry.registerAlias(claim->name, alias);
         custom_commands_.emplace(alias, command);
     }
+    for (const auto &alias : claim->prefixed) {
+        if (registry.aliases_.erase(alias) > 0) {
+            removeEnumValueFromExisting("CommandName", alias);
+            removeEnumValueFromExisting("CommandAliases", alias);
+        }
+        registry.registerAlias(claim->name, alias);
+        custom_commands_.insert_or_assign(alias, command);
+    }
     for (const auto &param_data : pending_param_data) {
-        registry.registerOverload<MinecraftCommandAdapter>(name.c_str(), {1, INT_MAX}, param_data);
+        registry.registerOverload<MinecraftCommandAdapter>(claim->name.c_str(), {1, INT_MAX}, param_data);
     }
 
-    command->setAliases(pending_aliases);
+    command->setName(claim->name);
+    command->setAliases(claim->aliases);
     command->registerTo(*this);
-    return true;
+    return claim->name == boost::to_lower_copy(boost::trim_copy(name));
 }
 
 const std::unordered_map<std::string, CommandRegistry::HardNonTerminal> EndstoneCommandMap::TYPE_SYMBOLS = {

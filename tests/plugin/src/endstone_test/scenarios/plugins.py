@@ -68,6 +68,45 @@ async def startup_commands(ctx: Context) -> None:
     status = ctx.command("status")
     assert status.success, status.output
     assert len(fixture.received) == before + 2, f"/status reached the fixture plugin: {fixture.received[before:]}"
+    prefixed = ctx.server.get_plugin_command(f"{FIXTURE}:status")
+    assert prefixed is not None and prefixed.plugin.name == FIXTURE, prefixed
+    assert ctx.command(f"{FIXTURE}:status").success
+    assert len(fixture.received) == before + 3, fixture.received[before:]
+
+
+@scenario("plugin.command_fallback_prefix")
+async def command_fallback_prefix(ctx: Context) -> None:
+    manager = ctx.server.plugin_manager
+    plugins = {name: manager.get_plugin(name) for name in (FIXTURE, ADDON)}
+    assert all(plugins.values()), plugins
+
+    plain = ctx.server.get_plugin_command("sharedcmd")
+    assert plain is not None, "neither plugin got the plain name"
+    winner = plain.plugin.name
+    assert winner in plugins, winner
+    loser = ADDON if winner == FIXTURE else FIXTURE
+    assert plain.name == "sharedcmd"
+
+    for name in plugins:
+        prefixed = ctx.server.get_plugin_command(f"{name}:sharedcmd")
+        assert prefixed is not None and prefixed.plugin.name == name, (name, prefixed)
+    assert (
+        ctx.server.get_plugin_command(f"{loser}:sharedcmd").name == f"{loser}:sharedcmd"
+    )
+
+    for name, plugin in plugins.items():
+        before = len(plugin.received)
+        assert ctx.command(f"{name}:sharedcmd hello").success
+        assert (
+            len(plugin.received) == before + 1 and plugin.received[-1][-1] == "hello"
+        ), plugin.received[before:]
+
+    before = len(plugins[winner].received)
+    assert ctx.command("sharedcmd plain").success
+    assert (
+        len(plugins[winner].received) == before + 1
+        and plugins[winner].received[-1][-1] == "plain"
+    )
 
 
 @scenario("plugin.early_enable_commands")

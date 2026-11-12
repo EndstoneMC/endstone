@@ -88,8 +88,7 @@ void init_command(py::module &m, py_class<CommandSender> &command_sender)
         .def_property_readonly("name", &CommandSender::getName, "The name of this command sender.");
 
     py_class<BlockCommandSender>(m, "BlockCommandSender", "Represents a block command sender.")
-        .def_property_readonly("block", &BlockCommandSender::getBlock,
-                               "The block this command sender belongs to.");
+        .def_property_readonly("block", &BlockCommandSender::getBlock, "The block this command sender belongs to.");
 
     py_class<CommandSenderWrapper>(
         m, "CommandSenderWrapper",
@@ -110,11 +109,12 @@ void init_command(py::module &m, py_class<CommandSender> &command_sender)
         .def_property_readonly("callee", &ProxiedCommandSender::getCallee,
                                "The `CommandSender` which is being used to call the command.");
 
-    auto command = py::class_<Command, PyCommand, py::smart_holder>(
-        m, "Command", "Represents a Command, which executes various tasks upon user input.")
-        .def(py::init(&createCommand, &createCommandAlias), py::arg("name"), py::arg("description") = py::none(),
-             py::arg("usages") = py::none(), py::arg("aliases") = py::none(), py::arg("permissions") = py::none())
-        .def("execute", &Command::execute, py::arg("sender"), py::arg("args"), R"doc(
+    auto command =
+        py::class_<Command, PyCommand, py::smart_holder>(
+            m, "Command", "Represents a Command, which executes various tasks upon user input.")
+            .def(py::init(&createCommand, &createCommandAlias), py::arg("name"), py::arg("description") = py::none(),
+                 py::arg("usages") = py::none(), py::arg("aliases") = py::none(), py::arg("permissions") = py::none())
+            .def("execute", &Command::execute, py::arg("sender"), py::arg("args"), R"doc(
     Executes the command, returning its success.
 
     Args:
@@ -124,7 +124,7 @@ void init_command(py::module &m, py_class<CommandSender> &command_sender)
     Returns:
         `True` if the execution was successful, `False` otherwise.
 )doc")
-        .def("test_permission", &Command::testPermission, py::arg("target"), R"doc(
+            .def("test_permission", &Command::testPermission, py::arg("target"), R"doc(
     Tests the given `CommandSender` to see if they can perform this command.
 
     If they do not have permission, they will be informed that they cannot do this.
@@ -135,7 +135,7 @@ void init_command(py::module &m, py_class<CommandSender> &command_sender)
     Returns:
         `True` if they can use it, `False` otherwise.
 )doc")
-        .def("test_permission_silently", &Command::testPermissionSilently, py::arg("target"), R"doc(
+            .def("test_permission_silently", &Command::testPermissionSilently, py::arg("target"), R"doc(
     Tests the given `CommandSender` to see if they can perform this command.
 
     No error is sent to the sender.
@@ -146,34 +146,48 @@ void init_command(py::module &m, py_class<CommandSender> &command_sender)
     Returns:
         `True` if they can use it, `False` otherwise.
 )doc")
-        .def_property("name", &Command::getName, &Command::setName, "The name of this command.")
-        .def_property("description", &Command::getDescription, &Command::setDescription,
-                      "A brief description of this command.")
-        .def_property(
-            "aliases", &Command::getAliases,
-            [](Command &self, const std::vector<std::string> &aliases) { self.setAliases(aliases); },
-            "A list of aliases of this command.")
-        .def_property(
-            "usages", &Command::getUsages,
-            [](Command &self, const std::vector<std::string> &usages) { self.setUsages(usages); },
-            "A list of usages of this command.")
-        .def_property(
-            "permissions", &Command::getPermissions,
-            [](Command &self, const std::vector<std::string> &permissions) { self.setPermissions(permissions); },
-            "The permissions required by users to be able to perform this command.")
-        .def_property_readonly("is_registered", &Command::isRegistered,
-                               "The current registered state of this command.");
+            .def_property("name", &Command::getName, &Command::setName, "The name of this command.")
+            .def_property("description", &Command::getDescription, &Command::setDescription,
+                          "A brief description of this command.")
+            .def_property(
+                "aliases", &Command::getAliases,
+                [](Command &self, const std::vector<std::string> &aliases) { self.setAliases(aliases); },
+                "A list of aliases of this command.")
+            .def_property(
+                "usages", &Command::getUsages,
+                [](Command &self, const std::vector<std::string> &usages) { self.setUsages(usages); },
+                "A list of usages of this command.")
+            .def_property(
+                "permissions", &Command::getPermissions,
+                [](Command &self, const std::vector<std::string> &permissions) { self.setPermissions(permissions); },
+                "The permissions required by users to be able to perform this command.")
+            .def_property_readonly("is_registered", &Command::isRegistered,
+                                   "The current registered state of this command.");
 
     py::classh<CommandMap>(m, "CommandMap", "Represents a command map that manages all commands of the Server.")
         .def("register_command", static_cast<bool (CommandMap::*)(NotNull<Command>)>(&CommandMap::registerCommand),
              py::arg("command"), R"doc(
-    Registers a command.
+    Registers a command, using the lowercased plugin name as the fallback prefix for a `PluginCommand` and `endstone` otherwise.
 
     Args:
         command: The command to register.
 
     Returns:
-        `True` on success, `False` if a command with the same name is already registered.
+        `True` if the command was registered under its own name, `False` if the name was already taken.
+)doc")
+        .def("register_command",
+             static_cast<bool (CommandMap::*)(std::string, NotNull<Command>)>(&CommandMap::registerCommand),
+             py::arg("fallback_prefix"), py::arg("command"), R"doc(
+    Registers a command under its name and under `fallback_prefix:name`.
+
+    If the name is already taken, the command is only reachable as `fallback_prefix:name` and its name changes to that. Its aliases are registered the same way, and an alias that is already taken is dropped. A `fallback_prefix:name` that another command already holds is taken over. Built-in Endstone commands use the fallback prefix `endstone`.
+
+    Args:
+        fallback_prefix: A prefix which is prepended to the command name for a unique address.
+        command: The command to register.
+
+    Returns:
+        `True` if the command was registered under its own name, `False` if the name was already taken.
 )doc")
         .def("dispatch", &CommandMap::dispatch, py::arg("sender"), py::arg("command_line"), R"doc(
     Looks for the requested command and executes it if found.
@@ -183,7 +197,7 @@ void init_command(py::module &m, py_class<CommandSender> &command_sender)
         command_line: The command and its arguments, e.g. "/test abc 123".
 
     Returns:
-        `True` if the execution was successful, `False` otherwise.
+        `True` if the command was found and run, `False` if no such command exists.
 )doc")
         .def("clear_commands", &CommandMap::clearCommands, "Clears all registered commands.")
         .def("get_command", &CommandMap::getCommand, py::arg("name"), R"doc(
