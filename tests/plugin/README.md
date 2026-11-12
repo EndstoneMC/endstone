@@ -19,7 +19,7 @@ uv run --no-project --python 3.13 python tests/plugin/src/endstone_test/runner.p
 It only needs the standard library to start. It creates `<workdir>/venv` with the wheel, this plugin, the fixture
 plugin in `fixtures/` and the extras, extracts the zip into `<workdir>/server`, writes `version.txt` so the launcher
 does not download, sets a flat world, `online-mode=false`, `allow-list=false` and `transport=raknet` on `--port`
-(default 19600, IPv6 on port + 1, the control channel on port + 2), then re-runs itself from the venv. Every Python
+(default 20232, IPv6 on port + 1, the control channel on port + 2), then re-runs itself from the venv. Every Python
 it starts runs with `PYTHONSAFEPATH=1` in the workdir, so the checkout's `endstone/` source package never shadows
 the wheel, whatever the current directory. On Windows the workdir must be short: BDS ships paths of about 150
 characters.
@@ -95,8 +95,8 @@ counts rather than thread times, which only advance at clock interrupts; Linux r
 `--bench` measures a join storm without the plugin, so builds that cannot load it compare too:
 
 ```shell
-... runner.py --wheel <endstone.whl> --bds-zip <zip> --workdir C:/esb --port 19610 --bench --bots 50
-... runner.py --wheel <any wheel> --bds-zip <zip> --workdir C:/esv --port 19620 --bench --bots 50 --vanilla
+... runner.py --wheel <endstone.whl> --bds-zip <zip> --workdir C:/esb --port 20242 --bench --bots 50
+... runner.py --wheel <any wheel> --bds-zip <zip> --workdir C:/esv --port 20252 --bench --bots 50 --vanilla
 ```
 
 It waits for `Server started.`, samples the idle server, joins every bot at once, samples again, and writes

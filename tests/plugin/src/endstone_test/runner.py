@@ -1595,7 +1595,7 @@ def parse_args(argv: list[str]) -> argparse.Namespace:
     parser.add_argument(
         "--port",
         type=int,
-        default=19600,
+        default=20232,
         help="server port; +1 is IPv6, +2 the control channel",
     )
     parser.add_argument(
