@@ -272,7 +272,7 @@ async def held_chunk_ticks(ctx: Context) -> None:
             what="the chunk to load",
         )
         await ctx.until(
-            lambda: ctx.command(f"setblock {x} -60 {z} water").success,
+            lambda: ctx.command(f"setblock {x} -60 {z} flowing_water").success,
             timeout=200,
             what="setblock to reach the held chunk",
         )
