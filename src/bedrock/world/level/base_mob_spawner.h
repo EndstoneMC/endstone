@@ -22,6 +22,7 @@
 #include "bedrock/entity/weak_entity_ref.h"
 #include "bedrock/world/actor/actor_definition_identifier.h"
 
+class BlockSource;
 class SpawnData;
 
 class BaseMobSpawner {
@@ -54,6 +55,11 @@ public:
     void setRequiredPlayerRange(int value) { required_player_range_ = value; }
     [[nodiscard]] int getSpawnRange() const { return spawn_range_; }
     void setSpawnRange(int value) { spawn_range_ = value; }
+    // Endstone
+    void delay(BlockSource &source) { _delay(source); }
+
+protected:
+    void _delay(BlockSource &source);
 
 private:
     int spawn_delay_;

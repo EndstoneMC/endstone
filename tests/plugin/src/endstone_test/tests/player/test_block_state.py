@@ -96,7 +96,7 @@ def test_container(place, block_type: str) -> None:
 def test_container_inventory_round_trip(place) -> None:
     """Verify an item written into a container survives an update."""
     state = place("minecraft:chest").capture_state()
-    state.inventory.set_item(0, ItemStack("minecraft:diamond", 3))
+    state.snapshot_inventory.set_item(0, ItemStack("minecraft:diamond", 3))
     assert state.update(True) is True
 
     stored = state.block.capture_state().inventory.get_item(0)

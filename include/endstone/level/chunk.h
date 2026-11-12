@@ -15,12 +15,14 @@
 #pragma once
 
 #include <format>
+#include <functional>
 #include <vector>
 
 #include "endstone/actor/actor.h"
 
 namespace endstone {
 
+class Block;
 class BlockState;
 class Plugin;
 
@@ -113,9 +115,24 @@ public:
      *
      * The returned list is a snapshot; it does not track block actors placed or broken afterwards.
      *
+     * @param use_snapshot `true` to capture a snapshot of each block actor's state, `false` to read the live block
+     * actors
      * @return the state of every block actor in this chunk, or an empty list if this chunk is not loaded
      */
-    [[nodiscard]] virtual std::vector<NotNull<BlockState>> getBlockActors() const = 0;
+    [[nodiscard]] virtual std::vector<NotNull<BlockState>> getBlockActors(bool use_snapshot = true) const = 0;
+
+    /**
+     * Gets a list of the block actors in this chunk whose block matches the given predicate.
+     *
+     * The returned list is a snapshot; it does not track block actors placed or broken afterwards.
+     *
+     * @param block_predicate the predicate a block must match
+     * @param use_snapshot `true` to capture a snapshot of each block actor's state, `false` to read the live block
+     * actors
+     * @return the state of every matching block actor in this chunk, or an empty list if this chunk is not loaded
+     */
+    [[nodiscard]] virtual std::vector<NotNull<BlockState>> getBlockActors(
+        const std::function<bool(const NotNull<Block> &)> &block_predicate, bool use_snapshot = true) const = 0;
 
     /**
      * Gets which plugins hold a ticket for this chunk.

@@ -34,7 +34,9 @@ public:
     bool unload() override;
     bool addPluginChunkTicket(const NotNull<Plugin> &plugin) override;
     bool removePluginChunkTicket(const NotNull<Plugin> &plugin) override;
-    [[nodiscard]] std::vector<NotNull<BlockState>> getBlockActors() const override;
+    [[nodiscard]] std::vector<NotNull<BlockState>> getBlockActors(bool use_snapshot) const override;
+    [[nodiscard]] std::vector<NotNull<BlockState>> getBlockActors(
+        const std::function<bool(const NotNull<Block> &)> &block_predicate, bool use_snapshot) const override;
     [[nodiscard]] std::vector<NotNull<Plugin>> getPluginChunkTickets() const override;
 
 private:

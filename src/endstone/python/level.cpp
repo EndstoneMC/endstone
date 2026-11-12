@@ -69,9 +69,34 @@ void init_level(py::module_ &m, py::classh<Level> &level, py::classh<Dimension> 
     Returns:
         ``True`` if a plugin ticket was removed, ``False`` if the plugin holds none for this chunk.
 )doc")
-        .def_property_readonly("block_actors", &Chunk::getBlockActors,
-                               "The state of every block actor in this chunk, or an empty list if this chunk is not "
-                               "loaded.")
+        .def_property_readonly(
+            "block_actors", [](const Chunk &self) { return self.getBlockActors(); },
+            "The state of every block actor in this chunk, or an empty list if this chunk is not loaded.")
+        .def("get_block_actors",
+             py::overload_cast<const std::function<bool(const NotNull<Block> &)> &, bool>(&Chunk::getBlockActors,
+                                                                                          py::const_),
+             py::arg("block_predicate"), py::arg("use_snapshot") = true, R"doc(
+    Gets the block actors in this chunk whose block matches the given predicate.
+
+    Args:
+        block_predicate: A function taking a `Block` and returning ``True`` for the blocks to keep.
+        use_snapshot: ``True`` to capture a snapshot of each block actor's state, ``False`` to read the live
+            block actors.
+
+    Returns:
+        The state of every matching block actor in this chunk, or an empty list if this chunk is not loaded.
+)doc")
+        .def("get_block_actors", py::overload_cast<bool>(&Chunk::getBlockActors, py::const_),
+             py::arg("use_snapshot") = true, R"doc(
+    Gets the block actors in this chunk.
+
+    Args:
+        use_snapshot: ``True`` to capture a snapshot of each block actor's state, ``False`` to read the live
+            block actors.
+
+    Returns:
+        The state of every block actor in this chunk, or an empty list if this chunk is not loaded.
+)doc")
         .def_property_readonly("plugin_chunk_tickets", &Chunk::getPluginChunkTickets,
                                "The `Plugin`s holding a ticket for this chunk.")
         .def("__repr__", [](const Chunk &self) { return std::format("{}", self); })

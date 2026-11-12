@@ -16,15 +16,31 @@
 
 #include <algorithm>
 
+#include "bedrock/world/level/block/lectern_block.h"
+#include "bedrock/world/level/block_source.h"
 #include "endstone/core/inventory/lectern_inventory.h"
 
 namespace endstone::core {
 
 EndstoneLectern::EndstoneLectern(const EndstoneBlock &block, ::LecternBlockActor &lectern, bool use_snapshot)
     : EndstoneContainerBase<Lectern>(
-          block, lectern, use_snapshot,
+          block, lectern, use_snapshot, std::make_unique<EndstoneLecternInventory>([this]() -> ::LecternBlockActor & {
+              return getLiveBlockActor<::LecternBlockActor>();
+          }),
           std::make_unique<EndstoneLecternInventory>([this]() -> ::LecternBlockActor & { return getLectern(); }))
 {
+}
+
+bool EndstoneLectern::update(bool force, bool apply_physics)
+{
+    if (!EndstoneContainerBase::update(force, apply_physics)) {
+        return false;
+    }
+    if (getType() == "minecraft:lectern") {
+        static_cast<const ::LecternBlock &>(getBlockSource().getBlock(block_pos_).getBlockType())
+            .emitRedstonePulse(getBlockSource(), block_pos_);
+    }
+    return true;
 }
 
 int EndstoneLectern::getPage() const

@@ -254,7 +254,7 @@ async def block_state_replaced(ctx: Context) -> None:
     live.inventory.set_item(0, ItemStack("minecraft:diamond", 5))
     snapshot = block.capture_state()
     live_inventory = live.inventory
-    snapshot_inventory = snapshot.inventory
+    snapshot_inventory = snapshot.snapshot_inventory
     assert live.is_snapshot is False and snapshot.is_snapshot is True
 
     ctx.run(f"setblock {x} {y} {z} barrel")

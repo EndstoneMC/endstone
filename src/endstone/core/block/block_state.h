@@ -19,6 +19,7 @@
 #include <type_traits>
 
 #include "bedrock/world/level/block/actor/block_actor.h"
+#include "bedrock/world/level/block/actor/vanilla_block_actor.h"
 #include "bedrock/world/level/block/block_descriptor.h"
 #include "endstone/block/block.h"
 #include "endstone/block/block_actor_state.h"
@@ -49,8 +50,7 @@ public:
 
     explicit EndstoneBlockStateBase(NotNull<Dimension> dimension, BlockPos block_pos, const ::Block &block,
                                     ::BlockActor *block_actor, bool use_snapshot)
-        : dimension_(dimension.cast<EndstoneDimension>()), block_pos_(block_pos),
-          block_(const_cast<::Block *>(&block))
+        : dimension_(dimension.cast<EndstoneDimension>()), block_pos_(block_pos), block_(const_cast<::Block *>(&block))
     {
         if (block_actor != nullptr) {
             block_actor_type_ = block_actor->getType();
@@ -59,22 +59,13 @@ public:
         }
     }
 
-    [[nodiscard]] ClassInfo getClassInfo() const override
-    {
-        return typeid(Interface);
-    }
+    [[nodiscard]] ClassInfo getClassInfo() const override { return typeid(Interface); }
 
-    [[nodiscard]] bool isInstanceOf(ClassInfo target) const override
-    {
-        return core::isInstanceOf(*this, target);
-    }
+    [[nodiscard]] bool isInstanceOf(ClassInfo target) const override { return core::isInstanceOf(*this, target); }
 
     [[nodiscard]] NotNull<Block> getBlock() const override { return EndstoneBlock::at(getBlockSource(), block_pos_); }
 
-    [[nodiscard]] const BlockType &getType() const override
-    {
-        return *BlockType::get(block_->getName().getString());
-    }
+    [[nodiscard]] const BlockType &getType() const override { return *BlockType::get(block_->getName().getString()); }
 
     void setType(BlockTypeId type) override
     {
@@ -89,40 +80,19 @@ public:
 
     [[nodiscard]] NotNull<BlockData> getData() const override { return std::make_shared<EndstoneBlockData>(*block_); }
 
-    void setData(const BlockData &data) override
-    {
-        block_ = &static_cast<const EndstoneBlockData &>(data).getHandle();
-    }
+    void setData(const BlockData &data) override { block_ = &static_cast<const EndstoneBlockData &>(data).getHandle(); }
 
-    [[nodiscard]] NotNull<Dimension> getDimension() const override
-    {
-        return dimension_;
-    }
+    [[nodiscard]] NotNull<Dimension> getDimension() const override { return dimension_; }
 
-    [[nodiscard]] int getX() const override
-    {
-        return block_pos_.x;
-    }
+    [[nodiscard]] int getX() const override { return block_pos_.x; }
 
-    [[nodiscard]] int getY() const override
-    {
-        return block_pos_.y;
-    }
+    [[nodiscard]] int getY() const override { return block_pos_.y; }
 
-    [[nodiscard]] int getZ() const override
-    {
-        return block_pos_.z;
-    }
+    [[nodiscard]] int getZ() const override { return block_pos_.z; }
 
-    [[nodiscard]] Location getLocation() const override
-    {
-        return Location{getDimension(), getX(), getY(), getZ()};
-    }
+    [[nodiscard]] Location getLocation() const override { return Location{getDimension(), getX(), getY(), getZ()}; }
 
-    [[nodiscard]] bool isSnapshot() const
-    {
-        return snapshot_ != nullptr;
-    }
+    [[nodiscard]] bool isSnapshot() const { return snapshot_ != nullptr; }
 
     [[nodiscard]] bool serialize(::CompoundTag &tag) const override
     {
@@ -136,15 +106,9 @@ public:
         return block_actor != nullptr && block_actor->save(tag, SaveContext::forClone());
     }
 
-    bool update() override
-    {
-        return update(false);
-    }
+    bool update() override { return update(false); }
 
-    bool update(bool force) override
-    {
-        return update(force, true);
-    }
+    bool update(bool force) override { return update(force, true); }
 
     bool update(bool force, bool apply_physics) override
     {
@@ -155,7 +119,10 @@ public:
         block->setData(*getData(), apply_physics);
 
         if (auto *block_actor = tryGetLiveBlockActor(); block_actor != nullptr) {
-            applyTo(getBlockSource().getILevel(), *block_actor);
+            if (applyTo(getBlockSource().getILevel(), *block_actor) &&
+                block_actor->getType() != ::BlockActorType::DataDriven) {
+                static_cast<::VanillaBlockActor &>(*block_actor).setChanged();
+            }
         }
         return true;
     }
@@ -185,6 +152,16 @@ protected:
     [[nodiscard]] T &getBlockActor() const
     {
         auto *block_actor = tryGetBlockActor();
+        if (block_actor == nullptr) {
+            throw std::runtime_error("Trying to access a block state that is no longer valid.");
+        }
+        return static_cast<T &>(*block_actor);
+    }
+
+    template <typename T>
+    [[nodiscard]] T &getLiveBlockActor() const
+    {
+        auto *block_actor = tryGetLiveBlockActor();
         if (block_actor == nullptr) {
             throw std::runtime_error("Trying to access a block state that is no longer valid.");
         }

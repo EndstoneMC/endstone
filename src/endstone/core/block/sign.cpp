@@ -18,6 +18,7 @@
 #include <cmath>
 
 #include "endstone/check.h"
+#include "endstone/core/player.h"
 
 namespace endstone::core {
 
@@ -165,6 +166,12 @@ void EndstoneSign::setWaxed(bool waxed)
 {
     getSign().setWaxed(waxed);
     getSign().setChanged();
+}
+
+SignSide &EndstoneSign::getTargetSide(const NotNull<Player> &player) const
+{
+    const auto &handle = static_cast<EndstonePlayer &>(*player).getHandle();
+    return getSign().getSideFacingPlayer(handle) == ::SignTextSide::Front ? front_ : back_;
 }
 
 ::SignBlockActor &EndstoneSign::getSign() const

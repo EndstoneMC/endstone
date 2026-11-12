@@ -121,6 +121,7 @@ add_library(bedrock STATIC
         world/item/registry/creative_item_registry.cpp
         world/item/registry/item_registry.cpp
         world/item/registry/item_registry_ref.cpp
+        world/level/base_mob_spawner.cpp
         world/level/block_source.cpp
         world/level/explosion.cpp
         world/level/level.cpp
@@ -137,6 +138,7 @@ add_library(bedrock STATIC
         world/level/block/campfire_block.cpp
         world/level/block/fire_block.cpp
         world/level/block/furnace_block.cpp
+        world/level/block/lectern_block.cpp
         world/level/block/liquid_block.cpp
         world/level/block/resource_drops_context.cpp
         world/level/block/vanilla_block_type_ids.cpp

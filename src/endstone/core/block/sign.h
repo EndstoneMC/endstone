@@ -57,6 +57,7 @@ public:
     [[nodiscard]] SignSide &getSide(Side side) const override;
     [[nodiscard]] bool isWaxed() const override;
     void setWaxed(bool waxed) override;
+    [[nodiscard]] SignSide &getTargetSide(const NotNull<Player> &player) const override;
 
 private:
     friend class EndstoneSignSide;

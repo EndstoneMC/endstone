@@ -24,6 +24,8 @@ class EndstoneLectern : public EndstoneContainerBase<Lectern> {
 public:
     EndstoneLectern(const EndstoneBlock &block, ::LecternBlockActor &lectern, bool use_snapshot);
 
+    using EndstoneContainerBase::update;
+    bool update(bool force, bool apply_physics) override;
     [[nodiscard]] int getPage() const override;
     void setPage(int page) override;
 

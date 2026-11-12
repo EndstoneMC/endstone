@@ -34,7 +34,7 @@ public:
 protected:
     void initializeBlockActor(::ILevel &level, const ::BlockActor &block_actor, const ::BlockPos &position,
                               const ::BlockType &block, bool use_snapshot);
-    bool applyTo(::ILevel &level, ::BlockActor &block_actor) const;
+    virtual bool applyTo(::ILevel &level, ::BlockActor &block_actor) const;
     static void load(::ILevel &level, ::BlockActor &block_actor, const ::CompoundTag &tag);
 
     std::shared_ptr<::BlockActor> snapshot_;

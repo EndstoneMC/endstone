@@ -17,8 +17,11 @@
 #include "endstone/block/block_actor_state.h"
 #include "endstone/block/sign/side.h"
 #include "endstone/block/sign/sign_side.h"
+#include "endstone/util/pointers.h"
 
 namespace endstone {
+
+class Player;
 
 /**
  * Represents a captured state of a sign.
@@ -49,6 +52,14 @@ public:
      * @param waxed whether this sign is waxed
      */
     virtual void setWaxed(bool waxed) = 0;
+
+    /**
+     * Gets the side of this sign that the given player is facing.
+     *
+     * @param player the player
+     * @return the side of the sign that faces the player
+     */
+    [[nodiscard]] virtual SignSide &getTargetSide(const NotNull<Player> &player) const = 0;
 };
 
 }  // namespace endstone

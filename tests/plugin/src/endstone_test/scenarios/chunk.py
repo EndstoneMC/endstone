@@ -222,3 +222,65 @@ async def plugin_tickets(ctx: Context) -> None:
     assert resident.remove_plugin_chunk_ticket(plugin) is True
     dimension.remove_plugin_chunk_tickets(plugin)
     dimension.unload_chunk(x, z)
+
+
+@scenario("chunk.block_actors.use_snapshot", plot=True)
+async def block_actors_use_snapshot(ctx: Context) -> None:
+    x, y, z = ctx.plot.pos(4, 1, 14)
+    ctx.run(f"setblock {x} {y} {z} chest")
+    await ctx.ticks(2)
+    chunk = next(
+        c for c in ctx.overworld.loaded_chunks if (c.x, c.z) == (x >> 4, z >> 4)
+    )
+
+    def at_chest(states):
+        return [s for s in states if (s.x, s.y, s.z) == (x, y, z)]
+
+    default = at_chest(chunk.block_actors)
+    snapshots = at_chest(chunk.get_block_actors())
+    live = at_chest(chunk.get_block_actors(use_snapshot=False))
+    assert len(default) == len(snapshots) == len(live) == 1
+    assert default[0].is_snapshot and snapshots[0].is_snapshot
+    assert not live[0].is_snapshot
+
+    seen = []
+    filtered = chunk.get_block_actors(
+        lambda block: seen.append(block.location) or block.x == x and block.z == z,
+        False,
+    )
+    assert [(s.x, s.y, s.z) for s in filtered] == [(x, y, z)], filtered
+    assert not filtered[0].is_snapshot
+    assert len(seen) >= 1
+    assert chunk.get_block_actors(lambda block: False) == []
+
+
+@scenario("chunk.held_chunk_ticks", budget=900)
+async def held_chunk_ticks(ctx: Context) -> None:
+    dimension = ctx.overworld
+    plugin = ctx.plugin
+    for cx, cz, hold in (
+        (1825, 1825, lambda cx, cz: dimension.load_chunk(cx, cz)),
+        (-1825, 1825, lambda cx, cz: dimension.add_plugin_chunk_ticket(cx, cz, plugin)),
+    ):
+        x, z = cx * 16 + 8, cz * 16 + 8
+        assert not dimension.is_chunk_loaded(cx, cz)
+        assert hold(cx, cz) is True
+        await ctx.until(
+            lambda: dimension.is_chunk_loaded(cx, cz),
+            timeout=200,
+            what="the chunk to load",
+        )
+        await ctx.until(
+            lambda: ctx.command(f"setblock {x} -60 {z} water").success,
+            timeout=200,
+            what="setblock to reach the held chunk",
+        )
+        await ctx.until(
+            lambda: ctx.block_is(f"{x + 1} -60 {z}", "water"),
+            timeout=200,
+            what="the water to spread inside the held chunk with no player nearby",
+        )
+        if cx > 0:
+            dimension.unload_chunk(cx, cz)
+        else:
+            dimension.remove_plugin_chunk_ticket(cx, cz, plugin)

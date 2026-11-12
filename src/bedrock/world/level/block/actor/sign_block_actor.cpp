@@ -16,6 +16,8 @@
 
 #include <utility>
 
+#include "bedrock/symbol.h"
+
 const std::string &SignBlockActor::Text::getMessage() const
 {
     if (text_object_message_.isEmpty()) {
@@ -30,6 +32,11 @@ void SignBlockActor::Text::setMessage(std::string message)
     message_ = std::move(message);
     text_object_message_.clear();
     cached_message_.dirty = true;
+}
+
+SignTextSide SignBlockActor::getSideFacingPlayer(const Player &player) const
+{
+    return BEDROCK_CALL(&SignBlockActor::getSideFacingPlayer, this, player);
 }
 
 void SignBlockActor::setMessageForServerScripingOnly(SignTextSide side, std::string message, std::string owner_id)

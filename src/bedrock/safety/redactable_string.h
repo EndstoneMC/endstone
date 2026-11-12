@@ -28,6 +28,8 @@ public:
         redacted_string_.reset();
         return *this;
     }
+    // Endstone
+    [[nodiscard]] const std::string &getUnredactedString() const { return unredacted_string_; }
     RedactableString &operator=(const char *unredacted_string)
     {
         unredacted_string_ = unredacted_string;

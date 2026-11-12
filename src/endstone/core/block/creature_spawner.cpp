@@ -98,6 +98,8 @@ int EndstoneCreatureSpawner::getMinSpawnDelay() const
 
 void EndstoneCreatureSpawner::setMinSpawnDelay(int delay)
 {
+    Preconditions::checkArgument(delay <= getMaxSpawnDelay(),
+                                 "Minimum Spawn Delay must be less than or equal to Maximum Spawn Delay");
     getSpawner().getSpawner().setMinSpawnDelay(delay);
     getSpawner().setChanged();
 }
@@ -109,6 +111,9 @@ int EndstoneCreatureSpawner::getMaxSpawnDelay() const
 
 void EndstoneCreatureSpawner::setMaxSpawnDelay(int delay)
 {
+    Preconditions::checkArgument(delay > 0, "Maximum Spawn Delay must be greater than 0.");
+    Preconditions::checkArgument(delay >= getMinSpawnDelay(),
+                                 "Maximum Spawn Delay must be greater than or equal to Minimum Spawn Delay");
     getSpawner().getSpawner().setMaxSpawnDelay(delay);
     getSpawner().setChanged();
 }
@@ -155,6 +160,11 @@ void EndstoneCreatureSpawner::setSpawnRange(int range)
 {
     getSpawner().getSpawner().setSpawnRange(range);
     getSpawner().setChanged();
+}
+
+void EndstoneCreatureSpawner::resetTimer()
+{
+    getSpawner().getSpawner().delay(getBlockSource());
 }
 
 }  // namespace endstone::core

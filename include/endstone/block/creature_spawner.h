@@ -67,6 +67,7 @@ public:
      * Sets the minimum delay the spawner will wait between spawns.
      *
      * @param delay the minimum delay, in ticks
+     * @throws std::invalid_argument if the delay is greater than the maximum spawn delay
      */
     virtual void setMinSpawnDelay(int delay) = 0;
 
@@ -81,6 +82,7 @@ public:
      * Sets the maximum delay the spawner will wait between spawns.
      *
      * @param delay the maximum delay, in ticks
+     * @throws std::invalid_argument if the delay is less than 1 or less than the minimum spawn delay
      */
     virtual void setMaxSpawnDelay(int delay) = 0;
 
@@ -139,6 +141,11 @@ public:
      * @param range the spawn range, in blocks
      */
     virtual void setSpawnRange(int range) = 0;
+
+    /**
+     * Resets the spawner's delay, drawing a new one between the minimum and maximum spawn delay.
+     */
+    virtual void resetTimer() = 0;
 };
 
 }  // namespace endstone

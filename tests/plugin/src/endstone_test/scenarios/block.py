@@ -530,7 +530,7 @@ async def lectern_page(ctx: Context) -> None:
 
     for pages in ([], ["one", "two"]):
         lectern = state_at(ctx, LECTERN, Lectern)
-        lectern.inventory.set_item(0, book(pages))
+        lectern.snapshot_inventory.set_item(0, book(pages))
         assert lectern.update(True)
         held = state_at(ctx, LECTERN, Lectern).inventory.get_item(0)
         assert held is not None and str(held.type) == "minecraft:writable_book", repr(
@@ -636,7 +636,7 @@ async def furnace_update_twice(ctx: Context) -> None:
     ctx.run(f"setblock {at[0]} {at[1]} {at[2]} furnace")
     await ctx.ticks(2)
     state = ctx.overworld.get_block_at(*at).capture_state()
-    state.inventory.set_item(0, ItemStack("minecraft:iron_ore", 3))
+    state.snapshot_inventory.set_item(0, ItemStack("minecraft:iron_ore", 3))
     state.burn_time = 200
     assert state.update()
     assert str(ctx.overworld.get_block_at(*at).type) == "minecraft:lit_furnace"
@@ -658,8 +658,8 @@ async def furnace_force_mismatch(ctx: Context) -> None:
     ctx.run(f"setblock {at[0]} {at[1]} {at[2]} blast_furnace")
     await ctx.ticks(2)
     seed = ctx.overworld.get_block_at(*at).capture_state()
-    seed.inventory.set_item(0, ItemStack("minecraft:raw_gold", 2))
-    seed.inventory.set_item(1, ItemStack("minecraft:coal", 1))
+    seed.snapshot_inventory.set_item(0, ItemStack("minecraft:raw_gold", 2))
+    seed.snapshot_inventory.set_item(1, ItemStack("minecraft:coal", 1))
     assert seed.update()
     await ctx.until(lambda: furnace_slots(ctx, at)[2] == ("minecraft:gold_ingot", 2), timeout=600, what="the smelting")
     held = ctx.overworld.get_block_at(*at).capture_state()
@@ -691,7 +691,7 @@ async def furnace_update_after_going_out(ctx: Context) -> None:
     ctx.run(f"setblock {at[0]} {at[1]} {at[2]} furnace")
     await ctx.ticks(2)
     seed = ctx.overworld.get_block_at(*at).capture_state()
-    seed.inventory.set_item(0, ItemStack("minecraft:iron_ore", 3))
+    seed.snapshot_inventory.set_item(0, ItemStack("minecraft:iron_ore", 3))
     seed.burn_time = 20
     assert seed.update()
     assert str(ctx.overworld.get_block_at(*at).type) == "minecraft:lit_furnace"
@@ -710,3 +710,143 @@ async def furnace_update_after_going_out(ctx: Context) -> None:
     await ctx.ticks(5)
     assert furnace_slots(ctx, at)[0] == ("minecraft:iron_ore", 3), furnace_slots(ctx, at)
     assert dropped_near(ctx, at) == {"items": 0, "orbs": 0}, dropped_near(ctx, at)
+
+
+@scenario("block.container.live_and_snapshot_inventory", plot=True)
+async def container_live_and_snapshot_inventory(ctx: Context) -> None:
+    """On a snapshot, inventory edits reach the world at once and snapshot_inventory edits wait for update()."""
+    x, y, z = ctx.plot.pos(6, 1, 12)
+    ctx.run(f"setblock {x} {y} {z} chest")
+    await ctx.ticks(2)
+
+    def stored(slot: int):
+        item = (
+            ctx.overworld.get_block_at(x, y, z)
+            .capture_state(use_snapshot=False)
+            .inventory.get_item(slot)
+        )
+        return None if item is None else (str(item.type), item.amount)
+
+    state = ctx.overworld.get_block_at(x, y, z).capture_state()
+    assert state.is_snapshot
+    state.inventory.set_item(0, ItemStack("minecraft:diamond", 3))
+    assert stored(0) == ("minecraft:diamond", 3), stored(0)
+    assert state.snapshot_inventory.get_item(0) is None
+
+    state.snapshot_inventory.set_item(1, ItemStack("minecraft:gold_ingot", 2))
+    assert stored(1) is None, stored(1)
+    assert state.inventory.get_item(1) is None
+
+    unsnapshotted = ctx.overworld.get_block_at(x, y, z).capture_state(
+        use_snapshot=False
+    )
+    unsnapshotted.snapshot_inventory.set_item(2, ItemStack("minecraft:emerald", 1))
+    assert stored(2) == ("minecraft:emerald", 1), stored(2)
+
+
+@scenario("block.container.custom_name", plot=True)
+async def container_custom_name(ctx: Context) -> None:
+    """A container's custom name is None until set, reaches the world on update() and clears again."""
+    x, y, z = ctx.plot.pos(10, 1, 12)
+    ctx.run(f"setblock {x} {y} {z} chest")
+    await ctx.ticks(2)
+    block = ctx.overworld.get_block_at(x, y, z)
+
+    state = block.capture_state()
+    assert state.custom_name is None, state.custom_name
+    state.custom_name = "Loot"
+    assert state.custom_name == "Loot"
+    assert block.capture_state().custom_name is None
+    assert state.update(True)
+    assert block.capture_state().custom_name == "Loot", (
+        block.capture_state().custom_name
+    )
+
+    state.custom_name = None
+    assert state.custom_name is None
+    assert block.capture_state().custom_name == "Loot"
+    assert state.update(True)
+    assert block.capture_state().custom_name is None, block.capture_state().custom_name
+
+    block.capture_state(use_snapshot=False).custom_name = "Live"
+    assert block.capture_state().custom_name == "Live"
+
+
+@scenario("block.creature_spawner.spawn_delay_bounds", plot=True)
+async def creature_spawner_spawn_delay_bounds(ctx: Context) -> None:
+    """min_spawn_delay and max_spawn_delay reject values that would put the minimum above the maximum."""
+    x, y, z = ctx.plot.pos(8, 1, 12)
+    ctx.run(f"setblock {x} {y} {z} mob_spawner")
+    await ctx.ticks(2)
+    spawner = ctx.overworld.get_block_at(x, y, z).capture_state()
+    spawner.max_spawn_delay = 400
+    spawner.min_spawn_delay = 100
+    refused = {}
+    for name, assign in {
+        "min above max": lambda: setattr(spawner, "min_spawn_delay", 401),
+        "max below min": lambda: setattr(spawner, "max_spawn_delay", 99),
+        "max zero": lambda: setattr(spawner, "max_spawn_delay", 0),
+    }.items():
+        try:
+            assign()
+        except ValueError:
+            refused[name] = True
+        else:
+            refused[name] = False
+    ctx.info["refused"] = refused
+    assert all(refused.values()), refused
+    assert (spawner.min_spawn_delay, spawner.max_spawn_delay) == (100, 400)
+    spawner.min_spawn_delay = 400
+    spawner.max_spawn_delay = 400
+    assert (spawner.min_spawn_delay, spawner.max_spawn_delay) == (400, 400)
+
+
+@scenario("block.lectern.update_pulse", plot=True)
+async def lectern_update_pulse(ctx: Context) -> None:
+    """Updating a lectern state pulses the lectern like a page turn, so a redstone lamp beside it lights."""
+    lamp = ctx.plot.at(LECTERN[0] + 1, LECTERN[1], LECTERN[2])
+    ctx.run(f"setblock {ctx.plot.at(*LECTERN)} lectern")
+    ctx.run(f"setblock {lamp} redstone_lamp")
+    await ctx.ticks(10)
+    assert not ctx.block_is(lamp, "lit_redstone_lamp"), (
+        "the lamp was lit before any update"
+    )
+    lectern = state_at(ctx, LECTERN, Lectern)
+    assert lectern.update(True)
+    await ctx.until(
+        lambda: ctx.block_is(lamp, "lit_redstone_lamp"),
+        timeout=4,
+        what="the lamp to light after Lectern.update()",
+    )
+
+
+@scenario("block.sign.target_side", plot=True, budget=1200)
+async def sign_target_side(ctx: Context) -> None:
+    """A player in front of a sign and one behind it are given opposite sides."""
+    ctx.run(f"setblock {ctx.plot.at(*SIGN)} standing_sign")
+    seen = {}
+    for name, dz in (("SignFront", 4), ("SignBack", -4)):
+        await ctx.bot(name)
+        player = ctx.server.get_player(name)
+        assert player is not None, f"{name} is not online"
+        x, y, z = ctx.plot.pos(SIGN[0], 0, SIGN[2] + dz)
+        ctx.run(f"tp {name} {x + 0.5} {y} {z + 0.5}")
+        await ctx.ticks(40)
+        sign = state_at(ctx, SIGN, Sign)
+        seen[name] = (
+            "front" if sign.get_target_side(player) is sign.get_side(FRONT) else "back"
+        )
+    ctx.info["sides"] = seen
+    assert seen["SignFront"] != seen["SignBack"], seen
+
+
+@scenario("block.spawner.reset_timer", plot=True)
+async def spawner_reset_timer(ctx: Context) -> None:
+    """reset_timer redraws the delay from the minimum and maximum spawn delay."""
+    ctx.run(f"setblock {ctx.plot.at(*LECTERN)} mob_spawner")
+    spawner = ctx.overworld.get_block_at(*ctx.plot.pos(*LECTERN)).capture_state()
+    spawner.min_spawn_delay = 300
+    spawner.max_spawn_delay = 300
+    spawner.delay = 5
+    spawner.reset_timer()
+    assert spawner.delay == 300, spawner.delay

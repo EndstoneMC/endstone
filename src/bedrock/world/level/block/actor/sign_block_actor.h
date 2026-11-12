@@ -33,6 +33,8 @@ enum class SignTextSide : int {
     Back = 1,
 };
 
+class Player;
+
 class SignBlockActor : public VanillaBlockActor {
 public:
     static constexpr int NUM_LINES = 4;
@@ -91,6 +93,7 @@ public:
     void setWaxed(bool waxed) { is_waxed_ = waxed; }
     [[nodiscard]] const ActorUniqueID &getLockedForEditingBy() const { return locked_for_editing_by_; }  // Endstone
     void setLockedForEditingBy(ActorUniqueID id) { locked_for_editing_by_ = id; }                        // Endstone
+    [[nodiscard]] SignTextSide getSideFacingPlayer(const Player &player) const;
     void setMessageForServerScripingOnly(SignTextSide side, std::string message, std::string owner_id);
 
 private:

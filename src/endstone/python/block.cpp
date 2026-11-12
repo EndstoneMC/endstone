@@ -142,6 +142,20 @@ void init_block(py::module_ &m, py::classh<Block> &block)
 
     If the block was changed to a different type in the meantime, the returned inventory might no
     longer be valid.
+
+    Modifications to the returned inventory apply to the block at once, without a call to `update()`.
+)doc")
+        .def_property_readonly("snapshot_inventory", &Container::getSnapshotInventory,
+                               py::return_value_policy::reference_internal, R"doc(
+    The captured inventory snapshot of this container.
+
+    The returned inventory is not linked to the block. Modifications to it do not apply to the block
+    until `update()` is called.
+)doc")
+        .def_property("custom_name", &Container::getCustomName, &Container::setCustomName, R"doc(
+    Gets or sets the custom name of this container, or `None` if it has none.
+
+    Setting an empty name or `None` clears the custom name.
 )doc");
 
     py::classh<Campfire, BlockActorState>(m, "Campfire", "Represents a captured state of a campfire.")
@@ -190,9 +204,11 @@ void init_block(py::module_ &m, py::classh<Block> &block)
         .def_property("delay", &CreatureSpawner::getDelay, &CreatureSpawner::setDelay,
                       "The delay until the spawner spawns the next batch of actors, in ticks.")
         .def_property("min_spawn_delay", &CreatureSpawner::getMinSpawnDelay, &CreatureSpawner::setMinSpawnDelay,
-                      "The minimum delay the spawner will wait between spawns, in ticks.")
+                      "The minimum delay the spawner will wait between spawns, in ticks. Must not exceed "
+                      "`max_spawn_delay`.")
         .def_property("max_spawn_delay", &CreatureSpawner::getMaxSpawnDelay, &CreatureSpawner::setMaxSpawnDelay,
-                      "The maximum delay the spawner will wait between spawns, in ticks.")
+                      "The maximum delay the spawner will wait between spawns, in ticks.\n"
+                      "Must be at least 1 and at least `min_spawn_delay`.")
         .def_property("spawn_count", &CreatureSpawner::getSpawnCount, &CreatureSpawner::setSpawnCount,
                       "How many actors the spawner attempts to spawn at a time.")
         .def_property("max_nearby_entities", &CreatureSpawner::getMaxNearbyEntities,
@@ -202,7 +218,9 @@ void init_block(py::module_ &m, py::classh<Block> &block)
                       &CreatureSpawner::setRequiredPlayerRange,
                       "How far away a player must be for the spawner to be active, in blocks.")
         .def_property("spawn_range", &CreatureSpawner::getSpawnRange, &CreatureSpawner::setSpawnRange,
-                      "The radius around the spawner in which actors are spawned, in blocks.");
+                      "The radius around the spawner in which actors are spawned, in blocks.")
+        .def("reset_timer", &CreatureSpawner::resetTimer,
+             "Resets the spawner's delay, drawing a new one between the minimum and maximum spawn delay.");
 
     py::classh<Lectern, BlockActorState>(m, "Lectern", "Represents a captured state of a lectern.")
         .def_property("page", &Lectern::getPage, &Lectern::setPage, R"doc(
@@ -215,6 +233,15 @@ void init_block(py::module_ &m, py::classh<Block> &block)
 
     If the block was changed to a different type in the meantime, the returned inventory might no
     longer be valid.
+
+    Modifications to the returned inventory apply to the block at once, without a call to `update()`.
+)doc")
+        .def_property_readonly("snapshot_inventory", &Lectern::getSnapshotInventory,
+                               py::return_value_policy::reference_internal, R"doc(
+    The captured inventory snapshot of this lectern.
+
+    The returned inventory is not linked to the block. Modifications to it do not apply to the block
+    until `update()` is called.
 )doc");
 
     py::classh<Furnace, Container>(m, "Furnace", R"doc(
@@ -295,7 +322,17 @@ void init_block(py::module_ &m, py::classh<Block> &block)
     Changes are kept in the captured state until `update()` is called.
 )doc");
 
-    sign.def("get_side", &Sign::getSide, py::arg("side"), py::return_value_policy::reference_internal, R"doc(
+    sign.def("get_target_side", &Sign::getTargetSide, py::arg("player"), py::return_value_policy::reference_internal,
+             R"doc(
+    Gets the side of this sign that the given player is facing.
+
+    Args:
+        player: The player.
+
+    Returns:
+        The side of the sign that faces the player.
+)doc")
+        .def("get_side", &Sign::getSide, py::arg("side"), py::return_value_policy::reference_internal, R"doc(
     Gets the side of this sign.
 
     Args:

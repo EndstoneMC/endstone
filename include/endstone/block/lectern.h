@@ -49,9 +49,21 @@ public:
      *
      * If the block was changed to a different type in the meantime, the returned inventory might no longer be valid.
      *
+     * Modifications to the returned inventory apply to the block at once, without a call to update().
+     *
      * @return the inventory of the block
      */
     [[nodiscard]] virtual Inventory &getInventory() const = 0;
+
+    /**
+     * Gets the captured inventory snapshot of this lectern.
+     *
+     * The returned inventory is not linked to the block. Modifications to it do not apply to the block until update()
+     * is called.
+     *
+     * @return the captured inventory snapshot
+     */
+    [[nodiscard]] virtual Inventory &getSnapshotInventory() const = 0;
 };
 
 }  // namespace endstone

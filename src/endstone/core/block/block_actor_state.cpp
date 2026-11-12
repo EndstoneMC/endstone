@@ -80,9 +80,6 @@ bool EndstoneBlockActorState::applyTo(::ILevel &level, ::BlockActor &block_actor
         }
         load(level, block_actor, tag);
     }
-    if (block_actor.getType() != ::BlockActorType::DataDriven) {
-        static_cast<::VanillaBlockActor &>(block_actor).setChanged();
-    }
     return true;
 }
 
