@@ -1857,3 +1857,153 @@ extra = 0
 #    when set; it writes nothing
 # 3. function prologue; matches exactly once in the 1.26.52.3 .text
 pattern = "55 41 57 41 56 41 55 41 54 56 57 53 48 83 EC 48 48 8D 6C 24 ? 48 C7 45 ? FE FF FF FF 4C 89 C6 48 89 55 ? 48 89 CB"
+
+[[signatures]]
+name = "?stopRiding@Actor@@QEAAX_N000@Z"
+relative = false
+extra = 0
+# function prologue
+# 1. find the entt type-id hashes of the five components it adds (immediates): StopRidingRequestComponent 0xFE184424,
+#    ExitFromPassengerFlagComponent 0xAE2A71E8, ActorIsBeingDestroyedFlagComponent 0xE88B4C85,
+#    SwitchingVehiclesFlagComponent 0x00FEA82B and IsBeingTeleportedFlagComponent 0x2D854C1B; the one function that
+#    references all five is the target
+# 2. confirm from the body: it calls MinecraftEventing::onVehicleExited when the vehicle component is present, always
+#    emplaces StopRidingRequestComponent, then emplaces one flag component per bool in the order (exitFromPassenger,
+#    actorIsBeingDestroyed, switchingVehicles, isBeingTeleported), and finishes by running the StopRiding system
+#    category through IEntitySystems; it has ~25 callers
+# 3. cut at the prologue (push rbp/r15/r14/rsi/rdi/rbx, sub rsp imm32, mov r14d edx)
+# uniqueness: matches exactly once in the 1.26.60 and 1.26.63.1 .text
+pattern = "55 41 57 41 56 41 54 56 57 53 48 81 EC ? ? ? ? 48 8D AC 24 ? ? ? ? 48 C7 45 ? ? ? ? ? 41 89 D6"
+
+[[signatures]]
+name = "?transferActor@ActorDimensionTransferer@@UEAAXAEAVActor@@AEAVDimension@@AEBVVec3@@@Z"
+relative = false
+extra = 0
+# function prologue
+# 1. the target is a virtual of IActorDimensionTransferer with no direct callers; it allocates a 24-byte CompoundTag
+#    (mov edx 0x18 on the memory-tracker allocator), calls Actor::save on it, makes three virtual calls (two on the
+#    IActorDimensionTransferProxy member, one on the actor) around ActorManager::removeEntity, and ends with the proxy
+#    transferActorToDimension(actor, toDimension, targetPosition, std::move(tag))
+# 2. the actor virtual (+0x58, slot 11) is Actor::remove, the removal that raises ActorRemovedEvent
+# 3. cut at the prologue through the allocator load and the 0x18 size
+# uniqueness: matches exactly once in the 1.26.60 and 1.26.63.1 .text
+pattern = "55 41 57 41 56 41 55 41 54 56 57 53 48 81 EC ? ? ? ? 48 8D AC 24 ? ? ? ? 48 C7 45 ? ? ? ? ? 4C 89 CE 4C 89 C7 48 89 D3 49 89 CE 48 8B 0D ? ? ? ? 48 8B 01 48 8B 40 08 BA 18 00"
+
+[[signatures]]
+name = "?emitRedstonePulse@LecternBlock@@QEBAXAEAVBlockSource@@AEBVBlockPos@@@Z"
+relative = false
+extra = 0
+# call site in LecternBlockActor::setPageOnServer
+# 1. find LecternBlockActor::setPageOnServer(int page, BlockSource&): a ~0x63-byte function that returns when mPage ==
+#    page, compares the block type name hash with VanillaBlockTypeIds::Lectern.mStrHash and calls the target with
+#    (blockType, region, mPosition) before storing mPage and setting the dirty bit; its only caller is a
+#    ServerNetworkHandler packet handler
+# 2. the target is the single direct call in that function and has no other caller
+# uniqueness: the call-site pattern matches exactly once in the 1.26.60 and 1.26.63.1 .text, at the E8 inside
+# setPageOnServer
+pattern = "48 3B 05 ? ? ? ? 75 0B 48 89 DA 4D 89 F0 E8 ? ? ? ? 89"
+rip_relative = true
+rip_offset = 16
+
+[[signatures]]
+name = "?getSideFacingPlayer@SignBlockActor@@QEBA?AW4SignTextSide@@AEBVPlayer@@@Z"
+relative = false
+extra = 0
+# function prologue
+# 1. callers are SignBlockActor::getImmersiveReaderText and SignBlock::use (named in a PDB build); the target is the
+#    ~0x2B0-byte callee that reads the level base game version and compares it with
+#    VanillaGameVersions::TrailsAndTalesVersion
+# 2. confirm from the body: it gets the block at mPosition from the player dimension, reads the block rotation in degrees
+#    through a BlockType virtual, looks up MathAnon::SIN at angle * 10430.378 and +16384 for sin and cos, takes the block
+#    shape AABB centre and returns whether the dot product with the player position is negative
+# 3. cut at the prologue through the xmm spills
+# uniqueness: matches exactly once in the 1.26.60 and 1.26.63.1 .text
+pattern = "41 57 41 56 56 57 53 48 81 EC ? ? ? ? 44 0F 29 8C 24 ? ? ? ? 44 0F 29 44 24 ? 0F 29 7C 24 ? 0F 29 74 24 ? 48 89 D7"
+
+[[signatures]]
+name = "?_delay@BaseMobSpawner@@IEAAXAEAVBlockSource@@@Z"
+relative = false
+extra = 0
+# function prologue
+# 1. find BaseMobSpawner::tick, the ~0x8AD-byte virtual that calls Random::_genRandInt32, MobSpawnUtils::onMobSpawned and
+#    BlockSource::fetchActors; _delay is its callee, called twice and laid out just before tick
+# 2. confirm from the body: it draws a delay between the spawner min and max spawn delay through virtual calls, stores it
+#    into mSpawnDelay, picks the next SpawnData from mSpawnPotentials by weight into mNextSpawnData and ends with a
+#    virtual call on the spawner with (extra block, 1, 0); it has this single caller
+# 3. cut at the prologue through the argument shuffle
+# uniqueness: matches exactly once in the 1.26.60 and 1.26.63.1 .text
+pattern = "55 41 57 41 56 56 57 53 48 83 EC ? 48 8D 6C 24 ? 48 C7 45 ? ? ? ? ? 48 89 D6 48 89 CF 48 8B 02 48 8B 80"
+
+[[signatures]]
+name = "CauldronBlock::receiveStalactiteDrip::lambda_0"
+relative = false
+extra = 0
+# function prologue; the name is an arbitrary key for the lambda body of CauldronBlock::receiveStalactiteDrip, which is
+# inlined into CauldronBlock::tick
+# 1. locate CauldronBlock::tick (named in a PDB build); it calls PointedDripstoneBlock::findStalactiteTipAboveCauldron and
+#    getCauldronFillLiquidType, then CauldronBlock::canReceiveStalactiteDrip, then the lambda
+# 2. the lambda is the ~0x180-byte callee laid out after canReceiveStalactiteDrip: it plays the level event through a
+#    level virtual and calls CauldronBlock::setLiquidLevel(region, pos, newFillLevel, type) then
+#    CauldronBlock::_spawnCauldronEvent; it has this single caller
+# 3. cut at the prologue through the argument shuffle
+# uniqueness: matches exactly once in the 1.26.60 and 1.26.63.1 .text
+pattern = "55 41 57 41 56 56 57 53 48 81 EC ? ? ? ? 48 8D AC 24 ? ? ? ? 0F 29 75 ? 48 C7 45 ? ? ? ? ? 66 44 89 CE 45 89 C6 89 D3 48 89 CF"
+
+[[signatures]]
+name = "?_checkInsideCauldron@SystemImpl@ServerStandInCauldronSystem@@CAXAEAVActorOwnerComponent@@@Z"
+relative = false
+extra = 0
+# function prologue; static, hand-mangled (private static is C)
+# 1. find ServerStandInCauldronSystem::SystemImpl::tick and singleTick (named in a PDB build); the target is the
+#    ~0x540-byte callee that tick calls twice and singleTick once, laid out between them
+# 2. confirm from the body: it returns for removed actors and spectators, reads the block at the actor attach position,
+#    compares its name hash with VanillaBlockTypeIds::Cauldron, reads FillLevel and CauldronLiquid, applies lava damage
+#    when the liquid is lava, and for a burning actor in a non-potion cauldron calls CauldronBlock::setLiquidLevel with
+#    the level minus one
+# 3. cut at the prologue through the xmm spills
+# uniqueness: matches exactly once in the 1.26.60 and 1.26.63.1 .text
+pattern = "55 41 57 41 56 41 54 56 57 53 48 81 EC ? ? ? ? 48 8D AC 24 ? ? ? ? 44 0F 29 45 ? 0F 29 7D ? 0F 29 75 ? 48 C7 45 ? ? ? ? ? 48 8B 31"
+
+[[signatures]]
+name = "?execute@SpawnPointCommand@@UEBAXAEBVCommandOrigin@@AEAVCommandOutput@@@Z"
+relative = false
+extra = 0
+# function prologue; virtual, slot 2 of the SpawnPointCommand vftable after the deleting dtor and collectOptionalArguments
+# 1. find "commands.spawnpoint.success.single\0" (63 6F 6D 6D 61 6E 64 73 2E 73 70 61 77 6E 70 6F 69 6E 74 2E 73 75 63 63
+#    65 73 73 2E 73 69 6E 67 6C 65 00), exactly one occurrence; its lone referring function is this one
+# 2. it is one of the two direct callers of Player::setRespawnPosition binary-wide; the other is the script binding thunk
+#    Scripting::Reflection::MemberFunction<&ScriptPlayer::setSpawnPoint>::call
+# 3. it has no direct callers, so the pattern is the prologue through the xmm spills and the argument moves
+# 4. identity check against the named 1.26.40 build: SpawnPointCommand::execute at 0x143c66360 is the same lone string
+#    referrer, and the 1.26.60 body (0xcb8 bytes) is 100 percent equal to 1.26.63.1 under a wildcarded-operand diff
+# uniqueness: matches exactly once in the 1.26.60 and 1.26.63.1 .text, at a .pdata BeginAddress
+pattern = "55 41 57 41 56 41 55 41 54 56 57 53 48 81 EC ? ? ? ? 48 8D AC 24 ? ? ? ? 44 0F 29 85 ? ? ? ? 0F 29 BD ? ? ? ? 0F 29 B5 ? ? ? ? 48 C7 85 ? ? ? ? ? ? ? ? 4D 89 C5 48 89 D3 48 89 4D"
+
+[[signatures]]
+name = "?tick@CauldronBlock@@QEBAXAEAVBlockQueuedTickEvent@BlockEvents@@@Z"
+relative = false
+extra = 0
+# function prologue
+# 1. locate the CauldronBlock::receiveStalactiteDrip lambda (its entry is in this file); this function is its only direct
+#    caller, and receiveStalactiteDrip itself is inlined here
+# 2. confirm the body: it reads the cauldron block actor through LevelChunk::getBlockEntity, calls
+#    CauldronBlock::setLiquidLevel twice and CauldronBlock::_spawnCauldronEvent, then runs the stalactite search,
+#    getCauldronFillLiquidType and CauldronBlock::canReceiveStalactiteDrip before the lambda call
+# 3. it has no direct callers and no vftable slot, so the pattern is the prologue through the xmm spills
+# 4. identity check against the named 1.26.40 build: CauldronBlock::tick at 0x146990190 has the same callee set, and the
+#    1.26.60 body (0x818 bytes) is 100 percent equal to 1.26.63.1 under a wildcarded-operand diff
+# uniqueness: matches exactly once in the 1.26.60 and 1.26.63.1 .text, at a .pdata BeginAddress
+pattern = "55 41 57 41 56 41 55 41 54 56 57 53 48 81 EC ? ? ? ? 48 8D AC 24 ? ? ? ? 44 0F 29 45 ? 0F 29 7D ? 0F 29 75 ? 48 C7 45 ? ? ? ? ? 48 89 D3 49 89 CC 48 8D 72"
+
+[[signatures]]
+name = "?handlePrecipitation@CauldronBlock@@UEBAXAEAVBlockSource@@AEBVBlockPos@@MM@Z"
+relative = false
+extra = 0
+# function prologue; virtual
+# 1. start from CauldronBlock::setLiquidLevel (its entry is in this file); 14 functions call it directly in 1.26.63.1
+# 2. the target is the caller with no direct callers and one .rdata vftable reference, about 0x50c bytes, that calls
+#    LevelChunk::getBlockEntity and a SemVersion comparison before its single setLiquidLevel call
+# 3. identity check against the named 1.26.40 build: CauldronBlock::handlePrecipitation at 0x146995e00 has the same three
+#    callees, and the 1.26.60 body (0x50c bytes) is 100 percent equal to 1.26.63.1 under a wildcarded-operand diff
+# uniqueness: matches exactly once in the 1.26.60 and 1.26.63.1 .text, at a .pdata BeginAddress
+pattern = "55 41 57 41 56 41 55 41 54 56 57 53 48 83 EC ? 48 8D 6C 24 ? 0F 29 75 ? 48 C7 45 ? ? ? ? ? 0F 28 F3 4C 89 C6"

@@ -11,8 +11,9 @@
 
 namespace endstone::runtime {
 
-static constexpr std::array<std::pair<std::string_view, std::size_t>, 122> symbols = {{
+static constexpr std::array<std::pair<std::string_view, std::size_t>, 132> symbols = {{
     {"BlockState::StateListNode::mHead", 223883584},
+    {"CauldronBlock::receiveStalactiteDrip::lambda_0", 110887680},
     {"ChunkBlenderFactory::getOrCreateChunkBlender::cache_cap", 140106330},
     {"DBChunkStorage::_hasChunk::cache_cap", 57747200},
     {"Enchant::mEnchants", 223570944},
@@ -23,11 +24,16 @@ static constexpr std::array<std::pair<std::string_view, std::size_t>, 122> symbo
     // Actor
     {"?addEffect@Actor@@QEAAXAEBVMobEffectInstance@@@Z", 3847616},
     {"?remove@Actor@@UEAAXXZ", 3666464},
+    {"?stopRiding@Actor@@QEAAX_N000@Z", 3700016},
     {"?teleportTo@Actor@@UEAAXAEBVVec3@@_NHH1@Z", 3715600},
+    // ActorDimensionTransferer
+    {"?transferActor@ActorDimensionTransferer@@UEAAXAEAVActor@@AEAVDimension@@AEBVVec3@@@Z", 30993232},
     // ActorFactory
     {"?createSpawnedActor@ActorFactory@@QEAA?AV?$OwnerPtr@VEntityContext@@@@AEBUActorDefinitionIdentifier@@PEAVActor@@AEBVVec3@@AEBVVec2@@@Z", 28356704},
     // ArmorStand
     {"?getInteraction@ArmorStand@@UEAA?AVInteraction@@AEAVPlayer@@AEBVVec3@@W4HandSlot@@@Z", 29168080},
+    // BaseMobSpawner
+    {"?_delay@BaseMobSpawner@@IEAAXAEAVBlockSource@@@Z", 31051840},
     // BedrockLog::LogDetails
     {"?_log@LogDetails@BedrockLog@@AEAAXW4LogAreaID@@IPEBDHHV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z", 2800816},
     // BlockActor
@@ -45,7 +51,9 @@ static constexpr std::array<std::pair<std::string_view, std::size_t>, 122> symbo
     {"?_finishCooking@CampfireBlockActor@@AEAAXAEAVBlockSource@@H@Z", 31785856},
     // CauldronBlock
     {"?_useInventory@CauldronBlock@@CAXAEAVPlayer@@AEAVItemStack@@1H@Z", 110879056},
+    {"?handlePrecipitation@CauldronBlock@@UEBAXAEAVBlockSource@@AEBVBlockPos@@MM@Z", 110882720},
     {"?setLiquidLevel@CauldronBlock@@QEBAXAEAVBlockSource@@AEBVBlockPos@@HW4CauldronLiquidType@@@Z", 110877376},
+    {"?tick@CauldronBlock@@QEBAXAEAVBlockQueuedTickEvent@BlockEvents@@@Z", 110859248},
     {"?use@CauldronBlock@@QEBAXAEAVBlockPlayerInteractEvent@BlockEvents@@@Z", 110862336},
     // ChunkBuildOrderPolicy
     {"?updateInfluences@ChunkBuildOrderPolicy@@UEAAXXZ", 57334032},
@@ -115,6 +123,8 @@ static constexpr std::array<std::pair<std::string_view, std::size_t>, 122> symbo
     {"?_getOrInitSparseContainer@ItemStackRequestActionHandler@@QEAA?AV?$shared_ptr@VSimpleSparseContainer@@@std@@AEBUFullContainerName@@@Z", 36669552},
     // LeavesBlock
     {"?randomTick@LeavesBlock@@QEBAXAEAVBlockRandomTickEvent@BlockEvents@@@Z", 52455088},
+    // LecternBlock
+    {"?emitRedstonePulse@LecternBlock@@QEBAXAEAVBlockSource@@AEBVBlockPos@@@Z", 52465120},
     // Level
     {"?getActivePlayerCount@Level@@UEBAHXZ", 8147936},
     {"?tick@Level@@UEAAXXZ", 8106960},
@@ -189,10 +199,16 @@ static constexpr std::array<std::pair<std::string_view, std::size_t>, 122> symbo
     {"?sendNetworkPacket@ServerPlayer@@UEBAXAEAVPacket@@@Z", 9818320},
     // ServerScoreboard
     {"??0ServerScoreboard@@QEAA@VCommandSoftEnumRegistry@@PEAVLevelStorage@@V?$not_null@V?$NonOwnerPointer@VGameplayUserManager@@@Bedrock@@@gsl@@@Z", 2272800},
+    // ServerStandInCauldronSystem::SystemImpl
+    {"?_checkInsideCauldron@SystemImpl@ServerStandInCauldronSystem@@CAXAEAVActorOwnerComponent@@@Z", 106399184},
     // ServerWaypoint
     {"?update@ServerWaypoint@@UEAAXAEBVPlayer@@@Z", 3523136},
     // ShareableComponent
     {"?getCountToPickUp@ShareableComponent@@QEBAHAEBVActor@@AEBVItemStack@@@Z", 26471936},
+    // SignBlockActor
+    {"?getSideFacingPlayer@SignBlockActor@@QEBA?AW4SignTextSide@@AEBVPlayer@@@Z", 77553312},
+    // SpawnPointCommand
+    {"?execute@SpawnPointCommand@@UEBAXAEBVCommandOrigin@@AEAVCommandOutput@@@Z", 98450576},
     // TickingAreasManager
     {"?addTransientScopedArea@TickingAreasManager@@QEAA?AUScopedContext@1@UDimensionType@@AEBV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@_KVUUID@mce@@AEBUBounds@@@Z", 53344848},
     {"?removeScopedAreas@TickingAreasManager@@QEAAXAEBV?$vector@VUUID@mce@@V?$allocator@VUUID@mce@@@std@@@std@@@Z", 53345968},

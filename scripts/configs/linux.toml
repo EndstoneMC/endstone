@@ -1763,3 +1763,124 @@ extra = 0
 #    carried count, and the entry's pickupLimit (+0x1c), the last two only when set
 # 4. function prologue; matches exactly once in the 1.26.52.3 .text
 pattern = "55 41 57 41 56 41 55 41 54 53 48 83 EC 28 48 89 D3 48 89 74 24 20"
+
+[[signatures]]
+name = "_ZN5Actor10stopRidingEbbbb"
+relative = false
+extra = 0
+# function prologue
+# 1. same identity as the Windows entry: the one function that emplaces StopRidingRequestComponent and the
+#    ExitFromPassenger, ActorIsBeingDestroyed, SwitchingVehicles and IsBeingTeleported flag components (entt type hashes
+#    0xFE184424, 0xAE2A71E8, 0xE88B4C85, 0x00FEA82B, 0x2D854C1B) and then runs the StopRiding system category
+# 2. confirm the body by wildcarded-operand diff against the symbol-bearing 1.26.60 build (1113 bytes, 99.6 percent equal)
+# 3. cut at the prologue through the first two argument moves
+# uniqueness: matches exactly once in the 1.26.60 and 1.26.63.1 .text
+pattern = "55 41 57 41 56 41 55 41 54 53 48 81 EC ? ? ? ? 44 89 C5 41 89 CE"
+
+[[signatures]]
+name = "_ZN24ActorDimensionTransferer13transferActorER5ActorR9DimensionRK4Vec3"
+relative = false
+extra = 0
+# function prologue
+# 1. virtual of IActorDimensionTransferer with no direct callers: allocates a 24-byte CompoundTag, calls Actor::save, makes
+#    three virtual calls around ActorManager::removeEntity (the actor one at vtable +0x58 is Actor::remove) and ends with
+#    the proxy transferActorToDimension
+# 2. confirm the body by wildcarded-operand diff against the symbol-bearing 1.26.60 build (596 bytes, 100 percent equal)
+# 3. cut at the prologue through the allocator load
+# uniqueness: matches exactly once in the 1.26.60 and 1.26.63.1 .text
+pattern = "55 41 57 41 56 41 55 41 54 53 48 81 EC ? ? ? ? 49 89 CF 49 89 D6 49 89 F4 49 89 FD 48 8B 05 ? ? ? ?"
+
+[[signatures]]
+name = "_ZNK12LecternBlock17emitRedstonePulseER11BlockSourceRK8BlockPos"
+relative = false
+extra = 0
+# function prologue
+# 1. same identity as the Windows entry: the single callee of LecternBlockActor::setPageOnServer, which compares the block
+#    type name hash with the cached Lectern hash before the call
+# 2. confirm the body by wildcarded-operand diff against the symbol-bearing 1.26.60 build (190 bytes, 100 percent equal)
+# 3. the prologue is only unique once cut through the two virtual calls
+# uniqueness: matches exactly once in the 1.26.60 and 1.26.63.1 .text
+pattern = "41 57 41 56 53 48 83 EC 10 48 89 D3 49 89 F6 48 8B 06 48 89 F7 FF 90 ? ? ? ? 48 8B 08 48 89 C7 FF 91 ? ? ? ? 84 C0 0F 85 ? ? ? ? 49 8B 06 4C 89 F7 48 89 DE FF 50 10"
+
+[[signatures]]
+name = "_ZNK14SignBlockActor19getSideFacingPlayerERK6Player"
+relative = false
+extra = 0
+# function prologue
+# 1. same identity as the Windows entry: callee of SignBlockActor::getImmersiveReaderText and SignBlock::use that reads the
+#    level base game version, compares it with TrailsAndTalesVersion and returns the side from the sin/cos dot product
+# 2. confirm the body by wildcarded-operand diff against the symbol-bearing 1.26.60 build (591 bytes, 100 percent equal)
+# 3. cut at the prologue through the first member load
+# uniqueness: matches exactly once in the 1.26.60 and 1.26.63.1 .text
+pattern = "41 57 41 56 41 55 41 54 53 48 83 EC 50 49 89 F6 48 89 FB 48 8B BE ? ? ? ?"
+
+[[signatures]]
+name = "_ZN14BaseMobSpawner6_delayER11BlockSource"
+relative = false
+extra = 0
+# function prologue
+# 1. same identity as the Windows entry: callee of BaseMobSpawner::tick that redraws mSpawnDelay and the next SpawnData
+# 2. confirm the body by wildcarded-operand diff against the symbol-bearing 1.26.60 build (556 bytes, 100 percent equal)
+# 3. cut at the prologue through the first virtual call
+# uniqueness: matches exactly once in the 1.26.60 and 1.26.63.1 .text
+pattern = "55 41 57 41 56 41 55 41 54 53 50 48 89 F3 49 89 FE 48 8B 06 48 89 F7 FF 90 ? ? ? ?"
+
+[[signatures]]
+name = "_ZZNK13CauldronBlock21receiveStalactiteDripER11BlockSourceRK8BlockPosN11SharedTypes8v1_26_2012MaterialTypeEENK3$_0clEiNS5_6Legacy15LevelSoundEventENS9_10LevelEventE18CauldronLiquidType"
+relative = false
+extra = 0
+# function prologue; the lambda body of CauldronBlock::receiveStalactiteDrip, which is inlined into CauldronBlock::tick
+# 1. same identity as the Windows entry: the single callee of CauldronBlock::tick that plays the level event and calls
+#    CauldronBlock::setLiquidLevel then CauldronBlock::_spawnCauldronEvent
+# 2. confirm the body by wildcarded-operand diff against the symbol-bearing 1.26.60 build (346 bytes, 100 percent equal)
+# 3. cut at the prologue through the argument shuffle; do not shorten, setLiquidLevel opens with the same push run
+# uniqueness: matches exactly once in the 1.26.60 and 1.26.63.1 .text
+pattern = "55 41 57 41 56 41 55 41 54 53 48 83 EC 58 44 89 CD 44 89 C3"
+
+[[signatures]]
+name = "_ZN27ServerStandInCauldronSystem10SystemImpl20_checkInsideCauldronER19ActorOwnerComponent"
+relative = false
+extra = 0
+# function prologue
+# 1. same identity as the Windows entry: static callee of ServerStandInCauldronSystem::SystemImpl::tick and singleTick that
+#    lowers the fill level of a cauldron by one when a burning actor stands in a non-potion cauldron
+# 2. confirm the body by wildcarded-operand diff against the symbol-bearing 1.26.60 build (1127 bytes, 100 percent equal)
+# 3. cut at the prologue through the first two member loads
+# uniqueness: matches exactly once in the 1.26.60 and 1.26.63.1 .text
+pattern = "55 41 57 41 56 41 55 41 54 53 48 81 EC ? ? ? ? 48 8B 1F 80 BB ? ? ? ? 00 0F 85 ? ? ? ? 48 8B BB ? ? ? ?"
+
+[[signatures]]
+name = "_ZNK17SpawnPointCommand7executeERK13CommandOriginR13CommandOutput"
+relative = false
+extra = 0
+# function prologue; virtual, _ZTV17SpawnPointCommand slot 3 after D1, D0 and collectOptionalArguments
+# 1. find "commands.spawnpoint.success.single\0" (63 6F 6D 6D 61 6E 64 73 2E 73 70 61 77 6E 70 6F 69 6E 74 2E 73 75 63 63
+#    65 73 73 2E 73 69 6E 67 6C 65 00), exactly one occurrence; its lone referring function is this one
+# 2. it is one of the two direct callers of Player::setRespawnPosition; the other is the script binding thunk
+#    Scripting::Reflection::MemberFunction<&ScriptPlayer::setSpawnPoint>::call
+# 3. confirm the body by wildcarded-operand diff against the symbol-bearing 1.26.60 build (4022 bytes, 100 percent equal)
+# uniqueness: matches exactly once in the 1.26.60 and 1.26.63.1 .text, at an .eh_frame_hdr initial_location
+pattern = "55 41 57 41 56 41 55 41 54 53 48 81 EC ? ? ? ? 49 89 D5 49 89 F7 49 89 FE 48 8B 06 48 89 F7"
+
+[[signatures]]
+name = "_ZNK13CauldronBlock4tickERN11BlockEvents20BlockQueuedTickEventE"
+relative = false
+extra = 0
+# function prologue
+# 1. locate the CauldronBlock::receiveStalactiteDrip lambda (its entry is in this file); this function is its only direct
+#    caller, and receiveStalactiteDrip itself is inlined here
+# 2. confirm the body by wildcarded-operand diff against the symbol-bearing 1.26.60 build (1927 bytes, 100 percent equal)
+# uniqueness: matches exactly once in the 1.26.60 and 1.26.63.1 .text, at an .eh_frame_hdr initial_location
+pattern = "55 41 57 41 56 41 55 41 54 53 48 83 EC ? 49 89 F6 4C 8B 7E ? 48 8D 5E"
+
+[[signatures]]
+name = "_ZNK13CauldronBlock19handlePrecipitationER11BlockSourceRK8BlockPosff"
+relative = false
+extra = 0
+# function prologue; virtual
+# 1. start from CauldronBlock::setLiquidLevel (its entry is in this file); 14 functions call it directly in 1.26.63.1
+# 2. the target is the caller with no direct callers, 1195 bytes, that spills both float arguments in its prologue and
+#    calls setLiquidLevel once
+# 3. confirm the body by wildcarded-operand diff against the symbol-bearing 1.26.60 build (1195 bytes, 100 percent equal)
+# uniqueness: matches exactly once in the 1.26.60 and 1.26.63.1 .text, at an .eh_frame_hdr initial_location
+pattern = "55 41 57 41 56 41 55 41 54 53 48 83 EC ? F3 0F 11 4C 24 ? F3 0F 11 44 24 ? 48 89 D3"

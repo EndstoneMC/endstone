@@ -11,7 +11,7 @@
 
 namespace endstone::runtime {
 
-static constexpr std::array<std::pair<std::string_view, std::size_t>, 122> symbols = {{
+static constexpr std::array<std::pair<std::string_view, std::size_t>, 132> symbols = {{
     {"BlockState::StateListNode::mHead", 267362512},
     {"ChunkBlenderFactory::getOrCreateChunkBlender::cache_cap", 86840808},
     {"DBChunkStorage::_hasChunk::cache_cap", 225498426},
@@ -20,15 +20,21 @@ static constexpr std::array<std::pair<std::string_view, std::size_t>, 122> symbo
     {"MinecraftWorkerPool::ASYNC", 267552272},
     {"MobEffect::mMobEffects", 267292112},
     {"Potion::mPotionsById", 267241208},
+    {"_ZZNK13CauldronBlock21receiveStalactiteDripER11BlockSourceRK8BlockPosN11SharedTypes8v1_26_2012MaterialTypeEENK3$_0clEiNS5_6Legacy15LevelSoundEventENS9_10LevelEventE18CauldronLiquidType", 213192640},
     {"getI18n::result", 266202192},
     // Actor
+    {"_ZN5Actor10stopRidingEbbbb", 188375952},
     {"_ZN5Actor10teleportToERK4Vec3biib", 188387696},
     {"_ZN5Actor6removeEv", 188342608},
     {"_ZN5Actor9addEffectERK17MobEffectInstance", 188531120},
+    // ActorDimensionTransferer
+    {"_ZN24ActorDimensionTransferer13transferActorER5ActorR9DimensionRK4Vec3", 216652720},
     // ActorFactory
     {"_ZN12ActorFactory18createSpawnedActorERK25ActorDefinitionIdentifierP5ActorRK4Vec3RK4Vec2", 187942048},
     // ArmorStand
     {"_ZN10ArmorStand14getInteractionER6PlayerRK4Vec38HandSlot", 201870240},
+    // BaseMobSpawner
+    {"_ZN14BaseMobSpawner6_delayER11BlockSource", 216707776},
     // BedrockLog::LogDetails
     {"_ZN10BedrockLog10LogDetails4_logE9LogAreaIDjPKciiNSt3__112basic_stringIcNS4_11char_traitsIcEENS4_9allocatorIcEEEE", 258474784},
     // BlockActor
@@ -47,7 +53,9 @@ static constexpr std::array<std::pair<std::string_view, std::size_t>, 122> symbo
     // CauldronBlock
     {"_ZN13CauldronBlock13_useInventoryER6PlayerR9ItemStackS3_i", 213183520},
     {"_ZNK13CauldronBlock14setLiquidLevelER11BlockSourceRK8BlockPosi18CauldronLiquidType", 213181984},
+    {"_ZNK13CauldronBlock19handlePrecipitationER11BlockSourceRK8BlockPosff", 213188432},
     {"_ZNK13CauldronBlock3useERN11BlockEvents24BlockPlayerInteractEventE", 213169360},
+    {"_ZNK13CauldronBlock4tickERN11BlockEvents20BlockQueuedTickEventE", 213167040},
     // ChunkBuildOrderPolicy
     {"_ZN21ChunkBuildOrderPolicy16updateInfluencesEv", 217139632},
     // CircuitSceneGraph
@@ -116,6 +124,8 @@ static constexpr std::array<std::pair<std::string_view, std::size_t>, 122> symbo
     {"_ZN29ItemStackRequestActionHandler25_getOrInitSparseContainerERK17FullContainerName", 211997616},
     // LeavesBlock
     {"_ZN11LeavesBlock10randomTickERN11BlockEvents20BlockRandomTickEventE", 212925504},
+    // LecternBlock
+    {"_ZNK12LecternBlock17emitRedstonePulseER11BlockSourceRK8BlockPos", 212722176},
     // Level
     {"_ZN5Level4tickEv", 216195904},
     {"_ZNK5Level20getActivePlayerCountEv", 216228752},
@@ -190,10 +200,16 @@ static constexpr std::array<std::pair<std::string_view, std::size_t>, 122> symbo
     {"_ZNK12ServerPlayer17sendNetworkPacketER6Packet", 169108432},
     // ServerScoreboard
     {"_ZN16ServerScoreboardC2E23CommandSoftEnumRegistryP12LevelStorageN3gsl8not_nullIN7Bedrock15NonOwnerPointerI19GameplayUserManagerEEEE", 223880928},
+    // ServerStandInCauldronSystem::SystemImpl
+    {"_ZN27ServerStandInCauldronSystem10SystemImpl20_checkInsideCauldronER19ActorOwnerComponent", 124853904},
     // ServerWaypoint
     {"_ZN14ServerWaypoint6updateERK6Player", 188237488},
     // ShareableComponent
     {"_ZNK18ShareableComponent16getCountToPickUpERK5ActorRK9ItemStack", 118877024},
+    // SignBlockActor
+    {"_ZNK14SignBlockActor19getSideFacingPlayerERK6Player", 222216848},
+    // SpawnPointCommand
+    {"_ZNK17SpawnPointCommand7executeERK13CommandOriginR13CommandOutput", 196927872},
     // TickingAreasManager
     {"_ZN19TickingAreasManager17removeScopedAreasERKNSt3__16vectorIN3mce4UUIDENS0_9allocatorIS3_EEEE", 225040048},
     {"_ZN19TickingAreasManager22addTransientScopedAreaE13DimensionTypeRKNSt3__112basic_stringIcNS1_11char_traitsIcEENS1_9allocatorIcEEEEmN3mce4UUIDERK6Bounds", 225039264},
