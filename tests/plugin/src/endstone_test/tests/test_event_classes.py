@@ -8,6 +8,7 @@ CANCELLABLE = [
     "ActorDismountEvent",
     "ActorEffectEvent",
     "ActorPickupItemEvent",
+    "ActorToggleGlideEvent",
     "EnchantItemEvent",
     "PlayerArmSwingEvent",
     "PlayerArmorStandManipulateEvent",
@@ -17,11 +18,11 @@ CANCELLABLE = [
     "PlayerShearActorEvent",
     "PlayerToggleFlightEvent",
     "PlayerToggleSneakEvent",
+    "PlayerToggleSprintEvent",
     "PrepareItemEnchantEvent",
 ]
 
 NOT_CANCELLABLE = [
-    "ActorToggleGlideEvent",
     "ActorToggleSwimEvent",
     "PlayerBedLeaveEvent",
     "PlayerDeathEvent",
@@ -35,7 +36,6 @@ NOT_CANCELLABLE = [
     "PlayerRespawnEvent",
     "PlayerRiptideEvent",
     "PlayerToggleCrawlEvent",
-    "PlayerToggleSprintEvent",
 ]
 
 
