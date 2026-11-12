@@ -342,7 +342,10 @@ async def stage(ctx: Context, name: str, kind: str, item: str | None, dz: float 
 
 
 def seated(ctx: Context) -> bool:
-    return ctx.command(f"ride @e[type=boat,{ctx.plot.volume}] evict_riders").success
+    result = ctx.command(f"ride @e[type=boat,{ctx.plot.volume}] evict_riders")
+    return any(
+        "successfully evicted their riders" in message for message in result.messages
+    )
 
 
 @scenario("pact.interact.boat", covers={PlayerInteractActorEvent: "normal"}, plot=True, budget=BUDGET)

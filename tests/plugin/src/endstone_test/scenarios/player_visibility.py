@@ -308,26 +308,31 @@ async def hide_kept_on_dimension_change(ctx: Context) -> None:
         what="the pig",
     )
     pa.hide_actor(ctx.plugin, mob)
-    ctx.run("execute in nether run tp @e[type=pig,c=1] 0 100 0")
-    await ctx.until(
-        lambda: any(
-            str(x.type) == "minecraft:pig"
-            for x in ctx.level.get_dimension("nether").actors
-        ),
-        timeout=20,
-        what="the pig in the nether",
-    )
-    assert removed.count == 0, (
-        f"a dimension change fired ActorRemoveEvent: {removed.events}"
-    )
-    moved = next(
-        x
-        for x in ctx.level.get_dimension("nether").actors
-        if str(x.type) == "minecraft:pig"
-    )
-    assert not pa.can_see(moved), (
-        "a hide was forgotten when the actor changed dimension"
-    )
+    nether = ctx.level.get_dimension("nether")
+    assert nether.load_chunk(0, 0) is True
+    try:
+        await ctx.until(
+            lambda: nether.is_chunk_loaded(0, 0),
+            timeout=200,
+            what="the nether destination to load",
+        )
+        ctx.run(
+            f"execute as @e[type=pig,{ctx.plot.volume}] in nether run tp @s 0 100 0"
+        )
+        await ctx.until(
+            lambda: any(str(x.type) == "minecraft:pig" for x in nether.actors),
+            timeout=40,
+            what="the pig in the nether",
+        )
+        assert removed.count == 0, (
+            f"a dimension change fired ActorRemoveEvent: {removed.events}"
+        )
+        moved = next(x for x in nether.actors if str(x.type) == "minecraft:pig")
+        assert not pa.can_see(moved), (
+            "a hide was forgotten when the actor changed dimension"
+        )
+    finally:
+        nether.unload_chunk_request(0, 0)
 
 
 @scenario("visibility.hide.self", budget=BUDGET)

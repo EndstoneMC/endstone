@@ -137,10 +137,11 @@ async def load_chunk_expires(ctx: Context) -> None:
     await ctx.ticks(400)
     assert dimension.is_chunk_loaded(cx, cz), "load_chunk did not restart the timeout"
     await ctx.until(
-        lambda: not dimension.is_chunk_loaded(cx, cz),
+        lambda: unload.count,
         timeout=1500,
-        what="the hold to expire",
+        what="ChunkUnloadEvent after the hold expired",
     )
+    assert not dimension.is_chunk_loaded(cx, cz)
     assert unload.count == 1, unload.events
     for nx, nz in ((cx - 1, cz - 1), (cx + 1, cz + 1)):
         await ctx.until(

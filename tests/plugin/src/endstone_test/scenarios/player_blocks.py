@@ -722,6 +722,19 @@ async def bucket_fill_liquid_layer_cancel(ctx: Context) -> None:
             "a cancelled fill still changed the bucket"
         )
         assert await client_slot(bot, 0) == ("minecraft:bucket", 1)
+        x0, y0, z0 = ctx.plot.pos(0, 0, 0)
+        ctx.run(f"fill {x0} {y0} {z0} {x0 + 15} {y0 + 1} {z0 + 15} stone")
+        await ctx.ticks(2)
+        ctx.run(f"fill {x0} {y0} {z0} {x0 + 15} {y0 + 1} {z0 + 15} air")
+        await ctx.until(
+            lambda: all(
+                type_at(ctx, (x0 + dx, y0, z0 + dz)) == "minecraft:air"
+                for dx in range(16)
+                for dz in range(16)
+            ),
+            timeout=40,
+            what=f"the {label} water to drain",
+        )
 
 
 @scenario(

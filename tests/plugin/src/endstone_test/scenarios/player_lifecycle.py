@@ -1043,7 +1043,7 @@ async def level_normal(ctx: Context) -> None:
     seen = level.count
     player.give_exp(2000)
     await ctx.until(
-        lambda: player.exp_level > 3, timeout=40, what="points turned to levels"
+        lambda: level.count > seen, timeout=40, what="points turned to levels"
     )
     gained = level.events[seen:]
     assert gained, "gaining levels through points fired no PlayerLevelChangeEvent"
@@ -1339,7 +1339,7 @@ async def setspawn_bed(ctx: Context) -> None:
     from endstone_test.scenarios.player_blocks import bed_halves, made_bed
 
     spawn = ctx.capture(PlayerSetSpawnEvent, named("LcSpawnB"))
-    bot, player = await join(ctx, "LcSpawnB", op=True)
+    bot, player, _ = await stand_in_plot(ctx, "LcSpawnB", dx=4, dz=8)
     ctx.run("time set midnight")
     try:
         halves = await made_bed(ctx, bot, player, "LcSpawnB")
@@ -1351,7 +1351,7 @@ async def setspawn_bed(ctx: Context) -> None:
         assert stored is not None, "a slept-in bed gave no respawn location"
         await bot.call("local_player.stop_sleeping")
         for half in halves:
-            ctx.run(f"setblock {half[0]} {half[1]} {half[2]} air")
+            ctx.command(f"setblock {half[0]} {half[1]} {half[2]} air")
         await ctx.until(
             lambda: not bed_halves(ctx, halves[0]), timeout=60, what="the bed to go"
         )
