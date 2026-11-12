@@ -1701,36 +1701,14 @@ extra = 0
 pattern = "55 56 57 53 48 81 EC ? ? ? ? 48 8D AC 24 ? ? ? ? 44 0F 29 95"
 
 [[signatures]]
-name = "?addLevels@Player@@UEAAXH@Z"
-relative = false
-extra = 0
-# 1. no usable string; anchor on the body's own shape - it is the only function that reads the LEVEL
-#    attribute, clamps, and then dispatches PlayerGameplayEvent variant 3. Find it from the pair of
-#    immediates it bakes in: `69 ? ? 67 66 66 66` (imul ..., 66666667h - the post-mutation
-#    `level % 5 == 0` level-up test) and `41 B8 3E 00 00 00` (mov r8d, 3Eh = LevelSoundEvent 62)
-# 2. its entry is `push rbp/r15/r14/r13/r12/rsi/rdi/rbx` / `sub rsp, 208h` / `lea rbp, [rsp+80h]` /
-#    the -2 SEH cookie store, then `lea r8, Player::LEVEL` / `call Actor::getAttribute` /
-#    `cvttss2si eax, [rax+7Ch]` - the pre-mutation LEVEL read
-# 3. walk the body: `add eax, edi` / `js` picks the clamp branch, which does two
-#    `movss xmm0, [rdx+74h]` -> `movss [rdx+7Ch], xmm0` min-to-current copies (LEVEL then
-#    EXPERIENCE) and stores 0 and 7 into two adjacent Player fields; the other path passes
-#    operand 2 / type 0Ch to the AttributeBuff ctor; a second getAttribute then
-#    `cvttss2si r13d, [rax+7Ch]` reads the post value
-# 4. confirm identity on the event tail: the raw `levels` argument and the post-mutation level are
-#    stored as two adjacent ints, then a byte 3 is written as the variant index - index 3 is
-#    PlayerAddLevelEvent in the PlayerGameplayEvent<void> variant list - immediately before the call
-#    to EventCoordinatorPimpl<PlayerEventListener>::_processEvent
-# 5. confirm vs the old named DB. Unlike Linux 1.21 there is no separate _addLevels on Windows at
-#    any version - MSVC folds it into addLevels, so this virtual is the whole body
-pattern = "55 41 57 41 56 41 55 41 54 56 57 53 48 81 EC 08 02 00 00 48 8D AC 24 80 00 00 00 48 C7 85 80 01 00 00 FE FF FF FF 89 D7 48 89 CE 4C 8D 05 ? ? ? ? 48 8D 55 C8 E8"
-
-[[signatures]]
 name = "?addExperience@Player@@UEAAXH@Z"
 relative = false
 extra = 0
 # 1. no usable string, and no direct callers - addExperience is the Player virtual one slot BELOW
-#    addLevels. Locate addLevels first (its own entry), then read the qword at slot-8 in each of the
-#    three .rdata vtables that hold it; all three agree on one RVA - that is addExperience
+#    Player::addLevels. Find addLevels as the only function that reads the LEVEL attribute and dispatches
+#    PlayerGameplayEvent variant 3: it bakes in `69 ? ? 67 66 66 66` (imul ..., 66666667h) and
+#    `41 B8 3E 00 00 00` (mov r8d, 3Eh). Then read the qword at slot-8 in each of the three .rdata
+#    vtables that hold it; all three agree on one RVA - that is addExperience
 # 2. .pdata pins it: the entry is a BeginAddress of extent 0x47Bh, sitting 0x5C0 below addLevels
 # 3. its entry is `push rbp/r15/r14/r12/rsi/rdi/rbx` / `sub rsp, 200h` / `lea rbp, [rsp+80h]` / three
 #    `movaps [rbp+170h/160h/150h], xmm8/xmm7/xmm6` spills / the -2 SEH cookie store, then
@@ -1874,23 +1852,6 @@ extra = 0
 pattern = "55 41 57 41 56 41 55 41 54 56 57 53 48 83 EC 48 48 8D 6C 24 ? 48 C7 45 ? FE FF FF FF 4C 89 C6 48 89 55 ? 48 89 CB"
 
 [[signatures]]
-name = "?stopRiding@Actor@@QEAAX_N000@Z"
-relative = false
-extra = 0
-# function prologue
-# 1. find the entt type-id hashes of the five components it adds (immediates): StopRidingRequestComponent 0xFE184424,
-#    ExitFromPassengerFlagComponent 0xAE2A71E8, ActorIsBeingDestroyedFlagComponent 0xE88B4C85,
-#    SwitchingVehiclesFlagComponent 0x00FEA82B and IsBeingTeleportedFlagComponent 0x2D854C1B; the one function that
-#    references all five is the target
-# 2. confirm from the body: it calls MinecraftEventing::onVehicleExited when the vehicle component is present, always
-#    emplaces StopRidingRequestComponent, then emplaces one flag component per bool in the order (exitFromPassenger,
-#    actorIsBeingDestroyed, switchingVehicles, isBeingTeleported), and finishes by running the StopRiding system
-#    category through IEntitySystems; it has ~25 callers
-# 3. cut at the prologue (push rbp/r15/r14/rsi/rdi/rbx, sub rsp imm32, mov r14d edx)
-# uniqueness: matches exactly once in the 1.26.60 and 1.26.63.1 .text
-pattern = "55 41 57 41 56 41 54 56 57 53 48 81 EC ? ? ? ? 48 8D AC 24 ? ? ? ? 48 C7 45 ? ? ? ? ? 41 89 D6"
-
-[[signatures]]
 name = "?transferActor@ActorDimensionTransferer@@UEAAXAEAVActor@@AEAVDimension@@AEBVVec3@@@Z"
 relative = false
 extra = 0
@@ -1950,21 +1911,6 @@ extra = 0
 pattern = "55 41 57 41 56 56 57 53 48 83 EC ? 48 8D 6C 24 ? 48 C7 45 ? ? ? ? ? 48 89 D6 48 89 CF 48 8B 02 48 8B 80"
 
 [[signatures]]
-name = "CauldronBlock::receiveStalactiteDrip::lambda_0"
-relative = false
-extra = 0
-# function prologue; the name is an arbitrary key for the lambda body of CauldronBlock::receiveStalactiteDrip, which is
-# inlined into CauldronBlock::tick
-# 1. locate CauldronBlock::tick (named in a PDB build); it calls PointedDripstoneBlock::findStalactiteTipAboveCauldron and
-#    getCauldronFillLiquidType, then CauldronBlock::canReceiveStalactiteDrip, then the lambda
-# 2. the lambda is the ~0x180-byte callee laid out after canReceiveStalactiteDrip: it plays the level event through a
-#    level virtual and calls CauldronBlock::setLiquidLevel(region, pos, newFillLevel, type) then
-#    CauldronBlock::_spawnCauldronEvent; it has this single caller
-# 3. cut at the prologue through the argument shuffle
-# uniqueness: matches exactly once in the 1.26.60 and 1.26.63.1 .text
-pattern = "55 41 57 41 56 56 57 53 48 81 EC ? ? ? ? 48 8D AC 24 ? ? ? ? 0F 29 75 ? 48 C7 45 ? ? ? ? ? 66 44 89 CE 45 89 C6 89 D3 48 89 CF"
-
-[[signatures]]
 name = "?_checkInsideCauldron@SystemImpl@ServerStandInCauldronSystem@@CAXAEAVActorOwnerComponent@@@Z"
 relative = false
 extra = 0
@@ -1999,11 +1945,11 @@ name = "?tick@CauldronBlock@@QEBAXAEAVBlockQueuedTickEvent@BlockEvents@@@Z"
 relative = false
 extra = 0
 # function prologue
-# 1. locate the CauldronBlock::receiveStalactiteDrip lambda (its entry is in this file); this function is its only direct
-#    caller, and receiveStalactiteDrip itself is inlined here
+# 1. start from CauldronBlock::setLiquidLevel (its entry is in this file); the target is the caller with no direct callers
+#    and no vftable slot that calls it twice
 # 2. confirm the body: it reads the cauldron block actor through LevelChunk::getBlockEntity, calls
 #    CauldronBlock::setLiquidLevel twice and CauldronBlock::_spawnCauldronEvent, then runs the stalactite search,
-#    getCauldronFillLiquidType and CauldronBlock::canReceiveStalactiteDrip before the lambda call
+#    getCauldronFillLiquidType and CauldronBlock::canReceiveStalactiteDrip before the stalactite drip handling
 # 3. it has no direct callers and no vftable slot, so the pattern is the prologue through the xmm spills
 # 4. identity check against the named 1.26.40 build: CauldronBlock::tick at 0x146990190 has the same callee set, and the
 #    1.26.60 body (0x818 bytes) is 100 percent equal to 1.26.63.1 under a wildcarded-operand diff

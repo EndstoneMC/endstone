@@ -11,9 +11,8 @@
 
 namespace endstone::runtime {
 
-static constexpr std::array<std::pair<std::string_view, std::size_t>, 133> symbols = {{
+static constexpr std::array<std::pair<std::string_view, std::size_t>, 130> symbols = {{
     {"BlockState::StateListNode::mHead", 223883584},
-    {"CauldronBlock::receiveStalactiteDrip::lambda_0", 110887680},
     {"ChunkBlenderFactory::getOrCreateChunkBlender::cache_cap", 140106330},
     {"DBChunkStorage::_hasChunk::cache_cap", 57747200},
     {"Enchant::mEnchants", 223570944},
@@ -24,7 +23,6 @@ static constexpr std::array<std::pair<std::string_view, std::size_t>, 133> symbo
     // Actor
     {"?addEffect@Actor@@QEAAXAEBVMobEffectInstance@@@Z", 3847616},
     {"?remove@Actor@@UEAAXXZ", 3666464},
-    {"?stopRiding@Actor@@QEAAX_N000@Z", 3700016},
     {"?teleportTo@Actor@@UEAAXAEBVVec3@@_NHH1@Z", 3715600},
     // ActorDimensionTransferer
     {"?transferActor@ActorDimensionTransferer@@UEAAXAEAVActor@@AEAVDimension@@AEBVVec3@@@Z", 30993232},
@@ -160,7 +158,6 @@ static constexpr std::array<std::pair<std::string_view, std::size_t>, 133> symbo
     {"?tick@PistonBlockActor@@UEAAXAEAVBlockSource@@@Z", 77473552},
     // Player
     {"?addExperience@Player@@UEAAXH@Z", 18214576},
-    {"?addLevels@Player@@UEAAXH@Z", 18215936},
     {"?completeUsingItem@Player@@QEAAXXZ", 18101376},
     {"?drop@Player@@UEAA_NAEBVItemStack@@_N@Z", 18184048},
     {"?setRespawnPosition@Player@@QEAAXAEBVBlockPos@@UDimensionType@@@Z", 18188928},

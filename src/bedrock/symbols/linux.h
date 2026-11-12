@@ -11,7 +11,7 @@
 
 namespace endstone::runtime {
 
-static constexpr std::array<std::pair<std::string_view, std::size_t>, 133> symbols = {{
+static constexpr std::array<std::pair<std::string_view, std::size_t>, 130> symbols = {{
     {"BlockState::StateListNode::mHead", 267362512},
     {"ChunkBlenderFactory::getOrCreateChunkBlender::cache_cap", 86840808},
     {"DBChunkStorage::_hasChunk::cache_cap", 225498426},
@@ -20,10 +20,8 @@ static constexpr std::array<std::pair<std::string_view, std::size_t>, 133> symbo
     {"MinecraftWorkerPool::ASYNC", 267552272},
     {"MobEffect::mMobEffects", 267292112},
     {"Potion::mPotionsById", 267241208},
-    {"_ZZNK13CauldronBlock21receiveStalactiteDripER11BlockSourceRK8BlockPosN11SharedTypes8v1_26_2012MaterialTypeEENK3$_0clEiNS5_6Legacy15LevelSoundEventENS9_10LevelEventE18CauldronLiquidType", 213192640},
     {"getI18n::result", 266202192},
     // Actor
-    {"_ZN5Actor10stopRidingEbbbb", 188375952},
     {"_ZN5Actor10teleportToERK4Vec3biib", 188387696},
     {"_ZN5Actor6removeEv", 188342608},
     {"_ZN5Actor9addEffectERK17MobEffectInstance", 188531120},
@@ -169,7 +167,6 @@ static constexpr std::array<std::pair<std::string_view, std::size_t>, 133> symbo
     {"_ZN6Player28setSpawnBlockRespawnPositionERK8BlockPos13DimensionType", 198143216},
     {"_ZN6Player4dropERK9ItemStackb", 198138080},
     {"_ZN6Player4takeER5Actorii", 198087984},
-    {"_ZN6Player9addLevelsEi", 198157936},
     // PlayerLocationSender
     {"_ZN20PlayerLocationSender24_forEachClientPlayerPairERKNSt3__16vectorI13WeakEntityRefNS0_9allocatorIS2_EEEENS0_8functionIFvRK29UserEntityIdentifierComponentRK6PlayerSE_EEE", 215941344},
     {"_ZNK20PlayerLocationSender25_shouldSendPositionPacketERK4Vec3RK13DimensionTypebRKNSt3__18optionalIS0_EERKNS_18PlayerLocationDataE", 215942576},

@@ -1599,41 +1599,12 @@ extra = 0
 pattern = "55 41 57 41 56 41 54 53 48 81 EC ? ? ? ? 89 D5 0F 29 4C 24"
 
 [[signatures]]
-name = "_ZN6Player9addLevelsEi"
-relative = false
-extra = 0
-# 1. no usable string; anchor on the two immediates the body bakes in - `48 69 ? 67 66 66 66`
-#    (imul <r>, <r>, 66666667h, the post-mutation `level % 5 == 0` level-up test) and
-#    `BA 3E 00 00 00` (mov edx, 3Eh = LevelSoundEvent 62, LevelUp). Exactly one function in the
-#    binary contains both; that function is addLevels
-# 2. its entry is `push rbp/r15/r14/r13/r12/rbx` / `sub rsp, 1C8h` / `mov ebp, esi` / `mov rbx, rdi`,
-#    then `lea <r>, Player::LEVEL` / `mov rsi, <r>` / `call Actor::getAttribute` /
-#    `cvttss2si r12d, [rax+7Ch]` - the pre-mutation LEVEL read that opens the body
-# 3. walk the body and check the order: `add r12d, ebp` / `js` picks the clamp branch; the clamp path
-#    does two `movss xmm0, [<r>+74h]` -> `movss [<r>+7Ch], xmm0` min-to-current copies (LEVEL then
-#    EXPERIENCE) and stores 0 and 7 into two adjacent Player fields; the other path passes
-#    `mov esi, 2` / `mov edx, 0Ch` to the InstantaneousAttributeBuff ctor and addBuffs it; then a
-#    second getAttribute + `cvttss2si r13d, [rax+7Ch]` reads the post value
-# 4. confirm identity on the event tail: `mov [rsp+N], ebp` / `mov [rsp+N+4], r13d` stores the raw
-#    `levels` argument and the post-mutation level as two adjacent ints, then `mov dword [rsp+M], 3`
-#    sets the variant index - index 3 is PlayerAddLevelEvent in the PlayerGameplayEvent<void> variant
-#    list - immediately before the call to PlayerEventCoordinator::sendEvent
-# 5. cross-check by reference shape: the function has no direct callers at all; its only references
-#    are three R_X86_64_RELATIVE slots in .data.rel.ro, at the same slot index in the vtables whose
-#    Itanium typeinfo names are `6Player`, `12ServerPlayer` and `15SimulatedPlayer` - re-derive the
-#    slot index rather than trusting a remembered offset
-# 6. unlike 1.21 there is no separate _addLevels body and no 5-byte addLevels thunk - _addLevels is
-#    folded in, so the vtable slot points straight at the full body
-# prologue through the pre-mutation `cvttss2si r12d, [rax+7Ch]` LEVEL read; the wildcarded `4C 8D` /
-# `4C 89` operands absorb the r14/r15 register swap seen at 1.26.33
-pattern = "55 41 57 41 56 41 55 41 54 53 48 81 EC C8 01 00 00 89 F5 48 89 FB 4C 8D ? ? ? ? ? 4C 89 ? E8 ? ? ? ? F3 44 0F 2C 60 7C"
-
-[[signatures]]
 name = "_ZN6Player13addExperienceEi"
 relative = false
 extra = 0
 # 1. no usable string, and no direct callers - addExperience is the Player virtual one slot BELOW
-#    addLevels. Locate addLevels first (its own entry), then read the R_X86_64_RELATIVE addend at
+#    Player::addLevels. Find addLevels as the one function that contains both `48 69 ? 67 66 66 66`
+#    (imul <r>, <r>, 66666667h) and `BA 3E 00 00 00` (mov edx, 3Eh). Then read the R_X86_64_RELATIVE addend at
 #    slot-8 in each of the three .data.rel.ro vtables that hold it (Itanium typeinfo names `6Player`,
 #    `12ServerPlayer`, `15SimulatedPlayer`); all three agree on one address - that is addExperience
 # 2. it is also the function immediately preceding addLevels in .text: the .eh_frame_hdr start right
@@ -1780,19 +1751,6 @@ extra = 0
 pattern = "55 41 57 41 56 41 55 41 54 53 48 83 EC 28 48 89 D3 48 89 74 24 20"
 
 [[signatures]]
-name = "_ZN5Actor10stopRidingEbbbb"
-relative = false
-extra = 0
-# function prologue
-# 1. same identity as the Windows entry: the one function that emplaces StopRidingRequestComponent and the
-#    ExitFromPassenger, ActorIsBeingDestroyed, SwitchingVehicles and IsBeingTeleported flag components (entt type hashes
-#    0xFE184424, 0xAE2A71E8, 0xE88B4C85, 0x00FEA82B, 0x2D854C1B) and then runs the StopRiding system category
-# 2. confirm the body by wildcarded-operand diff against the symbol-bearing 1.26.60 build (1113 bytes, 99.6 percent equal)
-# 3. cut at the prologue through the first two argument moves
-# uniqueness: matches exactly once in the 1.26.60 and 1.26.63.1 .text
-pattern = "55 41 57 41 56 41 55 41 54 53 48 81 EC ? ? ? ? 44 89 C5 41 89 CE"
-
-[[signatures]]
 name = "_ZN24ActorDimensionTransferer13transferActorER5ActorR9DimensionRK4Vec3"
 relative = false
 extra = 0
@@ -1841,18 +1799,6 @@ extra = 0
 pattern = "55 41 57 41 56 41 55 41 54 53 50 48 89 F3 49 89 FE 48 8B 06 48 89 F7 FF 90 ? ? ? ?"
 
 [[signatures]]
-name = "_ZZNK13CauldronBlock21receiveStalactiteDripER11BlockSourceRK8BlockPosN11SharedTypes8v1_26_2012MaterialTypeEENK3$_0clEiNS5_6Legacy15LevelSoundEventENS9_10LevelEventE18CauldronLiquidType"
-relative = false
-extra = 0
-# function prologue; the lambda body of CauldronBlock::receiveStalactiteDrip, which is inlined into CauldronBlock::tick
-# 1. same identity as the Windows entry: the single callee of CauldronBlock::tick that plays the level event and calls
-#    CauldronBlock::setLiquidLevel then CauldronBlock::_spawnCauldronEvent
-# 2. confirm the body by wildcarded-operand diff against the symbol-bearing 1.26.60 build (346 bytes, 100 percent equal)
-# 3. cut at the prologue through the argument shuffle; do not shorten, setLiquidLevel opens with the same push run
-# uniqueness: matches exactly once in the 1.26.60 and 1.26.63.1 .text
-pattern = "55 41 57 41 56 41 55 41 54 53 48 83 EC 58 44 89 CD 44 89 C3"
-
-[[signatures]]
 name = "_ZN27ServerStandInCauldronSystem10SystemImpl20_checkInsideCauldronER19ActorOwnerComponent"
 relative = false
 extra = 0
@@ -1882,8 +1828,8 @@ name = "_ZNK13CauldronBlock4tickERN11BlockEvents20BlockQueuedTickEventE"
 relative = false
 extra = 0
 # function prologue
-# 1. locate the CauldronBlock::receiveStalactiteDrip lambda (its entry is in this file); this function is its only direct
-#    caller, and receiveStalactiteDrip itself is inlined here
+# 1. start from CauldronBlock::setLiquidLevel (its entry is in this file); the target is the 1927-byte caller with no direct
+#    callers and no vtable slot
 # 2. confirm the body by wildcarded-operand diff against the symbol-bearing 1.26.60 build (1927 bytes, 100 percent equal)
 # uniqueness: matches exactly once in the 1.26.60 and 1.26.63.1 .text, at an .eh_frame_hdr initial_location
 pattern = "55 41 57 41 56 41 55 41 54 53 48 83 EC ? 49 89 F6 4C 8B 7E ? 48 8D 5E"
