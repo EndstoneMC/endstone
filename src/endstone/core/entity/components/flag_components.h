@@ -14,6 +14,7 @@
 
 #pragma once
 
+#include <memory>
 #include <optional>
 #include <variant>
 
@@ -21,6 +22,7 @@
 #include "bedrock/world/level/block_pos.h"
 #include "endstone/event/block/cauldron_level_change_event.h"
 #include "endstone/event/player/player_open_sign_event.h"
+#include "endstone/inventory/inventory.h"
 #include "endstone/inventory/item_stack.h"
 
 class Actor;
@@ -46,6 +48,7 @@ struct InternalExperienceOrbPickupCancelledFlagComponent {};
 struct InternalLoginCancelledFlagComponent {};
 struct InternalOpenContainerComponent {
     std::variant<BlockPos, ActorUniqueID> owner;
+    std::shared_ptr<Inventory> inventory;
 };
 struct InternalOpenSignCauseComponent {
     PlayerOpenSignEvent::Cause cause = PlayerOpenSignEvent::Cause::Unknown;

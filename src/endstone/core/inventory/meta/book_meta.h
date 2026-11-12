@@ -26,10 +26,10 @@ public:
     explicit EndstoneBookMeta(const ::CompoundTag &tag);
 
     [[nodiscard]] bool hasTitle() const override;
-    [[nodiscard]] std::string getTitle() const override;
+    [[nodiscard]] std::optional<std::string> getTitle() const override;
     bool setTitle(std::optional<std::string> title) override;
     [[nodiscard]] bool hasAuthor() const override;
-    [[nodiscard]] std::string getAuthor() const override;
+    [[nodiscard]] std::optional<std::string> getAuthor() const override;
     void setAuthor(std::optional<std::string> author) override;
     [[nodiscard]] bool hasGeneration() const override;
     [[nodiscard]] std::optional<BookMeta::Generation> getGeneration() const override;
@@ -43,8 +43,8 @@ public:
 private:
     [[nodiscard]] bool isBookEmpty() const;
 
-    std::string title_;
-    std::string author_;
+    std::optional<std::string> title_;
+    std::optional<std::string> author_;
     std::optional<BookMeta::Generation> generation_;
 };
 }  // namespace endstone::core

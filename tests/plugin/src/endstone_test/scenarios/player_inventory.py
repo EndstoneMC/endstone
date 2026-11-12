@@ -42,7 +42,11 @@ class InventoryCapture(Capture):
                 except Exception as e:  # noqa: BLE001
                     fields[name] = {"error": f"{type(e).__name__}: {e}"}
                     continue
-                fields[name] = {"size": value.size} if isinstance(value, Inventory) else plain(value)
+                fields[name] = (
+                    {"size": value.size, "slot_empty": value.get_item(0) is None}
+                    if isinstance(value, Inventory)
+                    else plain(value)
+                )
             if self.extra is not None:
                 fields.update(self.extra(event))
             self.events.append(fields)
@@ -334,6 +338,39 @@ async def close_block_broken(ctx: Context) -> None:
     await ctx.ticks(20)
     assert await packets(bot, "ContainerClosePacket", index)
     assert (opens.count, closes.count) == (1, 1), f"opens {opens.count}, closes {closes.count}"
+    assert closes.error is None, closes.error
+    assert closes.events[-1]["inventory"] == {"size": 27, "slot_empty": True}, (
+        closes.events[-1]
+    )
+
+
+@scenario(
+    "inventory.close.block_replaced",
+    covers={InventoryCloseEvent: "normal"},
+    plot=True,
+    budget=BUDGET,
+)
+async def close_block_replaced(ctx: Context) -> None:
+    bot, player = await join(ctx, "invswap")
+    opens = capture(ctx, InventoryOpenEvent, mine("invswap"))
+    closes = capture(ctx, InventoryCloseEvent, mine("invswap"))
+    pos = await chest_at(ctx, bot, 8, 8)
+    await open_screen(ctx, bot, pos)
+    ctx.run(f"setblock {pos[0]} {pos[1]} {pos[2]} minecraft:stone")
+    await poll(
+        ctx,
+        lambda: bot.call("local_player.get_open_container"),
+        lambda c: c is None,
+        what="the client to lose the screen",
+    )
+    await ctx.ticks(20)
+    assert (opens.count, closes.count) == (1, 1), (
+        f"opens {opens.count}, closes {closes.count}"
+    )
+    assert closes.error is None, closes.error
+    assert closes.events[-1]["inventory"] == {"size": 27, "slot_empty": True}, (
+        closes.events[-1]
+    )
 
 
 @scenario("inventory.close.disconnect", covers={InventoryCloseEvent: "normal"}, plot=True, budget=BUDGET)

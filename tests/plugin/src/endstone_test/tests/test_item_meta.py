@@ -101,6 +101,8 @@ def test_title_and_author() -> None:
     meta = item.item_meta
     assert meta.has_title is False
     assert meta.has_author is False
+    assert meta.title is None
+    assert meta.author is None
 
     meta.title = "The Book"
     meta.author = "Vincent"

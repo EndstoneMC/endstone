@@ -14,7 +14,9 @@
 
 #pragma once
 
+#include <concepts>
 #include <string>
+#include <utility>
 #include <vector>
 
 #include "endstone/inventory/meta/item_meta.h"
@@ -71,7 +73,7 @@ public:
     template <std::convertible_to<std::string>... Args>
     void setPages(Args &&...pages)
     {
-        setPages(std::vector<std::string>{&pages...});
+        setPages(std::vector<std::string>{std::forward<Args>(pages)...});
     }
 
     /**
@@ -93,7 +95,7 @@ public:
     template <std::convertible_to<std::string>... Args>
     void addPage(Args &&...pages)
     {
-        addPages(std::vector<std::string>{&pages...});
+        addPages(std::vector<std::string>{std::forward<Args>(pages)...});
     }
 
     /**

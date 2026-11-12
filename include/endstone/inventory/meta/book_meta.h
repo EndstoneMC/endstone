@@ -53,11 +53,9 @@ public:
     /**
      * Gets the title of the book.
      *
-     * @note Plugins should check that hasTitle() returns true before calling this method.
-     *
-     * @return the title of the book
+     * @return the title of the book, or std::nullopt if it has none
      */
-    [[nodiscard]] virtual std::string getTitle() const = 0;
+    [[nodiscard]] virtual std::optional<std::string> getTitle() const = 0;
 
     /**
      * Sets the title of the book.
@@ -79,11 +77,9 @@ public:
     /**
      * Gets the author of the book.
      *
-     * @note Plugins should check that hasAuthor() returns true before calling this method.
-     *
-     * @return the author of the book
+     * @return the author of the book, or std::nullopt if it has none
      */
-    [[nodiscard]] virtual std::string getAuthor() const = 0;
+    [[nodiscard]] virtual std::optional<std::string> getAuthor() const = 0;
 
     /**
      * Sets the author of the book. Removes author when given std::nullopt.

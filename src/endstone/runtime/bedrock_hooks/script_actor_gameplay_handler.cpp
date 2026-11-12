@@ -30,7 +30,6 @@
 #include "endstone/core/block/block.h"
 #include "endstone/core/damage/damage_source.h"
 #include "endstone/core/entity/components/flag_components.h"
-#include "endstone/core/inventory/actor_inventory.h"
 #include "endstone/core/player.h"
 #include "endstone/core/server.h"
 #include "endstone/event/actor/actor_change_block_event.h"
@@ -61,7 +60,6 @@ void closeInventoryViewers(::Actor &actor)
     if (!std::as_const(actor.getEntity()).tryGetComponent<ContainerComponent>()) {
         return;
     }
-    const auto inventory = std::make_shared<endstone::core::EndstoneActorInventory>(actor.getWeakEntity());
     const auto id = actor.getOrCreateUniqueID();
     actor.getLevel().forEachPlayer([&](::Player &player) {
         const auto *open = player.getEntity().tryGetComponent<endstone::core::InternalOpenContainerComponent>();
@@ -69,10 +67,13 @@ void closeInventoryViewers(::Actor &actor)
         if (owner == nullptr || *owner != id) {
             return true;
         }
+        const auto inventory = open->inventory;
         player.getEntity().removeComponent<endstone::core::InternalOpenContainerComponent>();
-        const auto e = std::make_shared<endstone::InventoryCloseEvent>(
-            inventory, player.getEndstoneActor<endstone::core::EndstonePlayer>());
-        endstone::core::EndstoneServer::getInstance().getPluginManager().callEvent(e);
+        if (inventory) {
+            const auto e = std::make_shared<endstone::InventoryCloseEvent>(
+                inventory, player.getEndstoneActor<endstone::core::EndstonePlayer>());
+            endstone::core::EndstoneServer::getInstance().getPluginManager().callEvent(e);
+        }
         static_cast<ServerPlayer &>(player).initiateContainerClose();
         return true;
     });

@@ -136,8 +136,8 @@ bool handleEvent(const PlayerOpenContainerEvent &event)
     }
 
     if (event.entity_unique_id.isValid()) {
+        const auto inventory = tryGetEntityInventory(*player, event.entity_unique_id);
         if (!player->hasComponent<endstone::core::InternalEntityContainerOpenFlagComponent>()) {
-            const auto inventory = tryGetEntityInventory(*player, event.entity_unique_id);
             if (!inventory) {
                 return true;
             }
@@ -145,8 +145,9 @@ bool handleEvent(const PlayerOpenContainerEvent &event)
                 return false;
             }
         }
-        player->getEntity().getOrAddComponent<endstone::core::InternalOpenContainerComponent>().owner =
-            event.entity_unique_id;
+        auto &open = player->getEntity().getOrAddComponent<endstone::core::InternalOpenContainerComponent>();
+        open.owner = event.entity_unique_id;
+        open.inventory = inventory.get();
         return true;
     }
 
@@ -154,10 +155,13 @@ bool handleEvent(const PlayerOpenContainerEvent &event)
     if (!container) {
         return true;
     }
-    if (!callInventoryOpenEvent(*player, getContainerInventory(container))) {
+    const auto inventory = getContainerInventory(container);
+    if (!callInventoryOpenEvent(*player, inventory)) {
         return false;
     }
-    player->getEntity().getOrAddComponent<endstone::core::InternalOpenContainerComponent>().owner = event.block_pos;
+    auto &open = player->getEntity().getOrAddComponent<endstone::core::InternalOpenContainerComponent>();
+    open.owner = event.block_pos;
+    open.inventory = inventory.get();
     return true;
 }
 
@@ -167,16 +171,9 @@ void closeOpenContainer(::Player &player)
     if (open == nullptr) {
         return;
     }
-    const auto owner = open->owner;
+    const auto inventory = open->inventory;
     player.getEntity().removeComponent<endstone::core::InternalOpenContainerComponent>();
-
-    if (const auto *block_pos = std::get_if<BlockPos>(&owner)) {
-        if (const auto container = tryGetContainerAt(player, *block_pos)) {
-            callInventoryCloseEvent(player, getContainerInventory(container));
-        }
-        return;
-    }
-    if (const auto inventory = tryGetEntityInventory(player, std::get<ActorUniqueID>(owner))) {
+    if (inventory) {
         callInventoryCloseEvent(player, inventory);
     }
 }

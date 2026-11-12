@@ -36,11 +36,11 @@ EndstoneBookMeta::EndstoneBookMeta(const ItemMeta *meta) : Base(meta)
 
 EndstoneBookMeta::EndstoneBookMeta(const ::CompoundTag &tag) : Base(tag)
 {
-    if (const auto &title = tag.getString(WrittenBookItem::TAG_TITLE); !title.empty()) {
-        title_ = title;
+    if (tag.contains(WrittenBookItem::TAG_TITLE)) {
+        title_ = tag.getString(WrittenBookItem::TAG_TITLE);
     }
-    if (const auto &author = tag.getString(WrittenBookItem::TAG_AUTHOR); !author.empty()) {
-        author_ = author;
+    if (tag.contains(WrittenBookItem::TAG_AUTHOR)) {
+        author_ = tag.getString(WrittenBookItem::TAG_AUTHOR);
     }
     if (tag.contains(WrittenBookItem::TAG_GENERATION)) {
         generation_ = static_cast<BookMeta::Generation>(tag.getInt(WrittenBookItem::TAG_GENERATION));
@@ -49,10 +49,10 @@ EndstoneBookMeta::EndstoneBookMeta(const ::CompoundTag &tag) : Base(tag)
 
 bool EndstoneBookMeta::hasTitle() const
 {
-    return !title_.empty();
+    return title_.has_value();
 }
 
-std::string EndstoneBookMeta::getTitle() const
+std::optional<std::string> EndstoneBookMeta::getTitle() const
 {
     return title_;
 }
@@ -60,7 +60,7 @@ std::string EndstoneBookMeta::getTitle() const
 bool EndstoneBookMeta::setTitle(std::optional<std::string> title)
 {
     if (!title.has_value()) {
-        title_.clear();
+        title_.reset();
         return true;
     }
     if (title->size() > static_cast<std::size_t>(WrittenBookItem::MAX_TITLE_LENGTH)) {
@@ -72,17 +72,17 @@ bool EndstoneBookMeta::setTitle(std::optional<std::string> title)
 
 bool EndstoneBookMeta::hasAuthor() const
 {
-    return !author_.empty();
+    return author_.has_value();
 }
 
-std::string EndstoneBookMeta::getAuthor() const
+std::optional<std::string> EndstoneBookMeta::getAuthor() const
 {
     return author_;
 }
 
 void EndstoneBookMeta::setAuthor(std::optional<std::string> author)
 {
-    author_ = std::move(author.value_or(""));
+    author_ = std::move(author);
 }
 
 bool EndstoneBookMeta::hasGeneration() const
@@ -106,12 +106,12 @@ void EndstoneBookMeta::applyToItem(::CompoundTag &tag) const
 
     tag.remove(WrittenBookItem::TAG_TITLE);
     if (hasTitle()) {
-        tag.putString(WrittenBookItem::TAG_TITLE, title_);
+        tag.putString(WrittenBookItem::TAG_TITLE, *title_);
     }
 
     tag.remove(WrittenBookItem::TAG_AUTHOR);
     if (hasAuthor()) {
-        tag.putString(WrittenBookItem::TAG_AUTHOR, author_);
+        tag.putString(WrittenBookItem::TAG_AUTHOR, *author_);
     }
 
     tag.remove(WrittenBookItem::TAG_GENERATION);
