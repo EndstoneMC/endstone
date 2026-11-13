@@ -47,6 +47,7 @@ class IDimension {
 public:
     virtual ~IDimension() = 0;
     [[nodiscard]] virtual bool isNaturalDimension() const = 0;
+    [[nodiscard]] virtual bool shouldRenderClouds() const = 0;
     virtual DimensionType getDimensionId() const = 0;
     virtual void sendPacketForPosition(BlockPos const &, Packet const &, Player const *) = 0;
     virtual void sendPacketForEntity(Actor const &actor, Packet const &packet, Player const *except) = 0;

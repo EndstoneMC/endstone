@@ -16,7 +16,6 @@
 
 #include "bedrock/symbol.h"
 
-#ifdef _WIN32
 bool PlayerLocationSender::_shouldSendPositionPacket(const Vec3 &viewing_player_position,
                                                      const DimensionType &viewing_player_dimension,
                                                      bool viewing_player_is_spectator,
@@ -27,16 +26,3 @@ bool PlayerLocationSender::_shouldSendPositionPacket(const Vec3 &viewing_player_
                         viewing_player_dimension, viewing_player_is_spectator, observed_player_pos_prev,
                         observed_player_position_new);
 }
-#elif __linux__
-bool PlayerLocationSender::_shouldSendPositionPacket(const Vec3 &viewing_player_position,
-                                                     DimensionType viewing_player_dimension,
-                                                     bool viewing_player_is_spectator,
-                                                     const OptionalPosition &observed_player_pos_prev,
-                                                     const PlayerLocationData &observed_player_position_new,
-                                                     float simulation_distance)
-{
-    return BEDROCK_CALL(&PlayerLocationSender::_shouldSendPositionPacket, viewing_player_position,
-                        viewing_player_dimension, viewing_player_is_spectator, observed_player_pos_prev,
-                        observed_player_position_new, simulation_distance);
-}
-#endif

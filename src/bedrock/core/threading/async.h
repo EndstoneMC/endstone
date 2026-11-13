@@ -20,7 +20,11 @@
 
 namespace Bedrock::Threading {
 
-class AsyncBase : public std::enable_shared_from_this<AsyncBase> {};
+class AsyncBase : public std::enable_shared_from_this<AsyncBase> {
+public:
+    virtual ~AsyncBase() = 0;
+    virtual void getAsyncDiagnosticInfo() const = 0;
+};
 
 enum AsyncStatus : unsigned int {
     Started = 0x0,

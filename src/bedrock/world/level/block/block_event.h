@@ -34,7 +34,9 @@ enum class EventType : uint8_t {
     RedstoneUpdate = 13,
     Actor = 14,
     InternalActor = 15,
-    _Count = 16,
+    NamedTick = 16,
+    NeighborChanged = 17,
+    _Count = 18,
 };
 
 class BlockEventBase {

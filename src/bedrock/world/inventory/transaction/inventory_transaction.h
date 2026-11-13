@@ -37,7 +37,7 @@ enum class InventoryTransactionError : int {
 
 class InventoryTransaction {
 public:
-    InventoryTransactionError executeFull(Player &player, bool is_sender_authority) const;
+    ENDSTONE_HOOK InventoryTransactionError executeFull(Player &player, bool is_sender_authority) const;
     [[nodiscard]] std::function<InventoryTransactionError(Player &, const InventoryAction &, bool)> getVerifyFunction(
         const InventorySource &source) const;
     [[nodiscard]] std::function<InventoryTransactionError(Player &, const InventoryAction &)> getExecuteFunction(

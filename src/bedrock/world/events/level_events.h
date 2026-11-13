@@ -67,7 +67,7 @@ struct LevelStartLeaveGameEvent {
     gsl::not_null<Bedrock::NonOwnerPointer<Level>> level;
 };
 struct WorldClockRestartEvent {
-    const Bedrock::NotNullNonOwnerPtr<WorldClock> clock;
+    gsl::not_null<WorldClock *> clock;
     int new_time;
 };
 

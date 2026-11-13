@@ -67,7 +67,7 @@ public:
     virtual int getMaxUseDuration(ItemStack const *) const = 0;
     virtual const BlockType *getBlockTypeForRendering() const = 0;
     virtual bool isMusicDisk() const = 0;
-    virtual void executeEvent(ItemStackBase &, std::string const &, RenderParams &) const = 0;
+    virtual void executeEvent(ItemStackBase &, std::string const &, HandSlot, RenderParams &) const = 0;
     virtual bool isComponentBased() const = 0;
     virtual bool isHumanoidArmor() const = 0;
     virtual bool isBlockPlanterItem() const = 0;
@@ -188,7 +188,8 @@ public:
     virtual bool canBeCharged() const = 0;
     virtual void playSoundIncrementally(ItemStack const &, Mob &) const = 0;
     virtual float getFurnaceXPmultiplier(ItemStackBase const &) const = 0;
-    virtual bool calculatePlacePos(ItemStackBase &, Actor &, FacingID &, BlockPos &) const = 0;
+    virtual void getItemTransform(ItemTransformType, float) const = 0;
+    virtual bool calculatePlacePos(ItemStackBase const &, Actor const &, FacingID &, BlockPos &) const = 0;
 
 private:
     enum class OffhandAllowed : std::uint8_t {
@@ -202,7 +203,7 @@ protected:
 
 private:
     virtual bool _checkUseOnPermissions(Actor &, ItemStackBase &, FacingID const &, BlockPos const &) const = 0;
-    virtual bool _calculatePlacePos(ItemStackBase &, Actor &, FacingID &, BlockPos &) const = 0;
+    virtual bool _calculatePlacePos(ItemStackBase const &, Actor const &, FacingID &, BlockPos &) const = 0;
     virtual bool _shouldAutoCalculatePlacePos() const = 0;
     virtual InteractionResult _useOn(ItemStack &, Actor &, BlockPos pos, FacingID face, HandSlot, Vec3 const &) const = 0;
 

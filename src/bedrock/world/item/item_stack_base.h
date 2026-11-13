@@ -46,6 +46,7 @@ public:
     virtual void reinit(std::string_view name, int count, int aux_value);
     [[nodiscard]] ItemDescriptor getDescriptor() const;
     virtual void setNull(std::optional<std::string>);
+    [[nodiscard]] virtual explicit operator bool() const;
     [[nodiscard]] virtual std::string toString() const;
     [[nodiscard]] virtual std::string toDebugString() const;
 
@@ -67,7 +68,6 @@ public:
     [[nodiscard]] int getIdAux() const;
     [[nodiscard]] bool isBlock() const;
     [[nodiscard]] bool isValid_DeprecatedSeeComment() const;
-    explicit operator bool() const;
     [[nodiscard]] std::uint8_t getMaxStackSize() const;
     [[nodiscard]] std::int16_t getDamageValue() const;
     [[nodiscard]] bool hasDamageValue() const;

@@ -55,7 +55,8 @@ void init_actor(py::module_ &m, py::class_<Actor, CommandSender> &actor, py::cla
         .def_property("name_tag", &Actor::getNameTag, &Actor::setNameTag,
                       "Gets or sets the current name tag of the actor.")
         .def_property("score_tag", &Actor::getScoreTag, &Actor::setScoreTag,
-                      "Gets or sets the current score tag of the actor.");
+                      "Gets or sets the current score tag of the actor. Only players have one; setting it on any other "
+                      "actor has no effect.");
 
     mob.def_property_readonly("is_gliding", &Mob::isGliding,
                               "Checks to see if an actor is gliding, such as using an Elytra.")

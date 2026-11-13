@@ -15,7 +15,6 @@
 #pragma once
 
 #include <cstdint>
-#include <map>
 #include <optional>
 #include <string>
 #include <vector>
@@ -30,12 +29,12 @@
 #include "bedrock/core/string/string_hash.h"
 #include "bedrock/entity/components/aabb_shape_component.h"
 #include "bedrock/entity/components/actor_rotation_component.h"
-#include "bedrock/entity/components/actor_walk_animation_component.h"
 #include "bedrock/entity/components/attributes_component.h"
 #include "bedrock/entity/components/state_vector_component.h"
 #include "bedrock/entity/gamerefs_entity/entity_context.h"
 #include "bedrock/input/input_mode.h"
 #include "bedrock/network/spatial_actor_network_data.h"
+#include "bedrock/platform/brstd/flat_map.h"
 #include "bedrock/server/commands/command_permission_level.h"
 #include "bedrock/shared_types/legacy/level_sound_event.h"
 #include "bedrock/util/molang_variable_map.h"
@@ -75,7 +74,6 @@ struct BuiltInActorComponents {
     gsl::not_null<StateVectorComponent *> state_vector_component;
     gsl::not_null<AABBShapeComponent *> aabb_shape_component;
     gsl::not_null<ActorRotationComponent *> actor_rotation_component;
-    gsl::not_null<ActorWalkAnimationComponent *> walk_animation_component;
 };
 
 struct ActorVersion : NewType<unsigned int> {};
@@ -245,7 +243,7 @@ public:
     [[nodiscard]] virtual float getPassengerYRotation(Actor const &) const = 0;
     virtual bool add(ItemStack &) = 0;
     virtual bool drop(ItemStack const &, bool) = 0;
-    virtual Interaction getInteraction(Player &, Vec3 const &) = 0;
+    virtual Interaction getInteraction(Player &, Vec3 const &, HandSlot) = 0;
     [[nodiscard]] virtual bool canDestroyBlock(Block const &) const = 0;
     virtual void setAuxValue(int) = 0;
     virtual void renderDebugServerState(const IOptionsReader &options) = 0;
@@ -392,7 +390,7 @@ public:
     std::string alias;
     std::optional<glm::mat4x4> previous_render_transform;
     int last_hurt_by_player_time;
-    std::map<HashedString, std::vector<std::vector<glm::highp_fmat4x4>>> previous_bone_matrices;
+    brstd::flat_map<HashedString, std::vector<std::vector<glm::highp_fmat4x4>>> previous_bone_matrices;
     SynchedActorDataEntityWrapper entity_data;
     std::unique_ptr<SpatialActorNetworkData> network_data;
     Vec3 sent_delta;
@@ -469,8 +467,6 @@ protected:
     int last_hurt_by_mob_timestamp_;
     bool is_predictable_projectile_;
     bool is_rendering_in_ui_;
-    bool is_on_screen_;
-    bool update_bones_and_effects_;
     bool update_effects_;
 
 private:

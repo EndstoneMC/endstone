@@ -14,8 +14,6 @@
 
 #include "bedrock/core/debug/bedrock_event_logger.h"
 
-#include <cstdarg>
-#include <cstdio>
 #include <ranges>
 #include <string_view>
 
@@ -25,8 +23,8 @@
 #include "endstone/core/logger_factory.h"
 #include "endstone/logger.h"
 
-void BedrockLog::LogDetails::_log_va(LogAreaID area, unsigned int priority, const char *function, int /*line*/,
-                                     MessasgeId /*message_id*/, const char *format, va_list args)
+void BedrockLog::LogDetails::_log(LogAreaID area, unsigned int priority, const char *function, int /*line*/,
+                                  MessasgeId /*message_id*/, std::string message_text)
 {
     if ((area == LogAreaID::Database || area == LogAreaID::System) &&
         priority <= static_cast<unsigned int>(Bedrock::LogLevel::Type::Info)) {
@@ -60,14 +58,7 @@ void BedrockLog::LogDetails::_log_va(LogAreaID area, unsigned int priority, cons
         break;
     }
 
-    std::va_list args_copy;
-    va_copy(args_copy, args);
-    std::vector<char> buf(1 + std::vsnprintf(nullptr, 0, format, args));
-    va_end(args);
-    const std::size_t len = std::vsnprintf(buf.data(), buf.size(), format, args_copy);
-    va_end(args_copy);
-
-    std::string_view message(buf.data(), len);
+    std::string_view message(message_text);
     if (area == LogAreaID::Scripting) {
         // script output comes with a trailing "\n\r"
         message = message.substr(0, message.find_last_not_of("\r\n") + 1);

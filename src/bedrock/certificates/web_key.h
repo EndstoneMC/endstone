@@ -14,19 +14,21 @@
 
 #pragma once
 
-#include <string_view>
+#include <string>
 
 #include "bedrock/bedrock.h"
 
-namespace webrtc {
+namespace Crypto::Asymmetric {
+enum class System : int;
+}
 
-class SocketAddress;
-class StunMessage;
-
-class Port {
+class WebKey {
 public:
-    ENDSTONE_HOOK virtual void SendBindingErrorResponse(StunMessage *message, const SocketAddress &addr,
-                                                        int error_code, std::string_view reason);
-};
+    [[nodiscard]] const std::string &getPublicKey() const;
+    [[nodiscard]] Crypto::Asymmetric::System getType() const;
 
-}  // namespace webrtc
+private:
+    Crypto::Asymmetric::System type_;
+    std::string public_key_;
+};
+BEDROCK_STATIC_ASSERT_SIZE(WebKey, 40, 32);

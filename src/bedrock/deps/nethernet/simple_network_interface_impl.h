@@ -18,6 +18,7 @@
 #include <cstddef>
 #include <memory>
 #include <mutex>
+#include <string>
 #include <string_view>
 
 #include "bedrock/bedrock.h"
@@ -26,6 +27,7 @@
 #include "bedrock/deps/nethernet/nethernet_transport.h"
 #include "bedrock/deps/nethernet/network_id.h"
 #include "bedrock/deps/webrtc/scoped_refptr.h"
+#include "bedrock/platform/result.h"
 
 namespace endstone::core {
 class EndstoneServer;
@@ -52,8 +54,13 @@ public:
     ~SimpleNetworkInterfaceImpl() override;
 
 private:
+    // TODO(fixme): check the name
+    class HttpMetadataProvider;
+
     ENDSTONE_HOOK void ReceiveFromSignalingChannel(NetworkID from, std::string_view message,
                                                    SignalingChannelId source_channel);
+    // TODO(fixme): check the name
+    ENDSTONE_HOOK static Bedrock::Result<std::string> getMetadata(const HttpMetadataProvider &provider);
 
     std::atomic<unsigned int> ref_;
     INetherNetTransportInterfaceCallbacks *callbacks_;
@@ -61,6 +68,7 @@ private:
     std::unique_ptr<NetworkSessionManager> network_session_manager_;
     webrtc::scoped_refptr<webrtc::PeerConnectionFactory> peer_connection_factory_;
     std::mutex api_level_mutex_;
+    std::mutex rtc_config_mutex_;
     // TODO(fixme): webrtc::PeerConnectionInterface::RTCConfiguration
 #ifdef _WIN32
     std::byte rtc_config_[416];

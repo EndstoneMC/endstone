@@ -20,6 +20,7 @@
 #include <ranges>
 #include <string>
 #include <unordered_map>
+#include <utility>
 #include <vector>
 
 #include <boost/algorithm/string.hpp>
@@ -27,7 +28,6 @@
 #include "bedrock/locale/i18n.h"
 #include "bedrock/server/commands/command_registry.h"
 #include "bedrock/server/server_instance.h"
-#include "endstone/command/plugin_command.h"
 #include "endstone/core/command/command_usage_parser.h"
 #include "endstone/core/command/defaults/ban_command.h"
 #include "endstone/core/command/defaults/ban_ip_command.h"
@@ -49,9 +49,47 @@ namespace endstone::core {
 
 EndstoneCommandMap::EndstoneCommandMap(EndstoneServer &server) : server_(server)
 {
+    setDefaultCommands();
+}
+
+void EndstoneCommandMap::attach()
+{
+    std::lock_guard lock(mutex_);
     unregisterCommand("reload");
     allowCommandsWithoutCheats();
-    setDefaultCommands();
+    attached_ = true;
+
+    for (const auto &command : std::exchange(deferred_commands_, {})) {
+        std::erase_if(custom_commands_, [&](const auto &entry) { return entry.second.get() == command.get(); });
+        if (!registerCommand(command)) {
+            command->unregisterFrom(*this);
+        }
+    }
+}
+
+bool EndstoneCommandMap::registerDeferred(std::shared_ptr<Command> command)
+{
+    auto name = command->getName();
+    if (getCommand(name) != nullptr) {
+        server_.getLogger().error("Unable to register command '{}' as it already exists.", name);
+        return false;
+    }
+
+    std::vector<std::string> pending_aliases;
+    for (const auto &alias : command->getAliases()) {
+        if (getCommand(alias) == nullptr) {
+            pending_aliases.push_back(alias);
+        }
+    }
+
+    custom_commands_.emplace(name, command);
+    for (const auto &alias : pending_aliases) {
+        custom_commands_.emplace(alias, command);
+    }
+    command->setAliases(pending_aliases);
+    command->registerTo(*this);
+    deferred_commands_.push_back(command);
+    return true;
 }
 
 void EndstoneCommandMap::allowCommandsWithoutCheats()
@@ -89,6 +127,16 @@ bool EndstoneCommandMap::dispatch(CommandSender &sender, std::string command_lin
     if (!command) {
         sender.sendErrorMessage(Translatable("commands.generic.unknown", {args[0]}));
         return false;
+    }
+
+    if (!attached_) {
+        try {
+            return command->execute(sender, std::vector(args.begin() + 1, args.end()));
+        }
+        catch (const std::exception &e) {
+            server_.getLogger().error("Unhandled exception executing '{}': {}", command_line, e.what());
+            return false;
+        }
     }
 
     if (!custom_commands_.contains(name)) {
@@ -129,9 +177,12 @@ void EndstoneCommandMap::clearCommands()
     std::lock_guard lock(mutex_);
     for (const auto &command : custom_commands_ | std::views::values) {
         command->unregisterFrom(*this);
-        unregisterCommand(command->getName());
+        if (attached_) {
+            unregisterCommand(command->getName());
+        }
     }
     custom_commands_.clear();
+    deferred_commands_.clear();
     setDefaultCommands();
 }
 
@@ -141,6 +192,10 @@ std::shared_ptr<Command> EndstoneCommandMap::getCommand(std::string name) const
     // Try to find the custom command we've registered
     if (const auto it = custom_commands_.find(name); it != custom_commands_.end()) {
         return it->second;
+    }
+
+    if (!attached_) {
+        return nullptr;
     }
 
     // Custom command not found, let's find it in CommandRegistry
@@ -175,7 +230,7 @@ void EndstoneCommandMap::setDefaultCommands()
 #endif
 }
 
-void EndstoneCommandMap::setPluginCommands()
+void EndstoneCommandMap::setPluginNames()
 {
     const auto plugins = server_.getPluginManager().getPlugins();
     std::vector<std::string> plugin_names;
@@ -183,11 +238,6 @@ void EndstoneCommandMap::setPluginCommands()
         auto name = plugin->getName();
         std::ranges::transform(name, name.begin(), [](unsigned char c) { return std::tolower(c); });
         plugin_names.emplace_back(name);
-
-        auto commands = plugin->getDescription().getCommands();
-        for (const auto &command : commands) {
-            registerCommand(std::make_unique<PluginCommand>(command, *plugin));
-        }
     }
     clearEnumValues("PluginName");
     getHandle().getRegistry().addEnumValues("PluginName", plugin_names);
@@ -203,19 +253,11 @@ void EndstoneCommandMap::unregisterCommand(std::string name)
     }
 
     // Remove enums introduced by custom commands
-    if (custom_commands_.contains(name)) {
-        for (const auto &overload : signature->overloads) {
-            for (const auto &param : overload.params) {
-                if (param.param_type != CommandParameterDataType::Enum || !param.enum_name_or_postfix) {
-                    continue;
-                }
-                if (std::string_view(param.enum_name_or_postfix) == "Boolean" ||
-                    std::string_view(param.enum_name_or_postfix) == "Block") {
-                    continue;
-                }
-                clearEnumValues(param.enum_name_or_postfix);
-            }
+    if (const auto it = custom_enums_.find(name); it != custom_enums_.end()) {
+        for (const auto &enum_name : it->second) {
+            clearEnumValues(enum_name);
         }
+        custom_enums_.erase(it);
     }
 
     // TODO: remove enum value constraints for name in enum name CommandName
@@ -276,12 +318,17 @@ void EndstoneCommandMap::removeEnumValueFromExisting(const std::string &enum_nam
 bool EndstoneCommandMap::registerCommand(std::shared_ptr<Command> command)
 {
     std::lock_guard lock(mutex_);
-    auto &registry = getHandle().getRegistry();
 
     if (!command) {
         server_.getLogger().error("Unable to register a null command.");
         return false;
     }
+
+    if (!attached_) {
+        return registerDeferred(std::move(command));
+    }
+
+    auto &registry = getHandle().getRegistry();
 
     // Check if the command name is available
     auto name = command->getName();
@@ -304,6 +351,7 @@ bool EndstoneCommandMap::registerCommand(std::shared_ptr<Command> command)
         usages.push_back("/" + name);
     }
     std::vector<std::vector<CommandParameterData>> pending_param_data;
+    std::vector<std::string> created_enums;
     for (const auto &usage : usages) {
         auto parser = CommandUsageParser(usage);
         auto result = parser.parse();
@@ -320,6 +368,7 @@ bool EndstoneCommandMap::registerCommand(std::shared_ptr<Command> command)
 
         bool success = true;
         std::vector<CommandParameterData> param_data;
+        std::vector<std::string> usage_enums;
         for (const auto &parameter : parameters) {
             auto data = CommandParameterData({0}, &CommandRegistry::ParseRuleFor<MinecraftCommandAdapter>::instance,
                                              parameter.name.c_str(), CommandParameterDataType::Basic, nullptr, nullptr,
@@ -349,6 +398,7 @@ bool EndstoneCommandMap::registerCommand(std::shared_ptr<Command> command)
 
                 // Add enum
                 auto symbol = registry.addEnumValues(enum_name_final, parameter.values);
+                usage_enums.push_back(enum_name_final);
 
                 // Check if the enum has been added
                 auto it = registry.enum_lookup_.find(enum_name_final);
@@ -406,6 +456,12 @@ bool EndstoneCommandMap::registerCommand(std::shared_ptr<Command> command)
 
         if (success) {
             pending_param_data.push_back(param_data);
+            created_enums.insert(created_enums.end(), usage_enums.begin(), usage_enums.end());
+        }
+        else {
+            for (const auto &enum_name : usage_enums) {
+                clearEnumValues(enum_name);
+            }
         }
     }
 
@@ -418,6 +474,9 @@ bool EndstoneCommandMap::registerCommand(std::shared_ptr<Command> command)
     registry.registerCommand(name, command->getDescription().c_str(), CommandPermissionLevel::Any,
                              CommandCheatFlag::NotCheat, CommandUsageFlag::Normal);
     custom_commands_.emplace(name, command);
+    auto enum_key = name;
+    std::ranges::transform(enum_key, enum_key.begin(), [](unsigned char c) { return std::tolower(c); });
+    custom_enums_[enum_key] = std::move(created_enums);
     for (const auto &alias : pending_aliases) {
         registry.registerAlias(name, alias);
         custom_commands_.emplace(alias, command);

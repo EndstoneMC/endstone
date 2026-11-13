@@ -16,6 +16,8 @@
 
 #include <optional>
 
+#include "bedrock/world/item/equipment_slot.h"
+
 class Actor;
 class Player;
 class Mob;
@@ -31,6 +33,7 @@ struct VariantParameterListConst {
     BlockPos const *block;
     Actor const *damager;
     Actor const *holder;
+    HandSlot hand_slot;
 };
 
 struct VariantParameterList {
@@ -43,4 +46,5 @@ struct VariantParameterList {
     BlockPos const *block;
     Actor *damager;
     Actor *holder;
+    HandSlot hand_slot;
 };

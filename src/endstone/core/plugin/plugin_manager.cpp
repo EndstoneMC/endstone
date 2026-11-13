@@ -459,9 +459,18 @@ std::vector<Plugin *> EndstonePluginManager::loadPlugins(std::vector<Plugin *> c
 
 void EndstonePluginManager::enablePlugin(Plugin &plugin) const
 {
-    if (!plugin.isEnabled()) {
-        plugin.getPluginLoader().enablePlugin(plugin);
+    if (plugin.isEnabled()) {
+        return;
     }
+    if (before_enable_) {
+        before_enable_(plugin);
+    }
+    plugin.getPluginLoader().enablePlugin(plugin);
+}
+
+void EndstonePluginManager::setBeforeEnable(std::function<void(Plugin &)> before_enable)
+{
+    before_enable_ = std::move(before_enable);
 }
 
 void EndstonePluginManager::enablePlugins() const

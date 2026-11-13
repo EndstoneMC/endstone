@@ -20,4 +20,5 @@
 class FurnaceBlockActor : public VanillaBlockActor {
 public:
     static float getBurnDuration(class ItemStackBase const &item_instance, float burn_interval);
+    static float getItemBurnDuration(class Item const &item, float burn_interval);
 };

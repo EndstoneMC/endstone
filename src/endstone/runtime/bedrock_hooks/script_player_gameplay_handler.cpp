@@ -26,6 +26,7 @@
 #include "endstone/color_format.h"
 #include "endstone/core/block/block.h"
 #include "endstone/core/damage/damage_source.h"
+#include "endstone/core/entity/components/flag_components.h"
 #include "endstone/core/game_mode.h"
 #include "endstone/core/inventory/item_stack.h"
 #include "endstone/core/json.h"
@@ -89,6 +90,9 @@ bool handleEvent(const PlayerDisconnectEvent &event)
         const auto &server = endstone::core::EndstoneServer::getInstance();
         auto &endstone_player = player->getEndstoneActor<endstone::core::EndstonePlayer>();
         endstone_player.disconnect();
+        if (player->hasComponent<endstone::core::InternalLoginCancelledFlagComponent>()) {
+            return true;
+        }
 
         endstone::Message quit_message = endstone::Translatable{
             endstone::ColorFormat::Yellow + "%multiplayer.player.left", {endstone_player.getName()}};
@@ -160,7 +164,11 @@ bool handleEvent(const PlayerInteractWithBlockBeforeEvent &event)
             std::move(item_stack),
             block.get(),
             static_cast<endstone::BlockFace>(event.block_face),
-            endstone::Vector{event.face_location.x, event.face_location.y, event.face_location.z},
+            endstone::Vector{
+                event.face_location.x - event.block_location.x,
+                event.face_location.y - event.block_location.y,
+                event.face_location.z - event.block_location.z,
+            },
         };
         server.getPluginManager().callEvent(e);
         if (e.isCancelled()) {

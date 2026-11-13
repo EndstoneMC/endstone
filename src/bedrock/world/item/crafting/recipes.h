@@ -53,6 +53,8 @@ private:
     std::unordered_map<std::uint64_t, std::unordered_map<std::uint64_t, std::shared_ptr<std::vector<ItemInstance>>>>
         recipes_by_input_;
     std::vector<gsl::not_null<Recipe *>> unlockable_recipes_;
+    std::unordered_map<std::int16_t, std::vector<std::uint64_t>> unlockable_recipe_indices_by_item_;
+    std::vector<std::uint64_t> unindexed_unlockable_recipe_indices_;
     std::unordered_set<std::string> unique_unlockable_recipe_ids_;
     std::unordered_map<int, std::unordered_map<int, ItemInstance>> furnace_results_;
     RecipeListenerList listeners_;

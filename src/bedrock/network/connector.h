@@ -17,13 +17,15 @@
 #include <optional>
 
 #include "bedrock/forward.h"
+#include "bedrock/certificates/web_key.h"
 #include "bedrock/network/network_system_toggles.h"
 
 class Connector {
 public:
     struct ConnectionCallbacks {
         virtual ~ConnectionCallbacks() = default;
-        virtual bool onNewIncomingConnection(NetworkIdentifier const &, std::shared_ptr<::NetworkPeer> &&) = 0;
+        virtual bool onNewIncomingConnection(NetworkIdentifier const &, std::shared_ptr<::NetworkPeer> &&,
+                                             std::optional<WebKey>) = 0;
         virtual bool onNewOutgoingConnection(NetworkIdentifier const &, std::shared_ptr<::NetworkPeer> &&) = 0;
         virtual void onConnectionClosed(NetworkIdentifier const &id, Connection::DisconnectFailReason disconnect_reason,
                                         std::string const &message_from_server,

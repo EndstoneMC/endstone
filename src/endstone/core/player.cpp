@@ -16,6 +16,8 @@
 
 #include <RakPeerInterface.h>
 
+#include <algorithm>
+#include <functional>
 #include <unordered_map>
 #include <unordered_set>
 
@@ -43,6 +45,7 @@
 #include "bedrock/platform/build_platform.h"
 #include "bedrock/server/server_instance.h"
 #include "bedrock/world/actor/player/player.h"
+#include "bedrock/world/actor/player/player_list_entry.h"
 #include "bedrock/world/actor/provider/actor_offset.h"
 #include "bedrock/world/level/level.h"
 #include "endstone/block/block.h"
@@ -610,7 +613,15 @@ std::string EndstonePlayer::getGameVersion() const
 
 Skin EndstonePlayer::getSkin() const
 {
-    return EndstoneSkin::fromMinecraft(getHandle().getSkin());
+    const auto &player = getHandle();
+    const auto component = player.getPersistentComponent<UserEntityIdentifierComponent>();
+    const auto &player_list = player.getLevel().getPlayerList();
+    const auto it = std::ranges::find(player_list, component->getClientUUID(),
+                                      [](const auto &pair) -> const mce::UUID & { return pair.first; });
+    if (it != player_list.end()) {
+        return EndstoneSkin::fromMinecraft(it->second.skin);
+    }
+    return EndstoneSkin::fromMinecraft(player.getSkin());
 }
 
 void EndstonePlayer::sendForm(FormVariant form)
@@ -717,7 +728,10 @@ bool EndstonePlayer::handlePacket(Packet &packet)
                 auto new_packet = MinecraftPackets::createPacket(MinecraftPacketIds::PlayerSkin);
                 auto &new_pk = static_cast<PlayerSkinPacket &>(*new_packet);
                 new_pk.payload.uuid = pk.payload.uuid;
-                new_pk.payload.skin = getHandle().getSkin();
+                const auto &player_list = getHandle().getLevel().getPlayerList();
+                const auto it = std::ranges::find(player_list, pk.payload.uuid,
+                                                  [](const auto &pair) -> const mce::UUID & { return pair.first; });
+                new_pk.payload.skin = it != player_list.end() ? it->second.skin : getHandle().getSkin();
                 new_pk.payload.localized_new_skin_name = pk.payload.localized_old_skin_name;
                 new_pk.payload.localized_old_skin_name = pk.payload.localized_new_skin_name;
                 getHandle().sendNetworkPacket(new_pk);
@@ -791,7 +805,7 @@ bool EndstonePlayer::handlePacket(Packet &packet)
                     item,
                     block.get(),
                     static_cast<BlockFace>(action.facing),
-                    Vector{action.pos.x, action.pos.y, action.pos.z},
+                    std::nullopt,
                 };
                 getServer().getPluginManager().callEvent(e);
                 if (e.isCancelled()) {
@@ -898,16 +912,24 @@ void EndstonePlayer::onFormResponse(std::uint32_t form_id, const nlohmann::json 
     auto form_variant = std::move(it->second);
     forms_.erase(it);
 
-    if (!isDead()) {
-        try {
-            std::visit(overloaded{
-                           [&](const MessageForm &form) {
+    if (isDead()) {
+        return;
+    }
+
+    std::function<void()> submit;
+    try {
+        std::visit(overloaded{
+                       [&](const MessageForm &form) {
+                           const int selection = json.get<bool>() ? 0 : 1;
+                           submit = [&form, this, selection] {
                                if (const auto callback = form.getOnSubmit()) {
-                                   callback(this, json.get<bool>() ? 0 : 1);
+                                   callback(this, selection);
                                }
-                           },
-                           [&](const ActionForm &form) {
-                               const int selection = json.get<int>();
+                           };
+                       },
+                       [&](const ActionForm &form) {
+                           const int selection = json.get<int>();
+                           submit = [&form, this, selection] {
                                if (const auto callback = form.getOnSubmit()) {
                                    callback(this, selection);
                                }
@@ -923,18 +945,42 @@ void EndstonePlayer::onFormResponse(std::uint32_t form_id, const nlohmann::json 
                                        ++index;
                                    }
                                }
-                           },
-                           [&](const ModalForm &form) {
-                               if (auto callback = form.getOnSubmit()) {
-                                   callback(this, json.dump());
-                               }
-                           },
+                           };
                        },
+                       [&](const ModalForm &form) {
+                           auto values = nlohmann::json(json.get<std::vector<nlohmann::json>>()).dump();
+                           submit = [&form, this, values = std::move(values)] {
+                               if (auto callback = form.getOnSubmit()) {
+                                   callback(this, values);
+                               }
+                           };
+                       },
+                   },
+                   form_variant);
+    }
+    catch (const nlohmann::json::exception &e) {
+        getServer().getLogger().debug("Closing form {} of {} after a malformed response: {}", form_id, getName(),
+                                      e.what());
+        try {
+            std::visit(overloaded{[this](auto &&form) {
+                           if (const auto callback = form.getOnClose()) {
+                               callback(this);
+                           }
+                       }},
                        form_variant);
         }
-        catch (std::exception &e) {
-            getServer().getLogger().error("Error occurred when calling a on submit callback of a form: {}", e.what());
+        catch (std::exception &close_error) {
+            getServer().getLogger().error("Error occurred when calling a on close callback of a form: {}",
+                                          close_error.what());
         }
+        return;
+    }
+
+    try {
+        submit();
+    }
+    catch (std::exception &e) {
+        getServer().getLogger().error("Error occurred when calling a on submit callback of a form: {}", e.what());
     }
 }
 

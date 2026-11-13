@@ -14,9 +14,11 @@
 
 #include "bedrock/world/level/block/registry/block_type_registry.h"
 
-#include "bedrock/symbol.h"
-
 void BlockTypeRegistry::forEachBlockType(brstd::function_ref<bool(const BlockType &)> callback) const
 {
-    BEDROCK_CALL(&BlockTypeRegistry::forEachBlockType, this, callback);
+    for (const auto &entry : block_lookup_map_) {
+        if (entry.second && !callback(*entry.second)) {
+            break;
+        }
+    }
 }

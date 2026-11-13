@@ -20,5 +20,6 @@ enum class PluginExecutionGroup : std::uint8_t {
     PrePackLoadExecution = 0,
     ServerStartExecution = 1,
     ClientLevelCreation = 2,
-    All = 3,
+    AppInitialization = 3,
+    All = 4,
 };

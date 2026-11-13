@@ -14,8 +14,7 @@
 
 #pragma once
 
-#include "bedrock/core/utility/non_owner_pointer.h"
-#include "bedrock/forward.h"
+#include "bedrock/platform/brstd/copyable_function.h"
 
 class NetworkEnableDisableListener {
     enum class State : int {
@@ -25,13 +24,15 @@ class NetworkEnableDisableListener {
     };
 
 public:
-    NetworkEnableDisableListener(const Bedrock::NonOwnerPointer<AppPlatform> &);
+    using IsNetworkAllowed = brstd::copyable_function<bool() const>;
+
+    NetworkEnableDisableListener(IsNetworkAllowed);
     virtual ~NetworkEnableDisableListener() = default;
 
 private:
     virtual void _onDisable() = 0;
     virtual void _onEnable() = 0;
-    State state_;                                         // +8
-    Bedrock::NonOwnerPointer<AppPlatform> app_platform_;  // +16
+    State state_;                                                // +8
+    IsNetworkAllowed is_network_allowed_;                        // +16
 };
-static_assert(sizeof(NetworkEnableDisableListener) == 40);
+static_assert(sizeof(NetworkEnableDisableListener) == 80);

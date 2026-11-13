@@ -25,11 +25,18 @@ public:
     ActorHurtResult &setShouldAllowKnockback(bool should_do_knockback);
     bool wasHurt() const;
     bool wasDealtDamage() const;
+    bool wasDamageProcessed() const;
     std::optional<float> getDamage() const;
     bool shouldAllowKnockback() const;
 
 private:
-    ActorHurtResult(std::variant<bool, float>);
-    std::variant<bool, float> hurt_or_damage_;
+    enum class Type : int {
+        NotHurt = 0,
+        EffectsOnly = 1,
+        DamageProcessed = 2,
+    };
+    ActorHurtResult(Type type, std::optional<float> damage);
+    Type type_;
+    std::optional<float> damage_amount_;
     bool should_allow_knockback_;
 };

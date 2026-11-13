@@ -63,8 +63,8 @@ public:
     [[nodiscard]] bool _isUsingNetherNetTransportLayer() const;                // Endstone: protected -> public
 
 private:
-    ENDSTONE_HOOK bool onNewIncomingConnection(const NetworkIdentifier &id,
-                                               std::shared_ptr<NetworkPeer> &&peer) override;  // Endstone: hook
+    ENDSTONE_HOOK bool onNewIncomingConnection(const NetworkIdentifier &id, std::shared_ptr<NetworkPeer> &&peer,
+                                               std::optional<WebKey> web_key) override;  // Endstone: hook
     void _sendInternal(const NetworkIdentifier &id, const Packet &packet, const std::string &data);
     std::unique_ptr<RemoteConnector> remote_connector_;
     std::unique_ptr<ServerLocator> server_locator_;
@@ -75,7 +75,7 @@ private:
     Scheduler &main_thread_;
 
 public:                           // Endstone: private -> public
-    std::string receive_buffer_;  // +272
+    std::string receive_buffer_;  // +336
     std::string send_buffer_;
     BinaryStream send_stream_;
 
@@ -93,10 +93,11 @@ private:
     bool websockets_enabled_;
     NetworkSettingOptions network_setting_options_;
     bool raw_recording_enabled_;
-    gsl::not_null<std::unique_ptr<cereal::ReflectionCtx>> reflection_ctx_;             // +512
-    gsl::not_null<std::unique_ptr<IPacketSerializationController>> packet_overrides_;  // +520
+    gsl::not_null<std::unique_ptr<cereal::ReflectionCtx>> reflection_ctx_;             // +560
+    gsl::not_null<std::unique_ptr<IPacketSerializationController>> packet_overrides_;  // +568
     gsl::not_null<std::unique_ptr<
         Bedrock::PubSub::Publisher<void(const Json::Value &), Bedrock::PubSub::ThreadModel::MultiThreaded,
                                    Bedrock::PubSub::ReturnPolicyType::Aggregate>>>
         session_summary_publisher_;
 };
+BEDROCK_STATIC_ASSERT_SIZE(NetworkSystem, 584, 528);

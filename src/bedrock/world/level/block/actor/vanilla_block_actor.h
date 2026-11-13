@@ -112,11 +112,11 @@ public:
     [[nodiscard]] bool isChanged() const override { return properties_.contains(Property::Changed); }
 
 protected:
-    int tick_count_;                                    // +72
-    Properties properties_;                             // +76
-    AABB bb_;                                           // +80
-    BlockActorRendererId renderer_id_;                  // +104
-    ActorTerrainInterlockData terrain_interlock_data_;  // +112
-    Bedrock::Safety::RedactableString custom_name_;     // +136
-    std::string filtered_custom_name_;                  // +192
+    int tick_count_;                                    // +80
+    Properties properties_;                             // +84
+    AABB bb_;                                           // +88
+    BlockActorRendererId renderer_id_;                  // +112
+    ActorTerrainInterlockData terrain_interlock_data_;  // +120
+    Bedrock::Safety::RedactableString custom_name_;     // +144
+    std::string filtered_custom_name_;                  // +216
 };
