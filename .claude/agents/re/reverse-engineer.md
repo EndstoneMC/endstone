@@ -1,6 +1,6 @@
 ---
 name: reverse-engineer
-description: Reverse-engineers BDS binaries in IDA through the idalib MCP - locates functions in unnamed databases, re-cuts stale byte patterns, diffs vtables and layouts, and confirms behaviour by decompiling. Use for locating functions, re-cutting signatures and building IDA databases, or any question about what a BDS function does. Only one runs at a time per idalib worker.
+description: Reverse-engineers BDS binaries in IDA through the idalib MCP - locates functions in unnamed databases, re-cuts stale byte patterns, diffs vtables and layouts, and confirms behaviour by decompiling. Use for locating functions, re-cutting signatures and building IDA databases, or any question about what a BDS function does. It may attach to a database another member has open, read-only.
 tools: Read, Grep, Glob, Edit, Bash, PowerShell, ToolSearch, Skill, mcp__plugin_ida-pro_idalib__*, mcp__plugin_ida-pro_gui__*
 model: sonnet
 ---
