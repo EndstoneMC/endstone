@@ -11,6 +11,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 - Added support for BDS version 1.26.63.
 
+### Changed
+
+- Improved the performance of liquid spreading when no plugin listens to `BlockFromToEvent`.
+
 ### Fixed
 
 - Fixed cancelling `PlayerDropItemEvent` on Linux doubling the stack the player tried to drop.
