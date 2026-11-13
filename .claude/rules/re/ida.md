@@ -10,7 +10,7 @@ Tool names below are the ida-pro plugin's `mcp__plugin_ida-pro_idalib__*` tools 
 ## Sessions
 
 - Load every idalib tool you need with one `ToolSearch` select call.
-- Drive one idalib worker sequentially; never fan subagents or parallel calls onto it.
+- Share a database across subagents by attaching to its session; keep attached subagents read-only, and leave closing it to the lead.
 - Issue calls back-to-back once the database is open. On "No database bound", reopen and rebind, and check liveness with `idalib_current` or `idalib_list`.
 - Run `idalib_list` and read `idb_path` before every session to confirm which database is the target and which is the reference.
 - Attach to an existing session with `idalib_list` and `idalib_switch`, or the `database:` parameter. Never kill an idalib worker.

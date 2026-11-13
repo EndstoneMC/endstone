@@ -23,6 +23,6 @@
 - Review each member's result against its brief before it counts as done, and send fixes back to the same member with SendMessage.
 - Rerun an `escalate` item on opus, or take it to the user.
 - Run at most three members per lead at once; the session caps concurrent subagents at 20, nested ones included.
-- Run one `reverse-engineer` per idalib worker.
+- Several `reverse-engineer` members may share one idalib database by attaching to its session; attached members stay read-only, and only the lead closes a shared session.
 - Never SendMessage an agent a Workflow runs; it forks a second copy.
 - No agent commits, pushes or tags unless the user asked in this conversation.
