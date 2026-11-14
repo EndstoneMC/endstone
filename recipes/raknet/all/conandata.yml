@@ -23,6 +23,9 @@ patches:
     - patch_file: "patches/4.081-acknak-range-bound.patch"
       patch_description: "Bound ACK/NAK acknowledgement ranges (count, per-datagram total, reject 0xFFFFFF on NAK) so a malformed datagram cannot drive the reliability layer into a runaway loop; mirrors Mojang's BDS fix"
       patch_type: "security"
+    - patch_file: "patches/4.081-split-reassembly-inplace.patch"
+      patch_description: "Validate split fragment metadata and bit lengths, then reconstruct in split index order."
+      patch_type: "bugfix"
   "4.081-mojang":
     - patch_file: "patches/4.081-fix-gettimeofday-include.patch"
       patch_description: "Fix malformed `#include < time.h >` (spaces inside angle brackets) that modern preprocessors reject."
@@ -42,6 +45,9 @@ patches:
     - patch_file: "patches/4.081-acknak-range-bound.patch"
       patch_description: "Bound ACK/NAK acknowledgement ranges (count, per-datagram total, reject 0xFFFFFF on NAK) so a malformed datagram cannot drive the reliability layer into a runaway loop; mirrors Mojang's BDS fix"
       patch_type: "security"
+    - patch_file: "patches/4.081-split-reassembly-inplace.patch"
+      patch_description: "Validate split fragment metadata and bit lengths, then reconstruct in split index order."
+      patch_type: "bugfix"
 
 mojang_vtable_patches:
   "r26u2":
