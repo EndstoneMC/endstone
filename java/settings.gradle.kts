@@ -5,4 +5,4 @@ require(GradleVersion.current() >= GradleVersion.version("9.1")) {
 }
 
 rootProject.name = "zernyth"
-include("api", "runtime", "example")
+include("api", "runtime", "example", "stable-test", "ui")

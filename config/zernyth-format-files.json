@@ -166,6 +166,10 @@
     "tests/test_java_network.cpp",
     "tests/test_java_performance.cpp",
     "tests/test_java_plugin_loader.cpp",
-    "zernyth-plugin-template/src/main/java/dev/example/ExamplePlugin.java"
+    "zernyth-plugin-template/src/main/java/dev/example/ExamplePlugin.java",
+    "java/stable-test/src/test/java/dev/zernyth/stable/SafetyTest.java",
+    "java/stable-test/src/main/java/dev/zernyth/stable/Safety.java",
+    "java/stable-test/src/main/java/dev/zernyth/stable/StableTestPlugin.java",
+    "tests/java_test_host.cpp"
   ]
 }

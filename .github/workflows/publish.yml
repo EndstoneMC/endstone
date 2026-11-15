@@ -1,5 +1,5 @@
-name: Zernyth Alpha wheel (manual)
-run-name: Alpha wheel ${{ inputs.commit }} / ${{ inputs.target }}
+name: Zernyth release wheel (manual)
+run-name: Release wheel ${{ inputs.commit }} / ${{ inputs.target }}
 
 on:
   workflow_dispatch:
@@ -17,7 +17,7 @@ on:
 permissions:
   contents: read
 concurrency:
-  group: zernyth-alpha-publishing
+  group: zernyth-publishing
   cancel-in-progress: false
 
 jobs:
@@ -61,9 +61,9 @@ jobs:
         run: |
           "%ZERNYTH_PYTHON%" -c "import sys; assert sys.version_info[:2] == (3, 15), 'Dedicated runner requires CPython 3.15 x64'"
           if errorlevel 1 exit /b %errorlevel%
-          "%ZERNYTH_PYTHON%" scripts/zernyth_release.py build --gradle "%ZERNYTH_GRADLE%" --lockfile config/zernyth-publish-conan.lock
+          "%ZERNYTH_PYTHON%" scripts/zernyth_release.py build --gradle "%ZERNYTH_GRADLE%" --lockfile config/zernyth-publish-conan.lock --test-host build/RelWithDebInfo/tests/zernyth_java_test_host.dll
           if errorlevel 1 exit /b %errorlevel%
-          "%ZERNYTH_PYTHON%" scripts/zernyth_release.py test
+          "%ZERNYTH_PYTHON%" scripts/zernyth_release.py test --test-host build/RelWithDebInfo/tests/zernyth_java_test_host.dll
           if errorlevel 1 exit /b %errorlevel%
           "%ZERNYTH_PYTHON%" -m unittest discover -s tests -p "test_zernyth_*.py"
           if errorlevel 1 exit /b %errorlevel%
@@ -76,10 +76,10 @@ jobs:
       - name: Record the validated wheel digest
         id: wheel_digest
         shell: cmd
-        run: '"%ZERNYTH_PYTHON%" scripts/zernyth_ci.py digest --wheel dist/zernyth_engine-0.9.0a1-cp315-cp315-win_amd64.whl'
+        run: '"%ZERNYTH_PYTHON%" scripts/zernyth_ci.py digest --wheel dist/zernyth_engine-1.0.0-cp315-cp315-win_amd64.whl'
       - uses: actions/upload-artifact@v7
         with:
-          name: zernyth-alpha-windows-${{ inputs.commit }}
+          name: zernyth-windows-${{ inputs.commit }}
           path: dist/*.whl
           if-no-files-found: error
           retention-days: 7
@@ -98,12 +98,12 @@ jobs:
     steps:
       - uses: actions/download-artifact@v8
         with:
-          name: zernyth-alpha-windows-${{ inputs.commit }}
+          name: zernyth-windows-${{ inputs.commit }}
           path: dist
       - name: Verify the exact validated build artifact
         env:
           EXPECTED_SHA256: ${{ needs.wheel.outputs.wheel-sha256 }}
-        run: printf '%s  %s\n' "$EXPECTED_SHA256" 'dist/zernyth_engine-0.9.0a1-cp315-cp315-win_amd64.whl' | sha256sum --check --strict
+        run: printf '%s  %s\n' "$EXPECTED_SHA256" 'dist/zernyth_engine-1.0.0-cp315-cp315-win_amd64.whl' | sha256sum --check --strict
       - uses: pypa/gh-action-pypi-publish@release/v1
         with:
           repository-url: https://test.pypi.org/legacy/
@@ -123,12 +123,12 @@ jobs:
     steps:
       - uses: actions/download-artifact@v8
         with:
-          name: zernyth-alpha-windows-${{ inputs.commit }}
+          name: zernyth-windows-${{ inputs.commit }}
           path: dist
       - name: Verify the exact validated build artifact
         env:
           EXPECTED_SHA256: ${{ needs.wheel.outputs.wheel-sha256 }}
-        run: printf '%s  %s\n' "$EXPECTED_SHA256" 'dist/zernyth_engine-0.9.0a1-cp315-cp315-win_amd64.whl' | sha256sum --check --strict
+        run: printf '%s  %s\n' "$EXPECTED_SHA256" 'dist/zernyth_engine-1.0.0-cp315-cp315-win_amd64.whl' | sha256sum --check --strict
       - uses: pypa/gh-action-pypi-publish@release/v1
         with:
           packages-dir: dist/

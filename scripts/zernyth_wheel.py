@@ -17,7 +17,13 @@ import venv
 import zipfile
 
 from packaging.metadata import Metadata
+from packaging.version import Version
 from markdown_it import MarkdownIt
+
+
+ROOT = Path(__file__).resolve().parents[1]
+ENGINE_VERSION = (ROOT / "zernyth-version.txt").read_text(encoding="utf-8").strip()
+DISTRIBUTION_VERSION = str(Version(ENGINE_VERSION))
 
 
 def developer_path_count(data):
@@ -48,7 +54,7 @@ def validate(path, require_sanitized=False):
             raise ValueError("A nonempty Markdown package description is required")
         if not MarkdownIt("commonmark").render(core_metadata.description).strip():
             raise ValueError("Package description did not render")
-        if metadata["Name"] != "zernyth-engine" or metadata["Version"] != "0.9.0a1":
+        if metadata["Name"] != "zernyth-engine" or metadata["Version"] != DISTRIBUTION_VERSION:
             raise ValueError("Incorrect distribution identity")
         if "zernyth = zernyth.cli:main" not in wheel.read(info + "/entry_points.txt").decode():
             raise ValueError("Missing Zernyth CLI")
@@ -70,7 +76,7 @@ def validate(path, require_sanitized=False):
                     "zernyth/bds.py", "zernyth/BUILD.json", info + "/licenses/LICENSE",
                     info + "/licenses/THIRD_PARTY_NOTICES.md", "zernyth/licenses/native-inventory.json"]
         build = json.loads(wheel.read("zernyth/BUILD.json"))
-        if build["javaEnabled"] != "ON" or build["zernyth"] != "0.9.0-alpha.1":
+        if build["javaEnabled"] != "ON" or build["zernyth"] != ENGINE_VERSION:
             raise ValueError("Native version or JNI configuration mismatch")
         for dependency in ("gson-2.14.0", "snakeyaml-2.4"):
             license_path = "zernyth/licenses/java/" + dependency + "/LICENSE"
@@ -136,7 +142,7 @@ def install_test(wheel, wheelhouse):
         run(["-m", "pip", "install", "--no-index", "--find-links", str(wheelhouse.resolve()), str(wheel.resolve())])
         run(["-m", "pip", "check"])
         run(["-I", "-c", "import endstone._python, endstone._detours; "
-             "from importlib.metadata import version; assert version('zernyth-engine') == '0.9.0a1'; "
+             f"from importlib.metadata import version; assert version('zernyth-engine') == {DISTRIBUTION_VERSION!r}; "
              "import endstone; assert endstone.__version__ == '0.11.15'; "
              "import zernyth.cli; zernyth.cli.reject_conflicting_distribution()"])
         run(["-I", "-c", "import os; from zernyth.cli import _java_runtime; "
@@ -145,7 +151,7 @@ def install_test(wheel, wheelhouse):
         for option in ("--version", "--help"):
             result = subprocess.run([str(executable), option], cwd=directory, env=env,
                                     timeout=30, check=True, capture_output=True, text=True)
-            if option == "--version" and "0.9.0a1" not in result.stdout:
+            if option == "--version" and DISTRIBUTION_VERSION not in result.stdout:
                 raise ValueError("CLI version mismatch")
     return {"installation": "PASS", "nativeImport": "PASS", "cli": "PASS", "pipCheck": "PASS",
             "java25Detection": "PASS", "bds": "NOT TESTED"}
@@ -157,9 +163,9 @@ def release_ref():
     if not re.fullmatch(r"[0-9a-fA-F]{40}", requested) or requested.lower() != actual:
         raise ValueError("Exact reviewed release SHA required")
     if os.environ.get("RELEASE_TARGET") == "pypi":
-        tagged = subprocess.check_output(["git", "rev-parse", "refs/tags/v0.9.0-alpha.1^{commit}"], text=True).strip()
+        tagged = subprocess.check_output(["git", "rev-parse", f"refs/tags/v{ENGINE_VERSION}^{{commit}}"], text=True).strip()
         if tagged != actual:
-            raise ValueError("Production requires the operator-created v0.9.0-alpha.1 tag at this commit")
+            raise ValueError(f"Production requires the operator-created v{ENGINE_VERSION} tag at this commit")
     target = os.environ.get("RELEASE_TARGET", "build-only")
     if target not in ("build-only", "testpypi", "pypi"):
         raise ValueError("Unknown release target")

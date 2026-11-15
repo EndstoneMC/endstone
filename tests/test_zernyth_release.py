@@ -16,6 +16,25 @@ spec.loader.exec_module(release)
 
 
 class ReleaseTests(unittest.TestCase):
+    def test_archived_regressions_use_selected_host(self):
+        with tempfile.TemporaryDirectory() as temporary:
+            directory = Path(temporary)
+            for version in ("0.2.0", "0.3.0", "0.4.0", "0.5.0", "0.6.0", "0.7.0", "0.8.0"):
+                (directory / f"example-{version}.jar").write_bytes(b"synthetic, never executed")
+            args = SimpleNamespace(java_home=None, test_host=ROOT / "build/test-host.dll",
+                                   build_dir=ROOT / "build/RelWithDebInfo")
+            result = SimpleNamespace(stdout="[  PASSED  ] 1 test.", stderr="")
+            with mock.patch.dict(release.os.environ, {"ZERNYTH_LEGACY_JARS": str(directory)}):
+                with mock.patch.object(release, "test_env", return_value=({}, {})):
+                    with mock.patch.object(release, "RESULTS", directory):
+                        with mock.patch.object(release, "run", return_value=result) as run:
+                            release.regressions(args)
+            self.assertEqual(run.call_count, 7)
+            for call in run.call_args_list:
+                command = [str(value) for value in call.args[0]]
+                self.assertIn(str(ROOT / "scripts/zernyth_jni_host.py"), command)
+            self.assertEqual(json.loads((directory / "regression-result.json").read_text())["status"], "PASS")
+
     def test_ci_cache_not_inside_clean_checkout(self):
         env = {"CI": "true", "CONAN_HOME": str(ROOT / ".conan2")}
         with mock.patch.object(release, "java_env", return_value=(env, {})):
@@ -29,7 +48,8 @@ class ReleaseTests(unittest.TestCase):
                                               "package_folder": str(base / "cache/package")}}}}
             environment = {"CI": "true", "CONAN_HOME": str(base / "cache")}
             args = SimpleNamespace(java_home=None, gradle=None, cmake=None, conan=None,
-                                   vendor="temurin", sanitizers="", jobs=4, build_dir=ROOT / "build/RelWithDebInfo")
+                                   vendor="temurin", sanitizers="", jobs=4, build_dir=ROOT / "build/RelWithDebInfo",
+                                   test_host=ROOT / "build/RelWithDebInfo/tests/zernyth_java_test_host.dll")
 
             def result(command, **kwargs):
                 return SimpleNamespace(stdout=json.dumps(graph) if command[1:3] == ["graph", "info"] else "")
@@ -46,10 +66,26 @@ class ReleaseTests(unittest.TestCase):
                 self.assertEqual(call.kwargs["cwd"], ROOT.parent)
             self.assertIn(str(ROOT), conan_calls[0].args[0])
             self.assertIn("--output-folder=" + str(ROOT), conan_calls[0].args[0])
+            configure = next(call for call in run.call_args_list if "--preset" in call.args[0])
+            self.assertIn("-DZERNYTH_BUILD_JAVA_TEST_HOST=ON", configure.args[0])
+            self.assertIn("-DSENTRY_NATIVE_BIN_DIR=" + (base / "cache/package/bin").as_posix(),
+                          configure.args[0])
     def test_version_and_bounded_profiles(self):
-        self.assertRegex(release.version(), r"-(?:rc|alpha)\.\d+$")
+        self.assertRegex(release.version(), r"^\d+\.\d+\.\d+(?:-(?:rc|alpha)\.\d+)?$")
         for name in ("smoke", "lifecycle", "bounded-stress", "observation"):
             self.assertLessEqual(release.profile(name)["cycles"], 50)
+
+    def test_host_discovery_handles_parameter_comments(self):
+        result = release.host_test_names("Example.\n  First\nTyped/0. # TypeParam = int\n  Second\n")
+        self.assertEqual(result, ["Example.First", "Typed/0.Second"])
+
+    def test_host_discovery_rejects_empty_output(self):
+        with self.assertRaisesRegex(ValueError, "Empty"):
+            release.host_test_names("No test groups\n")
+
+    def test_host_discovery_rejects_duplicate_tests(self):
+        with self.assertRaisesRegex(ValueError, "duplicate"):
+            release.host_test_names("Example.\n  First\n  First\n")
 
     def test_output_scope(self):
         with self.assertRaises(ValueError):
@@ -70,7 +106,7 @@ class ReleaseTests(unittest.TestCase):
     def fixture(self, directory, jar_version=None):
         stage = directory / "synthetic"
         stage.mkdir()
-        v, module = "0.9.0-rc.1", "_python.cp315-win_amd64.pyd"
+        v, module = release.version(), "_python.cp315-win_amd64.pyd"
         for name in release.required_files(v, "Windows", module):
             path = stage / name
             path.parent.mkdir(parents=True, exist_ok=True)

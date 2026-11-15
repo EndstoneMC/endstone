@@ -40,6 +40,27 @@ lists libdwarf and its license materials are included conservatively. The wheel
 contains a path-free Windows linkage audit. Python dependencies are installed as
 separate distributions and retain the license files in their own wheels.
 
+## Ubuntu archive
+
+The Ubuntu 24.04 / CPython 3.12 archive uses shared libelf and libdwarf libraries.
+Their full cached license materials, corresponding source trees and Conan recipe
+exports accompany the archive. The shared libraries remain replaceable with
+interface-compatible builds. Packaging checks the runtime's actual ELF dependency
+entries. Upstream source test fixtures retain their original contents and are
+included solely as corresponding source materials.
+
+Bundled libc++, libc++abi, libunwind and libpython files retain the matching Ubuntu
+package copyright notices, including referenced common license texts. Hash-pinned
+Python dependency wheels retain their original license/notice files. The archive
+includes the same complete Gson, SnakeYAML, Sentry and font notices described above.
+See the artifact's `LICENSES`, `sources`, `requirements.lock` and checksum manifest.
+
+The Linux OpenSSL 3.6.5 build uses Zernyth's hash-checked Conan source hook to
+normalize private prefixes in generated diagnostic compiler-flags metadata before
+compilation. The original source license header is retained. This modifies the
+metadata generator; actual compiler arguments are preserved. The hook is included
+under `sources/hook_zernyth_build_metadata.py` for inspection and reproduction.
+
 ## Bundled font
 
 The unmodified JetBrains Mono font retains its embedded copyright:

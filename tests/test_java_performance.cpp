@@ -1,5 +1,8 @@
 #include <chrono>
 #include <cstdlib>
+#include <exception>
+#include <optional>
+#include <thread>
 
 #include "endstone/block/block_state.h"
 #include "endstone/core/logger_factory.h"
@@ -65,26 +68,74 @@ TEST(JavaPerformanceTest, ReproducibleProductionBridgeHarness)
         ASSERT_TRUE(commands.dispatch(console, std::string("perfbench ") + name));
     }
     auto record = e->GetStaticMethodID(cls, "record", "(Ljava/lang/String;[JI)V");
-    auto measure = [&](const char *name, int count, auto action) {
-        for (int w = 0; w < 3; ++w) {
-            for (int i = 0; i < count; ++i) {
-                action();
+    auto allocated = e->GetStaticMethodID(cls, "threadAllocatedBytes", "()J");
+    auto recordAllocated = e->GetStaticMethodID(cls, "recordAllocatedBytes", "(JI)V");
+    java::details::callbackCheck(e);
+    auto measure = [&](const char *name, int count, auto action, bool worker = false, bool retained = false) {
+        jlong samples[15]{};
+        std::exception_ptr failure;
+        jlong allocatedBytes = -1;
+        auto run = [&] {
+            try {
+                // Retention is benchmark-scoped and ends before this owned worker exits.
+                std::optional<java::details::Env> attachment;
+                if (retained) {
+                    attachment.emplace();
+                }
+                for (int w = 0; w < 3; ++w) {
+                    for (int i = 0; i < count; ++i) {
+                        action();
+                    }
+                }
+                jlong before = -1;
+                if (!worker) {
+                    before = e->CallStaticLongMethod(cls, allocated);
+                    java::details::callbackCheck(e);
+                }
+                for (auto &sample : samples) {
+                    auto start = std::chrono::steady_clock::now();
+                    for (int i = 0; i < count; ++i) {
+                        action();
+                    }
+                    sample =
+                        std::chrono::duration_cast<std::chrono::nanoseconds>(std::chrono::steady_clock::now() - start)
+                            .count();
+                }
+                if (!worker) {
+                    auto after = e->CallStaticLongMethod(cls, allocated);
+                    java::details::callbackCheck(e);
+                    if (before >= 0 && after >= before) {
+                        allocatedBytes = after - before;
+                    }
+                }
             }
+            catch (...) {
+                failure = std::current_exception();
+            }
+        };
+        if (worker) {
+            std::thread thread(run);
+            thread.join();
         }
-        jlong samples[15];
-        for (auto &sample : samples) {
-            auto start = std::chrono::steady_clock::now();
-            for (int i = 0; i < count; ++i) {
-                action();
-            }
-            sample =
-                std::chrono::duration_cast<std::chrono::nanoseconds>(std::chrono::steady_clock::now() - start).count();
+        else {
+            run();
+        }
+        if (failure) {
+            std::rethrow_exception(failure);
         }
         auto values = e->NewLongArray(15);
         e->SetLongArrayRegion(values, 0, 15, samples);
         e->CallStaticVoidMethod(cls, record, e->NewStringUTF(name), values, count);
         java::details::callbackCheck(e);
+        e->CallStaticVoidMethod(cls, recordAllocated, allocatedBytes, count * 15);
+        java::details::callbackCheck(e);
     };
+    auto scope = [] {
+        java::details::Env frame;
+    };
+    measure("jni-frame-already-attached", 1000, scope);
+    measure("jni-frame-attach-detach", 200, scope, true);
+    measure("jni-frame-worker-batch-attached", 1000, scope, true, true);
     auto *nativeListener =
         manager.registerManagedEvent("BenchmarkNativeEvent", [](Event &) {}, EventPriority::Normal, *plugin, false);
     class EventProbe final : public Event {
@@ -97,6 +148,32 @@ TEST(JavaPerformanceTest, ReproducibleProductionBridgeHarness)
     measure("production-java-event-dispatch", 2000, [&] { manager.callEvent(join); });
     PacketSendEvent packet(&player, 9, "", {}, 0);
     measure("production-packet-listener", 2000, [&] { manager.callEvent(packet); });
+    PacketSendEvent anonymous(nullptr, 1023, "", {}, 0);
+    measure("production-packet-anonymous", 2000, [&] { manager.callEvent(anonymous); });
+
+    std::unordered_map<UUID, endstone::Player *> players{{UUID{}, &player}};
+    std::vector<std::unique_ptr<testing::NiceMock<GameplayMockPlayer>>> peers;
+    std::vector<std::unique_ptr<PacketSendEvent>> traffic;
+    for (int i = 0; i < 64; ++i) {
+        UUID uuid{};
+        uuid.begin()[15] = static_cast<std::uint8_t>(i + 1);
+        auto peer = std::make_unique<testing::NiceMock<GameplayMockPlayer>>();
+        ON_CALL(*peer, getUniqueId()).WillByDefault(testing::Return(uuid));
+        ON_CALL(*peer, getId()).WillByDefault(testing::Return(100 + i));
+        ON_CALL(*peer, getRuntimeId()).WillByDefault(testing::Return(200 + i));
+        players.emplace(uuid, peer.get());
+        traffic.push_back(std::make_unique<PacketSendEvent>(peer.get(), 9, "", SocketAddress{}, 0));
+        peers.push_back(std::move(peer));
+    }
+    ON_CALL(server, getPlayer(testing::An<UUID>())).WillByDefault([&](UUID uuid) -> endstone::Player * {
+        auto it = players.find(uuid);
+        return it == players.end() ? nullptr : it->second;
+    });
+    std::size_t next = 0;
+    measure("production-packet-64-players", 2000, [&] { manager.callEvent(*traffic[next++ % traffic.size()]); });
+    ASSERT_TRUE(commands.dispatch(console, "perfbench packet-listeners"));
+    measure("production-packet-four-listeners", 2000, [&] { manager.callEvent(packet); });
+
     int tick = 0;
     std::uint64_t executed = 0;
     measure("native-scheduler-enqueue-heartbeat", 200, [&] {

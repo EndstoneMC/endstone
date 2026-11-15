@@ -27,8 +27,8 @@ FIXTURES = {"ZERNYTH_GAMEPLAY_TEST_JAR": "integration", "ZERNYTH_GAMEPLAY_FAILUR
 
 def version():
     value = (ROOT / "zernyth-version.txt").read_text(encoding="utf-8").strip()
-    if not re.fullmatch(r"\d+\.\d+\.\d+-(?:rc|alpha)\.\d+", value):
-        raise ValueError("RC or alpha version required")
+    if not re.fullmatch(r"\d+\.\d+\.\d+(?:-(?:rc|alpha)\.\d+)?", value):
+        raise ValueError("A stable, RC or alpha release version is required")
     return value
 
 
@@ -144,12 +144,12 @@ def build_all(args):
             reference = f'{node["ref"]}:{node["package_id"]}#{node["prev"]}'
             node["package_folder"] = run(conan + ["cache", "path", reference], cwd=conan_cwd, env=env, capture=True).stdout.strip()
     (RESULTS / "dependency-graph.json").write_text(json.dumps(graph_data, indent=2), encoding="utf-8")
-    native_runtime_arguments = []
-    if os.name == "nt":
-        sentry = next(node for node in graph_data["graph"]["nodes"].values()
-                      if str(node.get("ref", "")).startswith("sentry-native/") and node.get("package_folder"))
-        # Conan's CACHE variable alone retains a previous package revision on reconfigure.
-        native_runtime_arguments = ["-DSENTRY_NATIVE_BIN_DIR=" + (Path(sentry["package_folder"]) / "bin").as_posix()]
+    sentry = next(node for node in graph_data["graph"]["nodes"].values()
+                  if str(node.get("ref", "")).startswith("sentry-native/") and node.get("package_folder"))
+    # Refresh the cached install path on both platforms after a dependency rebuild.
+    native_runtime_arguments = ["-DSENTRY_NATIVE_BIN_DIR=" + (Path(sentry["package_folder"]) / "bin").as_posix()]
+    if getattr(args, "test_host", None):
+        native_runtime_arguments.append("-DZERNYTH_BUILD_JAVA_TEST_HOST=ON")
     run([gradle, "--offline", "--no-daemon", f"-PzernythJavaVendor={args.vendor}", "build", ":runtime:allTestJars",
          ":runtime:thirdPartyLicenses", ":api:publishApiPublicationToSdkRepository"], cwd=ROOT / "java", env=env)
     run([cmake, "--preset", "conan-relwithdebinfo", "-DENDSTONE_ENABLE_JAVA=ON", "-DENDSTONE_GENERATE_STUBS=OFF",
@@ -197,9 +197,89 @@ def test_env(args):
     return env, jdk
 
 
+def host_test_names(text):
+    """Parse GoogleTest discovery without starting any JVM or trusting shell fragments."""
+    suite = ""
+    names = []
+    for raw in text.splitlines():
+        line = raw.split("#", 1)[0].strip()
+        if not line:
+            continue
+        if not raw[0].isspace() and line.endswith("."):
+            suite = line
+        elif raw[0].isspace() and suite:
+            names.append(suite + line)
+    if not names or len(names) != len(set(names)):
+        raise ValueError("Empty or duplicate native test discovery")
+    return names
+
+
+def tests_with_host(args, env, jdk):
+    """Use the same native test sources with one fresh Python/DLL process per case."""
+    library = workspace(args.test_host)
+    command = [sys.executable, str(ROOT / "scripts/zernyth_jni_host.py"), "--library", library, "--"]
+    directory = args.build_dir / "tests"
+    discovery = run(command + ["--gtest_list_tests", "--gtest_color=no"], cwd=directory, env=env, capture=True)
+    names = host_test_names(discovery.stdout)
+    host_results = RESULTS / "host-tests"
+    host_results.mkdir(exist_ok=True)
+    combined, failed, blocked = [], [], []
+    xml = ET.Element("testsuites", tests=str(len(names)))
+    suite = ET.SubElement(xml, "testsuite", name="native-host", tests=str(len(names)))
+    deadline = time.monotonic() + 900
+    for index, name in enumerate(names):
+        report = host_results / f"test-{index:03d}.xml"
+        if report.exists():
+            report.unlink()
+        remaining = min(60, deadline - time.monotonic())
+        if remaining <= 0:
+            raise TimeoutError("Native test-host suite exceeded its 900-second limit")
+        result = subprocess.run([str(value) for value in command] + [
+            "--gtest_filter=" + name, "--gtest_color=no", "--gtest_output=xml:" + str(report)],
+            cwd=directory, env=env, capture_output=True, text=True, encoding="utf-8", errors="replace",
+            timeout=remaining, check=False)
+        output = result.stdout + result.stderr
+        combined.append(output)
+        (host_results / f"test-{index:03d}.log").write_text(output, encoding="utf-8")
+        cases = ET.parse(report).getroot().findall(".//testcase") if report.is_file() else []
+        passed = (result.returncode == 0 and len(cases) == 1
+                  and not any(cases[0].find(tag) is not None for tag in ("skipped", "failure", "error")))
+        status = "PASS"
+        if not passed:
+            if "LoadLibrary failed with code 4551" in output or "[WinError 4551]" in output:
+                blocked.append(name)
+                status = "BLOCKED"
+            else:
+                failed.append(name)
+                status = "FAIL"
+        if len(cases) == 1:
+            suite.append(cases[0])
+        else:
+            case = ET.SubElement(suite, "testcase", name=name)
+            ET.SubElement(case, "error", message="Native host did not report exactly one test").text = output
+        print(f"{status} {index + 1}/{len(names)} {name}", flush=True)
+    text = "\n".join(combined)
+    diagnostics = len(re.findall(
+        r"WARNING in native method|WARNING: JNI|FATAL ERROR in native method|JNI DETECTED ERROR", text))
+    status = "FAIL" if failed or diagnostics else "BLOCKED" if blocked else "PASS"
+    (RESULTS / "native-host-final.log").write_text(text, encoding="utf-8")
+    suite.set("failures", str(len(failed) + len(blocked)))
+    ET.ElementTree(xml).write(RESULTS / "host-tests.xml", encoding="utf-8", xml_declaration=True)
+    result = {"status": status, "tests": len(names), "passed": len(names) - len(failed) - len(blocked),
+              "failed": failed, "blocked": blocked, "jdk": jdk,
+              "host": "Python and standard Windows DLL loader",
+              "jniProcesses": text.count("Picked up JAVA_TOOL_OPTIONS:"), "jniCheckerDiagnostics": diagnostics}
+    (RESULTS / "host-test-result.json").write_text(json.dumps(result, indent=2), encoding="utf-8")
+    if status != "PASS":
+        raise RuntimeError(f"Native host gate {status}: {len(failed)} failed, {len(blocked)} blocked, "
+                           f"{diagnostics} JNI diagnostics; see host-test-result.json")
+
+
 def tests(args):
     check_artifacts(args.build_dir)
     env, jdk = test_env(args)
+    if getattr(args, "test_host", None):
+        return tests_with_host(args, env, jdk)
     xml = RESULTS / "ctest.xml"
     run([tool("ctest", args.ctest), "--test-dir", args.build_dir, "--output-on-failure", "--parallel", str(args.jobs),
          "--timeout", "60", "--output-junit", xml], env=env, timeout=900)
@@ -233,13 +313,22 @@ def regressions(args):
         if not jar.is_file():
             raise ValueError(f"BLOCKED: missing trusted first-party legacy artifact {jar.name}")
         env["ZERNYTH_TEST_PLUGIN_JAR"] = str(jar.resolve())
-        run([tool("ctest", args.ctest), "--test-dir", args.build_dir, "--output-on-failure", "--timeout", "60",
-             "-R", "^JavaPluginLoaderTest\\."], env=env, timeout=120)
-        log = args.build_dir / "Testing/Temporary/LastTest.log"
-        text = log.read_text(encoding="utf-8", errors="replace")
+        if getattr(args, "test_host", None):
+            result = run([sys.executable, ROOT / "scripts/zernyth_jni_host.py", "--library",
+                          workspace(args.test_host), "--",
+                          "--gtest_filter=JavaPluginLoaderTest.ProductionBridgeThroughExistingManager"],
+                         cwd=args.build_dir / "tests", env=env, timeout=60, capture=True)
+            text = result.stdout + result.stderr
+        else:
+            run([tool("ctest", args.ctest), "--test-dir", args.build_dir, "--output-on-failure", "--timeout", "60",
+                 "-R", "^JavaPluginLoaderTest\\."], env=env, timeout=120)
+            log = args.build_dir / "Testing/Temporary/LastTest.log"
+            text = log.read_text(encoding="utf-8", errors="replace")
         if "[  PASSED  ] 1 test." not in text:
             raise ValueError("Legacy fixture was not exercised")
-        shutil.copy2(log, RESULTS / f"regression-{v}.log")
+        if re.search(r"WARNING in native method|WARNING: JNI|FATAL ERROR in native method|JNI DETECTED ERROR", text):
+            raise ValueError("Legacy fixture emitted JNI checker diagnostics")
+        (RESULTS / f"regression-{v}.log").write_text(text, encoding="utf-8")
         records[v] = {"status": "PASS", "artifact": jar.name, "sha256": digest(jar)}
     (RESULTS / "regression-result.json").write_text(json.dumps({"status": "PASS", "jdk": jdk, "artifacts": records}, indent=2), encoding="utf-8")
 
@@ -252,9 +341,12 @@ def stability(args):
     env["ZERNYTH_LIFECYCLE_PAUSE_MS"] = str(limits["pauseMillis"])
     env["JAVA_TOOL_OPTIONS"] = f'-Xms64m -Xmx{limits["heapMiB"]}m -XX:ActiveProcessorCount={limits["cpus"]} -Xcheck:jni'
     executable = args.build_dir / "tests" / ("endstone_test.exe" if os.name == "nt" else "endstone_test")
+    command = ([sys.executable, ROOT / "scripts/zernyth_jni_host.py", "--library", workspace(args.test_host), "--"]
+               if getattr(args, "test_host", None) else [executable])
+    command = [str(value) for value in command]
     started, peak = time.monotonic(), 0
     with (RESULTS / f"stability-{args.profile}.log").open("w", encoding="utf-8") as log:
-        proc = subprocess.Popen([str(executable), "--gtest_filter=JavaPluginLoaderTest.ProductionBridgeThroughExistingManager"],
+        proc = subprocess.Popen(command + ["--gtest_filter=JavaPluginLoaderTest.ProductionBridgeThroughExistingManager"],
                                 cwd=args.build_dir / "tests", env=env, stdout=log, stderr=subprocess.STDOUT,
                                 creationflags=subprocess.CREATE_NO_WINDOW if os.name == "nt" else 0)
         try:
@@ -341,7 +433,7 @@ def verify_archive(path):
             return archive.read(item)
         manifest = json.loads(read("manifest.json"))
         v = read("VERSION").decode().strip()
-        if v != manifest["version"] or not re.fullmatch(r"\d+\.\d+\.\d+-(?:rc|alpha)\.\d+", v):
+        if v != manifest["version"] or not re.fullmatch(r"\d+\.\d+\.\d+(?:-(?:rc|alpha)\.\d+)?", v):
             raise ValueError("Package version mismatch")
         files = manifest["files"]
         actual = {n[len(prefix):] for n in names}
@@ -503,6 +595,7 @@ def main():
     parser.add_argument("--gradle")
     parser.add_argument("--cmake")
     parser.add_argument("--ctest")
+    parser.add_argument("--test-host", type=Path, help="Optional first-party Windows test DLL, fresh host per case")
     parser.add_argument("--conan")
     parser.add_argument("--lockfile", type=Path, help="Explicit reviewed input Conan lockfile")
     parser.add_argument("--vendor", choices=("temurin", "any"), default="temurin")

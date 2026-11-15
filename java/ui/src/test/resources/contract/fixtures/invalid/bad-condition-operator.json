@@ -1,0 +1,68 @@
+{
+  "schemaVersion": "1.1",
+  "engine": "zernyth",
+  "id": "bad_condition",
+  "name": "Conditions",
+  "target": {
+    "minEngineVersion": [
+      1,
+      21,
+      0
+    ],
+    "zernythVersion": "0.9"
+  },
+  "assets": [],
+  "actions": [],
+  "screens": [
+    {
+      "id": "hello",
+      "title": "Hello",
+      "kind": "action_form",
+      "canvas": {
+        "width": 320,
+        "height": 240
+      },
+      "components": [
+        {
+          "id": "ok",
+          "type": "button",
+          "x": 0,
+          "y": 0,
+          "width": 100,
+          "height": 30,
+          "text": "OK",
+          "action": {
+            "type": "close"
+          }
+        },
+        {
+          "id": "vip",
+          "type": "button",
+          "x": 0,
+          "y": 40,
+          "width": 100,
+          "height": 30,
+          "text": "VIP shop",
+          "action": {
+            "type": "close"
+          },
+          "showIf": {
+            "key": "coins",
+            "op": "contains",
+            "value": 100
+          }
+        }
+      ],
+      "content": "Welcome"
+    }
+  ],
+  "defaultLocale": "en",
+  "translations": {
+    "de_DE": {
+      "hello.title": "Hallo",
+      "hello.content": "Willkommen",
+      "hello.vip.text": "VIP-Laden"
+    }
+  },
+  "$expect": "schema"
+}

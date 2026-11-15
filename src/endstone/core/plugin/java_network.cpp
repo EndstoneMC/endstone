@@ -22,6 +22,7 @@ struct Connection {
     UUID player;
     std::int64_t actor;
     std::uint64_t runtime;
+    std::string playerText;
     bool active = true;
 };
 struct NetworkListener {
@@ -35,6 +36,7 @@ struct NetworkListener {
 struct NetworkState {
     std::unordered_map<jlong, std::shared_ptr<NetworkListener>> listeners;
     std::unordered_map<std::string, Connection> connections;
+    std::unordered_map<UUID, std::string> connectionsByPlayer;
     std::set<UUID> disconnected;
     EventHandler *quit = nullptr, *join = nullptr;
     std::array<std::uint64_t, 7> metrics{};
@@ -56,6 +58,7 @@ std::shared_ptr<NetworkState> state(const std::shared_ptr<Context> &c)
             if (auto s = weak.lock()) {
                 auto uuid = static_cast<PlayerQuitEvent &>(event).getPlayer().getUniqueId();
                 s->disconnected.insert(uuid);
+                s->connectionsByPlayer.erase(uuid);
                 for (auto &[key, entry] : s->connections) {
                     if (entry.player == uuid) {
                         entry.active = false;
@@ -82,20 +85,38 @@ std::string connectionId(Context &c, NetworkState &s, Player &p)
     }
     auto actor = p.getId();
     auto runtime = p.getRuntimeId();
-    std::erase_if(s.connections, [&](const auto &entry) {
-        return !entry.second.active ||
-               (entry.second.player == uuid && (entry.second.actor != actor || entry.second.runtime != runtime));
-    });
-    for (auto &[key, entry] : s.connections) {
-        if (entry.player == uuid && entry.actor == actor && entry.runtime == runtime) {
-            return key;
+    if (auto cached = s.connectionsByPlayer.find(uuid); cached != s.connectionsByPlayer.end()) {
+        auto entry = s.connections.find(cached->second);
+        if (entry != s.connections.end() && entry->second.active && entry->second.player == uuid &&
+            entry->second.actor == actor && entry->second.runtime == runtime) {
+            return entry->first;
         }
+        s.connectionsByPlayer.erase(cached);
     }
+    // Retire old session entries when admitting a connection, outside the common packet path.
+    std::erase_if(s.connections, [&](const auto &entry) {
+        bool retired = !entry.second.active || (entry.second.player == uuid &&
+                                                (entry.second.actor != actor || entry.second.runtime != runtime));
+        if (retired) {
+            auto indexed = s.connectionsByPlayer.find(entry.second.player);
+            if (indexed != s.connectionsByPlayer.end() && indexed->second == entry.first) {
+                s.connectionsByPlayer.erase(indexed);
+            }
+        }
+        return retired;
+    });
     if (s.connections.size() >= 4096) {
         throw std::runtime_error("Player connection view limit exceeded");
     }
     auto key = std::to_string(id());
-    s.connections.emplace(key, Connection{uuid, actor, runtime});
+    auto entry = s.connections.emplace(key, Connection{uuid, actor, runtime, uuid.str()}).first;
+    try {
+        s.connectionsByPlayer.insert_or_assign(uuid, key);
+    }
+    catch (...) {
+        s.connections.erase(entry);
+        throw;
+    }
     return key;
 }
 bool active(Context &c, NetworkState &s, const std::string &key)
@@ -109,6 +130,10 @@ bool active(Context &c, NetworkState &s, const std::string &key)
     if (!p || s.disconnected.contains(entry.player) || p->getId() != entry.actor ||
         p->getRuntimeId() != entry.runtime) {
         entry.active = false;
+        auto indexed = s.connectionsByPlayer.find(entry.player);
+        if (indexed != s.connectionsByPlayer.end() && indexed->second == key) {
+            s.connectionsByPlayer.erase(indexed);
+        }
     }
     return entry.active;
 }
@@ -141,11 +166,14 @@ void observe(const std::weak_ptr<Context> &weak, const std::weak_ptr<NetworkStat
         if (!callback) {
             return;
         }
-        std::string uuid, connection;
+        std::array<char, 37> uuid{};
+        std::string connection;
         if (auto *p = event.getPlayer()) {
             connection = connectionId(*c, *s, *p);
             if (!connection.empty()) {
-                uuid = p->getUniqueId().str();
+                // Own the ASCII copy before JNI attachment or Java callback reentrancy.
+                const auto &cached = s->connections.at(connection).playerText;
+                std::copy_n(cached.c_str(), uuid.size(), uuid.begin());
             }
         }
         bool timed = s->diagnostics;
@@ -156,7 +184,7 @@ void observe(const std::weak_ptr<Context> &weak, const std::weak_ptr<NetworkStat
                               std::chrono::system_clock::now().time_since_epoch())
                               .count();
             // Both identifiers are generated ASCII values, not arbitrary packet text.
-            auto playerText = env.e->NewStringUTF(uuid.c_str());
+            auto playerText = env.e->NewStringUTF(uuid.data());
             checked(env.e);
             auto connectionText = env.e->NewStringUTF(connection.c_str());
             checked(env.e);
@@ -380,7 +408,7 @@ jobjectArray JNICALL networkConnections(JNIEnv *e, jclass, jlong owner)
             auto key = connectionId(*c, *s, *p);
             if (!key.empty()) {
                 values.emplace_back(key);
-                values.emplace_back(p->getUniqueId().str());
+                values.emplace_back(s->connections.at(key).playerText);
             }
         }
         return strings(e, values);

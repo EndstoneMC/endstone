@@ -140,7 +140,7 @@ def licenses(stage, graph):
 
 def build_wheel(wheel_directory, config_settings=None, metadata_directory=None):
     if sys.platform != "win32" or sysconfig.get_platform() != "win-amd64":
-        raise RuntimeError("Only Windows x64 wheels are enabled; Linux validation is pending")
+        raise RuntimeError("Only Windows x64 wheels are enabled; use the separate Ubuntu archive on Linux")
     settings = config_settings or {}
     if "native-build-dir" not in settings:
         command = [sys.executable, str(ROOT / "scripts/zernyth_release.py"), "build",
@@ -226,4 +226,4 @@ def build_wheel(wheel_directory, config_settings=None, metadata_directory=None):
 
 
 def build_sdist(sdist_directory, config_settings=None):
-    raise RuntimeError("Alpha 1 is wheel-only. Build the reviewed source checkout; no sdist is published.")
+    raise RuntimeError("This release is wheel-only. Build the reviewed source checkout; no sdist is published.")

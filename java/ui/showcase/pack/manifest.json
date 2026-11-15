@@ -1,0 +1,30 @@
+{
+  "format_version": 2,
+  "header": {
+    "name": "Zernyth UI Showcase",
+    "description": "Experimental JSON UI for Zernyth server forms (Bedrock 1.26.60)",
+    "uuid": "6f1c2a8e-4b7d-4e2a-9c3f-2d8b5e7a1c40",
+    "version": [
+      1,
+      0,
+      2
+    ],
+    "min_engine_version": [
+      1,
+      21,
+      0
+    ]
+  },
+  "modules": [
+    {
+      "type": "resources",
+      "uuid": "a3d9e4b2-7c51-4f08-8e6a-91b2c4d7f053",
+      "version": [
+        1,
+        0,
+        2
+      ],
+      "description": "UI and textures"
+    }
+  ]
+}

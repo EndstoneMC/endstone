@@ -29,6 +29,7 @@ def load(name, path):
 
 BACKEND = load("zernyth_build_test", "packaging/zernyth_build.py")
 WHEEL = load("zernyth_wheel_test", "scripts/zernyth_wheel.py")
+BDS = load("zernyth_bds_test", "scripts/zernyth_bds.py")
 
 
 class WheelTests(unittest.TestCase):
@@ -47,7 +48,7 @@ class WheelTests(unittest.TestCase):
         metadata = BytesParser().parsebytes(BACKEND.metadata_bytes())
         Metadata.from_email(BACKEND.metadata_bytes(), validate=True)
         self.assertEqual(metadata["Name"], "zernyth-engine")
-        self.assertEqual(metadata["Version"], "0.9.0a1")
+        self.assertEqual(metadata["Version"], "1.0.0")
         self.assertIn("Zernyth", BACKEND.metadata_bytes().decode("utf-8"))
         self.assertNotIn("asyncio", metadata.get_all("Requires-Dist"))
 
@@ -57,6 +58,16 @@ class WheelTests(unittest.TestCase):
             path = Path(directory) / info
             self.assertIn("zernyth = zernyth.cli:main", (path / "entry_points.txt").read_text())
             self.assertIn("TERMS AND CONDITIONS", (path / "licenses/LICENSE").read_text())
+
+    def test_binary_inspection_does_not_invent_runtime_results(self):
+        with tempfile.TemporaryDirectory() as directory:
+            executable = Path(directory) / "synthetic.exe"
+            executable.write_bytes(b"Synthetic parser input; never execute")
+            with patch.object(BDS, "file_version", return_value=BDS.EXPECTED):
+                result = BDS.inspect(executable)
+        self.assertEqual(result["binaryInspection"], "PASS")
+        self.assertEqual(result["bdsRun"], "NOT TESTED")
+        self.assertEqual(result["isolation"], "NOT TESTED")
 
     def test_no_silent_linux_wheel(self):
         with patch.object(BACKEND.sys, "platform", "linux"):
@@ -155,6 +166,11 @@ class WheelTests(unittest.TestCase):
         self.assertIn("GIT_CONFIG_VALUE_0=", preparation)
         self.assertIn(".replace(chr(92), '/')", preparation)
         self.assertNotIn("safe.directory=*", preparation)
+        build_step = next(step["run"] for step in data["jobs"]["wheel"]["steps"]
+                          if step.get("name", "").startswith("Build matching"))
+        self.assertIn("scripts/zernyth_release.py build", build_step)
+        self.assertIn("scripts/zernyth_release.py test --test-host", build_step)
+        self.assertIn("--test-host build/RelWithDebInfo/tests/zernyth_java_test_host.dll", build_step)
         for name in ("testpypi", "pypi"):
             job = data["jobs"][name]
             self.assertEqual(job["environment"]["name"], name)

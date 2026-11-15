@@ -1,0 +1,1604 @@
+{
+  "namespace": "zernyth_showcase",
+  "window": {
+    "type": "panel",
+    "size": [
+      340,
+      226
+    ],
+    "anchor_from": "center",
+    "anchor_to": "center",
+    "layer": 20,
+    "$body|default": "zernyth_showcase.empty",
+    "controls": [
+      {
+        "background": {
+          "type": "image",
+          "texture": "textures/zernyth_ui/showcase/window",
+          "size": [
+            "100% - 8px",
+            "100% - 18px"
+          ],
+          "offset": [
+            0,
+            18
+          ],
+          "anchor_from": "top_middle",
+          "anchor_to": "top_middle"
+        }
+      },
+      {
+        "header": {
+          "type": "image",
+          "texture": "textures/zernyth_ui/showcase/header",
+          "size": [
+            352,
+            24
+          ],
+          "anchor_from": "top_middle",
+          "anchor_to": "top_middle",
+          "layer": 2,
+          "controls": [
+            {
+              "logo": {
+                "type": "image",
+                "texture": "textures/zernyth_ui/showcase/logo",
+                "size": [
+                  16,
+                  16
+                ],
+                "offset": [
+                  8,
+                  4
+                ],
+                "anchor_from": "top_left",
+                "anchor_to": "top_left"
+              }
+            },
+            {
+              "brand": {
+                "type": "label",
+                "text": "ZERNYTH.NET",
+                "color": [
+                  1,
+                  1,
+                  1
+                ],
+                "shadow": true,
+                "localize": false,
+                "font_type": "MinecraftTen",
+                "offset": [
+                  28,
+                  8
+                ],
+                "anchor_from": "top_left",
+                "anchor_to": "top_left"
+              }
+            },
+            {
+              "title": {
+                "type": "label",
+                "text": "#title_text",
+                "color": [
+                  1,
+                  1,
+                  1
+                ],
+                "shadow": true,
+                "localize": false,
+                "font_type": "MinecraftTen",
+                "offset": [
+                  -30,
+                  8
+                ],
+                "anchor_from": "top_right",
+                "anchor_to": "top_right",
+                "text_alignment": "right",
+                "bindings": [
+                  {
+                    "binding_name": "#title_text"
+                  }
+                ]
+              }
+            }
+          ]
+        }
+      },
+      {
+        "close@common.close_button": {
+          "anchor_from": "top_right",
+          "anchor_to": "top_right",
+          "$close_button_offset": [
+            -4,
+            2
+          ],
+          "layer": 30
+        }
+      },
+      {
+        "body@$body": {
+          "size": [
+            "100% - 20px",
+            "100% - 38px"
+          ],
+          "offset": [
+            0,
+            30
+          ],
+          "anchor_from": "top_middle",
+          "anchor_to": "top_middle",
+          "layer": 3
+        }
+      }
+    ]
+  },
+  "empty": {
+    "type": "panel"
+  },
+  "dim": {
+    "type": "image",
+    "texture": "textures/zernyth_ui/showcase/dim",
+    "size": [
+      "100%",
+      "100%"
+    ],
+    "layer": 1,
+    "bindings": [
+      {
+        "binding_name": "#title_text"
+      },
+      {
+        "binding_type": "view",
+        "source_property_name": "(not ((#title_text - '§1§2§3') = #title_text))",
+        "target_property_name": "#visible"
+      }
+    ]
+  },
+  "tile_face": {
+    "type": "panel",
+    "size": [
+      "100%",
+      "100%"
+    ],
+    "controls": [
+      {
+        "art": {
+          "type": "image",
+          "bindings": [
+            {
+              "binding_name": "#form_button_texture",
+              "binding_type": "collection",
+              "binding_collection_name": "form_buttons",
+              "binding_name_override": "#texture"
+            },
+            {
+              "binding_name": "#form_button_texture_file_system",
+              "binding_type": "collection",
+              "binding_collection_name": "form_buttons",
+              "binding_name_override": "#texture_file_system"
+            }
+          ],
+          "size": [
+            "100%",
+            "100%"
+          ],
+          "layer": 1
+        }
+      },
+      {
+        "shade": {
+          "type": "image",
+          "texture": "textures/zernyth_ui/showcase/shade",
+          "size": [
+            "100%",
+            "70%"
+          ],
+          "anchor_from": "bottom_middle",
+          "anchor_to": "bottom_middle",
+          "layer": 2
+        }
+      },
+      {
+        "text": {
+          "type": "label",
+          "text": "#form_button_text",
+          "color": [
+            1,
+            1,
+            1
+          ],
+          "shadow": true,
+          "localize": false,
+          "bindings": [
+            {
+              "binding_name": "#form_button_text",
+              "binding_type": "collection",
+              "binding_collection_name": "form_buttons"
+            }
+          ],
+          "size": [
+            "100% - 8px",
+            "default"
+          ],
+          "anchor_from": "bottom_middle",
+          "anchor_to": "bottom_middle",
+          "offset": [
+            0,
+            -5
+          ],
+          "text_alignment": "center",
+          "layer": 4
+        }
+      },
+      {
+        "frame": {
+          "type": "image",
+          "texture": "$frame",
+          "size": [
+            "100%",
+            "100%"
+          ],
+          "layer": 5
+        }
+      }
+    ],
+    "$frame|default": "textures/zernyth_ui/showcase/tile_frame"
+  },
+  "team_face": {
+    "type": "panel",
+    "size": [
+      "100%",
+      "100%"
+    ],
+    "controls": [
+      {
+        "art": {
+          "type": "image",
+          "bindings": [
+            {
+              "binding_name": "#form_button_texture",
+              "binding_type": "collection",
+              "binding_collection_name": "form_buttons",
+              "binding_name_override": "#texture"
+            },
+            {
+              "binding_name": "#form_button_texture_file_system",
+              "binding_type": "collection",
+              "binding_collection_name": "form_buttons",
+              "binding_name_override": "#texture_file_system"
+            }
+          ],
+          "size": [
+            "100%",
+            "100%"
+          ],
+          "layer": 1
+        }
+      },
+      {
+        "shade": {
+          "type": "image",
+          "texture": "textures/zernyth_ui/showcase/shade",
+          "size": [
+            "100%",
+            "70%"
+          ],
+          "anchor_from": "bottom_middle",
+          "anchor_to": "bottom_middle",
+          "layer": 2
+        }
+      },
+      {
+        "text": {
+          "type": "label",
+          "text": "#form_button_text",
+          "color": [
+            1,
+            1,
+            1
+          ],
+          "shadow": true,
+          "localize": false,
+          "bindings": [
+            {
+              "binding_name": "#form_button_text",
+              "binding_type": "collection",
+              "binding_collection_name": "form_buttons"
+            }
+          ],
+          "size": [
+            "100% - 8px",
+            "default"
+          ],
+          "anchor_from": "top_left",
+          "anchor_to": "top_left",
+          "offset": [
+            5,
+            5
+          ],
+          "text_alignment": "left",
+          "layer": 4
+        }
+      },
+      {
+        "frame": {
+          "type": "image",
+          "texture": "$frame",
+          "size": [
+            "100%",
+            "100%"
+          ],
+          "layer": 5
+        }
+      }
+    ],
+    "$frame|default": "textures/zernyth_ui/showcase/tile_frame"
+  },
+  "main_item": {
+    "type": "panel",
+    "size": [
+      104,
+      84
+    ],
+    "bindings": [
+      {
+        "binding_name": "#form_button_text",
+        "binding_type": "collection",
+        "binding_collection_name": "form_buttons"
+      },
+      {
+        "binding_type": "view",
+        "source_property_name": "(not (#form_button_text = ''))",
+        "target_property_name": "#visible"
+      }
+    ],
+    "controls": [
+      {
+        "button@common.button": {
+          "size": [
+            "100% - 4px",
+            "100% - 4px"
+          ],
+          "$pressed_button_name": "button.form_button_click",
+          "bindings": [
+            {
+              "binding_type": "collection_details",
+              "binding_collection_name": "form_buttons"
+            }
+          ],
+          "controls": [
+            {
+              "default@zernyth_showcase.tile_face": {
+                "$frame": "textures/zernyth_ui/showcase/tile_frame"
+              }
+            },
+            {
+              "hover@zernyth_showcase.tile_face": {
+                "$frame": "textures/zernyth_ui/showcase/tile_frame_hover"
+              }
+            },
+            {
+              "pressed@zernyth_showcase.tile_face": {
+                "$frame": "textures/zernyth_ui/showcase/tile_frame_hover"
+              }
+            }
+          ]
+        }
+      }
+    ]
+  },
+  "main_body": {
+    "type": "panel",
+    "controls": [
+      {
+        "grid": {
+          "type": "grid",
+          "size": [
+            312,
+            168
+          ],
+          "grid_dimensions": [
+            3,
+            2
+          ],
+          "grid_item_template": "zernyth_showcase.main_item",
+          "collection_name": "form_buttons",
+          "anchor_from": "top_middle",
+          "anchor_to": "top_middle",
+          "bindings": [
+            {
+              "binding_name": "#form_button_contents",
+              "binding_name_override": "#maximum_grid_items"
+            }
+          ],
+          "offset": [
+            0,
+            4
+          ]
+        }
+      }
+    ]
+  },
+  "team_item": {
+    "type": "panel",
+    "size": [
+      104,
+      58
+    ],
+    "bindings": [
+      {
+        "binding_name": "#form_button_text",
+        "binding_type": "collection",
+        "binding_collection_name": "form_buttons"
+      },
+      {
+        "binding_type": "view",
+        "source_property_name": "(not (#form_button_text = ''))",
+        "target_property_name": "#visible"
+      }
+    ],
+    "controls": [
+      {
+        "button@common.button": {
+          "size": [
+            "100% - 4px",
+            "100% - 4px"
+          ],
+          "$pressed_button_name": "button.form_button_click",
+          "bindings": [
+            {
+              "binding_type": "collection_details",
+              "binding_collection_name": "form_buttons"
+            }
+          ],
+          "controls": [
+            {
+              "default@zernyth_showcase.team_face": {
+                "$frame": "textures/zernyth_ui/showcase/tile_frame"
+              }
+            },
+            {
+              "hover@zernyth_showcase.team_face": {
+                "$frame": "textures/zernyth_ui/showcase/tile_frame_hover"
+              }
+            },
+            {
+              "pressed@zernyth_showcase.team_face": {
+                "$frame": "textures/zernyth_ui/showcase/tile_frame_hover"
+              }
+            }
+          ]
+        }
+      }
+    ]
+  },
+  "teams_body": {
+    "type": "panel",
+    "controls": [
+      {
+        "grid": {
+          "type": "grid",
+          "size": [
+            312,
+            174
+          ],
+          "grid_dimensions": [
+            3,
+            3
+          ],
+          "grid_item_template": "zernyth_showcase.team_item",
+          "collection_name": "form_buttons",
+          "anchor_from": "top_middle",
+          "anchor_to": "top_middle",
+          "bindings": [
+            {
+              "binding_name": "#form_button_contents",
+              "binding_name_override": "#maximum_grid_items"
+            }
+          ]
+        }
+      }
+    ]
+  },
+  "god_card_face": {
+    "type": "image",
+    "texture": "$card",
+    "size": [
+      "100%",
+      "100%"
+    ],
+    "$card|default": "textures/zernyth_ui/showcase/card",
+    "controls": [
+      {
+        "icon": {
+          "type": "image",
+          "bindings": [
+            {
+              "binding_name": "#form_button_texture",
+              "binding_type": "collection",
+              "binding_collection_name": "form_buttons",
+              "binding_name_override": "#texture"
+            },
+            {
+              "binding_name": "#form_button_texture_file_system",
+              "binding_type": "collection",
+              "binding_collection_name": "form_buttons",
+              "binding_name_override": "#texture_file_system"
+            }
+          ],
+          "size": [
+            24,
+            24
+          ],
+          "offset": [
+            5,
+            0
+          ],
+          "anchor_from": "left_middle",
+          "anchor_to": "left_middle",
+          "layer": 2
+        }
+      },
+      {
+        "text": {
+          "type": "label",
+          "text": "#form_button_text",
+          "color": [
+            1,
+            1,
+            1
+          ],
+          "shadow": true,
+          "localize": false,
+          "bindings": [
+            {
+              "binding_name": "#form_button_text",
+              "binding_type": "collection",
+              "binding_collection_name": "form_buttons"
+            }
+          ],
+          "size": [
+            "100% - 46px",
+            "default"
+          ],
+          "offset": [
+            33,
+            6
+          ],
+          "anchor_from": "top_left",
+          "anchor_to": "top_left",
+          "text_alignment": "left",
+          "layer": 3
+        }
+      }
+    ]
+  },
+  "god_item": {
+    "type": "panel",
+    "size": [
+      106,
+      50
+    ],
+    "bindings": [
+      {
+        "binding_name": "#form_button_text",
+        "binding_type": "collection",
+        "binding_collection_name": "form_buttons"
+      },
+      {
+        "binding_type": "view",
+        "source_property_name": "(not (#form_button_text = ''))",
+        "target_property_name": "#visible"
+      }
+    ],
+    "controls": [
+      {
+        "button@common.button": {
+          "size": [
+            "100% - 4px",
+            "100% - 4px"
+          ],
+          "$pressed_button_name": "button.form_button_click",
+          "bindings": [
+            {
+              "binding_type": "collection_details",
+              "binding_collection_name": "form_buttons"
+            }
+          ],
+          "controls": [
+            {
+              "default@zernyth_showcase.god_card_face": {
+                "$card": "textures/zernyth_ui/showcase/card"
+              }
+            },
+            {
+              "hover@zernyth_showcase.god_card_face": {
+                "$card": "textures/zernyth_ui/showcase/card_hover"
+              }
+            },
+            {
+              "pressed@zernyth_showcase.god_card_face": {
+                "$card": "textures/zernyth_ui/showcase/card_hover"
+              }
+            }
+          ]
+        }
+      }
+    ]
+  },
+  "gods_grid": {
+    "type": "grid",
+    "size": [
+      212,
+      400
+    ],
+    "grid_dimensions": [
+      2,
+      8
+    ],
+    "grid_item_template": "zernyth_showcase.god_item",
+    "collection_name": "form_buttons",
+    "anchor_from": "top_middle",
+    "anchor_to": "top_middle",
+    "bindings": [
+      {
+        "binding_name": "#form_button_contents",
+        "binding_name_override": "#maximum_grid_items"
+      }
+    ]
+  },
+  "gods_body": {
+    "type": "stack_panel",
+    "orientation": "horizontal",
+    "controls": [
+      {
+        "scores": {
+          "type": "image",
+          "texture": "textures/zernyth_ui/showcase/panel",
+          "size": [
+            96,
+            "100%"
+          ],
+          "controls": [
+            {
+              "text": {
+                "type": "label",
+                "text": "#form_text",
+                "color": [
+                  1,
+                  1,
+                  1
+                ],
+                "shadow": true,
+                "localize": false,
+                "size": [
+                  "100% - 10px",
+                  "default"
+                ],
+                "offset": [
+                  5,
+                  5
+                ],
+                "anchor_from": "top_left",
+                "anchor_to": "top_left",
+                "bindings": [
+                  {
+                    "binding_name": "#form_text"
+                  }
+                ]
+              }
+            }
+          ]
+        }
+      },
+      {
+        "gap": {
+          "type": "panel",
+          "size": [
+            4,
+            "100%"
+          ]
+        }
+      },
+      {
+        "list@common.scrolling_panel": {
+          "size": [
+            "fill",
+            "100%"
+          ],
+          "$show_background": false,
+          "$scrolling_content": "zernyth_showcase.gods_grid",
+          "$scroll_size": [
+            5,
+            "100% - 4px"
+          ],
+          "$scrolling_pane_size": [
+            "100% - 4px",
+            "100%"
+          ]
+        }
+      }
+    ]
+  },
+  "choice_face": {
+    "type": "image",
+    "texture": "$bg",
+    "size": [
+      "100%",
+      "100%"
+    ],
+    "$bg|default": "textures/zernyth_ui/showcase/button",
+    "controls": [
+      {
+        "text": {
+          "type": "label",
+          "text": "#form_button_text",
+          "color": [
+            1,
+            1,
+            1
+          ],
+          "shadow": true,
+          "localize": false,
+          "bindings": [
+            {
+              "binding_name": "#form_button_text",
+              "binding_type": "collection",
+              "binding_collection_name": "form_buttons"
+            }
+          ],
+          "anchor_from": "center",
+          "anchor_to": "center",
+          "text_alignment": "center",
+          "layer": 2
+        }
+      }
+    ]
+  },
+  "choice_item": {
+    "type": "panel",
+    "size": [
+      92,
+      26
+    ],
+    "bindings": [
+      {
+        "binding_name": "#form_button_text",
+        "binding_type": "collection",
+        "binding_collection_name": "form_buttons"
+      },
+      {
+        "binding_type": "view",
+        "source_property_name": "((not (#form_button_text = '')) and ((#form_button_text - '§9§8§r') = #form_button_text) and ((#form_button_text - '§9§7§r') = #form_button_text))",
+        "target_property_name": "#visible"
+      }
+    ],
+    "controls": [
+      {
+        "button@common.button": {
+          "size": [
+            "100% - 4px",
+            "100% - 4px"
+          ],
+          "$pressed_button_name": "button.form_button_click",
+          "bindings": [
+            {
+              "binding_type": "collection_details",
+              "binding_collection_name": "form_buttons"
+            }
+          ],
+          "controls": [
+            {
+              "default@zernyth_showcase.choice_face": {
+                "$bg": "textures/zernyth_ui/showcase/button"
+              }
+            },
+            {
+              "hover@zernyth_showcase.choice_face": {
+                "$bg": "textures/zernyth_ui/showcase/button_hover"
+              }
+            },
+            {
+              "pressed@zernyth_showcase.choice_face": {
+                "$bg": "textures/zernyth_ui/showcase/button_pressed"
+              }
+            }
+          ]
+        }
+      }
+    ]
+  },
+  "info_face": {
+    "type": "image",
+    "texture": "$bg",
+    "size": [
+      "100%",
+      "100%"
+    ],
+    "$bg|default": "textures/zernyth_ui/showcase/panel",
+    "controls": [
+      {
+        "text": {
+          "type": "label",
+          "text": "#form_button_text",
+          "color": [
+            1,
+            1,
+            1
+          ],
+          "shadow": true,
+          "localize": false,
+          "bindings": [
+            {
+              "binding_name": "#form_button_text",
+              "binding_type": "collection",
+              "binding_collection_name": "form_buttons"
+            }
+          ],
+          "size": [
+            "100% - 10px",
+            "default"
+          ],
+          "offset": [
+            5,
+            5
+          ],
+          "anchor_from": "top_left",
+          "anchor_to": "top_left",
+          "layer": 2
+        }
+      }
+    ]
+  },
+  "info_item": {
+    "type": "panel",
+    "size": [
+      "100%",
+      84
+    ],
+    "bindings": [
+      {
+        "binding_name": "#form_button_text",
+        "binding_type": "collection",
+        "binding_collection_name": "form_buttons"
+      },
+      {
+        "binding_type": "view",
+        "source_property_name": "(not ((#form_button_text - '§9§8§r') = #form_button_text))",
+        "target_property_name": "#visible"
+      }
+    ],
+    "controls": [
+      {
+        "button@common.button": {
+          "size": [
+            "100% - 4px",
+            "100% - 4px"
+          ],
+          "$pressed_button_name": "button.form_button_click",
+          "bindings": [
+            {
+              "binding_type": "collection_details",
+              "binding_collection_name": "form_buttons"
+            }
+          ],
+          "controls": [
+            {
+              "default@zernyth_showcase.info_face": {
+                "$bg": "textures/zernyth_ui/showcase/panel"
+              }
+            },
+            {
+              "hover@zernyth_showcase.info_face": {
+                "$bg": "textures/zernyth_ui/showcase/panel"
+              }
+            },
+            {
+              "pressed@zernyth_showcase.info_face": {
+                "$bg": "textures/zernyth_ui/showcase/panel"
+              }
+            }
+          ]
+        }
+      }
+    ]
+  },
+  "god_body": {
+    "type": "stack_panel",
+    "orientation": "horizontal",
+    "controls": [
+      {
+        "banner_panel": {
+          "type": "image",
+          "texture": "textures/zernyth_ui/showcase/panel",
+          "size": [
+            62,
+            "100%"
+          ],
+          "controls": [
+            {
+              "banner": {
+                "type": "image",
+                "texture": "textures/zernyth_ui/showcase/god_banner",
+                "size": [
+                  48,
+                  120
+                ],
+                "anchor_from": "center",
+                "anchor_to": "center"
+              }
+            }
+          ]
+        }
+      },
+      {
+        "gap1": {
+          "type": "panel",
+          "size": [
+            4,
+            "100%"
+          ]
+        }
+      },
+      {
+        "center": {
+          "type": "image",
+          "texture": "textures/zernyth_ui/showcase/panel",
+          "size": [
+            "fill",
+            "100%"
+          ],
+          "controls": [
+            {
+              "text": {
+                "type": "label",
+                "text": "#form_text",
+                "color": [
+                  1,
+                  1,
+                  1
+                ],
+                "shadow": true,
+                "localize": false,
+                "size": [
+                  "100% - 12px",
+                  "default"
+                ],
+                "offset": [
+                  0,
+                  8
+                ],
+                "anchor_from": "top_middle",
+                "anchor_to": "top_middle",
+                "text_alignment": "center",
+                "bindings": [
+                  {
+                    "binding_name": "#form_text"
+                  }
+                ]
+              }
+            },
+            {
+              "choices": {
+                "type": "grid",
+                "size": [
+                  184,
+                  26
+                ],
+                "grid_dimensions": [
+                  2,
+                  1
+                ],
+                "grid_item_template": "zernyth_showcase.choice_item",
+                "collection_name": "form_buttons",
+                "anchor_from": "bottom_middle",
+                "anchor_to": "bottom_middle",
+                "bindings": [
+                  {
+                    "binding_name": "#form_button_contents",
+                    "binding_name_override": "#maximum_grid_items"
+                  }
+                ],
+                "offset": [
+                  0,
+                  -8
+                ]
+              }
+            }
+          ]
+        }
+      },
+      {
+        "gap2": {
+          "type": "panel",
+          "size": [
+            4,
+            "100%"
+          ]
+        }
+      },
+      {
+        "info": {
+          "type": "stack_panel",
+          "orientation": "vertical",
+          "size": [
+            96,
+            "100%"
+          ],
+          "factory": {
+            "name": "buttons",
+            "control_ids": {
+              "button": "zernyth_showcase.info_item"
+            }
+          },
+          "collection_name": "form_buttons",
+          "bindings": [
+            {
+              "binding_name": "#form_button_contents",
+              "binding_name_override": "#collection_length"
+            }
+          ]
+        }
+      }
+    ]
+  },
+  "stats_text": {
+    "type": "panel",
+    "size": [
+      "100%",
+      "100%c + 8px"
+    ],
+    "controls": [
+      {
+        "text": {
+          "type": "label",
+          "text": "#form_text",
+          "color": [
+            1,
+            1,
+            1
+          ],
+          "shadow": true,
+          "localize": false,
+          "size": [
+            "100% - 12px",
+            "default"
+          ],
+          "offset": [
+            6,
+            6
+          ],
+          "anchor_from": "top_left",
+          "anchor_to": "top_left",
+          "bindings": [
+            {
+              "binding_name": "#form_text"
+            }
+          ]
+        }
+      }
+    ]
+  },
+  "stats_button": {
+    "type": "panel",
+    "size": [
+      160,
+      26
+    ],
+    "bindings": [
+      {
+        "binding_name": "#form_button_text",
+        "binding_type": "collection",
+        "binding_collection_name": "form_buttons"
+      },
+      {
+        "binding_type": "view",
+        "source_property_name": "(not (#form_button_text = ''))",
+        "target_property_name": "#visible"
+      }
+    ],
+    "controls": [
+      {
+        "button@common.button": {
+          "size": [
+            "100% - 4px",
+            "100% - 4px"
+          ],
+          "$pressed_button_name": "button.form_button_click",
+          "bindings": [
+            {
+              "binding_type": "collection_details",
+              "binding_collection_name": "form_buttons"
+            }
+          ],
+          "controls": [
+            {
+              "default@zernyth_showcase.choice_face": {
+                "$bg": "textures/zernyth_ui/showcase/button"
+              }
+            },
+            {
+              "hover@zernyth_showcase.choice_face": {
+                "$bg": "textures/zernyth_ui/showcase/button_hover"
+              }
+            },
+            {
+              "pressed@zernyth_showcase.choice_face": {
+                "$bg": "textures/zernyth_ui/showcase/button_pressed"
+              }
+            }
+          ]
+        }
+      }
+    ]
+  },
+  "stats_body": {
+    "type": "stack_panel",
+    "orientation": "vertical",
+    "controls": [
+      {
+        "scroll@common.scrolling_panel": {
+          "size": [
+            "100%",
+            "fill"
+          ],
+          "$show_background": false,
+          "$scrolling_content": "zernyth_showcase.stats_text",
+          "$scroll_size": [
+            5,
+            "100% - 4px"
+          ],
+          "$scrolling_pane_size": [
+            "100% - 4px",
+            "100%"
+          ]
+        }
+      },
+      {
+        "buttons": {
+          "type": "stack_panel",
+          "orientation": "horizontal",
+          "size": [
+            "100%c",
+            28
+          ],
+          "factory": {
+            "name": "buttons",
+            "control_ids": {
+              "button": "zernyth_showcase.stats_button"
+            }
+          },
+          "collection_name": "form_buttons",
+          "bindings": [
+            {
+              "binding_name": "#form_button_contents",
+              "binding_name_override": "#collection_length"
+            }
+          ],
+          "anchor_from": "bottom_middle",
+          "anchor_to": "bottom_middle"
+        }
+      }
+    ]
+  },
+  "tab_face": {
+    "type": "image",
+    "texture": "$bg",
+    "size": [
+      "100%",
+      "100%"
+    ],
+    "$bg|default": "textures/zernyth_ui/showcase/tab",
+    "controls": [
+      {
+        "icon": {
+          "type": "image",
+          "bindings": [
+            {
+              "binding_name": "#form_button_texture",
+              "binding_type": "collection",
+              "binding_collection_name": "form_buttons",
+              "binding_name_override": "#texture"
+            },
+            {
+              "binding_name": "#form_button_texture_file_system",
+              "binding_type": "collection",
+              "binding_collection_name": "form_buttons",
+              "binding_name_override": "#texture_file_system"
+            }
+          ],
+          "size": [
+            24,
+            24
+          ],
+          "anchor_from": "center",
+          "anchor_to": "center",
+          "layer": 2
+        }
+      }
+    ]
+  },
+  "tab_item": {
+    "type": "panel",
+    "size": [
+      36,
+      36
+    ],
+    "bindings": [
+      {
+        "binding_name": "#form_button_text",
+        "binding_type": "collection",
+        "binding_collection_name": "form_buttons"
+      },
+      {
+        "binding_type": "view",
+        "source_property_name": "(not ((#form_button_text - '§9§7§r') = #form_button_text))",
+        "target_property_name": "#visible"
+      }
+    ],
+    "controls": [
+      {
+        "button@common.button": {
+          "size": [
+            "100% - 4px",
+            "100% - 4px"
+          ],
+          "$pressed_button_name": "button.form_button_click",
+          "bindings": [
+            {
+              "binding_type": "collection_details",
+              "binding_collection_name": "form_buttons"
+            }
+          ],
+          "controls": [
+            {
+              "default@zernyth_showcase.tab_face": {
+                "$bg": "textures/zernyth_ui/showcase/tab"
+              }
+            },
+            {
+              "hover@zernyth_showcase.tab_face": {
+                "$bg": "textures/zernyth_ui/showcase/tab_hover"
+              }
+            },
+            {
+              "pressed@zernyth_showcase.tab_face": {
+                "$bg": "textures/zernyth_ui/showcase/tab_hover"
+              }
+            }
+          ]
+        }
+      }
+    ]
+  },
+  "shop_face": {
+    "type": "image",
+    "texture": "$card",
+    "size": [
+      "100%",
+      "100%"
+    ],
+    "$card|default": "textures/zernyth_ui/showcase/card",
+    "controls": [
+      {
+        "icon": {
+          "type": "image",
+          "bindings": [
+            {
+              "binding_name": "#form_button_texture",
+              "binding_type": "collection",
+              "binding_collection_name": "form_buttons",
+              "binding_name_override": "#texture"
+            },
+            {
+              "binding_name": "#form_button_texture_file_system",
+              "binding_type": "collection",
+              "binding_collection_name": "form_buttons",
+              "binding_name_override": "#texture_file_system"
+            }
+          ],
+          "size": [
+            32,
+            32
+          ],
+          "offset": [
+            0,
+            5
+          ],
+          "anchor_from": "top_middle",
+          "anchor_to": "top_middle",
+          "layer": 2
+        }
+      },
+      {
+        "text": {
+          "type": "label",
+          "text": "#form_button_text",
+          "color": [
+            1,
+            1,
+            1
+          ],
+          "shadow": true,
+          "localize": false,
+          "bindings": [
+            {
+              "binding_name": "#form_button_text",
+              "binding_type": "collection",
+              "binding_collection_name": "form_buttons"
+            }
+          ],
+          "size": [
+            "100% - 6px",
+            "default"
+          ],
+          "offset": [
+            0,
+            40
+          ],
+          "anchor_from": "top_middle",
+          "anchor_to": "top_middle",
+          "text_alignment": "center",
+          "layer": 3
+        }
+      }
+    ]
+  },
+  "shop_item": {
+    "type": "panel",
+    "size": [
+      90,
+      84
+    ],
+    "bindings": [
+      {
+        "binding_name": "#form_button_text",
+        "binding_type": "collection",
+        "binding_collection_name": "form_buttons"
+      },
+      {
+        "binding_type": "view",
+        "source_property_name": "((not (#form_button_text = '')) and ((#form_button_text - '§9§8§r') = #form_button_text) and ((#form_button_text - '§9§7§r') = #form_button_text))",
+        "target_property_name": "#visible"
+      }
+    ],
+    "controls": [
+      {
+        "button@common.button": {
+          "size": [
+            "100% - 4px",
+            "100% - 4px"
+          ],
+          "$pressed_button_name": "button.form_button_click",
+          "bindings": [
+            {
+              "binding_type": "collection_details",
+              "binding_collection_name": "form_buttons"
+            }
+          ],
+          "controls": [
+            {
+              "default@zernyth_showcase.shop_face": {
+                "$card": "textures/zernyth_ui/showcase/card"
+              }
+            },
+            {
+              "hover@zernyth_showcase.shop_face": {
+                "$card": "textures/zernyth_ui/showcase/card_hover"
+              }
+            },
+            {
+              "pressed@zernyth_showcase.shop_face": {
+                "$card": "textures/zernyth_ui/showcase/card_hover"
+              }
+            }
+          ]
+        }
+      }
+    ]
+  },
+  "shop_grid": {
+    "type": "grid",
+    "size": [
+      270,
+      504
+    ],
+    "grid_dimensions": [
+      3,
+      6
+    ],
+    "grid_item_template": "zernyth_showcase.shop_item",
+    "collection_name": "form_buttons",
+    "anchor_from": "top_middle",
+    "anchor_to": "top_middle",
+    "bindings": [
+      {
+        "binding_name": "#form_button_contents",
+        "binding_name_override": "#maximum_grid_items"
+      }
+    ]
+  },
+  "shop_body": {
+    "type": "stack_panel",
+    "orientation": "horizontal",
+    "controls": [
+      {
+        "tabs": {
+          "type": "stack_panel",
+          "orientation": "vertical",
+          "size": [
+            36,
+            "100%"
+          ],
+          "factory": {
+            "name": "buttons",
+            "control_ids": {
+              "button": "zernyth_showcase.tab_item"
+            }
+          },
+          "collection_name": "form_buttons",
+          "bindings": [
+            {
+              "binding_name": "#form_button_contents",
+              "binding_name_override": "#collection_length"
+            }
+          ]
+        }
+      },
+      {
+        "gap": {
+          "type": "panel",
+          "size": [
+            4,
+            "100%"
+          ]
+        }
+      },
+      {
+        "items@common.scrolling_panel": {
+          "size": [
+            "fill",
+            "100%"
+          ],
+          "$show_background": false,
+          "$scrolling_content": "zernyth_showcase.shop_grid",
+          "$scroll_size": [
+            5,
+            "100% - 4px"
+          ],
+          "$scrolling_pane_size": [
+            "100% - 4px",
+            "100%"
+          ]
+        }
+      }
+    ]
+  },
+  "router": {
+    "type": "panel",
+    "size": [
+      "100%",
+      "100%"
+    ],
+    "controls": [
+      {
+        "vanilla@server_form.long_form": {
+          "bindings": [
+            {
+              "binding_name": "#title_text"
+            },
+            {
+              "binding_type": "view",
+              "source_property_name": "(((#title_text - '§1§2§3§a') = #title_text) and ((#title_text - '§1§2§3§b') = #title_text) and ((#title_text - '§1§2§3§c') = #title_text) and ((#title_text - '§1§2§3§d') = #title_text) and ((#title_text - '§1§2§3§e') = #title_text) and ((#title_text - '§1§2§3§f') = #title_text))",
+              "target_property_name": "#visible"
+            }
+          ]
+        }
+      },
+      {
+        "dim@zernyth_showcase.dim": {
+          "bindings": [
+            {
+              "binding_name": "#title_text"
+            },
+            {
+              "binding_type": "view",
+              "source_property_name": "(not (((#title_text - '§1§2§3§a') = #title_text) and ((#title_text - '§1§2§3§b') = #title_text) and ((#title_text - '§1§2§3§c') = #title_text) and ((#title_text - '§1§2§3§d') = #title_text) and ((#title_text - '§1§2§3§e') = #title_text) and ((#title_text - '§1§2§3§f') = #title_text)))",
+              "target_property_name": "#visible"
+            }
+          ]
+        }
+      },
+      {
+        "screen_main@zernyth_showcase.window": {
+          "$body": "zernyth_showcase.main_body",
+          "bindings": [
+            {
+              "binding_name": "#title_text"
+            },
+            {
+              "binding_type": "view",
+              "source_property_name": "(not ((#title_text - '§1§2§3§a') = #title_text))",
+              "target_property_name": "#visible"
+            }
+          ]
+        }
+      },
+      {
+        "screen_teams@zernyth_showcase.window": {
+          "$body": "zernyth_showcase.teams_body",
+          "bindings": [
+            {
+              "binding_name": "#title_text"
+            },
+            {
+              "binding_type": "view",
+              "source_property_name": "(not ((#title_text - '§1§2§3§b') = #title_text))",
+              "target_property_name": "#visible"
+            }
+          ]
+        }
+      },
+      {
+        "screen_gods@zernyth_showcase.window": {
+          "$body": "zernyth_showcase.gods_body",
+          "bindings": [
+            {
+              "binding_name": "#title_text"
+            },
+            {
+              "binding_type": "view",
+              "source_property_name": "(not ((#title_text - '§1§2§3§c') = #title_text))",
+              "target_property_name": "#visible"
+            }
+          ]
+        }
+      },
+      {
+        "screen_god@zernyth_showcase.window": {
+          "$body": "zernyth_showcase.god_body",
+          "bindings": [
+            {
+              "binding_name": "#title_text"
+            },
+            {
+              "binding_type": "view",
+              "source_property_name": "(not ((#title_text - '§1§2§3§d') = #title_text))",
+              "target_property_name": "#visible"
+            }
+          ]
+        }
+      },
+      {
+        "screen_stats@zernyth_showcase.window": {
+          "$body": "zernyth_showcase.stats_body",
+          "bindings": [
+            {
+              "binding_name": "#title_text"
+            },
+            {
+              "binding_type": "view",
+              "source_property_name": "(not ((#title_text - '§1§2§3§e') = #title_text))",
+              "target_property_name": "#visible"
+            }
+          ]
+        }
+      },
+      {
+        "screen_shop@zernyth_showcase.window": {
+          "$body": "zernyth_showcase.shop_body",
+          "bindings": [
+            {
+              "binding_name": "#title_text"
+            },
+            {
+              "binding_type": "view",
+              "source_property_name": "(not ((#title_text - '§1§2§3§f') = #title_text))",
+              "target_property_name": "#visible"
+            }
+          ]
+        }
+      }
+    ]
+  }
+}

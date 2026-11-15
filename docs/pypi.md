@@ -2,12 +2,12 @@
 
 ## Identity and installation model
 
-| Component | Alpha 1 value |
+| Component | 1.0.0 value |
 |---|---|
 | Distribution / PyPI project | `zernyth-engine` |
-| Python version (PEP 440) | `0.9.0a1` |
-| Native and Java artifact version | `0.9.0-alpha.1` |
-| Operator-created release tag | `v0.9.0-alpha.1` |
+| Python version (PEP 440) | `1.0.0` |
+| Native and Java artifact version | `1.0.0` |
+| Operator-created release tag | `v1.0.0` |
 | Console command | `zernyth` |
 | Compatibility imports / native plugin API version | `endstone` / `0.11.15` |
 
@@ -57,7 +57,7 @@ arbitrary stale artifacts. Build from a clean reviewed checkout for publishing.
 The backend emits deterministic member order, timestamps, and RECORD hashes.
 The recipe lock pins Conan recipe revisions, not all package binary hashes or the
 complete compiler installation. Equal wheel bytes from the same existing inputs
-do not prove independently reproduced native binaries. Alpha 1 publishes wheels
+do not prove independently reproduced native binaries. Version 1.0.0 publishes wheels
 only; `build_sdist` fails explicitly rather than creating an incomplete sdist.
 
 ## Payload and installation checks
@@ -144,7 +144,7 @@ package index. The upload jobs use GitHub-hosted Ubuntu, fetch only this run's
 wheel artifact, do not check out or build project code, and receive OIDC permission.
 
 Select the reviewed **full 40-character commit SHA**. It must equal the checkout.
-The production target additionally requires the existing `v0.9.0-alpha.1` tag to
+The production target additionally requires the existing `v1.0.0` tag to
 resolve to that SHA. Default target is `build-only`. Review the workflow's action
 versions before enabling it; referenced action tags are not immutable SHA pins.
 
@@ -180,17 +180,17 @@ and [environment configuration guidance](https://docs.pypi.org/trusted-publisher
    performs those actions. Record the exact reviewed commit SHA.
 2. Provision the dedicated runner, caches, dependency wheelhouse, and repository
    variables. Review environment protection and verify the TestPyPI Trusted Publisher.
-3. Run **Zernyth Alpha wheel (manual)** with that SHA and `build-only`. Inspect
+3. Run **Zernyth release wheel (manual)** with that SHA and `build-only`. Inspect
    native/JNI/Java/Python results, metadata/rendering checks, fresh installation, wheel contents,
    licenses, and the uploaded wheel artifact. Stop on any failed gate.
 4. Run the workflow with the **same SHA** and target `testpypi`; approve only the
    `testpypi` environment job after reviewing the completed build checks.
 5. In a fresh Windows CPython 3.15 venv, install ordinary dependencies from your
-   trusted normal dependency source, then install the alpha explicitly from
+   trusted normal dependency source, then install the selected release explicitly from
    TestPyPI with `--no-deps`. Avoid an ambiguous mixed-index dependency search:
 
    ```powershell
-   python -m pip install --no-deps --index-url https://test.pypi.org/simple/ zernyth-engine==0.9.0a1
+   python -m pip install --no-deps --index-url https://test.pypi.org/simple/ zernyth-engine==1.0.0
    zernyth --version
    python -m pip check
    ```
@@ -202,8 +202,8 @@ and [environment configuration guidance](https://docs.pypi.org/trusted-publisher
 
 PyPI production upload is a separate explicit target and protected-environment
 approval after TestPyPI validation and user-created tag verification. Version
-0.9.0a1 is immutable once uploaded; future changes require a new version. Neither
-registry was contacted for an upload in this development phase.
+1.0.0 is immutable once uploaded; future changes require a new version. Neither
+registry receives an upload automatically. The older 0.9.0a1 alpha was previously uploaded to TestPyPI.
 
 ## Upstream workflow deviations
 
@@ -213,3 +213,9 @@ deployment is similarly restricted. This avoids obsolete Endstone-named wheel
 jobs, Docker registry logins/uploads, and upstream-style Pages deployment in this
 fork. Native source and transport behavior are unchanged. Zernyth packaging and
 publishing use the new explicit Windows workflow instead.
+
+The 1.0.0 workflow explicitly builds and selects Zernyth's first-party Windows test
+DLL host. It runs the existing native/JNI cases in fresh Python-hosted processes
+through the standard Windows loader. Local application-control policy remains
+enabled. The current local evidence covers 249 tests and nine checked JVM processes;
+the updated remote workflow requires a separately approved build-only execution.

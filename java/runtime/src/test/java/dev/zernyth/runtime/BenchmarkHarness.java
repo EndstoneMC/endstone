@@ -11,8 +11,13 @@ import java.util.List;
 import java.util.Map;
 
 import com.google.gson.GsonBuilder;
+import dev.zernyth.api.network.NetworkProtocol;
+import dev.zernyth.api.network.PacketType;
 import dev.zernyth.api.performance.PerformanceOptions;
+import dev.zernyth.api.scheduler.RuntimeLimits;
 import dev.zernyth.api.scheduler.Task;
+import dev.zernyth.api.scheduler.TaskKind;
+import dev.zernyth.api.scheduler.TaskOptions;
 
 /**
  * Local batch harness, not JMH. Percentiles describe batch means, not individual tail latency.
@@ -33,6 +38,7 @@ public final class BenchmarkHarness {
 
     private static final List<Map<String, Object>> METRICS = new ArrayList<>();
     public static volatile long sink;
+    private static volatile Object objectSink;
 
     public static native int ping(int value);
 
@@ -50,7 +56,36 @@ public final class BenchmarkHarness {
         METRICS.add(row);
     }
 
+    /**
+     * Reads allocated bytes for this attached platform thread, outside a timed batch.
+     *
+     * @return cumulative bytes, or -1 when the JVM does not expose this measurement
+     */
+    public static long threadAllocatedBytes() {
+        var bean = ManagementFactory.getThreadMXBean();
+        if (bean instanceof com.sun.management.ThreadMXBean allocation
+                && allocation.isThreadAllocatedMemorySupported()) {
+            return allocation.getThreadAllocatedBytes(Thread.currentThread().threadId());
+        }
+        return -1;
+    }
+
+    /**
+     * Adds an allocation observation to the most recently recorded native batch series.
+     *
+     * @param bytes measured Java allocation, or -1 when unavailable
+     * @param operations total measured operations across the series, positive
+     */
+    public static void recordAllocatedBytes(long bytes, int operations) {
+        METRICS.getLast().put("javaAllocatedBytesPerOperation",
+                bytes >= 0 ? (double) bytes / operations : null);
+    }
+
     public static void measure(String name, Runnable action, int operations) {
+        String filter = System.getProperty("zernyth.benchmark.filter", "");
+        if (!filter.isEmpty() && !name.contains(filter)) {
+            return;
+        }
         operations = Math.multiplyExact(operations, SCALE);
         int warmup = WARMUP, rounds = ROUNDS;
         for (int w = 0; w < warmup; w++) {
@@ -101,6 +136,7 @@ public final class BenchmarkHarness {
                 throw new AssertionError(e);
             }
         }, 10000);
+        packetMetadata();
         measure("production-classloader-create-close", () -> {
             try (var loader = new PluginClassLoader(Path.of(jar), List.of(), List.of(), List.of())) {
                 sink = loader.classes.size();
@@ -108,6 +144,37 @@ public final class BenchmarkHarness {
                 throw new AssertionError(e);
             }
         }, 20);
+    }
+
+    private static void packetMetadata() {
+        var protocol = new NetworkProtocol("26.60", 2225);
+        var types = Map.of(9, new PacketType("Text", 9, 2225));
+        var repeated = new Network.MetadataDecoder(protocol, types);
+        String player = "00000000-0000-0000-0000-000000000001";
+        measure("java-packet-metadata-repeated-player", () -> objectSink = repeated.decode(
+                9, 1, 1234, 16, 0, false,
+                new String(player.toCharArray()), new String("17".toCharArray())), 10000);
+        var anonymous = new Network.MetadataDecoder(protocol, types);
+        measure("java-packet-metadata-unknown-anonymous", () -> objectSink = anonymous.decode(
+                1023, 0, 1234, 16, 0, false, "", ""), 10000);
+        packetPlayers(protocol, types, 64);
+        packetPlayers(protocol, types, 128);
+    }
+
+    private static void packetPlayers(NetworkProtocol protocol, Map<Integer, PacketType> types, int count) {
+        var alternating = new Network.MetadataDecoder(protocol, types);
+        String[] players = new String[count];
+        String[] connections = new String[count];
+        for (int i = 0; i < players.length; i++) {
+            players[i] = "00000000-0000-0000-0000-" + String.format("%012x", i + 1);
+            connections[i] = Integer.toString(i + 1);
+        }
+        int[] next = {0};
+        measure("java-packet-metadata-" + count + "-players", () -> {
+            int index = next[0]++ % players.length;
+            objectSink = alternating.decode(9, 1, 1234, 16, 0, false,
+                    new String(players[index].toCharArray()), new String(connections[index].toCharArray()));
+        }, 10000);
     }
 
     public static void finish() throws Exception {
@@ -179,6 +246,9 @@ public final class BenchmarkHarness {
                 runtime.pulse();
             }, 2000);
             runtime.close();
+            delayedQueue(host, 256);
+            delayedQueue(host, 4096);
+            bulkCancellation(host);
             profile.options = new PerformanceOptions(
                     true, Duration.ofDays(1), 100);
             measure("java-profile-enabled-callback",
@@ -194,5 +264,47 @@ public final class BenchmarkHarness {
             }, 20);
         }
         finish();
+    }
+
+    private static void delayedQueue(ManagedRuntime.Host host, int count) {
+        var runtime = new ManagedRuntime(host, BenchmarkHarness.class.getClassLoader(), count,
+                new Profile(message -> { }));
+        runtime.activate();
+        runtime.configure(new RuntimeLimits(4096, 1, 1, 256));
+        var delayed = new TaskOptions(1_000_000_000, 0, Duration.ofSeconds(30));
+        try {
+            for (int i = 0; i < count; i++) {
+                runtime.submit(TaskKind.SERVER, token -> {
+                    throw new AssertionError("Delayed callback executed during idle measurement");
+                }, delayed);
+            }
+            measure("managed-delayed-" + count + "-pulse", runtime::pulse, 200);
+            if (runtime.snapshot().outstanding() != count) {
+                throw new AssertionError("Delayed queue lost tasks");
+            }
+        } finally {
+            runtime.close();
+        }
+    }
+
+    private static void bulkCancellation(ManagedRuntime.Host host) {
+        var runtime = new ManagedRuntime(host, BenchmarkHarness.class.getClassLoader(), 5000,
+                new Profile(message -> { }));
+        runtime.activate();
+        runtime.configure(new RuntimeLimits(256, 1, 1, 256));
+        var options = new TaskOptions(1_000_000_000, 0, Duration.ofSeconds(30));
+        try {
+            measure("managed-256-admit-cancel-all", () -> {
+                for (int i = 0; i < 256; i++) {
+                    runtime.submit(TaskKind.SERVER, token -> { }, options);
+                }
+                runtime.cancelAll();
+                if (runtime.snapshot().outstanding() != 0) {
+                    throw new AssertionError("Bulk cancellation retained tasks");
+                }
+            }, 10);
+        } finally {
+            runtime.close();
+        }
     }
 }

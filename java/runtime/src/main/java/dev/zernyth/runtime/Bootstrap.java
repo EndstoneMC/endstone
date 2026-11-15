@@ -145,10 +145,12 @@ public final class Bootstrap implements AutoCloseable {
     }
 
     private PluginDiagnostics diagnostics() {
-        if (Thread.currentThread() != lifecycleThread) {
+        // JNI reattachment can create a different Java Thread for the same native server thread.
+        // Production access is checked by the native owner/thread contract in ecosystemCounts.
+        if (handle == 0 && Thread.currentThread() != lifecycleThread) {
             throw new IllegalStateException("Diagnostics require the lifecycle/server thread");
         }
-        long[] c = (!closed && handle != 0) ? Native.ecosystemCounts(handle) : new long[5];
+        long[] c = handle != 0 ? Native.ecosystemCounts(handle) : new long[5];
         return new PluginDiagnostics(manifest.name(), status, loadNanos, enableNanos, disableNanos,
                 loader.classes.size(), loader.libraries, manifest.depend(), c[0], c[1], c[2], c[3], c[4],
                 failure);

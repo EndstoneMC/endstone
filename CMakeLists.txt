@@ -81,3 +81,6 @@ if (NOT BUILD_TESTING STREQUAL OFF)
     include(GoogleTest)
     add_subdirectory(tests)
 endif ()
+
+# Optional Zernyth JNI test library for controlled Python-hosted test processes.
+include(cmake/ZernythJavaTestHost.cmake)

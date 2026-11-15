@@ -1,0 +1,14 @@
+{
+  "prefix": "§1§2§3",
+  "screens": {
+    "main": "§1§2§3§a§r",
+    "teams": "§1§2§3§b§r",
+    "gods": "§1§2§3§c§r",
+    "god": "§1§2§3§d§r",
+    "stats": "§1§2§3§e§r",
+    "shop": "§1§2§3§f§r"
+  },
+  "info": "§9§8§r",
+  "tab": "§9§7§r",
+  "texturePath": "textures/zernyth_ui/showcase"
+}

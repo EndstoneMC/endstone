@@ -1,5 +1,25 @@
 # Zernyth Engine changelog
 
+## 1.0.0 - prepared 2026-11-16
+
+First stable release for Windows x64, CPython 3.15, Java 25 and BDS 1.26.60.6.
+An independently packaged Ubuntu 24.04 x86_64 archive uses CPython 3.12 and the
+validated system-allocator startup path.
+
+- Package the existing Java gameplay, plugin ecosystem, async runtime and read-only networking APIs.
+- Fix native-backed diagnostics across JNI thread detach/reattach, preserving worker rejection.
+- Add the operator-driven stable test plugin and packed BDS command argument handling.
+- Support stable version identifiers throughout native, Java, Python packaging and manual publishing.
+- Document real BDS/client evidence and the remaining validation limits.
+- Avoid the reproduced Linux startup crash from explicit Mimalloc/runtime preloading.
+- Package replaceable Linux libelf/libdwarf shared libraries, corresponding sources,
+  complete notices and hash-pinned offline Python dependencies.
+- Verify archive paths, checksums, deterministic output and installation rollback.
+- Retain the measured scheduler improvements and document observed benchmark regressions.
+
+Local release preparation does not publish an artifact. See
+[the 1.0.0 release guide](docs/zernyth-stable-1.0.md).
+
 ## 0.9.0-rc.1 ? unreleased
 
 Java 25 plugins integrated into Endstone: JNI runtime, native-backed gameplay and forms, read-only network metadata, bounded async execution, services, configuration, SDK, and lifecycle hardening. This source candidate is not a stable release. See [validation and open gates](docs/validation.md).

@@ -1,0 +1,26 @@
+option(ZERNYTH_BUILD_JAVA_TEST_HOST "Build the Windows Python-hosted JNI test library" OFF)
+if (ZERNYTH_BUILD_JAVA_TEST_HOST)
+    if (NOT WIN32 OR NOT ENDSTONE_ENABLE_JAVA OR NOT TARGET endstone_test)
+        message(FATAL_ERROR "The JNI test host requires Windows, Java integration and native tests")
+    endif ()
+    find_package(JNI REQUIRED COMPONENTS JVM)
+    # Reuse the source set of the existing native suite, including its JNI cases.
+    get_target_property(_zernyth_sources endstone_test SOURCES)
+    get_target_property(_zernyth_source_dir endstone_test SOURCE_DIR)
+    set(_zernyth_host_sources "${PROJECT_SOURCE_DIR}/tests/java_test_host.cpp")
+    foreach (_zernyth_source IN LISTS _zernyth_sources)
+        if (IS_ABSOLUTE "${_zernyth_source}")
+            list(APPEND _zernyth_host_sources "${_zernyth_source}")
+        else ()
+            list(APPEND _zernyth_host_sources "${_zernyth_source_dir}/${_zernyth_source}")
+        endif ()
+    endforeach ()
+    add_library(zernyth_java_test_host MODULE ${_zernyth_host_sources})
+    add_dependencies(zernyth_java_test_host test_plugin)
+    target_include_directories(zernyth_java_test_host PRIVATE ${JNI_INCLUDE_DIRS})
+    target_link_libraries(zernyth_java_test_host PRIVATE endstone::core GTest::gtest GTest::gmock)
+    set_target_properties(zernyth_java_test_host PROPERTIES
+        PREFIX ""
+        RUNTIME_OUTPUT_DIRECTORY "${PROJECT_BINARY_DIR}/tests"
+        LIBRARY_OUTPUT_DIRECTORY "${PROJECT_BINARY_DIR}/tests")
+endif ()

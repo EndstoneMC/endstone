@@ -1,0 +1,593 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://zernyth.net/schemas/zernyth-ui-1.0.json",
+  "title": "Zernyth UI document 1.0 / 1.1",
+  "description": "Interchange format between Zernyth UI Studio and Zernyth Engine. Not a Minecraft JSON UI file: the engine turns screens into Bedrock server forms; the resource pack carries textures.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schemaVersion",
+    "engine",
+    "id",
+    "name",
+    "target",
+    "screens",
+    "assets",
+    "actions"
+  ],
+  "properties": {
+    "schemaVersion": {
+      "enum": [
+        "1.0",
+        "1.1"
+      ],
+      "description": "1.1 adds showIf conditions, defaultLocale and translations."
+    },
+    "engine": {
+      "const": "zernyth"
+    },
+    "id": {
+      "$ref": "#/$defs/identifier"
+    },
+    "name": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 80
+    },
+    "description": {
+      "type": "string",
+      "maxLength": 500
+    },
+    "target": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "minEngineVersion",
+        "zernythVersion"
+      ],
+      "properties": {
+        "minEngineVersion": {
+          "type": "array",
+          "items": {
+            "type": "integer",
+            "minimum": 0,
+            "maximum": 999
+          },
+          "minItems": 3,
+          "maxItems": 3
+        },
+        "zernythVersion": {
+          "type": "string",
+          "pattern": "^[0-9]+\\.[0-9]+(\\.[0-9]+)?([-+][0-9A-Za-z.-]+)?$"
+        }
+      }
+    },
+    "pack": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "headerUuid",
+        "moduleUuid",
+        "version"
+      ],
+      "properties": {
+        "headerUuid": {
+          "$ref": "#/$defs/uuid"
+        },
+        "moduleUuid": {
+          "$ref": "#/$defs/uuid"
+        },
+        "version": {
+          "type": "array",
+          "items": {
+            "type": "integer",
+            "minimum": 0,
+            "maximum": 9999
+          },
+          "minItems": 3,
+          "maxItems": 3
+        },
+        "iconAsset": {
+          "$ref": "#/$defs/identifier"
+        }
+      }
+    },
+    "screens": {
+      "type": "array",
+      "minItems": 1,
+      "maxItems": 100,
+      "items": {
+        "$ref": "#/$defs/screen"
+      }
+    },
+    "assets": {
+      "type": "array",
+      "maxItems": 500,
+      "items": {
+        "$ref": "#/$defs/asset"
+      }
+    },
+    "actions": {
+      "type": "array",
+      "maxItems": 500,
+      "items": {
+        "$ref": "#/$defs/actionDefinition"
+      }
+    },
+    "startScreen": {
+      "$ref": "#/$defs/identifier"
+    },
+    "defaultLocale": {
+      "$ref": "#/$defs/locale",
+      "description": "Language of the texts in the document itself (1.1)."
+    },
+    "translations": {
+      "type": "object",
+      "maxProperties": 20,
+      "description": "Texts per locale (1.1). Keys: <screen>.title, <screen>.content, <screen>.<component>.text, <screen>.<component>.description.",
+      "propertyNames": {
+        "$ref": "#/$defs/locale"
+      },
+      "additionalProperties": {
+        "type": "object",
+        "maxProperties": 5000,
+        "propertyNames": {
+          "pattern": "^[a-z][a-z0-9_]{0,47}\\.((title|content)|[a-z][a-z0-9_]{0,47}\\.(text|description))$"
+        },
+        "additionalProperties": {
+          "type": "string",
+          "maxLength": 4000
+        }
+      }
+    }
+  },
+  "$defs": {
+    "identifier": {
+      "type": "string",
+      "pattern": "^[a-z][a-z0-9_]{0,47}$"
+    },
+    "actionName": {
+      "type": "string",
+      "pattern": "^[a-z][a-z0-9_]{0,31}(\\.[a-z][a-z0-9_]{0,31}){0,3}$"
+    },
+    "uuid": {
+      "type": "string",
+      "pattern": "^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$"
+    },
+    "color": {
+      "type": "string",
+      "pattern": "^#[0-9a-fA-F]{6}([0-9a-fA-F]{2})?$"
+    },
+    "text": {
+      "type": "string",
+      "maxLength": 1000
+    },
+    "asset": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "id",
+        "name",
+        "path",
+        "width",
+        "height"
+      ],
+      "properties": {
+        "id": {
+          "$ref": "#/$defs/identifier"
+        },
+        "name": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 80
+        },
+        "path": {
+          "type": "string",
+          "pattern": "^textures/zernyth_ui/[a-z0-9_]{1,48}$"
+        },
+        "width": {
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 1024
+        },
+        "height": {
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 1024
+        },
+        "sha256": {
+          "type": "string",
+          "pattern": "^[0-9a-f]{64}$"
+        },
+        "source": {
+          "enum": [
+            "upload",
+            "builtin"
+          ]
+        },
+        "sourceId": {
+          "type": "string",
+          "maxLength": 64
+        }
+      }
+    },
+    "actionDefinition": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "name"
+      ],
+      "properties": {
+        "name": {
+          "$ref": "#/$defs/actionName"
+        },
+        "description": {
+          "type": "string",
+          "maxLength": 200
+        },
+        "permission": {
+          "type": "string",
+          "pattern": "^[a-z0-9_.-]{1,64}$"
+        }
+      }
+    },
+    "action": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "type"
+      ],
+      "properties": {
+        "type": {
+          "enum": [
+            "server_event",
+            "navigate",
+            "close"
+          ]
+        },
+        "name": {
+          "$ref": "#/$defs/actionName"
+        },
+        "target": {
+          "$ref": "#/$defs/identifier"
+        }
+      },
+      "allOf": [
+        {
+          "if": {
+            "properties": {
+              "type": {
+                "const": "server_event"
+              }
+            }
+          },
+          "then": {
+            "required": [
+              "name"
+            ]
+          }
+        },
+        {
+          "if": {
+            "properties": {
+              "type": {
+                "const": "navigate"
+              }
+            }
+          },
+          "then": {
+            "required": [
+              "target"
+            ]
+          }
+        }
+      ]
+    },
+    "screen": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "id",
+        "title",
+        "kind",
+        "canvas",
+        "components"
+      ],
+      "properties": {
+        "id": {
+          "$ref": "#/$defs/identifier"
+        },
+        "title": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 120
+        },
+        "kind": {
+          "enum": [
+            "action_form",
+            "modal_form",
+            "message_form",
+            "hud_preview"
+          ]
+        },
+        "content": {
+          "$ref": "#/$defs/text"
+        },
+        "permission": {
+          "type": "string",
+          "pattern": "^[a-z0-9_.-]{1,64}$"
+        },
+        "submit": {
+          "$ref": "#/$defs/action"
+        },
+        "canvas": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "width",
+            "height"
+          ],
+          "properties": {
+            "width": {
+              "type": "integer",
+              "minimum": 160,
+              "maximum": 3840
+            },
+            "height": {
+              "type": "integer",
+              "minimum": 120,
+              "maximum": 2160
+            },
+            "background": {
+              "$ref": "#/$defs/color"
+            },
+            "backgroundAsset": {
+              "$ref": "#/$defs/identifier"
+            }
+          }
+        },
+        "components": {
+          "type": "array",
+          "maxItems": 500,
+          "items": {
+            "$ref": "#/$defs/component"
+          }
+        }
+      }
+    },
+    "component": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "id",
+        "type",
+        "x",
+        "y",
+        "width",
+        "height"
+      ],
+      "properties": {
+        "id": {
+          "$ref": "#/$defs/identifier"
+        },
+        "type": {
+          "enum": [
+            "text",
+            "rich_text",
+            "button",
+            "image_button",
+            "icon",
+            "image",
+            "panel",
+            "container",
+            "scroll",
+            "list",
+            "grid",
+            "tabs",
+            "navbar",
+            "progress",
+            "status",
+            "hud_element",
+            "scoreboard",
+            "shop_card",
+            "item_display",
+            "player_stats",
+            "team_panel",
+            "selection_menu",
+            "dialog",
+            "confirm",
+            "background",
+            "toggle",
+            "slider",
+            "dropdown",
+            "text_field"
+          ]
+        },
+        "name": {
+          "type": "string",
+          "maxLength": 80
+        },
+        "x": {
+          "type": "number",
+          "minimum": -4000,
+          "maximum": 8000
+        },
+        "y": {
+          "type": "number",
+          "minimum": -4000,
+          "maximum": 8000
+        },
+        "width": {
+          "type": "number",
+          "minimum": 1,
+          "maximum": 8000
+        },
+        "height": {
+          "type": "number",
+          "minimum": 1,
+          "maximum": 8000
+        },
+        "anchor": {
+          "enum": [
+            "top_left",
+            "top",
+            "top_right",
+            "left",
+            "center",
+            "right",
+            "bottom_left",
+            "bottom",
+            "bottom_right"
+          ]
+        },
+        "hidden": {
+          "type": "boolean"
+        },
+        "locked": {
+          "type": "boolean"
+        },
+        "visibleIf": {
+          "type": "string",
+          "pattern": "^[a-z0-9_.-]{1,64}$"
+        },
+        "enabled": {
+          "type": "boolean"
+        },
+        "text": {
+          "$ref": "#/$defs/text"
+        },
+        "description": {
+          "$ref": "#/$defs/text"
+        },
+        "icon": {
+          "$ref": "#/$defs/identifier"
+        },
+        "texture": {
+          "$ref": "#/$defs/identifier"
+        },
+        "style": {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "fill": {
+              "$ref": "#/$defs/color"
+            },
+            "textColor": {
+              "$ref": "#/$defs/color"
+            },
+            "border": {
+              "$ref": "#/$defs/color"
+            },
+            "borderWidth": {
+              "type": "number",
+              "minimum": 0,
+              "maximum": 32
+            },
+            "radius": {
+              "type": "number",
+              "minimum": 0,
+              "maximum": 64
+            },
+            "opacity": {
+              "type": "number",
+              "minimum": 0,
+              "maximum": 1
+            },
+            "fontSize": {
+              "type": "number",
+              "minimum": 6,
+              "maximum": 96
+            },
+            "align": {
+              "enum": [
+                "left",
+                "center",
+                "right"
+              ]
+            },
+            "padding": {
+              "type": "number",
+              "minimum": 0,
+              "maximum": 128
+            },
+            "pixelated": {
+              "type": "boolean"
+            }
+          }
+        },
+        "value": {
+          "type": "number"
+        },
+        "max": {
+          "type": "number"
+        },
+        "options": {
+          "type": "array",
+          "maxItems": 64,
+          "items": {
+            "type": "string",
+            "maxLength": 80
+          }
+        },
+        "placeholder": {
+          "type": "string",
+          "maxLength": 200
+        },
+        "action": {
+          "$ref": "#/$defs/action"
+        },
+        "children": {
+          "type": "array",
+          "maxItems": 200,
+          "items": {
+            "$ref": "#/$defs/component"
+          }
+        },
+        "showIf": {
+          "$ref": "#/$defs/condition"
+        }
+      }
+    },
+    "locale": {
+      "type": "string",
+      "pattern": "^[a-z]{2}(_[A-Z]{2})?$"
+    },
+    "condition": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "key",
+        "op",
+        "value"
+      ],
+      "description": "Shows a component only when a value bound by the plugin (ui.bind) matches (1.1).",
+      "properties": {
+        "key": {
+          "type": "string",
+          "pattern": "^[a-z0-9_.]{1,64}$"
+        },
+        "op": {
+          "enum": [
+            "eq",
+            "ne",
+            "gt",
+            "gte",
+            "lt",
+            "lte"
+          ]
+        },
+        "value": {
+          "oneOf": [
+            {
+              "type": "string",
+              "maxLength": 200
+            },
+            {
+              "type": "number"
+            }
+          ]
+        }
+      }
+    }
+  }
+}

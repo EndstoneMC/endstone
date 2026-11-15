@@ -1,0 +1,41 @@
+{
+  "schemaVersion": "1.0",
+  "engine": "zernyth",
+  "id": "minimal",
+  "name": "Minimal",
+  "target": {
+    "minEngineVersion": [
+      1,
+      21,
+      0
+    ],
+    "zernythVersion": "0.9"
+  },
+  "assets": [],
+  "actions": [],
+  "screens": [
+    {
+      "id": "hello",
+      "title": "Hello",
+      "kind": "action_form",
+      "canvas": {
+        "width": 320,
+        "height": 240
+      },
+      "components": [
+        {
+          "id": "ok",
+          "type": "button",
+          "x": 0,
+          "y": 0,
+          "width": 100,
+          "height": 30,
+          "text": "OK",
+          "action": {
+            "type": "close"
+          }
+        }
+      ]
+    }
+  ]
+}

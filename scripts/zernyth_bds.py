@@ -42,8 +42,8 @@ def inspect(path):
     found = file_version(executable)
     return {"binaryInspection": "PASS" if found == EXPECTED else "NOT TESTED" if found is None else "FAIL",
             "fileVersion": found, "expectedVersion": EXPECTED, "sha256": sha,
-            "isolation": "BLOCKED", "bdsRun": "BLOCKED", "gameplay": "NOT TESTED",
-            "reason": "No verified isolated VM/network. Historical BDS run observed wildcard UDP 7551 despite loopback signaling; configuration is not proof of isolation."}
+            "isolation": "NOT TESTED", "bdsRun": "NOT TESTED", "gameplay": "NOT TESTED",
+            "reason": "Read-only binary inspection. Network exposure is operator-managed; this inspection does not start BDS or validate gameplay."}
 
 
 def main():

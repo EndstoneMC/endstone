@@ -35,6 +35,10 @@ TEST(JavaNetworkTest, MetadataFiltersConnectionsAndCleanup)
     GameplayCommands commands;
     EndstonePluginManager manager(server);
     UUID uuid;
+    UUID peerUuid;
+    peerUuid.begin()[0] = 1;
+    testing::NiceMock<GameplayMockPlayer> peerPlayer;
+    bool peerOnline = false;
     bool online = true;
     int protocol = 2225;
     std::uint64_t runtime = 420;
@@ -48,11 +52,24 @@ TEST(JavaNetworkTest, MetadataFiltersConnectionsAndCleanup)
     ON_CALL(server, getMinecraftVersion()).WillByDefault([&] { return release; });
     ON_CALL(server, getProtocolVersion()).WillByDefault([&] { return protocol; });
     ON_CALL(server, getOnlinePlayers()).WillByDefault([&] {
-        return online ? std::vector<endstone::Player *>{&player} : std::vector<endstone::Player *>{};
+        std::vector<endstone::Player *> players;
+        if (online) {
+            players.push_back(&player);
+        }
+        if (peerOnline) {
+            players.push_back(&peerPlayer);
+        }
+        return players;
     });
     ON_CALL(server, getPlayer(testing::An<UUID>())).WillByDefault([&](UUID id) -> endstone::Player * {
-        return online && id == uuid ? &player : nullptr;
+        if (online && id == uuid) {
+            return &player;
+        }
+        return peerOnline && id == peerUuid ? &peerPlayer : nullptr;
     });
+    ON_CALL(peerPlayer, getUniqueId()).WillByDefault(Return(peerUuid));
+    ON_CALL(peerPlayer, getId()).WillByDefault(Return(43));
+    ON_CALL(peerPlayer, getRuntimeId()).WillByDefault(Return(500));
     ON_CALL(player, getUniqueId()).WillByDefault(Return(uuid));
     ON_CALL(player, getId()).WillByDefault(Return(42));
     ON_CALL(player, getRuntimeId()).WillByDefault([&] { return runtime; });
@@ -114,6 +131,15 @@ TEST(JavaNetworkTest, MetadataFiltersConnectionsAndCleanup)
     phase("unsupported");
     release = "26.60";
     phase("version-unchanged");
+    peerOnline = true;
+    phase("multiple-connections");
+    PacketSendEvent peerPacket(&peerPlayer, 9, payload, {}, 0);
+    manager.callEvent(peerPacket);
+    phase("multiple-player-packet");
+    PlayerQuitEvent peerQuit(peerPlayer, std::nullopt);
+    manager.callEvent(peerQuit);
+    peerOnline = false;
+    phase("multiple-removed");
     PlayerQuitEvent quit(player, std::nullopt);
     manager.callEvent(quit);
     online = false;

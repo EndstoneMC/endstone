@@ -8,7 +8,7 @@
 
 A Java 25 plugin framework built into Endstone, powered by the original Minecraft Bedrock Dedicated Server.
 
-[![Alpha](https://img.shields.io/badge/version-0.9.0--alpha.1-8B5CF6?style=for-the-badge)](docs/pypi.md)
+[![Stable](https://img.shields.io/badge/version-1.0.0-8B5CF6?style=for-the-badge)](docs/pypi.md)
 [![Java](https://img.shields.io/badge/Java-25_LTS-F59E0B?style=for-the-badge)](docs/zernyth-java-25.md)
 [![License](https://img.shields.io/badge/license-Apache_2.0-6366F1?style=for-the-badge)](LICENSE)
 
@@ -19,7 +19,7 @@ A Java 25 plugin framework built into Endstone, powered by the original Minecraf
 ---
 
 > [!IMPORTANT]
-> **Alpha 1 — production approval is pending.** Windows builds, native/JNI tests, and local packaging have passed. Real BDS validation of this RC is blocked until network isolation is demonstrated. Windows CI with Temurin 25 has passed. Connected-client gameplay and Linux remain open. See the [complete validation report](docs/validation.md).
+> **Zernyth 1.0.0 is prepared for its first stable publication.** The Windows wheel uses CPython 3.15. The separate Ubuntu 24.04 x86_64 archive uses CPython 3.12 and the validated system-allocator startup path. Both target Java 25 and BDS 1.26.60.6. Installation, validation coverage and release limitations are recorded in the [1.0.0 release guide](docs/zernyth-stable-1.0.md). Public upload is owner-controlled.
 
 ## ✦ Built for Bedrock. Designed for Java.
 
@@ -71,7 +71,7 @@ flowchart TD
 | **Java** | JDK **25 LTS**, without preview features; Eclipse Temurin preferred |
 | **Gradle** | **9.1 or newer**; locally validated with 9.8.2 |
 | **Native build** | CMake **3.29+**, Conan 2, Ninja, and the supported platform toolchain |
-| **Python** | Compatible build dependencies and an ABI matching the native Python module |
+| **Python** | CPython **3.15**, matching the Windows x64 wheel ABI |
 | **BDS baseline** | Separately supplied **1.26.60.6** installation |
 | **Endstone basis** | **0.11.15** |
 
@@ -79,9 +79,9 @@ All Java modules use toolchain 25 and `options.release = 25`. Older Java runtime
 
 ### Build, verify, install
 
-Python distribution: **`zernyth-engine==0.9.0a1`**, command **`zernyth`**. The first wheel targets Windows x64 / CPython 3.15 and replaces `endstone` in a separate virtual environment. Do not install both packages together. See the [wheel and manual publishing guide](docs/pypi.md); no package upload has been performed in this development phase.
+Python distribution: **`zernyth-engine==1.0.0`**, command **`zernyth`**. The first wheel targets Windows x64 / CPython 3.15 and replaces `endstone` in a separate virtual environment. Do not install both packages together. See the [stable installation guide](docs/zernyth-stable-1.0.md). Use the locally built wheel until the owner has published version 1.0.0.
 
-The [Alpha packaging report](docs/pypi-validation.md) records a successful Windows GitHub build with Temurin 25, native/JNI tests, installation and artifact verification. Package uploads use the owner-selected manual target.
+The historical [Alpha packaging report](docs/pypi-validation.md) records a successful Windows GitHub build with Temurin 25, native/JNI tests, installation and artifact verification. Package uploads use the owner-selected manual target.
 
 1. Follow the **[build and installation guide](docs/zernyth-release-0.9.md)** to prepare the supported toolchain and existing dependency caches.
 2. Build Java and native artifacts as a matching versioned set. The shared version comes from [`zernyth-version.txt`](zernyth-version.txt).
@@ -94,7 +94,7 @@ The documented offline workflow does not automatically download missing JDKs or 
 > `pip install endstone` installs upstream Endstone, not this Zernyth fork. Zernyth requires this fork's matching native components, Java API, and runtime artifacts.
 
 > [!WARNING]
-> Use a separate test instance, a new world, and demonstrable network isolation before BDS testing. Loopback signaling alone does not establish isolation. Archive verification and the default inspection-only launcher do not start a server.
+> Use a separate test instance and a new world for validation. Review network exposure before starting BDS. Loopback signaling alone does not establish isolation. Archive verification and the default inspection-only launcher do not start a server.
 
 ## ☕ Build your first plugin
 
@@ -134,7 +134,7 @@ repositories {
 }
 
 dependencies {
-    compileOnly("dev.zernyth:api:0.9.0-alpha.1")
+    compileOnly("dev.zernyth:api:1.0.0")
 }
 ```
 
@@ -144,25 +144,26 @@ The relative repository path above matches the template directory in this source
 
 ## ✅ Validation and compatibility
 
-Current Windows CI results are recorded in the **[Alpha validation report](docs/pypi-validation.md)**. The table also retains earlier local archived-plugin and sanitizer-helper results with their respective scope.
+Local 1.0.0 results are recorded in the **[stable release guide](docs/zernyth-stable-1.0.md)** and **[VPS validation report](docs/zernyth-vps-validation.md)**. Earlier Windows CI evidence remains in the **[Alpha validation report](docs/pypi-validation.md)**.
 
 | Validation scope | Status | Evidence boundary |
 |---|---|---|
 | Java 25 and Windows native/Python build | **PASS** | Oracle JDK 25; Windows x64 |
-| Native/JNI suite | **PASS** | **249/249** tests |
-| JNI checker | **PASS** | Nine test processes; no reported checker violations |
-| Python tooling and CI tests | **PASS** | **46/46** tests |
-| Archived example JARs 0.2–0.8 | **PASS** | Lifecycle regression with the production JNI bridge and native mocks |
-| Packaging, extracted import, SDK template | **PASS** | Local installation and offline template build |
-| Handle-helper ASan/UBSan | **PASS** | Bounded helper only; not the entire core |
-| Windows leak detection | **BLOCKED** | Unsupported by the installed ASan runtime |
-| Real BDS lifecycle for this RC | **BLOCKED** | Network isolation not demonstrated |
-| Connected-client gameplay and packet tests | **NOT TESTED** | Requires an isolated server and compatible Bedrock client |
-| Eclipse Temurin 25.0.5 on Windows | **PASS** | Native/JNI tests and isolated wheel installation |
-| Linux and full-core sanitizers | **NOT TESTED** | Separate validation remains open |
-| CI execution | **PASS** | Manual Windows build-only run, artifact downloaded and verified |
+| Native/JNI suite | **PASS** | 249/249 on Windows through the first-party DLL host and 249/249 on Linux |
+| JNI checker evidence | **PASS** | Nine fresh checker processes per native platform, zero reported diagnostics |
+| Python tooling and CI tests | **PASS** | 75 checks, including archive limits/integrity, build metadata and installer rollback |
+| Packaged Python API tests | **PASS** | 105 cases per platform using the packaged native extension |
+| Archived example JARs 0.2–0.8 | **PASS** | Current native/JNI regression runs on both platforms |
+| Packaging and installed imports | **PASS** | Fresh 1.0.0 wheel install, reproducible SDK and extracted plugin-template build |
+| Sanitizers for 1.0.0 | **NOT TESTED** | Historical checks cover a bounded handle helper; full-core validation remains open |
+| Real BDS lifecycle of the included runtime fix | **PASS** | Owner-run BDS 1.26.60.6 test with connected Bedrock client |
+| Connected-client reads, events and packets | **PASS** | Player/world/inventory reads, 170 movement callbacks, 2730 packet callbacks; remaining cases documented |
+| Eclipse Temurin 25.0.5 | **PASS** | Current Linux Java/native/JNI and BDS runs; local Windows build uses Oracle JDK 25 |
+| Linux BDS and client UI | **PASS** | Ubuntu 24.04, controlled isolated runs and owner-confirmed connection/menu test |
+| Full-core sanitizers | **NOT TESTED** | Actual ASan/UBSan/LSan runs cover the bounded handle helper |
+| CI execution for 1.0.0 | **NOT TESTED** | Manual workflow prepared; earlier Alpha Windows CI passed |
 
-Other BDS versions are not approved by this RC's compatibility contract. A successful mock test, import, or server startup does not establish complete gameplay compatibility. No TPS, player-capacity, or universal compatibility guarantee is made.
+This stable release targets BDS 1.26.60.6. Additional versions require separate validation. A successful mock test, import, or server startup does not establish complete gameplay compatibility. No TPS, player-capacity, or universal compatibility guarantee is made.
 
 <details>
 <summary><strong>Scope and security limitations</strong></summary>
@@ -172,7 +173,7 @@ Other BDS versions are not approved by this RC's compatibility contract. A succe
 - No native dynamic client tab-completion guarantee.
 - Classloader isolation is not a process sandbox. Plugins can still impair the JVM or server process.
 - JNI checks and sanitizer passes do not prove complete memory safety.
-- Full-core sanitizer, platform, long-running, and real-client quality gates remain open.
+- Full-core sanitizers, long-duration load and additional individual gameplay/client scenarios remain unvalidated.
 
 </details>
 
@@ -180,7 +181,7 @@ Other BDS versions are not approved by this RC's compatibility contract. A succe
 
 | Guide | Contents |
 |---|---|
-| [Build, installation & release](docs/zernyth-release-0.9.md) | Offline builds, distribution layout, verification, updates, rollback, and CI prerequisites |
+| [Stable 1.0.0 installation and release](docs/zernyth-stable-1.0.md) | Offline builds, distribution layout, verification, updates, rollback, and CI prerequisites |
 | [Validation report](docs/validation.md) | Executed tests, artifacts, platform matrix, blockers, and release gates |
 | [Java 25 standard](docs/zernyth-java-25.md) | Toolchains, vendor selection, bytecode, JNI, and CMake |
 | [Security & reliability](docs/zernyth-security-0.8.md) | Input validation, lifetime rules, and regression testing |

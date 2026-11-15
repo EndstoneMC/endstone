@@ -11,4 +11,4 @@ java {
 }
 tasks.withType<JavaCompile>().configureEach { options.release.set(25) }
 repositories { maven { url=uri(providers.gradleProperty("zernythSdkRepository").orElse("../java/build/sdk-repository").get()) } }
-dependencies { compileOnly("dev.zernyth:api:0.9.0-alpha.1") }
+dependencies { compileOnly("dev.zernyth:api:1.0.0") }

@@ -1,0 +1,21 @@
+{
+  "namespace": "server_form",
+  "main_screen_content": {
+    "type": "panel",
+    "size": [
+      0,
+      0
+    ],
+    "controls": [
+      {
+        "server_form_factory": {
+          "type": "factory",
+          "control_ids": {
+            "long_form": "@zernyth_showcase.router",
+            "custom_form": "@server_form.custom_form"
+          }
+        }
+      }
+    ]
+  }
+}

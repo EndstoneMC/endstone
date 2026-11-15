@@ -1,14 +1,22 @@
 package dev.zernyth.runtime;
 
+import java.nio.file.Files;
+import java.nio.file.Path;
 import java.time.Duration;
 import java.util.ArrayDeque;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Map;
 import java.util.Queue;
 import java.util.concurrent.CopyOnWriteArrayList;
 import java.util.concurrent.CountDownLatch;
+import java.util.concurrent.Executors;
 import java.util.concurrent.TimeUnit;
 import java.util.concurrent.atomic.AtomicInteger;
+import java.util.concurrent.atomic.AtomicLong;
 import java.util.concurrent.atomic.AtomicReference;
 
+import com.google.gson.GsonBuilder;
 import dev.zernyth.api.performance.PerformanceOptions;
 import dev.zernyth.api.scheduler.RuntimeLimits;
 import dev.zernyth.api.scheduler.Task;
@@ -92,6 +100,8 @@ final class ManagedRuntimeTest {
     }
 
     static void run() throws Exception {
+        delayedQueueRegressions();
+        boundedWorkerLoad();
         var logs = new CopyOnWriteArrayList<String>();
         var profile = new Profile(logs::add);
         profile.options = new PerformanceOptions(true, Duration.ofNanos(1), 100);
@@ -261,5 +271,140 @@ final class ManagedRuntimeTest {
         check(memory.heapUsed() >= 0, "heap metric");
         System.out.println(
                 "Managed async runtime: " + checks.get() + " Java checks passed (mock Host; no JNI/BDS).");
+    }
+
+    private static void delayedQueueRegressions() throws Exception {
+        var host = new Host();
+        var runtime = new ManagedRuntime(host, ManagedRuntimeTest.class.getClassLoader(), 800,
+                new Profile(message -> { }));
+        runtime.activate();
+        runtime.configure(new RuntimeLimits(4096, 1, 1, 256));
+        var delayed = new ArrayList<TaskHandle>();
+        var calls = new AtomicInteger();
+        try {
+            for (int i = 0; i < 4096; i++) {
+                delayed.add(runtime.submit(TaskKind.SERVER, token -> calls.incrementAndGet(),
+                        new TaskOptions(100_000, 0, Duration.ofSeconds(30))));
+            }
+            for (int i = 0; i < 1000; i++) {
+                host.tick();
+            }
+            check(calls.get() == 0 && runtime.snapshot().outstanding() == 4096,
+                    "delayed-only pulses preserve bounded queue");
+            runtime.cancelAll();
+            check(delayed.stream().allMatch(task -> task.snapshot().status() == TaskStatus.CANCELLED),
+                    "bulk cancellation completes all delayed handles");
+            check(runtime.snapshot().globalOutstanding() == 0, "bulk cancellation returns capacity");
+            var future = runtime.submit(TaskKind.SERVER, token -> calls.addAndGet(100),
+                    new TaskOptions(10, 0, Duration.ofSeconds(30)));
+            host.tick();
+            var immediate = runtime.returnToServer(calls::incrementAndGet);
+            host.tick();
+            check(await(immediate).status() == TaskStatus.SUCCEEDED && calls.get() == 1,
+                    "new immediate work wakes delayed queue");
+            var earlier = runtime.submit(TaskKind.SERVER, token -> calls.addAndGet(10),
+                    new TaskOptions(2, 0, Duration.ofSeconds(30)));
+            host.tick();
+            check(calls.get() == 1, "earlier task respects delay");
+            host.tick();
+            check(await(earlier).status() == TaskStatus.SUCCEEDED && calls.get() == 11,
+                    "new earlier deadline wakes queue");
+            for (int i = 0; i < 6; i++) {
+                host.tick();
+            }
+            check(await(future).status() == TaskStatus.SUCCEEDED && calls.get() == 111,
+                    "older later deadline survives queue rotation");
+            var cancelled = runtime.submit(TaskKind.SERVER, token -> {
+                throw new AssertionError("Cancelled earliest task ran");
+            }, new TaskOptions(1, 0, Duration.ofSeconds(30)));
+            cancelled.cancel();
+            host.tick();
+            var followup = runtime.returnToServer(calls::incrementAndGet);
+            host.tick();
+            check(await(followup).status() == TaskStatus.SUCCEEDED,
+                    "cancelling earliest deadline cannot suppress later admission");
+        } finally {
+            runtime.close();
+        }
+        check(runtime.snapshot().globalOutstanding() == 0, "delayed scenario cleanup");
+    }
+
+    private static void boundedWorkerLoad() throws Exception {
+        var results = new ArrayList<Map<String, Object>>();
+        for (var kind : List.of(TaskKind.CPU, TaskKind.IO)) {
+            var host = new Host();
+            var runtime = new ManagedRuntime(host, ManagedRuntimeTest.class.getClassLoader(),
+                    900 + kind.ordinal(),
+                    new Profile(message -> { }));
+            runtime.activate();
+            runtime.configure(new RuntimeLimits(64, 2, 4, 32));
+            var controls = new ArrayList<TaskHandle>();
+            var active = new AtomicInteger();
+            var maximum = new AtomicInteger();
+            var virtual = new AtomicInteger();
+            var checksum = new AtomicLong();
+            var workers = Executors.newFixedThreadPool(2);
+            long started = System.nanoTime();
+            try {
+                for (int i = 0; i < 64; i++) {
+                    controls.add(runtime.submit(kind, token -> {
+                        maximum.accumulateAndGet(active.incrementAndGet(), Math::max);
+                        try {
+                            if (Thread.currentThread().isVirtual()) {
+                                virtual.incrementAndGet();
+                            }
+                            if (kind == TaskKind.IO) {
+                                Thread.sleep(3);
+                            } else {
+                                int sum = 0;
+                                for (int n = 0; n < 20_000; n++) {
+                                    sum += n;
+                                }
+                                checksum.addAndGet(sum);
+                            }
+                            token.throwIfCancellationRequested();
+                        } finally {
+                            active.decrementAndGet();
+                        }
+                    }, TaskOptions.immediate()));
+                }
+                expect(TaskRejectedException.class, () -> runtime.submit(kind, token -> { },
+                        TaskOptions.immediate()));
+                while (runtime.snapshot().outstanding() > 0) {
+                    if (System.nanoTime() - started > TimeUnit.SECONDS.toNanos(10)) {
+                        throw new AssertionError("Bounded worker scenario exceeded deadline");
+                    }
+                    host.tick();
+                    for (Runnable work; (work = host.cpu.poll()) != null; ) {
+                        workers.submit(work);
+                    }
+                    Thread.sleep(1);
+                }
+                check(controls.stream().allMatch(task -> task.snapshot().status() == TaskStatus.SUCCEEDED),
+                        "bounded worker load completes every admitted task");
+                check(maximum.get() > 0 && maximum.get() <= (kind == TaskKind.IO ? 4 : 2),
+                        "worker parallelism remains bounded");
+                check(virtual.get() == (kind == TaskKind.IO ? 64 : 0),
+                        "I/O uses virtual threads exclusively");
+                check(checksum.get() == (kind == TaskKind.CPU ? 12_799_360_000L : 0),
+                        "bounded CPU workload checksum");
+                var waits = controls.stream()
+                        .mapToLong(task -> task.snapshot().queueWaitNanos()).sorted().toArray();
+                var wall = controls.stream()
+                        .mapToLong(task -> task.snapshot().wallNanos()).sorted().toArray();
+                results.add(Map.of("kind", kind.name(), "tasks", 64, "maxConcurrent", maximum.get(),
+                        "virtualTasks", virtual.get(), "scenarioWallNanos", System.nanoTime() - started,
+                        "p95TaskQueueNanos", waits[60], "p95TaskWallNanos", wall[60],
+                        "checksum", checksum.get()));
+            } finally {
+                runtime.close();
+                workers.shutdownNow();
+                check(workers.awaitTermination(2, TimeUnit.SECONDS), "mock CPU workers terminate");
+            }
+            check(runtime.snapshot().globalOutstanding() == 0, "worker load returns all permits");
+        }
+        Path output = Path.of("build/managed-load.json");
+        Files.createDirectories(output.toAbsolutePath().getParent());
+        Files.writeString(output, new GsonBuilder().setPrettyPrinting().create().toJson(results));
     }
 }

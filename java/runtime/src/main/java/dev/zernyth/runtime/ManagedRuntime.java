@@ -79,6 +79,8 @@ final class ManagedRuntime implements AsyncRuntime, AutoCloseable {
     private boolean active, closed;
     private Task pump;
     private long tick, accepted, rejected, timeouts;
+    // Conservative lower bound. Cancellation may leave it early, never later than queued work.
+    private long nextDueTick = Long.MAX_VALUE;
     private int runningCpu, runningIo;
 
     ManagedRuntime(Host host, ClassLoader loader, long generation, Profile profile) {
@@ -144,7 +146,7 @@ final class ManagedRuntime implements AsyncRuntime, AutoCloseable {
             }
             var task = new Control(this, IDS.incrementAndGet(), generation, kind, action, options, due);
             tasks.put(task.id, task);
-            queue.add(task);
+            enqueue(task);
             accepted++;
             return task;
         }
@@ -211,6 +213,14 @@ final class ManagedRuntime implements AsyncRuntime, AutoCloseable {
         }
     }
 
+    /** Adds work while holding gate and keeps delayed-only pulses constant-time. */
+    private void enqueue(Control control) {
+        queue.add(control);
+        if (control.due < nextDueTick) {
+            nextDueTick = control.due;
+        }
+    }
+
     void pulse() {
         host.checkMain();
         for (Task task; (task = nativeCancels.poll()) != null; ) {
@@ -226,20 +236,31 @@ final class ManagedRuntime implements AsyncRuntime, AutoCloseable {
                 return;
             }
             tick++;
-            remaining = queue.size();
-            long now = System.nanoTime();
-            for (var control : tasks.values()) {
-                if ((control.status == TaskStatus.RUNNING || control.status == TaskStatus.CANCEL_REQUESTED) &&
-                        !control.timedOut
-                        && now - control.started > control.options.warnAfter().toNanos()) {
-                    control.timedOut = true;
-                    timeouts++;
-                    warnings++;
+            remaining = nextDueTick <= tick ? queue.size() : 0;
+            if (remaining > 0) {
+                nextDueTick = Long.MAX_VALUE;
+            }
+            // Server callbacks finish on this thread and check their duration on exit.
+            // Only asynchronous work can still be running when a normal tick pulse begins.
+            if (runningCpu > 0 || runningIo > 0) {
+                long now = System.nanoTime();
+                for (var control : tasks.values()) {
+                    if ((control.status == TaskStatus.RUNNING
+                            || control.status == TaskStatus.CANCEL_REQUESTED)
+                            && !control.timedOut
+                            && now - control.started > control.options.warnAfter().toNanos()) {
+                        control.timedOut = true;
+                        timeouts++;
+                        warnings++;
+                    }
                 }
             }
         }
         for (int i = 0; i < warnings; i++) {
             profile.warning("task-timeout", "running task");
+        }
+        if (remaining == 0) {
+            return;
         }
         long mainStart = System.nanoTime();
         int mainCallbacks = 0;
@@ -258,7 +279,7 @@ final class ManagedRuntime implements AsyncRuntime, AutoCloseable {
                         && (mainCallbacks >= limits.maxServerCallbacksPerTick()
                         || System.nanoTime() - mainStart > 2_000_000))
                         || !permit(control)) {
-                    queue.add(control);
+                    enqueue(control);
                     continue;
                 }
                 control.status = TaskStatus.DISPATCHED;
@@ -391,7 +412,7 @@ final class ManagedRuntime implements AsyncRuntime, AutoCloseable {
                     control.queuedAt = System.nanoTime();
                     control.due = tick > Long.MAX_VALUE - control.options.periodTicks() ? Long.MAX_VALUE
                             : tick + control.options.periodTicks();
-                    queue.add(control);
+                    enqueue(control);
                 } else {
                     done = finish(control, TaskStatus.SUCCEEDED);
                 }
@@ -443,6 +464,9 @@ final class ManagedRuntime implements AsyncRuntime, AutoCloseable {
         List<Control> copy;
         synchronized (gate) {
             copy = List.copyOf(tasks.values());
+            // The captured controls are cancelled below. Avoid repeatedly searching a rotated queue.
+            queue.clear();
+            nextDueTick = Long.MAX_VALUE;
         }
         copy.forEach(this::cancel);
     }
@@ -481,6 +505,8 @@ final class ManagedRuntime implements AsyncRuntime, AutoCloseable {
             closed = true;
             active = false;
             copy = List.copyOf(tasks.values());
+            queue.clear();
+            nextDueTick = Long.MAX_VALUE;
             timer = pump;
             pump = null;
             loader = null;

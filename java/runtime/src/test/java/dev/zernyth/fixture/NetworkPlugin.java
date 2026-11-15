@@ -34,6 +34,7 @@ public final class NetworkPlugin extends JavaPlugin {
     private int high, filtered, selfCalls, savedCount;
     private Registration low, upper, throwing, selected, slow, self;
     private NetworkConnection connection;
+    private NetworkConnection peerConnection;
 
     private static void check(boolean condition) {
         if (!condition) {
@@ -150,6 +151,27 @@ public final class NetworkPlugin extends JavaPlugin {
                             check(network.getMetrics().slowCallbacks() >= 1);
                             slow.close();
                             network.setDiagnosticsEnabled(false);
+                        }
+                        case "multiple-connections" -> {
+                            var connections = network.getConnections();
+                            check(connections.size() == 2);
+                            peerConnection = connections.get(1);
+                            check(!peerConnection.getInfo().identifier()
+                                    .equals(connection.getInfo().identifier()));
+                            check(!peerConnection.getInfo().playerId()
+                                    .equals(connection.getInfo().playerId()));
+                        }
+                        case "multiple-player-packet" -> {
+                            check(packets.getLast().context().playerId().orElseThrow()
+                                    .equals(peerConnection.getInfo().playerId()));
+                            check(packets.getFirst().context().playerId().orElseThrow()
+                                    .equals(connection.getInfo().playerId()));
+                        }
+                        case "multiple-removed" -> {
+                            check(!peerConnection.isActive() && connection.isActive());
+                            var connections = network.getConnections();
+                            check(connections.size() == 1 && connections.getFirst().getInfo().identifier()
+                                    .equals(connection.getInfo().identifier()));
                         }
                         case "disconnect" -> {
                             check(!connection.isActive()

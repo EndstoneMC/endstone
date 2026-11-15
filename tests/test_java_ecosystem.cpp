@@ -4,6 +4,7 @@
 
 #include "endstone/block/block_state.h"
 #include "endstone/core/logger_factory.h"
+#include "endstone/core/plugin/java_gameplay_internal.h"
 #include "endstone/core/plugin/java_plugin_loader.h"
 #include "endstone/core/plugin/plugin_manager.h"
 #include "endstone/core/plugin/service_manager.h"
@@ -68,6 +69,9 @@ TEST(JavaEcosystemTest, DependenciesServicesConfigurationCommandsAndRollback)
     auto phase = [&](std::string name) {
         ASSERT_TRUE(commands.dispatch(console, "ecotest " + name)) << name;
     };
+    // BDS attaches its server thread for individual JNI callbacks. Reattachment
+    // creates a new Java Thread wrapper while preserving the native thread identity.
+    ASSERT_EQ(endstone::core::java::details::jvm->DetachCurrentThread(), JNI_OK);
     phase("check");
     phase("worker");
     phase("class-conflict");

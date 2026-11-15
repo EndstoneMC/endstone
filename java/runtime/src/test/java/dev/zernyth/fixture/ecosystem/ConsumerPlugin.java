@@ -123,11 +123,17 @@ public final class ConsumerPlugin extends JavaPlugin {
             }
             case "worker" -> {
                 var failed = new AtomicBoolean();
+                var diagnosticsRejected = new AtomicBoolean();
                 Thread thread = new Thread(() -> {
                     try {
                         service.greet();
                     } catch (IllegalStateException expected) {
                         failed.set(true);
+                    }
+                    try {
+                        getDiagnostics();
+                    } catch (IllegalStateException expected) {
+                        diagnosticsRejected.set(true);
                     }
                 });
                 thread.start();
@@ -136,7 +142,7 @@ public final class ConsumerPlugin extends JavaPlugin {
                 } catch (InterruptedException error) {
                     throw new AssertionError(error);
                 }
-                check(failed.get());
+                check(failed.get() && diagnosticsRejected.get());
             }
             case "class-conflict" -> {
                 try (var duplicate = new URLClassLoader(

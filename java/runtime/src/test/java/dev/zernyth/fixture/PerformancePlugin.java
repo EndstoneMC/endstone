@@ -29,6 +29,12 @@ public final class PerformancePlugin extends JavaPlugin implements Listener {
         var services = getServer().getServicesManager();
         getServer().registerCommand("perfbench", "", "", (sender, command, args) -> {
             switch (args[0]) {
+                case "packet-listeners" -> {
+                    for (int i = 0; i < 3; i++) {
+                        getServer().getNetworkManager().listen(
+                                PacketFilter.all(), EventPriority.NORMAL, packet -> BenchmarkHarness.sink++);
+                    }
+                }
                 case "players" -> BenchmarkHarness.measure("jni-production-player-list",
                         () -> BenchmarkHarness.sink = getServer().getOnlinePlayers().size(), 2000);
                 case "strings" -> BenchmarkHarness.measure("jni-production-player-strings",

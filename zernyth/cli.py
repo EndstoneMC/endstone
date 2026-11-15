@@ -41,11 +41,11 @@ def main(argv=None):
     parser.add_argument("--version", action="version", version="Zernyth Engine " + get_version())
     parser.add_argument("--server", type=Path, required=True, help="Existing compatible BDS directory")
     parser.add_argument("--java-home", type=Path, default=os.environ.get("JAVA_HOME"))
-    parser.add_argument("--run", action="store_true", help="Explicitly start BDS; establish network isolation first")
+    parser.add_argument("--run", action="store_true", help="Explicitly start BDS using the operator-managed network configuration")
     args = parser.parse_args(argv)
     reject_conflicting_distribution()
     if os.name != "nt":
-        parser.error("This alpha wheel is validated only for Windows x64")
+        parser.error("This release wheel is supported only on Windows x64")
     if args.java_home is None:
         parser.error("Set JAVA_HOME or --java-home to an installed JDK 25")
     home = args.java_home.resolve()
@@ -65,7 +65,7 @@ def main(argv=None):
     if not all(p.is_file() for p in jars):
         parser.error("Incomplete Java runtime installation")
     if not args.run:
-        print("Inspection only; no BDS process started. --run requires operator-managed network isolation.")
+        print("Inspection only; no BDS process started. Use --run to start with your operator-managed network configuration.")
         return
     os.environ.update(JAVA_HOME=str(home), ZERNYTH_JAVA_ENABLED="1",
                       ZERNYTH_JVM_LIBRARY=str(jvm),

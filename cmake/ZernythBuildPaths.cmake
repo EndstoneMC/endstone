@@ -1,5 +1,6 @@
-# Remove personal source/debug paths at compile/link time, never by editing PE bytes.
+# Remove private source/debug paths at compile/link time, never by editing binaries.
 option(ZERNYTH_SANITIZE_BUILD_PATHS "Map native build paths for redistributable artifacts" ON)
+set(ZERNYTH_BUILD_PATH_ROOT "" CACHE PATH "Optional shared root of private Linux build inputs")
 if (WIN32 AND ZERNYTH_SANITIZE_BUILD_PATHS)
     if (NOT DEFINED ENV{USERPROFILE} OR "$ENV{USERPROFILE}" STREQUAL "")
         message(FATAL_ERROR "USERPROFILE is required for Windows build-path mapping")
@@ -14,4 +15,11 @@ if (WIN32 AND ZERNYTH_SANITIZE_BUILD_PATHS)
     add_link_options("/PDBALTPATH:%_PDB%")
     # Retained outside the wheel for auditing which static-library objects were linked.
     add_link_options("/MAP")
+elseif (CMAKE_SYSTEM_NAME STREQUAL "Linux" AND ZERNYTH_SANITIZE_BUILD_PATHS)
+    foreach (_zernyth_prefix IN ITEMS "${PROJECT_SOURCE_DIR}" "$ENV{CONAN_HOME}" "${ZERNYTH_BUILD_PATH_ROOT}")
+        if (NOT "${_zernyth_prefix}" STREQUAL "")
+            add_compile_options("-ffile-prefix-map=${_zernyth_prefix}=/zernyth")
+            add_compile_options("-fdebug-prefix-map=${_zernyth_prefix}=/zernyth")
+        endif ()
+    endforeach ()
 endif ()

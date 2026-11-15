@@ -1,5 +1,5 @@
 # Zernyth Java plugin template
-The local dependency is `dev.zernyth:api:0.9.0-alpha.1`. For managed CPU/I/O tasks, cancellation,
+The local dependency is `dev.zernyth:api:1.0.0`. For managed CPU/I/O tasks, cancellation,
 server handoffs and profiling, see the [runtime guide](../docs/zernyth-runtime-0.6.md)
 and the existing HelloZernyth `/zernythasync` example.
 Java 25 LTS is required; Eclipse Temurin 25 is preferred. This directory belongs to the existing fork.

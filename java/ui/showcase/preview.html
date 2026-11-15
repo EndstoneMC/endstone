@@ -1,0 +1,103 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Zernyth UI Showcase Preview</title>
+<style>
+  :root { --t: url("pack/textures/zernyth_ui/showcase/"); }
+  body { margin: 0; background: #7fb2ea; font-family: ui-monospace, Consolas, monospace; color: #fff; }
+  .note { background: #2b1600; color: #ffcf9a; padding: 8px 16px; font-size: 13px; }
+  nav { display: flex; gap: 6px; padding: 10px 16px; flex-wrap: wrap; }
+  nav button { background: #1f1f24; color: #fff; border: 2px solid #ff7a00; padding: 6px 10px; cursor: pointer; font: inherit; }
+  nav button[aria-pressed="true"] { background: #ff7a00; color: #1c0a00; }
+  .stage { display: grid; place-items: center; padding: 20px; min-height: 560px; image-rendering: pixelated;
+           background: linear-gradient(#5b8fd6, #9cc4f0 60%, #d8c58f 60%); }
+  .scale { transform: scale(2); transform-origin: center; }
+  .window { position: relative; width: 340px; height: 226px; }
+  .bg { position: absolute; left: 4px; right: 4px; top: 18px; bottom: 0; border-image: url(pack/textures/zernyth_ui/showcase/window.png) 8 fill / 8px stretch; }
+  .header { position: absolute; left: -6px; top: 0; width: 352px; height: 24px; background: url(pack/textures/zernyth_ui/showcase/header.png); z-index: 2; }
+  .header .logo { position: absolute; left: 8px; top: 4px; width: 16px; height: 16px; background: url(pack/textures/zernyth_ui/showcase/logo.png) 0 0/16px 16px; }
+  .header .brand { position: absolute; left: 28px; top: 7px; font: bold 8px/10px ui-monospace, monospace; letter-spacing: .5px; text-shadow: 1px 1px #0008; }
+  .header .title { position: absolute; right: 30px; top: 7px; font: bold 9px/10px ui-monospace, monospace; text-shadow: 1px 1px #0008; }
+  .close { position: absolute; right: 4px; top: 4px; width: 14px; height: 14px; background: #3a3a3a; border: 1px solid #111; font-size: 9px; line-height: 13px; text-align: center; z-index: 5; }
+  .body { position: absolute; left: 10px; right: 10px; top: 30px; bottom: 8px; z-index: 3; display: flex; gap: 4px; }
+  .grid { display: grid; gap: 0; margin: 0 auto; align-content: start; }
+  .cell { padding: 2px; }
+  .tile { position: relative; width: 100%; height: 100%; background-size: 100% 100%; overflow: hidden; }
+  .tile::after { content: ""; position: absolute; inset: 0; border-image: url(pack/textures/zernyth_ui/showcase/tile_frame.png) 3 / 3px; }
+  .tile:hover::after { border-image-source: url(pack/textures/zernyth_ui/showcase/tile_frame_hover.png); }
+  .shade { position: absolute; left: 0; right: 0; bottom: 0; height: 70%; background: url(pack/textures/zernyth_ui/showcase/shade.png) 0 0/100% 100%; }
+  .txt { position: absolute; font-size: 6px; line-height: 7px; text-shadow: 1px 1px #000; white-space: pre-line; }
+  .panel { border-image: url(pack/textures/zernyth_ui/showcase/panel.png) 4 fill / 4px stretch; position: relative; }
+  .card { border-image: url(pack/textures/zernyth_ui/showcase/card.png) 4 fill / 4px stretch; position: relative; height: 100%; }
+  .card:hover { border-image-source: url(pack/textures/zernyth_ui/showcase/card_hover.png); }
+  .btn { border-image: url(pack/textures/zernyth_ui/showcase/button.png) 4 fill / 4px stretch; display: grid; place-items: center; height: 100%; font-size: 7px; }
+  .btn:hover { border-image-source: url(pack/textures/zernyth_ui/showcase/button_hover.png); }
+  .tab { border-image: url(pack/textures/zernyth_ui/showcase/tab.png) 4 fill / 4px stretch; width: 32px; height: 32px; margin: 2px; background-position: center; background-size: 24px 24px; background-repeat: no-repeat; background-clip: padding-box; }
+  .tab:hover { border-image-source: url(pack/textures/zernyth_ui/showcase/tab_hover.png); }
+  .scroll { overflow-y: auto; overflow-x: hidden; flex: 1; }
+  .hud { position: relative; width: 427px; height: 240px; background: linear-gradient(#78aef0, #b9d6f5 62%, #e2d3a0 62%); }
+  .sidebar { position: absolute; right: 4px; top: 50%; transform: translateY(-50%); padding: 15px 7px 4px; border-image: url(pack/textures/zernyth_ui/showcase/hud_frame.png) 4 fill / 4px stretch; font-size: 6px; line-height: 10px; min-width: 90px; }
+  .ribbon { position: absolute; left: -3px; right: -3px; top: -3px; height: 14px; border-image: url(pack/textures/zernyth_ui/showcase/hud_ribbon.png) 3 fill / 3px stretch; text-align: center; font: bold 7px/14px ui-monospace, monospace; }
+  .row { display: flex; justify-content: space-between; gap: 12px; }
+  .actionbar { position: absolute; left: 50%; bottom: 46px; transform: translateX(-50%); padding: 3px 7px; border-image: url(pack/textures/zernyth_ui/showcase/actionbar.png) 4 fill / 4px stretch; font-size: 7px; }
+</style>
+</head>
+<body>
+<p class="note">Browser approximation of the showcase pack, built from the pack's own textures. It is <b>not</b> a Minecraft client render; fonts, spacing and scaling differ in the game. The JSON UI has not been tested in a Bedrock client.</p>
+<nav id="nav"></nav>
+<div class="stage"><div class="scale" id="stage"></div></div>
+<script>
+const T = (n) => `pack/textures/zernyth_ui/showcase/${n}.png`;
+const C = { "0": "#000", "1": "#00a", "2": "#0a0", "3": "#0aa", "4": "#a00", "5": "#a0a", "6": "#fa0", "7": "#aaa", "8": "#555", "9": "#55f", a: "#5f5", b: "#5ff", c: "#f55", d: "#f5f", e: "#ff5", f: "#fff" };
+function mc(text) { // § colour and bold codes -> HTML
+  let out = "", color = "#fff", bold = false;
+  for (let i = 0; i < text.length; i++) {
+    if (text[i] === "§") { const k = text[++i].toLowerCase(); if (C[k]) { color = C[k]; bold = false; } else if (k === "l") bold = true; else if (k === "r") { color = "#fff"; bold = false; } continue; }
+    const ch = text[i] === "<" ? "&lt;" : text[i];
+    out += ch === "\n" ? "<br>" : `<span style="color:${color};${bold ? "font-weight:bold" : ""}">${ch}</span>`;
+  }
+  return out;
+}
+const screens = {
+  main: { title: "MAIN MENU", render: () => grid(3, [104, 84], [
+    ["§lPLAY§r\n§7Join a game", "tile_play"], ["§lSHOP§r\n§7Buy items", "tile_shop"], ["§lGODS§r\n§7Choose your god", "tile_gods"],
+    ["§lTEAMS§r\n§7Manage your team", "tile_teams"], ["§lSTATS§r\n§7View your stats", "tile_stats"], ["§lSETTINGS§r\n§7Adjust your preferences", "tile_settings"]], "bottom") },
+  teams: { title: "TEAMS", render: () => grid(3, [104, 58], [
+    ["§lTEAM INFO§r\nAccess your team stats", "team_info"], ["§lMANAGE MEMBERS§r\nManage your team's members", "team_members"], ["§lALLIANCES§r\nManage your team's alliances", "team_alliances"],
+    ["§lTEAM CHUNKS§r\nClaim / unclaim chunks", "team_chunks"], ["§lLEAVE TEAM§r\nLeave / disband your team", "team_leave"], ["§lTEAM SETTINGS§r\nManage your team's settings", "team_settings"],
+    ["§lINVITE PLAYERS§r\nInvite players to your team", "team_invite"], ["§lRAIDS§r\nStart raids or view history", "team_raids"], ["§lBACK§r\nReturn to main menu", "team_back"]], "top") },
+  gods: { title: "GOD AFFINITY", render: () => `<div class="panel" style="width:96px"><div class="txt" style="left:5px;top:5px">${mc("§6§lScoreboard§r\n§f1. Infernir §e1\n§f2. Anarmir §e0\n§f3. Ox'al §e0\n§f4. Tossenkim §e0\n§f5. Padandir §e0\n§f6. Stelhym §e0\n§f7. Conssesir §e0\n§f8. Kiwiki §e0\n\n§7Your god: §dnone")}</div></div>
+    <div class="scroll"><div class="grid" style="grid-template-columns:repeat(2,106px)">${[["anarmir","Anarmir","Dian of Chaos","Speed I"],["infernir","Infernir","Arkess of Fire","Fire Resistance I"],["tossenkim","Tossenkim","Ark of Tide","Water Breathing I"],["padandir","Padandir","Dian of War","Strength I"],["stelhym","Stelhym","Drune of Life","Regeneration I"],["conssesir","Conssesir","Drune of Death","Wither Ward I"],["oxal","Ox'al","Arkess of Discipline","Village Hero I"],["kiwiki","Kiwiki","Ark of Winds","Jump Boost I"]]
+      .map(([id, n, t, e]) => `<div class="cell" style="height:46px"><div class="card"><img src="${T("god_" + id)}" style="position:absolute;left:5px;top:11px;width:24px"><div class="txt" style="left:33px;top:6px">${mc(`§l${n}§r\n§7${t}\n§8${e}`)}</div></div></div>`).join("")}</div></div>` },
+  god: { title: "ANARMIR", render: () => `<div class="panel" style="width:62px;display:grid;place-items:center"><img src="${T("god_banner")}" style="width:48px;height:120px"></div>
+    <div class="panel" style="flex:1"><div class="txt" style="left:6px;right:6px;top:8px;text-align:center">${mc("§l§fANARMIR§r\n§7Anarmir, Dian of Chaos, the Pillagers' deity\nand spiritual enemy of the Kadi.\n\n§eDo you wish to pick this god\nand take on their challenge?")}</div>
+      <div style="position:absolute;bottom:8px;left:0;right:0;display:flex;justify-content:center;gap:4px"><div class="btn" style="width:88px;height:22px"><span>${mc("§eYes")}</span></div><div class="btn" style="width:88px;height:22px"><span>${mc("§cNo")}</span></div></div></div>
+    <div style="width:96px;display:flex;flex-direction:column;gap:4px">${["§9§lLVL 1§r\n\n§fIf your god loses:\nSpeed I", "§a§lLVL 2§r\n\n§fIf your god wins:\nSpeed II"].map((t) => `<div class="panel" style="height:80px"><div class="txt" style="left:5px;top:5px">${mc(t)}</div></div>`).join("")}</div>` },
+  stats: { title: "STATS", render: () => `<div style="flex:1;display:flex;flex-direction:column"><div class="scroll" style="position:relative"><div class="txt" style="position:static;padding:6px">${mc("§bHere are your current stats, Steve:\n\n§aKills: §f0\n§aDeaths: §f0\n§aK/D ratio: §f0.00\n§aLevel: §f0\n§aCoins: §f0\n§aBlocks broken: §f0\n§aBlocks placed: §f0\n\n§7(Showcase values; connect your own statistics with ui.bind.)\n\n§eKeep playing to improve your stats!")}</div></div><div class="btn" style="width:156px;height:22px;margin:0 auto">Back</div></div>` },
+  shop: { title: "DIMENSIONAL BLOCKS", render: () => `<div>${["block_bricks", "block_netherrack", "block_portal"].map((t) => `<div class="tab" style="display:grid;place-items:center"><img src="${T(t)}" style="width:24px;height:24px"></div>`).join("")}</div>
+    <div class="scroll"><div class="grid" style="grid-template-columns:repeat(3,90px)">${[["obsidian","Obsidian","100","1"],["crying_obsidian","Crying Obsidian","200","2"],["portal","Portal Stone","500","5"]]
+      .map(([id, n, b, s]) => `<div class="cell" style="height:80px"><div class="card"><img src="${T("block_" + id)}" style="position:absolute;left:27px;top:5px;width:32px"><div class="txt" style="left:3px;right:3px;top:40px;text-align:center">${mc(`§f${n}\n§aBuy: ${b} $\n§cSell: ${s} $`)}</div></div></div>`).join("")}</div></div>` },
+};
+function grid(cols, [w, h], items, textPos) {
+  return `<div class="grid" style="grid-template-columns:repeat(${cols},${w}px)">${items.map(([text, tex]) => `<div class="cell" style="height:${h}px"><div class="tile" style="background-image:url(${T(tex)})"><div class="shade"></div><div class="txt" style="${textPos === "bottom" ? "left:4px;right:4px;bottom:5px;text-align:center" : "left:5px;top:5px"}">${mc(text)}</div></div></div>`).join("")}</div>`;
+}
+function windowHtml(s) {
+  return `<div class="window"><div class="bg"></div><div class="header"><div class="logo"></div><span class="brand">ZERNYTH.NET</span><span class="title">${s.title}</span></div><div class="close">✕</div><div class="body">${s.render()}</div></div>`;
+}
+function hud() {
+  return `<div class="hud"><div class="sidebar"><div class="ribbon">YOUR STATS</div>${[["Money", "567"], ["Kills", "0"], ["Deaths", "0"], ["TPS", "20"]].map(([a, b]) => `<div class="row"><span>${a}</span><span style="color:#f55">${b}</span></div>`).join("")}</div><div class="actionbar">${mc("PvP: §aON §r  §aIn spawn")}</div></div>`;
+}
+const nav = document.getElementById("nav"), stage = document.getElementById("stage");
+function show(key) {
+  stage.innerHTML = key === "hud" ? hud() : windowHtml(screens[key]);
+  for (const b of nav.children) b.setAttribute("aria-pressed", String(b.dataset.key === key));
+}
+for (const key of [...Object.keys(screens), "hud"]) {
+  const b = document.createElement("button"); b.textContent = key; b.dataset.key = key; b.onclick = () => show(key); nav.appendChild(b);
+}
+show(new URLSearchParams(location.search).get("screen") || "main");
+</script>
+</body>
+</html>
