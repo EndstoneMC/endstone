@@ -8,18 +8,66 @@
 
 A Java 25 plugin framework built into Endstone, powered by the original Minecraft Bedrock Dedicated Server.
 
-[![Stable](https://img.shields.io/badge/version-1.0.0-8B5CF6?style=for-the-badge)](docs/pypi.md)
+[![Stable](https://img.shields.io/badge/version-1.0.0-8B5CF6?style=for-the-badge)](https://github.com/MakisImperium/endstone-zernyth/releases/tag/v1.0.0)
 [![Java](https://img.shields.io/badge/Java-25_LTS-F59E0B?style=for-the-badge)](docs/zernyth-java-25.md)
 [![License](https://img.shields.io/badge/license-Apache_2.0-6366F1?style=for-the-badge)](LICENSE)
 
-**[Get started](#-getting-started)** · **[Developer SDK](#-build-your-first-plugin)** · **[Documentation](#-documentation)** · **[Validation](#-validation-and-compatibility)**
+**[Install](#-install-a-server)** · **[Write a plugin](#-build-your-first-plugin)** · **[Website](https://zernyth.net)** · **[Documentation](https://zernyth.net/docs)** · **[Validation](#-validation-and-compatibility)**
 
 </div>
 
 ---
 
 > [!IMPORTANT]
-> **Zernyth 1.0.0 is prepared for its first stable publication.** The Windows wheel uses CPython 3.15. The separate Ubuntu 24.04 x86_64 archive uses CPython 3.12 and the validated system-allocator startup path. Both target Java 25 and BDS 1.26.60.6. Installation, validation coverage and release limitations are recorded in the [1.0.0 release guide](docs/zernyth-stable-1.0.md). Public upload is owner-controlled.
+> **Zernyth Engine 1.0.0 is out – the first stable release.** Windows: `pip install zernyth-engine==1.0.0` (CPython 3.15). Ubuntu 24.04: the archive on the [release page](https://github.com/MakisImperium/endstone-zernyth/releases/tag/v1.0.0) (CPython 3.12). Both need Java 25 and BDS **1.26.60.6**. Plugins, docs and downloads: **[zernyth.net](https://zernyth.net)**. Validation coverage and limits: [1.0.0 release guide](docs/zernyth-stable-1.0.md).
+
+## ⚡ Install a server
+
+You need three things that Zernyth does not ship: the **Bedrock Dedicated Server 1.26.60.6** from Mojang (other versions are not supported yet), a **JDK 25** (we recommend [Eclipse Temurin 25](https://adoptium.net/temurin/releases/?version=25)) and **Python** in the version named below. Try it on a test server with a new world first.
+
+### Windows (x64)
+
+1. Install [Python 3.15](https://www.python.org/downloads/) and Temurin 25. In the Temurin installer, enable **Set JAVA_HOME**.
+2. Unpack BDS 1.26.60.6 into a folder, for example `C:\BDS`.
+3. Open PowerShell in a new, empty folder (for example `C:\Zernyth`) and install Zernyth:
+   ```powershell
+   py -3.15 -m venv .venv
+   .\.venv\Scripts\python.exe -m pip install zernyth-engine==1.0.0
+   ```
+4. Check the setup, then start the server:
+   ```powershell
+   .\.venv\Scripts\zernyth.exe --server "C:\BDS"
+   .\.venv\Scripts\zernyth.exe --server "C:\BDS" --run
+   ```
+   Without JAVA_HOME, add `--java-home "<JDK 25 folder>"`. Type `stop` in the console to shut the server down.
+
+### Ubuntu 24.04 (x86_64)
+
+1. Install Temurin 25 (see [adoptium.net](https://adoptium.net/installation/linux/)). Python 3.12 is already part of Ubuntu 24.04.
+2. Unpack BDS 1.26.60.6 for Linux, for example to `/opt/bds`.
+3. Download, verify and install Zernyth:
+   ```sh
+   wget https://github.com/MakisImperium/endstone-zernyth/releases/download/v1.0.0/zernyth-engine-1.0.0-ubuntu24-x86_64-cp312.tar.gz
+   wget https://github.com/MakisImperium/endstone-zernyth/releases/download/v1.0.0/SHA256SUMS
+   sha256sum --check --ignore-missing SHA256SUMS
+   tar -xzf zernyth-engine-1.0.0-ubuntu24-x86_64-cp312.tar.gz
+   cd zernyth-engine-1.0.0-ubuntu24-x86_64-cp312
+   ./install.sh
+   ```
+4. Check the setup, then start the server (replace the JDK path with yours):
+   ```sh
+   ./start.sh --server /opt/bds --java-home /usr/lib/jvm/temurin-25-jdk-amd64
+   ./start.sh --server /opt/bds --java-home /usr/lib/jvm/temurin-25-jdk-amd64 --run
+   ```
+   Type `stop` in the console to shut the server down.
+
+### Add plugins
+
+Download plugins from the **[Zernyth Marketplace](https://zernyth.net/marketplace)** – uploads there are scanned and reviewed – and put the `.jar` files into the `plugins` folder inside your BDS folder. Restart the server. Java plugins run inside the server process, so only install plugins you trust.
+
+### Update or remove
+
+Stop the server and back up your worlds, plugin data and configuration. Install the new version into a **new** folder the same way and start it with the same BDS folder; keep the old folder until the new version runs. Zernyth changes no worlds by itself. To remove Zernyth, delete its folder – BDS, worlds and the JDK stay untouched. More details: [installation guide](https://zernyth.net/docs/1.0.0/engine-installation).
 
 ## ✦ Built for Bedrock. Designed for Java.
 
@@ -62,7 +110,9 @@ flowchart TD
 - **The transport stays with BDS.** Packet observations use existing Endstone hooks above the original transport. Zernyth does not introduce a NetherNet, RakNet, or WebRTC stack.
 - **Lifecycle cleanup is explicit.** Listener, command, task, service, and form resources follow plugin ownership and generation boundaries.
 
-## 🚀 Getting started
+## 🛠️ Build from source
+
+This section is for contributors. To run a server, use the [install steps](#-install-a-server) above.
 
 ### Requirements
 
@@ -79,7 +129,7 @@ All Java modules use toolchain 25 and `options.release = 25`. Older Java runtime
 
 ### Build, verify, install
 
-Python distribution: **`zernyth-engine==1.0.0`**, command **`zernyth`**. The first wheel targets Windows x64 / CPython 3.15 and replaces `endstone` in a separate virtual environment. Do not install both packages together. See the [stable installation guide](docs/zernyth-stable-1.0.md). Use the locally built wheel until the owner has published version 1.0.0.
+Python distribution: **`zernyth-engine==1.0.0`** on PyPI, command **`zernyth`**. The wheel targets Windows x64 / CPython 3.15 and replaces `endstone` in a separate virtual environment. Do not install both packages together. See the [stable installation guide](docs/zernyth-stable-1.0.md).
 
 The historical [Alpha packaging report](docs/pypi-validation.md) records a successful Windows GitHub build with Temurin 25, native/JNI tests, installation and artifact verification. Package uploads use the owner-selected manual target.
 
@@ -126,11 +176,12 @@ version: 1.0.0
 main: dev.example.ExamplePlugin
 ```
 
-Use the locally generated SDK repository and declare the API as a compile-time dependency:
+Add the Zernyth Maven repository and declare the API as a compile-time dependency:
 
 ```kotlin
 repositories {
-    maven { url = uri("../java/build/sdk-repository") }
+    mavenCentral()
+    maven { url = uri("https://zernyth.net/maven") }
 }
 
 dependencies {
@@ -138,7 +189,7 @@ dependencies {
 }
 ```
 
-The relative repository path above matches the template directory in this source tree; adapt it for other locations. The template includes the Java 25 toolchain configuration. Maven projects can use the same local artifact with `provided` scope; see the SDK guide and template POM. Do not bundle a second copy of the Zernyth API in a plugin JAR.
+Maven: add `https://zernyth.net/maven` as a `<repository>` and use `dev.zernyth:api:1.0.0` with `provided` scope. Sources and Javadocs are published alongside. For offline builds, the [Developer SDK](https://github.com/MakisImperium/endstone-zernyth/releases/tag/v1.0.0) (`zernyth-sdk-1.0.0.zip`) contains the same artifacts as a local repository; inside this source tree the template uses `../java/build/sdk-repository`. The template includes the Java 25 toolchain configuration. Maven projects can use the same local artifact with `provided` scope; see the SDK guide and template POM. Do not bundle a second copy of the Zernyth API in a plugin JAR.
 
 **Threading contract:** native gameplay access must obey the documented server-thread restrictions. Run suitable independent Java work asynchronously and schedule native interactions back onto the permitted thread. Cancellation is cooperative; non-cooperative tasks cannot be safely forced to terminate.
 
