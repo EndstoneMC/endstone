@@ -9,7 +9,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Added
 
-- Added support for BDS version 1.26.63.
+- Added support for BDS version 1.26.65.
 
 ### Changed
 
