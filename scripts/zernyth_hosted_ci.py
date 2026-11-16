@@ -73,8 +73,10 @@ def prepare():
     wheelhouse = Path(os.environ["ZERNYTH_WHEELHOUSE"])
     wheelhouse.mkdir(parents=True, exist_ok=True)
     requirements = ROOT / "config/ci/windows-python-requirements.txt"
-    run([sys.executable, "-m", "pip", "download", "--only-binary=:all:",
-         "--dest", str(wheelhouse), "-r", str(requirements)])
+    # PyYAML 6.0.3 has no CPython 3.15 Windows wheel. Build its pinned source
+    # distribution with the selected compiler while retaining wheels for all other packages.
+    run([sys.executable, "-m", "pip", "wheel", "--only-binary=:all:", "--no-binary=pyyaml",
+         "--wheel-dir", str(wheelhouse), "-r", str(requirements)])
     run([sys.executable, "-m", "pip", "install", "--no-index", "--find-links",
          str(wheelhouse), "-r", str(requirements)])
     tools = Path(os.environ["ZERNYTH_HOSTED_TOOLS"])
