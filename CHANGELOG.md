@@ -193,7 +193,6 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 #### Crashes and memory
 
-- Fixed setting `score_tag` on an actor other than a player crashing the server.
 - Fixed a `MapRenderer` that removed itself from its `MapView` inside `render()` crashing the server.
 - Fixed the server reading freed memory when a `Permissible` was destroyed while still subscribed to a permission, such as a player who disconnected while a plugin held on to them.
 - Fixed the server crashing on a broadcast once a player had left and rejoined. A player's permissions are now cleared when they leave, and messaging a player who is no longer on the server is a no-op.
@@ -213,7 +212,6 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 #### API behaviour
 
-- Fixed cancelling `PlayerDropItemEvent` on Linux doubling the stack the player tried to drop.
 - Fixed `WritableBookMeta::setPages()` and `addPage()` failing to compile when given strings in C++.
 - Fixed `PlayerBedLeaveEvent` only being called when a player pressed the leave button. It now also fires when morning comes, when the bed is broken or obstructed, and when the player is woken by anything else, and the `bed` block it reports is the bed being slept in rather than the respawn point.
 - Fixed every vanilla command failing when dispatched through a `CommandSenderWrapper`, which did not report its own type.
@@ -231,28 +229,13 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Fixed `ItemStack.set_item_meta()` accepting an item meta that belongs to a different kind of item.
 - Fixed assigning `ItemStack.type` leaving the item unchanged.
 - Fixed `Server.dispatch_command()` rejecting the sender a command received from `/execute` or a command block.
-- Fixed `ItemStack` equality and `is_similar()` ignoring the data value, so a water bottle equalled an invisibility potion.
-- Fixed the `ItemStack` constructor raising `RuntimeError` instead of `ValueError` for an amount outside 1 to 255.
-- Fixed `ModalForm.controls` returning copies, so changing a control it handed out had no effect on the form.
-- Fixed `Button.icon = None` raising instead of clearing the icon.
-- Fixed adding or subtracting `Location`s from different dimensions silently giving a meaningless result instead of raising `ValueError`.
-- Fixed the `MapCursor` constructor accepting a direction outside 0 to 15.
-- Fixed `Item.thrower` reading `0` instead of `None` after being cleared.
-- Fixed `Plugin.save_resources()` failing when the resource sits in a folder that does not exist in the data folder yet.
-- Fixed `Plugin.save_resources()` mangling resource paths that contain `;` or `:`.
-- Fixed installing a plugin wheel hanging the server when its standard input is a pipe.
-- Fixed console commands piped in with Windows line endings being reported as unknown commands.
-- Fixed a freshly installed plugin wheel not being importable until the server restarted.
 - Fixed `str()` on a `Vector` ending in a stray comma.
 - Fixed `Colors::BLACK` being a fully transparent red.
 - Fixed the server crashing when a plugin enabled at STARTUP used online players, maps, scoreboards or commands.
 - Fixed cancelling `PlayerSkinChangeEvent` reverting the player to the skin they joined with instead of their current one.
-- Fixed `Skin.id` cutting the end off a skin id that does not end with the cape id.
-- Fixed NetherNet servers showing up in the LAN tab when `enable-lan-visibility` is `false` or the world's `LANBroadcast` flag is off.
 - Fixed a NetherNet server on Linux refusing to start with its port in use when restarted right after stopping.
 - Fixed `ServerListPingEvent.address` being empty for a NetherNet server-list ping.
 - Fixed a cancelled `ServerListPingEvent` answering a NetherNet server-list ping with an error instead of not answering.
-- Fixed plugin commands with an optional argument before a message argument failing with "Command version mismatch" when the message is omitted (#559).
 
 #### Type annotations
 
