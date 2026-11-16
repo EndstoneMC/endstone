@@ -171,9 +171,10 @@ void render()
 
     // Create window with graphics context
     {
-        float x_scale, y_scale;
-        GLFWmonitor *monitor = glfwGetPrimaryMonitor();
-        glfwGetMonitorContentScale(monitor, &x_scale, &y_scale);
+        float x_scale = 1.0f, y_scale = 1.0f;
+        if (GLFWmonitor *monitor = glfwGetPrimaryMonitor()) {
+            glfwGetMonitorContentScale(monitor, &x_scale, &y_scale);
+        }
         gWindow = glfwCreateWindow(x_scale * 640, y_scale * 360, "Endstone - DevTools", nullptr, nullptr);
     }
 
