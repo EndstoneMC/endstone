@@ -7,33 +7,33 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [0.11.16] - 2026-11-16
+
 ### Added
 
 - Added support for BDS version 1.26.65.
 
 ### Changed
 
-- Improved the performance of liquid spreading when no plugin listens to `BlockFromToEvent`.
+- Improved the performance of liquid spreading when no plugin listens to `BlockFromToEvent` (#562).
 
 ### Fixed
 
-- Fixed cancelling `PlayerDropItemEvent` on Linux doubling the stack the player tried to drop.
+- Fixed plugin commands with an optional argument before a `message` argument failing with "Command version mismatch" when the message is left out (#559).
 - Fixed setting `score_tag` on an actor other than a player crashing the server.
-- Fixed `ItemStack` equality and `is_similar()` ignoring the data value, so a water bottle equalled an invisibility potion.
-- Fixed `ModalForm.controls` returning copies, so changing a control it handed out had no effect on the form.
-- Fixed `Button.icon = None` raising instead of clearing the icon.
-- Fixed adding or subtracting `Location`s from different dimensions silently giving a meaningless result instead of raising `ValueError`.
-- Fixed the `MapCursor` constructor accepting a direction outside 0 to 15.
-- Fixed `Item.thrower` reading `0` instead of `None` after being cleared.
-- Fixed `Plugin.save_resources()` failing when the resource sits in a folder that does not exist in the data folder yet.
-- Fixed `Plugin.save_resources()` mangling resource paths that contain `;` or `:`.
-- Fixed installing a plugin wheel hanging the server when its standard input is a pipe.
+- Fixed cancelling `PlayerDropItemEvent` on Linux doubling the stack the player tried to drop.
+- Fixed NetherNet servers showing up in the LAN tab when `enable-lan-visibility` is `false`.
 - Fixed console commands piped in with Windows line endings being reported as unknown commands.
-- Fixed a freshly installed plugin wheel not being importable until the server restarted.
+- Fixed installing a plugin wheel hanging a server started with piped input, and a newly installed wheel failing to load until a restart.
+- Fixed `Plugin.save_resources()` failing when the resource sits in a folder that does not exist in the data folder yet.
+- Fixed `ItemStack` equality and `is_similar()` ignoring the data value.
 - Fixed the `ItemStack` constructor raising `RuntimeError` instead of `ValueError` for an amount outside 1 to 255.
-- Fixed `Skin.id` cutting the end off a skin id that does not end with the cape id.
-- Fixed NetherNet servers showing up in the LAN tab when `enable-lan-visibility` is `false` or the world's `LANBroadcast` flag is off.
-- Fixed plugin commands with an optional argument before a message argument failing with "Command version mismatch" when the message is omitted (#559).
+- Fixed `Item.thrower` returning an invalid id instead of `None` for an item that has no thrower.
+- Fixed `Skin.id` cutting the end off a skin id that does not end with the cape id (#564).
+- Fixed adding or subtracting `Location`s in different dimensions giving a meaningless result instead of raising `ValueError`.
+- Fixed the `MapCursor` constructor accepting a direction outside 0 to 15.
+- Fixed changes to a control from `ModalForm.controls` having no effect on the form.
+- Fixed `Button.icon = None` raising instead of clearing the icon.
 
 ## [0.11.15] - 2026-10-28
 
@@ -1336,7 +1336,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Basic plugin loader for C++ and Python plugins.
 - Basic command system that allows plugins to register custom commands.
 
-[Unreleased]: https://github.com/EndstoneMC/endstone/compare/v0.11.15...HEAD
+[Unreleased]: https://github.com/EndstoneMC/endstone/compare/v0.11.16...HEAD
+[0.11.16]: https://github.com/EndstoneMC/endstone/compare/v0.11.15...v0.11.16
 [0.11.15]: https://github.com/EndstoneMC/endstone/compare/v0.11.14...v0.11.15
 [0.11.14]: https://github.com/EndstoneMC/endstone/compare/v0.11.13...v0.11.14
 [0.11.13]: https://github.com/EndstoneMC/endstone/compare/v0.11.12...v0.11.13
