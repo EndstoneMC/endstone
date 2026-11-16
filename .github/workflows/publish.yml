@@ -13,6 +13,11 @@ on:
         type: choice
         default: build-only
         options: [build-only, testpypi, pypi]
+      validated_run:
+        description: Optional successful build-only run ID to promote unchanged artifacts
+        required: false
+        default: ''
+        type: string
 
 permissions:
   contents: read
@@ -22,71 +27,157 @@ concurrency:
 
 jobs:
   wheel:
-    if: github.repository == 'MakisImperium/endstone-zernyth'
-    runs-on: [self-hosted, Windows, X64, zernyth-publish]
-    timeout-minutes: 60
+    if: github.repository == 'MakisImperium/endstone-zernyth' && inputs.validated_run == ''
+    runs-on: windows-2025
+    timeout-minutes: 90
     outputs:
       wheel-sha256: ${{ steps.wheel_digest.outputs.sha256 }}
     env:
       RELEASE_COMMIT: ${{ inputs.commit }}
       RELEASE_TARGET: ${{ inputs.target }}
-      CONAN_HOME: ${{ vars.ZERNYTH_CONAN_HOME }}
-      ZERNYTH_GRADLE: ${{ vars.ZERNYTH_GRADLE }}
-      ZERNYTH_WHEELHOUSE: ${{ vars.ZERNYTH_WHEELHOUSE }}
-      ZERNYTH_TOOL_PATHS: ${{ vars.ZERNYTH_TOOL_PATHS }}
-      ZERNYTH_PYTHON: ${{ vars.ZERNYTH_PYTHON }}
+      PYTHONUTF8: '1'
     steps:
-      - name: Trust the canonical path of this job checkout
-        shell: cmd
+      - name: Validate the release SHA input
+        shell: pwsh
         run: |
-          "%ZERNYTH_PYTHON%" -c "import os; from pathlib import Path; checkout = os.environ['GITHUB_WORKSPACE'].replace(chr(92), '/'); Path(os.environ['GITHUB_ENV']).open('a', encoding='utf-8').write('GIT_CONFIG_COUNT=1\nGIT_CONFIG_KEY_0=safe.directory\nGIT_CONFIG_VALUE_0=' + checkout + '\n')"
+          if ($env:RELEASE_COMMIT -notmatch '^[0-9a-f]{40}$') {
+            throw 'Provide the reviewed full release commit SHA.'
+          }
       - uses: actions/checkout@v6
         with:
           ref: ${{ inputs.commit }}
           fetch-depth: 0
           persist-credentials: false
-      - name: Add preinstalled Windows build tools to the job PATH
-        shell: cmd
-        run: '"%ZERNYTH_PYTHON%" scripts/zernyth_ci.py tools'
-      - name: Verify exact release commit and production tag
-        shell: cmd
-        run: '"%ZERNYTH_PYTHON%" scripts/zernyth_wheel.py release-ref'
+      - uses: actions/setup-python@v6
+        with:
+          python-version: '3.15.2'
+          architecture: x64
       - uses: actions/setup-java@v5
         with:
           distribution: temurin
           java-version: '25'
       - uses: ilammy/msvc-dev-cmd@v1
+      - name: Select and fingerprint the installed Windows toolchain
+        id: toolchain
+        run: python scripts/zernyth_hosted_ci.py toolchain
+      - uses: actions/cache/restore@v4
+        id: dependencies
+        with:
+          path: |
+            ${{ env.CONAN_HOME }}
+            ${{ env.GRADLE_USER_HOME }}
+            ${{ env.ZERNYTH_HOSTED_TOOLS }}
+            ${{ env.ZERNYTH_WHEELHOUSE }}
+          key: zernyth-hosted-win-v1-${{ steps.toolchain.outputs.fingerprint }}-${{ hashFiles('config/zernyth-publish-conan.lock', 'config/conan/windows-hosted.profile', 'config/conan/windows-sanitized.profile', 'config/ci/windows-python-requirements.txt', 'scripts/zernyth_hosted_ci.py') }}
+      - name: Provision the approved pinned build dependencies
+        env:
+          ZERNYTH_ALLOW_HOSTED_DOWNLOADS: '1'
+          ZERNYTH_CONAN_CACHE_HIT: ${{ steps.dependencies.outputs.cache-hit }}
+        run: python scripts/zernyth_hosted_ci.py prepare
+      - uses: actions/cache/save@v4
+        if: steps.dependencies.outputs.cache-hit != 'true'
+        with:
+          path: |
+            ${{ env.CONAN_HOME }}
+            ${{ env.GRADLE_USER_HOME }}
+            ${{ env.ZERNYTH_HOSTED_TOOLS }}
+            ${{ env.ZERNYTH_WHEELHOUSE }}
+          key: ${{ steps.dependencies.outputs.cache-primary-key }}
+      - name: Verify exact release commit and production tag
+        run: python scripts/zernyth_wheel.py release-ref
       - name: Build matching native and Java components using offline caches
         shell: cmd
         run: |
-          "%ZERNYTH_PYTHON%" -c "import sys; assert sys.version_info[:2] == (3, 15), 'Dedicated runner requires CPython 3.15 x64'"
+          python scripts/zernyth_release.py build --gradle "%ZERNYTH_GRADLE%" --lockfile config/zernyth-publish-conan.lock --test-host build/RelWithDebInfo/tests/zernyth_java_test_host.dll
           if errorlevel 1 exit /b %errorlevel%
-          "%ZERNYTH_PYTHON%" scripts/zernyth_release.py build --gradle "%ZERNYTH_GRADLE%" --lockfile config/zernyth-publish-conan.lock --test-host build/RelWithDebInfo/tests/zernyth_java_test_host.dll
+          python scripts/zernyth_release.py test --test-host build/RelWithDebInfo/tests/zernyth_java_test_host.dll
           if errorlevel 1 exit /b %errorlevel%
-          "%ZERNYTH_PYTHON%" scripts/zernyth_release.py test --test-host build/RelWithDebInfo/tests/zernyth_java_test_host.dll
+          python -m unittest discover -s tests -p "test_zernyth_*.py" > build/python-tooling.log 2>&1
+          set "test_exit=%errorlevel%"
+          type build\python-tooling.log
+          if not "%test_exit%"=="0" exit /b %test_exit%
+          python -m pip wheel --no-build-isolation --no-deps --no-index -Cnative-build-dir=build/RelWithDebInfo --wheel-dir dist .
           if errorlevel 1 exit /b %errorlevel%
-          "%ZERNYTH_PYTHON%" -m unittest discover -s tests -p "test_zernyth_*.py"
+          python scripts/zernyth_wheel.py install-test --wheel-dir dist --wheelhouse "%ZERNYTH_WHEELHOUSE%" --require-sanitized --api-tests > build/wheel-install.jsonl
+          set "install_exit=%errorlevel%"
+          type build\wheel-install.jsonl
+          if not "%install_exit%"=="0" exit /b %install_exit%
+          python scripts/zernyth_sdk.py --output build/zernyth-sdk-1.0.0.zip
           if errorlevel 1 exit /b %errorlevel%
-          "%ZERNYTH_PYTHON%" -m pip wheel --no-build-isolation --no-deps --no-index -Cnative-build-dir=build/RelWithDebInfo --wheel-dir dist .
-          if errorlevel 1 exit /b %errorlevel%
-          "%ZERNYTH_PYTHON%" scripts/zernyth_wheel.py validate --wheel-dir dist --require-sanitized
-          if errorlevel 1 exit /b %errorlevel%
-          "%ZERNYTH_PYTHON%" scripts/zernyth_wheel.py install-test --wheel-dir dist --wheelhouse "%ZERNYTH_WHEELHOUSE%"
+          python scripts/zernyth_ci.py bundle --wheel dist/zernyth_engine-1.0.0-cp315-cp315-win_amd64.whl --sdk build/zernyth-sdk-1.0.0.zip --artifact-dir publish-bundle
           exit /b %errorlevel%
       - name: Record the validated wheel digest
         id: wheel_digest
-        shell: cmd
-        run: '"%ZERNYTH_PYTHON%" scripts/zernyth_ci.py digest --wheel dist/zernyth_engine-1.0.0-cp315-cp315-win_amd64.whl'
+        run: python scripts/zernyth_ci.py digest --wheel dist/zernyth_engine-1.0.0-cp315-cp315-win_amd64.whl
       - uses: actions/upload-artifact@v7
         with:
           name: zernyth-windows-${{ inputs.commit }}
-          path: dist/*.whl
+          path: publish-bundle/
           if-no-files-found: error
+          retention-days: 30
+      - name: Preserve bounded validation diagnostics
+        if: always()
+        uses: actions/upload-artifact@v7
+        with:
+          name: zernyth-diagnostics-${{ inputs.commit }}
+          path: |
+            build/release-013/*.json
+            build/release-013/*.xml
+            build/release-013/*final.log
+            build/python-tooling.log
+            build/wheel-install.jsonl
+          if-no-files-found: ignore
           retention-days: 7
 
+  promote:
+    if: github.repository == 'MakisImperium/endstone-zernyth' && inputs.validated_run != ''
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    permissions:
+      contents: read
+      actions: read
+    outputs:
+      wheel-sha256: ${{ steps.verified.outputs.sha256 }}
+    env:
+      RELEASE_COMMIT: ${{ inputs.commit }}
+      RELEASE_TARGET: ${{ inputs.target }}
+    steps:
+      - uses: actions/checkout@v6
+        with:
+          ref: ${{ inputs.commit }}
+          fetch-depth: 0
+          persist-credentials: false
+      - name: Verify the successful source build
+        env:
+          GITHUB_TOKEN: ${{ github.token }}
+          VALIDATED_RUN: ${{ inputs.validated_run }}
+        run: python scripts/zernyth_ci.py approved-run --validated-run "$VALIDATED_RUN"
+      - uses: actions/download-artifact@v8
+        with:
+          name: zernyth-windows-${{ inputs.commit }}
+          run-id: ${{ inputs.validated_run }}
+          github-token: ${{ github.token }}
+          path: publish-bundle
+      - name: Verify immutable payload and validation evidence
+        id: verified
+        env:
+          VALIDATED_RUN: ${{ inputs.validated_run }}
+        run: |
+          test "$(git rev-parse HEAD)" = "$RELEASE_COMMIT"
+          if [ "$RELEASE_TARGET" = pypi ]; then
+            test "$(git rev-parse 'refs/tags/v1.0.0^{commit}')" = "$RELEASE_COMMIT"
+          fi
+          python scripts/zernyth_ci.py verify-bundle --artifact-dir publish-bundle --validated-run "$VALIDATED_RUN"
+      - uses: actions/upload-artifact@v7
+        with:
+          name: zernyth-windows-${{ inputs.commit }}
+          path: publish-bundle/
+          if-no-files-found: error
+          retention-days: 30
+
   testpypi:
-    if: inputs.target == 'testpypi' && github.repository == 'MakisImperium/endstone-zernyth'
-    needs: wheel
+    if: always() && inputs.target == 'testpypi' && github.repository == 'MakisImperium/endstone-zernyth' && (needs.wheel.result == 'success' || needs.promote.result == 'success')
+    needs: [wheel, promote]
     runs-on: ubuntu-latest
     timeout-minutes: 10
     environment:
@@ -99,19 +190,19 @@ jobs:
       - uses: actions/download-artifact@v8
         with:
           name: zernyth-windows-${{ inputs.commit }}
-          path: dist
+          path: publish-bundle
       - name: Verify the exact validated build artifact
         env:
-          EXPECTED_SHA256: ${{ needs.wheel.outputs.wheel-sha256 }}
-        run: printf '%s  %s\n' "$EXPECTED_SHA256" 'dist/zernyth_engine-1.0.0-cp315-cp315-win_amd64.whl' | sha256sum --check --strict
+          EXPECTED_SHA256: ${{ needs.wheel.outputs.wheel-sha256 || needs.promote.outputs.wheel-sha256 }}
+        run: printf '%s  %s\n' "$EXPECTED_SHA256" 'publish-bundle/dist/zernyth_engine-1.0.0-cp315-cp315-win_amd64.whl' | sha256sum --check --strict
       - uses: pypa/gh-action-pypi-publish@release/v1
         with:
           repository-url: https://test.pypi.org/legacy/
-          packages-dir: dist/
+          packages-dir: publish-bundle/dist/
 
   pypi:
-    if: inputs.target == 'pypi' && github.repository == 'MakisImperium/endstone-zernyth'
-    needs: wheel
+    if: always() && inputs.target == 'pypi' && github.repository == 'MakisImperium/endstone-zernyth' && (needs.wheel.result == 'success' || needs.promote.result == 'success')
+    needs: [wheel, promote]
     runs-on: ubuntu-latest
     timeout-minutes: 10
     environment:
@@ -124,11 +215,11 @@ jobs:
       - uses: actions/download-artifact@v8
         with:
           name: zernyth-windows-${{ inputs.commit }}
-          path: dist
+          path: publish-bundle
       - name: Verify the exact validated build artifact
         env:
-          EXPECTED_SHA256: ${{ needs.wheel.outputs.wheel-sha256 }}
-        run: printf '%s  %s\n' "$EXPECTED_SHA256" 'dist/zernyth_engine-1.0.0-cp315-cp315-win_amd64.whl' | sha256sum --check --strict
+          EXPECTED_SHA256: ${{ needs.wheel.outputs.wheel-sha256 || needs.promote.outputs.wheel-sha256 }}
+        run: printf '%s  %s\n' "$EXPECTED_SHA256" 'publish-bundle/dist/zernyth_engine-1.0.0-cp315-cp315-win_amd64.whl' | sha256sum --check --strict
       - uses: pypa/gh-action-pypi-publish@release/v1
         with:
-          packages-dir: dist/
+          packages-dir: publish-bundle/dist/

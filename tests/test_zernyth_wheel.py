@@ -163,8 +163,9 @@ class WheelTests(unittest.TestCase):
                         if "actions/checkout" in step.get("uses", ""))
         preparation = data["jobs"]["wheel"]["steps"][0]["run"]
         self.assertGreater(checkout, 0)
-        self.assertIn("GIT_CONFIG_VALUE_0=", preparation)
-        self.assertIn(".replace(chr(92), '/')", preparation)
+        self.assertIn("RELEASE_COMMIT", preparation)
+        self.assertIn("[0-9a-f]{40}", preparation)
+        self.assertEqual(data["jobs"]["wheel"]["runs-on"], "windows-2025")
         self.assertNotIn("safe.directory=*", preparation)
         build_step = next(step["run"] for step in data["jobs"]["wheel"]["steps"]
                           if step.get("name", "").startswith("Build matching"))
@@ -176,12 +177,15 @@ class WheelTests(unittest.TestCase):
             self.assertEqual(job["environment"]["name"], name)
             self.assertEqual(job["permissions"]["id-token"], "write")
             self.assertEqual(job["runs-on"], "ubuntu-latest")
-            self.assertEqual(job["needs"], "wheel")
+            self.assertEqual(job["needs"], ["wheel", "promote"])
             self.assertFalse(any("checkout" in step.get("uses", "") for step in job["steps"]))
             publisher = job["steps"][-1]
             self.assertNotIn("password", publisher.get("with", {}))
         self.assertEqual(data["jobs"]["testpypi"]["steps"][-1]["with"]["repository-url"],
                          "https://test.pypi.org/legacy/")
+        promotion = data["jobs"]["promote"]
+        self.assertNotIn("id-token", promotion["permissions"])
+        self.assertEqual(promotion["permissions"]["actions"], "read")
 
     def test_upstream_uploads_are_guarded(self):
         data = yaml.load((ROOT / ".github/workflows/build.yml").read_text(), Loader=yaml.BaseLoader)

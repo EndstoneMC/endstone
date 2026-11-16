@@ -123,7 +123,7 @@ def validate(path, require_sanitized=False):
             "developerPathPrivacy": "BLOCKED" if private_paths else "PASS", "nativePathFindings": private_paths}
 
 
-def install_test(wheel, wheelhouse):
+def install_test(wheel, wheelhouse, api_tests=False):
     if not wheelhouse or not wheelhouse.is_dir():
         raise ValueError("Offline installation requires a preprovisioned dependency wheelhouse")
     with tempfile.TemporaryDirectory(prefix="zernyth-install-") as temporary:
@@ -153,8 +153,18 @@ def install_test(wheel, wheelhouse):
                                     timeout=30, check=True, capture_output=True, text=True)
             if option == "--version" and DISTRIBUTION_VERSION not in result.stdout:
                 raise ValueError("CLI version mismatch")
+        if api_tests:
+            run(["-m", "pip", "install", "--no-index", "--find-links", str(wheelhouse.resolve()), "pytest"])
+            configuration = directory / "pytest.ini"
+            configuration.write_text("[pytest]\n", encoding="utf-8")
+            files = sorted(str(p) for p in (ROOT / "tests").glob("test_*.py")
+                           if not p.name.startswith("test_zernyth_"))
+            result = run(["-m", "pytest", "--assert=plain", "--import-mode=importlib", "-c",
+                          str(configuration), "-q", *files])
+            if "105 passed" not in result.stdout:
+                raise ValueError("The packaged Python API suite did not report all 105 cases")
     return {"installation": "PASS", "nativeImport": "PASS", "cli": "PASS", "pipCheck": "PASS",
-            "java25Detection": "PASS", "bds": "NOT TESTED"}
+            "java25Detection": "PASS", "pythonApiTests": 105 if api_tests else "NOT TESTED", "bds": "NOT TESTED"}
 
 
 def release_ref():
@@ -178,6 +188,7 @@ def main():
     parser.add_argument("--wheel-dir", type=Path, default=Path("dist"))
     parser.add_argument("--wheelhouse", type=Path)
     parser.add_argument("--require-sanitized", action="store_true", help="Fail release validation on embedded private profile paths")
+    parser.add_argument("--api-tests", action="store_true", help="Run the packaged Python API suite using the offline pytest wheels")
     args = parser.parse_args()
     if args.command == "release-ref":
         release_ref()
@@ -187,7 +198,7 @@ def main():
         raise ValueError("Exactly one release wheel required in the output directory")
     print(json.dumps(validate(wheels[0], args.require_sanitized), indent=2))
     if args.command == "install-test":
-        print(json.dumps(install_test(wheels[0], args.wheelhouse), indent=2))
+        print(json.dumps(install_test(wheels[0], args.wheelhouse, args.api_tests), indent=2))
 
 
 if __name__ == "__main__":

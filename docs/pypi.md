@@ -112,41 +112,44 @@ files remain included conservatively. Linux distribution needs its own linkage a
 license validation. A path-free evidence record and 19 original Sentry/Crashpad
 source license notices are included in the wheel.
 
-## Dedicated GitHub runner prerequisites
+## GitHub-hosted release validation
 
-`.github/workflows/publish.yml` is manual-only. It builds one Windows wheel; it
-does not create tags, releases, commits, or pushes. Provision an isolated trusted
-runner labelled `self-hosted`, `Windows`, `X64`, `zernyth-publish`, with:
+`.github/workflows/publish.yml` remains manual-only. Its Windows build uses the
+`windows-2025` GitHub-hosted image with CPython 3.15.2, Temurin 25 and the installed
+LLVM/clang-cl 20+ and MSVC toolchains. The runner records a compiler/SDK fingerprint.
+The earlier local runner could not start `Runner.Worker.exe` under its Windows
+Code Integrity policy. The hosted build is a separately provisioned environment.
 
-- CPython 3.15 x64 and the validated Clang/MSVC/CMake/Ninja toolchain on PATH.
-- Python build/test dependencies, PyYAML, psutil, packaging, and markdown-it-py
-  (already required by Rich). Strict Core Metadata and CommonMark rendering checks
-  are performed by the wheel validator; Twine is not an additional requirement.
-- Repository variables `ZERNYTH_GRADLE` (installed Gradle executable),
-  `ZERNYTH_CONAN_HOME` (provisioned cache **outside** the checkout), and
-  `ZERNYTH_WHEELHOUSE` (complete trusted Windows dependency wheels).
-- Optional `ZERNYTH_TOOL_PATHS` supplies semicolon-separated directories for
-  installed Python, Conan, LLVM, CMake and Ninja tools. These are added to the
-  individual job's PATH. The CI build invokes Conan from the checkout parent
-  with explicit recipe/output paths so `.conanrc` cannot replace the supplied cache.
-- `ZERNYTH_PYTHON` specifies the full path to the preinstalled CPython 3.15
-  executable. Windows steps use cmd and Python for UTF-8 file commands, allowing
-  the runner to honor the machine's existing PowerShell script policy.
-- Conan profiles and the recipe/package revisions in the checked-in Windows lock.
-- Existing Gradle dependency caches. No dependency compilation/download fallback
-  is allowed by the native build driver.
+The explicitly approved provisioning phase uses:
 
-`actions/setup-java` provisions Temurin 25 when the manually approved workflow is
-run. This requires Java distribution network access on a cache miss; no such
-download was performed during local development. GitHub also needs access to
-action sources and artifact storage. Only the upload jobs contact the selected
-package index. The upload jobs use GitHub-hosted Ubuntu, fetch only this run's
-wheel artifact, do not check out or build project code, and receive OIDC permission.
+- Exact Python dependency versions in `config/ci/windows-python-requirements.txt`.
+- The reviewed Conan lock, public Windows profile and sanitized dependency profile.
+- Gradle 9.8.2 with a pinned official distribution SHA-256.
+- External Conan/Gradle/tool/wheel caches keyed by toolchain and dependency inputs.
 
-Select the reviewed **full 40-character commit SHA**. It must equal the checkout.
-The production target additionally requires the existing `v1.0.0` tag to
-resolve to that SHA. Default target is `build-only`. Review the workflow's action
-versions before enabling it; referenced action tags are not immutable SHA pins.
+Network access is needed for GitHub Actions/artifact storage, Python distributions,
+PyPI and files.pythonhosted.org, Temurin's official distribution endpoints, Gradle's
+official distribution service, Maven Central and Conan Center/source URLs referenced
+by the locked recipes. Provisioning runs only in the explicitly enabled hosted CI
+context. The subsequent native/Java build and fresh-wheel installation use offline
+caches. Ordinary local build commands retain their offline behavior.
+
+The Windows job runs the existing native/JNI tests, Java suites, Python tooling
+checks and 105 Python API cases against a freshly installed wheel. Its build bundle
+contains the wheel, SDK and checksum-bound validation metadata.
+
+Select the reviewed **full 40-character commit SHA** and `build-only` first.
+After a successful run, supply its numeric ID as `validated_run` with the same SHA
+and the chosen publishing target. The promotion job verifies the source workflow,
+commit, completion status, original build run ID, required test gates and exact
+artifact hashes. It transfers those tested bytes to the publisher job. This avoids
+another native build during publication.
+
+The production target requires `v1.0.0` to identify the reviewed SHA. The `testpypi`
+and `pypi` upload jobs use separate protected environments and OIDC. Their permissions
+are restricted to reading Actions artifacts and obtaining the publishing identity.
+Only the selected publishing job contacts its package registry. Action version tags
+remain explicit dependencies of the release workflow.
 
 ## Trusted Publisher settings
 
@@ -167,9 +170,7 @@ Review the protection rules on both GitHub environments before choosing an uploa
 target. GitHub applies the rules configured by the owner. The explicit manual
 `target` selection controls whether this workflow uploads. The default remains
 `build-only`. A second reviewer or prevent-self-review setting is an owner policy
-choice. The last remote inspection found zero registered self-hosted runners and
-no reviewer rules on either environment. Register the dedicated provisioned runner
-before expecting a build to execute. No persistent PyPI API token is required.
+choice. No persistent PyPI API token is required.
 
 See the official [Trusted Publishing instructions](https://docs.pypi.org/trusted-publishers/using-a-publisher/)
 and [environment configuration guidance](https://docs.pypi.org/trusted-publishers/adding-a-publisher/).
@@ -178,12 +179,13 @@ and [environment configuration guidance](https://docs.pypi.org/trusted-publisher
 
 1. Review these source changes, commit and push them yourself. No local tool here
    performs those actions. Record the exact reviewed commit SHA.
-2. Provision the dedicated runner, caches, dependency wheelhouse, and repository
-   variables. Review environment protection and verify the TestPyPI Trusted Publisher.
+2. Review environment protection and verify the TestPyPI Trusted Publisher.
+   The manually dispatched hosted job provisions its pinned dependencies.
 3. Run **Zernyth release wheel (manual)** with that SHA and `build-only`. Inspect
    native/JNI/Java/Python results, metadata/rendering checks, fresh installation, wheel contents,
    licenses, and the uploaded wheel artifact. Stop on any failed gate.
-4. Run the workflow with the **same SHA** and target `testpypi`; approve only the
+4. Run the workflow with the **same SHA**, its successful `validated_run` ID and
+   target `testpypi`; approve only the
    `testpypi` environment job after reviewing the completed build checks.
 5. In a fresh Windows CPython 3.15 venv, install ordinary dependencies from your
    trusted normal dependency source, then install the selected release explicitly from
