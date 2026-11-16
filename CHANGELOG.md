@@ -9,7 +9,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Added
 
-- Added support for BDS version 1.26.63.
+- Added support for BDS version 1.26.65.
 - Added a `[proxies.endgate]` section to `endstone.toml` that accepts players only through the endgate proxy and gives them their real address.
 
 #### Events
@@ -259,6 +259,34 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Fixed type annotations for `Plugin` and `event_handler`.
 - Fixed the type stubs so a type checker no longer reports errors on them: `__eq__`/`__ne__` take `object`, in-place operators such as `Vector.__iadd__` accept everything their binary counterpart does and return `Self`, an optional callback is typed `Callable[...] | None`, a skin image is a `numpy.typing.NDArray`, and `Plugin.config` is a `dict[str, Any]`.
 - Fixed the NBT bindings hiding what their containers hold: `ByteArrayTag(iterable)` and `IntArrayTag(iterable)` take an `Iterable[int]`, `ListTag(iterable)` an `Iterable[Tag]`, `CompoundTag(mapping)` a `dict[str, Tag]`, and `to_list()`/`to_dict()` return `list[Any]`/`dict[str, Any]`.
+
+## [0.11.16] - 2026-11-16
+
+### Added
+
+- Added support for BDS version 1.26.65.
+
+### Changed
+
+- Improved the performance of liquid spreading when no plugin listens to `BlockFromToEvent` (#562).
+
+### Fixed
+
+- Fixed plugin commands with an optional argument before a `message` argument failing with "Command version mismatch" when the message is left out (#559).
+- Fixed setting `score_tag` on an actor other than a player crashing the server.
+- Fixed cancelling `PlayerDropItemEvent` on Linux doubling the stack the player tried to drop.
+- Fixed NetherNet servers showing up in the LAN tab when `enable-lan-visibility` is `false`.
+- Fixed console commands piped in with Windows line endings being reported as unknown commands.
+- Fixed installing a plugin wheel hanging a server started with piped input, and a newly installed wheel failing to load until a restart.
+- Fixed `Plugin.save_resources()` failing when the resource sits in a folder that does not exist in the data folder yet.
+- Fixed `ItemStack` equality and `is_similar()` ignoring the data value.
+- Fixed the `ItemStack` constructor raising `RuntimeError` instead of `ValueError` for an amount outside 1 to 255.
+- Fixed `Item.thrower` returning an invalid id instead of `None` for an item that has no thrower.
+- Fixed `Skin.id` cutting the end off a skin id that does not end with the cape id (#564).
+- Fixed adding or subtracting `Location`s in different dimensions giving a meaningless result instead of raising `ValueError`.
+- Fixed the `MapCursor` constructor accepting a direction outside 0 to 15.
+- Fixed changes to a control from `ModalForm.controls` having no effect on the form.
+- Fixed `Button.icon = None` raising instead of clearing the icon.
 
 ## [0.11.15] - 2026-10-28
 
@@ -1561,7 +1589,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Basic plugin loader for C++ and Python plugins.
 - Basic command system that allows plugins to register custom commands.
 
-[Unreleased]: https://github.com/EndstoneMC/endstone/compare/v0.11.15...HEAD
+[Unreleased]: https://github.com/EndstoneMC/endstone/compare/v0.11.16...HEAD
+[0.11.16]: https://github.com/EndstoneMC/endstone/compare/v0.11.15...v0.11.16
 [0.11.15]: https://github.com/EndstoneMC/endstone/compare/v0.11.14...v0.11.15
 [0.11.14]: https://github.com/EndstoneMC/endstone/compare/v0.11.13...v0.11.14
 [0.11.13]: https://github.com/EndstoneMC/endstone/compare/v0.11.12...v0.11.13
